@@ -330,7 +330,6 @@ en:
     objects: Things
     places: Places
 
-
   ordinal:
     _1: 1st
     _2: 2nd
@@ -380,16 +379,15 @@ en:
     explain_scope:
       thread: This changes when you'll be notified about this thread
       group: This changes when you'll be notified about all threads in the group
-
     simple:
       label: Notifications
       loud: Subscribed
       normal: Normal
       quiet: Ignore
       question: When do you want to be notified?
-      loud_explain: whenever there is activity
-      normal_explain: when someone asks for your attention
-      quiet_explain: no notifications
+      loud_explain: Whenever there is activity
+      normal_explain: When someone asks for your attention
+      quiet_explain: No notifications
 
     aria_label: "Change email settings form"
     loud_label: "All activity"
@@ -505,7 +503,7 @@ en:
     recent_threads: 'Recent threads'
     invite_only_threads: 'Invite-only threads'
     direct_threads: 'Direct threads'
-    unread_threads: 'Unread threads (%{count})'
+    unread_threads: 'Unread threads: (%{count})'
     muted_threads: 'Muted threads'
     start_group: 'New organization'
     start_subgroup: 'New subgroup'
