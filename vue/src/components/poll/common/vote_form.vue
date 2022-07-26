@@ -34,7 +34,9 @@ export default
         'poll_common.submit_vote'
 
   watch:
-    selectedOptionId: -> EventBus.$emit('focusEditor')
+    selectedOptionId: -> 
+      # if reason is not disabled, focus on the reson for this poll
+      EventBus.$emit('focusEditor', 'poll-'+@poll.id)
 
   methods:
     submit: ->
@@ -114,7 +116,11 @@ form.poll-common-vote-form(disabled @keyup.ctrl.enter="submit()", @keydown.meta.
           v-list-item-subtitle {{option.meaning}}
 
   template(v-if="votingEnabled")
-    poll-common-stance-reason(:stance='stance', :poll='poll', :selectedOptionId="selectedOptionId", :prompt="optionPrompt")
+    poll-common-stance-reason(
+      :stance='stance'
+      :poll='poll'
+      :selectedOptionId="selectedOptionId"
+      :prompt="optionPrompt")
     v-card-actions.poll-common-form-actions
       v-btn.poll-common-vote-form__submit(
         @click='submit()'

@@ -15,6 +15,7 @@ export default
 <template lang="pug">
 .poll-common-stance-reason
   lmo-textarea.poll-common-vote-form__reason(
+    :focus-id="'poll-'+poll.id"
     v-if="poll.stanceReasonRequired != 'disabled'"
     :model='stance'
     field="reason"

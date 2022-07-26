@@ -10,6 +10,7 @@ import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_se
 
 export default
   props:
+    focusId: String
     model: Object
     field: String
     label: String
@@ -37,6 +38,7 @@ div
   .lmo-textarea.pb-1
     collab-editor(
       v-if="format == 'html'"
+      :focus-id="focusId"
       :model='model'
       :field='field'
       :placeholder="placeholder"
@@ -48,6 +50,7 @@ div
         slot(:name="name", v-bind="slotData")
     md-editor(
       v-if="format == 'md'"
+      :focus-id="focusId"
       :model='model'
       :field='field'
       :placeholder="placeholder"

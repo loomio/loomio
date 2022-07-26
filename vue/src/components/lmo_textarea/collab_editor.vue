@@ -66,6 +66,7 @@ isValidHttpUrl = (string) ->
 export default
   mixins: [CommonMentioning, HtmlMentioning, Attaching]
   props:
+    focusId: String
     model: Object
     field: String
     label: String
@@ -103,7 +104,9 @@ export default
       @editor.getCharacterCount() >= @maxLength
 
   mounted: ->
-    EventBus.$on('focusEditor', => @editor.commands.focus())
+    EventBus.$on 'focusEditor', (focusId) => 
+      @editor.commands.focus() if @focusId == focusId
+
     @expanded = Session.user().experiences['html-editor.expanded']
     @model.beforeSave = => @updateModel()
     @editor = new Editor
