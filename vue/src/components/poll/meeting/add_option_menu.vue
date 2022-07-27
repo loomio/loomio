@@ -12,9 +12,6 @@ export default
     poll: Object
     value: Date
 
-  created: ->
-    Records.users.fetchTimeZones().then (data) => @zoneCounts = data
-
   data: ->
     min: new Date
     zoneCounts: []
@@ -29,15 +26,8 @@ export default
 </script>
 <template lang="pug">
 .poll-meeting-add-option-menu
-  p.text-caption
+  p.text-caption.text--secondary
     span(v-t="{path: 'poll_common_form.your_in_zone', args: {zone: currentTimeZone}}")
-    space
-    a(v-if="!showTimeZones" @click="showTimeZones = true" v-t="'poll_common_form.show_other_zones'")
-    a(v-if="showTimeZones" @click="showTimeZones = false" v-t="'poll_common_form.hide_other_zones'")
-  v-simple-table(v-show="showTimeZones" dense style="max-height: 110px; overflow-y: auto;")
-    tbody
-      tr(:key="z[0]" v-for="z in zoneCounts")
-        template(v-if="z[0] != currentTimeZone")
-          td {{z[0].replace('_',' ')}}
-          td {{timeInZone(z[0])}}
+    br
+    span(v-t="'poll_meeting_form.participants_see_local_times'")
 </template>

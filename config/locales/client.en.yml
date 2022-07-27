@@ -1883,12 +1883,15 @@ en:
 
   poll_common_settings:
     who_can_vote: 'Who can vote?'
+    short_reason_can_be_helpful: Keeping vote reasons short makes them easier to understand. A collection of concise reasons is a great resource for making a decision.
     specified_voters_only_true: Invited people only
     specified_voters_only_false_group: Anyone in the group
     specified_voters_only_false_discussion: Anyone in the thread
     invite_people_next: You can choose who is invited to vote after you start the {{poll_type}}
     shuffle_options:
+      shuffle_options: Shuffle options
       title: Show options in random order
+      helptext: An option being first on the list can give it a bias. Use this setting to counter that effect.
     multiple_choice:
       title: Multiple choice
       helptext_on: When selected, participants will be able to select multiple options.
@@ -2032,7 +2035,7 @@ en:
     process: Process
     process_name: Process name
     process_name_hint: E.g. Proposal, Resolution, Agreement, Temperature check
-    you_can_set_a_prompt_per_option: For this voting method you define a prompt for each option. Edit options from the details tab.
+    you_can_set_a_prompt_per_option: Edit the prompt for each option from the details tab
     chart_type: Chart type
     title: Title
     example_title: Example title
@@ -2122,6 +2125,7 @@ en:
     add_option_placeholder: Add new time
     time_slot_added: Time slot added
     time_slot_already_added: Time slot already added
+    participants_see_local_times: Pariticpants will see times localized to their time zone
 
   poll_ranked_choice_form:
     tool_tip_collapsed: Understand the ordered preference of options

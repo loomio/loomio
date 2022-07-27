@@ -193,6 +193,7 @@ meeting:
     min_score: 0
     max_score: 2
     default_duration_in_days: 3
+    can_respond_maybe: true
 
 poll:
   template: true

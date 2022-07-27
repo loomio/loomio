@@ -247,7 +247,6 @@ export default
         :should-reset="shouldReset"
       )
 
-
       .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
       v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
       sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
@@ -322,8 +321,13 @@ export default
             v-model="poll.meetingDuration"
             type="number"
           )
-          span.pl-2(v-t="'common.minutes'")
+          span.pl-2.text--secondary(v-t="'common.minutes'")
           span.pl-1.text--secondary(v-if="formattedDuration") ({{formattedDuration}})
+
+        //- v-checkbox.poll-common-checkbox-option.poll-settings-can-respond-maybe(
+        //-   hide-details
+        //-   v-model="poll.canRespondMaybe"
+        //-   :label="$t('poll_common_settings.can_respond_maybe.title')")
 
       template(v-if="poll.pollType == 'count'")
         p.text--secondary(v-t="'poll_count_form.agree_target_helptext'")
@@ -414,36 +418,33 @@ export default
 
     v-tab-item.poll-common-form__settings-tab
 
-      .text-h5.mb-4.mt-8(v-t="'poll_common_card.hide_results'")
-      p.text--secondary(v-t="'poll_common_form.hide_results_description'")
-      v-select.poll-common-settings__hide-results(
-        v-if="allowAnonymous"
-        :label="$t('poll_common_card.hide_results')"
-        :items="hideResultsItems"
-        v-model="poll.hideResults"
-        :disabled="!poll.closingAt || (!poll.isNew() && currentHideResults == 'until_closed')"
-      )
+      template(v-if="allowAnonymous")
+        .text-h5.mb-4.mt-8(v-t="'poll_common_card.hide_results'")
+        p.text--secondary(v-t="'poll_common_form.hide_results_description'")
+        v-select.poll-common-settings__hide-results(
+          :label="$t('poll_common_card.hide_results')"
+          :items="hideResultsItems"
+          v-model="poll.hideResults"
+          :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
+        )
 
-      .text-h5.mb-4.mt-8(v-t="'poll_common_form.anonymous_voting'")
-      p.text--secondary(v-t="'poll_common_form.anonymous_voting_description'")
-      v-checkbox.poll-common-checkbox-option(
-        hide-details
-        v-if="allowAnonymous"
-        :disabled="!poll.closingAt || !poll.isNew()"
-        v-model="poll.anonymous"
-        :label="$t('poll_common_form.votes_are_anonymous')")
+      template(v-if="allowAnonymous")
+        .text-h5.mb-4.mt-8(v-t="'poll_common_form.anonymous_voting'")
+        p.text--secondary(v-t="'poll_common_form.anonymous_voting_description'")
+        v-checkbox.poll-common-checkbox-option(
+          hide-details
+          :disabled="!poll.isNew()"
+          v-model="poll.anonymous"
+          :label="$t('poll_common_form.votes_are_anonymous')")
 
-      v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options(
-        v-if="poll.config().can_shuffle_options"
-        hide-details
-        v-model="poll.shuffleOptions"
-        :label="$t('poll_common_settings.shuffle_options.title')")
+      template(v-if="poll.config().can_shuffle_options")
+        .text-h5.mb-4.mt-8(v-t="'poll_common_settings.shuffle_options.shuffle_options'")
+        p.text--secondary(v-t="'poll_common_settings.shuffle_options.helptext'")
+        v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options(
+          hide-details
+          v-model="poll.shuffleOptions"
+          :label="$t('poll_common_settings.shuffle_options.title')")
 
-      v-checkbox.poll-common-checkbox-option.poll-settings-can-respond-maybe(
-        v-if="poll.pollType == 'meeting'"
-        hide-details
-        v-model="poll.canRespondMaybe"
-        :label="$t('poll_common_settings.can_respond_maybe.title')")
 
       .text-h5.mb-4.mt-8(v-t="'poll_common_form.vote_reason'")
       p.text--secondary(v-t="'poll_common_form.vote_reason_description'")
@@ -459,21 +460,19 @@ export default
         :label="$t('poll_common_form.reason_prompt')"
         :hint="$t('poll_option_form.prompt_hint')"
         :placeholder="$t('poll_common.reason_placeholder')")
-      p.text-caption.text--secondary(
-        v-if="poll.stanceReasonRequired != 'disabled' && poll.config().per_option_reason_prompt"
-        v-t="'poll_common_form.you_can_set_a_prompt_per_option'")
 
-      v-checkbox.poll-common-checkbox-option.mt-0.mb-4(
-        v-if="poll.stanceReasonRequired != 'disabled'"
-        hide-details
-        v-model="poll.limitReasonLength"
-        :label="$t('poll_common_form.limit_reason_length')"
-      )
+      template(v-if="poll.stanceReasonRequired != 'disabled'")
+        p.text--secondary(v-t="'poll_common_settings.short_reason_can_be_helpful'")
+        v-checkbox.poll-common-checkbox-option.mt-0.mb-4(
+          hide-details
+          v-model="poll.limitReasonLength"
+          :label="$t('poll_common_form.limit_reason_length')"
+        )
 
-      v-select(
-        :label="$t('poll_common_form.chart_type')"
-        v-model="poll.chartType"
-        :items="chartTypeItems")
+      //- v-select(
+      //-   :label="$t('poll_common_form.chart_type')"
+      //-   v-model="poll.chartType"
+      //-   :items="chartTypeItems")
       //- chartType
       //- chartColumn
 
