@@ -330,7 +330,6 @@ en:
     objects: Things
     places: Places
 
-
   ordinal:
     _1: 1st
     _2: 2nd
@@ -380,17 +379,15 @@ en:
     explain_scope:
       thread: This changes when you'll be notified about this thread
       group: This changes when you'll be notified about all threads in the group
-
     simple:
       label: Notifications
       loud: Subscribed
       normal: Normal
       quiet: Ignore
       question: When do you want to be notified?
-      loud_explain: whenever there is activity
-      normal_explain: when someone asks for your attention
-      quiet_explain: no notifications
-
+      loud_explain: Whenever there is activity
+      normal_explain: When someone asks for your attention
+      quiet_explain: No notifications
     aria_label: "Change email settings form"
     loud_label: "All activity"
     normal_label: "Announcements"
@@ -505,7 +502,7 @@ en:
     recent_threads: 'Recent threads'
     invite_only_threads: 'Invite-only threads'
     direct_threads: 'Direct threads'
-    unread_threads: 'Unread threads (%{count})'
+    unread_threads: 'Unread threads: (%{count})'
     muted_threads: 'Muted threads'
     start_group: 'New organization'
     start_subgroup: 'New subgroup'
@@ -600,11 +597,11 @@ en:
     cancel_invitation: Cancel invitation
 
   notification_models:
-    discussion: 'thread: '
-    comment: 'comment in '
-    poll: 'poll: '
-    outcome: 'outcome: '
-    stance: 'vote: '
+    discussion: 'Thread: '
+    comment: 'Comment in '
+    poll: 'Poll: '
+    outcome: 'Outcome: '
+    stance: 'Vote: '
 
   notifications:
     header: "Notifications"
@@ -612,7 +609,7 @@ en:
 
     with_title:
       comment_replied_to: "%{actor} replied to you in: %{title}"
-      discussion_announced: "%{actor} invited you to a thread: %{title}"
+      discussion_announced: "%{actor} invited you to the thread: %{title}"
       discussion_edited: "%{actor} edited the thread context: %{title}"
       discussion_closed: "%{actor} closed the thread: %{title}"
       invitation_accepted: "%{actor} accepted your invitation to join %{title}"
