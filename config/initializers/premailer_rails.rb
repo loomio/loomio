@@ -1,0 +1,1 @@
+Premailer::Rails.config.merge!(css_to_attributes: false)

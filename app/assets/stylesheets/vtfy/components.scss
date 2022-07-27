@@ -118,22 +118,18 @@
   height: 36px;
 }
 
-.v-table {
+table.v-table {
   border-radius: 4px;
   border-spacing: 0;
   line-height: 1.5;
   max-width: 800px;
   margin-bottom: 16px;
-  td, th {
-    font-size: .8rem;
-    // height: 32px;
-    padding: 0 4px;
-    border-bottom: thin solid rgba(0,0,0,.12);
-  }
-  td.no-border {
-    border-bottom: none;
-    border: 0;
-  }
+}
+td.v-table, th.v-table {
+  font-size: .8rem;
+  // height: 32px;
+  padding: 0 4px;
+  border-bottom: thin solid rgba(0,0,0,.12);
 }
 
 .v-layout-table {

@@ -5,9 +5,10 @@ import BarIcon from '@/components/poll/common/icon/bar.vue'
 import CountIcon from '@/components/poll/common/icon/count.vue'
 import PieIcon from '@/components/poll/common/icon/pie.vue'
 import GridIcon from '@/components/poll/common/icon/grid.vue'
+import ScoreCountsIcon from '@/components/poll/common/icon/score_counts.vue'
 
 export default
-  components: {BarIcon, CountIcon, PieIcon, GridIcon}
+  components: {BarIcon, CountIcon, PieIcon, GridIcon, ScoreCountsIcon}
   props:
     poll: Object
     showMyStance: Boolean
@@ -27,6 +28,7 @@ export default
   count-icon(v-if="poll.iconType == 'count'" :poll="poll" :size='size')
   pie-icon(v-if="poll.iconType == 'pie'" :poll="poll" :size='size')
   grid-icon(v-if="poll.iconType == 'grid'" :poll="poll" :size='size')
+  score-counts-icon(v-if="poll.iconType == 'score_counts'" :poll="poll" :size='size')
   .poll-common-chart-preview__stance-container(v-if='showMyStance && (myStance || poll.iCanVote())')
     poll-common-stance-icon(:poll="poll" :stance="myStance" :size="stanceSize")
 

@@ -44,7 +44,9 @@ class PollSerializer < ApplicationSerializer
              :undecided_voters_count,
              :voter_can_add_options,
              :voters_count,
-             :versions_count
+             :versions_count,
+             :min_score,
+             :max_score
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events
