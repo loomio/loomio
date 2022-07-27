@@ -22,6 +22,14 @@ export default class PollModel extends BaseModel
   config: ->
     AppConfig.pollTypes[@pollType]
 
+  votingMethods:
+    proposal: 'show_thumbs'
+    poll: 'choose'
+    meeting: 'time_poll'
+    dot_vote: 'allocate'
+    score: 'score'
+    ranked_choice: 'ranked_choice'
+
   i18n: ->
     AppConfig.pollTypes[@pollType].i18n
 

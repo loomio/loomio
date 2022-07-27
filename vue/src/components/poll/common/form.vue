@@ -37,10 +37,8 @@ export default
     lastPollType: @poll.pollType
     pollOptions: @poll.pollOptionsAttributes || @poll.clonePollOptions()
     groupItems: []
-    pollTypeItems: compact Object.keys(AppConfig.pollTypes).map (key) =>
-      pollType = AppConfig.pollTypes[key]
-      return null unless pollType.template
-      {text: @$t('poll_common_form.voting_methods.'+pollType.vote_method), value: key}
+    pollTypeItems: Object.keys(@poll.votingMethods).map (pollType) =>
+      {text: @$t('poll_common_form.voting_methods.'+@poll.votingMethods[pollType]), value: pollType}
     chartTypeItems: [
       {text: 'bar', value: 'bar'}
       {text: 'pie', value: 'pie'}
