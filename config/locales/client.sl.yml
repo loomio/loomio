@@ -18,6 +18,7 @@ sl:
   common:
     please_wait: Prosim, počakaj
     version: Verzija
+    or: ali
     time_zone: Časovni pas
     local_time: Lokalni čas
     attachments: Priloge

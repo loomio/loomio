@@ -8,6 +8,7 @@ sk:
   common:
     please_wait: Počkajte prosím
     version: Verzia
+    or: alebo
     time:
       am: dop.
       pm: odp.

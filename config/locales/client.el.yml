@@ -15,6 +15,7 @@ el:
   common:
     please_wait: Παρακαλούμε περιμένετε
     version: Έκδοση
+    or: ή
     expand: Επέκταση
     all_day: Όλη μέρα
     ok_got_it: Εντάξει, το κατάλαβα

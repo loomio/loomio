@@ -8,6 +8,7 @@ be_BY:
   common:
     please_wait: Пачакайце, калі ласка
     version: Версія
+    or: альбо
     confirm_discard_changes: Скасаваць змены?
     time:
       am: am
