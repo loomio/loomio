@@ -12,6 +12,7 @@ de:
       title: Schlechte Anfrage
       body: Sorry, wir konnten diese Anfrage nicht verstehen
     401:
+      title: Unauthorisiert
       body: Du bist nicht berechtigt, auf diese Seite zuzugreifen. Möglicherweise musst du dich anmelden.
     403:
       title: Verbotene
@@ -46,6 +47,7 @@ de:
   group:
     error:
       handle_must_begin_with_parent_handle: "Muss beginnen mit %{parent_handle}-"
+      no_public_trials: "Bitte führe ein Upgrade von der Testversion durch, um die Datenschutzeinstellung der Gruppe zu ändern"
     stats:
       group_stats: Gruppen-Statistik
       org_stats: Organisationsstatistiken (einschließlich Untergruppen)
@@ -85,6 +87,7 @@ de:
       title: Titel
       author: Autor
       email: E-Mail
+      user_id: Benutzer-ID
       created_at: Hergestellt um
       closing_at: Schließt um
       closed_at: Geschlossen um
@@ -103,6 +106,7 @@ de:
       participant: Teilnehmer
       also_available: Auch verfügbar in
       total: Gesamt
+    waiting_for_votes_from: "Warten auf Stimmen von"
   stance:
     error:
       too_short: Bitte triff eine Auswahl
@@ -156,11 +160,15 @@ de:
   email:
     common:
       or_enter_code: oder gib den Code unten ein
+      resend: Diese läuft nach 24 Stunden ab und kann nur einmal verwendet werden
     login:
       subject: Bei %{site_name}anmelden
+      intro: Hallo %{name}, hier ist dein Link, um dich auf %{site_name} anzumelden
+      intro_code: Hi %{name}, Hier ist dein Code, mit dem du dich auf %{site_name} anmelden kannst
       login: Als %{name} einloggen
     reactivate:
       subject: Dein %{site_name} Konto wieder aktivieren
+      intro: Hi %{name}, Hier ist ein Link, um deinen %{site_name}-Account zu reaktivieren
       login: '%{name}reaktivieren'
     contact_request:
       subject: "%{name} möchte sich mit dir auf %{site_name} verbinden!"
@@ -177,6 +185,7 @@ de:
           Solltest du weiterhin Probleme beim Einloggen haben, dann antworte auf diese E-Mail um mit jemandem von unserem Support Kontakt aufzunehmen - auf Englisch bitte.
     by_who: von %{person}
     reply_to_this_discussion: Direkt auf diese Diskussion antworten
+    loomio_app_description: "%{site_name} ist ein Entscheidungstool für kollaborative Organisationen"
     view_group: Gruppe ansehen
     to_join_group:
       subject: "%{member} hat dich eingeladen %{group_name} auf %{site_name} beizutreten"
@@ -197,6 +206,7 @@ de:
     catch_up:
       daily_subject: Gestern auf %{site_name}
       weekly_subject: Letzte Woche auf %{site_name}
+      other_subject: Kürzlich auf %{site_name}
       do_not_reply: Bitte nicht direkt auf diese E-Mail antworten.
       mark_as_read: Als gelesen markieren
       thanks_for_reading: Vielen Dank für's Lesen, wir wünschen noch einen schönen Tag!
@@ -286,8 +296,23 @@ de:
         Du kannst deine Entscheidung jederzeit ändern (und somit auf neue Informationen reagieren), solange die Abstimmung noch nicht geschlossen ist.
 
         **Probiere es aus! Klicke auf eine der Schaltflächen!**
+  task_mailer:
+    task_due_reminder:
+      subject: "Aufgabenerinnerung: %{name}"
+      greeting: "Hallo %{name}, die folgende Aufgabe %{due}ist fällig:"
+      view_task: "Ansehen auf %{site_name}"
+      update_or_comment: "Wenn du diese Aufgabe bereits erledigt hast, kreuze sie bitte an. Wenn es nicht vollständig ist, teile bitte ein Fortschritts-Update mit."
+      due_today: 'heute'
+      due_in_count_days: 'in %{count} Tagen'
   group_mailer:
     resend: 'ERINNERUNG: %{member} wartet darauf, dass du %{group_name} beitrittst'
+    destroy_warning:
+      subject: Ihre Loomio-Gruppe soll gelöscht werden.
+      body: |
+          Deine Loomio-Gruppe: ''%{group}" wurde von zum Löschen vorgemerkt.
+          Wenn du nicht möchtest, dass deine Gruppe gelöscht wird, antworte bitte auf diese E-Mail.
+          Wenn du die Gruppe wirklich löschen möchtest, musst du nichts unternehmen.
+          Vielen Dank.
   poll_mailer:
     common:
       why_send_this: Du erhältst diese E-Mail weil %{reason}

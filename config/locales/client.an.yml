@@ -8,6 +8,7 @@ an:
   common:
     please_wait: Aguarda, por favor
     version: Versión
+    or: u
     time:
       am: am
       pm: pm

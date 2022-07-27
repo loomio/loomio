@@ -1,8 +1,68 @@
 de:
+  tasks:
+    tasks: Aufgaben
+    your_tasks: Deine Aufgaben
+    permission_denied: Du bist nicht berechtigt, diese Aufgabe zu aktualisieren
+    due_date: älligkeitstag
+    send_reminder: Erinnerung senden (falls nicht geschehen)
+    no_reminder: Keine Erinnerug
+    on_due_date: Am Fälligkeitsdatum
+    1_day_before: 1 Tag vorher
+    2_day_before: 2 Tage vorher
+    3_day_before: 3 Tage vorher
+    7_day_before: 7 Tage vorher
+    task_placeholder: Enter a task and @mention someone to assign it
+    add_due_date: Fälligkeitsdatum hinzufügen
+    task_updated_done: 'Aufgabe als erledigt markiert!'
+    task_updated_not_done: 'Aufgabe als nicht erledigt markiert'
+    no_tasks_assigned: Dir sind keine Aufgaben zugewiesen
   templates:
+    login_to_start_demo: |
+        Dies ist eine Demo von Loomio in Aktion. Schaue dich gerne um.
+    sign_in_to_try_features: |
+        Wenn Du versuchen möchtest, in einer Demo-Entscheidung abzustimmen oder eine kostenfreie Testphase für deine Organisation zu starten, klicke auf „Anmelden“.
+    click_button_to_start_demo: |
+        Herzlich willkommen! Um Abstimmungen und andere Funktionen auszuprobieren, klicke auf die Schaltfläche:
+    welcome_to_your_demo: Dies ist deine ganz eigene Demo-Gruppe!
+    try_voting_to_see_it_work: Versuche, über einen Vorschlag abzustimmen, um ein Gefühl dafür zu bekommen, wie Loomio funktioniert.
+    delete_will_be_deleted_in_x_days: Diese Demo wird in %{x} Tagen gelöscht.
+    to_use_loomio_with_your_org_start_trial: Wenn du bereit bist, Loomio mit deiner Organisation auszuprobieren, starte eine kostenfreie Testphase.
+    templates: Vorlagen
+    make_a_copy: "Eine Kopie machen"
+    this_thread_is_a_template: Dieser Thread ist eine Vorlage, mache eine Kopie, wenn du  ihn verwenden möchtest.
     try_loomio: Loomio ausprobieren
+    start_a_demo_group: Starte eine Demogruppe
+    start_a_demo: Starte eine Demo
+    look_and_feel: Starte eine Demo, um zu sehen, wie Loomio aussieht, und teste einige der Funktionen.
+    demos_expire: Demogruppen werden nach 3 Tagen automatisch gelöscht. Fühle dich frei, einen anderen zu starten, wenn du brauchst.
+    generating_demo: 'Okay, warte gleich! Das Generieren einer Demo dauert etwa 20 Sekunden.'
+    start_a_x_day_free_trial: Starte eine {{day}}-tägige kostenfreie Testphase
+    ready_to_trial: Bereit, Loomio mit deiner Organisation auszuprobieren?
+    start_a_no_obligation_x_day_trial: Starte eine Loomio-Gruppe für deine Organisation mit einer kostenfreien {{day}}-tägigen Testphase.
+    you_can_test_it_out: |
+        Du kannst andere Personen zum Beitritt einladen, es in deine anderen Tools integrieren und versuchen, einige Entscheidungen zu treffen.
+    demo_created: Demogruppe erstellt, nur für dich!
+    start_demo: Demo starten
+    view_demo: Demo ansehen
+    start_trial: Testphase starten
+    start_free_trial: Kostenfreie Testphase starten
+    demo_needs_user: Um eine Demo zu starten, musst du dich als Loomio-Benutzer registrieren (oder anmelden). Dies ist kostenfrei und dauert nur eine Minute.
+    this_is_a_template_for_new_threads: Dies ist eine Vorlage für neue Threads
   doctypes:
-    document: 'Dokument '
+    youtube_video: YouTube Video
+    image: Image
+    pdf: PDF
+    excel: Excel Spreadsheet
+    document: Dokument
+    csv: CSV-Datei
+    video: Video
+    text: Textdatei
+    google_doc: Google Doc
+    google_sheet: Google Spreadsheet
+    google_drive: Google Drive
+    pull_request: Pull Request
+    trello_board: Trello Board
+    trello_card: Trello Card
   loomio_onboarding:
     group_progress_card:
       title: Los geht's
@@ -10,6 +70,8 @@ de:
         set_description: Gruppen-Beschreibung festlegen
         set_cover_photo: Lade ein Titelbild und ein Logo für deine Gruppe hoch
         customize_group: Füge ein Gruppenbild, ein Logo und eine Beschreibung hinzu
+        setup_chatbot: "Deinen Chatroom einen Loomio-Bot hinzufügen (z. B. Slack, Discord, Teams oder andere)"
+        invite_people_in: Invite people in by email, or with a link to join.
         start_thread: Neue Diskussion eröffnen
         make_decision: Entscheidung vorbereiten
       learn_more: Mehr bei Loomio Help lernen
@@ -30,14 +92,15 @@ de:
   current_plan_button:
     upgrade: Upgrade
     buy_now: 'Jetzt kaufen '
+    is_old_plan: Loomio hat neue einfache Preisgestaltungen
     change_plan: Preisplan ändern
     view_plans: Preispläne ansehen
-    free_trial: Kostenloser Test. {{days}} Tage verbleiben.
-    trial_expired: Dein kostenloser Testzeitraum ist abgelaufen. Wähle ein Upgrade, um Loomio weiter zu nutzen.
+    free_trial: kostenfreier Test. {{days}} Tage verbleiben.
+    trial_expired: Dein kostenfreier Testzeitraum ist abgelaufen. Wähle ein Upgrade, um Loomio weiter zu nutzen.
     tooltip: "Unsere Preise sind fantastisch! Upgrade heute und geniesse was Loomio deiner Gruppe bieten kann."
-    was_gift_trial: "Deine Gruppe nutzt Loomio kostenlos seit {{createdDate}}. Es ist uns unmöglich diesen freien Service weiterhin zu bieten. Bitte upgrade um Loomio weiterhin zu nutzen. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Mehr Informationen.</a>"
+    was_gift_trial: "Deine Gruppe nutzt Loomio kostenfrei seit {{createdDate}}. Es ist uns unmöglich diesen freien Service weiterhin zu bieten. Bitte upgrade um Loomio weiterhin zu nutzen. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Mehr Informationen.</a>"
     was_gift_remaining: "{{days}} Tage verbleiben."
-    was_gift_expired: "Dein kostenloser Test ist abgelaufen."
+    was_gift_expired: "Dein kostenfreier Test ist abgelaufen."
   subscription_status:
     plan: "Plan"
     state: "Status"
@@ -51,6 +114,8 @@ de:
     chargify_link: "Rechnungsportal"
     referral_code_help: "Gib einem Freund einen Rabatt und erhalte selbst Guthaben!"
     manage_payment_details: "Zahlungsdetails verwalten"
+    manage_subscription: "Manage Subscription"
+    amount: Menge
   loomio_tags:
     all_tags: Alle Schlagwörter
     tags: Schlagwörter
@@ -65,6 +130,8 @@ de:
     destroy_tag: Schlagwort entfernen
     destroy_helptext: Hiermit löscht du das Schlagwort und entfernst es aus allen Diskussionen. Bist du sicher?
     helptext: Schlagwörter erlauben dir Diskussionen zu ordnen, damit du sie später leichter findest.
+    discussions_count_singular: (%{count} Thread)
+    discussions_count_plural: (%{count} Threads)
     tag_created: Schlagwort gespeichert
     tag_destroyed: Schlagwort gelöscht
     tags_marked: Diskussionen mit '{{name}}' in {{groupName}}
@@ -91,11 +158,13 @@ de:
     local: Ortszeit ({{value}})
   common:
     please_wait: Bitte warte
+    optional: (Optional)
     version: Version
     none: Keine
     empty: Leer
     no_results_found: Keine Ergebnisse gefunden
     view: Ansicht
+    or: oder
     history: 'Vergangenheit '
     option: Option
     add: Hinzufügen
@@ -108,8 +177,12 @@ de:
     time_zone: Zeitzone
     local_time: Ortszeit
     attachments: Arbeitsmaterialien
+    template: Vorlage
+    links: Links
     active_time_ago: Zuletzt aktiv {{time_ago}}
     confirm_discard_changes: Deine Änderungen verwerfen?
+    something_went_wrong: Uh oh! Etwas ist schief gelaufen.
+    please_try_again: Bitte erneut versuchen
     time:
       am: morgens
       pm: abends
@@ -136,6 +209,8 @@ de:
       private: 'Privat'
       secret: 'Geheim'
     selected: 'Ausgewählt'
+    today: 'heute'
+    in_x_days: 'in %{x} Tagen'
     date_range:
       today: 'Heute'
       yesterday: 'Gestern'
@@ -176,6 +251,10 @@ de:
       cancel: 'Abbrechen'
       show_more: "Mehr anzeigen"
       show_fewer: "Weniger anzeigen"
+      view_count_more: "%{count} weitere ansehen"
+      view_count_responses: "%{count} Antorten ansehen"
+      count_more: "%{count} weitere"
+      count_responses: "%{count} Antworten"
       view_all: "Alles anzeigen"
       new_thread: "Neue Diskussion"
       add_subgroup: 'Neue Untergruppe'
@@ -191,6 +270,8 @@ de:
       done: Fertig
       start: Beginnen
       delete: Löschen
+      discard: Verwefen
+      restore: Wiederherstellen
       unsubscribe: Benachrichtigungen deaktivieren
       subscribe: Beitreten
       unignore: Wieder bemerken
@@ -206,6 +287,7 @@ de:
       apply: Anwenden
       add_people: Leute hinzufügen
       zoom: Zoom
+      align: Ausrichten
     formatting_help:
       label: 'Markdown-Formatierung'
       title: 'Mehr über die Textformatierung mit Markdown lernen'
@@ -247,6 +329,7 @@ de:
       inactive: 'Diese E-Mail-Adresse gehört zu einem deaktivierten Benutzerkonto. Nehme bitte Kontakt mit uns auf, um den Account neu zu aktivieren .'
   error_page:
     forbidden: 'Du bist nicht berechtigt, diese Aktion auszuführen.'
+    forbidden_view: 'Du hast keine Berechtigung, dies anzuzeigen.'
     page_not_found: 'Das konnten wir nicht finden. Es wurde entweder gelöscht oder verschoben.'
     internal_server_error: 'Entschuldigung, etwas ist schiefgegangen. Bitte versuche es erneut.'
   verify_email_notice:
@@ -266,6 +349,7 @@ de:
     title_label: Titel
     hint: 'Hinweis für nächstes Mal: Versuche etwas Text auszuwählen, bevor du auf "Anheften" klickst.'
   change_volume_form:
+    help_notifications: 'Hilfe: Benachrichtigungen'
     explain_scope:
       thread: Dies wird sich ändern wenn du benachrichtigt wirst über diese Diskussion
       group: Dies wird sich ändern wenn du benachrichtigt wirst über alle Diskussionen in der Gruppe
@@ -384,6 +468,7 @@ de:
     recent_threads: 'Aktuelle Diskussionen'
     invite_only_threads: 'Diskussionen nur mit Einladung'
     direct_threads: 'Direkte Diskussionen'
+    unread_threads: 'Ungelesene Threads: (%{count})'
     muted_threads: 'Stummgeschaltete Diskussionen'
     start_group: 'Neue Organisation'
     start_subgroup: 'Neue Untergruppe'
@@ -439,12 +524,17 @@ de:
     unpin_sidebar: "Seitenleiste lösen"
     enable_beta_features: "Experimentelle Features aktivieren"
     disable_beta_features: "Experimentelle Features deaktivieren"
+    enable_dark_mode: "Dunkelmodus aktivieren"
+    disable_dark_mode: "Dunkelmodus deaktivieren"
     button_label: 'Benutzermenü'
     edit_profile: 'Profil bearbeiten'
     email_settings: 'Benachrichtigungseinstellungen'
     help: 'Hilfe'
+    help_docs: 'Hilfedokumente'
     contact_site_name: '{{site_name}} kontaktieren'
+    contact_support: 'Support kontaktieren'
     sign_out: 'Abmelden'
+    beta_collab: "\U0001F9EA Beta-Funktionen aktiviert!"
   membership_card:
     group_members: "Mitglieder der Gruppe"
     discussion_members: "Diskussionsteilnehmer"
@@ -453,6 +543,7 @@ de:
     invite_to_group: "zur Gruppe einladen"
     invite_to_discussion: "zur Diskussion einladen"
     invite_to_poll: "zur Abstimmung einladen"
+    invite_to_wip_poll: "Einladen, Feedback zu geben"
     invitations: "Einladungen"
   membership_dropdown:
     set_title: "Titel eingeben"
@@ -468,11 +559,18 @@ de:
   notification_models:
     discussion: 'Diskussion:'
     comment: 'kommentieren in'
+    poll: 'Umfrage'
     outcome: 'Ergebnis:'
+    stance: 'Abstimmen:'
   notifications:
     header: "Benachrichtigungen"
     no_notifications: "Es liegen keine Benachrichtigungen vor"
     with_title:
+      comment_replied_to: "%{actor}hat dir geantwortet in: %{title}"
+      discussion_announced: "%{actor}hat dich zu dem Thread %{title} eingeladen"
+      discussion_edited: "%{actor}hat den Threadkontext %{title} bearbeitet"
+      discussion_closed: "%{actor}hat den Thread %{title} geschlossen"
+      invitation_accepted: "%{actor}nahm deine Einladung zum Beitritt %{title} an"
       outcome_announced: "%{actor} teilte eine %{poll_type} Ergebnis: %{title}"
       outcome_created: "%{actor} teilte eine %{poll_type} Ergebnis: %{title}"
       outcome_updated: "%{actor} aktualisiere die %{poll_type} Ergebnis:%{title}"
@@ -584,6 +682,8 @@ de:
       poll_announced:
         title: zur Abstimmung einladen
         helptext: Wen möchtest du zur Abstimmung einladen?
+      wip_poll_announced:
+        title: Einladen, Feedback zu geben
       poll_reminder:
         title: An Abstimmung erinnern
         helptext: Wen möchtest du an die Stimmabgabe erinnern?
@@ -764,6 +864,7 @@ de:
   reactions_input:
     add_your_reaction: Reaktion hinzufügen
   reactions_display:
+    more_reactions: "%{count} weitere"
     you: "Du"
     you_and_name: "Du und {{name}}"
   context_panel:
@@ -1230,6 +1331,7 @@ de:
     title: Angesehen von
     no_one: Bisher hat niemand dieses gesehen
   activity_card:
+    count_responses: "%{count} Antworten"
     event_pinned: "In der Timeline angeheftet"
     event_unpinned: "Nicht mehr in der Timeline angeheftet"
     beginning: Anfang
@@ -1490,10 +1592,8 @@ de:
       helptext_on: Wenn diese Option aktiviert ist, werden keine Informationen zu den Abstimmungsteilnehmern angezeigt.
     voter_can_add_options:
       title: Teilnehmervorschläge erlauben
-      helptext_on: Wenn diese Option aktiviert ist, können die Teilnehmer ihre eigenen Entscheidungsalternativen hinzufügen, wenn sie abstimmen.
     can_respond_maybe:
       title: Teilnehmer können antworten "wenn es sein muss"
-      helptext_on: Teilnehmer können "wenn nötig" angeben
     hide_results_until_closed:
       title: Ergebnisse ausblenden bis Abstimmung geschlossen
       helptext_on: Zeigen nicht an, wie Personen abgestimmt haben, bis die Umfrage geschlossen ist

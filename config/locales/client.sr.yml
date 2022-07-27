@@ -9,6 +9,7 @@ sr:
     please_wait: Molim sačekajte
     version: Verzija
     no_results_found: Nisu pronađeni rezultati
+    or: ili
     confirm_discard_changes: Otkaži promene?
     time:
       am: am

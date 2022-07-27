@@ -106,6 +106,7 @@ fr:
       participant: Participant
       also_available: Aussi disponible en
       total: Total
+    waiting_for_votes_from: "En attente des votes de"
   stance:
     error:
       too_short: Merci de faire une sélection
@@ -182,8 +183,6 @@ fr:
           Après quoi, si vous ne parvenez toujours pas à vous connecter, répondez à ce courriel pour contacter une personne de notre équipe support.
     by_who: par %{person}
     reply_to_this_discussion: Répondre à cette discussion
-    value_proposition: "%{site_name}est un endroit pour avoir des discussions et prendre des décisions"
-    loomio_app_description: " %{site_name} est un outil de prise de décision collaborative pour les organisations inclusives"
     view_group: Voir le groupe
     to_join_group:
       subject: "%{member} vous a invité·e à rejoindre le groupe %{group_name} sur %{site_name}"

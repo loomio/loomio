@@ -8,6 +8,7 @@ gl:
   common:
     please_wait: Agarde, por favor
     version: Versión
+    or: ou
     time:
       am: am
       pm: pm

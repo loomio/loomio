@@ -8,6 +8,7 @@ mk:
   common:
     please_wait: Ве молиме почекајте
     version: Верзија
+    or: или
     group: 'Група'
     groups: 'Групи'
     email_address: Електронска пошта
