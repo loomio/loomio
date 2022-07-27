@@ -252,11 +252,13 @@ class PollService
   end
 
   def self.calculate_results(poll, poll_options)
-    sorted_poll_options = case poll.poll_type
-    when 'proposal', 'count', 'meeting'
+    sorted_poll_options = case poll.order_results_by
+    when 'priority'
       poll_options.sort_by {|o| o.priority }
-    else
+    when 'total_score_desc'
       poll_options.sort_by {|o| -(o.total_score)}
+    else
+      raise "unknown order_results_by: #{poll.order_results_by}"
     end
 
     l = sorted_poll_options.each_with_index.map do |option, index|

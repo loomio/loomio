@@ -151,11 +151,6 @@ export default class PollModel extends BaseModel
 
   pieSlices: ->
     slices = []
-    if @pollType == 'proposal'
-      slices = @results.filter((r) => r[@chartColumn]).map (r) =>
-        value: r[@chartColumn]
-        color: r.color
-
     if @pollType == 'count'
       agree = @results.find((r) => r.icon == 'agree')
       if agree.score < @agreeTarget
@@ -170,6 +165,10 @@ export default class PollModel extends BaseModel
         slices.push
           value: 100
           color: agree.color
+    else
+      slices = @results.filter((r) => r[@chartColumn]).map (r) =>
+        value: r[@chartColumn]
+        color: r.color
     slices
 
   pollOptions: ->

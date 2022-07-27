@@ -153,7 +153,8 @@ en:
 
   poll_types:
     proposal: proposal
-    count: check
+    count: opt-in
+    check: sense check
     poll: poll
     dot_vote: dot vote
     meeting: time poll
@@ -1705,8 +1706,8 @@ en:
     choose_type: Choose poll type
     title: Facilitate
     proposal_title: Proposal
-    count_title: Count
-    opt_in_title: Opt-in
+    count_title: Opt-in
+    check_title: Sense check
     poll_title: Poll
     score_title: Score poll
     dot_vote_title: Dot vote
@@ -2078,7 +2079,7 @@ en:
       This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll. 
 
   poll_proposal_form:
-    tool_tip_collapsed: Confirm support and surface any concerns
+    tool_tip_collapsed: Confirm support to move forward
     vote_method_hint: Voters agree or disagree with a statement
     start_header: Start proposal
     edit_header: Edit proposal
@@ -2181,10 +2182,33 @@ en:
   poll_count_form:
     pct_of_target: '% of target'
     agree_target_helptext: What is the target number of volunteers you'd like to have?
-    tool_tip_collapsed: Find a number of volunteers or participants
+    tool_tip_collapsed: Find volunteers or participants
     title_placeholder: E.g. Who wants to join the working group?
     details_placeholder: Explain what commitment is involved, or give details about how to participate.
     agree_target_label: Target number
+
+  poll_check_options:
+    check_subtitle: Ask for feedback, questions and concerns
+    looks_good: Looks good
+    looks_good_meaning: I'm happy with where this is going
+    looks_good_prompt: Do you have any other comments to share?
+    not_sure: Not sure yet
+    not_sure_meaning: I have a question or need more time
+    not_sure_prompt: What parts are unclear to you? How could this be resolved?
+    concerned: Concerned
+    concerned_meaning: Something about this may need to change
+    concerned_prompt: What is your concern and how might it be addressed?
+    # concerned_meaning: This isn't going in the right direction
+    # concerned_prompt: What is your concern? Could it be resolved somehow?
+    satisfied: Satisfied
+    satisfied_meaning: I understand and am comfortable with the intention
+    satisfied_prompt: Any further comments?
+    unsatisfied: Unsatisfied
+    unsatisfied_meaning: This needs more time
+    unsatisfied_prompt: Is something is missing or inadequate? Can you name it?
+    confused: Confused
+    confused_meaning: I have a question or need some help to understand
+    confused_prompt: Ask a question or request a chat to discuss
 
   poll_count_options:
     accept: Accept

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_26_051108) do
+ActiveRecord::Schema.define(version: 2022_07_27_110828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -672,7 +672,6 @@ ActiveRecord::Schema.define(version: 2022_07_26_051108) do
     t.boolean "allow_long_reason", default: false, null: false
     t.integer "hide_results", default: 0, null: false
     t.string "chart_type"
-    t.string "chart_column"
     t.integer "min_score"
     t.integer "max_score"
     t.integer "minimum_stance_choices"

@@ -27,7 +27,6 @@ class Poll < ApplicationRecord
     min_score
     dots_per_person
     chart_type
-    chart_column
     default_duration_in_days
   ]
 
@@ -48,6 +47,8 @@ class Poll < ApplicationRecord
   end
 
   TEMPLATE_FIELDS = %w(has_option_icon
+                       chart_column
+                       order_results_by
                        prevent_anonymous
                        vote_method
                        material_icon
@@ -177,10 +178,6 @@ class Poll < ApplicationRecord
     vote_method == "time_poll"
   end
 
-  def has_option_icons
-    vote_method == "show_thumbs"
-  end
-
   def has_variable_score
     !(min_score == max_score)
   end
@@ -210,6 +207,8 @@ class Poll < ApplicationRecord
     case poll_type
     when 'proposal'
       %w[chart name score_percent voter_count voters]
+    when 'check'
+      %w[chart name voter_percent voter_count voters]
     when 'count'
       %w[chart name target_percent voter_count voters]
     when 'ranked_choice'
@@ -415,9 +414,9 @@ class Poll < ApplicationRecord
       option = poll_options.find_or_initialize_by(name: name)
       option.priority = priority
       os = AppConfig.poll_types.dig(self.poll_type, 'common_poll_options') || []
-      if params = os.find {|o| o['icon'] == name } 
+      if params = os.find {|o| o['key'] == name } 
         option.name = I18n.t(params['name_i18n'])
-        option.icon = name
+        option.icon = params['icon']
         option.meaning = I18n.t(params['meaning_i18n'])
         option.prompt = I18n.t(params['prompt_i18n'])
       end

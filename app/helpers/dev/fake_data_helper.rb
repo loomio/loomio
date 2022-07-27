@@ -153,7 +153,8 @@ module Dev::FakeDataHelper
     {
       poll: options,
       proposal: %w[agree abstain disagree block],
-      count: %w[yes no],
+      count: %w[accept decline],
+      check: %w[looks_good not_sure concerned],
       dot_vote: options,
       meeting: option_count.times.map { |i| (seed+i).days.from_now.iso8601},
       ranked_choice: options,

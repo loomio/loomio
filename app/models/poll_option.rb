@@ -29,7 +29,7 @@ class PollOption < ApplicationRecord
   end
 
   def color
-    if ['proposal', 'count'].include? poll.poll_type
+    if poll.vote_method == 'show_thumbs'
       {
         'agree' => AppConfig.colors['proposal'][0],
         'abstain' => AppConfig.colors['proposal'][1],

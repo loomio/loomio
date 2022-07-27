@@ -14,7 +14,7 @@
   %tr.poll-mailer__poll-option
     %td{style: "width: 48px; height: 48px; text-align: center"}
       = optional_link(link, link_attrs) do
-        - if ['count', 'proposal'].include? poll.poll_type
+        - if poll.has_option_icon
           = image_tag("poll_mailer/vote-button-#{poll_option.icon}.png", width: 48, height: 48, alt: display_name, style: 'display: inline-block')
         - if ['poll'].include? poll.poll_type
           - if poll.is_single_choice?
