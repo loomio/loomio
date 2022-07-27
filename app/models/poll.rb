@@ -46,7 +46,7 @@ class Poll < ApplicationRecord
     }
   end
 
-  TEMPLATE_FIELDS = %w(has_option_icon
+  TEMPLATE_VALUES = %w(has_option_icon
                        chart_column
                        order_results_by
                        prevent_anonymous
@@ -59,7 +59,7 @@ class Poll < ApplicationRecord
                        validate_max_score
                        validate_dots_per_person).freeze
 
-  TEMPLATE_FIELDS.each do |field|
+  TEMPLATE_VALUES.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
   end
 
