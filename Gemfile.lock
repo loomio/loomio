@@ -374,7 +374,7 @@ GEM
     paper_trail (12.3.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
-    pg (1.4.1)
+    pg (1.4.2)
     premailer (1.15.0)
       addressable
       css_parser (>= 1.6.0)
