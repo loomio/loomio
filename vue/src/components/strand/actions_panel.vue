@@ -63,7 +63,7 @@ section.actions-panel#add-comment(:aria-label="$t('activity_card.aria_label')")
     v-tab(href='#add-comment')
       span(v-t="'activity_card.add_comment'")
     v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
-      span(v-t="'activity_card.start_decision'")
+      span(v-t="'poll_common_form.start_poll'")
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel

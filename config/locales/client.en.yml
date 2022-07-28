@@ -1590,6 +1590,7 @@ en:
     comment: Comment
     facilitate: Facilitate
     start_decision: Start decision
+    start_vote: Start vote
 
   thread_group:
     aria_label: Group name
