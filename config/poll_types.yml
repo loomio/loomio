@@ -202,7 +202,9 @@ poll:
   vote_method_hint_i18n: poll_common_form.voting_methods.choose_hint
   can_shuffle_options: true
   validate_minimum_stance_choices: true
-  validate_dots_per_person: true
+  validate_maximum_stance_choices: true
+  validate_min_score: true
+  validate_max_score: true
   chart_column: max_score_percent
   order_results_by: total_score_desc
   defaults:
@@ -214,7 +216,6 @@ poll:
     max_score: 1
     minimum_stance_choices: 1
     maximum_stance_choices: 1
-    dots_per_person: 1
     default_duration_in_days: 3
 
 dot_vote:

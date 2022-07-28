@@ -26,7 +26,7 @@ describe Stance do
   end
 
   describe 'choice shorthand' do
-    let(:poll) { Poll.create!(poll_type: 'multiple_choice', title: 'which pet?', poll_option_names: %w[dog cat], closing_at: 1.day.from_now, author: author)}
+    let(:poll) { Poll.create!(poll_type: 'poll', maximum_stance_choices: 2, title: 'which pet?', poll_option_names: %w[dog cat], closing_at: 1.day.from_now, author: author)}
     let(:author) { FactoryBot.create(:user) }
 
     it "string" do

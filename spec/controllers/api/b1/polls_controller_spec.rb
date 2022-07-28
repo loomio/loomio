@@ -23,7 +23,6 @@ describe API::B1::PollsController do
         closing_at: 3.days.from_now.iso8601,
         options: ['agree', 'disagree'],
         api_key: webhook.token,
-
       }
       expect(response.status).to eq 200
       json = JSON.parse response.body
@@ -107,7 +106,7 @@ describe API::B1::PollsController do
       expect(poll['id']).to be_present
       expect(poll['group_id']).to eq group.id
       expect(poll['title']).to eq 'test'
-      expect(Poll.find(poll['id']).voters.count).to eq (group.members.count + 1)
+      expect(Poll.find(poll['id']).voters.count).to eq group.members.count
     end
 
     it 'missing permission' do
