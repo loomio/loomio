@@ -385,9 +385,9 @@ en:
       normal: Normal
       quiet: Ignore
       question: When do you want to be notified?
-      loud_explain: Whenever there is activity
-      normal_explain: When someone asks for your attention
-      quiet_explain: No notifications
+      loud_explain: whenever there is activity
+      normal_explain: when someone asks for your attention
+      quiet_explain: no notifications
     aria_label: "Change email settings form"
     loud_label: "All activity"
     normal_label: "Announcements"
@@ -502,7 +502,7 @@ en:
     recent_threads: 'Recent threads'
     invite_only_threads: 'Invite-only threads'
     direct_threads: 'Direct threads'
-    unread_threads: 'Unread threads: (%{count})'
+    unread_threads: 'Unread threads (%{count})'
     muted_threads: 'Muted threads'
     start_group: 'New organization'
     start_subgroup: 'New subgroup'
@@ -597,11 +597,11 @@ en:
     cancel_invitation: Cancel invitation
 
   notification_models:
-    discussion: 'Thread: '
-    comment: 'Comment in '
-    poll: 'Poll: '
-    outcome: 'Outcome: '
-    stance: 'Vote: '
+    discussion: 'thread: '
+    comment: 'comment in '
+    poll: 'poll: '
+    outcome: 'outcome: '
+    stance: 'vote: '
 
   notifications:
     header: "Notifications"
