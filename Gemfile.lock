@@ -368,7 +368,7 @@ GEM
     oga (3.3)
       ast
       ruby-ll (~> 2.1)
-    oj (3.13.18)
+    oj (3.13.19)
     orm_adapter (0.5.0)
     os (1.1.4)
     paper_trail (12.3.0)
@@ -520,8 +520,6 @@ GEM
       sentry-ruby (~> 5.4.1)
     sentry-ruby (5.4.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-ruby-core (5.3.1)
-      concurrent-ruby
     sentry-sidekiq (5.4.1)
       sentry-ruby (~> 5.4.1)
       sidekiq (>= 3.0)
