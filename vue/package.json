@@ -85,7 +85,7 @@
     "vue-router": "^3.5.4",
     "vue-slicksort": "^1.2.0",
     "vue2-touch-events": "^3.2.2",
-    "vuetify": "2.6.7"
+    "vuetify": "2.6.8"
   },
   "devDependencies": {
     "chromedriver": "103.0.0",
