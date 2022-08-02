@@ -936,7 +936,8 @@ describe API::V1::DiscussionsController do
         let(:outcome_event) { OutcomeService.create(outcome: outcome, actor: user) }
 
         before do
-          stance = Stance.find_by(poll: poll, participant: user)
+          Stance.create!(participant: user, poll: poll, admin: true, reason_format: user.default_format)
+          stance = Stance.find_by!(poll: poll, participant: user)
           params = {
             stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id}],
             reason: "here is my stance"

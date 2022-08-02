@@ -339,7 +339,8 @@ class Poll < ApplicationRecord
       joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
       joins("LEFT OUTER JOIN polls p ON p.author_id = users.id AND p.id = #{self.id || 0}").
       where("(wh.id IS NOT NULL AND 'create_poll' = ANY(wh.permissions)) OR
-             (p.author_id = users.id AND m.id IS NOT NULL) OR
+             (p.author_id = users.id AND p.group_id IS NOT NULL AND m.id IS NOT NULL) OR
+             (p.author_id = users.id AND p.group_id IS NULL) OR
              (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL AND dr.admin = TRUE) OR
              (m.id  IS NOT NULL AND m.archived_at IS NULL AND m.admin = TRUE) OR
              (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE AND s.admin = TRUE)")
