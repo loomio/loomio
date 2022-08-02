@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@sentry/browser": "^7.7.0",
-    "@sentry/vue": "^7.7.0",
-    "@sentry/tracing": "^7.7.0",
+    "@sentry/browser": "^7.8.1",
+    "@sentry/vue": "^7.8.1",
+    "@sentry/tracing": "^7.8.1",
     "@tiptap/core": "latest",
     "@tiptap/extension-blockquote": "latest",
     "@tiptap/extension-bold": "latest",
@@ -85,13 +85,13 @@
     "vue-router": "^3.5.4",
     "vue-slicksort": "^1.2.0",
     "vue2-touch-events": "^3.2.2",
-    "vuetify": "2.6.7"
+    "vuetify": "2.6.8"
   },
   "devDependencies": {
     "chromedriver": "103.0.0",
     "@mdi/font": "^7.0.96",
     "@vue/cli-plugin-pwa": "^4.5.15",
-    "@vue/cli-plugin-babel": "^5.0.6",
+    "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.15",
     "@vue/cli-service": "4.5.15",
     "acorn": "^8.8.0",
@@ -99,7 +99,7 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "coffee-loader": "latest",
     "coffeescript": "^2.7.0",
-    "fibers": "^5.0.1",
+    "fibers": "^5.0.2",
     "js-yaml-loader": "^1.2.2",
     "sass": "^1.54.0",
     "sass-loader": "^10.1.1",
