@@ -9,13 +9,13 @@ de:
   errors:
     clear_cache: "Ladeproblem erkannt. Halte die Umschalttaste gedrückt und drücke \"Neu laden\", oder leere den Browser-Cache."
     400:
-      title: Schlechte Anfrage
+      title: Ungültige Anforderung
       body: Sorry, wir konnten diese Anfrage nicht verstehen
     401:
       title: Unauthorisiert
       body: Du bist nicht berechtigt, auf diese Seite zuzugreifen. Möglicherweise musst du dich anmelden.
     403:
-      title: Verbotene
+      title: Verboten
       body: Du bist nicht berechtigt, auf diese Seite zuzugreifen. Möglicherweise musst du dich anmelden.
     404:
       title: Nicht gefunden
@@ -61,8 +61,8 @@ de:
       general: Allgemein
       poll_types:
         proposal: Vorschläge
-        count: Zähl
-        choose: Wähle
+        count: Zählen
+        choose: Wählen
         allocate: Zuweisen
         score: Ergebnis
         rank: Rang
@@ -73,7 +73,7 @@ de:
     error:
       sign_in_required_html: |
           Du musst angemeldet sein, um fortfahren zu können.
-          Bitte <a href="/dashboard" target="_blank">melde dich an</a> dann lade diese Seite neu, um fortzufahren.
+          Bitte <a href="/dashboard" target="_blank">melde dich an</a>, dann lade diese Seite neu, um fortzufahren.
       recaptcha: "Wir konnten leider nicht bestätigen, dass du kein Computer bist. Bitte versuche es erneut."
       bad_login: "Sorry, das Passwort passt nicht zu dem in unserer Datei."
       username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
@@ -233,7 +233,7 @@ de:
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Abbestellen </a> von weiteren Ankündigungen in diesem Thread."
     unsubscribe_from_new_comment_html: "Kommentare für diese Diskussion <a href='%{url}'>abbestellen</a>."
     unsubscribe_from_comment_replied_to_html: "Dies ist eine Antwortbenachrichtigung."
-    unsubscribe_from_user_mentioned_html: "Dies ist eine Erwähnungsmeldung."
+    unsubscribe_from_user_mentioned_html: "Dies ist eine Erwähnungsbenachrichtigung."
   footer:
     about: Über Loomio
     blog: Blog
@@ -307,9 +307,9 @@ de:
   group_mailer:
     resend: 'ERINNERUNG: %{member} wartet darauf, dass du %{group_name} beitrittst'
     destroy_warning:
-      subject: Ihre Loomio-Gruppe soll gelöscht werden.
+      subject: Deine Loomio-Gruppe soll gelöscht werden.
       body: |
-          Deine Loomio-Gruppe: ''%{group}" wurde von zum Löschen vorgemerkt.
+          Deine Loomio-Gruppe: ''%{group}" wurde von %{deletor} zum Löschen vorgemerkt.
           Wenn du nicht möchtest, dass deine Gruppe gelöscht wird, antworte bitte auf diese E-Mail.
           Wenn du die Gruppe wirklich löschen möchtest, musst du nichts unternehmen.
           Vielen Dank.
@@ -326,3 +326,4 @@ de:
       more_undecided: "Und %{count}mehr..."
       vote_now: Jetzt Stimme abgeben
       you_have_until: Du kannst bis %{when} teilnehmen.
+      people_have_voted: "%{nom} von %{dnom} Leuten haben gewählt (%{pct}%)"
