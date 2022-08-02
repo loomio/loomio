@@ -91,7 +91,7 @@
     "chromedriver": "103.0.0",
     "@mdi/font": "^7.0.96",
     "@vue/cli-plugin-pwa": "^4.5.15",
-    "@vue/cli-plugin-babel": "^5.0.6",
+    "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-e2e-nightwatch": "^4.5.15",
     "@vue/cli-service": "4.5.15",
     "acorn": "^8.8.0",
