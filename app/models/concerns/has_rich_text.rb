@@ -97,14 +97,6 @@ module HasRichText
   end
 
   def assign_attributes_and_files(params)
-    if self.persisted?
-      self.files.each do |file|
-        file.purge_later unless Array(params[:files]).include? file.signed_id
-      end
-      # this is crazy, we shouldnt have to do this, rails 6 should replace the whole thing... but I've not enabled it
-      params[:files] = Array(params[:files]).reject {|sid| self.files.map(&:signed_id).include? sid}
-      self.reload
-    end
     self.assign_attributes API::V1::SnorlaxBase.filter_params(self.class, params)
   end
 
