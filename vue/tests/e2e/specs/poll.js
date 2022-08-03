@@ -362,16 +362,7 @@ module.exports = {
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
-
-    page.scrollTo('.poll-common-action-panel', () => {
-      page.click('.poll-common-vote-form__button-text')
-      page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
-      page.click('.poll-common-vote-form__submit')
-    })
-
-    page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-common-stance-created__reason', 'A reason')
-    })
+    page.expectText('.poll-common-unable-to-vote', 'You have not been invited to vote')
   },
 
   // 'can_edit_a_vote': (test) => {
