@@ -69,10 +69,12 @@ export default
           ['elevation-2', votingStatus]
         else
           ['poll-common-vote-form__button--not-selected', votingStatus]
+      else
+        [votingStatus]
 </script>
 
 <template lang="pug">
-form.poll-common-vote-form(disabled @keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
+form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
 
   v-sheet.poll-common-vote-form__button.mb-2.rounded(
@@ -112,7 +114,7 @@ form.poll-common-vote-form(disabled @keyup.ctrl.enter="submit()", @keydown.meta.
             v-icon(v-if="!singleChoice && !isSelected(option)", :color="option.color") mdi-checkbox-blank-outline
             v-icon(v-if="!singleChoice && isSelected(option)", :color="option.color") mdi-checkbox-marked
         v-list-item-content
-          v-list-item-title {{option.optionName()}}
+          v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
           v-list-item-subtitle {{option.meaning}}
 
   template(v-if="votingEnabled")

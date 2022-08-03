@@ -73,8 +73,7 @@ module.exports = {
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
-
-    page.click('.poll-common-vote-form__button')
+    page.click('.poll-common-vote-form__button-text')
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit')
 

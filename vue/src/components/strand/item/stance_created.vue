@@ -27,12 +27,12 @@ export default
 
 <template lang="pug">
 
-section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id" :event="event")
+section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id", :event="event")
   template(v-if="eventable.singleChoice()")
     .d-flex
-      component.text--secondary(:is="componentType" :to="actor && urlFor(actor)") {{actorName}}
+      component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
       space
-      poll-common-stance-choice(v-if="poll.showResults()" :poll="poll" :stance-choice="eventable.stanceChoice()")
+      poll-common-stance-choice(v-if="poll.showResults()", :poll="poll", :stance-choice="eventable.stanceChoice()")
       space
       router-link.text--secondary(:to='link')
         time-ago(:date='event.createdAt')
