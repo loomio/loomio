@@ -222,9 +222,7 @@ export default
         v-alert(type="warning" v-if="discussion.maxDepth != discussion.maxDepth" v-t="'thread_arrangement_form.changing_nesting_is_slow'")
 
   v-card-actions.ma-2
-    help-link(
-      text='discussion_form.help_starting_threads'
-      path='en/user_manual/threads/starting_threads')
+    help-link(path='en/user_manual/threads/starting_threads')
     v-spacer
     v-btn.discussion-form__submit(
       color="primary"

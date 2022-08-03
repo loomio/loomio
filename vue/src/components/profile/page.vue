@@ -155,9 +155,14 @@ v-main
                     v-icon(v-bind="attrs" v-on="on" small) mdi-information-outline
                   span(v-t="'profile_page.updated_on_sign_in'")
         v-card-actions.profile-page__update-account
-          help-link(path="en/user_manual/users/user_profile" text="profile_page.help_profile")
+          help-link(path="en/user_manual/users/user_profile")
           v-spacer
-          v-btn.profile-page__update-button(color="primary" @click='submit()' :disabled='emailExists' :loading="user.processing")
+          v-btn.profile-page__update-button(
+            color="primary"
+            @click='submit()'
+            :disabled='emailExists'
+            :loading="user.processing"
+          )
             span(v-t="'profile_page.update_profile'")
 
       v-card.profile-page-card.mt-4

@@ -177,7 +177,7 @@ export default
       v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
 
   .d-flex.justify-end.pa-4
-    help-link(path="en/user_manual/threads/notifying_people" text="announcement.form.help_notifying_people")
+    help-link(path="en/user_manual/threads/notifying_people")
 
 
 

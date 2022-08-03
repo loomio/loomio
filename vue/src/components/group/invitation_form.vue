@@ -134,15 +134,29 @@ export default
       div.mb-4(v-if="invitableGroups.length > 1")
         label.lmo-label(v-t="'announcement.select_groups'")
         //- v-label Select groups
-        div(v-for="group in invitableGroups" :key="group.id")
-          v-checkbox.invitation-form__select-groups(:class="{'ml-4': !group.isParent()}" v-model="groupIds" :label="group.name" :value="group.id" hide-details)
+        div(v-for="group in invitableGroups", :key="group.id")
+          v-checkbox.invitation-form__select-groups(
+            :class="{'ml-4': !group.isParent()}"
+            v-model="groupIds"
+            :label="group.name"
+            :value="group.id" 
+            hide-details)
 
-      v-textarea(rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
+      v-textarea(
+        rows="3"
+        v-model="message"
+        :label="$t('announcement.form.invitation_message_label')"
+        :placeholder="$t('announcement.form.invitation_message_placeholder')")
 
       v-card-actions
-        help-link(path="en/user_manual/groups/membership" text="invitation_form.help_inviting_people")
+        help-link(path="en/user_manual/groups/membership")
         v-spacer
-        v-btn.announcement-form__submit(color="primary" :disabled="!recipients.length || tooManyInvitations || groupIds.length == 0" @click="inviteRecipients" :loading="saving")
+        v-btn.announcement-form__submit(
+          color="primary"
+          :disabled="!recipients.length || tooManyInvitations || groupIds.length == 0"
+          @click="inviteRecipients"
+          :loading="saving"
+        )
           span(v-t="'common.action.invite'")
 
 </template>

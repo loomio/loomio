@@ -29,7 +29,7 @@ v-card
     v-spacer
     dismiss-modal-button
   v-card-text
-    help-link(text="export_data_modal.help_exporting_data" path="en/user_manual/groups/data_export")
+    help-link(path="en/user_manual/groups/data_export")
     h4.my-4(v-t="'export_data_modal.as_csv'")
     v-btn(:href="baseUrl + 'g/' + group.key + '/export.csv?export=1'" target="_blank" v-t="'group_page.options.export_data_as_csv'")
     h4.my-4(v-t="'export_data_modal.as_html'")

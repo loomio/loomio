@@ -45,7 +45,7 @@ v-card.webhook-list
         v-list-item-action
           action-menu(:actions="webhookActions(webhook)" icon)
   v-card-actions
-    help-link(path="en/user_manual/groups/integrations/api" text="webhook.help_api")
+    help-link(path="en/user_manual/groups/integrations/api")
     v-spacer
     v-btn(color='primary' @click='addAction(group).perform()' v-t="addAction(group).name")
 </template>

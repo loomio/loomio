@@ -486,7 +486,7 @@ export default
             persistent-hint
           )
   .d-flex.justify-space-between.my-4.mt-8.poll-common-form-actions
-    help-link(path="en/user_manual/polls/starting_proposals" text="poll_poll_form.help_starting_polls")
+    help-link(path="en/user_manual/polls/starting_proposals")
     v-spacer
     v-btn.poll-common-form__submit(
       color="primary"

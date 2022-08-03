@@ -379,7 +379,6 @@ en:
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
 
   change_volume_form:
-    help_notifications: 'Help: Notifications'
     explain_scope:
       thread: This changes when you'll be notified about this thread
       group: This changes when you'll be notified about all threads in the group
@@ -714,7 +713,6 @@ en:
     none_invite_only_thread: "Invite-only thread (no group)"
     change_log_placeholder: Optionally, describe your changes. This message will be added to the thread.
     change_log_label: What's changed?
-    help_starting_threads: 'Help: Starting threads'
     invite: Invite
     aria_label: 'Thread form'
     start_thread: Start thread
@@ -789,8 +787,6 @@ en:
       non_voters: Members of {{name}} not yet invited
 
     form:
-      help_notifying_people: 'Help: Notifying people'
-      help_invite_voters: 'Help: Inviting voters'
       too_many_invitations: |
         Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
       no_invitations_remaining: |
@@ -1120,7 +1116,6 @@ en:
     as_csv: Open it in a spreadsheet
     as_html: Open it in a browser
     as_json: Host this group on my own server
-    help_exporting_data: 'Help: Exporting data'
 
   description_card:
     title: 'Group description'
@@ -1141,7 +1136,6 @@ en:
     submit: 'Yes, Deactivate this group'
 
   group_form:
-    help_starting_a_group: 'Help: Starting a group'
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
     change_cover_image: change cover image
@@ -1150,7 +1144,6 @@ en:
       There are two levels of membership a person can have to a group: admin and member.
       Admins can edit group settings, make other people admins, and perform all the actions listed below.
     aria_label: Group form
-    help_group_settings: 'Help: Group settings'
     parent_group: Parent group
     new_organisation: New organization
     new_group: New group
@@ -1280,7 +1273,6 @@ en:
   invitation_form:
     group_url: Group URL
     reusable_invitation_link: Reusable invitation link
-    help_inviting_people: 'Help: Inviting people'
     error: "Error when trying to copy to clipboard"
     aria_label: 'Invitation form'
     invite_people: 'Invite people'
@@ -1369,7 +1361,6 @@ en:
     email_sent: "Email sent to {{name}}"
 
   profile_page:
-    help_profile: 'Help: Your profile'
     incomplete_profile: Incomplete profile!
     set_your_profile_picture: Set your profile picture
     messages:
@@ -1467,7 +1458,6 @@ en:
     messages:
       updated: Email settings updated
     learn_more: Learn more about email settings...
-    help_email_settings: 'Help: User email settings'
 
   thread_preview:
     replies_count: "%{count} replies"
@@ -2094,7 +2084,6 @@ en:
     proposal_updated: Proposal updated
 
   poll_poll_form:
-    help_starting_polls: 'Help: Starting polls'
     multiple_choice_subtitle: A simple way to assess the popularity of options
     tool_tip_collapsed: Find the most popular option
     start_header: Start poll
@@ -2389,10 +2378,8 @@ en:
     event_kind_helptext: Select events the bot will always be notified about. If you're not sure, just leave them all off.
     notification_only_label: Send notification headline only
     check_for_test_message: Check your chatroom for a message from the bot!
-    help_chatbots: 'Help: Chatbots'
 
   webhook:
-    help_api: "Help: API"
     integrations: Integrations
     api_keys: API keys
     webhooks: Webhooks
