@@ -19,7 +19,7 @@ module.exports = {
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
     page.scrollTo('.poll-common-action-panel', () => {
-      page.click('.poll-common-vote-form__button:first-child')
+      page.click('.poll-common-vote-form__button-text')
       page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
       page.click('.poll-common-vote-form__submit')
     })
@@ -365,7 +365,7 @@ module.exports = {
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
     page.scrollTo('.poll-common-action-panel', () => {
-      page.click('.poll-common-vote-form__button:first-child')
+      page.click('.poll-common-vote-form__button-text')
       page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
       page.click('.poll-common-vote-form__submit')
     })
