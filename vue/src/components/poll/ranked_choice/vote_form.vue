@@ -36,6 +36,7 @@ export default
         @stance.poll().pollOptionsForVoting()
 
   computed:
+    poll: -> @stance.poll()
     numChoices: -> @stance.poll().minimumStanceChoices
 </script>
 

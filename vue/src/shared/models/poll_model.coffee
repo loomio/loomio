@@ -330,7 +330,7 @@ export default class PollModel extends BaseModel
     @defaulted('minimumStanceChoices') == @defaulted('maximumStanceChoices') == 1
 
   datesAsOptions: ->
-    @config().poll_option_name_format == 'iso8601'
+    @pollOptionNameFormat == 'iso8601'
 
   removeOrphanOptions: ->
     @pollOptions().forEach (option) =>

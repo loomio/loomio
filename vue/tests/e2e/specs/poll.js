@@ -332,7 +332,7 @@ module.exports = {
     page.loadPathNoApp('polls/test_poll_scenario?poll_type=proposal&scenario=poll_created&email=1&anonymous=1&guest=1')
     page.click('.event-mailer__title a')
     page.pause(1000)
-    page.click('.poll-proposal-vote-form__button')
+    page.click('.poll-common-vote-form__button-text')
     page.fillIn('.html-editor__textarea .ProseMirror', "reason")
     page.click('.poll-common-vote-form__submit')
     page.expectFlash('Vote created')

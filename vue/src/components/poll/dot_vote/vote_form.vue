@@ -58,6 +58,8 @@ export default
       @dotsPerPerson - sum(map(without(@stanceChoices, choice), 'score'))
 
   computed:
+    poll: -> @stance.poll()
+    
     dotsRemaining: ->
       @dotsPerPerson - sum(map(@stanceChoices, 'score'))
 

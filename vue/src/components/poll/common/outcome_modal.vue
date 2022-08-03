@@ -96,11 +96,24 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     .poll-common-calendar-invite(v-if='poll.datesAsOptions()')
       .poll-common-calendar-invite__form
         .poll-common-calendar-invite--pad-top
-          v-select.lmo-flex__grow(v-model='outcome.pollOptionId' :items="options" item-value="id" item-text="value" :label="$t('poll_common_calendar_invite.poll_option_id')")
+          v-select.lmo-flex__grow(
+            v-model='outcome.pollOptionId'
+            :items="options"
+            item-value="id"
+            item-text="value"
+            :label="$t('poll_common_calendar_invite.poll_option_id')")
         .poll-common-calendar-invite--pad-top(v-if='outcome.pollOptionId')
-          v-text-field.poll-common-calendar-invite__summary(v-model='outcome.eventSummary' type='text' :placeholder="$t('poll_common_calendar_invite.event_summary_placeholder')" :label="$t('poll_common_calendar_invite.event_summary')")
+          v-text-field.poll-common-calendar-invite__summary(
+            v-model='outcome.eventSummary'
+            type='text'
+            :placeholder="$t('poll_common_calendar_invite.event_summary_placeholder')"
+            :label="$t('poll_common_calendar_invite.event_summary')")
           validation-errors(:subject='outcome' field='event_summary')
-          v-text-field.poll-common-calendar-invite__location(v-model='outcome.eventLocation' type='text' :placeholder="$t('poll_common_calendar_invite.location_placeholder')" :label="$t('poll_common_calendar_invite.location')")
+          v-text-field.poll-common-calendar-invite__location(
+            v-model='outcome.eventLocation'
+            type='text'
+            :placeholder="$t('poll_common_calendar_invite.location_placeholder')"
+            :label="$t('poll_common_calendar_invite.location')")
 
     .outcome-review-on(v-if="outcome.poll().pollType == 'proposal'")
       v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")
