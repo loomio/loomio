@@ -20,13 +20,13 @@ export default
     user: Object
 
   data: ->
+    tab: 0
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
     submitIsDisabled: false
     searchResults: []
     subscription: @discussion.group().parentOrSelf().subscription
     groupItems: []
     initialRecipients: []
-    showTemplateCheckbox: @discussion.template
 
   mounted: ->
     Records.users.fetchGroups()
@@ -65,9 +65,6 @@ export default
 
     updateGroupItems: ->
       @groupItems = [{text: @$t('discussion_form.none_invite_only_thread'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}
-
-    openEditLayout: ->
-      ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
 
   computed:
     maxThreads: ->
@@ -118,61 +115,108 @@ export default
       :to="urlFor(discussion)"
     )
       v-icon mdi-close
+
   .pa-4
-    v-select(v-model="discussion.groupId", :items="groupItems", :label="$t('common.group')")
-    v-checkbox(
-      v-if="showTemplateCheckbox"
-      v-model="discussion.template"
-      :label="$t('templates.this_is_a_template_for_new_threads')"
-    )
-    p.text--secondary.caption
-      span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
-      span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")
-    //- p discussion.recipientAudience {{discussion.recipientAudience}}
-    //- p initialRecipients {{initialRecipients}}
-    //- p userIds {{discussion.recipientUserIds}}
-    //- p emails {{discussion.recipientEmails}}
-    //- p audiences {{audiences}}
+    v-tabs(v-model="tab")
+      v-tabs-slider(color="primary")
+      v-tab.discussion-form__content-tab(v-t="'poll_common_form.content'")
+      v-tab.discussion-form__settings-tab(v-t="'common.settings'")
 
-    div(v-if="showUpgradeMessage")
-      p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
-      p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+    v-tabs-items.pt-4(v-model="tab")
+      v-tab-item.discussion-form__content
+          v-select(v-model="discussion.groupId", :items="groupItems", :label="$t('common.group')")
+          p.text--secondary.caption
+            span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
+            span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")
 
-    .discussion-form__group-selected(v-if='!showUpgradeMessage')
-      v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(
-        :label="$t('discussion_form.title_label')"
-        :placeholder="$t('discussion_form.title_placeholder')"
-        v-model='discussion.title' maxlength='255' required
-      )
-      validation-errors(:subject='discussion', field='title')
+          div(v-if="showUpgradeMessage")
+            p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
+            p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
-      recipients-autocomplete(
-        v-if="!discussion.id"
-        :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
-        :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
-        :initial-recipients="initialRecipients"
-        :hint="$t('announcement.form.placeholder')"
-        :model="discussion"
-        :reset="reset"
-      )
-      tags-field(:model="discussion")
+          .discussion-form__group-selected(v-if='!showUpgradeMessage')
+            recipients-autocomplete(
+              v-if="!discussion.id"
+              :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
+              :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
+              :initial-recipients="initialRecipients"
+              :hint="$t('announcement.form.placeholder')"
+              :model="discussion"
+              :reset="reset"
+            )
 
-      lmo-textarea(
-        :model='discussion'
-        field="description"
-        :label="$t('discussion_form.context_label')"
-        :placeholder="$t('discussion_form.context_placeholder')"
-      )
+            v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(
+              :label="$t('discussion_form.title_label')"
+              :placeholder="$t('discussion_form.title_placeholder')"
+              v-model='discussion.title' maxlength='255' required
+            )
+            validation-errors(:subject='discussion', field='title')
 
-      common-notify-fields(:model="discussion")
-      //- p.discussion-form__visibility
+            tags-field(:model="discussion")
+
+            lmo-textarea(
+              :model='discussion'
+              field="description"
+              :label="$t('discussion_form.context_label')"
+              :placeholder="$t('discussion_form.context_placeholder')"
+            )
+
+            common-notify-fields(:model="discussion")
+            //- p.discussion-form__visibility
+      v-tab-item.discussion-form__settings
+        v-checkbox(
+          v-if="discussion.groupId"
+          v-model="discussion.template"
+          :label="$t('templates.this_is_a_template_for_new_threads')"
+        )
+
+        //- v-alert(dense text type="info" v-t="'thread_arrangement_form.for_everyone'")
+        .text-h5.mb-4.mt-8(v-t="'thread_arrangement_form.sorting'")
+        v-radio-group(v-model="discussion.newestFirst")
+          v-radio(:value="false")
+            template(v-slot:label)
+              strong(v-t="'thread_arrangement_form.earliest'")
+              space
+              | -
+              space
+              span(v-t="'thread_arrangement_form.earliest_description'")
+
+          v-radio(:value="true")
+            template(v-slot:label)
+              strong(v-t="'thread_arrangement_form.latest'")
+              space
+              | -
+              space
+              span(v-t="'thread_arrangement_form.latest_description'")
+
+        .text-h5.mb-4.mt-8(v-t="'thread_arrangement_form.replies'")
+        v-radio-group(v-model="discussion.maxDepth")
+          v-radio(:value="1")
+            template(v-slot:label)
+              strong(v-t="'thread_arrangement_form.linear'")
+              space
+              | -
+              space
+              span(v-t="'thread_arrangement_form.linear_description'")
+          v-radio(:value="2")
+            template(v-slot:label)
+              strong(v-t="'thread_arrangement_form.nested_once'")
+              space
+              | -
+              space
+              span(v-t="'thread_arrangement_form.nested_once_description'")
+          v-radio(:value="3")
+            template(v-slot:label)
+              strong(v-t="'thread_arrangement_form.nested_twice'")
+              space
+              | -
+              space
+              span(v-t="'thread_arrangement_form.nested_twice_description'")
+        v-alert(type="warning" v-if="discussion.maxDepth != discussion.maxDepth" v-t="'thread_arrangement_form.changing_nesting_is_slow'")
+
   v-card-actions.ma-2
     help-link(
-      v-if="!discussion.id"
       text='discussion_form.help_starting_threads'
       path='en/user_manual/threads/starting_threads')
-    v-btn.discussion-form__edit-layout(v-if="discussion.id" outlined @click="openEditLayout")
-      span(v-t="'thread_arrangement_form.edit'")
     v-spacer
     v-btn.discussion-form__submit(
       color="primary"

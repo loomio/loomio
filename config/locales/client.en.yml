@@ -54,6 +54,7 @@ en:
     start_free_trial: Start free trial
     demo_needs_user: To start a demo, you need to sign up (or sign in) as a Loomio user. This is free and only takes a minute.
     this_is_a_template_for_new_threads: This is a template for new threads
+    share_a_custom_configuration: Share a custom configuration with others in your group
 
   doctypes:
     youtube_video: YouTube Video
@@ -2040,7 +2041,7 @@ en:
     chart_type: Chart type
     title: Title
     example_title: Example title
-    title_hint: A short statement or question that encapsulates the decision
+    title_hint: A short statement or question
     no_options_add_some: This poll has no options, add some below.
     details: Details
     example_details: Example details

@@ -53,7 +53,6 @@ export default
     newDateOption: startOfHour(setHours(new Date(), 12))
     minDate: new Date()
     closingAtWas: null
-    showTemplateCheckbox: @poll.template
 
   methods:
     setPollOptionPriority: ->
@@ -206,27 +205,6 @@ export default
         :label="$t('common.group')"
       )
 
-      v-checkbox(
-        v-if="showTemplateCheckbox"
-        v-model="poll.template"
-        :label="$t('poll_common_form.this_is_a_template_for_new_polls')"
-      ) 
-
-      template(v-if="poll.template")
-        v-text-field(
-           v-model="poll.processName"
-          :label="$t('poll_common_form.process_name')"
-          :hint="$t('poll_common_form.process_name_hint')")
-        validation-errors(:subject='poll' field='processName')
-
-        v-select(
-          :label="$t('poll_common_form.voting_method')"
-          v-model="poll.pollType"
-          @change="clearOptionsIfRequired"
-          :items="pollTypeItems"
-          :hint="$t('poll_common_form.voting_methods.'+poll.config().vote_method+'_hint')"
-          persistent-hint
-        )
 
       v-text-field.poll-common-form-fields__title.text-h5(
         type='text'
@@ -418,6 +396,7 @@ export default
 
     v-tab-item.poll-common-form__settings-tab
 
+
       template(v-if="allowAnonymous")
         .text-h5.mb-4.mt-8(v-t="'poll_common_card.hide_results'")
         p.text--secondary(v-t="'poll_common_form.hide_results_description'")
@@ -488,6 +467,31 @@ export default
           :items="closingSoonItems")
 
 
+      template(v-if="poll.groupId")
+        .text-h5.mb-4.mt-8(v-t="'common.template'")
+        p.text--secondary(v-t="'templates.share_a_custom_configuration'") 
+        
+        v-checkbox(
+          v-if="poll.groupId"
+          v-model="poll.template"
+          :label="$t('poll_common_form.this_is_a_template_for_new_polls')"
+        ) 
+
+        template(v-if="poll.template")
+          v-text-field(
+             v-model="poll.processName"
+            :label="$t('poll_common_form.process_name')"
+            :hint="$t('poll_common_form.process_name_hint')")
+          validation-errors(:subject='poll' field='processName')
+
+          v-select(
+            :label="$t('poll_common_form.voting_method')"
+            v-model="poll.pollType"
+            @change="clearOptionsIfRequired"
+            :items="pollTypeItems"
+            :hint="$t('poll_common_form.voting_methods.'+poll.config().vote_method+'_hint')"
+            persistent-hint
+          )
   .d-flex.justify-space-between.my-4.mt-8.poll-common-form-actions
     help-link(path="en/user_manual/polls/starting_proposals" text="poll_poll_form.help_starting_polls")
     v-spacer
