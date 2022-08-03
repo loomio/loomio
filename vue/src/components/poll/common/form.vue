@@ -410,7 +410,7 @@ export default
       template(v-if="allowAnonymous")
         .text-h5.mb-4.mt-8(v-t="'poll_common_form.anonymous_voting'")
         p.text--secondary(v-t="'poll_common_form.anonymous_voting_description'")
-        v-checkbox.poll-common-checkbox-option(
+        v-checkbox.poll-common-checkbox-option.poll-settings-anonymous(
           hide-details
           :disabled="!poll.isNew()"
           v-model="poll.anonymous"
