@@ -347,7 +347,6 @@ module.exports = {
     page.click('.decision-tools-card__poll-type--proposal')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-common-form__settings-tab')
     page.click('.poll-common-settings__specified-voters-only')
     page.click('.poll-common-form__submit')
 
