@@ -168,6 +168,10 @@ export default
           h3.text-h5.mb-4.mt-8(v-t="'common.template'")
           p.text--secondary Include this thread in the list of suggested templates when group members start a thread.
 
+          //- v-text-field(
+          //-   v-model="discussion.templateName"
+          //-   v-model="discussion.templateTitle"
+
           v-checkbox(
             v-model="discussion.template"
             :label="$t('templates.this_is_a_template_for_new_threads')"

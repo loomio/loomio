@@ -34,27 +34,24 @@ export default
 div
   v-card-title
     h1.headline(tabindex="-1" v-t="'discussion_form.thread_templates'")
-  v-list(two-line)
+  v-list
     v-list-item(
       :to="'/d/new?blank_template=1&group_id='+groupId"
     )
       v-list-item-content
         v-list-item-title(v-t="'discussion_form.blank'")
-        v-list-item-subtitle(v-t="'discussion_form.blank_subtitle'")
     v-list-item(
       v-for="template in templates" 
       :key="template.id"
       :to="'/d/new?template_id='+template.id"
     )
       v-list-item-content
-        v-list-item-title {{template.processName}}
-        v-list-item-subtitle {{template.processSubtitle}}
+        v-list-item-title {{template.title}}
     v-list-item(
       :to="'/d/new?new_template=1&group_id='+$route.query.group_id"
     )
       v-list-item-content
         v-list-item-title(v-t="'discussion_form.new_template'")
-        v-list-item-subtitle(v-t="'discussion_form.new_template_subtitle'")
   div
     p.text-center
       span.text--secondary(v-t="'discussion_form.want_some_inspiration'")

@@ -95,12 +95,8 @@ export default class PollModel extends BaseModel
     clone.discussionId = null
 
     clone.template = false
+    clone.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
     
-    if clone.template
-      clone.closingAt = null
-    else
-      clone.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
-
     clone.pollOptionsAttributes = @pollOptions().map (o) =>
         name: o.name
         meaning: o.meaning
