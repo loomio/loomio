@@ -238,7 +238,7 @@ div.discussions-panel(v-if="group")
     v-btn.discussions-panel__new-thread-button(
       v-if='canStartThread'
       v-t="'navbar.start_thread'"
-      :to="'/d/new?group_id='+group.id + (group.templateDiscussionsCount ? '' : '&no_template=1')"
+      :to="'/d/new?group_id='+group.id + (group.templateDiscussionsCount ? '' : '&blank_template=1')"
       color='primary')
 
   v-card.discussions-panel(outlined)

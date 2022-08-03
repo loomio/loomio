@@ -448,13 +448,6 @@ export default
           :label="$t('poll_common_form.limit_reason_length')"
         )
 
-      //- v-select(
-      //-   :label="$t('poll_common_form.chart_type')"
-      //-   v-model="poll.chartType"
-      //-   :items="chartTypeItems")
-      //- chartType
-      //- chartColumn
-
       .poll-common-notify-on-closing-soon
         .text-h5.mb-4.mt-8(v-t="'poll_common_form.reminder'")
         p.text--secondary(v-t="'poll_common_form.reminder_helptext'")

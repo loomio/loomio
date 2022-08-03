@@ -163,11 +163,15 @@ export default
             common-notify-fields(:model="discussion")
             //- p.discussion-form__visibility
       v-tab-item.discussion-form__settings
-        v-checkbox(
-          v-if="discussion.groupId"
-          v-model="discussion.template"
-          :label="$t('templates.this_is_a_template_for_new_threads')"
-        )
+
+        template(v-if="discussion.groupId")
+          h3.text-h5.mb-4.mt-8(v-t="'common.template'")
+          p.text--secondary Include this thread in the list of suggested templates when group members start a thread.
+
+          v-checkbox(
+            v-model="discussion.template"
+            :label="$t('templates.this_is_a_template_for_new_threads')"
+          )
 
         //- v-alert(dense text type="info" v-t="'thread_arrangement_form.for_everyone'")
         .text-h5.mb-4.mt-8(v-t="'thread_arrangement_form.sorting'")
