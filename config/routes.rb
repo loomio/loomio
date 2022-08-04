@@ -367,6 +367,7 @@ Rails.application.routes.draw do
   get '/favicon.ico'                       => 'application#ok'
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
+  get '/crowdfunding'                      => 'application#crowdfunding'
   get '/brand'                      => 'application#brand'
   get '/sitemap.xml' => 'application#sitemap'
 
