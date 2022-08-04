@@ -9,6 +9,7 @@ count:
   per_option_reason_prompt: true
   chart_column: target_percent
   order_results_by: priority
+  options_have_meaning: true
   common_poll_options:
     - key: accept
       name_i18n: poll_count_options.accept
@@ -48,6 +49,7 @@ check:
   per_option_reason_prompt: true
   chart_column: score_percent
   order_results_by: priority
+  options_have_meaning: true
   common_poll_options:
     - key: looks_good
       name_i18n: poll_check_options.looks_good
@@ -115,6 +117,7 @@ proposal:
   per_option_reason_prompt: true
   chart_column: score_percent
   order_results_by: priority
+  options_have_meaning: true
   common_poll_options:
     - key: agree
       name_i18n: poll_proposal_options.agree
@@ -184,6 +187,7 @@ meeting:
   validate_max_score: true
   chart_column: max_score_percent
   order_results_by: priority
+  options_have_meaning: false
   defaults:
     meeting_duration: 60
     poll_option_name_format: iso8601
@@ -207,6 +211,7 @@ poll:
   validate_max_score: true
   chart_column: max_score_percent
   order_results_by: total_score_desc
+  options_have_meaning: true
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.poll_title
@@ -228,6 +233,7 @@ dot_vote:
   validate_dots_per_person: true
   chart_column: max_score_percent
   order_results_by: total_score_desc
+  options_have_meaning: false
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.dot_vote_title
@@ -248,6 +254,7 @@ score:
   validate_max_score: true
   chart_column: max_score_percent
   order_results_by: total_score_desc
+  options_have_meaning: false
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.score_title
@@ -269,6 +276,7 @@ ranked_choice:
   validate_min_score: true
   chart_column: max_score_percent
   order_results_by: total_score_desc
+  options_have_meaning: true
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.ranked_choice_title

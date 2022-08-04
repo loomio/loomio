@@ -20,6 +20,7 @@ export default
   computed:
     hasOptionIcon: -> @poll.config().has_option_icon
     hasOptionPrompt: -> @poll.config().per_option_reason_prompt
+    hasOptionMeaning: -> @poll.config().options_have_meaning
 
   methods:
     submit: ->
@@ -36,7 +37,11 @@ v-card.poll-common-option-form
   v-card-text
     v-text-field(:label="$t('poll_option_form.option_name')" v-model="clone.name", :hint="$t('poll_option_form.option_name_hint')")
     v-select(v-if="hasOptionIcon", :label="$t('poll_option_form.icon')" v-model="clone.icon", :items="icons")
-    v-text-field(:label="$t('poll_option_form.meaning')", :hint="$t('poll_option_form.meaning_hint')", v-model="clone.meaning")
+    v-text-field(
+      v-if="hasOptionMeaning"
+      :label="$t('poll_option_form.meaning')"
+      :hint="$t('poll_option_form.meaning_hint')"
+      v-model="clone.meaning")
     v-text-field(
       v-if="hasOptionPrompt"
       :label="$t('poll_option_form.prompt')"
