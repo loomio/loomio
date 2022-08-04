@@ -10,7 +10,7 @@
 - link_attrs = {class: 'text-decoration-none'}
 - option_color = poll_option.color.sub('#', '')
 
-%table.rounded.mb-2.pa-1{style: "border: 1px solid #{poll_option.color}; width: 100%"}
+%table.rounded.mb-2.pa-1{style: "border: 1px solid #{poll_option.color}; width: 100%; max-width: 600px"}
   %tr.poll-mailer__poll-option
     %td{style: "width: 48px; height: 48px; text-align: center"}
       = optional_link(link, link_attrs) do
