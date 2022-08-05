@@ -55,6 +55,9 @@ export default
     closingAtWas: null
 
   methods:
+    optionHasVotes: (option) ->
+      (@poll.results.find((o) -> o.id == option.id) || {voter_count: 0}).voter_count > 0
+
     setPollOptionPriority: ->
       i = 0
       @pollOptions.forEach (o) -> o.priority = 0
@@ -205,7 +208,6 @@ export default
         :label="$t('common.group')"
       )
 
-
       v-text-field.poll-common-form-fields__title.text-h5(
         type='text'
         required='true'
@@ -250,7 +252,13 @@ export default
                 v-list-item-subtitle {{option.meaning}}
 
               v-list-item-action
-                v-btn(icon @click="removeOption(option)", :title="$t('common.action.delete')")
+                v-btn(
+                  v-if="!optionHasVotes(option)"
+                  icon
+                  @click="removeOption(option)"
+                  :title="$t('common.action.delete')"
+                  :disabled="optionHasVotes(option)"
+                )
                   v-icon.text--secondary mdi-delete
               v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
                 v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
