@@ -22,9 +22,9 @@ export default
     menuActions: ->
       actions = if @groupPage
         if @$vuetify.breakpoint.smAndDown
-          ['dismiss_thread','pin_thread', 'unpin_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
+          ['dismiss_thread','pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
         else
-          ['pin_thread', 'unpin_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
+          ['pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
       else
         if @$vuetify.breakpoint.smAndDown
           ['dismiss_thread', 'close_thread', 'reopen_thread']
