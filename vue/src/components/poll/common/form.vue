@@ -348,14 +348,14 @@ export default
             v-model="poll.minimumStanceChoices"
             type="number"
             :step="1"
-            hint="Voter must choose at least this many options"
+            :hint="$t('poll_common_form.choose_at_least')"
             :label="$t('poll_common_form.minimum_choices')")
           v-spacer
           v-text-field.poll-common-form__maximum-stance-choices(
             v-model="poll.maximumStanceChoices"
             type="number"
             :step="1"
-            hint="Voter may choose up to this many options"
+            :hint="$t('poll_common_form.choose_at_most')"
             :label="$t('poll_common_form.maximum_choices')")
 
       .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
