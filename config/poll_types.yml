@@ -65,27 +65,6 @@ check:
       prompt_i18n: poll_check_options.not_sure_prompt
       color: '#70C9F8'
       default: true
-    - key: satisfied
-      name_i18n: poll_check_options.satisfied
-      icon: mdi-emoticon-happy-outline
-      meaning_i18n: poll_check_options.satisfied_meaning
-      prompt_i18n: poll_check_options.satisfied_prompt
-      color: '#70C9F8'
-      default: false
-    - key: unsatisfied
-      name_i18n: poll_check_options.unsatisfied
-      icon: mdi-emoticon-neutral-outline
-      meaning_i18n: poll_check_options.unsatisfied_meaning
-      prompt_i18n: poll_check_options.unsatisfied_prompt
-      color: '#70C9F8'
-      default: false
-    - key: confused
-      name_i18n: poll_check_options.confused
-      icon: mdi-emoticon-confused-outline
-      meaning_i18n: poll_check_options.confused_meaning
-      prompt_i18n: poll_check_options.confused_prompt
-      color: "#C8E56E"
-      default: false
     - key: concerned
       name_i18n: poll_check_options.concerned
       icon: disagree

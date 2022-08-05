@@ -2197,17 +2197,6 @@ en:
     concerned: Concerned
     concerned_meaning: Something about this may need to change
     concerned_prompt: What is your concern and how might it be addressed?
-    # concerned_meaning: This isn't going in the right direction
-    # concerned_prompt: What is your concern? Could it be resolved somehow?
-    satisfied: Satisfied
-    satisfied_meaning: I understand and am comfortable with the intention
-    satisfied_prompt: Any further comments?
-    unsatisfied: Unsatisfied
-    unsatisfied_meaning: This needs more time
-    unsatisfied_prompt: Is something is missing or inadequate? Can you name it?
-    confused: Confused
-    confused_meaning: I have a question or need some help to understand
-    confused_prompt: Ask a question or request a chat to discuss
 
   poll_count_options:
     accept: Accept
