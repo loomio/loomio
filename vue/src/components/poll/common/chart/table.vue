@@ -19,6 +19,9 @@ export default
   watch:
     'poll.stanceCounts': -> @slices = @poll.pieSlices()
     
+  methods:
+    clampPercent: (num) -> Math.max(0, Math.min(num, 100))
+
   created: ->
     @watchRecords
       collections: ['users', 'stances']
@@ -58,7 +61,7 @@ export default
             v-if="col == 'chart' && poll.chartType == 'bar'"
             style="width: 128px; padding: 0 8px 0 0"
           )
-            div.rounded(:style="{width: option[poll.chartColumn]+'%', height: '24px', 'background-color': option.color}")
+            div.rounded(:style="{width: clampPercent(option[poll.chartColumn])+'%', height: '24px', 'background-color': option.color}")
           td(v-if="col == 'name' ", :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
             span(v-if="option.name_format == 'plain'") {{option.name}}
             span(v-if="option.name_format == 'i18n'" v-t="option.name")

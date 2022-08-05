@@ -97,7 +97,7 @@ check:
     poll_option_name_format: 'plain'
     process_name_i18n: decision_tools_card.check_title
     process_subtitle_i18n: poll_check_options.check_subtitle
-    chart_type: pie
+    chart_type: bar
     min_score: 1
     max_score: 1
     minimum_stance_choices: 1

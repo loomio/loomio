@@ -15,6 +15,8 @@
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_points')
         - when 'voter_percent'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_voters')
+        - when 'target_percent'
+          %th.text-right.text-subtitle-2= t('poll_count_form.pct_of_target')
         - when 'rank'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.rank')
         - when 'score'
@@ -42,7 +44,7 @@
 
                     %table{cellspacing: 0, cellpadding: 0, width: '100%', height: '100%'}
                       %tr
-                        %td.no-border.rounded{style: "background-color: #{option[:color]}; height: 24px", height: 24, width: "#{option[poll.chart_column]}%"}
+                        %td.no-border.rounded{style: "background-color: #{option[:color]}; height: 24px", height: 24, width: "#{option[poll.chart_column].clamp(0,100)}%"}
                         %td.no-border
             - when 'name'
               %td{style: (poll.chart_type == 'pie') ? "border-left: solid 4px px #{option[:color]}" : ''}
@@ -61,6 +63,10 @@
               %td.text-right= option[:voter_count]
             - when 'average'
               %td.text-right= option[:average].round(1)
+            - when 'target_percent'
+              %td.text-right 
+                -if option[:icon] == 'agree'
+                  #{option[:target_percent].round}%
             - when 'voter_percent'
               %td.text-right #{option[:voter_percent].round}%
             - when 'score_percent'
