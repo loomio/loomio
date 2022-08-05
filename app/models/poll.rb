@@ -217,7 +217,7 @@ class Poll < ApplicationRecord
     when 'dot_vote'
       %w[chart name score_percent score average voter_count voters]
     when 'score'
-      %w[chart name score average voter_count voters]
+      %w[chart name score average voter_count]
     when 'poll'
       %w[chart name score_percent voter_count voters]
     when 'meeting'
