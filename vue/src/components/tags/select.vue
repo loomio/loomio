@@ -78,15 +78,15 @@ v-card.tags-modal
   div(v-if="canAdminTags")
     .pa-4(v-if="allTags.length == 0")
       p.text--secondary(v-t="'loomio_tags.no_tags_in_group'")
-    sortable-list(v-model="allTags" :useDragHandle="true" @sort-end="sortEnded")
-      sortable-item(v-for="(tag, index) in allTags" :index="index" :key="tag.id")
-        .handle(v-handle)
-          v-icon mdi-drag-vertical
-        v-chip(outlined :color="tag.color" label)
-          | {{tag.name}}
-        v-spacer
-        v-btn(icon @click="openEditTagModal(tag)")
-          v-icon.text--secondary mdi-pencil
+    sortable-list(v-model="allTags", :useDragHandle="true", @sort-end="sortEnded" append-to=".app-is-booted"  lock-axis="y" axis="y")
+      sortable-item(v-for="(tag, index) in allTags", :index="index", :key="tag.id")
+        v-list-item
+          .handle(v-handle)
+            v-icon mdi-drag-vertical
+          v-chip(outlined :color="tag.color" v-handle) {{tag.name}}
+          v-spacer
+          v-btn(icon @click="openEditTagModal(tag)")
+            v-icon.text--secondary mdi-pencil
 
     v-card-actions
       v-spacer
