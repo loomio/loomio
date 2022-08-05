@@ -205,7 +205,7 @@ export default
   v-tabs-items.pt-4(v-model="tab")
     v-tab-item.poll-common-form__details-tab.poll-common-form-fields
       v-select(
-        v-if="!poll.id && !poll.discussionId && !poll.groupId"
+        v-if="!poll.id && !poll.discussionId"
         v-model="poll.groupId"
         :items="groupItems"
         :label="$t('common.group')"
