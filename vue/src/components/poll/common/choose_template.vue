@@ -41,7 +41,11 @@ export default
           @polls['threadPolls'] = Records.polls.find(
             discussionId: @discussion.sourceTemplateId
             discardedAt: null
-          ).map (poll) =>
+          ).sort (a,b) =>
+            return -1 if (a.id < b.id) 
+            return 1 if (a.id > b.id) 
+            return 0
+          .map (poll) =>
               threadPollIds.push(poll.id)
               clone = poll.cloneTemplate()
               clone.renderKey == renderKey++
@@ -88,8 +92,8 @@ export default
   v-card-title(v-t="'poll_common.poll_templates'")
   template(v-for="kind in pollKinds")
     v-subheader(v-t="i18nForKind[kind]" v-if="kind == 'defaultPolls'")
-    v-subheader(v-if="kind == 'groupPolls'") {{group.fullName}}
-    v-subheader(v-if="kind == 'threadPolls'") {{sourceTemplate.processName || sourceTemplate.title}}
+    v-subheader(v-if="kind == 'groupPolls'" v-t="{path: 'templates.title_templates', args: {title: group.fullName}}")
+    v-subheader(v-if="kind == 'threadPolls'" v-t="{path: 'templates.title_template', args: {title: sourceTemplate.processName || sourceTemplate.title}}")
     v-list.decision-tools-card__poll-types(two-line dense)
       v-list-item.decision-tools-card__poll-type(
         @click="$emit('setPoll', poll)"

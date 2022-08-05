@@ -18,6 +18,9 @@ en:
     no_tasks_assigned: There are no tasks assigned to you
 
   templates:
+    title_template: "%{title} Template"
+    title_templates: "%{title} Templates"
+    title_copy: "%{title} Copy"
     login_to_start_demo: |
       This a demo of Loomio in action. You're welcome to take a look around.
     sign_in_to_try_features: |
