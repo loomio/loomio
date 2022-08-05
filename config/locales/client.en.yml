@@ -2078,7 +2078,7 @@ en:
       This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll. 
 
   poll_proposal_form:
-    tool_tip_collapsed: Confirm support to move forward
+    tool_tip_collapsed: Make a decision together
     vote_method_hint: Voters agree or disagree with a statement
     start_header: Start proposal
     edit_header: Edit proposal
