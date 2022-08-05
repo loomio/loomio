@@ -55,5 +55,4 @@ export default
       :poll="poll")
     poll-common-chart-meeting(v-else :poll="poll")
   poll-common-percent-voted(v-if="poll.pollType != 'count'", :poll="poll")
-  poll-common-target-progress(v-if="poll.pollType == 'count'", :poll="poll")
 </template>
