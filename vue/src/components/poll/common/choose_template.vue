@@ -39,7 +39,9 @@ export default
         if @discussion && @discussion.sourceTemplateId
           @sourceTemplate = @discussion.sourceTemplate()
           @polls['threadPolls'] = Records.polls.find(
-            discussionId: @discussion.sourceTemplateId).map (poll) =>
+            discussionId: @discussion.sourceTemplateId
+            discardedAt: null
+          ).map (poll) =>
               threadPollIds.push(poll.id)
               clone = poll.cloneTemplate()
               clone.renderKey == renderKey++
@@ -49,8 +51,10 @@ export default
 
         if @group
           @polls['groupPolls'] = Records.polls.find(
-            template: true,
-            groupId: @group.id).filter((poll) => !threadPollIds.includes(poll.id))
+            groupId: @group.id
+            template: true
+            discardedAt: null
+          ).filter((poll) => !threadPollIds.includes(poll.id))
           .map (poll) =>
             clone = poll.cloneTemplate()
             clone.renderKey == renderKey++
