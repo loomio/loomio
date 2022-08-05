@@ -81,10 +81,10 @@ export default
       @addOption()
 
     addOption: ->
-      if some(@pollOptions, (o) => o.name == @newOption)
+      if some(@pollOptions, (o) => o.name.toLowerCase() == @newOption.toLowerCase())
         Flash.error('poll_poll_form.option_already_added')
       else
-        knownOption = (AppConfig.pollTypes[@poll.pollType].common_poll_options || []).find (o) =>
+        knownOption = @knownOptions.find (o) =>
           @$t(o.name_i18n).toLowerCase() == @newOption.toLowerCase()
 
         if knownOption
@@ -142,6 +142,9 @@ export default
         @poll.closingAt = @closingAtWas
 
   computed:
+    knownOptions: ->
+      (AppConfig.pollTypes[@poll.pollType].common_poll_options || [])
+
     example_if_template: ->
       (@poll.template && 'example_') || ''
 
