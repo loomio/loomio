@@ -114,6 +114,7 @@ class Poll < ApplicationRecord
 
   scope :dangling, -> { joins('left join groups g on polls.group_id = g.id').where('group_id is not null and g.id is null') }
   scope :active, -> { kept.where('polls.closed_at': nil) }
+  scope :template, -> { kept.where('polls.template': true) }
   scope :closed, -> { kept.where("polls.closed_at IS NOT NULL") }
   scope :recent, -> { kept.where("polls.closed_at IS NULL or polls.closed_at > ?", 7.days.ago) }
   scope :search_for, ->(fragment) { kept.where("polls.title ilike :fragment", fragment: "%#{fragment}%") }
