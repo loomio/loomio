@@ -6,14 +6,18 @@ import PollCommonDirective from '@/components/poll/common/directive'
 import PollService from '@/shared/services/poll_service'
 import { pick } from 'lodash'
 
-# import PollCommonChartCount from '@/components/poll/common/chart/count'
 import PollCommonChartMeeting from '@/components/poll/common/chart/meeting'
 import PollCommonChartTable from '@/components/poll/common/chart/table'
+import PollCommonPercentVoted from '@/components/poll/common/percent_voted'
+import PollCommonTargetProgress from '@/components/poll/common/target_progress'
 
 export default
-  components:
-    {PollCommonChartTable,
-     PollCommonChartMeeting}
+  components: {
+    PollCommonChartTable,
+    PollCommonChartMeeting,
+    PollCommonPercentVoted,
+    PollCommonTargetProgress
+  }
 
   props:
     poll: Object
@@ -50,5 +54,6 @@ export default
       v-if="poll.chartType != 'grid'"
       :poll="poll")
     poll-common-chart-meeting(v-else :poll="poll")
-  poll-common-percent-voted(:poll="poll")
+  poll-common-percent-voted(v-if="poll.pollType != 'count'", :poll="poll")
+  poll-common-target-progress(v-if="poll.pollType == 'count'", :poll="poll")
 </template>

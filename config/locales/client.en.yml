@@ -2225,9 +2225,8 @@ en:
 
   poll_common_percent_voted:
     sentence: "{{numerator}} of {{denominator}} people have voted ({{percent}}%)"
+    target_progress: "{{percent}}% of target reached. ({{num}} / {{target}})"
 
-  poll_count_chart_panel:
-    out_of: out of {{goal}}
 
   poll_meeting_chart_panel:
     total: Total
