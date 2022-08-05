@@ -26,12 +26,16 @@ export default
     hasOptionIcon: -> @poll.config().has_option_icon
     poll: -> @stance.poll()
     optionSelected: -> @selectedOptionIds.length or @selectedOptionId
-    optionPrompt: -> @selectedOptionId && Records.pollOptions.find(@selectedOptionId).prompt
+    optionPrompt: -> (@selectedOptionId && Records.pollOptions.find(@selectedOptionId).prompt) || ''
     submitText: ->
       if @stance.castAt
         'poll_common.update_vote'
       else
         'poll_common.submit_vote'
+    optionCountAlertColor: ->
+      return 'warning' if !@singleChoice && @selectedOptionIds.length && (@selectedOptionIds.length < @poll.minimumStanceChoices || @selectedOptionIds.length > @poll.maximumStanceChoices)
+    optionCountValid: ->
+      (@singleChoice && @selectedOptionId) || (@selectedOptionIds.length >= @poll.minimumStanceChoices && @selectedOptionIds.length <= @poll.maximumStanceChoices)
 
   watch:
     selectedOptionId: -> 
@@ -71,12 +75,21 @@ export default
           ['poll-common-vote-form__button--not-selected', votingStatus]
       else
         [votingStatus]
+
+
 </script>
 
 <template lang="pug">
 form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
 
+  v-alert(v-if="!poll.singleChoice()", :color="optionCountAlertColor")
+    span(
+      v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
+      v-t="{path: 'poll_common.select_count_options', args: {count: poll.minimumStanceChoices}}")
+    span(
+      v-else 
+      v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.minimumStanceChoices, maximum: poll.maximumStanceChoices}}")
   v-sheet.poll-common-vote-form__button.mb-2.rounded(
     outlined
     :style="(isSelected(option) && {'border-color': option.color}) || {}"
@@ -126,7 +139,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     v-card-actions.poll-common-form-actions
       v-btn.poll-common-vote-form__submit(
         @click='submit()'
-        :disabled='!optionSelected'
+        :disabled='!optionCountValid'
         :loading="stance.processing"
         color="primary"
         block

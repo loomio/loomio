@@ -1717,6 +1717,8 @@ en:
     prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
+    select_count_options:  Select {{count}} options
+    select_minimum_to_maximum_options: Select {{minimum}} to {{maximum}} options
     poll_template: Poll template
     poll_templates: Poll templates
     decision: Decision
