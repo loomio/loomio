@@ -6,7 +6,7 @@
       %tr
       - poll.result_columns.each do |col|
         - case col
-        - when 'pie', 'bar', 'grid'
+        - when 'chart'
           %th.text-left.text-subtitle-2
             = poll.closed_at ? t(:"poll_common.results") : t(:"poll_common.current_results")
         - when 'name'
@@ -15,6 +15,8 @@
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_points')
         - when 'voter_percent'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.pct_of_voters')
+        - when 'target_percent'
+          %th.text-right.text-subtitle-2= t('poll_count_form.pct_of_target')
         - when 'rank'
           %th.text-right.text-subtitle-2= t('poll_ranked_choice_form.rank')
         - when 'score'
@@ -30,23 +32,20 @@
         %tr
           - poll.result_columns.each do |col|
             - case col
-            - when 'pie'
-              - if (index == 0)
+            - when 'chart'
+              - if poll.chart_type == 'pie' && (index == 0)
                 %td.pr-2.py-2{rowspan: results.size} 
                   .poll-mailer-proposal__chart.poll-mailer__results-chart.d-flex.align-center.justify-center
                     %img.poll-mailer-proposal__chart-image{style: "height: 128px; width: 128px", src: google_pie_chart_url(poll), width: 128, height: 128}
-            - when 'bar'
-              %td.pr-2.py-2{style: 'width: 128px'}
-                - if option[poll.chart_column] > 0
 
-                  %table{cellspacing: 0, cellpadding: 0, width: '100%', height: '100%'}
-                    %tr
-                      %td.no-border.rounded{style: "background-color: #{option[:color]}; height: 24px", height: 24, width: "#{option[poll.chart_column]}%"}
-                      %td.no-border
-            - when 'grid'
-              / - if (index == 0)
-              /   %td.pr-2.py-2{rowspan: results.size} 
-              /       %img.poll-mailer-proposal__chart-image{style: "height: 128px; width: 128px", src: google_pie_chart_url(poll)}
+              - if poll.chart_type == 'bar'
+                %td.pr-2.py-2{style: 'width: 128px'}
+                  - if option[poll.chart_column] > 0
+
+                    %table{cellspacing: 0, cellpadding: 0, width: '100%', height: '100%'}
+                      %tr
+                        %td.no-border.rounded{style: "background-color: #{option[:color]}; height: 24px", height: 24, width: "#{option[poll.chart_column].clamp(0,100)}%"}
+                        %td.no-border
             - when 'name'
               %td{style: (poll.chart_type == 'pie') ? "border-left: solid 4px px #{option[:color]}" : ''}
                 - case option[:name_format]
@@ -64,13 +63,17 @@
               %td.text-right= option[:voter_count]
             - when 'average'
               %td.text-right= option[:average].round(1)
+            - when 'target_percent'
+              %td.text-right 
+                -if option[:icon] == 'agree'
+                  #{option[:target_percent].round}%
             - when 'voter_percent'
               %td.text-right #{option[:voter_percent].round}%
             - when 'score_percent'
               %td.text-right #{option[:score_percent].round(1)}%
             - when 'voters'
               %td.text-left
-                - User.where(id: option[:voter_ids]).each do |user|
-                  =render 'base_mailer/avatar', user: user, size: 24
+                - User.where(id: option[:voter_ids]).limit(20).each do |user|
+                  = render 'base_mailer/avatar', user: user, size: 24
                 - if  option[:voter_ids].length == 0
                   %span{style: 'display: inline-block; height: 24px'} &nbsp;

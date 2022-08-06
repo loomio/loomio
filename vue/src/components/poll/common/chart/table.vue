@@ -3,22 +3,28 @@ import Records from '@/shared/services/records'
 import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
 import { max, values, orderBy, compact } from 'lodash'
 import BarIcon from '@/components/poll/common/icon/bar.vue'
-import CountIcon from '@/components/poll/common/icon/count.vue'
 import PieIcon from '@/components/poll/common/icon/pie.vue'
 import GridIcon from '@/components/poll/common/icon/grid.vue'
 import Vue from 'vue'
 
 export default
-  components: {BarIcon, CountIcon, PieIcon, GridIcon}
+  components: {BarIcon, PieIcon, GridIcon}
   props:
     poll: Object
 
   data: ->
     users: {}
+    slices: []
+
+  watch:
+    'poll.stanceCounts': -> @slices = @poll.pieSlices()
+    
+  methods:
+    clampPercent: (num) -> Math.max(0, Math.min(num, 100))
 
   created: ->
     @watchRecords
-      collections: ['users']
+      collections: ['users', 'stances']
       query: =>
         @poll.results.forEach (option) =>
           option.voter_ids.forEach (id) =>
@@ -28,13 +34,13 @@ export default
 
 <template lang="pug">
 .poll-common-chart-table
-  //- p {{poll.results}}
   v-simple-table(dense)
     thead
       tr
         template(v-for="col in poll.resultColumns")
-          th.text-left(v-if="['pie', 'bar', 'grid'].includes(col)")
+          th.text-left(v-if="col == 'chart'")
           th.text-left(v-if="col == 'name'" v-t='"common.option"')
+          th.text-right(v-if="col == 'target_percent'" v-t='"poll_count_form.pct_of_target"')
           th.text-right(v-if="col == 'score_percent'" v-t='"poll_ranked_choice_form.pct_of_points"')
           th.text-right(v-if="col == 'voter_percent'" v-t='"poll_ranked_choice_form.pct_of_voters"')
           th.text-right(v-if="col == 'score'" v-t='"poll_ranked_choice_form.points"')
@@ -43,17 +49,25 @@ export default
           th.text-right(v-if="col == 'voter_count'" v-t='"membership_card.voters"')
           th(v-if="col == 'voters'")
     tbody
-      tr(v-for="option, index in poll.results" :key="option.id")
+      tr(v-for="option, index in poll.results", :key="option.id")
         template(v-for="col in poll.resultColumns")
-          td.pa-0(style="vertical-align: top" v-if="col == 'pie' && index == 0" :rowspan="poll.results.length")
-            pie-icon.ma-2(:poll="poll" :size='128')
-          td.pr-2.py-2(v-if="col == 'bar'" style="width: 128px; padding: 0 8px 0 0")
-            div.rounded(:style="{width: option[poll.chartColumn]+'%', height: '24px', 'background-color': option.color}")
-          td(v-if="col == 'name' && option.name_format == 'iso8601'")
+          td.pa-0(
+            v-if="col == 'chart' && poll.chartType == 'pie' && index == 0"
+            style="vertical-align: top"
+            :rowspan="poll.results.length"
+          ) 
+            pie-icon.ma-2(:slices="slices", :size='128')
+          td.pr-2.py-2(
+            v-if="col == 'chart' && poll.chartType == 'bar'"
+            style="width: 128px; padding: 0 8px 0 0"
+          )
+            div.rounded(:style="{width: clampPercent(option[poll.chartColumn])+'%', height: '24px', 'background-color': option.color}")
+          td(v-if="col == 'name' ", :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
+            span(v-if="option.name_format == 'plain'") {{option.name}}
+            span(v-if="option.name_format == 'i18n'" v-t="option.name")
             // poll-meeting-time(:name='option.name')
-          td(v-if="col == 'name' && option.name_format == 'i18n' && poll.chartType == 'pie'" v-t="option.name" :style="{'border-left': '4px solid ' + option.color}")
-          td(v-if="col == 'name' && option.name_format == 'i18n' && poll.chartType != 'pie'" v-t="option.name")
-          td(v-if="col == 'name' && option.name_format == 'none'") {{option.name}} 
+          td.text-right(v-if="col == 'target_percent' && option.icon == 'agree'") {{option.target_percent.toFixed(0)}}%
+          td.text-right(v-if="col == 'target_percent' && option.icon != 'agree'")
           td.text-right(v-if="col == 'rank'") {{option.rank}}
           td.text-right(v-if="col == 'score'") {{option.score}}
           td.text-right(v-if="col == 'voter_count'") {{option.voter_count}}
@@ -62,7 +76,7 @@ export default
           td.text-right(v-if="col == 'score_percent'") {{option.score_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'voters'")
             div.poll-common-chart-table__voter-avatars
-              user-avatar.float-left(v-for="id in option.voter_ids" :key="id" :user="users[id]" :size="24" no-link)
+              user-avatar.float-left(v-for="id in option.voter_ids", :key="id", :user="users[id]", :size="24" no-link)
 </template>
 <style lang="sass">
 .v-data-table > .v-data-table__wrapper > table > tbody > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper)

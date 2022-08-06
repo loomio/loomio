@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_30_102826) do
+ActiveRecord::Schema.define(version: 2022_07_27_110828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -281,6 +281,7 @@ ActiveRecord::Schema.define(version: 2022_06_30_102826) do
     t.datetime "pinned_at"
     t.integer "discarded_by"
     t.boolean "template", default: false, null: false
+    t.integer "source_template_id"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"
@@ -288,6 +289,7 @@ ActiveRecord::Schema.define(version: 2022_06_30_102826) do
     t.index ["key"], name: "index_discussions_on_key", unique: true
     t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: :desc
     t.index ["private"], name: "index_discussions_on_private"
+    t.index ["source_template_id"], name: "index_discussions_on_source_template_id", where: "(source_template_id IS NOT NULL)"
     t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
   end
 
@@ -615,6 +617,9 @@ ActiveRecord::Schema.define(version: 2022_06_30_102826) do
     t.jsonb "voter_scores", default: {}, null: false
     t.integer "total_score", default: 0, null: false
     t.integer "voter_count", default: 0, null: false
+    t.string "icon"
+    t.string "meaning"
+    t.string "prompt"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
@@ -666,6 +671,21 @@ ActiveRecord::Schema.define(version: 2022_06_30_102826) do
     t.boolean "shuffle_options", default: false, null: false
     t.boolean "allow_long_reason", default: false, null: false
     t.integer "hide_results", default: 0, null: false
+    t.string "chart_type"
+    t.integer "min_score"
+    t.integer "max_score"
+    t.integer "minimum_stance_choices"
+    t.integer "maximum_stance_choices"
+    t.integer "dots_per_person"
+    t.string "process_name"
+    t.boolean "template", default: false, null: false
+    t.integer "source_template_id"
+    t.string "reason_prompt"
+    t.string "poll_option_name_format"
+    t.integer "stance_reason_required", default: 1, null: false
+    t.boolean "limit_reason_length", default: true, null: false
+    t.integer "default_duration_in_days"
+    t.integer "agree_target"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
@@ -673,6 +693,7 @@ ActiveRecord::Schema.define(version: 2022_06_30_102826) do
     t.index ["group_id"], name: "index_polls_on_group_id"
     t.index ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true
     t.index ["key"], name: "index_polls_on_key", unique: true
+    t.index ["source_template_id"], name: "index_polls_on_source_template_id", where: "(source_template_id IS NOT NULL)"
   end
 
   create_table "reactions", id: :serial, force: :cascade do |t|

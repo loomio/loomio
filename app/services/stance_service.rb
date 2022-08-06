@@ -16,12 +16,17 @@ class StanceService
     actor.ability.authorize!(:update, stance)
     stance.stance_choices = []
     stance.assign_attributes_and_files(params)
+    is_update = !!stance.cast_at
     stance.cast_at ||= Time.zone.now
     stance.revoked_at = nil
     stance.save!
     stance.poll.update_counts!
-    event = Events::StanceUpdated.publish!(stance)
-    event
+
+    if is_update
+      Events::StanceUpdated.publish!(stance)
+    else
+      Events::StanceCreated.publish!(stance)
+    end
   end
 
   def self.redeem(stance:, actor:)

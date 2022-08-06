@@ -3,71 +3,79 @@ import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Session from '@/shared/services/session'
 import Flash  from '@/shared/services/flash'
+import PollCommonForm from '@/components/poll/common/form'
+import PollCommonChooseTemplate from '@/components/poll/common/choose_template'
 
 export default
+  components: {PollCommonForm, PollCommonChooseTemplate}
+
   data: ->
+    loading: false
     poll: null
+    group: null
+    discussion: null
 
-  created: -> @init()
+  created: ->
+    if templateId = parseInt(@$route.query.template_id)
+      @loading = true
+      Records.polls.findOrFetchById(templateId).then (poll) =>
+        @poll = poll.cloneTemplate()
+        if Session.user().groupIds().includes(poll.groupId)
+          @poll.groupId = poll.groupId
+          @group = @poll.group()
+        @loading = false
 
-  methods:
-    init: ->
+    if discussionId = parseInt(@$route.query.discussion_id)
+      @loading = true
+      Records.discussions.findOrFetchById(discussionId).then (discussion) =>
+        @discussion = discussion
+        @group = discussion.group()
+        @loading = false
+
+    if groupId = parseInt(@$route.query.group_id)
+      @loading = true
+      Records.groups.findOrFetchById(groupId).then (group) =>
+        @group = group
+        @loading = false
+
+    if @$route.params.key
+      @loading = true
       Records.polls.findOrFetchById(@$route.params.key)
       .then (poll) =>
         @poll = poll.clone()
-
         EventBus.$emit 'currentComponent',
           group: poll.group()
           poll:  poll
           title: poll.title
           page: 'pollFormPage'
-
+        @loading = false
       .catch (error) ->
         EventBus.$emit 'pageError', error
-        EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
+        if error.status == 403 && !Session.isSignedIn()
+          EventBus.$emit 'openAuthModal'
 
-    submit: ->
-      actionName = if @poll.isNew() then 'created' else 'updated'
-      @poll.customFields.can_respond_maybe = @poll.canRespondMaybe if @poll.pollType == 'meeting'
-      @poll.setErrors({})
-      @poll.save()
-      .then (data) =>
-        pollKey = data.polls[0].key
-        Records.polls.findOrFetchById(pollKey, {}, true).then (poll) =>
-          @$router.replace(@urlFor(poll))
-          Flash.success "poll_#{poll.pollType}_form.#{poll.pollType}_#{actionName}"
-      .catch => true
-
-  computed:
-    title_key: ->
-      mode = if @poll.isNew()
-        'start'
-      else
-        'edit'
-      'poll_' + @poll.pollType + '_form.'+mode+'_header'
-
+  methods:
+    setPoll: (poll) ->
+      @poll = poll
 
 </script>
 <template lang="pug">
 .poll-form-page
   v-main
     v-container.max-width-800
-      loading(:until="poll")
-        v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" v-if="poll")
-          submit-overlay(:value="poll.processing")
-          v-card-title
-            h1.headline(tabindex="-1" v-t="title_key")
-            v-spacer
-            v-btn(icon :to="urlFor(poll)" aria-hidden='true')
-              v-icon mdi-close
+      loading(:until="!loading")
+        v-card.poll-common-modal
           div.pa-4
-            poll-common-directive(:poll='poll' name='form')
-          v-card-actions.poll-common-form-actions
-            v-spacer
-            v-btn.poll-common-form__submit(color="primary" @click='submit()' v-if='!poll.isNew()' :loading="poll.processing")
-              span(v-t="'common.action.save_changes'")
-            v-btn.poll-common-form__submit(color="primary" @click='submit()' v-if='poll.closingAt && poll.isNew() && poll.groupId' :loading="poll.processing")
-              span(v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
-            v-btn.poll-common-form__submit(color="primary" @click='submit()' v-if='!poll.closingAt && poll.isNew() && poll.groupId' :loading="poll.processing")
-              span(v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
+            poll-common-form(
+              v-if="poll"
+              :poll="poll"
+              @setPoll="setPoll"
+              redirect-on-save
+            )
+            poll-common-choose-template(
+              v-if="!poll"
+              @setPoll="setPoll"
+              :discussion="discussion"
+              :group="group"
+            )
 </template>

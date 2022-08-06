@@ -93,6 +93,13 @@ module Dev::ScenariosHelper
     scenario = poll_created_scenario(params)
     voter    = saved(fake_user)
     scenario[:poll].group.add_member!(voter)
+
+    Stance.create!(
+      participant: scenario[:poll].author, 
+      poll: scenario[:poll], 
+      admin: true, 
+      reason_format: scenario[:poll].author.default_format)
+    
     Stance.where(poll_id: scenario[:poll].id,
                  participant_id: scenario[:poll].author_id).update(volume: 'loud')
     event = StanceService.create(stance: fake_stance(poll: scenario[:poll]), actor: voter)
@@ -131,10 +138,7 @@ module Dev::ScenariosHelper
                                                      closing_at: if params[:wip] then nil else 1.day.from_now end))
 
     PollService.create(poll: poll, actor: actor)
-    # Stance.create(poll: poll, participant: non_voter)
     PollService.invite(poll: poll, params: {recipient_user_ids: [non_voter.id]}, actor: actor)
-
-    
     PollService.publish_closing_soon
 
     {
@@ -291,9 +295,7 @@ module Dev::ScenariosHelper
     discussion.group.add_member! observer
     scenario[:discussion].group.add_member! observer
     poll = scenario[:poll]
-    poll.update(multiple_choice: poll_type.to_sym == :poll)
     choices =  [{poll_option_id: poll.poll_option_ids[0]}]
-    choices += [{poll_option_id: poll.poll_option_ids[1]}] if poll.multiple_choice
 
     StanceService.create(stance: fake_stance(poll: poll, stance_choices_attributes: choices), actor: observer)
     UserMailer.catch_up(observer.id).deliver_now

@@ -11,6 +11,27 @@ namespace :loomio do
     UpdateBlockedDomainsWorker.perform_async
   end
 
+  task generate_email_icons: :environment do
+    colors = AppConfig.colors.flatten.flatten.filter {|c| c.starts_with?("#")}.map {|c| c[1..-1]}
+    source_path = Rails.root.join("app", "assets", "images", "icons", "svgs", "*.svg").to_s
+    dest_path = Rails.root.join("app", "assets", "images", "icons")
+
+    Dir[source_path].each do |path|
+      original = File.read(path)
+      basename = File.basename(path).split(".").first
+      document = Nokogiri::XML.parse(original)
+      Dir.chdir(dest_path) do
+        colors.each do |color|
+          current = document.dup
+          # current.css('svg').first.set_attribute 'viewBox', "0 0 96 96"
+          current.css("path:not([fill])").set(:fill, "##{color}")
+          im = Vips::Image.new_from_buffer(current.to_s, "", {scale: 8})
+          im.write_to_file dest_path.to_s+"/#{basename}-#{color}.png"
+        end
+      end 
+    end
+  end
+  
   task generate_static_error_pages: :environment do
     [400, 404, 403, 410, 417, 422, 429, 500].each do |code|
       ['html'].each do |format|

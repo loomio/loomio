@@ -28,7 +28,7 @@ describe EventService do
     let!(:poll_created_event) { PollService.create(poll: poll, actor: discussion.author) }
 
     let!(:stance) do
-      build(:stance, poll: poll, choice: "agree")
+      build(:stance, poll: poll, choice: "Agree")
     end
 
     let!(:stance_created_event) do

@@ -29,9 +29,20 @@ class PermittedParams < Struct.new(:params)
   end
 
   def poll_attributes
-    [ :title, :details, :details_format, :poll_type, :discussion_id, :group_id,
-      :closing_at, :anonymous, :hide_results, :multiple_choice, :key,
-      :allow_long_reason,
+    [ 
+      :agree_target,
+      :title,
+      :details,
+      :details_format,
+      :discussion_id,
+      :default_duration_in_days,
+      :poll_type,
+      :group_id,
+      :closing_at,
+      :anonymous,
+      :hide_results,
+      :key,
+      :limit_reason_length,
       :shuffle_options,
       :anyone_can_participate,
       :notify_on_closing_soon,
@@ -44,14 +55,27 @@ class PermittedParams < Struct.new(:params)
       :recipient_user_ids, {recipient_user_ids: []},
       :recipient_chatbot_ids, {recipient_chatbot_ids: []},
       :recipient_emails, {recipient_emails: []},
-      :custom_fields, {custom_fields: [:can_respond_maybe, :dots_per_person, :max_score,
-                                       :min_score, :time_zone, :meeting_duration,
-                                       :minimum_stance_choices, :pending_emails, {pending_emails: []}]},
-      :document_ids, {document_ids: []},
-      :poll_option_names, {poll_option_names: []},
+      :source_template_id,
+      :can_respond_maybe,
+      :dots_per_person,
+      :max_score,
+      :min_score,
       :options, {options: []},
+      :process_name,
+      :poll_option_name_format,
+      :reason_prompt,
+      :template,
+      :time_zone,
+      :stance_reason_required,
+      :meeting_duration,
+      :minimum_stance_choices,
+      :maximum_stance_choices,
+      :chart_type,
+      :chart_column,
+      :document_ids, {document_ids: []},
+      :poll_options_attributes, {poll_options_attributes: [:id, :name, :icon, :meaning, :prompt, :priority, :_destroy]},
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
-   ]
+    ]
   end
 
   def stance_attributes
@@ -111,12 +135,18 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_attributes
-    [:title, :description, :description_format, :group_id,
-      :newest_first, :max_depth, :private,
+    [:title,
+     :description,
+     :description_format,
+     :group_id,
+     :newest_first,
+     :max_depth,
+     :private,
      :notify_recipients,
      :recipient_audience,
      :recipient_message,
      :template,
+     :source_template_id,
      :tag_ids, {tag_ids: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},

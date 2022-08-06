@@ -3,7 +3,7 @@
 <% table.style = { border: :unicode } %>
 <% table.headings = poll.result_columns.map do |col| %>
 <% case col %>
-<% when 'pie', 'bar', 'grid' %>
+<% when 'chart' %>
 <% t(:"poll_common.results") %>
 <% when 'name' %>
 <% t('common.option') %>
@@ -25,9 +25,10 @@
 <% poll.results.each do |option| %>
 <% table << poll.result_columns.map do |col| %>
   <% case col %>
-  <% when 'pie', 'bar' %>
+  <% when 'chart' %>
+  <% if ['pie', 'bar'].include? poll.chart_type  %>
   <% ('▓' * (option[:max_score_percent].to_i/10)) + (' ' * (10 - (option[:max_score_percent].to_i/10))) %>
-  <% when 'grid' then nil%>
+  <% end %>
   <% when 'name' %>
     <% case option[:name_format] %>
     <% when 'i18n' %>

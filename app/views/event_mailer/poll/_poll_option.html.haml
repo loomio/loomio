@@ -1,37 +1,54 @@
-- poll       = poll_option.poll
-- time_zone  = @recipient.time_zone || poll.time_zone
-- class_name = local_assigns[:small] ? "poll-mailer-#{poll.poll_type}__option-icon--small" : "poll-mailer-#{poll.poll_type}__option-icon"
-- show_link  = local_assigns[:link]
-- stance_choice = local_assigns.fetch(:stance_choice, nil)
-- show_score = poll.has_variable_score && stance_choice
 - display_name = case poll.poll_option_name_format
 - when 'i18n' then t(poll_option.name)
 - when 'iso8601' then format_iso8601_for_humans(poll_option.name, @recipient.time_zone, @recipient.date_time_pref)
 - else
   - poll_option.name
 
+- score = stance && stance.option_scores[poll_option.id.to_s]
 
-%tr.poll-mailer__poll-option
-  - if poll.has_option_icons
-    - if show_link
-      %td= link_to image_tag("poll_mailer/vote-button-#{poll_option.name}.png", width: 55, height: 55, alt: poll_option.name, class: class_name), tracked_url(poll, poll_option_id: poll_option.id)
-      %td{class: "poll-mailer-#{poll.poll_type}__option-name"}= link_to t("poll_#{poll.poll_type}_options.#{poll_option.name}"), tracked_url(poll, poll_option_id: poll_option.id)
-    - else
-      %td= image_tag("poll_mailer/vote-button-#{poll_option.name}.png", width: 55, height: 55, alt: "#{poll_option.name} icon", class: class_name)
-      %td= t("poll_#{poll.poll_type}_options.#{poll_option.name}")
-  - elsif poll.has_score_icons
-    - if stance_choice.present? && icon_name = stance_icon_for(poll, stance_choice)
-      %td= image_tag "poll_mailer/vote-icon-#{icon_name}.png", width: 24, height: 24, alt: "#{icon_name} icon", class: "poll-mailer-meeting__option-icon"
-    - else
-      %td= render 'event_mailer/poll/chip', color: poll_option.color
-    %td= display_name
+- link = poll.active? && tracked_url(poll, poll_option_id: poll_option.id)
+- link_attrs = {class: 'text-decoration-none'}
+- option_color = poll_option.color.sub('#', '')
 
-  - else
-    - if show_link
-      %td= stance_choice.rank_or_score if show_score
-      %td= render 'event_mailer/poll/chip', color: poll_option.color
-      %td= link_to display_name, tracked_url(poll, poll_option_id: poll_option.id)
-    - else
-      %td= stance_choice.rank_or_score if show_score
-      %td= render 'event_mailer/poll/chip', color: poll_option.color
-      %td= display_name
+%table.rounded.mb-2.pa-1{style: "border: 1px solid #{poll_option.color}; width: 100%; max-width: 600px"}
+  %tr.poll-mailer__poll-option
+    %td{style: "width: 48px; height: 48px; text-align: center"}
+      = optional_link(link, link_attrs) do
+        - if poll.has_option_icon
+          = image_tag("poll_mailer/vote-button-#{poll_option.icon}.png", width: 48, height: 48, alt: display_name, style: 'display: inline-block')
+        - if ['poll'].include? poll.poll_type
+          - if poll.is_single_choice?
+            - if score && score > 0
+              = image_tag("icons/radiobox-marked-#{option_color}.png", width: 24, height: 24, alt: display_name)
+            - else
+              = image_tag("icons/radiobox-blank-#{option_color}.png", width: 24, height: 24, alt: display_name)
+          -else
+            - if score && score > 0
+              = image_tag("icons/checkbox-marked-#{option_color}.png", width: 24, height: 24, alt: display_name)
+            - else
+              = image_tag("icons/checkbox-blank-outline-#{option_color}.png", width: 24, height: 24, alt: display_name)
+        - if ['score', 'dot_vote'].include? poll.poll_type
+          - if score
+            .text-h6= score
+          - else
+            = image_tag("icons/checkbox-blank-outline-#{option_color}.png", width: 24, height: 24, alt: display_name)
+        - if ['ranked_choice'].include? poll.poll_type
+          - if score
+            .text-h6
+              \#
+              = poll.minimum_stance_choices - score + 1
+          - else
+            = image_tag("icons/checkbox-blank-outline-#{option_color}.png", width: 24, height: 24, alt: display_name)
+        - if ['meeting'].include? poll.poll_type
+          - if score
+            - icon = {0 => 'disagree', 1 => 'abstain', 2 => 'agree'}[score]
+            = image_tag("poll_mailer/vote-button-#{icon}.png", width: 48, height: 48, alt: display_name, style: 'display: inline-block')
+          - else
+            = image_tag("icons/checkbox-blank-outline-#{option_color}.png", width: 24, height: 24, alt: display_name)
+
+    %td.pl-4
+      = optional_link(link, link_attrs) do
+        = display_name
+      .text-caption
+        = optional_link(link, link_attrs) do
+          = poll_option.meaning

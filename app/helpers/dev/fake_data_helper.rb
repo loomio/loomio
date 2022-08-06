@@ -149,11 +149,12 @@ module Dev::FakeDataHelper
         Faker::Food.ingredient,
         Faker::Movies::StarWars.call_squadron
       ].sample.truncate(250)
-    end
+    end.uniq
     {
       poll: options,
       proposal: %w[agree abstain disagree block],
-      count: %w[yes no],
+      count: %w[accept decline],
+      check: %w[looks_good not_sure concerned],
       dot_vote: options,
       meeting: option_count.times.map { |i| (seed+i).days.from_now.iso8601},
       ranked_choice: options,
@@ -178,39 +179,38 @@ module Dev::FakeDataHelper
         Faker::Movies::HitchhikersGuideToTheGalaxy.quote].sample,
       poll_option_names: names[args.fetch(:poll_type, :poll)],
       closing_at: closing_at,
-      multiple_choice: false,
       specified_voters_only: false,
       custom_fields: {}
     }.merge args.tap {|a| a.delete(:wip)}
 
     case options[:poll_type].to_s
     when 'dot_vote'
-      options[:custom_fields][:dots_per_person] = 10
+      options[:dots_per_person] = 10
     when 'meeting'
-      options[:custom_fields][:time_zone] = 'Asia/Seoul'
-      options[:custom_fields][:can_respond_maybe] = true
+      options[:time_zone] = 'Asia/Seoul'
+      options[:can_respond_maybe] = true
     when 'ranked_choice'
-      options[:custom_fields][:minimum_stance_choices] = 3
+      options[:minimum_stance_choices] = 3
     when 'score'
-      options[:custom_fields][:max_score] = 9
-      options[:custom_fields][:min_score] = -9
+      options[:max_score] = 9
+      options[:min_score] = -9
     end
 
     Poll.new(options)
   end
 
 
-  def fake_score(poll)
+  def fake_score(poll, index = 0)
     case poll.poll_type
     when 'score'
       ((poll.min_score)..(poll.max_score)).to_a.sample
     when 'ranked_choice'
-      (1..8).to_a.sample
+      index + 1
     when 'meeting'
       if poll.can_respond_maybe
         [0,1,2].sample
       else
-        [0,1].sample
+        [0,2].sample
       end
     else
       1
@@ -220,17 +220,16 @@ module Dev::FakeDataHelper
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
 
-    choice = if poll.minimum_stance_choices > 1
-      poll.poll_options.sample(poll.minimum_stance_choices).map do |option|
-        [option.name, fake_score(poll)]
-      end.to_h
-    elsif poll.require_all_choices
-      poll.poll_options.map do |option|
-        [option.name, fake_score(poll)]
-      end.to_h
+    if poll.require_all_choices
+      num_choices = poll.poll_options.length
     else
-      poll.poll_option_names.sample
+      num_choices = (poll.minimum_stance_choices..poll.maximum_stance_choices).to_a.sample
     end
+
+    choice =  poll.poll_options.sample(num_choices).map.with_index do |option, index|
+      score = fake_score(poll)
+      [option.name, fake_score(poll, index)]
+    end.to_h
 
     Stance.new({
       poll: poll,

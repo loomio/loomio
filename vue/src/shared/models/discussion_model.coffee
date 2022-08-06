@@ -7,6 +7,7 @@ import HasTranslations  from '@/shared/mixins/has_translations'
 import { isAfter } from 'date-fns'
 import dateIsEqual from 'date-fns/isEqual'
 import { map, compact, flatten, isEqual, isEmpty, filter, some, head, last, sortBy, find, min, max, isArray, throttle, without } from 'lodash'
+import I18n from '@/i18n'
 
 export default class DiscussionModel extends BaseModel
   @singular: 'discussion'
@@ -52,11 +53,16 @@ export default class DiscussionModel extends BaseModel
   cloneTemplate: ->
     clone = @clone()
     clone.id = null
+    clone.key = null
+    clone.title = I18n.t('templates.title_copy', {title: clone.title})
+    clone.sourceTemplateId = @id
     clone.authorId = Session.user().id
     clone.pinnedAt = null
     clone.forkedEventIds = []
     clone.groupId = null
     clone.closedAt = null
+    clone.createdAt = null
+    clone.updatedAt = null
     clone.template = false
     clone
 
@@ -76,6 +82,9 @@ export default class DiscussionModel extends BaseModel
     # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
+  
+  sourceTemplate: ->
+    @recordStore.discussions.find(@sourceTemplateId)
 
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()

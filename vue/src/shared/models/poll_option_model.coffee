@@ -1,6 +1,8 @@
 import BaseModel  from  '@/shared/record_store/base_model'
 import Records  from  '@/shared/services/records'
 import {map, parseInt, slice, max} from 'lodash'
+import { exact } from '@/shared/helpers/format_time'
+import { parseISO } from 'date-fns'
 import I18n from '@/i18n'
 
 export default class PollOptionModel extends BaseModel
@@ -8,9 +10,16 @@ export default class PollOptionModel extends BaseModel
   @plural: 'pollOptions'
   @indices: ['pollId']
   @uniqueIndices: ['id']
+  @serializableAttributes: ['id', 'name', 'icon', 'priority', 'meaning', 'prompt']
 
   defaultValues: ->
     voterScores: {}
+    name: null
+    icon: null
+    meaning: null
+    prompt: null
+    priority: null
+    _destroy: null
 
   relationships: ->
     @belongsTo 'poll'
@@ -22,32 +31,10 @@ export default class PollOptionModel extends BaseModel
     @stances().forEach (stance) -> stance.remove()
 
   optionName: ->
-    if @poll().translateOptionName()
-      I18n.t('poll_' + @poll().pollType + '_options.' + @name)
-    else
-      @name
-
-  # averageScore: ->
-  #   voterIds = @voterIds()
-  #   return 0 unless voterIds.length
-  #   Math.round( (@totalScore / voterIds.length) * 10 + Number.EPSILON ) / 10
-
-  # voterIds: ->
-  #   # this is a hack, we both know this
-  #   # some polls 0 is a vote, others it is not
-  #   if @poll().pollType == 'meeting'
-  #     Object.entries(@voterScores).map((e) -> parseInt(e[0]))
-  #   else
-  #     Object.entries(@voterScores).filter((e) -> e[1] > 0).map((e) -> parseInt(e[0]))
-
-  # voters: (limit = 1000) ->
-  #   @recordStore.users.find(slice(@voterIds(), 0, limit))
-
-  # scorePercent: ->
-  #   parseInt(parseFloat(@totalScore) / parseFloat(@poll().totalScore) * 100) || 0
-
-  # rawScorePercent: ->
-  #   parseFloat(@totalScore) / parseFloat(@poll().totalScore) * 100
-
-  # barChartPct: ->
-  #   parseInt((100 * parseFloat(@totalScore) / max(@poll().stanceCounts)))
+    poll = @poll()
+    switch poll.pollOptionNameFormat
+      when 'plain' then @name
+      when 'i18n' then I18n.t('poll_' + poll.pollType + '_options.' + @name)
+      when 'iso8601' then exact(parseISO(@name))
+      else
+        console.error 'unsupported option format', poll.pollOptionNameFormat

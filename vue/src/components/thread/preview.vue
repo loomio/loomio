@@ -22,9 +22,9 @@ export default
     menuActions: ->
       actions = if @groupPage
         if @$vuetify.breakpoint.smAndDown
-          ['dismiss_thread','pin_thread', 'unpin_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
+          ['dismiss_thread','pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
         else
-          ['pin_thread', 'unpin_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
+          ['pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
       else
         if @$vuetify.breakpoint.smAndDown
           ['dismiss_thread', 'close_thread', 'reopen_thread']
@@ -38,12 +38,15 @@ export default
 </script>
 
 <template lang="pug">
-v-list-item.thread-preview.thread-preview__link(:class="{'thread-preview--unread-border': thread.isUnread()}" :to='urlFor(thread)')
+v-list-item.thread-preview.thread-preview__link(
+  :class="{'thread-preview--unread-border': thread.isUnread()}"
+  :to='urlFor(thread)'
+)
   v-list-item-avatar
-    user-avatar(:user='thread.author()' :size='40' no-link)
+    user-avatar(:user='thread.author()', :size='40' no-link)
   v-list-item-content
     v-list-item-title(style="align-items: center")
-      span(v-if='thread.pinnedAt' :title="$t('context_panel.thread_status.pinned')")
+      span(v-if='thread.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
         v-icon(small) mdi-pin-outline
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
       v-chip.ml-1(small label outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")

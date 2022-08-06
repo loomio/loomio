@@ -6,8 +6,8 @@ import HasTranslations  from '@/shared/mixins/has_translations'
 import EventBus         from '@/shared/services/event_bus'
 import I18n             from '@/i18n'
 import NullGroupModel   from '@/shared/models/null_group_model'
-import { addDays, startOfHour } from 'date-fns'
-import { compact, head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
+import { addDays, startOfHour, differenceInHours, addHours } from 'date-fns'
+import { snakeCase, camelCase, compact, head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash'
 
 export default class PollModel extends BaseModel
   @singular: 'poll'
@@ -19,24 +19,48 @@ export default class PollModel extends BaseModel
     HasDocuments.apply @, showTitle: true
     HasTranslations.apply @
 
+  config: ->
+    AppConfig.pollTypes[@pollType]
+
+  votingMethods:
+    proposal: 'show_thumbs'
+    poll: 'choose'
+    meeting: 'time_poll'
+    dot_vote: 'allocate'
+    score: 'score'
+    ranked_choice: 'ranked_choice'
+
+  i18n: ->
+    AppConfig.pollTypes[@pollType].i18n
+
   pollTypeKey: ->
     "poll_types.#{@pollType}"
 
   poll: -> @
 
   defaultValues: ->
+    # read defaults based on pollType and apply them
     discussionId: null
     title: ''
+    closingAt: null
     details: ''
     detailsFormat: 'html'
-    closingAt: startOfHour(addDays(new Date, 3))
+    decidedVotersCount: 0
+    defaultDurationInDays: null
     specifiedVotersOnly: false
     pollOptionNames: []
-    customFields:
-      minimum_stance_choices: null
-      max_score: null
-      min_score: null
-    allowLongReason: false
+    pollType: 'single_choice'
+    chartColumn: null
+    chartType: null
+    minScore: null
+    maxScore: null
+    minimumStanceChoices: null
+    maximumStanceChoices: null
+    dotsPerPerson: null
+    canRespondMaybe: true
+    meetingDuration: null
+    limitReasonLength: true
+    stanceReasonRequired: 'optional'
     files: []
     imageFiles: []
     attachments: []
@@ -44,6 +68,11 @@ export default class PollModel extends BaseModel
     notifyOnClosingSoon: 'undecided_voters'
     results: []
     pollOptionIds: []
+    processName: null
+    processSubtitle: null
+    processDescription: null
+    processDescriptionFormat: 'html'
+    pollOptionNameFormat: null
     recipientMessage: null
     recipientAudience: null
     recipientUserIds: []
@@ -51,9 +80,68 @@ export default class PollModel extends BaseModel
     recipientEmails: []
     notifyRecipients: true
     shuffleOptions: false
+    template: false
     tagIds: []
     hideResults: 'off'
     stanceCounts: []
+
+  cloneTemplate: ->
+    clone = @clone()
+    clone.id = null
+    clone.key = null
+    clone.sourceTemplateId = @id
+    clone.authorId = Session.user().id
+    clone.groupId = null
+    clone.discussionId = null
+
+    clone.template = false
+    clone.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
+    
+    clone.pollOptionsAttributes = @pollOptions().map (o) =>
+        name: o.name
+        meaning: o.meaning
+        prompt: o.prompt
+        icon: o.icon
+
+    clone.closedAt = null
+    clone.createdAt = null
+    clone.updatedAt = null
+    clone.decidedVotersCount = null
+    clone.undecidedVotersCount = null
+    clone
+
+  clonePollOptions: ->
+    @pollOptions().map (o) =>
+        id: o.id
+        name: o.name
+        meaning: o.meaning
+        prompt: o.prompt
+        icon: o.icon
+
+  applyPollTypeDefaults: ->
+    @processName = I18n.t(AppConfig.pollTypes[@pollType].defaults.process_name_i18n)
+    @processSubtitle = I18n.t(AppConfig.pollTypes[@pollType].defaults.process_subtitle_i18n)
+
+    map AppConfig.pollTypes[@pollType].defaults, (value, key) =>
+      @[camelCase(key)] = value
+    if @template
+      @closingAt = null
+    else
+      @closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
+
+    common_poll_options = AppConfig.pollTypes[@pollType].common_poll_options || []
+    @pollOptionsAttributes = common_poll_options.filter((o) -> o.default)
+      .map (o) =>
+        name:  I18n.t(o.name_i18n)
+        meaning: I18n.t(o.meaning_i18n)
+        prompt: I18n.t(o.prompt_i18n)
+        icon: o.icon
+
+  defaulted: (attr) ->
+    if @[attr] == null
+      AppConfig.pollTypes[@pollType].defaults[snakeCase(attr)]
+    else
+      @[attr]
 
   audienceValues: ->
     name: @group().name
@@ -62,9 +150,30 @@ export default class PollModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
     @belongsTo 'group'
-    # @hasMany   'pollOptions', orderBy: 'priority'
     @hasMany   'stances'
     @hasMany   'versions'
+
+  pieSlices: ->
+    slices = []
+    if @pollType == 'count'
+      agree = @results.find((r) => r.icon == 'agree')
+      if agree.score < @agreeTarget
+        pct = (parseFloat(agree.score) / parseFloat(@agreeTarget)) * 100
+        slices.push
+          value: pct
+          color: agree.color
+        slices.push
+          value: 100 - pct
+          color: "#ddd"
+      else
+        slices.push
+          value: 100
+          color: agree.color
+    else
+      slices = @results.filter((r) => r[@chartColumn]).map (r) =>
+        value: r[@chartColumn]
+        color: r.color
+    slices
 
   pollOptions: ->
     options = (@recordStore.pollOptions.collection.chain().find(pollId: @id, id: {$in: @pollOptionIds}).data())
@@ -96,7 +205,10 @@ export default class PollModel extends BaseModel
 
   adminsInclude: (user) ->
     stance = @stanceFor(user)
-    (stance && stance.admin) || (@discussionId && @discussion().adminsInclude(user)) || @group().adminsInclude(user)
+    (@authorId == user.id && (!@groupId || @group().membersInclude(user))) ||
+    (stance && stance.admin) || 
+    (@discussionId && @discussion().adminsInclude(user)) || 
+    @group().adminsInclude(user)
 
   votersInclude: (user) ->
     if specifiedVotersOnly
@@ -120,6 +232,7 @@ export default class PollModel extends BaseModel
     @myStanceId && @myStance() && @myStance().castAt
 
   showResults: ->
+    !!@closingAt &&
     switch @hideResults
       when "until_closed"
         @closedAt
@@ -187,11 +300,6 @@ export default class PollModel extends BaseModel
     @remote.postMember(@key, 'reopen', poll: {closing_at: @closingAt})
     .finally => @processing = false
 
-  addOptions: =>
-    @processing = true
-    @remote.postMember(@key, 'add_options', poll_option_names: @pollOptionNames)
-    .finally => @processing = false
-
   addToThread: (discussionId) =>
     @processing = true
     @remote.patchMember(@keyOrId(), 'add_to_thread', { discussion_id: discussionId })
@@ -204,7 +312,10 @@ export default class PollModel extends BaseModel
       'edit'
 
   translatedPollType: ->
-    I18n.t("poll_types.#{@pollType}")
+    @processName || I18n.t("poll_types.#{@pollType}")
+
+  translatedPollTypeCaps: ->
+    @processName || I18n.t("decision_tools_card.#{@pollType}_title")
 
   addOption: (option) =>
     return false if @pollOptionNames.includes(option) or !option
@@ -212,33 +323,14 @@ export default class PollModel extends BaseModel
     @pollOptionNames.sort() if @pollType == "meeting"
     option
 
-  setMinimumStanceChoices: =>
-    return unless @isNew() and @hasRequiredField('minimum_stance_choices')
-    @customFields.minimum_stance_choices = max [@pollOptionNames.length, 1]
-
-  hasRequiredField: (field) =>
-    includes AppConfig.pollTemplates[@pollType].required_custom_fields, field
-
-  hasPollSetting: (setting) =>
-    AppConfig.pollTemplates[@pollType][setting]?
-
-  hasVariableScore: ->
-    AppConfig.pollTemplates[@pollType]['has_variable_score']
-
-  hasOptionIcons: ->
-    AppConfig.pollTemplates[@pollType]['has_option_icons']
+  hasVariableScore: -> 
+    @defaulted('minScore') != @defaulted('maxScore')
 
   singleChoice: ->
-    if @pollType == 'poll'
-      !@multipleChoice
-    else
-      AppConfig.pollTemplates[@pollType]['single_choice']
-
-  translateOptionName: ->
-    AppConfig.pollTemplates[@pollType]['translate_option_name']
+    @defaulted('minimumStanceChoices') == @defaulted('maximumStanceChoices') == 1
 
   datesAsOptions: ->
-    AppConfig.pollTemplates[@pollType]['dates_as_options']
+    @pollOptionNameFormat == 'iso8601'
 
   removeOrphanOptions: ->
     @pollOptions().forEach (option) =>

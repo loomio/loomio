@@ -39,6 +39,7 @@ export default
           'poll-meeting-chart__cell--no'
 
   computed:
+    datesAsOptions: -> @poll.datesAsOptions()
     currentUserTimeZone: ->
       Session.user().timeZone
 </script>
@@ -48,15 +49,19 @@ export default
   table.poll-meeting-chart-table
     thead
       tr
-        td.text--secondary {{currentUserTimeZone}}
+        td.text--secondary(v-if="datesAsOptions") {{currentUserTimeZone}}
         td.pr-2.total.text--secondary(v-t="'poll_common.votes'")
         td(v-for="user in decidedVoters" :key="user.id")
           user-avatar(:user="user" :size="24")
     tbody
       tr(v-for="option in poll.results" :key="option.id")
         td.poll-meeting-chart__meeting-time
-          poll-meeting-time(:name='option.name' :zone='zone')
-        td.total.text-right.pr-2 {{option.score/2}}
+          poll-meeting-time(v-if="datesAsOptions" :name='option.name' :zone='zone')
+          span(v-if="option.name_format == 'i18n'" v-t="option.name")
+          span(v-if="option.name_format == 'none'") {{option.name}} 
+        td.total.text-right.pr-2
+          span(v-if="poll.canRespondMaybe") {{option.score/2}}
+          span(v-else="poll.canRespondMaybe") {{option.score}}
         td(v-for="user in decidedVoters" :key="user.id")
           .poll-meeting-chart__cell(:class="classForScore(option.voter_scores[user.id])")
             | &nbsp;

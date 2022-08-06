@@ -58,20 +58,24 @@ export default
       @dotsPerPerson - sum(map(without(@stanceChoices, choice), 'score'))
 
   computed:
+    poll: -> @stance.poll()
+    
     dotsRemaining: ->
       @dotsPerPerson - sum(map(@stanceChoices, 'score'))
 
     dotsPerPerson: ->
-      @stance.poll().customFields.dots_per_person
-    reasonTooLong: ->
-      !@stance.poll().allowLongReason && @stance.reason && @stance.reason.length > 500
+      @stance.poll().dotsPerPerson
 
+    alertColor: ->
+      return 'success' if @dotsRemaining == 0 
+      return 'primary' if @dotsRemaining > 0
+      return 'error'   if @dotsRemaining < 0
 
 </script>
 
 <template lang="pug">
 .poll-dot-vote-vote-form
-  v-subheader.poll-dot-vote-vote-form__dots-remaining(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
+  v-alert(dense :color="alertColor").poll-dot-vote-vote-form__dots-remaining(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
   .poll-dot-vote-vote-form__options
     .poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.option.id')
       v-subheader.poll-dot-vote-vote-form__option-label {{ choice.option.name }}
@@ -88,12 +92,15 @@ export default
           :min="0"
           :max="dotsPerPerson"
           :readonly="false")
-    validation-errors(:subject='stance', field='stanceChoices')
-
-  poll-common-add-option-button(:poll='stance.poll()')
-  poll-common-stance-reason(:stance='stance')
+    validation-errors(:subject='stance' field='stanceChoices')
+  poll-common-stance-reason(:stance='stance', :poll='poll')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" :disabled="(dotsRemaining < 0)" :loading="stance.processing" @click="submit()")
+    v-btn.poll-common-vote-form__submit(
+      @click="submit()"
+      :disabled="(dotsRemaining < 0)"
+      :loading="stance.processing"
+      color="primary"
+    )
       span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>

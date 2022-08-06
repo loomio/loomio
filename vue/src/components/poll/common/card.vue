@@ -3,12 +3,12 @@ import Session  from '@/shared/services/session'
 import Records  from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import PollCommonDirective from '@/components/poll/common/directive'
+import PollTemplateBanner from '@/components/poll/template_banner'
 import PollService from '@/shared/services/poll_service'
-import { pick } from 'lodash'
+import { pickBy } from 'lodash'
 
 export default
-  components:
-    PollCommonDirective: PollCommonDirective
+  components: { PollCommonDirective, PollTemplateBanner}
 
   props:
     poll: Object
@@ -19,10 +19,12 @@ export default
     @watchRecords
       collections: ["stances", "outcomes"]
       query: (records) =>
+        @actions = PollService.actions(@poll)
         @myStance = @poll.myStance() || Records.stances.build()
         @outcome = @poll.outcome()
 
   data: ->
+    actions: {}
     buttonPressed: false
     myStance: null
     outcome: @poll.outcome()
@@ -33,12 +35,11 @@ export default
 
   computed:
     menuActions: ->
-      @myStance
-      pick PollService.actions(@poll, @), ['edit_poll', 'notification_history', 'show_history', 'move_poll', 'export_poll', 'print_poll', 'discard_poll', 'add_poll_to_thread', 'translate_poll']
+      pickBy @actions, (v) -> v.menu
 
     dockActions: ->
-      @myStance
-      pick PollService.actions(@poll, @), ['edit_stance', 'announce_poll', 'remind_poll', 'close_poll', 'reopen_poll']
+      pickBy @actions, (v) -> v.dock
+
 
 </script>
 
@@ -49,19 +50,20 @@ v-sheet
     v-card-text
       .text--secondary(v-t="'poll_common_card.deleted'")
   div.px-4.pb-4(v-else)
+    poll-template-banner(:poll="poll")
     h1.poll-common-card__title.display-1(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       poll-common-type-icon.mr-2(:poll="poll")
       span(v-if='!poll.translation.title') {{poll.title}}
-      translation(v-if="poll.translation.title" :model='poll', field='title')
-      //- v-chip.ml-3(outlined label x-small color="info" v-t="'poll_types.' + poll.pollType")
+      translation(:model='poll' field='title' v-if="poll.translation.title")
       tags-display(:tags="poll.tags()")
     poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
     poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
     poll-common-details-panel(:poll='poll')
     poll-common-chart-panel(:poll='poll')
     poll-common-action-panel(:poll='poll')
-    action-dock.mt-4(:actions="dockActions" :menu-actions="menuActions")
-
+    action-dock.mt-4(
+      :menu-actions="menuActions"
+      :actions="dockActions")
     .poll-common-card__results-shown.mt-4
       poll-common-votes-panel(:poll='poll')
 </template>

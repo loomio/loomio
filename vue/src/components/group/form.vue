@@ -141,7 +141,7 @@ v-card.group-form
 
     v-tab-item
       .mt-8.px-4
-        v-img.group_form__file-select(:aspect-ratio="4/1", :src="realGroup.coverUrl" @click="selectCoverPhoto()")
+        v-img.group_form__file-select.rounded(:aspect-ratio="4/1", :src="realGroup.coverUrl" @click="selectCoverPhoto()")
         group-avatar.group_form__file-select.group_form__logo(:group="realGroup", :size="64" @click="selectLogo()")
         .v-input
           label.v-label.v-label--active.lmo-font-12px
@@ -325,7 +325,7 @@ v-card.group-form
             //-     span(v-t="'thread_arrangement_form.nested_twice_description'")
 
   v-card-actions.ml-2.mr-2.mt-4
-    help-link(path="en/user_manual/groups/settings" text="group_form.help_group_settings")
+    help-link(path="en/user_manual/groups/settings")
     v-spacer
     v-btn.group-form__submit-button(color="primary" @click='submit()')
       span(v-if='group.isNew() && group.isParent()' v-t="'group_form.submit_start_group'")

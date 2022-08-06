@@ -14,7 +14,7 @@ export default new class ThreadService
       name: 'templates.make_a_copy'
       menu: true
       canPerform: -> Session.user()
-      to: "/d/new?template_discussion_id=#{discussion.id}"
+      to: "/d/new?template_id=#{discussion.id}"
 
     translate_thread:
       icon: 'mdi-translate'
@@ -106,7 +106,6 @@ export default new class ThreadService
           props:
             model: discussion
 
-
     notification_history:
       name: 'action_dock.show_notifications'
       icon: 'mdi-bell-ring-outline'
@@ -158,18 +157,6 @@ export default new class ThreadService
           component: 'TagsSelect',
           props:
             model: discussion.clone()
-
-    edit_arrangement:
-      icon: (discussion.newestFirst && 'mdi-arrow-up') || 'mdi-arrow-down'
-      name: (discussion.newestFirst && 'strand_nav.newest_first') || 'strand_nav.oldest_first'
-      dock: 3
-      dockLeft: true
-      canPerform: -> AbilityService.canEditThread(discussion)
-      perform: ->
-        openModal
-          component: 'ArrangementForm',
-          props:
-            discussion: discussion.clone()
 
     close_thread:
       menu: true

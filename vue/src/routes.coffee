@@ -2,7 +2,7 @@ import DashboardPage from './components/dashboard/page'
 import InboxPage from './components/inbox/page'
 import ExplorePage from './components/explore/page'
 import ProfilePage from './components/profile/page'
-import PollPage from './components/poll/page'
+import PollShowPage from './components/poll/show_page'
 import PollFormPage from './components/poll/form_page'
 import TasksPage from './components/tasks/page'
 import GroupPage from './components/group/page.vue'
@@ -16,12 +16,11 @@ import MembershipRequestsPanel from './components/group/requests_panel'
 import StartGroupPage from './components/start_group/page'
 import ContactPage from './components/contact/page'
 import EmailSettingsPage from './components/email_settings/page'
-import StartDiscussionPage from './components/start_discussion/page'
+import ThreadFormPage from './components/thread/form_page'
 import UserPage from './components/user/page'
 import ThreadsPage from './components/threads/page'
 import StrandPage from './components/strand/page'
 import DemosPage from './components/demos/index.vue'
-
 
 import './config/catch_navigation_duplicated.js'
 import Vue from 'vue'
@@ -69,10 +68,11 @@ router = new Router
     {path: '/contact', component: ContactPage},
     {path: '/email_preferences', component: EmailSettingsPage },
     {path: '/p/:key/edit', component: PollFormPage },
-    {path: '/p/:key/:stub?', component: PollPage},
+    {path: '/p/new', component: PollFormPage },
+    {path: '/p/:key/:stub?', component: PollShowPage},
     {path: '/u/:key/:stub?', component: UserPage },
-    {path: '/d/new', component: StartDiscussionPage },
-    {path: '/d/:key/edit', component: StartDiscussionPage },
+    {path: '/d/new', component: ThreadFormPage },
+    {path: '/d/:key/edit', component: ThreadFormPage },
     {
       path: '/d/:key',
       component: StrandPage,

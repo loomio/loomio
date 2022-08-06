@@ -7,8 +7,6 @@ class PollService
 
     return false unless poll.valid?
     poll.save!
-
-    Stance.create!(participant: actor, poll: poll, admin: true, reason_format: actor.default_format)
     poll.update_counts!
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll, actor)
@@ -254,11 +252,13 @@ class PollService
   end
 
   def self.calculate_results(poll, poll_options)
-    sorted_poll_options = case poll.poll_type
-    when 'proposal', 'count', 'meeting'
+    sorted_poll_options = case poll.order_results_by
+    when 'priority'
       poll_options.sort_by {|o| o.priority }
-    else
+    when 'total_score_desc'
       poll_options.sort_by {|o| -(o.total_score)}
+    else
+      raise "unknown order_results_by: #{poll.order_results_by}"
     end
 
     l = sorted_poll_options.each_with_index.map do |option, index|
@@ -268,8 +268,10 @@ class PollService
         poll_id: option.poll_id,
         name: option_name,
         name_format: poll.poll_option_name_format,
+        icon: option.icon,
         rank: index+1,
         score: option.total_score,
+        target_percent: ((option.icon == 'agree') && (poll.agree_target.to_i > 0)) ? ((option.total_score.to_f / poll.agree_target.to_f) * 100) : 0,
         score_percent: poll.total_score > 0 ? ((option.total_score.to_f / poll.total_score.to_f) * 100) : 0,
         max_score_percent: poll.total_score > 0 ? ((option.total_score.to_f / poll.stance_counts.max.to_f) * 100) : 0,
         voter_percent: poll.voters_count > 0 ? ((option.voter_count.to_f / poll.voters_count.to_f) * 100) : 0,
@@ -290,6 +292,7 @@ class PollService
           score: 0,
           score_percent: 0,
           max_score_percent: 0,
+          target_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           voter_percent: poll.voters_count > 0 ? (poll.undecided_voters_count.to_f / poll.voters_count.to_f * 100) : 0,
           average: 0,
           voter_scores: {},

@@ -284,6 +284,7 @@ describe API::V1::StancesController do
           stance_choices_attributes: [],
           reason: "here is my stance"
         }
+        post :create, params: { stance: stance_params} 
         expect { post :create, params: { stance: stance_params} }.to_not change { Stance.count }
         expect(response.status).to eq 422
       end
@@ -333,7 +334,7 @@ describe API::V1::StancesController do
       expect(response.status).to eq 403
     end
 
-    it 'does not allow creating an invalid stance' do
+    it 'validates minimum stance choices' do
       sign_in user
       stance_params[:poll_id] = proposal.id
       stance_params[:stance_choices_attributes] = []

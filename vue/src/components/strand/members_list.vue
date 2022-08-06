@@ -131,7 +131,6 @@ export default
       :label="$t('announcement.form.discussion_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
       :model="discussion"
-      :excluded-user-ids="excludedUserIds"
       :excluded-audiences="['discussion_group']"
       :reset="reset"
       @new-query="newQuery"
@@ -178,7 +177,7 @@ export default
       v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
 
   .d-flex.justify-end.pa-4
-    help-link(path="en/user_manual/threads/notifying_people" text="announcement.form.help_notifying_people")
+    help-link(path="en/user_manual/threads/notifying_people")
 
 
 

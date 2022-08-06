@@ -5,7 +5,7 @@
 <%= t(:"poll_common_form.closed") %> <%= format_date_for_humans(poll.closed_at, @recipient.time_zone, @recipient.date_time_pref)  %>
 <% end %>
 <% if poll.active? %>
-<% if poll.is_single_vote? %>
+<% if poll.is_single_choice? %>
 **<%= t(:'poll_common.have_your_say') %>**
 <% poll.results.each do |option| %>
 <% next if option[:id] == 0 %>

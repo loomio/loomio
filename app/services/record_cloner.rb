@@ -150,7 +150,6 @@ class RecordCloner
       title
       details
       poll_type
-      multiple_choice
       voter_can_add_options
       anonymous
       details_format
@@ -163,14 +162,12 @@ class RecordCloner
       content_locale
       link_previews
       shuffle_options
-      allow_long_reason
+      limit_reason_length
       meeting_duration
       time_zone
       dots_per_person
-      pending_emails
       minimum_stance_choices
       can_respond_maybe
-      deanonymize_after_close
       max_score
     ]
     attachments = [:files, :image_files]

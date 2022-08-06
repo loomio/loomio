@@ -5,7 +5,7 @@ class AppConfig
     durations
     emojis
     plugins
-    poll_templates
+    poll_types
     providers
     timezones
     notifications
@@ -35,10 +35,6 @@ class AppConfig
 
   def self.image_regex
     doctypes.detect { |type| type['name'] == 'image' }['regex']
-  end
-
-  def self.poll_types
-    poll_templates.keys - ENV['FEATURES_DISABLE_POLL_TYPES'].to_s.split(' ')
   end
 
   def self.theme

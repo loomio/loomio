@@ -44,7 +44,6 @@ describe 'GroupService' do
     let!(:source_comment) { create :comment, discussion: source_discussion }
     let!(:source_poll) { create :poll, group: source }
     let!(:source_stance) { create :stance, poll: source_poll }
-    let!(:source_identity) { create :group_identity, group: source }
     let!(:source_request) { create :membership_request, group: source }
 
     before do
@@ -65,7 +64,6 @@ describe 'GroupService' do
 
       expect(target.discussions).to         include source_discussion
       expect(target.polls).to               include source_poll
-      expect(target.group_identities).to    include source_identity
       expect(target.membership_requests).to include source_request
 
       expect(source_stance.reload.group).to eq target

@@ -2,7 +2,6 @@
 import EventBus from "@/shared/services/event_bus"
 import GroupForm from '@/components/group/form.vue'
 import DiscussionForm from '@/components/discussion/form.vue'
-import ArrangementForm from '@/components/thread/arrangement_form.vue'
 import EditCommentForm from '@/components/thread/edit_comment_form.vue'
 import ConfirmModal from '@/components/common/confirm_modal.vue'
 import ChangeVolumeForm from '@/components/common/change_volume_form'
@@ -18,10 +17,9 @@ import ChatbotMatrixForm from '@/components/chatbot/matrix_form'
 import ChatbotWebhookForm from '@/components/chatbot/webhook_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
-import PollCommonStartForm from '@/components/poll/common/start_form'
+import PollOptionForm from '@/components/poll/common/poll_option_form'
 import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonMoveForm from '@/components/poll/common/move_form'
-import PollCommonAddOptionModal from '@/components/poll/common/add_option_modal'
 import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsSelect from '@/components/tags/select'
 import TagsModal from '@/components/tags/modal'
@@ -61,10 +59,8 @@ export default
     PollCommonOutcomeModal
     PollCommonReopenModal
     PollCommonMoveForm
-    ArrangementForm
+    PollOptionForm
     MoveThreadForm
-    PollCommonAddOptionModal
-    PollCommonStartForm
     RevisionHistoryModal
     TagsModal
     TagsSelect

@@ -9,7 +9,7 @@
 - if poll.active?
   %h5= t(:'poll_common.have_your_say')
 
-  - if poll.is_single_vote?
+  - if poll.is_single_choice?
     %ul
       - poll.results.each do |option|
         - next if option[:id] == 0

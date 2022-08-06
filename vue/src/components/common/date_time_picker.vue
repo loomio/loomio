@@ -1,7 +1,7 @@
 <script lang="coffee">
 import Records     from '@/shared/services/records'
 import { times } from 'lodash'
-import { hoursOfDay } from '@/shared/helpers/format_time'
+import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time'
 import { format, parse, isValid } from 'date-fns'
 
 export default
@@ -13,23 +13,22 @@ export default
 
   created: ->
     @newValue = @value
-    @dateStr = format(@value, 'yyyy-MM-dd')
-    @timeStr = format(@value, 'HH:mm')
-    @minStr  = format(@min, 'yyyy-MM-dd')
 
   data: ->
-    dateStr: null
-    timeStr: null
+    dateStr: @value && format(@value, 'yyyy-MM-dd') || ''
+    timeStr: @value && format(@value, timeFormat()) || ''
+    minStr:  @value && format(@min, 'yyyy-MM-dd') || ''
     dateMenu: false
-    times: hoursOfDay
+    times: hoursOfDay()
+    placeholder: format(new Date(), 'yyyy-MM-dd')
     validDate: (val) =>
       isValid(parse(val, "yyyy-MM-dd", new Date()))
 
-
   methods:
     updateNewValue: ->
-      return unless isValid(parse("#{@dateStr} #{@timeStr}", 'yyyy-MM-dd HH:mm', new Date))
-      @newValue = parse("#{@dateStr} #{@timeStr}", 'yyyy-MM-dd HH:mm', new Date)
+      val = parse("#{@dateStr} #{@timeStr}", "yyyy-MM-dd #{timeFormat()}", new Date)
+      return unless isValid(val)
+      @newValue = val
       @$emit('input', @newValue)
 
   watch:
@@ -45,7 +44,7 @@ v-layout.date-time-picker
         v-model='dateStr'
         v-on='on'
         v-bind='attrs'
-        placeholder="2000-12-31"
+        :placeholder="placeholder"
         :rules="[validDate]"
         prepend-icon="mdi-calendar")
     v-date-picker.date-time-picker__date-picker(

@@ -2,14 +2,11 @@
 import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-import UserModalMixin from '@/mixins/user_modal'
 
 import { isEmpty }     from 'lodash'
 import { approximate } from '@/shared/helpers/format_time'
 
 export default
-  mixins: [UserModalMixin]
-
   data: ->
     user: {}
     isMembershipsFetchingDone: false

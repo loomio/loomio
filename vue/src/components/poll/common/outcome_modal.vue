@@ -1,6 +1,5 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import { fieldFromTemplate } from '@/shared/helpers/poll'
 import Flash from '@/shared/services/flash'
 import EventBus from '@/shared/services/event_bus'
 import Session        from '@/shared/services/session'
@@ -9,7 +8,7 @@ import AbilityService from '@/shared/services/ability_service'
 import Vue     from 'vue'
 import { uniq, map, sortBy, head, find, filter, sum } from 'lodash'
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns'
-import { hoursOfDay, exact} from '@/shared/helpers/format_time'
+import { exact} from '@/shared/helpers/format_time'
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import I18n from '@/i18n'
@@ -31,7 +30,7 @@ export default
     dateToday: format(new Date, 'yyyy-MM-dd')
 
   created: ->
-    if @datesAsOptions()
+    if @poll.datesAsOptions()
       @options = map @outcome.poll().pollOptions(), (option) ->
         id:        option.id
         value:     exact(parseISO(option.name))
@@ -48,12 +47,14 @@ export default
       Vue.set(@outcome, 'calendarInvite', true)
 
       @outcome.pollOptionId = @outcome.pollOptionId or @bestOption.id
-      @outcome.customFields.event_summary = @outcome.customFields.event_summary or @outcome.poll().title
+      @outcome.eventSummary = @outcome.eventSummary or @outcome.poll().title
+      
+  computed:
+    poll: -> @outcome.poll()
 
   methods:
-
     submit: ->
-      @outcome.customFields.event_description = @outcome.statement if @datesAsOptions()
+      @outcome.eventDescription = @outcome.statement if @poll.datesAsOptions()
       @outcome.includeActor = 1 if @outcome.calendarInvite
 
       if @outcome.isNew()
@@ -66,9 +67,6 @@ export default
         Flash.success("poll_common_outcome_form.outcome_#{actionName}")
         @closeModal()
       .catch (error) => true
-
-    datesAsOptions: ->
-      fieldFromTemplate @outcome.poll().pollType, 'dates_as_options'
 
     newRecipients: (val) ->
       @recipients = val
@@ -88,21 +86,34 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     v-spacer
     dismiss-modal-button(:model="outcome")
   .poll-common-outcome-form.px-4
-    p(v-t="'announcement.form.outcome_announced.helptext'")
+    p.text--secondary(v-t="'announcement.form.outcome_announced.helptext'")
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
       :include-actor="outcome.calendarInvite"
       :model="outcome")
 
-    .poll-common-calendar-invite(v-if='datesAsOptions()')
+    .poll-common-calendar-invite(v-if='poll.datesAsOptions()')
       .poll-common-calendar-invite__form
         .poll-common-calendar-invite--pad-top
-          v-select.lmo-flex__grow(v-model='outcome.pollOptionId' :items="options" item-value="id" item-text="value" :label="$t('poll_common_calendar_invite.poll_option_id')")
+          v-select.lmo-flex__grow(
+            v-model='outcome.pollOptionId'
+            :items="options"
+            item-value="id"
+            item-text="value"
+            :label="$t('poll_common_calendar_invite.poll_option_id')")
         .poll-common-calendar-invite--pad-top(v-if='outcome.pollOptionId')
-          v-text-field.poll-common-calendar-invite__summary(v-model='outcome.eventSummary' type='text' :placeholder="$t('poll_common_calendar_invite.event_summary_placeholder')" :label="$t('poll_common_calendar_invite.event_summary')")
+          v-text-field.poll-common-calendar-invite__summary(
+            v-model='outcome.eventSummary'
+            type='text'
+            :placeholder="$t('poll_common_calendar_invite.event_summary_placeholder')"
+            :label="$t('poll_common_calendar_invite.event_summary')")
           validation-errors(:subject='outcome' field='event_summary')
-          v-text-field.poll-common-calendar-invite__location(v-model='outcome.eventLocation' type='text' :placeholder="$t('poll_common_calendar_invite.location_placeholder')" :label="$t('poll_common_calendar_invite.location')")
+          v-text-field.poll-common-calendar-invite__location(
+            v-model='outcome.eventLocation'
+            type='text'
+            :placeholder="$t('poll_common_calendar_invite.location_placeholder')"
+            :label="$t('poll_common_calendar_invite.location')")
 
     .outcome-review-on(v-if="outcome.poll().pollType == 'proposal'")
       v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")

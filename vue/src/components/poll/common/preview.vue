@@ -1,7 +1,9 @@
 <script lang="coffee">
 import Session from '@/shared/services/session'
+import TemplateBadge from '@/components/poll/common/template_badge'
 
 export default
+  components: {TemplateBadge}
   props:
     poll: Object
     displayGroupName: Boolean
@@ -16,8 +18,9 @@ v-list-item.poll-common-preview(:to='urlFor(poll)')
     poll-common-icon-panel(:poll='poll' show-my-stance)
   v-list-item-content
     v-list-item-title
-      | {{poll.title}}
+      span {{poll.title}}
       tags-display(:tags="poll.tags()")
+      template-badge.ml-2(:poll="poll")
     v-list-item-subtitle
       span(v-t="{ path: 'poll_common_collapsed.by_who', args: { name: poll.authorName() } }")
       space

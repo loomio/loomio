@@ -19,15 +19,6 @@ module Boot
         contactEmail:        ENV['SUPPORT_EMAIL'],
         plugins:             { installed: [], outlets: [], routes: [] },
         theme:               AppConfig.theme,
-
-        # these can be deleted after angular is really really gone
-        flashTimeout:        { long: 9999999, short: 999999 },
-        pageSize:            { default: 10, groupThreads: 10, threadItems: 10, exploreGroups: 10 },
-        drafts:              { debounce: 1000},
-        searchFilters:       { status: %w(active closed) },
-        emojis:              { defaults:  [] },
-        # these can be deleted after angular is really really gone
-
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
         plausable_src:       ENV['PLAUSABLE_SRC'],
         plausable_site:      ENV['PLAUSABLE_SITE'],
@@ -38,7 +29,6 @@ module Boot
           isAvailable:       TranslationService.available?,
           supportedLangs:    AppConfig.translate_languages
         },
-        pollTemplates:     AppConfig.poll_templates,
         pollTypes:         AppConfig.poll_types,
         pollColors:        AppConfig.colors,
         webhookEventKinds: AppConfig.webhook_event_kinds,

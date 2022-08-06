@@ -1,4 +1,4 @@
-import { differenceInHours, formatDistanceStrict, isSameYear, isValid } from 'date-fns'
+import { differenceInHours, formatDistanceStrict, isSameYear, isValid, parse } from 'date-fns'
 import { format, utcToZonedTime } from 'date-fns-tz'
 import defaultLocale from 'date-fns/locale/en-US'
 import AppConfig from '@/shared/services/app_config'
@@ -58,32 +58,43 @@ export exact = (date, zone = AppConfig.timeZone, dateTimePref = Session.user().d
     else
       console.error('unknown date pref')
 
+export hoursOfDay = -> 
+  times = [
+    "00:00"
+    "01:00"
+    "02:00"
+    "03:00"
+    "04:00"
+    "05:00"
+    "06:00"
+    "07:00"
+    "08:00"
+    "09:00"
+    "10:00"
+    "11:00"
+    "12:00"
+    "13:00"
+    "14:00"
+    "15:00"
+    "16:00"
+    "17:00"
+    "18:00"
+    "19:00"
+    "20:00"
+    "21:00"
+    "22:00"
+    "23:00"
+    "23:59"
+  ]
+  if Session.user().dateTimePref.includes('abbr')
+    times.map (s) -> format(parse(s, 'HH:mm', new Date()), "h:mm a", {locale: i18n.dateLocale})
+  else
+    times
+
 export timeline = (date) -> format(date, "yyyy-MM-dd")
 
-export hoursOfDay = [
-  "00:00"
-  "01:00"
-  "02:00"
-  "03:00"
-  "04:00"
-  "05:00"
-  "06:00"
-  "07:00"
-  "08:00"
-  "09:00"
-  "10:00"
-  "11:00"
-  "12:00"
-  "13:00"
-  "14:00"
-  "15:00"
-  "16:00"
-  "17:00"
-  "18:00"
-  "19:00"
-  "20:00"
-  "21:00"
-  "22:00"
-  "23:00"
-  "23:59"
-]
+export timeFormat = ->
+    if Session.user().dateTimePref.includes('abbr')
+      'h:mm a'
+    else
+      'HH:mm'

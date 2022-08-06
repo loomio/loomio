@@ -89,6 +89,8 @@ en:
       cannot_add_options: Cannot add options to this poll
       cannot_remove_options: Cannot remove options from this poll
       must_have_options: Must have at least one poll option
+      must_be_in_the_future: Must be in the future
+      templates_cannot_close: Templates cannot close
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) members have stated their position"
       title: Title
@@ -114,6 +116,7 @@ en:
       also_available: Also available in
       total: Total
     waiting_for_votes_from: "Waiting for votes from"
+
   stance:
     error:
       too_short: Please make a selection
@@ -203,7 +206,6 @@ en:
 
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
-    loomio_app_description: "%{site_name} is a place to have discussions and make decisions"
     loomio_app_description: "%{site_name} is a decision-making tool for collaborative organizations"
     view_group: View group
     to_join_group:
@@ -351,6 +353,8 @@ en:
       view_on_loomio: View it on %{site_name}
       create_outcome: Share outcome
       your_response: "You voted:"
+      you_voted: "You voted!"
+      not_invited: "Not invited"
       please_respond: Please respond
       time_zone: (Times displayed in %{zone})
       undecided_members: Undecided Members (%{count})

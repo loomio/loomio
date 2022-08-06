@@ -93,7 +93,7 @@ class Dev::PollsController < Dev::NightwatchController
                proposal: %w[agree disagree abstain block],
                dot_vote: %w[birds bees trees]}
 
-    AppConfig.poll_templates.keys.each do |poll_type|
+    AppConfig.poll_types.keys.each do |poll_type|
       poll = Poll.new(poll_type: poll_type,
                       title: poll_type,
                       details: 'fine print',

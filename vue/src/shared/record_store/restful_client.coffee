@@ -1,6 +1,9 @@
 import { encodeParams } from '@/shared/helpers/encode_params'
 import { omitBy, snakeCase, compact, isString, defaults, pickBy, isNil, identity } from 'lodash'
 
+getCSRF = ->
+  decodeURIComponent document.cookie.match('(^|;)\\s*' + 'csrftoken' + '\\s*=\\s*([^;]+)')?.pop() || ''
+
 export default class RestfulClient
   defaultParams: {}
   currentUpload: null
@@ -69,7 +72,9 @@ export default class RestfulClient
     opts =
       method: method
       credentials: 'same-origin'
-      headers: { 'Content-Type': 'application/json' }
+      headers: 
+        'Content-Type': 'application/json'
+        'X-CSRF-TOKEN': getCSRF()
       body: JSON.stringify(body)
     delete opts.body if method == 'GET'
     @onPrepare()

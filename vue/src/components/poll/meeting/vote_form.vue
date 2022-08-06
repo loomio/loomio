@@ -13,7 +13,6 @@ export default
     stanceChoices: []
     pollOptions: []
     zone: null
-    canRespondMaybe: null
     stanceValues: []
 
   beforeDestroy: ->
@@ -24,8 +23,7 @@ export default
     @watchRecords
       collections: ['pollOptions']
       query: (records) =>
-        @canRespondMaybe =  @stance.poll().customFields.can_respond_maybe
-        @stanceValues = if @stance.poll().customFields.can_respond_maybe then [2,1,0] else [2, 0]
+        @stanceValues = if @poll.canRespondMaybe then [2,1,0] else [2, 0]
         if @stance.poll().optionsDiffer(@pollOptions)
           @pollOptions = @stance.poll().pollOptionsForVoting()
           @stanceChoices = @pollOptions.map (option) =>
@@ -62,7 +60,7 @@ export default
       "/img/#{name}.svg"
 
     incrementScore: (choice) ->
-      if @canRespondMaybe
+      if @poll.canRespondMaybe
         choice.score = (choice.score + 5) % 3
       else
         choice.score = if choice.score == 2
@@ -71,33 +69,47 @@ export default
           2
 
   computed:
+    poll: -> @stance.poll()
     currentUserTimeZone: ->
       Session.user().timeZone
-
-    reasonTooLong: ->
-      @stance.reason && @stance.reason.length > 500 && !@stance.poll().allowLongReason
 
 </script>
 
 <template lang='pug'>
 form.poll-meeting-vote-form(@submit.prevent='submit()')
-  p.text--secondary(v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}")
+  p.text--secondary(
+    v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}"
+  )
   .poll-common-vote-form__options
-    //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.can_attend'")
-    //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.if_need_be'", v-if='canRespondMaybe')
-    //- h3.lmo-h3.poll-meeting-vote-form--box(v-t="'poll_meeting_vote_form.unable'")
-    //- time-zone-select.lmo-margin-left
-    v-layout.poll-common-vote-form__option(wrap v-for='choice in stanceChoices' :key='choice.id')
-      poll-common-stance-choice(:poll="stance.poll()" :stance-choice='choice' :zone='zone' @click="incrementScore(choice)")
+    v-layout.poll-common-vote-form__option(
+      v-for='choice in stanceChoices'
+      :key='choice.id'
+      wrap 
+    )
+      poll-common-stance-choice(
+        :poll="stance.poll()"
+        :stance-choice='choice'
+        :zone='zone'
+        @click="incrementScore(choice)"
+      )
       v-spacer
-      v-btn.poll-meeting-vote-form--box(icon :style="buttonStyleFor(choice, i)" v-for='i in stanceValues', :key='i', @click='choice.score = i')
+      v-btn.poll-meeting-vote-form--box(
+        v-for='i in stanceValues'
+        :key='i'
+        @click='choice.score = i'
+        :style="buttonStyleFor(choice, i)"
+        icon
+      )
         v-avatar(:size="36")
           img.poll-common-form__icon(:src="imgForScore(i)")
   validation-errors(:subject='stance', field='stanceChoices')
-  poll-common-add-option-button(:poll='stance.poll()')
-  poll-common-stance-reason(:stance='stance')
+  poll-common-stance-reason(:stance='stance', :poll='poll')
   v-card-actions.poll-common-form-actions
     v-spacer
-    v-btn.poll-common-vote-form__submit(color="primary" type='submit' :loading="stance.processing")
+    v-btn.poll-common-vote-form__submit(
+      :loading="stance.processing"
+      color="primary"
+      type='submit'
+    )
       span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
 </template>

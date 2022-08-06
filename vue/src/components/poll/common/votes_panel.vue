@@ -71,27 +71,29 @@ export default
 
 <template lang="pug">
 .poll-common-votes-panel
-  v-layout.poll-common-votes-panel__header
-    .subtitle-1(v-t="'poll_common.votes'")
-    v-spacer
+  //- v-layout.poll-common-votes-panel__header
     //- v-select(style="max-width: 200px" dense solo v-model='order' :items="sortOptions" @change='refresh()' aria-label="$t('poll_common_votes_panel.change_results_order')")
-  .poll-common-votes-panel__no-votes(v-if='!poll.votersCount' v-t="'poll_common_votes_panel.no_votes_yet'")
+  h2.text-h5.my-2(v-t="'poll_common.votes'")
+  .poll-common-votes-panel__no-votes.text--secondary(v-if='!poll.votersCount' v-t="'poll_common_votes_panel.no_votes_yet'")
   .poll-common-votes-panel__has-votes(v-if='poll.votersCount')
-    .poll-common-votes-panel__stance(v-for='stance in stances' :key='stance.id')
+    .poll-common-votes-panel__stance(v-for='stance in stances', :key='stance.id')
       .poll-common-votes-panel__avatar.pr-3
-        user-avatar(:user='stance.participant()' :size='24')
+        user-avatar(:user='stance.participant()', :size='24')
       .poll-common-votes-panel__stance-content
         .poll-common-votes-panel__stance-name-and-option
           v-layout.body-2(align-center)
             .pr-2.text--secondary {{ stance.participantName() }}
-            poll-common-stance-choice(v-if="poll.showResults() && stance.castAt && poll.singleChoice()" :poll="poll" :stance-choice="stance.stanceChoice()")
+            poll-common-stance-choice(
+              v-if="poll.showResults() && stance.castAt && poll.singleChoice()", 
+              :poll="poll", 
+              :stance-choice="stance.stanceChoice()")
             span.caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
-            time-ago.text--secondary(v-if="stance.castAt" :date="stance.castAt")
+            time-ago.text--secondary(v-if="stance.castAt", :date="stance.castAt")
         .poll-common-stance(v-if="poll.showResults() && stance.castAt")
           poll-common-stance-choices(:stance='stance')
           formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
     loading(v-if="loader.loading")
-    v-pagination(v-model="page" :length="totalPages" :disabled="totalPages == 1")
+    v-pagination(v-model="page", :length="totalPages", :disabled="totalPages == 1")
 </template>
 
 <style lang="sass">
