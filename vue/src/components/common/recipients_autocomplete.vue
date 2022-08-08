@@ -2,6 +2,7 @@
 import EventBus from '@/shared/services/event_bus'
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
+import Flash from '@/shared/services/flash'
 import AnnouncementService from '@/shared/services/announcement_service'
 import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash'
 import AbilityService from '@/shared/services/ability_service'
@@ -126,7 +127,9 @@ export default
 
     expand: (item) ->
       excludeMembers = (@excludeMembers && {exclude_members: 1}) || {}
-      return false if @model.anonymous
+      if @model.anonymous && ['decided_voters', 'undecided_voters'].includes(item.id)
+        Flash.warning('announcement.cannot_reveal_when_anonymous')
+        return false 
       Records.fetch
         path: 'announcements/audience'
         params: {
@@ -314,8 +317,10 @@ div.recipients-autocomplete
         color='primary'
         @click:close='remove(data.item)')
         span
-          user-avatar.mr-1(v-if="data.item.type == 'user'"
-                           :user="data.item.user" :size="24" no-link)
+          user-avatar.mr-1(
+            v-if="data.item.type == 'user'"
+            :user="data.item.user"
+            :size="24" no-link)
           v-icon.mr-1(v-else small) {{data.item.icon}}
         span {{ data.item.name }}
         span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
@@ -323,7 +328,7 @@ div.recipients-autocomplete
           span ({{ $t('common.you') }})
     template(v-slot:item='data')
       v-list-item-avatar
-        user-avatar(v-if="data.item.type == 'user'" :user="data.item.user" :size="24" no-link)
+        user-avatar(v-if="data.item.type == 'user'", :user="data.item.user", :size="24" no-link)
         v-icon.mr-1(v-else small) {{data.item.icon}}
       v-list-item-content.announcement-chip__content
         v-list-item-title
@@ -331,5 +336,9 @@ div.recipients-autocomplete
           span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
             space
             span ({{ $t('common.you') }})
-  notifications-count(v-show="recipients.length" :model='model' :exclude-members="excludeMembers" :include-actor="includeActor")
+  notifications-count(
+    v-show="recipients.length"
+    :model='model'
+    :exclude-members="excludeMembers"
+    :include-actor="includeActor")
 </template>

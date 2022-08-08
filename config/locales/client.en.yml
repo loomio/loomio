@@ -746,6 +746,7 @@ en:
     send_group_explain: ''
     send_poll: Send {{type}}
     send_outcome: Send outcome
+    cannot_reveal_when_anonymous: Sorry, we cannot reveal who has or has not voted on an anonymous poll.
     discussion_notification_history: Thread notification history
     group_notification_history: Group invitation history
     poll_notification_history: Poll notification history
@@ -2054,7 +2055,7 @@ en:
     stance_reason_required: Required
     stance_reason_optional: Optional
     stance_reason_disabled: Disabled
-    stance_reason_is_required: You must provide a reason with your vote
+    stance_reason_is_required: Please provide a reason with your vote
     limit_reason_length: Limit reason to maximum 500 characters
     save_poll: Save poll
     start_poll_type: Start {{poll_type}}
