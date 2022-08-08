@@ -1,5 +1,6 @@
 count:
   template: true
+  prevent_anonymous: true
   material_icon: mdi-human-greeting-variant
   vote_method: show_thumbs
   validate_minimum_stance_choices: true
