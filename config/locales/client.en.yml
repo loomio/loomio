@@ -336,7 +336,6 @@ en:
     objects: Things
     places: Places
 
-
   ordinal:
     _1: 1st
     _2: 2nd
@@ -385,7 +384,6 @@ en:
     explain_scope:
       thread: This changes when you'll be notified about this thread
       group: This changes when you'll be notified about all threads in the group
-
     simple:
       label: Notifications
       loud: Subscribed
@@ -395,7 +393,6 @@ en:
       loud_explain: whenever there is activity
       normal_explain: when someone asks for your attention
       quiet_explain: no notifications
-
     aria_label: "Change email settings form"
     loud_label: "All activity"
     normal_label: "Announcements"
@@ -616,7 +613,7 @@ en:
 
     with_title:
       comment_replied_to: "%{actor} replied to you in: %{title}"
-      discussion_announced: "%{actor} invited you to a thread: %{title}"
+      discussion_announced: "%{actor} invited you to the thread: %{title}"
       discussion_edited: "%{actor} edited the thread context: %{title}"
       discussion_closed: "%{actor} closed the thread: %{title}"
       invitation_accepted: "%{actor} accepted your invitation to join %{title}"
