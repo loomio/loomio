@@ -471,7 +471,7 @@ export default
           :items="closingSoonItems")
 
 
-      template(v-if="poll.groupId")
+      template(v-if="poll.groupId && !poll.discussionId")
         .text-h5.mb-4.mt-8(v-t="'common.template'")
         p.text--secondary(v-t="'templates.share_a_custom_configuration'") 
         
