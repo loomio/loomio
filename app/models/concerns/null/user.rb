@@ -10,7 +10,7 @@ module Null::User
   end
 
   def nil_methods
-    [:id, :key, :username, :short_bio, :city, :region, :country, :selected_locale, :deactivated_at, :time_zone,
+    [:id, :key, :username, :short_bio, :city, :region, :country, :selected_locale, :deactivated_at,
      :default_membership_volume, :unsubscribe_token, :location, :email_catch_up_day,
      :encrypted_password, :update_attribute, :last_seen_at, :legal_accepted_at]
   end

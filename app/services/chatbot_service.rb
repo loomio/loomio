@@ -36,10 +36,12 @@ class ChatbotService
           poll = event.eventable.poll 
         end
 
-        recipient = LoggedOutUser.new(locale: chatbot.group.locale,
-                                      time_zone: chatbot.group.time_zone,
-                                      date_time_pref: chatbot.group.date_time_pref)
-        I18n.with_locale(chatbot.group.locale) do
+        example_user = event.actor || chatbot.group.creator
+
+        recipient = LoggedOutUser.new(locale: example_user.locale,
+                                      time_zone: example_user.time_zone,
+                                      date_time_pref: example_user.date_time_pref)
+        I18n.with_locale(recipient.locale) do
           if chatbot.kind == "webhook"
             serializer = "Webhook::#{chatbot.webhook_kind.classify}::EventSerializer".constantize
             payload = serializer.new(event, root: false, scope: {template_name: template_name, recipient: recipient}).as_json
