@@ -171,7 +171,7 @@ export default
       {pollType: (@poll.template && @$t('poll_common.poll_template').toLowerCase()) || @poll.translatedPollType().toLowerCase()}
 
     reminderEnabled: ->
-      !@poll.closingAt || isAfter(@poll.closingAt, addHours(new Date(), 24))
+      isAfter(@poll.closingAt, addHours(new Date(), 24))
 
     closingSoonItems: ->
       'nobody author undecided_voters voters'.split(' ').map (name) =>
@@ -465,11 +465,9 @@ export default
         p(v-if="!reminderEnabled" v-t="{path: 'poll_common_settings.notify_on_closing_soon.closes_too_soon', args: {pollType: poll.translatedPollType()}}")
         v-select(
           v-if="reminderEnabled"
-          :disabled="!poll.closingAt"
           :label="$t('poll_common_settings.notify_on_closing_soon.title', {pollType: poll.translatedPollType()})"
           v-model="poll.notifyOnClosingSoon"
           :items="closingSoonItems")
-
 
       template(v-if="poll.groupId && !poll.discussionId")
         .text-h5.mb-4.mt-8(v-t="'common.template'")
