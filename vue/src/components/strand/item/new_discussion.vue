@@ -90,7 +90,7 @@ export default
   .my-1.mb-2(v-if="discussion.tags().length")
     tags-display(:tags="discussion.tags()")
   .mb-2
-    user-avatar.mr-2(:user='author' :size='36')
+    user-avatar.mr-2(:user='author', :size='36')
     router-link.text--secondary(:to="urlFor(author)") {{authorName}}
     mid-dot
     router-link.text--secondary(:to='urlFor(discussion)')
@@ -106,8 +106,8 @@ export default
     link-previews(:model="discussion")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
-  strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
+    action-dock.py-2(:model='discussion', :actions='dockActions', :menu-actions='menuActions')
+  strand-actions-panel(v-if="discussion.newestFirst", :discussion="discussion")
 </template>
 <style lang="sass">
 @import '@/css/variables'

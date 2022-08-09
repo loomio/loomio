@@ -4,6 +4,7 @@ import GroupForm from '@/components/group/form.vue'
 import DiscussionForm from '@/components/discussion/form.vue'
 import EditCommentForm from '@/components/thread/edit_comment_form.vue'
 import ConfirmModal from '@/components/common/confirm_modal.vue'
+import ArrangementForm from '@/components/thread/arrangement_form.vue'
 import ChangeVolumeForm from '@/components/common/change_volume_form'
 import PollCommonModal from '@/components/poll/common/modal'
 import PollCommonEditVoteModal from '@/components/poll/common/edit_vote_modal'
@@ -77,6 +78,7 @@ export default
     PollReminderForm
     GroupInvitationForm
     SeenByModal
+    ArrangementForm
   }
 
   data: ->

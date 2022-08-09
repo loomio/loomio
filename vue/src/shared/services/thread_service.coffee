@@ -158,6 +158,18 @@ export default new class ThreadService
           props:
             model: discussion.clone()
 
+    edit_arrangement:
+      icon: (discussion.newestFirst && 'mdi-arrow-up') || 'mdi-arrow-down'
+      name: (discussion.newestFirst && 'strand_nav.newest_first') || 'strand_nav.oldest_first'
+      dock: 3
+      dockLeft: true
+      canPerform: -> AbilityService.canEditThread(discussion)
+      perform: ->
+        openModal
+          component: 'ArrangementForm',
+          props:
+            discussion: discussion.clone()
+            
     close_thread:
       menu: true
       icon: 'mdi-archive-outline'
