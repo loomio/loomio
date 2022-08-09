@@ -15,7 +15,7 @@ export default
       collections: ['polls', 'stances']
       query: (store) =>
         @poll = find @discussion.activePolls().filter((poll) -> poll.pollOptionNames.length), (poll) ->
-          AbilityService.canParticipateInPoll(poll) && !poll.iHaveVoted()
+          poll.closingAt && AbilityService.canParticipateInPoll(poll) && !poll.iHaveVoted()
 
   computed:
     styles: ->

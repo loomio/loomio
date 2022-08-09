@@ -205,6 +205,7 @@ export default class PollModel extends BaseModel
 
   adminsInclude: (user) ->
     stance = @stanceFor(user)
+    console.log '@authorId == user.id', @authorId == user.id
     (@authorId == user.id && (!@groupId || @group().membersInclude(user))) ||
     (stance && stance.admin) || 
     (@discussionId && @discussion().adminsInclude(user)) || 
@@ -245,7 +246,7 @@ export default class PollModel extends BaseModel
     !isEqual(sortBy(@pollOptionNames), sortBy(map(options, 'name')))
 
   iCanVote: ->
-    @isActive() &&
+    @isVotable() &&
     (@anyoneCanParticipate or @myStance() or (!@specifiedVotersOnly and @membersInclude(Session.user())))
 
   isBlank: ->
@@ -284,8 +285,8 @@ export default class PollModel extends BaseModel
   hasDescription: ->
     !!@details
 
-  isActive: ->
-    !@discardedAt && @closingAt && !@closedAt?
+  isVotable: ->
+    !@discardedAt && @closingAt && !@closedAt? && !@template
 
   isClosed: ->
     @closedAt?

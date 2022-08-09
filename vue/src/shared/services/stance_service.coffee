@@ -21,7 +21,7 @@ export default new class StanceService
       dock: 1
       canPerform: ->
         (Session.user() && stance.participant()) &&
-        stance.latest && stance.poll().isActive() && stance.participant() == Session.user()
+        stance.latest && stance.poll().isVotable() && stance.participant() == Session.user()
       perform: =>
         openModal
           component: 'PollCommonEditVoteModal',

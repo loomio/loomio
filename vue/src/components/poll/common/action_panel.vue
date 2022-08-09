@@ -41,13 +41,13 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-action-panel(v-if="!poll.closedAt")
+.poll-common-action-panel(v-if="!poll.closedAt" style="position: relative")
   v-alert.poll-common-action-panel__anonymous-message.mt-6(dense outlined type="info" v-if='poll.anonymous')
     span(v-t="'poll_common_action_panel.anonymous'")
       
-  template(v-if="!poll.closingAt")
+  v-overlay(absolute v-if="!poll.closingAt")
     v-alert.poll-common-action-panel__results-hidden-until-vote.my-2(
-      dense outlined type="info"
+      dense type="info"
     )
       span(v-if='poll.template' v-t="{path: 'poll_common_action_panel.voting_disabled_poll_is_template', args: {poll_type: poll.translatedPollType()}}")
       span(v-else v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")

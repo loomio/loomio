@@ -81,6 +81,7 @@ export default
       v-subheader.poll-dot-vote-vote-form__option-label {{ choice.option.name }}
       v-layout(row align-center)
         v-slider.poll-dot-vote-vote-form__slider.mr-4(
+          :disabled="!poll.isVotable()"
           v-model='choice.score'
           :rules="rulesForChoice(choice)"
           :color="choice.option.color"
@@ -95,10 +96,10 @@ export default
     validation-errors(:subject='stance' field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
   v-card-actions.poll-common-form-actions
-    v-spacer
     v-btn.poll-common-vote-form__submit(
+      block
       @click="submit()"
-      :disabled="(dotsRemaining < 0)"
+      :disabled="(dotsRemaining < 0) || !poll.isVotable()"
       :loading="stance.processing"
       color="primary"
     )

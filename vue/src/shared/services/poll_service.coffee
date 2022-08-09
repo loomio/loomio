@@ -23,7 +23,7 @@ export default new class PollService
       icon: 'mdi-pencil'
       dock: 2
       canPerform: =>
-        poll.isActive() && Session.user() && poll.iHaveVoted()
+        poll.isVotable() && Session.user() && poll.iHaveVoted()
       perform: =>
         openModal
           component: 'PollCommonEditVoteModal',

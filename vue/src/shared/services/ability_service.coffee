@@ -231,7 +231,7 @@ export default new class AbilityService
 
   canParticipateInPoll: (poll) ->
     return false unless poll
-    return false unless poll.isActive()
+    return false if poll.closedAt
     poll.anyoneCanParticipate or
     poll.myStance() or
     (!poll.specifiedVotersOnly and poll.membersInclude(Session.user()))
@@ -240,7 +240,7 @@ export default new class AbilityService
     !poll.discussionId && poll.adminsInclude(Session.user())
 
   canEditPoll: (poll) ->
-    poll.isActive() and poll.adminsInclude(Session.user())
+    poll.adminsInclude(Session.user()) && !poll.closedAt
 
   canDeletePoll: (poll) ->
     !poll.discardedAt && poll.adminsInclude(Session.user())

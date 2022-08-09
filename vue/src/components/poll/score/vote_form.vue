@@ -43,6 +43,7 @@ form.poll-score-vote-form(@submit.prevent='submit()')
     .poll-score-vote-form__option(v-for='choice in stanceChoices', :key='choice.option.id')
       v-subheader.poll-score-vote-form__option-label {{ choice.option.name }}
       v-slider.poll-score-vote-form__score-slider(
+        :disabled="!poll.isVotable()"
         v-model='choice.score'
         :color="choice.option.color"
         :thumb-color="choice.option.color"
@@ -56,11 +57,12 @@ form.poll-score-vote-form(@submit.prevent='submit()')
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
   v-card-actions.poll-common-form-actions
-    v-spacer
     v-btn.poll-common-vote-form__submit(
+      block
+      :disabled="!poll.isVotable()"
       :loading="stance.processing"
       color="primary"
       type='submit'
     )
-      span(v-t="'poll_common.vote'")
+      span(v-t="'poll_common.submit_vote'")
 </template>

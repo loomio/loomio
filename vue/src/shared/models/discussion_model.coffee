@@ -138,7 +138,7 @@ export default class DiscussionModel extends BaseModel
 
   activePolls: ->
     filter @polls(), (poll) ->
-      poll.isActive()
+      poll.isVotable()
 
   hasActivePoll: ->
     some @activePolls()
@@ -148,7 +148,7 @@ export default class DiscussionModel extends BaseModel
 
   closedPolls: ->
     filter @polls(), (poll) ->
-      !poll.isActive()
+      !poll.isVotable()
 
   activePoll: ->
     head @activePolls()

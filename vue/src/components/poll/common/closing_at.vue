@@ -17,17 +17,17 @@ export default
 
   computed:
     time: ->
-      key = if @poll.isActive() then 'closingAt' else 'closedAt'
+      key = if @poll.isVotable() then 'closingAt' else 'closedAt'
       @poll[key]
 
     translationKey: ->
-      if @poll.isActive()
+      if @poll.isVotable()
         'common.closing_in'
       else
         'common.closed_ago'
 
     color: ->
-      if @poll.isActive()
+      if @poll.isVotable()
         if differenceInHours(@poll.closingAt, new Date) < 48
           'warning'
         else

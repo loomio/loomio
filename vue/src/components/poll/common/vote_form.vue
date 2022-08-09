@@ -21,7 +21,6 @@ export default
           @options = @poll.pollOptionsForVoting() if @poll
 
   computed:
-    votingEnabled: -> !@poll.template && !!@poll.closingAt
     singleChoice: -> @poll.singleChoice()
     hasOptionIcon: -> @poll.config().has_option_icon
     poll: -> @stance.poll()
@@ -63,18 +62,13 @@ export default
         @selectedOptionIds.includes(option.id)
 
     classes: (option) ->
-      if @votingEnabled
-        votingStatus = 'voting-enabled'
-      else
-        votingStatus = 'voting-disabled'
-
       if @optionSelected
         if @isSelected(option)
-          ['elevation-2', votingStatus]
+          ['elevation-2']
         else
-          ['poll-common-vote-form__button--not-selected', votingStatus]
+          ['poll-common-vote-form__button--not-selected']
       else
-        [votingStatus]
+        []
 
 
 </script>
@@ -116,7 +110,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
         type="checkbox"
         name="name"
       )
-      v-list-item(:style="!votingEnabled && 'opacity: 0.6'")
+      v-list-item
         v-list-item-icon
           template(v-if="hasOptionIcon")
             v-avatar(size="48")
@@ -130,21 +124,20 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
           v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
           v-list-item-subtitle {{option.meaning}}
 
-  template(v-if="votingEnabled")
-    poll-common-stance-reason(
-      :stance='stance'
-      :poll='poll'
-      :selectedOptionId="selectedOptionId"
-      :prompt="optionPrompt")
-    v-card-actions.poll-common-form-actions
-      v-btn.poll-common-vote-form__submit(
-        @click='submit()'
-        :disabled='!optionCountValid'
-        :loading="stance.processing"
-        color="primary"
-        block
-      )
-        span(v-t="submitText")
+  poll-common-stance-reason(
+    :stance='stance'
+    :poll='poll'
+    :selectedOptionId="selectedOptionId"
+    :prompt="optionPrompt")
+  v-card-actions.poll-common-form-actions
+    v-btn.poll-common-vote-form__submit(
+      @click='submit()'
+      :disabled='!optionCountValid || !poll.isVotable()'
+      :loading="stance.processing"
+      color="primary"
+      block
+    )
+      span(v-t="submitText")
 </template>
 <style lang="sass">
 .poll-common-vote-form__button--not-selected

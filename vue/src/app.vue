@@ -106,6 +106,9 @@ h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
 a
   text-decoration: none
 
+.lmo-relative
+  position: relative
+
 .text-almost-black
   color: rgba(0, 0, 0, 0.87)
 
