@@ -205,7 +205,6 @@ export default class PollModel extends BaseModel
 
   adminsInclude: (user) ->
     stance = @stanceFor(user)
-    console.log '@authorId == user.id', @authorId == user.id
     (@authorId == user.id && (!@groupId || @group().membersInclude(user))) ||
     (stance && stance.admin) || 
     (@discussionId && @discussion().adminsInclude(user)) || 
