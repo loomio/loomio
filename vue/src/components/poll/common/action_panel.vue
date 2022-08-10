@@ -45,9 +45,9 @@ export default
   v-alert.poll-common-action-panel__anonymous-message.mt-6(dense outlined type="info" v-if='poll.anonymous')
     span(v-t="'poll_common_action_panel.anonymous'")
       
-  v-overlay(absolute v-if="!poll.closingAt")
-    v-alert.poll-common-action-panel__results-hidden-until-vote.my-2(
-      dense type="info"
+  v-overlay.rounded.elevation-1(absolute v-if="!poll.closingAt", :opacity="0.33", :z-index="2")
+    v-alert.poll-common-action-panel__results-hidden-until-vote.my-2.elevation-5(
+       dense type="info"
     )
       span(v-if='poll.template' v-t="{path: 'poll_common_action_panel.voting_disabled_poll_is_template', args: {poll_type: poll.translatedPollType()}}")
       span(v-else v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
@@ -56,7 +56,7 @@ export default
     .poll-common-vote-form(v-if='stance && !stance.castAt')
       h3.title.py-3(v-t="'poll_common.have_your_say'")
 
-  poll-common-directive(v-if="stance && !stance.castAt", :stance='stance' name='vote-form')
+  poll-common-directive(:class="{'pa-2': !poll.closingAt}" v-if="stance && !stance.castAt", :stance='stance' name='vote-form')
 
   .poll-common-unable-to-vote(v-if='!stance')
     v-alert.my-4(type="warning" outlined dense v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
