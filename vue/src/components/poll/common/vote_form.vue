@@ -62,13 +62,18 @@ export default
         @selectedOptionIds.includes(option.id)
 
     classes: (option) ->
+      if @poll.isVotable()
+        votingStatus = 'voting-enabled'
+      else
+        votingStatus = 'voting-disabled'
+
       if @optionSelected
         if @isSelected(option)
-          ['elevation-2']
+          ['elevation-2', votingStatus]
         else
-          ['poll-common-vote-form__button--not-selected']
+          ['poll-common-vote-form__button--not-selected', votingStatus]
       else
-        []
+        [votingStatus]
 
 
 </script>
