@@ -12,10 +12,13 @@ export default new class RescueUnsavedEditsService
     if some(models, (m) -> intersection(attrs, m.modifiedAttributes()).length > 0)
       # console.log 'some modified', @models.map (m) ->
       #   modifiedAttrs = intersection(attrs, m.modifiedAttributes())
-      #   o = {}
-      #   o['new'] = pick(m, modifiedAttrs)
-      #   o['old'] = pick(m.unmodified, modifiedAttrs)
-      #   o
+      #   if modifiedAttrs.length > 0
+      #     o = {}
+      #     o['new'] = pick(m, modifiedAttrs)
+      #     o['old'] = pick(m.unmodified, modifiedAttrs)
+      #     o
+      #   else
+      #     null
 
       if confirm(I18n.t('common.confirm_discard_changes'))
         (model && model.discardChanges()) || true

@@ -83,7 +83,7 @@ export default class BaseModel
     if utils.isTimeAttribute(attributeName)
       !(original == current or isEqual(original, current))
     else
-      original != current
+      original != current && original != null && current != ''
 
   modifiedAttributes: ->
     filter @attributeNames, (name) =>
