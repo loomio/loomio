@@ -1,5 +1,4 @@
 count:
-  template: true
   prevent_anonymous: true
   material_icon: mdi-human-greeting-variant
   vote_method: show_thumbs
@@ -40,7 +39,6 @@ count:
     default_duration_in_days: 3
 
 check:
-  template: true
   material_icon: mdi-head-question
   vote_method: show_thumbs
   validate_minimum_stance_choices: true
@@ -87,7 +85,6 @@ check:
     default_duration_in_days: 3
 
 proposal:
-  template: true
   material_icon: mdi-thumbs-up-down
   vote_method: show_thumbs
   vote_method_hint_i18n: poll_common_form.voting_methods.show_thumbs_hint
@@ -157,7 +154,6 @@ proposal:
     default_duration_in_days: 7
 
 meeting:
-  template: true
   material_icon: mdi-calendar-multiselect
   prevent_anonymous: true
   vote_method: time_poll
@@ -180,7 +176,6 @@ meeting:
     can_respond_maybe: true
 
 poll:
-  template: true
   material_icon: mdi-check
   vote_method: choose
   vote_method_hint_i18n: poll_common_form.voting_methods.choose_hint
@@ -194,8 +189,8 @@ poll:
   options_have_meaning: true
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.poll_title
-    process_subtitle_i18n: poll_poll_form.multiple_choice_subtitle
+    process_name_i18n: poll_common_settings.multiple_choice.title
+    process_subtitle_i18n: poll_poll_form.tool_tip_collapsed
     chart_type: bar
     min_score: 1
     max_score: 1
@@ -204,7 +199,6 @@ poll:
     default_duration_in_days: 3
 
 dot_vote:
-  template: true
   material_icon: mdi-chart-bar-stacked
   vote_method: allocate
   vote_method_hint_i18n: poll_common_form.voting_methods.allocate_hint
@@ -225,7 +219,6 @@ dot_vote:
     default_duration_in_days: 3
 
 score:
-  template: true
   material_icon: mdi-chart-gantt
   vote_method: score
   vote_method_hint_i18n: poll_common_form.voting_methods.score_hint
@@ -246,7 +239,6 @@ score:
     default_duration_in_days: 3
 
 ranked_choice:
-  template: true
   material_icon: mdi-format-list-numbered
   vote_method: ranked_choice
   vote_method_hint_i18n: poll_common_form.voting_methods.ranked_choice_hint

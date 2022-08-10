@@ -14,6 +14,7 @@ export default
     polls: {threadPolls: [], groupPolls: [], defaultPolls: []}
     newTemplate: null
     sourceTemplate: null
+    expanded: Session.user().experiences['pollTypes.expanded']
 
   computed:
     pollKinds: -> Object.keys(@polls).filter (key) => @polls[key].length
@@ -21,6 +22,16 @@ export default
       threadPolls: 'poll_common_action_panel.from_the_thread'
       groupPolls: {path: 'poll_common_action_panel.name_templates', args: {name: @group && @group.fullName}}
       defaultPolls: 'poll_common_action_panel.default_templates'
+    pollTypes: ->
+      if @expanded 
+        ['count', 'check', 'proposal', 'meeting', 'poll', 'score', 'dot_vote', 'ranked_choice']
+      else
+        ['check', 'proposal', 'meeting']
+
+  methods:
+    toggleExpanded: ->
+      @expanded = !@expanded
+      Records.users.saveExperience('pollTypes.expanded', @expanded)
 
   created: ->
     exclude_types = 'group discussion stance'
@@ -66,8 +77,8 @@ export default
             clone.groupId = groupId
             clone
 
-        @polls['defaultPolls'] = compact Object.keys(AppConfig.pollTypes).map (pollType) =>
-          return null unless AppConfig.pollTypes[pollType].template
+
+        @polls['defaultPolls'] = @pollTypes.map (pollType) =>
           poll = Records.polls.build
             pollType: pollType
             groupId: groupId
@@ -91,7 +102,7 @@ export default
 .poll-common-templates-list
   v-card-title(v-t="'poll_common.poll_templates'")
   template(v-for="kind in pollKinds")
-    v-subheader(v-t="i18nForKind[kind]" v-if="kind == 'defaultPolls'")
+    v-subheader(v-t="i18nForKind[kind]" v-if="kind == 'defaultPolls' && pollKinds.length > 1")
     v-subheader(v-if="kind == 'groupPolls'" v-t="{path: 'templates.title_templates', args: {title: group.fullName}}")
     v-subheader(v-if="kind == 'threadPolls'" v-t="{path: 'templates.title_template', args: {title: sourceTemplate.processName || sourceTemplate.title}}")
     v-list.decision-tools-card__poll-types(two-line dense)
@@ -117,4 +128,7 @@ export default
         v-list-item-content
           v-list-item-title New template
           v-list-item-subtitle Customise with your preferred terminologly and settings
+  v-btn.text-center(text @click="toggleExpanded")
+    span(v-t="expanded ? 'common.action.show_fewer' : 'common.action.show_more'")
+
 </template>
