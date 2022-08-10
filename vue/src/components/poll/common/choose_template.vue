@@ -115,10 +115,10 @@ export default
         v-list-item-avatar
           v-icon {{$pollTypes[poll.pollType].material_icon}}
         v-list-item-content
-          v-list-item-title {{ poll.processName }}
-          v-list-item-subtitle {{ poll.title || poll.processSubtitle }}
+          v-list-item-title {{ poll.defaultedI18n('processName') }}
+          v-list-item-subtitle {{ poll.defaultedI18n('processSubtitle') || poll.title }}
       v-list-item.decision-tools-card__new-template(
-        v-if="kind == 'defaultPolls' && !discussion"
+        v-if="kind == 'defaultPolls' && !discussion && expanded"
         @click="$emit('setPoll', newTemplate)"
         :class="'decision-tools-card__poll-type--new-template'"
         :key='123'

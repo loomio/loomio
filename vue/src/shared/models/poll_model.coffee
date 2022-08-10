@@ -119,8 +119,8 @@ export default class PollModel extends BaseModel
         icon: o.icon
 
   applyPollTypeDefaults: ->
-    @processName = I18n.t(AppConfig.pollTypes[@pollType].defaults.process_name_i18n)
-    @processSubtitle = I18n.t(AppConfig.pollTypes[@pollType].defaults.process_subtitle_i18n)
+    # @processName = I18n.t(AppConfig.pollTypes[@pollType].defaults.process_name_i18n)
+    # @processSubtitle = I18n.t(AppConfig.pollTypes[@pollType].defaults.process_subtitle_i18n)
 
     map AppConfig.pollTypes[@pollType].defaults, (value, key) =>
       @[camelCase(key)] = value
@@ -139,7 +139,14 @@ export default class PollModel extends BaseModel
 
   defaulted: (attr) ->
     if @[attr] == null
+      console.log snakeCase(attr)
       AppConfig.pollTypes[@pollType].defaults[snakeCase(attr)]
+    else
+      @[attr]
+
+  defaultedI18n: (attr) ->
+    if @[attr] == null
+      I18n.t(AppConfig.pollTypes[@pollType].defaults[snakeCase(attr)+"_i18n"])
     else
       @[attr]
 

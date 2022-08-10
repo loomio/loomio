@@ -27,6 +27,7 @@ class PollSerializer < ApplicationSerializer
              :mentioned_usernames,
              :notify_on_closing_soon,
              :process_name,
+             :process_subtitle,
              :poll_type,
              :poll_option_names,
              :poll_option_name_format,

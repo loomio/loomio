@@ -62,6 +62,7 @@ class PermittedParams < Struct.new(:params)
       :min_score,
       :options, {options: []},
       :process_name,
+      :process_subtitle,
       :poll_option_name_format,
       :reason_prompt,
       :template,

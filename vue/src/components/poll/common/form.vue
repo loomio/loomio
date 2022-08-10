@@ -64,6 +64,7 @@ export default
       @visiblePollOptions.forEach (o) -> o.priority = i++
 
     clearOptionsIfRequired: (newValue) ->
+      @poll.applyPollTypeDefaults()
       if newValue == 'meeting' || @lastPollType == 'meeting'
         @pollOptions = []
       @lastPollType = newValue
@@ -197,6 +198,29 @@ export default
     v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
       v-icon mdi-close
 
+  template(v-if="poll.template")
+    v-select(
+      v-if="poll.template"
+      :label="$t('poll_common_form.voting_method')"
+      v-model="poll.pollType"
+      @change="clearOptionsIfRequired"
+      :items="pollTypeItems"
+      :hint="$t('poll_common_form.voting_methods.'+poll.config().vote_method+'_hint')"
+    )
+    v-text-field(
+       v-model="poll.processName"
+      :label="$t('poll_common_form.process_name')"
+      :hint="$t('poll_common_form.process_name_hint')")
+    validation-errors(:subject='poll' field='processName')
+    v-text-field(
+       v-model="poll.processSubtitle"
+      :label="$t('poll_common_form.process_subtitle')"
+      :hint="$t('poll_common_form.process_subtitle_hint')")
+    validation-errors(:subject='poll' field='processName')
+  template(v-else)
+    p.text--secondary
+      span {{poll.processSubtitle}}
+
   v-tabs(v-model="tab")
     v-tabs-slider(color="primary")
     v-tab.poll-common-form__details-tab(v-t="'poll_common_form.content'")
@@ -229,6 +253,7 @@ export default
         :label="$t('poll_common_form.'+example_if_template+'details')"
         :should-reset="shouldReset"
       )
+
 
       .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
       v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
@@ -469,31 +494,6 @@ export default
           v-model="poll.notifyOnClosingSoon"
           :items="closingSoonItems")
 
-      template(v-if="poll.groupId && !poll.discussionId")
-        .text-h5.mb-4.mt-8(v-t="'common.template'")
-        p.text--secondary(v-t="'templates.share_a_custom_configuration'") 
-        
-        v-checkbox(
-          v-if="poll.groupId"
-          v-model="poll.template"
-          :label="$t('poll_common_form.this_is_a_template_for_new_polls')"
-        ) 
-
-        template(v-if="poll.template")
-          v-text-field(
-             v-model="poll.processName"
-            :label="$t('poll_common_form.process_name')"
-            :hint="$t('poll_common_form.process_name_hint')")
-          validation-errors(:subject='poll' field='processName')
-
-          v-select(
-            :label="$t('poll_common_form.voting_method')"
-            v-model="poll.pollType"
-            @change="clearOptionsIfRequired"
-            :items="pollTypeItems"
-            :hint="$t('poll_common_form.voting_methods.'+poll.config().vote_method+'_hint')"
-            persistent-hint
-          )
   .d-flex.justify-space-between.my-4.mt-8.poll-common-form-actions
     help-link(path="en/user_manual/polls/starting_proposals")
     v-spacer

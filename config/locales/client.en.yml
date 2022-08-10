@@ -2035,6 +2035,8 @@ en:
     process: Process
     process_name: Process name
     process_name_hint: E.g. Proposal, Resolution, Agreement, Temperature check
+    process_subtitle: Process purpose
+    process_subtitle_hint: When should someone use this process?
     you_can_set_a_prompt_per_option: Edit the prompt for each option from the details tab
     chart_type: Chart type
     title: Title
