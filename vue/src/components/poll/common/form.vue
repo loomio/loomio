@@ -172,7 +172,7 @@ export default
       {pollType: (@poll.template && @$t('poll_common.poll_template').toLowerCase()) || @poll.translatedPollType().toLowerCase()}
 
     reminderEnabled: ->
-      isAfter(@poll.closingAt, addHours(new Date(), 24))
+      @poll.template || isAfter(@poll.closingAt, addHours(new Date(), 24))
 
     closingSoonItems: ->
       'nobody author undecided_voters voters'.split(' ').map (name) =>
