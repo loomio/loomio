@@ -51,7 +51,7 @@ v-sheet
       .text--secondary(v-t="'poll_common_card.deleted'")
   div.px-4.pb-4(v-else)
     poll-template-banner(:poll="poll")
-    h1.poll-common-card__title.display-1(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
+    h1.poll-common-card__title.text-h4.py-2(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       poll-common-type-icon.mr-2(:poll="poll")
       span(v-if='!poll.translation.title') {{poll.title}}
       translation(:model='poll' field='title' v-if="poll.translation.title")

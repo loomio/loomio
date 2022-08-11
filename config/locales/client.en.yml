@@ -2035,9 +2035,9 @@ en:
       time_poll_hint: Voters indicate when they are available to meet
     process: Process
     process_name: Process name
-    process_name_hint: E.g. Proposal, Resolution, Agreement, Temperature check
+    process_name_hint: What do you call this process? E.g. Proposal, Temperature check, Minutes approval
     process_subtitle: Process purpose
-    process_subtitle_hint: When should someone use this process?
+    process_subtitle_hint: When should someone use this, what is it for?
     you_can_set_a_prompt_per_option: Edit the prompt for each option from the details tab
     chart_type: Chart type
     title: Title

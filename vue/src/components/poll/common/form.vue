@@ -213,9 +213,10 @@ export default
 <template lang="pug">
 .poll-common-form
   submit-overlay(:value="poll.processing")
-  v-card-title
-    h1.ml-n4.headline(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
+  v-card-title.px-0
+    h1.text-h4(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
     v-spacer
+
     v-btn(v-if="poll.id" icon :to="urlFor(poll)" aria-hidden='true')
       v-icon mdi-close
     v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
@@ -231,16 +232,18 @@ export default
       :hint="$t(votingMethodsI18n[poll.pollType].hint)"
       persistent-hint
     )
+
     v-text-field(
        v-model="poll.processName"
       :label="$t('poll_common_form.process_name')"
       :hint="$t('poll_common_form.process_name_hint')")
     validation-errors(:subject='poll' field='processName')
+
     v-text-field(
        v-model="poll.processSubtitle"
       :label="$t('poll_common_form.process_subtitle')"
       :hint="$t('poll_common_form.process_subtitle_hint')")
-    validation-errors(:subject='poll' field='processName')
+    validation-errors(:subject='poll' field='processSubtitle')
   template(v-else)
     p.text--secondary
       span {{poll.defaultedI18n('processSubtitle')}}
@@ -259,7 +262,7 @@ export default
         :label="$t('common.group')"
       )
 
-      v-text-field.poll-common-form-fields__title.text-h5(
+      v-text-field.poll-common-form-fields__title(
         type='text'
         required='true'
         :hint="$t('poll_common_form.title_hint')"
@@ -455,7 +458,6 @@ export default
       common-notify-fields(:model="poll")
 
     v-tab-item.poll-common-form__settings-tab
-
 
       template(v-if="allowAnonymous")
         .text-h5.mb-4.mt-8(v-t="'poll_common_card.hide_results'")

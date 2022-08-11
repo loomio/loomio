@@ -94,7 +94,7 @@ export default
 .discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='discussion.processing')
   v-card-title
-    h1.headline(v-observe-visibility="{callback: titleVisible}")
+    h1.text-h4(v-observe-visibility="{callback: titleVisible}")
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
         template(v-if="discussion.template")
@@ -124,14 +124,22 @@ export default
 
     v-tabs-items.pt-4(v-model="tab")
       v-tab-item.discussion-form__content
-          v-select(v-model="discussion.groupId", :items="groupItems", :label="$t('common.group')")
-          p.text--secondary.caption
-            span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
-            span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")
+          v-select.pb-4(
+            v-model="discussion.groupId"
+            :items="groupItems"
+            :label="$t('common.group')"
+            :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')"
+            persistent-hint
+          )
+          //- p.text--secondary.caption
+          //-   span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
+          //-   span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")
 
           div(v-if="showUpgradeMessage")
             p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
             p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+
+          tags-field(:model="discussion")
 
           .discussion-form__group-selected(v-if='!showUpgradeMessage')
             recipients-autocomplete(
@@ -144,14 +152,12 @@ export default
               :reset="reset"
             )
 
-            v-text-field#discussion-title.discussion-form__title-input.lmo-primary-form-input(
+            v-text-field#discussion-title.discussion-form__title-input(
               :label="$t('discussion_form.title_label')"
               :placeholder="$t('discussion_form.title_placeholder')"
               v-model='discussion.title' maxlength='255' required
             )
             validation-errors(:subject='discussion', field='title')
-
-            tags-field(:model="discussion")
 
             lmo-textarea(
               :model='discussion'
