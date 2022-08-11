@@ -1,5 +1,5 @@
 <% if poll.current_outcome %>
 *<%= t(:"poll_common.outcome") %>*
-= render_markdown(poll.current_outcome.statement, poll.current_outcome.statement_format)
+<%= render_markdown(poll.current_outcome.statement, poll.current_outcome.statement_format) %>
 *<%= t(:"poll_types.#{poll.poll_type}") %>*
 <% end %>
