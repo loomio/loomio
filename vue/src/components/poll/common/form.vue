@@ -37,8 +37,29 @@ export default
     lastPollType: @poll.pollType
     pollOptions: @poll.pollOptionsAttributes || @poll.clonePollOptions()
     groupItems: []
-    pollTypeItems: Object.keys(@poll.votingMethods).map (pollType) =>
-      {text: @$t('poll_common_form.voting_methods.'+@poll.votingMethods[pollType]), value: pollType}
+
+    votingMethods: 'proposal poll meeting dot_vote score ranked_choice'.split(' ')
+
+    votingMethodsI18n:
+      proposal: 
+        title: 'poll_common_form.voting_methods.show_thumbs'
+        hint: 'poll_common_form.voting_methods.show_thumbs_hint'
+      poll: 
+        title: 'poll_common_form.voting_methods.simple_poll'
+        hint: 'poll_common_form.voting_methods.choose_hint'
+      meeting:
+        title: 'poll_common_form.voting_methods.time_poll'
+        hint: 'poll_common_form.voting_methods.time_poll_hint'
+      dot_vote:
+        title: 'decision_tools_card.dot_vote_title'
+        hint: 'poll_common_form.voting_methods.allocate_hint'
+      score: 
+        title: 'poll_common_form.voting_methods.score'
+        hint: 'poll_common_form.voting_methods.score_hint'
+      ranked_choice:
+        title: 'poll_common_form.voting_methods.ranked_choice'
+        hint: 'poll_common_form.voting_methods.ranked_choice_hint'
+
     chartTypeItems: [
       {text: 'bar', value: 'bar'}
       {text: 'pie', value: 'pie'}
@@ -143,6 +164,10 @@ export default
         @poll.closingAt = @closingAtWas
 
   computed:
+    votingMethodsItems: ->
+      Object.keys(@votingMethodsI18n).map (key) =>
+        {text: @$t(@votingMethodsI18n[key].title), value: key}
+
     knownOptions: ->
       (AppConfig.pollTypes[@poll.pollType].common_poll_options || [])
 
@@ -204,8 +229,9 @@ export default
       :label="$t('poll_common_form.voting_method')"
       v-model="poll.pollType"
       @change="clearOptionsIfRequired"
-      :items="pollTypeItems"
-      :hint="$t('poll_common_form.voting_methods.'+poll.config().vote_method+'_hint')"
+      :items="votingMethodsItems"
+      :hint="$t(votingMethodsI18n[poll.pollType].hint)"
+      persistent-hint
     )
     v-text-field(
        v-model="poll.processName"

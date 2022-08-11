@@ -2021,8 +2021,9 @@ en:
     voting_method: Voting method
     voting_methods:
       show_thumbs: Show of thumbs
-      show_thumbs_hint: Voters agree or disagree by choosing thumbs up or down
+      show_thumbs_hint: Voters choose thumb up, down, sideways, or hand up
       choose: Choose
+      simple_poll: Simple poll
       choose_hint: Voters choose the best option (or options)
       score: Score
       score_hint: Voters assign a score to each option
