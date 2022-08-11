@@ -128,7 +128,7 @@ export default
         v-list-item-content
           v-list-item-title New template
           v-list-item-subtitle Customise with your preferred terminologly and settings
-  v-btn.text-center(text @click="toggleExpanded")
+  v-btn.text-center.poll-common-choose-template-show-more(text @click="toggleExpanded")
     span(v-t="expanded ? 'common.action.show_fewer' : 'common.action.show_more'")
 
 </template>
