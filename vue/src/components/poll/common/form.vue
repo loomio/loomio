@@ -243,7 +243,7 @@ export default
     validation-errors(:subject='poll' field='processName')
   template(v-else)
     p.text--secondary
-      span {{poll.processSubtitle}}
+      span {{poll.defaultedI18n('processSubtitle')}}
 
   v-tabs(v-model="tab")
     v-tabs-slider(color="primary")
