@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@sentry/browser": "^7.8.1",
+    "@sentry/browser": "^7.10.0",
     "@sentry/vue": "^7.8.1",
     "@sentry/tracing": "^7.8.1",
     "@tiptap/core": "latest",
