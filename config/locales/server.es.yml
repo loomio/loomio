@@ -82,6 +82,8 @@ es:
       cannot_add_options: No puedes añadir opciones en esta encuesta
       cannot_remove_options: No puedes remover opciones de esta encuesta
       must_have_options: 'Debes tener al menos una opción '
+      must_be_in_the_future: Debe ser en el futuro
+      templates_cannot_close: Las plantillas no se pueden cerrar
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) miembros han manifestado su posición"
       title: Título
@@ -183,8 +185,7 @@ es:
           Si continúas teniendo problemas para acceder a tu cuenta, responde a este email para contactar nuestro equipo de soporte técnico.
     by_who: por %{person}
     reply_to_this_discussion: Contestar a esta discusión
-    value_proposition: "%{site_name} es un lugar para tener discusiones y tomar decisiones"
-    loomio_app_description: "%{site_name} es una herramienta colaborativa de toma de decisiones para organizaciones inclusivas"
+    loomio_app_description: "%{site_name} es una herramienta de toma de decisiones para organizaciones colaborativas"
     view_group: Ver grupo
     to_join_group:
       subject: "%{member} te ha invitado a unirte a %{group_name} en %{site_name}"
@@ -318,6 +319,8 @@ es:
       view_on_loomio: Ver en %{site_name}
       create_outcome: Compartr resultado
       your_response: "Tú votaste:"
+      you_voted: "¡Votaste!"
+      not_invited: "No invitado"
       please_respond: 'Por favor responde '
       time_zone: (horario en %{zone})
       undecided_members: Miembros indecisos (%{count})

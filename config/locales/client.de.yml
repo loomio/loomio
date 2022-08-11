@@ -29,7 +29,6 @@ de:
     to_use_loomio_with_your_org_start_trial: Wenn du bereit bist, Loomio mit deiner Organisation auszuprobieren, starte eine kostenfreie Testphase.
     templates: Vorlagen
     make_a_copy: "Eine Kopie machen"
-    this_thread_is_a_template: Dieser Thread ist eine Vorlage, mache eine Kopie, wenn du  ihn verwenden möchtest.
     try_loomio: Loomio ausprobieren
     start_a_demo_group: Starte eine Demogruppe
     start_a_demo: Starte eine Demo
@@ -140,7 +139,6 @@ de:
     only_admins_can_edit_tags: Leider können nur Administratoren von {{group}} Schlagwörter erstellen, umbenennen oder löschen
   poll_types:
     proposal: Vorschlag
-    count: 'Check '
     poll: Abstimmung
     dot_vote: Punktabstimmung
     meeting: Zeitumfrage
@@ -218,8 +216,6 @@ de:
       thismonth: 'In diesem Monat'
       older: 'Älter'
     more_help: 'Weitere Hilfe'
-    models:
-      proposal: 'Vorschlag'
     copy: 'Kopieren'
     reset: 'Zurücksetzen'
     copy_text: 'Text kopieren'
@@ -349,7 +345,6 @@ de:
     title_label: Titel
     hint: 'Hinweis für nächstes Mal: Versuche etwas Text auszuwählen, bevor du auf "Anheften" klickst.'
   change_volume_form:
-    help_notifications: 'Hilfe: Benachrichtigungen'
     explain_scope:
       thread: Dies wird sich ändern wenn du benachrichtigt wirst über diese Diskussion
       group: Dies wird sich ändern wenn du benachrichtigt wirst über alle Diskussionen in der Gruppe
@@ -530,7 +525,6 @@ de:
     edit_profile: 'Profil bearbeiten'
     email_settings: 'Benachrichtigungseinstellungen'
     help: 'Hilfe'
-    help_docs: 'Hilfedokumente'
     contact_site_name: '{{site_name}} kontaktieren'
     contact_support: 'Support kontaktieren'
     sign_out: 'Abmelden'
@@ -1441,7 +1435,6 @@ de:
     choose_type: Wähle den Abstimmungstyp
     title: Ermöglichen
     proposal_title: Vorschläge
-    count_title: Bestätigung
     poll_title: Umfrage
     score_title: Bewertung
     meeting_title: Terminfindung
@@ -1634,13 +1627,6 @@ de:
     reminder_sent: Erinnerungsbenachrichtigung gesendet
   poll_common_set_outcome_panel:
     enter_outcome: Abstimmungsergebnis eingeben
-    poll: 'Diese Abstimmung ist beendet. Informiere die Gruppe über das<strong>Ergebnis</strong>.'
-    proposal: 'Dieser Vorschlag wurde geschlossen. Bitte beachte, was gesagt wurde und <strong>verkünde das Ergebnis</strong>, damit die Leute wissen, was als nächstes geschehen wird.'
-    count: 'Dieser Check wurde geschlossen. <strong>Verkünde das Ergebnis</strong>, um den Prozess abzuschließen.'
-    meeting: 'Diese Zeitumfrage ist abgeschlossen. <strong>Teile ein Ergebnis</strong>, um andere wissen zu lassen, wann das Treffen stattfinden wird.'
-    dot_vote: 'Diese Punktabstimmung wurde abgeschlossen. <storng>Teile ein Ergebnis</strong> mit der Gruppe.'
-    ranked_choice: 'Diese Prioritätensetzung wurde beendet. <strong>Verkünde das Ergebnis</strong> mit der Gruppe.'
-    score: 'Diese Bewertungsumfrage ist abgeschlossen. <storng>Teile ein Ergebnis</strong> mit der Gruppe.'
   poll_common_outcome_form:
     new_title: 'Ergebnis einfügen '
     update_title: Abstimmungsergebnis aktualisieren
@@ -1656,6 +1642,12 @@ de:
     title: '{{poll_type}} entfernen'
     success: Erfolgreich gelöscht
   poll_common_form:
+    voting_methods:
+      choose: Wählen
+      score: Ergebnis
+      allocate: Zuweisen
+      ranked_choice: Prioritätensetzung
+      time_poll: Terminfindung
     title: Titel
     details: Details
     options: Optionen
@@ -1664,37 +1656,19 @@ de:
     closing: Schluss
     closed: Geschlossen
     start: Erstellen
+    start_poll: Umfrage beginnen
+    stance_reason_required: Notwendig
     start_poll_type: '{{poll_type}} starten'
     share_poll_type: '{{poll_type}} teilen'
     update: Aktualisieren
-    loomio_school_link: |
-        <p>Erfahre mehr unter <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
+    votes_are_anonymous: Stimmabgaben sind anonym
   poll_proposal_form:
-    tool_tip_expanded: |
-        <p>Eine Abstimmung ist ein Werkzeug, um die Zustimmung für eine Aussage oder eine Handlungsoption einzuholen.</p>
-        <p>Teilnehmer können zustimmen, ablehnen, sich enthalten oder ein Veto einlegen - und ihre Abstimmungsposition auch entsprechend begründen.</p>
-        <p>Ein Kuchendiagramm zeigt die verschiedenen Abstimmungspositionen in der Gruppe übersichtlich an, während durch die Abstimmungsbegründungen auch einzelne Meinungen nicht unter den Tisch fallen und gehört werden. </p>
-        <p>Lass dich nicht entmutigen, wenn es zunächst nicht zu einer Einigung kommt, Vorschläge sind dafür vorgesehen, Diskussionspunkte in den Fokus zu rücken, die einer Klärung bedürfen.</p>
-        <p>Mit einer ausreichend großen Abstimmungsbeteiligung ist ein Vorschlag somit ein mächtiges Werkzeug, um der Abstimmung im nächsten Schritt Handlungen und Taten folgen zu lassen.</p>
-    tool_tip_collapsed: Frage nach Zustimmung oder Feedback von anderen.
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten
-    tip: '''Triff gemeinsam Entscheidungen durch ein Verfahren, dass alle Stimmen mit einbezieht. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">
-
-
-      Mehr erfahren ''
-
-      '
     title_placeholder: z. B. Lasst uns zum Mond fliegen!
-    details_placeholder: Gebe genügend Informationen, damit jeder weiß, was es bedeutet, zuzustimmen oder zu widersprechen
     proposal_created: Vorschlag gestartet
     proposal_updated: Vorschlag aktualisiert
   poll_poll_form:
-    tool_tip_expanded: |
-        <p>Verwende eine Umfrage, um die Beliebtheit zu messen oder eine Auswahl anzubieten.</p>
-        <p>Stelle einige Optionen zur Auswahl bereit. Entscheide, ob die Teilnehmer einzelne oder mehrere Optionen als ihre Antwort wählen dürfen.</p>
-        <p>Jeder kann abstimmen und wenn gewünscht, auch eine Aussage in Worten formulieren. Die Ergebnisse werden in einem Balkendiagramm dargestellt.</p>
-    tool_tip_collapsed: Auswählen aus einer Liste von Handlungsoptionen
     start_header: Umfrage beginnen
     edit_header: Umfrage bearbeiten
     tip: Biete eine Options-Auswahl an
@@ -1704,66 +1678,11 @@ de:
     remove_option: Option entfernt
     poll_created: Umfrage erschaffen
     poll_updated: Umfrage aktualisiert
-  poll_count_form:
-    tool_tip_expanded: |
-        <p>Ein <em>Check</em> ist ein Instrument mit vielen Verwendungsmöglichkeiten, aber nur 2 Antworten: ein Häkchen (✔) oder ein x-Zeichen (✘). Die Teilnehmer verwenden das Häkchen (✔), um Ja zu sagen, und das x-Zeichen (✘), um Nein oder Unsicher zu sagen.</p>
-        <p>Verwende diese Option, um Personen mit einer Antwortbitte zu kontaktieren, z.B.: "Ich komme zu der Veranstaltung" oder "Ich werde der Arbeitsgruppe beitreten".</p>
-        <p>Verwende es auch, um den Abschluss einer Aufgabe zu verfolgen, z.B.: "Ich habe überprüft, ob meine Kontaktdaten korrekt sind" oder "Ich habe das Dokument gelesen und mein Feedback hinterlassen".</p>
-        <p>Ein Check hat ein <em>Ziel</em>, dass du die Anzahl der Teilnehmer für eine Abstimmung kennst. Das Ergebnis zeigt der Gruppe an, ob noch etwas mehr Aufmerksamkeit benötigt wird oder nicht. </p>
-        <p>Einen Tag, bevor der Check schließt, werden diejenigen, die noch nicht daran teilgenommen haben, mit einer Erinnerung kontaktiert.</p>
-    tool_tip_collapsed: Zähle die Anzahl der Personen, die eine Aufgabe erledigt haben oder suche nach Freiwilligen für eine Aufgabe
-    start_header: Starte die Überprüfung
-    edit_header: Bestätigungsanfrage bearbeiten
-    tip: 'Frage nach wer eine Aufgabe erledigt hat, und wer sich freiwillig melden möchte '
-    title_placeholder: z. B. Wer möchte in der Arbeitsgruppe mitmachen?
-    details_placeholder: Erläuter, um welches Engagement es sich handelt, oder gebe inzelheiten darüber an, wie du teilnehmen kannst.
-    count_created: Bestätigung gestartet
-    count_updated: Bestätigung wurde aktualisiert
   poll_dot_vote_form:
-    tool_tip_expanded: |
-        <p>Punktabstimmung ist eine Möglichkeit, eine Liste von Optionen zu priorisieren.</p>
-        <p>Den Teilnehmern wird eine begrenzte Anzahl von "digitalen Klebepunkten" zur Verfügung gestellt, die sie beliebig unter den zur Verfügung gestellten Optionen aufteilen können, um ihre eigenen Präferenzen darzustellen.</p>
-        <p>Die Gesamtsumme der Ergebnisse werden angezeigt sowie die einzelnen Stimmen, sodass die verschiedenen Standpunkte betrachtet werden können.</p>
-    tool_tip_collapsed: Ein Punkte-Budget vergeben
-    start_header: Starte die Punktabstimmung
-    edit_header: Bearbeite die Punktabstimmung
-    tip: Ein Punkte-Budget vergeben
-    title_placeholder: Zum Beispiel "Wie sollen wir unser Budget zuordnen?"
-    details_placeholder: Gebe alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
-    add_option_placeholder: Option hinzufügen
     dots_per_person: Punkte pro Person
     dots_per_person_helptext: Die Gesamtanzahl an Punkten, die jede Person vergeben soll.
-    dot_vote_created: Punktabstimmung erstellt
-    dot_vote_updated: Punktabstimmung aktualisiert
-  poll_score_form:
-    tool_tip_expanded: |
-        <p>Durch Bewertungen können Teilnehmer den Grad der Zustimmung zu jeder Option ausdrücken.</p>
-        <p>Die Gesamtbewertung für jede Option wird als Teil des Umfrageergebnisses angezeigt.</p>
-    tool_tip_collapsed: Ergebnisoptionen auf einer Skala
-    start_header: Bewertung beginnen
-    edit_header: Bewertung bearbeiten
-    tip: 'Bewerte jede Option auf einer Schiebeskala '
-    title_placeholder: 'Z.b. Kandidaten auf einer Skala von 0-9 bewerten.  '
-    details_placeholder: Gebe alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
-    add_option_placeholder: Option hinzufügen
-    score_created: Bewertung erstellt
-    score_updated: Bewertung aktualisiert
   poll_meeting_form:
-    tool_tip_expanded: |
-        <p>Verwende eine Zeitumfrage, um herauszufinden, wann Personen für ein Treffen zur Verfügung stehen.</p>
-        <p>Gib eine Liste von Daten oder Uhrzeiten ein, zu dene deine Besprechung stattfinden soll.</p>
-        <p>Die Teilnehmer kreuzen die Optionen an, an denen sie teilnehmen können oder sie können das Kommentarfeld verwenden, um ihre Umstände zu erklären. Dann können die Terminoptionen unter Umständen aktualisiert werden.</p>
-        <p>Wenn du während einer Zeitumfrage neue Zeiten hinzufügst, werden Personen, die bereits abgestimmt haben, aufgefordert, ihre Antwort zu aktualisieren.</p>
-        <p>Du kannst so sehen, wer wann verfügbar ist und entscheiden, wann das Treffen stattfinden kann.</p>
-        <p>Zeiten werden automatisch in die lokale Zeitzone des Teilnehmers konvertiert.</p>
     tool_tip_collapsed: Ein gemeinsames Zeitfenster für ein Meeting finden
-    start_header: Startzeit-Umfrage
-    edit_header: Zeitumfrage bearbeiten
-    tip: Ein gemeinsames Zeitfenster für ein Meeting finden
-    title_placeholder: z. B. Wann sollen wir unser nächstes Meeting ansetzen?
-    details_placeholder: Gebe alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
-    meeting_created: Zeitumfrage erstellt
-    meeting_updated: Zeitumfrage aktualisiert
     timeslots: Zeitfenster
     no_options: Gebe Zeiten in Ihrer aktuellen Zeitzone ({{zone}}) ein. Teilnehmer sehen Zeiten in ihre lokale Zeitzone übersetzt.
     meeting_duration: Dauer des Meetings
@@ -1771,23 +1690,9 @@ de:
     time_slot_added: Zeitfenster hinzugefügt
     time_slot_already_added: Zeitfenster ist schon hinzugefügt
   poll_ranked_choice_form:
-    tool_tip_expanded: |
-        <p>Die Ranglistenwahl ist eine Methode, die es jedem Teilnehmer ermöglicht, mit seinen Präferenzen in Form einer Reihenfolge zu antworten.</p>
-        <p>Es lohnt sich besonders, wenn es um Entscheidungen zwischen zwei oder mehreren beliebte Optionen geht, die recht ähnlich sind. Die Abstimmung wird dann einer Unterscheidung erzielen.</p>
-        <p>Die Anwendung lohnt sich auch, wenn es darum geht, eine Entscheidung nach Mehrheit zu erwirken.</p>
-        <p>Außerdem eignet sich das Instrument bei Stichwahl-Entscheidungen.</p>
-    tool_tip_collapsed: Handlungsoptionen gewichten von der ersten bis zur letzten
-    start_header: Mit Prioritätensetzung beginnen
-    edit_header: Prioritätensetzung bearbeiten
-    tip: Handlungsoptionen gewichten von der ersten bis zur letzten
-    title_placeholder: z. B. Wer soll Bürgermeister werden?
-    details_placeholder: Gebe alle klärenden Details an, an denen Personen möglicherweise teilnehmen müssen
-    meeting_created: Prioritätensetzung erstellt
-    meeting_updated: Prioritätensetzung aktualisiert
     no_options: "Du hast noch keine Option hinzugefügt."
     add_option_placeholder: Gebe eine neue Auswahl ein
     minimum_stance_choices: Zu priorisierende Optionen
-    minimum_stance_choices_helptext: Anzahl der Optionen, die die Teilnehmer priorisieren können
     ranked_choice_created: Prioritätensetzung erstellt
     ranked_choice_updated: Prioritätensetzung aktualisiert
     rank: Rang
@@ -1806,37 +1711,28 @@ de:
     stance_updated: Wahl aktualisiert
     vote: Abstimmen
   poll_proposal_options:
+    'yes': 'Ja'
+    'no': 'Nein'
     agree: Dafür
     consent: Zustimmung
-    agree_verb: "einverstanden"
-    agree_meaning: Dieser Vorschlag ist gut genug, um von der Gruppe angenommen zu werden
     abstain: Enthaltung
-    abstain_verb: "enthalten"
-    abstain_meaning: Nicht sicher, ich weiß es nicht oder es stört mich nicht. Wird das Ergebnis in beide Richtungen unterstützen
     disagree: Dagegen
-    disagree_verb: "hat widersprochen"
-    disagree_meaning: Ich unterstütze den Vorschlag nicht. Es sollte nicht weitergehen.
     objection: Einwand
     block: Veto
-    block_verb: "blockiert"
-    block_meaning: Die dringende Aufmerksamkeit der Gruppe ist erforderlich, um eine tiefe Besorgnis anzusprechen
-    agree_abstain_disagree_block: 'Zustimmen, enthalten, ablehnen, blockieren'
-    agree_disagree: 'Zustimmen, Ablehnen'
-    agree_abstain_disagree: 'Zustimmen, enthalten, ablehnen '
-    consent_abstain_object: 'Zustimmung, Enthaltung, Einwand'
+    agree_meaning: Dieser Vorschlag ist gut genug, um von der Gruppe angenommen zu werden
     no_voting: 'Keine Abstimmung'
+  poll_count_form:
+    title_placeholder: z. B. Wer möchte in der Arbeitsgruppe mitmachen?
+    details_placeholder: Erläuter, um welches Engagement es sich handelt, oder gebe inzelheiten darüber an, wie du teilnehmen kannst.
   poll_count_options:
+    decline: Rückgang
     'yes': 'Ja'
     'no': 'Nein'
   poll_count_vote_form:
     reason_label: Nachricht
     reason_placeholder: Hinterlasse eine Nachricht, wenn du möchtest
-    stance_created: Wahl erstellt
-    stance_updated: Wahl aktualisiert
   poll_common_percent_voted:
     sentence: "{{numerator}} von {{denominator}} Personen haben abgestimmt ({{percent}}%)"
-  poll_count_chart_panel:
-    out_of: von {{goal}}
   poll_meeting_chart_panel:
     total: Gesamt
   poll_poll_vote_form:

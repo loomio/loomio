@@ -82,6 +82,8 @@ zh_TW:
       cannot_add_options: 無法新增選項到此投票
       cannot_remove_options: 無法從此投票移除選項
       must_have_options: 必須至少有一個投票選項
+      must_be_in_the_future: 必須在未來
+      templates_cannot_close: 範本無法關閉
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) 的成員已經表達了他們的立場"
       title: 標題
@@ -183,8 +185,7 @@ zh_TW:
           若您還有登入上的問題，回覆這封電子郵件以連絡客服人員。
     by_who: '%{person}'
     reply_to_this_discussion: 回應此討論串
-    value_proposition: "%{site_name} 是一個討論與做出決定的地方"
-    loomio_app_description: "%{site_name} 是一個包容性組織的協作決策工具"
+    loomio_app_description: "%{site_name} 是協作組織的決策工具"
     view_group: 檢視群組
     to_join_group:
       subject: "%{member} 已邀請您加入在 %{site_name} 上的 %{group_name}"
@@ -318,6 +319,8 @@ zh_TW:
       view_on_loomio: 在 %{site_name} 上檢視
       create_outcome: 分享成果
       your_response: "您投票給："
+      you_voted: "您已投票！"
+      not_invited: "未邀請"
       please_respond: 請回應
       time_zone: （在 %{zone} 顯示的時間）
       undecided_members: 未決定的成員（%{count}）

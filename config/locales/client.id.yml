@@ -11,8 +11,6 @@ id:
     privacy:
       public: 'Terbuka'
       private: 'Tertutup'
-    models:
-      proposal: 'Usulan'
     action:
       search: 'Cari'
       save: 'Simpan'
@@ -109,6 +107,9 @@ id:
     closed: 'Ditutup'
   poll_common_form:
     closed: Ditutup
+  poll_proposal_options:
+    'yes': 'Ya'
+    'no': 'Tidak'
   poll_count_options:
     'yes': 'Ya'
     'no': 'Tidak'

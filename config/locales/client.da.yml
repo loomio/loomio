@@ -61,8 +61,6 @@ da:
       thismonth: 'I denne måned'
       older: 'Ældre'
     more_help: 'Mere hjælp'
-    models:
-      proposal: 'Forslag'
     copy: 'Kopier'
     copy_text: 'Kopier tekst'
     copied: 'Kopieret til clipboard'
@@ -611,7 +609,6 @@ da:
       reload: 'Genopfrisk'
   decision_tools_card:
     proposal_title: Forslag
-    count_title: Checkmåling
     poll_title: Meningsmåling
     meeting_title: Find et tidspunkt
   poll_common:
@@ -675,12 +672,6 @@ da:
     no_votes_yet: Ingen stemmer er afgivet endnu
     change_results_order: Skift sorteringsrækkefølge for resultat
     none_of_the_above: (Ingen af de tidligere)
-  poll_common_set_outcome_panel:
-    poll: 'Denne meningsmåling er afsluttet. <strong>Del resultatet</strong> med gruppen.'
-    proposal: 'Dette forslag er lukket. Overvej de forskellige holdninger og <strong>del et resultat</strong>, så folk ved hvad der sker nu.'
-    count: 'Denne checkmåling er afsluttet. <strong>Del resultatet</strong> for at afslutte processen.'
-    meeting: 'Denne Find Tidspunkt måling er afsluttet. <strong>Del tidspunktet</strong> så alle ved hvornår mødet afholdes.'
-    dot_vote: 'Denne prikafstemning er afsluttet. <storng>Del resultatet</strong> med gruppen.'
   poll_common_outcome_form:
     update_title: Rediger resultat
     outcome_created: Resultat oprettet
@@ -690,18 +681,20 @@ da:
   poll_common_outcome_panel:
     authored_by: 'Af {{name}}'
   poll_common_form:
+    voting_methods:
+      time_poll: Find et tidspunkt
     title: Titel
     details: Beskrivelse
     options: Indstillinger
     closing: Lukker
     closed: Lukket
     start: Start
+    start_poll: Opret meningsmåling
     update: Opdater
   poll_proposal_form:
     start_header: Opret forslag
     edit_header: Rediger forslag
     title_placeholder: F.eks. Lad os flyve til månen!
-    details_placeholder: Giv nok information så at alle ved hvad det betyder at være enig eller uenig
     proposal_created: Forslag oprettet
     proposal_updated: Forslag redigeret
   poll_poll_form:
@@ -713,30 +706,6 @@ da:
     remove_option: Slet valgmulighed
     poll_created: Meningsmåling oprettet
     poll_updated: Meningsmpling redigeret
-  poll_count_form:
-    start_header: Opret checkmåling
-    edit_header: Rediger checkmåling
-    title_placeholder: F.eks. Hvem ønsker at være med i arbejdsgruppen?
-    count_created: Checkmåling oprettet
-    count_updated: Checkmåling redigeret
-  poll_dot_vote_form:
-    start_header: Opret prikafstemning
-    edit_header: Rediger prikafstemning
-    title_placeholder: F.eks. HVordan skal vi fordele vores budget?
-    details_placeholder: Beskriv alle detaljer som er nødvendige for at folk deltage
-    add_option_placeholder: Tilføj mulighed
-    dot_vote_created: Prikafstemning oprettet
-    dot_vote_updated: Prikafstemning redigeret
-  poll_score_form:
-    details_placeholder: Bekriv udførligt hvad der skal foregå så at deltagerne har de bedste forudsætninger at melde tilbage
-    add_option_placeholder: Tilføj mulighed
-  poll_meeting_form:
-    start_header: Opret Fund tidspunkt
-    edit_header: Rediger Find tidspunkt
-    title_placeholder: F.eks. Hvornår skal vi afholde vores næste styregruppemøde?
-    details_placeholder: Bekriv udførligt hvad der skal foregå så at deltagerne har de bedste forudsætninger at melde tilbage
-    meeting_created: Find tidspunkt oprettet
-    meeting_updated: Find tidspunkt redigeret
   poll_proposal_vote_form:
     default_reason_placeholder: Begrund venligst dit valg
     abstain_reason_placeholder: Lad folk vide hvorfor du stemmer blankt på dette forslag
@@ -746,28 +715,21 @@ da:
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
   poll_proposal_options:
+    'yes': 'Ja'
+    'no': 'Nej'
     agree: Enig
-    agree_verb: "stemte for"
-    agree_meaning: Dette forslag er godt nok til at jeg mener at gruppen skal godkende det
     abstain: Stemmer blankt
-    abstain_verb: "stemte blankt"
-    abstain_meaning: Ikke sikker, ved ikke eller har ingen holdning. Jeg støtter forslaget unanset om det bliver for eller imod.
     disagree: Uenig
-    disagree_verb: "stemte imod"
-    disagree_meaning: Jeg mener ikke at forslaget skal gå igennem, jeg kan ikke støtte det.
     block: Blokkerer
-    block_verb: "nedlagde veto"
-    block_meaning: Der er noget helt galt med dette forslag og gruppen bør gå i dybden med dette snartest.
+    agree_meaning: Dette forslag er godt nok til at jeg mener at gruppen skal godkende det
+  poll_count_form:
+    title_placeholder: F.eks. Hvem ønsker at være med i arbejdsgruppen?
   poll_count_options:
     'yes': 'Ja'
     'no': 'Nej'
   poll_count_vote_form:
     reason_label: Besked
     reason_placeholder: Skrive en besked
-    stance_created: Stemme afgivet
-    stance_updated: Stemme redigeret
-  poll_count_chart_panel:
-    out_of: af {{goal}}
   poll_meeting_chart_panel:
     total: Total
   poll_poll_vote_form:

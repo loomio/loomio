@@ -53,8 +53,6 @@ el:
       thismonth: 'Αυτό το μήνα'
       older: 'Παλιότερα'
     more_help: 'Περισσότερη βοήθεια'
-    models:
-      proposal: 'Πρόταση'
     copy: 'Αντιγραφή'
     copy_text: 'Αντιγραφή κειμένου'
     copied: 'Αντιγράφηκε στο πρόχειρο'
@@ -416,7 +414,6 @@ el:
     message_label: 'Το μήνυμα σας'
   decision_tools_card:
     proposal_title: Πρόταση
-    count_title: Έλεγχος
     poll_title: Ψηφοφορία
     meeting_title: Χρόνος ψηφοφορίας
   poll_common:
@@ -437,9 +434,15 @@ el:
     open: 'Άνοιγμα'
     closed: 'Έκλεισε'
   poll_common_form:
+    voting_methods:
+      time_poll: Χρόνος ψηφοφορίας
     closed: Έκλεισε
     start: Εκίνηση
+  poll_proposal_options:
+    'yes': 'Ναι'
+    'no': 'Όχι'
   poll_count_options:
+    decline: Απόρριψη
     'yes': 'Ναι'
     'no': 'Όχι'
   auth_form:

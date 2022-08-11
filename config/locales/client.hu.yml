@@ -41,7 +41,6 @@ hu:
     tags_marked: 'A(z) ''{{name}}'' jelöléssel ellátott témák itt: {{groupName}}'
   poll_types:
     proposal: javaslat
-    count: ellenőrzés
     poll: szavazás
     dot_vote: pont-szavazás
     meeting: idő-szavazás
@@ -62,6 +61,7 @@ hu:
     version: Verzió
     no_results_found: Nem található eredmény
     view: Megnéz
+    or: vagy
     history: Előzmény
     option: Választási lehetőség
     add: Hozzáad
@@ -108,8 +108,6 @@ hu:
       thismonth: 'Ebben a hónapban'
       older: 'Régebbi'
     more_help: 'További segítség'
-    models:
-      proposal: 'Javaslat'
     copy: 'Másolás'
     reset: 'Visszaállítás'
     copy_text: 'Szöveg másolása'
@@ -1035,7 +1033,6 @@ hu:
   decision_tools_card:
     title: Döntéstámogatás
     proposal_title: Javaslat
-    count_title: Ellenőrzés
     poll_title: Szavazás
     score_title: Pontszám-felmérés
     meeting_title: Időpont választás
@@ -1153,12 +1150,8 @@ hu:
     anonymous:
       title: Névtelen szavazók
       helptext_on: Ha kiválasztja, a résztvevő információk nem kerülnek megjelenítésre minden válasznál.
-    voter_can_add_options:
-      title: A szavazók lehetőségeket vehetnek fel
-      helptext_on: Ha kiválasztják, a résztvevők saját szavazati lehetőségeket is felvehetnek.
     can_respond_maybe:
       title: A szavazók válaszolhatnak "ha szükséges"
-      helptext_on: A szavazók jelölhetik az időpontokat "ha szükséges"
   poll_common_closing_at_field:
     closing: Záródik
     closing_hour: Záróra
@@ -1181,12 +1174,6 @@ hu:
     reminder_sent: Emlékeztető értesítés elküldve
   poll_common_set_outcome_panel:
     enter_outcome: Írd be a végeredményt
-    poll: 'Ez a szavazás lezárult. <strong> Ossza meg az eredményt </strong> a csoporttal.'
-    proposal: 'Ez a javaslat  <strong>lezárult</strong>. Kérjük szentelj egy kis időt az elhangzottak figyelembe vételére, és <strong>oszd meg az eredményt</strong> a csoporttal, hogy az emberek tudják, mi fog történni ezután.'
-    count: 'Ez a felmérés lezárult. <strong> Oszd meg az eredményt </strong>, hogy befejezd a folyamatot.'
-    meeting: 'Ez az időpont-felmérés lezárult.  <strong>Oszd meg az eredményt</strong> másokkal, hogy megtudják mikor lesz a megbeszélés.'
-    dot_vote: 'Ez a pontozó szavazás lezárult. <storng> Oszd meg az eredményt </strong> a csoporttal.'
-    ranked_choice: 'Ez a rangsoroló felmérést lezárult. <strong>Oszd meg az eredményt</strong> a csoporttal.'
   poll_common_outcome_form:
     new_title: Írd be a végeredményt
     update_title: Frissítse az eredményt
@@ -1200,6 +1187,9 @@ hu:
     question: Biztosan törli ezt?
     success: Sikeresen törölve
   poll_common_form:
+    voting_methods:
+      ranked_choice: Sorrend választás
+      time_poll: Időpont választás
     title: Cím
     details: Részletek
     options: Lehetőségek
@@ -1208,29 +1198,15 @@ hu:
     closing: Záródik
     closed: Zárva
     start: Indítás
+    start_poll: Indítsd el a szavazást
     update: Frissít
-    loomio_school_link: |
-        <p> Tudj meg többet a <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank"> Loomio Súgóban</a>.</p>
   poll_proposal_form:
-    tool_tip_expanded: |
-        <p> A javaslat egy eszköz állásfoglalással vagy cselekvési tervvel kapcsolatos közös egyetértés megtalálására.</p>
-        <p> A résztvevők egyetérthetnek, tartózkodhatnak, nem érthetnek egyet vagy megvétózhatják a döntést, és indokolják, elmagyarázzák az álláspontjukat.</p>
-        <p>A kördiagram áttekintést nyújt a csoport helyzetéről, míg a hozzászólások lehetővé teszik az egyéni vélemények meghallgatását. </p>
-        <p> Nem szabad elkedvetlenedni, ha eleinte nem sikerül megállapodni, a javaslatokat olyan kérdések felvázolására tervezték, amelyeket meg kell oldani.</p>
-        <p> jó részvétel mellett a javaslat erős felhatalmazás a cselekvéshez.</p>
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése
-    tip: Keresd a közös egyetértést olyan folyamaton keresztül, amely lehetővé teszi az összes vélemény meghallgatását. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Tudj meg többet</a>
     title_placeholder: Például. Menjünk a holdra!
-    details_placeholder: Adj elegendő információt, hogy mindenki tudja, mit jelent egyetértés vagy a nem értek egyet válaszlehetőség
     proposal_created: A javaslat elindult
     proposal_updated: A javaslat frissítve
   poll_poll_form:
-    tool_tip_expanded: |
-        <p>Használjon egy szavazást a népszerűség felmérésére, vagy adj választási lehetőségeket.</p>
-        <p>Adj meg néhány választási lehetőséget. Döntsd el, hogy a résztvevők válaszként egy vagy több lehetőséget választhatnak-e.</p>
-        <p>Mindenki szavaz, és meglátásokat is írhat, ha szeretné. Az eredményeket oszlopdiagramon ábrázoljuk.</p>
-    tool_tip_collapsed: Válasszon a lehetőségek listájából
     start_header: Indítsd el a szavazást
     edit_header: Szavazás szerkesztése
     tip: Válasszon a lehetőségek közül
@@ -1240,60 +1216,11 @@ hu:
     remove_option: Lehetőség eltávolítása
     poll_created: Szavazás létrehozva
     poll_updated: A szavazás frissítve
-  poll_count_form:
-    tool_tip_collapsed: Számold meg, hogy hány ember fejezte be a feladatot, vagy keress jelentkezőket
-    start_header: Felmérés indítása
-    edit_header: Csekk szerkesztése
-    tip: Kérdezze meg, ki teljesítette a feladatot, vagy önként kíván jelentkezni
-    title_placeholder: Például. Ki akar csatlakozni a munkacsoporthoz?
-    details_placeholder: Magyarázza el, hogy mi a kötelezettségvállalás, vagy mutasson részleteket a részvételről.
-    count_created: Felmérés elindult
-    count_updated: Felmérés frissült
   poll_dot_vote_form:
-    tool_tip_expanded: |
-        <p>nem szavazás a lehetőségek listájának prioritása</p>
-        <p> résztvevők korlátozott számú „pontot” kapnak, amelyeket fel lehet osztani, bárcsak kedvelik a választott lehetőségek között, amelyek a saját preferenciáik ábrázolására szolgálnak.</p>
-        <p>Az eredmények összesített értéke, valamint az egyes szavazatok megjelennek, így különféle szempontokat vehet figyelembe.</p>
-    tool_tip_collapsed: Rendelj hozzá egy maximális pontszámot
-    start_header: Pontozott szavazás indítása
-    edit_header: Pontozott szavazás szerkesztése
-    tip: Rendelj hozzá egy maximális pontszámot
-    title_placeholder: Például. Hogyan kell elosztani a költségvetést?
-    details_placeholder: Adjon meg minden tisztázó részletet az emberek részvételéhez
-    add_option_placeholder: Lehetőség hozzáadása
     dots_per_person: Pontok személyenként
     dots_per_person_helptext: Azon pontok száma, amelyeket mindenkinek fel kell kérnie.
-    dot_vote_created: Pontozó szavazás létrehozva
-    dot_vote_updated: Pontozó szavazás frissítve
-  poll_score_form:
-    tool_tip_expanded: |
-        <p> A pontszám-felmérések lehetővé teszik az emberek számára, hogy kifejezzék az egyes lehetőségek támogatottságát. </p>
-        <p>Az egyes lehetőségek teljes pontszámát az eredmények részeként mutatjuk be.</p>
-    tool_tip_collapsed: Pontozási lehetőségek skálán
-    start_header: Indítsd el a pontozó szavazást
-    edit_header: Szerkessze a pontozási szavazást
-    tip: Az egyes lehetőségeket gördülő skálán pontozza
-    title_placeholder: Például. A jelöltek pontszáma 0–9
-    details_placeholder: Adjon meg minden tisztázó részletet az emberek részvételéhez
-    add_option_placeholder: Lehetőség hozzáadása
-    score_created: Pontszám-felmérés létrehozva
-    score_updated: A pontszáma frissítve
   poll_meeting_form:
-    tool_tip_expanded: |
-        <p>Használjon egy időmérést, hogy megtudja, mikor állnak meg az emberek találkozni.</p>
-        <p>Írja be azon dátumok vagy időpontok listáját, amikor megtarthatta a találkozót</p>
-        <p>A résztvevők megjelölik azokat, amelyekben részt vehetnek, vagy a nyilatkozat mezőt használhatják a körülmények magyarázatához, így szükség esetén frissíthetik a lehetőségeket.</p>
-        <p>Ha új idõket ad hozzá egy idõmérés során, a már megszavazott embereket felkérjük, hogy frissítsék válaszukat.</p>
-        <p>Ekkor láthatja, hogy mikor áll rendelkezésre, és eldöntheti, hogy mikor találkozik.</p>
-        <p> Az időszakokat automatikusan átalakítják a résztvevő helyi időzónájává.</p>
     tool_tip_collapsed: Keresd meg az időpontot, ami az embereknek a legalkalmasabb a találkozásra
-    start_header: Kezdő idő közvélemény-kutatás
-    edit_header: Az időmérés szerkesztése
-    tip: Keresd meg az időpontot, ami az embereknek a legalkalmasabb a találkozásra
-    title_placeholder: Például. Mikor legyen a következő találkozónk?
-    details_placeholder: Adjon meg minden tisztázó részletet az emberek részvételéhez
-    meeting_created: Időmérés létrehozva
-    meeting_updated: Az időmérés frissítve
     timeslots: Időrések
     no_options: Adja meg az időt az aktuális időzónájában ({{zone}}). A résztvevők a helyi időzónába lefordított időket látják.
     meeting_duration: Találkozó időtartama
@@ -1301,23 +1228,9 @@ hu:
     time_slot_added: Időrés hozzáadva
     time_slot_already_added: Az időrés már hozzáadva
   poll_ranked_choice_form:
-    tool_tip_expanded: |
-        <p>A megválasztott választás olyan szavazási módszer, amely lehetővé teszi minden választópolgár számára, hogy választása szerint sorrendben válaszoljon.</p>
-        <p>Akkor előnyös, ha a „szavazatok lopása” aggodalomra ad okot (azaz két kissé népszerű lehetőség hasonló ahhoz hasonlóan
-        végül megosztja a szavazatokat közöttük), és felhasználható Condorcet vagy azonnali lefolyású stílusú választások végrehajtására.
-        </p>
-    tool_tip_collapsed: Rangsorold a lehetőségeket az elsőtől az utolsóig
-    start_header: Start rangsorolt választás
-    edit_header: Szerkessze a rangsorolt választást
-    tip: Rangsorold a lehetőségeket az elsőtől az utolsóig
-    title_placeholder: Például. Ki szeretne polgármesterként?
-    details_placeholder: Adjon meg minden tisztázó részletet az emberek részvételéhez
-    meeting_created: Ranked választás létrejött
-    meeting_updated: A rangsorolt választás frissítve
     no_options: "Még nem adtál meg egyetlen lehetőséget sem."
     add_option_placeholder: Írjon be egy új választást
     minimum_stance_choices: Lehetőségek, amiket rangsorolni kell
-    minimum_stance_choices_helptext: A lehetőségek száma, amit a szavazók rangsorolhatnak
     ranked_choice_created: Ranked választás létrejött
     ranked_choice_updated: A rangsorolt választás frissítve
     rank: Rangsorolás
@@ -1335,35 +1248,26 @@ hu:
     stance_updated: A szavazás frissítve
     vote: Szavazás
   poll_proposal_options:
+    'yes': 'Igen'
+    'no': 'Nem'
     agree: Egyetért
     consent: Egyetértés
-    agree_verb: "egyetértett"
-    agree_meaning: Ez a javaslat elég jó ahhoz, hogy a csoport elfogadhassa
     abstain: Tartózkodik
-    abstain_verb: "tartózkodott"
-    abstain_meaning: Nem biztos, nem tudom, vagy nem bánom. Mindkét módon támogatni fogja az eredményt
     disagree: Nem ért egyet
-    disagree_verb: "nem értett egyet"
-    disagree_meaning: Nem támogatom a javaslatot. Nem szabad tovább mennie.
     objection: Tiltakozás
     block: Tiltakozás
-    block_verb: "tiltakozott"
-    block_meaning: A mély aggodalom kezelése érdekében a csoport sürgős figyelmére van szükség
-    agree_abstain_disagree_block: 'Egyetértek, Tartózkodok, Nem értek egyet, Vétó'
-    agree_disagree: 'Egyetért, Nem ért egyet'
-    agree_abstain_disagree: 'Egyetértek, Tartózkodok, Nem értek egyet'
-    consent_abstain_object: 'Beleegyezés, Tartózkodás, Tiltakozás'
+    agree_meaning: Ez a javaslat elég jó ahhoz, hogy a csoport elfogadhassa
     no_voting: 'Nincs szavazás'
+  poll_count_form:
+    title_placeholder: Például. Ki akar csatlakozni a munkacsoporthoz?
+    details_placeholder: Magyarázza el, hogy mi a kötelezettségvállalás, vagy mutasson részleteket a részvételről.
   poll_count_options:
+    decline: Visszautasítás
     'yes': 'Igen'
     'no': 'Nem'
   poll_count_vote_form:
     reason_label: Üzenet
     reason_placeholder: Ha szeretne, hagyjon üzenetet
-    stance_created: Szavazás létrehozva
-    stance_updated: Szavazás frissítve
-  poll_count_chart_panel:
-    out_of: a(z) {{goal}} közül
   poll_meeting_chart_panel:
     total: Összesen
   poll_poll_vote_form:

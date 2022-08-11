@@ -10,8 +10,6 @@ km:
     email_address: កែរសម្រួលអាស័យដ្ឋាន
     privacy:
       public: 'សាធារណះ'
-    models:
-      proposal: 'សំណើ'
     action:
       search: 'ស្វែងរក'
       save: 'រក្សាទុក​'
@@ -107,6 +105,9 @@ km:
     closed: 'បានបិទ'
   poll_common_form:
     closed: បានបិទ
+  poll_proposal_options:
+    'yes': 'បាទ/ចាស!'
+    'no': 'ទេ'
   poll_count_options:
     'yes': 'បាទ/ចាស!'
     'no': 'ទេ'

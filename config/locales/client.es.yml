@@ -17,14 +17,23 @@ es:
     task_updated_not_done: '¡Tarea señalada como no hecha!'
     no_tasks_assigned: No hay tareas asignadas a ti
   templates:
+    title_template: "%{title} Plantilla"
+    title_templates: "%{title} Plantillas"
+    title_copy: "%{title} Copia"
     login_to_start_demo: |
         Esta es una demostración de Loomio en acción. Le invitamos a echar un vistazo.
+    sign_in_to_try_features: |
+        Si desea intentar votar en una decisión de demostración o iniciar una prueba gratuita para su organización, haga clic en "iniciar sesión".
+    click_button_to_start_demo: |
+        ¡Bienvenido! Para probar la votación y otras funciones, haga clic en el botón:
+    welcome_to_your_demo: ¡Este es tu propio grupo de demostración!
     try_voting_to_see_it_work: Intente votar en una propuesta para tener una idea de cómo funciona Loomio.
     delete_will_be_deleted_in_x_days: Esta demostración se eliminará en %{x} días.
     to_use_loomio_with_your_org_start_trial: Cuando esté listo para probar Loomio con su organización, inicie una prueba gratuita.
     templates: Plantillas
     make_a_copy: "Haz una copia"
     this_thread_is_a_template: Este hilo es una plantilla, haz una copia si quieres usarla.
+    this_is_a_poll_template: Esta es una plantilla de encuesta. Haga una copia si desea comenzar a votar.
     try_loomio: Prueba Loomio
     start_a_demo_group: Empezar un grupo de demostración
     start_a_demo: Iniciar demo
@@ -43,6 +52,7 @@ es:
     start_free_trial: Comenzar prueba gratis
     demo_needs_user: Para iniciar una demostración, debe registrarse (o iniciar sesión) como usuario de Loomio. Esto es gratis y solo toma un minuto.
     this_is_a_template_for_new_threads: Esta es una plantilla para nuevos hilos
+    share_a_custom_configuration: Compartir una configuración personalizada con otros miembros de tu grupo
   doctypes:
     youtube_video: Video Youtube
     image: Imagen
@@ -135,7 +145,8 @@ es:
     only_admins_can_edit_tags: Lo sentimos, solo los administradores de {{group}} pueden crear, cambiar el nombre o eliminar etiquetas
   poll_types:
     proposal: propuesta
-    count: verificación
+    count: Apuntarse
+    check: comprobación de sentido
     poll: sondeo
     dot_vote: punto electoral
     meeting: Coordinación de horario
@@ -152,6 +163,7 @@ es:
   timezones:
     local: Hora local ({{value}})
   common:
+    loomio_help: Ayuda de Loomio
     please_wait: Por favor espera
     optional: (opcional)
     version: Versión
@@ -159,6 +171,7 @@ es:
     empty: Vacío
     no_results_found: No hemos encontrado nada
     view: Vista
+    or: 'o '
     history: Historia
     option: Opción
     add: Añadir
@@ -195,6 +208,7 @@ es:
     anonymous: Anónimo
     required: Solicitado
     email_address: Dirección de correo electrónico
+    minutes: Acta
     privacy:
       privacy: 'Privacidad'
       public: 'Público'
@@ -212,8 +226,6 @@ es:
       thismonth: 'Este mes'
       older: 'Antiguo'
     more_help: 'Mas ayuda '
-    models:
-      proposal: 'Propuesta'
     copy: 'Copiar'
     reset: 'Reiniciar'
     copy_text: 'Copiar texto'
@@ -343,7 +355,6 @@ es:
     title_label: Título
     hint: 'Indicio para la próxima vez: Intenta resaltar algo de texto antes de clicar "Pin".'
   change_volume_form:
-    help_notifications: 'Ayuda: notificaciones'
     explain_scope:
       thread: Esto cambia cuando seas notificado sobre este hilo
       group: Estos cambios cuando serás notificado acerca de todos los hilos en el grupo
@@ -613,7 +624,7 @@ es:
       poll_closed_by_user: "%{actor} cerró el %{poll_type}"
       poll_closing_soon: '%{poll_type} cerrará en 24 horas'
       poll_closing_soon_author: 'Tu %{poll_type} cerrará en 24 horas'
-      poll_created: "%{actor} comenzó en %{poll_type}"
+      poll_created: "%{actor} ha comenzado %{poll_type}"
       poll_edited: "%{actor} ha editado el %{poll_type}"
       poll_expired: "%{poll_type} ha cerrado"
       poll_expired_author: 'Compartió el resultado de tu %{poll_type}'
@@ -639,6 +650,15 @@ es:
     move_to_existing_thread: 'Mover a un hilo existente '
     start_new_thread: O empieza un nuevo hilo
   discussion_form:
+    want_some_inspiration: ¿Quieres inspiración?
+    browse_public_templates: Examinar plantillas públicas
+    thread_templates: Plantillas de hilo
+    new_thread_template: Nueva plantilla de hilo
+    edit_thread_template: Editar plantilla de hilo
+    blank: Espacio en blanco
+    blank_subtitle: Comience una discusión y vea a dónde lo lleva
+    new_template: Nueva plantilla
+    new_template_subtitle: Crear un ejemplo que otros puedan copiar
     to: Para
     direct_thread: "Hilo directo"
     invite_only_thread: "Hilo sólo con invitación"
@@ -646,7 +666,6 @@ es:
     none_invite_only_thread: "Hilo sólo con invitación (no grupo)"
     change_log_placeholder: Opcionalmente, describe tus cambios. Este mensaje será añadido al hilo.
     change_log_label: ¿Qué ha cambiado?
-    help_starting_threads: 'Ayuda: Iniciar hilos'
     invite: Invitar
     aria_label: 'Formulario del hilo'
     start_thread: Empezar un hilo
@@ -674,6 +693,7 @@ es:
     send_group: Invita a gente a {{name}}
     send_poll: Enviar {{type}}
     send_outcome: Enviar resultado
+    cannot_reveal_when_anonymous: Lo sentimos, no podemos revelar quién ha votado o no en una encuesta anónima.
     discussion_notification_history: Historial de la notificación del hilo
     group_notification_history: Historial de la invitación del grupo
     poll_notification_history: Historia de la notificación del sondeo
@@ -716,8 +736,6 @@ es:
       undecided_voters: Votantes indecisos
       non_voters: Miembros de {{name}} todavía no han sido invitados
     form:
-      help_notifying_people: 'Ayuda: Notificar a las personas'
-      help_invite_voters: 'Ayuda: Invitar a los votantes'
       too_many_invitations: |
           Límite de invitaciones excedido. <a href="{{upgradeUrl}}" target="_blank">Mejore su abono</a>
       no_invitations_remaining: |
@@ -803,6 +821,7 @@ es:
     translate_thread: Traducir contexto
     edit_poll: Editar encuesta
     edit_poll_type: "Editar {{pollType}}"
+    new_poll_type: "Nuevo {{pollType}}"
     move_items: Mover elementos
     announce_poll: 'Invitar a personas a votar '
     announce_poll_active: '(Nadie ha sido invitado aún) '
@@ -1031,7 +1050,6 @@ es:
     as_csv: Abrir en una hoja de cálculo
     as_html: Abrir en el navegador
     as_json: Presentar este grupo en mi propio servidor
-    help_exporting_data: 'Ayuda: Exportar datos'
   description_card:
     title: 'Descripción del Grupo '
     placeholder: 'Los administradores de grupo pueden usar este area para describir el propósito del grupo, con lo que todo el mundo sabe porqué están ahí.'
@@ -1048,14 +1066,14 @@ es:
     question: '¿Estás seguro de que quieres desactivar este grupo?'
     submit: 'Sí, desactivar este grupo'
   group_form:
-    help_starting_a_group: 'Ayuda: Iniciar un grupo'
     thread_defaults_help: Ajustes predeterminados para nuevos hilos
     click_to_change_image: Haga clic para cambiar la imagen de portada (4x1) o el logotipo (1x1)
+    change_cover_image: cambiar imagen de portada
+    change_logo: cambiar el logotipo
     permissions_explaination: |
         Hay dos niveles de membresía a los que una persona puede optar para un grupo: admin y miembro.
         Los administradores pueden editar los ajustes del grupo, hacer a otras personas administradores y ejecutar todas la acciones que se listan a continuación.
     aria_label: Formulario de grupo
-    help_group_settings: 'Ayuda: Configuración de grupo'
     parent_group: Grupo de padres
     new_organisation: Nueva organización
     new_group: Nuevo grupo
@@ -1173,7 +1191,6 @@ es:
   invitation_form:
     group_url: Grupo URL
     reusable_invitation_link: Enlace de invitación reutilizable
-    help_inviting_people: 'Ayuda: Invitar a personas'
     error: "Error cuando se intenta copiar en el portapapeles"
     aria_label: 'Formulario de invitación'
     invite_people: 'Invitar personas'
@@ -1255,7 +1272,6 @@ es:
     helptext: "A {{name}} se le enviará su nombre, dirección de correo electrónico y mensaje."
     email_sent: "Correo electrónico enviado a {{name}}"
   profile_page:
-    help_profile: 'Ayuda: Tu perfil'
     incomplete_profile: ¡Perfil incompleto!
     set_your_profile_picture: Establecer tu foto de perfil
     messages:
@@ -1263,6 +1279,7 @@ es:
       picture_changed: 'Imagen de perfil actualizada'
       password_changed: 'Contraseña actualizada'
       deactivated: 'Cuanta desactivada'
+    date_time_pref_label: 'Formato de fecha y hora'
     merge_accounts: Fusionar cuentas
     change_picture_link: 'Cambiar imagen'
     change_password_link: 'Restablece contraseña'
@@ -1297,6 +1314,7 @@ es:
     use_initials: 'Usar iniciales'
     use_gravatar: 'Usar Gravatar'
     use_uploaded: 'Cargar nueva foto'
+    existing_upload: 'Carga existente'
     use_provider: 'Usa {{provider}} foto'
   change_password_form:
     set_password_title: Establece tu contraseña
@@ -1345,13 +1363,13 @@ es:
     messages:
       updated: Configuración del correo electrónico actualizada
     learn_more: Aprende más sobre la configuración de correo electrónico...
-    help_email_settings: 'Ayuda: Configuración del correo electrónico del usuario'
   thread_preview:
     replies_count: "%{count} respuestas"
     unread_count: "%{count} no leídos"
   dashboard_page:
     aria_label: 'Escritorio'
     polls_to_vote_on: "Sondeos para votar"
+    no_polls_to_vote_on: "No hay encuestas en las que deba votar"
     recent_polls: "Sondeos recientes"
     current_polls: "Sondeos actuales"
     recent_threads: "Hilos recientes"
@@ -1460,6 +1478,8 @@ es:
     add_outcome: Añadir resultado
     comment: Comentario
     facilitate: Facilitar
+    start_decision: Iniciar la decisión
+    start_vote: Iniciar votación
   thread_group:
     aria_label: Nombre del grupo
   thread_context:
@@ -1564,13 +1584,29 @@ es:
     choose_type: Elegir tipo de sondeo
     title: Facilitar
     proposal_title: Propuesta
-    count_title: Comprobación
+    count_title: Apuntarse
+    check_title: Comprobación de sentido
     poll_title: 'Encuesta '
     score_title: Encuesta de puntuación
     dot_vote_title: Voto de puntos
     meeting_title: Coordinar horario
     ranked_choice_title: Opción priorizada
+  poll_option_form:
+    edit_option: Opción editar
+    option_name: Nombre de la opción
+    option_name_hint: Un nombre corto para esta opción
+    icon: Icono
+    meaning: Significado
+    meaning_hint: Una frase que explique lo que significa elegir esta opción
+    prompt: Mensaje de motivo
+    prompt_hint: Una pregunta para incitar a los votantes a proporcionar su razonamiento o reconsiderar su posición.
   poll_common:
+    select_count_options: Seleccione las opciones de {{count}}
+    select_minimum_to_maximum_options: Seleccione las opciones {{minimum}} a {{maximum}}
+    poll_template: Plantilla de encuesta
+    poll_templates: Plantillas de encuesta
+    decision: Decisión
+    decision_templates: Plantillas de decisión
     vote_now: Votar ahora
     review_due: Revisión pendiente
     have_your_say: Denos su opinión
@@ -1684,11 +1720,18 @@ es:
     search_subgroups_of_name: 'Subgrupos de búsqueda de {{name}}'
     group_without_subgroups: '{{name}} sin subgrupos'
   poll_common_action_panel:
+    from_the_thread: Desde la plantilla de subproceso
+    from_the_group: Del grupo
+    default_templates: Plantillas predeterminadas
+    suggested_templates: Plantillas sugeridas
+    group_templates: Plantillas de grupo
+    basic_templates: Plantillas básicas
     anonymous: Los votos son anónimos
     results_hidden_until_closed: Los resultados se mostrarán después de que cierre la votación
     results_hidden_until_vote: Los resultados se mostrarán después de que tú votes
     unable_to_vote: No has sido invitado a votar en este %{poll_type}.
-    draft_mode: Votación desactivada. Este %{poll_type} es un trabajo en progreso
+    draft_mode: Votante discapacitado. Esto aún no está abierto a votación.
+    voting_disabled_poll_is_template: Votante discapacitado. Esta es una plantilla.
   poll_common_collapsed:
     by_who: "por {{name}}"
   poll_common_calendar_invite:
@@ -1705,12 +1748,15 @@ es:
     location_placeholder: ¿Dónde tomara lugar esta reunión?
   poll_common_settings:
     who_can_vote: '¿Quién puede votar?'
+    short_reason_can_be_helpful: Mantener las razones de voto cortas las hace más fáciles de entender. Una colección de razones concisas es un gran recurso para tomar una decisión.
     specified_voters_only_true: Solamente personas invitadas
     specified_voters_only_false_group: Cualquiera en el grupo
     specified_voters_only_false_discussion: Cualquiera en el hilo
     invite_people_next: Puedes elegir a quien se le invita a votar después de empezar {{poll_type}}
     shuffle_options:
-      title: Votantes ven opciones en un orden al azar
+      shuffle_options: Opciones aleatorias
+      title: Mostrar opciones en orden aleatorio
+      helptext: Una opción que sea la primera en la lista puede darle un sesgo. Utilice esta configuración para contrarrestar ese efecto.
     multiple_choice:
       title: Opción multiple
       helptext_on: Si es seleccionado, los participantes podrán seleccionar múltiples opciones
@@ -1731,11 +1777,9 @@ es:
       title: Votantes anónimos
       helptext_on: Si es seleccionado, la información del participante no será mostrada con cada respuesta
     voter_can_add_options:
-      title: Los votantes pueden añadir opciones
-      helptext_on: 'Si es seleccionado, los participantes podrán añadir sus propias opciones al votar '
+      title: Los votantes pueden agregar opciones alternativas
     can_respond_maybe:
       title: Los votantes pueden responder 'de ser necesario'
-      helptext_on: Los votantes pueden indicar tiempos como 'de ser necesario'
     allow_long_reason:
       title: Permitir que la "razón" del voto tenga más de 500 caracteres
     hide_results_until_closed:
@@ -1754,9 +1798,15 @@ es:
     title: "Mover {{poll_type}}"
     success: "{{poll_type}} se ha movido a {{group}}"
   poll_common_wip_field:
+    voting_enabled: Votación habilitada
+    enable_voting: Habilitar la votación
     title: Desactivar votación
     past_tense: Votación desactivada
+    draft_mode: 'Modo borrador'
+    disable_voting_during_development: 'Este %{poll_type} no está listo para ser votado'
     helptext: 'Este %{poll_type} es un trabajo en progreso. Puedes activar la votación más tarde.'
+    voting_open: Votación abierta
+    this_is_ready_for_voting: este %{poll_type} está listo para ser votado
   poll_common_closing_at_field:
     closing: Cerrando
     no_closing_date: Sin fecha de cierre
@@ -1764,6 +1814,7 @@ es:
     closing_hour: Hora de clausura
     invalid_date: Fecha inválida
   poll_card:
+    poll_type_by_name: "%{poll_type} por %{name}"
     started_by: Iniciado por {{name}}
   poll_common_votes_panel:
     undecided: No resuelto
@@ -1786,13 +1837,7 @@ es:
     reminder_sent: 'Recordatorio de notificación enviado '
   poll_common_set_outcome_panel:
     enter_outcome: Poner el resultado
-    poll: 'Esta encuesta ha cerrado. <strong>Comparta el resultado</strong> con el grupo.'
-    proposal: 'Esta propuesta se ha cerrado. Por favor, considere lo que se ha expresado y <strong> comparta un resultado</strong>, así todos sabrán lo que ocurrirá a continuación.'
-    count: 'Esta comprobación ha cerrado. <strong>Comparta el resultado</strong> para completar el proceso. '
-    meeting: 'Esta coordinación de horario ha cerrado. <strong>Comparte un resultado</strong> para que otros sepan el mejor horario.'
-    dot_vote: 'Este voto por puntos ha cerrado. <strong>Comparte un resultado</strong> con el grupo.'
-    ranked_choice: 'Esta encuesta de opción priorizada ha cerrado. <strong>Comparte el resultado</strong> con el grupo.'
-    score: 'Este resultado de la encuesta ha cerrado. <strong>Comparte un resultado</strong>con el grupo.'
+    poll_type: "Este %{poll_type} ha cerrado. Tómese el tiempo para considerar los resultados y luego comparta un resultado para que las personas sepan lo que sucederá a continuación."
   poll_common_outcome_form:
     review_date: Revisar fecha
     review_date_hint: Establecer fecha de recordatorio para revisar el resultado (opcional)
@@ -1811,139 +1856,130 @@ es:
     title: Eliminar {{pollType}}
     success: Eliminada con éxito.
   poll_common_form:
+    choose_at_least: Elija al menos
+    choose_at_most: Elige como máximo
+    please_review_the_form: Por favor, revise el formulario
+    option_added_please_add_details: ¡Opción añadida! Por favor, agregue algunos detalles para que la gente sepa lo que significa.
+    default_duration_in_days: Duración predeterminada en días
+    default_duration_in_days_hint: ¿Cuántos días se deben dar para que la gente vote?
+    how_many_options_can_a_voter_choose: ¿Cuántas de estas opciones puede elegir un votante?
+    minimum_choices: Opciones mínimas
+    maximum_choices: Máximo de opciones
+    content: Contenido
+    reminder: Recordatorio
+    your_in_zone: 'Zona horaria actual: %{zone}'
+    show_other_zones: Mostrar otras zonas horarias
+    hide_other_zones: Ocultar otras zonas horarias
+    this_is_a_template_for_new_polls: Esta es una plantilla para nuevas encuestas
+    voting_method: Método de votación
+    voting_methods:
+      show_thumbs: Presentación de pulgares
+      show_thumbs_hint: Los votantes están de acuerdo o en desacuerdo eligiendo pulgares hacia arriba o hacia abajo
+      choose: Elegir
+      choose_hint: Los votantes eligen la mejor opción (u opciones)
+      score: 'Puntuación '
+      score_hint: Los votantes asignan una puntuación a cada opción
+      allocate: Asignar
+      allocate_hint: Los votantes asignan un presupuesto de puntos entre las opciones
+      ranked_choice: Opción priorizada
+      ranked_choice_hint: Los votantes organizan las opciones en orden de más a menos preferidos
+      time_poll: Coordinar horario
+      time_poll_hint: Los votantes indican cuándo están disponibles para reunirse
+    process: Proceso
+    process_name: Nombre del proceso
+    process_name_hint: Por ejemplo, Propuesta, Resolución, Acuerdo, Control de temperatura
+    you_can_set_a_prompt_per_option: Edite el mensaje para cada opción desde la pestaña de detalles
+    chart_type: Tipo de gráfico
     title: Título
+    example_title: Título de ejemplo
+    title_hint: Una breve declaración o pregunta
+    no_options_add_some: Esta encuesta no tiene opciones, agregue algunas a continuación.
     details: Detalles
+    example_details: Detalles del ejemplo
+    details_placeholder: Esta es su oportunidad de explicar lo que la gente está votando.
     options: Opciones
     options_placeholder: Enumera las opciones disponibles
     no_options: No has añadido ninguna opción aún
     closing: Cerrando
     closed: 'Cerrado '
     start: Iniciar
+    start_poll: Iniciar encuesta
+    stance_reason_required_label: Proporcionar una razón al votar es...
+    stance_reason_required: Solicitado
+    stance_reason_optional: Opcional
+    stance_reason_disabled: Deshabilitado
+    stance_reason_is_required: Por favor, proporcione una razón con su voto
+    limit_reason_length: Limitar el motivo a un máximo de 500 caracteres
+    save_poll: Guardar encuesta
     start_poll_type: Comenzar {{poll_type}}
     share_poll_type: Compartir {{poll-type}}
     who_may_vote: ¿Quién debería votar en este {{poll_type}}?
     update: Actualizar
     add_voters: Añadir votantes
     notify_invitees: Envía notificaciones
-    loomio_school_link: |
-        <p>Descubre más en <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ayuda Loomio</a>.</p>
     no_notifications_warning: Los votantes serán notificados. Esto es útil si están llevando a cabo muchos sondeos y planeas notificar a todo el mundo más adelante.
     count_voters_added: '%{count} votantes añadidos'
+    poll_type_created: '%{poll_type} creado'
+    poll_type_started: '%{poll_type}comenzó'
+    reason_prompt: Mensaje de motivo
+    anonymous_voting: Voto anónimo
+    anonymous_voting_description: Si se habilita, la identidad de los votantes no se asociará a sus votos. Esto no se puede deshacer.
+    votes_are_anonymous: Los votos son anónimos
+    vote_reason: Motivo del voto
+    vote_reason_description: Puede ser útil entender por qué las personas votaron de la manera en que lo hicieron. Con esta configuración, puede incitar a las personas a compartir sus pensamientos cuando voten.
+    hide_results_description: Si quieres que la gente vote sin saber cómo han votado los demás, puedes ocultar los resultados de la encuesta.
+    process_helptext: |
+        Nombre y describa el proceso que se está utilizando para ejecutar esta encuesta.
+    reminder_helptext: |
+        Envíe una notificación de "Cierre pronto" antes de que se cierre la encuesta.
+        Esta puede ser una oportunidad para que las personas vean cómo otros han votado y reconsideren su propio voto, o simplemente una forma de aumentar la participación en la encuesta.
   poll_proposal_form:
-    tool_tip_expanded: |
-        <p>Una propuesta es una herramienta para buscar el acuerdo colectivo sobre una declaración o curso de acción</p>
-        <p>Los participantes pueden estar de acuerdo, abstenerse, estar en desacuerdo o bloquear, y dar una explicación, o fundamento de su posición</p>
-        <p>Un gráfico circular, permite tener una visión general de las posiciones del grupo, mientras que las explicaciones o fundamentos, permiten que todas las voces sean escuchadas. </p>
-        <p>No te desanimes si al comienzo no ves que haya acuerdo, las propuestas están diseñadas para hacer visibles los problemas que necesitan resolución..</p>
-        <p>Si hay buena participación, una propuesta es un poderoso mandato para pasar a la acción.</p>
-    tool_tip_collapsed: Obtener el permiso o comentarios de los otros.
+    tool_tip_collapsed: Toma de decisión conjunta
+    vote_method_hint: Los votantes están de acuerdo o en desacuerdo con una declaración
     start_header: Inicia una propuesta
     edit_header: Edita una propuesta
-    tip: Busque acuerdos colectivos a través de un proceso que permite que todas las voces sean escuchadas <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Aprender más</a>
     title_placeholder: P.ej. ¡Vamos a la luna!
-    details_placeholder: Dé suficiente información para que todos sepan lo que significa estar de acuerdo o en desacuerdo
+    details_placeholder: ¿Cuáles son los detalles de su propuesta?
     proposal_created: Propuesta iniciada
     proposal_updated: Propuesta actualizada
   poll_poll_form:
-    help_starting_polls: 'Ayuda: Iniciar encuestas'
-    tool_tip_expanded: |
-        <p>Usa una encuesta para medir popularidad u ofrecer alternativas.</p>
-        <p>Proporciona algunas opciones de dónde elegir. Decide si los participantes eligen opciones individuales o múltiples en su respuesta.</p>
-        <p>Todos votan y pueden incluir una fundamentación si lo desean. Los resultados se visualizan en un gráfico de barras.</p>
-    tool_tip_collapsed: Elige desde una lista de opciones
+    multiple_choice_subtitle: Una forma sencilla de evaluar la popularidad de las opciones
+    tool_tip_collapsed: Encuentra la opción más popular
     start_header: Iniciar encuesta
     edit_header: Editar encuesta
     tip: Ofrecer una elección entre las opciones
     title_placeholder: 'Ej. ¿A dónde quieres ir de vacaciones? '
     details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para contestar la pregunta.
     add_option_placeholder: Agregar opción
+    new_option: Nueva opción
+    add_option_hint: Introduzca un nombre corto para la opción
     remove_option: Quitar opción
     poll_created: Encuesta creada
     poll_updated: Encuesta actualizada
-  poll_count_form:
-    tool_tip_expanded: |
-        <p>Una <em>comprobación</em> es una herramienta que tiene muchos usos posibles pero solo 2 respuestas: visto (✔) o anulación (✘). Los participantes usarán el visto (✔) para decir sí y la anulación (✘) para decir no o inseguro. </p>
-        <p>Úsalo para comprometer a la gente, como al pedir confirmación: "asistiré al evento" o "me apuntaré al grupo de trabajo".</p>
-        <p>O úsalo para hacer seguimiento a una tarea: "confirmé que mis datos de contacto están correctos", o "leí el documento y dejé mis comentarios".</p>
-        <p>Una comprobación tiene un <em>objetivo</em>, que es el número de participantes que quisieras. La meta indica al grupo que algo requiere más atención o cuenta con amplio acuerdo.</p>
-        <p>Un día antes de que se cierre la comprobación, se le recordará a quienes no han participado todavía.</p>
-    tool_tip_collapsed: Cuenta cuanta gente ha completado la tarea o pide voluntarios.
-    start_header: 'Iniciar Comprobación '
-    edit_header: 'Editar Comprobación '
-    tip: Pregunta quien ha completado una tarea o desea ser voluntario
-    title_placeholder: P.ej. ¿Quién quiere unirse al grupo de trabajo?
-    details_placeholder: Explica lo que implica participar o brinda detalles sobre cómo participar.
-    count_created: 'Comprobación iniciada '
-    count_updated: 'Comprobación actualizada '
+    option_added: Opción añadida
+    option_already_added: Opción ya agregada a la encuesta
   poll_dot_vote_form:
-    tool_tip_expanded: |
-        <p>El voto de puntos es una manera de priorizar un listado de alternativas.</p>
-        <p>Los participantes tienen un número limitado de ‘puntos’ que pueden distribuir del modo que quieran entre las opciones que representen sus preferencias.</p>
-        <p>El proceso da como resultado un gráfico de barras acumulativas además de las asignaciones individuales, con lo que se pueden considerar los distintos puntos de vista.</p>
-    tool_tip_collapsed: Asignar un presupuesto de puntos
-    start_header: Iniciar voto de puntos
-    edit_header: Editar voto de puntos
-    tip: Asignar un presupuesto de puntos
-    title_placeholder: Ej. ¿Cómo debemos asignar el presupuesto?
-    details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
-    add_option_placeholder: Agregar opción
+    tool_tip_collapsed: Asignar un presupuesto de puntos para revelar prioridades
     dots_per_person: Puntos por persona
     dots_per_person_helptext: El número total de puntos que a cada persona se le pide asignar
-    dot_vote_created: Voto de punto creado
-    dot_vote_updated: Voto de punto actualizado
   poll_score_form:
-    tool_tip_expanded: |
-        <p>La encuesta de puntuación permite a la gente expresar su grado de preferencia para cada opción.</p>
-        <p>La puntuación total de cada opción se muestra como parte de los resultados.</p>
-    tool_tip_collapsed: Opciones de puntuación en una escala
-    start_header: Comienza la encuesta de puntuación
-    edit_header: Edita la encuesta de puntuación
-    tip: Puntúa cada opción en una escala variable
-    title_placeholder: 'Ej: Puntúa los candidatos en una escala del 0 al 9'
-    details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
-    add_option_placeholder: Agregar opción
-    score_created: Se ha creado la encuesta de puntuación
-    score_updated: Se ha actualizado la encuesta de puntuación
+    tool_tip_collapsed: Medir el grado de apoyo para cada opción
   poll_meeting_form:
-    tool_tip_expanded: |
-        <p>Usa una coordinación de horario para saber cuándo hay disponibilidad de la gente para reunirse.</p>
-        <p>Ingresa un listado de fechas u horas en que podrías hacer la reunión.</p>
-        <p>Los participantes marcan aquellas en que pueden asistir o pueden indicar sus circunstancias en el cuadro para que puedas actualizar las alternativas de ser necesario.</p>
-        <p>Si agregas nuevos horarios durante la coordinación de horario, se le pedirá a la gente que ya ha votado que actualice su respuesta.</p>
-        <p>Así puedes saber cuándo está disponible cada uno y decidir el momento de la reunión.</p>
-        <p>Las horas se convierten automáticamente a la zona horaria del participante.</p>
     tool_tip_collapsed: Descubre cuando la gente está disponibles para reunirse
-    start_header: Iniciar coordinación horaria
-    edit_header: Editar coordinación horaria
-    tip: Descubre cuando la gente está disponibles para reunirse
-    title_placeholder: Ej. ¿Cuándo debemos tener nuestra próxima reunión?
-    details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
-    meeting_created: Coordinación horaria iniciada
-    meeting_updated: Coordinación horaria editada
     timeslots: Horarios
     no_options: Introduzca los horarios en su zona horaria actual ({{zone}}). Los integrantes verán los horarios adaptados a su zona horaria local.
     meeting_duration: Duración de reunión
     add_option_placeholder: Añadir hora nueva
     time_slot_added: Franja horaria añadida
     time_slot_already_added: Franja horaria ya añadida
+    participants_see_local_times: Los participantes verán los horarios localizados en su zona horaria
   poll_ranked_choice_form:
-    tool_tip_expanded: |
-        <p>La opción priorizada es un método de votación que permite a cada persona responder con un orden de preferencia.</p>
-        <p>Es preferente cuando el 'robo de votos' es una preocupación (ej. dos opciones bastante populares son tan similares
-        que los votos terminan siendo compartidos entre ambas), y pueden ser usadas para implementar un Condorcet o  una sistema de elección de segunda vuelta instantáneas (Instant Runoff Voting).
-        </p>
-    tool_tip_collapsed: Clasifica las opciones desde la primera a la última
-    start_header: 'Inicia una opción priorizada '
-    edit_header: 'Editar opción priorizada '
-    tip: Clasifica las opciones desde la primera a la última
-    title_placeholder: Ej, ¿Quién debe ser el próximo alcalde?
-    details_placeholder: Proporcione cualquier detalle aclaratorio que la gente pueda necesitar para participar
-    meeting_created: Opción priorizada creada
-    meeting_updated: Opción priorizada actualizada
+    tool_tip_collapsed: Comprender la preferencia ordenada de las opciones
     no_options: "No has añadido ninguna opción aún"
     add_option_placeholder: Ingresa una nueva opción
     minimum_stance_choices: Opciones para priorizar
-    minimum_stance_choices_helptext: 'Número de opciones que cada persona puede priorizar '
+    minimum_stance_choices_helptext: '¿Cuántas opciones tiene el votante?'
+    minimum_stance_choices_hint: 'es decir, clasifica tus 3 mejores sabores de helado'
     ranked_choice_created: 'Opción priorizada creada '
     ranked_choice_updated: 'Opción priorizada actualizada '
     rank: Rango
@@ -1967,38 +2003,61 @@ es:
     stance_updated: Voto actualizado
     vote: Votar
   poll_proposal_options:
+    select_an_option: Seleccione una opción
+    'yes': 'Sí'
+    'no': 'No '
     agree: De acuerdo
     consent: Consentimiento
-    agree_verb: "acordado"
-    agree_meaning: Esta propuesta es suficientemente buena para ser adoptada por el grupo
     abstain: Abstenerse
-    abstain_verb: "Se abstuvo"
-    abstain_meaning: No estoy seguro, no sé o no me importa. Apoyaré el resultado de cualquier manera
+    unsure: Inseguro
     disagree: Desacuerdo
-    disagree_verb: "en desacuerdo"
-    disagree_meaning: 'No apoyo la propuesta. No debería seguir adelante. '
     objection: Objeción
+    object: Objeto
     block: Bloquear
-    block_verb: "Bloqueado "
-    block_meaning: La atención urgente del grupo es necesaria para abordar una profunda preocupación
-    agree_abstain_disagree_block: 'estar de acuerdo, abstenerse, estar en desacuerdo, bloquear'
-    agree_disagree: 'De acuerdo, en desacuerdo'
-    agree_abstain_disagree: 'De acuerdo, abstenerse, en desacuerdo'
-    consent_abstain_object: 'Consentir, abstenerse, objeción'
-    consent_object: 'Consentir, objeción'
+    agree_meaning: Esta propuesta es suficientemente buena para ser adoptada por el grupo
+    agree_prompt: ¿Por qué te gusta la propuesta? ¿Hay algo que se pueda mejorar?
+    consent_meaning: Esta propuesta es segura de probar
+    consent_prompt: ¿Por qué consientes? ¿Hay algo que te gustaría cambiar?
+    objection_meaning: Esta propuesta no es segura de probar
+    objection_prompt: ¿Qué problema grave ha identificado en esta propuesta que significa que no es seguro intentarlo?
+    abstain_meaning: Eligiendo no hacerlo, o no poder votar en esta decisión.
+    abstain_prompt: ¿Por qué opta por no participar o no puede votar en esta decisión?
+    disagree_meaning: Algo de esta propuesta debe cambiarse antes de que pueda apoyarla.
+    block_meaning: Se requiere la atención urgente del grupo
     no_voting: 'No votar'
+  poll_count_form:
+    pct_of_target: '% del objetivo'
+    agree_target_helptext: ¿Cuál es el número objetivo de voluntarios que te gustaría tener?
+    tool_tip_collapsed: Encontrar voluntarios o participantes
+    title_placeholder: P.ej. ¿Quién quiere unirse al grupo de trabajo?
+    details_placeholder: Explica lo que implica participar o brinda detalles sobre cómo participar.
+    agree_target_label: Número objetivo
+  poll_check_options:
+    check_subtitle: Solicite comentarios, preguntas e inquietudes
+    looks_good: Tiene buena pinta
+    looks_good_meaning: Estoy contento con hacia dónde va esto
+    looks_good_prompt: ¿Tienes algún otro comentario para compartir?
+    not_sure: Aún no estoy seguro
+    not_sure_meaning: Tengo una pregunta o necesito más tiempo
+    not_sure_prompt: ¿Qué partes no están claras para usted? ¿Cómo podría resolverse esto?
+    concerned: Preocupado
+    concerned_meaning: Algo sobre esto puede necesitar cambiar
+    concerned_prompt: ¿Cuál es su preocupación y cómo podría abordarse?
   poll_count_options:
+    accept: Aceptar
+    decline: 'Rechazar '
     'yes': 'Si'
     'no': 'No'
   poll_count_vote_form:
+    accept_meaning: Estoy dispuesto a participar
+    accept_prompt: ¿Por qué te ofreces como voluntario para esto?
+    decline_meaning: No puedo participar
+    decline_prompt: ¿Hay algo que te gustaría decir?
     reason_label: Mensaje
     reason_placeholder: 'Deja un mensaje si quieres '
-    stance_created: Voto creado
-    stance_updated: Voto actualizado
   poll_common_percent_voted:
     sentence: "{{numerator}} de {{denominator}} gente ha votado ({{percent}}%))"
-  poll_count_chart_panel:
-    out_of: de {{goal}}
+    target_progress: "{{porcentaje}}% del objetivo alcanzado. ({{num}} / {{target}})"
   poll_meeting_chart_panel:
     total: Total
   poll_poll_vote_form:
@@ -2106,6 +2165,7 @@ es:
     check_your_email: ¡Revise su correo electrónico!
     login_link_sent: "Enviamos un correo electrónico a {{email}}"
     instructions: "Haz clic en el enlace para entrar, o ingresa el siguiente código:"
+    instructions_code: "Ingrese el código de ese correo electrónico:"
     too_many_attempts: "Demasiados intentos; intente hacer clic en el enlace en el correo electrónico para iniciar sesión."
     invalid_code: "Lo lamentamos, ese código no coincide. Mira el correo electrónico e intenta de nuevo"
     password_link_sent: "Le hemos enviado un correo electrónico a {{email}}, con instrucciones para configurar su contraseña."
@@ -2141,9 +2201,7 @@ es:
     event_kind_helptext: Seleccione los eventos sobre los que siempre se notificará al bot. Si no está seguro, simplemente déjelos todos apagados.
     notification_only_label: Enviar solo título de notificación
     check_for_test_message: ¡Revisa tu sala de chat para ver si hay un mensaje del bot!
-    help_chatbots: 'Ayuda: Chatbots'
   webhook:
-    help_api: "Ayuda: API"
     integrations: Incorporaciones
     api_keys: Claves de API
     webhooks: Webhooks

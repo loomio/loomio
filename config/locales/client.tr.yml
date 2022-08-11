@@ -50,7 +50,6 @@ tr:
     tags_marked: 'Müzakereler {{groupName}} içinde ''{{name}}'' ile işaretlendi '
   poll_types:
     proposal: öneri
-    count: kontrol et
     poll: anket
     dot_vote: nokta oyu
     meeting: zaman anketi
@@ -72,6 +71,7 @@ tr:
     empty: Boş
     no_results_found: Sonuç bulunamadı
     view: İncele
+    or: veya
     history: Geçmiş
     option: Seçenek
     add: Ekle
@@ -119,8 +119,6 @@ tr:
       thismonth: 'Bu Ay'
       older: 'Eski'
     more_help: 'Daha fazla yardım'
-    models:
-      proposal: 'Öneri'
     copy: 'Kopyala'
     reset: 'Sıfırla'
     copy_text: 'Metni kopyala'
@@ -624,7 +622,6 @@ tr:
       reload: 'Tekrar yükle'
   decision_tools_card:
     proposal_title: Öneri
-    count_title: Kontrol et
     poll_title: Anket
   poll_common:
     have_your_say: Söz sahibi ol
@@ -648,6 +645,10 @@ tr:
   poll_common_form:
     closed: Kapalı
     start: Başla
+    stance_reason_required: Zorunlu
+  poll_proposal_options:
+    'yes': 'Evet'
+    'no': 'Hayır'
   poll_count_options:
     'yes': 'Evet'
     'no': 'Hayır'

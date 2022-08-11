@@ -29,8 +29,6 @@ be_BY:
       yesterday: 'Учора'
       thisweek: 'На гэтым тыдні'
       thismonth: 'У гэтым месяцы'
-    models:
-      proposal: 'Прапанова'
     action:
       search: 'Пошук'
       close: 'Зачыніць'
@@ -188,6 +186,9 @@ be_BY:
     closed: 'Закрыта'
   poll_common_form:
     closed: Закрыта
+  poll_proposal_options:
+    'yes': 'Так'
+    'no': 'Не'
   poll_count_options:
     'yes': 'Так'
     'no': 'Не'

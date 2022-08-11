@@ -16,8 +16,6 @@ mk:
       public: 'Јавно'
     date_range:
       today: 'Денес'
-    models:
-      proposal: 'Предлог'
     action:
       search: 'Пребарувај'
       save: 'Зачувај'
@@ -138,6 +136,9 @@ mk:
     closed: 'Затворено'
   poll_common_form:
     closed: Затворено
+  poll_proposal_options:
+    'yes': 'Да'
+    'no': 'Не'
   poll_count_options:
     'yes': 'Да'
     'no': 'Не'

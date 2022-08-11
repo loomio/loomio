@@ -52,7 +52,6 @@ pt_BR:
     tags_marked: Tópicos marcados '{{name}}' em {{groupName}}
   poll_types:
     proposal: proposta
-    count: enquete de verificação
     poll: enquete de escolha
     dot_vote: enquete de distribuição
     meeting: enquete de horário
@@ -74,6 +73,7 @@ pt_BR:
     empty: Vazio
     no_results_found: Nenhum resultado encontrado
     view: Visualizar
+    or: ou
     history: Histórico
     option: Opção
     add: Somar
@@ -121,8 +121,6 @@ pt_BR:
       thismonth: 'Este Mês'
       older: 'Antigos'
     more_help: 'Mais ajuda'
-    models:
-      proposal: 'Proposta'
     copy: 'Copia'
     reset: 'Reiniciar'
     copy_text: 'Copiar texto'
@@ -1146,7 +1144,6 @@ pt_BR:
   decision_tools_card:
     title: Facilitar
     proposal_title: Proposta
-    count_title: Enquete de verificação
     poll_title: Consulta
     score_title: Enquete de pontuação
     meeting_title: Enquete de horário
@@ -1273,12 +1270,8 @@ pt_BR:
     anonymous:
       title: Eleitores anônimos
       helptext_on: Quando selecionado, as informações dos eleitores não serão exibidas a cada resposta.
-    voter_can_add_options:
-      title: Eleitores podem adicionar opções
-      helptext_on: Quando selecionado, eleitores poderão adicionar suas próprias opções enquanto votam.
     can_respond_maybe:
       title: Eleitores podem responder "caso necessário"
-      helptext_on: Eleitores podem indicar horários como "caso seja necessário".
   poll_common_closing_at_field:
     closing: Encerrando
     closing_hour: Horário de encerramento
@@ -1303,13 +1296,6 @@ pt_BR:
     reminder_sent: Notificação de lembrete enviado
   poll_common_set_outcome_panel:
     enter_outcome: Digite o resultado
-    poll: 'Esta enquete de escolha foi encerrada. <strong>Compartilhe o resultado</strong>com o grupo.'
-    proposal: 'Esta proposta foi encerrada. Por favor considere o que foi discutido e <strong>compartilhe o resultado</strong>, para que as pessoas saibam o que acontecerá na sequência.'
-    count: 'Essa enquete de verificação foi encerrada. <strong>Compartilhe um resultado</strong>para seguir a conversa.'
-    meeting: 'Essa enquete de horário encerrou. <strong>Compartilhe um resultado</strong> para deixar os demais saberem quando será o encontro.'
-    dot_vote: 'Esta enquete de distribuição foi encerrada. <storng>Compartilhe um resultado</strong> com o grupo.'
-    ranked_choice: 'Essa enquete de classificação foi encerrada. <strong>Compartilhe um resultado</strong> com o grupo.'
-    score: 'Essa enquete de pontuação foi encerrada. <strong>Compartilhe um resultado</strong> com o grupo.'
   poll_common_outcome_form:
     new_title: Digite um resultado
     update_title: Atualizar resultado
@@ -1323,6 +1309,12 @@ pt_BR:
     question: Tem certeza que você quer apagar isso?
     success: Apagado com sucesso
   poll_common_form:
+    voting_methods:
+      choose: Escolha
+      score: Pontuação
+      allocate: Aloque
+      ranked_choice: Enquete de classificação
+      time_poll: Enquete de horário
     title: Título
     details: Detalhes
     options: Opções
@@ -1331,30 +1323,16 @@ pt_BR:
     closing: Encerrando
     closed: Fechado
     start: Iniciar
+    start_poll: Iniciar enquete de escolha
+    stance_reason_required: Obrigatório
     update: Atualizar
-    loomio_school_link: |
-        <p>Descubra mais na <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ajuda Loomio</a>.</p>
   poll_proposal_form:
-    tool_tip_expanded: |
-        <p>A proposta é uma ferramenta para buscar consenso sobre uma afirmação ou curso de ação.</p>
-        <p>Eleitores podem concordar, abster, discordar ou bloquear - e oferecer uma justificativa pra explicar sua posição.</p>
-        <p>Um gráfico de pizza dá uma visão geral das posições no grupo, enquanto as justificativas permitem que as vozes individuais sejam escutadas.</p>
-        <p>Não fique desanimado se você não ver concordância no início. Propostas são desenhadas para evidenciar temas que precisam de solução.</p>
-        <p>Com boa participação, uma proposta é uma ferramenta poderosa para a ação.</p>
-    tool_tip_collapsed: Buscar acordo ou retroalimentação com outros.
     start_header: Iniciar proposta
     edit_header: Editar proposta
-    tip: Busque consenso coletivo por meio de um processo que permita que todas as vozes sejam escutadas. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Aprenda mais</a>
     title_placeholder: 'Exemplo: Vamos para a Lua!'
-    details_placeholder: Forneça informações suficientes para que todos saibam exatamente o que significa concordar ou discordar
     proposal_created: Proposta iniciada
     proposal_updated: Proposta atualizada
   poll_poll_form:
-    tool_tip_expanded: |
-        <p>Use a enquete de escolha para medir a popularidade ou oferecer uma escolha.</p>
-        <p>Ofereça opções para seleção. Decida se os participantes devem escolher uma única ou múltiplas opções em suas respostas.</p>
-        <p>Todos votam e podem deixar um comentário, caso queiram. Os resultados são apresentados na forma de um gráfico de barra.</p>
-    tool_tip_collapsed: Escolha de uma lista de opções
     start_header: Iniciar enquete de escolha
     edit_header: Editar enquete de escolha
     tip: Oferecer uma escolha entre opções
@@ -1364,66 +1342,11 @@ pt_BR:
     remove_option: Remover opção
     poll_created: Enquete de escolha criada
     poll_updated: Enquete de escolha atualizada
-  poll_count_form:
-    tool_tip_expanded: |
-        <p>A <em>enquete de verificação </em> é uma ferramenta com muitos usos possíveis, mas apenas duas respostas: um Sim (✔) ou um Não (✘). Eleitores que escolherem o Sim  (✔), confirmam a afirmação, e os que escolherem o Não (✘), negam ou sinalizam que não tem certeza.</p>
-        <p>Use a verificação para engajar as pessoas com um convite de "Confirme sua presença, por favor": "Eu participarei do evento", ou "Eu me juntarei ao grupo de trabalho".</p>
-        <p>Ou use para verificar o progresso de uma tarea: "Eu verifiquei que o detalhe dos contatos estão corretos", ou "Eu li o documento e deixei meus comentários".</p>
-        <p>A verificação tem um <em>objetivo</em>, que é o número mínimo de participantes que você quer. O objetivo indica para o grupo se algo precisa de mais atenção ou se está bem encaminhado.</p>
-        <p>Um dia antes da verificação encerrar, todos os participantes que responderam serão lembrados para fazê-lo – como um alarme digital.</p>
-    tool_tip_collapsed: Conte quantas pessoas completaram uma tarefa, ou convide voluntários
-    start_header: Iniciar enquete de verificação
-    edit_header: Editar enquete de verificação
-    tip: Pergunte quem completou uma tarefa, ou quem gostaria de ser voluntário
-    title_placeholder: E.x. Quem quer se juntar ao grupo de trabalho?
-    details_placeholder: Explique qual é o compromisso, ou ofereça detalhes sobre como participar.
-    count_created: Enquete de verificação iniciada
-    count_updated: Enquete de verificação atualizada
   poll_dot_vote_form:
-    tool_tip_expanded: |
-        <p>A enquete de distribuição é uma forma de priorizar uma lista de opções.</p>
-        <p>Participantes recebem um número pre-definido de 'pontos' que podem distribuir como quiserem entre as opções listadas para representar suas próprias preferencias.</p>
-        <p>O total dos resultados é mostrado, bem como as escolhas individuais, para que você possa considerar os vários pontos de vista.</p>
-    tool_tip_collapsed: Distribua um número de pontos
-    start_header: Iniciar enquete de distribuição
-    edit_header: Editar enquete de distribuição
-    tip: Distribua um número de pontos
-    title_placeholder: E.x. Como devemos dividir nosso orçamento?
-    details_placeholder: Ofereça detalhes que as pessoas talvez precisem para participar
-    add_option_placeholder: Adicionar opção
     dots_per_person: Pontos por pessoa
     dots_per_person_helptext: O número total de pontos que se pede que cada pessoa distribua.
-    dot_vote_created: Enquete de distribuição criada
-    dot_vote_updated: Enquete de distribuição atualizada
-  poll_score_form:
-    tool_tip_expanded: |
-        <p>Enquetes de pontuação permitem que os eleitores expressem seu grau de preferencia por cada opção.</p>
-        <p>A pontuação total de cada opção é mostrada como parte dos resultados.</p>
-    tool_tip_collapsed: Avalie as opções numa escala
-    start_header: Iniciar enquete de pontuação
-    edit_header: Editar enquete de pontuação
-    tip: Avalie cada opção numa escala móvel
-    title_placeholder: E.X. Avalie candidatos numa escala de 0 a 9
-    details_placeholder: Ofereça detalhes que as pessoas talvez precisem para participar
-    add_option_placeholder: Adicionar opção
-    score_created: Enquete de pontuação criada
-    score_updated: Enquete de pontuação atualizada
   poll_meeting_form:
-    tool_tip_expanded: |
-        <p>Utilize a enquete de horário para encontrar quando as pessoas estão disponíveis para se reunir.</p>
-        <p>Liste as datas e horários quando é possível fazer a reunião.</p>
-        <p>Participantes poderão confirmar os horários que podem participar, ou utilizar a caixa de texto para explicar suas circunstancias, a partir do qual você pode atualizar as opções, caso necessário. </p>
-        <p>Se você acrescentar novos horários durante a enquete de horários, as pessoas que já participaram receberão um pedido para que atualizem suas respostas.</p>
-        <p>Você poderá ver quem está disponível quando, e decidir quando se encontrar. </p>
-        <p>Os horários são automaticamente convertidos para o fuso horário do local onde está o participante.</p>
     tool_tip_collapsed: Descubra quando as pessoas estão disponíveis para reunir
-    start_header: Iniciar enquete de horário
-    edit_header: Editar enquete de horário
-    tip: Descubra quando as pessoas estão disponíveis para reunir
-    title_placeholder: E.x. Quando podemos marcar nosso próximo encontro?
-    details_placeholder: Ofereça detalhes que as pessoas talvez precisem para participar
-    meeting_created: Enquete de horário criada
-    meeting_updated: Enquete de horário atualizada
     timeslots: Opções de horário
     no_options: Digite os horário no seu atual fuso horário ({{zone}}).  Participantes verão os horários traduzidos para o seu próprio horário local.
     meeting_duration: Duração da reunião
@@ -1431,23 +1354,9 @@ pt_BR:
     time_slot_added: Horário adicionado
     time_slot_already_added: Esse horário já foi incluido
   poll_ranked_choice_form:
-    tool_tip_expanded: |
-        <p>A enquete de classificação é um método de votação que permite que cada eleitor responda classificando suas preferencias em ordem.</p>
-        <p>Ela é útil quando o 'roubo de votos' é uma preocupação (e.x. duas opções mais ou menos populares tão similares que elas
-        compartilham votos entre elas), e pode ser utilizado para implementar uma eleição pelo Método de Condorcet, ou eleição por Maioria Simples.
-        </p>
-    tool_tip_collapsed: Classifique as opções de primeiro para último
-    start_header: Iniciar enquete de classificação
-    edit_header: Editar enquete de classificação
-    tip: Organize as opções de primeiro para último
-    title_placeholder: E.g. Quem você quer como prefeito?
-    details_placeholder: Ofereça detalhes que as pessoas talvez precisem para participar
-    meeting_created: Enquete de classificação criada
-    meeting_updated: Enquete de classificação atualizada
     no_options: "Você não configurou nenhuma opção ainda. "
     add_option_placeholder: Digite uma nova escolha
     minimum_stance_choices: Opções para classificar
-    minimum_stance_choices_helptext: Número de opções cada eleitor pode classificar
     ranked_choice_created: Enquete de classificação criada
     ranked_choice_updated: Enquete de classificação atualizada
     rank: Classificar
@@ -1465,37 +1374,28 @@ pt_BR:
     stance_updated: Voto atualizado
     vote: Votar
   poll_proposal_options:
+    'yes': 'Sim'
+    'no': 'Não'
     agree: Concordar
     consent: Consentir
-    agree_verb: "concordou"
-    agree_meaning: Esta proposta é suficientemente boa para ser adotada pelo grupo
     abstain: Abstenção
-    abstain_verb: "absteve"
-    abstain_meaning: Não tenho certeza, não sei ou não me importo. Darei apoio ao resultado de qualquer forma
     disagree: Discordo
-    disagree_verb: "discordou"
-    disagree_meaning: Eu não apoio a proposta. Ela não deveria ir adiante.
     objection: Objeção
     block: Bloqueio
-    block_verb: "bloqueada"
-    block_meaning: Urgente! A atenção do grupo é requerida para lidar com uma grande preocupação
-    agree_abstain_disagree_block: 'Concordar, Abster, Discordar, Bloquear'
-    agree_disagree: 'Concordar, Discordar'
-    agree_abstain_disagree: 'Concordar, Abster, Discordar'
-    consent_abstain_object: 'Consentir, Abster, Objeção'
+    agree_meaning: Esta proposta é suficientemente boa para ser adotada pelo grupo
     no_voting: 'Sem votação'
+  poll_count_form:
+    title_placeholder: E.x. Quem quer se juntar ao grupo de trabalho?
+    details_placeholder: Explique qual é o compromisso, ou ofereça detalhes sobre como participar.
   poll_count_options:
+    decline: Recusar
     'yes': 'Sim'
     'no': 'Não'
   poll_count_vote_form:
     reason_label: Mensagem
     reason_placeholder: Deixe uma mensagem caso queira
-    stance_created: Votação criada
-    stance_updated: Voto atualizado
   poll_common_percent_voted:
     sentence: "{{numerator}} de {{denominator}} pessoas votaram ({{percent}}%)"
-  poll_count_chart_panel:
-    out_of: de {{goal}}
   poll_meeting_chart_panel:
     total: Total
   poll_poll_vote_form:

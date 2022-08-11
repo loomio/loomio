@@ -45,8 +45,6 @@ lt:
       thismonth: 'Šį mėnesį'
       older: 'Vyresnis'
     more_help: 'Daugiau pagalbos'
-    models:
-      proposal: 'Pasiūlymas'
     copy: 'Kopijuoti'
     copy_text: 'Kopijuoti tekstą'
     copied: 'Nukopijuota į iškarpinę'
@@ -245,7 +243,6 @@ lt:
     email_placeholder: 'Įveskite savo el. pašto adresą...'
   decision_tools_card:
     proposal_title: Pasiūlymas
-    count_title: Patikrinti
     poll_title: Apklausa
     meeting_title: Laiko apklausa
   poll_common:
@@ -262,7 +259,11 @@ lt:
     open: 'Atidaryti'
     closed: 'Uždarytas'
   poll_common_form:
+    voting_methods:
+      time_poll: Laiko apklausa
     closed: Uždarytas
+  poll_proposal_options:
+    'no': 'Ne'
   poll_count_options:
     'no': 'Ne'
   poll_meeting_chart_panel:

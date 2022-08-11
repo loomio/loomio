@@ -24,7 +24,6 @@ cmn:
     tags_marked: 话题已标记为在 {{groupName}} 中的 '{{name}}'
   poll_types:
     proposal: 提议
-    count: 勾选
     poll: 投票
     dot_vote: 点投法
     meeting: 时间投票
@@ -43,6 +42,7 @@ cmn:
   common:
     version: 版本
     view: 查看
+    or: 或者
     history: 历史
     option: 选项
     add: 新增
@@ -89,8 +89,6 @@ cmn:
       thismonth: ' 本月'
       older: '更早的'
     more_help: '更多帮助'
-    models:
-      proposal: '议案'
     copy: '复制'
     reset: '重置'
     copy_text: '复制文字'
@@ -840,9 +838,6 @@ cmn:
       title: 任何有链接的人都可以参与
     anonymous:
       title: 匿名投票者
-    voter_can_add_options:
-      title: 投票者可以新增选项
-      helptext_on: 当选取时，参与者可以在投票时加新增他们自己的选项。
     can_respond_maybe:
       title: 投票者可以回应“如果需要的话”
   poll_common_closing_at_field:
@@ -856,8 +851,6 @@ cmn:
     invitation_count_singular: "已通过电子邮件邀请 1 个额外的伙伴参与"
   poll_common_undecided_user:
     reminded: 提醒已发送！
-  poll_common_set_outcome_panel:
-    poll: '此提案已关闭。与群组<strong>分享成果</strong>。'
   poll_common_outcome_form:
     submit: 分享成果
   poll_common_delete_modal:
@@ -869,24 +862,14 @@ cmn:
     options: 选项
     closed: 已关闭
     start: 开始
+    start_poll: 发起投票
     update: 更新
   poll_proposal_form:
-    tool_tip_expanded: |
-        <p>提案是用来寻求关于一段陈述或是行动方针共识的工具。</p>
-        <p>参与者可以同意、放弃、反对或阻挡，来针对一段陈述表达他们的立场。</p>
-        <p>一份圆饼图会显示在群组中对于该议题的立场，让每个人的声音都能被听到。</p>
-        <p>若您一开始没看到同意的人，别气馁，提案就是设计用来突显需要解决的问题。</p>
-        <p>在有良好参与者的状况下，一个提案可以获得有力的授权去采取行动。</p>
     start_header: 发起提案
     edit_header: 修改提案
     title_placeholder: 例如：让我们一起去月球！
-    details_placeholder: 请提供足够的信息，让每个人都能表示赞成或是反对。
     proposal_created: 提案已发起
   poll_poll_form:
-    tool_tip_expanded: |
-        <p>使用投票来衡量人气或是提供选项。</p>
-        <p>提供一些选项来供群组成员选取。决定参与者可以选取一个或多个选项来当做他们的回应。</p>
-        <p>每个人投票，且如果他们想要的话也可以同时输入一段陈述。结果会以长条图呈现。</p>
     start_header: 发起投票
     edit_header: 编辑投票
     title_placeholder: 例如：您假日想要去哪里？
@@ -894,65 +877,23 @@ cmn:
     add_option_placeholder: 添加选项
     remove_option: 移除选项
     poll_created: 投票已创建
-  poll_count_form:
-    title_placeholder: 例如：谁想要加入工作小组？
-    details_placeholder: '解释为什么要参与，或是详细说明要如何参与。 '
-  poll_dot_vote_form:
-    tool_tip_expanded: |
-        <p>点投法是排出选项列表顺序的方法。</p>
-        <p>参与者会被给予有限的“点”，其可以被分配在他们喜欢的的选项来表示自己的偏好。</p>
-        <p>这个过程会产生一个累计的长条图以及个别分配，让您可以考虑各种观点。</p>
-    title_placeholder: 例如：我们要如何分配预算？
-    details_placeholder: 提供任何参与的人可能需要知道的细节
-    add_option_placeholder: 添加选项
-  poll_score_form:
-    title_placeholder: 例如：以 0-9 的分数对候选人评分
-    details_placeholder: 提供任何参与的人可能需要知道的细节
-    add_option_placeholder: 添加选项
-    score_created: 已创建投票（分投）
   poll_meeting_form:
-    tool_tip_expanded: |
-        <p>使用时间投票来看看伙伴们何时可以会面。</p>
-        <p>输入一组您想要举办会面的日期或是时间。</p>
-        <p>参与者勾选他们可以参与的时间，或是他们可以使用陈述栏来解释他们的状况，所以如果需要的话，您可以更新选项。</p>
-        <p>若您在时间投票中新增了新的时间，已经投票的伙伴将会被提醒要更新他们的回应。</p>
-        <p>您可以看到哪些人什么时候有空，并决定何时要会面。</p>
-        <p>时间将会被自动转换为参与者所在的时区。</p>
     tool_tip_collapsed: 找到人们可以会面的时间
-    start_header: 发起时间投票
-    edit_header: 编辑时间投票
-    tip: 寻找人们什么时候可以会面
-    title_placeholder: 例如：我们何时可以进行下一次会面？
-    details_placeholder: 提供任何参与的人可能需要知道的细节
-    meeting_created: 时间投票已创建
     no_options: 输入您目前时区 ({{zone}}) 的时间。参与者可以看到翻译成他们本地时区的时间。
-  poll_ranked_choice_form:
-    tool_tip_expanded: |
-        <p>排序选择是一个让每个投票者可以以他们偏好的顺序回应的投票方式。</p>
-        <p>这可以用在有“投票窃取”的问题时（亦即有两个受欢迎的选项类似，而投票会在两个选项间共享），并可用 Condorcet 或即时投票的风格来实行。
-        </p>
-    tool_tip_collapsed: 将选项进行排序，按照优先顺序
-    tip: 将选项进行排序，从最偏好到最不偏好
-    title_placeholder: 范例：您希望谁来当班长？
-    details_placeholder: 提供任何参与的人可能需要知道的细节
   poll_proposal_vote_form:
     default_reason_placeholder: 请解释您的理由
     abstain_reason_placeholder: 让人们知道您为什么作出了这个决定
     agree_reason_placeholder: 您对提案的感觉如何，以及其如何对群组产生助益？
     block_reason_placeholder: 解释您对此提案的反对意见，以及为什么它不应该再继续下去
   poll_proposal_options:
-    agree_verb: "同意"
-    abstain_verb: "弃权"
-    abstain_meaning: 不确定、不知道或是不关心。将以其他方式支持结果
+    'yes': '是'
+    'no': '否'
     disagree: 反对
-    disagree_verb: "反对"
-    disagree_meaning: 我不支持提案。其不应该继续。
     objection: 反对
     block: 阻挡
-    agree_abstain_disagree_block: '同意、弃权、反对、阻挡'
-    agree_disagree: '同意，不同意'
-    agree_abstain_disagree: '同意、弃权、反对'
-    consent_abstain_object: '同意、弃权、反对'
+  poll_count_form:
+    title_placeholder: 例如：谁想要加入工作小组？
+    details_placeholder: '解释为什么要参与，或是详细说明要如何参与。 '
   poll_count_options:
     'yes': '是'
     'no': '否'

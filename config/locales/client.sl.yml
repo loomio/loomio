@@ -45,8 +45,6 @@ sl:
       thisweek: 'Ta teden'
       thismonth: 'Ta mesec'
       older: 'Starejše'
-    models:
-      proposal: 'Predlog'
     action:
       search: 'Išči'
       save: 'Shrani'
@@ -363,6 +361,9 @@ sl:
     closed: Zaprto
   poll_poll_form:
     edit_header: Urejanje ankete
+  poll_proposal_options:
+    'yes': 'Da'
+    'no': 'Ne'
   poll_count_options:
     'yes': 'Da'
     'no': 'Ne'

@@ -31,7 +31,6 @@ ro:
     tags_marked: Conversatii marcate '{{name}}' in {{groupName}}
   poll_types:
     proposal: propunere
-    count: verifică
     poll: sondaj
     dot_vote: vot cu puncte
     meeting: sondaj pe perioadă
@@ -50,6 +49,7 @@ ro:
   common:
     please_wait: Te rugam asteapta
     version: Versiune
+    or: sau
     history: Istoric
     option: Opțiune
     add: Adaugă
@@ -96,8 +96,6 @@ ro:
       thismonth: 'Luna aceasta'
       older: 'Mai vechi'
     more_help: 'Ajutor in plus'
-    models:
-      proposal: 'Propunere'
     copy: 'Copiaza'
     reset: 'Resetează'
     copy_text: 'Copiaza text'
@@ -494,7 +492,6 @@ ro:
     message_label: 'Mesaj'
   decision_tools_card:
     proposal_title: Propunere
-    count_title: Verifica
     poll_title: Sondaj
   poll_common:
     have_your_say: Sa ai ceva de spus
@@ -521,7 +518,11 @@ ro:
     start: Incepe
   poll_poll_form:
     edit_header: Editare sondaj
+  poll_proposal_options:
+    'yes': 'Da'
+    'no': 'Nu'
   poll_count_options:
+    decline: Refuza
     'yes': 'Da'
     'no': 'Nu'
   poll_meeting_chart_panel:

@@ -39,8 +39,6 @@ mi:
       thismonth: 'I tenei marama'
       older: 'no mua noa atu'
     more_help: 'He awhina ano'
-    models:
-      proposal: 'Tono'
     copy: 'Tārua'
     copy_text: 'Tārua kuputuhi'
     copied: 'Kua taruatia ki te papa whakapine'
@@ -192,7 +190,6 @@ mi:
     delete_thread: 'Mukua'
   decision_tools_card:
     proposal_title: He whakatakoto
-    count_title: Whakatika
     poll_title: Pōti
   poll_common:
     save_changes: Tiaki

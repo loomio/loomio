@@ -99,7 +99,6 @@ ko:
     only_admins_can_edit_tags: 앗! {{group}}의 관리자에게 태그 생성, 수정, 삭제 권한이 있습니다.
   poll_types:
     proposal: 제안
-    count: 체크
     poll: 투표
     dot_vote: 도트 투표
     meeting: 시간 투표
@@ -120,6 +119,7 @@ ko:
     empty: 비었음
     no_results_found: 결과를 찾을 수 없습니다.
     view: 보기
+    or: 혹은
     history: 내력
     option: 옵션
     add: 더하기
@@ -167,8 +167,6 @@ ko:
       thismonth: '이번 달'
       older: '더 오래된'
     more_help: '도움말 자세히'
-    models:
-      proposal: '제안'
     copy: '복사'
     reset: '초기화'
     copy_text: '텍스트 복사'
@@ -1219,8 +1217,12 @@ ko:
   poll_common_form:
     closed: 종료
     start: 시작
+    stance_reason_required: 필수
   poll_poll_form:
     edit_header: 투표 수정
+  poll_proposal_options:
+    'yes': '네'
+    'no': '아니요'
   poll_count_options:
     'yes': '네'
     'no': '아니요'

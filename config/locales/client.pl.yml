@@ -19,7 +19,6 @@ pl:
   templates:
     templates: Szablony
     make_a_copy: "Zrób kopię"
-    this_thread_is_a_template: Ten wątek jest szablonem, skopiuj go, jeśli chcesz go użyć.
     try_loomio: Wypróbuj Loomio
     start_a_demo_group: Załóż grupę demo
     start_a_demo: Rozpocznij demo
@@ -104,7 +103,6 @@ pl:
     tags_marked: Wątki oznaczone „{{name}}” w {{groupName}}
   poll_types:
     proposal: propozycja
-    count: głosowanie
     poll: głosowanie
     dot_vote: głosowanie kropkowe
     meeting: ankieta dotycząca daty spotkania
@@ -125,6 +123,7 @@ pl:
     empty: Pusty
     no_results_found: Nie znaleziono żadnych plików.
     view: Podgląd
+    or: lub
     history: Historia
     option: Opcja
     add: Dodaj
@@ -172,8 +171,6 @@ pl:
       thismonth: 'W tym miesiącu'
       older: 'Starsze'
     more_help: 'Więcej pomocy'
-    models:
-      proposal: 'Propozycja'
     copy: 'Kopiuj'
     reset: 'Resetuj'
     copy_text: 'Kopiuj tekst'
@@ -1291,7 +1288,6 @@ pl:
     choose_type: Wybierz typ ankiety
     title: Ułatwiaj
     proposal_title: Propozycja
-    count_title: Zaznaczenie
     poll_title: Ankieta
     score_title: Ocena
     meeting_title: Ankieta dotycząca daty spotkania
@@ -1443,12 +1439,8 @@ pl:
     anonymous:
       title: Anonimowi głosujący
       helptext_on: Po wybraniu informacje o uczestniku nie będą wyświetlane przy każdej odpowiedzi.
-    voter_can_add_options:
-      title: 'Głosujący mogą dodawać opcje '
-      helptext_on: Po wybraniu uczestnicy mogą dodawać własne opcje podczas głosowania.
     can_respond_maybe:
       title: Głosujący mogą udzielić odpowiedzi "jeśli będzie taka potrzeba"
-      helptext_on: Głosujący mogą określić czas jako "Ewentualnie"
     hide_results_until_closed:
       title: Ukryj wyniki aż do zakończenia
       helptext_on: Nie pokazuj, jak inni głosowali, dopóki ankieta nie zostanie zakończona
@@ -1485,13 +1477,6 @@ pl:
     reminder_sent: Przypomnienie zostało wysłane
   poll_common_set_outcome_panel:
     enter_outcome: Wprowadź wynik
-    poll: 'To głosowanie zostało zakończone. <strong>Udostępnij wyniki</strong> grupie.'
-    proposal: 'Ta propozycja została zakończona. Przemyśl co zostało powiedziane i <strong>Udostępnij wyniki</strong>, żeby inni wiedzieli, co będzie się działo dalej. '
-    count: 'Sprawdzanie zostało zakończone. <strong>Udostępnij wyniki</strong> aby zakończyć proces.'
-    meeting: 'Ta ankieta dotycząca daty spotkania została zakończona. <strong>Udostępnij wyniki</strong> aby dać znać innym kiedy spotkanie się odbędzie.'
-    dot_vote: 'To głosowanie kropkowe zostało zakończone. <storng>Udostępnij wyniki</strong> grupie.'
-    ranked_choice: 'Ta ankieta rankingowa została zakończona. <strong>Udostępnij wyniki</strong> grupie.'
-    score: 'Ta ocena została zakończona. <strong>Udostępnij wyniki</strong> grupie.'
   poll_common_outcome_form:
     new_title: 'Wprowadź wynik '
     update_title: Zaktualizuj wynik
@@ -1507,6 +1492,12 @@ pl:
     title: Usuń {{pollType}}
     success: Pomyślnie usunięto
   poll_common_form:
+    voting_methods:
+      choose: Wybierz
+      score: Wynik
+      allocate: Przydziel
+      ranked_choice: Wybór rankingowy
+      time_poll: Ankieta dotycząca daty spotkania
     title: Tytuł
     details: Szczegóły
     options: Opcje
@@ -1515,32 +1506,19 @@ pl:
     closing: Zamykanie
     closed: Zamknięte
     start: Rozpocznij
+    start_poll: Utwórz ankietę
+    stance_reason_required: Wymagane
     start_poll_type: Utwórz {{poll_type}}
     share_poll_type: Udostępnij {{poll_type}}
     update: Zaktualizuj
-    loomio_school_link: |
-        <p>Dowiedz się więcej na <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Loomio Help</a>.</p>
+    votes_are_anonymous: Głosy są anonimowe
   poll_proposal_form:
-    tool_tip_expanded: |
-        <p>Propozycja jest narzędziem do poszukiwania zbiorowego porozumienia dotyczącego wspólnego stanowiska lub sposobu działania.</p>
-        <p>Uczestnicy mogą wyrazić zgodę, wstrzymać się od głosu, nie zgodzić się lub zablokować - a następnie wyjaśnić swoje stanowisko.</p>
-        <p>Wykres kołowy przedstawia rozkład opinii w grupie, a wyjaśnienia poszczególnych osób pozwalają na zapoznanie się z ich punktem widzenia. </p>
-        <p>Nie zniechęcaj się, jeśli na początku nie ma między wami porozumienia. Propozycje mają na celu zidentyfikowanie problemów, które wymagają rozwiązania.</p>
-        <p>Przy aktywnym uczestnictwie, propozycja jest niezawodnym narzędziem poprzedzającym konkretne działania</p>
-    tool_tip_collapsed: Poszukaj porozumienia lub informacji zwrotnej od innych
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję
-    tip: Poszukaj porozumienia zbiorowego poprzez proces, który umożliwia wysłuchanie poszczególnych osób. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Dowiedz się więcej</a>
     title_placeholder: Np. Udajmy się na księżyc!
-    details_placeholder: Udziel wystarczających informacji by każdy wiedział, co znaczy zgodzić się lub nie wyrazić zgody
     proposal_created: Propozycja utworzona
     proposal_updated: Propozycja zaktualizowana
   poll_poll_form:
-    tool_tip_expanded: |
-        <p>Użyj głosowania żeby zmierzyć poziom popularności lub zaoferować wybór.</p>
-        <p>Zapewnij kilka opcji do wyboru. Zdecyduj, czy uczestnicy mogą wybrać jedną czy wiele opcji jako ich odpowiedź.</p>
-        <p>Każdy może zagłosować i przedstawić swoje stanowisko, jeśli tego chce. Wyniki są przedstawione na wykresie słupkowym.</p>
-    tool_tip_collapsed: Wybierz z listy dostępnych opcji
     start_header: Utwórz ankietę
     edit_header: Edytuj ankietę
     tip: Oferuje wybór pomiędzy opcjami
@@ -1550,66 +1528,11 @@ pl:
     remove_option: Usuń opcję
     poll_created: Utworzono ankietę
     poll_updated: Zaktualizowano ankietę
-  poll_count_form:
-    tool_tip_expanded: |
-        <p><em>Sprawdzenie</em> jest narzędziem z wieloma możliwościami zastosowania, ale jedynie dwiema odpowiedziami: fajką (✔) lub znakiem X (✘). Uczestnicy będą używać fajki (✔) by odpowiedzieć tak i znaku X (✘), by wyrazić "nie" lub niezdecydowanie. </p>
-        <p>Wykorzystaj to, by zachęcić ludzi ofertą, coś jak RSVP: "Przyjdę na wydarzenie" lub "Dołączę do grupy pracującej".</p>
-        <p>Albo wykorzystaj je do śledzenia realizacji zadania: "Sprawdziłem, że moje dane kontaktowe są poprawne" lub "Przeczytałem dokument i podzieliłem się odczuciami".</p>
-        <p>Sprawdzenie ma <em>cel</em>, którym jest liczba uczestników, na której ci zależy. Cel wskazuje grupie czy coś potrzebuje większej uwagi lub jest odpowiednio subskrybowane.</p>
-        <p>Dzień przed zakończeniem sprawdzania, ci, którzy jeszcze nie wzięli udziału otrzymają przypomnienie, aby to zrobić- zupełnie jak cyfrowy Cat Herder. </p>
-    tool_tip_collapsed: Policz ile ludzi ukończyło zadanie, lub poproś o wolontariuszy
-    start_header: Utwórz sprawdzanie
-    edit_header: Edytuj sprawdzanie
-    tip: Zapytaj, kto ukończył zadanie lub chce zostać wolontariuszem
-    title_placeholder: Np. Kto chce dołączyć do grupy roboczej?
-    details_placeholder: Wyjaśnij, jakie zaangażowanie jest z tym związane, lub przedstaw szczegóły o tym, jak wziąć udział.
-    count_created: Sprawdzanie utworzone
-    count_updated: Zaktualizowano sprawdzanie
   poll_dot_vote_form:
-    tool_tip_expanded: |
-        <p>Głosowanie kropkowe jest sposobem na ustalenie priorytetów z listy opcji.</p>
-        <p>Uczestnicy otrzymują ograniczoną liczbę „kropek”, które mogą przydzielić w dowolny sposób wśród opcji przedstawionych w celu odzwierciedlenia ich własnych preferencji</p>
-        <p>Wyświetlane są sumy wyników, a także poszczególne głosy, dzięki czemu można rozważyć różne punkty widzenia</p>
-    tool_tip_collapsed: Przydziel zbiór punktów
-    start_header: Rozpocznij głosowanie kropkowe
-    edit_header: Edytuj głosowanie kropkowe
-    tip: Przydziel zbiór punktów
-    title_placeholder: Np. jak powinniśmy rozdzielić nasz budżet?
-    details_placeholder: Podaj wszelkie szczegóły, których mogą potrzebować osoby chcące wziąć udział
-    add_option_placeholder: Dodaj opcję
     dots_per_person: Punktów na osobę
     dots_per_person_helptext: Całkowita liczba punktów, które każda osoba ma przyznać.
-    dot_vote_created: 'Utworzono głosowanie kropkowe '
-    dot_vote_updated: Głosowanie kropkowe zostało zaktualizowane
-  poll_score_form:
-    tool_tip_expanded: |
-        <p>Oceny pozwalają ludziom wyrazić stopień, w jakim preferują daną opcję. </p>
-        <p>Łączna suma punktów każdej opcji pokazana jest jako część wyników.</p>
-    tool_tip_collapsed: Opcje punktowania w skali
-    start_header: Rozpocznij ocenę
-    edit_header: Edytuj ocenę
-    tip: Oceń każdą opcję na skali przesuwnej
-    title_placeholder: Np. Oceń kandydatów w skali od 0-9
-    details_placeholder: Podaj wszelkie szczegóły, których mogą potrzebować osoby chcące wziąć udział
-    add_option_placeholder: Dodaj opcję
-    score_created: Utworzono ocenę
-    score_updated: Zaktualizowano ocenę
   poll_meeting_form:
-    tool_tip_expanded: |
-        <p>Skorzystaj z ankiety dotyczącej daty spotkania, aby dowiedzieć się, kiedy ludzie mogą się spotkać.</p>
-        <p>Sporządź listę dat lub godzin, w których spotkanie może się odbyć.</p>
-        <p>Uczestnicy zaznaczają te, w których mogą wziąć udział, lub mogą użyć pola komunikatu, żeby wyjaśnić swoje okoliczności, aby w razie potrzeby zaktualizować opcje.</p>
-        <p>Jeśli dodasz do ankiety nowe opcje, osoby, które już głosowały, zostaną poproszone o zaktualizowanie swoich odpowiedzi.</p>
-        <p>Teraz możesz zobaczyć, kto i kiedy jest dostępny, i zdecydować, kiedy się spotkać.</p>
-        <p>Godziny są automatycznie konwertowane na lokalną strefę czasową uczestnika.</p>
     tool_tip_collapsed: Dowiedz się, kiedy ludzie są dostępni do spotkania
-    start_header: Rozpocznij ankietę dotyczącą daty spotkania
-    edit_header: Edytuj ankietę dotyczącą daty spotkania
-    tip: Dowiedz się, kiedy ludzie są dostępni do spotkania
-    title_placeholder: Np. Kiedy powinniśmy mieć następne spotkanie?
-    details_placeholder: Podaj wszelkie szczegóły, których mogą potrzebować osoby chcące wziąć udział
-    meeting_created: Utworzono ankietę dotyczącą daty spotkania
-    meeting_updated: Zaktualizowano ankietę dotyczącą daty spotkania
     timeslots: Przedziały czasowe
     no_options: Wprowadź godziny w swojej strefie czasowej ({{zone}}). Uczestnicy widzą godziny odpowiadające ich lokalnej strefie czasowej.
     meeting_duration: Czas trwania spotkania
@@ -1617,21 +1540,9 @@ pl:
     time_slot_added: Dodano przedział czasowy
     time_slot_already_added: Przedział czasowy został już dodany
   poll_ranked_choice_form:
-    tool_tip_expanded: |
-        <p>Wybór rankingowy to metoda głosowania, która pozwala każdemu głosującemu podać swoje preferencje w odpowiedniej kolejności.</p>
-        <p>Jest to lepsze rozwiązanie, gdy problemem jest „kradzież głosów” (tj. Dwie dość popularne opcje są na tyle podobne, że głosy są dzielone pomiędzy nimi), i można go wykorzystać do wprowadzenia wyborów w stylu Condorcet lub wyborów jednoturowych.</p>
-    tool_tip_collapsed: Uszereguj opcje od pierwszej do ostatniej
-    start_header: Rozpocznij wybór rankingowy
-    edit_header: Edytuj wybór rankingowy
-    tip: Uszereguj opcje od pierwszej do ostatniej
-    title_placeholder: Np. Kto według Ciebie powinien być burmistrzem?
-    details_placeholder: Podaj wszelkie szczegóły, których mogą potrzebować osoby chcące wziąć udział
-    meeting_created: Utworzono wybór rankingowy
-    meeting_updated: Wybór rankingowy zaktualizowany
     no_options: "Nie dodałeś jeszcze żadnych opcji."
     add_option_placeholder: Wprowadź nowy wybór
     minimum_stance_choices: 'Opcje do sklasyfikowania '
-    minimum_stance_choices_helptext: Liczba opcji, które może sklasyfikować każdy głosujący
     ranked_choice_created: Utworzono wybór rankingowy
     ranked_choice_updated: 'Zaktualizowano wybór rankingowy '
     rank: Ranga
@@ -1650,37 +1561,28 @@ pl:
     stance_updated: Głosowanie zaktualizowane
     vote: Głosuj
   poll_proposal_options:
+    'yes': 'Tak'
+    'no': 'Nie'
     agree: Zgoda
     consent: Zgoda
-    agree_verb: "zgoda"
-    agree_meaning: Ta propozycja jest wystarczająco dobra, aby została przyjęta przez grupę
     abstain: Wstrzymuję się
-    abstain_verb: "wstrzymane"
-    abstain_meaning: 'Nie jestem pewien, nie wiem lub nie mam nic przeciwko. Będę popierać wynik w obu przypadkach. '
     disagree: Nie zgadzam się
-    disagree_verb: "brak zgody"
-    disagree_meaning: 'Nie popieram propozycji. Nie powinna być kontynuowana. '
     objection: Zastrzeżenia
     block: Blokuję
-    block_verb: "zablokawane"
-    block_meaning: Potrzebna jest pilna uwaga grupy, aby zająć się poważnym problemem
-    agree_abstain_disagree_block: 'Zgadzam się, Wstrzymuję się, Nie zgadzam się, Blokuję'
-    agree_disagree: 'Zgadzam się, Nie zgadzam się'
-    agree_abstain_disagree: 'Zgadzam się, Wstrzymuję się, Nie zgadzam się'
-    consent_abstain_object: 'Zgoda, Wstrzymanie się, Sprzeciw'
+    agree_meaning: Ta propozycja jest wystarczająco dobra, aby została przyjęta przez grupę
     no_voting: 'Bez głosowania'
+  poll_count_form:
+    title_placeholder: Np. Kto chce dołączyć do grupy roboczej?
+    details_placeholder: Wyjaśnij, jakie zaangażowanie jest z tym związane, lub przedstaw szczegóły o tym, jak wziąć udział.
   poll_count_options:
+    decline: Odmowa
     'yes': 'Tak'
     'no': 'Nie'
   poll_count_vote_form:
     reason_label: Wiadomość
     reason_placeholder: Zostaw wiadomość, jeśli chcesz
-    stance_created: Głos został wysłany
-    stance_updated: Głosowanie zaktualizowane
   poll_common_percent_voted:
     sentence: "{{numerator}} z {{denominator}} ludzi zagłosowało ({{percent}}%)"
-  poll_count_chart_panel:
-    out_of: z {{goal}}
   poll_meeting_chart_panel:
     total: W sumie
   poll_poll_vote_form:

@@ -19,7 +19,6 @@ it:
   templates:
     templates: Modelli
     make_a_copy: "Fai una copia"
-    this_thread_is_a_template: Questa discussione è un modello, fanne una copia se vuoi usarlo.
     try_loomio: Prova Loomio
     start_a_demo_group: Inizia un gruppo demo
     start_a_demo: Inizia una demo
@@ -126,7 +125,6 @@ it:
     only_admins_can_edit_tags: Spiacenti, solo gli amministratori di {{group}} possono creare, rinominare o cancellare le etichette
   poll_types:
     proposal: proposta
-    count: verifica
     poll: Sondaggio
     dot_vote: voto a punti
     meeting: sondaggio appuntamento
@@ -150,6 +148,7 @@ it:
     empty: Vuoto
     no_results_found: Nessun risultato trovato
     view: Vista
+    or: o
     history: Storia
     option: Opzione
     add: Aggiungi
@@ -202,8 +201,6 @@ it:
       thismonth: 'Questo Mese'
       older: 'Più vecchio'
     more_help: 'Altro supporto'
-    models:
-      proposal: 'Proposta'
     copy: 'Copia'
     reset: 'Reimposta'
     copy_text: 'Copia testo'
@@ -333,7 +330,6 @@ it:
     title_label: Titolo
     hint: 'Suggerimento per la prossima volta: prova a evidenziare del testo prima di fare clic su "Aggiungi".'
   change_volume_form:
-    help_notifications: 'Aiuto: Notifiche'
     explain_scope:
       thread: Questo cambia quando ti arriverà una notifica da questa discussione
       group: Questo cambia quando ti arriverà una notifica da tutte le discussioni nel gruppo
@@ -601,7 +597,6 @@ it:
       poll_closed_by_user: "%{actor}ha chiuso il %{poll_type}"
       poll_closing_soon: '%{poll_type} terminerà in 24 ore'
       poll_closing_soon_author: 'Il tuo %{poll_type} terminerà in 24 ore'
-      poll_created: "%{actor} ha avviato un 1%{poll_type]"
       poll_edited: "%{actor} ha aggiornato il %{poll_type}"
       poll_expired: "%{poll_type} è chiuso"
       poll_expired_author: 'Condividi il risultato del tuo %{poll_type}'
@@ -630,7 +625,6 @@ it:
     none_invite_only_thread: "Thread di sola invito (nessun gruppo)"
     change_log_placeholder: Facoltativamente, descrivi le modifiche. Questo messaggio verrà aggiunto al thread.
     change_log_label: Che cosa ha cambiato?
-    help_starting_threads: 'Aiuto: Iniziare discussioni'
     invite: Invita
     aria_label: 'Modulo discussione'
     start_thread: Inizia una discussione
@@ -699,8 +693,6 @@ it:
       undecided_voters: Elettore indecisi
       non_voters: Membri di {{name}} non ancora invitati
     form:
-      help_notifying_people: 'Aiuto: Avvisare persone'
-      help_invite_voters: 'Aiuto: Invitare votanti'
       too_many_invitations: |
           Hai superato il limite di inviti. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
       no_invitations_remaining: |
@@ -1011,7 +1003,6 @@ it:
     as_csv: Aprirlo in un foglio di calcolo
     as_html: Aprirlo in un browser
     as_json: Ospitare questo gruppo nel proprio server
-    help_exporting_data: 'Aiuto: Esportare dati'
   description_card:
     title: 'Descrizione del gruppo'
     placeholder: 'Gli amministratori del gruppo possono utilizzare quest''area per descrivere lo scopo del gruppo, quindi tutti sanno perché sono qui.'
@@ -1028,14 +1019,12 @@ it:
     question: 'Sei sicuro/a di voler disattivare questo gruppo?'
     submit: 'Sì, disattiva questo gruppo'
   group_form:
-    help_starting_a_group: 'Aiuto: Avviare un gruppo'
     thread_defaults_help: Impostazioni predefinite per i nuovi thread
     click_to_change_image: Click per cambiare l'immagine di copertina (4x1) o il logo (1x1)
     permissions_explaination: |
         Esistono due livelli di appartenenza che una persona può avere a un gruppo: amministratore e membro.
         Gli amministratori possono modificare le impostazioni del gruppo, rendere amministratori altre persone ed eseguire tutte le azioni elencate di seguito.
     aria_label: Modulo per gruppo
-    help_group_settings: 'Aiuto: Impostazioni dei gruppi'
     parent_group: Gruppo padre
     new_organisation: Nuova organizzazione
     new_group: Nuovo gruppo
@@ -1143,7 +1132,6 @@ it:
   invitation_form:
     group_url: Gruppo URL
     reusable_invitation_link: Collegamento invito riutilizzabile
-    help_inviting_people: 'Aiuto: Invitare persone'
     error: "Errore durante il tentativo di copia negli appunti"
     aria_label: 'Modulo di invito'
     invite_people: 'Invita persone'
@@ -1220,7 +1208,6 @@ it:
     helptext: "{{name}}, sarà inviato via email il tuo nome,  il tuo indirizzo email ed il tuo messaggio"
     email_sent: "Email inviata a {{name}}"
   profile_page:
-    help_profile: 'Aiuto: Il tuo profilo'
     incomplete_profile: Profilo incompleto!
     set_your_profile_picture: Inserisci la tua immagine del profilo
     messages:
@@ -1299,7 +1286,6 @@ it:
     messages:
       updated: Impostazioni della posta elettronica aggiornate.
     learn_more: Impara di più sulle impostazioni email...
-    help_email_settings: 'Aiuto: Impostazioni email utente'
   thread_preview:
     replies_count: "%{count} repliche"
     unread_count: "%{count} non letti"
@@ -1480,7 +1466,6 @@ it:
     choose_type: Scegli il tipo di sondaggio
     title: Agevolare
     proposal_title: Proposta
-    count_title: Verifica
     poll_title: Sondaggio
     score_title: Sondaggio valutazione
     dot_vote_title: Voto a punti
@@ -1599,7 +1584,6 @@ it:
     results_hidden_until_closed: I risultati verranno mostrati dopo che la votazione sarà terminata
     results_hidden_until_vote: I risultati verranno mostrati dopo che avrai votato
     unable_to_vote: Non sei stato invitato a votare in questo %{poll_type}.
-    draft_mode: Votazione disabilitata. Questo %{poll_type} è in costruzione.
   poll_common_collapsed:
     by_who: "di {{name}}"
   poll_common_calendar_invite:
@@ -1618,8 +1602,6 @@ it:
     specified_voters_only_false_group: Chiunque nel gruppo
     specified_voters_only_false_discussion: Chiunque nella discussione
     invite_people_next: Puoi scegliere chi è unvitato a votare dopo aver avviato il {{poll_type}}
-    shuffle_options:
-      title: I votanti visualizzano le opzioni in ordine casuale
     multiple_choice:
       title: Scelta multipla
       helptext_on: Quando selezionato, i partecipanti potranno selezionare opzioni multiple.
@@ -1638,12 +1620,8 @@ it:
     anonymous:
       title: Votanti anonimi
       helptext_on: Quando selezionato, le informazioni sui partecipanti non saranno mostrate con ogni risposta.
-    voter_can_add_options:
-      title: I votanti possono aggiungere opzioni
-      helptext_on: Quando selezionato, i partecipanti potranno aggiungere le proprie opzioni al momento del voto.
     can_respond_maybe:
       title: I votanti possono rispondere 'solo se necessario'
-      helptext_on: 'I votanti possono indicare ''solo se necessario'' negli orari '
     allow_long_reason:
       title: Permetti il 'commento' al voto più lungo di 500 caratteri
     hide_results_until_closed:
@@ -1694,13 +1672,6 @@ it:
     reminder_sent: Notifica di promemoria inviata!
   poll_common_set_outcome_panel:
     enter_outcome: Pubblica il risultato
-    poll: 'Questa votazione è terminata. <strong>Condividi il risultato</strong> con il gruppo.'
-    proposal: 'Questa proposta è chiusa. Considera ciò che è stato deciso e <strong>condividi il risultato</strong>, così le persone sapranno cosa accadrà dopo.'
-    count: 'Questa verifica è chiusa. <strong>Condividi il risultato</strong> per completare il processo.'
-    meeting: 'Questo sondaggio appuntamento è chiuso. <strong>Condividi il risultato </strong> per far sapere ai partecipanti quando l''incontro avverrà.'
-    dot_vote: 'Questo voto a punti è chiuso. <storng>Condividi il risultato </strong> con il gruppo.'
-    ranked_choice: 'Questa scelta di preferenze è chiusa. <strong>Condividi il risultato </strong> con il gruppo.'
-    score: 'Questo sondaggio valutazione è chiuso <strong>Condividi il risultato</strong> con il gruppo.'
   poll_common_outcome_form:
     who_to_notify: Chi vuoi avvertire riguardo questo risultato? (opzionale)
     new_title: Pubblica il risultato
@@ -1716,6 +1687,12 @@ it:
     title: Cancella {{pollType}}
     success: Eliminato con successo
   poll_common_form:
+    voting_methods:
+      choose: Scegliere
+      score: Punteggio
+      allocate: Assegnare
+      ranked_choice: Scelta di preferenze
+      time_poll: Sondaggio appuntamento
     title: Titolo
     details: Dettagli
     options: Opzioni
@@ -1724,37 +1701,23 @@ it:
     closing: Termina
     closed: Chiuso
     start: Avvio
+    start_poll: Lancia sondaggio
+    stance_reason_required: Richiesto
     start_poll_type: Inizia {{poll_type}}
     share_poll_type: Condividi {{poll_type}}
     who_may_vote: Chi può votare in questa {{poll_type}}?
     update: Aggiorna
     add_voters: Aggiungi votanti
     notify_invitees: Invia le notifiche
-    loomio_school_link: |
-        <p>Trova di più sull'<a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Aiuto di Loomio</a>.</p>
     count_voters_added: '%{count} votanti aggiunti'
+    votes_are_anonymous: I voti sono anonimi
   poll_proposal_form:
-    tool_tip_expanded: |
-        <p>La Proposta è uno strumento per cercare un accordo collettivo su una dichiarazione oppure su una azione in corso. </p>
-        <p> I partecipanti possono votare esprimendo accordo, astensione, disaccordo o blocco - e fare una dichiarazione per esprimere la propria posizione. </p>
-        <p>Un grafico a torta esprime la panoramica delle posizioni espresse nel gruppo, mentre le dichiarazioni permettono agli individui di far ascoltare la propria posizione dettagliatamente.</p>
-        <p> Non vi scoraggiate se non trovate subito un accordo, le proposte sono progettate per risolvere problemi che devono essere risolti. </p>
-        <p>Con una buona partecipazione una proposta è un potente mandato ad agire.</p>
-    tool_tip_collapsed: Cerca consenso o commenti dagli altri.
     start_header: Lancia proposta
     edit_header: Aggiorna proposta
-    tip: Cercare un accordo collettivo attraverso un processo che permetta a tutte le voci di essere ascoltate. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Impara di pù</a>
     title_placeholder: 'Ad esempio: Andiamo sulla Luna!'
-    details_placeholder: Dai informazioni sufficienti affinché tutti sappiano cosa significa essere d'accordo o in disaccordo
     proposal_created: Proposta lanciata
     proposal_updated: Proposta aggiornata
   poll_poll_form:
-    help_starting_polls: 'Aiuto: Avviare votazioni'
-    tool_tip_expanded: |
-        <p> Usa il Sondaggio per misurare la popolarità di diverse opzioni oppure per offrire una scelta.</p>
-        <p>Inserisci diverse opzioni tra cui scegliere. Decidi se i partecipanti possono scegliere una sola o più opzioni come risposta.</p>
-        <p>Chiunque può votare, e può anche scrivere una dichiarazione se desidera. I risultati sono visualizzati in forma di barra grafica. </p>
-    tool_tip_collapsed: Scegli da una lista di opzioni
     start_header: Lancia sondaggio
     edit_header: Modifica sondaggio
     tip: Offri una scelta fra opzioni
@@ -1764,73 +1727,14 @@ it:
     remove_option: Rimuovi opzione
     poll_created: Sondaggio creato
     poll_updated: Sondaggio aggiornato
-  poll_count_form:
-    tool_tip_expanded: |
-        <p>Una <em>Verifica</em> è uno strumento con diversi usi ma solo due risposte possibili: un segno di spunta (✔) o una croce (✘).  I partecipanti possono usare il segno di spunta (✔) per dire si,  o la croce  (✘) per dire no o non-sicuro.</p>
-        <p>Puoi usare la verifica per coinvolgere le persone con un'offerta, come un RSVP: "Vengo all'evento" o "Mi unirò al gruppo di lavoro",</p>
-        <p>Puoi usare la verifica per tracciare il completamento di un compito: "Ho controllato che i miei dati di contatto sono corretti" o "Ho letto il documento e ho lasciato il mio feedback".</p>
-        <p>Una verifica ha un <em>obiettivo</em>, qualunque sia il numero di partecipanti. L'obiettivo indica al gruppo se qualcosa ha bisogno di più attenzione o è ben eseguito. </p>
-        <p> Un giorno prima che la verifica chiuda, viene inviata una notifica a coloro che non hanno ancora partecipato per invitarli a farlo.</p>
-    start_header: Avvia verifica
-    edit_header: Modifica verifica
-    title_placeholder: 'Ad esempio: Chi vuole unirsi al gruppo di lavoro?'
-    details_placeholder: Specifica quale impegno è necessario, o dai dettagli come partecipare
-    count_created: Verifica avviata
-    count_updated: Verifica aggiornata
-  poll_dot_vote_form:
-    tool_tip_expanded: |
-        <p>Il Voto a punti è un modo per assegnare priorità ad una lista di opzioni. </p>
-        <p>Ai partecipanti viene dato un numero limitato di 'punti' che possono  assegnare a loro piacimento alle opzioni fornite per rappresentare le proprie preferenze.</p>
-        <p>I risultati sono mostrati come totale dei voti per gruppo e come voti individuali, così è possibile considerare i diversi punti di vista.</p>
-    start_header: Avvia voto a punti
-    edit_header: Modifica voto a punti
-    title_placeholder: 'Ad esempio: Come volete distribuire il nostro budget?'
-    details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
-    add_option_placeholder: Aggiungi opzione
-    dot_vote_created: Voto a punti creato
-    dot_vote_updated: Voto a punti aggiornato
-  poll_score_form:
-    tool_tip_expanded: |
-        <p>I Sondaggi valutazione permettono alle persone di esprimere il loro grado di preferenza per ciascuna opzione.</p>
-        <p>La valutazione totale di ciascuna opzione viene mostrata come parte del risultato.</p>
-    start_header: Inizia sondaggio valutazione
-    edit_header: Modifica sondaggio valutazione
-    details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
-    add_option_placeholder: Aggiungi opzione
-    score_created: Sondaggio valutazione creato
-    score_updated: Sondaggio valutazione aggiornato
   poll_meeting_form:
-    tool_tip_expanded: |
-        <p>Usa un Sondaggio appuntamento per sapere quando le persone sono disponibili ad incontrarsi.</p>
-        <p>Inserisci una lista di date o orari  in cui l'incontro potrebbe tenersi. </p>
-        <p>I partecipanti spuntano quelle in cui possono essere presenti, oppure usano il campo dell'esposizione per spiegare le circostanze, così potrai aggiornare le opzioni se necessario.</p>
-        <p>Se aggiungi nuovi orari durante un sondaggio appuntamento, ai partecipanti che hanno già votato  verrà chiesto di aggiornare la propria risposta. </p>
-        <p>A questo punto potrai vedere chi è disponibile e quando, e decidere quando tenere l'incontro. </p>
-        <p>Gli orari sono convertiti automaticamente nei fusi orari dei partecipanti. </p>
-    start_header: Inizia sondaggio appuntamento
-    edit_header: Modifica sondaggio appuntamento
-    title_placeholder: 'Ad esempio: Quando si terrà il nostro prossimo incontro?'
-    details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
-    meeting_created: Sondaggio appuntamento creato
-    meeting_updated: Sondaggio appuntamento aggiornato
     timeslots: Fasce orarie
     no_options: Inserisci gli orari nel tuo attuale fuso orario ({{zone}}). I partecipanti vedranno gli orari nel proprio fuso orario.
     meeting_duration: Durata dell'incontro
   poll_ranked_choice_form:
-    tool_tip_expanded: |
-        <p>La Scelta di preferenze è un metodo di voto che permette ad ogni singolo votante di selezionare le proprie preferenze indicando un ordine di priorità.</p>
-        <p>Questo metodo è preferibile quando il 'furto di voto' è un problema  (per esempio, quando due opzioni piuttosto popolari sono abbastanza simili da finire per condividere voti tra di loro)
-        e può essere utilizzato per implementare un'elezione in stile Condorcet, o a voto preferenziale (instant-runoff).</p>
-    start_header: Inizia una scelta di preferenze
-    edit_header: Modifica scelta di preferenze
-    title_placeholder: 'Ad esempio: Chi vorresti eleggere come sindaco?'
-    details_placeholder: Aggiungi dettagli che chiarifichino come le persone possano partecipare.
-    meeting_created: Scelta di preferenze creata
-    meeting_updated: Scelta di preferenze aggiornata
     no_options: "Non hai ancora aggiunto nessuna opzione."
     add_option_placeholder: Inserisci una nuova scelta
     minimum_stance_choices: Opzioni di classifica
-    minimum_stance_choices_helptext: Numero di opzioni che il votante può scegliere
     ranked_choice_created: Scelta di preferenze creata
     ranked_choice_updated: Scelta di preferenze aggiornata
     rank: Posizione
@@ -1840,23 +1744,22 @@ it:
     stance_created: Voto creato
     stance_updated: Voto aggiornato
   poll_proposal_options:
+    'yes': 'Sì'
+    'no': 'No'
     agree: Favorevole
     abstain: Astenuto
-    abstain_verb: "astenuto"
     disagree: Contrario
     block: Blocco
-    block_verb: "bloccato"
+  poll_count_form:
+    title_placeholder: 'Ad esempio: Chi vuole unirsi al gruppo di lavoro?'
+    details_placeholder: Specifica quale impegno è necessario, o dai dettagli come partecipare
   poll_count_options:
     'yes': 'Sì'
     'no': 'No'
   poll_count_vote_form:
     reason_label: Messaggio
-    stance_created: Voto creato
-    stance_updated: Voto aggiornato
   poll_common_percent_voted:
     sentence: "{{numerator}} su {{denominator}} persone hanno votato ({{percent}}%)"
-  poll_count_chart_panel:
-    out_of: fuori {{goal}}
   poll_meeting_chart_panel:
     total: Totale
   poll_poll_vote_form:
@@ -1993,9 +1896,7 @@ it:
     mattermost: Mattermost
     microsoft_teams: Microsoft Teams
     check_for_test_message: Controlla sul tuo canale il messaggio del bot!
-    help_chatbots: 'Aiuto: Chatbots'
   webhook:
-    help_api: "Aiuto: API"
     formats:
       microsoft: Microsoft Teams
       slack: Slack

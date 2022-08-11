@@ -20,8 +20,6 @@ an:
       private: 'Privau'
     date_range:
       today: 'Hue'
-    models:
-      proposal: 'Propuesta'
     action:
       search: 'Buscar'
       save: 'Alzar'
@@ -155,6 +153,9 @@ an:
     closed: 'Zarrau'
   poll_common_form:
     closed: Zarrau
+  poll_proposal_options:
+    'yes': 'Sí'
+    'no': 'No'
   poll_count_options:
     'yes': 'Sí'
     'no': 'No'

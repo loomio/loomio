@@ -33,6 +33,7 @@ he:
   common:
     please_wait: נא להמתין
     version: גירסא
+    or: או
     you: אתה
     expand: הרחבה
     all_day: כל יום
@@ -75,8 +76,6 @@ he:
       thismonth: 'החודש'
       older: 'ישן יותר'
     more_help: 'עוד עזרה'
-    models:
-      proposal: 'הצעה'
     copy: 'העתק'
     copy_text: 'העתק טקסט'
     copied: 'הועתק ללוח הכתיבה'
@@ -874,7 +873,6 @@ he:
       reload: 'טען מחדש'
   decision_tools_card:
     proposal_title: הצעה
-    count_title: בדיקה
     poll_title: סקר
     score_title: ניקוד סקר
     meeting_title: הצבעת זמן
@@ -960,12 +958,8 @@ he:
     anonymous:
       title: מצביעים אנונימיים
       helptext_on: כשנבחר, מידע על המשתתפים לא יוצג עם כל תגובה.
-    voter_can_add_options:
-      title: מצביעים יכולים להוסיף אפשרויות
-      helptext_on: כשנבחר, משתתפים יכולים להוסיף אפשרויות משלהם בעת ההצבעה.
     can_respond_maybe:
       title: מצביעים יכולים להשיב "אם נדרש"
-      helptext_on: מצביעעים יכולים לציין זמנים כ-"אם יש צורך"
   poll_common_closing_at_field:
     closing: סוגרים
   poll_card:
@@ -984,13 +978,6 @@ he:
   poll_common_undecided_user:
     reminded: תזכורת נשלחה!
     reminder_sent: הודעת תזכורת נשלחה
-  poll_common_set_outcome_panel:
-    poll: 'סקר זה נסגר <strong>שתף את התוצאה </strong> עם הקבוצה.'
-    proposal: 'הצעה זו נסגרה. אנא שקול מה נאמר בה ו- <strong>שתף את התוצאה </strong>, כך שאנשים ידעו מה הצעד הבא.'
-    count: 'בדיקה זו נסגרה. <strong>שתף את התוצאה</strong> לסיום התהליך.'
-    meeting: 'סקר תחום בזמן זה נסגר. <strong> שתף את התוצאה </strong> כדי שאחרים ידעו כשהפגישה תתקיים.'
-    dot_vote: 'בחירת הנקודות הזו נסגרה. <storng>שתף את התוצאה</strong> עם הקבוצה.'
-    ranked_choice: 'הסקר הדירוג הזה נסגר. <strong>שתף את התוצאה</strong> עם הקבוצה.'
   poll_common_outcome_form:
     update_title: עדכן תוצאה
     outcome_created: תוצאה נוצרה
@@ -1003,6 +990,9 @@ he:
     question: אתה בטוח שברצונך למחוק את זה?
     success: נמחק בהצלחה
   poll_common_form:
+    voting_methods:
+      ranked_choice: דירוג בחירה
+      time_poll: הצבעת זמן
     title: כותרת
     details: פירוט
     options: אפשרויות
@@ -1010,28 +1000,15 @@ he:
     closing: סוגרים
     closed: סגור
     start: התחלה
+    start_poll: התחל סקר
     update: עדכון
-    loomio_school_link: |
-        <p>למידע נוסף - <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">עזרה של לומיו</a>.</p>
   poll_proposal_form:
-    tool_tip_expanded: |
-        <p>הצעה היא כלי לחיפוש הסכמה קולקטיבית בנוגע להצהרה או דרך פעולה.</p>
-        <p>משתתפים יכולים להסכים, להמנע, להתנגד או לחסום - ולתת הצהרה להסבר עמדתם.</p>
-        <p>תרשים עוגה יציג את העמדות בקבוצה, בעוד שהצהרות נותנות לקולות השונים להשמע. </p>
-        <p>אל תתאכזב אם אתה לא רואה הסכמה בתחילה, הצעות נועדו להעלות על פני השטח נושאים הדורשים פתרון.</p>
-        <p>עם השתתפות טובה, הצעה היא כלי חזק למנדט לביצוע פעולות.</p>
     start_header: התחל הצעה
     edit_header: ערוך הצעה
-    tip: שאף להסכמה קולקטיבית דרך תהליך שמאפשר לכל הקולות להשמע. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">למד איך</a>
     title_placeholder: 'לדוגמא: בוא ניסע לירח!'
-    details_placeholder: תן מספיק מידע כך שכולם ידעו את משמעות ההסכמה או ההתנגדות לנושא
     proposal_created: הצעה החלה
     proposal_updated: הצעה עודכנה
   poll_poll_form:
-    tool_tip_expanded: |
-        <p>השתמש בסקר למדידת הפופולריות או להצעת אפשרויות.</p>
-        <p>תן כמה אפשרויות לבחור מהן, החלט אם משתתפים בוחרים אפשרות אחת או כמה אפשרויות.</p>
-        <p>כולם בוחרים ויכולים להוסיף הצהרה אם ירצו. התוצאות תוצגנה בגרף עמודות.</p>
     start_header: התחל סקר
     edit_header: עריכת סקר
     title_placeholder: 'לדוגמא: לאן תרצה ללכת בחופשה?'
@@ -1040,74 +1017,14 @@ he:
     remove_option: הסר אפשרות
     poll_created: סקר נוצר
     poll_updated: סקר עודכן
-  poll_count_form:
-    tool_tip_expanded: |
-        <p> <em>בדיקה</em> היא כלי עם שימושים מרובים אך רק 2 תגובות אפשריות: וי (✔) או איקס (✘). משתמשים יבחרו ב-וי (✔) כדי להגיד כן ובאיקס (✘) כדי להגיד לא או לא בטוח.</p>
-        <p>השתמש בו כדי לעורר באנשים עניין עם הצעה, כגון תגובה להזמנה: "אני מגיע לאירוע" או "אני אצטרף לקבוצת העבודה".</p>
-        <p>או השתמש בה לעקוב אחרי סיום משימה: "בדקתי שרשימת הקשר שלי נכונה" או "קראתי את המסמך והשארתי פידבק".</p>
-        <p>לבדיקה יש <em>מטרה</em>, שהיא מספר המשתתפים שתרצה. המטרה מציינת לקבוצה אם משהו דורש עוד התייחסות או שמשתתפיה מעודכנים היטב.</p>
-        <p>יום לפני שהבדיקה נסגרת, היא תתזכר לאלו שלא השתתפו לעשות כן, כמו רועה צאן דיגיטלי.</p>
-    start_header: התחל בדיקה
-    edit_header: ערוך בדיקה
-    title_placeholder: 'לדוגמא: מי רוצה להצטרף לקבוצת עבודה?'
-    details_placeholder: הסבר איזו התחייבות נדרשת או תן פירוט על איך להשתתף.
-    count_created: בדיקה החלה
-    count_updated: בדיקה עודכנה
-  poll_dot_vote_form:
-    tool_tip_expanded: |
-        <p>בחירת נקודות היא דרך לתיעדוף רשימה של אפשרויות.</p>
-        <p>משתתפים מקבלים מספר 'נקודות' שהם יכולים למקם כרצונם מבין האפשרויות כדי להציג את העדפותיהם.</p>
-        <p>התוצאות הכוללות מוצגות, כמו גם ההצבעות האינדיבידואליות, כך שאתה יכול לשקול כמה נקודות מבט.</p>
-    start_header: התחל הצבעה של בחירת נקודות
-    edit_header: ערוך הצבעה של בחירת נקודות
-    title_placeholder: 'לדוגמא: איך אנחנו צריכים להקצות את התקציב שלנו?'
-    details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
-    add_option_placeholder: הוסף אפשרות
-    dot_vote_created: הצבעת נקודות נוצרה
-    dot_vote_updated: הצבעת נקודות עודכנה
-  poll_score_form:
-    tool_tip_expanded: |
-        <p>תוצאת הסקרים מאפשרת לאנשים להביע את דרגת העדפתם לכל אפשרות.</p>
-        <p>סך כל הניקוד לכל אפשרות מופיעה כחלק מהתוצאות.</p>
-    start_header: התחל סקר ניקוד
-    edit_header: ערוך סקר ניקוד
-    title_placeholder: 'לדוגמא: תן ציון למועמדים מ-0 עד 9'
-    details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
-    add_option_placeholder: הוסף אפשרות
-    score_created: סקר ניקוד נוצר
-    score_updated: סקר ניקוד עודכן
   poll_meeting_form:
-    tool_tip_expanded: |
-        <p>השתמש בסקר זמן למציאת פניות של אנשים להיפגש.</p>
-        <p>הכנס רשימה של תאריכים או זמנים לזמן הפגישה.</p>
-        <p>משתתפים מסמנים את הזמנים בהם הם פנויים להגיע, או שהם יכולים להוסיף בשדה ההצהרה להסביר את הנסיבות, כך שהם יכולים לעדכן את האפשרויות, אם נדרש.</p>
-        <p>אם אתה מוסיף זמנים חדשים בזמן הסקר, אנשים שהצביעו כבר יקבלו הודעה לעדכן את תגובתם. </p>
-        <p>אתה יכול לראות מי פנוי מתי ולהחליט מתי תתקיים הפגישה.</p>
-        <p>הזמנים מעודכנים באופן אוטומטי לפי הזמן המקומי של המשתתף.</p>
-    start_header: התחל סקר זמן
-    edit_header: ערוך סקר זמן
-    title_placeholder: 'דוגמא: מתי נקיים את פגישתנו הבאה?'
-    details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
-    meeting_created: סקר זמן נוצר
-    meeting_updated: סקר זמן עודכן
     timeslots: משבצות זמן
     no_options: הזן זמנים באיזור הזמן שלך ({{zone}}). משתתפים יראו את הזמנים מתורגמים לאיזורי הזמן שלהם.
     meeting_duration: אורך הפגישה
   poll_ranked_choice_form:
-    tool_tip_expanded: |
-        <p>דירוג בחירה היא שיטת הצבעה שמאפשרת לכל מצביע להגיב עם העתפותיהם לפי סדר.</p>
-        <p>זוהי אפשרות מועדפת כאשר 'גניבת הצבעות' היא דאגה (ז"א, שתי אפשרויות פופולריות הן דומות מספיק כך שהן מתחלקות בהצבעות ביניהן), וניתנת לשימוש לצורך מימוש קונדורסה או בחירות בסגנון סיבוב שני מיידי.
-        </p>
-    start_header: התחל דירוג הבחירה
-    edit_header: ערוך דרוג הבחירה
-    title_placeholder: 'לדוגמא: את מי תרצה כראש העיר?'
-    details_placeholder: ספק כל מידע נוסף שאנשים צריכים כדי להשתתף
-    meeting_created: דירוג הבחירה נוצר
-    meeting_updated: דירוג הבחירה עודכן
     no_options: "לא הוספת עוד אף אפשרות."
     add_option_placeholder: הזן בחירה חדשה
     minimum_stance_choices: אפשרויות לדירוג
-    minimum_stance_choices_helptext: מספר האפשרויות כל מצביע יכול לדרג
     ranked_choice_created: דירוג הבחירה נוצר
     ranked_choice_updated: דירוג הבחירה עודכן
   poll_meeting_time_field:
@@ -1123,28 +1040,22 @@ he:
     stance_updated: הצבעה עודכנה
     vote: הצבעה
   poll_proposal_options:
+    'yes': 'כן'
+    'no': 'לא'
     agree: בעד
-    agree_verb: "מוסכם"
-    agree_meaning: הצעה זו טובה דיה להיות מאומצת ע"י הקבוצה
     abstain: נמנע
-    abstain_verb: "נמנע"
-    abstain_meaning: לא בטוח, לא יודע או לא אכפת לי. אני אתמוך בתוצאה בכל מקרה
     disagree: נגד
-    disagree_verb: "לא מסכים"
-    disagree_meaning: אני לא תומך בהצעה. היא לא צריכה להמשיך.
     block: חסום
-    block_verb: "נחסם"
-    block_meaning: תשומת הלב של הקבוצה נדרשת בדחיפות לנושא עמוק
+    agree_meaning: הצעה זו טובה דיה להיות מאומצת ע"י הקבוצה
+  poll_count_form:
+    title_placeholder: 'לדוגמא: מי רוצה להצטרף לקבוצת עבודה?'
+    details_placeholder: הסבר איזו התחייבות נדרשת או תן פירוט על איך להשתתף.
   poll_count_options:
     'yes': 'כן'
     'no': 'לא'
   poll_count_vote_form:
     reason_label: הודעה
     reason_placeholder: השאר הודעה, אם תרצה
-    stance_created: הצבעה נוצרה
-    stance_updated: הצבעה עודכנה
-  poll_count_chart_panel:
-    out_of: מחוץ ל{{goal}}
   poll_meeting_chart_panel:
     total: סך הכל
   poll_poll_vote_form:

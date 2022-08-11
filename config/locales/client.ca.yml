@@ -53,7 +53,6 @@ ca:
     tags_marked: Discussions marcades '{{name}}' a {{groupName}}
   poll_types:
     proposal: proposta
-    count: verificar
     poll: enquesta
     dot_vote: vot limitat
     meeting: enquesta de temps
@@ -75,6 +74,7 @@ ca:
     empty: Buit
     no_results_found: No s'ha trobat cap resultat
     view: Visualitza
+    or: o
     history: Historial
     option: Opció
     add: Afegeix
@@ -122,8 +122,6 @@ ca:
       thismonth: 'Aquest mes'
       older: 'Més antic'
     more_help: 'Més ajuda'
-    models:
-      proposal: 'Proposta'
     copy: 'Copia'
     reset: 'Reinicia'
     copy_text: 'Copia el text'
@@ -1221,7 +1219,6 @@ ca:
     choose_type: Escull el tipus d'enquesta
     title: Organitzar
     proposal_title: Proposta
-    count_title: Verificar
     poll_title: Enquesta
     score_title: Enquesta per puntuació
     meeting_title: enquesta de temps
@@ -1373,12 +1370,8 @@ ca:
     anonymous:
       title: Votants anònims
       helptext_on: En seleccionar aquesta opció, la informació del participant no es mostrarà quan respongui.
-    voter_can_add_options:
-      title: Els votants podran afegir opcions
-      helptext_on: En seleccionar aquesta opció, els participants podran afegir les seves pròpies opcions a l'hora de votar.
     can_respond_maybe:
       title: Els votants poden respondre amb "si és necessari"
-      helptext_on: Els votants poden indicar franges horàries com "si és necessari"
     hide_results_until_closed:
       title: Amaga els resultats fins al tancament
       helptext_on: No mostris què han votat els usuaris fins que l'enquesta estigui tancada
@@ -1415,13 +1408,6 @@ ca:
     reminder_sent: S'ha enviat la notificació de recordatori
   poll_common_set_outcome_panel:
     enter_outcome: Introduir resultat
-    poll: 'Aquesta enquesta ja està tancada. <strong>Compartir el resultat </strong> amb el grup.'
-    proposal: 'Aquesta proposta ja està tancada. Considereu el que s''ha expressat i <strong>compartiu un resultat</strong>, perquè la gent pugui saber què passarà tot seguit.'
-    count: 'Aquesta  ja està tancada. <strong>Comparteix el resultat</strong> per completar el procés.'
-    meeting: 'Aquesta enquesta de temps ja està tancada. <strong>Comparteix el resultat </strong> per fer saber als usuaris quan es farà la reunió.'
-    dot_vote: 'Aquesta enquesta de vot limitat ja està tancada. <storng>Comparteix el resultat</strong> amb el grup.'
-    ranked_choice: 'Aquesta enquesta de vot preferencial ja està tancada. <strong>Comparteix el resultat </strong> amb el grup.'
-    score: 'Aquesta enquesta de vot amb puntuació ja està tancada. <strong>Comparteix el resultat </strong> amb el grup.'
   poll_common_outcome_form:
     new_title: Introdueix un resultat
     update_title: Actualitza el resultat
@@ -1437,6 +1423,9 @@ ca:
     title: Elimina {{pollType}}
     success: Eliminat amb èxit
   poll_common_form:
+    voting_methods:
+      ranked_choice: vot preferencial
+      time_poll: enquesta de temps
     title: Títol
     details: Detalls
     options: Opcions
@@ -1445,32 +1434,19 @@ ca:
     closing: S'està tancant
     closed: Tancat
     start: Comença
+    start_poll: Crea una enquesta
+    stance_reason_required: Obligatori
     start_poll_type: Inicia {{poll_type}}
     share_poll_type: Comparteix {{poll_type}}
     update: Actualitza
-    loomio_school_link: |
-        <p>Més informació a <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/" target="_blank">Ajuda de Loomio</a>.</p>
+    votes_are_anonymous: Els vots són anònims
   poll_proposal_form:
-    tool_tip_expanded: |
-        <p>La proposta és una eina per buscar acords col·lectius sobre una declaració o línies d'acció.</p>
-        <p>Els participants poden estar d'acord, abstenir-se o bloquejar, i aportar una explicació de la seva posició.</p>
-        <p>Un diagrama circular ofereix un resum de les posicions del grup, mentre que les declaracions o explicacions dels participants permeten mostrar les veus individuals.. </p>
-        <p>No us descoratgeu si no hi ha acords al principi, les propostes estan dissenyades per arribar a temes que necessiten resolució.</p>
-        <p>Amb una bona participació, una proposta és un mandat potent per actuar.</p>
-    tool_tip_collapsed: Busca acords o retroacció d'altres usuaris
     start_header: Crea una proposta
     edit_header: Edita una proposta
-    tip: Busca acords col·lectius a través d'un procés que permet que s'escoltin totes les veus. <a href="https://help.loomio.org/en/user_manual/getting_started/decision_tools/#proposal" target="_blank">Més informació</a>
     title_placeholder: 'Per exemple: anem a la lluna!'
-    details_placeholder: Dóna suficient informació per tal que tothom sàpiga exactament què vol dir estar-hi d'acord o no estar-hi.
     proposal_created: Proposta iniciada
     proposal_updated: Proposta actualitzada
   poll_poll_form:
-    tool_tip_expanded: |
-        <p>Utilitza una enquesta per mesurar popularitat o oferir una elecció.</p>
-        <p>Ofereix diverses opcions per escollir. Decideix si els participants escullen una única o múltiples opcions com a resposta..</p>
-        <p>Tothom vota i, a més, es pot incloure una explicació o declaració al respecte. Els resultats es representen en un gràfic de barres.</p>
-    tool_tip_collapsed: Escull de la llista d'opcions
     start_header: Crea una enquesta
     edit_header: Edita l'enquesta
     tip: Ofereix una elecció entre opcions
@@ -1480,64 +1456,11 @@ ca:
     remove_option: Elimina una opció
     poll_created: Enquesta creada
     poll_updated: Enquesta actualitzada
-  poll_count_form:
-    tool_tip_expanded: |
-        <p>Una<em>verificació</em> és una eina amb múltiples usos, però que ofereix només dues respostes: un vist (✔) o una marca d'x (✘). Els participants utilitzaran el vist (✔) per indicar sí i la marca x (✘) per indicar no, o que estan insegurs.</p>
-        <p>Utilitzeu-lo perquè els usuaris participin en ofertes, de l'estil RSVP: "Vindré a l'esdeveniment" o "M'uniré al grup de treball".</p>
-        <p>O utilitzau-lo per marcar que s'ha completat una tasca: "He comprovat que els detalls de contacte són correctes", o "He llegit el document i deixat retroacció".</p>
-        <p>Una verificació té un <em>objectiu</em>, que és el nombre d'usuaris que voleu que hi participin. L'objectiu indica al grup què necessita atenció o què ja n'està rebent prou.</p>
-        <p>El dia anterior al tancament de la verificació, s'enviarà una notificació als usuaris que no hagin participat per animar-los a fer-ho.</p>
-    tool_tip_collapsed: Compta quants usuaris han completat una tasca o demana voluntaris
-    start_header: Crea una verificació
-    edit_header: Edita una verificació
-    tip: Pregunta qui ha completat una tasca o desitja participar com a voluntari
-    title_placeholder: 'Per exemple: Qui vol unir-se al grup de treball?'
-    details_placeholder: Explica quins compromisos comporta, o dóna detalls de com participar.
-    count_created: S'ha iniciat la verificació
-    count_updated: S'ha actualitzat la verificació
   poll_dot_vote_form:
-    tool_tip_expanded: |
-        <p>El vot limitat és una manera de prioritzar en una llista d'opcions.</p>
-        <p>Els participants reben un nombre limitat de "punts" que poden repartir com vulguin entre les opcions de la llista per representar les seves preferències.</p>
-        <p>Es mostraran els resultats totals i també els vots individuals, de manera que es puguin considerar diversos punts de vista.</p>
-    tool_tip_collapsed: Assigna una dotació de punts
-    start_header: Inicia una enquesta de vot limitat
-    edit_header: Edita una enquesta de vot limitat
-    tip: Assigna una dotació de punts
-    title_placeholder: 'P.ex: Com hauríem de distribuir el nostre pressupost?'
-    details_placeholder: Proporcioneu tots els detalls que els usuaris puguin necessitar per participar
-    add_option_placeholder: Afegeix una opció
     dots_per_person: Punts per usuari
     dots_per_person_helptext: El nombre total de punts que cada usuari té per repartir
-    dot_vote_created: S'ha creat l'enquesta de vot limitat.
-    dot_vote_updated: S'ha actualitzat l'enquesta de vot limitat
-  poll_score_form:
-    tool_tip_expanded: |
-        <p>Les enquestes de puntuació permeten als usuaris expressar el seu nivell de preferència per cada una de les opcions.</p>
-        <p>La puntuació total que rebi cada opció es mostra com a part dels resultats.</p>
-    start_header: Crea una enquesta de puntuació
-    edit_header: Edita una enquesta de puntuació
-    title_placeholder: 'P.ex: Puntua els candidats en una escala del 0 al 9.'
-    details_placeholder: Proporcioneu tots els detalls que els usuaris puguin necessitar per participar
-    add_option_placeholder: Afegeix una opció
-    score_created: S'ha creat una enquesta de puntuació
-    score_updated: S'ha actualitzat una enquesta de puntuació
   poll_meeting_form:
-    tool_tip_expanded: |
-        <p>Utilitzeu una enquesta de temps per saber quan els usuaris estan disponibles per fer una reunió.</p>
-        <p>Introduïu una llista de dates o hores en les que podríeu reunir-vos.</p>
-        <p>El participants marcaran les opcions a les que puguin atendre, o poden deixar una explicació de les seves circumstàncies, de manera que puguis actualitzar les opcions si és necessari.</p>
-        <p>Si afegiu horaris nous durant l'enquesta de temps, s'animarà als usuaris que ja han votat a actualitzar la seva resposta.</p>
-        <p>Podeu veure qui està disponible en cada moment i decidir quan fer la reunió.</p>
-        <p>Les hores es converteixen automàticament a la zona horària local del participant.</p>
     tool_tip_collapsed: Esbrineu en quin moment poden fer una reunió els usuaris
-    start_header: Crea una enquesta de temps
-    edit_header: Edita una enquesta de temps
-    tip: Esbrineu en quin moment poden fer una reunió els usuaris
-    title_placeholder: 'P.ex: Quan fem la propera quedada?'
-    details_placeholder: Proporcioneu tots els detalls que els usuaris puguin necessitar per participar
-    meeting_created: S'ha creat l'enquesta de temps
-    meeting_updated: S'ha actualitzat l'enquesta de temps
     timeslots: Franges horàries
     no_options: Introduïu les hores de la vostra zona horària ({{zone}}). Els participants veuran les hores convertides a la seva zona horària.
     meeting_duration: Durada de la reunió
@@ -1545,20 +1468,9 @@ ca:
     time_slot_added: S'ha afegit una franja de temps
     time_slot_already_added: Ja s'ha afegit la franja de temps
   poll_ranked_choice_form:
-    tool_tip_expanded: |
-        <p>El vot preferencial és un mètode de votació que permet que cada votant respongui amb un ordre de preferències.</p>
-    tool_tip_collapsed: Ordena les opcions de primera a última
-    start_header: Comença un vot preferencial
-    edit_header: Edita vot preferencial
-    tip: Ordena les opcions de primera a última
-    title_placeholder: 'P.ex: Qui voldries que fos alcalde?'
-    details_placeholder: Proporcioneu tots els detalls que els usuaris puguin necessitar per participar
-    meeting_created: S'ha creat el vot preferencial
-    meeting_updated: S'ha actualitzat el vot preferencial
     no_options: "Encara no heu afegit cap opció."
     add_option_placeholder: Afegeix una nova opció
     minimum_stance_choices: Opcions per ordenar
-    minimum_stance_choices_helptext: 'Nombre d''opcions que el votant ha d''ordenar '
     ranked_choice_created: S'ha creat el vot preferencial
     ranked_choice_updated: S'ha actualitzat el vot preferencial
     rank: Ordena
@@ -1577,36 +1489,26 @@ ca:
     stance_updated: S'ha actualitzat el vot
     vote: Vota
   poll_proposal_options:
+    'yes': 'Sí'
+    'no': 'No'
     agree: D'acord
     consent: Consentiment
-    agree_verb: "hi està d'acord"
-    agree_meaning: La proposta és prou bona perquè el grup l'aprovi
     abstain: Abstenció
-    abstain_verb: "s'ha abstingut"
-    abstain_meaning: No n'estic segur, no ho sé o no m'importa. Donaré suport al resultat igualment.
     disagree: En desacord
-    disagree_verb: "hi està en desacord"
-    disagree_meaning: No dono suport a la proposta. No hauria de seguir endavant.
     objection: Objecció
     block: Bloqueja
-    block_verb: "bloquejat"
-    block_meaning: Es requereix urgentment l'atenció del grup per tractar un assumpte important
-    agree_abstain_disagree_block: 'D''acord, abstenció, en desacord, bloqueja'
-    agree_disagree: 'D''acord, en desacord'
-    agree_abstain_disagree: 'D''acord, abstenció, en desacrod'
-    consent_abstain_object: 'Consenteix, abstenció, objecció'
+    agree_meaning: La proposta és prou bona perquè el grup l'aprovi
+  poll_count_form:
+    title_placeholder: 'Per exemple: Qui vol unir-se al grup de treball?'
+    details_placeholder: Explica quins compromisos comporta, o dóna detalls de com participar.
   poll_count_options:
     'yes': 'Sí'
     'no': 'No'
   poll_count_vote_form:
     reason_label: Missatge
     reason_placeholder: Deixeu un missatge si ho considereu oportú
-    stance_created: S'ha creat el vot
-    stance_updated: S'ha actualitzat el vot
   poll_common_percent_voted:
     sentence: "{{numerator}} usuaris de {{denominator}} ja han votat ({{percent}}%)"
-  poll_count_chart_panel:
-    out_of: de {{goal}}
   poll_meeting_chart_panel:
     total: Total
   poll_poll_vote_form:

@@ -31,6 +31,7 @@ cs:
     please_wait: Prosím vyčkejte
     version: Verze
     no_results_found: Žádné výsledky nenalezeny
+    or: nebo
     you: Vy
     expand: Rozbalit
     all_day: Celý den
@@ -69,8 +70,6 @@ cs:
       thismonth: 'Tento měsíc'
       older: 'Starší'
     more_help: 'Další pomoc'
-    models:
-      proposal: 'Návrh'
     copy: 'Kopírovat'
     copy_text: 'Kopírovat text'
     copied: 'Zkopírováno'
@@ -282,6 +281,7 @@ cs:
     title_label: 'Název'
     title_placeholder: 'O jakém tématu chcete diskutovat?'
     context_label: 'Souvislost'
+    context_placeholder: "Poskytněte kontext této diskuze, aby lidé věděli, jak se do ní zapojit."
     privacy_label: 'Soukromí'
     privacy_organisation: 'Vlákno bude vidět pro členy {{parent}} a členy {{group}}.'
   announcement:
@@ -334,6 +334,8 @@ cs:
     introduction_label: Proč se chcete přidat?
     submit_button: Požádat o připojení
     introduction_over_limit: Odpověď je příliš dlouhá
+    messages:
+      membership_requested: 'Požádali jste o vstup do {{group}}'
   revision_history_modal:
     aria_label: Historie revizí
     edited_by: 'Upravil/a <strong>{{name}}</strong>'
@@ -352,6 +354,8 @@ cs:
     messages:
       privacy:
         members: 'Tato skupina je nyní viditelná pouze pro členy'
+        parent_members: 'Tato skupina je nyní viditelná pouze pro členy vaší organizace.'
+        public: 'Tato skupina je nyní viditelná pro veřejnost'
       leave_group_success: 'Tuto skupinu jste opustil(a)'
       archive_group_success: 'Tato skupina byla deaktivována'
     group_logo: 'Logo skupiny'
@@ -359,6 +363,7 @@ cs:
     new_group_logo: 'Nahrát nové logo skupiny'
     discussions_placeholder: 'Vlákno je místem, kde každý může diskutovat o tématu a tvořit společně rozhodnutí.'
     members_placeholder: 'Jste tu jediná/ý: pozvěte někoho, aby se k Vám přidal!'
+    member_options: Možnosti člena
     subgroups_placeholder: 'Podskupiny poskytují týmům svůj vlastní prostor a nezávislá upozornění zaměřená pouze těm správným uživatelům'
     invite_people: 'Pozvat'
     visibility_label: 'Viditelnost'
@@ -371,6 +376,19 @@ cs:
       email_settings: 'Nastavení emailu'
       leave_group: 'Opustit skupinu'
       deactivate_group: 'Deaktivovat skupinu'
+    volume:
+      loud: Poslat e-mail, kdykoli se objeví nějaká aktivita.
+      loud_aria_description: upozorněníupozorněníupozorněníHlasitost oznámení pro tuto skupinu je nastavena na hodnotu Hlasitě. E-maily vám budou zasílány vždy, když se objeví nějaká aktivita.
+      normal: 'Jen důležitá e-mailová činnost: Nové vlákna a návrhy, výsledky atd.'
+      normal_aria_description: Hlasitost oznámení pro tuto skupinu je nastavena na hodnotu Normální. Budou vám zasílány pouze důležité aktivity, například když někdo založí nové vlákno, vznese návrh nebo nastaví výsledek.
+      quiet: Neodesílat e-maily o této skupině. Aktivita se zobrazí na ovládacím panelu.
+      quiet_aria_description: Hlasitost oznámení pro tuto skupinu je nastavena na hodnotu Tichý. O aktivitě v této skupině vám nebudou zasílány žádné e-maily. Aktivita ve skupině se zobrazí na vašem ovládacím panelu.
+      mute: Skrýt tuto skupinu z ovládacího panelu a neoznamovat ji, pokud není @zmíněna.
+      mute_aria_description: Hlasitost oznámení pro tuto skupinu je nastavena na hodnotu Ztlumit. Pokud se o vás někdo nezmíní, nebudou vám zasílány žádné e-maily a aktivita skupiny se nebude zobrazovat na vašem ovládacím panelu.
+    privacy:
+      private: 'Soukromí: Tato skupina je viditelná pouze pro členy'
+      parent_members: 'Soukromí: Tato skupina je viditelná pro členy {{parentGroupName}} a členy {{groupName}}.'
+      public: 'Soukromí: Tato skupina je viditelná na webu'
   description_card:
     title: 'Popis skupiny'
     messages:
@@ -412,11 +430,16 @@ cs:
     submit_update: 'Aktualizovat nastavení'
     messages:
       group_updated: 'Skupina aktualizována'
+  membership_requests_card:
+    heading: 'Žádosti o členství'
+    manage_requests: Správa žádostí
   membership_requests_page:
     heading: Žádosti o členství
     approve: Schválit
     ignore: Ignorovat
+    no_pending_requests: V současné době nejsou v této skupině žádné nevyřízené žádosti o členství.
     previous_requests: Minulé žádosti
+    previous_request_response: '{{response}} od {{responder}} '
     messages:
       request_approved_success: Žádost o členství schválena
       request_ignored_success: Žádost o členství ignorována
@@ -437,9 +460,13 @@ cs:
   memberships_page:
     members: 'Členové'
     name_label: 'Jméno'
+    coordinator_label: 'Správce'
     remove_member_label: 'Vyloučit'
+    fragment_placeholder: 'Filtrování uživatelů podle jména nebo uživatelského jména...'
     messages:
       remove_member_success: 'Odebrán {{name}}'
+      make_admin_success: '{{jméno}} je nyní správcem'
+      remove_admin_success: '{{jméno}} již není správce'
   membership_remove_modal:
     invitation:
       title: Stornovat pozvánku
@@ -563,6 +590,7 @@ cs:
       success: Téma bylo přesunuto {{name}}
   delete_comment_dialog:
     title: 'Odstranit komentář'
+    question: 'Tím se tento komentář trvale odstraní. Pokud budete pokračovat, nebude možné jej obnovit.'
   contact_message_form:
     contact_us: 'Kontakt'
     name_label: 'Vaše jméno'
@@ -579,7 +607,6 @@ cs:
       reload: 'Znovu načíst'
   decision_tools_card:
     proposal_title: Návrh
-    count_title: Kontrola
     poll_title: Hlasování
     meeting_title: Doba hlasování
   poll_common:
@@ -612,6 +639,7 @@ cs:
     order_by_name: 'Název'
     header_name: 'Název'
     header_username: 'Uživatelské jméno'
+    admin: 'Správce'
     accepted: 'Členové'
   polls_panel:
     all: 'Vše'
@@ -620,15 +648,16 @@ cs:
   poll_common_settings:
     anyone_can_participate:
       title: Kdokoli s odkazem se může účastnit
-    voter_can_add_options:
-      title: Hlasující mohou přidávat nové možnosti
   poll_common_outcome_form:
     submit: Sdílet výsledek
   poll_common_form:
+    voting_methods:
+      time_poll: Doba hlasování
     details: Podrobnosti
     options: Nastavení
     closed: Zavřená
     start: Zahájit
+    start_poll: Začít hlasování
   poll_proposal_form:
     start_header: Vytvořit návrh
     edit_header: Upravit návrh
@@ -640,9 +669,12 @@ cs:
     poll_created: Hlasování vytvořeno
     poll_updated: Hlasování upraveno
   poll_proposal_options:
+    'yes': 'Ano'
+    'no': 'Ne'
     agree: Souhlasit
     abstain: Zdržet se
   poll_count_options:
+    decline: Odmítnout
     'yes': 'Ano'
     'no': 'Ne'
   poll_meeting_chart_panel:

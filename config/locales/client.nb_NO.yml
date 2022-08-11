@@ -42,8 +42,6 @@ nb_NO:
       thismonth: 'Denne måneden'
       older: 'Eldre'
     more_help: 'Mer hjelp'
-    models:
-      proposal: 'Forslag'
     copy: 'Kopier'
     copy_text: 'Kopier tekst'
     copied: 'Kopiert til utklippstavle'
@@ -453,7 +451,6 @@ nb_NO:
     title: 'Slett kommentar'
   decision_tools_card:
     proposal_title: Forslag
-    count_title: Ja / Nei
     poll_title: Avstemning
     meeting_title: Tidspunkt
     ranked_choice_title: Rangering
@@ -477,6 +474,9 @@ nb_NO:
   poll_common_outcome_form:
     submit: Del resultat
   poll_common_form:
+    voting_methods:
+      ranked_choice: Rangering
+      time_poll: Tidspunkt
     title: Tittel
     closed: Lukket
     start: Start

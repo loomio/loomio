@@ -57,8 +57,6 @@ sv:
       thismonth: 'Denna Månad'
       older: 'Äldre'
     more_help: 'Mer hjälp'
-    models:
-      proposal: 'Förslag'
     copy: 'Kopiera'
     copy_text: 'Kopiera text'
     copied: 'Kopierad till urklipp'
@@ -373,7 +371,6 @@ sv:
     message_label: 'Ditt meddelande'
   decision_tools_card:
     proposal_title: Förslag
-    count_title: Bock
     poll_title: Undersökning
     score_title: Ränka röster
     meeting_title: Tidsröstning
@@ -395,8 +392,14 @@ sv:
     open: 'Öppen'
     closed: 'Stängd'
   poll_common_form:
+    voting_methods:
+      ranked_choice: Valfritt val
+      time_poll: Tidsröstning
     closed: Stängd
     start: Starta
+  poll_proposal_options:
+    'yes': 'Ja'
+    'no': 'Nej'
   poll_count_options:
     'yes': 'Ja'
     'no': 'Nej'

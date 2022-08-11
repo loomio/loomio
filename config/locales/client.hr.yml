@@ -7,8 +7,6 @@ hr:
     version: Verzija
     privacy:
       public: 'Javno'
-    models:
-      proposal: 'Prijedlog'
     action:
       clear: Obriši
   error_page:

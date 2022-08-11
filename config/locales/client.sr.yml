@@ -37,8 +37,6 @@ sr:
       thismonth: 'Ovog Meseca'
       older: 'Starije'
     more_help: 'Još pomoći'
-    models:
-      proposal: 'Predlog'
     copied: 'Kopirano'
     action:
       print: Štampa
@@ -489,7 +487,11 @@ sr:
     closed: 'Zatvoreno'
   poll_common_form:
     closed: Zatvoreno
+  poll_proposal_options:
+    'yes': 'Da'
+    'no': 'Ne'
   poll_count_options:
+    decline: Odbij
     'yes': 'Da'
     'no': 'Ne'
   auth_form:

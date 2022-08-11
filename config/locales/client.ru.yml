@@ -42,6 +42,7 @@ ru:
   common:
     please_wait: Пожалуйста, подождите
     version: Версия
+    or: или
     history: История
     add: Добавить
     you: Ты
@@ -85,8 +86,6 @@ ru:
       thismonth: 'Этот месяц'
       older: 'Ранее'
     more_help: 'Дополнительная справка'
-    models:
-      proposal: 'Предложение'
     copy: 'Копировать'
     copy_text: 'Копировать текст'
     copied: 'Скопировать в буфер'
@@ -502,7 +501,6 @@ ru:
     send_message: 'Отправить сообщение'
   decision_tools_card:
     proposal_title: Предложение
-    count_title: Проверка
     poll_title: Опрос
     score_title: Оценка опроса
     meeting_title: Голосование за время встречи
@@ -531,10 +529,16 @@ ru:
   poll_common_outcome_form:
     submit: Поделиться результатами
   poll_common_form:
+    voting_methods:
+      ranked_choice: Порядок ранжированния
+      time_poll: Голосование за время встречи
     closed: Закрыто
     start: Начать
   poll_poll_form:
     edit_header: Редактировать опрос
+  poll_proposal_options:
+    'yes': 'Да'
+    'no': 'Нет'
   poll_count_options:
     'yes': 'Да'
     'no': 'Нет'

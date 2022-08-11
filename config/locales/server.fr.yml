@@ -82,6 +82,8 @@ fr:
       cannot_add_options: Impossible d'ajouter des options à ce sondage
       cannot_remove_options: Impossible de supprimer des options de ce sondage
       must_have_options: Il faut au moins une option de sondage
+      must_be_in_the_future: Doit être dans le futur
+      templates_cannot_close: Les modèles ne peuvent pas se fermer
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) des membres se sont exprimés"
       title: Titre
@@ -183,6 +185,7 @@ fr:
           Après quoi, si vous ne parvenez toujours pas à vous connecter, répondez à ce courriel pour contacter une personne de notre équipe support.
     by_who: par %{person}
     reply_to_this_discussion: Répondre à cette discussion
+    loomio_app_description: "%{site_name} est un outil d’aide à la décision pour les organisations collaboratives"
     view_group: Voir le groupe
     to_join_group:
       subject: "%{member} vous a invité·e à rejoindre le groupe %{group_name} sur %{site_name}"
@@ -316,6 +319,8 @@ fr:
       view_on_loomio: Voir sur %{site_name}
       create_outcome: Partager les résultats
       your_response: "Vous avez voté:"
+      you_voted: "Vous avez voté !"
+      not_invited: "Non invité"
       please_respond: Merci de répondre
       time_zone: (Horaire affiché en %{zone})
       undecided_members: Membres indécis (%{count})

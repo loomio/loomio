@@ -8,8 +8,6 @@ vi:
     group: 'Nhóm'
     groups: 'Các nhóm'
     email_address: Địa chỉ email
-    models:
-      proposal: 'Lời đề nghị'
     action:
       search: 'Tìm kiếm'
       save: 'Lưu'
@@ -104,6 +102,9 @@ vi:
     closed: 'Đã đóng lại'
   poll_common_form:
     closed: Đã đóng lại
+  poll_proposal_options:
+    'yes': 'Đồng Ý'
+    'no': 'Không đồng ý'
   poll_count_options:
     'yes': 'Đồng Ý'
     'no': 'Không đồng ý'

@@ -20,8 +20,6 @@ gl:
       private: 'Privado'
     date_range:
       today: 'Hoxe'
-    models:
-      proposal: 'Proposta'
     action:
       search: 'Buscar'
       save: 'Gardar'
@@ -152,6 +150,9 @@ gl:
     closed: 'Pechado'
   poll_common_form:
     closed: Pechado
+  poll_proposal_options:
+    'yes': 'Si'
+    'no': 'Non'
   poll_count_options:
     'yes': 'Si'
     'no': 'Non'

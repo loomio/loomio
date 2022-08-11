@@ -51,7 +51,6 @@ eo:
     tags_marked: Fadenoj markitaj kiel  '{{name}}' en {{groupName}}
   poll_types:
     proposal: propono
-    count: kontrolo
     poll: enketo
     dot_vote: punkto-voĉdonado
     meeting: tempa enketo
@@ -72,6 +71,7 @@ eo:
     version: Versio
     no_results_found: Neniu rezulto trovita
     view: Vidi
+    or: aŭ
     history: Historio
     option: Elekto
     you: Vi
@@ -118,8 +118,6 @@ eo:
       thismonth: 'Ĉi-monate'
       older: 'Antaŭ pli da tempo'
     more_help: 'Plia helpo'
-    models:
-      proposal: 'Propono'
     copy: 'Kopii'
     copy_text: 'Kopii tekston'
     copied: 'Kopiite al la tondaĵ-poŝo'
@@ -454,7 +452,6 @@ eo:
       reload: 'Reŝarĝi'
   decision_tools_card:
     proposal_title: Propozicio
-    count_title: Kontroli
     poll_title: Enketo
   poll_common:
     vote_now: Voĉdonu nun
@@ -498,30 +495,20 @@ eo:
   poll_common_settings:
     anonymous:
       title: Nescieblaj voĉdonantoj
-    voter_can_add_options:
-      title: Voĉdonantoj rajtas aldoni elektojn
   poll_common_votes_panel:
     no_votes_yet: Ĝis nun, neniu voĉdonis.
-  poll_common_set_outcome_panel:
-    dot_vote: 'Ĉi tiu punkto-voĉdonado fermiĝis. <storng>Konigu rezulton</strong> al la grupo.'
   poll_common_form:
     title: Titolo
     details: Detaloj
     closed: Fermita
+    stance_reason_required: Nepra
+    votes_are_anonymous: Voĉdonoj ne montros uzantnomojn
   poll_proposal_form:
     title_placeholder: 'Jen ekzemplo: Ni iru al la luno!'
   poll_poll_form:
     edit_header: Redakti enketon
     add_option_placeholder: Aldoni elekton
     remove_option: Forigi elekton
-  poll_dot_vote_form:
-    start_header: Komenci punkto-voĉdonadon
-    edit_header: Agordi la punkto-voĉdonadon
-    add_option_placeholder: Aldoni elekton
-    dot_vote_created: Komenciĝis la punkto-voĉdonado
-    dot_vote_updated: Ĝisdatiĝis la punkto-voĉdonado
-  poll_score_form:
-    add_option_placeholder: Aldoni elekton
   poll_meeting_time_field:
     closing_hour: Horo de fermo
   poll_proposal_vote_form:
@@ -529,17 +516,15 @@ eo:
     stance_updated: Voĉdono nun ĝisdatigita
     vote: Voĉdono
   poll_proposal_options:
+    'yes': 'Jes'
+    'no': 'Ne'
     agree: Konsenti
-    agree_verb: "Konsentita"
     disagree: Malkonsenti
-    disagree_verb: "malkonsentita"
   poll_count_options:
     'yes': 'Jes'
     'no': 'Ne'
   poll_count_vote_form:
     reason_label: Mesaĝo
-    stance_created: Voĉdono kreis
-    stance_updated: Voĉdono ĝisdatigita
   poll_meeting_chart_panel:
     total: Entute
   poll_poll_vote_form:

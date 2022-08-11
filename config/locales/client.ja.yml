@@ -45,8 +45,6 @@ ja:
       yesterday: '昨日'
       thisweek: '今週'
       thismonth: '今月'
-    models:
-      proposal: '提案'
     action:
       search: '検索'
       save: '保存'
@@ -163,6 +161,9 @@ ja:
     closed: '議論終了'
   poll_common_form:
     closed: 議論終了
+  poll_proposal_options:
+    'yes': 'はい'
+    'no': 'いいえ'
   poll_count_options:
     'yes': 'はい'
     'no': 'いいえ'

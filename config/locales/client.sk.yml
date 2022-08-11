@@ -20,8 +20,6 @@ sk:
       private: 'Súkromný'
     date_range:
       today: 'Dnes'
-    models:
-      proposal: 'Návrh'
     action:
       search: 'Vyhľadávať'
       save: 'Uložiť'
@@ -155,6 +153,9 @@ sk:
     closed: 'Uzatvorené'
   poll_common_form:
     closed: Uzatvorené
+  poll_proposal_options:
+    'yes': 'Áno'
+    'no': 'Nie'
   poll_count_options:
     'yes': 'Áno'
     'no': 'Nie'

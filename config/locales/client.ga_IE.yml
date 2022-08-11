@@ -27,6 +27,7 @@ ga_IE:
     please_wait: Fan le do thoil
     version: Leagan
     no_results_found: Níor aimsíodh aon rud
+    or: nó
     option: Rogha
     add: Cuir leis
     you: Tusa
@@ -71,8 +72,6 @@ ga_IE:
       thismonth: 'An Mhí Seo'
       older: 'Níos Sine Fós'
     more_help: 'Tuilleadh cabhair'
-    models:
-      proposal: 'Togra'
     copy: 'Macasamhlaigh'
     reset: 'Athshocraigh é'
     copy_text: 'Macasamhlaigh an téacs'
@@ -496,7 +495,6 @@ ga_IE:
       reload: 'Athluchtaigh é'
   decision_tools_card:
     proposal_title: Togra
-    count_title: Dearbháil
     poll_title: Vótáil
   poll_common:
     have_your_say: Abair leat
@@ -539,7 +537,10 @@ ga_IE:
   poll_ranked_choice_form:
     no_options: "Níor chuir tú aon roghanna leis fós."
     rank: Rangaigh
+  poll_proposal_options:
+    'no': 'Ná cealaigh é'
   poll_count_options:
+    decline: Diúltaigh dó
     'no': 'Ná cealaigh é'
   poll_count_vote_form:
     reason_label: Teachtaireacht

@@ -8,8 +8,6 @@ bg_BG:
     group: 'Група'
     groups: 'Групи'
     email_address: E-mail адрес
-    models:
-      proposal: 'Предложение'
     action:
       save: 'Запис'
       edit: 'Редактиране'
