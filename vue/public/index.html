@@ -61,7 +61,9 @@
         fgcolors = "#DCA034 #3D3D3D #658AE7 #EBB6A5 #BE5247 #fff".split(' ')
         fgcolor = fgcolors[Math.floor(Math.random() * fgcolors.length)]
 
-        if (Math.floor(Math.random() * 2)) {
+        // 1/7th of the time, we're going to use a colour background
+        flip = Math.floor(Math.random() * 7) != 0
+        if (flip) {
           if (document.getElementById('logofill')) {
             document.getElementById('logofill').setAttribute('fill', fgcolor)
           }
