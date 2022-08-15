@@ -47,7 +47,6 @@ class Poll < ApplicationRecord
   end
 
   TEMPLATE_VALUES = %w(has_option_icon
-                       chart_column
                        order_results_by
                        prevent_anonymous
                        vote_method
@@ -197,14 +196,14 @@ class Poll < ApplicationRecord
     poll_option_name_format == 'iso8601'
   end
   
-  # def chart_type
-  #   case poll_type
-  #   when 'proposal' then 'pie'
-  #   when 'meeting' then 'grid'
-  #   else
-  #     'bar'
-  #   end
-  # end
+  def chart_column
+    case poll_type
+    when 'count' then (agree_target ? 'target_percent' : 'voter_percent')
+    when 'check', 'proposal' then 'score_percent'
+    else
+      'max_score_percent'
+    end
+  end
 
   def result_columns
     case poll_type
@@ -213,7 +212,11 @@ class Poll < ApplicationRecord
     when 'check'
       %w[chart name voter_percent voter_count voters]
     when 'count'
-      %w[chart name target_percent voter_count voters]
+      if agree_target
+        %w[chart name target_percent voter_count voters]
+      else
+        %w[chart name voter_count voters]
+      end
     when 'ranked_choice'
       %w[chart name rank score_percent score average]
     when 'dot_vote'

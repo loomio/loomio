@@ -7,7 +7,6 @@ count:
   validate_dots_per_person: true
   has_option_icon: true
   per_option_reason_prompt: true
-  chart_column: target_percent
   order_results_by: priority
   options_have_meaning: true
   common_poll_options:
@@ -46,7 +45,6 @@ check:
   validate_dots_per_person: true
   has_option_icon: true
   per_option_reason_prompt: true
-  chart_column: score_percent
   order_results_by: priority
   options_have_meaning: true
   common_poll_options:
@@ -161,7 +159,6 @@ meeting:
   require_all_choices: true
   validate_min_score: true
   validate_max_score: true
-  chart_column: max_score_percent
   order_results_by: priority
   options_have_meaning: false
   defaults:
@@ -205,7 +202,6 @@ dot_vote:
   can_shuffle_options: true
   validate_min_score: true
   validate_dots_per_person: true
-  chart_column: max_score_percent
   order_results_by: total_score_desc
   options_have_meaning: false
   defaults:
@@ -225,7 +221,6 @@ score:
   can_shuffle_options: true
   validate_min_score: true
   validate_max_score: true
-  chart_column: max_score_percent
   order_results_by: total_score_desc
   options_have_meaning: false
   defaults:
@@ -246,7 +241,6 @@ ranked_choice:
   validate_minimum_stance_choices: true
   require_all_choices: true
   validate_min_score: true
-  chart_column: max_score_percent
   order_results_by: total_score_desc
   options_have_meaning: true
   defaults:
