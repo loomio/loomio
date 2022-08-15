@@ -5,6 +5,7 @@ import Flash from '@/shared/services/flash'
 import AuthModalMixin from '@/mixins/auth_modal'
 import openModal      from '@/shared/helpers/open_modal'
 import AuthService from '@/shared/services/auth_service'
+import EventBus from '@/shared/services/event_bus'
 
 export default
   mixins: [AuthModalMixin]
@@ -14,6 +15,16 @@ export default
     attempts: 0
     loading: false
   methods:
+    submitAndSetPassword: ->
+      @loading = true
+      AuthService.signIn(@user).then =>
+        EventBus.$emit 'openModal',
+          component: 'ChangePasswordForm'
+          props:
+            user: Session.user()
+      .finally =>
+        @attempts += 1
+        @loading = false
     submit: ->
       @loading = true
       AuthService.signIn(@user).finally =>
@@ -37,12 +48,28 @@ v-card.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     p.mb-4(v-if='user.sentPasswordLink', v-t="{ path: 'auth_form.password_link_sent', args: { email: user.email }}")
     .auth-complete__code-input.mb-4(v-if='user.sentLoginLink && attempts < 3')
       .auth-complete__code.mx-auto(style="max-width: 256px")
-        v-text-field.headline.lmo-primary-form-input(outlined label="Code" :placeholder="$t('auth_form.code')" type='integer' maxlength='6' v-model='user.code')
+        v-text-field.headline.lmo-primary-form-input(
+          outlined
+          label="Code"
+          :placeholder="$t('auth_form.code')"
+          type='integer'
+          maxlength='6'
+          v-model='user.code'
+        )
         //- validation-errors(:subject='session' field='password')
       span(v-t="'auth_form.check_spam_folder'")
   v-card-actions
+    v-btn(
+      v-if="!user.hasPassword"
+      :disabled='!user.code || loading'
+      @click='submitAndSetPassword()'
+      v-t="'auth_form.set_password'")
     v-spacer
-    v-btn(color="primary" :loading="loading" @click='submit()' :disabled='!user.code || loading' v-t="'auth_form.sign_in'")
+    v-btn(
+      color="primary"
+      :loading="loading"
+      @click='submit()'
+      :disabled='!user.code || loading' v-t="'auth_form.sign_in'")
 </template>
 <style lang="sass">
 .auth-complete__code input
