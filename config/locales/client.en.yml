@@ -2011,7 +2011,7 @@ en:
     success: Successfully deleted
 
   poll_common_form:
-    new_poll_type_helptext: Create a new type of poll for your group. Customise the terminology and settings so it's easy for other people in your group to run a specific decision making process.
+    new_poll_type_helptext: Create a new type of poll for your group. Customize terminology and settings so it's easy for other people in your group to run a specific decision making process.
     choose_at_least: Choose at least
     choose_at_most: Choose at most
     please_review_the_form: Please review the form
