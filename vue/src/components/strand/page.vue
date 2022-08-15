@@ -168,9 +168,9 @@ export default
       //- p first unread {{loader.firstUnreadSequenceId()}}
       //- p test: {{rangeSetSelfTest()}}
       thread-current-poll-banner(:discussion="discussion")
-      discussion-fork-actions(:discussion='discussion' :key="'fork-actions'+ discussion.id")
+      discussion-fork-actions(:discussion='discussion', :key="'fork-actions'+ discussion.id")
       discussion-template-banner(:discussion='discussion')
 
-      strand-card(v-if="loader" :discussion='discussion' :loader="loader")
-  strand-toc-nav(v-if="loader" :discussion="discussion" :loader="loader" :key="discussion.id")
+      strand-card(v-if="loader", :discussion='discussion', :loader="loader")
+  strand-toc-nav(v-if="loader", :discussion="discussion", :loader="loader", :key="discussion.id")
 </template>

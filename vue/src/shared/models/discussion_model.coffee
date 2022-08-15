@@ -54,7 +54,7 @@ export default class DiscussionModel extends BaseModel
     clone = @clone()
     clone.id = null
     clone.key = null
-    clone.title = I18n.t('templates.title_copy', {title: clone.title})
+    clone.title = I18n.t('templates.copy_of_title', {title: clone.title})
     clone.sourceTemplateId = @id
     clone.authorId = Session.user().id
     clone.pinnedAt = null

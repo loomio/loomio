@@ -12,7 +12,6 @@ export default
 
   data: ->
     polls: {threadPolls: [], groupPolls: [], defaultPolls: []}
-    newTemplate: null
     sourceTemplate: null
     expanded: Session.user().experiences['pollTypes.expanded']
 
@@ -21,7 +20,7 @@ export default
     i18nForKind: ->
       threadPolls: 'poll_common_action_panel.from_the_thread'
       groupPolls: {path: 'poll_common_action_panel.name_templates', args: {name: @group && @group.fullName}}
-      defaultPolls: 'poll_common_action_panel.default_templates'
+      defaultPolls: 'poll_common_action_panel.default_poll_types'
     pollTypes: ->
       if @expanded 
         ['count', 'check', 'proposal', 'meeting', 'poll', 'score', 'dot_vote', 'ranked_choice']
@@ -29,6 +28,22 @@ export default
         ['check', 'proposal', 'meeting']
 
   methods:
+    cloneAndUsePoll: (poll) ->
+      clone = poll.cloneTemplate()
+      clone.discussionId = @discussion.id if @discussion
+      clone.groupId = @group.id if @group
+      clone
+      @$emit('setPoll', clone)
+
+    newTemplate: ->
+      poll = Records.polls.build
+        pollType: 'proposal'
+        template: true
+      poll.applyPollTypeDefaults()
+      poll.discussionId = @discussion.id if @discussion
+      poll.groupId = @group.id if @group
+      @$emit('setPoll', poll)
+
     toggleExpanded: ->
       @expanded = !@expanded
       Records.users.saveExperience('pollTypes.expanded', @expanded)
@@ -37,6 +52,7 @@ export default
     exclude_types = 'group discussion stance'
     if @group && @group.id
       Records.remote.fetch(path: "polls", params: {template: 1, group_id: @group.id})
+
     if @discussion && @discussion.sourceTemplateId
       Records.remote.fetch(path: "polls", params: {template: 1, discussion_id: @discussion.sourceTemplateId})
 
@@ -44,7 +60,6 @@ export default
       collections: ["polls"]
       query: (records) =>
         renderKey = 0
-        threadPollIds = []
         groupId = (@discussion && @discussion.groupId) || (@group && @group.id) || null 
         discussionId = (@discussion && @discussion.id)  || null
         if @discussion && @discussion.sourceTemplateId
@@ -56,58 +71,35 @@ export default
             return -1 if (a.id < b.id) 
             return 1 if (a.id > b.id) 
             return 0
-          .map (poll) =>
-              threadPollIds.push(poll.id)
-              clone = poll.cloneTemplate()
-              clone.renderKey == renderKey++
-              clone.discussionId = discussionId
-              clone.groupId = groupId
-              clone
 
         if @group
           @polls['groupPolls'] = Records.polls.find(
+            discussionId: null
             groupId: @group.id
             template: true
             discardedAt: null
-          ).filter((poll) => !threadPollIds.includes(poll.id))
-          .map (poll) =>
-            clone = poll.cloneTemplate()
-            clone.renderKey == renderKey++
-            clone.discussionId =  discussionId
-            clone.groupId = groupId
-            clone
-
+          )
 
         @polls['defaultPolls'] = @pollTypes.map (pollType) =>
           poll = Records.polls.build
+            template: true
             pollType: pollType
-            groupId: groupId
-            discussionId: discussionId
             renderKey: renderKey++
           poll.applyPollTypeDefaults()
           poll
-
-        @newTemplate = Records.polls.build
-          pollType: 'proposal'
-          template: true
-          groupId: groupId
-          discussionId: discussionId
-          renderKey: renderKey++
-        @newTemplate.applyPollTypeDefaults()
-        @newTemplate
 
 </script>
 
 <template lang="pug">
 .poll-common-templates-list
-  v-card-title(v-t="'poll_common.poll_templates'")
+  //- v-card-title(v-t="'poll_common.poll_types'")
   template(v-for="kind in pollKinds")
     v-subheader(v-t="i18nForKind[kind]" v-if="kind == 'defaultPolls' && pollKinds.length > 1")
-    v-subheader(v-if="kind == 'groupPolls'" v-t="{path: 'templates.title_templates', args: {title: group.fullName}}")
-    v-subheader(v-if="kind == 'threadPolls'" v-t="{path: 'templates.title_template', args: {title: sourceTemplate.processName || sourceTemplate.title}}")
+    v-subheader(v-if="kind == 'groupPolls'" v-t="'poll_common.custom_poll_types'")
+    v-subheader(v-if="kind == 'threadPolls'" v-t="'poll_common.example_polls_from_thread_template'")
     v-list.decision-tools-card__poll-types(two-line dense)
       v-list-item.decision-tools-card__poll-type(
-        @click="$emit('setPoll', poll)"
+        @click="cloneAndUsePoll(poll)"
         :class="'decision-tools-card__poll-type--' + poll.pollType"
         v-for='poll in polls[kind]'
         :key='poll.renderKey'
@@ -116,18 +108,18 @@ export default
           v-icon {{$pollTypes[poll.pollType].material_icon}}
         v-list-item-content
           v-list-item-title {{ poll.defaultedI18n('processName') }}
-          v-list-item-subtitle {{ poll.defaultedI18n('processSubtitle') || poll.title }}
+          v-list-item-subtitle {{ poll.template? poll.defaultedI18n('processSubtitle') : poll.title }}
       v-list-item.decision-tools-card__new-template(
         v-if="kind == 'defaultPolls' && !discussion && expanded"
-        @click="$emit('setPoll', newTemplate)"
+        @click="newTemplate"
         :class="'decision-tools-card__poll-type--new-template'"
         :key='123'
       )
         v-list-item-avatar
           v-icon mdi-plus
         v-list-item-content
-          v-list-item-title New template
-          v-list-item-subtitle Customise with your preferred terminologly and settings
+          v-list-item-title(v-t="'poll_common.new_poll_type'")
+          v-list-item-subtitle(v-t="'poll_common.create_a_custom_poll_type'")  
   v-btn.text-center.poll-common-choose-template-show-more(text @click="toggleExpanded")
     span(v-t="expanded ? 'common.action.show_fewer' : 'common.action.show_more'")
 

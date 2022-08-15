@@ -21,6 +21,7 @@ en:
     title_template: "%{title} Template"
     title_templates: "%{title} Templates"
     title_copy: "%{title} Copy"
+    copy_of_title: "Copy of %{title}"
     login_to_start_demo: |
       This a demo of Loomio in action. You're welcome to take a look around.
     sign_in_to_try_features: |
@@ -1723,8 +1724,14 @@ en:
   poll_common:
     select_count_options:  Select {{count}} options
     select_minimum_to_maximum_options: Select {{minimum}} to {{maximum}} options
+    custom_poll_types: Custom poll types
+    example_polls_from_thread_template: Examples from thread template
     poll_template: Poll template
     poll_templates: Poll templates
+    poll_types: Poll types
+    new_poll_type: New poll type
+    edit_poll_type: Edit poll type
+    create_a_custom_poll_type: Create a new poll type with custom terminology and settings
     decision: Decision
     decision_templates: Decision templates
     vote_now: Vote now
@@ -1853,6 +1860,7 @@ en:
     from_the_thread: From the thread template
     from_the_group: From the group
     default_templates: Default templates
+    default_poll_types: Default poll types
     suggested_templates: Suggested templates
     group_templates: Group templates
     basic_templates: Basic templates
@@ -2003,6 +2011,7 @@ en:
     success: Successfully deleted
 
   poll_common_form:
+    new_poll_type_helptext: Create a new type of poll for your group. Customise the terminology and settings so it's easy for other people in your group to run a specific decision making process.
     choose_at_least: Choose at least
     choose_at_most: Choose at most
     please_review_the_form: Please review the form
@@ -2034,10 +2043,10 @@ en:
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available to meet
     process: Process
-    process_name: Process name
-    process_name_hint: What do you call this process? E.g. Proposal, Temperature check, Minutes approval
-    process_subtitle: Process purpose
-    process_subtitle_hint: When should someone use this, what is it for?
+    poll_type_name: Poll type name
+    poll_type_name_hint: What do you call this poll type? E.g. Proposal, Temperature check, Minutes approval
+    poll_type_description: Poll type description
+    poll_type_description_hint: One line that describes the use case of this poll type. E.g. Approve the minutes of the previous meeting
     you_can_set_a_prompt_per_option: Edit the prompt for each option from the details tab
     chart_type: Chart type
     title: Title

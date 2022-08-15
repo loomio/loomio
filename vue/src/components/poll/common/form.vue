@@ -189,10 +189,13 @@ export default
       ]
 
     titlePath: ->
-      (@poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type'
+      if @poll.template
+        (@poll.isNew() && 'poll_common.new_poll_type') || 'poll_common.edit_poll_type'
+      else
+        (@poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type'
 
     titleArgs: -> 
-      {pollType: (@poll.template && @$t('poll_common.poll_template').toLowerCase()) || @poll.translatedPollType().toLowerCase()}
+      {pollType: @poll.translatedPollType().toLowerCase()}
 
     reminderEnabled: ->
       @poll.template || isAfter(@poll.closingAt, addHours(new Date(), 24))
@@ -223,6 +226,7 @@ export default
       v-icon mdi-close
 
   template(v-if="poll.template")
+    p.text--secondary.py-4(v-if="poll.isNew()" v-t="'poll_common_form.new_poll_type_helptext'")
     v-select(
       v-if="poll.template"
       :label="$t('poll_common_form.voting_method')"
@@ -235,14 +239,14 @@ export default
 
     v-text-field(
        v-model="poll.processName"
-      :label="$t('poll_common_form.process_name')"
-      :hint="$t('poll_common_form.process_name_hint')")
+      :label="$t('poll_common_form.poll_type_name')"
+      :hint="$t('poll_common_form.poll_type_name_hint')")
     validation-errors(:subject='poll' field='processName')
 
     v-text-field(
        v-model="poll.processSubtitle"
-      :label="$t('poll_common_form.process_subtitle')"
-      :hint="$t('poll_common_form.process_subtitle_hint')")
+      :label="$t('poll_common_form.poll_type_description')"
+      :hint="$t('poll_common_form.poll_type_description_hint')")
     validation-errors(:subject='poll' field='processSubtitle')
   template(v-else)
     p.text--secondary

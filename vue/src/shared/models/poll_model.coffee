@@ -89,11 +89,14 @@ export default class PollModel extends BaseModel
     clone.template = false
     clone.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
     
-    clone.pollOptionsAttributes = @pollOptions().map (o) =>
-        name: o.name
-        meaning: o.meaning
-        prompt: o.prompt
-        icon: o.icon
+    if @pollOptionsAttributes
+      clone.pollOptionsAttributes = @pollOptionsAttributes
+    else
+      clone.pollOptionsAttributes = @pollOptions().map (o) =>
+          name: o.name
+          meaning: o.meaning
+          prompt: o.prompt
+          icon: o.icon
 
     clone.closedAt = null
     clone.createdAt = null
@@ -111,9 +114,6 @@ export default class PollModel extends BaseModel
         icon: o.icon
 
   applyPollTypeDefaults: ->
-    # @processName = I18n.t(AppConfig.pollTypes[@pollType].defaults.process_name_i18n)
-    # @processSubtitle = I18n.t(AppConfig.pollTypes[@pollType].defaults.process_subtitle_i18n)
-
     map AppConfig.pollTypes[@pollType].defaults, (value, key) =>
       @[camelCase(key)] = value
     if @template
