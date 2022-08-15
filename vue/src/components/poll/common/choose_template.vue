@@ -23,7 +23,7 @@ export default
       defaultPolls: 'poll_common_action_panel.default_poll_types'
     pollTypes: ->
       if @expanded 
-        ['count', 'check', 'proposal', 'poll', 'meeting', 'score', 'dot_vote', 'ranked_choice']
+        ['check', 'proposal', 'poll', 'meeting', 'count', 'score', 'dot_vote', 'ranked_choice']
       else
         ['check', 'proposal', 'poll', 'meeting']
 
