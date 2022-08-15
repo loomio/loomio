@@ -186,7 +186,7 @@ poll:
   options_have_meaning: true
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: poll_common_settings.multiple_choice.title
+    process_name_i18n: poll_common_form.voting_methods.simple_poll
     process_subtitle_i18n: poll_poll_form.tool_tip_collapsed
     chart_type: bar
     min_score: 1

@@ -23,9 +23,9 @@ export default
       defaultPolls: 'poll_common_action_panel.default_poll_types'
     pollTypes: ->
       if @expanded 
-        ['count', 'check', 'proposal', 'meeting', 'poll', 'score', 'dot_vote', 'ranked_choice']
+        ['count', 'check', 'proposal', 'poll', 'meeting', 'score', 'dot_vote', 'ranked_choice']
       else
-        ['check', 'proposal', 'meeting']
+        ['check', 'proposal', 'poll', 'meeting']
 
   methods:
     cloneAndUsePoll: (poll) ->
