@@ -1,0 +1,9 @@
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: bundle exec puma -C config/puma.rb
+  worker:
+    command:
+      - bundle exec puma -C config/puma.rb
+    image: web
