@@ -22,7 +22,7 @@ def deploy_steps
   [
     "plugins:fetch[#{heroku_plugin_set}]",
     "plugins:install[fetched]",
-    "client:build",
+    # "client:build",
     "deploy:commit",
     "deploy:push",
     "deploy:cleanup"

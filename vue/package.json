@@ -69,7 +69,6 @@
     "md5": "2.3.0",
     "object.fromentries": "^2.0.5",
     "pretty-bytes": "^6.0.0",
-    "raven-js": "latest",
     "socket.io-client": "^4.4.1",
     "string.prototype.matchall": "^4.0.7",
     "svg.js": "^2.7.1",
