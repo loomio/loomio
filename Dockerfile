@@ -33,7 +33,6 @@ RUN gem install bundler
 # RUN mkdir /loomio
 WORKDIR /loomio
 ADD . /loomio
-COPY config/database.docker.yml /loomio/config/database.yml
 RUN bundle install
 
 WORKDIR /loomio/vue
