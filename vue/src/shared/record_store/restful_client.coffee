@@ -115,6 +115,7 @@ export default class RestfulClient
 
       @currentUpload = new XMLHttpRequest()
       @currentUpload.open('POST', @buildUrl(path), true)
+      @currentUpload.setRequestHeader('X-CSRF-TOKEN', getCSRF())
       @currentUpload.responseType = 'json'
       @currentUpload.addEventListener 'load', =>
         if (@currentUpload.status >= 200 && @currentUpload.status < 300)
