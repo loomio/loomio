@@ -44,6 +44,21 @@ class RecordCloner
     clone_group.reload
   end
 
+  def create_clone_group(group)
+    clone_group = new_clone_group(group)
+    clone_group.save!
+
+    copy_tags_over(group)
+
+    clone_group.polls.each do |poll|
+      poll.update_counts!
+      poll.stances.each {|s| s.update_option_scores!}
+    end
+    clone_group.discussions.each {|d| EventService.repair_thread(d.id) }
+    clone_group.reload
+    clone_group
+  end
+
   def copy_tags_over(group)
     group.discussions.kept.each do |d|
       clone_discussion = existing_clone(d)
