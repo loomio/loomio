@@ -188,6 +188,7 @@ class Stance < ApplicationRecord
   def valid_require_all_choices
     return if !cast_at
     return unless poll.require_all_choices
+    return if poll.poll_options.length == 0
     return if stance_choices.length == poll.poll_options.length
     errors.add(:stance_choices, "require_all_stance_choices")
   end

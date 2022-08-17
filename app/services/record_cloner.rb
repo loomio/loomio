@@ -45,12 +45,12 @@ class RecordCloner
   end
 
   def copy_tags_over(group)
-    group.discussions.each do |d|
+    group.discussions.kept.each do |d|
       clone_discussion = existing_clone(d)
       d.tags.each {|t| clone_discussion.tags << existing_clone(t)}
     end
 
-    group.polls.each do |p|
+    group.polls.kept.each do |p|
       clone_poll = existing_clone(p)
       p.tags.each {|t| clone_poll.tags << existing_clone(t)}
     end
@@ -94,9 +94,9 @@ class RecordCloner
     clone_group.parent = clone_parent
 
     clone_group.memberships = group.memberships.map {|m| new_clone_membership(m) }
-    clone_group.discussions = group.discussions.map {|d| new_clone_discussion_and_events(d) }
-    clone_group.subgroups = group.subgroups.map {|g| new_clone_group(g, clone_group) }
-    clone_group.polls = group.polls.map {|p| new_clone_poll(p) }
+    clone_group.discussions = group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
+    clone_group.subgroups = group.subgroups.published.map {|g| new_clone_group(g, clone_group) }
+    clone_group.polls = group.polls.kept.map {|p| new_clone_poll(p) }
     clone_group.tags = group.tags.map { |t| new_clone_tag(t) }
 
     clone_group
@@ -118,6 +118,8 @@ class RecordCloner
       closed_at
       last_activity_at
       discarded_at
+      template
+      source_template_id
     ]
 
     required_values = {
@@ -150,6 +152,8 @@ class RecordCloner
       title
       details
       poll_type
+      process_name
+      process_subtitle
       voter_can_add_options
       anonymous
       details_format
@@ -167,8 +171,18 @@ class RecordCloner
       time_zone
       dots_per_person
       minimum_stance_choices
+      maximum_stance_choices
       can_respond_maybe
+      min_score
       max_score
+      template
+      agree_target
+      chart_type
+      source_template_id
+      default_duration_in_days
+      stance_reason_required
+      poll_option_name_format
+      reason_prompt
     ]
     attachments = [:files, :image_files]
 
@@ -189,6 +203,9 @@ class RecordCloner
   def new_clone_poll_option(poll_option)
     copy_fields = %w[
       name
+      icon
+      meaning
+      prompt
       priority
       score_counts
       total_score
