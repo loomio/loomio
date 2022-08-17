@@ -73,10 +73,7 @@ v-main
   v-container.templates-page.max-width-1024
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
     h2.text-title.my-4(v-t="'templates.start_a_demo'")
-    p
-      span(v-t="'templates.look_and_feel'")
-      space
-      span(v-t="'templates.demos_expire'")
+    p(v-t="'templates.look_and_feel'")
     v-card.mb-3(v-if='!loaded' aria-hidden='true')
       v-list(two-line)
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
