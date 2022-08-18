@@ -110,7 +110,8 @@ export default
     showContact: -> AppConfig.features.app.show_contact
     canStartGroups: -> AbilityService.canStartGroups()
     canStartDemo: -> AppConfig.features.app.demos
-    showExploreGroups: -> AppConfig.features.app.public_groups
+    showTemplateGallery: -> AppConfig.features.app.template_gallery
+    showExploreGroups: -> AppConfig.features.app.explore_public_groups
     needProfilePicture: ->
       Session.isSignedIn() && @user && !@user.avatarUrl && !@user.hasExperienced('changePicture')
 
@@ -207,8 +208,8 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="'templates.demo_group'")
     v-list-item-icon
       v-icon mdi-car-convertible
-  v-list-item.sidebar__list-item-button--example-templates(to="/templates" dense)
-    v-list-item-title(v-if="canStartDemo" v-t="'sidebar.template_gallery'")
+  v-list-item.sidebar__list-item-button--example-templates(v-if="showTemplateGallery" to="/templates" dense)
+    v-list-item-title(v-t="'sidebar.template_gallery'")
     v-list-item-icon
       v-icon mdi-lightbulb-on
   v-list-item(v-if="showHelp", href="https://help.loomio.com" target="_blank" dense)
