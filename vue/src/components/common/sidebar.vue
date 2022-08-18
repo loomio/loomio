@@ -107,8 +107,10 @@ export default
     user: -> Session.user()
     activeGroup: -> if @group then [@group.id] else []
     logoUrl: -> AppConfig.theme.app_logo_src
+    showContact: -> AppConfig.features.app.show_contact
     canStartGroups: -> AbilityService.canStartGroups()
     canStartDemo: -> AppConfig.features.app.demos
+    showExploreGroups: -> AppConfig.features.app.public_groups
     needProfilePicture: ->
       Session.isSignedIn() && @user && !@user.avatarUrl && !@user.hasExperienced('changePicture')
 
@@ -152,14 +154,10 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         span ({{unreadDirectThreadsCount}})
   v-list-item.sidebar__list-item-button--start-thread(dense to="/d/new")
     v-list-item-title(v-t="'sidebar.start_thread'")
-    v-list-item-avatar(:size="28")
-      v-icon(tile) mdi-plus
+    v-list-item-icon
+      v-icon mdi-plus
   v-list-item(dense to="/tasks")
     v-list-item-title(v-t="'tasks.tasks'")
-  v-list-item(v-if="showHelp", href="https://help.loomio.com" target="_blank" dense)
-    v-list-item-title(v-t="'common.loomio_help'")
-    v-list-item-icon
-      v-icon mdi-help-circle-outline
   v-divider
 
   v-list.sidebar__groups(dense)
@@ -200,19 +198,31 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
                 | &nbsp;
                 span ({{openCounts[parentGroup.id]}})
 
+    v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroups" to="/g/new")
+      v-list-item-avatar
+        v-icon(tile) mdi-plus
+      v-list-item-title(v-t="'group_form.new_group'")
   v-divider
-
-  v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroups" to="/g/new" dense)
-    v-list-item-title(v-t="'group_form.new_group'")
-    v-list-item-avatar(:size="28")
-      v-icon(tile) mdi-plus
-  v-divider
-  v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" to="/try" dense)
-    v-list-item-title(v-t="'templates.start_a_demo'")
-    v-list-item-avatar(:size="28")
-      v-icon(tile) mdi-car-convertible
-  v-list-item(dense to="/explore" v-if="!canStartDemo")
+  v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" to="/demo" dense)
+    v-list-item-title(v-t="'templates.demo_group'")
+    v-list-item-icon
+      v-icon mdi-car-convertible
+  v-list-item.sidebar__list-item-button--example-templates(to="/templates" dense)
+    v-list-item-title(v-if="canStartDemo" v-t="'sidebar.template_gallery'")
+    v-list-item-icon
+      v-icon mdi-lightbulb-on
+  v-list-item(v-if="showHelp", href="https://help.loomio.com" target="_blank" dense)
+    v-list-item-title(v-t="'common.help_and_guides'")
+    v-list-item-icon
+      v-icon mdi-help-circle-outline
+  v-list-item(dense to="/explore" v-if="showExploreGroups")
     v-list-item-title(v-t="'sidebar.explore_groups'")
+    v-list-item-icon
+      v-icon mdi-map-search
+  v-list-item(v-if="showContact" to="/contact" dense)
+    v-list-item-title(v-t="{path: 'user_dropdown.contact_support', args: {site_name: siteName}}")
+    v-list-item-icon
+      v-icon mdi-face-agent
 </template>
 <style lang="sass">
 .sidenav-left

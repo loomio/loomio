@@ -32,7 +32,6 @@ export default
     release:  -> AppConfig.release
     siteName: -> AppConfig.theme.site_name
     user:     -> Session.user()
-    showContact: -> AppConfig.features.app.show_contact
     showBeta: -> !AppConfig.features.app.thread_page_v3
 
 </script>
@@ -63,10 +62,6 @@ div.user-dropdown
       v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
       v-list-item-icon
         v-icon mdi-white-balance-sunny
-  v-list-item(v-if="showContact" to="/contact" dense)
-    v-list-item-title(v-t="{path: 'user_dropdown.contact_support', args: {site_name: siteName}}")
-    v-list-item-icon
-      v-icon mdi-face-agent
   v-list-item(@click="signOut()" dense)
     v-list-item-title(v-t="'user_dropdown.sign_out'")
     v-list-item-icon
