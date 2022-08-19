@@ -17,6 +17,7 @@ class RecordCloner
     clone_group.membership_granted_upon = 'request'
     clone_group.discussions.each {|d| d.private = false }
     clone_group.polls.each {|p| p.specified_voters_only = false }
+
     clone_group.save!
     copy_tags_over(group)
     clone_group.polls.each do |poll|
@@ -205,11 +206,13 @@ class RecordCloner
     clone_poll.poll_options = poll.poll_options.map {|poll_option| new_clone_poll_option(poll_option) }
     clone_poll.stances = poll.stances.map {|stance| new_clone_stance(stance) }
     clone_poll.outcomes = poll.outcomes.map {|outcome| new_clone_outcome(outcome) }
-    if poll.outcomes.empty?
-      clone_poll.closed_at = nil
-      clone_poll.closing_at = 3.days.from_now
-    else
-      clone_poll.closed_at = poll.outcomes.first.created_at
+    if !clone_poll.template
+      if poll.outcomes.empty?
+        clone_poll.closed_at = nil
+        clone_poll.closing_at = 3.days.from_now
+      else
+        clone_poll.closed_at = poll.outcomes.first.created_at
+      end
     end
 
     clone_poll
