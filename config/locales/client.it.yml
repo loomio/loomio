@@ -22,8 +22,6 @@ it:
     try_loomio: Prova Loomio
     start_a_demo_group: Inizia un gruppo demo
     start_a_demo: Inizia una demo
-    look_and_feel: Inizia una demo per vedere com'è Loomio e provare alcune delle sue caratteristiche.
-    demos_expire: I gruppi demo vengono cancellati automaticamente dopo 3 giorni. Sentiti libero di iniziarne uno se ne hai bisogno.
     generating_demo: 'Ok, aspetta un attimo! Creare una demo impiega circa 20 secondi.'
     start_a_x_day_free_trial: Inizia una prova gratuita di {{day}} giorni
     ready_to_trial: Pronti per provare Loomio con la vostra organizzazione?

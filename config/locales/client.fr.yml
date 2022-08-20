@@ -20,12 +20,13 @@ fr:
     title_template: "%{title} Modèle"
     title_templates: "%{title} Modèles"
     title_copy: "%{title}Copie"
+    copy_of_title: "Copie de %{title}"
     login_to_start_demo: |
         Ceci est une démo de Loomio en action. Vous êtes invités à jeter un coup d’œil autour de vous.
     sign_in_to_try_features: |
         Si vous souhaitez essayer de voter dans une décision de démonstration ou pour commencer un essai gratuit pour votre organisation, cliquez sur « Se connecter ».
     click_button_to_start_demo: |
-        Bienvenue! Pour essayer de voter et d’autres fonctionnalités, cliquez sur le bouton :
+        Bienvenue! Pour essayer de voter et d’autres fonctionnalités, cliquez commencer la demo :
     welcome_to_your_demo: C’est votre propre groupe de démonstration!
     try_voting_to_see_it_work: Essayez de voter dans une proposition pour avoir une idée du fonctionnement de Loomio.
     delete_will_be_deleted_in_x_days: Cette démo sera supprimée dans %{x} jours.
@@ -37,8 +38,8 @@ fr:
     try_loomio: Essayez Loomio
     start_a_demo_group: Créez un groupe demo
     start_a_demo: Démarrer la démo
-    look_and_feel: Commencez une démo pour voir à quoi ressemble Loomio et testez certaines des fonctionnalités.
-    demos_expire: Les groupes de démo sont automatiquement supprimés après 3 jours. N'hésitez pas à en commencer un autre si nécessaire.
+    demo_group: Groupe de démonstration
+    look_and_feel: Découvrez à quoi ressemble Loomio pour une petite organisation. Apprenez l’application en l’essayant.
     generating_demo: 'Ok, attendez juste là! La génération d’une démo prend environ 20 secondes.'
     start_a_x_day_free_trial: Commencer un essai gratuit {{day}}
     ready_to_trial: Prêt à essayer Loomio avec votre organisation?
@@ -164,6 +165,7 @@ fr:
     local: Heure locale ({{value}})
   common:
     loomio_help: Loomio vous aide
+    help_and_guides: Aide & guides
     please_wait: Patientez
     optional: (Optionale)
     version: Version
@@ -482,6 +484,7 @@ fr:
     start_thread: Nouvelle discussion
     start_decision: Nouvelle décision
     more_groups: davantage de groupes
+    template_gallery: Galerie de modèles
     aria_labels:
       heading: 'Barre latérale'
       threads_list: 'Actions du fil de discussion'
@@ -1602,8 +1605,14 @@ fr:
   poll_common:
     select_count_options: Sélectionnez les options {{count}}
     select_minimum_to_maximum_options: Sélectionnez les options {{minimum}} à {{maximum}}
+    custom_poll_types: Types de sondage personnalisés
+    example_polls_from_thread_template: Exemples tirés d’un modèle de thread
     poll_template: Modèle de sondage
     poll_templates: Modèles de sondage
+    poll_types: Types de sondages
+    new_poll_type: Nouveau type de sondage
+    edit_poll_type: Modifier le type de sondage
+    create_a_custom_poll_type: Créer un nouveau type de sondage avec une terminologie et des paramètres personnalisés
     decision: Décision
     decision_templates: Modèles de décision
     vote_now: Votez maintenant
@@ -1722,6 +1731,7 @@ fr:
     from_the_thread: À partir du modèle de thread
     from_the_group: Du groupe
     default_templates: Modèles par défaut
+    default_poll_types: Types d’interrogation par défaut
     suggested_templates: Modèles suggérés
     group_templates: Modèles de groupe
     basic_templates: Modèles de base
@@ -1855,6 +1865,7 @@ fr:
     title: Effacer {{pollType}}
     success: Supprimer avec succès
   poll_common_form:
+    new_poll_type_helptext: Créez un nouveau type de sondage pour votre groupe. Personnalisez la terminologie et les paramètres afin que les autres membres de votre groupe puissent facilement exécuter un processus de prise de décision spécifique.
     choose_at_least: Choisissez au moins
     choose_at_most: Choisir au maximum
     please_review_the_form: Veuillez consulter le formulaire
@@ -1873,8 +1884,9 @@ fr:
     voting_method: Mode de vote
     voting_methods:
       show_thumbs: Montre des pouces
-      show_thumbs_hint: Les électeurs sont d’accord ou en désaccord en choisissant les pouces vers le haut ou vers le bas
+      show_thumbs_hint: Les électeurs choisissent le pouce vers le haut, vers le bas, sur le côté ou la main vers le haut
       choose: Choisir
+      simple_poll: Sondage simple
       choose_hint: Les électeurs choisissent la meilleure (ou les meilleures options)
       score: Score
       score_hint: Les électeurs attribuent un score à chaque option
@@ -1885,8 +1897,10 @@ fr:
       time_poll: Sondage temporel
       time_poll_hint: Les électeurs indiquent quand ils sont disponibles pour se rencontrer
     process: Processus
-    process_name: Nom du processus
-    process_name_hint: Par exemple, proposition, résolution, accord, contrôle de la température
+    poll_type_name: Nom du type d’interrogation
+    poll_type_name_hint: Comment appelez-vous ce type de sondage? P. ex. proposition, vérification de la température, approbation du procès-verbal
+    poll_type_description: Description du type de sondage
+    poll_type_description_hint: Une ligne qui décrit le cas d’utilisation de ce type de sondage. Par exemple, approuver le procès-verbal de la réunion précédente
     you_can_set_a_prompt_per_option: Modifiez l’invite pour chaque option à partir de l’onglet détails
     chart_type: Type de graphique
     title: Titre

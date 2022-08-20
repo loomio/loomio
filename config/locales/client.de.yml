@@ -21,8 +21,6 @@ de:
         Dies ist eine Demo von Loomio in Aktion. Schaue dich gerne um.
     sign_in_to_try_features: |
         Wenn Du versuchen möchtest, in einer Demo-Entscheidung abzustimmen oder eine kostenfreie Testphase für deine Organisation zu starten, klicke auf „Anmelden“.
-    click_button_to_start_demo: |
-        Herzlich willkommen! Um Abstimmungen und andere Funktionen auszuprobieren, klicke auf die Schaltfläche:
     welcome_to_your_demo: Dies ist deine ganz eigene Demo-Gruppe!
     try_voting_to_see_it_work: Versuche, über einen Vorschlag abzustimmen, um ein Gefühl dafür zu bekommen, wie Loomio funktioniert.
     delete_will_be_deleted_in_x_days: Diese Demo wird in %{x} Tagen gelöscht.
@@ -32,8 +30,6 @@ de:
     try_loomio: Loomio ausprobieren
     start_a_demo_group: Starte eine Demogruppe
     start_a_demo: Starte eine Demo
-    look_and_feel: Starte eine Demo, um zu sehen, wie Loomio aussieht, und teste einige der Funktionen.
-    demos_expire: Demogruppen werden nach 3 Tagen automatisch gelöscht. Fühle dich frei, einen anderen zu starten, wenn du brauchst.
     generating_demo: 'Okay, warte gleich! Das Generieren einer Demo dauert etwa 20 Sekunden.'
     start_a_x_day_free_trial: Starte eine {{day}}-tägige kostenfreie Testphase
     ready_to_trial: Bereit, Loomio mit deiner Organisation auszuprobieren?

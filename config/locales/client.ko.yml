@@ -20,8 +20,6 @@ ko:
     try_loomio: 루미오 사용해보기
     start_a_demo_group: 데모 그룹 시작하기
     start_a_demo: 데모 시작하기
-    look_and_feel: Loomio가 어떻게 작동하는지 데모를 통해 알아보세요!
-    demos_expire: 데모 그룹은 3일 뒤에 삭제 됩니다. 이후에도 언제든 새 데모그룹을 만들어 테스트 하실 수 있습니다.<br>
     generating_demo: '잠시만 기다려주세요! 데모를 만드는데 20초 정도 필요합니다!'
     start_a_x_day_free_trial: '{{day}} 일 무료 체험을 시작합니다.<br>'
   doctypes:

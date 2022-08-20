@@ -24,8 +24,6 @@ es:
         Esta es una demostración de Loomio en acción. Le invitamos a echar un vistazo.
     sign_in_to_try_features: |
         Si desea intentar votar en una decisión de demostración o iniciar una prueba gratuita para su organización, haga clic en "iniciar sesión".
-    click_button_to_start_demo: |
-        ¡Bienvenido! Para probar la votación y otras funciones, haga clic en el botón:
     welcome_to_your_demo: ¡Este es tu propio grupo de demostración!
     try_voting_to_see_it_work: Intente votar en una propuesta para tener una idea de cómo funciona Loomio.
     delete_will_be_deleted_in_x_days: Esta demostración se eliminará en %{x} días.
@@ -37,8 +35,6 @@ es:
     try_loomio: Prueba Loomio
     start_a_demo_group: Empezar un grupo de demostración
     start_a_demo: Iniciar demo
-    look_and_feel: Inicie una demostración para ver cómo se ve Loomio y probar algunas de las características.
-    demos_expire: Las demostraciones se eliminan después de 3 días. No dude en comenzar otro si lo necesita.
     generating_demo: 'Vale, ¡espera allí mismo! Generar una demostración toma alrededor de 20 segundos.'
     start_a_x_day_free_trial: Iniciar una prueba gratuita de {{day}} día
     ready_to_trial: ¿Listo para probar Loomio con su organización?
@@ -1874,7 +1870,6 @@ es:
     voting_method: Método de votación
     voting_methods:
       show_thumbs: Presentación de pulgares
-      show_thumbs_hint: Los votantes están de acuerdo o en desacuerdo eligiendo pulgares hacia arriba o hacia abajo
       choose: Elegir
       choose_hint: Los votantes eligen la mejor opción (u opciones)
       score: 'Puntuación '
@@ -1886,8 +1881,6 @@ es:
       time_poll: Coordinar horario
       time_poll_hint: Los votantes indican cuándo están disponibles para reunirse
     process: Proceso
-    process_name: Nombre del proceso
-    process_name_hint: Por ejemplo, Propuesta, Resolución, Acuerdo, Control de temperatura
     you_can_set_a_prompt_per_option: Edite el mensaje para cada opción desde la pestaña de detalles
     chart_type: Tipo de gráfico
     title: Título
