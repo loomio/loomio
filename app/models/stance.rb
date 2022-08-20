@@ -167,7 +167,7 @@ class Stance < ApplicationRecord
   def valid_dots_per_person
     return if !cast_at
     return unless poll.validate_dots_per_person
-    return if stance_choices.map(&:score).sum <= poll.dots_per_person
+    return if stance_choices.map(&:score).sum <= poll.dots_per_person.to_i
     errors.add(:dots_per_person, "Too many dots")
   end
 
