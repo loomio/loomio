@@ -368,7 +368,7 @@ GEM
     oga (3.4)
       ast
       ruby-ll (~> 2.1)
-    oj (3.13.19)
+    oj (3.13.21)
     orm_adapter (0.5.0)
     os (1.1.4)
     paper_trail (12.3.0)
