@@ -75,7 +75,7 @@ GEM
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
     active_model_serializers (0.8.4)
       activemodel (>= 3.0)
-    active_record_extended (2.2.0)
+    active_record_extended (3.0.0)
       activerecord (>= 5.2, < 7.1.0)
       ar_outer_joins (~> 0.2)
       pg (< 3.0)
