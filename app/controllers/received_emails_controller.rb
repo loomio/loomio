@@ -1,4 +1,6 @@
 class ReceivedEmailsController < Griddler::EmailsController
+  skip_before_action :verify_authenticity_token
+
   # reply to discussion by email action
   def reply
     unless is_autoresponse? 
