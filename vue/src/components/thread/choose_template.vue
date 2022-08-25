@@ -52,10 +52,4 @@ div
     )
       v-list-item-content
         v-list-item-title(v-t="'discussion_form.new_template'")
-  div
-    p.text-center
-      span.text--secondary(v-t="'discussion_form.want_some_inspiration'")
-      span &nbsp;
-      a(href="https://loomio.org/templates" target="_blank" v-t="'discussion_form.browse_public_templates'")
-   
 </template>
