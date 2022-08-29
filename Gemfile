@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.7.6'
 gem 'rack', '2.2.4'
-gem 'rails', '6.1.4.6'
+gem 'rails', '7.0.3.1'
 gem 'rake'
 gem 'pg'
 gem 'active_record_extended'
