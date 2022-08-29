@@ -10,23 +10,23 @@ ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 ENV MALLOC_ARENA_MAX=2
 
 RUN gem update --system
-RUN apt-get update -qq && apt-get install -y build-essential sudo apt-utils
+RUN apt-get update -qq && apt-get install build-essential sudo apt-utils -y
 
 # for activestorage previews
-RUN apt-get install -y imagemagick ffmpeg mupdf libvips libvips42 libvips-dev libpng-dev libjpeg-dev libwebp-dev libheif-dev
+RUN apt-get install imagemagick ffmpeg mupdf libvips libvips42 libvips-dev libpng-dev libjpeg-dev libwebp-dev libheif-dev -y
 
 # for postgres
-RUN apt-get install -y libpq-dev
+RUN apt-get install libpq-dev -y
 
 # for nokogiri
-RUN apt-get install -y libxml2-dev libxslt1-dev
+RUN apt-get install libxml2-dev libxslt1-dev -y
 
 # for node
-# RUN apt-get install -y python python-dev python-pip python-virtualenv
+# RUN apt-get install python python-dev python-pip python-virtualenv -y
 
 # install node
 RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-RUN apt-get install -y nodejs
+RUN apt-get install nodejs -y
 
 RUN gem install bundler
 
