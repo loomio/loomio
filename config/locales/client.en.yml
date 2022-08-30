@@ -522,6 +522,7 @@ en:
     start_decision: New decision
     more_groups: More groups
     template_gallery: Template gallery
+    examples_and_templates: Examples & templates
     aria_labels:
       heading: 'Sidebar'
       threads_list: 'Threads actions'
