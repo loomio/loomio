@@ -8,11 +8,15 @@
   %table.v-layout-table{cellspacing: 0}
     - poll.stances.latest.with_reason.each do |stance|
       %tr
-        %td{style: 'width: 36px; height: 36px'}
+        %td{valign:"top", style: 'width: 36px; height: 36px'}
           = render partial: 'base_mailer/avatar', locals: { user: stance.participant }
         %td.poll-mailer-common-responses__reason.pl-2
-          %span.text-subtitle-2
-            #{stance.participant.name}:
+          %table
+            %tr
+              %td{valign: "top"}
+                %strong #{stance.participant.name}:
+              %td{valign: "top"}
+                = render 'event_mailer/poll/stance_choices', poll: poll, stance: stance
           = render_rich_text(stance.reason, stance.reason_format)
 - else
   %p= t(:"poll_common_action_panel.results_hidden_until_closed")

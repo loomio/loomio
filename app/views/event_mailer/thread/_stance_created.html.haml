@@ -8,12 +8,6 @@
         %div{class: "medium-user-avatar #{participant.avatar_kind}-user-avatar avatar-canvas"}
           = render "avatar", user: participant
     %td= participant.name
-    %td
-      %table
-        - stance.stance_choices.order("score desc").limit(5).each do |choice|
-          = render "event_mailer/poll/poll_option", stance: stance, poll: stance.poll, poll_option: choice.poll_option, stance_choice: choice, small: true
-      - if stance.stance_choices.count > 5
-        = t 'poll_mailer.common.more_undecided', {count: (stance.stance_choices.count - 5)}
-
+    %td= render "event_mailer/poll/stance_choices", stance: stance, poll: stance.poll
 
 %p= render_rich_text(stance.reason, stance.reason_format)

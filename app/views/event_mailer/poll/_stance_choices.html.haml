@@ -1,0 +1,47 @@
+-# pass locals poll, stance
+- if poll.is_single_choice?
+  %table
+    - stance.stance_choices.order("score desc").limit(5).each do |stance_choice|
+      - poll_option = stance_choice.poll_option
+      - display_name = case poll.poll_option_name_format
+      - when 'i18n' then t(poll_option.name)
+      - when 'iso8601' then format_iso8601_for_humans(poll_option.name, @recipient.time_zone, @recipient.date_time_pref)
+      - else
+        - poll_option.name
+      - score = stance && stance.option_scores[poll_option.id.to_s]
+      - option_color = poll_option.color.sub('#', '')
+      %tr
+        %td{valign: "top"}
+          - if poll.has_option_icon
+            = image_tag("poll_mailer/vote-button-#{poll_option.icon}.png", width: 24, height: 24, alt: display_name, style: 'display: inline-block')
+          - if ['poll'].include? poll.poll_type
+            - if poll.is_single_choice?
+              - if score && score > 0
+                = image_tag("icons/radiobox-marked-#{option_color}.png", width: 24, height: 24, alt: display_name)
+              - else
+                = image_tag("icons/radiobox-blank-#{option_color}.png", width: 24, height: 24, alt: display_name)
+            -else
+              - if score && score > 0
+                = image_tag("icons/checkbox-marked-#{option_color}.png", width: 24, height: 24, alt: display_name)
+              - else
+                = image_tag("icons/checkbox-blank-outline-#{option_color}.png", width: 24, height: 24, alt: display_name)
+          - if ['score', 'dot_vote'].include? poll.poll_type
+            - if score
+              .text-h6= score
+            - else
+              = image_tag("icons/checkbox-blank-outline-#{option_color}.png", width: 24, height: 24, alt: display_name)
+          - if ['ranked_choice'].include? poll.poll_type
+            - if score
+              .text-h6
+                \#
+                = poll.minimum_stance_choices - score + 1
+            - else
+              = image_tag("icons/checkbox-blank-outline-#{option_color}.png", width: 24, height: 24, alt: display_name)
+          - if ['meeting'].include? poll.poll_type
+            - if score
+              - icon = {0 => 'disagree', 1 => 'abstain', 2 => 'agree'}[score]
+              = image_tag("poll_mailer/vote-button-#{icon}.png", width: 24, height: 24, alt: display_name, style: 'display: inline-block')
+            - else
+              = image_tag("icons/checkbox-blank-outline-#{option_color}.png", width: 24, height: 24, alt: display_name)
+        %td{valign: "top"}
+          = display_name
