@@ -98,7 +98,7 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "coffee-loader": "latest",
     "coffeescript": "^2.7.0",
-    "fibers": "^5.0.2",
+    "fibers": "^5.0.3",
     "js-yaml-loader": "^1.2.2",
     "sass": "^1.54.5",
     "sass-loader": "^10.1.1",
