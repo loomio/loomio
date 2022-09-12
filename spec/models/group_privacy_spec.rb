@@ -53,7 +53,7 @@ describe Group do
 
         it 'does not allow invitation' do
           # membership_granted_upon request is allowed
-          group.membership_granted_upon = 'invitation'
+          group.membership_granted_upon = 'bla'
           group.group_privacy = 'open'
           expect(group.membership_granted_upon).to eq 'approval'
         end
