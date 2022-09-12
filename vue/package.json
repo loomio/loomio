@@ -53,6 +53,7 @@
     "@tiptap/extension-text-style": "latest",
     "@tiptap/extension-typography": "latest",
     "@tiptap/extension-underline": "latest",
+    "@tiptap/suggestion": "latest",
     "@tiptap/vue-2": "latest",
     "activestorage": "^5.2.8",
     "array-flat-polyfill": "^1.0.1",
