@@ -1180,7 +1180,7 @@ en:
       private_to_group: 'Name and description will only be visible to members.'
       private_to_parent_members: 'Name and description will be visible to members of {{parent}}'
     privacy: 'Privacy'
-    group_privacy_is_open_description: "Publicly listed. Anyone can ask to join. All threads are public."
+    group_privacy_is_open_description: "Publicly listed. All threads are public."
     group_privacy_is_closed_description: "Unlisted. Anyone with the link can ask to join. All threads are private."
     group_privacy_is_closed_public_threads_description: "Unlisted. Anyone with the link can ask to join. Threads can be public or private."
     group_privacy_is_secret_description: "Only invited people can find the group. All threads are private."
@@ -1200,6 +1200,7 @@ en:
     how_do_people_join: "How do people join?"
     membership_granted_upon_request: 'Anyone can join the group.'
     membership_granted_upon_approval: 'Anyone can request to join but must be approved.'
+    membership_granted_upon_invitation: 'Invitation only.'
 
     membership_granted_upon_approval_secret_parent: '<strong>By request</strong>  anyone from {{parent}} can ask to join the group.'
 

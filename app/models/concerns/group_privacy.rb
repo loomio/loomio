@@ -22,7 +22,7 @@ module GroupPrivacy
       self.is_visible_to_public = true
       self.discussion_privacy_options = 'public_only'
       self.listed_in_explore = true
-      unless %w[approval request].include?(self.membership_granted_upon)
+      unless %w[approval request invitation].include?(self.membership_granted_upon)
         self.membership_granted_upon = 'approval'
       end
     when 'closed'

@@ -188,7 +188,7 @@ v-card.group-form
           v-subheader(v-t="'group_form.how_do_people_join'")
           v-radio-group(v-model='group.membershipGrantedUpon')
             v-radio(
-              v-for="granted in ['request', 'approval']"
+              v-for="granted in ['request', 'approval', 'invitation']"
               :key="granted"
               :class="'group-form__membership-granted-upon-' + granted"
               :value='granted'
