@@ -221,7 +221,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-icon
       v-icon mdi-map-search
   v-list-item(v-if="showContact" to="/contact" dense)
-    v-list-item-title(v-t="{path: 'user_dropdown.contact_support', args: {site_name: siteName}}")
+    v-list-item-title(v-t="'user_dropdown.contact_support'")
     v-list-item-icon
       v-icon mdi-face-agent
 </template>
