@@ -90,7 +90,7 @@ module PendingActionsHelper
   end
 
   def pending_stance
-    Stance.redeemable.find_by(token: pending_stance_token) if pending_stance_token
+    Stance.find_by(token: pending_stance_token) if pending_stance_token
   end
 
   def pending_identity

@@ -26,6 +26,8 @@ class DiscussionReader < ApplicationRecord
                             AND discussion_readers.accepted_at IS NULL
                             AND discussion_readers.revoked_at IS NULL') }
 
+  scope :redeemable_by, -> (user_id) { redeemable.joins(:user).where("user_id = ? OR users.email_verified = false", user_id) }
+
   update_counter_cache :discussion, :seen_by_count
   update_counter_cache :discussion, :members_count
 
