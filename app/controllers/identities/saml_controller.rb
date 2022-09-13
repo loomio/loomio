@@ -1,4 +1,6 @@
 class Identities::SamlController < Identities::BaseController
+  skip_before_action :verify_authenticity_token
+  
   def metadata
     meta = OneLogin::RubySaml::Metadata.new
     render :xml => meta.generate(sp_settings), :content_type => "application/samlmetadata+xml"
