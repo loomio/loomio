@@ -50,6 +50,9 @@ class Stance < ApplicationRecord
                              AND stances.cast_at IS NULL
                              AND stances.accepted_at IS NULL
                              AND stances.revoked_at IS NULL') }
+  scope :redeemable_by,  -> (user_id) { 
+    redeemable.joins(:participant).where("stances.participant_id = ? or users.email_verified = false", user_id)
+  }
 
   validate :valid_minimum_stance_choices
   validate :valid_maximum_stance_choices
