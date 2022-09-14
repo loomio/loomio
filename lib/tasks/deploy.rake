@@ -20,9 +20,7 @@
 
 def deploy_steps
   [
-    "plugins:fetch[#{heroku_plugin_set}]",
-    "plugins:install[fetched]",
-    # "client:build",
+    "deploy:fetch",
     "deploy:commit",
     "deploy:push",
     "deploy:cleanup"
@@ -30,16 +28,6 @@ def deploy_steps
 end
 
 namespace :deploy do
-  desc "Setup heroku and github for deployment"
-  task :setup do
-    puts "Logging into heroku and setting up remote..."
-    run_commands(
-      "sh script/heroku_login.sh $DEPLOY_EMAIL $DEPLOY_PASSWORD",
-      "echo \"Host heroku.com\n  StrictHostKeyChecking no\" > ~/.ssh/config",
-      "git config user.email $DEPLOY_EMAIL && git config user.name $DEPLOY_NAME",
-      "git remote add #{remote} https://git.heroku.com/#{heroku_remote}.git")
-  end
-
   desc "Deploy to heroku"
   task :heroku do
     puts "Deploying to #{heroku_remote}..."
@@ -47,6 +35,12 @@ namespace :deploy do
     at_exit { run_commands("git branch -D #{deploy_branch}") }
   end
 
+  desc "fetch additional stuff"
+  task :fetch do
+    puts "fetching loomio_org_plugin"
+    run_commands("git clone -b master git@github.com:loomio/loomio_org_plugin.git plugins/fetched/loomio_org_plugin")
+    puts "todo: fetch loomio-marketing"
+  end
   desc "Commits built assets to deployment branch"
   task :commit do
     puts "Committing assets to deployment branch..."
