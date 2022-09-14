@@ -59,12 +59,12 @@ v-card.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.ente
         //- validation-errors(:subject='session' field='password')
       span(v-t="'auth_form.check_spam_folder'")
   v-card-actions
+    v-spacer
     v-btn(
       v-if="!user.hasPassword"
       :disabled='!user.code || loading'
       @click='submitAndSetPassword()'
       v-t="'auth_form.set_password'")
-    v-spacer
     v-btn(
       color="primary"
       :loading="loading"
