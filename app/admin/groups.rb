@@ -209,6 +209,14 @@ ActiveAdmin.register Group, as: 'Group' do
     f.actions
   end
 
+  collection_action :import, method: :get do
+  end
+
+  collection_action :import_json, method: :post do
+    GroupExportService.delay.import(params[:url])
+    redirect_to admin_groups_path, notice: "Import started. Check /admin/sidekiq to see when job is complete"
+  end
+
   collection_action :add_admin, method: :post do
     Membership.find(params[:membership_id]).update(admin: true)
     redirect_to admin_group_path(Group.find(params[:group_id]))
