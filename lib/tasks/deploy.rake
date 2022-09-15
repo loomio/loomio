@@ -37,14 +37,21 @@ namespace :deploy do
 
   desc "fetch additional stuff"
   task :fetch do
+    ['plugins/fetched/loomio_org_plugin','loomio-marketing'].each do |dir|
+      run_commands("rm -rf #{dir}") if Dir.exists?(dir)
+    end
+
     puts "fetching loomio_org_plugin"
     run_commands("git clone -b master git@github.com:loomio/loomio_org_plugin.git plugins/fetched/loomio_org_plugin")
     puts "fetch loomio-marketing"
-    run_commands("git clone -b master git@github.com:loomio/loomio-marketing.git")
-    run_commands("cd loomio-marketing", "npm run build", "cd ..", "cp -R ./loomio-marketing/_site/* ./public/")
+    run_commands("git clone -b master git@github.com:loomio/loomio-marketing.git loomio-marketing")
+    Dir.chdir("loomio-marketing") do
+      run_commands("npm run build")
+    end
+    run_commands("cp -R ./loomio-marketing/_site/* ./public/")
     run_commands("rm -rf loomio-marketing")
   end
-  
+
   desc "Commits built assets to deployment branch"
   task :commit do
     puts "Committing assets to deployment branch..."
@@ -53,6 +60,7 @@ namespace :deploy do
       "rm -rf plugins/fetched/**/.git",
       "find plugins/fetched -name '*.*' | xargs git add -f",
       "git add -f plugins",
+      "git add -f public",
       "git commit -m 'Add marketing plugin only'",
       "git checkout master")
   end
