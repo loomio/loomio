@@ -39,8 +39,12 @@ namespace :deploy do
   task :fetch do
     puts "fetching loomio_org_plugin"
     run_commands("git clone -b master git@github.com:loomio/loomio_org_plugin.git plugins/fetched/loomio_org_plugin")
-    puts "todo: fetch loomio-marketing"
+    puts "fetch loomio-marketing"
+    run_commands("git clone -b master git@github.com:loomio/loomio-marketing.git")
+    run_commands("cd loomio-marketing", "npm run build", "cd ..", "cp -R ./loomio-marketing/_site/* ./public/")
+    run_commands("rm -rf loomio-marketing")
   end
+  
   desc "Commits built assets to deployment branch"
   task :commit do
     puts "Committing assets to deployment branch..."
