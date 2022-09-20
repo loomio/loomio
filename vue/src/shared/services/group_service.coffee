@@ -159,8 +159,8 @@ export default new class GroupService
             confirm:
               submit: group.destroy
               text:
-                title:    'delete_group_modal.title'
-                helptext: 'delete_group_modal.body'
+                title:    (group.isParent() && 'delete_group_modal.title') || 'delete_group_modal.subgroup_title'
+                helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body' 
                 raw_confirm_text_placeholder: i18n.t('delete_group_modal.confirm', name: confirmText)
                 confirm_text: confirmText
                 flash:    'delete_group_modal.success'

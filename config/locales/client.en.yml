@@ -1039,8 +1039,18 @@ en:
 
   delete_group_modal:
     title: Delete group
+    subgroup_title: Delete subgroup
+    parent_body: |
+      <h2>This is your parent group - not a subgroup!</h2>
+      <br>
+      If you delete this, any subgroups will also be permanently deleted.
+
+      Your Loomio subscription will also be cancelled.
+
+      It is highly recommended to export your group data and manually download any important files before doing this.
+      Are you sure you want to continue?
     body: |
-      Are you sure you want to delete this group?
+      Are you sure you want to delete this subgroup?
       All threads, polls, files and other group content will be permanently deleted.
       It is recommended that you export the group data and manually download any important files before you continue.
     confirm: "Type '%{name}' to confirm you want to delete this group."
