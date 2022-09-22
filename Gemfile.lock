@@ -535,7 +535,7 @@ GEM
       multi_json (~> 1.10)
     slack_mrkdwn (2.2.1)
       redcarpet (>= 3.5.1)
-    spring (4.0.0)
+    spring (4.1.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (3.7.2)
