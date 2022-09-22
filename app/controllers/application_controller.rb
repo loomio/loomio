@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   helper_method :is_old_browser?
 
   skip_before_action :verify_authenticity_token, only: :bug_tunnel
+  caches_page :sitemap
 
   def index
     boot_app
