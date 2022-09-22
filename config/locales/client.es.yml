@@ -20,10 +20,13 @@ es:
     title_template: "%{title} Plantilla"
     title_templates: "%{title} Plantillas"
     title_copy: "%{title} Copia"
+    copy_of_title: "Copia de %{title}"
     login_to_start_demo: |
         Esta es una demostración de Loomio en acción. Le invitamos a echar un vistazo.
     sign_in_to_try_features: |
         Si desea intentar votar en una decisión de demostración o iniciar una prueba gratuita para su organización, haga clic en "iniciar sesión".
+    click_button_to_start_demo: |
+        ¡Bienvenido! Para probar la votación y otras funciones, haga clic en iniciar demostración.
     welcome_to_your_demo: ¡Este es tu propio grupo de demostración!
     try_voting_to_see_it_work: Intente votar en una propuesta para tener una idea de cómo funciona Loomio.
     delete_will_be_deleted_in_x_days: Esta demostración se eliminará en %{x} días.
@@ -35,6 +38,8 @@ es:
     try_loomio: Prueba Loomio
     start_a_demo_group: Empezar un grupo de demostración
     start_a_demo: Iniciar demo
+    demo_group: Grupo de demostración
+    look_and_feel: Vea cómo se ve Loomio para una organización pequeña. Aprende la aplicación probándola.
     generating_demo: 'Vale, ¡espera allí mismo! Generar una demostración toma alrededor de 20 segundos.'
     start_a_x_day_free_trial: Iniciar una prueba gratuita de {{day}} día
     ready_to_trial: ¿Listo para probar Loomio con su organización?
@@ -160,6 +165,7 @@ es:
     local: Hora local ({{value}})
   common:
     loomio_help: Ayuda de Loomio
+    help_and_guides: Ayuda y guías
     please_wait: Por favor espera
     optional: (opcional)
     version: Versión
@@ -478,6 +484,8 @@ es:
     start_thread: Nuevo hilo
     start_decision: 'Nueva decisión  '
     more_groups: Más grupos
+    template_gallery: Galería de plantillas
+    examples_and_templates: Ejemplos y plantillas
     aria_labels:
       heading: 'Barra Lateral '
       threads_list: 'Acciones del hilo'
@@ -646,8 +654,6 @@ es:
     move_to_existing_thread: 'Mover a un hilo existente '
     start_new_thread: O empieza un nuevo hilo
   discussion_form:
-    want_some_inspiration: ¿Quieres inspiración?
-    browse_public_templates: Examinar plantillas públicas
     thread_templates: Plantillas de hilo
     new_thread_template: Nueva plantilla de hilo
     edit_thread_template: Editar plantilla de hilo
@@ -965,10 +971,6 @@ es:
       closed: "Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo"
   delete_group_modal:
     title: Eliminar grupo
-    body: |
-        ¿Estás seguro de que quieres eliminar este grupo?
-        Todos los hilos, sondeos, archivos y otros contenidos del grupo se borrarán permanentemente.
-        Se recomienda que exportes los datos del grupo y descargues manualmente cualquier archivo importante antes de continuar.
     confirm: "Escribe '%{name}' para confirmar que quieres borrar este grupo."
     success: 'Se ha archivado este grupo y se ha programado eliminarlo permanentemente en 2 semanas. '
   group_page:
@@ -1100,7 +1102,7 @@ es:
       private_to_group: 'El nombre y la descripción solo serán visibles para integrantes. '
       private_to_parent_members: 'El nombre y la descripción serán visibles para los integrantes de {{parent}}'
     privacy: 'Privacidad'
-    group_privacy_is_open_description: "Listada públicamente. Cualquiera puede pedir unirse. Todos los hilos son públicos."
+    group_privacy_is_open_description: "Listado públicamente. Todos los hilos son públicos."
     group_privacy_is_closed_description: "Sin listar. Cualquiera con el enlace puede pedir unirse. Todos los hilos son privados."
     group_privacy_is_closed_public_threads_description: "Sin listar. Cualquiera con el enlace puede pedir unirse. Los hilos pueden ser públicos o privados."
     group_privacy_is_secret_description: "Sólo la gente a la que han invitado puede encontrar el grupo. Todos los hilos son privados"
@@ -1118,6 +1120,7 @@ es:
     how_do_people_join: "¿Cómo se unen las personas a este grupo?"
     membership_granted_upon_request: 'Cualquiera puede unirse al grupo.'
     membership_granted_upon_approval: 'Cualquiera puede pedir la membresía, pero debe ser aprobada.'
+    membership_granted_upon_invitation: 'Sólo invitación.'
     membership_granted_upon_approval_secret_parent: 'Cualquiera en {{parent}} puede pedir apuntarse al grupo <strong>por petición</strong>.'
     permissions: 'Permisos'
     thread_privacy: 'Privacidad del hilo'
@@ -1599,8 +1602,14 @@ es:
   poll_common:
     select_count_options: Seleccione las opciones de {{count}}
     select_minimum_to_maximum_options: Seleccione las opciones {{minimum}} a {{maximum}}
+    custom_poll_types: Tipos de sondeo personalizados
+    example_polls_from_thread_template: Tipos de sondeo personalizados
     poll_template: Plantilla de encuesta
     poll_templates: Plantillas de encuesta
+    poll_types: Tipos de encuesta
+    new_poll_type: Nuevo tipo de encuesta
+    edit_poll_type: Edita tipo de encuesta
+    create_a_custom_poll_type: Crear un nuevo tipo de sondeo con terminología y configuración personalizadas
     decision: Decisión
     decision_templates: Plantillas de decisión
     vote_now: Votar ahora
@@ -1719,6 +1728,7 @@ es:
     from_the_thread: Desde la plantilla de subproceso
     from_the_group: Del grupo
     default_templates: Plantillas predeterminadas
+    default_poll_types: Tipos de sondeo predeterminados
     suggested_templates: Plantillas sugeridas
     group_templates: Plantillas de grupo
     basic_templates: Plantillas básicas
@@ -1852,6 +1862,7 @@ es:
     title: Eliminar {{pollType}}
     success: Eliminada con éxito.
   poll_common_form:
+    new_poll_type_helptext: Crea un nuevo tipo de encuesta para tu grupo. Personalice la terminología y la configuración para que sea fácil para otras personas de su grupo ejecutar un proceso de toma de decisiones específico.
     choose_at_least: Elija al menos
     choose_at_most: Elige como máximo
     please_review_the_form: Por favor, revise el formulario
@@ -1870,7 +1881,9 @@ es:
     voting_method: Método de votación
     voting_methods:
       show_thumbs: Presentación de pulgares
+      show_thumbs_hint: Los votantes eligen pulgar hacia arriba, hacia abajo, hacia los lados o manos arriba
       choose: Elegir
+      simple_poll: Encuesta simple
       choose_hint: Los votantes eligen la mejor opción (u opciones)
       score: 'Puntuación '
       score_hint: Los votantes asignan una puntuación a cada opción
@@ -1881,6 +1894,10 @@ es:
       time_poll: Coordinar horario
       time_poll_hint: Los votantes indican cuándo están disponibles para reunirse
     process: Proceso
+    poll_type_name: Nombre del tipo de encuesta
+    poll_type_name_hint: ¿Cómo llamas a este tipo de encuesta? Por ejemplo, propuesta, control de temperatura, aprobación de actas
+    poll_type_description: Descripción del tipo de sondeo
+    poll_type_description_hint: Una línea que describe el caso de uso de este tipo de sondeo. Por ejemplo, aprobar las actas de la reunión anterior
     you_can_set_a_prompt_per_option: Edite el mensaje para cada opción desde la pestaña de detalles
     chart_type: Tipo de gráfico
     title: Título

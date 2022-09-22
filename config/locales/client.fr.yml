@@ -485,6 +485,7 @@ fr:
     start_decision: Nouvelle décision
     more_groups: davantage de groupes
     template_gallery: Galerie de modèles
+    examples_and_templates: Exemples et modèles
     aria_labels:
       heading: 'Barre latérale'
       threads_list: 'Actions du fil de discussion'
@@ -574,7 +575,7 @@ fr:
     no_notifications: "Aucune nouvelle notification"
     with_title:
       comment_replied_to: "%{actor} vous a repondu in: %{title}"
-      discussion_announced: "%{actor} vous a invité dans à fil de discussion: %{title}"
+      discussion_announced: "%{actor} vous a invité au fil de discussion : %{title}"
       discussion_edited: "%{actor} modifié le contexte du thread: %{title}"
       discussion_closed: "%{actor} a fermé le thread: %{title}"
       invitation_accepted: "%{actor}a accepté votre invitation à joindre %{title}"
@@ -653,8 +654,6 @@ fr:
     move_to_existing_thread: Déplacer vers une discussion existante
     start_new_thread: Ou démarrer une nouvelle discussion
   discussion_form:
-    want_some_inspiration: Envie d’inspiration ?
-    browse_public_templates: Parcourir les modèles publics
     thread_templates: Modèles de thread
     new_thread_template: Nouveau modèle de thread
     edit_thread_template: Modifier le modèle de thread
@@ -972,10 +971,6 @@ fr:
       closed: "Cette discussion a été close. Elle ne sera plus affichée sur le tableau de bord, et sera affichée dans les discussions closes sur la page du groupe"
   delete_group_modal:
     title: Supprimer le groupe
-    body: |
-        Êtes-vous sûr de vouloir supprimer le groupe ?
-        Toutes les discussions, les sondages, les fichiers et tous les autres contenus du groupe seront effacés de manière irréversible.
-        Il est recommandé que vous exportiez les données du groupe et que vous téléchargiez tous les fichiers importants avant de continuer.
     confirm: "Saisissez '%{name}' pour confirmer que vous voulez supprimer ce groupe."
     success: Ce groupe a été archivé et il est planifié pour un effacement définitif dans 2 semaines.
   group_page:
@@ -1107,7 +1102,7 @@ fr:
       private_to_group: 'Le nom et la description ne seront visibles que par les membres du groupe.'
       private_to_parent_members: 'Le nom et la description ne seront visibles que par les membres du groupe {{parent}}.'
     privacy: 'Confidentialité'
-    group_privacy_is_open_description: "N'importe qui peut trouver ce groupe et demander à le rejoindre. Toutes les discussions sont publiques."
+    group_privacy_is_open_description: "Inscrit sur la liste publique. Tous les fils de discussion sont publics."
     group_privacy_is_closed_description: "Le groupe n'est pas indexé dans la liste des groupes. Toute personne qui possède un lien vers le groupe peut le rejoindre. Toutes les discussions sont privées."
     group_privacy_is_closed_public_threads_description: "Le groupe n'est pas indexé dans la liste des groupes. Toute personne qui possède un lien vers le groupe peut le rejoindre. Les discussions peuvent être publiques ou privées."
     group_privacy_is_secret_description: "Seuls les personnes invitées peuvent trouver le groupe. Toutes les discussions sont privées."
@@ -1125,6 +1120,7 @@ fr:
     how_do_people_join: "Comment les personnes peuvent-elles rejoindre le groupe ?"
     membership_granted_upon_request: 'N’importe qui peut rejoindre le groupe'
     membership_granted_upon_approval: 'N’importe qui peut demander à rejoindre le groupe, mais la demande doit être approuvée.'
+    membership_granted_upon_invitation: 'Invitation seulement.'
     membership_granted_upon_approval_secret_parent: '<strong>Sur proposition,</strong> n’importe qui de {{parent}} peut demander à rejoindre le groupe.'
     permissions: 'Permissions'
     thread_privacy: 'Confidentialité de la discussion'
