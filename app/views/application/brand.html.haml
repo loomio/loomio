@@ -20,13 +20,15 @@
   .svg-icon{
     width: 128px;
     height: 128px;
+    max-width: none;
   }
 
   .png-logo{
     width: 50%;
     height: 50%;
+    max-width: none;
   }
-
+  
 %h2 brand colors
 - colors.each_pair do |val, name|
   %div.color-swatch{style:"background-color: #{name}; color: #fff"}
