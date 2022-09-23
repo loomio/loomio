@@ -1,6 +1,5 @@
 class DiscussionReaderService
   def self.redeem(discussion_reader: , actor: )
-    actor.ability.authorize! :redeem, discussion_reader
     return unless DiscussionReader.redeemable_by(actor).where(id: discussion_reader.id).exists?
     discussion_reader.update(user: actor, accepted_at: Time.zone.now)
   rescue ActiveRecord::RecordNotUnique
