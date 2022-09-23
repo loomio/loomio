@@ -340,7 +340,7 @@ describe API::V1::PollsController do
     end
 
     let(:poll_params) {{
-      closing_at: 1.day.from_now
+      closing_at: 1.day.from_now.at_beginning_of_hour
     }}
 
     before { poll.update(closed_at: 1.day.ago) }
