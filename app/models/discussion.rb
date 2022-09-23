@@ -1,4 +1,5 @@
 class Discussion < ApplicationRecord
+  include PgSearch::Model
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
   include Forkable
@@ -15,6 +16,12 @@ class Discussion < ApplicationRecord
   include HasTags
   extend  NoSpam
   include Discard::Model
+
+  multisearchable(
+    against: [:title, :description],
+    if: lambda {|r| r.kept? },
+    update_if: lambda {|r| r.description_changed? || r.title_changed?}
+  )
 
   no_spam_for :title, :description
 

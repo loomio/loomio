@@ -1,4 +1,5 @@
 class Poll < ApplicationRecord
+  include PgSearch::Model
   extend  HasCustomFields
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
@@ -11,6 +12,12 @@ class Poll < ApplicationRecord
   include HasRichText
   include HasTags
   include Discard::Model
+
+  multisearchable(
+    against: [:title, :details],
+    if: lambda { |r| r.kept? },
+    update_if: lambda { |r| r.title_changed? || r.details_changed? }
+  )
 
   is_rich_text on: :details
 

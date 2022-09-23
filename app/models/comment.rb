@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  include PgSearch::Model
   include Discard::Model
   include CustomCounterCache::Model
   include Translatable
@@ -7,6 +8,12 @@ class Comment < ApplicationRecord
   include HasCreatedEvent
   include HasEvents
   include HasRichText
+
+  multisearchable(
+    against: [:body],
+    if: lambda { |r| r.kept? && r.discussion.kept? },
+    if: lambda { |r| r.body_changed? }
+  )
 
   has_paper_trail only: [:body, :body_format, :user_id, :discarded_at, :discarded_by]
 

@@ -1,12 +1,19 @@
 class Stance < ApplicationRecord
+  include PgSearch::Model
   include CustomCounterCache::Model
   include HasMentions
   include Reactable
   include HasEvents
   include HasCreatedEvent
   include HasVolume
-
   extend HasTokens
+
+  multisearchable(
+    against: [:reason],
+    if: lambda {|r| r.cast_at.present? && r.poll.kept? },
+    update_if: lambda {|r| r.reason_changed? }
+  )
+
   initialized_with_token :token
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
