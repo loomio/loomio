@@ -21,7 +21,7 @@ describe API::V1::PollsController do
     details: "is it me you're looking for?",
     discussion_id: discussion.id,
     options: ["agree", "abstain", "disagree", "block"],
-    closing_at: 3.days.from_now
+    closing_at: 3.days.from_now.at_beginning_of_hour
   }}
 
   before { group.add_member! user }
