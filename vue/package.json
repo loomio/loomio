@@ -39,7 +39,7 @@
     "@tiptap/extension-list-item": "2.0.0-beta.196",
     "@tiptap/extension-mention": "2.0.0-beta.196",
     "@tiptap/extension-ordered-list": "2.0.0-beta.196",
-    "@tiptap/extension-paragraph": "2.0.0-beta.196",
+    "@tiptap/extension-paragraph": "2.0.0-beta.197",
     "@tiptap/extension-placeholder": "2.0.0-beta.196",
     "@tiptap/extension-strike": "2.0.0-beta.196",
     "@tiptap/extension-table": "2.0.0-beta.196",
