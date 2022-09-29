@@ -74,6 +74,8 @@ namespace :loomio do
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
     end
     
+    DemoService.delay.ensure_queue
+    
     if (Time.now.hour == 0 && Time.now.mday == 1)
       UpdateBlockedDomainsWorker.perform_async
     end

@@ -22,6 +22,13 @@ class DemoService
    	group
 	end
 
+	def self.ensure_queue
+		existing_ids = Redis::List.new('demo_group_ids').value.select { |id| Group.where(id: id).exists? }
+		Redis::List.new('demo_group_ids').clear
+		Redis::List.new('demo_group_ids').unshift *existing_ids
+		refill_queue
+	end
+
 	def self.generate_demo_groups
 		Demo.where("demo_handle IS NOT NULL").each do |template|
 			Group.where(handle: template.demo_handle).update_all(handle: nil)
