@@ -20,7 +20,8 @@ class Discussion < ApplicationRecord
   multisearchable(
     against: [:title, :description],
     if: lambda {|r| r.kept? },
-    update_if: lambda {|r| r.description_changed? || r.title_changed?}
+    update_if: lambda {|r| r.description_changed? || r.title_changed?},
+    additional_attributes: -> (d) { { group_id: d.group_id } }
   )
 
   no_spam_for :title, :description

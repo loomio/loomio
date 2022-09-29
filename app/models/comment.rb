@@ -13,6 +13,7 @@ class Comment < ApplicationRecord
     against: [:body],
     if: lambda { |r| r.kept? && r.discussion.kept? },
     if: lambda { |r| r.body_changed? }
+    additional_attributes: -> (c) { { group_id: c.discussion.group_id } }
   )
 
   has_paper_trail only: [:body, :body_format, :user_id, :discarded_at, :discarded_by]

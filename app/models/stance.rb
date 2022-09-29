@@ -12,6 +12,7 @@ class Stance < ApplicationRecord
     against: [:reason],
     if: lambda {|r| r.cast_at.present? && r.poll.kept? },
     update_if: lambda {|r| r.reason_changed? }
+    additional_attributes: -> (s) { { group_id: s.poll.group_id } }
   )
 
   initialized_with_token :token

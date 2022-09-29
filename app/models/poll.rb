@@ -16,7 +16,8 @@ class Poll < ApplicationRecord
   multisearchable(
     against: [:title, :details],
     if: lambda { |r| r.kept? },
-    update_if: lambda { |r| r.title_changed? || r.details_changed? }
+    update_if: lambda { |r| r.title_changed? || r.details_changed? },
+    additional_attributes: -> (p) { { group_id: p.group_id } }
   )
 
   is_rich_text on: :details
