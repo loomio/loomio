@@ -29,7 +29,7 @@
     "@tiptap/extension-document": "2.0.0-beta.196",
     "@tiptap/extension-dropcursor": "2.0.0-beta.196",
     "@tiptap/extension-gapcursor": "2.0.0-beta.196",
-    "@tiptap/extension-hard-break": "2.0.0-beta.196",
+    "@tiptap/extension-hard-break": "2.0.0-beta.199",
     "@tiptap/extension-heading": "2.0.0-beta.196",
     "@tiptap/extension-history": "2.0.0-beta.196",
     "@tiptap/extension-horizontal-rule": "2.0.0-beta.196",
