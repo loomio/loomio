@@ -96,7 +96,7 @@ GEM
     activerecord (6.1.4.6)
       activemodel (= 6.1.4.6)
       activesupport (= 6.1.4.6)
-    activerecord-import (1.4.0)
+    activerecord-import (1.4.1)
       activerecord (>= 4.2)
     activestorage (6.1.4.6)
       actionpack (= 6.1.4.6)
@@ -572,7 +572,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   ruby
@@ -583,7 +583,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   active_record_extended
   activeadmin (~> 2.13.1)
-  activerecord-import (= 1.4.0)
+  activerecord-import (= 1.4.1)
   aws-sdk-s3
   blazer
   bootsnap
