@@ -4,12 +4,14 @@
 <table style="padding: 0; margin-bottom: 8px" class="container" role="presentation" cellpadding=0 cellspacing=0 border=0 width=600 height=150>
 <tr>
     <td class="rounded" valign="bottom" style="background: url(<%=cover_url%>) #ffffff; background-size:cover; background-position:center;">
-      <!--[if gte mso 9]>
-      <img src="<%=cover_url%>" height="150" width="600">
+      <!--[if mso]>
+        <img src="<%=cover_url%>" height="150" width="600">
       <![endif]-->
-      <% if group.logo_url %>
-      <img class="rounded" style="width: 64px; height: 64px; margin-left: 8px; margin-bottom: 4px" src="<%=logo_url%>" height=64 width=64>
-      <% end %>
+      <!--[if !mso]><!-->
+        <% if group.logo_url %>
+        <img class="rounded" style="width: 64px; height: 64px; margin-left: 8px; margin-bottom: 4px" src="<%=logo_url%>" height=64 width=64>
+        <% end %>
+      <!--<![endif]-->
     </td>
 </tr>
 </table>
