@@ -273,9 +273,10 @@ export default
         :label="$t('poll_common_form.'+example_if_template+'title')"
         v-model='poll.title'
         maxlength='250')
+        
       validation-errors(:subject='poll' field='title')
 
-      //- tags-field(v-if="!poll.discussionId", :model="poll")
+      tags-field(:model="poll")
 
       lmo-textarea(
         :model='poll'
