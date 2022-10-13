@@ -74,6 +74,7 @@ export default
         recipient_user_ids: @poll.recipientUserIds
         recipient_chatbot_ids: @poll.recipientChatbotIds
         recipient_emails: @poll.recipientEmails
+        include_actor: true
         recipient_message: @message
         exclude_members: true
         notify_recipients: @poll.notifyRecipients
