@@ -26,7 +26,7 @@ v-alert.my-4.poll-common-outcome-panel(
   outlined)
   h2.title(v-t="'poll_common.outcome'")
   div.my-2
-    user-avatar(:user="outcome.author()" :size="24").mr-2
+    user-avatar(:user="outcome.author()", :size="24").mr-2
     small
       space
       //- .poll-common-outcome-panel__authored-by.caption.my-2
@@ -46,5 +46,5 @@ v-alert.my-4.poll-common-outcome-panel(
   link-previews(:model="outcome")
   document-list(:model="outcome")
   attachment-list(:attachments="outcome.attachments")
-  action-dock(:model="outcome" :actions="dockActions" :menuActions="menuActions")
+  action-dock(:model="outcome", :actions="dockActions", :menuActions="menuActions")
 </template>
