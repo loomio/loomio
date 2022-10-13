@@ -1,4 +1,4 @@
-- if poll.show_results?
+- if poll.show_results? && poll.decided_voters_count > 0
   %h5= t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')
   - if poll.poll_type == "meeting"
     = render "chatbot/matrix/meeting", poll: poll
