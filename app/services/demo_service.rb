@@ -1,7 +1,6 @@
 class DemoService
 	def self.refill_queue
 		return unless ENV['FEATURES_DEMO_GROUPS']
-
 		demo = Demo.where('demo_handle is not null').last
 
 		expected = 2
@@ -23,9 +22,10 @@ class DemoService
 	end
 
 	def self.ensure_queue
+		return unless ENV['FEATURES_DEMO_GROUPS']
 		existing_ids = Redis::List.new('demo_group_ids').value.select { |id| Group.where(id: id).exists? }
 		Redis::List.new('demo_group_ids').clear
-		Redis::List.new('demo_group_ids').unshift *existing_ids
+		Redis::List.new('demo_group_ids').unshift(*existing_ids) if existing_ids.any?
 		refill_queue
 	end
 
