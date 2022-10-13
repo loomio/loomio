@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_10_102929) do
+ActiveRecord::Schema.define(version: 2022_10_13_013717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -831,20 +831,6 @@ ActiveRecord::Schema.define(version: 2022_08_10_102929) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id"
-  end
-
-  create_table "usage_reports", id: :serial, force: :cascade do |t|
-    t.integer "groups_count"
-    t.integer "users_count"
-    t.integer "discussions_count"
-    t.integer "polls_count"
-    t.integer "comments_count"
-    t.integer "stances_count"
-    t.integer "visits_count"
-    t.string "canonical_host"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string "version"
   end
 
   create_table "user_deactivation_responses", id: :serial, force: :cascade do |t|

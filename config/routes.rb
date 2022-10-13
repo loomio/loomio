@@ -63,8 +63,6 @@ Rails.application.routes.draw do
 
       resources :link_previews, only: [:create]
 
-      resources :usage_reports, only: [:create]
-
       resources :tasks, only: [:index] do
         collection do
           post :update_done

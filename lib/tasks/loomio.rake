@@ -70,10 +70,9 @@ namespace :loomio do
 
       CleanupService.delay.delete_orphan_records
       OutcomeService.delay.publish_review_due
-      UsageReportService.send
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
     end
-    
+
     DemoService.delay.ensure_queue
     
     if (Time.now.hour == 0 && Time.now.mday == 1)
