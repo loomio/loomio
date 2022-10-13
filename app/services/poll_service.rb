@@ -61,7 +61,6 @@ class PollService
                                   actor: actor,
                                   user_ids: params[:recipient_user_ids],
                                   emails: params[:recipient_emails],
-                                  include_actor: params[:include_actor],
                                   audience: params[:recipient_audience])
     end
 
