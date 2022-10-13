@@ -67,6 +67,7 @@ class PollService
     stances = create_stances(poll: poll, actor: actor,
                              user_ids: params[:recipient_user_ids],
                              emails: params[:recipient_emails],
+                             include_actor: params[:include_actor],
                              audience: params[:recipient_audience])
 
     # params[:notify_recipients] will often be nil/undefined, which means we do want to notify
@@ -98,7 +99,7 @@ class PollService
                                   recipient_message: params[:recipient_message])
   end
 
-  def self.create_stances(poll:, actor:, user_ids: [], emails: [], audience: nil)
+  def self.create_stances(poll:, actor:, user_ids: [], emails: [], audience: nil, include_actor: false)
     # user_ids = poll.base_guest_audience_query.where('users.id': Array(user_ids)).pluck(:id)
     # audience_ids = AnnouncementService.audience_users(poll, audience).pluck('users.id')
 
@@ -110,6 +111,7 @@ class PollService
                                          model: poll,
                                          user_ids: user_ids,
                                          audience: audience,
+                                         include_actor: include_actor,
                                          emails: emails).where.not(id: existing_voter_ids)
     volumes = {}
 
