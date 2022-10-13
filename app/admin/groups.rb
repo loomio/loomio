@@ -9,10 +9,6 @@ ActiveAdmin.register Group, as: 'Group' do
     def find_resource
       Group.friendly.find(params[:id])
     end
-
-    def scoped_collection
-      end_of_association_chain.not_demo
-    end
   end
 
   actions :index, :show, :new, :edit, :update, :create
@@ -24,6 +20,7 @@ ActiveAdmin.register Group, as: 'Group' do
   filter :created_at
 
   scope :parents_only
+  scope :not_demo
 
   batch_action :delete_spam do |group_ids|
     group_ids.each do |group_id|
