@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600px" height="600px" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_wellington</title>
+    <g id="icon_wellington" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon_gold" fill-rule="nonzero">
+            <circle id="Oval" fill="#7F9EA0" cx="300" cy="300" r="300"></circle>
+            <polygon id="Path" fill="#FFFFFF" points="160 116 225.497367 116 225.497367 422.578994 460 422.578994 460 485 160 485"></polygon>
+        </g>
+    </g>
+</svg>
