@@ -1,4 +1,5 @@
-<% if poll.show_results? && poll.decided_voters_count > 0 %>
+<% if (poll.decided_voters_count > 0) || poll.closed_at %>
+<% if poll.show_results? %>
 **<%= t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results') %>**
 
 <% if poll.poll_type == "meeting" %>
@@ -11,3 +12,4 @@
 **<%= t('poll_common_action_panel.results_hidden_until_closed') %>**
 <% end %>
 <%= render "chatbot/markdown/undecided", poll: poll %>
+<% end %>
