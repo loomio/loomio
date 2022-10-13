@@ -10,8 +10,7 @@
   }
   .color-swatch{
     display: inline-block;
-    width: 64px;
-    width: 64px;
+    width: 192px;
     margin: 16px;
     padding: 16px;
     text-align: center;
@@ -42,7 +41,7 @@
     %img.svg-icon{src: "/brand/icon_#{name}.svg"}
 
 %h2 png icons
-- [150, 300].each do |size|
+- [128,256].each do |size|
   - colors.keys.each do |name|
     %a{href: "/brand/icon_#{name}_#{size}h.png"}
       %img{style: "height: #{size/2}px; width: auto", src: "/brand/icon_#{name}_#{size}h.png"}
@@ -57,6 +56,6 @@
 - colors.keys.each do |color|
   %p=color
   - '48 64 96 128 192 256'.split(' ').map(&:to_i).each do |size|
-    %div{style: "background-color: #{color == :white ? '#3D3D3D' : '#fff'}"}
+    %div{style: "background-color: #{color == :white ? AppConfig.theme[:brand_colors][:ink] : ''}"}
       %a{href: "/brand/logo_#{color}_#{size}h.png"}
         %img.png-logo{style: "height: #{size/2}px; width: auto", src: "/brand/logo_#{color}_#{size}h.png"}

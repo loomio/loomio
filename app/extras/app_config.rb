@@ -38,16 +38,20 @@ class AppConfig
   end
 
   def self.theme
+
     brand_colors = {
       gold: "#DCA034",
-      ink: "#3D3D3D",
+      ink: "#293C4A",
+      wellington: "#7F9EA0",
+      sunset: "#E4C2B9",
       sky: "#658AE7",
-      sunset: "#EBB6A5",
-      rock: "#BE5247",
-      white: "#fff"
+      rock: "#C77C3B",
+      white: "#FFFFFF"
     }
+
     # here are some useful variations on these colours
-    # https://maketintsandshades.com/#DCA034,3D3D3D,658AE7,EBB6A5,BE5247,ffffff
+    # https://maketintsandshades.com/#DCA034,293C4A,7F9EA0,E4C2B9,658AE7,C77C3B
+
     logo_color = :gold
 
     {
