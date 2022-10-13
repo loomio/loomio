@@ -29,6 +29,7 @@ class UserInviter
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)
 
     actor.ability.authorize!(:announce, model)    if audience == 'group'
+    actor.ability.authorize!(:add_members, model) if audience == 'group'
     actor.ability.authorize!(:add_members, model) if member_ids.any?
     actor.ability.authorize!(:add_guests, model)  if emails.any? or guest_ids.any?
   end

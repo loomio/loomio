@@ -33,7 +33,8 @@ module Ability::Discussion
     can [:announce], ::Discussion do |discussion|
       if discussion.group_id
         discussion.group.admins.exists?(user.id) ||
-        (discussion.group.members_can_announce && discussion.members.exists?(user.id))
+        (discussion.group.members_can_announce && 
+          (discussion.members.exists?(user.id) || discussion.admins.exists?(user.id)) )
       else
         discussion.admins.exists?(user.id)
       end

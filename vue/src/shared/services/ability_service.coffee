@@ -88,8 +88,9 @@ export default new class AbilityService
   canAnnounceDiscussion: (discussion) ->
     return false if discussion.discardedAt
     if discussion.groupId
-      discussion.group().adminsInclude(user()) or
-      (discussion.group().membersCanAnnounce and discussion.group().membersInclude(user()))
+      discussion.group().adminsInclude(user()) ||
+      (discussion.group().membersCanAnnounce &&
+       (discussion.group().membersInclude(user()) || discussion.adminsInclude(user())))
     else
       !discussion.id || discussion.adminsInclude(user())
 
@@ -120,7 +121,8 @@ export default new class AbilityService
     return false if poll.discardedAt
     if poll.groupId
       poll.group().adminsInclude(user()) ||
-      (poll.group().membersCanAnnounce && poll.adminsInclude(user()))
+      (poll.group().membersCanAnnounce && 
+        (poll.group().membersInclude(user()) || poll.adminsInclude(user())))
     else
       poll.adminsInclude(user())
 
