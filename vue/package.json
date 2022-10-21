@@ -103,7 +103,7 @@
     "js-yaml-loader": "^1.2.2",
     "sass": "^1.55.0",
     "sass-loader": "^10.1.1",
-    "vue-cli-plugin-coffee": "1.0.0",
+    "vue-cli-plugin-coffee": "1.0.2",
     "vue-cli-plugin-pug": "^2.0.0",
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.6.14",
