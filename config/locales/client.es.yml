@@ -971,6 +971,18 @@ es:
       closed: "Este hilo ha sido cerrado. Ya no aparecerá en el escritorio, y será listado bajo 'Cerrado' en la página principal del grupo"
   delete_group_modal:
     title: Eliminar grupo
+    subgroup_title: Eliminar subgrupo
+    parent_body: |
+        <h2>¡Este es su grupo principal, no un subgrupo!</h2>
+        <br>
+        Si elimina esto, cualquier subgrupo también se eliminará permanentemente.
+        Su suscripción a Loomio también se cancelará.
+        Es muy recomendable exportar los datos de su grupo y descargar manualmente cualquier archivo importante antes de hacer esto.
+        ¿Está seguro de que desea continuar?
+    body: |
+        ¿Está seguro de que desea eliminar este subgrupo?
+        Todos los hilos, encuestas, archivos y otro contenido del grupo se eliminarán permanentemente.
+        Se recomienda exportar los datos del grupo y descargar manualmente los archivos importantes antes de continuar.
     confirm: "Escribe '%{name}' para confirmar que quieres borrar este grupo."
     success: 'Se ha archivado este grupo y se ha programado eliminarlo permanentemente en 2 semanas. '
   group_page:

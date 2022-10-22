@@ -971,6 +971,20 @@ fr:
       closed: "Cette discussion a été close. Elle ne sera plus affichée sur le tableau de bord, et sera affichée dans les discussions closes sur la page du groupe"
   delete_group_modal:
     title: Supprimer le groupe
+    subgroup_title: Supprimer le sous-groupe
+    parent_body: |
+        <h2>Il s’agit de votre groupe parent - pas d’un sous-groupe!</h2>
+        <br>
+        Si vous supprimez ceci, tous les sous-groupes seront également supprimés définitivement.
+
+        Votre abonnement Loomio sera également annulé.
+
+        Il est fortement recommandé d’exporter les données de votre groupe et de télécharger manuellement tous les fichiers importants avant de le faire.
+        Êtes-vous sûr de vouloir continuer?
+    body: |
+        Voulez-vous vraiment supprimer ce sous-groupe ?
+        Tous les fils de discussion, sondages, fichiers et autres contenus de groupe seront définitivement supprimés.
+        Il est recommandé d’exporter les données du groupe et de télécharger manuellement tous les fichiers importants avant de continuer.
     confirm: "Saisissez '%{name}' pour confirmer que vous voulez supprimer ce groupe."
     success: Ce groupe a été archivé et il est planifié pour un effacement définitif dans 2 semaines.
   group_page:
