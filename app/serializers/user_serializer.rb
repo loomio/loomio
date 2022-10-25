@@ -23,6 +23,6 @@ class UserSerializer < AuthorSerializer
   end
 
   def include_email?
-    scope && scope[:include_email]
+    false
   end
 end
