@@ -20,8 +20,8 @@ module Boot
         plugins:             { installed: [], outlets: [], routes: [] },
         theme:               AppConfig.theme,
         sentry_dsn:          ENV['SENTRY_PUBLIC_DSN'],
-        plausable_src:       ENV['PLAUSABLE_SRC'],
-        plausable_site:      ENV['PLAUSABLE_SITE'],
+        plausible_src:       ENV['PLAUSIBLE_SRC'],
+        plausible_site:      ENV['PLAUSIBLE_SITE'],
         features: {
           app:               AppConfig.app_features
         },

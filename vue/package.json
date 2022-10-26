@@ -17,8 +17,8 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@sentry/browser": "^7.15.0",
-    "@sentry/vue": "^7.15.0",
     "@sentry/tracing": "^7.15.0",
+    "@sentry/vue": "^7.15.0",
     "@tiptap/core": "2.0.0-beta.199",
     "@tiptap/extension-blockquote": "2.0.0-beta.199",
     "@tiptap/extension-bold": "2.0.0-beta.199",
@@ -69,6 +69,7 @@
     "marked": "^3.0.8",
     "md5": "2.3.0",
     "object.fromentries": "^2.0.5",
+    "plausible-tracker": "^0.3.8",
     "pretty-bytes": "^6.0.0",
     "socket.io-client": "^4.4.1",
     "string.prototype.matchall": "^4.0.7",

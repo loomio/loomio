@@ -9,6 +9,7 @@ import AbilityService     from '@/shared/services/ability_service'
 import RecordLoader       from '@/shared/services/record_loader'
 import { capitalize, take, keys, every, orderBy, debounce } from 'lodash'
 import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
+import PlausibleService from '@/shared/services/plausible_service'
 
 export default
   mixins: [ AuthModalMixin ]
@@ -54,6 +55,7 @@ export default
         @openAuthModal()
 
     cloneTemplate: (id) ->
+      PlausibleService.trackEvent('start_demo')
       Flash.wait('templates.generating_demo')
       @processing = true
       Records.post
@@ -76,11 +78,11 @@ v-main
     p(v-t="'templates.look_and_feel'")
     v-card.mb-3(v-if='!loaded' aria-hidden='true')
       v-list(two-line)
-        loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
+        loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]', :key='index' )
 
     v-overlay(:value="processing")
     div(v-if="loaded")
-      v-card.my-4(v-for="demo in demos" :key="demo.id")
+      v-card.my-4(v-for="demo in demos", :key="demo.id")
         v-img(:src="demo.group().coverUrl" max-height="120")
         v-card-title {{ demo.name }}
         v-card-text {{ demo.description }}

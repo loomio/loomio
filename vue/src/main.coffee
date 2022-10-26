@@ -25,9 +25,10 @@ import CloseModal from '@/mixins/close_modal'
 import UrlFor from '@/mixins/url_for'
 import FormatDate from '@/mixins/format_date'
 import Vue2TouchEvents from 'vue2-touch-events'
+import PlausibleService from '@/shared/services/plausible_service'
+
 
 Vue.use(Vue2TouchEvents)
-
 Vue.mixin(CloseModal)
 Vue.mixin(WatchRecords)
 Vue.mixin(UrlFor)
@@ -42,13 +43,9 @@ import Session from '@/shared/services/session'
 boot (data) ->
   Session.apply(data)
 
-  if AppConfig.plausable_src
-    node = document.createElement('script');
-    node.setAttribute('src', AppConfig.plausable_src);
-    node.setAttribute('data-domain', AppConfig.plausable_site);
-    node.setAttribute('defer','');
-    document.head.appendChild(node);
-    
+  PlausibleService.boot()
+  PlausibleService.trackPageview()
+
   if AppConfig.sentry_dsn
     Sentry.configureScope (scope) ->
       scope.setUser pick(Session.user(), ['id', 'name', 'email', 'username'])
