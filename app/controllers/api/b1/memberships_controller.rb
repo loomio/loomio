@@ -3,8 +3,10 @@ class API::B1::MembershipsController < API::B1::BaseController
     raise CanCan::AccessDenied unless current_webhook.permissions.include?('manage_memberships')
 
     current_emails = User.active.where(id: current_webhook.group.memberships.pluck(:user_id)).pluck(:email)
-    add_emails = params[:emails] - current_emails
-    remove_emails = current_emails - params[:emails]
+
+    params_emails = params.fetch(:emails, [])
+    add_emails = params_emails - current_emails
+    remove_emails = current_emails - params_emails
 
     self.collection = GroupService.invite(
       group: current_webhook.group,
