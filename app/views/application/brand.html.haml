@@ -1,6 +1,6 @@
 %h1 Loomio brand assets
 %p If you can, use the SVG, it will always look best.
-%p You can download and copy these, or hotlink using copy url.
+%p You can download or hotlink using copy url.
 
 - colors = AppConfig.theme[:brand_colors]
 
@@ -35,13 +35,13 @@
     %span=name
 
 %h2 svg icons
--# svg icons
 - colors.each_pair do |name, val|
   %a{href: "/brand/icon_#{name}.svg"}
     %img.svg-icon{src: "/brand/icon_#{name}.svg"}
 
 %h2 png icons
 - [128,256].each do |size|
+  %br
   - colors.keys.each do |name|
     %a{href: "/brand/icon_#{name}_#{size}h.png"}
       %img{style: "height: #{size/2}px; width: auto", src: "/brand/icon_#{name}_#{size}h.png"}
@@ -56,6 +56,20 @@
 - colors.keys.each do |color|
   %p=color
   - '48 64 96 128 192 256'.split(' ').map(&:to_i).each do |size|
-    %div{style: "background-color: #{color == :white ? AppConfig.theme[:brand_colors][:ink] : ''}"}
+    %div{style: "padding-bottom: 16px; text-align: center; background-color: #{color == :white ? AppConfig.theme[:brand_colors][:ink] : ''}"}
       %a{href: "/brand/logo_#{color}_#{size}h.png"}
         %img.png-logo{style: "height: #{size/2}px; width: auto", src: "/brand/logo_#{color}_#{size}h.png"}
+
+%h2 svg banners
+- colors.each_pair do |name, value|
+  %div.logo-swatch
+    %a{href: "/brand/banner_#{name}.svg"}
+      %img{src: "/brand/banner_#{name}.svg"}
+
+%h2 png banners
+- colors.keys.each do |color|
+  %p=color
+  - '400 800'.split(' ').map(&:to_i).each do |size|
+    %div
+      %a{href: "/brand/banner_#{color}_#{size}h.png"}
+        %img.png-logo{style: "height: #{size/2}px; width: auto", src: "/brand/banner_#{color}_#{size}h.png"}
