@@ -305,6 +305,7 @@ Rails.application.routes.draw do
 
   get '/start_group', to: redirect('/try')
 
+  get 'recipes/export'                     => 'recipes#export', as: :recipe_export
   get 'try'                                => 'application#index'
   get 'dashboard'                          => 'application#index', as: :dashboard
   get 'dashboard/:filter'                  => 'application#index'
@@ -335,7 +336,7 @@ Rails.application.routes.draw do
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
-  get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
+  get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export # is this used?
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment

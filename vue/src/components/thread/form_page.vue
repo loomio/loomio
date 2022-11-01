@@ -36,6 +36,14 @@ export default
           @discussion = discussion.cloneTemplate()
           if discussion.groupId && AbilityService.canStartThread(discussion.group())
             @discussion.groupId = discussion.groupId
+      else if recipeUrl = @$route.query.recipe_url
+        fetch(@$route.query.recipe_url, {mode: 'no-cors'}).then (response) =>
+          return response.text()
+        .then (html) =>
+          console.log('html', html)
+          parser = new DOMParser();
+          doc = parser.parseFromString(html, 'text/html');
+          console.log(doc.getElementsByTagName('table'))
       else if @groupId = parseInt(@$route.query.group_id)
         if @$route.query.blank_template
           Records.groups.findOrFetchById(@groupId).then =>
