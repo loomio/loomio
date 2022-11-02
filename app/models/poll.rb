@@ -221,7 +221,7 @@ class Poll < ApplicationRecord
     when 'ranked_choice'
       %w[chart name rank score_percent score average]
     when 'dot_vote'
-      %w[chart name score_percent score average voter_count voters]
+      %w[chart name score_percent score average voter_count]
     when 'score'
       %w[chart name score average voter_count]
     when 'poll'
