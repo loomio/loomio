@@ -107,7 +107,7 @@ export default new class ThreadService
             model: discussion
 
     notification_history:
-      name: 'action_dock.show_notifications'
+      name: 'action_dock.notification_history'
       icon: 'mdi-bell-ring-outline'
       menu: true
       perform: ->
