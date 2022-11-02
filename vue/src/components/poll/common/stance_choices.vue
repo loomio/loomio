@@ -46,3 +46,14 @@ export default
         span.ml-2.text--secondary
           |{{ choice.pollOption.optionName() }}
 </template>
+<style lang="sass">
+.poll-common-stance-choices
+  position: relative
+  max-height: 64px
+  overflow: hidden
+
+.poll-common-stance-choices:hover
+  max-height: none
+  overflow: show
+</style>
+
