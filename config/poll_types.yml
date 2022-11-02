@@ -203,7 +203,7 @@ dot_vote:
   validate_min_score: true
   validate_dots_per_person: true
   order_results_by: total_score_desc
-  options_have_meaning: false
+  options_have_meaning: true
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.dot_vote_title
@@ -222,7 +222,7 @@ score:
   validate_min_score: true
   validate_max_score: true
   order_results_by: total_score_desc
-  options_have_meaning: false
+  options_have_meaning: true
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.score_title

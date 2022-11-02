@@ -15,7 +15,7 @@ export default
       {text: 'Thumbs down', value: 'disagree'},
       {text: 'Thumbs sideways', value: 'abstain'},
       {text: 'Hand up', value: 'block'}
-    ]
+    ],
 
   computed:
     hasOptionIcon: -> @poll.config().has_option_icon
@@ -35,9 +35,15 @@ v-card.poll-common-option-form
     v-spacer
     dismiss-modal-button
   v-card-text
-    v-text-field(:label="$t('poll_option_form.option_name')" v-model="clone.name", :hint="$t('poll_option_form.option_name_hint')")
-    v-select(v-if="hasOptionIcon", :label="$t('poll_option_form.icon')" v-model="clone.icon", :items="icons")
     v-text-field(
+      :label="$t('poll_option_form.option_name')"
+      v-model="clone.name"
+      :hint="$t('poll_option_form.option_name_hint')"
+      :rules="nameRules"
+      counter="85"
+    )
+    v-select(v-if="hasOptionIcon", :label="$t('poll_option_form.icon')" v-model="clone.icon", :items="icons")
+    v-textarea(
       v-if="hasOptionMeaning"
       :label="$t('poll_option_form.meaning')"
       :hint="$t('poll_option_form.meaning_hint')"
