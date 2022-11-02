@@ -92,6 +92,7 @@ export default
       @newOption = null
       if option.id
         option.name = null
+        option.meaning = null
         option['_destroy'] = 1
       else
         @pollOptions = without(@pollOptions, option)
