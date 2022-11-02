@@ -148,6 +148,7 @@ class PermittedParams < Struct.new(:params)
      :recipient_message,
      :template,
      :source_template_id,
+     :recipe_url,
      :tag_ids, {tag_ids: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},

@@ -36,14 +36,18 @@ export default
           @discussion = discussion.cloneTemplate()
           if discussion.groupId && AbilityService.canStartThread(discussion.group())
             @discussion.groupId = discussion.groupId
-      else if recipeUrl = @$route.query.recipe_url
-        fetch(@$route.query.recipe_url, {mode: 'no-cors'}).then (response) =>
-          return response.text()
-        .then (html) =>
-          console.log('html', html)
-          parser = new DOMParser();
-          doc = parser.parseFromString(html, 'text/html');
-          console.log(doc.getElementsByTagName('table'))
+      else if @$route.query.recipe_url
+        console.log('posting for url ', @$route.query.recipe_url)
+        Records.post
+          path: 'recipes'
+          params:
+            url: @$route.query.recipe_url
+        .then (data) =>
+          console.log(data['recipes'][0]['discussion_templates'][0])
+          params = data['recipes'][0]['discussion_templates'][0]
+          @discussion = Records.discussions.build(params)
+          @discussion.recipeUrl = @$route.query.recipe_url
+
       else if @groupId = parseInt(@$route.query.group_id)
         if @$route.query.blank_template
           Records.groups.findOrFetchById(@groupId).then =>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_13_013717) do
+ActiveRecord::Schema.define(version: 2022_11_01_133558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -282,6 +282,7 @@ ActiveRecord::Schema.define(version: 2022_10_13_013717) do
     t.integer "discarded_by"
     t.boolean "template", default: false, null: false
     t.integer "source_template_id"
+    t.string "recipe_url"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"
@@ -707,6 +708,14 @@ ActiveRecord::Schema.define(version: 2022_10_13_013717) do
     t.index ["created_at"], name: "index_reactions_on_created_at"
     t.index ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type"
     t.index ["user_id"], name: "index_reactions_on_user_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "url"
+    t.string "title"
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|

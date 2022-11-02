@@ -4,10 +4,12 @@ import { map, compact, pick, pickBy, omit } from 'lodash'
 import EventBus from '@/shared/services/event_bus'
 import openModal      from '@/shared/helpers/open_modal'
 import StrandActionsPanel from '@/components/strand/actions_panel'
+import RecipeBadge from '@/components/discussion/recipe_badge'
 
 export default
   components:
     StrandActionsPanel: StrandActionsPanel
+    RecipeBadge: RecipeBadge
   props:
     event: Object
     eventable: Object
@@ -70,6 +72,8 @@ export default
         v-icon mdi-chevron-right
     v-spacer
     discussion-template-badge.mr-2(:discussion="discussion")
+    recipe-badge.mr-2(:discussion="discussion" v-if="discussion.recipeUrl")
+
     v-chip(
       v-if="discussion.private"
       small outlined

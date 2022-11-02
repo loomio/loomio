@@ -3,7 +3,8 @@ import AppConfig    from '@/shared/services/app_config'
 import Session      from '@/shared/services/session'
 import Records      from '@/shared/services/records'
 import EventBus     from '@/shared/services/event_bus'
-import {map, without, compact} from 'lodash'
+import utils         from '@/shared/record_store/utils'
+import {map, without, compact, camelCase} from 'lodash'
 
 export default
   props:
@@ -11,7 +12,7 @@ export default
     group: Object
 
   data: ->
-    polls: {threadPolls: [], groupPolls: [], defaultPolls: []}
+    polls: {recipePolls: [], threadPolls: [], groupPolls: [], defaultPolls: []}
     sourceTemplate: null
     expanded: Session.user().experiences['pollTypes.expanded']
 
@@ -56,6 +57,16 @@ export default
     if @discussion && @discussion.sourceTemplateId
       Records.remote.fetch(path: "polls", params: {template: 1, discussion_id: @discussion.sourceTemplateId})
 
+    if @discussion && @discussion.recipeUrl
+      Records.remote.fetch(path: "recipes", params: {url: @discussion.recipeUrl}).then (data) =>
+        console.log 'recipeData', data
+        data['recipes'][0]['poll_templates'].forEach (params) =>
+          poll = Records.polls.build(utils.parseJSON(params))
+          console.log "poll", poll
+          poll.applyPollTypeDefaults()
+          poll
+          @polls['recipePolls'].push(poll)
+
     @watchRecords
       collections: ["polls"]
       query: (records) =>
@@ -97,6 +108,7 @@ export default
     v-subheader(v-t="i18nForKind[kind]" v-if="kind == 'defaultPolls' && pollKinds.length > 1")
     v-subheader(v-if="kind == 'groupPolls'" v-t="'poll_common.custom_poll_types'")
     v-subheader(v-if="kind == 'threadPolls'" v-t="'poll_common.example_polls_from_thread_template'")
+    v-subheader(v-if="kind == 'recipePolls'") recipePolls
     v-list.decision-tools-card__poll-types(two-line dense)
       v-list-item.decision-tools-card__poll-type(
         @click="cloneAndUsePoll(poll)"

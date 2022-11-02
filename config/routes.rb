@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
+      resources :recipes, only: [:create]
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
       resources :chatbots, only: [:create, :destroy, :index, :update] do

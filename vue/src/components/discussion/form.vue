@@ -153,6 +153,12 @@ export default
             )
 
             v-text-field#discussion-title.discussion-form__title-input(
+              v-if="discussion.recipeUrl != null"
+              label="recipeUrl"
+              v-model='discussion.recipeUrl'
+            )
+
+            v-text-field#discussion-title.discussion-form__title-input(
               :label="$t('discussion_form.title_label')"
               :placeholder="$t('discussion_form.title_placeholder')"
               v-model='discussion.title' maxlength='255' required

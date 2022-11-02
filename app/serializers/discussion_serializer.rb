@@ -36,6 +36,7 @@ class DiscussionSerializer < ApplicationSerializer
              :newest_first,
              :max_depth,
              :discarded_at,
+             :recipe_url,
              :secret_token,
              :source_template_id,
              :template

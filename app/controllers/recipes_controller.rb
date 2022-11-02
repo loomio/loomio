@@ -4,5 +4,4 @@ class RecipesController < ApplicationController
 		html = RecipeService.export_discussion(d)
 		render html: html
 	end
-
 end

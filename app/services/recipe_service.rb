@@ -1,28 +1,30 @@
 class RecipeService
+  def self.find_or_create(url:)
+    @recipe = Recipe.find_by(url: url)
+    return @recipe if @recipe
+    create(url: url)
+  end
+  
 	def self.create(url:)
     response = HTTParty.get(url)
     return nil if response.code != 200
 
     body = response.body
-    dom = Nokogiri::HTML::Document.parse(body)
-    title = dom.title
 
-    @recipe = Recipe.new(url: url, title: title, body: body)
-    # doc.css('table').each do |table|
-    #   table.children.css('tr')
-    # end
+    @recipe = Recipe.create(url: url, body: body)
+    @recipe
 	end
 
   def self.export_discussion(d)
-    str = hash_to_html(discussion_to_hash(d))
+    str = hash_to_html(discussion_to_hash(d), 'thread')
     d.polls.each do |p|
-      str << hash_to_html(poll_to_hash(p))
+      str << hash_to_html(poll_to_hash(p), 'poll')
     end
     str
   end
 
-  def self.hash_to_html(h)
-    str = "<table>\n"
+  def self.hash_to_html(h, kind)
+    str = "<table data-loomio-#{kind}>\n"
     first = true
 
     h.each_pair do |key, value|
@@ -58,7 +60,7 @@ class RecipeService
   def self.poll_to_hash(p)
     vals = {}
     vals['Poll fields'] = 'values'
-    
+
     fields = %w[
       title
       poll_type
