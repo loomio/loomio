@@ -71,3 +71,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+
+# Ruby bundle and gems
+/vendor
