@@ -2,6 +2,7 @@ class DemoService
 	def self.refill_queue
 		return unless ENV['FEATURES_DEMO_GROUPS']
 		demo = Demo.where('demo_handle is not null').last
+		return unless demo
 
 		expected = 2
 		remaining = Redis::List.new('demo_group_ids').value.size
