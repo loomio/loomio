@@ -26,6 +26,15 @@ export default
     searchLoader: null
     groupIds: []
     per: 25
+    recipes: [
+      {url: 'https://help.loomio.com/en/lets_go_to_the_moon', name: "Let's learn how Loomio works, together!"}
+      {url: 'https://help.loomio.com/en/welcome_and_introductions', name: "Welcome and introductions"}
+      {url: 'https://help.loomio.com/en/user_manual/polls/decisions/index.html', name: "Simple decision process"}
+      {url: 'https://help.loomio.com/en/guides/advice_process/index.html', name: "Advice process"}
+      {url: 'https://help.loomio.com/en/guides/advice_process/index.html', name: "Share news and links"}
+      {url: 'https://help.loomio.com/en/how_will_we_make_decisions_together', name: "How do we want to make decisions together?"}
+      {url: 'https://help.loomio.com/en/how_will_we_make_decisions_together', name: "What's our purpose?"}
+    ]
 
   methods:
     routeQuery: (o) ->
@@ -246,17 +255,37 @@ div.discussions-panel(v-if="group")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
       .discussions-panel__content(v-if="!$route.query.q")
-        .discussions-panel__list--empty.pa-4(v-if='noThreads' :value="true")
-          p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
-          p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
+        .discussions-panel__list--empty.pa-4(v-if='noThreads && canViewPrivateContent')
+          //- p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
+          p Welcome to your new Loomio group!
+          p There are no threads yet, so here are some recipes to inspire you:
+          ul
+            li(v-for="recipe in recipes")
+              a(:href="'/d/new?recipe_url='+recipe.url") {{recipe.name}}
+          p.mt-4
+            a(href="https://help.loomio.com") Find more recipes on Loomio Help
+        .discussions-panel__list--empty.pa-4(v-if='noThreads && !canViewPrivateContent')
+          p.text-center(v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(two-line)
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions" :key="thread.id" :thread="thread" group-page)
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
+            thread-preview(
+              :show-group-name="groupIds.length > 1"
+              v-for="thread in pinnedDiscussions"
+              :key="thread.id"
+              :thread="thread"
+              group-page
+            )
+            thread-preview(
+              :show-group-name="groupIds.length > 1"
+              v-for="thread in regularDiscussions"
+              :key="thread.id"
+              :thread="thread"
+              group-page
+           )
 
         loading(v-if="loading && discussions.length == 0")
 
-        v-pagination(v-model="page" :length="totalPages" :total-visible="7" :disabled="totalPages == 1")
+        v-pagination(v-model="page", :length="totalPages", :total-visible="7", :disabled="totalPages == 1")
         .d-flex.justify-center
           router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
 

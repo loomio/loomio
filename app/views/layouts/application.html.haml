@@ -11,6 +11,7 @@
     %meta{:content => AppConfig.theme[:site_name], :property => "og:site_name"}
     %meta{:content => "website", :property => "og:type"}
     %link{rel: "icon", href: AppConfig.theme[:icon_src]}
+    %link{rel: "canonical", href: request.original_url}
     = stylesheet_link_tag 'vtfy/themeauto'
 
     = raw vue_css_includes

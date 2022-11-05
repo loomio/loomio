@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
+	layout 'basic'
 	def export
-		d = load_and_authorize(:discussion)
-		html = RecipeService.export_discussion(d)
-		render html: html
+		@discussion = load_and_authorize(:discussion)
+		@html = RecipeService.export_discussion(@discussion)
 	end
 end

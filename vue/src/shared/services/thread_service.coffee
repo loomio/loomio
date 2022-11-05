@@ -127,6 +127,16 @@ export default new class ThreadService
       perform: ->
         hardReload LmoUrlService.discussion(discussion, {export: 1}, {absolute: true, print: true})
 
+    share_recipe:
+      name: 'common.action.share_recipe'
+      icon: 'mdi-chef-hat'
+      dock: 0
+      menu: true
+      canPerform: ->
+        AbilityService.canExportThread(discussion)
+      perform: ->
+        hardReload "/recipes/export?discussion_key=#{discussion.key}"
+
     pin_thread:
       icon: 'mdi-pin-outline'
       name: 'action_dock.pin_thread'

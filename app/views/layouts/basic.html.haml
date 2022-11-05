@@ -3,16 +3,16 @@
   %head
     %title= AppConfig.theme[:site_name]
     %meta{charset: 'utf-8'}
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     %link{rel: "shortcut icon",    href: AppConfig.theme[:icon_src]}
     = stylesheet_link_tag 'basic/all'
     = stylesheet_link_tag 'web'
     = stylesheet_link_tag 'marketing/all'
     = render 'plausible'
   %body
-    %header
-      %a{href: '/'}
-        %img{style: 'max-width: 256px', src: AppConfig.theme[:app_logo_src]}
+    .container
+      %header.text-center
+        %a{href: '/'}
+          %img{style: 'max-height: 24px', src: AppConfig.theme[:app_logo_src]}
     .container
       = yield
 

@@ -312,6 +312,7 @@ en:
       add_people: Add People
       zoom: Zoom
       align: Align
+      share_recipe: Share recipe
     formatting_help:
       label: 'Formatting'
       title: 'Learn how to use Markdown to format your text'
