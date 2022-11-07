@@ -68,7 +68,7 @@
     "lokijs": "1.5.12",
     "marked": "^3.0.8",
     "md5": "2.3.0",
-    "object.fromentries": "^2.0.5",
+    "object.fromentries": "^2.0.6",
     "plausible-tracker": "^0.3.8",
     "pretty-bytes": "^6.0.0",
     "socket.io-client": "^4.4.1",
