@@ -112,7 +112,7 @@ export default new class AbilityService
   canAddGuestsDiscussion: (discussion) ->
     if discussion.groupId
       discussion.group().adminsInclude(user()) ||
-      (discussion.group().membersCanAddGuests && discussion.membersInclude(user()))
+      (discussion.group().membersCanAddGuests && discussion.group().membersInclude(user()))
     else
       !discussion.id || discussion.adminsInclude(user())
 
@@ -120,7 +120,7 @@ export default new class AbilityService
     return false if poll.discardedAt
     if poll.groupId
       poll.group().adminsInclude(user()) ||
-      (poll.group().membersCanAnnounce && poll.adminsInclude(user()))
+      (poll.group().membersCanAnnounce && poll.group.membersInclude((user())))
     else
       poll.adminsInclude(user())
 
@@ -130,7 +130,7 @@ export default new class AbilityService
   canAddGuestsPoll: (poll) ->
     if poll.groupId
       poll.group().adminsInclude(user()) ||
-      (poll.group().membersCanAddGuests && poll.adminsInclude(user()))
+      (poll.group().membersCanAddGuests && poll.group(user()))
     else
       poll.adminsInclude(user())
 

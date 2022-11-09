@@ -38,7 +38,7 @@ module Ability::Poll
     can [:announce, :remind], ::Poll do |poll|
       if poll.group_id
         poll.group.admins.exists?(user.id) ||
-        (poll.group.members_can_announce && poll.admins.exists?(user.id))
+        (poll.group.members_can_announce && poll.group.members.exists?(user.id))
       else
         poll.admins.exists?(user.id)
       end
