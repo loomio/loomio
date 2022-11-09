@@ -37,6 +37,7 @@ module Ability::Poll
 
     can [:announce, :remind], ::Poll do |poll|
       if poll.group_id
+        Webhook.where(group_id: poll.group_id, actor_id: user.id).where.any(permissions: 'create_poll').exists? ||
         poll.group.admins.exists?(user.id) ||
         (poll.group.members_can_announce && poll.group.members.exists?(user.id))
       else
