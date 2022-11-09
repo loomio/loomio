@@ -46,6 +46,7 @@ namespace :deploy do
     puts "fetch loomio-website"
     run_commands("git clone -b main git@github.com:loomio/loomio-website.git loomio-website")
     Dir.chdir("loomio-website") do
+      run_commands("npm install")
       run_commands("npm run build")
     end
     run_commands("cp -R ./loomio-website/_site/* ./public/")
