@@ -81,7 +81,7 @@ v-app.app-is-booted
   navbar
   sidebar
   router-view(v-if="!pageError")
-  common-error(v-if="pageError" :error="pageError")
+  common-error(v-if="pageError", :error="pageError")
   v-spacer
   common-footer
   modal-launcher

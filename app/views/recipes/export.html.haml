@@ -1,17 +1,18 @@
 %html
-	%head
-		%title=@discussion.title
-	%body
-		%main
-			%h1 Recipe for: #{@discussion.title}
-			%p 
-				This page contains a number of ways that you can share the template for your discussion and polls with others.
-				%br
-				This means people can start a discussion or decision, using your thread as a template.
-				%br
-				%a{href: "https://help.loomio.com/"} View recipies on Loomio Help
-				In Loomio, a recipe is a webpage (such as an article or blog post) that explains how to run a particular faciliaton process. It's special because you can apply the recipe with your group in a single click. This is made possible just by including some simple tables within the article.
+  %head
+    %title=@discussion.title
+  %body
+    .container.mx-4
+      %h1 Share a template: #{@discussion.title}
+      %p Loomio templates let you start a new decision with a couple of clicks, by copying an existing process.
+      %p 
+        Take a look at
+        %a{href: "https://help.loomio.com/", target: "_blank"} Loomio Help
+        if you'd like to see some examples.
 
-			= raw @html
+      %p This page provides snippets you can use to easily embed templates within your own documentation.
 
-			%a{href: "https://www.loomio.com/d/new?#{request.original_url}"} Use this recipe on Loomio.com
+    %main
+      = raw @html
+
+      %a{href: "https://www.loomio.com/d/new?#{request.original_url}"} Use this recipe on Loomio.com
