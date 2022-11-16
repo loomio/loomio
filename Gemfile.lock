@@ -226,7 +226,7 @@ GEM
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
     formtastic_i18n (0.7.0)
-    friendly_id (5.4.2)
+    friendly_id (5.5.0)
       activerecord (>= 4.0.0)
     gapic-common (0.11.1)
       faraday (>= 1.9, < 3.a)
@@ -594,7 +594,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
-  friendly_id (~> 5.4.2)
+  friendly_id (~> 5.5.0)
   google-cloud-translate
   gravtastic
   griddler!
