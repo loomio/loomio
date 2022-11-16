@@ -4,6 +4,7 @@ import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
 import openModal from '@/shared/helpers/open_modal'
 import Flash from '@/shared/services/flash'
+import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
 
 export default new class CommentService
   actions: (comment, vm) ->
@@ -39,13 +40,17 @@ export default new class CommentService
       menu: isOwnComment
       canPerform: -> AbilityService.canRespondToComment(comment)
       perform: ->
-        vm.newComment = Records.comments.build
-          bodyFormat: "html"
-          body: ""
-          discussionId: comment.discussion().id
-          authorId: Session.user().id
-          parentId: comment.id
-        vm.showReplyForm = !vm.showReplyForm
+        if vm.showReplyForm
+          if RescueUnsavedEditsService.okToLeave(vm.newComment)
+            vm.showReplyForm = false
+        else
+          vm.newComment = Records.comments.build
+            bodyFormat: "html"
+            body: ""
+            discussionId: comment.discussion().id
+            authorId: Session.user().id
+            parentId: comment.id
+          vm.showReplyForm = true
 
     edit_comment:
       name: 'common.action.edit'
