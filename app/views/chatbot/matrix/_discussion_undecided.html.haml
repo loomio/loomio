@@ -1,0 +1,4 @@
+- usernames = eventable.polls.map(&:undecided_voters).flatten.uniq.map(&:username) 
+- if usernames.any?
+	%h5= t('poll.waiting_for_votes_from')
+	%p= usernames.join(', ')

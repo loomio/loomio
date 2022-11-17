@@ -1,3 +1,4 @@
 <%= render "chatbot/markdown/notification", event: @event %>
 <%= render "chatbot/markdown/title", eventable: @event.eventable.discussion %>
 <%= render "chatbot/markdown/body", eventable: @event.eventable %>
+<%= render "chatbot/markdown/discussion_undecided", eventable: @event.eventable %>
