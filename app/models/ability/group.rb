@@ -31,6 +31,7 @@ module Ability::Group
     end
 
     can [:members_autocomplete,
+         :show_chatbots,
          :set_volume], ::Group do |group|
       user.email_verified? && group.members.exists?(user.id)
     end
