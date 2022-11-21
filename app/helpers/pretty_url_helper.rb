@@ -17,10 +17,18 @@ module PrettyUrlHelper
     end
   end
 
+  def poll_url(poll, options = {})
+    if poll.discussion.present?
+      discussion_url(poll.discussion, options.merge(sequence_id: poll.created_event.sequence_id))
+    else
+      super
+    end
+  end
+
   def polymorphic_url(model, opts = {})
     case model
     when NilClass, LoggedOutUser       then nil
-    when Group, GroupIdentity    then group_url(model.group, opts)
+    when Group, GroupIdentity          then group_url(model.group, opts)
     when PaperTrail::Version           then polymorphic_url(model.item, opts)
     when MembershipRequest             then group_url(model.group, opts.merge(use_key: true))
     when Outcome                       then poll_url(model.poll, opts)
