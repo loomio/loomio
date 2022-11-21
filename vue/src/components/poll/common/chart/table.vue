@@ -62,7 +62,7 @@ export default
             style="width: 128px; min-width: 128px; padding: 0 8px 0 0"
           )
             div.rounded(:style="{width: clampPercent(option[poll.chartColumn])+'%', height: '24px', 'background-color': option.color}")
-          td.table-expand(v-if="col == 'name' ", :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
+          td(v-if="col == 'name' ", :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
             span(v-if="option.name_format == 'plain'") {{option.name}}
             span(v-if="option.name_format == 'i18n'" v-t="option.name")
             // poll-meeting-time(:name='option.name')
@@ -79,9 +79,6 @@ export default
               user-avatar.float-left(v-for="id in option.voter_ids", :key="id", :user="users[id]", :size="24" no-link)
 </template>
 <style lang="sass">
-.table-expand
-  width: 90%
-
 .v-data-table > .v-data-table__wrapper > table > tbody > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper)
   background: none !important
   
