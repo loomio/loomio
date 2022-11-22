@@ -62,6 +62,14 @@ class Poll < ApplicationRecord
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
   end
 
+  def create_missing_created_event!
+    self.events.create(
+      kind: created_event_kind,
+      user_id: author_id,
+      created_at: created_at,
+      discussion_id: discussion_id)
+  end
+
   def minimum_stance_choices
     if require_all_choices
       poll.poll_options.length
