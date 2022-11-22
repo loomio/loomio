@@ -21,7 +21,7 @@ module PrettyUrlHelper
     if poll.discussion.present?
       discussion_url(poll.discussion, options.merge(sequence_id: poll.created_event.sequence_id))
     else
-      super
+      poll_url(poll, options)
     end
   end
 
