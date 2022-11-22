@@ -6,8 +6,6 @@ import LmoUrlService from '@/shared/services/lmo_url_service'
 
 import {compact, isEmpty}  from 'lodash'
 
-import { myLastStanceFor } from '@/shared/helpers/poll'
-
 export default
   data: ->
     poll: null
@@ -27,17 +25,6 @@ export default
           title: poll.title
           page: 'pollPage'
 
-        if @$route.query.set_outcome
-          EventBus.$emit 'openModal',
-            component: 'PollCommonOutcomeModal'
-            props:
-              outcome: Records.outcomes.build(pollId: poll.id)
-
-        if @$route.query.change_vote
-          EventBus.$emit 'openModal',
-            component: 'PollCommonEditVoteModal'
-            props:
-              stance: myLastStanceFor(poll)
 
       .catch (error) ->
         EventBus.$emit 'pageError', error

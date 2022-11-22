@@ -5,6 +5,7 @@ import Records        from '@/shared/services/records'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
+import { myLastStanceFor } from '@/shared/helpers/poll'
 
 export default
   props:
@@ -14,6 +15,18 @@ export default
     stance: null
 
   created: ->
+    if parseInt(@$route.query.set_outcome) == @poll.id
+      EventBus.$emit 'openModal',
+        component: 'PollCommonOutcomeModal'
+        props:
+          outcome: Records.outcomes.build(pollId: @poll.id)
+
+    if parseInt(@$route.query.change_vote) == @poll.id
+      EventBus.$emit 'openModal',
+        component: 'PollCommonEditVoteModal'
+        props:
+          stance: myLastStanceFor(@poll)
+
     EventBus.$on 'deleteMyStance', (pollId) =>
       if pollId == @poll.id
         @stance = null 

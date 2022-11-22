@@ -17,7 +17,7 @@ module PrettyUrlHelper
     end
   end
 
-  def poll_url(poll, options = {})
+  def discussion_poll_url(poll, options = {})
     if poll.discussion.present?
       discussion_url(poll.discussion, options.merge(sequence_id: poll.created_event.sequence_id))
     else
@@ -31,8 +31,9 @@ module PrettyUrlHelper
     when Group, GroupIdentity          then group_url(model.group, opts)
     when PaperTrail::Version           then polymorphic_url(model.item, opts)
     when MembershipRequest             then group_url(model.group, opts.merge(use_key: true))
-    when Outcome                       then poll_url(model.poll, opts)
-    when Stance                        then poll_url(model.poll, opts.merge(change_vote: true))
+    when Poll                          then discussion_poll_url(model.poll, opts)
+    when Outcome                       then discussion_poll_url(model.poll, opts)
+    when Stance                        then discussion_poll_url(model.poll, opts.merge(change_vote: model.poll.id))
     when Comment                       then comment_url(model.discussion, model, opts)
     when Membership                    then membership_url(model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)

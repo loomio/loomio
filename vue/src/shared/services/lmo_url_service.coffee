@@ -29,6 +29,12 @@ export default class LmoUrlService
     action = if options.print then null else options.action or d.title
     @buildModelRoute('d', d.key, action, params, options)
 
+  @discussionPoll: (p, params = {}, options = {}) ->
+    if p.discussionId
+      @event(p.createdEvent())
+    else
+      @buildModelRoute('p', p.key, options.action or p.title, params, options)
+
   @poll: (p, params = {}, options = {}) ->
     @buildModelRoute('p', p.key, options.action or p.title, params, options)
 
