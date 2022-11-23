@@ -54,7 +54,7 @@ export default new class GroupService
         EventBus.$emit 'openModal',
           component: 'TagsSelect',
           props:
-            model: group.clone()
+            model: group
 
     become_coordinator:
       name: 'group_page.options.become_coordinator'

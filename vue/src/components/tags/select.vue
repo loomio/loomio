@@ -59,7 +59,7 @@ export default
     sortEnded: ->
       setTimeout =>
         Records.remote.post 'tags/priority',
-          group_id: @model.groupId
+          group_id: @model.groupId || @model.id
           ids: @allTags.map (t) -> t.id
 
 </script>
