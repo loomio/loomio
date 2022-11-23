@@ -272,6 +272,7 @@ describe Event do
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
 
     before do
+      poll_meeting.create_missing_created_event!
       outcome.update(poll: poll_meeting)
     end
 
@@ -323,6 +324,11 @@ describe Event do
     let(:poll_meeting) { create :poll_meeting, discussion: discussion }
     let(:outcome) { create :outcome, poll: poll_meeting }
 
+    before do
+      poll.create_missing_created_event!
+      poll_meeting.create_missing_created_event!
+    end
+    
     def stance_for(user)
       Stance.create(participant: user, poll: poll)
     end

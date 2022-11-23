@@ -250,6 +250,7 @@ module Dev::ScenariosHelper
                                                closed_at: 1.day.ago,
                                                closing_at: 1.day.ago)
     outcome    = fake_outcome(poll: poll)
+    poll.create_missing_created_event!
 
     OutcomeService.create(outcome: outcome, actor: actor, params: {recipient_emails: [observer.email]})
 
@@ -275,6 +276,7 @@ module Dev::ScenariosHelper
                                                closing_at: 1.day.ago)
     outcome    = fake_outcome(poll: poll, author: poll.author)
 
+    poll.create_missing_created_event!
     Events::OutcomeReviewDue.publish!(outcome)
     # OutcomeService.create(outcome: outcome, actor: actor, params: {recipient_emails: [observer.email]})
 

@@ -102,20 +102,32 @@ v-main
   v-container.dashboard-page.max-width-1024
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'")
     v-layout.mb-3(v-if='dashboardLoaded')
-      v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('common.action.search')" append-icon="mdi-magnify")
+      v-text-field(
+        clearable
+        solo
+        hide-details
+        :value="$route.query.q"
+        @input="onQueryInput"
+        :placeholder="$t('common.action.search')"
+        append-icon="mdi-magnify")
 
     dashboard-polls-panel
 
     v-card.mb-3(v-if='!dashboardLoaded')
       v-list(two-line)
         v-subheader(v-t="'dashboard_page.recent_threads'")
-        loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
+        loading-content(
+          :lineCount='2'
+          v-for='(item, index) in [1,2,3]'
+          :key='index' )
 
     div(v-if="dashboardLoaded")
       section.dashboard-page__loaded(v-if="$route.query.q")
         v-card
-          thread-search-result(v-for="result in searchResults" :key="result.id" :result="result")
-
+          thread-search-result(
+            v-for="result in searchResults"
+            :key="result.id"
+            :result="result")
       section.dashboard-page__loaded(v-if='!$route.query.q')
         .dashboard-page__empty(v-if='discussions.length == 0')
           p(v-html="$t('dashboard_page.no_groups.show_all')" v-if='noGroups')
@@ -129,30 +141,10 @@ v-main
           v-card.mb-3.thread-preview-collection__container.thread-previews-container
             v-list.thread-previews(two-line)
               v-subheader(v-t="'dashboard_page.recent_threads'")
-              thread-preview(v-for="thread in discussions" :key="thread.id" :thread="thread")
-
+              thread-preview(
+                v-for="thread in discussions"
+                :key="thread.id"
+                :thread="thread")
           .dashboard-page__footer(v-if='!loader.exhausted')  
           loading(v-show='loader.loading')
 </template>
-<style lang="sass">
-// .dashboard-page
-// 	.thread-preview__pin
-// 		display: none
-// .dashboard-page__heading
-// 	margin: 20px 0 20px 13px
-// .dashboard-page__date-range
-// .dashboard-page__no-threads,
-// .dashboard-page__no-groups,
-// .dashboard-page__explain-mute
-// .dashboard-page__footer
-// 	height: 1px
-// 	position: relative
-// 	bottom: 200px
-// .dashboard-page__mute-image--large
-// 	text-align: center
-// 	margin: 0 0 10px
-// .dashboard-page__mute-image--small
-// 	text-align: center
-// 	margin: 0 0 10px
-
-</style>

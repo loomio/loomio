@@ -4,5 +4,5 @@
     - stance.stance_choices.order('score desc').each do |choice|
       = render 'event_mailer/poll/poll_option', poll: poll, poll_option: choice.poll_option, stance: stance
   - if stance.participant == @recipient && stance.poll.active?
-    = link_to t(:"poll_common.change_vote"), tracked_url(stance.poll, change_vote: 1)
+    = link_to t(:"poll_common.change_vote"), tracked_url(stance.poll, change_vote: poll.id)
   %p= render_rich_text(stance.reason, stance.reason_format)
