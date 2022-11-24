@@ -9,6 +9,12 @@ class API::V1::StancesController < API::V1::RestfulController
     update_response
   end
 
+  def uncast
+    @stance = current_user.stances.find(params[:id])
+    StanceService.uncast(stance: @stance, actor: current_user)
+    respond_with_resource
+  end
+
   def index
     instantiate_collection do |collection|
       if query = params[:query]
@@ -54,29 +60,29 @@ class API::V1::StancesController < API::V1::RestfulController
   end
 
   def make_admin
-    current_user.ability.authorize! :make_admin, stance
-    stance.update(admin: true)
+    @stance = Stance.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
+    current_user.ability.authorize! :make_admin, @stance
+    @stance.update(admin: true)
     respond_with_resource
   end
 
   def remove_admin
-    current_user.ability.authorize! :remove_admin, stance
-    stance.update(admin: false)
-    stance.poll.update_counts!
+    @stance = Stance.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
+    current_user.ability.authorize! :remove_admin, @stance
+    @stance.update(admin: false)
+    @stance.poll.update_counts!
     respond_with_resource
   end
 
   def revoke
-    current_user.ability.authorize! :remove, stance
-    stance.update(revoked_at: Time.zone.now)
-    stance.poll.update_counts!
+    @stance = Stance.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
+    current_user.ability.authorize! :remove, @stance
+    @stance.update(revoked_at: Time.zone.now)
+    @stance.poll.update_counts!
     respond_with_resource
   end
 
   private
-  def stance
-    @stance = Stance.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
-  end
 
   def current_user_is_admin?
     stance = Stance.find_by(id: params[:id])

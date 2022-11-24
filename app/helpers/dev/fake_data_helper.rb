@@ -365,6 +365,7 @@ module Dev::FakeDataHelper
       poll.group.add_member!(u) if poll.group
       stance = fake_stance(poll: poll)
       stance.save!
+      stance.create_missing_created_event!
     end
     poll.update_counts!
   end

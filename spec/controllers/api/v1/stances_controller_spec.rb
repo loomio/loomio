@@ -154,6 +154,40 @@ describe API::V1::StancesController do
     end
   end
 
+  describe 'uncast' do
+    let(:poll)       { create :poll }
+    let(:voter)       { create :user, name: "voter", email: 'voter@example.com'}
+    let(:stance_params) {{
+      poll_id: poll.id,
+      stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id}],
+      reason: "the season is the reason"
+    }}
+
+    before do
+      sign_in voter
+    end
+
+    describe "happy case" do
+      before do
+        stances = PollService.invite(poll: poll, actor: poll.author, params: {recipient_emails: [voter.email]})
+        stance = stances.first
+        StanceService.update(stance: stance, actor: stance.participant, params: stance_params)
+      end
+
+      it 'sets cast_at to nil' do
+        stance = poll.stances.where(participant_id: voter.id).last
+        put :uncast, params: {id: stance.id}
+        expect(stance.reload.cast_at).to eq nil
+      end
+    end
+
+    describe "no vote exists" do
+    end
+
+    describe "vote exists, poll has closed" do
+    end
+  end
+
   describe 'create' do
 
     let(:another_user) { create :user, email: 'another_user@example.com', email_verified: false }

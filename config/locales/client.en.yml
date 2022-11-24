@@ -1734,6 +1734,7 @@ en:
     prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
+    delete_poll: Delete poll
     select_count_options:  Select {{count}} options
     select_minimum_to_maximum_options: Select {{minimum}} to {{maximum}} options
     custom_poll_types: Custom poll types
@@ -1746,6 +1747,7 @@ en:
     create_a_custom_poll_type: Create a new poll type with custom terminology and settings
     decision: Decision
     decision_templates: Decision templates
+    remove_your_vote: Remove your vote
     vote_now: Vote now
     review_due: Review due
     have_your_say: Have your say
@@ -2247,6 +2249,12 @@ en:
 
   poll_meeting_chart_panel:
     total: Total
+
+  poll_remove_vote:
+    title: Remove your vote?
+    helptext: Are you sure you want to remove your vote? You will be listed as undecided and can vote again later if you wish.
+    confirm: Remove vote
+    success: Vote removed
 
   poll_poll_vote_form:
     stance_created: Vote created

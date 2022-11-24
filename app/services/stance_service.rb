@@ -12,6 +12,15 @@ class StanceService
     event
   end
 
+  def self.uncast(stance:, actor:)
+    actor.ability.authorize!(:uncast, stance)
+    stance.cast_at = nil
+    stance.reason = nil
+    stance.stance_choices.delete_all
+    stance.save!
+    stance.poll.update_counts!
+  end
+
   def self.update(stance:, actor:, params: )
     actor.ability.authorize!(:update, stance)
     stance.stance_choices = []

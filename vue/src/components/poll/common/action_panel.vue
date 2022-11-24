@@ -37,6 +37,9 @@ export default
         if @stance && !@stance.castAt && @poll.myStance() && @poll.myStance().castAt
           @stance = @lastStanceOrNew().clone()
 
+        if @stance && @stance.castAt && @poll.myStance() && !@poll.myStance().castAt
+          @stance = @lastStanceOrNew().clone()
+
         if !@stance && AbilityService.canParticipateInPoll(@poll)
           @stance = @lastStanceOrNew().clone()
 

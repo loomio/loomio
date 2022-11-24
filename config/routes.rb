@@ -208,6 +208,10 @@ Rails.application.routes.draw do
       resource :outcomes,     only: [:create, :update]
 
       resources :stances, only: [:index, :create, :update] do
+        member do
+          patch :uncast
+        end
+
         collection do
           get :invite
           get :users

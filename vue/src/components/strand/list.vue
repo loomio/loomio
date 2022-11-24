@@ -73,7 +73,11 @@ export default
 
 <template lang="pug">
 .strand-list
-  .strand-item(v-for="obj in directedCollection" :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}")
+  .strand-item(
+    v-for="obj in directedCollection"
+    :key="obj.event.id"
+    :class="{'strand-item--deep': obj.event.depth > 1}"
+  )
     .strand-item__row(v-if="!newestFirst && obj.missingEarlierCount")
       .strand-item__gutter
         .strand-item__stem-wrapper
@@ -99,9 +103,18 @@ export default
     .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
       .strand-item__gutter(v-if="obj.event.depth > 0")
         .d-flex.justify-center
-          v-checkbox.thread-item__is-forking(v-if="loader.discussion.forkedEventIds.length" @change="obj.event.toggleForking()" :disabled="obj.event.forkingDisabled()" v-model="obj.event.isForking()")
+          v-checkbox.thread-item__is-forking(
+            v-if="loader.discussion.forkedEventIds.length"
+            @change="obj.event.toggleForking()"
+            :disabled="obj.event.forkingDisabled()"
+            v-model="obj.event.isForking()"
+          )
           template(v-else)
-            user-avatar(:user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link)
+            user-avatar(
+              :user="obj.event.actor()"
+              :size="(obj.event.depth > 1) ? 28 : 36"
+              no-link
+            )
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
           .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
       .strand-item__main
