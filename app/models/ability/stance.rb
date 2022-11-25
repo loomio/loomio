@@ -7,12 +7,15 @@ module Ability::Stance
     end
 
     can [:update], ::Stance do |stance|
-      user.email_verified? &&
+      can?(:vote_in, stance.poll) &&
       stance.real_participant == user &&
-      stance.latest? &&
-      can?(:vote_in, stance.poll)
+      stance.latest?
     end
 
+    can [:uncast], ::Stance do |stance|
+      can?(:update, stance) && stance.cast_at.present?
+    end
+    
     can [:create], ::Stance do |stance|
       user.can? :vote_in, stance.poll
     end

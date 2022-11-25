@@ -1,6 +1,4 @@
 <script lang="coffee">
-import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
-
 import BarIcon from '@/components/poll/common/icon/bar.vue'
 import PieIcon from '@/components/poll/common/icon/pie.vue'
 import GridIcon from '@/components/poll/common/icon/grid.vue'
@@ -22,7 +20,7 @@ export default
     'poll.stanceCounts': -> @slices = @poll.pieSlices()
 
   computed:
-    myStance: -> myLastStanceFor(@poll)
+    myStance: -> @poll.myStance()
     showPosition: -> 'proposal count'.split(' ').includes(@poll.pollType)
 </script>
 

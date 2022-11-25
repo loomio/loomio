@@ -1,6 +1,5 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
 import { max, values, orderBy, compact } from 'lodash'
 import BarIcon from '@/components/poll/common/icon/bar.vue'
 import PieIcon from '@/components/poll/common/icon/pie.vue'

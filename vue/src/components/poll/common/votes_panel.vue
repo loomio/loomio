@@ -2,7 +2,6 @@
 import PageLoader         from '@/shared/services/page_loader'
 import Records from '@/shared/services/records'
 import EventBus     from '@/shared/services/event_bus'
-import { fieldFromTemplate } from '@/shared/helpers/poll'
 import { parseISO } from 'date-fns'
 
 export default

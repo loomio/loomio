@@ -154,6 +154,64 @@ describe API::V1::StancesController do
     end
   end
 
+  describe 'uncast' do
+    let(:poll)       { create :poll }
+    let(:voter)       { create :user, name: "voter", email: 'voter@example.com'}
+    let(:stance_params) {{
+      poll_id: poll.id,
+      stance_choices_attributes: [{poll_option_id: poll.poll_options.first.id}],
+      reason: "the season is the reason"
+    }}
+
+    describe "happy case" do
+      before do
+        sign_in voter
+        stances = PollService.invite(poll: poll, actor: poll.author, params: {recipient_emails: [voter.email]})
+        stance = stances.first
+        StanceService.update(stance: stance, actor: stance.participant, params: stance_params)
+      end
+
+      it 'sets cast_at to nil' do
+        stance = poll.stances.where(participant_id: voter.id).last
+        put :uncast, params: {id: stance.id}
+        expect(response.status).to eq 200
+        expect(stance.reload.cast_at).to eq nil
+      end
+    end
+
+    describe "another user's vote" do
+      before do
+        sign_in poll.author
+        stances = PollService.invite(poll: poll, actor: poll.author, params: {recipient_emails: [voter.email]})
+        stance = stances.first
+        StanceService.update(stance: stance, actor: stance.participant, params: stance_params)
+      end
+
+      it 'sets cast_at to nil' do
+        stance = poll.stances.where(participant_id: voter.id).last
+        put :uncast, params: {id: stance.id}
+        expect(response.status).to eq 404
+        expect(stance.reload.cast_at).to_not eq nil
+      end
+    end
+
+    describe "poll has closed" do
+      before do
+        sign_in voter
+        stances = PollService.invite(poll: poll, actor: poll.author, params: {recipient_emails: [voter.email]})
+        stance = stances.first
+        StanceService.update(stance: stance, actor: stance.participant, params: stance_params)
+      end
+
+      it 'sets cast_at to nil' do
+        poll.update(closed_at: Time.now)
+        stance = poll.stances.where(participant_id: voter.id).last
+        put :uncast, params: {id: stance.id}
+        expect(response.status).to eq 403
+      end
+    end
+  end
+
   describe 'create' do
 
     let(:another_user) { create :user, email: 'another_user@example.com', email_verified: false }

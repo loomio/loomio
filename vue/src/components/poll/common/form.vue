@@ -6,7 +6,6 @@ import Flash from '@/shared/services/flash'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns'
-import { optionImages } from '@/shared/helpers/poll'
 import { addHours, isAfter } from 'date-fns'
 import PollCommonWipField from '@/components/poll/common/wip_field'
 import { HandleDirective } from 'vue-slicksort';

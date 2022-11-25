@@ -28,20 +28,30 @@ export default
 <template lang="pug">
 
 section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id", :event="event")
-  template(v-if="eventable.singleChoice()")
+  template(v-if="eventable.castAt")
+    template(v-if="eventable.singleChoice()")
+      .d-flex
+        component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
+        space
+        poll-common-stance-choice(v-if="poll.showResults()", :poll="poll", :stance-choice="eventable.stanceChoice()")
+        space
+        router-link.text--secondary(:to='link')
+          time-ago(:date='eventable.updatedAt || eventable.castAt')
+    .poll-common-stance(v-if="poll.showResults() && !collapsed")
+      v-layout(v-if="!eventable.singleChoice()" wrap align-center)
+        strand-item-headline.text--secondary(:event="event", :eventable="eventable")
+        poll-common-stance-choices(:stance="eventable")
+      formatted-text.poll-common-stance-created__reason(:model="eventable", column="reason")
+      link-previews(:model="eventable")
+      attachment-list(:attachments="eventable.attachments")
+    action-dock(:model='eventable', :actions='actions' small)
+  template(v-else)
     .d-flex
       component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
       space
-      poll-common-stance-choice(v-if="poll.showResults()", :poll="poll", :stance-choice="eventable.stanceChoice()")
+      span(v-t="'poll_common_votes_panel.undecided'")
       space
       router-link.text--secondary(:to='link')
-        time-ago(:date='event.createdAt')
-  .poll-common-stance(v-if="poll.showResults() && !collapsed")
-    v-layout(v-if="!eventable.singleChoice()" wrap align-center)
-      strand-item-headline.text--secondary(:event="event" :eventable="eventable")
-      poll-common-stance-choices(:stance="eventable")
-    formatted-text.poll-common-stance-created__reason(:model="eventable" column="reason")
-    link-previews(:model="eventable")
-    attachment-list(:attachments="eventable.attachments")
-  action-dock(:model='eventable' :actions='actions' small)
+        time-ago(:date='eventable.updatedAt')
+    action-dock(:model='eventable', :actions='actions' small)
 </template>

@@ -3,6 +3,7 @@ import Records       from '@/shared/services/records'
 import Flash         from '@/shared/services/flash'
 import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
+import StanceService from '@/shared/services/stance_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import i18n          from '@/i18n'
@@ -14,37 +15,30 @@ export default new class PollService
       icon: 'mdi-translate'
       name: 'common.action.translate'
       dock: 2
-      canPerform: ->
-        AbilityService.canTranslate(poll)
+      canPerform: -> AbilityService.canTranslate(poll)
       perform: -> Session.user() && poll.translate(Session.user().locale)
 
     edit_stance:
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'
       dock: 2
-      canPerform: =>
-        poll.isVotable() && Session.user() && poll.iHaveVoted()
-      perform: =>
-        openModal
-          component: 'PollCommonEditVoteModal',
-          maxWidth: 720
-          props:
-            stance: poll.myStance().clone()
+      canPerform: -> StanceService.canUpdateStance(poll.myStance())
+      perform: -> StanceService.updateStance(poll.myStance())
+
+    uncast_stance:
+      name: 'poll_common.remove_your_vote'
+      icon: 'mdi-cancel'
+      menu: true
+      canPerform: -> StanceService.canUpdateStance(poll.myStance())
+      perform: => StanceService.uncastStance(poll.myStance())
 
     edit_poll:
       name: 'action_dock.edit_poll_type'
       menu: true
-      nameArgs: ->
-        {pollType: poll.translatedPollType()}
+      nameArgs: -> {pollType: poll.translatedPollType()}
       icon: 'mdi-pencil'
-      canPerform: ->
-        AbilityService.canEditPoll(poll)
+      canPerform: -> AbilityService.canEditPoll(poll)
       to: "/p/#{poll.key}/edit"
-      # perform: ->
-      #   openModal
-      #     component: 'PollCommonModal'
-      #     props:
-      #       poll: poll.clone()
 
     make_a_copy:
       icon: 'mdi-content-copy'
@@ -57,8 +51,7 @@ export default new class PollService
       menu: true
       name: 'action_dock.add_poll_to_thread'
       icon: 'mdi-comment-plus-outline'
-      canPerform: ->
-        AbilityService.canAddPollToThread(poll)
+      canPerform: -> AbilityService.canAddPollToThread(poll)
       perform: ->
         openModal
           component: 'AddPollToThreadModal'
@@ -135,7 +128,6 @@ export default new class PollService
           component: 'PollCommonReopenModal'
           props: { poll: poll }
 
-
     show_history:
       icon: 'mdi-history'
       name: 'action_dock.show_edits'
@@ -204,7 +196,7 @@ export default new class PollService
     #             flash: 'poll_common_delete_modal.success'
 
     discard_poll:
-      name: 'common.action.delete'
+      name: 'poll_common.delete_poll'
       menu: true
       icon: 'mdi-delete'
       canPerform: ->

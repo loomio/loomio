@@ -299,6 +299,17 @@ module.exports = {
     page.expectElement('.poll-common-action-panel__results-hidden-until-closed')
   },
 
+  'can_remove_own_vote': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('polls/test_poll_scenario?poll_type=proposal&scenario=poll_closing_soon_with_vote')
+    page.click('.action-menu--btn')
+    page.click('.action-dock__button--uncast_stance')
+    page.expectText('.confirm-modal', 'Remove your vote?')
+    page.click('.confirm-modal__submit')
+    page.expectFlash('Vote removed')
+  },
+
   'can_send_a_calendar_invite': (test) => {
     page = pageHelper(test)
 

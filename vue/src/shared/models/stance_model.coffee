@@ -27,6 +27,7 @@ export default class StanceModel extends BaseModel
     participantId: null
     pollId: null
     optionScores: {}
+    castAt: null
 
   relationships: ->
     @belongsTo 'poll'

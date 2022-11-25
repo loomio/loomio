@@ -12,21 +12,22 @@ export default new class StanceService
     react:
       dock: 1
       canPerform: ->
-        !stance.discardedAt &&
+        !stance.discardedAt && stance.castAt &&
         stance.poll().membersInclude(Session.user())
 
     edit_stance:
       name: 'poll_common.change_vote'
       icon: 'mdi-pencil'
       dock: 1
-      canPerform: ->
-        (Session.user() && stance.participant()) &&
-        stance.latest && stance.poll().isVotable() && stance.participant() == Session.user()
-      perform: =>
-        openModal
-          component: 'PollCommonEditVoteModal',
-          props:
-            stance: stance.clone()
+      canPerform: => @canUpdateStance(stance)
+      perform: => @updateStance(stance)
+
+    uncast_stance:
+      name: 'poll_common.remove_your_vote'
+      icon: 'mdi-cancel'
+      dock: 1
+      canPerform: => @canUpdateStance(stance)
+      perform: => @uncastStance(stance)
 
     translate_stance:
       icon: 'mdi-translate'
@@ -49,6 +50,33 @@ export default new class StanceService
           component: 'RevisionHistoryModal'
           props:
             model: stance
+
+  updateStance: (stance) ->
+    openModal
+      component: 'PollCommonEditVoteModal',
+      props:
+        stance: stance.clone()
+        
+  uncastStance: (stance) ->
+    openModal
+      component: 'ConfirmModal',
+      props:
+        confirm:
+          submit: ->
+            Records.remote.patch("stances/#{stance.id}/uncast")
+          text:
+            title: 'poll_remove_vote.title'
+            helptext: 'poll_remove_vote.helptext'
+            submit: 'poll_remove_vote.confirm'
+            flash: 'poll_remove_vote.success'
+
+  canUpdateStance: (stance) ->
+    stance &&
+    stance.latest &&
+    stance.poll().myStanceId == stance.id &&
+    stance.poll().isVotable() && 
+    stance.poll().iHaveVoted()
+
   makeAdmin:
     name: 'membership_dropdown.make_coordinator'
     canPerform: (poll, user) ->

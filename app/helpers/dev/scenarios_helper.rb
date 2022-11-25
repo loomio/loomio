@@ -205,12 +205,14 @@ module Dev::ScenariosHelper
     PollService.invite(poll: poll, params: {recipient_user_ids: [voter.id]}, actor: actor)
     PollService.publish_closing_soon
 
-    { discussion: discussion,
+    { 
+      discussion: discussion,
       group: discussion.group,
       observer: voter,
       actor: actor,
       title: poll.title,
-      poll: poll}
+      poll: poll
+    }
   end
 
   def poll_expired_scenario(params)
