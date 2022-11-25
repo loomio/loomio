@@ -191,7 +191,7 @@ describe API::V1::StancesController do
         stance = poll.stances.where(participant_id: voter.id).last
         put :uncast, params: {id: stance.id}
         expect(response.status).to eq 404
-        expect(stance.reload.cast_at).to eq nil
+        expect(stance.reload.cast_at).to_not eq nil
       end
     end
 
