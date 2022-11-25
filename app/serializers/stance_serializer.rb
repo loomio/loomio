@@ -8,6 +8,7 @@ class StanceSerializer < ApplicationSerializer
              :cast_at,
              :mentioned_usernames,
              :created_at,
+             :updated_at,
              :locale,
              :versions_count,
              :attachments,

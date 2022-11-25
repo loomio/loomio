@@ -1,5 +1,4 @@
 <script lang="coffee">
-import { fieldFromTemplate } from '@/shared/helpers/poll'
 import AppConfig from '@/shared/services/app_config'
 
 export default

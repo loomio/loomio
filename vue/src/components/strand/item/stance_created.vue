@@ -36,7 +36,7 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
         poll-common-stance-choice(v-if="poll.showResults()", :poll="poll", :stance-choice="eventable.stanceChoice()")
         space
         router-link.text--secondary(:to='link')
-          time-ago(:date='event.createdAt')
+          time-ago(:date='eventable.updatedAt || eventable.castAt')
     .poll-common-stance(v-if="poll.showResults() && !collapsed")
       v-layout(v-if="!eventable.singleChoice()" wrap align-center)
         strand-item-headline.text--secondary(:event="event", :eventable="eventable")
@@ -46,5 +46,12 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
       attachment-list(:attachments="eventable.attachments")
     action-dock(:model='eventable', :actions='actions' small)
   template(v-else)
-    span vote removed
+    .d-flex
+      component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
+      space
+      span(v-t="'poll_common_votes_panel.undecided'")
+      space
+      router-link.text--secondary(:to='link')
+        time-ago(:date='eventable.updatedAt')
+    action-dock(:model='eventable', :actions='actions' small)
 </template>

@@ -1,15 +1,9 @@
 <script lang="coffee">
-import { fieldFromTemplate } from '@/shared/helpers/poll'
 import AppConfig from '@/shared/services/app_config'
-import { optionColors, optionImages } from '@/shared/helpers/poll'
 
 export default
   props:
     stance: Object
-
-  data: ->
-    optionColors: optionColors()
-    optionImages: optionImages()
 
   computed:
     poll: -> @stance.poll()

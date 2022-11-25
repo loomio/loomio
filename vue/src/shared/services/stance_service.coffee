@@ -12,7 +12,7 @@ export default new class StanceService
     react:
       dock: 1
       canPerform: ->
-        !stance.discardedAt &&
+        !stance.discardedAt && stance.castAt &&
         stance.poll().membersInclude(Session.user())
 
     edit_stance:

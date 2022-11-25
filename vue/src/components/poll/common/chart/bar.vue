@@ -1,6 +1,5 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
-import { fieldFromTemplate, myLastStanceFor } from '@/shared/helpers/poll'
 import { max, values, orderBy, compact } from 'lodash'
 
 export default

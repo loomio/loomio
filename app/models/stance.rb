@@ -73,7 +73,7 @@ class Stance < ApplicationRecord
   def create_missing_created_event!
     self.events.create(
       kind: created_event_kind, 
-      user_id: author_id, 
+      user_id: (poll.anonymous? ? nil: author_id), 
       created_at: created_at, 
       discussion_id: (add_to_discussion? ? poll.discussion_id : nil))
   end
