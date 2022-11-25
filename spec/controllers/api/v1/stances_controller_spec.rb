@@ -163,12 +163,9 @@ describe API::V1::StancesController do
       reason: "the season is the reason"
     }}
 
-    before do
-      sign_in voter
-    end
-
     describe "happy case" do
       before do
+        sign_in voter
         stances = PollService.invite(poll: poll, actor: poll.author, params: {recipient_emails: [voter.email]})
         stance = stances.first
         StanceService.update(stance: stance, actor: stance.participant, params: stance_params)
@@ -177,14 +174,41 @@ describe API::V1::StancesController do
       it 'sets cast_at to nil' do
         stance = poll.stances.where(participant_id: voter.id).last
         put :uncast, params: {id: stance.id}
+        expect(response.status).to eq 200
         expect(stance.reload.cast_at).to eq nil
       end
     end
 
-    describe "no vote exists" do
+    describe "another user's vote" do
+      before do
+        sign_in poll.author
+        stances = PollService.invite(poll: poll, actor: poll.author, params: {recipient_emails: [voter.email]})
+        stance = stances.first
+        StanceService.update(stance: stance, actor: stance.participant, params: stance_params)
+      end
+
+      it 'sets cast_at to nil' do
+        stance = poll.stances.where(participant_id: voter.id).last
+        put :uncast, params: {id: stance.id}
+        expect(response.status).to eq 404
+        expect(stance.reload.cast_at).to eq nil
+      end
     end
 
-    describe "vote exists, poll has closed" do
+    describe "poll has closed" do
+      before do
+        sign_in voter
+        stances = PollService.invite(poll: poll, actor: poll.author, params: {recipient_emails: [voter.email]})
+        stance = stances.first
+        StanceService.update(stance: stance, actor: stance.participant, params: stance_params)
+      end
+
+      it 'sets cast_at to nil' do
+        poll.update(closed_at: Time.now)
+        stance = poll.stances.where(participant_id: voter.id).last
+        put :uncast, params: {id: stance.id}
+        expect(response.status).to eq 403
+      end
     end
   end
 
