@@ -1,5 +1,5 @@
 // var selenium = require('selenium-server-standalone-jar');
-var chromedriver = require('chromedriver');
+// var chromedriver = require('chromedriver');
 
 var chromeOptions = ["window-size=1280,1500"]
 
@@ -15,7 +15,7 @@ module.exports = {
   },
   webdriver: {
     start_process: true,
-    server_path: "node_modules/.bin/chromedriver",
+    server_path: "chromedriver",
     cli_args: ["--verbose"]
   },
   test_settings: {
