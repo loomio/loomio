@@ -59,8 +59,6 @@ Rails.application.routes.draw do
         post :clone, on: :collection
       end
 
-      resources :group_surveys, only: [:create]
-
       resources :link_previews, only: [:create]
 
       resources :tasks, only: [:index] do
