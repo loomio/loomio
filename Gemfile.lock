@@ -369,9 +369,9 @@ GEM
     oj (3.13.23)
     orm_adapter (0.5.0)
     os (1.1.4)
-    paper_trail (13.0.0)
-      activerecord (>= 5.2)
-      request_store (~> 1.1)
+    paper_trail (14.0.0)
+      activerecord (>= 6.0)
+      request_store (~> 1.4)
     pg (1.4.5)
     premailer (1.18.0)
       addressable
@@ -616,7 +616,7 @@ DEPENDENCIES
   maxminddb
   nokogiri
   oj
-  paper_trail (~> 13.0.0)
+  paper_trail (~> 14.0.0)
   pg
   premailer-rails
   puma
