@@ -15,7 +15,7 @@ module.exports = {
   },
   webdriver: {
     start_process: true,
-    server_path: "chromedriver",
+    server_path: "/usr/local/bin/chromedriver",
     cli_args: ["--verbose"]
   },
   test_settings: {
