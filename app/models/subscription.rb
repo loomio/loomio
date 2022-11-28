@@ -6,6 +6,8 @@ class Subscription < ApplicationRecord
 
   attr_accessor :chargify_product_id
 
+  has_paper_trail
+
   def self.for(group)
     parent = group.parent_or_self
     parent.subscription || begin
