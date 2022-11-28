@@ -181,6 +181,7 @@ ActiveAdmin.register Group, as: 'Group' do
 
     panel 'Move group' do
       form action: move_admin_group_path(group), method: :post do |f|
+        f.input type: :hidden, name: :authenticity_token
         f.label "Parent group id / key"
         f.input name: :parent_id, value: group.parent_id
         f.input type: :submit, value: "Move group"
