@@ -72,18 +72,6 @@ module.exports = {
     page.expectText('.discussions-panel__list', 'Vaya con dios', 20000)
   },
 
-  'starts_a_group_with_survey': (test) => {
-    page = pageHelper(test)
-
-    page.loadPath('setup_dashboard?features_group_survey=1')
-    page.ensureSidebar()
-
-    page.click('.sidebar__list-item-button--start-group')
-    page.fillIn('#group-name', 'Survey please')
-    page.click('.group-form__submit-button')
-    page.expectFlash('Group started')
-  },
-
   'starts_a_secret_group': (test) => {
     page = pageHelper(test)
 

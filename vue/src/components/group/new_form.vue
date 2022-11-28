@@ -73,10 +73,6 @@ export default
         groupKey = data.groups[0].key
         Flash.success "group_form.messages.group_#{@actionName}"
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
-          if !group.parentId && AppConfig.features.app.group_survey
-            Records.remote.post 'group_surveys',
-              group_id: group.id
-              category: (@group.category == 'other' && @group.otherCategory) || @group.category
           EventBus.$emit 'closeModal'
           @$router.push("/g/#{groupKey}")
       .catch (error) => true
@@ -86,9 +82,6 @@ export default
         parent: @group.parentName()
 
   computed:
-    askCategory: ->
-      !@group.parentId && AppConfig.features.app.group_survey
-
     actionName: ->
       if @group.isNew() then 'created' else 'updated'
 
@@ -175,12 +168,6 @@ v-card.group-form
         span(v-t="'common.privacy.secret'")
       p.text-caption.text--secondary
         span(v-t="'group_form.secret_by_default'")
-
-    div(v-if="askCategory")
-      v-radio-group.group-survey__category(v-model='group.category' :label="$t('group_survey.category_question')" :rules="[rules.required]")
-        v-radio(v-for='category in categories' :key='category' :value='category' :aria-label='category' :label="$t('group_survey.categories.' + category)" :class="'group-survey__category-' + category")
-
-      v-text-field(v-if="group.category == 'other'" :label="$t('group_survey.describe_other')" v-model="group.otherCategory")
 
   v-card-actions.ma-2
     help-link(path="en/user_manual/groups/starting_a_group")
