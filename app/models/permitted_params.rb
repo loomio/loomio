@@ -3,7 +3,7 @@ class PermittedParams < Struct.new(:params)
     user group membership_request membership poll outcome
     stance discussion discussion_reader comment
     contact_message document
-    webhook chatbot contact_request reaction tag group_survey
+    webhook chatbot contact_request reaction tag
   )
 
   MODELS.each do |kind|
@@ -184,9 +184,5 @@ class PermittedParams < Struct.new(:params)
 
   def document_attributes
     [:url, :title, :model_id, :model_type, :file, :filename]
-  end
-
-  def group_survey_attributes
-    [:group_id, :declaration, :category, :segment, :location, :size, :purpose, :referrer, :role, :website, :misc, :usage, :desired_feature]
   end
 end

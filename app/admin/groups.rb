@@ -1,6 +1,4 @@
 ActiveAdmin.register Group, as: 'Group' do
-  includes :group_survey
-
   controller do
     def permitted_params
       params.permit!
@@ -64,12 +62,6 @@ ActiveAdmin.register Group, as: 'Group' do
 
     if defined?(SubscriptionService) && group.subscription_id
       render 'subscription', { subscription: Subscription.for(group)}
-    end
-
-    if group.group_survey
-      panel("Group survey") do
-        link_to("Group survey", admin_group_survey_path(group.group_survey))
-      end
     end
 
     if group.parent_id

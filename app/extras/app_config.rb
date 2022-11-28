@@ -105,7 +105,6 @@ class AppConfig
       show_contact:               ENV.fetch('FEATURES_SHOW_CONTACT', false),
       thread_page_v3:             ENV.fetch('FEATURES_THREAD_PAGE_V3', false),
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
-      group_survey:               ENV.fetch('FEATURES_GROUP_SURVEY', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
     }
   end
