@@ -1008,7 +1008,7 @@ en:
     comment_header: Comment edits
     poll_header: Poll edits
     outcome_header: Outcome edits
-    stance_header: Stance edits
+    stance_header: Vote edits
     started_by: 'Started by <strong>{{name}}</strong>'
     edited_by: 'Edited by <strong>{{name}}</strong>'
     edit_by: "Edit by {{name}} · {{date}}"
