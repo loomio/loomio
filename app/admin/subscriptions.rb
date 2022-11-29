@@ -52,6 +52,7 @@ ActiveAdmin.register Subscription do
     panel("Refresh chargify") do
       if subscription.chargify_subscription_id
         form action: refresh_admin_subscription_path(subscription), method: :post do |f|
+          f.input type: :hidden, name: :authenticity_token
           f.input type: :submit, value: "refresh chargify"
         end
       else
@@ -62,6 +63,7 @@ ActiveAdmin.register Subscription do
 
   form do |f|
     inputs 'Subscription' do
+      f.input type: :hidden, name: :authenticity_token
       input :plan, as: :select, collection: SubscriptionService::PLANS.keys
       input :payment_method, as: :select, collection: Subscription::PAYMENT_METHODS
       input :state, as: :select, collection: ['active', 'canceled', 'trialing']

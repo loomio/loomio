@@ -41,6 +41,7 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Details" do
+      f.input type: :hidden, name: :authenticity_token
       f.input :name
       f.input :email, as: :string
       f.input :username, as: :string
@@ -135,6 +136,7 @@ ActiveAdmin.register User do
 
     panel 'Merge into another user' do
       form action: merge_admin_user_path(user), method: :post do |f|
+        f.input type: :hidden, name: :authenticity_token
         f.label "Email address of final user account"
         f.input name: :destination_email
         f.input type: :submit, value: "Merge user"

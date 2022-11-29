@@ -185,6 +185,7 @@ ActiveAdmin.register Group, as: 'Group' do
   end
 
   form do |f|
+    f.input type: :hidden, name: :authenticity_token
     f.inputs "Details" do
       if f.object.persisted?
         f.input :id, :input_html => { :disabled => true }
