@@ -56,7 +56,8 @@ class GroupExportService
       discussions: %w[group_id],
       tags: %w[group_id],
       webhooks: %w[group_id],
-      events: %w[eventable]
+      events: %w[eventable],
+      groups: %w[parent_id]
     },
     poll_options: {
       stance_choices: %w[poll_option_id],
