@@ -24,6 +24,7 @@ export default class UserModel extends BaseModel
     linkPreviews: []
     locale: AppConfig.defaultLocale
     experiences: []
+    dateTimePref: 'day_iso'
 
   nameOrEmail: ->
     @name || @email || @placeholderName
