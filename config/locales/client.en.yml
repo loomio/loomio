@@ -2464,7 +2464,7 @@ en:
     include_body_label: Include message body with notification
 
   powered_by:
-    this_is_loomio_md: "This is Loomio, an app that helps organizations make decisions together. [Try it for free](https://www.loomio.com)"
+    this_is_loomio_md: "This is Loomio; an app for making decisions together. [Try for free](https://www.loomio.com)"
     slogan: Better decisions together
     powered_by_loomio: Powered by Loomio
     privacy_policy: Privacy policy
