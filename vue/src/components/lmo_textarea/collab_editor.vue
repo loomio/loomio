@@ -429,6 +429,11 @@ div
   outline: none
   min-height: 64px
 
+.theme--dark
+  progress
+    background-color: #333
+    border-color: #444
+
 progress
   width: 50%!important
   -webkit-appearance: none
