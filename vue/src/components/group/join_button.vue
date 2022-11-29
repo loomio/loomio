@@ -57,7 +57,7 @@ export default
 </script>
 
 <template lang="pug">
-v-alert(outlined color="primary" dense v-if="!membership && (canJoinGroup || canRequestMembership || hasRequestedMembership)")
+v-alert.my-4(outlined color="primary" dense v-if="!membership && (canJoinGroup || canRequestMembership || hasRequestedMembership)")
   p.text-center(v-t="'join_group_button.not_a_member'")
   v-btn.join-group-button(block color="primary" v-t="label" @click="join" :disabled="hasRequestedMembership")
 </template>

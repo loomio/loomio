@@ -5,11 +5,13 @@ import Session from '@/shared/services/session'
 import Records from '@/shared/services/records'
 import marked from 'marked'
 import md5 from 'md5'
+import I18n from '@/i18n'
 
 export default
   data: ->
     notice: false
     showNotice: false
+    showDismiss: false
     reload: false
 
   mounted: ->
@@ -29,8 +31,9 @@ export default
   methods:
     eatData: (data) ->
       @reload = data.reload
-      @notice = data.notice
+      @notice = data.notice || (AppConfig.features.app.trials && !Session.isSignedIn() && I18n.t("powered_by.this_is_loomio_md"))
       @showNotice = @reload || (@notice && !Session.user().hasExperienced(md5(@notice)))
+      @showDismiss = data.reload || data.notice
 
     accept: ->
       @showNotice = false
@@ -48,12 +51,17 @@ v-system-bar.system-notice(v-if="showNotice" app color="primary" height="40")
     .system-notice__message.text-subtitle-1
       span(v-if="notice" v-marked="notice")
       span(v-else="notice" v-t="'global.messages.app_update'")
-    v-btn.system-notice__hide(small outlined @click="accept" v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'")
+    v-btn.system-notice__hide(v-if="showDismiss" small outlined @click="accept" v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'")
 </template>
 
 <style lang="sass">
 .system-notice
+
   p
+    color: #fff
     margin-top: 0
     margin-bottom: 0
+    a
+      color: #fff
+      text-decoration: underline
 </style>
