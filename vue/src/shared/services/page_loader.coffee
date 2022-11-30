@@ -14,6 +14,7 @@ export default class PageLoader
     @order = opts.order
     @total = 0
     @pageWindow = {}
+    @pageIds = {}
     @err = null
     @status = null
 
@@ -31,6 +32,7 @@ export default class PageLoader
       firstId = data[data.meta.root][0][@order]
       lastId = data[data.meta.root][(data[data.meta.root].length - 1)][@order]
       Vue.set(@pageWindow, page, [lastId,firstId])
+      Vue.set(@pageIds, page, map(data[data.meta.root], 'id'))
       # console.log 'page', page, 'discussions.length', data.discussions.length, 'first', firstId, 'last', lastId, 'groupIds!', orderBy uniq(map(data['discussions'], 'groupId'))
       Records.importREADY(data)
     .catch (err) =>

@@ -83,7 +83,7 @@ module Dev::Scenarios::Discussion
     @group = saved(fake_group)
     @group.add_admin!(patrick)
     sign_in patrick
-    30.times do
+    60.times do
       saved(fake_discussion(group: @group, closed_at: 5.days.ago))
     end
     redirect_to group_url(@group)

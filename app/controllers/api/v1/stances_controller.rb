@@ -20,6 +20,7 @@ class API::V1::StancesController < API::V1::RestfulController
       if query = params[:query]
         collection = collection.
           joins('LEFT OUTER JOIN users on stances.participant_id = users.id').
+          where(latest: true, revoked_at: nil).
           where("users.name ilike :first OR
                  users.name ilike :last OR
                  users.email ilike :first OR

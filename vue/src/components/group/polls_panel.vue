@@ -111,9 +111,7 @@ export default
     page:
       get: -> parseInt(@$route.query.page) || 1
       set: (val) ->
-        @$router.replace
-          query:
-            page: val
+        @$router.replace({query: Object.assign({}, @$route.query, {page: val})}) 
 </script>
 
 <template lang="pug">

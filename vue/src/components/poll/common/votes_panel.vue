@@ -21,17 +21,24 @@ export default
         per: @per
         poll_id: @poll.id
 
-    @loader.fetch(@page)
+    @loader.fetch(@page).then => @findRecords()
 
     @watchRecords
       collections: ['stances', 'polls']
       query: => @findRecords()
 
   computed:
+    page:
+      get: -> parseInt(@$route.query.page) || 1
+      set: (val) ->
+        @$router.replace({query: Object.assign({}, @$route.query, {page: val})}) 
+
     totalPages: ->
       Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
 
   watch:
+    'loader.pageWindow': (val) ->
+      console.log 'loader.pageWindow changed', val
     page: ->
       @loader.fetch(@page).then => @findRecords()
       @findRecords()
@@ -43,6 +50,7 @@ export default
         find(latest: true).
         find(revokedAt: null)
 
+      console.log 'votes_panel pagewindow', @loader.pageWindow
       if @loader.pageWindow[@page]
         chain = chain.find
           orderAt: 
@@ -50,21 +58,9 @@ export default
               $jgte: @loader.pageWindow[@page][0]
               $jlte: @loader.pageWindow[@page][1]
         chain = chain.simplesort('orderAt', true)
+        @stances = chain.data()
       else
         @stances = []
-
-      @stances = chain.data()
-
-  computed:
-    page:
-      get: -> parseInt(@$route.query.page) || 1
-      set: (val) ->
-        @$router.replace
-          query:
-            page: val
-
-    totalPages: ->
-      Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
 
 </script>
 
