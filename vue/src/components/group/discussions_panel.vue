@@ -162,9 +162,7 @@ export default
     page:
       get: -> parseInt(@$route.query.page) || 1
       set: (val) ->
-        @$router.replace
-          query:
-            page: val
+        @$router.replace({query: Object.assign({}, @$route.query, {page: val})}) 
 
     totalPages: ->
       Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
@@ -246,23 +244,23 @@ div.discussions-panel(v-if="group")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
       .discussions-panel__content(v-if="!$route.query.q")
-        .discussions-panel__list--empty.pa-4(v-if='noThreads' :value="true")
+        .discussions-panel__list--empty.pa-4(v-if='noThreads', :value="true")
           p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
           p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(two-line)
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions" :key="thread.id" :thread="thread" group-page)
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page)
+            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions", :key="thread.id", :thread="thread" group-page)
+            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions", :key="thread.id", :thread="thread" group-page)
 
         loading(v-if="loading && discussions.length == 0")
 
-        v-pagination(v-model="page" :length="totalPages" :total-visible="7" :disabled="totalPages == 1")
+        v-pagination(v-model="page", :length="totalPages", :total-visible="7", :disabled="totalPages == 1")
         .d-flex.justify-center
           router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
 
       .discussions-panel__content.pa-4(v-if="$route.query.q")
         p.text-center.discussions-panel__list--empty(v-if='!searchResults.length && !searchLoader.loading' v-t="{path: 'discussions_panel.no_results_found', args: {search: $route.query.q}}")
-        thread-search-result(v-else v-for="result in searchResults" :key="result.id" :result="result")
+        thread-search-result(v-else v-for="result in searchResults", :key="result.id", :result="result")
 </template>
 
 <style lang="sass">

@@ -37,8 +37,4 @@ class Dev::DiscussionsController < Dev::BaseController
     sign_in discussion.author
     redirect_to discussion_url(discussion)
   end
-
-  private
-
-
 end

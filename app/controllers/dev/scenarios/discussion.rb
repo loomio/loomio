@@ -79,6 +79,16 @@ module Dev::Scenarios::Discussion
     redirect_to group_url(create_group)
   end
 
+  def setup_pages_of_closed_discussions
+    @group = saved(fake_group)
+    @group.add_admin!(patrick)
+    sign_in patrick
+    30.times do
+      saved(fake_discussion(group: @group, closed_at: 5.days.ago))
+    end
+    redirect_to group_url(@group)
+  end
+
   def setup_comment_with_versions
     comment = Comment.new(discussion: create_discussion, body: "What star sign are you?")
     CommentService.create(comment: comment, actor: jennifer)
