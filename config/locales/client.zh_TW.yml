@@ -557,7 +557,6 @@ zh_TW:
     no_notifications: "您沒有任何通知"
     with_title:
       comment_replied_to: "%{actor} 回覆您於：%{title}"
-      discussion_announced: "%{actor} 邀請您參與討論串：%{title}"
       discussion_edited: "%{actor} 編輯了討論串內容：%{title}"
       discussion_closed: "%{actor} 關閉了討論串：%{title}"
       invitation_accepted: "%{actor} 接受了您加入 %{title} 的邀請"
@@ -917,7 +916,6 @@ zh_TW:
     comment_header: 留言編輯
     poll_header: 投票編輯
     outcome_header: 結果編輯
-    stance_header: 立場編輯
     started_by: '由 <strong>{{name}}</strong> 所啟動'
     edited_by: '由 <strong>{{name}}</strong> 所編輯'
     edit_by: "編輯由 {{name}} · {{date}}"
@@ -944,10 +942,6 @@ zh_TW:
       closed: "這個討論串已經關閉。它將不會再出現在儀表板上，並將會在群組頁面中列在「已關閉」下。"
   delete_group_modal:
     title: 刪除群組
-    body: |
-        您確定您想要刪除此群組嗎？
-        所有討論串、投票、檔案與其他群組內容都將會永久刪除。
-        建議您在繼續前手動匯出群組資料並手動下載所有重要檔案。
     confirm: "輸入「%{name}」以確認您想要刪除此群組。"
     success: 此群組已被封存，並計劃於 2 週內永久刪除。
   group_page:
@@ -1079,7 +1073,6 @@ zh_TW:
       private_to_group: '名稱與描述都將只會對成員可見。'
       private_to_parent_members: '名稱與描述將會對 {{parent}} 的成員可見'
     privacy: '隱私權'
-    group_privacy_is_open_description: "公開列出。任何人都可以要求加入。所有討論串都是公開的。"
     group_privacy_is_closed_description: "不列出。任何有連結的人都可以要求加入。所有討論串都是私密的。"
     group_privacy_is_closed_public_threads_description: "不列出。任何有連結的人都可以要求加入。討論串可以是公開或私密的。"
     group_privacy_is_secret_description: "僅被邀請的夥伴才能找到群組。所有討論串都是私密的。"
@@ -1564,6 +1557,7 @@ zh_TW:
     meeting_title: 時間投票
     ranked_choice_title: 排序選擇
   poll_common:
+    delete_poll: 刪除投票
     vote_now: 現在投票
     review_due: 審閱到期
     have_your_say: 擁有發言權
@@ -1897,6 +1891,8 @@ zh_TW:
     sentence: "{{denominator}} 中的 {{numerator}} 個夥伴已投票 ({{percent}}%)"
   poll_meeting_chart_panel:
     total: 全部
+  poll_remove_vote:
+    success: 投票已移除
   poll_poll_vote_form:
     stance_created: 已建立投票
     stance_updated: 已更新投票

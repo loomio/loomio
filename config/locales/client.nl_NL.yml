@@ -743,7 +743,6 @@ nl_NL:
     comment_header: Reactie wijzigingen
     poll_header: Peiling wijzigingen
     outcome_header: Resultaat wijzigingen
-    stance_header: Standpunt wijzigingen
     started_by: 'Gestart door <strong>{{name}}</strong>'
     edited_by: 'Bijgewerkt door <strong>{{name}}</strong>'
     edit_by: "Bewerk op {{name}} · {{date}}"
@@ -767,10 +766,6 @@ nl_NL:
       closed: "Dit bord is gesloten. Het verschijnt niet langer op het dashboard, en het staat onder 'gesloten' op de groep pagina"
   delete_group_modal:
     title: Groep verwijderen
-    body: |
-        Weet je zeker dat je de groep wilt verwijderen?
-        Alle borden, peilingen en andere data van de groep zullen permanent worden verwijderd.
-        We bevelen aan dat je, voordat je door gaat, eerst de data van de groep exporteert en handmatig alle belangrijke bestanden download.
     confirm: "Type '%{name}' om te bevestigen dat je groep wilt verwijderen."
     success: De groep is gearchiveerd en zal over 2 weken permanent verwijderd worden.
   group_page:
@@ -888,7 +883,6 @@ nl_NL:
       private_to_group: 'Naam en beschrijving zijn uitsluitend zichtbaar voor leden.'
       private_to_parent_members: 'Naam en beschrijving zijn zichtbaar voor leden van {{parent}}'
     privacy: 'Privacy'
-    group_privacy_is_open_description: "Openbaar. Iedereen kan de groep vinden en vragen om mee te doen. Alle borden zijn openbaar."
     group_privacy_is_closed_description: "Besloten. Iedereen met de link kan vragen om mee te doen. Alle borden zijn privé."
     group_privacy_is_closed_public_threads_description: "Besloten. Iedereen met de link kan vragen om mee te doen. Borden zijn publiek of privé."
     group_privacy_is_secret_description: "Alleen uitgenodigde mensen kunnen de groep vinden. Alle borden zijn privé."
@@ -1598,6 +1592,8 @@ nl_NL:
     sentence: "{{numerator}} van {{denominator}} personen hebben gestemd ({{percent}}%)"
   poll_meeting_chart_panel:
     total: Totaal
+  poll_remove_vote:
+    success: Stem verwijderd
   poll_poll_vote_form:
     stance_created: Stemming gemaakt
     stance_updated: Stemming geactualiseerd

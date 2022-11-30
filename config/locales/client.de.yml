@@ -557,7 +557,6 @@ de:
     no_notifications: "Es liegen keine Benachrichtigungen vor"
     with_title:
       comment_replied_to: "%{actor}hat dir geantwortet in: %{title}"
-      discussion_announced: "%{actor}hat dich zu dem Thread %{title} eingeladen"
       discussion_edited: "%{actor}hat den Threadkontext %{title} bearbeitet"
       discussion_closed: "%{actor}hat den Thread %{title} geschlossen"
       invitation_accepted: "%{actor}nahm deine Einladung zum Beitritt %{title} an"
@@ -841,7 +840,6 @@ de:
     comment_header: Kommentar Bearbeitungen
     poll_header: Abstimmungsbearbeitungen
     outcome_header: Ergebnisbearbeitungen
-    stance_header: Positionsbearbeitungen
     started_by: 'Erstellt von <strong>{{name}}</strong>'
     edited_by: 'Bearbeitet von <strong>{{name}}</strong>'
     edit_by: "Änderung von {{name}} · {{date}}"
@@ -866,10 +864,6 @@ de:
       closed: "Diese Diskussion wurde geschlossen. Sie wird nicht mehr auf dem Dashboard angezeigt und auf der Gruppenseite unter \"Geschlossen\" angezeigt"
   delete_group_modal:
     title: Gruppe löschen
-    body: |
-        Bist du sicher, dass du diese Gruppe löschen möchtest?
-        Alle Diskussionen, Abstimmungen, Dateien und weitere Gruppeninhalte werden endgültig gelöscht.
-        Es wird empfohlen, dass du die Gruppeninhalte exportierst und manuell alle wichtigen Dateien herunterlädst, bevor du fortfährst.
     confirm: "Drücke '%{name}' um zu bestätigen, dass Du diese Gruppe löschen willst"
     success: Diese Gruppe wurde archiviert und wird in 2 Wochen endgültig gelöscht werden.
   group_page:
@@ -994,7 +988,6 @@ de:
       private_to_group: 'Name und Beschreibung sind nur für Mitglieder sichtbar'
       private_to_parent_members: 'Name und Beschreibung sind nur für Mitglieder von {{parent}} sichtbar'
     privacy: 'Sichtbarkeit '
-    group_privacy_is_open_description: "Öffentlich gelistet. Jeder kann fragen, ob er beitreten möchte. Alle Diskussionen sind öffentlich."
     group_privacy_is_closed_description: "Nicht aufgelistet. Jeder, der den Link hat, kann um Beitritt bitten. Alle Diskussionen sind privat."
     group_privacy_is_closed_public_threads_description: "Nicht aufgelistet. Jeder, der den Link hat, kann um Beitritt bitten. Diskussionen können öffentlich oder privat sein."
     group_privacy_is_secret_description: "Nur eingeladene Mitglieder können diese Gruppe finden. Alle Diskussionsbeiträge sind privat."

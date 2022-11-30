@@ -742,7 +742,6 @@ pl:
     comment_header: Edycje komentarza
     poll_header: Edycje ankiety
     outcome_header: Edycje wyników
-    stance_header: Edycje pozycji
     started_by: 'Utworzone przez {{name}}'
     edited_by: 'Edytowane przez {{name}}'
     edit_by: "Edytuj przez {{name}} · {{date}}"
@@ -766,10 +765,6 @@ pl:
       closed: "Ten wątek został zamknięty. Nie będzie się więcej pojawiał w głównym panelu i będzie wyświetlał się pod \"Zamknięte\" na stronie grupy."
   delete_group_modal:
     title: Usuń grupę
-    body: |
-        Czy na pewno chcesz usunąć tę grupę?
-        Wszystkie wątki, ankiety, pliki i inne treści grupy zostaną usunięte na zawsze.
-        Rekomendujemy wyeksportowanie danych grupy i ręczne pobranie wszystkich ważnych plików zanim będziesz kontynuować.
     confirm: "Wpisz '%{name}', by potwierdzić usunięcie tej grupy."
     success: Ta grupa została zarchiwizowana i ma zostać trwale usunięta za 2 tygodnie.
   group_page:
@@ -882,7 +877,6 @@ pl:
       private_to_group: 'Nazwa i opis będą widoczne tylko dla osób do niej należących.'
       private_to_parent_members: 'Nazwa i opis będą widoczne dla osób z {{parent}}'
     privacy: 'Prywatność'
-    group_privacy_is_open_description: "Widoczna publicznie. Każdy może poprosić o dołączenie. Wszystkie wątki są publiczne."
     group_privacy_is_closed_description: "Niewidoczna. Każda osoba z linkiem może poprosić o dołączenie. Wszystkie wątki są prywatne."
     group_privacy_is_closed_public_threads_description: "Niewidoczna. Każda osoba z linkiem może poprosić o dołączenie. Wątki mogą być publiczne lub prywatne."
     group_privacy_is_secret_description: "Tylko zaproszone osoby mogą znaleźć grupę. Wszystkie wątki są prywatne."
@@ -1583,6 +1577,8 @@ pl:
     sentence: "{{numerator}} z {{denominator}} ludzi zagłosowało ({{percent}}%)"
   poll_meeting_chart_panel:
     total: W sumie
+  poll_remove_vote:
+    success: Głos usunięty
   poll_poll_vote_form:
     stance_created: Zagłosowano
     stance_updated: Głosowanie zaktualizowane

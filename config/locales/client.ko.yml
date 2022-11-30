@@ -714,7 +714,6 @@ ko:
     comment_header: 댓글 수정
     poll_header: 투표 수정
     outcome_header: 결과 수정
-    stance_header: 항목 수정
     started_by: '<strong>{{name}}</strong>가 시작함'
     edited_by: '<strong>{{name}}</strong>가 수정함'
     edit_by: "{{name}}이 {{date}}에 수정"
@@ -738,10 +737,6 @@ ko:
       closed: "이 스레드는 종료되었습니다. 더이상 대시보드에 나타나지 않으며, 그룹페이지의 '종료됨' 목록에 추가 될 것입니다."
   delete_group_modal:
     title: 그룹 삭제
-    body: |
-        정말로 그룹을 삭제하시겠습니까?
-        모든 스레드, 투표, 파일, 그리고 다른 그룹 컨텐츠가 영구적으로 삭제됩니다.
-        계속하기 전에 그룹 데이터를 내보내고 중요 파일을 수동으로 다운 받는 것을 추천합니다.
     confirm: "그룹을 삭제하시려면  '%{name}' 을 입력하십시오."
     success: 이 그룹은 보관 중이며, 2주 뒤 영구적으로 삭제될 예정입니다.
   group_page:
@@ -853,7 +848,6 @@ ko:
       private_to_group: '이름과 설명은 멤버만 볼 수 있습니다.'
       private_to_parent_members: '{{parent}}의 멤버가 이름과 설명을 볼 수 있습니다. '
     privacy: '개인정보'
-    group_privacy_is_open_description: "모두에게 공개합니다. 누구나 가입신청을 할 수 있습니다. 모든 스레드가 공개됩니다."
     group_privacy_is_closed_description: "공개하지 않습니다. 링크가 있는 사람은 누구나 가입신청 할 수 있습니다. 모든 스레드는 비공개입니다."
     group_privacy_is_closed_public_threads_description: "공개하지 않습니다. 링크가 있는 사람은 누구나 가입신청 할 수 있습니다. 스레드는 공개할 수도 있고 비공개로 설정할 수도 있습니다."
     group_privacy_is_secret_description: "초대 받은 사람만 그룹을 찾을 수 있습니다. 모든 스레드가 비공개입니다."

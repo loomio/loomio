@@ -944,7 +944,6 @@ fr:
     comment_header: Discussion privée
     poll_header: Éditions du sondage
     outcome_header: Modification des résultats
-    stance_header: Modifications de position
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     edited_by: 'Édité par <strong>{{name}}</strong>'
     edit_by: "Modifier par {{name}} · {{date}}"
@@ -2083,6 +2082,8 @@ fr:
     target_progress: "{{pourcentage}}% de la cible atteinte. ({{num}} / {{cible}})"
   poll_meeting_chart_panel:
     total: Total
+  poll_remove_vote:
+    success: Vote supprimé
   poll_poll_vote_form:
     stance_created: Vote créé
     stance_updated: Vote mis à jour

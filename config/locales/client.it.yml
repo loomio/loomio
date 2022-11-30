@@ -544,7 +544,6 @@ it:
     no_notifications: "Non hai notifiche"
     with_title:
       comment_replied_to: "%{actor} ti ha risposto in: %{title}"
-      discussion_announced: "%{actor} ti ha invitato alla discussione: %{title}"
       discussion_edited: "%{actor} ha modificato il contesto della discussione: %{title}"
       discussion_closed: "%{actor} ha terminato la discussione: %{title}"
       invitation_accepted: "%{actor} ha accettato il tuo invito a partecipare a %{title}"
@@ -893,7 +892,6 @@ it:
     comment_header: Modifiche ai commenti
     poll_header: Modifiche al sondaggio
     outcome_header: Modifiche ai risultati
-    stance_header: Modifiche alla posizione
     started_by: 'Iniziato da <strong>{{name}}</strong>'
     edited_by: 'Modificato da <strong>{{name}}</strong>'
     edit_by: "Modifica in base a {{name}} · {{data}}"
@@ -920,10 +918,6 @@ it:
       closed: "Questo thread è stato chiuso. Non apparirà più nella dashboard e sarà elencato sotto \"chiuso\" nella pagina del gruppo"
   delete_group_modal:
     title: Delete group
-    body: |
-        Sei sicuro che vuoi eliminare questo gruppo?
-        Tutti i thread, i sondaggi, i file e altri contenuti del gruppo verranno eliminati definitivamente.
-        Si consiglia di esportare i dati del gruppo e scaricare manualmente tutti i file importanti prima di continuare.
     confirm: "Digitare '%{name}' per confermare l'eliminazione del gruppo."
     success: Questo gruppo è stato archiviato ed è previsto per l'eliminazione permanente in 2 settimane.
   group_page:
@@ -1053,7 +1047,6 @@ it:
       private_to_group: 'Il nome e la descrizione saranno visibili solamente ai membri'
       private_to_parent_members: 'Nome e descrizione sarà visibile ai membri di {{parent}}'
     privacy: 'Privacy'
-    group_privacy_is_open_description: "Elencato pubblicamente. Chiunque può chiedere di aderire. Tutti i thread sono pubblici."
     group_privacy_is_closed_description: "Non elencato. Chiunque abbia il link può chiedere di aderire. Tutti i thread sono privati."
     group_privacy_is_closed_public_threads_description: "Non elencato. Chiunque abbia il link può chiedere di aderire. I thread possono essere pubblici o privati."
     group_privacy_is_secret_description: "Solo le persone invitate possono trovare il gruppo. Tutti i thread sono privati."
@@ -1760,6 +1753,8 @@ it:
     sentence: "{{numerator}} su {{denominator}} persone hanno votato ({{percent}}%)"
   poll_meeting_chart_panel:
     total: Totale
+  poll_remove_vote:
+    success: Voto rimosso
   poll_poll_vote_form:
     stance_created: Voto creato
     stance_updated: Voto aggiornato

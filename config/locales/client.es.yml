@@ -944,7 +944,6 @@ es:
     comment_header: Ediciones de comentarios
     poll_header: Ediciones de encuestas
     outcome_header: Ediciones de resultados
-    stance_header: Ediciones de posición
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited_by: 'Editado por <strong>{{name}}</strong>'
     edit_by: "Editar por {{name}} · {{date}}"
@@ -2082,6 +2081,8 @@ es:
     target_progress: "{{porcentaje}}% del objetivo alcanzado. ({{num}} / {{target}})"
   poll_meeting_chart_panel:
     total: Total
+  poll_remove_vote:
+    success: 'Voto eliminado '
   poll_poll_vote_form:
     stance_created: Voto creado
     stance_updated: Voto actualizado

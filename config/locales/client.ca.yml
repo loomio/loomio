@@ -676,7 +676,6 @@ ca:
     comment_header: Edicions dels comentaris
     poll_header: Edicions de les enquestes
     outcome_header: Edicions dels resultats
-    stance_header: Edicions dels posicionaments
     started_by: 'Iniciat per <strong>{{name}}</strong>'
     edited_by: 'Editat per <strong>{{name}}</strong>'
     edit_by: "Editat per {{name}} · {{date}}"
@@ -811,7 +810,6 @@ ca:
       private_to_group: 'El nom i la descripció només seran visible pels membres.'
       private_to_parent_members: 'El nom i la descripció només seran visibles pels membres de {{parent}}'
     privacy: 'Privacitat'
-    group_privacy_is_open_description: "Públic. Tothom pot demanar d'unir-s'hi. Tots els fils són públics"
     group_privacy_is_closed_description: "Privat. Tothom que tingui l'enllaç pot demanar unir-s'hi. Tots els fils són privats"
     group_privacy_is_closed_public_threads_description: "Privat. Tothom que tingui l'enllaç pot demanar unir-s'hi. Els fils poden ser públics o privats."
     group_privacy_is_secret_description: "Només usuaris convidats poden trobar el grup. Tots els fils són privats"
