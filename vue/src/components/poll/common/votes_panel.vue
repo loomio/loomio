@@ -37,26 +37,14 @@ export default
       Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
 
   watch:
-    'loader.pageWindow': (val) ->
-      console.log 'loader.pageWindow changed', val
     page: ->
-      @loader.fetch(@page).then => @findRecords()
+      @loader.fetch(@page).then(=> @findRecords()).then => @scrollTo('#votes')
       @findRecords()
 
   methods:
     findRecords: ->
-      chain = Records.stances.collection.chain().
-        find(pollId: @poll.id).
-        find(latest: true).
-        find(revokedAt: null)
-
-      console.log 'votes_panel pagewindow', @loader.pageWindow
       if @loader.pageWindow[@page]
-        chain = chain.find
-          orderAt: 
-            $and:
-              $jgte: @loader.pageWindow[@page][0]
-              $jlte: @loader.pageWindow[@page][1]
+        chain = Records.stances.collection.chain().find(id: {$in: @loader.pageIds[@page]})
         chain = chain.simplesort('orderAt', true)
         @stances = chain.data()
       else
@@ -68,7 +56,7 @@ export default
 .poll-common-votes-panel
   //- v-layout.poll-common-votes-panel__header
     //- v-select(style="max-width: 200px" dense solo v-model='order' :items="sortOptions" @change='refresh()' aria-label="$t('poll_common_votes_panel.change_results_order')")
-  h2.text-h5.my-2(v-t="'poll_common.votes'")
+  h2.text-h5.my-2#votes(v-t="'poll_common.votes'")
   .poll-common-votes-panel__no-votes.text--secondary(v-if='!poll.votersCount' v-t="'poll_common_votes_panel.no_votes_yet'")
   .poll-common-votes-panel__has-votes(v-if='poll.votersCount')
     .poll-common-votes-panel__stance(v-for='stance in stances', :key='stance.id')
