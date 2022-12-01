@@ -12,7 +12,7 @@ class UserInviter
                         emails: emails,
                         usernames: usernames,
                         user_ids: user_ids.concat(audience_ids))
-    users = users.where.not(id: model.voters.pluck(:id)) if exclude_members
+    users = users.where.not(id: model.invited_voters.pluck(:id)) if exclude_members
     email_count + users.count + chatbot_ids.length
   end
 
