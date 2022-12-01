@@ -41,7 +41,6 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Details" do
-      f.input type: :hidden, name: :authenticity_token
       f.input :name
       f.input :email, as: :string
       f.input :username, as: :string
