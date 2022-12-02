@@ -2,6 +2,6 @@
 **<%=t :'common.attachments' %>**
 <% resource.files.each do |file| %>
 <% download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST']) %>
-- 📎 [<%=file.blob.filename%>](<%=download_url%>)
+- 📎 [<%=file.blob.filename.base%>](<%=download_url%>)
 <% end %>
 <% end %>

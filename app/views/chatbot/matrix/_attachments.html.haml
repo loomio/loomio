@@ -5,4 +5,4 @@
       - download_url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: false, host: ENV['CANONICAL_HOST'])
       %li
         %span 📎
-        %a{href: download_url, target: '_blank'}= file.blob.filename
+        %a{href: download_url, target: '_blank'}= file.blob.filename.base
