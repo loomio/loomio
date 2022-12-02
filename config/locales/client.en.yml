@@ -206,7 +206,8 @@ en:
     links: Links
     active_time_ago: Last active {{time_ago}}
     confirm_discard_changes: Discard your changes?
-    something_went_wrong: Uh oh! Something went wrong.
+    something_went_wrong: Uh oh! Something went wrong
+    check_for_errors_and_try_again: Please check the form for errors and try again
     please_try_again: Please try again
     time:
       am: am
