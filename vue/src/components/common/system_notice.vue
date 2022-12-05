@@ -26,6 +26,7 @@ export default
     ,
       1000 * 60 * 5
     EventBus.$on 'systemNotice', @eatData
+    EventBus.$on 'signedIn', => @showNotice = false
     @eatData({version: AppConfig.version, notice: AppConfig.systemNotice})
 
   methods:
