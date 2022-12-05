@@ -32,7 +32,7 @@ export default
   methods:
     eatData: (data) ->
       @reload = data.reload
-      @notice = data.notice || (AppConfig.features.app.trials && !Session.isSignedIn() && I18n.t("powered_by.this_is_loomio_md"))
+      @notice = data.notice || (AppConfig.features.app.trials && @$route.path.startsWith('/d/') && !Session.isSignedIn() && I18n.t("powered_by.this_is_loomio_md"))
       @showNotice = @reload || (@notice && !Session.user().hasExperienced(md5(@notice)))
       @showDismiss = data.reload || data.notice
 
