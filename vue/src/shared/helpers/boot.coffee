@@ -33,7 +33,8 @@ export default (callback) ->
           "UnhandledRejection: Non-Error promise rejection captured with value",
           "ChunkLoadError: Loading chunk chunk-",
           "TypeError: annulé",
-          "Permission denied to access property \"dispatchEvent\" on cross-origin object"
+          "Permission denied to access property \"dispatchEvent\" on cross-origin object",
+          "TypeError: Failed to fetch"
         ]
         dsn: AppConfig.sentry_dsn
         tunnel: '/bug_tunnel'
