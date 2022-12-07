@@ -125,7 +125,8 @@ module Null::Group
 
   def none_methods
     {
-      members: :user
+      members: :user,
+      self_and_subgroups: :group
     }
   end
 
