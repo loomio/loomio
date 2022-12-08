@@ -5,7 +5,11 @@ production:
  :concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] || 4 %>
 :queues:
   - critical
+  - login_emails
   - mailers
+  - notification_emails
   - default
+  - active_storage_analysis
+  - active_storage_purge
   - low
   - low_priority
