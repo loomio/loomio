@@ -12,6 +12,9 @@ export default
 
   created: -> @init()
 
+  watch:
+    '$route.params.key': 'init'
+
   methods:
     init: ->
       Records.polls.findOrFetchById(@$route.params.key)
