@@ -241,7 +241,7 @@ class PollService
     actor.ability.authorize! :update, poll
     actor.ability.authorize! :update, discussion
     ActiveRecord::Base.transaction do
-      poll.update(discussion_id: discussion.id, group_id: discussion.group.id, stances_in_discussion: false)
+      poll.update(discussion_id: discussion.id, group_id: discussion.group.id, stances_in_discussion: true)
       event = poll.created_event
       event.discussion_id = discussion.id
       event.parent_id = discussion.created_event.id
@@ -250,6 +250,13 @@ class PollService
       event.save
       poll.created_event.update_sequence_info!
     end
+
+    if (poll.closed? || poll.hide_results != 'until_closed')
+      stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
+      Event.where(kind: 'stance_created', eventable_id: stance_ids).update_all(discussion_id: poll.discussion_id)
+      EventService.repair_thread(poll.discussion_id)
+    end
+
     poll.created_event
   end
 
