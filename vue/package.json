@@ -32,7 +32,7 @@
     "@tiptap/extension-hard-break": "2.0.0-beta.204",
     "@tiptap/extension-heading": "2.0.0-beta.204",
     "@tiptap/extension-history": "2.0.0-beta.204",
-    "@tiptap/extension-horizontal-rule": "2.0.0-beta.204",
+    "@tiptap/extension-horizontal-rule": "2.0.0-beta.207",
     "@tiptap/extension-image": "2.0.0-beta.204",
     "@tiptap/extension-italic": "2.0.0-beta.204",
     "@tiptap/extension-link": "2.0.0-beta.204",
