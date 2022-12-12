@@ -54,7 +54,7 @@
     "@tiptap/extension-typography": "2.0.0-beta.204",
     "@tiptap/extension-underline": "2.0.0-beta.204",
     "@tiptap/suggestion": "2.0.0-beta.204",
-    "@tiptap/vue-2": "2.0.0-beta.204",
+    "@tiptap/vue-2": "2.0.0-beta.207",
     "activestorage": "^5.2.8",
     "array-flat-polyfill": "^1.0.1",
     "date-fns": "2.29.3",
