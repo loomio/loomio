@@ -37,7 +37,7 @@
     "@tiptap/extension-italic": "2.0.0-beta.204",
     "@tiptap/extension-link": "2.0.0-beta.204",
     "@tiptap/extension-list-item": "2.0.0-beta.204",
-    "@tiptap/extension-mention": "2.0.0-beta.204",
+    "@tiptap/extension-mention": "2.0.0-beta.207",
     "@tiptap/extension-ordered-list": "2.0.0-beta.204",
     "@tiptap/extension-paragraph": "2.0.0-beta.204",
     "@tiptap/extension-placeholder": "2.0.0-beta.204",
