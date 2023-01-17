@@ -17,6 +17,10 @@ class Subscription < ApplicationRecord
     end
   end
 
+  def level
+    SubscriptionService::PLANS[self.plan][:level]
+  end
+
   def config
     SubscriptionService::PLANS[Subscription.last.plan.to_sym]
   end
