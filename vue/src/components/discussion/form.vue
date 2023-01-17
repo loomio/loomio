@@ -125,15 +125,13 @@ export default
     v-tabs-items.pt-4(v-model="tab")
       v-tab-item.discussion-form__content
           v-select.pb-4(
+            :disabled="discussion.id"
             v-model="discussion.groupId"
             :items="groupItems"
             :label="$t('common.group')"
             :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')"
             persistent-hint
           )
-          //- p.text--secondary.caption
-          //-   span(v-if="!discussion.groupId" v-t="'announcement.form.visible_to_guests'")
-          //-   span(v-if="discussion.groupId" v-t="{path: 'announcement.form.visible_to_group', args: {group: discussion.group().name}}")
 
           div(v-if="showUpgradeMessage")
             p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
