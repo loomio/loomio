@@ -382,7 +382,7 @@ GEM
     puma (6.0.0)
       nio4r (~> 2.0)
     racc (1.6.1)
-    rack (2.2.4)
+    rack (2.2.6)
     rack-attack (6.6.1)
       rack (>= 1.0, < 3)
     rack-test (2.0.2)
@@ -615,7 +615,7 @@ DEPENDENCIES
   pg
   premailer-rails
   puma
-  rack (= 2.2.4)
+  rack (= 2.2.6)
   rack-attack
   rack-timeout
   rack_session_access
