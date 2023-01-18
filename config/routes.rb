@@ -380,19 +380,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # scope :facebook do
-  #   get :webhook,                         to: 'identities/facebook#verify',   as: :facebook_verify
-  #   post :webhook,                        to: 'identities/facebook#webhook',  as: :facebook_webhook
-  #   get :webview,                         to: 'identities/facebook#webview',  as: :facebook_webview
-  # end
-
-  # scope :slack do
-  #   get  :install,                        to: 'identities/slack#install',     as: :slack_install
-  #   get  :authorized,                     to: 'identities/slack#authorized',  as: :slack_authorized
-  #   post :participate,                    to: 'identities/slack#participate', as: :slack_participate
-  #   post :initiate,                       to: 'identities/slack#initiate',    as: :slack_initiate
-  # end
-
   scope :saml do
     post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
     get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
