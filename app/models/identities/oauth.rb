@@ -3,10 +3,8 @@ class Identities::Oauth < Identities::Base
   set_identity_type :oauth
 
   def apply_user_info(payload)
-    # need to make this dynamic based on ENVs with some defaults
-    payload = payload['ocs']['data']
-    self.uid    ||= payload['id']
-    self.name   ||= payload['id']
-    self.email  ||= payload['email']
+    self.uid    ||= payload.dig(ENV.fetch('OAUTH_ATTR_UID'))
+    self.name   ||= payload.dig(ENV.fetch('OAUTH_ATTR_NAME'))
+    self.email  ||= payload.dig(ENV.fetch('OAUTH_ATTR_EMAIL'))
   end
 end
