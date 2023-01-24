@@ -29,3 +29,9 @@ s3_compatible:
   region: <%= ENV.fetch('STORAGE_REGION', '') %>
   bucket: <%= ENV.fetch('STORAGE_BUCKET_NAME', '') %>
   force_path_style: <%= ENV.fetch('STORAGE_FORCE_PATH_STYLE', false) %>
+
+google:
+  service: GCS
+  credentials: <%= Rails.root.join("credentials.json") %>
+  project: <%= ENV.fetch('GCS_PROJECT', '') %>
+  bucket: <%= ENV.fetch('GCS_BUCKET', '') %>
