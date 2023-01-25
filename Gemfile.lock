@@ -342,7 +342,7 @@ GEM
     method_source (1.0.0)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
+    mini_portile2 (2.8.1)
     minitest (5.16.3)
     msgpack (1.6.0)
     multi_json (1.15.0)
@@ -378,7 +378,7 @@ GEM
     public_suffix (5.0.0)
     puma (6.0.0)
       nio4r (~> 2.0)
-    racc (1.6.1)
+    racc (1.6.2)
     rack (2.2.6.2)
     rack-attack (6.6.1)
       rack (>= 1.0, < 3)
@@ -488,8 +488,8 @@ GEM
     ruby-ll (2.1.2)
       ansi
       ast
-    ruby-saml (1.14.0)
-      nokogiri (>= 1.10.5)
+    ruby-saml (1.15.0)
+      nokogiri (>= 1.13.10)
       rexml
     ruby-vips (2.1.4)
       ffi (~> 1.12)
