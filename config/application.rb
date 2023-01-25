@@ -34,7 +34,7 @@ module Loomio
 
     config.active_record.belongs_to_required_by_default = false
 
-    config.force_ssl = Rails.env.production?
+    config.force_ssl = ENV['FORCE_SSL'].present?
     config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(received_emails|email_processor)/ } } }
 
     config.i18n.enforce_available_locales = false
