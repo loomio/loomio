@@ -26,7 +26,8 @@ export default
         when 'facebook' then '#3b5998'
         when 'google' then '#dd4b39'
         when 'slack' then '#e9a820'
-        when 'saml' then @$vuetify.theme.themes.light.primary
+        else
+          @$vuetify.theme.themes.light.primary
 
     selectProvider: (provider) ->
       window.location = "#{provider.href}?back_to=#{window.location.href}"
