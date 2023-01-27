@@ -195,6 +195,8 @@ ActiveAdmin.register Group, as: 'Group' do
       f.input :parent_id, label: "Parent Id"
       f.input :handle, as: :string
       f.input :subscription_id, label: "Subscription Id"
+      f.input :is_visible_to_public
+      f.input :membership_granted_upon, as: :select, collection: %w[request approval invitation]
     end
     f.actions
   end
