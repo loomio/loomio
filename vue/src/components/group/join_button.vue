@@ -21,11 +21,11 @@ export default
     if !Session.user().membershipFor(@group)
       Records.membershipRequests.fetchMyPendingByGroup(@group.id)
 
-      @watchRecords
-        collections: ['memberships', "membershipRequests"]
-        query: =>
-          @hasRequestedMembership = @group.hasPendingMembershipRequestFrom(Session.user())
-          @membership = Session.user().membershipFor(@group)
+    @watchRecords
+      collections: ['memberships', "membershipRequests"]
+      query: =>
+        @hasRequestedMembership = @group.hasPendingMembershipRequestFrom(Session.user())
+        @membership = Session.user().membershipFor(@group)
 
   methods:
     join: ->
