@@ -246,7 +246,7 @@ div
   //-   | Connecting to socket server …
   .editor(v-if="editor")
     editor-content.html-editor__textarea(ref="editor", :editor='editor').lmo-markdown-wrapper
-    .menubar
+    v-sheet.menubar
       div
         v-layout(align-center v-if="editor.isActive('table')")
           v-btn(icon @click="editor.chain().deleteTable().focus().run()", :title="$t('formatting.remove_table')")
@@ -571,8 +571,5 @@ input[type="file"]
   div[data-iframe-container], .iframe-container
     padding-bottom: 432px !important
     max-width: 768px
-
-
-
 
 </style>
