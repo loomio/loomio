@@ -105,6 +105,7 @@ ActiveAdmin.register User do
 
     panel("Destroy") do
       button_to 'Destroy spam User', delete_spam_admin_user_path(user), method: :delete, data: {confirm: 'Are you sure you want to destroy this user and all their groups?'}
+      p "delete spam deletes the user and any groups, threads, comments, votes they created or authored. It will not groups or threads they are simply a member of."
     end
 
     panel("Memberships") do
