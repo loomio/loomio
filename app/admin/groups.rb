@@ -248,7 +248,7 @@ ActiveAdmin.register Group, as: 'Group' do
   end
 
   member_action :delete_group, :method => :post do
-    DestroyGroupWorker.perform_async(params[:id])
+    GroupService.destroy_without_warning!(params[:id])
     redirect_to [:admin, :groups]
   end
 

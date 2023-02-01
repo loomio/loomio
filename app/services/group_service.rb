@@ -114,6 +114,11 @@ module GroupService
     EventBus.broadcast('group_destroy', group, actor)
   end
 
+  def self.destroy_without_warning!(group_id)
+    Group.find(group_id).archive!
+    DestroyGroupWorker.perform_async(group_id)
+  end
+
   def self.move(group:, parent:, actor:)
     actor.ability.authorize! :move, group
     group.update(handle: "#{parent.handle}-#{group.handle}") if group.handle?
