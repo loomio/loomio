@@ -110,7 +110,7 @@ class RecordCache
 
     # Eventable specific stuff
     # comments
-    ids[:comment].concat self.class.all_parent_ids_for(Comment, ids[:comment]) if ids[:comment].any?
+    # ids[:comment].concat self.class.all_parent_ids_for(Comment, ids[:comment]) if ids[:comment].any?
 
 
     # find related group ids

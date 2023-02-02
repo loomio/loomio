@@ -16,7 +16,7 @@ class Comment < ApplicationRecord
 
   belongs_to :discussion
   belongs_to :user
-  belongs_to :parent, class_name: 'Comment'
+  belongs_to :parent, polymorphic: true
 
   has_many :documents, as: :model, dependent: :destroy
 

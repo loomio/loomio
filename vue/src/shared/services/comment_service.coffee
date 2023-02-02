@@ -47,9 +47,10 @@ export default new class CommentService
           vm.newComment = Records.comments.build
             bodyFormat: "html"
             body: ""
-            discussionId: comment.discussion().id
+            discussionId: comment.discussionId
             authorId: Session.user().id
             parentId: comment.id
+            parentType: 'Comment'
           vm.showReplyForm = true
 
     edit_comment:

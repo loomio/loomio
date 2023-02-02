@@ -1,6 +1,7 @@
 import BaseModel       from '@/shared/record_store/base_model'
 import AppConfig       from '@/shared/services/app_config'
 import HasDocuments    from '@/shared/mixins/has_documents'
+import RecordStore    from '@/shared/record_store/record_store'
 import HasTranslations from '@/shared/mixins/has_translations'
 import {capitalize, map, last, invokeMap} from 'lodash'
 
@@ -28,8 +29,6 @@ export default class CommentModel extends BaseModel
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'discussion'
-    @belongsTo 'parent', from: 'comments', by: 'parentId'
-    # @hasMany  'versions', sortBy: 'createdAt'
 
   createdEvent: ->
     @recordStore.events.find(kind: "new_comment", eventableId: @id)[0]
@@ -60,7 +59,7 @@ export default class CommentModel extends BaseModel
     !!@body
 
   parent: ->
-    @recordStore.comments.find(@parentId)
+    @recordStore[@recordStore.eventTypeMap[@parentType]].find(@parentId)
 
   reactors: ->
     @recordStore.users.find(map(@reactions(), 'userId'))

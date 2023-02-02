@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_08_213445) do
+ActiveRecord::Schema.define(version: 2023_02_02_030032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -189,7 +189,9 @@ ActiveRecord::Schema.define(version: 2022_12_08_213445) do
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
+    t.string "parent_type", null: false
     t.index ["discussion_id"], name: "index_comments_on_discussion_id"
+    t.index ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id"
   end
 
   create_table "default_group_covers", id: :serial, force: :cascade do |t|

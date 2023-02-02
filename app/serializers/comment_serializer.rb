@@ -7,6 +7,7 @@ class CommentSerializer < ApplicationSerializer
              :created_at,
              :updated_at,
              :parent_id,
+             :parent_type,
              :content_locale,
              :versions_count,
              :attachments,

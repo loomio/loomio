@@ -4,6 +4,17 @@ import utils         from '@/shared/record_store/utils'
 import { snakeCase, isEmpty, camelCase, map, keys, each, intersection, merge, pick } from 'lodash'
 
 export default class RecordStore
+  eventTypeMap:
+    Group: 'groups'
+    Discussion: 'discussions'
+    Poll: 'polls'
+    Outcome: 'outcomes'
+    Stance: 'stances'
+    Comment: 'comments'
+    CommentVote: 'comments'
+    Membership: 'memberships'
+    MembershipRequest: 'membershipRequests'
+
   constructor: (db) ->
     @db = db
     @collectionNames = []
