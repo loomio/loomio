@@ -6,6 +6,8 @@ ActiveAdmin.register User do
   filter :email, as: :string
   filter :email_newsletter
   filter :email_verified
+  filter :detected_locale, as: :string
+  filter :time_zone
   filter :created_at
 
   scope :all
@@ -16,6 +18,7 @@ ActiveAdmin.register User do
     column :email
     column :email_newsletter
     column :locale
+    column :time_zone
   end
 
   controller do
@@ -36,6 +39,8 @@ ActiveAdmin.register User do
     column "No. of groups", :memberships_count
     column :deactivated_at
     column :email_verified
+    column :locale
+    column :time_zone
     actions
   end
 
