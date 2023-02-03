@@ -557,7 +557,7 @@ GEM
     unf_ext (0.0.8.2)
     unicode-display_width (2.2.0)
     uuidtools (2.2.0)
-    video_info (3.0.2)
+    video_info (3.1.0)
       iso8601 (~> 0.9.1)
       net_http_timeout_errors (~> 0.3.0)
       oga (~> 3.0)
