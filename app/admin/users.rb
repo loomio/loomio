@@ -6,6 +6,7 @@ ActiveAdmin.register User do
   filter :email, as: :string
   filter :email_newsletter
   filter :email_verified
+  filter :sign_in_count
   filter :detected_locale, as: :string
   filter :time_zone
   filter :created_at
