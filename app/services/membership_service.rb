@@ -12,6 +12,9 @@ class MembershipService
 
     group_ids = membership.group.parent_or_self.id_and_subgroup_ids
 
+    # ensure actor has accepted any existing pending memberships to this group
+    Membership.pending.where(user_id: actor.id, group_id: group_ids).update_all(accepted_at: DateTime.now)
+
     # cant accept pending memberships to groups I already belong to
     existing_group_ids = Membership.pending.where(user_id: membership.user_id,
                                                   group_id: actor.memberships.accepted.pluck(:group_id)).pluck(:group_id)
