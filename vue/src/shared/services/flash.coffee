@@ -18,5 +18,11 @@ export default class Flash
   @warning: createFlashLevel 'warning'
   @error:   createFlashLevel 'error'
   @wait:    createFlashLevel 'wait', 30000
+  @custom: (text, level = 'error', duration = 4000) ->
+    EventBus.$emit("flashMessage",
+      text: text
+      level: level
+      duration: duration
+    )
 
 window.Loomio.flash = Flash
