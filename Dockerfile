@@ -7,7 +7,7 @@ RUN apt-get update -qq
 RUN apt-get install -y autoconf bison patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
 
 # stuff loomio/rails needs
-RUN apt-get install -y sudo git imagemagick ffmpeg mupdf libvips libpng-dev libjpeg-dev libwebp-dev libheif-dev libpq-dev libxml2-dev libxslt1-dev curl python3 
+RUN apt-get install -y sudo git imagemagick ffmpeg mupdf libvips libvips-dev libpng-dev libjpeg-dev libwebp-dev libheif-dev libpq-dev libxml2-dev libxslt1-dev curl python3 
 
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
