@@ -2,3 +2,4 @@ tmp/*
 log/*
 cache/*
 .git/*
+storage/*

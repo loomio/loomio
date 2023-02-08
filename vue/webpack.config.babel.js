@@ -3,7 +3,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 const components = require('./src/components.coffee');
-const Fiber = require('fibers');
 
 module.exports = {
   mode: 'development',

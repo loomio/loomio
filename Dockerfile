@@ -1,40 +1,41 @@
-#
-# Warning: this image is designed to be used with docker-compose as
-# instructed at https://github.com/loomio/loomio-deploy
-#
-# It is not a standalone image.
-#
-FROM ruby:2.7.6
-ENV REFRESHED_AT 2020-12-22
-ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
-ENV MALLOC_ARENA_MAX=2
+FROM debian:bookworm
 
-RUN gem update --system
-RUN apt-get update -qq && apt-get install build-essential sudo apt-utils -y
+# install debian packages
+RUN apt-get update -qq
 
-# for activestorage previews
-RUN apt-get install imagemagick ffmpeg mupdf libvips libvips42 libvips-dev libpng-dev libjpeg-dev libwebp-dev libheif-dev -y
+# from https://github.com/rbenv/ruby-build/wiki#suggested-build-environment
+RUN apt-get install -y autoconf bison patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
 
-# for postgres
-RUN apt-get install libpq-dev -y
+# stuff loomio/rails needs
+RUN apt-get install -y sudo git imagemagick ffmpeg mupdf libvips libpng-dev libjpeg-dev libwebp-dev libheif-dev libpq-dev libxml2-dev libxslt1-dev curl python3 
 
-# for nokogiri
-RUN apt-get install libxml2-dev libxslt1-dev -y
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 
-# for node
-# RUN apt-get install python python-dev python-pip python-virtualenv -y
-
-# install node
-RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-RUN apt-get install nodejs -y
+# download, build, install ruby
+RUN git clone https://github.com/sstephenson/ruby-build.git /usr/local/src/ruby-build && \
+    cd /usr/local/src/ruby-build && \
+    ./install.sh && \
+    ruby-build 2.7.7 /usr/local && \
+    rm -rf /usr/local/src/ruby-build
 
 RUN gem install bundler
 
-# RUN mkdir /loomio
+# install node
+RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+RUN apt-get -y install nodejs npm
+
+ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
+ENV RAILS_LOG_TO_STDOUT=1
+ENV RAILS_SERVE_STATIC_FILES=1
+ENV RAILS_ENV=production
+ENV BUNDLE_WITHOUT=development
+
 WORKDIR /loomio
 ADD . /loomio
 RUN bundle install
 
+ENV NODE_OPTIONS=--openssl-legacy-provider
 WORKDIR /loomio/vue
 RUN npm install
 RUN npm run build
