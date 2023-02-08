@@ -16,7 +16,7 @@ RUN rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 RUN git clone https://github.com/sstephenson/ruby-build.git /usr/local/src/ruby-build && \
     cd /usr/local/src/ruby-build && \
     ./install.sh && \
-    ruby-build 2.7.7 /usr/local && \
+    ruby-build 2.7.6 /usr/local && \
     rm -rf /usr/local/src/ruby-build
 
 RUN gem install bundler
