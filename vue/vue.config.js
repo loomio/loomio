@@ -50,7 +50,8 @@ module.exports = env => {
       loaderOptions: {
         sass: {
           sassOptions: {
-            includePaths: ["src/css", "node_modules/"]
+            includePaths: ["src/css", "node_modules/"],
+            fiber: false
           },
           additionalData: "@import '@/css/variables.scss'"
         }
