@@ -100,6 +100,50 @@ class GroupExportService
     }
   }.with_indifferent_access.freeze
 
+  # export all the direct (invite-only) threads that people in a group have made
+  # TODO make this part of a normal export group process
+  def self.export_direct_threads(group_id)
+    group = Group.find(group_id)
+    group_ids = Group.find(group_id).id_and_subgroup_ids
+    author_ids = Membership.where(group_id: group_ids).pluck(:user_id).uniq
+    discussion_ids = Discussion.where(group_id: nil, author_id: author_ids).pluck(:id)
+    filename = "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_invite-only-threads-for-#{group.name.parameterize}.json"
+    ids = Hash.new { |hash, key| hash[key] = [] }
+    File.open(filename, 'w') do |file|
+      Discussion.where(id: discussion_ids).each do |discussion|
+        puts_record(discussion, file, ids)
+        %w[exportable_polls
+           exportable_poll_options
+           exportable_outcomes
+           exportable_stances
+           exportable_stance_choices
+           all_reactions
+           comments
+           readers
+           items
+           discussion_readers].each do |relation|
+          discussion.send(relation).find_each(batch_size: 20000) do |record|
+            puts_record(record, file, ids)
+          end
+        end
+
+        attachments = [
+          discussion.files,
+          discussion.image_files,
+          discussion.comment_files,
+          discussion.comment_image_files,
+          discussion.poll_files,
+          discussion.poll_image_files,
+          discussion.outcome_files,
+          discussion.outcome_image_files
+        ].compact.flatten.uniq.each do |attachment|
+          puts_attachment(attachment, file)
+        end
+      end
+    end
+    filename
+  end
+
   def self.export(groups, group_name)
     filename = export_filename_for(group_name)
     ids = Hash.new { |hash, key| hash[key] = [] }
@@ -134,20 +178,7 @@ class GroupExportService
 
         (user_attachments + own_attachments + related_attachments).
         compact.flatten.uniq.each do |attachment|
-          download_path = Rails.application.routes.url_helpers.rails_blob_path(attachment, only_path: true)
-          obj = {
-            id: attachment.id,
-            host: ENV['CANONICAL_HOST'],
-            record_type: attachment.record_type,
-            record_id: attachment.record_id,
-            name: attachment.name,
-            filename: attachment.filename,
-            content_type: attachment.content_type,
-            path: download_path,
-            url: "https://#{ENV['CANONICAL_HOST']}#{download_path}"
-          }
-
-          file.puts({table: 'attachments', record: obj}.to_json)
+          puts_attachment(attachment, file)
         end
       end
     end
@@ -156,6 +187,23 @@ class GroupExportService
 
   def self.export_filename_for(group_name)
     "/tmp/#{DateTime.now.strftime("%Y-%m-%d_%H-%M-%S")}_#{group_name.parameterize}.json"
+  end
+
+  def self.puts_attachment(attachment, file)
+    download_path = Rails.application.routes.url_helpers.rails_blob_path(attachment, only_path: true)
+    obj = {
+      id: attachment.id,
+      host: ENV['CANONICAL_HOST'],
+      record_type: attachment.record_type,
+      record_id: attachment.record_id,
+      name: attachment.name,
+      filename: attachment.filename,
+      content_type: attachment.content_type,
+      path: download_path,
+      url: "https://#{ENV['CANONICAL_HOST']}#{download_path}"
+    }
+
+    file.puts({table: 'attachments', record: obj}.to_json)
   end
 
   def self.puts_record(record, file, ids)
