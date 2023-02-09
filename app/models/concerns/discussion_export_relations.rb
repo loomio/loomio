@@ -1,4 +1,4 @@
-class DiscussionExportRelations
+module DiscussionExportRelations
   extend ActiveSupport::Concern
 
   included do
