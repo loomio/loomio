@@ -91,7 +91,3 @@ end
 group :production do
   gem 'rack-timeout'
 end
-
-Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '**', "Gemfile")) do |gemfile|
-  eval(IO.read(gemfile), binding)
-end
