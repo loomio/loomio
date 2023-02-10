@@ -51,7 +51,7 @@ export default new class AuthService
       else
         user.update({authForm: 'complete', sentLoginLink: true})
       data
-    , (data) => data.json().then (data) =>
+    , (data) =>
       user.errors = data.errors
 
   reactivate: (user) ->

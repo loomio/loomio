@@ -66,6 +66,9 @@ export default
     updateGroupItems: ->
       @groupItems = [{text: @$t('discussion_form.none_invite_only_thread'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}
 
+    openEditLayout: ->
+      ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
+
   computed:
     maxThreads: ->
       @subscription.max_threads
@@ -162,6 +165,8 @@ export default
 
   v-card-actions.ma-2
     help-link(path='en/user_manual/threads/starting_threads')
+    v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
+      span(v-t="'thread_arrangement_form.edit'")
     v-spacer
     v-btn.discussion-form__submit(
       color="primary"

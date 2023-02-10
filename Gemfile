@@ -62,8 +62,6 @@ gem 'lograge'
 gem 'video_info'
 gem 'blazer'
 gem 'terminal-table'
-# gem 'pghero'
-# gem 'pg_query', '>= 0.9.0'
 
 group :development, :test do
   gem 'listen'
@@ -92,11 +90,4 @@ end
 
 group :production do
   gem 'rack-timeout'
-  gem 'rails_12factor'
-  gem 'rails_serve_static_assets'
-  # gem 'newrelic_rpm'
-end
-
-Dir.glob(File.join(File.dirname(__FILE__), 'plugins', '**', "Gemfile")) do |gemfile|
-  eval(IO.read(gemfile), binding)
 end

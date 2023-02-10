@@ -2332,7 +2332,7 @@ en:
     continue_with_email: Continue with email
     or_enter_your_email: Or, enter your email address
     enter_your_name: Enter your name
-    invitation_required: You need an invitation to create an account.
+    invitation_required: You need an invitation to create an account. Follow the link from your invitation email to continue.
     more_providers: More
     email_not_present: An email address is required
     invalid_email: "Sorry, that doesn't look like a valid email address"

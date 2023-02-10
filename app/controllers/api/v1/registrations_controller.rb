@@ -40,7 +40,7 @@ class API::V1::RegistrationsController < Devise::RegistrationsController
 
   def permission_check
     if !(AppConfig.app_features[:create_user] || pending_invitation)
-      render json: { errors: {email: [I18n.t('auth_form.invitation_required')]}}, status: 422
+      render json: { errors: {email: [I18n.t('auth_form.invitation_required')], name: [I18n.t('auth_form.invitation_required')]}}, status: 422
     end
   end
 

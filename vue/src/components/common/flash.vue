@@ -26,7 +26,15 @@ v-snackbar.flash-root(
   v-model="isOpen"
   :color="flash.level == 'success' ? 'primary' : flash.level"
   :timeout="flash.duration")
-  span.flash-root__message(role="status" aria-live="assertive" v-t="{path: flash.message, args: flash.options}")
+  span.flash-root__message(
+    v-if="flash.message"
+    role="status"
+    aria-live="assertive"
+    v-t="{path: flash.message, args: flash.options}")
+  span.flash-root__message(
+    v-if="flash.text"
+    role="status"
+    aria-live="assertive")
   v-progress-linear.mt-2(v-if="flash.level == 'wait'" :value="seconds")
   .flash-root__action(v-if="flash.actionFn")
     a(@click="flash.actionFn()", v-t="flash.action")
