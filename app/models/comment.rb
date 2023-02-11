@@ -31,6 +31,8 @@ class Comment < ApplicationRecord
   scope :dangling, -> { joins('left join discussions on discussion_id = discussions.id').where('discussion_id is not null and discussions.id is null') }
   scope :in_organisation, ->(group) { includes(:user, :discussion).joins(:discussion).where("discussions.group_id": group.id_and_subgroup_ids) }
 
+  before_validation :assign_parent_if_nil
+
   delegate :name, to: :user, prefix: :user
   delegate :name, to: :user, prefix: :author
   delegate :email, to: :user, prefix: :user
@@ -46,6 +48,9 @@ class Comment < ApplicationRecord
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
+  def assign_parent_if_nil
+    self.parent = self.discussion if self.parent_id.nil?
+  end
 
   def poll
     nil
@@ -65,11 +70,7 @@ class Comment < ApplicationRecord
   end
 
   def parent_event
-    if parent # parent comment
-      parent.created_event # parent comment's 'new_comment' event
-    else
-      discussion.created_event
-    end
+    parent.created_event
   end
 
   def created_event_kind
@@ -105,10 +106,8 @@ class Comment < ApplicationRecord
   end
 
   def parent_comment_belongs_to_same_discussion
-    if parent.present?
-      unless discussion_id == parent.discussion_id
-        errors.add(:parent, "Needs to have same discussion id")
-      end
+    unless discussion_id == parent.discussion_id
+      errors.add(:parent, "Needs to have same discussion id")
     end
   end
 end
