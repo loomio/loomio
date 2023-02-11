@@ -144,7 +144,7 @@ v-main
                 item-value="key")
               validation-errors(:subject='user', field='selectedLocale')
               p(v-if='showHelpTranslate')
-                a(v-t="'profile_page.help_translate'" href='https://help.loomio.com/en/user_manual/users/translation' target='_blank')
+                a(v-t="'profile_page.help_translate'" href='https://help.loomio.com/en/user_manual/users/translation/#help-translate-loomio' target='_blank')
               p
                 span(v-t="'common.time_zone'")
                 space
