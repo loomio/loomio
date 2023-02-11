@@ -1623,7 +1623,6 @@ pl:
     continue_with_email: Kontynuuj za pomocą adresu e-mail
     or_enter_your_email: Lub wprowadź swój adres e-mail
     enter_your_name: 'Wprowadź imię '
-    invitation_required: Potrzebujesz zaproszenia, aby utworzyć konto.
     more_providers: Więcej
     email_not_present: Adres e-mail jest wymagany
     invalid_email: "Przepraszamy, to nie wygląda na prawidłowy adres e-mail. "

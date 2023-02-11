@@ -7,9 +7,38 @@ pt_BR:
         blank: não pode deixar em branco
         invalid: não é um valor válido
   errors:
+    clear_cache: "Problema de carregamento detectado. Segure shift e pressione recarregar, ou limpe o cache do navegador."
+    400:
+      title: Pedido ruim
+      body: Desculpe, não conseguimos entender essa solicitação
+    401:
+      title: Unauthorized
+      body: Você não tem permissão para acessar esta página. Pode ser necessário fazer login.
+    403:
+      title: Proibido
+      body: Você não tem permissão para acessar esta página. Pode ser necessário fazer login.
     404:
       title: Não encontrado
+      body: Desculpe, a página que você está procurando não existe. Você pode ter digitado o endereço incorretamente ou a página pode ter sido movida ou excluída.
+    410:
+      title: Perdido
+      body: Esta página não existe mais
+    417:
+      title: Navegador incompatível
+      body: |
+          Por favor <a href="https://browser-update.org/update.html?force_outdated=true">Atualize seu navegador</a> para usar Loomio
+    422:
+      title: Entidade Não Processável
+      body: A alteração que você queria foi rejeitada. Talvez você tenha tentado mudar algo que não tinha acesso.
+    429:
+      title: Too Many Requests
+      body: Desculpe, você excedeu o máximo permitido de solicitações por minuto para esta ação. Aguarde um pouco e tente novamente.
+    500:
+      title: Erro do Servidor Interno
+      body: Lamentamos, mas algo deu errado. Fomos notificados sobre esse problema e o analisaremos em breve.
     noscript: O Loomio precisa de Javascript para funcionar. Por favor habilite o Javascript no seu navegador para continuar.
+    upgrade_browser: |
+        Ué! Seu navegador é muito antigo e o Loomio pode não funcionar corretamente. Por favor atualize seu navegador.<a href="https://browser-update.org/update.html">atualize seu navegador.</a>
     return_home: Retornar à tela inicial
     not_found: 'Erro 404: arquivo não encontrado.'
     messages:
@@ -18,8 +47,10 @@ pt_BR:
   group:
     error:
       handle_must_begin_with_parent_handle: "Deve começar com %{parent_handle}-"
+      no_public_trials: "Atualize do teste para mudar a configuração de privacidade do grupo"
     stats:
       group_stats: Estatísticas do grupo
+      org_stats: Estatísticas da organização (incluindo subgrupos)
       visits: Visitas
       members: Membros
       subgroups: Subgrupos
@@ -51,11 +82,14 @@ pt_BR:
       cannot_add_options: Não é permitido adicionar opções a essa enquete
       cannot_remove_options: Não é permitido remover opções nessa enquete
       must_have_options: É necessário ao menos uma opção na enquete
+      must_be_in_the_future: Deve ser no futuro
+      templates_cannot_close: Os modelos não podem fechar
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) membros manifestaram sua posição"
       title: Título
       author: Autor(a)
       email: E-mail
+      user_id: ID do usuário
       created_at: Criado em
       closing_at: Encerrando em
       closed_at: Terminou em
@@ -74,6 +108,7 @@ pt_BR:
       participant: Participante
       also_available: Também disponível em
       total: Total
+    waiting_for_votes_from: "Aguardando votos de"
   stance:
     error:
       too_short: Por favor, selecione uma opção
@@ -83,11 +118,20 @@ pt_BR:
   subscriptions:
     active: Ativo
     inactive: Inativo
+  base_mailer:
+    via_loomio: '%{name} (através da %{site_name})'
   user_mailer:
     group_export_ready:
       subject: Dados do Grupo para exportar %{group_name}
       body_html: |
           Baixe a dados do grupo <a href="%{url}">aqui</a>. Por favor note que esse link expirará em uma semana.
+    deactivated:
+      subject: "Sua %{site_name} conta de usuário foi desativada."
+      body_html: |
+          <p>Você ou alguém com acesso à sua conta desativou sua conta de usuário Loomio.</p>
+          <p>Todos os dados pessoais foram removidos do sistema.</p>
+
+          <p>Se você deseja recuperar esta conta de usuário e comentários e votos associados, entre em contato com o suporte e referência: %{recovery_code}</p>
     accounts_merged:
       subject: "A sua conta de usuário em %{site_name} foi integrada."
       body_html: |
@@ -96,20 +140,36 @@ pt_BR:
           Para acessar o Loomio a partir de agora utilize %{email} ao fazer o login.
     merge_verification:
       subject: "Verifique seu %{site_name}email para mesclar."
+      body_html: |
+          <p>Oi %{name}, </p>
+          <p>Foi feita uma solicitação para mesclar sua conta de usuário com o endereço<strong>%{source_email}</strong> com a conta pertencente a este endereço,<strong>%{target_email}</strong>.</p>
+          <p>Após a conclusão desse processo, você não poderá mais fazer login com<strong>%{source_email}</strong>,e só com <strong>%{target_email}</strong>.</p>
+          <p>Confirme se é isso que deseja fazer.</p>
       verify: Verificar o email e seguir
       confirm_page:
         confirm: Confirmar a mescla
+        body_html: |
+            <p>Por favor, confirme que você gostaria de mesclar a conta em <strong>%{source_email}</strong> na conta sob <strong>%{target_email}</strong>.</p>
+            <p>Sua conta em <strong>%{source_email}</strong> será excluído e, a partir de então, você só poderá fazer login via <strong>%{target_email}</strong>.</p>
+            <p>Esta alteração é irreversível.</p>
         merge: Mesclar contas
       complete_page:
         title: Mescla bem sucedida!
+        body_html: |
+            <p>A mesclagem de suas contas de usuário foi bem-sucedida. Você receberá um e-mail de confirmação em <strong>%{target_email}</strong> Em breve.</p>
+            <p>Por favor <a href="/contact" target="_blank">Contate-nos</a> se você tiver quaisquer outras questões. </p>
   email:
     common:
       or_enter_code: Ou insira o código abaixo
+      resend: Isso expira em 24 horas e só pode ser usado uma vez
     login:
       subject: Fazer login em %{site_name}
+      intro: Oi %{name}, aqui está o seu link para entrar %{site_name}
+      intro_code: Oi %{name},  aqui está o seu código para fazer login %{site_name}
       login: Efetuar login como %{name}
     reactivate:
       subject: Reativar a sua conta %{site_name}
+      intro: Oi %{name}, aqui está um link para reativar sua conta %{site_name}
       login: Reativar %{name}
     contact_request:
       subject: "%{name} gostaria de se conectar com você em %{site_name}!"
@@ -126,6 +186,7 @@ pt_BR:
           Se você continuar a ter problemas de login, responda a este e-mail para entrar em contato com uma pessoa do suporte técnico.
     by_who: por %{person}
     reply_to_this_discussion: Responder a esta discussão
+    loomio_app_description: "%{site_name} é uma ferramenta de tomada de decisão para organizações colaborativas"
     view_group: Ver grupo
     to_join_group:
       subject: "%{member} convidou você para entrar em %{group_name} no %{site_name}"
@@ -146,6 +207,7 @@ pt_BR:
     catch_up:
       daily_subject: Ontem no %{site_name}
       weekly_subject: Semana passada no %{site_name}
+      other_subject: Recentemente em %{site_name}
       do_not_reply: Por favor não responda a esse email.
       mark_as_read: Marcar como lida
       thanks_for_reading: Obrigado por ler, tenha um ótimo dia!
@@ -169,6 +231,10 @@ pt_BR:
     reply_or_view_online_html: "Responda a este e-mail diretamente ou <a href='%{url}'>veja em %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Desligar e-mails</a> para esta discussão."
     change_email_preferences_html: "Altere suas <a href='%{email_preferences_url}'>preferências de e-mail</a>."
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Cancelar subscrição</a> de outros anúncios neste tópico."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Cancelar subscrição</a> a partir de comentários neste tópico."
+    unsubscribe_from_comment_replied_to_html: "Esta é uma notificação de resposta."
+    unsubscribe_from_user_mentioned_html: "Esta é uma notificação de menção."
   footer:
     about: Sobre
     blog: Blog
@@ -198,14 +264,64 @@ pt_BR:
         Qual é o seu papel ou caminho até chegar a participar deste grupo? O que as pessoas precisam saber de você para entender de onde você veio?
   how_it_works_thread:
     title: Como utilizar o Loomio
+    description: |
+        Bem-vindo ao Loomio, um local online para comunicação e tomada de decisões.
+
+        Este é um exemplo de discussão **thread**. Você pode adicionar comentários abaixo. Tópicos são para discutir tópicos e obter resultados claros. Este tópico é sobre como o Loomio funciona, então poste perguntas sobre isso aqui.
+
+        No momento, você está lendo o tópico **contexto**, que pode ser atualizado com as principais informações e perguntas que ajudam as pessoas a se envolver.
+
+        Para começar a usar o Loomio:
+        <ul>
+        <li>Tente comentar em um tópico existente ou neste.</li>
+        </ul>
+        Dicas para postar no Loomio:
+        <ul>
+        <li>Para notificar uma pessoa específica, digite @ seguido do nome dela</li>
+        <li> Arraste e solte fotos e anexos ou clique no ícone de clipe de papel</li>
+        <li>Veja<a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 maneiras de usar tópicos</a> para algumas ideias e dicas</li>
+        </ul>
+
+        Se você tiver alguma dúvida, consulte a [Ajuda do Loomio](http://help.loomio.org).
+  first_proposal:
+    name: Tem alguma dúvida sobre como usar o Loomio?
+    description: |
+        _Se sim, compartilhe sua pergunta. Se não, você está pronto para comentar nos tópicos do seu grupo!_
+        Esta **enquete de verificação** está perguntando se você ou alguém aqui tem alguma dúvida sobre o uso do Loomio.
+
+        <ul><li>Vá em frente e experimente usando os botões e o campo de texto abaixo.</li></ul>
+
+        Como acontece com qualquer ferramenta de decisão ou facilitação, você precisará responder antes que ela seja encerrada.
+
+
+        Você pode mudar sua posição enquanto ela estiver aberta (talvez respondendo a novas informações).
+
+        **Experimente participar! Clique em um dos botões.**
+  task_mailer:
+    task_due_reminder:
+      subject: "Lembrete de tarefa: %{name}"
+      greeting: "Oi %{name}, a seguinte tarefa é devido %{due}:"
+      view_task: "Ver em %{site_name}"
+      update_or_comment: "Se você já concluiu esta tarefa, marque-a. Se não estiver completo, compartilhe uma atualização de progresso."
+      due_today: 'hoje'
+      due_in_count_days: 'em %{count} dias'
   group_mailer:
     resend: 'LEMBRETE: %{member} está esperando você participar de %{group_name}'
+    destroy_warning:
+      subject: Seu grupo Loomio está agendado para exclusão.
+      body: |
+          Seu grupo Loomio: "%{group}" foi programado para exclusão por %{deletor}.
+          Se você não deseja que seu grupo seja excluído, responda a este e-mail.
+          Se tiver certeza de que deseja excluir o grupo, não é necessário fazer nada.
+          Obrigado.
   poll_mailer:
     common:
       why_send_this: 'Você está recebendo este e-mail pelo seguinte motivo: %{reason}'
       view_on_loomio: Visualizar em %{site_name}
       create_outcome: Compartilhar resultado
       your_response: "Você votou:"
+      you_voted: "Você votou!"
+      not_invited: "Não convidado"
       please_respond: Por favor responda
       time_zone: (Horário mostrado em %{zone})
       undecided_members: Membros indecisos (%{count})
@@ -213,3 +329,4 @@ pt_BR:
       more_undecided: "%{count} mais..."
       vote_now: Vote agora
       you_have_until: Você tem até %{when} para participar.
+      people_have_voted: "%{nom} de %{dnom} as pessoas votaram (%{pct}%)"

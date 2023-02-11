@@ -1270,6 +1270,8 @@ hu:
     reason_placeholder: Ha szeretne, hagyjon üzenetet
   poll_meeting_chart_panel:
     total: Összesen
+  poll_remove_vote:
+    success: Szavazat eltávolítva
   poll_poll_vote_form:
     stance_created: Szavazás létrehozva
     stance_updated: A szavazás frissítve
@@ -1302,7 +1304,6 @@ hu:
     sign_in_as: 'Bejelentkezés itt: {{name}}'
     or_enter_your_email: Vagy írja be az e-mail címét
     enter_your_name: Add meg a neved
-    invitation_required: A fiók létrehozásához meghívásra van szüksége.
     more_providers: Több
     email_not_present: E-mail címre van szükség
     invalid_email: "Sajnos ez nem tűnik érvényes e-mail címnek"

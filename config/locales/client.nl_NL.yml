@@ -1640,7 +1640,6 @@ nl_NL:
     continue_with_email: Ga door met e-mail
     or_enter_your_email: Of, voeg je emailadres in
     enter_your_name: Typ je naam
-    invitation_required: Je hebt een uitnodiging nodig om een account te creëren.
     more_providers: Meer
     email_not_present: Een e-mailadres is vereist
     invalid_email: "Het spijt me, maar dat ziet er niet uit als een geldig e-mailadres"
