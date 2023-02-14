@@ -1,6 +1,7 @@
 class EventMailer < BaseMailer
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
 
+  # TODO this should be NotificationMailer, and take a notification id
   def event(recipient_id, event_id)
     @current_user = @recipient = User.find_by!(id: recipient_id)
     @event = Event.find_by!(id: event_id)
@@ -42,6 +43,7 @@ class EventMailer < BaseMailer
     template_name = 'poll' if @event.eventable_type == 'Outcome'
     template_name = 'group' if @event.eventable_type == 'Membership'
 
+    # this should be notification.i18n_key
     @event_key = if @event.kind == 'user_mentioned' &&
        @event.eventable.respond_to?(:parent)
        @event.eventable.parent.present? &&
