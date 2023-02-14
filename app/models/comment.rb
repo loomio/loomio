@@ -94,10 +94,6 @@ class Comment < ApplicationRecord
     group.members_can_edit_comments or is_most_recent?
   end
 
-  def users_to_not_mention
-    User.where(username: parent&.author&.username)
-  end
-
   private
 
   def has_body_or_attachment

@@ -53,7 +53,7 @@ describe ReceivedEmailsController do
     expect(EmailParams).to receive(:new).and_return(discussion_email_params)
     expect { post :reply, params: griddler_params }.to change { Comment.count }.by(1)
     c = Comment.last
-    expect(c.parent).to be_nil
+    expect(c.parent).to discussion
     expect(c.discussion).to eq discussion
     expect(c.body).to eq discussion_email_params.body
   end

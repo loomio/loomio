@@ -175,6 +175,7 @@ module Dev::Scenarios::Discussion
     @group.add_admin!(patrick)
     @group.add_member! jennifer
 
+
     @discussion = Discussion.new(title: 'What star sign are you?',
                                  group: @group,
                                  description: "Wow, what a __great__ day.",
@@ -182,7 +183,7 @@ module Dev::Scenarios::Discussion
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
     @comment = Comment.new(body: "hello _patrick.", discussion: @discussion)
     CommentService.create(comment: @comment, actor: jennifer)
-    @reply_comment = Comment.new(body: "why, hello there jen", parent: @comment, discussion: @discussion)
+    @reply_comment = Comment.new(body: "why, hello there @#{jennifer.username}", parent: @comment, discussion: @discussion)
     CommentService.create(comment: @reply_comment, actor: patrick)
     last_email
   end
@@ -192,8 +193,7 @@ module Dev::Scenarios::Discussion
     GroupService.create(group: @group, actor: patrick)
 
     @group.add_member! jennifer
-    @discussion = fake_discussion(group: @group,
-                                 description: "hey @#{patrick.username} wanna dance?")
+    @discussion = fake_discussion(group: @group, description: "hey @#{patrick.username} wanna dance?")
     DiscussionService.create(discussion: @discussion, actor: jennifer)
     last_email
   end
