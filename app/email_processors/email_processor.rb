@@ -24,6 +24,7 @@ class EmailProcessor
     @comment ||= Comment.new(
       discussion_id: email_params.discussion_id,
       parent_id:     email_params.parent_id,
+      parent_type:   email_params.parent_type,
       body:          email_params.body
     )
   end

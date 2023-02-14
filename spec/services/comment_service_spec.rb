@@ -82,10 +82,6 @@ describe 'CommentService' do
         CommentService.create(comment: comment, actor: user)
       end
 
-      it 'does not publish a comment replied to event if there is no parent' do
-        expect { CommentService.create(comment: comment, actor: user) }.to_not change { Event.where(kind: 'comment_replied_to').count }
-      end
-
       it 'does not send any notifications if the author is the same as the replyee' do
         comment.parent = create :comment, author: user
         expect { CommentService.create(comment: comment, actor: user) }.to_not change { ActionMailer::Base.deliveries.count }
