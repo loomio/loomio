@@ -43,9 +43,9 @@ class NotificationSerializer < ApplicationSerializer
     if event.kind == "announcement_created"
       event.custom_fields['kind'] || "group_announced"
     elsif event.kind == 'user_mentioned' &&
-       event.eventable.respond_to?(:parent)
+       event.eventable.respond_to?(:parent) &&
        event.eventable.parent.present? &&
-       event.eventable.parent.author == @actor
+       event.eventable.parent.author == object.user
       "comment_replied_to" 
     else
       event.kind

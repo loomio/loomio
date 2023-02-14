@@ -314,27 +314,30 @@ module Dev::NintiesMoviesHelper
 
   def create_all_notifications
     #'reaction_created'
-    comment = Comment.new(discussion: create_discussion, body: 'I\'m rather likeable')
-    reaction = Reaction.new(reactable: comment, reaction: ":heart:")
-    new_comment_event = CommentService.create(comment: comment, actor: patrick)
+    patrick_comment = Comment.new(discussion: create_discussion, body: 'I\'m rather likeable')
+    reaction = Reaction.new(reactable: patrick_comment, reaction: ":heart:")
+    new_comment_event = CommentService.create(comment: patrick_comment, actor: patrick)
     reaction_created_event = ReactionService.update(reaction: reaction, params: {reaction: ':slight_smile:'}, actor: jennifer)
     create_another_group.add_member! jennifer
 
     #'comment_replied_to'
-    reply_comment = Comment.new(discussion: create_discussion,
-                                body: 'I agree with you', parent: comment)
-    CommentService.create(comment: reply_comment, actor: jennifer)
+    jennifer_comment = Comment.new(discussion: create_discussion,
+                          parent: patrick_comment,
+                          body: 'hey @patrickswayze you look great in that tuxeido (jen reply to patrick)')
+    CommentService.create(comment: jennifer_comment, actor: jennifer)
 
     #'user_mentioned'
-    comment = Comment.new(discussion: create_discussion, body: 'hey @patrickswayze you look great in that tuxeido')
-    CommentService.create(comment: comment, actor: jennifer)
+    reply_comment = Comment.new(discussion: create_discussion,
+                                body: 'I agree with @patrickswayze (jen mention patrick)', parent: jennifer_comment)
+    CommentService.create(comment: reply_comment, actor: jennifer)
 
-    [max, emilio, judd].each {|u| comment.group.add_member! u}
-    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':slight_smile:'}, actor: jennifer)
-    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':heart:'}, actor: patrick)
-    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':laughing:'}, actor: max)
-    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':cry:'}, actor: emilio)
-    ReactionService.update(reaction: Reaction.new(reactable: comment), params: {reaction: ':wave:'}, actor: judd)
+
+    [max, emilio, judd].each {|u| patrick_comment.group.add_member! u}
+    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: ':slight_smile:'}, actor: jennifer)
+    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: ':heart:'}, actor: patrick)
+    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: ':laughing:'}, actor: max)
+    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: ':cry:'}, actor: emilio)
+    ReactionService.update(reaction: Reaction.new(reactable: patrick_comment), params: {reaction: ':wave:'}, actor: judd)
 
     #'membership_requested',
     membership_request = MembershipRequest.new(group: create_group)
