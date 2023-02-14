@@ -70,7 +70,12 @@ class Comment < ApplicationRecord
   end
 
   def parent_event
-    parent.created_event
+    if parent.is_a? Stance
+      # if stance, the could be updated event. sucks i know
+      Event.where(eventable_type: parent_type, eventable_id: parent_id).where('discussion_id is not null').first
+    else
+      parent.created_event
+    end
   end
 
   def created_event_kind
