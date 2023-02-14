@@ -527,6 +527,8 @@ ro:
     'no': 'Nu'
   poll_meeting_chart_panel:
     total: Total
+  poll_remove_vote:
+    success: Vot sters
   auth_form:
     enter_your_name: Introdu numele tau
     name_placeholder: Nume

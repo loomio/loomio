@@ -166,3 +166,7 @@ an:
     password: Clau
   webhook:
     name_label: Nombre
+  group_survey:
+    categories:
+      community: Comunidat
+      other: Unatro

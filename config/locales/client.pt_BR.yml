@@ -1279,7 +1279,7 @@ pt_BR:
     locale_field: 'Língua: {{value}}'
     online_field: 'Online: {{value}}'
     invited: 'Convidados {{value}}'
-    message_user: 'Mensagem {{nome}}'
+    message_user: 'Mensagem {{name}}'
   contact_request_form:
     modal_title: "Email {{name}}"
     message_placeholder: Se apresente e compartilhe porquê você gostaria de entrar em contato.
@@ -1617,7 +1617,7 @@ pt_BR:
   poll_common:
     delete_poll: Excluir enquete
     select_count_options: Selecione {{count}} opções
-    select_minimum_to_maximum_options: Selecione as opções {{mínimo}} a {{máximo}}
+    select_minimum_to_maximum_options: 'Selecione as opções {{minimum}} a {{maximum}} '
     custom_poll_types: Tipos de enquete personalizados
     example_polls_from_thread_template: Exemplos do modelo de tópico
     poll_template: Modelo de enquete
@@ -2108,12 +2108,12 @@ pt_BR:
     stance_updated: Disponibilidade atualizada
     reason_placeholder: Explique quando você está disponível (ou ocupado), para caso o autor queira acrescentar outras opções.
   poll_dot_vote_vote_form:
-    dots_remaining: "%{contar}  pontos restantes"
+    dots_remaining: "%{count}  pontos restantes"
     too_many_dots: Você usou muitos pontos
     stance_created: Votação criada
     stance_updated: Voto atualizado
   poll_ranked_choice_vote_form:
-    helptext: Arraste e solte as opções em ordem de preferência (1 sendo a sua opção preferida). seu topo%{contar}escolhas serão registradas.
+    helptext: Arraste e solte as opções em ordem de preferência (1 sendo a sua opção preferida). Seu topo %{count} escolhas serão registradas.
     stance_created: Escolha registrada
     stance_updated: Escolha atualizada
   thread_item:
@@ -2133,12 +2133,12 @@ pt_BR:
     outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> compartilhou um resultado"
     poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> reabriu o {{polltype}}"
     poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> fechou o {{polltype}}"
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}1</a> iniciou um {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> iniciou um {{polltype}}"
     poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> editou o {{polltype}}"
     poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> opções adicionadas ao {{polltype}}"
     poll_expired: "{{polltype}} encerrada"
     stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>  votado em: <strong>{{title}}</strong>"
-    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}1</a> atualizou seu voto em: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> atualizou seu voto em: <strong>{{title}}</strong>"
     event_removed: "Apagado da conversa"
   add_poll_to_thread_modal:
     success: "Sucesso, {{pollType}} adicionado ao tópico!"
@@ -2156,7 +2156,7 @@ pt_BR:
     create_account: Criar conta
     sign_up_as: Criar conta como {{email}}
     sign_in_as: Entrar como {{name}}
-    continue_with_provider: Continuar com {{provedor}}
+    continue_with_provider: Continuar com {{provider}}
     continue_with_email: Continuar com e-mail
     or_enter_your_email: Ou, digite o seu endereço de email
     enter_your_name: Entre seu nome
