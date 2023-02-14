@@ -11,7 +11,7 @@ import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
 export default
   data: ->
     threads: []
-    loaded: false
+    loader: null
 
   created: ->
     EventBus.$on 'signedIn', @init
@@ -33,11 +33,16 @@ export default
 
   methods:
     init: ->
-      Records.discussions.fetch(path: 'direct').then => @loaded = true
+      @loader = new RecordLoader
+        collection: 'discussions'
+        path: 'direct'
+        params:
+          exclude_types: 'poll group outcome'
+      @loader.fetchRecords()
 
       @watchRecords
         key: 'dashboard'
-        collections: ['discussions', 'searchResults']
+        collections: ['discussions']
         query: =>
           @threads = Records.discussions.collection.chain().find(groupId: null).simplesort('lastActivityAt', true).data()
 
@@ -50,14 +55,20 @@ v-main
     v-layout.mb-3
       //- v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
 
-    v-card.mb-3.dashboard-page__loading(v-if='!loaded' aria-hidden='true')
+    v-card.mb-3.dashboard-page__loading(v-if='!threads.length' aria-hidden='true')
       v-list(two-line)
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
-    div(v-if="loaded")
+    div(v-if="threads.length")
       section.threads-page__loaded
         .threads-page__empty(v-if='threads.length == 0')
           p(v-t="'threads_page.no_invite_only_threads'")
         .threads-page__collections(v-else)
           v-card.mb-3.thread-preview-collection__container
-            thread-preview-collection.thread-previews-container(:threads='threads')
+            v-list.thread-previews(two-line)
+              thread-preview(v-for="thread in threads", :key="thread.id", :thread="thread")
+
+      .d-flex.align-center.justify-center
+        div
+          p.text-center.text--secondary(v-t="{path: 'members_panel.loaded_of_total', args: {loaded: threads.length, total: loader.total}}")
+          v-btn(v-if="!loader.exhausted" @click="loader.fetchRecords()", :loading="loader.loading", v-t="'common.action.load_more'")
 </template>
