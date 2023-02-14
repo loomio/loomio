@@ -100,6 +100,9 @@ class DiscussionService
   def self.discard(discussion:, actor:)
     actor.ability.authorize!(:discard, discussion)
     discussion.update(discarded_at: Time.now, discarded_by: actor.id)
+
+    discussion.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
+
     EventBus.broadcast('discussion_discard', discussion, actor)
     discussion.created_event
   end
