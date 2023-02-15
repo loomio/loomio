@@ -27,15 +27,18 @@ export default new class StanceService
       name: 'common.action.reply'
       icon: 'mdi-reply'
       dock: 1
-      canPerform: -> AbilityService.canAddComment(stance.poll().discussion())
+      canPerform: -> 
+        !stance.poll().anonymous &&
+        AbilityService.canAddComment(stance.poll().discussion())
       perform: ->
         if vm.showReplyForm
           if RescueUnsavedEditsService.okToLeave(vm.newComment)
             vm.showReplyForm = false
         else
+          op = stance.author()
           vm.newComment = Records.comments.build
             bodyFormat: "html"
-            body: ""
+            body: "<span data-mention-id=\"#{op.username}\">@#{op.name}</span>"
             discussionId: stance.poll().discussionId
             authorId: Session.user().id
             parentId: stance.id

@@ -133,15 +133,16 @@ export default new class PollService
       name: 'activity_card.add_comment'
       icon: 'mdi-reply'
       dock: 1
-      canPerform: -> AbilityService.canAddComment(poll.discussion())
+      canPerform: -> false && AbilityService.canAddComment(poll.discussion())
       perform: ->
         if vm.showReplyForm
           if RescueUnsavedEditsService.okToLeave(vm.newComment)
             vm.showReplyForm = false
         else
+          op = poll.author()
           vm.newComment = Records.comments.build
             bodyFormat: "html"
-            body: ""
+            body: "<span data-mention-id=\"#{op.username}\">@#{op.name}</span>"
             discussionId: poll.discussionId
             authorId: Session.user().id
             parentId: poll.id

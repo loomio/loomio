@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_02_030032) do
+ActiveRecord::Schema.define(version: 2023_02_15_002323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -438,7 +438,7 @@ ActiveRecord::Schema.define(version: 2023_02_02_030032) do
     t.string "description_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.jsonb "info", default: {}, null: false
-    t.integer "new_threads_max_depth", default: 2, null: false
+    t.integer "new_threads_max_depth", default: 3, null: false
     t.boolean "new_threads_newest_first", default: false, null: false
     t.boolean "admins_can_edit_user_content", default: true, null: false
     t.boolean "listed_in_explore", default: false, null: false

@@ -151,6 +151,8 @@ export default
       onUpdate: =>
         @checkLength() if @maxLength
         @scrapeLinkPreviews() if @model.isNew()
+      onCreate: =>
+        @editor.commands.focus('end') if @model.isNew()
 
   watch:
     'shouldReset': 'reset'
