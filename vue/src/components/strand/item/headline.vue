@@ -29,13 +29,13 @@ export default
 </script>
 
 <template lang="pug">
-h3.strand-item__headline.thread-item__title.body-2.pb-1(tabindex="-1")
+h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
   div.d-flex.align-center
     //- v-icon(v-if="event.pinned") mdi-pin
     slot(name="headline")
       span.strand-item__headline.text--secondary(v-html='headline')
     mid-dot
-    router-link.text--secondary.body-2(:to='link')
+    router-link.text--secondary.text-body-2(:to='link')
       time-ago(:date='datetime')
     mid-dot(v-if="event.pinned")
     v-icon(v-if="event.pinned") mdi-pin-outline

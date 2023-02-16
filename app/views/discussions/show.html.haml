@@ -11,12 +11,12 @@
                     %a{href: group_url(@discussion.group)}=@discussion.group.full_name
                 %div.thread-tags
                 %div.spacer
-                %span.text--secondary.body-2
+                %span.text--secondary.text-body-2
                   = render 'discussions/time_ago', time: @discussion.created_at
               %h1#sequence-0.display-1.context-panel__heading.px-3
                 = @discussion.title
               .mx-3.mb-2
-                .context-panel__details.my-2.body-2.align-center.layout
+                .context-panel__details.my-2.text-body-2.align-center.layout
                   %span.mr-2
                     = render "base_mailer/avatar", user: @discussion.author
                   %span
@@ -34,7 +34,7 @@
                     %span
                       %span{"aria-hidden" => "true"} ·
                       %span.context-panel__seen_by_count= t(:'thread_context.seen_by_count', count: @discussion.seen_by_count)
-                .lmo-markdown-wrapper.body-2.text--primary.context-panel__description
+                .lmo-markdown-wrapper.text-body-2.text--primary.context-panel__description
                   = render_rich_text(@discussion.body, @discussion.body_format)
               %hr.v-divider.my-4.theme--auto{"aria-orientation" => "horizontal", :role => "separator"}
             .activity-panel

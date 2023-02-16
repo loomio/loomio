@@ -64,7 +64,7 @@ export default
         user-avatar(:user='stance.participant()', :size='24')
       .poll-common-votes-panel__stance-content
         .poll-common-votes-panel__stance-name-and-option
-          v-layout.body-2(align-center)
+          v-layout.text-body-2(align-center)
             .pr-2.text--secondary {{ stance.participantName() }}
             poll-common-stance-choice(
               v-if="poll.showResults() && stance.castAt && poll.singleChoice()", 
