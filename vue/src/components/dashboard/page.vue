@@ -99,7 +99,7 @@ export default
 
 <template lang="pug">
 v-main
-  v-container.dashboard-page.max-width-1024
+  v-container.dashboard-page.max-width-1024.px-0.px-sm-3
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'")
     v-layout.mb-3(v-if='dashboardLoaded')
       v-text-field(

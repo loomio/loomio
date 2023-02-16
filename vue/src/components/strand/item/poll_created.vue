@@ -47,7 +47,7 @@ export default
 section.strand-item.poll-created
   v-layout(justify-space-between)
     .poll-common-card__title.headline.pb-1(tabindex="-1")
-      poll-common-type-icon(:poll="poll")
+      //- poll-common-type-icon(:poll="poll")
       space
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title", :model='poll', field='title')
