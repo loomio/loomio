@@ -4,6 +4,7 @@ describe ReceivedEmailsController do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
   let(:discussion) { create(:discussion) }
+  let(:poll) { create(:poll, discussion: discussion) }
   let(:comment) { create(:comment, discussion: discussion) }
   let(:griddler_params) {{
     mailinMsg: {
@@ -21,6 +22,15 @@ describe ReceivedEmailsController do
       to: [{
         host: "loomiohost.org",
         token: "reply&c=#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
+      }],
+      body: "This is a reply!"),
+    reply_host: "loomiohost.org")
+  }
+  let(:poll_email_params) { EmailParams.new(
+    OpenStruct.new(
+      to: [{
+        host: "loomiohost.org",
+        token: "reply&p=Poll-#{poll.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
       }],
       body: "This is a reply!"),
     reply_host: "loomiohost.org")
@@ -45,6 +55,15 @@ describe ReceivedEmailsController do
     expect { post :reply, params: griddler_params }.to change { Comment.count }.by(1)
     c = Comment.last
     expect(c.parent).to eq comment
+    expect(c.discussion).to eq discussion
+    expect(c.body).to eq comment_email_params.body
+  end
+
+  it "creates a comment on a poll via email" do
+    expect(EmailParams).to receive(:new).twice.and_return(poll_email_params)
+    expect { post :reply, params: griddler_params }.to change { Comment.count }.by(1)
+    c = Comment.last
+    expect(c.parent).to eq poll
     expect(c.discussion).to eq discussion
     expect(c.body).to eq comment_email_params.body
   end

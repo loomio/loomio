@@ -17,8 +17,20 @@ class EmailParams
 
     @discussion_id = params['d']
     @user_id       = params['u']
-    @parent_id     = params['c']
-    @parent_type   = "Comment" if params['c'].present?
+
+    if params['c'].present?
+      @parent_id     = params['c']
+      @parent_type   = "Comment" 
+    end
+
+    if params.fetch('p', '').split('-').length == 2
+      klass = params['p'].split('-')[0]
+      if %w[Discussion Comment Poll Stance].include? klass
+        @parent_type   = params['p'].split('-')[0]
+        @parent_id     = params['p'].split('-')[1].to_i
+      end
+    end
+    
     @email_api_key = params['k']
     @body          = email.body
   end
