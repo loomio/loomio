@@ -30,7 +30,7 @@ describe ReceivedEmailsController do
     OpenStruct.new(
       to: [{
         host: "loomiohost.org",
-        token: "reply&p=Poll-#{poll.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
+        token: "reply&p=p-#{poll.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
       }],
       body: "This is a reply!"),
     reply_host: "loomiohost.org")

@@ -24,10 +24,15 @@ class EmailParams
     end
 
     if params.fetch('p', '').split('-').length == 2
-      klass = params['p'].split('-')[0]
-      if %w[Discussion Comment Poll Stance].include? klass
-        @parent_type   = params['p'].split('-')[0]
-        @parent_id     = params['p'].split('-')[1].to_i
+      letter, id = params['p'].split('-')
+      class_name = {
+        'p' => 'Poll',
+        'c' => 'Comment',
+        's' => 'Stance'
+      }[letter]
+      if class_name
+        @parent_type   = class_name
+        @parent_id     = id.to_i
       end
     end
     

@@ -70,8 +70,14 @@ module EmailHelper
   end
 
   def reply_to_address(model:, user: )
+    letter = {
+      'Comment' => 'c',
+      'Poll' => 'p',
+      'Stance' => 's'
+    }[model.class.to_s]
+
     address = {
-      p: ("#{model.class}-#{model.id}" if [Comment,Discussion,Poll,Stance].include?(model.class)),
+      p: ("#{letter}-#{model.id}" if letter),
       d: model.discussion_id,
       u: user.id,
       k: user.email_api_key
