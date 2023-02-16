@@ -133,7 +133,7 @@ export default new class PollService
       name: 'activity_card.add_comment'
       icon: 'mdi-reply'
       dock: 1
-      canPerform: -> false && AbilityService.canAddComment(poll.discussion())
+      canPerform: -> !poll.discardedAt && AbilityService.canAddComment(poll.discussion()) && !poll.closingAt
       perform: ->
         if vm.showReplyForm
           if RescueUnsavedEditsService.okToLeave(vm.newComment)
