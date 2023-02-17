@@ -34,8 +34,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def is_auto_response?
-    return true if (headers).keys.map(&:downcase).include?('x-autorespond')
-    return true if header('X-Precedence') ==  'auto_reply'
+    return true if header('x-autorespond') || header('X-Precedence') ==  'auto_reply'
 
     prefixes = [
       'Auto:',
