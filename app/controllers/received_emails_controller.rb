@@ -1,66 +1,37 @@
 class ReceivedEmailsController < Griddler::EmailsController
   skip_before_action :verify_authenticity_token
 
-  # reply to discussion by email action
-  def reply
-    unless is_autoresponse? 
-      normalized_params.each do |p|
-        process_email Griddler::Email.new(p)
-      end
+  def create
+    email = build_received_email_from_params
+
+    if !email.is_auto_response?
+      ReceivedEmailService.route(email)
     end
 
     head :ok
   end
 
-  def create
-    if ReceivedEmail.new(received_email_params).save
-      head :ok
-    else
-      head :bad_request
-    end
-  end
-
   private
 
-  def is_autoresponse?
-    return true if (mailin_params['headers'] || {}).keys.map(&:downcase).include?('x-autorespond')
-    return true if mailin_params.dig('headers', 'X-Precedence') ==  'auto_reply'
+  def build_received_email_from_params
+    data = JSON.parse(params[:mailinMsg])
 
-    prefixes = [
-      'Auto:',
-      'Automatic reply',
-      'Autosvar',
-      'Automatisk svar',
-      'Automatisch antwoord',
-      'Abwesenheitsnotiz',
-      'Risposta Non al computer',
-      'Automatisch antwoord',
-      'Auto Response',
-      'Respuesta automática',
-      'Fuori sede',
-      'Out of Office',
-      'Frånvaro',
-      'Réponse automatique'
-    ]
+    email = ReceivedEmail.new(
+      headers: data['headers'],
+      body_text: data['text'],
+      body_html: data['html'],
+      dkim_valid: data['dkim'] == 'pass' ? true : false,
+      spf_valid: data['spf'] == 'pass' ? true : false,
+    )
 
-    return true if prefixes.any? do |prefix|
-      (mailin_params.dig('headers', 'subject') || '').downcase.starts_with?(prefix.downcase)
+    email.attachments = data['attachments'].map do |a|
+      {
+        io: StringIO.new(Base64.decode64(params[a['generatedFileName']])),
+        content_type: a['contentType'],
+        filename: a['generatedFileName']
+      }
     end
 
-    false
-  end
-
-  def received_email_params
-    {
-      sender_email: mailin_params.dig('from', 0, 'address'),
-      headers:      mailin_params['headers'],
-      subject:      mailin_params.dig('headers', 'subject'),
-      body:         mailin_params['html'] || mailin_params['text'],
-      locale:       mailin_params['language']
-    }
-  end
-
-  def mailin_params
-    @mailin_params ||= JSON.parse(params.require(:mailinMsg))
+    email
   end
 end

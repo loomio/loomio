@@ -1,26 +1,63 @@
-class ReceivedEmail
-  include ActiveModel::Model
+class ReceivedEmail < ApplicationRecord
+  has_many_attached :attachments
 
-  attr_accessor :sender_email
-  attr_accessor :headers
-  attr_accessor :subject
-  attr_accessor :body
-  attr_accessor :locale
+  def header(name)
+    self.headers.find { |key, value| key.downcase == name.to_s.downcase }&.last
+  end
 
-  def save
-    if valid?
-      # UserMailer.start_decision(received_email: self).deliver_now
-    else
-      # send failure email
+  def recipient_emails
+    header('to').scan(AppConfig::EMAIL_REGEX).uniq
+  end
+
+  def route_address
+    recipient_emails.find {|email| email.split('@')[1].downcase == ENV['REPLY_HOSTNAME']}
+  end
+
+  def route_path
+    route_address.split('@')[0]
+  end
+
+  def sender_email
+    header('from').scan(AppConfig::EMAIL_REGEX).uniq.first
+  end
+
+  def body
+    # remember to truncate the text once you see secret split code or --
+    Premailer.new(
+      (body_html || body_text),
+      line_length: 10000,
+      with_html_string: true).to_plain_text
+  end
+
+  def subject
+    header('subject')
+  end
+
+  def is_auto_response?
+    return true if (headers).keys.map(&:downcase).include?('x-autorespond')
+    return true if header('X-Precedence') ==  'auto_reply'
+
+    prefixes = [
+      'Auto:',
+      'Automatic reply',
+      'Autosvar',
+      'Automatisk svar',
+      'Automatisch antwoord',
+      'Abwesenheitsnotiz',
+      'Risposta Non al computer',
+      'Automatisch antwoord',
+      'Auto Response',
+      'Respuesta automática',
+      'Fuori sede',
+      'Out of Office',
+      'Frånvaro',
+      'Réponse automatique'
+    ]
+
+    return true if prefixes.any? do |prefix|
+      self.subject.downcase.starts_with?(prefix.downcase)
     end
-  end
-  alias :save! :save
 
-  def valid?
-    email_addresses.length <= Rails.application.secrets.max_pending_emails
-  end
-
-  def email_addresses
-    body.scan(AppConfig::EMAIL_REGEX).uniq.reject { |email| email == self.sender_email.scan(AppConfig::EMAIL_REGEX) }
+    false
   end
 end

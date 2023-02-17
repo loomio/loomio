@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_15_002323) do
+ActiveRecord::Schema.define(version: 2023_02_17_001422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -709,6 +709,17 @@ ActiveRecord::Schema.define(version: 2023_02_15_002323) do
     t.index ["created_at"], name: "index_reactions_on_created_at"
     t.index ["reactable_id", "reactable_type"], name: "index_reactions_on_reactable_id_and_reactable_type"
     t.index ["user_id"], name: "index_reactions_on_user_id"
+  end
+
+  create_table "received_emails", force: :cascade do |t|
+    t.integer "group_id"
+    t.hstore "headers", default: {}, null: false
+    t.string "body_text"
+    t.string "body_html"
+    t.boolean "spf_valid", default: false, null: false
+    t.boolean "dkim_valid", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|
