@@ -718,6 +718,7 @@ ActiveRecord::Schema.define(version: 2023_02_17_001422) do
     t.string "body_html"
     t.boolean "spf_valid", default: false, null: false
     t.boolean "dkim_valid", default: false, null: false
+    t.boolean "released", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -7,6 +7,7 @@ class CreateReceivedEmails < ActiveRecord::Migration[6.1]
       t.string :body_html
       t.boolean :spf_valid, null: false, default: false
       t.boolean :dkim_valid, null: false, default: false
+      t.boolean :released, null: false, default: false
       t.timestamps
     end
   end

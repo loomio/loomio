@@ -2,7 +2,7 @@ class ReceivedEmail < ApplicationRecord
   has_many_attached :attachments
 
   def header(name)
-    self.headers.find { |key, value| key.downcase == name.to_s.downcase }&.last
+    headers.find { |key, value| key.downcase == name.to_s.downcase }&.last
   end
 
   def recipient_emails
@@ -21,12 +21,24 @@ class ReceivedEmail < ApplicationRecord
     header('from').scan(AppConfig::EMAIL_REGEX).uniq.first
   end
 
+  def sender_name
+    full_address = header('from').strip
+    name = full_address.split('<').first.strip.delete('"')
+    if name.present? && name != full_address
+      name
+    else
+      nil
+    end
+  end
+
   def body
-    # remember to truncate the text once you see secret split code or --
-    Premailer.new(
-      (body_html || body_text),
-      line_length: 10000,
-      with_html_string: true).to_plain_text
+    text = if body_html.present?
+      Premailer.new(body_html, line_length: 10000, with_html_string: true).to_plain_text
+    else
+      body_text
+    end
+
+    ReceivedEmailService.extract_reply_body(text, sender_name)
   end
 
   def subject
@@ -34,7 +46,8 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def is_auto_response?
-    return true if header('x-autorespond') || header('X-Precedence') ==  'auto_reply'
+    return true if header('X-Autorespond') 
+    return true if header('X-Precedence') ==  'auto_reply'
 
     prefixes = [
       'Auto:',
@@ -53,10 +66,6 @@ class ReceivedEmail < ApplicationRecord
       'Réponse automatique'
     ]
 
-    return true if prefixes.any? do |prefix|
-      self.subject.downcase.starts_with?(prefix.downcase)
-    end
-
-    false
+    prefixes.any? { |prefix| subject.downcase.starts_with?(prefix.downcase) }
   end
 end

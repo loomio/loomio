@@ -24,7 +24,7 @@ class ReceivedEmailsController < Griddler::EmailsController
       spf_valid: data['spf'] == 'pass' ? true : false,
     )
 
-    email.attachments = data['attachments'].map do |a|
+    email.attachments = data.fetch('attachments', []).map do |a|
       {
         io: StringIO.new(Base64.decode64(params[a['generatedFileName']])),
         content_type: a['contentType'],

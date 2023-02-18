@@ -1,80 +1,85 @@
 require 'rails_helper'
 
+def mailin_params(
+  token: "handle+u=123&k=123",
+  to: "Loomio Group <#{token}@#{ENV['REPLY_HOSTNAME']}>", 
+  from: 'Suzy Senderson <sender@gmail.com>', 
+  subject: "re: an important discussion", 
+  body: "Hi everybody, this is my message!")
+  {
+    mailinMsg: {
+      html: "<html><body>#{body}</body></html>",
+      text: body,
+      headers: {
+        from: from,
+        to: to,
+        subject: subject
+      }
+    }.to_json
+  }
+end
+
 describe ReceivedEmailsController do
   let(:user) { create(:user) }
   let(:another_user) { create(:user) }
-  let(:discussion) { create(:discussion) }
+  let(:group) { create(:group) }
+  let(:discussion) { create(:discussion, group: group) }
   let(:poll) { create(:poll, discussion: discussion) }
   let(:comment) { create(:comment, discussion: discussion) }
-  let(:griddler_params) {{
-    mailinMsg: {
-      html: "<html><body>Hi!</body></html>",
-      text: "Hi!",
-      subject: "Greetings!",
-      from: [{ name: user.name, address: user.email }],
-      to: [], # we're stubbing out to with the value below
-      cc: [],
-      headers: {}
-    }.to_json
-  }}
-  let(:comment_email_params) { EmailParams.new(
-    OpenStruct.new(
-      to: [{
-        host: "loomiohost.org",
-        token: "reply&c=#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
-      }],
-      body: "This is a reply!"),
-    reply_host: "loomiohost.org")
-  }
-  let(:poll_email_params) { EmailParams.new(
-    OpenStruct.new(
-      to: [{
-        host: "loomiohost.org",
-        token: "reply&p=p-#{poll.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
-      }],
-      body: "This is a reply!"),
-    reply_host: "loomiohost.org")
-  }
-  let(:discussion_email_params) { EmailParams.new(
-    OpenStruct.new(
-      to: [{
-        host: "loomiohost.org",
-        token: "reply&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}"
-      }],
-      body: "This is a comment!"),
-    reply_host: "loomiohost.org")
-  }
 
   before do
     discussion.group.add_member! user
     discussion.group.add_member! another_user
   end
 
-  it "creates a comment via email" do
-    expect(EmailParams).to receive(:new).and_return(comment_email_params)
-    expect { post :reply, params: griddler_params }.to change { Comment.count }.by(1)
+  it "creates a reply to comment via email" do
+    h = mailin_params(
+      to: "c=#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      body: "yo"
+    )
+    expect { post :create, params: h}.to change { Comment.count }.by(1)
     c = Comment.last
+    expect(c.author).to eq user
     expect(c.parent).to eq comment
     expect(c.discussion).to eq discussion
-    expect(c.body).to eq comment_email_params.body
+    expect(c.body).to eq 'yo'
   end
 
   it "creates a comment on a poll via email" do
-    expect(EmailParams).to receive(:new).twice.and_return(poll_email_params)
-    expect { post :reply, params: griddler_params }.to change { Comment.count }.by(1)
+    h = mailin_params(
+      to: "pt=p&pi=#{poll.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      body: "yo"
+    )
+    expect { post :create, params: h }.to change { Comment.count }.by(1)
     c = Comment.last
+    expect(c.author).to eq user
     expect(c.parent).to eq poll
     expect(c.discussion).to eq discussion
-    expect(c.body).to eq comment_email_params.body
+    expect(c.body).to eq "yo"
   end
 
   it "creates a comment via email without a parent" do
-    expect(EmailParams).to receive(:new).and_return(discussion_email_params)
-    expect { post :reply, params: griddler_params }.to change { Comment.count }.by(1)
+    h = mailin_params(
+      to: "d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      body: "yo"
+    )
+    expect { post :create, params: h}.to change { Comment.count }.by(1)
     c = Comment.last
+    expect(c.author).to eq user
     expect(c.parent).to eq discussion
     expect(c.discussion).to eq discussion
-    expect(c.body).to eq discussion_email_params.body
+    expect(c.body).to eq 'yo'
+  end
+
+  it "starts a discussion in a group" do
+    h = mailin_params(
+      to: "#{group.handle}+u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
+      body: "yo I am a discussion"
+    )
+    expect { post :create, params: h}.to change { Discussion.count }.by(1)
+    d = Discussion.last
+    expect(d.author).to eq user
+    expect(d.body).to eq "yo I am a discussion"
   end
 
   # it "does not create a comment when the user is not authorized" do
