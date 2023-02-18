@@ -1,19 +1,24 @@
 class ReceivedEmailService
 	def self.route(email)
 		case email.route_path
-		when /d=.+&u=.+&k=.+/ # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
+		when /d=.+&u=.+&k=.+/
+			# personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
 			CommentService.create(
 				comment: Comment.new(comment_params(email)),
 				actor: actor_from_email(email)
 			)
+
 			email.update_attribute(:released, true)
-		when /[^\s]+\+u=.+&k=.+/ # personal email-to-group, eg. enspiral99-adsfghjl@mail.loomio.com
+		when /[^\s]+\+u=.+&k=.+/ 
+			# personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
 			DiscussionService.create(
 				discussion: Discussion.new(discussion_params(email)),
 				actor: actor_from_email(email)
 			)
+
 			email.update_attribute(:released, true)
-		else # general email-to-group, eg.  enspiral@mail.loomio.com
+		else
+			# general email-to-group, eg.  enspiral@mail.loomio.com
 			# if from member email and spf, dkim pass, then pass through quarantine
 			# else needs approval from group admin. leave for later
 			raise "general email to group not supported yet"
