@@ -19,7 +19,6 @@ import '@/observe_visibility'
 import './removeServiceWorker'
 import { pick } from 'lodash'
 import * as Sentry from '@sentry/browser'
-import VueClipboard from 'vue-clipboard2'
 import WatchRecords from '@/mixins/watch_records'
 import CloseModal from '@/mixins/close_modal'
 import UrlFor from '@/mixins/url_for'
@@ -32,7 +31,6 @@ Vue.use(Vue2TouchEvents)
 Vue.mixin(CloseModal)
 Vue.mixin(WatchRecords)
 Vue.mixin(UrlFor)
-Vue.use(VueClipboard)
 Vue.mixin(FormatDate)
 
 Vue.config.productionTip = false

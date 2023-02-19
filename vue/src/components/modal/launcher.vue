@@ -12,6 +12,7 @@ import ContactRequestForm from '@/components/contact/request_form'
 import AuthModal from '@/components/auth/modal'
 import MembershipRequestForm from '@/components/group/membership_request_form'
 import MembershipModal from '@/components/group/membership_modal'
+import EmailToGroupSettings from '@/components/group/email_to_group_settings'
 import ChangePasswordForm from '@/components/profile/change_password_form'
 import ChatbotList from '@/components/chatbot/list'
 import ChatbotMatrixForm from '@/components/chatbot/matrix_form'
@@ -50,6 +51,7 @@ export default
     ChatbotList
     ChatbotMatrixForm
     ChatbotWebhookForm
+    EmailToGroupSettings
     PollCommonModal
     PollCommonEditVoteModal
     ContactRequestForm

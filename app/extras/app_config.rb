@@ -62,6 +62,7 @@ class AppConfig
       terms_url:                         ENV['TERMS_URL'],
       privacy_url:                       ENV['PRIVACY_URL'],
       canonical_host:                    ENV['CANONICAL_HOST'],
+      reply_hostname:                    ENV['REPLY_HOSTNAME'],
       help_url:                          ENV.fetch('HELP_URL',                      'https://help.loomio.com/'),
       icon_src:                          ENV.fetch('THEME_ICON_SRC',                "/brand/icon_#{logo_color}_150h.png"),
       app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            "/brand/logo_#{logo_color}.svg"),

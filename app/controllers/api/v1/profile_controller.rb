@@ -41,6 +41,20 @@ class API::V1::ProfileController < API::V1::RestfulController
     respond_with_resource serializer: UserSerializer
   end
 
+  def send_email_to_group_address
+    UserMailer.delay.email_to_group_address(params[:group_id], current_user.id)
+    head :ok
+  end
+
+  def email_api_key
+    render json: {email_api_key: current_user.email_api_key}
+  end
+
+  def reset_email_api_key
+    current_user.update_attribute(:email_api_key, User.generate_unique_secure_token.slice(0,10))
+    render json: {email_api_key: current_user.email_api_key}
+  end
+
   def remind
     service.remind(user: load_resource, actor: current_user, model: load_and_authorize(:poll))
     respond_with_resource
