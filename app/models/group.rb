@@ -163,6 +163,9 @@ class Group < ApplicationRecord
       logo.representation(resize_to_limit: [size,size], saver: {quality: 80, strip: true}),
       only_path: true
     )
+  rescue ActiveStorage::UnrepresentableError
+    self.cover_photo.delete
+    nil
   end
 
   def cover_url(size = 512) # 2048x512 or 1024x256 normal res
@@ -171,6 +174,9 @@ class Group < ApplicationRecord
       cover_photo.representation(HasRichText::PREVIEW_OPTIONS.merge(resize_to_limit: [size*4,size])),
       only_path: true
     )
+  rescue ActiveStorage::UnrepresentableError
+    self.cover_photo.delete
+    nil
   end
 
   def self_or_parent_logo_url(size = 512)
