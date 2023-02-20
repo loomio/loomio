@@ -46,7 +46,6 @@ class GroupSerializer < ApplicationSerializer
              :template_discussions_count,
              :recent_activity_count,
              :is_visible_to_public,
-             :is_subgroup_of_hidden_parent,
              :is_visible_to_parent_members,
              :parent_members_can_see_discussions,
              :org_memberships_count,
@@ -116,10 +115,6 @@ class GroupSerializer < ApplicationSerializer
 
   def new_host
     object.info['new_host'] || nil
-  end
-
-  def is_subgroup_of_hidden_parent
-    object.is_subgroup_of_hidden_parent?
   end
 
   private
