@@ -175,7 +175,6 @@ de:
     links: Links
     active_time_ago: Zuletzt aktiv {{time_ago}}
     confirm_discard_changes: Deine Änderungen verwerfen?
-    something_went_wrong: Uh oh! Etwas ist schief gelaufen.
     please_try_again: Bitte erneut versuchen
     time:
       am: morgens
@@ -1788,7 +1787,6 @@ de:
     continue_with_email: Weiter mit E-Mail
     or_enter_your_email: oder gib deine E-Mail-Adresse ein
     enter_your_name: Name einfügen
-    invitation_required: 'Du benötigst eine Einladung, um ein Konto erstellen zu können. '
     more_providers: mehr
     email_not_present: Eine Mailadresse ist erforderlich
     invalid_email: "Entschuldigung, diese E-Mail-Adresse scheint ungültig zu sein."

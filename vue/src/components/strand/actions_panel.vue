@@ -58,7 +58,7 @@ export default
 <template lang="pug">
 section.actions-panel#add-comment(:aria-label="$t('activity_card.aria_label')")
   v-divider(aria-hidden="true")
-  v-tabs.activity-panel__actions.mb-3(grow text v-model="currentAction" show-arrows)
+  v-tabs.activity-panel__actions.mb-3(grow text v-model="currentAction")
     v-tabs-slider
     v-tab(href='#add-comment')
       span(v-t="'activity_card.add_comment'")

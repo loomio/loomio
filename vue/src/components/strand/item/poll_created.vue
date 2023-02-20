@@ -49,7 +49,7 @@ export default
 section.strand-item.poll-created
   v-layout(justify-space-between)
     .poll-common-card__title.headline.pb-1(tabindex="-1")
-      poll-common-type-icon(:poll="poll")
+      //- poll-common-type-icon(:poll="poll")
       space
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title", :model='poll', field='title')
@@ -66,7 +66,7 @@ section.strand-item.poll-created
     attachment-list(:attachments="poll.attachments")
     document-list(:model='poll')
     //- p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
-    div.body-2(v-if="poll.pollOptionNames.length")
+    div.text-body-2(v-if="poll.pollOptionNames.length")
       poll-common-chart-panel(:poll='poll')
       poll-common-action-panel(:poll='poll')
     action-dock.my-2(:actions="dockActions", :menu-actions="menuActions")

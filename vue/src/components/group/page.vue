@@ -75,7 +75,7 @@ export default
 <template lang="pug">
 v-main
   loading(v-if="!group")
-  v-container.group-page.max-width-1024(v-if="group")
+  v-container.group-page.max-width-1024.px-0.px-sm-3(v-if="group")
     demo-banner(:group="group")
     div(style="position: relative")
       v-img(

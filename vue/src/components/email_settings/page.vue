@@ -74,7 +74,7 @@ export default
 
 <template lang="pug">
 v-main
-  v-container.email-settings-page.max-width-1024(v-if='user')
+  v-container.email-settings-page.max-width-1024.px-0.px-sm-3(v-if='user')
 
     v-card.mb-4(v-if="user.deactivatedAt")
       //- v-card-title

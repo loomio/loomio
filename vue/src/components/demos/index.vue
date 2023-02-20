@@ -72,7 +72,7 @@ export default
 
 <template lang="pug">
 v-main
-  v-container.templates-page.max-width-1024
+  v-container.templates-page.max-width-1024.px-0.px-sm-3
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
     h2.text-title.my-4(v-t="'templates.start_a_demo'")
     p(v-t="'templates.look_and_feel'")

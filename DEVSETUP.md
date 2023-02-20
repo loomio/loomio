@@ -53,11 +53,10 @@ When a new version of ruby is released, you can update ruby-build with
 cd "$(rbenv root)"/plugins/ruby-build && git pull
 ```
 
-At the time of writing 2.6.6 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
+At the time of writing 2.7.6 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
 
 ```
-rbenv install 2.6.6
-rbenv global 2.6.6
+rbenv install 2.7.6
 gem install bundler
 ```
 
@@ -72,8 +71,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.1/install.sh | bash
 You'll need to restart your terminal, then run:
 
 ```
-nvm install stable
-nvm alias default stable
+nvm install 14
+nvm alias default 14
 ```
 
 ## Fork and clone the Loomio git repo
@@ -109,17 +108,19 @@ sudo postgres -c 'createuser -P --superuser <username>'
 ## Setup the Loomio database and schema
 
 ```
+createdb loomio_development
 rake db:setup
 ```
 
 ## Launch rails and npm serve
-Rails run the Loomio server, gulp builds the javascript client, and automatically rebuilds it when you make changes
+
+In one terminal run
 
 ```
-USE_VUE=1 rails s
+rails s
 ```
 
-And in a new terminal instance
+In the another run
 ```
 cd vue
 npm run serve

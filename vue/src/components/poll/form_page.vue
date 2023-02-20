@@ -62,7 +62,7 @@ export default
 <template lang="pug">
 .poll-form-page
   v-main
-    v-container.max-width-800
+    v-container.max-width-800.px-0.px-sm-3
       loading(:until="!loading")
         v-card.poll-common-modal
           div.pa-4

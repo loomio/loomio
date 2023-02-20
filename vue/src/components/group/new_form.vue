@@ -151,7 +151,7 @@ v-card.group-form
                 strong(v-t="'common.privacy.' + privacy")
                 mid-dot
                 span {{ privacyStringFor(privacy) }}
-      p.group-form__privacy-statement.body-2 {{privacyStatement}}
+      p.group-form__privacy-statement.text-body-2 {{privacyStatement}}
       .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
         v-subheader(v-t="'group_form.how_do_people_join'")
         v-radio-group(v-model='group.membershipGrantedUpon')

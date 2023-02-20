@@ -190,7 +190,8 @@ es:
     links: Enlaces
     active_time_ago: El último activo {{time_ago}}
     confirm_discard_changes: ¿Descartar tus cambios?
-    something_went_wrong: oh! Algo salió mal.
+    something_went_wrong: ¡Oh, oh! Algo salió mal
+    check_for_errors_and_try_again: Compruebe si hay errores en el formulario e inténtelo de nuevo
     please_try_again: Inténtelo de nuevo
     time:
       am: am
@@ -944,6 +945,7 @@ es:
     comment_header: Ediciones de comentarios
     poll_header: Ediciones de encuestas
     outcome_header: Ediciones de resultados
+    stance_header: Ediciones de votos
     started_by: 'Iniciado por <strong>{{name}}</strong>'
     edited_by: 'Editado por <strong>{{name}}</strong>'
     edit_by: "Editar por {{name}} · {{date}}"
@@ -1611,6 +1613,7 @@ es:
     prompt: Mensaje de motivo
     prompt_hint: Una pregunta para incitar a los votantes a proporcionar su razonamiento o reconsiderar su posición.
   poll_common:
+    delete_poll: Eliminar sondeo
     select_count_options: Seleccione las opciones de {{count}}
     select_minimum_to_maximum_options: Seleccione las opciones {{minimum}} a {{maximum}}
     custom_poll_types: Tipos de sondeo personalizados
@@ -1623,6 +1626,7 @@ es:
     create_a_custom_poll_type: Crear un nuevo tipo de sondeo con terminología y configuración personalizadas
     decision: Decisión
     decision_templates: Plantillas de decisión
+    remove_your_vote: Elimina tu voto
     vote_now: Votar ahora
     review_due: Revisión pendiente
     have_your_say: Denos su opinión
@@ -2082,6 +2086,9 @@ es:
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
+    title: ¿Eliminar su voto?
+    helptext: ¿Está seguro de que desea eliminar su voto? Usted aparecerá como indeciso y puede votar de nuevo más tarde si lo desea.
+    confirm: Eliminar voto
     success: 'Voto eliminado '
   poll_poll_vote_form:
     stance_created: Voto creado
@@ -2151,7 +2158,6 @@ es:
     continue_with_email: Continuar con email
     or_enter_your_email: O, introduzca su dirección de correo electrónico
     enter_your_name: Ingresa tu nombre
-    invitation_required: Necesitas una invitación para crear una cuenta
     more_providers: Más
     email_not_present: Se necesita una dirección de correo
     invalid_email: "Lo lamentamos, eso no parece una dirección de correo electrónico válida"
@@ -2280,6 +2286,7 @@ es:
       manage_memberships: administrar pertenencias (agregar o quitar miembros del grupo)
     include_body_label: Incluye el cuerpo del mensaje con notificación
   powered_by:
+    this_is_loomio_md: "Loomio es una aplicación para tomar decisiones juntos. [Pruébalo gratis] (https://www.loomio.com)"
     slogan: Mejor decisiones juntos
     powered_by_loomio: Creado por Loomio
     privacy_policy: Política de privacidad

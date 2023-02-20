@@ -1569,7 +1569,6 @@ ca:
     continue_with_email: Continua amb el correu electrònic
     or_enter_your_email: 'O introduïu la vostra adreça de correu electrònic '
     enter_your_name: Introduïu el vostre nom
-    invitation_required: Necessiteu una invitació per crear un compte.
     more_providers: Més
     email_not_present: És necessari introduir una adreça de correu electrònic
     invalid_email: "L'adreça de correu electrònic no és vàlida"

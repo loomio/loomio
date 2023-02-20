@@ -46,7 +46,7 @@ export default
 
 <template lang="pug">
 v-main.user-page__profile
-  v-container.user-page.max-width-800.mt-4
+  v-container.user-page.max-width-800.mt-4.px-0.px-sm-3
     loading(v-if='isEmptyUser')
     div(v-else).user-page__content
       v-card

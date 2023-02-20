@@ -405,6 +405,8 @@ sv:
     'no': 'Nej'
   poll_meeting_chart_panel:
     total: Totalt
+  poll_remove_vote:
+    success: Röst borttagen
   auth_form:
     name_placeholder: Ditt namn
   chatbot:

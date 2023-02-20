@@ -44,7 +44,7 @@ export default
 
 <template lang="pug">
 v-main
-  v-container.dashboard-page.max-width-1024
+  v-container.dashboard-page.max-width-1024.px-0.px-sm-3
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'tasks.your_tasks'")
     loading(v-if="loading")
     template(v-for="(tasks, recordKey) in tasksByRecordKey")

@@ -159,7 +159,7 @@ export default
 <template lang="pug">
 .strand-page
   v-main
-    v-container.max-width-800(v-if="discussion")
+    v-container.max-width-800.px-0.px-sm-3(v-if="discussion")
       demo-banner(:group="discussion.group()" v-if="discussion.groupId")
       p(v-if="$route.query.debug" v-for="rule in loader.rules") {{rule}}
       //- p loader: {{loader.focusAttrs}}

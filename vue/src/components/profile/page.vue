@@ -88,7 +88,7 @@ export default
 </script>
 <template lang="pug">
 v-main
-  v-container.profile-page.max-width-1024
+  v-container.profile-page.max-width-1024.px-0.px-sm-3
     loading(v-if='!user')
     div(v-if='user')
       v-card
@@ -144,7 +144,7 @@ v-main
                 item-value="key")
               validation-errors(:subject='user', field='selectedLocale')
               p(v-if='showHelpTranslate')
-                a(v-t="'profile_page.help_translate'" href='https://help.loomio.com/en/user_manual/users/translation' target='_blank')
+                a(v-t="'profile_page.help_translate'" href='https://help.loomio.com/en/user_manual/users/translation/#help-translate-loomio' target='_blank')
               p
                 span(v-t="'common.time_zone'")
                 space

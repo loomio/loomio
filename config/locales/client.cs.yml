@@ -679,6 +679,8 @@ cs:
     'no': 'Ne'
   poll_meeting_chart_panel:
     total: Celkem
+  poll_remove_vote:
+    success: Hlas odebrán
   auth_form:
     sign_in: Přihlásit se
     create_account: Vytvořit účet
