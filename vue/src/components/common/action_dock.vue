@@ -21,7 +21,7 @@ export default
 </script>
 
 <template lang="pug">
-section.d-flex.align-center.action-dock(:aria-label="$t('action_dock.actions_menu')")
+section.d-flex.flex-wrap.align-center.action-dock(:aria-label="$t('action_dock.actions_menu')")
   .action-dock__action(v-for='(action, name) in leftActions' v-if='action.canPerform()', :key="name")
     action-button(v-if="name != 'react'", :action="action", :name="name", :small="small", :nameArgs="action.nameArgs && action.nameArgs()")
   v-spacer(v-if="!left")

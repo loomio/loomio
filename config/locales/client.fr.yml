@@ -190,7 +190,8 @@ fr:
     links: Liens
     active_time_ago: Actif pour la dernière fois {{time_ago}}
     confirm_discard_changes: Annuler vos modifications ?
-    something_went_wrong: Euh oh! Quelque chose a mal tourné.
+    something_went_wrong: Euh oh! Quelque chose s’est mal passé
+    check_for_errors_and_try_again: Veuillez vérifier le formulaire pour les erreurs et réessayer
     please_try_again: Veuillez réessayer
     time:
       am: le matin
@@ -944,6 +945,7 @@ fr:
     comment_header: Discussion privée
     poll_header: Éditions du sondage
     outcome_header: Modification des résultats
+    stance_header: Modifications de vote
     started_by: 'Démarrée par <strong>{{name}}</strong>'
     edited_by: 'Édité par <strong>{{name}}</strong>'
     edit_by: "Modifier par {{name}} · {{date}}"
@@ -1612,6 +1614,7 @@ fr:
     prompt: Invite de raison
     prompt_hint: Une question pour inciter les électeurs à donner leur raisonnement ou à reconsidérer leur position.
   poll_common:
+    delete_poll: Supprimer le sondage
     select_count_options: Sélectionnez les options {{count}}
     select_minimum_to_maximum_options: Sélectionnez les options {{minimum}} à {{maximum}}
     custom_poll_types: Types de sondage personnalisés
@@ -1624,6 +1627,7 @@ fr:
     create_a_custom_poll_type: Créer un nouveau type de sondage avec une terminologie et des paramètres personnalisés
     decision: Décision
     decision_templates: Modèles de décision
+    remove_your_vote: Supprimer votre vote
     vote_now: Votez maintenant
     review_due: Examen dû
     have_your_say: Prenez la parole
@@ -2083,6 +2087,9 @@ fr:
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
+    title: Supprimer votre vote?
+    helptext: Êtes-vous sûr de vouloir supprimer votre vote? Vous serez inscrit comme indécis et pourrez voter à nouveau plus tard si vous le souhaitez.
+    confirm: Supprimer vote
     success: Vote supprimé
   poll_poll_vote_form:
     stance_created: Vote créé
@@ -2152,7 +2159,6 @@ fr:
     continue_with_email: Connectez-vous avec votre adresse mail
     or_enter_your_email: Ou saisir votre adresse e-mail
     enter_your_name: Entrez votre nom
-    invitation_required: Vous avez besoin d'une invitation afin de créer un compte
     more_providers: Plus
     email_not_present: Une adresse e-mail est nécessaire
     invalid_email: "Désolé, ça ne semble pas être une adresse e-mail valide."
@@ -2281,6 +2287,7 @@ fr:
       manage_memberships: gérer les appartenances (ajouter ou supprimer des membres du groupe)
     include_body_label: Inclure le corps du message dans la notification
   powered_by:
+    this_is_loomio_md: "Loomio est une application pour prendre des décisions ensemble. [Essayez gratuitement] (https://www.loomio.com)"
     slogan: De meilleures décisions ensemble
     powered_by_loomio: Propulsé par Loomio
     privacy_policy: Politique de confidentialité

@@ -544,6 +544,8 @@ ru:
     'no': 'Нет'
   poll_meeting_chart_panel:
     total: Всего
+  poll_remove_vote:
+    success: Голосование удалено
   auth_form:
     enter_your_name: Введите свое имя
     invalid_password: "Извините, этот пароль не совпадает с тем, который у нас есть в файле"

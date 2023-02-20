@@ -1561,7 +1561,6 @@ ar:
     continue_with_email: تواصل مع البريد الإلكتروني
     or_enter_your_email: أو أدخل عنوان بريدك الإلكتروني
     enter_your_name: ادخل اسمك
-    invitation_required: أنت بحاجة إلى دعوة لإنشاء حساب.
     more_providers: المزيد
     email_not_present: مطلوب عنوان البريد الإلكتروني
     invalid_email: "عذرًا ، لا يبدو هذا كعنوان بريد إلكتروني صالح"

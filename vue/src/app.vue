@@ -97,7 +97,7 @@ v-app.app-is-booted
 //   margin-top: -72px
 //   visibility: hidden
 
-.v-application .body-2
+.v-application .text-body-2
   font-size: 15px !important
   letter-spacing: normal !important
 

@@ -47,7 +47,7 @@ export default
   v-chip(v-if='poll.pollOptionNameFormat == "iso8601"'
     outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
     poll-meeting-time(:name="optionName")
-  span.body-2(v-if='!poll.config().has_option_icon && poll.pollOptionNameFormat != "iso8601"')
+  span.text-body-2(v-if='!poll.config().has_option_icon && poll.pollOptionNameFormat != "iso8601"')
     v-icon.mr-2(small :color="pollOption.color") mdi-check
     span {{ optionName }}
 </template>

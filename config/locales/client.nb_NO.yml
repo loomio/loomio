@@ -485,6 +485,8 @@ nb_NO:
     edit_header: Rediger avstemning
   poll_meeting_chart_panel:
     total: Totalt
+  poll_remove_vote:
+    success: Stemme fjernet
   auth_form:
     name: Navn
     email: E-post

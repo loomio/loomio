@@ -21,5 +21,7 @@ export default
 <template lang="pug">
 .strand-other-kind
   span.text--secondary(v-html='headline')
+  mid-dot
+  time-ago(:date='event.createdAt')
   formatted-text.thread-item__body(:model="eventable" column="statement")
 </template>

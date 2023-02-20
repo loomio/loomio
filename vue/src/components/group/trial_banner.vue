@@ -25,7 +25,7 @@ export default
 </script>
 <template lang="pug">
 v-alert(outlined color="primary" dense v-if="isTrialing")
-  .d-flex
+  .d-flex.align-center
     div.pr-1(v-if="isWasGift")
       span(v-if="isExpired" v-html="$t('current_plan_button.was_gift_expired')")
       span(v-if="!isExpired" v-html="$t('current_plan_button.was_gift_remaining', { days: daysRemaining } )")

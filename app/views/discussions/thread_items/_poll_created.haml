@@ -7,11 +7,11 @@
         = render 'base_mailer/avatar', user: poll.user
       .layout.thread-item__body.column
         .layout.align-center.wrap
-          %h3.thread-item__title.body-2
+          %h3.thread-item__title.text-body-2
             =raw t(:"poll_mailer.header.poll_created", actor: poll.user.name, title: poll.title, poll_type: t("poll_types.#{poll.poll_type}"))
             %span
               %span{"aria-hidden" => "true"}  ·
-            %span.text--secondary.body-2
+            %span.text--secondary.text-body-2
               = render 'discussions/time_ago', time: poll.created_at
         .layout.justify-space-between
           %h1.poll-common-card__title.headline
@@ -34,9 +34,9 @@
               %span= t(:'email.by_who', person: poll.current_outcome.author.name)
               %span
                 = render 'discussions/time_ago', time: poll.current_outcome.created_at
-            .lmo-markdown-wrapper.body-2.text--primary
+            .lmo-markdown-wrapper.text-body-2.text--primary
               %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
-        .lmo-markdown-wrapper.body-2.text--primary.poll-common-details-panel__details
+        .lmo-markdown-wrapper.text-body-2.text--primary.poll-common-details-panel__details
           %p= render_rich_text(poll.details, poll.details_format)
 
         = render "event_mailer/poll/results", poll: poll

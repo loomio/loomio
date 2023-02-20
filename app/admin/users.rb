@@ -110,8 +110,10 @@ ActiveAdmin.register User do
     end
 
     panel("Destroy") do
-      button_to 'Destroy spam User', delete_spam_admin_user_path(user), method: :delete, data: {confirm: 'Are you sure you want to destroy this user and all their groups?'}
-      p "delete spam deletes the user and any groups, threads, comments, votes they created or authored. It will not groups or threads they are simply a member of."
+      [
+      p("Delete the user and any groups, threads, comments, votes they created. It will not groups or threads they are simply a member of."),
+      button_to('Destroy User', delete_spam_admin_user_path(user), method: :delete, data: {confirm: 'Are you sure you want to destroy this user and content they authored?'})
+      ].join.html_safe
     end
 
     panel("Memberships") do
@@ -153,10 +155,6 @@ ActiveAdmin.register User do
       a(href: login_as_admin_user_path(user), target: "_blank") do
         "Login as #{user.name}"
       end
-    end
-
-    panel 'experiences' do
-      p user.experiences
     end
   end
 end

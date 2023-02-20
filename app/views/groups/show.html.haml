@@ -2,13 +2,13 @@
   %main.v-main
     .v-main__wrap
       %div
-        .container.gruop-page.max-width-1024
+        .container.gruop-page.max-width-1024.px-0.px-sm-3
           .v-responsive.v-image{:style => "border-radius: 8px;"}
             .v-responsive__sizer{:style => "padding-bottom: 20.4082%;"}
             .v-image__image.v-image__image--cover{:style => "background-image: url(#{@group.cover_url}); background-position: center center;"}
           %h1.display-1.my-4
             %span.group-page__name.mr-4= @group.full_name
-          .lmo-markdown-wrapper.body-2.text--primary.group-page__description
+          .lmo-markdown-wrapper.text-body-2.text--primary.group-page__description
             = raw render_rich_text(@group.description, @group.description_format)
           %hr.mt-4.v-divider.theme--auto{"aria-orientation" => "horizontal", :role => "separator"}/
           -# .v-tabs.v-tabs--centered.v-tabs--grow.theme--auto

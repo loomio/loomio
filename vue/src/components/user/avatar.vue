@@ -47,10 +47,11 @@ export default
 
 <template lang="pug">
 component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)" :style="{ 'width': size + 'px', margin: '0' }")
-  v-avatar(:title='user.name' :size='size' :color="user.avatarUrl ? undefined : color")
-    img(v-if="['gravatar', 'uploaded'].includes(user.avatarKind)" :alt='user.avatarInitials' :src='imageUrl')
-    span.user-avatar--initials(v-if="user.avatarKind === 'initials'" :style="{'font-size': fontSize, width: size+'px', height: size+'px'}") {{user.avatarInitials}}
-    v-icon(v-if="!['initials', 'gravatar', 'uploaded'].includes(user.avatarKind)") {{user.avatarKind}}
+  v-avatar(v-if="imageUrl" :title='user.name' :size='size')
+    img(:alt='user.avatarInitials' :src='imageUrl')
+  v-avatar(v-else :title='user.name' :size='size' :color="color")
+    span.user-avatar--initials(v-if="user.avatarKind == 'initials'" :style="{'font-size': fontSize, width: size+'px', height: size+'px'}") {{user.avatarInitials}}
+    v-icon(v-else) {{user.avatarKind}}
 </template>
 
 <style lang="sass">
