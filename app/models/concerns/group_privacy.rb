@@ -52,7 +52,7 @@ module GroupPrivacy
   def group_privacy
     if is_visible_to_public?
       self.public_discussions_only? ? 'open' : 'closed'
-    elsif is_subgroup_of_hidden_parent? && is_visible_to_parent_members?
+    elsif parent_id && is_visible_to_parent_members?
       'closed'
     else
       'secret'
