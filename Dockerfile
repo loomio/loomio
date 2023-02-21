@@ -9,7 +9,6 @@ WORKDIR /loomio
 ADD . /loomio
 RUN bundle install
 
-ENV NODE_OPTIONS=--openssl-legacy-provider
 WORKDIR /loomio/vue
 RUN npm install
 RUN npm run build
