@@ -84,6 +84,15 @@ module Dev::FakeDataHelper
   end
 
 
+  def fake_new_comment_event(comment = fake_comment)
+    Events::NewComment.new(
+      user: comment.author,
+      kind: 'new_comment',
+      eventable: comment,
+      discussion: comment.discussion
+    )
+  end
+
   def fake_new_discussion_event(discussion = fake_discussion)
     Events::NewDiscussion.new(
       user: discussion.author,

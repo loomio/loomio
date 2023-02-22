@@ -154,6 +154,7 @@ class RecordCloner
     drop_kinds = %w[poll_closed_by_user poll_expired poll_reopened]
     clone_discussion.items = discussion.items.order(:sequence_id).select{|i| !drop_kinds.include?(i.kind) }.map { |event| new_clone_event_and_eventable(event) }
     clone_discussion.polls = discussion.polls.map {|p| new_clone_poll(p) }
+    clone_discussion.comments = discussion.comments.order(:id).map { |c| new_clone_comment(c) }
     clone_discussion
   end
 
@@ -353,6 +354,7 @@ class RecordCloner
     attachments = [:files, :image_files]
     clone_comment = new_clone(comment, copy_fields, {}, attachments)
     clone_comment.discussion = existing_clone(comment.discussion)
+    clone_comment.parent = existing_clone(comment.parent)
     clone_comment
   end
 

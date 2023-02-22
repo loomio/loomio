@@ -7,9 +7,11 @@ describe 'RecordCloner' do
   let(:group) { saved(fake_group) }
   let(:author) { saved(fake_user) }
   let(:poll) { fake_poll(group: group, discussion: discussion) }
+  let(:comment) { fake_comment(discussion: discussion) }
   let(:discussion) { fake_discussion(author: author, group: group) }
   let(:stance) { fake_stance(poll: poll, participant: author) }
   let(:outcome) { fake_outcome(poll: poll, author: author) }
+  let(:new_comment_event) { fake_new_comment_event(comment) }
   let(:new_discussion_event) { fake_new_discussion_event(discussion) }
   let(:poll_created_event) { fake_poll_created_event(poll) }
   let(:stance_created_event) { fake_stance_created_event(stance) }
@@ -19,9 +21,11 @@ describe 'RecordCloner' do
     before do
       group.add_admin! author
       new_discussion_event.save!
+      new_comment_event.save!
       poll_created_event.save!
       stance_created_event.save!
       outcome_created_event.save!
+      EventService.repair_thread(discussion.id)
     end
 
     it 'creates a new group' do
