@@ -82,6 +82,32 @@ describe ReceivedEmailsController do
     expect(d.body).to eq "yo I am a discussion"
   end
 
+  # describe "group-handle@hostname.com" do
+  #   it "with new subject starts a discussion" do
+  #     h = mailin_params(
+  #       to: "#{group.handle}@#{ENV['REPLY_HOSTNAME']}", 
+  #       subject: "the topic at hand",
+  #       body: "greetings earthlings"
+  #     )
+  #     expect { post :create, params: h}.to change { Discussion.count }.by(1)
+  #     d = Discussion.last
+  #     expect(d.author).to eq user
+  #     expect(d.body).to eq "greetings earthlings"
+  #   end
+
+  #   it "with existing subject adds comment to discussion" do
+  #     h = mailin_params(
+  #       to: "#{group.handle}@#{ENV['REPLY_HOSTNAME']}", 
+  #       subject: "re: the topic at hand",
+  #       body: "greetings earthlings"
+  #     )
+  #     expect { post :create, params: h}.to change { Discussion.count }.by(1)
+  #     d = Discussion.last
+  #     expect(d.author).to eq user
+  #     expect(d.body).to eq "greetings earthlings"
+  #   end
+  # end
+
   # it "does not create a comment when the user is not authorized" do
   #   griddler_params[:mailinMsg][:to] = [{address: "reply&d=#{discussion.id}&u=#{user.id}&k=#{another_user.email_api_key}"}]
   #   expect { post :reply, params: griddler_params }.to_not change { Comment.count }
