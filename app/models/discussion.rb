@@ -203,6 +203,10 @@ class Discussion < ApplicationRecord
     self.description_format
   end
 
+  def body_format=(val)
+    self.description_format=(val)
+  end
+
   def ranges
     RangeSet.parse(self.ranges_string)
   end

@@ -125,6 +125,9 @@ Rails.application.routes.draw do
           get  :send_merge_verification_email
           get  :contactable
           get  :avatar_uploaded
+          get  :email_api_key
+          post :send_email_to_group_address
+          post :reset_email_api_key
           post :update_profile
           post :set_volume
           post :upload_avatar
@@ -290,8 +293,7 @@ Rails.application.routes.draw do
     get :show, on: :collection
   end
 
-  resources :received_emails, only: :create
-  post :email_processor, to: 'received_emails#reply'
+  post :email_processor, to: 'received_emails#create'
 
   namespace :email_actions do
     get 'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion

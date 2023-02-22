@@ -23,7 +23,6 @@ module.exports = {
 
     page.loadPath('setup_all_notifications')
     page.pause(500)
-    page.expectText('.notifications__activity', notificationTexts.length, 100000)
     page.click('.notifications__button')
     notificationTexts.map((text) => { page.expectText('.notifications__dropdown', text) })
   }

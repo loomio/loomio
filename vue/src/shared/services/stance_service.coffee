@@ -6,9 +6,10 @@ import EventBus       from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
+import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
 
 export default new class StanceService
-  actions: (stance) ->
+  actions: (stance, vm) ->
     react:
       dock: 1
       canPerform: ->
@@ -21,6 +22,28 @@ export default new class StanceService
       dock: 1
       canPerform: => @canUpdateStance(stance)
       perform: => @updateStance(stance)
+
+    add_comment:
+      name: 'common.action.reply'
+      icon: 'mdi-reply'
+      dock: 1
+      canPerform: -> 
+        !stance.poll().anonymous &&
+        AbilityService.canAddComment(stance.poll().discussion())
+      perform: ->
+        if vm.showReplyForm
+          if RescueUnsavedEditsService.okToLeave(vm.newComment)
+            vm.showReplyForm = false
+        else
+          op = stance.author()
+          vm.newComment = Records.comments.build
+            bodyFormat: "html"
+            body: "<span data-mention-id=\"#{op.username}\">@#{op.name}</span>"
+            discussionId: stance.poll().discussionId
+            authorId: Session.user().id
+            parentId: stance.id
+            parentType: 'Stance'
+          vm.showReplyForm = true
 
     uncast_stance:
       name: 'poll_common.remove_your_vote'

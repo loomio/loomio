@@ -44,12 +44,16 @@ export default new class CommentService
           if RescueUnsavedEditsService.okToLeave(vm.newComment)
             vm.showReplyForm = false
         else
+          body = "" 
+          if !isOwnComment && comment.parent() && op = comment.parent().author()
+            body = "<span data-mention-id=\"#{op.username}\">@#{op.name}</span>"
           vm.newComment = Records.comments.build
             bodyFormat: "html"
-            body: ""
-            discussionId: comment.discussion().id
+            body: body
+            discussionId: comment.discussionId
             authorId: Session.user().id
             parentId: comment.id
+            parentType: 'Comment'
           vm.showReplyForm = true
 
     edit_comment:

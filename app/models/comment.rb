@@ -16,7 +16,7 @@ class Comment < ApplicationRecord
 
   belongs_to :discussion
   belongs_to :user
-  belongs_to :parent, class_name: 'Comment'
+  belongs_to :parent, polymorphic: true
 
   has_many :documents, as: :model, dependent: :destroy
 
@@ -30,6 +30,8 @@ class Comment < ApplicationRecord
 
   scope :dangling, -> { joins('left join discussions on discussion_id = discussions.id').where('discussion_id is not null and discussions.id is null') }
   scope :in_organisation, ->(group) { includes(:user, :discussion).joins(:discussion).where("discussions.group_id": group.id_and_subgroup_ids) }
+
+  before_validation :assign_parent_if_nil
 
   delegate :name, to: :user, prefix: :user
   delegate :name, to: :user, prefix: :author
@@ -46,6 +48,9 @@ class Comment < ApplicationRecord
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
+  def assign_parent_if_nil
+    self.parent = self.discussion if self.parent_id.nil?
+  end
 
   def poll
     nil
@@ -65,10 +70,11 @@ class Comment < ApplicationRecord
   end
 
   def parent_event
-    if parent # parent comment
-      parent.created_event # parent comment's 'new_comment' event
+    if parent.is_a? Stance
+      # if stance, the could be updated event. sucks i know
+      Event.where(eventable_type: parent_type, eventable_id: parent_id).where('discussion_id is not null').first
     else
-      discussion.created_event
+      parent.created_event
     end
   end
 
@@ -88,10 +94,6 @@ class Comment < ApplicationRecord
     group.members_can_edit_comments or is_most_recent?
   end
 
-  def users_to_not_mention
-    User.where(username: parent&.author&.username)
-  end
-
   private
 
   def has_body_or_attachment
@@ -105,10 +107,8 @@ class Comment < ApplicationRecord
   end
 
   def parent_comment_belongs_to_same_discussion
-    if parent.present?
-      unless discussion_id == parent.discussion_id
-        errors.add(:parent, "Needs to have same discussion id")
-      end
+    unless discussion_id == parent.discussion_id
+      errors.add(:parent, "Needs to have same discussion id")
     end
   end
 end

@@ -37,16 +37,15 @@ describe Dev::NightwatchController do
     expect_text_no_tags('.thread-mailer__body', "hello patrick.")
   end
 
-  it 'comment_replied_to' do
-    get :setup_discussion_mailer_comment_replied_to_email
-    expect_text_no_tags('.base-mailer__event-headline', "Patrick Swayze replied to you")
-    expect_text_no_tags('.thread-mailer__body', "why, hello there jen")
-  end
-
   it 'user_mentioned' do
     get :setup_discussion_mailer_user_mentioned_email
     expect_text_no_tags('.base-mailer__event-headline', "Jennifer Grey mentioned you")
     expect_text_no_tags('.thread-mailer__body', "hey @patrickswayze wanna dance?")
   end
 
+  it 'user_mentioned, reply' do
+    get :setup_discussion_mailer_comment_replied_to_email
+    expect_text_no_tags('.base-mailer__event-headline', "Patrick Swayze replied to you")
+    expect_text_no_tags('.thread-mailer__body', "why, hello there @jennifergrey")
+  end
 end

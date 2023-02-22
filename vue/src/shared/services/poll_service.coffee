@@ -8,9 +8,10 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import i18n          from '@/i18n'
 import { hardReload } from '@/shared/helpers/window'
+import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
 
 export default new class PollService
-  actions: (poll) ->
+  actions: (poll, vm) ->
     translate_poll:
       icon: 'mdi-translate'
       name: 'common.action.translate'
@@ -127,6 +128,27 @@ export default new class PollService
         openModal
           component: 'PollCommonReopenModal'
           props: { poll: poll }
+
+    add_comment:
+      name: 'activity_card.add_comment'
+      icon: 'mdi-reply'
+      dock: 1
+      canPerform: -> !poll.discardedAt && poll.discussionId && AbilityService.canAddComment(poll.discussion()) && !poll.closingAt
+      perform: ->
+        if vm.showReplyForm
+          if RescueUnsavedEditsService.okToLeave(vm.newComment)
+            vm.showReplyForm = false
+        else
+          op = poll.author()
+          vm.newComment = Records.comments.build
+            bodyFormat: "html"
+            body: "<span data-mention-id=\"#{op.username}\">@#{op.name}</span>"
+            discussionId: poll.discussionId
+            authorId: Session.user().id
+            parentId: poll.id
+            parentType: 'Poll'
+          vm.showReplyForm = true
+
 
     show_history:
       icon: 'mdi-history'

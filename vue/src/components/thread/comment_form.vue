@@ -19,7 +19,7 @@ export default
   computed:
     placeholder: ->
       if @comment.parentId
-        @$t('comment_form.in_reply_to', {name: @comment.parent().authorName()})
+        @$t('comment_form.in_reply_to', {name: @comment.parent().author().name})
       else
         @$t('comment_form.aria_label')
 
@@ -38,7 +38,7 @@ export default
                         'comment_form.messages.replied'
                       else
                         'comment_form.messages.created'
-        Flash.success flashMessage, {name: @comment.parent().authorName() if @comment.isReply()}
+        Flash.success flashMessage, {name: @comment.parent().author().name if @comment.isReply()}
       .catch (err) =>
         Flash.error 'common.something_went_wrong'
 

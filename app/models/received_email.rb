@@ -1,26 +1,71 @@
-class ReceivedEmail
-  include ActiveModel::Model
+class ReceivedEmail < ApplicationRecord
+  has_many_attached :attachments
 
-  attr_accessor :sender_email
-  attr_accessor :headers
-  attr_accessor :subject
-  attr_accessor :body
-  attr_accessor :locale
+  def header(name)
+    headers.find { |key, value| key.downcase == name.to_s.downcase }&.last
+  end
 
-  def save
-    if valid?
-      # UserMailer.start_decision(received_email: self).deliver_now
+  def recipient_emails
+    header('to').scan(AppConfig::EMAIL_REGEX).uniq
+  end
+
+  def route_address
+    recipient_emails.find {|email| email.split('@')[1].downcase == ENV['REPLY_HOSTNAME']}
+  end
+
+  def route_path
+    route_address.split('@')[0]
+  end
+
+  def sender_email
+    header('from').scan(AppConfig::EMAIL_REGEX).uniq.first
+  end
+
+  def sender_name
+    full_address = header('from').strip
+    name = full_address.split('<').first.strip.delete('"')
+    if name.present? && name != full_address
+      name
     else
-      # send failure email
+      nil
     end
   end
-  alias :save! :save
 
-  def valid?
-    email_addresses.length <= Rails.application.secrets.max_pending_emails
+  def body
+    text = if body_html.present?
+      Premailer.new(body_html, line_length: 10000, with_html_string: true).to_plain_text
+    else
+      body_text
+    end
+
+    ReceivedEmailService.extract_reply_body(text, sender_name)
   end
 
-  def email_addresses
-    body.scan(AppConfig::EMAIL_REGEX).uniq.reject { |email| email == self.sender_email.scan(AppConfig::EMAIL_REGEX) }
+  def subject
+    header('subject').gsub(/^( *(re|fwd?)(:| ) *)+/i, '')
+  end
+
+  def is_auto_response?
+    return true if header('X-Autorespond') 
+    return true if header('X-Precedence') ==  'auto_reply'
+
+    prefixes = [
+      'Auto:',
+      'Automatic reply',
+      'Autosvar',
+      'Automatisk svar',
+      'Automatisch antwoord',
+      'Abwesenheitsnotiz',
+      'Risposta Non al computer',
+      'Automatisch antwoord',
+      'Auto Response',
+      'Respuesta automática',
+      'Fuori sede',
+      'Out of Office',
+      'Frånvaro',
+      'Réponse automatique'
+    ]
+
+    prefixes.any? { |prefix| subject.downcase.starts_with?(prefix.downcase) }
   end
 end

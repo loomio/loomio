@@ -1,6 +1,7 @@
 class EventMailer < BaseMailer
   REPLY_DELIMITER = "﻿﻿"*4 # surprise! this is actually U+FEFF
 
+  # TODO this should be NotificationMailer, and take a notification id
   def event(recipient_id, event_id)
     @current_user = @recipient = User.find_by!(id: recipient_id)
     @event = Event.find_by!(id: event_id)
@@ -30,11 +31,6 @@ class EventMailer < BaseMailer
       "Auto-Submitted": :"auto-generated"
     }
 
-    # if @event.kind == 'new_discussion'
-    #   headers['new_discussion' ? 'Message-ID' : 'In-Reply-To'] = 
-    #     "<#{@event.eventable.discussion.id}@#{ENV['SMTP_DOMAIN']}>"
-    #   end
-
     if @event.eventable.respond_to?(:calendar_invite) && @event.eventable.calendar_invite
       attachments['meeting.ics'] = {
         content_type:              'text/calendar',
@@ -47,7 +43,16 @@ class EventMailer < BaseMailer
     template_name = 'poll' if @event.eventable_type == 'Outcome'
     template_name = 'group' if @event.eventable_type == 'Membership'
 
-    subject_key = "notifications.with_title.#{@event.kind}" 
+    # this should be notification.i18n_key
+    @event_key = if @event.kind == 'user_mentioned' &&
+       @event.eventable.respond_to?(:parent)
+       @event.eventable.parent.present? &&
+       @event.eventable.parent.author == @recipient
+      subject_key = "comment_replied_to" 
+    else
+      subject_key = @event.kind
+    end
+
     subject_params = {
       title: @event.eventable.title,
       group_name: @event.eventable.title, # cope for old translations
@@ -62,7 +67,7 @@ class EventMailer < BaseMailer
       locale: @recipient.locale,
       reply_to: reply_to_address_with_group_name(model: @event.eventable, user: @recipient),
       subject_prefix: group_name_prefix(@event),
-      subject_key: subject_key,
+      subject_key: "notifications.with_title.#{@event_key}",
       subject_params: subject_params,
       subject_is_title: thread_kinds.include?(@event.kind),
       template_name: template_name

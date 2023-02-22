@@ -316,13 +316,6 @@ v-card.group-form
                 | -
                 space
                 span(v-t="'thread_arrangement_form.nested_twice_description'")
-            //- v-radio(:value="3")
-            //-   template(v-slot:label)
-            //-     strong(v-t="'thread_arrangement_form.nested_twice'")
-            //-     space
-            //-     | -
-            //-     space
-            //-     span(v-t="'thread_arrangement_form.nested_twice_description'")
 
   v-card-actions.ml-2.mr-2.mt-4
     help-link(path="en/user_manual/groups/settings")

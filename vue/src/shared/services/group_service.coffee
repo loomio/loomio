@@ -12,6 +12,17 @@ export default new class GroupService
   actions: (group) ->
     membership = group.membershipFor(Session.user())
     
+    # email_to_group:
+    #   name: 'email_to_group.email_to_group_address'
+    #   icon: 'mdi-send'
+    #   menu: true
+    #   canPerform: -> AbilityService.canStartThread(group)
+    #   perform: ->
+    #     openModal
+    #       component: 'EmailToGroupSettings'
+    #       props:
+    #         group: group
+
     translate_group:
       name: 'common.action.translate'
       icon: 'mdi-translate'
@@ -22,9 +33,9 @@ export default new class GroupService
         Session.user() && group.translate(Session.user().locale)
 
     change_volume:
-      name: 'group_page.options.email_settings'
+      name: 'user_dropdown.email_settings'
       icon: 'mdi-email'
-      dock: 1
+      menu: true
       canPerform: ->
         AbilityService.canChangeGroupVolume(group)
       perform: ->

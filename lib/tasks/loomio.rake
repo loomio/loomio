@@ -86,6 +86,7 @@ namespace :loomio do
     # Group.expired_trial.delete_all
     # Group.empty_no_subscription.delete_all
     CleanupService.delete_orphan_records
+    ReceivedEmailService.delete_released_emails
   end
 
   task generate_error: :environment do
