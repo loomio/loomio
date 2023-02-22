@@ -5,6 +5,7 @@ class ReceivedEmailsController < Griddler::EmailsController
     email = build_received_email_from_params
 
     if !email.is_auto_response?
+      email.save!
       ReceivedEmailService.route(email)
     end
 
