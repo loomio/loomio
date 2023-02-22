@@ -14,7 +14,7 @@ describe EmailHelper do
 
     it "gives correct format for a comment" do
       output = helper.reply_to_address(model: comment, user: user)
-      expect(output).to eq "p=c-#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@replyhostname.com"
+      expect(output).to eq "pt=c&pi=#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@replyhostname.com"
     end
   end
 
