@@ -69,15 +69,19 @@ module EmailHelper
     DiscussionReader.for(discussion: discussion, user: recipient).volume_is_loud?
   end
 
-  def reply_to_address(model:, user: )
-    letter = {
+  def model_letter(model)
+    {
       'Comment' => 'c',
       'Poll' => 'p',
-      'Stance' => 's'
+      'Stance' => 's',
+      'Outcome' => 'o'
     }[model.class.to_s]
+  end
 
+  def reply_to_address(model:, user: )
     address = {
-      p: ("#{letter}-#{model.id}" if letter),
+      pt: model_letter(model),
+      pi: model.id,
       d: model.discussion_id,
       u: user.id,
       k: user.email_api_key

@@ -103,7 +103,8 @@ class ReceivedEmailService
       parent_type = {
         'p' => 'Poll',
         'c' => 'Comment',
-        's' => 'Stance'
+        's' => 'Stance',
+        'o' => 'Outcome'
       }[params['pt']]
 	    parent_id = params['pi']
     end

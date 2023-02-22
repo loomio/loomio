@@ -42,7 +42,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def subject
-    header('subject')
+    header('subject').gsub(/^( *(re|fwd?)(:| ) *)+/i, '')
   end
 
   def is_auto_response?
