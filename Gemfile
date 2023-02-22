@@ -62,6 +62,7 @@ gem 'lograge'
 gem 'video_info'
 gem 'blazer'
 gem 'terminal-table'
+gem 'tzinfo-data'
 
 group :development, :test do
   gem 'listen'
