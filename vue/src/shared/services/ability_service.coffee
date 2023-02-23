@@ -163,6 +163,7 @@ export default new class AbilityService
      comment.discussion().membersInclude(Session.user()))
 
   canDeleteComment: (comment) ->
+    Records.comments.find(parentId: comment.id, parentType: 'Comment').length == 0 &&
     comment.discardedAt &&
     (
       comment.discussion().adminsInclude(Session.user()) ||

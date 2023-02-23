@@ -17,8 +17,13 @@ module Ability::Comment
     end
 
     can [:destroy], ::Comment do |comment|
-      (comment.author == user && comment.discussion.members.exists?(user.id) && comment.group.members_can_delete_comments) ||
-      comment.discussion.admins.exists?(user.id)
+      Comment.where(parent: comment).count == 0 &&
+      (
+        comment.discussion.admins.exists?(user.id) ||
+        (comment.author == user &&
+         comment.discussion.members.exists?(user.id) &&
+         comment.group.members_can_delete_comments)
+      )
     end
 
     can [:show], ::Comment do |comment|
