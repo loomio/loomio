@@ -45,6 +45,10 @@ class ReceivedEmail < ApplicationRecord
     header('subject').gsub(/^( *(re|fwd?)(:| ) *)+/i, '')
   end
 
+  def is_addressed_to_loomio?
+    header('to').include?(ENV['REPLY_HOSTNAME'])
+  end
+
   def is_auto_response?
     return true if header('X-Autorespond') 
     return true if header('X-Precedence') ==  'auto_reply'
