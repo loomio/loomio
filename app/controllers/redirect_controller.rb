@@ -17,7 +17,7 @@ class RedirectController < ApplicationController
     if to.present?
       redirect_to send(:"#{model}_url", to), status: :moved_permanently
     else
-      render :text => 'Not Found', :status => '404'
+      respond_with_error message: :"errors.not_found", status: 404
     end
   end
 end
