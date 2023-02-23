@@ -169,6 +169,7 @@ class Group < ApplicationRecord
   end
 
   def cover_url(size = 512) # 2048x512 or 1024x256 normal res
+    size = size.to_i
     return nil unless cover_photo.attached?
     Rails.application.routes.url_helpers.rails_representation_path(
       cover_photo.representation(HasRichText::PREVIEW_OPTIONS.merge(resize_to_limit: [size*4,size])),
