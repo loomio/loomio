@@ -6,7 +6,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def recipient_emails
-    header('to').scan(AppConfig::EMAIL_REGEX).uniq
+    String(header('to')).scan(AppConfig::EMAIL_REGEX).uniq
   end
 
   def route_address
@@ -18,7 +18,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def sender_email
-    header('from').scan(AppConfig::EMAIL_REGEX).uniq.first
+    String(header('from')).scan(AppConfig::EMAIL_REGEX).uniq.first
   end
 
   def sender_name
@@ -42,11 +42,11 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def subject
-    header('subject').gsub(/^( *(re|fwd?)(:| ) *)+/i, '')
+    String(header('subject')).gsub(/^( *(re|fwd?)(:| ) *)+/i, '')
   end
 
   def is_addressed_to_loomio?
-    header('to').include?(ENV['REPLY_HOSTNAME'])
+    String(header('to')).include?(ENV['REPLY_HOSTNAME'])
   end
 
   def is_auto_response?
