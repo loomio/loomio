@@ -4,8 +4,9 @@ class ReceivedEmailsController < Griddler::EmailsController
   def create
     email = build_received_email_from_params
 
+    email.save!
+    
     if email.is_addressed_to_loomio? && !email.is_auto_response?
-      email.save!
       ReceivedEmailService.route(email)
     end
 
