@@ -13,9 +13,7 @@ export default
 
   data: ->
     confirmOpts: null
-    showReplyForm: false
-    newComment: null
-    commentActions: CommentService.actions(@eventable, @)
+    commentActions: CommentService.actions(@eventable, @, @event)
     eventActions: EventService.actions(@event, @)
 
   computed:
@@ -44,5 +42,4 @@ section.strand-item__new-comment.new-comment(:id="'comment-'+ eventable.id")
   document-list(:model='eventable')
   attachment-list(:attachments="eventable.attachments")
   action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions' small)
-  comment-form(v-if="showReplyForm" :comment="newComment" avatar-size="36" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" autofocus)
 </template>

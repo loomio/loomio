@@ -16,7 +16,7 @@ export default
     @watchRecords
       collections: ["stances", "polls"]
       query: (records) =>
-        @pollActions = PollService.actions(@poll, @)
+        @pollActions = PollService.actions(@poll, @, @event)
         @eventActions = EventService.actions(@event, @)
         @myStance = @poll.myStance()
 
@@ -28,8 +28,6 @@ export default
     myStance: null
     pollActions: null
     eventActions: null
-    showReplyForm: false
-    newComment: null
 
   computed:
     poll: -> @eventable
@@ -71,5 +69,4 @@ section.strand-item.poll-created
       poll-common-action-panel(:poll='poll')
     action-dock.my-2(:actions="dockActions", :menu-actions="menuActions")
     poll-common-votes-panel(v-if="!poll.stancesInDiscussion && poll.showResults()" :poll="poll")
-    comment-form(v-if="showReplyForm" :comment="newComment" avatar-size="36" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" autofocus)
 </template>

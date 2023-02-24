@@ -9,7 +9,7 @@ import openModal      from '@/shared/helpers/open_modal'
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
 
 export default new class StanceService
-  actions: (stance, vm) ->
+  actions: (stance, vm, event) ->
     react:
       dock: 1
       canPerform: ->
@@ -31,19 +31,10 @@ export default new class StanceService
         !stance.poll().anonymous &&
         AbilityService.canAddComment(stance.poll().discussion())
       perform: ->
-        if vm.showReplyForm
-          if RescueUnsavedEditsService.okToLeave(vm.newComment)
-            vm.showReplyForm = false
+        if event.depth == stance.discussion().maxDepth
+          EventBus.$emit('toggle-reply', stance, event.parentId)
         else
-          op = stance.author()
-          vm.newComment = Records.comments.build
-            bodyFormat: "html"
-            body: "<span data-mention-id=\"#{op.username}\">@#{op.name}</span>"
-            discussionId: stance.poll().discussionId
-            authorId: Session.user().id
-            parentId: stance.id
-            parentType: 'Stance'
-          vm.showReplyForm = true
+          EventBus.$emit('toggle-reply', stance, event.id)
 
     uncast_stance:
       name: 'poll_common.remove_your_vote'

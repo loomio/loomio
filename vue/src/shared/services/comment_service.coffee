@@ -7,7 +7,7 @@ import Flash from '@/shared/services/flash'
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
 
 export default new class CommentService
-  actions: (comment, vm) ->
+  actions: (comment, vm, event) ->
     isOwnComment = comment.authorId == Session.userId
     translate_comment:
       name: 'common.action.translate'
@@ -40,22 +40,10 @@ export default new class CommentService
       menu: isOwnComment
       canPerform: -> AbilityService.canRespondToComment(comment)
       perform: ->
-        if vm.showReplyForm
-          if RescueUnsavedEditsService.okToLeave(vm.newComment)
-            vm.showReplyForm = false
+        if event.depth == comment.discussion().maxDepth
+          EventBus.$emit('toggle-reply', comment, event.parentId)
         else
-          body = "" 
-          if !isOwnComment
-            op = comment.author()
-            body = "<span data-mention-id=\"#{op.username}\">@#{op.name}</span>"
-          vm.newComment = Records.comments.build
-            bodyFormat: "html"
-            body: body
-            discussionId: comment.discussionId
-            authorId: Session.user().id
-            parentId: comment.id
-            parentType: 'Comment'
-          vm.showReplyForm = true
+          EventBus.$emit('toggle-reply', comment, event.id)
 
     edit_comment:
       name: 'common.action.edit'
