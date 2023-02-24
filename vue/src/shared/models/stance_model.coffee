@@ -39,6 +39,7 @@ export default class StanceModel extends BaseModel
     else
       @versionsCount > 1
 
+  discussion: -> @poll().discussion()
   participantName: ->
     if @participant()
       @participant().nameWithTitle(@poll().group())

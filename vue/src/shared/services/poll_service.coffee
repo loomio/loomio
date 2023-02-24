@@ -11,7 +11,7 @@ import { hardReload } from '@/shared/helpers/window'
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
 
 export default new class PollService
-  actions: (poll, vm) ->
+  actions: (poll, vm, event) ->
     translate_poll:
       icon: 'mdi-translate'
       name: 'common.action.translate'
@@ -121,7 +121,7 @@ export default new class PollService
     reopen_poll:
       icon: 'mdi-refresh'
       name: 'common.action.reopen'
-      dock: 2
+      dock: 3
       canPerform: ->
         AbilityService.canReopenPoll(poll)
       perform: ->
@@ -135,20 +135,7 @@ export default new class PollService
       dock: 1
       canPerform: -> !poll.discardedAt && poll.discussionId && AbilityService.canAddComment(poll.discussion()) && !poll.closingAt
       perform: ->
-        if vm.showReplyForm
-          if RescueUnsavedEditsService.okToLeave(vm.newComment)
-            vm.showReplyForm = false
-        else
-          op = poll.author()
-          vm.newComment = Records.comments.build
-            bodyFormat: "html"
-            body: "<span data-mention-id=\"#{op.username}\">@#{op.name}</span>"
-            discussionId: poll.discussionId
-            authorId: Session.user().id
-            parentId: poll.id
-            parentType: 'Poll'
-          vm.showReplyForm = true
-
+        EventBus.$emit('toggle-reply', poll, event.id)
 
     show_history:
       icon: 'mdi-history'

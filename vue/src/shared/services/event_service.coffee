@@ -41,5 +41,5 @@ export default new class EventService
       canPerform: -> !event.model().discardedAt
       perform:    ->
         link = LmoUrlService.event(event, {}, absolute: true)
-        vm.$copyText(link).then (e) ->
+        navigator.clipboard.writeText(link).then ->
           Flash.success("action_dock.url_copied")

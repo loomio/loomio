@@ -56,7 +56,7 @@ export default
 </script>
 
 <template lang="pug">
-section.actions-panel#add-comment(:aria-label="$t('activity_card.aria_label')")
+section.actions-panel#add-comment(:class="{'mt-2': !discussion.newestFirst}")
   v-divider(aria-hidden="true")
   v-tabs.activity-panel__actions.mb-3(grow text v-model="currentAction")
     v-tabs-slider

@@ -21,6 +21,7 @@ export default class EventModel extends BaseModel
     discussionId: null
     sequenceId: null
     positition: 0
+    showReplyForm: true
 
   parentOrSelf: ->
     if @parentId

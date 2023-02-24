@@ -41,7 +41,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-stance-choice.mr-1.mb-1(:class="'poll-common-stance-choice--' + pollType" row)
+.poll-common-stance-choice.mx-1.mb-1(:class="'poll-common-stance-choice--' + pollType" row)
   v-avatar(tile :size="size" v-if='poll.config().has_option_icon')
     img(:src="'/img/' + pollOption.icon + '.svg'", :alt='optionName')
   v-chip(v-if='poll.pollOptionNameFormat == "iso8601"'

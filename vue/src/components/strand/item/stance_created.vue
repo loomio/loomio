@@ -11,15 +11,11 @@ export default
     eventable: Object
     collapsed: Boolean
 
-  data: ->
-    showReplyForm: false
-    newComment: null
-
   computed:
     actor: -> @event.actor()
     actorName: -> @event.actorName()
     poll: -> @eventable.poll()
-    actions: -> StanceService.actions(@eventable, @)
+    actions: -> StanceService.actions(@eventable, @, @event)
     componentType:  ->
       if @actor
         'router-link'
@@ -48,8 +44,7 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
       formatted-text.poll-common-stance-created__reason(:model="eventable", column="reason")
       link-previews(:model="eventable")
       attachment-list(:attachments="eventable.attachments")
-    action-dock(:model='eventable', :actions='actions' small)
-    comment-form(v-if="showReplyForm" :comment="newComment" avatar-size="36" @comment-submitted="showReplyForm = false" @cancel-reply="showReplyForm = false" autofocus)
+    action-dock(:model='eventable', :actions='actions' small left)
   template(v-else)
     .d-flex
       component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
