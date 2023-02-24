@@ -45,7 +45,8 @@ export default new class CommentService
             vm.showReplyForm = false
         else
           body = "" 
-          if !isOwnComment && comment.parent() && op = comment.parent().author()
+          if !isOwnComment
+            op = comment.author()
             body = "<span data-mention-id=\"#{op.username}\">@#{op.name}</span>"
           vm.newComment = Records.comments.build
             bodyFormat: "html"
