@@ -6,7 +6,7 @@
     %span.text--secondary.text-body-2
       = render 'discussions/time_ago', time: stance.created_at
 - stance.stance_choices.each do |stance_choice|
-  .poll-common-stance-choice.mr-1.mb-1.poll-common-stance-choice--poll.text-body-2{:row => ""}
+  .poll-common-stance-choice.mx-1.mb-1.poll-common-stance-choice--poll.text-body-2{:row => ""}
     %span
       = render 'discussions/time_ago', time: Time.parse(stance_choice.poll_option.name).in_time_zone
 .poll-common-stance
