@@ -11,7 +11,7 @@ export eventHeadline = (event, useNesting = false) ->
     when 'new_comment'       then newCommentKey(event, useNesting)
     when 'stance_created'    then stanceCreatedKey(event, useNesting)
     when 'discussion_edited' then discussionEditedKey(event)
-    when 'poll_created' then 'poll_created_no_title'
+    when 'poll_created' then 'poll_created'
     else event.kind
   "thread_item.#{key}"
 

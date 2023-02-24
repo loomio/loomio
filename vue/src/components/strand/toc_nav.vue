@@ -148,6 +148,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
     //- | {{items}}
     router-link.strand-nav__entry.text-caption(
       :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': item.unread}"
+      :style="{'border-width': (item.depth * 2)+'px', 'min-height': '4px'}"
       v-for="item in items"
       :key="item.key"
       :to="baseUrl+'/'+item.sequenceId")
@@ -169,7 +170,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 .strand-nav__entry
   display: block
   flex-grow: 1
-  border-left: 2px solid #eee
+  border-left: 2px solid #ccc
   padding-left: 8px
   padding-right: 8px
   margin-left: 8px
@@ -187,11 +188,13 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   border-color: var(--v-primary-darken1)!important
 
 .theme--dark
+  .strand-nav__entry
+    border-left: 2px solid #999
   .strand-nav__entry:hover, .strand-nav__entry--visible
     background-color: #222
 
 .theme--light
   .strand-nav__entry:hover, .strand-nav__entry--visible
-    background-color: #f4f4f4
+    background-color: #f8f8f8
 
 </style>

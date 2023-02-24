@@ -22,7 +22,7 @@ export default
         else
           body = "" 
           op = eventable.author()
-          if op.id != Session.currentUserId
+          if op.id != Session.user().id
             body = "<span data-mention-id=\"#{op.username}\">@#{op.name}</span>"
           @newComment = Records.comments.build
             bodyFormat: "html"

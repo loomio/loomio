@@ -36,8 +36,7 @@ export default new class CommentService
     reply_to_comment:
       name: 'common.action.reply'
       icon: 'mdi-reply'
-      dock: (!isOwnComment && 1) || 0
-      menu: isOwnComment
+      dock: 1
       canPerform: -> AbilityService.canRespondToComment(comment)
       perform: ->
         if event.depth == comment.discussion().maxDepth
@@ -48,7 +47,7 @@ export default new class CommentService
     edit_comment:
       name: 'common.action.edit'
       icon: 'mdi-pencil'
-      dock: (isOwnComment && 1) || 0
+      dock: 1
       canPerform: -> !comment.discardedAt && comment.authorIs(Session.user()) && AbilityService.canEditComment(comment)
       perform: ->
         openModal
@@ -70,9 +69,9 @@ export default new class CommentService
             comment: comment.clone()
 
     show_history:
-      name: 'action_dock.show_edits'
+      name: 'action_dock.edited'
       icon: 'mdi-history'
-      dock: 1
+      dock: 3
       canPerform: ->
         comment.edited() && (!comment.discardedAt ||
                              comment.discussion().adminsInclude(Session.user()))

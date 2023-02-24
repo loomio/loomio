@@ -184,7 +184,7 @@ export default
   display: flex
   flex-direction: column
   width: 36px
-  margin-right: 8px
+  // margin-right: 8px
 
 .strand-item__gutter:hover
   .strand-item__stem
@@ -192,7 +192,8 @@ export default
 
 .strand-item__main
   flex-grow: 1
-  padding-bottom: 8px
+  padding-left: 8px
+  overflow: hidden
   max-width: 100%
 
 .strand-item__stem-wrapper
@@ -204,7 +205,7 @@ export default
 .strand-item__stem
   width: 0
   height: 100%
-  padding: 0 1px
+  padding: 0 0.5px
   background-color: #dadada
   margin: 0px 18px
 

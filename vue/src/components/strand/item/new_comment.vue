@@ -41,5 +41,5 @@ section.strand-item__new-comment.new-comment(:id="'comment-'+ eventable.id")
   link-previews(:model="eventable")
   document-list(:model='eventable')
   attachment-list(:attachments="eventable.attachments")
-  action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions' small)
+  action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions' small left)
 </template>

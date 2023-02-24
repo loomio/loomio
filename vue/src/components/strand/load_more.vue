@@ -7,8 +7,7 @@ export default
 
 <template lang="pug">
 .strand-item__load-more
-  v-btn.action-button(block text outlined @click="$emit('click')" :loading="loading" color="grey darken-2")
-    //- v-icon(size="20") mdi-unfold-more-horizontal
+  v-btn.action-button(block text outlined @click="$emit('click')" :loading="loading")
     span(v-t="label")
 </template>
 
