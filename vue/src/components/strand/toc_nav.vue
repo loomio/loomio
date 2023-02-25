@@ -148,7 +148,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
     //- | {{items}}
     router-link.strand-nav__entry.text-caption(
       :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': item.unread}"
-      :style="{'border-width': (item.depth * 2)+'px', 'min-height': '4px'}"
+      :style="{'border-width': (item.depth * 2)+'px'}"
       v-for="item in items"
       :key="item.key"
       :to="baseUrl+'/'+item.sequenceId")
@@ -174,7 +174,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   padding-left: 8px
   padding-right: 8px
   margin-left: 8px
-  min-height: 1px
+  min-height: 2px
 
 .strand-nav__entry--unread
   border-color: var(--v-accent-lighten1)!important
