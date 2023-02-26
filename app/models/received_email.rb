@@ -46,7 +46,9 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def is_addressed_to_loomio?
-    String(header('to')).include?(ENV['REPLY_HOSTNAME'])
+    [ENV['REPLY_HOSTNAME'], ENV['OLD_REPLY_HOSTNAME']].compact.any? do |hostname| 
+      String(header('to')).include?(hostname)
+    end
   end
 
   def is_auto_response?
