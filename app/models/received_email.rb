@@ -10,7 +10,10 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def route_address
-    recipient_emails.find {|email| email.split('@')[1].downcase == ENV['REPLY_HOSTNAME']}
+    reply_hostnames = [ENV['REPLY_HOSTNAME'], ENV['OLD_REPLY_HOSTNAME']].compact
+    recipient_emails.find do |email|
+      reply_hostnames.include? email.split('@')[1].downcase
+    end
   end
 
   def route_path
@@ -46,9 +49,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def is_addressed_to_loomio?
-    [ENV['REPLY_HOSTNAME'], ENV['OLD_REPLY_HOSTNAME']].compact.any? do |hostname| 
-      String(header('to')).include?(hostname)
-    end
+    route_address.present?
   end
 
   def is_auto_response?
