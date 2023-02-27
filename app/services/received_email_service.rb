@@ -1,45 +1,49 @@
 class ReceivedEmailService
-	def self.route(email)
-		case email.route_path
-		when /d=.+&u=.+&k=.+/
-			# personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
-			CommentService.create(
-				comment: Comment.new(comment_params(email)),
-				actor: actor_from_email(email)
-			)
+  def self.route(email)
+    case email.route_path
+    when /d=.+&u=.+&k=.+/
+      # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
+      CommentService.create(
+        comment: Comment.new(comment_params(email)),
+        actor: actor_from_email(email)
+      )
 
-			email.update_attribute(:released, true)
-		when /[^\s]+\+u=.+&k=.+/ 
-			# personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
-			DiscussionService.create(
-				discussion: Discussion.new(discussion_params(email)),
-				actor: actor_from_email(email)
-			)
+      email.update_attribute(:released, true)
+    when /[^\s]+\+u=.+&k=.+/ 
+      # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
+      DiscussionService.create(
+        discussion: Discussion.new(discussion_params(email)),
+        actor: actor_from_email(email)
+      )
 
-			email.update_attribute(:released, true)
-		else
-			# general email-to-group, eg.  enspiral@mail.loomio.com
-			# if from member email and spf, dkim pass, then pass through quarantine
-			# else needs approval from group admin. leave for later
-			raise "general email to group not supported yet"
-		end
-	end
+      email.update_attribute(:released, true)
+    else
+      # general email-to-group, eg.  enspiral@mail.loomio.com
+      # if from member email and spf, dkim pass, then pass through quarantine
+      # else needs approval from group admin. leave for later
+      raise "general email to group not supported yet"
+    end
+  end
 
-	def self.extract_reply_body(text, author_name = nil)
-		return "" if text.strip.blank?
-		text.gsub!("\r\n", "\n")
-		if regex = reply_split_points(author_name).find { |regex| regex.match? text }
-			text.split(regex).first.strip
-		else
-			text.strip
-		end
-	end
+  def self.extract_reply_body(text, author_name = nil)
+    return "" if text.strip.blank?
+    text.gsub!("\r\n", "\n")
+    if regex = reply_split_points(author_name).find { |regex| regex.match? text }
+      text.split(regex).first.strip
+    else
+      text.strip
+    end
+  end
 
-	def self.delete_released_emails
-		ReceivedEmail.where("created_at < ?", 3.days.ago).where(released: true).destroy_all
-	end
+  def self.delete_released_emails
+    ReceivedEmail.where("created_at < ?", 3.days.ago).where(released: true).destroy_all
+  end
 
-	private
+  def self.delete_unreleased_emails
+    ReceivedEmail.where("created_at < ?", 9.days.ago).where(released: false).destroy_all
+  end
+
+  private
 
   def self.reply_split_points(author_name = nil)
     [
@@ -60,12 +64,12 @@ class ReceivedEmailService
     ].compact
   end
 
-	def self.parse_route_params(route_path)
-		params = {}.with_indifferent_access
+  def self.parse_route_params(route_path)
+    params = {}.with_indifferent_access
 
-		if route_path.include?('+')
-			params['handle'] = route_path.split('+').first
-		end
+    if route_path.include?('+')
+      params['handle'] = route_path.split('+').first
+    end
 
     route_path.split('+').last.split('&').each do |segment|
       key_and_value = segment.split('=')
@@ -76,23 +80,23 @@ class ReceivedEmailService
   end
 
   def self.actor_from_email(email)
-		params = parse_route_params(email.route_path)
-		User.find_by!(id: params['u'], email_api_key: params['k'])
+    params = parse_route_params(email.route_path)
+    User.find_by!(id: params['u'], email_api_key: params['k'])
   end
 
   def self.discussion_params(email)
-		params = parse_route_params(email.route_path)
-  	{
-  		group_id: Group.find_by!(handle: params['handle']),
-  		title: email.subject,
-  		body: email.body,
-  		body_format: 'md',
-  		files: email.attachments.map {|a| a.blob }
-  	}.compact
+    params = parse_route_params(email.route_path)
+    {
+      group_id: Group.find_by!(handle: params['handle']),
+      title: email.subject,
+      body: email.body,
+      body_format: 'md',
+      files: email.attachments.map {|a| a.blob }
+    }.compact
   end
 
   def self.comment_params(email)
-  	params = parse_route_params(email.route_path)
+    params = parse_route_params(email.route_path)
 
     if params['c'].present?
       parent_id     = params['c']
@@ -106,16 +110,16 @@ class ReceivedEmailService
         's' => 'Stance',
         'o' => 'Outcome'
       }[params['pt']]
-	    parent_id = params['pi']
+      parent_id = params['pi']
     end
 
     {
-    	discussion_id: params['d'].to_i,
-    	parent_id: parent_id,
-    	parent_type: parent_type,
-    	body: email.body,
-    	body_format: 'md',
-    	files: email.attachments.map {|a| a.blob }
+      discussion_id: params['d'].to_i,
+      parent_id: parent_id,
+      parent_type: parent_type,
+      body: email.body,
+      body_format: 'md',
+      files: email.attachments.map {|a| a.blob }
     }.compact
-	end
+  end
 end

@@ -71,6 +71,8 @@ namespace :loomio do
       CleanupService.delay.delete_orphan_records
       OutcomeService.delay.publish_review_due
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
+      ReceivedEmailService.delay.delete_released_emails
+      ReceivedEmailService.delay.delete_unreleased_emails
     end
 
     DemoService.delay.ensure_queue
@@ -78,15 +80,6 @@ namespace :loomio do
     if (Time.now.hour == 0 && Time.now.mday == 1)
       UpdateBlockedDomainsWorker.perform_async
     end
-  end
-
-  task delete_expired_records: :environment do
-    puts "Deleting expired demos"
-    Group.expired_demo.delete_all
-    # Group.expired_trial.delete_all
-    # Group.empty_no_subscription.delete_all
-    CleanupService.delete_orphan_records
-    ReceivedEmailService.delete_released_emails
   end
 
   task generate_error: :environment do
