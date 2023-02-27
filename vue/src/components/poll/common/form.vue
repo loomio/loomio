@@ -5,6 +5,7 @@ import { compact, without, kebabCase, snakeCase, some } from 'lodash'
 import Flash from '@/shared/services/flash'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
+import AbilityService from '@/shared/services/ability_service'
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns'
 import { addHours, isAfter } from 'date-fns'
 import PollCommonWipField from '@/components/poll/common/wip_field'
@@ -27,7 +28,7 @@ export default
       query: =>
         @groupItems = [
           {text: @$t('discussion_form.none_invite_only_thread'), value: null}
-        ].concat Session.user().groups().map (g) ->
+        ].concat Session.user().groups().filter( (g) -> AbilityService.canStartPoll(g) ).map (g) ->
           {text: g.fullName, value: g.id}
 
   data: ->
