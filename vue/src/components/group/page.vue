@@ -75,7 +75,7 @@ export default
 <template lang="pug">
 v-main
   loading(v-if="!group")
-  v-container.group-page.max-width-1024.px-0.px-sm-3(v-if="group")
+  v-container.group-page.max-width-1024.px-2.px-sm-4(v-if="group")
     demo-banner(:group="group")
     div(style="position: relative")
       v-img(
@@ -83,12 +83,20 @@ v-main
         style="border-radius: 8px"
         max-height="256"
         eager)
-      v-img.ma-2.rounded(
+
+      v-img.ma-2.d-none.d-sm-block.rounded(
         v-if="group.logoUrl"
         :src="group.logoUrl"
         style="border-radius: 8px; position: absolute; bottom: 0"
         height="96"
         width="96" 
+        eager)
+      v-img.ma-2.d-sm-none.rounded(
+        v-if="group.logoUrl"
+        :src="group.logoUrl"
+        style="border-radius: 8px; position: absolute; bottom: 0"
+        height="48"
+        width="48" 
         eager)
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parentId")
