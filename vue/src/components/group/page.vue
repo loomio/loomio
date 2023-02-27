@@ -115,20 +115,17 @@ v-main
     v-divider.mt-4
     v-tabs(
       v-model="activeTab"
-      center-active
       background-color="transparent"
-      centered
+      center-active
       grow
-      show-arrows
     )
-      v-tabs-slider
       v-tab(
         v-for="tab of tabs"
         :key="tab.id"
         :to="tab.route"
         :class="'group-page-' + tab.name + '-tab' "
-        exact
       )
+        //- v-icon mdi-comment-multiple
         span(v-t="'group_page.'+tab.name")
     router-view
 </template>
