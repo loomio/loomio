@@ -121,7 +121,7 @@ export default
 
   .pa-4
     v-select.pb-4(
-      :disabled="discussion.id"
+      :disabled="!!discussion.id"
       v-model="discussion.groupId"
       :items="groupItems"
       :label="$t('common.group')"
