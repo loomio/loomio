@@ -1,4 +1,5 @@
 class Dev::DiscussionsController < Dev::BaseController
+  include Dev::FakeDataHelper
 
   def test_none_read
     discussion = create_discussion_with_nested_comments
