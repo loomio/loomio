@@ -161,7 +161,7 @@ export default
   v-main
     v-container.max-width-800.px-0.px-sm-3(v-if="discussion")
       demo-banner(:group="discussion.group()" v-if="discussion.groupId")
-      p(v-if="$route.query.debug" v-for="rule in loader.rules") {{rule}}
+      //- p(v-if="$route.query.debug" v-for="rule in loader.rules") {{rule}}
       //- p loader: {{loader.focusAttrs}}
       //- p ranges: {{discussion.ranges}}
       //- p read ranges: {{loader.readRanges}}
@@ -171,6 +171,6 @@ export default
       discussion-fork-actions(:discussion='discussion', :key="'fork-actions'+ discussion.id")
       discussion-template-banner(:discussion='discussion')
 
-      strand-card(v-if="loader", :discussion='discussion', :loader="loader")
+      strand-card(v-if="loader", :loader="loader")
   strand-toc-nav(v-if="loader", :discussion="discussion", :loader="loader", :key="discussion.id")
 </template>
