@@ -87,6 +87,10 @@ class EventMailer < BaseMailer
   def reply_to_address_with_group_name(model:, user:)
     return nil unless user.is_logged_in?
     return nil unless model.respond_to?(:discussion_id) && model.discussion_id
-    "\"#{I18n.transliterate(model.discussion.group.full_name).truncate(50).delete('"')}\" <#{reply_to_address(model: model, user: user)}>"
+    if model.discussion.group_id
+      "\"#{I18n.transliterate(model.discussion.group.full_name).truncate(50).delete('"')}\" <#{reply_to_address(model: model, user: user)}>"
+    else
+      "\"#{user.name}\" <#{reply_to_address(model: model, user: user)}>"
+    end
   end
 end
