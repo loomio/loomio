@@ -385,7 +385,7 @@ GEM
       net-smtp
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (5.0.0)
-    puma (6.1.0)
+    puma (6.1.1)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
