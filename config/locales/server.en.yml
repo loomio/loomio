@@ -180,8 +180,8 @@ en:
 
     login:
       subject: Sign in to %{site_name}
-      intro: Hi %{name}, here is your link to sign in to %{site_name}
-      intro_code: Hi %{name}, here is your code to sign in to %{site_name}
+      intro: This is your link to sign in to %{site_name}
+      intro_code: This is your code to sign in to %{site_name}
       login: Sign in as %{name}
 
     reactivate:
