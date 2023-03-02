@@ -32,6 +32,6 @@ s3_compatible:
 
 google:
   service: GCS
-  credentials: <%= Rails.root.join("credentials.json") %>
+  credentials: <%= ENV.fetch('GCS_CREDENTIALS', '') %>
   project: <%= ENV.fetch('GCS_PROJECT', '') %>
   bucket: <%= ENV.fetch('GCS_BUCKET', '') %>
