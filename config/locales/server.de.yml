@@ -163,8 +163,6 @@ de:
       resend: Diese läuft nach 24 Stunden ab und kann nur einmal verwendet werden
     login:
       subject: Bei %{site_name}anmelden
-      intro: Hallo %{name}, hier ist dein Link, um dich auf %{site_name} anzumelden
-      intro_code: Hi %{name}, Hier ist dein Code, mit dem du dich auf %{site_name} anmelden kannst
       login: Als %{name} einloggen
     reactivate:
       subject: Dein %{site_name} Konto wieder aktivieren

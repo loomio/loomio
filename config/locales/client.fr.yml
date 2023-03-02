@@ -347,6 +347,24 @@ fr:
     heading: Activité pour {{name}}
     polls_count: Montrer {{loaded}} de {{total}} décisions
     search_activities: Chercher parmi les décisions
+  email_to_group:
+    email_to_group_settings: Paramètres d’adresse e-mail au groupe
+    email_to_group_address: Adresse e-mail au groupe
+    start_threads_via_email: Démarrer les discussions par e-mail
+    your_address_for_this_group: Votre adresse e-mail pour ce groupe
+    send_email_to_start_thread: Envoyez un e-mail à cette adresse pour démarrer un fil de discussion dans votre groupe.
+    subject_body_attachments: Le fil de discussion utilisera l’objet de l’e-mail, le corps et les fichiers joints.
+    address_starts_threads_as_you: "Ne partagez pas cette adresse - toute personne qui l’a peut démarrer des discussions pendant que vous."
+    generate_new_address: Générer une nouvelle adresse
+    copy_address: Copier l’adresse
+    email_me_this_address: Envoyez-moi cette adresse par e-mail
+    email_address_sent_to_you: Adresse e-mail qui vous a été envoyée
+    email_address_copied_to_clipboard: Adresse e-mail copiée dans le presse-papiers
+    new_address_generated: Nouvelle adresse e-mail à groupe générée
+    generate_new_address_question: Générer une nouvelle adresse e-mail à groupe ?
+    generate_new_address_warning: Toutes vos adresses e-mail à loomio existantes cesseront de fonctionner. Il n’y a pas d’annulation. Allez-y?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: Votre adresse e-mail pour démarrer les threads dans %{group}
   volume_levels:
     loud: 'Élevé'
     normal: 'Normal'
@@ -2159,6 +2177,7 @@ fr:
     continue_with_email: Connectez-vous avec votre adresse mail
     or_enter_your_email: Ou saisir votre adresse e-mail
     enter_your_name: Entrez votre nom
+    invitation_required: Vous avez besoin d’une invitation pour créer un compte.  Suivez le lien de votre e-mail d’invitation pour continuer.
     more_providers: Plus
     email_not_present: Une adresse e-mail est nécessaire
     invalid_email: "Désolé, ça ne semble pas être une adresse e-mail valide."

@@ -347,6 +347,24 @@ es:
     heading: Actividades en {{name}}
     polls_count: Mostrando {{loaded}} de {{total}} decisiones
     search_activities: 'Buscar decisiones '
+  email_to_group:
+    email_to_group_settings: Configuración de correo electrónico a grupo
+    email_to_group_address: Dirección de correo electrónico a grupo
+    start_threads_via_email: Iniciar hilos por correo electrónico
+    your_address_for_this_group: Su dirección de correo electrónico para este grupo
+    send_email_to_start_thread: Envía un correo electrónico a esta dirección para iniciar un hilo en tu grupo.
+    subject_body_attachments: El hilo utilizará el asunto del correo electrónico, el cuerpo y los archivos adjuntos.
+    address_starts_threads_as_you: "No comparta esta dirección, cualquiera que la tenga puede iniciar hilos como usted."
+    generate_new_address: Generar nueva dirección
+    copy_address: Copiar dirección
+    email_me_this_address: Enviarme esta dirección por correo electrónico
+    email_address_sent_to_you: Dirección de correo electrónico que se le ha enviado
+    email_address_copied_to_clipboard: Dirección de correo electrónico copiada en el portapapeles
+    new_address_generated: Nueva dirección de correo electrónico a grupo generada
+    generate_new_address_question: ¿Generar una nueva dirección de correo electrónico a grupo?
+    generate_new_address_warning: Todas sus direcciones de correo electrónico existentes a loomio dejarán de funcionar. No hay deshacer. ¿Adelante?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: Tu dirección de correo electrónico para iniciar hilos en %{group}
   volume_levels:
     loud: 'Alto'
     normal: 'Normal'
@@ -2158,6 +2176,7 @@ es:
     continue_with_email: Continuar con email
     or_enter_your_email: O, introduzca su dirección de correo electrónico
     enter_your_name: Ingresa tu nombre
+    invitation_required: Necesitas una invitación para crear una cuenta. Siga el enlace de su correo electrónico de invitación para continuar.
     more_providers: Más
     email_not_present: Se necesita una dirección de correo
     invalid_email: "Lo lamentamos, eso no parece una dirección de correo electrónico válida"

@@ -163,8 +163,6 @@ es:
       resend: 'Este enlace perderá validez en 24 horas y solo puede ser usado una vez. '
     login:
       subject: Ingresa a %{site_name}
-      intro: Hola %{name},aquí está tu enlace para registrarte en %{site_name}.
-      intro_code: Hola %{name}, aquí está tu enlace para registrarte en %{site_name}.
       login: Ingresa como %{name}
     reactivate:
       subject: 'Reactiva tu %{site_name} cuenta '

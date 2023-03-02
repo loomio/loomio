@@ -164,8 +164,6 @@ pt_BR:
       resend: Isso expira em 24 horas e só pode ser usado uma vez
     login:
       subject: Fazer login em %{site_name}
-      intro: Oi %{name}, aqui está o seu link para entrar %{site_name}
-      intro_code: Oi %{name},  aqui está o seu código para fazer login %{site_name}
       login: Efetuar login como %{name}
     reactivate:
       subject: Reativar a sua conta %{site_name}

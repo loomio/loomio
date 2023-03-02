@@ -163,8 +163,6 @@ fr:
       resend: Ce lien expirera dans 24 heures et ne peut être utilisé qu'une seule fois.
     login:
       subject: Identifiez-vous sur %{site_name}
-      intro: Salut %{name}, ici ton lien pour s'enregistrer dans %{site_name}
-      intro_code: Salut %{name}, ici ton code pour s'enregistrer dans %{site_name}
       login: Se connecter comme %{name}
     reactivate:
       subject: Réactiver votre compte sur %{site_name}
