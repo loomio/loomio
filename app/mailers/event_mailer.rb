@@ -16,6 +16,11 @@ class EventMailer < BaseMailer
       @discussion = @event.eventable.discussion
     end
 
+    if @event.kind == "membership_created"
+      # if the membership has been deleted, let it go
+      return unless Membership.find_by(user_id: recipient_id, group_id: e.eventable_id)
+    end
+
     @utm_hash = { utm_medium: 'email', utm_campaign: @event.kind }
 
     thread_kinds = %w[

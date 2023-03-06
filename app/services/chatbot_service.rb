@@ -22,6 +22,8 @@ class ChatbotService
   def self.publish_event!(event_id)
     event = Event.find(event_id)
     event.reload
+    return if event.eventable.nil?
+    
     chatbots = event.eventable.group.chatbots
 
     CACHE_REDIS_POOL.with do |client|
