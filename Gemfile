@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
 ruby '2.7.6'
-gem 'rack', '2.2.6.2'
+gem 'rack', '2.2.6.3'
 gem 'rails', '6.1.7.2'
 gem 'rake'
 gem 'pg'
 gem 'active_record_extended'
 gem 'haml-rails', '~> 2.1.0'
-gem 'devise', '~> 4.8.1'
+gem 'devise', '~> 4.9.0'
 gem 'devise-i18n'
 gem 'active_model_serializers', '~> 0.8.1'
 gem 'actionpack-action_caching'
@@ -26,6 +26,7 @@ gem 'friendly_id', '~> 5.5.0'
 gem 'httparty', '~> 0.21.0'
 gem 'browser', '~> 5.3.1'
 gem "aws-sdk-s3", require: false
+gem "google-cloud-storage", "~> 1.11", require: false
 gem 'image_processing', '~> 1.12'
 gem "ruby-vips"
 gem "sentry-ruby"
