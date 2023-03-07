@@ -173,7 +173,7 @@ export default
       v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" append-icon="mdi-magnify")
       v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
       shareable-link-modal(v-if='canAddMembers' :group="group")
-      v-btn.group-page__requests-tab(:to="urlFor(group, 'members/requests')" color="primary" outlined v-t="'members_panel.requests'")
+      v-btn.group-page__requests-tab(v-if='canAddMembers' :to="urlFor(group, 'members/requests')" color="primary" outlined v-t="'members_panel.requests'")
 
     v-card(outlined)
       div(v-if="loader.status == 403")
