@@ -107,6 +107,9 @@ class Comment < ApplicationRecord
   end
 
   def parent_comment_belongs_to_same_discussion
+    # if someone replies to a deleted comment (in practice, by email), reparent to the discussion
+    self.parent = self.discussion if parent.nil? && discussion.present?
+
     unless discussion_id == parent.discussion_id
       errors.add(:parent, "Needs to have same discussion id")
     end
