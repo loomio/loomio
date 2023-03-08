@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe "Splitting replies from the original message on incoming emails" do
+  it "splits joshuas reply" do
+    input_body = "Yep, I’m happy for folks to jump in this week\nJ\n\nOn Tue, 7 Mar 2023 at 3:51 PM, john gieryn (via Loomio) <notifications@loomio.com> wrote:\n\n﻿﻿﻿﻿﻿﻿﻿﻿\n\nJG\n\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\njohn gieryn replied to you in: Are you in for season 1? ( https://www.loomio.com/d/1MX4Oajq/comment/2861088?discussion_reader_token=SmWcbUJah4UGfRbTxq3Dsweb&utm_campaign=user_mentioned&utm_medium=email )\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n\n@Joshua Vial it sounds like I could get back to you (on \"are you in…\") in a day or two per your post in the other thread? 🙏\n\n—\n\nReply to this email directly or view it on Loomio ( https://www.loomio.com/d/1MX4Oajq/comment/2861088?discussion_reader_token=SmWcbUJah4UGfRbTxq3Dsweb&utm_campaign=user_mentioned&utm_medium=email ).\n\nLogo"
+    output_body = ReceivedEmailService.extract_reply_body(input_body)
+    expect(output_body).to eq "Yep, I’m happy for folks to jump in this week\nJ"
+  end
+
   it "splits the email on 'in reply to (Loomio) address colon'" do
     input_body = "Hi I'm the bit you want
     On someday (Loomio) #{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS} said:

@@ -71,8 +71,7 @@ namespace :loomio do
       CleanupService.delay.delete_orphan_records
       OutcomeService.delay.publish_review_due
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
-      ReceivedEmailService.delay.delete_released_emails
-      ReceivedEmailService.delay.delete_unreleased_emails
+      ReceivedEmailService.delay.delete_old_emails
     end
 
     DemoService.delay.ensure_queue
