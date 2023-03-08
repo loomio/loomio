@@ -35,12 +35,8 @@ class ReceivedEmailService
     end
   end
 
-  def self.delete_released_emails
-    ReceivedEmail.where("created_at < ?", 3.days.ago).where(released: true).destroy_all
-  end
-
-  def self.delete_unreleased_emails
-    ReceivedEmail.where("created_at < ?", 9.days.ago).where(released: false).destroy_all
+  def self.delete_old_emails
+    ReceivedEmail.where("created_at < ?", 14.days.ago).destroy_all
   end
 
   private
@@ -54,13 +50,13 @@ class ReceivedEmailService
       /^[[:space:]]*\>?[[:space:]]*On.*\n?.*said:\n?$/,
       /^On.*<\r?\n?.*>.*\r?\n?wrote:\r?\n?$/,
       /On.*wrote:/,
+      (author_name ? /^[[:space:]]*#{author_name}[[:space:]]*$/ : nil), # signature that starts with author name
+      /#{EventMailer::REPLY_DELIMITER}/,
       /\*?From:.*$/i,
       /^[[:space:]]*\d{4}[-\/]\d{1,2}[-\/]\d{1,2}[[:space:]].*[[:space:]]<.*>?$/i,
       /(_)*\n[[:space:]]*De :.*\n[[:space:]]*Envoyé :.*\n[[:space:]]*À :.*\n[[:space:]]*Objet :.*\n$/i, # French Outlook
       /^[[:space:]]*\>?[[:space:]]*Le.*<\n?.*>.*\n?a[[:space:]]?\n?écrit :$/, # French
-      /^[[:space:]]*\>?[[:space:]]*El.*<\n?.*>.*\n?escribió:$/, # Spanish
-      (author_name ? /^[[:space:]]*#{author_name}[[:space:]]*$/ : nil), # signature that starts with author name
-      /#{EventMailer::REPLY_DELIMITER}/
+      /^[[:space:]]*\>?[[:space:]]*El.*<\n?.*>.*\n?escribió:$/
     ].compact
   end
 
