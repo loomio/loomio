@@ -247,7 +247,7 @@ class DiscussionService
     
     DiscussionReader.
       where(discussion_id: discussion.id, user_id: users.map(&:id)).
-      where("revoked_at is not null").update_all(revoked_at: nil)
+      where("revoked_at is not null").update_all(revoked_at: nil, revoker_id: nil)
 
     new_discussion_readers = users.map do |user|
       DiscussionReader.new(user: user,

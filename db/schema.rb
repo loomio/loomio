@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_17_001422) do
+ActiveRecord::Schema.define(version: 2023_03_09_024515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -232,6 +232,7 @@ ActiveRecord::Schema.define(version: 2023_02_17_001422) do
     t.datetime "revoked_at"
     t.boolean "admin", default: false, null: false
     t.datetime "accepted_at"
+    t.integer "revoker_id"
     t.index ["discussion_id"], name: "index_discussion_readers_discussion_id"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
@@ -754,6 +755,7 @@ ActiveRecord::Schema.define(version: 2023_02_17_001422) do
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.jsonb "link_previews", default: [], null: false
     t.jsonb "option_scores", default: {}, null: false
+    t.integer "revoker_id"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
     t.index ["poll_id", "participant_id", "latest"], name: "index_stances_on_poll_id_and_participant_id_and_latest", unique: true, where: "(latest = true)"

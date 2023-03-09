@@ -23,7 +23,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :option_scores, :revoked_at, :inviter_id]
+  has_paper_trail only: [:reason, :option_scores, :revoked_at, :revoker_id, :inviter_id]
 
   accepts_nested_attributes_for :stance_choices
 

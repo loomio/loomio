@@ -37,7 +37,7 @@ class API::V1::DiscussionReadersController < API::V1::RestfulController
 
   def revoke
     current_user.ability.authorize! :remove, discussion_reader
-    discussion_reader.update(revoked_at: Time.zone.now)
+    discussion_reader.update(revoked_at: Time.zone.now, revoker_id: current_user.id)
     respond_with_resource
   end
 

@@ -5,6 +5,7 @@ class StanceService
     stance.participant = actor
     stance.cast_at ||= Time.zone.now
     stance.revoked_at = nil
+    stance.revoker_id = nil
     stance.save!
     stance.poll.update_counts!
 
