@@ -49,13 +49,13 @@ class EventMailer < BaseMailer
     template_name = 'group' if @event.eventable_type == 'Membership'
 
     # this should be notification.i18n_key
-    @event_key = if @event.kind == 'user_mentioned' &&
-       @event.eventable.respond_to?(:parent)
+    @event_key = if (@event.kind == 'user_mentioned' &&
+       @event.eventable.respond_to?(:parent) &&
        @event.eventable.parent.present? &&
-       @event.eventable.parent.author == @recipient
-      subject_key = "comment_replied_to" 
+       @event.eventable.parent.author == @recipient)
+      "comment_replied_to"
     else
-      subject_key = @event.kind
+      @event.kind
     end
 
     subject_params = {
