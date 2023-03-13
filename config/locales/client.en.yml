@@ -45,6 +45,7 @@ en:
     start_a_demo: Start a demo
     demo_group: Demo group
     look_and_feel: See what Loomio looks like for a small organization. Learn the app by trying it out.
+    watch_then_start: Please watch the video, then click "Start Demo" to try Loomio
     generating_demo: 'Ok, wait right there! Generating a demo takes around 20 seconds.'
     start_a_x_day_free_trial: Start a {{day}} day free trial
     ready_to_trial: Ready to try Loomio with your organization?

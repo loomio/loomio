@@ -74,31 +74,31 @@ export default
 v-main
   v-container.templates-page.max-width-1024.px-0.px-sm-3
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
-    h2.text-title.my-4(v-t="'templates.start_a_demo'")
-    p(v-t="'templates.look_and_feel'")
-    v-card.mb-3(v-if='!loaded' aria-hidden='true')
-      v-list(two-line)
-        loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]', :key='index' )
+    //- p(v-t="'templates.look_and_feel'")
+    .d-flex.justify-center
+      <iframe class="mx-auto" width="560" height="315" src="https://www.youtube.com/embed/oIEKA9WTIDc?autoplay=1" title="Loomio demo group introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
+    //- h2.text-title.my-4(v-t="'templates.start_a_demo'")
+    //- v-card.mb-3(v-if='!loaded' aria-hidden='true')
+    //-   v-list(two-line)
+    //-     loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]', :key='index' )
 
     v-overlay(:value="processing")
-    div(v-if="loaded")
-      v-card.my-4(v-for="demo in demos", :key="demo.id")
-        v-img(:src="demo.group().coverUrl" max-height="120")
-        v-card-title {{ demo.name }}
-        v-card-text {{ demo.description }}
-        v-card-actions
-          v-spacer
+
+    div.d-flex.justify-center.mt-8(v-if="loaded")
+      div
+        p(v-t="'templates.watch_then_start'")
+        p.text-center(v-for="demo in demos", :key="demo.id")
           v-btn(@click="startDemo(demo.id)" v-t="'templates.start_demo'" color="primary")
 
-    template(v-if="trials")
-      h2.mt-8.text-title(v-t="'templates.ready_to_trial'")
-      v-card.my-4
-        v-card-title(v-t="{path:'templates.start_a_x_day_free_trial', args: {day: 7}}")
-        v-card-text
-          span(v-t="{path: 'templates.start_a_no_obligation_x_day_trial', args: {day: 7}}")
-          space
-          span(v-t="'templates.you_can_test_it_out'")
-        v-card-actions
-          v-spacer
-          v-btn(to="/g/new" color="primary" v-t="'templates.start_trial'")
+    //- template(v-if="trials")
+    //-   h2.mt-8.text-title(v-t="'templates.ready_to_trial'")
+    //-   v-card.my-4
+    //-     v-card-title(v-t="{path:'templates.start_a_x_day_free_trial', args: {day: 7}}")
+    //-     v-card-text
+    //-       span(v-t="{path: 'templates.start_a_no_obligation_x_day_trial', args: {day: 7}}")
+    //-       space
+    //-       span(v-t="'templates.you_can_test_it_out'")
+    //-     v-card-actions
+    //-       v-spacer
+    //-       v-btn(to="/g/new" color="primary" v-t="'templates.start_trial'")
 </template>
