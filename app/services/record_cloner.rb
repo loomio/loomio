@@ -45,6 +45,52 @@ class RecordCloner
     clone_group.reload
   end
 
+  def clone_trial_content_into_group(group, actor)
+    source_group = Group.find_by(handle: 'trial-group-template')
+
+    group.discussions = source_group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
+    group.polls = source_group.polls.kept.map {|p| new_clone_poll(p) }
+    group.tags = source_group.tags.map { |t| new_clone_tag(t) }
+    group.save!
+    copy_tags_over(group)
+
+    group.polls.each do |poll|
+      poll.update_counts!
+      poll.stances.each {|s| s.update_option_scores!}
+    end
+
+    group.discussions.each {|d| EventService.repair_thread(d.id) }
+    group.reload
+
+    translate_content(group, actor.locale)
+    group.save!
+
+    group
+  end
+
+  def translate_content(group, locale)
+    group.discussions.each do |model|
+      translation = TranslationService.create(model: model, to: locale)
+      translation.fields.each do |pair|
+        model.update_attribute(pair[0], pair[1])
+      end
+    end
+
+    group.polls.each do |model|
+      translation = TranslationService.create(model: model, to: locale)
+      translation.fields.each do |pair|
+        model.update_attribute(pair[0], pair[1])
+      end
+    end
+
+    group.comments.each do |model|
+      translation = TranslationService.create(model: model, to: locale)
+      translation.fields.each do |pair|
+        model.update_attribute(pair[0], pair[1])
+      end
+    end
+  end
+
   def create_clone_group(group)
     clone_group = new_clone_group(group)
     clone_group.save!
