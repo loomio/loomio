@@ -62,31 +62,51 @@ class RecordCloner
     group.discussions.each {|d| EventService.repair_thread(d.id) }
     group.reload
 
-    translate_content(group, actor.locale)
+    translate_content(source_group, actor.locale)
     group.save!
 
     group
   end
 
-  def translate_content(group, locale)
-    group.discussions.each do |model|
+  def translate_content(source_group, locale)
+    source_group.discussions.each do |model|
       translation = TranslationService.create(model: model, to: locale)
       translation.fields.each do |pair|
-        model.update_attribute(pair[0], pair[1])
+        existing_clone(model).update_attribute(pair[0], pair[1])
       end
     end
 
-    group.polls.each do |model|
-      translation = TranslationService.create(model: model, to: locale)
+    source_group.polls.each do |poll|
+      translation = TranslationService.create(model: poll, to: locale)
       translation.fields.each do |pair|
-        model.update_attribute(pair[0], pair[1])
+        existing_clone(poll).update_attribute(pair[0], pair[1])
+      end
+
+      poll.poll_options.each do |poll_option|
+        translation = TranslationService.create(model: poll_option, to: locale)
+        translation.fields.each do |pair|
+          if pair[0] == 'name'
+            if poll.poll_option_name_format == 'plain'
+              existing_clone(poll_option).update_attribute(pair[0], pair[1])
+            end
+          else
+            existing_clone(poll_option).update_attribute(pair[0], pair[1])
+          end
+        end
+      end
+
+      poll.stances.each do |stance|
+        translation = TranslationService.create(model: stance, to: locale)
+        translation.fields.each do |pair|
+          existing_clone(stance).update_attribute(pair[0], pair[1])
+        end
       end
     end
 
-    group.comments.each do |model|
+    source_group.comments.each do |model|
       translation = TranslationService.create(model: model, to: locale)
       translation.fields.each do |pair|
-        model.update_attribute(pair[0], pair[1])
+        existing_clone(model).update_attribute(pair[0], pair[1])
       end
     end
   end
