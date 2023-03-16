@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_09_024515) do
+ActiveRecord::Schema.define(version: 2023_03_16_104656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -623,6 +623,8 @@ ActiveRecord::Schema.define(version: 2023_03_09_024515) do
     t.string "icon"
     t.string "meaning"
     t.string "prompt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
