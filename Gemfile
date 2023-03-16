@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 ruby '2.7.6'
-gem 'rack', '2.2.6.3'
+gem 'rack', '2.2.6.4'
 gem 'rails', '6.1.7.3'
 gem 'rake'
 gem 'pg'
