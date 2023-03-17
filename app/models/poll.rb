@@ -347,6 +347,7 @@ class Poll < ApplicationRecord
 
   # people who administer the poll (not necessarily vote)
   def admins
+    raise "poll.admins only makes sense for persisted polls" if self.new_record?
     User.active.
       joins("LEFT OUTER JOIN webhooks wh ON wh.group_id = #{self.group_id || 0} AND wh.actor_id = users.id").
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
