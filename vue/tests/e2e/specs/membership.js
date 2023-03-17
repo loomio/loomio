@@ -25,12 +25,12 @@ module.exports = {
   //   page.expectFlash('Emilio Estevez is now an admin')
   // },
 
-  'allows_non-coordinators_to_add_members_if_the_group_settings_allow': (test) => {
+  'members_cannot_invite_members_by_default': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_as_member')
     page.click('.group-page-members-tab')
-    page.expectElement('.membership-card__invite')
+    page.expectNoElement('.membership-card__invite')
   },
 
   'successfully_removes_a_member': (test) => {
