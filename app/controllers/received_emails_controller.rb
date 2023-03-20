@@ -1,4 +1,4 @@
-class ReceivedEmailsController < Griddler::EmailsController
+class ReceivedEmailsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
