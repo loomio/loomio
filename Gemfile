@@ -43,8 +43,6 @@ gem 'oj'
 gem "cld"
 gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
 gem 'premailer-rails'
-gem 'griddler', github: 'loomio/griddler'
-gem "griddler-mailin", github: 'loomio/griddler-mailin'
 gem 'activerecord-import', '1.4.1'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
