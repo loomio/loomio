@@ -4,6 +4,11 @@ class DemoService
 		demo = Demo.where('demo_handle is not null').last
 		return unless demo
 
+		# precache translations
+		%w[fr de es pt it uk].each do |locale|
+			TranslationService.translate_group_content!(demo.group, locale, true)
+		end
+
 		expected = 2
 		remaining = Redis::List.new('demo_group_ids').value.size
 
