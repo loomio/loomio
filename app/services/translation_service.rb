@@ -26,6 +26,8 @@ class TranslationService
   end
 
   def self.translate_group_content!(group, locale, cache_only = false)
+    return if locale == 'en'
+
     group.discussions.each do |discussion|
       translate_group_record(group, discussion, locale, cache_only)
     end
@@ -66,5 +68,7 @@ class TranslationService
       next if ignore.include?(pair[0])
       record.update_attribute(pair[0], pair[1])
     end
+
+    update_content_locale if record.has_attribute?(:content_locale)
   end
 end
