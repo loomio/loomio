@@ -19,6 +19,7 @@ class RecordCloner
     clone_group.polls.each {|p| p.specified_voters_only = false }
 
     clone_group.save!
+
     copy_tags_over(group)
     clone_group.polls.each do |poll|
       poll.update_counts!
@@ -29,10 +30,14 @@ class RecordCloner
   end
 
   def create_clone_group_for_actor(group, actor)
+    # we don't really use this one except for testing
+
     clone_group = new_clone_group(group)
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
+
+    store_source_record_ids(clone_group)
 
     copy_tags_over(group)
 
@@ -52,6 +57,8 @@ class RecordCloner
     group.polls = source_group.polls.kept.map {|p| new_clone_poll(p) }
     group.tags = source_group.tags.map { |t| new_clone_tag(t) }
     group.save!
+
+    store_source_record_ids(clone_group)
     copy_tags_over(group)
 
     group.polls.each do |poll|
@@ -68,52 +75,22 @@ class RecordCloner
     group
   end
 
-  def translate_content(source_group, locale)
-    source_group.discussions.each do |model|
-      translation = TranslationService.create(model: model, to: locale)
-      translation.fields.each do |pair|
-        existing_clone(model).update_attribute(pair[0], pair[1])
-      end
+  def store_source_record_ids(clone_group)
+    source_ids = {}
+    @cache.each_pair do |key, value|
+      class_name, id = key.split('-')
+      source_ids["#{class_name}-#{value.id}"] = id.to_i
     end
-
-    source_group.polls.each do |poll|
-      translation = TranslationService.create(model: poll, to: locale)
-      translation.fields.each do |pair|
-        existing_clone(poll).update_attribute(pair[0], pair[1])
-      end
-
-      poll.poll_options.each do |poll_option|
-        translation = TranslationService.create(model: poll_option, to: locale)
-        translation.fields.each do |pair|
-          if pair[0] == 'name'
-            if poll.poll_option_name_format == 'plain'
-              existing_clone(poll_option).update_attribute(pair[0], pair[1])
-            end
-          else
-            existing_clone(poll_option).update_attribute(pair[0], pair[1])
-          end
-        end
-      end
-
-      poll.stances.each do |stance|
-        translation = TranslationService.create(model: stance, to: locale)
-        translation.fields.each do |pair|
-          existing_clone(stance).update_attribute(pair[0], pair[1])
-        end
-      end
-    end
-
-    source_group.comments.each do |model|
-      translation = TranslationService.create(model: model, to: locale)
-      translation.fields.each do |pair|
-        existing_clone(model).update_attribute(pair[0], pair[1])
-      end
-    end
+    clone_group.info['source_record_ids'] = source_ids
+    clone_group.save!
   end
+
 
   def create_clone_group(group)
     clone_group = new_clone_group(group)
     clone_group.save!
+
+    store_source_record_ids(clone_group)
 
     copy_tags_over(group)
 
@@ -431,7 +408,7 @@ class RecordCloner
   end
 
   def new_clone(record, copy_fields = [], required_values = {}, attachments = [])
-    @cache["#{record.class}#{record.id}"] ||= begin
+    @cache["#{record.class}-#{record.id}"] ||= begin
       clone = record.class.new
       record_type = record.class.to_s.underscore.to_sym
 
@@ -472,6 +449,6 @@ class RecordCloner
   end
 
   def existing_clone(record)
-    @cache["#{record.class}#{record.id}"]
+    @cache["#{record.class}-#{record.id}"]
   end
 end

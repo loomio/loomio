@@ -24,4 +24,44 @@ class TranslationService
   def self.available?
     ENV['TRANSLATE_CREDENTIALS'].present?
   end
+
+  def self.translate_group_content!(group, locale)
+    group.discussions.each do |discussion|
+      translate_group_record(group, discussion, locale)
+    end
+
+    group.polls.each do |poll|
+      translate_group_record(group, poll, locale)
+
+      poll.poll_options.each do |poll_option|
+        if poll.poll_option_name_format != 'plain'
+          translate_group_record(group, poll_option, locale, ignore: 'name')
+        else
+          translate_group_record(group, poll_option, locale)
+        end
+      end
+
+      poll.stances.each do |stance|
+        translate_group_record(group, stance, locale)
+      end
+    end
+
+    group.comments.each do |comment|
+      translate_group_record(group, comment, locale)
+    end
+  end
+
+  def self.translate_group_record(group, record, locale, ignore: [])
+    translate_record = if source_record_id = group.info.dig('source_record_ids', "#{record.class.to_s}-#{record.id}")
+      record.class.find(source_record_id)
+    else
+      record
+    end
+
+    translation = TranslationService.create(model: translate_record, to: locale)
+    translation.fields.each do |pair|
+      next if ignore.include?(pair[0])
+      record.update_attribute(pair[0], pair[1])
+    end
+  end
 end

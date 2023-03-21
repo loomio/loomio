@@ -19,6 +19,11 @@ class DemoService
     group.subscription = Subscription.new(plan: 'demo', owner: actor)
     group.add_member! actor
     group.save!
+
+    if actor.locale != "en"
+	    TranslationService.translate_group_content!(group, actor.locale)
+	  end
+
     EventBus.broadcast('demo_started', actor)
    	group
 	end
