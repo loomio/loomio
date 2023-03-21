@@ -58,7 +58,9 @@ class RecordCloner
     group.tags = source_group.tags.map { |t| new_clone_tag(t) }
     group.save!
 
-    store_source_record_ids(clone_group)
+    store_source_record_ids(group)
+    TranslationService.translate_group_content!(group, actor.locale)
+
     copy_tags_over(group)
 
     group.polls.each do |poll|
@@ -69,7 +71,6 @@ class RecordCloner
     group.discussions.each {|d| EventService.repair_thread(d.id) }
     group.reload
 
-    translate_content(source_group, actor.locale)
     group.save!
 
     group
