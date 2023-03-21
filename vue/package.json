@@ -60,7 +60,7 @@
     "array-flat-polyfill": "^1.0.1",
     "date-fns": "2.29.3",
     "date-fns-tz": "2.0.0",
-    "deepmerge": "^4.3.0",
+    "deepmerge": "^4.3.1",
     "emoji-unicode": "^2.0.1",
     "es6-shim": "^0.35.7",
     "intersection-observer": "^0.12.2",
@@ -95,7 +95,7 @@
     "vuetify": "2.6.14"
   },
   "devDependencies": {
-    "@mdi/font": "^7.1.96",
+    "@mdi/font": "^7.2.96",
     "@vue/cli-plugin-pwa": "^4.5.15",
     "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-e2e-nightwatch": "^5.0.8",

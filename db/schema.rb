@@ -393,7 +393,7 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.boolean "is_visible_to_public", default: true, null: false
     t.boolean "is_visible_to_parent_members", default: false, null: false
     t.string "discussion_privacy_options", default: "private_only", null: false
-    t.boolean "members_can_add_members", default: true, null: false
+    t.boolean "members_can_add_members", default: false, null: false
     t.string "membership_granted_upon", default: "approval", null: false
     t.boolean "members_can_edit_discussions", default: true, null: false
     t.string "cover_photo_file_name", limit: 255
