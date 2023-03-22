@@ -57,6 +57,10 @@ class TranslationService
     group.comments.each do |comment|
       translate_group_record(group, comment, locale, cache_only)
     end
+
+    group.tags.each do |tag|
+      translate_group_record(group, tag, locale, cache_only)
+    end
   end
 
   def self.translate_group_record(group, record, locale, cache_only = false, ignore: [])

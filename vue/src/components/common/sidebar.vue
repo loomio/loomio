@@ -102,6 +102,9 @@ export default
     setProfilePicture: -> EventBus.$emit 'openModal', {component: 'ChangePictureForm'}
 
   computed:
+    helpURL: -> 
+      siteUrl = new URL(AppConfig.baseUrl)
+      "https://help.loomio.com/?utm_source=#{siteUrl.host}"
     isSignedIn: -> Session.isSignedIn()
     showHelp: -> AppConfig.features.app.help_link
     user: -> Session.user()
@@ -204,11 +207,11 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         v-icon(tile) mdi-plus
       v-list-item-title(v-t="'group_form.new_group'")
   v-divider
-  v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" to="/demo" dense)
+  v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" to="/try" dense)
     v-list-item-title(v-t="'templates.demo_group'")
     v-list-item-icon
       v-icon mdi-car-convertible
-  v-list-item(v-if="showHelp", href="https://help.loomio.com" target="_blank" dense)
+  v-list-item(v-if="showHelp", :href="helpURL" target="_blank" dense)
     v-list-item-title(v-t="'common.help_and_guides'")
     v-list-item-icon
       v-icon mdi-book-open-page-variant
