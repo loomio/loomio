@@ -33,7 +33,7 @@ class MembershipService
       where(user_id: actor.id).
       where('discussions.group_id': member_group_ids).
       where('revoked_at is not null').
-      update_all(revoked_at: nil)
+      update_all(revoked_at: nil, revoker_id: nil)
 
     # give them any votes they were previously granted (if they're still useful)
     Stance.joins(:poll).
@@ -41,7 +41,7 @@ class MembershipService
       where('polls.group_id': member_group_ids).
       where('revoked_at is not null').
       where('polls.closed_at is null').
-      update_all(revoked_at: nil)
+      update_all(revoked_at: nil, revoker_id: nil)
 
     membership.reload
     Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
@@ -133,13 +133,13 @@ class MembershipService
       'discussions.group_id': membership.group.id_and_subgroup_ids,
                      user_id: membership.user_id).
       where("inviter_id IS NOT NULL").
-      update_all(revoked_at: now)
+      update_all(revoked_at: now, revoker_id: actor.id)
 
     Stance.joins(:poll).where(
       'polls.group_id': membership.group.id_and_subgroup_ids,
       participant_id: membership.user_id,
       cast_at: nil
-    ).update_all(revoked_at: now)
+    ).update_all(revoked_at: now, revoker_id: actor.id)
 
     Membership.where(user_id: membership.user_id, group_id: membership.group.id_and_subgroup_ids).destroy_all
 

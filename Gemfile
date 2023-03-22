@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
 ruby '2.7.6'
-gem 'rack', '2.2.6.3'
 gem 'rails', '7.0.4.2'
+gem 'rack', '2.2.6.4'
 gem 'rake'
 gem 'pg'
 gem 'active_record_extended'
@@ -43,8 +43,6 @@ gem 'oj'
 gem "cld"
 gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
 gem 'premailer-rails'
-gem 'griddler', github: 'loomio/griddler'
-gem "griddler-mailin", github: 'loomio/griddler-mailin'
 gem 'activerecord-import', '1.4.1'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'

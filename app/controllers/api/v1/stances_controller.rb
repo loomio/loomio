@@ -78,7 +78,7 @@ class API::V1::StancesController < API::V1::RestfulController
   def revoke
     @stance = Stance.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
     current_user.ability.authorize! :remove, @stance
-    @stance.update(revoked_at: Time.zone.now)
+    @stance.update(revoked_at: Time.zone.now, revoker_id: current_user.id)
     @stance.poll.update_counts!
     respond_with_resource
   end

@@ -1,5 +1,8 @@
 class Tag < ApplicationRecord
   include CustomCounterCache::Model
+  include Translatable
+  is_translatable on: :name
+  
   belongs_to :group
   has_many :taggings, dependent: :destroy
   has_many :taggables, through: :taggings

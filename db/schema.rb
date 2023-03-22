@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_07_101732) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -231,6 +231,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_101732) do
     t.datetime "revoked_at", precision: nil
     t.boolean "admin", default: false, null: false
     t.datetime "accepted_at", precision: nil
+    t.integer "revoker_id"
     t.index ["discussion_id"], name: "index_discussion_readers_discussion_id"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
@@ -391,7 +392,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_101732) do
     t.boolean "is_visible_to_public", default: true, null: false
     t.boolean "is_visible_to_parent_members", default: false, null: false
     t.string "discussion_privacy_options", default: "private_only", null: false
-    t.boolean "members_can_add_members", default: true, null: false
+    t.boolean "members_can_add_members", default: false, null: false
     t.string "membership_granted_upon", default: "approval", null: false
     t.boolean "members_can_edit_discussions", default: true, null: false
     t.string "cover_photo_file_name", limit: 255
@@ -621,6 +622,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_101732) do
     t.string "icon"
     t.string "meaning"
     t.string "prompt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
@@ -753,6 +756,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_101732) do
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.jsonb "link_previews", default: [], null: false
     t.jsonb "option_scores", default: {}, null: false
+    t.integer "revoker_id"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
     t.index ["poll_id", "participant_id", "latest"], name: "index_stances_on_poll_id_and_participant_id_and_latest", unique: true, where: "(latest = true)"

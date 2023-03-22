@@ -27,12 +27,13 @@ module Ability::Poll
     end
 
     can [:create], ::Poll do |poll|
-      Webhook.where(group_id: poll.group_id, actor_id: user.id).where.any(permissions: 'create_poll').exists? ||
-      (
-        (poll.group_id.nil? && poll.discussion_id.nil?) ||
-        poll.admins.exists?(user.id) ||
-        (poll.group.members_can_raise_motions && poll.group.members.exists?(user.id))
-      )
+      # cannot use poll.admins for create, because it assumes poll exists in database
+      (poll.group_id &&
+        ((poll.group.admins.exists?(user.id) ||
+         (poll.group.members_can_raise_motions && poll.group.members.exists?(user.id)) ||
+          Webhook.where(group_id: poll.group_id, actor_id: user.id).where.any(permissions: 'create_poll').exists?))) ||
+      (poll.group_id.nil? && poll.discussion_id && poll.discussion.members.exists?(user.id)) ||
+      (poll.group_id.nil? && poll.discussion_id.nil? && user.is_logged_in? && user.email_verified?)
     end
 
     can [:announce, :remind], ::Poll do |poll|

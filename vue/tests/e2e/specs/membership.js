@@ -25,12 +25,12 @@ module.exports = {
   //   page.expectFlash('Emilio Estevez is now an admin')
   // },
 
-  'allows_non-coordinators_to_add_members_if_the_group_settings_allow': (test) => {
+  'members_cannot_invite_members_by_default': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group_as_member')
     page.click('.group-page-members-tab')
-    page.expectElement('.membership-card__invite')
+    page.expectNoElement('.membership-card__invite')
   },
 
   'successfully_removes_a_member': (test) => {
@@ -42,8 +42,6 @@ module.exports = {
     page.click('.membership-dropdown__remove')
     page.click('.confirm-modal__submit')
     page.expectFlash('Member removed')
-    page.click('.group-page-threads-tab')
-    page.expectText('.thread-preview-collection__container', 'How to use Loomio')
   },
 
   'can_remove_coordinator_privileges': (test) => {

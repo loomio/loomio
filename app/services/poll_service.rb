@@ -137,7 +137,7 @@ class PollService
     Stance.where(
       poll_id: poll.id,
       participant_id: reinvited_user_ids).each do |stance|
-      stance.update(revoked_at: nil, inviter_id: actor.id)
+      stance.update(revoked_at: nil, revoker_id: nil, inviter_id: actor.id)
     end
 
     new_stances = users.where.not(id: reinvited_user_ids).map do |user|

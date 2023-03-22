@@ -40,6 +40,7 @@ es:
     start_a_demo: Iniciar demo
     demo_group: Grupo de demostración
     look_and_feel: Vea cómo se ve Loomio para una organización pequeña. Aprende la aplicación probándola.
+    watch_then_start: Por favor, vea el video, luego haga clic en "Iniciar demostración" para probar Loomio
     generating_demo: 'Vale, ¡espera allí mismo! Generar una demostración toma alrededor de 20 segundos.'
     start_a_x_day_free_trial: Iniciar una prueba gratuita de {{day}} día
     ready_to_trial: ¿Listo para probar Loomio con su organización?

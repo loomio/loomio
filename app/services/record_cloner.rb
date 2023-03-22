@@ -19,6 +19,7 @@ class RecordCloner
     clone_group.polls.each {|p| p.specified_voters_only = false }
 
     clone_group.save!
+
     copy_tags_over(group)
     clone_group.polls.each do |poll|
       poll.update_counts!
@@ -29,10 +30,14 @@ class RecordCloner
   end
 
   def create_clone_group_for_actor(group, actor)
+    # we don't really use this one except for testing
+
     clone_group = new_clone_group(group)
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
+
+    store_source_record_ids(clone_group)
 
     copy_tags_over(group)
 
@@ -45,9 +50,48 @@ class RecordCloner
     clone_group.reload
   end
 
+  def clone_trial_content_into_group(group, actor)
+    source_group = Group.find_by(handle: 'trial-group-template')
+
+    group.discussions = source_group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
+    group.polls = source_group.polls.kept.map {|p| new_clone_poll(p) }
+    group.tags = source_group.tags.map { |t| new_clone_tag(t) }
+    group.save!
+
+    store_source_record_ids(group)
+    TranslationService.translate_group_content!(group, actor.locale)
+
+    copy_tags_over(group)
+
+    group.polls.each do |poll|
+      poll.update_counts!
+      poll.stances.each {|s| s.update_option_scores!}
+    end
+
+    group.discussions.each {|d| EventService.repair_thread(d.id) }
+    group.reload
+
+    group.save!
+
+    group
+  end
+
+  def store_source_record_ids(clone_group)
+    source_ids = {}
+    @cache.each_pair do |key, value|
+      class_name, id = key.split('-')
+      source_ids["#{class_name}-#{value.id}"] = id.to_i
+    end
+    clone_group.info['source_record_ids'] = source_ids
+    clone_group.save!
+  end
+
+
   def create_clone_group(group)
     clone_group = new_clone_group(group)
     clone_group.save!
+
+    store_source_record_ids(clone_group)
 
     copy_tags_over(group)
 
@@ -365,7 +409,7 @@ class RecordCloner
   end
 
   def new_clone(record, copy_fields = [], required_values = {}, attachments = [])
-    @cache["#{record.class}#{record.id}"] ||= begin
+    @cache["#{record.class}-#{record.id}"] ||= begin
       clone = record.class.new
       record_type = record.class.to_s.underscore.to_sym
 
@@ -406,6 +450,6 @@ class RecordCloner
   end
 
   def existing_clone(record)
-    @cache["#{record.class}#{record.id}"]
+    @cache["#{record.class}-#{record.id}"]
   end
 end

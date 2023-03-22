@@ -10,6 +10,11 @@ Rails.application.configure do
 
   # Default settings
   # Settings specified here will take precedence over those in config/application.rb.
+  config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info)
+  
+  logger           = ActiveSupport::Logger.new(STDOUT)
+  logger.formatter = config.log_formatter
+  config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
   # Code is not reloaded between requests.
   config.cache_classes = true

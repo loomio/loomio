@@ -146,8 +146,12 @@ class API::V1::DiscussionsController < API::V1::RestfulController
     case params[:subgroups]
     when 'all'
       Array(@group&.id_and_subgroup_ids)
-    when 'mine' && current_user.is_logged_in?
-      [@group&.id].concat(current_user.group_ids & @group&.id_and_subgroup_ids)
+    when 'mine'
+      if current_user.is_logged_in?
+        [@group&.id].concat(current_user.group_ids & @group&.id_and_subgroup_ids)
+      else
+        [@group&.id]
+      end
     else
       [@group&.id]
     end
