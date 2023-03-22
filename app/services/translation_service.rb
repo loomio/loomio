@@ -24,9 +24,11 @@ class TranslationService
   def self.available?
     ENV['TRANSLATE_CREDENTIALS'].present?
   end
-  
+
   def self.translate_group_content!(group, locale, cache_only = false)
     return if locale == 'en'
+
+    translate_group_record(group, group, locale, cache_only)
 
     group.discussions.each do |discussion|
       translate_group_record(group, discussion, locale, cache_only)
@@ -34,6 +36,10 @@ class TranslationService
 
     group.polls.each do |poll|
       translate_group_record(group, poll, locale, cache_only)
+
+      poll.outcomes.each do |outcome|
+        translate_group_record(group, outcome, locale, cache_only)
+      end
 
       poll.poll_options.each do |poll_option|
         if poll.poll_option_name_format != 'plain'
