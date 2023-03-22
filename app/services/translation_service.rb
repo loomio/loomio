@@ -24,7 +24,7 @@ class TranslationService
   def self.available?
     ENV['TRANSLATE_CREDENTIALS'].present?
   end
-
+  
   def self.translate_group_content!(group, locale, cache_only = false)
     return if locale == 'en'
 
