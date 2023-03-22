@@ -69,6 +69,6 @@ class TranslationService
       record.update_attribute(pair[0], pair[1])
     end
 
-    update_content_locale if record.has_attribute?(:content_locale)
+    record.update_content_locale if record.has_attribute?(:content_locale)
   end
 end
