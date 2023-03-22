@@ -104,7 +104,7 @@ export default
   computed:
     helpURL: -> 
       siteUrl = new URL(AppConfig.baseUrl)
-      "https://help.loomio.com/?utm_source=#{siteUrl.host}"
+      "https://help.loomio.com/en/?utm_source=#{siteUrl.host}"
     isSignedIn: -> Session.isSignedIn()
     showHelp: -> AppConfig.features.app.help_link
     user: -> Session.user()
