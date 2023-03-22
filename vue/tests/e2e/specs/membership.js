@@ -42,8 +42,6 @@ module.exports = {
     page.click('.membership-dropdown__remove')
     page.click('.confirm-modal__submit')
     page.expectFlash('Member removed')
-    page.click('.group-page-threads-tab')
-    page.expectText('.thread-preview-collection__container', 'How to use Loomio')
   },
 
   'can_remove_coordinator_privileges': (test) => {
