@@ -62,12 +62,14 @@ module HasRichText
     has_many_attached :files, dependent: :detach
     has_many_attached :image_files, dependent: :detach
     has_many :tasks, as: :record
-    before_save :caclulate_content_locale
+    before_save :update_content_locale
     before_save :build_attachments
     before_save :sanitize_link_previews
   end
 
-  def caclulate_content_locale
+  def update_content_locale
+    return unless self.changed.intersection(self.class.rich_text_fields.map(&:to_s)).any?
+    
     combined_text = self.class.rich_text_fields.map {|field| self[field] }.join(' ')
     stripped_text = Rails::Html::WhiteListSanitizer.new.sanitize(combined_text, tags: [])
     result = CLD.detect_language stripped_text
