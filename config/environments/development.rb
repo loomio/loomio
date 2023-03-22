@@ -22,7 +22,6 @@ Rails.application.configure do
   # config.assets.raise_runtime_errors = true
   # config.assets.raise_production_errors = true
   # config.sass.debug_info = true
-  config.action_controller.action_on_unpermitted_parameters = :raise
 
   # standard 7.0 config
   # Settings specified here will take precedence over those in config/application.rb.
