@@ -622,8 +622,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.string "icon"
     t.string "meaning"
     t.string "prompt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
