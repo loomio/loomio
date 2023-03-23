@@ -3,16 +3,25 @@ require "google/cloud/translate"
 class TranslationService
   extend LocalesHelper
 
+  GOOGLE_LOCALES = %w[af sq am ar hy as ay az bm eu be bn bho bs bg ca ceb zh-CN zh zh-TW co hr cs da dv doi nl en eo et ee fil fi fr fy gl ka de el gn gu ht ha haw he iw hi hmn hu is ig ilo id ga it ja jv jw kn kk km rw gom ko kri ku ckb ky lo la lv ln lt lg lb mk mai mg ms ml mt mi mr mni-Mtei lus mn my ne no ny or om ps fa pl pt pa qu ro ru sm sa gd nso sr st sn sd si sk sl so es su sw sv tl tg ta tt te th ti ts tr tk ak uk ur ug uz vi cy xh yi yo zu]
+
+  def locale_for_google(locale)
+    locale = locale.downcase.gsub("_", "-")
+    return locale if GOOGLE_LOCALES.include?(locale)
+    locale.split("-")[0]
+  end
+
   def self.create(model:, to:)
-    translation = model.translations.find_by(language: to) ||
-                  Translation.new(translatable: model, language: to, fields: {})
+    locale = locale_for_google(to)
+    translation = model.translations.find_by(language: locale) ||
+                  Translation.new(translatable: model, language: locale, fields: {})
 
     if translation.new_record? || ((translation.updated_at || translation.created_at) < (model.updated_at || model.created_at || 5.years.ago))
       service = Google::Cloud::Translate.translation_v2_service
 
       model.class.translatable_fields.each do |field|
         next if model.send(field).blank?
-        translation.fields[field.to_s] = service.translate(model.send(field), to: to)
+        translation.fields[field.to_s] = service.translate(model.send(field), to: locale)
       end
 
       translation.save!
