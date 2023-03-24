@@ -62,7 +62,7 @@
     "date-fns-tz": "2.0.0",
     "deepmerge": "^4.3.1",
     "emoji-unicode": "^2.0.1",
-    "es6-shim": "^0.35.7",
+    "es6-shim": "^0.35.8",
     "intersection-observer": "^0.12.2",
     "jstimezonedetect": "~1.0.7",
     "lodash": "latest",
