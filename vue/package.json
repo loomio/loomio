@@ -90,7 +90,7 @@
   },
   "devDependencies": {
     "@mdi/font": "^7.2.96",
-    "@vue/cli-plugin-pwa": "^4.5.15",
+    "@vue/cli-plugin-pwa": "^5.0.8",
     "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-e2e-nightwatch": "^5.0.8",
     "@vue/cli-service": "4.5.15",
