@@ -65,12 +65,14 @@ div.lmo-markdown-wrapper
 
 .theme--dark
   .lmo-markdown-wrapper
+    hr
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5)
     p
       color: #FFFE
+
     blockquote
       background-color: rgba(0,0,0,0.3)
       border-left: 4px solid #000
-
 
 img.emoji
   width: 1.4em !important
