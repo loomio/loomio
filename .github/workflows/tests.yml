@@ -122,6 +122,7 @@ jobs:
         MIN_THREADS: 3
         MAX_THREADS: 3
       run: |
+        pwd
         bundle exec rails server -b 0.0.0.0 &
     - name: build client
       run: |
