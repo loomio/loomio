@@ -23,7 +23,7 @@ module Loomio
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
     config.active_job.queue_adapter = :sidekiq
-
+    
     config.generators do |g|
       g.template_engine :haml
       g.test_framework  :rspec, :fixture => false
