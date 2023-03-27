@@ -123,7 +123,9 @@ jobs:
         MAX_THREADS: 3
       run: |
         pwd
+        ls -la
         rails server -b 0.0.0.0 &
+        bundle exec rails server -b 0.0.0.0 &
     - name: build client
       run: |
         cd vue
