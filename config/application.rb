@@ -23,11 +23,16 @@ module Loomio
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
     config.active_job.queue_adapter = :sidekiq
-    
+
     config.generators do |g|
       g.template_engine :haml
       g.test_framework  :rspec, :fixture => false
     end
+
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info)
 
     config.active_record.belongs_to_required_by_default = false
 

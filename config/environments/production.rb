@@ -8,12 +8,6 @@ Rails.application.configure do
   # config.serve_static_files = true
   config.action_mailer.raise_delivery_errors = true
 
-  # Default settings
-  # Settings specified here will take precedence over those in config/application.rb.
-  logger           = ActiveSupport::Logger.new(STDOUT)
-  logger.formatter = config.log_formatter
-  config.logger    = ActiveSupport::TaggedLogging.new(logger)
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
