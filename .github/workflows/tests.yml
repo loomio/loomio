@@ -127,8 +127,8 @@ jobs:
       run: |
         bundle install
         bundle install --binstubs
-        rails app:update:bin
-        rails server -b 0.0.0.0 &
+        bin/rails app:update:bin
+        bin/rails server -b 0.0.0.0 &
     - name: build client
       run: |
         cd vue
