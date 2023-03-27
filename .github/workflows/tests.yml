@@ -125,6 +125,8 @@ jobs:
       # bundle exec rails server -b 0.0.0.0 &
       # bin/rails server -b 0.0.0.0 &
       run: |
+        bundle install
+        bundle install --binstubs
         rails app:update:bin
         rails server -b 0.0.0.0 &
     - name: build client
