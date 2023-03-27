@@ -124,8 +124,12 @@ jobs:
       run: |
         pwd
         ls -la
+        bundle install --binstubs
+        ls -la
+        ls -la bin
         rails server -b 0.0.0.0 &
         bundle exec rails server -b 0.0.0.0 &
+        bin/rails server -b 0.0.0.0 &
     - name: build client
       run: |
         cd vue
