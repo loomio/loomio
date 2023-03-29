@@ -92,6 +92,6 @@ group :production do
   gem 'rack-timeout'
 end
 
-if ENV['CHARGIFY_APP_NAME']
+if Dir.exists?('engines/loomio_subs')
   gem 'loomio_subs', path: 'engines/loomio_subs'
 end
