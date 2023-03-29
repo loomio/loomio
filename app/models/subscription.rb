@@ -1,4 +1,6 @@
 class Subscription < ApplicationRecord
+  include SubscriptionConcern if Object.const_defined?('SubscriptionConcern')
+
   PAYMENT_METHODS = ["chargify", "manual", "barter", "paypal"]
 
   has_many :groups
