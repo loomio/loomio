@@ -28,7 +28,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   def mark_summary_email_as_read
     DiscussionService.delay.mark_summary_email_as_read(
       user.id,
-      params.permit(:time_start, :time_finish)
+      params.slice(:time_start, :time_finish)
     )
 
     respond_to do |format|
