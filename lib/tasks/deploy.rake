@@ -38,9 +38,8 @@ namespace :deploy do
     puts "Committing assets to deployment branch..."
     run_commands(
       "git checkout -b #{deploy_branch}",
-      "rm -rf plugins/fetched/**/.git",
-      "find plugins/fetched -name '*.*' | xargs git add -f",
-      "git add -f plugins",
+      "rm -rf engines/**/.git",
+      "git add -f engines",
       "git add -f public",
       "git commit -m 'Add marketing plugin only'",
       "git checkout master")
