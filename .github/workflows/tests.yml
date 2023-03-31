@@ -121,8 +121,13 @@ jobs:
         PUMA_WORKERS: 2
         MIN_THREADS: 3
         MAX_THREADS: 3
+      # bundle install --binstubs
+      # bundle exec rails server -b 0.0.0.0 &
+      # bin/rails server -b 0.0.0.0 &
       run: |
-        bundle exec rails server -b 0.0.0.0 > log/server.log &
+        rm -f bin/*
+        bundle install --binstubs
+        bundle exec rails server -b 0.0.0.0 &
     - name: build client
       run: |
         cd vue

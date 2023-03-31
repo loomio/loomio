@@ -22,6 +22,7 @@ bin/
 .byebug_history
 logfile
 
+/engines/loomio_subs
 /client
 public/client
 public/blient

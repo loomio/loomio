@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_16_104656) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -26,8 +25,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.bigint "resource_id"
     t.string "author_type"
     t.bigint "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
@@ -37,7 +36,7 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.integer "group_id"
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["group_id"], name: "index_active_storage_attachments_on_group_id"
@@ -50,8 +49,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.string "checksum"
+    t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -67,13 +66,13 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "filename", limit: 255
     t.text "location"
     t.integer "comment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "filesize"
     t.string "file_file_name"
     t.string "file_content_type"
     t.integer "file_file_size"
-    t.datetime "file_updated_at"
+    t.datetime "file_updated_at", precision: nil
     t.integer "attachable_id"
     t.string "attachable_type"
     t.boolean "migrated_to_document", default: false, null: false
@@ -83,8 +82,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
 
   create_table "blacklisted_passwords", id: :serial, force: :cascade do |t|
     t.string "string", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["string"], name: "index_blacklisted_passwords_on_string", using: :hash
   end
 
@@ -93,7 +92,7 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.bigint "query_id"
     t.text "statement"
     t.string "data_source"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["query_id"], name: "index_blazer_audits_on_query_id"
     t.index ["user_id"], name: "index_blazer_audits_on_user_id"
   end
@@ -107,9 +106,9 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.text "slack_channels"
     t.string "check_type"
     t.text "message"
-    t.datetime "last_run_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "last_run_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_checks_on_creator_id"
     t.index ["query_id"], name: "index_blazer_checks_on_query_id"
   end
@@ -118,8 +117,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.bigint "dashboard_id"
     t.bigint "query_id"
     t.integer "position"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["dashboard_id"], name: "index_blazer_dashboard_queries_on_dashboard_id"
     t.index ["query_id"], name: "index_blazer_dashboard_queries_on_query_id"
   end
@@ -127,8 +126,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
   create_table "blazer_dashboards", force: :cascade do |t|
     t.bigint "creator_id"
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_dashboards_on_creator_id"
   end
 
@@ -139,8 +138,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.text "statement"
     t.string "data_source"
     t.string "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
   end
 
@@ -156,8 +155,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "access_token"
     t.integer "author_id"
     t.integer "group_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
     t.boolean "notification_only", default: false, null: false
     t.string "webhook_kind"
@@ -175,16 +174,16 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.text "body", default: ""
     t.integer "user_id", default: 0
     t.integer "parent_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "uses_markdown", default: false, null: false
     t.integer "comment_votes_count", default: 0, null: false
     t.integer "attachments_count", default: 0, null: false
-    t.datetime "edited_at"
+    t.datetime "edited_at", precision: nil
     t.integer "versions_count", default: 0
     t.string "body_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.datetime "discarded_at"
+    t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.string "content_locale"
@@ -198,9 +197,9 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "cover_photo_file_name"
     t.string "cover_photo_content_type"
     t.integer "cover_photo_file_size"
-    t.datetime "cover_photo_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "cover_photo_updated_at", precision: nil
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
   end
 
   create_table "demos", force: :cascade do |t|
@@ -208,9 +207,9 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.integer "group_id", null: false
     t.string "name", null: false
     t.string "description"
-    t.datetime "recorded_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "recorded_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "priority", default: 0, null: false
     t.string "demo_handle"
     t.index ["author_id"], name: "index_demos_on_author_id"
@@ -218,20 +217,20 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
 
   create_table "discussion_readers", id: :serial, force: :cascade do |t|
     t.integer "user_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "discussion_id", null: false
-    t.datetime "last_read_at"
+    t.datetime "last_read_at", precision: nil
     t.integer "last_read_sequence_id", default: 0, null: false
     t.integer "volume", default: 2, null: false
     t.boolean "participating", default: false, null: false
-    t.datetime "dismissed_at"
+    t.datetime "dismissed_at", precision: nil
     t.string "read_ranges_string"
     t.integer "inviter_id"
     t.string "token"
-    t.datetime "revoked_at"
+    t.datetime "revoked_at", precision: nil
     t.boolean "admin", default: false, null: false
-    t.datetime "accepted_at"
+    t.datetime "accepted_at", precision: nil
     t.integer "revoker_id"
     t.index ["discussion_id"], name: "index_discussion_readers_discussion_id"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
@@ -249,18 +248,18 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
   create_table "discussions", id: :serial, force: :cascade do |t|
     t.integer "group_id"
     t.integer "author_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "title", limit: 255
-    t.datetime "last_comment_at"
+    t.datetime "last_comment_at", precision: nil
     t.text "description"
     t.boolean "uses_markdown", default: false, null: false
     t.integer "items_count", default: 0, null: false
-    t.datetime "closed_at"
+    t.datetime "closed_at", precision: nil
     t.boolean "private", default: true, null: false
     t.string "key", limit: 255
     t.string "iframe_src", limit: 255
-    t.datetime "last_activity_at"
+    t.datetime "last_activity_at", precision: nil
     t.integer "last_sequence_id", default: 0, null: false
     t.integer "first_sequence_id", default: 0, null: false
     t.integer "versions_count", default: 0
@@ -275,13 +274,13 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.jsonb "info", default: {}, null: false
     t.integer "max_depth", default: 2, null: false
     t.boolean "newest_first", default: false, null: false
-    t.datetime "discarded_at"
+    t.datetime "discarded_at", precision: nil
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.integer "members_count"
     t.integer "anonymous_polls_count", default: 0, null: false
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
-    t.datetime "pinned_at"
+    t.datetime "pinned_at", precision: nil
     t.integer "discarded_by"
     t.boolean "template", default: false, null: false
     t.integer "source_template_id"
@@ -303,8 +302,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "url"
     t.string "doctype", null: false
     t.string "color", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "icon"
     t.integer "author_id", null: false
     t.string "web_url"
@@ -319,8 +318,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
 
   create_table "events", id: :serial, force: :cascade do |t|
     t.string "kind", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "eventable_id"
     t.string "eventable_type", limit: 255
     t.integer "user_id"
@@ -350,8 +349,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.integer "group_id", null: false
     t.integer "identity_id", null: false
     t.jsonb "custom_fields", default: {}, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["group_id"], name: "index_group_identities_on_group_id"
     t.index ["identity_id"], name: "index_group_identities_on_identity_id"
   end
@@ -368,8 +367,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "role"
     t.string "website"
     t.text "misc"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "desired_feature"
     t.string "segment"
     t.index ["group_id"], name: "index_group_surveys_on_group_id"
@@ -377,12 +376,12 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
 
   create_table "groups", id: :serial, force: :cascade do |t|
     t.string "name", limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "parent_id"
     t.text "description"
     t.integer "memberships_count", default: 0, null: false
-    t.datetime "archived_at"
+    t.datetime "archived_at", precision: nil
     t.integer "discussions_count", default: 0, null: false
     t.string "full_name", limit: 255
     t.boolean "parent_members_can_see_discussions", default: false, null: false
@@ -399,11 +398,11 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "cover_photo_file_name", limit: 255
     t.string "cover_photo_content_type", limit: 255
     t.integer "cover_photo_file_size"
-    t.datetime "cover_photo_updated_at"
+    t.datetime "cover_photo_updated_at", precision: nil
     t.string "logo_file_name", limit: 255
     t.string "logo_content_type", limit: 255
     t.integer "logo_file_size"
-    t.datetime "logo_updated_at"
+    t.datetime "logo_updated_at", precision: nil
     t.boolean "members_can_edit_comments", default: true
     t.boolean "members_can_raise_motions", default: true, null: false
     t.boolean "members_can_vote", default: true, null: false
@@ -464,8 +463,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.integer "user_id"
     t.string "token"
     t.boolean "used", default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "redirect"
     t.integer "code", null: false
     t.boolean "is_reactivation", default: false, null: false
@@ -477,12 +476,12 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "email", limit: 255
     t.text "introduction"
     t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "requestor_id"
     t.integer "responder_id"
     t.string "response", limit: 255
-    t.datetime "responded_at"
+    t.datetime "responded_at", precision: nil
     t.index ["group_id"], name: "index_membership_requests_on_group_id"
     t.index ["requestor_id"], name: "index_membership_requests_on_requestor_id"
     t.index ["responder_id"], name: "index_membership_requests_on_responder_id"
@@ -491,19 +490,19 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
   create_table "memberships", id: :serial, force: :cascade do |t|
     t.integer "group_id"
     t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "inviter_id"
-    t.datetime "archived_at"
+    t.datetime "archived_at", precision: nil
     t.integer "inbox_position", default: 0
     t.boolean "admin", default: false, null: false
     t.integer "volume"
     t.jsonb "experiences", default: {}, null: false
     t.integer "invitation_id"
     t.string "token"
-    t.datetime "accepted_at"
+    t.datetime "accepted_at", precision: nil
     t.string "title"
-    t.datetime "saml_session_expires_at"
+    t.datetime "saml_session_expires_at", precision: nil
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -514,8 +513,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
 
   create_table "notifications", id: :serial, force: :cascade do |t|
     t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "event_id"
     t.boolean "viewed", default: false, null: false
     t.jsonb "translation_values", default: {}, null: false
@@ -533,8 +532,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "token", null: false
     t.integer "expires_in", null: false
     t.text "redirect_uri", null: false
-    t.datetime "created_at", null: false
-    t.datetime "revoked_at"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "revoked_at", precision: nil
     t.string "scopes"
     t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
   end
@@ -545,8 +544,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "token", null: false
     t.string "refresh_token"
     t.integer "expires_in"
-    t.datetime "revoked_at"
-    t.datetime "created_at", null: false
+    t.datetime "revoked_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
     t.string "scopes"
     t.index ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
     t.index ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
@@ -559,14 +558,14 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "secret", null: false
     t.text "redirect_uri", null: false
     t.string "scopes", default: "", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "owner_id"
     t.string "owner_type"
     t.string "logo_file_name"
     t.string "logo_content_type"
     t.integer "logo_file_size"
-    t.datetime "logo_updated_at"
+    t.datetime "logo_updated_at", precision: nil
     t.index ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type"
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
@@ -574,8 +573,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
   create_table "omniauth_identities", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.string "email", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "identity_type", limit: 255
     t.string "uid", limit: 255
     t.string "name", limit: 255
@@ -591,8 +590,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.integer "poll_id"
     t.text "statement", null: false
     t.integer "author_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "latest", default: true, null: false
     t.integer "poll_option_id"
     t.jsonb "custom_fields", default: {}, null: false
@@ -623,16 +622,16 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "icon"
     t.string "meaning"
     t.string "prompt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
   create_table "poll_unsubscriptions", id: :serial, force: :cascade do |t|
     t.integer "poll_id", null: false
     t.integer "user_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["poll_id", "user_id"], name: "index_poll_unsubscriptions_on_poll_id_and_user_id", unique: true
   end
 
@@ -640,10 +639,10 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.integer "author_id", null: false
     t.string "title", null: false
     t.text "details"
-    t.datetime "closing_at"
-    t.datetime "closed_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "closing_at", precision: nil
+    t.datetime "closed_at", precision: nil
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "discussion_id"
     t.string "key", null: false
     t.string "poll_type", null: false
@@ -666,7 +665,7 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.boolean "anyone_can_participate", default: false, null: false
     t.boolean "hide_results_until_closed", default: false, null: false
     t.boolean "stances_in_discussion", default: true, null: false
-    t.datetime "discarded_at"
+    t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.boolean "specified_voters_only", default: false, null: false
@@ -705,8 +704,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
   create_table "reactions", id: :serial, force: :cascade do |t|
     t.integer "reactable_id"
     t.integer "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "reaction", default: "+1", null: false
     t.string "reactable_type", default: "Comment", null: false
     t.index ["created_at"], name: "index_reactions_on_created_at"
@@ -722,16 +721,16 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.boolean "spf_valid", default: false, null: false
     t.boolean "dkim_valid", default: false, null: false
     t.boolean "released", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|
     t.integer "stance_id"
     t.integer "poll_option_id"
     t.integer "score", default: 1, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["poll_option_id"], name: "index_stance_choices_on_poll_option_id"
     t.index ["stance_id"], name: "index_stance_choices_on_stance_id"
   end
@@ -741,18 +740,18 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.integer "participant_id"
     t.string "reason"
     t.boolean "latest", default: true, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "versions_count", default: 0
     t.string "reason_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.datetime "cast_at"
+    t.datetime "cast_at", precision: nil
     t.string "token"
-    t.datetime "revoked_at"
+    t.datetime "revoked_at", precision: nil
     t.boolean "admin", default: false, null: false
     t.integer "inviter_id"
     t.integer "volume", default: 2, null: false
-    t.datetime "accepted_at"
+    t.datetime "accepted_at", precision: nil
     t.string "content_locale"
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.jsonb "link_previews", default: [], null: false
@@ -766,7 +765,7 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
   end
 
   create_table "subscriptions", id: :serial, force: :cascade do |t|
-    t.datetime "expires_at"
+    t.datetime "expires_at", precision: nil
     t.integer "chargify_subscription_id"
     t.string "plan", default: "free"
     t.string "payment_method", default: "none", null: false
@@ -776,13 +775,13 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.integer "max_orgs"
     t.string "state", default: "active", null: false
     t.integer "members_count"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.jsonb "info"
-    t.datetime "canceled_at"
-    t.datetime "activated_at"
-    t.datetime "renews_at"
-    t.datetime "renewed_at"
+    t.datetime "canceled_at", precision: nil
+    t.datetime "activated_at", precision: nil
+    t.datetime "renews_at", precision: nil
+    t.datetime "renewed_at", precision: nil
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
     t.index ["plan"], name: "index_subscriptions_on_plan"
   end
@@ -790,8 +789,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id", null: false
     t.integer "taggable_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "taggable_type", null: false
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
     t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
@@ -801,8 +800,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.integer "group_id"
     t.citext "name", null: false
     t.string "color"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.integer "taggings_count", default: 0
     t.integer "priority", default: 0, null: false
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
@@ -816,14 +815,14 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.integer "uid", null: false
     t.string "name", null: false
     t.boolean "done", null: false
-    t.datetime "done_at"
+    t.datetime "done_at", precision: nil
     t.date "due_on"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "discarded_at", precision: nil
     t.integer "doer_id"
     t.integer "remind"
-    t.datetime "remind_at"
+    t.datetime "remind_at", precision: nil
     t.index ["author_id"], name: "index_tasks_on_author_id"
     t.index ["discarded_at"], name: "index_tasks_on_discarded_at"
     t.index ["done"], name: "index_tasks_on_done"
@@ -835,8 +834,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
   create_table "tasks_users", force: :cascade do |t|
     t.bigint "task_id"
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_tasks_users_on_task_id"
     t.index ["user_id"], name: "index_tasks_users_on_user_id"
   end
@@ -846,8 +845,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "translatable_type", limit: 255
     t.hstore "fields"
     t.string "language", limit: 255
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["translatable_type", "translatable_id"], name: "index_translations_on_translatable_type_and_translatable_id"
   end
 
@@ -860,21 +859,21 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.citext "email"
     t.string "encrypted_password", limit: 128, default: ""
     t.string "reset_password_token", limit: 255
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "name", limit: 255
-    t.datetime "deactivated_at"
+    t.datetime "deactivated_at", precision: nil
     t.boolean "is_admin", default: false
     t.string "avatar_kind", limit: 255, default: "initials", null: false
     t.string "uploaded_avatar_file_name", limit: 255
     t.string "uploaded_avatar_content_type", limit: 255
     t.integer "uploaded_avatar_file_size"
-    t.datetime "uploaded_avatar_updated_at"
+    t.datetime "uploaded_avatar_updated_at", precision: nil
     t.string "avatar_initials", limit: 255
     t.string "username", limit: 255
     t.boolean "email_when_proposal_closing_soon", default: false, null: false
@@ -901,12 +900,12 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "short_bio", default: "", null: false
     t.boolean "email_verified", default: false, null: false
     t.string "location", default: "", null: false
-    t.datetime "last_seen_at"
-    t.datetime "legal_accepted_at"
+    t.datetime "last_seen_at", precision: nil
+    t.datetime "legal_accepted_at", precision: nil
     t.boolean "email_newsletter", default: false, null: false
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
-    t.datetime "locked_at"
+    t.datetime "locked_at", precision: nil
     t.string "short_bio_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.inet "current_sign_in_ip"
@@ -932,7 +931,7 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.integer "item_id", null: false
     t.string "event", limit: 255, null: false
     t.integer "whodunnit"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.jsonb "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
@@ -942,8 +941,8 @@ ActiveRecord::Schema.define(version: 2023_03_16_104656) do
     t.string "name", null: false
     t.string "url"
     t.jsonb "event_kinds", default: [], null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "format", default: "markdown"
     t.boolean "include_body", default: false
     t.boolean "include_subgroups", default: false, null: false

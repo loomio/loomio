@@ -29,15 +29,6 @@ module.exports = env => {
           'single-curlys-loader': path.join(__dirname, 'loaders', 'single_curlys.js')
         }
       },
-      // plugins: [
-      //   new VuetifyLoaderPlugin({
-      //     match (originalTag, { kebabTag, camelTag, path, component }) {
-      //       if (components[camelTag]) {
-      //         return [camelTag, `import ${camelTag} from '@/components/${components[camelTag]}.vue'`]
-      //       }
-      //     }
-      //   })
-      // ],
     },
     outputDir: '../public/blient/vue',
     assetsDir: (process.env.NODE_ENV == 'production') ? '../../blient/vue' : 'blient/vue',

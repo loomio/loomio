@@ -20,9 +20,6 @@ end
 module Loomio
   class Application < Rails::Application
     config.load_defaults 6.0
-    # config.autoloader = :zeitwerk if Rails.env.development? || ENV['LOOMIO_ZEITWERK']
-    # config.autoloader = :classic
-    # config.action_mailer.delivery_job "ActionMailer::MailDeliveryJob"
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
     config.active_job.queue_adapter = :sidekiq
@@ -32,17 +29,25 @@ module Loomio
       g.test_framework  :rspec, :fixture => false
     end
 
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.log_level = ENV.fetch('RAILS_LOG_LEVEL', :info)
+
     config.active_record.belongs_to_required_by_default = false
 
     config.force_ssl = ENV['FORCE_SSL'].present?
     config.ssl_options = { redirect: { exclude: -> request { request.path =~ /(received_emails|email_processor)/ } } }
 
     config.i18n.enforce_available_locales = false
-    config.i18n.fallbacks = [:en] # --> see initilizers/loomio_i18n
-    config.assets.quiet = true
+    config.i18n.fallbacks = [:en]
+
+    # config.assets.quiet = true
+    # config.quiet_assets = true
 
     config.encoding = "utf-8"
 
+    config.action_controller.action_on_unpermitted_parameters = :raise
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
@@ -55,7 +60,6 @@ module Loomio
     # required for heroku
     config.assets.initialize_on_precompile = false
 
-    config.quiet_assets = true
     config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
     config.active_storage.variant_processor = :vips

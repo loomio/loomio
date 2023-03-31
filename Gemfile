@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
 ruby '2.7.6'
+gem 'rails', '7.0.4.2'
 gem 'rack', '2.2.6.4'
-gem 'rails', '6.1.7.3'
 gem 'rake'
 gem 'pg'
 gem 'active_record_extended'
@@ -21,7 +21,7 @@ gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.0'
 gem 'paper_trail', '~> 14.0.0'
-gem 'sidekiq'
+gem 'sidekiq', '~> 6.5.7'
 gem 'friendly_id', '~> 5.5.0'
 gem 'httparty', '~> 0.21.0'
 gem 'browser', '~> 5.3.1'
@@ -90,4 +90,8 @@ end
 
 group :production do
   gem 'rack-timeout'
+end
+
+if Dir.exists?('engines/loomio_subs')
+  gem 'loomio_subs', path: 'engines/loomio_subs'
 end

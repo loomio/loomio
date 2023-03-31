@@ -285,10 +285,6 @@ Rails.application.routes.draw do
   get '/users/sign_up', to: redirect('/dashboard')
   devise_for :users
 
-  namespace(:subscriptions) do
-    post :webhook
-  end
-
   resources :contact_messages, only: [:new, :create] do
     get :show, on: :collection
   end
@@ -370,7 +366,7 @@ Rails.application.routes.draw do
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
   get '/crowdfunding'                      => 'application#crowdfunding'
-  get '/brand'                      => 'application#brand'
+  get '/brand'                             => 'application#brand'
   get '/sitemap.xml' => 'application#sitemap'
 
 
@@ -386,6 +382,8 @@ Rails.application.routes.draw do
     post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
     get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
   end
+
+  mount LoomioSubs::Engine, at: "/" if Object.const_defined?('LoomioSubs')
 
   get ":id", to: 'groups#show', as: :group_handle
 end

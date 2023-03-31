@@ -83,13 +83,13 @@ describe GroupsController do
     end
 
     it 'displays an xml feed' do
-      get :show, params: { key: group.key }, format: :rss
+      get :show, params: { key: group.key }, format: :xml
       expect(response.status).to eq 200
       expect(assigns(:group)).to eq group
     end
 
     it 'displays an xml error when group is not found' do
-      get :show, params: { key: :notakey }, format: :rss
+      get :show, params: { key: :notakey }, format: :xml
       expect(response.status).to eq 404
     end
   end
