@@ -56,7 +56,7 @@ export default
 </script>
 
 <template lang="pug">
-section.actions-panel#add-comment(:class="{'mt-2 px-2 px-sm-4': !discussion.newestFirst}")
+section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm-4': !discussion.newestFirst}")
   v-divider(aria-hidden="true")
   v-tabs.activity-panel__actions.mb-3(grow text v-model="currentAction")
     v-tabs-slider
