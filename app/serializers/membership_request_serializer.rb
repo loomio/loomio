@@ -5,6 +5,6 @@ class MembershipRequestSerializer < ApplicationSerializer
   has_one :requestor, serializer: AuthorSerializer, root: :users
 
   def requestor_email
-    requestor.email
+    requestor&.email
   end
 end
