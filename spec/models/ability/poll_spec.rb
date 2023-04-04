@@ -138,6 +138,70 @@ describe "poll abilities" do
       end
     end
 
+    context "as a discussion guest" do
+      # guests should have same permissions as a member, but just for the thread
+
+      before { discussion.add_guest! actor, discussion.author }
+      let(:guest_poll) { create(:poll, discussion: discussion, author: actor) }
+
+
+      it "should not be a group member" do
+        expect(group.members.exists?(actor.id)).to be false
+      end
+
+      it "should be a discussion member" do
+        expect(discussion.members.exists?(actor.id)).to be true
+      end
+
+      it "should be a discussion guest" do
+        expect(discussion.guests.exists?(actor.id)).to be true
+      end
+
+      context "when members can start polls" do
+        before { group.update(members_can_raise_motions: true) }
+        it {should be_able_to(:create, poll) }
+      end
+
+      context "when members cannot start polls" do
+        before { group.update(members_can_raise_motions: false) }
+        it {should_not be_able_to(:create, poll) }
+      end
+
+      context "when members can announce" do
+        before { group.update(members_can_announce: true) }
+
+        # not other members, rather specififed voters only
+        # cannot announce other member's polls
+        context "specified_voters_only" do
+          before do
+            poll.update(specified_voters_only: true)
+            guest_poll.update(specified_voters_only: true) 
+          end
+          it {should_not be_able_to(:announce, poll) }
+          it {should be_able_to(:announce, guest_poll) }
+        end
+
+        context "anyone in group can vote" do
+          before do
+            poll.update(specified_voters_only: false)
+            guest_poll.update(specified_voters_only: false) 
+          end
+          it {should be_able_to(:announce, poll) }
+          it {should be_able_to(:announce, guest_poll) }
+        end
+      end
+
+      context "members cannot announce" do
+        before { group.update(members_can_announce: false) }
+
+        # cannot announce another member's poll
+        it {should_not be_able_to(:announce, poll) }
+
+        # cannot announce own poll
+        it {should_not be_able_to(:announce, guest_poll) }
+      end
+    end
+
     context "unrelated to group" do
       before do
         group.update(members_can_add_guests: true)

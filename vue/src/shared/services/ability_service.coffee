@@ -117,12 +117,15 @@ export default new class AbilityService
       !discussion.id || discussion.adminsInclude(user())
 
   canAnnouncePoll: (poll) ->
+    user = Session.user()
     return false if poll.discardedAt
     if poll.groupId
-      poll.group().adminsInclude(user()) ||
-      (poll.group().membersCanAnnounce && poll.group().membersInclude((user())))
+      poll.group().adminsInclude(user) ||
+      (poll.group().membersCanAnnounce && poll.adminsInclude(user)) ||
+      (poll.group().membersCanAnnounce && !poll.specifiedVotersOnly && poll.membersInclude(user))
     else
-      poll.adminsInclude(user())
+      poll.adminsInclude(user) ||
+      (!poll.specifiedVotersOnly && poll.membersInclude(user))
 
   canAddMembersPoll: (poll) ->
     poll.adminsInclude(user())
