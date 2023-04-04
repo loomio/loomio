@@ -6,6 +6,8 @@ class Events::StanceCreated < Event
   include Events::Notify::Chatbots
 
   def self.publish!(stance)
+    NotificationService.delay.mark_as_read("Poll", stance.poll_id, stance.participant_id)
+
     super stance,
           user: stance.participant.presence,
           discussion: stance.add_to_discussion? ? stance.poll.discussion : nil
