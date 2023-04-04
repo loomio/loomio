@@ -65,10 +65,7 @@ export default new class PollService
       dock: 2
       canPerform: ->
         return false if (poll.discardedAt || poll.closedAt)
-        poll.adminsInclude(Session.user()) ||
-        (!poll.specifiedVotersOnly &&
-         (poll.group().membersCanAddGuests || poll.group().membersCanAnnounce) &&
-         poll.membersInclude(Session.user()))
+        AbilityService.canAnnouncePoll(poll)
       perform: ->
         openModal
           component: 'PollMembers'
@@ -81,10 +78,7 @@ export default new class PollService
       dock: 2
       canPerform: ->
         return false if (poll.discardedAt || poll.closedAt || poll.votersCount < 2)
-        poll.adminsInclude(Session.user()) ||
-        (!poll.specifiedVotersOnly &&
-         (poll.group().membersCanAddGuests || poll.group().membersCanAnnounce) &&
-         poll.membersInclude(Session.user()))
+        AbilityService.canAnnouncePoll(poll)
       perform: ->
         openModal
           component: 'PollReminderForm'
