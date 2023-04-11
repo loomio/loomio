@@ -53,10 +53,10 @@ When a new version of ruby is released, you can update ruby-build with
 cd "$(rbenv root)"/plugins/ruby-build && git pull
 ```
 
-At the time of writing 2.7.6 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
+At the time of writing 3.2.2 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
 
 ```
-rbenv install 2.7.6
+rbenv install 3.2.2
 gem install bundler
 ```
 

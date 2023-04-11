@@ -2,7 +2,7 @@ class TaskService
   def self.send_task_reminders(time = Time.now.utc.at_beginning_of_hour)
     Task.not_done.where(remind_at: time).each do |task|
       task.users.each do |user|
-        TaskMailer.delay.task_due_reminder(user, task)
+        TaskMailer.task_due_reminder(user, task).deliver_later
       end
     end
   end

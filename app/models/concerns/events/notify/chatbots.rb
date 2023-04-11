@@ -1,6 +1,6 @@
 module Events::Notify::Chatbots
   def trigger!
     super
-    ChatbotService.delay.publish_event!(self.id)
+    GenericWorker.perform_async('ChatbotService', 'publish_event!', self.id)
   end
 end

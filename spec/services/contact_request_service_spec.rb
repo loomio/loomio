@@ -18,7 +18,7 @@ describe 'ContactRequestService' do
     it 'does not send an email if you cannot contact the user' do
       expect {
         ContactRequestService.create(contact_request: contact_request, actor: user)
-      }.to raise_error { CanCan::AccessDenied }
+      }.to raise_error CanCan::AccessDenied
     end
   end
 end

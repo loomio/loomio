@@ -35,5 +35,5 @@ def expect_no_element(selector)
 end
 
 def expect_notification_headline(key)
-  expect(Nokogiri::HTML(body).css('.base-mailer__event-headline').to_s).to include I18n.t(key, i18n_params)
+  expect(Nokogiri::HTML(body).css('.base-mailer__event-headline').to_s).to include I18n.t(key, **i18n_params)
 end

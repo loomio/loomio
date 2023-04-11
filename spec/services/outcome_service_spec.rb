@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe OutcomeService do
   let(:user) { create :user }
+  let(:another_user) { create :user }
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
   let(:poll) { create :poll, discussion: discussion, author: user, closed_at: 1.day.ago }
@@ -22,12 +23,12 @@ describe OutcomeService do
     end
 
     it 'does not allow randos to create outcomes' do
-      expect { OutcomeService.create(outcome: new_outcome, actor: another_user) }.to raise_error { CanCan::AccessDenied }
+      expect { OutcomeService.create(outcome: new_outcome, actor: another_user) }.to raise_error CanCan::AccessDenied
     end
 
     it 'does not allow creating outcomes on open proposals' do
       poll.update(closed_at: nil)
-      expect { OutcomeService.create(outcome: new_outcome, actor: user) }.to raise_error { CanCan::AccessDenied }
+      expect { OutcomeService.create(outcome: new_outcome, actor: user) }.to raise_error CanCan::AccessDenied
     end
   end
 

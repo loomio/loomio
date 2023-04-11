@@ -56,9 +56,9 @@ namespace :loomio do
 
   task hourly_tasks: :environment do
     ThrottleService.reset!('hour')
-    PollService.delay.expire_lapsed_polls
-    PollService.delay.publish_closing_soon
-    TaskService.delay.send_task_reminders
+    GenericWorker.perform_async('PollService', 'expire_lapsed_polls')
+    GenericWorker.perform_async('PollService', 'publish_closing_soon')
+    GenericWorker.perform_async('TaskService', 'send_task_reminders')
 
     SendDailyCatchUpEmailWorker.perform_async
 
@@ -66,15 +66,14 @@ namespace :loomio do
       ThrottleService.reset!('day')
       
       Group.expired_demo.delete_all
-      DemoService.delay.generate_demo_groups 
-
-      CleanupService.delay.delete_orphan_records
-      OutcomeService.delay.publish_review_due
+      GenericWorker.perform_async('DemoService', 'generate_demo_groups')
+      GenericWorker.perform_async('CleanupService', 'delete_orphan_records')
+      GenericWorker.perform_async('OutcomeService', 'publish_review_due')
+      GenericWorker.perform_async('ReceivedEmailService', 'delete_old_emails')
       LoginToken.where("created_at < ?", 24.hours.ago).delete_all
-      ReceivedEmailService.delay.delete_old_emails
     end
 
-    DemoService.delay.ensure_queue
+    GenericWorker.perform_async('DemoService', 'ensure_queue')
     
     if (Time.now.hour == 0 && Time.now.mday == 1)
       UpdateBlockedDomainsWorker.perform_async
@@ -96,13 +95,13 @@ namespace :loomio do
   task refresh_expiring_chargify_management_links: :environment do
     # run this once a week
     if Date.today.sunday?
-      SubscriptionService.delay.refresh_expiring_management_links
+      GenericWorker.perform_async('SubscriptionService', 'refresh_expiring_management_links')
     end
   end
 
   task populate_chargify_management_links: :environment do
     if Date.today.sunday?
-      SubscriptionService.delay.populate_management_links
+      GenericWorker.perform_async('SubscriptionService', 'populate_management_links')
     end
   end
 

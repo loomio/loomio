@@ -10,7 +10,7 @@ class API::V1::DiscussionsController < API::V1::RestfulController
   end
 
   def create_action
-    @event = service.create({resource_symbol => resource, actor: current_user, params: resource_params})
+    @event = service.create(**{resource_symbol => resource, actor: current_user, params: resource_params})
   end
 
   def show

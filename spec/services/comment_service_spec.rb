@@ -31,7 +31,7 @@ describe 'CommentService' do
 
     it 'nullifies the parent_id of replies' do
       child = create(:comment, discussion: comment.discussion, parent: comment)
-      expect { CommentService.destroy(comment: comment, actor: user) }.to raise_error
+      expect { CommentService.destroy(comment: comment, actor: user) }.to raise_error CanCan::AccessDenied
     end
   end
 
