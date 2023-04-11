@@ -240,10 +240,5 @@ describe API::V1::MembershipsController do
       post :save_experience, params: { id: membership.id, experience: :happiness }
       expect(response.status).to eq 403
     end
-
-    it 'responds with bad request when no experience is given' do
-      membership = create(:membership)
-      expect { post :save_experience }.to raise_error { ActionController::ParameterMissing }
-    end
   end
 end

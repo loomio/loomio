@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.7.6'
+ruby '3.2.2'
 gem 'rails', '7.0.4.2'
 gem 'rack', '2.2.6.4'
 gem 'rake'
@@ -21,7 +21,7 @@ gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.0'
 gem 'paper_trail', '~> 14.0.0'
-gem 'sidekiq', '~> 6.5.7'
+gem 'sidekiq', '< 8'
 gem 'friendly_id', '~> 5.5.0'
 gem 'httparty', '~> 0.21.0'
 gem 'browser', '~> 5.3.1'
@@ -41,7 +41,7 @@ gem 'uuidtools'
 gem 'maxminddb'
 gem 'oj'
 gem "cld"
-gem 'custom_counter_cache', github: "loomio/custom_counter_cache", branch: "rails5"
+gem 'custom_counter_cache'
 gem 'premailer-rails'
 gem 'activerecord-import', '1.4.1'
 gem 'discriminator', '~> 0.1.1'
@@ -92,6 +92,6 @@ group :production do
   gem 'rack-timeout'
 end
 
-if Dir.exists?('engines/loomio_subs')
+if Dir.exist?('engines/loomio_subs')
   gem 'loomio_subs', path: 'engines/loomio_subs'
 end

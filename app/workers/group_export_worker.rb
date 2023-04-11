@@ -9,6 +9,6 @@ class GroupExportWorker
     document.file.attach(io: File.open(filename), filename: filename)
     document.save!
     UserMailer.group_export_ready(actor.id, group_name, document.id).deliver
-    document.delay_until(1.week.from_now).destroy!
+    DestroyRecordWorker.perform_at(1.week.from_now, 'Document', document.id)
   end
 end

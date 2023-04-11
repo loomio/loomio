@@ -1,6 +1,6 @@
 .everything
   %p= t(:'email.catch_up.do_not_reply')
-  %h1= t(@subject_key, @subject_params)
+  %h1= t(@subject_key, **@subject_params)
   .toc
     =render 'user_mailer/catch_up/headlines'
 

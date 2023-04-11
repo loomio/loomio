@@ -83,7 +83,7 @@ ActiveAdmin.register User do
   end
 
   member_action :reactivate, method: :put do
-    UserService.delay.reactivate(params[:id])
+    GenericWorker.perform_async('UserService', 'reactivate', params[:id])
     redirect_to admin_users_path, :notice => "User scheduled for reactivation immediately"
   end
 

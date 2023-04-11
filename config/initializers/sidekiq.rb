@@ -1,5 +1,4 @@
 Sidekiq.default_job_options = { 'backtrace' => true }
-Sidekiq::Extensions.enable_delay!
 
 sidekiq_redis_url = (ENV['REDIS_QUEUE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379/0'))
 channels_redis_url = (ENV['REDIS_CACHE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379/0'))

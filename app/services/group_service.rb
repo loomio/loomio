@@ -109,7 +109,7 @@ module GroupService
     actor.ability.authorize! :destroy, group
 
     group.admins.each do |admin|
-      GroupMailer.delay.destroy_warning(group.id, admin.id, actor.id)
+      GroupMailer.destroy_warning(group.id, admin.id, actor.id).deliver_later
     end
 
     group.archive!

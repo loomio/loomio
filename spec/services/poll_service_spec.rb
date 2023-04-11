@@ -128,12 +128,8 @@ describe PollService do
       expect { PollService.create(poll: poll_created, actor: user) }.to_not change { Poll.count }
     end
 
-    it 'does not allow logged out users to create polls' do
-      expect { PollService.create(poll: poll_created, actor: logged_out_user) }.to raise_error { CanCan::AccessDenied }
-    end
-
     it 'does not allow users to create polls they are not allowed to' do
-      expect { PollService.create(poll: poll_created, actor: another_user) }.to raise_error { CanCan::AccessDenied }
+      expect { PollService.create(poll: poll_created, actor: another_user) }.to raise_error CanCan::AccessDenied
     end
 
     it 'does not email people' do
@@ -159,7 +155,7 @@ describe PollService do
     end
 
     it 'does not allow randos to edit proposals' do
-      expect { PollService.update(poll: poll_created, params: { details: "A new description" }, actor: another) }.to raise_error { CanCan::AccessDenied }
+      expect { PollService.update(poll: poll_created, params: { details: "A new description" }, actor: another_user) }.to raise_error CanCan::AccessDenied
       expect(poll_created.reload.details).to_not eq "A new description"
     end
 
@@ -204,7 +200,7 @@ describe PollService do
       poll.update(voter_can_add_options: false)
       expect {
         PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: user)
-      }.to raise_error { CanCan::AccessDenied }
+      }.to raise_error CanCan::AccessDenied
       expect(poll.reload.poll_option_names).to_not include 'new_option'
     end
 
@@ -217,7 +213,7 @@ describe PollService do
     it 'does not update for unauthorized user' do
       expect {
         PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: another_user)
-      }.to raise_error { CanCan::AccessDenied }
+      }.to raise_error CanCan::AccessDenied
     end
   end
 

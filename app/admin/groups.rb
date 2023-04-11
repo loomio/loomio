@@ -205,7 +205,7 @@ ActiveAdmin.register Group, as: 'Group' do
   end
 
   collection_action :import_json, method: :post do
-    GroupExportService.delay.import(params[:url])
+    GenericWorker.perform_async('GroupExportService', 'import', params[:url])
     redirect_to admin_groups_path, notice: "Import started. Check /admin/sidekiq to see when job is complete"
   end
 

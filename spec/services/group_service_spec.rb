@@ -28,7 +28,7 @@ describe 'GroupService' do
     end
 
     it 'does not allow nonadmins to move groups' do
-      expect { GroupService.move(group: group, parent: parent, actor: user) }.to raise_error { CanCan::AccessDenied }
+      expect { GroupService.move(group: group, parent: parent, actor: user) }.to raise_error CanCan::AccessDenied
     end
   end
 
@@ -74,7 +74,7 @@ describe 'GroupService' do
 
     it 'does not allow non-admins to merge' do
       user.update(is_admin: false)
-      expect { GroupService.merge(source: source, target: target, actor: user) }.to raise_error { CanCan::AccessDenied }
+      expect { GroupService.merge(source: source, target: target, actor: user) }.to raise_error CanCan::AccessDenied
     end
   end
 end

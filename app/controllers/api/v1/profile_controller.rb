@@ -42,7 +42,7 @@ class API::V1::ProfileController < API::V1::RestfulController
   end
 
   def send_email_to_group_address
-    UserMailer.delay.email_to_group_address(params[:group_id], current_user.id)
+    UserMailer.email_to_group_address(params[:group_id], current_user.id).deliver_later
     head :ok
   end
 
@@ -61,7 +61,7 @@ class API::V1::ProfileController < API::V1::RestfulController
   end
 
   def update_profile
-    service.update(current_user_params)
+    service.update(**current_user_params)
     respond_with_resource
   end
 
