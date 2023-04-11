@@ -93,7 +93,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    addressable (2.8.2)
+    addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     ansi (1.5.0)
     arbre (1.5.0)
@@ -101,7 +101,7 @@ GEM
       ruby2_keywords (>= 0.0.2, < 1.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.739.0)
+    aws-partitions (1.744.0)
     aws-sdk-core (3.171.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -110,7 +110,7 @@ GEM
     aws-sdk-kms (1.63.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.120.0)
+    aws-sdk-s3 (1.120.1)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
@@ -145,7 +145,7 @@ GEM
     crass (1.0.6)
     css_parser (1.14.0)
       addressable
-    custom_counter_cache (0.2.2)
+    custom_counter_cache (0.2.8)
       rails (>= 4.0)
     database_cleaner-active_record (2.1.0)
       activerecord (>= 5.a)
@@ -156,7 +156,7 @@ GEM
       redis
     date (3.3.3)
     declarative (0.0.20)
-    devise (4.9.1)
+    devise (4.9.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -265,14 +265,13 @@ GEM
       gapic-common (>= 0.17.1, < 2.a)
       google-cloud-errors (~> 1.0)
     google-protobuf (3.22.2-x86_64-darwin)
-    google-protobuf (3.22.2-x86_64-linux)
     googleapis-common-protos (1.4.0)
       google-protobuf (~> 3.14)
       googleapis-common-protos-types (~> 1.2)
       grpc (~> 1.27)
     googleapis-common-protos-types (1.5.0)
       google-protobuf (~> 3.14)
-    googleauth (1.5.0)
+    googleauth (1.5.1)
       faraday (>= 0.17.3, < 3.a)
       jwt (>= 1.4, < 3.0)
       memoist (~> 0.16)
@@ -281,9 +280,6 @@ GEM
       signet (>= 0.16, < 2.a)
     gravtastic (3.2.6)
     grpc (1.53.0-x86_64-darwin)
-      google-protobuf (~> 3.21)
-      googleapis-common-protos-types (~> 1.0)
-    grpc (1.53.0-x86_64-linux)
       google-protobuf (~> 3.21)
       googleapis-common-protos-types (~> 1.0)
     haml (6.1.1)
@@ -378,12 +374,10 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.14.2-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.2-x86_64-linux)
-      racc (~> 1.4)
     oga (3.4)
       ast
       ruby-ll (~> 2.1)
-    oj (3.14.2)
+    oj (3.14.3)
     orm_adapter (0.5.0)
     os (1.1.4)
     paper_trail (14.0.0)
@@ -450,7 +444,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.6.0)
-    redis (4.8.1)
+    redis (5.0.6)
+      redis-client (>= 0.9.0)
     redis-actionpack (5.3.0)
       actionpack (>= 5, < 8)
       redis-rack (>= 2.1.0, < 3)
@@ -458,6 +453,8 @@ GEM
     redis-activesupport (5.3.0)
       activesupport (>= 3, < 8)
       redis-store (>= 1.3, < 2)
+    redis-client (0.14.1)
+      connection_pool
     redis-objects (1.7.0)
       redis
     redis-rack (2.1.4)
@@ -537,10 +534,11 @@ GEM
     sentry-sidekiq (5.8.0)
       sentry-ruby (~> 5.8.0)
       sidekiq (>= 3.0)
-    sidekiq (6.5.8)
-      connection_pool (>= 2.2.5, < 3)
-      rack (~> 2.0)
-      redis (>= 4.5.0, < 5)
+    sidekiq (7.0.8)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
     signet (0.17.0)
       addressable (~> 2.8)
       faraday (>= 0.17.5, < 3.a)
@@ -593,7 +591,6 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
-  x86_64-linux
 
 DEPENDENCIES
   actionpack-action_caching
@@ -614,7 +611,7 @@ DEPENDENCIES
   custom_counter_cache
   database_cleaner-active_record
   database_cleaner-redis
-  devise (~> 4.9.0)
+  devise (~> 4.9.2)
   devise-i18n
   discard (~> 1.2)
   discriminator (~> 0.1.1)
@@ -679,4 +676,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.9
+   2.4.10

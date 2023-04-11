@@ -82,16 +82,16 @@ export default new class AbilityService
   canChangeVolume: (discussion) -> discussion.membersInclude(Session.user())
 
   canStartThread: (group) ->
-    group.adminsInclude(user()) or
-    (group.membersInclude(user()) and group.membersCanStartDiscussions)
+    group.adminsInclude(Session.user()) or
+    (group.membersInclude(Session.user()) and group.membersCanStartDiscussions)
 
   canAnnounceDiscussion: (discussion) ->
     return false if discussion.discardedAt
     if discussion.groupId
-      discussion.group().adminsInclude(user()) or
-      (discussion.group().membersCanAnnounce and discussion.group().membersInclude(user()))
+      discussion.group().adminsInclude(Session.user()) or
+      (discussion.group().membersCanAnnounce and discussion.group().membersInclude(Session.user()))
     else
-      !discussion.id || discussion.adminsInclude(user())
+      !discussion.id || discussion.adminsInclude(Session.user())
 
   canNotifyGroup: (model) ->
     model.adminsInclude(Session.user()) ||
@@ -111,28 +111,31 @@ export default new class AbilityService
 
   canAddGuestsDiscussion: (discussion) ->
     if discussion.groupId
-      discussion.group().adminsInclude(user()) ||
-      (discussion.group().membersCanAddGuests && discussion.group().membersInclude(user()))
+      discussion.group().adminsInclude(Session.user()) ||
+      (discussion.group().membersCanAddGuests && discussion.group().membersInclude(Session.user()))
     else
-      !discussion.id || discussion.adminsInclude(user())
+      !discussion.id || discussion.adminsInclude(Session.user())
 
   canAnnouncePoll: (poll) ->
+    user = Session.user()
     return false if poll.discardedAt
     if poll.groupId
-      poll.group().adminsInclude(user()) ||
-      (poll.group().membersCanAnnounce && poll.group().membersInclude((user())))
+      poll.group().adminsInclude(user) ||
+      (poll.group().membersCanAnnounce && poll.adminsInclude(user)) ||
+      (poll.group().membersCanAnnounce && !poll.specifiedVotersOnly && poll.membersInclude(user))
     else
-      poll.adminsInclude(user())
+      poll.adminsInclude(user) ||
+      (!poll.specifiedVotersOnly && poll.membersInclude(user))
 
   canAddMembersPoll: (poll) ->
     poll.adminsInclude(user())
 
   canAddGuestsPoll: (poll) ->
     if poll.groupId
-      poll.group().adminsInclude(user()) ||
-      (poll.group().membersCanAddGuests && poll.group(user()))
+      poll.group().adminsInclude(Session.user()) ||
+      (poll.group().membersCanAddGuests && poll.group(Session.user()))
     else
-      poll.adminsInclude(user())
+      poll.adminsInclude(Session.user())
 
   canAddMembersToGroup: (group) ->
     group.adminsInclude(Session.user()) or
