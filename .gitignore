@@ -17,7 +17,6 @@ Session.vim
 *.log
 .idea
 .env
-bin/
 .powenv
 .byebug_history
 logfile
