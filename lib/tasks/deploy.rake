@@ -18,7 +18,7 @@ namespace :deploy do
   desc "fetch additional stuff"
   task :fetch do
     ['engines/loomio_subs','loomio-website'].each do |dir|
-      run_commands("rm -rf #{dir}") if Dir.exists?(dir)
+      run_commands("rm -rf #{dir}") if Dir.exist?(dir)
     end
 
     puts "fetching loomio_subs"
