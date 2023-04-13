@@ -85,9 +85,9 @@ jobs:
     - uses: actions/checkout@v2
     # - uses: browser-actions/setup-chrome@v1.2.0
     - run: |
-        VERSION_STRING="110.0.5481.77"
-        wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${VERSION_STRING}_amd64.deb"
-        sudo dpkg -i "google-chrome-stable_${VERSION_STRING}_amd64.deb"
+      VERSION_STRING="110.0.5481.77"
+      wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${VERSION_STRING}_amd64.deb"
+      sudo dpkg -i "google-chrome-stable_${VERSION_STRING}_amd64.deb"
     - run: chrome --version
     - uses: nanasess/setup-chromedriver@v2
       with:
