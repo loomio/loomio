@@ -94,8 +94,8 @@ jobs:
     #   #   sudo dpkg -i "google-chrome-stable_110.0.5481.77_amd64.deb"
     #   #   chrome --version
     - uses: nanasess/setup-chromedriver@v2
-    # with:
-    #   chromedriver-version: '110.0.5481.77'
+      with:
+        chromedriver-version: '112.0.5615.49'
     # - run: |
     #     export DISPLAY=:99
     #     chromedriver --url-base=/wd/hub &
