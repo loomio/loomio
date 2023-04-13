@@ -217,10 +217,10 @@ class DiscussionService
     end
   end
 
-  def self.mark_summary_email_as_read(user_id, params)
+  def self.mark_summary_email_as_read(user_id, time_start_i, time_finish_i)
     user = User.find_by!(id: user_id)
-    time_start  = Time.at(params[:time_start].to_i).utc
-    time_finish = Time.at(params[:time_finish].to_i).utc
+    time_start  = Time.at(time_start_i).utc
+    time_finish = Time.at(time_finish_i).utc
     time_range = time_start..time_finish
 
     DiscussionQuery.visible_to(user: user, only_unread: true, or_public: false, or_subgroups: false).last_activity_after(time_start).each do |discussion|

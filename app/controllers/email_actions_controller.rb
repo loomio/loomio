@@ -26,7 +26,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   def mark_summary_email_as_read
-    GenericWorker.perform_async('DiscussionService', 'mark_summary_email_as_read', user.id, params.slice(:time_start, :time_finish))
+    GenericWorker.perform_async('DiscussionService', 'mark_summary_email_as_read', user.id, params[:time_start].to_i, params[:time_finish].to_i)
 
     respond_to do |format|
       format.html {
