@@ -84,6 +84,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: stable
     - run: chrome --version
     # - name: install chrome
     #   run: chrome --version
