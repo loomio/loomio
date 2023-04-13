@@ -83,11 +83,12 @@ jobs:
           --health-retries 5
     steps:
     # - uses: actions/checkout@v2
-    # - name: install chrome
-    #   run: |
-    #     wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_110.0.5481.77_amd64.deb"
-    #     sudo dpkg -i "google-chrome-stable_110.0.5481.77_amd64.deb"
-    #     chrome --version
+    - name: install chrome
+      run: chrome --version
+      # run: |
+      #   wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_110.0.5481.77_amd64.deb"
+      #   sudo dpkg -i "google-chrome-stable_110.0.5481.77_amd64.deb"
+      #   chrome --version
     - uses: nanasess/setup-chromedriver@v2
     # with:
     #   chromedriver-version: '110.0.5481.77'
