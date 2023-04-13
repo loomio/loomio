@@ -83,19 +83,7 @@ jobs:
           --health-retries 5
     steps:
     - uses: actions/checkout@v2
-    # - uses: browser-actions/setup-chrome@v1.2.0
-    - run: |
-        VERSION_STRING="110.0.5481.77"
-        wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${VERSION_STRING}_amd64.deb"
-        sudo dpkg -i "google-chrome-stable_${VERSION_STRING}_amd64.deb"
-    - run: chrome --version
-    - uses: nanasess/setup-chromedriver@v2
-      with:
-      chromedriver-version: '110.0.5481.77'
-    # - run: |
-    #     export DISPLAY=:99
-    #     chromedriver --url-base=/wd/hub &
-    #     sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+    - uses: nanasess/setup-chromedriver@v1
     - name: install libvips
       run: sudo apt-get install -y libvips
     - name: git checkout
@@ -108,7 +96,7 @@ jobs:
     - name: install node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '16'
     - name: start websocker server
       run: |
         echo $PWD
