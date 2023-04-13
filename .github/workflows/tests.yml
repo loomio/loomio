@@ -83,6 +83,8 @@ jobs:
           --health-retries 5
     steps:
     - uses: actions/checkout@v2
+    - uses: browser-actions/setup-chrome@v1
+    - run: chrome --version
     - uses: nanasess/setup-chromedriver@v2
     # with:
     #   # Optional: do not specify to match Chrome's version
