@@ -82,13 +82,15 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    # - uses: actions/checkout@v2
-    - name: install chrome
-      run: chrome --version
-      # run: |
-      #   wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_110.0.5481.77_amd64.deb"
-      #   sudo dpkg -i "google-chrome-stable_110.0.5481.77_amd64.deb"
-      #   chrome --version
+    - uses: actions/checkout@v2
+    - uses: browser-actions/setup-chrome@v1
+    - run: chrome --version
+    # - name: install chrome
+    #   run: chrome --version
+    #   # run: |
+    #   #   wget "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_110.0.5481.77_amd64.deb"
+    #   #   sudo dpkg -i "google-chrome-stable_110.0.5481.77_amd64.deb"
+    #   #   chrome --version
     - uses: nanasess/setup-chromedriver@v2
     # with:
     #   chromedriver-version: '110.0.5481.77'
