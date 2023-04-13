@@ -90,7 +90,7 @@ jobs:
         chrome --version
     - uses: nanasess/setup-chromedriver@v2
       with:
-      chromedriver-version: '110.0.5481.77'
+        chromedriver-version: '110.0.5481.77'
     # - run: |
     #     export DISPLAY=:99
     #     chromedriver --url-base=/wd/hub &
