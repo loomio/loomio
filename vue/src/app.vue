@@ -127,45 +127,4 @@ a
   .lmo-no-print
     display: none !important
 
-/* roboto-300 - latin
-@font-face
-  font-family: 'Roboto'
-  font-style: normal
-  font-weight: 300
-  src: local(""), url('/fonts/roboto-v29-latin-300.woff2') format("woff2")
-
-/* roboto-regular - latin
-@font-face
-  font-family: 'Roboto'
-  font-style: normal
-  font-weight: 400
-  src: local(""), url('/fonts/roboto-v29-latin-regular.woff2') format("woff2")
-
-/* roboto-italic - latin
-@font-face
-  font-family: 'Roboto'
-  font-style: italic
-  font-weight: 400
-  src: local(""), url('/fonts/roboto-v29-latin-italic.woff2') format("woff2")
-
-/* roboto-500 - latin
-@font-face
-  font-family: 'Roboto'
-  font-style: normal
-  font-weight: 500
-  src: local(""), url('/fonts/roboto-v29-latin-500.woff2') format("woff2")
-
-/* roboto-700 - latin
-@font-face
-  font-family: 'Roboto'
-  font-style: normal
-  font-weight: 700
-  src: local(""), url('/fonts/roboto-v29-latin-700.woff2') format("woff2")
-
-/* roboto-mono-regular - latin
-@font-face
-  font-family: 'Roboto Mono'
-  font-style: normal
-  font-weight: 400
-  src: local(""), url('/fonts/roboto-mono-v13-latin-regular.woff2') format("woff2")
 </style>

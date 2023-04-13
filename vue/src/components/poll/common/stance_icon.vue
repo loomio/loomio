@@ -1,5 +1,4 @@
 <script lang="coffee">
-
 export default
   props:
     stance: Object
@@ -45,16 +44,16 @@ export default
     background-color: #fff
 
 .poll-proposal-chart-preview__stance--agree
-  background-image: url(/img/agree.svg)
+  background-image: url(@/assets/agree.svg)
 .poll-proposal-chart-preview__stance--yes
-  background-image: url(/img/yes.svg)
+  background-image: url(@/assets/agree.svg)
 .poll-proposal-chart-preview__stance--no
-  background-image: url(/img/no.svg)
+  background-image: url(@/assets/disagree.svg)
 .poll-proposal-chart-preview__stance--disagree
-  background-image: url(/img/disagree.svg)
+  background-image: url(@/assets/disagree.svg)
 .poll-proposal-chart-preview__stance--block
-  background-image: url(/img/block.svg)
+  background-image: url(@/assets/block.svg)
 .poll-proposal-chart-preview__stance--abstain
-  background-image: url(/img/abstain.svg)
+  background-image: url(@/assets/block.svg)
 
 </style>

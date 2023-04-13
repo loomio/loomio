@@ -1,5 +1,5 @@
 # import emojione from 'emojione'
-import marked from 'marked'
+import { marked } from 'marked'
 import { clone, kebabCase } from 'lodash'
 import { colonsToUnicode } from '@/shared/helpers/emojis'
 import parameterize from '@/shared/helpers/parameterize'

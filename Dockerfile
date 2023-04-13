@@ -67,6 +67,7 @@ RUN rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 RUN apt-get -y install nodejs
+RUN npm install -g npm
 
 WORKDIR /loomio
 ADD . /loomio
