@@ -1,7 +1,7 @@
 class EmailValidator < ActiveModel::EachValidator
-  def validate_each(record, attr_name, value)
+  def validate_each(record, attribute, value)
     unless value =~ Devise.email_regexp
-      record.errors.add(attr_name, :email, options.merge(:value => value))
+      record.errors.add(attribute, "Not a valid email")
     end
   end
 end
