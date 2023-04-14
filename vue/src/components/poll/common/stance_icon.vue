@@ -43,17 +43,5 @@ export default
   .poll-common-stance-icon
     background-color: #fff
 
-.poll-proposal-chart-preview__stance--agree
-  background-image: url(@/assets/agree.svg)
-.poll-proposal-chart-preview__stance--yes
-  background-image: url(@/assets/agree.svg)
-.poll-proposal-chart-preview__stance--no
-  background-image: url(@/assets/disagree.svg)
-.poll-proposal-chart-preview__stance--disagree
-  background-image: url(@/assets/disagree.svg)
-.poll-proposal-chart-preview__stance--block
-  background-image: url(@/assets/block.svg)
-.poll-proposal-chart-preview__stance--abstain
-  background-image: url(@/assets/block.svg)
 
 </style>
