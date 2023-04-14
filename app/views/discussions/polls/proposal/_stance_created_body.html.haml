@@ -5,7 +5,7 @@
       .poll-common-stance-choice.mr-1.mb-1{:row => ""}
         %span
           .v-avatar.v-avatar--tile{:style => "height: 24px; min-width: 24px; width: 24px;"}
-            %img{:alt => t("poll_#{poll.poll_type}_options.#{stance_choice.poll_option.name}"), :src => "/img/#{stance_choice.poll_option.name}.svg"}/
+            %img{:alt => t("poll_#{poll.poll_type}_options.#{stance_choice.poll_option.name.downcase}"), :src => "/img/#{stance_choice.poll_option.name.downcase}.svg"}/
     %span
       %span{"aria-hidden" => "true"}  ·
     %span.text--secondary.text-body-2
