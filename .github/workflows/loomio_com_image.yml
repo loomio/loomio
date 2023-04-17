@@ -16,13 +16,13 @@ jobs:
         if: env.HAVESECRET != null
 
       - name: Check out loomio_subs engine
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         if: env.HAVESECRET != null
         with:
           token: ${{ secrets.GH_PAT }}
           repository: loomio/loomio_subs
           path: engines
-          ref: master
+          ref: main
 
       - name: Check out loomio-website gem
         uses: actions/checkout@v3
