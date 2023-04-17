@@ -43,3 +43,8 @@ jobs:
           rm -rf ./website
           echo "hellooooo"
           echo `ls -a`
+
+      - name: build docker image
+        run: |
+          docker build . -t loomio/loomio_com:latest
+          docker push ghcr.io/loomio/loomio_com:latest
