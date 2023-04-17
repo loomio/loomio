@@ -1,0 +1,42 @@
+name: Publish Loomio.com image
+
+on:
+  # push: master
+  push:
+
+jobs:
+  push_to_registry:
+    name: Build and push loomio.com image
+    runs-on: ubuntu-latest
+    env:
+      HAVESECRET: ${{ secrets.DOCKER_USERNAME }}
+    steps:
+      - name: Check out loomio source
+        uses: actions/checkout@v2
+        if: env.HAVESECRET != null
+
+      - name: Check out loomio_subs engine
+        uses: actions/checkout@v2
+        if: env.HAVESECRET != null
+        with:
+          token: ${{ secrets.GH_PAT }}
+          repository: loomio/loomio_subs
+          path: engines
+          ref: master
+
+      - name: Check out loomio-website gem
+        uses: actions/checkout@v2
+        if: env.HAVESECRET != null
+        with:
+          token: ${{ secrets.GH_PAT }}
+          repository: loomio/loomio-website
+          path: website
+          ref: main
+
+      - name: build website
+        run: |
+          cd website
+          npm install
+          npm run build
+          cd ..
+          cp -R ./website/_site/* ./public/
