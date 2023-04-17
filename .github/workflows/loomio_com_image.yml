@@ -40,3 +40,6 @@ jobs:
           npm run build
           cd ..
           cp -R ./website/_site/* ./public/
+          rm -rf ./website
+          echo "hellooooo"
+          echo `ls -a`
