@@ -12,7 +12,7 @@ jobs:
       HAVESECRET: ${{ secrets.DOCKER_USERNAME }}
     steps:
       - name: Check out loomio source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         if: env.HAVESECRET != null
 
       - name: Check out loomio_subs engine
@@ -25,7 +25,7 @@ jobs:
           ref: master
 
       - name: Check out loomio-website gem
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         if: env.HAVESECRET != null
         with:
           token: ${{ secrets.GH_PAT }}
