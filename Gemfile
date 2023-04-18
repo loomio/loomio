@@ -95,3 +95,5 @@ end
 if Dir.exist?('engines/loomio_subs')
   gem 'loomio_subs', path: 'engines/loomio_subs'
 end
+
+gem "mrsk", "~> 0.10.1"

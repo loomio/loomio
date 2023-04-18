@@ -9,15 +9,13 @@ jobs:
     name: Build and push loomio.com image
     runs-on: ubuntu-latest
     env:
-      HAVESECRET: ${{ secrets.DOCKER_USERNAME }}
+      GH_PAT: ${{ secrets.GH_PAT }}
     steps:
       - name: Check out loomio source
         uses: actions/checkout@v3
-        if: env.HAVESECRET != null
 
       - name: Check out loomio_subs engine
         uses: actions/checkout@v3
-        if: env.HAVESECRET != null
         with:
           token: ${{ secrets.GH_PAT }}
           repository: loomio/loomio_subs
@@ -26,7 +24,6 @@ jobs:
 
       - name: Check out loomio-website gem
         uses: actions/checkout@v3
-        if: env.HAVESECRET != null
         with:
           token: ${{ secrets.GH_PAT }}
           repository: loomio/loomio-website
@@ -41,10 +38,9 @@ jobs:
           cd ..
           cp -R ./website/_site/* ./public/
           rm -rf ./website
-          echo "hellooooo"
-          echo `ls -a`
 
       - name: build docker image
         run: |
+          echo $GH_PAT | docker login ghcr.io -u robguthrie --password-stdin
           docker build . -t loomio/loomio_com:latest
           docker push ghcr.io/loomio/loomio_com:latest
