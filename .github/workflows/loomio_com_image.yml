@@ -42,5 +42,5 @@ jobs:
       - name: build docker image
         run: |
           echo $GH_PAT | docker login ghcr.io -u robguthrie --password-stdin
-          docker build . -t loomio/loomio:latest
-          docker push ghcr.io/loomio/loomio:latest
+          docker build . -t ghcr.io/loomio/loomio_com:latest
+          docker push ghcr.io/loomio/loomio_com:latest
