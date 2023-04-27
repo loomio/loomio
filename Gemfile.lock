@@ -101,7 +101,7 @@ GEM
       ruby2_keywords (>= 0.0.2, < 1.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.744.0)
+    aws-partitions (1.750.0)
     aws-sdk-core (3.171.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -110,7 +110,7 @@ GEM
     aws-sdk-kms (1.63.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.120.1)
+    aws-sdk-s3 (1.121.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
@@ -389,7 +389,7 @@ GEM
     paper_trail (14.0.0)
       activerecord (>= 6.0)
       request_store (~> 1.4)
-    pg (1.4.6)
+    pg (1.5.2)
     premailer (1.21.0)
       addressable
       css_parser (>= 1.12.0)
@@ -402,7 +402,7 @@ GEM
     puma (6.2.2)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-attack (6.6.1)
       rack (>= 1.0, < 3)
     rack-test (2.1.0)
@@ -529,13 +529,13 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (5.8.0)
+    sentry-rails (5.9.0)
       railties (>= 5.0)
-      sentry-ruby (~> 5.8.0)
-    sentry-ruby (5.8.0)
+      sentry-ruby (~> 5.9.0)
+    sentry-ruby (5.9.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (5.8.0)
-      sentry-ruby (~> 5.8.0)
+    sentry-sidekiq (5.9.0)
+      sentry-ruby (~> 5.9.0)
       sidekiq (>= 3.0)
     sidekiq (6.5.8)
       connection_pool (>= 2.2.5, < 3)
@@ -640,7 +640,7 @@ DEPENDENCIES
   pg
   premailer-rails
   puma
-  rack (= 2.2.6.4)
+  rack (= 2.2.7)
   rack-attack
   rack-timeout
   rack_session_access
