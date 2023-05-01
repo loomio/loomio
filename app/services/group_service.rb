@@ -1,26 +1,23 @@
 module GroupService
   def self.remote_cover_photo
     # id like to use unsplash api but need to work out how to meet their attribution requirements
-    if !Rails.env.test?
-      [
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/001/original/open-uri20150904-3-16e2exd?1441337903",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/002/original/open-uri20150904-3-rdqbrq?1441337903",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/003/original/open-uri20150904-3-1oppl5v?1441337903",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/004/original/open-uri20150904-3-pk5rt7?1441337903",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/005/original/open-uri20150904-3-llrp8p?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/006/original/open-uri20150904-3-12f1pb7?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/007/original/open-uri20150904-3-mnvdi7?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/008/original/open-uri20150904-3-ug7qk8?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/009/original/open-uri20150904-3-kxuccv?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/010/original/open-uri20150904-3-1v5vy0t?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/011/original/open-uri20150904-3-nk5ttf?1441337905",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/012/original/open-uri20150904-3-12mh2l4?1441337905",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/013/original/open-uri20150904-3-1rh3y2o?1441337905",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/014/original/open-uri20150904-3-18nwpr9?1441337905"
-      ].sample
-    else
-      [ Rails.root.join('public/theme/default_group_cover.png') ].sample
-    end
+    filename = %w[
+      cover1.jpg
+      cover2.jpg
+      cover3.jpg
+      cover4.jpg
+      cover5.jpg
+      cover6.jpg
+      cover7.jpg
+      cover8.jpg
+      cover9.jpg
+      cover10.jpg
+      cover11.jpg
+      cover12.jpg
+      cover13.jpg
+      cover14.jpg
+    ].sample
+    Rails.root.join("public/theme/group_cover_photos/#{filename}")
   end
 
   def self.invite(group:, params:, actor:)

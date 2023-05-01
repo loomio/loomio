@@ -1952,7 +1952,7 @@ fr:
     stance_reason_required_label: Fournir une raison lors du vote est ...
     stance_reason_required: Requis
     stance_reason_optional: Optionnel
-    stance_reason_disabled: Handicapé
+    stance_reason_disabled: Désactivé
     stance_reason_is_required: Veuillez fournir une raison avec votre vote
     limit_reason_length: Limiter la raison à un maximum de 500 caractères
     save_poll: Enregistrer le sondage
