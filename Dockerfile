@@ -1,4 +1,6 @@
-FROM ruby:3.2.2
+FROM ruby:3.2.2 AS base
+
+ARG loomiocom
 
 ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 ENV MALLOC_ARENA_MAX=2
@@ -71,6 +73,7 @@ RUN npm install -g npm
 
 WORKDIR /loomio
 ADD . /loomio
+RUN if [ "$LOOMIOCOM" = "1" ] ; then rake deploy:fetch ; fi
 RUN bundle install
 
 WORKDIR /loomio/vue
@@ -81,3 +84,4 @@ WORKDIR /loomio
 EXPOSE 3000
 
 CMD /loomio/docker_start.sh
+

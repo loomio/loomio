@@ -1,5 +1,9 @@
 service: loomio
 image: loomio/loomio_com
+builder:
+  args:
+    LOOMIOCOM: 1
+  multiarch: false
 
 servers:
   web:
@@ -22,95 +26,79 @@ registry:
     - GH_PAT
 
 env:
-  # secret:
-  #   - RAILS_MASTER_KEY
+  secret:
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - CHARGIFY_API_KEY
+    - CHARGIFY_APP_NAME
+    - CHARGIFY_SITE_KEY
+    - DATABASE_URL
+    - DEVISE_SECRET
+    - GOOGLE_APP_KEY
+    - GOOGLE_APP_SECRET
+    - GOOGLE_CLOUD_KEY
+    - REDIS_CACHE_URL
+    - REDIS_QUEUE_URL
+    - RECAPTCHA_APP_KEY
+    - RECAPTCHA_SECRET_KEY
+    - SECRET_COOKIE_TOKEN
+    - SECRET_KEY_BASE
+    - SENTRY_PUBLIC_DSN
+    - SMTP_PASSWORD
+    - SMTP_USERNAME
+    - TRANSLATE_CREDENTIALS
   clear:
-    CANONICAL_HOST: loomiotest.org
-    SITE_NAME: Loomio-next
-    REPLY_HOSTNAME: reply.loomiotest.org
-    CHANNELS_URI: wss://channels.loomiotest.org
-    SMTP_DOMAIN: loomiotest.org
-    SMTP_SERVER: email-smtp.us-west-2.amazonaws.com
-    SMTP_PORT: 587
-    SMTP_USERNAME: AKIA2UKBBQNLQ3ED2W6B
-    SMTP_PASSWORD: BHuTeHNhHLLE07aWAunV6PLGXUy6r+rZ6OhuW4S1jliU
-    PUMA_WORKERS: 2
-    MIN_THREADS: 12
-    MAX_THREADS: 12
+    ALLOW_ROBOTS: 1
+    AWS_BUCKET: loomio-uploads
+    AWS_REGION: us-east-1
+    CANONICAL_HOST: www.loomio.xyz
+    CHANNELS_URI: 'wss://channels.loomio.xyz'
+    ERROR_PAGE_URL: 'https://help.loomio.com/en/error'
+    MAINTENANCE_PAGE_URL: 'https://help.loomio.com/en/maintenance'
+    EXPLORE_MIN_MEMBERS: 4
+    EXPLORE_MIN_THREADS: 2
+    EXPLORE_REQUIRE_SUBSCRIPTION: 1
+    FB_APP_ID_META: 457851034283863
+    FEATURES_DEMO_GROUPS: 1
+    FEATURES_SHOW_CONTACT: 1
+    FEATURES_SHOW_CONTACT_CONSENT: 1
+    FEATURES_SUBSCRIPTIONS: 1
+    FEATURES_TRIALS: 1
     FORCE_SSL: 1
+    GOOGLE_SITE_VERIFICATION: VBjE1ew0T5SvIIaVInuq-fkL4DkBKt3yVm0rptVREhc
+    HELPER_BOT_EMAIL: 'contact@loomio.com'
+    MALLOC_ARENA_MAX: 2
+    MAX_PENDING_INVITATIONS: 10000
+    MAX_THREADS: 30
+    MIN_THREADS: 30
+    NEWSLETTER_ENABLED: 1
+    OLD_REPLY_HOSTNAME: reply.loomio.org
+    PAID_INVITATIONS_RATE_LIMIT: 50000
+    # PLAUSABLE_SITE: 'loomio.org,all.loomio.com'
+    # PLAUSABLE_SRC: 'https://measure.loomio.com/js/script.js'
+    # PLAUSIBLE_SITE: 'loomio.org,all.loomio.com'
+    # PLAUSIBLE_SRC: 'https://measure.loomio.com/js/script.js'
+    PRIVACY_URL: 'https://help.loomio.com/en/policy/privacy'
+    PUMA_WORKERS: 12
+    RACK_ATTACK_RATE_MULTPLIER: 3
+    RACK_TIMEOUT_SERVICE_TIMEOUT: 40
+    RAILS_ENV: production
+    RAILS_LOG_LEVEL: info
+    REDIRECT_TO_CANONICAL_HOST: 1
+    REPLY_HOSTNAME: reply.loomio.xyz
+    SENTRY_SAMPLE_RATE: 0.1
+    SMTP_AUTH: plain
+    SMTP_DOMAIN: loomio.com
+    SMTP_PORT: 587
+    SMTP_SERVER: email-smtp.us-east-1.amazonaws.com
+    SPAM_REGEX: '(flipssl\\.com|zoofood\\.org|w3boats\\.com|revutap\\.com|slowimo\\.com|relumyx\\.com|fineoak\\.org|diide\\.com|gusronk\\.com|appnox\\.com|akxpert\\.com|patmui\\.com|xhypm\\.com|5y5u\\.com|boldhut\\.com|botfed\\.com|fineloans\\.org|netjook\\.com|aramidth\\.com|kindbest\\.com|bsmitao\\.com|astarmax\\.com|irahada\\.com|naymeo\\.com|ichkoch\\.com|onzmail\\.com|seacob\\.com|fineloans\\.org|bombaya\\.com|astarmax\\.com|asfalio\\.com|wifimaple\\.com|whyflkj\\.com|ddwfzp\\.com|sejkt\\.com)'
+    SUPPORT_EMAIL: 'contact@loomio.com'
+    TERMS_URL: 'https://help.loomio.com/en/policy/terms'
+    TRIAL_DAYS: 7
+    TRIAL_INVITATIONS_RATE_LIMIT: 150
     USE_RACK_ATTACK: 1
-    RACK_ATTACK_RATE_MULTPLIER: 5
-    RACK_ATTACK_TIME_MULTPLIER: 1
-    DATABASE_URL: postgresql://doadmin:AVNS_y-OdAEIPfReTSpRtNgK@db-loomio-com-do-user-727646-0.b.db.ondigitalocean.com:25060/defaultdb?sslmode=require
-    REDIS_URL: redis://redis:6379/0
-    ACTIVE_STORAGE_SERVICE: digitalocean
-    DO_ENDPOINT: https://syd1.digitaloceanspaces.com
-    DO_ACCESS_KEY_ID: DO00RQPRGZPUW3PAHD9P
-    DO_SECRET_ACCESS_KEY: CMJ8meE6E4awHuoqi4e5yjtZYNF2ifAu6Mz29jHx7/8
-    DO_BUCKET: loomiotest
-    SENTRY_PUBLIC_DSN: https://ecf9c5d9879d4fc5a72cfb60ebd075f5@bugs.loomio.io/7
-    ALLOW_ROBOTS:                    1
-    CHARGIFY_API_KEY:                zpd8P5LU57DjGWXwgk3p
-    CHARGIFY_APP_NAME:               loomio
-    CHARGIFY_SITE_KEY:               dP5UcDX5LTPyq98LSpv
-    DEVISE_SECRET:                   jei9dkfrus12k111222333ee4r4r4r44poocarrot
-    ERROR_PAGE_URL:                  https://help.loomio.com/en/error
-    MAINTENANCE_PAGE_URL:            https://help.loomio.com/en/maintenance
-    EXPLORE_MIN_MEMBERS:             4
-    EXPLORE_MIN_THREADS:             2
-    EXPLORE_REQUIRE_SUBSCRIPTION:    1
-    FB_APP_ID_META:                  457851034283863
-    FEATURES_DEMO_GROUPS:            1
-    FEATURES_SHOW_CONTACT:           1
-    FEATURES_SHOW_CONTACT_CONSENT:   1
-    FEATURES_SUBSCRIPTIONS:          1
-    FEATURES_TRIALS:                 1
-    GOOGLE_APP_KEY:                  354171176268.apps.googleusercontent.com
-    GOOGLE_APP_SECRET:               2LTFjpPqYnGcE-xE0k3ISsau
-    GOOGLE_CLOUD_KEY:                AIzaSyCXXwWrKlB6GY6w0mpFJRrlyG3ayj_556k
-    HELPER_BOT_EMAIL:                contact@loomio.com
-    NEWSLETTER_ENABLED:              1
-    OLD_REPLY_HOSTNAME:              reply.loomio.org
-    PAID_INVITATIONS_RATE_LIMIT:     50000
-    PRIVACY_URL:                     https://help.loomio.com/en/policy/privacy
-    RACK_ATTACK_RATE_MULTPLIER:      3
-    RACK_TIMEOUT_SERVICE_TIMEOUT:    40
-    RAILS_ENV:                       production
-    RECAPTCHA_APP_KEY:               6Lff0VoUAAAAAO7_jvINGkPucgNYRlZ72SdFQOSe
-    RECAPTCHA_SECRET_KEY:            6Lff0VoUAAAAAMk4c2HsfXAZIwMOFILoxWPoRLZr
-    REDIRECT_TO_CANONICAL_HOST:      1
-    REDIS_CACHE_URL:                 redis://default:8iyjoJy0AUt1ByKmVsiJ70VQewZDoeo3@redis-14929.c10.us-east-1-2.ec2.cloud.redislabs.com:14929
-    REDIS_QUEUE_URL:                 redis://default:PdeKf5tkvxRlrFRUmAWrLv1BwIFRpl9b@redis-11380.c74.us-east-1-4.ec2.cloud.redislabs.com:11380
-    REPLY_HOSTNAME:                  reply.loomio.com
-    SECRET_COOKIE_TOKEN:             e25c9a6592be3bacf55e36fa818a891ce6d46170e72677b062e21252e35c39c873fcb5721ac184e8837944fe7cfdab7570dc5f8ff0a5fb12ce7f20c85bbdb708
-    SECRET_KEY_BASE:                 e25c9a6592be3bacf55e36fa818a891ce6d46170e72677b062e21252e35c39c873fcb5721ac184e8837944fe7cfdab7570dc5f8ff0a5fb12ce7f20c85bbdb708
-    SENTRY_PUBLIC_DSN:               https://69a6622bed364b8199f20d64863b1537@bugs.loomio.io/2
-    SENTRY_SAMPLE_RATE:              0.1
-    SPAM_REGEX:                      (flipssl\.com|zoofood\.org|w3boats\.com|revutap\.com|slowimo\.com|relumyx\.com|fineoak\.org|diide\.com|gusronk\.com|appnox\.com|akxpert\.com|patmui\.com|xhypm\.com|5y5u\.com|boldhut\.com|botfed\.com|fineloans\.org|netjook\.com|aramidth\.com|kindbest\.com|bsmitao\.com|astarmax\.com|irahada\.com|naymeo\.com|ichkoch\.com|onzmail\.com|seacob\.com|fineloans\.org|bombaya\.com|astarmax\.com|asfalio\.com|wifimaple\.com|whyflkj\.com|ddwfzp\.com|sejkt\.com)
-    SUPPORT_EMAIL:                   contact@loomio.com
-    TERMS_URL:                       https://help.loomio.com/en/policy/terms
-    TRANSLATE_CREDENTIALS:           { "type": "service_account", "project_id": "loomio-production", "private_key_id": "936b16190c74966245409e828c9f7d1baa262279", "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCn9ahzeFUF1Oo1\nUvjWBwWvaHDroGM+KYdM5Ab8zyPAB3pJmBVoaRoJmbKQb2Sz+3bhGdBWeDH8b8WA\nAqkGWPybu3JmwqTOT7zegAoIGjJqI3DelaGYBH+Y4aDYIuQY4J4DuT71c0/OlG3B\nuZAuyC0mgqQ0+X1AN4IWChzIzIwZDCMyr9kSB8IjXQU7WAdEm32L5CB+icTYKni7\nc25qpmDjMJF5xbkrYu+GnUc+zcQNV9bWbbgIwtQipQcQ3tC8DlhFu+0HDn6YzVkO\nNYUc/fDb6YV6aM50LPeu8ZAaTUqaGc4rAXL0/4aOOkyfiYqNcsiQytbkEktaM0ED\nvCHbXw69AgMBAAECggEADrn1I0FdjGLZhtkNCfsDTm4PrzaDV8EdZKpToIPq7wcu\nJi4S+8dx/yh+Ow1r8h9DZ5jd/E7n7GnCZ9G+jy4V4UkDTquUoVA6z57ArRWFmRUd\nbC6zb0LptcuxUMdnt3SuS3Dzv7f0uzimvPHFCLeyxGnM9aYbC2/dKeCIxeRas5wJ\nR69rtFskeb69ZxOlZyMBdAT/xXW4Skuxldgszl/OA1DpqpVuWSoLGPAGO04L/Vtz\nIBDOIkRjLMLxj/X1q41VLU3HdNPr8YsmJcSL++MJp6mHB/K6YfpWUYHJGWqVS81a\nxnlvqQyrTLWYORoVa1dui7MC0C+trlL+1oNC8AxVowKBgQDWN9z83yVJzu4ZOmoA\nkemu84u6yvNZNDXQ7IAfbWnFt5qRzcW8Ryn6JbYEO7rJ11dOio0oASeok9VlM7HP\nhryP5sSBJpKZoOxXecL0vxdvnDlfpzKBS3zJTdGC7TjBbZEaQGjK+ce0XIyOWk1g\nwSJZQVVMiM+uI7GghYCdzXKIgwKBgQDIuA3s6Hfhe9CI8bpoJEZtNkKPwKJVkmsB\nGF/b3bgV4b7HZ0/oo3yVV2D4AJ5q7ixKRc5zdEQiUleRCuoPcwm15fd76wabqvi6\njcGSdrMinNRf0x5v0XYnkeltOjjhXl93jKSLn/3hl4zeBuEISK3Cn4fIoW/AKdS+\nyadVIL/nvwKBgQDA3gj0DwBmhI1wX1xi6PxJTPMoGWOhk9VEJjpwkTTjE5xx259F\nFZlgo6VOCGzzHxN3Hl1agDexmnBNro5PtxJ8SRvw38ar1OwVEgaKDqZOEYzCZymc\nqVdPcuXICEbKOBilVwpCfULlS1ItNHZoP1rqm1zuDFtXgMGDMc+LxBZzewKBgQCN\n8WsXoIY2lSKx1ZBnWU/cp8SGeEnUjgjR63TOvYsTHmOWDD98WzEdQ3+1omplYC0+\nEQOgrhYI14ZJchh3+HhjhE9x+JDhwRTIiLrdYsfnsFSXt2sM1GnkLdGPht72sZB9\nsJ4kh244/L2HvgGhpBQNUFfr0A6BLJPgoCaPkutjbQKBgExY4+7L3pzf/smMBCm2\nwlz7YJQprkKgaxnvj+NTQ3mCeF3o2p2uDgKLlcGEUUeVo4GbeA8844fMZaHut1a8\nbneY5jAyrU9iHKyUTFuOiNFZYmvhQYRCm1iWJgoBLhMsrgxi4bkreaWLhCZjygfI\n8vH7y/L0bEkjXmy3syUgZQ2r\n-----END PRIVATE KEY-----\n", "client_email": "loomio-production@appspot.gserviceaccount.com", "client_id": "", "auth_uri": "https://accounts.google.com/o/oauth2/auth", "token_uri": "https://oauth2.googleapis.com/token", "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs", "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/loomio-production%40appspot.gserviceaccount.com" }
-    TRIAL_DAYS:                      7
-    TRIAL_INVITATIONS_RATE_LIMIT:    150
-    USE_RACK_ATTACK:                 1
-    # PLAUSIBLE_SITE:                  loomio.org,all.loomio.com
-    # PLAUSIBLE_SRC:                   https://measure.loomio.com/js/script.js
-    # SENTRY_SECRET_DSN:               https://69a6622bed364b8199f20d64863b1537:b2152e7a55654e1db615e9dffc5ef631@bugs.loomio.io/2
-    # SMTP_AUTH:                       plain
-    # SMTP_DOMAIN:                     loomio.com
-    # SMTP_PASSWORD:                   BI3j4JuFO0UizZ1Rv/gmXpCyn2ioGXXDA+SoidH6UXxJ
-    # SMTP_PORT:                       587
-    # SMTP_SERVER:                     email-smtp.us-east-1.amazonaws.com
-    # SMTP_USERNAME:                   AKIA2UKBBQNL7NECRC7E
-    # AWS_ACCESS_KEY_ID:               AKIAJG73WYGWOUHX4B7A
-    # AWS_BUCKET:                      loomio-uploads
-    # AWS_REGION:                      us-east-1
-    # AWS_SECRET_ACCESS_KEY:           C31u8hGQ3CHzSgvhaHvE/udEPiartGul+9dxVP7b
-    # CANONICAL_HOST:                  www.loomio.com
-    # CHANNELS_URI:                    wss://channels.loomio.com
-    # PUMA_WORKERS:                    12
-    # MAX_THREADS:                     30
-    # MIN_THREADS:                     30
+
+
 
 accessories:
   # websockets:

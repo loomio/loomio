@@ -3,3 +3,4 @@ log/*
 cache/*
 .git/*
 storage/*
+**/.git
