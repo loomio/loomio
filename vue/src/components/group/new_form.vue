@@ -20,6 +20,7 @@ export default
     }
     uploading: false
     progress: 0
+    hostname: AppConfig.theme.canonical_host
     categories: [ 'board', 'party', 'coop', 'union', 'nonprofit', 'professional', 'government', 'community', 'other' ]
     parentGroups: []
     loadingHandle: false
@@ -139,7 +140,7 @@ v-card.group-form
     validation-errors(:subject="group", field="name")
 
     div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
-      v-text-field.group-form__handle#group-handle(:loading="loadingHandle" v-model='group.handle' :hint="$t('group_form.group_handle_placeholder', {handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
+      v-text-field.group-form__handle#group-handle(:loading="loadingHandle" v-model='group.handle' :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
       validation-errors(:subject="group", field="handle")
 
     div(v-if="group.parentId")

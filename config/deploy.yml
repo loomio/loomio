@@ -7,17 +7,27 @@ builder:
 
 servers:
   web:
-    - 165.227.76.125
+    hosts:
+      - 165.227.76.125
+    labels:
+      traefik.http.routers.loomio-web.rule: PathPrefix(`/`)
+      traefik.http.routers.loomio-web.entrypoints: web
+      traefik.http.routers.loomio-web-secure.rule: Host(`www.loomio.xyz`)
+      traefik.http.routers.loomio-web-secure.tls: true
+      traefik.http.routers.loomio-web-secure.entrypoints: websecure
+      # traefik.http.routers.loomio-web.rule: Path(`/`)
+      # traefik.http.routers.loomio-web-secure.rule: Path(`/`)
+      # traefik.http.routers.loomio-web-secure.tls.certresolver: letsencrypt
   job:
     hosts:
       - 159.89.42.168
     cmd: bundle exec sidekiq    
 
-  # cron:
-  #   hosts:
-  #     - 159.89.42.168
-  #   cmd:
-  #     bash -c "cat config/crontab | crontab - && cron -f"
+  cron:
+    hosts:
+      - 159.89.42.168
+    cmd:
+      bash -c "cat config/crontab | crontab - && cron -f"
 
 registry:
   server: ghcr.io
@@ -39,8 +49,8 @@ env:
     - GOOGLE_CLOUD_KEY
     - REDIS_CACHE_URL
     - REDIS_QUEUE_URL
-    - RECAPTCHA_APP_KEY
-    - RECAPTCHA_SECRET_KEY
+    # - RECAPTCHA_APP_KEY
+    # - RECAPTCHA_SECRET_KEY
     - SECRET_COOKIE_TOKEN
     - SECRET_KEY_BASE
     - SENTRY_PUBLIC_DSN
@@ -50,6 +60,7 @@ env:
 
   clear:
     ALLOW_ROBOTS: 1
+    # ASSUME_SSL: 1
     AWS_BUCKET: loomio-uploads
     AWS_REGION: us-east-1
     CANONICAL_HOST: www.loomio.xyz
@@ -65,6 +76,7 @@ env:
     FEATURES_SHOW_CONTACT_CONSENT: 1
     FEATURES_SUBSCRIPTIONS: 1
     FEATURES_TRIALS: 1
+    FORCE_SSL: 1
     GOOGLE_SITE_VERIFICATION: VBjE1ew0T5SvIIaVInuq-fkL4DkBKt3yVm0rptVREhc
     HELPER_BOT_EMAIL: 'contact@loomio.com'
     MALLOC_ARENA_MAX: 2
@@ -84,7 +96,7 @@ env:
     RACK_TIMEOUT_SERVICE_TIMEOUT: 40
     RAILS_ENV: production
     RAILS_LOG_LEVEL: info
-    REDIRECT_TO_CANONICAL_HOST: 1
+    # REDIRECT_TO_CANONICAL_HOST: 1
     REPLY_HOSTNAME: reply.loomio.xyz
     SENTRY_SAMPLE_RATE: 0.1
     SMTP_AUTH: plain
@@ -98,35 +110,38 @@ env:
     TRIAL_INVITATIONS_RATE_LIMIT: 150
     USE_RACK_ATTACK: 1
 
-
-
 accessories:
-  # websockets:
-  #   image: loomio/loomio_channel_server
-  #   host: 165.22.32.232
-  #   env:
-  #     APP_URL: https://www.loomiotest.org
+  redis-queue:
+    image: redis:6
+    host: 159.203.102.25
+    port: 6379
+    directories:
+      - data:/data
+    cmd:
+      redis-server --save 60 1 --loglevel warning --maxmemory-policy noeviction --maxmemory 384mb --protected-mode no --port 6379
 
-  # redis-cache:
-  #   image: redis:5.0
-  #   host: 10.132.53.193
-  #   port: 6379
-  #   directories:
-  #     - data:/data
-  #   cmd:
-  #     redis-server --save 60 1 --loglevel warning --maxmemory-policy allkeys-lru --maxmemory 512mb --protected-mode no
+  redis-cache:
+    image: redis:6
+    host: 159.203.102.25
+    port: 6380
+    directories:
+      - data:/data
+    cmd:
+      redis-server --save 60 1 --loglevel warning --maxmemory-policy allkeys-lru --maxmemory 384mb --protected-mode no --port 6380
 
-  # redis-queue:
-  #   image: redis:5.0
-  #   host: 104.236.65.131
-  #   port: 6379
-  #   directories:
-  #     - data:/data
-  #   cmd:
-  #     redis-server --save 60 1 --loglevel warning --maxmemory-policy allkeys-lru --maxmemory 512mb --protected-mode no
-
-# Configure custom arguments for Traefik
-# traefik:
-#   args:
-#     accesslog: true
-#     accesslog.format: json
+traefik:
+  options:
+    publish:
+      - "443:443"
+  args:
+    entryPoints.web.address: ":80"
+    entryPoints.websecure.address: ":443"
+    # volume:
+    #   - "/letsencrypt/acme.json:/letsencrypt/acme.json"
+    # entryPoints.web.http.redirections.entryPoint.to: websecure
+    # entryPoints.web.http.redirections.entryPoint.scheme: https
+    # entryPoints.web.http.redirections.entrypoint.permanent: true
+    # certificatesResolvers.letsencrypt.acme.email: "rob@loomio.org"
+    # certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
+    # certificatesResolvers.letsencrypt.acme.httpchallenge: true
+    # certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web 

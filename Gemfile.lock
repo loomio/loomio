@@ -5,6 +5,12 @@ GIT
     twitter-text (1.14.7)
       unf (~> 0.1.0)
 
+PATH
+  remote: engines/loomio_subs
+  specs:
+    loomio_subs (0.1.0)
+      rails (>= 7.0.4.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -649,6 +655,7 @@ DEPENDENCIES
   image_processing (~> 1.12)
   listen
   lograge
+  loomio_subs!
   maxminddb
   mrsk (~> 0.10.1)
   nokogiri

@@ -20,6 +20,7 @@ export default
     }
     uploading: false
     progress: 0
+    hostname: AppConfig.theme.canonical_host
     realGroup: Records.groups.find(@group.id)
 
   mounted: ->
@@ -156,7 +157,7 @@ v-card.group-form
             | (256x256 px)
         v-text-field.group-form__name#group-name.mt-4(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]' maxlength='255', :label="$t(groupNameLabel)")
         div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
-          v-text-field.group-form__handle#group-handle(v-model='group.handle', :hint="$t('group_form.group_handle_placeholder', {handle: group.handle})" maxlength='100', :label="$t('group_form.handle')")
+          v-text-field.group-form__handle#group-handle(v-model='group.handle', :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength='100', :label="$t('group_form.handle')")
           validation-errors(:subject="group" field="handle")
         v-spacer
 

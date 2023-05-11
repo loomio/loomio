@@ -1198,7 +1198,7 @@ en:
     subgroup_name: Subgroup name
     organization_name: Organization name
     handle: Handle
-    group_handle_placeholder: "Used in your group URL: www.loomio.org/{{handle}}"
+    group_handle_placeholder: "Used in your group URL: {{host}}/{{handle}}"
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What is the name of your group?'

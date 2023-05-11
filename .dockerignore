@@ -4,3 +4,4 @@ cache/*
 .git/*
 storage/*
 **/.git
+vue/node_modules/*

@@ -9,15 +9,13 @@ ENV RAILS_SERVE_STATIC_FILES=1
 ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT=development
 
-RUN gem update --system
-
 RUN apt-get update -qq
-
-RUN apt-get install -y \
+RUN apt-get install --no-install-recommends -y \
     autoconf \
     bison \
     build-essential \
     curl \
+    cron \
     ffmpeg \
     git \
     imagemagick \
@@ -62,8 +60,8 @@ RUN apt-get install -y \
     sudo \
     uuid-dev \
     zlib1g-dev
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
+
+RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /usr/share/doc /usr/share/man
 
 # install node
 
@@ -71,10 +69,18 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 RUN apt-get -y install nodejs
 RUN npm install -g npm
 
+
 WORKDIR /loomio
-ADD . /loomio
+
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+COPY . .
+
 RUN if [ "$LOOMIOCOM" = "1" ] ; then rake deploy:fetch ; fi
 RUN bundle install
+
+RUN bundle exec bootsnap precompile --gemfile app/ lib/
 
 WORKDIR /loomio/vue
 RUN npm install
@@ -84,4 +90,3 @@ WORKDIR /loomio
 EXPOSE 3000
 
 CMD /loomio/docker_start.sh
-
