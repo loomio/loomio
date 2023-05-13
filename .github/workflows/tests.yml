@@ -1,7 +1,7 @@
 name: tests
 
-# on:
-#   push: nothing
+on:
+  push:
 
 jobs:
   rspec:

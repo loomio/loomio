@@ -1,4 +1,4 @@
-FROM ruby:3.2.2 AS base
+FROM ruby:3.2.2
 
 ARG loomiocom
 

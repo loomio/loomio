@@ -107,16 +107,16 @@ GEM
       ruby2_keywords (>= 0.0.2, < 1.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.750.0)
-    aws-sdk-core (3.171.0)
+    aws-partitions (1.760.0)
+    aws-sdk-core (3.171.1)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.5)
       jmespath (~> 1, >= 1.6.1)
-    aws-sdk-kms (1.63.0)
+    aws-sdk-kms (1.64.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.121.0)
+    aws-sdk-s3 (1.122.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
@@ -314,7 +314,7 @@ GEM
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     icalendar (2.8.0)
       ice_cube (~> 0.16)
@@ -395,9 +395,9 @@ GEM
     net-ssh (7.1.0)
     net_http_timeout_errors (1.0.0)
     nio4r (2.5.9)
-    nokogiri (1.14.3-x86_64-darwin)
+    nokogiri (1.14.4-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.3-x86_64-linux)
+    nokogiri (1.14.4-x86_64-linux)
       racc (~> 1.4)
     oga (3.4)
       ast
@@ -408,7 +408,7 @@ GEM
     paper_trail (14.0.0)
       activerecord (>= 6.0)
       request_store (~> 1.4)
-    pg (1.5.2)
+    pg (1.5.3)
     premailer (1.21.0)
       addressable
       css_parser (>= 1.12.0)
@@ -507,9 +507,9 @@ GEM
       rspec-mocks (>= 2.99, < 4.0)
     rspec-collection_matchers (1.2.0)
       rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (3.12.1)
+    rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.2)
+    rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-its (1.3.0)
@@ -518,14 +518,14 @@ GEM
     rspec-mocks (3.12.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-rails (6.0.1)
+    rspec-rails (6.0.2)
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       railties (>= 6.1)
-      rspec-core (~> 3.11)
-      rspec-expectations (~> 3.11)
-      rspec-mocks (~> 3.11)
-      rspec-support (~> 3.11)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
     rspec-support (3.12.0)
     ruby-ll (2.1.2)
       ansi
@@ -611,7 +611,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.8)
 
 PLATFORMS
   x86_64-darwin-21
@@ -679,7 +679,7 @@ DEPENDENCIES
   rspec-activemodel-mocks
   rspec-collection_matchers
   rspec-its
-  rspec-rails (~> 6.0.1)
+  rspec-rails (~> 6.0.2)
   ruby-saml
   ruby-vips
   sass-rails
