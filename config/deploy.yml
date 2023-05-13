@@ -12,7 +12,7 @@ servers:
     labels:
       traefik.http.routers.loomio-web.rule: PathPrefix(`/`)
       traefik.http.routers.loomio-web.entrypoints: web
-      traefik.http.routers.loomio-web-secure.rule: Host(`www.loomio.xyz`)
+      traefik.http.routers.loomio-web-secure.rule: Host(`www.loomio.com`)
       traefik.http.routers.loomio-web-secure.tls: true
       traefik.http.routers.loomio-web-secure.entrypoints: websecure
       # traefik.http.routers.loomio-web.rule: Path(`/`)
@@ -51,7 +51,6 @@ env:
     - REDIS_QUEUE_URL
     # - RECAPTCHA_APP_KEY
     # - RECAPTCHA_SECRET_KEY
-    - SECRET_COOKIE_TOKEN
     - SECRET_KEY_BASE
     - SENTRY_PUBLIC_DSN
     - SMTP_PASSWORD
@@ -63,8 +62,8 @@ env:
     # ASSUME_SSL: 1
     AWS_BUCKET: loomio-uploads
     AWS_REGION: us-east-1
-    CANONICAL_HOST: www.loomio.xyz
-    CHANNELS_URI: 'wss://channels.loomio.xyz'
+    CANONICAL_HOST: www.loomio.com
+    CHANNELS_URI: 'wss://channels.loomio.com'
     ERROR_PAGE_URL: 'https://help.loomio.com/en/error'
     MAINTENANCE_PAGE_URL: 'https://help.loomio.com/en/maintenance'
     EXPLORE_MIN_MEMBERS: 4
@@ -97,7 +96,7 @@ env:
     RAILS_ENV: production
     RAILS_LOG_LEVEL: info
     # REDIRECT_TO_CANONICAL_HOST: 1
-    REPLY_HOSTNAME: reply.loomio.xyz
+    REPLY_HOSTNAME: reply.loomio.com
     SENTRY_SAMPLE_RATE: 0.1
     SMTP_AUTH: plain
     SMTP_DOMAIN: loomio.com
