@@ -49,8 +49,8 @@ env:
     - GOOGLE_CLOUD_KEY
     - REDIS_CACHE_URL
     - REDIS_QUEUE_URL
-    # - RECAPTCHA_APP_KEY
-    # - RECAPTCHA_SECRET_KEY
+    - RECAPTCHA_APP_KEY
+    - RECAPTCHA_SECRET_KEY
     - SECRET_KEY_BASE
     - SENTRY_PUBLIC_DSN
     - SMTP_PASSWORD
@@ -80,19 +80,17 @@ env:
     HELPER_BOT_EMAIL: 'contact@loomio.com'
     MALLOC_ARENA_MAX: 2
     MAX_PENDING_INVITATIONS: 10000
-    MAX_THREADS: 30
-    MIN_THREADS: 30
+    MAX_THREADS: 10
+    MIN_THREADS: 10
     NEWSLETTER_ENABLED: 1
     OLD_REPLY_HOSTNAME: reply.loomio.org
     PAID_INVITATIONS_RATE_LIMIT: 50000
-    # PLAUSABLE_SITE: 'loomio.org,all.loomio.com'
-    # PLAUSABLE_SRC: 'https://measure.loomio.com/js/script.js'
-    # PLAUSIBLE_SITE: 'loomio.org,all.loomio.com'
-    # PLAUSIBLE_SRC: 'https://measure.loomio.com/js/script.js'
+    PLAUSIBLE_SITE: 'loomio.org,all.loomio.com'
+    PLAUSIBLE_SRC: 'https://measure.loomio.com/js/script.js'
     PRIVACY_URL: 'https://help.loomio.com/en/policy/privacy'
-    PUMA_WORKERS: 12
+    PUMA_WORKERS: 4
     RACK_ATTACK_RATE_MULTPLIER: 3
-    RACK_TIMEOUT_SERVICE_TIMEOUT: 40
+    RACK_TIMEOUT_SERVICE_TIMEOUT: 30
     RAILS_ENV: production
     RAILS_LOG_LEVEL: info
     # REDIRECT_TO_CANONICAL_HOST: 1
