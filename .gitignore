@@ -36,6 +36,7 @@ Session.vim
 .env
 .powenv
 .env.production
+config/deploy.yml
 .byebug_history
 logfile
 
