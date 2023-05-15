@@ -39,7 +39,7 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
           time-ago(:date='eventable.updatedAt || eventable.castAt')
     .poll-common-stance(v-if="poll.showResults() && !collapsed")
       v-layout(v-if="!eventable.singleChoice()" wrap align-center)
-        strand-item-headline.text--secondary(:event="event", :eventable="eventable")
+        strand-item-headline.text--secondary(:event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt")
         poll-common-stance-choices(:stance="eventable")
       formatted-text.poll-common-stance-created__reason(:model="eventable", column="reason")
       link-previews(:model="eventable")

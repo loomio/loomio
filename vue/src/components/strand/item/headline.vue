@@ -8,9 +8,10 @@ export default
     event: Object
     eventable: Object
     collapsed: Boolean
+    dateTime: Object
 
   computed:
-    datetime: -> @eventable.castAt || @eventable.createdAt
+    datetime: -> @dateTime || @eventable.castAt || @eventable.createdAt
     headline: ->
       actor = @event.actor()
       if @event.kind == 'new_comment' && @collapsed && @event.descendantCount > 0
