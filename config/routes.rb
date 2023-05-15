@@ -11,6 +11,8 @@ end
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get "/up", to: proc { [200, {}, ["ok"]] }, as: :rails_health_check
+  
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => '/admin/sidekiq'
     mount Blazer::Engine, at: "/admin/blazer"

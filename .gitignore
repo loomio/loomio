@@ -1,3 +1,20 @@
+# loomio.com marketing injections
+public/about/
+public/blog/
+public/css/
+public/flexible-workflows-and-templates/
+public/fonts/roboto.css
+public/images/
+public/index.html
+public/js/
+public/marketing-sitemap.xml
+public/palette/
+public/pricing/
+public/the-loomio-process/
+public/why-collaborative-decision-making/
+public/wp-content/
+
+# rails stuff
 .bundle
 db/*.sqlite3
 config/database.yml
@@ -18,6 +35,8 @@ Session.vim
 .idea
 .env
 .powenv
+.env.production
+config/deploy.yml
 .byebug_history
 logfile
 

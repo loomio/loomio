@@ -9,7 +9,7 @@ class DemoService
 			TranslationService.translate_group_content!(demo.group, locale, true)
 		end
 
-		expected = 2
+		expected = ENV.fetch('FEATURES_DEMO_GROUPS_SIZE', 3)
 		remaining = Redis::List.new('demo_group_ids').value.size
 
 		(expected - remaining).times do
