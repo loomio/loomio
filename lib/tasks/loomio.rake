@@ -55,7 +55,7 @@ namespace :loomio do
   end
 
   task hourly_tasks: :environment do
-    puts "Running Loomio hourly tasks"
+    puts "#{DateTime.now.iso8601} Loomio hourly tasks"
     ThrottleService.reset!('hour')
     GenericWorker.perform_async('PollService', 'expire_lapsed_polls')
     GenericWorker.perform_async('PollService', 'publish_closing_soon')
@@ -79,7 +79,6 @@ namespace :loomio do
     if (Time.now.hour == 0 && Time.now.mday == 1)
       UpdateBlockedDomainsWorker.perform_async
     end
-    puts "Finished running Loomio hourly tasks"
   end
 
   task generate_error: :environment do
