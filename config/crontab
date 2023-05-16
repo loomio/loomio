@@ -1,1 +1,1 @@
-0 * * * *  bundle exec rake loomio:hourly_tasks
+0 * * * *  /loomio/bin/rake loomio:hourly_tasks > /proc/1/fd/1 2>/proc/1/fd/2

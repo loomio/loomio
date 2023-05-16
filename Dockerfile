@@ -1,7 +1,5 @@
 FROM ruby:3.2.2
 
-ARG loomiocom
-
 ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 ENV MALLOC_ARENA_MAX=2
 ENV RAILS_LOG_TO_STDOUT=1
@@ -77,7 +75,6 @@ RUN bundle install
 
 COPY . .
 
-RUN if [ "$LOOMIOCOM" = "1" ] ; then rake deploy:fetch ; fi
 RUN bundle install
 
 RUN bundle exec bootsnap precompile --gemfile app/ lib/
