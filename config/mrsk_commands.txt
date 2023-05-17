@@ -1,0 +1,12 @@
+mrsk app exec -i --reuse 'rails c'
+mrsk app exec -i --reuse 'rails db:setup' 
+mrsk app exec -p 'bin/rails db:setup'
+mrsk app exec -p 'bin/rails runner "puts ENV['DATABASE_URL']"'
+mrsk app exec -p --reuse "bin/rails runner \"puts Rails.configuration.database_configuration.inspect\""
+mrsk app exec -p --reuse "bin/rails runner \"puts ActiveRecord::Base.connection_db_config\""
+mrsk app exec -p --reuse "rails about" 
+
+
+mrsk setup
+mrsk deploy --skip-push
+mrsk redeploy

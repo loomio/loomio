@@ -5,3 +5,4 @@ cache/*
 storage/*
 **/.git
 vue/node_modules/*
+config/deploy.yml
