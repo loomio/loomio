@@ -48,6 +48,7 @@ class Group < ApplicationRecord
   has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
 
   has_many :polls, dependent: :destroy
+  has_many :poll_templates, dependent: :destroy
 
   has_many :documents, as: :model, dependent: :destroy
   has_many :requested_users, through: :membership_requests, source: :user

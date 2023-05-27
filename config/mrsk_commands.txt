@@ -7,6 +7,11 @@ mrsk app exec -p --reuse "bin/rails runner \"puts ActiveRecord::Base.connection_
 mrsk app exec -p --reuse "rails about" 
 
 
+mrsk app exec -p 'ls -la'
+
 mrsk setup
 mrsk deploy --skip-push
 mrsk redeploy
+
+mrsk deploy --skip-push; mrsk traefik reboot 
+

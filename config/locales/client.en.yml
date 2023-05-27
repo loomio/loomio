@@ -275,6 +275,8 @@ en:
       unlike: 'Unlike'
       update: 'Update'
       cancel: 'Cancel'
+      add_favourite: Add favourite
+      remove_favourite: Remove favourite
       show_more: "Show more"
       show_fewer: "Show fewer"
       view_count_more: "View %{count} more"
@@ -1736,6 +1738,9 @@ en:
   decision_tools_card:
     choose_type: Choose poll type
     title: Facilitate
+    advice_title: Advice
+    consent_title: Consent
+    consensus_title: Consensus
     proposal_title: Proposal
     count_title: Opt-in
     check_title: Sense check
@@ -1756,17 +1761,31 @@ en:
     prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
+    edit_template: Edit template
+    proposal: Proposal
+    run_process: Run process
+    proposal_templates: Proposal templates
+    custom: Custom
+    custom_process: Custom process
+    custom_poll: Custom poll
     delete_poll: Delete poll
     select_count_options:  Select {{count}} options
     select_minimum_to_maximum_options: Select {{minimum}} to {{maximum}} options
     custom_poll_types: Custom poll types
     example_polls_from_thread_template: Examples from thread template
     poll_template: Poll template
+    poll_template_saved: Poll template saved
     poll_templates: Poll templates
     poll_types: Poll types
+    new_poll_template: New poll template
+    edit_poll_template: Edit poll template
     new_poll_type: New poll type
     edit_poll_type: Edit poll type
+    new_custom_poll: New custom poll
+    edit_custom_poll: Edit custom poll
     create_a_custom_poll_type: Create a new poll type with custom terminology and settings
+    create_a_custom_process: Create a new process with your own terminology and options
+    create_a_custom_poll: Create a poll with custom terminology and settings
     decision: Decision
     decision_templates: Decision templates
     remove_your_vote: Remove your vote
@@ -1829,7 +1848,9 @@ en:
     show_results: Show results
     hide_results: Hide results
     until_vote: Until vote is cast
+    until_you_vote: Until you vote
     until_poll_type_closed: Until {{pollType}} is closed
+    until_voting_is_closed: Until voting is closed
 
     deleted: This poll has been deleted
 
@@ -1941,8 +1962,10 @@ en:
       title: Anyone with link can participate
       helptext_on: When selected, anyone with the link to the poll can participate.
     notify_on_closing_soon:
+      voting_closes_too_soon: Because voting closes within 24 hours, no closing soon reminders will be sent.
       closes_too_soon: Because this {{pollType}} closes within 24 hours, no closing soon reminders will be sent.
       title: 24 hours before {{pollType}} closes, send a reminder to
+      voting_title: 24 hours before voting closes, send a reminder to
       nobody: Nobody
       author: Author (me)
       undecided_voters: Undecided voters
@@ -2046,6 +2069,12 @@ en:
     title: Delete {{pollType}}
     success: Successfully deleted
 
+  poll_template_form:
+    title_label: Example title
+    title_hint: Give an example of a good proposal title
+    details_label: Example details
+    details_placeholder: Provide a self explanatory proposal text that people can modify to suit their needs
+
   poll_common_form:
     new_poll_type_helptext: Create a new type of poll for your group. Customize terminology and settings so it's easy for other people in your group to run a specific decision making process.
     choose_at_least: Choose at least
@@ -2079,6 +2108,12 @@ en:
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available to meet
     process: Process
+    process_name: Process name
+    process_name_hint: What do you call this process? E.g. Proposal, Temperature check, Minutes approval
+    process_description: Process description
+    process_description_hint: Describe the purpose of the process in one sentence
+    process_url: Process URL
+    process_url_hint: Link to a webpage that explains this process
     poll_type_name: Poll type name
     poll_type_name_hint: What do you call this poll type? E.g. Proposal, Temperature check, Minutes approval
     poll_type_description: Poll type description
@@ -2130,6 +2165,9 @@ en:
       This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll. 
 
   poll_proposal_form:
+    advice_subtitle: Seek advice on a decision you're making
+    consent_subtitle: Ensure there are no objections to your proposal
+    consensus_subtitle: Build agreement with the group
     tool_tip_collapsed: Make a decision together
     vote_method_hint: Voters agree or disagree with a statement
     start_header: Start proposal
@@ -2240,6 +2278,9 @@ en:
 
   poll_check_options:
     check_subtitle: Ask for feedback, questions and concerns
+    question: I have a question
+    question_meaning: Ask a question about the proposal
+    question_prompt: What would you like to ask?
     looks_good: Looks good
     looks_good_meaning: I'm happy with where this is going
     looks_good_prompt: Do you have any other comments to share?

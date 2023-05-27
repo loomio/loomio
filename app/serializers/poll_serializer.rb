@@ -28,6 +28,7 @@ class PollSerializer < ApplicationSerializer
              :notify_on_closing_soon,
              :process_name,
              :process_subtitle,
+             :process_url,
              :poll_type,
              :poll_option_names,
              :poll_option_name_format,
@@ -39,8 +40,6 @@ class PollSerializer < ApplicationSerializer
              :stances_in_discussion,
              :specified_voters_only,
              :secret_token,
-             :source_template_id,
-             :template,
              :total_score,
              :title,
              :undecided_voters_count,
@@ -53,8 +52,7 @@ class PollSerializer < ApplicationSerializer
              :min_score,
              :minimum_stance_choices,
              :maximum_stance_choices,
-             :meeting_duration,
-             :default_duration_in_days
+             :meeting_duration
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events

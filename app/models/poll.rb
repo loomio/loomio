@@ -88,10 +88,6 @@ class Poll < ApplicationRecord
     poll.poll_options.length
   end
 
-  def poll_type_validations
-    AppConfig.poll_types.dig(self.poll_type, 'poll_type_validations') || []
-  end
-
   include Translatable
   is_translatable on: [:title, :details]
   is_mentionable on: :details
@@ -146,7 +142,6 @@ class Poll < ApplicationRecord
   before_save :clamp_minimum_stance_choices
   before_save :clamp_closing_at
   validate :closes_in_future
-  validate :closes_at_nil_if_template
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
@@ -511,12 +506,6 @@ class Poll < ApplicationRecord
     return if closing_at.nil? 
     return if closing_at > Time.zone.now
     errors.add(:closing_at, I18n.t(:"poll.error.must_be_in_the_future"))
-  end
-
-  def closes_at_nil_if_template
-    if template && closing_at
-      errors.add(:closing_at, I18n.t(:"poll.error.templates_cannot_close"))
-    end
   end
 
   def discussion_group_is_poll_group

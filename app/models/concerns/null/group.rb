@@ -90,6 +90,10 @@ module Null::Group
     Membership.none
   end
 
+  def poll_templates
+    PollTemplate.none
+  end
+  
   def tags
     Tag.none
   end

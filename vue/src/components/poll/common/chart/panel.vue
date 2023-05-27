@@ -35,7 +35,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-chart-panel
+.poll-common-chart-panel(v-if="poll.pollOptionNames.length")
   template(v-if="!poll.showResults()")
     v-alert.poll-common-action-panel__results-hidden-until-closed.my-2(
       v-if='!!poll.closingAt && poll.hideResults == "until_closed"'

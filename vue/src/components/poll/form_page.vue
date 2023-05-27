@@ -16,6 +16,7 @@ export default
     discussion: null
 
   created: ->
+    # this is a poll id, we should rename it?
     if templateId = parseInt(@$route.query.template_id)
       @loading = true
       Records.polls.findOrFetchById(templateId).then (poll) =>

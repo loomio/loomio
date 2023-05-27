@@ -4,6 +4,7 @@ import ExplorePage from './components/explore/page'
 import ProfilePage from './components/profile/page'
 import PollShowPage from './components/poll/show_page'
 import PollFormPage from './components/poll/form_page'
+import PollTemplateFormPage from './components/poll_template/form_page'
 import TasksPage from './components/tasks/page'
 import GroupPage from './components/group/page.vue'
 import GroupDiscussionsPanel from './components/group/discussions_panel'
@@ -70,6 +71,8 @@ router = new Router
     {path: '/p/:key/edit', component: PollFormPage },
     {path: '/p/new', component: PollFormPage },
     {path: '/p/:key/:stub?', component: PollShowPage},
+    {path: '/poll_templates/new', component: PollTemplateFormPage},
+    {path: '/poll_templates/:id/edit', component: PollTemplateFormPage},
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: ThreadFormPage },
     {path: '/d/:key/edit', component: ThreadFormPage },

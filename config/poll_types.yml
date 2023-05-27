@@ -1,3 +1,4 @@
+# opt-in
 count:
   prevent_anonymous: true
   material_icon: mdi-human-greeting-variant
@@ -9,23 +10,8 @@ count:
   per_option_reason_prompt: true
   order_results_by: priority
   options_have_meaning: true
-  common_poll_options:
-    - key: accept
-      name_i18n: poll_count_options.accept
-      icon: agree
-      meaning_i18n: poll_count_vote_form.accept_meaning
-      prompt_i18n: poll_count_vote_form.accept_prompt
-      color: '#70C9F8'
-      default: true
-    - key: decline
-      name_i18n: poll_count_options.decline
-      icon: disagree
-      meaning_i18n: poll_count_vote_form.decline_meaning
-      prompt_i18n: poll_count_vote_form.decline_prompt
-      color: "#C8E56E"
-      default: true
   defaults:
-    poll_option_name_format: 'plain'
+    poll_option_name_format: plain
     process_name_i18n: decision_tools_card.count_title
     process_subtitle_i18n: poll_count_form.tool_tip_collapsed
     chart_type: bar
@@ -47,32 +33,10 @@ check:
   per_option_reason_prompt: true
   order_results_by: priority
   options_have_meaning: true
-  common_poll_options:
-    - key: looks_good
-      name_i18n: poll_check_options.looks_good
-      icon: agree
-      meaning_i18n: poll_check_options.looks_good_meaning
-      prompt_i18n: poll_check_options.looks_good_prompt
-      color: '#70C9F8'
-      default: true
-    - key: not_sure
-      name_i18n: poll_check_options.not_sure
-      icon: abstain
-      meaning_i18n: poll_check_options.not_sure_meaning
-      prompt_i18n: poll_check_options.not_sure_prompt
-      color: '#70C9F8'
-      default: true
-    - key: concerned
-      name_i18n: poll_check_options.concerned
-      icon: disagree
-      meaning_i18n: poll_check_options.concerned_meaning
-      prompt_i18n: poll_check_options.concerned_prompt
-      color: "#C8E56E"
-      default: true
   defaults:
-    poll_option_name_format: 'plain'
-    process_name_i18n: decision_tools_card.check_title
-    process_subtitle_i18n: poll_check_options.check_subtitle
+    poll_option_name_format: plain
+    # process_name_i18n: decision_tools_card.check_title
+    # process_subtitle_i18n: poll_check_options.check_subtitle
     chart_type: pie
     min_score: 1
     max_score: 1
@@ -100,21 +64,18 @@ proposal:
       meaning_i18n: poll_proposal_options.agree_meaning
       prompt_i18n: poll_proposal_vote_form.agree_reason_placeholder
       color: '#70C9F8'
-      default: true
     - key: abstain
       name_i18n: poll_proposal_options.abstain
       icon: abstain
       meaning_i18n: poll_proposal_options.abstain_meaning
       prompt_i18n: poll_proposal_options.abstain_prompt
       color: "#C8E56E"
-      default: true
     - key: disagree
       name_i18n: poll_proposal_options.disagree
       icon: disagree
       meaning_i18n: poll_proposal_options.disagree_meaning
       prompt_i18n: poll_proposal_vote_form.disagree_reason_placeholder
       color: "#D38FE1"
-      default: true
     - key: block
       name_i18n: poll_proposal_options.block
       icon: block
@@ -139,10 +100,47 @@ proposal:
       meaning_i18n: poll_proposal_options.objection_meaning
       prompt_i18n: poll_proposal_options.objection_prompt
       color: "#D38FE1"
+    - key: looks_good
+      name_i18n: poll_check_options.looks_good
+      icon: agree
+      meaning_i18n: poll_check_options.looks_good_meaning
+      prompt_i18n: poll_check_options.looks_good_prompt
+      color: '#70C9F8'
+    - key: question
+      name_i18n: poll_check_options.question
+      icon: abstain
+      meaning_i18n: poll_check_options.question_meaning
+      prompt_i18n: poll_check_options.question_prompt
+      color: '#70C9F8'
+    - key: not_sure
+      name_i18n: poll_check_options.not_sure
+      icon: abstain
+      meaning_i18n: poll_check_options.not_sure_meaning
+      prompt_i18n: poll_check_options.not_sure_prompt
+      color: '#70C9F8'
+    - key: concerned
+      name_i18n: poll_check_options.concerned
+      icon: disagree
+      meaning_i18n: poll_check_options.concerned_meaning
+      prompt_i18n: poll_check_options.concerned_prompt
+      color: "#C8E56E"
+    - key: accept
+      name_i18n: poll_count_options.accept
+      icon: agree
+      meaning_i18n: poll_count_vote_form.accept_meaning
+      prompt_i18n: poll_count_vote_form.accept_prompt
+      color: '#70C9F8'
+    - key: decline
+      name_i18n: poll_count_options.decline
+      icon: disagree
+      meaning_i18n: poll_count_vote_form.decline_meaning
+      prompt_i18n: poll_count_vote_form.decline_prompt
+      color: "#C8E56E"
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.proposal_title
     process_subtitle_i18n: poll_proposal_form.tool_tip_collapsed
+    process_url: https://help.loomio.com/en/user_manual/getting_started/decisions#loomio-proposal
     chart_type: pie
     min_score: 1
     max_score: 1
@@ -166,6 +164,7 @@ meeting:
     poll_option_name_format: iso8601
     process_name_i18n: decision_tools_card.meeting_title
     process_subtitle_i18n: poll_meeting_form.tool_tip_collapsed
+    process_url: https://help.loomio.com/en/user_manual/polls/proposal_types#time-poll
     chart_type: grid
     min_score: 0
     max_score: 2
@@ -188,6 +187,7 @@ poll:
     poll_option_name_format: plain
     process_name_i18n: poll_common_form.voting_methods.simple_poll
     process_subtitle_i18n: poll_poll_form.tool_tip_collapsed
+    process_url: https://help.loomio.com/en/user_manual/polls/proposal_types#simple-poll
     chart_type: bar
     min_score: 1
     max_score: 1
@@ -208,6 +208,7 @@ dot_vote:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.dot_vote_title
     process_subtitle_i18n: poll_dot_vote_form.tool_tip_collapsed
+    process_url: https://help.loomio.com/en/user_manual/polls/proposal_types#dot-vote
     chart_type: bar
     dots_per_person: 8
     min_score: 0
@@ -227,6 +228,7 @@ score:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.score_title
     process_subtitle_i18n: poll_score_form.tool_tip_collapsed
+    process_url: https://help.loomio.com/en/user_manual/polls/proposal_types#score-poll
     chart_type: bar
     min_score: 1
     max_score: 5
@@ -247,6 +249,7 @@ ranked_choice:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.ranked_choice_title
     process_subtitle_i18n: poll_ranked_choice_form.tool_tip_collapsed
+    process_url: https://help.loomio.com/en/user_manual/polls/proposal_types#ranked-choice
     chart_type: bar
     minimum_stance_choices: 2
     min_score: 1
