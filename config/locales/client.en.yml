@@ -180,6 +180,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    are_you_sure: Are you sure?
     loomio_help: Loomio help
     help_and_guides: Help & guides
     please_wait: Please wait
@@ -2077,6 +2078,7 @@ en:
     title_hint: Give an example of a good proposal title
     details_label: Example details
     details_placeholder: Provide a self explanatory proposal text that people can modify to suit their needs
+    confirm_delete: Are you sure you want to delete this poll template? This cannot be undone.
 
   poll_common_form:
     new_poll_type_helptext: Create a new type of poll for your group. Customize terminology and settings so it's easy for other people in your group to run a specific decision making process.

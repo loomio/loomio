@@ -36,6 +36,13 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
     respond_with_resource
   end
 
+  def destroy
+    @poll_template = PollTemplate.find(params[:id])
+    current_user.adminable_groups.find(@poll_template.group_id)
+    @poll_template.destroy
+    head :ok
+  end
+
   def hide
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
 

@@ -375,7 +375,7 @@ export default
       color="primary"
       @click='submit()'
       :loading="pollTemplate.processing"
-      :disabled="pollOptions.length == 0"
+      :disabled="!pollTemplate.processName || !pollTemplate.processSubtitle"
     )
       span(v-t="'common.action.save'")
 

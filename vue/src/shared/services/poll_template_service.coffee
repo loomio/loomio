@@ -44,12 +44,30 @@ export default new class PollTemplateService
         Records.remote.post('poll_templates/undiscard', {group_id: group.id, id: pollTemplate.id}).then =>
           EventBus.$emit 'refreshPollTemplates'
 
+    destroy:
+      icon: 'mdi-delete'
+      name: 'common.action.delete'
+      menu: true
+      canPerform: -> pollTemplate.id && group.adminsInclude(Session.user())
+      perform: -> 
+        openModal
+          component: 'ConfirmModal',
+          props:
+            confirm:
+              submit: ->
+                Records.remote.destroy('poll_templates', {id: pollTemplate.id}).then ->
+                  EventBus.$emit 'refreshPollTemplates'
+              text:
+                title: 'common.are_you_sure'
+                helptext: 'poll_template_form.confirm_delete'
+                submit: 'common.action.delete'
+
     hide:
       icon: 'mdi-eye-off'
       name: 'common.action.hide'
       menu: true
       canPerform: -> 
-        pollTemplate.key && group.adminsInclude(Session.user()) && !group.hiddenPollTemplates.includes(pollTemplate.key)
+        !pollTemplate.id && pollTemplate.key && group.adminsInclude(Session.user()) && !group.hiddenPollTemplates.includes(pollTemplate.key)
       perform: ->
         Records.remote.post('poll_templates/hide', {group_id: group.id, key: pollTemplate.key}).then =>
           EventBus.$emit 'refreshPollTemplates'
@@ -59,7 +77,7 @@ export default new class PollTemplateService
       name: 'common.action.unhide'
       menu: true
       canPerform: -> 
-        pollTemplate.key && group.adminsInclude(Session.user()) && group.hiddenPollTemplates.includes(pollTemplate.key)
+        !pollTemplate.id && pollTemplate.key && group.adminsInclude(Session.user()) && group.hiddenPollTemplates.includes(pollTemplate.key)
       perform: ->
         Records.remote.post('poll_templates/unhide', {group_id: group.id, key: pollTemplate.key}).then =>
           EventBus.$emit 'refreshPollTemplates'

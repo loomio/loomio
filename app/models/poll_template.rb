@@ -15,6 +15,7 @@ class PollTemplate < ApplicationRecord
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
   validates :process_name, presence: true
   validates :process_subtitle, presence: true
+  validates :default_duration_in_days, presence: true
 
   # has_paper_trail only: [
   #   :author_id,
