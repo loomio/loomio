@@ -174,7 +174,7 @@ export default
       orderBy(@discussions.filter((discussion) -> !discussion.pinnedAt), ['lastActivityAt'], ['desc'])
 
     groupTags: ->
-      @group && @group.parentOrSelf().tags().filter (tag) -> tag.taggingsCount > 0
+      @group && @group.tags().filter (tag) -> tag.taggingsCount > 0
 
     loading: ->
       @loader.loading || @searchLoader.loading
@@ -226,7 +226,7 @@ div.discussions-panel(v-if="group")
           span(v-else v-t="'loomio_tags.tags'")
           v-icon mdi-menu-down
       v-sheet.pa-1
-        tags-display(:tags="group.parentOrSelf().tags()" show-counts)
+        tags-display(:model="group" show-counts)
     v-text-field.mr-2.flex-grow-1(
       clearable solo hide-details :value="$route.query.q"
       @input="onQueryInput"

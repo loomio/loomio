@@ -12,7 +12,6 @@ export default
     group: null
     pollsLoader: null
     discussionsLoader: null
-    tag: null
 
   created: ->
     @init()
@@ -21,27 +20,27 @@ export default
       collections: ['polls', 'groups', 'discussions']
       query: => @findRecords()
 
-
   watch:
     '$route.params.tag': 'init'
 
   methods:
     init: ->
       @group = Records.groups.find(@$route.params.key)
-      @tag = Records.tags.collection.find(name: @$route.params.tag, groupId: @group.id)[0]
 
       @pollsLoader = new RecordLoader
         collection: 'polls'
         params:
-          exclude_types: 'group'
+          group_id: @group.id
           tags: @$route.params.tag
+          subgroups: 'all'
 
       @discussionsLoader = new RecordLoader
         collection: 'discussions'
         params:
-          exclude_types: 'group'
           filter: 'all'
           tags: @$route.params.tag
+          group_id: @group.id
+          subgroups: 'all'
 
       @pollsLoader.fetchRecords()
       @discussionsLoader.fetchRecords()
@@ -49,21 +48,23 @@ export default
 
     findRecords: ->
       @polls = Records.polls.collection.chain().
-                find(tagIds: {$contains: @tag.id}).
+                find(groupId: {$in: @group.selfAndSubgroupIds()}).
+                find(tags: {$contains: @$route.params.tag}).
                 find(discardedAt: null).
                 simplesort('createdAt', true).data()
 
       @discussions = Records.discussions.collection.chain().
-                find(tagIds: {$contains: @tag.id}).
+                find(groupId: {$in: @group.selfAndSubgroupIds()}).
+                find(tags: {$contains: @$route.params.tag}).
                 find(discardedAt: null).
-                simplesort('createdAt', true).data()
+                simplesort('lastActivityAt', true).data()
 
 </script>
 
 <template lang="pug">
 .tags-panel
   v-card.my-4.pa-2(outlined)
-    tags-display(:tags="group.tags()" show-counts :selected="$route.params.tag")
+    tags-display(:model="group" show-org-counts :selected="$route.params.tag")
   loading(v-if="!group")
   div(v-if="group")
     v-card.mb-4(outlined)

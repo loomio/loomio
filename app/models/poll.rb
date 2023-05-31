@@ -168,6 +168,7 @@ class Poll < ApplicationRecord
     :anyone_can_participate,
     :specified_voters_only,
     :stance_reason_required,
+    :tags,
     :notify_on_closing_soon,
     :poll_option_names,
     :hide_results]

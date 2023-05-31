@@ -8,7 +8,7 @@ class PollTemplateService
 
       AppConfig.poll_types[raw_attrs['poll_type']]['defaults'].each_pair do |key, value|
         if key.match /_i18n$/
-          attrs[key.gsub(/_i18n$/, '')] = I18n.t(value)
+          attrs[key.gsub(/_i18n$/, '')] = value.is_a?(Array) ? value.map {|v| I18n.t(v)} : I18n.t(value)
         else
           attrs[key] = value
         end
@@ -16,7 +16,7 @@ class PollTemplateService
 
       raw_attrs.each_pair do |key, value|
         if key.match /_i18n$/
-          attrs[key.gsub(/_i18n$/, '')] = I18n.t(value)
+          attrs[key.gsub(/_i18n$/, '')] = value.is_a?(Array) ? value.map {|v| I18n.t(v)} : I18n.t(value)
         else
           attrs[key] = value
         end
@@ -25,7 +25,6 @@ class PollTemplateService
       attrs['poll_options'] = raw_attrs.fetch('poll_options', []).map do |raw_option|
         option = {}
         raw_option.each_pair do |key, value|
-
           if key.match /_i18n$/
             option[key.gsub(/_i18n$/, '')] = I18n.t(value)
           else
@@ -47,6 +46,17 @@ class PollTemplateService
     return false unless poll_template.valid?
 
     poll_template.save!
+    poll_template
+  end
+
+  def self.update(poll_template:, params:, actor:)
+    actor.ability.authorize! :update, poll_template
+
+
+    poll_template.assign_attributes_and_files(params.except(:group_id))
+    return false unless poll_template.valid?
+    poll_template.save!
+
     poll_template
   end
 end

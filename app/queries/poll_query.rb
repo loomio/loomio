@@ -43,7 +43,7 @@ class PollQuery
 
 
     if (tags = (params[:tags] || '').split('|')).any?
-      chain = chain.joins(:tags).where("tags.name IN (?)", tags)
+      chain = chain.where.contains(tags: tags)
     end
 
     chain = chain.where(template: true) if params[:template]

@@ -32,6 +32,7 @@ export default class PollTemplateModel extends BaseModel
     meetingDuration: null
     limitReasonLength: true
     stanceReasonRequired: 'optional'
+    tags: []
     files: []
     imageFiles: []
     attachments: []

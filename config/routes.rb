@@ -208,7 +208,7 @@ Rails.application.routes.draw do
         get  :closed, on: :collection
       end
 
-      resources :poll_templates, only: [:index, :create]
+      resources :poll_templates, only: [:index, :create, :update]
 
       resource :outcomes, only: [:create, :update]
 

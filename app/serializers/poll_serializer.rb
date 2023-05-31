@@ -42,6 +42,7 @@ class PollSerializer < ApplicationSerializer
              :secret_token,
              :total_score,
              :title,
+             :tags,
              :undecided_voters_count,
              :voter_can_add_options,
              :voters_count,
@@ -61,7 +62,6 @@ class PollSerializer < ApplicationSerializer
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
-  has_many :tags, serializer: TagSerializer, root: :tags
 
   hide_when_discarded [
     :attachments,

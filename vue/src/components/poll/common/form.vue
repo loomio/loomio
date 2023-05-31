@@ -178,10 +178,7 @@ export default
       ]
 
     titlePath: ->
-      if @poll.customize
-        (@poll.isNew() && 'poll_common.new_custom_poll') || 'poll_common.edit_custom_poll'
-      else
-        (@poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type'
+      (@poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type'
 
     titleArgs: -> 
       {pollType: @poll.translatedPollType().toLowerCase()}
@@ -214,40 +211,9 @@ export default
     v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
       v-icon mdi-close
 
-  template(v-if="poll.customize")
-    p.text--secondary.py-4(v-if="poll.isNew()" v-t="'poll_common_form.new_poll_type_helptext'")
-    v-select(
-      :label="$t('poll_common_form.voting_method')"
-      v-model="poll.pollType"
-      @change="clearOptionsIfRequired"
-      :items="votingMethodsItems"
-      :hint="$t(votingMethodsI18n[poll.pollType].hint)"
-      persistent-hint
-    )
-
-    v-text-field(
-       v-model="poll.processName"
-      :label="$t('poll_common_form.process_name')"
-      :hint="$t('poll_common_form.process_name_hint')")
-    validation-errors(:subject='poll' field='processName')
-
-    v-text-field(
-       v-model="poll.processSubtitle"
-      :label="$t('poll_common_form.process_description')"
-      :hint="$t('poll_common_form.process_description_hint')")
-    validation-errors(:subject='poll' field='processSubtitle')
-
-    v-text-field(
-       v-model="poll.processUrl"
-      :label="$t('poll_common_form.process_url')"
-      :hint="$t('poll_common_form.process_url_hint')")
-    validation-errors(:subject='poll' field='processUrl')
-
-  template(v-else)
-    p.text--secondary
-      a(v-if="poll.processUrl" :href="poll.processUrl" target="_blank") {{poll.defaultedI18n('processSubtitle')}}
-      span(v-else) {{poll.defaultedI18n('processSubtitle')}}
-
+  p.text--secondary
+    a(v-if="poll.processUrl" :href="poll.processUrl" target="_blank") {{poll.defaultedI18n('processSubtitle')}}
+    span(v-else) {{poll.defaultedI18n('processSubtitle')}}
 
   v-select(
     v-if="!poll.id && !poll.discussionId"

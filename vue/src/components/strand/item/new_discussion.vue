@@ -69,7 +69,6 @@ export default
       template(v-slot:divider)
         v-icon mdi-chevron-right
     v-spacer
-    discussion-template-badge.mr-2(:discussion="discussion")
     v-chip(
       v-if="discussion.private"
       small outlined
@@ -87,8 +86,8 @@ export default
 
   strand-title(:discussion="discussion")
 
-  .my-1.mb-2(v-if="discussion.tags().length")
-    tags-display(:tags="discussion.tags()")
+  .my-1.mb-2(v-if="discussion.tags.length")
+    tags-display(:model="discussion")
   .mb-2
     user-avatar.mr-2(:user='author', :size='36')
     router-link.text--secondary(:to="urlFor(author)") {{authorName}}

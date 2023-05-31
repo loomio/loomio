@@ -9,6 +9,7 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :process_name,
              :process_subtitle,
              :process_url,
+             :tags,
              :title,
              :details,
              :details_format,

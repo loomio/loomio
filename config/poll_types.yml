@@ -1,4 +1,3 @@
-# opt-in
 count:
   prevent_anonymous: true
   material_icon: mdi-human-greeting-variant

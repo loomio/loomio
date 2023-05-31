@@ -23,10 +23,13 @@ export default
           body = "" 
           op = eventable.author()
           if op.id != Session.user().id
-            body = "<p><span class=\"mention\" data-mention-id=\"#{op.username}\" label=\"#{op.name}\">@#{op.name}</span></p>"
+            if Session.defaultFormat() == 'html'
+              body = "<p><span class=\"mention\" data-mention-id=\"#{op.username}\" label=\"#{op.name}\">@#{op.name}</span></p>"
+            else
+              body = "@#{op.username} "
 
           @newComment = Records.comments.build
-            bodyFormat: "html"
+            bodyFormat: Session.defaultFormat()
             body: body
             discussionId: eventable.discussion().id
             authorId: Session.user().id

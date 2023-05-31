@@ -1,3 +1,9 @@
+# question_poll:
+#   poll_type: poll
+#   process_name: Question round
+#   process_subtitle: Ask an open ended question, with a deadline
+#   default_duration_in_days: 3
+
 count:
   poll_type: count
   process_name_i18n: decision_tools_card.count_title
@@ -18,12 +24,14 @@ count:
       color: "#C8E56E"
 
 check:
-  poll_type: check
+  poll_type: proposal
   process_name_i18n: decision_tools_card.check_title
-  # process_subtitle_i18n: poll_check_options.check_subtitle
+  process_subtitle_i18n: poll_check_options.check_subtitle
   process_subtitle: Invite people to ask questions, comment and respond within a set timeframe
   process_url: https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#sense-check
   default_duration_in_days: 3
+  tags_i18n:
+    - decision_tools_card.check_title
   poll_options:
     - key: looks_good
       name_i18n: poll_check_options.looks_good
@@ -113,6 +121,8 @@ advice:
   poll_type: proposal
   process_name_i18n: decision_tools_card.advice_title
   process_subtitle_i18n: poll_proposal_form.advice_subtitle
+  tags_i18n:
+    - poll_common.advice_process
   poll_options:
     - key: looks_good
       name_i18n: poll_check_options.looks_good
@@ -140,6 +150,8 @@ check:
   poll_type: proposal
   process_name_i18n: decision_tools_card.check_title
   process_subtitle_i18n: poll_check_options.check_subtitle
+  tags_i18n:
+    - decision_tools_card.check_title
   poll_options:
     - key: looks_good
       name_i18n: poll_check_options.looks_good
@@ -168,6 +180,8 @@ consent:
   process_name: Consent
   process_subtitle: Ensure nobody objects to your proposal
   default_duration_in_days: 7
+  tags_i18n:
+    - poll_common.consent_process
   poll_options:
     - name: Consent
       icon: agree
@@ -183,6 +197,8 @@ consensus:
   process_name: Consensus
   process_subtitle: Improve a proposal so that everyone is supportive of it
   default_duration_in_days: 7
+  tags_i18n:
+    - poll_common.consensus_process
   poll_options:
     - key: agree
       name_i18n: poll_proposal_options.agree
@@ -212,3 +228,57 @@ consensus:
       prompt_i18n: poll_proposal_vote_form.block_reason_placeholder
       color: "#999FDE"
 
+gradients_of_agreement:
+  poll_type: proposal
+  process_name_i18n: gradients_of_agreement.process_name
+  process_subtitle_i18n:  gradients_of_agreement.process_subtitle
+  # process_intro: gradients_of_agreement.process_intro
+  default_duration_in_days: 5
+  tags_i18n:
+    - gradients_of_agreement.process_name
+  poll_options:
+    - key: endorsement
+      name_i18n: gradients_of_agreement.whole_hearted_endorsement
+      icon: agree
+      meaning_i18n: gradients_of_agreement.whole_hearted_endorsement_meaning
+      color: '#70C9F8'
+    - key: agreement_with_contention
+      name_i18n: gradients_of_agreement.agreement_with_contention
+      icon: agree
+      meaning_i18n: gradients_of_agreement.agreement_with_contention_meaning
+      color: '#70C9F8'
+    - key: support_with_reservations
+      name_i18n: gradients_of_agreement.support_with_reservations
+      icon: agree
+      meaning_i18n: gradients_of_agreement.support_with_reservations_meaning
+      color: '#70C9F8'
+    - key: abstain
+      name_i18n: poll_proposal_options.abstain
+      icon: abstain
+      meaning_i18n: gradients_of_agreement.abstain_meaning
+      prompt_i18n: poll_proposal_options.abstain_prompt
+      color: "#C8E56E"
+    - key: more_discussion_needed
+      name_i18n: gradients_of_agreement.more_discussion_needed
+      icon: disagree
+      meaning_i18n: gradients_of_agreement.more_discussion_needed_meaning
+      prompt_i18n: gradients_of_agreement.disagree_reason_placeholder
+      color: "#D38FE1"
+    - key: dont_like_but_will_support
+      name_i18n: gradients_of_agreement.dont_like_but_will_support
+      icon: disagree
+      meaning_i18n: gradients_of_agreement.dont_like_but_will_support_meaning
+      prompt_i18n: gradients_of_agreement.disagree_reason_placeholder
+      color: "#D38FE1"
+    - key: serious_disagreement
+      name_i18n: gradients_of_agreement.serious_disagreement
+      icon: disagree
+      meaning_i18n: gradients_of_agreement.serious_disagreement_meaning
+      prompt_i18n: gradients_of_agreement.disagree_reason_placeholder
+      color: "#D38FE1"
+    - key: veto
+      name_i18n: gradients_of_agreement.veto
+      icon: block
+      meaning_i18n: gradients_of_agreement.veto_meaning
+      prompt_i18n: gradients_of_agreement.block_reason_placeholder
+      color: "#999FDE"

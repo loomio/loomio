@@ -37,7 +37,7 @@ export default class DiscussionModel extends BaseModel
     imageFiles: []
     attachments: []
     linkPreviews: []
-    tagIds: []
+    tags: []
     recipientMessage: null
     recipientAudience: null
     recipientUserIds: []

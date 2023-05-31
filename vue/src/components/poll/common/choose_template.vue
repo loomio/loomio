@@ -16,7 +16,6 @@ export default
     actions: {}
     filter: 'proposal'
     filters: 
-      favourites: 'mdi-star'
       proposal: 'mdi-thumbs-up-down'
       poll: 'mdi-poll'
       meeting: 'mdi-calendar'
@@ -40,7 +39,6 @@ export default
           Records.pollTemplates.find(pollType: $in: ['score', 'poll', 'ranked_choice', 'dot_vote']) 
         when 'meeting'
           Records.pollTemplates.find(pollType: $in: ['meeting', 'count']) 
-        when 'favourite'
         else
           Records.pollTemplates.find(groupId: null)
       @actions = {}
@@ -77,15 +75,6 @@ export default
     v-icon(small).mr-2 {{icon}}
     span.poll-type-chip-name {{name}}
   v-list.decision-tools-card__poll-types(two-line dense)
-    v-list-item.decision-tools-card__new-template(
-      v-if="filter == 'favourites'"
-      @click="newCustom"
-      :class="'decision-tools-card__poll-type--new-template'"
-      :key="123"
-    )
-      v-list-item-content
-        v-list-item-title(v-t="'poll_common.custom_poll'")
-        v-list-item-subtitle(v-t="'poll_common.create_a_custom_poll'")
     v-list-item.decision-tools-card__poll-type(
       v-for='(template, i) in pollTemplates'
       @click="cloneTemplate(template)"
@@ -97,6 +86,14 @@ export default
         v-list-item-subtitle {{ template.processSubtitle }}
       v-list-item-action
         action-menu(:actions='actions[i]', small, icon, :name="$t('action_dock.more_actions')")
+    v-list-item.decision-tools-card__new-template(
+      @click="newCustom"
+      :class="'decision-tools-card__poll-type--new-template'"
+      :key="123"
+    )
+      v-list-item-content
+        v-list-item-title(v-t="'poll_common.custom_poll'")
+        v-list-item-subtitle(v-t="'poll_common.create_a_custom_poll'")
 
 </template>
 <style>

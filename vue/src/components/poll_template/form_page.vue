@@ -13,24 +13,23 @@ export default
     group: null
 
   created: ->
-    if groupId = parseInt(@$route.query.group_id)
-      Records.groups.findOrFetchById(groupId).then (group) =>
-        @group = group
-
-        if key = @$route.query.template_key
-          Records.remote.fetch(path: "poll_templates", params: {group_id: @group.id} ).then =>
-            pollTemplate = Records.pollTemplates.find(key)
-            @pollTemplate = pollTemplate
-            @pollTemplate.group_id = @group.id
-        else
-          Records.pollTemplates.findOrFetchByKey(key).then (pollTemplate) =>
-            @pollTemplate = Records.pollTemplates.build(pollType: 'proposal', groupId: @group.id)
-
-
-    if pollTemplateId = parseInt(@$route.query.template_id)
+    if pollTemplateId = parseInt(@$route.params.id)
       Records.pollTemplates.findOrFetchById(pollTemplateId).then (pollTemplate) =>
         @pollTemplate = pollTemplate
+    else
+      if groupId = parseInt(@$route.query.group_id)
+        Records.groups.findOrFetchById(groupId).then (group) =>
+          @group = group
 
+          if key = @$route.query.template_key
+            Records.remote.fetch(path: "poll_templates", params: {group_id: @group.id} ).then =>
+              @pollTemplate = Records.pollTemplates.find(key)
+              @pollTemplate.groupId = @group.id
+          else
+            Records.pollTemplates.findOrFetchByKey(key).then (pollTemplate) =>
+              @pollTemplate = Records.pollTemplates.build(pollType: 'proposal', groupId: @group.id)
+      else
+        console.error("no group or template id found")
 
 </script>
 <template lang="pug">

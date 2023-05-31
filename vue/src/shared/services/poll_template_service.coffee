@@ -17,14 +17,14 @@ export default new class PollTemplateService
       icon: 'mdi-pencil'
       menu: true
       canPerform: -> !pollTemplate.id && group.adminsInclude(Session.user())
-      to: "/poll_templates/new?template_key=#{pollTemplate.key}"
+      to: "/poll_templates/new?template_key=#{pollTemplate.key}&group_id=#{group.id}"
 
     edit_template:
       name: 'poll_common.edit_template'
       icon: 'mdi-pencil'
       menu: true
       canPerform: -> pollTemplate.id && group.adminsInclude(Session.user())
-      to: "/poll_templates/new?template_id=#{pollTemplate.id}"
+      to: "/poll_templates/#{pollTemplate.id}/edit"
 
     add_favourite:
       icon: 'mdi-star'

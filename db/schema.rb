@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_24_224832) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_30_043504) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -284,6 +284,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_224832) do
     t.integer "discarded_by"
     t.boolean "template", default: false, null: false
     t.integer "source_template_id"
+    t.string "tags", default: [], array: true
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"
@@ -292,6 +293,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_224832) do
     t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: :desc
     t.index ["private"], name: "index_discussions_on_private"
     t.index ["source_template_id"], name: "index_discussions_on_source_template_id", where: "(source_template_id IS NOT NULL)"
+    t.index ["tags"], name: "index_discussions_on_tags", using: :gin
     t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
   end
 
@@ -666,6 +668,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_224832) do
     t.string "poll_option_name_format", default: "plain", null: false
     t.jsonb "link_previews", default: [], null: false
     t.jsonb "atttachments", default: [], null: false
+    t.string "tags", default: [], array: true
   end
 
   create_table "poll_unsubscriptions", id: :serial, force: :cascade do |t|
@@ -733,6 +736,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_224832) do
     t.integer "agree_target"
     t.string "process_subtitle"
     t.string "process_url"
+    t.string "tags", default: [], array: true
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
@@ -741,6 +745,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_224832) do
     t.index ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["source_template_id"], name: "index_polls_on_source_template_id", where: "(source_template_id IS NOT NULL)"
+    t.index ["tags"], name: "index_polls_on_tags", using: :gin
   end
 
   create_table "reactions", id: :serial, force: :cascade do |t|
@@ -846,6 +851,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_224832) do
     t.datetime "updated_at", precision: nil
     t.integer "taggings_count", default: 0
     t.integer "priority", default: 0, null: false
+    t.integer "org_taggings_count", default: 0, null: false
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
     t.index ["name"], name: "index_tags_on_name"
   end

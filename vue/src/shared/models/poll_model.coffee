@@ -73,7 +73,7 @@ export default class PollModel extends BaseModel
     recipientEmails: []
     notifyRecipients: true
     shuffleOptions: false
-    tagIds: []
+    tags: []
     hideResults: 'off'
     stanceCounts: []
 
@@ -144,9 +144,6 @@ export default class PollModel extends BaseModel
 
   bestNamedId: ->
     ((@id && @) || (@discusionId && @discussion()) || (@groupId && @group()) || {namedId: ->}).namedId()
-
-  tags: ->
-    @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
 
   voters: ->
     @latestStances().map (stance) -> stance.participant()
