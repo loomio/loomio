@@ -332,6 +332,14 @@ class Group < ApplicationRecord
     group_identities.joins(:identity).find_by("omniauth_identities.identity_type": type)
   end
 
+  def hidden_poll_templates
+    Array(self[:info]['hidden_poll_templates'])
+  end
+
+  def hidden_poll_templates=(val)
+    self[:info]['hidden_poll_templates'] = val
+  end
+
   private
   def variant_path(variant)
     Rails.application.routes.url_helpers.rails_representation_path(variant, only_path: true)

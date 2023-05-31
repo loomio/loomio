@@ -26,8 +26,7 @@ export default
               @pollTemplate = Records.pollTemplates.find(key)
               @pollTemplate.groupId = @group.id
           else
-            Records.pollTemplates.findOrFetchByKey(key).then (pollTemplate) =>
-              @pollTemplate = Records.pollTemplates.build(pollType: 'proposal', groupId: @group.id)
+            @pollTemplate = Records.pollTemplates.build(pollType: 'proposal', groupId: @group.id)
       else
         console.error("no group or template id found")
 

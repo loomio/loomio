@@ -275,8 +275,8 @@ en:
       unlike: 'Unlike'
       update: 'Update'
       cancel: 'Cancel'
-      add_favourite: Add favourite
-      remove_favourite: Remove favourite
+      hide: 'Hide'
+      unhide: 'Unhide'
       show_more: "Show more"
       show_fewer: "Show fewer"
       view_count_more: "View %{count} more"

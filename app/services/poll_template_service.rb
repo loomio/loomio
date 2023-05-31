@@ -1,5 +1,5 @@
 class PollTemplateService
-  def self.default_poll_templates(default_format: 'html')
+  def self.default_poll_templates(default_format: 'html', group: )
     AppConfig.poll_templates.map do |key, raw_attrs|
       raw_attrs[:key] = key
       attrs = {}
@@ -32,6 +32,10 @@ class PollTemplateService
           end
         end
         option
+      end
+
+      if group.hidden_poll_templates.include?(key)
+        attrs[:discarded_at] = DateTime.now
       end
 
       PollTemplate.new attrs

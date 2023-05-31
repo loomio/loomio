@@ -19,43 +19,38 @@ export default
       proposal: 'mdi-thumbs-up-down'
       poll: 'mdi-poll'
       meeting: 'mdi-calendar'
+      admin: 'mdi-cog'
 
   created: ->
     renderKey = 0
 
-    Records.remote.fetch(path: "poll_templates", params: {group_id: @group.id} )
+    @fetch()
+    EventBus.$on 'refreshPollTemplates', => @fetch()
 
     @watchRecords
       collections: ["pollTemplates"]
       query: (records) => @query()
 
   methods:
+    fetch: ->
+      Records.remote.fetch(path: "poll_templates", params: {group_id: @group.id} )
     query: ->
       templates = []
       @pollTemplates = switch @filter
         when 'proposal'
-          Records.pollTemplates.find(pollType: 'proposal') 
+          Records.pollTemplates.find(pollType: 'proposal', discardedAt: null)
         when 'poll'
-          Records.pollTemplates.find(pollType: $in: ['score', 'poll', 'ranked_choice', 'dot_vote']) 
+          Records.pollTemplates.find(pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null)
         when 'meeting'
-          Records.pollTemplates.find(pollType: $in: ['meeting', 'count']) 
-        else
-          Records.pollTemplates.find(groupId: null)
+          Records.pollTemplates.find(pollType: {$in: ['meeting', 'count']}, discardedAt: null) 
+        when 'admin'
+          Records.pollTemplates.find(discardedAt: {$ne: null})
       @actions = {}
       @pollTemplates.forEach (pollTemplate, i) =>
         @actions[i] = PollTemplateService.actions(pollTemplate, @group)
 
     cloneTemplate: (template) ->
       poll = template.buildPoll()
-      poll.discussionId = @discussion.id if @discussion
-      poll.groupId = @group.id if @group
-      @$emit('setPoll', poll)
-
-    newCustom: ->
-      template = Records.pollTemplates.build(pollType: 'proposal')
-      template.applyPollTypeDefaults()
-      poll = template.buildPoll()
-      poll.customize = true
       poll.discussionId = @discussion.id if @discussion
       poll.groupId = @group.id if @group
       @$emit('setPoll', poll)
@@ -75,6 +70,18 @@ export default
     v-icon(small).mr-2 {{icon}}
     span.poll-type-chip-name {{name}}
   v-list.decision-tools-card__poll-types(two-line dense)
+    template(v-if="filter == 'admin'")
+      v-list-item.decision-tools-card__new-template(
+        :to="'/poll_templates/new?group_id='+group.id"
+        :class="'decision-tools-card__poll-type--new-template'"
+        :key="99999"
+      )
+        v-list-item-content
+          v-list-item-title(v-t="'poll_common.new_poll_template'")
+          v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
+
+      v-subheader Hidden poll templates
+
     v-list-item.decision-tools-card__poll-type(
       v-for='(template, i) in pollTemplates'
       @click="cloneTemplate(template)"
@@ -86,14 +93,7 @@ export default
         v-list-item-subtitle {{ template.processSubtitle }}
       v-list-item-action
         action-menu(:actions='actions[i]', small, icon, :name="$t('action_dock.more_actions')")
-    v-list-item.decision-tools-card__new-template(
-      @click="newCustom"
-      :class="'decision-tools-card__poll-type--new-template'"
-      :key="123"
-    )
-      v-list-item-content
-        v-list-item-title(v-t="'poll_common.custom_poll'")
-        v-list-item-subtitle(v-t="'poll_common.create_a_custom_poll'")
+
 
 </template>
 <style>

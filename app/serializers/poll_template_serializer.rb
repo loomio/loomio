@@ -35,5 +35,6 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :default_duration_in_days,
              :agree_target,
              :created_at,
-             :updated_at
+             :updated_at,
+             :discarded_at
 end

@@ -55,7 +55,8 @@ class GroupSerializer < ApplicationSerializer
              :subgroups_count,
              :new_host,
              :complete,
-             :secret_token
+             :secret_token,
+             :hidden_poll_templates
 
   def complete
     true

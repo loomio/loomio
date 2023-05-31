@@ -1,4 +1,5 @@
 class PollTemplate < ApplicationRecord
+  include Discard::Model
   include HasRichText
 
   is_rich_text on: :details
@@ -14,8 +15,6 @@ class PollTemplate < ApplicationRecord
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
   validates :process_name, presence: true
   validates :process_subtitle, presence: true
-  validates :title, presence: true
-  validates :details, presence: true
 
   # has_paper_trail only: [
   #   :author_id,

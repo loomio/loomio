@@ -26,16 +26,40 @@ export default new class PollTemplateService
       canPerform: -> pollTemplate.id && group.adminsInclude(Session.user())
       to: "/poll_templates/#{pollTemplate.id}/edit"
 
-    add_favourite:
-      icon: 'mdi-star'
-      name: 'common.action.add_favourite'
+    discard:
+      icon: 'mdi-eye-off'
+      name: 'common.action.hide'
       menu: true
-      canPerform: -> group.adminsInclude(Session.user())
-      to: "/p/new?template_id=#{pollTemplate.id}"
+      canPerform: -> pollTemplate.id && !pollTemplate.discardedAt && group.adminsInclude(Session.user())
+      perform: ->
+        Records.remote.post('poll_templates/discard', {group_id: group.id, id: pollTemplate.id}).then =>
+          EventBus.$emit 'refreshPollTemplates'
 
-    remove_favourite:
-      icon: 'mdi-star'
-      name: 'common.action.remove_favourite'
+    undiscard:
+      icon: 'mdi-eye'
+      name: 'common.action.unhide'
       menu: true
-      canPerform: -> group.adminsInclude(Session.user())
-      to: "/p/new?template_id=#{pollTemplate.id}"
+      canPerform: -> pollTemplate.id && pollTemplate.discardedAt && group.adminsInclude(Session.user())
+      perform: ->
+        Records.remote.post('poll_templates/undiscard', {group_id: group.id, id: pollTemplate.id}).then =>
+          EventBus.$emit 'refreshPollTemplates'
+
+    hide:
+      icon: 'mdi-eye-off'
+      name: 'common.action.hide'
+      menu: true
+      canPerform: -> 
+        pollTemplate.key && group.adminsInclude(Session.user()) && !group.hiddenPollTemplates.includes(pollTemplate.key)
+      perform: ->
+        Records.remote.post('poll_templates/hide', {group_id: group.id, key: pollTemplate.key}).then =>
+          EventBus.$emit 'refreshPollTemplates'
+
+    unhide:
+      icon: 'mdi-eye-off'
+      name: 'common.action.unhide'
+      menu: true
+      canPerform: -> 
+        pollTemplate.key && group.adminsInclude(Session.user()) && group.hiddenPollTemplates.includes(pollTemplate.key)
+      perform: ->
+        Records.remote.post('poll_templates/unhide', {group_id: group.id, key: pollTemplate.key}).then =>
+          EventBus.$emit 'refreshPollTemplates'
