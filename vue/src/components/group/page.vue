@@ -115,6 +115,7 @@ v-main
     action-dock(
       :model='group'
       :actions='dockActions'
+      menu-icon='mdi-cog'
       :menu-actions='menuActions')
     join-group-button(:group='group')
     link-previews(:model="group")
