@@ -1761,6 +1761,9 @@ en:
     prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
+    advice_process: Advice process
+    consent_process: Consent process
+    consensus_process: Consensus process
     edit_template: Edit template
     proposal: Proposal
     run_process: Run process
@@ -2243,6 +2246,28 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
     vote: Vote
+
+  gradients_of_agreement:
+    process_name: Gradients of agreement
+    process_subtitle: An 8-point scale for expressing support for a decision
+    process_intro: |
+      The Gradients of Agreement is a group decision support tool described in The Facilitator's Guide to Participatory Decision Making. It spells out an 8-point scale for expressing support for a decision.
+    whole_hearted_endorsement: Whole-hearted Endorsement
+    whole_hearted_endorsement_meaning: I really like it!
+    agreement_with_contention: Agreement with minor contention
+    agreement_with_contention_meaning: Not perfect, but it's good enough
+    support_with_reservations: Support with reservations
+    support_with_reservations_meaning: I can live with it
+    abstain_meaning: This issue does not affect me
+    more_discussion_needed: More discussion needed
+    more_discussion_needed_meaning: I don't understand the issues well enough yet
+    dont_like_but_will_support: Don't like but will support
+    dont_like_but_will_support_meaning: It's not great but I don't want to hold up the group
+    serious_disagreement: Serious disagreement
+    serious_disagreement_meaning: I am not on board with this - don't count on me
+    veto: Veto
+    veto_meaning: I block this proposal
+
 
   poll_proposal_options:
     select_an_option: Select an option
