@@ -156,14 +156,12 @@ export default
     h1.text-h4(tabindex="-1" v-t="titlePath")
     v-spacer
 
-  //- v-select(
-  //-   :label="$t('poll_common_form.voting_method')"
-  //-   v-model="pollTemplate.pollType"
-  //-   @change="clearOptionsIfRequired"
-  //-   :items="votingMethodsItems"
-  //-   :hint="$t(votingMethodsI18n[pollTemplate.pollType].hint)"
-  //-   persistent-hint
-  //- )
+  v-select(
+    :label="$t('poll_common_form.voting_method')"
+    v-model="pollTemplate.pollType"
+    :items="votingMethodsItems"
+    :hint="$t(votingMethodsI18n[pollTemplate.pollType].hint)"
+  )
 
   v-text-field(
      v-model="pollTemplate.processName"
@@ -200,7 +198,6 @@ export default
     :placeholder="$t('poll_template_form.details_placeholder')"
     :label="$t('poll_template_form.details_label')"
   )
-
   .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
   v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
   sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")

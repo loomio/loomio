@@ -2081,6 +2081,8 @@ en:
     confirm_delete: Are you sure you want to delete this poll template? This cannot be undone.
 
   poll_common_form:
+    show_advanced_settings: Show advanced settings
+    hide_advanced_settings: Hide advanced settings
     new_poll_type_helptext: Create a new type of poll for your group. Customize terminology and settings so it's easy for other people in your group to run a specific decision making process.
     choose_at_least: Choose at least
     choose_at_most: Choose at most

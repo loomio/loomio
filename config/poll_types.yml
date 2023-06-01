@@ -34,8 +34,8 @@ check:
   options_have_meaning: true
   defaults:
     poll_option_name_format: plain
-    # process_name_i18n: decision_tools_card.check_title
-    # process_subtitle_i18n: poll_check_options.check_subtitle
+    process_name_i18n: decision_tools_card.check_title
+    process_subtitle_i18n: poll_check_options.check_subtitle
     chart_type: pie
     min_score: 1
     max_score: 1

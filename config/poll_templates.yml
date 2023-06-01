@@ -188,7 +188,7 @@ consent:
       meaning: The proposal is safe to try
       prompt: Do you have any other thoughts about the proposal?
     - name: Object
-      icon: agree
+      icon: disagree
       meaning: There is a serious problem with this proposal
       prompt: How would you change the proposal to address the problem?
 

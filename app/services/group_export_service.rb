@@ -4,7 +4,6 @@ class GroupExportService
     all_events
     all_notifications
     all_reactions
-    all_taggings
     memberships
     membership_requests
     discussions

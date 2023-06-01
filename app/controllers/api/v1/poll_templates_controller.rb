@@ -22,7 +22,6 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
   end
 
   def discard
-    byebug
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
     @poll_template = @group.poll_templates.kept.find_by!(id: params[:id])
     @poll_template.discard!
