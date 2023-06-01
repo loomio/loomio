@@ -210,6 +210,10 @@ class Poll < ApplicationRecord
     end
   end
 
+  def can_respond_maybe
+    self[:custom_fields].fetch('can_respond_maybe', false)
+  end
+
   def result_columns
     case poll_type
     when 'proposal'
