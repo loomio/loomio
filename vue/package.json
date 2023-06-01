@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@sentry/browser": "^7.51.2",
-    "@sentry/tracing": "^7.51.2",
+    "@sentry/tracing": "^7.53.1",
     "@sentry/vue": "^7.51.2",
     "@tiptap/core": "2.0.0-beta.220",
     "@tiptap/extension-blockquote": "2.0.0-beta.220",
