@@ -92,6 +92,11 @@ ActiveAdmin.register User do
     redirect_to admin_users_path, :notice => "User scheduled for deletion immediately"
   end
 
+  member_action :delete_identity, method: :post do
+    User.find(params[:id]).identities.find(params[:identity_id]).destroy
+    redirect_to admin_user_path(User.find(params[:id]))
+  end
+
   show do |user|
     attributes_table do
       user.attributes.each do |k,v|
@@ -133,12 +138,15 @@ ActiveAdmin.register User do
     render 'notifications', { notifications: Notification.includes(:event).where(user_id: user.id).order("id DESC").limit(30) }
 
     panel("Identities") do
-      table_for user.identities.each do |identity|
+      table_for user.identities.each do |ui|
         column :id
         column :identity_type
         column :uid
         column :name
         column :email
+        column :destroy do |uii|
+          button_to 'delete', delete_identity_admin_user_path(ui.user), method: :post, params: {identity_id: uii.id}
+        end
       end
     end
 

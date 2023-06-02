@@ -20,9 +20,9 @@
     "test:e2e:single": "nightwatch --config ./tests/e2e/nightwatch.conf.js --test tests/e2e/specs/discussion.js  --testcase can_react_to_a_discussion"
   },
   "dependencies": {
-    "@sentry/browser": "^7.51.2",
-    "@sentry/tracing": "^7.51.2",
-    "@sentry/vue": "^7.51.2",
+    "@sentry/browser": "^7.54.0",
+    "@sentry/tracing": "^7.54.0",
+    "@sentry/vue": "^7.54.0",
     "@tiptap/core": "2.0.0-beta.220",
     "@tiptap/extension-blockquote": "2.0.0-beta.220",
     "@tiptap/extension-bold": "2.0.0-beta.220",
@@ -99,12 +99,12 @@
     "coffeescript": "^2.7.0",
     "js-yaml-loader": "^1.2.2",
     "sass": "1.32.13",
-    "sass-loader": "^13.2.2",
+    "sass-loader": "^13.3.1",
     "vue-cli-plugin-coffee": "1.0.2",
     "vue-cli-plugin-pug": "^2.0.0",
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.7.14",
     "vuetify-loader": "^1.9.2",
-    "webpack": "^5.82.1"
+    "webpack": "^5.85.0"
   }
 }
