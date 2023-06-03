@@ -21,7 +21,22 @@ count:
     agree_target: 5
     dots_per_person: 1
     default_duration_in_days: 3
-
+  common_poll_options:
+    - key: accept
+      name_i18n: poll_count_options.accept
+      icon: agree
+      meaning_i18n: poll_count_vote_form.accept_meaning
+      prompt_i18n: poll_count_vote_form.accept_prompt
+      color: '#70C9F8'
+      default: true
+    - key: decline
+      name_i18n: poll_count_options.decline
+      icon: disagree
+      meaning_i18n: poll_count_vote_form.decline_meaning
+      prompt_i18n: poll_count_vote_form.decline_prompt
+      color: "#C8E56E"
+      default: true
+      
 check:
   material_icon: mdi-head-question
   vote_method: show_thumbs
@@ -44,7 +59,28 @@ check:
     agree_target: 5
     dots_per_person: 1
     default_duration_in_days: 3
-
+  common_poll_options:
+    - key: looks_good
+      name_i18n: poll_check_options.looks_good
+      icon: agree
+      meaning_i18n: poll_check_options.looks_good_meaning
+      prompt_i18n: poll_check_options.looks_good_prompt
+      color: '#70C9F8'
+      default: true
+    - key: not_sure
+      name_i18n: poll_check_options.not_sure
+      icon: abstain
+      meaning_i18n: poll_check_options.not_sure_meaning
+      prompt_i18n: poll_check_options.not_sure_prompt
+      color: '#70C9F8'
+      default: true
+    - key: concerned
+      name_i18n: poll_check_options.concerned
+      icon: disagree
+      meaning_i18n: poll_check_options.concerned_meaning
+      prompt_i18n: poll_check_options.concerned_prompt
+      color: "#C8E56E"
+      default: true
 proposal:
   material_icon: mdi-thumbs-up-down
   vote_method: show_thumbs
