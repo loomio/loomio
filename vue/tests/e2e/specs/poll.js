@@ -59,7 +59,7 @@ module.exports = {
 
     page.loadPath('polls/test_discussion')
     page.click('.activity-panel__add-poll')
-    page.click(".poll-common-choose-template-show-more")
+    page.click(".poll-common-choose-template__poll")
     page.click('.decision-tools-card__poll-type--poll')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
@@ -88,7 +88,7 @@ module.exports = {
 
     page.loadPath('polls/test_discussion')
     page.click('.activity-panel__add-poll')
-    page.click(".poll-common-choose-template-show-more")
+    page.click(".poll-common-choose-template__poll")
     page.click('.decision-tools-card__poll-type--dot_vote')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
@@ -117,7 +117,7 @@ module.exports = {
 
     page.loadPath('polls/test_discussion')
     page.click('.activity-panel__add-poll')
-    page.click(".poll-common-choose-template-show-more")
+    page.click(".poll-common-choose-template__poll")
     page.click('.decision-tools-card__poll-type--score')
     // page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
@@ -177,7 +177,7 @@ module.exports = {
 
     page.loadPath('polls/test_discussion')
     page.click('.activity-panel__add-poll')
-    page.click(".poll-common-choose-template-show-more")
+    page.click(".poll-common-choose-template__poll")
     page.click('.decision-tools-card__poll-type--ranked_choice')
     // page.click('.poll-common-tool-tip__collapse')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
