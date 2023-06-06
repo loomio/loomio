@@ -18,10 +18,9 @@ export default class PollTemplateModel extends BaseModel
     title: ''
     details: ''
     detailsFormat: 'html'
-    defaultDurationInDays: null
+    defaultDurationInDays: 7
     specifiedVotersOnly: false
     pollType: null
-    chartColumn: null
     chartType: null
     minScore: null
     maxScore: null
@@ -50,21 +49,6 @@ export default class PollTemplateModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @belongsTo 'group'
 
-  applyPollTypeDefaults: ->
-    map AppConfig.pollTypes[@pollType].defaults, (value, key) =>
-      if key.match(/_i18n$/)
-        @[camelCase(key.replace('_i18n', ''))] = I18n.t(value)
-      else
-        @[camelCase(key)] = value
-
-    common_poll_options = AppConfig.pollTypes[@pollType].common_poll_options || []
-
-    @pollOptions = common_poll_options.filter((o) -> o.default).map (o) =>
-        name:  I18n.t(o.name_i18n)
-        meaning: I18n.t(o.meaning_i18n)
-        prompt: I18n.t(o.prompt_i18n)
-        icon: o.icon
-
   buildPoll: ->
     poll = @recordStore.polls.build()
 
@@ -73,7 +57,11 @@ export default class PollTemplateModel extends BaseModel
       
     poll.authorId = Session.user().id
     poll.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
-    poll.pollOptionsAttributes = cloneDeep @pollOptions
+    poll.pollOptionsAttributes = @pollOptions.map (o) ->
+      name: o.name
+      meaning: o.meaning
+      prompt: o.prompt
+      icon: o.icon
     poll
 
 

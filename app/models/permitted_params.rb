@@ -73,7 +73,6 @@ class PermittedParams < Struct.new(:params)
       :minimum_stance_choices,
       :maximum_stance_choices,
       :chart_type,
-      :chart_column,
       :document_ids, {document_ids: []},
       :poll_options_attributes, {poll_options_attributes: [:id, :name, :icon, :meaning, :prompt, :priority, :_destroy]},
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}

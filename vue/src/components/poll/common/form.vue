@@ -82,12 +82,6 @@ export default
       @pollOptions.forEach (o) -> o.priority = 0
       @visiblePollOptions.forEach (o) -> o.priority = i++
 
-    clearOptionsIfRequired: (newValue) ->
-      @poll.applyPollTypeDefaults()
-      if newValue == 'meeting' || @lastPollType == 'meeting'
-        @pollOptions = []
-      @lastPollType = newValue
-
     removeOption: (option) ->
       @newOption = null
       if option.id
