@@ -228,7 +228,7 @@ export default
 
   tags-field(:model="poll")
 
-  lmo-textarea(
+  lmo-textarea.poll-common-form-fields__details(
     :model='poll'
     field="details"
     :placeholder="$t('poll_common_form.details_placeholder')"
