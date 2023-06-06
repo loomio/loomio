@@ -20,7 +20,6 @@ class RecordCloner
 
     clone_group.save!
 
-    copy_tags_over(group)
     clone_group.polls.each do |poll|
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
@@ -39,7 +38,6 @@ class RecordCloner
 
     store_source_record_ids(clone_group)
 
-    copy_tags_over(group)
 
     clone_group.polls.each do |poll|
       poll.update_counts!
@@ -61,7 +59,6 @@ class RecordCloner
     store_source_record_ids(group)
     TranslationService.translate_group_content!(group, actor.locale)
 
-    copy_tags_over(group)
 
     group.polls.each do |poll|
       poll.update_counts!
@@ -93,8 +90,6 @@ class RecordCloner
 
     store_source_record_ids(clone_group)
 
-    copy_tags_over(group)
-
     clone_group.polls.each do |poll|
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
@@ -103,19 +98,6 @@ class RecordCloner
     clone_group.reload
     clone_group
   end
-
-  def copy_tags_over(group)
-    group.discussions.kept.each do |d|
-      clone_discussion = existing_clone(d)
-      d.tags.each {|t| clone_discussion.tags << existing_clone(t)}
-    end
-
-    group.polls.kept.each do |p|
-      clone_poll = existing_clone(p)
-      p.tags.each {|t| clone_poll.tags << existing_clone(t)}
-    end
-  end
-
 
   def new_clone_group(group, clone_parent = nil)
     copy_fields = %w[
@@ -179,6 +161,7 @@ class RecordCloner
       last_activity_at
       discarded_at
       template
+      tags
       source_template_id
     ]
 
@@ -244,6 +227,7 @@ class RecordCloner
       stance_reason_required
       poll_option_name_format
       reason_prompt
+      tags
     ]
     attachments = [:files, :image_files]
 

@@ -46,7 +46,7 @@ class TagService
       end
     end
 
-    group.tags.where.not(name: counts.keys).delete_all
+    group.tags.where.not(name: counts.keys).update_all(taggings_count: 0)
     counts.each_pair do |name, count|
       if tag = group.tags.find_by(name: name)
         tag.update(taggings_count: count)
