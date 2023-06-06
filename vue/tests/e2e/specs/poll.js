@@ -149,6 +149,7 @@ module.exports = {
 
     page.loadPath('polls/test_discussion')
     page.click('.activity-panel__add-poll')
+    page.click(".poll-common-choose-template__meeting")
     page.click('.decision-tools-card__poll-type--meeting')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
@@ -257,7 +258,7 @@ module.exports = {
     page.click('.decision-tools-card__poll-type--proposal')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-common-form__settings-tab')
+    page.click('.poll-common-form__advanced-btn')
     page.click('.poll-settings-anonymous')
 
     page.click('.poll-common-form__submit')
@@ -281,7 +282,7 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     // page.click('.poll-settings-hide-results-until-closed')
 
-    page.click('.poll-common-form__settings-tab')
+    page.click('.poll-common-form__advanced-btn')
     page.click('.poll-common-settings__hide-results')
     page.click('.v-select-list .v-list-item:last-child')
 

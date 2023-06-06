@@ -409,7 +409,7 @@ export default
 
 
   .d-flex.align-center
-    v-btn.center.mb-2.mt-4.mx-auto.text-center(@click="showAdvanced = !showAdvanced")
+    v-btn.center.mb-2.mt-4.mx-auto.text-center.poll-common-form__advanced-btn(@click="showAdvanced = !showAdvanced")
       span(v-if='showAdvanced' v-t="'poll_common_form.hide_advanced_settings'")
       span(v-else v-t="'poll_common_form.show_advanced_settings'")
 
