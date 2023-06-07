@@ -121,6 +121,8 @@ advice:
   poll_type: proposal
   process_name_i18n: decision_tools_card.advice_title
   process_subtitle_i18n: poll_proposal_form.advice_subtitle
+  process_introduction_i18n: poll_proposal_form.advice_introduction
+  process_introduction_format: 'html'
   tags_i18n:
     - poll_common.advice_process
   poll_options:

@@ -2170,7 +2170,24 @@ en:
       This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll. 
 
   poll_proposal_form:
-    advice_subtitle: Seek advice on a decision you're making
+    advice_subtitle: Seek advice on a decision you need to make
+    advice_introduction: |
+      <p>Seek advice on a decision you need to make, with the advice of people impacted or who have expertise, so you can make a better decision for your organization.</p>
+      <p>The Advice proposal is a key stage in the Advice process: </p>
+      <ol>
+      <li><p>You notice a problem or opportunity and take the initiative.</p></li>
+      <li><p>Seek input to sound out perspectives before proposing action - start a Loomio thread.</p></li>
+      <li><p>Make a proposal and seek advice - run an <strong>Advice proposal</strong>.</p></li>
+      <li><p>Taking advice received into account, you make a decision and inform the people who have given advice - state an outcome.</p></li>
+      </ol>
+      <p><span>Run an </span><strong><span>Advice proposal</span></strong><span> and invite people to respond within a set time frame.</span></p>
+      <p>Benefits:</p>
+      <ul>
+      <li><p>Advice helps you make a better decision for your organization.</p></li>
+      <li><p>Foster relationships, learning opportunities and diverse input.&nbsp;&nbsp;</p></li>
+      <li><p>Stimulate initiative and creativity, and more enjoyable work.</p></li>
+      </ul>
+      <p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html" rel="nofollow ugc noreferrer noopener">Read more about the Advice process</a>.</p>
     consent_subtitle: Ensure there are no objections to your proposal
     consensus_subtitle: Build agreement with the group
     tool_tip_collapsed: Make a decision together
