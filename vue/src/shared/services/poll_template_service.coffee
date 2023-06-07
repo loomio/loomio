@@ -59,7 +59,7 @@ export default new class PollTemplateService
                   EventBus.$emit 'refreshPollTemplates'
               text:
                 title: 'common.are_you_sure'
-                helptext: 'poll_template_form.confirm_delete'
+                helptext: 'poll_common_form.confirm_delete'
                 submit: 'common.action.delete'
 
     hide:

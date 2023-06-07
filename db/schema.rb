@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_01_050243) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_232511) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -641,7 +641,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_050243) do
     t.string "title"
     t.text "details"
     t.string "details_format", limit: 10, default: "md", null: false
-    t.boolean "notify_on_participate", default: false, null: false
     t.boolean "anonymous", default: false, null: false
     t.boolean "specified_voters_only", default: false, null: false
     t.integer "notify_on_closing_soon", default: 0, null: false
@@ -670,6 +669,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_050243) do
     t.jsonb "atttachments", default: [], null: false
     t.string "tags", default: [], array: true
     t.datetime "discarded_at"
+    t.string "process_introduction"
+    t.string "process_introduction_format", default: "md", null: false
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
   end
 

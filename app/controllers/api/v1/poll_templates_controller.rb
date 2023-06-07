@@ -13,6 +13,22 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
     respond_with_collection
   end 
 
+  def show
+    @poll_template = PollTemplate.find_by(group_id: current_user.group_ids, id: params[:id])
+    respond_with_resource
+  end
+
+  def update
+    if params[:id].to_i.to_s != params[:id].to_s
+      self.resource = PollTemplate.find_by(group_id: params[:poll_template][:group_id], key: params[:id])
+    else
+      load_resource
+    end
+
+    update_action
+    update_response
+  end
+
   def hidden
     group = current_user.groups.find_by(id: params[:group_id])
 

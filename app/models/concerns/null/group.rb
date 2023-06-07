@@ -67,7 +67,12 @@ module Null::Group
   end
 
   def empty_methods
-    [:member_ids, :identities, :accepted_members]
+    %w[
+      member_ids
+      identities
+      accepted_members
+      hidden_poll_templates
+    ]
   end
 
   def discussion_privacy_options

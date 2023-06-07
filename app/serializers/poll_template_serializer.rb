@@ -13,7 +13,6 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :title,
              :details,
              :details_format,
-             :notify_on_participate,
              :anonymous,
              :specified_voters_only,
              :notify_on_closing_soon,

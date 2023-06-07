@@ -39,6 +39,8 @@ export default class PollTemplateModel extends BaseModel
     notifyOnClosingSoon: 'undecided_voters'
     processName: null
     processSubtitle: null
+    processIntroduction: null
+    processIntroductionFormat: 'html'
     processUrl: null
     pollOptions: []
     pollOptionNameFormat: 'plain'
@@ -57,11 +59,14 @@ export default class PollTemplateModel extends BaseModel
       
     poll.authorId = Session.user().id
     poll.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
-    poll.pollOptionsAttributes = @pollOptions.map (o) ->
+    poll.pollOptionsAttributes = @pollOptionsAttributes()
+    poll
+
+  pollOptionsAttributes: ->
+    @pollOptions.map (o) ->
       name: o.name
       meaning: o.meaning
       prompt: o.prompt
       icon: o.icon
-    poll
 
 

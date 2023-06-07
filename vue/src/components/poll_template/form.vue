@@ -19,7 +19,7 @@ export default
   data: ->
     newOption: null
     lastPollType: @pollTemplate.pollType
-    pollOptions: @pollTemplate.pollOptions
+    pollOptions: @pollTemplate.pollOptionsAttributes()
 
     votingMethodsI18n:
       proposal: 
@@ -165,21 +165,28 @@ export default
 
   v-text-field(
      v-model="pollTemplate.processSubtitle"
-    :label="$t('poll_common_form.process_description')"
-    :hint="$t('poll_common_form.process_description_hint')")
+    :label="$t('poll_common_form.process_subtitle')"
+    :hint="$t('poll_common_form.process_subtitle_hint')")
   validation-errors(:subject='pollTemplate' field='processSubtitle')
 
-  v-text-field(
-     v-model="pollTemplate.processUrl"
-    :label="$t('poll_common_form.process_url')"
-    :hint="$t('poll_common_form.process_url_hint')")
-  validation-errors(:subject='pollTemplate' field='processUrl')
+  lmo-textarea(
+    :model='pollTemplate'
+    field="processIntroduction"
+    :placeholder="$t('poll_common_form.process_introduction_hint')"
+    :label="$t('poll_common_form.process_introduction')"
+  )
+
+  //- v-text-field(
+  //-    v-model="pollTemplate.processUrl"
+  //-   :label="$t('poll_common_form.process_url')"
+  //-   :hint="$t('poll_common_form.process_url_hint')")
+  //- validation-errors(:subject='pollTemplate' field='processUrl')
 
   v-text-field.poll-common-form-fields__title(
     type='text'
     required='true'
-    :hint="$t('poll_template_form.title_hint')"
-    :label="$t('poll_template_form.title_label')"
+    :hint="$t('poll_common_form.example_title_hint')"
+    :label="$t('poll_common_form.example_title')"
     v-model='pollTemplate.title'
     maxlength='250')
   validation-errors(:subject='pollTemplate' field='title')
@@ -189,9 +196,10 @@ export default
   lmo-textarea(
     :model='pollTemplate'
     field="details"
-    :placeholder="$t('poll_template_form.details_placeholder')"
-    :label="$t('poll_template_form.details_label')"
+    :placeholder="$t('poll_common_form.example_details_placeholder')"
+    :label="$t('poll_common_form.example_details')"
   )
+  
   .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
   v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
   sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")

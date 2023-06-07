@@ -88,6 +88,8 @@ class PermittedParams < Struct.new(:params)
       :poll_type,
       :process_name,
       :process_subtitle,
+      :process_introduction,
+      :process_introduction_format,
       :process_url,
       :title,
       :details,

@@ -66,7 +66,7 @@ export default
 <template lang="pug">
 .poll-common-templates-list
 
-  v-chip(v-for="icon, name in filters" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
+  v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
     v-icon(small).mr-2 {{icon}}
     span.poll-type-chip-name {{name}}
   v-list.decision-tools-card__poll-types(two-line dense)

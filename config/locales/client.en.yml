@@ -2073,14 +2073,11 @@ en:
     title: Delete {{pollType}}
     success: Successfully deleted
 
-  poll_template_form:
-    title_label: Example title
-    title_hint: Give an example of a good proposal title
-    details_label: Example details
-    details_placeholder: Provide a self explanatory proposal text that people can modify to suit their needs
-    confirm_delete: Are you sure you want to delete this poll template? This cannot be undone.
-
   poll_common_form:
+    example_title: Example title
+    example_title_hint: Give an example of a good proposal title
+    example_details_placeholder: Provide a self explanatory proposal text that people can modify to suit their needs
+    confirm_delete: Are you sure you want to delete this poll template? This cannot be undone.
     show_advanced_settings: Show advanced settings
     hide_advanced_settings: Hide advanced settings
     new_poll_type_helptext: Create a new type of poll for your group. Customize terminology and settings so it's easy for other people in your group to run a specific decision making process.
@@ -2117,8 +2114,10 @@ en:
     process: Process
     process_name: Process name
     process_name_hint: What do you call this process? E.g. Proposal, Temperature check, Minutes approval
-    process_description: Process description
-    process_description_hint: Describe the purpose of the process in one sentence
+    process_subtitle: Process subtitle
+    process_subtitle_hint: One short sentence that sells the benefit of the process
+    process_introduction: Process introduction
+    process_introduction_hint: One or two paragraphs that introduce how the process works and any links to resources people might require.
     process_url: Process URL
     process_url_hint: Link to a webpage that explains this process
     poll_type_name: Poll type name
@@ -2128,7 +2127,6 @@ en:
     you_can_set_a_prompt_per_option: Edit the prompt for each option from the details tab
     chart_type: Chart type
     title: Title
-    example_title: Example title
     title_hint: A short statement or question
     no_options_add_some: This poll has no options, add some below.
     details: Details

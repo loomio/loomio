@@ -56,7 +56,6 @@ class PollTemplateService
   def self.update(poll_template:, params:, actor:)
     actor.ability.authorize! :update, poll_template
 
-
     poll_template.assign_attributes_and_files(params.except(:group_id))
     return false unless poll_template.valid?
     poll_template.save!
