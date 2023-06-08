@@ -480,7 +480,7 @@ export default
       color="primary"
       @click='submit()'
       :loading="poll.processing"
-      :disabled="!poll.title || (poll.pollType != 'question' && poll.pollOptionNames.length == 0)"
+      :disabled="!poll.title || (poll.pollType != 'question' && pollOptions.length == 0)"
     )
       span(v-if='poll.id' v-t="'common.action.save_changes'")
       span(v-if='!poll.id && poll.closingAt' v-t="'poll_common_form.start_poll'")
