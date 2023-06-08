@@ -217,10 +217,13 @@ export default class BaseModel
       @processing = false
 
   beforeSave: -> true
+  beforeSaves: []
 
   save: =>
     @processing = true
     @beforeSave()
+    @beforeSaves.forEach (f) => f()
+    
     if @isNew()
       @remote.create(@serialize())
       .then(@saveSuccess, @saveError)
