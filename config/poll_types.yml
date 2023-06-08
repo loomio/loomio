@@ -81,6 +81,25 @@ check:
       prompt_i18n: poll_check_options.concerned_prompt
       color: "#C8E56E"
       default: true
+
+question:
+  prevent_anonymous: true
+  material_icon: chat-question
+  vote_method: reason_only
+  vote_method_hint_i18n: poll_common_form.voting_methods.questions_hint
+  chart_type: none
+  hide_reason_required: true
+  defaults:
+    poll_option_name_format: plain
+    chart_type: none
+    min_score: 0
+    max_score: 0
+    minimum_stance_choices: 0
+    maximum_stance_choices: 0
+    dots_per_person: 0
+    default_duration_in_days: 7
+    stance_reason_required: 2
+
 proposal:
   material_icon: mdi-thumbs-up-down
   vote_method: show_thumbs

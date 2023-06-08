@@ -63,7 +63,6 @@ section.strand-item.poll-created
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")
     document-list(:model='poll')
-    //- p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
     div.text-body-2(v-if="poll.pollOptionNames.length")
       poll-common-chart-panel(:poll='poll')
       poll-common-action-panel(:poll='poll')

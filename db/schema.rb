@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_232511) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_07_014712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -740,6 +740,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_232511) do
     t.string "process_subtitle"
     t.string "process_url"
     t.string "tags", default: [], array: true
+    t.integer "poll_template_id"
+    t.string "poll_template_key"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"

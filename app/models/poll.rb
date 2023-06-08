@@ -56,6 +56,7 @@ class Poll < ApplicationRecord
                        validate_maximum_stance_choices
                        validate_min_score
                        validate_max_score
+                       no_options
                        validate_dots_per_person).freeze
 
   TEMPLATE_VALUES.each do |field|

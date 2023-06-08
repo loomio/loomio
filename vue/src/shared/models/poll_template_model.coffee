@@ -57,6 +57,8 @@ export default class PollTemplateModel extends BaseModel
     Object.keys(@defaultValues()).forEach (attr) =>
       poll[attr] = @[attr]
       
+    poll.pollTemplateId = @id
+    poll.pollTemplateKey = @key
     poll.authorId = Session.user().id
     poll.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
     poll.pollOptionsAttributes = @pollOptionsAttributes()

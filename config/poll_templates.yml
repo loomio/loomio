@@ -1,8 +1,10 @@
-# question_poll:
-#   poll_type: poll
-#   process_name: Question round
-#   process_subtitle: Ask an open ended question, with a deadline
-#   default_duration_in_days: 3
+question:
+  poll_type: question
+  process_name: Question round
+  process_subtitle: Ask for clarifications and questions within a set time limit
+  default_duration_in_days: 5
+  tags_i18n:
+    - poll_common.question_round
 
 count:
   poll_type: count

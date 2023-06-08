@@ -38,7 +38,7 @@ export default
       templates = []
       @pollTemplates = switch @filter
         when 'proposal'
-          Records.pollTemplates.find(pollType: 'proposal', discardedAt: null)
+          Records.pollTemplates.find(pollType: {$in: ['proposal', 'question']}, discardedAt: null)
         when 'poll'
           Records.pollTemplates.find(pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null)
         when 'meeting'

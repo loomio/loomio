@@ -236,83 +236,84 @@ export default
     :should-reset="shouldReset"
   )
 
-  .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
-  v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
-  sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
-    sortable-item(
-      v-for="(option, priority) in visiblePollOptions"
-      :index="priority"
-      :key="option.name"
-      :item="option"
-      v-if="pollOptions.length"
-    )
-      v-sheet.mb-2.rounded(outlined)
-        v-list-item(style="user-select: none")
-          v-list-item-icon(v-if="hasOptionIcon" v-handle)
-            v-avatar(size="48")
-              img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
-       
-          v-list-item-content(v-handle)
-            v-list-item-title
-              span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
-              span(v-if="optionFormat == 'plain'") {{option.name}}
-              span(v-if="optionFormat == 'iso8601'")
-                poll-meeting-time(:name="option.name")
-            v-list-item-subtitle {{option.meaning}}
-
-          v-list-item-action
-            v-btn(
-              v-if="!optionHasVotes(option)"
-              icon
-              @click="removeOption(option)"
-              :title="$t('common.action.delete')"
-              :disabled="optionHasVotes(option)"
-            )
-              v-icon.text--secondary mdi-delete
-          v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
-            v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-              v-icon.text--secondary mdi-pencil
-          v-icon.text--secondary(v-handle, :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
-
-  template(v-if="optionFormat == 'i18n'")
-    v-select(
-      outlined
-      v-model="newOption"
-      :items="i18nItems" 
-      :label="$t('poll_poll_form.add_option_placeholder')"
-      @change="addOption")
-
-  template(v-if="optionFormat == 'plain'")
-    v-text-field.poll-poll-form__add-option-input.mt-4(
-      v-model="newOption"
-      :label="$t('poll_poll_form.new_option')"
-      :placeholder="$t('poll_poll_form.add_option_hint')"
-      @keydown.enter="addOption"
-      filled
-      rounded
-      color="primary"
-    )
-      template(v-slot:append)
-        v-btn.mt-n2(
-          @click="addOption"
-          icon
-          :disabled="!newOption"
-          color="primary"
-          outlined
-          :title="$t('poll_poll_form.add_option_placeholder')")
-          v-icon mdi-plus
-
-  template(v-if="optionFormat == 'iso8601'")
-    .v-label.v-label--active.px-0.text-caption.pt-2(v-t="'poll_poll_form.new_option'")
-    .d-flex.align-center
-      date-time-picker(:min="minDate" v-model="newDateOption")
-      v-btn.poll-meeting-form__option-button.ml-4(
-        :title="$t('poll_meeting_time_field.add_time_slot')"
-        outlined color="primary"
-        @click='addDateOption()'
-        v-t="'poll_poll_form.add_option_placeholder'"
+  template(v-if="poll.pollType != 'question'")
+    .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
+    v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
+    sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
+      sortable-item(
+        v-for="(option, priority) in visiblePollOptions"
+        :index="priority"
+        :key="option.name"
+        :item="option"
+        v-if="pollOptions.length"
       )
-    poll-meeting-add-option-menu(:poll="poll", :value="newDateOption")
+        v-sheet.mb-2.rounded(outlined)
+          v-list-item(style="user-select: none")
+            v-list-item-icon(v-if="hasOptionIcon" v-handle)
+              v-avatar(size="48")
+                img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
+         
+            v-list-item-content(v-handle)
+              v-list-item-title
+                span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
+                span(v-if="optionFormat == 'plain'") {{option.name}}
+                span(v-if="optionFormat == 'iso8601'")
+                  poll-meeting-time(:name="option.name")
+              v-list-item-subtitle {{option.meaning}}
+
+            v-list-item-action
+              v-btn(
+                v-if="!optionHasVotes(option)"
+                icon
+                @click="removeOption(option)"
+                :title="$t('common.action.delete')"
+                :disabled="optionHasVotes(option)"
+              )
+                v-icon.text--secondary mdi-delete
+            v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
+              v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
+                v-icon.text--secondary mdi-pencil
+            v-icon.text--secondary(v-handle, :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
+
+    template(v-if="optionFormat == 'i18n'")
+      v-select(
+        outlined
+        v-model="newOption"
+        :items="i18nItems" 
+        :label="$t('poll_poll_form.add_option_placeholder')"
+        @change="addOption")
+
+    template(v-if="optionFormat == 'plain'")
+      v-text-field.poll-poll-form__add-option-input.mt-4(
+        v-model="newOption"
+        :label="$t('poll_poll_form.new_option')"
+        :placeholder="$t('poll_poll_form.add_option_hint')"
+        @keydown.enter="addOption"
+        filled
+        rounded
+        color="primary"
+      )
+        template(v-slot:append)
+          v-btn.mt-n2(
+            @click="addOption"
+            icon
+            :disabled="!newOption"
+            color="primary"
+            outlined
+            :title="$t('poll_poll_form.add_option_placeholder')")
+            v-icon mdi-plus
+
+    template(v-if="optionFormat == 'iso8601'")
+      .v-label.v-label--active.px-0.text-caption.pt-2(v-t="'poll_poll_form.new_option'")
+      .d-flex.align-center
+        date-time-picker(:min="minDate" v-model="newDateOption")
+        v-btn.poll-meeting-form__option-button.ml-4(
+          :title="$t('poll_meeting_time_field.add_time_slot')"
+          outlined color="primary"
+          @click='addDateOption()'
+          v-t="'poll_poll_form.add_option_placeholder'"
+        )
+      poll-meeting-add-option-menu(:poll="poll", :value="newDateOption")
 
   template(v-if="optionFormat == 'iso8601'")
     .d-flex.align-center
@@ -438,18 +439,19 @@ export default
 
     //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.vote_reason'")
     //- p.text--secondary(v-t="'poll_common_form.vote_reason_description'")
-    v-select(
-      :label="$t('poll_common_form.stance_reason_required_label')"
-      :items="stanceReasonRequiredItems"
-      v-model="poll.stanceReasonRequired"
-    )
+    template(v-if="!poll.config().hide_reason_required")
+      v-select(
+        :label="$t('poll_common_form.stance_reason_required_label')"
+        :items="stanceReasonRequiredItems"
+        v-model="poll.stanceReasonRequired"
+      )
 
-    v-text-field(
-      v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
-      v-model="poll.reasonPrompt"
-      :label="$t('poll_common_form.reason_prompt')"
-      :hint="$t('poll_option_form.prompt_hint')"
-      :placeholder="$t('poll_common.reason_placeholder')")
+      v-text-field(
+        v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
+        v-model="poll.reasonPrompt"
+        :label="$t('poll_common_form.reason_prompt')"
+        :hint="$t('poll_option_form.prompt_hint')"
+        :placeholder="$t('poll_common.reason_placeholder')")
 
     template(v-if="poll.stanceReasonRequired != 'disabled'")
       //- p.text--secondary(v-t="'poll_common_settings.short_reason_can_be_helpful'")
@@ -478,7 +480,7 @@ export default
       color="primary"
       @click='submit()'
       :loading="poll.processing"
-      :disabled="!poll.title"
+      :disabled="!poll.title || (poll.pollType != 'question' && poll.pollOptionNames.length == 0)"
     )
       span(v-if='poll.id' v-t="'common.action.save_changes'")
       span(v-if='!poll.id && poll.closingAt' v-t="'poll_common_form.start_poll'")

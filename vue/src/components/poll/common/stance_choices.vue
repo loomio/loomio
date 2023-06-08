@@ -24,7 +24,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-stance-choices.pl-2(v-if="poll.pollOptionNames.length && !poll.singleChoice()")
+.poll-common-stance-choices.pl-2(v-if="poll.pollType != 'question' && !poll.singleChoice()")
   span.caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
   template(v-else)
     template(v-if="!datesAsOptions")
