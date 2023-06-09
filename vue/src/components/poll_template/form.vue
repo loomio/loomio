@@ -14,6 +14,9 @@ export default
   directives: { handle: HandleDirective }
 
   props:
+    isModal:
+      default: false
+      type: Boolean
     pollTemplate: Object
 
   data: ->
@@ -97,16 +100,7 @@ export default
       @pollTemplate.pollOptions = @pollOptions
       @pollTemplate.save().then (data) =>
         Flash.success "poll_common.poll_template_saved"
-        # what to do on save?
-        # poll = Records.polls.find(data.polls[0].id)
-        # @$router.replace(@urlFor(poll)) if @redirectOnSave
-        # @$emit('saveSuccess', poll)
-        # Flash.success "poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()}
-        # if actionName == 'created'
-        #   EventBus.$emit 'openModal',
-        #     component: 'PollMembers',
-        #     props:
-        #       poll: poll
+        EventBus.$emit('closeModal')
       .catch (error) =>
         Flash.warning 'poll_common_form.please_review_the_form'
         console.error error
@@ -144,11 +138,12 @@ export default
 
 </script>
 <template lang="pug">
-.poll-common-form
+.poll-common-form(:class="isModal ? 'pa-4' : ''") 
   submit-overlay(:value="pollTemplate.processing")
   v-card-title.px-0
     h1.text-h4(tabindex="-1" v-t="titlePath")
     v-spacer
+    dismiss-modal-button(v-if="isModal" :model='pollTemplate')
 
   v-select(
     :label="$t('poll_common_form.voting_method')"

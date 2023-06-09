@@ -60,6 +60,8 @@ export default class PollModel extends BaseModel
     notifyOnClosingSoon: 'undecided_voters'
     results: []
     pollOptionIds: []
+    processTemplateId: null
+    processTemplateKey: null
     processName: null
     processSubtitle: null
     processDescription: null
@@ -86,17 +88,9 @@ export default class PollModel extends BaseModel
       prompt: o.prompt
       icon: o.icon
 
-
   defaulted: (attr) ->
     if @[attr] == null
       AppConfig.pollTypes[@pollType].defaults[snakeCase(attr)]
-    else
-      @[attr]
-
-  defaultedI18n: (attr) ->
-    if @[attr] == null
-      console.log attr, @pollType
-      I18n.t(AppConfig.pollTypes[@pollType].defaults[snakeCase(attr)+"_i18n"])
     else
       @[attr]
 

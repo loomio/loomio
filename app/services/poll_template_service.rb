@@ -4,7 +4,9 @@ class PollTemplateService
       raw_attrs[:key] = key
       attrs = {}
 
+      attrs['group_id'] = group.id
       attrs['details_format'] = default_format
+      attrs['process_introduction_format'] = default_format
 
       AppConfig.poll_types[raw_attrs['poll_type']]['defaults'].each_pair do |key, value|
         if key.match /_i18n$/

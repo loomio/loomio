@@ -9,11 +9,12 @@ import AbilityService from '@/shared/services/ability_service'
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns'
 import { addHours, isAfter } from 'date-fns'
 import PollCommonWipField from '@/components/poll/common/wip_field'
+import PollTemplateInfoPanel  from '@/components/poll_template/info_panel'
 import { HandleDirective } from 'vue-slicksort';
 import { isSameYear, startOfHour, setHours }  from 'date-fns'
 
 export default
-  components: { PollCommonWipField }
+  components: { PollCommonWipField, PollTemplateInfoPanel }
   directives: { handle: HandleDirective }
 
   props:
@@ -206,9 +207,7 @@ export default
     v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
       v-icon mdi-close
 
-  p.text--secondary
-    a(v-if="poll.processUrl" :href="poll.processUrl" target="_blank") {{poll.defaultedI18n('processSubtitle')}}
-    span(v-else) {{poll.defaultedI18n('processSubtitle')}}
+  poll-template-info-panel(:poll="poll")
 
   v-select(
     v-if="!poll.id && !poll.discussionId"

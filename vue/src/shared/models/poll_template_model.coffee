@@ -15,6 +15,7 @@ export default class PollTemplateModel extends BaseModel
     AppConfig.pollTypes[@pollType]
 
   defaultValues: ->
+    groupId: null
     title: ''
     details: ''
     detailsFormat: 'html'

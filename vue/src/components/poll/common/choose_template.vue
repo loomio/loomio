@@ -80,7 +80,7 @@ export default
           v-list-item-title(v-t="'poll_common.new_poll_template'")
           v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
 
-      v-subheader Hidden poll templates
+      v-subheader(v-t="'poll_common.hidden_poll_templates'")
 
     v-list-item.decision-tools-card__poll-type(
       v-for='(template, i) in pollTemplates'

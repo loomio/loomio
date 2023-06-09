@@ -128,18 +128,18 @@ advice:
   tags_i18n:
     - poll_common.advice_process
   poll_options:
-    - key: looks_good
-      name_i18n: poll_check_options.looks_good
+    - key: agree
+      name_i18n: poll_proposal_options.agree
       icon: agree
-      meaning_i18n: poll_check_options.looks_good_meaning
-      prompt_i18n: poll_check_options.looks_good_prompt
+      meaning_i18n: poll_proposal_options.advice_agree_meaning
+      prompt_i18n: poll_proposal_options.advice_agree_prompt
       color: '#70C9F8'
       default: true
-    - key: not_sure
-      name_i18n: poll_check_options.not_sure
+    - key: abstain
+      name_i18n: poll_proposal_options.abstain
       icon: abstain
-      meaning_i18n: poll_check_options.not_sure_meaning
-      prompt_i18n: poll_check_options.not_sure_prompt
+      meaning_i18n: poll_proposal_options.advice_abstain_meaning
+      prompt_i18n: poll_check_options.advice_abstain_prompt
       color: '#70C9F8'
       default: true
     - key: concerned

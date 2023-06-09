@@ -1778,6 +1778,7 @@ en:
     select_minimum_to_maximum_options: Select {{minimum}} to {{maximum}} options
     custom_poll_types: Custom poll types
     example_polls_from_thread_template: Examples from thread template
+    hidden_poll_templates: Hidden poll templates
     poll_template: Poll template
     poll_template_saved: Poll template saved
     poll_templates: Poll templates
@@ -2056,9 +2057,9 @@ en:
 
   poll_common_outcome_form:
     review_date: Review date
-    review_date_hint: Set date of reminder to review outcome (optional)
+    review_date_hint: Set a date to review the decision (optional)
     who_to_notify: Who do you want to notify about this outcome? (optional)
-    new_title: Enter an outcome
+    new_title: State outcome
     update_title: Update outcome
     outcome_created: Outcome created
     outcome_updated: Outcome updated
@@ -2183,16 +2184,22 @@ en:
       <li><p>Make a proposal and seek advice - run an <strong>Advice proposal</strong>.</p></li>
       <li><p>Taking advice received into account, you make a decision and inform the people who have given advice - state an outcome.</p></li>
       </ol>
-      <p><span>Run an </span><strong><span>Advice proposal</span></strong><span> and invite people to respond within a set time frame.</span></p>
+      <p>Run an <strong>Advice proposal</strong> and invite people to respond within a set time frame.</p>
       <p>Benefits:</p>
       <ul>
       <li><p>Advice helps you make a better decision for your organization.</p></li>
-      <li><p>Foster relationships, learning opportunities and diverse input.&nbsp;&nbsp;</p></li>
+      <li><p>Foster relationships, learning opportunities and diverse input.</p></li>
       <li><p>Stimulate initiative and creativity, and more enjoyable work.</p></li>
       </ul>
       <p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html" rel="nofollow ugc noreferrer noopener">Read more about the Advice process</a>.</p>
     consent_subtitle: Ensure there are no objections to your proposal
-    consensus_subtitle: Build agreement with the group
+    consensus_subtitle: Reach collective agreement with everyone involved
+    consensus_introduction: |
+      <p>Build consensus for a decision you need to make, to reach an agreement that satisfies the needs and concerns of all participants.</p>
+      <p>Discuss and develop a proposal together</p>
+      <p>Include and respect everyone involved</p>
+      <p>Seek agreement from most people</p>
+      <p>Read more about the Consensus proposal.</p>
     tool_tip_collapsed: Make a decision together
     vote_method_hint: Voters agree or disagree with a statement
     start_header: Start proposal
@@ -2290,7 +2297,6 @@ en:
     veto: Veto
     veto_meaning: I block this proposal
 
-
   poll_proposal_options:
     select_an_option: Select an option
     yes: 'Yes'
@@ -2303,6 +2309,10 @@ en:
     objection: Objection
     object: Object
     block: Block
+    advice_agree_meaning: I have offered my advice about this decision
+    advice_agree_prompt: Summarize your advice or make a helpful comment
+    advice_abstain_meaning: I don't have any advice to offer
+    advice_abstain_prompt: Do you have any comments that may be helpful?
     agree_meaning: This proposal is good enough to be adopted by the group
     agree_prompt: Why do you like the proposal? Is there anything that could be improved?
     consent_meaning: This proposal is safe to try
@@ -2325,6 +2335,16 @@ en:
 
   poll_check_options:
     check_subtitle: Ask for feedback, questions and concerns
+    check_introduction: |
+      <p>The Sense check proposal is a good way to get feedback, invite questions and uncover concerns.
+      It helps to clarify and improve a proposal before moving to a decision.</p>
+
+      <p>Sense check lets people know a proposal is forming and encourages them to engage.
+      It is an opportunity to listen to people, sense how they feel and respond appropriately - opening the potential to incorporate their contributions to make a better decision.</p>
+
+      <p>Use the Sense check proposal in the Consent process to invite reactions and comments to improve the proposal, and in a Consensus process to test for consensus.</p>
+
+      <p>Read more about the Sense check proposal.</p>
     question: I have a question
     question_meaning: Ask a question about the proposal
     question_prompt: What would you like to ask?

@@ -17,14 +17,26 @@ export default new class PollTemplateService
       icon: 'mdi-pencil'
       menu: true
       canPerform: -> !pollTemplate.id && group.adminsInclude(Session.user())
-      to: "/poll_templates/new?template_key=#{pollTemplate.key}&group_id=#{group.id}"
+      # to: "/poll_templates/new?template_key=#{pollTemplate.key}&group_id=#{group.id}"
+      perform: ->
+        openModal
+          component: 'PollTemplateForm'
+          props:
+            isModal: true
+            pollTemplate: pollTemplate.clone()
 
     edit_template:
       name: 'poll_common.edit_template'
       icon: 'mdi-pencil'
       menu: true
       canPerform: -> pollTemplate.id && group.adminsInclude(Session.user())
-      to: "/poll_templates/#{pollTemplate.id}/edit"
+      perform: ->
+        openModal
+          component: 'PollTemplateForm'
+          props:
+            isModal: true
+            pollTemplate: pollTemplate.clone()
+      # to: "/poll_templates/#{pollTemplate.id}/edit"
 
     discard:
       icon: 'mdi-eye-off'
@@ -56,7 +68,9 @@ export default new class PollTemplateService
             confirm:
               submit: ->
                 Records.remote.destroy('poll_templates', {id: pollTemplate.id}).then ->
-                  EventBus.$emit 'refreshPollTemplates'
+                  console.log "hiuh"
+                  EventBus.$emit('refreshPollTemplates')
+                  EventBus.$emit('closeModal')
               text:
                 title: 'common.are_you_sure'
                 helptext: 'poll_common_form.confirm_delete'

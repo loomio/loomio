@@ -20,6 +20,7 @@ import ChatbotWebhookForm from '@/components/chatbot/webhook_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
 import PollOptionForm from '@/components/poll/common/poll_option_form'
+import PollTemplateForm from '@/components/poll_template/form'
 import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonMoveForm from '@/components/poll/common/move_form'
 import RevisionHistoryModal from '@/components/revision_history/modal'
@@ -65,6 +66,7 @@ export default
     PollOptionForm
     MoveThreadForm
     RevisionHistoryModal
+    PollTemplateForm
     TagsModal
     TagsSelect
     WebhookForm
