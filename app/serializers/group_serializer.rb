@@ -22,6 +22,7 @@ class GroupSerializer < ApplicationSerializer
              :admins_can_edit_user_content,
              :token,
              :polls_count,
+             :poll_templates_count,
              :closed_polls_count,
              :discussions_count,
              :public_discussions_count,

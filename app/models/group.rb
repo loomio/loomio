@@ -110,6 +110,7 @@ class Group < ApplicationRecord
 
   define_counter_cache(:polls_count)                { |g| g.polls.count }
   define_counter_cache(:closed_polls_count)         { |g| g.polls.closed.count }
+  define_counter_cache(:poll_templates_count)       { |g| g.poll_templates.kept.count }
   define_counter_cache(:memberships_count)          { |g| g.memberships.count }
   define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
