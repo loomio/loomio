@@ -264,10 +264,9 @@ class PollService
     sorted_poll_options = case poll.order_results_by
     when 'priority'
       poll_options.sort_by {|o| o.priority }
-    when 'total_score_desc'
-      poll_options.sort_by {|o| -(o.total_score)}
     else
-      raise "unknown order_results_by: #{poll.order_results_by}"
+      # when 'total_score_desc'
+      poll_options.sort_by {|o| -(o.total_score)}
     end
 
     l = sorted_poll_options.each_with_index.map do |option, index|

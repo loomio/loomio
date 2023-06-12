@@ -56,8 +56,12 @@ export default class PollTemplateModel extends BaseModel
     poll = @recordStore.polls.build()
 
     Object.keys(@defaultValues()).forEach (attr) =>
-      poll[attr] = @[attr]
+      if attr == 'title'
+        poll['titlePlaceholder'] = @[attr]
+      else
+        poll[attr] = @[attr]
       
+
     poll.pollTemplateId = @id
     poll.pollTemplateKey = @key
     poll.authorId = Session.user().id

@@ -165,6 +165,8 @@ export default
 
     visiblePollOptions: -> @pollOptions.filter (o) -> !o._destroy
     
+    hasOptions: -> @poll.config().has_options
+    minOptions: -> @poll.config().min_options
     allowAnonymous: -> !@poll.config().prevent_anonymous
     stanceReasonRequiredItems: ->
       [
@@ -220,6 +222,7 @@ export default
     type='text'
     required='true'
     :hint="$t('poll_common_form.title_hint')"
+    :placeholder="poll.titlePlaceholder"
     :label="$t('poll_common_form.title')"
     v-model='poll.title'
     maxlength='250')
@@ -235,7 +238,7 @@ export default
     :should-reset="shouldReset"
   )
 
-  template(v-if="poll.pollType != 'question'")
+  template(v-if="hasOptions")
     .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
     v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
     sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
@@ -469,7 +472,6 @@ export default
         :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
       )
 
-
   common-notify-fields(:model="poll")
 
   .d-flex.justify-space-between.my-4.mt-4.poll-common-form-actions
@@ -479,7 +481,7 @@ export default
       color="primary"
       @click='submit()'
       :loading="poll.processing"
-      :disabled="!poll.title || (poll.pollType != 'question' && pollOptions.length == 0)"
+      :disabled="!poll.title || (hasOptions && pollOptions.length < minOptions)"
     )
       span(v-if='poll.id' v-t="'common.action.save_changes'")
       span(v-if='!poll.id && poll.closingAt' v-t="'poll_common_form.start_poll'")

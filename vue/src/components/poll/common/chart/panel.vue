@@ -35,7 +35,7 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-chart-panel(v-if="poll.pollType != 'question'")
+.poll-common-chart-panel
   template(v-if="!poll.showResults()")
     v-alert.poll-common-action-panel__results-hidden-until-closed.my-2(
       v-if='!!poll.closingAt && poll.hideResults == "until_closed"'
@@ -48,11 +48,10 @@ export default
     )
       span(v-t="'poll_common_action_panel.results_hidden_until_vote'")
   template(v-else)
-    v-subheader.ml-n4
-      span(v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
-    poll-common-chart-table(
-      v-if="poll.chartType != 'grid'"
-      :poll="poll")
-    poll-common-chart-meeting(v-else :poll="poll")
+    template(v-if="poll.config().has_options")
+      v-subheader.ml-n4
+        span(v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
+      poll-common-chart-table(v-if="poll.chartType != 'grid'" :poll="poll")
+      poll-common-chart-meeting(v-else :poll="poll")
   poll-common-percent-voted(v-if="poll.pollType != 'count'", :poll="poll")
 </template>

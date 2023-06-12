@@ -33,6 +33,7 @@ export default class PollModel extends BaseModel
   defaultValues: ->
     discussionId: null
     title: ''
+    titlePlaceholder: null
     closingAt: null
     customize: false
     details: ''

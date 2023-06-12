@@ -2131,7 +2131,7 @@ en:
     you_can_set_a_prompt_per_option: Edit the prompt for each option from the details tab
     chart_type: Chart type
     title: Title
-    title_hint: A short statement or question
+    title_hint: What is the decision you need to make?
     no_options_add_some: This poll has no options, add some below.
     details: Details
     example_details: Example details
@@ -2373,7 +2373,7 @@ en:
     reason_placeholder: Leave a message if you like
 
   poll_common_percent_voted:
-    sentence: "{{numerator}} of {{denominator}} people have voted ({{percent}}%)"
+    sentence: "{{numerator}} of {{denominator}} people have participated ({{percent}}%)"
     target_progress: "{{percent}}% of target reached. ({{num}} / {{target}})"
 
 

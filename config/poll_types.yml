@@ -9,6 +9,8 @@ count:
   per_option_reason_prompt: true
   order_results_by: priority
   options_have_meaning: true
+  has_options: true
+  min_options: 1
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.count_title
@@ -47,6 +49,8 @@ check:
   per_option_reason_prompt: true
   order_results_by: priority
   options_have_meaning: true
+  has_options: true
+  min_options: 1
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.check_title
@@ -89,6 +93,7 @@ question:
   vote_method_hint_i18n: poll_common_form.voting_methods.questions_hint
   chart_type: none
   hide_reason_required: true
+  has_options: false
   defaults:
     poll_option_name_format: plain
     chart_type: none
@@ -111,6 +116,8 @@ proposal:
   chart_column: score_percent
   order_results_by: priority
   options_have_meaning: true
+  has_options: true
+  min_options: 1
   common_poll_options:
     - key: agree
       name_i18n: poll_proposal_options.agree
@@ -213,6 +220,8 @@ meeting:
   validate_max_score: true
   order_results_by: priority
   options_have_meaning: false
+  has_options: true
+  min_options: 1
   defaults:
     meeting_duration: 60
     poll_option_name_format: iso8601
@@ -237,6 +246,8 @@ poll:
   chart_column: max_score_percent
   order_results_by: total_score_desc
   options_have_meaning: true
+  has_options: true
+  min_options: 1
   defaults:
     poll_option_name_format: plain
     process_name_i18n: poll_common_form.voting_methods.simple_poll
@@ -258,6 +269,8 @@ dot_vote:
   validate_dots_per_person: true
   order_results_by: total_score_desc
   options_have_meaning: true
+  has_options: true
+  min_options: 1
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.dot_vote_title
@@ -278,6 +291,8 @@ score:
   validate_max_score: true
   order_results_by: total_score_desc
   options_have_meaning: true
+  has_options: true
+  min_options: 1
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.score_title
@@ -299,6 +314,8 @@ ranked_choice:
   validate_min_score: true
   order_results_by: total_score_desc
   options_have_meaning: true
+  has_options: true
+  min_options: 2
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.ranked_choice_title

@@ -82,7 +82,7 @@ export default
 form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
 
-  v-alert(v-if="!poll.noOptions && !poll.singleChoice()", :color="optionCountAlertColor")
+  v-alert(v-if="poll.config().has_options && !poll.singleChoice()", :color="optionCountAlertColor")
     span(
       v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
       v-t="{path: 'poll_common.select_count_options', args: {count: poll.minimumStanceChoices}}")

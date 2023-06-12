@@ -362,6 +362,6 @@ en:
       more_undecided: "%{count} more..."
       vote_now: Vote now
       you_have_until: You have until %{when} to participate.
-      people_have_voted: "%{nom} of %{dnom} people have voted (%{pct}%)"
+      people_have_voted: "%{nom} of %{dnom} people have participated (%{pct}%)"
 
 
