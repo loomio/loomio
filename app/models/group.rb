@@ -334,7 +334,8 @@ class Group < ApplicationRecord
   end
 
   def hidden_poll_templates
-    Array(self[:info]['hidden_poll_templates'])
+    self[:info]['hidden_poll_templates'] ||= []
+    self[:info]['hidden_poll_templates']
   end
 
   def hidden_poll_templates=(val)

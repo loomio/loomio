@@ -55,7 +55,7 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
   def hide
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
 
-    if PollTemplateService.default_poll_templates(group: @group).any? {|pt| pt.key == params[:key]}
+    if PollTemplateService.group_templates(group: @group).any? {|pt| pt.key == params[:key]}
       @group = current_user.adminable_groups.find_by(id: params[:group_id])
       @group.hidden_poll_templates ||= []
       @group.hidden_poll_templates.push params[:key].parameterize
@@ -71,9 +71,8 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
   def unhide
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
 
-    if PollTemplateService.default_poll_templates(group: @group).any? {|pt| pt.key == params[:key]}
+    if PollTemplateService.group_templates(group: @group).any? {|pt| pt.key == params[:key]}
       @group = current_user.adminable_groups.find_by(id: params[:group_id])
-      @group.hidden_poll_templates ||= []
       @group.hidden_poll_templates -= [params[:key].parameterize]
       @group.save!
       self.resource = @group

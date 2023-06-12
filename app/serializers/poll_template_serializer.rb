@@ -1,5 +1,8 @@
 class PollTemplateSerializer < ActiveModel::Serializer
   embed :ids, include: true
+  
+  has_one :group, serializer: GroupSerializer, root: :groups
+
   attributes :id,
              :key,
              :group_id,
