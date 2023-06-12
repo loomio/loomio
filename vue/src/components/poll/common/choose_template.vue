@@ -43,11 +43,11 @@ export default
       Records.groups.collection.chain().
                    find(id: { $in: groupIds }, archivedAt: null, parentId: null).
                    data().forEach (parent) -> 
-        groups.push(parent) if parent.pollTemplatesCount > 0
+        groups.push(parent) if parent.pollTemplatesCount || parent.hiddenPollTemplates
         Records.groups.collection.chain().
                    find(id: { $in: groupIds }, archivedAt: null, parentId: parent.id).
                    data().forEach (subgroup) ->
-          groups.push(subgroup) if subgroup.pollTemplatesCount > 0
+          groups.push(subgroup) if subgroup.pollTemplatesCount || subgroup.hiddenPollTemplates
       @groups = groups
 
     fetch: ->

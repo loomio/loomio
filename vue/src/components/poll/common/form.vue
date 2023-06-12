@@ -222,7 +222,7 @@ export default
     type='text'
     required='true'
     :hint="$t('poll_common_form.title_hint')"
-    :placeholder="poll.titlePlaceholder"
+    :placeholder="$t('common.prefix_eg', {val: poll.titlePlaceholder})"
     :label="$t('poll_common_form.title')"
     v-model='poll.title'
     maxlength='250')

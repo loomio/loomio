@@ -180,6 +180,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    prefix_eg: "e.g. {{val}}"
     are_you_sure: Are you sure?
     loomio_help: Loomio help
     help_and_guides: Help & guides
