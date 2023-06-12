@@ -1,12 +1,24 @@
 class PollTemplateService
-  def self.default_poll_templates(default_format: 'html', group: )
+  def self.group_templates(group: , default_format: 'html')
+    ignore_keys = group.poll_templates.pluck(:key).uniq
+
+    group.poll_templates.kept.to_a.concat(
+      default_templates.reject do |template|
+        ignore_keys.include?(template.key)
+      end.map do |template|
+        template.details_format = default_format
+        template.process_introduction_format = default_format
+        template.group_id = group.id
+        template.discarded_at = DateTime.now if group.hidden_poll_templates.include?(template.key)
+        template
+      end
+    )
+  end
+
+  def self.default_templates
     AppConfig.poll_templates.map do |key, raw_attrs|
       raw_attrs[:key] = key
       attrs = {}
-
-      attrs['group_id'] = group.id
-      attrs['details_format'] = default_format
-      attrs['process_introduction_format'] = default_format
 
       AppConfig.poll_types[raw_attrs['poll_type']]['defaults'].each_pair do |key, value|
         if key.match /_i18n$/
@@ -36,10 +48,8 @@ class PollTemplateService
         option
       end
 
-      if group.hidden_poll_templates.include?(key)
-        attrs[:discarded_at] = DateTime.now
-      end
-
+      attrs['details_format'] = nil
+      attrs['process_introduction_format'] = nil
       PollTemplate.new attrs
     end
   end

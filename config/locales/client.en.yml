@@ -2100,8 +2100,8 @@ en:
     this_is_a_template_for_new_polls: This is a template for new polls
     voting_method: Voting method
     voting_methods:
-      questions: Questions round
-      questions_hint: Invite questions and comments on your proposal
+      question: Question round
+      question_hint: Invite questions and comments on your proposal
       show_thumbs: Show of thumbs
       show_thumbs_hint: Voters choose thumb up, down, sideways, or hand up
       choose: Choose

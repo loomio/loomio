@@ -25,15 +25,18 @@ export default
     pollOptions: @pollTemplate.pollOptionsAttributes()
 
     votingMethodsI18n:
+      question: 
+        title: 'poll_common_form.voting_methods.question'
+        hint: 'poll_common_form.voting_methods.question_hint'
       proposal: 
         title: 'poll_common_form.voting_methods.show_thumbs'
         hint: 'poll_common_form.voting_methods.show_thumbs_hint'
       poll: 
         title: 'poll_common_form.voting_methods.simple_poll'
         hint: 'poll_common_form.voting_methods.choose_hint'
-      # meeting:
-      #   title: 'poll_common_form.voting_methods.time_poll'
-      #   hint: 'poll_common_form.voting_methods.time_poll_hint'
+      meeting:
+        title: 'poll_common_form.voting_methods.time_poll'
+        hint: 'poll_common_form.voting_methods.time_poll_hint'
       dot_vote:
         title: 'decision_tools_card.dot_vote_title'
         hint: 'poll_common_form.voting_methods.allocate_hint'

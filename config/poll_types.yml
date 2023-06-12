@@ -90,7 +90,7 @@ question:
   prevent_anonymous: true
   material_icon: chat-question
   vote_method: reason_only
-  vote_method_hint_i18n: poll_common_form.voting_methods.questions_hint
+  vote_method_hint_i18n: poll_common_form.voting_methods.question_hint
   chart_type: none
   hide_reason_required: true
   has_options: false

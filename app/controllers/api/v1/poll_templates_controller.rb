@@ -1,14 +1,8 @@
 class API::V1::PollTemplatesController < API::V1::RestfulController
   def index
-    @group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
+    group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
-    ignore_keys = @group.poll_templates.pluck(:key).uniq
-
-    self.collection = @group.poll_templates.kept.to_a
-    self.collection.concat PollTemplateService.default_poll_templates(
-      default_format: current_user.default_format,
-      group: @group
-    ).reject { |pt| ignore_keys.include?(pt.key) }
+    self.collection = PollTemplateService.group_templates(group: group, default_format: current_user.default_format)
 
     respond_with_collection
   end 

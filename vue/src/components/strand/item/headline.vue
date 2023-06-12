@@ -8,7 +8,7 @@ export default
     event: Object
     eventable: Object
     collapsed: Boolean
-    dateTime: Object
+    dateTime: Date
 
   computed:
     datetime: -> @dateTime || @eventable.castAt || @eventable.createdAt
