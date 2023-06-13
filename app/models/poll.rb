@@ -28,6 +28,7 @@ class Poll < ApplicationRecord
     dots_per_person
     chart_type
     default_duration_in_days
+    has_options
   ]
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|
@@ -237,6 +238,8 @@ class Poll < ApplicationRecord
       %w[chart name score_percent voter_count voters]
     when 'meeting'
       %w[chart name score voters]
+    else
+      []
     end
   end
   
