@@ -21,10 +21,8 @@ export default
 
 </script>
 <template lang="pug">
-div
-  //- p.text--secondary(v-if="false") {{pollTemplate.processSubtitle}}
-  v-alert.poll-template-info-panel(v-if="pollTemplate && pollTemplate.processIntroduction" type="info" text outlined)
+div(v-if="pollTemplate")
+  v-alert.poll-template-info-panel(v-if="pollTemplate.processIntroduction" type="info" text outlined)
     formatted-text(:model="pollTemplate" column="processIntroduction")
   v-alert.poll-template-info-panel(v-else type="info" text outlined) {{pollTemplate.processSubtitle}}
-
 </template>
