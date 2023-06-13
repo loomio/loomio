@@ -13,6 +13,7 @@ describe GroupExportService do
   let!(:discussion_poll)  { create :poll, discussion: discussion, group: group }
   let!(:comment)          { create :comment, discussion: discussion }
   let!(:sub_comment)      { create :comment, discussion: sub_discussion }
+  let!(:poll_template)    { create :poll_template, group: group }
   # let!(:group_doc)        { create :document, model: group }
   # let!(:discussion_doc)   { create :document, model: discussion }
   # let!(:poll_doc)         { create :document, model: poll }
@@ -36,10 +37,11 @@ describe GroupExportService do
     [comment, sub_comment].each {|c| CommentService.create(comment: c, actor: c.author)}
   end
 
+  # sorry, I've not updated this since I made it give records new ids
   xdescribe 'export and import' do
     it 'can export a group' do
       filename = GroupExportService.export(group.all_groups, group.name)
-      # puts "exported: #{filename}"
+      puts "exported: #{filename}"
       [Group, Membership, User, Discussion, Comment, Poll, PollOption, Stance, StanceChoice,
        Reaction, Event, Notification, Document, DiscussionReader].each {|model| model.delete_all }
       # puts "importing: #{filename}"
