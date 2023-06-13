@@ -12,6 +12,7 @@ export default
     group: Object
 
   data: ->
+    returnTo: Session.returnTo()
     groups: []
     pollTemplates: []
     actions: {}
@@ -78,7 +79,7 @@ export default
   v-list.decision-tools-card__poll-types(two-line dense)
     template(v-if="filter == 'admin'")
       v-list-item.decision-tools-card__new-template(
-        :to="'/poll_templates/new?group_id='+group.id"
+        :to="'/poll_templates/new?group_id='+group.id+'&return_to='+returnTo"
         :class="'decision-tools-card__poll-type--new-template'"
         :key="99999"
       )
