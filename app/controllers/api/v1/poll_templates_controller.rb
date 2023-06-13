@@ -48,8 +48,8 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
   def destroy
     @poll_template = PollTemplate.find(params[:id])
     current_user.adminable_groups.find(@poll_template.group_id)
-    @poll_template.destroy
-    respond_with_resource
+    @poll_template.destroy!
+    destroy_response
   end
 
   def hide

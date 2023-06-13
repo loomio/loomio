@@ -23,33 +23,18 @@ export default
       admin: 'mdi-cog'
 
   created: ->
-    @watchRecords
-      collections: ['groups', 'memberships']
-      query: (store) => @fillGroups()
-
     renderKey = 0
 
     @fetch()
-    EventBus.$on 'refreshPollTemplates', => @fetch()
+    EventBus.$on 'refreshPollTemplates', => 
+      @fetch().then => @query()
+      @query()
 
     @watchRecords
-      collections: ["pollTemplates"]
+      collections: ["pollTemplates", "groups"]
       query: (records) => @query()
 
   methods:
-    fillGroups: ->
-      groups = []
-      groupIds = Session.user().groupIds()
-      Records.groups.collection.chain().
-                   find(id: { $in: groupIds }, archivedAt: null, parentId: null).
-                   data().forEach (parent) -> 
-        groups.push(parent) if parent.pollTemplatesCount || parent.hiddenPollTemplates
-        Records.groups.collection.chain().
-                   find(id: { $in: groupIds }, archivedAt: null, parentId: parent.id).
-                   data().forEach (subgroup) ->
-          groups.push(subgroup) if subgroup.pollTemplatesCount || subgroup.hiddenPollTemplates
-      @groups = groups
-
     fetch: ->
       Records.remote.fetch(path: "poll_templates", params: {group_id: @group.id} )
 
@@ -57,21 +42,24 @@ export default
       templates = []
       @pollTemplates = switch @filter
         when 'proposal'
-          Records.pollTemplates.find(pollType: {$in: ['proposal', 'question']}, discardedAt: null)
+          Records.pollTemplates.collection.chain().find(pollType: {$in: ['proposal', 'question']}, discardedAt: null).simplesort('id', true).data()
         when 'poll'
-          Records.pollTemplates.find(pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null)
+          Records.pollTemplates.collection.chain().find(pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null).simplesort('id', true).data()
         when 'meeting'
-          Records.pollTemplates.find(pollType: {$in: ['meeting', 'count']}, discardedAt: null) 
+          Records.pollTemplates.collection.chain().find(pollType: {$in: ['meeting', 'count']}, discardedAt: null) .simplesort('id', true).data()
         when 'admin'
-          Records.pollTemplates.find(discardedAt: {$ne: null})
+          Records.pollTemplates.collection.chain().find(discardedAt: {$ne: null}).simplesort('id', true).data()
       @actions = {}
       @pollTemplates.forEach (pollTemplate, i) =>
         @actions[i] = PollTemplateService.actions(pollTemplate, @group)
 
     cloneTemplate: (template) ->
       poll = template.buildPoll()
-      poll.discussionId = @discussion.id if @discussion
-      poll.groupId = @group.id if @group
+      if @discussion
+        poll.discussionId = @discussion.id 
+        poll.groupId = @discussion.groupId
+      else
+        poll.groupId = @group.id if @group
       @$emit('setPoll', poll)
 
   watch:
@@ -83,43 +71,37 @@ export default
 </script>
 
 <template lang="pug">
-div
-  .poll-templates-select-group
-    v-list
-      v-list-item(v-for="group in groups" :key="group.id")
-        v-list-item-avatar(aria-hidden="true")
-          group-avatar(:group="group" v-if="!group.parentId")
-        v-list-item-content
-          v-list-item-title {{group.name}}
-
-  .poll-common-templates-list(v-if="true")
-    v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
-      v-icon(small).mr-2 {{icon}}
-      span.poll-type-chip-name {{name}}
-    v-list.decision-tools-card__poll-types(two-line dense)
-      template(v-if="filter == 'admin'")
-        v-list-item.decision-tools-card__new-template(
-          :to="'/poll_templates/new?group_id='+group.id"
-          :class="'decision-tools-card__poll-type--new-template'"
-          :key="99999"
-        )
-          v-list-item-content
-            v-list-item-title(v-t="'poll_common.new_poll_template'")
-            v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
-
-        v-subheader(v-t="'poll_common.hidden_poll_templates'")
-
-      v-list-item.decision-tools-card__poll-type(
-        v-for='(template, i) in pollTemplates'
-        @click="cloneTemplate(template)"
-        :class="'decision-tools-card__poll-type--' + template.pollType"
-        :key='template.renderKey'
+.poll-common-templates-list
+  v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
+    v-icon(small).mr-2 {{icon}}
+    span.poll-type-chip-name {{name}}
+  v-list.decision-tools-card__poll-types(two-line dense)
+    template(v-if="filter == 'admin'")
+      v-list-item.decision-tools-card__new-template(
+        :to="'/poll_templates/new?group_id='+group.id"
+        :class="'decision-tools-card__poll-type--new-template'"
+        :key="99999"
       )
         v-list-item-content
-          v-list-item-title {{ template.processName }}
-          v-list-item-subtitle {{ template.processSubtitle }}
-        v-list-item-action
-          action-menu(:actions='actions[i]', small, icon, :name="$t('action_dock.more_actions')")
+          v-list-item-title(v-t="'poll_common.new_poll_template'")
+          v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
+
+      v-subheader(v-if="pollTemplates.length" v-t="'poll_common.hidden_poll_templates'")
+
+    v-list-item.decision-tools-card__poll-type(
+      v-for='(template, i) in pollTemplates'
+      @click="cloneTemplate(template)"
+      :class="'decision-tools-card__poll-type--' + template.pollType"
+      :key='template.renderKey'
+    )
+      v-list-item-content
+        v-list-item-title
+          span {{ template.processName }}
+          v-chip.ml-2(x-small outlined v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
+          v-chip.ml-2(x-small outlined v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
+        v-list-item-subtitle {{ template.processSubtitle }}
+      v-list-item-action
+        action-menu(:actions='actions[i]', small, icon, :name="$t('action_dock.more_actions')")
 </template>
 <style>
 .poll-type-chip-name:first-letter {

@@ -40,6 +40,10 @@ loadLocale = (locale) ->
         EventBus.$emit('VueForceUpdate')
 
 export default new class Session
+  returnTo: ->
+    h = new URL(window.location.href)
+    h.pathname + h.search
+    
   defaultFormat: ->
     if @user().experiences['html-editor.uses-markdown']
       'md'

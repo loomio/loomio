@@ -17,26 +17,28 @@ export default new class PollTemplateService
       icon: 'mdi-pencil'
       menu: true
       canPerform: -> !pollTemplate.id && group.adminsInclude(Session.user())
-      # to: "/poll_templates/new?template_key=#{pollTemplate.key}&group_id=#{group.id}"
-      perform: ->
-        openModal
-          component: 'PollTemplateForm'
-          props:
-            isModal: true
-            pollTemplate: pollTemplate.clone()
+      to: ->
+        "/poll_templates/new?template_key=#{pollTemplate.key}&group_id=#{group.id}&return_to=#{Session.returnTo()}"
+      # perform: ->
+      #   openModal
+      #     component: 'PollTemplateForm'
+      #     props:
+      #       isModal: true
+      #       pollTemplate: pollTemplate.clone()
 
     edit_template:
       name: 'poll_common.edit_template'
       icon: 'mdi-pencil'
       menu: true
       canPerform: -> pollTemplate.id && group.adminsInclude(Session.user())
-      perform: ->
-        openModal
-          component: 'PollTemplateForm'
-          props:
-            isModal: true
-            pollTemplate: pollTemplate.clone()
-      # to: "/poll_templates/#{pollTemplate.id}/edit"
+      # perform: ->
+      #   openModal
+      #     component: 'PollTemplateForm'
+      #     props:
+      #       isModal: true
+      #       pollTemplate: pollTemplate.clone()
+      to: ->
+        "/poll_templates/#{pollTemplate.id}/edit?&return_to=#{Session.returnTo()}"
 
     discard:
       icon: 'mdi-eye-off'
@@ -67,8 +69,7 @@ export default new class PollTemplateService
           props:
             confirm:
               submit: ->
-                Records.remote.destroy('poll_templates', {id: pollTemplate.id}).then ->
-                  console.log "hiuh"
+                pollTemplate.destroy().then ->
                   EventBus.$emit('refreshPollTemplates')
                   EventBus.$emit('closeModal')
               text:
@@ -87,7 +88,7 @@ export default new class PollTemplateService
           EventBus.$emit 'refreshPollTemplates'
 
     unhide:
-      icon: 'mdi-eye-off'
+      icon: 'mdi-eye'
       name: 'common.action.unhide'
       menu: true
       canPerform: -> 

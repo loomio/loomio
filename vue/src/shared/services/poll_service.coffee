@@ -39,14 +39,14 @@ export default new class PollService
       nameArgs: -> {pollType: poll.translatedPollType()}
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditPoll(poll)
-      to: "/p/#{poll.key}/edit"
+      to: -> "/p/#{poll.key}/edit"
 
     make_a_copy:
       icon: 'mdi-content-copy'
       name: 'templates.make_a_copy'
       menu: true
       canPerform: -> Session.user()
-      to: "/p/new?template_id=#{poll.id}"
+      to: -> "/p/new?template_id=#{poll.id}"
 
     add_poll_to_thread:
       menu: true

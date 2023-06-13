@@ -1924,6 +1924,8 @@ en:
     from_the_thread: From the thread template
     from_the_group: From the group
     default_templates: Default templates
+    default_template: Default template
+    custom_template: Custom template
     default_poll_types: Default poll types
     suggested_templates: Suggested templates
     group_templates: Group templates

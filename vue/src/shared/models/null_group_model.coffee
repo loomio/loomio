@@ -48,6 +48,7 @@ export default class NullGroupModel
   selfAndSubgroups: -> [@]
   group: -> @
   hasSubgroups: -> false
+  tags: -> []
   organisationIds: -> []
   membershipFor: -> null
   members: -> []

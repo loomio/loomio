@@ -208,13 +208,12 @@ Rails.application.routes.draw do
         get  :closed, on: :collection
       end
 
-      resources :poll_templates, only: [:index, :create, :update, :show] do
+      resources :poll_templates, only: [:index, :create, :update, :show, :destroy] do
         collection do
           post :hide
           post :unhide
           post :discard
           post :undiscard
-          delete :destroy
         end
       end
 

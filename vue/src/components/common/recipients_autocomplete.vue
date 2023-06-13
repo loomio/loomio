@@ -68,6 +68,7 @@ export default
 
   methods:
     fetchChatbots: ->
+      return unless @model.groupId
       Records.fetch
         path: 'chatbots'
         params:

@@ -39,7 +39,7 @@ export default
           dense
           v-if='action.to'
           :key="name"
-          :to="action.to"
+          :to="action.to()"
           :class="'action-dock__button--' + name")
           v-list-item-icon
             v-icon {{action.icon}}

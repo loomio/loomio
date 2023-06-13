@@ -1,11 +1,7 @@
 class PollTemplateService
   def self.group_templates(group: , default_format: 'html')
-    ignore_keys = group.poll_templates.pluck(:key).uniq
-
-    group.poll_templates.kept.to_a.concat(
-      default_templates.reject do |template|
-        ignore_keys.include?(template.key)
-      end.map do |template|
+    group.poll_templates.to_a.concat(
+      default_templates.map do |template|
         template.details_format = default_format
         template.process_introduction_format = default_format
         template.group_id = group.id
@@ -60,6 +56,11 @@ class PollTemplateService
     poll_template.assign_attributes(author: actor)
 
     return false unless poll_template.valid?
+
+    if poll_template.key
+      poll_template.group.hidden_poll_templates += Array(poll_template.key)
+      poll_template.key = nil
+    end
 
     poll_template.save!
     poll_template

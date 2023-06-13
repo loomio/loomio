@@ -103,7 +103,11 @@ export default
       @pollTemplate.pollOptions = @pollOptions
       @pollTemplate.save().then (data) =>
         Flash.success "poll_common.poll_template_saved"
-        EventBus.$emit('closeModal')
+        if @isModal
+          EventBus.$emit('refreshPollTemplates')
+          EventBus.$emit('closeModal')
+        else
+          @$router.push @$route.query.return_to
       .catch (error) =>
         Flash.warning 'poll_common_form.please_review_the_form'
         console.error error
