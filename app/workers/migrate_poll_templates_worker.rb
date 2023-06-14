@@ -20,7 +20,6 @@ class MigratePollTemplatesWorker
         :notify_on_closing_soon,
         :content_locale,
         :shuffle_options,
-        :allow_long_reason,
         :hide_results,
         :chart_type,
         :min_score,

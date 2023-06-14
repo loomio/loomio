@@ -33,7 +33,6 @@ class PollTemplate < ApplicationRecord
     :anonymous,
     :shuffle_options,
     :chart_type,
-    :allow_long_reason,
     :specified_voters_only,
     :stance_reason_required,
     :notify_on_closing_soon,
