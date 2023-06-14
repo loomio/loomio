@@ -202,7 +202,6 @@ class RecordCloner
       anonymous
       details_format
       hide_results
-      stances_in_discussion
       discarded_by
       specified_voters_only
       notify_on_closing_soon
