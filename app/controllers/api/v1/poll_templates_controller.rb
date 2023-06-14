@@ -31,6 +31,21 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
     respond_with_collection
   end
 
+  def positions
+    group = current_user.adminable_groups.find_by!(id: params[:group_id])
+    params[:ids].each_with_index do |val, index|
+      if val.is_a? Integer
+        PollTemplate.where(id: val, group_id: group.id).update_all(position: index)
+      else
+        group.poll_template_positions[val] = index
+      end
+    end
+
+    group.save!
+
+    index
+  end
+
   def discard
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
     @poll_template = @group.poll_templates.kept.find_by!(id: params[:id])

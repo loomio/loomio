@@ -214,6 +214,7 @@ Rails.application.routes.draw do
           post :unhide
           post :discard
           post :undiscard
+          post :positions
         end
       end
 

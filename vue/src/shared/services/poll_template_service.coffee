@@ -31,14 +31,21 @@ export default new class PollTemplateService
       icon: 'mdi-pencil'
       menu: true
       canPerform: -> pollTemplate.id && group.adminsInclude(Session.user())
+      to: ->
+        "/poll_templates/#{pollTemplate.id}/edit?&return_to=#{Session.returnTo()}"
       # perform: ->
       #   openModal
       #     component: 'PollTemplateForm'
       #     props:
       #       isModal: true
       #       pollTemplate: pollTemplate.clone()
-      to: ->
-        "/poll_templates/#{pollTemplate.id}/edit?&return_to=#{Session.returnTo()}"
+
+    move:
+      name: 'common.action.move'
+      icon: 'mdi-arrow-up-down'
+      menu: true
+      canPerform: -> !pollTemplate.discardedAt && group.adminsInclude(Session.user())
+      perform: -> EventBus.$emit('sortPollTemplates')
 
     discard:
       icon: 'mdi-eye-off'

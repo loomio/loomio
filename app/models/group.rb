@@ -333,6 +333,11 @@ class Group < ApplicationRecord
     group_identities.joins(:identity).find_by("omniauth_identities.identity_type": type)
   end
 
+  def poll_template_positions
+    self[:info]['poll_template_positions'] ||= {}
+    self[:info]['poll_template_positions']
+  end
+
   def hidden_poll_templates
     self[:info]['hidden_poll_templates'] ||= []
     self[:info]['hidden_poll_templates']
