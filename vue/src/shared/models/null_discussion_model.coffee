@@ -15,7 +15,6 @@ export default class NullDiscussionModel
       descriptionFormat: 'html'
       key: null
       private: true
-      usesMarkdown: true
       lastItemAt: null
       forkedEventIds: []
       ranges: []

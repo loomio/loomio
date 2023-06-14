@@ -34,7 +34,6 @@ module GroupExportRelations
     has_many :exportable_poll_documents,   through: :exportable_polls,   source: :documents
     has_many :comment_documents,           through: :comments,           source: :documents
     has_many :public_discussion_documents, through: :public_discussions, source: :documents
-    has_many :public_poll_documents,       through: :public_polls,       source: :documents
     has_many :public_comment_documents,    through: :public_comments,    source: :documents
 
     # reactions

@@ -38,7 +38,6 @@ class PollTemplate < ApplicationRecord
     :stance_reason_required,
     :notify_on_closing_soon,
     :hide_results,
-    :anyone_can_participate,
     :min_score,
     :max_score,
     :minimum_stance_choices,

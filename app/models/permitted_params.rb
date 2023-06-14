@@ -44,7 +44,6 @@ class PermittedParams < Struct.new(:params)
       :key,
       :limit_reason_length,
       :shuffle_options,
-      :anyone_can_participate,
       :notify_on_closing_soon,
       :voter_can_add_options,
       :specified_voters_only,

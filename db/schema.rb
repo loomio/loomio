@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_12_045358) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_225233) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -176,7 +176,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_045358) do
     t.integer "parent_id"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-    t.boolean "uses_markdown", default: false, null: false
     t.integer "comment_votes_count", default: 0, null: false
     t.integer "attachments_count", default: 0, null: false
     t.datetime "edited_at", precision: nil
@@ -253,7 +252,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_045358) do
     t.string "title", limit: 255
     t.datetime "last_comment_at", precision: nil
     t.text "description"
-    t.boolean "uses_markdown", default: false, null: false
     t.integer "items_count", default: 0, null: false
     t.datetime "closed_at", precision: nil
     t.boolean "private", default: true, null: false
@@ -268,7 +266,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_045358) do
     t.integer "importance", default: 0, null: false
     t.integer "seen_by_count", default: 0, null: false
     t.string "ranges_string"
-    t.integer "guest_group_id"
     t.string "description_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.jsonb "info", default: {}, null: false
@@ -647,7 +644,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_045358) do
     t.integer "notify_on_closing_soon", default: 0, null: false
     t.string "content_locale"
     t.boolean "shuffle_options", default: false, null: false
-    t.boolean "allow_long_reason", default: false, null: false
     t.integer "hide_results", default: 0, null: false
     t.string "chart_type"
     t.integer "min_score"
@@ -701,18 +697,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_045358) do
     t.jsonb "stance_counts", default: [], null: false
     t.integer "group_id"
     t.jsonb "matrix_counts", default: [], null: false
-    t.boolean "notify_on_participate", default: false, null: false
-    t.boolean "example", default: false, null: false
     t.integer "undecided_voters_count", default: 0, null: false
     t.boolean "voter_can_add_options", default: false, null: false
-    t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false
     t.integer "versions_count", default: 0
     t.string "details_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.boolean "anyone_can_participate", default: false, null: false
-    t.boolean "hide_results_until_closed", default: false, null: false
-    t.boolean "stances_in_discussion", default: true, null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
@@ -721,7 +711,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_045358) do
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
     t.boolean "shuffle_options", default: false, null: false
-    t.boolean "allow_long_reason", default: false, null: false
     t.integer "hide_results", default: 0, null: false
     t.string "chart_type"
     t.integer "min_score"
@@ -748,7 +737,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_045358) do
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
-    t.index ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["source_template_id"], name: "index_polls_on_source_template_id", where: "(source_template_id IS NOT NULL)"
     t.index ["tags"], name: "index_polls_on_tags", using: :gin
@@ -934,7 +922,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_045358) do
     t.string "authentication_token", limit: 255
     t.string "unsubscribe_token", limit: 255
     t.integer "memberships_count", default: 0, null: false
-    t.boolean "uses_markdown", default: false, null: false
     t.string "selected_locale", limit: 255
     t.string "time_zone", limit: 255
     t.string "key", limit: 255

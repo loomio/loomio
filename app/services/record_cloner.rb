@@ -201,7 +201,6 @@ class RecordCloner
       voter_can_add_options
       anonymous
       details_format
-      anyone_can_participate
       hide_results
       stances_in_discussion
       discarded_by

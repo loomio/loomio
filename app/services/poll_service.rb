@@ -241,7 +241,7 @@ class PollService
     actor.ability.authorize! :update, poll
     actor.ability.authorize! :update, discussion
     ActiveRecord::Base.transaction do
-      poll.update(discussion_id: discussion.id, group_id: discussion.group.id, stances_in_discussion: true)
+      poll.update(discussion_id: discussion.id, group_id: discussion.group.id)
       event = poll.created_event
       event.discussion_id = discussion.id
       event.parent_id = discussion.created_event.id

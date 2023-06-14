@@ -16,7 +16,7 @@ module Null::User
   end
 
   def false_methods
-    [:is_logged_in?, :is_member_of?, :is_admin_of?, :is_admin?, :is_admin, :uses_markdown?,
+    [:is_logged_in?, :is_member_of?, :is_admin_of?, :is_admin?, :is_admin, 
      :email_when_proposal_closing_soon, :has_password, :bot,
      :email_when_mentioned, :email_on_participation, :email_verified, :email_verified?, :email_newsletter, :marked_for_destruction?]
   end

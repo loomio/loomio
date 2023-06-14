@@ -24,7 +24,6 @@ export default class DiscussionModel extends BaseModel
     id: null
     key: null
     private: true
-    usesMarkdown: true
     lastItemAt: null
     title: ''
     description: ''

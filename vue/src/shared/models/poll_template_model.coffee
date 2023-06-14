@@ -15,6 +15,7 @@ export default class PollTemplateModel extends BaseModel
     AppConfig.pollTypes[@pollType]
 
   defaultValues: ->
+    anonymous: false
     groupId: null
     title: ''
     details: ''
@@ -38,6 +39,7 @@ export default class PollTemplateModel extends BaseModel
     attachments: []
     linkPreviews: []
     notifyOnClosingSoon: 'undecided_voters'
+    reasonPrompt: null
     processName: null
     processSubtitle: null
     processIntroduction: null

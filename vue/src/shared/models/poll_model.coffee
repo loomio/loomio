@@ -54,6 +54,7 @@ export default class PollModel extends BaseModel
     meetingDuration: null
     limitReasonLength: true
     stanceReasonRequired: 'optional'
+    reasonPrompt: null
     files: []
     imageFiles: []
     attachments: []
@@ -196,8 +197,7 @@ export default class PollModel extends BaseModel
     !isEqual(sortBy(@pollOptionNames), sortBy(map(options, 'name')))
 
   iCanVote: ->
-    @isVotable() &&
-    (@anyoneCanParticipate or @myStance() or (!@specifiedVotersOnly and @membersInclude(Session.user())))
+    @isVotable() && (@myStance() || (!@specifiedVotersOnly && @membersInclude(Session.user())))
 
   isBlank: ->
     @details == '' or @details == null or @details == '<p></p>'

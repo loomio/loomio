@@ -268,16 +268,6 @@ describe PollService do
       expect(stance.created_event.reload.user).to be_present
     end
 
-    it 'stances_in_discussion is false' do
-      poll_created.hide_results = :until_closed
-      PollService.create(poll: poll_created, actor: user)
-      event = StanceService.create(stance: stance, actor: stance.participant)
-      expect(event.discussion).to be nil
-      PollService.close(poll: poll_created, actor: user)
-      expect(event.reload.discussion_id).to be_present
-
-    end
-
     it 'hides and reveals results correctly' do
       poll_created.hide_results = 'until_closed'
       PollService.create(poll: poll_created, actor: user)
