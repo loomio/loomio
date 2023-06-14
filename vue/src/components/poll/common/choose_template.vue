@@ -134,6 +134,10 @@ export default
 
 </template>
 <style>
+.decision-tools-card__poll-type {
+  user-select: none;
+}
+
 .poll-type-chip-name:first-letter {
   text-transform: uppercase;
 }
