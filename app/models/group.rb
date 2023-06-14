@@ -334,12 +334,18 @@ class Group < ApplicationRecord
   end
 
   def poll_template_positions
-    self[:info]['poll_template_positions'] ||= {}
+    self[:info]['poll_template_positions'] ||= {
+      'question' => 0,
+      'check' => 1,
+      'advice' => 2,
+      'consent' => 3,
+      'consensus' => 4,
+    }
     self[:info]['poll_template_positions']
   end
 
   def hidden_poll_templates
-    self[:info]['hidden_poll_templates'] ||= []
+    self[:info]['hidden_poll_templates'] ||= ['gradients_of_agreement']
     self[:info]['hidden_poll_templates']
   end
 
