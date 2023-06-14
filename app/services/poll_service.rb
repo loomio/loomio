@@ -232,10 +232,6 @@ class PollService
   #   EventBus.broadcast('poll_destroy', poll, actor)
   # end
 
-  def self.cleanup_examples
-    Poll.where(example: true).where('created_at < ?', 1.day.ago).destroy_all
-  end
-
   def self.add_to_thread(poll:, params:, actor:)
     discussion = Discussion.find(params[:discussion_id])
     actor.ability.authorize! :update, poll

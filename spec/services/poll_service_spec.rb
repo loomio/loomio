@@ -309,21 +309,4 @@ describe PollService do
       expect { PollService.expire_lapsed_polls }.to_not change { poll_created.reload.closed_at }
     end
   end
-
-  describe '#cleanup_examples' do
-    it 'removes example polls' do
-      create(:poll, example: true, created_at: 2.days.ago)
-      expect { PollService.cleanup_examples }.to change { Poll.count }.by(-1)
-    end
-
-    it 'does not remove recent example polls' do
-      create(:poll, example: true, created_at: 30.minutes.ago)
-      expect { PollService.cleanup_examples }.to_not change { Poll.count }
-    end
-
-    it 'does not remove non-example polls' do
-      create(:poll, created_at: 2.days.ago)
-      expect { PollService.cleanup_examples }.to_not change { Poll.count }
-    end
-  end
 end
