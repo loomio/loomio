@@ -163,7 +163,7 @@ class PermittedParams < Struct.new(:params)
      :membership_granted_upon, :cover_photo, :logo, :category_id, :members_can_raise_motions,
      :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
      :new_threads_max_depth, :new_threads_newest_first,
-     :document_ids, {document_ids: []}, :features, {features: AppConfig.group_features.presence || {}},
+     :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end

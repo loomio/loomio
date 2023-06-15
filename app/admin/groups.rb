@@ -52,7 +52,6 @@ ActiveAdmin.register Group, as: 'Group' do
     end
     column :archived_at
     column :analytics_enabled
-    column :enable_experiments
     actions
   end
 
@@ -147,10 +146,7 @@ ActiveAdmin.register Group, as: 'Group' do
       row :handle
       row :is_referral
       row :subscription_id
-      row :enable_experiments
       row :analytics_enabled
-      row :experiences
-      row :features
       row :theme_id
       row :cover_photo_file_name
       row :cover_photo_content_type

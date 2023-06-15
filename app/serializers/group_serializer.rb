@@ -39,9 +39,6 @@ class GroupSerializer < ApplicationSerializer
              :new_threads_max_depth,
              :new_threads_newest_first,
              :cover_url,
-             :experiences,
-             :enable_experiments,
-             :features,
              :open_discussions_count,
              :closed_discussions_count,
              :template_discussions_count,
@@ -57,7 +54,7 @@ class GroupSerializer < ApplicationSerializer
              :new_host,
              :complete,
              :secret_token,
-             :hidden_poll_templates
+             :hidden_poll_templates,
 
   def complete
     true
