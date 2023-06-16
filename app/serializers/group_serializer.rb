@@ -52,13 +52,9 @@ class GroupSerializer < ApplicationSerializer
              :subscription,
              :subgroups_count,
              :new_host,
-             :complete,
              :secret_token,
              :hidden_poll_templates,
-
-  def complete
-    true
-  end
+             :categorize_poll_templates
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships

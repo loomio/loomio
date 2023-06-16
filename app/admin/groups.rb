@@ -146,7 +146,6 @@ ActiveAdmin.register Group, as: 'Group' do
       row :handle
       row :is_referral
       row :subscription_id
-      row :analytics_enabled
       row :theme_id
       row :cover_photo_file_name
       row :cover_photo_content_type

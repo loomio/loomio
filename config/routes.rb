@@ -215,6 +215,7 @@ Rails.application.routes.draw do
           post :discard
           post :undiscard
           post :positions
+          post :settings
         end
       end
 

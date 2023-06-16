@@ -46,6 +46,18 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
     index
   end
 
+  def settings
+    group = current_user.adminable_groups.find_by!(id: params[:group_id])
+    if params.has_key?(:categorize_poll_templates)
+      group.categorize_poll_templates = params[:categorize_poll_templates]
+      group.save!
+      MessageChannelService.publish_models([group], group_id: group.id)
+      success_response
+    else
+      error_response(404)
+    end
+  end
+
   def discard
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
     @poll_template = @group.poll_templates.kept.find_by!(id: params[:id])

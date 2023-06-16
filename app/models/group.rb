@@ -344,6 +344,18 @@ class Group < ApplicationRecord
     self[:info]['poll_template_positions']
   end
 
+  def categorize_poll_templates
+    if self[:info].has_key? 'categorize_poll_templates'
+      self[:info]['categorize_poll_templates']
+    else
+      true
+    end
+  end
+
+  def categorize_poll_templates=(val)
+    self[:info]['categorize_poll_templates'] = val
+  end
+
   def hidden_poll_templates
     self[:info]['hidden_poll_templates'] ||= ['gradients_of_agreement']
     self[:info]['hidden_poll_templates']

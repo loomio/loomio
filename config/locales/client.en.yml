@@ -1747,6 +1747,7 @@ en:
     count_title: Opt-in
     check_title: Sense check
     poll_title: Poll
+    meeting: Meeting
     score_title: Score poll
     dot_vote_title: Dot vote
     meeting_title: Time poll
@@ -1763,6 +1764,8 @@ en:
     prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
+    categorize_poll_templates: Categorize poll templates
+    show_all_templates_in_one_list: Show all templates in one list
     advice_process: Advice process
     consent_process: Consent process
     consensus_process: Consensus process
