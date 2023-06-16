@@ -64,7 +64,7 @@ RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /usr/share/doc /usr/share/
 # install node
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-RUN apt-get -y install nodejs
+RUN apt-get -y install nodejs npm
 RUN npm install -g npm
 
 
