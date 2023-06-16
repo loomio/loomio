@@ -3,9 +3,11 @@ import AppConfig    from '@/shared/services/app_config'
 import Session      from '@/shared/services/session'
 import Records      from '@/shared/services/records'
 import EventBus     from '@/shared/services/event_bus'
+import NullGroupModel   from '@/shared/models/null_group_model'
 import PollTemplateService     from '@/shared/services/poll_template_service'
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template'
 import {map, without, compact} from 'lodash'
+import I18n from '@/i18n'
 
 export default
   components: {PollCommonChooseTemplate}
@@ -24,7 +26,10 @@ export default
 
   methods:
     fillGroups: ->
-      groups = []
+      defaultsGroup = new NullGroupModel()
+      defaultsGroup.isNullGroup = false
+      defaultsGroup.name = I18n.t('templates.loomio_default_templates')
+      groups = [defaultsGroup]
       groupIds = Session.user().groupIds()
       Records.groups.collection.chain().
                    find(id: { $in: groupIds }, archivedAt: null, parentId: null).
@@ -35,15 +40,14 @@ export default
                    data().forEach (subgroup) ->
           groups.push(subgroup) if subgroup.pollTemplatesCount || subgroup.hiddenPollTemplates
       @groups = groups
-    selectGroup: (group) ->
-      @selectedGroup = group
+    selectGroup: (group) -> @selectedGroup = group
     setPoll: (poll) -> @$emit('setPoll', poll)
 </script>
 
 <template lang="pug">
 div
-  .poll-templates-select-group(v-if="!selectedGroup.id")
-    p Select a group to use it's poll templates
+  .poll-templates-select-group(v-if="selectedGroup.isNullGroup")
+    p(v-t="'templates.which_templates_would_you_like_to_use'")
     v-list
       v-list-item(v-for="group in groups" :key="group.id" @click="selectGroup(group)")
         v-list-item-avatar(aria-hidden="true")

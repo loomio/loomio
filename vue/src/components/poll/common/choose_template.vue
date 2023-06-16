@@ -50,21 +50,26 @@ export default
     query: ->
       templates = []
       if @group.categorizePollTemplates
-        @pollTemplates = switch @filter
+        params = switch @filter
           when 'proposal'
-            Records.pollTemplates.collection.chain().find(groupId: @group.id, pollType: {$in: ['proposal', 'question']}, discardedAt: null).simplesort('position').data()
+            {pollType: {$in: ['proposal', 'question']}, discardedAt: null}
           when 'poll'
-            Records.pollTemplates.collection.chain().find(groupId: @group.id, pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null).simplesort('position').data()
+            {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null}
           when 'meeting'
-            Records.pollTemplates.collection.chain().find(groupId: @group.id, pollType: {$in: ['meeting', 'count']}, discardedAt: null) .simplesort('position').data()
+            {pollType: {$in: ['meeting', 'count']}, discardedAt: null}
           when 'admin'
-            Records.pollTemplates.collection.chain().find(groupId: @group.id, discardedAt: {$ne: null}).simplesort('position').data()
+            {discardedAt: {$ne: null}}
       else
-        @pollTemplates = switch @filter
+        params = switch @filter
           when 'admin'
-            Records.pollTemplates.collection.chain().find(groupId: @group.id, discardedAt: {$ne: null}).simplesort('position').data()
+            {discardedAt: {$ne: null}}
           else
-            Records.pollTemplates.collection.chain().find(groupId: @group.id, discardedAt: null) .simplesort('position').data()
+            {discardedAt: null}
+
+      @pollTemplates = Records.pollTemplates.collection.chain().
+        find(groupId: @group.id || null).
+        find(params).
+        simplesort('position').data()
 
       @actions = {}
       @pollTemplates.forEach (pollTemplate, i) =>

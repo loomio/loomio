@@ -159,6 +159,23 @@ module Null::Group
     []
   end
 
+  def poll_template_positions
+    {
+      'question' => 0,
+      'check' => 1,
+      'advice' => 2,
+      'consent' => 3,
+      'consensus' => 4,
+      'gradients_of_agreement' => 5,
+      'poll' => 6,
+      'score' => 7,
+      'dot_vote' => 8,
+      'ranked_choice' => 9,
+      'meeting' => 10,
+      'count' => 11,
+    }
+  end
+
   def subscription
     {
       max_members:     nil,

@@ -31,6 +31,8 @@ export default class NullGroupModel
       linkPreviews: []
       subscription: {active: true}
       specifiedVotersOnly: false
+      isNullGroup: true
+      categorizePollTemplates: true
 
     each defaults, (value, key) =>
       Vue.set(@, key, value)

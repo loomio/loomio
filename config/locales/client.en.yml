@@ -22,6 +22,8 @@ en:
     title_templates: "%{title} Templates"
     title_copy: "%{title} Copy"
     copy_of_title: "Copy of %{title}"
+    loomio_default_templates: Loomio default templates
+    which_templates_would_you_like_to_use: Which templates would you like to use?
     login_to_start_demo: |
       This a demo of Loomio in action. You're welcome to take a look around.
     sign_in_to_try_features: |
