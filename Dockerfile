@@ -6,6 +6,7 @@ ENV RAILS_LOG_TO_STDOUT=1
 ENV RAILS_SERVE_STATIC_FILES=1
 ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT=development
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN apt-get update -qq
 RUN apt-get install --no-install-recommends -y \
@@ -65,16 +66,14 @@ RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /usr/share/doc /usr/share/
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 RUN apt-get -y install nodejs npm
-RUN npm install -g npm
-
 
 WORKDIR /loomio
-
+ 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
-
+ 
 COPY . .
-
+ 
 RUN bundle install
 
 RUN bundle exec bootsnap precompile --gemfile app/ lib/
