@@ -52,19 +52,19 @@ export default
       if @group.categorizePollTemplates
         @pollTemplates = switch @filter
           when 'proposal'
-            Records.pollTemplates.collection.chain().find(pollType: {$in: ['proposal', 'question']}, discardedAt: null).simplesort('position').data()
+            Records.pollTemplates.collection.chain().find(groupId: @group.id, pollType: {$in: ['proposal', 'question']}, discardedAt: null).simplesort('position').data()
           when 'poll'
-            Records.pollTemplates.collection.chain().find(pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null).simplesort('position').data()
+            Records.pollTemplates.collection.chain().find(groupId: @group.id, pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null).simplesort('position').data()
           when 'meeting'
-            Records.pollTemplates.collection.chain().find(pollType: {$in: ['meeting', 'count']}, discardedAt: null) .simplesort('position').data()
+            Records.pollTemplates.collection.chain().find(groupId: @group.id, pollType: {$in: ['meeting', 'count']}, discardedAt: null) .simplesort('position').data()
           when 'admin'
-            Records.pollTemplates.collection.chain().find(discardedAt: {$ne: null}).simplesort('position').data()
+            Records.pollTemplates.collection.chain().find(groupId: @group.id, discardedAt: {$ne: null}).simplesort('position').data()
       else
         @pollTemplates = switch @filter
           when 'admin'
-            Records.pollTemplates.collection.chain().find(discardedAt: {$ne: null}).simplesort('position').data()
+            Records.pollTemplates.collection.chain().find(groupId: @group.id, discardedAt: {$ne: null}).simplesort('position').data()
           else
-            Records.pollTemplates.collection.chain().find(discardedAt: null) .simplesort('position').data()
+            Records.pollTemplates.collection.chain().find(groupId: @group.id, discardedAt: null) .simplesort('position').data()
 
       @actions = {}
       @pollTemplates.forEach (pollTemplate, i) =>
