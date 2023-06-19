@@ -6,6 +6,7 @@ ENV RAILS_LOG_TO_STDOUT=1
 ENV RAILS_SERVE_STATIC_FILES=1
 ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT=development
+ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN apt-get update -qq
 RUN apt-get install --no-install-recommends -y \
