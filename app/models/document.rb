@@ -19,9 +19,10 @@ class Document < ApplicationRecord
   }
 
   def download_url
+    return nil unless file.attached?
     Rails.application.routes.url_helpers.rails_blob_path(file, only_path: true)
   end
-  
+
   def reset_metadata!
     update(doctype: metadata['name'], icon: metadata['icon'], color: metadata['color'])
   end
