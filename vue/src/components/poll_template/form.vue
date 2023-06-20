@@ -113,6 +113,12 @@ export default
         console.error error
 
   computed:
+    breadcrumbs: ->
+      compact([@pollTemplate.group().parentId && @pollTemplate.group().parent(), @pollTemplate.group()]).map (g) =>
+        text: g.name
+        disabled: false
+        to: @urlFor(g)
+
     votingMethodsItems: ->
       Object.keys(@votingMethodsI18n).map (key) =>
         {text: @$t(@votingMethodsI18n[key].title), value: key}
@@ -147,10 +153,16 @@ export default
 <template lang="pug">
 .poll-common-form(:class="isModal ? 'pa-4' : ''") 
   submit-overlay(:value="pollTemplate.processing")
-  v-card-title.px-0
-    h1.text-h4(tabindex="-1" v-t="titlePath")
+  .d-flex
+    v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
+      template(v-slot:divider)
+        v-icon mdi-chevron-right
     v-spacer
     dismiss-modal-button(v-if="isModal" :model='pollTemplate')
+    v-btn.back-button(v-if="!isModal && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
+      v-icon mdi-close
+  v-card-title.px-0
+    h1.text-h4(tabindex="-1" v-t="titlePath")
 
   v-select(
     :label="$t('poll_common_form.voting_method')"
