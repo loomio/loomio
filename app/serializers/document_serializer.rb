@@ -1,5 +1,5 @@
 class DocumentSerializer < ApplicationSerializer
-  attributes :id, :title, :icon, :color, :url,
+  attributes :id, :title, :icon, :color, :url, :download_url,
              :web_url, :thumb_url, :model_id, :model_type,
              :created_at, :group_id
 

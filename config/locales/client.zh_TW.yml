@@ -1058,7 +1058,6 @@ zh_TW:
     subgroup_name: 子群組名稱
     organization_name: 組織名稱
     handle: 處理
-    group_handle_placeholder: "用於您的群組 URL：www.loomio.org/{{handle}}"
     start_organization_heading: 新組織
     edit_organization_heading: 編輯組織設定
     group_name_placeholder: '您的群組的名稱是？'

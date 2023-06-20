@@ -1082,7 +1082,6 @@ it:
     subgroup_name: Nome del sottogruppo
     organization_name: Nome organizzazione
     handle: Gestire
-    group_handle_placeholder: "Utilizzato nell'URL del gruppo: www.loomio.org/{{handle}}"
     start_organization_heading: Nuova organizzazione
     edit_organization_heading: Modificare le impostazioni dell'organizzazione
     group_name_placeholder: 'Qual''é il nome del tuo gruppo?'

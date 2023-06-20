@@ -973,7 +973,6 @@ de:
     subgroup_name: Untergruppenname
     organization_name: Organizationsname
     handle: Kürzel
-    group_handle_placeholder: "Verwendet in Deiner Gruppe URL: www.loomio.org/{{handle}}"
     start_organization_heading: Neue Organisation
     edit_organization_heading: Organisationseinstellungen ändern
     group_name_placeholder: 'Wie heißt deine Gruppe?'
