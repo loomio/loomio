@@ -142,7 +142,6 @@ class Poll < ApplicationRecord
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
   before_save :clamp_minimum_stance_choices
-  before_save :clamp_closing_at
   validate :closes_in_future
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
@@ -502,12 +501,6 @@ class Poll < ApplicationRecord
     end
   end
 
-  def clamp_closing_at
-    return if closed_at
-    return if closing_at.nil? 
-    self.closing_at = self.closing_at.at_beginning_of_hour
-  end
-  
   def closes_in_future
     return if closed_at
     return if closing_at.nil? 
