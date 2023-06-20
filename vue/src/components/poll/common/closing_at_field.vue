@@ -8,7 +8,7 @@ export default
     poll: Object
 
   data: ->
-    closingHour: format(startOfHour(@poll.closingAt || new Date()), timeFormat())
+    closingHour: format(@poll.closingAt || startOfHour(new Date()), timeFormat())
     closingDate: format(@poll.closingAt || new Date(), 'yyyy-MM-dd')
     dateToday: format(new Date, 'yyyy-MM-dd')
     times: hoursOfDay()
@@ -32,7 +32,7 @@ export default
   watch:
     'poll.closingAt': (val) ->
       return unless val
-      @closingHour = format(startOfHour(val), timeFormat())
+      @closingHour = format(val, timeFormat())
       @closingDate = format(val, 'yyyy-MM-dd')
 
     closingDate: (val) ->
