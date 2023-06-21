@@ -302,6 +302,12 @@ Rails.application.routes.draw do
     get :show, on: :collection
   end
 
+  resources :poll_templates, only: [] do
+    member do
+      get :dump_i18n_yaml
+    end
+  end
+  
   post :email_processor, to: 'received_emails#create'
 
   namespace :email_actions do

@@ -113,6 +113,7 @@ export default
         console.error error
 
   computed:
+    hasOptions: -> @pollTemplate.config().has_options
     breadcrumbs: ->
       compact([@pollTemplate.group().parentId && @pollTemplate.group().parent(), @pollTemplate.group()]).map (g) =>
         text: g.name
@@ -214,107 +215,108 @@ export default
     :label="$t('poll_common_form.example_details')"
   )
   
-  .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
-  v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
-  sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
-    sortable-item(
-      v-for="(option, priority) in pollOptions"
-      :index="priority"
-      :key="option.name"
-      :item="option"
-      v-if="pollOptions.length"
+  template(v-if="hasOptions")
+    .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
+    v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
+    sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
+      sortable-item(
+        v-for="(option, priority) in pollOptions"
+        :index="priority"
+        :key="option.name"
+        :item="option"
+        v-if="pollOptions.length"
+      )
+        v-sheet.mb-2.rounded(outlined)
+          v-list-item(style="user-select: none")
+            v-list-item-icon(v-if="hasOptionIcon" v-handle)
+              v-avatar(size="48")
+                img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
+         
+            v-list-item-content(v-handle)
+              v-list-item-title
+                span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
+                span(v-if="optionFormat == 'plain'") {{option.name}}
+                span(v-if="optionFormat == 'iso8601'")
+                  poll-meeting-time(:name="option.name")
+              v-list-item-subtitle {{option.meaning}}
+
+            v-list-item-action
+              v-btn(
+                icon
+                @click="removeOption(option)"
+                :title="$t('common.action.delete')"
+              )
+                v-icon.text--secondary mdi-delete
+            v-list-item-action.ml-0
+              v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
+                v-icon.text--secondary mdi-pencil
+            v-icon.text--secondary(v-handle, :title="$t('common.action.move')") mdi-drag-vertical
+
+    v-text-field.poll-poll-form__add-option-input.mt-4(
+      v-model="newOption"
+      :label="$t('poll_poll_form.new_option')"
+      :placeholder="$t('poll_poll_form.add_option_hint')"
+      @keydown.enter="addOption"
+      filled
+      rounded
+      color="primary"
     )
-      v-sheet.mb-2.rounded(outlined)
-        v-list-item(style="user-select: none")
-          v-list-item-icon(v-if="hasOptionIcon" v-handle)
-            v-avatar(size="48")
-              img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
-       
-          v-list-item-content(v-handle)
-            v-list-item-title
-              span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
-              span(v-if="optionFormat == 'plain'") {{option.name}}
-              span(v-if="optionFormat == 'iso8601'")
-                poll-meeting-time(:name="option.name")
-            v-list-item-subtitle {{option.meaning}}
+      template(v-slot:append)
+        v-btn.mt-n2(
+          @click="addOption"
+          icon
+          :disabled="!newOption"
+          color="primary"
+          outlined
+          :title="$t('poll_poll_form.add_option_placeholder')")
+          v-icon mdi-plus
 
-          v-list-item-action
-            v-btn(
-              icon
-              @click="removeOption(option)"
-              :title="$t('common.action.delete')"
-            )
-              v-icon.text--secondary mdi-delete
-          v-list-item-action.ml-0
-            v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-              v-icon.text--secondary mdi-pencil
-          v-icon.text--secondary(v-handle, :title="$t('common.action.move')") mdi-drag-vertical
-
-  v-text-field.poll-poll-form__add-option-input.mt-4(
-    v-model="newOption"
-    :label="$t('poll_poll_form.new_option')"
-    :placeholder="$t('poll_poll_form.add_option_hint')"
-    @keydown.enter="addOption"
-    filled
-    rounded
-    color="primary"
-  )
-    template(v-slot:append)
-      v-btn.mt-n2(
-        @click="addOption"
-        icon
-        :disabled="!newOption"
-        color="primary"
-        outlined
-        :title="$t('poll_poll_form.add_option_placeholder')")
-        v-icon mdi-plus
-
-  .d-flex(v-if="pollTemplate.pollType == 'score'")
-    v-text-field.poll-score-form__min(
-      v-model="pollTemplate.minScore"
-      type="number"
-      :step="1"
-      :label="$t('poll_common.min_score')")
-    v-spacer
-    v-text-field.poll-score-form__max(
-      v-model="pollTemplate.maxScore"
-      type="number"
-      :step="1"
-      :label="$t('poll_common.max_score')")
-
-  template(v-if="pollTemplate.pollType == 'poll'")
-    p.text--secondary(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
-    .d-flex
-      v-text-field.poll-common-form__minimum-stance-choices(
-        v-model="pollTemplate.minimumStanceChoices"
+    .d-flex(v-if="pollTemplate.pollType == 'score'")
+      v-text-field.poll-score-form__min(
+        v-model="pollTemplate.minScore"
         type="number"
         :step="1"
-        :hint="$t('poll_common_form.choose_at_least')"
-        :label="$t('poll_common_form.minimum_choices')")
+        :label="$t('poll_common.min_score')")
       v-spacer
-      v-text-field.poll-common-form__maximum-stance-choices(
-        v-model="pollTemplate.maximumStanceChoices"
+      v-text-field.poll-score-form__max(
+        v-model="pollTemplate.maxScore"
         type="number"
         :step="1"
-        :hint="$t('poll_common_form.choose_at_most')"
-        :label="$t('poll_common_form.maximum_choices')")
+        :label="$t('poll_common.max_score')")
 
-  .d-flex.align-center(v-if="pollTemplate.pollType == 'ranked_choice'")
-    v-text-field.lmo-number-input(
-      v-model="pollTemplate.minimumStanceChoices"
-      :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
-      :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')"
-      type="number"
-      :min="1")
-    validation-errors(:subject="pollTemplate", field="minimumStanceChoices")
+    template(v-if="pollTemplate.pollType == 'poll'")
+      p.text--secondary(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
+      .d-flex
+        v-text-field.poll-common-form__minimum-stance-choices(
+          v-model="pollTemplate.minimumStanceChoices"
+          type="number"
+          :step="1"
+          :hint="$t('poll_common_form.choose_at_least')"
+          :label="$t('poll_common_form.minimum_choices')")
+        v-spacer
+        v-text-field.poll-common-form__maximum-stance-choices(
+          v-model="pollTemplate.maximumStanceChoices"
+          type="number"
+          :step="1"
+          :hint="$t('poll_common_form.choose_at_most')"
+          :label="$t('poll_common_form.maximum_choices')")
 
-  template(v-if="pollTemplate.pollType == 'dot_vote'")
-    v-text-field(
-      :label="$t('poll_dot_vote_form.dots_per_person')"
-      type="number"
-      min="1"
-      v-model="pollTemplate.dotsPerPerson")
-    validation-errors(:subject="pollTemplate" field="dotsPerPerson")
+    .d-flex.align-center(v-if="pollTemplate.pollType == 'ranked_choice'")
+      v-text-field.lmo-number-input(
+        v-model="pollTemplate.minimumStanceChoices"
+        :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
+        :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')"
+        type="number"
+        :min="1")
+      validation-errors(:subject="pollTemplate", field="minimumStanceChoices")
+
+    template(v-if="pollTemplate.pollType == 'dot_vote'")
+      v-text-field(
+        :label="$t('poll_dot_vote_form.dots_per_person')"
+        type="number"
+        min="1"
+        v-model="pollTemplate.dotsPerPerson")
+      validation-errors(:subject="pollTemplate" field="dotsPerPerson")
   v-divider.my-4
 
   v-text-field(
