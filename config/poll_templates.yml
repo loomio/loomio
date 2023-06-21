@@ -209,7 +209,7 @@ gradients_of_agreement:
   details_i18n: poll_templates.gradients_of_agreement.details
   default_duration_in_days: 5
   tags_i18n:
-    - gradients_of_agreement.process_name
+    - poll_templates.gradients_of_agreement.process_name
   poll_options:
     - key: endorsement
       icon: agree
