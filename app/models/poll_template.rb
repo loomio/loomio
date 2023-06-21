@@ -55,7 +55,6 @@ class PollTemplate < ApplicationRecord
   def dump_i18n_yaml
     out = {}
     [
-    :process_name,
     :process_subtitle,
     :process_introduction,
     :title,
@@ -68,9 +67,13 @@ class PollTemplate < ApplicationRecord
     end
 
     self.poll_options.each do |poll_option|
-      option_name = poll_option.slice('name').values[0].parameterize(separator: '_')
-      poll_option.slice('meaning', 'prompt', 'icon', 'color').each_pair do |key, value|
-        out[option_name+"_"+key] = value
+      option_name = poll_option.slice('name').values[0].parameterize(separator: '_').gsub('-', '_')
+      poll_option.slice('name', 'meaning', 'prompt').each_pair do |key, value|
+        if key == 'name'
+          out[option_name] = value
+        else
+          out[option_name+"_"+key] = value
+        end
       end
     end
 

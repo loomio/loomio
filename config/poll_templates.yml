@@ -1,7 +1,10 @@
 question:
   poll_type: question
-  process_name: Question round
-  process_subtitle: Ask for clarifications and questions within a set time limit
+  process_name_i18n: poll_common.question_round
+  process_subtitle_i18n: poll_templates.question_round.process_subtitle
+  process_introduction_i18n: poll_templates.question_round.process_introduction
+  title_i18n: poll_templates.question_round.title
+  details_i18n: poll_templates.question_round.details
   default_duration_in_days: 5
   tags_i18n:
     - poll_common.question_round
@@ -28,9 +31,10 @@ count:
 check:
   poll_type: proposal
   process_name_i18n: decision_tools_card.check_title
-  process_subtitle_i18n: poll_check_options.check_subtitle
-  process_subtitle: Invite people to ask questions, comment and respond within a set timeframe
-  process_url: https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#sense-check
+  process_subtitle_i18n: poll_templates.sense_check.process_subtitle
+  process_introduction_i18n: poll_templates.sense_check.process_introduction
+  title_i18n: poll_templates.sense_check.title
+  details_i18n: poll_templates.sense_check.details
   default_duration_in_days: 3
   tags_i18n:
     - decision_tools_card.check_title
@@ -38,47 +42,49 @@ check:
     - key: looks_good
       name_i18n: poll_check_options.looks_good
       icon: agree
-      meaning_i18n: poll_check_options.looks_good_meaning
-      prompt_i18n: poll_check_options.looks_good_prompt
+      meaning_i18n: poll_templates.sense_check.looks_good_meaning
+      prompt_i18n: poll_templates.sense_check.looks_good_prompt
       color: '#70C9F8'
-    - key: question
-      name_i18n: poll_check_options.question
+    - key: abstain
+      name_i18n: poll_proposal_options.abstain
       icon: abstain
-      meaning_i18n: poll_check_options.question_meaning
-      prompt_i18n: poll_check_options.question_prompt
+      meaning_i18n: poll_templates.sense_check.abstain_meaning
+      prompt_i18n: poll_templates.sense_check.abstain_prompt
       color: '#70C9F8'
     - key: concerned
       name_i18n: poll_check_options.concerned
       icon: disagree
-      meaning_i18n: poll_check_options.concerned_meaning
-      prompt_i18n: poll_check_options.concerned_prompt
+      meaning_i18n: poll_templates.sense_check.concerned_meaning
+      prompt_i18n: poll_templates.sense_check.concerned_prompt
       color: "#C8E56E"
 
-# proposal:
-#   poll_type: proposal
-#   process_name_i18n: decision_tools_card.proposal_title
-#   process_subtitle_i18n: poll_proposal_form.tool_tip_collapsed
-#   process_url: https://help.loomio.com/en/user_manual/getting_started/decisions#loomio-proposal
-#   default_duration_in_days: 7
-#   poll_options:
-#     - key: agree
-#       name_i18n: poll_proposal_options.agree
-#       icon: agree
-#       meaning_i18n: poll_proposal_options.agree_meaning
-#       prompt_i18n: poll_proposal_vote_form.agree_reason_placeholder
-#       color: '#70C9F8'
-#     - key: abstain
-#       name_i18n: poll_proposal_options.abstain
-#       icon: abstain
-#       meaning_i18n: poll_proposal_options.abstain_meaning
-#       prompt_i18n: poll_proposal_options.abstain_prompt
-#       color: "#C8E56E"
-#     - key: disagree
-#       name_i18n: poll_proposal_options.disagree
-#       icon: disagree
-#       meaning_i18n: poll_proposal_options.disagree_meaning
-#       prompt_i18n: poll_proposal_vote_form.disagree_reason_placeholder
-#       color: "#D38FE1"
+proposal:
+  poll_type: proposal
+  process_name_i18n: decision_tools_card.proposal_title
+  process_subtitle_i18n: poll_templates.proposal.process_subtitle
+  process_introduction_i18n: poll_templates.proposal.process_introduction
+  title_i18n: poll_templates.proposal.title
+  details_i18n: poll_templates.proposal.details
+  default_duration_in_days: 7
+  poll_options:
+    - key: agree
+      name_i18n: poll_proposal_options.agree
+      icon: agree
+      meaning_i18n: poll_templates.proposal.agree_meaning
+      prompt_i18n: poll_templates.proposal.agree_prompt
+      color: '#70C9F8'
+    - key: abstain
+      name_i18n: poll_proposal_options.abstain
+      icon: abstain
+      meaning_i18n: poll_templates.proposal.abstain_meaning
+      prompt_i18n: poll_templates.proposal.abstain_prompt
+      color: "#C8E56E"
+    - key: disagree
+      name_i18n: poll_proposal_options.disagree
+      icon: disagree
+      meaning_i18n: poll_templates.proposal.disagree_meaning
+      prompt_i18n: poll_templates.proposal.disagree_prompt
+      color: "#D38FE1"
 
 meeting:
   poll_type: meeting
@@ -121,85 +127,57 @@ ranked_choice:
 
 advice:
   poll_type: proposal
-  process_name_i18n: decision_tools_card.advice_title
-  process_subtitle_i18n: poll_proposal_form.advice_subtitle
-  process_introduction_i18n: poll_proposal_form.advice_introduction
+  process_name_i18n: poll_common.advice_process
+  process_subtitle_i18n: poll_templates.advice.process_subtitle
+  process_introduction_i18n: poll_templates.advice.process_introduction
   process_introduction_format: 'html'
+  title_i18n: poll_templates.advice.title
+  details_i18n: poll_templates.advice.details
   tags_i18n:
     - poll_common.advice_process
   poll_options:
     - key: agree
       name_i18n: poll_proposal_options.agree
       icon: agree
-      meaning_i18n: poll_proposal_options.advice_agree_meaning
-      prompt_i18n: poll_proposal_options.advice_agree_prompt
+      meaning_i18n: poll_templates.advice.agree_meaning
+      prompt_i18n: poll_templates.advice.agree_prompt
       color: '#70C9F8'
       default: true
     - key: abstain
       name_i18n: poll_proposal_options.abstain
       icon: abstain
-      meaning_i18n: poll_proposal_options.advice_abstain_meaning
-      prompt_i18n: poll_check_options.advice_abstain_prompt
+      meaning_i18n: poll_templates.advice.abstain_meaning
+      prompt_i18n: poll_templates.advice.abstain_prompt
       color: '#70C9F8'
-      default: true
-    - key: concerned
-      name_i18n: poll_check_options.concerned
-      icon: disagree
-      meaning_i18n: poll_check_options.concerned_meaning
-      prompt_i18n: poll_check_options.concerned_prompt
-      color: "#C8E56E"
-      default: true
-
-check:
-  poll_type: proposal
-  process_name_i18n: decision_tools_card.check_title
-  process_subtitle_i18n: poll_check_options.check_subtitle
-  tags_i18n:
-    - decision_tools_card.check_title
-  poll_options:
-    - key: looks_good
-      name_i18n: poll_check_options.looks_good
-      icon: agree
-      meaning_i18n: poll_check_options.looks_good_meaning
-      prompt_i18n: poll_check_options.looks_good_prompt
-      color: '#70C9F8'
-      default: true
-    - key: not_sure
-      name_i18n: poll_check_options.not_sure
-      icon: abstain
-      meaning_i18n: poll_check_options.not_sure_meaning
-      prompt_i18n: poll_check_options.not_sure_prompt
-      color: '#70C9F8'
-      default: true
-    - key: concerned
-      name_i18n: poll_check_options.concerned
-      icon: disagree
-      meaning_i18n: poll_check_options.concerned_meaning
-      prompt_i18n: poll_check_options.concerned_prompt
-      color: "#C8E56E"
       default: true
 
 consent:
   poll_type: proposal
-  process_name: Consent
-  process_subtitle: Ensure nobody objects to your proposal
+  process_name_i18n: poll_common.consent_process
+  process_subtitle_i18n: poll_templates.consent.process_subtitle
+  process_introduction_i18n: poll_templates.consent.process_introduction
+  title_i18n: poll_templates.advice.title
+  details_i18n: poll_templates.advice.details
   default_duration_in_days: 7
   tags_i18n:
     - poll_common.consent_process
   poll_options:
-    - name: Consent
+    - name_i18n: poll_proposal_options.consent
       icon: agree
-      meaning: The proposal is safe to try
-      prompt: Do you have any other thoughts about the proposal?
-    - name: Object
+      meaning: poll_templates.consent.consent_meaning
+      prompt: poll_templates.consent.consent_prompt
+    - name: poll_proposal_options.objection
       icon: disagree
-      meaning: There is a serious problem with this proposal
-      prompt: How would you change the proposal to address the problem?
+      meaning: poll_templates.consent.objection_meaning
+      prompt: poll_templates.consent.objection_prompt
 
 consensus:
   poll_type: proposal
-  process_name: Consensus
-  process_subtitle: Improve a proposal so that everyone is supportive of it
+  process_name_i18n: decision_tools_card.consensus
+  process_subtitle_i18n: poll_templates.consensus.process_subtitle
+  process_introduction_i18n: poll_templates.consensus.process_introduction
+  title_i18n: poll_templates.consensus.title
+  details_i18n: poll_templates.consensus.details
   default_duration_in_days: 7
   tags_i18n:
     - poll_common.consensus_process
@@ -207,82 +185,87 @@ consensus:
     - key: agree
       name_i18n: poll_proposal_options.agree
       icon: agree
-      meaning_i18n: poll_proposal_options.agree_meaning
-      prompt_i18n: poll_proposal_vote_form.agree_reason_placeholder
+      meaning_i18n: poll_templates.consensus.agree_meaning
+      prompt_i18n: poll_templates.consensus.agree_prompt
       color: '#70C9F8'
       default: true
     - key: abstain
       name_i18n: poll_proposal_options.abstain
       icon: abstain
-      meaning_i18n: poll_proposal_options.abstain_meaning
-      prompt_i18n: poll_proposal_options.abstain_prompt
+      meaning_i18n: poll_templates.consensus.abstain_meaning
+      prompt_i18n: poll_templates.consensus.abstain_prompt
       color: "#C8E56E"
       default: true
     - key: disagree
       name_i18n: poll_proposal_options.disagree
       icon: disagree
-      meaning_i18n: poll_proposal_options.disagree_meaning
-      prompt_i18n: poll_proposal_vote_form.disagree_reason_placeholder
+      meaning_i18n: poll_templates.consensus.disagree_meaning
+      prompt_i18n: poll_templates.consensus.disagree_prompt
       color: "#D38FE1"
       default: true
     - key: block
       name_i18n: poll_proposal_options.block
       icon: block
-      meaning_i18n: poll_proposal_options.block_meaning
-      prompt_i18n: poll_proposal_vote_form.block_reason_placeholder
+      meaning_i18n: poll_templates.consensus.block_meaning
+      prompt_i18n: poll_templates.consensus.block_prompt
       color: "#999FDE"
 
 gradients_of_agreement:
   poll_type: proposal
-  process_name_i18n: gradients_of_agreement.process_name
-  process_subtitle_i18n:  gradients_of_agreement.process_subtitle
-  # process_intro: gradients_of_agreement.process_intro
+  process_name_i18n: poll_templates.gradients_of_agreement.process_name
+  process_subtitle_i18n: poll_templates.gradients_of_agreement.process_subtitle
+  process_introduction_i18n: poll_templates.gradients_of_agreement.process_introduction
+  title_i18n: poll_templates.gradients_of_agreement.title
+  details_i18n: poll_templates.gradients_of_agreement.details
   default_duration_in_days: 5
   tags_i18n:
     - gradients_of_agreement.process_name
   poll_options:
     - key: endorsement
-      name_i18n: gradients_of_agreement.whole_hearted_endorsement
       icon: agree
-      meaning_i18n: gradients_of_agreement.whole_hearted_endorsement_meaning
       color: '#70C9F8'
+      name_i18n: poll_templates.gradients_of_agreement.whole_hearted_endorsement
+      meaning_i18n: poll_templates.gradients_of_agreement.whole_hearted_endorsement_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.whole_hearted_endorsement_prompt
     - key: agreement_with_contention
-      name_i18n: gradients_of_agreement.agreement_with_contention
       icon: agree
-      meaning_i18n: gradients_of_agreement.agreement_with_contention_meaning
       color: '#70C9F8'
+      name_i18n: poll_templates.gradients_of_agreement.agreement_with_minor_contention
+      meaning_i18n: poll_templates.gradients_of_agreement.agreement_with_minor_contention_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.agreement_with_minor_contention_prompt
     - key: support_with_reservations
-      name_i18n: gradients_of_agreement.support_with_reservations
       icon: agree
-      meaning_i18n: gradients_of_agreement.support_with_reservations_meaning
       color: '#70C9F8'
+      name_i18n: poll_templates.gradients_of_agreement.support_with_reservations
+      meaning_i18n: poll_templates.gradients_of_agreement.support_with_reservations_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.support_with_reservations_prompt
     - key: abstain
-      name_i18n: poll_proposal_options.abstain
       icon: abstain
-      meaning_i18n: gradients_of_agreement.abstain_meaning
-      prompt_i18n: poll_proposal_options.abstain_prompt
       color: "#C8E56E"
+      name_i18n: poll_proposal_options.abstain
+      meaning_i18n: poll_templates.gradients_of_agreement.abstain_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.abstain_prompt
     - key: more_discussion_needed
-      name_i18n: gradients_of_agreement.more_discussion_needed
+      name_i18n: poll_templates.gradients_of_agreement.more_discussion_needed
       icon: disagree
-      meaning_i18n: gradients_of_agreement.more_discussion_needed_meaning
-      prompt_i18n: gradients_of_agreement.disagree_reason_placeholder
+      meaning_i18n: poll_templates.gradients_of_agreement.more_discussion_needed_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.more_discussion_needed_prompt
       color: "#D38FE1"
     - key: dont_like_but_will_support
-      name_i18n: gradients_of_agreement.dont_like_but_will_support
       icon: disagree
-      meaning_i18n: gradients_of_agreement.dont_like_but_will_support_meaning
-      prompt_i18n: gradients_of_agreement.disagree_reason_placeholder
       color: "#D38FE1"
+      name_i18n: poll_templates.gradients_of_agreement.don_t_like_but_will_support
+      meaning_i18n: poll_templates.gradients_of_agreement.don_t_like_but_will_support_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.don_t_like_but_will_support_prompt
     - key: serious_disagreement
-      name_i18n: gradients_of_agreement.serious_disagreement
+      name_i18n: poll_templates.gradients_of_agreement.serious_disagreement
       icon: disagree
-      meaning_i18n: gradients_of_agreement.serious_disagreement_meaning
-      prompt_i18n: gradients_of_agreement.disagree_reason_placeholder
+      meaning_i18n: poll_templates.gradients_of_agreement.serious_disagreement_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.serious_disagreement_prompt
       color: "#D38FE1"
     - key: veto
-      name_i18n: gradients_of_agreement.veto
+      name_i18n: poll_templates.gradients_of_agreement.veto
       icon: block
-      meaning_i18n: gradients_of_agreement.veto_meaning
-      prompt_i18n: gradients_of_agreement.block_reason_placeholder
+      meaning_i18n: poll_templates.gradients_of_agreement.veto_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.veto_prompt
       color: "#999FDE"

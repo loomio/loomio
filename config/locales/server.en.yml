@@ -1,5 +1,197 @@
 ---
 en:
+  poll_templates:
+    proposal:
+      process_subtitle: Raise a proposal to make a decision
+      process_introduction: |
+        <p>The classic Loomio proposal helps you make a decision,
+        converting a discussion into a clear outcome.</p><p>Suggest a course of action
+        and invite people to respond by voting agree, abstain or disagree.</p><p>As people
+        vote, they can give a reason why they have voted this way. You can see where everyone
+        else stands on the matter, and why.</p><p>In this way you can use a proposal to
+        prompt people for a response, uncover new information, and build shared understanding
+        - to help your group make a better, more informed decision.</p><p>A proposal and
+        associated discussion creates its own record of how the decision came about.</p><p><a
+        target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read
+        more about using the classic Loomio proposal in the Simple decision process</u></a><span>.</span></p>
+      title: Approve the new Brand concept
+      details: |
+        <h3 data-text-align=\"start\" id=\"what-is-the-decision-you-need-to-make\"><strong>What
+        is the decision you need to make?</strong></h3><p data-text-align=\"start\"></p><h3
+        data-text-align=\"start\" id=\"why-is-this-important\"><strong>Why is this important?</strong></h3><p></p><h3
+        data-text-align=\"start\" id=\"what-are-you-asking-people-to-do\"><strong>What
+        are you asking people to do?</strong></h3><p data-text-align=\"start\"></p><p
+        data-text-align=\"start\">For this proposal to pass, we need the majority of members
+        to vote Agree. </p><p data-text-align=\"start\">If you Disagree, say why and what
+        needs to change for you to Agree. \U0001F642</p>
+      agree_meaning: I support the proposal
+      agree_prompt: What do you like about the proposal and how will it benefit the group?
+      abstain_meaning: Choosing not to, or unable to vote in this decision.
+      abstain_prompt: Why are you abstaining, or do not feel able to vote in this decision?
+      disagree_meaning: Something in this proposal needs to be changed before I can support it.
+      disagree_prompt: How could this proposal be improved so that you can support it?
+
+    advice:
+      process_name: Advice
+      process_subtitle: Seek advice on a decision you need to make
+      process_introduction: <p>Seek advice on a decision you need to make, with the advice
+        of people impacted or who have expertise, so you can make a better decision for
+        your organization.</p><ul><li><p>Advice helps you make a better decision for your
+        organization.</p></li><li><p>Foster relationships, learning opportunities and
+        diverse input.&nbsp;&nbsp;</p></li><li><p>Stimulate initiative and creativity,
+        and more enjoyable work.</p></li></ul><p data-text-align="start"><a target="_blank"
+        rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Read
+        more about the Advice process</u></a>.</p>
+      title: Help Takashi buy a new computer
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What is the decision
+        you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why
+        is this important?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>What
+        advice are you asking from people to help you make a good decision?</strong></h3><p></p><p>I
+        am seeking your input to help me make a good decision for our organization.</p>
+      agree_meaning: I have offered my advice about this decision
+      agree_prompt: Summarize your advice or make a helpful comment
+      abstain_meaning: I don't have any advice to offer
+      abstain_prompt: Do you have any comments that may be helpful?
+
+  consent:
+    process_name: Consent
+    process_subtitle: Make a decision that is ‘safe to try’, without objections
+    process_introduction: <p>Seek consent on a decision you need to make, where there
+      are no meaningful objections to your proposal, so you can make a fast decision
+      for your organization that is 'safe to try'.</p><ul><li><p>Aim for a ‘good enough’
+      decision</p></li><li><p>Involve many voices to develop a workable proposal</p></li><li><p>Ask
+      if anyone has a valid objection</p></li><li><p>Amend the proposal to resolve objections</p></li></ul><p
+      data-text-align="start"><a target="_blank" rel="noopener noreferrer nofollow"
+      href="https://help.loomio.com/en/guides/consent_process/index.html">Read more
+      about the Consent process</a>.</p>
+    title: Hire Chloe for design role
+    details: <h3 data-text-align="start" id="what-is-the-decision-you-need-to-make"><strong>What
+      is the decision you need to make?</strong></h3><p data-text-align="start"></p><h3
+      data-text-align="start" id="why-is-this-important"><strong>Why is this important?</strong></h3><p
+      data-text-align="start"></p><h3 data-text-align="start" id="what-are-you-asking-of-people-in-this-proposal"><strong>What
+      are you asking of people in this proposal?</strong></h3><p data-text-align="start"></p><p
+      data-text-align="start">If you have an Objection, please say why and propose a
+      change to the proposal that makes it safe.</p><p data-text-align="start">Remember
+      we are seeking consent for a ‘good enough’ decision that is 'safe to try', so
+      we can make a good decision for our organization.</p>
+    consent_meaning: The proposal is safe to try
+    consent_prompt: What do you like about the proposal and how will it benefit the organization?
+    objection_meaning: I have a valid objection and think the proposal will cause harm
+    objection_prompt: What change to this proposal is needed to make it 'safe to try', so that you can support it?
+
+  consensus:
+    process_name: Consensus
+    process_subtitle: Reach collective agreement with everyone involved
+    process_introduction: <p>Build consensus for a decision you need to make, to reach
+      an agreement that satisfies the needs and concerns of all participants.</p><ul><li><p>Discuss
+      and develop a proposal together</p></li><li><p>Include and respect everyone involved</p></li><li><p>Seek
+      agreement from most people&nbsp;</p></li></ul><p data-text-align="start"><a target="_blank"
+      rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Read
+      more about the Consensus process</a>.</p>
+    title: Approve the new Brand concept
+    details: <h3 data-text-align="start" id="what-is-the-decision-you-need-to-make"><strong>What
+      is the decision you need to make?</strong></h3><p data-text-align="start"></p><h3
+      data-text-align="start" id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+      data-text-align="start" id="what-are-you-asking-people-to-do"><strong>What are
+      you asking people to do?</strong></h3><p data-text-align="start"></p><p data-text-align="start">For
+      this proposal to pass, we need the majority of members to vote Agree. </p><p data-text-align="start">If
+      you Disagree, say why and what needs to change for you to Agree.</p>
+    agree_meaning: I support the proposal
+    agree_prompt: What do you like about the proposal and how will it benefit the organization?
+    abstain_meaning: This decision does not affect me and I am happy with whatever the group decides
+    abstain_prompt: Why are you abstaining, or do not feel able to vote in this decision?
+    abstain_icon: abstain
+    disagree_meaning: Something in this proposal needs to be changed before I can support it.
+    disagree_prompt: How could this proposal be improved so that you can support it?
+    block_meaning: I block this proposal and think it should not proceed
+    block_prompt: Explain your objection to this proposal and why it should not go ahead
+
+  question_round:
+    process_name: Question round
+    process_subtitle: Invite clarifying questions to help people understand a proposal
+    process_introduction: <p>A Question round is an opportunity for people to ask clarifying
+      questions about the proposal, so that everyone understands the proposal before
+      they say what they think about it.</p><p data-text-align="start">The Loomio Question
+      round is a special proposal with no voting options. It enables participants to
+      ask questions within a duration you set for the round.</p><p data-text-align="start">A
+      Questions round is commonly used as a step in the Consent process.</p><p data-text-align="start"><a
+      target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Read
+      more about the Consent process</a>.</p>
+    details: <h3 data-text-align="start" id="what-are-you-proposing"><strong>What are
+      you proposing?</strong></h3><p data-text-align="start"></p><h3 data-text-align="start"
+      id="why-is-this-important"><strong>Why is this important?</strong></h3><p data-text-align="start"></p><h3
+      data-text-align="start" id="what-are-you-asking-people-to-do"><strong>What are
+      you asking people to do?</strong></h3><p data-text-align="start"></p><p data-text-align="start">This
+      is a question round, where you are invited to ask clarifying questions.</p><p
+      data-text-align="start">What do you need to know so you understand the proposal?</p><p
+      data-text-align="start">Please respond before the Question round closes.</p>
+
+  sense_check:
+    process_name: Sense check
+    process_subtitle: Ask for feedback, questions and concerns
+    process_introduction: <p>The Sense check proposal is a good way to get feedback,
+      invite questions and uncover concerns. It helps to clarify and improve a proposal
+      before moving to a decision.</p><p data-text-align="start">Sense check lets people
+      know a proposal is forming and encourages them to engage. It is an opportunity
+      to listen to people, sense how they feel and respond appropriately - opening the
+      potential to incorporate their contributions to make a better decision.</p><p
+      data-text-align="start">Use the Sense check proposal in the Consent process to
+      invite reactions and comments to improve the proposal, and in a Consensus process
+      to test for consensus.</p><p data-text-align="start"><a target="_blank" rel="noopener
+      noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read
+      more about using Sense check in the Simple decision process</u></a><span>.</span></p>
+    title: How do you feel about the new brand concepts?
+    details: <h3 id="what-are-you-proposing"><strong>What are you proposing?</strong></h3><p></p><h3
+      id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+      id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>How
+      do you feel about the proposal?  Leave a comment or make a suggestion for improvement.</p><p>This
+      Sense check is an opportunity for your input and contribution, to help us make
+      a better decision.</p>
+    looks_good_meaning: I'm happy with where this is going
+    looks_good_prompt: Do you have any comments or suggestions to make the proposal better?
+    abstain_meaning: I don’t have anything to add, nor any objection to this work.
+    abstain_prompt: Abstaining implies consent with the direction of this proposal. Is there a reason you are voting to abstain?
+    concerned_meaning: Something about this may need to change for me to consent or agree
+    concerned_prompt: What is your concern and how might it be addressed?
+
+  gradients_of_agreement:
+    process_name: Gradients of agreement
+    process_subtitle: Express support for a proposal on an 8-point scale
+    process_introduction: <p>The Gradients of agreement proposal enables members of
+      a group to express their support for a proposal in degrees on a scale, offering
+      more ways of expressing support than in terms of “agree” and “disagree”.</p><p
+      data-text-align="start">Use Gradients of agreement as a preliminary round, to
+      test support for a proposal before moving to a formal agreement.</p><p data-text-align="start">Gradients
+      of agreement lets people know a proposal is forming and encourages them to engage.
+      It is an opportunity to listen to people, sense how they feel and respond appropriately
+      - opening the potential to incorporate their contributions to make a better decision.</p>
+    title: How do you like the new statement of values?
+    details: <h3 data-text-align="start" id="what-are-you-proposing"><strong>What are
+      you proposing?</strong></h3><p data-text-align="start"></p><h3 data-text-align="start"
+      id="why-is-this-important"><strong>Why is this important?</strong></h3><p data-text-align="start"></p><h3
+      data-text-align="start" id="what-are-you-asking-people-to-do"><strong>What are
+      you asking people to do?</strong></h3><p data-text-align="start"></p><p data-text-align="start">How
+      do you like the proposal?  Express your support on the scale below and leave a
+      comment or suggestion for improvement.</p><p data-text-align="start">This Gradients
+      of agreement proposal is to test support for the proposal, and an opportunity
+      for your input before moving to a formal agreement.</p>
+    whole_hearted_endorsement_meaning: I really like it!
+    whole_hearted_endorsement_prompt: What do you like about it?
+    agreement_with_minor_contention_meaning: Not perfect, but it's good enough
+    agreement_with_minor_contention_prompt: What is your concern?
+    support_with_reservations_meaning: I can live with it
+    support_with_reservations_prompt: What are your reservations?
+    abstain_meaning: This issue does not affect me
+    abstain_prompt: Do you have anything you would like to add?
+    more_discussion_needed_meaning: I don't understand the issues well enough yet
+    more_discussion_needed_prompt: What do you not understand?
+    don_t_like_but_will_support_meaning: It's not great but I don't want to hold up the group
+    don_t_like_but_will_support_prompt: What would you like to see improved?
+    serious_disagreement_meaning: I am not on board with this - don't count on me
+    serious_disagreement_prompt: What do you disagree with?
+    veto_meaning: I block this proposal
+    veto_prompt: Why do you block the proposal? What needs to change for you to support it?
+
   explore:
     header: Explore public groups
 
