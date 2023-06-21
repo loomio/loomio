@@ -1754,6 +1754,7 @@ en:
     dot_vote_title: Dot vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
+    gradients_of_agreement_title: Gradients of agreement
 
   poll_option_form:
     edit_option: Edit option

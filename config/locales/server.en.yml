@@ -154,7 +154,6 @@ en:
       concerned_prompt: What is your concern and how might it be addressed?
 
     gradients_of_agreement:
-      process_name: Gradients of agreement
       process_subtitle: Express support for a proposal on an 8-point scale
       process_introduction: <p>The Gradients of agreement proposal enables members of
         a group to express their support for a proposal in degrees on a scale, offering
@@ -174,22 +173,31 @@ en:
         comment or suggestion for improvement.</p><p data-text-align="start">This Gradients
         of agreement proposal is to test support for the proposal, and an opportunity
         for your input before moving to a formal agreement.</p>
+      whole_hearted_endorsement: Whole-hearted Endorsement
       whole_hearted_endorsement_meaning: I really like it!
       whole_hearted_endorsement_prompt: What do you like about it?
+      agreement_with_minor_contention: Agreement with minor contention
       agreement_with_minor_contention_meaning: Not perfect, but it's good enough
       agreement_with_minor_contention_prompt: What is your concern?
+      support_with_reservations: Support with reservations
       support_with_reservations_meaning: I can live with it
       support_with_reservations_prompt: What are your reservations?
       abstain_meaning: This issue does not affect me
       abstain_prompt: Do you have anything you would like to add?
+      more_discussion_needed: More discussion needed
       more_discussion_needed_meaning: I don't understand the issues well enough yet
       more_discussion_needed_prompt: What do you not understand?
-      don_t_like_but_will_support_meaning: It's not great but I don't want to hold up the group
+      don_t_like_but_will_support: Don't like but will support
+      don_t_like_but_will_support_meaning: It's not great but I don't want to hold up
+        the group
       don_t_like_but_will_support_prompt: What would you like to see improved?
+      serious_disagreement: Serious disagreement
       serious_disagreement_meaning: I am not on board with this - don't count on me
       serious_disagreement_prompt: What do you disagree with?
+      veto: Veto
       veto_meaning: I block this proposal
-      veto_prompt: Why do you block the proposal? What needs to change for you to support it?
+      veto_prompt: Why do you block the proposal? What needs to change for you to support
+        it?
 
   explore:
     header: Explore public groups

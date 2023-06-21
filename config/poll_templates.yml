@@ -202,14 +202,14 @@ consensus:
 
 gradients_of_agreement:
   poll_type: proposal
-  process_name_i18n: poll_templates.gradients_of_agreement.process_name
+  process_name_i18n: decision_tools_card.gradients_of_agreement_title
   process_subtitle_i18n: poll_templates.gradients_of_agreement.process_subtitle
   process_introduction_i18n: poll_templates.gradients_of_agreement.process_introduction
   title_i18n: poll_templates.gradients_of_agreement.title
   details_i18n: poll_templates.gradients_of_agreement.details
   default_duration_in_days: 5
   tags_i18n:
-    - poll_templates.gradients_of_agreement.process_name
+    - decision_tools_card.gradients_of_agreement_title
   poll_options:
     - key: endorsement
       icon: agree
