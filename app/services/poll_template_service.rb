@@ -2,7 +2,7 @@ class PollTemplateService
   def self.group_templates(group: , default_format: 'html')
     group.poll_templates.to_a.concat(
       default_templates.map do |template|
-        template.position = group.poll_template_positions[template.key]
+        template.position = group.poll_template_positions.fetch(template.key, 999)
         template.details_format = default_format
         template.process_introduction_format = default_format
         template.group_id = group.id

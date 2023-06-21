@@ -49,6 +49,7 @@ export default class PollTemplateModel extends BaseModel
     pollOptionNameFormat: 'plain'
     shuffleOptions: false
     hideResults: 'off'
+    position: 0
 
   relationships: ->
     @belongsTo 'author', from: 'users'
