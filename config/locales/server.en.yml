@@ -98,7 +98,6 @@ en:
       agree_prompt: What do you like about the proposal and how will it benefit the organization?
       abstain_meaning: This decision does not affect me and I am happy with whatever the group decides
       abstain_prompt: Why are you abstaining, or do not feel able to vote in this decision?
-      abstain_icon: abstain
       disagree_meaning: Something in this proposal needs to be changed before I can support it.
       disagree_prompt: How could this proposal be improved so that you can support it?
       block_meaning: I block this proposal and think it should not proceed

@@ -1,3 +1,4 @@
+---
 hu:
   explore:
     header: Fedezd fel a nyilvános csoportokat
@@ -15,6 +16,8 @@ hu:
     messages:
       email: Nem érvényes e-mail cím
       spoofed_media_type: A fájl tartalma nem egyezik a fájlnévvel
+    clear_cache: Betöltési probléma észlelve. Tartsa lenyomva a Shift gombot, és nyomja meg a Reload gombot, vagy törölje a böngésző gyorsítótárát.
+    upgrade_browser: UH Oh! A webböngésző túl régi, és előfordulhat, hogy a Loomio nem működik megfelelően. Kérjük, <a href="https://browser-update.org/update.html">frissítse böngészőjét.</a>
   group:
     stats:
       members: Tagok
@@ -27,21 +30,34 @@ hu:
         proposal: Javaslat
         rank: Rangsorolás
         time: Időpont választás
+        count: Számol
+        choose: Választ
+        allocate: Kioszt
+        score: Pontszám
+      group_stats: Csoport statisztika
+      org_stats: Szervezeti statisztikák (beleértve az alcsoportokat)
+      visits: Látogatások
+      general: Tábornok
+    error:
+      handle_must_begin_with_parent_handle: 'A következővel kell kezdődnie: %{parent_handle}-'
+      no_public_trials: Kérjük, frissítsen a próbaverzióról a csoport adatvédelmi beállításának módosításához
   user:
-    deleted_user: "Törölt felhasználó"
-    placeholder_name: "Meghívott felhasználó (%{hostname})"
+    deleted_user: Törölt felhasználó
+    placeholder_name: Meghívott felhasználó (%{hostname})
     error:
       sign_in_required_html: |
-          A folytatáshoz be kell jelentkeznie.
-          Kérem <a href="/dashboard" target="_blank">jelentkezzen be</a> majd töltse be újra az oldalt a folytatáshoz.
-      recaptcha: "Nem tudtuk ellenőrizni, hogy nem robot vagy-e. Kérlek próbáld újra!"
-      bad_login: "Sajnáljuk, de ez a jelszó nem egyezik meg a korábban megadottal."
-      username_must_be_alphanumeric: "A felhasználónevek csak kisbetűsek és számok lehetnek"
+        A folytatáshoz be kell jelentkeznie.
+        Kérem <a href="/dashboard" target="_blank">jelentkezzen be</a> majd töltse be újra az oldalt a folytatáshoz.
+      recaptcha: Nem tudtuk ellenőrizni, hogy nem robot vagy-e. Kérlek próbáld újra!
+      bad_login: Sajnáljuk, de ez a jelszó nem egyezik meg a korábban megadottal.
+      username_must_be_alphanumeric: A felhasználónevek csak kisbetűsek és számok lehetnek
   poll:
     error:
       cannot_add_options: Nem lehet lehetőségeket hozzáadni ehhez a szavazáshoz
       cannot_remove_options: Nem lehet eltávolítani lehetőségeket ebből a szavazásból
       must_have_options: Legalább egy szavazási lehetőséget meg kell adni
+      must_be_in_the_future: Biztosan a jövőben
+      templates_cannot_close: A sablonokat nem lehet bezárni
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) a tagok kifejtették álláspontjukat"
       title: Cím
@@ -65,6 +81,8 @@ hu:
       participant: Résztvevő
       also_available: Szintén elérhető
       total: Összesen
+      user_id: Felhasználói azonosító
+    waiting_for_votes_from: Várjuk a szavazatokat
   stance:
     error:
       too_short: Kérjük, válasszon
@@ -77,51 +95,72 @@ hu:
   user_mailer:
     group_export_ready:
       subject: A(z)%{group_name}csoport adatainak letöltése
-      body_html: |
-          Töltse le csoportadatait  <a href="%{url}">itt</a>. Felhívjuk figyelmét, hogy ez a link egy hét múlva lejár.
+      body_html: 'Töltse le csoportadatait  <a href="%{url}">itt</a>. Felhívjuk figyelmét, hogy ez a link egy hét múlva lejár.
+
+        '
     accounts_merged:
-      subject: "A %{site_name} felhasználói fiókjaid egyesítve lettek."
-      body_html: |
-          Szia%{név}! A két Loomio fiókod egyesítve lett. A Loomio eléréséhez most használd ezt <strong>%{email} </strong> amikor bejelentkezel.
+      subject: A %{site_name} felhasználói fiókjaid egyesítve lettek.
+      body_html: 'Szia%{név}! A két Loomio fiókod egyesítve lett. A Loomio eléréséhez most használd ezt <strong>%{email} </strong> amikor bejelentkezel.
+
+        '
+    deactivated:
+      subject: "%{site_name} felhasználói fiókját deaktiváltuk."
+      body_html: "<p>Ön vagy valaki, aki hozzáfér a fiókjához, deaktiválta Loomio felhasználói fiókját.</p><p> Minden személyes adatot eltávolítottunk a rendszerből.</p><p> Ha vissza szeretné állítani ezt a felhasználói fiókot, valamint a kapcsolódó megjegyzéseket és szavazatokat, forduljon az ügyfélszolgálathoz, és hivatkozzon: %{recovery_code}</p>"
+    merge_verification:
+      subject: Erősítse meg %{site_name} e-mail címét az egyesítéshez
+      body_html: "<p>Szia %{name}!</p><p> Kérés érkezett a <strong>(z) %{source_email}</strong> cím alatti felhasználói fiók és a <strong>(z) %{target_email}</strong> címhez tartozó fiók egyesítésére.</p><p> A folyamat befejezése után többé nem fog tudni bejelentkezni <strong>a %{source_email}</strong> címmel, és csak <strong>a %{target_email}</strong> segítségével.</p><p> Kérjük, erősítse meg, hogy ezt szeretné tenni.</p>"
+      verify: Ellenőrizze az e-mail-címet, és folytassa
+      confirm_page:
+        confirm: Egyesítés megerősítése
+        body_html: "<p>Kérjük, erősítse meg, hogy a <strong>%{source_email}</strong> fiókot a <strong>%{target_email}</strong> alatti fiókkal szeretné egyesíteni.</p><p> <strong>A %{source_email}</strong> alatti fiókod törlésre kerül, és ezután már csak <strong>a %{target_email}</strong> címen tudsz bejelentkezni.</p><p> Ez a változás visszafordíthatatlan.</p>"
+        merge: Fiókok egyesítése
+      complete_page:
+        title: Sikeres összevonás!
+        body_html: <p>A felhasználói fiókok egyesítése sikeres volt. Hamarosan kap egy megerősítő e-mailt a <strong>%{target_email}</strong> címre.</p><p> Kérjük <a href="/contact" target="_blank">, forduljon hozzánk</a> , ha további kérdése van.</p>
   email:
     common:
       or_enter_code: Vagy írja be az alábbi kódot
+      resend: Ez 24 órán belül lejár, és csak egyszer használható fel
     login:
       subject: Bejelentkezés a(z) %{site_name} oldalra
       login: Bejelentkezés mint %{name}
+      intro: Ez a linked a(z) %{site_name} webhelyre való bejelentkezéshez
+      intro_code: Ez a kódod a(z) %{site_name} webhelyre való bejelentkezéshez
     reactivate:
       subject: Aktiválja újra%{site_name} fiókját
       login: Újraaktivál%{name}
+      intro: Szia %{name}, itt egy link a %{site_name} fiókod újraaktiválásához
     contact_request:
       subject: "%{name} szeretne kapcsolatba lépni veled a%{site_name} oldalon!"
       intro: "%{name} (%{email}) csatlakozási kérelmet küldött neked."
-      footer: "A(z)%{name} címre közvetlenül válaszolhat erre az e-mailre."
+      footer: A(z)%{name} címre közvetlenül válaszolhat erre az e-mailre.
     reset_password:
       greeting: |
-          Kedves %{name}
-          Itt található egy link, amellyel visszaállíthatod a jelszavad a Loomio-fiókodban:
+        Kedves %{name}
+        Itt található egy link, amellyel visszaállíthatod a jelszavad a Loomio-fiókodban:
       link_text: Állítsd vissza a jelszavad
-      signoff: |
-          Azért kaptad ezt, mert e-mail címed a%{hostname} "Elfelejtett jelszó" űrlapon meg lett adva. A jelszavad azonban nem változik meg, amíg nem követed a fenti hivatkozást és ki nem töltöd az űrlapot. Ha továbbra is problémáid vannak a bejelentkezéssel, válaszolj erre az e-mailre, hogy felvedd a kapcsolatot egy csoportot támogató személlyel.
+      signoff: 'Azért kaptad ezt, mert e-mail címed a%{hostname} "Elfelejtett jelszó" űrlapon meg lett adva. A jelszavad azonban nem változik meg, amíg nem követed a fenti hivatkozást és ki nem töltöd az űrlapot. Ha továbbra is problémáid vannak a bejelentkezéssel, válaszolj erre az e-mailre, hogy felvedd a kapcsolatot egy csoportot támogató személlyel.
+
+        '
     by_who: általa%{person}
     reply_to_this_discussion: Válasz erre a beszélgetésre
     view_group: Csoport megtekintése
     to_join_group:
       subject: "%{member} meghívott, hogy csatlakozzon a következőhöz:%{group_name}, a(z) %{site_name} oldalon"
       invitation_text: "%{member} meghívott, hogy csatlakozzon a(z)%{group_name} csoporthoz."
-      invitation_text_html: "meghívott, hogy csatlakozz a csoportjukhoz"
-      link_help: "Kattints az alábbi hivatkozásra a meghívás elfogadásához:"
-      accept_invitation: "Meghívás elfogadása"
-      stop_emails: "A továbbiakban nem kapsz majd e-mailt a(z) %{site_name}oldalról"
+      invitation_text_html: meghívott, hogy csatlakozz a csoportjukhoz
+      link_help: 'Kattints az alábbi hivatkozásra a meghívás elfogadásához:'
+      accept_invitation: Meghívás elfogadása
+      stop_emails: A továbbiakban nem kapsz majd e-mailt a(z) %{site_name}oldalról
     resend_to_join_group:
       subject: "%{member}arra vár, hogy csatlakozz a(z)%{group_name}csoporthoz a(z) %{site_name}oldalon"
     user_added_to_group:
       subject: "%{who} felvett téged a(z) %{site_name}oldalon a(z) %{which_group}csoportba"
       content: "%{who}felvett téged a(z) %{which_group}csoportba."
       content_html: "<strong>%{who}</strong> hozzáadott téged a(z) <strong>%{which_group}</strong>csoporthoz."
-      link_help: "A csoportba lépéshez kattints az alábbi hivatkozásra:"
+      link_help: 'A csoportba lépéshez kattints az alábbi hivatkozásra:'
     unsubscribe: 'Leiratkozás vagy az e-mail beállítások módosítása:'
-    unsubscribe_html: "Kattints ide<a href='%{link_path}'>%{link_text}</a> leiratkozáshoz vagy az e-mail beállítások megváltoztatásához."
+    unsubscribe_html: Kattints ide<a href='%{link_path}'>%{link_text}</a> leiratkozáshoz vagy az e-mail beállítások megváltoztatásához.
     catch_up:
       daily_subject: Tegnap itt:%{site_name}
       weekly_subject: A múlt héten a(z) %{site_name}oldalon
@@ -130,24 +169,30 @@ hu:
       thanks_for_reading: Köszönjük, hogy elolvastad, szép napot kívánunk!
       marked_as_read_success: Az e-mail teljes tartalma meg lett jelölve olvasottként.
       click_here: Kattints ide
+      other_subject: 'Nemrég itt: %{site_name}'
     group_membership_approved:
-      intro: "A(z) %{group_name} csoporthoz való hozzáférési kérelmét jóváhagyták."
-      intro_html: "Jóváhagyták a(z) <strong>%{group_name}</strong>csoporthoz való hozzáférés iránti kérelmed."
-      link_help: "Kattints az alábbi hivatkozásra, hogy csatlakozz a(z)%{group_name}csoporthoz és kezdj neki a beszélgetésnek:"
-      subject: "A(z)%{group_name} csatlakozási kérelmét jóváhagyták"
-      join_group: "Csoporthoz csatlakozás"
+      intro: A(z) %{group_name} csoporthoz való hozzáférési kérelmét jóváhagyták.
+      intro_html: Jóváhagyták a(z) <strong>%{group_name}</strong>csoporthoz való hozzáférés iránti kérelmed.
+      link_help: 'Kattints az alábbi hivatkozásra, hogy csatlakozz a(z)%{group_name}csoporthoz és kezdj neki a beszélgetésnek:'
+      subject: A(z)%{group_name} csatlakozási kérelmét jóváhagyták
+      join_group: Csoporthoz csatlakozás
     membership_request:
       intro_html: hozzáférést kért az egyik csoportodhoz.
       subject: "%{who} csatlakozást kért a(z)%{which_group} oldalhoz"
       view_group: Itt jóváhagyhatod vagy elutasíthatod a kérelmet
       button_text: Kérés megtekintése
+    loomio_app_description: A %{site_name} egy döntéshozó eszköz az együttműködő szervezetek számára
   announcement_count_emails: "%{count} e-mail"
   email_actions:
     unfollowed_discussion: Kikapcsoltad a téma e-maileit.
   discussion_mailer:
-    reply_or_view_online_html: "Válaszolj erre az e-mailre közvetlenül, vagy <a href='%{url}'>tekintsd meg itt%{hostname}</a>."
+    reply_or_view_online_html: Válaszolj erre az e-mailre közvetlenül, vagy <a href='%{url}'>tekintsd meg itt%{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Kapcsold ki az emaileket</a> ehhez a beszélgetéshez."
-    change_email_preferences_html: "Módosítsa <a href='%{email_preferences_url}'> e-mail beállításait </a>"
+    change_email_preferences_html: Módosítsa <a href='%{email_preferences_url}'> e-mail beállításait </a>
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Leiratkozás</a> a téma további bejelentéseiről."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Leiratkozás</a> a hozzászólásokról ebben a témában."
+    unsubscribe_from_comment_replied_to_html: Ez egy válaszértesítés.
+    unsubscribe_from_user_mentioned_html: Ez egy említési értesítés.
   footer:
     about: Rólunk
     blog: Blog
@@ -164,35 +209,145 @@ hu:
     confirm_new_password: Jelszó megerősítése
     new_password: Új jelszó
     email_guidelines_html: |
-        <p>Írd be e-mail címed, és megkapod a jelszó-visszaállítási hivatkozást.</p>
-        <p>Ha általában a Facebookon vagy a Google-n keresztül jelentkezel be, írd be az adott fiókhoz társított e-mail címet.</p>
+      <p>Írd be e-mail címed, és megkapod a jelszó-visszaállítási hivatkozást.</p>
+      <p>Ha általában a Facebookon vagy a Google-n keresztül jelentkezel be, írd be az adott fiókhoz társított e-mail címet.</p>
     reset_email_timeframe: Az e-mail megérkezése akár 5 percet is igénybe vehet. Ha nem jelenik meg, ellenőrizd a spam mappát.
     length_restriction: A jelszavaknak legalább 8 karakter hosszúnak kell lenniük.
     forbidden_passwords: Az általános jelszavak, például a „jelszó”, tiltottak a fiókja biztonságának megőrzése érdekében.
   introduction_thread:
     title: Üdvözlünk! Kérünk mutatkozz be
     description: |
-        Szentelj egy percet arra, hogy bemutatkozz a csoportnak. Írj egy megjegyzést alább.
+      Szentelj egy percet arra, hogy bemutatkozz a csoportnak. Írj egy megjegyzést alább.
 
-        Mi a szereped vagy a részvételt érintő megközelítésed ebben a csoportban? Mit kell tudniuk rólad az embereknek, hogy megértsék, honnan jössz?
+      Mi a szereped vagy a részvételt érintő megközelítésed ebben a csoportban? Mit kell tudniuk rólad az embereknek, hogy megértsék, honnan jössz?
   how_it_works_thread:
     title: Hogyan kell használni a Loomio-t?
+    description: Üdvözöljük a Loomio-ban, a kommunikáció és a döntéshozatal online helyén. Ez egy példa beszélgetés **szál**. Az alábbiakban megjegyzéseket fűzhet hozzá. A szálak a témák megvitatására és az egyértelmű eredmények elérésére szolgálnak. Ez a szál a Loomio működéséről szól, ezért tegye fel ide vonatkozó kérdéseit. Jelenleg a **kontextus** szálat olvassa, amely naprakészen tartható kulcsfontosságú információkkal és kérdésekkel, amelyek segítik az emberek érdeklődését. A Loomio használatának megkezdéséhez:<ul><li> Próbáljon megjegyzést fűzni egy meglévő szálhoz vagy ehhez.</li></ul> Tippek a Loomio-on való közzétételhez:<ul><li> Egy adott személy értesítéséhez írja be a @ jelet, majd a nevét</li><li> Húzza át a képeket és a mellékleteket, vagy kattintson a gemkapocs ikonra</li><li> Nézze meg <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">a szálak használatának 5 módját</a> néhány ötletért és tippért</li></ul> Ha kérdése van, tekintse meg a [Loomio súgóját] (http://help.loomio.org).
   first_proposal:
     name: Bemutató javaslat
-    description: |-
-        Ez egy ** javaslat **, amelyben együtt dönthet. A vita elindításával elindíthatja a javaslatot.Mindenkit felkérünk, hogy ** nyújtson be ** álláspontot ** ** határidőig **. Meghosszabbíthatja a határidőt, ha szüksége van rá, vagy korábban bezárhatja a javaslatot.** Megváltoztathatja pozícióját **, amíg a javaslat nyitva van. Lehet, hogy átgondolja véleményét, amikor másokkal hallgat.A csoportok néha ** javaslat-sorozaton ** dolgoznak **, hogy együtt dolgozzanak ki megoldásokat. Ebben a témákban sorozatos javaslatokat vehet fel.** Próbálja ki a részvételt! Kattintson a négy gomb egyikére **.
+    description: Ez egy ** javaslat **, amelyben együtt dönthet. A vita elindításával elindíthatja a javaslatot.Mindenkit felkérünk, hogy ** nyújtson be ** álláspontot ** ** határidőig **. Meghosszabbíthatja a határidőt, ha szüksége van rá, vagy korábban bezárhatja a javaslatot.** Megváltoztathatja pozícióját **, amíg a javaslat nyitva van. Lehet, hogy átgondolja véleményét, amikor másokkal hallgat.A csoportok néha ** javaslat-sorozaton ** dolgoznak **, hogy együtt dolgozzanak ki megoldásokat. Ebben a témákban sorozatos javaslatokat vehet fel.** Próbálja ki a részvételt! Kattintson a négy gomb egyikére **.
   group_mailer:
     resend: 'EMLÉKEZTETÉS: %{member} arra vár, hogy csatlakozzon ide: %{group_name}'
+    destroy_warning:
+      subject: A Loomio-csoport törlésre van ütemezve.
+      body: A(z) "%{group}" Loomio-csoportod törlését ütemezte %{deletor}. Ha nem szeretné, hogy csoportja törölve legyen, kérjük, válaszoljon erre az e-mailre. Ha biztos benne, hogy törölni akarja a csoportot, nem kell semmit tennie. Köszönöm.
   poll_mailer:
     common:
       why_send_this: Azért kapja ezt az e-mailt, mert %{reason}
       view_on_loomio: 'Tekintsd meg itt: %{site_name} '
       create_outcome: Oszd meg az eredményt
-      your_response: "Szavaztál:"
+      your_response: 'Szavaztál:'
       please_respond: Kérlek válaszolj
-      time_zone: (Ennyiszer megjelenítve itt %{zone})
+      time_zone: "(Ennyiszer megjelenítve itt %{zone})"
       undecided_members: Még nem döntöttek (%{count})
       undecided_visitors: Bizonytalan vendégek (%{count})
       more_undecided: "%{count} további ..."
       vote_now: Szavazz most
-      you_have_until: '%{when} -ig van lehetőséged részt venni.'
+      you_have_until: "%{when} -ig van lehetőséged részt venni."
+      you_voted: Szavaztál!
+      not_invited: Nincs meghívva
+      people_have_voted: "%{nom} %{dnom} ember vett részt (%{pct}%)"
+  poll_templates:
+    proposal:
+      process_subtitle: Tegyen fel egy javaslatot a döntés meghozatalához
+      process_introduction: <p>A klasszikus Loomio-javaslat segít a döntés meghozatalában, és a vitát egyértelmű eredményre fordítja.</p><p> Javasoljon cselekvési irányt, és kérje meg az embereket, hogy az egyetértés, a tartózkodás vagy a nem egyetértés mellett szavazzanak.</p><p> Miközben az emberek szavaznak, meg tudják indokolni, miért szavaztak így. Láthatja, hogy a többiek hol áll a dologhoz, és miért.</p><p> Ily módon egy javaslat segítségével válaszadásra késztetheti az embereket, új információkat tárhat fel, és közös megértést alakíthat ki – ezzel segítve csoportját egy jobb, megalapozottabb döntés meghozatalában.</p><p> A javaslat és a kapcsolódó megbeszélés saját rekordot hoz létre arról, hogy a döntés hogyan született.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>További információ a klasszikus Loomio javaslat használatáról az Egyszerű döntési folyamatban</u></a> <span>.</span></p>
+      title: Hagyja jóvá az új márkakoncepciót
+      details: <h3 data-text-align=\"start\" id=\"what-is-the-decision-you-need-to-make\"><strong>Milyen döntést kell meghoznia?</strong></h3><p data-text-align=\"start\"></p><h3 data-text-align=\"start\" id=\"why-is-this-important\"> <strong>Ez miért fontos?</strong></h3><p></p><h3 data-text-align=\"start\" id=\"what-are-you-asking-people-to-do\"> <strong>Mit kérsz az emberektől?</strong></h3><p data-text-align=\"start\"></p><p data-text-align=\"start\"> Ahhoz, hogy ez a javaslat elfogadásra kerüljön, a tagok többségének az Egyetértés mellett kell szavaznia.</p><p data-text-align=\"start\"> Ha nem értesz egyet, mondd el, miért és min kell változtatni ahhoz, hogy egyetérts. \U0001F642</p>
+      agree_meaning: Támogatom a javaslatot
+      agree_prompt: Mi tetszik a javaslatban, és milyen előnyökkel jár a csoport számára?
+      abstain_meaning: Úgy döntött, hogy nem szavaz, vagy nem tud szavazni ebben a határozatban.
+      abstain_prompt: Miért tartózkodik, vagy nem érzi magát képesnek megszavazni ezt a határozatot?
+      disagree_meaning: Ebben a javaslatban valamit módosítani kell, mielőtt támogathatnám.
+      disagree_prompt: Hogyan lehetne javítani ezen a javaslaton, hogy Ön támogathassa azt?
+    advice:
+      process_name: Tanács
+      process_subtitle: Kérjen tanácsot a meghozandó döntéshez
+      process_introduction: <p>Kérjen tanácsot egy meghozandó döntéssel kapcsolatban az érintett vagy szakértelemmel rendelkező személyek tanácsával, hogy jobb döntést hozhasson szervezete számára.</p><ul><li><p> A tanácsok segítenek jobb döntés meghozatalában a szervezet számára.</p></li><li><p> Elősegíti a kapcsolatokat, a tanulási lehetőségeket és a sokrétű hozzájárulást.</p></li><li><p> Ösztönözze a kezdeményezést és a kreativitást, és élvezze a munkát.</p></li></ul><p data-text-align="start"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>További információ a Tanácsadás folyamatáról</u></a> .</p>
+      title: Segíts Takashinak új számítógépet vásárolni
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Milyen döntést kell meghoznia?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Milyen tanácsokat kér az emberektől, hogy segítsen meghozni a jó döntést?</strong></h3><p></p><p> Az Ön véleményét szeretném kérni, hogy jó döntést hozzak szervezetünk számára.</p>
+      agree_meaning: Megadtam a tanácsomat ezzel a döntéssel kapcsolatban
+      agree_prompt: Foglalja össze tanácsát, vagy tegyen hasznos megjegyzést
+      abstain_meaning: Nincs tanácsom
+      abstain_prompt: Van olyan megjegyzése, amely hasznos lehet?
+    consent:
+      process_name: Beleegyezés
+      process_subtitle: Hozz olyan döntést, amely „megpróbálható”, kifogás nélkül
+      process_introduction: <p>Kérjen beleegyezést egy olyan döntéshez, amelyet meg kell hoznia, ha nincs érdemi kifogás a javaslatával szemben, így szervezete számára gyors döntést hozhat, amely „megpróbálható”.</p><ul><li><p> Törekedjen egy „elég jó” döntésre</p></li><li><p> Vonjon be sok hangot egy működőképes javaslat kidolgozásához</p></li><li><p> Kérdezd meg, van-e valakinek jogos kifogása</p></li><li><p> A javaslat módosítása a kifogások megoldása érdekében</p></li></ul><p data-text-align="start"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">További információ a hozzájárulási folyamatról</a> .</p>
+      title: Bérelje fel Chloe-t tervezői szerepkörre
+      details: <h3 data-text-align="start" id="what-is-the-decision-you-need-to-make"><strong>Milyen döntést kell meghoznia?</strong></h3><p data-text-align="start"></p><h3 data-text-align="start" id="why-is-this-important"><strong>Ez miért fontos?</strong> </h3><p data-text-align="start"></p><h3 data-text-align="start" id="what-are-you-asking-of-people-in-this-proposal"> <strong>Mit kérsz az emberektől ebben a javaslatban?</strong></h3><p data-text-align="start"></p><p data-text-align="start"> Ha kifogása van, kérjük, mondja meg, miért, és javasoljon olyan módosítást a javaslaton, amely biztonságossá teszi.</p><p data-text-align="start"> Ne feledje, hogy beleegyezést kérünk egy „elég jó” döntéshez, amelyet „biztonságos kipróbálni”, hogy jó döntést hozhassunk szervezetünk számára.</p>
+      consent_meaning: A javaslat kipróbálható
+      consent_prompt: Mi tetszik a javaslatban, és milyen előnyökkel jár a szervezet számára?
+      objection_meaning: Jogos kifogásom van, és úgy gondolom, hogy a javaslat kárt okoz
+      objection_prompt: Milyen változtatásra van szükség ezen a javaslaton, hogy „biztosan kipróbálható legyen”, hogy Ön is támogathassa?
+    consensus:
+      process_name: Konszenzus
+      process_subtitle: Kössön kollektív szerződést minden érintettel
+      process_introduction: <p>Konszenzus kialakítása egy olyan döntéshez, amelyet meg kell hoznia, hogy olyan megállapodást érjen el, amely kielégíti az összes résztvevő igényeit és aggályait.</p><ul><li><p> Beszéljétek meg és dolgozzanak ki egy javaslatot együtt</p></li><li><p> Be kell vonni és tisztelni minden érintettet</p></li><li><p> Kérjen megállapodást a legtöbb embertől</p></li></ul><p data-text-align="start"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">További információ a konszenzus folyamatáról</a> .</p>
+      title: Hagyja jóvá az új márkakoncepciót
+      details: <h3 data-text-align="start" id="what-is-the-decision-you-need-to-make"><strong>Milyen döntést kell meghoznia?</strong></h3><p data-text-align="start"></p><h3 data-text-align="start" id="why-is-this-important"><strong>Ez miért fontos?</strong></h3><p></p><h3 data-text-align="start" id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p data-text-align="start"></p><p data-text-align="start"> Ahhoz, hogy ez a javaslat elfogadásra kerüljön, a tagok többségének az Egyetértés mellett kell szavaznia.</p><p data-text-align="start"> Ha nem értesz egyet, mondd el, miért és min kell változtatni ahhoz, hogy egyetérts.</p>
+      agree_meaning: Támogatom a javaslatot
+      agree_prompt: Mi tetszik a javaslatban, és milyen előnyökkel jár a szervezet számára?
+      abstain_meaning: Ez a döntés nem érint engem, és elégedett vagyok bármivel is, amit a csoport dönt
+      abstain_prompt: Miért tartózkodik, vagy nem érzi magát képesnek megszavazni ezt a döntést?
+      disagree_meaning: Ebben a javaslatban valamit módosítani kell, mielőtt támogathatnám.
+      disagree_prompt: Hogyan lehetne javítani ezen a javaslaton, hogy Ön támogathassa azt?
+      block_meaning: Megakadályozom ezt a javaslatot, és úgy gondolom, hogy nem szabad folytatni
+      block_prompt: Indokolja ki a javaslattal szembeni kifogását, és indokolja meg, hogy miért ne lehetne elfogadni
+    question_round:
+      process_name: Kérdés kör
+      process_subtitle: Tegyen fel tisztázó kérdéseket, hogy segítsen az embereknek megérteni egy javaslatot
+      process_introduction: <p>A kérdéskör lehetőséget kínál arra, hogy az emberek tisztázó kérdéseket tegyenek fel a javaslattal kapcsolatban, hogy mindenki megértse a javaslatot, mielőtt elmondaná, mit gondol róla.</p><p data-text-align="start"> A Loomio kérdéskör egy speciális javaslat, szavazati lehetőség nélkül. Lehetővé teszi a résztvevők számára, hogy kérdéseket tegyenek fel a fordulóra beállított időtartamon belül.</p><p data-text-align="start"> A kérdések kört általában a beleegyezési folyamat egyik lépéseként használják.</p><p data-text-align="start"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">További információ a hozzájárulási folyamatról</a> .</p>
+      details: <h3 data-text-align="start" id="what-are-you-proposing"><strong>Mit ajánlasz?</strong></h3><p data-text-align="start"></p><h3 data-text-align="start" id="why-is-this-important"><strong>Ez miért fontos?</strong> </h3><p data-text-align="start"></p><h3 data-text-align="start" id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p data-text-align="start"></p><p data-text-align="start"> Ez egy kérdéskör, ahol felkérik Önt, hogy tisztázó kérdéseket tegyen fel.</p><p data-text-align="start"> Mit kell tudnia ahhoz, hogy megértse a javaslatot?</p><p data-text-align="start"> Kérjük, válaszoljon a kérdéskör lezárása előtt.</p>
+    sense_check:
+      process_name: Érzékellenőrzés
+      process_subtitle: Kérjen visszajelzést, kérdéseket és aggályokat
+      process_introduction: |-
+        <p>A Sense Check javaslat jó módja annak, hogy visszajelzést kapjon, kérdéseket tegyen fel és feltárja aggodalmait. Segít tisztázni és javítani a javaslatot, mielőtt döntést hozna.</p><p data-text-align="start"> Az Érzékellenőrzés tudatja az emberekkel, hogy javaslat készül, és ösztönzi őket az elköteleződésre. Ez egy lehetőség arra, hogy meghallgassuk az embereket, érzékeljük, hogyan érzik magukat, és megfelelően reagáljunk – megnyílik a lehetőség, hogy beépítsük hozzájárulásaikat egy jobb döntés meghozatalához.</p><p
+        data-text-align="start"> Használja az Érzékelés-ellenőrzési javaslatot a hozzájárulási folyamatban, hogy reakciókat és megjegyzéseket kérjen a javaslat javítása érdekében, a konszenzusos folyamatban pedig a konszenzus teszteléséhez.</p><p data-text-align="start"> <a target="_blank" rel="noopener
+        noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>További információ a Sense check használatáról az Egyszerű döntési folyamatban</u></a> <span>.</span></p>
+      title: Mi a véleményed az új márkakoncepciókról?
+      details: <h3 id="what-are-you-proposing"><strong>Mit ajánlasz?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Ez miért fontos?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p></p><p> Hogyan vélekedik a javaslatról? Hagyjon megjegyzést, vagy tegyen javaslatot a javításra.</p><p> Ez az Érzékellenőrzés lehetőséget kínál az Ön hozzájárulására és hozzájárulására, hogy segítsen nekünk a jobb döntés meghozatalában.</p>
+      looks_good_meaning: Örülök, hogy ez merre tart
+      looks_good_prompt: Van-e észrevétele vagy javaslata a javaslat jobbítására?
+      abstain_meaning: Ehhez a munkához nincs hozzáfűznivalóm, és nincs kifogásom.
+      abstain_prompt: A tartózkodás a jelen javaslat irányvonalával való egyetértést jelenti. Van valami oka annak, hogy a tartózkodás mellett szavaz?
+      concerned_meaning: Lehet, hogy ezen valamit módosítani kell ahhoz, hogy beleegyezhessem vagy beleegyezhessek
+      concerned_prompt: Mi aggaszt, és hogyan lehet kezelni?
+    gradients_of_agreement:
+      process_subtitle: Nyolcfokozatú skálán fejezze ki támogatását egy javaslathoz
+      process_introduction: <p>Az egyetértés gradiensei javaslat lehetővé teszi, hogy egy csoport tagjai egy skálán fokokban fejezzék ki támogatásukat egy javaslattal kapcsolatban, több módot kínálva a támogatás kifejezésére, mint az „egyetértek” és a „nem értek egyet”.</p><p data-text-align="start"> Használja az Egyetértési gradienseket előzetes körként, hogy tesztelje egy javaslat támogatottságát, mielőtt formális megállapodásra lépne.</p><p data-text-align="start"> Az egyetértés gradiensei tudatják az emberekkel, hogy javaslat van kialakulóban, és részvételre ösztönzi őket. Ez egy lehetőség arra, hogy meghallgassuk az embereket, érzékeljük, hogyan érzik magukat, és megfelelően reagáljunk – megnyílik a lehetőség, hogy beépítsük hozzájárulásaikat egy jobb döntés meghozatalához.</p>
+      title: Hogy tetszik az új értéknyilatkozat?
+      details: <h3 data-text-align="start" id="what-are-you-proposing"><strong>Mit ajánlasz?</strong></h3><p data-text-align="start"></p><h3 data-text-align="start" id="why-is-this-important"><strong>Ez miért fontos?</strong> </h3><p data-text-align="start"></p><h3 data-text-align="start" id="what-are-you-asking-people-to-do"> <strong>Mit kérsz az emberektől?</strong></h3><p data-text-align="start"></p><p data-text-align="start"> Hogy tetszik a javaslat? Fejezze ki támogatását az alábbi skálán, és hagyjon megjegyzést vagy javaslatot a fejlesztésre.</p><p data-text-align="start"> Ez a megállapodási gradiens-javaslat célja, hogy tesztelje az ajánlat támogatottságát, és lehetőséget biztosítson az Ön hozzájárulására, mielőtt formális megállapodásra lépne.</p>
+      whole_hearted_endorsement: Teljes szívvel való jóváhagyás
+      whole_hearted_endorsement_meaning: Nagyon tetszik!
+      whole_hearted_endorsement_prompt: Mi tetszik benne?
+      agreement_with_minor_contention: Egyetértés kisebb ellentmondásokkal
+      agreement_with_minor_contention_meaning: Nem tökéletes, de elég jó
+      agreement_with_minor_contention_prompt: Mi a gondod?
+      support_with_reservations: Támogatás foglalásokkal
+      support_with_reservations_meaning: tudok élni vele
+      support_with_reservations_prompt: Milyen fenntartásai vannak?
+      abstain_meaning: Ez a probléma engem nem érint
+      abstain_prompt: Van valami, amit hozzá szeretne adni?
+      more_discussion_needed: További vita szükséges
+      more_discussion_needed_meaning: Még nem értem eléggé a problémákat
+      more_discussion_needed_prompt: Mit nem értesz?
+      don_t_like_but_will_support: Nem tetszik, de támogatni fog
+      don_t_like_but_will_support_meaning: Nem nagyszerű, de nem akarom feltartani a csoportot
+      don_t_like_but_will_support_prompt: Mit szeretnél javítani?
+      serious_disagreement: Komoly nézeteltérés
+      serious_disagreement_meaning: Nem értek ehhez – ne számíts rám
+      serious_disagreement_prompt: Mivel nem értesz egyet?
+      veto: Vétó
+      veto_meaning: blokkolom ezt a javaslatot
+      veto_prompt: Miért blokkolja a javaslatot? Min kell változnia ahhoz, hogy támogassa?
+  base_mailer:
+    via_loomio: "%{name} (a %{site_name}-on keresztül)"
+  task_mailer:
+    task_due_reminder:
+      subject: 'Feladat emlékeztető: %{name}'
+      greeting: 'Szia %{name}, a következő feladat esedékes %{due}:'
+      view_task: 'Megtekintés itt: %{site_name}'
+      update_or_comment: Ha már elvégezte ezt a feladatot, kérjük, jelölje be. Ha nem fejeződött be, kérjük, ossza meg a folyamatról szóló frissítést.
+      due_today: Ma
+      due_in_count_days: "%{count} napon belül"

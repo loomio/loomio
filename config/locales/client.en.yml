@@ -2183,34 +2183,6 @@ en:
       This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll. 
 
   poll_proposal_form:
-    advice_subtitle: Seek advice on a decision you need to make
-    advice_introduction: |
-      <p>Seek advice on a decision you need to make, with the advice of people impacted or who have expertise, so you can make a better decision for your organization.</p>
-      <p>The Advice proposal is a key stage in the Advice process: </p>
-      <ol>
-      <li><p>You notice a problem or opportunity and take the initiative.</p></li>
-      <li><p>Seek input to sound out perspectives before proposing action - start a Loomio thread.</p></li>
-      <li><p>Make a proposal and seek advice - run an <strong>Advice proposal</strong>.</p></li>
-      <li><p>Taking advice received into account, you make a decision and inform the people who have given advice - state an outcome.</p></li>
-      </ol>
-      <p>Run an <strong>Advice proposal</strong> and invite people to respond within a set time frame.</p>
-      <p>Benefits:</p>
-      <ul>
-      <li><p>Advice helps you make a better decision for your organization.</p></li>
-      <li><p>Foster relationships, learning opportunities and diverse input.</p></li>
-      <li><p>Stimulate initiative and creativity, and more enjoyable work.</p></li>
-      </ul>
-      <p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html" rel="nofollow ugc noreferrer noopener">Read more about the Advice process</a>.</p>
-    consent_subtitle: Ensure there are no objections to your proposal
-    consensus_subtitle: Reach collective agreement with everyone involved
-    consensus_introduction: |
-      <p>Build consensus for a decision you need to make, to reach an agreement that satisfies the needs and concerns of all participants.</p>
-      <p>Discuss and develop a proposal together</p>
-      <p>Include and respect everyone involved</p>
-      <p>Seek agreement from most people</p>
-      <p>Read more about the Consensus proposal.</p>
-    tool_tip_collapsed: Make a decision together
-    vote_method_hint: Voters agree or disagree with a statement
     start_header: Start proposal
     edit_header: Edit proposal
     title_placeholder: E.g. Let's go to the moon!
@@ -2303,31 +2275,6 @@ en:
     pct_of_target: '% of target'
     agree_target_helptext: What is the target number of volunteers you'd like to have?
     agree_target_label: Target number
-
-  poll_check_options:
-    check_subtitle: Ask for feedback, questions and concerns
-    check_introduction: |
-      <p>The Sense check proposal is a good way to get feedback, invite questions and uncover concerns.
-      It helps to clarify and improve a proposal before moving to a decision.</p>
-
-      <p>Sense check lets people know a proposal is forming and encourages them to engage.
-      It is an opportunity to listen to people, sense how they feel and respond appropriately - opening the potential to incorporate their contributions to make a better decision.</p>
-
-      <p>Use the Sense check proposal in the Consent process to invite reactions and comments to improve the proposal, and in a Consensus process to test for consensus.</p>
-
-      <p>Read more about the Sense check proposal.</p>
-    question: I have a question
-    question_meaning: Ask a question about the proposal
-    question_prompt: What would you like to ask?
-    looks_good: Looks good
-    looks_good_meaning: I'm happy with where this is going
-    looks_good_prompt: Do you have any other comments to share?
-    not_sure: Not sure yet
-    not_sure_meaning: I have a question or need more time
-    not_sure_prompt: What parts are unclear to you? How could this be resolved?
-    concerned: Concerned
-    concerned_meaning: Something about this may need to change
-    concerned_prompt: What is your concern and how might it be addressed?
 
   poll_count_options:
     accept: Accept

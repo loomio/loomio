@@ -1,3 +1,4 @@
+---
 ar:
   explore:
     header: استكشف المجموعات العامة
@@ -11,10 +12,10 @@ ar:
       title: 'اقتراح غير جيد '
       body: عذرًا ، لم نتمكن من فهم هذا الطلب
     401:
-      body: .لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول
+      body: ".لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول"
     403:
       title: 'ممنوع '
-      body: .لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول
+      body: ".لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول"
     404:
       title: 'غير موجود '
       body: "عذرًا ، الصفحة التي تبحث عنها غير موجودة.  ربما تكون قد أخطأت في كتابة العنوان. \nأو ربما تم نقل الصفحة أو حذفها"
@@ -25,7 +26,7 @@ ar:
       title: المتصفح غير متوافق
     422:
       title: كيان غير قابل للمعالجة
-      body: .تم رفض التغيير الذي تريده.  ربما حاولت تغيير شيء لم يكن لديك حق الوصول إليه
+      body: ".تم رفض التغيير الذي تريده.  ربما حاولت تغيير شيء لم يكن لديك حق الوصول إليه"
     429:
       title: طلبات كثيرة جدا
       body: عذرًا ، لقد تجاوزت الحد الأقصى للطلبات المسموح بها في الدقيقة لهذا الإجراء.  يرجى الانتظار لحظة وحاول مرة أخرى
@@ -33,16 +34,19 @@ ar:
       title: خطأ في المخدم الداخلي
       body: نحن نعتذر، ولكن حدث خطأ ما.  لقد تم إعلامنا بهذه المشكلة وسنلقي نظرة عليها قريبًا
     noscript: Loomio يتطلب جافا سكريبت للعمل!  يرجى تمكين جافا سكريبت في متصفحك للمتابعة
-    upgrade_browser: |
-        عذرًا!  متصفح الويب الخاص بك قديم جدًا وقد لا يعمل Loomio بشكل صحيح.  من فضلك <a href="https://browser-update.org/update.html">قم بتحديث المتصفح الخاص بك.</a>
+    upgrade_browser: 'عذرًا!  متصفح الويب الخاص بك قديم جدًا وقد لا يعمل Loomio بشكل صحيح.  من فضلك <a href="https://browser-update.org/update.html">قم بتحديث المتصفح الخاص بك.</a>
+
+      '
     return_home: العودة إلى المنزل
     not_found: 404 الملف غير موجود.
     messages:
       email: البريد الإلكتروني غير صالح
       spoofed_media_type: لا تتطابق محتويات هذا الملف مع اسم الملف الخاص به
+    clear_cache: تم اكتشاف مشكلة في التحميل. استمر في الضغط على shift واضغط على إعادة التحميل ، أو امسح ذاكرة التخزين المؤقت للمتصفح.
   group:
     error:
-      handle_must_begin_with_parent_handle: "يجب أن تبدأ بـ%{parent_handle}-"
+      handle_must_begin_with_parent_handle: يجب أن تبدأ بـ%{parent_handle}-
+      no_public_trials: يرجى الترقية من الإصدار التجريبي لتغيير إعداد خصوصية المجموعة
     stats:
       group_stats: إحصائيات المجموعة
       org_stats: إحصائيات المنظمة (بما في ذلك المجموعات الفرعية)
@@ -63,20 +67,22 @@ ar:
         rank: 'مرتبة '
         time: استطلاع الوقت
   user:
-    deleted_user: "مستخدم محذوف "
-    placeholder_name: "المستخدم المدعو (%{hostname}) "
+    deleted_user: 'مستخدم محذوف '
+    placeholder_name: 'المستخدم المدعو (%{hostname}) '
     error:
       sign_in_required_html: |
-          يجب تسجيل الدخول للمتابعة.
-          يرجى <a href="/dashboard" target="_blank">تسجيل الدخول</a> ثم إعادة تحميل هذه الصفحة للمتابعة.
-      recaptcha: "لم نتمكن من التحقق من أنك لست روبوتًا.  حاول مرة اخرى!"
-      bad_login: "عذرًا ، كلمة المرور هذه لا تتطابق مع كلمة المرور المسجلة لدينا"
-      username_must_be_alphanumeric: "يجب أن تكون أسماء المستخدمين أحرف وأرقام صغيرة فقط"
+        يجب تسجيل الدخول للمتابعة.
+        يرجى <a href="/dashboard" target="_blank">تسجيل الدخول</a> ثم إعادة تحميل هذه الصفحة للمتابعة.
+      recaptcha: لم نتمكن من التحقق من أنك لست روبوتًا.  حاول مرة اخرى!
+      bad_login: عذرًا ، كلمة المرور هذه لا تتطابق مع كلمة المرور المسجلة لدينا
+      username_must_be_alphanumeric: يجب أن تكون أسماء المستخدمين أحرف وأرقام صغيرة فقط
   poll:
     error:
       cannot_add_options: لا يمكن إضافة خيارات لهذا الاستطلاع
       cannot_remove_options: لا يمكن إزالة الخيارات من هذا الاستطلاع
       must_have_options: يجب أن يكون لديك خيار استطلاع واحد على الأقل
+      must_be_in_the_future: يجب أن يكون في المستقبل
+      templates_cannot_close: لا يمكن إغلاق القوالب
     export:
       percent_voted: "%{num}/%{denom}(%{percent}) أعلن الأعضاء موقفهم"
       title: العنوان
@@ -85,7 +91,7 @@ ar:
       created_at: أنشئت في
       closing_at: إغلاق في
       closed_at: مغلق في
-      is_latest: ' الأحدث'
+      is_latest: " الأحدث"
       engagement: الارتباط
       stances: المواقف
       participants: المشاركين
@@ -97,6 +103,11 @@ ar:
       participant: مشارك
       also_available: متوفر أيضًا في
       total: مجموع
+      user_id: معرف المستخدم
+      outcome_author: مؤلف النتيجة
+      outcome_created_at: تم إنشاء النتيجة في
+      outcome_statement: بيان النتيجة
+    waiting_for_votes_from: في انتظار الأصوات من
   stance:
     error:
       too_short: يرجى الاختيار
@@ -109,61 +120,72 @@ ar:
   user_mailer:
     group_export_ready:
       subject: تصدير بيانات المجموعة لـ %{group_name}
-      body_html: |
-          تنزيل بيانات مجموعتك <a href="%{url}">هنا</a>.  يرجى ملاحظة أن هذا الرابط سينتهي في غضون أسبوع واحد.
+      body_html: 'تنزيل بيانات مجموعتك <a href="%{url}">هنا</a>.  يرجى ملاحظة أن هذا الرابط سينتهي في غضون أسبوع واحد.
+
+        '
     accounts_merged:
-      subject: "تم دمج حسابات المستخدم%{site_name} الخاصة بك."
+      subject: تم دمج حسابات المستخدم%{site_name} الخاصة بك.
       body_html: |
-          مرحبا%{name}،
-          تم دمج حسابي loomio الخاصين بك في حساب واحد.
-          للوصول إلى loomio من الآن فصاعدًا ، يرجى استخدام <strong>%{email}</strong> عند تسجيل الدخول.
+        مرحبا%{name}،
+        تم دمج حسابي loomio الخاصين بك في حساب واحد.
+        للوصول إلى loomio من الآن فصاعدًا ، يرجى استخدام <strong>%{email}</strong> عند تسجيل الدخول.
     merge_verification:
-      subject: "تحقق من عنوان البريد الإلكتروني%{site_name} للاندماج"
+      subject: تحقق من عنوان البريد الإلكتروني%{site_name} للاندماج
       verify: تحقق من البريد الإلكتروني وتابع
       confirm_page:
         confirm: تأكيد الدمج
         merge: دمج الحسابات
+        body_html: <p style=";text-align:right;direction:rtl">يرجى تأكيد رغبتك في دمج الحساب تحت <strong>٪ {source_email}</strong> في الحساب تحت <strong>٪ {target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> سيتم حذف حسابك ضمن <strong>٪ {source_email}</strong> ، وبعد ذلك لن تتمكن من تسجيل الدخول إلا عبر <strong>٪ {target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> هذا التغيير لا رجوع فيه.</p>
       complete_page:
         title: تم الدمج بنجاح!
+        body_html: <p style=";text-align:right;direction:rtl">تم دمج حسابات المستخدمين الخاصة بك بنجاح. ستتلقى رسالة تأكيد بالبريد الإلكتروني على <strong>٪ {target_email}</strong> قريبًا.</p><p style=";text-align:right;direction:rtl"> يرجى <a href="/contact" target="_blank">الاتصال بنا</a> إذا كان لديك أي أسئلة أخرى.</p>
+      body_html: <p style=";text-align:right;direction:rtl">مرحبًا٪ {name} ،</p><p style=";text-align:right;direction:rtl"> تم تقديم طلب لدمج حساب المستخدم الخاص بك تحت العنوان <strong>٪ {source_email}</strong> مع الحساب الذي ينتمي إلى هذا العنوان ، <strong>٪ {target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> بعد اكتمال هذه العملية ، لن تتمكن بعد الآن من تسجيل الدخول باستخدام <strong>٪ {source_email}</strong> ، وباستخدام <strong>٪ {target_email}</strong> فقط.</p><p style=";text-align:right;direction:rtl"> يرجى تأكيد أن هذا هو ما تريد القيام به.</p>
+    deactivated:
+      subject: تم إلغاء تنشيط حساب المستخدم الخاص بك في٪ {site_name}.
+      body_html: <p style=";text-align:right;direction:rtl">قمت أنت أو أي شخص لديه حق الوصول إلى حسابك بإلغاء تنشيط حساب مستخدم Loomio الخاص بك.</p><p style=";text-align:right;direction:rtl"> تمت إزالة جميع البيانات الشخصية من النظام.</p><p style=";text-align:right;direction:rtl"> إذا كنت ترغب في استعادة حساب المستخدم هذا والتعليقات والتصويتات المرتبطة به ، فيرجى الاتصال بالدعم والإشارة إلى:٪ {recovery_code}</p>
   email:
     common:
       or_enter_code: أو أدخل الرمز أدناه
+      resend: ستنتهي صلاحية هذا في غضون 24 ساعة ويمكن استخدامه مرة واحدة فقط
     login:
       subject: تسجيل دخول الى %{site_name}
       login: تسجيل الدخول باسم %{name}
+      intro: هذا هو ارتباطك لتسجيل الدخول إلى٪ {site_name}
+      intro_code: هذا هو رمزك لتسجيل الدخول إلى٪ {site_name}
     reactivate:
       subject: إعادة تنشيط حسابك %{site_name}
       login: اعادة تفعيل %{name}
+      intro: مرحبًا٪ {name} ، إليك رابط لإعادة تنشيط حساب٪ {site_name} الخاص بك
     contact_request:
       subject: "%{name} تود التواصل معك في%{site_name}! "
       intro: "%{name} (%{email}) أرسل إليك طلبًا للتواصل"
-      footer: "يمكنك الرد على %{name} مباشرة بالرد على هذه الرسالة الإلكترونية."
+      footer: يمكنك الرد على %{name} مباشرة بالرد على هذه الرسالة الإلكترونية.
     reset_password:
       greeting: |
-          مرحبا %{name}
-          إليك رابط يمكنك استخدامه لإعادة تعيين كلمة المرور على حساب Loomio الخاص بك:
+        مرحبا %{name}
+        إليك رابط يمكنك استخدامه لإعادة تعيين كلمة المرور على حساب Loomio الخاص بك:
       link_text: اعد ضبط كلمه السر
       signoff: |
-          لقد تلقيت هذا لأنه تم إدخال بريدك الإلكتروني في نموذج "نسيت كلمة المرور" في%{hostname} .
-          ومع ذلك ، لن يتم تغيير كلمة المرور الخاصة بك حتى تتبع الرابط أعلاه وتكمل النموذج.
-          إذا كنت لا تزال تواجه مشاكل في تسجيل الدخول ، فقم بالرد على هذا البريد الإلكتروني للاتصال بشخص الدعم.
+        لقد تلقيت هذا لأنه تم إدخال بريدك الإلكتروني في نموذج "نسيت كلمة المرور" في%{hostname} .
+        ومع ذلك ، لن يتم تغيير كلمة المرور الخاصة بك حتى تتبع الرابط أعلاه وتكمل النموذج.
+        إذا كنت لا تزال تواجه مشاكل في تسجيل الدخول ، فقم بالرد على هذا البريد الإلكتروني للاتصال بشخص الدعم.
     by_who: من قبل %{person}
     reply_to_this_discussion: شارك في هذا النقاش
     view_group: عرض المجموعة
     to_join_group:
       subject: "%{member}دعاك للانضمام إلى%{group_name} في%{site_name}"
       invitation_text: "%{member}دعاك للانضمام إلى مجموعتهم%{group_name}. "
-      invitation_text_html: "دعاك للانضمام إلى مجموعتهم"
-      link_help: "انقر على الرابط أدناه لقبول الدعوة:"
-      accept_invitation: "اقبل الدعوة"
-      stop_emails: "التوقف عن تلقي رسائل البريد الإلكتروني من%{site_name}"
+      invitation_text_html: دعاك للانضمام إلى مجموعتهم
+      link_help: 'انقر على الرابط أدناه لقبول الدعوة:'
+      accept_invitation: اقبل الدعوة
+      stop_emails: التوقف عن تلقي رسائل البريد الإلكتروني من%{site_name}
     resend_to_join_group:
       subject: "%{member} في انتظارك للانضمام إلى%{group_name} على%{site_name}"
     user_added_to_group:
       subject: "%{who}أضافك إلى%{which_group} في%{site_name}"
       content: "%{who}أضافك إلى%{which_group}. "
       content_html: "<strong>%{who}</strong>أضافك الى<strong>%{which_group}</strong>. "
-      link_help: "انقر على الرابط أدناه للذهاب إلى المجموعة:"
+      link_help: 'انقر على الرابط أدناه للذهاب إلى المجموعة:'
     unsubscribe: 'قم بإلغاء الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> لإلغاء الاشتراك أو تغيير تفضيلات البريد الإلكتروني."
     catch_up:
@@ -174,23 +196,30 @@ ar:
       thanks_for_reading: شكرا للقراءة، نتمنى لك يوماً سعيداً!
       marked_as_read_success: تم تحديد كل شيء في الرسالة الالكترونية كمقروء
       click_here: انقر هنا
+      other_subject: مؤخرًا على٪ {site_name}
     group_membership_approved:
-      intro: "تمت الموافقة على طلبك للوصول إلى المجموعة%{group_name}. "
-      intro_html: "تمت الموافقة على طلبك للوصول إلى المجموعة <strong>%{group_name}</strong>. "
-      link_help: "انقر فوق الارتباط أدناه للانضمام إلى%{group_name}والبدء:"
-      subject: "تمت الموافقة على طلبك للانضمام إلى %{group_name}"
-      join_group: "انضم إلى الفريق"
+      intro: 'تمت الموافقة على طلبك للوصول إلى المجموعة%{group_name}. '
+      intro_html: 'تمت الموافقة على طلبك للوصول إلى المجموعة <strong>%{group_name}</strong>. '
+      link_help: 'انقر فوق الارتباط أدناه للانضمام إلى%{group_name}والبدء:'
+      subject: تمت الموافقة على طلبك للانضمام إلى %{group_name}
+      join_group: انضم إلى الفريق
     membership_request:
       intro_html: طلب الوصول إلى إحدى مجموعاتك.
       subject: "%{who} قام بطلب الانضمام إلى %{which_group}"
       view_group: يمكنك الموافقة أو إلغاء الطلب هنا
       button_text: عرض الطلب
+    loomio_app_description: "٪ {site_name} هي أداة اتخاذ القرار للمنظمات التعاونية"
   announcement_count_emails: "%{count}رسائل البريد الإلكتروني"
   email_actions:
     unfollowed_discussion: لقد أوقفت رسائل البريد الإلكتروني لموضوع التنفيذ.
   discussion_mailer:
-    reply_or_view_online_html: "قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>."
+    reply_or_view_online_html: قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>أطفئ الرسائل الالكترونية</a> لهذا النقاش."
+    change_email_preferences_html: تغيير <a href='%{email_preferences_url}'>تفضيلات البريد الإلكتروني</a> الخاص بك.
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>إلغاء الاشتراك</a> من إعلانات أخرى في هذا الموضوع."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>إلغاء الاشتراك</a> من التعليقات في هذا الموضوع."
+    unsubscribe_from_comment_replied_to_html: هذا إشعار الرد.
+    unsubscribe_from_user_mentioned_html: هذا إشعار بالإشارة.
   footer:
     about: حول
     blog: مدونة
@@ -207,27 +236,145 @@ ar:
     confirm_new_password: تأكيد كلمة السر
     new_password: كلمة السر الجديدة
     email_guidelines_html: |
-        <p>ادخل بريدك الإلكتروني وسيتم إرسال رابط إعادة تعيين كلمة المرور. </p>
-        <p>إذا كنت تسجّل الدخول عادةً عبر Facebook أو Google ، فأدخل عنوان البريد الإلكتروني المرتبط بهذا الحساب</p>
+      <p>ادخل بريدك الإلكتروني وسيتم إرسال رابط إعادة تعيين كلمة المرور. </p>
+      <p>إذا كنت تسجّل الدخول عادةً عبر Facebook أو Google ، فأدخل عنوان البريد الإلكتروني المرتبط بهذا الحساب</p>
     reset_email_timeframe: 'قد يستغرق الأمر حتى 5 دقائق لكي يتم استقبال الرسالة الالكترونية. إن لم تستقبل الرسالة الالكترونية، تأكد من صندوق البريد المؤذي. '
     length_restriction: على كلمة المرور أن تتألف من 8 محارف.
     forbidden_passwords: كلمات المرور المألوفة مثل "password" ممنوعة لإبقاء حسابك آمناً.
   introduction_thread:
     title: أهلا بك، الرجاء قم بتعريف نفسك
     description: |
-        خصّض بعض الوقت لإخبار المجموعة قليلاً عن هويتك.  أضف تعليقًا أدناه
+      خصّض بعض الوقت لإخبار المجموعة قليلاً عن هويتك.  أضف تعليقًا أدناه
 
-        ما هو دورك أو مقربتك للمشاركة في هذه المجموعة؟  ما الذي يجب أن يعرفه الأشخاص عنك لفهم من أين أنت؟
+      ما هو دورك أو مقربتك للمشاركة في هذه المجموعة؟  ما الذي يجب أن يعرفه الأشخاص عنك لفهم من أين أنت؟
   how_it_works_thread:
     title: كيفية استخدام لوميو
+    description: مرحبًا بكم في Loomio ، مكان على الإنترنت للتواصل واتخاذ القرارات. هذا مثال مناقشة ** موضوع **. يمكنك إضافة التعليقات أدناه. المواضيع لمناقشة المواضيع والحصول على نتائج واضحة. يدور هذا الموضوع حول كيفية عمل Loomio ، لذا انشر أسئلة حول ذلك هنا. أنت تقرأ حاليًا سلسلة الرسائل ** السياق ** ، والتي يمكن تحديثها باستمرار بالمعلومات الأساسية والأسئلة التي تساعد الأشخاص على المشاركة. لتبدأ مع Loomio:<ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"> حاول التعليق في موضوع موجود ، أو هذا.</li></ul> نصائح للنشر على Loomio:<ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"> لإعلام شخص معين ، اكتب @ متبوعًا باسمه</li><li style=";text-align:right;direction:rtl"> اسحب الصور والمرفقات وأفلتها أو انقر فوق رمز مشبك الورق</li><li style=";text-align:right;direction:rtl"> انظر <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 طرق لاستخدام المواضيع</a> لبعض الأفكار والنصائح</li></ul> إذا كان لديك أي أسئلة ، فراجع [Loomio Help] (http://help.loomio.org).
   first_proposal:
-    name: ' ؟ Loomio هل لديك أي أسئلة حول استخدام '
+    name: " ؟ Loomio هل لديك أي أسئلة حول استخدام "
+    description: _إذا كانت الإجابة بنعم ، فشارك سؤالك. إذا كانت الإجابة لا ، فأنت جاهز للتعليق في سلاسل محادثات مجموعتك! _ هذا ** التحقق من الاستطلاع ** يسأل عما إذا كنت أنت أو أي شخص هنا لديه أي أسئلة حول استخدام Loomio.<ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"> انطلق وجربها باستخدام الأزرار وحقل النص أدناه.</li></ul> كما هو الحال مع أي قرار أو أداة تسهيل ، ستحتاج إلى الرد قبل إغلاقها. يمكنك تغيير مركزك أثناء فتحه (ربما الرد على معلومات جديدة). ** حاول المشاركة! انقر فوق أحد الأزرار. **
   poll_mailer:
     common:
       create_outcome: نتائج حصة
-      your_response: "انت ادليت بصوتك:"
+      your_response: 'انت ادليت بصوتك:'
       please_respond: يرجى الرد
-      time_zone: '(الأوقات المعروضة في %{zone}) '
+      time_zone: "(الأوقات المعروضة في %{zone}) "
       undecided_members: 'الأعضاء غير محددين (%{count}) '
       undecided_visitors: 'ضيوف غير محددين ( %{count}) '
       vote_now: صوت الان
+      why_send_this: أنت تتلقى هذا البريد الإلكتروني بسبب٪ {reason}
+      view_on_loomio: اعرضه على٪ {site_name}
+      you_voted: انت ادليت بصوتك!
+      not_invited: غير مدعو
+      more_undecided: "٪ {عدد} أخرى ..."
+      you_have_until: لديك حتى٪ {when} للمشاركة.
+      people_have_voted: شارك٪ {nom} من٪ {dnom} من الأشخاص (٪ {pct}٪)
+  poll_templates:
+    proposal:
+      process_subtitle: رفع اقتراح لاتخاذ قرار
+      process_introduction: <p style=";text-align:right;direction:rtl">يساعدك اقتراح Loomio الكلاسيكي على اتخاذ قرار ، وتحويل المناقشة إلى نتيجة واضحة.</p><p style=";text-align:right;direction:rtl"> اقترح مسارًا للعمل وادعُ الأشخاص للرد بالتصويت بالموافقة أو الامتناع أو غير موافق.</p><p style=";text-align:right;direction:rtl"> عندما يصوت الناس ، يمكنهم تقديم سبب تصويتهم بهذه الطريقة. يمكنك أن ترى أين يقف أي شخص آخر في هذا الشأن ، ولماذا.</p><p style=";text-align:right;direction:rtl"> بهذه الطريقة يمكنك استخدام اقتراح لحث الناس على الاستجابة ، وكشف معلومات جديدة ، وبناء فهم مشترك - لمساعدة مجموعتك على اتخاذ قرار أفضل وأكثر استنارة.</p><p style=";text-align:right;direction:rtl"> يُنشئ الاقتراح والمناقشة المرتبطة به سجلاً خاصًا به لكيفية اتخاذ القرار.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>اقرأ المزيد حول استخدام اقتراح Loomio الكلاسيكي في عملية اتخاذ القرار البسيط</u></a> <span>.</span></p>
+      title: الموافقة على مفهوم العلامة التجارية الجديد
+      details: <h3 data-text-align=\"start\" id=\"what-is-the-decision-you-need-to-make\" style=";text-align:right;direction:rtl"><strong>ما هو القرار الذي يتعين عليك اتخاذه؟</strong></h3><p data-text-align=\"start\" style=";text-align:right;direction:rtl"></p><h3 data-text-align=\"start\" id=\"why-is-this-important\" style=";text-align:right;direction:rtl"> <strong>لماذا هذا مهم؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 data-text-align=\"start\" id=\"what-are-you-asking-people-to-do\" style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس أن يفعلوا؟</strong></h3><p data-text-align=\"start\" style=";text-align:right;direction:rtl"></p><p data-text-align=\"start\" style=";text-align:right;direction:rtl"> لتمرير هذا الاقتراح ، نحتاج إلى تصويت أغلبية الأعضاء موافق.</p><p data-text-align=\"start\" style=";text-align:right;direction:rtl"> إذا كنت لا توافق ، فاذكر لماذا وما الذي يجب أن يتغير لكي توافق. \ U0001F642</p>
+      agree_meaning: أنا أؤيد الاقتراح
+      agree_prompt: ما الذي يعجبك في الاقتراح وكيف سيفيد المجموعة؟
+      abstain_meaning: اختيار عدم التصويت أو عدم القدرة على التصويت في هذا القرار.
+      abstain_prompt: لماذا تمتنع أو لا تشعر أنك قادر على التصويت في هذا القرار؟
+      disagree_meaning: يجب تغيير شيء ما في هذا الاقتراح قبل أن أتمكن من دعمه.
+      disagree_prompt: كيف يمكن تحسين هذا الاقتراح بحيث يمكنك دعمه؟
+    advice:
+      process_name: نصيحة
+      process_subtitle: اطلب المشورة بشأن القرار الذي تحتاج إلى اتخاذه
+      process_introduction: <p style=";text-align:right;direction:rtl">اطلب المشورة بشأن القرار الذي تحتاج إلى اتخاذه ، بنصيحة الأشخاص المتأثرين أو الذين لديهم خبرة ، حتى تتمكن من اتخاذ قرار أفضل لمؤسستك.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> تساعدك النصائح على اتخاذ قرار أفضل لمؤسستك.</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> تعزيز العلاقات وفرص التعلم والمدخلات المتنوعة.</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> تحفيز المبادرة والإبداع ، والمزيد من العمل الممتع.</p></li></ul><p data-text-align="start" style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>اقرأ المزيد عن عملية تقديم المشورة</u></a> .</p>
+      title: ساعد تاكاشي في شراء جهاز كمبيوتر جديد
+      details: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl"><strong>ما هو القرار الذي يتعين عليك اتخاذه؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>لماذا هذا مهم؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go" style=";text-align:right;direction:rtl"> <strong>ما هي النصيحة التي تطلبها من الناس لمساعدتك في اتخاذ قرار جيد؟</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> أسعى للحصول على مساهمتك لمساعدتي في اتخاذ قرار جيد لمنظمتنا.</p>
+      agree_meaning: لقد قدمت نصيحتي حول هذا القرار
+      agree_prompt: لخص نصيحتك أو قدم تعليقًا مفيدًا
+      abstain_meaning: ليس لدي أي نصيحة أقدمها
+      abstain_prompt: هل لديك أي تعليقات قد تكون مفيدة؟
+    consent:
+      process_name: موافقة
+      process_subtitle: اتخذ قرارًا "آمنًا للمحاولة" بدون اعتراضات
+      process_introduction: <p style=";text-align:right;direction:rtl">اطلب الموافقة على القرار الذي تحتاج إلى اتخاذه ، حيث لا توجد اعتراضات ذات مغزى على اقتراحك ، حتى تتمكن من اتخاذ قرار سريع لمؤسستك يكون "آمنًا للمحاولة".</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> اهدف إلى اتخاذ قرار "جيد بما فيه الكفاية"</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> قم بإشراك العديد من الأصوات لتطوير اقتراح عملي</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> اسأل ما إذا كان لدى أي شخص اعتراض صحيح</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> تعديل الاقتراح لحل الاعتراضات</p></li></ul><p data-text-align="start" style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">اقرأ المزيد عن عملية الموافقة</a> .</p>
+      title: وظِّف كلوي للقيام بدور التصميم
+      details: <h3 data-text-align="start" id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl"><strong>ما هو القرار الذي يتعين عليك اتخاذه؟</strong></h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><h3 data-text-align="start" id="why-is-this-important" style=";text-align:right;direction:rtl"><strong>لماذا هذا مهم؟</strong> </h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><h3 data-text-align="start" id="what-are-you-asking-of-people-in-this-proposal" style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس في هذا الاقتراح؟</strong></h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><p data-text-align="start" style=";text-align:right;direction:rtl"> إذا كان لديك اعتراض ، يرجى ذكر السبب واقتراح تغيير على الاقتراح الذي يجعله آمنًا.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> تذكر أننا نسعى للحصول على موافقة لقرار "جيد بما فيه الكفاية" يكون "آمنًا للمحاولة" ، حتى نتمكن من اتخاذ قرار جيد لمنظمتنا.</p>
+      consent_meaning: الاقتراح آمن للمحاولة
+      consent_prompt: ما الذي يعجبك في الاقتراح وكيف سيفيد المنظمة؟
+      objection_meaning: لدي اعتراض صحيح وأعتقد أن الاقتراح سيسبب ضررًا
+      objection_prompt: ما هو التغيير المطلوب في هذا الاقتراح لجعله "آمنًا للمحاولة" ، بحيث يمكنك دعمه؟
+    consensus:
+      process_name: إجماع
+      process_subtitle: توصل إلى اتفاق جماعي مع جميع المعنيين
+      process_introduction: <p style=";text-align:right;direction:rtl">بناء إجماع على قرار تحتاج إلى اتخاذه ، للوصول إلى اتفاق يلبي احتياجات واهتمامات جميع المشاركين.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> ناقشوا وطوروا اقتراحًا معًا</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> تضمين واحترام جميع المعنيين</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> ابحث عن اتفاق من معظم الناس</p></li></ul><p data-text-align="start" style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">اقرأ المزيد عن عملية الإجماع</a> .</p>
+      title: الموافقة على مفهوم العلامة التجارية الجديد
+      details: <h3 data-text-align="start" id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl"><strong>ما هو القرار الذي يتعين عليك اتخاذه؟</strong></h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><h3 data-text-align="start" id="why-is-this-important" style=";text-align:right;direction:rtl"><strong>لماذا هذا مهم؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 data-text-align="start" id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس أن يفعلوا؟</strong></h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><p data-text-align="start" style=";text-align:right;direction:rtl"> لتمرير هذا الاقتراح ، نحتاج إلى تصويت أغلبية الأعضاء موافق.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> إذا كنت لا توافق ، فاذكر لماذا وما الذي يجب أن يتغير لكي توافق.</p>
+      agree_meaning: أنا أؤيد الاقتراح
+      agree_prompt: ما الذي يعجبك في الاقتراح وكيف سيفيد المنظمة؟
+      abstain_meaning: هذا القرار لا يؤثر علي وأنا سعيد بما تقرره المجموعة
+      abstain_prompt: لماذا تمتنع أو لا تشعر أنك قادر على التصويت في هذا القرار؟
+      disagree_meaning: يجب تغيير شيء ما في هذا الاقتراح قبل أن أتمكن من دعمه.
+      disagree_prompt: كيف يمكن تحسين هذا الاقتراح بحيث يمكنك دعمه؟
+      block_meaning: إنني أعترض على هذا الاقتراح وأعتقد أنه لا ينبغي المضي قدمًا فيه
+      block_prompt: اشرح اعتراضك على هذا الاقتراح ولماذا لا ينبغي المضي قدمًا فيه
+    question_round:
+      process_name: جولة السؤال
+      process_subtitle: ادعُ أسئلة توضيحية لمساعدة الأشخاص على فهم الاقتراح
+      process_introduction: <p style=";text-align:right;direction:rtl">جولة الأسئلة هي فرصة للأشخاص لطرح أسئلة توضيحية حول الاقتراح ، بحيث يفهم الجميع الاقتراح قبل أن يقولوا ما يفكرون فيه.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> جولة أسئلة Loomio عبارة عن اقتراح خاص بدون خيارات تصويت. يتيح للمشاركين طرح الأسئلة في غضون المدة التي تحددها للجولة.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> تُستخدم جولة الأسئلة بشكل شائع كخطوة في عملية الموافقة.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">اقرأ المزيد عن عملية الموافقة</a> .</p>
+      details: <h3 data-text-align="start" id="what-are-you-proposing" style=";text-align:right;direction:rtl"><strong>ماذا تقترح؟</strong></h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><h3 data-text-align="start" id="why-is-this-important" style=";text-align:right;direction:rtl"><strong>لماذا هذا مهم؟</strong> </h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><h3 data-text-align="start" id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس أن يفعلوا؟</strong></h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><p data-text-align="start" style=";text-align:right;direction:rtl"> هذه جولة أسئلة ، حيث تتم دعوتك لطرح أسئلة توضيحية.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> ماذا تريد أن تعرف حتى تفهم الاقتراح؟</p><p data-text-align="start" style=";text-align:right;direction:rtl"> الرجاء الرد قبل إغلاق جولة الأسئلة.</p>
+    sense_check:
+      process_name: فحص الحس
+      process_subtitle: اسأل عن ردود الفعل والأسئلة والمخاوف
+      process_introduction: |-
+        <p style=";text-align:right;direction:rtl">يُعد اقتراح فحص الحس طريقة جيدة للحصول على التعليقات ودعوة الأسئلة والكشف عن المخاوف. يساعد على توضيح الاقتراح وتحسينه قبل الانتقال إلى القرار.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> يتيح فحص الحس للأشخاص معرفة أن الاقتراح يتم تشكيله ويشجعهم على المشاركة. إنها فرصة للاستماع إلى الناس ، والاستشعار بما يشعرون به والاستجابة بشكل مناسب - مما يفتح إمكانية دمج مساهماتهم لاتخاذ قرار أفضل.</p><p
+        data-text-align="start" style=";text-align:right;direction:rtl"> استخدم اقتراح فحص الحس في عملية الموافقة لدعوة ردود الفعل والتعليقات لتحسين الاقتراح ، وفي عملية الإجماع لاختبار التوافق.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener
+        noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>اقرأ المزيد حول استخدام Sense check في عملية اتخاذ القرار البسيط</u></a> <span>.</span></p>
+      title: ما هو شعورك حيال مفاهيم العلامة التجارية الجديدة؟
+      details: <h3 id="what-are-you-proposing" style=";text-align:right;direction:rtl"><strong>ماذا تقترح؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>لماذا هذا مهم؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس أن يفعلوا؟</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> ما هو شعورك حيال الاقتراح؟ اترك تعليقًا أو قدم اقتراحًا للتحسين.</p><p style=";text-align:right;direction:rtl"> يعد فحص الحس هذا فرصة لمدخلاتك ومساهمتك ، لمساعدتنا في اتخاذ قرار أفضل.</p>
+      looks_good_meaning: أنا سعيد بما يحدث
+      looks_good_prompt: هل لديك أي تعليقات أو اقتراحات لجعل الاقتراح أفضل؟
+      abstain_meaning: ليس لدي ما أضيفه ولا أي اعتراض على هذا العمل.
+      abstain_prompt: الامتناع عن التصويت يعني الموافقة على اتجاه هذا الاقتراح. هل هناك سبب يجعلك تصوت على الامتناع عن التصويت؟
+      concerned_meaning: قد يحتاج شيء ما حول هذا إلى التغيير بالنسبة لي للموافقة أو الموافقة
+      concerned_prompt: ما هي مخاوفك وكيف يمكن معالجتها؟
+    gradients_of_agreement:
+      process_subtitle: أعرب عن دعمك لاقتراح على مقياس من 8 نقاط
+      process_introduction: <p style=";text-align:right;direction:rtl">يُمكِّن اقتراح تدرجات الاتفاقية أعضاء المجموعة من التعبير عن دعمهم لمقترح بالدرجات على مقياس ، مما يوفر طرقًا أكثر للتعبير عن الدعم أكثر من "موافق" و "غير موافق".</p><p data-text-align="start" style=";text-align:right;direction:rtl"> استخدم "تدرجات الاتفاق" كجولة أولية لاختبار دعم الاقتراح قبل الانتقال إلى اتفاقية رسمية.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> تتيح تدرجات الاتفاق للناس معرفة أن الاقتراح يتم تشكيله وتشجعهم على المشاركة. إنها فرصة للاستماع إلى الناس ، والاستشعار بما يشعرون به والاستجابة بشكل مناسب - مما يفتح إمكانية دمج مساهماتهم لاتخاذ قرار أفضل.</p>
+      title: كيف تحب بيان القيم الجديد؟
+      details: <h3 data-text-align="start" id="what-are-you-proposing" style=";text-align:right;direction:rtl"><strong>ماذا تقترح؟</strong></h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><h3 data-text-align="start" id="why-is-this-important" style=";text-align:right;direction:rtl"><strong>لماذا هذا مهم؟</strong> </h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><h3 data-text-align="start" id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس أن يفعلوا؟</strong></h3><p data-text-align="start" style=";text-align:right;direction:rtl"></p><p data-text-align="start" style=";text-align:right;direction:rtl"> كيف تحب الاقتراح؟ عبر عن دعمك على المقياس أدناه واترك تعليقًا أو اقتراحًا للتحسين.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> يهدف اقتراح تدرجات الاتفاقية هذا إلى اختبار دعم الاقتراح وفرصة لإدخالك قبل الانتقال إلى اتفاقية رسمية.</p>
+      whole_hearted_endorsement: المصادقة الصادقة
+      whole_hearted_endorsement_meaning: لقد أعجبتنى حقا!
+      whole_hearted_endorsement_prompt: ما الذي يعجبك في ذلك؟
+      agreement_with_minor_contention: اتفاق مع خلاف طفيف
+      agreement_with_minor_contention_meaning: ليست مثالية ، لكنها جيدة بما فيه الكفاية
+      agreement_with_minor_contention_prompt: ما هو قلقك؟
+      support_with_reservations: دعم مع التحفظات
+      support_with_reservations_meaning: أستطيع العيش معها
+      support_with_reservations_prompt: ما هي تحفظاتك؟
+      abstain_meaning: هذه القضية لا تؤثر علي
+      abstain_prompt: هل لديك أي شيء تود إضافته؟
+      more_discussion_needed: هناك حاجة إلى مزيد من المناقشة
+      more_discussion_needed_meaning: لا أفهم المشكلات جيدًا بعد
+      more_discussion_needed_prompt: ما الذي لم تفهمه؟
+      don_t_like_but_will_support: لا أحب ولكن سوف تدعم
+      don_t_like_but_will_support_meaning: هذا ليس رائعًا لكني لا أريد أن أوقف المجموعة
+      don_t_like_but_will_support_prompt: ما الذي تود أن ترى تحسنه؟
+      serious_disagreement: خلاف خطير
+      serious_disagreement_meaning: أنا لست على متن الطائرة مع هذا - لا تعتمد علي
+      serious_disagreement_prompt: ماذا نختلف مع؟
+      veto: حق النقض
+      veto_meaning: أنا أوقف هذا الاقتراح
+      veto_prompt: لماذا تمنع الاقتراح؟ ما الذي يجب تغييره لدعمه؟
+  base_mailer:
+    via_loomio: "٪ {name} (عبر٪ {site_name})"
+  task_mailer:
+    task_due_reminder:
+      subject: تذكير بالمهمة:٪ {name}
+      greeting: 'مرحبًا٪ {name} ، المهمة التالية مستحقة٪ {due}:'
+      view_task: عرض على٪ {site_name}
+      update_or_comment: إذا كنت قد أكملت هذه المهمة بالفعل ، فيرجى وضع علامة عليها. إذا لم يكتمل ، يرجى مشاركة تحديث التقدم.
+      due_today: اليوم
+      due_in_count_days: في٪ {عدد} أيام
+  group_mailer:
+    resend: تذكير:٪ {member} ينتظر انضمامك إلى٪ {group_name}
+    destroy_warning:
+      subject: تمت جدولة مجموعة Loomio الخاصة بك للحذف.
+      body: 'تمت جدولة مجموعة Loomio الخاصة بك: "٪ {group}" للحذف بواسطة٪ {deletor}. إذا كنت لا تريد حذف مجموعتك ، يرجى الرد على هذا البريد الإلكتروني. إذا كنت متأكدًا من رغبتك في حذف المجموعة ، فلن تحتاج إلى فعل أي شيء. شكرًا لك.'
