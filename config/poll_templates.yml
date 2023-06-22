@@ -12,7 +12,7 @@ question:
 count:
   poll_type: count
   process_name_i18n: decision_tools_card.count_title
-  process_subtitle_i18n: poll_count_form.tool_tip_collapsed
+  process_subtitle: Find volunteers or ask for participants
   default_duration_in_days: 3
   poll_options:
     - key: accept
