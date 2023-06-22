@@ -191,12 +191,6 @@ export default
     :label="$t('poll_common_form.process_introduction')"
   )
 
-  //- v-text-field(
-  //-    v-model="pollTemplate.processUrl"
-  //-   :label="$t('poll_common_form.process_url')"
-  //-   :hint="$t('poll_common_form.process_url_hint')")
-  //- validation-errors(:subject='pollTemplate' field='processUrl')
-
   v-text-field.poll-common-form-fields__title(
     type='text'
     required='true'

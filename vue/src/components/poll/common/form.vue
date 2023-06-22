@@ -448,12 +448,12 @@ export default
         v-model="poll.stanceReasonRequired"
       )
 
-      v-text-field(
-        v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
-        v-model="poll.reasonPrompt"
-        :label="$t('poll_common_form.reason_prompt')"
-        :hint="$t('poll_option_form.prompt_hint')"
-        :placeholder="$t('poll_common.reason_placeholder')")
+    v-text-field(
+      v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
+      v-model="poll.reasonPrompt"
+      :label="$t('poll_common_form.reason_prompt')"
+      :hint="$t('poll_option_form.prompt_hint')"
+      :placeholder="$t('poll_common.reason_placeholder')")
 
     template(v-if="poll.stanceReasonRequired != 'disabled'")
       //- p.text--secondary(v-t="'poll_common_settings.short_reason_can_be_helpful'")

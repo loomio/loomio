@@ -3,6 +3,7 @@ question:
   process_name_i18n: poll_common.question_round
   process_subtitle_i18n: poll_templates.question_round.process_subtitle
   process_introduction_i18n: poll_templates.question_round.process_introduction
+  reason_prompt_i18n: poll_templates.question_round.reason_prompt
   title_i18n: poll_templates.question_round.title
   details_i18n: poll_templates.question_round.details
   default_duration_in_days: 5

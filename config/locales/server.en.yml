@@ -105,6 +105,7 @@ en:
 
     question_round:
       process_name: Question round
+      title: Strategy proposal draft - any questions or comments?
       process_subtitle: Invite clarifying questions to help people understand a proposal
       process_introduction: <p>A Question round is an opportunity for people to ask clarifying
         questions about the proposal, so that everyone understands the proposal before
@@ -122,6 +123,7 @@ en:
         is a question round, where you are invited to ask clarifying questions.</p><p
         data-text-align="start">What do you need to know so you understand the proposal?</p><p
         data-text-align="start">Please respond before the Question round closes.</p>
+      reason_prompt: What questions or comments do you have?
 
     sense_check:
       process_name: Sense check
