@@ -16,11 +16,12 @@ export default
     discussion: null
 
   created: ->
-    # this is a poll id, we should rename it?
+    # Sorry everyone, template_id is a poll_id in this case.
+    # After the first release of poll_templates we can start to modify this stuff
     if templateId = parseInt(@$route.query.template_id)
       @loading = true
       Records.polls.findOrFetchById(templateId).then (poll) =>
-        @poll = poll.cloneTemplate()
+        @poll = poll.clonePoll()
         if Session.user().groupIds().includes(poll.groupId)
           @poll.groupId = poll.groupId
           @group = @poll.group()

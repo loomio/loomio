@@ -81,6 +81,33 @@ export default class PollModel extends BaseModel
     hideResults: 'off'
     stanceCounts: []
 
+  clonePoll: ->
+    clone = @clone()
+    clone.id = null
+    clone.key = null
+    clone.sourceTemplateId = @id
+    clone.authorId = Session.user().id
+    clone.groupId = null
+    clone.discussionId = null
+
+    clone.template = false
+    clone.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays || 7))
+
+    if @pollOptionsAttributes
+      clone.pollOptionsAttributes = @pollOptionsAttributes
+    else
+      clone.pollOptionsAttributes = @pollOptions().map (o) =>
+          name: o.name
+          meaning: o.meaning
+          prompt: o.prompt
+          icon: o.icon
+
+    clone.closedAt = null
+    clone.createdAt = null
+    clone.updatedAt = null
+    clone.decidedVotersCount = null
+    clone.undecidedVotersCount = null
+    clone
 
   clonePollOptions: ->
     @pollOptions().map (o) =>
