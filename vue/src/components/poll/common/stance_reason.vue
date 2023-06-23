@@ -5,6 +5,12 @@ export default
     stance: Object
     prompt: String
   computed:
+    label: ->
+      if @poll.config().has_options
+        'poll_common.reason'
+      else
+        'poll_common.response'
+
     maxLength: ->
       if @poll.limitReasonLength
         500
@@ -19,7 +25,7 @@ export default
     v-if="poll.stanceReasonRequired != 'disabled'"
     :model='stance'
     field="reason"
-    :label="$t('poll_common.reason')"
+    :label="$t(label)"
     :placeholder="prompt || poll.reasonPrompt || $t('poll_common.reason_placeholder')"
     :max-length='maxLength'
     autofocus

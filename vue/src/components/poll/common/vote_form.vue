@@ -28,9 +28,15 @@ export default
     optionPrompt: -> (@selectedOptionId && Records.pollOptions.find(@selectedOptionId).prompt) || ''
     submitText: ->
       if @stance.castAt
-        'poll_common.update_vote'
+        if @poll.config().has_options
+          'poll_common.update_vote'
+        else
+          'poll_common.update_response'
       else
-        'poll_common.submit_vote'
+        if @poll.config().has_options
+          'poll_common.submit_vote'
+        else
+          'poll_common.submit_response'
     optionCountAlertColor: ->
       return 'warning' if !@singleChoice && @selectedOptionIds.length && (@selectedOptionIds.length < @poll.minimumStanceChoices || @selectedOptionIds.length > @poll.maximumStanceChoices)
     optionCountValid: ->

@@ -1802,6 +1802,7 @@ en:
     decision: Decision
     decision_templates: Decision templates
     remove_your_vote: Remove your vote
+    remove_your_response: Remove your response
     vote_now: Vote now
     review_due: Review due
     have_your_say: Have your say
@@ -1809,6 +1810,7 @@ en:
     change_your_response: Edit response
     please_vote: Please vote
     reason: Reason
+    response: Response
     reason_placeholder: "Briefly explain why you voted this way, then click 'Submit Vote'"
     message: Message
     results: Results
@@ -1829,7 +1831,9 @@ en:
     participant_name: Your name
     participant_email: Email address
     submit_vote: Submit vote
+    submit_response: Submit response
     update_vote: Update vote
+    update_response: Update response
     share_poll: Share poll
     share_proposal: Share proposal
     share_count: Share check
@@ -1839,6 +1843,7 @@ en:
     view_all: View all
     save_changes: Save
     change_vote: Change your vote
+    change_response: Change your response
     max_score: Maximum score
     min_score: Minimum score
     too_long: Too long

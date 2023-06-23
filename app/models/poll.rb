@@ -28,7 +28,6 @@ class Poll < ApplicationRecord
     dots_per_person
     chart_type
     default_duration_in_days
-    has_options
   ]
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|
@@ -57,7 +56,7 @@ class Poll < ApplicationRecord
                        validate_maximum_stance_choices
                        validate_min_score
                        validate_max_score
-                       no_options
+                       has_options
                        validate_dots_per_person).freeze
 
   TEMPLATE_VALUES.each do |field|

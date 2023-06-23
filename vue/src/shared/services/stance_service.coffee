@@ -17,7 +17,7 @@ export default new class StanceService
         stance.poll().membersInclude(Session.user())
 
     edit_stance:
-      name: 'poll_common.change_vote'
+      name: (stance.poll().config().has_options && 'poll_common.change_vote') || 'poll_common.change_response'
       icon: 'mdi-pencil'
       dock: 1
       canPerform: => @canUpdateStance(stance)
@@ -37,7 +37,7 @@ export default new class StanceService
           EventBus.$emit('toggle-reply', stance, event.id)
 
     uncast_stance:
-      name: 'poll_common.remove_your_vote'
+      name: (stance.poll().config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response'
       icon: 'mdi-cancel'
       dock: 1
       canPerform: => @canUpdateStance(stance)
