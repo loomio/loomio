@@ -11,7 +11,7 @@ question:
     - poll_common.question_round
 
 count:
-  poll_type: proposal
+  poll_type: count
   process_name_i18n: decision_tools_card.count_title
   process_subtitle: Find volunteers or ask for participants
   default_duration_in_days: 3

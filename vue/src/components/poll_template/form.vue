@@ -25,6 +25,9 @@ export default
     pollOptions: @pollTemplate.pollOptionsAttributes()
 
     votingMethodsI18n:
+      count:
+        title: 'poll_common_form.voting_methods.show_thumbs'
+        hint: 'poll_common_form.voting_methods.show_thumbs_hint'
       question: 
         title: 'poll_common_form.voting_methods.question'
         hint: 'poll_common_form.voting_methods.question_hint'
