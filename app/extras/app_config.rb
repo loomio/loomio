@@ -108,7 +108,7 @@ class AppConfig
       thread_page_v3:             ENV.fetch('FEATURES_THREAD_PAGE_V3', false),
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
-      hidden_poll_templates:      %w[gradients_of_agreement]
+      hidden_poll_templates:      %w[gradients_of_agreement proposal]
     }
   end
 
