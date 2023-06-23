@@ -357,7 +357,7 @@ class Group < ApplicationRecord
   end
 
   def hidden_poll_templates
-    self[:info]['hidden_poll_templates'] ||= ['gradients_of_agreement']
+    self[:info]['hidden_poll_templates'] ||= AppConfig.app_features.fetch(:hidden_poll_templates, [])
     self[:info]['hidden_poll_templates']
   end
 

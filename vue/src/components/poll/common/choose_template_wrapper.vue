@@ -34,11 +34,11 @@ export default
       Records.groups.collection.chain().
                    find(id: { $in: groupIds }, archivedAt: null, parentId: null).
                    data().forEach (parent) -> 
-        groups.push(parent) if parent.pollTemplatesCount || parent.hiddenPollTemplates
+        groups.push(parent) if parent.pollTemplatesCount
         Records.groups.collection.chain().
                    find(id: { $in: groupIds }, archivedAt: null, parentId: parent.id).
                    data().forEach (subgroup) ->
-          groups.push(subgroup) if subgroup.pollTemplatesCount || subgroup.hiddenPollTemplates
+          groups.push(subgroup) if subgroup.pollTemplatesCount
       @groups = groups
     selectGroup: (group) -> @selectedGroup = group
     setPoll: (poll) -> @$emit('setPoll', poll)
