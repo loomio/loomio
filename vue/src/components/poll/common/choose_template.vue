@@ -16,6 +16,7 @@ export default
     group: Object
 
   data: ->
+    alert: !Session.user().experiences['alertNewPollTemplates']
     isSorting: false
     returnTo: Session.returnTo()
     groups: []
@@ -91,6 +92,9 @@ export default
         Records.remote.post('poll_templates/positions', group_id: @group.id, ids: ids)
 
   watch:
+    alert: (val) ->
+      Records.users.saveExperience('alertNewPollTemplates', true)
+
     filter: 'query'
     singleList: ->
       setTimeout =>
@@ -119,6 +123,11 @@ export default
 
 <template lang="pug">
 .poll-common-templates-list
+  v-alert.poll-templates-welcome(v-model="alert" type="success" color="purple" icon="mdi-new-box" text outlined dismissible)
+    span 
+      span Learn about the new proposal and poll templates on 
+      a.text-decoration-underline(href="https://help.loomio.com/en/") Loomio Help
+
   v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
     v-icon(small).mr-2 {{icon}}
     span.poll-type-chip-name(v-t="filterLabels[name]")
