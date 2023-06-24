@@ -1683,6 +1683,11 @@ uk:
     remove_your_vote: Зняти свій голос
     please_vote: Прошу проголосувати
     current_results: Поточні результати
+    remove_your_response: Видаліть свою відповідь
+    response: Відповідь
+    submit_response: Надіслати відповідь
+    update_response: Оновити відповідь
+    change_response: Змініть свою відповідь
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:

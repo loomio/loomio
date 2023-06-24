@@ -1644,6 +1644,11 @@ ar:
     please_vote: الرجاء التصويت
     current_results: النتائج الحالية
     close_early: أغلق مبكرًا
+    remove_your_response: أزل ردك
+    response: إجابة
+    submit_response: إرسال الرد
+    update_response: استجابة التحديث
+    change_response: غيّر إجابتك
   poll_common_attachment_form:
     label: المرفقات
   poll_common_add_option:

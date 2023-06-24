@@ -1643,6 +1643,11 @@ hu:
     change_vote: Változtasd meg a szavazatodat
     edit_warning: A szerkesztés csak kisebb változtatásokhoz vagy helyesírási hibák javításához javasolt. Jelentős változtatások esetén zárja be ezt a {{pollType}} elemet, és indítson újat.
     no_voting: Csak megbeszélésre, szavazás letiltva
+    remove_your_response: Távolítsa el a választ
+    response: Válasz
+    submit_response: Válasz beküldése
+    update_response: Válasz frissítése
+    change_response: Változtassa meg a választ
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:

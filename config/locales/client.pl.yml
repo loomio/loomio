@@ -1676,6 +1676,11 @@ pl:
     please_vote: Proszę Głosuj
     current_results: Aktualne wyniki
     close_early: Zamknij wcześnie
+    remove_your_response: Usuń swoją odpowiedź
+    response: Odpowiedź
+    submit_response: Prześlij odpowiedź
+    update_response: Zaktualizuj odpowiedź
+    change_response: Zmień swoją odpowiedź
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:

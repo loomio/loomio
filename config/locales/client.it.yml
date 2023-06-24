@@ -1680,6 +1680,11 @@ it:
     decision_templates: Modelli di decisione
     review_due: Revisione dovuta
     edit_warning: La modifica è consigliata solo per modifiche minori o per correggere errori di ortografia. Per modifiche significative, chiudi questo {{pollType}} e iniziane uno nuovo.
+    remove_your_response: Rimuovi la tua risposta
+    response: Risposta
+    submit_response: Invia risposta
+    update_response: Aggiorna la risposta
+    change_response: Cambia la tua risposta
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:

@@ -1713,6 +1713,11 @@ pt_BR:
     edit_custom_poll: Editar votação personalizada
     create_a_custom_process: Crie um novo processo com sua própria terminologia e opções
     create_a_custom_poll: Crie uma enquete com terminologia e configurações personalizadas
+    remove_your_response: Remover sua resposta
+    response: Resposta
+    submit_response: Enviar resposta
+    update_response: Atualizar resposta
+    change_response: Mude sua resposta
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:

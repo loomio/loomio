@@ -1684,6 +1684,11 @@ de:
     please_vote: Bitte abstimmen
     current_results: Aktuelle Ergebnisse
     close_early: Früh schließen
+    remove_your_response: Entfernen Sie Ihre Antwort
+    response: Antwort
+    submit_response: Antwort senden
+    update_response: Antwort aktualisieren
+    change_response: Ändern Sie Ihre Antwort
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:

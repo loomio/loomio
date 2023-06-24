@@ -1727,6 +1727,11 @@ es:
     edit_custom_poll: Editar encuesta personalizada
     create_a_custom_process: Cree un nuevo proceso con su propia terminología y opciones
     create_a_custom_poll: Cree una encuesta con terminología y configuraciones personalizadas
+    remove_your_response: Elimina tu respuesta
+    response: Respuesta
+    submit_response: Enviar respuesta
+    update_response: Actualizar respuesta
+    change_response: Cambia tu respuesta
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:

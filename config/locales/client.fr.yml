@@ -1731,6 +1731,11 @@ fr:
     edit_custom_poll: Modifier le sondage personnalisé
     create_a_custom_process: Créez un nouveau processus avec votre propre terminologie et vos propres options
     create_a_custom_poll: Créer un sondage avec une terminologie et des paramètres personnalisés
+    remove_your_response: Supprimer votre réponse
+    response: Réponse
+    submit_response: Soumettre la réponse
+    update_response: Mettre à jour la réponse
+    change_response: Modifier votre réponse
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:

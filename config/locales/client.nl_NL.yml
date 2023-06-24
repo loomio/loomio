@@ -1659,6 +1659,11 @@ nl_NL:
     please_vote: Alsjeblieft, stem
     current_results: Huidige resultaten
     close_early: Sluit vroeg
+    remove_your_response: Verwijder je reactie
+    response: Antwoord
+    submit_response: Antwoord indienen
+    update_response: Reactie bijwerken
+    change_response: Verander je reactie
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
