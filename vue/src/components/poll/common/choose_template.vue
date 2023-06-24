@@ -123,10 +123,11 @@ export default
 
 <template lang="pug">
 .poll-common-templates-list
-  v-alert.poll-templates-welcome(v-model="alert" type="success" color="purple" icon="mdi-new-box" text outlined dismissible)
+  v-alert.poll-templates-welcome(v-model="alert" type="success" color="info" icon="mdi-new-box" text outlined dismissible)
     span 
-      span Learn about the new proposal and poll templates on 
-      a.text-decoration-underline(href="https://help.loomio.com/en/") Loomio Help
+      span(v-t="'poll_common.new_templates_are_here'")
+      space
+      a.text-decoration-underline(href="https://help.loomio.com/en/" v-t="'common.learn_more'" target="_blank")
 
   v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
     v-icon(small).mr-2 {{icon}}

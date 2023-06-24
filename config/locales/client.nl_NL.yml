@@ -1664,6 +1664,7 @@ nl_NL:
     submit_response: Antwoord indienen
     update_response: Reactie bijwerken
     change_response: Verander je reactie
+    new_templates_are_here: Nieuwe voorstelsjablonen om te helpen bij besluitvormingsprocessen.
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:

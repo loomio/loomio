@@ -1689,6 +1689,7 @@ de:
     submit_response: Antwort senden
     update_response: Antwort aktualisieren
     change_response: Ändern Sie Ihre Antwort
+    new_templates_are_here: Neue Angebotsvorlagen zur Unterstützung bei Entscheidungsprozessen.
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:

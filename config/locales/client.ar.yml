@@ -1649,6 +1649,7 @@ ar:
     submit_response: إرسال الرد
     update_response: استجابة التحديث
     change_response: غيّر إجابتك
+    new_templates_are_here: قوالب مقترحات جديدة للمساعدة في عمليات صنع القرار.
   poll_common_attachment_form:
     label: المرفقات
   poll_common_add_option:

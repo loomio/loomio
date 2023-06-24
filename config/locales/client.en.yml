@@ -1767,6 +1767,7 @@ en:
     prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
+    new_templates_are_here: New proposal templates to help with decision-making processes.
     categorize_poll_templates: Categorize poll templates
     show_all_templates_in_one_list: Show all templates in one list
     advice_process: Advice process

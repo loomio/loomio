@@ -1681,6 +1681,7 @@ pl:
     submit_response: Prześlij odpowiedź
     update_response: Zaktualizuj odpowiedź
     change_response: Zmień swoją odpowiedź
+    new_templates_are_here: Nowe szablony propozycji ułatwiające procesy decyzyjne.
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:

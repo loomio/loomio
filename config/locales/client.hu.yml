@@ -1648,6 +1648,7 @@ hu:
     submit_response: Válasz beküldése
     update_response: Válasz frissítése
     change_response: Változtassa meg a választ
+    new_templates_are_here: Új javaslatsablonok, amelyek segítik a döntéshozatali folyamatokat.
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:

@@ -1732,6 +1732,7 @@ es:
     submit_response: Enviar respuesta
     update_response: Actualizar respuesta
     change_response: Cambia tu respuesta
+    new_templates_are_here: Nuevas plantillas de propuestas para ayudar en los procesos de toma de decisiones.
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:

@@ -1685,6 +1685,7 @@ it:
     submit_response: Invia risposta
     update_response: Aggiorna la risposta
     change_response: Cambia la tua risposta
+    new_templates_are_here: Nuovi modelli di proposta per facilitare i processi decisionali.
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:

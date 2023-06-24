@@ -1688,6 +1688,7 @@ uk:
     submit_response: Надіслати відповідь
     update_response: Оновити відповідь
     change_response: Змініть свою відповідь
+    new_templates_are_here: Нові шаблони пропозицій, які допоможуть у процесі прийняття рішень.
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:

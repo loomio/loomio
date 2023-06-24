@@ -1718,6 +1718,7 @@ pt_BR:
     submit_response: Enviar resposta
     update_response: Atualizar resposta
     change_response: Mude sua resposta
+    new_templates_are_here: Novos modelos de propostas para ajudar nos processos de tomada de decisão.
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:

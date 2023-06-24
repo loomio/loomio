@@ -1736,6 +1736,7 @@ fr:
     submit_response: Soumettre la réponse
     update_response: Mettre à jour la réponse
     change_response: Modifier votre réponse
+    new_templates_are_here: Nouveaux modèles de proposition pour faciliter les processus de prise de décision.
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
