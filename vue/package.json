@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@sentry/browser": "^7.55.2",
-    "@sentry/tracing": "^7.55.2",
-    "@sentry/vue": "^7.55.2",
+    "@sentry/tracing": "^7.56.0",
+    "@sentry/vue": "^7.56.0",
     "@tiptap/core": "2.0.0-beta.220",
     "@tiptap/extension-blockquote": "2.0.0-beta.220",
     "@tiptap/extension-bold": "2.0.0-beta.220",
@@ -92,7 +92,7 @@
     "@vue/cli-plugin-e2e-nightwatch": "^5.0.8",
     "@vue/cli-plugin-pwa": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
-    "acorn": "^8.8.2",
+    "acorn": "^8.9.0",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "coffee-loader": "latest",
@@ -105,6 +105,6 @@
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.7.14",
     "vuetify-loader": "^1.9.2",
-    "webpack": "^5.87.0"
+    "webpack": "^5.88.0"
   }
 }
