@@ -27,7 +27,10 @@ export default
       query: =>
         @poll.results.forEach (option) =>
           option.voter_ids.forEach (id) =>
-            Vue.set @users, id, Records.users.find(id)
+            if user = Records.users.find(id)
+              Vue.set @users, id, user
+            else
+              Records.users.addMissing(id)
 
 </script>
 
