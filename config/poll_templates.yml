@@ -13,21 +13,24 @@ question:
 count:
   poll_type: count
   process_name_i18n: decision_tools_card.count_title
-  process_subtitle: Find volunteers or ask for participants
+  process_subtitle_i18n: poll_templates.opt_in.process_subtitle
+  process_introduction_i18n: poll_templates.opt_in.process_introduction
+  title_i18n: poll_templates.opt_in.title
+  details_i18n: poll_templates.opt_in.details
   default_duration_in_days: 3
   poll_options:
     - key: accept
       icon: agree
       color: '#70C9F8'
       name_i18n: poll_count_options.accept
-      meaning_i18n: poll_count_vote_form.accept_meaning
-      prompt_i18n: poll_count_vote_form.accept_prompt
+      meaning_i18n:  poll_templates.opt_in.accept_meaning
+      prompt_i18n:  poll_templates.opt_in.accept_prompt
     - key: decline
       icon: disagree
       color: "#C8E56E"
       name_i18n: poll_count_options.decline
-      meaning_i18n: poll_count_vote_form.decline_meaning
-      prompt_i18n: poll_count_vote_form.decline_prompt
+      meaning_i18n: poll_templates.opt_in.decline_meaning
+      prompt_i18n: poll_templates.opt_in.decline_prompt
 
 check:
   poll_type: proposal
@@ -91,7 +94,11 @@ meeting:
   poll_type: meeting
   meeting_duration: 60
   process_name_i18n: decision_tools_card.meeting_title
-  process_subtitle_i18n: poll_meeting_form.tool_tip_collapsed
+  process_subtitle_i18n: poll_templates.time_poll.process_subtitle
+  process_introduction_i18n: poll_templates.time_poll.process_introduction
+  reason_prompt_i18n: poll_templates.time_poll.reason_prompt
+  title_i18n: poll_templates.time_poll.title
+  details_i18n: poll_templates.time_poll.details
   chart_type: grid
   min_score: 0
   max_score: 2
@@ -101,32 +108,43 @@ meeting:
 poll:
   poll_type: poll
   process_name_i18n: poll_common_form.voting_methods.simple_poll
-  process_subtitle_i18n: poll_poll_form.tool_tip_collapsed
+  process_subtitle_i18n: poll_templates.simple_poll.process_subtitle
+  process_introduction_i18n: poll_templates.simple_poll.process_introduction
+  title_i18n: poll_templates.simple_poll.title
+  details_i18n: poll_templates.simple_poll.details
   default_duration_in_days: 3
 
 dot_vote:
   poll_type: dot_vote
   process_name_i18n: decision_tools_card.dot_vote_title
-  process_subtitle_i18n: poll_dot_vote_form.tool_tip_collapsed
+  process_subtitle_i18n: poll_templates.dot_vote.process_subtitle
+  process_introduction_i18n: poll_templates.dot_vote.process_introduction
+  title_i18n: poll_templates.dot_vote.title
+  details_i18n: poll_templates.dot_vote.details
   default_duration_in_days: 3
 
 score:
   poll_type: score
   process_name_i18n: decision_tools_card.score_title
-  process_subtitle_i18n: poll_score_form.tool_tip_collapsed
+  process_subtitle_i18n: poll_templates.score_poll.process_subtitle
+  process_introduction_i18n: poll_templates.score_poll.process_introduction
+  title_i18n: poll_templates.score_poll.title
+  details_i18n: poll_templates.score_poll.details
   default_duration_in_days: 3
 
 ranked_choice:
   poll_type: ranked_choice
   process_name_i18n: decision_tools_card.ranked_choice_title
-  process_subtitle_i18n: poll_ranked_choice_form.tool_tip_collapsed
+  process_subtitle_i18n: poll_templates.ranked_choice.process_subtitle
+  process_introduction_i18n: poll_templates.ranked_choice.process_introduction
+  title_i18n: poll_templates.ranked_choice.title
+  details_i18n: poll_templates.ranked_choice.details
 
 advice:
   poll_type: proposal
   process_name_i18n: poll_common.advice_process
   process_subtitle_i18n: poll_templates.advice.process_subtitle
   process_introduction_i18n: poll_templates.advice.process_introduction
-  process_introduction_format: 'html'
   title_i18n: poll_templates.advice.title
   details_i18n: poll_templates.advice.details
   tags_i18n:

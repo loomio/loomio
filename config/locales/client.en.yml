@@ -2198,7 +2198,6 @@ en:
 
   poll_poll_form:
     multiple_choice_subtitle: A simple way to assess the popularity of options
-    tool_tip_collapsed: Find the most popular option
     start_header: Start poll
     edit_header: Edit poll
     tip: Offer a choice between options
@@ -2214,15 +2213,10 @@ en:
     option_already_added: Option already added to poll
 
   poll_dot_vote_form:
-    tool_tip_collapsed: Allocate a budget of points to reveal priorities
     dots_per_person:  Points per person
     dots_per_person_helptext: The total number of points each person is asked to allocate.
 
-  poll_score_form:
-    tool_tip_collapsed: Measure the degree of support for each option
-
   poll_meeting_form:
-    tool_tip_collapsed: Find when people are available to meet
     timeslots: Time slots
     no_options: Enter times in your current time zone ({{zone}}). Participants see times translated to their local time zone.
     meeting_duration: Meeting duration
@@ -2232,7 +2226,6 @@ en:
     participants_see_local_times: Pariticpants will see times localized to their time zone
 
   poll_ranked_choice_form:
-    tool_tip_collapsed: Understand the ordered preference of options
     no_options: "You haven't added any options yet."
     add_option_placeholder: Enter a new choice
     minimum_stance_choices: Options to rank

@@ -30,6 +30,7 @@ en:
       disagree: Disagree
       disagree_meaning: Something in this proposal needs to be changed before I can support it.
       disagree_prompt: How could this proposal be improved so that you can support it?
+
     advice:
       process_subtitle: Seek advice on a decision you need to make
       process_introduction: <p>Seek advice on a decision you need to make, with the advice
@@ -314,10 +315,8 @@ en:
       details: "<p><strong>What is the team, working group or event you are inviting people
         to?</strong></p><p></p><p><strong>Why is this important?</strong></p><p></p><p><strong>What
         are you asking people to do?</strong></p><p></p><p>Select 'Accept' to participate!</p>"
-      accept: Accept
       accept_meaning: I'm willing to participate
       accept_prompt: Why are you volunteering for this?
-      decline: Decline
       decline_meaning: I'm unable to participate
       decline_prompt: Is there anything you'd like to say?
 
