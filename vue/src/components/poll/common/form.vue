@@ -475,7 +475,6 @@ export default
   common-notify-fields(:model="poll")
 
   .d-flex.justify-space-between.my-4.mt-4.poll-common-form-actions
-    help-link(path="en/user_manual/polls/starting_proposals")
     v-spacer
     v-btn.poll-common-form__submit(
       color="primary"

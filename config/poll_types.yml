@@ -122,80 +122,68 @@ proposal:
     - key: agree
       name_i18n: poll_proposal_options.agree
       icon: agree
-      meaning_i18n: poll_proposal_options.agree_meaning
-      prompt_i18n: poll_proposal_vote_form.agree_reason_placeholder
+      meaning_i18n: poll_templates.proposal.agree_meaning
+      prompt_i18n: poll_templates.proposal.agree_prompt
       color: '#70C9F8'
     - key: abstain
       name_i18n: poll_proposal_options.abstain
       icon: abstain
-      meaning_i18n: poll_proposal_options.abstain_meaning
-      prompt_i18n: poll_proposal_options.abstain_prompt
+      meaning_i18n: poll_templates.proposal.abstain_meaning
+      prompt_i18n: poll_templates.proposal.abstain_prompt
       color: "#C8E56E"
     - key: disagree
       name_i18n: poll_proposal_options.disagree
       icon: disagree
-      meaning_i18n: poll_proposal_options.disagree_meaning
-      prompt_i18n: poll_proposal_vote_form.disagree_reason_placeholder
+      meaning_i18n: poll_templates.proposal.disagree_meaning
+      prompt_i18n: poll_templates.proposal.disagree_prompt
       color: "#D38FE1"
     - key: block
-      name_i18n: poll_proposal_options.block
+      name_i18n: poll_templates.consensus.block
       icon: block
-      meaning_i18n: poll_proposal_options.block_meaning
-      prompt_i18n: poll_proposal_vote_form.block_reason_placeholder
+      meaning_i18n: poll_templates.consensus.block_meaning
+      prompt_i18n: poll_templates.consensus.block_placeholder
+      color: "#999FDE"
+    - key: veto
+      name_i18n: poll_templates.gradients_of_agreement.veto
+      icon: block
+      meaning_i18n: poll_templates.gradients_of_agreement.veto_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.veto_prompt
       color: "#999FDE"
     - key: consent
       name_i18n: poll_proposal_options.consent
       icon: agree
-      meaning_i18n: poll_proposal_options.consent_meaning
-      prompt_i18n: poll_proposal_options.consent_prompt
+      meaning_i18n: poll_templates.consent.consent_meaning
+      prompt_i18n: poll_templates.consent.consent_prompt
       color: "#70C9F8"
     - key: objection
       name_i18n: poll_proposal_options.objection
       icon: disagree
-      meaning_i18n: poll_proposal_options.objection_meaning
-      prompt_i18n: poll_proposal_options.objection_prompt
+      meaning_i18n: poll_templates.consent.objection_meaning
+      prompt_i18n: poll_templates.consent.objection_prompt
       color: "#D38FE1"
     - key: object
       name_i18n: poll_proposal_options.object
       icon: disagree
-      meaning_i18n: poll_proposal_options.objection_meaning
-      prompt_i18n: poll_proposal_options.objection_prompt
+      meaning_i18n: poll_templates.consent.objection_meaning
+      prompt_i18n: poll_templates.consent.objection_prompt
       color: "#D38FE1"
     - key: looks_good
       name_i18n: poll_check_options.looks_good
       icon: agree
-      meaning_i18n: poll_check_options.looks_good_meaning
-      prompt_i18n: poll_check_options.looks_good_prompt
+      meaning_i18n: poll_templates.sense_check.looks_good_meaning
+      prompt_i18n: poll_templates.sense_check.looks_good_prompt
       color: '#70C9F8'
-    - key: question
-      name_i18n: poll_check_options.question
-      icon: abstain
-      meaning_i18n: poll_check_options.question_meaning
-      prompt_i18n: poll_check_options.question_prompt
-      color: '#70C9F8'
-    - key: not_sure
-      name_i18n: poll_check_options.not_sure
-      icon: abstain
-      meaning_i18n: poll_check_options.not_sure_meaning
-      prompt_i18n: poll_check_options.not_sure_prompt
-      color: '#70C9F8'
-    - key: concerned
-      name_i18n: poll_check_options.concerned
-      icon: disagree
-      meaning_i18n: poll_check_options.concerned_meaning
-      prompt_i18n: poll_check_options.concerned_prompt
-      color: "#C8E56E"
     - key: accept
       name_i18n: poll_count_options.accept
       icon: agree
-      meaning_i18n: poll_count_vote_form.accept_meaning
-      prompt_i18n: poll_count_vote_form.accept_prompt
+      meaning_i18n: poll_templates.opt_in.accept_meaning
+      prompt_i18n: poll_templates.opt_in.accept_prompt
       color: '#70C9F8'
     - key: decline
       name_i18n: poll_count_options.decline
       icon: disagree
-      meaning_i18n: poll_count_vote_form.decline_meaning
-      prompt_i18n: poll_count_vote_form.decline_prompt
+      meaning_i18n: poll_templates.opt_in.decline_meaning
+      prompt_i18n: poll_templates.opt_in.decline_prompt
       color: "#C8E56E"
   defaults:
     poll_option_name_format: plain

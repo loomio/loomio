@@ -44,7 +44,7 @@ check:
     - decision_tools_card.check_title
   poll_options:
     - key: looks_good
-      name_i18n: poll_check_options.looks_good
+      name_i18n: poll_templates.sense_check.looks_good
       icon: agree
       meaning_i18n: poll_templates.sense_check.looks_good_meaning
       prompt_i18n: poll_templates.sense_check.looks_good_prompt
@@ -56,7 +56,7 @@ check:
       prompt_i18n: poll_templates.sense_check.abstain_prompt
       color: '#70C9F8'
     - key: concerned
-      name_i18n: poll_check_options.concerned
+      name_i18n: poll_templates.sense_check.concerned
       icon: disagree
       meaning_i18n: poll_templates.sense_check.concerned_meaning
       prompt_i18n: poll_templates.sense_check.concerned_prompt
