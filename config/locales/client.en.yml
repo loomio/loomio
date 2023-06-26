@@ -2281,18 +2281,9 @@ en:
     'yes': 'Yes'
     'no': 'No'
 
-  poll_count_vote_form:
-    accept_meaning: I'm willing to participate
-    accept_prompt: Why are you volunteering for this?
-    decline_meaning: I'm unable to participate
-    decline_prompt: Is there anything you'd like to say?
-    reason_label: Message
-    reason_placeholder: Leave a message if you like
-
   poll_common_percent_voted:
     sentence: "{{numerator}} of {{denominator}} people have participated ({{percent}}%)"
     target_progress: "{{percent}}% of target reached. ({{num}} / {{target}})"
-
 
   poll_meeting_chart_panel:
     total: Total
@@ -2651,7 +2642,7 @@ en:
       accept_prompt: Why are you volunteering for this?
       decline_meaning: I'm unable to participate
       decline_prompt: Is there anything you'd like to say?
-      
+
   thread_item:
     removed: "Item removed"
     deleted_group: "Deleted group"

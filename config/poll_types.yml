@@ -27,15 +27,15 @@ count:
     - key: accept
       name_i18n: poll_count_options.accept
       icon: agree
-      meaning_i18n: poll_count_vote_form.accept_meaning
-      prompt_i18n: poll_count_vote_form.accept_prompt
+      meaning_i18n: poll_templates.opt_in.accept_meaning
+      prompt_i18n: poll_templates.opt_in.accept_prompt
       color: '#70C9F8'
       default: true
     - key: decline
       name_i18n: poll_count_options.decline
       icon: disagree
-      meaning_i18n: poll_count_vote_form.decline_meaning
-      prompt_i18n: poll_count_vote_form.decline_prompt
+      meaning_i18n: poll_templates.opt_in.decline_meaning
+      prompt_i18n: poll_templates.opt_in.decline_prompt
       color: "#C8E56E"
       default: true
       
@@ -54,7 +54,7 @@ check:
   defaults:
     poll_option_name_format: plain
     process_name_i18n: decision_tools_card.check_title
-    process_subtitle_i18n: poll_check_options.check_subtitle
+    process_subtitle_i18n: poll_templates.sense_check.process_subtitle
     chart_type: pie
     min_score: 1
     max_score: 1
@@ -65,24 +65,24 @@ check:
     default_duration_in_days: 3
   common_poll_options:
     - key: looks_good
-      name_i18n: poll_check_options.looks_good
+      name_i18n: poll_templates.sense_check.looks_good
       icon: agree
-      meaning_i18n: poll_check_options.looks_good_meaning
-      prompt_i18n: poll_check_options.looks_good_prompt
+      meaning_i18n: poll_templates.sense_check.looks_good_meaning
+      prompt_i18n: poll_templates.sense_check.looks_good_prompt
       color: '#70C9F8'
       default: true
     - key: not_sure
-      name_i18n: poll_check_options.not_sure
+      name_i18n: poll_templates.sense_check.not_sure
       icon: abstain
-      meaning_i18n: poll_check_options.not_sure_meaning
-      prompt_i18n: poll_check_options.not_sure_prompt
+      meaning_i18n: poll_templates.sense_check.not_sure_meaning
+      prompt_i18n: poll_templates.sense_check.not_sure_prompt
       color: '#70C9F8'
       default: true
     - key: concerned
-      name_i18n: poll_check_options.concerned
+      name_i18n: poll_templates.sense_check.concerned
       icon: disagree
-      meaning_i18n: poll_check_options.concerned_meaning
-      prompt_i18n: poll_check_options.concerned_prompt
+      meaning_i18n: poll_templates.sense_check.concerned_meaning
+      prompt_i18n: poll_templates.sense_check.concerned_prompt
       color: "#C8E56E"
       default: true
 
