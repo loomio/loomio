@@ -142,7 +142,7 @@ ranked_choice:
 
 advice:
   poll_type: proposal
-  process_name_i18n: poll_common.advice_process
+  process_name_i18n: decision_tools_card.advice_title
   process_subtitle_i18n: poll_templates.advice.process_subtitle
   process_introduction_i18n: poll_templates.advice.process_introduction
   title_i18n: poll_templates.advice.title
@@ -165,7 +165,7 @@ advice:
 
 consent:
   poll_type: proposal
-  process_name_i18n: poll_common.consent_process
+  process_name_i18n: decision_tools_card.consent_title
   process_subtitle_i18n: poll_templates.consent.process_subtitle
   process_introduction_i18n: poll_templates.consent.process_introduction
   title_i18n: poll_templates.advice.title
