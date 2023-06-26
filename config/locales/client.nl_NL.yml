@@ -2367,3 +2367,140 @@ nl_NL:
     concerned: Bezorgd
     concerned_meaning: Mogelijk moet hier iets aan veranderen
     concerned_prompt: Waar maakt u zich zorgen over en hoe kan dit worden aangepakt?
+  poll_templates:
+    proposal:
+      process_subtitle: Doe een voorstel om een beslissing te nemen
+      process_introduction: <p>Het klassieke Loomio-voorstel helpt u bij het nemen van een beslissing en zet een discussie om in een duidelijke uitkomst.</p><p> Stel een handelwijze voor en nodig mensen uit om te reageren door voor akkoord, onthouding of oneens te stemmen.</p><p> Als mensen stemmen, kunnen ze een reden geven waarom ze op deze manier hebben gestemd. U kunt zien waar iedereen anders over de kwestie staat, en waarom.</p><p> Op deze manier kunt u een voorstel gebruiken om mensen om een reactie te vragen, nieuwe informatie te ontdekken en een gedeeld begrip op te bouwen - om uw groep te helpen een betere, beter geïnformeerde beslissing te nemen.</p><p> Een voorstel en de bijbehorende bespreking creëert zijn eigen verslag van hoe de beslissing tot stand is gekomen.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lees meer over het gebruik van het klassieke Loomio-voorstel in het eenvoudige beslissingsproces</u></a> .</p>
+      title: Het nieuwe merkconcept goedkeuren
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Wat is de beslissing die u moet nemen?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Om dit voorstel te laten slagen, hebben we de meerderheid van de leden nodig om te stemmen.</p><p> Als u het niet eens bent, geef dan aan waarom en wat er moet veranderen om akkoord te gaan. \U0001F642</p>
+      agree: Mee eens zijn
+      agree_meaning: Ik steun het voorstel
+      agree_prompt: Wat vind je goed aan het voorstel en hoe zal het de groep ten goede komen?
+      abstain: Onthouden
+      abstain_meaning: Kiezen om niet of niet te stemmen in deze beslissing.
+      abstain_prompt: Waarom onthoudt u zich van stemming of voelt u zich niet in staat om te stemmen bij deze beslissing?
+      disagree: Het oneens zijn
+      disagree_meaning: Er moet iets in dit voorstel worden veranderd voordat ik het kan steunen.
+      disagree_prompt: Hoe zou dit voorstel kunnen worden verbeterd, zodat u het kunt steunen?
+    advice:
+      process_subtitle: Vraag advies over een beslissing die u moet nemen
+      process_introduction: <p>Win advies in over een beslissing die u moet nemen, met het advies van betrokken mensen of mensen met expertise, zodat u een betere beslissing kunt nemen voor uw organisatie.</p><ul><li><p> Advies helpt u een betere beslissing te nemen voor uw organisatie.</p></li><li><p> Bevorder relaties, leermogelijkheden en diverse input.</p></li><li><p> Stimuleer initiatief en creativiteit, en meer plezier in het werk.</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Lees meer over het Adviestraject</u></a> .</p>
+      title: Help Takashi een nieuwe computer te kopen
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Wat is de beslissing die u moet nemen?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Welk advies vraag je aan mensen om je te helpen een goede beslissing te nemen?</strong></h3><p></p><p> Ik ben op zoek naar uw input om me te helpen een goede beslissing te nemen voor onze organisatie.</p>
+      agree: Mee eens zijn
+      agree_meaning: Ik heb mijn advies gegeven over deze beslissing
+      agree_prompt: Vat uw advies samen of maak een nuttige opmerking
+      abstain: Onthouden
+      abstain_meaning: Ik heb geen advies te bieden
+      abstain_prompt: Heeft u opmerkingen die nuttig kunnen zijn?
+    consent:
+      process_subtitle: Maak een beslissing die 'veilig is om te proberen', zonder bezwaren
+      process_introduction: <p>Vraag toestemming voor een beslissing die u moet nemen, als er geen zinvolle bezwaren zijn tegen uw voorstel, zodat u snel een beslissing kunt nemen voor uw organisatie die 'veilig is om te proberen'.</p><ul><li><p> Streef naar een 'goed genoeg'-beslissing</p></li><li><p> Betrek veel stemmen om een werkbaar voorstel te ontwikkelen</p></li><li><p> Vraag of iemand een gegrond bezwaar heeft</p></li><li><p> Pas het voorstel aan om bezwaren op te lossen</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Lees meer over het toestemmingsproces</a> .</p>
+      title: Huur Chloe in voor ontwerprol
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Wat is de beslissing die u moet nemen?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Wat vraag je van mensen in dit voorstel?</strong></h3><p></p><p> Als u bezwaar heeft, geef dan aan waarom en stel een wijziging van het voorstel voor die het veilig maakt.</p><p> Onthoud dat we toestemming vragen voor een 'goed genoeg'-beslissing die 'veilig is om te proberen', zodat we een goede beslissing kunnen nemen voor onze organisatie.</p>
+      consent: Toestemming
+      consent_meaning: Het voorstel is veilig om te proberen
+      consent_prompt: Wat vind je goed aan het voorstel en hoe zal het de organisatie ten goede komen?
+      objection: Bezwaar
+      objection_meaning: Ik heb een gegrond bezwaar en denk dat het voorstel schade zal berokkenen
+      objection_prompt: Welke verandering aan dit voorstel is nodig om het 'veilig om te proberen' te maken, zodat u het kunt steunen?
+    consensus:
+      process_subtitle: Bereik een collectieve overeenkomst met alle betrokkenen
+      process_introduction: <p>Bouw consensus op voor een beslissing die u moet nemen, om een overeenkomst te bereiken die voldoet aan de behoeften en zorgen van alle deelnemers.</p><ul><li><p> Bespreek en werk samen een voorstel uit</p></li><li><p> Betrek en respecteer alle betrokkenen</p></li><li><p> Zoek toestemming van de meeste mensen</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Lees meer over het Consensusproces</a> .</p>
+      title: Het nieuwe merkconcept goedkeuren
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Wat is de beslissing die u moet nemen?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Om dit voorstel te laten slagen, hebben we de meerderheid van de leden nodig om te stemmen.</p><p> Als u het niet eens bent, geef dan aan waarom en wat er moet veranderen om akkoord te gaan.</p>
+      agree: Mee eens zijn
+      agree_meaning: Ik steun het voorstel
+      agree_prompt: Wat vind je goed aan het voorstel en hoe zal het de organisatie ten goede komen?
+      abstain: Onthouden
+      abstain_meaning: Deze beslissing heeft geen invloed op mij en ik ben blij met wat de groep ook beslist
+      abstain_prompt: Waarom onthoudt u zich van stemming of voelt u zich niet in staat om te stemmen bij deze beslissing?
+      disagree: Het oneens zijn
+      disagree_meaning: Er moet iets in dit voorstel worden veranderd voordat ik het kan steunen
+      disagree_prompt: Hoe zou dit voorstel kunnen worden verbeterd, zodat u het kunt steunen?
+      block: Blok
+      block_meaning: Ik blokkeer dit voorstel en vind dat het niet door moet gaan
+      block_prompt: Leg uit wat uw bezwaar is tegen dit voorstel en waarom het niet door moet gaan
+    question_round:
+      process_subtitle: Nodig verhelderende vragen uit om mensen te helpen een voorstel te begrijpen
+      process_introduction: <p>Een Vragenronde is een gelegenheid voor mensen om verhelderende vragen te stellen over het voorstel, zodat iedereen het voorstel begrijpt voordat ze zeggen wat ze ervan vinden.</p><p> De Loomio Vragenronde is een speciaal voorstel zonder stemmogelijkheden. Het stelt deelnemers in staat vragen te stellen binnen een tijdsduur die u voor de ronde instelt.</p><p> Een Vragenronde wordt vaak gebruikt als stap in het Toestemmingsproces.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Lees meer over het toestemmingsproces</a> .</p>
+      title: Welke vragen heeft u over het arbobeleid?
+      details: <h3 id="what-are-you-proposing"><strong>Wat stel je voor?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Dit is een vragenronde, waarbij u wordt uitgenodigd om verhelderende vragen te stellen.</p><p> Wat moet u weten om het voorstel te begrijpen?</p><p> Graag reageren voordat de Vragenronde sluit.</p>
+      reason_prompt: Wat moet u weten om het voorstel te begrijpen?
+    sense_check:
+      process_subtitle: Vraag om feedback, vragen en zorgen
+      process_introduction: <p>Het Sense check-voorstel is een goede manier om feedback te krijgen, vragen uit te nodigen en zorgen aan het licht te brengen. Het helpt om een voorstel te verduidelijken en te verbeteren voordat er een besluit wordt genomen.</p><p> Sense check laat mensen weten dat er een voorstel wordt gedaan en moedigt hen aan om mee te doen. Het is een kans om naar mensen te luisteren, aan te voelen hoe ze zich voelen en gepast te reageren - waardoor het potentieel wordt geopend om hun bijdragen te integreren om een betere beslissing te nemen.</p><p> Gebruik het Sense check-voorstel in het toestemmingsproces om reacties en opmerkingen uit te nodigen om het voorstel te verbeteren, en in een consensusproces om te testen op consensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lees meer over het gebruik van Sense check in het Eenvoudige beslissingsproces</u></a> <span>.</span></p>
+      title: Wat vind je van de nieuwe merkconcepten?
+      details: <h3 id="what-are-you-proposing"><strong>Wat stel je voor?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Wat vind je van het voorstel? Laat een opmerking achter of doe een suggestie voor verbetering.</p><p> Deze Sense-check is een kans voor uw inbreng en bijdrage, om ons te helpen een betere beslissing te nemen.</p>
+      looks_good: Ziet er goed uit
+      looks_good_meaning: Ik ben blij met waar dit naartoe gaat
+      looks_good_prompt: Heeft u opmerkingen of suggesties om het voorstel beter te maken?
+      abstain: Onthouden
+      abstain_meaning: Ik heb niets toe te voegen, noch enig bezwaar tegen dit werk.
+      abstain_prompt: Onthouding impliceert instemming met de richting van dit voorstel. Is er een reden waarom u tegenstemt?
+      concerned: Bezorgd
+      concerned_meaning: Mogelijk moet hier iets aan veranderen voordat ik instem of akkoord ga
+      concerned_prompt: Waar maakt u zich zorgen over en hoe kan dit worden aangepakt?
+    gradients_of_agreement:
+      process_subtitle: Spreek uw steun uit voor een voorstel op een 8-puntsschaal
+      process_introduction: <p>Het voorstel Gradients of agreement stelt leden van een groep in staat om hun steun voor een voorstel uit te drukken in graden op een schaal, waardoor meer manieren worden geboden om hun steun uit te drukken dan in termen van "mee eens" en "oneens".</p><p> Gebruik Gradiënten van overeenstemming als voorronde om de steun voor een voorstel te testen voordat u overgaat tot een formele overeenkomst.</p><p> Gradiënten van overeenstemming laten mensen weten dat er een voorstel in voorbereiding is en moedigt hen aan om mee te doen. Het is een kans om naar mensen te luisteren, aan te voelen hoe ze zich voelen en gepast te reageren - waardoor het potentieel wordt geopend om hun bijdragen te integreren om een betere beslissing te nemen.</p>
+      title: Wat vind je van de nieuwe waardenverklaring?
+      details: <h3 id="what-are-you-proposing"><strong>Wat stel je voor?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Wat vind je van het voorstel? Spreek uw steun uit op de onderstaande schaal en laat een opmerking of suggestie voor verbetering achter.</p><p> Dit voorstel voor Gradients of agreement is bedoeld om de steun voor het voorstel te testen en een kans voor uw inbreng voordat u overgaat tot een formele overeenkomst.</p>
+      whole_hearted_endorsement: Van ganser harte goedgekeurd
+      whole_hearted_endorsement_meaning: Ik vind het erg leuk!
+      whole_hearted_endorsement_prompt: Wat vind je er leuk aan?
+      agreement_with_minor_contention: Overeenkomst met kleine stelling
+      agreement_with_minor_contention_meaning: Niet perfect, maar het is goed genoeg
+      agreement_with_minor_contention_prompt: Waar maak jij je zorgen over?
+      support_with_reservations: Ondersteuning bij reserveringen
+      support_with_reservations_meaning: Ik kan ermee leven
+      support_with_reservations_prompt: Wat zijn uw reserveringen?
+      abstain_meaning: Dit probleem raakt mij niet
+      abstain_prompt: Heb je iets dat je zou willen toevoegen?
+      more_discussion_needed: Meer discussie nodig
+      more_discussion_needed_meaning: Ik begrijp de problemen nog niet goed genoeg
+      more_discussion_needed_prompt: Wat begrijp je niet?
+      don_t_like_but_will_support: Houd niet van maar zal steunen
+      don_t_like_but_will_support_meaning: Het is niet geweldig, maar ik wil de groep niet ophouden
+      don_t_like_but_will_support_prompt: Wat zou je verbeterd willen zien?
+      serious_disagreement: Ernstige onenigheid
+      serious_disagreement_meaning: Ik doe hier niet aan mee - reken niet op mij
+      serious_disagreement_prompt: Waar ben je het niet mee eens?
+      veto: Veto
+      veto_meaning: Ik blokkeer dit voorstel
+      veto_prompt: Waarom blokkeer je het voorstel? Wat moet er voor jou veranderen om het te ondersteunen?
+    simple_poll:
+      process_subtitle: Vind de meest populaire optie
+      process_introduction: <p>Zoek voordat u een beslissing neemt uit welke optie(s) mensen het belangrijkst vinden.</p><p> Eenvoudige peiling helpt u de meest populaire optie of opties te vinden met enkele of meerkeuze.</p><p> Schrijf eventuele details over de opties in het detailveld, voer vervolgens de naam van de optie in en klik op + om toe te voegen.</p><p> Stel de <strong>minimale keuzes</strong> en <strong>maximale keuzes in</strong> die een kiezer kan kiezen. Laat de maximale keuze op 1 staan voor een opiniepeiling met één keuze.</p><p> U kunt het potloodpictogram naast elke optie gebruiken om een <strong>betekenis</strong> van de optie toe te voegen, een verdere uitwerking van de optie om mensen te helpen bij het stemmen.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Lees meer over Eenvoudige peiling</a> .</p>
+      title: Waar moet de focus van onze strategische richting liggen?
+      details: <h3 id="what-is-this-poll-about"><strong>Waar gaat deze peiling over?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Kies de optie(s) waar u de voorkeur aan geeft.</p>
+    score_poll:
+      process_subtitle: Meet de mate van ondersteuning voor elke optie
+      process_introduction: <p>Gebruik Score peiling wanneer u mensen wilt ondervragen over hun verlangen, voorkeur of interesse in elke optie.</p><p> <span>Deelnemers wordt gevraagd om elke optie te evalueren en een score toe te wijzen door een schuifregelaar langs een schaal te verplaatsen.</span></p><p> <span>De resultaten worden grafisch weergegeven samen met een tabel voor elke optie met het totale aantal punten, het gemiddelde aantal punten en het aantal kiezers.</span></p><p> Geavanceerde instellingen omvatten 'Stemmen zijn anoniem' en 'Toon opties in willekeurige volgorde' - vaak gebruikt voor Score-enquêtes om vooringenomenheid bij stemmen te verminderen.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Lees meer over Score peiling</a> .</p>
+      title: Beoordelen hoe beslissingen worden genomen in onze organisatie
+      details: <h3 id="what-is-this-poll-about"><strong>Waar gaat deze peiling over?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Kies de optie(s) waar u de voorkeur aan geeft.</p>
+    dot_vote:
+      process_subtitle: Wijs een puntenbudget toe om prioriteiten te onthullen
+      process_introduction: <p>Dot-voting is handig voor groepen die een beperkte bron proberen toe te wijzen aan een aantal opties. Het gaat verder dan een simpele peiling door deelnemers te helpen beseffen dat er een beperking is bij het selecteren van opties.</p><p> Deelnemers krijgen elk een vast aantal stippen. U bepaalt hoeveel.</p><p> Ze plaatsen stippen naast gepresenteerde opties die ze leuk vinden. Deelnemers kunnen al hun stippen op één optie plaatsen of verspreid over meerdere opties.</p><p> Als deelnemers punten toewijzen, kunnen ze de limiet van het puntenbudget overschrijden en daarom worden ze aangemoedigd om zorgvuldig na te denken over hoe ze hun punten besteden.</p><p> Opties met de meeste punten "winnen". De resultatentabel biedt aanvullende gegevens om u te helpen bij het analyseren van resultaten.</p><ul><li><p> % van de punten</p></li><li><p> Punten</p></li><li><p> Gemeen</p></li><li><p> kiezers</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Lees meer over Dot stemmen</a> .</p>
+      title: Thema's kiezen voor onze conferentie
+      details: <h3 id="what-is-this-poll-about"><strong>Waar gaat deze peiling over?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> In deze poll heb je een budget van 8 stippen om toe te wijzen aan de opties die je verkiest. U kunt alle stippen op één optie plaatsen of ze uitspreiden.</p>
+    ranked_choice:
+      process_subtitle: Begrijp de geordende voorkeur van opties
+      process_introduction: <p>Gerangschikte keuze is handig wanneer u een groot aantal opties heeft of een verkiezing houdt.</p><p> Deze poll-sjabloon biedt een reeks opties waarmee mensen in hun gewenste volgorde kunnen stemmen.</p><p> U kunt het aantal keuzes instellen dat de kiezer krijgt.</p><p> <span>Kiezers slepen opties in volgorde van voorkeur (#1 is de optie met de meeste voorkeur).</span></p><p> <span>Geavanceerde instellingen zijn onder meer 'Stemmen zijn anoniem' en 'Toon opties in willekeurige volgorde' - vaak gebruikt voor R</span> anked choice om eventuele vooringenomenheid bij stemmen te verminderen.</p><p> Resultaten worden getoond in gerangschikte volgorde. De resultatentabel biedt aanvullende gegevens om u te helpen bij het analyseren van resultaten.</p><ul><li><p> Rang</p></li><li><p> % van de punten</p></li><li><p> Punten</p></li><li><p> Gemeen</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Lees meer over Geclassificeerde keuze</a> .</p>
+      title: Verkies bestuurders voor de bestuursraad
+      details: <h3 id="what-is-this-poll-about"><strong>Waar gaat deze peiling over?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Stem door de opties in volgorde van uw voorkeur te rangschikken. De optie die als eerste in de resultaten staat, wint.</p>
+    time_poll:
+      process_subtitle: Ontdek wanneer mensen beschikbaar zijn om elkaar te ontmoeten
+      process_introduction: "<p><span>Bespaar tijd met het regelen van een datum voor uw vergadering of evenement.</span></p><p> Tijdpeiling maakt het gemakkelijk om ieders beschikbaarheid te zien en de beste tijd te vinden.</p><p> Geef uw tijdpeiling een titel en details. Voer een lijst met datum- en tijdopties in uw tijdzone in.</p><p> Houd bij het instellen van timeslots rekening met mensen in verschillende tijdzones. Deelnemers zien tijden gelokaliseerd in hun tijdzone.</p><p> Stel een vergaderduur in.</p><p> Wanneer de tijdpeiling sluit, stelt u een uitkomst in met de beste tijd en eventuele instructies voor de vergadering.</p><p> <span>Loomio voegt een agenda-uitnodiging toe aan de e-mail met de melding van de uitkomst, zodat deelnemers iets aan hun agenda kunnen toevoegen.</span></p>"
+      title: Laten we een datum zoeken voor onze volgende ontmoeting
+      details: "<p><strong>Wat is de bijeenkomst of het evenement?</strong></p><p></p><p> <strong>Waarom is dit belangrijk?</strong></p><p></p><p> <strong>Wat vraag je mensen te doen?</strong></p><p></p><p> <span>Markeer de tijdsloten waarop je beschikbaar bent met het groene 'thumbs up'-icoon of laat de rode 'thumbs down' staan als je niet beschikbaar bent.</span></p><p> <span>Gebruik het 'thumbs sideways' icoon om aan te geven dat je beschikbaar bent 'indien nodig'.</span></p>"
+      reason_prompt: Kun je iets zeggen om de organisator te helpen een geschikte tijd te vinden?
+    opt_in:
+      process_subtitle: Zoek vrijwilligers of vraag naar deelnemers
+      process_introduction: "<p>Gebruik Opt-in om mensen uit te nodigen om lid te worden van een team, commissie of werkgroep, of om deel te nemen aan een evenement.</p><p> 'Opt-in' heeft twee stemopties: Accepteren of Weigeren.</p><p> U kunt een doelaantal mensen definiëren waarnaar u op zoek bent, bijvoorbeeld 3 mensen om lid te worden van uw werkgroep.</p>"
+      title: Werkgroep om ons nieuwe duurzaamheidsbeleid op te stellen
+      details: "<p><strong>Wat is het team, de werkgroep of het evenement waarvoor je mensen uitnodigt?</strong></p><p></p><p> <strong>Waarom is dit belangrijk?</strong></p><p></p><p> <strong>Wat vraag je mensen te doen?</strong></p><p></p><p> Selecteer 'Accepteren' om deel te nemen!</p>"
+      accept_meaning: Ik ben bereid om mee te doen
+      accept_prompt: Waarom zet je je hier vrijwillig voor in?
+      decline_meaning: Ik kan niet deelnemen
+      decline_prompt: Is er iets dat je zou willen zeggen?

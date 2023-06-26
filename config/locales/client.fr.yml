@@ -2406,3 +2406,140 @@ fr:
       community: Groupe communautaire
       government: Gouvernement ou collectivités locales
       other: Autre
+  poll_templates:
+    proposal:
+      process_subtitle: Faire une proposition pour prendre une décision
+      process_introduction: <p>La proposition classique de Loomio vous aide à prendre une décision, convertissant une discussion en un résultat clair.</p><p> Suggérez un plan d'action et invitez les gens à répondre en votant d'accord, d'abstention ou de désaccord.</p><p> Lorsque les gens votent, ils peuvent donner une raison pour laquelle ils ont voté de cette façon. Vous pouvez voir où tout le monde se situe sur la question, et pourquoi.</p><p> De cette façon, vous pouvez utiliser une proposition pour inciter les gens à répondre, découvrir de nouvelles informations et établir une compréhension commune - pour aider votre groupe à prendre une décision meilleure et plus éclairée.</p><p> Une proposition et une discussion associée créent leur propre enregistrement de la manière dont la décision a été prise.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>En savoir plus sur l'utilisation de la proposition classique de Loomio dans le processus de décision simple</u></a> .</p>
+      title: Approuver le nouveau concept de marque
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quelle est la décision que vous devez prendre ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Pour que cette proposition soit adoptée, nous avons besoin que la majorité des membres votent d'accord.</p><p> Si vous n'êtes pas d'accord, dites pourquoi et ce qui doit changer pour que vous soyez d'accord. \U0001F642</p>
+      agree: Accepter
+      agree_meaning: Je soutiens la proposition
+      agree_prompt: Qu'est-ce que vous aimez dans la proposition et comment cela profitera-t-il au groupe ?
+      abstain: Abstention
+      abstain_meaning: Choisissant de ne pas voter ou incapable de voter dans cette décision.
+      abstain_prompt: Pourquoi vous abstenez-vous ou ne vous sentez-vous pas en mesure de voter sur cette décision ?
+      disagree: Être en désaccord
+      disagree_meaning: Quelque chose dans cette proposition doit être changé avant que je puisse l'appuyer.
+      disagree_prompt: Comment cette proposition pourrait-elle être améliorée afin que vous puissiez la soutenir ?
+    advice:
+      process_subtitle: Demandez conseil sur une décision que vous devez prendre
+      process_introduction: <p>Demandez conseil sur une décision que vous devez prendre, avec l'avis des personnes concernées ou qui ont une expertise, afin que vous puissiez prendre une meilleure décision pour votre organisation.</p><ul><li><p> Les conseils vous aident à prendre une meilleure décision pour votre organisation.</p></li><li><p> Favoriser les relations, les opportunités d'apprentissage et la diversité des apports.</p></li><li><p> Stimuler l'initiative et la créativité, et un travail plus agréable.</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>En savoir plus sur le processus de conseil</u></a> .</p>
+      title: Aidez Takashi à acheter un nouvel ordinateur
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quelle est la décision que vous devez prendre ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Quels conseils demandez-vous aux gens pour vous aider à prendre une bonne décision ?</strong></h3><p></p><p> Je sollicite votre avis pour m'aider à prendre une bonne décision pour notre organisation.</p>
+      agree: Accepter
+      agree_meaning: J'ai offert mon avis sur cette décision
+      agree_prompt: Résumez vos conseils ou faites un commentaire utile
+      abstain: Abstention
+      abstain_meaning: je n'ai pas de conseils à donner
+      abstain_prompt: Avez-vous des commentaires qui pourraient être utiles?
+    consent:
+      process_subtitle: Prendre une décision "sûre à essayer", sans objections
+      process_introduction: <p>Demandez le consentement sur une décision que vous devez prendre, lorsqu'il n'y a pas d'objections significatives à votre proposition, afin que vous puissiez prendre une décision rapide pour votre organisation qui est « sûre à essayer ».</p><ul><li><p> Visez une décision "assez bonne"</p></li><li><p> Impliquer de nombreuses voix pour développer une proposition réalisable</p></li><li><p> Demandez si quelqu'un a une objection valable</p></li><li><p> Modifier la proposition pour résoudre les objections</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">En savoir plus sur le processus de consentement</a> .</p>
+      title: Embauchez Chloé pour un rôle de conception
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quelle est la décision que vous devez prendre ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Que demandez-vous aux personnes dans cette proposition ?</strong></h3><p></p><p> Si vous avez une objection, veuillez dire pourquoi et proposer un changement à la proposition qui la rend sûre.</p><p> N'oubliez pas que nous recherchons le consentement pour une décision « assez bonne » qui est « sûre à essayer », afin que nous puissions prendre une bonne décision pour notre organisation.</p>
+      consent: Consentement
+      consent_meaning: La proposition peut être essayée en toute sécurité
+      consent_prompt: Qu'est-ce que vous aimez dans la proposition et comment bénéficiera-t-elle à l'organisation ?
+      objection: Objection
+      objection_meaning: J'ai une objection valable et je pense que la proposition causera un préjudice
+      objection_prompt: Quelle modification faut-il apporter à cette proposition pour la rendre « sûre à essayer », afin que vous puissiez la soutenir ?
+    consensus:
+      process_subtitle: Parvenir à une convention collective avec toutes les personnes impliquées
+      process_introduction: <p>Construisez un consensus pour une décision que vous devez prendre, pour parvenir à un accord qui réponde aux besoins et aux préoccupations de tous les participants.</p><ul><li><p> Discuter et élaborer une proposition ensemble</p></li><li><p> Inclure et respecter toutes les personnes impliquées</p></li><li><p> Rechercher l'accord de la plupart des gens</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">En savoir plus sur le processus de consensus</a> .</p>
+      title: Approuver le nouveau concept de marque
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Quelle est la décision que vous devez prendre ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Pour que cette proposition soit adoptée, nous avons besoin que la majorité des membres votent d'accord.</p><p> Si vous n'êtes pas d'accord, dites pourquoi et ce qui doit changer pour que vous soyez d'accord.</p>
+      agree: Accepter
+      agree_meaning: Je soutiens la proposition
+      agree_prompt: Qu'est-ce que vous aimez dans la proposition et comment bénéficiera-t-elle à l'organisation ?
+      abstain: Abstention
+      abstain_meaning: Cette décision ne m'affecte pas et je suis content de ce que le groupe décide
+      abstain_prompt: Pourquoi vous abstenez-vous ou ne vous sentez-vous pas en mesure de voter sur cette décision ?
+      disagree: Être en désaccord
+      disagree_meaning: Quelque chose dans cette proposition doit être changé avant que je puisse la soutenir
+      disagree_prompt: Comment cette proposition pourrait-elle être améliorée afin que vous puissiez la soutenir ?
+      block: Bloc
+      block_meaning: Je bloque cette proposition et je pense qu'elle ne devrait pas aller de l'avant
+      block_prompt: Expliquez votre objection à cette proposition et pourquoi elle ne devrait pas aller de l'avant
+    question_round:
+      process_subtitle: Inviter des questions de clarification pour aider les gens à comprendre une proposition
+      process_introduction: <p>Une série de questions est une occasion pour les gens de poser des questions de clarification sur la proposition, afin que chacun comprenne la proposition avant de dire ce qu'il en pense.</p><p> Le tour de questions Loomio est une proposition spéciale sans options de vote. Il permet aux participants de poser des questions dans un délai que vous avez défini pour le tour.</p><p> Une série de questions est couramment utilisée comme étape dans le processus de consentement.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">En savoir plus sur le processus de consentement</a> .</p>
+      title: Quelles questions avez-vous sur la politique de santé et de sécurité ?
+      details: <h3 id="what-are-you-proposing"><strong>Que proposez-vous ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Il s'agit d'un tour de questions, où vous êtes invité à poser des questions de clarification.</p><p> Que devez-vous savoir pour comprendre la proposition ?</p><p> Veuillez répondre avant la fin de la série de questions.</p>
+      reason_prompt: Que devez-vous savoir pour comprendre la proposition ?
+    sense_check:
+      process_subtitle: Demandez des commentaires, des questions et des préoccupations
+      process_introduction: <p>La proposition de vérification Sense est un bon moyen d'obtenir des commentaires, d'inviter des questions et de découvrir des préoccupations. Il aide à clarifier et à améliorer une proposition avant de passer à une décision.</p><p> La vérification de sens permet aux gens de savoir qu'une proposition est en train de se former et les encourage à s'engager. C'est une opportunité d'écouter les gens, de ressentir ce qu'ils ressentent et de réagir de manière appropriée - ouvrant la possibilité d'intégrer leurs contributions pour prendre une meilleure décision.</p><p> Utilisez la proposition de vérification de sens dans le processus de consentement pour inviter des réactions et des commentaires afin d'améliorer la proposition, et dans un processus de consensus pour tester le consensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>En savoir plus sur l'utilisation de la vérification de sens dans le processus de décision simple</u></a> <span>.</span></p>
+      title: Que pensez-vous des nouveaux concepts de marque ?
+      details: <h3 id="what-are-you-proposing"><strong>Que proposez-vous ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Que pensez-vous de la proposition ? Laissez un commentaire ou faites une suggestion d'amélioration.</p><p> Ce contrôle Sense est une opportunité pour vos commentaires et votre contribution, pour nous aider à prendre une meilleure décision.</p>
+      looks_good: Cela semble bon
+      looks_good_meaning: Je suis content de là où ça se passe
+      looks_good_prompt: Avez-vous des commentaires ou des suggestions pour améliorer la proposition?
+      abstain: Abstention
+      abstain_meaning: Je n'ai rien à ajouter, ni aucune objection à ce travail.
+      abstain_prompt: L'abstention implique le consentement au sens de cette proposition. Y a-t-il une raison pour laquelle vous votez pour vous abstenir ?
+      concerned: Concerné
+      concerned_meaning: Quelque chose à ce sujet devra peut-être changer pour que je consente ou accepte
+      concerned_prompt: Quelle est votre préoccupation et comment pourrait-elle être résolue ?
+    gradients_of_agreement:
+      process_subtitle: Soutien express pour une proposition sur une échelle de 8 points
+      process_introduction: "<p>La proposition de gradients d'accord permet aux membres d'un groupe d'exprimer leur soutien à une proposition en degrés sur une échelle, offrant plus de façons d'exprimer leur soutien qu'en termes de « d'accord » et de « pas d'accord ».</p><p> Utilisez les gradients d'accord comme un tour préliminaire, pour tester le soutien d'une proposition avant de passer à un accord formel.</p><p> Les gradients d'accord permettent aux gens de savoir qu'une proposition est en train de se former et les encouragent à s'engager. C'est une opportunité d'écouter les gens, de ressentir ce qu'ils ressentent et de réagir de manière appropriée - ouvrant la possibilité d'intégrer leurs contributions pour prendre une meilleure décision.</p>"
+      title: Comment trouvez-vous la nouvelle déclaration de valeurs ?
+      details: <h3 id="what-are-you-proposing"><strong>Que proposez-vous ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Comment aimez-vous la proposition? Exprimez votre soutien sur l'échelle ci-dessous et laissez un commentaire ou une suggestion d'amélioration.</p><p> Cette proposition de gradients d'accord vise à tester le soutien à la proposition et à donner votre avis avant de passer à un accord formel.</p>
+      whole_hearted_endorsement: Approbation sans réserve
+      whole_hearted_endorsement_meaning: J'aime vraiment ça!
+      whole_hearted_endorsement_prompt: Qu'est-ce que vous aimez à ce sujet?
+      agreement_with_minor_contention: Accord avec conflit mineur
+      agreement_with_minor_contention_meaning: Pas parfait, mais c'est assez bon
+      agreement_with_minor_contention_prompt: Quelle est votre préoccupation?
+      support_with_reservations: Prise en charge des réservations
+      support_with_reservations_meaning: Je peux vivre avec ça
+      support_with_reservations_prompt: Quelles sont vos réservations ?
+      abstain_meaning: Ce problème ne me concerne pas
+      abstain_prompt: Avez-vous quelque chose à ajouter?
+      more_discussion_needed: Plus de discussion nécessaire
+      more_discussion_needed_meaning: Je ne comprends pas encore assez bien les problèmes
+      more_discussion_needed_prompt: Qu'est-ce que tu ne comprends pas?
+      don_t_like_but_will_support: N'aime pas mais soutiendra
+      don_t_like_but_will_support_meaning: C'est pas génial mais j'ai pas envie de retarder le groupe
+      don_t_like_but_will_support_prompt: Que souhaiteriez-vous voir amélioré ?
+      serious_disagreement: Désaccord sérieux
+      serious_disagreement_meaning: Je ne suis pas d'accord avec ça - ne comptez pas sur moi
+      serious_disagreement_prompt: Avec quoi n'es tu pas d'accord?
+      veto: Veto
+      veto_meaning: Je bloque cette proposition
+      veto_prompt: Pourquoi bloquez-vous la proposition ? Qu'est-ce qui doit changer pour que vous puissiez le supporter ?
+    simple_poll:
+      process_subtitle: Trouvez l'option la plus populaire
+      process_introduction: <p>Avant de prendre une décision, trouvez la ou les options qui intéressent le plus les gens.</p><p> Un sondage simple vous aide à trouver l'option ou les options les plus populaires avec un choix unique ou multiple.</p><p> Écrivez tous les détails sur les options dans le champ des détails, puis entrez le nom de l'option et cliquez sur + pour ajouter.</p><p> Définissez les <strong>choix minimum</strong> et <strong>les choix maximum</strong> qu'un électeur peut choisir. Laissez le choix maximum à 1 pour un sondage à choix unique.</p><p> Vous pouvez utiliser l'icône en forme de crayon à côté de chaque option pour ajouter une <strong>signification</strong> à l'option, une précision supplémentaire sur l'option pour aider les gens lors du vote.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">En savoir plus sur Sondage simple</a> .</p>
+      title: Où devrait se concentrer notre orientation stratégique?
+      details: <h3 id="what-is-this-poll-about"><strong>De quoi parle ce sondage ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Choisissez la ou les options que vous préférez.</p>
+    score_poll:
+      process_subtitle: Mesurer le degré de soutien pour chaque option
+      process_introduction: <p>Utilisez le sondage Score lorsque vous souhaitez interroger les gens sur leur désir, leur préférence ou leur intérêt pour chaque option.</p><p> <span>Les participants sont invités à évaluer chaque option et à attribuer une note en déplaçant un curseur le long d'une échelle.</span></p><p> <span>Les résultats sont affichés graphiquement avec un tableau pour chaque option indiquant le total des points, la moyenne des points et le nombre de votants.</span></p><p> Les paramètres avancés incluent "Les votes sont anonymes" et "Afficher les options dans un ordre aléatoire" - couramment utilisés pour le sondage Score afin de réduire tout biais de vote.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">En savoir plus sur Score sondage</a> .</p>
+      title: Évaluer comment les décisions sont prises dans notre organisation
+      details: <h3 id="what-is-this-poll-about"><strong>De quoi parle ce sondage ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Choisissez la ou les options que vous préférez.</p>
+    dot_vote:
+      process_subtitle: Allouer un budget de points pour révéler les priorités
+      process_introduction: <p>Le vote par points est utile pour les groupes essayant d'allouer une ressource limitée à un certain nombre d'options. Il va au-delà d'un simple sondage en aidant les participants à comprendre qu'il existe une contrainte lors de la sélection des options.</p><p> Les participants reçoivent chacun un nombre défini de points. Vous décidez combien.</p><p> Ils placent des points à côté des options présentées qu'ils aiment. Les participants peuvent placer tous leurs points sur une seule option ou les répartir sur plusieurs options.</p><p> Au fur et à mesure que les participants allouent des points, ils peuvent dépasser la limite du budget de points et sont donc encouragés à réfléchir à la manière dont ils dépensent leurs points avec soin.</p><p> Les options avec le plus de points « gagnent ». Le tableau des résultats fournit des données supplémentaires pour vous aider à analyser les résultats.</p><ul><li><p> % de points</p></li><li><p> Points</p></li><li><p> Moyenne</p></li><li><p> Électeurs</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">En savoir plus sur le vote par points</a> .</p>
+      title: Choisir les thèmes de notre conférence
+      details: <h3 id="what-is-this-poll-about"><strong>De quoi parle ce sondage ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Dans ce sondage, vous disposez d'un budget de 8 points à allouer aux options que vous préférez. Vous pouvez placer tous les points sur une option ou les répartir.</p>
+    ranked_choice:
+      process_subtitle: Comprendre la préférence ordonnée des options
+      process_introduction: <p>Le choix classé est utile lorsque vous avez un grand nombre d'options ou que vous organisez une élection.</p><p> Ce modèle de sondage offre une série d'options permettant aux personnes de voter dans l'ordre de leur choix.</p><p> Vous pouvez définir le nombre de choix que l'électeur obtient.</p><p> <span>Les électeurs glissent et déposent les options par ordre de préférence (le n° 1 étant votre option préférée).</span></p><p> <span>Les paramètres avancés incluent "Les votes sont anonymes" et "Afficher les options dans un ordre aléatoire" - couramment utilisés pour les</span> choix classés afin de réduire tout biais de vote.</p><p> Les résultats sont affichés par ordre de classement. Le tableau des résultats fournit des données supplémentaires pour vous aider à analyser les résultats.</p><ul><li><p> Rang</p></li><li><p> % de points</p></li><li><p> Points</p></li><li><p> Moyenne</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">En savoir plus sur le choix classé</a> .</p>
+      title: Élire les administrateurs au conseil de gouvernance
+      details: <h3 id="what-is-this-poll-about"><strong>De quoi parle ce sondage ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Votez en classant les options par ordre de préférence. L'option qui se classe en premier dans les résultats gagne.</p>
+    time_poll:
+      process_subtitle: Trouver quand les gens sont disponibles pour se rencontrer
+      process_introduction: "<p><span>Gagnez du temps en fixant une date pour votre réunion ou événement.</span></p><p> Le sondage horaire permet de voir facilement la disponibilité de chacun et de trouver le meilleur moment.</p><p> Donnez à votre sondage Time un titre et des détails. Entrez une liste d'options de date et d'heure dans votre fuseau horaire.</p><p> Lors de la définition des plages horaires, tenez compte des personnes situées dans des fuseaux horaires différents. Les participants verront les heures localisées dans leur fuseau horaire.</p><p> Définissez une durée de réunion.</p><p> Lorsque le sondage Heure se ferme, définissez un résultat avec le meilleur temps et toutes les instructions pour la réunion.</p><p> <span>Loomio inclura une invitation de calendrier avec l'e-mail de notification de résultat, afin que les participants puissent ajouter à leur calendrier.</span></p>"
+      title: Trouvons une date pour notre prochaine réunion
+      details: <p><strong>Quelle est la réunion ou l'événement ?</strong></p><p></p><p> <strong>Pourquoi est-ce important?</strong></p><p></p><p> <strong>Que demandez-vous aux gens de faire ?</strong></p><p></p><p> <span>Marquez les créneaux horaires où vous êtes disponible avec l'icône verte "pouce vers le haut" ou laissez le rouge "pouce vers le bas" en place lorsqu'il n'est pas disponible.</span></p><p> <span>Utilisez l'icône "pouces sur le côté" pour dire que vous êtes disponible "si besoin est".</span></p>
+      reason_prompt: Y a-t-il quelque chose que vous pouvez dire pour aider l'organisateur à trouver un moment approprié ?
+    opt_in:
+      process_subtitle: Trouvez des volontaires ou demandez des participants
+      process_introduction: "<p>Utilisez Opt-in pour inviter des personnes à rejoindre une équipe, un comité ou un groupe de travail, ou à participer à un événement.</p><p> 'Opt-in' a deux options de vote : Accepter ou Refuser.</p><p> Vous pouvez définir un nombre cible de personnes que vous recherchez, disons 3 personnes pour rejoindre votre groupe de travail.</p>"
+      title: Groupe de travail pour rédiger notre nouvelle politique de développement durable
+      details: <p><strong>Quelle est l'équipe, le groupe de travail ou l'événement auquel vous invitez les gens ?</strong></p><p></p><p> <strong>Pourquoi est-ce important?</strong></p><p></p><p> <strong>Que demandez-vous aux gens de faire ?</strong></p><p></p><p> Sélectionnez "Accepter" pour participer !</p>
+      accept_meaning: Je suis prêt à participer
+      accept_prompt: Pourquoi êtes-vous volontaire pour cela ?
+      decline_meaning: je ne peux pas participer
+      decline_prompt: Y a-t-il quelque chose que vous voudriez dire ?
