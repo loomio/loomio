@@ -46,8 +46,8 @@ module Null::User
   def avatar_initials_url(size = 256)
     params = {
       name: "AU".split('').join('+'),
-      background: color.gsub('#',''),
-      color: AppConfig.theme[:brand_colors].slice(:gold).values.first,
+      background: AppConfig.theme[:brand_colors].slice(:gold).values.first.gsub('#',''),
+      color: '000000',
       rounded: true,
       format: :png,
       size: size
