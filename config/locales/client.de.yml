@@ -1926,7 +1926,6 @@ de:
     votes_are_anonymous: Stimmabgaben sind anonym
     example_title: Beispieltitel
     example_title_hint: Nennen Sie ein Beispiel für einen guten Vorschlagstitel
-    example_details_placeholder: Stellen Sie einen selbsterklärenden Vorschlagstext bereit, den die Leute an ihre Bedürfnisse anpassen können
     confirm_delete: Sind Sie sicher, dass Sie diese Umfragevorlage löschen möchten? Das kann nicht rückgängig gemacht werden.
     show_advanced_settings: Erweiterte Einstellungen anzeigen
     hide_advanced_settings: Verberge erweiterte Einstellungen
@@ -1948,12 +1947,6 @@ de:
     this_is_a_template_for_new_polls: Dies ist eine Vorlage für neue Umfragen
     voting_method: Abstimmungsmethode
     process: Verfahren
-    process_name: Prozessname
-    process_name_hint: Wie nennt man diesen Prozess? ZB Vorschlag, Temperaturprüfung, Protokollgenehmigung
-    process_subtitle: Untertitel des Prozesses
-    process_subtitle_hint: Ein kurzer Satz, der den Nutzen des Prozesses verdeutlicht
-    process_introduction: Prozesseinführung
-    process_introduction_hint: Ein oder zwei Absätze, die die Funktionsweise des Prozesses erläutern und Links zu Ressourcen enthalten, die möglicherweise benötigt werden.
     process_url: Prozess-URL
     process_url_hint: Link zu einer Webseite, die diesen Vorgang erklärt
     poll_type_name: Name des Umfragetyps
@@ -1987,6 +1980,13 @@ de:
     hide_results_description: Wenn Sie möchten, dass die Leute abstimmen, ohne zu wissen, wie andere abgestimmt haben, können Sie die Ergebnisse der Umfrage ausblenden.
     process_helptext: Benennen und beschreiben Sie den Prozess, der zum Ausführen dieser Umfrage verwendet wird.
     reminder_helptext: Senden Sie eine Benachrichtigung „Bald schließt“, bevor die Umfrage endet. Dies kann eine Gelegenheit für die Menschen sein, zu sehen, wie andere abgestimmt haben, und ihre eigene Stimme zu überdenken, oder einfach eine Möglichkeit, die Beteiligung an der Umfrage zu erhöhen.
+    example_details_placeholder: Geben Sie einen Ausgangspunkt für einen Vorschlag oder eine Umfrage an. Fragen können nützliche Anregungen sein, um Leute zum Schreiben zu bewegen. Fügen Sie alle Regeln oder Erinnerungen hinzu, die die Teilnehmer kennen müssen.
+    process_name: Vorlagentitel
+    process_name_hint: Wie nennt man diese Vorlage? ZB Rollenberatung, Temperaturkontrolle, Protokollgenehmigung
+    process_subtitle: Untertitel der Vorlage
+    process_subtitle_hint: Eine einzeilige Beschreibung, wann und warum diese Vorlage verwendet werden soll
+    process_introduction: Vorlagenhilfe
+    process_introduction_hint: Ein paar Absätze, die erklären, wie die Vorlage verwendet wird. Fügen Sie Links zu Ressourcen hinzu, die hilfreich sein könnten.
   poll_proposal_form:
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten

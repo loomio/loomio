@@ -1961,7 +1961,6 @@ it:
     votes_are_anonymous: I voti sono anonimi
     vote_reason: Motivazione del voto
     example_title_hint: Fai un esempio di un buon titolo di proposta
-    example_details_placeholder: Fornire un testo di proposta autoesplicativo che le persone possono modificare in base alle proprie esigenze
     confirm_delete: Sei sicuro di voler eliminare questo modello di sondaggio? Questo non può essere annullato.
     show_advanced_settings: mostra impostazioni avanzate
     hide_advanced_settings: Nascondi le impostazioni avanzate
@@ -1974,12 +1973,6 @@ it:
     show_other_zones: Mostra altri fusi orari
     hide_other_zones: Nascondi altri fusi orari
     this_is_a_template_for_new_polls: Questo è un modello per i nuovi sondaggi
-    process_name: Nome del processo
-    process_name_hint: Come si chiama questo processo? Es. proposta, controllo della temperatura, approvazione del verbale
-    process_subtitle: Sottotitolo del processo
-    process_subtitle_hint: Una breve frase che vende il vantaggio del processo
-    process_introduction: Introduzione al processo
-    process_introduction_hint: Uno o due paragrafi che introducono il funzionamento del processo e gli eventuali collegamenti alle risorse di cui le persone potrebbero aver bisogno.
     process_url: URL di processo
     process_url_hint: Collegamento a una pagina Web che spiega questo processo
     poll_type_name_hint: Come si chiama questo tipo di sondaggio? Es. proposta, controllo della temperatura, approvazione del verbale
@@ -1996,6 +1989,13 @@ it:
     hide_results_description: Se vuoi che le persone votino senza sapere come hanno votato gli altri, puoi nascondere i risultati del sondaggio.
     process_helptext: Assegna un nome e descrivi il processo utilizzato per eseguire questo sondaggio.
     reminder_helptext: Invia una notifica "Chiusura a breve" prima della chiusura del sondaggio. Questa può essere un'opportunità per le persone di vedere come hanno votato gli altri e riconsiderare il proprio voto, o semplicemente un modo per aumentare la partecipazione al sondaggio.
+    example_details_placeholder: Fornisci un punto di partenza per una proposta o un sondaggio. Le domande possono essere suggerimenti utili per convincere le persone a scrivere. Includere eventuali regole o promemoria che i partecipanti dovranno conoscere.
+    process_name: Titolo del modello
+    process_name_hint: Come si chiama questo modello? Ad esempio consiglio di ruolo, controllo della temperatura, approvazione dei verbali
+    process_subtitle: Sottotitolo del modello
+    process_subtitle_hint: Una descrizione di una riga di quando o perché utilizzare questo modello
+    process_introduction: Aiuto modello
+    process_introduction_hint: Alcuni paragrafi che spiegano come utilizzare il modello. Includere collegamenti a risorse che potrebbero essere utili.
   poll_proposal_form:
     start_header: Lancia proposta
     edit_header: Aggiorna proposta

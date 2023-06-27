@@ -2035,18 +2035,18 @@ es:
       Envíe una notificación de "Cierre pronto" antes de que se cierre la encuesta.
       Esta puede ser una oportunidad para que las personas vean cómo otros han votado y reconsideren su propio voto, o simplemente una forma de aumentar la participación en la encuesta.
     example_title_hint: Dé un ejemplo de un buen título de propuesta
-    example_details_placeholder: Proporcione un texto de propuesta explicativo que las personas puedan modificar para adaptarlo a sus necesidades.
     confirm_delete: "¿Está seguro de que desea eliminar esta plantilla de encuesta? Esto no se puede deshacer."
     show_advanced_settings: Mostrar configuración avanzada
     hide_advanced_settings: Ocultar configuraciones avanzadas
-    process_name: Nombre del proceso
-    process_name_hint: "¿Cómo llamas a este proceso? Por ejemplo, propuesta, control de temperatura, aprobación de actas"
-    process_subtitle: Subtítulo del proceso
-    process_subtitle_hint: Una oración corta que vende el beneficio del proceso.
-    process_introduction: Introducción al proceso
-    process_introduction_hint: Uno o dos párrafos que presenten cómo funciona el proceso y cualquier enlace a los recursos que las personas puedan necesitar.
     process_url: URL del proceso
     process_url_hint: Enlace a una página web que explica este proceso
+    example_details_placeholder: Proporcione un punto de partida para una propuesta o encuesta. Las preguntas pueden ser indicaciones útiles para que la gente escriba. Incluya cualquier regla o recordatorio que los participantes necesiten saber.
+    process_name: Título de la plantilla
+    process_name_hint: "¿Cómo llamas a esta plantilla? Por ejemplo, asesoramiento sobre funciones, control de temperatura, aprobación de actas"
+    process_subtitle: Subtítulo de plantilla
+    process_subtitle_hint: Una descripción de una línea de cuándo o por qué usar esta plantilla
+    process_introduction: Ayuda de plantilla
+    process_introduction_hint: Unos párrafos que explican cómo utilizar la plantilla. Incluya enlaces a recursos que podrían ser útiles.
   poll_proposal_form:
     tool_tip_collapsed: Toma de decisión conjunta
     vote_method_hint: Los votantes están de acuerdo o en desacuerdo con una declaración

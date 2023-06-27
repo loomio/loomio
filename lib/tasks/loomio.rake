@@ -27,8 +27,16 @@ namespace :loomio do
         'hu' => 'hu'
       }.each_pair do |file_locale, google_locale|
         foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
-        if foreign.has_key? 'poll_common'
-          foreign['poll_common'].delete('new_templates_are_here')
+        if foreign.has_key? 'poll_common_form'
+          %w[process_name
+            process_name_hint
+            process_subtitle
+            process_subtitle_hint
+            process_introduction
+            process_introduction_hint
+            example_details_placeholder].each do |key|
+            foreign['poll_common_form'].delete(key)
+          end
         end
         File.write("config/locales/#{source_name}.#{file_locale}.yml", {file_locale => foreign}.to_yaml(line_width: 2000)) 
       end

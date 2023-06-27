@@ -2023,18 +2023,18 @@ pt_BR:
       Envie uma notificação de 'Fechamento em breve' antes do encerramento da enquete.
       Esta pode ser uma oportunidade para as pessoas verem como os outros votaram e reconsiderarem seu próprio voto, ou apenas uma forma de aumentar a participação na enquete.
     example_title_hint: Dê um exemplo de um bom título de proposta
-    example_details_placeholder: Forneça um texto de proposta autoexplicativo que as pessoas possam modificar para atender às suas necessidades
     confirm_delete: Tem certeza de que deseja excluir este modelo de votação? Isto não pode ser desfeito.
     show_advanced_settings: Mostrar configurações avançadas
     hide_advanced_settings: Ocultar configurações avançadas
-    process_name: Nome do processo
-    process_name_hint: Como você chama esse processo? Por exemplo, proposta, verificação de temperatura, aprovação de atas
-    process_subtitle: Processar legenda
-    process_subtitle_hint: Uma frase curta que vende o benefício do processo
-    process_introduction: Introdução do processo
-    process_introduction_hint: Um ou dois parágrafos que apresentam como o processo funciona e quaisquer links para recursos que as pessoas possam exigir.
     process_url: URL do processo
     process_url_hint: Link para uma página da Web que explica esse processo
+    example_details_placeholder: Forneça um ponto de partida para uma proposta ou enquete. As perguntas podem ser úteis para fazer as pessoas escreverem. Inclua quaisquer regras ou lembretes que os participantes precisem saber.
+    process_name: Título do modelo
+    process_name_hint: Como você chama esse modelo? Por exemplo, conselho de função, verificação de temperatura, aprovação de minutos
+    process_subtitle: Subtítulo do modelo
+    process_subtitle_hint: Uma descrição de uma linha de quando ou por que usar este modelo
+    process_introduction: Ajuda do modelo
+    process_introduction_hint: Alguns parágrafos que explicam como usar o modelo. Inclua links para recursos que possam ser úteis.
   poll_proposal_form:
     tool_tip_collapsed: Tome uma decisão juntos
     vote_method_hint: Os eleitores concordam ou discordam de uma declaração

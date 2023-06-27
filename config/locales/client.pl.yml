@@ -1918,7 +1918,6 @@ pl:
     votes_are_anonymous: Głosy są anonimowe
     example_title: Przykładowy tytuł
     example_title_hint: Podaj przykład dobrego tytułu wniosku
-    example_details_placeholder: Podaj zrozumiały tekst propozycji, który ludzie mogą modyfikować, aby odpowiadał ich potrzebom
     confirm_delete: Czy na pewno chcesz usunąć ten szablon ankiety? Tego nie da się cofnąć.
     show_advanced_settings: Pokaż ustawienia zaawansowane
     hide_advanced_settings: Ukryj ustawienia zaawansowane
@@ -1940,12 +1939,6 @@ pl:
     this_is_a_template_for_new_polls: To jest szablon dla nowych ankiet
     voting_method: Sposób głosowania
     process: Proces
-    process_name: Nazwa procesu
-    process_name_hint: Jak nazywasz ten proces? Np. Propozycja, kontrola temperatury, zatwierdzenie protokołu
-    process_subtitle: Podtytuł procesu
-    process_subtitle_hint: Jedno krótkie zdanie, które sprzedaje korzyści płynące z procesu
-    process_introduction: Wprowadzenie procesu
-    process_introduction_hint: Jeden lub dwa akapity, które przedstawiają sposób działania procesu i wszelkie łącza do zasobów, których mogą potrzebować ludzie.
     process_url: Adres URL procesu
     process_url_hint: Link do strony internetowej wyjaśniającej ten proces
     poll_type_name: Nazwa typu ankiety
@@ -1979,6 +1972,13 @@ pl:
     hide_results_description: Jeśli chcesz, aby ludzie głosowali, nie wiedząc, jak głosowali inni, możesz ukryć wyniki ankiety.
     process_helptext: Nazwij i opisz proces, który jest używany do uruchomienia tej ankiety.
     reminder_helptext: Wyślij powiadomienie „Wkrótce zamknięcie” przed zamknięciem ankiety. Może to być okazja dla ludzi, aby zobaczyć, jak głosowali inni i przemyśleć swój głos, lub po prostu sposób na zwiększenie udziału w ankiecie.
+    example_details_placeholder: Podaj punkt wyjścia dla propozycji lub ankiety. Pytania mogą być przydatnymi zachętami do pisania. Dołącz wszelkie zasady lub przypomnienia, które uczestnicy będą musieli znać.
+    process_name: Tytuł szablonu
+    process_name_hint: Jak nazwać ten szablon? Np. porady dotyczące roli, kontrola temperatury, zatwierdzanie protokołów
+    process_subtitle: Podtytuł szablonu
+    process_subtitle_hint: Jednowierszowy opis, kiedy i dlaczego używać tego szablonu
+    process_introduction: Pomoc dotycząca szablonu
+    process_introduction_hint: Kilka akapitów, które wyjaśniają, jak korzystać z szablonu. Dołącz linki do zasobów, które mogą być pomocne.
   poll_proposal_form:
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję

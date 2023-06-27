@@ -1901,7 +1901,6 @@ nl_NL:
     votes_are_anonymous: Stemmen zijn anoniem
     example_title: Voorbeeld titel
     example_title_hint: Geef een voorbeeld van een goede voorsteltitel
-    example_details_placeholder: Bied een zelfverklarende voorsteltekst die mensen kunnen aanpassen aan hun behoeften
     confirm_delete: Weet u zeker dat u dit enquêtesjabloon wilt verwijderen? Dit kan niet ongedaan gemaakt worden.
     show_advanced_settings: Toon geavanceerde instellingen
     hide_advanced_settings: Verberg geavanceerde instellingen
@@ -1923,12 +1922,6 @@ nl_NL:
     this_is_a_template_for_new_polls: Dit is een sjabloon voor nieuwe peilingen
     voting_method: Stemmethode
     process: Proces
-    process_name: Proces naam
-    process_name_hint: Hoe noem je dit proces? Bijv. voorstel, temperatuurcontrole, goedkeuring notulen
-    process_subtitle: Ondertiteling verwerken
-    process_subtitle_hint: Een korte zin die het voordeel van het proces verkoopt
-    process_introduction: Proces introductie
-    process_introduction_hint: Een of twee paragrafen die introduceren hoe het proces werkt en eventuele links naar bronnen die mensen nodig hebben.
     process_url: Proces-URL
     process_url_hint: Link naar een webpagina die dit proces uitlegt
     poll_type_name: Naam enquêtetype
@@ -1962,6 +1955,13 @@ nl_NL:
     hide_results_description: Als u wilt dat mensen stemmen zonder te weten hoe anderen hebben gestemd, kunt u de resultaten van de peiling verbergen.
     process_helptext: Noem en beschrijf het proces dat wordt gebruikt om deze peiling uit te voeren.
     reminder_helptext: Stuur een melding 'Sluit binnenkort' voordat de peiling sluit. Dit kan een kans zijn voor mensen om te zien hoe anderen hebben gestemd en hun eigen stem te heroverwegen, of gewoon een manier om deelname aan de peiling te vergroten.
+    example_details_placeholder: Geef een startpunt voor een voorstel of opiniepeiling. Vragen kunnen nuttige aanwijzingen zijn om mensen aan het schrijven te krijgen. Voeg alle regels of herinneringen toe die deelnemers moeten weten.
+    process_name: Sjabloon titel
+    process_name_hint: Hoe noem je dit sjabloon? Bv Roladvies, Temperatuurcontrole, Notulen goedkeuren
+    process_subtitle: Sjabloon ondertitel
+    process_subtitle_hint: Een beschrijving in één regel van wanneer en waarom deze sjabloon moet worden gebruikt
+    process_introduction: Sjabloon hulp
+    process_introduction_hint: Een paar alinea's waarin wordt uitgelegd hoe u de sjabloon gebruikt. Voeg links toe naar bronnen die nuttig kunnen zijn.
   poll_proposal_form:
     start_header: "'Voorstel' starten"
     edit_header: Voorstel bewerken

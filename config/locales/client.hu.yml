@@ -1853,7 +1853,6 @@ hu:
     update: Frissít
     example_title: Példa cím
     example_title_hint: Adjon példát egy jó ajánlatcímre
-    example_details_placeholder: Adjon meg egy magától értetődő javaslatszöveget, amelyet az emberek igényeiknek megfelelően módosíthatnak
     confirm_delete: Biztosan törli ezt a szavazási sablont? Ezt nem lehet visszacsinálni.
     show_advanced_settings: Speciális beállítások megjelenítése
     hide_advanced_settings: Speciális beállítások elrejtése
@@ -1875,12 +1874,6 @@ hu:
     this_is_a_template_for_new_polls: Ez egy sablon az új szavazásokhoz
     voting_method: Szavazási mód
     process: Folyamat
-    process_name: Folyamat neve
-    process_name_hint: Minek nevezed ezt a folyamatot? Pl. Javaslat, Hőmérséklet ellenőrzés, Jegyzőkönyv jóváhagyása
-    process_subtitle: Felirat feldolgozása
-    process_subtitle_hint: Egy rövid mondat, amely eladja a folyamat előnyeit
-    process_introduction: A folyamat bemutatása
-    process_introduction_hint: Egy vagy két bekezdés, amely bemutatja a folyamat működését, és az emberek által igényelt erőforrásokra mutató hivatkozásokat.
     process_url: URL feldolgozása
     process_url_hint: Hivatkozás egy weboldalra, amely elmagyarázza ezt a folyamatot
     poll_type_name: Szavazás típusának neve
@@ -1918,6 +1911,13 @@ hu:
     hide_results_description: Ha azt szeretné, hogy az emberek anélkül szavazzanak, hogy tudnák, mások hogyan szavaztak, elrejtheti a szavazás eredményeit.
     process_helptext: Nevezze meg és írja le a szavazás futtatásához használt folyamatot.
     reminder_helptext: A szavazás bezárása előtt küldjön egy „Hamarosan zárás” értesítést. Ez lehetõség lehet az emberek számára, hogy megnézzék, hogyan szavaztak mások, és átgondolják saját szavazatukat, vagy csak egy módja annak, hogy növeljék a szavazásban való részvételt.
+    example_details_placeholder: Adjon kiindulási pontot egy javaslathoz vagy szavazáshoz. A kérdések hasznos felhívások lehetnek, hogy az embereket írásra késztesse. Adjon meg minden olyan szabályt vagy emlékeztetőt, amelyet a résztvevőknek tudniuk kell.
+    process_name: Sablon címe
+    process_name_hint: Hogy hívod ezt a sablont? Pl. Szereptanács, Hőmérséklet ellenőrzés, Jegyzőkönyv jóváhagyása
+    process_subtitle: Sablon alcím
+    process_subtitle_hint: Egysoros leírás arról, hogy mikor és miért érdemes használni ezt a sablont
+    process_introduction: Sablon súgó
+    process_introduction_hint: Néhány bekezdés, amely elmagyarázza a sablon használatát. Adjon meg hivatkozásokat olyan forrásokhoz, amelyek hasznosak lehetnek.
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése
