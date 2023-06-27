@@ -66,8 +66,6 @@ export default
       chain = chain.find(discardedAt: null)
 
       switch @$route.query.status
-        when 'template'
-          chain = chain.find({'template': true})
         when 'active'
           chain = chain.find({'closedAt': null})
         when 'closed'
@@ -122,7 +120,6 @@ export default
       v-menu
         template(v-slot:activator="{ on, attrs }")
           v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
-            span(v-if="$route.query.status == 'template'" v-t="'templates.templates'")
             span(v-if="$route.query.status == 'active'" v-t="'polls_panel.open'")
             span(v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'")
             span(v-if="$route.query.status == 'vote'" v-t="'polls_panel.need_vote'")
@@ -130,7 +127,6 @@ export default
             v-icon mdi-menu-down
         v-list(dense)
           v-list-item(:to="mergeQuery({status: null })" v-t="'polls_panel.any_status'")
-          v-list-item(:to="mergeQuery({status: 'template' })" v-t="'templates.templates'")
           v-list-item(:to="mergeQuery({status: 'active'})" v-t="'polls_panel.open'")
           v-list-item(:to="mergeQuery({status: 'closed'})" v-t="'polls_panel.closed'")
           v-list-item(:to="mergeQuery({status: 'vote'})" v-t="'polls_panel.need_vote'")
