@@ -171,6 +171,7 @@ export default
   v-alert.poll-template-info-panel(type="info" text outlined)
     span 
       span(v-t="'poll_common.need_help_with_templates'")
+      space
       a.text-decoration-underline(target="_blank" href="https://help.loomio.com/en/user_manual/polls/poll_templates/index.html")
         span(v-t="'common.visit_loomio_help'")
 
