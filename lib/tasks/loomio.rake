@@ -11,7 +11,7 @@ namespace :loomio do
     UpdateBlockedDomainsWorker.perform_async
   end
 
-  task delete_translations: :environment do
+  task :delete_translations do
     # raise "edit this directly to be sure you want to use it"
     %w[server client].each do |source_name|
       {
@@ -27,13 +27,15 @@ namespace :loomio do
         'hu' => 'hu'
       }.each_pair do |file_locale, google_locale|
         foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
-        foreign.delete('poll_templates')
+        if foreign.has_key? 'poll_common'
+          foreign['poll_common'].delete('new_templates_are_here')
+        end
         File.write("config/locales/#{source_name}.#{file_locale}.yml", {file_locale => foreign}.to_yaml(line_width: 2000)) 
       end
     end
   end
 
-  task translate_strings: :environment do
+  task :translate_strings do
     class Hash
       def bury *args
         if args.count < 2

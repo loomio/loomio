@@ -161,6 +161,7 @@ fr:
     meeting: Sondage horaire de réunion
     ranked_choice: 'Classement par préférence '
     score: Sondage pondéré
+    question: ronde de questions
   new_poll_types:
     proposal: Proposition
     count: Compter
@@ -312,6 +313,7 @@ fr:
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
     prefix_eg: par exemple {{val}}
     are_you_sure: Es-tu sûr?
+    visit_loomio_help: Visitez l'aide de Loomio
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -1644,6 +1646,7 @@ fr:
     consensus_title: Consensus
     meeting: Réunion
     gradients_of_agreement_title: Gradients d'accord
+    question_title: Tour de questions
   poll_option_form:
     edit_option: Option Modifier
     option_name: Nom de l’option
@@ -1736,7 +1739,8 @@ fr:
     submit_response: Soumettre la réponse
     update_response: Mettre à jour la réponse
     change_response: Modifier votre réponse
-    new_templates_are_here: Nouveaux modèles de proposition pour faciliter les processus de prise de décision.
+    need_help_with_templates: Besoin d'aide pour créer vos propres modèles de processus ?
+    new_templates_are_here: Les nouveaux modèles de proposition de Loomio peuvent aider aux processus de prise de décision.
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2468,7 +2472,7 @@ fr:
       reason_prompt: Que devez-vous savoir pour comprendre la proposition ?
     sense_check:
       process_subtitle: Demandez des commentaires, des questions et des préoccupations
-      process_introduction: <p>La proposition de vérification Sense est un bon moyen d'obtenir des commentaires, d'inviter des questions et de découvrir des préoccupations. Il aide à clarifier et à améliorer une proposition avant de passer à une décision.</p><p> La vérification de sens permet aux gens de savoir qu'une proposition est en train de se former et les encourage à s'engager. C'est une opportunité d'écouter les gens, de ressentir ce qu'ils ressentent et de réagir de manière appropriée - ouvrant la possibilité d'intégrer leurs contributions pour prendre une meilleure décision.</p><p> Utilisez la proposition de vérification de sens dans le processus de consentement pour inviter des réactions et des commentaires afin d'améliorer la proposition, et dans un processus de consensus pour tester le consensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>En savoir plus sur l'utilisation de la vérification de sens dans le processus de décision simple</u></a> <span>.</span></p>
+      process_introduction: <p>La proposition de vérification Sense est un bon moyen d'obtenir des commentaires, d'inviter des questions et de découvrir des préoccupations. Il permet de clarifier et d'améliorer une proposition avant de passer à une décision.</p><p> La vérification de sens permet aux gens de savoir qu'une proposition est en train de se former et les encourage à s'engager. C'est une opportunité d'écouter les gens, de ressentir ce qu'ils ressentent et de réagir de manière appropriée - ouvrant la possibilité d'intégrer leurs contributions pour prendre une meilleure décision.</p><p> Utilisez la proposition de vérification de sens dans le processus de consentement pour inviter des réactions et des commentaires afin d'améliorer la proposition, et dans un processus de consensus pour tester le consensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>En savoir plus sur l'utilisation du contrôle Sense dans le processus de décision simple</u></a> <span>.</span></p>
       title: Que pensez-vous des nouveaux concepts de marque ?
       details: <h3 id="what-are-you-proposing"><strong>Que proposez-vous ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Que pensez-vous de la proposition ? Laissez un commentaire ou faites une suggestion d'amélioration.</p><p> Ce contrôle Sense est une opportunité pour vos commentaires et votre contribution, pour nous aider à prendre une meilleure décision.</p>
       looks_good: Cela semble bon
@@ -2530,13 +2534,13 @@ fr:
       details: <h3 id="what-is-this-poll-about"><strong>De quoi parle ce sondage ?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Pourquoi est-ce important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Que demandez-vous aux gens de faire ?</strong></h3><p></p><p> Votez en classant les options par ordre de préférence. L'option qui se classe en premier dans les résultats gagne.</p>
     time_poll:
       process_subtitle: Trouver quand les gens sont disponibles pour se rencontrer
-      process_introduction: "<p><span>Gagnez du temps en fixant une date pour votre réunion ou événement.</span></p><p> Le sondage horaire permet de voir facilement la disponibilité de chacun et de trouver le meilleur moment.</p><p> Donnez à votre sondage Time un titre et des détails. Entrez une liste d'options de date et d'heure dans votre fuseau horaire.</p><p> Lors de la définition des plages horaires, tenez compte des personnes situées dans des fuseaux horaires différents. Les participants verront les heures localisées dans leur fuseau horaire.</p><p> Définissez une durée de réunion.</p><p> Lorsque le sondage Heure se ferme, définissez un résultat avec le meilleur temps et toutes les instructions pour la réunion.</p><p> <span>Loomio inclura une invitation de calendrier avec l'e-mail de notification de résultat, afin que les participants puissent ajouter à leur calendrier.</span></p>"
+      process_introduction: <p><span>Gagnez du temps en fixant une date pour votre réunion ou événement.</span></p><p> Le sondage horaire permet de voir facilement la disponibilité de chacun et de trouver le meilleur moment.</p><p> Donnez à votre sondage Time un titre et des détails. Entrez une liste d'options de date et d'heure dans votre fuseau horaire.</p><p> Lors de la définition des plages horaires, tenez compte des personnes situées dans des fuseaux horaires différents. Les participants verront les heures localisées dans leur fuseau horaire.</p><p> Définissez une durée de réunion.</p><p> Lorsque le sondage Heure se ferme, définissez un résultat avec le meilleur temps et toutes les instructions pour la réunion.</p><p> <span>Loomio inclura une invitation de calendrier avec l'e-mail de notification de résultat, afin que les participants puissent ajouter à leur calendrier.</span></p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">En savoir plus sur Sondage horaire</a> .</p>
       title: Trouvons une date pour notre prochaine réunion
       details: <p><strong>Quelle est la réunion ou l'événement ?</strong></p><p></p><p> <strong>Pourquoi est-ce important?</strong></p><p></p><p> <strong>Que demandez-vous aux gens de faire ?</strong></p><p></p><p> <span>Marquez les créneaux horaires où vous êtes disponible avec l'icône verte "pouce vers le haut" ou laissez le rouge "pouce vers le bas" en place lorsqu'il n'est pas disponible.</span></p><p> <span>Utilisez l'icône "pouces sur le côté" pour dire que vous êtes disponible "si besoin est".</span></p>
       reason_prompt: Y a-t-il quelque chose que vous pouvez dire pour aider l'organisateur à trouver un moment approprié ?
     opt_in:
       process_subtitle: Trouvez des volontaires ou demandez des participants
-      process_introduction: "<p>Utilisez Opt-in pour inviter des personnes à rejoindre une équipe, un comité ou un groupe de travail, ou à participer à un événement.</p><p> 'Opt-in' a deux options de vote : Accepter ou Refuser.</p><p> Vous pouvez définir un nombre cible de personnes que vous recherchez, disons 3 personnes pour rejoindre votre groupe de travail.</p>"
+      process_introduction: '<p>Utilisez Opt-in pour inviter des personnes à rejoindre une équipe, un comité ou un groupe de travail, ou à participer à un événement.</p><p> ''Opt-in'' a deux options de vote : Accepter ou Refuser.</p><p> Vous pouvez définir un nombre cible de personnes que vous recherchez, disons 3 personnes pour rejoindre votre groupe de travail.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">En savoir plus sur l''opt-in</a> .</p>'
       title: Groupe de travail pour rédiger notre nouvelle politique de développement durable
       details: <p><strong>Quelle est l'équipe, le groupe de travail ou l'événement auquel vous invitez les gens ?</strong></p><p></p><p> <strong>Pourquoi est-ce important?</strong></p><p></p><p> <strong>Que demandez-vous aux gens de faire ?</strong></p><p></p><p> Sélectionnez "Accepter" pour participer !</p>
       accept_meaning: Je suis prêt à participer

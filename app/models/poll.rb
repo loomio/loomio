@@ -146,8 +146,6 @@ class Poll < ApplicationRecord
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
   validate :title_if_not_discarded
-  validate :process_name_if_template
-  validate :process_subtitle_if_template
 
   alias_method :user, :author
 
@@ -473,18 +471,6 @@ class Poll < ApplicationRecord
   def title_if_not_discarded
     if !discarded_at && title.to_s.empty?
       errors.add(:title, I18n.t(:"activerecord.errors.messages.blank"))
-    end
-  end
-
-  def process_name_if_template
-    if template && !process_name
-      errors.add(:process_name, I18n.t(:"activerecord.errors.messages.blank"))
-    end
-  end
-
-  def process_subtitle_if_template
-    if template && !process_subtitle
-      errors.add(:process_subtitle, I18n.t(:"activerecord.errors.messages.blank"))
     end
   end
 

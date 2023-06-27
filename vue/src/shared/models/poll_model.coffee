@@ -62,13 +62,6 @@ export default class PollModel extends BaseModel
     notifyOnClosingSoon: 'undecided_voters'
     results: []
     pollOptionIds: []
-    processTemplateId: null
-    processTemplateKey: null
-    processName: null
-    processSubtitle: null
-    processDescription: null
-    processDescriptionFormat: 'html'
-    processUrl: null
     pollOptionNameFormat: null
     recipientMessage: null
     recipientAudience: null
@@ -290,10 +283,10 @@ export default class PollModel extends BaseModel
       'edit'
 
   translatedPollType: ->
-    @processName || I18n.t("poll_types.#{@pollType}")
+    I18n.t("poll_types.#{@pollType}")
 
   translatedPollTypeCaps: ->
-    @processName || I18n.t("decision_tools_card.#{@pollType}_title")
+    I18n.t("decision_tools_card.#{@pollType}_title")
 
   addOption: (option) =>
     return false if @pollOptionNames.includes(option) or !option

@@ -168,15 +168,7 @@ en:
     meeting: time poll
     ranked_choice: ranked choice
     score: score poll
-
-  new_poll_types:
-    proposal: proposal
-    count: count
-    poll: choose
-    score: score
-    ranked_choice: rank
-    dot_vote: allocate
-    meeting: time poll
+    question: question round
 
   timezones:
     local: Local time ({{value}})
@@ -185,6 +177,7 @@ en:
     prefix_eg: "e.g. {{val}}"
     are_you_sure: Are you sure?
     loomio_help: Loomio help
+    visit_loomio_help: Visit Loomio help
     help_and_guides: Help & guides
     please_wait: Please wait
     optional: (Optional)
@@ -1742,6 +1735,7 @@ en:
   decision_tools_card:
     choose_type: Choose poll type
     title: Facilitate
+    question_title: Question round
     advice_title: Advice
     consent_title: Consent
     consensus_title: Consensus
@@ -1767,7 +1761,8 @@ en:
     prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
-    new_templates_are_here: New proposal templates to help with decision-making processes.
+    need_help_with_templates: Need help creating your own process templates?
+    new_templates_are_here: Loomio's new proposal templates can help with decision-making processes.
     categorize_poll_templates: Categorize poll templates
     show_all_templates_in_one_list: Show all templates in one list
     advice_process: Advice process
@@ -2619,6 +2614,8 @@ en:
         with the best time and any instructions for the meeting.</p><p><span>Loomio
         will include a calendar invitation with the outcome notification email, so participants
         can add to their calendar.</span></p>
+        <p><a target="_blank" rel="noopener noreferrer nofollow" 
+            href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Read more about Time poll</a>.</p>
       title: Let's find a date for our next meeting
       details: "<p><strong>What is the meeting or event?</strong></p><p></p><p><strong>Why
         is this important?</strong></p><p></p><p><strong>What are you asking people to
@@ -2633,7 +2630,9 @@ en:
         or working group, or to participate in an event.&nbsp;&nbsp;</p><p>‘Opt-in’ has
         two voting options: Accept or Decline.&nbsp;</p><p>You
         can define a target number of people you are looking for, say 3 people to join
-        your working group.</p>'
+        your working group.</p>
+        <p><a target="_blank" rel="noopener noreferrer nofollow" 
+            href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Read more about Opt-in</a>.</p> '
       title: Working group to draft our new sustainability policy
       details: "<p><strong>What is the team, working group or event you are inviting people
         to?</strong></p><p></p><p><strong>Why is this important?</strong></p><p></p><p><strong>What

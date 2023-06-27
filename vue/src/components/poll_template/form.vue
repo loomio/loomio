@@ -168,6 +168,12 @@ export default
   v-card-title.px-0
     h1.text-h4(tabindex="-1" v-t="titlePath")
 
+  v-alert.poll-template-info-panel(type="info" text outlined)
+    span 
+      span(v-t="'poll_common.need_help_with_templates'")
+      a.text-decoration-underline(target="_blank" href="https://help.loomio.com/en/user_manual/polls/poll_templates/index.html")
+        span(v-t="'common.visit_loomio_help'")
+
   v-select(
     :label="$t('poll_common_form.voting_method')"
     v-model="pollTemplate.pollType"

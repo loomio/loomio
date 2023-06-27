@@ -127,7 +127,7 @@ export default
     span 
       span(v-t="'poll_common.new_templates_are_here'")
       space
-      a.text-decoration-underline(href="https://help.loomio.com/en/" v-t="'common.learn_more'" target="_blank")
+      a.text-decoration-underline(href="https://help.loomio.com/en/user_manual/polls/poll_templates/index.html" v-t="'common.learn_more'" target="_blank")
 
   v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
     v-icon(small).mr-2 {{icon}}

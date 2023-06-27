@@ -25,9 +25,6 @@ class PollSerializer < ApplicationSerializer
              :link_previews,
              :mentioned_usernames,
              :notify_on_closing_soon,
-             :process_name,
-             # :process_subtitle,
-             # :process_introduction,
              :poll_type,
              :poll_option_names,
              :poll_option_name_format,
@@ -111,22 +108,6 @@ class PollSerializer < ApplicationSerializer
 
   def current_outcome
     cache_fetch(:outcomes_by_poll_id, object.id) { nil }
-  end
-
-  # def process_subtitle
-  #   poll_template.process_subtitle
-  # end
-
-  # def process_introduction
-  #   poll_template.process_introduction
-  # end
-
-  def poll_template
-    if object.poll_template_id
-      cache_fetch(:poll_templates_by_id, object.poll_template_id)
-    else
-      cache_fetch(:poll_templates_by_key, object.poll_template_key)
-    end
   end
 
   def poll_options

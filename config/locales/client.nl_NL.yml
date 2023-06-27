@@ -136,6 +136,7 @@ nl_NL:
     score: resultaat peiling
     count: opt-in
     check: zintuiglijke controle
+    question: vragen ronde
   new_poll_types:
     proposal: voorstel
     count: telling
@@ -287,6 +288,7 @@ nl_NL:
     minutes: Minuten
     today: Vandaag
     in_x_days: over %{x} dagen
+    visit_loomio_help: Bezoek Loomio-hulp
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -1581,6 +1583,7 @@ nl_NL:
     meeting: Ontmoeting
     dot_vote_title: Stip stemmen
     gradients_of_agreement_title: Gradiënten van overeenkomst
+    question_title: Vragen ronde
   poll_common:
     vote_now: Stem nu
     review_due: Tijd voor beoordeling
@@ -1664,7 +1667,8 @@ nl_NL:
     submit_response: Antwoord indienen
     update_response: Reactie bijwerken
     change_response: Verander je reactie
-    new_templates_are_here: Nieuwe voorstelsjablonen om te helpen bij besluitvormingsprocessen.
+    need_help_with_templates: Hulp nodig bij het maken van uw eigen processjablonen?
+    new_templates_are_here: De nieuwe voorstelsjablonen van Loomio kunnen helpen bij besluitvormingsprocessen.
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2491,13 +2495,13 @@ nl_NL:
       details: <h3 id="what-is-this-poll-about"><strong>Waar gaat deze peiling over?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Waarom is dit belangrijk?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Wat vraag je mensen te doen?</strong></h3><p></p><p> Stem door de opties in volgorde van uw voorkeur te rangschikken. De optie die als eerste in de resultaten staat, wint.</p>
     time_poll:
       process_subtitle: Ontdek wanneer mensen beschikbaar zijn om elkaar te ontmoeten
-      process_introduction: "<p><span>Bespaar tijd met het regelen van een datum voor uw vergadering of evenement.</span></p><p> Tijdpeiling maakt het gemakkelijk om ieders beschikbaarheid te zien en de beste tijd te vinden.</p><p> Geef uw tijdpeiling een titel en details. Voer een lijst met datum- en tijdopties in uw tijdzone in.</p><p> Houd bij het instellen van timeslots rekening met mensen in verschillende tijdzones. Deelnemers zien tijden gelokaliseerd in hun tijdzone.</p><p> Stel een vergaderduur in.</p><p> Wanneer de tijdpeiling sluit, stelt u een uitkomst in met de beste tijd en eventuele instructies voor de vergadering.</p><p> <span>Loomio voegt een agenda-uitnodiging toe aan de e-mail met de melding van de uitkomst, zodat deelnemers iets aan hun agenda kunnen toevoegen.</span></p>"
+      process_introduction: <p><span>Bespaar tijd met het regelen van een datum voor uw vergadering of evenement.</span></p><p> Tijdpeiling maakt het gemakkelijk om ieders beschikbaarheid te zien en de beste tijd te vinden.</p><p> Geef uw tijdpeiling een titel en details. Voer een lijst met datum- en tijdopties in uw tijdzone in.</p><p> Houd bij het instellen van timeslots rekening met mensen in verschillende tijdzones. Deelnemers zien tijden gelokaliseerd in hun tijdzone.</p><p> Stel een vergaderduur in.</p><p> Wanneer de tijdpeiling sluit, stelt u een uitkomst in met de beste tijd en eventuele instructies voor de vergadering.</p><p> <span>Loomio voegt een agenda-uitnodiging toe aan de e-mail met de melding van de uitkomst, zodat deelnemers iets aan hun agenda kunnen toevoegen.</span></p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Lees meer over Tijdpeiling</a> .</p>
       title: Laten we een datum zoeken voor onze volgende ontmoeting
       details: "<p><strong>Wat is de bijeenkomst of het evenement?</strong></p><p></p><p> <strong>Waarom is dit belangrijk?</strong></p><p></p><p> <strong>Wat vraag je mensen te doen?</strong></p><p></p><p> <span>Markeer de tijdsloten waarop je beschikbaar bent met het groene 'thumbs up'-icoon of laat de rode 'thumbs down' staan als je niet beschikbaar bent.</span></p><p> <span>Gebruik het 'thumbs sideways' icoon om aan te geven dat je beschikbaar bent 'indien nodig'.</span></p>"
       reason_prompt: Kun je iets zeggen om de organisator te helpen een geschikte tijd te vinden?
     opt_in:
       process_subtitle: Zoek vrijwilligers of vraag naar deelnemers
-      process_introduction: "<p>Gebruik Opt-in om mensen uit te nodigen om lid te worden van een team, commissie of werkgroep, of om deel te nemen aan een evenement.</p><p> 'Opt-in' heeft twee stemopties: Accepteren of Weigeren.</p><p> U kunt een doelaantal mensen definiëren waarnaar u op zoek bent, bijvoorbeeld 3 mensen om lid te worden van uw werkgroep.</p>"
+      process_introduction: '<p>Gebruik Opt-in om mensen uit te nodigen om lid te worden van een team, commissie of werkgroep, of om deel te nemen aan een evenement.</p><p> ''Opt-in'' heeft twee stemopties: Accepteren of Weigeren.</p><p> U kunt een doelaantal mensen definiëren waarnaar u op zoek bent, bijvoorbeeld 3 mensen om lid te worden van uw werkgroep.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Lees meer over Opt-in</a> .</p>'
       title: Werkgroep om ons nieuwe duurzaamheidsbeleid op te stellen
       details: "<p><strong>Wat is het team, de werkgroep of het evenement waarvoor je mensen uitnodigt?</strong></p><p></p><p> <strong>Waarom is dit belangrijk?</strong></p><p></p><p> <strong>Wat vraag je mensen te doen?</strong></p><p></p><p> Selecteer 'Accepteren' om deel te nemen!</p>"
       accept_meaning: Ik ben bereid om mee te doen

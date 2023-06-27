@@ -159,6 +159,7 @@ es:
     meeting: Coordinación de horario
     ranked_choice: elección clasificada
     score: Encuesta de puntuación
+    question: ronda de preguntas
   new_poll_types:
     proposal: propuesta
     count: Conteo
@@ -310,6 +311,7 @@ es:
       title: Aprenda a usar Markdown para dar formato a su texto
     prefix_eg: por ejemplo, {{val}}
     are_you_sure: "¿Está seguro?"
+    visit_loomio_help: Visita la ayuda de Loomio
   merge_accounts:
     modal:
       title: Fusionar cuentas
@@ -1640,6 +1642,7 @@ es:
     consensus_title: Consenso
     meeting: Reunión
     gradients_of_agreement_title: Gradientes de concordancia
+    question_title: ronda de preguntas
   poll_option_form:
     edit_option: Opción editar
     option_name: Nombre de la opción
@@ -1732,7 +1735,8 @@ es:
     submit_response: Enviar respuesta
     update_response: Actualizar respuesta
     change_response: Cambia tu respuesta
-    new_templates_are_here: Nuevas plantillas de propuestas para ayudar en los procesos de toma de decisiones.
+    need_help_with_templates: "¿Necesita ayuda para crear sus propias plantillas de proceso?"
+    new_templates_are_here: Las nuevas plantillas de propuestas de Loomio pueden ayudar con los procesos de toma de decisiones.
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2403,7 +2407,7 @@ es:
   poll_templates:
     proposal:
       process_subtitle: Plantear una propuesta para tomar una decisión
-      process_introduction: <p>La propuesta clásica de Loomio te ayuda a tomar una decisión, convirtiendo una discusión en un desenlace claro.</p><p> Sugiera un curso de acción e invite a las personas a responder votando de acuerdo, abstención o desacuerdo.</p><p> A medida que la gente vota, puede dar una razón por la que ha votado de esta manera. Puede ver cuál es la posición de todos los demás sobre el asunto y por qué.</p><p> De esta manera, puede usar una propuesta para incitar a las personas a responder, descubrir nueva información y generar un entendimiento compartido, para ayudar a su grupo a tomar una decisión mejor y más informada.</p><p> Una propuesta y la discusión asociada crean su propio registro de cómo se tomó la decisión.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lee más sobre el uso de la propuesta clásica de Loomio en el proceso de decisión Simple</u></a> .</p>
+      process_introduction: <p>La propuesta clásica de Loomio te ayuda a tomar una decisión, convirtiendo una discusión en un desenlace claro.</p><p> Sugiera un curso de acción e invite a las personas a responder votando de acuerdo, abstención o desacuerdo.</p><p> A medida que la gente vota, puede dar una razón por la que votó de esta manera. Puede ver cuál es la posición de todos los demás sobre el asunto y por qué.</p><p> De esta manera, puede usar una propuesta para incitar a las personas a responder, descubrir nueva información y generar un entendimiento compartido, para ayudar a su grupo a tomar una decisión mejor y más informada.</p><p> Una propuesta y la discusión asociada crean su propio registro de cómo se tomó la decisión.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lea más sobre el uso de la propuesta clásica de Loomio en el proceso de decisión Simple</u></a> .</p>
       title: Aprobar el nuevo concepto de Marca
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Para que esta propuesta sea aprobada, necesitamos que la mayoría de los miembros voten De acuerdo.</p><p> Si no está de acuerdo, diga por qué y qué debe cambiar para que esté de acuerdo. \U0001F642</p>
       agree: Aceptar
@@ -2429,7 +2433,7 @@ es:
     consent:
       process_subtitle: Tome una decisión que sea 'segura para probar', sin objeciones
       process_introduction: <p>Busque el consentimiento sobre una decisión que necesita tomar, donde no haya objeciones significativas a su propuesta, para que pueda tomar una decisión rápida para su organización que sea 'segura para probar'.</p><ul><li><p> Apunta a una decisión 'suficientemente buena'</p></li><li><p> Involucrar muchas voces para desarrollar una propuesta viable</p></li><li><p> Pregunte si alguien tiene una objeción válida</p></li><li><p> Modificar la propuesta para resolver objeciones</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Obtenga más información sobre el proceso de consentimiento</a> .</p>
-      title: Contrata a Chloe para el papel de diseñador
+      title: Contrata a Chloe para el puesto de diseño
       details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>¿Qué le estás pidiendo a la gente en esta propuesta?</strong></h3><p></p><p> Si tiene una objeción, diga por qué y proponga un cambio en la propuesta que la haga segura.</p><p> Recuerde que buscamos el consentimiento para una decisión 'suficientemente buena' que sea 'segura de probar', para que podamos tomar una buena decisión para nuestra organización.</p>
       consent: Consentir
       consent_meaning: La propuesta es segura de probar.
@@ -2506,12 +2510,12 @@ es:
       process_subtitle: Encuentra la opción más popular
       process_introduction: <p>Antes de tomar una decisión, averigüe qué opciones les interesan más a las personas.</p><p> La encuesta simple lo ayuda a encontrar la opción u opciones más populares con opción única o múltiple.</p><p> Escriba cualquier detalle sobre las opciones en el campo de detalles, luego ingrese el nombre de la opción y haga clic en + para agregar.</p><p> Establezca las <strong>opciones mínimas</strong> y <strong>las opciones máximas</strong> que un votante puede elegir. Deje la opción máxima como 1 para una encuesta de opción única.</p><p> Puede usar el ícono de lápiz junto a cada opción para agregar un <strong>significado</strong> de la opción, una mayor elaboración de la opción para ayudar a las personas cuando votan.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Leer más sobre Encuesta simple</a> .</p>
       title: "¿Dónde debería estar el foco de nuestra dirección estratégica?"
-      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Elija la(s) opción(es) que prefiera.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Elige la(s) opción(es) que prefieras.</p>
     score_poll:
       process_subtitle: Medir el grado de apoyo a cada opción
       process_introduction: <p>Utilice la encuesta de puntuación cuando desee encuestar a las personas sobre su deseo, preferencia o interés en cada opción.</p><p> <span>Se pide a los participantes que evalúen cada opción y asignen una puntuación moviendo un control deslizante a lo largo de una escala.</span></p><p> <span>Los resultados se muestran gráficamente junto con una tabla para cada opción que muestra el total de puntos, la media de puntos y el número de votantes.</span></p><p> Las configuraciones avanzadas incluyen 'Los votos son anónimos' y 'Mostrar opciones en orden aleatorio', comúnmente utilizados para la encuesta de puntuación para reducir cualquier sesgo de votación.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Obtenga más información sobre la encuesta de puntuación</a> .</p>
       title: Evaluar cómo se toman las decisiones en nuestra organización
-      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Elige la(s) opción(es) que prefieras.</p>
+      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Elija la(s) opción(es) que prefiera.</p>
     dot_vote:
       process_subtitle: Asignar un presupuesto de puntos para revelar prioridades
       process_introduction: <p>El voto por puntos es útil para los grupos que intentan asignar un recurso limitado a varias opciones. Va más allá de una simple encuesta al ayudar a los participantes a apreciar que existe una restricción al seleccionar opciones.</p><p> Cada participante recibe un número determinado de puntos. Tú decides cuántos.</p><p> Colocan puntos junto a las opciones presentadas que les gustan. Los participantes pueden colocar todos sus puntos en una sola opción o repartirse entre múltiples opciones.</p><p> A medida que los participantes asignan puntos, es posible que excedan el límite de presupuesto de puntos y, por lo tanto, se les anima a considerar cómo gastan sus puntos con cuidado.</p><p> Las opciones con más puntos “ganan”. La tabla de resultados proporciona datos adicionales para ayudarlo a analizar los resultados.</p><ul><li><p> % de puntos</p></li><li><p> Puntos</p></li><li><p> Significar</p></li><li><p> Votantes</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Lea más sobre el voto de Dot</a> .</p>
@@ -2524,13 +2528,13 @@ es:
       details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Vota clasificando las opciones en el orden de tu preferencia. La opción que ocupa el primer lugar en los resultados gana.</p>
     time_poll:
       process_subtitle: Encuentra cuándo hay personas disponibles para reunirse
-      process_introduction: "<p><span>Ahorre tiempo organizando una fecha para su reunión o evento.</span></p><p> La encuesta de tiempo facilita ver la disponibilidad de todos y encontrar el mejor momento.</p><p> Dale a tu encuesta de Time un título y detalles. Ingrese una lista de opciones de fecha y hora en su zona horaria.</p><p> Al establecer intervalos de tiempo, tenga en cuenta a las personas en diferentes zonas horarias. Los participantes verán los horarios localizados en su zona horaria.</p><p> Establecer una duración de la reunión.</p><p> Cuando se cierre la encuesta de tiempo, establezca un resultado con el mejor tiempo y las instrucciones para la reunión.</p><p> <span>Loomio incluirá una invitación de calendario con el correo electrónico de notificación del resultado, para que los participantes puedan agregarlo a su calendario.</span></p>"
+      process_introduction: <p><span>Ahorre tiempo organizando una fecha para su reunión o evento.</span></p><p> La encuesta de tiempo facilita ver la disponibilidad de todos y encontrar el mejor momento.</p><p> Dale a tu encuesta de Time un título y detalles. Ingrese una lista de opciones de fecha y hora en su zona horaria.</p><p> Al establecer intervalos de tiempo, tenga en cuenta a las personas en diferentes zonas horarias. Los participantes verán los horarios localizados en su zona horaria.</p><p> Establecer una duración de la reunión.</p><p> Cuando se cierre la encuesta de tiempo, establezca un resultado con el mejor tiempo y las instrucciones para la reunión.</p><p> <span>Loomio incluirá una invitación de calendario con el correo electrónico de notificación del resultado, para que los participantes puedan agregarlo a su calendario.</span></p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Leer más sobre Encuesta de tiempo</a> .</p>
       title: Busquemos una fecha para nuestra próxima reunión.
       details: <p><strong>¿Qué es la reunión o evento?</strong></p><p></p><p> <strong>¿Porque es esto importante?</strong></p><p></p><p> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></p><p></p><p> <span>Marque los intervalos de tiempo en los que está disponible con el ícono verde de "Me gusta" o deje el "Me gusta" rojo en su lugar cuando no esté disponible.</span></p><p> <span>Use el ícono de 'pulgares hacia los lados' para decir que está disponible 'si es necesario'.</span></p>
       reason_prompt: "¿Hay algo que pueda decir para ayudar al organizador a encontrar un momento adecuado?"
     opt_in:
       process_subtitle: Encuentre voluntarios o pregunte por participantes
-      process_introduction: "<p>Utilice Opt-in para invitar a personas a unirse a un equipo, comité o grupo de trabajo, o para participar en un evento.</p><p> 'Opt-in' tiene dos opciones de votación: Aceptar o Rechazar.</p><p> Puede definir un número objetivo de personas que está buscando, digamos 3 personas para unirse a su grupo de trabajo.</p>"
+      process_introduction: '<p>Utilice Opt-in para invitar a personas a unirse a un equipo, comité o grupo de trabajo, o para participar en un evento.</p><p> ''Opt-in'' tiene dos opciones de votación: Aceptar o Rechazar.</p><p> Puede definir un número objetivo de personas que está buscando, digamos 3 personas para unirse a su grupo de trabajo.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Obtenga más información sobre la suscripción</a> .</p>'
       title: Grupo de trabajo para redactar nuestra nueva política de sostenibilidad
       details: "<p><strong>¿Cuál es el equipo, grupo de trabajo o evento al que está invitando a la gente?</strong></p><p></p><p> <strong>¿Porque es esto importante?</strong></p><p></p><p> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></p><p></p><p> ¡Selecciona 'Aceptar' para participar!</p>"
       accept_meaning: estoy dispuesto a participar

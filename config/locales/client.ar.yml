@@ -121,6 +121,7 @@ ar:
     score: استقصاء النتيجة
     count: الاشتراك
     check: فحص المعنى
+    question: جولة السؤال
   new_poll_types:
     proposal: اقتراح
     count: عد
@@ -272,6 +273,7 @@ ar:
     minutes: دقائق
     today: اليوم
     in_x_days: في٪ {x} يوم
+    visit_loomio_help: قم بزيارة مساعدة Loomio
   merge_accounts:
     modal:
       title: دمج الحسابات
@@ -1566,6 +1568,7 @@ ar:
     meeting: مقابلة
     dot_vote_title: التصويت بالنقاط
     gradients_of_agreement_title: تدرجات الاتفاق
+    question_title: جولة السؤال
   poll_common:
     vote_now: صوت الان
     review_due: المراجعة المستحقة
@@ -1649,7 +1652,8 @@ ar:
     submit_response: إرسال الرد
     update_response: استجابة التحديث
     change_response: غيّر إجابتك
-    new_templates_are_here: قوالب مقترحات جديدة للمساعدة في عمليات صنع القرار.
+    need_help_with_templates: هل تحتاج إلى مساعدة في إنشاء قوالب العملية الخاصة بك؟
+    new_templates_are_here: يمكن أن تساعد قوالب اقتراح Loomio الجديدة في عمليات صنع القرار.
   poll_common_attachment_form:
     label: المرفقات
   poll_common_add_option:
@@ -2481,7 +2485,7 @@ ar:
       details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>ما هو هذا الاستطلاع حول؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>لماذا هذا مهم؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس أن يفعلوا؟</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> اختر الخيار (الخيارات) الذي تفضله.</p>
     dot_vote:
       process_subtitle: تخصيص ميزانية من النقاط للكشف عن الأولويات
-      process_introduction: <p style=";text-align:right;direction:rtl">التصويت بالنقاط مفيد للمجموعات التي تحاول تخصيص مورد محدود لعدد من الخيارات. يتجاوز الاستطلاع البسيط من خلال مساعدة المشاركين على إدراك أن هناك قيودًا عند اختيار الخيارات.</p><p style=";text-align:right;direction:rtl"> يحصل كل مشارك على عدد محدد من النقاط. عليك أن تقرر كم.</p><p style=";text-align:right;direction:rtl"> يضعون النقاط بجانب الخيارات المقدمة التي تعجبهم. يمكن للمشاركين وضع كل نقاطهم على خيار واحد أو توزيعها على خيارات متعددة.</p><p style=";text-align:right;direction:rtl"> نظرًا لأن المشاركين يخصصون النقاط ، فقد يتجاوزون حد الميزانية النقطية ولذا يتم تشجيعهم على التفكير في كيفية إنفاق نقاطهم بعناية.</p><p style=";text-align:right;direction:rtl"> الخيارات التي تحتوي على أكبر عدد من النقاط "تربح". يوفر جدول النتائج بيانات إضافية لمساعدتك في تحليل النتائج.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> ٪ من النقاط</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> نقاط</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> يقصد</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> الناخبون</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">اقرأ المزيد عن التصويت بالنقاط</a> .</p>
+      process_introduction: <p style=";text-align:right;direction:rtl">التصويت بالنقاط مفيد للمجموعات التي تحاول تخصيص مورد محدود لعدد من الخيارات. إنه يتجاوز مجرد استطلاع بسيط من خلال مساعدة المشاركين على إدراك أن هناك قيودًا عند اختيار الخيارات.</p><p style=";text-align:right;direction:rtl"> يحصل كل مشارك على عدد محدد من النقاط. عليك أن تقرر كم.</p><p style=";text-align:right;direction:rtl"> يضعون النقاط بجانب الخيارات المقدمة التي تعجبهم. يمكن للمشاركين وضع كل نقاطهم على خيار واحد أو توزيعها على خيارات متعددة.</p><p style=";text-align:right;direction:rtl"> نظرًا لأن المشاركين يخصصون النقاط ، فقد يتجاوزون حد الميزانية النقطية ولذا يتم تشجيعهم على التفكير في كيفية إنفاق نقاطهم بعناية.</p><p style=";text-align:right;direction:rtl"> الخيارات التي تحتوي على أكبر عدد من النقاط "تربح". يوفر جدول النتائج بيانات إضافية لمساعدتك في تحليل النتائج.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> ٪ من النقاط</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> نقاط</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> يقصد</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> الناخبون</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">اقرأ المزيد عن التصويت بالنقاط</a> .</p>
       title: اختيار المواضيع لمؤتمرنا
       details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>ما هو هذا الاستطلاع حول؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>لماذا هذا مهم؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس أن يفعلوا؟</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> في هذا الاستطلاع ، لديك ميزانية قدرها 8 نقاط لتخصيصها للخيارات التي تفضلها. يمكنك وضع كل النقاط على خيار واحد أو نشرها.</p>
     ranked_choice:
@@ -2491,13 +2495,13 @@ ar:
       details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>ما هو هذا الاستطلاع حول؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>لماذا هذا مهم؟</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس أن يفعلوا؟</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> صوّت بترتيب الخيارات حسب تفضيلاتك. الخيار الذي يحتل المرتبة الأولى في النتائج هو الفائز.</p>
     time_poll:
       process_subtitle: ابحث عن الأشخاص المتاحين للقاء
-      process_introduction: <p style=";text-align:right;direction:rtl"><span>وفر الوقت في ترتيب موعد لاجتماعك أو حدثك.</span></p><p style=";text-align:right;direction:rtl"> يجعل استطلاع الوقت من السهل رؤية مدى توفر الجميع والعثور على أفضل وقت.</p><p style=";text-align:right;direction:rtl"> امنح استطلاع الوقت عنوانًا وتفاصيل. أدخل قائمة خيارات التاريخ والوقت في منطقتك الزمنية.</p><p style=";text-align:right;direction:rtl"> عند تعيين فترات زمنية ، ضع في اعتبارك الأشخاص الموجودين في مناطق زمنية مختلفة. سيرى المشاركون الأوقات المترجمة في منطقتهم الزمنية.</p><p style=";text-align:right;direction:rtl"> حدد مدة الاجتماع.</p><p style=";text-align:right;direction:rtl"> عند إغلاق استطلاع الوقت ، حدد نتيجة بأفضل وقت وأي تعليمات للاجتماع.</p><p style=";text-align:right;direction:rtl"> <span>سيتضمن Loomio دعوة تقويم مع البريد الإلكتروني لإشعار النتيجة ، بحيث يمكن للمشاركين الإضافة إلى التقويم الخاص بهم.</span></p>
+      process_introduction: <p style=";text-align:right;direction:rtl"><span>وفر الوقت في ترتيب موعد لاجتماعك أو حدثك.</span></p><p style=";text-align:right;direction:rtl"> يجعل استطلاع الوقت من السهل رؤية مدى توفر الجميع والعثور على أفضل وقت.</p><p style=";text-align:right;direction:rtl"> امنح استطلاع الوقت عنوانًا وتفاصيل. أدخل قائمة خيارات التاريخ والوقت في منطقتك الزمنية.</p><p style=";text-align:right;direction:rtl"> عند تعيين فترات زمنية ، ضع في اعتبارك الأشخاص الموجودين في مناطق زمنية مختلفة. سيرى المشاركون الأوقات المترجمة في منطقتهم الزمنية.</p><p style=";text-align:right;direction:rtl"> حدد مدة الاجتماع.</p><p style=";text-align:right;direction:rtl"> عند إغلاق استطلاع الوقت ، حدد نتيجة بأفضل وقت وأي تعليمات للاجتماع.</p><p style=";text-align:right;direction:rtl"> <span>سيتضمن Loomio دعوة تقويم مع البريد الإلكتروني لإشعار النتيجة ، بحيث يمكن للمشاركين الإضافة إلى التقويم الخاص بهم.</span></p><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">اقرأ المزيد عن استطلاع الوقت</a> .</p>
       title: دعونا نجد موعدا لاجتماعنا المقبل
       details: <p style=";text-align:right;direction:rtl"><strong>ما هو الاجتماع أو الحدث؟</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>لماذا هذا مهم؟</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس أن يفعلوا؟</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <span>ضع علامة على الفترات الزمنية المتاحة لك باستخدام أيقونة "رائعة" الخضراء أو اترك علامة "رائعة لأسفل" الحمراء في مكانها عندما لا تكون متاحة.</span></p><p style=";text-align:right;direction:rtl"> <span>استخدم رمز "الإبهام الجانبي" لتقول إنك متاح "إذا لزم الأمر".</span></p>
       reason_prompt: هل هناك أي شيء يمكنك قوله لمساعدة المنظم في العثور على الوقت المناسب؟
     opt_in:
       process_subtitle: ابحث عن متطوعين أو اطلب مشاركين
-      process_introduction: '<p style=";text-align:right;direction:rtl">استخدم Opt-in لدعوة الأشخاص للانضمام إلى فريق أو لجنة أو مجموعة عمل ، أو للمشاركة في حدث.</p><p style=";text-align:right;direction:rtl"> يوجد خياران للتصويت لـ "Opt-in": قبول أو رفض.</p><p style=";text-align:right;direction:rtl"> يمكنك تحديد عدد مستهدف من الأشخاص الذين تبحث عنهم ، لنقل 3 أشخاص للانضمام إلى مجموعة العمل الخاصة بك.</p>'
+      process_introduction: '<p style=";text-align:right;direction:rtl">استخدم Opt-in لدعوة الأشخاص للانضمام إلى فريق أو لجنة أو مجموعة عمل ، أو للمشاركة في حدث.</p><p style=";text-align:right;direction:rtl"> يوجد خياران للتصويت لـ "Opt-in": قبول أو رفض.</p><p style=";text-align:right;direction:rtl"> يمكنك تحديد عدد مستهدف من الأشخاص الذين تبحث عنهم ، لنقل 3 أشخاص للانضمام إلى مجموعة العمل الخاصة بك.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">اقرأ المزيد عن الاشتراك</a> .</p>'
       title: مجموعة العمل لصياغة سياسة الاستدامة الجديدة الخاصة بنا
       details: <p style=";text-align:right;direction:rtl"><strong>ما هو الفريق أو مجموعة العمل أو الحدث الذي تدعو الناس إليه؟</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>لماذا هذا مهم؟</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>ماذا تطلب من الناس أن يفعلوا؟</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> حدد "قبول" للمشاركة!</p>
       accept_meaning: أنا على استعداد للمشاركة

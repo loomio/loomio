@@ -161,6 +161,7 @@ pt_BR:
     meeting: enquete de horário
     ranked_choice: enquete de classificação
     score: enquete de pontuação
+    question: rodada de perguntas
   new_poll_types:
     proposal: proposta
     count: contar
@@ -312,6 +313,7 @@ pt_BR:
       title: Aprenda como usar Markdown para formatar seu texto
     prefix_eg: por exemplo {{val}}
     are_you_sure: Tem certeza?
+    visit_loomio_help: Visite a ajuda do Loomio
   merge_accounts:
     modal:
       title: Mesclar contas
@@ -1626,6 +1628,7 @@ pt_BR:
     consensus_title: Consenso
     meeting: Reunião
     gradients_of_agreement_title: Gradientes de concordância
+    question_title: Rodada de perguntas
   poll_option_form:
     edit_option: Editar opção
     option_name: Nome da opção
@@ -1718,7 +1721,8 @@ pt_BR:
     submit_response: Enviar resposta
     update_response: Atualizar resposta
     change_response: Mude sua resposta
-    new_templates_are_here: Novos modelos de propostas para ajudar nos processos de tomada de decisão.
+    need_help_with_templates: Precisa de ajuda para criar seus próprios modelos de processo?
+    new_templates_are_here: Os novos modelos de proposta do Loomio podem ajudar nos processos de tomada de decisão.
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:
@@ -2418,7 +2422,7 @@ pt_BR:
       abstain: abster-se
       abstain_meaning: Escolher não votar ou não poder votar nesta decisão.
       abstain_prompt: Por que você está se abstendo ou não se sente em condições de votar nesta decisão?
-      disagree: Discordo
+      disagree: discordo
       disagree_meaning: Algo nesta proposta precisa ser mudado antes que eu possa apoiá-la.
       disagree_prompt: Como esta proposta poderia ser melhorada para que você possa apoiá-la?
     advice:
@@ -2442,7 +2446,7 @@ pt_BR:
       consent_prompt: O que você gosta na proposta e como ela beneficiará a organização?
       objection: Objeção
       objection_meaning: Tenho uma objeção válida e acho que a proposta causará danos
-      objection_prompt: Que mudança a esta proposta é necessária para torná-la "segura para tentar", para que você possa apoiá-la?
+      objection_prompt: Que mudança é necessária a esta proposta para torná-la "segura para tentar", para que você possa apoiá-la?
     consensus:
       process_subtitle: Chegue a um acordo coletivo com todos os envolvidos
       process_introduction: <p>Crie um consenso para uma decisão que você precisa tomar, para chegar a um acordo que satisfaça as necessidades e preocupações de todos os participantes.</p><ul><li><p> Discutir e desenvolver uma proposta juntos</p></li><li><p> Incluir e respeitar todos os envolvidos</p></li><li><p> Procure o acordo da maioria das pessoas</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Leia mais sobre o processo de consenso</a> .</p>
@@ -2454,7 +2458,7 @@ pt_BR:
       abstain: abster-se
       abstain_meaning: Esta decisão não me afeta e estou feliz com o que o grupo decidir
       abstain_prompt: Por que você está se abstendo ou não se sente em condições de votar nesta decisão?
-      disagree: Discordo
+      disagree: discordo
       disagree_meaning: Algo nesta proposta precisa ser alterado antes que eu possa apoiá-la
       disagree_prompt: Como esta proposta poderia ser melhorada para que você possa apoiá-la?
       block: Bloquear
@@ -2468,7 +2472,7 @@ pt_BR:
       reason_prompt: O que você precisa saber para entender a proposta?
     sense_check:
       process_subtitle: Peça feedback, perguntas e preocupações
-      process_introduction: <p>A proposta de verificação de sentido é uma boa maneira de obter feedback, convidar perguntas e descobrir preocupações. Ajuda a esclarecer e melhorar uma proposta antes de passar para uma decisão.</p><p> A verificação de sentido permite que as pessoas saibam que uma proposta está se formando e as incentiva a se envolver. É uma oportunidade de ouvir as pessoas, sentir como elas se sentem e responder adequadamente - abrindo o potencial de incorporar suas contribuições para uma melhor decisão.</p><p> Use a proposta de verificação de senso no processo de consentimento para solicitar reações e comentários para melhorar a proposta e em um processo de consenso para testar o consenso.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Leia mais sobre como usar a verificação de sentido no processo de decisão simples</u></a> <span>.</span></p>
+      process_introduction: <p>A proposta de verificação de sentido é uma boa maneira de obter feedback, convidar perguntas e descobrir preocupações. Ajuda a esclarecer e melhorar uma proposta antes de passar para uma decisão.</p><p> A verificação de sentido permite que as pessoas saibam que uma proposta está se formando e as encoraja a se envolver. É uma oportunidade de ouvir as pessoas, sentir como elas se sentem e responder adequadamente - abrindo o potencial de incorporar suas contribuições para tomar uma decisão melhor.</p><p> Use a proposta de verificação de senso no processo de consentimento para solicitar reações e comentários para melhorar a proposta e em um processo de consenso para testar o consenso.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Leia mais sobre como usar a verificação de sentido no processo de decisão simples</u></a> <span>.</span></p>
       title: Como você se sente sobre os novos conceitos de marca?
       details: <h3 id="what-are-you-proposing"><strong>O que você está propondo?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Por que isso é importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O que você está pedindo para as pessoas fazerem?</strong></h3><p></p><p> Como você se sente sobre a proposta? Deixe um comentário ou faça uma sugestão de melhoria.</p><p> Esta verificação de Sentido é uma oportunidade para sua opinião e contribuição, para nos ajudar a tomar uma decisão melhor.</p>
       looks_good: Parece bom
@@ -2476,7 +2480,7 @@ pt_BR:
       looks_good_prompt: Você tem algum comentário ou sugestão para melhorar a proposta?
       abstain: abster-se
       abstain_meaning: Não tenho nada a acrescentar, nem qualquer objeção a este trabalho.
-      abstain_prompt: A abstenção implica consentimento com a direção desta proposta. Existe alguma razão para você votar pela abstenção?
+      abstain_prompt: A abstenção implica consentimento com a direção desta proposta. Existe uma razão para você votar pela abstenção?
       concerned: Preocupado
       concerned_meaning: Algo sobre isso pode precisar mudar para eu consentir ou concordar
       concerned_prompt: Qual é a sua preocupação e como ela pode ser abordada?
@@ -2515,7 +2519,7 @@ pt_BR:
       details: <h3 id="what-is-this-poll-about"><strong>Do que se trata esta enquete?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Por que isso é importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O que você está pedindo para as pessoas fazerem?</strong></h3><p></p><p> Escolha a(s) opção(ões) de sua preferência.</p>
     score_poll:
       process_subtitle: Medir o grau de suporte para cada opção
-      process_introduction: <p>Use a pesquisa de pontuação quando quiser pesquisar as pessoas sobre seu desejo, preferência ou interesse em cada opção.</p><p> <span>Os participantes são solicitados a avaliar cada opção e atribuir uma pontuação movendo um controle deslizante ao longo de uma escala.</span></p><p> <span>Os resultados são exibidos graficamente junto com uma tabela para cada opção mostrando o total de pontos, a média de pontos e o número de eleitores.</span></p><p> As configurações avançadas incluem 'Votos são anônimos' e 'Mostrar opções em ordem aleatória' - comumente usado para votação de pontuação para reduzir qualquer viés de votação.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Leia mais sobre Sondagem de pontuação</a> .</p>
+      process_introduction: <p>Use a pesquisa de pontuação quando quiser pesquisar as pessoas sobre seu desejo, preferência ou interesse em cada opção.</p><p> <span>Os participantes são solicitados a avaliar cada opção e atribuir uma pontuação movendo um controle deslizante ao longo de uma escala.</span></p><p> <span>Os resultados são exibidos graficamente junto com uma tabela para cada opção mostrando o total de pontos, a média de pontos e o número de eleitores.</span></p><p> As configurações avançadas incluem 'Votos anônimos' e 'Mostrar opções em ordem aleatória' - comumente usado para votação de pontuação para reduzir qualquer viés de votação.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Leia mais sobre Sondagem de pontuação</a> .</p>
       title: Avaliar como as decisões são tomadas em nossa organização
       details: <h3 id="what-is-this-poll-about"><strong>Do que se trata esta enquete?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Por que isso é importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O que você está pedindo para as pessoas fazerem?</strong></h3><p></p><p> Escolha a(s) opção(ões) de sua preferência.</p>
     dot_vote:
@@ -2530,13 +2534,13 @@ pt_BR:
       details: <h3 id="what-is-this-poll-about"><strong>Do que se trata esta enquete?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Por que isso é importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>O que você está pedindo para as pessoas fazerem?</strong></h3><p></p><p> Vote classificando as opções na ordem de sua preferência. Vence a opção que ficar em primeiro lugar nos resultados.</p>
     time_poll:
       process_subtitle: Descubra quando as pessoas estão disponíveis para atender
-      process_introduction: "<p><span>Economize tempo organizando uma data para sua reunião ou evento.</span></p><p> A enquete de horário facilita ver a disponibilidade de todos e encontrar o melhor horário.</p><p> Dê um título e detalhes à sua enquete do Time. Insira uma lista de opções de data e hora em seu fuso horário.</p><p> Ao definir intervalos de tempo, considere pessoas em fusos horários diferentes. Os participantes verão os horários localizados em seu fuso horário.</p><p> Defina a duração da reunião.</p><p> Quando a enquete de horário for encerrada, defina um resultado com o melhor horário e quaisquer instruções para a reunião.</p><p> <span>O Loomio incluirá um convite de calendário com o e-mail de notificação do resultado, para que os participantes possam adicionar ao calendário.</span></p>"
-      title: Vamos encontrar uma data para nosso próximo encontro
+      process_introduction: <p><span>Economize tempo organizando uma data para sua reunião ou evento.</span></p><p> A enquete de horário facilita ver a disponibilidade de todos e encontrar o melhor horário.</p><p> Dê um título e detalhes à sua enquete do Time. Insira uma lista de opções de data e hora em seu fuso horário.</p><p> Ao definir intervalos de tempo, considere pessoas em fusos horários diferentes. Os participantes verão os horários localizados em seu fuso horário.</p><p> Defina a duração da reunião.</p><p> Quando a enquete de horário for encerrada, defina um resultado com o melhor horário e quaisquer instruções para a reunião.</p><p> <span>O Loomio incluirá um convite de calendário com o e-mail de notificação do resultado, para que os participantes possam adicionar ao calendário.</span></p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Leia mais sobre a enquete do Time</a> .</p>
+      title: Vamos encontrar uma data para o nosso próximo encontro
       details: "<p><strong>Qual é a reunião ou evento?</strong></p><p></p><p> <strong>Por que isso é importante?</strong></p><p></p><p> <strong>O que você está pedindo para as pessoas fazerem?</strong></p><p></p><p> <span>Marque os intervalos de tempo que você está disponível com o ícone verde de 'polegar para cima' ou deixe o 'polegar para baixo' vermelho no lugar quando não estiver disponível.</span></p><p> <span>Use o ícone 'polegar para o lado' para dizer que você está disponível 'se necessário'.</span></p>"
       reason_prompt: Há algo que você possa dizer para ajudar o organizador a encontrar um horário adequado?
     opt_in:
       process_subtitle: Encontre voluntários ou peça participantes
-      process_introduction: "<p>Use Opt-in para convidar pessoas para participar de uma equipe, comitê ou grupo de trabalho ou para participar de um evento.</p><p> 'Opt-in' tem duas opções de votação: Aceitar ou Recusar.</p><p> Você pode definir um número alvo de pessoas que está procurando, digamos 3 pessoas para se juntar ao seu grupo de trabalho.</p>"
+      process_introduction: '<p>Use Opt-in para convidar pessoas para participar de uma equipe, comitê ou grupo de trabalho ou para participar de um evento.</p><p> ''Opt-in'' tem duas opções de votação: Aceitar ou Recusar.</p><p> Você pode definir um número alvo de pessoas que está procurando, digamos 3 pessoas para se juntar ao seu grupo de trabalho.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Leia mais sobre Opt-in</a> .</p>'
       title: Grupo de trabalho para elaborar nossa nova política de sustentabilidade
       details: "<p><strong>Qual é a equipe, grupo de trabalho ou evento para o qual você está convidando as pessoas?</strong></p><p></p><p> <strong>Por que isso é importante?</strong></p><p></p><p> <strong>O que você está pedindo para as pessoas fazerem?</strong></p><p></p><p> Selecione 'Aceitar' para participar!</p>"
       accept_meaning: estou disposto a participar
