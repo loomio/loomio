@@ -43,6 +43,18 @@ module Null::User
     }
   end
 
+  def avatar_initials_url(size = 256)
+    params = {
+      name: "AU".split('').join('+'),
+      background: color.gsub('#',''),
+      color: AppConfig.theme[:brand_colors].slice(:gold).values.first,
+      rounded: true,
+      format: :png,
+      size: size
+    }
+    "https://ui-avatars.com/api/?#{params.to_a.map{|p| p.join('=')}.join('&')}"
+  end
+
   def short_bio_format
     "html"
   end
