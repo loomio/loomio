@@ -335,7 +335,6 @@ class Group < ApplicationRecord
 
   def poll_template_positions
     self[:info]['poll_template_positions'] ||= {
-      'question' => 0,
       'check' => 1,
       'advice' => 2,
       'consent' => 3,
