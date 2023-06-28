@@ -124,7 +124,7 @@ export default
         to: @urlFor(g)
 
     votingMethodsItems: ->
-      Object.keys(@votingMethodsI18n).map (key) =>
+      without(Object.keys(@votingMethodsI18n), 'count').map (key) =>
         {text: @$t(@votingMethodsI18n[key].title), value: key}
 
     knownOptions: ->
