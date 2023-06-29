@@ -53,7 +53,6 @@ class GroupSerializer < ApplicationSerializer
              :subgroups_count,
              :new_host,
              :secret_token,
-             :hidden_poll_templates,
              :categorize_poll_templates
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups

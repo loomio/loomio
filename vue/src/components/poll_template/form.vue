@@ -107,7 +107,6 @@ export default
       @pollTemplate.save().then (data) =>
         Flash.success "poll_common.poll_template_saved"
         if @isModal
-          EventBus.$emit('refreshPollTemplates')
           EventBus.$emit('closeModal')
         else
           @$router.push @$route.query.return_to

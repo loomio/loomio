@@ -32,22 +32,14 @@ export default
       templates: 'templates.templates'
 
   created: ->
-    renderKey = 0
-
+    Records.remote.fetch(path: "poll_templates", params: {group_id: @group.id})
     EventBus.$on 'sortPollTemplates', => @isSorting = true
-    @fetch()
-    EventBus.$on 'refreshPollTemplates', => 
-      @fetch().then => @query()
-      @query()
 
     @watchRecords
-      collections: ["pollTemplates", "groups"]
+      collections: ["pollTemplates"]
       query: (records) => @query()
 
   methods:
-    fetch: ->
-      Records.remote.fetch(path: "poll_templates", params: {group_id: @group.id} )
-
     query: ->
       templates = []
       if @group.categorizePollTemplates

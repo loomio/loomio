@@ -23,14 +23,6 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
     update_response
   end
 
-  def hidden
-    group = current_user.groups.find_by(id: params[:group_id])
-
-    self.collection = group.poll_templates.discarded
-
-    respond_with_collection
-  end
-
   def positions
     group = current_user.adminable_groups.find_by!(id: params[:group_id])
     params[:ids].each_with_index do |val, index|
@@ -42,7 +34,6 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
     end
 
     group.save!
-
     index
   end
 
@@ -62,14 +53,14 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
     @poll_template = @group.poll_templates.kept.find_by!(id: params[:id])
     @poll_template.discard!
-    respond_with_resource
+    index
   end
 
   def undiscard
     @group = current_user.adminable_groups.find_by!(id: params[:group_id])
     @poll_template = @group.poll_templates.discarded.find_by!(id: params[:id])
     @poll_template.undiscard!
-    respond_with_resource
+    index
   end
 
   def destroy
@@ -88,8 +79,7 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
       @group.hidden_poll_templates.push params[:key].parameterize
       @group.hidden_poll_templates.uniq!
       @group.save!
-      self.resource = @group
-      respond_with_resource
+      index
     else
       response_with_error(404)
     end
@@ -103,7 +93,7 @@ class API::V1::PollTemplatesController < API::V1::RestfulController
       @group.hidden_poll_templates -= [params[:key].parameterize]
       @group.save!
       self.resource = @group
-      respond_with_resource
+      index
     else
       response_with_error(404)
     end

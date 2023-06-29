@@ -53,8 +53,7 @@ export default new class PollTemplateService
       menu: true
       canPerform: -> pollTemplate.id && !pollTemplate.discardedAt && group.adminsInclude(Session.user())
       perform: ->
-        Records.remote.post('poll_templates/discard', {group_id: group.id, id: pollTemplate.id}).then =>
-          EventBus.$emit 'refreshPollTemplates'
+        Records.remote.post('poll_templates/discard', {group_id: group.id, id: pollTemplate.id})
 
     undiscard:
       icon: 'mdi-eye'
@@ -62,8 +61,7 @@ export default new class PollTemplateService
       menu: true
       canPerform: -> pollTemplate.id && pollTemplate.discardedAt && group.adminsInclude(Session.user())
       perform: ->
-        Records.remote.post('poll_templates/undiscard', {group_id: group.id, id: pollTemplate.id}).then =>
-          EventBus.$emit 'refreshPollTemplates'
+        Records.remote.post('poll_templates/undiscard', {group_id: group.id, id: pollTemplate.id})
 
     destroy:
       icon: 'mdi-delete'
@@ -77,7 +75,6 @@ export default new class PollTemplateService
             confirm:
               submit: ->
                 pollTemplate.destroy().then ->
-                  EventBus.$emit('refreshPollTemplates')
                   EventBus.$emit('closeModal')
               text:
                 title: 'common.are_you_sure'
@@ -89,17 +86,15 @@ export default new class PollTemplateService
       name: 'common.action.hide'
       menu: true
       canPerform: -> 
-        !pollTemplate.id && pollTemplate.key && group.adminsInclude(Session.user()) && !group.hiddenPollTemplates.includes(pollTemplate.key)
+        !pollTemplate.id && pollTemplate.key && !pollTemplate.discardedAt && group.adminsInclude(Session.user())
       perform: ->
-        Records.remote.post('poll_templates/hide', {group_id: group.id, key: pollTemplate.key}).then =>
-          EventBus.$emit 'refreshPollTemplates'
+        Records.remote.post('poll_templates/hide', {group_id: group.id, key: pollTemplate.key})
 
     unhide:
       icon: 'mdi-eye'
       name: 'common.action.unhide'
       menu: true
       canPerform: -> 
-        !pollTemplate.id && pollTemplate.key && group.adminsInclude(Session.user()) && group.hiddenPollTemplates.includes(pollTemplate.key)
+        !pollTemplate.id && pollTemplate.key && pollTemplate.discardedAt && group.adminsInclude(Session.user())
       perform: ->
-        Records.remote.post('poll_templates/unhide', {group_id: group.id, key: pollTemplate.key}).then =>
-          EventBus.$emit 'refreshPollTemplates'
+        Records.remote.post('poll_templates/unhide', {group_id: group.id, key: pollTemplate.key})

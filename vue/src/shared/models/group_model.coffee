@@ -29,7 +29,6 @@ export default class GroupModel extends BaseModel
     membersCanCreateSubgroups: false
     motionsCanBeEdited: false
     parentMembersCanSeeDiscussions: false
-    hiddenPollTemplates: []
     files: []
     imageFiles: []
     attachments: []
