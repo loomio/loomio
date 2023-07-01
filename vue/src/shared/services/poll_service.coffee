@@ -12,6 +12,7 @@ import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_se
 
 export default new class PollService
   actions: (poll, vm, event) ->
+    return {} unless poll
     translate_poll:
       icon: 'mdi-translate'
       name: 'common.action.translate'
