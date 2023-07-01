@@ -51,7 +51,7 @@ module HasAvatar
     colors = AppConfig.theme[:brand_colors].slice(:gold, :sky, :wellington, :sunset).values
     color = colors[id % colors.length].gsub('#','')
     params = {
-      name: avatar_initials.split('').join('+'),
+      name: String(avatar_initials).split('').join('+'),
       background: colors[id % colors.length].gsub('#',''),
       color: '000000',
       rounded: true,
