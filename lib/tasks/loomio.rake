@@ -12,7 +12,7 @@ namespace :loomio do
   end
 
   task :delete_translations do
-    # raise "edit this directly to be sure you want to use it"
+    raise "edit this directly to be sure you want to use it"
     %w[server client].each do |source_name|
       {
         'fr' => 'fr',

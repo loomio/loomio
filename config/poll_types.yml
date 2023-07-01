@@ -13,8 +13,6 @@ count:
   min_options: 1
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.count_title
-    process_subtitle_i18n: poll_count_form.tool_tip_collapsed
     chart_type: bar
     min_score: 1
     max_score: 1
@@ -53,8 +51,6 @@ check:
   min_options: 1
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.check_title
-    process_subtitle_i18n: poll_templates.sense_check.process_subtitle
     chart_type: pie
     min_score: 1
     max_score: 1
@@ -187,9 +183,6 @@ proposal:
       color: "#C8E56E"
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.proposal_title
-    process_subtitle_i18n: poll_proposal_form.tool_tip_collapsed
-    process_url: https://help.loomio.com/en/user_manual/getting_started/decisions#loomio-proposal
     chart_type: pie
     min_score: 1
     max_score: 1
@@ -213,9 +206,6 @@ meeting:
   defaults:
     meeting_duration: 60
     poll_option_name_format: iso8601
-    process_name_i18n: decision_tools_card.meeting_title
-    process_subtitle_i18n: poll_meeting_form.tool_tip_collapsed
-    process_url: https://help.loomio.com/en/user_manual/polls/proposal_types#time-poll
     chart_type: grid
     min_score: 0
     max_score: 2
@@ -238,9 +228,6 @@ poll:
   min_options: 1
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: poll_common_form.voting_methods.simple_poll
-    process_subtitle_i18n: poll_poll_form.tool_tip_collapsed
-    process_url: https://help.loomio.com/en/user_manual/polls/proposal_types#simple-poll
     chart_type: bar
     min_score: 1
     max_score: 1
@@ -261,9 +248,6 @@ dot_vote:
   min_options: 1
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.dot_vote_title
-    process_subtitle_i18n: poll_dot_vote_form.tool_tip_collapsed
-    process_url: https://help.loomio.com/en/user_manual/polls/proposal_types#dot-vote
     chart_type: bar
     dots_per_person: 8
     min_score: 0
@@ -283,9 +267,6 @@ score:
   min_options: 1
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.score_title
-    process_subtitle_i18n: poll_score_form.tool_tip_collapsed
-    process_url: https://help.loomio.com/en/user_manual/polls/proposal_types#score-poll
     chart_type: bar
     min_score: 1
     max_score: 5
@@ -306,9 +287,6 @@ ranked_choice:
   min_options: 2
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.ranked_choice_title
-    process_subtitle_i18n: poll_ranked_choice_form.tool_tip_collapsed
-    process_url: https://help.loomio.com/en/user_manual/polls/proposal_types#ranked-choice
     chart_type: bar
     minimum_stance_choices: 2
     min_score: 1
