@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
-  # include Translatable
-  # is_translatable on: :name
+  include Translatable
+  is_translatable on: :name
   belongs_to :group
 
   validates :name, presence: true, uniqueness: { scope: :group }
