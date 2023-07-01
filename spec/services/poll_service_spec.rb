@@ -268,16 +268,6 @@ describe PollService do
       expect(stance.created_event.reload.user).to be_present
     end
 
-    it 'stances_in_discussion is false' do
-      poll_created.hide_results = :until_closed
-      PollService.create(poll: poll_created, actor: user)
-      event = StanceService.create(stance: stance, actor: stance.participant)
-      expect(event.discussion).to be nil
-      PollService.close(poll: poll_created, actor: user)
-      expect(event.reload.discussion_id).to be_present
-
-    end
-
     it 'hides and reveals results correctly' do
       poll_created.hide_results = 'until_closed'
       PollService.create(poll: poll_created, actor: user)
@@ -317,23 +307,6 @@ describe PollService do
       PollService.create(poll: poll_created, actor: user)
       poll_created.update(closing_at: 1.day.ago, closed_at: 1.day.ago)
       expect { PollService.expire_lapsed_polls }.to_not change { poll_created.reload.closed_at }
-    end
-  end
-
-  describe '#cleanup_examples' do
-    it 'removes example polls' do
-      create(:poll, example: true, created_at: 2.days.ago)
-      expect { PollService.cleanup_examples }.to change { Poll.count }.by(-1)
-    end
-
-    it 'does not remove recent example polls' do
-      create(:poll, example: true, created_at: 30.minutes.ago)
-      expect { PollService.cleanup_examples }.to_not change { Poll.count }
-    end
-
-    it 'does not remove non-example polls' do
-      create(:poll, created_at: 2.days.ago)
-      expect { PollService.cleanup_examples }.to_not change { Poll.count }
     end
   end
 end

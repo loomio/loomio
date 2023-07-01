@@ -20,14 +20,14 @@ export default new class PollService
       perform: -> Session.user() && poll.translate(Session.user().locale)
 
     edit_stance:
-      name: 'poll_common.change_vote'
+      name: (poll.config().has_options && 'poll_common.change_vote') || 'poll_common.change_response'
       icon: 'mdi-pencil'
       dock: 2
       canPerform: -> StanceService.canUpdateStance(poll.myStance())
       perform: -> StanceService.updateStance(poll.myStance())
 
     uncast_stance:
-      name: 'poll_common.remove_your_vote'
+      name: (poll.config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response' 
       icon: 'mdi-cancel'
       menu: true
       canPerform: -> StanceService.canUpdateStance(poll.myStance())
@@ -39,14 +39,14 @@ export default new class PollService
       nameArgs: -> {pollType: poll.translatedPollType()}
       icon: 'mdi-pencil'
       canPerform: -> AbilityService.canEditPoll(poll)
-      to: "/p/#{poll.key}/edit"
+      to: -> "/p/#{poll.key}/edit"
 
     make_a_copy:
       icon: 'mdi-content-copy'
       name: 'templates.make_a_copy'
       menu: true
       canPerform: -> Session.user()
-      to: "/p/new?template_id=#{poll.id}"
+      to: -> "/p/new?template_id=#{poll.id}"
 
     add_poll_to_thread:
       menu: true

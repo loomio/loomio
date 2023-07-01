@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_15_234935) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -176,7 +176,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.integer "parent_id"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-    t.boolean "uses_markdown", default: false, null: false
     t.integer "comment_votes_count", default: 0, null: false
     t.integer "attachments_count", default: 0, null: false
     t.datetime "edited_at", precision: nil
@@ -253,7 +252,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.string "title", limit: 255
     t.datetime "last_comment_at", precision: nil
     t.text "description"
-    t.boolean "uses_markdown", default: false, null: false
     t.integer "items_count", default: 0, null: false
     t.datetime "closed_at", precision: nil
     t.boolean "private", default: true, null: false
@@ -268,7 +266,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.integer "importance", default: 0, null: false
     t.integer "seen_by_count", default: 0, null: false
     t.string "ranges_string"
-    t.integer "guest_group_id"
     t.string "description_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
     t.jsonb "info", default: {}, null: false
@@ -284,6 +281,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.integer "discarded_by"
     t.boolean "template", default: false, null: false
     t.integer "source_template_id"
+    t.string "tags", default: [], array: true
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"
@@ -292,6 +290,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.index ["last_activity_at"], name: "index_discussions_on_last_activity_at", order: :desc
     t.index ["private"], name: "index_discussions_on_private"
     t.index ["source_template_id"], name: "index_discussions_on_source_template_id", where: "(source_template_id IS NOT NULL)"
+    t.index ["tags"], name: "index_discussions_on_tags", using: :gin
     t.index ["template"], name: "index_discussions_on_template", where: "(template IS TRUE)"
   end
 
@@ -420,12 +419,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.string "region"
     t.string "city"
     t.integer "closed_motions_count", default: 0, null: false
-    t.boolean "enable_experiments", default: false
-    t.boolean "analytics_enabled", default: false, null: false
     t.integer "proposal_outcomes_count", default: 0, null: false
-    t.jsonb "experiences", default: {}, null: false
     t.integer "pending_memberships_count", default: 0, null: false
-    t.jsonb "features", default: {}, null: false
     t.integer "recent_activity_count", default: 0, null: false
     t.integer "closed_polls_count", default: 0, null: false
     t.integer "polls_count", default: 0, null: false
@@ -448,6 +443,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.boolean "members_can_delete_comments", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
     t.integer "template_discussions_count", default: 0, null: false
+    t.integer "poll_templates_count", default: 0, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["full_name"], name: "index_groups_on_full_name"
@@ -627,6 +623,50 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.index ["poll_id"], name: "index_poll_options_on_poll_id"
   end
 
+  create_table "poll_templates", force: :cascade do |t|
+    t.string "key"
+    t.integer "group_id", null: false
+    t.integer "position", default: 0, null: false
+    t.integer "author_id", null: false
+    t.string "poll_type", null: false
+    t.string "process_name"
+    t.string "process_subtitle"
+    t.string "process_url"
+    t.string "title"
+    t.text "details"
+    t.string "details_format", limit: 10, default: "md", null: false
+    t.boolean "anonymous", default: false, null: false
+    t.boolean "specified_voters_only", default: false, null: false
+    t.integer "notify_on_closing_soon", default: 0, null: false
+    t.string "content_locale"
+    t.boolean "shuffle_options", default: false, null: false
+    t.integer "hide_results", default: 0, null: false
+    t.string "chart_type"
+    t.integer "min_score"
+    t.integer "max_score"
+    t.integer "minimum_stance_choices"
+    t.integer "maximum_stance_choices"
+    t.integer "dots_per_person"
+    t.string "reason_prompt"
+    t.jsonb "poll_options", default: [], null: false
+    t.integer "stance_reason_required", default: 1, null: false
+    t.boolean "limit_reason_length", default: true, null: false
+    t.integer "default_duration_in_days", default: 7, null: false
+    t.integer "agree_target"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "meeting_duration"
+    t.boolean "can_respond_maybe", default: true, null: false
+    t.string "poll_option_name_format", default: "plain", null: false
+    t.jsonb "link_previews", default: [], null: false
+    t.jsonb "atttachments", default: [], null: false
+    t.string "tags", default: [], array: true
+    t.datetime "discarded_at"
+    t.string "process_introduction"
+    t.string "process_introduction_format", default: "md", null: false
+    t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
+  end
+
   create_table "poll_unsubscriptions", id: :serial, force: :cascade do |t|
     t.integer "poll_id", null: false
     t.integer "user_id", null: false
@@ -653,18 +693,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.jsonb "stance_counts", default: [], null: false
     t.integer "group_id"
     t.jsonb "matrix_counts", default: [], null: false
-    t.boolean "notify_on_participate", default: false, null: false
-    t.boolean "example", default: false, null: false
     t.integer "undecided_voters_count", default: 0, null: false
     t.boolean "voter_can_add_options", default: false, null: false
-    t.integer "guest_group_id"
     t.boolean "anonymous", default: false, null: false
     t.integer "versions_count", default: 0
     t.string "details_format", limit: 10, default: "md", null: false
     t.jsonb "attachments", default: [], null: false
-    t.boolean "anyone_can_participate", default: false, null: false
-    t.boolean "hide_results_until_closed", default: false, null: false
-    t.boolean "stances_in_discussion", default: true, null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
     t.string "secret_token", default: -> { "public.gen_random_uuid()" }
@@ -673,7 +707,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
     t.boolean "shuffle_options", default: false, null: false
-    t.boolean "allow_long_reason", default: false, null: false
     t.integer "hide_results", default: 0, null: false
     t.string "chart_type"
     t.integer "min_score"
@@ -691,14 +724,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.integer "default_duration_in_days"
     t.integer "agree_target"
     t.string "process_subtitle"
+    t.string "process_url"
+    t.string "tags", default: [], array: true
+    t.integer "poll_template_id"
+    t.string "poll_template_key"
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
     t.index ["discussion_id"], name: "index_polls_on_discussion_id"
     t.index ["group_id"], name: "index_polls_on_group_id"
-    t.index ["guest_group_id"], name: "index_polls_on_guest_group_id", unique: true
     t.index ["key"], name: "index_polls_on_key", unique: true
     t.index ["source_template_id"], name: "index_polls_on_source_template_id", where: "(source_template_id IS NOT NULL)"
+    t.index ["tags"], name: "index_polls_on_tags", using: :gin
   end
 
   create_table "reactions", id: :serial, force: :cascade do |t|
@@ -804,6 +841,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.datetime "updated_at", precision: nil
     t.integer "taggings_count", default: 0
     t.integer "priority", default: 0, null: false
+    t.integer "org_taggings_count", default: 0, null: false
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
     t.index ["name"], name: "index_tags_on_name"
   end
@@ -880,7 +918,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_104656) do
     t.string "authentication_token", limit: 255
     t.string "unsubscribe_token", limit: 255
     t.integer "memberships_count", default: 0, null: false
-    t.boolean "uses_markdown", default: false, null: false
     t.string "selected_locale", limit: 255
     t.string "time_zone", limit: 255
     t.string "key", limit: 255

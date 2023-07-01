@@ -47,6 +47,20 @@ module HasAvatar
     nil
   end
 
+  def avatar_initials_url(size = 256)
+    colors = AppConfig.theme[:brand_colors].slice(:gold, :sky, :wellington, :sunset).values
+    color = colors[id % colors.length].gsub('#','')
+    params = {
+      name: avatar_initials.split('').join('+'),
+      background: colors[id % colors.length].gsub('#',''),
+      color: '000000',
+      rounded: true,
+      format: :png,
+      size: size
+    }
+    "https://ui-avatars.com/api/?#{params.to_a.map{|p| p.join('=')}.join('&')}"
+  end
+
   def uploaded_avatar_url(size = 512)
     size = size.to_i
     return unless uploaded_avatar.attached?

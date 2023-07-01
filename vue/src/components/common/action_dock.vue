@@ -12,6 +12,9 @@ export default
       default: -> {}
     small: Boolean
     left: Boolean
+    menuIcon: 
+      type: String
+      default: 'mdi-dots-horizontal'
   computed:
     leftActions: ->
       pickBy @actions, (v) -> v.dockLeft
@@ -29,7 +32,7 @@ section.d-flex.flex-wrap.align-center.action-dock.pb-1(style="margin-left: -6px"
   .action-dock__action(v-for='(action, name) in rightActions' v-if='action.canPerform()', :key="name")
     reaction-input.action-dock__button--react(:model="model" v-if="name == 'react'", :small="small")
     action-button(v-if="name != 'react'", :action="action", :name="name", :small="small", :nameArgs="action.nameArgs && action.nameArgs()")
-  action-menu(v-if="menuActions", :actions='menuActions', :small="small" icon, :name="$t('action_dock.more_actions')")
+  action-menu(v-if="menuActions", :actions='menuActions', :menuIcon="menuIcon" :small="small" icon, :name="$t('action_dock.more_actions')")
   v-spacer(v-if="left")
   reaction-display(:model="model" v-if="left && actions.react && actions.react.canPerform()", :small="small")
 </template>

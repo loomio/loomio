@@ -22,6 +22,7 @@ class GroupSerializer < ApplicationSerializer
              :admins_can_edit_user_content,
              :token,
              :polls_count,
+             :poll_templates_count,
              :closed_polls_count,
              :discussions_count,
              :public_discussions_count,
@@ -38,9 +39,6 @@ class GroupSerializer < ApplicationSerializer
              :new_threads_max_depth,
              :new_threads_newest_first,
              :cover_url,
-             :experiences,
-             :enable_experiments,
-             :features,
              :open_discussions_count,
              :closed_discussions_count,
              :template_discussions_count,
@@ -54,12 +52,8 @@ class GroupSerializer < ApplicationSerializer
              :subscription,
              :subgroups_count,
              :new_host,
-             :complete,
-             :secret_token
-
-  def complete
-    true
-  end
+             :secret_token,
+             :categorize_poll_templates
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships

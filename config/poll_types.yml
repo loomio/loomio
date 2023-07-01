@@ -9,25 +9,10 @@ count:
   per_option_reason_prompt: true
   order_results_by: priority
   options_have_meaning: true
-  common_poll_options:
-    - key: accept
-      name_i18n: poll_count_options.accept
-      icon: agree
-      meaning_i18n: poll_count_vote_form.accept_meaning
-      prompt_i18n: poll_count_vote_form.accept_prompt
-      color: '#70C9F8'
-      default: true
-    - key: decline
-      name_i18n: poll_count_options.decline
-      icon: disagree
-      meaning_i18n: poll_count_vote_form.decline_meaning
-      prompt_i18n: poll_count_vote_form.decline_prompt
-      color: "#C8E56E"
-      default: true
+  has_options: true
+  min_options: 1
   defaults:
-    poll_option_name_format: 'plain'
-    process_name_i18n: decision_tools_card.count_title
-    process_subtitle_i18n: poll_count_form.tool_tip_collapsed
+    poll_option_name_format: plain
     chart_type: bar
     min_score: 1
     max_score: 1
@@ -36,7 +21,22 @@ count:
     agree_target: 5
     dots_per_person: 1
     default_duration_in_days: 3
-
+  common_poll_options:
+    - key: accept
+      name_i18n: poll_count_options.accept
+      icon: agree
+      meaning_i18n: poll_templates.opt_in.accept_meaning
+      prompt_i18n: poll_templates.opt_in.accept_prompt
+      color: '#70C9F8'
+      default: true
+    - key: decline
+      name_i18n: poll_count_options.decline
+      icon: disagree
+      meaning_i18n: poll_templates.opt_in.decline_meaning
+      prompt_i18n: poll_templates.opt_in.decline_prompt
+      color: "#C8E56E"
+      default: true
+      
 check:
   material_icon: mdi-head-question
   vote_method: show_thumbs
@@ -47,32 +47,10 @@ check:
   per_option_reason_prompt: true
   order_results_by: priority
   options_have_meaning: true
-  common_poll_options:
-    - key: looks_good
-      name_i18n: poll_check_options.looks_good
-      icon: agree
-      meaning_i18n: poll_check_options.looks_good_meaning
-      prompt_i18n: poll_check_options.looks_good_prompt
-      color: '#70C9F8'
-      default: true
-    - key: not_sure
-      name_i18n: poll_check_options.not_sure
-      icon: abstain
-      meaning_i18n: poll_check_options.not_sure_meaning
-      prompt_i18n: poll_check_options.not_sure_prompt
-      color: '#70C9F8'
-      default: true
-    - key: concerned
-      name_i18n: poll_check_options.concerned
-      icon: disagree
-      meaning_i18n: poll_check_options.concerned_meaning
-      prompt_i18n: poll_check_options.concerned_prompt
-      color: "#C8E56E"
-      default: true
+  has_options: true
+  min_options: 1
   defaults:
-    poll_option_name_format: 'plain'
-    process_name_i18n: decision_tools_card.check_title
-    process_subtitle_i18n: poll_check_options.check_subtitle
+    poll_option_name_format: plain
     chart_type: pie
     min_score: 1
     max_score: 1
@@ -81,6 +59,47 @@ check:
     agree_target: 5
     dots_per_person: 1
     default_duration_in_days: 3
+  common_poll_options:
+    - key: looks_good
+      name_i18n: poll_templates.sense_check.looks_good
+      icon: agree
+      meaning_i18n: poll_templates.sense_check.looks_good_meaning
+      prompt_i18n: poll_templates.sense_check.looks_good_prompt
+      color: '#70C9F8'
+      default: true
+    - key: not_sure
+      name_i18n: poll_templates.sense_check.not_sure
+      icon: abstain
+      meaning_i18n: poll_templates.sense_check.not_sure_meaning
+      prompt_i18n: poll_templates.sense_check.not_sure_prompt
+      color: '#70C9F8'
+      default: true
+    - key: concerned
+      name_i18n: poll_templates.sense_check.concerned
+      icon: disagree
+      meaning_i18n: poll_templates.sense_check.concerned_meaning
+      prompt_i18n: poll_templates.sense_check.concerned_prompt
+      color: "#C8E56E"
+      default: true
+
+question:
+  prevent_anonymous: true
+  material_icon: chat-question
+  vote_method: reason_only
+  vote_method_hint_i18n: poll_common_form.voting_methods.question_hint
+  chart_type: none
+  hide_reason_required: true
+  has_options: false
+  defaults:
+    poll_option_name_format: plain
+    chart_type: none
+    min_score: 0
+    max_score: 0
+    minimum_stance_choices: 0
+    maximum_stance_choices: 0
+    dots_per_person: 0
+    default_duration_in_days: 7
+    stance_reason_required: 2
 
 proposal:
   material_icon: mdi-thumbs-up-down
@@ -93,56 +112,77 @@ proposal:
   chart_column: score_percent
   order_results_by: priority
   options_have_meaning: true
+  has_options: true
+  min_options: 1
   common_poll_options:
     - key: agree
       name_i18n: poll_proposal_options.agree
       icon: agree
-      meaning_i18n: poll_proposal_options.agree_meaning
-      prompt_i18n: poll_proposal_vote_form.agree_reason_placeholder
+      meaning_i18n: poll_templates.proposal.agree_meaning
+      prompt_i18n: poll_templates.proposal.agree_prompt
       color: '#70C9F8'
-      default: true
     - key: abstain
       name_i18n: poll_proposal_options.abstain
       icon: abstain
-      meaning_i18n: poll_proposal_options.abstain_meaning
-      prompt_i18n: poll_proposal_options.abstain_prompt
+      meaning_i18n: poll_templates.proposal.abstain_meaning
+      prompt_i18n: poll_templates.proposal.abstain_prompt
       color: "#C8E56E"
-      default: true
     - key: disagree
       name_i18n: poll_proposal_options.disagree
       icon: disagree
-      meaning_i18n: poll_proposal_options.disagree_meaning
-      prompt_i18n: poll_proposal_vote_form.disagree_reason_placeholder
+      meaning_i18n: poll_templates.proposal.disagree_meaning
+      prompt_i18n: poll_templates.proposal.disagree_prompt
       color: "#D38FE1"
-      default: true
     - key: block
-      name_i18n: poll_proposal_options.block
+      name_i18n: poll_templates.consensus.block
       icon: block
-      meaning_i18n: poll_proposal_options.block_meaning
-      prompt_i18n: poll_proposal_vote_form.block_reason_placeholder
+      meaning_i18n: poll_templates.consensus.block_meaning
+      prompt_i18n: poll_templates.consensus.block_placeholder
+      color: "#999FDE"
+    - key: veto
+      name_i18n: poll_templates.gradients_of_agreement.veto
+      icon: block
+      meaning_i18n: poll_templates.gradients_of_agreement.veto_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.veto_prompt
       color: "#999FDE"
     - key: consent
       name_i18n: poll_proposal_options.consent
       icon: agree
-      meaning_i18n: poll_proposal_options.consent_meaning
-      prompt_i18n: poll_proposal_options.consent_prompt
+      meaning_i18n: poll_templates.consent.consent_meaning
+      prompt_i18n: poll_templates.consent.consent_prompt
       color: "#70C9F8"
     - key: objection
       name_i18n: poll_proposal_options.objection
       icon: disagree
-      meaning_i18n: poll_proposal_options.objection_meaning
-      prompt_i18n: poll_proposal_options.objection_prompt
+      meaning_i18n: poll_templates.consent.objection_meaning
+      prompt_i18n: poll_templates.consent.objection_prompt
       color: "#D38FE1"
     - key: object
       name_i18n: poll_proposal_options.object
       icon: disagree
-      meaning_i18n: poll_proposal_options.objection_meaning
-      prompt_i18n: poll_proposal_options.objection_prompt
+      meaning_i18n: poll_templates.consent.objection_meaning
+      prompt_i18n: poll_templates.consent.objection_prompt
       color: "#D38FE1"
+    - key: looks_good
+      name_i18n: poll_check_options.looks_good
+      icon: agree
+      meaning_i18n: poll_templates.sense_check.looks_good_meaning
+      prompt_i18n: poll_templates.sense_check.looks_good_prompt
+      color: '#70C9F8'
+    - key: accept
+      name_i18n: poll_count_options.accept
+      icon: agree
+      meaning_i18n: poll_templates.opt_in.accept_meaning
+      prompt_i18n: poll_templates.opt_in.accept_prompt
+      color: '#70C9F8'
+    - key: decline
+      name_i18n: poll_count_options.decline
+      icon: disagree
+      meaning_i18n: poll_templates.opt_in.decline_meaning
+      prompt_i18n: poll_templates.opt_in.decline_prompt
+      color: "#C8E56E"
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.proposal_title
-    process_subtitle_i18n: poll_proposal_form.tool_tip_collapsed
     chart_type: pie
     min_score: 1
     max_score: 1
@@ -161,11 +201,11 @@ meeting:
   validate_max_score: true
   order_results_by: priority
   options_have_meaning: false
+  has_options: true
+  min_options: 1
   defaults:
     meeting_duration: 60
     poll_option_name_format: iso8601
-    process_name_i18n: decision_tools_card.meeting_title
-    process_subtitle_i18n: poll_meeting_form.tool_tip_collapsed
     chart_type: grid
     min_score: 0
     max_score: 2
@@ -184,10 +224,10 @@ poll:
   chart_column: max_score_percent
   order_results_by: total_score_desc
   options_have_meaning: true
+  has_options: true
+  min_options: 1
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: poll_common_form.voting_methods.simple_poll
-    process_subtitle_i18n: poll_poll_form.tool_tip_collapsed
     chart_type: bar
     min_score: 1
     max_score: 1
@@ -204,10 +244,10 @@ dot_vote:
   validate_dots_per_person: true
   order_results_by: total_score_desc
   options_have_meaning: true
+  has_options: true
+  min_options: 1
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.dot_vote_title
-    process_subtitle_i18n: poll_dot_vote_form.tool_tip_collapsed
     chart_type: bar
     dots_per_person: 8
     min_score: 0
@@ -223,10 +263,10 @@ score:
   validate_max_score: true
   order_results_by: total_score_desc
   options_have_meaning: true
+  has_options: true
+  min_options: 1
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.score_title
-    process_subtitle_i18n: poll_score_form.tool_tip_collapsed
     chart_type: bar
     min_score: 1
     max_score: 5
@@ -243,10 +283,10 @@ ranked_choice:
   validate_min_score: true
   order_results_by: total_score_desc
   options_have_meaning: true
+  has_options: true
+  min_options: 2
   defaults:
     poll_option_name_format: plain
-    process_name_i18n: decision_tools_card.ranked_choice_title
-    process_subtitle_i18n: poll_ranked_choice_form.tool_tip_collapsed
     chart_type: bar
     minimum_stance_choices: 2
     min_score: 1

@@ -10,7 +10,6 @@ module Ability::Poll
       user.is_logged_in? &&
       poll.active? &&
       (
-        poll.anyone_can_participate? ||
         poll.unmasked_voters.exists?(user.id) ||
         (!poll.specified_voters_only && poll.voters.exists?(user.id))
       )

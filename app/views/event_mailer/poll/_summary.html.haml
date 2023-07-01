@@ -2,7 +2,7 @@
   - if poll.current_outcome
     %h2.text-subtitle-2= t(:"poll_common.outcome")
     %p= render_rich_text(poll.current_outcome.statement, poll.current_outcome.statement_format)
-    %h2.text-subtitle-2= t(:"poll_types.#{poll.poll_type}")
+    %h2.text-subtitle-2= t(:"decision_tools_card.#{poll.poll_type}_title")
 
   %p= render_rich_text(poll.details, poll.details_format)
 

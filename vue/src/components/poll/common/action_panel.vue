@@ -64,8 +64,7 @@ export default
     v-alert.poll-common-action-panel__results-hidden-until-vote.my-2.elevation-5(
        dense type="info"
     )
-      span(v-if='poll.template' v-t="{path: 'poll_common_action_panel.voting_disabled_poll_is_template', args: {poll_type: poll.translatedPollType()}}")
-      span(v-else v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
+      span(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
       
   template(v-else)
     .poll-common-vote-form(v-if='stance && !stance.castAt')

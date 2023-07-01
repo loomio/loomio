@@ -31,17 +31,18 @@ export default class PollModel extends BaseModel
   poll: -> @
 
   defaultValues: ->
-    # read defaults based on pollType and apply them
     discussionId: null
     title: ''
+    titlePlaceholder: null
     closingAt: null
+    customize: false
     details: ''
     detailsFormat: 'html'
     decidedVotersCount: 0
     defaultDurationInDays: null
     specifiedVotersOnly: false
     pollOptionNames: []
-    pollType: 'single_choice'
+    pollType: 'proposal'
     chartColumn: null
     chartType: null
     minScore: null
@@ -53,6 +54,7 @@ export default class PollModel extends BaseModel
     meetingDuration: null
     limitReasonLength: true
     stanceReasonRequired: 'optional'
+    reasonPrompt: null
     files: []
     imageFiles: []
     attachments: []
@@ -60,10 +62,6 @@ export default class PollModel extends BaseModel
     notifyOnClosingSoon: 'undecided_voters'
     results: []
     pollOptionIds: []
-    processName: null
-    processSubtitle: null
-    processDescription: null
-    processDescriptionFormat: 'html'
     pollOptionNameFormat: null
     recipientMessage: null
     recipientAudience: null
@@ -72,12 +70,11 @@ export default class PollModel extends BaseModel
     recipientEmails: []
     notifyRecipients: true
     shuffleOptions: false
-    template: false
-    tagIds: []
+    tags: []
     hideResults: 'off'
     stanceCounts: []
 
-  cloneTemplate: ->
+  clonePoll: ->
     clone = @clone()
     clone.id = null
     clone.key = null
@@ -87,8 +84,8 @@ export default class PollModel extends BaseModel
     clone.discussionId = null
 
     clone.template = false
-    clone.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
-    
+    clone.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays || 7))
+
     if @pollOptionsAttributes
       clone.pollOptionsAttributes = @pollOptionsAttributes
     else
@@ -107,38 +104,15 @@ export default class PollModel extends BaseModel
 
   clonePollOptions: ->
     @pollOptions().map (o) =>
-        id: o.id
-        name: o.name
-        meaning: o.meaning
-        prompt: o.prompt
-        icon: o.icon
-
-  applyPollTypeDefaults: ->
-    map AppConfig.pollTypes[@pollType].defaults, (value, key) =>
-      @[camelCase(key)] = value
-    if @template
-      @closingAt = null
-    else
-      @closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
-
-    common_poll_options = AppConfig.pollTypes[@pollType].common_poll_options || []
-    @pollOptionsAttributes = common_poll_options.filter((o) -> o.default)
-      .map (o) =>
-        name:  I18n.t(o.name_i18n)
-        meaning: I18n.t(o.meaning_i18n)
-        prompt: I18n.t(o.prompt_i18n)
-        icon: o.icon
+      id: o.id
+      name: o.name
+      meaning: o.meaning
+      prompt: o.prompt
+      icon: o.icon
 
   defaulted: (attr) ->
     if @[attr] == null
-      console.log snakeCase(attr)
       AppConfig.pollTypes[@pollType].defaults[snakeCase(attr)]
-    else
-      @[attr]
-
-  defaultedI18n: (attr) ->
-    if @[attr] == null
-      I18n.t(AppConfig.pollTypes[@pollType].defaults[snakeCase(attr)+"_i18n"])
     else
       @[attr]
 
@@ -186,9 +160,6 @@ export default class PollModel extends BaseModel
 
   bestNamedId: ->
     ((@id && @) || (@discusionId && @discussion()) || (@groupId && @group()) || {namedId: ->}).namedId()
-
-  tags: ->
-    @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
 
   voters: ->
     @latestStances().map (stance) -> stance.participant()
@@ -246,8 +217,7 @@ export default class PollModel extends BaseModel
     !isEqual(sortBy(@pollOptionNames), sortBy(map(options, 'name')))
 
   iCanVote: ->
-    @isVotable() &&
-    (@anyoneCanParticipate or @myStance() or (!@specifiedVotersOnly and @membersInclude(Session.user())))
+    @isVotable() && (@myStance() || (!@specifiedVotersOnly && @membersInclude(Session.user())))
 
   isBlank: ->
     @details == '' or @details == null or @details == '<p></p>'
@@ -286,7 +256,7 @@ export default class PollModel extends BaseModel
     !!@details
 
   isVotable: ->
-    !@discardedAt && @closingAt && !@closedAt? && !@template
+    !@discardedAt && @closingAt && !@closedAt?
 
   isClosed: ->
     @closedAt?
@@ -313,10 +283,10 @@ export default class PollModel extends BaseModel
       'edit'
 
   translatedPollType: ->
-    @processName || I18n.t("poll_types.#{@pollType}")
+    I18n.t("poll_types.#{@pollType}")
 
   translatedPollTypeCaps: ->
-    @processName || I18n.t("decision_tools_card.#{@pollType}_title")
+    I18n.t("decision_tools_card.#{@pollType}_title")
 
   addOption: (option) =>
     return false if @pollOptionNames.includes(option) or !option

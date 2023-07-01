@@ -1,3 +1,4 @@
+---
 nl_NL:
   explore:
     header: Verken openbare groepen
@@ -7,7 +8,7 @@ nl_NL:
         blank: mag niet leeg gelaten worden
         invalid: is geen geldige waarde
   errors:
-    clear_cache: "Laad probleem gedetecteerd. Houdt Shift ingedrukt en druk op Vernieuwen, of wis de browser cache."
+    clear_cache: Laad probleem gedetecteerd. Houdt Shift ingedrukt en druk op Vernieuwen, of wis de browser cache.
     400:
       title: Bad request
       body: Sorry, dat verzoek werd niet begrepen
@@ -24,8 +25,9 @@ nl_NL:
       body: Deze pagina bestaat niet meer
     417:
       title: Browser is niet compatibel
-      body: |
-          Gebruik <a href="https://browser-update.org/update.html?force_outdated=true">een nieuwere browser</a> voor Loomio
+      body: 'Gebruik <a href="https://browser-update.org/update.html?force_outdated=true">een nieuwere browser</a> voor Loomio
+
+        '
     422:
       title: Niet verwerkbare entiteit
       body: De verandering die je wilde werd verworpen. Misschien probeerde je iets te veranderen waar je geen toegang toe had.
@@ -36,8 +38,9 @@ nl_NL:
       title: Interne server fout
       body: Sorry, er ging iets fout. We hebben melding van het probleem en we zullen er snel naar kijken.
     noscript: Loomio vereist javascript! Zet aub javascript aan in je browser om door te gaan
-    upgrade_browser: |
-        Oh oh! Jouw browser is te oud en Loomio werkt hier waarschijnlijk niet goed op. <a href="https://browser-update.org/update.html">Upgrade je browser.</a>
+    upgrade_browser: 'Oh oh! Jouw browser is te oud en Loomio werkt hier waarschijnlijk niet goed op. <a href="https://browser-update.org/update.html">Upgrade je browser.</a>
+
+      '
     return_home: Terug naar start pagina
     not_found: 404 bestand niet gevonden
     messages:
@@ -45,7 +48,8 @@ nl_NL:
       spoofed_media_type: De inhoud van dat bestand komt niet overeen met de bestandsnaam
   group:
     error:
-      handle_must_begin_with_parent_handle: "Moet beginnen met %{parent_handle}-"
+      handle_must_begin_with_parent_handle: Moet beginnen met %{parent_handle}-
+      no_public_trials: Upgrade van de proefversie om de privacyinstelling van de groep te wijzigen
     stats:
       group_stats: Groep statistieken
       org_stats: Organisatie statistieken (inclusief subgroepen)
@@ -66,20 +70,22 @@ nl_NL:
         rank: Volgorde
         time: Moment bevragen
   user:
-    deleted_user: "Verwijderde gebruiker"
-    placeholder_name: "Uitgenodigde gebruiker (%{hostname})"
+    deleted_user: Verwijderde gebruiker
+    placeholder_name: Uitgenodigde gebruiker (%{hostname})
     error:
       sign_in_required_html: |
-          Je moet ingelogd zijn om door te gaan.
-          <a href="/dashboard" target="_blank">Log in</a> en ververs deze pagina.
-      recaptcha: "We waren niet in staat om te verifiëren dat je geen robot bent. Probeer het nog eens!"
-      bad_login: "Mijn excuses, het wachtwoord komt niet overeen met degene die we hebben"
-      username_must_be_alphanumeric: "Gebruikersnamen mogen alleen uit kleine letters en cijfers bestaan"
+        Je moet ingelogd zijn om door te gaan.
+        <a href="/dashboard" target="_blank">Log in</a> en ververs deze pagina.
+      recaptcha: We waren niet in staat om te verifiëren dat je geen robot bent. Probeer het nog eens!
+      bad_login: Mijn excuses, het wachtwoord komt niet overeen met degene die we hebben
+      username_must_be_alphanumeric: Gebruikersnamen mogen alleen uit kleine letters en cijfers bestaan
   poll:
     error:
       cannot_add_options: Er kunnen geen opties aan deze peiling toegevoegd worden
       cannot_remove_options: Er kunnen geen opties van deze peiling verwijderd worden
       must_have_options: Er moet op zijn minst één optie voor een peiling zijn
+      must_be_in_the_future: Moet in de toekomst zijn
+      templates_cannot_close: Sjablonen kunnen niet worden gesloten
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) leden hebben hun positie gegeven."
       title: Titel
@@ -103,6 +109,8 @@ nl_NL:
       participant: Deelnemer
       also_available: Ook beschikbaar in
       total: Totaal
+      user_id: gebruikersnaam
+    waiting_for_votes_from: Wachten op stemmen van
   stance:
     error:
       too_short: Gelieve een selectie te maken
@@ -113,83 +121,88 @@ nl_NL:
     active: Actief
     inactive: Inactief
   base_mailer:
-    via_loomio: '%{name} (via %{site_name})'
+    via_loomio: "%{name} (via %{site_name})"
   user_mailer:
     group_export_ready:
       subject: Groep data export voor %{group_name}
-      body_html: |
-          Download jouw groep data <a href="%{url}">hier</a>. Merk op dat deze link maar 1 week geldig is.
+      body_html: 'Download jouw groep data <a href="%{url}">hier</a>. Merk op dat deze link maar 1 week geldig is.
+
+        '
     deactivated:
-      subject: "Jouw %{site_name} gebruikersaccount is gedeactiveerd."
+      subject: Jouw %{site_name} gebruikersaccount is gedeactiveerd.
       body_html: |
-          <p>Jij, of iemand met toegang tot jouw account, heeft jouw Loomio gebruikersaccount gedeactiveerd.</p>
-          <p>Alle persoonlijk data is verwijderd van het systeem.</p>
-          <p>Als je het gebruikersaccount met alle reacties en stemmen wilt herstellen, neem dan aub contact op met support. Gebruik referentienummer: %{recovery_code}</p>
+        <p>Jij, of iemand met toegang tot jouw account, heeft jouw Loomio gebruikersaccount gedeactiveerd.</p>
+        <p>Alle persoonlijk data is verwijderd van het systeem.</p>
+        <p>Als je het gebruikersaccount met alle reacties en stemmen wilt herstellen, neem dan aub contact op met support. Gebruik referentienummer: %{recovery_code}</p>
     accounts_merged:
-      subject: "Je gebruikersaccounts van %{site_name} werden samengevoegd."
+      subject: Je gebruikersaccounts van %{site_name} werden samengevoegd.
       body_html: |
-          Hallo %{name},
-          Je twee Loomio accounts zijn samengevoegd tot één account.
-          Gelieve vanaf nu <strong>%{email}</strong> te gebruiken om op Loomio in te loggen.
+        Hallo %{name},
+        Je twee Loomio accounts zijn samengevoegd tot één account.
+        Gelieve vanaf nu <strong>%{email}</strong> te gebruiken om op Loomio in te loggen.
     merge_verification:
-      subject: "Verifieer je %{site_name} e-mail adres voor het samenvoegen"
+      subject: Verifieer je %{site_name} e-mail adres voor het samenvoegen
       body_html: |
-          <p>Hoi %{name},</p>
-          <p>Er is een verzoek gedaan om jouw account met e-mailadres <strong>%{source_email}</strong> samen te voegen met het account dat het e-mailadres <strong>%{target_email}</strong> heeft,</p>
-          <p>Na het samenvoegen kun je niet meer inloggen met <strong>%{source_email}</strong>, en alleen met <strong>%{target_email}</strong>.</p>
-          <p>Bevestig aub dat dit de bedoeling is.</p>
+        <p>Hoi %{name},</p>
+        <p>Er is een verzoek gedaan om jouw account met e-mailadres <strong>%{source_email}</strong> samen te voegen met het account dat het e-mailadres <strong>%{target_email}</strong> heeft,</p>
+        <p>Na het samenvoegen kun je niet meer inloggen met <strong>%{source_email}</strong>, en alleen met <strong>%{target_email}</strong>.</p>
+        <p>Bevestig aub dat dit de bedoeling is.</p>
       verify: Controleer e-mail en ga door
       confirm_page:
         confirm: Bevestig samenvoegen
         body_html: |
-            <p>Bevestig aub dat je het account met e-mailadres <strong>%{source_email}</strong> wil samenvoegen naar het account met e-mailadres <strong>%{target_email}</strong>.</p>
-            <p>Het account met <strong>%{source_email}</strong> zal worden verwijderd. Je kunt hierna alleen inloggen met <strong>%{target_email}</strong>.</p>
-            <p>Deze wijziging kan niet ongedaan worden gemaakt.</p>
+          <p>Bevestig aub dat je het account met e-mailadres <strong>%{source_email}</strong> wil samenvoegen naar het account met e-mailadres <strong>%{target_email}</strong>.</p>
+          <p>Het account met <strong>%{source_email}</strong> zal worden verwijderd. Je kunt hierna alleen inloggen met <strong>%{target_email}</strong>.</p>
+          <p>Deze wijziging kan niet ongedaan worden gemaakt.</p>
         merge: Accounts samenvoegen
       complete_page:
         title: Samenvoegen gelukt!
         body_html: |
-            <p>Het samenvoegen van jouw accounts is gelukt. Je krijgt een bevestigingse-mail op <strong>%{target_email}</strong> .</p>
-            <p>Neem aub <a href="/contact" target="_blank">contact op</a> als je nog vragen hebt.</p>
+          <p>Het samenvoegen van jouw accounts is gelukt. Je krijgt een bevestigingse-mail op <strong>%{target_email}</strong> .</p>
+          <p>Neem aub <a href="/contact" target="_blank">contact op</a> als je nog vragen hebt.</p>
   email:
     common:
       or_enter_code: Of, voer de code hieronder in
+      resend: Deze vervalt binnen 24 uur en kan slechts één keer worden gebruikt
     login:
       subject: Log in op %{site_name}
       login: Log in als %{name}
+      intro: Dit is je link om in te loggen bij %{site_name}
+      intro_code: Dit is je code om in te loggen bij %{site_name}
     reactivate:
       subject: Je account %{site_name} heractiveren
       login: Heractiveer %{name}
+      intro: Hallo %{name}, hier is een link om uw %{site_name}-account opnieuw te activeren
     contact_request:
       subject: "%{name} zou graag in contact staan met jou op %{site_name}!"
       intro: "%{name} (%{email}) heeft een verzoek gestuurd om met jou in contact te komen staan."
-      footer: "Je mag onmiddelijk reageren op %{name} door te antwoorden op deze mail."
+      footer: Je mag onmiddelijk reageren op %{name} door te antwoorden op deze mail.
     reset_password:
       greeting: |
-          Hoi %{name}
-          Hier is een link die je kunt gebruiken om je wachtwoord voor je Loomio account te herstellen:
+        Hoi %{name}
+        Hier is een link die je kunt gebruiken om je wachtwoord voor je Loomio account te herstellen:
       link_text: Reset je wachtwoord
       signoff: |
-          Je hebt dit ontvangen omdat je e-mailadres ingevoerd is in het "Wachtwoord vergeten" formulier op %{hostname}.
-          Je wachtwoord wordt echter niet veranderd totdat je de link hierboven volgt en het formulier invult.
-          Als je problemen blijft hebben met inloggen, reageer dan op deze e-mail om contact op te nemen met iemand van de helpdesk.
+        Je hebt dit ontvangen omdat je e-mailadres ingevoerd is in het "Wachtwoord vergeten" formulier op %{hostname}.
+        Je wachtwoord wordt echter niet veranderd totdat je de link hierboven volgt en het formulier invult.
+        Als je problemen blijft hebben met inloggen, reageer dan op deze e-mail om contact op te nemen met iemand van de helpdesk.
     by_who: door %{person}
     reply_to_this_discussion: Antwoord op deze discussie
     view_group: Bekijk groep
     to_join_group:
       subject: "%{member} heeft je uitgenodigd om lid te worden van %{group_name} op %{site_name}"
       invitation_text: "%{member} heeft je uitgenodigd om lid te worden van hun groep %{group_name}."
-      invitation_text_html: "heeft je uitgenodigd om lid te worden van hun groep"
-      link_help: "Klik op onderstaande link om de uitnodiging te accepteren:"
-      accept_invitation: "Uitnodiging accepteren"
-      stop_emails: "Geen e-mail meer van %{site_name}"
+      invitation_text_html: heeft je uitgenodigd om lid te worden van hun groep
+      link_help: 'Klik op onderstaande link om de uitnodiging te accepteren:'
+      accept_invitation: Uitnodiging accepteren
+      stop_emails: Geen e-mail meer van %{site_name}
     resend_to_join_group:
       subject: "%{member} wacht op je om lid te worden van %{group_name} op%{site_name}"
     user_added_to_group:
       subject: "%{who} heeft je toegevoegd aan %{which_group} op%{site_name}"
       content: "%{who} heeft je toegevoegd aan %{which_group}"
       content_html: "<strong>%{who}</strong> heeft je toegevoegd aan <strong>%{which_group} </strong>."
-      link_help: "Klik op onderstaande link om naar de groep te gaan:"
+      link_help: 'Klik op onderstaande link om naar de groep te gaan:'
     unsubscribe: 'Uitschrijven of je e-mailvoorkeuren aanpassen:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> om je uit te schrijven of je e-mailvoorkeuren aan te passen."
     catch_up:
@@ -200,28 +213,30 @@ nl_NL:
       thanks_for_reading: Bedankt voor het lezen, een fijne dag toegewenst!
       marked_as_read_success: Alles uit de e-mail werd gemarkeerd als gelezen
       click_here: Klik hier
+      other_subject: Onlangs op %{site_name}
     group_membership_approved:
-      intro: "Je verzoek om toegang tot de groep %{group_name} is goedgekeurd."
-      intro_html: "Je verzoek om toegang tot de groep <strong>%{group_name}</strong> is goedgekeurd."
-      link_help: "Klik op onderstaande link om lid te worden van %{group_name} en van start te gaan:"
-      subject: "Je verzoek om lid te worden van %{group_name} is goedgekeurd"
-      join_group: "Word lid van de groep"
+      intro: Je verzoek om toegang tot de groep %{group_name} is goedgekeurd.
+      intro_html: Je verzoek om toegang tot de groep <strong>%{group_name}</strong> is goedgekeurd.
+      link_help: 'Klik op onderstaande link om lid te worden van %{group_name} en van start te gaan:'
+      subject: Je verzoek om lid te worden van %{group_name} is goedgekeurd
+      join_group: Word lid van de groep
     membership_request:
       intro_html: heeft toegang gevraagd tot een van jouw groepen.
       subject: "%{who} heeft gevraagd om lid te worden van %{which_group}"
       view_group: Je kan hier de aanvraag goed- of afkeuren
       button_text: Verzoek bekijken
+    loomio_app_description: "%{site_name} is een besluitvormingstool voor samenwerkende organisaties"
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Je hebt de e-mails voor het bord afgezet.
   discussion_mailer:
-    reply_or_view_online_html: "Beantwoord deze e-mail onmiddelijk of <a href='%{url}'>bekijk het op %{hostname}</a>."
+    reply_or_view_online_html: Beantwoord deze e-mail onmiddelijk of <a href='%{url}'>bekijk het op %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Zet E-mails af</a> voor deze discussie."
-    change_email_preferences_html: "Verander je <a href='%{email_preferences_url}'>e-mailvoorkeuren</a>."
+    change_email_preferences_html: Verander je <a href='%{email_preferences_url}'>e-mailvoorkeuren</a>.
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Afmelden</a> van aankondigingen op dit bord."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Afmelden</a> van reacties op dit bord."
-    unsubscribe_from_comment_replied_to_html: "Dit is een reactie melding."
-    unsubscribe_from_user_mentioned_html: "Dit is een vernoeming melding."
+    unsubscribe_from_comment_replied_to_html: Dit is een reactie melding.
+    unsubscribe_from_user_mentioned_html: Dit is een vernoeming melding.
   footer:
     about: Over
     blog: Blog
@@ -238,63 +253,77 @@ nl_NL:
     confirm_new_password: Wachtwoord bevestigen
     new_password: Nieuw wachtwoord
     email_guidelines_html: |
-        <p>Voer je e-mailadres in om een wachtwoord reset link te krijgen.</p>
-        <p>Als je meestal via Facebook of Google inlogt, voer dan het e-mailadres van dat account in.</p>
+      <p>Voer je e-mailadres in om een wachtwoord reset link te krijgen.</p>
+      <p>Als je meestal via Facebook of Google inlogt, voer dan het e-mailadres van dat account in.</p>
     reset_email_timeframe: Het kan tot 5 minuten duren voordat de e-mail binnenkomt. Als het niet in je postvak in verschijnt, controleer dan voor de zekerheid even je spammap.
     length_restriction: Wachtwoorden moeten minimaal 8 tekens lang zijn.
     forbidden_passwords: Veelvoorkomende wachtwoorden als "wachtwoord" zijn niet toegestaan om je account veilig te houden.
   introduction_thread:
     title: Welkom! Stel jezelf alsjeblieft voor
     description: |
-        Neem even de tijd om de groep te laten weten wie je bent. Plaats een opmerking hieronder.
-        Wat is je rol of of bedoeling bij deelname aan deze groep? Wat moeten mensen over jou weten om te begrijpen wat je bedoeling is?
+      Neem even de tijd om de groep te laten weten wie je bent. Plaats een opmerking hieronder.
+      Wat is je rol of of bedoeling bij deelname aan deze groep? Wat moeten mensen over jou weten om te begrijpen wat je bedoeling is?
   how_it_works_thread:
     title: Hoe gebruik je Loomio
     description: |
-        Welkom bij Loomio, een online plek om te communiceren en het nemen van beslissingen.
+      Welkom bij Loomio, een online plek om te communiceren en het nemen van beslissingen.
 
-        Dit is een voorbeeld discussie **bord**. Je kunt hieronder reacties toevoegen. Borden zijn er voor het bespreken van onderwerpen en om duidelijke uitkomsten te krijgen. Dit bord gaat over hoe Loomio werkt, dus plaats gerust een vraag daarover.
+      Dit is een voorbeeld discussie **bord**. Je kunt hieronder reacties toevoegen. Borden zijn er voor het bespreken van onderwerpen en om duidelijke uitkomsten te krijgen. Dit bord gaat over hoe Loomio werkt, dus plaats gerust een vraag daarover.
 
-        Je leest nu het bord **context**. Hou deze up to date met belangrijke informatie en vragen waardoor mensen in gesprek blijven.
+      Je leest nu het bord **context**. Hou deze up to date met belangrijke informatie en vragen waardoor mensen in gesprek blijven.
 
-        Om te beginnen met Loomio:
-        <ul>
-        <li>Plaats een reactie in een bestaand bord, of op dit bord.</li>
-        </ul>
-        Tips voor het berichten plaatsen op Loomio:
-        <ul>
-        <li>Stuur een melding naar een specifiek persoon met @ gevolgd door zijn/haar naam</li>
-        <li>Versleep plaatjes en bijlagen of klik op de paperclip </li>
-        <li>Zie <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 manieren om borden te gebruiken</a> voor wat ideeën en tips</li>
-        </ul>
+      Om te beginnen met Loomio:
+      <ul>
+      <li>Plaats een reactie in een bestaand bord, of op dit bord.</li>
+      </ul>
+      Tips voor het berichten plaatsen op Loomio:
+      <ul>
+      <li>Stuur een melding naar een specifiek persoon met @ gevolgd door zijn/haar naam</li>
+      <li>Versleep plaatjes en bijlagen of klik op de paperclip </li>
+      <li>Zie <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 manieren om borden te gebruiken</a> voor wat ideeën en tips</li>
+      </ul>
 
-        Als je vragen hebt, zie [Loomio Help](http://help.loomio.org) (Engels).
+      Als je vragen hebt, zie [Loomio Help](http://help.loomio.org) (Engels).
   first_proposal:
     name: Heb je vragen over het gebruik van Loomio?
     description: |
-        _Zo ja, deel je vraag. Zo niet, dan ben je klaar om te reageren in de borden van jouw groep!_
+      _Zo ja, deel je vraag. Zo niet, dan ben je klaar om te reageren in de borden van jouw groep!_
 
-        Deze **controle peiling** vraagt of jij of wie dan ook een vraag heeft over het gebruik van Loomio.
+      Deze **controle peiling** vraagt of jij of wie dan ook een vraag heeft over het gebruik van Loomio.
 
-        <ul><li>Probeer het maar! Gebruik de knoppen en het tekst veld hieronder.</li></ul>
+      <ul><li>Probeer het maar! Gebruik de knoppen en het tekst veld hieronder.</li></ul>
 
-        Zoals bij elk besluiten- of facilitatietool, moet je reageren voordat het sluit.
+      Zoals bij elk besluiten- of facilitatietool, moet je reageren voordat het sluit.
 
-        Je kunt je positie veranderen zolang het open is (misschien als reactie op nieuwe informatie).
+      Je kunt je positie veranderen zolang het open is (misschien als reactie op nieuwe informatie).
 
-        **Probeer mee te doen! Klik op een van de knoppen.**
+      **Probeer mee te doen! Klik op een van de knoppen.**
   group_mailer:
     resend: 'HERINNERING: %{member} wacht op jou om mee te doen met %{group_name}'
+    destroy_warning:
+      subject: Je Loomio-groep staat gepland voor verwijdering.
+      body: 'Uw Loomio-groep: "%{group}" is gepland voor verwijdering door %{deletor}. Als u niet wilt dat uw groep wordt verwijderd, beantwoordt u deze e-mail. Als u zeker weet dat u de groep wilt verwijderen, hoeft u niets te doen. Bedankt.'
   poll_mailer:
     common:
       why_send_this: Je ontvangt deze e-mail omdat %{reason}
       view_on_loomio: Bekijk het op %{site_name}
       create_outcome: Deel uitkomst
-      your_response: "Jij stemde:"
+      your_response: 'Jij stemde:'
       please_respond: Graag antwoorden
-      time_zone: (Tijden getoond in %{zone})
+      time_zone: "(Tijden getoond in %{zone})"
       undecided_members: Leden die nog onbeslist zijn (%{count})
       undecided_visitors: Onbesliste gasten (%{count})
       more_undecided: "%{count} meer..."
       vote_now: Stem nu
       you_have_until: Je hebt tot %{when} om mee te doen.
+      you_voted: Jij stemde!
+      not_invited: Niet uitgenodigd
+      people_have_voted: "%{nom} van %{dnom} mensen hebben deelgenomen (%{pct}%)"
+  task_mailer:
+    task_due_reminder:
+      subject: 'Taakherinnering: %{name}'
+      greeting: 'Hallo %{name}, de volgende taak moet %{due} zijn:'
+      view_task: Bekijk op %{site_name}
+      update_or_comment: Als je deze taak al hebt voltooid, vink deze dan af. Als het niet compleet is, deel dan een voortgangsupdate.
+      due_today: Vandaag
+      due_in_count_days: over %{count} dagen

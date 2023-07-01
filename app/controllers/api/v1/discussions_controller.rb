@@ -154,7 +154,7 @@ class API::V1::DiscussionsController < API::V1::RestfulController
       end
     else
       [@group&.id]
-    end
+    end.compact
   end
 
   def discussion_ids
@@ -166,7 +166,11 @@ class API::V1::DiscussionsController < API::V1::RestfulController
   end
 
   def accessible_records
-    @accessible_records ||= DiscussionQuery.visible_to(user: current_user, group_ids: group_ids, tags: split_tags, discussion_ids: discussion_ids)
+    @accessible_records ||= DiscussionQuery.visible_to(
+      user: current_user,
+      group_ids: group_ids,
+      tags: split_tags,
+      discussion_ids: discussion_ids)
   end
 
   def update_reader(params = {})

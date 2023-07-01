@@ -67,7 +67,12 @@ module Null::Group
   end
 
   def empty_methods
-    [:member_ids, :identities, :accepted_members]
+    %w[
+      member_ids
+      identities
+      accepted_members
+      hidden_poll_templates
+    ]
   end
 
   def discussion_privacy_options
@@ -90,6 +95,10 @@ module Null::Group
     Membership.none
   end
 
+  def poll_templates
+    PollTemplate.none
+  end
+  
   def tags
     Tag.none
   end
@@ -148,6 +157,23 @@ module Null::Group
 
   def id_and_subgroup_ids
     []
+  end
+
+  def poll_template_positions
+    {
+      'question' => 0,
+      'check' => 1,
+      'advice' => 2,
+      'consent' => 3,
+      'consensus' => 4,
+      'gradients_of_agreement' => 5,
+      'poll' => 6,
+      'score' => 7,
+      'dot_vote' => 8,
+      'ranked_choice' => 9,
+      'meeting' => 10,
+      'count' => 11,
+    }
   end
 
   def subscription

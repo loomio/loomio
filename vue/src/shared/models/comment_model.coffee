@@ -16,7 +16,6 @@ export default class CommentModel extends BaseModel
     HasTranslations.apply @
 
   defaultValues: ->
-    usesMarkdown: true
     discussionId: null
     files: []
     imageFiles: []

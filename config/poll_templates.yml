@@ -1,0 +1,280 @@
+question:
+  poll_type: question
+  process_name_i18n: poll_common.question_round
+  process_subtitle_i18n: poll_templates.question_round.process_subtitle
+  process_introduction_i18n: poll_templates.question_round.process_introduction
+  reason_prompt_i18n: poll_templates.question_round.reason_prompt
+  title_i18n: poll_templates.question_round.title
+  details_i18n: poll_templates.question_round.details
+  default_duration_in_days: 5
+  tags_i18n:
+    - poll_common.question_round
+
+count:
+  poll_type: count
+  process_name_i18n: decision_tools_card.count_title
+  process_subtitle_i18n: poll_templates.opt_in.process_subtitle
+  process_introduction_i18n: poll_templates.opt_in.process_introduction
+  title_i18n: poll_templates.opt_in.title
+  details_i18n: poll_templates.opt_in.details
+  default_duration_in_days: 3
+  poll_options:
+    - key: accept
+      icon: agree
+      color: '#70C9F8'
+      name_i18n: poll_count_options.accept
+      meaning_i18n:  poll_templates.opt_in.accept_meaning
+      prompt_i18n:  poll_templates.opt_in.accept_prompt
+    - key: decline
+      icon: disagree
+      color: "#C8E56E"
+      name_i18n: poll_count_options.decline
+      meaning_i18n: poll_templates.opt_in.decline_meaning
+      prompt_i18n: poll_templates.opt_in.decline_prompt
+
+check:
+  poll_type: proposal
+  process_name_i18n: decision_tools_card.check_title
+  process_subtitle_i18n: poll_templates.sense_check.process_subtitle
+  process_introduction_i18n: poll_templates.sense_check.process_introduction
+  title_i18n: poll_templates.sense_check.title
+  details_i18n: poll_templates.sense_check.details
+  default_duration_in_days: 3
+  tags_i18n:
+    - decision_tools_card.check_title
+  poll_options:
+    - key: looks_good
+      name_i18n: poll_templates.sense_check.looks_good
+      icon: agree
+      meaning_i18n: poll_templates.sense_check.looks_good_meaning
+      prompt_i18n: poll_templates.sense_check.looks_good_prompt
+      color: '#70C9F8'
+    - key: abstain
+      name_i18n: poll_proposal_options.abstain
+      icon: abstain
+      meaning_i18n: poll_templates.sense_check.abstain_meaning
+      prompt_i18n: poll_templates.sense_check.abstain_prompt
+      color: '#70C9F8'
+    - key: concerned
+      name_i18n: poll_templates.sense_check.concerned
+      icon: disagree
+      meaning_i18n: poll_templates.sense_check.concerned_meaning
+      prompt_i18n: poll_templates.sense_check.concerned_prompt
+      color: "#C8E56E"
+
+proposal:
+  poll_type: proposal
+  process_name_i18n: decision_tools_card.proposal_title
+  process_subtitle_i18n: poll_templates.proposal.process_subtitle
+  process_introduction_i18n: poll_templates.proposal.process_introduction
+  title_i18n: poll_templates.proposal.title
+  details_i18n: poll_templates.proposal.details
+  default_duration_in_days: 7
+  poll_options:
+    - key: agree
+      name_i18n: poll_proposal_options.agree
+      icon: agree
+      meaning_i18n: poll_templates.proposal.agree_meaning
+      prompt_i18n: poll_templates.proposal.agree_prompt
+      color: '#70C9F8'
+    - key: abstain
+      name_i18n: poll_proposal_options.abstain
+      icon: abstain
+      meaning_i18n: poll_templates.proposal.abstain_meaning
+      prompt_i18n: poll_templates.proposal.abstain_prompt
+      color: "#C8E56E"
+    - key: disagree
+      name_i18n: poll_proposal_options.disagree
+      icon: disagree
+      meaning_i18n: poll_templates.proposal.disagree_meaning
+      prompt_i18n: poll_templates.proposal.disagree_prompt
+      color: "#D38FE1"
+
+meeting:
+  poll_type: meeting
+  meeting_duration: 60
+  process_name_i18n: decision_tools_card.meeting_title
+  process_subtitle_i18n: poll_templates.time_poll.process_subtitle
+  process_introduction_i18n: poll_templates.time_poll.process_introduction
+  reason_prompt_i18n: poll_templates.time_poll.reason_prompt
+  title_i18n: poll_templates.time_poll.title
+  details_i18n: poll_templates.time_poll.details
+  chart_type: grid
+  min_score: 0
+  max_score: 2
+  default_duration_in_days: 3
+  can_respond_maybe: true
+
+poll:
+  poll_type: poll
+  process_name_i18n: poll_common_form.voting_methods.simple_poll
+  process_subtitle_i18n: poll_templates.simple_poll.process_subtitle
+  process_introduction_i18n: poll_templates.simple_poll.process_introduction
+  title_i18n: poll_templates.simple_poll.title
+  details_i18n: poll_templates.simple_poll.details
+  default_duration_in_days: 3
+
+dot_vote:
+  poll_type: dot_vote
+  process_name_i18n: decision_tools_card.dot_vote_title
+  process_subtitle_i18n: poll_templates.dot_vote.process_subtitle
+  process_introduction_i18n: poll_templates.dot_vote.process_introduction
+  title_i18n: poll_templates.dot_vote.title
+  details_i18n: poll_templates.dot_vote.details
+  default_duration_in_days: 3
+
+score:
+  poll_type: score
+  process_name_i18n: decision_tools_card.score_title
+  process_subtitle_i18n: poll_templates.score_poll.process_subtitle
+  process_introduction_i18n: poll_templates.score_poll.process_introduction
+  title_i18n: poll_templates.score_poll.title
+  details_i18n: poll_templates.score_poll.details
+  default_duration_in_days: 3
+
+ranked_choice:
+  poll_type: ranked_choice
+  process_name_i18n: decision_tools_card.ranked_choice_title
+  process_subtitle_i18n: poll_templates.ranked_choice.process_subtitle
+  process_introduction_i18n: poll_templates.ranked_choice.process_introduction
+  title_i18n: poll_templates.ranked_choice.title
+  details_i18n: poll_templates.ranked_choice.details
+
+advice:
+  poll_type: proposal
+  process_name_i18n: decision_tools_card.advice_title
+  process_subtitle_i18n: poll_templates.advice.process_subtitle
+  process_introduction_i18n: poll_templates.advice.process_introduction
+  title_i18n: poll_templates.advice.title
+  details_i18n: poll_templates.advice.details
+  tags_i18n:
+    - poll_common.advice_process
+  poll_options:
+    - key: agree
+      icon: agree
+      color: '#70C9F8'
+      name_i18n: poll_proposal_options.agree
+      meaning_i18n: poll_templates.advice.agree_meaning
+      prompt_i18n: poll_templates.advice.agree_prompt
+    - key: abstain
+      icon: abstain
+      color: '#70C9F8'
+      name_i18n: poll_proposal_options.abstain
+      meaning_i18n: poll_templates.advice.abstain_meaning
+      prompt_i18n: poll_templates.advice.abstain_prompt
+
+consent:
+  poll_type: proposal
+  process_name_i18n: decision_tools_card.consent_title
+  process_subtitle_i18n: poll_templates.consent.process_subtitle
+  process_introduction_i18n: poll_templates.consent.process_introduction
+  title_i18n: poll_templates.advice.title
+  details_i18n: poll_templates.advice.details
+  default_duration_in_days: 7
+  tags_i18n:
+    - poll_common.consent_process
+  poll_options:
+    - name_i18n: poll_proposal_options.consent
+      icon: agree
+      meaning_i18n: poll_templates.consent.consent_meaning
+      prompt_i18n: poll_templates.consent.consent_prompt
+    - name_i18n: poll_proposal_options.objection
+      icon: disagree
+      meaning_i18n: poll_templates.consent.objection_meaning
+      prompt_i18n: poll_templates.consent.objection_prompt
+
+consensus:
+  poll_type: proposal
+  process_name_i18n: decision_tools_card.consensus_title
+  process_subtitle_i18n: poll_templates.consensus.process_subtitle
+  process_introduction_i18n: poll_templates.consensus.process_introduction
+  title_i18n: poll_templates.consensus.title
+  details_i18n: poll_templates.consensus.details
+  default_duration_in_days: 7
+  tags_i18n:
+    - poll_common.consensus_process
+  poll_options:
+    - key: agree
+      icon: agree
+      color: '#70C9F8'
+      name_i18n: poll_proposal_options.agree
+      meaning_i18n: poll_templates.consensus.agree_meaning
+      prompt_i18n: poll_templates.consensus.agree_prompt
+    - key: abstain
+      icon: abstain
+      color: "#C8E56E"
+      name_i18n: poll_proposal_options.abstain
+      meaning_i18n: poll_templates.consensus.abstain_meaning
+      prompt_i18n: poll_templates.consensus.abstain_prompt
+    - key: disagree
+      icon: disagree
+      color: "#D38FE1"
+      name_i18n: poll_proposal_options.disagree
+      meaning_i18n: poll_templates.consensus.disagree_meaning
+      prompt_i18n: poll_templates.consensus.disagree_prompt
+    - key: block
+      icon: block
+      color: "#999FDE"
+      name_i18n: poll_proposal_options.block
+      meaning_i18n: poll_templates.consensus.block_meaning
+      prompt_i18n: poll_templates.consensus.block_prompt
+
+gradients_of_agreement:
+  poll_type: proposal
+  process_name_i18n: decision_tools_card.gradients_of_agreement_title
+  process_subtitle_i18n: poll_templates.gradients_of_agreement.process_subtitle
+  process_introduction_i18n: poll_templates.gradients_of_agreement.process_introduction
+  title_i18n: poll_templates.gradients_of_agreement.title
+  details_i18n: poll_templates.gradients_of_agreement.details
+  default_duration_in_days: 5
+  tags_i18n:
+    - decision_tools_card.gradients_of_agreement_title
+  poll_options:
+    - key: endorsement
+      icon: agree
+      color: '#70C9F8'
+      name_i18n: poll_templates.gradients_of_agreement.whole_hearted_endorsement
+      meaning_i18n: poll_templates.gradients_of_agreement.whole_hearted_endorsement_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.whole_hearted_endorsement_prompt
+    - key: agreement_with_contention
+      icon: agree
+      color: '#70C9F8'
+      name_i18n: poll_templates.gradients_of_agreement.agreement_with_minor_contention
+      meaning_i18n: poll_templates.gradients_of_agreement.agreement_with_minor_contention_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.agreement_with_minor_contention_prompt
+    - key: support_with_reservations
+      icon: agree
+      color: '#70C9F8'
+      name_i18n: poll_templates.gradients_of_agreement.support_with_reservations
+      meaning_i18n: poll_templates.gradients_of_agreement.support_with_reservations_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.support_with_reservations_prompt
+    - key: abstain
+      icon: abstain
+      color: "#C8E56E"
+      name_i18n: poll_proposal_options.abstain
+      meaning_i18n: poll_templates.gradients_of_agreement.abstain_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.abstain_prompt
+    - key: more_discussion_needed
+      name_i18n: poll_templates.gradients_of_agreement.more_discussion_needed
+      icon: disagree
+      meaning_i18n: poll_templates.gradients_of_agreement.more_discussion_needed_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.more_discussion_needed_prompt
+      color: "#D38FE1"
+    - key: dont_like_but_will_support
+      icon: disagree
+      color: "#D38FE1"
+      name_i18n: poll_templates.gradients_of_agreement.don_t_like_but_will_support
+      meaning_i18n: poll_templates.gradients_of_agreement.don_t_like_but_will_support_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.don_t_like_but_will_support_prompt
+    - key: serious_disagreement
+      name_i18n: poll_templates.gradients_of_agreement.serious_disagreement
+      icon: disagree
+      meaning_i18n: poll_templates.gradients_of_agreement.serious_disagreement_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.serious_disagreement_prompt
+      color: "#D38FE1"
+    - key: veto
+      name_i18n: poll_templates.gradients_of_agreement.veto
+      icon: block
+      meaning_i18n: poll_templates.gradients_of_agreement.veto_meaning
+      prompt_i18n: poll_templates.gradients_of_agreement.veto_prompt
+      color: "#999FDE"

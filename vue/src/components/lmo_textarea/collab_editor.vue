@@ -108,7 +108,7 @@ export default
       @editor.commands.focus() if @focusId == focusId
 
     @expanded = Session.user().experiences['html-editor.expanded']
-    @model.beforeSave = => @updateModel()
+    @model.beforeSaves.push( => @updateModel() )
     @editor = new Editor
       editorProps:
         scrollThreshold: 100

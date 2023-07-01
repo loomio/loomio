@@ -32,6 +32,18 @@ export default new class GroupService
       perform: ->
         Session.user() && group.translate(Session.user().locale)
 
+    edit_group:
+      name: 'group_page.options.edit_group'
+      icon: 'mdi-cog'
+      menu: true
+      canPerform: ->
+        AbilityService.canEditGroup(group)
+      perform: ->
+        openModal
+          component: 'GroupForm'
+          props:
+            group: group.clone()
+
     change_volume:
       name: 'user_dropdown.email_settings'
       icon: 'mdi-email'
@@ -43,18 +55,6 @@ export default new class GroupService
           component: 'ChangeVolumeForm'
           props:
             model: membership
-
-    edit_group:
-      name: 'group_page.options.edit_group'
-      icon: 'mdi-cog'
-      dock: 1
-      canPerform: ->
-        AbilityService.canEditGroup(group)
-      perform: ->
-        openModal
-          component: 'GroupForm'
-          props:
-            group: group.clone()
 
     edit_tags: 
       icon: 'mdi-tag-outline'

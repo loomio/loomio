@@ -24,7 +24,6 @@ export default
     realGroup: Records.groups.find(@group.id)
 
   mounted: ->
-    @featureNames = AppConfig.features.group
     @suggestHandle()
 
   created: ->

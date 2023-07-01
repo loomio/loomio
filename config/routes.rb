@@ -208,7 +208,18 @@ Rails.application.routes.draw do
         get  :closed, on: :collection
       end
 
-      resource :outcomes,     only: [:create, :update]
+      resources :poll_templates, only: [:index, :create, :update, :show, :destroy] do
+        collection do
+          post :hide
+          post :unhide
+          post :discard
+          post :undiscard
+          post :positions
+          post :settings
+        end
+      end
+
+      resource :outcomes, only: [:create, :update]
 
       resources :stances, only: [:index, :create, :update] do
         member do
@@ -291,6 +302,12 @@ Rails.application.routes.draw do
     get :show, on: :collection
   end
 
+  resources :poll_templates, only: [] do
+    member do
+      get :dump_i18n_yaml
+    end
+  end
+  
   post :email_processor, to: 'received_emails#create'
 
   namespace :email_actions do
@@ -333,7 +350,9 @@ Rails.application.routes.draw do
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'threads/direct'                     => 'application#index', as: :groupless_threads
   get 'tasks'                              => 'application#index', as: :tasks
-
+  get 'poll_templates/new'                 => 'application#index'
+  get 'poll_templates/:id'                 => 'application#index'
+  get 'poll_templates/:id/edit'            => 'application#index'
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export

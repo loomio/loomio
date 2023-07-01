@@ -40,7 +40,7 @@ class Discussion < ApplicationRecord
   is_mentionable  on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
-  has_paper_trail only: [:title, :description, :description_format, :private, :group_id, :author_id]
+  has_paper_trail only: [:title, :description, :description_format, :private, :group_id, :author_id, :tags]
 
   belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'

@@ -22,6 +22,8 @@ en:
     title_templates: "%{title} Templates"
     title_copy: "%{title} Copy"
     copy_of_title: "Copy of %{title}"
+    loomio_default_templates: Loomio default templates
+    which_templates_would_you_like_to_use: Which templates would you like to use?
     login_to_start_demo: |
       This a demo of Loomio in action. You're welcome to take a look around.
     sign_in_to_try_features: |
@@ -166,21 +168,16 @@ en:
     meeting: time poll
     ranked_choice: ranked choice
     score: score poll
-
-  new_poll_types:
-    proposal: proposal
-    count: count
-    poll: choose
-    score: score
-    ranked_choice: rank
-    dot_vote: allocate
-    meeting: time poll
+    question: question round
 
   timezones:
     local: Local time ({{value}})
 
   common:
+    prefix_eg: "e.g. {{val}}"
+    are_you_sure: Are you sure?
     loomio_help: Loomio help
+    visit_loomio_help: Visit Loomio help
     help_and_guides: Help & guides
     please_wait: Please wait
     optional: (Optional)
@@ -275,6 +272,8 @@ en:
       unlike: 'Unlike'
       update: 'Update'
       cancel: 'Cancel'
+      hide: 'Hide'
+      unhide: 'Unhide'
       show_more: "Show more"
       show_fewer: "Show fewer"
       view_count_more: "View %{count} more"
@@ -1736,14 +1735,20 @@ en:
   decision_tools_card:
     choose_type: Choose poll type
     title: Facilitate
+    question_title: Question round
+    advice_title: Advice
+    consent_title: Consent
+    consensus_title: Consensus
     proposal_title: Proposal
     count_title: Opt-in
     check_title: Sense check
     poll_title: Poll
+    meeting: Meeting
     score_title: Score poll
     dot_vote_title: Dot vote
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
+    gradients_of_agreement_title: Gradients of agreement
 
   poll_option_form:
     edit_option: Edit option
@@ -1756,20 +1761,44 @@ en:
     prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
+    need_help_with_templates: Need help creating your own process templates?
+    new_templates_are_here: Loomio has new proposal templates to help with decision-making.
+    categorize_poll_templates: Categorize poll templates
+    show_all_templates_in_one_list: Show all templates in one list
+    advice_process: Advice process
+    consent_process: Consent process
+    consensus_process: Consensus process
+    question_round: Question round
+    edit_template: Edit template
+    proposal: Proposal
+    run_process: Run process
+    proposal_templates: Proposal templates
+    custom: Custom
+    custom_process: Custom process
+    custom_poll: Custom poll
     delete_poll: Delete poll
     select_count_options:  Select {{count}} options
     select_minimum_to_maximum_options: Select {{minimum}} to {{maximum}} options
     custom_poll_types: Custom poll types
     example_polls_from_thread_template: Examples from thread template
+    hidden_poll_templates: Hidden poll templates
     poll_template: Poll template
+    poll_template_saved: Poll template saved
     poll_templates: Poll templates
     poll_types: Poll types
+    new_poll_template: New poll template
+    edit_poll_template: Edit poll template
     new_poll_type: New poll type
     edit_poll_type: Edit poll type
+    new_custom_poll: New custom poll
+    edit_custom_poll: Edit custom poll
     create_a_custom_poll_type: Create a new poll type with custom terminology and settings
+    create_a_custom_process: Create a new process with your own terminology and options
+    create_a_custom_poll: Create a poll with custom terminology and settings
     decision: Decision
     decision_templates: Decision templates
     remove_your_vote: Remove your vote
+    remove_your_response: Remove your response
     vote_now: Vote now
     review_due: Review due
     have_your_say: Have your say
@@ -1777,6 +1806,7 @@ en:
     change_your_response: Edit response
     please_vote: Please vote
     reason: Reason
+    response: Response
     reason_placeholder: "Briefly explain why you voted this way, then click 'Submit Vote'"
     message: Message
     results: Results
@@ -1797,7 +1827,9 @@ en:
     participant_name: Your name
     participant_email: Email address
     submit_vote: Submit vote
+    submit_response: Submit response
     update_vote: Update vote
+    update_response: Update response
     share_poll: Share poll
     share_proposal: Share proposal
     share_count: Share check
@@ -1807,6 +1839,7 @@ en:
     view_all: View all
     save_changes: Save
     change_vote: Change your vote
+    change_response: Change your response
     max_score: Maximum score
     min_score: Minimum score
     too_long: Too long
@@ -1829,7 +1862,9 @@ en:
     show_results: Show results
     hide_results: Hide results
     until_vote: Until vote is cast
+    until_you_vote: Until you vote
     until_poll_type_closed: Until {{pollType}} is closed
+    until_voting_is_closed: Until voting is closed
 
     deleted: This poll has been deleted
 
@@ -1896,6 +1931,8 @@ en:
     from_the_thread: From the thread template
     from_the_group: From the group
     default_templates: Default templates
+    default_template: Default template
+    custom_template: Custom template
     default_poll_types: Default poll types
     suggested_templates: Suggested templates
     group_templates: Group templates
@@ -1941,8 +1978,10 @@ en:
       title: Anyone with link can participate
       helptext_on: When selected, anyone with the link to the poll can participate.
     notify_on_closing_soon:
+      voting_closes_too_soon: Because voting closes within 24 hours, no closing soon reminders will be sent.
       closes_too_soon: Because this {{pollType}} closes within 24 hours, no closing soon reminders will be sent.
       title: 24 hours before {{pollType}} closes, send a reminder to
+      voting_title: 24 hours before voting closes, send a reminder to
       nobody: Nobody
       author: Author (me)
       undecided_voters: Undecided voters
@@ -2028,9 +2067,9 @@ en:
 
   poll_common_outcome_form:
     review_date: Review date
-    review_date_hint: Set date of reminder to review outcome (optional)
+    review_date_hint: Set a date to review the decision (optional)
     who_to_notify: Who do you want to notify about this outcome? (optional)
-    new_title: Enter an outcome
+    new_title: State outcome
     update_title: Update outcome
     outcome_created: Outcome created
     outcome_updated: Outcome updated
@@ -2047,7 +2086,12 @@ en:
     success: Successfully deleted
 
   poll_common_form:
-    new_poll_type_helptext: Create a new type of poll for your group. Customize terminology and settings so it's easy for other people in your group to run a specific decision making process.
+    example_title: Example title
+    example_title_hint: Give an example of a good proposal title
+    example_details_placeholder: Provide a starting point for a proposal or poll. Questions can be useful prompts to get people writing. Include any rules or reminders that participants will need to know.
+    confirm_delete: Are you sure you want to delete this poll template? This cannot be undone.
+    show_advanced_settings: Show advanced settings
+    hide_advanced_settings: Hide advanced settings
     choose_at_least: Choose at least
     choose_at_most: Choose at most
     please_review_the_form: Please review the form
@@ -2065,6 +2109,8 @@ en:
     this_is_a_template_for_new_polls: This is a template for new polls
     voting_method: Voting method
     voting_methods:
+      question: Question round
+      question_hint: Invite questions and comments on your proposal
       show_thumbs: Show of thumbs
       show_thumbs_hint: Voters choose thumb up, down, sideways, or hand up
       choose: Choose
@@ -2079,15 +2125,16 @@ en:
       time_poll: Time poll
       time_poll_hint: Voters indicate when they are available to meet
     process: Process
-    poll_type_name: Poll type name
-    poll_type_name_hint: What do you call this poll type? E.g. Proposal, Temperature check, Minutes approval
-    poll_type_description: Poll type description
-    poll_type_description_hint: One line that describes the use case of this poll type. E.g. Approve the minutes of the previous meeting
+    process_name: Template title
+    process_name_hint: What do you call this template? E.g. Role advice, Temperature check, Minutes approval
+    process_subtitle: Template subtitle
+    process_subtitle_hint: A one-line description of when or why to use this template
+    process_introduction: Template help
+    process_introduction_hint: A few paragraphs that explain how to use the template. Include links to resources that might be helpful.
     you_can_set_a_prompt_per_option: Edit the prompt for each option from the details tab
     chart_type: Chart type
     title: Title
-    example_title: Example title
-    title_hint: A short statement or question
+    title_hint: What is the decision you need to make?
     no_options_add_some: This poll has no options, add some below.
     details: Details
     example_details: Example details
@@ -2130,8 +2177,6 @@ en:
       This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll. 
 
   poll_proposal_form:
-    tool_tip_collapsed: Make a decision together
-    vote_method_hint: Voters agree or disagree with a statement
     start_header: Start proposal
     edit_header: Edit proposal
     title_placeholder: E.g. Let's go to the moon!
@@ -2141,7 +2186,6 @@ en:
 
   poll_poll_form:
     multiple_choice_subtitle: A simple way to assess the popularity of options
-    tool_tip_collapsed: Find the most popular option
     start_header: Start poll
     edit_header: Edit poll
     tip: Offer a choice between options
@@ -2157,15 +2201,10 @@ en:
     option_already_added: Option already added to poll
 
   poll_dot_vote_form:
-    tool_tip_collapsed: Allocate a budget of points to reveal priorities
     dots_per_person:  Points per person
     dots_per_person_helptext: The total number of points each person is asked to allocate.
 
-  poll_score_form:
-    tool_tip_collapsed: Measure the degree of support for each option
-
   poll_meeting_form:
-    tool_tip_collapsed: Find when people are available to meet
     timeslots: Time slots
     no_options: Enter times in your current time zone ({{zone}}). Participants see times translated to their local time zone.
     meeting_duration: Meeting duration
@@ -2175,7 +2214,6 @@ en:
     participants_see_local_times: Pariticpants will see times localized to their time zone
 
   poll_ranked_choice_form:
-    tool_tip_collapsed: Understand the ordered preference of options
     no_options: "You haven't added any options yet."
     add_option_placeholder: Enter a new choice
     minimum_stance_choices: Options to rank
@@ -2218,37 +2256,12 @@ en:
     objection: Objection
     object: Object
     block: Block
-    agree_meaning: This proposal is good enough to be adopted by the group
-    agree_prompt: Why do you like the proposal? Is there anything that could be improved?
-    consent_meaning: This proposal is safe to try
-    consent_prompt: Why do you consent? Is there anything you would like to change?
-    objection_meaning: This proposal is not safe to try
-    objection_prompt: What serious issue have you identified in this proposal that means it is unsafe to try?
-    abstain_meaning: Choosing not to, or unable to vote in this decision. 
-    abstain_prompt: Why are you opting out, or unable to vote in this decision?
-    disagree_meaning: Something in this proposal needs to be changed before I can support it.
-    block_meaning: The urgent attention of the group is required
     no_voting: 'No voting'
 
   poll_count_form:
     pct_of_target: '% of target'
     agree_target_helptext: What is the target number of volunteers you'd like to have?
-    tool_tip_collapsed: Find volunteers or participants
-    title_placeholder: E.g. Who wants to join the working group?
-    details_placeholder: Explain what commitment is involved, or give details about how to participate.
     agree_target_label: Target number
-
-  poll_check_options:
-    check_subtitle: Ask for feedback, questions and concerns
-    looks_good: Looks good
-    looks_good_meaning: I'm happy with where this is going
-    looks_good_prompt: Do you have any other comments to share?
-    not_sure: Not sure yet
-    not_sure_meaning: I have a question or need more time
-    not_sure_prompt: What parts are unclear to you? How could this be resolved?
-    concerned: Concerned
-    concerned_meaning: Something about this may need to change
-    concerned_prompt: What is your concern and how might it be addressed?
 
   poll_count_options:
     accept: Accept
@@ -2256,18 +2269,9 @@ en:
     'yes': 'Yes'
     'no': 'No'
 
-  poll_count_vote_form:
-    accept_meaning: I'm willing to participate
-    accept_prompt: Why are you volunteering for this?
-    decline_meaning: I'm unable to participate
-    decline_prompt: Is there anything you'd like to say?
-    reason_label: Message
-    reason_placeholder: Leave a message if you like
-
   poll_common_percent_voted:
-    sentence: "{{numerator}} of {{denominator}} people have voted ({{percent}}%)"
+    sentence: "{{numerator}} of {{denominator}} people have participated ({{percent}}%)"
     target_progress: "{{percent}}% of target reached. ({{num}} / {{target}})"
-
 
   poll_meeting_chart_panel:
     total: Total
@@ -2306,6 +2310,328 @@ en:
     helptext: Drag and drop options in order of preference (1 being your most preferred option). Your top %{count} choices will be recorded.
     stance_created: Choice recorded
     stance_updated: Choice updated
+
+  poll_templates:
+    proposal:
+      process_subtitle: Raise a proposal to make a decision
+      process_introduction: <p>The classic Loomio proposal helps you make a decision,
+        converting a discussion into a clear outcome.</p><p>Suggest a course of action
+        and invite people to respond by voting agree, abstain or disagree.</p><p>As people
+        vote, they can give a reason why they have voted this way. You can see where everyone
+        else stands on the matter, and why.</p><p>In this way you can use a proposal to
+        prompt people for a response, uncover new information, and build shared understanding
+        - to help your group make a better, more informed decision.</p><p>A proposal and
+        associated discussion creates its own record of how the decision came about.</p><p><a
+        target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read
+        more about using the classic Loomio proposal in the Simple decision process</u></a>.</p>
+      title: Approve the new Brand concept
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What
+        is the decision you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+        id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p>
+        <p>For this proposal to pass, we need the majority of
+        members to vote Agree.</p><p>If you Disagree, say
+        why and what needs to change for you to Agree.</p>
+      agree: Agree
+      agree_meaning: I support the proposal
+      agree_prompt: What do you like about the proposal and how will it benefit the group?
+      abstain: Abstain
+      abstain_meaning: Choosing not to, or unable to vote in this decision.
+      abstain_prompt: Why are you abstaining, or do not feel able to vote in this decision?
+      disagree: Disagree
+      disagree_meaning: Something in this proposal needs to be changed before I can support it.
+      disagree_prompt: How could this proposal be improved so that you can support it?
+
+    advice:
+      process_subtitle: Seek advice on a decision you need to make
+      process_introduction: <p>Seek advice on a decision you need to make, with the advice
+        of people impacted or who have expertise, so you can make a better decision for
+        your organization.</p><ul><li><p>Advice helps you make a better decision for your
+        organization.</p></li><li><p>Foster relationships, learning opportunities and
+        diverse input.&nbsp;&nbsp;</p></li><li><p>Stimulate initiative and creativity,
+        and more enjoyable work.</p></li></ul><p><a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Read
+        more about the Advice process</u></a>.</p>
+      title: Help Takashi buy a new computer
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What is the decision
+        you need to make?</strong></h3><p></p><h3 id="why-is-this-important"><strong>Why
+        is this important?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"><strong>What
+        advice are you asking from people to help you make a good decision?</strong></h3><p></p><p>I
+        am seeking your input to help me make a good decision for our organization.</p>
+      agree: Agree
+      agree_meaning: I have offered my advice about this decision
+      agree_prompt: Summarize your advice or make a helpful comment
+      abstain: Abstain
+      abstain_meaning: I don't have any advice to offer
+      abstain_prompt: Do you have any comments that may be helpful?
+    consent:
+      process_subtitle: Make a decision that is ‘safe to try’, without objections
+      process_introduction: <p>Seek consent on a decision you need to make, where there
+        are no meaningful objections to your proposal, so you can make a fast decision
+        for your organization that is 'safe to try'.</p><ul><li><p>Aim for a ‘good enough’
+        decision</p></li><li><p>Involve many voices to develop a workable proposal</p></li><li><p>Ask
+        if anyone has a valid objection</p></li><li><p>Amend the proposal to resolve objections</p></li></ul>
+        <p><a target="_blank" 
+        href="https://help.loomio.com/en/guides/consent_process/index.html">Read more
+        about the Consent process</a>.</p>
+      title: Hire Chloe for design role
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What
+        is the decision you need to make?</strong></h3><p></p><h3
+        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"><strong>What
+        are you asking of people in this proposal?</strong></h3><p></p><p>If you have an Objection, please say why and propose a
+        change to the proposal that makes it safe.</p><p>Remember
+        we are seeking consent for a ‘good enough’ decision that is 'safe to try', so
+        we can make a good decision for our organization.</p>
+      consent: Consent
+      consent_meaning: The proposal is safe to try
+      consent_prompt: What do you like about the proposal and how will it benefit the organization?
+      objection: Objection
+      objection_meaning: I have a valid objection and think the proposal will cause harm
+      objection_prompt: What change to this proposal is needed to make it 'safe to try', so that you can support it?
+    consensus:
+      process_subtitle: Reach collective agreement with everyone involved
+      process_introduction: <p>Build consensus for a decision you need to make, to reach
+        an agreement that satisfies the needs and concerns of all participants.</p><ul><li><p>Discuss
+        and develop a proposal together</p></li><li><p>Include and respect everyone involved</p></li><li><p>Seek
+        agreement from most people&nbsp;</p></li></ul><p><a target="_blank"
+         href="https://help.loomio.com/en/guides/consensus_process/index.html">Read
+        more about the Consensus process</a>.</p>
+      title: Approve the new Brand concept
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>What
+        is the decision you need to make?</strong></h3><p></p><h3
+        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+        id="what-are-you-asking-people-to-do"><strong>What are
+        you asking people to do?</strong></h3><p></p><p>For
+        this proposal to pass, we need the majority of members to vote Agree. </p><p>If
+        you Disagree, say why and what needs to change for you to Agree.</p>
+      agree: Agree
+      agree_meaning: I support the proposal
+      agree_prompt: What do you like about the proposal and how will it benefit the organization?
+      abstain: Abstain
+      abstain_meaning: This decision does not affect me and I am happy with whatever the group decides
+      abstain_prompt: Why are you abstaining, or do not feel able to vote in this decision?
+      disagree: Disagree
+      disagree_meaning: Something in this proposal needs to be changed before I can support it
+      disagree_prompt: How could this proposal be improved so that you can support it?
+      block: Block
+      block_meaning: I block this proposal and think it should not proceed
+      block_prompt: Explain your objection to this proposal and why it should not go ahead
+    question_round:
+      process_subtitle: Invite clarifying questions to help people understand a proposal
+      process_introduction: <p>A Question round is an opportunity for people to ask clarifying
+        questions about the proposal, so that everyone understands the proposal before
+        they say what they think about it.</p><p>The Loomio Question
+        round is a special proposal with no voting options. It enables participants to
+        ask questions within a duration you set for the round.</p><p>A
+        Question round is commonly used as a step in the Consent process.</p><p><a
+        target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Read
+        more about the Consent process</a>.</p>
+      title: What questions to you have about the Health and Safety policy?
+      details: <h3 id="what-are-you-proposing"><strong>What are
+        you proposing?</strong></h3><p></p><h3
+        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+        id="what-are-you-asking-people-to-do"><strong>What are
+        you asking people to do?</strong></h3><p></p><p>This
+        is a question round, where you are invited to ask clarifying questions.</p>
+        <p>What do you need to know so you understand the proposal?</p>
+        <p>Please respond before the Question round closes.</p>
+      reason_prompt: What do you need to know so you understand the proposal?
+    sense_check:
+      process_subtitle: Ask for feedback, questions and concerns
+      process_introduction: <p>The Sense check proposal is a good way to get feedback,
+        invite questions and uncover concerns. It helps to clarify and improve a proposal
+        before moving to a decision.</p><p>Sense check lets people
+        know a proposal is forming and encourages them to engage. It is an opportunity
+        to listen to people, sense how they feel and respond appropriately - opening the
+        potential to incorporate their contributions to make a better decision.</p>
+        <p>Use the Sense check proposal in the Consent process to
+        invite reactions and comments to improve the proposal, and in a Consensus process
+        to test for consensus.</p><p><a target="_blank" rel="noopener
+        noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Read
+        more about using Sense check in the Simple decision process</u></a><span>.</span></p>
+      title: How do you feel about the new brand concepts?
+      details: <h3 id="what-are-you-proposing"><strong>What are you proposing?</strong></h3><p></p><h3
+        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+        id="what-are-you-asking-people-to-do"><strong>What are you asking people to do?</strong></h3><p></p><p>How
+        do you feel about the proposal?  Leave a comment or make a suggestion for improvement.</p><p>This
+        Sense check is an opportunity for your input and contribution, to help us make
+        a better decision.</p>
+      looks_good: Looks good
+      looks_good_meaning: I'm happy with where this is going
+      looks_good_prompt: Do you have any comments or suggestions to make the proposal
+        better?
+      abstain: Abstain
+      abstain_meaning: I don’t have anything to add, nor any objection to this work.
+      abstain_prompt: Abstaining implies consent with the direction of this proposal.
+        Is there a reason you are voting to abstain?
+      concerned: Concerned
+      concerned_meaning: Something about this may need to change for me to consent or
+        agree
+      concerned_prompt: What is your concern and how might it be addressed?
+    gradients_of_agreement:
+      process_subtitle: Express support for a proposal on an 8-point scale
+      process_introduction: <p>The Gradients of agreement proposal enables members of
+        a group to express their support for a proposal in degrees on a scale, offering
+        more ways of expressing support than in terms of “agree” and “disagree”.</p>
+        <p>Use Gradients of agreement as a preliminary round, to
+        test support for a proposal before moving to a formal agreement.</p><p>Gradients
+        of agreement lets people know a proposal is forming and encourages them to engage.
+        It is an opportunity to listen to people, sense how they feel and respond appropriately
+        - opening the potential to incorporate their contributions to make a better decision.</p>
+      title: How do you like the new statement of values?
+      details: <h3 id="what-are-you-proposing"><strong>What are
+        you proposing?</strong></h3><p></p><h3
+        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+        id="what-are-you-asking-people-to-do"><strong>What are
+        you asking people to do?</strong></h3><p></p><p>How
+        do you like the proposal?  Express your support on the scale below and leave a
+        comment or suggestion for improvement.</p><p>This Gradients
+        of agreement proposal is to test support for the proposal, and an opportunity
+        for your input before moving to a formal agreement.</p>
+      whole_hearted_endorsement: Whole-hearted Endorsement
+      whole_hearted_endorsement_meaning: I really like it!
+      whole_hearted_endorsement_prompt: What do you like about it?
+      agreement_with_minor_contention: Agreement with minor contention
+      agreement_with_minor_contention_meaning: Not perfect, but it's good enough
+      agreement_with_minor_contention_prompt: What is your concern?
+      support_with_reservations: Support with reservations
+      support_with_reservations_meaning: I can live with it
+      support_with_reservations_prompt: What are your reservations?
+      abstain_meaning: This issue does not affect me
+      abstain_prompt: Do you have anything you would like to add?
+      more_discussion_needed: More discussion needed
+      more_discussion_needed_meaning: I don't understand the issues well enough yet
+      more_discussion_needed_prompt: What do you not understand?
+      don_t_like_but_will_support: Don't like but will support
+      don_t_like_but_will_support_meaning: It's not great but I don't want to hold up
+        the group
+      don_t_like_but_will_support_prompt: What would you like to see improved?
+      serious_disagreement: Serious disagreement
+      serious_disagreement_meaning: I am not on board with this - don't count on me
+      serious_disagreement_prompt: What do you disagree with?
+      veto: Veto
+      veto_meaning: I block this proposal
+      veto_prompt: Why do you block the proposal? What needs to change for you to support
+        it?
+    simple_poll:
+      process_subtitle: Find the most popular option
+      process_introduction: <p>Before making a decision, find which option(s) people care
+        most about.</p><p>Simple poll helps you find the most popular option or options
+        with single or multiple choice.</p><p>Write any details
+        about the options in the details field, then enter the name of the option and
+        click + to add.</p><p>Set the <strong>Minimum choices</strong>
+        and <strong>Maximum choices</strong> a voter may choose. Leave the maximum choice
+        as 1 for a single choice poll.</p><p>You can use the pencil
+        icon alongside each option to add a <strong>meaning</strong> of the option, a
+        further elaborate on the option to help people when voting.</p><p><a
+        target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Read
+        more about Simple poll</a>.</p>
+      title: Where should the focus of our strategic direction be?
+      details: <h3 id="what-is-this-poll-about"><strong>What is
+        this poll about?</strong></h3><p></p><h3
+        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+        id="what-are-you-asking-people-to-do"><strong>What are
+        you asking people to do?</strong></h3><p></p><p>Choose
+        the option(s) you favor.</p>
+    score_poll:
+      process_subtitle: Measure the degree of support for each option
+      process_introduction: <p>Use Score poll when you want to survey people for their
+        desire, preference or interest in each option.</p><p><span>Participants are asked
+        to evaluate each option and assign a score by moving a slider along a scale.</span></p><p><span>Results
+        are displayed graphically along with a table for each option showing total points,
+        mean points and the number of voters.</span></p><p>Advanced
+        Settings include 'Votes are anonymous' and 'Show options in random order' - commonly
+        used for Score poll to reduce any voting bias.</p><p><a
+        target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Read
+        more about Score poll</a>.</p>
+      title: Assessing how decisions are made in our organization
+      details: <h3 id="what-is-this-poll-about"><strong>What is
+        this poll about?</strong></h3><p></p><h3
+        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+        id="what-are-you-asking-people-to-do"><strong>What are
+        you asking people to do?</strong></h3><p></p><p>Choose
+        the option(s) you favor.</p>
+    dot_vote:
+      process_subtitle: Allocate a budget of points to reveal priorities
+      process_introduction: <p>Dot vote is useful for groups trying to allocate a limited
+        resource to a number of options. It goes beyond a simple poll by helping participants
+        appreciate there is a constraint when selecting options.</p><p>Participants are
+        each given a set number of dots. You decide how many.</p><p>They place dots next
+        to options presented that they like. Participants can place all their dots on
+        a single option or spread over multiple options.</p><p>As
+        participants allocate dots, they may exceed the dot budget limit and so are encouraged
+        to consider how they spend their dots carefully.</p><p>Options
+        with the most dots “win”. The results table provides additional data to help you
+        analyse results.</p><ul><li><p>% of points</p></li><li><p>Points</p></li><li><p>Mean</p></li><li><p>Voters</p></li></ul><p><a
+        target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Read
+        more about Dot vote</a>.</p>
+      title: Choosing themes for our conference
+      details: <h3 id="what-is-this-poll-about"><strong>What is
+        this poll about?</strong></h3><p></p><h3
+        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+        id="what-are-you-asking-people-to-do"><strong>What are
+        you asking people to do?</strong></h3><p></p><p>In
+        this poll you have a budget of 8 dots to allocate to the options you prefer. You
+        can place all dots on one option or spread them out.</p>
+    ranked_choice:
+      process_subtitle: Understand the ordered preference of options
+      process_introduction: <p>Ranked choice is useful when you have a large number of
+        options, or are holding an election.</p><p>This poll template
+        offers a series of options for people to vote in their preferred order.</p>
+        <p>You can set the number of choices the voter gets.</p>
+        <p><span>Voters drag and drop options in order of preference
+        (#1 being your most preferred option).</span></p><p><span>Advanced
+        Settings include 'Votes are anonymous' and 'Show options in random order' - commonly
+        used for R</span>anked choice to reduce any voting bias.</p><p>Results
+        are showed in ranked order. The results table provides additional data to help
+        you analyse results.</p><ul><li><p>Rank</p></li><li><p>% of points</p></li><li><p>Points</p></li><li><p>Mean</p></li></ul><p><a
+        target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Read
+        more about Ranked choice</a>.</p>
+      title: Elect directors to governance board
+      details: <h3 id="what-is-this-poll-about"><strong>What is
+        this poll about?</strong></h3><p></p><h3
+        id="why-is-this-important"><strong>Why is this important?</strong></h3><p></p><h3
+        id="what-are-you-asking-people-to-do"><strong>What are
+        you asking people to do?</strong></h3><p></p><p>Vote
+        by ranking the options in order of your preference.  The option that ranks first
+        in the results wins.</p>
+    time_poll:
+      process_subtitle: Find when people are available to meet
+      process_introduction: <p><span>Save time arranging a date for your meeting or event.</span></p><p>Time
+        poll makes it easy to see everyone's availability and find the best time.</p>
+        <p>Give your Time poll a title and details. Enter a list
+        of date and time options in your time zone.</p><p>When
+        setting timeslots, consider people in different time zones. Participants will
+        see times localized in their time zone.</p><p>Set a meeting
+        duration.</p><p>When the Time poll closes, set an outcome
+        with the best time and any instructions for the meeting.</p><p><span>Loomio
+        will include a calendar invitation with the outcome notification email, so participants
+        can add to their calendar.</span></p>
+        <p><a target="_blank"  
+            href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Read more about Time poll</a>.</p>
+      title: Let's find a date for our next meeting
+      details: "<p><strong>What is the meeting or event?</strong></p><p></p><p><strong>Why
+        is this important?</strong></p><p></p><p><strong>What are you asking people to
+        do?</strong></p><p></p><p><span>Mark the timeslots you are available with the
+        green 'thumbs up' icon or leave the red 'thumbs down' in place when unavailable.
+        </span></p><p><span>Use the 'thumbs sideways' icon to say you are available 'if
+        need be'.</span></p>"
+      reason_prompt: Is there anything you can say to help the organizer find a suitable time?
+    opt_in:
+      process_subtitle: Find volunteers or ask for participants
+      process_introduction: '<p>Use Opt-in to invite people to a join a team, committee
+        or working group, or to participate in an event.&nbsp;&nbsp;</p><p>‘Opt-in’ has
+        two voting options: Accept or Decline.&nbsp;</p><p>You
+        can define a target number of people you are looking for, say 3 people to join
+        your working group.</p>
+        <p><a target="_blank"  
+            href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Read more about Opt-in</a>.</p> '
+      title: Working group to draft our new sustainability policy
+      details: "<p><strong>What is the team, working group or event you are inviting people
+        to?</strong></p><p></p><p><strong>Why is this important?</strong></p><p></p><p><strong>What
+        are you asking people to do?</strong></p><p></p><p>Select 'Accept' to participate!</p>"
+      accept_meaning: I'm willing to participate
+      accept_prompt: Why are you volunteering for this?
+      decline_meaning: I'm unable to participate
+      decline_prompt: Is there anything you'd like to say?
 
   thread_item:
     removed: "Item removed"

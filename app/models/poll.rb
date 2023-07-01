@@ -56,6 +56,7 @@ class Poll < ApplicationRecord
                        validate_maximum_stance_choices
                        validate_min_score
                        validate_max_score
+                       has_options
                        validate_dots_per_person).freeze
 
   TEMPLATE_VALUES.each do |field|
@@ -86,10 +87,6 @@ class Poll < ApplicationRecord
     self[:custom_fields][:maximum_stance_choices] ||
     AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
     poll.poll_options.length
-  end
-
-  def poll_type_validations
-    AppConfig.poll_types.dig(self.poll_type, 'poll_type_validations') || []
   end
 
   include Translatable
@@ -145,13 +142,10 @@ class Poll < ApplicationRecord
 
   before_save :clamp_minimum_stance_choices
   validate :closes_in_future
-  validate :closes_at_nil_if_template
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
   validate :title_if_not_discarded
-  validate :process_name_if_template
-  validate :process_subtitle_if_template
 
   alias_method :user, :author
 
@@ -167,11 +161,10 @@ class Poll < ApplicationRecord
     :anonymous,
     :discarded_at,
     :discarded_by,
-    :stances_in_discussion,
     :voter_can_add_options,
-    :anyone_can_participate,
     :specified_voters_only,
     :stance_reason_required,
+    :tags,
     :notify_on_closing_soon,
     :poll_option_names,
     :hide_results]
@@ -213,6 +206,10 @@ class Poll < ApplicationRecord
     end
   end
 
+  def can_respond_maybe
+    self[:custom_fields].fetch('can_respond_maybe', false)
+  end
+
   def result_columns
     case poll_type
     when 'proposal'
@@ -235,6 +232,8 @@ class Poll < ApplicationRecord
       %w[chart name score_percent voter_count voters]
     when 'meeting'
       %w[chart name score voters]
+    else
+      []
     end
   end
   
@@ -475,18 +474,6 @@ class Poll < ApplicationRecord
     end
   end
 
-  def process_name_if_template
-    if template && !process_name
-      errors.add(:process_name, I18n.t(:"activerecord.errors.messages.blank"))
-    end
-  end
-
-  def process_subtitle_if_template
-    if template && !process_subtitle
-      errors.add(:process_subtitle, I18n.t(:"activerecord.errors.messages.blank"))
-    end
-  end
-
   def cannot_deanonymize
     if anonymous_changed? && anonymous_was == true
       errors.add :anonymous, :cannot_deanonymize
@@ -504,12 +491,6 @@ class Poll < ApplicationRecord
     return if closing_at.nil? 
     return if closing_at > Time.zone.now
     errors.add(:closing_at, I18n.t(:"poll.error.must_be_in_the_future"))
-  end
-
-  def closes_at_nil_if_template
-    if template && closing_at
-      errors.add(:closing_at, I18n.t(:"poll.error.templates_cannot_close"))
-    end
   end
 
   def discussion_group_is_poll_group

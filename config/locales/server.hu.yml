@@ -1,3 +1,4 @@
+---
 hu:
   explore:
     header: Fedezd fel a nyilvános csoportokat
@@ -15,6 +16,8 @@ hu:
     messages:
       email: Nem érvényes e-mail cím
       spoofed_media_type: A fájl tartalma nem egyezik a fájlnévvel
+    clear_cache: Betöltési probléma észlelve. Tartsa lenyomva a Shift gombot, és nyomja meg a Reload gombot, vagy törölje a böngésző gyorsítótárát.
+    upgrade_browser: UH Oh! A webböngésző túl régi, és előfordulhat, hogy a Loomio nem működik megfelelően. Kérjük, <a href="https://browser-update.org/update.html">frissítse böngészőjét.</a>
   group:
     stats:
       members: Tagok
@@ -27,21 +30,34 @@ hu:
         proposal: Javaslat
         rank: Rangsorolás
         time: Időpont választás
+        count: Számol
+        choose: Választ
+        allocate: Kioszt
+        score: Pontszám
+      group_stats: Csoport statisztika
+      org_stats: Szervezeti statisztikák (beleértve az alcsoportokat)
+      visits: Látogatások
+      general: Tábornok
+    error:
+      handle_must_begin_with_parent_handle: 'A következővel kell kezdődnie: %{parent_handle}-'
+      no_public_trials: Kérjük, frissítsen a próbaverzióról a csoport adatvédelmi beállításának módosításához
   user:
-    deleted_user: "Törölt felhasználó"
-    placeholder_name: "Meghívott felhasználó (%{hostname})"
+    deleted_user: Törölt felhasználó
+    placeholder_name: Meghívott felhasználó (%{hostname})
     error:
       sign_in_required_html: |
-          A folytatáshoz be kell jelentkeznie.
-          Kérem <a href="/dashboard" target="_blank">jelentkezzen be</a> majd töltse be újra az oldalt a folytatáshoz.
-      recaptcha: "Nem tudtuk ellenőrizni, hogy nem robot vagy-e. Kérlek próbáld újra!"
-      bad_login: "Sajnáljuk, de ez a jelszó nem egyezik meg a korábban megadottal."
-      username_must_be_alphanumeric: "A felhasználónevek csak kisbetűsek és számok lehetnek"
+        A folytatáshoz be kell jelentkeznie.
+        Kérem <a href="/dashboard" target="_blank">jelentkezzen be</a> majd töltse be újra az oldalt a folytatáshoz.
+      recaptcha: Nem tudtuk ellenőrizni, hogy nem robot vagy-e. Kérlek próbáld újra!
+      bad_login: Sajnáljuk, de ez a jelszó nem egyezik meg a korábban megadottal.
+      username_must_be_alphanumeric: A felhasználónevek csak kisbetűsek és számok lehetnek
   poll:
     error:
       cannot_add_options: Nem lehet lehetőségeket hozzáadni ehhez a szavazáshoz
       cannot_remove_options: Nem lehet eltávolítani lehetőségeket ebből a szavazásból
       must_have_options: Legalább egy szavazási lehetőséget meg kell adni
+      must_be_in_the_future: Biztosan a jövőben
+      templates_cannot_close: A sablonokat nem lehet bezárni
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) a tagok kifejtették álláspontjukat"
       title: Cím
@@ -65,6 +81,8 @@ hu:
       participant: Résztvevő
       also_available: Szintén elérhető
       total: Összesen
+      user_id: Felhasználói azonosító
+    waiting_for_votes_from: Várjuk a szavazatokat
   stance:
     error:
       too_short: Kérjük, válasszon
@@ -77,51 +95,72 @@ hu:
   user_mailer:
     group_export_ready:
       subject: A(z)%{group_name}csoport adatainak letöltése
-      body_html: |
-          Töltse le csoportadatait  <a href="%{url}">itt</a>. Felhívjuk figyelmét, hogy ez a link egy hét múlva lejár.
+      body_html: 'Töltse le csoportadatait  <a href="%{url}">itt</a>. Felhívjuk figyelmét, hogy ez a link egy hét múlva lejár.
+
+        '
     accounts_merged:
-      subject: "A %{site_name} felhasználói fiókjaid egyesítve lettek."
-      body_html: |
-          Szia%{név}! A két Loomio fiókod egyesítve lett. A Loomio eléréséhez most használd ezt <strong>%{email} </strong> amikor bejelentkezel.
+      subject: A %{site_name} felhasználói fiókjaid egyesítve lettek.
+      body_html: 'Szia%{név}! A két Loomio fiókod egyesítve lett. A Loomio eléréséhez most használd ezt <strong>%{email} </strong> amikor bejelentkezel.
+
+        '
+    deactivated:
+      subject: "%{site_name} felhasználói fiókját deaktiváltuk."
+      body_html: "<p>Ön vagy valaki, aki hozzáfér a fiókjához, deaktiválta Loomio felhasználói fiókját.</p><p> Minden személyes adatot eltávolítottunk a rendszerből.</p><p> Ha vissza szeretné állítani ezt a felhasználói fiókot, valamint a kapcsolódó megjegyzéseket és szavazatokat, forduljon az ügyfélszolgálathoz, és hivatkozzon: %{recovery_code}</p>"
+    merge_verification:
+      subject: Erősítse meg %{site_name} e-mail címét az egyesítéshez
+      body_html: "<p>Szia %{name}!</p><p> Kérés érkezett a <strong>(z) %{source_email}</strong> cím alatti felhasználói fiók és a <strong>(z) %{target_email}</strong> címhez tartozó fiók egyesítésére.</p><p> A folyamat befejezése után többé nem fog tudni bejelentkezni <strong>a %{source_email}</strong> címmel, és csak <strong>a %{target_email}</strong> segítségével.</p><p> Kérjük, erősítse meg, hogy ezt szeretné tenni.</p>"
+      verify: Ellenőrizze az e-mail-címet, és folytassa
+      confirm_page:
+        confirm: Egyesítés megerősítése
+        body_html: "<p>Kérjük, erősítse meg, hogy a <strong>%{source_email}</strong> fiókot a <strong>%{target_email}</strong> alatti fiókkal szeretné egyesíteni.</p><p> <strong>A %{source_email}</strong> alatti fiókod törlésre kerül, és ezután már csak <strong>a %{target_email}</strong> címen tudsz bejelentkezni.</p><p> Ez a változás visszafordíthatatlan.</p>"
+        merge: Fiókok egyesítése
+      complete_page:
+        title: Sikeres összevonás!
+        body_html: <p>A felhasználói fiókok egyesítése sikeres volt. Hamarosan kap egy megerősítő e-mailt a <strong>%{target_email}</strong> címre.</p><p> Kérjük <a href="/contact" target="_blank">, forduljon hozzánk</a> , ha további kérdése van.</p>
   email:
     common:
       or_enter_code: Vagy írja be az alábbi kódot
+      resend: Ez 24 órán belül lejár, és csak egyszer használható fel
     login:
       subject: Bejelentkezés a(z) %{site_name} oldalra
       login: Bejelentkezés mint %{name}
+      intro: Ez a linked a(z) %{site_name} webhelyre való bejelentkezéshez
+      intro_code: Ez a kódod a(z) %{site_name} webhelyre való bejelentkezéshez
     reactivate:
       subject: Aktiválja újra%{site_name} fiókját
       login: Újraaktivál%{name}
+      intro: Szia %{name}, itt egy link a %{site_name} fiókod újraaktiválásához
     contact_request:
       subject: "%{name} szeretne kapcsolatba lépni veled a%{site_name} oldalon!"
       intro: "%{name} (%{email}) csatlakozási kérelmet küldött neked."
-      footer: "A(z)%{name} címre közvetlenül válaszolhat erre az e-mailre."
+      footer: A(z)%{name} címre közvetlenül válaszolhat erre az e-mailre.
     reset_password:
       greeting: |
-          Kedves %{name}
-          Itt található egy link, amellyel visszaállíthatod a jelszavad a Loomio-fiókodban:
+        Kedves %{name}
+        Itt található egy link, amellyel visszaállíthatod a jelszavad a Loomio-fiókodban:
       link_text: Állítsd vissza a jelszavad
-      signoff: |
-          Azért kaptad ezt, mert e-mail címed a%{hostname} "Elfelejtett jelszó" űrlapon meg lett adva. A jelszavad azonban nem változik meg, amíg nem követed a fenti hivatkozást és ki nem töltöd az űrlapot. Ha továbbra is problémáid vannak a bejelentkezéssel, válaszolj erre az e-mailre, hogy felvedd a kapcsolatot egy csoportot támogató személlyel.
+      signoff: 'Azért kaptad ezt, mert e-mail címed a%{hostname} "Elfelejtett jelszó" űrlapon meg lett adva. A jelszavad azonban nem változik meg, amíg nem követed a fenti hivatkozást és ki nem töltöd az űrlapot. Ha továbbra is problémáid vannak a bejelentkezéssel, válaszolj erre az e-mailre, hogy felvedd a kapcsolatot egy csoportot támogató személlyel.
+
+        '
     by_who: általa%{person}
     reply_to_this_discussion: Válasz erre a beszélgetésre
     view_group: Csoport megtekintése
     to_join_group:
       subject: "%{member} meghívott, hogy csatlakozzon a következőhöz:%{group_name}, a(z) %{site_name} oldalon"
       invitation_text: "%{member} meghívott, hogy csatlakozzon a(z)%{group_name} csoporthoz."
-      invitation_text_html: "meghívott, hogy csatlakozz a csoportjukhoz"
-      link_help: "Kattints az alábbi hivatkozásra a meghívás elfogadásához:"
-      accept_invitation: "Meghívás elfogadása"
-      stop_emails: "A továbbiakban nem kapsz majd e-mailt a(z) %{site_name}oldalról"
+      invitation_text_html: meghívott, hogy csatlakozz a csoportjukhoz
+      link_help: 'Kattints az alábbi hivatkozásra a meghívás elfogadásához:'
+      accept_invitation: Meghívás elfogadása
+      stop_emails: A továbbiakban nem kapsz majd e-mailt a(z) %{site_name}oldalról
     resend_to_join_group:
       subject: "%{member}arra vár, hogy csatlakozz a(z)%{group_name}csoporthoz a(z) %{site_name}oldalon"
     user_added_to_group:
       subject: "%{who} felvett téged a(z) %{site_name}oldalon a(z) %{which_group}csoportba"
       content: "%{who}felvett téged a(z) %{which_group}csoportba."
       content_html: "<strong>%{who}</strong> hozzáadott téged a(z) <strong>%{which_group}</strong>csoporthoz."
-      link_help: "A csoportba lépéshez kattints az alábbi hivatkozásra:"
+      link_help: 'A csoportba lépéshez kattints az alábbi hivatkozásra:'
     unsubscribe: 'Leiratkozás vagy az e-mail beállítások módosítása:'
-    unsubscribe_html: "Kattints ide<a href='%{link_path}'>%{link_text}</a> leiratkozáshoz vagy az e-mail beállítások megváltoztatásához."
+    unsubscribe_html: Kattints ide<a href='%{link_path}'>%{link_text}</a> leiratkozáshoz vagy az e-mail beállítások megváltoztatásához.
     catch_up:
       daily_subject: Tegnap itt:%{site_name}
       weekly_subject: A múlt héten a(z) %{site_name}oldalon
@@ -130,24 +169,30 @@ hu:
       thanks_for_reading: Köszönjük, hogy elolvastad, szép napot kívánunk!
       marked_as_read_success: Az e-mail teljes tartalma meg lett jelölve olvasottként.
       click_here: Kattints ide
+      other_subject: 'Nemrég itt: %{site_name}'
     group_membership_approved:
-      intro: "A(z) %{group_name} csoporthoz való hozzáférési kérelmét jóváhagyták."
-      intro_html: "Jóváhagyták a(z) <strong>%{group_name}</strong>csoporthoz való hozzáférés iránti kérelmed."
-      link_help: "Kattints az alábbi hivatkozásra, hogy csatlakozz a(z)%{group_name}csoporthoz és kezdj neki a beszélgetésnek:"
-      subject: "A(z)%{group_name} csatlakozási kérelmét jóváhagyták"
-      join_group: "Csoporthoz csatlakozás"
+      intro: A(z) %{group_name} csoporthoz való hozzáférési kérelmét jóváhagyták.
+      intro_html: Jóváhagyták a(z) <strong>%{group_name}</strong>csoporthoz való hozzáférés iránti kérelmed.
+      link_help: 'Kattints az alábbi hivatkozásra, hogy csatlakozz a(z)%{group_name}csoporthoz és kezdj neki a beszélgetésnek:'
+      subject: A(z)%{group_name} csatlakozási kérelmét jóváhagyták
+      join_group: Csoporthoz csatlakozás
     membership_request:
       intro_html: hozzáférést kért az egyik csoportodhoz.
       subject: "%{who} csatlakozást kért a(z)%{which_group} oldalhoz"
       view_group: Itt jóváhagyhatod vagy elutasíthatod a kérelmet
       button_text: Kérés megtekintése
+    loomio_app_description: A %{site_name} egy döntéshozó eszköz az együttműködő szervezetek számára
   announcement_count_emails: "%{count} e-mail"
   email_actions:
     unfollowed_discussion: Kikapcsoltad a téma e-maileit.
   discussion_mailer:
-    reply_or_view_online_html: "Válaszolj erre az e-mailre közvetlenül, vagy <a href='%{url}'>tekintsd meg itt%{hostname}</a>."
+    reply_or_view_online_html: Válaszolj erre az e-mailre közvetlenül, vagy <a href='%{url}'>tekintsd meg itt%{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Kapcsold ki az emaileket</a> ehhez a beszélgetéshez."
-    change_email_preferences_html: "Módosítsa <a href='%{email_preferences_url}'> e-mail beállításait </a>"
+    change_email_preferences_html: Módosítsa <a href='%{email_preferences_url}'> e-mail beállításait </a>
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Leiratkozás</a> a téma további bejelentéseiről."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Leiratkozás</a> a hozzászólásokról ebben a témában."
+    unsubscribe_from_comment_replied_to_html: Ez egy válaszértesítés.
+    unsubscribe_from_user_mentioned_html: Ez egy említési értesítés.
   footer:
     about: Rólunk
     blog: Blog
@@ -164,35 +209,51 @@ hu:
     confirm_new_password: Jelszó megerősítése
     new_password: Új jelszó
     email_guidelines_html: |
-        <p>Írd be e-mail címed, és megkapod a jelszó-visszaállítási hivatkozást.</p>
-        <p>Ha általában a Facebookon vagy a Google-n keresztül jelentkezel be, írd be az adott fiókhoz társított e-mail címet.</p>
+      <p>Írd be e-mail címed, és megkapod a jelszó-visszaállítási hivatkozást.</p>
+      <p>Ha általában a Facebookon vagy a Google-n keresztül jelentkezel be, írd be az adott fiókhoz társított e-mail címet.</p>
     reset_email_timeframe: Az e-mail megérkezése akár 5 percet is igénybe vehet. Ha nem jelenik meg, ellenőrizd a spam mappát.
     length_restriction: A jelszavaknak legalább 8 karakter hosszúnak kell lenniük.
     forbidden_passwords: Az általános jelszavak, például a „jelszó”, tiltottak a fiókja biztonságának megőrzése érdekében.
   introduction_thread:
     title: Üdvözlünk! Kérünk mutatkozz be
     description: |
-        Szentelj egy percet arra, hogy bemutatkozz a csoportnak. Írj egy megjegyzést alább.
+      Szentelj egy percet arra, hogy bemutatkozz a csoportnak. Írj egy megjegyzést alább.
 
-        Mi a szereped vagy a részvételt érintő megközelítésed ebben a csoportban? Mit kell tudniuk rólad az embereknek, hogy megértsék, honnan jössz?
+      Mi a szereped vagy a részvételt érintő megközelítésed ebben a csoportban? Mit kell tudniuk rólad az embereknek, hogy megértsék, honnan jössz?
   how_it_works_thread:
     title: Hogyan kell használni a Loomio-t?
+    description: Üdvözöljük a Loomio-ban, a kommunikáció és a döntéshozatal online helyén. Ez egy példa beszélgetés **szál**. Az alábbiakban megjegyzéseket fűzhet hozzá. A szálak a témák megvitatására és az egyértelmű eredmények elérésére szolgálnak. Ez a szál a Loomio működéséről szól, ezért tegye fel ide vonatkozó kérdéseit. Jelenleg a **kontextus** szálat olvassa, amely naprakészen tartható kulcsfontosságú információkkal és kérdésekkel, amelyek segítik az emberek érdeklődését. A Loomio használatának megkezdéséhez:<ul><li> Próbáljon megjegyzést fűzni egy meglévő szálhoz vagy ehhez.</li></ul> Tippek a Loomio-on való közzétételhez:<ul><li> Egy adott személy értesítéséhez írja be a @ jelet, majd a nevét</li><li> Húzza át a képeket és a mellékleteket, vagy kattintson a gemkapocs ikonra</li><li> Nézze meg <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">a szálak használatának 5 módját</a> néhány ötletért és tippért</li></ul> Ha kérdése van, tekintse meg a [Loomio súgóját] (http://help.loomio.org).
   first_proposal:
     name: Bemutató javaslat
-    description: |-
-        Ez egy ** javaslat **, amelyben együtt dönthet. A vita elindításával elindíthatja a javaslatot.Mindenkit felkérünk, hogy ** nyújtson be ** álláspontot ** ** határidőig **. Meghosszabbíthatja a határidőt, ha szüksége van rá, vagy korábban bezárhatja a javaslatot.** Megváltoztathatja pozícióját **, amíg a javaslat nyitva van. Lehet, hogy átgondolja véleményét, amikor másokkal hallgat.A csoportok néha ** javaslat-sorozaton ** dolgoznak **, hogy együtt dolgozzanak ki megoldásokat. Ebben a témákban sorozatos javaslatokat vehet fel.** Próbálja ki a részvételt! Kattintson a négy gomb egyikére **.
+    description: Ez egy ** javaslat **, amelyben együtt dönthet. A vita elindításával elindíthatja a javaslatot.Mindenkit felkérünk, hogy ** nyújtson be ** álláspontot ** ** határidőig **. Meghosszabbíthatja a határidőt, ha szüksége van rá, vagy korábban bezárhatja a javaslatot.** Megváltoztathatja pozícióját **, amíg a javaslat nyitva van. Lehet, hogy átgondolja véleményét, amikor másokkal hallgat.A csoportok néha ** javaslat-sorozaton ** dolgoznak **, hogy együtt dolgozzanak ki megoldásokat. Ebben a témákban sorozatos javaslatokat vehet fel.** Próbálja ki a részvételt! Kattintson a négy gomb egyikére **.
   group_mailer:
     resend: 'EMLÉKEZTETÉS: %{member} arra vár, hogy csatlakozzon ide: %{group_name}'
+    destroy_warning:
+      subject: A Loomio-csoport törlésre van ütemezve.
+      body: A(z) "%{group}" Loomio-csoportod törlését ütemezte %{deletor}. Ha nem szeretné, hogy csoportja törölve legyen, kérjük, válaszoljon erre az e-mailre. Ha biztos benne, hogy törölni akarja a csoportot, nem kell semmit tennie. Köszönöm.
   poll_mailer:
     common:
       why_send_this: Azért kapja ezt az e-mailt, mert %{reason}
       view_on_loomio: 'Tekintsd meg itt: %{site_name} '
       create_outcome: Oszd meg az eredményt
-      your_response: "Szavaztál:"
+      your_response: 'Szavaztál:'
       please_respond: Kérlek válaszolj
-      time_zone: (Ennyiszer megjelenítve itt %{zone})
+      time_zone: "(Ennyiszer megjelenítve itt %{zone})"
       undecided_members: Még nem döntöttek (%{count})
       undecided_visitors: Bizonytalan vendégek (%{count})
       more_undecided: "%{count} további ..."
       vote_now: Szavazz most
-      you_have_until: '%{when} -ig van lehetőséged részt venni.'
+      you_have_until: "%{when} -ig van lehetőséged részt venni."
+      you_voted: Szavaztál!
+      not_invited: Nincs meghívva
+      people_have_voted: "%{nom} %{dnom} ember vett részt (%{pct}%)"
+  base_mailer:
+    via_loomio: "%{name} (a %{site_name}-on keresztül)"
+  task_mailer:
+    task_due_reminder:
+      subject: 'Feladat emlékeztető: %{name}'
+      greeting: 'Szia %{name}, a következő feladat esedékes %{due}:'
+      view_task: 'Megtekintés itt: %{site_name}'
+      update_or_comment: Ha már elvégezte ezt a feladatot, kérjük, jelölje be. Ha nem fejeződött be, kérjük, ossza meg a folyamatról szóló frissítést.
+      due_today: Ma
+      due_in_count_days: "%{count} napon belül"

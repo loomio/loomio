@@ -14,7 +14,7 @@ export default new class ThreadService
       name: 'templates.make_a_copy'
       menu: true
       canPerform: -> Session.user()
-      to: "/d/new?template_id=#{discussion.id}"
+      to: -> "/d/new?template_id=#{discussion.id}"
 
     translate_thread:
       icon: 'mdi-translate'
@@ -87,7 +87,7 @@ export default new class ThreadService
       icon: 'mdi-pencil'
       dock: 1
       canPerform: -> AbilityService.canEditThread(discussion)
-      to: "/d/#{discussion.key}/edit"
+      to: -> "/d/#{discussion.key}/edit"
       # perform: ->
       #   Records.discussions.remote.fetchById(discussion.key, {exclude_types: 'group user poll event'}).then ->
       #     openModal

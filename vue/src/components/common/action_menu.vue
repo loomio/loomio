@@ -6,6 +6,9 @@ export default
     small: Boolean
     icon: Boolean
     name: String
+    menuIcon: 
+      type: String
+      default: 'mdi-dots-horizontal'
 
   computed:
     canPerformAny: ->
@@ -18,7 +21,7 @@ export default
   v-menu(offset-y)
     template(v-slot:activator="{ on, attrs }" )
       v-btn.action-menu--btn(:title="name" :icon="icon" :small="small" v-on="on" v-bind="attrs" @click.prevent)
-        v-icon(v-if="icon" :small="small") mdi-dots-horizontal
+        v-icon(v-if="icon" :small="small") {{menuIcon}}
         span(v-if="!icon") {{name}}
 
     v-list
@@ -36,7 +39,7 @@ export default
           dense
           v-if='action.to'
           :key="name"
-          :to="action.to"
+          :to="action.to()"
           :class="'action-dock__button--' + name")
           v-list-item-icon
             v-icon {{action.icon}}
