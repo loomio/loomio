@@ -47,14 +47,11 @@ class TagService
     end
     group.tags.where.not(name: counts.keys).update_all(taggings_count: 0)
 
-    RetryOnError.with_limit(2) do
-      counts.each_pair do |name, count|
-        if tag = group.tags.find_or_create_by(name: name)
-          tag.update(taggings_count: count)
-        else
-          group.tags.create(name: name, taggings_count: count)
-        end
+    if counts.any?
+      tags = counts.map do |name, count|
+        {name: name, group_id: group.id, taggings_count: count}
       end
+      Tag.upsert_all( tags, unique_by: [:group_id, :name], record_timestamps: false)
     end
 
     update_org_tagging_counts(group.parent_or_self.id)
@@ -80,14 +77,11 @@ class TagService
       end
     end
 
-    RetryOnError.with_limit(2) do
-      counts.each_pair do |name, count|
-        if tag = group.tags.find_by(name: name)
-          tag.update(org_taggings_count: count)
-        else
-          group.tags.create(name: name, org_taggings_count: count)
-        end
+    if counts.any?
+      tags = counts.map do |name, count|
+        { name: name, group_id: group.id, org_taggings_count: count}
       end
+      Tag.upsert_all(tags, unique_by: [:group_id, :name], record_timestamps: false)
     end
   end
 end
