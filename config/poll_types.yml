@@ -21,6 +21,7 @@ count:
     agree_target: 5
     dots_per_person: 1
     default_duration_in_days: 3
+    notify_on_closing_soon: 2
   common_poll_options:
     - key: accept
       name_i18n: poll_count_options.accept
@@ -59,6 +60,7 @@ check:
     agree_target: 5
     dots_per_person: 1
     default_duration_in_days: 3
+    notify_on_closing_soon: 2
   common_poll_options:
     - key: looks_good
       name_i18n: poll_templates.sense_check.looks_good
@@ -100,6 +102,7 @@ question:
     dots_per_person: 0
     default_duration_in_days: 7
     stance_reason_required: 2
+    notify_on_closing_soon: 2
 
 proposal:
   material_icon: mdi-thumbs-up-down
@@ -190,6 +193,7 @@ proposal:
     maximum_stance_choices: 1
     dots_per_person: 1
     default_duration_in_days: 7
+    notify_on_closing_soon: 2
 
 meeting:
   material_icon: mdi-calendar-multiselect
@@ -211,6 +215,7 @@ meeting:
     max_score: 2
     default_duration_in_days: 3
     can_respond_maybe: true
+    notify_on_closing_soon: 2
 
 poll:
   material_icon: mdi-check
@@ -234,6 +239,7 @@ poll:
     minimum_stance_choices: 1
     maximum_stance_choices: 1
     default_duration_in_days: 3
+    notify_on_closing_soon: 2
 
 dot_vote:
   material_icon: mdi-chart-bar-stacked
@@ -253,6 +259,7 @@ dot_vote:
     min_score: 0
     minimum_stance_choices: 0
     default_duration_in_days: 3
+    notify_on_closing_soon: 2
 
 score:
   material_icon: mdi-chart-gantt
@@ -272,6 +279,7 @@ score:
     max_score: 5
     minimum_stance_choices: 1
     default_duration_in_days: 3
+    notify_on_closing_soon: 2
 
 ranked_choice:
   material_icon: mdi-format-list-numbered
@@ -291,4 +299,5 @@ ranked_choice:
     minimum_stance_choices: 2
     min_score: 1
     default_duration_in_days: 3
+    notify_on_closing_soon: 2
 

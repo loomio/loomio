@@ -191,6 +191,7 @@ consensus:
   title_i18n: poll_templates.consensus.title
   details_i18n: poll_templates.consensus.details
   default_duration_in_days: 7
+  notify_on_closing_soon: 3
   tags_i18n:
     - poll_common.consensus_process
   poll_options:
