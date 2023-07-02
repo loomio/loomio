@@ -45,15 +45,19 @@ class TagService
         counts[tag] += 1
       end
     end
-
     group.tags.where.not(name: counts.keys).update_all(taggings_count: 0)
-    counts.each_pair do |name, count|
-      if tag = group.tags.find_by(name: name)
-        tag.update(taggings_count: count)
-      else
-        group.tags.create(name: name, taggings_count: count)
+
+    RetryOnError.with_limit(2) do
+      counts.each_pair do |name, count|
+        if tag = group.tags.find_or_create_by(name: name)
+          tag.update(taggings_count: count)
+        else
+          group.tags.create(name: name, taggings_count: count)
+        end
       end
     end
+
+    update_org_tagging_counts(group.parent_or_self.id)
   end
 
   def self.update_org_tagging_counts(group_id)
@@ -76,13 +80,14 @@ class TagService
       end
     end
 
-    counts.each_pair do |name, count|
-      if tag = group.tags.find_by(name: name)
-        tag.update(org_taggings_count: count)
-      else
-        group.tags.create(name: name, org_taggings_count: count)
+    RetryOnError.with_limit(2) do
+      counts.each_pair do |name, count|
+        if tag = group.tags.find_by(name: name)
+          tag.update(org_taggings_count: count)
+        else
+          group.tags.create(name: name, org_taggings_count: count)
+        end
       end
     end
   end
-
 end
