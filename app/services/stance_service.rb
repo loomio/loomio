@@ -30,15 +30,9 @@ class StanceService
     is_update = !!stance.cast_at
     last_scores = stance.option_scores
 
-    stance.stance_choices = []
-    stance.assign_attributes_and_files(params)
-
-    stance.cast_at ||= Time.zone.now
-    stance.revoked_at = nil
-    stance.revoker_id = nil
 
     if is_update && last_scores != stance.build_option_scores
-      # they've changed their position, create a new stance, so that discussion threads make sense
+      # they've changed their position! create a new stance, so that discussion threads make sense
 
       new_stance = stance.build_replacement
       new_stance.assign_attributes_and_files(params)
@@ -50,8 +44,15 @@ class StanceService
       end
 
       new_stance.poll.update_counts!
+      MessageChannelService.publish_models([stance], group_id: stance.poll.group_id)
       Events::StanceCreated.publish!(new_stance)
     else
+      
+      stance.stance_choices = []
+      stance.assign_attributes_and_files(params)
+      stance.cast_at ||= Time.zone.now
+      stance.revoked_at = nil
+      stance.revoker_id = nil
       stance.save!
       stance.poll.update_counts!
       if is_update

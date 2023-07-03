@@ -1761,6 +1761,7 @@ en:
     prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
 
   poll_common:
+    superseded: Superseded
     need_help_with_templates: Need help creating your own process templates?
     new_templates_are_here: Loomio has new proposal templates to help with decision-making.
     categorize_poll_templates: Categorize poll templates

@@ -37,6 +37,9 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
         space
         router-link.text--secondary(:to='link')
           time-ago(:date='eventable.updatedAt || eventable.castAt')
+        template(v-if="!eventable.latest")
+          mid-dot.text--secondary
+          span.text--secondary(v-t="'poll_common.superseded'")
     .poll-common-stance(v-if="poll.showResults() && !collapsed")
       v-layout(v-if="!eventable.singleChoice()" wrap align-center)
         strand-item-headline.text--secondary(:event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt")
