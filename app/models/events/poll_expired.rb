@@ -17,7 +17,7 @@ class Events::PollExpired < Event
   end
 
   def notify_author?
-    return false unless eventable.poll.present?
+    return false unless eventable.present? && eventable.poll.present?
     Queries::UsersByVolumeQuery.email_notifications(eventable).exists?(eventable.poll.author_id)
   end
 end
