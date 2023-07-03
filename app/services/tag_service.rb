@@ -29,29 +29,27 @@ class TagService
   end
 
   def self.update_group_tags(group_id)
+
     return unless group = Group.find_by(id: group_id)
+
+    names = (group.discussions.kept.select(:tags).pluck(:tags).flatten +
+     group.polls.kept.select(:tags).pluck(:tags).flatten)
+
     counts = {}
 
-    group.discussions.kept.select(:tags).pluck(:tags).each do |tags|
-      tags.each do |tag|
-        counts[tag] ||= 0
-        counts[tag] += 1
-      end
+    names.map(&:downcase).each do |dname|
+      counts[dname] ||= 0
+      counts[dname] += 1
     end
 
-    group.polls.kept.select(:tags).pluck(:tags).each do |tags|
-      tags.each do |tag|
-        counts[tag] ||= 0
-        counts[tag] += 1
-      end
-    end
     group.tags.where.not(name: counts.keys).update_all(taggings_count: 0)
 
     if counts.any?
-      tags = counts.map do |name, count|
-        {name: name, group_id: group.id, taggings_count: count}
+      tags = counts.map do |dname, count|
+        {name: names.find {|name| name.downcase == dname}, group_id: group.id, taggings_count: count}
       end
-      Tag.upsert_all( tags, unique_by: [:group_id, :name], record_timestamps: false)
+      byebug
+      Tag.upsert_all(tags, unique_by: [:group_id, :name], record_timestamps: false)
     end
 
     update_org_tagging_counts(group.parent_or_self.id)
@@ -59,28 +57,24 @@ class TagService
 
   def self.update_org_tagging_counts(group_id)
     return unless group = Group.find_by(id: group_id)
+
     group_ids = group.id_and_subgroup_ids
+
+    names = Discussion.where(group_id: group_ids).kept.select(:tags).pluck(:tags).flatten + 
+            Poll.where(group_id: group_ids).kept.select(:tags).pluck(:tags).flatten
 
     counts = {}
 
-    Discussion.where(group_id: group_ids).kept.select(:tags).pluck(:tags).each do |tags|
-      tags.each do |tag|
-        counts[tag] ||= 0
-        counts[tag] += 1
-      end
-    end
-
-    Poll.where(group_id: group_ids).kept.select(:tags).pluck(:tags).each do |tags|
-      tags.each do |tag|
-        counts[tag] ||= 0
-        counts[tag] += 1
-      end
+    names.map(&:downcase).each do |dname|
+      counts[dname] ||= 0
+      counts[dname] += 1
     end
 
     if counts.any?
-      tags = counts.map do |name, count|
-        { name: name, group_id: group.id, org_taggings_count: count}
+      tags = counts.map do |dname, count|
+        { name: names.find {|name| name.downcase == dname}, group_id: group.id, org_taggings_count: count}
       end
+
       Tag.upsert_all(tags, unique_by: [:group_id, :name], record_timestamps: false)
     end
   end
