@@ -57,7 +57,7 @@ export default new class StanceService
     show_history:
       name: 'action_dock.edited'
       icon: 'mdi-history'
-      dock: 1
+      dock: 3
       canPerform: -> stance.edited()
       perform: ->
         openModal
