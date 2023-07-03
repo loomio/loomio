@@ -170,10 +170,11 @@ describe API::V1::StancesController do
       end
 
       it 'sets cast_at to nil' do
-        stance = poll.stances.where(participant_id: voter.id).last
+        stance = poll.stances.latest.find_by(participant_id: voter.id)
         put :uncast, params: {id: stance.id}
         expect(response.status).to eq 200
-        expect(stance.reload.cast_at).to eq nil
+        stance = poll.stances.latest.find_by(participant_id: voter.id)
+        expect(stance.cast_at).to eq nil
       end
     end
 

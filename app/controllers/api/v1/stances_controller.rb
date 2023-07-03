@@ -10,8 +10,9 @@ class API::V1::StancesController < API::V1::RestfulController
   end
 
   def uncast
-    @stance = current_user.stances.find(params[:id])
+    @stance = current_user.stances.latest.find(params[:id])
     StanceService.uncast(stance: @stance, actor: current_user)
+    @stance = @stance.poll.stances.latest.find_by(participant_id: current_user.id)
     respond_with_resource
   end
 
