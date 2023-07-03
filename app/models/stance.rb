@@ -67,8 +67,18 @@ class Stance < ApplicationRecord
 
   alias :author :participant
 
-  before_save :update_option_scores
+  before_save :assign_option_scores
   after_save :update_versions_count!
+
+  def build_replacement
+    Stance.new(
+      poll_id: self.poll_id,
+      participant_id: self.participant_id,
+      inviter_id: self.inviter_id,
+      reason_format: self.reason_format,
+      latest: true
+    )
+  end
 
   def create_missing_created_event!
     self.events.create(
@@ -82,12 +92,16 @@ class Stance < ApplicationRecord
     participant&.name
   end
 
-  def update_option_scores
-    self.option_scores = stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
+  def assign_option_scores
+    self.option_scores = build_option_scores
+  end
+
+  def build_option_scores
+    stance_choices.map { |sc| [sc.poll_option_id.to_s, sc.score] }.to_h
   end
 
   def update_option_scores!
-    update_columns(option_scores: update_option_scores)
+    update_columns(option_scores: assign_option_scores)
   end
 
   def update_versions_count!

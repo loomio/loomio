@@ -15,28 +15,50 @@ class StanceService
 
   def self.uncast(stance:, actor:)
     actor.ability.authorize!(:uncast, stance)
-    stance.cast_at = nil
-    stance.reason = nil
-    stance.stance_choices.delete_all
-    stance.save!
-    stance.poll.update_counts!
+
+    new_stance = stance.build_replacement
+    Stance.transaction do
+      stance.update_columns(latest: false)
+      new_stance.save!
+    end
+
+    new_stance.poll.update_counts!
   end
 
   def self.update(stance:, actor:, params: )
     actor.ability.authorize!(:update, stance)
+    is_update = !!stance.cast_at
+    last_scores = stance.option_scores
+
     stance.stance_choices = []
     stance.assign_attributes_and_files(params)
-    is_update = !!stance.cast_at
+
     stance.cast_at ||= Time.zone.now
     stance.revoked_at = nil
     stance.revoker_id = nil
-    stance.save!
-    stance.poll.update_counts!
 
-    if is_update
-      Events::StanceUpdated.publish!(stance)
+    if is_update && last_scores != stance.build_option_scores
+      # they've changed their position, create a new stance, so that discussion threads make sense
+
+      new_stance = stance.build_replacement
+      new_stance.assign_attributes_and_files(params)
+      new_stance.cast_at = Time.zone.now
+
+      Stance.transaction do
+        stance.update_columns(latest: false)
+        new_stance.save!
+      end
+
+      new_stance.poll.update_counts!
+      Events::StanceCreated.publish!(new_stance)
     else
-      Events::StanceCreated.publish!(stance)
+      stance.save!
+      stance.poll.update_counts!
+      if is_update
+        Events::StanceUpdated.publish!(stance)
+      else
+        Events::StanceCreated.publish!(stance)
+      end
     end
   end
 
