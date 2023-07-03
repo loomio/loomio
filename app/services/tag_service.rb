@@ -48,7 +48,6 @@ class TagService
       tags = counts.map do |dname, count|
         {name: names.find {|name| name.downcase == dname}, group_id: group.id, taggings_count: count}
       end
-      byebug
       Tag.upsert_all(tags, unique_by: [:group_id, :name], record_timestamps: false)
     end
 
