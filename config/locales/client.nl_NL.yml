@@ -1670,6 +1670,8 @@ nl_NL:
     need_help_with_templates: Hulp nodig bij het maken van uw eigen processjablonen?
     new_templates_are_here: De nieuwe voorstelsjablonen van Loomio kunnen helpen bij besluitvormingsprocessen.
     superseded: Vervangen
+    new_proposal_template: Nieuw voorstelsjabloon
+    edit_proposal_template: Voorstelsjabloon bewerken
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:

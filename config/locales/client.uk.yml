@@ -1694,6 +1694,8 @@ uk:
     need_help_with_templates: Потрібна допомога у створенні власних шаблонів процесу?
     new_templates_are_here: Нові шаблони пропозицій Loomio можуть допомогти в процесі прийняття рішень.
     superseded: Замінено
+    new_proposal_template: Новий шаблон пропозиції
+    edit_proposal_template: Редагувати шаблон пропозиції
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:

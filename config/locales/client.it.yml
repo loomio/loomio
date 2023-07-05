@@ -1691,6 +1691,8 @@ it:
     need_help_with_templates: Hai bisogno di aiuto per creare i tuoi modelli di processo?
     new_templates_are_here: I nuovi modelli di proposta di Loomio possono aiutare nei processi decisionali.
     superseded: Sostituito
+    new_proposal_template: Nuovo modello di proposta
+    edit_proposal_template: Modifica il modello di proposta
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:

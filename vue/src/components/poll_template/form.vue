@@ -138,7 +138,10 @@ export default
       ]
 
     titlePath: ->
-      (@pollTemplate.isNew() && 'poll_common.new_poll_template') || 'poll_common.edit_poll_template'
+      if @pollTemplate.pollType == 'proposal'
+        (@pollTemplate.isNew() && 'poll_common.new_proposal_template') || 'poll_common.edit_proposal_template'
+      else
+        (@pollTemplate.isNew() && 'poll_common.new_poll_template') || 'poll_common.edit_poll_template'
 
     closingSoonItems: ->
       'nobody author undecided_voters voters'.split(' ').map (name) =>

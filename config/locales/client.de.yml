@@ -1695,6 +1695,8 @@ de:
     need_help_with_templates: Benötigen Sie Hilfe beim Erstellen Ihrer eigenen Prozessvorlagen?
     new_templates_are_here: Die neuen Angebotsvorlagen von Loomio können bei Entscheidungsprozessen helfen.
     superseded: Abgelöst
+    new_proposal_template: Neue Angebotsvorlage
+    edit_proposal_template: Angebotsvorlage bearbeiten
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:

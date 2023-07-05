@@ -1738,6 +1738,8 @@ es:
     need_help_with_templates: "¿Necesita ayuda para crear sus propias plantillas de proceso?"
     new_templates_are_here: Las nuevas plantillas de propuestas de Loomio pueden ayudar con los procesos de toma de decisiones.
     superseded: Reemplazado
+    new_proposal_template: Nueva plantilla de propuesta
+    edit_proposal_template: Editar plantilla de propuesta
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:

@@ -1787,6 +1787,8 @@ en:
     poll_template_saved: Poll template saved
     poll_templates: Poll templates
     poll_types: Poll types
+    new_proposal_template: New proposal template
+    edit_proposal_template: Edit proposal template
     new_poll_template: New poll template
     edit_poll_template: Edit poll template
     new_poll_type: New poll type
