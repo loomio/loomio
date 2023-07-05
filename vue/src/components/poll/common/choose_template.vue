@@ -132,7 +132,7 @@ export default
         :key="99999"
       )
         v-list-item-content
-          v-list-item-title(v-t="'poll_common.new_poll_template'")
+          v-list-item-title(v-t="'discussion_form.new_template'")
           v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
 
       v-checkbox(v-model="singleList" :label="$t('poll_common.show_all_templates_in_one_list')")

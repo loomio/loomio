@@ -26,13 +26,13 @@ export default
 
     votingMethodsI18n:
       count:
-        title: 'poll_common_form.voting_methods.show_thumbs'
+        title: 'poll_common_form.voting_methods.show_thumbsdecision_tools_card.proposal_title'
         hint: 'poll_common_form.voting_methods.show_thumbs_hint'
       question: 
         title: 'poll_common_form.voting_methods.question'
         hint: 'poll_common_form.voting_methods.question_hint'
       proposal: 
-        title: 'poll_common_form.voting_methods.show_thumbs'
+        title: 'decision_tools_card.proposal_title'
         hint: 'poll_common_form.voting_methods.show_thumbs_hint'
       poll: 
         title: 'poll_common_form.voting_methods.simple_poll'
