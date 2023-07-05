@@ -1653,6 +1653,7 @@ hu:
     change_response: Változtassa meg a választ
     need_help_with_templates: Segítségre van szüksége saját folyamatsablonok létrehozásához?
     new_templates_are_here: A Loomio új ajánlatsablonjai segíthetnek a döntéshozatali folyamatokban.
+    superseded: Felváltva
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:

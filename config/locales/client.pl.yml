@@ -1686,6 +1686,7 @@ pl:
     change_response: Zmień swoją odpowiedź
     need_help_with_templates: Potrzebujesz pomocy w tworzeniu własnych szablonów procesów?
     new_templates_are_here: Nowe szablony propozycji Loomio mogą pomóc w procesach decyzyjnych.
+    superseded: zastąpione
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:

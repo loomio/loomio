@@ -1723,6 +1723,7 @@ pt_BR:
     change_response: Mude sua resposta
     need_help_with_templates: Precisa de ajuda para criar seus próprios modelos de processo?
     new_templates_are_here: Os novos modelos de proposta do Loomio podem ajudar nos processos de tomada de decisão.
+    superseded: Suplantada
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:

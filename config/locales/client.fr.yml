@@ -1741,6 +1741,7 @@ fr:
     change_response: Modifier votre réponse
     need_help_with_templates: Besoin d'aide pour créer vos propres modèles de processus ?
     new_templates_are_here: Les nouveaux modèles de proposition de Loomio peuvent aider aux processus de prise de décision.
+    superseded: Remplacé
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:

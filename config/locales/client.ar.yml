@@ -1654,6 +1654,7 @@ ar:
     change_response: غيّر إجابتك
     need_help_with_templates: هل تحتاج إلى مساعدة في إنشاء قوالب العملية الخاصة بك؟
     new_templates_are_here: يمكن أن تساعد قوالب اقتراح Loomio الجديدة في عمليات صنع القرار.
+    superseded: حلت محلها
   poll_common_attachment_form:
     label: المرفقات
   poll_common_add_option:
