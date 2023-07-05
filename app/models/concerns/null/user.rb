@@ -55,6 +55,10 @@ module Null::User
     "https://ui-avatars.com/api/?#{params.to_a.map{|p| p.join('=')}.join('&')}"
   end
 
+  def default_format
+    "html"
+  end
+  
   def short_bio_format
     "html"
   end
