@@ -2089,6 +2089,7 @@ en:
     success: Successfully deleted
 
   poll_common_form:
+    option_has_votes_confirm_delete: Some people have voted for this option, are you sure you want to delete it?
     example_title: Example title
     example_title_hint: Give an example of a good proposal title
     example_details_placeholder: Provide a starting point for a proposal or poll. Questions can be useful prompts to get people writing. Include any rules or reminders that participants will need to know.

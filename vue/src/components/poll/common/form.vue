@@ -12,6 +12,7 @@ import PollCommonWipField from '@/components/poll/common/wip_field'
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel'
 import { HandleDirective } from 'vue-slicksort';
 import { isSameYear, startOfHour, setHours }  from 'date-fns'
+import I18n from '@/i18n'
 
 export default
   components: { PollCommonWipField, PollTemplateInfoPanel }
@@ -84,10 +85,13 @@ export default
       @visiblePollOptions.forEach (o) -> o.priority = i++
 
     removeOption: (option) ->
+      if @optionHasVotes(option)
+        return if !confirm(I18n.t("poll_common_form.option_has_votes_confirm_delete"))
+
       @newOption = null
       if option.id
-        option.name = null
-        option.meaning = null
+        option.name = ''
+        option.meaning = ''
         option['_destroy'] = 1
       else
         @pollOptions = without(@pollOptions, option)
@@ -241,13 +245,19 @@ export default
   template(v-if="hasOptions")
     .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
     v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
-    sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
+    sortable-list(
+      v-model="pollOptions" 
+      append-to=".app-is-booted" 
+      use-drag-handle 
+      lock-axis="y"
+      v-if="pollOptions.length"
+    )
       sortable-item(
         v-for="(option, priority) in visiblePollOptions"
         :index="priority"
         :key="option.name"
         :item="option"
-        v-if="pollOptions.length"
+        v-if="!option._destroy"
       )
         v-sheet.mb-2.rounded(outlined)
           v-list-item(style="user-select: none")
@@ -265,11 +275,9 @@ export default
 
             v-list-item-action
               v-btn(
-                v-if="!optionHasVotes(option)"
                 icon
                 @click="removeOption(option)"
                 :title="$t('common.action.delete')"
-                :disabled="optionHasVotes(option)"
               )
                 v-icon.text--secondary mdi-delete
             v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
