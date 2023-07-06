@@ -2056,6 +2056,7 @@ fr:
     process_subtitle_hint: Une description d'une ligne indiquant quand ou pourquoi utiliser ce modèle
     process_introduction: Aide sur les modèles
     process_introduction_hint: Quelques paragraphes qui expliquent comment utiliser le modèle. Inclure des liens vers des ressources qui pourraient être utiles.
+    option_has_votes_confirm_delete: Certaines personnes ont voté pour cette option, êtes-vous sûr de vouloir la supprimer ?
   poll_proposal_form:
     tool_tip_collapsed: Prendre une décision ensemble
     vote_method_hint: Les électeurs sont d’accord ou en désaccord avec une déclaration

@@ -1921,6 +1921,7 @@ hu:
     process_subtitle_hint: Egysoros leírás arról, hogy mikor és miért érdemes használni ezt a sablont
     process_introduction: Sablon súgó
     process_introduction_hint: Néhány bekezdés, amely elmagyarázza a sablon használatát. Adjon meg hivatkozásokat olyan forrásokhoz, amelyek hasznosak lehetnek.
+    option_has_votes_confirm_delete: Néhányan erre a lehetőségre szavaztak. Biztosan törli?
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése

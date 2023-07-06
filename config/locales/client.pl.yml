@@ -1982,6 +1982,7 @@ pl:
     process_subtitle_hint: Jednowierszowy opis, kiedy i dlaczego używać tego szablonu
     process_introduction: Pomoc dotycząca szablonu
     process_introduction_hint: Kilka akapitów, które wyjaśniają, jak korzystać z szablonu. Dołącz linki do zasobów, które mogą być pomocne.
+    option_has_votes_confirm_delete: Niektóre osoby głosowały za tą opcją, czy na pewno chcesz ją usunąć?
   poll_proposal_form:
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję

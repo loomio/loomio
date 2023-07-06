@@ -1965,6 +1965,7 @@ nl_NL:
     process_subtitle_hint: Een beschrijving in één regel van wanneer en waarom deze sjabloon moet worden gebruikt
     process_introduction: Sjabloon hulp
     process_introduction_hint: Een paar alinea's waarin wordt uitgelegd hoe u de sjabloon gebruikt. Voeg links toe naar bronnen die nuttig kunnen zijn.
+    option_has_votes_confirm_delete: Sommige mensen hebben op deze optie gestemd, weet je zeker dat je deze wilt verwijderen?
   poll_proposal_form:
     start_header: "'Voorstel' starten"
     edit_header: Voorstel bewerken

@@ -1950,6 +1950,7 @@ ar:
     process_subtitle_hint: وصف من سطر واحد لوقت أو سبب استخدام هذا النموذج
     process_introduction: تعليمات النموذج
     process_introduction_hint: بضع فقرات تشرح كيفية استخدام النموذج. قم بتضمين روابط إلى الموارد التي قد تكون مفيدة.
+    option_has_votes_confirm_delete: صوّت بعض الأشخاص لهذا الخيار ، هل أنت متأكد أنك تريد حذفه؟
   poll_proposal_form:
     start_header: بدء الاقتراح
     edit_header: تحرير الاقتراح

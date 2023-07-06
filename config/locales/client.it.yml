@@ -1999,6 +1999,7 @@ it:
     process_subtitle_hint: Una descrizione di una riga di quando o perché utilizzare questo modello
     process_introduction: Aiuto modello
     process_introduction_hint: Alcuni paragrafi che spiegano come utilizzare il modello. Includere collegamenti a risorse che potrebbero essere utili.
+    option_has_votes_confirm_delete: Alcune persone hanno votato per questa opzione, sei sicuro di volerla eliminare?
   poll_proposal_form:
     start_header: Lancia proposta
     edit_header: Aggiorna proposta
