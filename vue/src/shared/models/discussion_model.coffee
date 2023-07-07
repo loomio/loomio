@@ -130,7 +130,7 @@ export default class DiscussionModel extends BaseModel
     @author().nameWithTitle(@group())
 
   isBlank: ->
-    @discussion == '' or @discussion == null or @discussion == '<p></p>'
+    @description == '' or @description == null or @description == '<p></p>'
 
   groupName: ->
     (@group() || {}).name
@@ -163,9 +163,6 @@ export default class DiscussionModel extends BaseModel
   hasUnreadActivity: ->
     @isUnread() && @unreadItemsCount() > 0
 
-  hasDescription: ->
-    !!@description
-
   membership: ->
     @recordStore.memberships.find(userId: AppConfig.currentUserId, groupId: @groupId)[0]
 
@@ -184,12 +181,12 @@ export default class DiscussionModel extends BaseModel
     @volume() == 'mute'
 
   markAsSeen: ->
-    return unless @discussionReaderId and !@lastReadAt
+    return if @lastReadAt
     @remote.patchMember @keyOrId(), 'mark_as_seen'
     @update(lastReadAt: new Date)
 
   markAsRead: (id) ->
-    return if !@discussionReaderId or @hasRead(id)
+    return if @hasRead(id)
     @readRanges.push([id,id])
     @readRanges = RangeSet.reduce(@readRanges)
     @updateReadRanges()
