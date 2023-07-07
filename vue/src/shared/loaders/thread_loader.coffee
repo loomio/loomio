@@ -79,59 +79,20 @@ export default class ThreadLoader
 
   autoLoadAfter: (obj) ->
     if (!@discussion.newestFirst && obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
-      # @loadAfter(obj.event, obj.missingAfterCount)
       @loadAfter(obj.event)
 
   loadAfter: (event) ->
-    # @addLoadAfterRule(event, limit)
     @addLoadAfterRule(event)
     @fetch()
 
   autoLoadBefore: (obj) ->
     if (@discussion.newestFirst && obj.event.depth == 1) || (obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore)
-      # @loadBefore(obj.event, obj.missingEarlierCount)
       @loadBefore(obj.event)
 
   loadBefore: (event) ->
     @loading = 'before'+event.id
-    # @addLoadBeforeRule(event, limit)
     @addLoadBeforeRule(event)
     @fetch()
-
-  # autoLoadChildren: (obj) ->
-  #   if obj.missingChildCount && (obj.missingChildCount < @maxAutoLoadMore)
-  #     @loadChildren(obj.event)
-  #
-  # loadChildren: (event) ->
-  #   @loading = 'children'+event.id
-  #   if event.kind == "new_discussion"
-  #     @addRuleAndFetch
-  #       name: "load discussion children"
-  #       local:
-  #         find:
-  #           discussionId: @discussion.id
-  #         simplesort: 'id'
-  #         limit: @padding
-  #       remote:
-  #         discussion_id: @discussion.id
-  #         order_by: 'position_key'
-  #         per: @padding
-  #   else
-  #     @addLoadAfterRule(event)
-  #     # @addRuleAndFetch
-  #     #   name: "load children (prefix #{event.positionKey})"
-  #     #   local:
-  #     #     find:
-  #     #       discussionId: @discussion.id
-  #     #       positionKey: {'$regex': "^#{event.positionKey}"}
-  #     #     simplesort: 'positionKey'
-  #     #     limit: @padding
-  #     #   remote:
-  #     #     discussion_id: @discussion.id
-  #     #     position_key_sw: event.positionKey
-  #     #     depth_gt: event.depth
-  #     #     order_by: 'position_key'
-  #     #     per: @padding
 
   addLoadAfterRule: (event) ->
     @addRule
