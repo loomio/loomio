@@ -150,7 +150,6 @@ export default
 
       @loader.fetch().finally =>
         setTimeout => @scrollToFocusUnlessFocused()
-
       .catch (res) =>
         console.log 'promises failed', res
 

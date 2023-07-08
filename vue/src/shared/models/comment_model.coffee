@@ -54,9 +54,6 @@ export default class CommentModel extends BaseModel
   isBlank: ->
     @body == '' or @body == null or @body == '<p></p>'
 
-  hasDescription: ->
-    !!@body
-
   parent: ->
     @recordStore[@recordStore.eventTypeMap[@parentType]].find(@parentId)
 

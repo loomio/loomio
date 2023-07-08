@@ -252,9 +252,6 @@ export default class PollModel extends BaseModel
       castAt: {$ne: null}
     ).data()
 
-  hasDescription: ->
-    !!@details
-
   isVotable: ->
     !@discardedAt && @closingAt && !@closedAt?
 

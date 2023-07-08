@@ -28,7 +28,6 @@ export default
     :label="$t(label)"
     :placeholder="prompt || poll.reasonPrompt || $t('poll_common.reason_placeholder')"
     :max-length='maxLength'
-    autofocus
   )
   validation-errors(:subject="stance" field="reason")
 
