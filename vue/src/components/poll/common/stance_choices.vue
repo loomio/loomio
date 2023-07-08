@@ -24,16 +24,14 @@ export default
 </script>
 
 <template lang="pug">
-.poll-common-stance-choices.pl-2(v-if="poll.pollType != 'question' && !poll.singleChoice()")
+.poll-common-stance-choices.pb-2(v-if="poll.pollType != 'question' && !poll.singleChoice()")
   span.caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
   template(v-else)
     template(v-if="!datesAsOptions")
-      v-chip.poll-common-stance-choice(
+      .poll-common-stance-choice.text-truncate(
         v-for="choice in choices"
         v-if="choice.score > 0 || pollType == 'score'"
         :key="choice.id"
-        outlined
-        style="display: inline-block"
         :class="'poll-common-stance-choice--' + pollType")
         v-icon(small :color="choice.pollOption.color" v-if="!variableScore") mdi-check
         span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
@@ -42,12 +40,7 @@ export default
 </template>
 <style lang="sass">
 .poll-common-stance-choices
-  position: relative
-  max-height: 64px
   overflow: hidden
 
-.poll-common-stance-choices:hover
-  max-height: none
-  overflow: show
 </style>
 

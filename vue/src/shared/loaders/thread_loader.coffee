@@ -21,13 +21,13 @@ export default class ThreadLoader
     @collapsed = Vue.observable({})
     @loading = false
     @padding = 50
-    @maxAutoLoadMore = 5
+    @maxAutoLoadMore = 50
 
   firstUnreadSequenceId: ->
     (RangeSet.subtractRanges(@discussion.ranges, @readRanges)[0] || [])[0]
 
   setVisible: (isVisible, event) ->
-    event.markAsRead() unless @visibleKeys.hasOwnProperty(event.positionKey)
+    event.markAsRead() if isVisible
     @visibleKeys[event.positionKey] = isVisible
     EventBus.$emit('visibleKeys', Object.keys(@visibleKeys).filter((key) => @visibleKeys[key]).sort())
 
@@ -81,6 +81,10 @@ export default class ThreadLoader
     if (!@discussion.newestFirst && obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
       @loadAfter(obj.event)
 
+  loadChildren: (event) ->
+    @addLoadChildrenRule(event)
+    @fetch()
+
   loadAfter: (event) ->
     @addLoadAfterRule(event)
     @fetch()
@@ -124,6 +128,23 @@ export default class ThreadLoader
       remote:
         discussion_id: @discussion.id
         position_key_lt: event.positionKey
+        order_by: 'position_key'
+        order_desc: 1
+        per: @padding
+
+  addLoadChildrenRule: (event) ->
+    @addRule
+      name: "load children #{event.positionKey}"
+      local:
+        find:
+          discussionId: @discussion.id
+          parentId: event.id
+        simplesort: 'positionKey'
+        simplesortDesc: true
+        limit: @padding
+      remote:
+        discussion_id: @discussion.id
+        parent_id: event.id
         order_by: 'position_key'
         order_desc: 1
         per: @padding
