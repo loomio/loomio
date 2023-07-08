@@ -153,8 +153,7 @@ export default class DiscussionModel extends BaseModel
     head @activePolls()
 
   isUnread: ->
-    !@isDismissed() and
-    @discussionReaderId? and (!@lastReadAt? or @unreadItemsCount() > 0)
+    !@isDismissed() and (!@lastReadAt? or @unreadItemsCount() > 0)
 
   isDismissed: ->
     @discussionReaderId? and @dismissedAt? and
