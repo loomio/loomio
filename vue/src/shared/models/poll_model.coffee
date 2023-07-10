@@ -297,6 +297,9 @@ export default class PollModel extends BaseModel
   singleChoice: ->
     @defaulted('minimumStanceChoices') == @defaulted('maximumStanceChoices') == 1
 
+  hasOptionIcon: -> 
+    @config().has_option_icon
+
   datesAsOptions: ->
     @pollOptionNameFormat == 'iso8601'
 

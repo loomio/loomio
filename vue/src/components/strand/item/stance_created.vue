@@ -29,21 +29,23 @@ export default
 
 section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id", :event="event")
   template(v-if="eventable.castAt")
-    template(v-if="eventable.singleChoice()")
+    template(v-if="eventable.hasOptionIcon()")
       .d-flex
         component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
+        space
         space
         poll-common-stance-choice(v-if="poll.showResults()", :poll="poll", :stance-choice="eventable.stanceChoice()")
         space
         router-link.text--secondary(:to='link')
+          space
           time-ago(:date='eventable.updatedAt || eventable.castAt')
         template(v-if="!eventable.latest")
           mid-dot.text--secondary
           span.text--secondary(v-t="'poll_common.superseded'")
     .poll-common-stance(v-if="poll.showResults() && !collapsed")
-      v-layout(v-if="!eventable.singleChoice()" wrap align-center)
+      v-layout(v-if="!eventable.hasOptionIcon()" wrap align-center)
         strand-item-headline.text--secondary(:event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt")
-        poll-common-stance-choices(:stance="eventable")
+      poll-common-stance-choices(:stance="eventable")
       formatted-text.poll-common-stance-created__reason(:model="eventable", column="reason")
       link-previews(:model="eventable")
       attachment-list(:attachments="eventable.attachments")
