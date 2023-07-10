@@ -8,22 +8,27 @@ export default
     poll: Object
 
   data: ->
-    closingHour: format(@poll.closingAt || startOfHour(new Date()), timeFormat())
+    closingHour: format(@poll.closingAt || startOfHour(new Date()), 'HH:mm')
     closingDate: format(@poll.closingAt || new Date(), 'yyyy-MM-dd')
     dateToday: format(new Date, 'yyyy-MM-dd')
     times: hoursOfDay()
     timeZone: AppConfig.timeZone
     isShowingDatePicker: false
-    validDate: => isValid(parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd #{timeFormat()}", new Date()))
+    validDate: => isValid(parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd HH:mm", new Date()))
 
   methods:
     exact: exact
     updateClosingAt: ->
-      date = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd #{timeFormat()}", new Date())
+      date = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd HH:mm", new Date())
       if isValid(date)
         @poll.closingAt = date
 
   computed:
+    twelvehour: -> timeFormat() != 'HH:mm'
+
+    closingAtHint: ->
+      format(@poll.closingAt, timeFormat())
+
     label: ->
       return false unless @poll.closingAt
       formatDistance(@poll.closingAt, new Date, {addSuffix: true})
@@ -32,7 +37,7 @@ export default
   watch:
     'poll.closingAt': (val) ->
       return unless val
-      @closingHour = format(val, timeFormat())
+      @closingHour = format(val, 'HH:mm')
       @closingDate = format(val, 'yyyy-MM-dd')
 
     closingDate: (val) ->
@@ -80,6 +85,8 @@ div
           v-model='closingHour'
           :label="$t('poll_meeting_time_field.closing_hour')"
           :items="times"
+          :hint="twelvehour ? closingAtHint : null"
+          :persistent-hint="twelvehour"
         )
     validation-errors(:subject="poll", field="closingAt")
 

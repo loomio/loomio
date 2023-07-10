@@ -2216,6 +2216,7 @@ en:
     time_slot_added: Time slot added
     time_slot_already_added: Time slot already added
     participants_see_local_times: Pariticpants will see times localized to their time zone
+    use_24_hour_format: Error! Use 24 hour format e.g. %{time}
 
   poll_ranked_choice_form:
     no_options: "You haven't added any options yet."
