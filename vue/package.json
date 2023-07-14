@@ -22,7 +22,7 @@
   "dependencies": {
     "@sentry/browser": "^7.55.2",
     "@sentry/tracing": "^7.57.0",
-    "@sentry/vue": "^7.57.0",
+    "@sentry/vue": "^7.58.1",
     "@tiptap/core": "2.0.0-beta.220",
     "@tiptap/extension-blockquote": "2.0.0-beta.220",
     "@tiptap/extension-bold": "2.0.0-beta.220",
