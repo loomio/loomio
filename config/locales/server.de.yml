@@ -1,3 +1,4 @@
+---
 de:
   explore:
     header: Öffentliche Gruppen erkunden
@@ -7,7 +8,7 @@ de:
         blank: Darf nicht leer sein
         invalid: ist kein gültiger Wert
   errors:
-    clear_cache: "Ladeproblem erkannt. Halte die Umschalttaste gedrückt und drücke \"Neu laden\", oder leere den Browser-Cache."
+    clear_cache: Ladeproblem erkannt. Halte die Umschalttaste gedrückt und drücke "Neu laden", oder leere den Browser-Cache.
     400:
       title: Ungültige Anforderung
       body: Sorry, wir konnten diese Anfrage nicht verstehen
@@ -25,8 +26,9 @@ de:
       body: Diese Seite existiert nicht mehr
     417:
       title: Browser inkompatibel
-      body: |
-          Bitte <a href="https://browser-update.org/update.html?force_outdated=true">aktualisiere deinen Browser, </a>um Loomio zu benutzen
+      body: 'Bitte <a href="https://browser-update.org/update.html?force_outdated=true">aktualisiere deinen Browser, </a>um Loomio zu benutzen
+
+        '
     422:
       title: Unverarbeitbare Entität
       body: Die von dir gewünschte Änderung wurde abgelehnt. Vielleicht hast du versucht, etwas zu ändern, auf das du keinen Zugriff hatten.
@@ -37,8 +39,9 @@ de:
       title: Interner Serverfehler
       body: Es tut uns leid, aber es ist etwas schief gelaufen. Wir wurden über dieses Problem benachrichtigt und werden es uns in Kürze ansehen.
     noscript: Loomio benötigt Javascript zum funktionieren! Bitte aktiviere Javascript in deinem  Browser um fortzufahren
-    upgrade_browser: |
-        Oje! Dein Webbrowser ist zu alt und Loomio funktioniert möglicherweise nicht richtig. Bitte <a href="https://browser-update.org/update.html">aktualisiere deinen Browser.</a>
+    upgrade_browser: 'Oje! Dein Webbrowser ist zu alt und Loomio funktioniert möglicherweise nicht richtig. Bitte <a href="https://browser-update.org/update.html">aktualisiere deinen Browser.</a>
+
+      '
     return_home: zurück zu Home
     not_found: 404 Datei wurde nicht gefunden.
     messages:
@@ -46,8 +49,8 @@ de:
       spoofed_media_type: Der Inhalt der Datei stimmt nicht mit dem Dateinamen überein
   group:
     error:
-      handle_must_begin_with_parent_handle: "Muss beginnen mit %{parent_handle}-"
-      no_public_trials: "Bitte führe ein Upgrade von der Testversion durch, um die Datenschutzeinstellung der Gruppe zu ändern"
+      handle_must_begin_with_parent_handle: Muss beginnen mit %{parent_handle}-
+      no_public_trials: Bitte führe ein Upgrade von der Testversion durch, um die Datenschutzeinstellung der Gruppe zu ändern
     stats:
       group_stats: Gruppen-Statistik
       org_stats: Organisationsstatistiken (einschließlich Untergruppen)
@@ -68,20 +71,22 @@ de:
         rank: Rang
         time: Terminfindung
   user:
-    deleted_user: "gelöschter Nutzer"
-    placeholder_name: "eingeladener Nutzer (%{hostname})"
+    deleted_user: gelöschter Nutzer
+    placeholder_name: eingeladener Nutzer (%{hostname})
     error:
       sign_in_required_html: |
-          Du musst angemeldet sein, um fortfahren zu können.
-          Bitte <a href="/dashboard" target="_blank">melde dich an</a>, dann lade diese Seite neu, um fortzufahren.
-      recaptcha: "Wir konnten leider nicht bestätigen, dass du kein Computer bist. Bitte versuche es erneut."
-      bad_login: "Sorry, das Passwort passt nicht zu dem in unserer Datei."
-      username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
+        Du musst angemeldet sein, um fortfahren zu können.
+        Bitte <a href="/dashboard" target="_blank">melde dich an</a>, dann lade diese Seite neu, um fortzufahren.
+      recaptcha: Wir konnten leider nicht bestätigen, dass du kein Computer bist. Bitte versuche es erneut.
+      bad_login: Sorry, das Passwort passt nicht zu dem in unserer Datei.
+      username_must_be_alphanumeric: Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen
   poll:
     error:
       cannot_add_options: Es können keine Optionen zu dieser Umfrage hinzugefügt werden.
       cannot_remove_options: Es können keine Optionen von dieser Umfrage entfernt werden.
       must_have_options: Es muss mindestens eine Option in dieser Umfrage geben
+      must_be_in_the_future: Muss in der Zukunft liegen
+      templates_cannot_close: Vorlagen können nicht geschlossen werden
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) Mitglieder haben ihre Position angegeben."
       title: Titel
@@ -106,7 +111,7 @@ de:
       participant: Teilnehmer
       also_available: Auch verfügbar in
       total: Gesamt
-    waiting_for_votes_from: "Warten auf Stimmen von"
+    waiting_for_votes_from: Warten auf Stimmen von
   stance:
     error:
       too_short: Bitte triff eine Auswahl
@@ -117,44 +122,45 @@ de:
     active: Aktiv
     inactive: Inaktiv
   base_mailer:
-    via_loomio: '%{name} (über %{site_name})'
+    via_loomio: "%{name} (über %{site_name})"
   user_mailer:
     group_export_ready:
       subject: Daten für Gruppe %{group_name} exportieren
-      body_html: |
-          Daten für deine Gruppe können <a href="%{url}">hier</a> heruntergeladen werden. Bitte beachte, dass dieser link in einer Woche abläuft.
+      body_html: 'Daten für deine Gruppe können <a href="%{url}">hier</a> heruntergeladen werden. Bitte beachte, dass dieser link in einer Woche abläuft.
+
+        '
     deactivated:
-      subject: "Dein %{site_name} Benutzerkonto wurde deaktiviert."
+      subject: Dein %{site_name} Benutzerkonto wurde deaktiviert.
       body_html: |
-          <p>Du (oder eine andere Person mit Zugriff auf Deinen Account) hast Dein Lomio-Benutzerkonto deaktiviert.</p>
-          <p>Alle persönlichen Daten wurden gelöscht.</p>
-          <p>Wenn Du dieses Benutzerkonto und die zugehörigen Benutzerkommentare wiederherstellen möchtest, kontaktiere bitte den Support unter Verwendung der nachfolgenden Referenz: %{recovery_code}</p>
+        <p>Du (oder eine andere Person mit Zugriff auf Deinen Account) hast Dein Lomio-Benutzerkonto deaktiviert.</p>
+        <p>Alle persönlichen Daten wurden gelöscht.</p>
+        <p>Wenn Du dieses Benutzerkonto und die zugehörigen Benutzerkommentare wiederherstellen möchtest, kontaktiere bitte den Support unter Verwendung der nachfolgenden Referenz: %{recovery_code}</p>
     accounts_merged:
-      subject: "Deine %{site_name} Benutzerkonten wurden zusammengeführt."
+      subject: Deine %{site_name} Benutzerkonten wurden zusammengeführt.
       body_html: |
-          Hallo %{name},
-          Deine zwei Loomio-Konten wurden zu einem gemacht.
-          Um nun auf Loomio zugreifen zu können, bitte nutze <strong>%{email}</strong> beim Einloggen.
+        Hallo %{name},
+        Deine zwei Loomio-Konten wurden zu einem gemacht.
+        Um nun auf Loomio zugreifen zu können, bitte nutze <strong>%{email}</strong> beim Einloggen.
     merge_verification:
-      subject: "Überprüfe deine %{site_name} E-Mail-Adresse zum Zusammenführen"
+      subject: Überprüfe deine %{site_name} E-Mail-Adresse zum Zusammenführen
       body_html: |
-          <p>Hallo%{name},</p>
-          <p>es wurde eine Anfrage zur Zusammenführung deines Benutzerkontos unter der Adresse<strong>%{source_email}</strong> mit dem zu dieser Adresse gehörenden Konto <strong>%{target_email}</strong>.</p>
-          <p>Nachdem dieser Vorgang abgeschlossen ist, kannst du nicht mehr mit <strong>%{source_email}</strong>und nur mit <strong>%{target_email}</strong>.</p>
-          <p>Bitte bestätige, dass du dies machen möchtest.</p>
+        <p>Hallo%{name},</p>
+        <p>es wurde eine Anfrage zur Zusammenführung deines Benutzerkontos unter der Adresse<strong>%{source_email}</strong> mit dem zu dieser Adresse gehörenden Konto <strong>%{target_email}</strong>.</p>
+        <p>Nachdem dieser Vorgang abgeschlossen ist, kannst du nicht mehr mit <strong>%{source_email}</strong>und nur mit <strong>%{target_email}</strong>.</p>
+        <p>Bitte bestätige, dass du dies machen möchtest.</p>
       verify: E-Mail verifizieren und fortfahren
       confirm_page:
         confirm: Bestätige die Zusammenführung
         body_html: |
-            <p>Bitte bestätige, dass du das Konto zusammenführen möchtest unter <strong>%{source_email}</strong> auf das Konto unter <strong>%{target_email}</strong>.</p>
-            <p>Dein Account unter <strong>%{source_email}</strong> wird gelöscht, und du kannst dich danach nur noch über <strong>%{target_email}</strong>.</p>
-            <p>Diese Veränderung ist unumkehrbar.</p>
+          <p>Bitte bestätige, dass du das Konto zusammenführen möchtest unter <strong>%{source_email}</strong> auf das Konto unter <strong>%{target_email}</strong>.</p>
+          <p>Dein Account unter <strong>%{source_email}</strong> wird gelöscht, und du kannst dich danach nur noch über <strong>%{target_email}</strong>.</p>
+          <p>Diese Veränderung ist unumkehrbar.</p>
         merge: Benutzerkonten zusammenführen
       complete_page:
         title: Zusammenführung erfolgreich!
         body_html: |+
-            <p>Die Zusammenführung deiner Benutzerkonten war erfolgreich. Du erhälst eine Bestätigungs-E-Mail an <strong>%{target_email}</strong> in Kürze.</p>
-            <p>Bitte <a href="/contact" target="_blank">kontaktiere uns </a> wenn du weitere Fragen hast.</p>
+          <p>Die Zusammenführung deiner Benutzerkonten war erfolgreich. Du erhälst eine Bestätigungs-E-Mail an <strong>%{target_email}</strong> in Kürze.</p>
+          <p>Bitte <a href="/contact" target="_blank">kontaktiere uns </a> wenn du weitere Fragen hast.</p>
 
 
   email:
@@ -164,23 +170,25 @@ de:
     login:
       subject: Bei %{site_name}anmelden
       login: Als %{name} einloggen
+      intro: Dies ist Ihr Link, um sich bei %{site_name} anzumelden
+      intro_code: Dies ist Ihr Code zum Anmelden bei %{site_name}
     reactivate:
       subject: Dein %{site_name} Konto wieder aktivieren
       intro: Hi %{name}, Hier ist ein Link, um deinen %{site_name}-Account zu reaktivieren
-      login: '%{name}reaktivieren'
+      login: "%{name}reaktivieren"
     contact_request:
       subject: "%{name} möchte sich mit dir auf %{site_name} verbinden!"
       intro: "%{name} (%{email})  hat dir eine Verbindungsanfrage gesendet."
-      footer: "Du kannst %{name} direkt antworten, indem du auf diese E-Mail antwortest."
+      footer: Du kannst %{name} direkt antworten, indem du auf diese E-Mail antwortest.
     reset_password:
       greeting: |
-          Hallo %{name}
-          hier ist ein Link mit dem du dein Passwort für dein Loomio-Konto zurücksetzen kannst:
+        Hallo %{name}
+        hier ist ein Link mit dem du dein Passwort für dein Loomio-Konto zurücksetzen kannst:
       link_text: Dein Passwort zurücksetzen
       signoff: |
-          Du hast diese Mail erhalten, weil deine E-Mail-Adresse in das "Passwort vergessen"-Formular auf %{hostname} eingegeben wurde.
-          Dein Passwort wird nicht verändert, solange du nicht diesem Link folgst und das entsprechende Formular vervollständigst.
-          Solltest du weiterhin Probleme beim Einloggen haben, dann antworte auf diese E-Mail um mit jemandem von unserem Support Kontakt aufzunehmen - auf Englisch bitte.
+        Du hast diese Mail erhalten, weil deine E-Mail-Adresse in das "Passwort vergessen"-Formular auf %{hostname} eingegeben wurde.
+        Dein Passwort wird nicht verändert, solange du nicht diesem Link folgst und das entsprechende Formular vervollständigst.
+        Solltest du weiterhin Probleme beim Einloggen haben, dann antworte auf diese E-Mail um mit jemandem von unserem Support Kontakt aufzunehmen - auf Englisch bitte.
     by_who: von %{person}
     reply_to_this_discussion: Direkt auf diese Diskussion antworten
     loomio_app_description: "%{site_name} ist ein Entscheidungstool für kollaborative Organisationen"
@@ -188,17 +196,17 @@ de:
     to_join_group:
       subject: "%{member} hat dich eingeladen %{group_name} auf %{site_name} beizutreten"
       invitation_text: "%{member} hat dich eingeladen, der Gruppe %{group_name} beizutreten."
-      invitation_text_html: "hat dich eingeladen, ihrer/seiner Gruppe beizutreten"
-      link_help: "Klicke auf den unteren Link, um die Einladung anzunehmen:"
-      accept_invitation: "Einladung annehmen"
-      stop_emails: "Keine E-Mails mehr erhalten von %{site_name}"
+      invitation_text_html: hat dich eingeladen, ihrer/seiner Gruppe beizutreten
+      link_help: 'Klicke auf den unteren Link, um die Einladung anzunehmen:'
+      accept_invitation: Einladung annehmen
+      stop_emails: Keine E-Mails mehr erhalten von %{site_name}
     resend_to_join_group:
       subject: "%{member} wartet darauf, dass du %{group_name} auf %{site_name} beitrittst"
     user_added_to_group:
       subject: "%{who} hat dich zu %{which_group} auf %{site_name} hinzugefügt"
       content: "%{who} hat dich zu %{which_group} hinzugefügt."
       content_html: "<strong>%{who}</strong> hat dich zu <strong>%{which_group}</strong> hinzugefügt."
-      link_help: "Klicke auf den untenstehenden Link, um der Gruppe zu betreten:"
+      link_help: 'Klicke auf den untenstehenden Link, um der Gruppe zu betreten:'
     unsubscribe: 'Benachrichtigungen deaktivieren oder E-Mail-Einstellungen ändern:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, um Benachrichtigungen zu deaktivieren oder um deine E-Mail-Einstellungen zu ändern."
     catch_up:
@@ -211,11 +219,11 @@ de:
       marked_as_read_success: Alles aus der E-Mail wurde als gelesen markiert
       click_here: Hier klicken
     group_membership_approved:
-      intro: "Deine Anfrage der Gruppe %{group_name} beizutreten wurde angenommen."
-      intro_html: "Deine Anfrage der Gruppe <strong>%{group_name}</strong> beizutreten wurde angenommen."
-      link_help: "Klicke auf den untenstehenden Link, um der Gruppe %{group_name} beizutreten und loszulegen:"
-      subject: "Deine Anfrage der Gruppe %{group_name} beizutreten wurde bestätigt"
-      join_group: "Gruppe beitreten"
+      intro: Deine Anfrage der Gruppe %{group_name} beizutreten wurde angenommen.
+      intro_html: Deine Anfrage der Gruppe <strong>%{group_name}</strong> beizutreten wurde angenommen.
+      link_help: 'Klicke auf den untenstehenden Link, um der Gruppe %{group_name} beizutreten und loszulegen:'
+      subject: Deine Anfrage der Gruppe %{group_name} beizutreten wurde bestätigt
+      join_group: Gruppe beitreten
     membership_request:
       intro_html: hat um Aufnahme in eine deiner Gruppen gebeten.
       subject: "%{who} bittet darum %{which_group} beitreten zu dürfen."
@@ -225,13 +233,13 @@ de:
   email_actions:
     unfollowed_discussion: Du hast E-Mail-Benachrichtigungen für diese Diskussion deaktiviert.
   discussion_mailer:
-    reply_or_view_online_html: "Entweder direkt auf diese E-Mail antworten oder <a href='%{url}'>auf %{hostname} antworten</a>."
+    reply_or_view_online_html: Entweder direkt auf diese E-Mail antworten oder <a href='%{url}'>auf %{hostname} antworten</a>.
     turn_off_notifications_html: "<a href='%{url}'>E-Mail-Benachrichtigungen</a> für diese Diskussion deaktivieren."
     change_email_preferences_html: "<a href='%{email_preferences_url}'>E-Mail-Einstellungen</a> ändern."
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Abbestellen </a> von weiteren Ankündigungen in diesem Thread."
-    unsubscribe_from_new_comment_html: "Kommentare für diese Diskussion <a href='%{url}'>abbestellen</a>."
-    unsubscribe_from_comment_replied_to_html: "Dies ist eine Antwortbenachrichtigung."
-    unsubscribe_from_user_mentioned_html: "Dies ist eine Erwähnungsbenachrichtigung."
+    unsubscribe_from_new_comment_html: Kommentare für diese Diskussion <a href='%{url}'>abbestellen</a>.
+    unsubscribe_from_comment_replied_to_html: Dies ist eine Antwortbenachrichtigung.
+    unsubscribe_from_user_mentioned_html: Dies ist eine Erwähnungsbenachrichtigung.
   footer:
     about: Über Loomio
     blog: Blog
@@ -248,80 +256,82 @@ de:
     confirm_new_password: Passwort bestätigen
     new_password: Neues Passwort
     email_guidelines_html: |
-        <p> gib eine E-Mail-Adresse ein, an die der Link zum Zurücksetzen deines Passworts zugeschickt werden kann.</p>
-        <p>Wenn du dich via Facebook oder Google anmeldest, gib die E-Mail-Adresse ein die mit diesen Konto verknüpft ist.</p>
+      <p> gib eine E-Mail-Adresse ein, an die der Link zum Zurücksetzen deines Passworts zugeschickt werden kann.</p>
+      <p>Wenn du dich via Facebook oder Google anmeldest, gib die E-Mail-Adresse ein die mit diesen Konto verknüpft ist.</p>
     reset_email_timeframe: Es wird bis zu 5 Minuten dauern, bis die E-Mail ankommt. Bitte prüfe gegebenenfalls auch deinen Spam-Ordner.
     length_restriction: Passwörter müssen mindestens 8 Zeichen enthalten.
     forbidden_passwords: Um Dein Konto sicher zu gestalten, sind einfache Passwörter, wie "passwort" und ähnliches verboten.
   introduction_thread:
     title: Willkommen! Bitte stelle dich kurz vor
     description: |
-        Nimm dir einen Augenblick Zeit, um dich der Gruppe vorzustellen, indem du unten ein Kommentar postest.
+      Nimm dir einen Augenblick Zeit, um dich der Gruppe vorzustellen, indem du unten ein Kommentar postest.
 
-        Was ist zum Beispiel deine Rolle oder der Anlass für deine Teilnahme in dieser Gruppe? Was sollten die Menschen wissen, um zu verstehen, woher du kommst?
+      Was ist zum Beispiel deine Rolle oder der Anlass für deine Teilnahme in dieser Gruppe? Was sollten die Menschen wissen, um zu verstehen, woher du kommst?
   how_it_works_thread:
     title: Wie man Loomio benutzt
     description: |
-        Willkommen bei Loomio, einem Online-Ort für Kommunikation und Entscheidungsfindung.
+      Willkommen bei Loomio, einem Online-Ort für Kommunikation und Entscheidungsfindung.
 
-        Dies ist ein Beispiel für eine Diskussion **Thread**. Du kannst unten Kommentare hinzufügen. Threads sind dazu da, Themen zu diskutieren und klare Ergebnisse zu erzielen. In diesem Thread geht es darum, wie Loomio funktioniert, also stelle Fragen dazu hier.
+      Dies ist ein Beispiel für eine Diskussion **Thread**. Du kannst unten Kommentare hinzufügen. Threads sind dazu da, Themen zu diskutieren und klare Ergebnisse zu erzielen. In diesem Thread geht es darum, wie Loomio funktioniert, also stelle Fragen dazu hier.
 
-        Du liest gerade den Thread **Kontext**, der mit wichtigen Informationen und Fragen, die den Menschen helfen, sich zu engagieren, auf dem neuesten Stand gehalten werden kann.
+      Du liest gerade den Thread **Kontext**, der mit wichtigen Informationen und Fragen, die den Menschen helfen, sich zu engagieren, auf dem neuesten Stand gehalten werden kann.
 
-        So beginnst du mit Loomio:
-        <ul>
-        <li>Versuch, in einem bestehenden Thread zu kommentieren, oder in diesem.</li>
-        </ul>
-        Tipps für die Buchung auf Loomio:
-        <ul>
-        <li>Um eine bestimmte Person zu benachrichtigen, gib @ gefolgt von deinem Namen ein</li>
-        <li>Ziehe Bilder und Anhänge per Drag & Drop oder klick auf das Büroklammer-Symbol</li>
-        <li>Sieh <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 Möglichkeiten zur Verwendung von Fäden</a>für einige Ideen und Tipps</li>
-        </ul>
+      So beginnst du mit Loomio:
+      <ul>
+      <li>Versuch, in einem bestehenden Thread zu kommentieren, oder in diesem.</li>
+      </ul>
+      Tipps für die Buchung auf Loomio:
+      <ul>
+      <li>Um eine bestimmte Person zu benachrichtigen, gib @ gefolgt von deinem Namen ein</li>
+      <li>Ziehe Bilder und Anhänge per Drag & Drop oder klick auf das Büroklammer-Symbol</li>
+      <li>Sieh <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 Möglichkeiten zur Verwendung von Fäden</a>für einige Ideen und Tipps</li>
+      </ul>
 
-        Wenn du Fragen hast, siehe unter [Loomio-Hilfe](http://help.loomio.org) nach.
+      Wenn du Fragen hast, siehe unter [Loomio-Hilfe](http://help.loomio.org) nach.
   first_proposal:
     name: Hast du Fragen zur Verwendung von Loomio?
     description: |
-        _Wenn ja, stelle gern eine Frage. Wenn nein, dann kannst du die Beiträge in deiner Gruppe kommentieren._
+      _Wenn ja, stelle gern eine Frage. Wenn nein, dann kannst du die Beiträge in deiner Gruppe kommentieren._
 
-        Dieser **Check poll** fragt ab, ob du oder andere Teilnehmer Fragen zur Verwendung von Loomio haben.
+      Dieser **Check poll** fragt ab, ob du oder andere Teilnehmer Fragen zur Verwendung von Loomio haben.
 
-        <ul><li>Nimm einfach teil, indem du die unten angezeigten Schaltflächen bzw. Textfelder verwendest.</li></ul>
+      <ul><li>Nimm einfach teil, indem du die unten angezeigten Schaltflächen bzw. Textfelder verwendest.</li></ul>
 
-        Wie bei allen Abstimmungstools, musst du rechtzeitig antworten, bevor die Abstimmung schließt.
+      Wie bei allen Abstimmungstools, musst du rechtzeitig antworten, bevor die Abstimmung schließt.
 
-        Du kannst deine Entscheidung jederzeit ändern (und somit auf neue Informationen reagieren), solange die Abstimmung noch nicht geschlossen ist.
+      Du kannst deine Entscheidung jederzeit ändern (und somit auf neue Informationen reagieren), solange die Abstimmung noch nicht geschlossen ist.
 
-        **Probiere es aus! Klicke auf eine der Schaltflächen!**
+      **Probiere es aus! Klicke auf eine der Schaltflächen!**
   task_mailer:
     task_due_reminder:
-      subject: "Aufgabenerinnerung: %{name}"
-      greeting: "Hallo %{name}, die folgende Aufgabe %{due}ist fällig:"
-      view_task: "Ansehen auf %{site_name}"
-      update_or_comment: "Wenn du diese Aufgabe bereits erledigt hast, kreuze sie bitte an. Wenn es nicht vollständig ist, teile bitte ein Fortschritts-Update mit."
-      due_today: 'heute'
-      due_in_count_days: 'in %{count} Tagen'
+      subject: 'Aufgabenerinnerung: %{name}'
+      greeting: 'Hallo %{name}, die folgende Aufgabe %{due}ist fällig:'
+      view_task: Ansehen auf %{site_name}
+      update_or_comment: Wenn du diese Aufgabe bereits erledigt hast, kreuze sie bitte an. Wenn es nicht vollständig ist, teile bitte ein Fortschritts-Update mit.
+      due_today: heute
+      due_in_count_days: in %{count} Tagen
   group_mailer:
     resend: 'ERINNERUNG: %{member} wartet darauf, dass du %{group_name} beitrittst'
     destroy_warning:
       subject: Deine Loomio-Gruppe soll gelöscht werden.
       body: |
-          Deine Loomio-Gruppe: ''%{group}" wurde von %{deletor} zum Löschen vorgemerkt.
-          Wenn du nicht möchtest, dass deine Gruppe gelöscht wird, antworte bitte auf diese E-Mail.
-          Wenn du die Gruppe wirklich löschen möchtest, musst du nichts unternehmen.
-          Vielen Dank.
+        Deine Loomio-Gruppe: ''%{group}" wurde von %{deletor} zum Löschen vorgemerkt.
+        Wenn du nicht möchtest, dass deine Gruppe gelöscht wird, antworte bitte auf diese E-Mail.
+        Wenn du die Gruppe wirklich löschen möchtest, musst du nichts unternehmen.
+        Vielen Dank.
   poll_mailer:
     common:
       why_send_this: Du erhältst diese E-Mail weil %{reason}
       view_on_loomio: Direkt auf %{site_name} lesen
       create_outcome: Ergebnis bekanntgeben
-      your_response: "Deine Stimme:"
+      your_response: 'Deine Stimme:'
       please_respond: Bitte beteilige dich an der Abstimmung!
-      time_zone: (Zeitangaben in %{zone})
+      time_zone: "(Zeitangaben in %{zone})"
       undecided_members: Unentschlossene Mitglieder (%{count})
       undecided_visitors: Unentschlossene Gäste (%{count})
-      more_undecided: "Und %{count}mehr..."
+      more_undecided: Und %{count}mehr...
       vote_now: Jetzt Stimme abgeben
       you_have_until: Du kannst bis %{when} teilnehmen.
       people_have_voted: "%{nom} von %{dnom} Leuten haben gewählt (%{pct}%)"
+      you_voted: Du hast gewählt!
+      not_invited: Nicht eingeladen

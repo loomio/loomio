@@ -4,7 +4,6 @@ class PollSerializer < ApplicationSerializer
              :attachments,
              :agree_target,
              :author_id,
-             :anyone_can_participate,
              :anonymous,
              :can_respond_maybe,
              :chart_type,
@@ -26,8 +25,6 @@ class PollSerializer < ApplicationSerializer
              :link_previews,
              :mentioned_usernames,
              :notify_on_closing_soon,
-             :process_name,
-             :process_subtitle,
              :poll_type,
              :poll_option_names,
              :poll_option_name_format,
@@ -36,13 +33,11 @@ class PollSerializer < ApplicationSerializer
              :reason_prompt,
              :shuffle_options,
              :stance_counts,
-             :stances_in_discussion,
              :specified_voters_only,
              :secret_token,
-             :source_template_id,
-             :template,
              :total_score,
              :title,
+             :tags,
              :undecided_voters_count,
              :voter_can_add_options,
              :voters_count,
@@ -53,8 +48,7 @@ class PollSerializer < ApplicationSerializer
              :min_score,
              :minimum_stance_choices,
              :maximum_stance_choices,
-             :meeting_duration,
-             :default_duration_in_days
+             :meeting_duration
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events
@@ -63,13 +57,11 @@ class PollSerializer < ApplicationSerializer
   has_one :current_outcome, serializer: OutcomeSerializer, root: :outcomes
   has_one :my_stance, serializer: StanceSerializer, root: :stances
   has_many :poll_options, serializer: PollOptionSerializer, root: :poll_options
-  has_many :tags, serializer: TagSerializer, root: :tags
 
   hide_when_discarded [
     :attachments,
     :link_previews,
     :author_id,
-    :anyone_can_participate,
     :anonymous,
     :can_respond_maybe,
     :closed_at,
@@ -90,7 +82,6 @@ class PollSerializer < ApplicationSerializer
     :shuffle_options,
     :stance_counts,
     :total_score,
-    :stances_in_discussion,
     :specified_voters_only,
     :secret_token,
     :title,

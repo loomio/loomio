@@ -11,6 +11,103 @@ namespace :loomio do
     UpdateBlockedDomainsWorker.perform_async
   end
 
+  task :delete_translations do
+    raise "edit this directly to be sure you want to use it"
+    %w[server client].each do |source_name|
+      {
+        'fr' => 'fr',
+        'de' => 'de',
+        'es' => 'es',
+        'uk' => 'uk',
+        'it' => 'it',
+        'nl_NL' => 'nl',
+        'pt_BR' => 'pt_BR',
+        'pl' => 'pl',
+        'ar' => 'ar',
+        'hu' => 'hu'
+      }.each_pair do |file_locale, google_locale|
+        foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
+        if foreign.has_key? 'poll_common_form'
+          %w[process_name
+            process_name_hint
+            process_subtitle
+            process_subtitle_hint
+            process_introduction
+            process_introduction_hint
+            example_details_placeholder].each do |key|
+            foreign['poll_common_form'].delete(key)
+          end
+        end
+        File.write("config/locales/#{source_name}.#{file_locale}.yml", {file_locale => foreign}.to_yaml(line_width: 2000)) 
+      end
+    end
+  end
+
+  task :translate_strings do
+    class Hash
+      def bury *args
+        if args.count < 2
+          raise ArgumentError.new("2 or more arguments required")
+        elsif args.count == 2
+          self[args[0]] = args[1]
+        else
+          arg = args.shift
+          self[arg] = {} unless self[arg]
+          self[arg].bury(*args) unless args.empty?
+        end
+        self
+      end
+    end
+
+    def list_paths(hash, prefixes)
+      paths = []
+      hash.keys.each do |key|
+        if hash[key].is_a? Hash
+          paths.concat list_paths(hash[key], prefixes + Array(key))
+        else
+          paths.push (prefixes + Array(key)).join('.')
+        end
+      end
+      paths
+    end
+
+    %w[server client].each do |source_name|
+      source = YAML.load_file("config/locales/#{source_name}.en.yml")['en']
+      source_paths = list_paths(source, [])
+      google = Google::Cloud::Translate.translation_v2_service
+
+      {
+        'fr' => 'fr',
+        'de' => 'de',
+        'es' => 'es',
+        'uk' => 'uk',
+        'it' => 'it',
+        'nl_NL' => 'nl',
+        'pt_BR' => 'pt_BR',
+        'pl' => 'pl',
+        'ar' => 'ar',
+        'hu' => 'hu'
+      }.each_pair do |file_locale, google_locale|
+        foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
+        foreign_paths = list_paths(foreign, [])
+
+        write_file = false
+        (source_paths - foreign_paths).each do |path|
+          puts "#{file_locale}: #{path}, #{source.dig(*path.split('.'))}"
+          source_string = (source.dig(*path.split('.')) || "").strip
+          next if source_string.blank?
+          write_file = true
+          translated_string = CGI.unescapeHTML(google.translate(source_string, to: google_locale))
+          foreign.bury(*path.split('.'), translated_string) 
+        end
+
+        if write_file
+          File.write("config/locales/#{source_name}.#{file_locale}.yml", {file_locale => foreign}.to_yaml(line_width: 2000)) 
+        end
+      end
+    end
+  end
+
   task generate_email_icons: :environment do
     colors = AppConfig.colors.flatten.flatten.filter {|c| c.starts_with?("#")}.map {|c| c[1..-1]}
     source_path = Rails.root.join("app", "assets", "images", "icons", "svgs", "*.svg").to_s

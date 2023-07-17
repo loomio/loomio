@@ -65,13 +65,18 @@ export default
       .poll-common-votes-panel__stance-content
         .poll-common-votes-panel__stance-name-and-option
           v-layout.text-body-2(align-center)
-            .pr-2.text--secondary {{ stance.participantName() }}
-            poll-common-stance-choice(
-              v-if="poll.showResults() && stance.castAt && poll.singleChoice()", 
-              :poll="poll", 
-              :stance-choice="stance.stanceChoice()")
-            span.caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
-            time-ago.text--secondary(v-if="stance.castAt", :date="stance.castAt")
+            span.text--secondary {{ stance.participantName() }}
+            span(v-if="poll.showResults() && stance.castAt && poll.hasOptionIcon()")
+              poll-common-stance-choice.pl-2.pr-1(
+                :poll="poll", 
+                :stance-choice="stance.stanceChoice()")
+              space
+            span(v-if='!stance.castAt' )
+              space
+              span(v-t="'poll_common_votes_panel.undecided'" )
+            span(v-if="stance.castAt")
+              mid-dot(v-if="!poll.hasOptionIcon()")
+              time-ago.text--secondary(:date="stance.castAt")
         .poll-common-stance(v-if="poll.showResults() && stance.castAt")
           poll-common-stance-choices(:stance='stance')
           formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")

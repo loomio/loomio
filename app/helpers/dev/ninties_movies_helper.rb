@@ -105,7 +105,7 @@ module Dev::NintiesMoviesHelper
       @poll_group = Group.new(name: 'Dirty Dancing Shoes',
                              group_privacy: 'closed',
                              discussion_privacy_options: 'public_or_private',
-                             features: {use_polls: true}, creator: patrick)
+                             creator: patrick)
       GroupService.create(group: @poll_group, actor: @poll_group.creator)
       @poll_group.add_admin!  patrick
       @poll_group.add_member! jennifer

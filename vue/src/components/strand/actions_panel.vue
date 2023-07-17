@@ -4,14 +4,14 @@ import EventBus                 from '@/shared/services/event_bus'
 import RecordLoader             from '@/shared/services/record_loader'
 import AbilityService           from '@/shared/services/ability_service'
 import PollCommonForm from '@/components/poll/common/form'
-import PollCommonChooseTemplate from '@/components/poll/common/choose_template'
+import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_template_wrapper'
 import Session from '@/shared/services/session'
 import AuthModalMixin from '@/mixins/auth_modal'
 import Records from '@/shared/services/records'
 import { compact, snakeCase, camelCase, max, map } from 'lodash'
 
 export default
-  components: {PollCommonForm, PollCommonChooseTemplate}
+  components: {PollCommonForm, PollCommonChooseTemplateWrapper}
   mixins: [ AuthModalMixin ]
 
   props:
@@ -63,7 +63,8 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
     v-tab(href='#add-comment')
       span(v-t="'activity_card.add_comment'")
     v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
-      span(v-t="'poll_common_form.start_poll'")
+      //- span(v-t="'poll_common_form.start_poll'")
+      span(v-t="'poll_common.run_process'")
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel
@@ -84,7 +85,7 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
           :poll="poll"
           @setPoll="setPoll"
           @saveSuccess="resetPoll")
-        poll-common-choose-template(
+        poll-common-choose-template-wrapper(
           v-if="!poll"
           @setPoll="setPoll"
           :discussion="discussion"

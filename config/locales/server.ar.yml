@@ -1,3 +1,4 @@
+---
 ar:
   explore:
     header: استكشف المجموعات العامة
@@ -11,10 +12,10 @@ ar:
       title: 'اقتراح غير جيد '
       body: عذرًا ، لم نتمكن من فهم هذا الطلب
     401:
-      body: .لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول
+      body: ".لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول"
     403:
       title: 'ممنوع '
-      body: .لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول
+      body: ".لا يسمح لك بالوصول إلى هذه الصفحة.  قد تحتاج لتسجيل الدخول"
     404:
       title: 'غير موجود '
       body: "عذرًا ، الصفحة التي تبحث عنها غير موجودة.  ربما تكون قد أخطأت في كتابة العنوان. \nأو ربما تم نقل الصفحة أو حذفها"
@@ -25,7 +26,7 @@ ar:
       title: المتصفح غير متوافق
     422:
       title: كيان غير قابل للمعالجة
-      body: .تم رفض التغيير الذي تريده.  ربما حاولت تغيير شيء لم يكن لديك حق الوصول إليه
+      body: ".تم رفض التغيير الذي تريده.  ربما حاولت تغيير شيء لم يكن لديك حق الوصول إليه"
     429:
       title: طلبات كثيرة جدا
       body: عذرًا ، لقد تجاوزت الحد الأقصى للطلبات المسموح بها في الدقيقة لهذا الإجراء.  يرجى الانتظار لحظة وحاول مرة أخرى
@@ -33,16 +34,19 @@ ar:
       title: خطأ في المخدم الداخلي
       body: نحن نعتذر، ولكن حدث خطأ ما.  لقد تم إعلامنا بهذه المشكلة وسنلقي نظرة عليها قريبًا
     noscript: Loomio يتطلب جافا سكريبت للعمل!  يرجى تمكين جافا سكريبت في متصفحك للمتابعة
-    upgrade_browser: |
-        عذرًا!  متصفح الويب الخاص بك قديم جدًا وقد لا يعمل Loomio بشكل صحيح.  من فضلك <a href="https://browser-update.org/update.html">قم بتحديث المتصفح الخاص بك.</a>
+    upgrade_browser: 'عذرًا!  متصفح الويب الخاص بك قديم جدًا وقد لا يعمل Loomio بشكل صحيح.  من فضلك <a href="https://browser-update.org/update.html">قم بتحديث المتصفح الخاص بك.</a>
+
+      '
     return_home: العودة إلى المنزل
     not_found: 404 الملف غير موجود.
     messages:
       email: البريد الإلكتروني غير صالح
       spoofed_media_type: لا تتطابق محتويات هذا الملف مع اسم الملف الخاص به
+    clear_cache: تم اكتشاف مشكلة في التحميل. استمر في الضغط على shift واضغط على إعادة التحميل ، أو امسح ذاكرة التخزين المؤقت للمتصفح.
   group:
     error:
-      handle_must_begin_with_parent_handle: "يجب أن تبدأ بـ%{parent_handle}-"
+      handle_must_begin_with_parent_handle: يجب أن تبدأ بـ%{parent_handle}-
+      no_public_trials: يرجى الترقية من الإصدار التجريبي لتغيير إعداد خصوصية المجموعة
     stats:
       group_stats: إحصائيات المجموعة
       org_stats: إحصائيات المنظمة (بما في ذلك المجموعات الفرعية)
@@ -63,20 +67,22 @@ ar:
         rank: 'مرتبة '
         time: استطلاع الوقت
   user:
-    deleted_user: "مستخدم محذوف "
-    placeholder_name: "المستخدم المدعو (%{hostname}) "
+    deleted_user: 'مستخدم محذوف '
+    placeholder_name: 'المستخدم المدعو (%{hostname}) '
     error:
       sign_in_required_html: |
-          يجب تسجيل الدخول للمتابعة.
-          يرجى <a href="/dashboard" target="_blank">تسجيل الدخول</a> ثم إعادة تحميل هذه الصفحة للمتابعة.
-      recaptcha: "لم نتمكن من التحقق من أنك لست روبوتًا.  حاول مرة اخرى!"
-      bad_login: "عذرًا ، كلمة المرور هذه لا تتطابق مع كلمة المرور المسجلة لدينا"
-      username_must_be_alphanumeric: "يجب أن تكون أسماء المستخدمين أحرف وأرقام صغيرة فقط"
+        يجب تسجيل الدخول للمتابعة.
+        يرجى <a href="/dashboard" target="_blank">تسجيل الدخول</a> ثم إعادة تحميل هذه الصفحة للمتابعة.
+      recaptcha: لم نتمكن من التحقق من أنك لست روبوتًا.  حاول مرة اخرى!
+      bad_login: عذرًا ، كلمة المرور هذه لا تتطابق مع كلمة المرور المسجلة لدينا
+      username_must_be_alphanumeric: يجب أن تكون أسماء المستخدمين أحرف وأرقام صغيرة فقط
   poll:
     error:
       cannot_add_options: لا يمكن إضافة خيارات لهذا الاستطلاع
       cannot_remove_options: لا يمكن إزالة الخيارات من هذا الاستطلاع
       must_have_options: يجب أن يكون لديك خيار استطلاع واحد على الأقل
+      must_be_in_the_future: يجب أن يكون في المستقبل
+      templates_cannot_close: لا يمكن إغلاق القوالب
     export:
       percent_voted: "%{num}/%{denom}(%{percent}) أعلن الأعضاء موقفهم"
       title: العنوان
@@ -85,7 +91,7 @@ ar:
       created_at: أنشئت في
       closing_at: إغلاق في
       closed_at: مغلق في
-      is_latest: ' الأحدث'
+      is_latest: " الأحدث"
       engagement: الارتباط
       stances: المواقف
       participants: المشاركين
@@ -97,6 +103,11 @@ ar:
       participant: مشارك
       also_available: متوفر أيضًا في
       total: مجموع
+      user_id: معرف المستخدم
+      outcome_author: مؤلف النتيجة
+      outcome_created_at: تم إنشاء النتيجة في
+      outcome_statement: بيان النتيجة
+    waiting_for_votes_from: في انتظار الأصوات من
   stance:
     error:
       too_short: يرجى الاختيار
@@ -109,61 +120,72 @@ ar:
   user_mailer:
     group_export_ready:
       subject: تصدير بيانات المجموعة لـ %{group_name}
-      body_html: |
-          تنزيل بيانات مجموعتك <a href="%{url}">هنا</a>.  يرجى ملاحظة أن هذا الرابط سينتهي في غضون أسبوع واحد.
+      body_html: 'تنزيل بيانات مجموعتك <a href="%{url}">هنا</a>.  يرجى ملاحظة أن هذا الرابط سينتهي في غضون أسبوع واحد.
+
+        '
     accounts_merged:
-      subject: "تم دمج حسابات المستخدم%{site_name} الخاصة بك."
+      subject: تم دمج حسابات المستخدم%{site_name} الخاصة بك.
       body_html: |
-          مرحبا%{name}،
-          تم دمج حسابي loomio الخاصين بك في حساب واحد.
-          للوصول إلى loomio من الآن فصاعدًا ، يرجى استخدام <strong>%{email}</strong> عند تسجيل الدخول.
+        مرحبا%{name}،
+        تم دمج حسابي loomio الخاصين بك في حساب واحد.
+        للوصول إلى loomio من الآن فصاعدًا ، يرجى استخدام <strong>%{email}</strong> عند تسجيل الدخول.
     merge_verification:
-      subject: "تحقق من عنوان البريد الإلكتروني%{site_name} للاندماج"
+      subject: تحقق من عنوان البريد الإلكتروني%{site_name} للاندماج
       verify: تحقق من البريد الإلكتروني وتابع
       confirm_page:
         confirm: تأكيد الدمج
         merge: دمج الحسابات
+        body_html: <p style=";text-align:right;direction:rtl">يرجى تأكيد رغبتك في دمج الحساب تحت <strong>٪ {source_email}</strong> في الحساب تحت <strong>٪ {target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> سيتم حذف حسابك ضمن <strong>٪ {source_email}</strong> ، وبعد ذلك لن تتمكن من تسجيل الدخول إلا عبر <strong>٪ {target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> هذا التغيير لا رجوع فيه.</p>
       complete_page:
         title: تم الدمج بنجاح!
+        body_html: <p style=";text-align:right;direction:rtl">تم دمج حسابات المستخدمين الخاصة بك بنجاح. ستتلقى رسالة تأكيد بالبريد الإلكتروني على <strong>٪ {target_email}</strong> قريبًا.</p><p style=";text-align:right;direction:rtl"> يرجى <a href="/contact" target="_blank">الاتصال بنا</a> إذا كان لديك أي أسئلة أخرى.</p>
+      body_html: <p style=";text-align:right;direction:rtl">مرحبًا٪ {name} ،</p><p style=";text-align:right;direction:rtl"> تم تقديم طلب لدمج حساب المستخدم الخاص بك تحت العنوان <strong>٪ {source_email}</strong> مع الحساب الذي ينتمي إلى هذا العنوان ، <strong>٪ {target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> بعد اكتمال هذه العملية ، لن تتمكن بعد الآن من تسجيل الدخول باستخدام <strong>٪ {source_email}</strong> ، وباستخدام <strong>٪ {target_email}</strong> فقط.</p><p style=";text-align:right;direction:rtl"> يرجى تأكيد أن هذا هو ما تريد القيام به.</p>
+    deactivated:
+      subject: تم إلغاء تنشيط حساب المستخدم الخاص بك في٪ {site_name}.
+      body_html: <p style=";text-align:right;direction:rtl">قمت أنت أو أي شخص لديه حق الوصول إلى حسابك بإلغاء تنشيط حساب مستخدم Loomio الخاص بك.</p><p style=";text-align:right;direction:rtl"> تمت إزالة جميع البيانات الشخصية من النظام.</p><p style=";text-align:right;direction:rtl"> إذا كنت ترغب في استعادة حساب المستخدم هذا والتعليقات والتصويتات المرتبطة به ، فيرجى الاتصال بالدعم والإشارة إلى:٪ {recovery_code}</p>
   email:
     common:
       or_enter_code: أو أدخل الرمز أدناه
+      resend: ستنتهي صلاحية هذا في غضون 24 ساعة ويمكن استخدامه مرة واحدة فقط
     login:
       subject: تسجيل دخول الى %{site_name}
       login: تسجيل الدخول باسم %{name}
+      intro: هذا هو ارتباطك لتسجيل الدخول إلى٪ {site_name}
+      intro_code: هذا هو رمزك لتسجيل الدخول إلى٪ {site_name}
     reactivate:
       subject: إعادة تنشيط حسابك %{site_name}
       login: اعادة تفعيل %{name}
+      intro: مرحبًا٪ {name} ، إليك رابط لإعادة تنشيط حساب٪ {site_name} الخاص بك
     contact_request:
       subject: "%{name} تود التواصل معك في%{site_name}! "
       intro: "%{name} (%{email}) أرسل إليك طلبًا للتواصل"
-      footer: "يمكنك الرد على %{name} مباشرة بالرد على هذه الرسالة الإلكترونية."
+      footer: يمكنك الرد على %{name} مباشرة بالرد على هذه الرسالة الإلكترونية.
     reset_password:
       greeting: |
-          مرحبا %{name}
-          إليك رابط يمكنك استخدامه لإعادة تعيين كلمة المرور على حساب Loomio الخاص بك:
+        مرحبا %{name}
+        إليك رابط يمكنك استخدامه لإعادة تعيين كلمة المرور على حساب Loomio الخاص بك:
       link_text: اعد ضبط كلمه السر
       signoff: |
-          لقد تلقيت هذا لأنه تم إدخال بريدك الإلكتروني في نموذج "نسيت كلمة المرور" في%{hostname} .
-          ومع ذلك ، لن يتم تغيير كلمة المرور الخاصة بك حتى تتبع الرابط أعلاه وتكمل النموذج.
-          إذا كنت لا تزال تواجه مشاكل في تسجيل الدخول ، فقم بالرد على هذا البريد الإلكتروني للاتصال بشخص الدعم.
+        لقد تلقيت هذا لأنه تم إدخال بريدك الإلكتروني في نموذج "نسيت كلمة المرور" في%{hostname} .
+        ومع ذلك ، لن يتم تغيير كلمة المرور الخاصة بك حتى تتبع الرابط أعلاه وتكمل النموذج.
+        إذا كنت لا تزال تواجه مشاكل في تسجيل الدخول ، فقم بالرد على هذا البريد الإلكتروني للاتصال بشخص الدعم.
     by_who: من قبل %{person}
     reply_to_this_discussion: شارك في هذا النقاش
     view_group: عرض المجموعة
     to_join_group:
       subject: "%{member}دعاك للانضمام إلى%{group_name} في%{site_name}"
       invitation_text: "%{member}دعاك للانضمام إلى مجموعتهم%{group_name}. "
-      invitation_text_html: "دعاك للانضمام إلى مجموعتهم"
-      link_help: "انقر على الرابط أدناه لقبول الدعوة:"
-      accept_invitation: "اقبل الدعوة"
-      stop_emails: "التوقف عن تلقي رسائل البريد الإلكتروني من%{site_name}"
+      invitation_text_html: دعاك للانضمام إلى مجموعتهم
+      link_help: 'انقر على الرابط أدناه لقبول الدعوة:'
+      accept_invitation: اقبل الدعوة
+      stop_emails: التوقف عن تلقي رسائل البريد الإلكتروني من%{site_name}
     resend_to_join_group:
       subject: "%{member} في انتظارك للانضمام إلى%{group_name} على%{site_name}"
     user_added_to_group:
       subject: "%{who}أضافك إلى%{which_group} في%{site_name}"
       content: "%{who}أضافك إلى%{which_group}. "
       content_html: "<strong>%{who}</strong>أضافك الى<strong>%{which_group}</strong>. "
-      link_help: "انقر على الرابط أدناه للذهاب إلى المجموعة:"
+      link_help: 'انقر على الرابط أدناه للذهاب إلى المجموعة:'
     unsubscribe: 'قم بإلغاء الاشتراك أو قم بتغيير تفضيلات البريد الإلكتروني:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> لإلغاء الاشتراك أو تغيير تفضيلات البريد الإلكتروني."
     catch_up:
@@ -174,23 +196,30 @@ ar:
       thanks_for_reading: شكرا للقراءة، نتمنى لك يوماً سعيداً!
       marked_as_read_success: تم تحديد كل شيء في الرسالة الالكترونية كمقروء
       click_here: انقر هنا
+      other_subject: مؤخرًا على٪ {site_name}
     group_membership_approved:
-      intro: "تمت الموافقة على طلبك للوصول إلى المجموعة%{group_name}. "
-      intro_html: "تمت الموافقة على طلبك للوصول إلى المجموعة <strong>%{group_name}</strong>. "
-      link_help: "انقر فوق الارتباط أدناه للانضمام إلى%{group_name}والبدء:"
-      subject: "تمت الموافقة على طلبك للانضمام إلى %{group_name}"
-      join_group: "انضم إلى الفريق"
+      intro: 'تمت الموافقة على طلبك للوصول إلى المجموعة%{group_name}. '
+      intro_html: 'تمت الموافقة على طلبك للوصول إلى المجموعة <strong>%{group_name}</strong>. '
+      link_help: 'انقر فوق الارتباط أدناه للانضمام إلى%{group_name}والبدء:'
+      subject: تمت الموافقة على طلبك للانضمام إلى %{group_name}
+      join_group: انضم إلى الفريق
     membership_request:
       intro_html: طلب الوصول إلى إحدى مجموعاتك.
       subject: "%{who} قام بطلب الانضمام إلى %{which_group}"
       view_group: يمكنك الموافقة أو إلغاء الطلب هنا
       button_text: عرض الطلب
+    loomio_app_description: "٪ {site_name} هي أداة اتخاذ القرار للمنظمات التعاونية"
   announcement_count_emails: "%{count}رسائل البريد الإلكتروني"
   email_actions:
     unfollowed_discussion: لقد أوقفت رسائل البريد الإلكتروني لموضوع التنفيذ.
   discussion_mailer:
-    reply_or_view_online_html: "قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>."
+    reply_or_view_online_html: قم بالرد مباشرة على هذه الرسالة أو <a href='%{url}'>استعرضها على %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>أطفئ الرسائل الالكترونية</a> لهذا النقاش."
+    change_email_preferences_html: تغيير <a href='%{email_preferences_url}'>تفضيلات البريد الإلكتروني</a> الخاص بك.
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>إلغاء الاشتراك</a> من إعلانات أخرى في هذا الموضوع."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>إلغاء الاشتراك</a> من التعليقات في هذا الموضوع."
+    unsubscribe_from_comment_replied_to_html: هذا إشعار الرد.
+    unsubscribe_from_user_mentioned_html: هذا إشعار بالإشارة.
   footer:
     about: حول
     blog: مدونة
@@ -207,27 +236,51 @@ ar:
     confirm_new_password: تأكيد كلمة السر
     new_password: كلمة السر الجديدة
     email_guidelines_html: |
-        <p>ادخل بريدك الإلكتروني وسيتم إرسال رابط إعادة تعيين كلمة المرور. </p>
-        <p>إذا كنت تسجّل الدخول عادةً عبر Facebook أو Google ، فأدخل عنوان البريد الإلكتروني المرتبط بهذا الحساب</p>
+      <p>ادخل بريدك الإلكتروني وسيتم إرسال رابط إعادة تعيين كلمة المرور. </p>
+      <p>إذا كنت تسجّل الدخول عادةً عبر Facebook أو Google ، فأدخل عنوان البريد الإلكتروني المرتبط بهذا الحساب</p>
     reset_email_timeframe: 'قد يستغرق الأمر حتى 5 دقائق لكي يتم استقبال الرسالة الالكترونية. إن لم تستقبل الرسالة الالكترونية، تأكد من صندوق البريد المؤذي. '
     length_restriction: على كلمة المرور أن تتألف من 8 محارف.
     forbidden_passwords: كلمات المرور المألوفة مثل "password" ممنوعة لإبقاء حسابك آمناً.
   introduction_thread:
     title: أهلا بك، الرجاء قم بتعريف نفسك
     description: |
-        خصّض بعض الوقت لإخبار المجموعة قليلاً عن هويتك.  أضف تعليقًا أدناه
+      خصّض بعض الوقت لإخبار المجموعة قليلاً عن هويتك.  أضف تعليقًا أدناه
 
-        ما هو دورك أو مقربتك للمشاركة في هذه المجموعة؟  ما الذي يجب أن يعرفه الأشخاص عنك لفهم من أين أنت؟
+      ما هو دورك أو مقربتك للمشاركة في هذه المجموعة؟  ما الذي يجب أن يعرفه الأشخاص عنك لفهم من أين أنت؟
   how_it_works_thread:
     title: كيفية استخدام لوميو
+    description: مرحبًا بكم في Loomio ، مكان على الإنترنت للتواصل واتخاذ القرارات. هذا مثال مناقشة ** موضوع **. يمكنك إضافة التعليقات أدناه. المواضيع لمناقشة المواضيع والحصول على نتائج واضحة. يدور هذا الموضوع حول كيفية عمل Loomio ، لذا انشر أسئلة حول ذلك هنا. أنت تقرأ حاليًا سلسلة الرسائل ** السياق ** ، والتي يمكن تحديثها باستمرار بالمعلومات الأساسية والأسئلة التي تساعد الأشخاص على المشاركة. لتبدأ مع Loomio:<ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"> حاول التعليق في موضوع موجود ، أو هذا.</li></ul> نصائح للنشر على Loomio:<ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"> لإعلام شخص معين ، اكتب @ متبوعًا باسمه</li><li style=";text-align:right;direction:rtl"> اسحب الصور والمرفقات وأفلتها أو انقر فوق رمز مشبك الورق</li><li style=";text-align:right;direction:rtl"> انظر <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 طرق لاستخدام المواضيع</a> لبعض الأفكار والنصائح</li></ul> إذا كان لديك أي أسئلة ، فراجع [Loomio Help] (http://help.loomio.org).
   first_proposal:
-    name: ' ؟ Loomio هل لديك أي أسئلة حول استخدام '
+    name: " ؟ Loomio هل لديك أي أسئلة حول استخدام "
+    description: _إذا كانت الإجابة بنعم ، فشارك سؤالك. إذا كانت الإجابة لا ، فأنت جاهز للتعليق في سلاسل محادثات مجموعتك! _ هذا ** التحقق من الاستطلاع ** يسأل عما إذا كنت أنت أو أي شخص هنا لديه أي أسئلة حول استخدام Loomio.<ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"> انطلق وجربها باستخدام الأزرار وحقل النص أدناه.</li></ul> كما هو الحال مع أي قرار أو أداة تسهيل ، ستحتاج إلى الرد قبل إغلاقها. يمكنك تغيير مركزك أثناء فتحه (ربما الرد على معلومات جديدة). ** حاول المشاركة! انقر فوق أحد الأزرار. **
   poll_mailer:
     common:
       create_outcome: نتائج حصة
-      your_response: "انت ادليت بصوتك:"
+      your_response: 'انت ادليت بصوتك:'
       please_respond: يرجى الرد
-      time_zone: '(الأوقات المعروضة في %{zone}) '
+      time_zone: "(الأوقات المعروضة في %{zone}) "
       undecided_members: 'الأعضاء غير محددين (%{count}) '
       undecided_visitors: 'ضيوف غير محددين ( %{count}) '
       vote_now: صوت الان
+      why_send_this: أنت تتلقى هذا البريد الإلكتروني بسبب٪ {reason}
+      view_on_loomio: اعرضه على٪ {site_name}
+      you_voted: انت ادليت بصوتك!
+      not_invited: غير مدعو
+      more_undecided: "٪ {عدد} أخرى ..."
+      you_have_until: لديك حتى٪ {when} للمشاركة.
+      people_have_voted: شارك٪ {nom} من٪ {dnom} من الأشخاص (٪ {pct}٪)
+  base_mailer:
+    via_loomio: "٪ {name} (عبر٪ {site_name})"
+  task_mailer:
+    task_due_reminder:
+      subject: تذكير بالمهمة:٪ {name}
+      greeting: 'مرحبًا٪ {name} ، المهمة التالية مستحقة٪ {due}:'
+      view_task: عرض على٪ {site_name}
+      update_or_comment: إذا كنت قد أكملت هذه المهمة بالفعل ، فيرجى وضع علامة عليها. إذا لم يكتمل ، يرجى مشاركة تحديث التقدم.
+      due_today: اليوم
+      due_in_count_days: في٪ {عدد} أيام
+  group_mailer:
+    resend: تذكير:٪ {member} ينتظر انضمامك إلى٪ {group_name}
+    destroy_warning:
+      subject: تمت جدولة مجموعة Loomio الخاصة بك للحذف.
+      body: 'تمت جدولة مجموعة Loomio الخاصة بك: "٪ {group}" للحذف بواسطة٪ {deletor}. إذا كنت لا تريد حذف مجموعتك ، يرجى الرد على هذا البريد الإلكتروني. إذا كنت متأكدًا من رغبتك في حذف المجموعة ، فلن تحتاج إلى فعل أي شيء. شكرًا لك.'

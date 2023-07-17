@@ -17,18 +17,18 @@ export default
     handle: HandleDirective
 
   data: ->
-    allTags: @model.group().parentOrSelf().tags()
+    allTags: @model.group().tags()
 
   mounted: ->
     @watchRecords
       key: 'tags'+@model.id
       collections: ['tags']
       query: =>
-        @allTags = @model.group().parentOrSelf().tags()
+        @allTags = @model.group().tags()
 
   computed:
     canAdminTags: ->
-      @model.group().parentOrSelf().adminsInclude(Session.user())
+      @model.group().adminsInclude(Session.user())
 
   methods:
     openNewTagModal: ->

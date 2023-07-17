@@ -22,8 +22,7 @@ v-list-item.poll-common-preview(:to='link')
   v-list-item-content
     v-list-item-title
       span {{poll.title}}
-      tags-display(:tags="poll.tags()")
-      template-badge.ml-2(:poll="poll")
+      tags-display(:model="poll" smaller)
     v-list-item-subtitle
       span(v-t="{ path: 'poll_common_collapsed.by_who', args: { name: poll.authorName() } }")
       space

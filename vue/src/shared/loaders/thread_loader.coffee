@@ -21,13 +21,13 @@ export default class ThreadLoader
     @collapsed = Vue.observable({})
     @loading = false
     @padding = 50
-    @maxAutoLoadMore = 5
+    @maxAutoLoadMore = 50
 
   firstUnreadSequenceId: ->
     (RangeSet.subtractRanges(@discussion.ranges, @readRanges)[0] || [])[0]
 
   setVisible: (isVisible, event) ->
-    event.markAsRead() unless @visibleKeys.hasOwnProperty(event.positionKey)
+    event.markAsRead() if isVisible
     @visibleKeys[event.positionKey] = isVisible
     EventBus.$emit('visibleKeys', Object.keys(@visibleKeys).filter((key) => @visibleKeys[key]).sort())
 
@@ -79,59 +79,24 @@ export default class ThreadLoader
 
   autoLoadAfter: (obj) ->
     if (!@discussion.newestFirst && obj.event.depth == 1) || (obj.missingAfterCount && obj.missingAfterCount < @maxAutoLoadMore)
-      # @loadAfter(obj.event, obj.missingAfterCount)
       @loadAfter(obj.event)
 
+  loadChildren: (event) ->
+    @addLoadChildrenRule(event)
+    @fetch()
+
   loadAfter: (event) ->
-    # @addLoadAfterRule(event, limit)
     @addLoadAfterRule(event)
     @fetch()
 
   autoLoadBefore: (obj) ->
     if (@discussion.newestFirst && obj.event.depth == 1) || (obj.missingEarlierCount && obj.missingEarlierCount < @maxAutoLoadMore)
-      # @loadBefore(obj.event, obj.missingEarlierCount)
       @loadBefore(obj.event)
 
   loadBefore: (event) ->
     @loading = 'before'+event.id
-    # @addLoadBeforeRule(event, limit)
     @addLoadBeforeRule(event)
     @fetch()
-
-  # autoLoadChildren: (obj) ->
-  #   if obj.missingChildCount && (obj.missingChildCount < @maxAutoLoadMore)
-  #     @loadChildren(obj.event)
-  #
-  # loadChildren: (event) ->
-  #   @loading = 'children'+event.id
-  #   if event.kind == "new_discussion"
-  #     @addRuleAndFetch
-  #       name: "load discussion children"
-  #       local:
-  #         find:
-  #           discussionId: @discussion.id
-  #         simplesort: 'id'
-  #         limit: @padding
-  #       remote:
-  #         discussion_id: @discussion.id
-  #         order_by: 'position_key'
-  #         per: @padding
-  #   else
-  #     @addLoadAfterRule(event)
-  #     # @addRuleAndFetch
-  #     #   name: "load children (prefix #{event.positionKey})"
-  #     #   local:
-  #     #     find:
-  #     #       discussionId: @discussion.id
-  #     #       positionKey: {'$regex': "^#{event.positionKey}"}
-  #     #     simplesort: 'positionKey'
-  #     #     limit: @padding
-  #     #   remote:
-  #     #     discussion_id: @discussion.id
-  #     #     position_key_sw: event.positionKey
-  #     #     depth_gt: event.depth
-  #     #     order_by: 'position_key'
-  #     #     per: @padding
 
   addLoadAfterRule: (event) ->
     @addRule
@@ -163,6 +128,23 @@ export default class ThreadLoader
       remote:
         discussion_id: @discussion.id
         position_key_lt: event.positionKey
+        order_by: 'position_key'
+        order_desc: 1
+        per: @padding
+
+  addLoadChildrenRule: (event) ->
+    @addRule
+      name: "load children #{event.positionKey}"
+      local:
+        find:
+          discussionId: @discussion.id
+          parentId: event.id
+        simplesort: 'positionKey'
+        simplesortDesc: true
+        limit: @padding
+      remote:
+        discussion_id: @discussion.id
+        parent_id: event.id
         order_by: 'position_key'
         order_desc: 1
         per: @padding

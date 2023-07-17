@@ -1,5 +1,5 @@
 - my_stance = @current_user && Stance.latest.find_by(poll_id: poll.id, participant_id: @current_user.id)
-- if poll.decided_voters_count > 0 || poll.closed_at
+- if poll.has_options && (poll.decided_voters_count > 0 || poll.closed_at)
   .poll-mailer__results-chart.poll-mailer-common-results
     - if poll.show_results?(voted: my_stance && my_stance.cast_at)
       %h3= t(poll.closed_at ? :'poll_common.results' : :'poll_common.current_results')

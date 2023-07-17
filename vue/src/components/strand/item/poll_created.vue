@@ -51,7 +51,7 @@ section.strand-item.poll-created
       space
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title", :model='poll', field='title')
-      tags-display(:tags="poll.tags()")
+      tags-display(:model="poll")
   .pt-2(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
@@ -63,10 +63,7 @@ section.strand-item.poll-created
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")
     document-list(:model='poll')
-    //- p.caption(v-if="!poll.pollOptionNames.length" v-t="'poll_common.no_voting'")
-    div.text-body-2(v-if="poll.pollOptionNames.length")
-      poll-common-chart-panel(:poll='poll')
-      poll-common-action-panel(:poll='poll')
+    poll-common-chart-panel(:poll='poll')
+    poll-common-action-panel(:poll='poll')
     action-dock.my-2(:actions="dockActions", :menu-actions="menuActions")
-    poll-common-votes-panel(v-if="!poll.stancesInDiscussion && poll.showResults()" :poll="poll")
 </template>

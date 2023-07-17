@@ -1,8 +1,10 @@
 <script lang="coffee">
 import Records     from '@/shared/services/records'
+import FlashService   from '@/shared/services/flash'
 import { times } from 'lodash'
 import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time'
 import { format, parse, isValid } from 'date-fns'
+import I18n from '@/i18n.coffee'
 
 export default
   props:
@@ -16,7 +18,7 @@ export default
 
   data: ->
     dateStr: @value && format(@value, 'yyyy-MM-dd') || ''
-    timeStr: @value && format(@value, timeFormat()) || ''
+    timeStr: @value && format(@value, 'HH:mm') || ''
     minStr:  @value && format(@min, 'yyyy-MM-dd') || ''
     dateMenu: false
     times: hoursOfDay()
@@ -26,7 +28,7 @@ export default
 
   methods:
     updateNewValue: ->
-      val = parse("#{@dateStr} #{@timeStr}", "yyyy-MM-dd #{timeFormat()}", new Date)
+      val = parse("#{@dateStr} #{@timeStr}", "yyyy-MM-dd HH:mm", new Date)
       return unless isValid(val)
       @newValue = val
       @$emit('input', @newValue)
@@ -34,6 +36,16 @@ export default
   watch:
     dateStr: -> @updateNewValue()
     timeStr: -> @updateNewValue()
+
+  computed:
+    twelvehour: -> timeFormat() != 'HH:mm'
+    timeHint: -> 
+      try 
+        d = parse(@timeStr, 'HH:mm', new Date)
+        format(d, timeFormat())
+      catch
+        FlashService.error("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')})
+        I18n.t("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')})
 
 </script>
 <template lang="pug">
@@ -54,6 +66,8 @@ v-layout.date-time-picker
       @input="dateMenu = false")
   v-spacer
   v-combobox.date-time-picker__time-field(
+    :hint="twelvehour ? timeHint : null"
+    :persistent-hint="twelvehour"
     v-model="timeStr"
     :items="times"
     prepend-icon="mdi-clock-outline")

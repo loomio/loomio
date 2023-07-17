@@ -232,16 +232,12 @@ class PollService
   #   EventBus.broadcast('poll_destroy', poll, actor)
   # end
 
-  def self.cleanup_examples
-    Poll.where(example: true).where('created_at < ?', 1.day.ago).destroy_all
-  end
-
   def self.add_to_thread(poll:, params:, actor:)
     discussion = Discussion.find(params[:discussion_id])
     actor.ability.authorize! :update, poll
     actor.ability.authorize! :update, discussion
     ActiveRecord::Base.transaction do
-      poll.update(discussion_id: discussion.id, group_id: discussion.group.id, stances_in_discussion: true)
+      poll.update(discussion_id: discussion.id, group_id: discussion.group.id)
       event = poll.created_event
       event.discussion_id = discussion.id
       event.parent_id = discussion.created_event.id
@@ -264,10 +260,9 @@ class PollService
     sorted_poll_options = case poll.order_results_by
     when 'priority'
       poll_options.sort_by {|o| o.priority }
-    when 'total_score_desc'
-      poll_options.sort_by {|o| -(o.total_score)}
     else
-      raise "unknown order_results_by: #{poll.order_results_by}"
+      # when 'total_score_desc'
+      poll_options.sort_by {|o| -(o.total_score)}
     end
 
     l = sorted_poll_options.each_with_index.map do |option, index|

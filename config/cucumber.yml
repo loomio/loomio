@@ -1,4 +1,0 @@
-# config/cucumber.yml
-##YAML Template
----
-default: --format progress --require features

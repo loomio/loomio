@@ -105,7 +105,7 @@ FactoryBot.define do
     description { "<p>A description for this discussion. Should this be <em>rich</em>?</p>" }
     link_previews { [{'title': 'link title', 'url': 'https://www.example.com', 'description': 'a link to a page', 'image': 'https://www.loomio.org/theme/logo.svg', 'hostname':'www.example.com'}] }
     private { true }
-    tags { group ? group.tags : [] }
+    tags { group ? group.tags.map {|t| t.name} : [] }
 
     before(:create) do |discussion|
       discussion.group.parent&.add_member!(discussion.author)
@@ -204,6 +204,20 @@ FactoryBot.define do
     after :create do |poll|
       poll.create_missing_created_event!
     end
+  end
+
+  factory :poll_template do
+    poll_type { "proposal" }
+    process_name { "Process name"}
+    process_subtitle { "This is a proces subtitle"}
+    process_introduction { "This is a proces introduction"}
+    process_introduction_format { "html"}
+    title { "This is a poll" }
+    details { "with a description" }
+    association :author, factory: :user
+    poll_options { {name: "agree"} }
+    created_at { 2.days.ago }
+    notify_on_closing_soon { "voters" }
   end
 
   factory :poll_proposal, class: Poll do

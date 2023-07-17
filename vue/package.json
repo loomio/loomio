@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@sentry/browser": "^7.55.2",
-    "@sentry/tracing": "^7.56.0",
-    "@sentry/vue": "^7.56.0",
+    "@sentry/tracing": "^7.58.1",
+    "@sentry/vue": "^7.58.1",
     "@tiptap/core": "2.0.0-beta.220",
     "@tiptap/extension-blockquote": "2.0.0-beta.220",
     "@tiptap/extension-bold": "2.0.0-beta.220",
@@ -71,7 +71,7 @@
     "marked": "^4.3.0",
     "md5": "2.3.0",
     "plausible-tracker": "^0.3.8",
-    "pretty-bytes": "^6.1.0",
+    "pretty-bytes": "^6.1.1",
     "socket.io-client": "^4.4.1",
     "svg.js": "^2.7.1",
     "textarea-caret": "^3.1.0",
@@ -85,14 +85,14 @@
     "vue-router": "^3.6.5",
     "vue-slicksort": "^1.2.0",
     "vue2-touch-events": "^3.2.2",
-    "vuetify": "2.6.14"
+    "vuetify": "2.6.15"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-e2e-nightwatch": "^5.0.8",
     "@vue/cli-plugin-pwa": "^5.0.8",
     "@vue/cli-service": "^5.0.8",
-    "acorn": "^8.9.0",
+    "acorn": "^8.10.0",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "coffee-loader": "latest",
@@ -105,6 +105,6 @@
     "vue-cli-plugin-vuetify": "latest",
     "vue-template-compiler": "2.7.14",
     "vuetify-loader": "^1.9.2",
-    "webpack": "^5.88.0"
+    "webpack": "^5.88.1"
   }
 }

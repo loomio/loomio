@@ -14,8 +14,6 @@ describe API::V1::StancesController do
     stance_choices_attributes: [{poll_option_id: poll_option.id}],
     reason: "here is my stance"
   }}
-  let(:public_poll) { create :poll, discussion: nil, anyone_can_participate: true }
-  let(:public_poll_option) { create :poll_option, poll: public_poll }
 
   describe 'stance actions' do
     let(:actor) { create :user }
@@ -172,10 +170,11 @@ describe API::V1::StancesController do
       end
 
       it 'sets cast_at to nil' do
-        stance = poll.stances.where(participant_id: voter.id).last
+        stance = poll.stances.latest.find_by(participant_id: voter.id)
         put :uncast, params: {id: stance.id}
         expect(response.status).to eq 200
-        expect(stance.reload.cast_at).to eq nil
+        stance = poll.stances.latest.find_by(participant_id: voter.id)
+        expect(stance.cast_at).to eq nil
       end
     end
 
@@ -308,22 +307,6 @@ describe API::V1::StancesController do
         stance = poll.add_guest! user, poll.author
         post :update, params: { id: stance.id, stance: stance_params }
         expect(response.status).to eq 200
-      end
-    end
-
-    describe 'poll.anyone_can_participate = true' do
-      before do
-        poll.update(anyone_can_participate: true)
-        user
-      end
-
-      it 'logged in' do
-        # add to group and create stance
-        user.update(email_verified: true)
-        sign_in user
-        expect { post :create, params: { stance: stance_params} }.to change { Stance.count }.by(1)
-        expect(Stance.last.participant).to eq user
-        expect(poll.members).to include user
       end
     end
 

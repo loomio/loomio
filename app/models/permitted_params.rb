@@ -1,6 +1,6 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
-    user group membership_request membership poll outcome
+    user group membership_request membership poll poll_template outcome
     stance discussion discussion_reader comment
     contact_message document
     webhook chatbot contact_request reaction tag
@@ -44,13 +44,12 @@ class PermittedParams < Struct.new(:params)
       :key,
       :limit_reason_length,
       :shuffle_options,
-      :anyone_can_participate,
       :notify_on_closing_soon,
       :voter_can_add_options,
       :specified_voters_only,
       :recipient_audience,
       :recipient_message,
-      :tag_ids, {tag_ids: []},
+      :tags, {tags: []},
       :notify_recipients,
       :recipient_user_ids, {recipient_user_ids: []},
       :recipient_chatbot_ids, {recipient_chatbot_ids: []},
@@ -63,6 +62,7 @@ class PermittedParams < Struct.new(:params)
       :options, {options: []},
       :process_name,
       :process_subtitle,
+      :process_url,
       :poll_option_name_format,
       :reason_prompt,
       :template,
@@ -72,9 +72,50 @@ class PermittedParams < Struct.new(:params)
       :minimum_stance_choices,
       :maximum_stance_choices,
       :chart_type,
-      :chart_column,
       :document_ids, {document_ids: []},
       :poll_options_attributes, {poll_options_attributes: [:id, :name, :icon, :meaning, :prompt, :priority, :_destroy]},
+      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
+    ]
+  end
+
+  def poll_template_attributes
+    [
+      :key,
+      :group_id,
+      :position,
+      :author_id,
+      :poll_type,
+      :process_name,
+      :process_subtitle,
+      :process_introduction,
+      :process_introduction_format,
+      :process_url,
+      :title,
+      :details,
+      :details_format,
+      :notify_on_participate,
+      :anonymous,
+      :specified_voters_only,
+      :notify_on_closing_soon,
+      :content_locale,
+      :shuffle_options,
+      :hide_results,
+      :chart_type,
+      :min_score,
+      :max_score,
+      :minimum_stance_choices,
+      :maximum_stance_choices,
+      :dots_per_person,
+      :reason_prompt,
+      :tags, {tags: []},
+      :poll_options, {poll_options: [:name, :icon, :meaning, :prompt, :priority]},
+      :stance_reason_required,
+      :limit_reason_length,
+      :default_duration_in_days,
+      :agree_target,
+      :meeting_duration,
+      :can_respond_maybe,
+      :poll_option_name_format,
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end
@@ -122,7 +163,7 @@ class PermittedParams < Struct.new(:params)
      :membership_granted_upon, :cover_photo, :logo, :category_id, :members_can_raise_motions,
      :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
      :new_threads_max_depth, :new_threads_newest_first,
-     :document_ids, {document_ids: []}, :features, {features: AppConfig.group_features.presence || {}},
+     :document_ids, {document_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]
   end
@@ -148,7 +189,7 @@ class PermittedParams < Struct.new(:params)
      :recipient_message,
      :template,
      :source_template_id,
-     :tag_ids, {tag_ids: []},
+     :tags, {tags: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},

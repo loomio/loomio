@@ -48,6 +48,7 @@ class Group < ApplicationRecord
   has_many :pending_membership_requests, -> { where response: nil }, class_name: 'MembershipRequest'
 
   has_many :polls, dependent: :destroy
+  has_many :poll_templates, dependent: :destroy
 
   has_many :documents, as: :model, dependent: :destroy
   has_many :requested_users, through: :membership_requests, source: :user
@@ -109,6 +110,7 @@ class Group < ApplicationRecord
 
   define_counter_cache(:polls_count)                { |g| g.polls.count }
   define_counter_cache(:closed_polls_count)         { |g| g.polls.closed.count }
+  define_counter_cache(:poll_templates_count)       { |g| g.poll_templates.kept.count }
   define_counter_cache(:memberships_count)          { |g| g.memberships.count }
   define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
@@ -329,6 +331,37 @@ class Group < ApplicationRecord
 
   def identity_for(type)
     group_identities.joins(:identity).find_by("omniauth_identities.identity_type": type)
+  end
+
+  def poll_template_positions
+    self[:info]['poll_template_positions'] ||= {
+      'check' => 1,
+      'advice' => 2,
+      'consent' => 3,
+      'consensus' => 4,
+    }
+    self[:info]['poll_template_positions']
+  end
+
+  def categorize_poll_templates
+    if self[:info].has_key? 'categorize_poll_templates'
+      self[:info]['categorize_poll_templates']
+    else
+      true
+    end
+  end
+
+  def categorize_poll_templates=(val)
+    self[:info]['categorize_poll_templates'] = val
+  end
+
+  def hidden_poll_templates
+    self[:info]['hidden_poll_templates'] ||= AppConfig.app_features.fetch(:hidden_poll_templates, [])
+    self[:info]['hidden_poll_templates']
+  end
+
+  def hidden_poll_templates=(val)
+    self[:info]['hidden_poll_templates'] = val
   end
 
   private

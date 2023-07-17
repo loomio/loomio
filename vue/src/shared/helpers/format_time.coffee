@@ -59,7 +59,7 @@ export exact = (date, zone = AppConfig.timeZone, dateTimePref = Session.user().d
       console.error('unknown date pref')
 
 export hoursOfDay = -> 
-  times = [
+  [
     "00:00"
     "01:00"
     "02:00"
@@ -86,10 +86,6 @@ export hoursOfDay = ->
     "23:00"
     "23:59"
   ]
-  if Session.user().dateTimePref.includes('abbr')
-    times.map (s) -> format(parse(s, 'HH:mm', new Date()), "h:mm a", {locale: i18n.dateLocale})
-  else
-    times
 
 export timeline = (date) -> format(date, "yyyy-MM-dd")
 

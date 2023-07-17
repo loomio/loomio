@@ -5,7 +5,7 @@ import Records from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
 import * as Sentry from '@sentry/vue'
 import { BrowserTracing } from "@sentry/tracing"
-import { forEach } from 'lodash'
+import { forEach, snakeCase } from 'lodash'
 import router from '@/routes.coffee'
 
 export default (callback) ->
@@ -57,7 +57,7 @@ export default (callback) ->
 
     forEach Records, (recordInterface, k) ->
       model = Object.getPrototypeOf(recordInterface).model
-      if model && AppConfig.permittedParams[model.singular]
-        model.serializableAttributes = AppConfig.permittedParams[model.singular]
+      if model && AppConfig.permittedParams[snakeCase(model.singular)]
+        model.serializableAttributes = AppConfig.permittedParams[snakeCase(model.singular)]
 
     callback(appConfig)

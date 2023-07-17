@@ -67,7 +67,7 @@ export default class GroupModel extends BaseModel
     @description == '' or @description == null or @description == '<p></p>'
 
   tags: ->
-    @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()
+    @recordStore.tags.collection.chain().find(groupId: @id).simplesort('priority').data()
 
   parentOrSelf: ->
     if @parentId then @parent() else @

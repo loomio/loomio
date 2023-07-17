@@ -24,7 +24,7 @@ class Outcome < ApplicationRecord
 
   %w(
     title poll_type dates_as_options group group_id discussion discussion_id
-    locale mailer anyone_can_participate members admins guest_voters discarded? tags
+    locale mailer members admins guest_voters discarded? tags
   ).each { |message| delegate message, to: :poll }
 
   is_mentionable on: :statement

@@ -39,7 +39,6 @@ v-card.poll-common-option-form
       :label="$t('poll_option_form.option_name')"
       v-model="clone.name"
       :hint="$t('poll_option_form.option_name_hint')"
-      :rules="nameRules"
       counter="85"
     )
     v-select(v-if="hasOptionIcon", :label="$t('poll_option_form.icon')" v-model="clone.icon", :items="icons")

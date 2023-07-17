@@ -1,6 +1,11 @@
-# This file is used by Rack-based servers to start the application.
-
 require_relative "config/environment"
 
-run Rails.application
-Rails.application.load_server
+if ENV["MAINTENANCE"]
+  require "pathname"
+  MAINTENANCE_HTML = Pathname.new(File.dirname(__FILE__)).join("public/maintenance.html").read
+
+  run lambda { |env| [ 200, { "Content-Type" => "text/html" }, [ MAINTENANCE_HTML ] ] }
+else
+	run Rails.application
+	Rails.application.load_server
+end

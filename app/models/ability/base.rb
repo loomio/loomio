@@ -21,6 +21,7 @@ module Ability
     prepend Ability::Chatbot
     prepend Ability::Attachment
     prepend Ability::Task
+    prepend Ability::PollTemplate
 
 
     def initialize(user)
