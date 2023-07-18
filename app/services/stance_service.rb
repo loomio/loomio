@@ -28,14 +28,13 @@ class StanceService
   def self.update(stance:, actor:, params: )
     actor.ability.authorize!(:update, stance)
     is_update = !!stance.cast_at
-    last_scores = stance.option_scores
 
+    new_stance = stance.build_replacement
+    new_stance.assign_attributes_and_files(params)
 
-    if is_update && last_scores != stance.build_option_scores
+    if is_update && stance.option_scores != new_stance.build_option_scores
       # they've changed their position! create a new stance, so that discussion threads make sense
 
-      new_stance = stance.build_replacement
-      new_stance.assign_attributes_and_files(params)
       new_stance.cast_at = Time.zone.now
 
       Stance.transaction do
