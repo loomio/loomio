@@ -12,10 +12,14 @@ class TagService
   def self.update(tag:, params:, actor:)
     actor.ability.authorize! :update, tag
 
-    tag.assign_attributes(params.slice(:name, :color))
+    before = tag.name
+    after = params[:name]
 
-    return false unless tag.valid?
-    tag.save!
+    if before != after
+      RenameTagWorker.new.perform(tag.group_id, tag.name, params.slice(:name, :color))
+    end
+    tag.reload
+
     MessageChannelService.publish_models([tag], group_id: tag.group.id)
     EventBus.broadcast 'tag_update', tag, actor
     tag
@@ -24,8 +28,13 @@ class TagService
   def self.destroy(tag:, actor:)
     actor.ability.authorize! :destroy, tag
 
-    tag.destroy
+    DestroyTagWorker.perform_async(tag.group_id, tag.name)
     EventBus.broadcast 'tag_destroy', tag, actor
+  end
+
+  def self.update_group_and_org_tags(group_id)
+    update_group_tags(group_id)
+    update_org_tagging_counts(Group.find(group_id).parent_or_self.id)
   end
 
   def self.update_group_tags(group_id)

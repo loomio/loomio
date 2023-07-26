@@ -4,8 +4,13 @@ describe API::V1::TagsController, type: :controller do
 
   let(:user) { create :user }
   let(:group) { create :group }
+  let(:subgroup) { create :group, parent: group }
   let!(:tag) { create :tag, name: "test", color: "#ffffff", group: group }
   let!(:another_tag) { create :tag, name: "anothertag", color: "#654321", group: create(:group, is_visible_to_public: false) }
+  let!(:discussion) { create :discussion, group: group, tags: ['test', 'same'] }
+  let!(:poll) { create :poll, group: group, tags: ['test', 'same'] }
+  let!(:sub_discussion) { create :discussion, group: subgroup, tags: ['test', 'same'] }
+  let!(:sub_poll) { create :poll, group: group, tags: ['test', 'same'] }
 
   describe 'create' do
     before do
@@ -34,6 +39,10 @@ describe API::V1::TagsController, type: :controller do
       expect(JSON.parse(response.body)['tags'][0]['name']).to eq 'updated'
       expect(JSON.parse(response.body)['tags'][0]['group_id']).to eq group.id
       expect(JSON.parse(response.body)['tags'][0]['color']).to eq '#ccc'
+      expect(discussion.reload.tags).to eq ['updated', 'same']
+      expect(sub_discussion.reload.tags).to eq ['updated', 'same']
+      expect(poll.reload.tags).to eq ['updated', 'same']
+      expect(sub_poll.reload.tags).to eq ['updated', 'same']
     end
   end
 end
