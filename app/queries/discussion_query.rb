@@ -56,6 +56,7 @@ class DiscussionQuery
 
   def self.filter(chain: , filter: )
     case filter
+    when 'templates' then chain.where(template: true)
     when 'show_closed', 'closed' then chain.is_closed
     when 'all' then chain
     else chain.is_open
