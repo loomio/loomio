@@ -1,6 +1,6 @@
 class AddEnqueueTagsMigrationJob < ActiveRecord::Migration[7.0]
   def up
-    MigrateTagsWorker.perform_async
+    MigrateTagsWorker.perform
   end
   def down
   end
