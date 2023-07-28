@@ -34,16 +34,15 @@ describe API::V1::TagsController, type: :controller do
 
     it 'updates a tag' do
       tag = Tag.find_by(group_id: group.id, name: 'apple')
-      put :update, params: {id: tag.id, tag: {name: 'apple2', color: '#ccc'}}
+      put :update, params: {id: tag.id, tag: {name: 'apple2', color: '#aaa'}}
       expect(response.status).to eq 200
       expect(JSON.parse(response.body)['tags'][0]['name']).to eq 'apple2'
       expect(JSON.parse(response.body)['tags'][0]['group_id']).to eq group.id
-      expect(JSON.parse(response.body)['tags'][0]['color']).to eq '#ccc'
+      expect(JSON.parse(response.body)['tags'][0]['color']).to eq '#aaa'
       expect(discussion.reload.tags).to eq ['apple2', 'banana']
       expect(sub_discussion.reload.tags).to eq ['apple2', 'banana']
       expect(poll.reload.tags).to eq ['apple2', 'banana']
       expect(sub_poll.reload.tags).to eq ['apple2', 'banana']
-      byebug
       expect(Tag.where(group_id: group.parent_or_self.id_and_subgroup_ids).count).to eq 4
     end
   end
