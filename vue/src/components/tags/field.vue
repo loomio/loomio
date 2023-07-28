@@ -9,7 +9,7 @@ export default
 
   data: ->
     items:
-      uniq(@model.group().tags().map((t) -> t.name).concat(@model.group().parentOrSelf().tags().map((t) -> t.name)))
+      uniq(@model.group().tags().map((t) -> t.name).concat(@model.group().parentOrSelf().tags().filter((t) -> t.taggingsCount).map((t) -> t.name)))
 
   methods:
     colorFor: (name) ->
