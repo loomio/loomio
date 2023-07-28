@@ -17,11 +17,12 @@ export default
 
   methods:
     deleteTag: ->
+      tag = Records.tags.find(@tag.id)
       EventBus.$emit 'openModal',
         component: 'ConfirmModal'
         props:
           confirm:
-            submit: @tag.destroy
+            submit: tag.destroy
             text:
               title:    'loomio_tags.destroy_tag'
               helptext: 'loomio_tags.destroy_helptext'
@@ -44,7 +45,7 @@ v-card.tags-modal
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    v-text-field(v-model="tag.name", :label="$t('loomio_tags.name_label')" autofocus :disabled="tag.id")
+    v-text-field(v-model="tag.name", :label="$t('loomio_tags.name_label')" autofocus)
     validation-errors(:subject="tag" field="name")
 
     label(for="input-708" class="v-label caption" v-t="'loomio_tags.color_label'") Color
@@ -54,7 +55,7 @@ v-card.tags-modal
         input(:id="color", v-model="tag.color", :value="color" type="radio")
         label(:for="color", :style="{'background-color': color, color: color}") {{color}}
   v-card-actions
-    //- v-btn(v-if="tag.id", @click="deleteTag", v-t="'common.action.delete'", :disabled="loading")
+    v-btn(v-if="tag.id", @click="deleteTag", v-t="'common.action.delete'", :disabled="loading")
     v-spacer
     v-btn.tag-form__submit(color="primary", @click="submit", v-t="'common.action.save'", :loading="loading")
 </template>

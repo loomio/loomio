@@ -64,7 +64,7 @@ export default
 <template lang="pug">
 .tags-panel
   v-card.my-4.pa-2(outlined)
-    tags-display(:model="group" :show-counts="group.parentId" :show-org-counts="!group.parentId" :selected="$route.params.tag")
+    tags-display(:model="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId" :selected="$route.params.tag")
   loading(v-if="!group")
   div(v-if="group")
     v-card.mb-4(outlined)

@@ -8,7 +8,6 @@ export default class TagModel extends BaseModel
   @plural: 'tags'
   @uniqueIndices: ['id']
   @indices: ['groupId']
-  @serializableAttributes: ['groupId', 'color', 'name']
   @colors: colors
 
   defaultValues: ->

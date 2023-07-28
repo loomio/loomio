@@ -1,17 +1,23 @@
 <script lang="coffee">
 import Session from '@/shared/services/session'
 import EventBus from '@/shared/services/event_bus'
+import { uniq } from 'lodash'
 
 export default
   props:
     model: Object
 
   data: ->
-    items: @model.group().tags().map((t) -> t.name)
+    items:
+      uniq(@model.group().tags().map((t) -> t.name).concat(@model.group().parentOrSelf().tags().filter((t) -> t.taggingsCount).map((t) -> t.name)))
 
   methods:
     colorFor: (name) ->
-      (@model.group().tags().find((t) -> t.name == name) || {}).color
+      (
+        @model.group().tags().find((t) -> t.name == name) || 
+        @model.group().parentOrSelf().tags().find((t) -> t.name == name) ||
+        {}
+      ).color
 
     remove: (name) ->
       @model.tags.splice(@model.tags.indexOf(name), 1)

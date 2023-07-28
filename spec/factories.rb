@@ -63,9 +63,9 @@ FactoryBot.define do
       user = create(:user)
       group.parent&.add_admin!(user)
       group.add_admin!(user)
-      create(:tag, group: group, name: "cool")
-      create(:tag, group: group, name: "wowzers")
-      create(:tag, group: group, name: "example tag")
+      # create(:tag, group: group, name: "cool")
+      # create(:tag, group: group, name: "wowzers")
+      # create(:tag, group: group, name: "example tag")
     end
   end
 

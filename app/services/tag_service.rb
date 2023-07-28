@@ -12,10 +12,9 @@ class TagService
   def self.update(tag:, params:, actor:)
     actor.ability.authorize! :update, tag
 
-    tag.assign_attributes(params.slice(:name, :color))
+    UpdateTagWorker.new.perform(tag.group_id, tag.name, params.slice(:name, :color))
+    tag.reload
 
-    return false unless tag.valid?
-    tag.save!
     MessageChannelService.publish_models([tag], group_id: tag.group.id)
     EventBus.broadcast 'tag_update', tag, actor
     tag
@@ -24,8 +23,24 @@ class TagService
   def self.destroy(tag:, actor:)
     actor.ability.authorize! :destroy, tag
 
-    tag.destroy
+    DestroyTagWorker.perform_async(tag.group_id, tag.name)
     EventBus.broadcast 'tag_destroy', tag, actor
+  end
+
+  def self.apply_colors(group_id)
+    group_ids = Group.find(group_id).parent_or_self.id_and_subgroup_ids
+    Tag.where(group_id: group_id, color: nil).each do |tag|
+      if parent_tag = Tag.where(group_id: group_ids, name: tag.name).where.not(color: nil).first
+        tag.update_columns(color: parent_tag.color)
+      else
+        tag.update_columns(color: Tag::COLORS.sample)
+      end
+    end
+  end
+
+  def self.update_group_and_org_tags(group_id)
+    update_group_tags(group_id)
+    update_org_tagging_counts(Group.find(group_id).parent_or_self.id)
   end
 
   def self.update_group_tags(group_id)
@@ -51,7 +66,7 @@ class TagService
       Tag.upsert_all(tags, unique_by: [:group_id, :name], record_timestamps: false)
     end
 
-    update_org_tagging_counts(group.parent_or_self.id)
+    apply_colors(group_id)
   end
 
   def self.update_org_tagging_counts(group_id)
@@ -76,5 +91,6 @@ class TagService
 
       Tag.upsert_all(tags, unique_by: [:group_id, :name], record_timestamps: false)
     end
+    apply_colors(group_id)
   end
 end
