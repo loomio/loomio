@@ -30,7 +30,7 @@ class API::V1::TagsController < API::V1::RestfulController
   end
 
   def load_and_authorize_group
-    @group = Group.find(params[:group_id]).parent_or_self
-    current_user.ability.authorize!(:update, Group.find(params[:group_id]).parent_or_self)
+    @group = Group.find(params[:group_id])
+    current_user.ability.authorize!(:update, @group)
   end
 end

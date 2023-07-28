@@ -12,12 +12,7 @@ class TagService
   def self.update(tag:, params:, actor:)
     actor.ability.authorize! :update, tag
 
-    before = tag.name
-    after = params[:name]
-
-    if before != after
-      RenameTagWorker.new.perform(tag.group_id, tag.name, params.slice(:name, :color))
-    end
+    UpdateTagWorker.new.perform(tag.group_id, tag.name, params.slice(:name, :color))
     tag.reload
 
     MessageChannelService.publish_models([tag], group_id: tag.group.id)
@@ -59,8 +54,6 @@ class TagService
       end
       Tag.upsert_all(tags, unique_by: [:group_id, :name], record_timestamps: false)
     end
-
-    update_org_tagging_counts(group.parent_or_self.id)
   end
 
   def self.update_org_tagging_counts(group_id)

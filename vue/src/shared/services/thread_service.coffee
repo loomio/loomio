@@ -148,16 +148,6 @@ export default new class ThreadService
       canPerform: -> discussion.isUnread()
       perform: => @dismiss(discussion)
 
-    edit_tags:
-      icon: 'mdi-tag-outline'
-      name: 'loomio_tags.card_title'
-      canPerform: -> AbilityService.canEditThread(discussion)
-      perform: ->
-        EventBus.$emit 'openModal',
-          component: 'TagsSelect',
-          props:
-            model: discussion.clone()
-
     edit_arrangement:
       icon: (discussion.newestFirst && 'mdi-arrow-up') || 'mdi-arrow-down'
       name: (discussion.newestFirst && 'strand_nav.newest_first') || 'strand_nav.oldest_first'
