@@ -86,7 +86,7 @@ v-card.tags-modal
         v-list-item
           .handle(v-handle)
             v-icon mdi-drag-vertical
-          v-chip(:color="tag.color" v-handle outlined) {{tag.id}} {{tag.priority}} {{tag.name}}
+          v-chip(:color="tag.color" v-handle outlined) {{tag.name}}
           v-spacer
           v-btn(icon @click="openEditTagModal(tag)")
             v-icon.text--secondary mdi-pencil
