@@ -8,7 +8,7 @@ describe API::V1::TagsController, type: :controller do
   let!(:discussion) { create :discussion, group: group, tags: ['apple', 'banana'] }
   let!(:poll) { create :poll, group: group, tags: ['apple', 'banana'] }
   let!(:sub_discussion) { create :discussion, group: subgroup, tags: ['apple', 'banana'] }
-  let!(:sub_poll) { create :poll, group: group, tags: ['apple', 'banana'] }
+  let!(:sub_poll) { create :poll, group: subgroup, tags: ['apple', 'banana'] }
 
   describe 'create' do
     before do
@@ -39,11 +39,48 @@ describe API::V1::TagsController, type: :controller do
       expect(JSON.parse(response.body)['tags'][0]['name']).to eq 'apple2'
       expect(JSON.parse(response.body)['tags'][0]['group_id']).to eq group.id
       expect(JSON.parse(response.body)['tags'][0]['color']).to eq '#aaa'
+    end
+
+    it 'update parent tag updates subgroup tag' do
+      tag = Tag.find_by(group_id: group.id, name: 'apple')
+      put :update, params: {id: tag.id, tag: {name: 'apple2', color: '#aaa'}}
+      expect(response.status).to eq 200
       expect(discussion.reload.tags).to eq ['apple2', 'banana']
       expect(sub_discussion.reload.tags).to eq ['apple2', 'banana']
       expect(poll.reload.tags).to eq ['apple2', 'banana']
       expect(sub_poll.reload.tags).to eq ['apple2', 'banana']
       expect(Tag.where(group_id: group.parent_or_self.id_and_subgroup_ids).count).to eq 4
+    end
+
+    it 'merge parent tag into existing tag' do
+      tag = Tag.find_by(group_id: group.id, name: 'apple')
+      put :update, params: {id: tag.id, tag: {name: 'banana', color: '#aaa'}}
+      expect(response.status).to eq 200
+      expect(discussion.reload.tags).to eq ['banana']
+      expect(sub_discussion.reload.tags).to eq ['banana']
+      expect(poll.reload.tags).to eq ['banana']
+      expect(sub_poll.reload.tags).to eq ['banana']
+      expect(Tag.where(group_id: group.parent_or_self.id_and_subgroup_ids).count).to eq 2
+    end
+
+    it 'update subgroup tag does not update parent tag' do
+      tag = Tag.find_by(group_id: subgroup.id, name: 'apple')
+      put :update, params: {id: tag.id, tag: {name: 'apple2', color: '#aaa'}}
+      expect(response.status).to eq 200
+      expect(discussion.reload.tags).to eq ['apple', 'banana']
+      expect(sub_discussion.reload.tags).to eq ['apple2', 'banana']
+      expect(poll.reload.tags).to eq ['apple', 'banana']
+      expect(sub_poll.reload.tags).to eq ['apple2', 'banana']
+    end
+
+    it 'merge subgroup tag' do
+      tag = Tag.find_by(group_id: subgroup.id, name: 'apple')
+      put :update, params: {id: tag.id, tag: {name: 'banana', color: '#aaa'}}
+      expect(discussion.reload.tags).to eq ['apple', 'banana']
+      expect(sub_discussion.reload.tags).to eq ['banana']
+      expect(poll.reload.tags).to eq ['apple', 'banana']
+      expect(sub_poll.reload.tags).to eq ['banana']
+      expect(Tag.where(group_id: group.parent_or_self.id_and_subgroup_ids).count).to eq 3
     end
   end
 end
