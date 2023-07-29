@@ -24,7 +24,7 @@ class UpdateTagWorker
       TagService.update_group_tags(group_id)
     end
 
-    Tag.where(group_id: group_ids, name: new_name).update_all(color: params[:color])
+    Tag.where(group_id: group_ids, name: new_name).update_all(color: color)
 
     TagService.update_org_tagging_counts(group.parent_or_self.id)
   end
