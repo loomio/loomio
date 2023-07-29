@@ -12,7 +12,7 @@ class TagService
   def self.update(tag:, params:, actor:)
     actor.ability.authorize! :update, tag
 
-    UpdateTagWorker.new.perform(tag.group_id, tag.name, params.slice(:name, :color))
+    UpdateTagWorker.new.perform(tag.group_id, tag.name, params[:name].strip, params[:color])
     tag.reload
 
     MessageChannelService.publish_models([tag], group_id: tag.group.id)
