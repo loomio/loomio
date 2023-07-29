@@ -21,7 +21,7 @@ class MigrateTagsWorker
       end
     end
 
-    group_ids.each {|id| TagService.update_group_and_org_tags(id) }
+    group_ids.each {|id| TagService.update_group_tags(id) }
     Group.where(id: group_ids).where(parent_id: nil).pluck(:id).each {|id| TagService.update_org_tagging_counts(id) }
   end
 end
