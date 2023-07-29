@@ -80,7 +80,9 @@ class TagService
       {name: names.find {|name| name.downcase == dname}, group_id: group_id, org_taggings_count: count}
     end
 
-    Tag.upsert_all(attrs, unique_by: [:group_id, :name], record_timestamps: false)
+    if attrs.any?
+      Tag.upsert_all(attrs, unique_by: [:group_id, :name], record_timestamps: false)
+    end
 
     apply_colors(group_id)
   end
