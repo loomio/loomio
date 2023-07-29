@@ -23,7 +23,7 @@ class Tag < ApplicationRecord
   belongs_to :group
 
   validates :name, presence: true, uniqueness: { scope: :group }
-  validates :color, presence: true, format: /\A#([A-F0-9]{3}){1,2}\z/i
+  # validates :color, presence: true, format: /\A#([A-F0-9]{3}){1,2}\z/i
   before_validation :set_defaults
 
   private

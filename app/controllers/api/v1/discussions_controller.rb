@@ -162,7 +162,8 @@ class API::V1::DiscussionsController < API::V1::RestfulController
   end
 
   def split_tags
-    params[:tags].to_s.split('|')
+    # this does not split tags, it just assumes one tag
+    Array(params[:tags].to_s.strip)
   end
 
   def accessible_records

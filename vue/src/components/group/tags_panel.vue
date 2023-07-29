@@ -90,7 +90,7 @@ export default
                 color='accent'
                 v-if="discussions.length < discussionsLoader.total && !discussionsLoader.exhausted"
                 :loading="discussionsLoader.loading"
-                @click="fetch()"
+                @click="discussionsLoader.fetchRecords()"
               )
                 span(v-t="'common.action.load_more'")
         p.pa-4.text-center(

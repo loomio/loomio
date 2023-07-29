@@ -44,11 +44,10 @@ class TagService
   end
 
   def self.update_group_tags(group_id)
-
     return unless group = Group.find_by(id: group_id)
 
     names = (group.discussions.kept.select(:tags).pluck(:tags).flatten +
-     group.polls.kept.select(:tags).pluck(:tags).flatten)
+             group.polls.kept.select(:tags).pluck(:tags).flatten)
 
     counts = {}
 
@@ -60,10 +59,10 @@ class TagService
     group.tags.where.not(name: counts.keys).update_all(taggings_count: 0)
 
     if counts.any?
-      tags = counts.map do |dname, count|
+      attrs = counts.map do |dname, count|
         {name: names.find {|name| name.downcase == dname}, group_id: group.id, taggings_count: count}
       end
-      Tag.upsert_all(tags, unique_by: [:group_id, :name], record_timestamps: false)
+      Tag.upsert_all(attrs, unique_by: [:group_id, :name], record_timestamps: false)
     end
 
     apply_colors(group_id)
@@ -74,23 +73,15 @@ class TagService
 
     group_ids = group.id_and_subgroup_ids
 
-    names = Discussion.where(group_id: group_ids).kept.select(:tags).pluck(:tags).flatten + 
-            Poll.where(group_id: group_ids).kept.select(:tags).pluck(:tags).flatten
+    names = Tag.where(group_id: group_ids).pluck(:name).uniq
 
-    counts = {}
-
-    names.map(&:downcase).each do |dname|
-      counts[dname] ||= 0
-      counts[dname] += 1
+    attrs = Tag.where(group_id: group_ids).pluck(:name).map(&:downcase).uniq.map do |dname|
+      count = Tag.where(group_id: group_ids, name: dname).sum(:taggings_count)
+      {name: names.find {|name| name.downcase == dname}, group_id: group_id, org_taggings_count: count}
     end
 
-    if counts.any?
-      tags = counts.map do |dname, count|
-        { name: names.find {|name| name.downcase == dname}, group_id: group.id, org_taggings_count: count}
-      end
+    Tag.upsert_all(attrs, unique_by: [:group_id, :name], record_timestamps: false)
 
-      Tag.upsert_all(tags, unique_by: [:group_id, :name], record_timestamps: false)
-    end
     apply_colors(group_id)
   end
 end
