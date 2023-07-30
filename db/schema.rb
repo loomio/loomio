@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_15_234935) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_010319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -843,6 +843,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_15_234935) do
     t.integer "priority", default: 0, null: false
     t.integer "org_taggings_count", default: 0, null: false
     t.index ["group_id", "name"], name: "index_tags_on_group_id_and_name", unique: true
+    t.index ["group_id"], name: "index_tags_on_group_id"
     t.index ["name"], name: "index_tags_on_name"
   end
 
