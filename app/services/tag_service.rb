@@ -49,6 +49,8 @@ class TagService
     names = (group.discussions.kept.select(:tags).pluck(:tags).flatten +
              group.polls.kept.select(:tags).pluck(:tags).flatten)
 
+    return if names.empty?
+
     counts = {}
 
     names.map(&:downcase).each do |dname|
@@ -58,11 +60,17 @@ class TagService
 
     group.tags.where.not(name: counts.keys).update_all(taggings_count: 0)
 
-    if counts.any?
-      attrs = counts.map do |dname, count|
-        {name: names.find {|name| name.downcase == dname}, group_id: group.id, taggings_count: count}
-      end
-      Tag.upsert_all(attrs, unique_by: [:group_id, :name], record_timestamps: false)
+    present = Tag.where(group_id: group_id, name: counts.keys).pluck(:name).map(&:downcase)
+    missing = counts.keys - present
+
+    Tag.where(group_id: group_id, name: present).each do |tag|
+      tag.update_column(:taggings_count, counts[tag.name.downcase])
+    end
+
+    missing.each do |dname|
+      Tag.insert({group_id: group_id,
+                  name: names.find {|name| name.downcase == dname},
+                  taggings_count: counts[dname]})
     end
 
     apply_colors(group_id)
@@ -74,14 +82,25 @@ class TagService
     group_ids = group.id_and_subgroup_ids
 
     names = Tag.where(group_id: group_ids).pluck(:name).uniq
+    counts = {}
 
-    attrs = Tag.where(group_id: group_ids).pluck(:name).map(&:downcase).uniq.map do |dname|
-      count = Tag.where(group_id: group_ids, name: dname).sum(:taggings_count)
-      {name: names.find {|name| name.downcase == dname}, group_id: group_id, org_taggings_count: count}
+    Tag.where(group_id: group_ids).pluck(:name).map(&:downcase).uniq.map do |dname|
+      counts[dname] = Tag.where(group_id: group_ids, name: dname).sum(:taggings_count) 
     end
 
-    if attrs.any?
-      Tag.upsert_all(attrs, unique_by: [:group_id, :name], record_timestamps: false)
+    group.tags.where.not(name: counts.keys).update_all(org_taggings_count: 0)
+
+    present = Tag.where(group_id: group_id, name: names).pluck(:name).map(&:downcase)
+    missing = counts.keys - present
+
+    Tag.where(group_id: group_id, name: present).each do |tag|
+      tag.update_column(:org_taggings_count, counts[tag.name.downcase])
+    end
+
+    missing.each do |dname|
+      Tag.insert({group_id: group_id,
+                  name: names.find {|name| name.downcase == dname},
+                  org_taggings_count: counts[dname]})
     end
 
     apply_colors(group_id)
