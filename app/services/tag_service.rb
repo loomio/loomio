@@ -82,6 +82,9 @@ class TagService
     group_ids = group.id_and_subgroup_ids
 
     names = Tag.where(group_id: group_ids).pluck(:name).uniq
+    
+    return if names.empty?
+
     counts = {}
 
     Tag.where(group_id: group_ids).pluck(:name).map(&:downcase).uniq.map do |dname|
