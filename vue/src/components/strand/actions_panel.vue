@@ -47,7 +47,7 @@ export default
     isLoggedIn: -> Session.isSignedIn()
 
   watch:
-    'discussion.id': => 
+    'discussion.id': -> 
       @resetComment()
       @resetPoll()
 
