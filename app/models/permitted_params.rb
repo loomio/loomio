@@ -1,7 +1,7 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
-    stance discussion discussion_reader comment
+    stance discussion discussion_template discussion_reader comment
     contact_message document
     webhook chatbot contact_request reaction tag
   )
@@ -195,6 +195,22 @@ class PermittedParams < Struct.new(:params)
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},
      :document_ids, {document_ids: []},
+     :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
+    ]
+  end
+
+  def discussion_template_attributes
+    [:title,
+     :description,
+     :description_format,
+     :process_name,
+     :process_subtitle,
+     :process_introduction,
+     :process_introduction_format,
+     :group_id,
+     :newest_first,
+     :max_depth,
+     :tags, {tags: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end

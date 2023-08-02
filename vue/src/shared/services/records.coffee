@@ -5,6 +5,7 @@ import loki        from '@/shared/record_store/loki'
 import CommentRecordsInterface from '@/shared/interfaces/comment_records_interface'
 import ChatbotRecordsInterface from '@/shared/interfaces/chatbot_records_interface'
 import DiscussionRecordsInterface from '@/shared/interfaces/discussion_records_interface'
+import DiscussionTemplateRecordsInterface from '@/shared/interfaces/discussion_template_records_interface'
 import DiscussionReaderRecordsInterface from '@/shared/interfaces/discussion_reader_records_interface'
 import EventRecordsInterface from '@/shared/interfaces/event_records_interface'
 import GroupRecordsInterface from '@/shared/interfaces/group_records_interface'
@@ -41,6 +42,7 @@ records.addRecordsInterface CommentRecordsInterface
 records.addRecordsInterface ChatbotRecordsInterface
 records.addRecordsInterface DemoRecordsInterface
 records.addRecordsInterface DiscussionRecordsInterface
+records.addRecordsInterface DiscussionTemplateRecordsInterface
 records.addRecordsInterface DiscussionReaderRecordsInterface
 records.addRecordsInterface EventRecordsInterface
 records.addRecordsInterface GroupRecordsInterface

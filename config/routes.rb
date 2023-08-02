@@ -179,6 +179,8 @@ Rails.application.routes.draw do
         get :direct, on: :collection
       end
 
+      resources :discussion_templates, only: [:create, :index, :show]
+
       resources :discussion_readers, only: [:index] do
         member do
           post :remove_admin
@@ -307,6 +309,12 @@ Rails.application.routes.draw do
       get :dump_i18n_yaml
     end
   end
+
+  resources :thread_templates, only: [] do
+    member do
+      get :dump_i18n_yaml
+    end
+  end
   
   post :email_processor, to: 'received_emails#create'
 
@@ -353,6 +361,7 @@ Rails.application.routes.draw do
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'
   get 'poll_templates/:id/edit'            => 'application#index'
+  get 'thread_templates/new'               => 'application#index'
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export

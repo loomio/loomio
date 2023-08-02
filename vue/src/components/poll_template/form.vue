@@ -157,7 +157,7 @@ export default
 
 </script>
 <template lang="pug">
-.poll-common-form(:class="isModal ? 'pa-4' : ''") 
+.poll-template-form(:class="isModal ? 'pa-4' : ''") 
   submit-overlay(:value="pollTemplate.processing")
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")

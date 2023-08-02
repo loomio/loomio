@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_30_010319) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_01_051525) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -244,6 +244,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_010319) do
     t.index ["search_vector"], name: "discussion_search_vector_index", using: :gin
   end
 
+  create_table "discussion_templates", force: :cascade do |t|
+    t.string "key"
+    t.integer "group_id"
+    t.integer "position"
+    t.integer "author_id"
+    t.string "title"
+    t.text "description"
+    t.string "description_format", limit: 10, default: "md", null: false
+    t.string "process_name"
+    t.string "process_subtitle"
+    t.string "process_introduction"
+    t.string "process_introduction_format", default: "md", null: false
+    t.jsonb "attachments", default: [], null: false
+    t.integer "max_depth", default: 2, null: false
+    t.boolean "newest_first", default: false, null: false
+    t.datetime "discarded_at", precision: nil
+    t.integer "discarded_by"
+    t.string "content_locale"
+    t.jsonb "link_previews", default: [], null: false
+    t.integer "source_template_id"
+    t.string "tags", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["discarded_at"], name: "index_discussion_templates_on_discarded_at"
+  end
+
   create_table "discussions", id: :serial, force: :cascade do |t|
     t.integer "group_id"
     t.integer "author_id"
@@ -442,7 +468,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_010319) do
     t.boolean "members_can_add_guests", default: true, null: false
     t.boolean "members_can_delete_comments", default: true, null: false
     t.jsonb "link_previews", default: [], null: false
-    t.integer "template_discussions_count", default: 0, null: false
+    t.integer "discussion_templates_count", default: 0, null: false
     t.integer "poll_templates_count", default: 0, null: false
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"

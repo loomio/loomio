@@ -723,6 +723,12 @@ en:
     move_to_existing_thread: Move to existing thread
     start_new_thread: Or, start new thread
 
+  thread_template_form:
+    example_title_label: Example title
+    example_title_hint: Give an example of a good thread title
+    example_description_label: Example description
+    example_description_placeholder: Provide a template that people can use to start a thread with
+
   discussion_form:
     thread_templates: Thread templates
     new_thread_template: New thread template
@@ -1781,7 +1787,6 @@ en:
     select_count_options:  Select {{count}} options
     select_minimum_to_maximum_options: Select {{minimum}} to {{maximum}} options
     custom_poll_types: Custom poll types
-    example_polls_from_thread_template: Examples from thread template
     hidden_poll_templates: Hidden poll templates
     poll_template: Poll template
     poll_template_saved: Poll template saved
