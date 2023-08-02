@@ -34,7 +34,10 @@ export default (callback) ->
           "ChunkLoadError: Loading chunk chunk-",
           "TypeError: annulé",
           "Permission denied to access property \"dispatchEvent\" on cross-origin object",
-          "TypeError: Failed to fetch"
+          "TypeError: Failed to fetch",
+          "Object captured as promise rejection with keys: error, ok, status, statusText",
+          "Object captured as promise rejection with keys: exception, ok, status, statusText",
+          "Non-Error promise rejection captured with keys: exception, ok, status, statusText"
         ]
         dsn: AppConfig.sentry_dsn
         tunnel: '/bug_tunnel'

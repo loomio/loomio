@@ -226,7 +226,7 @@ div.discussions-panel(v-if="group")
           span(v-else v-t="'loomio_tags.tags'")
           v-icon mdi-menu-down
       v-sheet.pa-1
-        tags-display(:model="group" :show-counts="group.parentId" :show-org-counts="!group.parentId")
+        tags-display(:model="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId")
     v-text-field.mr-2.flex-grow-1(
       clearable solo hide-details :value="$route.query.q"
       @input="onQueryInput"

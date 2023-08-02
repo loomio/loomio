@@ -38,7 +38,6 @@ export default
     EventBus.$on 'signedIn',          => @pageError = null
     EventBus.$on 'VueForceUpdate',    => 
       @$nextTick =>
-        console.log("forceupdate")
         @$forceUpdate()
     Flash.success(AppConfig.flash.notice) if AppConfig.flash.notice
 

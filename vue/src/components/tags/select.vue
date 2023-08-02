@@ -8,7 +8,7 @@ import { ContainerMixin, HandleDirective } from 'vue-slicksort'
 
 export default
   props:
-    model:
+    group:
       type: Object
       required: true
     close: Function
@@ -17,30 +17,33 @@ export default
     handle: HandleDirective
 
   data: ->
-    allTags: @model.group().tags()
+    allTags: @group.tags()
 
   mounted: ->
     @watchRecords
-      key: 'tags'+@model.id
+      key: 'tags'+@group.id
       collections: ['tags']
       query: =>
-        @allTags = @model.group().tags()
+        @allTags = @group.tags()
 
   computed:
     canAdminTags: ->
-      @model.group().adminsInclude(Session.user())
+      @group.adminsInclude(Session.user())
 
   methods:
+    query: ->
+      @allTags = @group.tags()
+
     openNewTagModal: ->
       EventBus.$emit 'openModal',
         component: 'TagsModal',
         props:
-          tag: Records.tags.build(groupId: @model.group().parentOrSelf().id)
+          tag: Records.tags.build(groupId: @group.id)
           close: =>
             EventBus.$emit 'openModal',
               component: 'TagsSelect',
               props:
-                model: @model
+                group: @group
 
     openEditTagModal: (tag) ->
       EventBus.$emit 'openModal',
@@ -51,7 +54,7 @@ export default
             EventBus.$emit 'openModal',
               component: 'TagsSelect',
               props:
-                model: @model
+                group: @group
 
     submit: ->
       EventBus.$emit 'closeModal'
@@ -59,7 +62,7 @@ export default
     sortEnded: ->
       setTimeout =>
         Records.remote.post 'tags/priority',
-          group_id: @model.groupId || @model.id
+          group_id: @group.id
           ids: @allTags.map (t) -> t.id
 
 </script>
@@ -73,7 +76,7 @@ v-card.tags-modal
   .px-4.pb-2
     p.text--secondary
       span(v-if="canAdminTags" v-t="'loomio_tags.helptext'")
-      span(v-else v-t="{path: 'loomio_tags.only_admins_can_edit_tags', args: {group: model.group().parentOrSelf().name}}")
+      span(v-else v-t="{path: 'loomio_tags.only_admins_can_edit_tags', args: {group: group.parentOrSelf().name}}")
 
   div(v-if="canAdminTags")
     .pa-4(v-if="allTags.length == 0")
@@ -83,7 +86,7 @@ v-card.tags-modal
         v-list-item
           .handle(v-handle)
             v-icon mdi-drag-vertical
-          v-chip(outlined :color="tag.color" v-handle) {{tag.name}}
+          v-chip(:color="tag.color" v-handle outlined) {{tag.name}}
           v-spacer
           v-btn(icon @click="openEditTagModal(tag)")
             v-icon.text--secondary mdi-pencil

@@ -162,7 +162,7 @@ class API::V1::DiscussionsController < API::V1::RestfulController
   end
 
   def split_tags
-    params[:tags].to_s.split('|')
+    Array(params[:tags].to_s).reject(&:blank?)
   end
 
   def accessible_records

@@ -20,12 +20,20 @@ class RecordCloner
 
     clone_group.save!
 
+    update_tag_colors(clone_group, group)
+
     clone_group.polls.each do |poll|
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
     end
     clone_group.discussions.each {|d| EventService.repair_thread(d.id) }
     clone_group.reload
+  end
+
+  def update_tag_colors(clone_group, group)
+    group.tags.pluck(:name, :color).each do |pair|
+      Tag.where(group_id: clone_group.id, name: pair[0]).update_all(color: pair[1])
+    end
   end
 
   def create_clone_group_for_actor(group, actor)
@@ -36,6 +44,7 @@ class RecordCloner
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
 
+    update_tag_colors(clone_group, group)
     store_source_record_ids(clone_group)
 
 
@@ -53,9 +62,9 @@ class RecordCloner
 
     group.discussions = source_group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
     group.polls = source_group.polls.kept.map {|p| new_clone_poll(p) }
-    group.tags = source_group.tags.map { |t| new_clone_tag(t) }
     group.save!
 
+    update_tag_colors(group, source_group)
     store_source_record_ids(group)
     TranslationService.translate_group_content!(group, actor.locale)
 
@@ -87,6 +96,8 @@ class RecordCloner
   def create_clone_group(group)
     clone_group = new_clone_group(group)
     clone_group.save!
+
+    update_tag_colors(clone_group, group)
 
     store_source_record_ids(clone_group)
 
@@ -139,7 +150,6 @@ class RecordCloner
     clone_group.discussions = group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
     clone_group.subgroups = group.subgroups.published.map {|g| new_clone_group(g, clone_group) }
     clone_group.polls = group.polls.kept.map {|p| new_clone_poll(p) }
-    clone_group.tags = group.tags.map { |t| new_clone_tag(t) }
 
     clone_group
   end

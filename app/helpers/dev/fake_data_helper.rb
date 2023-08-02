@@ -46,7 +46,7 @@ module Dev::FakeDataHelper
     values = defaults.merge(args)
     values[:handle] = values[:name].parameterize
     group = Group.new(values)
-    group.tags = [fake_tag]
+    # group.tags = [fake_tag]
 
     # puts 'attaching'
     # group.logo.attach(
@@ -79,6 +79,7 @@ module Dev::FakeDataHelper
                     Faker::TvShows::Simpsons.quote,
                     Faker::Quote.famous_last_words].sample,
       private: true,
+      tags: ['spicy'],
       group: fake_group,
       author: fake_user}.merge(args))
   end
@@ -180,6 +181,7 @@ module Dev::FakeDataHelper
       discussion: fake_discussion,
       poll_type: 'poll',
       title: [Faker::Superhero.name, Faker::Movies::StarWars.quote].sample.truncate(140),
+      tags: ['biggin'],
       details: [
         Faker::Movies::StarWars.quote,
         Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote,
