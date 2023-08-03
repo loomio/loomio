@@ -14,4 +14,16 @@ class DiscussionTemplateService
     discussion_template.save!
     discussion_template
   end
+
+
+  def self.update(discussion_template:, params:, actor:)
+    actor.ability.authorize! :update, discussion_template
+
+    discussion_template.assign_attributes_and_files(params.except(:group_id))
+    return false unless discussion_template.valid?
+    discussion_template.save!
+
+    discussion_template
+  end
+
 end

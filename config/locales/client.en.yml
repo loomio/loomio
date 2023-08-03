@@ -723,7 +723,8 @@ en:
     move_to_existing_thread: Move to existing thread
     start_new_thread: Or, start new thread
 
-  thread_template_form:
+  thread_template:
+    thread_template_saved: Thread template saved
     example_title_label: Example title
     example_title_hint: Give an example of a good thread title
     example_description_label: Example description

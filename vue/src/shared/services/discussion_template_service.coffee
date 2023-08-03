@@ -28,20 +28,20 @@ export default new class PollTemplateService
       to: ->
         "/thread_templates/#{discussionTemplate.id}?&return_to=#{Session.returnTo()}"
 
-    # move:
-    #   name: 'common.action.move'
-    #   icon: 'mdi-arrow-up-down'
-    #   menu: true
-    #   canPerform: -> !pollTemplate.discardedAt && group.adminsInclude(Session.user())
-    #   perform: -> EventBus.$emit('sortPollTemplates')
+    move:
+      name: 'common.action.move'
+      icon: 'mdi-arrow-up-down'
+      menu: true
+      canPerform: -> !discussionTemplate.discardedAt && group.adminsInclude(Session.user())
+      perform: -> EventBus.$emit('sortThreadTemplates')
 
-    # discard:
-    #   icon: 'mdi-eye-off'
-    #   name: 'common.action.hide'
-    #   menu: true
-    #   canPerform: -> pollTemplate.id && !pollTemplate.discardedAt && group.adminsInclude(Session.user())
-    #   perform: ->
-    #     Records.remote.post('poll_templates/discard', {group_id: group.id, id: pollTemplate.id})
+    discard:
+      icon: 'mdi-eye-off'
+      name: 'common.action.hide'
+      menu: true
+      canPerform: -> discussionTemplate.id && !discussionTemplate.discardedAt && group.adminsInclude(Session.user())
+      perform: ->
+        Records.remote.post('discussion_templates/discard', {group_id: group.id, id: discussionTemplate.id})
 
     # undiscard:
     #   icon: 'mdi-eye'

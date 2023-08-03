@@ -179,7 +179,16 @@ Rails.application.routes.draw do
         get :direct, on: :collection
       end
 
-      resources :discussion_templates, only: [:create, :index, :show]
+      resources :discussion_templates, only: [:create, :index, :show, :update] do
+        collection do
+          # post :hide
+          # post :unhide
+          # post :discard
+          # post :undiscard
+          post :positions
+          # post :settings
+        end
+      end
 
       resources :discussion_readers, only: [:index] do
         member do

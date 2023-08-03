@@ -11,13 +11,16 @@ export default class DiscussionTemplateModel extends BaseModel
   defaultValues: ->
     description: null
     descriptionFormat: 'html'
+    processIntroduction: null
+    processIntroductionFormat: 'html'
     title: null
     tags: []
     files: []
     imageFiles: []
     attachments: []
     linkPreviews: []
-
+    maxDepth: 3
+    newestFirst: false
 
   relationships: ->
     @belongsTo 'author', from: 'users'

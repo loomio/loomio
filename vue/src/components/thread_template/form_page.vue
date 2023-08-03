@@ -17,7 +17,7 @@ export default
       @discussionTemplate = Records.discussionTemplates.build(groupId: groupId)
     else if templateId = parseInt(@$route.params.id)
       Records.discussionTemplates.findOrFetchById(templateId).then (template) =>
-        @discussionTemplate = template
+        @discussionTemplate = template.clone()
 
 </script>
 <template lang="pug">
