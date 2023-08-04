@@ -1,0 +1,19 @@
+open_discussion:
+  title_i18n: discussion_templates.open_discussion.title
+  process_name_i18n: discussion_templates.open_discussion.process_name
+  process_subtitle_i18n: discussion_templates.open_discussion.process_subtitle
+  process_introduction_i18n: discussion_templates.open_discussion.process_introduction
+  title_i18n: discussion_templates.open_discussion.title
+  description_i18n: discussion_templates.open_discussion.description
+  max_depth: 3
+  newest_first: false
+
+updates_thread:
+  title_i18n: discussion_templates.updates_thread.title
+  process_name_i18n: discussion_templates.updates_thread.process_name
+  process_subtitle_i18n: discussion_templates.updates_thread.process_subtitle
+  process_introduction_i18n: discussion_templates.updates_thread.process_introduction
+  title_i18n: discussion_templates.updates_thread.title
+  description_i18n: discussion_templates.updates_thread.description
+  max_depth: 2
+  newest_first: true

@@ -72,6 +72,7 @@ module Null::Group
       identities
       accepted_members
       hidden_poll_templates
+      hidden_discussion_templates
     ]
   end
 
@@ -97,6 +98,10 @@ module Null::Group
 
   def poll_templates
     PollTemplate.none
+  end
+
+  def discussion_templates
+    DiscussionTemplate.none
   end
   
   def tags
@@ -173,6 +178,13 @@ module Null::Group
       'ranked_choice' => 9,
       'meeting' => 10,
       'count' => 11,
+    }
+  end
+
+  def discussion_template_positions
+    {
+      'open_discussion' => 0,
+      'updates_thread' => 1
     }
   end
 

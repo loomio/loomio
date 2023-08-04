@@ -29,17 +29,27 @@ export default
       if @$route.params.key
         Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
           @discussion = discussion.clone()
+
       else if templateId = parseInt(@$route.query.template_id)
         Records.discussionTemplates.findOrFetchById(templateId).then (template) =>
           @discussion = template.buildDiscussion()
           if template.groupId && AbilityService.canStartThread(template.group())
             @discussion.groupId = template.groupId
+
+      else if templateKey = @$route.query.template_key
+        Records.discussionTemplates.findOrFetchByKey(@$route.query.template_key, @$route.query.group_id).then (template) =>
+          @discussion = template.buildDiscussion()
+          console.log 'template.groupId', template.groupId
+          if template.groupId && AbilityService.canStartThread(template.group())
+            @discussion.groupId = template.groupId
+
       else if @groupId = parseInt(@$route.query.group_id)
         Records.groups.findOrFetchById(@groupId).then =>
           @discussion = Records.discussions.build
             title: @$route.query.title
             groupId: @groupId
             descriptionFormat: Session.defaultFormat()
+
       else if userId = parseInt(@$route.query.user_id)
         Records.users.findOrFetchById(userId).then (user) =>
           @user = user
@@ -47,6 +57,7 @@ export default
             title: @$route.query.title
             groupId: null
             descriptionFormat: Session.defaultFormat()
+
       else
         @discussion = Records.discussions.build
           title: @$route.query.title

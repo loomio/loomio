@@ -69,20 +69,20 @@ export default new class PollTemplateService
     #             helptext: 'poll_common_form.confirm_delete'
     #             submit: 'common.action.delete'
 
-    # hide:
-    #   icon: 'mdi-eye-off'
-    #   name: 'common.action.hide'
-    #   menu: true
-    #   canPerform: -> 
-    #     !pollTemplate.id && pollTemplate.key && !pollTemplate.discardedAt && group.adminsInclude(Session.user())
-    #   perform: ->
-    #     Records.remote.post('poll_templates/hide', {group_id: group.id, key: pollTemplate.key})
+    hide:
+      icon: 'mdi-eye-off'
+      name: 'common.action.hide'
+      menu: true
+      canPerform: -> 
+        !discussionTemplate.id && discussionTemplate.key && !discussionTemplate.discardedAt && group.adminsInclude(Session.user())
+      perform: ->
+        Records.remote.post('discussion_templates/hide', {group_id: group.id, key: discussionTemplate.key})
 
-    # unhide:
-    #   icon: 'mdi-eye'
-    #   name: 'common.action.unhide'
-    #   menu: true
-    #   canPerform: -> 
-    #     !pollTemplate.id && pollTemplate.key && pollTemplate.discardedAt && group.adminsInclude(Session.user())
-    #   perform: ->
-    #     Records.remote.post('poll_templates/unhide', {group_id: group.id, key: pollTemplate.key})
+    unhide:
+      icon: 'mdi-eye'
+      name: 'common.action.unhide'
+      menu: true
+      canPerform: -> 
+        !discussionTemplate.id && discussionTemplate.key && discussionTemplate.discardedAt && group.adminsInclude(Session.user())
+      perform: ->
+        Records.remote.post('discussion_templates/unhide', {group_id: group.id, key: discussionTemplate.key})

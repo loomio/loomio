@@ -7,6 +7,7 @@ class AppConfig
     plugins
     poll_types
     poll_templates
+    discussion_templates
     providers
     timezones
     notifications

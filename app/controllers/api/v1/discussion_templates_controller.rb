@@ -2,8 +2,7 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
   def index
     group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
-    # self.collection = PollTemplateService.group_templates(group: group, default_format: current_user.default_format)
-    self.collection = DiscussionTemplate.where(group_id: group.id)
+    self.collection = DiscussionTemplateService.group_templates(group: group)
 
     respond_with_collection
   end 
@@ -26,5 +25,55 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
 
     group.save!
     index
+  end
+
+  def discard
+    @group = current_user.adminable_groups.find_by!(id: params[:group_id])
+    @discussion_template = @group.discussion_templates.kept.find_by!(id: params[:id])
+    @discussion_template.discard!
+    index
+  end
+
+  def undiscard
+    @group = current_user.adminable_groups.find_by!(id: params[:group_id])
+    @discussion_template = @group.discussion_templates.discarded.find_by!(id: params[:id])
+    @discussion_template.undiscard!
+    index
+  end
+
+  def destroy
+    @discussion_template = DiscussionTemplate.find(params[:id])
+    current_user.adminable_groups.find(@discussion_template.group_id)
+    @discussion_template.destroy!
+    destroy_response
+  end
+
+  def hide
+    @group = current_user.adminable_groups.find_by!(id: params[:group_id])
+
+    if DiscussionTemplateService.group_templates(group: @group).any? {|pt| pt.key == params[:key]}
+      @group = current_user.adminable_groups.find_by(id: params[:group_id])
+      @group.hidden_discussion_templates ||= []
+      @group.hidden_discussion_templates.push params[:key].parameterize
+      @group.hidden_discussion_templates.uniq!
+      @group.save!
+      index
+    else
+      response_with_error(404)
+    end
+  end
+
+  def unhide
+    @group = current_user.adminable_groups.find_by!(id: params[:group_id])
+
+    if DiscussionTemplateService.group_templates(group: @group).any? {|pt| pt.key == params[:key]}
+      @group = current_user.adminable_groups.find_by(id: params[:group_id])
+      @group.hidden_discussion_templates -= [params[:key].parameterize]
+      @group.save!
+      self.resource = @group
+      index
+    else
+      response_with_error(404)
+    end
   end
 end

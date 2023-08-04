@@ -165,8 +165,6 @@ export default
       common-notify-fields(:model="discussion")
       //- p.discussion-form__visibility
 
-  | newestFirst {{discussion.newestFirst}}
-  | maxDepth {{discussion.maxDepth}}
   v-card-actions.ma-2
     help-link(path='en/user_manual/threads/starting_threads')
     v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")

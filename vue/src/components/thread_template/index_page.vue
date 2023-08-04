@@ -36,6 +36,7 @@ export default
         @group = Records.groups.findById(parseInt(@$route.query.group_id))
         @templates = Records.discussionTemplates.collection.chain().find(
           groupId: parseInt(@$route.query.group_id)
+          discardedAt: null
         ).simplesort('position').data()
 
         if @group
@@ -51,7 +52,7 @@ export default
       div
         v-card-title
           h1.headline(tabindex="-1" v-t="'discussion_form.thread_templates'")
-        v-list.append-sort-here
+        v-list.append-sort-here(two-line)
           template(v-if="isSorting")
             sortable-list(v-model="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")
               sortable-item(v-for="(template, index) in templates" :index="index" :key="template.id || template.key")
@@ -64,14 +65,9 @@ export default
 
           template(v-else)
             v-list-item(
-              :to="'/d/new?blank_template=1&group_id='+$route.query.group_id"
-            )
-              v-list-item-content
-                v-list-item-title(v-t="'discussion_form.blank'")
-            v-list-item(
               v-for="(template, i) in templates" 
               :key="template.id"
-              :to="'/d/new?template_id='+template.id+'&return_to='+returnTo"
+              :to="'/d/new?' + (template.id ? 'template_id='+template.id : 'template_key='+template.key)+ '&group_id='+ $route.query.group_id + '&return_to='+returnTo"
             )
               v-list-item-content
                 v-list-item-title {{template.processName}}

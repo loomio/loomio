@@ -1,5 +1,22 @@
 ---
 en:
+  discussion_templates:
+    open_discussion:
+      title: anything you like to discuss
+      description: anything you like to describe
+      process_name: Open discussion
+      process_subtitle: Invite a discussion on any topic you feel needs to be discussed
+      process_introduction: Name the topic, intrudece the background and see where it goes
+
+    updates_thread:
+      title: links and news
+      description: feel free to share links and news articles here
+      process_name: Links and news thread
+      process_subtitle: Create a thread for people to share links and news
+      process_introduction: this is a nice place for peopel to share current events and things that don't need their own thread
+      newest_first: true
+      max_depth: 2
+
   explore:
     header: Explore public groups
 

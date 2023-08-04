@@ -1,10 +1,8 @@
 class PollTemplateService
-  def self.group_templates(group: , default_format: 'html')
+  def self.group_templates(group:)
     group.poll_templates.to_a.concat(
       default_templates.map do |template|
         template.position = group.poll_template_positions.fetch(template.key, 999)
-        template.details_format = default_format
-        template.process_introduction_format = default_format
         template.group_id = group.id
         template.discarded_at = DateTime.now if group.hidden_poll_templates.include?(template.key)
         template
@@ -45,8 +43,6 @@ class PollTemplateService
         option
       end
 
-      attrs['details_format'] = nil
-      attrs['process_introduction_format'] = nil
       PollTemplate.new attrs
     end
   end

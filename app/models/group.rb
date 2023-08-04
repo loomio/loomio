@@ -344,6 +344,14 @@ class Group < ApplicationRecord
     self[:info]['poll_template_positions']
   end
 
+  def discussion_template_positions
+    self[:info]['discussion_template_positions'] ||= {
+      'open_discussion' => 1,
+      'updates_thread' => 2,
+    }
+    self[:info]['discussion_template_positions']
+  end
+
   def categorize_poll_templates
     if self[:info].has_key? 'categorize_poll_templates'
       self[:info]['categorize_poll_templates']
@@ -363,6 +371,15 @@ class Group < ApplicationRecord
 
   def hidden_poll_templates=(val)
     self[:info]['hidden_poll_templates'] = val
+  end
+
+  def hidden_discussion_templates
+    self[:info]['hidden_discussion_templates'] ||= AppConfig.app_features.fetch(:hidden_discussion_templates, [])
+    self[:info]['hidden_discussion_templates']
+  end
+
+  def hidden_discussion_templates=(val)
+    self[:info]['hidden_discussion_templates'] = val
   end
 
   private
