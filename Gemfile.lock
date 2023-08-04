@@ -101,8 +101,8 @@ GEM
       ruby2_keywords (>= 0.0.2, < 1.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.786.0)
-    aws-sdk-core (3.178.0)
+    aws-partitions (1.792.0)
+    aws-sdk-core (3.179.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.5)
@@ -110,8 +110,8 @@ GEM
     aws-sdk-kms (1.71.0)
       aws-sdk-core (~> 3, >= 3.177.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.130.0)
-      aws-sdk-core (~> 3, >= 3.177.0)
+    aws-sdk-s3 (1.132.0)
+      aws-sdk-core (~> 3, >= 3.179.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.6)
     aws-sigv4 (1.6.0)
@@ -341,7 +341,7 @@ GEM
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    lograge (0.12.0)
+    lograge (0.13.0)
       actionpack (>= 4)
       activesupport (>= 4)
       railties (>= 4)
@@ -360,7 +360,7 @@ GEM
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
-    minitest (5.18.1)
+    minitest (5.19.0)
     msgpack (1.7.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -383,7 +383,7 @@ GEM
     oga (3.4)
       ast
       ruby-ll (~> 2.1)
-    oj (3.15.0)
+    oj (3.15.1)
     orm_adapter (0.5.0)
     os (1.1.4)
     paper_trail (14.0.0)
@@ -402,9 +402,9 @@ GEM
     puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.7.1)
-    rack (2.2.7)
-    rack-attack (6.6.1)
-      rack (>= 1.0, < 3)
+    rack (2.2.8)
+    rack-attack (6.7.0)
+      rack (>= 1.0, < 4)
     rack-test (2.1.0)
       rack (>= 1.3)
     rack-timeout (0.6.3)
@@ -591,7 +591,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.8)
+    zeitwerk (2.6.9)
 
 PLATFORMS
   x86_64-darwin-21
@@ -642,7 +642,7 @@ DEPENDENCIES
   pg
   premailer-rails
   puma
-  rack (= 2.2.7)
+  rack (= 2.2.8)
   rack-attack
   rack-timeout
   rack_session_access
