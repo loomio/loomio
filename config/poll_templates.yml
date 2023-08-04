@@ -168,8 +168,8 @@ consent:
   process_name_i18n: decision_tools_card.consent_title
   process_subtitle_i18n: poll_templates.consent.process_subtitle
   process_introduction_i18n: poll_templates.consent.process_introduction
-  title_i18n: poll_templates.advice.title
-  details_i18n: poll_templates.advice.details
+  title_i18n: poll_templates.consent.title
+  details_i18n: poll_templates.consent.details
   default_duration_in_days: 7
   tags_i18n:
     - poll_common.consent_process
