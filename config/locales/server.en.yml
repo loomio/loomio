@@ -284,50 +284,6 @@ en:
     length_restriction: Passwords must be at least 8 characters long.
     forbidden_passwords: Common passwords such as “password” are forbidden to keep your account safe.
 
-  introduction_thread:
-    title: Welcome! Please introduce yourself
-    description: |
-      Take a moment to let the group know a bit about who you are. Post a comment below.
-
-      What’s your role or approach to participation in this group? What should people know about you to understand where you’re coming from?
-
-  how_it_works_thread:
-    title: How to use Loomio
-    description: |
-      Welcome to Loomio, an online place for communicating and making decisions.
-
-      This is an example discussion **thread**. You can add comments below. Threads are for discussing topics and getting clear outcomes. This thread is about how Loomio works, so post questions about that here.
-
-      You are currently reading the thread **context**, which can be kept up to date with key information and questions that help people engage.
-
-      To get started with Loomio:
-      <ul>
-        <li>Try commenting in an existing thread, or this one.</li>
-      </ul>
-      Tips for posting on Loomio:
-      <ul>
-        <li>To notify a specific person, type @ followed by their name</li>
-        <li>Drag and drop pictures and attachments or click the paperclip icon</li>
-        <li>See <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 ways to use threads</a> for some ideas and tips</li>
-      </ul>
-
-      If you have any questions, see [Loomio Help](http://help.loomio.org).
-
-  first_proposal:
-    name: Have any questions about using Loomio?
-    description: |
-      _If yes, share your question. If no, you’re ready to comment in your group’s threads!_
-
-      This **Check poll** is asking whether you or anyone here has any questions about using Loomio.
-
-      <ul><li>Go ahead and try it using the buttons and text field below.</li></ul>
-
-      As with any decision or facilitation tool, you will need to respond before it closes.
-
-      You can change your position while it is open (perhaps responding to new info).
-
-      **Try participating! Click one of the buttons.**
-
   task_mailer:
     task_due_reminder:
       subject: "Task reminder: %{name}"
