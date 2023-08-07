@@ -46,7 +46,8 @@ v-card.poll-common-option-form
       v-if="hasOptionMeaning"
       :label="$t('poll_option_form.meaning')"
       :hint="$t('poll_option_form.meaning_hint')"
-      v-model="clone.meaning")
+      v-model="clone.meaning"
+      counter="280")
     v-text-field(
       v-if="hasOptionPrompt"
       :label="$t('poll_option_form.prompt')"
