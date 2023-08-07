@@ -30,7 +30,6 @@ class Discussion < ApplicationRecord
 
   scope :is_open, -> { kept.where(closed_at: nil) }
   scope :is_closed, -> { kept.where("closed_at is not null") }
-  scope :templates, -> { kept.where(template: true) }
 
   validates_presence_of :title, :group, :author
   validates :title, length: { maximum: 150 }
