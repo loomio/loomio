@@ -21,6 +21,22 @@ export default
         ids = @templates.map (p) => p.id || p.key
         Records.remote.post('discussion_templates/positions', group_id: @group.id, ids: ids)
 
+    query: ->
+      @group = Records.groups.findById(parseInt(@$route.query.group_id))
+      @templates = Records.discussionTemplates.collection.chain().find(
+        groupId: parseInt(@$route.query.group_id)
+        discardedAt: (parseInt(@$route.query.hidden) && {$ne: null}) || null
+      ).simplesort('position').data()
+
+      if @group
+        @actions = {}
+        @templates.forEach (template, i) =>
+          @actions[i] = DiscussionTemplateService.actions(template, @group)
+
+  watch:
+    '$route.query': 'query'
+
+
   mounted: ->
     EventBus.$on 'sortThreadTemplates', => @isSorting = true
 
@@ -32,17 +48,7 @@ export default
     @watchRecords
       key: "discussionTemplates#{@$route.query.group_id}"
       collections: ['discussionTemplates']
-      query: =>
-        @group = Records.groups.findById(parseInt(@$route.query.group_id))
-        @templates = Records.discussionTemplates.collection.chain().find(
-          groupId: parseInt(@$route.query.group_id)
-          discardedAt: null
-        ).simplesort('position').data()
-
-        if @group
-          @actions = {}
-          @templates.forEach (template, i) =>
-            @actions[i] = DiscussionTemplateService.actions(template, @group)
+      query: => @query()
 
 </script>
 <template lang="pug">
@@ -51,14 +57,19 @@ export default
     v-container.max-width-800.px-0.px-sm-3
       div
         v-card-title
-          h1.headline(tabindex="-1" v-t="'discussion_form.thread_templates'")
+          h1.headline(tabindex="-1" v-t="'thread_template.start_a_new_thread'")
+        .d-flex
+          v-chip(outlined :to="'?group_id='+$route.query.group_id") Templates
+          v-spacer
+          v-chip(outlined :to="'?group_id='+$route.query.group_id+'&hidden=1'") Hidden templates
+          v-btn(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo" v-t="'discussion_form.new_template'") New template
         v-list.append-sort-here(two-line)
           template(v-if="isSorting")
             sortable-list(v-model="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")
               sortable-item(v-for="(template, index) in templates" :index="index" :key="template.id || template.key")
                 v-list-item(:key="template.id")
                   v-list-item-content
-                    v-list-item-title {{template.processName}}
+                    v-list-item-title {{template.processName || template.title}}
                     v-list-item-subtitle {{template.processSubtitle}}
                   v-list-item-action.handle(v-handle)
                     v-icon mdi-drag-vertical
@@ -70,13 +81,8 @@ export default
               :to="'/d/new?' + (template.id ? 'template_id='+template.id : 'template_key='+template.key)+ '&group_id='+ $route.query.group_id + '&return_to='+returnTo"
             )
               v-list-item-content
-                v-list-item-title {{template.processName}}
+                v-list-item-title {{template.processName || template.title}}
                 v-list-item-subtitle {{template.processSubtitle}}
               v-list-item-action
                 action-menu(:actions='actions[i]' small icon :name="$t('action_dock.more_actions')")
-            v-list-item(
-              :to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo"
-            )
-              v-list-item-content
-                v-list-item-title(v-t="'discussion_form.new_template'")
 </template>

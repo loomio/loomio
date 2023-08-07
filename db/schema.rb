@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_01_051525) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_07_023000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_051525) do
     t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
+    t.index ["id"], name: "active_storage_blobs_idx", unique: true
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -245,17 +246,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_051525) do
   end
 
   create_table "discussion_templates", force: :cascade do |t|
+    t.integer "source_discussion_id"
     t.string "key"
     t.integer "group_id"
     t.integer "position"
     t.integer "author_id"
     t.string "title"
     t.text "description"
-    t.string "description_format", limit: 10, default: "md", null: false
+    t.string "description_format", limit: 10, default: "html", null: false
     t.string "process_name"
     t.string "process_subtitle"
     t.string "process_introduction"
-    t.string "process_introduction_format", default: "md", null: false
+    t.string "process_introduction_format", default: "html", null: false
     t.jsonb "attachments", default: [], null: false
     t.integer "max_depth", default: 2, null: false
     t.boolean "newest_first", default: false, null: false

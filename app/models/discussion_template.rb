@@ -11,8 +11,9 @@ class DiscussionTemplate < ApplicationRecord
   update_counter_cache :group, :discussion_templates_count
 
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
-  validates :process_name, presence: true
-  validates :process_subtitle, presence: true
+  # validates :process_name, presence: true
+  # validates :process_subtitle, presence: true
+  validates :title, presence: true
 
   has_paper_trail only: [
     :title,
@@ -26,4 +27,8 @@ class DiscussionTemplate < ApplicationRecord
     :tags,
     :discarded_at
   ]
+
+  def members
+    User.none
+  end
 end

@@ -1,17 +1,18 @@
 class CreateDiscussionTemplatesTable < ActiveRecord::Migration[7.0]
   def change
     create_table :discussion_templates do |t|
+      t.integer :source_discussion_id
       t.string :key
       t.integer :group_id
       t.integer :position
       t.integer :author_id
       t.string :title
       t.text :description
-      t.string :description_format, limit: 10, default: "md", null: false
+      t.string :description_format, limit: 10, default: "html", null: false
       t.string :process_name
       t.string :process_subtitle
       t.string :process_introduction
-      t.string :process_introduction_format, default: "md", null: false
+      t.string :process_introduction_format, default: "html", null: false
       t.jsonb "attachments", default: [], null: false
       t.integer "max_depth", default: 2, null: false
       t.boolean "newest_first", default: false, null: false

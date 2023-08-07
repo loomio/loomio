@@ -724,6 +724,7 @@ en:
     start_new_thread: Or, start new thread
 
   thread_template:
+    start_a_new_thread: Start a new thread
     thread_template_saved: Thread template saved
     example_title_label: Example title
     example_title_hint: Give an example of a good thread title
