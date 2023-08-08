@@ -10,13 +10,9 @@ ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN apt-get update -qq
 RUN apt-get install --no-install-recommends -y \
-    autoconf \
-    bison \
     build-essential \
     curl \
-    cron \
     ffmpeg \
-    git \
     imagemagick \
     libvips \
     libwebp \
