@@ -17,7 +17,8 @@ RUN apt-get install --no-install-recommends -y \
     libvips \
     mupdf \
     patch \
-    python3
+    python3 \
+    sudo
 
 RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /usr/share/doc /usr/share/man
 
