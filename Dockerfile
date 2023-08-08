@@ -1,4 +1,4 @@
-FROM ruby:3.2.2
+FROM ruby:3.2.2-slim
 
 ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 ENV MALLOC_ARENA_MAX=2
@@ -17,7 +17,8 @@ RUN apt-get install -y \
     poppler-utils \
     sudo
 
-RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /usr/share/doc /usr/share/man
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists /usr/share/doc /usr/share/man
 
 # install node
 
