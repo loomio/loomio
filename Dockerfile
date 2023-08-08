@@ -14,6 +14,7 @@ RUN apt-get install -y \
     curl \
     libvips \
     ffmpeg \
+    poppler \
     sudo
 
 RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /usr/share/doc /usr/share/man
