@@ -271,7 +271,7 @@ export default
                 span(v-if="optionFormat == 'plain'") {{option.name}}
                 span(v-if="optionFormat == 'iso8601'")
                   poll-meeting-time(:name="option.name")
-              v-list-item-subtitle {{option.meaning}}
+              v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
 
             v-list-item-action
               v-btn(
