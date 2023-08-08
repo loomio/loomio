@@ -730,6 +730,7 @@ en:
     example_title_hint: Give an example of a good thread title
     example_description_label: Example description
     example_description_placeholder: Provide a template that people can use to start a thread with
+    hidden_templates: Hidden templates
 
   discussion_form:
     thread_templates: Thread templates

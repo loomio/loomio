@@ -13,6 +13,7 @@ export default
     group: null
     returnTo: Session.returnTo()
     isSorting: false
+    showSettings: false
 
   methods:
     sortEnded: ->
@@ -25,7 +26,7 @@ export default
       @group = Records.groups.findById(parseInt(@$route.query.group_id))
       @templates = Records.discussionTemplates.collection.chain().find(
         groupId: parseInt(@$route.query.group_id)
-        discardedAt: (parseInt(@$route.query.hidden) && {$ne: null}) || null
+        discardedAt: (@showSettings && {$ne: null}) || null
       ).simplesort('position').data()
 
       if @group
@@ -35,6 +36,7 @@ export default
 
   watch:
     '$route.query': 'query'
+    'showSettings': 'query'
 
 
   mounted: ->
@@ -59,11 +61,19 @@ export default
         v-card-title
           h1.headline(tabindex="-1" v-t="'thread_template.start_a_new_thread'")
         .d-flex
-          v-chip(outlined :to="'?group_id='+$route.query.group_id") Templates
           v-spacer
-          v-chip(outlined :to="'?group_id='+$route.query.group_id+'&hidden=1'") Hidden templates
-          v-btn(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo" v-t="'discussion_form.new_template'") New template
+          v-btn(v-if="!showSettings" icon @click="showSettings = true")
+            v-icon mdi-cog
+          v-btn(v-else icon @click="showSettings = false")
+            v-icon mdi-close
+
         v-list.append-sort-here(two-line)
+          template(v-if="showSettings")
+            v-list-item(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
+              v-list-item-content
+                v-list-item-title(v-t="'discussion_form.new_template'")
+            v-subheader(v-if="templates.length" v-t="'thread_template.hidden_templates'")
+
           template(v-if="isSorting")
             sortable-list(v-model="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")
               sortable-item(v-for="(template, index) in templates" :index="index" :key="template.id || template.key")
@@ -74,7 +84,7 @@ export default
                   v-list-item-action.handle(v-handle)
                     v-icon mdi-drag-vertical
 
-          template(v-else)
+          template(v-if="!isSorting")
             v-list-item(
               v-for="(template, i) in templates" 
               :key="template.id"

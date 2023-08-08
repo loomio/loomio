@@ -21,7 +21,7 @@ export default class DiscussionTemplateModel extends BaseModel
     linkPreviews: []
     maxDepth: 3
     newestFirst: false
-
+    
   relationships: ->
     @belongsTo 'author', from: 'users'
     @belongsTo 'group'
@@ -33,5 +33,7 @@ export default class DiscussionTemplateModel extends BaseModel
       discussion[attr] = @[attr]
 
     discussion.discussionTemplateId = @id
+    discussion.discussionTemplateKey = @key
+
     discussion.authorId = Session.user().id
     discussion

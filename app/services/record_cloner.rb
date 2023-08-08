@@ -158,6 +158,8 @@ class RecordCloner
     copy_fields = %w[
       author_id
       title
+      discussion_template_id
+      discussion_template_key
       description
       description_format
       pinned_at
@@ -172,7 +174,6 @@ class RecordCloner
       discarded_at
       template
       tags
-      source_template_id
     ]
 
     required_values = {
@@ -230,12 +231,13 @@ class RecordCloner
       template
       agree_target
       chart_type
-      source_template_id
       default_duration_in_days
       stance_reason_required
       poll_option_name_format
       reason_prompt
       tags
+      poll_template_id
+      poll_template_key
     ]
     attachments = [:files, :image_files]
 

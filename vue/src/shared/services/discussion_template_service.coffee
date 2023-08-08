@@ -43,13 +43,13 @@ export default new class PollTemplateService
       perform: ->
         Records.remote.post('discussion_templates/discard', {group_id: group.id, id: discussionTemplate.id})
 
-    # undiscard:
-    #   icon: 'mdi-eye'
-    #   name: 'common.action.unhide'
-    #   menu: true
-    #   canPerform: -> pollTemplate.id && pollTemplate.discardedAt && group.adminsInclude(Session.user())
-    #   perform: ->
-    #     Records.remote.post('poll_templates/undiscard', {group_id: group.id, id: pollTemplate.id})
+    undiscard:
+      icon: 'mdi-eye'
+      name: 'common.action.unhide'
+      menu: true
+      canPerform: -> discussionTemplate.id && discussionTemplate.discardedAt && group.adminsInclude(Session.user())
+      perform: ->
+        Records.remote.post('discussion_templates/undiscard', {group_id: group.id, id: discussionTemplate.id})
 
     # destroy:
     #   icon: 'mdi-delete'

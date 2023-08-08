@@ -18,6 +18,8 @@ class DiscussionSerializer < ApplicationSerializer
              :content_locale,
              :description,
              :description_format,
+             :discussion_template_id,
+             :discussion_template_key,
              :ranges,
              :items_count,
              :last_comment_at,
@@ -38,7 +40,6 @@ class DiscussionSerializer < ApplicationSerializer
              :max_depth,
              :discarded_at,
              :secret_token,
-             :source_template_id,
              :template
 
   attributes_from_reader :discussion_reader_id,

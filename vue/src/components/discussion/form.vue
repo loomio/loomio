@@ -9,10 +9,10 @@ import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel'
 
 export default
-  components:
-    RecipientsAutocomplete: RecipientsAutocomplete
+  components: {RecipientsAutocomplete, ThreadTemplateHelpPanel}
 
   props:
     discussion: Object
@@ -121,7 +121,9 @@ export default
     v-btn.back-button(v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
       v-icon mdi-close
 
+
   .pa-4
+    thread-template-help-panel(:discussion="discussion")
     v-select.pb-4(
       :disabled="!!discussion.id"
       v-model="discussion.groupId"
