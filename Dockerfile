@@ -15,7 +15,8 @@ RUN apt-get install -y \
     libvips \
     ffmpeg \
     poppler-utils \
-    sudo
+    sudo \
+    libpq-dev
 
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists /usr/share/doc /usr/share/man
