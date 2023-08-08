@@ -15,7 +15,6 @@ RUN apt-get install --no-install-recommends -y \
     ffmpeg \
     imagemagick \
     libvips \
-    libwebp \
     mupdf \
     patch \
     python3
