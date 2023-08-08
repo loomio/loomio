@@ -731,6 +731,7 @@ en:
     example_description_label: Example description
     example_description_placeholder: Provide a template that people can use to start a thread with
     hidden_templates: Hidden templates
+    confirm_delete: Are you sure you want to permanently delete this thread template? No threads will be deleted as a result of this.
 
   discussion_form:
     thread_templates: Thread templates

@@ -51,23 +51,23 @@ export default new class PollTemplateService
       perform: ->
         Records.remote.post('discussion_templates/undiscard', {group_id: group.id, id: discussionTemplate.id})
 
-    # destroy:
-    #   icon: 'mdi-delete'
-    #   name: 'common.action.delete'
-    #   menu: true
-    #   canPerform: -> pollTemplate.id && group.adminsInclude(Session.user())
-    #   perform: -> 
-    #     openModal
-    #       component: 'ConfirmModal',
-    #       props:
-    #         confirm:
-    #           submit: ->
-    #             pollTemplate.destroy().then ->
-    #               EventBus.$emit('closeModal')
-    #           text:
-    #             title: 'common.are_you_sure'
-    #             helptext: 'poll_common_form.confirm_delete'
-    #             submit: 'common.action.delete'
+    destroy:
+      icon: 'mdi-delete'
+      name: 'common.action.delete'
+      menu: true
+      canPerform: -> discussionTemplate.id && group.adminsInclude(Session.user())
+      perform: -> 
+        openModal
+          component: 'ConfirmModal',
+          props:
+            confirm:
+              submit: ->
+                discussionTemplate.destroy().then ->
+                  EventBus.$emit('closeModal')
+              text:
+                title: 'common.are_you_sure'
+                helptext: 'thread_template.confirm_delete'
+                submit: 'common.action.delete'
 
     hide:
       icon: 'mdi-eye-off'

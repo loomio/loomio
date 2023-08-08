@@ -1,6 +1,7 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
 import Session          from '@/shared/services/session'
+import { pick }         from 'lodash'
 
 export default class DiscussionTemplateModel extends BaseModel
   @singular: 'discussionTemplate'
@@ -29,11 +30,11 @@ export default class DiscussionTemplateModel extends BaseModel
   buildDiscussion: ->
     discussion = @recordStore.discussions.build()
 
-    Object.keys(@defaultValues()).forEach (attr) =>
-      discussion[attr] = @[attr]
+    attrs = pick(@, Object.keys(@defaultValues()))
+    attrs.discussionTemplateId = @id
+    attrs.discussionTemplateKey = @key
+    attrs.authorId = Session.user().id
 
-    discussion.discussionTemplateId = @id
-    discussion.discussionTemplateKey = @key
+    discussion.update(attrs)
 
-    discussion.authorId = Session.user().id
     discussion
