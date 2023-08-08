@@ -9,7 +9,8 @@ ENV BUNDLE_WITHOUT=development
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN apt-get update -qq
-RUN apt-get install --no-install-recommends -y \
+
+RUN apt-get install -y \
     build-essential \
     curl \
     ffmpeg \
@@ -20,7 +21,8 @@ RUN apt-get install --no-install-recommends -y \
     python3 \
     sudo
 
-RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /usr/share/doc /usr/share/man
+RUN apt-get clean 
+RUN rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man
 
 # install node
 
