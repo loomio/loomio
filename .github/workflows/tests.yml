@@ -34,8 +34,8 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    - name: install libvips
-      run: sudo apt-get install -y libvips
+    # - name: install libvips
+    #   run: sudo apt-get install -y libvips
     - name: git checkout
       uses: actions/checkout@v2
     - name: install ruby
@@ -84,8 +84,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: nanasess/setup-chromedriver@v2
-    - name: install libvips
-      run: sudo apt-get install -y libvips
+    # - name: install libvips
+    #   run: sudo apt-get install -y libvips
     - name: git checkout
       uses: actions/checkout@v2
     - name: install ruby
