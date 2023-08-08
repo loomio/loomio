@@ -9,55 +9,11 @@ ENV BUNDLE_WITHOUT=development
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
 RUN apt-get update -qq
-RUN apt-get install --no-install-recommends -y \
-    autoconf \
-    bison \
+RUN apt-get install -y \
     build-essential \
     curl \
-    cron \
-    ffmpeg \
-    git \
-    imagemagick \
-    libcfitsio-dev \
-    libdb-dev \
-    libexif-dev \
-    libexpat1-dev \
-    libffi-dev \
-    libfftw3-dev \
-    libgdbm-dev \
-    libgdbm6 \
-    libglib2.0-dev \
-    libgmp-dev \
-    libgsf-1-dev \
-    libheif-dev \
-    libimagequant-dev \
-    libjpeg-dev \
-    libmatio-dev \
-    libncurses5-dev \
-    libopenexr-dev \
-    libopenjp2-7-dev \
-    libopenslide-dev \
-    liborc-dev \
-    libpango1.0-dev \
-    libpng-dev \
-    libpq-dev \
-    libreadline6-dev \
-    librsvg2-dev \
-    libssl-dev \
-    libtiff5-dev \
     libvips \
-    libvips-dev \
-    libwebp-dev \
-    libxml2-dev \
-    libxslt1-dev \
-    libyaml-dev \
-    mupdf \
-    patch \
-    python3 \
-    rustc \
-    sudo \
-    uuid-dev \
-    zlib1g-dev
+    sudo
 
 RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /usr/share/doc /usr/share/man
 
