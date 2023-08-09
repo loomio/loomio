@@ -31,6 +31,7 @@ class PollService
     return false unless poll.valid?
 
     poll.save!
+    poll.update_counts!
 
     users = UserInviter.where_or_create!(actor: actor,
                                          user_ids: params[:recipient_user_ids],
