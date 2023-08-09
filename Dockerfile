@@ -23,14 +23,11 @@ RUN apt-get update -qq && \
 
 WORKDIR /loomio
  
-# COPY Gemfile Gemfile.lock .
-# RUN bundle install
- 
 COPY . .
  
 RUN bundle install && bundle exec bootsnap precompile --gemfile app/ lib/
 
-# FROM base as node
+FROM base as node
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 RUN apt-get -y install nodejs npm
@@ -39,8 +36,10 @@ WORKDIR /loomio/vue
 RUN npm install
 RUN npm run build
 
-# FROM base as final
-# COPY --from=node /loomio/public/blient/vue/* /loomio/public/blient/vue/
+FROM base as final
+
+RUN mkdir -p /loomio/public/blient/
+COPY --from=node /loomio/public/blient/* /loomio/public/blient/
 
 WORKDIR /loomio
 
