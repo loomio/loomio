@@ -131,13 +131,6 @@ GEM
     chartkick (5.0.1)
     cld (0.13.0)
       ffi
-    coffee-rails (5.0.0)
-      coffee-script (>= 2.2.0)
-      railties (>= 5.2.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crack (0.4.5)
@@ -177,7 +170,6 @@ GEM
       railties (>= 3.2)
     errbase (0.2.2)
     erubi (1.12.0)
-    execjs (2.8.1)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -570,8 +562,6 @@ GEM
     tzinfo-data (1.2023.3)
       tzinfo (>= 1.0.0)
     uber (0.1.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
@@ -611,7 +601,6 @@ DEPENDENCIES
   byebug
   cancancan
   cld
-  coffee-rails
   connection_pool
   custom_counter_cache
   database_cleaner-active_record
@@ -672,7 +661,6 @@ DEPENDENCIES
   terminal-table
   twitter-text!
   tzinfo-data
-  uglifier
   uuidtools
   video_info
   webmock
