@@ -107,6 +107,10 @@ module Loomio
     config.cache_store = :redis_cache_store, { url: (ENV['REDIS_CACHE_URL'] || ENV.fetch('REDIS_URL', 'redis://localhost:6379')) }
     config.action_dispatch.use_cookies_with_metadata = false
 
+    if ENV.fetch('DISABLE_IPSPOOFINGCHECK')
+      config.action_dispatch.ip_spoofing_check = false
+    end
+
     config.action_dispatch.default_headers = {
       'X-Frame-Options' => 'SAMEORIGIN',
       'X-XSS-Protection' => '1; mode=block',
