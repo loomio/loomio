@@ -10,35 +10,6 @@ describe DiscussionQuery do
     DiscussionQuery.visible_to(user: user, group_ids: [group.id])
   end
 
-  describe 'order_by_importance' do
-    let(:group) { create(:group, is_visible_to_public: true) }
-    let!(:no_importance) { create :discussion, private: false, group: group }
-    let!(:has_decision)  { create :discussion, private: false, group: group }
-    let!(:pinned)        { create :discussion, private: false, group: group, pinned: true }
-
-    before do
-      create(:poll, discussion: has_decision)
-    end
-
-    it 'orders discussions by importance when logged out' do
-      [pinned, has_decision, no_importance].map(&:update_importance)
-      query = DiscussionQuery.visible_to.order_by_importance.to_a
-      expect(query[0]).to eq pinned
-      expect(query[1]).to eq has_decision
-      expect(query[2]).to eq no_importance
-    end
-
-    it 'orders discussions by reader importance when logged in' do
-      group.add_admin! user
-
-      [pinned, has_decision, no_importance].map(&:update_importance)
-      query = DiscussionQuery.visible_to(user: user).order_by_importance.to_a
-      expect(query[0]).to eq pinned
-      expect(query[1]).to eq has_decision
-      expect(query[2]).to eq no_importance
-    end
-  end
-
   describe 'logged out' do
     let!(:public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
     let!(:another_public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }

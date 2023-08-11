@@ -8,7 +8,19 @@ class Outcome < ApplicationRecord
   include HasCreatedEvent
   include HasEvents
   include HasRichText
-
+  
+  include PgSearch::Model
+  multisearchable(
+    against: [:statement, :author_name],
+    additional_attributes: -> (o) { 
+      {
+        poll_id: o.poll_id,
+        group_id: o.poll.group_id,
+        discussion_id: o.poll.discussion_id,
+        author_id: o.author_id
+      } 
+    }
+  )
   is_rich_text    on: :statement
 
   set_custom_fields :event_summary, :event_description, :event_location
@@ -41,6 +53,10 @@ class Outcome < ApplicationRecord
               WHERE events.eventable_id   = outcomes.id AND
                     events.eventable_type = 'Outcome' AND
                     events.kind           = 'outcome_review_due')")
+  end
+
+  def author_name
+    author.name
   end
 
   def user_id

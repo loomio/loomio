@@ -7,7 +7,6 @@ class Discussion < ApplicationRecord
   include HasTimeframe
   include HasEvents
   include HasMentions
-  include HasImportance
   include MessageChannel
   include SelfReferencing
   include HasCreatedEvent
@@ -16,6 +15,19 @@ class Discussion < ApplicationRecord
   extend  NoSpam
   include Discard::Model
 
+  include PgSearch::Model      
+  multisearchable(
+    if: :kept?,
+    against: [:title, :description, :tags, :author_name],
+    additional_attributes: lambda { |d| 
+      { 
+        group_id: d.group_id,
+        author_id: d.author_id,
+        discussion_id: d.id
+      } 
+    }
+  )
+
   no_spam_for :title, :description
 
   scope :dangling, -> { joins('left join groups g on discussions.group_id = g.id').where('group_id is not null and g.id is null') }
@@ -23,7 +35,6 @@ class Discussion < ApplicationRecord
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order(last_activity_at: :desc) }
   scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
-  scope :order_by_importance, -> { order(importance: :desc, last_activity_at: :desc) }
 
   scope :visible_to_public, -> { kept.where(private: false) }
   scope :not_visible_to_public, -> { kept.where(private: true) }
@@ -103,7 +114,6 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
   update_counter_cache :group, :template_discussions_count
-
 
   def poll
     nil

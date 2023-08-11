@@ -1,20 +1,22 @@
 class API::V1::SearchController < API::V1::RestfulController
 
   def index
-    @search = Discussion.weighted_search_for(params[:q].strip, current_user, search_params)
-    @search = @search.where('discussions.group_id IN (?)', group_ids) if params[:group_id]
 
-    respond_with_collection
+    results = PgSearch.multisearch(params[:query]).where(group_id: group_ids)
+    render json: results.map do |res|
+      res.slice(:searchable_type, :searchable_id, :group_id, :content)
+    end
+
+
+    # @search = Discussion.weighted_search_for(params[:q].strip, current_user, search_params)
+    # @search = @search.where('discussions.group_id IN (?)', group_ids) if params[:group_id]
+
+    # respond_with_collection
   end
 
   private
   def group_ids
-    case params[:subgroups]
-    when 'all', 'mine'
-      Group.find(params[:group_id]).parent_or_self.id_and_subgroup_ids
-    else
-      Array(params[:group_id])
-    end
+    current_user.group_ids
   end
 
   def search_params

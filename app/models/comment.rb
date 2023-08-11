@@ -8,6 +8,19 @@ class Comment < ApplicationRecord
   include HasEvents
   include HasRichText
 
+  include PgSearch::Model
+  multisearchable(
+    if: :kept?,
+    against: [:body, :author_name],
+    additional_attributes: -> (c) {
+      { 
+        group_id: c.discussion.group_id,
+        discussion_id: c.discussion_id,
+        author_id: c.author_id
+      } 
+    }
+  )
+
   has_paper_trail only: [:body, :body_format, :user_id, :discarded_at, :discarded_by]
 
   is_translatable on: :body

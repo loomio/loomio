@@ -37,11 +37,4 @@ EventBus.configure do |config|
                                          root: :discussions,
                                          user_id: reader.user_id)
   end
-
-  # update discussion importance
-  config.listen('discussion_pin',
-                'poll_create',
-                'poll_close',
-                'poll_destroy',
-                'poll_expire') { |model| model.discussion&.update_importance }
 end

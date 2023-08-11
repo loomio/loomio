@@ -9,6 +9,18 @@ class Stance < ApplicationRecord
   extend HasTokens
   initialized_with_token :token
 
+  include PgSearch::Model
+  multisearchable(
+    against: [:reason, :author_name],
+    additional_attributes: -> (s) {
+      {
+        poll_id: s.poll_id,
+        discussion_id: s.poll.discussion_id,
+        group_id: s.poll.group_id
+      }
+    }
+  )
+
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
   include Translatable
   is_translatable on: :reason

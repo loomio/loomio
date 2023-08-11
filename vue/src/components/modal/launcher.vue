@@ -40,6 +40,7 @@ import PollMembers from '@/components/poll/members'
 import PollReminderForm from '@/components/poll/reminder_form'
 import GroupInvitationForm from '@/components/group/invitation_form'
 import AnnouncementHistory from '@/components/common/announcement_history'
+import SearchModal from '@/components/search/modal'
 
 export default
   components: {
@@ -83,6 +84,7 @@ export default
     GroupInvitationForm
     SeenByModal
     ArrangementForm
+    SearchModal
   }
 
   data: ->

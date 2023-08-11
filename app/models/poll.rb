@@ -11,6 +11,20 @@ class Poll < ApplicationRecord
   include HasRichText
   include HasTags
   include Discard::Model
+  
+  include PgSearch::Model
+  multisearchable(
+    if: :kept?,
+    against: [:title, :details, :tags, :author_name],
+    additional_attributes: -> (p) { 
+      {
+        poll_id: p.id,
+        discussion_id: p.discussion_id,
+        group_id: p.group_id,
+        author_id: p.author_id
+      }
+    }
+  )
 
   is_rich_text on: :details
 
