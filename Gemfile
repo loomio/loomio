@@ -62,6 +62,7 @@ gem 'video_info'
 gem 'blazer'
 gem 'terminal-table'
 gem 'tzinfo-data'
+gem 'pg_search'
 
 group :development, :test do
   gem 'listen'
