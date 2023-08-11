@@ -1,7 +1,6 @@
-def seed_from_file(filename)
-  seeds = File.readlines(File.join(__dir__, "./#{filename}.txt"))
-  seeds.map { |seed| yield(seed.chomp) if block_given? }
+attrs = File.readlines(Rails.root.join("db/password_blacklist.txt")).map(&:chomp).map do |pw|
+  {string: pw}
 end
 
 BlacklistedPassword.delete_all
-seed_from_file('password_blacklist') { |password| BlacklistedPassword.create(string: password) }
+BlacklistedPassword.insert_all(attrs, record_timestamps: false)
