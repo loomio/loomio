@@ -81,8 +81,9 @@ class API::V1::StancesController < API::V1::RestfulController
     current_user.ability.authorize! :remove, @stance
 
     # revoke all stances, not just the latest one
-    Stance.where(participant_id: params[:participant_id], poll_id: params[:poll_id]).update_all(revoked_at: Time.zone.now, revoker_id: current_user.id)
-    
+    Stance.where(revoked_at: nil, participant_id: params[:participant_id], poll_id: params[:poll_id]).
+           update_all(revoked_at: Time.zone.now, revoker_id: current_user.id)
+
     @stance.reload
     @stance.poll.update_counts!
     respond_with_resource
