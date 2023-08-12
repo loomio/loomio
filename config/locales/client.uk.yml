@@ -1881,6 +1881,7 @@ uk:
     no_votes_yet: Поки що ніхто не проголосував.
     change_results_order: Змінити послідовність результатів
     none_of_the_above: "(Жоден з вищевказаних)"
+    vote_removed: Голос видалено
   poll_common_undecided_panel:
     show_invitations: Показати запрошення в очікувані
     invitation_count_singular: 1 особа запрошена до участі електронною поштою
@@ -2048,6 +2049,7 @@ uk:
     time_slot_added: Часовий слот додано
     time_slot_already_added: Часовий слот вже додано
     participants_see_local_times: Учасники бачитимуть час, локалізований відповідно до свого часового поясу
+    use_24_hour_format: Помилка! Використовуйте 24-годинний формат, наприклад, %{time}
   poll_ranked_choice_form:
     no_options: Ви ще не додали жодних варіантів.
     add_option_placeholder: Введіть новий варіант

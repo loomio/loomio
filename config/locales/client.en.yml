@@ -2043,6 +2043,7 @@ en:
     started_by: Started by {{name}}
 
   poll_common_votes_panel:
+    vote_removed: Vote removed
     undecided: Undecided
     newest_first: Newest first
     oldest_first: Oldest first

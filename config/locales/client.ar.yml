@@ -1827,6 +1827,7 @@ ar:
     no_votes_yet: لم يتم وضع الأصوات حتى الآن.
     change_results_order: ترتيب النتائج
     none_of_the_above: "(لا شيء مما سبق)"
+    vote_removed: تمت إزالة التصويت
   poll_common_undecided_panel:
     show_invitations: إظهار الدعوات المعلقة
     invitation_count_singular: تمت دعوة شخص إضافي واحد للمشاركة عبر البريد الإلكتروني
@@ -1994,6 +1995,7 @@ ar:
     time_slot_added: تمت إضافة خانة الوقت
     time_slot_already_added: تمت إضافة خانة الوقت بالفعل
     participants_see_local_times: سيرى الآباء الأوقات المترجمة إلى منطقتهم الزمنية
+    use_24_hour_format: خطأ! استخدم تنسيق 24 ساعة ، مثل٪ {time}
   poll_ranked_choice_form:
     no_options: لم تقم بإضافة أي خيارات حتى الآن.
     add_option_placeholder: أدخل خيارًا جديدًا

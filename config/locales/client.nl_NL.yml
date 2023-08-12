@@ -1842,6 +1842,7 @@ nl_NL:
     no_votes_yet: Er zijn nog geen stemmen uitgebracht.
     change_results_order: Verander volgorde resultaten
     none_of_the_above: "(Geen van bovenstaande)"
+    vote_removed: Stem verwijderd
   poll_common_undecided_panel:
     show_invitations: Toon uitnodigingen in afwachting
     invitation_count_singular: 1 extra persoon werd uigenodigd om deel te nemen via e-mail
@@ -2009,6 +2010,7 @@ nl_NL:
     time_slot_added: Tijdvenster toegevoegd
     time_slot_already_added: Tijdvenster reeds toegevoegd
     participants_see_local_times: Deelnemers zien de tijden gelokaliseerd in hun tijdzone
+    use_24_hour_format: Fout! Gebruik 24-uurs formaat, bijvoorbeeld %{time}
   poll_ranked_choice_form:
     no_options: Je hebt nog geen opties toegevoegd.
     add_option_placeholder: Typ een nieuwe keuze
