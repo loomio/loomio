@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_08_10_190009) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_101642) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -609,6 +609,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_08_10_190009) do
 
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
+    t.tsvector "ts_content"
     t.bigint "author_id"
     t.bigint "group_id"
     t.bigint "discussion_id"
@@ -622,6 +623,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_08_10_190009) do
     t.index ["group_id"], name: "index_pg_search_documents_on_group_id"
     t.index ["poll_id"], name: "index_pg_search_documents_on_poll_id"
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+    t.index ["ts_content"], name: "pg_search_documents_searchable_index", using: :gin
   end
 
   create_table "poll_options", id: :serial, force: :cascade do |t|

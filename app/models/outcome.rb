@@ -8,19 +8,39 @@ class Outcome < ApplicationRecord
   include HasCreatedEvent
   include HasEvents
   include HasRichText
+  include Searchable
   
-  include PgSearch::Model
-  multisearchable(
-    against: [:statement, :author_name],
-    additional_attributes: -> (o) { 
-      {
-        poll_id: o.poll_id,
-        group_id: o.poll.group_id,
-        discussion_id: o.poll.discussion_id,
-        author_id: o.author_id
-      } 
-    }
-  )
+  def self.pg_search_insert_statement(id = nil)
+    id_str = id.present? ? " AND outcomes.id = #{id.to_s} LIMIT 1" : ""
+    content_str = "regexp_replace(CONCAT_WS(' ', outcomes.statement, users.name), E'<[^>]+>', '', 'gi')"
+    <<~SQL.squish
+      INSERT INTO pg_search_documents (
+        searchable_type,
+        searchable_id,
+        poll_id,
+        group_id,
+        discussion_id,
+        author_id,
+        content,
+        ts_content,
+        created_at,
+        updated_at)
+       SELECT 'Outcome' AS searchable_type,
+              outcomes.id AS searchable_id,
+              outcomes.poll_id AS poll_id,
+              polls.group_id as group_id,
+              polls.discussion_id AS discussion_id,
+              outcomes.author_id AS author_id,
+              #{content_str} AS content,
+              to_tsvector('simple', #{content_str}) as ts_content,
+              now() AS created_at,
+              now() AS updated_at
+       FROM outcomes
+       LEFT JOIN users ON users.id = outcomes.author_id
+       LEFT JOIN polls ON polls.id = outcomes.poll_id
+       WHERE polls.discarded_at IS NULL #{id_str}
+    SQL
+  end
   is_rich_text    on: :statement
 
   set_custom_fields :event_summary, :event_description, :event_location
