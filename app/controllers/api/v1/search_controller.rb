@@ -1,6 +1,7 @@
 class API::V1::SearchController < API::V1::RestfulController
   def index
-    rel = PgSearch.multisearch(params[:query]).where(group_id: group_ids)
+    rel = PgSearch.multisearch(params[:query]).
+                   where("group_id IN (:group_ids) OR (group_id IS NULL AND discussion_id IN (:discussion_ids))", group_ids: group_ids, discussion_ids: current_user.guest_discussion_ids)
 
     if params[:tag]
       discussion_ids = Discussion.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
@@ -79,6 +80,8 @@ class API::V1::SearchController < API::V1::RestfulController
   def group_ids
     if params[:group_id].present?
       current_user.group_ids & Array(params[:group_id].to_i)
+    elsif params[:org_id] == '0'
+      [] 
     elsif params[:org_id].present?
       current_user.group_ids & Group.find(params[:org_id]).id_and_subgroup_ids
     else

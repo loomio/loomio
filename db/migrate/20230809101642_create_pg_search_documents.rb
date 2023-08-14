@@ -6,7 +6,7 @@ class CreatePgSearchDocuments < ActiveRecord::Migration[7.0]
         t.tsvector :ts_content
         t.references :author, index: true
         t.references :group, index: true
-        t.references :discussion
+        t.references :discussion, index: true
         t.references :poll
         t.belongs_to :searchable, polymorphic: true, index: true
         t.timestamps null: false

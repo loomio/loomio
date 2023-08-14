@@ -137,6 +137,6 @@ v-card.search-modal
             mid-dot
             span {{result.author_name}}
             mid-dot
-            span {{result.group_name}}
+            span {{result.group_name || $t('discussion.invite_only')}}
 
 </template>
