@@ -6,11 +6,14 @@ class CreatePgSearchDocuments < ActiveRecord::Migration[7.0]
         t.tsvector :ts_content
         t.references :author, index: true
         t.references :group, index: true
-        t.references :discussion, index: true
-        t.references :poll, index: true
+        t.references :discussion
+        t.references :poll
         t.belongs_to :searchable, polymorphic: true, index: true
         t.timestamps null: false
+        t.datetime :authored_at
         t.index ["ts_content"], name: "pg_search_documents_searchable_index", using: :gin
+        t.index ["authored_at"], name: "pg_search_documents_authored_at_desc_index", order: {authored_at: :desc}
+        t.index ["authored_at"], name: "pg_search_documents_authored_at_asc_index", order: {authored_at: :asc}
       end
     end
   end

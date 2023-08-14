@@ -93,6 +93,7 @@ export default
     componentProps: {}
     componentKey: 'defaultKey'
     maxWidth: null
+    persistent: true
 
   created: ->
     EventBus.$on('openModal', @openModal)
@@ -104,6 +105,8 @@ export default
 
   methods:
     openModal: (opts) ->
+      if opts.hasOwnProperty('persistent')
+        @persistent = opts.persistent 
       @maxWidth = opts.maxWidth || 720
       @componentName = opts.component
       @componentProps = opts.props
@@ -123,7 +126,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
+v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" :persistent="persistent" :fullscreen="$vuetify.breakpoint.xs")
   v-card(v-if="isOpen")
     component(:is="componentName" :key="componentKey" v-bind="componentProps" :close="closeModal")
 </template>

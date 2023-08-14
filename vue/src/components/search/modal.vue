@@ -5,6 +5,7 @@ import EventBus        from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import Vue from 'vue'
 import { debounce } from 'lodash'
+import I18n from '@/i18n'
 
 export default
   props:
@@ -12,29 +13,51 @@ export default
     discussion: Object
 
   data: ->
+    loading: false
     query: null
     results: []
     users: {}
-    queryTypes: ['Discussion', 'Comment', 'Poll', 'Stance', 'Outcome']
-    orgIds: [
-      {text: 'Everywhere', value: null}
+    type: null
+    typeItems: [
+      {text: I18n.t('search_modal.all_content'), value: null},
+      {text: I18n.t('group_page.threads'), value: 'Discussion'},
+      {text: I18n.t('navbar.search.comments'), value: 'Comment'},
+      {text: I18n.t('group_page.polls'), value: 'Poll'},
+      {text: I18n.t('poll_common.votes'), value: 'Stance'},
+      {text: I18n.t('poll_common.outcomes'), value: 'Outcome'},
+    ]
+    orgItems: [
+      {text: I18n.t('sidebar.all_groups'), value: null},
+      {text: I18n.t('sidebar.invite_only_threads'), value: 0}
     ].concat(Session.user().parentGroups().map (g) -> {text: g.name, value: g.id})
     orgId: null
-    typeMenu: false
+    groupItems: []
+    groupId: null
+    order: null,
+    orderItems: [
+      {text: I18n.t('search_modal.best_match'), value: null},
+      {text: I18n.t('strand_nav.newest'), value: "authored_at_desc"},
+      {text: I18n.t('strand_nav.oldest'), value: "authored_at_asc"},
+    ]
+    tag: null,
+    tagItems: []
 
   methods:
     debounceFetch: debounce ->
       @fetch()
     , 300
 
+    userById: (id) -> Records.users.find(id)
+
     fetch: ->
-      Records.remote.get('search', query: @query, query_types: @queryTypes.join('-'), org_id: @orgId).then (data) =>
-        data.map((row) -> row.author_id).forEach (id) =>
-          if user = Records.users.find(id)
-            Vue.set @users, id, user
-          else
-            Records.users.addMissing(id)
-        @results = data
+      if !@query
+        @results = []
+      else
+        @loading = true
+        Records.remote.get('search', query: @query, type: @type, org_id: @orgId, group_id: @groupId, order: @order, tag: @tag).then (data) =>
+          @results = data.search_results
+        .finally =>
+          @loading = false
 
     urlForResult: (result) ->
       switch result.searchable_type
@@ -42,12 +65,11 @@ export default
           "/d/#{result.discussion_key}/#{@stub(result.discussion_title)}"
         when 'Comment'
           "/d/#{result.discussion_key}/comment/#{result.searchable_id}"
-        when 'Poll'
-          "/p/#{result.poll_key}/#{@stub(result.poll_title)}"
-        when 'Outcome'
-          "/p/#{result.poll_key}/#{@stub(result.poll_title)}"
-        when 'Stance'
-          "/p/#{result.poll_key}/#{@stub(result.poll_title)}"
+        when 'Poll', 'Outcome', 'Stance'
+          if result.sequence_id
+            "/d/#{result.discussion_key}/#{@stub(result.discussion_title)}/#{result.sequence_id}"
+          else
+            "/p/#{result.poll_key}/#{@stub(result.poll_title)}"
         else
           '/notdefined'
 
@@ -57,61 +79,64 @@ export default
     closeModal: ->
       EventBus.$emit 'closeModal'
 
+    updateTagItems: (group) ->
+      @tagItems = [{text: I18n.t('search_modal.any_tag'), value: null}].concat group.tagsByName().map (t) -> 
+        {text: t.name, value: t.name}
+
   watch:
-    query: 'debounceFetch'
-    orgId: 'debounceFetch'
-    queryTypes: 'debounceFetch'
+    orgId: ->
+      if @orgId
+        @groupId = null
+        group = Records.groups.find(@orgId)
+        base = [
+          {text: I18n.t('search_modal.all_subgroups'), value: null},
+          {text: I18n.t('search_modal.parent_only'), value: @orgId},
+        ]
+        @updateTagItems(group)
+        @groupItems = base.concat group.subgroups().filter((g) -> !g.archivedAt && g.membershipFor(Session.user())).map (g) ->
+          {text: g.name, value: g.id}
+      else
+        @groupItems = []
+        @tagItems = []
+      @fetch()
+    groupId: (groupId) -> 
+      if groupId
+        group = Records.groups.find(groupId)
+        @updateTagItems(group)
+      @fetch()
+    type: -> @fetch()
+    order: -> @fetch()
+    tag: -> @fetch()
+
     '$route.path': 'closeModal'
 
 </script>
 <template lang="pug">
 v-card.search-modal
-  dismiss-modal-button
-  .d-flex.px-4
-    v-text-field(autofocus filled rounded single-line v-model="query" placeholder="search for something", @change="fetch")
+  .d-flex.px-4.pt-4.align-center
+    v-text-field(:loading="loading" autofocus filled rounded single-line append-icon="mdi-magnify" append-outer-icon="mdi-close" @click:append-outer="closeModal" @click:append="fetch" v-model="query" :placeholder="$t('common.action.search')" @keydown.enter.prevent="fetch")
   .d-flex.px-4.align-center
-    v-select(v-model="orgId" :items="orgIds")
-    v-spacer
-    v-menu(
-      v-model="typeMenu"
-      :close-on-content-click="false"
-      :nudge-width="200"
-      offset-x)
-      template(v-slot:activator="{ on, attrs }")
-        v-btn(color="indigo"
-          dark
-          v-bind="attrs"
-          v-on="on") Types ({{queryTypes.length}})
-      v-card
-        v-list
-          v-list-item 
-            v-list-item-action 
-              v-checkbox(v-model="queryTypes" value="Discussion")
-            v-list-item-title Threads
-          v-list-item 
-            v-list-item-action 
-              v-checkbox(v-model="queryTypes" value="Comment")
-            v-list-item-title Comments
-          v-list-item
-            v-list-item-action 
-              v-checkbox(v-model="queryTypes" value="Poll")
-            v-list-item-title Polls
-          v-list-item
-            v-list-item-action 
-              v-checkbox(v-model="queryTypes" value="Stance")
-            v-list-item-title Votes
-          v-list-item
-            v-list-item-action 
-              v-checkbox(v-model="queryTypes" value="Outcome")
-            v-list-item-title Outcomes
-
+    v-select.mr-2(v-model="orgId" :items="orgItems")
+    v-select.mr-2(v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId")
+    v-select.mr-2(v-if="tagItems.length" v-model="tag" :items="tagItems")
+    v-select.mr-2(v-model="type" :items="typeItems")
+    v-select(v-model="order" :items="orderItems")
   v-list(two-line)
     v-list-item(v-for="result in results" :key="result.id" :to="urlForResult(result)")
       v-list-item-avatar 
-        user-avatar(:user="users[result.author_id]")
+        user-avatar(:user="userById(result.author_id)")
       v-list-item-content
-        v-list-item-title [{{result.group_name}}] {{result.discussion_title || result.poll_title}}
-        v-list-item-subtitle(v-html="result.highlight")
-
+        v-list-item-title.d-flex
+          span.text-truncate {{result.discussion_title || result.poll_title}}
+          v-spacer
+          time-ago.text--secondary(style="font-size: 0.875rem;" :date="result.authored_at")
+        v-list-item-subtitle.text--primary(v-html="result.highlight")
+        v-list-item-subtitle
+          span
+            span {{result.searchable_type}}
+            mid-dot
+            span {{result.author_name}}
+            mid-dot
+            span {{result.group_name}}
 
 </template>

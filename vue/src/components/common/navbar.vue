@@ -26,6 +26,7 @@ export default
     openSearchModal: ->
       EventBus.$emit 'openModal',
         component: 'SearchModal'
+        persistent: false
         props:
           group: @group
           discussion: @discussion
