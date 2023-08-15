@@ -70,6 +70,6 @@ class MybbService
 		end
 		ids = Discussion.where(group_id: group_id).pluck(:id)
 		ids.each {|id| EventService.repair_thread(id)}
-		SearchIndexWorker.new.perform(ids)
+		# SearchIndexWorker.new.perform(ids)
 	end
 end

@@ -17,16 +17,6 @@ EventBus.configure do |config|
     end
   end
 
-  # Index search vectors after model creation
-  config.listen('discussion_create',
-                'discussion_update',
-                'motion_create',
-                'motion_update',
-                'comment_create',
-                'comment_update',
-                'poll_create',
-                'poll_update') { |model| SearchIndexWorker.perform_async(Array(model.discussion_id)) }
-
   # if the user marks a discussion as read, update their other open tabs
   config.listen('discussion_mark_as_read',
                 'discussion_dismiss',
