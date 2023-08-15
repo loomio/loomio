@@ -80,6 +80,7 @@ class RecordCache
 
     when 'SearchResult'
       obj.user_ids.concat collection.map(&:author_id).compact
+      obj.add_polls_options_stances_outcomes Poll.kept.where(id: collection.map(&:poll_id))
 
     else
       obj.add_events_complete(collection) if item.is_a?(Event)

@@ -27,6 +27,7 @@ export default
       EventBus.$emit 'openModal',
         component: 'SearchModal'
         persistent: false
+        maxWidth: 900
         props:
           group: @group
           discussion: @discussion

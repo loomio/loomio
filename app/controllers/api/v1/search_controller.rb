@@ -53,10 +53,12 @@ class API::V1::SearchController < API::V1::RestfulController
         discussion_title: discussion&.title,
         discussion_key: discussion&.key,
         highlight: res.pg_search_highlight,
+        poll_id: res.poll_id,
         poll_key: poll&.key,
         sequence_id: sequence_id,
         group_handle: group&.handle,
         group_key: group&.key,
+        group_id: group&.id,
         group_name: group&.full_name,
         author_name: author&.name,
         author_id: res.author_id,
@@ -68,6 +70,8 @@ class API::V1::SearchController < API::V1::RestfulController
     respond_with_collection
   end
 
+
+  private
   def access_by_id(collection, id_col = 'id')
     h = {}
     collection.each do |row|
@@ -76,7 +80,10 @@ class API::V1::SearchController < API::V1::RestfulController
     h
   end
 
-  private
+  def exclude_types
+    'group membership discussion outcome event'.split(' ')
+  end
+
   def group_ids
     if params[:group_id].present?
       current_user.group_ids & Array(params[:group_id].to_i)

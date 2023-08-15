@@ -9,8 +9,23 @@ import I18n from '@/i18n'
 
 export default
   props:
-    group: Object
-    discussion: Object
+    initialOrgId:
+      required: false
+      default: null
+      type: Number
+    initialGroupId:
+      required: false
+      default: null
+      type: Number
+    initialType:
+      required: false
+      default: null
+      type: String
+
+  created: ->
+    @orgId = @initialOrgId
+    @groupId = @initialGroupId
+    @type = @initialType
 
   data: ->
     loading: false
@@ -41,6 +56,7 @@ export default
     ]
     tag: null,
     tagItems: []
+    group: null
 
   methods:
     debounceFetch: debounce ->
@@ -48,6 +64,8 @@ export default
     , 300
 
     userById: (id) -> Records.users.find(id)
+    pollById: (id) -> Records.polls.find(id)
+    groupById: (id) -> Records.groups.find(id)
 
     fetch: ->
       if !@query
@@ -77,28 +95,28 @@ export default
       name.replace(/[^a-z0-9\-_]+/gi, '-').replace(/-+/g, '-').toLowerCase()
 
     closeModal: ->
-      EventBus.$emit 'closeModal'
+      EventBus.$emit('closeModal')
 
     updateTagItems: (group) ->
       @tagItems = [{text: I18n.t('search_modal.any_tag'), value: null}].concat group.tagsByName().map (t) -> 
         {text: t.name, value: t.name}
 
   watch:
-    orgId: ->
+    orgId: (newval, oldval)->
       if @orgId
-        @groupId = null
-        group = Records.groups.find(@orgId)
+        @group = Records.groups.find(@orgId)
         base = [
           {text: I18n.t('search_modal.all_subgroups'), value: null},
           {text: I18n.t('search_modal.parent_only'), value: @orgId},
         ]
-        @updateTagItems(group)
-        @groupItems = base.concat group.subgroups().filter((g) -> !g.archivedAt && g.membershipFor(Session.user())).map (g) ->
+        @updateTagItems(@group)
+        @groupItems = base.concat @group.subgroups().filter((g) -> !g.archivedAt && g.membershipFor(Session.user())).map (g) ->
           {text: g.name, value: g.id}
       else
         @groupItems = []
         @tagItems = []
       @fetch()
+
     groupId: (groupId) -> 
       if groupId
         group = Records.groups.find(groupId)
@@ -122,12 +140,14 @@ v-card.search-modal
     v-select.mr-2(v-model="type" :items="typeItems")
     v-select(v-model="order" :items="orderItems")
   v-list(two-line)
-    v-list-item(v-for="result in results" :key="result.id" :to="urlForResult(result)")
+    v-list-item.poll-common-preview(v-for="result in results" :key="result.id" :to="urlForResult(result)")
       v-list-item-avatar 
-        user-avatar(:user="userById(result.author_id)")
+        poll-common-icon-panel(v-if="['Outcome', 'Poll'].includes(result.searchable_type)" :poll='pollById(result.poll_id)' show-my-stance)
+        user-avatar(v-else :user="userById(result.author_id)")
       v-list-item-content
         v-list-item-title.d-flex
-          span.text-truncate {{result.discussion_title || result.poll_title}}
+          span.text-truncate {{ result.poll_title || result.discussion_title }}
+          tags-display(:tags="result.tags" :group="groupById(result.group_id)" smaller)
           v-spacer
           time-ago.text--secondary(style="font-size: 0.875rem;" :date="result.authored_at")
         v-list-item-subtitle.text--primary(v-html="result.highlight")

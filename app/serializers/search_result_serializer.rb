@@ -7,7 +7,9 @@ class SearchResultSerializer < ApplicationSerializer
              :discussion_key,
              :highlight,
              :poll_key,
+             :poll_id,
              :sequence_id,
+             :group_id,
              :group_handle,
              :group_key,
              :group_name,
@@ -17,4 +19,5 @@ class SearchResultSerializer < ApplicationSerializer
              :tags
 
   has_one :author, serializer: AuthorSerializer, root: :users
+  has_one :poll, serializer: PollSerializer, root: :polls
 end

@@ -72,6 +72,9 @@ export default class GroupModel extends BaseModel
   tagsByName: ->
     @recordStore.tags.collection.chain().find(groupId: @id).simplesort('name').data()
 
+  tagNames: ->
+    @recordStore.tags.collection.chain().find(groupId: @id).simplesort('name').data().map (t) -> t.name
+
   parentOrSelf: ->
     if @parentId then @parent() else @
 
