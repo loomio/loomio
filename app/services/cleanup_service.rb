@@ -4,7 +4,6 @@ module CleanupService
      MembershipRequest,
      Discussion,
      DiscussionReader,
-     SearchVector,
      Comment,
      Poll,
      PollOption,

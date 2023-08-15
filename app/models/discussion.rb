@@ -78,7 +78,6 @@ class Discussion < ApplicationRecord
   belongs_to :user, foreign_key: 'author_id'
   has_many :polls, dependent: :destroy
   has_many :active_polls, -> { where(closed_at: nil) }, class_name: "Poll"
-  has_one :search_vector
 
   has_many :comments, dependent: :destroy
   has_many :commenters, -> { uniq }, through: :comments, source: :user
@@ -93,23 +92,6 @@ class Discussion < ApplicationRecord
   has_many :guests, -> { merge DiscussionReader.guests }, through: :discussion_readers, source: :user
   has_many :admin_guests, -> { merge DiscussionReader.admins }, through: :discussion_readers, source: :user
   include DiscussionExportRelations
-
-  scope :search_for, ->(fragment) do
-     joins("INNER JOIN users ON users.id = discussions.author_id")
-    .kept
-    .where("discussions.title ilike :fragment OR users.name ilike :fragment", fragment: "%#{fragment}%")
-  end
-
-  scope :weighted_search_for, ->(query, user, opts = {}) do
-    query = connection.quote(query)
-    select("*, #{query}::text as query")
-    .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
-    .from(SearchVector.search_for(query, user, opts))
-    .joins("INNER JOIN discussions on subquery.discussion_id = discussions.id")
-    .kept
-    .where('rank > 0')
-    .order('rank DESC, last_activity_at DESC')
-  end
 
   delegate :name, to: :group, prefix: :group
   delegate :name, to: :author, prefix: :author
