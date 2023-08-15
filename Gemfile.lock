@@ -576,6 +576,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.4.2)
+    uri (0.12.2)
     uuidtools (2.2.0)
     video_info (4.0.0)
       iso8601 (~> 0.13.0)
@@ -673,6 +674,7 @@ DEPENDENCIES
   twitter-text!
   tzinfo-data
   uglifier
+  uri (= 0.12.2)
   uuidtools
   video_info
   webmock
