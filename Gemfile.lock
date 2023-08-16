@@ -101,8 +101,8 @@ GEM
       ruby2_keywords (>= 0.0.2, < 1.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.792.0)
-    aws-sdk-core (3.179.0)
+    aws-partitions (1.801.0)
+    aws-sdk-core (3.180.3)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.5)
@@ -110,7 +110,7 @@ GEM
     aws-sdk-kms (1.71.0)
       aws-sdk-core (~> 3, >= 3.177.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.132.0)
+    aws-sdk-s3 (1.132.1)
       aws-sdk-core (~> 3, >= 3.179.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.6)
@@ -183,7 +183,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faker (3.2.0)
+    faker (3.2.1)
       i18n (>= 1.8.11, < 2)
     faraday (1.10.3)
       faraday-em_http (~> 1.0)
@@ -308,7 +308,7 @@ GEM
     httpclient (2.8.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    icalendar (2.8.0)
+    icalendar (2.9.0)
       ice_cube (~> 0.16)
     ice_cube (0.16.4)
     image_processing (1.12.2)
@@ -376,9 +376,9 @@ GEM
       net-protocol
     net_http_timeout_errors (1.0.0)
     nio4r (2.5.9)
-    nokogiri (1.15.3-x86_64-darwin)
+    nokogiri (1.15.4-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.3-x86_64-linux)
+    nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     oga (3.4)
       ast
@@ -386,8 +386,8 @@ GEM
     oj (3.15.1)
     orm_adapter (0.5.0)
     os (1.1.4)
-    paper_trail (14.0.0)
-      activerecord (>= 6.0)
+    paper_trail (15.0.0)
+      activerecord (>= 6.1)
       request_store (~> 1.4)
     pg (1.5.3)
     pg_search (2.3.6)
@@ -579,6 +579,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.4.2)
+    uri (0.12.2)
     uuidtools (2.2.0)
     video_info (4.0.0)
       iso8601 (~> 0.13.0)
@@ -641,7 +642,7 @@ DEPENDENCIES
   maxminddb
   nokogiri
   oj
-  paper_trail (~> 14.0.0)
+  paper_trail (~> 15.0.0)
   pg
   pg_search
   premailer-rails
@@ -677,6 +678,7 @@ DEPENDENCIES
   twitter-text!
   tzinfo-data
   uglifier
+  uri (= 0.12.2)
   uuidtools
   video_info
   webmock

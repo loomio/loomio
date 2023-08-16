@@ -1911,6 +1911,7 @@ pt_BR:
     no_votes_yet: Nenhum voto foi registrado ainda.
     change_results_order: Mudar ordem dos resultados
     none_of_the_above: "(Nenhuma das opções acima)"
+    vote_removed: Voto removido
   poll_common_undecided_panel:
     show_undecided: Mostrar %{count} indeciso
     show_invitations: Mostrar Convites Pendentes
@@ -2084,6 +2085,7 @@ pt_BR:
     time_slot_added: Horário adicionado
     time_slot_already_added: Esse horário já foi incluido
     participants_see_local_times: Os participantes verão os horários localizados em seu fuso horário
+    use_24_hour_format: Erro! Use o formato de 24 horas, por exemplo, %{time}
   poll_ranked_choice_form:
     tool_tip_collapsed: Entenda a preferência ordenada das opções
     no_options: 'Você não configurou nenhuma opção ainda. '

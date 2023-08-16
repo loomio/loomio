@@ -1876,6 +1876,7 @@ it:
     no_votes_yet: Nessun voto è stato finora espresso.
     change_results_order: Modifica l'ordine dei risultati
     none_of_the_above: "(Nessuno dei precedenti)"
+    vote_removed: Voto rimosso
   poll_common_undecided_panel:
     show_undecided: Mostra %{count} Indecisi
     show_invitations: Mostra inviti pendenti
@@ -2045,6 +2046,7 @@ it:
     time_slot_added: Fascia oraria aggiunta
     time_slot_already_added: Fascia oraria già aggiunta
     participants_see_local_times: I partecipanti vedranno gli orari localizzati nel loro fuso orario
+    use_24_hour_format: Errore! Utilizza il formato 24 ore, ad es. %{time}
   poll_ranked_choice_form:
     no_options: Non hai ancora aggiunto nessuna opzione.
     add_option_placeholder: Inserisci una nuova scelta

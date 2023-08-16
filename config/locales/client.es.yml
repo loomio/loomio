@@ -1923,6 +1923,7 @@ es:
     no_votes_yet: Todavía no se han realizado votos.
     change_results_order: Cambiar orden de resultados
     none_of_the_above: "(Ninguno de los mencionados) "
+    vote_removed: Voto eliminado
   poll_common_undecided_panel:
     show_undecided: Mostrar %{count} indecisos
     show_invitations: Mostrar invitaciones pendientes
@@ -2096,6 +2097,7 @@ es:
     time_slot_added: Franja horaria añadida
     time_slot_already_added: Franja horaria ya añadida
     participants_see_local_times: Los participantes verán los horarios localizados en su zona horaria
+    use_24_hour_format: "¡Error! Utilice el formato de 24 horas, por ejemplo, %{time}"
   poll_ranked_choice_form:
     tool_tip_collapsed: Comprender la preferencia ordenada de las opciones
     no_options: No has añadido ninguna opción aún

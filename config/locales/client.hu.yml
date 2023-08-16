@@ -1798,6 +1798,7 @@ hu:
     none_of_the_above: "(A fentiek egyike sem)"
     undecided: Eldöntetlen
     undecided_first: Először bizonytalan
+    vote_removed: Szavazat eltávolítva
   poll_common_undecided_panel:
     show_invitations: A függőben lévő meghívók megjelenítése
     invitation_count_singular: 1 további személyt hívtak meg e-mailben a részvételre
@@ -1965,6 +1966,7 @@ hu:
     time_slot_added: Időrés hozzáadva
     time_slot_already_added: Az időrés már hozzáadva
     participants_see_local_times: A résztvevők az időzónájukra lokalizálva látják az időt
+    use_24_hour_format: Hiba! Használjon 24 órás formátumot, pl. %{time}
   poll_ranked_choice_form:
     no_options: Még nem adtál meg egyetlen lehetőséget sem.
     add_option_placeholder: Írjon be egy új választást

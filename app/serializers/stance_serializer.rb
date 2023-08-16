@@ -58,7 +58,7 @@ class StanceSerializer < ApplicationSerializer
   end
 
   def include_reason?
-    object.participant_id == scope[:current_user_id] || poll.show_results?(voted: true)
+    !object.revoked_at && (object.participant_id == scope[:current_user_id] || poll.show_results?(voted: true))
   end
 
   def include_mentioned_usernames?
