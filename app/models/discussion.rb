@@ -1,7 +1,6 @@
 class Discussion < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
-  include Forkable
   include Translatable
   include Reactable
   include HasTimeframe
