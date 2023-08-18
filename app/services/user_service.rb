@@ -22,16 +22,6 @@ class UserService
     User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
   end
 
-  def self.move_records(from: , to: )
-    poll_ids = from.participated_poll_ids & to.participated_poll_ids
-    Stance.where(participant_id: from.id).update_all(participant_id: to.id)
-    Stance.where(participant_id: to.id, poll_id: poll_ids).update_all(latest: false)
-
-    Poll.where(id: poll_ids).each do |poll|
-      poll.stances.where(participant_id: to.id).order(created_at: :desc).first.update_attribute(:latest, true)
-    end
-  end
-
   # UserService#deactivate
   # When someone no longer wants to be on the system, this is the way to remove them.
   #
@@ -54,6 +44,7 @@ class UserService
     group_ids = Membership.where(user_id: user.id).pluck(:group_id)
     Group.where(id: group_ids).map(&:update_memberships_count)
     user.update(deactivated_at: nil)
+    GenericWorker.perform_async('SearchService', 'reindex_by_author_id', user_id)
   end
 
   # # UserService#destroy
@@ -89,6 +80,7 @@ class UserService
     return false unless user.valid?
     user.save!
     EventBus.broadcast('user_update', user, actor, params)
+    GenericWorker.perform_async('SearchService', 'reindex_by_author_id', user.id) if user.name_previously_changed?
   end
 
   def self.save_experience(user:, actor:, params:)

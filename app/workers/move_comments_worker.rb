@@ -28,6 +28,9 @@ class MoveCommentsWorker
     EventService.repair_thread(target_discussion.id)
     EventService.repair_thread(source_discussion.id)
 
+    SearchService.reindex_by_discussion_id(target_discussion.id)
+    SearchService.reindex_by_discussion_id(source_discussion.id)
+
     ActiveStorage::Attachment.where(record: all_events.map(&:eventable).compact).update_all(group_id: target_discussion.group_id)
 
     MessageChannelService.publish_models(target_discussion.items, group_id: target_discussion.group.id)

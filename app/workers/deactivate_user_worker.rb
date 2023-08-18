@@ -41,5 +41,6 @@ class DeactivateUserWorker
       MembershipRequest.where(requestor_id: user_id, responded_at: nil).destroy_all
       UserMailer.deactivated(email, user.email, locale).deliver_now
     end
+    SearchService.reindex_by_author_id(user_id)
   end
 end

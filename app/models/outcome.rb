@@ -10,8 +10,7 @@ class Outcome < ApplicationRecord
   include HasRichText
   include Searchable
   
-  def self.pg_search_insert_statement(id = nil)
-    id_str = id.present? ? " AND outcomes.id = #{id.to_s} LIMIT 1" : ""
+  def self.pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil, poll_id: nil)
     content_str = "regexp_replace(CONCAT_WS(' ', outcomes.statement, users.name), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
       INSERT INTO pg_search_documents (
@@ -26,21 +25,25 @@ class Outcome < ApplicationRecord
         ts_content,
         created_at,
         updated_at)
-       SELECT 'Outcome' AS searchable_type,
-              outcomes.id AS searchable_id,
-              outcomes.poll_id AS poll_id,
-              polls.group_id as group_id,
-              polls.discussion_id AS discussion_id,
-              outcomes.author_id AS author_id,
-              outcomes.created_at as authored_at,
-              #{content_str} AS content,
-              to_tsvector('simple', #{content_str}) as ts_content,
-              now() AS created_at,
-              now() AS updated_at
-       FROM outcomes
-       LEFT JOIN users ON users.id = outcomes.author_id
-       LEFT JOIN polls ON polls.id = outcomes.poll_id
-       WHERE polls.discarded_at IS NULL #{id_str}
+      SELECT 'Outcome' AS searchable_type,
+        outcomes.id AS searchable_id,
+        outcomes.poll_id AS poll_id,
+        polls.group_id as group_id,
+        polls.discussion_id AS discussion_id,
+        outcomes.author_id AS author_id,
+        outcomes.created_at as authored_at,
+        #{content_str} AS content,
+        to_tsvector('simple', #{content_str}) as ts_content,
+        now() AS created_at,
+        now() AS updated_at
+      FROM outcomes
+        LEFT JOIN users ON users.id = outcomes.author_id
+        LEFT JOIN polls ON polls.id = outcomes.poll_id
+      WHERE polls.discarded_at IS NULL 
+        #{id ? " AND outcomes.id = #{id.to_s} LIMIT 1" : ""}
+        #{author_id ? " AND outcomes.author_id = #{author_id.to_s}" : ""}
+        #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_s}" : ""}
+        #{poll_id ? " AND outcomes.poll_id = #{poll_id.to_s}" : ""}
     SQL
   end
   is_rich_text    on: :statement

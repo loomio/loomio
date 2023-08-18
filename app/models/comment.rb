@@ -9,8 +9,7 @@ class Comment < ApplicationRecord
   include HasRichText
   include Searchable
 
-  def self.pg_search_insert_statement(id = nil)
-    id_str = id.present? ? " AND comments.id = #{id.to_i} LIMIT 1" : ""
+  def self.pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil)
     content_str = "regexp_replace(CONCAT_WS(' ', comments.body, users.name), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
       INSERT INTO pg_search_documents (
@@ -24,20 +23,25 @@ class Comment < ApplicationRecord
         ts_content,
         created_at,
         updated_at)
-       SELECT 'Comment' AS searchable_type,
-              comments.id AS searchable_id,
-              discussions.group_id as group_id,
-              discussions.id AS discussion_id,
-              comments.user_id AS author_id,
-              comments.created_at AS authored_at,
-              #{content_str} AS content,
-              to_tsvector('simple',#{content_str}) as ts_content,
-              now() AS created_at,
-              now() AS updated_at
-       FROM comments
-       LEFT JOIN discussions ON discussions.id = comments.discussion_id
-       LEFT JOIN users ON users.id = comments.user_id
-       WHERE comments.discarded_at IS NULL AND discussions.discarded_at IS NULL #{id_str}
+      SELECT 'Comment' AS searchable_type,
+        comments.id AS searchable_id,
+        discussions.group_id as group_id,
+        discussions.id AS discussion_id,
+        comments.user_id AS author_id,
+        comments.created_at AS authored_at,
+        #{content_str} AS content,
+        to_tsvector('simple',#{content_str}) as ts_content,
+        now() AS created_at,
+        now() AS updated_at
+      FROM comments
+        LEFT JOIN discussions ON discussions.id = comments.discussion_id
+        LEFT JOIN users ON users.id = comments.user_id
+        #{discussion_id ? "LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id" : ""}
+      WHERE comments.discarded_at IS NULL 
+        AND discussions.discarded_at IS NULL 
+        #{id ? " AND comments.id = #{id.to_i} LIMIT 1" : ""}
+        #{author_id ? " AND comments.user_id = #{author_id.to_i}" : ""}
+        #{discussion_id ? " AND events.discussion_id = #{discussion_id.to_i}" : ""}
     SQL
   end
 

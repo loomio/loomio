@@ -17,8 +17,7 @@ class Discussion < ApplicationRecord
 
   include Searchable
 
-  def self.pg_search_insert_statement(id = nil)
-    id_str = id.present? ? " AND discussions.id = #{id.to_i} LIMIT 1" : ""
+  def self.pg_search_insert_statement(id: nil, author_id: nil)
     content_str = "regexp_replace(CONCAT_WS(' ', discussions.title, discussions.description, users.name), E'<[^>]+>', '', 'gi')"
     <<~SQL.squish
       INSERT INTO pg_search_documents (
@@ -32,19 +31,21 @@ class Discussion < ApplicationRecord
         ts_content,
         created_at,
         updated_at)
-       SELECT 'Discussion' AS searchable_type,
-              discussions.id AS searchable_id,
-              discussions.group_id as group_id,
-              discussions.id AS discussion_id,
-              discussions.author_id AS author_id,
-              discussions.created_at AS authored_at,
-              #{content_str} AS content,
-              to_tsvector('simple', #{content_str}) as ts_content,
-              now() AS created_at,
-              now() AS updated_at
-       FROM discussions
-       LEFT JOIN users ON users.id = discussions.author_id
-       WHERE discarded_at IS NULL #{id_str}
+      SELECT 'Discussion' AS searchable_type,
+        discussions.id AS searchable_id,
+        discussions.group_id as group_id,
+        discussions.id AS discussion_id,
+        discussions.author_id AS author_id,
+        discussions.created_at AS authored_at,
+        #{content_str} AS content,
+        to_tsvector('simple', #{content_str}) as ts_content,
+        now() AS created_at,
+        now() AS updated_at
+      FROM discussions
+        LEFT JOIN users ON users.id = discussions.author_id
+      WHERE discarded_at IS NULL
+        #{id ? " AND discussions.id = #{id.to_i} LIMIT 1" : ""}
+        #{author_id ? " AND discussions.author_id = #{author_id.to_i}" : ""}
     SQL
   end
 
