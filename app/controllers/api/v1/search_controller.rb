@@ -1,7 +1,16 @@
 class API::V1::SearchController < API::V1::RestfulController
   def index
-    rel = PgSearch.multisearch(params[:query]).
-                   where("group_id IN (:group_ids) OR (group_id IS NULL AND discussion_id IN (:discussion_ids))", group_ids: group_ids, discussion_ids: current_user.guest_discussion_ids)
+    if group_or_org_id.to_i == 0
+      rel = PgSearch.multisearch(params[:query]).where("group_id is null and discussion_id IN (:discussion_ids)", discussion_ids: current_user.guest_discussion_ids)
+    end
+
+    if group_or_org_id.to_i > 0
+      rel = PgSearch.multisearch(params[:query]).where("group_id IN (:group_ids)", group_ids: group_ids)
+    end
+
+    if group_or_org_id.blank?
+      rel = PgSearch.multisearch(params[:query]).where("group_id IN (:group_ids) OR discussion_id in (:discussion_ids)", group_ids: group_ids, discussion_ids: current_user.guest_discussion_ids)
+    end
 
     if params[:tag]
       discussion_ids = Discussion.where(group_id: group_ids).where("tags @> ARRAY[?]::varchar[]", Array(params[:tag])).pluck(:id)
@@ -94,6 +103,10 @@ class API::V1::SearchController < API::V1::RestfulController
     else
       current_user.group_ids
     end
+  end
+
+  def group_or_org_id
+    params[:group_id] || params[:org_id]
   end
 
   def serializer_root

@@ -40,7 +40,11 @@ class Stance < ApplicationRecord
        FROM stances
        LEFT JOIN users ON users.id = stances.participant_id
        LEFT JOIN polls ON polls.id = stances.poll_id
-       WHERE polls.discarded_at IS NULL #{id_str}
+       WHERE polls.discarded_at IS NULL 
+         AND stances.cast_at IS NOT null
+         AND NOT (polls.anonymous = TRUE AND polls.closed_at IS NULL)
+         AND NOT (polls.hide_results = 2 AND polls.closed_at IS NULL)
+         #{id_str}
     SQL
   end
 

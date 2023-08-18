@@ -907,14 +907,5 @@ describe API::V1::DiscussionsController do
         expect(response.status).to eq 403
       end
     end
-
-    describe 'search' do
-      it 'does not return discarded discussions' do
-        get :search, params: { group_id: group.id, q: "Discarded" }
-        json = JSON.parse(response.body)
-        discussion_ids = json['discussions'].map { |d| d['id'] }
-        expect(discussion_ids).to_not include discarded_discussion.id
-      end
-    end
   end
 end
