@@ -1,4 +1,4 @@
-class FixStancesMissingFromThreads
+class FixStancesMissingFromThreadsWorker
   include Sidekiq::Worker
 	def perform
 		stance_ids = Event.where("discussion_id is not null").where(eventable_type: 'Stance').pluck(:eventable_id)
