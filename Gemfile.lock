@@ -390,6 +390,9 @@ GEM
       activerecord (>= 6.1)
       request_store (~> 1.4)
     pg (1.5.3)
+    pg_search (2.3.6)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     premailer (1.21.0)
       addressable
       css_parser (>= 1.12.0)
@@ -641,6 +644,7 @@ DEPENDENCIES
   oj
   paper_trail (~> 15.0.0)
   pg
+  pg_search
   premailer-rails
   puma
   rack (= 2.2.8)

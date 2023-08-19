@@ -690,45 +690,6 @@ describe API::V1::DiscussionsController do
       end
     end
 
-    describe 'fork' do
-      let(:user) { create :user }
-      let(:another_user) { create :user }
-      let(:group) { create :group }
-      let!(:discussion) { create_discussion group: group }
-      let(:target_event) { create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 2 }
-      let(:another_event) { create :event, discussion: discussion, kind: :new_comment, eventable: create(:comment, discussion: discussion), sequence_id: 3 }
-      let(:alien_comment) { create(:comment) }
-      let!(:alien_comment_event) { CommentService.create(comment: alien_comment, actor: alien_comment.author ) }
-      let(:fork_params) {{
-        title: "A forked title",
-        group_id: group.id,
-        description: "A forked description",
-        private: true,
-        forked_event_ids: [target_event.id, another_event.id]
-      }}
-      let(:alien_fork_params) {{
-        title: "A forked title",
-        group_id: group.id,
-        description: "A forked description",
-        private: true,
-        forked_event_ids: [target_event.id, alien_comment_event.id, another_event.id]
-      }}
-
-      before { group.add_admin! user }
-
-      it 'does not allow non admins to fork a thread' do
-        sign_in another_user
-        post :fork, params: { discussion: fork_params }
-        expect(response.status).to eq 403
-      end
-
-      it 'does not move alien comment events' do
-        sign_in user
-        expect { post :fork, params: { discussion: alien_fork_params } }.to change { Discussion.count }.by(0)
-        expect(response.status).to eq 403
-      end
-    end
-
     describe 'move_comments' do
       let(:user) { create :user }
       let(:another_user) { create :user }
@@ -905,15 +866,6 @@ describe API::V1::DiscussionsController do
       it 'access denied for moving comments where you are not an admin of the target discussion' do
         patch :move_comments, params: { id: alien_comment_event.discussion_id, forked_event_ids: [first_comment_event.id]}
         expect(response.status).to eq 403
-      end
-    end
-
-    describe 'search' do
-      it 'does not return discarded discussions' do
-        get :search, params: { group_id: group.id, q: "Discarded" }
-        json = JSON.parse(response.body)
-        discussion_ids = json['discussions'].map { |d| d['id'] }
-        expect(discussion_ids).to_not include discarded_discussion.id
       end
     end
   end

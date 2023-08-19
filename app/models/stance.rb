@@ -5,9 +5,50 @@ class Stance < ApplicationRecord
   include HasEvents
   include HasCreatedEvent
   include HasVolume
+  include Searchable
 
   extend HasTokens
   initialized_with_token :token
+
+  def self.pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil, poll_id: nil)
+    content_str = "regexp_replace(CONCAT_WS(' ', stances.reason, users.name), E'<[^>]+>', '', 'gi')"
+    <<~SQL.squish
+      INSERT INTO pg_search_documents (
+        searchable_type,
+        searchable_id,
+        poll_id,
+        group_id,
+        discussion_id,
+        author_id,
+        authored_at,
+        content,
+        ts_content,
+        created_at,
+        updated_at)
+      SELECT 'Stance' AS searchable_type,
+        stances.id AS searchable_id,
+        stances.poll_id AS poll_id,
+        polls.group_id as group_id,
+        polls.discussion_id AS discussion_id,
+        stances.participant_id AS author_id,
+        stances.cast_at AS authored_at,
+        #{content_str} AS content,
+        to_tsvector('simple', #{content_str}) as ts_content,
+        now() AS created_at,
+        now() AS updated_at
+      FROM stances
+        LEFT JOIN users ON users.id = stances.participant_id
+        LEFT JOIN polls ON polls.id = stances.poll_id
+      WHERE polls.discarded_at IS NULL 
+        AND stances.cast_at IS NOT null
+        AND NOT (polls.anonymous = TRUE AND polls.closed_at IS NULL)
+        AND NOT (polls.hide_results = 2 AND polls.closed_at IS NULL)
+        #{id ? " AND stances.id = #{id.to_i} LIMIT 1" : ''}
+        #{author_id ? " AND stances.participant_id = #{author_id.to_i}" : ''}
+        #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_i}" : ''}
+        #{poll_id ? " AND stances.poll_id = #{poll_id.to_i}" : ''}
+    SQL
+  end
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
   include Translatable

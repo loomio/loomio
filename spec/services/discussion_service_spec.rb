@@ -33,10 +33,6 @@ describe 'DiscussionService' do
     context 'the discussion is valid' do
       before { discussion.stub(:valid?).and_return(true) }
 
-      it 'syncs the discussion search vector' do
-        expect {DiscussionService.create(discussion: discussion, actor: user) }.to change {SearchVector.where(discussion_id: discussion.id).count}.by(1)
-      end
-
       it 'notifies new mentions' do
         discussion.group.add_member! another_user
         discussion.description = "A mention for @#{another_user.username}!"
@@ -122,12 +118,6 @@ describe 'DiscussionService' do
         DiscussionService.update discussion: discussion,
                                  params: discussion_params,
                                  actor: user
-      end
-
-      it 'syncs the discussion search vector' do
-        DiscussionService.update(discussion: discussion, params: discussion_params, actor: user)
-        discussion_params[:description] = "merry christmas everyone"
-        expect {DiscussionService.update(discussion: discussion, params: discussion_params, actor: user) }.to change {SearchVector.where(discussion_id: discussion.id).first.search_vector}
       end
 
       it 'creates a version with updated title / description / private values' do

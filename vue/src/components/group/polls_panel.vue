@@ -16,16 +16,12 @@ export default
     per: 25
 
   created: ->
-    @onQueryInput = debounce (val) =>
-      @$router.replace(@mergeQuery(q: val))
-    , 500
-
     @group = Records.groups.find(@$route.params.key)
 
     @initLoader()
 
     @watchRecords
-      collections: ['polls', 'groups', 'memberships']
+      collections: ['polls', 'groups', 'stances']
       query: => @findRecords()
 
     @loader.fetch(@page).then =>
@@ -35,6 +31,25 @@ export default
         group: @group
 
   methods:
+    openSearchModal: ->
+      initialOrgId = null
+      initialGroupId = null
+      
+      if @group.isParent()
+        initialOrgId = @group.id
+      else
+        initialOrgId = @group.parentId
+        initialGroupId = @group.id
+
+      EventBus.$emit 'openModal',
+        component: 'SearchModal'
+        persistent: false
+        maxWidth: 900
+        props:
+          initialType: 'Poll'
+          initialOrgId: initialOrgId
+          initialGroupId: initialGroupId  
+
     initLoader: ->
       @loader = new PageLoader
         path: 'polls'
@@ -44,16 +59,8 @@ export default
           group_key: @$route.params.key
           status: @$route.query.status
           poll_type: @$route.query.poll_type
-          query: @$route.query.q
           subgroups: @$route.query.subgroups
           per: @per
-
-    openSelectPollTypeModal: ->
-      EventBus.$emit 'openModal',
-                     component: 'PollCommonStartForm'
-                     props:
-                       group: @group
-                       isModal: true
 
     findRecords: ->
       groupIds = switch (@$route.query.subgroups || 'mine')
@@ -76,11 +83,6 @@ export default
       if @$route.query.poll_type
         chain = chain.find({'pollType': @$route.query.poll_type})
 
-      if @$route.query.q
-        chain = chain.where (poll) =>
-          some [poll.title, poll.details], (field) =>
-            every @$route.query.q.split(' '), (frag) -> RegExp(frag, "i").test(field)
-
       if @loader.pageWindow[@page]
         if @page == 1
           chain = chain.find(createdAt: {$gte: @loader.pageWindow[@page][0]})
@@ -91,8 +93,6 @@ export default
         @polls = []
 
   watch:
-    '$route.query.q': ->
-      @initLoader().fetch(@page)
     '$route.query.status': ->
       @initLoader().fetch(@page)
     '$route.query.poll_type': ->
@@ -133,7 +133,6 @@ export default
       v-menu
         template(v-slot:activator="{ on, attrs }")
           v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
-            //- span(v-t="{path: filterName(filter), args: {count: unreadCount}}")
             span(v-if="$route.query.poll_type" v-t="'poll_types.'+$route.query.poll_type")
             span(v-if="!$route.query.poll_type" v-t="'polls_panel.any_type'")
             v-icon mdi-menu-down
@@ -150,8 +149,8 @@ export default
         clearable
         hide-details
         solo
-        :value="$route.query.q"
-        @input="onQueryInput"
+        @focus="openSearchModal"
+        @click="openSearchModal"
         :placeholder="$t('navbar.search_polls', {name: group.name})"
         append-icon="mdi-magnify")
       v-btn.polls-panel__new-poll-button(

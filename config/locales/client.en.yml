@@ -561,6 +561,15 @@ en:
     from_sequence_id: From a thread item url
     unread: New to you
 
+
+  search_modal:
+    all_content: 'All content'
+    best_match: 'Best match'
+    any_tag: 'Any tag'
+    all_subgroups: 'All subgroups'
+    parent_only: 'Parent only'
+
+
   navbar:
     search_all_threads: Search all threads
     search_threads: 'Search threads in {{name}}'
@@ -604,6 +613,7 @@ en:
     contact_support: 'Contact support'
     sign_out: 'Sign out'
     beta_collab: "🧪 Beta features enabled!"
+    outcomes: Outcomes
 
   membership_card:
     group_members: "Group members"
@@ -1823,6 +1833,7 @@ en:
     votes: Votes
     update_outcome: Update outcome
     outcome: Outcome
+    outcomes: Outcomes
     statement: Statement
     change_your_stance: Edit response
     load_more: Load more
