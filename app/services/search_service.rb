@@ -1,4 +1,16 @@
 class SearchService
+  def self.reindex_everything
+    [
+      Discussion.pg_search_insert_statement,
+      Comment.pg_search_insert_statement,
+      Poll.pg_search_insert_statement,
+      Stance.pg_search_insert_statement,
+      Outcome.pg_search_insert_statement
+    ].each do |statement|
+      ActiveRecord::Base.connection.execute(statement)
+    end
+  end
+
   def self.reindex_by_author_id(author_id)
     PgSearch::Document.where(author_id: author_id).delete_all
 
