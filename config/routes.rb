@@ -170,7 +170,6 @@ Rails.application.routes.draw do
         patch :unpin_reader, on: :member
         patch :move, on: :member
         delete :discard, on: :member
-        post  :fork, on: :collection
         patch :move_comments, on: :member
         get :history, on: :member
         get :search, on: :collection

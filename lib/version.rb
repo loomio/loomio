@@ -1,7 +1,7 @@
 module Loomio
   module Version
     def self.current
-      "2.18.3"
+      "2.19.0"
     end
   end
 end

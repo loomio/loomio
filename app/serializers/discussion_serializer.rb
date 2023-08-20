@@ -31,7 +31,6 @@ class DiscussionSerializer < ApplicationSerializer
              :updated_at,
              :private,
              :versions_count,
-             :importance,
              :pinned_at,
              :attachments,
              :link_previews,

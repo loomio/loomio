@@ -186,6 +186,13 @@ class User < ApplicationRecord
     end.to_i
   end
 
+  def browseable_group_ids
+    Group.where(
+      "id in (:group_ids) OR 
+      (parent_id in (:group_ids) AND is_visible_to_parent_members = TRUE)",
+      group_ids: self.group_ids).pluck(:id)
+  end
+
   def set_legal_accepted_at
     self.legal_accepted_at = Time.now
   end

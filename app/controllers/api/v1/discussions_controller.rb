@@ -111,11 +111,6 @@ class API::V1::DiscussionsController < API::V1::RestfulController
     respond_with_resource
   end
 
-  def fork
-    @event = service.fork(discussion: instantiate_resource, actor: current_user)
-    respond_with_resource
-  end
-
   def move_comments
     EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
     respond_with_resource

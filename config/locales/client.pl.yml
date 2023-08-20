@@ -1859,6 +1859,7 @@ pl:
     no_votes_yet: Nie oddano jeszcze żadnych głosów.
     change_results_order: Zmień kolejność wyników
     none_of_the_above: "(Żaden z powyższych)"
+    vote_removed: Głos usunięty
   poll_common_undecided_panel:
     show_invitations: Pokaż Oczekujące Zaproszenia
     invitation_count_singular: 1 dodatkowa osoba została zaproszona do wzięcia udziału poprzez e-mail
@@ -2026,6 +2027,7 @@ pl:
     time_slot_added: Dodano przedział czasowy
     time_slot_already_added: Przedział czasowy został już dodany
     participants_see_local_times: Uczestnicy zobaczą czasy zlokalizowane w ich strefie czasowej
+    use_24_hour_format: Błąd! Użyj formatu 24-godzinnego, np. %{time}
   poll_ranked_choice_form:
     no_options: Nie dodałeś jeszcze żadnych opcji.
     add_option_placeholder: Wprowadź nowy wybór

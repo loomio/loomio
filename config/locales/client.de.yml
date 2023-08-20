@@ -1867,6 +1867,7 @@ de:
     no_votes_yet: Es existieren noch keine Abstimmungsbeiträge.
     change_results_order: Ergebnisreihenfolge ändern
     none_of_the_above: "(Keine der genannten)"
+    vote_removed: Abstimmung entfernt
   poll_common_undecided_panel:
     show_invitations: Ausstehende Einladungen anzeigen
     invitation_count_singular: Eine weitere Person wurde zur Teilnahme per E-Mail eingeladen
@@ -2034,6 +2035,7 @@ de:
     time_slot_added: Zeitfenster hinzugefügt
     time_slot_already_added: Zeitfenster ist schon hinzugefügt
     participants_see_local_times: Den Teilnehmern werden die auf ihre Zeitzone zugeschnittenen Zeiten angezeigt
+    use_24_hour_format: Fehler! Verwenden Sie das 24-Stunden-Format, z. B. %{time}
   poll_ranked_choice_form:
     no_options: Du hast noch keine Option hinzugefügt.
     add_option_placeholder: Gebe eine neue Auswahl ein

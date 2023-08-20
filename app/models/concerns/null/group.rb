@@ -19,6 +19,10 @@ module Null::Group
     I18n.t('discussion.invite_only')
   end
 
+  def save
+    true
+  end
+  
   def name
     I18n.t('discussion.invite_only')
   end

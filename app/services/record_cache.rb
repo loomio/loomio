@@ -78,6 +78,10 @@ class RecordCache
     when 'Document'
       obj.user_ids.concat collection.map(&:author_id).compact
 
+    when 'SearchResult'
+      obj.user_ids.concat collection.map(&:author_id).compact
+      obj.add_polls_options_stances_outcomes Poll.kept.where(id: collection.map(&:poll_id))
+
     else
       obj.add_events_complete(collection) if item.is_a?(Event)
     end
@@ -87,7 +91,6 @@ class RecordCache
     obj.add_events Event.where(kind: 'new_discussion', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'discussion_forked', eventable_id: obj.discussion_ids)
     obj.add_events Event.where(kind: 'poll_created', eventable_id: obj.poll_ids)
-
     obj.add_tags_complete
     obj
   end

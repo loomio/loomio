@@ -98,6 +98,7 @@ class DiscussionService
     discussion.update(discarded_at: Time.now, discarded_by: actor.id)
 
     discussion.polls.update_all(discarded_at: Time.now, discarded_by: actor.id)
+    GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
 
     EventBus.broadcast('discussion_discard', discussion, actor)
     discussion.created_event
@@ -130,6 +131,7 @@ class DiscussionService
     discussion.polls.each { |poll| poll.update(group: destination.presence) }
     ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
 
+    GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
     EventBus.broadcast('discussion_move', discussion, params, actor)
     Events::DiscussionMoved.publish!(discussion, actor, source)
   end
@@ -148,16 +150,6 @@ class DiscussionService
     discussion.update(pinned_at: nil)
 
     EventBus.broadcast('discussion_pin', discussion, actor)
-  end
-
-  def self.fork(discussion:, actor:)
-    actor.ability.authorize! :fork, discussion
-    source = discussion.forked_items.first.discussion
-
-    return false unless event = create(discussion: discussion, actor: actor)
-
-    EventBus.broadcast('discussion_fork', source, event.eventable, actor)
-    Events::DiscussionForked.publish!(event.eventable, source)
   end
 
   def self.update_reader(discussion:, params:, actor:)

@@ -87,7 +87,7 @@ export default
   strand-title(:discussion="discussion")
 
   .my-1.mb-2(v-if="discussion.tags.length")
-    tags-display(:model="discussion")
+    tags-display(:tags="discussion.tags" :group="discussion.group()")
   .mb-2
     user-avatar.mr-2(:user='author', :size='36')
     router-link.text--secondary(:to="urlFor(author)") {{authorName}}

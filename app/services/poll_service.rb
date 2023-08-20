@@ -31,6 +31,8 @@ class PollService
     return false unless poll.valid?
 
     poll.save!
+    poll.update_counts!
+    GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
 
     users = UserInviter.where_or_create!(actor: actor,
                                          user_ids: params[:recipient_user_ids],
@@ -210,6 +212,7 @@ class PollService
       EventService.repair_thread(poll.discussion_id)
     end
     poll.update_attribute(:closed_at, Time.now)
+    GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
   end
 
   def self.add_options(poll:, params:, actor:)
@@ -252,6 +255,8 @@ class PollService
       Event.where(kind: 'stance_created', eventable_id: stance_ids).update_all(discussion_id: poll.discussion_id)
       EventService.repair_thread(poll.discussion_id)
     end
+
+    GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
 
     poll.created_event
   end

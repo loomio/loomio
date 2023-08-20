@@ -28,7 +28,7 @@ export default
 <template lang="pug">
 
 section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id", :event="event")
-  template(v-if="eventable.castAt")
+  template(v-if="eventable.castAt && !eventable.revokedAt")
     template(v-if="eventable.hasOptionIcon()")
       .d-flex
         component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
@@ -50,12 +50,21 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
       link-previews(:model="eventable")
       attachment-list(:attachments="eventable.attachments")
     action-dock(:model='eventable', :actions='actions' small left)
-  template(v-else)
+  template(v-if="!eventable.castAt && !eventable.revokedAt")
     .d-flex
       component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
-      space
+      mid-dot.text--secondary
       span(v-t="'poll_common_votes_panel.undecided'")
-      space
+      mid-dot.text--secondary
+      router-link.text--secondary(:to='link')
+        time-ago(:date='eventable.updatedAt')
+    action-dock(:model='eventable', :actions='actions' small)
+  template(v-if="eventable.revokedAt")
+    .d-flex
+      component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
+      mid-dot.text--secondary
+      span.text--secondary(v-t="'poll_common_votes_panel.vote_removed'")
+      mid-dot.text--secondary
       router-link.text--secondary(:to='link')
         time-ago(:date='eventable.updatedAt')
     action-dock(:model='eventable', :actions='actions' small)

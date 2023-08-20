@@ -1,13 +1,11 @@
 class Discussion < ApplicationRecord
   include CustomCounterCache::Model
   include ReadableUnguessableUrls
-  include Forkable
   include Translatable
   include Reactable
   include HasTimeframe
   include HasEvents
   include HasMentions
-  include HasImportance
   include MessageChannel
   include SelfReferencing
   include HasCreatedEvent
@@ -16,6 +14,40 @@ class Discussion < ApplicationRecord
   extend  NoSpam
   include Discard::Model
 
+  include Searchable
+
+  def self.pg_search_insert_statement(id: nil, author_id: nil)
+    content_str = "regexp_replace(CONCAT_WS(' ', discussions.title, discussions.description, users.name), E'<[^>]+>', '', 'gi')"
+    <<~SQL.squish
+      INSERT INTO pg_search_documents (
+        searchable_type,
+        searchable_id,
+        group_id,
+        discussion_id,
+        author_id,
+        authored_at,
+        content,
+        ts_content,
+        created_at,
+        updated_at)
+      SELECT 'Discussion' AS searchable_type,
+        discussions.id AS searchable_id,
+        discussions.group_id as group_id,
+        discussions.id AS discussion_id,
+        discussions.author_id AS author_id,
+        discussions.created_at AS authored_at,
+        #{content_str} AS content,
+        to_tsvector('simple', #{content_str}) as ts_content,
+        now() AS created_at,
+        now() AS updated_at
+      FROM discussions
+        LEFT JOIN users ON users.id = discussions.author_id
+      WHERE discarded_at IS NULL
+        #{id ? " AND discussions.id = #{id.to_i} LIMIT 1" : ""}
+        #{author_id ? " AND discussions.author_id = #{author_id.to_i}" : ""}
+    SQL
+  end
+
   no_spam_for :title, :description
 
   scope :dangling, -> { joins('left join groups g on discussions.group_id = g.id').where('group_id is not null and g.id is null') }
@@ -23,7 +55,6 @@ class Discussion < ApplicationRecord
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order(last_activity_at: :desc) }
   scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
-  scope :order_by_importance, -> { order(importance: :desc, last_activity_at: :desc) }
 
   scope :visible_to_public, -> { kept.where(private: false) }
   scope :not_visible_to_public, -> { kept.where(private: true) }
@@ -46,7 +77,6 @@ class Discussion < ApplicationRecord
   belongs_to :user, foreign_key: 'author_id'
   has_many :polls, dependent: :destroy
   has_many :active_polls, -> { where(closed_at: nil) }, class_name: "Poll"
-  has_one :search_vector
 
   has_many :comments, dependent: :destroy
   has_many :commenters, -> { uniq }, through: :comments, source: :user
@@ -61,23 +91,6 @@ class Discussion < ApplicationRecord
   has_many :guests, -> { merge DiscussionReader.guests }, through: :discussion_readers, source: :user
   has_many :admin_guests, -> { merge DiscussionReader.admins }, through: :discussion_readers, source: :user
   include DiscussionExportRelations
-
-  scope :search_for, ->(fragment) do
-     joins("INNER JOIN users ON users.id = discussions.author_id")
-    .kept
-    .where("discussions.title ilike :fragment OR users.name ilike :fragment", fragment: "%#{fragment}%")
-  end
-
-  scope :weighted_search_for, ->(query, user, opts = {}) do
-    query = connection.quote(query)
-    select("*, #{query}::text as query")
-    .select("ts_headline(discussions.description, plainto_tsquery(#{query}), 'ShortWord=0') as blurb")
-    .from(SearchVector.search_for(query, user, opts))
-    .joins("INNER JOIN discussions on subquery.discussion_id = discussions.id")
-    .kept
-    .where('rank > 0')
-    .order('rank DESC, last_activity_at DESC')
-  end
 
   delegate :name, to: :group, prefix: :group
   delegate :name, to: :author, prefix: :author
@@ -101,7 +114,6 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :open_discussions_count
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
-
 
   def poll
     nil

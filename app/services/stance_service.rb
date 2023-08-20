@@ -63,7 +63,7 @@ class StanceService
   end
 
   def self.redeem(stance:, actor:)
-    return if Stance.where(participant_id: actor.id, poll_id: stance.poll_id, latest: true).exists?
+    return if Stance.latest.where(participant_id: actor.id, poll_id: stance.poll_id).exists?
     return unless Stance.redeemable_by(actor).where(id: stance.id).exists?
     stance.update(participant: actor, accepted_at: Time.zone.now)
   end

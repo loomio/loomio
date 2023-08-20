@@ -23,6 +23,15 @@ export default
     toggleThreadNav: -> EventBus.$emit 'toggleThreadNav'
     signIn: -> @openAuthModal()
     last: last
+    openSearchModal: ->
+      EventBus.$emit 'openModal',
+        component: 'SearchModal'
+        persistent: false
+        maxWidth: 900
+        props:
+          group: @group
+          discussion: @discussion
+
 
   mounted: ->
     EventBus.$on 'sidebarOpen', (val) =>
@@ -80,6 +89,8 @@ v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
 
   v-toolbar-title(v-if="showTitle" @click="$vuetify.goTo('head', {duration: 0})") {{title}}
   v-spacer
+  v-btn(@click="openSearchModal" icon)
+    v-icon mdi-magnify
   notifications(v-if='isLoggedIn')
   v-toolbar-items
   v-btn.navbar__sign-in(text v-if='!isLoggedIn' v-t="'auth_form.sign_in'" @click='signIn()')

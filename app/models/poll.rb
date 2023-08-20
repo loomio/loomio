@@ -11,6 +11,42 @@ class Poll < ApplicationRecord
   include HasRichText
   include HasTags
   include Discard::Model
+  include Searchable
+
+  def self.pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil)
+    content_str = "regexp_replace(CONCAT_WS(' ', polls.title, polls.details, users.name), E'<[^>]+>', '', 'gi')"
+    <<~SQL.squish
+      INSERT INTO pg_search_documents (
+        searchable_type,
+        searchable_id,
+        poll_id,
+        group_id,
+        discussion_id,
+        author_id,
+        authored_at,
+        content,
+        ts_content,
+        created_at,
+        updated_at)
+      SELECT 'Poll' AS searchable_type,
+        polls.id AS searchable_id,
+        polls.id AS poll_id,
+        polls.group_id as group_id,
+        polls.discussion_id AS discussion_id,
+        polls.author_id AS author_id,
+        polls.created_at AS authored_at,
+        #{content_str} AS content,
+        to_tsvector('simple', #{content_str}) as ts_content,
+        now() AS created_at,
+        now() AS updated_at
+      FROM polls
+        LEFT JOIN users ON users.id = polls.author_id
+      WHERE polls.discarded_at IS NULL
+        #{id ? " AND polls.id = #{id.to_i} LIMIT 1" : ""}
+        #{author_id ? " AND polls.author_id = #{author_id.to_i}" : ""}
+        #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_i}" : ""}
+    SQL
+  end
 
   is_rich_text on: :details
 

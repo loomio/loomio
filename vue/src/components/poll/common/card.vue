@@ -55,7 +55,7 @@ v-sheet
       poll-common-type-icon.mr-2(:poll="poll")
       span(v-if='!poll.translation.title') {{poll.title}}
       translation(:model='poll' field='title' v-if="poll.translation.title")
-      tags-display(:model="poll")
+      tags-display(:tags="poll.tags" :group="poll.group()")
     poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
     poll-common-outcome-panel(:outcome='outcome' v-if="outcome")
     poll-common-details-panel(:poll='poll')
