@@ -34,7 +34,7 @@ class ConvertDiscussionTemplatesWorker
         record_id: template.id
       )
 
-      discussion.discard! 
+      discussion.discard! if discussion.kept?
     end
   end
 end
