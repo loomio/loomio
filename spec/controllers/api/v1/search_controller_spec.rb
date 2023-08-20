@@ -2,10 +2,12 @@ require 'rails_helper'
 describe API::V1::SearchController do
 
   let(:group) { create :group }
+  let(:visible_subgroup) { create :group, parent: group, is_visible_to_parent_members: true }
   let(:other_group) { create :group }
   let(:user) { create :user, name: 'normal user' }
 
   let!(:discussion) { create :discussion, group: group, title: 'findme' }
+  let!(:visible_subgroup_discussion) { create :discussion, group: visible_subgroup, title: 'findme' }
   let!(:comment) { create :comment, discussion: discussion, body: 'findme'}
   let!(:poll) { create :poll, discussion: discussion, title: 'findme' }
   let!(:stance) { create :stance, poll: poll, reason: 'findme', cast_at: DateTime.now, choice: poll.poll_option_names.first }
@@ -57,6 +59,10 @@ describe API::V1::SearchController do
       end.size).to eq 1
 
       expect(results.filter do |r| 
+        r['searchable_type'] == 'Discussion' && r['searchable_id'] == visible_subgroup_discussion.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
         r['searchable_type'] == 'Discussion' && r['searchable_id'] == io_discussion.id
       end.size).to eq 1
 
@@ -71,7 +77,7 @@ describe API::V1::SearchController do
         type_counts[result['searchable_type']] += 1
       end
 
-      expect(type_counts['Discussion']).to eq 3
+      expect(type_counts['Discussion']).to eq 4
       expect(type_counts['Comment']).to eq 3
       expect(type_counts['Poll']).to eq 5
       expect(type_counts['Stance']).to eq 3

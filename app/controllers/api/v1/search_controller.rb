@@ -95,13 +95,13 @@ class API::V1::SearchController < API::V1::RestfulController
 
   def group_ids
     if params[:group_id].present?
-      current_user.group_ids & Array(params[:group_id].to_i)
+      current_user.browseable_group_ids & Array(params[:group_id].to_i)
     elsif params[:org_id] == '0'
       [] 
     elsif params[:org_id].present?
-      current_user.group_ids & Group.find(params[:org_id]).id_and_subgroup_ids
+      current_user.browseable_group_ids & Group.find(params[:org_id]).id_and_subgroup_ids
     else
-      current_user.group_ids
+      current_user.browseable_group_ids
     end
   end
 
