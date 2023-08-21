@@ -17,3 +17,17 @@ updates_thread:
   description_i18n: discussion_templates.updates_thread.description
   max_depth: 2
   newest_first: true
+
+testing_thread:
+  title: template discussion title
+  process_name: template process name
+  process_subtitle: template process subtitle
+  process_introduction: "<p>template introduction</p>"
+  process_introduction_format: html
+  description: "<p>template example description</p>"
+  description_format: html
+  group_id: 705728
+  tags:
+  - template example tag
+  newest_first: false
+  max_depth: 3

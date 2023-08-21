@@ -21,8 +21,8 @@ class DiscussionTemplate < ApplicationRecord
     :process_subtitle,
     :process_introduction,
     :process_introduction_format,
-    :details,
-    :details_format,
+    :description,
+    :description_format,
     :group_id,
     :tags,
     :discarded_at
@@ -30,5 +30,26 @@ class DiscussionTemplate < ApplicationRecord
 
   def members
     User.none
+  end
+
+  def dump_i18n_yaml
+    out = {}
+    [
+    :title,
+    :process_name,
+    :process_subtitle,
+    :process_introduction,
+    :process_introduction_format,
+    :description,
+    :description_format,
+    :group_id,
+    :tags,
+    :newest_first,
+    :max_depth
+    ].map(&:to_s).each do |key|
+      out[key] = self[key]
+    end
+
+    {process_name.underscore.gsub(" ", "_") => out}.to_yaml
   end
 end
