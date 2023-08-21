@@ -47,9 +47,9 @@ class DiscussionTemplate < ApplicationRecord
     :newest_first,
     :max_depth
     ].map(&:to_s).each do |key|
-      out[key] = self[key]
+      out[key] = self[key].strip
     end
 
-    {process_name.underscore.gsub(" ", "_") => out}.to_yaml
+    {process_name.strip.underscore.gsub(" ", "_") => out}.to_yaml
   end
 end

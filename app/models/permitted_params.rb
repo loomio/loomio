@@ -200,7 +200,9 @@ class PermittedParams < Struct.new(:params)
   end
 
   def discussion_template_attributes
-    [:title,
+    [
+     :key,
+     :title,
      :description,
      :description_format,
      :process_name,

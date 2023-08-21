@@ -1,33 +1,99 @@
-open_discussion:
-  title_i18n: discussion_templates.open_discussion.title
-  process_name_i18n: discussion_templates.open_discussion.process_name
-  process_subtitle_i18n: discussion_templates.open_discussion.process_subtitle
-  process_introduction_i18n: discussion_templates.open_discussion.process_introduction
-  title_i18n: discussion_templates.open_discussion.title
-  description_i18n: discussion_templates.open_discussion.description
-  max_depth: 3
-  newest_first: false
-
-updates_thread:
-  title_i18n: discussion_templates.updates_thread.title
-  process_name_i18n: discussion_templates.updates_thread.process_name
-  process_subtitle_i18n: discussion_templates.updates_thread.process_subtitle
-  process_introduction_i18n: discussion_templates.updates_thread.process_introduction
-  title_i18n: discussion_templates.updates_thread.title
-  description_i18n: discussion_templates.updates_thread.description
-  max_depth: 2
-  newest_first: true
-
-testing_thread:
-  title: template discussion title
-  process_name: template process name
-  process_subtitle: template process subtitle
-  process_introduction: "<p>template introduction</p>"
+onboarding_to_loomio:
+  title_i18n: discussion_templates.onboarding_to_loomio.title
+  process_name_i18n: discussion_templates.onboarding_to_loomio.process_name
+  process_subtitle_i18n: discussion_templates.onboarding_to_loomio.process_subtitle
+  process_introduction_i18n: discussion_templates.onboarding_to_loomio.process_introduction
   process_introduction_format: html
-  description: "<p>template example description</p>"
+  description_i18n: discussion_templates.onboarding_to_loomio.description
+  tags_i18n:
+  - discussion_templates.onboarding_to_loomio.onboarding
+  newest_first: false
+  max_depth: 3
+
+discuss_a_topic:
+  title_i18n: discussion_templates.discuss_a_topic.title
+  process_name_i18n: discussion_templates.discuss_a_topic.process_name
+  process_subtitle_i18n: discussion_templates.discuss_a_topic.process_subtitle
+  process_introduction_i18n: discussion_templates.discuss_a_topic.process_introduction
+  description_i18n: discussion_templates.discuss_a_topic.description
   description_format: html
-  group_id: 705728
-  tags:
-  - template example tag
+  newest_first: false
+  max_depth: 3
+
+approve_a_document:
+  title_i18n: discussion_templates.approve_a_document.title
+  process_name_i18n: discussion_templates.approve_a_document.process_name
+  process_subtitle_i18n: discussion_templates.approve_a_document.process_subtitle
+  process_introduction_i18n:  discussion_templates.approve_a_document.process_introduction
+  description_i18n: discussion_templates.approve_a_document.description
+  process_introduction_format: html
+  description_format: html
+  tags_i18n: 
+  - doctypes.document
+  newest_first: false
+  max_depth: 3
+
+share_links_and_info:
+  title_i18n: discussion_templates.share_links_and_info.title
+  process_name_i18n: discussion_templates.share_links_and_info.process_name
+  process_subtitle_i18n: discussion_templates.share_links_and_info.process_subtitle
+  process_introduction_i18n: discussion_templates.share_links_and_info.process_introduction
+  description_i18n: discussion_templates.share_links_and_info.description
+  tags_i18n: 
+  - discussion_templates.share_links_and_info.information
+  process_introduction_format: html
+  description_format: html
+  newest_first: true
+  max_depth: 3
+
+prepare_for_a_meeting:
+  title_i18n: discussion_templates.prepare_for_a_meeting.title
+  process_name_i18n: discussion_templates.prepare_for_a_meeting.process_name
+  process_subtitle_i18n: discussion_templates.prepare_for_a_meeting.process_subtitle
+  process_introduction_i18n: discussion_templates.prepare_for_a_meeting.process_introduction
+  description_i18n: discussion_templates.prepare_for_a_meeting.description
+  tags_i18n: 
+  - decision_tools_card.meeting
+  description_format: html
+  process_introduction_format: html
+  newest_first: false
+  max_depth: 2
+
+advice_process:
+  title_i18n: discussion_templates.advice_process.title
+  process_name_i18n: discussion_templates.advice_process.process_name
+  process_subtitle_i18n: discussion_templates.advice_process.process_subtitle
+  process_introduction_i18n: discussion_templates.advice_process.process_introduction
+  description_i18n: discussion_templates.advice_process.description
+  tags_i18n: 
+  - discussion_templates.advice_process.advice
+  description_format: html
+  process_introduction_format: html
+  newest_first: false
+  max_depth: 3
+
+consent_process:
+  title_i18n: discussion_templates.consent_process.title
+  process_name_i18n: discussion_templates.consent_process.process_name
+  process_subtitle_i18n: discussion_templates.consent_process.process_subtitle
+  process_introduction_i18n: discussion_templates.consent_process.process_introduction
+  description_i18n: discussion_templates.consent_process.description
+  tags_i18n: 
+  - discussion_templates.consent_process.consent
+  process_introduction_format: html
+  description_format: html
+  newest_first: false
+  max_depth: 3
+
+decision_by_consensus:
+  title_i18n: discussion_templates.decision_by_consensus.title
+  process_name_i18n: discussion_templates.decision_by_consensus.process_name
+  process_subtitle_i18n: discussion_templates.decision_by_consensus.process_subtitle
+  process_introduction_i18n: discussion_templates.decision_by_consensus.process_introduction
+  description_i18n: discussion_templates.decision_by_consensus.description
+  tags_i18n: 
+  - discussion_templates.decision_by_consensus.consensus
+  process_introduction_format: html
+  description_format: html
   newest_first: false
   max_depth: 3

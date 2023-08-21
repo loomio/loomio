@@ -12,13 +12,13 @@ import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_se
 
 export default new class PollTemplateService
   actions: (discussionTemplate, group) ->
-    # edit_default_template:
-    #   name: 'poll_common.edit_template'
-    #   icon: 'mdi-pencil'
-    #   menu: true
-    #   canPerform: -> !pollTemplate.id && group.adminsInclude(Session.user())
-    #   to: ->
-    #     "/poll_templates/new?template_key=#{pollTemplate.key}&group_id=#{group.id}&return_to=#{Session.returnTo()}"
+    edit_default_template:
+      name: 'poll_common.edit_template'
+      icon: 'mdi-pencil'
+      menu: true
+      canPerform: -> !discussionTemplate.id && group.adminsInclude(Session.user())
+      to: ->
+        "/thread_templates/new?template_key=#{discussionTemplate.key}&group_id=#{group.id}&return_to=#{Session.returnTo()}"
 
     edit_template:
       name: 'poll_common.edit_template'

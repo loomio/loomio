@@ -33,15 +33,14 @@ export default
       else if templateId = parseInt(@$route.query.template_id)
         Records.discussionTemplates.findOrFetchById(templateId).then (template) =>
           @discussion = template.buildDiscussion()
-          if template.groupId && AbilityService.canStartThread(template.group())
-            @discussion.groupId = template.groupId
+          if parseInt(@$route.query.group_id)
+            @discussion.groupId = parseInt(@$route.query.group_id)
 
       else if templateKey = @$route.query.template_key
         Records.discussionTemplates.findOrFetchByKey(@$route.query.template_key, @$route.query.group_id).then (template) =>
           @discussion = template.buildDiscussion()
-          console.log 'template.groupId', template.groupId
-          if template.groupId && AbilityService.canStartThread(template.group())
-            @discussion.groupId = template.groupId
+          if parseInt(@$route.query.group_id)
+            @discussion.groupId = parseInt(@$route.query.group_id)
 
       else if @groupId = parseInt(@$route.query.group_id)
         Records.groups.findOrFetchById(@groupId).then =>

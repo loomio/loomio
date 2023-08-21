@@ -370,6 +370,8 @@ Rails.application.routes.draw do
   get 'poll_templates/:id'                 => 'application#index'
   get 'poll_templates/:id/edit'            => 'application#index'
   get 'thread_templates/new'               => 'application#index'
+  get 'thread_templates/:id'               => 'application#index'
+  get 'thread_templates/:id/edit'          => 'application#index'
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export

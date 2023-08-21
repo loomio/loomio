@@ -13,11 +13,14 @@ export default
     group: null
 
   created: ->
-    if groupId = parseInt(@$route.query.group_id)
-      @discussionTemplate = Records.discussionTemplates.build(groupId: groupId)
-    else if templateId = parseInt(@$route.params.id)
+    if templateId = parseInt(@$route.params.id)
       Records.discussionTemplates.findOrFetchById(templateId).then (template) =>
         @discussionTemplate = template.clone()
+    else if (templateKey = @$route.query.template_key) && (groupId = parseInt(@$route.query.group_id))
+      Records.discussionTemplates.findOrFetchByKey(templateKey, groupId).then (template) =>
+        @discussionTemplate = template.clone()
+    else if groupId = parseInt(@$route.query.group_id)
+      @discussionTemplate = Records.discussionTemplates.build(groupId: groupId)
 
 </script>
 <template lang="pug">
