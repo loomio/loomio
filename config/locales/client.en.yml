@@ -767,6 +767,7 @@ en:
       updated: 'Thread updated'
       forked:  'Thread fork created'
     new_discussion_title: 'Start new thread'
+    new_thread_from_template: 'New thread: %{process_name}'
     moving_items_title: 'Move items to new thread'
     edit_discussion_title: 'Edit thread'
     group_label: 'Group'

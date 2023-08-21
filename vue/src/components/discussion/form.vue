@@ -27,9 +27,11 @@ export default
     subscription: @discussion.group().parentOrSelf().subscription
     groupItems: []
     initialRecipients: []
+    template: null
 
   mounted: ->
     Records.users.fetchGroups()
+    @template = Records.discussionTemplates.find(@discussion.discussionTemplateId || @discussion.discussionTemplateKey)
 
     @watchRecords
       collections: ['groups', 'memberships']
@@ -100,12 +102,8 @@ export default
     h1.text-h4(v-observe-visibility="{callback: titleVisible}")
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
-        template(v-if="discussion.template")
-          span(v-if="!discussion.id" v-t="'discussion_form.new_thread_template'")
-          span(v-if="discussion.id" v-t="'discussion_form.edit_thread_template'")
-        template(v-else)
-          span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
-          span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
+        span(v-if="!discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: template.processName}}")
+        span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
     dismiss-modal-button(
       v-if="!isPage"
