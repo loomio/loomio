@@ -27,11 +27,13 @@ export default
     subscription: @discussion.group().parentOrSelf().subscription
     groupItems: []
     initialRecipients: []
-    template: null
+    discussionTemplate: null
 
   mounted: ->
     Records.users.fetchGroups()
-    @template = Records.discussionTemplates.find(@discussion.discussionTemplateId || @discussion.discussionTemplateKey)
+    Records.pollTemplates.fetchAll(@discussion.groupId)
+    Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId(), @discussion.groupId).then (template) =>
+      @discussionTemplate = template
 
     @watchRecords
       collections: ['groups', 'memberships']
@@ -102,7 +104,8 @@ export default
     h1.text-h4(v-observe-visibility="{callback: titleVisible}")
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
-        span(v-if="!discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: template.processName}}")
+        span(v-if="discussionTemplate && !discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: discussionTemplate.processName}}")
+        span(v-if="!discussionTemplate && !discussion.id" v-t="'new_discussion_title'")
         span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
     dismiss-modal-button(
@@ -121,7 +124,8 @@ export default
 
 
   .pa-4
-    thread-template-help-panel(:discussion="discussion")
+    thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
+
     v-select.pb-4(
       :disabled="!!discussion.id"
       v-model="discussion.groupId"

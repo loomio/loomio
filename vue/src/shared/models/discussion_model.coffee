@@ -65,6 +65,9 @@ export default class DiscussionModel extends BaseModel
     clone.template = false
     clone
 
+  discussionTemplateKeyOrId: ->
+    @discussionTemplateId || @discussionTemplateKey
+    
   audienceValues: ->
     name: @group().name
 
@@ -82,8 +85,8 @@ export default class DiscussionModel extends BaseModel
 
   discussion: -> @
   
-  sourceTemplate: ->
-    @recordStore.discussions.find(@sourceTemplateId)
+  template: ->
+    @recordStore.discussionTemplates.find(@discussionTemplateId || @discussionTemplateKey)
 
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()

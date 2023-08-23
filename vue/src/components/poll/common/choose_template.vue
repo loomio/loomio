@@ -16,15 +16,16 @@ export default
     group: Object
 
   data: ->
-    alert: !Session.user().experiences['alertNewPollTemplates']
     isSorting: false
     returnTo: Session.returnTo()
     groups: []
     pollTemplates: []
+    discussionTemplate: null
     actions: {}
     filter: 'proposal'
     singleList: !@group.categorizePollTemplates
     filterLabels:
+      recommended: 'decision_tools_card.recommended'
       proposal: 'decision_tools_card.proposal_title'
       poll: 'decision_tools_card.poll_title'
       meeting: 'decision_tools_card.meeting'
@@ -32,7 +33,12 @@ export default
       templates: 'templates.templates'
 
   created: ->
-    Records.remote.fetch(path: "poll_templates", params: {group_id: @group.id})
+    Records.pollTemplates.fetchAll(@group.id)
+    Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId()).then (template) =>
+      @discussionTemplate = template
+      if @discussionTemplate.pollTemplateKeysOrIds.length
+        @filter = 'recommended' 
+
     EventBus.$on 'sortPollTemplates', => @isSorting = true
 
     @watchRecords
@@ -41,32 +47,37 @@ export default
 
   methods:
     query: ->
-      templates = []
-      if @group.categorizePollTemplates
-        params = switch @filter
-          when 'proposal'
-            {pollType: {$in: ['proposal', 'question']}, discardedAt: null}
-          when 'poll'
-            {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null}
-          when 'meeting'
-            {pollType: {$in: ['meeting', 'count']}, discardedAt: null}
-          when 'admin'
-            {discardedAt: {$ne: null}}
+      if @filter == 'recommended'
+        @pollTemplates = @discussionTemplate.pollTemplates()
       else
-        params = switch @filter
-          when 'admin'
-            {discardedAt: {$ne: null}}
-          else
-            {discardedAt: null}
+        if @group.categorizePollTemplates
+          params = switch @filter
+            when 'proposal'
+              {pollType: {$in: ['proposal', 'question']}, discardedAt: null}
+            when 'poll'
+              {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null}
+            when 'meeting'
+              {pollType: {$in: ['meeting', 'count']}, discardedAt: null}
+            when 'admin'
+              {discardedAt: {$ne: null}}
+        else
+          params = switch @filter
+            when 'admin'
+              {discardedAt: {$ne: null}}
+            else
+              {discardedAt: null}
 
-      @pollTemplates = Records.pollTemplates.collection.chain().
-        find(groupId: @group.id || null).
-        find(params).
-        simplesort('position').data()
+        @pollTemplates = Records.pollTemplates.collection.chain().
+          find(groupId: @group.id || null).
+          find(params).
+          simplesort('position').data()
 
       @actions = {}
       @pollTemplates.forEach (pollTemplate, i) =>
-        @actions[i] = PollTemplateService.actions(pollTemplate, @group)
+        if @filter == 'recommended'
+          @actions[i] = {}
+        else
+          @actions[i] = PollTemplateService.actions(pollTemplate, @group)
 
     cloneTemplate: (template) ->
       poll = template.buildPoll()
@@ -84,10 +95,8 @@ export default
         Records.remote.post('poll_templates/positions', group_id: @group.id, ids: ids)
 
   watch:
-    alert: (val) ->
-      Records.users.saveExperience('alertNewPollTemplates', true)
-
     filter: 'query'
+    discussionTemplate: 'query'
     singleList: ->
       setTimeout =>
         @group.categorizePollTemplates = !@singleList
@@ -96,31 +105,27 @@ export default
   computed:
     filters: ->
       userIsAdmin = @group.adminsInclude(Session.user())
+      result = {}
+
+      if @discussionTemplate && @discussionTemplate.pollTemplateKeysOrIds.length
+        result['recommended'] =  'mdi-star'
+
       if @singleList 
         if userIsAdmin
-          {templates: 'mdi-thumbs-up-down', admin: 'mdi-cog'}
-        else
-          {}
+          result['templates'] = 'mdi-thumbs-up-down'
+          result['admin'] = 'mdi-cog'
       else
+        result['proposal'] = 'mdi-thumbs-up-down'
+        result['poll'] = 'mdi-poll'
+        result['meeting'] = 'mdi-calendar'
         if userIsAdmin
-          proposal: 'mdi-thumbs-up-down'
-          poll: 'mdi-poll'
-          meeting: 'mdi-calendar'
-          admin: 'mdi-cog'
-        else
-          proposal: 'mdi-thumbs-up-down'
-          poll: 'mdi-poll'
-          meeting: 'mdi-calendar'
+          result['admin'] = 'mdi-cog'
+
+      result
 </script>
 
 <template lang="pug">
 .poll-common-templates-list
-  v-alert.poll-templates-welcome(v-model="alert" type="success" color="info" icon="mdi-new-box" text outlined dismissible)
-    span 
-      span(v-t="'poll_common.new_templates_are_here'")
-      space
-      a.text-decoration-underline(href="https://help.loomio.com/en/user_manual/polls/poll_templates/index.html" v-t="'common.learn_more'" target="_blank")
-
   v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
     v-icon(small).mr-2 {{icon}}
     span.poll-type-chip-name(v-t="filterLabels[name]")
@@ -142,6 +147,7 @@ export default
       sortable-list(v-model="pollTemplates"  @sort-end="sortEnded" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
         sortable-item(v-for="(template, index) in pollTemplates" :index="index" :key="template.id || template.key")
           v-list-item.decision-tools-card__poll-type(
+
             :class="'decision-tools-card__poll-type--' + template.pollType"
             :key='template.id || template.key'
           )
@@ -151,7 +157,7 @@ export default
                 v-chip.ml-2(x-small outlined v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
                 v-chip.ml-2(x-small outlined v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
               v-list-item-subtitle {{ template.processSubtitle }}
-            v-list-item-action.handle(v-handle)
+            v-list-item-action.handle(v-handle style="cursor: grab")
               v-icon mdi-drag-vertical
     template(v-else)
       v-list-item.decision-tools-card__poll-type(

@@ -212,6 +212,7 @@ class PermittedParams < Struct.new(:params)
      :group_id,
      :newest_first,
      :max_depth,
+     :poll_template_keys_or_ids, {poll_template_keys_or_ids: []},
      :tags, {tags: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]

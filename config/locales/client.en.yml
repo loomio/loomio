@@ -742,6 +742,7 @@ en:
     example_description_placeholder: Provide a template that people can use to start a thread with
     hidden_templates: Hidden templates
     confirm_delete: Are you sure you want to permanently delete this thread template? No threads will be deleted as a result of this.
+    add_proposal_or_poll_template: Add proposal or poll template
 
   discussion_form:
     thread_templates: Thread templates
@@ -1756,6 +1757,7 @@ en:
   decision_tools_card:
     choose_type: Choose poll type
     title: Facilitate
+    recommended: Recommended
     question_title: Question round
     advice_title: Advice
     consent_title: Consent
@@ -1784,7 +1786,6 @@ en:
   poll_common:
     superseded: Superseded
     need_help_with_templates: Need help creating your own process templates?
-    new_templates_are_here: Loomio has new proposal templates to help with decision-making.
     categorize_poll_templates: Categorize poll templates
     show_all_templates_in_one_list: Show all templates in one list
     advice_process: Advice process

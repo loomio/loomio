@@ -3,14 +3,34 @@ import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Session from '@/shared/services/session'
 import Flash  from '@/shared/services/flash'
+import I18n from '@/i18n'
 import { compact } from 'lodash'
+import { ContainerMixin, HandleDirective } from 'vue-slicksort'
 
 export default
+  directives:
+    handle: HandleDirective
+
   props:
-    discussionTemplate: Object
+    discussionTemplate: 
+      type: Object
+      required: true
 
   data: ->
-    group: null
+    pollTemplateItems: []
+    selectedPollTemplate: null
+    pollTemplates: []
+
+  created: ->
+    @pollTemplates = @discussionTemplate.pollTemplates()
+
+    Records.pollTemplates.fetchAll(@discussionTemplate.groupId).then =>
+      @pollTemplates = @discussionTemplate.pollTemplates()
+      @updatePollTemplateItems()
+
+    @watchRecords
+      collections: ["pollTemplates"]
+      query: (records) => @updatePollTemplateItems()
 
   computed:
     breadcrumbs: ->
@@ -20,16 +40,34 @@ export default
         to: @urlFor(g)
 
   methods:
+    updatePollTemplateItems: ->
+      @pollTemplateItems = [{text: I18n.t('thread_template.add_proposal_or_poll_template'), value: null}].concat(
+        Records.pollTemplates.find(groupId: @discussionTemplate.group().id).filter( (pt) =>
+          !@pollTemplates.includes(pt)
+        ).map (pt) ->
+          {text: pt.processName, value: pt.id || pt.key}
+      )
+
     submit: ->
+      @discussionTemplate.pollTemplateKeysOrIds = @pollTemplates.map (pt) -> pt.keyOrId()
       @discussionTemplate.save().then (data) =>
         Flash.success "thread_template.thread_template_saved"
         @$router.push @$route.query.return_to
+
+    pollTemplateSelected: (keyOrId) ->
+      @pollTemplates.push(Records.pollTemplates.find(keyOrId))
+      setTimeout =>
+        @selectedPollTemplate = null
+        @updatePollTemplateItems()
+
+    removePollTemplate: (pollTemplate) ->
+      @pollTemplates.splice(@pollTemplates.indexOf(pollTemplate), 1)
+      @updatePollTemplateItems()
 
 </script>
 <template lang="pug">
 .thread-template-form
   submit-overlay(:value="discussionTemplate.processing")
-
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
       template(v-slot:divider)
@@ -78,7 +116,30 @@ export default
     :label="$t('thread_template.example_description_label')"
   )
 
-  v-card-subtitle(v-t="'thread_arrangement_form.sorting'")
+  v-subheader.ml-n4(v-t="'poll_common.poll_templates'")
+  .decision-tools-card__poll-types
+    sortable-list(v-model="pollTemplates" :useDragHandle="true" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
+      sortable-item(v-for="(template, index) in pollTemplates" :index="index" :key="template.id || template.key")
+        v-list
+          v-list-item.decision-tools-card__poll-type(
+            :class="'decision-tools-card__poll-type--' + template.pollType"
+          )
+            v-list-item-content
+              v-list-item-title
+                span {{ template.processName }}
+              v-list-item-subtitle {{ template.processSubtitle }}
+            v-list-item-action.handle(v-handle style="cursor: grab")
+                v-icon mdi-drag-vertical
+            v-list-item-action
+              v-btn(icon @click="removePollTemplate(template)")
+                v-icon mdi-close
+  v-select(
+    v-model="selectedPollTemplate"
+    :items="pollTemplateItems"
+    @change="pollTemplateSelected"
+  )
+
+  v-subheader.ml-n4(v-t="'thread_arrangement_form.sorting'")
   v-radio-group(v-model="discussionTemplate.newestFirst")
     v-radio(:value="false")
       template(v-slot:label)
@@ -96,7 +157,7 @@ export default
         space
         span(v-t="'thread_arrangement_form.latest_description'")
 
-  v-subheader(v-t="'thread_arrangement_form.replies'")
+  v-subheader.ml-n4(v-t="'thread_arrangement_form.replies'")
   v-radio-group(v-model="discussionTemplate.maxDepth")
     v-radio(:value="1")
       template(v-slot:label)
@@ -120,7 +181,7 @@ export default
         space
         span(v-t="'thread_arrangement_form.nested_twice_description'")
 
-
+ 
   .d-flex.justify-space-between.my-4.mt-4.thread-template-form-actions
     v-spacer
     v-btn.thread-template-form__submit(

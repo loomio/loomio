@@ -15,6 +15,19 @@ export default
     isSorting: false
     showSettings: false
 
+  mounted: ->
+    Records.discussionTemplates.fetch
+      params:
+        group_id: @$route.query.group_id
+        per: 50
+
+    @watchRecords
+      key: "discussionTemplates#{@$route.query.group_id}"
+      collections: ['discussionTemplates']
+      query: => @query()
+
+    EventBus.$on 'sortThreadTemplates', => @isSorting = true
+
   methods:
     sortEnded: ->
       @isSorting = false
@@ -39,18 +52,6 @@ export default
     'showSettings': 'query'
 
 
-  mounted: ->
-    EventBus.$on 'sortThreadTemplates', => @isSorting = true
-
-    Records.discussionTemplates.fetch
-      params:
-        group_id: @$route.query.group_id
-        per: 50
-
-    @watchRecords
-      key: "discussionTemplates#{@$route.query.group_id}"
-      collections: ['discussionTemplates']
-      query: => @query()
 
 </script>
 <template lang="pug">
@@ -81,7 +82,7 @@ export default
                   v-list-item-content
                     v-list-item-title {{template.processName || template.title}}
                     v-list-item-subtitle {{template.processSubtitle}}
-                  v-list-item-action.handle(v-handle)
+                  v-list-item-action.handle(style="cursor: grab")
                     v-icon mdi-drag-vertical
 
           template(v-if="!isSorting")

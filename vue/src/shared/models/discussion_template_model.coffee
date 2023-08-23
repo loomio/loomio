@@ -1,7 +1,7 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
 import Session          from '@/shared/services/session'
-import { pick }         from 'lodash'
+import { compact, pick }         from 'lodash'
 
 export default class DiscussionTemplateModel extends BaseModel
   @singular: 'discussionTemplate'
@@ -22,6 +22,7 @@ export default class DiscussionTemplateModel extends BaseModel
     linkPreviews: []
     maxDepth: 3
     newestFirst: false
+    pollTemplateKeysOrIds: []
     
   relationships: ->
     @belongsTo 'author', from: 'users'
@@ -38,3 +39,14 @@ export default class DiscussionTemplateModel extends BaseModel
     discussion.update(attrs)
 
     discussion
+
+  pollTemplates: ->
+    compact @pollTemplateKeysOrIds.map (keyOrId) =>
+      @recordStore.pollTemplates.find(keyOrId)
+
+  pollTemplateIds: ->
+    @pollTemplateKeysOrIds.filter((keyOrId) => typeof(keyOrId) == 'number')
+
+  pollTemplateKeys: ->
+    @pollTemplateKeysOrIds.filter((keyOrId) => typeof(keyOrId) == 'string')
+

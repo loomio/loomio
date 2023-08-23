@@ -283,7 +283,7 @@ export default
             v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
               v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
                 v-icon.text--secondary mdi-pencil
-            v-icon.text--secondary(v-handle, :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
+            v-icon.text--secondary(style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
 
     template(v-if="optionFormat == 'i18n'")
       v-select(

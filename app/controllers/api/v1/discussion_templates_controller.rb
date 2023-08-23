@@ -2,9 +2,13 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
   def index
     group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
-    self.collection = DiscussionTemplateService.group_templates(group: group)
-
-    respond_with_collection
+    if params[:key_or_id].present? && (params[:key_or_id].to_i.to_s == params[:key_or_id].to_s)
+      @discussion_template = DiscussionTemplate.find_by(group_id: current_user.group_ids, id: params[:key_or_id])
+      respond_with_resource
+    else
+      self.collection = DiscussionTemplateService.group_templates(group: group)
+      respond_with_collection
+    end
   end 
 
   def show
