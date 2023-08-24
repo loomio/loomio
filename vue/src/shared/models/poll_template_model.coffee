@@ -61,6 +61,7 @@ export default class PollTemplateModel extends BaseModel
     Object.keys(@defaultValues()).forEach (attr) =>
       if attr == 'title'
         poll['titlePlaceholder'] = @[attr]
+        poll['title'] = @[attr]
       else
         poll[attr] = @[attr]
 
