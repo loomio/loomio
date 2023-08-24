@@ -30,7 +30,7 @@ export default
 </script>
 <template lang="pug">
 span.tags-display
-  v-chip.ml-1(
+  v-chip.mr-1(
     v-for="tag in tagObjects"
     :key="tag.id"
     :outlined="tag.name != selected"

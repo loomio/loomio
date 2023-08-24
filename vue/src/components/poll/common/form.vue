@@ -502,7 +502,7 @@ export default
       :disabled="!poll.title || (hasOptions && pollOptions.length < minOptions)"
     )
       span(v-if='poll.id' v-t="'common.action.save_changes'")
-      span(v-if='!poll.id && poll.closingAt' v-t="'poll_common_form.start_poll'")
+      span(v-if='!poll.id && poll.closingAt' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
       span(v-if='!poll.id && !poll.closingAt' v-t="'poll_common_form.save_poll'")
 
 </template>

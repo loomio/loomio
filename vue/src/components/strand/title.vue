@@ -17,7 +17,7 @@ export default
 
 <template lang="pug">
 .thread-title
-  h1.text-h4.context-panel__heading#sequence-0.py-3(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
+  h1.text-h4.context-panel__heading#sequence-0.pt-2.mb-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')

@@ -98,6 +98,8 @@ export default
     :placeholder="$t('poll_common_form.process_introduction_hint')"
     :label="$t('poll_common_form.process_introduction')"
   )
+  
+  v-divider.my-4
 
   v-text-field.thread-template-form-fields__title(
     :label="$t('thread_template.default_title_label')"
