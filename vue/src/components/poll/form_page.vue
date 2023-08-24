@@ -68,6 +68,7 @@ export default
       loading(:until="!loading")
         v-card.poll-common-modal
           div.pa-4
+            h1.text-h5.mb-4(v-t="'poll_common.decision_templates'")
             poll-common-form(
               v-if="poll"
               :poll="poll"
