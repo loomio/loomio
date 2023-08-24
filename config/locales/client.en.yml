@@ -747,6 +747,9 @@ en:
     confirm_delete: Are you sure you want to permanently delete this thread template? No threads will be deleted as a result of this.
     add_proposal_or_poll_template: Add proposal or poll template
     recommended_proposal_or_poll_templates: Recommended proposal or poll templates
+    decision_templates: Decision templates
+    decision_templates_help: Select any proposal or poll templates that help to complete this process.
+
 
   discussion_form:
     thread_templates: Thread templates
