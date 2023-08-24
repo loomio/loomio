@@ -7,7 +7,7 @@ import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-
+import I18n from '@/i18n.coffee'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel'
 
@@ -32,7 +32,7 @@ export default
   mounted: ->
     Records.users.fetchGroups()
     Records.pollTemplates.fetchAll(@discussion.groupId)
-    Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId(), @discussion.groupId).then (template) =>
+    Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId()).then (template) =>
       @discussionTemplate = template
 
     @watchRecords
@@ -74,6 +74,12 @@ export default
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
 
   computed:
+    titlePlaceholder: ->
+      if @discussionTemplate && @discussionTemplate.titlePlaceholder
+        I18n.t('common.prefix_eg', {val: @discussionTemplate.titlePlaceholder})
+      else
+        I18n.t('discussion_form.title_placeholder')
+
     maxThreads: ->
       @subscription.max_threads
 
@@ -138,10 +144,9 @@ export default
     div(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+    .discussion-form__group-selected(v-else)
+      tags-field(:model="discussion")
 
-    tags-field(:model="discussion")
-
-    .discussion-form__group-selected(v-if='!showUpgradeMessage')
       recipients-autocomplete(
         v-if="!discussion.id"
         :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
@@ -154,7 +159,7 @@ export default
 
       v-text-field#discussion-title.discussion-form__title-input(
         :label="$t('discussion_form.title_label')"
-        :placeholder="$t('discussion_form.title_placeholder')"
+        :placeholder="titlePlaceholder"
         v-model='discussion.title' maxlength='255' required
       )
       validation-errors(:subject='discussion', field='title')
@@ -169,17 +174,17 @@ export default
       common-notify-fields(:model="discussion")
       //- p.discussion-form__visibility
 
-  v-card-actions.ma-2
-    help-link(path='en/user_manual/threads/starting_threads')
-    v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
-      span(v-t="'thread_arrangement_form.edit'")
-    v-spacer
-    v-btn.discussion-form__submit(
-      color="primary"
-      @click="submit()"
-      :disabled="submitIsDisabled"
-      :loading="discussion.processing"
-    )
-      span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
-      span(v-if="discussion.id" v-t="'common.action.save'")
+      v-card-actions.ma-2
+        help-link(path='en/user_manual/threads/starting_threads')
+        v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
+          span(v-t="'thread_arrangement_form.edit'")
+        v-spacer
+        v-btn.discussion-form__submit(
+          color="primary"
+          @click="submit()"
+          :disabled="submitIsDisabled"
+          :loading="discussion.processing"
+        )
+          span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
+          span(v-if="discussion.id" v-t="'common.action.save'")
 </template>

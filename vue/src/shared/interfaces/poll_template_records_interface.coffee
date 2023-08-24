@@ -6,3 +6,12 @@ export default class PollTemplateRecordsInterface extends BaseRecordsInterface
 
   fetchAll: (groupId) ->
     @remote.fetch(params: {group_id: groupId})
+
+  findOrFetchByKeyOrId: (keyOrId) ->
+    record = @find(keyOrId)
+    if record
+      Promise.resolve(record)
+    else
+      @remote.fetch(params: {key_or_id: keyOrId}).then =>
+        @find(keyOrId)
+

@@ -63,10 +63,10 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
   v-tabs.activity-panel__actions.mb-3(grow text v-model="currentAction")
     v-tabs-slider
     v-tab(href='#add-comment')
-      span(v-t="'activity_card.add_comment'")
+      span(v-t="'thread_context.add_comment'")
     v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
       //- span(v-t="'poll_common_form.start_poll'")
-      span(v-t="'poll_common.run_process'")
+      span(v-t="'poll_common.decision'")
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel

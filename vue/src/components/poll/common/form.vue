@@ -25,6 +25,10 @@ export default
 
   mounted: ->
     Records.users.fetchGroups()
+
+    Records.pollTemplates.findOrFetchByKeyOrId(@poll.pollTemplateKeyOrId()).then (template) =>
+      @pollTemplate = template
+
     @watchRecords
       collections: ['groups', 'memberships']
       query: =>
@@ -39,6 +43,7 @@ export default
     pollOptions: @poll.pollOptionsAttributes || @poll.clonePollOptions()
     groupItems: []
     showAdvanced: false
+    pollTemplate: null
 
     votingMethodsI18n:
       proposal: 
@@ -154,6 +159,12 @@ export default
         console.error error
 
   computed:
+    titlePlaceholder: ->
+      if @pollTemplate && @pollTemplate.titlePlaceholder
+        I18n.t('common.prefix_eg', {val: @pollTemplate.titlePlaceholder})
+      else
+        I18n.t('poll_proposal_form.title_placeholder')
+
     votingMethodsItems: ->
       Object.keys(@votingMethodsI18n).map (key) =>
         {text: @$t(@votingMethodsI18n[key].title), value: key}
@@ -213,7 +224,7 @@ export default
     v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
       v-icon mdi-close
 
-  poll-template-info-panel(:poll="poll")
+  poll-template-info-panel(v-if="pollTemplate" :poll-template="pollTemplate")
 
   v-select(
     v-if="!poll.id && !poll.discussionId"
@@ -226,7 +237,7 @@ export default
     type='text'
     required='true'
     :hint="$t('poll_common_form.title_hint')"
-    :placeholder="$t('common.prefix_eg', {val: poll.titlePlaceholder})"
+    :placeholder="titlePlaceholder"
     :label="$t('poll_common_form.title')"
     v-model='poll.title'
     maxlength='250')

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_21_224530) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_24_015004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -262,6 +262,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_224530) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "poll_template_keys_or_ids", default: [], null: false
+    t.string "title_placeholder"
     t.index ["discarded_at"], name: "index_discussion_templates_on_discarded_at"
   end
 
@@ -674,7 +675,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_224530) do
     t.string "poll_type", null: false
     t.string "process_name"
     t.string "process_subtitle"
-    t.string "process_url"
     t.string "title"
     t.text "details"
     t.string "details_format", limit: 10, default: "md", null: false
@@ -707,6 +707,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_224530) do
     t.datetime "discarded_at"
     t.string "process_introduction"
     t.string "process_introduction_format", default: "md", null: false
+    t.string "title_placeholder"
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
   end
 

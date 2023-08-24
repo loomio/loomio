@@ -13,7 +13,7 @@ class DiscussionTemplate < ApplicationRecord
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   # validates :process_name, presence: true
   # validates :process_subtitle, presence: true
-  validates :title, presence: true
+  validates :title_placeholder, presence: true
 
   before_save :filter_poll_template_keys_or_ids
 

@@ -48,7 +48,9 @@ class PollSerializer < ApplicationSerializer
              :min_score,
              :minimum_stance_choices,
              :maximum_stance_choices,
-             :meeting_duration
+             :meeting_duration,
+             :poll_template_id,
+             :poll_template_key
 
   has_one :discussion, serializer: DiscussionSerializer, root: :discussions
   has_one :created_event, serializer: EventSerializer, root: :events

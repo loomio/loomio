@@ -98,14 +98,22 @@ export default
     :placeholder="$t('poll_common_form.process_introduction_hint')"
     :label="$t('poll_common_form.process_introduction')"
   )
+
   v-text-field.thread-template-form-fields__title(
-    type='text'
-    required='true'
-    :hint="$t('thread_template.example_title_hint')"
-    :label="$t('thread_template.example_title_label')"
+    :label="$t('thread_template.default_title_label')"
+    :hint="$t('thread_template.default_title_hint')"
     v-model='discussionTemplate.title'
     maxlength='250')
   validation-errors(:subject='discussionTemplate' field='title')
+
+  v-text-field.thread-template-form-fields__title-placeholder(
+    :hint="$t('thread_template.title_placeholder_hint')"
+    :label="$t('thread_template.title_placeholder_label')"
+    :placeholder="$t('thread_template.title_placeholder_placeholder')"
+    v-model='discussionTemplate.titlePlaceholder'
+    maxlength='250')
+  validation-errors(:subject='discussionTemplate' field='titlePlaceholder')
+
 
   tags-field(:model="discussionTemplate")
 

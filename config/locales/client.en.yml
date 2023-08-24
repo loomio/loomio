@@ -736,8 +736,11 @@ en:
   thread_template:
     start_a_new_thread: Start a new thread
     thread_template_saved: Thread template saved
-    example_title_label: Example title
-    example_title_hint: Give an example of a good thread title
+    default_title_label: Default title
+    default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
+    title_placeholder_label: Example title
+    title_placeholder_hint: An example to display in the background of the title field
+    title_placeholder_placeholder: e.g. This is what background text looks like
     example_description_label: Example description
     example_description_placeholder: Provide a template that people can use to start a thread with
     hidden_templates: Hidden templates

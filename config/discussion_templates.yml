@@ -1,5 +1,5 @@
 onboarding_to_loomio:
-  title_i18n: discussion_templates.onboarding_to_loomio.title
+  title_placeholder_i18n: discussion_templates.onboarding_to_loomio.title
   process_name_i18n: discussion_templates.onboarding_to_loomio.process_name
   process_subtitle_i18n: discussion_templates.onboarding_to_loomio.process_subtitle
   process_introduction_i18n: discussion_templates.onboarding_to_loomio.process_introduction
@@ -11,7 +11,7 @@ onboarding_to_loomio:
   max_depth: 3
 
 discuss_a_topic:
-  title_i18n: discussion_templates.discuss_a_topic.title
+  title_placeholder_i18n: discussion_templates.discuss_a_topic.title
   process_name_i18n: discussion_templates.discuss_a_topic.process_name
   process_subtitle_i18n: discussion_templates.discuss_a_topic.process_subtitle
   process_introduction_i18n: discussion_templates.discuss_a_topic.process_introduction
@@ -21,7 +21,7 @@ discuss_a_topic:
   max_depth: 3
 
 approve_a_document:
-  title_i18n: discussion_templates.approve_a_document.title
+  title_placeholder_i18n: discussion_templates.approve_a_document.title
   process_name_i18n: discussion_templates.approve_a_document.process_name
   process_subtitle_i18n: discussion_templates.approve_a_document.process_subtitle
   process_introduction_i18n:  discussion_templates.approve_a_document.process_introduction
@@ -34,7 +34,7 @@ approve_a_document:
   max_depth: 3
 
 share_links_and_info:
-  title_i18n: discussion_templates.share_links_and_info.title
+  title_placeholder_i18n: discussion_templates.share_links_and_info.title
   process_name_i18n: discussion_templates.share_links_and_info.process_name
   process_subtitle_i18n: discussion_templates.share_links_and_info.process_subtitle
   process_introduction_i18n: discussion_templates.share_links_and_info.process_introduction
@@ -47,7 +47,7 @@ share_links_and_info:
   max_depth: 3
 
 prepare_for_a_meeting:
-  title_i18n: discussion_templates.prepare_for_a_meeting.title
+  title_placeholder_i18n: discussion_templates.prepare_for_a_meeting.title
   process_name_i18n: discussion_templates.prepare_for_a_meeting.process_name
   process_subtitle_i18n: discussion_templates.prepare_for_a_meeting.process_subtitle
   process_introduction_i18n: discussion_templates.prepare_for_a_meeting.process_introduction
@@ -60,7 +60,7 @@ prepare_for_a_meeting:
   max_depth: 2
 
 advice_process:
-  title_i18n: discussion_templates.advice_process.title
+  title_placeholder_i18n: discussion_templates.advice_process.title
   process_name_i18n: discussion_templates.advice_process.process_name
   process_subtitle_i18n: discussion_templates.advice_process.process_subtitle
   process_introduction_i18n: discussion_templates.advice_process.process_introduction
@@ -73,7 +73,7 @@ advice_process:
   max_depth: 3
 
 consent_process:
-  title_i18n: discussion_templates.consent_process.title
+  title_placeholder_i18n: discussion_templates.consent_process.title
   process_name_i18n: discussion_templates.consent_process.process_name
   process_subtitle_i18n: discussion_templates.consent_process.process_subtitle
   process_introduction_i18n: discussion_templates.consent_process.process_introduction
@@ -86,7 +86,7 @@ consent_process:
   max_depth: 3
 
 decision_by_consensus:
-  title_i18n: discussion_templates.decision_by_consensus.title
+  title_placeholder_i18n: discussion_templates.decision_by_consensus.title
   process_name_i18n: discussion_templates.decision_by_consensus.process_name
   process_subtitle_i18n: discussion_templates.decision_by_consensus.process_subtitle
   process_introduction_i18n: discussion_templates.decision_by_consensus.process_introduction

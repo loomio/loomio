@@ -34,10 +34,12 @@ export default
 
   created: ->
     Records.pollTemplates.fetchAll(@group.id)
-    Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId()).then (template) =>
-      @discussionTemplate = template
-      if @discussionTemplate.pollTemplateKeysOrIds.length
-        @filter = 'recommended' 
+    
+    if @discussion
+      Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId()).then (template) =>
+        @discussionTemplate = template
+        if @discussionTemplate.pollTemplateKeysOrIds.length
+          @filter = 'recommended' 
 
     EventBus.$on 'sortPollTemplates', => @isSorting = true
 

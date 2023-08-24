@@ -14,6 +14,7 @@ class DiscussionTemplateSerializer < ActiveModel::Serializer
              :process_introduction_format,
              :tags,
              :title,
+             :title_placeholder,
              :description,
              :description_format,
              :content_locale,
