@@ -124,7 +124,7 @@ export default
     :label="$t('thread_template.example_description_label')"
   )
 
-  v-subheader.ml-n4(v-t="'poll_common.poll_templates'")
+  v-subheader.ml-n4(v-t="'thread_template.recommended_proposal_or_poll_templates'")
   .decision-tools-card__poll-types
     sortable-list(v-model="pollTemplates" :useDragHandle="true" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
       sortable-item(v-for="(template, index) in pollTemplates" :index="index" :key="template.id || template.key")
