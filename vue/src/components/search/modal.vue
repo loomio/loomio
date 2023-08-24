@@ -37,7 +37,7 @@ export default
       {text: I18n.t('search_modal.all_content'), value: null},
       {text: I18n.t('group_page.threads'), value: 'Discussion'},
       {text: I18n.t('navbar.search.comments'), value: 'Comment'},
-      {text: I18n.t('group_page.polls'), value: 'Poll'},
+      {text: I18n.t('group_page.decisions'), value: 'Poll'},
       {text: I18n.t('poll_common.votes'), value: 'Stance'},
       {text: I18n.t('poll_common.outcomes'), value: 'Outcome'},
     ]

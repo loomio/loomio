@@ -157,7 +157,7 @@ export default
         :to="'/p/new?group_id='+group.id"
         color='primary'
         v-if='canStartPoll'
-        v-t="'polls_panel.new_poll'")
+        v-t="'sidebar.start_decision'")
     v-card(outlined)
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")

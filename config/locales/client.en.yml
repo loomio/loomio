@@ -1110,6 +1110,7 @@ en:
     stats: Group stats
     threads: Threads
     polls: Polls
+    decisions: Decisions
     members: Members
     files: Files
     settings: Settings
