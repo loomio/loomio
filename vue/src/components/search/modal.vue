@@ -4,7 +4,6 @@ import Records        from '@/shared/services/records'
 import EventBus        from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
 import Vue from 'vue'
-import { debounce } from 'lodash'
 import I18n from '@/i18n'
 
 export default
@@ -63,10 +62,6 @@ export default
     group: null
 
   methods:
-    debounceFetch: debounce ->
-      @fetch()
-    , 300
-
     userById: (id) -> Records.users.find(id)
     pollById: (id) -> Records.polls.find(id)
     groupById: (id) -> Records.groups.find(id)
@@ -76,7 +71,14 @@ export default
         @results = []
       else
         @loading = true
-        Records.remote.get('search', query: @query, type: @type, org_id: @orgId, group_id: @groupId, order: @order, tag: @tag).then (data) =>
+        Records.remote.get('search',
+          query: @query,
+          type: @type,
+          org_id: @orgId,
+          group_id: @groupId,
+          order: @order,
+          tag: @tag
+        ).then (data) =>
           @results = data.search_results
         .finally =>
           @loading = false
@@ -136,7 +138,7 @@ export default
 <template lang="pug">
 v-card.search-modal
   .d-flex.px-4.pt-4.align-center
-    v-text-field(:loading="loading" filled rounded single-line append-icon="mdi-magnify" append-outer-icon="mdi-close" @click:append-outer="closeModal" @click:append="fetch" v-model="query" :placeholder="$t('common.action.search')" @keydown.enter.prevent="fetch")
+    v-text-field(:loading="loading" autofocus filled rounded single-line append-icon="mdi-magnify" append-outer-icon="mdi-close" @click:append-outer="closeModal" @click:append="fetch" v-model="query" :placeholder="$t('common.action.search')" @keydown.enter.prevent="fetch")
   .d-flex.px-4.align-center
     v-select.mr-2(v-model="orgId" :items="orgItems")
     v-select.mr-2(v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId")

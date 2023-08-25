@@ -215,6 +215,8 @@ div.discussions-panel(v-if="group")
       v-model="dummyQuery"
       clearable solo hide-details
       @change="openSearchModal"
+      @keyup.enter="openSearchModal"
+      @click:append="openSearchModal"
       :placeholder="$t('navbar.search_threads', {name: group.name})"
       append-icon="mdi-magnify")
     v-btn.discussions-panel__new-thread-button(
