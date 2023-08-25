@@ -5,6 +5,7 @@ import LmoUrlService from '@/shared/services/lmo_url_service'
 import EventBus      from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
 import DiscussionTemplateService from '@/shared/services/discussion_template_service'
+import { compact } from 'lodash'
 
 export default
   data: ->
@@ -47,6 +48,13 @@ export default
         @templates.forEach (template, i) =>
           @actions[i] = DiscussionTemplateService.actions(template, @group)
 
+  computed:
+    breadcrumbs: ->
+      return [] unless @group
+      compact([@group.parentId && @group.parent(), @group]).map (g) =>
+        text: g.name
+        disabled: false
+        to: @urlFor(g)
   watch:
     '$route.query': 'query'
     'showSettings': 'query'
@@ -58,10 +66,13 @@ export default
 .thread-templates-page
   v-main
     v-container.max-width-800.px-0.px-sm-3
-      div
-        v-card-title
+      .d-flex
+        v-breadcrumbs.px-4(:items="breadcrumbs")
+          template(v-slot:divider)
+            v-icon mdi-chevron-right
+      v-card
+        v-card-title.d-flex.pr-3
           h1.headline(tabindex="-1" v-t="'thread_template.start_a_new_thread'")
-        .d-flex
           v-spacer
           v-btn(v-if="!showSettings" icon @click="showSettings = true")
             v-icon mdi-cog

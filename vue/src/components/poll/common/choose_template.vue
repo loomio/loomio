@@ -128,9 +128,10 @@ export default
 
 <template lang="pug">
 .poll-common-templates-list
-  v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
-    v-icon(small).mr-2 {{icon}}
-    span.poll-type-chip-name(v-t="filterLabels[name]")
+  .px-4
+    v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
+      v-icon(small).mr-2 {{icon}}
+      span.poll-type-chip-name(v-t="filterLabels[name]")
   v-list.decision-tools-card__poll-types(two-line dense)
     template(v-if="filter == 'admin'")
       v-list-item.decision-tools-card__new-template(
@@ -142,7 +143,7 @@ export default
           v-list-item-title(v-t="'discussion_form.new_template'")
           v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
 
-      v-checkbox(v-model="singleList" :label="$t('poll_common.show_all_templates_in_one_list')")
+      v-checkbox.pl-4(v-model="singleList" :label="$t('poll_common.show_all_templates_in_one_list')")
       v-subheader(v-if="pollTemplates.length" v-t="'poll_common.hidden_poll_templates'")
 
     template(v-if="isSorting")

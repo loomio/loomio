@@ -5,7 +5,7 @@ import Session from '@/shared/services/session'
 import Flash  from '@/shared/services/flash'
 import PollCommonForm from '@/components/poll/common/form'
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template'
-
+import { compact } from 'lodash' 
 export default
   components: {PollCommonForm, PollCommonChooseTemplate}
 
@@ -60,25 +60,39 @@ export default
     setPoll: (poll) ->
       @poll = poll
 
+  computed:
+    breadcrumbs: ->
+      compact([@group.parentId && @group.parent(), @group]).map (g) =>
+        text: g.name
+        disabled: false
+        to: @urlFor(g)
+
 </script>
 <template lang="pug">
 .poll-form-page
   v-main
     v-container.max-width-800.px-0.px-sm-3
       loading(:until="!loading")
+        div.pa-4.py-0(v-if="group")
+          .d-flex
+            v-breadcrumbs.px-0.pt-0(:items="breadcrumbs")
+              template(v-slot:divider)
+                v-icon mdi-chevron-right
         v-card.poll-common-modal
-          div.pa-4
-            h1.text-h5.mb-4(v-t="'poll_common.decision_templates'")
-            poll-common-form(
-              v-if="poll"
-              :poll="poll"
-              @setPoll="setPoll"
-              redirect-on-save
-            )
-            poll-common-choose-template(
-              v-if="!poll"
-              @setPoll="setPoll"
-              :discussion="discussion"
-              :group="group"
-            )
+          v-card-title
+            h1.text-h5(v-t="'poll_common.decision_templates'")
+
+          poll-common-form.px-4(
+            v-if="poll"
+            :poll="poll"
+            @setPoll="setPoll"
+            redirect-on-save
+          )
+
+          poll-common-choose-template(
+            v-if="!poll"
+            @setPoll="setPoll"
+            :discussion="discussion"
+            :group="group"
+          )
 </template>

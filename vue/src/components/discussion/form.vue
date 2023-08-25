@@ -111,7 +111,7 @@ export default
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
         span(v-if="discussionTemplate && !discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: discussionTemplate.processName}}")
-        span(v-if="!discussionTemplate && !discussion.id" v-t="'new_discussion_title'")
+        span(v-if="!discussionTemplate && !discussion.id" v-t="'discussion_form.new_discussion_title'")
         span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
     dismiss-modal-button(
