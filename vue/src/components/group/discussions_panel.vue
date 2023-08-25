@@ -24,6 +24,7 @@ export default
     loader: null
     groupIds: []
     per: 25
+    dummyQuery: null
 
   methods:
     routeQuery: (o) ->
@@ -133,7 +134,8 @@ export default
         maxWidth: 900
         props:
           initialOrgId: initialOrgId
-          initialGroupId: initialGroupId  
+          initialGroupId: initialGroupId
+          initialQuery: @dummyQuery
 
   watch:
     '$route.params': 'init'
@@ -210,9 +212,9 @@ div.discussions-panel(v-if="group")
       v-sheet.pa-1
         tags-display(:tags="group.tagNames()" :group="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId")
     v-text-field.mr-2.flex-grow-1(
+      v-model="dummyQuery"
       clearable solo hide-details
-      @focus="openSearchModal"
-      @click="openSearchModal"
+      @change="openSearchModal"
       :placeholder="$t('navbar.search_threads', {name: group.name})"
       append-icon="mdi-magnify")
     v-btn.discussions-panel__new-thread-button(
