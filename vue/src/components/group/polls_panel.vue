@@ -14,6 +14,7 @@ export default
     loader: null
     pollTypes: AppConfig.pollTypes
     per: 25
+    dummyQuery: null
 
   created: ->
     @group = Records.groups.find(@$route.params.key)
@@ -49,6 +50,7 @@ export default
           initialType: 'Poll'
           initialOrgId: initialOrgId
           initialGroupId: initialGroupId  
+          initialQuery: @dummyQuery
 
     initLoader: ->
       @loader = new PageLoader
@@ -149,8 +151,8 @@ export default
         clearable
         hide-details
         solo
-        @focus="openSearchModal"
-        @click="openSearchModal"
+        v-model="dummyQuery"
+        @change="openSearchModal"
         :placeholder="$t('navbar.search_polls', {name: group.name})"
         append-icon="mdi-magnify")
       v-btn.polls-panel__new-poll-button(

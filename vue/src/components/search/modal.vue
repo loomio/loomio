@@ -21,6 +21,10 @@ export default
       required: false
       default: null
       type: String
+    initialQuery:
+      required: false
+      default: null
+      type: String
 
   created: ->
     @orgId = @initialOrgId
@@ -29,7 +33,7 @@ export default
 
   data: ->
     loading: false
-    query: null
+    query: @initialQuery
     results: []
     users: {}
     type: null
@@ -132,7 +136,7 @@ export default
 <template lang="pug">
 v-card.search-modal
   .d-flex.px-4.pt-4.align-center
-    v-text-field(:loading="loading" autofocus filled rounded single-line append-icon="mdi-magnify" append-outer-icon="mdi-close" @click:append-outer="closeModal" @click:append="fetch" v-model="query" :placeholder="$t('common.action.search')" @keydown.enter.prevent="fetch")
+    v-text-field(:loading="loading" filled rounded single-line append-icon="mdi-magnify" append-outer-icon="mdi-close" @click:append-outer="closeModal" @click:append="fetch" v-model="query" :placeholder="$t('common.action.search')" @keydown.enter.prevent="fetch")
   .d-flex.px-4.align-center
     v-select.mr-2(v-model="orgId" :items="orgItems")
     v-select.mr-2(v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId")
@@ -147,7 +151,7 @@ v-card.search-modal
       v-list-item-content
         v-list-item-title.d-flex
           span.text-truncate {{ result.poll_title || result.discussion_title }}
-          tags-display(:tags="result.tags" :group="groupById(result.group_id)" smaller)
+          tags-display.ml-1(:tags="result.tags" :group="groupById(result.group_id)" smaller)
           v-spacer
           time-ago.text--secondary(style="font-size: 0.875rem;" :date="result.authored_at")
         v-list-item-subtitle.text--primary(v-html="result.highlight")
