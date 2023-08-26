@@ -152,6 +152,7 @@ export default
         hide-details
         solo
         v-model="dummyQuery"
+        @click="openSearchModal"
         @change="openSearchModal"
         @keyup.enter="openSearchModal"
         @click:append="openSearchModal"

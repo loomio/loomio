@@ -214,6 +214,7 @@ div.discussions-panel(v-if="group")
     v-text-field.mr-2.flex-grow-1(
       v-model="dummyQuery"
       clearable solo hide-details
+      @click="openSearchModal"
       @change="openSearchModal"
       @keyup.enter="openSearchModal"
       @click:append="openSearchModal"
