@@ -152,7 +152,10 @@ export default
         hide-details
         solo
         v-model="dummyQuery"
+        @click="openSearchModal"
         @change="openSearchModal"
+        @keyup.enter="openSearchModal"
+        @click:append="openSearchModal"
         :placeholder="$t('navbar.search_polls', {name: group.name})"
         append-icon="mdi-magnify")
       v-btn.polls-panel__new-poll-button(
