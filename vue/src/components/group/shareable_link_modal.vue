@@ -47,7 +47,7 @@ export default
 <template lang="pug">
 v-dialog(v-model='dialog' max-width="600px")
   template(v-slot:activator="{ on, attrs }")
-    v-btn.mr-2(v-on="on" v-bind="attrs" color="primary" outlined v-t="'common.action.share'")
+    v-btn.mr-2(v-on="on" v-bind="attrs" color="primary" outlined v-t="'members_panel.sharable_link'")
   v-card.shareable-link-modal
     v-card-title
       h1.headline(tabindex="-1" v-t="'invitation_form.share_group'")
@@ -55,13 +55,13 @@ v-dialog(v-model='dialog' max-width="600px")
       v-btn.dismiss-modal-button(icon small @click='dialog = false')
         v-icon mdi-window-close
     v-card-text
-      span.subtitle-2(v-t="'invitation_form.group_url'")
-      p.mt-2.mb-0.caption(v-if="group.groupPrivacy == 'secret'" v-t="'invitation_form.secret_group_url_explanation'")
-      p.mt-2.mb-0.caption(v-else v-t="'invitation_form.shareable_group_url_explanation'")
-      v-layout(align-center)
-        v-text-field.shareable-link-modal__shareable-link(:value='groupUrl' :disabled='true')
-        v-btn.shareable-link-modal__copy(icon color="primary" :title="$t('common.copy')" @click='copyText(groupUrl)')
-          v-icon mdi-content-copy
+      template(v-if="group.groupPrivacy != 'secret'")
+        span.subtitle-2(v-t="'invitation_form.group_url'")
+        p.mt-2.mb-0.caption(v-t="'invitation_form.secret_group_url_explanation'")
+        v-layout(align-center)
+          v-text-field.shareable-link-modal__shareable-link(:value='groupUrl' :disabled='true')
+          v-btn.shareable-link-modal__copy(icon color="primary" :title="$t('common.copy')" @click='copyText(groupUrl)')
+            v-icon mdi-content-copy
       div(v-if="canAddMembers")
         span.subtitle-2(v-t="'invitation_form.reusable_invitation_link'")
         p.mt-2.mb-0.caption(v-t="'invitation_form.shareable_invitation_explanation'")

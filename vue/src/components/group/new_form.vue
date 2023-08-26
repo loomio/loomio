@@ -76,6 +76,10 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then (group) =>
           EventBus.$emit 'closeModal'
           @$router.push("/g/#{groupKey}")
+          EventBus.$emit 'openModal',
+            component: 'GroupInvitationForm',
+            props: 
+              group: group
       .catch (error) => true
 
     privacyStringFor: (privacy) ->
@@ -142,6 +146,8 @@ v-card.group-form
     div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
       v-text-field.group-form__handle#group-handle(:loading="loadingHandle" v-model='group.handle' :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
       validation-errors(:subject="group", field="handle")
+
+    lmo-textarea.group-form__group-description(:model='group' field="description", :placeholder="$t('group_form.description_placeholder')", :label="$t('group_form.description')")
 
     div(v-if="group.parentId")
       .group-form__section.group-form__privacy

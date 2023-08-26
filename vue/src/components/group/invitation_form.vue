@@ -24,18 +24,18 @@ export default
     groupIds: [@group.id]
     excludedUserIds: []
     message: ''
-    subscription: {}
+    subscription: @group.parentOrSelf().subscription
     cannotInvite: false
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
 
   mounted: ->
     @updateSuggestions()
     @watchRecords
-      collections: ['memberships']
-      query: (records) => @updateSuggestions()
-
-    @subscription = @group.parentOrSelf().subscription
-    @cannotInvite = !@subscription.active || (@subscription.max_members && @invitationsRemaining < 1)
+      collections: ['memberships', 'groups']
+      query: (records) => 
+        @updateSuggestions()
+        @subscription = @group.parentOrSelf().subscription
+        @cannotInvite = !@subscription.active || (@subscription.max_members && @invitationsRemaining < 1)
 
   methods:
     fetchMemberships: debounce ->
