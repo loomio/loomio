@@ -29,6 +29,7 @@ export default class GroupModel extends BaseModel
     membersCanCreateSubgroups: false
     motionsCanBeEdited: false
     parentMembersCanSeeDiscussions: false
+    category: null
     files: []
     imageFiles: []
     attachments: []

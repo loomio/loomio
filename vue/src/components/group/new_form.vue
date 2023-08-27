@@ -9,6 +9,7 @@ import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
 import Flash   from '@/shared/services/flash'
 import { isEmpty, compact, debounce } from 'lodash'
 import openModal from '@/shared/helpers/open_modal'
+import I18n from '@/i18n.coffee'
 
 export default
   props:
@@ -21,7 +22,6 @@ export default
     uploading: false
     progress: 0
     hostname: AppConfig.theme.canonical_host
-    categories: [ 'board', 'party', 'coop', 'union', 'nonprofit', 'professional', 'government', 'community', 'other' ]
     parentGroups: []
     loadingHandle: false
 
@@ -87,6 +87,9 @@ export default
         parent: @group.parentName()
 
   computed:
+    categoryItems: ->
+      ['board', 'community', 'coop', 'membership','nonprofit','party', 'professional', 'union', 'other'].map (category) ->
+        {text: I18n.t('group_survey.categories.'+category), value: category} 
     actionName: ->
       if @group.isNew() then 'created' else 'updated'
 
@@ -147,7 +150,13 @@ v-card.group-form
       v-text-field.group-form__handle#group-handle(:loading="loadingHandle" v-model='group.handle' :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
       validation-errors(:subject="group", field="handle")
 
-    lmo-textarea.group-form__group-description(:model='group' field="description", :placeholder="$t('group_form.description_placeholder')", :label="$t('group_form.description')")
+    v-select(v-if='!group.parentId' v-model="group.category" :items="categoryItems" :label="$t('group_survey.describe_other')")
+
+    lmo-textarea.group-form__group-description(
+      :model='group'
+      field="description"
+      :placeholder="$t('group_form.new_description_placeholder')"
+      :label="$t('group_form.description')")
 
     div(v-if="group.parentId")
       .group-form__section.group-form__privacy
@@ -158,7 +167,8 @@ v-card.group-form
                 strong(v-t="'common.privacy.' + privacy")
                 mid-dot
                 span {{ privacyStringFor(privacy) }}
-      p.group-form__privacy-statement.text-body-2 {{privacyStatement}}
+
+      p.group-form__privacy-statement.text-caption.text--secondary {{privacyStatement}}
       .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
         v-subheader(v-t="'group_form.how_do_people_join'")
         v-radio-group(v-model='group.membershipGrantedUpon')
@@ -175,6 +185,7 @@ v-card.group-form
         span(v-t="'common.privacy.secret'")
       p.text-caption.text--secondary
         span(v-t="'group_form.secret_by_default'")
+
 
   v-card-actions.ma-2
     help-link(path="en/user_manual/groups/starting_a_group")

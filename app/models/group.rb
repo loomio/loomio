@@ -360,6 +360,14 @@ class Group < ApplicationRecord
     end
   end
 
+  def category=(val)
+    self[:info]['category'] = val
+  end
+
+  def category
+    self[:info]['category']
+  end
+
   def categorize_poll_templates=(val)
     self[:info]['categorize_poll_templates'] = val
   end

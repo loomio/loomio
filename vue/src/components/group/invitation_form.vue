@@ -8,6 +8,7 @@ import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
 import { uniq, debounce } from 'lodash'
+import I18n from '@/i18n.coffee'
 
 export default
   components:
@@ -23,12 +24,17 @@ export default
     saving: false
     groupIds: [@group.id]
     excludedUserIds: []
-    message: ''
+    message: null
     subscription: @group.parentOrSelf().subscription
     cannotInvite: false
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
 
   mounted: ->
+    if !@group.parentId && @group.membershipsCount < 2
+      @message = I18n.t('announcement.form.invitation_message_new_trial')
+    else
+      @message = I18n.t('announcement.form.invitation_message_default')
+
     @updateSuggestions()
     @watchRecords
       collections: ['memberships', 'groups']
@@ -120,6 +126,8 @@ export default
         p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
         p(v-if="!subscription.active" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
     div(v-else)
+      v-alert.my-2(v-if="group.membershipsCount < 2" color="info" outlined icon="mdi-account-multiple-plus") 
+        span It's time to invite some people to help you evaluate Loomio. Prehaps start with small team with a decision that needs to be made. You can copy and paste multiple emails at once if you need.
       recipients-autocomplete(
         :label="$t('announcement.form.who_to_invite')"
         :placeholder="$t('announcement.form.placeholder')"
