@@ -736,6 +736,7 @@ en:
   thread_template:
     start_a_new_thread: Start a new thread
     thread_template_saved: Thread template saved
+    these_are_templates: What you're looking at here are thread templates. Templates can help you get started with common decision-making processes. We recommend you start with the "Onboarding to Loomio" template. Just click a template to start a thread, or click the menu button to edit, hide or rearrange the templates.
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
     title_placeholder_label: Example title
@@ -843,6 +844,7 @@ en:
       non_voters: Members of {{name}} not yet invited
 
     form:
+      invite_people_to_evaluate_loomio: It's time to invite some people to help you evaluate Loomio. You can copy and paste multiple emails at once if you need.
       too_many_invitations: |
         Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
       no_invitations_remaining: |
@@ -856,7 +858,7 @@ en:
       invitation_message_default: |
         This is your invitation to join our Loomio group, where we make deicsions together. Please accept the invitation and create an account, it only takes a minute.
       invitation_message_new_trial: |
-        I'd like your help to evaluate Loomio and see if it's a good fit for our organization. Please accept the invitation (it only takes a minute) so we can test it out together.
+        I'm trialing Loomio to see if it's a good fit for our organization. Please accept the invitation (it only takes a minute) so we can test it out together.
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?
@@ -1914,10 +1916,14 @@ en:
     include_subgroups_mine: '{{name}} and my subgroups'
     include_subgroups_all: '{{name}} and all subgroups'
     no_results_found: No results for "{{search}}"
+    welcome_to_your_new_group: 👋 Welcome to your new Loomio group.
+    time_to_start_a_thread: It's time to start your first thread! Not sure how to begin? We have a selection of templates to help you get started.
+    click_new_thread: Click "New thread" to continue.
 
   members_panel:
     no_results: 'No members found'
     everyone: 'Everyone'
+    all: All
     sort: 'Sort'
     order_label: "Order"
     order_by_name: 'Name'

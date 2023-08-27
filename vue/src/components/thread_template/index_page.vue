@@ -79,6 +79,8 @@ export default
           v-btn(v-else icon @click="showSettings = false")
             v-icon mdi-close
 
+        v-alert.mx-4(v-if="group && group.discussionsCount == 0" type="info" text outlined v-t="'thread_template.these_are_templates'") 
+
         v-list.append-sort-here(two-line)
           template(v-if="showSettings")
             v-list-item(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")

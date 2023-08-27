@@ -126,8 +126,8 @@ export default
         p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
         p(v-if="!subscription.active" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
     div(v-else)
-      v-alert.my-2(v-if="group.membershipsCount < 2" color="info" outlined icon="mdi-account-multiple-plus") 
-        span It's time to invite some people to help you evaluate Loomio. Prehaps start with small team with a decision that needs to be made. You can copy and paste multiple emails at once if you need.
+      v-alert.my-2(v-if="group.membershipsCount < 2" type="info" outlined text icon="mdi-account-multiple-plus") 
+        span(v-t="'announcement.form.invite_people_to_evaluate_loomio'") 
       recipients-autocomplete(
         :label="$t('announcement.form.who_to_invite')"
         :placeholder="$t('announcement.form.placeholder')"

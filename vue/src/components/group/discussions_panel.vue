@@ -193,7 +193,7 @@ div.discussions-panel(v-if="group")
         v-btn.mr-2.text-lowercase.discussions-panel__filters(v-on="on" v-bind="attrs" text)
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           v-icon mdi-menu-down
-      v-list(dense)
+      v-list
         v-list-item.discussions-panel__filters-open(@click="routeQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.open'")
         v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
@@ -226,12 +226,17 @@ div.discussions-panel(v-if="group")
       :to="'/thread_templates/?group_id='+group.id"
       color='primary')
 
-  v-card.discussions-panel(outlined)
+  v-alert(color="info" text outlined v-if="group.discussionsCount == 0")
+    v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
+    p.px-4(v-t="'discussions_panel.time_to_start_a_thread'")
+    p.px-4(v-t="'discussions_panel.click_new_thread'")
+
+  v-card.discussions-panel(v-else outlined)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
       .discussions-panel__content
-        .discussions-panel__list--empty.pa-4(v-if='noThreads', :value="true")
+        .discussions-panel__list--empty.pa-4(v-if='noThreads')
           p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
           p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
@@ -244,6 +249,7 @@ div.discussions-panel(v-if="group")
         v-pagination(v-model="page", :length="totalPages", :total-visible="7", :disabled="totalPages == 1")
         .d-flex.justify-center
           router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
+
 </template>
 
 <style lang="sass">
