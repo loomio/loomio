@@ -10,6 +10,12 @@ module LinkPreviewService
              doc.css('title').first&.text,
              doc.css('h1').first&.text].reject(&:blank?).first
 
+    bad_titles = [
+      'Google Docs: Sign-in'
+    ]
+
+    return nil if bad_titles.any? {|bt| bt.match?(title) }
+
     description = [doc.css('meta[property="og:description"]').attr('content')&.text,
                    doc.css('meta[name="description"]').attr('content')&.text].reject(&:blank?).first
 
