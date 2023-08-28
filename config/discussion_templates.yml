@@ -1,5 +1,5 @@
 onboarding_to_loomio:
-  title_placeholder_i18n: discussion_templates.onboarding_to_loomio.title
+  title_i18n: discussion_templates.onboarding_to_loomio.title
   process_name_i18n: discussion_templates.onboarding_to_loomio.process_name
   process_subtitle_i18n: discussion_templates.onboarding_to_loomio.process_subtitle
   process_introduction_i18n: discussion_templates.onboarding_to_loomio.process_introduction
