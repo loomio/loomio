@@ -4,7 +4,7 @@ import Session      from '@/shared/services/session'
 import Records      from '@/shared/services/records'
 import EventBus     from '@/shared/services/event_bus'
 import PollTemplateService     from '@/shared/services/poll_template_service'
-import {map, without, compact} from 'lodash'
+import {map, without, compact, pickBy} from 'lodash'
 import { ContainerMixin, HandleDirective } from 'vue-slicksort'
 
 export default
@@ -39,7 +39,7 @@ export default
       Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId()).then (template) =>
         @discussionTemplate = template
         if @discussionTemplate.pollTemplateKeysOrIds.length
-          @filter = 'recommended' 
+          @filter = 'recommended'
 
     EventBus.$on 'sortPollTemplates', => @isSorting = true
 
@@ -105,33 +105,44 @@ export default
         Records.remote.post('poll_templates/settings', {group_id: @group.id, categorize_poll_templates: @group.categorizePollTemplates})
 
   computed:
+    userIsAdmin: ->
+      @group.adminsInclude(Session.user())
+
     filters: ->
-      userIsAdmin = @group.adminsInclude(Session.user())
-      result = {}
+      recommendedIcon = (@discussionTemplate && @discussionTemplate.pollTemplateKeysOrIds.length && 'mdi-star') || null
+      pickBy
+        recommended: recommendedIcon
+        proposal: 'mdi-thumbs-up-down'
+        poll: 'mdi-poll'
+        meeting: 'mdi-calendar'
+      , (v) -> !!v
 
-      if @discussionTemplate && @discussionTemplate.pollTemplateKeysOrIds.length
-        result['recommended'] =  'mdi-star'
 
-      if @singleList 
-        if userIsAdmin
-          result['templates'] = 'mdi-thumbs-up-down'
-          result['admin'] = 'mdi-cog'
-      else
-        result['proposal'] = 'mdi-thumbs-up-down'
-        result['poll'] = 'mdi-poll'
-        result['meeting'] = 'mdi-calendar'
-        if userIsAdmin
-          result['admin'] = 'mdi-cog'
 
-      result
 </script>
 
 <template lang="pug">
 .poll-common-templates-list
-  .px-4
-    v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
+  v-alert(v-if="discussionTemplate && discussionTemplate.pollTemplateKeysOrIds.length" color="info" outlined text) 
+    strong {{discussionTemplate.processName}}
+    space
+    span includes recommened decision templates to help you reach an outcome
+  .d-flex(:class="{'px-4': !discussion}")
+    v-chip.mr-1(
+      v-for="icon, name in filters"
+      label
+      :key="name"
+      :outlined="filter != name"
+      @click="filter = name"
+      :class="'poll-common-choose-template__'+name"
+    )
       v-icon(small).mr-2 {{icon}}
       span.poll-type-chip-name(v-t="filterLabels[name]")
+    template(v-if="userIsAdmin")
+      v-spacer
+      v-chip(@click="filter = 'admin'" :outlined="filter != 'admin'")
+        v-icon(small).mr-2 mdi-cog
+        span.poll-type-chip-name(v-t="filterLabels['admin']")
   v-list.decision-tools-card__poll-types(two-line dense)
     template(v-if="filter == 'admin'")
       v-list-item.decision-tools-card__new-template(

@@ -107,7 +107,6 @@ v-main
       span.group-page__name.mr-4 {{group.name}}
     old-plan-banner(:group="group")
     trial-banner(:group="group")
-    group-onboarding-card(:group="group")
     formatted-text.group-page__description(
       v-if="group"
       :model="group"

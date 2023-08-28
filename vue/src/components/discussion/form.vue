@@ -174,7 +174,7 @@ export default
       common-notify-fields(:model="discussion")
       //- p.discussion-form__visibility
 
-      v-card-actions.ma-2
+      v-card-actions
         help-link(path='en/user_manual/threads/starting_threads')
         v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
           span(v-t="'thread_arrangement_form.edit'")

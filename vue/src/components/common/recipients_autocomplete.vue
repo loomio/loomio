@@ -275,7 +275,7 @@ div.recipients-autocomplete
     @change="query = null"
     :search-input.sync="query"
     item-text='name'
-    :hide-no-data='(recipients.length > 0) || loading'
+    hide-no-data
     :loading="loading"
     :label="label"
     :placeholder="placeholder"

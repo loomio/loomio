@@ -80,21 +80,6 @@ en:
     trello_board: Trello Board
     trello_card: Trello Card
 
-  loomio_onboarding:
-    group_progress_card:
-      title: Let's get started!
-      activities:
-        set_description: Set your group's description
-        set_cover_photo: Upload a cover photo & logo for your group
-        customize_group: Add a group picture, logo and description
-        setup_chatbot: "Add a Loomio bot to your chatroom (e.g. Slack, Discord, Teams or other)"
-        invite_people_in: Invite people in by email, or with a link to join.
-        start_thread: Start a discussion thread
-        make_decision: Start a decision
-      learn_more: Learn more at Loomio Help
-      celebration_message: Nice! Your group is good to go!  🎉
-      dismiss_this_card: Dismiss this card
-
   plan_names:
     free: Free
     starter: Starter
@@ -894,6 +879,7 @@ en:
         helptext: Summarise the results of the process, including any understandings found or issues brought to light.
       anyone_can_participate: Anyone with link can participate
       placeholder: You can enter names or email addresses
+      type_or_paste_email_addresses_to_invite: Type or paste email addresses to invite
       notified_empty: 'Nobody selected yet'
       single_notification: '1 notification will be sent.'
       multiple_notifications: '{{notified}} notifications will be sent.'

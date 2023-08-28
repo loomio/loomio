@@ -67,6 +67,7 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
     v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
       //- span(v-t="'poll_common_form.start_poll'")
       span(v-t="'poll_common.decision'")
+      v-badge(inline dot)
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel
@@ -81,7 +82,7 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
             :block='true')
           v-btn.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'" @click='signIn()' v-if='!isLoggedIn()')
     v-tab-item(value="add-poll" v-if="canStartPoll")
-      .poll-common-start-form.ma-3
+      .poll-common-start-form
         poll-common-form(
           v-if="poll"
           :poll="poll"
@@ -95,10 +96,13 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
 </template>
 
 <style lang="sass">
+#add-comment .v-window
+  overflow: visible
+  
 .add-comment-panel__sign-in-btn
-	width: 100%
+  width: 100%
 .add-comment-panel__join-actions
-	button
-		width: 100%
+  button
+    width: 100%
 
 </style>

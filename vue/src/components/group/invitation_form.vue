@@ -130,7 +130,7 @@ export default
         span(v-t="'announcement.form.invite_people_to_evaluate_loomio'") 
       recipients-autocomplete(
         :label="$t('announcement.form.who_to_invite')"
-        :placeholder="$t('announcement.form.placeholder')"
+        :placeholder="$t('announcement.form.type_or_paste_email_addresses_to_invite')"
         :excluded-user-ids="excludedUserIds"
         :reset="reset"
         :model="group"
@@ -151,6 +151,7 @@ export default
             hide-details)
 
       v-textarea(
+        filled
         rows="3"
         v-model="message"
         :label="$t('announcement.form.invitation_message_label')"
