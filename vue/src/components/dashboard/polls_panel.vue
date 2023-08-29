@@ -34,7 +34,7 @@ export default
 
       chain = Records.polls.collection.chain()
       chain = chain.find(discardedAt: null, closingAt: {$ne: null})
-      chain = chain.find($or: [{groupId: {$in: groupIds}}, {id: {$in: pollIds}}])
+      chain = chain.find($or: [{groupId: {$in: groupIds}}, {id: {$in: pollIds}}, {authorId: Session.user().id}])
       chain = chain.find($or: [{closedAt: null}, {closedAt: {$gt: subDays(new Date, 3)}}])
 
       if @$route.query.q
