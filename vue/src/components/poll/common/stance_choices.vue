@@ -28,7 +28,7 @@ export default
   span.caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
   template(v-else)
     template(v-if="!datesAsOptions")
-      .poll-common-stance-choice.text-truncate(
+      .poll-common-stance-choice(
         v-for="choice in choices"
         v-if="choice.score > 0 || pollType == 'score'"
         :key="choice.id"

@@ -130,7 +130,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
             v-icon(v-if="!singleChoice && !isSelected(option)", :color="option.color") mdi-checkbox-blank-outline
             v-icon(v-if="!singleChoice && isSelected(option)", :color="option.color") mdi-checkbox-marked
         v-list-item-content
-          v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
+          v-list-item-title.poll-common-vote-form__button-text(style="white-space: normal") {{option.optionName()}}
           v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
 
   poll-common-stance-reason(
