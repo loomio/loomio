@@ -396,6 +396,16 @@ en:
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
     loomio_app_description: "%{site_name} is a decision-making tool for collaborative organizations"
+    loomio_app_description_html: |
+      <p>%{site_name} is an easy to use, secure place for organizations to have discussions and make decisions together.</p>
+      <ul>
+      <li>Involve the right people</li>
+      <li>Create time and space for discussion</li>
+      <li>Streamline decision processes</li>
+      <li>Improve transparency and accountability</li>
+      <li>Record decisions and document rationale</li>
+      </ul>
+
     view_group: View group
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on %{site_name}"
