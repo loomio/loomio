@@ -14,6 +14,7 @@ module LinkPreviewService
       'Google Docs: Sign-in'
     ]
 
+    return nil if title.blank?
     return nil if bad_titles.any? {|bt| bt.match?(title) }
 
     description = [doc.css('meta[property="og:description"]').attr('content')&.text,
