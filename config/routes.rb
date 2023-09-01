@@ -80,6 +80,7 @@ Rails.application.routes.draw do
           post :reset_token
           get :subgroups
           post :export
+          post :export_csv
           post 'upload_photo/:kind', action: :upload_photo
         end
         collection do
