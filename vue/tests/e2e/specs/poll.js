@@ -63,9 +63,15 @@ module.exports = {
     page.click('.decision-tools-card__poll-type--poll')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-poll-form__add-option-input')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
+
+    page.click('.poll-common-form__add-option-btn')
+    page.fillIn('.poll-option-form__name input', 'An option')
+    page.click('.poll-option-form__done-btn')
+
+    page.click('.poll-common-form__add-option-btn')
+    page.fillIn('.poll-option-form__name input', 'Another option')
+    page.click('.poll-option-form__done-btn')
+
     page.click('.poll-common-form__submit')
     page.expectElement('.poll-members-form__submit')
     page.pause(500)
@@ -92,8 +98,11 @@ module.exports = {
     page.click('.decision-tools-card__poll-type--dot_vote')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-poll-form__add-option-input')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
+
+    page.click('.poll-common-form__add-option-btn')
+    page.fillIn('.poll-option-form__name input', 'An option')
+    page.click('.poll-option-form__done-btn')
+
     page.click('.poll-common-form__submit')
     page.expectElement('.poll-members-form__submit')
     page.pause(500)
@@ -122,8 +131,10 @@ module.exports = {
     // page.click(".poll-common-tool-tip__collapse")
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-poll-form__add-option-input')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
+
+    page.click('.poll-common-form__add-option-btn')
+    page.fillIn('.poll-option-form__name input', 'An option')
+    page.click('.poll-option-form__done-btn')
 
     page.click('.poll-common-form__submit')
     page.expectElement('.poll-members-form__submit')
@@ -184,9 +195,14 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
 
-    page.click('.poll-poll-form__add-option-input')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'An option')
-    page.fillInAndEnter('.poll-poll-form__add-option-input input', 'Another option')
+    page.click('.poll-common-form__add-option-btn')
+    page.fillIn('.poll-option-form__name input', 'An option')
+    page.click('.poll-option-form__done-btn')
+
+    page.click('.poll-common-form__add-option-btn')
+    page.fillIn('.poll-option-form__name input', 'Another option')
+    page.click('.poll-option-form__done-btn')
+    
     page.click('.poll-common-form__submit')
 
     page.expectElement('.poll-members-form__submit')

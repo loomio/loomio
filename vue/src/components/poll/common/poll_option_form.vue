@@ -39,7 +39,7 @@ v-card.poll-common-option-form
     v-spacer
     dismiss-modal-button
   v-card-text
-    v-text-field(
+    v-text-field.poll-option-form__name(
       :label="$t('poll_option_form.option_name')"
       v-model="pollOption.name"
       :hint="$t('poll_option_form.option_name_hint')"
@@ -61,5 +61,5 @@ v-card.poll-common-option-form
       v-model="pollOption.prompt")
   v-card-actions
     v-spacer
-    v-btn(@click="submit" v-t="'common.action.done'") 
+    v-btn.poll-option-form__done-btn(@click="submit" v-t="'common.action.done'") 
 </template>
