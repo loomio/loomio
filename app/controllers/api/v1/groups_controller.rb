@@ -49,8 +49,14 @@ class API::V1::GroupsController < API::V1::RestfulController
     respond_with_resource
   end
 
-  def export
+  def export #json
     service.export(group: load_and_authorize(:group, :export), actor: current_user)
+    render json: { success: :ok }
+  end
+
+  def export_csv
+    group = load_and_authorize(:group, :export)
+    GroupExportCsvWorker.perform_async(group.id, current_user.id) 
     render json: { success: :ok }
   end
 
