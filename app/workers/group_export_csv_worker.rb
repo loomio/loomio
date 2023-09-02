@@ -10,6 +10,6 @@ class GroupExportCsvWorker
     document.file.attach(io: StringIO.new(csv), filename: filename)
     document.save!
     UserMailer.group_export_ready(actor.id, group.full_name, document.id).deliver
-    # DestroyRecordWorker.perform_at(1.week.from_now, 'Document', document.id)
+    DestroyRecordWorker.perform_at(1.week.from_now, 'Document', document.id)
   end
 end
