@@ -1,7 +1,7 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import Session from '@/shared/services/session'
-import { compact, without, kebabCase, snakeCase, some } from 'lodash'
+import { compact, without, some, pick } from 'lodash'
 import Flash from '@/shared/services/flash'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
@@ -65,6 +65,7 @@ export default
       {text: 'pie', value: 'pie'}
       {text: 'grid', value: 'grid'}
     ]
+
     currentHideResults: @poll.hideResults
     hideResultsItems: [
       { text: @$t('common.off'), value: 'off' }
@@ -97,41 +98,41 @@ export default
         @pollOptions = without(@pollOptions, option)
 
     addDateOption: ->
-      @newOption = @newDateOption.toJSON()
-      @addOption()
-
-    addOption: ->
-      if some(@pollOptions, (o) => o.name.toLowerCase() == @newOption.toLowerCase())
+      optionName = @newDateOption.toJSON()
+      if some(@pollOptions, (o) => o.name == optionName)
         Flash.error('poll_poll_form.option_already_added')
       else
-        knownOption = @knownOptions.find (o) =>
-          @$t(o.name_i18n).toLowerCase() == @newOption.toLowerCase()
+        @pollOptions.push({name: optionName})
 
-        if knownOption
-          @pollOptions.push
-            name: @newOption
-            icon:  knownOption.icon
-            meaning: @$t(knownOption.meaning_i18n)
-            prompt: @$t(knownOption.prompt_i18n)
-        else
-          option = 
-            name: @newOption
-            meaning: ''
-            prompt: ''
-            icon: 'agree'
-          @pollOptions.push option
-          if @poll.pollType == 'proposal'
-            Flash.success('poll_common_form.option_added_please_add_details')
-            @editOption(option)
+    addOption: ->
+      option = 
+        name: ''
+        meaning: ''
+        prompt: ''
+        icon: 'agree'
 
-        @newOption = null
-
-    editOption: (option) ->
       EventBus.$emit 'openModal',
         component: 'PollOptionForm'
         props:
           pollOption: option
           poll: @poll
+          submitFn: (option) =>
+            if some(@pollOptions, (o) => o.name.toLowerCase() == option.name.toLowerCase())
+              Flash.error('poll_poll_form.option_already_added')
+            else
+              @pollOptions.push option
+
+    editOption: (option) ->
+      clone = pick(option, 'name', 'icon', 'meaning', 'prompt')
+
+      EventBus.$emit 'openModal',
+        component: 'PollOptionForm'
+        props:
+          edit: true
+          pollOption: clone
+          poll: @poll
+          submitFn: (clone) =>
+            Object.assign(option, clone)
 
     submit: ->
       actionName = if @poll.isNew() then 'created' else 'updated'
@@ -286,32 +287,11 @@ export default
             v-icon.text--secondary(v-handle, :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
 
     template(v-if="optionFormat == 'i18n'")
-      v-select(
-        outlined
-        v-model="newOption"
-        :items="i18nItems" 
-        :label="$t('poll_poll_form.add_option_placeholder')"
-        @change="addOption")
+      p This poll cannot have new options added. (contact support if you see this message)
 
     template(v-if="optionFormat == 'plain'")
-      v-text-field.poll-poll-form__add-option-input.mt-4(
-        v-model="newOption"
-        :label="$t('poll_poll_form.new_option')"
-        :placeholder="$t('poll_poll_form.add_option_hint')"
-        @keydown.enter="addOption"
-        filled
-        rounded
-        color="primary"
-      )
-        template(v-slot:append)
-          v-btn.mt-n2(
-            @click="addOption"
-            icon
-            :disabled="!newOption"
-            color="primary"
-            outlined
-            :title="$t('poll_poll_form.add_option_placeholder')")
-            v-icon mdi-plus
+      .d-flex.justify-center
+        v-btn.poll-common-form__add-option-btn.my-2(@click="addOption" v-t="'poll_common_add_option.modal.title'")
 
     template(v-if="optionFormat == 'iso8601'")
       .v-label.v-label--active.px-0.text-caption.pt-2(v-t="'poll_poll_form.new_option'")
@@ -323,7 +303,7 @@ export default
           @click='addDateOption()'
           v-t="'poll_poll_form.add_option_placeholder'"
         )
-      poll-meeting-add-option-menu(:poll="poll", :value="newDateOption")
+      poll-meeting-add-option-menu(:poll="poll" :value="newDateOption")
 
   template(v-if="optionFormat == 'iso8601'")
     .d-flex.align-center
@@ -418,9 +398,8 @@ export default
     v-if="poll.specifiedVotersOnly"
     v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
 
-
-  .d-flex.align-center
-    v-btn.center.mb-2.mt-4.mx-auto.text-center.poll-common-form__advanced-btn(@click="showAdvanced = !showAdvanced")
+  .d-flex.justify-center
+    v-btn.my-4.poll-common-form__advanced-btn(@click="showAdvanced = !showAdvanced")
       span(v-if='showAdvanced' v-t="'poll_common_form.hide_advanced_settings'")
       span(v-else v-t="'poll_common_form.show_advanced_settings'")
 
