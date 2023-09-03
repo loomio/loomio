@@ -1773,7 +1773,7 @@ en:
 
   poll_common:
     superseded: Superseded
-    need_help_with_templates: Need help creating your own process templates?
+    need_help_with_templates: Need help creating your own decision templates?
     new_templates_are_here: Loomio has new proposal templates to help with decision-making.
     categorize_poll_templates: Categorize poll templates
     show_all_templates_in_one_list: Show all templates in one list
