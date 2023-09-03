@@ -339,6 +339,11 @@ class Group < ApplicationRecord
       'advice' => 2,
       'consent' => 3,
       'consensus' => 4,
+      'poll' => 5,
+      'score' => 6,
+      'dot_vote' => 7,
+      'ranked_choice' => 8,
+      'meeting' => 9,
     }
     self[:info]['poll_template_positions']
   end
