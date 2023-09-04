@@ -9,7 +9,7 @@ ActiveAdmin.register Group, as: 'Group' do
     end
   end
 
-  actions :index, :show, :new, :edit, :update, :create
+  actions :index, :show, :new, :edit, :create
 
   filter :name
   filter :handle, as: :string

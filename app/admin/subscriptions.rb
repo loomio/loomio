@@ -1,6 +1,6 @@
 ActiveAdmin.register Subscription do
   includes :groups
-  actions :new, :create, :index, :show, :edit, :update, :destroy
+  actions :new, :create, :index, :show, :edit, :destroy
 
   filter :chargify_subscription_id
   filter :expires_at, as: :date_range
