@@ -550,6 +550,7 @@ pl:
     disable_dark_mode: Wyłącz tryb ciemny
     contact_support: Skontaktuj się z pomocą techniczną
     beta_collab: "\U0001F9EA Funkcje beta włączone!"
+    outcomes: Wyniki
   membership_card:
     group_members: Osoby w tej grupy
     discussion_members: Osoby w tym wątku
@@ -1689,6 +1690,7 @@ pl:
     superseded: zastąpione
     new_proposal_template: Nowy szablon oferty
     edit_proposal_template: Edytuj szablon propozycji
+    outcomes: Wyniki
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -2345,6 +2347,7 @@ pl:
     meaning_hint: Zdanie wyjaśniające, co oznacza wybranie tej opcji
     prompt: Monit o przyczynę
     prompt_hint: Pytanie mające na celu zachęcenie wyborców do przedstawienia uzasadnienia lub ponownego rozważenia swojego stanowiska.
+    option_name_validation: Najlepiej, aby nazwa była krótka i podała szczegółowe informacje w polu „Znaczenie”.
   poll_common_close_form:
     title: Zamknąć %{poll_type} teraz?
     helptext: Czy na pewno chcesz wcześniej zamknąć %{poll_type} i podzielić się wynikami?
@@ -2514,3 +2517,9 @@ pl:
       accept_prompt: Dlaczego zgłaszasz się do tego na ochotnika?
       decline_meaning: Nie mogę uczestniczyć
       decline_prompt: Czy jest coś, co chciałbyś powiedzieć?
+  search_modal:
+    all_content: Cała zawartość
+    best_match: Najlepszy mecz
+    any_tag: Dowolny tag
+    all_subgroups: Wszystkie podgrupy
+    parent_only: Tylko dla rodziców

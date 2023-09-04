@@ -533,6 +533,7 @@ nl_NL:
     disable_dark_mode: Schakel de donkere modus uit
     contact_support: Contact opnemen met ondersteuning
     beta_collab: "\U0001F9EA Bètafuncties ingeschakeld!"
+    outcomes: Resultaten
   membership_card:
     group_members: Groepsleden
     discussion_members: Bord leden
@@ -1672,6 +1673,7 @@ nl_NL:
     superseded: Vervangen
     new_proposal_template: Nieuw voorstelsjabloon
     edit_proposal_template: Voorstelsjabloon bewerken
+    outcomes: Resultaten
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:
@@ -2345,6 +2347,7 @@ nl_NL:
     meaning_hint: Een zin die uitlegt wat het kiezen van deze optie betekent
     prompt: Reden prompt
     prompt_hint: Een vraag om kiezers ertoe aan te zetten hun redenering te geven of hun standpunt te heroverwegen.
+    option_name_validation: Het is het beste om de naam kort te houden en details in het veld 'Betekenis' te vermelden
   poll_common_close_form:
     title: "%{poll_type} nu sluiten?"
     helptext: Weet u zeker dat u %{poll_type} eerder wilt afsluiten en een resultaat wilt delen?
@@ -2514,3 +2517,9 @@ nl_NL:
       accept_prompt: Waarom zet je je hier vrijwillig voor in?
       decline_meaning: Ik kan niet deelnemen
       decline_prompt: Is er iets dat je zou willen zeggen?
+  search_modal:
+    all_content: Alle inhoud
+    best_match: Beste overeenkomst
+    any_tag: Elk label
+    all_subgroups: Alle subgroepen
+    parent_only: Alleen ouder

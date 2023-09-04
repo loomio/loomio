@@ -558,6 +558,7 @@ pt_BR:
     contact_support: Contact support
     sign_out: Sair
     beta_collab: " \U0001F9EA Recursos beta ativados!"
+    outcomes: Resultados
   membership_card:
     group_members: Membros do Grupo
     discussion_members: Membros da conversa
@@ -1638,6 +1639,7 @@ pt_BR:
     meaning_hint: Uma frase que explica o que significa escolher esta opção
     prompt: Incitar razão
     prompt_hint: Uma pergunta para levar os eleitores a fornecer seu raciocínio ou reconsiderar sua posição.
+    option_name_validation: É melhor manter o nome curto e colocar os detalhes no campo ‘Significado’
   poll_common:
     delete_poll: Excluir enquete
     select_count_options: Selecione {{count}} opções
@@ -1726,6 +1728,7 @@ pt_BR:
     superseded: Suplantada
     new_proposal_template: Novo modelo de proposta
     edit_proposal_template: Editar modelo de proposta
+    outcomes: Resultados
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:
@@ -2553,3 +2556,9 @@ pt_BR:
       accept_prompt: Por que você está se voluntariando para isso?
       decline_meaning: não estou conseguindo participar
       decline_prompt: Há algo que você gostaria de dizer?
+  search_modal:
+    all_content: Todo o conteúdo
+    best_match: Melhor partida
+    any_tag: Qualquer etiqueta
+    all_subgroups: Todos os subgrupos
+    parent_only: Somente pai

@@ -193,6 +193,10 @@ hu:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Leiratkozás</a> a hozzászólásokról ebben a témában."
     unsubscribe_from_comment_replied_to_html: Ez egy válaszértesítés.
     unsubscribe_from_user_mentioned_html: Ez egy említési értesítés.
+    discussion_edited:
+      inline: "%{actor} szerkesztette a szál kontextusát"
+    discussion_closed:
+      inline: "%{actor} lezárta a szálat"
   footer:
     about: Rólunk
     blog: Blog

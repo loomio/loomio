@@ -548,6 +548,7 @@ hu:
     disable_beta_features: A béta funkciók letiltása
     contact_support: Lépjen kapcsolatba az ügyfélszolgálattal
     beta_collab: "\U0001F9EA A béta funkciók engedélyezve vannak!"
+    outcomes: Eredmények
   membership_card:
     group_members: Csoporttagok
     discussion_members: Témában résztvevők
@@ -1656,6 +1657,7 @@ hu:
     superseded: Felváltva
     new_proposal_template: Új ajánlatsablon
     edit_proposal_template: Szerkessze az ajánlatsablont
+    outcomes: Eredmények
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -2292,6 +2294,7 @@ hu:
     meaning_hint: Egy mondat, amely elmagyarázza, mit jelent ennek az opciónak a kiválasztása
     prompt: Indoklás
     prompt_hint: Olyan kérdés, amely arra készteti a választókat, hogy mondják el érvelésüket vagy gondolják át álláspontjukat.
+    option_name_validation: A legjobb, ha a név rövid marad, és a „Jelentés” mezőbe írja be a részleteket
   subgroups_panel:
     search_subgroups_of_name: Keresés a(z) {{name}} alcsoportjaiban
     group_without_subgroups: "{{name}} alcsoportok nélkül"
@@ -2492,3 +2495,9 @@ hu:
       accept_prompt: Miért önkénteskedsz erre?
       decline_meaning: nem tudok részt venni
       decline_prompt: Van valami, amit szeretne mondani?
+  search_modal:
+    all_content: Minden tartalom
+    best_match: Legjobb találat
+    any_tag: Bármilyen címke
+    all_subgroups: Minden alcsoport
+    parent_only: Csak szülő

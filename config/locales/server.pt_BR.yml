@@ -239,6 +239,10 @@ pt_BR:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Cancelar subscrição</a> a partir de comentários neste tópico."
     unsubscribe_from_comment_replied_to_html: Esta é uma notificação de resposta.
     unsubscribe_from_user_mentioned_html: Esta é uma notificação de menção.
+    discussion_edited:
+      inline: "%{actor} editou o contexto do tópico"
+    discussion_closed:
+      inline: "%{actor} fechou o tópico"
   footer:
     about: Sobre
     blog: Blog

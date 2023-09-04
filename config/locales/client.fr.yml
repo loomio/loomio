@@ -576,6 +576,7 @@ fr:
     contact_support: Contacter le support
     sign_out: Se déconnecter
     beta_collab: Fonctionnalités bêta activées!
+    outcomes: Résultats
   membership_card:
     group_members: Membres du groupe
     discussion_members: Membres de la discussion
@@ -1656,6 +1657,7 @@ fr:
     meaning_hint: Une phrase qui explique ce que signifie le choix de cette option
     prompt: Invite de raison
     prompt_hint: Une question pour inciter les électeurs à donner leur raisonnement ou à reconsidérer leur position.
+    option_name_validation: Il est préférable de garder le nom court et de mettre des détails dans le champ « Signification »
   poll_common:
     delete_poll: Supprimer le sondage
     select_count_options: Sélectionnez les options {{count}}
@@ -1744,6 +1746,7 @@ fr:
     superseded: Remplacé
     new_proposal_template: Nouveau modèle de proposition
     edit_proposal_template: Modifier le modèle de proposition
+    outcomes: Résultats
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:
@@ -2553,3 +2556,9 @@ fr:
       accept_prompt: Pourquoi êtes-vous volontaire pour cela ?
       decline_meaning: je ne peux pas participer
       decline_prompt: Y a-t-il quelque chose que vous voudriez dire ?
+  search_modal:
+    all_content: Tout le contenu
+    best_match: Meilleure correspondance
+    any_tag: N'importe quelle balise
+    all_subgroups: Tous les sous-groupes
+    parent_only: Parents seulement

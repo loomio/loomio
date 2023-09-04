@@ -556,6 +556,7 @@ de:
     contact_support: Support kontaktieren
     sign_out: Abmelden
     beta_collab: "\U0001F9EA Beta-Funktionen aktiviert!"
+    outcomes: Ergebnisse
   membership_card:
     group_members: Mitglieder der Gruppe
     discussion_members: Diskussionsteilnehmer
@@ -1697,6 +1698,7 @@ de:
     superseded: Abgelöst
     new_proposal_template: Neue Angebotsvorlage
     edit_proposal_template: Angebotsvorlage bearbeiten
+    outcomes: Ergebnisse
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -2348,6 +2350,7 @@ de:
     meaning_hint: Ein Satz, der erklärt, was die Auswahl dieser Option bedeutet
     prompt: Grundaufforderung
     prompt_hint: Eine Frage, die die Wähler dazu anregen soll, ihre Argumente darzulegen oder ihre Position zu überdenken.
+    option_name_validation: Halten Sie den Namen am besten kurz und geben Sie Einzelheiten in das Feld „Bedeutung“ ein
   poll_common_close_form:
     title: "%{poll_type} jetzt schließen?"
     helptext: Sind Sie sicher, dass Sie diese %{poll_type} vorzeitig schließen und ein Ergebnis mitteilen möchten?
@@ -2522,3 +2525,9 @@ de:
       accept_prompt: Warum engagieren Sie sich ehrenamtlich dafür?
       decline_meaning: Ich kann nicht teilnehmen
       decline_prompt: Gibt es etwas, das Sie sagen möchten?
+  search_modal:
+    all_content: Alle Inhalte
+    best_match: Bester Treffer
+    any_tag: Irgendein Tag
+    all_subgroups: Alle Untergruppen
+    parent_only: Nur für Eltern

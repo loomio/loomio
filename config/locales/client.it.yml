@@ -558,6 +558,7 @@ it:
     contact_support: Contatta l'assistenza
     sign_out: Esci
     beta_collab: "\U0001F9EA Beta features attivate!"
+    outcomes: Risultati
   membership_card:
     group_members: Membri del gruppo
     discussion_members: Membri della discussione
@@ -1693,6 +1694,7 @@ it:
     superseded: Sostituito
     new_proposal_template: Nuovo modello di proposta
     edit_proposal_template: Modifica il modello di proposta
+    outcomes: Risultati
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -2362,6 +2364,7 @@ it:
     meaning_hint: Una frase che spiega cosa significa scegliere questa opzione
     prompt: Richiesta di motivazione
     prompt_hint: Una domanda per sollecitare gli elettori a fornire le loro ragioni o riconsiderare la loro posizione.
+    option_name_validation: È meglio mantenere il nome breve e inserire i dettagli nel campo "Significato".
   poll_check_options:
     check_subtitle: Chiedi feedback, domande e dubbi
     check_introduction: "<p>La proposta di controllo del senso è un buon modo per ottenere feedback, invitare domande e scoprire preoccupazioni. Aiuta a chiarire e migliorare una proposta prima di passare a una decisione.</p><p> Il controllo del senso consente alle persone di sapere che si sta formando una proposta e le incoraggia a impegnarsi. È un'opportunità per ascoltare le persone, percepire come si sentono e rispondere in modo appropriato, aprendo la possibilità di incorporare i loro contributi per prendere una decisione migliore.</p><p> Utilizzare la proposta di verifica del senso nel processo di consenso per invitare reazioni e commenti per migliorare la proposta e in un processo di consenso per testare il consenso.</p><p> Leggi di più sulla proposta di controllo del senso.</p>"
@@ -2514,3 +2517,9 @@ it:
       accept_prompt: Perché ti offri volontario per questo?
       decline_meaning: non riesco a partecipare
       decline_prompt: C'è qualcosa che vorresti dire?
+  search_modal:
+    all_content: Tutti i contenuti
+    best_match: Migliore abbinamento
+    any_tag: Qualsiasi etichetta
+    all_subgroups: Tutti i sottogruppi
+    parent_only: Solo genitore

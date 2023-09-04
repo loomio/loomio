@@ -574,6 +574,7 @@ es:
     contact_support: Soporte al usuario
     sign_out: Salir
     beta_collab: Funciones Beta activadas
+    outcomes: Resultados
   membership_card:
     group_members: Integrantes del grupo
     discussion_members: Integrantes del hilo
@@ -1652,6 +1653,7 @@ es:
     meaning_hint: Una frase que explique lo que significa elegir esta opción
     prompt: Mensaje de motivo
     prompt_hint: Una pregunta para incitar a los votantes a proporcionar su razonamiento o reconsiderar su posición.
+    option_name_validation: Es mejor mantener el nombre breve y poner detalles en el campo "Significado".
   poll_common:
     delete_poll: Eliminar sondeo
     select_count_options: Seleccione las opciones de {{count}}
@@ -1740,6 +1742,7 @@ es:
     superseded: Reemplazado
     new_proposal_template: Nueva plantilla de propuesta
     edit_proposal_template: Editar plantilla de propuesta
+    outcomes: Resultados
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -2547,3 +2550,9 @@ es:
       accept_prompt: "¿Por qué te ofreces como voluntario para esto?"
       decline_meaning: no puedo participar
       decline_prompt: "¿Hay algo que quieras decir?"
+  search_modal:
+    all_content: Todo el contenido
+    best_match: Mejor partido
+    any_tag: cualquier etiqueta
+    all_subgroups: Todos los subgrupos
+    parent_only: Sólo padres
