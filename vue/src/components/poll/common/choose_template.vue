@@ -6,8 +6,10 @@ import EventBus     from '@/shared/services/event_bus'
 import PollTemplateService     from '@/shared/services/poll_template_service'
 import {map, without, compact, pickBy} from 'lodash'
 import { ContainerMixin, HandleDirective } from 'vue-slicksort'
+import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel'
 
 export default
+  components: {ThreadTemplateHelpPanel}
   directives:
     handle: HandleDirective
 
@@ -33,19 +35,20 @@ export default
       templates: 'templates.templates'
 
   created: ->
-    Records.pollTemplates.fetchAll(@group.id)
-    
-    if @discussion
-      Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId()).then (template) =>
-        @discussionTemplate = template
-        if @discussionTemplate.pollTemplateKeysOrIds.length
-          @filter = 'recommended'
-
-    EventBus.$on 'sortPollTemplates', => @isSorting = true
-
     @watchRecords
       collections: ["pollTemplates"]
       query: (records) => @query()
+
+    if @discussion && @discussion.discussionTemplateKeyOrId()
+      Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId()).then (dt) =>
+        @discussionTemplate = dt
+        @filter = 'recommended' if dt.pollTemplateKeysOrIds.length
+        @query()
+
+    if @group
+      Records.pollTemplates.fetchByGroupId(@group.id)
+
+    EventBus.$on 'sortPollTemplates', => @isSorting = true
 
   methods:
     query: ->
@@ -117,16 +120,11 @@ export default
         meeting: 'mdi-calendar'
       , (v) -> !!v
 
-
-
 </script>
 
 <template lang="pug">
 .poll-common-templates-list
-  v-alert(v-if="discussionTemplate && discussionTemplate.pollTemplateKeysOrIds.length" color="info" outlined text) 
-    strong {{discussionTemplate.processName}}
-    space
-    span includes recommened decision templates to help you reach an outcome
+  thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
   .d-flex(:class="{'px-4': !discussion}")
     v-chip.mr-1(
       v-for="icon, name in filters"
@@ -161,7 +159,6 @@ export default
       sortable-list(v-model="pollTemplates"  @sort-end="sortEnded" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
         sortable-item(v-for="(template, index) in pollTemplates" :index="index" :key="template.id || template.key")
           v-list-item.decision-tools-card__poll-type(
-
             :class="'decision-tools-card__poll-type--' + template.pollType"
             :key='template.id || template.key'
           )

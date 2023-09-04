@@ -4,8 +4,8 @@ import PollTemplateModel    from '@/shared/models/poll_template_model'
 export default class PollTemplateRecordsInterface extends BaseRecordsInterface
   model: PollTemplateModel
 
-  fetchAll: (groupId) ->
-    @remote.fetch(params: {group_id: groupId})
+  fetchByGroupId: (groupId) ->
+    @remote.fetch(params: {group_id: groupId}, exclude_types: 'group')
 
   findOrFetchByKeyOrId: (keyOrId) ->
     record = @find(keyOrId)

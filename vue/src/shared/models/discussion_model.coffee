@@ -47,7 +47,7 @@ export default class DiscussionModel extends BaseModel
     usersNotifiedCount: null
     discussionReaderUserId: null
     pinnedAt: null
-    template: false
+    poll_template_keys_or_ids: []
 
   cloneTemplate: ->
     clone = @clone()
@@ -68,6 +68,10 @@ export default class DiscussionModel extends BaseModel
   discussionTemplateKeyOrId: ->
     @discussionTemplateId || @discussionTemplateKey
     
+  pollTemplates: ->
+    compact @pollTemplateKeysOrIds.map (keyOrId) =>
+      @recordStore.pollTemplates.find(keyOrId)
+
   audienceValues: ->
     name: @group().name
 

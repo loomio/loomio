@@ -9,7 +9,7 @@ export default class DiscussionTemplateRecordsInterface extends BaseRecordsInter
     if record
       Promise.resolve(record)
     else
-      @remote.fetch(params: {key_or_id: keyOrId}).then =>
+      @remote.fetch(params: {key_or_id: keyOrId, exclude_types: 'group'}).then =>
         @find(keyOrId)
         
   findOrFetchByKey: (key, groupId) ->
@@ -17,5 +17,5 @@ export default class DiscussionTemplateRecordsInterface extends BaseRecordsInter
     if record
       Promise.resolve(record)
     else
-      @remote.fetch(params: {group_id: groupId}).then =>
+      @remote.fetch(params: {group_id: groupId, exclude_types: 'group'}).then =>
         @find(key)

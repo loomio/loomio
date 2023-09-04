@@ -22,16 +22,24 @@ export default
     currentAction: 'add-comment'
     newComment: null
     poll: null
+    showDecisionBadge: false
 
   created: ->
+    @resetBadge()
+    
     @watchRecords
       key: @discussion.id
-      collections: ['groups', 'memberships']
+      collections: ['groups', 'memberships', 'polls']
       query: (store) =>
         @canAddComment = AbilityService.canAddComment(@discussion)
+        @resetBadge()
     @resetComment()
 
   methods:
+    resetBadge: ->
+      if @canStartPoll && @discussion.discussionTemplateKeyOrId() && @discussion.activePolls().length == 0
+        @showDecisionBadge = true
+
     resetComment: ->
       @newComment = Records.comments.build
         bodyFormat: Session.defaultFormat()
@@ -67,7 +75,7 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
     v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
       //- span(v-t="'poll_common_form.start_poll'")
       span(v-t="'poll_common.decision'")
-      v-badge(inline dot)
+      v-badge(v-if="showDecisionBadge" inline dot)
   v-tabs-items(v-model="currentAction")
     v-tab-item(value="add-comment")
       .add-comment-panel

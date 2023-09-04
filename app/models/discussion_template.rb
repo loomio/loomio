@@ -50,10 +50,20 @@ class DiscussionTemplate < ApplicationRecord
     :newest_first,
     :max_depth
     ].map(&:to_s).each do |key|
-      out[key] = self[key].strip
+      out[key] = self[key].strip if self[key]
     end
 
     {process_name.strip.underscore.gsub(" ", "_") => out}.to_yaml
+  end
+
+  def poll_templates
+    PollTemplate.where(id: poll_template_ids)
+  end
+
+  def poll_template_ids
+    self.poll_template_keys_or_ids.filter do |key_or_id| 
+      key_or_id.is_a? Integer
+    end
   end
 
   def filter_poll_template_keys_or_ids

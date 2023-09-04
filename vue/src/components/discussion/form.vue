@@ -31,7 +31,6 @@ export default
 
   mounted: ->
     Records.users.fetchGroups()
-    Records.pollTemplates.fetchAll(@discussion.groupId)
     Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId()).then (template) =>
       @discussionTemplate = template
 
@@ -144,7 +143,7 @@ export default
     div(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
-        
+
     .discussion-form__group-selected(v-if='!showUpgradeMessage')
       tags-field(:model="discussion")
         

@@ -23,10 +23,7 @@ export default
 
   created: ->
     @pollTemplates = @discussionTemplate.pollTemplates()
-
-    Records.pollTemplates.fetchAll(@discussionTemplate.groupId).then =>
-      @pollTemplates = @discussionTemplate.pollTemplates()
-      @updatePollTemplateItems()
+    Records.pollTemplates.fetchByGroupId(@discussionTemplate.groupId)
 
     @watchRecords
       collections: ["pollTemplates"]

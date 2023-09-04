@@ -2,6 +2,7 @@ class DiscussionTemplateSerializer < ActiveModel::Serializer
   embed :ids, include: true
   
   has_one :group, serializer: GroupSerializer, root: :groups
+  has_many :poll_templates, serializer: PollTemplateSerializer, root: :poll_templates
 
   attributes :id,
              :key,
