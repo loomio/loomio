@@ -327,6 +327,54 @@ class User < ApplicationRecord
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    [
+    "avatar_initials",
+    "avatar_kind",
+    "city",
+    "content_locale",
+    "country",
+    "created_at",
+    "current_sign_in_at",
+    "current_sign_in_ip",
+    "date_time_pref",
+    "deactivated_at",
+    "detected_locale",
+    "email",
+    "email_catch_up",
+    "email_catch_up_day",
+    "email_newsletter",
+    "email_on_participation",
+    "email_verified",
+    "email_when_mentioned",
+    "email_when_proposal_closing_soon",
+    "id",
+    "is_admin",
+    "key",
+    "last_seen_at",
+    "last_sign_in_at",
+    "last_sign_in_ip",
+    "legal_accepted_at",
+    "link_previews",
+    "location",
+    "locked_at",
+    "memberships_count",
+    "name",
+    "region",
+    "secret_token",
+    "selected_locale",
+    "short_bio",
+    "short_bio_format",
+    "sign_in_count",
+    "time_zone",
+    "updated_at",
+    "uploaded_avatar_content_type",
+    "uploaded_avatar_file_name",
+    "uploaded_avatar_file_size",
+    "uploaded_avatar_updated_at",
+    "username"]
+  end
+
   protected
 
   def password_required?

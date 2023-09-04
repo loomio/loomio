@@ -518,6 +518,7 @@ ar:
     disable_dark_mode: تعطيل الوضع الداكن
     contact_support: اتصل بالدعم
     beta_collab: "\U0001F9EA تمكين الميزات التجريبية!"
+    outcomes: النتائج
   membership_card:
     group_members: أعضاء الفريق
     discussion_members: أعضاء الموضوع
@@ -1657,6 +1658,7 @@ ar:
     superseded: حلت محلها
     new_proposal_template: نموذج اقتراح جديد
     edit_proposal_template: تحرير نموذج الاقتراح
+    outcomes: النتائج
   poll_common_attachment_form:
     label: المرفقات
   poll_common_add_option:
@@ -2340,6 +2342,7 @@ ar:
     meaning_hint: جملة تشرح معنى اختيار هذا الخيار
     prompt: موجه السبب
     prompt_hint: سؤال يدفع الناخبين إلى إبداء أسبابهم أو إعادة النظر في موقفهم.
+    option_name_validation: من الأفضل إبقاء الاسم قصيرًا ووضع التفاصيل في حقل "المعنى".
   poll_common_close_form:
     title: هل تريد إغلاق٪ {poll_type} الآن؟
     helptext: هل أنت متأكد من أنك تريد إغلاق٪ {poll_type} مبكرًا ومشاركة النتيجة؟
@@ -2514,3 +2517,9 @@ ar:
       accept_prompt: لماذا تتطوع من أجل هذا؟
       decline_meaning: أنا غير قادر على المشاركة
       decline_prompt: هل هناك أي شيء تود أن تقوله؟
+  search_modal:
+    all_content: كل المحتوى
+    best_match: افضل مباراة
+    any_tag: أي علامة
+    all_subgroups: جميع المجموعات الفرعية
+    parent_only: الوالد فقط

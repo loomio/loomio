@@ -240,6 +240,10 @@ de:
     unsubscribe_from_new_comment_html: Kommentare für diese Diskussion <a href='%{url}'>abbestellen</a>.
     unsubscribe_from_comment_replied_to_html: Dies ist eine Antwortbenachrichtigung.
     unsubscribe_from_user_mentioned_html: Dies ist eine Erwähnungsbenachrichtigung.
+    discussion_edited:
+      inline: "%{actor} hat den Thread-Kontext bearbeitet"
+    discussion_closed:
+      inline: "%{actor} hat den Thread geschlossen"
   footer:
     about: Über Loomio
     blog: Blog

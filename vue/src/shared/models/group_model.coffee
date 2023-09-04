@@ -197,6 +197,9 @@ export default class GroupModel extends BaseModel
   export: =>
     @remote.postMember(@id, 'export')
 
+  exportCSV: =>
+    @remote.postMember(@id, 'export_csv')
+
   uploadLogo: (file) =>
     @remote.upload("#{@key}/upload_photo/logo", file, {}, ->)
 

@@ -195,6 +195,10 @@ uk:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Відмовтеся</a> від коментарів у цій темі."
     unsubscribe_from_comment_replied_to_html: Це сповіщення про відповідь.
     unsubscribe_from_user_mentioned_html: Це сповіщення про згадку.
+    discussion_edited:
+      inline: "%{actor} редагував контекст потоку"
+    discussion_closed:
+      inline: "%{actor} закрив потік"
   footer:
     about: Про Loomio
     blog: Блог

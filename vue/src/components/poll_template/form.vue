@@ -1,7 +1,7 @@
 <script lang="coffee">
 import AppConfig from '@/shared/services/app_config'
 import Session from '@/shared/services/session'
-import { compact, without, kebabCase, snakeCase, some } from 'lodash'
+import { compact, without, some, pick } from 'lodash'
 import Flash from '@/shared/services/flash'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
@@ -67,37 +67,34 @@ export default
       @pollOptions = without(@pollOptions, option)
 
     addOption: ->
-      if some(@pollOptions, (o) => o.name.toLowerCase() == @newOption.toLowerCase())
-        Flash.error('poll_poll_form.option_already_added')
-      else
-        knownOption = @knownOptions.find (o) =>
-          @$t(o.name_i18n).toLowerCase() == @newOption.toLowerCase()
+      option = 
+        name: ''
+        meaning: ''
+        prompt: ''
+        icon: 'agree'
 
-        if knownOption
-          @pollOptions.push
-            name: @newOption
-            icon:  knownOption.icon
-            meaning: @$t(knownOption.meaning_i18n)
-            prompt: @$t(knownOption.prompt_i18n)
-        else
-          option = 
-            name: @newOption
-            meaning: ''
-            prompt: ''
-            icon: 'agree'
-          @pollOptions.push option
-          if @pollTemplate.pollType == 'proposal'
-            Flash.success('poll_common_form.option_added_please_add_details')
-            @editOption(option)
-
-        @newOption = null
-
-    editOption: (option) ->
       EventBus.$emit 'openModal',
         component: 'PollOptionForm'
         props:
           pollOption: option
           poll: @pollTemplate
+          submitFn: (option) =>
+            if some(@pollOptions, (o) => o.name.toLowerCase() == option.name.toLowerCase())
+              Flash.error('poll_poll_form.option_already_added')
+            else
+              @pollOptions.push option
+
+    editOption: (option) ->
+      clone = pick(option, 'name', 'icon', 'meaning', 'prompt')
+
+      EventBus.$emit 'openModal',
+        component: 'PollOptionForm'
+        props:
+          edit: true
+          pollOption: clone
+          poll: @pollTemplate
+          submitFn: (clone) =>
+            Object.assign(option, clone)
 
     submit: ->
       actionName = if @pollTemplate.isNew() then 'created' else 'updated'
@@ -264,24 +261,8 @@ export default
                 v-icon.text--secondary mdi-pencil
             v-icon.text--secondary(v-handle, :title="$t('common.action.move')") mdi-drag-vertical
 
-    v-text-field.poll-poll-form__add-option-input.mt-4(
-      v-model="newOption"
-      :label="$t('poll_poll_form.new_option')"
-      :placeholder="$t('poll_poll_form.add_option_hint')"
-      @keydown.enter="addOption"
-      filled
-      rounded
-      color="primary"
-    )
-      template(v-slot:append)
-        v-btn.mt-n2(
-          @click="addOption"
-          icon
-          :disabled="!newOption"
-          color="primary"
-          outlined
-          :title="$t('poll_poll_form.add_option_placeholder')")
-          v-icon mdi-plus
+    .d-flex.justify-center
+      v-btn.poll-template-form__add-option-btn.my-2(@click="addOption" v-t="'poll_common_add_option.modal.title'")
 
     .d-flex(v-if="pollTemplate.pollType == 'score'")
       v-text-field.poll-score-form__min(

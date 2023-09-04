@@ -238,6 +238,10 @@ es:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Darse de baja</a>de comentarios en este hilo"
     unsubscribe_from_comment_replied_to_html: Esto es una notificación de respuesta.
     unsubscribe_from_user_mentioned_html: Esto es una notificación de mención.
+    discussion_edited:
+      inline: "%{actor} editó el contexto del hilo"
+    discussion_closed:
+      inline: "%{actor} cerró el hilo"
   footer:
     about: Sobre Loomio
     blog: Blog

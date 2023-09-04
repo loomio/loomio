@@ -551,6 +551,7 @@ uk:
     contact_support: Зв'язатись зі службою підтримки
     sign_out: Вийти
     beta_collab: "\U0001F9EA Функції бета-версії ввімкнено!"
+    outcomes: Результати
   membership_card:
     group_members: Учасники групи
     discussion_members: Учасники теми
@@ -1696,6 +1697,7 @@ uk:
     superseded: Замінено
     new_proposal_template: Новий шаблон пропозиції
     edit_proposal_template: Редагувати шаблон пропозиції
+    outcomes: Результати
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:
@@ -2367,6 +2369,7 @@ uk:
     meaning_hint: Речення, яке пояснює, що означає вибір цієї опції
     prompt: Підказка причини
     prompt_hint: Питання, яке спонукає виборців аргументувати чи переглянути свою позицію.
+    option_name_validation: Найкраще, щоб назва була короткою, а деталі вказували в полі «Значення».
   poll_score_form:
     tool_tip_collapsed: Виміряйте ступінь підтримки кожного варіанту
   poll_check_options:
@@ -2521,3 +2524,9 @@ uk:
       accept_prompt: Чому ви волонтерите для цього?
       decline_meaning: Я не можу брати участь
       decline_prompt: Ви б хотіли щось сказати?
+  search_modal:
+    all_content: Весь контент
+    best_match: Найкращий матч
+    any_tag: Будь-який тег
+    all_subgroups: Всі підгрупи
+    parent_only: Лише для батьків

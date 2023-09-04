@@ -1779,15 +1779,16 @@ en:
     edit_option: Edit option
     option_name: Option name
     option_name_hint: A short name for this option
+    option_name_validation: It's best to keep the name short and put detail in the 'Meaning' field
     icon: Icon
     meaning: Meaning
-    meaning_hint: A sentence that explains what choosing this option means
+    meaning_hint: A sentence or two explaining what choosing this option means. Optional
     prompt: Reason prompt
-    prompt_hint: A question to prompt voters to provide their reasoning or reconsider their position.
+    prompt_hint: A question to prompt voters to share their reasoning or reconsider their position. Optional
 
   poll_common:
     superseded: Superseded
-    need_help_with_templates: Need help creating your own process templates?
+    need_help_with_templates: Need help creating your own decision templates?
     categorize_poll_templates: Categorize poll templates
     show_all_templates_in_one_list: Show all templates in one list
     advice_process: Advice process

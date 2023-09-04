@@ -16,13 +16,10 @@ export default
 </script>
 
 <template lang="pug">
-.common-notify-fields(v-if="model.id")
-  //- p recipientMessage {{model.recipientMessage}}
-  //- p recipientUserIds {{model.recipientUserIds}}
-  //- p recipientEmails {{model.recipientEmails}}
-  //- p recipientAudience {{model.recipientAudience}}
+.common-notify-fields
   v-divider.my-6
   v-text-field(
+    v-if="model.id"
     :label="$t('discussion_form.change_log_label')"
     :placeholder="$t('discussion_form.change_log_placeholder')"
     v-model="model.recipientMessage")

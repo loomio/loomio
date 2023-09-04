@@ -85,6 +85,10 @@ class Comment < ApplicationRecord
 
   define_counter_cache(:versions_count) { |comment| comment.versions.count }
 
+  def real_participant
+    author
+  end
+
   def assign_parent_if_nil
     self.parent = self.discussion if self.parent_id.nil?
   end

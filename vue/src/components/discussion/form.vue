@@ -144,18 +144,19 @@ export default
     div(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
-    .discussion-form__group-selected(v-else)
+        
+    .discussion-form__group-selected(v-if='!showUpgradeMessage')
       tags-field(:model="discussion")
-
-      recipients-autocomplete(
-        v-if="!discussion.id"
-        :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
-        :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
-        :initial-recipients="initialRecipients"
-        :hint="$t('announcement.form.placeholder')"
-        :model="discussion"
-        :reset="reset"
-      )
+        
+      //- recipients-autocomplete(
+      //-   v-if="!discussion.id"
+      //-   :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
+      //-   :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
+      //-   :initial-recipients="initialRecipients"
+      //-   :hint="$t('announcement.form.placeholder')"
+      //-   :model="discussion"
+      //-   :reset="reset"
+      //- )
 
       v-text-field#discussion-title.discussion-form__title-input(
         :label="$t('discussion_form.title_label')"
