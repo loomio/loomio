@@ -136,7 +136,7 @@ export default
 <template lang="pug">
 v-card.search-modal
   .d-flex.px-4.pt-4.align-center
-    v-text-field(:loading="loading" filled rounded single-line append-icon="mdi-magnify" append-outer-icon="mdi-close" @click:append-outer="closeModal" @click:append="fetch" v-model="query" :placeholder="$t('common.action.search')" @keydown.enter.prevent="fetch")
+    v-text-field(:loading="loading" autofocus filled rounded single-line append-icon="mdi-magnify" append-outer-icon="mdi-close" @click:append-outer="closeModal" @click:append="fetch" v-model="query" :placeholder="$t('common.action.search')" @keydown.enter.prevent="fetch")
   .d-flex.px-4.align-center
     v-select.mr-2(v-model="orgId" :items="orgItems")
     v-select.mr-2(v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId")
