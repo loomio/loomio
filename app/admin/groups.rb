@@ -20,6 +20,13 @@ ActiveAdmin.register Group, as: 'Group' do
   scope :parents_only
   scope :not_demo
 
+  member_action :update, :method => :put do
+    group = Group.find(params[:id])
+    group.update(permitted_params[:group])
+    redirect_to admin_groups_path, :notice => "Group updated"
+  end
+
+
   batch_action :delete_spam do |group_ids|
     group_ids.each do |group_id|
       if Group.any_trial.exists?(group_id)
