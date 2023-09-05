@@ -145,6 +145,13 @@ export default
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
     .discussion-form__group-selected(v-if='!showUpgradeMessage')
+      v-text-field#discussion-title.discussion-form__title-input(
+        :label="$t('discussion_form.title_label')"
+        :placeholder="titlePlaceholder"
+        v-model='discussion.title' maxlength='255' required
+      )
+      validation-errors(:subject='discussion', field='title')
+
       tags-field(:model="discussion")
         
       //- recipients-autocomplete(
@@ -156,13 +163,6 @@ export default
       //-   :model="discussion"
       //-   :reset="reset"
       //- )
-
-      v-text-field#discussion-title.discussion-form__title-input(
-        :label="$t('discussion_form.title_label')"
-        :placeholder="titlePlaceholder"
-        v-model='discussion.title' maxlength='255' required
-      )
-      validation-errors(:subject='discussion', field='title')
 
       lmo-textarea(
         :model='discussion'
