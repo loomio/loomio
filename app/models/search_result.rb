@@ -20,4 +20,12 @@ class SearchResult
 	              :author_id,
 	              :authored_at,
 	              :tags
+
+	def poll
+		Poll.find_by(id: poll_id)
+	end
+
+	def author
+		User.find_by(id: author_id)
+	end
 end
