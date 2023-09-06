@@ -45,9 +45,7 @@ class DiscussionTemplate < ApplicationRecord
     :process_introduction_format,
     :description,
     :description_format,
-    :tags,
-    :newest_first,
-    :max_depth
+    :tags
     ].map(&:to_s).each do |key|
       value = self[key]
       next unless value
