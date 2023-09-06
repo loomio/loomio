@@ -14,7 +14,6 @@ class DiscussionTemplate < ApplicationRecord
   
   validates :process_name, presence: true
   validates :process_subtitle, presence: true
-  # validates :title_placeholder, presence: true
 
   before_save :filter_poll_template_keys_or_ids
 
