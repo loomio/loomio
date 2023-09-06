@@ -43,13 +43,15 @@ class DiscussionTemplate < ApplicationRecord
     :process_subtitle,
     :process_introduction,
     :description,
-    :desription_format,
-    :tags
     ].map(&:to_s).each do |key|
       value = self[key]
       next unless value
       value.strip! if value.respond_to? :strip!
       out[key] = value
+    end
+
+    tags.each do |tag|
+      out[tag.underscore.gsub(" ", "_")] = tag
     end
 
     {process_name.strip.underscore.gsub(" ", "_") => out}

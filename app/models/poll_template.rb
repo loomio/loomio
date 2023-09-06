@@ -66,6 +66,10 @@ class PollTemplate < ApplicationRecord
       end
     end
 
+    tags.each do |tag|
+      out[tag.underscore.gsub(" ", "_")] = tag
+    end
+
     self.poll_options.each do |poll_option|
       option_name = poll_option.slice('name').values[0].parameterize(separator: '_').gsub('-', '_')
       poll_option.slice('name', 'meaning', 'prompt').each_pair do |key, value|
