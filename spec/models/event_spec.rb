@@ -136,7 +136,6 @@ describe Event do
     #
     #   expect(DiscussionReader.where(discussion_id: discussion.id).count).to eq 2
     #
-    #   byebug
     #   email_users = Events::NewDiscussion.last.send(:email_recipients)
     #   expect(email_users.length).to eq 1
     #   expect(email_users).to include user_thread_normal

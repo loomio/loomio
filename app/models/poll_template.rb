@@ -52,7 +52,7 @@ class PollTemplate < ApplicationRecord
     :discarded_at
   ]
 
-  def dump_i18n_yaml
+  def dump_i18n
     out = {}
     [
     :process_subtitle,
@@ -77,6 +77,6 @@ class PollTemplate < ApplicationRecord
       end
     end
 
-    {process_name.underscore.gsub(" ", "_") => out}.to_yaml
+    {process_name.underscore.gsub(" ", "_") => out}
   end
 end

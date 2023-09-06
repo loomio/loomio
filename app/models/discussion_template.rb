@@ -35,7 +35,7 @@ class DiscussionTemplate < ApplicationRecord
     User.none
   end
 
-  def dump_i18n_yaml
+  def dump_i18n
     out = {}
     [
     :title,
@@ -45,15 +45,17 @@ class DiscussionTemplate < ApplicationRecord
     :process_introduction_format,
     :description,
     :description_format,
-    :group_id,
     :tags,
     :newest_first,
     :max_depth
     ].map(&:to_s).each do |key|
-      out[key] = self[key].strip if self[key]
+      value = self[key]
+      next unless value
+      value.strip! if value.respond_to? :strip!
+      out[key] = value
     end
 
-    {process_name.strip.underscore.gsub(" ", "_") => out}.to_yaml
+    {process_name.strip.underscore.gsub(" ", "_") => out}
   end
 
   def poll_templates

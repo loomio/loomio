@@ -314,14 +314,14 @@ Rails.application.routes.draw do
   end
 
   resources :poll_templates, only: [] do
-    member do
-      get :dump_i18n_yaml
+    collection do
+      get :dump_i18n
     end
   end
 
   resources :thread_templates, only: [] do
-    member do
-      get :dump_i18n_yaml
+    collection do
+      get :dump_i18n
     end
   end
   

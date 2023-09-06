@@ -1,6 +1,11 @@
 class ThreadTemplatesController < ApplicationController
-	def dump_i18n_yaml
-		@discussion_template = DiscussionTemplate.find_by(id: params[:id], group_id: current_user.adminable_group_ids)
-		render plain: @discussion_template.dump_i18n_yaml, layout: false, template: nil
+	# TODO remove this file
+	def dump_i18n
+    @group = load_and_authorize(:group, :export)
+    templates = {}
+    DiscussionTemplate.where(group_id: @group.id).each do |dt|
+    	templates = templates.merge(dt.dump_i18n)
+    end
+		render plain: templates.to_yaml, layout: false, template: nil
 	end
 end
