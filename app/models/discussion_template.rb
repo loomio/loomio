@@ -42,9 +42,8 @@ class DiscussionTemplate < ApplicationRecord
     :process_name,
     :process_subtitle,
     :process_introduction,
-    :process_introduction_format,
     :description,
-    :description_format,
+    :desription_format,
     :tags
     ].map(&:to_s).each do |key|
       value = self[key]
