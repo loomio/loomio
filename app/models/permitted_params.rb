@@ -187,7 +187,6 @@ class PermittedParams < Struct.new(:params)
      :notify_recipients,
      :recipient_audience,
      :recipient_message,
-     :template,
      :tags, {tags: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
@@ -212,6 +211,7 @@ class PermittedParams < Struct.new(:params)
      :group_id,
      :newest_first,
      :max_depth,
+     :public,
      :poll_template_keys_or_ids, {poll_template_keys_or_ids: []},
      :tags, {tags: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}

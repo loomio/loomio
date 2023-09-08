@@ -181,12 +181,12 @@ Rails.application.routes.draw do
 
       resources :discussion_templates, only: [:create, :index, :show, :update, :destroy] do
         collection do
+          get :browse
           post :hide
           post :unhide
           post :discard
           post :undiscard
           post :positions
-          # post :settings
         end
       end
 
@@ -370,6 +370,7 @@ Rails.application.routes.draw do
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'
   get 'poll_templates/:id/edit'            => 'application#index'
+  get 'thread_templates/browse'            => 'application#index'
   get 'thread_templates/new'               => 'application#index'
   get 'thread_templates/:id'               => 'application#index'
   get 'thread_templates/:id/edit'          => 'application#index'

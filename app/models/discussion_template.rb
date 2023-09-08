@@ -18,6 +18,7 @@ class DiscussionTemplate < ApplicationRecord
   before_save :filter_poll_template_keys_or_ids
 
   has_paper_trail only: [
+    :public,
     :title,
     :process_name,
     :process_subtitle,
@@ -38,6 +39,7 @@ class DiscussionTemplate < ApplicationRecord
     out = {}
     [
     :title,
+    :title_placeholder,
     :process_name,
     :process_subtitle,
     :process_introduction,

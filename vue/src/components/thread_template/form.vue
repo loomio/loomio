@@ -192,6 +192,7 @@ export default
         space
         span(v-t="'thread_arrangement_form.nested_twice_description'")
 
+  v-checkbox(v-model="discussionTemplate.public" label="Share this template in the public template gallery")
  
   .d-flex.justify-space-between.my-4.mt-4.thread-template-form-actions
     v-spacer

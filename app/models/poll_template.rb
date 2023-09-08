@@ -55,9 +55,11 @@ class PollTemplate < ApplicationRecord
   def dump_i18n
     out = {}
     [
+    :title,
+    :title_placeholder,
+    :process_name,
     :process_subtitle,
     :process_introduction,
-    :title,
     :details,
     :reason_prompt,
     ].map(&:to_s).each do |key|

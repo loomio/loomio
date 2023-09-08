@@ -10,6 +10,19 @@ onboarding_to_loomio:
   newest_first: false
   max_depth: 3
 
+decision_by_consensus:
+  title_placeholder_i18n: discussion_templates.decision_by_consensus.title
+  process_name_i18n: discussion_templates.decision_by_consensus.process_name
+  process_subtitle_i18n: discussion_templates.decision_by_consensus.process_subtitle
+  process_introduction_i18n: discussion_templates.decision_by_consensus.process_introduction
+  description_i18n: discussion_templates.decision_by_consensus.description
+  tags_i18n: 
+  - discussion_templates.decision_by_consensus.consensus
+  process_introduction_format: html
+  description_format: html
+  newest_first: false
+  max_depth: 3
+  
 discuss_a_topic:
   title_placeholder_i18n: discussion_templates.discuss_a_topic.title
   process_name_i18n: discussion_templates.discuss_a_topic.process_name
@@ -85,15 +98,3 @@ consent_process:
   newest_first: false
   max_depth: 3
 
-decision_by_consensus:
-  title_placeholder_i18n: discussion_templates.decision_by_consensus.title
-  process_name_i18n: discussion_templates.decision_by_consensus.process_name
-  process_subtitle_i18n: discussion_templates.decision_by_consensus.process_subtitle
-  process_introduction_i18n: discussion_templates.decision_by_consensus.process_introduction
-  description_i18n: discussion_templates.decision_by_consensus.description
-  tags_i18n: 
-  - discussion_templates.decision_by_consensus.consensus
-  process_introduction_format: html
-  description_format: html
-  newest_first: false
-  max_depth: 3

@@ -1,4 +1,36 @@
 class API::V1::DiscussionTemplatesController < API::V1::RestfulController
+
+  def browse
+    # rel = PgSearch.multisearch(params[:query]).where("searchable_type IN (:types)", types: ['DiscussionTemplate'])
+
+    templates = DiscussionTemplate.where(public: true)
+
+    if params[:query].present?
+      templates = templates.where("process_name ILIKE :q OR process_subtitle ILIKE :q", q: "%#{params[:query]}%")
+    end
+
+    templates = templates.limit(50).to_a
+
+    authors = access_by_id(User.where(id: templates.map(&:author_id)))
+    groups = access_by_id(Group.where(id: templates.map(&:group_id)))
+
+    results = templates.map do |dt|
+      author = authors[dt.author_id]
+      group = groups[dt.group_id]
+      {
+        id: dt.id,
+        process_name: dt.process_name,
+        process_subtitle: dt.process_subtitle,
+        author_name: author&.name,
+        group_name: group&.name,
+        avatar_url: (group&.logo_url || author&.avatar_url),
+        tags: dt.tags
+      }
+    end
+
+    render json: results, root: :results
+  end
+
   def index
     group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
@@ -80,4 +112,14 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
       response_with_error(404)
     end
   end
+
+  private
+  def access_by_id(collection, id_col = 'id')
+    h = {}
+    collection.each do |row|
+      h[row.send(id_col)] = row
+    end
+    h
+  end
+
 end

@@ -109,4 +109,8 @@ export default
                 v-list-item-subtitle {{template.processSubtitle}}
               v-list-item-action
                 action-menu(:actions='actions[i]' small icon :name="$t('action_dock.more_actions')")
+
+      .d-flex.justify-center
+        v-btn.my-2(:to="'/thread_templates/browse?group_id=' + $route.query.group_id")
+          span Browse public templates
 </template>

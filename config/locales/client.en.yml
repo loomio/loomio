@@ -18,6 +18,7 @@ en:
     no_tasks_assigned: There are no tasks assigned to you
 
   templates:
+    template_gallery: Template gallery
     title_template: "%{title} Template"
     title_templates: "%{title} Templates"
     title_copy: "%{title} Copy"

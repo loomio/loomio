@@ -138,8 +138,6 @@ module.exports = {
   ThreadCurrentPollBanner: 'thread/current_poll_banner',
   ThreadNav: 'thread/nav',
   ThreadPreview: 'thread/preview',
-  ThreadPreviewCollection: 'thread/preview_collection',
-  ThreadSearchResult: 'thread/search_result',
   PinEventForm: 'thread/pin_event_form',
   TimeAgo: 'common/time_ago',
   Translation: 'common/translation',
