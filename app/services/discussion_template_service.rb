@@ -51,6 +51,6 @@ class DiscussionTemplateService
       end
 
       DiscussionTemplate.new attrs
-    end
+    end.reverse
   end
 end

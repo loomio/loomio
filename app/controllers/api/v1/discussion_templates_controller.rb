@@ -1,4 +1,12 @@
 class API::V1::DiscussionTemplatesController < API::V1::RestfulController
+  def browse_tags
+    tag_counts = {}
+    DiscussionTemplate.where(public: true).pluck(:tags).flatten.each do |tag|
+      tag_counts[tag] ||= 0
+      tag_counts[tag] += 1
+    end
+    render json: tag_counts.sort_by {|k,v| v }.to_h.keys.slice(0, 20), root: false
+  end
 
   def browse
     # rel = PgSearch.multisearch(params[:query]).where("searchable_type IN (:types)", types: ['DiscussionTemplate'])
@@ -6,7 +14,7 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
     templates = DiscussionTemplate.where(public: true)
 
     if params[:query].present?
-      templates = templates.where("process_name ILIKE :q OR process_subtitle ILIKE :q", q: "%#{params[:query]}%")
+      templates = templates.where("process_name ILIKE :q OR process_subtitle ILIKE :q OR tags @> ARRAY[:a]::varchar[]", q: "%#{params[:query]}%", a: Array(params[:query]))
     end
 
     templates = templates.limit(50).to_a

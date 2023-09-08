@@ -181,6 +181,7 @@ Rails.application.routes.draw do
 
       resources :discussion_templates, only: [:create, :index, :show, :update, :destroy] do
         collection do
+          get :browse_tags
           get :browse
           post :hide
           post :unhide

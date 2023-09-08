@@ -16,17 +16,23 @@ export default
     results: []
     query: @$route.query.query
     loading: false
+    tags: []
 
-  mounted: -> @fetch()
+  mounted: ->
+    @fetch()
+    Records.remote.get('discussion_templates/browse_tags').then (data) =>
+      @tags = data
 
   methods:
+    changed: -> @fetch()
     fetch: ->
       @loading = true
       @results = []
       Records.remote.get('discussion_templates/browse', {query: @query}).then (data) =>
         @results = data.results.map(utils.parseJSON)
         @loading = false
-    tagColor: -> colors[Math.floor(Math.random() * colors.length)]
+    tagColor: (tag)->
+      colors[@tags.indexOf(tag) % colors.length]
 
 </script>
 <template lang="pug">
@@ -38,19 +44,22 @@ export default
           h1.headline(tabindex="-1" v-t="'templates.template_gallery'")
 
         .d-flex.px-4.align-center
-          v-text-field(
+          v-combobox(
             :loading="loading"
             autofocus
             filled
             rounded
             single-line
+            hide-selected
             clearable
+            @change="changed"
             append-icon="mdi-magnify"
             @click:append="fetch"
             v-model="query"
             :placeholder="$t('common.action.search')"
             @keydown.enter.prevent="fetch"
             hide-details
+            :items="tags"
             )
 
         v-list.append-sort-here(three-line)
