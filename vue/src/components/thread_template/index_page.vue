@@ -80,12 +80,15 @@ export default
             v-icon mdi-close
 
         v-alert.mx-4(v-if="group && group.discussionsCount == 0" type="info" text outlined v-t="'thread_template.these_are_templates'") 
+        v-subheader Templates
 
         v-list.append-sort-here(two-line)
           template(v-if="showSettings")
             v-list-item(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
               v-list-item-content
                 v-list-item-title(v-t="'discussion_form.new_template'")
+              v-list-item-action
+                v-icon mdi-plus
             v-subheader(v-if="templates.length" v-t="'thread_template.hidden_templates'")
 
           template(v-if="isSorting")

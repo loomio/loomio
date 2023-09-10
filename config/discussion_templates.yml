@@ -3,6 +3,7 @@ discuss_a_topic:
   process_name_i18n: discussion_templates.discuss_a_topic.process_name
   process_subtitle_i18n: discussion_templates.discuss_a_topic.process_subtitle
   process_introduction_i18n: discussion_templates.discuss_a_topic.process_introduction
+  process_introduction_format: html
   description_i18n: discussion_templates.discuss_a_topic.description
   description_format: html
   newest_first: false

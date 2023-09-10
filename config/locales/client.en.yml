@@ -723,7 +723,8 @@ en:
   thread_template:
     start_a_new_thread: Start a new thread
     thread_template_saved: Thread template saved
-    these_are_templates: What you're looking at here are thread templates. Templates can help you get started with common decision-making processes. We recommend you start with the "Onboarding to Loomio" template. Just click a template to start a thread, or click the menu button to edit, hide or rearrange the templates.
+    these_are_templates: |
+      This is a list of thread templates in your group. Templates guide you through a decision-making process. We recommend you try the "Onboarding to Loomio" template, so your group can try Loomio out together.
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
     title_placeholder_label: Example title

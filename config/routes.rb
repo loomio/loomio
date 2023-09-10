@@ -286,13 +286,6 @@ Rails.application.routes.draw do
         get :show, on: :collection
       end
 
-      resources :oauth_applications, only: [:show, :create, :update, :destroy] do
-        post :revoke_access, on: :member
-        post :upload_logo, on: :member
-        get :owned, on: :collection
-        get :authorized, on: :collection
-      end
-
       namespace(:sessions)        { get :unauthorized }
       devise_scope :user do
         resource :sessions, only: [:create, :destroy]

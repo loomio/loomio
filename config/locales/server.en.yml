@@ -21,8 +21,8 @@ en:
         </li></ul><h3 id="how-should-participants-prepare-for-the-meeting">How should participants prepare for the meeting?</h3><p data-text-align="start"></p><h3 id="list-of-documents-for-the-meeting">List of documents for the meeting</h3><ul><li><p data-text-align="start"></p></li></ul>
       meeting: Meeting
     discuss_a_topic:
-      process_name: Discuss a topic
-      process_subtitle: Raise a topic for discussion with your group.
+      process_name: Blank
+      process_subtitle: Start a discussion with your group
       process_introduction: "<p>Is there an issue, problem or opportunity you wish to
         raise with your group?</p><p>Introduce the topic, link to any background information
         and ask for comments, ideas and help.</p><p>Invite people to participate by contributing
@@ -209,6 +209,7 @@ en:
         is the facilitator for this process?</h3><p></p>
       consent: Consent
     onboarding_to_loomio:
+      title: Let's try Loomio together
       process_name: Onboarding to Loomio
       process_subtitle: A thread to help people new to Loomio practice writing comments
         and voting

@@ -52,7 +52,7 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
   end 
 
   def show
-    @discussion_template = DiscussionTemplate.find_by(group_id: current_user.group_ids, id: params[:id])
+    @discussion_template = DiscussionTemplate.where('group_id IN (?) OR public = true', current_user.group_ids).find(params[:id])
     respond_with_resource
   end
 

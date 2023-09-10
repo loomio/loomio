@@ -49,7 +49,7 @@ export default
       @discussionTemplate.pollTemplateKeysOrIds = @pollTemplates.map (pt) -> pt.keyOrId()
       @discussionTemplate.save().then (data) =>
         Flash.success "thread_template.thread_template_saved"
-        @$router.push @$route.query.return_to
+        @$router.push @$route.query.return_to || '/thread_templates/?group_id='+@discussionTemplate.groupId
 
     pollTemplateSelected: (keyOrId) ->
       @pollTemplates.push(Records.pollTemplates.find(keyOrId))

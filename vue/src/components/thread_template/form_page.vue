@@ -16,6 +16,12 @@ export default
     if templateId = parseInt(@$route.params.id)
       Records.discussionTemplates.findOrFetchById(templateId).then (template) =>
         @discussionTemplate = template.clone()
+    else if (templateId = parseInt(@$route.query.template_id)) && (groupId = parseInt(@$route.query.group_id))
+      Records.discussionTemplates.findOrFetchById(templateId).then (template) =>
+        @discussionTemplate = template.clone()
+        @discussionTemplate.id = null
+        @discussionTemplate.groupId = groupId
+        @discussionTemplate.public = false
     else if (templateKey = @$route.query.template_key) && (groupId = parseInt(@$route.query.group_id))
       Records.discussionTemplates.findOrFetchByKey(templateKey, groupId).then (template) =>
         @discussionTemplate = template.clone()

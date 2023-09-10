@@ -31,6 +31,7 @@ export default
       Records.remote.get('discussion_templates/browse', {query: @query}).then (data) =>
         @results = data.results.map(utils.parseJSON)
         @loading = false
+
     tagColor: (tag)->
       colors[@tags.indexOf(tag) % colors.length]
 
@@ -67,6 +68,7 @@ export default
             v-for="result in results" 
             :key="result.id"
             :to="'/d/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key)+ '&group_id='+ $route.query.group_id"
+            title="Use this template to start a new thread"
           )
             v-list-item-avatar
               v-avatar(:size="38" tile)
@@ -91,8 +93,12 @@ export default
                   mid-dot
                   span {{result.groupName}}
 
-            //- v-list-item-action
-            //-   v-btn(icon)
-            //-     v-icon mdi-content-copy
+            v-list-item-action
+              v-btn.text--secondary(
+                icon
+                :to="'/thread_templates/new?template_id='+result.id+'&group_id='+$route.query.group_id"
+                title="Make a copy of this template and edit it"
+              )
+                v-icon mdi-pencil
 
 </template>

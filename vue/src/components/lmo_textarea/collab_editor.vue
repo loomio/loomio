@@ -281,7 +281,7 @@ div
             v-menu(:close-on-content-click="!selectedText()", v-model="linkDialogIsOpen", min-width="320px")
               template(v-slot:activator="{on, attrs}")
                 template(v-if="editor.isActive('link')")
-                  v-btn(small="expanded" icon @click="editor.chain().toggleLink().focus().run()", outlined :title="$t('formatting.link')")
+                  v-btn(:small="expanded" icon @click="editor.chain().toggleLink().focus().run()", outlined :title="$t('formatting.link')")
                     v-icon mdi-link-variant
                 template(v-else)
                   v-btn(:small="expanded" icon v-on="on" v-bind="attrs", :title="$t('formatting.link')")
