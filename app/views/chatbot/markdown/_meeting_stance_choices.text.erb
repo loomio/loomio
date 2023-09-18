@@ -1,0 +1,10 @@
+```<%= Terminal::Table.new do |table| %>
+<% table.style = { border: :unicode } %>
+<% table.headings = [stance.poll.time_zone, 'choice'] %>
+<% blocks = {0 => '  ', 1 => '░░', 2 => '██'} %>
+<% stance.stance_choices.each do |stance_choice| %>
+<% table << [option_name(stance_choice.poll_option.name, stance.poll.poll_option_name_format, @recipient.time_zone, @recipient.date_time_pref), blocks[stance_choice.score]] %>
+<% end %>
+<% end %>
+
+```
