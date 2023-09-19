@@ -40,6 +40,7 @@ v-card.poll-common-option-form
     dismiss-modal-button
   v-card-text
     v-text-field.poll-option-form__name(
+      autofocus
       :label="$t('poll_option_form.option_name')"
       v-model="pollOption.name"
       :hint="$t('poll_option_form.option_name_hint')"
