@@ -1906,8 +1906,8 @@ en:
     include_subgroups_mine: '{{name}} and my subgroups'
     include_subgroups_all: '{{name}} and all subgroups'
     no_results_found: No results for "{{search}}"
-    welcome_to_your_new_group: 👋 Welcome to your new Loomio group.
-    time_to_start_a_thread: It's time to start your first thread! Not sure how to begin? We have a selection of templates to help you get started.
+    welcome_to_your_new_group: Welcome to your new Loomio group!
+    time_to_start_a_thread: It's time to start your first thread. Not sure what to write? Loomio's templates will guide you through the process.
     click_new_thread: Click "New thread" to continue.
 
   members_panel:
