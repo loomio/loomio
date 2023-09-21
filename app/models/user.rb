@@ -298,7 +298,7 @@ class User < ApplicationRecord
   end
 
   def name
-    if deactivated_at.present?
+    if deactivated_at && AppConfig.app_features[:scrub_user_deactivate]
       "[deactivated account]"
     else
       self[:name]
