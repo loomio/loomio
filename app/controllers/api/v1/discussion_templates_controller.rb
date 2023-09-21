@@ -12,7 +12,7 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
     if DiscussionTemplate.where(public: true).count == 0
       DiscussionTemplateService.create_public_templates
     end
-    
+
     templates = DiscussionTemplate.where(public: true)
 
     if params[:query].present?
@@ -45,7 +45,7 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
     group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
     if group.discussion_templates_count == 0
-      group.discussion_templates = DiscussionTemplateService.initial_templates
+      group.discussion_templates = DiscussionTemplateService.initial_templates(group.category)
     end
 
     if params[:id]

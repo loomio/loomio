@@ -88,7 +88,7 @@ export default
 
   computed:
     categoryItems: ->
-      ['board', 'community', 'coop', 'membership','nonprofit','party', 'professional', 'union', 'other'].map (category) ->
+      ['board', 'community', 'coop', 'membership', 'nonprofit', 'party', 'professional', 'self_managing', 'union', 'other'].map (category) ->
         {text: I18n.t('group_survey.categories.'+category), value: category} 
     actionName: ->
       if @group.isNew() then 'created' else 'updated'

@@ -26,10 +26,20 @@ class DiscussionTemplateService
     discussion_template
   end
 
-  def self.initial_templates
-    default_templates.filter do |dt|
-      AppConfig.app_features[:initial_discussion_templates].include?(dt.key)
-    end
+  def self.initial_templates(category)
+    names = {
+      board:         ['blank', 'onboarding_to_loomio', 'discuss_a_topic', 'approve_a_document', 'prepare_for_a_meeting'],
+      community:     ['blank', 'onboarding_to_loomio', 'discuss_a_topic', 'decision_by_consensus', 'share_links_and_info'],
+      coop:          ['blank', 'onboarding_to_loomio', 'discuss_a_topic', 'consent_process', 'share_links_and_info'],
+      membership:    ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
+      nonprofit:     ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
+      party:         ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
+      professional:  ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
+      self_managing: ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
+      union:         ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
+    }.with_indifferent_access.fetch(category, ['blank'])
+
+    default_templates.filter { |dt| names.include? dt.key }
   end
 
   def self.default_templates

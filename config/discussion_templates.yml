@@ -4,7 +4,7 @@ blank:
   position: 0
 
 discuss_a_topic:
-  title_placeholder_i18n: discussion_templates.discuss_a_topic.title
+  title_placeholder_i18n: discussion_templates.discuss_a_topic.title_placeholder
   process_name_i18n: discussion_templates.discuss_a_topic.process_name
   process_subtitle_i18n: discussion_templates.discuss_a_topic.process_subtitle
   process_introduction_i18n: discussion_templates.discuss_a_topic.process_introduction
@@ -29,7 +29,7 @@ onboarding_to_loomio:
   position: 2
 
 advice_process:
-  title_placeholder_i18n: discussion_templates.advice_process.title
+  title_placeholder_i18n: discussion_templates.advice_process.title_placeholder
   process_name_i18n: discussion_templates.advice_process.process_name
   process_subtitle_i18n: discussion_templates.advice_process.process_subtitle
   process_introduction_i18n: discussion_templates.advice_process.process_introduction
@@ -42,7 +42,7 @@ advice_process:
   max_depth: 3
 
 consent_process:
-  title_placeholder_i18n: discussion_templates.consent_process.title
+  title_placeholder_i18n: discussion_templates.consent_process.title_placeholder
   process_name_i18n: discussion_templates.consent_process.process_name
   process_subtitle_i18n: discussion_templates.consent_process.process_subtitle
   process_introduction_i18n: discussion_templates.consent_process.process_introduction
@@ -55,7 +55,7 @@ consent_process:
   max_depth: 3
 
 decision_by_consensus:
-  title_placeholder_i18n: discussion_templates.decision_by_consensus.title
+  title_placeholder_i18n: discussion_templates.decision_by_consensus.title_placeholder
   process_name_i18n: discussion_templates.decision_by_consensus.process_name
   process_subtitle_i18n: discussion_templates.decision_by_consensus.process_subtitle
   process_introduction_i18n: discussion_templates.decision_by_consensus.process_introduction
@@ -68,7 +68,7 @@ decision_by_consensus:
   max_depth: 3
   
 approve_a_document:
-  title_placeholder_i18n: discussion_templates.approve_a_document.title
+  title_placeholder_i18n: discussion_templates.approve_a_document.title_placeholder
   process_name_i18n: discussion_templates.approve_a_document.process_name
   process_subtitle_i18n: discussion_templates.approve_a_document.process_subtitle
   process_introduction_i18n:  discussion_templates.approve_a_document.process_introduction
@@ -81,7 +81,7 @@ approve_a_document:
   max_depth: 3
 
 share_links_and_info:
-  title_placeholder_i18n: discussion_templates.share_links_and_info.title
+  title_placeholder_i18n: discussion_templates.share_links_and_info.title_placeholder
   process_name_i18n: discussion_templates.share_links_and_info.process_name
   process_subtitle_i18n: discussion_templates.share_links_and_info.process_subtitle
   process_introduction_i18n: discussion_templates.share_links_and_info.process_introduction
@@ -94,7 +94,7 @@ share_links_and_info:
   max_depth: 3
 
 prepare_for_a_meeting:
-  title_placeholder_i18n: discussion_templates.prepare_for_a_meeting.title
+  title_placeholder_i18n: discussion_templates.prepare_for_a_meeting.title_placeholder
   process_name_i18n: discussion_templates.prepare_for_a_meeting.process_name
   process_subtitle_i18n: discussion_templates.prepare_for_a_meeting.process_subtitle
   process_introduction_i18n: discussion_templates.prepare_for_a_meeting.process_introduction
@@ -106,3 +106,41 @@ prepare_for_a_meeting:
   newest_first: false
   max_depth: 2
 
+funding_decision:
+  title_placeholder_i18n: discussion_templates.funding_decision.title_placeholder
+  process_name_i18n: discussion_templates.funding_decision.process_name
+  process_subtitle_i18n: discussion_templates.funding_decision.process_subtitle
+  process_introduction_i18n: discussion_templates.funding_decision.process_introduction
+  description_i18n: discussion_templates.funding_decision.description
+  tags_i18n: 
+  - decision_tools_card.meeting
+  description_format: html
+  process_introduction_format: html
+  newest_first: false
+  max_depth: 2
+
+elect_a_governance_position:
+  title_placeholder_i18n: discussion_templates.elect_a_governance_position.title_placeholder
+  process_name_i18n: discussion_templates.elect_a_governance_position.process_name
+  process_subtitle_i18n: discussion_templates.elect_a_governance_position.process_subtitle
+  process_introduction_i18n: discussion_templates.elect_a_governance_position.process_introduction
+  description_i18n: discussion_templates.elect_a_governance_position.description
+  description_format: html
+  tags_i18n: 
+  - discussion_templates.elect_a_governance_position.election
+  process_introduction_format: html
+  newest_first: false
+  max_depth: 2
+
+build_a_policy:
+  title_placeholder_i18n: discussion_templates.build_a_policy.title_placeholder
+  process_name_i18n: discussion_templates.build_a_policy.process_name
+  process_subtitle_i18n: discussion_templates.build_a_policy.process_subtitle
+  process_introduction_i18n: discussion_templates.build_a_policy.process_introduction
+  description_i18n: discussion_templates.build_a_policy.description
+  description_format: html
+  tags_i18n: 
+  - discussion_templates.build_a_policy.policy
+  process_introduction_format: html
+  newest_first: false
+  max_depth: 2
