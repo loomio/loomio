@@ -614,6 +614,7 @@ hu:
       stance_updated: "%{actor} szavazott: %{title}"
       stance_created_option: "%{actor} %{option} szavazatot adott itt: %{title}"
       user_added_to_group: "%{actor} felvett a következő csoportba: %{title}"
+      membership_resent: "%{actor} meghívott, hogy csatlakozz a %{title} csoporthoz a %{site_name} oldalon"
     without_title:
       poll_expired: "%{poll_type} lezárult"
       discussion_announced: "%{actor} meghívott egy témaszálba"
@@ -648,6 +649,7 @@ hu:
       stance_created_option: "%{actor} szavazott: %{option}"
       user_mentioned: "%{actor} megemlített téged"
       user_reminded: "%{actor} emlékeztet arra, hogy szavazzon"
+      membership_resent: "%{actor} meghívott egy csoportba"
     hints:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.

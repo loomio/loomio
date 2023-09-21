@@ -616,6 +616,7 @@ pl:
       stance_updated: "%{actor} głosował w: %{title}"
       stance_created_option: "%{actor} zagłosował na %{option} w %{title}"
       user_added_to_group: "%{actor} dodał Cię do grupy: %{title}"
+      membership_resent: "%{actor} zaprosił Cię do %{title} w %{site_name}"
     without_title:
       poll_expired: "%{poll_type} zakończyła się "
       discussion_announced: "%{actor} zaprosił Cię do wątku"
@@ -650,6 +651,7 @@ pl:
       stance_created_option: "%{actor} zagłosował %{option}"
       user_mentioned: "%{actor} wspomniał o tobie"
       user_reminded: "%{actor} przypomina Ci o głosowaniu"
+      membership_resent: "%{actor} zaprosił Cię do przyłączenia się do grupy"
     hints:
       poll_closing_soon: Teraz jest dobry czas na głosowanie, zmianę zdania lub zachęcenie innych do udziału.
       poll_closing_soon_author: Możesz przypomnieć ludziom o głosowaniu lub przedłużyć termin.

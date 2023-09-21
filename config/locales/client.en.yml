@@ -656,6 +656,7 @@ en:
       discussion_closed: "%{actor} closed the thread: %{title}"
       invitation_accepted: "%{actor} accepted your invitation to join %{title}"
       membership_created: "%{actor} invited you to join %{title} on %{site_name}"
+      membership_resent: "%{actor} invited you to join %{title} on %{site_name}"
       membership_requested: "%{actor} requested to join %{title}"
       membership_request_approved: "%{actor} approved your request to join %{title}"
       new_comment: "%{actor} commented in: %{title}"
@@ -694,6 +695,7 @@ en:
       new_discussion: "%{actor} started a thread"
       new_comment: "%{actor} commented in a thread"
       membership_created: "%{actor} invited you to join a group"
+      membership_resent: "%{actor} invited you to join a group"
       membership_requested: "%{actor} requested to join your group"
       membership_request_approved: "%{actor} approved your request to join %{title}"
       outcome_announced: '%{actor} shared a %{poll_type} outcome'

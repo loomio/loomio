@@ -624,6 +624,7 @@ pt_BR:
       user_added_to_group: "%{actor} adicionou você ao grupo: %{title}"
       user_mentioned: "%{actor} mencionou você em %{title}"
       user_reminded: "%{actor} lembrou você de votar em %{title}"
+      membership_resent: "%{actor} convidou você para participar de %{title} em %{site_name}"
     without_title:
       discussion_announced: "%{actor}  convidou você para um tópico"
       discussion_edited: "%{actor} editou o contexto do tópico"
@@ -658,6 +659,7 @@ pt_BR:
       stance_created_option: "%{actor} votou %{option}"
       user_mentioned: "%{actor} mencionou você"
       user_reminded: "%{actor} está lembrando você de votar"
+      membership_resent: "%{actor} convidou você para participar de um grupo"
     hints:
       poll_closing_soon: Agora é um bom momento para votar, mudar de ideia ou encorajar outras pessoas a participar.
       poll_closing_soon_author: Você pode querer lembrar as pessoas de votar ou estender o prazo.

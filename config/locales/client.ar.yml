@@ -584,6 +584,7 @@ ar:
       user_added_to_group: أضافك٪ {ممثل} إلى المجموعة:٪ {title}
       user_mentioned: أشار٪ {ممثل} إليك في:٪ {title}
       user_reminded: يذكرك٪ {ممثل} بالتصويت في:٪ {title}
+      membership_resent: دعاك %{actor} للانضمام إلى %{title} على %{site_name}
     without_title:
       discussion_announced: دعاك٪ {ممثل} إلى موضوع
       discussion_edited: قام٪ {ممثل} بتحرير سياق الموضوع
@@ -618,6 +619,7 @@ ar:
       stance_created_option: "٪ {ممثل} صوتوا٪ {option}"
       user_mentioned: ذكرك٪ {ممثل}
       user_reminded: يذكرك٪ {ممثل} بالتصويت
+      membership_resent: دعاك %{actor} للانضمام إلى مجموعة
     hints:
       poll_closing_soon: الآن هو الوقت المناسب للتصويت أو تغيير رأيك أو تشجيع الآخرين على المشاركة.
       poll_closing_soon_author: قد ترغب في تذكير الناس بالتصويت أو تمديد الموعد النهائي.

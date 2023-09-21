@@ -599,6 +599,7 @@ nl_NL:
       stance_updated: "%{actor} stemde in: %{title}"
       stance_created_option: "%{actor} stemde op %{option} in %{title}"
       user_added_to_group: "%{actor} heeft je toegevoegd aan de groep: %{title}"
+      membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van %{title} op %{site_name}"
     without_title:
       discussion_closed: "%{actor} sloot het bord"
       poll_expired: "%{poll_type} is gesloten"
@@ -633,6 +634,7 @@ nl_NL:
       stance_created_option: "%{actor} stemde op %{option}"
       user_mentioned: "%{actor} heeft je genoemd"
       user_reminded: "%{actor} herinnert je eraan om te stemmen"
+      membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van een groep"
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
