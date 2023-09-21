@@ -106,11 +106,9 @@ class AppConfig
       explore_public_groups:      ENV.fetch('FEATURES_EXPLORE_PUBLIC_GROUPS', false),
       template_gallery:           ENV.fetch('FEATURES_TEMPLATE_GALLERY', false),
       show_contact:               ENV.fetch('FEATURES_SHOW_CONTACT', false),
-      thread_page_v3:             ENV.fetch('FEATURES_THREAD_PAGE_V3', false),
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
       hidden_poll_templates:      %w[gradients_of_agreement proposal question],
-      initial_discussion_templates: ENV.fetch('INITIAL_DISCUSSION_TEMPLATES', 'blank onboarding_to_loomio').split(' '),
     }
   end
 

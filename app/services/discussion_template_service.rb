@@ -27,19 +27,20 @@ class DiscussionTemplateService
   end
 
   def self.initial_templates(category)
+    common = ['blank', 'onboarding_to_loomio']
     names = {
-      board:         ['blank', 'onboarding_to_loomio', 'discuss_a_topic', 'approve_a_document', 'prepare_for_a_meeting'],
-      community:     ['blank', 'onboarding_to_loomio', 'discuss_a_topic', 'decision_by_consensus', 'share_links_and_info'],
-      coop:          ['blank', 'onboarding_to_loomio', 'discuss_a_topic', 'consent_process', 'share_links_and_info'],
-      membership:    ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
-      nonprofit:     ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
-      party:         ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
-      professional:  ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
-      self_managing: ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
-      union:         ['blank', 'onboarding_to_loomio', 'discuss_a_topic'],
-    }.with_indifferent_access.fetch(category, ['blank'])
+      board:         ['discuss_a_topic', 'approve_a_document', 'prepare_for_a_meeting'],
+      community:     ['discuss_a_topic', 'decision_by_consensus', 'share_links_and_info'],
+      coop:          ['discuss_a_topic', 'consent_process', 'share_links_and_info'],
+      membership:    ['discuss_a_topic'],
+      nonprofit:     ['discuss_a_topic'],
+      party:         ['discuss_a_topic'],
+      professional:  ['discuss_a_topic'],
+      self_managing: ['discuss_a_topic'],
+      union:         ['discuss_a_topic'],
+    }.with_indifferent_access.fetch(category, [])
 
-    default_templates.filter { |dt| names.include? dt.key }
+    default_templates.filter { |dt| common.concat(names).include? dt.key }
   end
 
   def self.default_templates
