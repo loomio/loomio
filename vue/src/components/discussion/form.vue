@@ -31,7 +31,7 @@ export default
 
   mounted: ->
     Records.users.fetchGroups()
-    Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId()).then (template) =>
+    Records.discussionTemplates.findOrFetchById(@discussion.discussionTemplateId).then (template) =>
       @discussionTemplate = template
 
     @watchRecords
@@ -109,8 +109,8 @@ export default
     h1.text-h4(v-observe-visibility="{callback: titleVisible}")
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
-        span(v-if="discussionTemplate && !discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: discussionTemplate.processName}}")
-        span(v-if="!discussionTemplate && !discussion.id" v-t="'discussion_form.new_discussion_title'")
+        //- span(v-if="discussionTemplate && !discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: discussionTemplate.processName}}")
+        span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
         span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
     dismiss-modal-button(

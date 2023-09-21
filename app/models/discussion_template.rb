@@ -15,8 +15,6 @@ class DiscussionTemplate < ApplicationRecord
   validates :process_name, presence: true
   validates :process_subtitle, presence: true
 
-  before_save :filter_poll_template_keys_or_ids
-
   has_paper_trail only: [
     :public,
     :title,
@@ -65,15 +63,6 @@ class DiscussionTemplate < ApplicationRecord
   def poll_template_ids
     self.poll_template_keys_or_ids.filter do |key_or_id| 
       key_or_id.is_a? Integer
-    end
-  end
-
-  def filter_poll_template_keys_or_ids
-    # currently limiting poll_templates to belong to this org, can allow public poll_templates later
-    valid_ids = PollTemplate.where(group_id: group.parent_or_self.id_and_subgroup_ids).pluck(:id)
-
-    self.poll_template_keys_or_ids = self.poll_template_keys_or_ids.filter do |key_or_id|
-      valid_ids.include?(key_or_id) or AppConfig.poll_templates.keys.map(&:to_s).include?(key_or_id)
     end
   end
 end

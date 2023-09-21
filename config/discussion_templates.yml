@@ -1,3 +1,8 @@
+blank:
+  process_name_i18n: discussion_templates.blank.process_name
+  process_subtitle_i18n: discussion_templates.blank.process_subtitle
+  position: 0
+
 discuss_a_topic:
   title_placeholder_i18n: discussion_templates.discuss_a_topic.title
   process_name_i18n: discussion_templates.discuss_a_topic.process_name
@@ -8,6 +13,7 @@ discuss_a_topic:
   description_format: html
   newest_first: false
   max_depth: 3
+  position: 1
 
 onboarding_to_loomio:
   title_i18n: discussion_templates.onboarding_to_loomio.title
@@ -20,6 +26,7 @@ onboarding_to_loomio:
   - discussion_templates.onboarding_to_loomio.onboarding
   newest_first: false
   max_depth: 3
+  position: 2
 
 advice_process:
   title_placeholder_i18n: discussion_templates.advice_process.title
@@ -60,42 +67,42 @@ decision_by_consensus:
   newest_first: false
   max_depth: 3
   
-# approve_a_document:
-#   title_placeholder_i18n: discussion_templates.approve_a_document.title
-#   process_name_i18n: discussion_templates.approve_a_document.process_name
-#   process_subtitle_i18n: discussion_templates.approve_a_document.process_subtitle
-#   process_introduction_i18n:  discussion_templates.approve_a_document.process_introduction
-#   description_i18n: discussion_templates.approve_a_document.description
-#   process_introduction_format: html
-#   description_format: html
-#   tags_i18n: 
-#   - doctypes.document
-#   newest_first: false
-#   max_depth: 3
+approve_a_document:
+  title_placeholder_i18n: discussion_templates.approve_a_document.title
+  process_name_i18n: discussion_templates.approve_a_document.process_name
+  process_subtitle_i18n: discussion_templates.approve_a_document.process_subtitle
+  process_introduction_i18n:  discussion_templates.approve_a_document.process_introduction
+  description_i18n: discussion_templates.approve_a_document.description
+  process_introduction_format: html
+  description_format: html
+  tags_i18n: 
+  - doctypes.document
+  newest_first: false
+  max_depth: 3
 
-# share_links_and_info:
-#   title_placeholder_i18n: discussion_templates.share_links_and_info.title
-#   process_name_i18n: discussion_templates.share_links_and_info.process_name
-#   process_subtitle_i18n: discussion_templates.share_links_and_info.process_subtitle
-#   process_introduction_i18n: discussion_templates.share_links_and_info.process_introduction
-#   description_i18n: discussion_templates.share_links_and_info.description
-#   tags_i18n: 
-#   - discussion_templates.share_links_and_info.information
-#   process_introduction_format: html
-#   description_format: html
-#   newest_first: true
-#   max_depth: 3
+share_links_and_info:
+  title_placeholder_i18n: discussion_templates.share_links_and_info.title
+  process_name_i18n: discussion_templates.share_links_and_info.process_name
+  process_subtitle_i18n: discussion_templates.share_links_and_info.process_subtitle
+  process_introduction_i18n: discussion_templates.share_links_and_info.process_introduction
+  description_i18n: discussion_templates.share_links_and_info.description
+  tags_i18n: 
+  - discussion_templates.share_links_and_info.information
+  process_introduction_format: html
+  description_format: html
+  newest_first: true
+  max_depth: 3
 
-# prepare_for_a_meeting:
-#   title_placeholder_i18n: discussion_templates.prepare_for_a_meeting.title
-#   process_name_i18n: discussion_templates.prepare_for_a_meeting.process_name
-#   process_subtitle_i18n: discussion_templates.prepare_for_a_meeting.process_subtitle
-#   process_introduction_i18n: discussion_templates.prepare_for_a_meeting.process_introduction
-#   description_i18n: discussion_templates.prepare_for_a_meeting.description
-#   tags_i18n: 
-#   - decision_tools_card.meeting
-#   description_format: html
-#   process_introduction_format: html
-#   newest_first: false
-#   max_depth: 2
+prepare_for_a_meeting:
+  title_placeholder_i18n: discussion_templates.prepare_for_a_meeting.title
+  process_name_i18n: discussion_templates.prepare_for_a_meeting.process_name
+  process_subtitle_i18n: discussion_templates.prepare_for_a_meeting.process_subtitle
+  process_introduction_i18n: discussion_templates.prepare_for_a_meeting.process_introduction
+  description_i18n: discussion_templates.prepare_for_a_meeting.description
+  tags_i18n: 
+  - decision_tools_card.meeting
+  description_format: html
+  process_introduction_format: html
+  newest_first: false
+  max_depth: 2
 

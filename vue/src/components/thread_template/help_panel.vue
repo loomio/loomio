@@ -11,6 +11,6 @@ export default
 <template lang="pug">
 div
   v-alert.poll-template-info-panel(v-if="discussionTemplate.processIntroduction" type="info" text outlined)
+    p {{discussionTemplate.processName}}
     formatted-text(:model="discussionTemplate" column="processIntroduction")
-  v-alert.poll-template-info-panel(v-else type="info" text outlined) {{discussionTemplate.processSubtitle}}
 </template>

@@ -5,12 +5,14 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
       tag_counts[tag] ||= 0
       tag_counts[tag] += 1
     end
-    render json: tag_counts.sort_by {|k,v| v }.to_h.keys.slice(0, 20), root: false
+    render json: tag_counts.sort_by {|k,v| v}.to_h.keys.slice(0, 20), root: false
   end
 
   def browse
-    # rel = PgSearch.multisearch(params[:query]).where("searchable_type IN (:types)", types: ['DiscussionTemplate'])
-
+    if DiscussionTemplate.where(public: true).count == 0
+      DiscussionTemplateService.create_public_templates
+    end
+    
     templates = DiscussionTemplate.where(public: true)
 
     if params[:query].present?
@@ -42,14 +44,18 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
   def index
     group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
-    if params[:key_or_id].present? && (params[:key_or_id].to_i.to_s == params[:key_or_id].to_s)
-      @discussion_template = DiscussionTemplate.find_by(group_id: current_user.group_ids, id: params[:key_or_id])
-      respond_with_resource
-    else
-      self.collection = DiscussionTemplateService.group_templates(group: group)
-      respond_with_collection
+    if group.discussion_templates_count == 0
+      group.discussion_templates = DiscussionTemplateService.initial_templates
     end
-  end 
+
+    if params[:id]
+      self.collection = Array(DiscussionTemplate.find_by(group_id: current_user.group_ids, id: params[:id]))
+    else
+      self.collection = group.discussion_templates
+    end
+
+    respond_with_collection
+  end
 
   def show
     @discussion_template = DiscussionTemplate.where('group_id IN (?) OR public = true', current_user.group_ids).find(params[:id])

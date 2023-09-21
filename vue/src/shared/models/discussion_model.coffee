@@ -65,9 +65,6 @@ export default class DiscussionModel extends BaseModel
     clone.template = false
     clone
 
-  discussionTemplateKeyOrId: ->
-    @discussionTemplateId || @discussionTemplateKey
-    
   pollTemplates: ->
     compact @pollTemplateKeysOrIds.map (keyOrId) =>
       @recordStore.pollTemplates.find(keyOrId)
@@ -84,13 +81,10 @@ export default class DiscussionModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @hasMany 'discussionReaders'
 
-    # @belongsTo 'createdEvent', from: 'events'
-    # @belongsTo 'forkedEvent', from: 'events'
-
   discussion: -> @
   
   template: ->
-    @recordStore.discussionTemplates.find(@discussionTemplateId || @discussionTemplateKey)
+    @recordStore.discussionTemplates.find(@discussionTemplateId)
 
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()

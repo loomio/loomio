@@ -26,15 +26,10 @@ class DiscussionTemplateService
     discussion_template
   end
 
-  def self.group_templates(group: )
-    group.discussion_templates.to_a.concat(
-      default_templates.map do |template|
-        template.position = group.discussion_template_positions.fetch(template.key, 999)
-        template.group_id = group.id
-        template.discarded_at = DateTime.now if group.hidden_discussion_templates.include?(template.key)
-        template
-      end
-    )
+  def self.initial_templates
+    default_templates.filter do |dt|
+      AppConfig.app_features[:initial_discussion_templates].include?(dt.key)
+    end
   end
 
   def self.default_templates
@@ -52,5 +47,21 @@ class DiscussionTemplateService
 
       DiscussionTemplate.new attrs
     end.reverse
+  end
+
+  def self.create_public_templates
+    group = Group.find_or_create_by(handle: 'templates') do |group|
+      group.creator = User.helper_bot
+      group.name = 'Loomio Templates'
+      group.is_visible_to_public = false
+      group.logo.attach(io: URI.open(Rails.root.join('public/brand/icon_gold_256h.png')),
+                        filename: 'loomiologo.png')
+    end
+
+    group.discussion_templates = default_templates.map do |dt| 
+      dt.public = true
+      dt.author = User.helper_bot
+      dt
+    end
   end
 end

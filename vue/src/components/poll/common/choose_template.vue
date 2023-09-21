@@ -39,8 +39,8 @@ export default
       collections: ["pollTemplates"]
       query: (records) => @query()
 
-    if @discussion && @discussion.discussionTemplateKeyOrId()
-      Records.discussionTemplates.findOrFetchByKeyOrId(@discussion.discussionTemplateKeyOrId()).then (dt) =>
+    if @discussion && @discussion.discussionTemplateId
+      Records.discussionTemplates.findOrFetchById(@discussion.discussionTemplateId).then (dt) =>
         @discussionTemplate = dt
         @filter = 'recommended' if dt.pollTemplateKeysOrIds.length
         @query()

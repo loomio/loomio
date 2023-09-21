@@ -93,7 +93,7 @@ class AppConfig
 
   def self.app_features
     {
-      env: Rails.env,
+      env:                        Rails.env,
       subscriptions:              !!ENV.fetch('CHARGIFY_API_KEY', false),
       demos:                      ENV.fetch('FEATURES_DEMO_GROUPS', false),
       trials:                     ENV.fetch('FEATURES_TRIALS', false),
@@ -110,7 +110,7 @@ class AppConfig
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
       hidden_poll_templates:      %w[gradients_of_agreement proposal question],
-      hidden_discussion_templates: ENV.fetch('HIDDEN_DISCUSSION_TEMPLATES', 'prepare_for_a_meeting').split(' '),
+      initial_discussion_templates: ENV.fetch('INITIAL_DISCUSSION_TEMPLATES', 'blank onboarding_to_loomio').split(' '),
     }
   end
 

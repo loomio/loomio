@@ -5,7 +5,6 @@ class DiscussionTemplateSerializer < ActiveModel::Serializer
   has_many :poll_templates, serializer: PollTemplateSerializer, root: :poll_templates
 
   attributes :id,
-             :key,
              :group_id,
              :position,
              :author_id,

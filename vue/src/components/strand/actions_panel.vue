@@ -37,7 +37,7 @@ export default
 
   methods:
     resetBadge: ->
-      if @canStartPoll && @discussion.discussionTemplateKeyOrId() && @discussion.activePolls().length == 0
+      if @canStartPoll && @discussion.discussionTemplateId && @discussion.activePolls().length == 0
         @showDecisionBadge = true
 
     resetComment: ->

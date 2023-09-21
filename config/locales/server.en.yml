@@ -1,6 +1,9 @@
 ---
 en:
   discussion_templates:
+    blank:
+      process_name: Blank
+      process_subtitle: Start a new thread without a template
     prepare_for_a_meeting:
       process_name: Prepare for a meeting
       process_subtitle: Build agenda, post documents and sort admin so everyone arrives
@@ -21,7 +24,7 @@ en:
         </li></ul><h3 id="how-should-participants-prepare-for-the-meeting">How should participants prepare for the meeting?</h3><p data-text-align="start"></p><h3 id="list-of-documents-for-the-meeting">List of documents for the meeting</h3><ul><li><p data-text-align="start"></p></li></ul>
       meeting: Meeting
     discuss_a_topic:
-      process_name: Blank
+      process_name: Discuss a topic
       process_subtitle: Start a discussion with your group
       process_introduction: "<p>Is there an issue, problem or opportunity you wish to
         raise with your group?</p><p>Introduce the topic, link to any background information
@@ -211,8 +214,7 @@ en:
     onboarding_to_loomio:
       title: Let's try Loomio together
       process_name: Onboarding to Loomio
-      process_subtitle: A thread to help people new to Loomio practice writing comments
-        and voting
+      process_subtitle: Help people new to Loomio practice writing comments and voting
       process_introduction: "<p>Use this template to introduce people to Loomio.</p><p>A
         great way to experience Loomio is by opening a discussion in Loomio and make a
         decision!</p><p>Get the discussion started by following the text prompts below

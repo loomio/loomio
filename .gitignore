@@ -15,6 +15,7 @@ public/why-collaborative-decision-making/
 public/wp-content/
 
 # rails stuff
+.irb_history
 .bundle
 db/*.sqlite3
 config/database.yml

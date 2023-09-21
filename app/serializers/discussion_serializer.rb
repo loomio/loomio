@@ -19,7 +19,6 @@ class DiscussionSerializer < ApplicationSerializer
              :description,
              :description_format,
              :discussion_template_id,
-             :discussion_template_key,
              :ranges,
              :items_count,
              :last_comment_at,
