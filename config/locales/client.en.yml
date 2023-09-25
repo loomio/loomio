@@ -2067,6 +2067,7 @@ en:
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     none_of_the_above: (None of the above)
+    name_or_username: Name or username
 
   poll_common_undecided_panel:
     show_undecided: "Show %{count} undecided"
