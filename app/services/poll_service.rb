@@ -1,5 +1,5 @@
 class PollService
-  def self.create(poll:, actor:)
+  def self.create(poll:, actor:, params:)
     actor.ability.authorize! :create, poll
 
     poll.assign_attributes(author: actor)
@@ -8,8 +8,17 @@ class PollService
     return false unless poll.valid?
     poll.save!
     poll.update_counts!
+
+    if !poll.specified_voters_only
+      stances = create_stances(poll: poll, actor: actor, include_actor: true, audience: 'group')
+    else
+      stances = Stance.none
+    end
+
+    user_ids = params[:notify_recipients] ? stances.pluck(:participant_id) : []
+    
     EventBus.broadcast('poll_create', poll, actor)
-    Events::PollCreated.publish!(poll, actor)
+    Events::PollCreated.publish!(poll, actor, recipient_user_ids: user_ids)
   end
 
   def self.update(poll:, params:, actor:)
