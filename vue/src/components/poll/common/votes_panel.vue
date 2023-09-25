@@ -21,20 +21,7 @@ export default
     name: @$route.query.name
 
   created: ->
-    @loader = new PageLoader
-      path: 'stances'
-      order: 'orderAt'
-      params:
-        per: @per
-        poll_id: @poll.id
-        poll_option_id: @pollOptionId || null
-
-    @loader.fetch(@page).then => @findRecords()
-
-    @watchRecords
-      collections: ['stances', 'polls']
-      query: => @findRecords()
-
+    @fetchNow()
 
   computed:
     totalPages: ->
@@ -59,6 +46,10 @@ export default
       @fetch()
 
     fetch: debounce ->
+      @fetchNow()
+    , 50
+
+    fetchNow: ->
       @loader = new PageLoader
         path: 'stances'
         order: 'orderAt'
@@ -67,8 +58,8 @@ export default
           poll_id: @poll.id
           poll_option_id: @pollOptionId
           name: @name
-      @loader.fetch(@page).then => @findRecords()
-    , 50
+      @loader.fetch(@page).then(=> @findRecords()).then => @scrollTo('#votes')
+
 
     findRecords: ->
       if @loader.pageWindow[@page]
