@@ -30,7 +30,6 @@ module.exports = {
   DiscussionForm: 'discussion/form',
   DiscussionForkActions: 'discussion/fork_actions',
   DiscussionStart: 'discussion/start',
-  DiscussionTemplateBanner: 'discussion/template_banner',
   DiscussionTemplateBadge: 'discussion/template_badge',
   DismissModalButton: 'common/dismiss_modal_button',
   DocumentList: 'document/list',
