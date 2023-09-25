@@ -1296,6 +1296,7 @@ nl_NL:
     date_time_pref_label: Datum- en tijdformaat
     help_translate: Kun jij ons helpen met het vertalen van Loomio?
     updated_on_sign_in: Verstrekt door uw browser en bijgewerkt wanneer u zich aanmeldt
+    deactivated_user: Gedeactiveerde gebruiker
   text_editor:
     insert_link: Link invoegen
     insert_embedded_url: Video integreren

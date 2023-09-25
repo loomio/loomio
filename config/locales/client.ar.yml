@@ -1281,6 +1281,7 @@ ar:
     date_time_pref_label: تنسيق التاريخ والوقت
     help_translate: هل يمكنك مساعدتنا في ترجمة Loomio؟
     updated_on_sign_in: يتم توفيره بواسطة المستعرض الخاص بك ويتم تحديثه عند تسجيل الدخول
+    deactivated_user: مستخدم معطل
   text_editor:
     insert_link: أدخل الرابط
     insert_embedded_url: تضمين الفيديو

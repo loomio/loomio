@@ -1321,6 +1321,7 @@ de:
     date_time_pref_label: Datums- und Uhrzeitformat
     help_translate: Können Sie uns bei der Übersetzung von Loomio helfen?
     updated_on_sign_in: Wird von Ihrem Browser bereitgestellt und aktualisiert, wenn Sie sich anmelden
+    deactivated_user: Deaktivierter Benutzer
   text_editor:
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen

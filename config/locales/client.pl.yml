@@ -1313,6 +1313,7 @@ pl:
     date_time_pref_label: Format daty i godziny
     help_translate: Czy możesz pomóc nam przetłumaczyć Loomio?
     updated_on_sign_in: Dostarczane przez przeglądarkę i aktualizowane po zalogowaniu
+    deactivated_user: Dezaktywowany użytkownik
   text_editor:
     insert_link: Wstaw link
     insert_embedded_url: Wstaw wideo

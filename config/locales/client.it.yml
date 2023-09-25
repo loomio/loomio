@@ -1325,6 +1325,7 @@ it:
     deactivate_account: Disattivare l'account utente
     help_translate: Puoi aiutarci a tradurre Loomio?
     updated_on_sign_in: Fornito dal tuo browser e aggiornato quando accedi
+    deactivated_user: Utente disattivato
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caratteri"
     insert_link: Inserisci collegamento

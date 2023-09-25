@@ -1316,6 +1316,7 @@ uk:
     updated_on_sign_in: Забезпечується вашим браузером і оновлюється під час входу
     date_time_pref_label: Формат дати й часу
     help_translate: Чи можете ви допомогти нам перекласти Loomio?
+    deactivated_user: Деактивований користувач
   text_editor:
     select_text_to_link: Виберіть текст для посилання та повторіть спробу
     insert_link: Додайте посилання
