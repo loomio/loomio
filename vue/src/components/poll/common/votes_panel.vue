@@ -15,7 +15,7 @@ export default
     per: 25
     loader: null
     pollOptionItems: [{text: I18n.t('discussions_panel.all'), value: null}].concat(@poll.pollOptions().map (o, i) => 
-      {text: o.optionName()+ ' ' +@poll.stanceCounts[i] || '', value: o.id})
+      {text: o.optionName(), value: o.id})
     page: parseInt(@$route.query.page) || 1 
     pollOptionId: parseInt(@$route.query.poll_option_id) || null
     name: @$route.query.name
