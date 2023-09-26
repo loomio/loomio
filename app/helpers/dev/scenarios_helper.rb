@@ -94,11 +94,11 @@ module Dev::ScenariosHelper
     voter    = saved(fake_user)
     scenario[:poll].group.add_member!(voter)
 
-    Stance.create!(
-      participant: scenario[:poll].author, 
-      poll: scenario[:poll], 
-      admin: true, 
-      reason_format: scenario[:poll].author.default_format)
+    # Stance.create!(
+    #   participant: scenario[:poll].author, 
+    #   poll: scenario[:poll], 
+    #   admin: true, 
+    #   reason_format: scenario[:poll].author.default_format)
     
     Stance.where(poll_id: scenario[:poll].id,
                  participant_id: scenario[:poll].author_id).update(volume: 'loud')
