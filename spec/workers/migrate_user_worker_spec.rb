@@ -53,6 +53,7 @@ describe MigrateUserWorker do
   end
 
   it 'updates user_id references from old to new' do
+    ENV['SCRUB_USER_DEACTIVATE'] = '1'
     expect {MigrateUserWorker.perform_async(patrick.id, jennifer.id)}.to change {ActionMailer::Base.deliveries.count}.by(2)
     # one email to say this account is deactivated
     # one email to say this account has had another merged in.
