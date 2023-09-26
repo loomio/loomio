@@ -210,6 +210,18 @@ module Dev::FakeDataHelper
     Poll.new(options)
   end
 
+  def create_fake_stances(poll:)
+    (2..7).to_a.sample.times do
+      u = fake_user
+      poll.group.add_member!(u) if poll.group
+      stance = fake_stance(poll: poll)
+      stance.save!
+      stance.create_missing_created_event!
+    end
+    poll.update_counts!
+  end
+
+
 
   def fake_score(poll, index = 0)
     case poll.poll_type
@@ -287,12 +299,6 @@ module Dev::FakeDataHelper
     })
   end
 
-  def create_fake_poll_with_stances(args = {})
-    poll = saved fake_poll(args)
-    create_fake_stances(poll: poll)
-    poll
-  end
-
   def create_group_with_members
     group = saved(fake_group)
     group.add_admin!(saved(fake_user))
@@ -368,17 +374,6 @@ module Dev::FakeDataHelper
 
   def create_fake_poll_in_group(args = {})
     saved(build_fake_poll_in_group)
-  end
-
-  def create_fake_stances(poll:)
-    (2..7).to_a.sample.times do
-      u = fake_user
-      poll.group.add_member!(u) if poll.group
-      stance = fake_stance(poll: poll)
-      stance.save!
-      stance.create_missing_created_event!
-    end
-    poll.update_counts!
   end
 
   def create_discussion_with_nested_comments
