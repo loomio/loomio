@@ -21,8 +21,11 @@ module Dev::ScenariosHelper
                      anonymous: !!params[:anonymous])
 
     event = PollService.create(poll: poll, actor: actor, params: {notify_recipients: true})
-    # recipients = {recipient_emails: [user.email]}
-    # PollService.invite(poll: poll, params: recipients, actor: actor)
+
+    if params[:guest]
+      recipients = {recipient_emails: [user.email]}
+      PollService.invite(poll: poll, params: recipients, actor: actor)
+    end
 
     {
       discussion: discussion,

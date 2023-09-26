@@ -103,7 +103,7 @@ module.exports = {
     page.fillIn('.poll-option-form__name input', 'An option')
     page.click('.poll-option-form__done-btn')
 
-    // page.click('.poll-common-form__submit')
+    page.click('.poll-common-form__submit')
     // page.expectElement('.poll-members-form__submit')
     // page.pause(500)
     // page.click('.dismiss-modal-button')
