@@ -54,6 +54,8 @@ class EventMailer < BaseMailer
        @event.eventable.parent.present? &&
        @event.eventable.parent.author == @recipient)
       "comment_replied_to"
+    elsif @event.kind == 'poll_created'
+      'poll_announced'
     else
       @event.kind
     end

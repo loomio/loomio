@@ -20,9 +20,9 @@ module Dev::ScenariosHelper
                      wip: params[:wip],
                      anonymous: !!params[:anonymous])
 
-    event = PollService.create(poll: poll, actor: actor)
-    recipients = {recipient_emails: [user.email]}
-    PollService.invite(poll: poll, params: recipients, actor: actor)
+    event = PollService.create(poll: poll, actor: actor, params: {notify_recipients: true})
+    # recipients = {recipient_emails: [user.email]}
+    # PollService.invite(poll: poll, params: recipients, actor: actor)
 
     {
       discussion: discussion,

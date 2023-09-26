@@ -1,5 +1,5 @@
 class PollService
-  def self.create(poll:, actor:, params:)
+  def self.create(poll:, actor:, params: {})
     actor.ability.authorize! :create, poll
 
     poll.assign_attributes(author: actor)
