@@ -42,9 +42,9 @@ class Dev::PollsController < Dev::NightwatchController
 
     # select poll type here
     poll = fake_poll(group: group, discussion: discussion, author: admin)
-    PollService.create(poll: poll, actor: poll.author)
+    PollService.create(poll: poll, actor: poll.author, params: {notify_recipients: true})
 
-    PollService.invite(poll: poll, params: {recipient_emails: [user.email]}, actor: poll.author)
+    # PollService.invite(poll: poll, params: {recipient_emails: [user.email]}, actor: poll.author)
     last_email
   end
 

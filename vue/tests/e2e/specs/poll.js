@@ -278,10 +278,10 @@ module.exports = {
     page.click('.poll-settings-anonymous')
 
     page.click('.poll-common-form__submit')
-    page.expectElement('.poll-members-form__submit')
-    page.expectElement('.dismiss-modal-button')
-    page.pause(500)
-    page.click('.dismiss-modal-button')
+    // page.expectElement('.poll-members-form__submit')
+    // page.expectElement('.dismiss-modal-button')
+    // page.pause(500)
+    // page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
