@@ -209,12 +209,13 @@ class PollService
   def self.group_members_added(group_id)
     group_member_ids = Group.find(group_id).member_ids
     Poll.active.where(group_id: group_id, specified_voters_only: false).each do |poll|
-      voter_ids = Stance.where(latest: true, poll_id: poll.id).pluck(:participant_id)
+      voter_ids = Stance.latest.where(poll_id: poll.id).pluck(:participant_id)
       PollService.create_stances(
         poll: poll,
         actor: poll.author,
         user_ids: group_member_ids - voter_ids
       )
+      poll.update_counts!
     end
   end
 
@@ -222,12 +223,13 @@ class PollService
     # revoke stances of removed members
     group_member_ids = Group.find(group_id).member_ids
     Poll.active.where(group_id: group_id, specified_voters_only: false).each do |poll|
-      voter_ids = Stance.where(poll_id: poll.id, latest: true).pluck(:participant_id)
+      voter_ids = Stance.latest.where(poll_id: poll.id).pluck(:participant_id)
       Stance.where(
         poll_id: poll.id,
         revoked_at: nil,
         participant_id: voter_ids - group_member_ids,
       ).update_all(revoked_at: Time.zone.now, revoker_id: poll.author_id)
+      poll.update_counts!
     end
   end
 
