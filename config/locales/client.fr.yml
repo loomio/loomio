@@ -1352,6 +1352,7 @@ fr:
     deactivate_account: Désactiver le compte utilisateur
     help_translate: Pouvez vous nous aider à traduire Loomio?
     updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
+    deactivated_user: Utilisateur désactivé
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caractères"
     select_text_to_link: Sélectionnez le texte à lier et réessayez

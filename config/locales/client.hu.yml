@@ -1289,6 +1289,7 @@ hu:
     merge_accounts: Fiókok egyesítése
     help_translate: Tudna segíteni a Loomio lefordításában?
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
+    deactivated_user: Deaktivált felhasználó
   text_editor:
     insert_link: Illessz be egy hivatkozást
     insert_embedded_url: Videó beágyazása

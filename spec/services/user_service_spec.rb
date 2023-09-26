@@ -15,9 +15,18 @@ describe UserService do
     end
 
     it "changes their email address" do
+      ENV['SCRUB_USER_DEACTIVATE'] = '1'
       UserService.deactivate(user: @user)
       @user.reload
       expect(@user.email).to match /deactivated-user-.+@example.com/
+    end
+
+    it "changes their email address" do
+      ENV['SCRUB_USER_DEACTIVATE'] = nil
+      email = @user.email
+      UserService.deactivate(user: @user)
+      @user.reload
+      expect(@user.email).to eq email
     end
   end
 

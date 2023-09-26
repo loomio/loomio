@@ -1418,6 +1418,7 @@ en:
       picture_changed: 'Profile picture updated'
       password_changed: 'Password updated'
       deactivated: 'Account deactivated'
+    deactivated_user: Deactivated user
     date_time_pref_label: 'Date and time format'
     merge_accounts: Merge accounts
     change_picture_link: 'Change picture'
