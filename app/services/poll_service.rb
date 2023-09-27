@@ -207,13 +207,12 @@ class PollService
   end
 
   def self.group_members_added(group_id)
-    actor = User.find(actor_id)
-    group_member_ids = 
     Poll.active.where(group_id: group_id, specified_voters_only: false).each do |poll|
-      missing_user_ids = Group.find(group_id).member_ids - Stance.latest.where(poll_id: poll.id).pluck(:participant_id)
+      missing_user_ids = Group.find(group_id).member_ids -
+                         Stance.latest.where(poll_id: poll.id).pluck(:participant_id)
       PollService.create_stances(
         poll: poll,
-        actor: actor,
+        actor: poll.author,
         user_ids: missing_user_ids
       )
       poll.update_counts!

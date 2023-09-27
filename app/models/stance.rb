@@ -102,7 +102,7 @@ class Stance < ApplicationRecord
   validate :valid_reason_required
   validate :valid_require_all_choices
 
-  %w(group mailer group_id discussion_id discussion members voters guest_voters title tags).each do |message|
+  %w(group mailer group_id discussion_id discussion members voters title tags).each do |message|
     delegate(message, to: :poll)
   end
 
