@@ -240,6 +240,31 @@ module Dev::FakeDataHelper
     end
   end
 
+  def cast_stance_params(poll)
+    if poll.require_all_choices
+      num_choices = poll.poll_options.length
+    else
+      num_choices = (poll.minimum_stance_choices..poll.maximum_stance_choices).to_a.sample
+    end
+
+    choice = poll.poll_options.sample(num_choices).map.with_index do |option, index|
+      score = fake_score(poll)
+      [option.name, fake_score(poll, index)]
+    end.to_h
+
+    reason = [
+      Faker::Hipster.sentence,
+      Faker::GreekPhilosophers.quote,
+      Faker::TvShows::RuPaul.quote,
+      ""
+    ].sample
+
+    {
+      choice: choice,
+      reason: reason
+    }
+  end
+
   def fake_stance(args = {})
     poll = args[:poll] || saved(fake_poll)
 

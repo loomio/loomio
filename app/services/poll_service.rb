@@ -248,19 +248,6 @@ class PollService
     GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
   end
 
-  def self.add_options(poll:, params:, actor:)
-    actor.ability.authorize! :add_options, poll
-    option_names = Array(params[:poll_option_names]) - poll.poll_option_names
-    poll.poll_option_names += option_names
-
-    poll.prioritise_poll_options!
-    return false unless poll.valid?
-    poll.save!
-
-    EventBus.broadcast('poll_add_options', poll, actor, params)
-    Events::PollOptionAdded.publish!(poll, actor, option_names)
-  end
-
   # def self.destroy(poll:, actor:)
   #   actor.ability.authorize! :destroy, poll
   #   poll.destroy

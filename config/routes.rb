@@ -202,7 +202,6 @@ Rails.application.routes.draw do
           delete :discard
           post :close
           post :reopen
-          post :add_options
           patch :add_to_thread
         end
         get  :closed, on: :collection

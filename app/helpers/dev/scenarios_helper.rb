@@ -65,28 +65,21 @@ module Dev::ScenariosHelper
     }
   end
 
-  def poll_options_added_scenario(params)
-    scenario = poll_stance_created_scenario(params)
-    scenario[:poll].update(voter_can_add_options: true)
-    PollService.add_options(poll: scenario[:poll],
-                            actor: scenario[:real_actor],
-                            params: {poll_option_names: option_names(2)[params[:poll_type]]})
-
-    scenario.merge(observer: scenario[:voter])
-  end
-
-  def poll_options_added_author_scenario(params)
-    scenario = poll_options_added_scenario(params)
-    scenario.merge(observer: scenario[:poll].author)
-  end
-
   def poll_user_mentioned_scenario(params)
     scenario = poll_created_scenario(params)
     voter    = saved(fake_user)
     group_member = saved(fake_user)
     scenario[:poll].group.add_member!(voter)
     scenario[:poll].group.add_member!(group_member)
-    StanceService.create(stance: fake_stance(poll: scenario[:poll], reason: "<p><span class='mention' data-mention-id='#{group_member.username}'>@#{group_member.name}</span> </p>", reason_format: "html"), actor: voter)
+
+    stance = Stance.find_by(poll: scenario[:poll], participant: voter, latest: true)
+
+    params = cast_stance_params(scenario[:poll])
+    params[:reason] = "<p><span class='mention' data-mention-id='#{group_member.username}'>@#{group_member.name}</span></p>" 
+    params[:reason_format] = "html"
+
+    StanceService.update(stance: stance, actor: voter, params: params)
+
     scenario[:actor] = voter
 
     scenario.merge(observer: group_member)
@@ -97,15 +90,11 @@ module Dev::ScenariosHelper
     voter    = saved(fake_user)
     scenario[:poll].group.add_member!(voter)
 
-    # Stance.create!(
-    #   participant: scenario[:poll].author, 
-    #   poll: scenario[:poll], 
-    #   admin: true, 
-    #   reason_format: scenario[:poll].author.default_format)
-    
     Stance.where(poll_id: scenario[:poll].id,
                  participant_id: scenario[:poll].author_id).update(volume: 'loud')
-    event = StanceService.create(stance: fake_stance(poll: scenario[:poll]), actor: voter)
+
+    stance = Stance.find_by(poll: scenario[:poll], participant: voter, latest: true)
+    event = StanceService.update(stance: stance, actor: voter, params: cast_stance_params(scenario[:poll]))
     scenario[:stance] = event.eventable
     scenario[:actor] = event.eventable.participant
     scenario[:real_actor] = voter

@@ -64,7 +64,7 @@ describe API::V1::AnnouncementsController do
     let(:subgroup_member) { create :user, name: 'subgroup_member' }
     let(:subgroup) { create(:group, parent: group, name: 'subgroup') }
     let(:discussion) { create :discussion, group: group, author: user }
-    let(:poll) { create :poll, group: group, author: user }
+    let(:poll) { create :poll, group: group, author: user, specified_voters_only: true }
 
     before do
       poll.create_missing_created_event!
