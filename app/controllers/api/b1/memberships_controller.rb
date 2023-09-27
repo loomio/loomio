@@ -27,8 +27,6 @@ class API::B1::MembershipsController < API::B1::BaseController
           actor: current_webhook.actor
         )
       end
-
-      PollService.group_members_removed(current_webhook.group_id)
     end
 
     render json: {

@@ -52,6 +52,7 @@ module GroupService
 
       g.update_pending_memberships_count
       g.update_memberships_count
+      GenericWorker.perform_async('PollService', 'group_members_added', g.id)
     end
 
     Events::MembershipCreated.publish!(
