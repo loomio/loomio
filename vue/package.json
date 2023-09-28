@@ -84,7 +84,7 @@
     "vue-recaptcha": "^1.2.0",
     "vue-router": "^3.6.5",
     "vue-slicksort": "^1.2.0",
-    "vue2-touch-events": "^3.2.2",
+    "vue2-touch-events": "^3.2.3",
     "vuetify": "2.6.15"
   },
   "devDependencies": {
