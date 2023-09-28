@@ -118,7 +118,6 @@ class MembershipService
   def self.join_group(group:, actor:)
     actor.ability.authorize! :join, group
     membership = group.add_member!(actor)
-    GenericWorker.perform_async('PollService', 'group_members_added', group.id)
     EventBus.broadcast('membership_join_group', group, actor)
     Events::UserJoinedGroup.publish!(membership)
   end
@@ -128,7 +127,6 @@ class MembershipService
     group.add_members!(users, inviter: inviter).tap do |memberships|
       Events::UserAddedToGroup.bulk_publish!(memberships, user: inviter)
     end
-    GenericWorker.perform_async('PollService', 'group_members_added', group.id)
   end
 
   def self.destroy(membership:, actor:)

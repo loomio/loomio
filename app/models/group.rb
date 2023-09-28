@@ -244,7 +244,7 @@ class Group < ApplicationRecord
       m.inviter     = inviter
       m.accepted_at = DateTime.now
     end
-    PollService.group_members_added(self.id)
+    GenericWorker.perform_async('PollService', 'group_members_added', self.id)
     membership
   rescue ActiveRecord::RecordNotUnique
     retry
