@@ -23,7 +23,7 @@ module Dev::ScenariosHelper
     event = PollService.create(poll: poll, actor: actor, params: {notify_recipients: true})
 
     if params[:guest]
-      recipients = {recipient_emails: [user.email]}
+      recipients = {recipient_emails: [user.email], notify_recipients: true}
       PollService.invite(poll: poll, params: recipients, actor: actor)
     end
 

@@ -45,9 +45,9 @@ class Dev::PollsController < Dev::NightwatchController
     PollService.create(poll: poll, actor: poll.author, params: {notify_recipients: true})
 
     if params[:guest]
-      PollService.invite(poll: poll, params: {recipient_emails: [user.email]}, actor: poll.author)
+      PollService.invite(poll: poll, params: {recipient_emails: [user.email], notify_recipients: true}, actor: poll.author)
     end
-    
+
     last_email
   end
 
