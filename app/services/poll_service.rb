@@ -92,8 +92,7 @@ class PollService
       audience: params[:recipient_audience]
     )
 
-    # params[:notify_recipients] will often be nil/undefined, which means we do want to notify
-    unless params[:notify_recipients] == false
+    if params[:notify_recipients]
       Events::PollAnnounced.publish!(
         poll: poll,
         actor: actor,
@@ -104,6 +103,7 @@ class PollService
         recipient_message:  params[:recipient_message],
       )
     end
+
     stances
   end
 
