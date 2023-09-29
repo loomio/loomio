@@ -114,7 +114,7 @@ export default new class AbilityService
       discussion.group().adminsInclude(Session.user()) ||
       (discussion.group().membersCanAddGuests && discussion.group().membersInclude(Session.user()))
     else
-      !discussion.id || discussion.membersInclude(Session.user())
+      !discussion.id || discussion.adminsInclude(Session.user())
 
   canAnnouncePoll: (poll) ->
     user = Session.user()

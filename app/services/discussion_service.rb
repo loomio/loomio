@@ -245,6 +245,7 @@ class DiscussionService
       DiscussionReader.new(user: user,
                            discussion: discussion,
                            inviter: if volumes[user.id] then nil else actor end,
+                           admin: !discussion.group_id,
                            volume: volumes[user.id] || DiscussionReader.volumes[:normal])
     end
 
