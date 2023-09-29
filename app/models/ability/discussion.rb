@@ -50,7 +50,7 @@ module Ability::Discussion
         discussion.group.admins.exists?(user.id) ||
         (discussion.group.members_can_add_guests && discussion.members.exists?(user.id))
       else
-        !discussion.id || discussion.admins.exists?(user.id)
+        !discussion.id || discussion.members.exists?(user.id)
       end
     end
 
