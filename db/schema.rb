@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_04_040206) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_025124) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_040206) do
     t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
+    t.index ["id"], name: "active_storage_blobs_idx", unique: true
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -482,7 +483,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_040206) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.integer "inviter_id"
-    t.datetime "archived_at", precision: nil
+    t.datetime "revoked_at", precision: nil
     t.integer "inbox_position", default: 0
     t.boolean "admin", default: false, null: false
     t.integer "volume"
@@ -492,6 +493,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_040206) do
     t.datetime "accepted_at", precision: nil
     t.string "title"
     t.datetime "saml_session_expires_at", precision: nil
+    t.integer "revoker_id"
     t.index ["created_at"], name: "index_memberships_on_created_at"
     t.index ["group_id", "user_id"], name: "index_memberships_on_group_id_and_user_id", unique: true
     t.index ["inviter_id"], name: "index_memberships_on_inviter_id"
@@ -969,6 +971,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_040206) do
     t.jsonb "link_previews", default: [], null: false
     t.integer "email_catch_up_day"
     t.string "date_time_pref"
+    t.integer "deactivator_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
     t.index ["key"], name: "index_users_on_key", unique: true

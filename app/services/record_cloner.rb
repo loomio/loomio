@@ -364,7 +364,8 @@ class RecordCloner
     copy_fields = %w[
       user_id
       inviter_id
-      archived_at
+      revoked_at
+      revoker_id
       admin
       volume
       experiences

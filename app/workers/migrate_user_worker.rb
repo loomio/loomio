@@ -36,7 +36,7 @@ class MigrateUserWorker
   }.freeze
 
   def unarchive_memberships(user)
-    Membership.where(user_id: user.id).where('archived_at is not null').update_all(archived_at: nil)
+    Membership.where(user_id: user.id).where('revoked_at is not null').update_all(revoked_at: nil)
   end
 
   def delete_duplicates

@@ -11,7 +11,7 @@ describe "User abilities" do
   subject { ability }
 
   let(:own_pending_membership) {
-    create :membership, user: create(:user, email: "i@i.com", email_verified: false), group: group, inviter: user
+    create :membership, user: create(:user, email: "i@i.com", email_verified: false), group: group, inviter: user, accepted_at: nil
   }
   let(:other_members_pending_membership) {
     create :membership, user: create(:user, email: "h@h.com", email_verified: false), group: group, inviter: other_user
@@ -242,7 +242,6 @@ describe "User abilities" do
     it { should_not be_able_to(:make_admin, @other_membership) }
     it { should_not be_able_to(:destroy, @other_membership) }
     it { should     be_able_to(:destroy, @membership) }
-
     it { should     be_able_to(:destroy, own_pending_membership) }
     it { should_not be_able_to(:destroy, other_members_pending_membership) }
 

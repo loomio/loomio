@@ -3,7 +3,7 @@
   - membership = @event.eventable
 - else
   - group = @event.eventable
-  - membership = group.memberships.where(user_id: @recipient.id).first
+  - membership = group.all_memberships.where(user_id: @recipient.id).first
 
 
 = render "event_mailer/common/notification", with_title: true, event: @event, url: membership_url(membership)

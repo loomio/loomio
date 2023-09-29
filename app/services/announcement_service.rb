@@ -7,8 +7,8 @@ class AnnouncementService
       id = kind.match(/group-(\d+)/)[1].to_i
       group = model.group.parent_or_self.self_and_subgroups.find(id)
       raise CanCan::AccessDenied unless actor.can?(:notify, group)
-      group.accepted_members
-    when 'group'            then model.group.accepted_members
+      group.members
+    when 'group'            then model.group.members
     when 'discussion_group' then (model.discussion || NullDiscussion.new).readers
     when 'voters'           then (model.poll || NullPoll.new).unmasked_voters
     when 'decided_voters'   then (model.poll || NullPoll.new).unmasked_decided_voters

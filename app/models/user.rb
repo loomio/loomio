@@ -18,7 +18,7 @@ class User < ApplicationRecord
   extend NoSpam
   no_spam_for :name, :email
 
-  has_paper_trail only: [:email_newsletter]
+  has_paper_trail only: [:email_newsletter, :deactivated_at, :deactivator_id]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
@@ -67,16 +67,8 @@ class User < ApplicationRecord
            -> { where('memberships.admin = ?', true) },
            class_name: 'Membership'
 
-  has_many :memberships, -> { where(archived_at: nil) }, dependent: :destroy
+  has_many :memberships, -> { not_revoked }, dependent: :destroy
   has_many :all_memberships, dependent: :destroy, class_name: "Membership"
-
-  has_many :archived_memberships,
-           -> { where('archived_at IS NOT NULL') },
-           class_name: 'Membership'
-
-  has_many :invited_memberships,
-           class_name: 'Membership',
-           foreign_key: :inviter_id
 
   has_many :groups,
            through: :memberships,
@@ -141,7 +133,7 @@ class User < ApplicationRecord
     active.verified.search_for(query).
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{model.group_id || 0}").
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id || 0}").
-      where("(m.id IS NOT NULL AND m.archived_at IS NULL) OR
+      where("(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
              (dr.id IS NOT NULL AND dr.inviter_id IS NOT NULL AND dr.revoked_at IS NULL)")
   end
 
