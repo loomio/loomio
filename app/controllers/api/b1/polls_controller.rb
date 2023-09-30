@@ -7,7 +7,7 @@ class API::B1::PollsController < API::B1::BaseController
   def create
     instantiate_resource
     @poll.group_id = current_webhook.group_id
-    if PollService.create(actor: current_user, poll: @poll)
+    if PollService.create(actor: current_user, poll: @poll, params: params)
       PollService.invite(actor: current_user, poll: @poll, params: params)
       respond_with_resource
     else

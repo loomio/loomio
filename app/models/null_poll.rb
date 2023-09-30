@@ -36,7 +36,7 @@ class NullPoll
   end
 
   def empty_methods
-    [:member_ids]
+    [:member_ids, :voter_ids]
   end
 
   def none_methods
@@ -48,8 +48,7 @@ class NullPoll
       unmasked_undecided_voters: :user,
       unmasked_voters: :user,
       non_voters: :user,
-      voters: :user,
-      invited_voters: :user
+      voters: :user
     }
   end
 end

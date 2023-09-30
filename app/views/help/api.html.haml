@@ -83,7 +83,7 @@
       %td iso8601 string or null. default: null. Specify when the poll closes with an iso8601 string such as '#{closing_at}'. If null then voting is disabled and poll is considered "Work in progress".
     %tr
       %td specified_voters_only
-      %td boolean. optional. default: false. true: only invited people can vote, false: anyone in the group or thread can vote
+      %td boolean. optional. default: false. true: only specified people can vote, false: everyone in the group will be invited to vote
     %tr
       %td hide_results
       %td string. optional. default: 'off'. values: 'off', 'until_vote', 'until_closed'. allow voters to see the results before the poll has closed
@@ -96,9 +96,6 @@
     %tr
       %td discussion_id
       %td integer. optional. default: null. id of discussion thread to add this poll to.
-    %tr
-      %td voter_can_add_options
-      %td boolean. optional. default: false. if voters can add options to the poll.
     %tr
       %td recipient_audience
       %td string 'group' or null. optional. default: null. if 'group' whole group will be notified about the new thread.
@@ -116,7 +113,7 @@
       %td message to include in the email invitation
     %tr
       %td notify_recipients
-      %td boolean. default true. set this to false if you want to add people to a poll without sending notifications.
+      %td boolean. default false. false: add people to a poll without sending notifications. true: everyone invited (in this request) will get a notification email.
 
   %h2 show poll
   %p Fetch a poll using the poll id (an integer) or key (a string)

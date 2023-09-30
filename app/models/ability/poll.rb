@@ -2,16 +2,12 @@ module Ability::Poll
   def initialize(user)
     super(user)
 
-    can :add_options, ::Poll do |poll|
-      user_is_author_of?(poll) || (user.can?(:vote_in, poll) && poll.voter_can_add_options)
-    end
-
     can :vote_in, ::Poll do |poll|
       user.is_logged_in? &&
       poll.active? &&
       (
         poll.unmasked_voters.exists?(user.id) ||
-        (!poll.specified_voters_only && poll.voters.exists?(user.id))
+        (!poll.specified_voters_only && poll.members.exists?(user.id))
       )
     end
 

@@ -68,13 +68,13 @@ describe Poll do
     it 'includes guests' do
       expect {
         Stance.create(poll: poll, participant: user)
-      }.to change { poll.voters.count }.by(1)
+      }.to change { poll.members.count }.by(1)
     end
 
     it 'includes members of the formal group' do
       expect {
         poll.group.add_member! user
-      }.to change { poll.voters.count }.by(1)
+      }.to change { poll.members.count }.by(1)
     end
   end
 

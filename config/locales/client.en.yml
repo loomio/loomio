@@ -1958,7 +1958,7 @@ en:
     anonymous: Votes are anonymous
     results_hidden_until_closed: Results will be shown after voting has closed
     results_hidden_until_vote: Results will be shown after you vote
-    unable_to_vote: You have not been invited to vote in this %{poll_type}.
+    unable_to_vote: You have not been invited to vote in this %{poll_type}
     draft_mode: Voting disabled. This is not open for voting yet.
     voting_disabled_poll_is_template: Voting disabled. This is a template.
 
@@ -2106,6 +2106,7 @@ en:
     success: Successfully deleted
 
   poll_common_form:
+    notify_everyone_when_poll_starts: Notify everyone when %{poll_type} starts
     option_has_votes_confirm_delete: Some people have voted for this option, are you sure you want to delete it?
     example_title: Example title
     example_title_hint: Give an example of a good proposal title

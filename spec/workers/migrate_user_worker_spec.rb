@@ -45,7 +45,9 @@ describe MigrateUserWorker do
     }
 
     # StanceService.update(stance: patrick_stance, actor: patrick, params: params)
-    StanceService.create(stance: jennifer_stance, actor: jennifer)
+    stance = Stance.find_by(poll: poll, participant: jennifer)
+    stance.choice = poll.poll_option_names.first
+    StanceService.create(stance: stance, actor: jennifer)
 
     poll.update(closed_at: 1.day.ago)
     OutcomeService.create(outcome: outcome, actor: patrick)
@@ -60,6 +62,8 @@ describe MigrateUserWorker do
     patrick.reload
     jennifer.reload
 
+    j_stance = Stance.find_by(poll: poll, participant: jennifer, latest: true)
+
     assert_equal patrick_comment.reload.author, jennifer
     assert_equal pending_membership.reload.inviter, jennifer
     assert_equal group.reload.creator, jennifer
@@ -69,8 +73,8 @@ describe MigrateUserWorker do
     assert_equal outcome.reload.author, jennifer
     # assert_equal patrick_stance.reload.author, jennifer
     # assert_equal patrick_stance.reload.latest, false
-    assert_equal jennifer_stance.reload.author, jennifer
-    assert_equal jennifer_stance.reload.latest, true
+    assert_equal j_stance.reload.author, jennifer
+    assert_equal j_stance.reload.latest, true
     assert_equal membership_request.reload.requestor, jennifer
     assert_equal identity.reload.user, jennifer
     assert_equal DiscussionReader.find_by(discussion: discussion, user: jennifer).present?, true
@@ -78,7 +82,7 @@ describe MigrateUserWorker do
     assert_equal another_group.members.exists?(jennifer.id), true
     assert_equal jennifer.memberships_count, 2
 
-    assert_equal 1, poll.reload.voters_count
+    assert_equal 2, poll.reload.voters_count
     assert_equal 2, group.reload.memberships_count
     assert_equal 1, group.reload.pending_memberships_count
     assert_equal 1, group.reload.admin_memberships_count
