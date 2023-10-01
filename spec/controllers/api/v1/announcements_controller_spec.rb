@@ -555,7 +555,7 @@ describe API::V1::AnnouncementsController do
         expect(member.notifications.count).to eq 1
         expect(member.memberships.count).to eq 2
         expect(member.memberships.accepted.count).to eq 0
-        expect(subgroup.members).to_not include member
+        expect(subgroup.accepted_members).to_not include member
       end
 
       it 'does not auto accept subgroup invitiations to unverified users' do
@@ -567,7 +567,7 @@ describe API::V1::AnnouncementsController do
         member.reload
         expect(member.notifications.count).to eq 1
         expect(member.memberships.accepted.count).to eq 1
-        expect(subgroup.members).to_not include member
+        expect(subgroup.accepted_members).to_not include member
       end
 
       it 'does not allow announcement if max members is reached' do

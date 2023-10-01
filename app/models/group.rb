@@ -38,6 +38,9 @@ class Group < ApplicationRecord
   has_many :memberships, -> { active }
   has_many :members, through: :memberships, source: :user
 
+  has_many :accepted_memberships, -> { active.accepted }, class_name: "Membership"
+  has_many :accepted_members, through: :accepted_memberships, source: :user
+
   has_many :admin_memberships, -> { active.where(admin: true) }, class_name: 'Membership'
   has_many :admins, through: :admin_memberships, source: :user
 

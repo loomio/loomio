@@ -16,9 +16,18 @@ class EventMailer < BaseMailer
       @discussion = @event.eventable.discussion
     end
 
-    if @event.kind == "membership_created" && @event.eventable_type == "Group"
-      # if the membership has been deleted, let it go
-      return unless Membership.where(user_id: recipient_id, group_id: @event.eventable_id).exists?
+    # this might be necessary to comply with anti-spam rules
+    # if someone does not respond to the invitation, don't send them more emails
+
+    if @event.eventable.respond_to?(:group_id) && @event.eventable.group_id
+      @membership = Membership.active.find_by(
+        group_id: @event.eventable.group_id,
+        user_id: recipient_id
+      )
+    end
+
+    if !@membership.accepted_at && !["membership_created", "membership_resent"].include? @event.kind
+      return false 
     end
 
     @utm_hash = { utm_medium: 'email', utm_campaign: @event.kind }

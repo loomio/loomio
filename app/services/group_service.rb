@@ -43,7 +43,7 @@ module GroupService
 
       # mark as accepted all invitiations to people who are already part of the org.
       if g.parent
-        parent_members = g.parent.members.where(id: users.verified.pluck(:id))
+        parent_members = g.parent.accepted_members.where(id: users.verified.pluck(:id))
         Membership.pending.where(group_id: g.id,
                                  user_id: parent_members.pluck(:id)).update_all(accepted_at: Time.now)
       end
