@@ -18,16 +18,15 @@ class EventMailer < BaseMailer
 
     # this might be necessary to comply with anti-spam rules
     # if someone does not respond to the invitation, don't send them more emails
-
     if @event.eventable.respond_to?(:group_id) && @event.eventable.group_id
       @membership = Membership.active.find_by(
         group_id: @event.eventable.group_id,
         user_id: recipient_id
       )
-    end
 
-    if !@membership.accepted_at && !["membership_created", "membership_resent"].include? @event.kind
-      return false 
+      return if @membership &&
+                !@membership.accepted_at &&
+                !["membership_created", "membership_resent"].include?(@event.kind)
     end
 
     @utm_hash = { utm_medium: 'email', utm_campaign: @event.kind }
