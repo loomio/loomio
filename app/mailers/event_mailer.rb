@@ -16,14 +16,14 @@ class EventMailer < BaseMailer
       @discussion = @event.eventable.discussion
     end
 
-    # this might be necessary to comply with anti-spam rules
-    # if someone does not respond to the invitation, don't send them more emails
     if @event.eventable.respond_to?(:group_id) && @event.eventable.group_id
       @membership = Membership.active.find_by(
         group_id: @event.eventable.group_id,
         user_id: recipient_id
       )
 
+      # this might be necessary to comply with anti-spam rules
+      # if someone does not respond to the invitation, don't send them more emails
       return if @membership &&
                 !@membership.accepted_at &&
                 !["membership_created", "membership_resent"].include?(@event.kind)
