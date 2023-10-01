@@ -67,7 +67,7 @@ class User < ApplicationRecord
            -> { where('memberships.admin = ?', true) },
            class_name: 'Membership'
 
-  has_many :memberships, -> { not_revoked }, dependent: :destroy
+  has_many :memberships, -> { active }, dependent: :destroy
   has_many :all_memberships, dependent: :destroy, class_name: "Membership"
 
   has_many :groups,

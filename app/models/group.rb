@@ -275,7 +275,7 @@ class Group < ApplicationRecord
   end
 
   def org_memberships_count
-    Membership.not_revoked.where(group_id: id_and_subgroup_ids).count('distinct user_id')
+    Membership.active.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
   def org_members_count

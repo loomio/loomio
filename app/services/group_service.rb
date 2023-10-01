@@ -59,8 +59,7 @@ module GroupService
       recipient_message: params[:recipient_message])
 
     # EventBus.broadcast('group_invite', group, actor, all_memberships.size)
-    Membership.not_revoked.where(group_id: group.id, user_id: users.pluck(:id))
-
+    Membership.active.where(group_id: group.id, user_id: users.pluck(:id))
   end
 
   def self.create(group:, actor: )

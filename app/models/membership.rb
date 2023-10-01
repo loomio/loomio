@@ -28,11 +28,10 @@ class Membership < ApplicationRecord
 
   scope :dangling,      -> { joins('left join groups g on memberships.group_id = g.id').where('group_id is not null and g.id is null')  }
   scope :user_active,   -> { joins(:user).where("users.deactivated_at is null") }
-  scope :active,        -> { user_active.not_revoked.accepted }
-  scope :revoked,      -> { where('revoked_at IS NOT NULL') }
-  scope :not_revoked,  -> { where(revoked_at: nil) }
-  scope :pending,       -> { user_active.not_revoked.where(accepted_at: nil) }
+  scope :active,        -> { where(revoked_at: nil) }
+  scope :pending,       -> { active.where(accepted_at: nil) }
   scope :accepted,      -> { where('accepted_at IS NOT NULL') }
+  scope :revoked,       -> { where('revoked_at IS NOT NULL') }
 
   scope :search_for, ->(query) { joins(:user).where("users.name ilike :query or users.username ilike :query or users.email ilike :query", query: "%#{query}%") }
 
