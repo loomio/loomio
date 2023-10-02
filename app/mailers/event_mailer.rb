@@ -25,6 +25,7 @@ class EventMailer < BaseMailer
       # this might be necessary to comply with anti-spam rules
       # if someone does not respond to the invitation, don't send them more emails
       return if @membership &&
+                !@recipient.email_verified &&
                 !@membership.accepted_at &&
                 !["membership_created", "membership_resent"].include?(@event.kind)
     end
