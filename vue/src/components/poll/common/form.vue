@@ -150,7 +150,7 @@ export default
         @$router.replace(@urlFor(poll)) if @redirectOnSave
         @$emit('saveSuccess', poll)
         Flash.success "poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()}
-        if actionName == 'created'
+        if actionName == 'created' && poll.specifiedVotersOnly
           EventBus.$emit 'openModal',
             component: 'PollMembers',
             props:
@@ -408,6 +408,8 @@ export default
   .caption.mt-n4.text--secondary.text-caption(
     v-if="poll.specifiedVotersOnly"
     v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
+
+  v-checkbox.mt-0(v-if="!poll.specifiedVotersOnly" :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})" v-model="poll.notifyRecipients")
 
   .d-flex.justify-center
     v-btn.my-4.poll-common-form__advanced-btn(@click="showAdvanced = !showAdvanced")

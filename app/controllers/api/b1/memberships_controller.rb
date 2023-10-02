@@ -13,6 +13,7 @@ class API::B1::MembershipsController < API::B1::BaseController
       actor: current_webhook.actor,
       params: {recipient_emails: add_emails}
     )
+    PollService.group_members_added(current_webhook.group_id)
 
     removed_user_ids = []
     if params[:remove_absent]

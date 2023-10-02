@@ -642,6 +642,7 @@ fr:
       user_added_to_group: "%{actor} vous a ajouté dans le group: %{title}"
       user_mentioned: "%{actor} vous a mentionné·e dans: %{title}"
       user_reminded: "%{actor} attend votre vote sur: %{title}"
+      membership_resent: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
     without_title:
       discussion_announced: "%{actor} vous a invité à la discussion"
       discussion_edited: "%{actor} a modifié le contexte de la discussion"
@@ -676,6 +677,7 @@ fr:
       stance_created_option: "%{actor}a voté %{option} "
       user_mentioned: "%{actor} vous a mentionné"
       user_reminded: "%{actor} vous rappelle de voter"
+      membership_resent: "%{actor} vous a invité à rejoindre un groupe"
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
       poll_closing_soon_author: Vous voudrez peut-être rappeler aux gens de voter ou de prolonger la date limite.
@@ -1350,6 +1352,7 @@ fr:
     deactivate_account: Désactiver le compte utilisateur
     help_translate: Pouvez vous nous aider à traduire Loomio?
     updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
+    deactivated_user: Utilisateur désactivé
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caractères"
     select_text_to_link: Sélectionnez le texte à lier et réessayez

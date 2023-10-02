@@ -624,6 +624,7 @@ it:
       user_added_to_group: "%{actor} ti ha aggionto al gruppo: %{title}"
       user_mentioned: "%{actor} ti ha menzionato in: %{title}"
       user_reminded: "%{actor} ti sta ricordando di votare su: %{title}"
+      membership_resent: "%{actor} ti ha invitato a iscriverti a %{title} su %{site_name}"
     without_title:
       discussion_announced: "%{actor} ti ha invitato a una discussione"
       discussion_edited: "%{actor} ha modificato il contesto della discussione"
@@ -658,6 +659,7 @@ it:
       stance_created_option: "%{actor} ha votato %{option}"
       user_mentioned: "%{actor} ti ha menzionato"
       user_reminded: "%{actor}ti sta ricordando di votare"
+      membership_resent: "%{actor} ti ha invitato a unirti a un gruppo"
     hints:
       poll_closing_soon: Ora è un buon momento per votare, cambiare idea o incoraggiare altri a partecipare.
       poll_closing_soon_author: Potresti voler ricordare alle persone di votare o prorogare la scadenza.
@@ -1323,6 +1325,7 @@ it:
     deactivate_account: Disattivare l'account utente
     help_translate: Puoi aiutarci a tradurre Loomio?
     updated_on_sign_in: Fornito dal tuo browser e aggiornato quando accedi
+    deactivated_user: Utente disattivato
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caratteri"
     insert_link: Inserisci collegamento

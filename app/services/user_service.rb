@@ -44,7 +44,7 @@ class UserService
     group_ids = Membership.where(user_id: user.id).pluck(:group_id)
     Group.where(id: group_ids).map(&:update_memberships_count)
     user.update(deactivated_at: nil)
-    GenericWorker.perform_async('SearchService', 'reindex_by_author_id', user_id)
+    GenericWorker.perform_async('SearchService', 'reindex_by_author_id', user.id)
   end
 
   # # UserService#destroy

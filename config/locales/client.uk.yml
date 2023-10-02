@@ -617,6 +617,7 @@ uk:
       stance_updated: "%{actor} проголосував за: %{title}"
       stance_created_option: "%{actor} проголосував за %{option} у %{title}"
       user_added_to_group: "%{actor} додав вас до групи: %{title}"
+      membership_resent: "%{actor} запросив вас приєднатися до %{title} на %{site_name}"
     without_title:
       poll_expired: "%{poll_type} закрито"
       discussion_announced: "%{actor} запросив вас до ланцюжка"
@@ -651,6 +652,7 @@ uk:
       stance_created_option: "%{actor} проголосував %{option}"
       user_mentioned: "%{actor} згадав вас"
       user_reminded: "%{actor} нагадує вам проголосувати"
+      membership_resent: "%{actor} запросив вас приєднатися до групи"
     hints:
       poll_closing_soon: Зараз гарний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.
       poll_closing_soon_author: Ви можете нагадати людям проголосувати або продовжити кінцевий термін.
@@ -1314,6 +1316,7 @@ uk:
     updated_on_sign_in: Забезпечується вашим браузером і оновлюється під час входу
     date_time_pref_label: Формат дати й часу
     help_translate: Чи можете ви допомогти нам перекласти Loomio?
+    deactivated_user: Деактивований користувач
   text_editor:
     select_text_to_link: Виберіть текст для посилання та повторіть спробу
     insert_link: Додайте посилання

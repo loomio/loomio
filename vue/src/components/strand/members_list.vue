@@ -48,7 +48,9 @@ export default
 
   methods:
     isGroupAdmin: (reader) ->
-      @membershipsByUserId[reader.userId] && @membershipsByUserId[reader.userId].admin
+      @discussion.groupId && 
+      @membershipsByUserId[reader.userId] &&
+      @membershipsByUserId[reader.userId].admin
 
     isGuest: (reader) ->
       !@membershipsByUserId[reader.userId]
@@ -142,7 +144,8 @@ export default
       rows="3"
       v-model="message"
       :label="$t('announcement.form.invitation_message_label')"
-      :placeholder="$t('announcement.form.invitation_message_placeholder')")
+      :placeholder="$t('announcement.form.invitation_message_placeholder')"
+    )
 
     .d-flex
       v-spacer

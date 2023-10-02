@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@sentry/browser": "^7.69.0",
-    "@sentry/tracing": "^7.69.0",
-    "@sentry/vue": "^7.69.0",
+    "@sentry/tracing": "^7.71.0",
+    "@sentry/vue": "^7.71.0",
     "@tiptap/core": "2.0.0-beta.220",
     "@tiptap/extension-blockquote": "2.0.0-beta.220",
     "@tiptap/extension-bold": "2.0.0-beta.220",
@@ -84,7 +84,7 @@
     "vue-recaptcha": "^1.2.0",
     "vue-router": "^3.6.5",
     "vue-slicksort": "^1.2.0",
-    "vue2-touch-events": "^3.2.2",
+    "vue2-touch-events": "^3.2.3",
     "vuetify": "2.6.15"
   },
   "devDependencies": {

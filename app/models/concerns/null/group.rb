@@ -74,7 +74,6 @@ module Null::Group
     %w[
       member_ids
       identities
-      accepted_members
       hidden_poll_templates
       hidden_discussion_templates
     ]
@@ -82,38 +81,6 @@ module Null::Group
 
   def discussion_privacy_options
     'private_only'
-  end
-
-  def webhooks
-    Webhook.none
-  end
-
-  def admins
-    User.none
-  end
-
-  def members
-    User.none
-  end
-
-  def memberships
-    Membership.none
-  end
-
-  def poll_templates
-    PollTemplate.none
-  end
-
-  def discussion_templates
-    DiscussionTemplate.none
-  end
-  
-  def tags
-    Tag.none
-  end
-
-  def chatbots
-    Chatbot.none
   end
 
   def false_methods
@@ -144,7 +111,15 @@ module Null::Group
   def none_methods
     {
       members: :user,
-      self_and_subgroups: :group
+      self_and_subgroups: :group,
+      accepted_members: :user,
+      chatbots: :chatbot,
+      tags: :tag,
+      poll_templates: :poll_template,
+      discussion_templates: :discussion_template,
+      memberships: :membership,
+      admins: :user,
+      webhooks: :webhook,
     }
   end
 

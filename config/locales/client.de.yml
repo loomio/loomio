@@ -622,6 +622,7 @@ de:
       stance_updated: "%{actor} hat abgestimmt in: %{title}"
       stance_created_option: "%{actor} hat für %{option} in %{title} abgestimmt"
       user_added_to_group: "%{actor} hat Sie zur Gruppe hinzugefügt: %{title}"
+      membership_resent: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten"
     without_title:
       discussion_closed: "%{actor}den Thread geschlossen"
       poll_expired: "%{poll_type} wurde abgeschlossen"
@@ -656,6 +657,7 @@ de:
       stance_created_option: "%{actor} hat für %{option} abgestimmt"
       user_mentioned: "%{actor} hat Sie erwähnt"
       user_reminded: "%{actor} erinnert Sie daran, abzustimmen"
+      membership_resent: "%{actor} hat Sie eingeladen, einer Gruppe beizutreten"
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, Ihre Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchten Sie die Menschen an die Abstimmung erinnern oder die Frist verlängern.
@@ -1319,6 +1321,7 @@ de:
     date_time_pref_label: Datums- und Uhrzeitformat
     help_translate: Können Sie uns bei der Übersetzung von Loomio helfen?
     updated_on_sign_in: Wird von Ihrem Browser bereitgestellt und aktualisiert, wenn Sie sich anmelden
+    deactivated_user: Deaktivierter Benutzer
   text_editor:
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
