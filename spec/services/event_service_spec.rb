@@ -28,13 +28,14 @@ describe EventService do
     let!(:poll_created_event) { PollService.create(poll: poll, actor: discussion.author) }
 
     let!(:stance) do
-      build(:stance, poll: poll, choice: "Agree")
+      Stance.find_by(participant: user, poll: poll)
     end
 
     let!(:stance_created_event) do
+      stance.choice = "Agree"
+      stance.reason = "I agreeeeee"
       StanceService.create(stance: stance, actor: user)
     end
-
 
     it 'flattens' do
       discussion.update(max_depth: 1)

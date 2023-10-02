@@ -28,6 +28,10 @@ class MembershipService
 
     member_group_ids = actor.group_ids & membership.group.parent_or_self.id_and_subgroup_ids
 
+    group_ids.each do |group_id|
+      GenericWorker.perform_async('PollService', 'group_members_added', group_id)
+    end
+
     # make sure they're not banned from anything
     DiscussionReader.joins(:discussion).
       where(user_id: actor.id).
@@ -112,11 +116,11 @@ class MembershipService
   end
 
   def self.join_group(group:, actor:)
-     actor.ability.authorize! :join, group
-     membership = group.add_member!(actor)
-     EventBus.broadcast('membership_join_group', group, actor)
-     Events::UserJoinedGroup.publish!(membership)
-   end
+    actor.ability.authorize! :join, group
+    membership = group.add_member!(actor)
+    EventBus.broadcast('membership_join_group', group, actor)
+    Events::UserJoinedGroup.publish!(membership)
+  end
 
   def self.add_users_to_group(users:, group:, inviter:)
     inviter.ability.authorize!(:add_members, group)
@@ -135,11 +139,9 @@ class MembershipService
       where("inviter_id IS NOT NULL").
       update_all(revoked_at: now, revoker_id: actor.id)
 
-    Stance.joins(:poll).where(
-      'polls.group_id': membership.group.id_and_subgroup_ids,
-      participant_id: membership.user_id,
-      cast_at: nil
-    ).update_all(revoked_at: now, revoker_id: actor.id)
+    membership.group.id_and_subgroup_ids.each do |group_id|
+      PollService.group_members_removed(group_id, membership.user_id, actor.id)
+    end
 
     Membership.where(user_id: membership.user_id, group_id: membership.group.id_and_subgroup_ids).destroy_all
 

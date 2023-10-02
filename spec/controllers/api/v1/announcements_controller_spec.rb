@@ -64,7 +64,7 @@ describe API::V1::AnnouncementsController do
     let(:subgroup_member) { create :user, name: 'subgroup_member' }
     let(:subgroup) { create(:group, parent: group, name: 'subgroup') }
     let(:discussion) { create :discussion, group: group, author: user }
-    let(:poll) { create :poll, group: group, author: user }
+    let(:poll) { create :poll, group: group, author: user, specified_voters_only: true }
 
     before do
       poll.create_missing_created_event!
@@ -199,7 +199,7 @@ describe API::V1::AnnouncementsController do
 
         it 'add a group member' do
           group.add_member!(member)
-          post :create, params: {poll_id: poll.id, recipient_user_ids: [member.id]}
+          post :create, params: {poll_id: poll.id, recipient_user_ids: [member.id], notify_recipients: true}
           expect(response.status).to eq 200
           json = JSON.parse response.body
           expect(json['stances'].length).to eq 1
@@ -209,7 +209,7 @@ describe API::V1::AnnouncementsController do
         end
 
         it 'invite new user by email' do
-          post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com']}
+          post :create, params: {poll_id: poll.id, recipient_emails: ['jim@example.com'], notify_recipients: true}
           json = JSON.parse response.body
           expect(response.status).to eq 200
           email_user = User.find_by(email: "jim@example.com")

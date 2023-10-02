@@ -102,7 +102,7 @@ class Stance < ApplicationRecord
   validate :valid_reason_required
   validate :valid_require_all_choices
 
-  %w(group mailer group_id discussion_id discussion members voters guest_voters title tags).each do |message|
+  %w(group mailer group_id discussion_id discussion members voters title tags).each do |message|
     delegate(message, to: :poll)
   end
 
@@ -123,10 +123,11 @@ class Stance < ApplicationRecord
 
   def create_missing_created_event!
     self.events.create(
-      kind: created_event_kind, 
-      user_id: (poll.anonymous? ? nil: author_id), 
-      created_at: created_at, 
-      discussion_id: (add_to_discussion? ? poll.discussion_id : nil))
+      kind: created_event_kind,
+      user_id: (poll.anonymous? ? nil: author_id),
+      created_at: created_at,
+      discussion_id: (add_to_discussion? ? poll.discussion_id : nil)
+    )
   end
 
   def author_name
