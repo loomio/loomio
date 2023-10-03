@@ -62,8 +62,8 @@ export default class GroupModel extends BaseModel
     @belongsTo 'parent', from: 'groups'
     @belongsTo 'creator', from: 'users'
 
-
   author: -> @creator()
+  
   isBlank: ->
     @description == '' or @description == null or @description == '<p></p>'
 

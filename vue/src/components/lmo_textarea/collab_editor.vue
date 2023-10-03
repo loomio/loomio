@@ -152,7 +152,7 @@ export default
         @checkLength() if @maxLength
         @scrapeLinkPreviews() if @model.isNew()
       onCreate: =>
-        @editor.commands.focus('end') if @model.isNew() && @editor.getCharacterCount() > 0
+        @editor.commands.focus('end') if @model.isNew() && @editor.getCharacterCount() > 0 && @autofocus
 
   watch:
     'shouldReset': 'reset'

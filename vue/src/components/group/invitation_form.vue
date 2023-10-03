@@ -30,10 +30,7 @@ export default
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
 
   mounted: ->
-    if !@group.parentId && @group.membershipsCount < 2
-      @message = I18n.t('announcement.form.invitation_message_new_trial')
-    else
-      @message = I18n.t('announcement.form.invitation_message_default')
+    @message = I18n.t('announcement.form.invitation_message_default')
 
     @updateSuggestions()
     @watchRecords

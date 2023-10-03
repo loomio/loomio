@@ -726,7 +726,8 @@ en:
     start_a_new_thread: Start a new thread
     thread_template_saved: Thread template saved
     these_are_templates: |
-      This is a list of thread templates in your group. Templates guide you through a decision-making process. We recommend you try the "Onboarding to Loomio" template, so your group can try Loomio out together.
+      Here is a list of thread templates in your group. Templates guide you through common decision-making processes.
+      If you are new to Loomio start with the "Onboarding to Loomio" template.
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
     title_placeholder_label: Example title
@@ -834,7 +835,8 @@ en:
       non_voters: Members of {{name}} not yet invited
 
     form:
-      invite_people_to_evaluate_loomio: It's time to invite some people to help you evaluate Loomio. You can copy and paste multiple emails at once if you need.
+      invite_people_to_evaluate_loomio: |
+        Invite some people to your Loomio group to make a decision together
       too_many_invitations: |
         Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
       no_invitations_remaining: |
@@ -846,9 +848,7 @@ en:
       invitation_message_placeholder: A message to include in the invitation email. (optional)
       invitation_message_label: Message
       invitation_message_default: |
-        This is your invitation to join our Loomio group, where we make deicsions together. Please accept the invitation and create an account, it only takes a minute.
-      invitation_message_new_trial: |
-        I'm trialing Loomio to see if it's a good fit for our organization. Please accept the invitation (it only takes a minute) so we can test it out together.
+        I have set up this Loomio group to help us make decisions together. Please accept my invitation. It only takes a minute to join. Thank you.
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?
@@ -1212,7 +1212,7 @@ en:
     new_organisation: New organization
     new_group: New group
     new_subgroup: New subgroup
-    new_group_explainer: Start a new Loomio group - an online home for your organization's discussions and decisions
+    new_group_explainer: Start a new Loomio group for your organization
     new_subgroup_explainer: Start a subgroup within an existing group - a private space for a team of people from the organization
     start_group_heading: Start a group
     start_subgroup_heading: Start a subgroup
@@ -1233,6 +1233,13 @@ en:
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
     new_description_placeholder: 'Why are you trialing Loomio? What decisions do you need to make together?'
+    new_description_html: |
+      <h3>How do you intend to use Loomio?</h3>
+      <p></p>
+      <h3>Why is this important for your group?</h3>
+      <p></p>
+      <h3>What decisions do you need to make?</h3>
+      <p></p>
     secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
     privacy_statement:
       public_on_web: 'Name, description, and attachments to the group context will be visible to the public'
@@ -1910,8 +1917,7 @@ en:
     include_subgroups_all: '{{name}} and all subgroups'
     no_results_found: No results for "{{search}}"
     welcome_to_your_new_group: Welcome to your new Loomio group!
-    time_to_start_a_thread: It's time to start your first thread. Not sure what to write? Loomio's templates will guide you through the process.
-    click_new_thread: Click "New thread" to continue.
+    lets_start_a_thread: Let's start a thread. Click "New thread" to continue.
 
   members_panel:
     no_results: 'No members found'
@@ -2862,7 +2868,7 @@ en:
     front_page: Front page
 
   group_survey:
-    describe_other: What category would you give your group?
+    describe_other: Select the category that best describes your group
     categories:
       party: Political party
       coop: Cooperative

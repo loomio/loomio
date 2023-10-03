@@ -228,8 +228,7 @@ div.discussions-panel(v-if="group")
 
   v-alert(color="info" text outlined v-if="group.discussionsCount == 0")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
-    p.px-4(v-t="'discussions_panel.time_to_start_a_thread'")
-    p.px-4(v-t="'discussions_panel.click_new_thread'")
+    p.px-4(v-t="'discussions_panel.lets_start_a_thread'")
 
   v-card.discussions-panel(v-else outlined)
     div(v-if="loader.status == 403")
