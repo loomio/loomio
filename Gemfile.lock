@@ -256,6 +256,7 @@ GEM
       gapic-common (>= 0.20.0, < 2.a)
       google-cloud-errors (~> 1.0)
     google-protobuf (3.24.3-x86_64-darwin)
+    google-protobuf (3.24.3-x86_64-linux)
     googleapis-common-protos (1.4.0)
       google-protobuf (~> 3.14)
       googleapis-common-protos-types (~> 1.2)
@@ -270,6 +271,9 @@ GEM
       signet (>= 0.16, < 2.a)
     gravtastic (3.2.6)
     grpc (1.58.0-x86_64-darwin)
+      google-protobuf (~> 3.23)
+      googleapis-common-protos-types (~> 1.0)
+    grpc (1.58.0-x86_64-linux)
       google-protobuf (~> 3.23)
       googleapis-common-protos-types (~> 1.0)
     haml (6.2.0)
@@ -362,6 +366,8 @@ GEM
     net_http_timeout_errors (1.0.0)
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     oga (3.4)
       ast
@@ -579,6 +585,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   actionpack-action_caching
