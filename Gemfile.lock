@@ -540,7 +540,7 @@ GEM
     sentry-sidekiq (5.11.0)
       sentry-ruby (~> 5.11.0)
       sidekiq (>= 3.0)
-    sidekiq (6.5.9)
+    sidekiq (6.5.10)
       connection_pool (>= 2.2.5, < 3)
       rack (~> 2.0)
       redis (>= 4.5.0, < 5)
@@ -667,7 +667,7 @@ DEPENDENCIES
   sentry-rails
   sentry-ruby
   sentry-sidekiq
-  sidekiq (~> 6.5.9)
+  sidekiq (~> 6.5.10)
   spring
   spring-commands-rspec
   sprockets (= 3.7.2)
