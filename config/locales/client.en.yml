@@ -1234,12 +1234,7 @@ en:
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
     new_description_placeholder: 'Why are you trialing Loomio? What decisions do you need to make together?'
     new_description_html: |
-      <h3>How do you intend to use Loomio?</h3>
-      <p></p>
-      <h3>Why is this important for your group?</h3>
-      <p></p>
-      <h3>What decisions do you need to make?</h3>
-      <p></p>
+      <h3 id="how-do-you-intend-to-use-loomio">How do you intend to use Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group">Why is this important for your group?</h3><p></p><h3 id="what-decisions-do-you-need-to-make">What decisions do you need to make?</h3><p></p>
     secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
     privacy_statement:
       public_on_web: 'Name, description, and attachments to the group context will be visible to the public'

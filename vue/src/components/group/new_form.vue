@@ -26,8 +26,6 @@ export default
     loadingHandle: false
 
   created: ->
-    @group.description = I18n.t('group_form.new_description_html')
-
     @watchRecords
       collections: ['groups', 'memberships']
       query: (records) =>
