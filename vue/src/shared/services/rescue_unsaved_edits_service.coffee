@@ -36,9 +36,8 @@ export default new class RescueUnsavedEditsService
       ms = uniq(@models.map (m) -> m.constructor.singular)
       as = uniq((@models.map (m) -> intersection(attrs, m.modifiedAttributes())).flat().flat())
 
-      # "#{model.constructor.name} #{attrs.join(' ')}"
-      # if confirm(I18n.t('common.confirm_discard_changes'))
-      if confirm("#{ms.join(' ') } #{as.join(' ')} #{models[0][as[0]]}")
+      # if confirm("#{ms.join(' ') } #{as.join(' ')} #{models[0][as[0]]}")
+      if confirm(I18n.t('common.confirm_discard_changes'))
         (model && model.discardChanges()) || true
       else
         false
