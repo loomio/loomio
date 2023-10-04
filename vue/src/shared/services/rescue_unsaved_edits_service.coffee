@@ -6,7 +6,6 @@ export default new class RescueUnsavedEditsService
     @models = []
 
   okToLeave: (model) ->
-    return true # TODO remove this before merge to master
     attrs = ['description', 'title', 'body', 'details', 'name', 'reason', 'statement']
     models = ((model && [model]) || @models)
     models.forEach (m) -> m.beforeSave()
