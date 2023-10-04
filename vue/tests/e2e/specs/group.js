@@ -97,10 +97,16 @@ module.exports = {
     page.expectElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-    page.pause(500)
+
+    page.expectElement('.group-invitation-form')
+    page.click('.dismiss-modal-button')
+
+    page.expectElement('.group-invitation-form')
+    page.click('.dismiss-modal-button')
 
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
+    page.pause(200)
     page.click('.group-form__permissions-tab')
 
     page.expectNoElement('.group-form__parent-members-can-see-discussions')
@@ -118,7 +124,9 @@ module.exports = {
     page.expectNoElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-    page.pause(500)
+
+    page.expectElement('.group-invitation-form')
+    page.click('.dismiss-modal-button')
 
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
@@ -139,7 +147,9 @@ module.exports = {
     page.expectNoElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-    page.pause(500)
+    
+    page.expectElement('.group-invitation-form')
+    page.click('.dismiss-modal-button')
 
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')

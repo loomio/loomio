@@ -226,7 +226,7 @@ div.discussions-panel(v-if="group")
       :to="'/thread_templates/?group_id='+group.id"
       color='primary')
 
-  v-alert(color="info" text outlined v-if="group.discussionsCount == 0")
+  v-alert(color="info" text outlined v-if="noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
     p.px-4(v-t="'discussions_panel.lets_start_a_thread'")
 
@@ -235,9 +235,9 @@ div.discussions-panel(v-if="group")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
       .discussions-panel__content
-        .discussions-panel__list--empty.pa-4(v-if='noThreads')
-          p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
-          p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
+        //- .discussions-panel__list--empty.pa-4(v-if='noThreads')
+        //-   p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
+        //-   p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(two-line)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions", :key="thread.id", :thread="thread" group-page)
