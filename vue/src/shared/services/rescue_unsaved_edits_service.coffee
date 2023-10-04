@@ -1,4 +1,4 @@
-import {some, intersection, pick} from 'lodash'
+import {some, intersection, pick, uniq} from 'lodash'
 import I18n from '@/i18n'
 
 export default new class RescueUnsavedEditsService
@@ -19,7 +19,7 @@ export default new class RescueUnsavedEditsService
       'processName',
       'processSubtitle'
     ]
-    models = ((model && [model]) || @models)
+    models = uniq ((model && [model]) || @models).flat()
     models.forEach (m) -> 
       m.beforeSaves.forEach (f) -> f()
     if some(models, (m) -> intersection(attrs, m.modifiedAttributes()).length > 0)
@@ -33,7 +33,12 @@ export default new class RescueUnsavedEditsService
       #   else
       #     null
 
-      if confirm(I18n.t('common.confirm_discard_changes'))
+      ms = uniq(@models.map (m) -> m.constructor.singular)
+      as = uniq((@models.map (m) -> intersection(attrs, m.modifiedAttributes())).flat().flat())
+
+      # "#{model.constructor.name} #{attrs.join(' ')}"
+      # if confirm(I18n.t('common.confirm_discard_changes'))
+      if confirm("#{ms.join(' ') } #{as.join(' ')} #{models[0][as[0]]}")
         (model && model.discardChanges()) || true
       else
         false
