@@ -215,7 +215,6 @@ export default
     updateModel: ->
       return unless @format == 'html'
       @model[@field] = @editor.getHTML()
-      @model[@field] = '' if @model[@field] == '<p></p>'
       @updateFiles()
 
     removeLinkPreview: (url) ->
