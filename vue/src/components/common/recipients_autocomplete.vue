@@ -162,7 +162,7 @@ export default
 
     updateSuggestions: ->
       if @query && @canAddGuests
-        emails = uniq(@query.match(/[^\s:,;'"`<>]+?@[^\s:,;'"`<>]+\.[^\s:,;'"`<>]+/g) || [])
+        emails = uniq(@query.match(/[^\s:,;"`<>]+?@[^\s:,;"`<>]+\.[^\s:,;"`<>]+/g) || [])
 
         # catch paste of multiple email addresses, or failure to press enter after an email address
         if emails.length > 1 or (emails.length == 1 && [',', ' '].includes(@query.slice(-1)))
