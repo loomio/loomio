@@ -10,7 +10,6 @@
       %meta{:content => image_url, :property => "og:image"}
     %meta{:content => AppConfig.theme[:site_name], :property => "og:site_name"}
     %meta{:content => "website", :property => "og:type"}
-    %link{rel: "canonical", href: url_for(:only_path => false, :protocol => 'https')}
     %link{rel: "icon", href: AppConfig.theme[:icon_src]}
     = stylesheet_link_tag 'vtfy/themeauto'
 
