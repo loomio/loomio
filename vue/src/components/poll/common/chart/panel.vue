@@ -48,11 +48,10 @@ export default
     )
       span(v-t="'poll_common_action_panel.results_hidden_until_vote'")
   template(v-else)
-    v-subheader.ml-n4
-      span(v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
-    poll-common-chart-table(
-      v-if="poll.chartType != 'grid'"
-      :poll="poll")
-    poll-common-chart-meeting(v-else :poll="poll")
+    template(v-if="poll.config().has_options")
+      v-subheader.ml-n4
+        span(v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
+      poll-common-chart-table(v-if="poll.chartType != 'grid'" :poll="poll")
+      poll-common-chart-meeting(v-else :poll="poll")
   poll-common-percent-voted(v-if="poll.pollType != 'count'", :poll="poll")
 </template>

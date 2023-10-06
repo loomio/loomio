@@ -1,5 +1,6 @@
 class AddStancesToThreadForExistingPolls < ActiveRecord::Migration[6.1]
   def change
+    raise "You need to update to v2.17.1 and migrate your database before you can update to latest" unless Loomio::Version.current == "2.17.1"
     Poll.where("discussion_id is not null and stances_in_discussion is false").each do |poll|
       poll.update(stances_in_discussion: true)
 

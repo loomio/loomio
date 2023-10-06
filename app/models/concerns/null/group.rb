@@ -19,6 +19,10 @@ module Null::Group
     I18n.t('discussion.invite_only')
   end
 
+  def save
+    true
+  end
+  
   def name
     I18n.t('discussion.invite_only')
   end
@@ -67,35 +71,15 @@ module Null::Group
   end
 
   def empty_methods
-    [:member_ids, :identities, :accepted_members]
+    %w[
+      member_ids
+      identities
+      hidden_poll_templates
+    ]
   end
 
   def discussion_privacy_options
     'private_only'
-  end
-
-  def webhooks
-    Webhook.none
-  end
-
-  def admins
-    User.none
-  end
-
-  def members
-    User.none
-  end
-
-  def memberships
-    Membership.none
-  end
-
-  def tags
-    Tag.none
-  end
-
-  def chatbots
-    Chatbot.none
   end
 
   def false_methods
@@ -126,7 +110,14 @@ module Null::Group
   def none_methods
     {
       members: :user,
-      self_and_subgroups: :group
+      self_and_subgroups: :group,
+      accepted_members: :user,
+      chatbots: :chatbot,
+      tags: :tag,
+      poll_templates: :poll_template,
+      memberships: :membership,
+      admins: :user,
+      webhooks: :webhook,
     }
   end
 
@@ -148,6 +139,23 @@ module Null::Group
 
   def id_and_subgroup_ids
     []
+  end
+
+  def poll_template_positions
+    {
+      'question' => 0,
+      'check' => 1,
+      'advice' => 2,
+      'consent' => 3,
+      'consensus' => 4,
+      'gradients_of_agreement' => 5,
+      'poll' => 6,
+      'score' => 7,
+      'dot_vote' => 8,
+      'ranked_choice' => 9,
+      'meeting' => 10,
+      'count' => 11,
+    }
   end
 
   def subscription

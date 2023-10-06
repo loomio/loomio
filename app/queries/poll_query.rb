@@ -21,7 +21,7 @@ class PollQuery
     chain = chain.joins("LEFT OUTER JOIN memberships m ON m.group_id = polls.group_id AND m.user_id = #{user.id || 0}")
                  .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = polls.discussion_id AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
                  .joins("LEFT OUTER JOIN stances s ON s.poll_id = polls.id AND (s.participant_id = #{user.id || 0} #{or_stance_token})")
-                 .where("#{'d.private = false OR polls.anyone_can_participate = TRUE OR ' if show_public}
+                 .where("#{'d.private = false OR ' if show_public}
                          polls.author_id = :user_id OR
                          (m.id IS NOT NULL AND m.archived_at IS NULL) OR
                          (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
@@ -43,7 +43,7 @@ class PollQuery
 
 
     if (tags = (params[:tags] || '').split('|')).any?
-      chain = chain.joins(:tags).where("tags.name IN (?)", tags)
+      chain = chain.where.contains(tags: tags)
     end
 
     chain = chain.where(template: true) if params[:template]

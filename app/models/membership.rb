@@ -23,7 +23,6 @@ class Membership < ApplicationRecord
   belongs_to :group
   belongs_to :user
   belongs_to :inviter, class_name: 'User'
-  belongs_to :invitation
   has_many :events, as: :eventable, dependent: :destroy
 
   scope :dangling,      -> { joins('left join groups g on memberships.group_id = g.id').where('group_id is not null and g.id is null')  }

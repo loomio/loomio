@@ -13,11 +13,10 @@ export default new class StanceService
     react:
       dock: 1
       canPerform: ->
-        !stance.discardedAt && stance.castAt &&
-        stance.poll().membersInclude(Session.user())
+        !stance.discardedAt && stance.castAt && !stance.revokedAt && stance.poll().membersInclude(Session.user())
 
     edit_stance:
-      name: 'poll_common.change_vote'
+      name: (stance.poll().config().has_options && 'poll_common.change_vote') || 'poll_common.change_response'
       icon: 'mdi-pencil'
       dock: 1
       canPerform: => @canUpdateStance(stance)
@@ -28,8 +27,7 @@ export default new class StanceService
       icon: 'mdi-reply'
       dock: 1
       canPerform: -> 
-        !stance.poll().anonymous &&
-        AbilityService.canAddComment(stance.poll().discussion())
+        !stance.discardedAt && stance.castAt && !stance.revokedAt && !stance.poll().anonymous && AbilityService.canAddComment(stance.poll().discussion())
       perform: ->
         if event.depth == stance.discussion().maxDepth
           EventBus.$emit('toggle-reply', stance, event.parentId)
@@ -37,7 +35,7 @@ export default new class StanceService
           EventBus.$emit('toggle-reply', stance, event.id)
 
     uncast_stance:
-      name: 'poll_common.remove_your_vote'
+      name: (stance.poll().config().has_options && 'poll_common.remove_your_vote') || 'poll_common.remove_your_response'
       icon: 'mdi-cancel'
       dock: 1
       canPerform: => @canUpdateStance(stance)
@@ -57,8 +55,8 @@ export default new class StanceService
     show_history:
       name: 'action_dock.edited'
       icon: 'mdi-history'
-      dock: 1
-      canPerform: -> stance.edited()
+      dock: 3
+      canPerform: -> stance.edited() && !stance.revokedAt
       perform: ->
         openModal
           component: 'RevisionHistoryModal'
@@ -87,6 +85,7 @@ export default new class StanceService
   canUpdateStance: (stance) ->
     stance &&
     stance.latest &&
+    !stance.revokedAt &&
     stance.poll().myStanceId == stance.id &&
     stance.poll().isVotable() && 
     stance.poll().iHaveVoted()

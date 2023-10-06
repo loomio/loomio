@@ -27,7 +27,7 @@ class CalendarInvite
         event.description = outcome.event_description
         event.location    = outcome.event_location
         event.attendee    = outcome.attendee_emails
-        event.ip_class    = outcome.poll.anyone_can_participate ? "PUBLIC" : "PRIVATE"
+        event.ip_class    = "PRIVATE"
         event.url         = poll_url(outcome.poll)
       end
     end

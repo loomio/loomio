@@ -33,7 +33,7 @@ describe ReactionService do
     end
 
     it 'does not allow others to destroy a reaction' do
-      expect { ReactionService.destroy(reaction: reaction, actor: another_user) }.to raise_error { CanCan::AccessDenied }
+      expect { ReactionService.destroy(reaction: reaction, actor: another_user) }.to raise_error CanCan::AccessDenied
     end
   end
 end

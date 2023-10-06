@@ -10,7 +10,7 @@ class API::V1::DiscussionsController < API::V1::RestfulController
   end
 
   def create_action
-    @event = service.create({resource_symbol => resource, actor: current_user, params: resource_params})
+    @event = service.create(**{resource_symbol => resource, actor: current_user, params: resource_params})
   end
 
   def show
@@ -111,11 +111,6 @@ class API::V1::DiscussionsController < API::V1::RestfulController
     respond_with_resource
   end
 
-  def fork
-    @event = service.fork(discussion: instantiate_resource, actor: current_user)
-    respond_with_resource
-  end
-
   def move_comments
     EventService.move_comments(discussion: load_resource, params: params, actor: current_user)
     respond_with_resource
@@ -146,11 +141,15 @@ class API::V1::DiscussionsController < API::V1::RestfulController
     case params[:subgroups]
     when 'all'
       Array(@group&.id_and_subgroup_ids)
-    when 'mine' && current_user.is_logged_in?
-      [@group&.id].concat(current_user.group_ids & @group&.id_and_subgroup_ids)
+    when 'mine'
+      if current_user.is_logged_in?
+        [@group&.id].concat(current_user.group_ids & @group&.id_and_subgroup_ids)
+      else
+        [@group&.id]
+      end
     else
       [@group&.id]
-    end
+    end.compact
   end
 
   def discussion_ids
@@ -158,11 +157,15 @@ class API::V1::DiscussionsController < API::V1::RestfulController
   end
 
   def split_tags
-    params[:tags].to_s.split('|')
+    Array(params[:tags].to_s).reject(&:blank?)
   end
 
   def accessible_records
-    @accessible_records ||= DiscussionQuery.visible_to(user: current_user, group_ids: group_ids, tags: split_tags, discussion_ids: discussion_ids)
+    @accessible_records ||= DiscussionQuery.visible_to(
+      user: current_user,
+      group_ids: group_ids,
+      tags: split_tags,
+      discussion_ids: discussion_ids)
   end
 
   def update_reader(params = {})

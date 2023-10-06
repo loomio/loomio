@@ -19,7 +19,9 @@ class RecordCloner
     clone_group.polls.each {|p| p.specified_voters_only = false }
 
     clone_group.save!
-    copy_tags_over(group)
+
+    update_tag_colors(clone_group, group)
+
     clone_group.polls.each do |poll|
       poll.update_counts!
       poll.stances.each {|s| s.update_option_scores!}
@@ -28,13 +30,23 @@ class RecordCloner
     clone_group.reload
   end
 
+  def update_tag_colors(clone_group, group)
+    group.tags.pluck(:name, :color).each do |pair|
+      Tag.where(group_id: clone_group.id, name: pair[0]).update_all(color: pair[1])
+    end
+  end
+
   def create_clone_group_for_actor(group, actor)
+    # we don't really use this one except for testing
+
     clone_group = new_clone_group(group)
     clone_group.creator = actor
     clone_group.subscription = Subscription.new(plan: 'demo', owner: actor)
     clone_group.save!
 
-    copy_tags_over(group)
+    update_tag_colors(clone_group, group)
+    store_source_record_ids(clone_group)
+
 
     clone_group.polls.each do |poll|
       poll.update_counts!
@@ -45,11 +57,49 @@ class RecordCloner
     clone_group.reload
   end
 
+  def clone_trial_content_into_group(group, actor)
+    source_group = Group.find_by(handle: 'trial-group-template')
+
+    group.discussions = source_group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
+    group.polls = source_group.polls.kept.map {|p| new_clone_poll(p) }
+    group.save!
+
+    update_tag_colors(group, source_group)
+    store_source_record_ids(group)
+    TranslationService.translate_group_content!(group, actor.locale)
+
+
+    group.polls.each do |poll|
+      poll.update_counts!
+      poll.stances.each {|s| s.update_option_scores!}
+    end
+
+    group.discussions.each {|d| EventService.repair_thread(d.id) }
+    group.reload
+
+    group.save!
+
+    group
+  end
+
+  def store_source_record_ids(clone_group)
+    source_ids = {}
+    @cache.each_pair do |key, value|
+      class_name, id = key.split('-')
+      source_ids["#{class_name}-#{value.id}"] = id.to_i
+    end
+    clone_group.info['source_record_ids'] = source_ids
+    clone_group.save!
+  end
+
+
   def create_clone_group(group)
     clone_group = new_clone_group(group)
     clone_group.save!
 
-    copy_tags_over(group)
+    update_tag_colors(clone_group, group)
+
+    store_source_record_ids(clone_group)
 
     clone_group.polls.each do |poll|
       poll.update_counts!
@@ -59,19 +109,6 @@ class RecordCloner
     clone_group.reload
     clone_group
   end
-
-  def copy_tags_over(group)
-    group.discussions.kept.each do |d|
-      clone_discussion = existing_clone(d)
-      d.tags.each {|t| clone_discussion.tags << existing_clone(t)}
-    end
-
-    group.polls.kept.each do |p|
-      clone_poll = existing_clone(p)
-      p.tags.each {|t| clone_poll.tags << existing_clone(t)}
-    end
-  end
-
 
   def new_clone_group(group, clone_parent = nil)
     copy_fields = %w[
@@ -113,7 +150,6 @@ class RecordCloner
     clone_group.discussions = group.discussions.kept.map {|d| new_clone_discussion_and_events(d) }
     clone_group.subgroups = group.subgroups.published.map {|g| new_clone_group(g, clone_group) }
     clone_group.polls = group.polls.kept.map {|p| new_clone_poll(p) }
-    clone_group.tags = group.tags.map { |t| new_clone_tag(t) }
 
     clone_group
   end
@@ -135,6 +171,7 @@ class RecordCloner
       last_activity_at
       discarded_at
       template
+      tags
       source_template_id
     ]
 
@@ -174,9 +211,7 @@ class RecordCloner
       voter_can_add_options
       anonymous
       details_format
-      anyone_can_participate
       hide_results
-      stances_in_discussion
       discarded_by
       specified_voters_only
       notify_on_closing_soon
@@ -200,6 +235,7 @@ class RecordCloner
       stance_reason_required
       poll_option_name_format
       reason_prompt
+      tags
     ]
     attachments = [:files, :image_files]
 
@@ -365,7 +401,7 @@ class RecordCloner
   end
 
   def new_clone(record, copy_fields = [], required_values = {}, attachments = [])
-    @cache["#{record.class}#{record.id}"] ||= begin
+    @cache["#{record.class}-#{record.id}"] ||= begin
       clone = record.class.new
       record_type = record.class.to_s.underscore.to_sym
 
@@ -406,6 +442,6 @@ class RecordCloner
   end
 
   def existing_clone(record)
-    @cache["#{record.class}#{record.id}"]
+    @cache["#{record.class}-#{record.id}"]
   end
 end

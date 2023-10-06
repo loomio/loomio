@@ -4,11 +4,10 @@ class GroupExportService
     all_events
     all_notifications
     all_reactions
-    all_taggings
+    poll_templates
     memberships
     membership_requests
     discussions
-    tags
     exportable_polls
     exportable_poll_options
     exportable_outcomes
@@ -57,7 +56,8 @@ class GroupExportService
       tags: %w[group_id],
       webhooks: %w[group_id],
       events: %w[eventable],
-      groups: %w[parent_id]
+      groups: %w[parent_id],
+      poll_templates: %w[group_id]
     },
     poll_options: {
       stance_choices: %w[poll_option_id],

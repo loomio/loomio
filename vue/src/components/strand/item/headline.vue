@@ -8,9 +8,10 @@ export default
     event: Object
     eventable: Object
     collapsed: Boolean
+    dateTime: Date
 
   computed:
-    datetime: -> @eventable.castAt || @eventable.createdAt
+    datetime: -> @dateTime || @eventable.castAt || @eventable.createdAt
     headline: ->
       actor = @event.actor()
       if @event.kind == 'new_comment' && @collapsed && @event.descendantCount > 0
@@ -34,7 +35,7 @@ h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
     //- v-icon(v-if="event.pinned") mdi-pin
     slot(name="headline")
       span.strand-item__headline.text--secondary(v-html='headline')
-    mid-dot
+    mid-dot.text--secondary
     router-link.text--secondary.text-body-2(:to='link')
       time-ago(:date='datetime')
     mid-dot(v-if="event.pinned")

@@ -61,25 +61,6 @@ describe Poll do
     end
   end
 
-  describe 'is_new_version?' do
-    before { poll.save }
-
-    it 'is a new version if title is changed' do
-      poll.title = "new title"
-      expect(poll.is_new_version?).to eq true
-    end
-
-    it 'is a new version if new poll option is added' do
-      poll.poll_option_names = "new_option"
-      expect(poll.is_new_version?).to eq true
-    end
-
-    it 'is not a new version if anyone_can_participate is changed' do
-      poll.anyone_can_participate = false
-      expect(poll.is_new_version?).to eq false
-    end
-  end
-
   describe 'members' do
     let(:poll) { create :poll, group: create(:group) }
     let(:user) { create :user }
@@ -87,13 +68,13 @@ describe Poll do
     it 'includes guests' do
       expect {
         Stance.create(poll: poll, participant: user)
-      }.to change { poll.voters.count }.by(1)
+      }.to change { poll.members.count }.by(1)
     end
 
     it 'includes members of the formal group' do
       expect {
         poll.group.add_member! user
-      }.to change { poll.voters.count }.by(1)
+      }.to change { poll.members.count }.by(1)
     end
   end
 

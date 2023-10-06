@@ -1,4 +1,4 @@
-import marked from 'marked'
+import {marked} from 'marked'
 import {customRenderer, options} from '@/shared/helpers/marked.coffee'
 
 export convertToHtml = (model, field) ->

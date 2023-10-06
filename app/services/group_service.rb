@@ -1,26 +1,23 @@
 module GroupService
   def self.remote_cover_photo
     # id like to use unsplash api but need to work out how to meet their attribution requirements
-    if !Rails.env.test?
-      [
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/001/original/open-uri20150904-3-16e2exd?1441337903",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/002/original/open-uri20150904-3-rdqbrq?1441337903",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/003/original/open-uri20150904-3-1oppl5v?1441337903",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/004/original/open-uri20150904-3-pk5rt7?1441337903",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/005/original/open-uri20150904-3-llrp8p?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/006/original/open-uri20150904-3-12f1pb7?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/007/original/open-uri20150904-3-mnvdi7?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/008/original/open-uri20150904-3-ug7qk8?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/009/original/open-uri20150904-3-kxuccv?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/010/original/open-uri20150904-3-1v5vy0t?1441337904",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/011/original/open-uri20150904-3-nk5ttf?1441337905",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/012/original/open-uri20150904-3-12mh2l4?1441337905",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/013/original/open-uri20150904-3-1rh3y2o?1441337905",
-        "https://loomio-uploads.s3.amazonaws.com/default_group_covers/cover_photos/000/000/014/original/open-uri20150904-3-18nwpr9?1441337905"
-      ].sample
-    else
-      [ Rails.root.join('public/theme/default_group_cover.png') ].sample
-    end
+    filename = %w[
+      cover1.jpg
+      cover2.jpg
+      cover3.jpg
+      cover4.jpg
+      cover5.jpg
+      cover6.jpg
+      cover7.jpg
+      cover8.jpg
+      cover9.jpg
+      cover10.jpg
+      cover11.jpg
+      cover12.jpg
+      cover13.jpg
+      cover14.jpg
+    ].sample
+    Rails.root.join("public/theme/group_cover_photos/#{filename}")
   end
 
   def self.invite(group:, params:, actor:)
@@ -32,10 +29,12 @@ module GroupService
 
     groups = Group.where(id: group_ids).each { |g| actor.ability.authorize!(:add_members, g) }
 
-    users = UserInviter.where_or_create!(actor: actor,
-                                         model: group,
-                                         emails: params[:recipient_emails],
-                                         user_ids: params[:recipient_user_ids])
+    users = UserInviter.where_or_create!(
+      actor: actor,
+      model: group,
+      emails: params[:recipient_emails],
+      user_ids: params[:recipient_user_ids]
+    )
 
     groups.each do |g|
       memberships = users.map do |user|
@@ -53,6 +52,7 @@ module GroupService
 
       g.update_pending_memberships_count
       g.update_memberships_count
+      GenericWorker.perform_async('PollService', 'group_members_added', g.id)
     end
 
     Events::MembershipCreated.publish!(
@@ -77,7 +77,11 @@ module GroupService
       url = remote_cover_photo
       group.cover_photo.attach(io: URI.open(url), filename: File.basename(url))
       group.creator = actor if actor.is_logged_in?
-      ExampleContent.new(group).add_to_group! if AppConfig.app_features[:example_content]
+
+      if template_group = Group.find_by(handle: 'trial-group-template')
+        cloner = RecordCloner.new(recorded_at: template_group.discussions.last.updated_at)
+        cloner.clone_trial_content_into_group(group, actor)
+      end
       group.subscription = Subscription.new
     end
 
@@ -105,7 +109,7 @@ module GroupService
     actor.ability.authorize! :destroy, group
 
     group.admins.each do |admin|
-      GroupMailer.delay.destroy_warning(group.id, admin.id, actor.id)
+      GroupMailer.destroy_warning(group.id, admin.id, actor.id).deliver_later
     end
 
     group.archive!

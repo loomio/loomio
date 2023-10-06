@@ -10,14 +10,15 @@ class API::V1::StancesController < API::V1::RestfulController
   end
 
   def uncast
-    @stance = current_user.stances.find(params[:id])
+    @stance = current_user.stances.latest.find(params[:id])
     StanceService.uncast(stance: @stance, actor: current_user)
+    @stance = @stance.poll.stances.latest.find_by(participant_id: current_user.id)
     respond_with_resource
   end
 
   def index
     instantiate_collection do |collection|
-      if query = params[:query]
+      if !@poll.anonymous && name = params[:name].presence
         collection = collection.
           joins('LEFT OUTER JOIN users on stances.participant_id = users.id').
           where(latest: true, revoked_at: nil).
@@ -25,8 +26,13 @@ class API::V1::StancesController < API::V1::RestfulController
                  users.name ilike :last OR
                  users.email ilike :first OR
                  users.username ilike :first",
-                 first: "#{query}%", last: "% #{query}%")
+                 first: "#{name}%", last: "% #{name}%")
       end
+
+      if poll_option_id = params[:poll_option_id].presence
+        collection = collection.joins(:poll_options).where("poll_options.id" => poll_option_id)
+      end
+
       collection.order('cast_at DESC NULLS LAST, created_at DESC')
     end
     respond_with_collection
@@ -61,14 +67,14 @@ class API::V1::StancesController < API::V1::RestfulController
   end
 
   def make_admin
-    @stance = Stance.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
+    @stance = Stance.latest.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
     current_user.ability.authorize! :make_admin, @stance
     @stance.update(admin: true)
     respond_with_resource
   end
 
   def remove_admin
-    @stance = Stance.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
+    @stance = Stance.latest.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
     current_user.ability.authorize! :remove_admin, @stance
     @stance.update(admin: false)
     @stance.poll.update_counts!
@@ -76,9 +82,14 @@ class API::V1::StancesController < API::V1::RestfulController
   end
 
   def revoke
-    @stance = Stance.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
+    @stance = Stance.latest.find_by(participant_id: params[:participant_id], poll_id: params[:poll_id])
     current_user.ability.authorize! :remove, @stance
-    @stance.update(revoked_at: Time.zone.now)
+
+    # revoke all stances, not just the latest one
+    Stance.where(revoked_at: nil, participant_id: params[:participant_id], poll_id: params[:poll_id]).
+           update_all(revoked_at: Time.zone.now, revoker_id: current_user.id)
+
+    @stance.reload
     @stance.poll.update_counts!
     respond_with_resource
   end

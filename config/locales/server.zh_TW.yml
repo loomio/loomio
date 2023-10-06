@@ -163,6 +163,8 @@ zh_TW:
       resend: 這個將會在24小時後過期且僅可使用一次
     login:
       subject: 登入到 %{site_name}
+      intro: 這是您用來登入 %{site_name} 的連結
+      intro_code: 這是您用來登入 %{site_name} 的代碼
       login: 以 %{name} 的身份登入
     reactivate:
       subject: 重新啟用您的 %{site_name} 帳號

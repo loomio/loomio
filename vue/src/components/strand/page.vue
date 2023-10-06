@@ -150,7 +150,6 @@ export default
 
       @loader.fetch().finally =>
         setTimeout => @scrollToFocusUnlessFocused()
-
       .catch (res) =>
         console.log 'promises failed', res
 
@@ -169,7 +168,6 @@ export default
       //- p test: {{rangeSetSelfTest()}}
       thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion', :key="'fork-actions'+ discussion.id")
-      discussion-template-banner(:discussion='discussion')
 
       strand-card(v-if="loader", :loader="loader")
   strand-toc-nav(v-if="loader", :discussion="discussion", :loader="loader", :key="discussion.id")

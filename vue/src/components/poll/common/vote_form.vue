@@ -28,9 +28,15 @@ export default
     optionPrompt: -> (@selectedOptionId && Records.pollOptions.find(@selectedOptionId).prompt) || ''
     submitText: ->
       if @stance.castAt
-        'poll_common.update_vote'
+        if @poll.config().has_options
+          'poll_common.update_vote'
+        else
+          'poll_common.update_response'
       else
-        'poll_common.submit_vote'
+        if @poll.config().has_options
+          'poll_common.submit_vote'
+        else
+          'poll_common.submit_response'
     optionCountAlertColor: ->
       return 'warning' if !@singleChoice && @selectedOptionIds.length && (@selectedOptionIds.length < @poll.minimumStanceChoices || @selectedOptionIds.length > @poll.maximumStanceChoices)
     optionCountValid: ->
@@ -82,7 +88,7 @@ export default
 form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
 
-  v-alert(v-if="!poll.singleChoice()", :color="optionCountAlertColor")
+  v-alert(v-if="poll.config().has_options && !poll.singleChoice()", :color="optionCountAlertColor")
     span(
       v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
       v-t="{path: 'poll_common.select_count_options', args: {count: poll.minimumStanceChoices}}")
@@ -98,7 +104,6 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
   )
     label
       input(
-        :disabled="poll.template"
         v-if="singleChoice"
         v-model="selectedOptionId"
         :value="option.id"
@@ -107,7 +112,6 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
         name="name"
       )
       input(
-        :disabled="poll.template"
         v-if="!singleChoice"
         v-model="selectedOptionIds"
         :value="option.id"
@@ -127,7 +131,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
             v-icon(v-if="!singleChoice && isSelected(option)", :color="option.color") mdi-checkbox-marked
         v-list-item-content
           v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
-          v-list-item-subtitle {{option.meaning}}
+          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
 
   poll-common-stance-reason(
     :stance='stance'
@@ -144,7 +148,11 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     )
       span(v-t="submitText")
 </template>
+
 <style lang="sass">
+.poll-common-vote-form__allow-wrap
+  white-space: normal
+
 .poll-common-vote-form__button--not-selected
   opacity: 0.33 !important
 

@@ -61,9 +61,23 @@ v-card.chatbot-matrix-form
       v-model="chatbot.channel"
       placeholder="E.g. #general:example.com or !hZAAvLtRpxPTHIvfLC:example.com"
       hint="As bot user: Room options > Settings > Advanced > Internal room ID")
-    //- v-checkbox.webhook-form__include-body(v-model="chatbot.includeBody" :label="$t('webhook.include_body_label')" hide-details)
-    //- p.mt-4.text--secondary(v-t="'webhook.event_kind_helptext'")
-    //- v-checkbox.webhook-form__event-kind(hide-details v-for='kind in kinds' v-model='chatbot.eventKinds' :key="kind" :label="$t('webhook.event_kinds.' + kind)" :value="kind")
+      
+    v-checkbox.webhook-form__include-body(
+      v-model="chatbot.notificationOnly", 
+      :label="$t('chatbot.notification_only_label')" 
+      hide-details)
+
+    p.mt-4.text--secondary(v-t="'chatbot.event_kind_helptext'")
+
+    v-checkbox.webhook-form__event-kind(
+      hide-details 
+      v-for='kind in kinds' 
+      v-model='chatbot.eventKinds' 
+      :key="kind" 
+      :label="$t('webhook.event_kinds.' + kind)" 
+      :value="kind")
+
+
 
     v-card-actions
       v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")

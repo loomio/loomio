@@ -1,58 +1,60 @@
 <script lang="coffee">
 import Session from '@/shared/services/session'
 import EventBus from '@/shared/services/event_bus'
+import { uniq } from 'lodash'
 
 export default
   props:
     model: Object
 
+  data: ->
+    items: []
+
+  mounted: ->
+    @query()
+
   methods:
-    remove: (id) ->
-      @model.tagIds.splice(@model.tagIds.indexOf(id), 1)
-    openTagsSelectModal: ->
-      EventBus.$emit 'openModal',
-        component: 'TagsSelect',
-        props:
-          model: @model.clone()
+    query: ->
+      @items = uniq(@model.group().tags().map((t) -> t.name).concat(@model.group().parentOrSelf().tags().filter((t) -> t.taggingsCount).map((t) -> t.name)))
+
+    colorFor: (name) ->
+      (
+        @model.group().tags().find((t) -> t.name == name) || 
+        @model.group().parentOrSelf().tags().find((t) -> t.name == name) ||
+        {}
+      ).color
+
+    remove: (name) ->
+      @model.tags.splice(@model.tags.indexOf(name), 1)
+
+  watch:
+    'model.groupId': 'query'
 
   computed:
-    items: ->
-      @model.group().parentOrSelf().tags()
-
     actor: ->
       Session.user()
 
 </script>
 
 <template lang="pug">
-v-autocomplete.tags-field__input(
-  v-if="model.groupId"
+v-combobox.tags-field__input(
   multiple
   hide-selected
-  v-model='model.tagIds'
-  item-text='name'
-  item-value='id'
+  v-model='model.tags'
   :label="$t('loomio_tags.tags')"
   :items='items'
-  :append-outer-icon="model.isA('discussion') ? 'mdi-tag-plus' : null"
-  @click:append-outer="openTagsSelectModal"
   )
-  template(v-slot:no-data)
-    v-list-item
-      v-list-item-content
-        v-list-item-title
-          span(v-if="items.length == 0" v-t="'loomio_tags.no_tags_in_group'")
-          span(v-if="items.length" v-t="'common.no_results_found'")
   template(v-slot:selection='data')
     v-chip.chip--select-multi(
-      :value='data.item.id'
+      :key="JSON.stringify(data.item)"
+      :value='data.item'
       close
       outlined
-      :color='data.item.color'
-      @click:close='remove(data.item.id)')
-      span {{ data.item.name }}
+      :color='colorFor(data.item)'
+      @click:close='remove(data)')
+      span {{ data.item }}
   template(v-slot:item='data')
-    v-chip.chip--select-multi(outlined :color='data.item.color' )
-      span {{ data.item.name }}
+    v-chip.chip--select-multi(outlined :color='colorFor(data.item)' )
+      span {{ data.item }}
 
 </template>

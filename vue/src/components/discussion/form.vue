@@ -133,9 +133,10 @@ export default
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
-    tags-field(:model="discussion")
 
     .discussion-form__group-selected(v-if='!showUpgradeMessage')
+      tags-field(:model="discussion")
+        
       recipients-autocomplete(
         v-if="!discussion.id"
         :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"

@@ -12,7 +12,7 @@ class MigrateUserWorker
     migrate_stances
     update_counters
     DeactivateUserWorker.new.perform(source_id)
-    UserMailer.delay.accounts_merged(destination.id)
+    UserMailer.accounts_merged(destination.id).deliver_later
   end
 
   SCHEMA = {

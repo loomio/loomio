@@ -7,4 +7,7 @@
       .thread-item__avatar.mr-3.mt-0
         = render 'base_mailer/avatar', user: voter, size: 24
       .layout.thread-item__body.column
-        = render "discussions/polls/#{poll.poll_type}/stance_created_body", stance: stance, voter: voter, poll: poll
+        - if stance.revoked_at
+          = t('poll_common_votes_panel.vote_removed')
+        - else
+          = render "discussions/polls/#{poll.poll_type}/stance_created_body", stance: stance, voter: voter, poll: poll

@@ -14,6 +14,7 @@ class DiscussionSerializer < ApplicationSerializer
              :key,
              :group_id,
              :title,
+             :tags,
              :content_locale,
              :description,
              :description_format,
@@ -28,7 +29,6 @@ class DiscussionSerializer < ApplicationSerializer
              :updated_at,
              :private,
              :versions_count,
-             :importance,
              :pinned_at,
              :attachments,
              :link_previews,
@@ -55,7 +55,6 @@ class DiscussionSerializer < ApplicationSerializer
   has_many :active_polls, serializer: PollSerializer, root: :polls
   has_one :created_event, serializer: EventSerializer, root: :events
   has_one :forked_event, serializer: EventSerializer, root: :events
-  has_many :tags, serializer: TagSerializer, root: :tags
 
   hide_when_discarded [:description, :title]
 

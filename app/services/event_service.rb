@@ -6,6 +6,8 @@ class EventService
 
     event.update(discussion_id: nil)
     discussion.thread_item_destroyed!
+    GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
+    
     EventBus.broadcast('event_remove_from_thread', event)
     event
   end

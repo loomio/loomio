@@ -4,7 +4,7 @@ import { exact } from '@/shared/helpers/format_time'
 import { parseISO } from 'date-fns'
 import { reject, map, parseInt } from 'lodash'
 
-import marked from 'marked'
+import {marked} from 'marked'
 import {customRenderer, options} from '@/shared/helpers/marked.coffee'
 marked.setOptions Object.assign({renderer: customRenderer()}, options)
 

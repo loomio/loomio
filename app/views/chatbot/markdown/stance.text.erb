@@ -1,4 +1,8 @@
 <%= render "chatbot/markdown/notification", event: @event %>
 <%= render "chatbot/markdown/title", eventable: @event.eventable.poll %>
+<% if @event.eventable.poll.poll_type == "meeting" %>
+<%= render "chatbot/markdown/meeting_stance_choices", stance: @event.eventable %>
+<% else %>
 <%= render "chatbot/markdown/stance_choices", stance: @event.eventable %>
+<% end %>
 <%= render "chatbot/markdown/body", eventable: @event.eventable %>

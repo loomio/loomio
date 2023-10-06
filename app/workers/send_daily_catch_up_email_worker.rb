@@ -15,7 +15,7 @@ class SendDailyCatchUpEmailWorker
               else
                 'weekly'
               end
-            UserMailer.delay(queue: :low).catch_up(user.id, nil, period)
+            UserMailer.catch_up(user.id, nil, period).deliver_now
           end
         end
       end

@@ -23,7 +23,7 @@ export default
 
   methods:
     findMentioned: (node) ->
-      console.log node.toString()
+      # console.log node.toString()
       # if node.content
       #   if isArray(node.content)
       #     node.content.forEach (n) =>

@@ -27,7 +27,7 @@ class GroupExporter
   end
 
   def to_csv(opts = {})
-    CSV.generate(opts) do |csv|
+    CSV.generate(**opts) do |csv|
       csv << ["Export for #{@group.full_name}"]
       csv << []
 

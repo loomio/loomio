@@ -5,7 +5,7 @@ import EventBus  from '@/shared/services/event_bus'
 import UrlFor    from '@/mixins/url_for'
 import _truncate from 'lodash/truncate'
 import _map      from 'lodash/map'
-import marked    from 'marked'
+import {marked}    from 'marked'
 
 import { debounce, camelCase, orderBy } from 'lodash'
 

@@ -20,6 +20,7 @@ import ChatbotWebhookForm from '@/components/chatbot/webhook_form'
 import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal'
 import PollCommonReopenModal from '@/components/poll/common/reopen_modal'
 import PollOptionForm from '@/components/poll/common/poll_option_form'
+import PollTemplateForm from '@/components/poll_template/form'
 import MoveThreadForm from '@/components/thread/move_thread_form'
 import PollCommonMoveForm from '@/components/poll/common/move_form'
 import RevisionHistoryModal from '@/components/revision_history/modal'
@@ -39,6 +40,7 @@ import PollMembers from '@/components/poll/members'
 import PollReminderForm from '@/components/poll/reminder_form'
 import GroupInvitationForm from '@/components/group/invitation_form'
 import AnnouncementHistory from '@/components/common/announcement_history'
+import SearchModal from '@/components/search/modal'
 
 export default
   components: {
@@ -65,6 +67,7 @@ export default
     PollOptionForm
     MoveThreadForm
     RevisionHistoryModal
+    PollTemplateForm
     TagsModal
     TagsSelect
     WebhookForm
@@ -81,6 +84,7 @@ export default
     GroupInvitationForm
     SeenByModal
     ArrangementForm
+    SearchModal
   }
 
   data: ->
@@ -89,6 +93,7 @@ export default
     componentProps: {}
     componentKey: 'defaultKey'
     maxWidth: null
+    persistent: true
 
   created: ->
     EventBus.$on('openModal', @openModal)
@@ -100,6 +105,8 @@ export default
 
   methods:
     openModal: (opts) ->
+      if opts.hasOwnProperty('persistent')
+        @persistent = opts.persistent 
       @maxWidth = opts.maxWidth || 720
       @componentName = opts.component
       @componentProps = opts.props
@@ -119,7 +126,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" persistent :fullscreen="$vuetify.breakpoint.xs")
+v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" :persistent="persistent" :fullscreen="$vuetify.breakpoint.xs")
   v-card(v-if="isOpen")
     component(:is="componentName" :key="componentKey" v-bind="componentProps" :close="closeModal")
 </template>

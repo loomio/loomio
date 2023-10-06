@@ -20,6 +20,13 @@ ActiveAdmin.register Group, as: 'Group' do
   scope :parents_only
   scope :not_demo
 
+  member_action :update, :method => :put do
+    group = Group.find(params[:id])
+    group.update(permitted_params[:group])
+    redirect_to admin_groups_path, :notice => "Group updated"
+  end
+
+
   batch_action :delete_spam do |group_ids|
     group_ids.each do |group_id|
       if Group.any_trial.exists?(group_id)
@@ -52,7 +59,6 @@ ActiveAdmin.register Group, as: 'Group' do
     end
     column :archived_at
     column :analytics_enabled
-    column :enable_experiments
     actions
   end
 
@@ -147,10 +153,6 @@ ActiveAdmin.register Group, as: 'Group' do
       row :handle
       row :is_referral
       row :subscription_id
-      row :enable_experiments
-      row :analytics_enabled
-      row :experiences
-      row :features
       row :theme_id
       row :cover_photo_file_name
       row :cover_photo_content_type
@@ -205,7 +207,7 @@ ActiveAdmin.register Group, as: 'Group' do
   end
 
   collection_action :import_json, method: :post do
-    GroupExportService.delay.import(params[:url])
+    GenericWorker.perform_async('GroupExportService', 'import', params[:url])
     redirect_to admin_groups_path, notice: "Import started. Check /admin/sidekiq to see when job is complete"
   end
 

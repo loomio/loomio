@@ -186,6 +186,13 @@ class User < ApplicationRecord
     end.to_i
   end
 
+  def browseable_group_ids
+    Group.where(
+      "id in (:group_ids) OR 
+      (parent_id in (:group_ids) AND is_visible_to_parent_members = TRUE)",
+      group_ids: self.group_ids).pluck(:id)
+  end
+
   def set_legal_accepted_at
     self.legal_accepted_at = Time.now
   end
@@ -291,8 +298,8 @@ class User < ApplicationRecord
   end
 
   def name
-    if deactivated_at.present?
-      "[deactivated account]"
+    if deactivated_at && AppConfig.app_features[:scrub_user_deactivate]
+      I18n.t('profile_page.deactivated_user')
     else
       self[:name]
     end
@@ -318,6 +325,54 @@ class User < ApplicationRecord
 
   def send_devise_notification(notification, *args)
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    [
+    "avatar_initials",
+    "avatar_kind",
+    "city",
+    "content_locale",
+    "country",
+    "created_at",
+    "current_sign_in_at",
+    "current_sign_in_ip",
+    "date_time_pref",
+    "deactivated_at",
+    "detected_locale",
+    "email",
+    "email_catch_up",
+    "email_catch_up_day",
+    "email_newsletter",
+    "email_on_participation",
+    "email_verified",
+    "email_when_mentioned",
+    "email_when_proposal_closing_soon",
+    "id",
+    "is_admin",
+    "key",
+    "last_seen_at",
+    "last_sign_in_at",
+    "last_sign_in_ip",
+    "legal_accepted_at",
+    "link_previews",
+    "location",
+    "locked_at",
+    "memberships_count",
+    "name",
+    "region",
+    "secret_token",
+    "selected_locale",
+    "short_bio",
+    "short_bio_format",
+    "sign_in_count",
+    "time_zone",
+    "updated_at",
+    "uploaded_avatar_content_type",
+    "uploaded_avatar_file_name",
+    "uploaded_avatar_file_size",
+    "uploaded_avatar_updated_at",
+    "username"]
   end
 
   protected

@@ -5,9 +5,50 @@ class Stance < ApplicationRecord
   include HasEvents
   include HasCreatedEvent
   include HasVolume
+  include Searchable
 
   extend HasTokens
   initialized_with_token :token
+
+  def self.pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil, poll_id: nil)
+    content_str = "regexp_replace(CONCAT_WS(' ', stances.reason, users.name), E'<[^>]+>', '', 'gi')"
+    <<~SQL.squish
+      INSERT INTO pg_search_documents (
+        searchable_type,
+        searchable_id,
+        poll_id,
+        group_id,
+        discussion_id,
+        author_id,
+        authored_at,
+        content,
+        ts_content,
+        created_at,
+        updated_at)
+      SELECT 'Stance' AS searchable_type,
+        stances.id AS searchable_id,
+        stances.poll_id AS poll_id,
+        polls.group_id as group_id,
+        polls.discussion_id AS discussion_id,
+        stances.participant_id AS author_id,
+        stances.cast_at AS authored_at,
+        #{content_str} AS content,
+        to_tsvector('simple', #{content_str}) as ts_content,
+        now() AS created_at,
+        now() AS updated_at
+      FROM stances
+        LEFT JOIN users ON users.id = stances.participant_id
+        LEFT JOIN polls ON polls.id = stances.poll_id
+      WHERE polls.discarded_at IS NULL 
+        AND stances.cast_at IS NOT null
+        AND NOT (polls.anonymous = TRUE AND polls.closed_at IS NULL)
+        AND NOT (polls.hide_results = 2 AND polls.closed_at IS NULL)
+        #{id ? " AND stances.id = #{id.to_i} LIMIT 1" : ''}
+        #{author_id ? " AND stances.participant_id = #{author_id.to_i}" : ''}
+        #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_i}" : ''}
+        #{poll_id ? " AND stances.poll_id = #{poll_id.to_i}" : ''}
+    SQL
+  end
 
   ORDER_SCOPES = ['newest_first', 'oldest_first', 'priority_first', 'priority_last']
   include Translatable
@@ -23,7 +64,7 @@ class Stance < ApplicationRecord
   has_many :stance_choices, dependent: :destroy
   has_many :poll_options, through: :stance_choices
 
-  has_paper_trail only: [:reason, :option_scores, :revoked_at, :inviter_id]
+  has_paper_trail only: [:reason, :option_scores, :revoked_at, :revoker_id, :inviter_id]
 
   accepts_nested_attributes_for :stance_choices
 
@@ -61,33 +102,48 @@ class Stance < ApplicationRecord
   validate :valid_reason_required
   validate :valid_require_all_choices
 
-  %w(group mailer group_id discussion_id discussion members voters guest_voters title tags).each do |message|
+  %w(group mailer group_id discussion_id discussion members voters title tags).each do |message|
     delegate(message, to: :poll)
   end
 
   alias :author :participant
 
-  before_save :update_option_scores
+  before_save :assign_option_scores
   after_save :update_versions_count!
+
+  def build_replacement
+    Stance.new(
+      poll_id: self.poll_id,
+      participant_id: self.participant_id,
+      inviter_id: self.inviter_id,
+      reason_format: self.reason_format,
+      latest: true
+    )
+  end
 
   def create_missing_created_event!
     self.events.create(
-      kind: created_event_kind, 
-      user_id: (poll.anonymous? ? nil: author_id), 
-      created_at: created_at, 
-      discussion_id: (add_to_discussion? ? poll.discussion_id : nil))
+      kind: created_event_kind,
+      user_id: (poll.anonymous? ? nil: author_id),
+      created_at: created_at,
+      discussion_id: (add_to_discussion? ? poll.discussion_id : nil)
+    )
   end
 
   def author_name
     participant&.name
   end
 
-  def update_option_scores
-    self.option_scores = stance_choices.map { |sc| [sc.poll_option_id, sc.score] }.to_h
+  def assign_option_scores
+    self.option_scores = build_option_scores
+  end
+
+  def build_option_scores
+    stance_choices.map { |sc| [sc.poll_option_id.to_s, sc.score] }.to_h
   end
 
   def update_option_scores!
-    update_columns(option_scores: update_option_scores)
+    update_columns(option_scores: assign_option_scores)
   end
 
   def update_versions_count!

@@ -5,7 +5,7 @@ class ContactMessagesController < ApplicationController
 
   def create
     response.set_header("X-FRAME-OPTIONS", "ALLOWALL")
-    BaseMailer.delay.contact_message(
+    BaseMailer.contact_message(
       params[:name],
       params[:email],
       params[:subject],
@@ -14,7 +14,7 @@ class ContactMessagesController < ApplicationController
         site: ENV['CANONICAL_HOST'],
         form_type: 'Sales'
       }
-    )
+    ).deliver_later
     redirect_to contact_messages_path(params: {name: params[:name]})
   end
 

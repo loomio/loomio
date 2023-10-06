@@ -42,12 +42,14 @@ export default
             @discussion = Records.discussions.build
               title: @$route.query.title
               groupId: @groupId
+              descriptionFormat: Session.defaultFormat()
         else if @$route.query.new_template
           Records.groups.findOrFetchById(@groupId).then =>
             @discussion = Records.discussions.build
               title: @$route.query.title
               groupId: @groupId
               template: true
+              descriptionFormat: Session.defaultFormat()
         else
           # display templates for the group
           @discussion = null
@@ -57,15 +59,16 @@ export default
           @discussion = Records.discussions.build
             title: @$route.query.title
             groupId: null
+            descriptionFormat: Session.defaultFormat()
       else
         @discussion = Records.discussions.build
           title: @$route.query.title
+          descriptionFormat: Session.defaultFormat()
 
 </script>
 <template lang="pug">
 v-main
   v-container.start-discussion-page.max-width-800.px-0.px-sm-3
-    discussion-template-banner(v-if="discussion", :discussion="discussion")
     v-card
       discussion-form(
         v-if="discussion"

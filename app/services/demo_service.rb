@@ -4,7 +4,12 @@ class DemoService
 		demo = Demo.where('demo_handle is not null').last
 		return unless demo
 
-		expected = 2
+		# precache translations
+		%w[fr de es pt it uk].each do |locale|
+			TranslationService.translate_group_content!(demo.group, locale, true)
+		end
+
+		expected = ENV.fetch('FEATURES_DEMO_GROUPS_SIZE', 3)
 		remaining = Redis::List.new('demo_group_ids').value.size
 
 		(expected - remaining).times do
@@ -19,6 +24,11 @@ class DemoService
     group.subscription = Subscription.new(plan: 'demo', owner: actor)
     group.add_member! actor
     group.save!
+
+    if actor.locale != "en"
+	    TranslationService.translate_group_content!(group, actor.locale)
+	  end
+
     EventBus.broadcast('demo_started', actor)
    	group
 	end

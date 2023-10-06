@@ -11,6 +11,42 @@ class Poll < ApplicationRecord
   include HasRichText
   include HasTags
   include Discard::Model
+  include Searchable
+
+  def self.pg_search_insert_statement(id: nil, author_id: nil, discussion_id: nil)
+    content_str = "regexp_replace(CONCAT_WS(' ', polls.title, polls.details, users.name), E'<[^>]+>', '', 'gi')"
+    <<~SQL.squish
+      INSERT INTO pg_search_documents (
+        searchable_type,
+        searchable_id,
+        poll_id,
+        group_id,
+        discussion_id,
+        author_id,
+        authored_at,
+        content,
+        ts_content,
+        created_at,
+        updated_at)
+      SELECT 'Poll' AS searchable_type,
+        polls.id AS searchable_id,
+        polls.id AS poll_id,
+        polls.group_id as group_id,
+        polls.discussion_id AS discussion_id,
+        polls.author_id AS author_id,
+        polls.created_at AS authored_at,
+        #{content_str} AS content,
+        to_tsvector('simple', #{content_str}) as ts_content,
+        now() AS created_at,
+        now() AS updated_at
+      FROM polls
+        LEFT JOIN users ON users.id = polls.author_id
+      WHERE polls.discarded_at IS NULL
+        #{id ? " AND polls.id = #{id.to_i} LIMIT 1" : ""}
+        #{author_id ? " AND polls.author_id = #{author_id.to_i}" : ""}
+        #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_i}" : ""}
+    SQL
+  end
 
   is_rich_text on: :details
 
@@ -56,6 +92,7 @@ class Poll < ApplicationRecord
                        validate_maximum_stance_choices
                        validate_min_score
                        validate_max_score
+                       has_options
                        validate_dots_per_person).freeze
 
   TEMPLATE_VALUES.each do |field|
@@ -86,10 +123,6 @@ class Poll < ApplicationRecord
     self[:custom_fields][:maximum_stance_choices] ||
     AppConfig.poll_types.dig(self.poll_type, 'defaults', 'maximum_stance_choices') ||
     poll.poll_options.length
-  end
-
-  def poll_type_validations
-    AppConfig.poll_types.dig(self.poll_type, 'poll_type_validations') || []
   end
 
   include Translatable
@@ -144,15 +177,11 @@ class Poll < ApplicationRecord
   validates :details, length: {maximum: Rails.application.secrets.max_message_length }
 
   before_save :clamp_minimum_stance_choices
-  before_save :clamp_closing_at
   validate :closes_in_future
-  validate :closes_at_nil_if_template
   validate :discussion_group_is_poll_group
   validate :cannot_deanonymize
   validate :cannot_reveal_results_early
   validate :title_if_not_discarded
-  validate :process_name_if_template
-  validate :process_subtitle_if_template
 
   alias_method :user, :author
 
@@ -168,11 +197,10 @@ class Poll < ApplicationRecord
     :anonymous,
     :discarded_at,
     :discarded_by,
-    :stances_in_discussion,
     :voter_can_add_options,
-    :anyone_can_participate,
     :specified_voters_only,
     :stance_reason_required,
+    :tags,
     :notify_on_closing_soon,
     :poll_option_names,
     :hide_results]
@@ -214,6 +242,10 @@ class Poll < ApplicationRecord
     end
   end
 
+  def can_respond_maybe
+    self[:custom_fields].fetch('can_respond_maybe', false)
+  end
+
   def result_columns
     case poll_type
     when 'proposal'
@@ -236,6 +268,8 @@ class Poll < ApplicationRecord
       %w[chart name score_percent voter_count voters]
     when 'meeting'
       %w[chart name score voters]
+    else
+      []
     end
   end
   
@@ -347,6 +381,7 @@ class Poll < ApplicationRecord
 
   # people who administer the poll (not necessarily vote)
   def admins
+    raise "poll.admins only makes sense for persisted polls" if self.new_record?
     User.active.
       joins("LEFT OUTER JOIN webhooks wh ON wh.group_id = #{self.group_id || 0} AND wh.actor_id = users.id").
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
@@ -356,27 +391,12 @@ class Poll < ApplicationRecord
       where("(wh.id IS NOT NULL AND 'create_poll' = ANY(wh.permissions)) OR
              (p.author_id = users.id AND p.group_id IS NOT NULL AND m.id IS NOT NULL) OR
              (p.author_id = users.id AND p.group_id IS NULL) OR
+             (p.author_id = users.id AND dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
              (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL AND dr.admin = TRUE) OR
              (m.id  IS NOT NULL AND m.archived_at IS NULL AND m.admin = TRUE) OR
              (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE AND s.admin = TRUE)")
   end
 
-  # people who can vote
-  def voters
-    if persisted? && specified_voters_only
-      invited_voters
-    else
-      members
-    end
-  end
-
-  def invited_voters
-    User.active.
-    joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-    joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
-    where("s.id IS NOT NULL AND s.revoked_at IS NULL AND latest = TRUE")
-  end
-  
   # people who can read the poll, not necessarily vote
   def members
       User.active.
@@ -386,18 +406,6 @@ class Poll < ApplicationRecord
       where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
              (m.id  IS NOT NULL AND m.archived_at IS NULL) OR
              (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE)")
-  end
-
-  def guest_voters
-    voters.where('m.group_id is null')
-  end
-
-  def non_voters
-    # people who have not been given a vote yet
-    User.active.
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0} AND s.latest = TRUE").
-      where('(m.id IS NOT NULL AND m.archived_at IS NULL) AND (s.id IS NULL)')
   end
 
   def add_guest!(user, author)
@@ -474,18 +482,6 @@ class Poll < ApplicationRecord
     end
   end
 
-  def process_name_if_template
-    if template && !process_name
-      errors.add(:process_name, I18n.t(:"activerecord.errors.messages.blank"))
-    end
-  end
-
-  def process_subtitle_if_template
-    if template && !process_subtitle
-      errors.add(:process_subtitle, I18n.t(:"activerecord.errors.messages.blank"))
-    end
-  end
-
   def cannot_deanonymize
     if anonymous_changed? && anonymous_was == true
       errors.add :anonymous, :cannot_deanonymize
@@ -498,23 +494,11 @@ class Poll < ApplicationRecord
     end
   end
 
-  def clamp_closing_at
-    return if closed_at
-    return if closing_at.nil? 
-    self.closing_at = self.closing_at.at_beginning_of_hour
-  end
-  
   def closes_in_future
     return if closed_at
     return if closing_at.nil? 
     return if closing_at > Time.zone.now
     errors.add(:closing_at, I18n.t(:"poll.error.must_be_in_the_future"))
-  end
-
-  def closes_at_nil_if_template
-    if template && closing_at
-      errors.add(:closing_at, I18n.t(:"poll.error.templates_cannot_close"))
-    end
   end
 
   def discussion_group_is_poll_group

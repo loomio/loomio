@@ -31,7 +31,7 @@ describe 'CommentService' do
 
     it 'nullifies the parent_id of replies' do
       child = create(:comment, discussion: comment.discussion, parent: comment)
-      expect { CommentService.destroy(comment: comment, actor: user) }.to raise_error
+      expect { CommentService.destroy(comment: comment, actor: user) }.to raise_error CanCan::AccessDenied
     end
   end
 
@@ -81,6 +81,38 @@ describe 'CommentService' do
 
         expect { CommentService.create(comment: comment, actor: user) }.to change { Event.where(kind: 'user_mentioned').count }
         expect(comment.mentioned_users).to include comment.parent.author
+      end
+
+      it "marks notification as read on reply" do
+        notifications = Notification.joins(:event).where('events.kind': 'user_mentioned', viewed: false, user_id: user)
+        expect(notifications.count).to eq 0
+
+        comment = create(:comment,
+           author: another_user,
+           discussion: discussion,
+           body: "hi @#{user.username}",
+           body_format: "md")
+
+        CommentService.create(comment: comment, actor: another_user)
+
+        expect(notifications.count).to eq 1
+
+        reply_comment = create(:comment,
+           parent: comment,
+           author: user,
+           discussion: discussion,
+           body: "gidday",
+           body_format: "md")
+
+        CommentService.create(comment: reply_comment, actor: user)
+
+        expect(notifications.count).to eq 0
+
+        # reply_comment = 
+        # comment.body = "A mention for @#{another_user.username}!"
+
+        # expect { CommentService.create(comment: comment, actor: user) }.to change { Event.where(kind: 'user_mentioned').count }
+        # expect(comment.mentioned_users).to include comment.parent.author
       end
     end
 

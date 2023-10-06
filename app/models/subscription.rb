@@ -1,4 +1,6 @@
 class Subscription < ApplicationRecord
+  include SubscriptionConcern if Object.const_defined?('SubscriptionConcern')
+
   PAYMENT_METHODS = ["chargify", "manual", "barter", "paypal"]
 
   has_many :groups
@@ -32,5 +34,26 @@ class Subscription < ApplicationRecord
 
   def management_link
     (self.info || {})['chargify_management_link']
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["activated_at",
+     "canceled_at",
+     "chargify_subscription_id",
+     "created_at",
+     "expires_at",
+     "id",
+     "info",
+     "max_members",
+     "max_orgs",
+     "max_threads",
+     "members_count",
+     "owner_id",
+     "payment_method",
+     "plan",
+     "renewed_at",
+     "renews_at",
+     "state",
+     "updated_at"]
   end
 end

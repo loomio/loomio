@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import marked from 'marked'
+import {marked} from 'marked'
 import {customRenderer, options} from '@/shared/helpers/marked.coffee'
 marked.setOptions Object.assign({renderer: customRenderer()}, options)
 import { emojiReplaceText } from '@/shared/helpers/emojis.coffee'

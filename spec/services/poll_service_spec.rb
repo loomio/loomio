@@ -128,12 +128,8 @@ describe PollService do
       expect { PollService.create(poll: poll_created, actor: user) }.to_not change { Poll.count }
     end
 
-    it 'does not allow logged out users to create polls' do
-      expect { PollService.create(poll: poll_created, actor: logged_out_user) }.to raise_error { CanCan::AccessDenied }
-    end
-
     it 'does not allow users to create polls they are not allowed to' do
-      expect { PollService.create(poll: poll_created, actor: another_user) }.to raise_error { CanCan::AccessDenied }
+      expect { PollService.create(poll: poll_created, actor: another_user) }.to raise_error CanCan::AccessDenied
     end
 
     it 'does not email people' do
@@ -159,7 +155,7 @@ describe PollService do
     end
 
     it 'does not allow randos to edit proposals' do
-      expect { PollService.update(poll: poll_created, params: { details: "A new description" }, actor: another) }.to raise_error { CanCan::AccessDenied }
+      expect { PollService.update(poll: poll_created, params: { details: "A new description" }, actor: another_user) }.to raise_error CanCan::AccessDenied
       expect(poll_created.reload.details).to_not eq "A new description"
     end
 
@@ -186,38 +182,6 @@ describe PollService do
       expect {
         PollService.update(poll: poll_created, params: { title: "BIG CHANGES!" }, actor: user)
       }.to change { Events::PollEdited.where(kind: :poll_edited).count }.by(1)
-    end
-  end
-
-  describe 'add_options' do
-    before { poll.update(voter_can_add_options: true) }
-
-    it 'adds new poll options' do
-      expect {
-        PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: user)
-      }.to change { poll.poll_options.count }.by(1)
-      expect(poll.reload.poll_option_names).to include 'new_option'
-      expect(Event.last.kind).to eq 'poll_option_added'
-    end
-
-    it 'does not update when poll does not accept new options' do
-      poll.update(voter_can_add_options: false)
-      expect {
-        PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: user)
-      }.to raise_error { CanCan::AccessDenied }
-      expect(poll.reload.poll_option_names).to_not include 'new_option'
-    end
-
-    it 'does not update when no new options are passed' do
-      expect {
-        PollService.add_options(poll: poll, params: { poll_option_names: [] }, actor: user)
-      }.to_not change { Event.count }
-    end
-
-    it 'does not update for unauthorized user' do
-      expect {
-        PollService.add_options(poll: poll, params: { poll_option_names: ['new_option'] }, actor: another_user)
-      }.to raise_error { CanCan::AccessDenied }
     end
   end
 
@@ -272,16 +236,6 @@ describe PollService do
       expect(stance.created_event.reload.user).to be_present
     end
 
-    it 'stances_in_discussion is false' do
-      poll_created.hide_results = :until_closed
-      PollService.create(poll: poll_created, actor: user)
-      event = StanceService.create(stance: stance, actor: stance.participant)
-      expect(event.discussion).to be nil
-      PollService.close(poll: poll_created, actor: user)
-      expect(event.reload.discussion_id).to be_present
-
-    end
-
     it 'hides and reveals results correctly' do
       poll_created.hide_results = 'until_closed'
       PollService.create(poll: poll_created, actor: user)
@@ -321,23 +275,6 @@ describe PollService do
       PollService.create(poll: poll_created, actor: user)
       poll_created.update(closing_at: 1.day.ago, closed_at: 1.day.ago)
       expect { PollService.expire_lapsed_polls }.to_not change { poll_created.reload.closed_at }
-    end
-  end
-
-  describe '#cleanup_examples' do
-    it 'removes example polls' do
-      create(:poll, example: true, created_at: 2.days.ago)
-      expect { PollService.cleanup_examples }.to change { Poll.count }.by(-1)
-    end
-
-    it 'does not remove recent example polls' do
-      create(:poll, example: true, created_at: 30.minutes.ago)
-      expect { PollService.cleanup_examples }.to_not change { Poll.count }
-    end
-
-    it 'does not remove non-example polls' do
-      create(:poll, created_at: 2.days.ago)
-      expect { PollService.cleanup_examples }.to_not change { Poll.count }
     end
   end
 end

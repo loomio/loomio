@@ -11,6 +11,8 @@ end
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get "/up", to: proc { [200, {}, ["ok"]] }, as: :rails_health_check
+  
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => '/admin/sidekiq'
     mount Blazer::Engine, at: "/admin/blazer"
@@ -78,6 +80,7 @@ Rails.application.routes.draw do
           post :reset_token
           get :subgroups
           post :export
+          post :export_csv
           post 'upload_photo/:kind', action: :upload_photo
         end
         collection do
@@ -168,7 +171,6 @@ Rails.application.routes.draw do
         patch :unpin_reader, on: :member
         patch :move, on: :member
         delete :discard, on: :member
-        post  :fork, on: :collection
         patch :move_comments, on: :member
         get :history, on: :member
         get :search, on: :collection
@@ -200,13 +202,23 @@ Rails.application.routes.draw do
           delete :discard
           post :close
           post :reopen
-          post :add_options
           patch :add_to_thread
         end
         get  :closed, on: :collection
       end
 
-      resource :outcomes,     only: [:create, :update]
+      resources :poll_templates, only: [:index, :create, :update, :show, :destroy] do
+        collection do
+          post :hide
+          post :unhide
+          post :discard
+          post :undiscard
+          post :positions
+          post :settings
+        end
+      end
+
+      resource :outcomes, only: [:create, :update]
 
       resources :stances, only: [:index, :create, :update] do
         member do
@@ -285,14 +297,16 @@ Rails.application.routes.draw do
   get '/users/sign_up', to: redirect('/dashboard')
   devise_for :users
 
-  namespace(:subscriptions) do
-    post :webhook
-  end
-
   resources :contact_messages, only: [:new, :create] do
     get :show, on: :collection
   end
 
+  resources :poll_templates, only: [] do
+    member do
+      get :dump_i18n_yaml
+    end
+  end
+  
   post :email_processor, to: 'received_emails#create'
 
   namespace :email_actions do
@@ -335,13 +349,16 @@ Rails.application.routes.draw do
   get 'p/new(/:type)'                      => 'application#index', as: :new_poll
   get 'threads/direct'                     => 'application#index', as: :groupless_threads
   get 'tasks'                              => 'application#index', as: :tasks
-
+  get 'poll_templates/new'                 => 'application#index'
+  get 'poll_templates/:id'                 => 'application#index'
+  get 'poll_templates/:id/edit'            => 'application#index'
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
   get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
-  get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
+  get 'd/:key/:slug(/:sequence_id)'        => 'discussions#show',            as: :discussion
+  get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion_no_slug
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
@@ -370,7 +387,7 @@ Rails.application.routes.draw do
   get '/wp-login.php'                      => 'application#ok'
   get '/crowdfunding_celebration'          => 'application#crowdfunding'
   get '/crowdfunding'                      => 'application#crowdfunding'
-  get '/brand'                      => 'application#brand'
+  get '/brand'                             => 'application#brand'
   get '/sitemap.xml' => 'application#sitemap'
 
 
@@ -386,6 +403,8 @@ Rails.application.routes.draw do
     post :oauth,                          to: 'identities/saml#create',   as: :saml_oauth_callback
     get :metadata,                        to: 'identities/saml#metadata', as: :saml_metadata
   end
+
+  mount LoomioSubs::Engine, at: "/" if Object.const_defined?('LoomioSubs')
 
   get ":id", to: 'groups#show', as: :group_handle
 end

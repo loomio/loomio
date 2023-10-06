@@ -5,6 +5,10 @@ module PrettyUrlHelper
     super opts.merge(model: model.class.to_s.underscore, token: model.group.token)
   end
 
+  def discussion_path(discussion, options = {})
+    super(discussion, options.merge(slug: discussion.title.parameterize))
+  end
+  
   def discussion_url(discussion, options = {})
     super(discussion, options.merge(slug: discussion.title.parameterize))
   end
@@ -17,11 +21,15 @@ module PrettyUrlHelper
     end
   end
 
-  def discussion_poll_url(poll, options = {})
-    if poll.discussion.present?
-      discussion_url(poll.discussion, options.merge(sequence_id: poll.created_event.sequence_id))
+  def discussion_poll_url(model, options = {})
+    if model.discussion.present?
+      if model.is_a?(Outcome)
+        discussion_url(model.discussion, options.merge(sequence_id: model.poll.created_event.sequence_id))
+      else
+        discussion_url(model.discussion, options.merge(sequence_id: model.created_event.sequence_id))
+      end
     else
-      poll_url(poll, options)
+      poll_url(model.poll, options)
     end
   end
 
@@ -31,9 +39,9 @@ module PrettyUrlHelper
     when Group, GroupIdentity          then group_url(model.group, opts)
     when PaperTrail::Version           then polymorphic_url(model.item, opts)
     when MembershipRequest             then group_url(model.group, opts.merge(use_key: true))
-    when Poll                          then discussion_poll_url(model.poll, opts)
-    when Outcome                       then discussion_poll_url(model.poll, opts)
-    when Stance                        then discussion_poll_url(model.poll, opts.merge(change_vote: model.poll.id))
+    when Poll                          then discussion_poll_url(model, opts)
+    when Outcome                       then discussion_poll_url(model, opts)
+    when Stance                        then discussion_poll_url(model, opts)
     when Comment                       then comment_url(model.discussion, model, opts)
     when Membership                    then membership_url(model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)

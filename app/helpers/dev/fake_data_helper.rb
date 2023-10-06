@@ -46,7 +46,7 @@ module Dev::FakeDataHelper
     values = defaults.merge(args)
     values[:handle] = values[:name].parameterize
     group = Group.new(values)
-    group.tags = [fake_tag]
+    # group.tags = [fake_tag]
 
     # puts 'attaching'
     # group.logo.attach(
@@ -79,6 +79,7 @@ module Dev::FakeDataHelper
                     Faker::TvShows::Simpsons.quote,
                     Faker::Quote.famous_last_words].sample,
       private: true,
+      tags: ['spicy'],
       group: fake_group,
       author: fake_user}.merge(args))
   end
@@ -180,6 +181,7 @@ module Dev::FakeDataHelper
       discussion: fake_discussion,
       poll_type: 'poll',
       title: [Faker::Superhero.name, Faker::Movies::StarWars.quote].sample.truncate(140),
+      tags: ['biggin'],
       details: [
         Faker::Movies::StarWars.quote,
         Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote,
@@ -208,6 +210,18 @@ module Dev::FakeDataHelper
     Poll.new(options)
   end
 
+  def create_fake_stances(poll:)
+    (2..7).to_a.sample.times do
+      u = fake_user
+      poll.group.add_member!(u) if poll.group
+      stance = fake_stance(poll: poll)
+      stance.save!
+      stance.create_missing_created_event!
+    end
+    poll.update_counts!
+  end
+
+
 
   def fake_score(poll, index = 0)
     case poll.poll_type
@@ -224,6 +238,31 @@ module Dev::FakeDataHelper
     else
       1
     end
+  end
+
+  def cast_stance_params(poll)
+    if poll.require_all_choices
+      num_choices = poll.poll_options.length
+    else
+      num_choices = (poll.minimum_stance_choices..poll.maximum_stance_choices).to_a.sample
+    end
+
+    choice = poll.poll_options.sample(num_choices).map.with_index do |option, index|
+      score = fake_score(poll)
+      [option.name, fake_score(poll, index)]
+    end.to_h
+
+    reason = [
+      Faker::Hipster.sentence,
+      Faker::GreekPhilosophers.quote,
+      Faker::TvShows::RuPaul.quote,
+      ""
+    ].sample
+
+    {
+      choice: choice,
+      reason: reason
+    }
   end
 
   def fake_stance(args = {})
@@ -283,12 +322,6 @@ module Dev::FakeDataHelper
       subject: Faker::ChuckNorris.fact,
       body: "FORWARDED MESSAGE------ TO: Mary <mary@example.com>, beth@example.com, Tim <tim@example.com> SUBJECT: We're having an argument! blahblahblah",
     })
-  end
-
-  def create_fake_poll_with_stances(args = {})
-    poll = saved fake_poll(args)
-    create_fake_stances(poll: poll)
-    poll
   end
 
   def create_group_with_members
@@ -366,17 +399,6 @@ module Dev::FakeDataHelper
 
   def create_fake_poll_in_group(args = {})
     saved(build_fake_poll_in_group)
-  end
-
-  def create_fake_stances(poll:)
-    (2..7).to_a.sample.times do
-      u = fake_user
-      poll.group.add_member!(u) if poll.group
-      stance = fake_stance(poll: poll)
-      stance.save!
-      stance.create_missing_created_event!
-    end
-    poll.update_counts!
   end
 
   def create_discussion_with_nested_comments

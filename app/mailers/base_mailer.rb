@@ -42,7 +42,7 @@ class BaseMailer < ActionMailer::Base
       if subject_is_title
         subject = subject_prefix + subject_params[:title]
       else
-        subject = subject_prefix + I18n.t(subject_key, subject_params)
+        subject = subject_prefix + I18n.t(subject_key, **subject_params)
       end
       mail options.merge(to: to, subject: subject )
     end

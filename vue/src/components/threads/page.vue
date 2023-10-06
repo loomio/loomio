@@ -11,7 +11,7 @@ import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
 export default
   data: ->
     threads: []
-    loader: null
+    loader: {}
 
   created: ->
     EventBus.$on 'signedIn', @init
@@ -55,10 +55,10 @@ v-main
     v-layout.mb-3
       //- v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
 
-    v-card.mb-3.dashboard-page__loading(v-if='!threads.length' aria-hidden='true')
+    v-card.mb-3.dashboard-page__loading(v-if='loader.loading && threads.length == 0' aria-hidden='true')
       v-list(two-line)
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
-    div(v-if="threads.length")
+    div(v-else)
       section.threads-page__loaded
         .threads-page__empty(v-if='threads.length == 0')
           p(v-t="'threads_page.no_invite_only_threads'")

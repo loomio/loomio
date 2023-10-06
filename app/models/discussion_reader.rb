@@ -9,8 +9,6 @@ class DiscussionReader < ApplicationRecord
   belongs_to :discussion
   belongs_to :inviter, class_name: 'User'
 
-  delegate :update_importance, to: :discussion
-  delegate :importance, to: :discussion
   delegate :message_channel, to: :user
 
   scope :dangling, -> { joins('left join discussions on discussions.id = discussion_id left join users on users.id = user_id').where('discussions.id is null or users.id is null') }

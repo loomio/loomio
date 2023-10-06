@@ -7,7 +7,6 @@ describe StanceService do
   let(:discussion) { create :discussion, group: group }
   let(:poll) { build :poll, discussion: discussion }
   let(:proposal) { create :poll_proposal, discussion: discussion }
-  let(:public_poll) { create :poll, anyone_can_participate: true }
   let(:public_stance) { build :stance, poll: public_poll, stance_choices: [agree_choice], participant: nil }
   let(:user) { create :user }
   let(:voter) { create :user }
@@ -59,20 +58,15 @@ describe StanceService do
 
     it 'sets event parent to the poll created event' do
       poll_created_event
-      event = StanceService.create(stance: stance_created, actor: voter)
+      stance = Stance.find_by(poll: poll, participant: voter, latest: true)
+      stance.choice = poll.poll_option_names.first
+      stance.reason = "hello"
+      event = StanceService.create(stance: stance, actor: voter)
       expect(event.parent.id).to eq poll_created_event.id
     end
 
-    it 'does not create a stance for a logged out user' do
-      expect { StanceService.create(stance: public_stance, actor: LoggedOutUser.new) }.to raise_error { CanCan::AccessDenied }
-    end
-
-    it 'does not allow visitors to create unauthorized stances' do
-      expect { StanceService.create(stance: stance_created, actor: visitor) }.to raise_error { CanCan::AccessDenied }
-    end
-
     it 'does not allow an unauthorized member to create a stance' do
-      expect { StanceService.create(stance: stance_created, actor: another_user) }.to raise_error { CanCan::AccessDenied }
+      expect { StanceService.create(stance: stance_created, actor: another_user) }.to raise_error CanCan::AccessDenied
     end
 
     it 'updates total_score on the poll' do

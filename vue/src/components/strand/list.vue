@@ -120,11 +120,17 @@ export default
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
           .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
       .strand-item__main(style="overflow: hidden")
-        //- div(v-if="$route.query.debug") {{obj.event.kind}} {{obj.event.eventableId}} {{obj.event.sequenceId}} {{isFocused(obj.event)}} {{obj.event.childCount}} {{obj.children.length}}
+        //- div {{obj.event.kind}} {{obj.event.positionKey}} {{obj.event.sequenceId}} {{isFocused(obj.event)}} childCount{{obj.event.childCount}} chdrn {{obj.children.length}}
         div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
           strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
           component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
         .strand-list__children(v-if="obj.event.childCount")
+          strand-load-more(
+            v-if="obj.children.length == 0"
+            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadChildren(obj.event)}"
+            :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
+            @click="loader.loadChildren(obj.event)"
+            :loading="loader.loading == 'children'+obj.event.id")
           strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
         reply-form(:eventId="obj.event.id")
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")

@@ -5,7 +5,7 @@ import Records from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
 import * as Sentry from '@sentry/vue'
 import { BrowserTracing } from "@sentry/tracing"
-import { forEach } from 'lodash'
+import { forEach, snakeCase } from 'lodash'
 import router from '@/routes.coffee'
 
 export default (callback) ->
@@ -34,7 +34,10 @@ export default (callback) ->
           "ChunkLoadError: Loading chunk chunk-",
           "TypeError: annulé",
           "Permission denied to access property \"dispatchEvent\" on cross-origin object",
-          "TypeError: Failed to fetch"
+          "TypeError: Failed to fetch",
+          "Object captured as promise rejection with keys: error, ok, status, statusText",
+          "Object captured as promise rejection with keys: exception, ok, status, statusText",
+          "Non-Error promise rejection captured with keys: exception, ok, status, statusText"
         ]
         dsn: AppConfig.sentry_dsn
         tunnel: '/bug_tunnel'
@@ -57,7 +60,7 @@ export default (callback) ->
 
     forEach Records, (recordInterface, k) ->
       model = Object.getPrototypeOf(recordInterface).model
-      if model && AppConfig.permittedParams[model.singular]
-        model.serializableAttributes = AppConfig.permittedParams[model.singular]
+      if model && AppConfig.permittedParams[snakeCase(model.singular)]
+        model.serializableAttributes = AppConfig.permittedParams[snakeCase(model.singular)]
 
     callback(appConfig)
