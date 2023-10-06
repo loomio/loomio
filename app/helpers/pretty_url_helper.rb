@@ -5,6 +5,10 @@ module PrettyUrlHelper
     super opts.merge(model: model.class.to_s.underscore, token: model.group.token)
   end
 
+  def discussion_path(discussion, options = {})
+    super(discussion, options.merge(slug: discussion.title.parameterize))
+  end
+  
   def discussion_url(discussion, options = {})
     super(discussion, options.merge(slug: discussion.title.parameterize))
   end
