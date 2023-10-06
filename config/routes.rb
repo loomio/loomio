@@ -91,6 +91,7 @@ Rails.application.routes.draw do
 
       resources :memberships, only: [:index, :create, :update, :destroy] do
         collection do
+          post :user_name
           post :join_group
           get :for_user
           get :autocomplete, action: :index

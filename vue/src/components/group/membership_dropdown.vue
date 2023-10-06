@@ -5,19 +5,33 @@ import AbilityService from '@/shared/services/ability_service'
 import FlashService   from '@/shared/services/flash'
 import EventBus from '@/shared/services/event_bus'
 import { snakeCase } from 'lodash'
+import UserNameModal from  '@/components/group/user_name_modal'
 
 export default
+  components: { UserNameModal }
+
   props:
     membership: Object
+
   methods:
     canPerformAction: ->
       @canSetTitle()         or
+      @canSetName()          or
       @canRemoveMembership() or
       @canResendMembership() or
       @canToggleAdmin()
 
+    canSetName: ->
+      !@membership.acceptedAt && !@membership.user().emailVerified
+
     canSetTitle: ->
       AbilityService.canSetMembershipTitle(@membership)
+
+    setName: ->
+      EventBus.$emit 'openModal',
+                      component: 'UserNameModal',
+                      props:
+                        user: @membership.user().clone()
 
     setTitle: ->
       EventBus.$emit 'openModal',
@@ -80,6 +94,8 @@ export default
         //- span(v-t="'membership_dropdown.membership_options'")
         v-icon mdi-dots-vertical
     v-list.group-actions-dropdown__menu-content
+      v-list-item.membership-dropdown__set-title(v-if='canSetName()' @click='setName()')
+        v-list-item-title(v-t="'membership_dropdown.set_name_and_username'")
       v-list-item.membership-dropdown__set-title(v-if='canSetTitle()' @click='setTitle()')
         v-list-item-title(v-t="'membership_dropdown.set_title'")
       v-list-item.membership-dropdown__resend(v-if='canResendMembership()' @click='resendMembership()', :disabled='membership.resent')
