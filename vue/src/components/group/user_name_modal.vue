@@ -22,7 +22,7 @@ export default
 v-card.user-name-modal
   submit-overlay(:value='user.processing')
   v-card-title
-    h1.headline(tabindex="-1" v-t="'user_name_modal.set_user_name'")
+    h1.headline(tabindex="-1" v-t="'membership_dropdown.set_name_and_username'")
     v-spacer
     dismiss-modal-button
   v-card-text
