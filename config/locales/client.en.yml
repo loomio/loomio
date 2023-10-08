@@ -627,6 +627,7 @@ en:
     invitations: "Invitations"
 
   membership_dropdown:
+    set_name_and_username: "Set name and username"
     set_title: "Set title"
     resend: "Resend invitation"
     invitation_resent: "Invitation resent"
@@ -1389,12 +1390,16 @@ en:
 
   membership_form:
     modal_title:
-      group:      Set group title
+      group: Set title
     title_helptext:
-      group:      This title will appear beside {{name}}'s name within this group. Use it to let people know their role.
+      group: This title will appear beside {{name}}'s name within this group. Use it to let people know their role.
     title_label: title
     title_placeholder: E.g. 'Coordinator', or 'Facilitator'
     updated: Membership title updated
+
+  user_name_modal:
+    user_name_updated: User name updated
+    set_user_name: Set user name
 
   user_page:
     contact_user: 'Contact {{name}}'

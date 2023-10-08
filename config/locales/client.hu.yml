@@ -570,6 +570,7 @@ hu:
       group: Eltávolítás a csoportból
       poll: 'Eltávolítás innen: {{pollType}}'
     cancel_invitation: Meghívás visszavonása
+    set_name_and_username: Állítsa be a nevet és a felhasználónevet
   notification_models:
     discussion: 'téma:'
     comment: hozzászólás itt
@@ -1804,6 +1805,7 @@ hu:
     undecided: Eldöntetlen
     undecided_first: Először bizonytalan
     vote_removed: Szavazat eltávolítva
+    name_or_username: Név vagy felhasználónév
   poll_common_undecided_panel:
     show_invitations: A függőben lévő meghívók megjelenítése
     invitation_count_singular: 1 további személyt hívtak meg e-mailben a részvételre
@@ -1928,6 +1930,7 @@ hu:
     process_introduction: Sablon súgó
     process_introduction_hint: Néhány bekezdés, amely elmagyarázza a sablon használatát. Adjon meg hivatkozásokat olyan forrásokhoz, amelyek hasznosak lehetnek.
     option_has_votes_confirm_delete: Néhányan erre a lehetőségre szavaztak. Biztosan törli?
+    notify_everyone_when_poll_starts: Értesítsen mindenkit, amikor a %{poll_type} elindul
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése
@@ -2504,3 +2507,6 @@ hu:
     any_tag: Bármilyen címke
     all_subgroups: Minden alcsoport
     parent_only: Csak szülő
+  user_name_modal:
+    user_name_updated: Felhasználónév frissítve
+    set_user_name: Felhasználónév beállítása

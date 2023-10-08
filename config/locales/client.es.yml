@@ -596,6 +596,7 @@ es:
       group: Eliminar del grupo
       poll: Eliminar de {{pollType}}
     cancel_invitation: Cancelar la invitación
+    set_name_and_username: Establecer nombre y nombre de usuario
   notification_models:
     discussion: 'Hilo:'
     comment: comentar en
@@ -1930,6 +1931,7 @@ es:
     change_results_order: Cambiar orden de resultados
     none_of_the_above: "(Ninguno de los mencionados) "
     vote_removed: Voto eliminado
+    name_or_username: Nombre o nombre de usuario
   poll_common_undecided_panel:
     show_undecided: Mostrar %{count} indecisos
     show_invitations: Mostrar invitaciones pendientes
@@ -2058,6 +2060,7 @@ es:
     process_introduction: Ayuda de plantilla
     process_introduction_hint: Unos párrafos que explican cómo utilizar la plantilla. Incluya enlaces a recursos que podrían ser útiles.
     option_has_votes_confirm_delete: Algunas personas han votado por esta opción, ¿estás seguro de que quieres eliminarla?
+    notify_everyone_when_poll_starts: Notificar a todos cuando comience %{poll_type}
   poll_proposal_form:
     tool_tip_collapsed: Toma de decisión conjunta
     vote_method_hint: Los votantes están de acuerdo o en desacuerdo con una declaración
@@ -2559,3 +2562,6 @@ es:
     any_tag: cualquier etiqueta
     all_subgroups: Todos los subgrupos
     parent_only: Sólo padres
+  user_name_modal:
+    user_name_updated: Nombre de usuario actualizado
+    set_user_name: Establecer nombre de usuario
