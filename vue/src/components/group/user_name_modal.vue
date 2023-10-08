@@ -14,6 +14,8 @@ export default
       .then =>
         Flash.success "user_name_modal.user_name_updated"
         @closeModal()
+      .catch (data) =>
+        @user.saveError(data)
 
 </script>
 <template lang="pug">
@@ -26,7 +28,9 @@ v-card.user-name-modal
   v-card-text
     v-text-field(:label="$t('profile_page.email_label')" v-model="user.email" disabled)
     v-text-field(:label="$t('profile_page.name_label')" v-model="user.name")
+    validation-errors(:subject='user' field='name')
     v-text-field(:label="$t('profile_page.username_label')" v-model="user.username")
+    validation-errors(:subject='user', field='username')
   v-card-actions
     v-spacer
     v-btn.primary(@click="submit" v-t="'common.action.save'")

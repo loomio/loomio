@@ -72,7 +72,7 @@ class API::V1::MembershipsController < API::V1::RestfulController
       self.resource = user
       respond_with_resource
     else
-      respond_with_error message: :"errors.forbidden", status: 403
+      error_response(403)
     end
   end
 
