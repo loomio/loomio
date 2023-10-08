@@ -573,6 +573,7 @@ uk:
       group: Видалити з групи
       poll: Видалити з {{pollType}}
     cancel_invitation: Скасувати запрошення
+    set_name_and_username: Встановіть ім'я та ім'я користувача
   notification_models:
     discussion: 'тема:'
     comment: прокоментувати в
@@ -1887,6 +1888,7 @@ uk:
     change_results_order: Змінити послідовність результатів
     none_of_the_above: "(Жоден з вищевказаних)"
     vote_removed: Голос видалено
+    name_or_username: Ім'я або ім'я користувача
   poll_common_undecided_panel:
     show_invitations: Показати запрошення в очікувані
     invitation_count_singular: 1 особа запрошена до участі електронною поштою
@@ -2011,6 +2013,7 @@ uk:
     process_introduction: Довідка по шаблону
     process_introduction_hint: Кілька абзаців, які пояснюють, як використовувати шаблон. Додайте посилання на ресурси, які можуть бути корисними.
     option_has_votes_confirm_delete: Деякі люди проголосували за цей варіант, ви впевнені, що хочете його видалити?
+    notify_everyone_when_poll_starts: Повідомити всіх, коли %{poll_type} почнеться
   poll_proposal_form:
     start_header: Внести пропозицію
     edit_header: Редагувати пропозицію
@@ -2533,3 +2536,6 @@ uk:
     any_tag: Будь-який тег
     all_subgroups: Всі підгрупи
     parent_only: Лише для батьків
+  user_name_modal:
+    user_name_updated: Ім'я користувача оновлено
+    set_user_name: Встановити ім'я користувача

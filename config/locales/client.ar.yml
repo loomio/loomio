@@ -540,6 +540,7 @@ ar:
       group: إزالة من المجموعة
       poll: إزالة من {{نوع الاستطلاع}}
     cancel_invitation: إلغاء الدعوة
+    set_name_and_username: تعيين الاسم واسم المستخدم
   notification_models:
     discussion: 'موضوع:'
     comment: التعليق في
@@ -1833,6 +1834,7 @@ ar:
     change_results_order: ترتيب النتائج
     none_of_the_above: "(لا شيء مما سبق)"
     vote_removed: تمت إزالة التصويت
+    name_or_username: الاسم أو اسم المستخدم
   poll_common_undecided_panel:
     show_invitations: إظهار الدعوات المعلقة
     invitation_count_singular: تمت دعوة شخص إضافي واحد للمشاركة عبر البريد الإلكتروني
@@ -1957,6 +1959,7 @@ ar:
     process_introduction: تعليمات النموذج
     process_introduction_hint: بضع فقرات تشرح كيفية استخدام النموذج. قم بتضمين روابط إلى الموارد التي قد تكون مفيدة.
     option_has_votes_confirm_delete: صوّت بعض الأشخاص لهذا الخيار ، هل أنت متأكد أنك تريد حذفه؟
+    notify_everyone_when_poll_starts: أعلم الجميع عندما يبدأ %{poll_type}.
   poll_proposal_form:
     start_header: بدء الاقتراح
     edit_header: تحرير الاقتراح
@@ -2526,3 +2529,6 @@ ar:
     any_tag: أي علامة
     all_subgroups: جميع المجموعات الفرعية
     parent_only: الوالد فقط
+  user_name_modal:
+    user_name_updated: تم تحديث اسم المستخدم
+    set_user_name: تعيين اسم المستخدم

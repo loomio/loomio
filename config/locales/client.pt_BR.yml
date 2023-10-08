@@ -580,6 +580,7 @@ pt_BR:
       group: Eliminar do grupo
       poll: Eliminar de {{pollType}}
     cancel_invitation: Cancelar convite
+    set_name_and_username: Definir nome e nome de usuário
   notification_models:
     discussion: 'conversa:'
     comment: comentar em
@@ -1918,6 +1919,7 @@ pt_BR:
     change_results_order: Mudar ordem dos resultados
     none_of_the_above: "(Nenhuma das opções acima)"
     vote_removed: Voto removido
+    name_or_username: Nome ou nome de usuário
   poll_common_undecided_panel:
     show_undecided: Mostrar %{count} indeciso
     show_invitations: Mostrar Convites Pendentes
@@ -2046,6 +2048,7 @@ pt_BR:
     process_introduction: Ajuda do modelo
     process_introduction_hint: Alguns parágrafos que explicam como usar o modelo. Inclua links para recursos que possam ser úteis.
     option_has_votes_confirm_delete: Algumas pessoas votaram nesta opção, tem certeza de que deseja excluí-la?
+    notify_everyone_when_poll_starts: Notificar todos quando %{poll_type} começar
   poll_proposal_form:
     tool_tip_collapsed: Tome uma decisão juntos
     vote_method_hint: Os eleitores concordam ou discordam de uma declaração
@@ -2565,3 +2568,6 @@ pt_BR:
     any_tag: Qualquer etiqueta
     all_subgroups: Todos os subgrupos
     parent_only: Somente pai
+  user_name_modal:
+    user_name_updated: Nome de usuário atualizado
+    set_user_name: Definir nome de usuário

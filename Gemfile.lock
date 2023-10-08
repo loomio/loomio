@@ -654,7 +654,7 @@ DEPENDENCIES
   sentry-rails
   sentry-ruby
   sentry-sidekiq
-  sidekiq (~> 6.5.10)
+  sidekiq (~> 6.5.11)
   spring
   spring-commands-rspec
   sprockets (= 3.7.2)

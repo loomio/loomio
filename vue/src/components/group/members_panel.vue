@@ -185,24 +185,26 @@ export default
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
         p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
-        v-list(v-else three-line)
+        v-list(v-else two-line)
           v-list-item(v-for="membership in memberships" :key="membership.id")
             v-list-item-avatar(size='48')
               router-link(:to="urlFor(membership.user())")
                 user-avatar(:user='membership.user()' :size='48')
             v-list-item-content
               v-list-item-title
-                router-link(:to="urlFor(membership.user())") {{ membership.user().nameOrEmail() }}
+                router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
+                span
+                span.text--secondary
+                  space
+                  span(v-if="membership.acceptedAt && membership.userEmail") <{{membership.userEmail}}>
+                  span(v-else) {{membership.userEmail}}
                 space
                 span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
                 space
                 span.title.caption {{membership.user().title(group)}}
-                span(v-if="$route.query.q")
-                  space
-                  span.caption {{membership.user().email}}
                 span(v-if="membership.groupId == group.id && membership.admin")
                   space
-                  v-chip(small outlined label v-t="'members_panel.admin'")
+                  v-chip(x-small outlined label v-t="'members_panel.admin'")
                   space
                 span.caption.text--secondary(v-if="membership.acceptedAt")
                   span(v-t="'common.action.joined'")

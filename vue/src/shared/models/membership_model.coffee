@@ -28,9 +28,6 @@ export default class MembershipModel extends BaseModel
   userUsername: ->
     @user().username
 
-  userEmail: ->
-    @user().email
-
   groupName: ->
     @group().name
 

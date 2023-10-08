@@ -10,10 +10,6 @@ export default class UserModel extends BaseModel
 
   relationships: ->
     @hasMany 'memberships'
-  #   @hasMany 'notifications'
-  #   @hasMany 'contacts'
-  #   @hasMany 'versions'
-  #   @hasMany 'reactions'
 
   defaultValues: ->
     shortBio: ''
@@ -97,7 +93,7 @@ export default class UserModel extends BaseModel
     @titles[group.id] || @titles[group.parentId]
 
   nameWithTitle: (group) ->
-    name = @nameOrEmail()
+    name = @name || @email
     return name unless group
     titles = @titles || {}
     compact([name, (titles[group.id] || titles[group.parentId])]).join(' · ')

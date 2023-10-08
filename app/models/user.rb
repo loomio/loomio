@@ -10,7 +10,7 @@ class User < ApplicationRecord
   include HasRichText
   include LocalesHelper
 
-  is_rich_text    on: :short_bio
+  is_rich_text on: :short_bio
 
   extend HasTokens
   extend HasDefaults
@@ -52,8 +52,8 @@ class User < ApplicationRecord
   has_one_attached :uploaded_avatar
 
   validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
-  validates_uniqueness_of :username, if: :email_verified
-  before_validation :generate_username, if: :email_verified
+  validates_uniqueness_of :username, if: :email
+  before_validation :generate_username, if: :email
   validates_length_of :name, maximum: 100
   validates_length_of :username, maximum: 30
   validates_length_of :short_bio, maximum: 5000
