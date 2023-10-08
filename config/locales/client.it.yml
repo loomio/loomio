@@ -580,6 +580,7 @@ it:
       group: Rimuovi dal gruppo
       poll: 'Rimuovi dal sondaggio {{pollType}} '
     cancel_invitation: Revoca invito
+    set_name_and_username: Imposta nome e nome utente
   notification_models:
     discussion: discussione
     comment: 'commenta in '
@@ -1882,6 +1883,7 @@ it:
     change_results_order: Modifica l'ordine dei risultati
     none_of_the_above: "(Nessuno dei precedenti)"
     vote_removed: Voto rimosso
+    name_or_username: Nome o nome utente
   poll_common_undecided_panel:
     show_undecided: Mostra %{count} Indecisi
     show_invitations: Mostra inviti pendenti
@@ -2006,6 +2008,7 @@ it:
     process_introduction: Aiuto modello
     process_introduction_hint: Alcuni paragrafi che spiegano come utilizzare il modello. Includere collegamenti a risorse che potrebbero essere utili.
     option_has_votes_confirm_delete: Alcune persone hanno votato per questa opzione, sei sicuro di volerla eliminare?
+    notify_everyone_when_poll_starts: Avvisa tutti quando inizia %{poll_type}
   poll_proposal_form:
     start_header: Lancia proposta
     edit_header: Aggiorna proposta
@@ -2526,3 +2529,6 @@ it:
     any_tag: Qualsiasi etichetta
     all_subgroups: Tutti i sottogruppi
     parent_only: Solo genitore
+  user_name_modal:
+    user_name_updated: Nome utente aggiornato
+    set_user_name: Imposta il nome utente

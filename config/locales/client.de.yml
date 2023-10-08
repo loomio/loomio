@@ -578,6 +578,7 @@ de:
       group: Aus der Gruppe entfernen
       poll: von {{pollType}} entfernen
     cancel_invitation: Einladung abbrechen
+    set_name_and_username: Legen Sie Namen und Benutzernamen fest
   notification_models:
     discussion: 'Diskussion:'
     comment: kommentieren in
@@ -1873,6 +1874,7 @@ de:
     change_results_order: Ergebnisreihenfolge ändern
     none_of_the_above: "(Keine der genannten)"
     vote_removed: Abstimmung entfernt
+    name_or_username: Name oder Benutzername
   poll_common_undecided_panel:
     show_invitations: Ausstehende Einladungen anzeigen
     invitation_count_singular: Eine weitere Person wurde zur Teilnahme per E-Mail eingeladen
@@ -1997,6 +1999,7 @@ de:
     process_introduction: Vorlagenhilfe
     process_introduction_hint: Ein paar Absätze, die erklären, wie die Vorlage verwendet wird. Fügen Sie Links zu Ressourcen hinzu, die hilfreich sein könnten.
     option_has_votes_confirm_delete: Einige Leute haben für diese Option gestimmt. Sind Sie sicher, dass Sie sie löschen möchten?
+    notify_everyone_when_poll_starts: Benachrichtigen Sie alle, wenn %{poll_type} startet
   poll_proposal_form:
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten
@@ -2534,3 +2537,6 @@ de:
     any_tag: Irgendein Tag
     all_subgroups: Alle Untergruppen
     parent_only: Nur für Eltern
+  user_name_modal:
+    user_name_updated: Benutzername aktualisiert
+    set_user_name: Benutzernamen festlegen

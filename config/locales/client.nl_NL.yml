@@ -555,6 +555,7 @@ nl_NL:
       group: Van groep verwijderen
       poll: Verwijder van {{pollType}}
     cancel_invitation: Annuleer uitnodiging
+    set_name_and_username: Stel naam en gebruikersnaam in
   notification_models:
     discussion: 'bord:'
     comment: reactie in
@@ -1848,6 +1849,7 @@ nl_NL:
     change_results_order: Verander volgorde resultaten
     none_of_the_above: "(Geen van bovenstaande)"
     vote_removed: Stem verwijderd
+    name_or_username: Naam of gebruikersnaam
   poll_common_undecided_panel:
     show_invitations: Toon uitnodigingen in afwachting
     invitation_count_singular: 1 extra persoon werd uigenodigd om deel te nemen via e-mail
@@ -1972,6 +1974,7 @@ nl_NL:
     process_introduction: Sjabloon hulp
     process_introduction_hint: Een paar alinea's waarin wordt uitgelegd hoe u de sjabloon gebruikt. Voeg links toe naar bronnen die nuttig kunnen zijn.
     option_has_votes_confirm_delete: Sommige mensen hebben op deze optie gestemd, weet je zeker dat je deze wilt verwijderen?
+    notify_everyone_when_poll_starts: Breng iedereen op de hoogte wanneer %{poll_type} start
   poll_proposal_form:
     start_header: "'Voorstel' starten"
     edit_header: Voorstel bewerken
@@ -2526,3 +2529,6 @@ nl_NL:
     any_tag: Elk label
     all_subgroups: Alle subgroepen
     parent_only: Alleen ouder
+  user_name_modal:
+    user_name_updated: Gebruikersnaam bijgewerkt
+    set_user_name: Gebruikersnaam instellen

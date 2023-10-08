@@ -572,6 +572,7 @@ pl:
       group: Usuń z grupy
       poll: Usuń z {{pollType}}
     cancel_invitation: Anuluj zaproszenie
+    set_name_and_username: Ustaw nazwę i nazwę użytkownika
   notification_models:
     discussion: 'wątek:'
     comment: skomentuj w
@@ -1865,6 +1866,7 @@ pl:
     change_results_order: Zmień kolejność wyników
     none_of_the_above: "(Żaden z powyższych)"
     vote_removed: Głos usunięty
+    name_or_username: Imię lub nazwa użytkownika
   poll_common_undecided_panel:
     show_invitations: Pokaż Oczekujące Zaproszenia
     invitation_count_singular: 1 dodatkowa osoba została zaproszona do wzięcia udziału poprzez e-mail
@@ -1989,6 +1991,7 @@ pl:
     process_introduction: Pomoc dotycząca szablonu
     process_introduction_hint: Kilka akapitów, które wyjaśniają, jak korzystać z szablonu. Dołącz linki do zasobów, które mogą być pomocne.
     option_has_votes_confirm_delete: Niektóre osoby głosowały za tą opcją, czy na pewno chcesz ją usunąć?
+    notify_everyone_when_poll_starts: Powiadom wszystkich, gdy rozpocznie się %{poll_type}
   poll_proposal_form:
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję
@@ -2526,3 +2529,6 @@ pl:
     any_tag: Dowolny tag
     all_subgroups: Wszystkie podgrupy
     parent_only: Tylko dla rodziców
+  user_name_modal:
+    user_name_updated: Nazwa użytkownika zaktualizowana
+    set_user_name: Ustaw nazwę użytkownika
