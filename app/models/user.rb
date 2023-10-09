@@ -305,6 +305,9 @@ class User < ApplicationRecord
     end
   end
 
+  def name_or_username
+    self[:name] || self[:username]
+  end
 
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?

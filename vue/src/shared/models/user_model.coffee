@@ -23,7 +23,7 @@ export default class UserModel extends BaseModel
     dateTimePref: 'day_iso'
 
   nameOrEmail: ->
-    @name || @email || @placeholderName
+    @name || @email || @username || @placeholderName
 
   nameOrUsername: ->
     @name || @username
