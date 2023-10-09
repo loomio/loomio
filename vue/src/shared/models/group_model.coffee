@@ -69,6 +69,12 @@ export default class GroupModel extends BaseModel
   tags: ->
     @recordStore.tags.collection.chain().find(groupId: @id).simplesort('priority').data()
 
+  tagsByName: ->
+    @recordStore.tags.collection.chain().find(groupId: @id).simplesort('name').data()
+
+  tagNames: ->
+    @recordStore.tags.collection.chain().find(groupId: @id).simplesort('name').data().map (t) -> t.name
+
   parentOrSelf: ->
     if @parentId then @parent() else @
 
@@ -189,6 +195,9 @@ export default class GroupModel extends BaseModel
 
   export: =>
     @remote.postMember(@id, 'export')
+
+  exportCSV: =>
+    @remote.postMember(@id, 'export_csv')
 
   uploadLogo: (file) =>
     @remote.upload("#{@key}/upload_photo/logo", file, {}, ->)

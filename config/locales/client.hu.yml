@@ -548,6 +548,7 @@ hu:
     disable_beta_features: A béta funkciók letiltása
     contact_support: Lépjen kapcsolatba az ügyfélszolgálattal
     beta_collab: "\U0001F9EA A béta funkciók engedélyezve vannak!"
+    outcomes: Eredmények
   membership_card:
     group_members: Csoporttagok
     discussion_members: Témában résztvevők
@@ -569,6 +570,7 @@ hu:
       group: Eltávolítás a csoportból
       poll: 'Eltávolítás innen: {{pollType}}'
     cancel_invitation: Meghívás visszavonása
+    set_name_and_username: Állítsa be a nevet és a felhasználónevet
   notification_models:
     discussion: 'téma:'
     comment: hozzászólás itt
@@ -613,6 +615,7 @@ hu:
       stance_updated: "%{actor} szavazott: %{title}"
       stance_created_option: "%{actor} %{option} szavazatot adott itt: %{title}"
       user_added_to_group: "%{actor} felvett a következő csoportba: %{title}"
+      membership_resent: "%{actor} meghívott, hogy csatlakozz a %{title} csoporthoz a %{site_name} oldalon"
     without_title:
       poll_expired: "%{poll_type} lezárult"
       discussion_announced: "%{actor} meghívott egy témaszálba"
@@ -647,6 +650,7 @@ hu:
       stance_created_option: "%{actor} szavazott: %{option}"
       user_mentioned: "%{actor} megemlített téged"
       user_reminded: "%{actor} emlékeztet arra, hogy szavazzon"
+      membership_resent: "%{actor} meghívott egy csoportba"
     hints:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
@@ -1286,6 +1290,7 @@ hu:
     merge_accounts: Fiókok egyesítése
     help_translate: Tudna segíteni a Loomio lefordításában?
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
+    deactivated_user: Deaktivált felhasználó
   text_editor:
     insert_link: Illessz be egy hivatkozást
     insert_embedded_url: Videó beágyazása
@@ -1656,6 +1661,7 @@ hu:
     superseded: Felváltva
     new_proposal_template: Új ajánlatsablon
     edit_proposal_template: Szerkessze az ajánlatsablont
+    outcomes: Eredmények
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:
@@ -1798,6 +1804,8 @@ hu:
     none_of_the_above: "(A fentiek egyike sem)"
     undecided: Eldöntetlen
     undecided_first: Először bizonytalan
+    vote_removed: Szavazat eltávolítva
+    name_or_username: Név vagy felhasználónév
   poll_common_undecided_panel:
     show_invitations: A függőben lévő meghívók megjelenítése
     invitation_count_singular: 1 további személyt hívtak meg e-mailben a részvételre
@@ -1922,6 +1930,7 @@ hu:
     process_introduction: Sablon súgó
     process_introduction_hint: Néhány bekezdés, amely elmagyarázza a sablon használatát. Adjon meg hivatkozásokat olyan forrásokhoz, amelyek hasznosak lehetnek.
     option_has_votes_confirm_delete: Néhányan erre a lehetőségre szavaztak. Biztosan törli?
+    notify_everyone_when_poll_starts: Értesítsen mindenkit, amikor a %{poll_type} elindul
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése
@@ -1965,6 +1974,7 @@ hu:
     time_slot_added: Időrés hozzáadva
     time_slot_already_added: Az időrés már hozzáadva
     participants_see_local_times: A résztvevők az időzónájukra lokalizálva látják az időt
+    use_24_hour_format: Hiba! Használjon 24 órás formátumot, pl. %{time}
   poll_ranked_choice_form:
     no_options: Még nem adtál meg egyetlen lehetőséget sem.
     add_option_placeholder: Írjon be egy új választást
@@ -2290,6 +2300,7 @@ hu:
     meaning_hint: Egy mondat, amely elmagyarázza, mit jelent ennek az opciónak a kiválasztása
     prompt: Indoklás
     prompt_hint: Olyan kérdés, amely arra készteti a választókat, hogy mondják el érvelésüket vagy gondolják át álláspontjukat.
+    option_name_validation: A legjobb, ha a név rövid marad, és a „Jelentés” mezőbe írja be a részleteket
   subgroups_panel:
     search_subgroups_of_name: Keresés a(z) {{name}} alcsoportjaiban
     group_without_subgroups: "{{name}} alcsoportok nélkül"
@@ -2490,3 +2501,12 @@ hu:
       accept_prompt: Miért önkénteskedsz erre?
       decline_meaning: nem tudok részt venni
       decline_prompt: Van valami, amit szeretne mondani?
+  search_modal:
+    all_content: Minden tartalom
+    best_match: Legjobb találat
+    any_tag: Bármilyen címke
+    all_subgroups: Minden alcsoport
+    parent_only: Csak szülő
+  user_name_modal:
+    user_name_updated: Felhasználónév frissítve
+    set_user_name: Felhasználónév beállítása

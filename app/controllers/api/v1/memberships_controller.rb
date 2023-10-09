@@ -65,6 +65,17 @@ class API::V1::MembershipsController < API::V1::RestfulController
     respond_with_resource
   end
 
+  def user_name
+    user = User.active.unverified.find(params[:id])
+    if (user.group_ids & current_user.adminable_group_ids).length > 0
+      user.update(name: params[:name], username: params[:username])
+      self.resource = user
+      respond_with_resource
+    else
+      error_response(403)
+    end
+  end
+
   private
   def valid_orders
     ['memberships.created_at', 'memberships.created_at desc', 'users.name', 'admin desc', 'accepted_at desc', 'accepted_at']

@@ -76,6 +76,12 @@ ActiveAdmin.register Subscription do
     f.actions
   end
 
+  member_action :update, :method => :put do
+    subscription = Subscription.find(params[:id])
+    subscription.update(permitted_params[:subscription])
+    redirect_to admin_subscriptions_path, notice: "subscription updated"
+  end
+
   member_action :refresh, :method => :post do
     subscription = Subscription.find(params[:id])
     SubscriptionService.update(subscription: subscription,

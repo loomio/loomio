@@ -220,6 +220,10 @@ it:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Annulla l'iscrizione</a> ai commenti in questo thread."
     unsubscribe_from_comment_replied_to_html: Questa è una notifica di risposta.
     unsubscribe_from_user_mentioned_html: Questa è una notifica di menzione.
+    discussion_edited:
+      inline: "%{actor} ha modificato il contesto del thread"
+    discussion_closed:
+      inline: "%{actor} ha chiuso la discussione"
   footer:
     about: About
     blog: Blog

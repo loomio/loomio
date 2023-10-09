@@ -518,6 +518,7 @@ ar:
     disable_dark_mode: تعطيل الوضع الداكن
     contact_support: اتصل بالدعم
     beta_collab: "\U0001F9EA تمكين الميزات التجريبية!"
+    outcomes: النتائج
   membership_card:
     group_members: أعضاء الفريق
     discussion_members: أعضاء الموضوع
@@ -539,6 +540,7 @@ ar:
       group: إزالة من المجموعة
       poll: إزالة من {{نوع الاستطلاع}}
     cancel_invitation: إلغاء الدعوة
+    set_name_and_username: تعيين الاسم واسم المستخدم
   notification_models:
     discussion: 'موضوع:'
     comment: التعليق في
@@ -583,6 +585,7 @@ ar:
       user_added_to_group: أضافك٪ {ممثل} إلى المجموعة:٪ {title}
       user_mentioned: أشار٪ {ممثل} إليك في:٪ {title}
       user_reminded: يذكرك٪ {ممثل} بالتصويت في:٪ {title}
+      membership_resent: دعاك %{actor} للانضمام إلى %{title} على %{site_name}
     without_title:
       discussion_announced: دعاك٪ {ممثل} إلى موضوع
       discussion_edited: قام٪ {ممثل} بتحرير سياق الموضوع
@@ -617,6 +620,7 @@ ar:
       stance_created_option: "٪ {ممثل} صوتوا٪ {option}"
       user_mentioned: ذكرك٪ {ممثل}
       user_reminded: يذكرك٪ {ممثل} بالتصويت
+      membership_resent: دعاك %{actor} للانضمام إلى مجموعة
     hints:
       poll_closing_soon: الآن هو الوقت المناسب للتصويت أو تغيير رأيك أو تشجيع الآخرين على المشاركة.
       poll_closing_soon_author: قد ترغب في تذكير الناس بالتصويت أو تمديد الموعد النهائي.
@@ -1278,6 +1282,7 @@ ar:
     date_time_pref_label: تنسيق التاريخ والوقت
     help_translate: هل يمكنك مساعدتنا في ترجمة Loomio؟
     updated_on_sign_in: يتم توفيره بواسطة المستعرض الخاص بك ويتم تحديثه عند تسجيل الدخول
+    deactivated_user: مستخدم معطل
   text_editor:
     insert_link: أدخل الرابط
     insert_embedded_url: تضمين الفيديو
@@ -1657,6 +1662,7 @@ ar:
     superseded: حلت محلها
     new_proposal_template: نموذج اقتراح جديد
     edit_proposal_template: تحرير نموذج الاقتراح
+    outcomes: النتائج
   poll_common_attachment_form:
     label: المرفقات
   poll_common_add_option:
@@ -1827,6 +1833,8 @@ ar:
     no_votes_yet: لم يتم وضع الأصوات حتى الآن.
     change_results_order: ترتيب النتائج
     none_of_the_above: "(لا شيء مما سبق)"
+    vote_removed: تمت إزالة التصويت
+    name_or_username: الاسم أو اسم المستخدم
   poll_common_undecided_panel:
     show_invitations: إظهار الدعوات المعلقة
     invitation_count_singular: تمت دعوة شخص إضافي واحد للمشاركة عبر البريد الإلكتروني
@@ -1951,6 +1959,7 @@ ar:
     process_introduction: تعليمات النموذج
     process_introduction_hint: بضع فقرات تشرح كيفية استخدام النموذج. قم بتضمين روابط إلى الموارد التي قد تكون مفيدة.
     option_has_votes_confirm_delete: صوّت بعض الأشخاص لهذا الخيار ، هل أنت متأكد أنك تريد حذفه؟
+    notify_everyone_when_poll_starts: أعلم الجميع عندما يبدأ %{poll_type}.
   poll_proposal_form:
     start_header: بدء الاقتراح
     edit_header: تحرير الاقتراح
@@ -1994,6 +2003,7 @@ ar:
     time_slot_added: تمت إضافة خانة الوقت
     time_slot_already_added: تمت إضافة خانة الوقت بالفعل
     participants_see_local_times: سيرى الآباء الأوقات المترجمة إلى منطقتهم الزمنية
+    use_24_hour_format: خطأ! استخدم تنسيق 24 ساعة ، مثل٪ {time}
   poll_ranked_choice_form:
     no_options: لم تقم بإضافة أي خيارات حتى الآن.
     add_option_placeholder: أدخل خيارًا جديدًا
@@ -2338,6 +2348,7 @@ ar:
     meaning_hint: جملة تشرح معنى اختيار هذا الخيار
     prompt: موجه السبب
     prompt_hint: سؤال يدفع الناخبين إلى إبداء أسبابهم أو إعادة النظر في موقفهم.
+    option_name_validation: من الأفضل إبقاء الاسم قصيرًا ووضع التفاصيل في حقل "المعنى".
   poll_common_close_form:
     title: هل تريد إغلاق٪ {poll_type} الآن؟
     helptext: هل أنت متأكد من أنك تريد إغلاق٪ {poll_type} مبكرًا ومشاركة النتيجة؟
@@ -2512,3 +2523,12 @@ ar:
       accept_prompt: لماذا تتطوع من أجل هذا؟
       decline_meaning: أنا غير قادر على المشاركة
       decline_prompt: هل هناك أي شيء تود أن تقوله؟
+  search_modal:
+    all_content: كل المحتوى
+    best_match: افضل مباراة
+    any_tag: أي علامة
+    all_subgroups: جميع المجموعات الفرعية
+    parent_only: الوالد فقط
+  user_name_modal:
+    user_name_updated: تم تحديث اسم المستخدم
+    set_user_name: تعيين اسم المستخدم

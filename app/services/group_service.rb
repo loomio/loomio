@@ -29,10 +29,12 @@ module GroupService
 
     groups = Group.where(id: group_ids).each { |g| actor.ability.authorize!(:add_members, g) }
 
-    users = UserInviter.where_or_create!(actor: actor,
-                                         model: group,
-                                         emails: params[:recipient_emails],
-                                         user_ids: params[:recipient_user_ids])
+    users = UserInviter.where_or_create!(
+      actor: actor,
+      model: group,
+      emails: params[:recipient_emails],
+      user_ids: params[:recipient_user_ids]
+    )
 
     groups.each do |g|
       memberships = users.map do |user|
@@ -50,6 +52,7 @@ module GroupService
 
       g.update_pending_memberships_count
       g.update_memberships_count
+      GenericWorker.perform_async('PollService', 'group_members_added', g.id)
     end
 
     Events::MembershipCreated.publish!(

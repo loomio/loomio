@@ -10,10 +10,6 @@ export default class UserModel extends BaseModel
 
   relationships: ->
     @hasMany 'memberships'
-  #   @hasMany 'notifications'
-  #   @hasMany 'contacts'
-  #   @hasMany 'versions'
-  #   @hasMany 'reactions'
 
   defaultValues: ->
     shortBio: ''
@@ -28,6 +24,9 @@ export default class UserModel extends BaseModel
 
   nameOrEmail: ->
     @name || @email || @placeholderName
+
+  nameOrUsername: ->
+    @name || @username
 
   simpleBio: ->
     truncate((@shortBio || '').replace(/<\/?[^>]+(>|$)/g, ""), length: 70)

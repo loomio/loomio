@@ -550,6 +550,7 @@ pl:
     disable_dark_mode: Wyłącz tryb ciemny
     contact_support: Skontaktuj się z pomocą techniczną
     beta_collab: "\U0001F9EA Funkcje beta włączone!"
+    outcomes: Wyniki
   membership_card:
     group_members: Osoby w tej grupy
     discussion_members: Osoby w tym wątku
@@ -571,6 +572,7 @@ pl:
       group: Usuń z grupy
       poll: Usuń z {{pollType}}
     cancel_invitation: Anuluj zaproszenie
+    set_name_and_username: Ustaw nazwę i nazwę użytkownika
   notification_models:
     discussion: 'wątek:'
     comment: skomentuj w
@@ -615,6 +617,7 @@ pl:
       stance_updated: "%{actor} głosował w: %{title}"
       stance_created_option: "%{actor} zagłosował na %{option} w %{title}"
       user_added_to_group: "%{actor} dodał Cię do grupy: %{title}"
+      membership_resent: "%{actor} zaprosił Cię do %{title} w %{site_name}"
     without_title:
       poll_expired: "%{poll_type} zakończyła się "
       discussion_announced: "%{actor} zaprosił Cię do wątku"
@@ -649,6 +652,7 @@ pl:
       stance_created_option: "%{actor} zagłosował %{option}"
       user_mentioned: "%{actor} wspomniał o tobie"
       user_reminded: "%{actor} przypomina Ci o głosowaniu"
+      membership_resent: "%{actor} zaprosił Cię do przyłączenia się do grupy"
     hints:
       poll_closing_soon: Teraz jest dobry czas na głosowanie, zmianę zdania lub zachęcenie innych do udziału.
       poll_closing_soon_author: Możesz przypomnieć ludziom o głosowaniu lub przedłużyć termin.
@@ -1310,6 +1314,7 @@ pl:
     date_time_pref_label: Format daty i godziny
     help_translate: Czy możesz pomóc nam przetłumaczyć Loomio?
     updated_on_sign_in: Dostarczane przez przeglądarkę i aktualizowane po zalogowaniu
+    deactivated_user: Dezaktywowany użytkownik
   text_editor:
     insert_link: Wstaw link
     insert_embedded_url: Wstaw wideo
@@ -1689,6 +1694,7 @@ pl:
     superseded: zastąpione
     new_proposal_template: Nowy szablon oferty
     edit_proposal_template: Edytuj szablon propozycji
+    outcomes: Wyniki
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:
@@ -1859,6 +1865,8 @@ pl:
     no_votes_yet: Nie oddano jeszcze żadnych głosów.
     change_results_order: Zmień kolejność wyników
     none_of_the_above: "(Żaden z powyższych)"
+    vote_removed: Głos usunięty
+    name_or_username: Imię lub nazwa użytkownika
   poll_common_undecided_panel:
     show_invitations: Pokaż Oczekujące Zaproszenia
     invitation_count_singular: 1 dodatkowa osoba została zaproszona do wzięcia udziału poprzez e-mail
@@ -1983,6 +1991,7 @@ pl:
     process_introduction: Pomoc dotycząca szablonu
     process_introduction_hint: Kilka akapitów, które wyjaśniają, jak korzystać z szablonu. Dołącz linki do zasobów, które mogą być pomocne.
     option_has_votes_confirm_delete: Niektóre osoby głosowały za tą opcją, czy na pewno chcesz ją usunąć?
+    notify_everyone_when_poll_starts: Powiadom wszystkich, gdy rozpocznie się %{poll_type}
   poll_proposal_form:
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję
@@ -2026,6 +2035,7 @@ pl:
     time_slot_added: Dodano przedział czasowy
     time_slot_already_added: Przedział czasowy został już dodany
     participants_see_local_times: Uczestnicy zobaczą czasy zlokalizowane w ich strefie czasowej
+    use_24_hour_format: Błąd! Użyj formatu 24-godzinnego, np. %{time}
   poll_ranked_choice_form:
     no_options: Nie dodałeś jeszcze żadnych opcji.
     add_option_placeholder: Wprowadź nowy wybór
@@ -2343,6 +2353,7 @@ pl:
     meaning_hint: Zdanie wyjaśniające, co oznacza wybranie tej opcji
     prompt: Monit o przyczynę
     prompt_hint: Pytanie mające na celu zachęcenie wyborców do przedstawienia uzasadnienia lub ponownego rozważenia swojego stanowiska.
+    option_name_validation: Najlepiej, aby nazwa była krótka i podała szczegółowe informacje w polu „Znaczenie”.
   poll_common_close_form:
     title: Zamknąć %{poll_type} teraz?
     helptext: Czy na pewno chcesz wcześniej zamknąć %{poll_type} i podzielić się wynikami?
@@ -2512,3 +2523,12 @@ pl:
       accept_prompt: Dlaczego zgłaszasz się do tego na ochotnika?
       decline_meaning: Nie mogę uczestniczyć
       decline_prompt: Czy jest coś, co chciałbyś powiedzieć?
+  search_modal:
+    all_content: Cała zawartość
+    best_match: Najlepszy mecz
+    any_tag: Dowolny tag
+    all_subgroups: Wszystkie podgrupy
+    parent_only: Tylko dla rodziców
+  user_name_modal:
+    user_name_updated: Nazwa użytkownika zaktualizowana
+    set_user_name: Ustaw nazwę użytkownika

@@ -558,6 +558,7 @@ it:
     contact_support: Contatta l'assistenza
     sign_out: Esci
     beta_collab: "\U0001F9EA Beta features attivate!"
+    outcomes: Risultati
   membership_card:
     group_members: Membri del gruppo
     discussion_members: Membri della discussione
@@ -579,6 +580,7 @@ it:
       group: Rimuovi dal gruppo
       poll: 'Rimuovi dal sondaggio {{pollType}} '
     cancel_invitation: Revoca invito
+    set_name_and_username: Imposta nome e nome utente
   notification_models:
     discussion: discussione
     comment: 'commenta in '
@@ -623,6 +625,7 @@ it:
       user_added_to_group: "%{actor} ti ha aggionto al gruppo: %{title}"
       user_mentioned: "%{actor} ti ha menzionato in: %{title}"
       user_reminded: "%{actor} ti sta ricordando di votare su: %{title}"
+      membership_resent: "%{actor} ti ha invitato a iscriverti a %{title} su %{site_name}"
     without_title:
       discussion_announced: "%{actor} ti ha invitato a una discussione"
       discussion_edited: "%{actor} ha modificato il contesto della discussione"
@@ -657,6 +660,7 @@ it:
       stance_created_option: "%{actor} ha votato %{option}"
       user_mentioned: "%{actor} ti ha menzionato"
       user_reminded: "%{actor}ti sta ricordando di votare"
+      membership_resent: "%{actor} ti ha invitato a unirti a un gruppo"
     hints:
       poll_closing_soon: Ora è un buon momento per votare, cambiare idea o incoraggiare altri a partecipare.
       poll_closing_soon_author: Potresti voler ricordare alle persone di votare o prorogare la scadenza.
@@ -1322,6 +1326,7 @@ it:
     deactivate_account: Disattivare l'account utente
     help_translate: Puoi aiutarci a tradurre Loomio?
     updated_on_sign_in: Fornito dal tuo browser e aggiornato quando accedi
+    deactivated_user: Utente disattivato
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caratteri"
     insert_link: Inserisci collegamento
@@ -1693,6 +1698,7 @@ it:
     superseded: Sostituito
     new_proposal_template: Nuovo modello di proposta
     edit_proposal_template: Modifica il modello di proposta
+    outcomes: Risultati
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:
@@ -1876,6 +1882,8 @@ it:
     no_votes_yet: Nessun voto è stato finora espresso.
     change_results_order: Modifica l'ordine dei risultati
     none_of_the_above: "(Nessuno dei precedenti)"
+    vote_removed: Voto rimosso
+    name_or_username: Nome o nome utente
   poll_common_undecided_panel:
     show_undecided: Mostra %{count} Indecisi
     show_invitations: Mostra inviti pendenti
@@ -2000,6 +2008,7 @@ it:
     process_introduction: Aiuto modello
     process_introduction_hint: Alcuni paragrafi che spiegano come utilizzare il modello. Includere collegamenti a risorse che potrebbero essere utili.
     option_has_votes_confirm_delete: Alcune persone hanno votato per questa opzione, sei sicuro di volerla eliminare?
+    notify_everyone_when_poll_starts: Avvisa tutti quando inizia %{poll_type}
   poll_proposal_form:
     start_header: Lancia proposta
     edit_header: Aggiorna proposta
@@ -2045,6 +2054,7 @@ it:
     time_slot_added: Fascia oraria aggiunta
     time_slot_already_added: Fascia oraria già aggiunta
     participants_see_local_times: I partecipanti vedranno gli orari localizzati nel loro fuso orario
+    use_24_hour_format: Errore! Utilizza il formato 24 ore, ad es. %{time}
   poll_ranked_choice_form:
     no_options: Non hai ancora aggiunto nessuna opzione.
     add_option_placeholder: Inserisci una nuova scelta
@@ -2360,6 +2370,7 @@ it:
     meaning_hint: Una frase che spiega cosa significa scegliere questa opzione
     prompt: Richiesta di motivazione
     prompt_hint: Una domanda per sollecitare gli elettori a fornire le loro ragioni o riconsiderare la loro posizione.
+    option_name_validation: È meglio mantenere il nome breve e inserire i dettagli nel campo "Significato".
   poll_check_options:
     check_subtitle: Chiedi feedback, domande e dubbi
     check_introduction: "<p>La proposta di controllo del senso è un buon modo per ottenere feedback, invitare domande e scoprire preoccupazioni. Aiuta a chiarire e migliorare una proposta prima di passare a una decisione.</p><p> Il controllo del senso consente alle persone di sapere che si sta formando una proposta e le incoraggia a impegnarsi. È un'opportunità per ascoltare le persone, percepire come si sentono e rispondere in modo appropriato, aprendo la possibilità di incorporare i loro contributi per prendere una decisione migliore.</p><p> Utilizzare la proposta di verifica del senso nel processo di consenso per invitare reazioni e commenti per migliorare la proposta e in un processo di consenso per testare il consenso.</p><p> Leggi di più sulla proposta di controllo del senso.</p>"
@@ -2512,3 +2523,12 @@ it:
       accept_prompt: Perché ti offri volontario per questo?
       decline_meaning: non riesco a partecipare
       decline_prompt: C'è qualcosa che vorresti dire?
+  search_modal:
+    all_content: Tutti i contenuti
+    best_match: Migliore abbinamento
+    any_tag: Qualsiasi etichetta
+    all_subgroups: Tutti i sottogruppi
+    parent_only: Solo genitore
+  user_name_modal:
+    user_name_updated: Nome utente aggiornato
+    set_user_name: Imposta il nome utente

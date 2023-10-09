@@ -133,13 +133,16 @@ describe User do
   end
 
   describe "name" do
-    it "returns '[deactivated account]' if deactivated_at is true (a date is present)" do
+    it "returns '[deactivated]' if deactivated_at is present" do
+      ENV['SCRUB_USER_DEACTIVATE'] = '1'
       user.update_attribute(:deactivated_at, Time.now)
-      user.name.should include('deactivated account')
+      user.name.should include('Deactivated')
     end
 
-    it "returns the stored name if deactivated_at is nil" do
-      user.name.should_not == 'Deleted user'
+    it "returns '[deactivated]' if deactivated_at is true (a date is present)" do
+      ENV['SCRUB_USER_DEACTIVATE'] = nil
+      user.update_attribute(:deactivated_at, Time.now)
+      user.name.should_not include('deactivated')
     end
   end
 

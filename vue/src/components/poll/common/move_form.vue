@@ -1,6 +1,7 @@
 <script lang="coffee">
 import Records from '@/shared/services/records'
 import Session from '@/shared/services/session'
+import AbilityService from '@/shared/services/ability_service'
 import EventBus from '@/shared/services/event_bus'
 import Flash  from '@/shared/services/flash'
 import { map, orderBy } from 'lodash'
@@ -15,28 +16,17 @@ export default
     groups: []
 
   mounted: ->
-    parent = @poll.group().parentOrSelf()
-    Records.groups.fetchByParent(parent).then =>
-      adminGroups = [parent].concat(Records.groups.find(parentId: parent.id)).filter (group) =>
-        group.adminsInclude(Session.user())
-
-      sortedGroups = orderBy adminGroups, 'fullName'
-
-      @groups = map adminGroups, (group) =>
-        text: group.fullName
-        value: group.id
-        disabled: (group.id == @poll.groupId)
+    @groups = Session.user().groups().filter((g) => AbilityService.canStartPoll(g)).map (g) =>
+      text: g.fullName
+      value: g.id
+      disabled: (g.id == @poll.groupId)
 
   methods:
     submit: ->
-      @poll.setErrors({})
       @poll.groupId = @groupId
-      @poll.save()
-      .then (data) =>
-        group = Records.groups.find(@groupId)
-        Flash.success("poll_common_move_form.success", {poll_type: @poll.translatedPollType(), group: group.name})
+      @poll.save().then =>
+        Flash.success("poll_common_move_form.success", {poll_type: @poll.translatedPollType(), group: @poll.group().fullName})
         @close()
-      .catch (error) => true
 
 </script>
 <template lang="pug">

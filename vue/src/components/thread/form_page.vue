@@ -69,7 +69,6 @@ export default
 <template lang="pug">
 v-main
   v-container.start-discussion-page.max-width-800.px-0.px-sm-3
-    discussion-template-banner(v-if="discussion", :discussion="discussion")
     v-card
       discussion-form(
         v-if="discussion"

@@ -51,7 +51,7 @@ section.strand-item.poll-created
       space
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title", :model='poll', field='title')
-      tags-display(:model="poll")
+      tags-display(:tags="poll.tags" :group="poll.group()")
   .pt-2(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')

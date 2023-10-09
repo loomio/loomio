@@ -10,7 +10,7 @@ class User < ApplicationRecord
   include HasRichText
   include LocalesHelper
 
-  is_rich_text    on: :short_bio
+  is_rich_text on: :short_bio
 
   extend HasTokens
   extend HasDefaults
@@ -52,8 +52,8 @@ class User < ApplicationRecord
   has_one_attached :uploaded_avatar
 
   validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
-  validates_uniqueness_of :username, if: :email_verified
-  before_validation :generate_username, if: :email_verified
+  validates_uniqueness_of :username, if: :email
+  before_validation :generate_username, if: :email
   validates_length_of :name, maximum: 100
   validates_length_of :username, maximum: 30
   validates_length_of :short_bio, maximum: 5000
@@ -186,6 +186,13 @@ class User < ApplicationRecord
     end.to_i
   end
 
+  def browseable_group_ids
+    Group.where(
+      "id in (:group_ids) OR 
+      (parent_id in (:group_ids) AND is_visible_to_parent_members = TRUE)",
+      group_ids: self.group_ids).pluck(:id)
+  end
+
   def set_legal_accepted_at
     self.legal_accepted_at = Time.now
   end
@@ -291,8 +298,8 @@ class User < ApplicationRecord
   end
 
   def name
-    if deactivated_at.present?
-      "[deactivated account]"
+    if deactivated_at && AppConfig.app_features[:scrub_user_deactivate]
+      I18n.t('profile_page.deactivated_user')
     else
       self[:name]
     end
@@ -318,6 +325,54 @@ class User < ApplicationRecord
 
   def send_devise_notification(notification, *args)
     I18n.with_locale(locale) { devise_mailer.send(notification, self, *args).deliver_now }
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    [
+    "avatar_initials",
+    "avatar_kind",
+    "city",
+    "content_locale",
+    "country",
+    "created_at",
+    "current_sign_in_at",
+    "current_sign_in_ip",
+    "date_time_pref",
+    "deactivated_at",
+    "detected_locale",
+    "email",
+    "email_catch_up",
+    "email_catch_up_day",
+    "email_newsletter",
+    "email_on_participation",
+    "email_verified",
+    "email_when_mentioned",
+    "email_when_proposal_closing_soon",
+    "id",
+    "is_admin",
+    "key",
+    "last_seen_at",
+    "last_sign_in_at",
+    "last_sign_in_ip",
+    "legal_accepted_at",
+    "link_previews",
+    "location",
+    "locked_at",
+    "memberships_count",
+    "name",
+    "region",
+    "secret_token",
+    "selected_locale",
+    "short_bio",
+    "short_bio_format",
+    "sign_in_count",
+    "time_zone",
+    "updated_at",
+    "uploaded_avatar_content_type",
+    "uploaded_avatar_file_name",
+    "uploaded_avatar_file_size",
+    "uploaded_avatar_updated_at",
+    "username"]
   end
 
   protected

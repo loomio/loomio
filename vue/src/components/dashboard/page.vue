@@ -15,14 +15,8 @@ export default
     filter: @$route.params.filter || 'hide_muted'
     discussions: []
     loader: null
-    searchLoader: null
-    searchResults: []
 
   created: ->
-    @onQueryInput = debounce (val) =>
-      @$router.replace(@mergeQuery(q: val))
-    , 1000
-
     @init()
     EventBus.$on 'signedIn', @init
 
@@ -34,11 +28,6 @@ export default
     EventBus.$emit 'currentComponent',
       titleKey: 'dashboard_page.aria_label'
       page: 'dashboardPage'
-      search:
-        placeholder: @$t('navbar.search_all_threads')
-
-  watch:
-    '$route.query': 'refresh'
 
   methods:
     init: ->
@@ -50,12 +39,9 @@ export default
           filter: @filter
           per: 60
 
-      @searchLoader = new RecordLoader
-        collection: 'searchResults'
-
       @watchRecords
         key: 'dashboard'
-        collections: ['discussions', 'searchResults', 'memberships']
+        collections: ['discussions', 'memberships']
         query: @query
 
       @refresh()
@@ -67,26 +53,16 @@ export default
 
     fetch: ->
       return unless @loader
-      if @$route.query.q
-        @searchLoader.fetchRecords(q: @$route.query.q, from: 0).then =>
-          @dashboardLoaded = true
-          @query()
-      else
-        @loader.fetchRecords().then => @dashboardLoaded = true
+      @loader.fetchRecords().then => @dashboardLoaded = true
 
     query: ->
-      if @$route.query.q
-        chain = Records.searchResults.collection.chain()
-        chain = chain.find(query: @$route.query.q).data()
-        @searchResults = orderBy(chain, 'rank', 'desc')
-      else
-        groupIds = Records.memberships.collection.find(userId: Session.user().id).map (m) -> m.groupId
-        chain = Records.discussions.collection.chain()
-        chain = chain.find($or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null}])
-        chain = chain.find(discardedAt: null)
-        chain = chain.find(closedAt: null)
-        chain = chain.find(lastActivityAt: { $gt: subMonths(new Date(), 6) })
-        @discussions = chain.simplesort('lastActivityAt', true).data()
+      groupIds = Records.memberships.collection.find(userId: Session.user().id).map (m) -> m.groupId
+      chain = Records.discussions.collection.chain()
+      chain = chain.find($or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null}])
+      chain = chain.find(discardedAt: null)
+      chain = chain.find(closedAt: null)
+      chain = chain.find(lastActivityAt: { $gt: subMonths(new Date(), 6) })
+      @discussions = chain.simplesort('lastActivityAt', true).data()
 
   computed:
     noGroups: -> Session.user().groups().length == 0
@@ -101,15 +77,6 @@ export default
 v-main
   v-container.dashboard-page.max-width-1024.px-0.px-sm-3
     h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'")
-    v-layout.mb-3(v-if='dashboardLoaded')
-      v-text-field(
-        clearable
-        solo
-        hide-details
-        :value="$route.query.q"
-        @input="onQueryInput"
-        :placeholder="$t('common.action.search')"
-        append-icon="mdi-magnify")
 
     dashboard-polls-panel
 
@@ -122,13 +89,7 @@ v-main
           :key='index' )
 
     div(v-if="dashboardLoaded")
-      section.dashboard-page__loaded(v-if="$route.query.q")
-        v-card
-          thread-search-result(
-            v-for="result in searchResults"
-            :key="result.id"
-            :result="result")
-      section.dashboard-page__loaded(v-if='!$route.query.q')
+      section.dashboard-page__loaded
         .dashboard-page__empty(v-if='discussions.length == 0')
           p(v-html="$t('dashboard_page.no_groups.show_all')" v-if='noGroups')
           .dashboard-page__no-threads(v-if='!noGroups')

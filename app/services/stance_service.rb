@@ -25,7 +25,7 @@ class StanceService
     new_stance.poll.update_counts!
   end
 
-  def self.update(stance:, actor:, params: )
+  def self.update(stance: , actor: , params: ) 
     actor.ability.authorize!(:update, stance)
     is_update = !!stance.cast_at
 
@@ -46,7 +46,6 @@ class StanceService
       MessageChannelService.publish_models([stance], group_id: stance.poll.group_id)
       Events::StanceCreated.publish!(new_stance)
     else
-      
       stance.stance_choices = []
       stance.assign_attributes_and_files(params)
       stance.cast_at ||= Time.zone.now
@@ -63,7 +62,7 @@ class StanceService
   end
 
   def self.redeem(stance:, actor:)
-    return if Stance.where(participant_id: actor.id, poll_id: stance.poll_id, latest: true).exists?
+    return if Stance.latest.where(participant_id: actor.id, poll_id: stance.poll_id).exists?
     return unless Stance.redeemable_by(actor).where(id: stance.id).exists?
     stance.update(participant: actor, accepted_at: Time.zone.now)
   end

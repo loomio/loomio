@@ -24,7 +24,7 @@ export default
           op = eventable.author()
           if op.id != Session.user().id
             if Session.defaultFormat() == 'html'
-              body = "<p><span class=\"mention\" data-mention-id=\"#{op.username}\" label=\"#{op.name}\">@#{op.name}</span></p>"
+              body = "<p><span class=\"mention\" data-mention-id=\"#{op.username}\" label=\"#{op.name}\">@#{op.nameOrUsername()}</span></p>"
             else
               body = "@#{op.username} "
 

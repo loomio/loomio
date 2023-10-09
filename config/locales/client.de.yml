@@ -556,6 +556,7 @@ de:
     contact_support: Support kontaktieren
     sign_out: Abmelden
     beta_collab: "\U0001F9EA Beta-Funktionen aktiviert!"
+    outcomes: Ergebnisse
   membership_card:
     group_members: Mitglieder der Gruppe
     discussion_members: Diskussionsteilnehmer
@@ -577,6 +578,7 @@ de:
       group: Aus der Gruppe entfernen
       poll: von {{pollType}} entfernen
     cancel_invitation: Einladung abbrechen
+    set_name_and_username: Legen Sie Namen und Benutzernamen fest
   notification_models:
     discussion: 'Diskussion:'
     comment: kommentieren in
@@ -621,6 +623,7 @@ de:
       stance_updated: "%{actor} hat abgestimmt in: %{title}"
       stance_created_option: "%{actor} hat für %{option} in %{title} abgestimmt"
       user_added_to_group: "%{actor} hat Sie zur Gruppe hinzugefügt: %{title}"
+      membership_resent: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten"
     without_title:
       discussion_closed: "%{actor}den Thread geschlossen"
       poll_expired: "%{poll_type} wurde abgeschlossen"
@@ -655,6 +658,7 @@ de:
       stance_created_option: "%{actor} hat für %{option} abgestimmt"
       user_mentioned: "%{actor} hat Sie erwähnt"
       user_reminded: "%{actor} erinnert Sie daran, abzustimmen"
+      membership_resent: "%{actor} hat Sie eingeladen, einer Gruppe beizutreten"
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, Ihre Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchten Sie die Menschen an die Abstimmung erinnern oder die Frist verlängern.
@@ -1318,6 +1322,7 @@ de:
     date_time_pref_label: Datums- und Uhrzeitformat
     help_translate: Können Sie uns bei der Übersetzung von Loomio helfen?
     updated_on_sign_in: Wird von Ihrem Browser bereitgestellt und aktualisiert, wenn Sie sich anmelden
+    deactivated_user: Deaktivierter Benutzer
   text_editor:
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
@@ -1697,6 +1702,7 @@ de:
     superseded: Abgelöst
     new_proposal_template: Neue Angebotsvorlage
     edit_proposal_template: Angebotsvorlage bearbeiten
+    outcomes: Ergebnisse
   poll_common_attachment_form:
     label: Arbeitsmaterialien
   poll_common_add_option:
@@ -1867,6 +1873,8 @@ de:
     no_votes_yet: Es existieren noch keine Abstimmungsbeiträge.
     change_results_order: Ergebnisreihenfolge ändern
     none_of_the_above: "(Keine der genannten)"
+    vote_removed: Abstimmung entfernt
+    name_or_username: Name oder Benutzername
   poll_common_undecided_panel:
     show_invitations: Ausstehende Einladungen anzeigen
     invitation_count_singular: Eine weitere Person wurde zur Teilnahme per E-Mail eingeladen
@@ -1991,6 +1999,7 @@ de:
     process_introduction: Vorlagenhilfe
     process_introduction_hint: Ein paar Absätze, die erklären, wie die Vorlage verwendet wird. Fügen Sie Links zu Ressourcen hinzu, die hilfreich sein könnten.
     option_has_votes_confirm_delete: Einige Leute haben für diese Option gestimmt. Sind Sie sicher, dass Sie sie löschen möchten?
+    notify_everyone_when_poll_starts: Benachrichtigen Sie alle, wenn %{poll_type} startet
   poll_proposal_form:
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten
@@ -2034,6 +2043,7 @@ de:
     time_slot_added: Zeitfenster hinzugefügt
     time_slot_already_added: Zeitfenster ist schon hinzugefügt
     participants_see_local_times: Den Teilnehmern werden die auf ihre Zeitzone zugeschnittenen Zeiten angezeigt
+    use_24_hour_format: Fehler! Verwenden Sie das 24-Stunden-Format, z. B. %{time}
   poll_ranked_choice_form:
     no_options: Du hast noch keine Option hinzugefügt.
     add_option_placeholder: Gebe eine neue Auswahl ein
@@ -2346,6 +2356,7 @@ de:
     meaning_hint: Ein Satz, der erklärt, was die Auswahl dieser Option bedeutet
     prompt: Grundaufforderung
     prompt_hint: Eine Frage, die die Wähler dazu anregen soll, ihre Argumente darzulegen oder ihre Position zu überdenken.
+    option_name_validation: Halten Sie den Namen am besten kurz und geben Sie Einzelheiten in das Feld „Bedeutung“ ein
   poll_common_close_form:
     title: "%{poll_type} jetzt schließen?"
     helptext: Sind Sie sicher, dass Sie diese %{poll_type} vorzeitig schließen und ein Ergebnis mitteilen möchten?
@@ -2520,3 +2531,12 @@ de:
       accept_prompt: Warum engagieren Sie sich ehrenamtlich dafür?
       decline_meaning: Ich kann nicht teilnehmen
       decline_prompt: Gibt es etwas, das Sie sagen möchten?
+  search_modal:
+    all_content: Alle Inhalte
+    best_match: Bester Treffer
+    any_tag: Irgendein Tag
+    all_subgroups: Alle Untergruppen
+    parent_only: Nur für Eltern
+  user_name_modal:
+    user_name_updated: Benutzername aktualisiert
+    set_user_name: Benutzernamen festlegen

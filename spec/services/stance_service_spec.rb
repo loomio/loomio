@@ -58,7 +58,10 @@ describe StanceService do
 
     it 'sets event parent to the poll created event' do
       poll_created_event
-      event = StanceService.create(stance: stance_created, actor: voter)
+      stance = Stance.find_by(poll: poll, participant: voter, latest: true)
+      stance.choice = poll.poll_option_names.first
+      stance.reason = "hello"
+      event = StanceService.create(stance: stance, actor: voter)
       expect(event.parent.id).to eq poll_created_event.id
     end
 

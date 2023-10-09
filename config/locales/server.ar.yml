@@ -220,6 +220,10 @@ ar:
     unsubscribe_from_new_comment_html: "<a href='%{url}'>إلغاء الاشتراك</a> من التعليقات في هذا الموضوع."
     unsubscribe_from_comment_replied_to_html: هذا إشعار الرد.
     unsubscribe_from_user_mentioned_html: هذا إشعار بالإشارة.
+    discussion_edited:
+      inline: قام %{actor} بتحرير سياق الموضوع
+    discussion_closed:
+      inline: "%{actor} أغلق الموضوع"
   footer:
     about: حول
     blog: مدونة

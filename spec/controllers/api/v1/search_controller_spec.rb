@@ -1,89 +1,211 @@
 require 'rails_helper'
 describe API::V1::SearchController do
 
-  let(:user)    { create :user }
-  let(:group)   { create :group }
-  let(:discussion) { create :discussion, group: group }
-  let(:discarded_discussion) { create :discussion, group: group, title: "Discarded Discussion" }
-  let(:comment) { create :comment, discussion: discussion }
+  let(:group) { create :group }
+  let(:visible_subgroup) { create :group, parent: group, is_visible_to_parent_members: true }
+  let(:other_group) { create :group }
+  let(:user) { create :user, name: 'normal user' }
 
-  describe 'index' do
+  let!(:discussion) { create :discussion, group: group, title: 'findme' }
+  let!(:visible_subgroup_discussion) { create :discussion, group: visible_subgroup, title: 'findme' }
+  let!(:comment) { create :comment, discussion: discussion, body: 'findme'}
+  let!(:poll) { create :poll, discussion: discussion, title: 'findme' }
+  let!(:stance) { create :stance, poll: poll, reason: 'findme', cast_at: DateTime.now, choice: poll.poll_option_names.first }
+  let!(:anonymous_poll) { create :poll, discussion: discussion, title: 'findme anonymous', anonymous: true, closed_at: nil, closing_at: 4.days.from_now }
+  let!(:anonymous_stance) { create :stance, poll: anonymous_poll, reason: 'findme anonymous', cast_at: DateTime.now, choice: anonymous_poll.poll_option_names.first }
+  let!(:hidden_open_poll) { create :poll, discussion: discussion, title: 'findme', closed_at: nil, closing_at: 4.days.from_now, hide_results: :until_closed  }
+  let!(:hidden_open_stance) { create :stance, poll: hidden_open_poll, reason: 'findme', cast_at: DateTime.now, choice: hidden_open_poll.poll_option_names.first }
+  let!(:outcome) { create :outcome, poll: poll, statement: 'findme' }
+
+  let!(:discarded_discussion) { create :discussion, group: group, title: "findme", discarded_at: DateTime.now }
+  let!(:discarded_comment) { create :comment, discussion: discarded_discussion, body: 'findme', discarded_at: DateTime.now}
+  let!(:discarded_poll) { create :poll, discussion: discarded_discussion, title: 'findme', discarded_at: DateTime.now }
+  let!(:discarded_stance) { create :stance, poll: discarded_poll, reason: 'findme', cast_at: nil}
+  let!(:discarded_outcome) { create :outcome, poll: discarded_poll, statement: 'findme' }
+
+  let!(:io_discussion) { create :discussion, group: nil, title: 'findme' }
+  let!(:io_comment) { create :comment, discussion: io_discussion, body: 'findme'}
+  let!(:io_poll) { create :poll, discussion: io_discussion, title: 'findme' }
+  let!(:io_stance) { create :stance, poll: io_poll, reason: 'findme', cast_at: DateTime.now, choice: poll.poll_option_names.first }
+  let!(:io_outcome) { create :outcome, poll: io_poll, statement: 'findme' }
+
+  let!(:other_discussion) { create :discussion, group: other_group, title: 'findme' }
+  let!(:other_comment) { create :comment, discussion: other_discussion, body: 'findme'}
+  let!(:other_poll) { create :poll, discussion: other_discussion, title: 'findme' }
+  let!(:other_stance) { create :stance, poll: other_poll, reason: 'findme', cast_at: DateTime.now, choice: poll.poll_option_names.first }
+  let!(:other_outcome) { create :outcome, poll: other_poll, statement: 'findme' }
+
+  let!(:guest_discussion) { create :discussion, group: other_group, title: 'findme' }
+  let!(:guest_comment) { create :comment, discussion: guest_discussion, body: 'findme'}
+  let!(:guest_poll) { create :poll, discussion: guest_discussion, title: 'findme' }
+  let!(:guest_stance) { create :stance, poll: guest_poll, reason: 'findme', cast_at: DateTime.now, choice: poll.poll_option_names.first }
+  let!(:guest_outcome) { create :outcome, poll: guest_poll, statement: 'findme' }
+
+  describe 'search' do
     before do
-      group.add_admin! user
+      group.add_member!(user)
+      io_discussion.add_guest!(user, discussion.author)
+      guest_discussion.add_guest!(user, discussion.author)
       sign_in user
     end
 
-    it 'does not find irrelevant threads' do
-      json = search_for('find')
-      result_keys = fields_for(json, 'search_results', 'key')
-      expect(result_keys).to_not include discussion.key
+    it 'returns any visible records' do
+            get :index, params: {query: 'findme'}
+      results = JSON.parse(response.body)['search_results']
+
+      # check that each item is returned
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Discussion' && r['searchable_id'] == discussion.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Discussion' && r['searchable_id'] == visible_subgroup_discussion.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Discussion' && r['searchable_id'] == io_discussion.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Discussion' && r['searchable_id'] == guest_discussion.id
+      end.size).to eq 1
+
+      # check that no other items are returned
+      type_counts = {}
+      results.map do |result|
+        type_counts[result['searchable_type']] ||= 0
+        type_counts[result['searchable_type']] += 1
+      end
+
+      expect(type_counts['Discussion']).to eq 4
+      expect(type_counts['Comment']).to eq 3
+      expect(type_counts['Poll']).to eq 5
+      expect(type_counts['Stance']).to eq 3
+      expect(type_counts['Outcome']).to eq 3
     end
 
-    it "can find a discussion by title" do
-      DiscussionService.update discussion: discussion, params: { title: 'find me' }, actor: user
-      search_for('find')
+    it 'returns group records' do
+      get :index, params: {query: 'findme', group_id: group.id}
+      results = JSON.parse(response.body)['search_results']
 
-      expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
+      # check that each item is returned
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Discussion' && r['searchable_id'] == discussion.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Comment' && r['searchable_id'] == comment.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Poll' && r['searchable_id'] == poll.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Stance' && r['searchable_id'] == stance.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Outcome' && r['searchable_id'] == outcome.id
+      end.size).to eq 1
+
+      # check that no other items are returned
+      type_counts = {}
+      results.map do |result|
+        type_counts[result['searchable_type']] ||= 0
+        type_counts[result['searchable_type']] += 1
+      end
+
+      expect(type_counts['Discussion']).to eq 1
+      expect(type_counts['Comment']).to eq 1
+      expect(type_counts['Poll']).to eq 3
+      expect(type_counts['Stance']).to eq 1
+      expect(type_counts['Outcome']).to eq 1
     end
 
-    it "does not return discarded discussions" do
-      json = search_for('Discarded')
-      result_keys = fields_for(json, 'search_results', 'key')
-      expect(result_keys).to_not include discarded_discussion.key
+    it 'does not return other group records' do
+      get :index, params: {query: 'findme', group_id: other_group.id}
+      results = JSON.parse(response.body)['search_results']
+
+      # check that each item is returned
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Discussion' && r['searchable_id'] == other_discussion.id
+      end.size).to eq 0
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Comment' && r['searchable_id'] == other_comment.id
+      end.size).to eq 0
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Poll' && r['searchable_id'] == other_poll.id
+      end.size).to eq 0
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Stance' && r['searchable_id'] == other_stance.id
+      end.size).to eq 0
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Outcome' && r['searchable_id'] == other_outcome.id
+      end.size).to eq 0
+
+      # check that no other items are returned
+      type_counts = {}
+      results.map do |result|
+        type_counts[result['searchable_type']] ||= 0
+        type_counts[result['searchable_type']] += 1
+      end
+
+      expect(type_counts['Discussion']).to eq nil
+      expect(type_counts['Comment']).to eq nil
+      expect(type_counts['Poll']).to eq nil
+      expect(type_counts['Stance']).to eq nil
+      expect(type_counts['Outcome']).to eq nil
     end
 
-    # TODO: Pull this stuff out so it's not so magic number-y
-    it "decays relevance for older posts" do
-      DiscussionService.update discussion: discussion, params: { title: 'find me' }, actor: user
-      discussion.update(last_activity_at: 10.days.ago)
-      result = search_for('find')
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
+    it 'returns invite-only records' do
+      get :index, params: {query: 'findme', group_id: 0}
+      results = JSON.parse(response.body)['search_results']
 
-      discussion.update(last_activity_at: 30.days.ago)
-      result = search_for('find')
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
+      # check that each item is returned
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Discussion' && r['searchable_id'] == io_discussion.id
+      end.size).to eq 1
 
-      discussion.update(last_activity_at: 60.days.ago)
-      result = search_for('find')
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[3]
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Comment' && r['searchable_id'] == io_comment.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Poll' && r['searchable_id'] == io_poll.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Stance' && r['searchable_id'] == io_stance.id
+      end.size).to eq 1
+
+      expect(results.filter do |r| 
+        r['searchable_type'] == 'Outcome' && r['searchable_id'] == io_outcome.id
+      end.size).to eq 1
+
+      # check that no other items are returned
+      type_counts = {}
+      results.map do |result|
+        type_counts[result['searchable_type']] ||= 0
+        type_counts[result['searchable_type']] += 1
+      end
+
+      expect(type_counts['Discussion']).to eq 1
+      expect(type_counts['Comment']).to eq 1
+      expect(type_counts['Poll']).to eq 1
+      expect(type_counts['Stance']).to eq 1
+      expect(type_counts['Outcome']).to eq 1
     end
 
-    it "can find a discussion by description" do
-      DiscussionService.update discussion: discussion, params: { description: 'find me' }, actor: user
-      search_for('find')
+    # it 'returns guest discussions when group_id' do
+    # end
 
-      expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[1]
-    end
+    # it 'does not return hidden stances' do
+    # end
 
-    it "can find a discussion by comment body" do
-      comment.update body: 'find me'
-      SearchIndexWorker.new.perform([comment.discussion_id])
-      result = search_for('find')
-      expect(@result_keys).to include discussion.key
-      expect(@ranks).to include SearchVector::WEIGHT_VALUES[0]
-    end
-
-    it "does not display content the user does not have access to" do
-      DiscussionService.update discussion: discussion, params: { group: create(:group) }, actor: user
-      search_for('find')
-
-      expect(@result_keys).to_not include discussion.key
-    end
-  end
-end
-
-def fields_for(json, name, field)
-  return [] unless json[name]
-  json[name].map { |f| f[field] }
-end
-
-def search_for(term)
-  get :index, params: { q: term }, format: :json
-  JSON.parse(response.body).tap do |json|
-    expect(json.keys).to include *(%w[search_results])
-    @result_keys = fields_for(json, 'search_results', 'key')
-    @ranks      = fields_for(json, 'search_results', 'rank').map { |d| d.to_f.round(2) }
   end
 end

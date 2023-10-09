@@ -3,7 +3,8 @@ import Records from '@/shared/services/records'
 
 export default
   props:
-    model: Object
+    tags: Array
+    group: Object
     showCounts: Boolean
     showOrgCounts: Boolean
     selected: String
@@ -12,28 +13,25 @@ export default
 
   computed:
     groupKey: ->
-      @model.group().key
+      @group.key
 
     byName: -> 
       res = {}
-      @model.group().tags().forEach (t) -> res[t.name] = t
+      @group.tags().forEach (t) -> res[t.name] = t
       res
 
-    tags: ->
-      if @model.isA('group')
-        @model.tags()
-      else
-        @model.tags.map (name, i) =>
-          id: i
-          name: name
-          color: (@byName[name] || {}).color
-          taggingsCount: (@byName[name] || {}).taggingsCount
+    tagObjects: ->
+      @tags.map (name, i) =>
+        id: i
+        name: name
+        color: (@byName[name] || {}).color
+        taggingsCount: (@byName[name] || {}).taggingsCount
 
 </script>
 <template lang="pug">
 span.tags-display
   v-chip.ml-1(
-    v-for="tag in tags"
+    v-for="tag in tagObjects"
     :key="tag.id"
     :outlined="tag.name != selected"
     :small="!smaller"

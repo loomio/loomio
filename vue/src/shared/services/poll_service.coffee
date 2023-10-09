@@ -155,7 +155,7 @@ export default new class PollService
       canPerform: -> !poll.discardedAt
 
     move_poll:
-      name: 'common.action.move'
+      name: 'action_dock.move_thread' # the text is 'move to group'
       icon: 'mdi-folder-swap-outline'
       menu: true
       canPerform: ->

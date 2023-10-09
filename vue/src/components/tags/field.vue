@@ -8,10 +8,15 @@ export default
     model: Object
 
   data: ->
-    items:
-      uniq(@model.group().tags().map((t) -> t.name).concat(@model.group().parentOrSelf().tags().filter((t) -> t.taggingsCount).map((t) -> t.name)))
+    items: []
+
+  mounted: ->
+    @query()
 
   methods:
+    query: ->
+      @items = uniq(@model.group().tags().map((t) -> t.name).concat(@model.group().parentOrSelf().tags().filter((t) -> t.taggingsCount).map((t) -> t.name)))
+
     colorFor: (name) ->
       (
         @model.group().tags().find((t) -> t.name == name) || 
@@ -21,6 +26,9 @@ export default
 
     remove: (name) ->
       @model.tags.splice(@model.tags.indexOf(name), 1)
+
+  watch:
+    'model.groupId': 'query'
 
   computed:
     actor: ->

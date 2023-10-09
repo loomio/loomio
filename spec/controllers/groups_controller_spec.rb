@@ -100,9 +100,6 @@ describe GroupsController do
       group.add_admin! user
       get :export, params: { key: group.key }, format: :html
       expect(response.status).to eq 200
-
-      get :export, params: { key: group.key }, format: :csv
-      expect(response.status).to eq 200
     end
 
     it 'does not allow non-admins to see export' do

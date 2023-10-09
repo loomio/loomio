@@ -30,6 +30,32 @@ describe API::V1::MembershipsController do
     sign_in user
   end
 
+  describe 'user_name' do
+    let(:unverified_user) { create :user, email_verified: false }
+
+    before do
+      group.add_member!(unverified_user)
+    end
+
+    it 'allows group admin to set name of unverified user' do
+      post :user_name, params: {id: unverified_user.id, name: 'celine', username: 'diva99'}
+      expect(response.status).to eq 200
+      expect(unverified_user.reload.name).to eq "celine"
+      expect(unverified_user.reload.username).to eq "diva99"
+    end
+
+    it 'disallows non admin to set name,username of unverified user' do
+      sign_in user_named_biff
+      post :user_name, params: {id: unverified_user.id, name: 'celine', username: 'diva99'}
+      expect(response.status).to eq 403
+    end
+
+    it 'disallows group admin to set name,username of verified user' do
+      post :user_name, params: {id: user_named_biff.id, name: 'celine', username: 'diva99'}
+      expect(response.status).to eq 404
+    end
+  end
+
   describe 'create' do
     it 'sets the membership volume' do
       new_group = FactoryBot.create(:group)

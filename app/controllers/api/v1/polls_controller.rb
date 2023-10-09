@@ -39,6 +39,9 @@ class API::V1::PollsController < API::V1::RestfulController
   end
 
   private
+  def create_action
+    @event = service.create(**{resource_symbol => resource, actor: current_user, params: resource_params})
+  end
 
   def accessible_records
     PollQuery.visible_to(user: current_user, show_public: false)

@@ -40,7 +40,6 @@ RUN apt-get install --no-install-recommends -y \
     liborc-dev \
     libpango1.0-dev \
     libpng-dev \
-    libpoppler-glib-dev \
     libpq-dev \
     libreadline6-dev \
     librsvg2-dev \

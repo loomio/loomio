@@ -260,10 +260,6 @@ export default class DiscussionModel extends BaseModel
     @processing = true
     @remote.patchMember(@keyOrId(), 'reopen').finally => @processing = false
 
-  fork: =>
-    @processing = true
-    @remote.post('fork', @serialize()).finally => @processing = false
-
   moveComments: =>
     @processing = true
     @remote.patchMember(@keyOrId(), 'move_comments', { forked_event_ids: @forkedEventIds }).finally => @processing = false
