@@ -22,6 +22,10 @@ class LoggedOutUser
     set_avatar_initials if (@name || @email)
   end
 
+  def name_or_username
+    @name || @username
+  end
+
   def group_token
     @params[:group_token] || @session[:pending_group_token]
   end
