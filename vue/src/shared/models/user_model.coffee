@@ -23,7 +23,10 @@ export default class UserModel extends BaseModel
     dateTimePref: 'day_iso'
 
   nameOrEmail: ->
-    @name || @username || @email || @placeholderName
+    @name || @email || @placeholderName
+
+  nameOrUsername: ->
+    @name || @username
 
   simpleBio: ->
     truncate((@shortBio || '').replace(/<\/?[^>]+(>|$)/g, ""), length: 70)
