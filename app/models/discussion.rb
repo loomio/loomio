@@ -93,6 +93,10 @@ class Discussion < ApplicationRecord
   has_many :admin_guests, -> { merge DiscussionReader.admins }, through: :discussion_readers, source: :user
   include DiscussionExportRelations
 
+  scope :search_for, -> (q) do
+    kept.where("discussions.title ilike ?", "%#{q}%")
+  end
+
   delegate :name, to: :group, prefix: :group
   delegate :name, to: :author, prefix: :author
   delegate :users, to: :group, prefix: :group
