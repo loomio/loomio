@@ -15,6 +15,7 @@ describe API::B1::DiscussionsController do
         name: 'group admin bot',
         permissions: ['create_discussion']
       )
+      expect(webhook.reload.last_used_at).to_not be_present
       post :create, params: { title: 'test', group_id: group.id, api_key: webhook.token }
       expect(response.status).to eq 200
       json = JSON.parse response.body
@@ -22,6 +23,7 @@ describe API::B1::DiscussionsController do
       expect(discussion['id']).to be_present
       expect(discussion['group_id']).to eq group.id
       expect(discussion['title']).to eq 'test'
+      expect(webhook.reload.last_used_at).to be_present
     end
 
     it 'missing permission' do

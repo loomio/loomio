@@ -197,6 +197,8 @@ export default
                 span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
                 space
                 span.title.caption {{membership.user().title(group)}}
+                space
+                v-chip(v-if="membership.user().bot" x-small outlined label v-t="'members_panel.bot'")
                 span(v-if="membership.groupId == group.id && membership.admin")
                   space
                   v-chip(x-small outlined label v-t="'members_panel.admin'")

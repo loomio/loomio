@@ -1,23 +1,37 @@
 %main
-  %h1 Loomio API
+  %h1 Loomio API v2
 
-  %p
-    Hi! We've created this API for people who are writing integrations for Loomio.
-    At this stage it's still new and development is request driven -
-    meaning that if you want to see a new feature, please
-    %a{href: "https://www.loomio.org/community-product-development/", target: "_blank"}
-      join the product development group
-    and explain what you would like to do.
+  %p API v2 was released in October 2023. It replaces the previous API, which you would have accessed via the /api/b1 prefix.
 
-  %p.mt-4.mb-4 Your API key is: #{@api_key}
+  %p.mt-4 
+    Your API key is: #{@api_key}
+    %br
+    - if current_user.bot?
+      This user account is a bot. That's good! It will not be included in polls and notifications
+    - else
+      %span This user account is a human. You may want to 
+      %a{href: "/profile"} setup a bot account
+      %span for API requests.
+
+  Select a group for example commands
+  %table
+    - current_user.adminable_groups.each do |group|
+      %tr
+        %td=group.id
+        %td
+          %a{href: "?group_id=#{group.id}"}=group.full_name
+
   %h2 create discussion
 
   %h3 example
   %pre
-    curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "title":"example thread", "recipient_emails":["#{current_user.email}"], "api_key": "#{@api_key}"}' #{root_url}api/b1/discussions
+    curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "title":"example thread", "recipient_emails":["#{current_user.email}"], "api_key": "#{@api_key}"}' #{root_url}api/b2/discussions
 
   %h3 params
   %table
+    %tr
+      %td group_id
+      %td group where thread will exist
     %tr
       %td title
       %td title of the thread (required)
@@ -45,18 +59,22 @@
 
   %h3 example
   %pre
-    curl #{root_url}api/b1/discussions/aBcD123?api_key=#{params['api_key']}
-
+    curl #{root_url}api/b2/discussions/abc123?api_key=#{@api_key}
 
   %h2 create poll
   %h3 example
   - closing_at = 7.days.from_now.at_beginning_of_hour.utc.iso8601
   %pre
-    -# curl -X POST -d 'title=example poll&poll_type=proposal&options[]=agree&options[]=disagree&details=testing proposal&closing_at=2021-02-03&api_key=#{params['api_key']}' #{root_url}api/b1/polls
-    curl -X POST -H 'Content-Type: application/json' -d '{"title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "#{closing_at}", "recipient_emails":["#{current_user.email}"], "api_key": "#{params['api_key']}"}' #{root_url}api/b1/polls
+    curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "#{closing_at}", "recipient_emails":["#{current_user.email}"], "api_key": "#{@api_key}"}' #{root_url}api/b2/polls
 
   %h3 params
   %table
+    %tr
+      %td group_id
+      %td integer. optional. default: null. id of group for poll. If discussion_id is passed, group_id is ignored.
+    %tr
+      %td discussion_id
+      %td integer. optional. default: null. id of discussion thread to add this poll to.
     %tr
       %td title
       %td string. required. title of the poll
@@ -92,9 +110,6 @@
       %td anonymous
       %td boolean. optional. default: false. true: hide identities of voters.
     %tr
-      %td discussion_id
-      %td integer. optional. default: null. id of discussion thread to add this poll to.
-    %tr
       %td recipient_audience
       %td string 'group' or null. optional. default: null. if 'group' whole group will be notified about the new thread.
     %tr
@@ -118,22 +133,22 @@
 
   %h3 example
   %pre
-    curl #{root_url}api/b1/polls/aBcD123?api_key=#{params['api_key']}
+    curl #{root_url}api/b2/polls/abc123?api_key=#{@api_key}
 
   %h2 list memberships
-  - url = "#{root_url}api/b1/memberships?api_key=#{params['api_key']}"
+  - url = "#{root_url}api/b2/memberships?api_key=#{@api_key}&group_id=#{@group_id}"
   %a{href: url}=url
   %pre
-    curl -d 'api_key=#{params['api_key']}' #{root_url}api/b1/memberships
+    curl -d 'api_key=#{@api_key}' #{root_url}api/b2/memberships
 
   %h2 manage memberships  
   %p send a list of emails. it will invite all the new email addresses to the group. 
   %pre
-    curl -X POST -H 'Content-Type: application/json' -d '{"emails":["person@example.com"], "api_key": "#{params['api_key']}"}' #{root_url}api/b1/memberships
+    curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "emails":["person@example.com"], "api_key": "#{@api_key}"}' #{root_url}api/b2/memberships
 
   %p if you pass remove_absent=1 then any members of the group who were not included in the list will be removed from the group. <b>be careful, you could remove everyone in your group!</b>
   %pre
-    curl -X POST -H 'Content-Type: application/json' -d '{"emails":["person@example.com"], "remove_absent": 1, "api_key": "#{params['api_key']}"}' #{root_url}api/b1/memberships
+    curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "emails":["person@example.com"], "remove_absent": 1, "api_key": "#{@api_key}"}' #{root_url}api/b2/memberships
 
   %h3 params
   %table
