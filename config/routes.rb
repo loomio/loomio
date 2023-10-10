@@ -43,6 +43,12 @@ Rails.application.routes.draw do
       resources :polls, only: [:create, :show]
       resources :memberships, only: [:index, :create]
     end
+    
+    namespace :b2 do
+      resources :discussions, only: [:create, :show]
+      resources :polls, only: [:create, :show]
+      resources :memberships, only: [:index, :create]
+    end
 
     namespace :v1 do
       resources :attachments, only: [:index, :destroy]
