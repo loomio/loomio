@@ -1416,6 +1416,8 @@ en:
     email_sent: "Email sent to {{name}}"
 
   profile_page:
+    account_is_bot: This is a bot account
+    bot_account_warning: Bot accounts will not be invited to vote in polls or participate in discussions
     incomplete_profile: Incomplete profile!
     set_your_profile_picture: Set your profile picture
     messages:
@@ -1901,6 +1903,7 @@ en:
     no_results_found: No results for "{{search}}"
 
   members_panel:
+    bot: Bot
     no_results: 'No members found'
     everyone: 'Everyone'
     sort: 'Sort'

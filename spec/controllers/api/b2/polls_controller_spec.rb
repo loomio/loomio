@@ -3,12 +3,14 @@ require 'rails_helper'
 describe API::B2::PollsController do
   let(:group) { create :group }
   let(:bad_group) { create :group }
+  let(:bot) { create :user, bot: true}
   let(:admin) { group.admins.first }
   let(:member) { create :user }
 
   describe 'create' do
     before do
       group.add_member! member
+      group.add_admin! bot
     end
 
     it 'happy case no notifications' do
@@ -18,7 +20,7 @@ describe API::B2::PollsController do
         poll_type: 'proposal',
         closing_at: 3.days.from_now.iso8601,
         options: ['agree', 'disagree'],
-        api_key: admin.api_key,
+        api_key: bot.api_key,
       }
       expect(response.status).to eq 200
       json = JSON.parse response.body
@@ -26,6 +28,8 @@ describe API::B2::PollsController do
       expect(poll['id']).to be_present
       expect(poll['group_id']).to eq group.id
       expect(poll['title']).to eq 'test'
+      expect(Poll.find(poll['id']).voters).to_not include(bot)
+      expect(Poll.find(poll['id']).voters).to include(admin, member)
     end
 
     # todo test invalid group id
@@ -38,7 +42,7 @@ describe API::B2::PollsController do
         closing_at: 3.days.from_now.iso8601,
         options: ['agree', 'disagree'],
         recipient_emails: ['test@example.com'],
-        api_key: admin.api_key,
+        api_key: bot.api_key,
       }
       expect(response.status).to eq 200
       json = JSON.parse response.body
@@ -57,7 +61,7 @@ describe API::B2::PollsController do
         closing_at: 3.days.from_now.iso8601,
         options: ['agree', 'disagree'],
         recipient_user_ids: [member.id],
-        api_key: admin.api_key,
+        api_key: bot.api_key,
       }
       
       expect(response.status).to eq 200
@@ -77,7 +81,7 @@ describe API::B2::PollsController do
         closing_at: 3.days.from_now.iso8601,
         options: ['agree', 'disagree'],
         recipient_audience: 'group',
-        api_key: admin.api_key,
+        api_key: bot.api_key,
       }
 
       expect(response.status).to eq 200
@@ -86,11 +90,11 @@ describe API::B2::PollsController do
       expect(poll['id']).to be_present
       expect(poll['group_id']).to eq group.id
       expect(poll['title']).to eq 'test'
-      expect(Poll.find(poll['id']).voters.count).to eq group.members.count
+      expect(Poll.find(poll['id']).voters.count).to eq group.members.humans.count
     end
 
     it 'missing group id' do
-      post :create, params: { title: 'test', api_key: admin.api_key }
+      post :create, params: { title: 'test', api_key: bot.api_key }
       expect(response.status).to eq 422
     end
 
@@ -102,7 +106,7 @@ describe API::B2::PollsController do
         closing_at: 3.days.from_now.iso8601,
         options: ['agree', 'disagree'],
         recipient_audience: 'group',
-        api_key: admin.api_key,
+        api_key: bot.api_key,
       }
       
       expect(response.status).to eq 403

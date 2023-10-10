@@ -1,7 +1,15 @@
 %main
   %h1 Loomio API v2
 
-  %p.mt-4.mb-4 Your API key is: #{@api_key}
+  %p.mt-4 
+    Your API key is: #{@api_key}
+    %br
+    - if current_user.bot?
+      This user account is a bot. That's good! It will not be included in polls and notifications
+    - else
+      %span This user account is a human. You may want to 
+      %a{href: "/profile"} setup a bot account
+      %span for API requests.
 
   Select a group for example commands
   %table
@@ -10,7 +18,6 @@
         %td=group.id
         %td
           %a{href: "?group_id=#{group.id}"}=group.full_name
-
 
   %h2 create discussion
 

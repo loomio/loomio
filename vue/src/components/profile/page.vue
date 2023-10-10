@@ -154,6 +154,9 @@ v-main
                   template(v-slot:activator="{on, attrs}")
                     v-icon(v-bind="attrs" v-on="on" small) mdi-information-outline
                   span(v-t="'profile_page.updated_on_sign_in'")
+              v-checkbox(v-model="user.bot" :label="$t('profile_page.account_is_bot')")
+              v-alert(v-if="user.bot" type="warning")
+                span(v-t="'profile_page.bot_account_warning'")
         v-card-actions.profile-page__update-account
           help-link(path="en/user_manual/users/user_profile")
           v-spacer
