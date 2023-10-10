@@ -34,13 +34,12 @@ class API::B2::MembershipsController < API::B2::BaseController
   end
 
   def index
-    raise CanCan::AccessDenied unless current_webhook.permissions.include?('read_memberships')
     instantiate_collection
     respond_with_collection
   end
 
   def accessible_records
-    Membership.where(group_id: current_webhook.group_id)
+    Membership.where(group_id: group.id)
   end
 
   def group
