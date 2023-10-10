@@ -7,6 +7,7 @@ ENV RAILS_SERVE_STATIC_FILES=1
 ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT=development
 ENV NODE_OPTIONS=--openssl-legacy-provider
+ENV RUBYOPT="--yjit"
 
 RUN apt-get update -qq
 RUN apt-get install --no-install-recommends -y \
