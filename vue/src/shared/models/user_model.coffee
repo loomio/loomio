@@ -23,7 +23,10 @@ export default class UserModel extends BaseModel
     dateTimePref: 'day_iso'
 
   nameOrEmail: ->
-    @name || @email || @placeholderName
+    @name || @email || @username || @placeholderName
+
+  nameOrUsername: ->
+    @name || @username
 
   simpleBio: ->
     truncate((@shortBio || '').replace(/<\/?[^>]+(>|$)/g, ""), length: 70)
@@ -93,7 +96,7 @@ export default class UserModel extends BaseModel
     @titles[group.id] || @titles[group.parentId]
 
   nameWithTitle: (group) ->
-    name = @name || @email
+    name = @nameOrEmail()
     return name unless group
     titles = @titles || {}
     compact([name, (titles[group.id] || titles[group.parentId])]).join(' · ')

@@ -43,6 +43,12 @@ Rails.application.routes.draw do
       resources :polls, only: [:create, :show]
       resources :memberships, only: [:index, :create]
     end
+    
+    namespace :b2 do
+      resources :discussions, only: [:create, :show]
+      resources :polls, only: [:create, :show]
+      resources :memberships, only: [:index, :create]
+    end
 
     namespace :v1 do
       resources :attachments, only: [:index, :destroy]
@@ -332,6 +338,7 @@ Rails.application.routes.draw do
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
   get '/help/api'   => 'help#api'
+  get '/help/api2'   => 'help#api2'
 
   get '/start_group', to: redirect('/try')
 

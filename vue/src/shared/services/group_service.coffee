@@ -7,6 +7,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service'
 import openModal      from '@/shared/helpers/open_modal'
 import AppConfig      from '@/shared/services/app_config'
 import i18n from '@/i18n.coffee'
+import { hardReload } from '@/shared/helpers/window'
 
 export default new class GroupService
   actions: (group) ->
@@ -92,7 +93,7 @@ export default new class GroupService
 
     webhooks:
       name: 'webhook.api_keys'
-      icon: 'mdi-webhook'
+      icon: 'mdi-key-variant'
       menu: true
       canPerform: ->
         group.adminsInclude(Session.user())
@@ -101,6 +102,14 @@ export default new class GroupService
           component: 'WebhookList'
           props:
             group: group
+
+    api_docs:
+      name: 'common.api_docs'
+      icon: 'mdi-webhook'
+      menu: true
+      canPerform: -> group.adminsInclude(Session.user())
+      perform: -> 
+        hardReload "/help/api2/?group_id=#{group.id}"
 
     group_stats:
       name: 'group_page.stats'

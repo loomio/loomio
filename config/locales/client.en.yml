@@ -161,6 +161,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    api_docs: API docs
     prefix_eg: "e.g. {{val}}"
     are_you_sure: Are you sure?
     loomio_help: Loomio help
@@ -1434,6 +1435,8 @@ en:
     email_sent: "Email sent to {{name}}"
 
   profile_page:
+    account_is_bot: This is a bot account
+    bot_account_warning: Bot accounts will not be invited to vote in polls or participate in discussions
     incomplete_profile: Incomplete profile!
     set_your_profile_picture: Set your profile picture
     messages:
@@ -1920,6 +1923,7 @@ en:
     lets_start_a_thread: Let's start a thread. Click "New thread" to continue.
 
   members_panel:
+    bot: Bot
     no_results: 'No members found'
     everyone: 'Everyone'
     all: All
@@ -2818,6 +2822,7 @@ en:
       slack: Slack
       discord: Discord
     subtitle: Connect to Loomio to the rest of your tools with our API
+    deprecated: This API is deprecated. Please move to APIv2 (see API docs in your group settings menu)
     we_have_guides: |
       See our <a href="{{url}}" target="_blank">webhook setup guides</a> for help connecting your service.
     add_webhook: Add webhook
