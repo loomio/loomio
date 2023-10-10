@@ -37,6 +37,7 @@ v-card.webhook-list
     dismiss-modal-button(:close="close")
   v-card-text
     p.text--secondary(v-t="'webhook.subtitle'")
+    v-alert(type="warning" v-t="'webhook.deprecated'")
     loading(v-if="loading")
     v-list(v-if="!loading")
       v-list-item(v-for="webhook in webhooks" :key="webhook.id")
