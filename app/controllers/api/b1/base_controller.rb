@@ -5,6 +5,7 @@ class API::B1::BaseController < API::V1::SnorlaxBase
 
   def authenticate_api_key!
     raise CanCan::AccessDenied unless current_webhook
+    current_webhook.update(last_used_at: DateTime.now)
   end
 
   def current_user

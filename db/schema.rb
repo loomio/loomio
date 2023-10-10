@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_024438) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_213156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1006,6 +1006,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_024438) do
     t.integer "author_id"
     t.integer "actor_id"
     t.string "permissions", default: [], null: false, array: true
+    t.datetime "last_used_at"
     t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 
