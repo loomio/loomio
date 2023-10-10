@@ -139,7 +139,7 @@
   - url = "#{root_url}api/b2/memberships?api_key=#{@api_key}&group_id=#{@group_id}"
   %a{href: url}=url
   %pre
-    curl -d 'api_key=#{@api_key}' #{root_url}api/b2/memberships
+    curl #{url}
 
   %h2 manage memberships  
   %p send a list of emails. it will invite all the new email addresses to the group. 
