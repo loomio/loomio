@@ -36,7 +36,7 @@ describe API::B2::DiscussionsController do
 
     it 'blank key' do
       post :create, params: { title: 'test', group_id: group.id }
-      expect(response.status).to eq 400
+      expect(response.status).to eq 403
     end
   end
 end
