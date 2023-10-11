@@ -11,7 +11,7 @@ discuss_a_topic:
   process_introduction_format: html
   description_i18n: discussion_templates.discuss_a_topic.description
   description_format: html
-  recipent_audience: group
+  recipient_audience: group
   newest_first: false
   max_depth: 3
   position: 1
