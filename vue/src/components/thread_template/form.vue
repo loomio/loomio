@@ -20,6 +20,7 @@ export default
     pollTemplateItems: []
     selectedPollTemplate: null
     pollTemplates: []
+    recipientAudienceItems: [{text: 'None', value: null}, {text: 'Everyone in group', value: 'group'}]
 
   created: ->
     @pollTemplates = @discussionTemplate.pollTemplates()
@@ -122,6 +123,8 @@ export default
     :placeholder="$t('thread_template.example_description_placeholder')"
     :label="$t('thread_template.example_description_label')"
   )
+
+  v-select(v-model="discussionTemplate.recipientAudience" label="Notify" :items="recipientAudienceItems")
 
   v-divider.my-4
 

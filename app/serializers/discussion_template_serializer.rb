@@ -24,5 +24,6 @@ class DiscussionTemplateSerializer < ActiveModel::Serializer
              :max_depth,
              :newest_first,
              :poll_template_keys_or_ids,
-             :public
+             :public,
+             :recipient_audience
 end
