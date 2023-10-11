@@ -1713,6 +1713,7 @@ en:
 
   contact_message_form:
     alt_title: "Contact Loomio Support"
+    need_message: Please enter a message so we can help you :-)
     title: "Hi there! How can we help?"
     this_is_for:
       This is a great place for sales, training or subscription enquiries, or to ask for support using Loomio.

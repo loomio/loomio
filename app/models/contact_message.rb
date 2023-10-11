@@ -7,5 +7,4 @@ class ContactMessage
 
   validates :email, presence: true, email: true
   validates :message, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
-  validates :subject, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
 end
