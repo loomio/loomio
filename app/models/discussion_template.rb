@@ -13,7 +13,7 @@ class DiscussionTemplate < ApplicationRecord
   validates :description, length: { maximum: Rails.application.secrets.max_message_length }
   
   validates :process_name, presence: true
-  validates :process_subtitle, presence: true
+  # validates :process_subtitle, presence: true
 
   has_paper_trail only: [
     :public,

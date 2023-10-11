@@ -150,12 +150,15 @@ en:
       process_name: Prepare for a meeting
       process_subtitle: Build an agenda, post board papers and organize administrative
         matters so everyone is up to date, in context and prepared.
-      description: <p><strong>Focus of the meeting</strong></p><p></p><p data-text-align="start"><strong>Outline
-        agenda</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>Actions
-        from last meeting</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>How
-        should participants prepare for the meeting? </strong></p><p data-text-align="start"></p><p
-        data-text-align="start"><strong>List of documents for the meeting</strong></p><p
-        data-text-align="start"></p>
+      description: <p><strong>Focus of the meeting</strong></p><p></p><p data-text-align="start"><strong>Outline agenda</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>Actions from last meeting</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>How should participants prepare for the meeting?</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>List of documents for the meeting</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>Plan an effective meeting by involving people from the outset,
+        aligning towards the most important topics, and make better use of your precious time together.</p>
+        <p>Use a thread as the container for your meeting to establish a focus for the meeting, set the agenda,
+        find a suitable date, post key documents and reports, start discussion on agenda items, follow up with
+        actions and minutes.</p><p>This helps everyone prepare for the meeting, by reading the materials and
+        thinking about topics of discussion and the decisions to be made.
+        Members are then more likely to arrive in context and ready for the meeting.</p>
+        <p>Read more about <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>Preparing for a meeting</u></a> in the Good Governance Guide to Loomio.</p>
       meeting: Meeting
     build_a_policy:
       title_placeholder: Revising our hiring policy

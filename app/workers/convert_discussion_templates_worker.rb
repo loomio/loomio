@@ -20,6 +20,7 @@ class ConvertDiscussionTemplatesWorker
           :updated_at,
           :attachments))
 
+      template.process_name = discussion.title
       template.source_discussion_id = discussion.id
 
       template.save!
