@@ -13,4 +13,8 @@ class HelpController < ApplicationController
     @api_key = current_user.api_key
     render layout: 'basic'
   end
+
+  def api3
+    render layout: 'basic'
+  end
 end
