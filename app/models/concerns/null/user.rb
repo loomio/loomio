@@ -12,12 +12,12 @@ module Null::User
   def nil_methods
     [:id, :key, :username, :short_bio, :city, :region, :country, :selected_locale, :deactivated_at,
      :default_membership_volume, :unsubscribe_token, :location, :email_catch_up_day,
-     :encrypted_password, :update_attribute, :last_seen_at, :legal_accepted_at]
+     :encrypted_password, :update_attribute, :last_seen_at, :legal_accepted_at, :api_key]
   end
 
   def false_methods
     [:is_logged_in?, :is_member_of?, :is_admin_of?, :is_admin?, :is_admin, :api_key_changed?,
-     :email_when_proposal_closing_soon, :has_password, :bot,
+     :email_when_proposal_closing_soon, :has_password, :bot, :bot?,
      :email_when_mentioned, :email_on_participation, :email_verified, :email_verified?, :email_newsletter, :marked_for_destruction?]
   end
 
@@ -39,7 +39,8 @@ module Null::User
       group_polls: :poll,
       polls: :poll,
       stances: :stance,
-      groups: :group
+      groups: :group,
+      adminable_groups: :group
     }
   end
 
