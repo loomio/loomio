@@ -6,6 +6,7 @@ export default class FileUploader
 
   upload: (file) ->
     url = "/direct_uploads"
+    console.log('file:', file)
     upload = new DirectUpload(file, url, {
       directUploadWillStoreFileWithXHR: (xhr) =>
         xhr.upload.addEventListener 'progress', (e) =>

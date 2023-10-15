@@ -49,7 +49,7 @@ function finduploadPlaceholder(state, id) {
 
 function handleUploads({files, view, attachFile, attachImageFile, coordinates}) {
   Array.from(files || []).forEach(file => {
-    if ((/image/i).test(file.type)) {
+    if ((/image|video/i).test(file.type)) {
       insertImage(file, view, coordinates, attachImageFile)
     } else {
       attachFile({file})
@@ -79,17 +79,25 @@ export function insertImage(file, view, coordinates, attachImageFile) {
       document.getElementById(id).setAttribute("value", parseInt(e.loaded / e.total * 100))
     },
     onComplete: (blob) => {
-      var img = document.createElement('img');
-      img.src = blob.preview_url
-      img.onload = function() {
+      if ((/image/i).test(file.type)) {
+        var img = document.createElement('img');
+        img.src = blob.preview_url
+        img.onload = function() {
+          let pos = finduploadPlaceholder(view.state, id)
+          // If the content around the placeholder has been deleted, drop
+          // the image
+          if (pos == null) return
+          // Otherwise, insert it at the placeholder's position, and remove
+          // the placeholder
+          view.dispatch(view.state.tr
+           .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url, height: img.naturalHeight, width:img.naturalWidth}))
+           .setMeta('uploadPlaceholder', {remove: {id}}))
+        }
+      } else {
         let pos = finduploadPlaceholder(view.state, id)
-        // If the content around the placeholder has been deleted, drop
-        // the image
         if (pos == null) return
-        // Otherwise, insert it at the placeholder's position, and remove
-        // the placeholder
         view.dispatch(view.state.tr
-         .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url, height: img.naturalHeight, width:img.naturalWidth}))
+         .replaceWith(pos, pos, schema.nodes.video.create({src: blob.download_url, height: 640, width: 320}))
          .setMeta('uploadPlaceholder', {remove: {id}}))
       }
     },
@@ -100,6 +108,34 @@ export function insertImage(file, view, coordinates, attachImageFile) {
   })
 }
 
+export const Video = Node.create({
+  name: 'video',
+  group: 'block',
+  selectable: true,
+  draggable: true,
+  atom: true,
+  parseHTML() {
+    return [
+      {
+        tag: 'video',
+      },
+    ]
+  },
+  renderHTML({ HTMLAttributes }) {
+      return ['video', mergeAttributes(HTMLAttributes)];
+  },
+
+  addAttributes() {
+    return {
+      "src": {
+        default: null
+      },
+      "controls": {
+        default: true
+      }
+    }
+  },
+});
 
 export const CustomImage = Image.extend({
   addAttributes() {

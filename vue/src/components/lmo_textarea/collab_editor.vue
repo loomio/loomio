@@ -40,6 +40,7 @@ import Text from '@tiptap/extension-text'
 import Underline from '@tiptap/extension-underline'
 import {CustomMention} from './extension_mention'
 import {CustomImage} from './extension_image'
+import {Video} from './extension_image'
 import {Iframe} from './extension_iframe'
 
 import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
@@ -120,6 +121,7 @@ export default
         BulletList
         CodeBlock
         CustomImage.configure({attachFile: @attachFile, attachImageFile: @attachImageFile})
+        Video
         Document
         Dropcursor
         GapCursor
@@ -158,6 +160,12 @@ export default
     'shouldReset': 'reset'
 
   methods:
+    openRecordingModal: ->
+      EventBus.$emit 'openModal',
+        component: 'RecordingModal'
+        props:
+          saveFn: @videoRecorded
+
     checkLength: ->
       @model.saveDisabled = @editor.getCharacterCount() > @maxLength
 
@@ -270,7 +278,9 @@ div
 
         .d-flex.py-2.justify-space-between.flex-wrap.align-center(align-center)
           section.d-flex.flex-wrap.formatting-tools(:aria-label="$t('formatting.formatting_tools')")
-            //- attach
+            v-btn(:small="expanded" icon @click='openRecordingModal', title="record audio or video")
+              v-icon mdi-microphone
+
             v-btn(:small="expanded" icon @click='$refs.filesField.click()', :title="$t('formatting.attach')")
               v-icon mdi-paperclip
 
@@ -550,6 +560,11 @@ input[type="file"]
 
 // .html-editor__textarea, .formatted-text
 .lmo-markdown-wrapper
+  video
+    position: relative
+    width: 100%
+    height: auto
+
   div[data-iframe-container], .iframe-container
     position: relative
     padding-bottom: 100/16*9%

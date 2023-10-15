@@ -42,6 +42,7 @@ import GroupInvitationForm from '@/components/group/invitation_form'
 import AnnouncementHistory from '@/components/common/announcement_history'
 import SearchModal from '@/components/search/modal'
 import UserNameModal from '@/components/group/user_name_modal'
+import RecordingModal from '@/components/lmo_textarea/recording_modal'
 
 export default
   components: {
@@ -87,6 +88,7 @@ export default
     ArrangementForm
     SearchModal
     UserNameModal
+    RecordingModal
   }
 
   data: ->
