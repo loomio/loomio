@@ -100,11 +100,8 @@ export default {
       EventBus.$emit('closeModal')
     },
 
-    stopVideo() {
-      stop(this.$refs.audio.srcObject);
-    },
-    
     stop() {
+      console.log("stop", this.$refs.audio)
       stop(this.$refs.audio.srcObject);
     },
 
@@ -117,13 +114,15 @@ export default {
           this.$refs.audio.muted = true;
           this.$refs.audio.srcObject = stream;
           this.$refs.audio.captureStream = this.$refs.audio.captureStream || this.$refs.audio.mozCaptureStream;
+          console.log("start", this.$refs.audio)
           return new Promise((resolve) => (this.$refs.audio.onplaying = resolve));
         })
         .then(() => startRecording(this.$refs.audio.captureStream()))
         .then((recordedChunks) => {
           this.onAir = false
           // this.blob = new Blob(recordedChunks, {type: "audio/opus" });
-          this.blob = new Blob(recordedChunks, {type: "audio/webm;codecs=opus" });
+          // this.blob = new Blob(recordedChunks, {type: "audio/webm;codecs=opus" });
+          this.blob = new Blob(recordedChunks, {type: "audio/webm" });
           this.$refs.audio.srcObject = null
           this.$refs.audio.src = URL.createObjectURL(this.blob);
           this.$refs.audio.muted = false
@@ -145,8 +144,10 @@ export default {
       h1.headline Make recording
       dismiss-modal-button
 
-    canvas(class="visualizer" height="60px")
-    audio(ref="audio" autoplay controls playsinline)
+    .d-flex.flex-column.align-center.pb-8
+      canvas(class="visualizer" height="60px")
+      div
+      audio(ref="audio" autoplay controls playsinline)
 
     .d-flex
       v-spacer
