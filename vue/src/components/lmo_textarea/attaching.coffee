@@ -58,7 +58,7 @@ export default
       forEach @$refs.filesField.files, (file) => @attachFile(file: file)
 
     # collab editor only
-    videoRecorded: (blob) ->
+    mediaRecorded: (blob) ->
       insertImage(blob, @editor.view, null, @attachImageFile)
 
     imageSelected: ->

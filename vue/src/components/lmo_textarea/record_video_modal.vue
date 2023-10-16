@@ -1,4 +1,5 @@
 <script>
+import EventBus from '@/shared/services/event_bus'
 
 function startRecording(stream) {
   let recorder = new MediaRecorder(stream);
@@ -34,6 +35,7 @@ export default {
   methods: {
     submit() {
       this.saveFn(new File([this.blob], "video.webm",  { lastModified: new Date().getTime(), type: this.blob.type }));
+      EventBus.$emit('closeModal')
     },
 
     stop() {
@@ -48,6 +50,7 @@ export default {
         })
         .then((stream) => {
           this.onAir = true
+          this.$refs.video.muted = true;
           this.$refs.video.srcObject = stream;
           this.$refs.video.captureStream = this.$refs.video.captureStream || this.$refs.video.mozCaptureStream;
           return new Promise((resolve) => (this.$refs.video.onplaying = resolve));
@@ -58,6 +61,7 @@ export default {
           this.blob = new Blob(recordedChunks, { type: "video/webm" });
           this.$refs.video.srcObject = null
           this.$refs.video.src = URL.createObjectURL(this.blob);
+          this.$refs.video.muted = false
 
           console.log(`Successfully recorded ${this.blob.size} bytes of ${this.blob.type} media.`);
         })
@@ -76,7 +80,7 @@ export default {
       h1.headline Make recording
       dismiss-modal-button
 
-    video(ref="video" width="640" height="360" autoplay muted controls)
+    video(ref="video" width="640" height="360" autoplay muted controls playsinline)
 
     .d-flex
       v-spacer

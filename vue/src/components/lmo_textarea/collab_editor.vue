@@ -41,6 +41,7 @@ import Underline from '@tiptap/extension-underline'
 import {CustomMention} from './extension_mention'
 import {CustomImage} from './extension_image'
 import {Video} from './extension_image'
+import {Audio} from './extension_image'
 import {Iframe} from './extension_iframe'
 
 import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
@@ -122,6 +123,7 @@ export default
         CodeBlock
         CustomImage.configure({attachFile: @attachFile, attachImageFile: @attachImageFile})
         Video
+        Audio
         Document
         Dropcursor
         GapCursor
@@ -160,11 +162,17 @@ export default
     'shouldReset': 'reset'
 
   methods:
-    openRecordingModal: ->
+    openRecordVideoModal: ->
       EventBus.$emit 'openModal',
-        component: 'RecordingModal'
+        component: 'RecordVideoModal'
         props:
-          saveFn: @videoRecorded
+          saveFn: @mediaRecorded
+
+    openRecordAudioModal: ->
+      EventBus.$emit 'openModal',
+        component: 'RecordAudioModal'
+        props:
+          saveFn: @mediaRecorded
 
     checkLength: ->
       @model.saveDisabled = @editor.getCharacterCount() > @maxLength
@@ -277,14 +285,23 @@ div
 
         .d-flex.py-2.justify-space-between.flex-wrap.align-center(align-center)
           section.d-flex.flex-wrap.formatting-tools(:aria-label="$t('formatting.formatting_tools')")
-            v-btn(:small="expanded" icon @click='openRecordingModal', title="record audio or video")
-              v-icon mdi-microphone
+            v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+              template(v-slot:activator="{on, attrs}")
+                v-btn.emoji-picker__toggle(:small="expanded" v-on="on" v-bind="attrs" icon :title="$t('formatting.insert_emoji')")
+                  v-icon mdi-emoticon-outline
+              emoji-picker(:insert="emojiPicked")
 
             v-btn(:small="expanded" icon @click='$refs.filesField.click()', :title="$t('formatting.attach')")
               v-icon mdi-paperclip
 
             v-btn(:small="expanded" icon @click='$refs.imagesField.click()', :title="$t('formatting.insert_image')")
               v-icon mdi-image
+
+            v-btn(:small="expanded" icon @click='openRecordAudioModal', title="Record audio")
+              v-icon mdi-microphone
+
+            v-btn(:small="expanded" icon @click='openRecordVideoModal', title="Record video")
+              v-icon mdi-video
 
             //- link
             v-menu(:close-on-content-click="!selectedText()", v-model="linkDialogIsOpen", min-width="320px")
@@ -306,12 +323,6 @@ div
                 template(v-else)
                   v-card-title(v-t="'text_editor.select_text_to_link'")
 
-            //- emoji
-            v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-              template(v-slot:activator="{on, attrs}")
-                v-btn.emoji-picker__toggle(:small="expanded" v-on="on" v-bind="attrs" icon :title="$t('formatting.insert_emoji')")
-                  v-icon mdi-emoticon-outline
-              emoji-picker(:insert="emojiPicked")
 
             template(v-if="expanded")
               //- v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")

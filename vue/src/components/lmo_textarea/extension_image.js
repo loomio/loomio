@@ -93,11 +93,21 @@ export function insertImage(file, view, coordinates, attachImageFile) {
            .replaceWith(pos, pos, schema.nodes.image.create({src: blob.preview_url, height: img.naturalHeight, width:img.naturalWidth}))
            .setMeta('uploadPlaceholder', {remove: {id}}))
         }
-      } else {
+      }
+
+      if ((/video/i).test(file.type)) {
         let pos = finduploadPlaceholder(view.state, id)
         if (pos == null) return
         view.dispatch(view.state.tr
          .replaceWith(pos, pos, schema.nodes.video.create({src: blob.download_url, height: 640, width: 320}))
+         .setMeta('uploadPlaceholder', {remove: {id}}))
+      }
+
+      if ((/audio/i).test(file.type)) {
+        let pos = finduploadPlaceholder(view.state, id)
+        if (pos == null) return
+        view.dispatch(view.state.tr
+         .replaceWith(pos, pos, schema.nodes.audio.create({src: blob.download_url}))
          .setMeta('uploadPlaceholder', {remove: {id}}))
       }
     },
@@ -123,6 +133,36 @@ export const Video = Node.create({
   },
   renderHTML({ HTMLAttributes }) {
       return ['video', mergeAttributes(HTMLAttributes)];
+  },
+
+  addAttributes() {
+    return {
+      "src": {
+        default: null
+      },
+      "controls": {
+        default: true
+      }
+    }
+  },
+});
+
+export const Audio = Node.create({
+  name: 'audio',
+  group: 'block',
+  selectable: true,
+  draggable: true,
+  atom: true,
+  parseHTML() {
+    return [
+      {
+        tag: 'audio',
+      },
+    ]
+  },
+  
+  renderHTML({ HTMLAttributes }) {
+      return ['audio', mergeAttributes(HTMLAttributes)];
   },
 
   addAttributes() {
