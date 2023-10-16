@@ -162,7 +162,7 @@ export default
         span(v-t="'poll_common_form.add_voters'" v-else)
     v-alert(dense type="warning" text v-if="someRecipients && !poll.notifyRecipients")
       span(v-t="'poll_common_form.no_notifications_warning'")
-    v-textarea(v-if="poll.notifyRecipients && someRecipients" rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
+    v-textarea(v-if="poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
   v-list.poll-members-form__list
     v-subheader
       span(v-t="'membership_card.voters'")

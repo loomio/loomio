@@ -12,6 +12,8 @@ count:
   has_options: true
   min_options: 1
   defaults:
+    details_format: html
+    process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
     min_score: 1
@@ -51,6 +53,8 @@ check:
   has_options: true
   min_options: 1
   defaults:
+    details_format: html
+    process_introduction_format: html
     poll_option_name_format: plain
     chart_type: pie
     min_score: 1
@@ -93,6 +97,8 @@ question:
   hide_reason_required: true
   has_options: false
   defaults:
+    details_format: html
+    process_introduction_format: html
     poll_option_name_format: plain
     chart_type: none
     min_score: 0
@@ -185,6 +191,8 @@ proposal:
       prompt_i18n: poll_templates.opt_in.decline_prompt
       color: "#C8E56E"
   defaults:
+    details_format: html
+    process_introduction_format: html
     poll_option_name_format: plain
     chart_type: pie
     min_score: 1
@@ -208,6 +216,8 @@ meeting:
   has_options: true
   min_options: 1
   defaults:
+    details_format: html
+    process_introduction_format: html
     meeting_duration: 60
     poll_option_name_format: iso8601
     chart_type: grid
@@ -232,6 +242,8 @@ poll:
   has_options: true
   min_options: 1
   defaults:
+    details_format: html
+    process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
     min_score: 1
@@ -253,6 +265,8 @@ dot_vote:
   has_options: true
   min_options: 1
   defaults:
+    details_format: html
+    process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
     dots_per_person: 8
@@ -273,6 +287,8 @@ score:
   has_options: true
   min_options: 1
   defaults:
+    details_format: html
+    process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
     min_score: 1
@@ -294,6 +310,8 @@ ranked_choice:
   has_options: true
   min_options: 2
   defaults:
+    details_format: html
+    process_introduction_format: html
     poll_option_name_format: plain
     chart_type: bar
     minimum_stance_choices: 2

@@ -32,7 +32,6 @@ export default
     release:  -> AppConfig.release
     siteName: -> AppConfig.theme.site_name
     user:     -> Session.user()
-    showBeta: -> !AppConfig.features.app.thread_page_v3
 
 </script>
 

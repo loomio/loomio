@@ -7,12 +7,12 @@ import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import EventBus from '@/shared/services/event_bus'
 import Flash   from '@/shared/services/flash'
-
+import I18n from '@/i18n.coffee'
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
+import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel'
 
 export default
-  components:
-    RecipientsAutocomplete: RecipientsAutocomplete
+  components: {RecipientsAutocomplete, ThreadTemplateHelpPanel}
 
   props:
     discussion: Object
@@ -27,9 +27,12 @@ export default
     subscription: @discussion.group().parentOrSelf().subscription
     groupItems: []
     initialRecipients: []
+    discussionTemplate: null
 
   mounted: ->
     Records.users.fetchGroups()
+    Records.discussionTemplates.findOrFetchById(@discussion.discussionTemplateId).then (template) =>
+      @discussionTemplate = template
 
     @watchRecords
       collections: ['groups', 'memberships']
@@ -70,6 +73,12 @@ export default
       ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
 
   computed:
+    titlePlaceholder: ->
+      if @discussionTemplate && @discussionTemplate.titlePlaceholder
+        I18n.t('common.prefix_eg', {val: @discussionTemplate.titlePlaceholder})
+      else
+        I18n.t('discussion_form.title_placeholder')
+
     maxThreads: ->
       @subscription.max_threads
 
@@ -100,12 +109,9 @@ export default
     h1.text-h4(v-observe-visibility="{callback: titleVisible}")
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
-        template(v-if="discussion.template")
-          span(v-if="!discussion.id" v-t="'discussion_form.new_thread_template'")
-          span(v-if="discussion.id" v-t="'discussion_form.edit_thread_template'")
-        template(v-else)
-          span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
-          span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
+        //- span(v-if="discussionTemplate && !discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: discussionTemplate.processName}}")
+        span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
+        span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
     v-spacer
     dismiss-modal-button(
       v-if="!isPage"
@@ -118,8 +124,13 @@ export default
       :to="urlFor(discussion)"
     )
       v-icon mdi-close
+    v-btn.back-button(v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
+      v-icon mdi-close
+
 
   .pa-4
+    thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
+
     v-select.pb-4(
       :disabled="!!discussion.id"
       v-model="discussion.groupId"
@@ -133,26 +144,25 @@ export default
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
       p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
 
-
     .discussion-form__group-selected(v-if='!showUpgradeMessage')
-      tags-field(:model="discussion")
-        
-      recipients-autocomplete(
-        v-if="!discussion.id"
-        :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
-        :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
-        :initial-recipients="initialRecipients"
-        :hint="$t('announcement.form.placeholder')"
-        :model="discussion"
-        :reset="reset"
-      )
-
       v-text-field#discussion-title.discussion-form__title-input(
         :label="$t('discussion_form.title_label')"
-        :placeholder="$t('discussion_form.title_placeholder')"
+        :placeholder="titlePlaceholder"
         v-model='discussion.title' maxlength='255' required
       )
       validation-errors(:subject='discussion', field='title')
+
+      tags-field(:model="discussion")
+        
+      //- recipients-autocomplete(
+      //-   v-if="!discussion.id"
+      //-   :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
+      //-   :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
+      //-   :initial-recipients="initialRecipients"
+      //-   :hint="$t('announcement.form.placeholder')"
+      //-   :model="discussion"
+      //-   :reset="reset"
+      //- )
 
       lmo-textarea(
         :model='discussion'
@@ -164,17 +174,17 @@ export default
       common-notify-fields(:model="discussion")
       //- p.discussion-form__visibility
 
-  v-card-actions.ma-2
-    help-link(path='en/user_manual/threads/starting_threads')
-    v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
-      span(v-t="'thread_arrangement_form.edit'")
-    v-spacer
-    v-btn.discussion-form__submit(
-      color="primary"
-      @click="submit()"
-      :disabled="submitIsDisabled"
-      :loading="discussion.processing"
-    )
-      span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
-      span(v-if="discussion.id" v-t="'common.action.save'")
+      v-card-actions
+        help-link(path='en/user_manual/threads/starting_threads')
+        v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
+          span(v-t="'thread_arrangement_form.edit'")
+        v-spacer
+        v-btn.discussion-form__submit(
+          color="primary"
+          @click="submit()"
+          :disabled="submitIsDisabled"
+          :loading="discussion.processing"
+        )
+          span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
+          span(v-if="discussion.id" v-t="'common.action.save'")
 </template>

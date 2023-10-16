@@ -25,7 +25,6 @@ export default
     openGroups: []
     unreadDirectThreadsCount: 0
 
-
   created: ->
     EventBus.$on 'toggleSidebar', => @open = !@open
 
@@ -160,14 +159,14 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="'sidebar.start_thread'")
     v-list-item-icon
       v-icon mdi-plus
-  v-list-item(dense to="/tasks")
+  v-list-item(dense to="/tasks" :disabled="organizations.length == 0")
     v-list-item-title(v-t="'tasks.tasks'")
   v-divider
 
   v-list.sidebar__groups(dense)
     template(v-for="parentGroup in organizations")
       template(v-if="memberGroups(parentGroup).length")
-        v-list-group(v-model="openGroups[parentGroup.id]"  @click="goToGroup(parentGroup)")
+        v-list-group(v-model="openGroups[parentGroup.id]" @click="goToGroup(parentGroup)")
           template(v-slot:activator)
             v-list-item-avatar(aria-hidden="true")
               group-avatar(:group="parentGroup")

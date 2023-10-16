@@ -51,14 +51,14 @@ section.strand-item.poll-created
       space
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title", :model='poll', field='title')
-      tags-display(:tags="poll.tags" :group="poll.group()")
   .pt-2(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
     .poll-common-details-panel__started-by.text--secondary.mb-4
       span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
       mid-dot
-      poll-common-closing-at(:poll='poll')
+      poll-common-closing-at.ml-1(:poll='poll')
+      tags-display.ml-2(:tags="poll.tags" :group="poll.group()" smaller)
     formatted-text.poll-common-details-panel__details(:model="poll" column="details")
     link-previews(:model="poll")
     attachment-list(:attachments="poll.attachments")

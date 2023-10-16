@@ -7,6 +7,7 @@ class AppConfig
     plugins
     poll_types
     poll_templates
+    discussion_templates
     providers
     timezones
     notifications
@@ -92,7 +93,7 @@ class AppConfig
 
   def self.app_features
     {
-      env: Rails.env,
+      env:                        Rails.env,
       subscriptions:              !!ENV.fetch('CHARGIFY_API_KEY', false),
       demos:                      ENV.fetch('FEATURES_DEMO_GROUPS', false),
       trials:                     ENV.fetch('FEATURES_TRIALS', false),
@@ -105,7 +106,6 @@ class AppConfig
       explore_public_groups:      ENV.fetch('FEATURES_EXPLORE_PUBLIC_GROUPS', false),
       template_gallery:           ENV.fetch('FEATURES_TEMPLATE_GALLERY', false),
       show_contact:               ENV.fetch('FEATURES_SHOW_CONTACT', false),
-      thread_page_v3:             ENV.fetch('FEATURES_THREAD_PAGE_V3', false),
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
       hidden_poll_templates:      %w[gradients_of_agreement proposal question],

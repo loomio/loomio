@@ -16,6 +16,6 @@
   .text-center
     = render 'base_mailer/button', url: membership_url(membership), text: t(:"email.to_join_group.accept_invitation")
 
-%p= t(:"email.loomio_app_description", site_name: AppConfig.theme[:site_name])
+%p= t(:"email.loomio_app_description_html", site_name: AppConfig.theme[:site_name])
 = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"
 

@@ -4,10 +4,8 @@ import Session       from '@/shared/services/session'
 import LmoUrlService from '@/shared/services/lmo_url_service'
 import EventBus      from '@/shared/services/event_bus'
 import AbilityService from '@/shared/services/ability_service'
-import ChooseTemplate from '@/components/thread/choose_template'
 
 export default
-  components: {ChooseTemplate}
   data: ->
     discussion: null
     isDisabled: false
@@ -31,28 +29,26 @@ export default
       if @$route.params.key
         Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
           @discussion = discussion.clone()
-      else if discussionId = parseInt(@$route.query.template_id)
-        Records.discussions.findOrFetchById(discussionId).then (discussion) =>
-          @discussion = discussion.cloneTemplate()
-          if discussion.groupId && AbilityService.canStartThread(discussion.group())
-            @discussion.groupId = discussion.groupId
+
+      else if templateId = parseInt(@$route.query.template_id)
+        Records.discussionTemplates.findOrFetchById(templateId).then (template) =>
+          @discussion = template.buildDiscussion()
+          if parseInt(@$route.query.group_id)
+            @discussion.groupId = parseInt(@$route.query.group_id)
+
+      else if templateKey = @$route.query.template_key
+        Records.discussionTemplates.findOrFetchByKey(@$route.query.template_key, @$route.query.group_id).then (template) =>
+          @discussion = template.buildDiscussion()
+          if parseInt(@$route.query.group_id)
+            @discussion.groupId = parseInt(@$route.query.group_id)
+
       else if @groupId = parseInt(@$route.query.group_id)
-        if @$route.query.blank_template
-          Records.groups.findOrFetchById(@groupId).then =>
-            @discussion = Records.discussions.build
-              title: @$route.query.title
-              groupId: @groupId
-              descriptionFormat: Session.defaultFormat()
-        else if @$route.query.new_template
-          Records.groups.findOrFetchById(@groupId).then =>
-            @discussion = Records.discussions.build
-              title: @$route.query.title
-              groupId: @groupId
-              template: true
-              descriptionFormat: Session.defaultFormat()
-        else
-          # display templates for the group
-          @discussion = null
+        Records.groups.findOrFetchById(@groupId).then =>
+          @discussion = Records.discussions.build
+            title: @$route.query.title
+            groupId: @groupId
+            descriptionFormat: Session.defaultFormat()
+
       else if userId = parseInt(@$route.query.user_id)
         Records.users.findOrFetchById(userId).then (user) =>
           @user = user
@@ -60,6 +56,7 @@ export default
             title: @$route.query.title
             groupId: null
             descriptionFormat: Session.defaultFormat()
+
       else
         @discussion = Records.discussions.build
           title: @$route.query.title
@@ -76,8 +73,4 @@ v-main
         is-page
         :key="discussion.id"
         :user="user")
-
-      div(v-if="!discussion && groupId")
-        choose-template(:group-id="groupId")
-   
 </template>

@@ -1,7 +1,7 @@
 import BaseModel        from '@/shared/record_store/base_model'
 import AppConfig        from '@/shared/services/app_config'
 import Session          from '@/shared/services/session'
-import {map, camelCase, cloneDeep }            from 'lodash'
+import { pick }            from 'lodash'
 import I18n             from '@/i18n'
 import { startOfHour, addDays } from 'date-fns'
 
@@ -58,18 +58,14 @@ export default class PollTemplateModel extends BaseModel
   buildPoll: ->
     poll = @recordStore.polls.build()
 
-    Object.keys(@defaultValues()).forEach (attr) =>
-      if attr == 'title'
-        poll['titlePlaceholder'] = @[attr]
-      else
-        poll[attr] = @[attr]
-      
+    attrs = pick(@, Object.keys(@defaultValues()))
+    attrs.pollTemplateId = @id
+    attrs.pollTemplateKey = @key
+    attrs.authorId = Session.user().id
+    attrs.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
+    attrs.pollOptionsAttributes = @pollOptionsAttributes()
 
-    poll.pollTemplateId = @id
-    poll.pollTemplateKey = @key
-    poll.authorId = Session.user().id
-    poll.closingAt = startOfHour(addDays(new Date(), @defaultDurationInDays))
-    poll.pollOptionsAttributes = @pollOptionsAttributes()
+    poll.update(attrs)
     poll
 
   pollOptionsAttributes: ->

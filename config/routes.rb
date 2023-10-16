@@ -186,6 +186,18 @@ Rails.application.routes.draw do
         get :direct, on: :collection
       end
 
+      resources :discussion_templates, only: [:create, :index, :show, :update, :destroy] do
+        collection do
+          get :browse_tags
+          get :browse
+          post :hide
+          post :unhide
+          post :discard
+          post :undiscard
+          post :positions
+        end
+      end
+
       resources :discussion_readers, only: [:index] do
         member do
           post :remove_admin
@@ -280,13 +292,6 @@ Rails.application.routes.draw do
         get :show, on: :collection
       end
 
-      resources :oauth_applications, only: [:show, :create, :update, :destroy] do
-        post :revoke_access, on: :member
-        post :upload_logo, on: :member
-        get :owned, on: :collection
-        get :authorized, on: :collection
-      end
-
       namespace(:sessions)        { get :unauthorized }
       devise_scope :user do
         resource :sessions, only: [:create, :destroy]
@@ -309,8 +314,14 @@ Rails.application.routes.draw do
   end
 
   resources :poll_templates, only: [] do
-    member do
-      get :dump_i18n_yaml
+    collection do
+      get :dump_i18n
+    end
+  end
+
+  resources :thread_templates, only: [] do
+    collection do
+      get :dump_i18n
     end
   end
   
@@ -360,6 +371,10 @@ Rails.application.routes.draw do
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'
   get 'poll_templates/:id/edit'            => 'application#index'
+  get 'thread_templates/browse'            => 'application#index'
+  get 'thread_templates/new'               => 'application#index'
+  get 'thread_templates/:id'               => 'application#index'
+  get 'thread_templates/:id/edit'          => 'application#index'
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export

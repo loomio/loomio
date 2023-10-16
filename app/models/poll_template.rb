@@ -52,18 +52,24 @@ class PollTemplate < ApplicationRecord
     :discarded_at
   ]
 
-  def dump_i18n_yaml
+  def dump_i18n
     out = {}
     [
+    :title,
+    :title_placeholder,
+    :process_name,
     :process_subtitle,
     :process_introduction,
-    :title,
     :details,
     :reason_prompt,
     ].map(&:to_s).each do |key|
       unless self.send(key) == AppConfig.poll_types.dig(self.poll_type, 'defaults', key)
         out[key] = self[key]
       end
+    end
+
+    tags.each do |tag|
+      out[tag.underscore.gsub(" ", "_")] = tag
     end
 
     self.poll_options.each do |poll_option|
@@ -77,6 +83,6 @@ class PollTemplate < ApplicationRecord
       end
     end
 
-    {process_name.underscore.gsub(" ", "_") => out}.to_yaml
+    {process_name.underscore.gsub(" ", "_") => out}
   end
 end

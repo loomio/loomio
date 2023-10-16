@@ -22,7 +22,7 @@ module Ability
     prepend Ability::Attachment
     prepend Ability::Task
     prepend Ability::PollTemplate
-
+    prepend Ability::DiscussionTemplate
 
     def initialize(user)
       @user = user

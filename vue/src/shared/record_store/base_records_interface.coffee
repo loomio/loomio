@@ -1,5 +1,4 @@
 import RestfulClient from './restful_client'
-import utils         from '@/shared/record_store/utils'
 import {pick, each, merge, keys, isNumber, isString, isArray, debounce, difference, uniq} from 'lodash'
 import Vue           from 'vue'
 

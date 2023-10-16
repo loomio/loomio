@@ -25,6 +25,8 @@ module Dev::Scenarios::Util
     ::PollOption.delete_all
     ::Task.delete_all
     ::DiscussionReader.delete_all
+    ::DiscussionTemplate.delete_all
+    ::PollTemplate.delete_all
     ::ActionMailer::Base.deliveries = []
   end
 end

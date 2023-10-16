@@ -1,5 +1,239 @@
 ---
 en:
+  discussion_templates:
+    blank:
+      title_placeholder: What is the topic you want to discuss?
+      process_name: Blank template
+      process_subtitle: Start a new thread in your group
+    discuss_a_topic:
+      title_placeholder: What is the topic you want to discuss?
+      process_name: Discuss a topic
+      process_subtitle: Start a discussion with your group
+      process_introduction: "<p>Is there an issue, problem or opportunity you wish to
+        raise with your group?</p><p>Introduce the topic, link to any background information
+        and ask for comments, ideas and help.</p><p>Invite people to participate by contributing
+        their thoughts and relevant information. Use @mention to get the attention of
+        particular people.</p><p>Update the thread context as the discussion progresses
+        to facilitate it towards an outcome.</p><p>Don't wait until you have all the info
+        to start a thread. Rather use the thread to invite people to help you explore
+        the topic and figure out a resolution.</p>"
+      description: <h3 id="introduce-and-describe-the-topic">Introduce and describe the
+        topic</h3><p></p><h3 id="why-is-this-important">Why is this important?</h3><p></p><h3
+        id="how-would-you-like-people-to-respond">How would you like people to respond?</h3><p></p>
+      topic: Topic
+    onboarding_to_loomio:
+      title: Using Loomio for our group
+      process_name: Onboarding to Loomio
+      process_subtitle: A thread to help people new to Loomio practice writing comments and voting.
+      process_introduction: "<p>Use this template to introduce people to Loomio.</p><p>A
+        great way to experience Loomio is by opening a discussion in Loomio and make a
+        decision!</p><p>Get the discussion started by following the text prompts below
+        or insert your own words.</p><p>Run a Sense check so your group can vote and see
+        the results.</p><p>Unlock the value of Loomio by involving people in their first
+        decision.</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">Why are you interested
+        in using Loomio?</h3><p>We are interested in using Loomio to involve people in
+        decisions about our organization.</p><h3 id="what-are-you-asking-people-to-do">What
+        are you asking people to do?</h3><p>I would love to hear your thoughts! Leave
+        a comment below and vote in the proposal.</p><p>You can reply to someone's comment
+        by clicking on the reply icon located at the bottom right of the comment.</p><p>Use
+        @mention to notify people.</p>
+      onboarding: Onboarding
+    consent_process:
+      title_placeholder: Developing our Health and Safety Policy
+      process_name: Consent process
+      process_subtitle: Make a decision that is ‘safe to try’, without objections.
+      process_introduction: '<p>Seek consent on a decision you need to make, where there
+        are no meaningful objections to your proposal, so you can make a fast decision
+        that is ''safe to try'' now.</p><p>Typical roles:</p><ul><li><p>Proposer: The
+        person who raises a topic that requires a decision.</p></li><li><p>Facilitator:
+        Someone who can help the proposer do their job efficiently.</p></li></ul><p>Common
+        process steps:</p><p>Step 1. Present a proposal with a Loomio thread.</p><p>Step
+        2. Facilitate a round of questions, reactions and any comments to improve the
+        proposal with a Sense check.</p><p>Step 3. Amend the proposal with suggestions
+        and comments.</p><p>Step 4. Ask if anyone has a meaningful objection to the amended
+        proposal with a Consent proposal.</p><p>Step 5. Integrate valid objections to
+        create an amended version of the proposal that everyone consents is ‘safe to try’,
+        and when completed state the decision outcome.</p><p><a target="_blank" rel="noopener
+        noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Read
+        more: Consent process.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">What is the decision
+        you need to make?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have">Why
+        is this important and what impact does it have?</h3><p></p><h3 id="what-information-do-people-need-for-context">What
+        information do people need for context?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">Who
+        is the facilitator for this process?</h3><p></p>
+      consent: Consent
+    advice_process:
+      title_placeholder: Seeking advice to purchase a new computer
+      process_name: Advice process
+      process_subtitle: Seek advice on a decision you need to make.
+      process_introduction: '<p>Make a decision with the advice of people impacted or
+        who have expertise, so you can make a better decision for your organization.</p><p>Typical
+        roles:</p><ul><li><p>Facilitator: The person making the decision, or ask someone
+        to facilitate.</p></li><li><p>Advisers: People who are impacted or have expertise
+        that you invite.</p></li></ul><p>Common process steps:</p><p>Step 1. Seek input
+        to sound out perspectives before proposing action.</p><p>Step 2. Make a proposal
+        and seek advice - run an Advice proposal.</p><p>Step 3. Taking advice received
+        into account, you make a decision and inform the people who have given advice
+        - state an outcome.</p><p><a target="_blank" rel="noopener noreferrer nofollow"
+        href="https://help.loomio.com/en/guides/advice_process/index.html">Read more:
+        Advice process.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">What is the decision
+        you need to make?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">Why
+        is this important and what impact does it have?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">What
+        advice are you asking to help you make a good decision?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">Who
+        is the facilitator for this process?</h3><p></p>
+      advice: Advice
+    pass_a_resolution:
+      title_placeholder: Resolution to approve strategy
+      process_name: Pass a resolution
+      process_subtitle: Introduce resolution with context, background information, respond
+        to questions and raise a proposal to pass the resolution.
+      process_introduction: <p>Robert’s Rules is a framework that is comprised of a set
+        of codes and rules of ethics that helps groups hold orderly meetings that allow
+        the majority to rule while allowing minority voices to be heard. <a target="_blank"
+        rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a>
+        A member makes a motion to propose an action or make a decision by saying, “I
+        move to…”. Another member must second the motion by saying, “I second the motion.”
+        Once someone seconds the motion, the group votes on the motion. It passes by a
+        majority vote or a quorum depending on the rules in the bylaws.</p>
+      description: "<p><strong>State the resolution to be passed</strong></p><p></p><p><strong>Outline
+        context and background information</strong></p><p></p><p><strong>Invite members
+        to ask questions, make comments and contribute any information to build shared
+        understanding</strong></p><p></p>"
+      resolution: Resolution
+    decision_by_consensus:
+      title_placeholder: Revising our organization's constitution
+      process_name: Decision by consensus
+      process_subtitle: Reach collective agreement with everyone involved.
+      process_introduction: '<p>Build consensus for a decision you need to make together,
+        to reach an agreement that satisfies the needs and concerns of all participants.</p><p>Typical
+        roles:</p><ul><li><p>Appoint a facilitator.&nbsp; (In board meetings this is usually
+        the Chairperson.)</p></li><li><p>A quorum or supermajority of members to participate,
+        as specified in your organization''s statutes.</p></li></ul><p>Common process
+        steps:</p><p>Step 1. Create an open space for discussion about an issue or proposed
+        decision.</p><p>Step 2. Test for consensus and expose objections with a Sense
+        check proposal.&nbsp;</p><p>Step 3. Clarify any points, invite constructive modifications
+        and amend the proposal.</p><p>Step 4. Test for agreement and any remaining objections
+        with a Consensus proposal.</p><p>Step 5. Record the decision with an outcome and
+        in the official minutes of the organization.</p><p><a target="_blank" rel="noopener
+        noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Read
+        more: Consensus process.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">What is the decision
+        you need to make?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">Why
+        is this important and what impact does it have?</h3><p></p><h3 id="what-information-do-people-need-for-context">What
+        information do people need for context?</h3><p></p><h3 id="who-is-the-facilitator">Who
+        is the facilitator?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">What
+        conditions need to be met for a decision?</h3><h3 id=""></h3>
+      consensus: Consensus
+    share_links_and_info:
+      title_placeholder: Share links and info
+      process_name: Share links and info
+      process_subtitle: Post info, links and reports to share for comment and discussion.
+      process_introduction: "<p>Use a thread as a 'wall' or 'bulletin board<strong>'</strong>
+        for your group to post information, news items and ideas you'd like to share with
+        each other.</p><p>Invite people to use the <strong>Insert link</strong> and <strong>Embed
+        video</strong> formatting tools to help the group access info from within Loomio.
+        Use a <strong>Heading</strong> on comments to pin the comment to the thread timeline,
+        so it can be easily found.</p><p><strong>Pin</strong> the thread so that it sticks
+        around, and encourage <strong>Reactions</strong> to keep it energized, letting
+        people know you saw their item.</p><p>The default display of this thread is <strong>Newest</strong>
+        so the most recent comments are at the top of the thread.</p>"
+      description: <p>Use this thread to post info, notices and things you'd like to share
+        - a place where you can see what is going on and get involved.</p><p data-text-align="start">Share
+        events, reports, podcasts and other interesting online info.</p><p data-text-align="start">Use
+        the <strong>Insert link</strong> and <strong>Embed video</strong> formatting tools
+        to help people access info within Loomio.</p>
+      information: Information
+    prepare_for_a_meeting:
+      title_placeholder: Preparing for our next meeting
+      process_name: Prepare for a meeting
+      process_subtitle: Build an agenda, post board papers and organize administrative
+        matters so everyone is up to date, in context and prepared.
+      description: <p><strong>Focus of the meeting</strong></p><p></p><p data-text-align="start"><strong>Outline agenda</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>Actions from last meeting</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>How should participants prepare for the meeting?</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>List of documents for the meeting</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>Plan an effective meeting by involving people from the outset,
+        aligning towards the most important topics, and make better use of your precious time together.</p>
+        <p>Use a thread as the container for your meeting to establish a focus for the meeting, set the agenda,
+        find a suitable date, post key documents and reports, start discussion on agenda items, follow up with
+        actions and minutes.</p><p>This helps everyone prepare for the meeting, by reading the materials and
+        thinking about topics of discussion and the decisions to be made.
+        Members are then more likely to arrive in context and ready for the meeting.</p>
+        <p>Read more about <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>Preparing for a meeting</u></a> in the Good Governance Guide to Loomio.</p>
+      meeting: Meeting
+    build_a_policy:
+      title_placeholder: Revising our hiring policy
+      process_name: Build a policy
+      process_subtitle: Work with your team to build and agree a policy or procedure document.
+      process_introduction: "<p><span>The thread is the container for discussion about
+        the policy, where you can agree requirements and principles, and post document
+        drafts for comment.</span></p><p><span>Use the template to develop policy with
+        a small group of people, or make it transparent to the whole organization, inviting
+        comments on progressive versions of the document.</span></p><p><span>Use a Sense
+        check proposal to notify group members that a draft document is ready for review,
+        and invite people to read the document and respond with any comments or questions.</span></p><p><span>When
+        a 'final' draft is ready, raise a Consent or Consensus proposal to approve the
+        document.</span></p>"
+      description: "<p><strong><span>What is the policy or document you need to build?</span></strong></p><p></p><p><strong><span>Why
+        is this important?</span></strong></p><p></p><p><strong><span>What are you asking
+        people to do?</span></strong></p><p></p>"
+      policy: Policy
+    elect_a_governance_position:
+      title_placeholder: Council nomination and election
+      process_name: Elect a governance position
+      process_subtitle: Nominate and elect someone to a governance role in council, committee or board.
+      process_introduction: "<p>Introduce the governance role and criteria for the position
+        to help members assess candidates.</p><p>Call for nominations with an Opt-in poll.
+        Invite nominees to post a photo of the candidate along with their bio and references.
+        Embed a video message from the candidate so members can see and hear directly
+        from the candidate.</p><p>If you are ready to elect a candidate use a Consent
+        proposal.</p><p>If you have several candidates for a position, use Ranked Choice
+        proposal where voters can rank candidates in order of preference.</p>"
+      description: '<h3 id="what-position-do-you-need-to-fill">What position do you need
+        to fill?</h3><p></p><h3 id="why-is-this-important">Why is this important?</h3><p></p><h3
+        id="what-qualifications-skills-and-experiences-make-a-good-cand">What qualifications,
+        skills and experiences make a good candidate?</h3><p></p><h3 id="what-is-the-election-process">What
+        is the election process?</h3><p>Stage 1: Nominations - we are inviting nominations
+        for suitable candidates.</p><p>Stage 2: Introduce candidates - include a photo,
+        short bio and reference for each candidate.</p><p>Stage 3: Election - vote to
+        appoint a candidate to the role.</p>'
+      election: Election
+    funding_decision:
+      title_placeholder: Funding application for the Robotics Roadshow
+      process_name: Funding decision
+      process_subtitle: Process a grant, loan or investment application and make a funding decision.
+      process_introduction: "<p>Introduce an application for funding, attach documents
+        and other supporting materials.</p><p>Summarize the application in the thread
+        context.</p><p>Invite authorized people to review the application and ask questions.
+        Allow sufficient time for discussion.</p><p>Raise a Consensus proposal to approve
+        the funding.</p><p>If someone disagrees, ask for a reason - for example, more
+        information may be needed. Invite the person disagreeing to change their vote
+        when satisfied.</p><p>When you have a clear decision about the funding application,
+        state an outcome to record the decision.</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">Introduce
+        and summarize the funding application</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria">How
+        does this application fit with funding criteria?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision">Who
+        is authorized to approve this funding decision?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica">Invite
+        questions from decision-makers to process the application</h3><p></p>
+      funding: Funding
+    approve_a_document:
+      title_placeholder: Developing our brand strategy
+      process_name: Approve a document
+      process_subtitle: Introduce, discuss and develop an important document, policy or agreement.
+      process_introduction: "<p>Introduce the document along with any background information.
+        State the purpose of the document to help stay focused.</p><p>Invite people to
+        contribute information and their expertise, and use this to frame the document.
+        Acknowledge and consider feedback and contributions from people.</p><p>Integrate
+        contributions into a first draft of the document and successive drafts until it
+        is ready to be approved.</p><p>Use a Sense check poll to survey opinions and clarify
+        any issues with the draft.</p><p>Once feedback is considered and incorporated
+        into the document, proceed to approval or agreement with a Consent or Consensus
+        proposal.</p><p>The thread becomes a clear record of document creation progress
+        and decisions made.</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">What is the purpose of
+        the document?</h3><p></p><h3 id="why-is-this-important">Why is this important?</h3><p></p><h3
+        id="what-are-you-asking-people-to-do">What are you asking people to do?</h3><p></p>
+      document: Document
+
   explore:
     header: Explore public groups
 
@@ -207,6 +441,16 @@ en:
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
     loomio_app_description: "%{site_name} is a decision-making tool for collaborative organizations"
+    loomio_app_description_html: |
+      <p>%{site_name} is an easy to use, secure place for organizations to have discussions and make decisions together.</p>
+      <ul>
+      <li>Involve the right people</li>
+      <li>Create time and space for discussion</li>
+      <li>Streamline decision processes</li>
+      <li>Improve transparency and accountability</li>
+      <li>Record decisions and document rationale</li>
+      </ul>
+
     view_group: View group
     to_join_group:
       subject: "%{member} has invited you to join %{group_name} on %{site_name}"
@@ -287,50 +531,6 @@ en:
     reset_email_timeframe: It may take up to 5 minutes for the email to arrive. If it doesn't show up, be sure to check your spam folder.
     length_restriction: Passwords must be at least 8 characters long.
     forbidden_passwords: Common passwords such as “password” are forbidden to keep your account safe.
-
-  introduction_thread:
-    title: Welcome! Please introduce yourself
-    description: |
-      Take a moment to let the group know a bit about who you are. Post a comment below.
-
-      What’s your role or approach to participation in this group? What should people know about you to understand where you’re coming from?
-
-  how_it_works_thread:
-    title: How to use Loomio
-    description: |
-      Welcome to Loomio, an online place for communicating and making decisions.
-
-      This is an example discussion **thread**. You can add comments below. Threads are for discussing topics and getting clear outcomes. This thread is about how Loomio works, so post questions about that here.
-
-      You are currently reading the thread **context**, which can be kept up to date with key information and questions that help people engage.
-
-      To get started with Loomio:
-      <ul>
-        <li>Try commenting in an existing thread, or this one.</li>
-      </ul>
-      Tips for posting on Loomio:
-      <ul>
-        <li>To notify a specific person, type @ followed by their name</li>
-        <li>Drag and drop pictures and attachments or click the paperclip icon</li>
-        <li>See <a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">5 ways to use threads</a> for some ideas and tips</li>
-      </ul>
-
-      If you have any questions, see [Loomio Help](http://help.loomio.org).
-
-  first_proposal:
-    name: Have any questions about using Loomio?
-    description: |
-      _If yes, share your question. If no, you’re ready to comment in your group’s threads!_
-
-      This **Check poll** is asking whether you or anyone here has any questions about using Loomio.
-
-      <ul><li>Go ahead and try it using the buttons and text field below.</li></ul>
-
-      As with any decision or facilitation tool, you will need to respond before it closes.
-
-      You can change your position while it is open (perhaps responding to new info).
-
-      **Try participating! Click one of the buttons.**
 
   task_mailer:
     task_due_reminder:

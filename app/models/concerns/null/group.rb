@@ -39,7 +39,7 @@ module Null::Group
       update_public_discussions_count
       update_open_discussions_count
       update_closed_discussions_count
-      update_template_discussions_count
+      update_discussion_templates_count
       presence
       present?
       content_locale
@@ -75,6 +75,7 @@ module Null::Group
       member_ids
       identities
       hidden_poll_templates
+      hidden_discussion_templates
     ]
   end
 
@@ -103,7 +104,7 @@ module Null::Group
       discussions_count
       public_discussions_count
       pending_memberships_count
-      template_discussions_count
+      discussion_templates_count
     ]
   end
 
@@ -115,6 +116,7 @@ module Null::Group
       chatbots: :chatbot,
       tags: :tag,
       poll_templates: :poll_template,
+      discussion_templates: :discussion_template,
       memberships: :membership,
       admins: :user,
       webhooks: :webhook,
@@ -155,6 +157,13 @@ module Null::Group
       'ranked_choice' => 9,
       'meeting' => 10,
       'count' => 11,
+    }
+  end
+
+  def discussion_template_positions
+    {
+      'open_discussion' => 0,
+      'updates_thread' => 1
     }
   end
 

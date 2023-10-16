@@ -1,10 +1,3 @@
-/ .poll-mailer-common-footer
-/   .poll-mailer-common-footer__spacer --
-/   .poll-mailer-common-footer__text
-/     = link_to t(:"poll_mailer.common.view_on_loomio", site_name: AppConfig.theme[:site_name]), tracked_url(poll)
-/   = image_tag AppConfig.theme[:email_footer_logo_src], alt: "Logo", class: "thread-mailer__footer-logo"
-/   %p= t(:'email.loomio_app_description', site_name: AppConfig.theme[:site_name])
-
 .thread-mailer__footer
   - if @recipient.is_logged_in?
     - if @discussion

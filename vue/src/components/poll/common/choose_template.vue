@@ -4,10 +4,12 @@ import Session      from '@/shared/services/session'
 import Records      from '@/shared/services/records'
 import EventBus     from '@/shared/services/event_bus'
 import PollTemplateService     from '@/shared/services/poll_template_service'
-import {map, without, compact} from 'lodash'
+import {map, without, compact, pickBy} from 'lodash'
 import { ContainerMixin, HandleDirective } from 'vue-slicksort'
+import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel'
 
 export default
+  components: {ThreadTemplateHelpPanel}
   directives:
     handle: HandleDirective
 
@@ -16,15 +18,16 @@ export default
     group: Object
 
   data: ->
-    alert: !Session.user().experiences['alertNewPollTemplates']
     isSorting: false
     returnTo: Session.returnTo()
     groups: []
     pollTemplates: []
+    discussionTemplate: null
     actions: {}
     filter: 'proposal'
     singleList: !@group.categorizePollTemplates
     filterLabels:
+      recommended: 'decision_tools_card.recommended'
       proposal: 'decision_tools_card.proposal_title'
       poll: 'decision_tools_card.poll_title'
       meeting: 'decision_tools_card.meeting'
@@ -32,41 +35,54 @@ export default
       templates: 'templates.templates'
 
   created: ->
-    Records.remote.fetch(path: "poll_templates", params: {group_id: @group.id})
-    EventBus.$on 'sortPollTemplates', => @isSorting = true
-
     @watchRecords
       collections: ["pollTemplates"]
       query: (records) => @query()
 
+    if @discussion && @discussion.discussionTemplateId
+      Records.discussionTemplates.findOrFetchById(@discussion.discussionTemplateId).then (dt) =>
+        @discussionTemplate = dt
+        @filter = 'recommended' if dt.pollTemplateKeysOrIds.length
+        @query()
+
+    if @group
+      Records.pollTemplates.fetchByGroupId(@group.id)
+
+    EventBus.$on 'sortPollTemplates', => @isSorting = true
+
   methods:
     query: ->
-      templates = []
-      if @group.categorizePollTemplates
-        params = switch @filter
-          when 'proposal'
-            {pollType: {$in: ['proposal', 'question']}, discardedAt: null}
-          when 'poll'
-            {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null}
-          when 'meeting'
-            {pollType: {$in: ['meeting', 'count']}, discardedAt: null}
-          when 'admin'
-            {discardedAt: {$ne: null}}
+      if @filter == 'recommended'
+        @pollTemplates = @discussionTemplate.pollTemplates()
       else
-        params = switch @filter
-          when 'admin'
-            {discardedAt: {$ne: null}}
-          else
-            {discardedAt: null}
+        if @group.categorizePollTemplates
+          params = switch @filter
+            when 'proposal'
+              {pollType: {$in: ['proposal', 'question']}, discardedAt: null}
+            when 'poll'
+              {pollType: {$in: ['score', 'poll', 'ranked_choice', 'dot_vote']}, discardedAt: null}
+            when 'meeting'
+              {pollType: {$in: ['meeting', 'count']}, discardedAt: null}
+            when 'admin'
+              {discardedAt: {$ne: null}}
+        else
+          params = switch @filter
+            when 'admin'
+              {discardedAt: {$ne: null}}
+            else
+              {discardedAt: null}
 
-      @pollTemplates = Records.pollTemplates.collection.chain().
-        find(groupId: @group.id || null).
-        find(params).
-        simplesort('position').data()
+        @pollTemplates = Records.pollTemplates.collection.chain().
+          find(groupId: @group.id || null).
+          find(params).
+          simplesort('position').data()
 
       @actions = {}
       @pollTemplates.forEach (pollTemplate, i) =>
-        @actions[i] = PollTemplateService.actions(pollTemplate, @group)
+        if @filter == 'recommended'
+          @actions[i] = {}
+        else
+          @actions[i] = PollTemplateService.actions(pollTemplate, @group)
 
     cloneTemplate: (template) ->
       poll = template.buildPoll()
@@ -84,46 +100,47 @@ export default
         Records.remote.post('poll_templates/positions', group_id: @group.id, ids: ids)
 
   watch:
-    alert: (val) ->
-      Records.users.saveExperience('alertNewPollTemplates', true)
-
     filter: 'query'
+    discussionTemplate: 'query'
     singleList: ->
       setTimeout =>
         @group.categorizePollTemplates = !@singleList
         Records.remote.post('poll_templates/settings', {group_id: @group.id, categorize_poll_templates: @group.categorizePollTemplates})
 
   computed:
+    userIsAdmin: ->
+      @group.adminsInclude(Session.user())
+
     filters: ->
-      userIsAdmin = @group.adminsInclude(Session.user())
-      if @singleList 
-        if userIsAdmin
-          {templates: 'mdi-thumbs-up-down', admin: 'mdi-cog'}
-        else
-          {}
-      else
-        if userIsAdmin
-          proposal: 'mdi-thumbs-up-down'
-          poll: 'mdi-poll'
-          meeting: 'mdi-calendar'
-          admin: 'mdi-cog'
-        else
-          proposal: 'mdi-thumbs-up-down'
-          poll: 'mdi-poll'
-          meeting: 'mdi-calendar'
+      recommendedIcon = (@discussionTemplate && @discussionTemplate.pollTemplateKeysOrIds.length && 'mdi-star') || null
+      pickBy
+        recommended: recommendedIcon
+        proposal: 'mdi-thumbs-up-down'
+        poll: 'mdi-poll'
+        meeting: 'mdi-calendar'
+      , (v) -> !!v
+
 </script>
 
 <template lang="pug">
 .poll-common-templates-list
-  v-alert.poll-templates-welcome(v-model="alert" type="success" color="info" icon="mdi-new-box" text outlined dismissible)
-    span 
-      span(v-t="'poll_common.new_templates_are_here'")
-      space
-      a.text-decoration-underline(href="https://help.loomio.com/en/user_manual/polls/poll_templates/index.html" v-t="'common.learn_more'" target="_blank")
-
-  v-chip(v-for="icon, name in filters" :key="name" :outlined="filter != name" @click="filter = name" :class="'poll-common-choose-template__'+name")
-    v-icon(small).mr-2 {{icon}}
-    span.poll-type-chip-name(v-t="filterLabels[name]")
+  thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
+  .d-flex(:class="{'px-4': !discussion}")
+    v-chip.mr-1(
+      v-for="icon, name in filters"
+      label
+      :key="name"
+      :outlined="filter != name"
+      @click="filter = name"
+      :class="'poll-common-choose-template__'+name"
+    )
+      v-icon(small).mr-2 {{icon}}
+      span.poll-type-chip-name(v-t="filterLabels[name]")
+    template(v-if="userIsAdmin")
+      v-spacer
+      v-chip(@click="filter = 'admin'" :outlined="filter != 'admin'")
+        v-icon(small).mr-2 mdi-cog
+        span.poll-type-chip-name(v-t="filterLabels['admin']")
   v-list.decision-tools-card__poll-types(two-line dense)
     template(v-if="filter == 'admin'")
       v-list-item.decision-tools-card__new-template(
@@ -135,7 +152,7 @@ export default
           v-list-item-title(v-t="'discussion_form.new_template'")
           v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
 
-      v-checkbox(v-model="singleList" :label="$t('poll_common.show_all_templates_in_one_list')")
+      v-checkbox.pl-4(v-model="singleList" :label="$t('poll_common.show_all_templates_in_one_list')")
       v-subheader(v-if="pollTemplates.length" v-t="'poll_common.hidden_poll_templates'")
 
     template(v-if="isSorting")
@@ -151,7 +168,7 @@ export default
                 v-chip.ml-2(x-small outlined v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
                 v-chip.ml-2(x-small outlined v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
               v-list-item-subtitle {{ template.processSubtitle }}
-            v-list-item-action.handle(v-handle)
+            v-list-item-action.handle(v-handle style="cursor: grab")
               v-icon mdi-drag-vertical
     template(v-else)
       v-list-item.decision-tools-card__poll-type(

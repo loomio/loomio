@@ -215,6 +215,7 @@ FactoryBot.define do
     title { "This is a poll" }
     details { "with a description" }
     association :author, factory: :user
+    association :group
     poll_options { {name: "agree"} }
     created_at { 2.days.ago }
     notify_on_closing_soon { "voters" }

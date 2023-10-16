@@ -140,6 +140,7 @@ export default
 
     v-textarea(
       v-if="hasRecipients"
+      filled
       rows="3"
       v-model="message"
       :label="$t('announcement.form.invitation_message_label')"
@@ -183,10 +184,4 @@ export default
               v-list-item-title(v-t="service[action].name")
     v-list-item(v-if="query && readers.length == 0")
       v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
-
-  .d-flex.justify-end.pa-4
-    help-link(path="en/user_manual/threads/notifying_people")
-
-
-
 </template>
