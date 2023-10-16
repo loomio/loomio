@@ -515,7 +515,7 @@ GEM
     ruby-ll (2.1.2)
       ansi
       ast
-    ruby-saml (1.15.0)
+    ruby-saml (1.16.0)
       nokogiri (>= 1.13.10)
       rexml
     ruby-vips (2.1.4)
