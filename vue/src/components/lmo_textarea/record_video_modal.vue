@@ -1,24 +1,9 @@
 <script>
 import EventBus from '@/shared/services/event_bus'
 
-function startRecording(stream) {
-  let recorder = new MediaRecorder(stream);
-  let data = [];
-
-  recorder.ondataavailable = (event) => data.push(event.data);
-  recorder.start();
-
-  let stopped = new Promise((resolve, reject) => {
-    recorder.onstop = resolve;
-    recorder.onerror = (event) => reject(event.name);
-  });
-
-  return Promise.all([stopped]).then(() => data);
-}
-
-function stop(stream, setRecording) {
-  stream.getTracks().forEach((track) => track.stop());
-}
+let mediaRecorder;
+let chunks = [];
+let blob;
 
 export default {
   props: {
@@ -32,42 +17,54 @@ export default {
     }
   },
 
+  mounted() {
+    navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: {
+        facingMode: "user",
+        width: 640,
+        frameRate: 15,
+      }
+    }).then(this.setupRecorder, this.handleError)
+  },
+
   methods: {
+    handleError(e) {
+      console.log(e)
+    },
+    setupRecorder(stream) {
+
+      this.$refs.video.muted = true;
+      this.$refs.video.srcObject = stream;
+      this.$refs.video.controls = false;
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = function(e) {
+        chunks.push(e.data);
+      }
+
+      mediaRecorder.onstop = (e) => {
+        this.$refs.video.srcObject = null;
+        this.$refs.video.controls = true;
+        this.$refs.video.muted = false;
+        blob = new Blob(chunks, { 'type' : 'video/webm' });
+        chunks = [];
+        const url = URL.createObjectURL(blob);
+        this.$refs.video.src = url;
+      }
+    },
     submit() {
-      this.saveFn(new File([this.blob], "video.webm",  { lastModified: new Date().getTime(), type: this.blob.type }));
+      this.saveFn(new File([blob], "video.webm",  { lastModified: new Date().getTime(), type: blob.type }));
       EventBus.$emit('closeModal')
     },
 
     stop() {
-      stop(this.$refs.video.srcObject);
+      mediaRecorder.stop();
+      this.onAir = false
     },
 
     start() {
-      navigator.mediaDevices
-        .getUserMedia({
-          video: true,
-          audio: true,
-        })
-        .then((stream) => {
-          this.onAir = true
-          this.$refs.video.muted = true;
-          this.$refs.video.srcObject = stream;
-          this.$refs.video.captureStream = this.$refs.video.captureStream || this.$refs.video.mozCaptureStream;
-          return new Promise((resolve) => (this.$refs.video.onplaying = resolve));
-        })
-        .then(() => startRecording(this.$refs.video.captureStream()))
-        .then((recordedChunks) => {
-          this.onAir = false
-          this.blob = new Blob(recordedChunks, { type: "video/webm" });
-          this.$refs.video.srcObject = null
-          this.$refs.video.src = URL.createObjectURL(this.blob);
-          this.$refs.video.muted = false
-
-          console.log(`Successfully recorded ${this.blob.size} bytes of ${this.blob.type} media.`);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      mediaRecorder.start();
+      this.onAir = true
     }
   },
 }

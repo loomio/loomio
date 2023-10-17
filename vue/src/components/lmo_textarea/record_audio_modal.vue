@@ -1,137 +1,64 @@
 <script>
 import EventBus from '@/shared/services/event_bus'
 
-let audioCtx;
-
-function visualize(stream) {
-  if(!audioCtx) {
-    audioCtx = new AudioContext();
-  }
-
-  const source = audioCtx.createMediaStreamSource(stream);
-
-  const analyser = audioCtx.createAnalyser();
-  analyser.fftSize = 2048;
-  const bufferLength = analyser.frequencyBinCount;
-  const dataArray = new Uint8Array(bufferLength);
-
-  source.connect(analyser);
-  //analyser.connect(audioCtx.destination);
-
-  const canvas = document.querySelector('.visualizer');
-  const canvasCtx = canvas.getContext("2d");
-
-  draw()
-
-  function draw() {
-    const WIDTH = canvas.width
-    const HEIGHT = canvas.height;
-
-    requestAnimationFrame(draw);
-
-    analyser.getByteTimeDomainData(dataArray);
-
-    canvasCtx.fillStyle = 'rgb(200, 200, 200)';
-    canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-
-    canvasCtx.lineWidth = 2;
-    canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
-
-    canvasCtx.beginPath();
-
-    let sliceWidth = WIDTH * 1.0 / bufferLength;
-    let x = 0;
-
-
-    for(let i = 0; i < bufferLength; i++) {
-
-      let v = dataArray[i] / 128.0;
-      let y = v * HEIGHT/2;
-
-      if(i === 0) {
-        canvasCtx.moveTo(x, y);
-      } else {
-        canvasCtx.lineTo(x, y);
-      }
-
-      x += sliceWidth;
-    }
-
-    canvasCtx.lineTo(canvas.width, canvas.height/2);
-    canvasCtx.stroke();
-
-  }
-}
-
-function startRecording(stream) {
-  let recorder = new MediaRecorder(stream);
-  let data = [];
-
-  recorder.ondataavailable = (event) => data.push(event.data);
-  recorder.start();
-
-  let stopped = new Promise((resolve, reject) => {
-    recorder.onstop = resolve;
-    recorder.onerror = (event) => reject(event.name);
-  });
-
-  return Promise.all([stopped]).then(() => data);
-}
-
-function stop(stream, setRecording) {
-  stream.getTracks().forEach((track) => track.stop());
-}
+let mediaRecorder;
+let chunks = [];
+let blob;
 
 export default {
   props: {
     saveFn: Function
   },
 
+  mounted() {
+    navigator.mediaDevices.getUserMedia({audio: true}).then(this.setupRecorder, this.handleError)
+  },
+
+  unmounted() {
+    // close the mediaDevice
+  },
+
   data() {
     return {
       onAir: false,
-      blob: null,
     }
   },
 
   methods: {
+    handleError(e) {
+      console.log(e)
+    },
     submit() {
-      this.saveFn(new File([this.blob], "audio.webm",  { lastModified: new Date().getTime(), type: this.blob.type }));
+      this.saveFn(new File([blob], "audio.webm",  { lastModified: new Date().getTime(), type: blob.type }));
       EventBus.$emit('closeModal')
     },
 
+    setupRecorder(stream) {
+
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = function(e) {
+        chunks.push(e.data);
+      }
+
+      mediaRecorder.onstop = (e) => {
+        this.$refs.audio.setAttribute('controls', '');
+        this.$refs.audio.controls = true;
+        // blob = new Blob(chunks, { 'type' : 'audio/webm;codecs=vp8,opus' });
+        blob = new Blob(chunks, { 'type' : 'audio/webm' });
+        chunks = [];
+        const audioURL = window.URL.createObjectURL(blob);
+        this.$refs.audio.src = audioURL;
+      }
+    },
+
     stop() {
-      console.log("stop", this.$refs.audio)
-      stop(this.$refs.audio.srcObject);
+      mediaRecorder.stop();
+      this.onAir = false
     },
 
     start() {
-      navigator.mediaDevices
-        .getUserMedia({audio: true})
-        .then((stream) => {
-          this.onAir = true
-          visualize(stream);
-          this.$refs.audio.muted = true;
-          this.$refs.audio.srcObject = stream;
-          this.$refs.audio.captureStream = this.$refs.audio.captureStream || this.$refs.audio.mozCaptureStream;
-          console.log("start", this.$refs.audio)
-          return new Promise((resolve) => (this.$refs.audio.onplaying = resolve));
-        })
-        .then(() => startRecording(this.$refs.audio.captureStream()))
-        .then((recordedChunks) => {
-          this.onAir = false
-          // this.blob = new Blob(recordedChunks, {type: "audio/opus" });
-          // this.blob = new Blob(recordedChunks, {type: "audio/webm;codecs=opus" });
-          this.blob = new Blob(recordedChunks, {type: "audio/webm" });
-          this.$refs.audio.srcObject = null
-          this.$refs.audio.src = URL.createObjectURL(this.blob);
-          this.$refs.audio.muted = false
-
-          console.log(`Successfully recorded ${this.blob.size} bytes of ${this.blob.type} media.`);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      mediaRecorder.start();
+      this.onAir = true
     }
   },
 }
@@ -145,8 +72,6 @@ export default {
       dismiss-modal-button
 
     .d-flex.flex-column.align-center.pb-8
-      canvas(class="visualizer" height="60px")
-      div
       audio(ref="audio" autoplay controls playsinline)
 
     .d-flex
