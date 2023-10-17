@@ -2236,6 +2236,14 @@ en:
     proposal_created: Proposal started
     proposal_updated: Proposal updated
 
+  record_modal:
+    record_video: Record video
+    record_audio: Record audio
+    record: Record
+    stop: Stop
+    no_mic: Could not find a microphone
+    no_camera: Could not find a camera
+
   poll_poll_form:
     multiple_choice_subtitle: A simple way to assess the popularity of options
     start_header: Start poll

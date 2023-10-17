@@ -297,10 +297,10 @@ div
             v-btn(:small="expanded" icon @click='$refs.imagesField.click()', :title="$t('formatting.insert_image')")
               v-icon mdi-image
 
-            v-btn(:small="expanded" icon @click='openRecordAudioModal', title="Record audio")
+            v-btn(:small="expanded" icon @click='openRecordAudioModal', :title="$t('record_modal.record_audio')")
               v-icon mdi-microphone
 
-            v-btn(:small="expanded" icon @click='openRecordVideoModal', title="Record video")
+            v-btn(:small="expanded" icon @click='openRecordVideoModal', :title="$t('record_modal.record_video')")
               v-icon mdi-video
 
             //- link

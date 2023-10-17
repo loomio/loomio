@@ -94,6 +94,10 @@ img.emoji
         content: none
 
 .lmo-markdown-wrapper
+  audio,video
+    display: block
+    margin-bottom: 8px
+
   span[style^="color"]
     color: inherit !important
 

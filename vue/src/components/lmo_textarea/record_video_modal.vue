@@ -1,5 +1,6 @@
 <script>
 import EventBus from '@/shared/services/event_bus'
+import I18n from '@/i18n.coffee'
 
 let mediaRecorder;
 let chunks = [];
@@ -14,28 +15,35 @@ export default {
     return {
       onAir: false,
       blob: null,
+      error: null,
+      url: null,
     }
   },
 
   mounted() {
-    navigator.mediaDevices.getUserMedia({
-      audio: true,
-      video: {
-        facingMode: "user",
-        width: 640,
-        frameRate: 15,
-      }
-    }).then(this.setupRecorder, this.handleError)
+      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+      this.error = "Sorry recording is not supported on Safari or iOS";
+    } else {
+      navigator.mediaDevices.getUserMedia({
+        audio: true,
+        video: {
+          facingMode: "user",
+          width: 640,
+          frameRate: 15,
+        }
+      }).then(this.setupRecorder, this.handleError)
+    }
   },
 
   methods: {
     handleError(e) {
-      console.log(e)
+      this.error = I18n.t("record_modal.no_camera")
     },
     setupRecorder(stream) {
 
       this.$refs.video.muted = true;
       this.$refs.video.srcObject = stream;
+
       this.$refs.video.controls = false;
       mediaRecorder = new MediaRecorder(stream);
       mediaRecorder.ondataavailable = function(e) {
@@ -49,6 +57,7 @@ export default {
         blob = new Blob(chunks, { 'type' : 'video/webm' });
         chunks = [];
         const url = URL.createObjectURL(blob);
+        this.url = url;
         this.$refs.video.src = url;
       }
     },
@@ -74,16 +83,18 @@ export default {
 .recording-modal
   .pa-4
     .d-flex.justify-space-between
-      h1.headline Make recording
+      h1.headline(v-t="'record_modal.record_video'")
       dismiss-modal-button
 
-    video(ref="video" width="640" height="360" autoplay muted controls playsinline)
+    v-alert(v-if="error" type="error") {{error}}
+    div(v-else)
+      video(ref="video" width="640" height="360" autoplay muted playsinline)
 
-    .d-flex
-      v-spacer
-      v-btn.poll-members-form__submit(v-if="!onAir" color="primary" @click="start") Record
-      v-btn.poll-members-form__submit(v-if="onAir" color="primary" @click="stop") Stop
-      v-spacer
-      v-btn.poll-members-form__submit(color="primary" @click="submit") Submit
+      .d-flex
+        v-spacer
+        v-btn.poll-members-form__submit(v-if="!onAir" color="primary" @click="start" v-t="'record_modal.record'")
+        v-btn.poll-members-form__submit(v-if="onAir" color="primary" @click="stop" v-t="'record_modal.stop'")
+        v-spacer
+        v-btn.poll-members-form__submit(v-if="!onAir && url" color="primary" @click="submit" v-t="'common.action.save'")
  
 </template>
