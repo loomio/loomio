@@ -73,7 +73,8 @@ export default {
     return {
       onAir: false,
       error: null,
-      url: null
+      url: null,
+      stopStreams: function() {},
     }
   },
 
@@ -87,20 +88,23 @@ export default {
     }
   },
 
-  unmounted() {
-    // close the mediaDevice
-  },
-
   methods: {
     handleError(e) {
       this.error = I18n.t("record_modal.no_mic")
     },
     submit() {
       this.saveFn(new File([blob], "audio.webm",  { lastModified: new Date().getTime(), type: blob.type }));
+      this.stopStreams();
       EventBus.$emit('closeModal')
     },
 
     setupRecorder(stream) {
+      this.stopStreams = function() {
+        stream.getTracks().forEach((track) => {
+          if (track.readyState == 'live') {track.stop(); }
+        });
+      }
+
       mediaRecorder = new MediaRecorder(stream, {mimeType: "audio/webm;codecs=opus"});
       visualize(stream, this.$vuetify.theme.dark ? "#1e1e1e" : "#ffffff")
       this.$refs.audio.controls = false;

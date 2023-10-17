@@ -40,6 +40,11 @@ export default {
       this.error = I18n.t("record_modal.no_camera")
     },
     setupRecorder(stream) {
+      this.stopStreams = function() {
+        stream.getTracks().forEach((track) => {
+          if (track.readyState == 'live') {track.stop(); }
+        });
+      }
 
       this.$refs.video.muted = true;
       this.$refs.video.srcObject = stream;
@@ -63,6 +68,7 @@ export default {
     },
     submit() {
       this.saveFn(new File([blob], "video.webm",  { lastModified: new Date().getTime(), type: blob.type }));
+      this.stopStreams();
       EventBus.$emit('closeModal')
     },
 
