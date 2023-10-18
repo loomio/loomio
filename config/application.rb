@@ -119,5 +119,7 @@ module Loomio
       'X-Permitted-Cross-Domain-Policies' => 'none',
       'Referrer-Policy' => 'strict-origin-when-cross-origin'
     }
+
+    config.active_storage.content_types_allowed_inline = %w(audio/webm video/webm image/png image/gif image/jpeg image/tiff image/vnd.adobe.photoshop image/vnd.microsoft.icon application/pdf)
   end
 end
