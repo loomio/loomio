@@ -110,6 +110,10 @@ img.emoji
   p
     margin-bottom: 0.75rem
 
+  p:empty:first-child
+    height: 0rem
+    margin-bottom: 0
+
   p:empty
     height: 1rem
 
