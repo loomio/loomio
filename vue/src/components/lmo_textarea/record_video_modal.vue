@@ -17,6 +17,7 @@ export default {
       blob: null,
       error: null,
       url: null,
+      stopStreams: function() {}
     }
   },
 

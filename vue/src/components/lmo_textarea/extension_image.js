@@ -99,7 +99,7 @@ export function insertImage(file, view, coordinates, attachImageFile) {
         let pos = finduploadPlaceholder(view.state, id)
         if (pos == null) return
         view.dispatch(view.state.tr
-         .replaceWith(pos, pos, schema.nodes.video.create({src: blob.download_url, height: 640, width: 320}))
+         .replaceWith(pos, pos, schema.nodes.video.create({src: blob.download_url, poster: blob.preview_url, height: 640, width: 320}))
          .setMeta('uploadPlaceholder', {remove: {id}}))
       }
 
@@ -142,6 +142,9 @@ export const Video = Node.create({
       },
       "controls": {
         default: true
+      },
+      "poster": {
+        default: null
       }
     }
   },

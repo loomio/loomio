@@ -2243,6 +2243,7 @@ en:
     stop: Stop
     no_mic: Could not find a microphone
     no_camera: Could not find a camera
+    listen_to_audio: Listen to audio
 
   poll_poll_form:
     multiple_choice_subtitle: A simple way to assess the popularity of options
