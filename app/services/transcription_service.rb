@@ -1,6 +1,6 @@
 class TranscriptionService
   def self.available?
-    ENV.has_key?('OPENAI_API_KEY')
+    ENV['OPENAI_API_KEY'].present?
   end
 
   def self.transcribe(file)

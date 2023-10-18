@@ -2244,6 +2244,9 @@ en:
     no_mic: Could not find a microphone
     no_camera: Could not find a camera
     listen_to_audio: Listen to audio
+    audio_transcript: "Audio transcript: %{text}"
+    why_type_when_you_can_talk: Why type when you can talk? Send a voice recording
+    transcript_included: A transcript of the recording will be appended to your message
 
   poll_poll_form:
     multiple_choice_subtitle: A simple way to assess the popularity of options

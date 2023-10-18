@@ -1,4 +1,5 @@
 <script>
+import AppConfig from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
 import I18n from '@/i18n.coffee'
 let mediaRecorder;
@@ -75,6 +76,7 @@ export default {
       error: null,
       url: null,
       stopStreams: function() {},
+      transcriptionAvailable: AppConfig.features.app.transcription, 
     }
   },
 
@@ -150,6 +152,11 @@ export default {
         v-icon mdi-close
     v-alert(v-if="error" type="error") {{error}}
     div(v-else)
+      v-alert(type="info" v-if="!url && !onAir" icon="mdi-microphone")
+        span(v-t="'record_modal.why_type_when_you_can_talk'")
+        template(v-if="transcriptionAvailable")
+          br
+          span(v-t="'record_modal.transcript_included'")
       .d-flex.flex-column.align-center.pb-8
         canvas(v-show="onAir" ref="visualizer" height="64" width="256")
         audio(v-show="!onAir" ref="audio" autoplay controls playsinline)

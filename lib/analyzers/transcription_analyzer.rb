@@ -12,7 +12,8 @@ class TranscriptionAnalyzer < ActiveStorage::Analyzer::AudioAnalyzer
       @text = response["text"]
       @language = response["language"]
       record = blob.attachments.first.record
-      record.body += "<p>Audio Transcript: #{@text}</p>"
+      # record.body += "<p>#{I18n.t('record_modal.audio_transcript', text: @text, locale: record.author.locale)}</p>"
+      record.body += "<p>#{@text}</p>"
       record.save!
       MessageChannelService.publish_models(Array(record), group_id: record.group_id, user_id: record.author_id)
     end
