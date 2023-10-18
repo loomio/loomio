@@ -51,7 +51,7 @@ export default {
       this.$refs.video.srcObject = stream;
 
       this.$refs.video.controls = false;
-      mediaRecorder = new MediaRecorder(stream, {mimeType: 'video/webm;codecs=vp8'});
+      mediaRecorder = new MediaRecorder(stream, {mimeType: 'video/webm; codecs=vp8,opus'});
       mediaRecorder.ondataavailable = function(e) {
         chunks.push(e.data);
       }
