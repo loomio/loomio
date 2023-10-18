@@ -66,6 +66,12 @@ export default {
         this.$refs.video.src = url;
       }
     },
+
+    dismiss() {
+      this.stopStreams();
+      EventBus.$emit('closeModal')
+    },
+
     submit() {
       this.saveFn(new File([blob], "video.webm",  { lastModified: new Date().getTime(), type: blob.type }));
       this.stopStreams();
@@ -90,8 +96,9 @@ export default {
   .pa-4
     .d-flex.justify-space-between
       h1.headline(v-t="'record_modal.record_video'")
-      dismiss-modal-button
-
+      v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='dismiss')
+        v-icon mdi-close
+ 
     v-alert(v-if="error" type="error") {{error}}
     div(v-else)
       video(ref="video" width="640" height="360" autoplay muted playsinline)

@@ -92,6 +92,12 @@ export default {
     handleError(e) {
       this.error = I18n.t("record_modal.no_mic")
     },
+
+    dismiss() {
+      this.stopStreams();
+      EventBus.$emit('closeModal')
+    },
+
     submit() {
       this.saveFn(new File([blob], "audio.webm",  { lastModified: new Date().getTime(), type: blob.type }));
       this.stopStreams();
@@ -140,7 +146,8 @@ export default {
   .pa-4
     .d-flex.justify-space-between
       h1.headline(v-t="'record_modal.record_audio'")
-      dismiss-modal-button
+      v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='dismiss')
+        v-icon mdi-close
     v-alert(v-if="error" type="error") {{error}}
     div(v-else)
       .d-flex.flex-column.align-center.pb-8
