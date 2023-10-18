@@ -29,8 +29,8 @@ export default {
         audio: true,
         video: {
           facingMode: "user",
-          width: 640,
-          frameRate: 15,
+          width: 320,
+          frameRate: 10,
         }
       }).then(this.setupRecorder, this.handleError)
     }
@@ -51,7 +51,7 @@ export default {
       this.$refs.video.srcObject = stream;
 
       this.$refs.video.controls = false;
-      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder = new MediaRecorder(stream, {mimeType: 'video/webm;codecs=vp8'});
       mediaRecorder.ondataavailable = function(e) {
         chunks.push(e.data);
       }
