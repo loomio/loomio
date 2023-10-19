@@ -725,10 +725,14 @@ en:
     start_new_thread: Or, start new thread
 
   thread_template:
+    browse_public_templates: Browse template gallery
+    thread_template_settings: Thread template settings
     start_a_new_thread: Start a new thread
     thread_template_saved: Thread template saved
+    these_are_public_templates: |
+      These templates are available for you to copy or modify to suit your group
     these_are_templates: |
-      Here is a list of thread templates in your group. Templates guide you through common decision-making processes.
+      These are the thread templates in your group. Templates guide you through common decision-making processes.
       If you are new to Loomio start with the "Onboarding to Loomio" template.
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
@@ -743,6 +747,7 @@ en:
     recommended_proposal_or_poll_templates: Recommended proposal or poll templates
     decision_templates: Decision templates
     decision_templates_help: Select any proposal or poll templates that help to complete this process.
+    share_in_template_gallery: Share this template in the public template gallery
 
 
   discussion_form:

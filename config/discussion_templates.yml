@@ -2,6 +2,7 @@ blank:
   process_name_i18n: discussion_templates.blank.process_name
   process_subtitle_i18n: discussion_templates.blank.process_subtitle
   position: 0
+  recipient_audience: group
 
 discuss_a_topic:
   title_placeholder_i18n: discussion_templates.discuss_a_topic.title_placeholder
@@ -15,6 +16,7 @@ discuss_a_topic:
   newest_first: false
   max_depth: 3
   position: 1
+  recipient_audience: group
 
 onboarding_to_loomio:
   title_i18n: discussion_templates.onboarding_to_loomio.title
@@ -28,6 +30,7 @@ onboarding_to_loomio:
   newest_first: false
   max_depth: 3
   position: 2
+  recipient_audience: group
 
 advice_process:
   title_placeholder_i18n: discussion_templates.advice_process.title_placeholder
@@ -41,6 +44,7 @@ advice_process:
   process_introduction_format: html
   newest_first: false
   max_depth: 3
+  recipient_audience: group
 
 consent_process:
   title_placeholder_i18n: discussion_templates.consent_process.title_placeholder
@@ -54,6 +58,7 @@ consent_process:
   description_format: html
   newest_first: false
   max_depth: 3
+  recipient_audience: group
 
 decision_by_consensus:
   title_placeholder_i18n: discussion_templates.decision_by_consensus.title_placeholder
@@ -67,6 +72,7 @@ decision_by_consensus:
   description_format: html
   newest_first: false
   max_depth: 3
+  recipient_audience: group
   
 approve_a_document:
   title_placeholder_i18n: discussion_templates.approve_a_document.title_placeholder
@@ -80,6 +86,7 @@ approve_a_document:
   - doctypes.document
   newest_first: false
   max_depth: 3
+  recipient_audience: group
 
 share_links_and_info:
   title_placeholder_i18n: discussion_templates.share_links_and_info.title_placeholder
@@ -93,6 +100,7 @@ share_links_and_info:
   description_format: html
   newest_first: true
   max_depth: 3
+  recipient_audience: group
 
 prepare_for_a_meeting:
   title_placeholder_i18n: discussion_templates.prepare_for_a_meeting.title_placeholder
@@ -106,6 +114,7 @@ prepare_for_a_meeting:
   process_introduction_format: html
   newest_first: false
   max_depth: 2
+  recipient_audience: group
 
 funding_decision:
   title_placeholder_i18n: discussion_templates.funding_decision.title_placeholder
@@ -119,6 +128,7 @@ funding_decision:
   process_introduction_format: html
   newest_first: false
   max_depth: 2
+  recipient_audience: group
 
 elect_a_governance_position:
   title_placeholder_i18n: discussion_templates.elect_a_governance_position.title_placeholder
@@ -132,6 +142,7 @@ elect_a_governance_position:
   process_introduction_format: html
   newest_first: false
   max_depth: 2
+  recipient_audience: group
 
 build_a_policy:
   title_placeholder_i18n: discussion_templates.build_a_policy.title_placeholder
@@ -145,3 +156,4 @@ build_a_policy:
   process_introduction_format: html
   newest_first: false
   max_depth: 2
+  recipient_audience: group

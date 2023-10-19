@@ -28,11 +28,21 @@ export default
     groupItems: []
     initialRecipients: []
     discussionTemplate: null
+    loaded: false
 
   mounted: ->
     Records.users.fetchGroups()
     Records.discussionTemplates.findOrFetchById(@discussion.discussionTemplateId).then (template) =>
       @discussionTemplate = template
+      if template.recipientAudience == 'group' && @discussion.groupId
+        @initialRecipients = [
+          { type: 'audience',
+            id: 'group',
+            icon: 'mdi-account-group',
+            name: I18n.t('announcement.audiences.group', {name: @discussion.group().name}),
+            size: @discussion.group().acceptedMembershipsCount}
+        ]
+    .finally => @loaded = true
 
     @watchRecords
       collections: ['groups', 'memberships']
@@ -171,7 +181,7 @@ export default
         :placeholder="$t('discussion_form.context_placeholder')"
       )
 
-      common-notify-fields(:model="discussion")
+      common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
       //- p.discussion-form__visibility
 
       v-card-actions

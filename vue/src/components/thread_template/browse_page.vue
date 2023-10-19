@@ -43,7 +43,12 @@ export default
       v-card
         v-card-title.d-flex.pr-3
           h1.headline(tabindex="-1" v-t="'templates.template_gallery'")
+          v-spacer
+          v-btn.back-button(v-if="$route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
+            v-icon mdi-close
 
+
+        v-alert.mx-4(type="info" text outlined v-t="'thread_template.these_are_public_templates'") 
         .d-flex.px-4.align-center
           v-combobox(
             :loading="loading"

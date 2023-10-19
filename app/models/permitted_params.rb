@@ -208,6 +208,7 @@ class PermittedParams < Struct.new(:params)
      :process_subtitle,
      :process_introduction,
      :process_introduction_format,
+     :recipient_audience,
      :group_id,
      :newest_first,
      :max_depth,

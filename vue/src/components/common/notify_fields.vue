@@ -10,8 +10,9 @@ export default
   props:
     model: Object
 
-  data: ->
-    initialRecipients: []
+    initialRecipients:
+      type: Array
+      default: []
 
 </script>
 
@@ -27,5 +28,6 @@ export default
   recipients-autocomplete(
     :label="$t(model.id ? 'action_dock.notify' : 'common.action.invite')"
     :placeholder="$t('announcement.form.'+model.constructor.singular+'_'+ (model.id ? 'edited' : 'announced')+ '.helptext')"
+    :initial-recipients="initialRecipients"
     :model="model")
 </template>

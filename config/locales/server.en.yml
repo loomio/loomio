@@ -4,7 +4,9 @@ en:
     blank:
       title_placeholder: What is the topic you want to discuss?
       process_name: Blank template
+      process_introduction: "<p>Start a discussion in your group</p>"
       process_subtitle: Start a new thread in your group
+
     discuss_a_topic:
       title_placeholder: What is the topic you want to discuss?
       process_name: Discuss a topic
@@ -21,6 +23,7 @@ en:
         topic</h3><p></p><h3 id="why-is-this-important">Why is this important?</h3><p></p><h3
         id="how-would-you-like-people-to-respond">How would you like people to respond?</h3><p></p>
       topic: Topic
+      
     onboarding_to_loomio:
       title: Using Loomio for our group
       process_name: Onboarding to Loomio

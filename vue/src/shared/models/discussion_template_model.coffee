@@ -23,6 +23,7 @@ export default class DiscussionTemplateModel extends BaseModel
     maxDepth: 3
     newestFirst: false
     pollTemplateKeysOrIds: []
+    recipientAudience: null
     
   relationships: ->
     @belongsTo 'author', from: 'users'

@@ -124,7 +124,7 @@ export default
     :label="$t('thread_template.example_description_label')"
   )
 
-  v-select(v-model="discussionTemplate.recipientAudience" label="Notify" :items="recipientAudienceItems")
+  v-select(v-model="discussionTemplate.recipientAudience" :label="$t('discussion_form.invite')" :items="recipientAudienceItems")
 
   v-divider.my-4
 
@@ -195,7 +195,7 @@ export default
         space
         span(v-t="'thread_arrangement_form.nested_twice_description'")
 
-  v-checkbox(v-model="discussionTemplate.public" label="Share this template in the public template gallery")
+  v-checkbox(v-model="discussionTemplate.public" :label="$t('thread_template.share_in_template_gallery')")
  
   .d-flex.justify-space-between.my-4.mt-4.thread-template-form-actions
     v-spacer

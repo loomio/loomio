@@ -49,6 +49,9 @@ export default
           @actions[i] = DiscussionTemplateService.actions(template, @group)
 
   computed:
+    userIsAdmin: ->
+      @group && @group.adminsInclude(Session.user())
+
     breadcrumbs: ->
       return [] unless @group
       compact([@group.parentId && @group.parent(), @group]).map (g) =>
@@ -72,23 +75,24 @@ export default
             v-icon mdi-chevron-right
       v-card
         v-card-title.d-flex.pr-3
-          h1.headline(tabindex="-1" v-t="'thread_template.start_a_new_thread'")
+          h1.headline(v-if="!showSettings" tabindex="-1" v-t="'thread_template.start_a_new_thread'")
+          h1.headline(v-if="showSettings" tabindex="-1" v-t="'thread_template.thread_template_settings'")
           v-spacer
-          v-btn(v-if="!showSettings" icon @click="showSettings = true")
-            v-icon mdi-cog
-          v-btn(v-else icon @click="showSettings = false")
-            v-icon mdi-close
+          template(v-if="userIsAdmin")
+            v-btn(v-if="!showSettings" icon @click="showSettings = true")
+              v-icon mdi-cog
+            v-btn(v-else icon @click="showSettings = false")
+              v-icon mdi-close
 
-        v-alert.mx-4(v-if="group && group.discussionsCount == 0" type="info" text outlined v-t="'thread_template.these_are_templates'") 
-        v-subheader Templates
+        v-alert.mx-4(v-if="!showSettings && group && group.discussionsCount < 2" type="info" text outlined v-t="'thread_template.these_are_templates'") 
 
+        template(v-if="showSettings")
+          .d-flex.justify-center
+            v-btn(color="primary" :to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
+              span(v-t="'discussion_form.new_template'")
         v-list.append-sort-here(two-line)
+          v-subheader(v-if="!showSettings" v-t="'templates.templates'")
           template(v-if="showSettings")
-            v-list-item(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
-              v-list-item-content
-                v-list-item-title(v-t="'discussion_form.new_template'")
-              v-list-item-action
-                v-icon mdi-plus
             v-subheader(v-if="templates.length" v-t="'thread_template.hidden_templates'")
 
           template(v-if="isSorting")
@@ -113,7 +117,7 @@ export default
               v-list-item-action
                 action-menu(:actions='actions[i]' small icon :name="$t('action_dock.more_actions')")
 
-      .d-flex.justify-center
-        v-btn.my-2(:to="'/thread_templates/browse?group_id=' + $route.query.group_id")
-          span Browse public templates
+      .d-flex.justify-center.my-2(v-if="!showSettings && userIsAdmin")
+        v-btn(:to="'/thread_templates/browse?group_id=' + $route.query.group_id + '&return_to='+returnTo")
+          span(v-t="'thread_template.browse_public_templates'")
 </template>
