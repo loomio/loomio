@@ -12,7 +12,7 @@ export default
 
     initialRecipients:
       type: Array
-      default: []
+      default: -> []
 
 </script>
 

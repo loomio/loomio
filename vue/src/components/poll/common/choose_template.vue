@@ -112,13 +112,17 @@ export default
       @group.adminsInclude(Session.user())
 
     filters: ->
-      recommendedIcon = (@discussionTemplate && @discussionTemplate.pollTemplateKeysOrIds.length && 'mdi-star') || null
-      pickBy
-        recommended: recommendedIcon
-        proposal: 'mdi-thumbs-up-down'
-        poll: 'mdi-poll'
-        meeting: 'mdi-calendar'
-      , (v) -> !!v
+      if @singleList
+        templates: 'mdi-thumbs-up-down'
+      else
+        recommendedIcon = (@discussionTemplate && @discussionTemplate.pollTemplateKeysOrIds.length && 'mdi-star') || null
+        pickBy
+          recommended: recommendedIcon
+          proposal: 'mdi-thumbs-up-down'
+          poll: 'mdi-poll'
+          meeting: 'mdi-calendar'
+        , (v) -> !!v
+
 
 </script>
 

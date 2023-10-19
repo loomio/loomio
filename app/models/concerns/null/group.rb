@@ -162,8 +162,9 @@ module Null::Group
 
   def discussion_template_positions
     {
-      'open_discussion' => 0,
-      'updates_thread' => 1
+      'blank' => 0,
+      'open_discussion' => 1,
+      'updates_thread' => 2,
     }
   end
 

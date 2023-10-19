@@ -76,24 +76,28 @@ export default
       v-card
         v-card-title.d-flex.pr-3
           h1.headline(v-if="!showSettings" tabindex="-1" v-t="'thread_template.start_a_new_thread'")
-          h1.headline(v-if="showSettings" tabindex="-1" v-t="'thread_template.thread_template_settings'")
+          h1.headline(v-if="showSettings" tabindex="-1" v-t="'thread_template.hidden_templates'")
           v-spacer
-          template(v-if="userIsAdmin")
-            v-btn(v-if="!showSettings" icon @click="showSettings = true")
-              v-icon mdi-cog
-            v-btn(v-else icon @click="showSettings = false")
-              v-icon mdi-close
+          v-btn(v-if="showSettings" icon @click="showSettings = false")
+            v-icon mdi-close
+
 
         v-alert.mx-4(v-if="!showSettings && group && group.discussionsCount < 2" type="info" text outlined v-t="'thread_template.these_are_templates'") 
 
-        template(v-if="showSettings")
-          .d-flex.justify-center
-            v-btn(color="primary" :to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
-              span(v-t="'discussion_form.new_template'")
         v-list.append-sort-here(two-line)
-          v-subheader(v-if="!showSettings" v-t="'templates.templates'")
-          template(v-if="showSettings")
-            v-subheader(v-if="templates.length" v-t="'thread_template.hidden_templates'")
+          .d-flex
+            v-subheader(v-if="!showSettings" v-t="'templates.templates'")
+            v-spacer
+            div.mr-3(v-if="userIsAdmin")
+              v-menu(v-if="!showSettings" offset-y)
+                template(v-slot:activator="{on, attrs}")
+                  v-btn(icon v-bind="attrs" v-on="on" :title="$t('common.admin_menu')")
+                    v-icon mdi-cog
+                v-list
+                  v-list-item(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
+                    v-list-item-title(v-t="'discussion_form.new_template'")
+                  v-list-item(@click="showSettings = true")
+                    v-list-item-title(v-t="'thread_template.hidden_templates'")
 
           template(v-if="isSorting")
             sortable-list(v-model="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")

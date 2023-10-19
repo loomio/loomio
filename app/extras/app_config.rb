@@ -108,7 +108,7 @@ class AppConfig
       show_contact:               ENV.fetch('FEATURES_SHOW_CONTACT', false),
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
-      hidden_poll_templates:      %w[gradients_of_agreement proposal question],
+      hidden_poll_templates:      %w[proposal question],
       scrub_user_deactivate:      !!ENV.fetch('SCRUB_USER_DEACTIVATE', false),
       transcription:              TranscriptionService.available?
     }

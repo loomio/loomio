@@ -161,6 +161,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    admin_menu: Admin menu
     api_docs: API docs
     prefix_eg: "e.g. {{val}}"
     are_you_sure: Are you sure?
