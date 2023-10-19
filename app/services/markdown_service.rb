@@ -60,17 +60,16 @@ module MarkdownService
   end
 
   def self.replace_iframes(str)
-    srcs = Nokogiri::HTML(str).search("iframe[src]").map { |el| el['src'] }
-    out = str.dup
-    srcs.each do |src|
+    doc = Nokogiri::HTML5::DocumentFragment.parse(str)
+    doc.search("iframe[src]").each do |node|
       begin
-        vi = VideoInfo.new(src)
-        out.gsub!('<iframe src="'+src+'"></iframe>', "<div><a href='#{vi.url}'><img src='#{vi.thumbnail}' /></a></div>")
-      rescue # yea, there are stupid errors to collect here.
-        out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{src}'>#{src}</a>")
+        vi = VideoInfo.new(node['src'])
+        node.replace("<div><a href='#{vi.url}'><img src='#{vi.thumbnail}' /></a></div>")
+      rescue
+        node.replace("<a href='#{node['src']}'>#{node['src']}</a>")
       end
     end
-    out
+    doc.to_s
   end
 
   def self.replace_checkboxes(str)
