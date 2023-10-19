@@ -46,7 +46,7 @@ module MarkdownService
   def self.replace_videos(str)
     doc = Nokogiri::HTML5::DocumentFragment.parse(str)
     doc.search("video[src]").each do |node|
-      node.replace("<p><a href='#{node['src']}'><img src='#{node['poster']}'></a></p>")
+      node.replace("<p><a href='#{node['src']}'><img src='#{node['poster']}'><br>#{I18n.t('record_modal.watch_video')}</a></p>")
     end
     doc.to_s
   end
