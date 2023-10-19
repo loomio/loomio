@@ -128,7 +128,6 @@ export default
       sum(@recipients.map((r) => r.size || 1))
 
     expand: (item) ->
-      console.log 'click', item
       excludeMembers = (@excludeMembers && {exclude_members: 1}) || {}
       if @model.anonymous && ['decided_voters', 'undecided_voters'].includes(item.id)
         Flash.warning('announcement.cannot_reveal_when_anonymous')
