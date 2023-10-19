@@ -50,6 +50,15 @@ Rails.application.routes.draw do
       resources :memberships, only: [:index, :create]
     end
 
+    namespace :b3, only: [] do
+      resources :users do
+        collection do
+          post :deactivate
+          post :reactivate
+        end
+      end
+    end
+
     namespace :v1 do
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
@@ -339,6 +348,7 @@ Rails.application.routes.draw do
   get '/manifest'   => 'manifest#show', format: :json
   get '/help/api'   => 'help#api'
   get '/help/api2'   => 'help#api2'
+  get '/help/api3'   => 'help#api3'
 
   get '/start_group', to: redirect('/try')
 
