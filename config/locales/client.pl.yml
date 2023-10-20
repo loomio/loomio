@@ -306,6 +306,7 @@ pl:
     today: Dzisiaj
     in_x_days: za %{x} dni
     visit_loomio_help: Odwiedź Loomio pomocy
+    api_docs: Dokumentacja API
   merge_accounts:
     modal:
       title: Połącz konta
@@ -1315,6 +1316,8 @@ pl:
     help_translate: Czy możesz pomóc nam przetłumaczyć Loomio?
     updated_on_sign_in: Dostarczane przez przeglądarkę i aktualizowane po zalogowaniu
     deactivated_user: Dezaktywowany użytkownik
+    account_is_bot: To jest konto bota
+    bot_account_warning: Konta botów nie będą zapraszane do głosowania w ankietach ani do udziału w dyskusjach
   text_editor:
     insert_link: Wstaw link
     insert_embedded_url: Wstaw wideo
@@ -1576,6 +1579,7 @@ pl:
     this_is_for: To świetne miejsce na zapytania dotyczące sprzedaży, szkoleń, subskrypcji lub prośby o wsparcie przy użyciu Loomio.
     read_the_manual: Czy wiesz, że nasz <a href="{{link}}" target="_blank">Podręcznik pomocy</a> zawiera najczęściej zadawane pytania, a także szczegółowe przewodniki ułatwiające dyskusje i podejmowanie decyzji w Loomio?
     success_via_email: Dziękujemy za wiadomość, {{imię}}. Odpowiemy e-mailem w ciągu 24 godzin.
+    need_message: Wpisz wiadomość, abyśmy mogli Ci pomóc :-)
   explore_page:
     header: Przeglądaj grupy
     search_placeholder: Wyszukaj grupy publiczne
@@ -1748,6 +1752,7 @@ pl:
     invited_by_name: Zaproszony/a przez {{name}}
     accepted: Osoby
     show_users_in_subgroups: Pokaż także użytkowników w podgrupach
+    bot: Nerw
   polls_panel:
     new_poll: Nowe głosowanie
     any_type: Wszystkie rodzaje
@@ -2304,6 +2309,7 @@ pl:
       show_poll: pokaż ankietę
       read_memberships: przeczytaj członkostwo
       manage_memberships: zarządzać członkostwem (dodawać lub usuwać członków grupy)
+    deprecated: Ten interfejs API jest przestarzały. Przejdź na APIv2 (zobacz dokumentację API w menu ustawień grupy)
   powered_by:
     slogan: Lepsze decyzje razem
     powered_by_loomio: Wspierany przez Loomio

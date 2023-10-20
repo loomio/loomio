@@ -289,6 +289,7 @@ nl_NL:
     today: Vandaag
     in_x_days: over %{x} dagen
     visit_loomio_help: Bezoek Loomio-hulp
+    api_docs: API-documenten
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -1298,6 +1299,8 @@ nl_NL:
     help_translate: Kun jij ons helpen met het vertalen van Loomio?
     updated_on_sign_in: Verstrekt door uw browser en bijgewerkt wanneer u zich aanmeldt
     deactivated_user: Gedeactiveerde gebruiker
+    account_is_bot: Dit is een botaccount
+    bot_account_warning: Botaccounts worden niet uitgenodigd om te stemmen in opiniepeilingen of deel te nemen aan discussies
   text_editor:
     insert_link: Link invoegen
     insert_embedded_url: Video integreren
@@ -1559,6 +1562,7 @@ nl_NL:
     this_is_for: Dit is een geweldige plek voor vragen over verkoop, training of abonnementen, of om ondersteuning te vragen bij het gebruik van Loomio.
     read_the_manual: Wist je dat onze <a href="{{link}}" target="_blank">Help-handleiding</a> veelgestelde vragen bevat, evenals gedetailleerde handleidingen om discussies en beslissingen over Loomio te vergemakkelijken?
     success_via_email: Bedankt voor je bericht, {{name}}. We reageren binnen 24 uur per e-mail.
+    need_message: Vul een bericht in, zodat we je kunnen helpen :-)
   explore_page:
     header: Verken groepen
     search_placeholder: Zoek naar openbare groepen
@@ -1731,6 +1735,7 @@ nl_NL:
     invited_by_name: Uitgenodigd door {{name}}
     accepted: Leden
     show_users_in_subgroups: Toon ook gebruikers in subgroepen
+    bot: Bot
   polls_panel:
     new_poll: Nieuwe peiling
     any_type: Alle types
@@ -2287,6 +2292,7 @@ nl_NL:
     name_placeholder: Geef deze integratie een naam zodat u deze kunt identificeren
     event_kind_helptext: Van welke gebeurtenissen wilt u dat de webhook op de hoogte wordt gebracht?
     permissions_explaination: Selecteer welke acties door deze integratie kunnen worden uitgevoerd
+    deprecated: Deze API is verouderd. Ga naar APIv2 (zie API-documenten in het menu met groepsinstellingen)
   powered_by:
     slogan: Samen betere beslissingen
     powered_by_loomio: Powered by Loomio

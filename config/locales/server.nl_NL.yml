@@ -196,6 +196,7 @@ nl_NL:
       link_help: 'Klik op onderstaande link om de uitnodiging te accepteren:'
       accept_invitation: Uitnodiging accepteren
       stop_emails: Geen e-mail meer van %{site_name}
+      accepting_is_important: Het is belangrijk dat u uw uitnodiging accepteert, anders ontvangt u geen meldingen over beslissingen waarbij u betrokken bent.
     resend_to_join_group:
       subject: "%{member} wacht op je om lid te worden van %{group_name} op%{site_name}"
     user_added_to_group:

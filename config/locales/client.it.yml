@@ -314,6 +314,7 @@ it:
     prefix_eg: ad esempio {{val}}
     are_you_sure: Sei sicuro?
     visit_loomio_help: Visita Loomio aiuto
+    api_docs: Documenti API
   merge_accounts:
     modal:
       title: Unisci account
@@ -1327,6 +1328,8 @@ it:
     help_translate: Puoi aiutarci a tradurre Loomio?
     updated_on_sign_in: Fornito dal tuo browser e aggiornato quando accedi
     deactivated_user: Utente disattivato
+    account_is_bot: Questo è un account bot
+    bot_account_warning: Gli account bot non saranno invitati a votare nei sondaggi o a partecipare alle discussioni
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caratteri"
     insert_link: Inserisci collegamento
@@ -1584,6 +1587,7 @@ it:
     consent_message: Contattandoci acconsenti al nostro personale di accedere al tuo account se necessario.<br /> Il nostro team di supporto parla inglese e, se necessario, tradurrà il tuo messaggio con Google Translate.<br /> Miriamo a rispondere a tutti i messaggi entro 24 ore.
     success: Grazie per il tuo messaggio, {{name}}. Avrai presto nostre notizie.
     success_via_email: Grazie per il tuo messaggio, {{name}}. Risponderemo via e-mail entro 24 ore.
+    need_message: Per favore inserisci un messaggio così possiamo aiutarti :-)
   explore_page:
     header: Esplora gruppi
     search_placeholder: Cerca tra i gruppi pubblici
@@ -1752,6 +1756,7 @@ it:
     last_seen: Visto l'ultima volta {{date}}
     invited_by_name: Invitato da {{name}}
     accepted: Membri
+    bot: Bot
   polls_panel:
     new_poll: Nuova votazione
     any_type: Tutti i tipi
@@ -2320,6 +2325,7 @@ it:
     name_placeholder: Assegna un nome a questa integrazione in modo da poterla identificare
     event_kind_helptext: Di quali eventi vuoi che il webhook riceva notifiche?
     permissions_explaination: Seleziona quali azioni possono essere eseguite da questa integrazione
+    deprecated: Questa API è deprecata. Passa all'APIv2 (vedi la documentazione API nel menu delle impostazioni del gruppo)
   powered_by:
     slogan: Migliora insieme le decisioni
     powered_by_loomio: Fatto con Loomio

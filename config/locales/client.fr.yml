@@ -314,6 +314,7 @@ fr:
     prefix_eg: par exemple {{val}}
     are_you_sure: Es-tu sûr?
     visit_loomio_help: Visitez l'aide de Loomio
+    api_docs: Documents sur l'API
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -1354,6 +1355,8 @@ fr:
     help_translate: Pouvez vous nous aider à traduire Loomio?
     updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
     deactivated_user: Utilisateur désactivé
+    account_is_bot: Ceci est un compte de robot
+    bot_account_warning: Les comptes de robots ne seront pas invités à voter dans les sondages ou à participer aux discussions
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caractères"
     select_text_to_link: Sélectionnez le texte à lier et réessayez
@@ -1622,6 +1625,7 @@ fr:
       Notre objectif est de répondre à tous vos messages en moins de 24 heures.
     success: Merci pour votre message, {{name}}. Nous prendrons rapidement contact.
     success_via_email: Merci pour votre message, {{name}}. Nous vous répondrons par e-mail dans les 24 heures.
+    need_message: Veuillez entrer un message afin que nous puissions vous aider :-)
   explore_page:
     header: Explorer les groupes
     search_placeholder: Rechercher des groupes publics
@@ -1804,6 +1808,7 @@ fr:
     last_seen: Vu en dernier le {{date}}
     invited_by_name: Invité par {{name}}
     accepted: Membres
+    bot: Bot
   polls_panel:
     new_poll: Nouveau sondage
     any_type: Tous types
@@ -2406,6 +2411,7 @@ fr:
       read_memberships: lire les appartenances
       manage_memberships: gérer les appartenances (ajouter ou supprimer des membres du groupe)
     include_body_label: Inclure le corps du message dans la notification
+    deprecated: Cette API est obsolète. Veuillez passer à APIv2 (voir la documentation API dans le menu des paramètres de votre groupe)
   powered_by:
     this_is_loomio_md: Loomio est une application pour prendre des décisions ensemble. [Essayez gratuitement] (https://www.loomio.com)
     slogan: De meilleures décisions ensemble
