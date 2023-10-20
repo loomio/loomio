@@ -8,7 +8,6 @@ class UserQuery
 
 
     if model.nil? or actor.can?(:add_guests, model)
-      byebug
       group_ids = if model && model.group.present? && (!model.is_a?(Group) || model.parent_id)
         actor.group_ids & model.group.parent_or_self.id_and_subgroup_ids
       else
