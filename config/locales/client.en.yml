@@ -842,6 +842,7 @@ en:
       non_voters: Members of {{name}} not yet invited
 
     form:
+      group_has_no_members_yet: You are the only member of your group. You may want to invite some people to your group before starting a thread or decision.
       invite_people_to_evaluate_loomio: |
         Invite some people to your Loomio group to make a decision together
       too_many_invitations: |
