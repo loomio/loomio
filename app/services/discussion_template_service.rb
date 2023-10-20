@@ -27,11 +27,12 @@ class DiscussionTemplateService
   end
 
   def self.initial_templates(category)
-    common = ['blank', 'onboarding_to_loomio']
+    common = ['discuss_a_topic']
     names = {
-      board:         ['discuss_a_topic', 'approve_a_document', 'prepare_for_a_meeting'],
-      membership:    ['discuss_a_topic'],
-      self_managing: ['discuss_a_topic'],
+      board:         ['onboarding_to_loomio', 'approve_a_document', 'prepare_for_a_meeting', 'funding_decision'],
+      membership:    ['onboarding_to_loomio', 'share_links_and_info', 'decision_by_consensus', 'elect_a_governance_position'],
+      self_managing: ['onboarding_to_loomio', 'advice_process', 'consent_process'],
+      other: ['onboarding_to_loomio', 'approve_a_document', 'advice_process', 'consent_process'],
     }.with_indifferent_access.fetch(category, [])
 
     default_templates.filter { |dt| common.concat(names).include? dt.key }

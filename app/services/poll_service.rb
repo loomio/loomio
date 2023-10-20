@@ -18,7 +18,7 @@ class PollService
     user_ids = params[:notify_recipients] ? stances.pluck(:participant_id) : []
     
     EventBus.broadcast('poll_create', poll, actor)
-    Events::PollCreated.publish!(poll, actor, recipient_user_ids: user_ids - [author.id])
+    Events::PollCreated.publish!(poll, actor, recipient_user_ids: user_ids - [actor.id])
   end
 
   def self.update(poll:, params:, actor:)

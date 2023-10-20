@@ -734,7 +734,6 @@ en:
       These templates are available for you to copy or modify to suit your group
     these_are_templates: |
       These are the thread templates in your group. Templates guide you through common decision-making processes.
-      If you are new to Loomio start with the "Onboarding to Loomio" template.
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
     title_placeholder_label: Example title
