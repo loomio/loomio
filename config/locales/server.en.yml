@@ -1,6 +1,10 @@
 ---
 en:
   discussion_templates:
+    blank:
+      process_name: Blank template
+      process_subtitle: Start a new thread for any purpose
+
     discuss_a_topic:
       title_placeholder: What is the topic you want to discuss?
       process_name: Discuss a topic
@@ -125,7 +129,7 @@ en:
       title_placeholder: Share links and info
       process_name: Share links and info
       process_subtitle: Post info, links and reports to share for comment and discussion.
-      process_introduction: "<p>Use a thread as a 'wall' or 'bulletin board<strong>'</strong>
+      process_introduction: "<p>Use a thread as a 'wall' or 'bulletin board'
         for your group to post information, news items and ideas you'd like to share with
         each other.</p><p>Invite people to use the <strong>Insert link</strong> and <strong>Embed
         video</strong> formatting tools to help the group access info from within Loomio.

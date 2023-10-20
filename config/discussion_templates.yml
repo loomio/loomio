@@ -1,3 +1,12 @@
+blank:
+  process_name_i18n: discussion_templates.blank.process_name
+  process_subtitle_i18n: discussion_templates.blank.process_subtitle
+  process_introduction_format: html
+  description_format: html
+  newest_first: false
+  max_depth: 3
+  position: 0
+
 discuss_a_topic:
   title_placeholder_i18n: discussion_templates.discuss_a_topic.title_placeholder
   process_name_i18n: discussion_templates.discuss_a_topic.process_name
