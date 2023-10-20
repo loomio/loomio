@@ -9,14 +9,12 @@
       join the product development group
     and explain what you would like to do.
 
-  %p.mt-4.mb-4 Your API key is: #{params['api_key']}
+  %p.mt-4.mb-4 Your API key is: #{@api_key}
   %h2 create discussion
 
   %h3 example
-  -# %pre
-  -#   curl -X POST -d 'title=example thread&recipient_emails[]=guest@example.com&api_key=#{params['api_key']}' #{root_url}api/b1/discussions
   %pre
-    curl -X POST -H 'Content-Type: application/json' -d '{"title":"example thread", "recipient_emails":["#{current_user.email}"], "api_key": "#{params['api_key']}"}' #{root_url}api/b1/discussions
+    curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "title":"example thread", "recipient_emails":["#{current_user.email}"], "api_key": "#{@api_key}"}' #{root_url}api/b1/discussions
 
   %h3 params
   %table

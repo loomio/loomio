@@ -598,6 +598,7 @@ fr:
       group: Retirer du groupe
       poll: Retirer de {{pollType}}
     cancel_invitation: Annuler l’invitation
+    set_name_and_username: Définir le nom et le nom d'utilisateur
   notification_models:
     discussion: 'discussion :'
     comment: commentaire dans
@@ -1936,6 +1937,7 @@ fr:
     change_results_order: Changer l’ordre des résultats
     none_of_the_above: "(Aucun des choix ci-dessus)"
     vote_removed: Vote supprimé
+    name_or_username: Nom ou nom d'utilisateur
   poll_common_undecided_panel:
     show_undecided: Afficher les %{count} indécis
     show_invitations: Montrer les invitations en attente
@@ -2064,6 +2066,7 @@ fr:
     process_introduction: Aide sur les modèles
     process_introduction_hint: Quelques paragraphes qui expliquent comment utiliser le modèle. Inclure des liens vers des ressources qui pourraient être utiles.
     option_has_votes_confirm_delete: Certaines personnes ont voté pour cette option, êtes-vous sûr de vouloir la supprimer ?
+    notify_everyone_when_poll_starts: Avertir tout le monde lorsque %{poll_type} démarre
   poll_proposal_form:
     tool_tip_collapsed: Prendre une décision ensemble
     vote_method_hint: Les électeurs sont d’accord ou en désaccord avec une déclaration
@@ -2565,3 +2568,6 @@ fr:
     any_tag: N'importe quelle balise
     all_subgroups: Tous les sous-groupes
     parent_only: Parents seulement
+  user_name_modal:
+    user_name_updated: Nom d'utilisateur mis à jour
+    set_user_name: Définir le nom d'utilisateur

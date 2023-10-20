@@ -116,7 +116,7 @@ GEM
       aws-sigv4 (~> 1.6)
     aws-sigv4 (1.6.0)
       aws-eventstream (~> 1, >= 1.0.2)
-    bcrypt (3.1.18)
+    bcrypt (3.1.19)
     blazer (3.0.0)
       activerecord (>= 6.1)
       chartkick (>= 5)
@@ -162,7 +162,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.11.0)
+    devise-i18n (1.12.0)
       devise (>= 4.9.0)
     diff-lcs (1.5.0)
     digest-crc (0.6.4)
@@ -490,7 +490,7 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       rspec-mocks (>= 2.99, < 4.0)
-    rspec-collection_matchers (1.2.0)
+    rspec-collection_matchers (1.2.1)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
@@ -511,7 +511,7 @@ GEM
       rspec-expectations (~> 3.12)
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
-    rspec-support (3.12.0)
+    rspec-support (3.12.1)
     ruby-ll (2.1.2)
       ansi
       ast
@@ -540,7 +540,7 @@ GEM
     sentry-sidekiq (5.11.0)
       sentry-ruby (~> 5.11.0)
       sidekiq (>= 3.0)
-    sidekiq (6.5.9)
+    sidekiq (6.5.11)
       connection_pool (>= 2.2.5, < 3)
       rack (~> 2.0)
       redis (>= 4.5.0, < 5)
@@ -593,7 +593,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.11)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   x86_64-darwin-21
@@ -667,7 +667,7 @@ DEPENDENCIES
   sentry-rails
   sentry-ruby
   sentry-sidekiq
-  sidekiq (~> 6.5.9)
+  sidekiq (~> 6.5.11)
   spring
   spring-commands-rspec
   sprockets (= 3.7.2)

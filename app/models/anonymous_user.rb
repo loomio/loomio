@@ -7,6 +7,10 @@ class AnonymousUser < LoggedOutUser
     :anonymous
   end
 
+  def name_or_username
+    name || username
+  end
+
   def avatar_kind
     'initials'
   end

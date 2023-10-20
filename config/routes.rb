@@ -43,6 +43,21 @@ Rails.application.routes.draw do
       resources :polls, only: [:create, :show]
       resources :memberships, only: [:index, :create]
     end
+    
+    namespace :b2 do
+      resources :discussions, only: [:create, :show]
+      resources :polls, only: [:create, :show]
+      resources :memberships, only: [:index, :create]
+    end
+
+    namespace :b3, only: [] do
+      resources :users do
+        collection do
+          post :deactivate
+          post :reactivate
+        end
+      end
+    end
 
     namespace :v1 do
       resources :attachments, only: [:index, :destroy]
@@ -91,6 +106,7 @@ Rails.application.routes.draw do
 
       resources :memberships, only: [:index, :create, :update, :destroy] do
         collection do
+          post :user_name
           post :join_group
           get :for_user
           get :autocomplete, action: :index
@@ -320,6 +336,8 @@ Rails.application.routes.draw do
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
   get '/help/api'   => 'help#api'
+  get '/help/api2'   => 'help#api2'
+  get '/help/api3'   => 'help#api3'
 
   get '/start_group', to: redirect('/try')
 
@@ -357,7 +375,8 @@ Rails.application.routes.draw do
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
   get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group
-  get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion
+  get 'd/:key/:slug(/:sequence_id)'        => 'discussions#show',            as: :discussion
+  get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion_no_slug
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
   get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll

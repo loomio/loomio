@@ -13,6 +13,7 @@ export default
     isDisabled: false
     helpLink: "https://help.loomio.com"
     contactEmail: AppConfig.contactEmail
+    needMessage: false
 
   mounted: ->
     EventBus.$emit 'currentComponent',
@@ -27,9 +28,12 @@ export default
 
   methods:
     submit: ->
-      @message.save()
-      .then =>
-        @submitted = true
+      if @message.message
+        @message.save()
+        .then =>
+          @submitted = true
+      else
+        @needMessage = true
 
   computed:
     isLoggedIn: ->
@@ -60,6 +64,8 @@ v-main
         validation-errors(:subject='message', field='subject')
 
         v-textarea(:label="$t('contact_message_form.message_label')" v-model='message.message', :placeholder="$t('contact_message_form.message_placeholder')")
+        v-alert(type="info" v-if="needMessage")
+          span(v-t="'contact_message_form.need_message'")
         validation-errors(:subject='message', field='message')
 
         p.text--secondary(v-html="$t('contact_message_form.contact_us_email', { email: contactEmail })")

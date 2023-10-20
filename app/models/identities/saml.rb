@@ -5,7 +5,11 @@ class Identities::Saml < Identities::Base
 
   def settings
     @settings ||= begin
-      settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(ENV['SAML_IDP_METADATA_URL'])
+      if ENV['SAML_IDP_METADATA']
+        settings = OneLogin::RubySaml::IdpMetadataParser.new.parse(ENV['SAML_IDP_METADATA'])
+      else
+        settings = OneLogin::RubySaml::IdpMetadataParser.new.parse_remote(ENV['SAML_IDP_METADATA_URL'])
+      end
       settings.assertion_consumer_service_url = saml_oauth_url
       settings.issuer                         = ENV.fetch('SAML_ISSUER', saml_metadata_url)
       settings.name_identifier_format         = 'urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress'

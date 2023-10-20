@@ -1,5 +1,5 @@
 <script lang="coffee">
-import Flash   from '@/shared/services/flash'
+import Flash from '@/shared/services/flash'
 
 export default
   props:

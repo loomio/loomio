@@ -1,0 +1,36 @@
+%main
+  %h1 Loomio API docs /api/b3
+
+  %p /api/b3 namespace is for server level opertations. You must set an ENV['B3_API_KEY'] and pass a b3_api_key param to authenticate. B3_API_KEY must be longer than 16 chars
+  %p Please user the /api/b2 namespace for all group level operations
+
+  %h2 deactivate user
+
+  %h3 example
+  %pre
+    curl -X POST -H 'Content-Type: application/json' -d '{"b3_api_key": secret_not_shown, "id": 123}"}' #{root_url}api/b3/users/deactivate
+
+  %h3 params
+  %table
+    %tr
+      %td b3_api_key
+      %td The value you specified in ENV['B3_API_KEY']
+    %tr
+      %td id
+      %td the user id you want to deactivate
+
+  %h2 reactivate user
+
+  %h3 example
+  %pre
+    curl -X POST -H 'Content-Type: application/json' -d '{"b3_api_key": secret_not_shown, "id": 123}"}' #{root_url}api/b3/users/reactivate
+
+  %h3 params
+  %table
+    %tr
+      %td b3_api_key
+      %td The value you specified in ENV['B3_API_KEY']
+    %tr
+      %td id
+      %td the user id you want to reactivate
+

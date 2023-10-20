@@ -22,7 +22,7 @@ class PermittedParams < Struct.new(:params)
      :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
      :email_catch_up_day, :has_password, :has_token, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation, :email_newsletter,
-     :date_time_pref,
+     :date_time_pref, :bot,
      :legal_accepted, {email_new_discussions_and_proposals_group_ids: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
    ]

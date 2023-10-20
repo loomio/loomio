@@ -10,7 +10,7 @@ class User < ApplicationRecord
   include HasRichText
   include LocalesHelper
 
-  is_rich_text    on: :short_bio
+  is_rich_text on: :short_bio
 
   extend HasTokens
   extend HasDefaults
@@ -52,8 +52,8 @@ class User < ApplicationRecord
   has_one_attached :uploaded_avatar
 
   validates_uniqueness_of :email, conditions: -> { where(email_verified: true) }, if: :email_verified?
-  validates_uniqueness_of :username, if: :email_verified
-  before_validation :generate_username, if: :email_verified
+  validates_uniqueness_of :username, if: :email
+  before_validation :generate_username, if: :email
   validates_length_of :name, maximum: 100
   validates_length_of :username, maximum: 30
   validates_length_of :short_bio, maximum: 5000
@@ -115,6 +115,7 @@ class User < ApplicationRecord
   before_save :set_avatar_initials
   initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
   initialized_with_token :email_api_key,            -> { SecureRandom.hex(16) }
+  initialized_with_token :api_key,                  -> { SecureRandom.hex(16) }
 
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
@@ -127,6 +128,8 @@ class User < ApplicationRecord
   scope :unverified, -> { where(email_verified: false) }
   scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
+  scope :humans, -> { where(bot: false) }
+  scope :bots, -> { where(bot: true) }
 
   scope :mention_search, -> (user, model, query) do
     return self.none unless model.present?
@@ -297,6 +300,9 @@ class User < ApplicationRecord
     end
   end
 
+  def name_or_username
+    self[:name] || self[:username]
+  end
 
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?

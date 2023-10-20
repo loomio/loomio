@@ -4,7 +4,6 @@ import AppConfig from '@/shared/services/app_config'
 import Records from '@/shared/services/records'
 import i18n from '@/i18n.coffee'
 import * as Sentry from '@sentry/vue'
-import { BrowserTracing } from "@sentry/tracing"
 import { forEach, snakeCase } from 'lodash'
 import router from '@/routes.coffee'
 
@@ -15,7 +14,8 @@ export default (callback) ->
     forEach appConfig, (v, k) -> Vue.set(AppConfig, k, v)
 
     if AppConfig.sentry_dsn
-      Sentry.init
+      Sentry.init(
+        Vue: Vue,
         ignoreErrors: [
           "Avoided redundant navigation to current location",
           "NotFoundError: Node.removeChild",
@@ -38,17 +38,17 @@ export default (callback) ->
           "Object captured as promise rejection with keys: error, ok, status, statusText",
           "Object captured as promise rejection with keys: exception, ok, status, statusText",
           "Non-Error promise rejection captured with keys: exception, ok, status, statusText"
-        ]
-        dsn: AppConfig.sentry_dsn
-        tunnel: '/bug_tunnel'
+        ],
+        dsn: AppConfig.sentry_dsn,
+        tunnel: '/bug_tunnel',
         integrations: [
-          new BrowserTracing({
-            routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-            tracingOrigins: ["localhost", AppConfig.baseUrl, /^\//],
+          new Sentry.BrowserTracing({
+            routingInstrumentation: Sentry.vueRouterInstrumentation(router)
           }),
-        ]
-        tracesSampleRate: AppConfig.features.app.sentry_sample_rate
-
+        ],
+        tracesSampleRate: AppConfig.features.app.sentry_sample_rate,
+        tracePropagationTargets: ["localhost", AppConfig.baseUrl, /^\//],
+      )
       Sentry.configureScope (scope) ->
         scope.setTag("loomio_version", AppConfig.version)
 

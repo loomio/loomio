@@ -180,7 +180,7 @@ class PollService
       )
     end
 
-    Stance.import(new_stances)
+    Stance.import(new_stances, on_duplicate_key_ignore: true)
 
     poll.reset_latest_stances!
     poll.update_counts!
