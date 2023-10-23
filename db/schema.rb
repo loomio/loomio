@@ -999,8 +999,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_042650) do
     t.jsonb "link_previews", default: [], null: false
     t.integer "email_catch_up_day"
     t.string "date_time_pref"
-    t.integer "deactivator_id"
     t.string "api_key"
+    t.integer "deactivator_id"
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"
