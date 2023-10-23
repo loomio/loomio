@@ -178,6 +178,7 @@ it:
       link_help: 'Clicca sul link qui sotto per accettare l''invito:'
       accept_invitation: Accetta l'invito
       stop_emails: Smetti di ricevere email da %{site_name}
+      accepting_is_important: È importante accettare il tuo invito, altrimenti non riceverai notifiche sulle decisioni che ti coinvolgono.
     unsubscribe: 'Disiscriviti o cambia le preferenze email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per disiscriverti o cambiare le preferenze email."
     catch_up:

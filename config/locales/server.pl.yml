@@ -194,6 +194,7 @@ pl:
       link_help: 'Kliknij poniższy link, aby zaakceptować zaproszenie:'
       accept_invitation: Przyjmij zaproszenie
       stop_emails: Przestań otrzymywać wiadomości e-mail od %{site_name}
+      accepting_is_important: Ważne jest, aby zaakceptować zaproszenie, w przeciwnym razie nie będziesz otrzymywać powiadomień o decyzjach, które Cię dotyczą.
     resend_to_join_group:
       subject: "%{member}czeka, aż dołączysz do %{group_name} na %{site_name}"
     user_added_to_group:

@@ -154,6 +154,7 @@ uk:
       link_help: 'Натисніть на посилання нижче щоб прийняти запрошення:'
       accept_invitation: Прийняти запрошення
       stop_emails: Не отримувати електронні листи від %{site_name}
+      accepting_is_important: Важливо прийняти ваше запрошення, інакше ви не отримуватимете сповіщень про рішення, які стосуються вас.
     resend_to_join_group:
       subject: "%{member} очікує вашого долучення до %{group_name} на %{site_name}"
     user_added_to_group:

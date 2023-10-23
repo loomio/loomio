@@ -200,6 +200,7 @@ de:
       link_help: 'Klicke auf den unteren Link, um die Einladung anzunehmen:'
       accept_invitation: Einladung annehmen
       stop_emails: Keine E-Mails mehr erhalten von %{site_name}
+      accepting_is_important: Es ist wichtig, dass Sie Ihre Einladung annehmen, da Sie sonst keine Benachrichtigungen über Entscheidungen erhalten, die Sie betreffen.
     resend_to_join_group:
       subject: "%{member} wartet darauf, dass du %{group_name} auf %{site_name} beitrittst"
     user_added_to_group:

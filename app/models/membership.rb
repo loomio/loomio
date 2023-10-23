@@ -23,14 +23,15 @@ class Membership < ApplicationRecord
   belongs_to :group
   belongs_to :user
   belongs_to :inviter, class_name: 'User'
+  belongs_to :revoker, class_name: 'User'
   has_many :events, as: :eventable, dependent: :destroy
 
   scope :dangling,      -> { joins('left join groups g on memberships.group_id = g.id').where('group_id is not null and g.id is null')  }
-  scope :active,        -> { not_archived.accepted }
-  scope :archived,      -> { where('archived_at IS NOT NULL') }
-  scope :not_archived,  -> { where(archived_at: nil) }
-  scope :pending,       -> { where(accepted_at: nil).where("user_id is not null") }
+  scope :user_active,   -> { joins(:user).where("users.deactivated_at is null") }
+  scope :active,        -> { where(revoked_at: nil) }
+  scope :pending,       -> { active.where(accepted_at: nil) }
   scope :accepted,      -> { where('accepted_at IS NOT NULL') }
+  scope :revoked,       -> { where('revoked_at IS NOT NULL') }
 
   scope :search_for, ->(query) { joins(:user).where("users.name ilike :query or users.username ilike :query or users.email ilike :query", query: "%#{query}%") }
 
@@ -39,7 +40,7 @@ class Membership < ApplicationRecord
   scope :for_group, lambda {|group| where(group_id: group)}
   scope :admin, -> { where(admin: true) }
 
-  has_paper_trail only: [:group_id, :user_id, :inviter_id, :admin, :title, :archived_at, :volume, :accepted_at]
+  has_paper_trail only: [:group_id, :user_id, :inviter_id, :admin, :title, :revoked_at, :revoker_id, :volume, :accepted_at]
   delegate :name, :email, to: :user, prefix: :user, allow_nil: true
   delegate :parent, to: :group, prefix: :group, allow_nil: true
   delegate :name, :full_name, to: :group, prefix: :group

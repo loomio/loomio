@@ -439,16 +439,7 @@ en:
 
     by_who: by %{person}
     reply_to_this_discussion: Reply to this discussion
-    loomio_app_description: "%{site_name} is a decision-making tool for collaborative organizations"
-    loomio_app_description_html: |
-      <p>%{site_name} is an easy to use, secure place for organizations to have discussions and make decisions together.</p>
-      <ul>
-      <li>Involve the right people</li>
-      <li>Create time and space for discussion</li>
-      <li>Streamline decision processes</li>
-      <li>Improve transparency and accountability</li>
-      <li>Record decisions and document rationale</li>
-      </ul>
+    loomio_app_description: "An easy to use, secure place for organizations to make decisions together."
 
     view_group: View group
     to_join_group:
@@ -458,6 +449,7 @@ en:
       link_help: "Click the link below to accept the invitation:"
       accept_invitation: "Accept invitation"
       stop_emails: "Stop receiving emails from %{site_name}"
+      accepting_is_important: It's important to accept your invitation, so that you do not miss notifications about decisions that involve you.
     resend_to_join_group:
       subject: "%{member} is waiting for you to join %{group_name} on %{site_name}"
     user_added_to_group:

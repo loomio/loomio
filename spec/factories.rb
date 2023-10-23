@@ -7,6 +7,7 @@ FactoryBot.define do
   factory :membership do |m|
     m.user { |u| u.association(:user)}
     m.group { |g| g.association(:group)}
+    accepted_at { 1.day.ago }
   end
 
   factory :pending_membership, class: Membership do |m|

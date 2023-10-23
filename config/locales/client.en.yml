@@ -834,7 +834,7 @@ en:
     poll_reminder: '{{name}} reminded {{length}} people to vote:'
 
     audiences:
-      group: Members of {{name}}
+      group: "{{name}}"
       discussion_group: Everyone in the thread
       voters: Everyone invited to vote
       decided_voters: Everyone who voted

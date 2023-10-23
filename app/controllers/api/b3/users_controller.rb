@@ -9,8 +9,8 @@ class API::B3::UsersController < API::V1::SnorlaxBase
   end
 
   def deactivate
-    User.active.find(params[:id]) # throws 404 if not present
-    DeactivateUserWorker.perform_async(params[:id])
+    user = User.active.find(params[:id]) # throws 404 if not present
+    DeactivateUserWorker.perform_async(user.id, user.id)
     render json: {success: :ok}
   end
 

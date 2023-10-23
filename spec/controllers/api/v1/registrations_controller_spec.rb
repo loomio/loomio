@@ -11,7 +11,7 @@ describe API::V1::RegistrationsController do
 
   describe 'create' do
     let(:login_token)        { create :login_token, user: User.create(email: registration_params[:email], email_verified: false) }
-    let(:pending_membership) { create :membership, user: User.create(email: registration_params[:email], email_verified: false) }
+    let(:pending_membership) { create :membership, accepted_at: nil, user: User.create(email: registration_params[:email], email_verified: false) }
     let(:pending_identity)   { create :facebook_identity, email: registration_params[:email] }
 
     it 'creates a new user' do

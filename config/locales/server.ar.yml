@@ -179,6 +179,7 @@ ar:
       link_help: 'انقر على الرابط أدناه لقبول الدعوة:'
       accept_invitation: اقبل الدعوة
       stop_emails: التوقف عن تلقي رسائل البريد الإلكتروني من%{site_name}
+      accepting_is_important: من المهم قبول دعوتك، وإلا فلن تتلقى إشعارات حول القرارات التي تتعلق بك.
     resend_to_join_group:
       subject: "%{member} في انتظارك للانضمام إلى%{group_name} على%{site_name}"
     user_added_to_group:

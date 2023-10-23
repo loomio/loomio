@@ -15,7 +15,6 @@ export default
 
   props:
     defaultGroup: false
-    autofocus: Boolean
     label: String
     placeholder: String
     hint: String
@@ -211,7 +210,7 @@ export default
               ret.push
                 id: 'group'
                 name: @$t('announcement.audiences.group', name: @model.group().name)
-                size: @model.group().acceptedMembershipsCount
+                size: @model.group().membershipsCount
                 icon: 'mdi-account-group'
             when 'discussion_group'
               ret.push
@@ -251,11 +250,11 @@ export default
               []
 
           groups.filter(AbilityService.canNotifyGroup).forEach (group) =>
-            if group.acceptedMembershipsCount
+            if group.membershipsCount
               ret.push
                 id: "group-#{group.id}"
                 name: @$t('announcement.audiences.group', name: group.name)
-                size: group.acceptedMembershipsCount
+                size: group.membershipsCount
                 icon: 'mdi-forum'
 
       ret.filter (a) =>

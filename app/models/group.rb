@@ -36,13 +36,13 @@ class Group < ApplicationRecord
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
   has_many :all_members, through: :all_memberships, source: :user
 
-  has_many :memberships, -> { where archived_at: nil }
+  has_many :memberships, -> { active }
   has_many :members, through: :memberships, source: :user
 
-  has_many :accepted_memberships, -> { accepted }, class_name: 'Membership'
+  has_many :accepted_memberships, -> { active.accepted }, class_name: "Membership"
   has_many :accepted_members, through: :accepted_memberships, source: :user
 
-  has_many :admin_memberships, -> { where admin: true, archived_at: nil }, class_name: 'Membership'
+  has_many :admin_memberships, -> { active.where(admin: true) }, class_name: 'Membership'
   has_many :admins, through: :admin_memberships, source: :user
 
   has_many :membership_requests, dependent: :destroy
@@ -272,18 +272,16 @@ class Group < ApplicationRecord
 
   def archive!
     Group.where(id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
-    Membership.where(group_id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
     reload
   end
 
   def unarchive!
-    Group.where(id: all_subgroup_ids.concat([id])).update_all(archived_at: nil)
-    Membership.where(group_id: all_subgroup_ids.concat([id])).update_all(archived_at: nil)
+    Group.where(id: id_and_subgroup_ids).update_all(archived_at: nil)
     reload
   end
 
   def org_memberships_count
-    Membership.not_archived.where(group_id: id_and_subgroup_ids).count('distinct user_id')
+    Membership.active.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
   def org_members_count
@@ -329,7 +327,7 @@ class Group < ApplicationRecord
   end
 
   def id_and_subgroup_ids
-    subgroup_ids.concat([id]).compact
+    subgroup_ids.concat([id]).compact.uniq
   end
 
   def identity_for(type)

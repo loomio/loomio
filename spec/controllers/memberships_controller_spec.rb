@@ -7,7 +7,7 @@ describe MembershipsController do
   let(:another_user) { FactoryBot.create(:user) }
 
   describe 'redeem' do
-    let(:membership) { create :membership, group: group }
+    let(:membership) { create :membership, group: group, accepted_at: nil }
 
     before do
       session[:pending_membership_token] = membership.token
@@ -28,7 +28,7 @@ describe MembershipsController do
 
     it "multiple pending memberships - same org same user" do
       subgroup = create(:group, parent: membership.group)
-      subgroup_membership = create(:membership, group: subgroup, user: membership.user)
+      subgroup_membership = create(:membership, group: subgroup, user: membership.user, accepted_at: nil)
       expect {get :consume}.to change { Event.count }.by(1)
       expect(response.status).to eq 200
       membership.reload
@@ -67,7 +67,7 @@ describe MembershipsController do
   end
 
   describe "GET 'show'" do
-    let(:membership) { create(:membership, token: 'abc', group: group, user: user) }
+    let(:membership) { create(:membership, accepted_at: nil, token: 'abc', group: group, user: user) }
 
     context 'membership not found' do
       it 'renders error page with not found message' do
