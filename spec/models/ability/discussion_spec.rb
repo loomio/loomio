@@ -21,7 +21,7 @@ describe "discussion abilities" do
     context "as discussion member" do
       before { discussion.discussion_readers.create!(user_id: actor.id, admin: false, inviter_id: actor.id) }
       it {should_not be_able_to(:announce, discussion)}
-      it {should     be_able_to(:add_guests, discussion)}
+      it {should_not be_able_to(:add_guests, discussion)}
       it {should     be_able_to(:update, discussion)}
     end
 
