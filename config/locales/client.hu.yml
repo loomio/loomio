@@ -308,6 +308,7 @@ hu:
     today: Ma
     in_x_days: "%{x} napon belül"
     visit_loomio_help: Látogassa meg a Loomio súgóját
+    api_docs: API-dokumentumok
   merge_accounts:
     modal:
       submit: Ellenőrzés
@@ -1291,6 +1292,8 @@ hu:
     help_translate: Tudna segíteni a Loomio lefordításában?
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
     deactivated_user: Deaktivált felhasználó
+    account_is_bot: Ez egy bot fiók
+    bot_account_warning: A robotfiókokat nem hívják meg szavazásra vagy vitákban való részvételre
   text_editor:
     insert_link: Illessz be egy hivatkozást
     insert_embedded_url: Videó beágyazása
@@ -1543,6 +1546,7 @@ hu:
     this_is_for: Ez egy nagyszerű hely értékesítési, képzési vagy előfizetési kérdésekhez, vagy támogatás kéréséhez a Loomio használatával.
     read_the_manual: Tudta, hogy a <a href="{{link}}" target="_blank">Súgó kézikönyvünk</a> GYIK-eket, valamint részletes útmutatókat tartalmaz a Loomióval kapcsolatos viták és döntések megkönnyítéséhez?
     success_via_email: Köszönjük üzenetét, {{name}}. 24 órán belül e-mailben válaszolunk.
+    need_message: Írj üzenetet, hogy segíthessünk :-)
   explore_page:
     header: Fedezze fel a csoportokat
     search_placeholder: Keress nyilvános csoportokat
@@ -1715,6 +1719,7 @@ hu:
     guest: Vendég
     last_seen: 'Utoljára látott: {{dátum}}'
     invited_by_name: 'Meghívta: {{name}}'
+    bot: Bot
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus
@@ -2236,6 +2241,7 @@ hu:
       read_memberships: tagságokat olvasni
       manage_memberships: tagságok kezelése (csoporttagok hozzáadása vagy eltávolítása)
     include_body_label: Az üzenet szövegrésze az értesítéshez
+    deprecated: Ez az API elavult. Kérjük, lépjen át APIv2-re (lásd az API-dokumentumokat a csoportbeállítások menüjében)
   powered_by:
     slogan: Jobb döntések közösen
     powered_by_loomio: A Loomio az oldal motorja

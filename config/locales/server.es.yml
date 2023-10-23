@@ -198,6 +198,7 @@ es:
       link_help: 'Haz clic en el enlace para unirte al grupo:'
       accept_invitation: "Aceptar invitación\n "
       stop_emails: Dejar de recibir emails de %{site_name}
+      accepting_is_important: Es importante aceptar tu invitación, de lo contrario no recibirás notificaciones sobre decisiones que te involucren.
     resend_to_join_group:
       subject: "%{member} está esperando que te sumes a %{group_name} en %{site_name}"
     user_added_to_group:

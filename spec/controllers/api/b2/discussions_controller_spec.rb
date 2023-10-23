@@ -30,7 +30,7 @@ describe API::B2::DiscussionsController do
     end
 
     it 'missing permission - archived' do
-      Membership.where(group_id: group.id, user_id: user.id).update(archived_at: Time.now)
+      Membership.where(group_id: group.id, user_id: user.id).update(revoked_at: Time.now)
       post :create, params: { title: 'test', group_id: group.id, api_key: user.api_key }
       expect(response.status).to eq 403
     end

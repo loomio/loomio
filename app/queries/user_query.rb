@@ -15,7 +15,7 @@ class UserQuery
       end
 
       rels.push User.joins('LEFT OUTER JOIN memberships m ON m.user_id = users.id').
-                     where('(m.group_id IN (:group_ids))', {group_ids: group_ids})
+                     where('m.group_id IN (:group_ids) AND m.revoked_at IS NULL', {group_ids: group_ids})
 
       # people who have requested membership
       rels.push User.joins('LEFT OUTER JOIN membership_requests mr ON mr.requestor_id = users.id').
@@ -55,19 +55,19 @@ class UserQuery
       if model.discussion_id
         rels.push(
           User.joins('LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id').
-          where('dr.discussion_id': model.discussion_id)
+          where('dr.discussion_id': model.discussion_id).where('dr.revoked_at IS NULL')
         )
 
         rels.push(
           User.joins('LEFT OUTER JOIN stances ON stances.participant_id = users.id').
-          where('stances.poll_id': model.discussion.poll_ids)
+          where('stances.poll_id': model.discussion.poll_ids).where("stances.revoked_at IS NULL")
         )
       end
 
       if model.poll_id
         rels.push(
           User.joins('LEFT OUTER JOIN stances ON stances.participant_id = users.id').
-          where('stances.poll_id': model.poll_id)
+          where('stances.poll_id': model.poll_id).where("stances.revoked_at IS NULL")
         )
       end
     end

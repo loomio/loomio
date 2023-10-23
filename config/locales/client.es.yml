@@ -312,6 +312,7 @@ es:
     prefix_eg: por ejemplo, {{val}}
     are_you_sure: "¿Está seguro?"
     visit_loomio_help: Visita la ayuda de Loomio
+    api_docs: Documentos API
   merge_accounts:
     modal:
       title: Fusionar cuentas
@@ -1350,6 +1351,8 @@ es:
     help_translate: "¿Puedes ayudarnos a traducir Loomio?"
     updated_on_sign_in: Proporcionado por su navegador y actualizado al iniciar sesión
     deactivated_user: Usuario desactivado
+    account_is_bot: Esta es una cuenta de bot.
+    bot_account_warning: Las cuentas de bot no serán invitadas a votar en encuestas ni a participar en debates.
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caractéres"
     select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo
@@ -1618,6 +1621,7 @@ es:
       Esperamos responder todos nuestros mensajes en el espacio de 24 horas.
     success: Gracias por tu mensaje, {{name}}. Nos pondremos en contacto contigo.
     success_via_email: Gracias por tu mensaje, {{name}}. Responderemos por email en el plazo de 24 horas.
+    need_message: Por favor escribe un mensaje para que podamos ayudarte :-)
   explore_page:
     header: Explorar grupos
     search_placeholder: Buscar grupos públicos
@@ -1800,6 +1804,7 @@ es:
     last_seen: Último visto {{date}}
     invited_by_name: Invitado por {{name}}
     accepted: Integrantes
+    bot: Bot
   polls_panel:
     new_poll: Nuevo sondeo
     any_type: Todos los tipos
@@ -2400,6 +2405,7 @@ es:
       read_memberships: leer membresías
       manage_memberships: administrar pertenencias (agregar o quitar miembros del grupo)
     include_body_label: Incluye el cuerpo del mensaje con notificación
+    deprecated: Esta API está en desuso. Pase a APIv2 (consulte los documentos de API en el menú de configuración de su grupo)
   powered_by:
     this_is_loomio_md: Loomio es una aplicación para tomar decisiones juntos. [Pruébalo gratis] (https://www.loomio.com)
     slogan: Mejor decisiones juntos

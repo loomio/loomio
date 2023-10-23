@@ -312,6 +312,7 @@ de:
     check_for_errors_and_try_again: Bitte überprüfen Sie das Formular auf Fehler und versuchen Sie es erneut
     minutes: Protokoll
     visit_loomio_help: Besuchen Sie die Loomio-Hilfe
+    api_docs: API-Dokumente
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -1323,6 +1324,8 @@ de:
     help_translate: Können Sie uns bei der Übersetzung von Loomio helfen?
     updated_on_sign_in: Wird von Ihrem Browser bereitgestellt und aktualisiert, wenn Sie sich anmelden
     deactivated_user: Deaktivierter Benutzer
+    account_is_bot: Dies ist ein Bot-Konto
+    bot_account_warning: Bot-Konten werden nicht eingeladen, an Umfragen teilzunehmen oder an Diskussionen teilzunehmen
   text_editor:
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
@@ -1584,6 +1587,7 @@ de:
     this_is_for: Dies ist ein großartiger Ort für Verkaufs-, Schulungs- oder Abonnementanfragen oder um Unterstützung bei der Verwendung von Loomio anzufordern.
     read_the_manual: Wussten Sie, dass unser <a href="{{link}}" target="_blank">Hilfehandbuch</a> häufig gestellte Fragen sowie detaillierte Anleitungen zur Erleichterung von Diskussionen und Entscheidungen zu Loomio enthält?
     success_via_email: Vielen Dank für Ihre Nachricht, {{name}}. Wir antworten innerhalb von 24 Stunden per E-Mail.
+    need_message: Bitte geben Sie eine Nachricht ein, damit wir Ihnen helfen können :-)
   explore_page:
     header: Gruppen entdecken
     search_placeholder: Nach öffentlichen Gruppen suchen
@@ -1756,6 +1760,7 @@ de:
     last_seen: Zuletzt gesehen am {{date}}
     invited_by_name: Eingeladen von {{name}}
     accepted: Mitglieder
+    bot: Bot
   polls_panel:
     new_poll: Neue Umfrage
     any_type: Alle Typen
@@ -2307,6 +2312,7 @@ de:
     edit_api_key: API-Schlüssel bearbeiten
     subtitle: Stellen Sie über unsere API eine Verbindung zu Loomio und den übrigen Tools her
     save_to_show_docs: Kehren Sie nach dem Speichern hierher zurück, um Ihren API-Schlüssel zu finden
+    deprecated: Diese API ist veraltet. Bitte wechseln Sie zu APIv2 (siehe API-Dokumente in Ihrem Gruppeneinstellungsmenü).
   powered_by:
     slogan: Bessere Entscheidungen gemeinsam treffen
     powered_by_loomio: Powered by Loomio

@@ -199,6 +199,7 @@ pt_BR:
       link_help: 'Clique no link abaixo para aceitar o convite:'
       accept_invitation: Aceitar convite
       stop_emails: Para de receber emails de %{site_name}
+      accepting_is_important: É importante aceitar seu convite, caso contrário você não receberá notificações sobre decisões que envolvem você.
     resend_to_join_group:
       subject: "%{member} está esperando você entrar em %{group_name} no %{site_name}"
     user_added_to_group:

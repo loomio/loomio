@@ -110,10 +110,6 @@ describe Group do
       it 'sets archived_at on the group' do
         group.archived_at.should be_present
       end
-
-      it 'archives the memberships of the group' do
-        group.memberships.reload.all?{|m| m.reload.archived_at.should be_present}
-      end
     end
 
     describe '#unarchive!' do
@@ -122,11 +118,7 @@ describe Group do
       end
 
       it 'restores archived_at to nil on the group' do
-        group.archived_at.should be_nil
-      end
-
-      it 'restores the memberships of the group' do
-        group.memberships.all?{|m| m.archived_at.should be_nil}
+        group.reload.archived_at.should be_nil
       end
     end
   end

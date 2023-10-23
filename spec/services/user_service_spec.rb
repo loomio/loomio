@@ -10,13 +10,13 @@ describe UserService do
     end
 
     it "deactivates the user" do
-      zombie = UserService.deactivate(user: @user)
-      expect(@membership.reload.archived_at).to be_present
+      zombie = UserService.deactivate(user: @user, actor: @user)
+      expect(@user.reload.deactivated_at).to be_present
     end
 
     it "changes their email address" do
       ENV['SCRUB_USER_DEACTIVATE'] = '1'
-      UserService.deactivate(user: @user)
+      UserService.deactivate(user: @user, actor: @user)
       @user.reload
       expect(@user.email).to match /deactivated-user-.+@example.com/
     end
@@ -24,7 +24,7 @@ describe UserService do
     it "changes their email address" do
       ENV['SCRUB_USER_DEACTIVATE'] = nil
       email = @user.email
-      UserService.deactivate(user: @user)
+      UserService.deactivate(user: @user, actor: @user)
       @user.reload
       expect(@user.email).to eq email
     end

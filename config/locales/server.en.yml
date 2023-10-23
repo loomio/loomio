@@ -215,6 +215,7 @@ en:
       link_help: "Click the link below to accept the invitation:"
       accept_invitation: "Accept invitation"
       stop_emails: "Stop receiving emails from %{site_name}"
+      accepting_is_important: It's important to accept your invitation, otherwise you will not receive notifications about decisions that involve you.
     resend_to_join_group:
       subject: "%{member} is waiting for you to join %{group_name} on %{site_name}"
     user_added_to_group:

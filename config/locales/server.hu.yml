@@ -152,6 +152,7 @@ hu:
       link_help: 'Kattints az alábbi hivatkozásra a meghívás elfogadásához:'
       accept_invitation: Meghívás elfogadása
       stop_emails: A továbbiakban nem kapsz majd e-mailt a(z) %{site_name}oldalról
+      accepting_is_important: Fontos, hogy fogadja el a meghívást, különben nem kap értesítést az Önt érintő döntésekről.
     resend_to_join_group:
       subject: "%{member}arra vár, hogy csatlakozz a(z)%{group_name}csoporthoz a(z) %{site_name}oldalon"
     user_added_to_group:
