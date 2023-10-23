@@ -1,4 +1,4 @@
-FROM ruby:3.2.2
+FROM ruby:3.2.2-slim as base
 
 ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 ENV MALLOC_ARENA_MAX=2
@@ -8,78 +8,38 @@ ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT=development
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
-RUN apt-get update -qq
-RUN apt-get install --no-install-recommends -y \
-    autoconf \
-    bison \
+RUN apt-get update -qq && \
+    apt-get install -y \
     build-essential \
-    curl \
-    cron \
-    ffmpeg \
     git \
-    imagemagick \
-    libcfitsio-dev \
-    libdb-dev \
-    libexif-dev \
-    libexpat1-dev \
-    libffi-dev \
-    libfftw3-dev \
-    libgdbm-dev \
-    libgdbm6 \
-    libglib2.0-dev \
-    libgmp-dev \
-    libgsf-1-dev \
-    libheif-dev \
-    libimagequant-dev \
-    libjpeg-dev \
-    libmatio-dev \
-    libncurses5-dev \
-    libopenexr-dev \
-    libopenjp2-7-dev \
-    libopenslide-dev \
-    liborc-dev \
-    libpango1.0-dev \
-    libpng-dev \
-    libpq-dev \
-    libreadline6-dev \
-    librsvg2-dev \
-    libssl-dev \
-    libtiff5-dev \
+    curl \
     libvips \
-    libvips-dev \
-    libwebp-dev \
-    libxml2-dev \
-    libxslt1-dev \
-    libyaml-dev \
-    mupdf \
-    patch \
-    python3 \
-    rustc \
+    ffmpeg \
+    poppler-utils \
     sudo \
-    uuid-dev \
-    zlib1g-dev
+    libpq-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists /usr/share/doc /usr/share/man
 
-RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /usr/share/doc /usr/share/man
+WORKDIR /loomio
+ 
+COPY . .
+ 
+RUN bundle install && bundle exec bootsnap precompile --gemfile app/ lib/
 
-# install node
+# FROM base as node
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 RUN apt-get -y install nodejs npm
 
-WORKDIR /loomio
- 
-COPY Gemfile Gemfile.lock ./
-RUN bundle install
- 
-COPY . .
- 
-RUN bundle install
-
-RUN bundle exec bootsnap precompile --gemfile app/ lib/
-
 WORKDIR /loomio/vue
 RUN npm install
 RUN npm run build
+
+# FROM base as final
+# RUN mkdir -p /loomio/public/blient/
+# COPY --from=node /loomio/public/blient/* /loomio/public/blient/
+
 WORKDIR /loomio
 
 EXPOSE 3000

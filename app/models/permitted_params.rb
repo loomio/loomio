@@ -1,7 +1,7 @@
 class PermittedParams < Struct.new(:params)
   MODELS = %w(
     user group membership_request membership poll poll_template outcome
-    stance discussion discussion_reader comment
+    stance discussion discussion_template discussion_reader comment
     contact_message document
     webhook chatbot contact_request reaction tag
   )
@@ -54,7 +54,6 @@ class PermittedParams < Struct.new(:params)
       :recipient_user_ids, {recipient_user_ids: []},
       :recipient_chatbot_ids, {recipient_chatbot_ids: []},
       :recipient_emails, {recipient_emails: []},
-      :source_template_id,
       :can_respond_maybe,
       :dots_per_person,
       :max_score,
@@ -62,7 +61,6 @@ class PermittedParams < Struct.new(:params)
       :options, {options: []},
       :process_name,
       :process_subtitle,
-      :process_url,
       :poll_option_name_format,
       :reason_prompt,
       :template,
@@ -89,8 +87,8 @@ class PermittedParams < Struct.new(:params)
       :process_subtitle,
       :process_introduction,
       :process_introduction_format,
-      :process_url,
       :title,
+      :title_placeholder,
       :details,
       :details_format,
       :notify_on_participate,
@@ -160,7 +158,7 @@ class PermittedParams < Struct.new(:params)
      :members_can_add_members, :members_can_add_guests, :members_can_announce,
      :members_can_edit_discussions, :members_can_edit_comments, :members_can_delete_comments,
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,
-     :membership_granted_upon, :cover_photo, :logo, :category_id, :members_can_raise_motions,
+     :membership_granted_upon, :cover_photo, :logo, :category, :members_can_raise_motions,
      :members_can_start_discussions, :members_can_create_subgroups, :admins_can_edit_user_content,
      :new_threads_max_depth, :new_threads_newest_first,
      :document_ids, {document_ids: []},
@@ -180,6 +178,8 @@ class PermittedParams < Struct.new(:params)
     [:title,
      :description,
      :description_format,
+     :discussion_template_id,
+     :discussion_template_key,
      :group_id,
      :newest_first,
      :max_depth,
@@ -187,14 +187,34 @@ class PermittedParams < Struct.new(:params)
      :notify_recipients,
      :recipient_audience,
      :recipient_message,
-     :template,
-     :source_template_id,
      :tags, {tags: []},
      :recipient_user_ids, {recipient_user_ids: []},
      :recipient_chatbot_ids, {recipient_chatbot_ids: []},
      :recipient_emails, {recipient_emails: []},
      :forked_event_ids, {forked_event_ids: []},
      :document_ids, {document_ids: []},
+     :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
+    ]
+  end
+
+  def discussion_template_attributes
+    [
+     :key,
+     :title,
+     :title_placeholder,
+     :description,
+     :description_format,
+     :process_name,
+     :process_subtitle,
+     :process_introduction,
+     :process_introduction_format,
+     :recipient_audience,
+     :group_id,
+     :newest_first,
+     :max_depth,
+     :public,
+     :poll_template_keys_or_ids, {poll_template_keys_or_ids: []},
+     :tags, {tags: []},
      :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end

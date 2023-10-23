@@ -24,6 +24,7 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.click('.discussions-panel__new-thread-button')
+    page.click('.thread-templates--template')
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')

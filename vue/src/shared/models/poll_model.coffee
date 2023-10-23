@@ -74,6 +74,9 @@ export default class PollModel extends BaseModel
     hideResults: 'off'
     stanceCounts: []
 
+  pollTemplateKeyOrId: ->
+    @pollTemplateId || @pollTemplateKey
+    
   clonePoll: ->
     clone = @clone()
     clone.id = null

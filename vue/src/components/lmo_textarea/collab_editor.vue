@@ -40,6 +40,8 @@ import Text from '@tiptap/extension-text'
 import Underline from '@tiptap/extension-underline'
 import {CustomMention} from './extension_mention'
 import {CustomImage} from './extension_image'
+import {Video} from './extension_image'
+import {Audio} from './extension_image'
 import {Iframe} from './extension_iframe'
 
 import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
@@ -120,6 +122,8 @@ export default
         BulletList
         CodeBlock
         CustomImage.configure({attachFile: @attachFile, attachImageFile: @attachImageFile})
+        Video
+        Audio
         Document
         Dropcursor
         GapCursor
@@ -152,12 +156,24 @@ export default
         @checkLength() if @maxLength
         @scrapeLinkPreviews() if @model.isNew()
       onCreate: =>
-        @editor.commands.focus('end') if @model.isNew() && @editor.getCharacterCount() > 0
+        @editor.commands.focus('end') if @model.isNew() && @editor.getCharacterCount() > 0 && @autofocus
 
   watch:
     'shouldReset': 'reset'
 
   methods:
+    openRecordVideoModal: ->
+      EventBus.$emit 'openModal',
+        component: 'RecordVideoModal'
+        props:
+          saveFn: @mediaRecorded
+
+    openRecordAudioModal: ->
+      EventBus.$emit 'openModal',
+        component: 'RecordAudioModal'
+        props:
+          saveFn: @mediaRecorded
+
     checkLength: ->
       @model.saveDisabled = @editor.getCharacterCount() > @maxLength
 
@@ -215,7 +231,6 @@ export default
     updateModel: ->
       return unless @format == 'html'
       @model[@field] = @editor.getHTML()
-      @model[@field] = '' if @model[@field] == '<p></p>'
       @updateFiles()
 
     removeLinkPreview: (url) ->
@@ -270,18 +285,29 @@ div
 
         .d-flex.py-2.justify-space-between.flex-wrap.align-center(align-center)
           section.d-flex.flex-wrap.formatting-tools(:aria-label="$t('formatting.formatting_tools')")
-            //- attach
+            v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
+              template(v-slot:activator="{on, attrs}")
+                v-btn.emoji-picker__toggle(:small="expanded" v-on="on" v-bind="attrs" icon :title="$t('formatting.insert_emoji')")
+                  v-icon mdi-emoticon-outline
+              emoji-picker(:insert="emojiPicked")
+
             v-btn(:small="expanded" icon @click='$refs.filesField.click()', :title="$t('formatting.attach')")
               v-icon mdi-paperclip
 
             v-btn(:small="expanded" icon @click='$refs.imagesField.click()', :title="$t('formatting.insert_image')")
               v-icon mdi-image
 
+            v-btn(:small="expanded" icon @click='openRecordAudioModal', :title="$t('record_modal.record_audio')")
+              v-icon mdi-microphone
+
+            //- v-btn(:small="expanded" icon @click='openRecordVideoModal', :title="$t('record_modal.record_video')")
+            //-   v-icon mdi-video
+
             //- link
             v-menu(:close-on-content-click="!selectedText()", v-model="linkDialogIsOpen", min-width="320px")
               template(v-slot:activator="{on, attrs}")
                 template(v-if="editor.isActive('link')")
-                  v-btn(small="expanded" icon @click="editor.chain().toggleLink().focus().run()", outlined :title="$t('formatting.link')")
+                  v-btn(:small="expanded" icon @click="editor.chain().toggleLink().focus().run()", outlined :title="$t('formatting.link')")
                     v-icon mdi-link-variant
                 template(v-else)
                   v-btn(:small="expanded" icon v-on="on" v-bind="attrs", :title="$t('formatting.link')")
@@ -297,12 +323,6 @@ div
                 template(v-else)
                   v-card-title(v-t="'text_editor.select_text_to_link'")
 
-            //- emoji
-            v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-              template(v-slot:activator="{on, attrs}")
-                v-btn.emoji-picker__toggle(:small="expanded" v-on="on" v-bind="attrs" icon :title="$t('formatting.insert_emoji')")
-                  v-icon mdi-emoticon-outline
-              emoji-picker(:insert="emojiPicked")
 
             template(v-if="expanded")
               //- v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
@@ -550,6 +570,11 @@ input[type="file"]
 
 // .html-editor__textarea, .formatted-text
 .lmo-markdown-wrapper
+  video
+    position: relative
+    width: 100%
+    height: auto
+
   div[data-iframe-container], .iframe-container
     position: relative
     padding-bottom: 100/16*9%

@@ -15,7 +15,6 @@ gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
 gem 'cancancan'
 gem 'gravtastic'
-gem 'coffee-rails'
 gem 'activeadmin', '~> 3.0.0'
 gem 'ransack', '4.0.0'
 gem 'nokogiri'
@@ -27,6 +26,7 @@ gem 'friendly_id', '~> 5.5.0'
 gem 'httparty', '~> 0.21.0'
 gem 'browser', '~> 5.3.1'
 gem "aws-sdk-s3", require: false
+gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.11", require: false
 gem 'image_processing', '~> 1.12'
 gem "ruby-vips"
@@ -36,7 +36,6 @@ gem "sentry-sidekiq"
 gem 'http_accept_language'
 gem 'sprockets', '3.7.2'
 gem 'sprockets-rails', require: 'sprockets/railtie'
-gem 'uglifier'
 gem 'sass-rails'
 gem 'uuidtools'
 gem 'maxminddb'

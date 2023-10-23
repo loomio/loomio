@@ -5,6 +5,7 @@ class GroupExportService
     all_notifications
     all_reactions
     poll_templates
+    discussion_templates
     memberships
     membership_requests
     discussions
@@ -57,7 +58,8 @@ class GroupExportService
       webhooks: %w[group_id],
       events: %w[eventable],
       groups: %w[parent_id],
-      poll_templates: %w[group_id]
+      poll_templates: %w[group_id],
+      discussion_templates: %w[group_id]
     },
     poll_options: {
       stance_choices: %w[poll_option_id],
@@ -94,7 +96,6 @@ class GroupExportService
       subscriptions: %w[owner_id],
       tasks: %w[doer_id author_id],
       tasks_users: %w[user_id],
-      templates: %w[author_id],
       versions: %w[whodunnit],
       webhooks: %w[author_id]
     }

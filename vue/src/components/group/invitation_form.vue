@@ -8,6 +8,7 @@ import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import AbilityService from '@/shared/services/ability_service'
 import Flash   from '@/shared/services/flash'
 import { uniq, debounce } from 'lodash'
+import I18n from '@/i18n.coffee'
 
 export default
   components:
@@ -23,19 +24,21 @@ export default
     saving: false
     groupIds: [@group.id]
     excludedUserIds: []
-    message: ''
-    subscription: {}
+    message: null
+    subscription: @group.parentOrSelf().subscription
     cannotInvite: false
     upgradeUrl: AppConfig.baseUrl + 'upgrade'
 
   mounted: ->
+    @message = I18n.t('announcement.form.invitation_message_default')
+
     @updateSuggestions()
     @watchRecords
-      collections: ['memberships']
-      query: (records) => @updateSuggestions()
-
-    @subscription = @group.parentOrSelf().subscription
-    @cannotInvite = !@subscription.active || (@subscription.max_members && @invitationsRemaining < 1)
+      collections: ['memberships', 'groups']
+      query: (records) => 
+        @updateSuggestions()
+        @subscription = @group.parentOrSelf().subscription
+        @cannotInvite = !@subscription.active || (@subscription.max_members && @invitationsRemaining < 1)
 
   methods:
     fetchMemberships: debounce ->
@@ -120,9 +123,11 @@ export default
         p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
         p(v-if="!subscription.active" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
     div(v-else)
+      v-alert.my-2(v-if="group.membershipsCount < 2" type="info" outlined text icon="mdi-account-multiple-plus") 
+        span(v-t="'announcement.form.invite_people_to_evaluate_loomio'") 
       recipients-autocomplete(
         :label="$t('announcement.form.who_to_invite')"
-        :placeholder="$t('announcement.form.placeholder')"
+        :placeholder="$t('announcement.form.type_or_paste_email_addresses_to_invite')"
         :excluded-user-ids="excludedUserIds"
         :reset="reset"
         :model="group"
@@ -143,6 +148,7 @@ export default
             hide-details)
 
       v-textarea(
+        filled
         rows="3"
         v-model="message"
         :label="$t('announcement.form.invitation_message_label')"

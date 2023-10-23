@@ -60,6 +60,8 @@ de:
     look_and_feel: Sehen Sie, wie Loomio für eine kleine Organisation aussieht. Lernen Sie die App kennen, indem Sie sie ausprobieren.
     watch_then_start: Bitte schauen Sie sich das Video an und klicken Sie dann auf „Demo starten“, um Loomio auszuprobieren
     share_a_custom_configuration: Teilen Sie eine benutzerdefinierte Konfiguration mit anderen in Ihrer Gruppe
+    template_gallery: Vorlagengalerie
+    trial_needs_user: Um Ihre kostenlose Loomio-Testversion zu starten, melden Sie sich bitte an.
   doctypes:
     youtube_video: YouTube Video
     image: Image
@@ -312,6 +314,7 @@ de:
     check_for_errors_and_try_again: Bitte überprüfen Sie das Formular auf Fehler und versuchen Sie es erneut
     minutes: Protokoll
     visit_loomio_help: Besuchen Sie die Loomio-Hilfe
+    admin_menu: Admin-Menü
     api_docs: API-Dokumente
   merge_accounts:
     modal:
@@ -708,6 +711,7 @@ de:
     privacy_public: Jeder kann diesen Thread sehen, wenn er den Link hat
     privacy_private: Nur Mitglieder der Gruppe können diesen Thread sehen
     fork_notice: Es wird ein neuer Thread mit %{count} Elementen von {{title}} erstellt
+    new_thread_from_template: 'Neuer Thread: %{process_name}'
   announcement:
     send_discussion: Diskussion teilen
     send_group: Personen zu {{name}} einladen
@@ -812,6 +816,9 @@ de:
       added_singular: 1 Person wird hinzugefügt.
       added_none: Es wird niemand hinzugefügt.
       group_title: "{{name}} (%{count} Personen)"
+      invite_people_to_evaluate_loomio: Laden Sie einige Leute in Ihre Loomio-Gruppe ein, um gemeinsam eine Entscheidung zu treffen
+      invitation_message_default: Ich habe diese Loomio-Gruppe gegründet, um uns dabei zu helfen, gemeinsam Entscheidungen zu treffen. Bitte nehmen Sie meine Einladung an. Der Beitritt dauert nur eine Minute. Danke schön.
+      type_or_paste_email_addresses_to_invite: Geben oder fügen Sie E-Mail-Adressen ein, um einzuladen
     members_list:
       title: geteilt mit
       last_notified: benachrichtigt
@@ -1065,6 +1072,7 @@ de:
     show_closed: "%{count} Geschlossen"
     see_all_members: Alle %{count} Mitglieder anzeigen
     pending_invitations: "+ %{count} ausstehend"
+    decisions: Entscheidungen
   export_data_modal:
     title: Wie willst du deine Daten benutzen?
     as_csv: In einer Tabellenkalkulation öffnen
@@ -1181,6 +1189,8 @@ de:
     group_handle_placeholder: 'Wird in Ihrer Gruppen-URL verwendet: {{host}}/{{handle}}'
     group_privacy_is_open_description: Öffentlich gelistet. Alle Threads sind öffentlich.
     membership_granted_upon_invitation: Nur Einladungen.
+    new_description_placeholder: Warum testen Sie Loomio? Welche Entscheidungen müssen Sie gemeinsam treffen?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Wie wollen Sie Loomio nutzen?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Warum ist das für Ihre Gruppe wichtig?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Welche Entscheidungen müssen Sie treffen?</h3><p></p>
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -1618,6 +1628,7 @@ de:
     dot_vote_title: Punktabstimmung
     gradients_of_agreement_title: Übereinstimmungsgradienten
     question_title: Fragerunde
+    recommended: Empfohlen
   poll_common:
     vote_now: Jetzt Stimme abgeben
     review_due: Überprüfung fällig
@@ -1733,6 +1744,8 @@ de:
     include_subgroups_all: "{{name}} und alle Untergruppen"
     no_results_found: 'Keine Ergebnisse für "{{search}}" gefunden '
     unread: Ungelesen (%{count})
+    welcome_to_your_new_group: Willkommen in Ihrer neuen Loomio-Gruppe!
+    lets_start_a_thread: Lasst uns einen Thread starten. Klicken Sie auf „Neuer Thread“, um fortzufahren.
   members_panel:
     no_results: Keine Mitglieder gefunden
     everyone: Alle
@@ -1761,6 +1774,7 @@ de:
     invited_by_name: Eingeladen von {{name}}
     accepted: Mitglieder
     bot: Bot
+    all: Alle
   polls_panel:
     new_poll: Neue Umfrage
     any_type: Alle Typen
@@ -2332,6 +2346,8 @@ de:
       community: Community-Gruppe
       government: Regierung/Örtliche Regierung
       other: Andere
+      membership: Mitgliederorganisation
+      self_managing: Selbstverwaltende Organisation
   email_to_group:
     email_to_group_settings: E-Mail-an-Gruppen-Einstellungen
     email_to_group_address: E-Mail-Adresse an die Gruppe
@@ -2546,3 +2562,36 @@ de:
   user_name_modal:
     user_name_updated: Benutzername aktualisiert
     set_user_name: Benutzernamen festlegen
+  thread_template:
+    browse_public_templates: Durchsuchen Sie die Vorlagengalerie
+    thread_template_settings: Thread-Vorlageneinstellungen
+    start_a_new_thread: Starten Sie einen neuen Thread
+    thread_template_saved: Threadvorlage gespeichert
+    these_are_public_templates: Diese Vorlagen stehen Ihnen zum Kopieren oder Ändern zur Verfügung, um sie an Ihre Gruppe anzupassen
+    these_are_templates: Dies sind die Thread-Vorlagen in Ihrer Gruppe. Vorlagen führen Sie durch gängige Entscheidungsprozesse.
+    default_title_label: Standardtitel
+    default_title_hint: Füllen Sie das Titelfeld vorab mit bearbeitbarem Text aus. Dies ist optional – lassen Sie das Feld leer, wenn Sie unsicher sind.
+    title_placeholder_label: Beispieltitel
+    title_placeholder_hint: Ein Beispiel zur Anzeige im Hintergrund des Titelfelds
+    title_placeholder_placeholder: 'Beispiel: So sieht Hintergrundtext aus'
+    example_description_label: Beispielbeschreibung
+    example_description_placeholder: Stellen Sie eine Vorlage bereit, mit der Benutzer einen Thread starten können
+    hidden_templates: Versteckte Vorlagen
+    confirm_delete: Sind Sie sicher, dass Sie diese Thread-Vorlage dauerhaft löschen möchten? Dadurch werden keine Threads gelöscht.
+    add_proposal_or_poll_template: Fügen Sie eine Vorschlags- oder Umfragevorlage hinzu
+    recommended_proposal_or_poll_templates: Empfohlene Vorlagen für Vorschläge oder Umfragen
+    decision_templates: Entscheidungsvorlagen
+    decision_templates_help: Wählen Sie Vorschläge oder Umfragevorlagen aus, die zum Abschließen dieses Prozesses beitragen.
+    share_in_template_gallery: Teilen Sie diese Vorlage in der öffentlichen Vorlagengalerie
+  record_modal:
+    record_video: Ein Video aufnehmen
+    record_audio: Ton aufnehmen
+    record: Aufzeichnen
+    stop: Stoppen
+    no_mic: Konnte kein Mikrofon finden
+    no_camera: Konnte keine Kamera finden
+    listen_to_audio: Audio anhören
+    watch_video: Schau Video
+    audio_transcript: 'Audiotranskript: %{text}'
+    why_type_when_you_can_talk: Warum tippen, wenn man reden kann? Senden Sie eine Sprachaufnahme
+    transcript_included: Ein Transkript der Aufzeichnung wird Ihrer Nachricht beigefügt

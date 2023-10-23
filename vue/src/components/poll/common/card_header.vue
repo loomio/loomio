@@ -25,8 +25,7 @@ export default
     template(v-slot:divider)
       v-icon mdi-chevron-right
   v-spacer
-  span.text--secondary.text-body-2
-    time-ago(:date='poll.createdAt')
+  tags-display(:tags="poll.tags" :group="poll.group()")
 </template>
 
 <style lang="sass">

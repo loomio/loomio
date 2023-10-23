@@ -46,7 +46,7 @@ export default
 
       [
         {id: 0, name: 'threads',   route: @urlFor(@group, null)+query}
-        {id: 1, name: 'polls',     route: @urlFor(@group, 'polls')+query},
+        {id: 1, name: 'decisions', route: @urlFor(@group, 'polls')+query},
         {id: 2, name: 'members',   route: @urlFor(@group, 'members')+query},
         {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
         {id: 5, name: 'subgroups',  route: @urlFor(@group, 'subgroups')+query}
@@ -107,7 +107,6 @@ v-main
       span.group-page__name.mr-4 {{group.name}}
     old-plan-banner(:group="group")
     trial-banner(:group="group")
-    group-onboarding-card(:group="group")
     formatted-text.group-page__description(
       v-if="group"
       :model="group"

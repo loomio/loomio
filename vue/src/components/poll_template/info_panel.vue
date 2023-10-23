@@ -5,19 +5,7 @@ import Records from '@/shared/services/records'
 
 export default
   props:
-    poll: Object
-
-  mounted: ->
-    # Records.remote.fetch(path: "poll_templates", params: {group_id: @group.id} )
-    @pollTemplate = Records.pollTemplates.find(@poll.pollTemplateId || @poll.pollTemplateKey)
-    # @watchRecords
-    #   key: 'pollTemplateInfoPanel'
-    #   collections: ["pollTemplates"]
-    #   query: (records) =>
-    #     @pollTemplate = Records.pollTemplates.find(@poll.pollTemplateId || @poll.pollTemplateKey)
-
-  data: ->
-    pollTemplate: null
+    pollTemplate: Object
 
 </script>
 <template lang="pug">

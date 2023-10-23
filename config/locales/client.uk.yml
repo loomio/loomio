@@ -54,6 +54,8 @@ uk:
     start_free_trial: Розпочніть безкоштовну пробну версію
     this_is_a_template_for_new_threads: Це шаблон для нових тем
     share_a_custom_configuration: Поділіться власною конфігурацією з іншими у вашій групі
+    template_gallery: Галерея шаблонів
+    trial_needs_user: Щоб розпочати безкоштовну пробну версію Loomio, увійдіть.
   doctypes:
     youtube_video: Відео YouTube
     image: Зображення
@@ -306,6 +308,7 @@ uk:
     please_try_again: Будь ласка спробуйте ще раз
     minutes: хвилин
     visit_loomio_help: Відвідайте довідку Loomio
+    admin_menu: Меню адміністратора
     api_docs: Документи API
   merge_accounts:
     modal:
@@ -703,6 +706,7 @@ uk:
     privacy_public: Будь-хто може переглядати цю тему, якщо має посилання
     privacy_private: Тільки учасники групи можуть переглядати цю тему
     fork_notice: Буде створено нову тему з %{count} елементів із {{title}}
+    new_thread_from_template: 'Новий потік: %{process_name}'
   announcement:
     send_discussion: Надіслати тему
     send_group: Запросити людей до {{name}}
@@ -807,6 +811,9 @@ uk:
       multiple_notifications: Буде надіслано {{notified}} сповіщень.
       added: "%{count} осіб буде додано."
       group_title: "{{name}} (%{count} людей)"
+      invite_people_to_evaluate_loomio: Запросіть кількох людей до вашої групи Loomio, щоб разом прийняти рішення
+      invitation_message_default: Я створив цю групу Loomio, щоб допомогти нам приймати рішення разом. Будь ласка, прийміть моє запрошення. Щоб приєднатися, потрібно лише хвилину. Дякую тобі.
+      type_or_paste_email_addresses_to_invite: Введіть або вставте електронні адреси, щоб запросити
     members_list:
       title: Поширити серед
       last_notified: Сповіщено
@@ -1060,6 +1067,7 @@ uk:
     show_closed: "%{count} закрито"
     see_all_members: Переглянути всіх %{count} учасників
     pending_invitations: "+ %{count} очікує на розгляд"
+    decisions: Рішення
   export_data_modal:
     title: Як ви бажаєте використовувати ващі дані?
     as_csv: Відкрити в електронній таблиці
@@ -1176,6 +1184,8 @@ uk:
     group_handle_placeholder: 'Використовується в URL-адресі вашої групи: {{host}}/{{handle}}'
     group_privacy_is_open_description: Опубліковано. Усі теми загальнодоступні.
     membership_granted_upon_invitation: Тільки запрошення.
+    new_description_placeholder: Чому ви пробуєте Луміо? Які рішення вам потрібно приймати разом?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Як ви збираєтеся використовувати Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Чому це важливо для вашої групи?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Які рішення вам потрібно прийняти?</h3><p></p>
   group_export_modal:
     title: Експортувати дані групи
     body: |
@@ -1617,6 +1627,7 @@ uk:
     dot_vote_title: Голосування крапкою
     gradients_of_agreement_title: Градієнти згоди
     question_title: Раунд питань
+    recommended: Рекомендовано
   poll_common:
     vote_now: Проголосувати зараз
     review_due: Дата підсумків
@@ -1732,6 +1743,8 @@ uk:
     include_subgroups_all: "{{name}} та всі підгрупи"
     no_results_found: Не знайдено "{{search}}"
     unread: Непрочитані (%{count})
+    welcome_to_your_new_group: Ласкаво просимо до вашої нової групи Loomio!
+    lets_start_a_thread: Давайте почнемо тему. Натисніть «Новий ланцюжок», щоб продовжити.
   members_panel:
     no_results: Не знайдено учасників
     everyone: Усі
@@ -1760,6 +1773,7 @@ uk:
     invited_by_name: Запрошено {{name}}
     accepted: Учасники
     bot: Бот
+    all: всі
   polls_panel:
     new_poll: Нове опитування
     any_type: Усі типи
@@ -2351,6 +2365,8 @@ uk:
       community: Громадська група
       government: Уряд / Місцеве самоврядування
       other: Інше
+      membership: Членська організація
+      self_managing: Самокерована організація
   email_to_group:
     email_to_group_settings: Налаштування електронної пошти для групи
     email_to_group_address: Адреса електронної пошти для групи
@@ -2545,3 +2561,36 @@ uk:
   user_name_modal:
     user_name_updated: Ім'я користувача оновлено
     set_user_name: Встановити ім'я користувача
+  thread_template:
+    browse_public_templates: Перегляньте галерею шаблонів
+    thread_template_settings: Налаштування шаблону теми
+    start_a_new_thread: Почніть нову тему
+    thread_template_saved: Шаблон теми збережено
+    these_are_public_templates: Ці шаблони доступні для копіювання або зміни відповідно до вашої групи
+    these_are_templates: Це шаблони тем у вашій групі. Шаблони ведуть вас через типові процеси прийняття рішень.
+    default_title_label: Назва за замовчуванням
+    default_title_hint: Попередньо заповніть поле заголовка редагованим текстом. Це необов’язково – залиште порожнім, якщо не впевнені.
+    title_placeholder_label: Приклад назви
+    title_placeholder_hint: Приклад для відображення на тлі поля заголовка
+    title_placeholder_placeholder: наприклад, ось як виглядає фоновий текст
+    example_description_label: Приклад опису
+    example_description_placeholder: Надайте шаблон, за допомогою якого люди зможуть почати бесіду
+    hidden_templates: Приховані шаблони
+    confirm_delete: Ви впевнені, що бажаєте остаточно видалити цей шаблон ланцюжка? Жоден ланцюжок не буде видалено в результаті цього.
+    add_proposal_or_poll_template: Додати пропозицію або шаблон опитування
+    recommended_proposal_or_poll_templates: Рекомендовані шаблони пропозицій або опитувань
+    decision_templates: Шаблони рішень
+    decision_templates_help: Виберіть будь-яку пропозицію або шаблон опитування, які допоможуть завершити цей процес.
+    share_in_template_gallery: Поділіться цим шаблоном у загальнодоступній галереї шаблонів
+  record_modal:
+    record_video: Записати відео
+    record_audio: Запис звуку
+    record: запис
+    stop: СТІЙ
+    no_mic: Не вдалося знайти мікрофон
+    no_camera: Не вдалося знайти камеру
+    listen_to_audio: Слухайте аудіо
+    watch_video: Подивіться відео
+    audio_transcript: 'Стенограма аудіо: %{text}'
+    why_type_when_you_can_talk: Навіщо друкувати, коли можна говорити? Надіслати голосовий запис
+    transcript_included: Стенограму запису буде додано до вашого повідомлення

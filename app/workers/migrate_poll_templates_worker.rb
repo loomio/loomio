@@ -11,7 +11,6 @@ class MigratePollTemplatesWorker
         :poll_type,
         :process_name,
         :process_subtitle,
-        :process_url,
         :title,
         :details,
         :details_format,

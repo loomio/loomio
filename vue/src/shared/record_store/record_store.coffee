@@ -69,5 +69,7 @@ export default class RecordStore
   view: ({name, collections, query}) ->
     if !@views[name]
       @views[name] = new RecordView(name: name, recordStore: @, collections: collections, query: query)
+    else
+      console.warn "Records.view exists: #{name}"
     @views[name].query(@)
     @views[name]

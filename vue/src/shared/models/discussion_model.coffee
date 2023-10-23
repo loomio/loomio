@@ -47,7 +47,7 @@ export default class DiscussionModel extends BaseModel
     usersNotifiedCount: null
     discussionReaderUserId: null
     pinnedAt: null
-    template: false
+    poll_template_keys_or_ids: []
 
   cloneTemplate: ->
     clone = @clone()
@@ -65,6 +65,10 @@ export default class DiscussionModel extends BaseModel
     clone.template = false
     clone
 
+  pollTemplates: ->
+    compact @pollTemplateKeysOrIds.map (keyOrId) =>
+      @recordStore.pollTemplates.find(keyOrId)
+
   audienceValues: ->
     name: @group().name
 
@@ -77,13 +81,10 @@ export default class DiscussionModel extends BaseModel
     @belongsTo 'author', from: 'users'
     @hasMany 'discussionReaders'
 
-    # @belongsTo 'createdEvent', from: 'events'
-    # @belongsTo 'forkedEvent', from: 'events'
-
   discussion: -> @
   
-  sourceTemplate: ->
-    @recordStore.discussions.find(@sourceTemplateId)
+  template: ->
+    @recordStore.discussionTemplates.find(@discussionTemplateId)
 
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()

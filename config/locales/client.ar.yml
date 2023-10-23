@@ -37,6 +37,8 @@ ar:
     demo_needs_user: لبدء عرض توضيحي ، تحتاج إلى التسجيل (أو تسجيل الدخول) كمستخدم Loomio. هذا مجاني ويستغرق دقيقة واحدة فقط.
     this_is_a_template_for_new_threads: هذا قالب لمواضيع جديدة
     share_a_custom_configuration: شارك تكوينًا مخصصًا مع الآخرين في مجموعتك
+    template_gallery: معرض النماذج
+    trial_needs_user: لبدء النسخة التجريبية المجانية من Loomio، يرجى تسجيل الدخول.
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -274,6 +276,7 @@ ar:
     today: اليوم
     in_x_days: في٪ {x} يوم
     visit_loomio_help: قم بزيارة مساعدة Loomio
+    admin_menu: قائمة المشرف
     api_docs: مستندات API
   merge_accounts:
     modal:
@@ -670,6 +673,7 @@ ar:
     privacy_public: يمكن لأي شخص عرض هذا الموضوع إذا كان لديهم الرابط
     privacy_private: يمكن لأعضاء المجموعة فقط عرض هذا الموضوع
     fork_notice: سيتم إنشاء سلسلة محادثات جديدة مع٪ {عدد} عنصر من {{title}}
+    new_thread_from_template: 'موضوع جديد: %{process_name}'
   announcement:
     send_discussion: إرسال الموضوع
     send_group: دعوة الأشخاص إلى {{اسم}}
@@ -754,6 +758,9 @@ ar:
       visible_to_group: سيتمكن أي شخص في {{group}} من رؤية سلسلة الرسائل هذه.
       visible_to_guests: يمكن فقط للأشخاص المدعوين رؤية هذا الموضوع.
       click_group_to_see_individuals: انقر فوق مجموعة لرؤية الأفراد
+      invite_people_to_evaluate_loomio: قم بدعوة بعض الأشخاص إلى مجموعة Loomio الخاصة بك لاتخاذ القرار معًا
+      invitation_message_default: لقد قمت بإنشاء مجموعة Loomio هذه لمساعدتنا في اتخاذ القرارات معًا. أرجو أن تقبل دعوتي. يستغرق الانضمام دقيقة واحدة فقط. شكرًا لك.
+      type_or_paste_email_addresses_to_invite: اكتب أو الصق عناوين البريد الإلكتروني للدعوة
     members_list:
       title: مشترك مع
       last_notified: أخطر
@@ -1027,6 +1034,7 @@ ar:
     view_closed_threads: عرض المواضيع المغلقة
     see_all_members: شاهد جميع الأعضاء الـ٪ {count}
     pending_invitations: "+٪ {عدد} معلق"
+    decisions: قرارات
   export_data_modal:
     title: كيف تريد استخدام بياناتك؟
     as_csv: افتحه في جدول بيانات
@@ -1141,6 +1149,8 @@ ar:
     members_can_raise_motions_help: السماح للأعضاء ببدء استطلاعات الرأي والمقترحات داخل المناقشات أو المجموعة
     admins_can_edit_user_content: يمكن للمسؤولين تحرير تعليقات الأعضاء
     admins_can_edit_user_content_help: السماح للمسؤولين بتحرير المحتوى الذي كتبه الأعضاء
+    new_description_placeholder: لماذا تقوم بتجربة Loomio؟ ما هي القرارات التي يتعين عليك اتخاذها معًا؟
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio" style=";text-align:right;direction:rtl">كيف تنوي استخدام Loomio؟</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important-for-your-group" style=";text-align:right;direction:rtl"> لماذا هذا مهم لمجموعتك؟</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-decisions-do-you-need-to-make" style=";text-align:right;direction:rtl"> ما هي القرارات التي تحتاج إلى اتخاذها؟</h3><p style=";text-align:right;direction:rtl"></p>
   group_export_modal:
     title: تصدير بيانات المجموعة
     body: |2+
@@ -1578,6 +1588,7 @@ ar:
     dot_vote_title: التصويت بالنقاط
     gradients_of_agreement_title: تدرجات الاتفاق
     question_title: جولة السؤال
+    recommended: مُستَحسَن
   poll_common:
     vote_now: صوت الان
     review_due: المراجعة المستحقة
@@ -1693,6 +1704,8 @@ ar:
     include_subgroups_all: "{{اسم}} وجميع المجموعات الفرعية"
     no_results_found: لا توجد نتائج لـ "{{بحث}}"
     unread: غير مقروءة (٪ {عدد})
+    welcome_to_your_new_group: مرحبًا بك في مجموعة Loomio الجديدة!
+    lets_start_a_thread: دعونا نبدأ موضوع. انقر على "موضوع جديد" للمتابعة.
   members_panel:
     no_results: لم يتم العثور على أعضاء
     everyone: كل واحد
@@ -1721,6 +1734,7 @@ ar:
     accepted: أعضاء
     show_users_in_subgroups: اعرض المستخدمين في مجموعات فرعية أيضًا
     bot: بوت
+    all: الجميع
   polls_panel:
     new_poll: استطلاع جديد
     any_type: استطلاع جديد
@@ -2291,6 +2305,8 @@ ar:
       board: مجلس أو لجنة
       nonprofit: منظمة غير ربحية أو منظمة غير حكومية
       professional: شركة خدمات مهنية
+      membership: منظمة العضوية
+      self_managing: منظمة الإدارة الذاتية
     describe_other: ما هي الفئة التي ستعطيها لمجموعتك؟
   tasks:
     tasks: مهام
@@ -2538,3 +2554,36 @@ ar:
   user_name_modal:
     user_name_updated: تم تحديث اسم المستخدم
     set_user_name: تعيين اسم المستخدم
+  thread_template:
+    browse_public_templates: تصفح معرض النماذج
+    thread_template_settings: إعدادات قالب الموضوع
+    start_a_new_thread: بدء موضوع جديد
+    thread_template_saved: تم حفظ قالب الموضوع
+    these_are_public_templates: هذه القوالب متاحة لك لنسخها أو تعديلها لتناسب مجموعتك
+    these_are_templates: هذه هي قوالب المواضيع في مجموعتك. ترشدك القوالب خلال عمليات اتخاذ القرار الشائعة.
+    default_title_label: العنوان الافتراضي
+    default_title_hint: املأ حقل العنوان مسبقًا بنص قابل للتحرير. هذا اختياري - اتركه فارغًا إذا لم تكن متأكدًا.
+    title_placeholder_label: عنوان المثال
+    title_placeholder_hint: مثال للعرض في خلفية حقل العنوان
+    title_placeholder_placeholder: على سبيل المثال، هذا ما يبدو عليه نص الخلفية
+    example_description_label: وصف المثال
+    example_description_placeholder: قم بتوفير قالب يمكن للأشخاص استخدامه لبدء سلسلة محادثات به
+    hidden_templates: القوالب المخفية
+    confirm_delete: هل أنت متأكد أنك تريد حذف قالب الموضوع هذا نهائيًا؟ لن يتم حذف أي مواضيع نتيجة لذلك.
+    add_proposal_or_poll_template: إضافة اقتراح أو قالب الاستطلاع
+    recommended_proposal_or_poll_templates: المقترحات الموصى بها أو قوالب الاستطلاع
+    decision_templates: نماذج القرار
+    decision_templates_help: حدد أي اقتراح أو قوالب استطلاع تساعد في إكمال هذه العملية.
+    share_in_template_gallery: شارك هذا القالب في معرض النماذج العام
+  record_modal:
+    record_video: تسجيل الفيديو
+    record_audio: تسجيل صوتي
+    record: سِجِلّ
+    stop: قف
+    no_mic: لا يمكن العثور على الميكروفون
+    no_camera: لا يمكن العثور على الكاميرا
+    listen_to_audio: استمع إلى الصوت
+    watch_video: شاهد الفيديو
+    audio_transcript: 'النص الصوتي: %{text}'
+    why_type_when_you_can_talk: لماذا تكتب عندما يمكنك التحدث؟ إرسال تسجيل صوتي
+    transcript_included: سيتم إلحاق نسخة من التسجيل برسالتك

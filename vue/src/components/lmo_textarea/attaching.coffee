@@ -58,10 +58,13 @@ export default
       forEach @$refs.filesField.files, (file) => @attachFile(file: file)
 
     # collab editor only
+    mediaRecorded: (blob) ->
+      insertImage(blob, @editor.view, null, @attachImageFile)
+
     imageSelected: ->
       # console.log 'state', @editor.state.tr.selection.from
       Array.from(@$refs.imagesField.files || []).forEach (file) =>
-        if (/image/i).test(file.type)
+        if (/image|video/i).test(file.type)
           insertImage(file, @editor.view, null, @attachImageFile)
         else
           @attachFile({file})

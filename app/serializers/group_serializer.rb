@@ -41,7 +41,7 @@ class GroupSerializer < ApplicationSerializer
              :cover_url,
              :open_discussions_count,
              :closed_discussions_count,
-             :template_discussions_count,
+             :discussion_templates_count,
              :recent_activity_count,
              :is_visible_to_public,
              :is_visible_to_parent_members,

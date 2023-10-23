@@ -60,6 +60,8 @@ es:
     share_a_custom_configuration: Compartir una configuración personalizada con otros miembros de tu grupo
     loomio_default_templates: Plantillas predeterminadas de Loomio
     which_templates_would_you_like_to_use: "¿Qué plantillas te gustaría usar?"
+    template_gallery: Galería de plantillas
+    trial_needs_user: Para iniciar su prueba gratuita de Loomio, inicie sesión.
   doctypes:
     youtube_video: Video Youtube
     image: Imagen
@@ -312,6 +314,7 @@ es:
     prefix_eg: por ejemplo, {{val}}
     are_you_sure: "¿Está seguro?"
     visit_loomio_help: Visita la ayuda de Loomio
+    admin_menu: Menú de administración
     api_docs: Documentos API
   merge_accounts:
     modal:
@@ -726,6 +729,7 @@ es:
     privacy_organisation: Los hilos serán visibles para integrantes de {{parent}} e integrantes de {{group}}.
     fork_notice: Un nuevo hilo será creado con %{count} elementos de {{title}}
     notify_group: Grupo de notificación
+    new_thread_from_template: 'Nuevo hilo: %{process_name}'
   announcement:
     send_discussion: Manda hilo
     send_group: Invita a gente a {{name}}
@@ -831,6 +835,9 @@ es:
       visible_to_group: Cualquiera en {{group}} será capaz de ver este hilo.
       visible_to_guests: Solamente la gente invitada puede ver este hilo.
       click_group_to_see_individuals: Clica grupo para ver individual
+      invite_people_to_evaluate_loomio: Invita a algunas personas a tu grupo de Loomio para tomar una decisión juntos
+      invitation_message_default: He creado este grupo de Loomio para ayudarnos a tomar decisiones juntos. Por favor acepte mi invitación. Sólo te llevará un minuto unirte. Gracias.
+      type_or_paste_email_addresses_to_invite: Escriba o pegue direcciones de correo electrónico para invitar
     members_list:
       title: Compartido con
       last_notified: Notificado
@@ -1092,6 +1099,7 @@ es:
       parent_members: 'Privacidad: Este grupo es visible para los integrantes de {{parentGroupName}} y integrantes de {{groupName}} '
       public: 'Privacidad: Este grupo es visible en la red '
       aria_label: 'Privacidad del grupo: {{privacy}}'
+    decisions: Decisiones
   export_data_modal:
     title: "¿Cómo quieres utilizar tus datos?"
     as_csv: Abrir en una hoja de cálculo
@@ -1208,6 +1216,8 @@ es:
     upload_logo: Cargar el logo
     upload_cover_photo: Cargar la foto de portada
     group_handle_placeholder: 'Usado en la URL de tu grupo: {{host}}/{{handle}}'
+    new_description_placeholder: "¿Por qué estás probando Loomio? ¿Qué decisiones necesitan tomar juntos?"
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">¿Cómo piensas utilizar Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> ¿Por qué es esto importante para su grupo?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> ¿Qué decisiones necesitas tomar?</h3><p></p>
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -1351,7 +1361,7 @@ es:
     help_translate: "¿Puedes ayudarnos a traducir Loomio?"
     updated_on_sign_in: Proporcionado por su navegador y actualizado al iniciar sesión
     deactivated_user: Usuario desactivado
-    account_is_bot: Esta es una cuenta de bot.
+    account_is_bot: Esta es una cuenta de bot
     bot_account_warning: Las cuentas de bot no serán invitadas a votar en encuestas ni a participar en debates.
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caractéres"
@@ -1652,6 +1662,7 @@ es:
     meeting: Reunión
     gradients_of_agreement_title: Gradientes de concordancia
     question_title: ronda de preguntas
+    recommended: Recomendado
   poll_option_form:
     edit_option: Opción editar
     option_name: Nombre de la opción
@@ -1777,6 +1788,8 @@ es:
     include_subgroups_mine: "{{name}} y mis subgrupos"
     include_subgroups_all: "{{name}} y todos los subgrupos"
     no_results_found: No hay resultados para "{{search}}""
+    welcome_to_your_new_group: "¡Bienvenido a tu nuevo grupo de Loomio!"
+    lets_start_a_thread: Empecemos un hilo. Haga clic en "Nuevo hilo" para continuar.
   members_panel:
     no_results: No se han encontrado miembros
     everyone: Todos
@@ -1805,6 +1818,7 @@ es:
     invited_by_name: Invitado por {{name}}
     accepted: Integrantes
     bot: Bot
+    all: Todo
   polls_panel:
     new_poll: Nuevo sondeo
     any_type: Todos los tipos
@@ -2425,6 +2439,8 @@ es:
       community: Comunidad
       government: Gobierno/Gobierno local
       other: Otro
+      membership: organización de membresía
+      self_managing: Organización autogestionaria
   poll_templates:
     proposal:
       process_subtitle: Plantear una propuesta para tomar una decisión
@@ -2571,3 +2587,36 @@ es:
   user_name_modal:
     user_name_updated: Nombre de usuario actualizado
     set_user_name: Establecer nombre de usuario
+  thread_template:
+    browse_public_templates: Explorar la galería de plantillas
+    thread_template_settings: Configuración de la plantilla de hilo
+    start_a_new_thread: Iniciar un nuevo hilo
+    thread_template_saved: Plantilla de hilo guardada
+    these_are_public_templates: Estas plantillas están disponibles para que las copie o modifique para adaptarlas a su grupo.
+    these_are_templates: Estas son las plantillas de hilos de tu grupo. Las plantillas lo guían a través de procesos comunes de toma de decisiones.
+    default_title_label: Título predeterminado
+    default_title_hint: Complete previamente el campo de título con texto editable. Esto es opcional; déjelo en blanco si no está seguro.
+    title_placeholder_label: Título de ejemplo
+    title_placeholder_hint: Un ejemplo para mostrar en el fondo del campo de título
+    title_placeholder_placeholder: Por ejemplo, así es como se ve el texto de fondo.
+    example_description_label: Descripción de ejemplo
+    example_description_placeholder: Proporcionar una plantilla que las personas puedan utilizar para iniciar un hilo.
+    hidden_templates: Plantillas ocultas
+    confirm_delete: "¿Estás seguro de que deseas eliminar permanentemente esta plantilla de hilo? Ningún hilo será eliminado como resultado de esto."
+    add_proposal_or_poll_template: Agregar propuesta o plantilla de encuesta
+    recommended_proposal_or_poll_templates: Plantillas de encuesta o propuesta recomendadas
+    decision_templates: Plantillas de decisión
+    decision_templates_help: Seleccione cualquier propuesta o plantilla de encuesta que ayude a completar este proceso.
+    share_in_template_gallery: Comparte esta plantilla en la galería de plantillas públicas.
+  record_modal:
+    record_video: Grabar video
+    record_audio: Grabar audio
+    record: Registro
+    stop: Detener
+    no_mic: No se pudo encontrar un micrófono
+    no_camera: No se pudo encontrar una cámara
+    listen_to_audio: escuchar audio
+    watch_video: Ver video
+    audio_transcript: 'Transcripción de audio: %{text}'
+    why_type_when_you_can_talk: "¿Por qué escribir cuando puedes hablar? Enviar una grabación de voz"
+    transcript_included: Se adjuntará una transcripción de la grabación a su mensaje.

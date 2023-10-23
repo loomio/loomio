@@ -34,7 +34,7 @@ module MarkdownService
     if format == "md"
       MarkdownService.render_html(text)
     else
-      replace_checkboxes(replace_iframes(text))
+      replace_audios(replace_videos(replace_checkboxes(replace_iframes(text))))
     end.html_safe
   end
 
@@ -43,18 +43,33 @@ module MarkdownService
     ActionController::Base.helpers.strip_tags(render_rich_text(text, format)).gsub(/(?:\n\r?|\r\n?)/, '<br>')
   end
 
+  def self.replace_videos(str)
+    doc = Nokogiri::HTML5::DocumentFragment.parse(str)
+    doc.search("video[src]").each do |node|
+      node.replace("<p><a href='#{node['src']}'><img src='#{node['poster']}'><br>#{I18n.t('record_modal.watch_video')}</a></p>")
+    end
+    doc.to_s
+  end
+
+  def self.replace_audios(str)
+    doc = Nokogiri::HTML5::DocumentFragment.parse(str)
+    doc.search("audio[src]").each do |node|
+      node.replace("<p><a href='#{node['src']}'>#{I18n.t('record_modal.listen_to_audio')}</a></p>")
+    end
+    doc.to_s
+  end
+
   def self.replace_iframes(str)
-    srcs = Nokogiri::HTML(str).search("iframe[src]").map { |el| el['src'] }
-    out = str.dup
-    srcs.each do |src|
+    doc = Nokogiri::HTML5::DocumentFragment.parse(str)
+    doc.search("iframe[src]").each do |node|
       begin
-        vi = VideoInfo.new(src)
-        out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{vi.url}'><img src='#{vi.thumbnail}' /></a>")
-      rescue # yea, there are stupid errors to collect here.
-        out.gsub!('<iframe src="'+src+'"></iframe>', "<a href='#{src}'>#{src}</a>")
+        vi = VideoInfo.new(node['src'])
+        node.replace("<div><a href='#{vi.url}'><img src='#{vi.thumbnail}' /></a></div>")
+      rescue
+        node.replace("<a href='#{node['src']}'>#{node['src']}</a>")
       end
     end
-    out
+    doc.to_s
   end
 
   def self.replace_checkboxes(str)

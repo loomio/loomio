@@ -10,10 +10,6 @@ class DiscussionService
 
     discussion.author = actor
 
-    #these should really be sent from the client, but it's ok here for now
-    discussion.max_depth = discussion.group.new_threads_max_depth
-    discussion.newest_first = discussion.group.new_threads_newest_first
-
     return false unless discussion.valid?
 
     discussion.save!

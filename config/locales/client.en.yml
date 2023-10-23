@@ -18,6 +18,7 @@ en:
     no_tasks_assigned: There are no tasks assigned to you
 
   templates:
+    template_gallery: Template gallery
     title_template: "%{title} Template"
     title_templates: "%{title} Templates"
     title_copy: "%{title} Copy"
@@ -60,6 +61,7 @@ en:
     start_trial: Start trial
     start_free_trial: Start free trial
     demo_needs_user: To start a demo, you need to sign up (or sign in) as a Loomio user. This is free and only takes a minute.
+    trial_needs_user: To start your free Loomio trial, please sign in. 
     this_is_a_template_for_new_threads: This is a template for new threads
     share_a_custom_configuration: Share a custom configuration with others in your group
 
@@ -78,21 +80,6 @@ en:
     pull_request: Pull Request
     trello_board: Trello Board
     trello_card: Trello Card
-
-  loomio_onboarding:
-    group_progress_card:
-      title: Let's get started!
-      activities:
-        set_description: Set your group's description
-        set_cover_photo: Upload a cover photo & logo for your group
-        customize_group: Add a group picture, logo and description
-        setup_chatbot: "Add a Loomio bot to your chatroom (e.g. Slack, Discord, Teams or other)"
-        invite_people_in: Invite people in by email, or with a link to join.
-        start_thread: Start a discussion thread
-        make_decision: Start a decision
-      learn_more: Learn more at Loomio Help
-      celebration_message: Nice! Your group is good to go!  🎉
-      dismiss_this_card: Dismiss this card
 
   plan_names:
     free: Free
@@ -174,6 +161,7 @@ en:
     local: Local time ({{value}})
 
   common:
+    admin_menu: Admin menu
     api_docs: API docs
     prefix_eg: "e.g. {{val}}"
     are_you_sure: Are you sure?
@@ -737,6 +725,31 @@ en:
     move_to_existing_thread: Move to existing thread
     start_new_thread: Or, start new thread
 
+  thread_template:
+    browse_public_templates: Browse template gallery
+    thread_template_settings: Thread template settings
+    start_a_new_thread: Start a new thread
+    thread_template_saved: Thread template saved
+    these_are_public_templates: |
+      These templates are available for you to copy or modify to suit your group
+    these_are_templates: |
+      These are the thread templates in your group. Templates guide you through common decision-making processes.
+    default_title_label: Default title
+    default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
+    title_placeholder_label: Example title
+    title_placeholder_hint: An example to display in the background of the title field
+    title_placeholder_placeholder: e.g. This is what background text looks like
+    example_description_label: Example description
+    example_description_placeholder: Provide a template that people can use to start a thread with
+    hidden_templates: Hidden templates
+    confirm_delete: Are you sure you want to permanently delete this thread template? No threads will be deleted as a result of this.
+    add_proposal_or_poll_template: Add proposal or poll template
+    recommended_proposal_or_poll_templates: Recommended proposal or poll templates
+    decision_templates: Decision templates
+    decision_templates_help: Select any proposal or poll templates that help to complete this process.
+    share_in_template_gallery: Share this template in the public template gallery
+
+
   discussion_form:
     thread_templates: Thread templates
     new_thread_template: New thread template
@@ -761,6 +774,7 @@ en:
       updated: 'Thread updated'
       forked:  'Thread fork created'
     new_discussion_title: 'Start new thread'
+    new_thread_from_template: 'New thread: %{process_name}'
     moving_items_title: 'Move items to new thread'
     edit_discussion_title: 'Edit thread'
     group_label: 'Group'
@@ -828,6 +842,9 @@ en:
       non_voters: Members of {{name}} not yet invited
 
     form:
+      group_has_no_members_yet: You are the only member of your group. You may want to invite some people to your group before starting a thread or decision.
+      invite_people_to_evaluate_loomio: |
+        Invite some people to your Loomio group to make a decision together
       too_many_invitations: |
         Invitation limit exceeded. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
       no_invitations_remaining: |
@@ -838,6 +855,8 @@ en:
       who_to_invite: Who would you like to invite?
       invitation_message_placeholder: A message to include in the invitation email. (optional)
       invitation_message_label: Message
+      invitation_message_default: |
+        I have set up this Loomio group to help us make decisions together. Please accept my invitation. It only takes a minute to join. Thank you.
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?
@@ -872,6 +891,7 @@ en:
         helptext: Summarise the results of the process, including any understandings found or issues brought to light.
       anyone_can_participate: Anyone with link can participate
       placeholder: You can enter names or email addresses
+      type_or_paste_email_addresses_to_invite: Type or paste email addresses to invite
       notified_empty: 'Nobody selected yet'
       single_notification: '1 notification will be sent.'
       multiple_notifications: '{{notified}} notifications will be sent.'
@@ -1095,6 +1115,7 @@ en:
     stats: Group stats
     threads: Threads
     polls: Polls
+    decisions: Decisions
     members: Members
     files: Files
     settings: Settings
@@ -1199,7 +1220,7 @@ en:
     new_organisation: New organization
     new_group: New group
     new_subgroup: New subgroup
-    new_group_explainer: Start a new Loomio group - an online home for your organization's discussions and decisions
+    new_group_explainer: Start a new Loomio group for your organization
     new_subgroup_explainer: Start a subgroup within an existing group - a private space for a team of people from the organization
     start_group_heading: Start a group
     start_subgroup_heading: Start a subgroup
@@ -1219,6 +1240,9 @@ en:
     organization_name_placeholder: 'What is the name of your organization?'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
+    new_description_placeholder: 'Why are you trialing Loomio? What decisions do you need to make together?'
+    new_description_html: |
+      <h3 id="how-do-you-intend-to-use-loomio">How do you intend to use Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group">Why is this important for your group?</h3><p></p><h3 id="what-decisions-do-you-need-to-make">What decisions do you need to make?</h3><p></p>
     secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
     privacy_statement:
       public_on_web: 'Name, description, and attachments to the group context will be visible to the public'
@@ -1757,6 +1781,7 @@ en:
   decision_tools_card:
     choose_type: Choose poll type
     title: Facilitate
+    recommended: Recommended
     question_title: Question round
     advice_title: Advice
     consent_title: Consent
@@ -1786,7 +1811,6 @@ en:
   poll_common:
     superseded: Superseded
     need_help_with_templates: Need help creating your own decision templates?
-    new_templates_are_here: Loomio has new proposal templates to help with decision-making.
     categorize_poll_templates: Categorize poll templates
     show_all_templates_in_one_list: Show all templates in one list
     advice_process: Advice process
@@ -1804,7 +1828,6 @@ en:
     select_count_options:  Select {{count}} options
     select_minimum_to_maximum_options: Select {{minimum}} to {{maximum}} options
     custom_poll_types: Custom poll types
-    example_polls_from_thread_template: Examples from thread template
     hidden_poll_templates: Hidden poll templates
     poll_template: Poll template
     poll_template_saved: Poll template saved
@@ -1903,11 +1926,14 @@ en:
     include_subgroups_mine: '{{name}} and my subgroups'
     include_subgroups_all: '{{name}} and all subgroups'
     no_results_found: No results for "{{search}}"
+    welcome_to_your_new_group: Welcome to your new Loomio group!
+    lets_start_a_thread: Let's start a thread. Click "New thread" to continue.
 
   members_panel:
     bot: Bot
     no_results: 'No members found'
     everyone: 'Everyone'
+    all: All
     sort: 'Sort'
     order_label: "Order"
     order_by_name: 'Name'
@@ -2215,6 +2241,19 @@ en:
     details_placeholder: What are the details of your proposal?
     proposal_created: Proposal started
     proposal_updated: Proposal updated
+
+  record_modal:
+    record_video: Record video
+    record_audio: Record audio
+    record: Record
+    stop: Stop
+    no_mic: Could not find a microphone
+    no_camera: Could not find a camera
+    listen_to_audio: Listen to audio
+    watch_video: Watch video
+    audio_transcript: "Audio transcript: %{text}"
+    why_type_when_you_can_talk: Why type when you can talk? Send a voice recording
+    transcript_included: A transcript of the recording will be appended to your message
 
   poll_poll_form:
     multiple_choice_subtitle: A simple way to assess the popularity of options
@@ -2854,14 +2893,16 @@ en:
     front_page: Front page
 
   group_survey:
-    describe_other: What category would you give your group?
+    describe_other: Select the category that best describes your group
     categories:
       party: Political party
       coop: Cooperative
       union: Union
-      board: Board or committee
-      nonprofit: Nonprofit or NGO
+      board: Governance & boards
+      nonprofit: Nonprofit
+      membership: Membership organization
       professional: Professional service company
+      self_managing: Self-managing organization
       community: Community group
       government: Government/Local Government
       other: Other

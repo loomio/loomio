@@ -30,8 +30,6 @@ export default
     routeQuery: (o) ->
       @$router.replace(@mergeQuery(o))
 
-
-
     beforeDestroy: ->
       EventBus.$off 'joinedGroup'
 
@@ -72,11 +70,10 @@ export default
 
     query: ->
       return unless @group
-      # console.log 'running query: page', @page, 'loader pageWindow[page]', @loader.pageWindow[@page]
       @publicGroupIds = @group.publicOrganisationIds()
 
       @groupIds = switch (@$route.query.subgroups || 'mine')
-        when 'mine' then uniq(concat(intersection(@group.organisationIds(), Session.user().groupIds()), @publicGroupIds, @group.id)) # @group.id is present if @group is a subgroup of parentgroup that i'm a member of, and that parent group has parentMembersCanSeeDiscussions
+        when 'mine' then uniq(concat(intersection(@group.organisationIds(), Session.user().groupIds()), @publicGroupIds, @group.id))
         when 'all' then @group.organisationIds()
         else [@group.id]
 
@@ -97,7 +94,6 @@ export default
           chain = chain.find(closedAt: null)
 
       if @$route.query.tag
-
         tag = Records.tags.find(groupId: @group.parentOrSelf().id, name: @$route.query.tag)[0]
         chain = chain.find({tagIds: {'$contains': tag.id}})
 
@@ -118,7 +114,6 @@ export default
         when 'unread' then 'discussions_panel.unread'
         when 'all' then 'discussions_panel.all'
         when 'closed' then 'discussions_panel.closed'
-        when 'templates' then 'templates.templates'
         when 'subscribed' then 'change_volume_form.simple.loud'
         else
           'discussions_panel.open'
@@ -198,13 +193,11 @@ div.discussions-panel(v-if="group")
         v-btn.mr-2.text-lowercase.discussions-panel__filters(v-on="on" v-bind="attrs" text)
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           v-icon mdi-menu-down
-      v-list(dense)
+      v-list
         v-list-item.discussions-panel__filters-open(@click="routeQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.open'")
         v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
           v-list-item-title(v-t="'discussions_panel.all'")
-        v-list-item.discussions-panel__filters-templates(@click="routeQuery({t: 'templates'})")
-          v-list-item-title(v-t="'templates.templates'")
         v-list-item.discussions-panel__filters-closed(@click="routeQuery({t: 'closed'})")
           v-list-item-title(v-t="'discussions_panel.closed'")
         v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
@@ -230,17 +223,21 @@ div.discussions-panel(v-if="group")
     v-btn.discussions-panel__new-thread-button(
       v-if='canStartThread'
       v-t="'navbar.start_thread'"
-      :to="'/d/new?group_id='+group.id + (group.templateDiscussionsCount ? '' : '&blank_template=1')"
+      :to="'/thread_templates/?group_id='+group.id"
       color='primary')
 
-  v-card.discussions-panel(outlined)
+  v-alert(color="info" text outlined v-if="noThreads")
+    v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
+    p.px-4(v-t="'discussions_panel.lets_start_a_thread'")
+
+  v-card.discussions-panel(v-else outlined)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
       .discussions-panel__content
-        .discussions-panel__list--empty.pa-4(v-if='noThreads', :value="true")
-          p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
-          p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
+        //- .discussions-panel__list--empty.pa-4(v-if='noThreads')
+        //-   p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
+        //-   p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(two-line)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions", :key="thread.id", :thread="thread" group-page)
@@ -251,6 +248,7 @@ div.discussions-panel(v-if="group")
         v-pagination(v-model="page", :length="totalPages", :total-visible="7", :disabled="totalPages == 1")
         .d-flex.justify-center
           router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
+
 </template>
 
 <style lang="sass">
