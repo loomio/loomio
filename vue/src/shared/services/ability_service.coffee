@@ -22,9 +22,11 @@ export default new class AbilityService
     intersection(Session.user().groupIds(), user.groupIds()).length
 
   canAddComment: (thread) ->
+    !thread.closedAt &&
     thread.membersInclude(Session.user())
 
   canRespondToComment: (comment) ->
+    !comment.discussion().closedAt &&
     !comment.discardedAt &&
     comment.discussion().membersInclude(Session.user())
 
@@ -39,7 +41,7 @@ export default new class AbilityService
 
   canEditThread: (thread) ->
     thread.adminsInclude(Session.user()) or
-    (thread.membersInclude(Session.user()) and
+    (!thread.closedAt and thread.membersInclude(Session.user()) and
      (thread.group().membersCanEditDiscussions or thread.author() == Session.user()))
 
   canCloseThread: (thread) ->
@@ -60,9 +62,12 @@ export default new class AbilityService
   canPinEvent: (event) ->
     event.depth == 1 &&
     !event.model().discardedAt &&
-    !event.pinned && @canEditThread(event.discussion())
+    !event.pinned &&
+    !event.discussion().closedAt &&
+    @canEditThread(event.discussion())
 
   canUnpinEvent: (event) ->
+    !event.discussion().closedAt &&
     event.pinned && @canEditThread(event.discussion())
 
   canMoveThread: (thread) -> @canEditThread(thread)
@@ -86,7 +91,7 @@ export default new class AbilityService
     (group.membersInclude(Session.user()) and group.membersCanStartDiscussions)
 
   canAnnounceDiscussion: (discussion) ->
-    return false if discussion.discardedAt
+    return false if discussion.discardedAt or discussion.closedAt
     if discussion.groupId
       discussion.group().adminsInclude(Session.user()) or
       (discussion.group().membersCanAnnounce and discussion.group().membersInclude(Session.user()))
@@ -159,11 +164,10 @@ export default new class AbilityService
     comment.authorIs(Session.user()) && @canEditComment(comment)
 
   canEditComment: (comment) ->
-    (comment.discussion().adminsInclude(Session.user()) and comment.group().adminsCanEditUserContent) or
-
-    (comment.authorIs(Session.user()) and
-     comment.group().membersCanEditComments and
-     comment.discussion().membersInclude(Session.user()))
+    !comment.discussion().closedAt && (
+      (comment.discussion().adminsInclude(Session.user()) && comment.group().adminsCanEditUserContent) ||
+      (comment.authorIs(Session.user()) && comment.group().membersCanEditComments && comment.discussion().membersInclude(Session.user()))
+    )
 
   canDeleteComment: (comment) ->
     Records.comments.find(parentId: comment.id, parentType: 'Comment').length == 0 &&
@@ -174,12 +178,15 @@ export default new class AbilityService
     )
 
   canDiscardComment: (comment) ->
-    !comment.discardedAt && (
+    !comment.discussion().closedAt &&
+    !comment.discardedAt &&
+    (
       comment.authorIs(Session.user()) ||
       comment.discussion().adminsInclude(Session.user())
     )
 
   canUndiscardComment: (comment) ->
+    !comment.discussion().closedAt &&
     comment.discardedAt && (
       comment.authorIs(Session.user()) ||
       comment.discussion().adminsInclude(Session.user())
@@ -239,12 +246,15 @@ export default new class AbilityService
     poll.myStance() or (!poll.specifiedVotersOnly and poll.membersInclude(Session.user()))
 
   canMovePoll: (poll) ->
+    (!poll.discussionId || !poll.discussion().closedAt) &&
     !poll.discussionId && poll.adminsInclude(Session.user())
 
   canEditPoll: (poll) ->
+    (!poll.discussionId || !poll.discussion().closedAt) &&
     poll.adminsInclude(Session.user()) && !poll.closedAt
 
   canDeletePoll: (poll) ->
+    (!poll.discussionId || !poll.discussion().closedAt) &&
     !poll.discardedAt && poll.adminsInclude(Session.user())
 
   canExportPoll: (poll) ->
@@ -254,7 +264,10 @@ export default new class AbilityService
     !poll.discardedAt && !poll.discussionId && poll.adminsInclude(Session.user())
 
   canSetPollOutcome: (poll) ->
-    !poll.discardedAt && poll.closedAt && poll.adminsInclude(Session.user())
+    (!poll.discussionId || !poll.discussion().closedAt) &&
+    !poll.discardedAt &&
+    poll.closedAt &&
+    poll.adminsInclude(Session.user())
 
   canClosePoll: (poll) ->
     !!poll.closingAt && !poll.discardedAt && !poll.closedAt && @canEditPoll(poll)

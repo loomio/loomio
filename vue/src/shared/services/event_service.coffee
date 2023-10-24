@@ -13,7 +13,9 @@ export default new class EventService
       perform: ->
         event.discussion().forkedEventIds.push(event.id)
       canPerform: ->
-        !event.model().discardedAt && AbilityService.canMoveThread(event.discussion())
+        !event.model().discardedAt &&
+        !event.discussion().closedAt &&
+        AbilityService.canMoveThread(event.discussion())
 
     pin_event:
       name: 'action_dock.pin_event'

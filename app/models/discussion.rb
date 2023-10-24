@@ -70,11 +70,12 @@ class Discussion < ApplicationRecord
   is_mentionable  on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
-  has_paper_trail only: [:title, :description, :description_format, :private, :group_id, :author_id, :tags]
+  has_paper_trail only: [:title, :description, :description_format, :private, :group_id, :author_id, :tags, :closed_at, :closer_id]
 
   belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
+  belongs_to :closer, foreign_key: 'closer_id', class_name: "User"
   has_many :polls, dependent: :destroy
   has_many :active_polls, -> { where(closed_at: nil) }, class_name: "Poll"
 

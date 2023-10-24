@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_11_042650) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_24_081138) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -307,6 +307,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_042650) do
     t.string "tags", default: [], array: true
     t.integer "discussion_template_id"
     t.string "discussion_template_key"
+    t.integer "closer_id"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"

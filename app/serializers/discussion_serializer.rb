@@ -24,6 +24,7 @@ class DiscussionSerializer < ApplicationSerializer
              :last_comment_at,
              :last_activity_at,
              :closed_at,
+             :closer_id,
              :seen_by_count,
              :members_count,
              :created_at,
@@ -54,8 +55,13 @@ class DiscussionSerializer < ApplicationSerializer
   has_many :active_polls, serializer: PollSerializer, root: :polls
   has_one :created_event, serializer: EventSerializer, root: :events
   has_one :forked_event, serializer: EventSerializer, root: :events
+  has_one :closer, serializer: AuthorSerializer, root: :users
 
   hide_when_discarded [:description, :title]
+
+  def include_closer?
+    object.closer_id.present?
+  end
 
   def include_mentioned_usernames?
     description_format == "md"

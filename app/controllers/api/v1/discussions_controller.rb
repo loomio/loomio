@@ -16,11 +16,15 @@ class API::V1::DiscussionsController < API::V1::RestfulController
   def show
     load_and_authorize(:discussion)
 
+    if resource.closed_at && resource.closer_id.nil?
+      closed_event = Event.where(discussion_id: resource.id, kind: 'discussion_closed').order(:id).last
+      resource.update_attribute(:closer_id, closed_event.user_id)
+    end
+
     # this is desperation in code, but better than auto create when nil on method call
     if resource.created_event.nil?
       EventService.repair_thread(resource.id)
       resource.reload
-      Sentry.capture_message("discussion missing created event", extra: {discussion_id: resource.id})
     end
 
     accept_pending_membership

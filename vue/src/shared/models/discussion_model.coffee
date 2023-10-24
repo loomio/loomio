@@ -79,6 +79,7 @@ export default class DiscussionModel extends BaseModel
     @hasMany 'polls', sortBy: 'createdAt', sortDesc: true, find: {discardedAt: null}
     @belongsTo 'group'
     @belongsTo 'author', from: 'users'
+    @belongsTo 'closer', from: 'users'
     @hasMany 'discussionReaders'
 
   discussion: -> @

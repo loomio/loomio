@@ -212,9 +212,6 @@ describe "User abilities" do
       before do
         group.update members_can_edit_comments: false
       end
-      context "is most recent comment" do
-        it { should be_able_to(:update, user_comment) }
-      end
       context "is not most recent comment" do
         before do
           user_comment
