@@ -103,7 +103,7 @@
     "vue-cli-plugin-coffee": "1.0.2",
     "vue-cli-plugin-pug": "^2.0.0",
     "vue-cli-plugin-vuetify": "latest",
-    "vue-template-compiler": "2.7.14",
+    "vue-template-compiler": "2.7.15",
     "vuetify-loader": "^1.9.2",
     "webpack": "^5.89.0"
   }
