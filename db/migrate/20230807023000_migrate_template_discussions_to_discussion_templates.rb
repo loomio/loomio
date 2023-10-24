@@ -1,5 +1,5 @@
 class MigrateTemplateDiscussionsToDiscussionTemplates < ActiveRecord::Migration[7.0]
   def change
-    ConvertDiscussionTemplatesWorker.new.perform
+    ConvertDiscussionTemplatesWorker.perform_async(wait: 5.minutes)
   end
 end
