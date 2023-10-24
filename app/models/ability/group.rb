@@ -54,8 +54,6 @@ module Ability::Group
       Subscription.for(group).is_active? && 
       !group.has_max_members &&
       (
-        Webhook.where(group_id: group.id, actor_id: user.id).
-                where.any(permissions: 'manage_memberships').exists? ||
         ((group.members_can_add_members? && group.members.exists?(user.id)) || group.admins.exists?(user.id))
       )
     end

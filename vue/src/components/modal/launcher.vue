@@ -26,8 +26,6 @@ import PollCommonMoveForm from '@/components/poll/common/move_form'
 import RevisionHistoryModal from '@/components/revision_history/modal'
 import TagsSelect from '@/components/tags/select'
 import TagsModal from '@/components/tags/modal'
-import WebhookForm from '@/components/webhook/form'
-import WebhookList from '@/components/webhook/list'
 import ChangePictureForm from '@/components/profile/change_picture_form'
 import GroupNewForm from '@/components/group/new_form'
 import PinEventForm from '@/components/thread/pin_event_form'
@@ -73,8 +71,6 @@ export default
     PollTemplateForm
     TagsModal
     TagsSelect
-    WebhookForm
-    WebhookList
     ChangePictureForm
     GroupNewForm
     PinEventForm

@@ -91,18 +91,6 @@ export default new class GroupService
           props:
             group: group
 
-    webhooks:
-      name: 'webhook.api_keys'
-      icon: 'mdi-key-variant'
-      menu: true
-      canPerform: ->
-        group.adminsInclude(Session.user())
-      perform: ->
-        openModal
-          component: 'WebhookList'
-          props:
-            group: group
-
     api_docs:
       name: 'common.api_docs'
       icon: 'mdi-webhook'
