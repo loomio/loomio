@@ -42,7 +42,7 @@ export default {
     },
 
     mediaFilename() {
-      if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9,opus')) {
+      if (MediaRecorder.isTypeSupported('video/webm')) {
         return "video.webm";
       } else if (MediaRecorder.isTypeSupported('video/mp4')) {
         return "video.mp4";
@@ -50,8 +50,8 @@ export default {
     },
 
     mediaRecorderOptions() {
-      if (MediaRecorder.isTypeSupported('video/webm;codecs=opus')) {
-        return {mimeType: 'video/webm;codecs=opus'};
+      if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) {
+        return {mimeType: 'video/webm;codecs=vp9'};
       } else if (MediaRecorder.isTypeSupported('video/mp4')) {
         return {mimeType: 'video/mp4'};
       }
