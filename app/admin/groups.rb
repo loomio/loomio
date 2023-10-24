@@ -57,7 +57,7 @@ ActiveAdmin.register Group, as: 'Group' do
     column :description, :sortable => :description do |group|
       group.description
     end
-    column :archived_at
+    column :revoked_at
     column :analytics_enabled
     actions
   end
@@ -94,7 +94,7 @@ ActiveAdmin.register Group, as: 'Group' do
         column(:inviter)     { |m| m.inviter.try(:name) }
         column(:created_at)  { |m| m.created_at }
         column(:accepted_at) { |m| m.accepted_at }
-        column(:archived_at) { |m| m.archived_at }
+        column(:revoked_at)  { |m| m.revoked_at }
         column "Toggle admin" do |m|
           if m.admin?
             link_to("remove admin", remove_admin_admin_groups_path(membership_id: m.id, group_id: m.group_id), method: :post)

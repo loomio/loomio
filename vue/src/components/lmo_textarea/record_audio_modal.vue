@@ -81,13 +81,9 @@ export default {
   },
 
   mounted() {
-    // if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-    //   this.error = "Sorry recording is not supported on Safari or iOS";
-    // } else {
     canvas = this.$refs.visualizer
     canvasCtx = canvas.getContext("2d");
     navigator.mediaDevices.getUserMedia({audio: true}).then(this.setupRecorder, this.handleError)
-    // }
   },
 
   methods: {

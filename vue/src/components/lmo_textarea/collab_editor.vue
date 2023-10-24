@@ -291,16 +291,16 @@ div
                   v-icon mdi-emoticon-outline
               emoji-picker(:insert="emojiPicked")
 
-            v-btn(:small="expanded" icon @click='$refs.filesField.click()', :title="$t('formatting.attach')")
+            v-btn(:small="expanded" icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
               v-icon mdi-paperclip
 
-            v-btn(:small="expanded" icon @click='$refs.imagesField.click()', :title="$t('formatting.insert_image')")
+            v-btn(:small="expanded" icon @click='$refs.imagesField.click()' :title="$t('formatting.insert_image')")
               v-icon mdi-image
 
-            v-btn(:small="expanded" icon @click='openRecordAudioModal', :title="$t('record_modal.record_audio')")
+            v-btn(:small="expanded" icon @click='openRecordAudioModal' :title="$t('record_modal.record_audio')")
               v-icon mdi-microphone
 
-            v-btn(:small="expanded" icon @click='openRecordVideoModal', :title="$t('record_modal.record_video')")
+            v-btn(:small="expanded" icon @click='openRecordVideoModal' :title="$t('record_modal.record_video')")
               v-icon mdi-video
 
             //- link

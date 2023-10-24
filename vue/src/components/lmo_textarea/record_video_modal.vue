@@ -22,9 +22,6 @@ export default {
   },
 
   mounted() {
-    // if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-    //   this.error = "Sorry recording is not supported on Safari or iOS";
-    // } else {
     navigator.mediaDevices.getUserMedia({
       audio: true,
       video: {
@@ -33,7 +30,6 @@ export default {
         frameRate: 10,
       }
     }).then(this.setupRecorder, this.handleError)
-    // }
   },
 
   methods: {
