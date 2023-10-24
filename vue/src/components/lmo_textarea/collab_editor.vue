@@ -300,8 +300,8 @@ div
             v-btn(:small="expanded" icon @click='openRecordAudioModal', :title="$t('record_modal.record_audio')")
               v-icon mdi-microphone
 
-            //- v-btn(:small="expanded" icon @click='openRecordVideoModal', :title="$t('record_modal.record_video')")
-            //-   v-icon mdi-video
+            v-btn(:small="expanded" icon @click='openRecordVideoModal', :title="$t('record_modal.record_video')")
+              v-icon mdi-video
 
             //- link
             v-menu(:close-on-content-click="!selectedText()", v-model="linkDialogIsOpen", min-width="320px")
