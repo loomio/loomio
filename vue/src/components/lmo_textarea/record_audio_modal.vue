@@ -81,13 +81,13 @@ export default {
   },
 
   mounted() {
-    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-      this.error = "Sorry recording is not supported on Safari or iOS";
-    } else {
-      canvas = this.$refs.visualizer
-      canvasCtx = canvas.getContext("2d");
-      navigator.mediaDevices.getUserMedia({audio: true}).then(this.setupRecorder, this.handleError)
-    }
+    // if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+    //   this.error = "Sorry recording is not supported on Safari or iOS";
+    // } else {
+    canvas = this.$refs.visualizer
+    canvasCtx = canvas.getContext("2d");
+    navigator.mediaDevices.getUserMedia({audio: true}).then(this.setupRecorder, this.handleError)
+    // }
   },
 
   methods: {
@@ -101,9 +101,33 @@ export default {
     },
 
     submit() {
-      this.saveFn(new File([blob], "audio.webm",  { lastModified: new Date().getTime(), type: blob.type }));
+      this.saveFn(new File([blob], this.mediaFilename(),  { lastModified: new Date().getTime(), type: blob.type }));
       this.stopStreams();
       EventBus.$emit('closeModal')
+    },
+
+    mediaFilename() {
+      if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+        return "audio.webm";
+      } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+        return "audio.mp4";
+      }
+    },
+
+    mediaRecorderOptions() {
+      if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+        return {mimeType: 'audio/webm;codecs=opus'};
+      } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+        return {mimeType: "audio/mp4;codecs=mp4a"};
+      }
+    },
+
+    blobMimetype() {
+      if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+        return 'audio/webm';
+      } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
+        return 'audio/mp4';
+      }
     },
 
     setupRecorder(stream) {
@@ -112,8 +136,7 @@ export default {
           if (track.readyState == 'live') {track.stop(); }
         });
       }
-
-      mediaRecorder = new MediaRecorder(stream, {mimeType: "audio/webm;codecs=opus"});
+      mediaRecorder = new MediaRecorder(stream, this.mediaRecorderOptions());
       visualize(stream, this.$vuetify.theme.dark ? "#1e1e1e" : "#ffffff")
       this.$refs.audio.controls = false;
       mediaRecorder.ondataavailable = function(e) {
@@ -122,7 +145,7 @@ export default {
 
       mediaRecorder.onstop = (e) => {
         this.$refs.audio.controls = true;
-        blob = new Blob(chunks, { 'type' : 'audio/webm' });
+        blob = new Blob(chunks, { 'type' : this.blobMimetype() });
         chunks = [];
         const audioURL = window.URL.createObjectURL(blob);
         this.$refs.audio.src = audioURL;
@@ -136,7 +159,7 @@ export default {
     },
 
     start() {
-      mediaRecorder.start();
+      mediaRecorder.start(1000);
       this.onAir = true
     }
   },

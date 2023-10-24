@@ -22,24 +22,49 @@ export default {
   },
 
   mounted() {
-      if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-      this.error = "Sorry recording is not supported on Safari or iOS";
-    } else {
-      navigator.mediaDevices.getUserMedia({
-        audio: true,
-        video: {
-          facingMode: "user",
-          width: 320,
-          frameRate: 10,
-        }
-      }).then(this.setupRecorder, this.handleError)
-    }
+    // if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+    //   this.error = "Sorry recording is not supported on Safari or iOS";
+    // } else {
+    navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: {
+        facingMode: "user",
+        width: 320,
+        frameRate: 10,
+      }
+    }).then(this.setupRecorder, this.handleError)
+    // }
   },
 
   methods: {
     handleError(e) {
       this.error = I18n.t("record_modal.no_camera")
     },
+
+    mediaFilename() {
+      if (MediaRecorder.isTypeSupported('video/webm')) {
+        return "video.webm";
+      } else if (MediaRecorder.isTypeSupported('video/mp4')) {
+        return "video.mp4";
+      }
+    },
+
+    mediaRecorderOptions() {
+      if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9,opus')) {
+        return {mimeType: 'video/webm;codecs=vp9,opus'};
+      } else if (MediaRecorder.isTypeSupported('video/mp4')) {
+        return {mimeType: 'video/mp4'};
+      }
+    },
+
+    blobMimetype() {
+      if (MediaRecorder.isTypeSupported('video/webm')) {
+        return 'video/webm';
+      } else if (MediaRecorder.isTypeSupported('video/mp4')) {
+        return 'video/mp4';
+      }
+    },
+
     setupRecorder(stream) {
       this.stopStreams = function() {
         stream.getTracks().forEach((track) => {
@@ -51,7 +76,7 @@ export default {
       this.$refs.video.srcObject = stream;
 
       this.$refs.video.controls = false;
-      mediaRecorder = new MediaRecorder(stream, {mimeType: 'video/webm; codecs=vp8,opus'});
+      mediaRecorder = new MediaRecorder(stream, this.mediaRecorderOptions());
       mediaRecorder.ondataavailable = function(e) {
         chunks.push(e.data);
       }
@@ -60,7 +85,7 @@ export default {
         this.$refs.video.srcObject = null;
         this.$refs.video.controls = true;
         this.$refs.video.muted = false;
-        blob = new Blob(chunks, { 'type' : 'video/webm' });
+        blob = new Blob(chunks, { 'type' : this.blobMimetype() });
         chunks = [];
         const url = URL.createObjectURL(blob);
         this.url = url;
@@ -74,7 +99,7 @@ export default {
     },
 
     submit() {
-      this.saveFn(new File([blob], "video.webm",  { lastModified: new Date().getTime(), type: blob.type }));
+      this.saveFn(new File([blob], this.mediaFilename(),  { lastModified: new Date().getTime(), type: blob.type }));
       this.stopStreams();
       EventBus.$emit('closeModal')
     },
