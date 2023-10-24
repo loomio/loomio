@@ -159,7 +159,7 @@ export default {
     },
 
     start() {
-      mediaRecorder.start();
+      mediaRecorder.start(1000);
       this.onAir = true
     }
   },
