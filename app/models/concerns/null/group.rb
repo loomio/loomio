@@ -54,6 +54,7 @@ module Null::Group
       creator_id
       cover_url
       logo_url
+      category
     )
   end
 
