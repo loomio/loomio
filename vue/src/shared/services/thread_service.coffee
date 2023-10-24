@@ -14,7 +14,7 @@ export default new class ThreadService
       name: 'templates.make_a_copy'
       menu: true
       canPerform: -> Session.user()
-      to: -> "/d/new?template_id=#{discussion.id}"
+      to: -> "/d/new?discussion_id=#{discussion.id}"
 
     translate_thread:
       icon: 'mdi-translate'

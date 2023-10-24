@@ -49,20 +49,19 @@ export default class DiscussionModel extends BaseModel
     pinnedAt: null
     poll_template_keys_or_ids: []
 
-  cloneTemplate: ->
+  buildCopy: ->
     clone = @clone()
     clone.id = null
     clone.key = null
     clone.title = I18n.t('templates.copy_of_title', {title: clone.title})
-    clone.sourceTemplateId = @id
     clone.authorId = Session.user().id
     clone.pinnedAt = null
     clone.forkedEventIds = []
     clone.groupId = null
     clone.closedAt = null
+    clone.closerId = null
     clone.createdAt = null
     clone.updatedAt = null
-    clone.template = false
     clone
 
   pollTemplates: ->

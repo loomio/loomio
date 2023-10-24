@@ -42,6 +42,12 @@ export default
           if parseInt(@$route.query.group_id)
             @discussion.groupId = parseInt(@$route.query.group_id)
 
+      else if discussionId = parseInt(@$route.query.discussion_id)
+        Records.discussions.findOrFetchById(discussionId).then (dt) =>
+          @discussion = dt.buildCopy()
+          if dt.groupId && Session.user().groupIds().includes(dt.groupId)
+            @discussion.groupId = dt.groupId
+
       else if @groupId = parseInt(@$route.query.group_id)
         Records.groups.findOrFetchById(@groupId).then =>
           @discussion = Records.discussions.build
