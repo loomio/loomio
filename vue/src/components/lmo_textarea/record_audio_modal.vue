@@ -118,7 +118,9 @@ export default {
       if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
         return {mimeType: 'audio/webm;codecs=opus'};
       } else if (MediaRecorder.isTypeSupported('audio/mp4')) {
-        return {mimeType: 'audio/mp4;codecs=mp4a'};
+        // "audio/mp4;codecs=avc1"
+        // "audio/mp4;codecs=mp4a"
+        return {mimeType: "audio/mp4;codecs=avc1"};
       }
     },
 
