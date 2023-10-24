@@ -50,8 +50,8 @@ export default {
     },
 
     mediaRecorderOptions() {
-      if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9')) {
-        return {mimeType: 'video/webm;codecs=vp9'};
+      if (MediaRecorder.isTypeSupported('video/webm;codecs=vp9,opus')) {
+        return {mimeType: 'video/webm;codecs=vp9,opus'};
       } else if (MediaRecorder.isTypeSupported('video/mp4')) {
         return {mimeType: 'video/mp4'};
       }
