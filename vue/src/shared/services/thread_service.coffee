@@ -28,7 +28,9 @@ export default new class ThreadService
       icon: 'mdi-bell'
       dock: 2
       canPerform: ->
-        discussion.volume() == 'normal' && AbilityService.canChangeVolume(discussion)
+        !discussion.closedAt &&
+        discussion.volume() == 'normal' &&
+        AbilityService.canChangeVolume(discussion)
       perform: ->
         openModal
           component: 'ChangeVolumeForm'

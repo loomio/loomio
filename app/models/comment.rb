@@ -132,7 +132,7 @@ class Comment < ApplicationRecord
   end
 
   def can_be_edited?
-    group.members_can_edit_comments or is_most_recent?
+    !discussion.closed_at && (group.members_can_edit_comments or is_most_recent?)
   end
 
   private

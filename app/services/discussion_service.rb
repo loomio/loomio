@@ -106,18 +106,14 @@ class DiscussionService
 
   def self.close(discussion:, actor:)
     actor.ability.authorize! :update, discussion
-    discussion.update(closed_at: Time.now)
-
-    EventBus.broadcast('discussion_close', discussion, actor)
-    Events::DiscussionClosed.publish!(discussion, actor)
+    discussion.update(closed_at: Time.now, closer_id: actor.id)
+    MessageChannelService.publish_models([discussion], group_id: discussion.group_id, user_id: actor.id)
   end
 
   def self.reopen(discussion:, actor:)
     actor.ability.authorize! :update, discussion
-    discussion.update(closed_at: nil)
-
-    EventBus.broadcast('discussion_reopen', discussion, actor)
-    Events::DiscussionReopened.publish!(discussion, actor)
+    discussion.update(closed_at: nil, closer_id: nil)
+    MessageChannelService.publish_models([discussion], group_id: discussion.group_id, user_id: actor.id)
   end
 
   def self.move(discussion:, params:, actor:)
