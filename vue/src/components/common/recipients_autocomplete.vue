@@ -245,6 +245,7 @@ export default {
                 size: this.model.group().membershipsCount,
                 icon: 'mdi-account-group'
               });
+              break;
             case 'discussion_group':
               ret.push({
                 id: 'discussion_group',
@@ -252,6 +253,7 @@ export default {
                 size: this.model.discussion().membersCount,
                 icon: 'mdi-forum'
               });
+              break;
             case 'voters':
               ret.push({
                 id: 'voters',
@@ -259,6 +261,7 @@ export default {
                 size: this.model.poll().votersCount,
                 icon: 'mdi-forum'
               });
+              break;
             case 'decided_voters':
               ret.push({
                 id: 'decided_voters',
@@ -266,6 +269,7 @@ export default {
                 size: this.model.poll().decidedVotersCount,
                 icon: 'mdi-forum'
               });
+              break;
             case 'undecided_voters':
               ret.push({
                 id: 'undecided_voters',
@@ -273,6 +277,7 @@ export default {
                 size: this.model.poll().undecidedVotersCount,
                 icon: 'mdi-forum'
               });
+              break;
           }
         });
 
@@ -292,7 +297,7 @@ export default {
 
           groups.filter(AbilityService.canNotifyGroup).forEach(group => {
             if (group.membershipsCount) {
-              return ret.push({
+              ret.push({
                 id: `group-${group.id}`,
                 name: this.$t('announcement.audiences.group', {name: group.name}),
                 size: group.membershipsCount,
