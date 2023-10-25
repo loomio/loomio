@@ -32,17 +32,19 @@ export default
 
   mounted: ->
     Records.users.fetchGroups()
-    Records.discussionTemplates.findOrFetchById(@discussion.discussionTemplateId).then (template) =>
-      @discussionTemplate = template
-      if template.recipientAudience == 'group' && @discussion.groupId
-        @initialRecipients = [
-          { type: 'audience',
-            id: 'group',
-            icon: 'mdi-account-group',
-            name: I18n.t('announcement.audiences.group', {name: @discussion.group().name}),
-            size: @discussion.group().acceptedMembershipsCount}
-        ]
-    .finally => @loaded = true
+    
+    if @discussion.discussionTemplateId
+      Records.discussionTemplates.findOrFetchById(@discussion.discussionTemplateId).then (template) =>
+        @discussionTemplate = template
+        if template.recipientAudience == 'group' && @discussion.groupId
+          @initialRecipients = [
+            { type: 'audience',
+              id: 'group',
+              icon: 'mdi-account-group',
+              name: I18n.t('announcement.audiences.group', {name: @discussion.group().name}),
+              size: @discussion.group().acceptedMembershipsCount}
+          ]
+      .finally => @loaded = true
 
     @watchRecords
       collections: ['groups', 'memberships']
