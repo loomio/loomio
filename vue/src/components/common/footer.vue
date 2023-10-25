@@ -1,13 +1,17 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
 
-export default
-  data: ->
-    privacyUrl: AppConfig.theme.privacy_url
-    helpUrl: AppConfig.theme.help_url
-    termsUrl: AppConfig.theme.terms_url
-    hostname: AppConfig.theme.canonical_host
-    poweredUrl: "https://www.loomio.com?utm_source=#{AppConfig.theme.canonical_host}&utm_campaign=appfooter"
+export default {
+  data() {
+    return {
+      privacyUrl: AppConfig.theme.privacy_url,
+      helpUrl: AppConfig.theme.help_url,
+      termsUrl: AppConfig.theme.terms_url,
+      hostname: AppConfig.theme.canonical_host,
+      poweredUrl: `https://www.loomio.com?utm_source=${AppConfig.theme.canonical_host}&utm_campaign=appfooter`
+    };
+  }
+};
 
 </script>
 <template lang="pug">

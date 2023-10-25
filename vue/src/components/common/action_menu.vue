@@ -1,19 +1,23 @@
-<script lang="coffee">
-import { some } from 'lodash'
-export default
-  props:
-    actions: Object
-    small: Boolean
-    icon: Boolean
-    name: String
-    menuIcon: 
-      type: String
+<script lang="js">
+import { some } from 'lodash';
+export default {
+  props: {
+    actions: Object,
+    small: Boolean,
+    icon: Boolean,
+    name: String,
+    menuIcon: { 
+      type: String,
       default: 'mdi-dots-horizontal'
+    }
+  },
 
-  computed:
-    canPerformAny: ->
-      some @actions, (action) -> action.canPerform()
-
+  computed: {
+    canPerformAny() {
+      return some(this.actions, action => action.canPerform());
+    }
+  }
+}
 </script>
 
 <template lang="pug">

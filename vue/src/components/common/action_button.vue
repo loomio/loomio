@@ -1,13 +1,16 @@
-<script lang="coffee">
-export default
-  props:
-    action: Object
-    name: String
-    nameArgs: Object
+<script lang="js">
+export default {
+  props: {
+    action: Object,
+    name: String,
+    nameArgs: Object,
     small: Boolean
-  computed:
-    text: -> @$t((@action.name || 'action_dock.'+@name), (@nameArgs || {}))
-    cssClass: -> "action-dock__button--#{@name}"
+  },
+  computed: {
+    text() { return this.$t((this.action.name || ('action_dock.'+this.name)), (this.nameArgs || {})); },
+    cssClass() { return `action-dock__button--${this.name}`; }
+  }
+};
 </script>
 
 <template lang="pug">
