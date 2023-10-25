@@ -1,265 +1,315 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import Flash from '@/shared/services/flash'
-import AnnouncementService from '@/shared/services/announcement_service'
-import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash'
-import AbilityService from '@/shared/services/ability_service'
-import NotificationsCount from './notifications_count'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import Flash from '@/shared/services/flash';
+import AnnouncementService from '@/shared/services/announcement_service';
+import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash';
+import AbilityService from '@/shared/services/ability_service';
+import NotificationsCount from './notifications_count';
 
-export default
+export default {
   components: {
     NotificationsCount
-  }
+  },
 
-  props:
-    defaultGroup: false
-    label: String
-    placeholder: String
-    hint: String
-    reset: Boolean
-    model: Object
-    existingOnly: Boolean
-    includeActor: Boolean
-    excludeMembers: Boolean
-    excludedAudiences:
-      type: Array
-      default: -> []
-    excludedUserIds:
-      type: Array
-      default: -> []
-    initialRecipients:
-      type: Array
-      default: -> []
+  props: {
+    defaultGroup: false,
+    label: String,
+    placeholder: String,
+    hint: String,
+    reset: Boolean,
+    model: Object,
+    existingOnly: Boolean,
+    includeActor: Boolean,
+    excludeMembers: Boolean,
+    excludedAudiences: {
+      type: Array,
+      default() { return []; }
+    },
+    excludedUserIds: {
+      type: Array,
+      default() { return []; }
+    },
+    initialRecipients: {
+      type: Array,
+      default() { return []; }
+    }
+  },
 
-  data: ->
-    query: ''
-    suggestedUserIds: []
-    suggestions: []
-    recipients: []
-    loading: false
+  data() {
+    return {
+      query: '',
+      suggestedUserIds: [],
+      suggestions: [],
+      recipients: [],
+      loading: false
+    };
+  },
 
-  mounted: ->
-    @recipients = @initialRecipients
-    @fetchChatbots()
-    @fetchAndUpdateSuggestions()
+  mounted() {
+    this.recipients = this.initialRecipients;
+    this.fetchChatbots();
+    this.fetchAndUpdateSuggestions();
+  },
 
-  watch:
-    'model.groupId': (groupId) ->
-      @suggestedUserIds = []
-      @newRecipients(@initialRecipients)
-      @fetchChatbots()
-      @fetchAndUpdateSuggestions()
+  watch: {
+    'model.groupId'(groupId) {
+      this.suggestedUserIds = [];
+      this.newRecipients(this.initialRecipients);
+      this.fetchChatbots();
+      this.fetchAndUpdateSuggestions();
+    },
 
-    reset: ->
-      @query = ''
-      @recipients = @initialRecipients
-      @fetchAndUpdateSuggestions()
+    reset() {
+      this.query = '';
+      this.recipients = this.initialRecipients;
+      this.fetchAndUpdateSuggestions();
+    },
 
-    recipients: (val) ->
-      @newRecipients(val)
-      @$emit('new-recipients', val)
-      @updateSuggestions()
+    recipients(val) {
+      this.newRecipients(val);
+      this.$emit('new-recipients', val);
+      this.updateSuggestions();
+    },
 
-    query: (q) ->
-      @$emit('new-query', q)
-      @fetchAndUpdateSuggestions()
+    query(q) {
+      this.$emit('new-query', q);
+      this.fetchAndUpdateSuggestions();
+    }
+  },
 
-  methods:
-    fetchChatbots: ->
-      return unless @model.groupId
-      Records.fetch
-        path: 'chatbots'
-        params:
-          group_id: @model.groupId
-      .then (data) =>
-        @updateSuggestions()
-
-    fetchSuggestions: debounce ->
-      return unless @query
-      existingOnly = (@existingOnly && {existing_only: 1}) || {}
-      @loading = true
-      Records.fetch
-        path: 'announcements/search'
+  methods: {
+    fetchChatbots() {
+      if (!this.model.groupId) { return; }
+      Records.fetch({
+        path: 'chatbots',
         params: {
-          exclude_types: 'group inviter'
-          q: @query
-          per: 20
-          include_actor: (@includeActor && 1) || null
-          ...existingOnly
-          ...@model.bestNamedId()
-        }
-      .then (data) =>
-        @suggestedUserIds = uniq @suggestedUserIds.concat(data['users'].map (u) -> u.id)
-        @updateSuggestions()
-      .finally =>
-        @loading = false
-    , 500
+          group_id: this.model.groupId
+        }}).then(data => {
+          this.updateSuggestions();
+      });
+    },
 
-    fetchAndUpdateSuggestions: ->
-      @fetchSuggestions()
-      @updateSuggestions()
+    fetchSuggestions: debounce(function() {
+      if (!this.query) { return; }
+      const existingOnly = (this.existingOnly && {existing_only: 1}) || {};
+      this.loading = true;
+      Records.fetch({
+        path: 'announcements/search',
+        params: {
+          exclude_types: 'group inviter',
+          q: this.query,
+          per: 20,
+          include_actor: (this.includeActor && 1) || null,
+          ...existingOnly,
+          ...this.model.bestNamedId()
+        }})
+      .then(data => {
+        this.suggestedUserIds = uniq(this.suggestedUserIds.concat(data['users'].map(u => u.id)));
+        this.updateSuggestions();
+    }).finally(() => {
+        this.loading = false;
+      });
+    }
+    , 500),
 
-    newRecipients: (val) ->
-      @model.recipientAudience = (find(val, (o) -> o.type == 'audience') || {}).id
-      @model.recipientUserIds = map(filter(val, (o) -> o.type == 'user'), 'id')
-      @model.recipientEmails = map(filter(val, (o) -> o.type == 'email'), 'name')
-      @model.recipientChatbotIds = map(filter(val, (o) -> o.type == 'chatbot'), 'id')
+    fetchAndUpdateSuggestions() {
+      this.fetchSuggestions();
+      this.updateSuggestions();
+    },
 
-    findUsers: ->
-      return [] unless @query
-      chain = Records.users.collection.chain()
+    newRecipients(val) {
+      this.model.recipientAudience = (find(val, o => o.type === 'audience') || {}).id;
+      this.model.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
+      this.model.recipientEmails = map(filter(val, o => o.type === 'email'), 'name');
+      this.model.recipientChatbotIds = map(filter(val, o => o.type === 'chatbot'), 'id');
+    },
 
-      chain = chain.find(id: {$in: difference(@suggestedUserIds, @excludedUserIds)})
-      chain = chain.find(emailVerified: true)
+    findUsers() {
+      if (!this.query) { return []; }
+      let chain = Records.users.collection.chain();
 
-      chain = chain.find
+      chain = chain.find({id: {$in: difference(this.suggestedUserIds, this.excludedUserIds)}});
+      chain = chain.find({emailVerified: true});
+
+      chain = chain.find({
         $or: [
-          {name: {'$regex': ["^#{@query}", "i"]}}
-          {username: {'$regex': ["^#{@query}", "i"]}}
-          {name: {'$regex': [" #{@query}", "i"]}}
-        ]
+          {name: {'$regex': [`^${this.query}`, "i"]}},
+          {username: {'$regex': [`^${this.query}`, "i"]}},
+          {name: {'$regex': [` ${this.query}`, "i"]}}
+        ]});
 
-      chain.data()
+      return chain.data();
+    },
 
-    notificationsCount: ->
-      sum(@recipients.map((r) => r.size || 1))
-
-    expand: (item) ->
-      excludeMembers = (@excludeMembers && {exclude_members: 1}) || {}
-      if @model.anonymous && ['decided_voters', 'undecided_voters'].includes(item.id)
-        Flash.warning('announcement.cannot_reveal_when_anonymous')
-        return false 
-      Records.fetch
-        path: 'announcements/audience'
+    expand(item) {
+      const excludeMembers = (this.excludeMembers && {exclude_members: 1}) || {};
+      if (this.model.anonymous && ['decided_voters', 'undecided_voters'].includes(item.id)) {
+        Flash.warning('announcement.cannot_reveal_when_anonymous');
+        return false; 
+      }
+      Records.fetch({
+        path: 'announcements/audience',
         params: {
-          recipient_audience: item.id
-          include_actor: (@includeActor && 1) || null
-          ...excludeMembers
-          ...@model.bestNamedId()
-        }
-      .then (data) =>
-        @remove(item)
-        userIds = (data['users'] || []).map((u) -> u.id)
-        @suggestedUserIds = uniq @suggestedUserIds.concat(userIds)
-        Records.users.find(userIds).forEach (u) =>
-          @recipients.push
-            id: u.id
-            type: 'user'
-            name: u.nameOrEmail()
+          recipient_audience: item.id,
+          include_actor: (this.includeActor && 1) || null,
+          ...excludeMembers,
+          ...this.model.bestNamedId()
+        }})
+      .then(data => {
+        this.remove(item);
+        const userIds = (data['users'] || []).map(u => u.id);
+        this.suggestedUserIds = uniq(this.suggestedUserIds.concat(userIds));
+        Records.users.find(userIds).forEach(u => {
+          this.recipients.push({
+            id: u.id,
+            type: 'user',
+            name: u.nameOrEmail(),
             user: u
+          });
+        });
+      });
+    },
 
-    remove: (item) ->
-      @recipients = filter @recipients, (r) ->
-        !(r.id == item.id && r.type == item.type)
+    remove(item) {
+      this.recipients = filter(this.recipients, r => !((r.id === item.id) && (r.type === item.type)));
+    },
 
-    emailToRecipient: (email) ->
-      id: email
-      type: 'email'
-      icon: 'mdi-email-outline'
-      name: email
+    emailToRecipient(email) {
+      return {
+        id: email,
+        type: 'email',
+        icon: 'mdi-email-outline',
+        name: email
+      };
+    },
 
-    updateSuggestions: ->
-      if @query && @canAddGuests
-        emails = uniq(@query.match(/[^\s:,;"`<>]+?@[^\s:,;"`<>]+\.[^\s:,;"`<>]+/g) || [])
+    updateSuggestions() {
+      if (this.query && this.canAddGuests) {
+        const emails = uniq(this.query.match(/[^\s:,;"`<>]+?@[^\s:,;"`<>]+\.[^\s:,;"`<>]+/g) || []);
 
-        # catch paste of multiple email addresses, or failure to press enter after an email address
-        if emails.length > 1 or (emails.length == 1 && [',', ' '].includes(@query.slice(-1)))
-          objs = uniqBy(@recipients.concat(emails.map(@emailToRecipient)), 'id')
-          @recipients = objs
-          @suggestions = objs
-          @query = ''
+        // catch paste of multiple email addresses, or failure to press enter after an email address
+        if ((emails.length > 1) || ((emails.length === 1) && [',', ' '].includes(this.query.slice(-1)))) {
+          const objs = uniqBy(this.recipients.concat(emails.map(this.emailToRecipient)), 'id');
+          this.recipients = objs;
+          this.suggestions = objs;
+          this.query = '';
           return
-        else if emails.length == 1
-          @suggestions = @recipients.concat(emails.map(@emailToRecipient))
+        } else if (emails.length === 1) {
+          this.suggestions = this.recipients.concat(emails.map(this.emailToRecipient));
           return
+        }
+      }
 
-      members = @findUsers().map (u) ->
-        id: u.id
-        type: 'user'
-        name: u.nameOrEmail()
+      const members = this.findUsers().map(u => ({
+        id: u.id,
+        type: 'user',
+        name: u.nameOrEmail(),
         user: u
+      }));
 
-      audiences = @audiences.map (a) ->
-        id: a.id
-        type: 'audience'
-        icon: 'mdi-account-group'
-        name: a.name
+      const audiences = this.audiences.map(a => ({
+        id: a.id,
+        type: 'audience',
+        icon: 'mdi-account-group',
+        name: a.name,
         size: a.size
+      }));
 
-      chatbots = @model.group().chatbots().map (b) ->
-        id: b.id
-        type: 'chatbot'
-        icon: 'mdi-robot'
+      const chatbots = this.model.group().chatbots().map(b => ({
+        id: b.id,
+        type: 'chatbot',
+        icon: 'mdi-robot',
         name: b.name
+      }));
 
-      @suggestions = @recipients.concat(chatbots).concat(audiences).concat(members)
+      this.suggestions = this.recipients.concat(chatbots).concat(audiences).concat(members);
+    }
+  },
 
-  computed:
-    canAddGuests: -> AbilityService.canAddGuests(@model)
-    canNotifyGroup: -> AbilityService.canAnnounce(@model)
-    modelName: -> @model.constructor.singular
+  computed: {
+    canAddGuests() { return AbilityService.canAddGuests(this.model); },
+    canNotifyGroup() { return AbilityService.canAnnounce(this.model); },
+    modelName() { return this.model.constructor.singular; },
 
-    audiences: ->
-      ret = []
-      if @recipients.length == 0
-        AnnouncementService.audiencesFor(@model).forEach (audience) =>
-          switch audience
-            when 'group'
-              ret.push
-                id: 'group'
-                name: @$t('announcement.audiences.group', name: @model.group().name)
-                size: @model.group().membershipsCount
+    audiences() {
+      let ret = [];
+      if (this.recipients.length === 0) {
+        AnnouncementService.audiencesFor(this.model).forEach(audience => {
+          switch (audience) {
+            case 'group':
+              ret.push({
+                id: 'group',
+                name: this.$t('announcement.audiences.group', {name: this.model.group().name}),
+                size: this.model.group().membershipsCount,
                 icon: 'mdi-account-group'
-            when 'discussion_group'
-              ret.push
-                id: 'discussion_group'
-                name: @$t('announcement.audiences.discussion_group')
-                size: @model.discussion().membersCount
+              });
+            case 'discussion_group':
+              ret.push({
+                id: 'discussion_group',
+                name: this.$t('announcement.audiences.discussion_group'),
+                size: this.model.discussion().membersCount,
                 icon: 'mdi-forum'
-            when 'voters'
-              ret.push
-                id: 'voters'
-                name: @$t('announcement.audiences.voters', pollType: @model.poll().translatedPollType())
-                size: @model.poll().votersCount
+              });
+            case 'voters':
+              ret.push({
+                id: 'voters',
+                name: this.$t('announcement.audiences.voters', {pollType: this.model.poll().translatedPollType()}),
+                size: this.model.poll().votersCount,
                 icon: 'mdi-forum'
-            when 'decided_voters'
-              ret.push
-                id: 'decided_voters'
-                name: @$t('announcement.audiences.decided_voters')
-                size: @model.poll().decidedVotersCount
+              });
+            case 'decided_voters':
+              ret.push({
+                id: 'decided_voters',
+                name: this.$t('announcement.audiences.decided_voters'),
+                size: this.model.poll().decidedVotersCount,
                 icon: 'mdi-forum'
-            when 'undecided_voters'
-              ret.push
-                id: 'undecided_voters'
-                name: @$t('announcement.audiences.undecided_voters')
-                size: @model.poll().undecidedVotersCount
+              });
+            case 'undecided_voters':
+              ret.push({
+                id: 'undecided_voters',
+                name: this.$t('announcement.audiences.undecided_voters'),
+                size: this.model.poll().undecidedVotersCount,
                 icon: 'mdi-forum'
+              });
+          }
+        });
 
-        unless @excludedAudiences.includes('group')
-          groups = switch @model.constructor.singular
-            when 'poll', 'discussion', 'outcome'
-              compact [
-                @model.group(),
-                (@model.group().parentId && @model.group().parent()),
+        if (!this.excludedAudiences.includes('group')) {
+          const groups = (() => { switch (this.model.constructor.singular) {
+            case 'poll': case 'discussion': case 'outcome':
+              return compact([
+                this.model.group(),
+                (this.model.group().parentId && this.model.group().parent()),
               ].concat(
-                without(@model.group().parentOrSelf().subgroups(), @model.group())
+                without(this.model.group().parentOrSelf().subgroups(), this.model.group())
               )
-            else
-              []
+              );
+            default:
+              return [];
+          } })();
 
-          groups.filter(AbilityService.canNotifyGroup).forEach (group) =>
-            if group.membershipsCount
-              ret.push
-                id: "group-#{group.id}"
-                name: @$t('announcement.audiences.group', name: group.name)
-                size: group.membershipsCount
+          groups.filter(AbilityService.canNotifyGroup).forEach(group => {
+            if (group.membershipsCount) {
+              return ret.push({
+                id: `group-${group.id}`,
+                name: this.$t('announcement.audiences.group', {name: group.name}),
+                size: group.membershipsCount,
                 icon: 'mdi-forum'
+              });
+            }
+          });
+        }
+      }
 
-      ret.filter (a) =>
-        !@excludedAudiences.includes(a.id) &&
-        ((@query && a.name.match(new RegExp(@query, 'i'))) || true)
+      return ret.filter(a => {
+        return !this.excludedAudiences.includes(a.id) &&
+        ((this.query && a.name.match(new RegExp(this.query, 'i'))) || true);
+      });
+    }
+  }
+}
 
 </script>
 

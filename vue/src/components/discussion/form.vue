@@ -1,117 +1,150 @@
-<script lang="coffee">
-import Session        from '@/shared/services/session'
-import AbilityService from '@/shared/services/ability_service'
-import ThreadService from '@/shared/services/thread_service'
-import { map, sortBy, filter, debounce, without, uniq, find, compact } from 'lodash'
-import AppConfig from '@/shared/services/app_config'
-import Records from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import Flash   from '@/shared/services/flash'
-import I18n from '@/i18n.coffee'
-import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel'
+<script lang="js">
+import Session        from '@/shared/services/session';
+import AbilityService from '@/shared/services/ability_service';
+import ThreadService from '@/shared/services/thread_service';
+import { map, sortBy, filter, debounce, without, uniq, find, compact } from 'lodash';
+import AppConfig from '@/shared/services/app_config';
+import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import Flash   from '@/shared/services/flash';
+import I18n from '@/i18n.coffee';
+import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
+import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
 
-export default
-  components: {RecipientsAutocomplete, ThreadTemplateHelpPanel}
+export default {
+  components: {RecipientsAutocomplete, ThreadTemplateHelpPanel},
 
-  props:
-    discussion: Object
-    isPage: Boolean
+  props: {
+    discussion: Object,
+    isPage: Boolean,
     user: Object
+  },
 
-  data: ->
-    tab: 0
-    upgradeUrl: AppConfig.baseUrl + 'upgrade'
-    submitIsDisabled: false
-    searchResults: []
-    subscription: @discussion.group().parentOrSelf().subscription
-    groupItems: []
-    initialRecipients: []
-    discussionTemplate: null
-    loaded: false
+  data() {
+    return {
+      tab: 0,
+      upgradeUrl: AppConfig.baseUrl + 'upgrade',
+      submitIsDisabled: false,
+      searchResults: [],
+      subscription: this.discussion.group().parentOrSelf().subscription,
+      groupItems: [],
+      initialRecipients: [],
+      discussionTemplate: null,
+      loaded: false
+    };
+  },
 
-  mounted: ->
-    Records.users.fetchGroups()
-    
-    if @discussion.discussionTemplateId
-      Records.discussionTemplates.findOrFetchById(@discussion.discussionTemplateId).then (template) =>
-        @discussionTemplate = template
-        if template.recipientAudience == 'group' && @discussion.groupId
-          @initialRecipients = [
-            { type: 'audience',
-              id: 'group',
-              icon: 'mdi-account-group',
-              name: I18n.t('announcement.audiences.group', {name: @discussion.group().name}),
-              size: @discussion.group().acceptedMembershipsCount}
-          ]
-      .finally => @loaded = true
+  mounted() {
+    Records.users.fetchGroups();
 
-    @watchRecords
-      collections: ['groups', 'memberships']
-      query: (records) =>
-        @updateGroupItems()
+    if (this.discussion.discussionTemplateId) {
+      Records.discussionTemplates.findOrFetchById(this.discussion.discussionTemplateId).then(template => {
+        this.discussionTemplate = template;
+        if ((template.recipientAudience === 'group') && this.discussion.groupId) {
+          return this.initialRecipients = [
+          { 
+            type: 'audience',
+            id: 'group',
+            icon: 'mdi-account-group',
+            name: I18n.t('announcement.audiences.group', {name: this.discussion.group().name}),
+            size: this.discussion.group().acceptedMembershipsCount
+          }
+          ];
+        }
+      })
+      .finally(() => { this.loaded = true; });
+    } else {
+      this.loaded = true;
+    }
 
-  watch:
-    'discussion.groupId':
-      immediate: true
-      handler: (groupId) ->
-        @subscription = @discussion.group().parentOrSelf().subscription
-        users = compact([@user]).map (u) ->
-          id: u.id
-          type: 'user'
-          name: u.nameOrEmail()
+    this.watchRecords({
+      collections: ['groups', 'memberships'],
+      query: records => { this.updateGroupItems(); }
+    });
+  },
+
+  watch: {
+    'discussion.groupId': {
+      immediate: true,
+      handler(groupId) {
+        this.subscription = this.discussion.group().parentOrSelf().subscription;
+        const users = compact([this.user]).map(u => ({
+          id: u.id,
+          type: 'user',
+          name: u.nameOrEmail(),
           user: u
-        @initialRecipients = []
-        @initialRecipients = @initialRecipients.concat(users)
-        @discussion.private = @discussion.privateDefaultValue()
-        @reset = !@reset
+        }));
+        this.initialRecipients = [];
+        this.initialRecipients = this.initialRecipients.concat(users);
+        this.discussion.private = this.discussion.privateDefaultValue();
+        this.reset = !this.reset;
+      }
+    }
+  },
 
-  methods:
-    submit: ->
-      actionName = if @discussion.id then 'updated' else 'created'
-      @discussion.save()
-      .then (data) =>
-        discussionKey = data.discussions[0].key
-        EventBus.$emit('closeModal')
-        Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
-          Flash.success("discussion_form.messages.#{actionName}")
-          @$router.push @urlFor(discussion)
-      .catch (error) => true
+  methods: {
+    submit() {
+      const actionName = this.discussion.id ? 'updated' : 'created';
+      this.discussion.save().then(data => {
+        const discussionKey = data.discussions[0].key;
+        EventBus.$emit('closeModal');
+        Records.discussions.findOrFetchById(discussionKey, {}, true).then(discussion => {
+          Flash.success(`discussion_form.messages.${actionName}`);
+          this.$router.push(this.urlFor(discussion));
+        });
+      }).catch(error => true);
+    },
 
-    updateGroupItems: ->
-      @groupItems = [{text: @$t('discussion_form.none_invite_only_thread'), value: null}].concat Session.user().groups().map (g) -> {text: g.fullName, value: g.id}
+    updateGroupItems() {
+      this.groupItems = [{text: this.$t('discussion_form.none_invite_only_thread'), value: null}].concat(Session.user().groups().map(g => ({
+        text: g.fullName,
+        value: g.id
+      })));
+    },
 
-    openEditLayout: ->
-      ThreadService.actions(@discussion, @)['edit_arrangement'].perform()
+    openEditLayout() {
+      return ThreadService.actions(this.discussion, this)['edit_arrangement'].perform();
+    }
+  },
 
-  computed:
-    titlePlaceholder: ->
-      if @discussionTemplate && @discussionTemplate.titlePlaceholder
-        I18n.t('common.prefix_eg', {val: @discussionTemplate.titlePlaceholder})
-      else
-        I18n.t('discussion_form.title_placeholder')
+  computed: {
+    titlePlaceholder() {
+      if (this.discussionTemplate && this.discussionTemplate.titlePlaceholder) {
+        return I18n.t('common.prefix_eg', {val: this.discussionTemplate.titlePlaceholder});
+      } else {
+        return I18n.t('discussion_form.title_placeholder');
+      }
+    },
 
-    maxThreads: ->
-      @subscription.max_threads
+    maxThreads() {
+      return this.subscription.max_threads;
+    },
 
-    threadCount: ->
-      @discussion.group().parentOrSelf().orgDiscussionsCount
+    threadCount() {
+      return this.discussion.group().parentOrSelf().orgDiscussionsCount;
+    },
 
-    maxThreadsReached: ->
-      @maxThreads && @threadCount >= @maxThreads
+    maxThreadsReached() {
+      return this.maxThreads && (this.threadCount >= this.maxThreads);
+    },
 
-    subscriptionActive: ->
-      @subscription.active
+    subscriptionActive() {
+      return this.subscription.active;
+    },
 
-    canStartThread: ->
-      @subscriptionActive && !@maxThreadsReached
+    canStartThread() {
+      return this.subscriptionActive && !this.maxThreadsReached;
+    },
 
-    showUpgradeMessage: ->
-      !@discussion.id && !@canStartThread
+    showUpgradeMessage() {
+      return !this.discussion.id && !this.canStartThread;
+    },
 
-    isMovingItems: ->
-      @discussion.forkedEventIds.length
-
+    isMovingItems() {
+      return this.discussion.forkedEventIds.length;
+    }
+  }
+}
 </script>
 
 <template lang="pug">
