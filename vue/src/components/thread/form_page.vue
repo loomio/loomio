@@ -1,72 +1,94 @@
-<script lang="coffee">
-import Records       from '@/shared/services/records'
-import Session       from '@/shared/services/session'
-import LmoUrlService from '@/shared/services/lmo_url_service'
-import EventBus      from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
+<script lang="js">
+import Records       from '@/shared/services/records';
+import Session       from '@/shared/services/session';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+import EventBus      from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
 
-export default
-  data: ->
-    discussion: null
-    isDisabled: false
-    groupId: null
-    user: null
+export default {
+  data() {
+    return {
+      discussion: null,
+      isDisabled: false,
+      groupId: null,
+      user: null
+    };
+  },
 
-  mounted: ->
-    @init()
+  mounted() {
+    this.init();
+  },
 
-  watch:
-    '$route.query.group_id': 'init'
-    '$route.query.blank_template': 'init'
-    '$route.query.new_template': 'init'
-    '$route.query.template_id': 'init'
+  watch: {
+    '$route.query.group_id': 'init',
+    '$route.query.blank_template': 'init',
+    '$route.query.new_template': 'init',
+    '$route.query.template_id': 'init',
     '$route.params.key': 'init'
+  },
 
-  methods:
-    init: ->
-      @discussion = null
+  methods: {
+    init() {
+      let discussionId, templateId, templateKey, userId;
+      this.discussion = null;
 
-      if @$route.params.key
-        Records.discussions.findOrFetchById(@$route.params.key).then (discussion) =>
-          @discussion = discussion.clone()
+      if (this.$route.params.key) {
+        Records.discussions.findOrFetchById(this.$route.params.key).then(discussion => {
+          this.discussion = discussion.clone();
+        });
 
-      else if templateId = parseInt(@$route.query.template_id)
-        Records.discussionTemplates.findOrFetchById(templateId).then (template) =>
-          @discussion = template.buildDiscussion()
-          if parseInt(@$route.query.group_id)
-            @discussion.groupId = parseInt(@$route.query.group_id)
+      } else if ((templateId = parseInt(this.$route.query.template_id))) {
+        Records.discussionTemplates.findOrFetchById(templateId).then(template => {
+          this.discussion = template.buildDiscussion();
+          if (parseInt(this.$route.query.group_id)) {
+            this.discussion.groupId = parseInt(this.$route.query.group_id);
+          }
+        });
 
-      else if templateKey = @$route.query.template_key
-        Records.discussionTemplates.findOrFetchByKey(@$route.query.template_key, @$route.query.group_id).then (template) =>
-          @discussion = template.buildDiscussion()
-          if parseInt(@$route.query.group_id)
-            @discussion.groupId = parseInt(@$route.query.group_id)
+      } else if ((templateKey = this.$route.query.template_key)) {
+        Records.discussionTemplates.findOrFetchByKey(this.$route.query.template_key, this.$route.query.group_id).then(template => {
+          this.discussion = template.buildDiscussion();
+          if (parseInt(this.$route.query.group_id)) {
+            this.discussion.groupId = parseInt(this.$route.query.group_id);
+          }
+        });
 
-      else if discussionId = parseInt(@$route.query.discussion_id)
-        Records.discussions.findOrFetchById(discussionId).then (dt) =>
-          @discussion = dt.buildCopy()
-          if dt.groupId && Session.user().groupIds().includes(dt.groupId)
-            @discussion.groupId = dt.groupId
+      } else if ((discussionId = parseInt(this.$route.query.discussion_id))) {
+        Records.discussions.findOrFetchById(discussionId).then(dt => {
+          this.discussion = dt.buildCopy();
+          if (dt.groupId && Session.user().groupIds().includes(dt.groupId)) {
+            this.discussion.groupId = dt.groupId;
+          }
+        });
 
-      else if @groupId = parseInt(@$route.query.group_id)
-        Records.groups.findOrFetchById(@groupId).then =>
-          @discussion = Records.discussions.build
-            title: @$route.query.title
-            groupId: @groupId
+      } else if ((this.groupId = parseInt(this.$route.query.group_id))) {
+        Records.groups.findOrFetchById(this.groupId).then(() => {
+          this.discussion = Records.discussions.build({
+            title: this.$route.query.title,
+            groupId: this.groupId,
             descriptionFormat: Session.defaultFormat()
+          });
+        });
 
-      else if userId = parseInt(@$route.query.user_id)
-        Records.users.findOrFetchById(userId).then (user) =>
-          @user = user
-          @discussion = Records.discussions.build
-            title: @$route.query.title
-            groupId: null
+      } else if ((userId = parseInt(this.$route.query.user_id))) {
+        Records.users.findOrFetchById(userId).then(user => {
+          this.user = user;
+          this.discussion = Records.discussions.build({
+            title: this.$route.query.title,
+            groupId: null,
             descriptionFormat: Session.defaultFormat()
+          });
+        });
 
-      else
-        @discussion = Records.discussions.build
-          title: @$route.query.title
+      } else {
+        this.discussion = Records.discussions.build({
+          title: this.$route.query.title,
           descriptionFormat: Session.defaultFormat()
+        });
+      }
+    }
+  }
+};
 
 </script>
 <template lang="pug">
