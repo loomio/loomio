@@ -1,37 +1,43 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import AbilityService from '@/shared/services/ability_service'
+<script lang="js">
+import Records from '@/shared/services/records';
+import AbilityService from '@/shared/services/ability_service';
 
-export default
-  props:
-    model: Object
-    excludeMembers: Boolean
+export default {
+  props: {
+    model: Object,
+    excludeMembers: Boolean,
     includeActor: Boolean
+  },
 
-  data: ->
-    count: 0
+  data() {
+    return {count: 0};
+  },
 
-  methods:
-    updateCount: ->
-      excludeMembers = (@excludeMembers && {exclude_members: 1}) || {}
-      Records.remote.fetch(path: 'announcements/count', params: {
-        recipient_emails_cmr: @model.recipientEmails.join(',')
-        recipient_user_xids: @model.recipientUserIds.join('x')
-        recipient_chatbot_xids: @model.recipientChatbotIds.join('x')
-        recipient_usernames_cmr: []
-        recipient_audience: @model.recipientAudience
-        include_actor: (@includeActor && 1) || null
-        ...@model.bestNamedId()
+  methods: {
+    updateCount() {
+      const excludeMembers = (this.excludeMembers && {exclude_members: 1}) || {};
+      Records.remote.fetch({path: 'announcements/count', params: {
+        recipient_emails_cmr: this.model.recipientEmails.join(','),
+        recipient_user_xids: this.model.recipientUserIds.join('x'),
+        recipient_chatbot_xids: this.model.recipientChatbotIds.join('x'),
+        recipient_usernames_cmr: [],
+        recipient_audience: this.model.recipientAudience,
+        include_actor: (this.includeActor && 1) || null,
+        ...this.model.bestNamedId(),
         ...excludeMembers
-      }).then (data) =>
-        @count = data.count
+      }}).then(data => {
+        this.count = data.count;
+      });
+    }
+  },
 
-  watch:
-    'model.recipientEmails': 'updateCount'
-    'model.recipientUserIds': 'updateCount'
-    'model.recipientAudience': 'updateCount'
+  watch: {
+    'model.recipientEmails': 'updateCount',
+    'model.recipientUserIds': 'updateCount',
+    'model.recipientAudience': 'updateCount',
     'model.groupId': 'updateCount'
-
+  }
+};
 </script>
 
 <template lang="pug">
