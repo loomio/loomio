@@ -508,7 +508,7 @@ GEM
     ruby-openai (5.1.0)
       faraday (>= 1)
       faraday-multipart (>= 1)
-    ruby-saml (1.15.0)
+    ruby-saml (1.16.0)
       nokogiri (>= 1.13.10)
       rexml
     ruby-vips (2.1.4)
