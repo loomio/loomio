@@ -74,7 +74,7 @@ export default {
 
   methods: {
     memberGroups(group) {
-      group.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user()));
+      return group.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user()));
     },
 
     openIfPinned() {
