@@ -1,20 +1,26 @@
-<script lang="coffee">
-export default
-  props:
-    model: Object
+<script lang="js">
+export default {
+  props: {
+    model: Object,
     field: String
-  computed:
-    isMd: -> @format == 'md'
-    isHtml: -> @format == 'html'
-    translated: ->
-      @model.translation[@field]
-    format: ->
-      # not all fields this is being used for has a corresponding _format column, for example, discussion.title
-      # in the situation in which there is no _format column, fall back to html
-      if @model[@field+"Format"]
-        @model[@field+"Format"]
-      else
-        'html'
+  },
+  computed: {
+    isMd() { return this.format === 'md'; },
+    isHtml() { return this.format === 'html'; },
+    translated() {
+      return this.model.translation[this.field];
+    },
+    format() {
+      // not all fields this is being used for has a corresponding _format column, for example, discussion.title
+      // in the situation in which there is no _format column, fall back to html
+      if (this.model[this.field+"Format"]) {
+        return this.model[this.field+"Format"];
+      } else {
+        return 'html';
+      }
+    }
+  }
+}
 </script>
 
 <template lang="pug">

@@ -1,17 +1,22 @@
-<script lang="coffee">
-
-import { groupPrivacy } from '@/shared/helpers/helptext'
+<script lang="js">
+import { groupPrivacy } from '@/shared/helpers/helptext';
 
 export default
-  props:
+{
+  props: {
     group: Object
-  computed:
-    privacyDescription: -> @$t(groupPrivacy(@group))
-    iconClass: ->
-      switch @group.groupPrivacy
-        when 'open'   then 'mdi-earth'
-        when 'closed' then 'mdi-lock-outline'
-        when 'secret' then 'mdi-lock-outline'
+  },
+  computed: {
+    privacyDescription() { return this.$t(groupPrivacy(this.group)); },
+    iconClass() {
+      switch (this.group.groupPrivacy) {
+        case 'open':   return 'mdi-earth';
+        case 'closed': return 'mdi-lock-outline';
+        case 'secret': return 'mdi-lock-outline';
+      }
+    }
+  }
+};
 </script>
 
 <template lang="pug">

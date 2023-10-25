@@ -1,75 +1,93 @@
-<script lang="coffee">
-import AppConfig          from '@/shared/services/app_config'
-import Records            from '@/shared/services/records'
-import Session            from '@/shared/services/session'
-import EventBus           from '@/shared/services/event_bus'
-import AbilityService     from '@/shared/services/ability_service'
-import RecordLoader       from '@/shared/services/record_loader'
-import ThreadFilter       from '@/shared/services/thread_filter'
-import { capitalize, take, keys, every, orderBy, debounce } from 'lodash'
-import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
+<script lang="js">
+import AppConfig          from '@/shared/services/app_config';
+import Records            from '@/shared/services/records';
+import Session            from '@/shared/services/session';
+import EventBus           from '@/shared/services/event_bus';
+import AbilityService     from '@/shared/services/ability_service';
+import RecordLoader       from '@/shared/services/record_loader';
+import ThreadFilter       from '@/shared/services/thread_filter';
+import { capitalize, take, keys, every, orderBy, debounce } from 'lodash';
+import { subDays, addDays, subWeeks, subMonths } from 'date-fns';
 
 export default
-  data: ->
-    dashboardLoaded: Records.discussions.collection.data.length > 0
-    filter: @$route.params.filter || 'hide_muted'
-    discussions: []
-    loader: null
+{
+  data() {
+    return {
+      dashboardLoaded: Records.discussions.collection.data.length > 0,
+      filter: this.$route.params.filter || 'hide_muted',
+      discussions: [],
+      loader: null
+    };
+  },
 
-  created: ->
-    @init()
-    EventBus.$on 'signedIn', @init
+  created() {
+    this.init();
+    EventBus.$on('signedIn', this.init);
+  },
 
-  beforeDestroy: ->
-    EventBus.$off 'signedIn', @init
+  beforeDestroy() {
+    EventBus.$off('signedIn', this.init);
+  },
 
-  mounted: ->
-    EventBus.$emit('content-title-visible', false)
-    EventBus.$emit 'currentComponent',
-      titleKey: 'dashboard_page.aria_label'
+  mounted() {
+    EventBus.$emit('content-title-visible', false);
+    EventBus.$emit('currentComponent', {
+      titleKey: 'dashboard_page.aria_label',
       page: 'dashboardPage'
+    }
+    );
+  },
 
-  methods:
-    init: ->
-      @loader = new RecordLoader
-        collection: 'discussions'
-        path: 'dashboard'
-        params:
-          exclude_types: 'poll'
-          filter: @filter
+  methods: {
+    init() {
+      this.loader = new RecordLoader({
+        collection: 'discussions',
+        path: 'dashboard',
+        params: {
+          exclude_types: 'poll',
+          filter: this.filter,
           per: 60
+        }
+      });
 
-      @watchRecords
-        key: 'dashboard'
-        collections: ['discussions', 'memberships']
-        query: @query
+      this.watchRecords({
+        key: 'dashboard',
+        collections: ['discussions', 'memberships'],
+        query: this.query
+      });
 
-      @refresh()
+      this.refresh();
+    },
 
-    refresh: ->
-      return unless Session.isSignedIn()
-      @fetch()
-      @query()
+    refresh() {
+      if (!Session.isSignedIn()) { return; }
+      this.fetch();
+      this.query();
+    },
 
-    fetch: ->
-      return unless @loader
-      @loader.fetchRecords().then => @dashboardLoaded = true
+    fetch() {
+      if (!this.loader) { return; }
+      this.loader.fetchRecords().then(() => { return this.dashboardLoaded = true; });
+    },
 
-    query: ->
-      groupIds = Records.memberships.collection.find(userId: Session.user().id).map (m) -> m.groupId
-      chain = Records.discussions.collection.chain()
-      chain = chain.find($or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null}])
-      chain = chain.find(discardedAt: null)
-      chain = chain.find(closedAt: null)
-      chain = chain.find(lastActivityAt: { $gt: subMonths(new Date(), 6) })
-      @discussions = chain.simplesort('lastActivityAt', true).data()
+    query() {
+      const groupIds = Records.memberships.collection.find({userId: Session.user().id}).map(m => m.groupId);
+      let chain = Records.discussions.collection.chain();
+      chain = chain.find({$or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null}]});
+      chain = chain.find({discardedAt: null});
+      chain = chain.find({closedAt: null});
+      chain = chain.find({lastActivityAt: { $gt: subMonths(new Date(), 6) }});
+      this.discussions = chain.simplesort('lastActivityAt', true).data();
+    }
+  },
 
-  computed:
-    noGroups: -> Session.user().groups().length == 0
-    promptStart: ->
-      @noGroups && AbilityService.canStartGroups()
-    userHasMuted: -> Session.user().hasExperienced("mutingThread")
-    showLargeImage: -> true
+  computed: {
+    noGroups() { return Session.user().groups().length === 0; },
+    promptStart() { return this.noGroups && AbilityService.canStartGroups(); },
+    userHasMuted() { return Session.user().hasExperienced("mutingThread"); },
+    showLargeImage() { return true; }
+  }
+};
 
 </script>
 

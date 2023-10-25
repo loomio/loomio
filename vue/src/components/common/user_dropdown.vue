@@ -1,37 +1,46 @@
-<script lang="coffee">
-import AppConfig       from '@/shared/services/app_config'
-import Session         from '@/shared/services/session'
-import Records         from '@/shared/services/records'
-import Flash from '@/shared/services/flash'
+<script lang="js">
+import AppConfig       from '@/shared/services/app_config';
+import Session         from '@/shared/services/session';
+import Records         from '@/shared/services/records';
+import Flash from '@/shared/services/flash';
 
-export default
-  methods:
-    togglePinned: ->
-      if @user.experiences['sidebar']
-        Records.users.saveExperience('sidebar', false)
-      else
-        Records.users.saveExperience('sidebar', true)
+export default {
+  methods: {
+    togglePinned() {
+      if (this.user.experiences['sidebar']) {
+        return Records.users.saveExperience('sidebar', false);
+      } else {
+        return Records.users.saveExperience('sidebar', true);
+      }
+    },
 
-    toggleDark: ->
-      if @isDark
-        Records.users.saveExperience('darkMode', false)
-        @$vuetify.theme.dark = false
-      else
-        Records.users.saveExperience('darkMode', true)
-        @$vuetify.theme.dark = true
+    toggleDark() {
+      if (this.isDark) {
+        Records.users.saveExperience('darkMode', false);
+        return this.$vuetify.theme.dark = false;
+      } else {
+        Records.users.saveExperience('darkMode', true);
+        return this.$vuetify.theme.dark = true;
+      }
+    },
 
-    defaultDark: ->
-      (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    defaultDark() {
+      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    },
 
-    signOut: ->
-      Session.signOut()
+    signOut() {
+      return Session.signOut();
+    }
+  },
 
-  computed:
-    isDark:   -> @$vuetify.theme.dark
-    version:  -> AppConfig.version
-    release:  -> AppConfig.release
-    siteName: -> AppConfig.theme.site_name
-    user:     -> Session.user()
+  computed: {
+    isDark() { return this.$vuetify.theme.dark; },
+    version() { return AppConfig.version; },
+    release() { return AppConfig.release; },
+    siteName() { return AppConfig.theme.site_name; },
+    user() { return Session.user(); }
+  }
+};
 
 </script>
 

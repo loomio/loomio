@@ -1,11 +1,14 @@
-<script lang="coffee">
+<script lang="js">
 import { ElementMixin, HandleDirective } from 'vue-slicksort';
 
 export default
-  mixins: [ElementMixin]
-  directives: { handle: HandleDirective },
-  props:
-    item: Object
+  ({
+    mixins: [ElementMixin],
+    directives: { handle: HandleDirective },
+    props: {
+      item: Object
+    }
+  });
 </script>
 
 <template lang="pug">

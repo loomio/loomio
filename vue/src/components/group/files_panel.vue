@@ -1,103 +1,124 @@
-<script lang="coffee">
-import Records           from '@/shared/services/records'
-import RecordLoader      from '@/shared/services/record_loader'
-import EventBus          from '@/shared/services/event_bus'
-import AbilityService    from '@/shared/services/ability_service'
-import Session           from '@/shared/services/session'
-import AttachmentService from '@/shared/services/attachment_service'
+<script lang="js">
+import Records           from '@/shared/services/records';
+import RecordLoader      from '@/shared/services/record_loader';
+import EventBus          from '@/shared/services/event_bus';
+import AbilityService    from '@/shared/services/ability_service';
+import Session           from '@/shared/services/session';
+import AttachmentService from '@/shared/services/attachment_service';
 
-import { isEmpty, intersection, debounce, filter, some, orderBy, uniq } from 'lodash'
+import { isEmpty, intersection, debounce, filter, some, orderBy, uniq } from 'lodash';
 
 export default
-  data: ->
-    group: null
-    loader: null
-    attachmentLoader: null
-    searchQuery: ''
-    items: []
-    subgroups: 'mine'
-    attachmentIds: []
-    per: 25
-    from: 0
+{
+  data() {
+    return {
+      group: null,
+      loader: null,
+      attachmentLoader: null,
+      searchQuery: '',
+      items: [],
+      subgroups: 'mine',
+      attachmentIds: [],
+      per: 25,
+      from: 0
+    };
+  },
 
-  created: ->
-    @onQueryInput = debounce (val) =>
-      @$router.replace({ query: { q: val } })
-    , 400
+  created() {
+    this.onQueryInput = debounce(val => {
+      return this.$router.replace({ query: { q: val } });
+    } , 400);
 
-    @group = Records.groups.fuzzyFind(@$route.params.key)
+    this.group = Records.groups.fuzzyFind(this.$route.params.key);
 
-    EventBus.$emit 'currentComponent',
-      page: 'groupPage'
-      title: @group.name
-      group: @group
-      search:
-        placeholder: @$t('navbar.search_files', name: @group.parentOrSelf().name)
+    EventBus.$emit('currentComponent', {
+      page: 'groupPage',
+      title: this.group.name,
+      group: this.group,
+      search: {
+        placeholder: this.$t('navbar.search_files', {name: this.group.parentOrSelf().name})
+      }
+    });
 
-    @loader = new RecordLoader
-      collection: 'documents'
-      path: 'for_group'
-      params:
-        group_id: @group.id
-        per: @per
-        subgroups: @subgroups
-        from: @from
+    this.loader = new RecordLoader({
+      collection: 'documents',
+      path: 'for_group',
+      params: {
+        group_id: this.group.id,
+        per: this.per,
+        subgroups: this.subgroups,
+        from: this.from
+      }
+    });
 
-    @attachmentLoader = new RecordLoader
-      collection: 'attachments'
-      params:
-        group_id: @group.id
-        per: @per
-        subgroups: @subgroups
-        from: @from
+    this.attachmentLoader = new RecordLoader({
+      collection: 'attachments',
+      params: {
+        group_id: this.group.id,
+        per: this.per,
+        subgroups: this.subgroups,
+        from: this.from
+      }
+    });
 
-    @watchRecords
-      collections: ['documents', 'attachments']
-      query: => @query()
+    this.watchRecords({
+      collections: ['documents', 'attachments'],
+      query: () => this.query()
+    });
 
-    @searchQuery = @$route.query.q || ''
-    @fetch()
+    this.searchQuery = this.$route.query.q || '';
+    this.fetch();
+  },
 
-  watch:
-    '$route.query.q': (val) ->
-      @searchQuery = val || ''
-      @fetch()
-      @query()
+  watch: {
+    '$route.query.q'(val) {
+      this.searchQuery = val || '';
+      this.fetch();
+      this.query();
+    }
+  },
 
-  methods:
-    query: ->
-      groupIds = switch @subgroups
-        when 'none' then [@group.id]
-        when 'mine' then intersection(@group.organisationIds(), Session.user().groupIds())
-        when 'all' then @group.organisationIds()
+  methods: {
+    query() {
+      const groupIds = (() => { switch (this.subgroups) {
+        case 'none': return [this.group.id];
+        case 'mine': return intersection(this.group.organisationIds(), Session.user().groupIds());
+        case 'all': return this.group.organisationIds();
+      } })();
 
-      documents = Records.documents.collection.chain().
-                     find(groupId: {$in: groupIds}).
-                     find(title: {$regex: ///#{@searchQuery}///i}).
-                     data()
+      const documents = Records.documents.collection.chain().
+                     find({groupId: {$in: groupIds}}).
+                     find({title: {$regex: new RegExp(`${this.searchQuery}`, 'i')}}).
+                     data();
 
-      attachments = Records.attachments.collection.chain().
-                     find(id: {$in: @attachmentIds}).
-                     find(filename: {$regex: ///#{@searchQuery}///i}).
-                     data()
+      const attachments = Records.attachments.collection.chain().
+                     find({id: {$in: this.attachmentIds}}).
+                     find({filename: {$regex: new RegExp(`${this.searchQuery}`, 'i')}}).
+                     data();
 
-      @items = orderBy(documents.concat(attachments), 'createdAt', 'desc')
+      this.items = orderBy(documents.concat(attachments), 'createdAt', 'desc');
+    },
 
-    fetch: ->
-      @loader.fetchRecords
-        q: @searchQuery
+    fetch() {
+      this.loader.fetchRecords({
+        q: this.searchQuery});
 
-      @attachmentLoader.fetchRecords(q: @searchQuery).then (data) =>
-        @attachmentIds = uniq @attachmentIds.concat((data.attachments || []).map (a) -> a.id)
-      .then => @query()
+      this.attachmentLoader.fetchRecords({q: this.searchQuery}).then(data => {
+        this.attachmentIds = uniq(this.attachmentIds.concat((data.attachments || []).map(a => a.id)));
+      }).then(() => this.query());
+    },
 
-    actionsFor: (item) ->
-      AttachmentService.actions(item)
+    actionsFor(item) {
+      return AttachmentService.actions(item);
+    }
+  },
 
-  computed:
-    showLoadMore: -> !@loader.exhausted && !@attachmentLoader.exhausted
-    loading: -> @loader.loading || @attachmentLoader.loading
-    canAdminister: -> AbilityService.canAdminister(@group)
+  computed: {
+    showLoadMore() { return !this.loader.exhausted && !this.attachmentLoader.exhausted; },
+    loading() { return this.loader.loading || this.attachmentLoader.loading; },
+    canAdminister() { return AbilityService.canAdminister(this.group); }
+  }
+};
 
 </script>
 

@@ -1,18 +1,22 @@
-<script lang="coffee">
-import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import Session        from '@/shared/services/session'
-import {map, filter, find} from 'lodash'
+<script lang="js">
+import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
+import Session        from '@/shared/services/session';
+import {map, filter, find} from 'lodash';
 
-export default
-  components:
-    RecipientsAutocomplete: RecipientsAutocomplete
+export default {
+  components: {
+    RecipientsAutocomplete
+  },
 
-  props:
-    model: Object
+  props: {
+    model: Object,
 
-    initialRecipients:
-      type: Array
-      default: -> []
+    initialRecipients: {
+      type: Array,
+      default() { return []; }
+    }
+  }
+};
 
 </script>
 

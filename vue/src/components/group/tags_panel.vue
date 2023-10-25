@@ -1,63 +1,78 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import AbilityService from '@/shared/services/ability_service'
-import Records from '@/shared/services/records'
-import RecordLoader from '@/shared/services/record_loader'
-import EventBus from '@/shared/services/event_bus'
-import Session from '@/shared/services/session'
-import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import AbilityService from '@/shared/services/ability_service';
+import Records from '@/shared/services/records';
+import RecordLoader from '@/shared/services/record_loader';
+import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
+import { debounce, some, every, compact, omit, values, keys, intersection } from 'lodash';
 
 export default
-  data: ->
-    group: null
-    pollsLoader: null
-    discussionsLoader: null
+{
+  data() {
+    return {
+      group: null,
+      pollsLoader: null,
+      discussionsLoader: null
+    };
+  },
 
-  created: ->
-    @init()
+  created() {
+    this.init();
 
-    @watchRecords
-      collections: ['polls', 'groups', 'discussions']
-      query: => @findRecords()
+    return this.watchRecords({
+      collections: ['polls', 'groups', 'discussions'],
+      query: () => this.findRecords()
+    });
+  },
 
-  watch:
+  watch: {
     '$route.params.tag': 'init'
+  },
 
-  methods:
-    init: ->
-      @group = Records.groups.find(@$route.params.key)
+  methods: {
+    init() {
+      this.group = Records.groups.find(this.$route.params.key);
 
-      @pollsLoader = new RecordLoader
-        collection: 'polls'
-        params:
-          group_id: @group.id
-          tags: @$route.params.tag
+      this.pollsLoader = new RecordLoader({
+        collection: 'polls',
+        params: {
+          group_id: this.group.id,
+          tags: this.$route.params.tag,
           subgroups: 'all'
+        }
+      });
 
-      @discussionsLoader = new RecordLoader
-        collection: 'discussions'
-        params:
-          filter: 'all'
-          tags: @$route.params.tag
-          group_id: @group.id
+      this.discussionsLoader = new RecordLoader({
+        collection: 'discussions',
+        params: {
+          filter: 'all',
+          tags: this.$route.params.tag,
+          group_id: this.group.id,
           subgroups: 'all'
+        }
+      });
 
-      @pollsLoader.fetchRecords()
-      @discussionsLoader.fetchRecords()
-      @findRecords()
+      this.pollsLoader.fetchRecords();
+      this.discussionsLoader.fetchRecords();
+      this.findRecords();
+    },
 
-    findRecords: ->
-      @polls = Records.polls.collection.chain().
-                find(groupId: {$in: @group.selfAndSubgroupIds()}).
-                find(tags: {$contains: @$route.params.tag}).
-                find(discardedAt: null).
-                simplesort('createdAt', true).data()
+    findRecords() {
+      this.polls = Records.polls.collection.chain().
+        find({groupId: {$in: this.group.selfAndSubgroupIds()}}).
+        find({tags: {$contains: this.$route.params.tag}}).
+        find({discardedAt: null}).
+        simplesort('createdAt', true).data();
 
-      @discussions = Records.discussions.collection.chain().
-                find(groupId: {$in: @group.selfAndSubgroupIds()}).
-                find(tags: {$contains: @$route.params.tag}).
-                find(discardedAt: null).
-                simplesort('lastActivityAt', true).data()
+      this.discussions = Records.discussions.collection.chain().
+        find({groupId: {$in: this.group.selfAndSubgroupIds()}}).
+        find({tags: {$contains: this.$route.params.tag}}).
+        find({discardedAt: null}).
+        simplesort('lastActivityAt', true).data();
+    }
+  }
+};
 
 </script>
 

@@ -1,29 +1,41 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import AbilityService from '@/shared/services/ability_service'
-import { slice, orderBy } from 'lodash'
+<script lang="js">
+import Records        from '@/shared/services/records';
+import AbilityService from '@/shared/services/ability_service';
+import { slice, orderBy } from 'lodash';
 
 export default
-  props:
+{
+  props: {
     group: Object
-  data: ->
-    membershipRequests: []
-  created: ->
-    @watchRecords
-      collections: ['membershipRequests']
-      query: (store) =>
-        @membershipRequests = @group.pendingMembershipRequests()
-    @init()
-  methods:
-    init: ->
-      if @canManageMembershipRequests()
-        Records.membershipRequests.fetchPendingByGroup(@group.key)
+  },
+  data() {
+    return {membershipRequests: []};
+  },
+  created() {
+    this.watchRecords({
+      collections: ['membershipRequests'],
+      query: store => {
+        this.membershipRequests = this.group.pendingMembershipRequests();
+      }
+    });
+    this.init();
+  },
+  methods: {
+    init() {
+      if (this.canManageMembershipRequests()) {
+        Records.membershipRequests.fetchPendingByGroup(this.group.key);
+      }
+    },
 
-    orderedPendingMembershipRequests: ->
-      slice(orderBy(@membershipRequests, 'createdAt', 'desc'), 0, 5)
+    orderedPendingMembershipRequests() {
+      return slice(orderBy(this.membershipRequests, 'createdAt', 'desc'), 0, 5);
+    },
 
-    canManageMembershipRequests: ->
-      AbilityService.canManageMembershipRequests(@group)
+    canManageMembershipRequests() {
+      return AbilityService.canManageMembershipRequests(this.group);
+    }
+  }
+};
 </script>
 
 <template lang="pug">
