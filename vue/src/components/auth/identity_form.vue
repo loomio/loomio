@@ -1,30 +1,41 @@
-<script lang="coffee">
-import EventBus    from '@/shared/services/event_bus'
-import AuthService from '@/shared/services/auth_service'
-import AppConfig from '@/shared/services/app_config'
+<script lang="js">
+import EventBus    from '@/shared/services/event_bus';
+import AuthService from '@/shared/services/auth_service';
+import AppConfig from '@/shared/services/app_config';
 
-export default
-  props:
-    user: Object
+export default {
+  props: {
+    user: Object,
     identity: Object
+  },
 
-  data: ->
-    loading: false
-    email: ''
+  data() {
+    return {
+      loading: false,
+      email: ''
+    };
+  },
 
-  methods:
-    submit: ->
-      @loading = true
-      @user.email = @email
-      AuthService.sendLoginLink(@user).then (=>), =>
-        @user.errors = {email: [@$t('auth_form.email_not_found')]}
-      .finally =>
-        @loading = false
-    createAccount: ->
-      @user.createAccount = true
-      @user.authForm = 'signUp'
-  computed:
-    siteName: -> AppConfig.theme.site_name
+  methods: {
+    submit() {
+      this.loading = true;
+      this.user.email = this.email;
+      AuthService.sendLoginLink(this.user).then((() => {}), () => {
+        return this.user.errors = {email: [this.$t('auth_form.email_not_found')]};
+      })
+      .finally(() => {
+        this.loading = false;
+      });
+    },
+    createAccount() {
+      this.user.createAccount = true;
+      this.user.authForm = 'signUp';
+    }
+  },
+  computed: {
+    siteName() { return AppConfig.theme.site_name; }
+  }
+}
 
 </script>
 <template lang="pug">

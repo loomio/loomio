@@ -1,35 +1,48 @@
-<script lang="coffee">
-import Records       from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import Flash from '@/shared/services/flash'
-import AuthModalMixin from '@/mixins/auth_modal'
-import openModal      from '@/shared/helpers/open_modal'
-import AuthService from '@/shared/services/auth_service'
-import EventBus from '@/shared/services/event_bus'
+<script lang="js">
+import Records       from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import Flash from '@/shared/services/flash';
+import AuthModalMixin from '@/mixins/auth_modal';
+import openModal      from '@/shared/helpers/open_modal';
+import AuthService from '@/shared/services/auth_service';
+import EventBus from '@/shared/services/event_bus';
 
-export default
-  mixins: [AuthModalMixin]
-  props:
+export default {
+  mixins: [AuthModalMixin],
+  props: {
     user: Object
-  data: ->
-    attempts: 0
-    loading: false
-  methods:
-    submitAndSetPassword: ->
-      @loading = true
-      AuthService.signIn(@user).then =>
-        EventBus.$emit 'openModal',
-          component: 'ChangePasswordForm'
-          props:
+  },
+  data() {
+    return {
+      attempts: 0,
+      loading: false
+    };
+  },
+  methods: {
+    submitAndSetPassword() {
+      this.loading = true;
+      AuthService.signIn(this.user).then(() => {
+        EventBus.$emit('openModal', {
+          component: 'ChangePasswordForm',
+          props: {
             user: Session.user()
-      .finally =>
-        @attempts += 1
-        @loading = false
-    submit: ->
-      @loading = true
-      AuthService.signIn(@user).finally =>
-        @attempts += 1
-        @loading = false
+          }
+        }
+        );
+      }).finally(() => {
+        this.attempts += 1;
+        this.loading = false;
+      });
+    },
+    submit() {
+      this.loading = true;
+      AuthService.signIn(this.user).finally(() => {
+        this.attempts += 1;
+        this.loading = false;
+      });
+    }
+  }
+};
 </script>
 <template lang="pug">
 v-card.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")

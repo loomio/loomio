@@ -1,18 +1,22 @@
-<script lang="coffee">
-import Records       from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import Flash from '@/shared/services/flash'
-import AuthModalMixin from '@/mixins/auth_modal'
-import openModal      from '@/shared/helpers/open_modal'
-import AuthService from '@/shared/services/auth_service'
-import AppConfig from '@/shared/services/app_config'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import Flash from '@/shared/services/flash';
+import AuthModalMixin from '@/mixins/auth_modal';
+import openModal      from '@/shared/helpers/open_modal';
+import AuthService from '@/shared/services/auth_service';
+import AppConfig from '@/shared/services/app_config';
 
-export default
-  mixins: [AuthModalMixin]
-  props:
+export default {
+  mixins: [AuthModalMixin],
+  props: {
     user: Object
-  data: ->
-    siteName: AppConfig.theme.site_name
+  },
+  data() {
+    return {siteName: AppConfig.theme.site_name};
+  }
+}
+
 </script>
 <template lang="pug">
 v-card.auth-inactive.text-center

@@ -1,49 +1,61 @@
-<script lang="coffee">
-import EventBus    from '@/shared/services/event_bus'
-import AuthService from '@/shared/services/auth_service'
-import AppConfig from '@/shared/services/app_config'
-import Session from '@/shared/services/session'
-import AuthModalMixin from '@/mixins/auth_modal'
-import Flash from '@/shared/services/flash'
+<script lang="js">
+import EventBus    from '@/shared/services/event_bus';
+import AuthService from '@/shared/services/auth_service';
+import AppConfig from '@/shared/services/app_config';
+import Session from '@/shared/services/session';
+import AuthModalMixin from '@/mixins/auth_modal';
+import Flash from '@/shared/services/flash';
 import VueRecaptcha from 'vue-recaptcha';
-import openModal      from '@/shared/helpers/open_modal'
+import openModal      from '@/shared/helpers/open_modal';
 
-export default
-  components: { VueRecaptcha }
-  mixins: [AuthModalMixin]
+export default {
+  components: { VueRecaptcha },
+  mixins: [AuthModalMixin],
 
-  props:
+  props: {
     user: Object
+  },
 
-  mounted: ->
-    EventBus.$emit 'set-auth-modal-title', "auth_form.create_account"
+  mounted() {
+    EventBus.$emit('set-auth-modal-title', "auth_form.create_account");
+  },
 
-  data: ->
-    siteName: AppConfig.theme.site_name
-    vars: {name: @user.name, site_name: AppConfig.theme.site_name}
-    loading: false
+  data() {
+    return {
+      siteName: AppConfig.theme.site_name,
+      vars: {name: this.user.name, site_name: AppConfig.theme.site_name},
+      loading: false
+    };
+  },
 
-  methods:
-    submit: ->
-      if @useRecaptcha
-        @$refs.invisibleRecaptcha.execute()
-      else
-        @submitForm()
+  methods: {
+    submit() {
+      if (this.useRecaptcha) {
+        this.$refs.invisibleRecaptcha.execute();
+      } else {
+        this.submitForm();
+      }
+    },
 
-    submitForm: (recaptcha) ->
-      @user.recaptcha = recaptcha
-      if AuthService.validSignup(@vars, @user)
-        @loading = true
-        AuthService.signUp(@user).finally =>
-          @loading = false
-  computed:
-    recaptchaKey: -> AppConfig.recaptchaKey
-    termsUrl: -> AppConfig.theme.terms_url
-    privacyUrl: -> AppConfig.theme.privacy_url
-    newsletterEnabled: -> AppConfig.newsletterEnabled
-    allow: ->
-      AppConfig.features.app.create_user or AppConfig.pendingIdentity.identity_type?
-    useRecaptcha: -> @recaptchaKey
+    submitForm(recaptcha) {
+      this.user.recaptcha = recaptcha;
+      if (AuthService.validSignup(this.vars, this.user)) {
+        this.loading = true;
+        AuthService.signUp(this.user).finally(() => {this.loading = false; });
+      }
+    }
+  },
+  computed: {
+    recaptchaKey() { return AppConfig.recaptchaKey; },
+    termsUrl() { return AppConfig.theme.terms_url; },
+    privacyUrl() { return AppConfig.theme.privacy_url; },
+    newsletterEnabled() { return AppConfig.newsletterEnabled; },
+    allow() {
+      return AppConfig.features.app.create_user || (AppConfig.pendingIdentity.identity_type != null);
+    },
+    useRecaptcha() { return this.recaptchaKey; }
+  }
+};
 
 </script>
 <template lang="pug">
