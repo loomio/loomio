@@ -352,7 +352,7 @@ Rails.application.routes.draw do
 
   get '/start_group', to: redirect('/try')
 
-  get 'try'                                => 'application#index'
+  get 'try'                                => redirect("/g/new")
   get 'dashboard'                          => 'application#index', as: :dashboard
   get 'dashboard/:filter'                  => 'application#index'
   get 'inbox'                              => 'application#index', as: :inbox

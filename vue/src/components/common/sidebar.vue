@@ -73,7 +73,7 @@ export default
           @$router.replace("/g/#{Session.user().groups()[0].key}")
         if @$router.history.current.path == "/dashboard" && Session.user().groups().length == 0
           if AppConfig.features.app.subscriptions
-            @$router.replace("/try")
+            @$router.replace("/demo")
           else
             @$router.replace("/g/new")
 
