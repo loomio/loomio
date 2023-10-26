@@ -1,32 +1,43 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import AppConfig from '@/shared/services/app_config'
-import WebhookService from '@/shared/services/webhook_service'
-import Records from '@/shared/services/records'
-import Flash  from '@/shared/services/flash'
-import openModal from '@/shared/helpers/open_modal'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import AppConfig from '@/shared/services/app_config';
+import WebhookService from '@/shared/services/webhook_service';
+import Records from '@/shared/services/records';
+import Flash  from '@/shared/services/flash';
+import openModal from '@/shared/helpers/open_modal';
 
-export default
-  props:
-    close: Function
+export default {
+  props: {
+    close: Function,
     group: Object
+  },
 
-  data: ->
-    webhooks: []
-    loading: true
+  data() {
+    return {
+      webhooks: [],
+      loading: true
+    };
+  },
 
-  mounted: ->
-    Records.webhooks.fetch(params: {group_id: @group.id}).then => @loading = false
-    @watchRecords
-      collections: ["webhooks"]
-      query: (records) =>
-        @webhooks = records.webhooks.find(groupId: @group.id)
+  mounted() {
+    Records.webhooks.fetch({params: {group_id: this.group.id}}).then(() => { return this.loading = false; });
+    this.watchRecords({
+      collections: ["webhooks"],
+      query: records => {
+        this.webhooks = records.webhooks.find({groupId: this.group.id});
+      }
+    });
+  },
 
-  methods:
-    addAction: (group) ->
-      WebhookService.addAction(group)
-    webhookActions: (webhook) ->
-      WebhookService.webhookActions(webhook)
+  methods: {
+    addAction(group) {
+      return WebhookService.addAction(group);
+    },
+    webhookActions(webhook) {
+      return WebhookService.webhookActions(webhook);
+    }
+  }
+};
 
 </script>
 <template lang="pug">

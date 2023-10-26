@@ -1,22 +1,27 @@
-<script lang="coffee">
-import Session        from '@/shared/services/session'
-import AbilityService from '@/shared/services/ability_service'
-import { map, sortBy, filter } from 'lodash'
-import AppConfig from '@/shared/services/app_config'
-import Records from '@/shared/services/records'
-import Flash   from '@/shared/services/flash'
-export default
-  props:
-    discussion: Object
+<script lang="js">
+import Session        from '@/shared/services/session';
+import AbilityService from '@/shared/services/ability_service';
+import { map, sortBy, filter } from 'lodash';
+import AppConfig from '@/shared/services/app_config';
+import Records from '@/shared/services/records';
+import Flash   from '@/shared/services/flash';
+export default {
+  props: {
+    discussion: Object,
     close: Function
-  data: ->
-    clone: @discussion.clone()
-  methods:
-    submit: ->
-      @clone.save()
-      .then =>
-        @close()
-        Flash.success("discussion_form.messages.updated")
+  },
+  data() {
+    return {clone: this.discussion.clone()};
+  },
+  methods: {
+    submit() {
+      this.clone.save().then(() => {
+        this.close();
+        Flash.success("discussion_form.messages.updated");
+      });
+    }
+  }
+};
 </script>
 
 <template lang="pug">

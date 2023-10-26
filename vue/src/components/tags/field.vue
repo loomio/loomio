@@ -1,38 +1,49 @@
-<script lang="coffee">
-import Session from '@/shared/services/session'
-import EventBus from '@/shared/services/event_bus'
-import { uniq } from 'lodash'
+<script lang="js">
+import Session from '@/shared/services/session';
+import EventBus from '@/shared/services/event_bus';
+import { uniq } from 'lodash';
 
-export default
-  props:
+export default {
+  props: {
     model: Object
+  },
 
-  data: ->
-    items: []
+  data() {
+    return {items: []};
+  },
 
-  mounted: ->
-    @query()
+  mounted() {
+    return this.query();
+  },
 
-  methods:
-    query: ->
-      @items = uniq(@model.group().tags().map((t) -> t.name).concat(@model.group().parentOrSelf().tags().filter((t) -> t.taggingsCount).map((t) -> t.name)))
+  methods: {
+    query() {
+      this.items = uniq(this.model.group().tags().map(t => t.name).concat(this.model.group().parentOrSelf().tags().filter(t => t.taggingsCount).map(t => t.name)));
+    },
 
-    colorFor: (name) ->
-      (
-        @model.group().tags().find((t) -> t.name == name) || 
-        @model.group().parentOrSelf().tags().find((t) -> t.name == name) ||
+    colorFor(name) {
+      return (
+        this.model.group().tags().find(t => t.name === name) || 
+        this.model.group().parentOrSelf().tags().find(t => t.name === name) ||
         {}
-      ).color
+      ).color;
+    },
 
-    remove: (name) ->
-      @model.tags.splice(@model.tags.indexOf(name), 1)
+    remove(name) {
+      this.model.tags.splice(this.model.tags.indexOf(name), 1);
+    }
+  },
 
-  watch:
+  watch: {
     'model.groupId': 'query'
+  },
 
-  computed:
-    actor: ->
-      Session.user()
+  computed: {
+    actor() {
+      return Session.user();
+    }
+  }
+};
 
 </script>
 

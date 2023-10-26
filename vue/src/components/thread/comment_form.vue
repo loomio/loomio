@@ -1,47 +1,57 @@
-<script lang="coffee">
-import Session        from '@/shared/services/session'
-import Records        from '@/shared/services/records'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import Flash  from '@/shared/services/flash'
-import { last } from 'lodash'
+<script lang="js">
+import Session        from '@/shared/services/session';
+import Records        from '@/shared/services/records';
+import EventBus       from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import Flash  from '@/shared/services/flash';
+import { last } from 'lodash';
 
-export default
-  props:
-    comment: Object
+export default {
+  props: {
+    comment: Object,
     autofocus: Boolean
+  },
 
-  data: ->
-    actor: Session.user()
-    canSubmit: true
-    shouldReset: false
+  data() {
+    return {
+      actor: Session.user(),
+      canSubmit: true,
+      shouldReset: false
+    };
+  },
 
-  computed:
-    placeholder: ->
-      if @comment.parentId
-        @$t('comment_form.in_reply_to', {name: @comment.parent().author().nameOrUsername()})
-      else
-        @$t('comment_form.aria_label')
+  computed: {
+    placeholder() {
+      if (this.comment.parentId) {
+        return this.$t('comment_form.in_reply_to', {name: this.comment.parent().author().nameOrUsername()});
+      } else {
+        return this.$t('comment_form.aria_label');
+      }
+    }
+  },
 
-  methods:
-    handleIsUploading: (val) ->
-      @canSubmit = !val
+  methods: {
+    handleIsUploading(val) {
+      return this.canSubmit = !val;
+    },
 
-    submit: ->
-      @comment.save()
-      .then =>
-        @$emit('comment-submitted')
-        @shouldReset = !@shouldReset
-        flashMessage = if !@comment.isNew()
+    submit() {
+      this.comment.save().then(() => {
+        this.$emit('comment-submitted');
+        this.shouldReset = !this.shouldReset;
+        const flashMessage = !this.comment.isNew() ?
                         'comment_form.messages.updated'
-                      else if @comment.isReply()
+                      : this.comment.isReply() ?
                         'comment_form.messages.replied'
-                      else
-                        'comment_form.messages.created'
-        Flash.success flashMessage, {name: @comment.parent().author().nameOrUsername() if @comment.isReply()}
-      .catch (err) =>
-        Flash.error 'common.something_went_wrong'
-
+                      :
+                        'comment_form.messages.created';
+        Flash.success(flashMessage, {name: this.comment.isReply() ? this.comment.parent().author().nameOrUsername() : undefined});
+      }).catch(err => {
+        Flash.error('common.something_went_wrong');
+      });
+    }
+  }
+};
 
 </script>
 

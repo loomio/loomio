@@ -1,30 +1,38 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import AppConfig from '@/shared/services/app_config'
-import Records from '@/shared/services/records'
-import Flash  from '@/shared/services/flash'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import AppConfig from '@/shared/services/app_config';
+import Records from '@/shared/services/records';
+import Flash  from '@/shared/services/flash';
 
-export default
-  props:
-    close: Function
+export default {
+  props: {
+    close: Function,
     webhook: Object
+  },
 
-  data: ->
-    tab: 'webhook'
-    kinds: AppConfig.webhookEventKinds
-    permissions: ['show_discussion', 'create_discussion', 'show_poll', 'create_poll', 'read_memberships', 'manage_memberships']
+  data() {
+    return {
+      tab: 'webhook',
+      kinds: AppConfig.webhookEventKinds,
+      permissions: ['show_discussion', 'create_discussion', 'show_poll', 'create_poll', 'read_memberships', 'manage_memberships']
+    };
+  },
 
-  methods:
-    docsUrl: (key) ->
-      AppConfig.baseUrl + "help/api?api_key=#{key}"
+  methods: {
+    docsUrl(key) {
+      return AppConfig.baseUrl + `help/api?api_key=${key}`;
+    },
 
-    submit: ->
-      @webhook.save()
-      .then =>
-        Flash.success 'webhook.success'
-        @close()
-      .catch (b) =>
-        console.log @webhook.errors
+    submit() {
+      this.webhook.save().then(() => {
+        Flash.success('webhook.success');
+        this.close();
+      }).catch(b => {
+        console.log(this.webhook.errors);
+      });
+    }
+  }
+};
 </script>
 <template lang="pug">
 v-card.webhook-form

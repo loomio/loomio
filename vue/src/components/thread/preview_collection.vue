@@ -1,17 +1,23 @@
-<script lang="coffee">
-import {slice, orderBy} from 'lodash'
-export default
-  props:
-    threads: Array
-    limit:
-      type: Number
+<script lang="js">
+import {slice, orderBy} from 'lodash';
+export default {
+  props: {
+    threads: Array,
+    limit: {
+      type: Number,
       default: 25
-    order:
-      type: String
+    },
+    order: {
+      type: String,
       default: '-lastActivityAt'
-  computed:
-    orderedThreads: ->
-      slice(orderBy(@threads, @order), 0, @limit)
+    }
+  },
+  computed: {
+    orderedThreads() {
+      return slice(orderBy(this.threads, this.order), 0, this.limit);
+    }
+  }
+};
 </script>
 
 <template lang="pug">

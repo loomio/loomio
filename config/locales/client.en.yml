@@ -835,6 +835,7 @@ en:
 
     audiences:
       group: "{{name}}"
+      everyone_in_the_group: Everyone in the group
       discussion_group: Everyone in the thread
       voters: Everyone invited to vote
       decided_voters: Everyone who voted

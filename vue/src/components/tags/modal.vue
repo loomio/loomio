@@ -1,40 +1,54 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import AppConfig      from '@/shared/services/app_config'
+<script lang="js">
+import Records        from '@/shared/services/records';
+import EventBus       from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import AppConfig      from '@/shared/services/app_config';
 
-export default
-  props:
-    tag:
-      type: Object
+export default {
+  props: {
+    tag: {
+      type: Object,
       required: true
+    },
     close: Function
+  },
 
-  data: ->
-    loading: false
-    destroying: false
+  data() {
+    return {
+      loading: false,
+      destroying: false
+    };
+  },
 
-  methods:
-    deleteTag: ->
-      tag = Records.tags.find(@tag.id)
-      EventBus.$emit 'openModal',
-        component: 'ConfirmModal'
-        props:
-          confirm:
-            submit: tag.destroy
-            text:
-              title:    'loomio_tags.destroy_tag'
-              helptext: 'loomio_tags.destroy_helptext'
-              submit:   'common.action.delete'
+  methods: {
+    deleteTag() {
+      const tag = Records.tags.find(this.tag.id);
+      EventBus.$emit('openModal', {
+        component: 'ConfirmModal',
+        props: {
+          confirm: {
+            submit: tag.destroy,
+            text: {
+              title:    'loomio_tags.destroy_tag',
+              helptext: 'loomio_tags.destroy_helptext',
+              submit:   'common.action.delete',
               flash:    'loomio_tags.tag_destroyed'
+            }
+          }
+        }
+      });
+    },
 
-    submit: ->
-      @loading = true
-      @tag.save().then =>
-        @close()
-      .finally =>
-        @loading = false
+    submit() {
+      this.loading = true;
+      this.tag.save().then(() => {
+        this.close();
+      }).finally(() => {
+        this.loading = false;
+      });
+    }
+  }
+};
 
 </script>
 <template lang="pug">

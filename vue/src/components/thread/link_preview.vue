@@ -1,36 +1,45 @@
-<script lang="coffee">
+<script lang="js">
+let doctypes = [];
+import("@/../../config/doctypes.yml").then(function(data) {
+  const keys = Object.keys(data).filter(k => parseInt(k).toString() === k);
+  const values = keys.map(k => data[k]);
+  return doctypes = values;
+});
 
-doctypes = []
-import("@/../../config/doctypes.yml").then (data) ->
-  keys = Object.keys(data).filter (k) -> parseInt(k).toString() == k
-  values = keys.map (k) -> data[k]
-  doctypes = values
-
-export default
-  props:
-    model: Object
-    preview: Object
-    remove:
-      default: null
+export default {
+  props: {
+    model: Object,
+    preview: Object,
+    remove: {
+      default: null,
       type: Function
+    }
+  },
 
-  data: ->
-    editing: false
+  data() {
+    return {editing: false};
+  },
 
-  computed:
-    doctype: ->
-      doctypes.find((dt) => (new RegExp(dt.regex)).test(@preview.url)) || {name: 'other'}
+  computed: {
+    doctype() {
+      return doctypes.find(dt => (new RegExp(dt.regex)).test(this.preview.url)) || {name: 'other'};
+    },
 
-    icon: ->
-      if @doctype
-        'mdi-'+@doctype.icon
-      else
-        'mdi-link-variant'
+    icon() {
+      if (this.doctype) {
+        return 'mdi-'+this.doctype.icon;
+      } else {
+        return 'mdi-link-variant';
+      }
+    },
 
-    iconColor: -> @doctype.icon
+    iconColor() { return this.doctype.icon; },
 
-    hostname: ->
-      new URL(@preview.url).host
+    hostname() {
+      return new URL(this.preview.url).host;
+    }
+  }
+};
 </script>
 <template lang="pug">
 div

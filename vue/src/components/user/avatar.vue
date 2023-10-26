@@ -1,47 +1,58 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import AppConfig from '@/shared/services/app_config'
-import { pick } from 'lodash'
+<script lang="js">
+import Records from '@/shared/services/records';
+import AppConfig from '@/shared/services/app_config';
+import { pick } from 'lodash';
 
-export default
-  props:
-    user:
-      type: Object
-      default: -> Records.users.build()
+export default {
+  props: {
+    user: {
+      type: Object,
+      default() { return Records.users.build(); }
+    },
 
-    coordinator: Boolean
-    size:
-      type: Number
+    coordinator: Boolean,
+    size: {
+      type: Number,
       default: 36
-    noLink: Boolean
+    },
+    noLink: Boolean,
     colors: Object
+  },
 
-  computed:
-    fontSize: ->
-      return '6px' if @size < 19
-      return '8px' if @size < 21
-      return '10px' if @size < 25
-      return '12px' if @size < 33
-      return '14px' if @size < 48
-      return '18px' if @size < 64
-      return '32px' if @size < 128
-      return '50px'
+  computed: {
+    fontSize() {
+      if (this.size < 19) { return '6px'; }
+      if (this.size < 21) { return '8px'; }
+      if (this.size < 25) { return '10px'; }
+      if (this.size < 33) { return '12px'; }
+      if (this.size < 48) { return '14px'; }
+      if (this.size < 64) { return '18px'; }
+      if (this.size < 128) { return '32px'; }
+      return '50px';
+    },
 
-    imageUrl: ->
-      if @size > 64
-        @user.avatarUrl
-      else
-        @user.thumbUrl
+    imageUrl() {
+      if (this.size > 64) {
+        return this.user.avatarUrl;
+      } else {
+        return this.user.thumbUrl;
+      }
+    },
 
-    color: ->
-      colors = Object.values pick(AppConfig.theme.brand_colors, ['gold', 'sky', 'wellington', 'sunset'])
-      colors[(@user.id || 0) % colors.length]
+    color() {
+      const colors = Object.values(pick(AppConfig.theme.brand_colors, ['gold', 'sky', 'wellington', 'sunset']));
+      return colors[(this.user.id || 0) % colors.length];
+    },
 
-    componentType:  ->
-      if @noLink or !@user.id
-        'div'
-      else
-        'router-link'
+    componentType() {
+      if (this.noLink || !this.user.id) {
+        return 'div';
+      } else {
+        return 'router-link';
+      }
+    }
+  }
+}
 
 </script>
 

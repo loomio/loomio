@@ -1,69 +1,87 @@
-<script lang="coffee">
-import Records       from '@/shared/services/records'
-import Session       from '@/shared/services/session'
-import LmoUrlService from '@/shared/services/lmo_url_service'
-import EventBus      from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import DiscussionTemplateService from '@/shared/services/discussion_template_service'
-import { compact } from 'lodash'
+<script lang="js">
+import Records       from '@/shared/services/records';
+import Session       from '@/shared/services/session';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+import EventBus      from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import DiscussionTemplateService from '@/shared/services/discussion_template_service';
+import { compact } from 'lodash';
 
-export default
-  data: ->
-    templates: []
-    actions: {}
-    group: null
-    returnTo: Session.returnTo()
-    isSorting: false
-    showSettings: false
+export default {
+  data() {
+    return {
+      templates: [],
+      actions: {},
+      group: null,
+      returnTo: Session.returnTo(),
+      isSorting: false,
+      showSettings: false
+    };
+  },
 
-  mounted: ->
-    Records.discussionTemplates.fetch
-      params:
-        group_id: @$route.query.group_id
+  mounted() {
+    Records.discussionTemplates.fetch({
+      params: {
+        group_id: this.$route.query.group_id,
         per: 50
+      }
+    });
 
-    @watchRecords
-      key: "discussionTemplates#{@$route.query.group_id}"
-      collections: ['discussionTemplates']
-      query: => @query()
+    this.watchRecords({
+      key: `discussionTemplates${this.$route.query.group_id}`,
+      collections: ['discussionTemplates'],
+      query: () => this.query()
+    });
 
-    EventBus.$on 'sortThreadTemplates', => @isSorting = true
+    EventBus.$on('sortThreadTemplates', () => { return this.isSorting = true; });
+  },
 
-  methods:
-    sortEnded: ->
-      @isSorting = false
-      setTimeout =>
-        ids = @templates.map (p) => p.id || p.key
-        Records.remote.post('discussion_templates/positions', group_id: @group.id, ids: ids)
+  methods: {
+    sortEnded() {
+      this.isSorting = false;
+      setTimeout(() => {
+        const ids = this.templates.map(p => p.id || p.key);
+        Records.remote.post('discussion_templates/positions', {group_id: this.group.id, ids});
+      });
+    },
 
-    query: ->
-      @group = Records.groups.findById(parseInt(@$route.query.group_id))
-      @templates = Records.discussionTemplates.collection.chain().find(
-        groupId: parseInt(@$route.query.group_id)
-        discardedAt: (@showSettings && {$ne: null}) || null
-      ).simplesort('position').data()
+    query() {
+      this.group = Records.groups.findById(parseInt(this.$route.query.group_id));
+      this.templates = Records.discussionTemplates.collection.chain().find({
+        groupId: parseInt(this.$route.query.group_id),
+        discardedAt: (this.showSettings && {$ne: null}) || null
+      }).simplesort('position').data();
 
-      if @group
-        @actions = {}
-        @templates.forEach (template, i) =>
-          @actions[i] = DiscussionTemplateService.actions(template, @group)
+      if (this.group) {
+        this.actions = {};
+        this.templates.forEach((template, i) => {
+          this.actions[i] = DiscussionTemplateService.actions(template, this.group);
+        });
+      }
+    }
+  },
 
-  computed:
-    userIsAdmin: ->
-      @group && @group.adminsInclude(Session.user())
+  computed: {
+    userIsAdmin() {
+      return this.group && this.group.adminsInclude(Session.user());
+    },
 
-    breadcrumbs: ->
-      return [] unless @group
-      compact([@group.parentId && @group.parent(), @group]).map (g) =>
-        text: g.name
-        disabled: false
-        to: @urlFor(g)
-  watch:
-    '$route.query': 'query'
+    breadcrumbs() {
+      if (!this.group) { return []; }
+      return compact([this.group.parentId && this.group.parent(), this.group]).map(g => {
+        return {
+          text: g.name,
+          disabled: false,
+          to: this.urlFor(g)
+        };
+      });
+    }
+  },
+  watch: {
+    '$route.query': 'query',
     'showSettings': 'query'
-
-
-
+  }
+};
 </script>
 <template lang="pug">
 .thread-templates-page

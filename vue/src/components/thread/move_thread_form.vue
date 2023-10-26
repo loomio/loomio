@@ -1,42 +1,55 @@
-<script lang="coffee">
-import Session        from '@/shared/services/session'
-import Records        from '@/shared/services/records'
-import I18n           from '@/i18n'
-import EventBus from '@/shared/services/event_bus'
-import Flash from '@/shared/services/flash'
-import { filter } from 'lodash'
+<script lang="js">
+import Session        from '@/shared/services/session';
+import Records        from '@/shared/services/records';
+import I18n           from '@/i18n';
+import EventBus from '@/shared/services/event_bus';
+import Flash from '@/shared/services/flash';
+import { filter } from 'lodash';
 
-export default
-  props:
+export default {
+  props: {
     discussion: Object
-  data: ->
-    targetGroup: null
-    availableGroups: []
-  created: ->
-    @updateTarget()
-    @watchRecords
-      collections: ['groups', 'memberships']
-      query: (store) =>
-        @availableGroups = filter(Session.user().groups(), (group) => group.id != @discussion.groupId)
-  methods:
-    submit: ->
-      @discussion.move()
-      .then (data) =>
-        Flash.success 'move_thread_form.messages.success', { name: @discussion.group().name }
-        discussionKey = data.discussions[0].key
-        Records.discussions.findOrFetchById(discussionKey, {}, true).then (discussion) =>
-          @close()
-          @$router.push("/d/#{discussionKey}")
-      .catch => true
+  },
+  data() {
+    return {
+      targetGroup: null,
+      availableGroups: []
+    };
+  },
+  created() {
+    this.updateTarget();
+    this.watchRecords({
+      collections: ['groups', 'memberships'],
+      query: store => {
+        this.availableGroups = filter(Session.user().groups(), group => group.id !== this.discussion.groupId);
+      }
+    });
+  },
+  methods: {
+    submit() {
+      this.discussion.move().then(data => {
+        Flash.success('move_thread_form.messages.success', { name: this.discussion.group().name });
+        const discussionKey = data.discussions[0].key;
+        Records.discussions.findOrFetchById(discussionKey, {}, true).then(discussion => {
+          this.close();
+          this.$router.push(`/d/${discussionKey}`);
+        });
+      }).catch(() => true);
+    },
 
-    updateTarget: ->
-      @targetGroup = Records.groups.find(@discussion.groupId)
+    updateTarget() {
+      return this.targetGroup = Records.groups.find(this.discussion.groupId);
+    },
 
-    moveThread: ->
-      if @discussion.private and @targetGroup.privacyIsOpen()
-        @submit() if confirm(I18n.t('move_thread_form.confirm_change_to_private_thread', groupName: @targetGroup.name))
-      else
-        @submit()
+    moveThread() {
+      if (this.discussion.private && this.targetGroup.privacyIsOpen()) {
+        if (confirm(I18n.t('move_thread_form.confirm_change_to_private_thread', {groupName: this.targetGroup.name}))) { this.submit(); }
+      } else {
+        this.submit();
+      }
+    }
+  }
+};
 </script>
 <template lang="pug">
 v-card.move-thread-form
