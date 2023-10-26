@@ -58,7 +58,7 @@ export default {
     },
 
     startTrial() {
-      return AppConfig.features.app.trials && @$route.path == '/g/new'
+      return AppConfig.features.app.trials && this.$route.path == '/g/new'
     }
   }
 }
