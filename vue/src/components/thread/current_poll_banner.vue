@@ -1,32 +1,41 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import AbilityService from '@/shared/services/ability_service'
-import { find } from 'lodash'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import AbilityService from '@/shared/services/ability_service';
+import { find } from 'lodash';
 
-export default
-  props:
+export default {
+  props: {
     discussion: Object
+  },
 
-  data: ->
-    poll: null
+  data() {
+    return {poll: null};
+  },
 
-  created: ->
-    @watchRecords
-      collections: ['polls', 'stances']
-      query: (store) =>
-        @poll = find @discussion.activePolls().filter((poll) -> poll.pollOptionNames.length), (poll) ->
-          poll.closingAt && AbilityService.canParticipateInPoll(poll) && !poll.iHaveVoted()
+  created() {
+    this.watchRecords({
+      collections: ['polls', 'stances'],
+      query: store => {
+        this.poll = find(this.discussion.activePolls().filter(poll => poll.pollOptionNames.length), poll => poll.closingAt && AbilityService.canParticipateInPoll(poll) && !poll.iHaveVoted());
+      }
+    });
+  },
 
-  computed:
-    styles: ->
-      { bar, top } = @$vuetify.application
-      return
-        display: 'flex'
-        position: 'sticky'
-        top: "#{bar + top}px"
+  computed: {
+    styles() {
+      const { bar, top } = this.$vuetify.application;
+      return{
+        display: 'flex',
+        position: 'sticky',
+        top: `${bar + top}px`,
         zIndex: 1
-    event: ->
-      @poll && @poll.createdEvent()
+      };
+    },
+    event() {
+      return this.poll && this.poll.createdEvent();
+    }
+  }
+};
 
 
 </script>

@@ -1,32 +1,42 @@
-<script lang="coffee">
-import {sum, map, sortBy, find, compact, uniq, slice, parseInt} from 'lodash'
+<script lang="js">
+import {sum, map, sortBy, find, compact, uniq, slice, parseInt} from 'lodash';
 
 export default
-  props:
-    poll: Object
-    size: Number
+  ({
+    props: {
+      poll: Object,
+      size: Number
+    },
 
-  created: ->
-    @watchRecords
-      collections: ['pollOptions']
-      query: (store) =>
-        max = 10
-        @results = slice @poll.results, 0, max
-        @voterIds = slice @poll.decidedVoterIds(), 0, max
+    created() {
+      this.watchRecords({
+        collections: ['pollOptions'],
+        query: store => {
+          const max = 10;
+          this.results = slice(this.poll.results, 0, max);
+          this.voterIds = slice(this.poll.decidedVoterIds(), 0, max);
+        }
+      });
+    },
 
-  computed:
-    cellHeight: -> @size / @results.length
-    cellWidth: -> @size / @voterIds.length
-    cellSize: -> if (@cellHeight > @cellWidth) then @cellWidth else @cellHeight
+    computed: {
+      cellHeight() { return this.size / this.results.length; },
+      cellWidth() { return this.size / this.voterIds.length; },
+      cellSize() { if (this.cellHeight > this.cellWidth) { return this.cellWidth; } else { return this.cellHeight; } }
+    },
 
-  methods:
-    classForScore: (score) ->
-      switch score
-        when 2 then 'poll-meeting-chart__cell--yes'
-        when 1 then 'poll-meeting-chart__cell--maybe'
-        when 0 then 'poll-meeting-chart__cell--no'
-        else
-          'poll-meeting-chart__cell--empty'
+    methods: {
+      classForScore(score) {
+        switch (score) {
+          case 2: return 'poll-meeting-chart__cell--yes';
+          case 1: return 'poll-meeting-chart__cell--maybe';
+          case 0: return 'poll-meeting-chart__cell--no';
+          default:
+            return 'poll-meeting-chart__cell--empty';
+        }
+      }
+    }
+  });
 
 </script>
 

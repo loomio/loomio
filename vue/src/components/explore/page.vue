@@ -1,95 +1,122 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import Records   from '@/shared/services/records'
-import EventBus  from '@/shared/services/event_bus'
-import UrlFor    from '@/mixins/url_for'
-import _truncate from 'lodash/truncate'
-import _map      from 'lodash/map'
-import {marked}    from 'marked'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import Records   from '@/shared/services/records';
+import EventBus  from '@/shared/services/event_bus';
+import UrlFor    from '@/mixins/url_for';
+import _truncate from 'lodash/truncate';
+import _map      from 'lodash/map';
+import {marked}    from 'marked';
 
-import { debounce, camelCase, orderBy } from 'lodash'
+import { debounce, camelCase, orderBy } from 'lodash';
 
-export default
-  mixins: [UrlFor]
-  data: ->
-    groupIds: []
-    resultsCount: 0
-    perPage: 50
-    canLoadMoreGroups: true
-    query: ""
-    searching: true
-    order: null
-    orderOptions: [
-      {name: @$t('explore_page.newest_first'), val: "created_at"},
-      {name: @$t('explore_page.biggest_first'), val: "memberships_count"}
-    ]
-  created: ->
-    if @$route.query.order
-      @order = @$route.query.order
-    else
-      @$router.replace(@mergeQuery({ order: "memberships_count" }))
-  mounted: ->
-    EventBus.$emit 'currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'}
-    @search()
+export default {
+  mixins: [UrlFor],
+  data() {
+    return {
+      groupIds: [],
+      resultsCount: 0,
+      perPage: 50,
+      canLoadMoreGroups: true,
+      query: "",
+      searching: true,
+      order: null,
+      orderOptions: [
+        {name: this.$t('explore_page.newest_first'), val: "created_at"},
+        {name: this.$t('explore_page.biggest_first'), val: "memberships_count"}
+      ]
+    };
+  },
+  created() {
+    if (this.$route.query.order) {
+      this.order = this.$route.query.order;
+    } else {
+      this.$router.replace(this.mergeQuery({ order: "memberships_count" }));
+    }
+  },
+  mounted() {
+    EventBus.$emit('currentComponent', { titleKey: 'explore_page.header', page: 'explorePage'});
+    this.search();
+  },
 
-  methods:
-    groups: ->
-      Records.groups.find(@groupIds)
+  methods: {
+    groups() {
+      return Records.groups.find(this.groupIds);
+    },
 
-    handleSearchResults: (response) ->
-      Records.groups.getExploreResultsCount(@query).then (data) =>
-        @resultsCount = data.count
-      @groupIds = @groupIds.concat _map(response.groups, 'id')
-      @canLoadMoreGroups = (response.groups || []).length == @perPage
-      @searching = false
+    handleSearchResults(response) {
+      Records.groups.getExploreResultsCount(this.query).then(data => {
+        return this.resultsCount = data.count;
+      });
+      this.groupIds = this.groupIds.concat(_map(response.groups, 'id'));
+      this.canLoadMoreGroups = (response.groups || []).length === this.perPage;
+      this.searching = false;
+    },
 
-    search: debounce ->
-      @groupIds = []
-      Records.groups.fetchExploreGroups(@query, per: @perPage, order: @order).then(@handleSearchResults)
-    , 250
+    search: debounce(function() {
+      this.groupIds = [];
+      Records.groups.fetchExploreGroups(this.query, {per: this.perPage, order: this.order}).then(this.handleSearchResults);
+    }
+    , 250),
 
-    loadMore: ->
-      @searching = true
-      Records.groups.fetchExploreGroups(@query, from: @groupIds.length, per: @perPage, order: @order).then(@handleSearchResults)
+    loadMore() {
+      this.searching = true;
+      Records.groups.fetchExploreGroups(this.query, {from: this.groupIds.length, per: this.perPage, order: this.order}).then(this.handleSearchResults);
+    },
 
-    groupCover: (group) ->
-      { 'background-image': "url(#{group.coverUrl})" }
+    groupCover(group) {
+      return { 'background-image': `url(${group.coverUrl})` };
+    },
 
-    groupDescription: (group) ->
-      description = group.description || ''
-      if group.descriptionFormat == 'md'
-        description = marked(description)
-      parser = new DOMParser()
-      doc = parser.parseFromString(description, 'text/html')
-      _truncate doc.body.textContent, {length: 100}
+    groupDescription(group) {
+      let description = group.description || '';
+      if (group.descriptionFormat === 'md') {
+        description = marked(description);
+      }
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(description, 'text/html');
+      return _truncate(doc.body.textContent, {length: 100});
+    },
 
-    handleOrderChange: (val) ->
-      @$router.replace(@mergeQuery({ order: val }))
-  computed:
-    showMessage: ->
-      !@searching && @query.length > 0 && @groups().length > 0
+    handleOrderChange(val) {
+      this.$router.replace(this.mergeQuery({ order: val }));
+    }
+  },
+  computed: {
+    showMessage() {
+      return !this.searching && (this.query.length > 0) && (this.groups().length > 0);
+    },
 
-    searchResultsMessage: ->
-      if @groups().length == 1
-        'explore_page.single_search_result'
-      else
-        'explore_page.multiple_search_results'
+    searchResultsMessage() {
+      if (this.groups().length === 1) {
+        return 'explore_page.single_search_result';
+      } else {
+        return 'explore_page.multiple_search_results';
+      }
+    },
 
-    noResultsFound: ->
-      !@searching && (@groups().length == 0)
+    noResultsFound() {
+      return !this.searching && (this.groups().length === 0);
+    },
 
-    orderedGroups: ->
-      orderBy @groups(), [camelCase(@order)], ['desc']
+    orderedGroups() {
+      return orderBy(this.groups(), [camelCase(this.order)], ['desc']);
+    }
+  },
 
-  watch:
-    'query': ->
-      @searching = true
-      @search()
-    '$route.query.order':
-      immediate: true
-      handler: ->
-        @order = @$route.query.order
-        @search()
+  watch: {
+    'query'() {
+      this.searching = true;
+      return this.search();
+    },
+    '$route.query.order': {
+      immediate: true,
+      handler() {
+        this.order = this.$route.query.order;
+        return this.search();
+      }
+    }
+  }
+};
 </script>
 
 <template lang='pug'>

@@ -1,85 +1,113 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import Flash   from '@/shared/services/flash'
-import Records   from '@/shared/services/records'
-import { compact, sortBy, without, isEqual, map } from 'lodash'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import Flash   from '@/shared/services/flash';
+import Records   from '@/shared/services/records';
+import { compact, sortBy, without, isEqual, map } from 'lodash';
 
-export default
-  props:
+export default {
+  props: {
     stance: Object
+  },
 
-  data: ->
-    selectedOptionIds: compact((@stance.pollOptionIds().length && @stance.pollOptionIds()) || [parseInt(@$route.query.poll_option_id)])
-    selectedOptionId: @stance.pollOptionIds()[0] || parseInt(@$route.query.poll_option_id)
-    options: []
+  data() {
+    return {
+      selectedOptionIds: compact((this.stance.pollOptionIds().length && this.stance.pollOptionIds()) || [parseInt(this.$route.query.poll_option_id)]),
+      selectedOptionId: this.stance.pollOptionIds()[0] || parseInt(this.$route.query.poll_option_id),
+      options: []
+    };
+  },
 
-  created: ->
-    @watchRecords
-      collections: ['pollOptions']
-      query: (records) =>
-        if @poll.optionsDiffer(@options)
-          @options = @poll.pollOptionsForVoting() if @poll
+  created() {
+    this.watchRecords({
+      collections: ['pollOptions'],
+      query: records => {
+        if (this.poll.optionsDiffer(this.options)) {
+          if (this.poll) { this.options = this.poll.pollOptionsForVoting(); }
+        }
+      }
+    });
+  },
 
-  computed:
-    singleChoice: -> @poll.singleChoice()
-    hasOptionIcon: -> @poll.config().has_option_icon
-    poll: -> @stance.poll()
-    optionSelected: -> @selectedOptionIds.length or @selectedOptionId
-    optionPrompt: -> (@selectedOptionId && Records.pollOptions.find(@selectedOptionId).prompt) || ''
-    submitText: ->
-      if @stance.castAt
-        if @poll.config().has_options
-          'poll_common.update_vote'
-        else
-          'poll_common.update_response'
-      else
-        if @poll.config().has_options
-          'poll_common.submit_vote'
-        else
-          'poll_common.submit_response'
-    optionCountAlertColor: ->
-      return 'warning' if !@singleChoice && @selectedOptionIds.length && (@selectedOptionIds.length < @poll.minimumStanceChoices || @selectedOptionIds.length > @poll.maximumStanceChoices)
-    optionCountValid: ->
-      (@singleChoice && @selectedOptionId) || (@selectedOptionIds.length >= @poll.minimumStanceChoices && @selectedOptionIds.length <= @poll.maximumStanceChoices)
+  computed: {
+    singleChoice() { return this.poll.singleChoice(); },
+    hasOptionIcon() { return this.poll.config().has_option_icon; },
+    poll() { return this.stance.poll(); },
+    optionSelected() { return this.selectedOptionIds.length || this.selectedOptionId; },
+    optionPrompt() { return (this.selectedOptionId && Records.pollOptions.find(this.selectedOptionId).prompt) || ''; },
+    submitText() {
+      if (this.stance.castAt) {
+        if (this.poll.config().has_options) {
+          return 'poll_common.update_vote';
+        } else {
+          return 'poll_common.update_response';
+        }
+      } else {
+        if (this.poll.config().has_options) {
+          return 'poll_common.submit_vote';
+        } else {
+          return 'poll_common.submit_response';
+        }
+      }
+    },
+    optionCountAlertColor() {
+      if (!this.singleChoice && this.selectedOptionIds.length && ((this.selectedOptionIds.length < this.poll.minimumStanceChoices) || (this.selectedOptionIds.length > this.poll.maximumStanceChoices))) { return 'warning'; }
+    },
+    optionCountValid() {
+      return (this.singleChoice && this.selectedOptionId) || ((this.selectedOptionIds.length >= this.poll.minimumStanceChoices) && (this.selectedOptionIds.length <= this.poll.maximumStanceChoices));
+    }
+  },
 
-  watch:
-    selectedOptionId: -> 
-      # if reason is not disabled, focus on the reson for this poll
-      EventBus.$emit('focusEditor', 'poll-'+@poll.id)
+  watch: {
+    selectedOptionId() { 
+      // if reason is not disabled, focus on the reson for this poll
+      EventBus.$emit('focusEditor', 'poll-'+this.poll.id);
+    }
+  },
 
-  methods:
-    submit: ->
-      if @singleChoice
-        @stance.stanceChoicesAttributes = [{poll_option_id: @selectedOptionId}]
-      else
-        @stance.stanceChoicesAttributes = @selectedOptionIds.map (id) =>
-          poll_option_id: id
-      actionName = if !@stance.castAt then 'created' else 'updated'
-      @stance.save()
-      .then =>
-        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
-        EventBus.$emit('closeModal')
-      .catch => true
+  methods: {
+    submit() {
+      if (this.singleChoice) {
+        this.stance.stanceChoicesAttributes = [{poll_option_id: this.selectedOptionId}];
+      } else {
+        this.stance.stanceChoicesAttributes = this.selectedOptionIds.map(id => {
+          return {poll_option_id: id};
+        });
+      }
+      const actionName = !this.stance.castAt ? 'created' : 'updated';
+      this.stance.save().then(() => {
+        Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
+        EventBus.$emit('closeModal');
+      }).catch(() => true);
+    },
 
-    isSelected: (option) ->
-      if @singleChoice 
-        @selectedOptionId == option.id
-      else
-        @selectedOptionIds.includes(option.id)
+    isSelected(option) {
+      if (this.singleChoice) { 
+        return this.selectedOptionId === option.id;
+      } else {
+        return this.selectedOptionIds.includes(option.id);
+      }
+    },
 
-    classes: (option) ->
-      if @poll.isVotable()
-        votingStatus = 'voting-enabled'
-      else
-        votingStatus = 'voting-disabled'
+    classes(option) {
+      let votingStatus;
+      if (this.poll.isVotable()) {
+        votingStatus = 'voting-enabled';
+      } else {
+        votingStatus = 'voting-disabled';
+      }
 
-      if @optionSelected
-        if @isSelected(option)
-          ['elevation-2', votingStatus]
-        else
-          ['poll-common-vote-form__button--not-selected', votingStatus]
-      else
-        [votingStatus]
+      if (this.optionSelected) {
+        if (this.isSelected(option)) {
+          return ['elevation-2', votingStatus];
+        } else {
+          return ['poll-common-vote-form__button--not-selected', votingStatus];
+        }
+      } else {
+        return [votingStatus];
+      }
+    }
+  }
+};
 
 
 </script>

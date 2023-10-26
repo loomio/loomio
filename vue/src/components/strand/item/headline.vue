@@ -1,31 +1,39 @@
-<script lang="coffee">
-import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
-import Records from '@/shared/services/records'
+<script lang="js">
+import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
+import LmoUrlService  from '@/shared/services/lmo_url_service';
+import Records from '@/shared/services/records';
 
-export default
-  props:
-    event: Object
-    eventable: Object
-    collapsed: Boolean
+export default {
+  props: {
+    event: Object,
+    eventable: Object,
+    collapsed: Boolean,
     dateTime: Date
+  },
 
-  computed:
-    datetime: -> @dateTime || @eventable.castAt || @eventable.createdAt
-    headline: ->
-      actor = @event.actor()
-      if @event.kind == 'new_comment' && @collapsed && @event.descendantCount > 0
-        @$t('reactions_display.name_and_count_more', {name: actor.nameWithTitle(@eventable.group()), count: @event.descendantCount})
-      else
-        @$t eventHeadline(@event, true ), # useNesting
-          author:   actor.nameWithTitle(@eventable.group())
-          username: actor.username
-          key:      @event.model().key
-          title:    eventTitle(@event)
-          polltype: @$t(eventPollType(@event)).toLowerCase()
+  computed: {
+    datetime() { return this.dateTime || this.eventable.castAt || this.eventable.createdAt; },
+    headline() {
+      const actor = this.event.actor();
+      if ((this.event.kind === 'new_comment') && this.collapsed && (this.event.descendantCount > 0)) {
+        return this.$t('reactions_display.name_and_count_more', {name: actor.nameWithTitle(this.eventable.group()), count: this.event.descendantCount});
+      } else {
+        return this.$t(eventHeadline(this.event, true ), { // useNesting
+          author:   actor.nameWithTitle(this.eventable.group()),
+          username: actor.username,
+          key:      this.event.model().key,
+          title:    eventTitle(this.event),
+          polltype: this.$t(eventPollType(this.event)).toLowerCase()
+        }
+        );
+      }
+    },
 
-    link: ->
-      LmoUrlService.event @event
+    link() {
+      return LmoUrlService.event(this.event);
+    }
+  }
+};
 
 </script>
 

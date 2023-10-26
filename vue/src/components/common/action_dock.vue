@@ -1,26 +1,35 @@
-<script lang="coffee">
-import {pickBy} from 'lodash'
+<script lang="js">
+import {pickBy} from 'lodash';
 
-export default
-  props:
-    model: Object
-    actions:
-      type: Object
-      default: -> {}
-    menuActions:
-      type: Object
-      default: -> {}
-    small: Boolean
-    left: Boolean
-    menuIcon: 
-      type: String
+export default {
+  props: {
+    model: Object,
+    actions: {
+      type: Object,
+      default() { return {}; }
+    },
+    menuActions: {
+      type: Object,
+      default() { return {}; }
+    },
+    small: Boolean,
+    left: Boolean,
+    menuIcon: { 
+      type: String,
       default: 'mdi-dots-horizontal'
-  computed:
-    leftActions: ->
-      pickBy @actions, (v) -> v.dockLeft
+    }
+  },
+  
+  computed: {
+    leftActions() {
+      return pickBy(this.actions, v => v.dockLeft);
+    },
 
-    rightActions: ->
-      pickBy @actions, (v) -> !v.dockLeft
+    rightActions() {
+      return pickBy(this.actions, v => !v.dockLeft);
+    }
+  }
+};
 </script>
 
 <template lang="pug">

@@ -1,76 +1,89 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import AuthModalMixin from '@/mixins/auth_modal'
-import EventBus from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import Session from '@/shared/services/session'
-import Flash from '@/shared/services/flash'
-import { each, compact, truncate } from 'lodash'
-import openModal from '@/shared/helpers/open_modal'
-import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus'
-import CustomCss from '@/components/custom_css'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import AuthModalMixin from '@/mixins/auth_modal';
+import EventBus from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import Session from '@/shared/services/session';
+import Flash from '@/shared/services/flash';
+import { each, compact, truncate } from 'lodash';
+import openModal from '@/shared/helpers/open_modal';
+import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
+import CustomCss from '@/components/custom_css';
 
-export default
-  components: {CustomCss}
-  mixins: [AuthModalMixin]
-  data: ->
-    pageError: null
+export default {
+  components: {CustomCss},
+  mixins: [AuthModalMixin],
+  data() {
+    return {pageError: null};
+  },
 
-  created: ->
-    Session.updateLocale(@$route.query.locale) if @$route.query.locale
+  created() {
+    if (this.$route.query.locale) { Session.updateLocale(this.$route.query.locale); }
 
-    if Session.user().experiences.darkMode?
-      @$vuetify.theme.dark = Session.user().experiences['darkMode']
-    else
-      @$vuetify.theme.dark = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    if (Session.user().experiences.darkMode != null) {
+      this.$vuetify.theme.dark = Session.user().experiences['darkMode'];
+    } else {
+      this.$vuetify.theme.dark = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
 
-    each AppConfig.theme.vuetify, (value, key) =>
-      @$vuetify.theme.themes.light[key] = value if value
-      @$vuetify.theme.themes.dark[key] = value if value
-      true
+    return each(AppConfig.theme.vuetify, (value, key) => {
+      if (value) { this.$vuetify.theme.themes.light[key] = value; }
+      if (value) { this.$vuetify.theme.themes.dark[key] = value; }
+      return true;
+    });
+  },
 
-  mounted: ->
-    initLiveUpdate()
-    @openAuthModal(true) if !Session.isSignedIn() && @shouldForceSignIn()
-    EventBus.$on 'currentComponent',     @setCurrentComponent
-    EventBus.$on 'openAuthModal',     => @openAuthModal()
-    EventBus.$on 'pageError', (error) => @pageError = error
-    EventBus.$on 'signedIn',          => @pageError = null
-    EventBus.$on 'VueForceUpdate',    => 
-      @$nextTick =>
-        @$forceUpdate()
-    Flash.success(AppConfig.flash.notice) if AppConfig.flash.notice
+  mounted() {
+    initLiveUpdate();
+    if (!Session.isSignedIn() && this.shouldForceSignIn()) { this.openAuthModal(true); }
+    EventBus.$on('currentComponent',     this.setCurrentComponent);
+    EventBus.$on('openAuthModal',     () => this.openAuthModal());
+    EventBus.$on('pageError', error => { return this.pageError = error; });
+    EventBus.$on('signedIn',          () => { return this.pageError = null; });
+    EventBus.$on('VueForceUpdate',    () => {
+      this.$nextTick(() => {this.$forceUpdate(); });
+    });
+    if (AppConfig.flash.notice) { Flash.success(AppConfig.flash.notice); }
+  },
 
-  destroyed: ->
-    closeLiveUpdate()
+  destroyed() {
+    return closeLiveUpdate();
+  },
 
-  watch:
-    '$route': ->
-      @pageError = null
+  watch: {
+    '$route'() {
+      return this.pageError = null;
+    }
+  },
 
-  methods:
-    setCurrentComponent: (options) ->
-      @pageError = null
-      title = truncate(options.title or @$t(options.titleKey), {length: 300})
-      document.querySelector('title').text = compact([title, AppConfig.theme.site_name]).join(' | ')
+  methods: {
+    setCurrentComponent(options) {
+      this.pageError = null;
+      const title = truncate(options.title || this.$t(options.titleKey), {length: 300});
+      document.querySelector('title').text = compact([title, AppConfig.theme.site_name]).join(' | ');
 
-      AppConfig.currentGroup      = options.group
-      AppConfig.currentDiscussion = options.discussion
-      AppConfig.currentPoll       = options.poll
+      AppConfig.currentGroup      = options.group;
+      AppConfig.currentDiscussion = options.discussion;
+      return AppConfig.currentPoll       = options.poll;
+    },
 
-    shouldForceSignIn: (options = {}) ->
-      return true if @$route.query.sign_in
-      return true if (AppConfig.pendingIdentity || {}).identity_type?
-      return false if Session.isSignedIn()
+    shouldForceSignIn(options = {}) {
+      if (this.$route.query.sign_in) { return true; }
+      if ((AppConfig.pendingIdentity || {}).identity_type != null) { return true; }
+      if (Session.isSignedIn()) { return false; }
 
-      switch @$route.path
-        when '/email_preferences' then !Session.user().restricted?
-        when '/dashboard',      \
-             '/inbox',          \
-             '/profile',        \
-             '/polls',          \
-             '/p/new',      \
-             '/g/new' then true
+      switch (this.$route.path) {
+        case '/email_preferences': return (Session.user().restricted == null);
+        case '/dashboard':      
+             case '/inbox':          
+             case '/profile':        
+             case '/polls':          
+             case '/p/new':      
+             case '/g/new': return true;
+      }
+    }
+  }
+};
 
 </script>
 

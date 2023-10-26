@@ -1,32 +1,44 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import AbilityService from '@/shared/services/ability_service'
-import EventBus from '@/shared/services/event_bus'
-import Flash  from '@/shared/services/flash'
-import { map, orderBy } from 'lodash'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import AbilityService from '@/shared/services/ability_service';
+import EventBus from '@/shared/services/event_bus';
+import Flash  from '@/shared/services/flash';
+import { map, orderBy } from 'lodash';
 
-export default
-  props:
-    poll: Object
+export default {
+  props: {
+    poll: Object,
     close: Function
+  },
 
-  data: ->
-    groupId: @poll.groupId
-    groups: []
+  data() {
+    return {
+      groupId: this.poll.groupId,
+      groups: []
+    };
+  },
 
-  mounted: ->
-    @groups = Session.user().groups().filter((g) => AbilityService.canStartPoll(g)).map (g) =>
-      text: g.fullName
-      value: g.id
-      disabled: (g.id == @poll.groupId)
+  mounted() {
+    this.groups = Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => {
+      return {
+        text: g.fullName,
+        value: g.id,
+        disabled: (g.id === this.poll.groupId)
+      };
+    });
+  },
 
-  methods:
-    submit: ->
-      @poll.groupId = @groupId
-      @poll.save().then =>
-        Flash.success("poll_common_move_form.success", {poll_type: @poll.translatedPollType(), group: @poll.group().fullName})
-        @close()
+  methods: {
+    submit() {
+      this.poll.groupId = this.groupId;
+      this.poll.save().then(() => {
+        Flash.success("poll_common_move_form.success", {poll_type: this.poll.translatedPollType(), group: this.poll.group().fullName});
+        this.close();
+      });
+    }
+  }
+}
 
 </script>
 <template lang="pug">

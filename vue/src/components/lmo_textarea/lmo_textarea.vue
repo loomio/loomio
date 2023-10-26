@@ -1,35 +1,41 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import FilesList from './files_list.vue'
-import EventBus  from '@/shared/services/event_bus'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import FilesList from './files_list.vue';
+import EventBus  from '@/shared/services/event_bus';
 
-import CollabEditor from './collab_editor'
-import MdEditor from './md_editor'
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
+import CollabEditor from './collab_editor';
+import MdEditor from './md_editor';
+import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
 export default
-  props:
-    focusId: String
-    model: Object
-    field: String
-    label: String
-    placeholder: String
-    maxLength: Number
-    autofocus: Boolean
+{
+  props: {
+    focusId: String,
+    model: Object,
+    field: String,
+    label: String,
+    placeholder: String,
+    maxLength: Number,
+    autofocus: Boolean,
     shouldReset: Boolean
+  },
 
-  components:
-    'md-editor': MdEditor
+  components: {
+    'md-editor': MdEditor,
     'collab-editor': CollabEditor
+  },
 
-  mounted: ->
-    RescueUnsavedEditsService.add(@model)
+  mounted() {
+    RescueUnsavedEditsService.add(this.model);
+  },
 
-  computed:
-    format: ->
-      @model["#{@field}Format"]
-
+  computed: {
+    format() {
+      return this.model[`${this.field}Format`];
+    }
+  }
+};
 </script>
 
 <template lang="pug">

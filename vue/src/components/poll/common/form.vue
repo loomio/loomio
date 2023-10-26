@@ -1,217 +1,273 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import Session from '@/shared/services/session'
-import { compact, without, some, pick } from 'lodash'
-import Flash from '@/shared/services/flash'
-import Records from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns'
-import { addHours, isAfter } from 'date-fns'
-import PollCommonWipField from '@/components/poll/common/wip_field'
-import PollTemplateInfoPanel  from '@/components/poll_template/info_panel'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import Session from '@/shared/services/session';
+import { compact, without, some, pick } from 'lodash';
+import Flash from '@/shared/services/flash';
+import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
+import { addHours, isAfter } from 'date-fns';
+import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
-import { isSameYear, startOfHour, setHours }  from 'date-fns'
-import I18n from '@/i18n'
+import { isSameYear, startOfHour, setHours }  from 'date-fns';
+import I18n from '@/i18n';
 
-export default
-  components: { PollCommonWipField, PollTemplateInfoPanel }
-  directives: { handle: HandleDirective }
+export default {
+  components: { PollTemplateInfoPanel },
+  directives: { handle: HandleDirective },
 
-  props:
-    poll: Object
-    shouldReset: Boolean
+  props: {
+    poll: Object,
+    shouldReset: Boolean,
     redirectOnSave: Boolean
+  },
 
-  mounted: ->
-    Records.users.fetchGroups()
+  mounted() {
+    Records.users.fetchGroups();
 
-    Records.pollTemplates.findOrFetchByKeyOrId(@poll.pollTemplateKeyOrId()).then (template) =>
-      @pollTemplate = template
+    Records.pollTemplates.findOrFetchByKeyOrId(this.poll.pollTemplateKeyOrId()).then(template => {
+      this.pollTemplate = template;
+    });
 
-    @watchRecords
-      collections: ['groups', 'memberships']
-      query: =>
-        @groupItems = [
-          {text: @$t('discussion_form.none_invite_only_thread'), value: null}
-        ].concat Session.user().groups().filter( (g) -> AbilityService.canStartPoll(g) ).map (g) ->
-          {text: g.fullName, value: g.id}
+    this.watchRecords({
+      collections: ['groups', 'memberships'],
+      query: () => {
+        return this.groupItems = [
+          {text: this.$t('discussion_form.none_invite_only_thread'), value: null}
+        ].concat(Session.user().groups().filter( g => AbilityService.canStartPoll(g)).map(g => ({
+          text: g.fullName,
+          value: g.id
+        })));
+    }});
+  },
 
-  data: ->
-    newOption: null
-    lastPollType: @poll.pollType
-    pollOptions: @poll.pollOptionsAttributes || @poll.clonePollOptions()
-    groupItems: []
-    showAdvanced: false
-    pollTemplate: null
+  data() {
+    return {
+      newOption: null,
+      lastPollType: this.poll.pollType,
+      pollOptions: this.poll.pollOptionsAttributes || this.poll.clonePollOptions(),
+      groupItems: [],
+      showAdvanced: false,
+      pollTemplate: null,
 
-    votingMethodsI18n:
-      proposal: 
-        title: 'poll_common_form.voting_methods.show_thumbs'
-        hint: 'poll_common_form.voting_methods.show_thumbs_hint'
-      poll: 
-        title: 'poll_common_form.voting_methods.simple_poll'
-        hint: 'poll_common_form.voting_methods.choose_hint'
-      # meeting:
-      #   title: 'poll_common_form.voting_methods.time_poll'
-      #   hint: 'poll_common_form.voting_methods.time_poll_hint'
-      dot_vote:
-        title: 'decision_tools_card.dot_vote_title'
-        hint: 'poll_common_form.voting_methods.allocate_hint'
-      score: 
-        title: 'poll_common_form.voting_methods.score'
-        hint: 'poll_common_form.voting_methods.score_hint'
-      ranked_choice:
-        title: 'poll_common_form.voting_methods.ranked_choice'
-        hint: 'poll_common_form.voting_methods.ranked_choice_hint'
+      votingMethodsI18n: {
+        proposal: { 
+          title: 'poll_common_form.voting_methods.show_thumbs',
+          hint: 'poll_common_form.voting_methods.show_thumbs_hint'
+        },
+        poll: { 
+          title: 'poll_common_form.voting_methods.simple_poll',
+          hint: 'poll_common_form.voting_methods.choose_hint'
+        },
+        // meeting:
+        //   title: 'poll_common_form.voting_methods.time_poll'
+        //   hint: 'poll_common_form.voting_methods.time_poll_hint'
+        dot_vote: {
+          title: 'decision_tools_card.dot_vote_title',
+          hint: 'poll_common_form.voting_methods.allocate_hint'
+        },
+        score: { 
+          title: 'poll_common_form.voting_methods.score',
+          hint: 'poll_common_form.voting_methods.score_hint'
+        },
+        ranked_choice: {
+          title: 'poll_common_form.voting_methods.ranked_choice',
+          hint: 'poll_common_form.voting_methods.ranked_choice_hint'
+        }
+      },
 
-    chartTypeItems: [
-      {text: 'bar', value: 'bar'}
-      {text: 'pie', value: 'pie'}
-      {text: 'grid', value: 'grid'}
-    ]
+      chartTypeItems: [
+        {text: 'bar', value: 'bar'},
+        {text: 'pie', value: 'pie'},
+        {text: 'grid', value: 'grid'}
+      ],
 
-    currentHideResults: @poll.hideResults
-    hideResultsItems: [
-      { text: @$t('common.off'), value: 'off' }
-      { text: @$t('poll_common_card.until_you_vote'), value: 'until_vote' }
-      { text: @$t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
-    ]
-    newDateOption: startOfHour(setHours(new Date(), 12))
-    minDate: new Date()
-    closingAtWas: null
+      currentHideResults: this.poll.hideResults,
+      hideResultsItems: [
+        { text: this.$t('common.off'), value: 'off' },
+        { text: this.$t('poll_common_card.until_you_vote'), value: 'until_vote' },
+        { text: this.$t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
+      ],
+      newDateOption: startOfHour(setHours(new Date(), 12)),
+      minDate: new Date(),
+      closingAtWas: null
+    };
+  },
 
-  methods:
-    optionHasVotes: (option) ->
-      (@poll.results.find((o) -> o.id == option.id) || {voter_count: 0}).voter_count > 0
+  methods: {
+    optionHasVotes(option) {
+      return (this.poll.results.find(o => o.id === option.id) || {voter_count: 0}).voter_count > 0;
+    },
 
-    setPollOptionPriority: ->
-      i = 0
-      @pollOptions.forEach (o) -> o.priority = 0
-      @visiblePollOptions.forEach (o) -> o.priority = i++
+    setPollOptionPriority() {
+      let i = 0;
+      this.pollOptions.forEach(o => o.priority = 0);
+      this.visiblePollOptions.forEach(o => o.priority = i++);
+    },
 
-    removeOption: (option) ->
-      if @optionHasVotes(option)
-        return if !confirm(I18n.t("poll_common_form.option_has_votes_confirm_delete"))
+    removeOption(option) {
+      if (this.optionHasVotes(option)) {
+        if (!confirm(I18n.t("poll_common_form.option_has_votes_confirm_delete"))) { return; }
+      }
 
-      @newOption = null
-      if option.id
-        option.name = ''
-        option.meaning = ''
-        option['_destroy'] = 1
-      else
-        @pollOptions = without(@pollOptions, option)
+      this.newOption = null;
+      if (option.id) {
+        option.name = '';
+        option.meaning = '';
+        option['_destroy'] = 1;
+      } else {
+        this.pollOptions = without(this.pollOptions, option);
+      }
+    },
 
-    addDateOption: ->
-      optionName = @newDateOption.toJSON()
-      if some(@pollOptions, (o) => o.name == optionName)
-        Flash.error('poll_poll_form.option_already_added')
-      else
-        @pollOptions.push({name: optionName})
+    addDateOption() {
+      const optionName = this.newDateOption.toJSON();
+      if (some(this.pollOptions, o => o.name === optionName)) {
+        Flash.error('poll_poll_form.option_already_added');
+      } else {
+        this.pollOptions.push({name: optionName});
+      }
+    },
 
-    addOption: ->
-      option = 
-        name: ''
-        meaning: ''
-        prompt: ''
+    addOption() {
+      const option = { 
+        name: '',
+        meaning: '',
+        prompt: '',
         icon: 'agree'
+      };
 
-      EventBus.$emit 'openModal',
-        component: 'PollOptionForm'
-        props:
-          pollOption: option
-          poll: @poll
-          submitFn: (option) =>
-            if some(@pollOptions, (o) => o.name.toLowerCase() == option.name.toLowerCase())
-              Flash.error('poll_poll_form.option_already_added')
-            else
-              @pollOptions.push option
+      EventBus.$emit('openModal', {
+        component: 'PollOptionForm',
+        props: {
+          pollOption: option,
+          poll: this.poll,
+          submitFn: option => {
+            if (some(this.pollOptions, o => o.name.toLowerCase() === option.name.toLowerCase())) {
+              Flash.error('poll_poll_form.option_already_added');
+            } else {
+              this.pollOptions.push(option);
+            }
+          }
+        }
+      }
+      );
+    },
 
-    editOption: (option) ->
-      clone = pick(option, 'name', 'icon', 'meaning', 'prompt')
+    editOption(option) {
+      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt');
 
-      EventBus.$emit 'openModal',
-        component: 'PollOptionForm'
-        props:
-          edit: true
-          pollOption: clone
-          poll: @poll
-          submitFn: (clone) =>
-            Object.assign(option, clone)
+      EventBus.$emit('openModal', {
+        component: 'PollOptionForm',
+        props: {
+          edit: true,
+          pollOption: clone,
+          poll: this.poll,
+          submitFn: clone => {
+            Object.assign(option, clone);
+          }
+        }
+      }
+      );
+    },
 
-    submit: ->
-      actionName = if @poll.isNew() then 'created' else 'updated'
-      @poll.setErrors({})
-      @setPollOptionPriority()
-      @poll.pollOptionsAttributes = @pollOptions
-      @poll.save()
-      .then (data) =>
-        poll = Records.polls.find(data.polls[0].id)
-        @$router.replace(@urlFor(poll)) if @redirectOnSave
-        @$emit('saveSuccess', poll)
-        Flash.success "poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()}
-        if actionName == 'created' && poll.specifiedVotersOnly
-          EventBus.$emit 'openModal',
+    submit() {
+      const actionName = this.poll.isNew() ? 'created' : 'updated';
+      this.poll.setErrors({});
+      this.setPollOptionPriority();
+      this.poll.pollOptionsAttributes = this.pollOptions;
+      this.poll.save().then(data => {
+        const poll = Records.polls.find(data.polls[0].id);
+        if (this.redirectOnSave) { this.$router.replace(this.urlFor(poll)); }
+        this.$emit('saveSuccess', poll);
+        Flash.success("poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()});
+        if ((actionName === 'created') && poll.specifiedVotersOnly) {
+          EventBus.$emit('openModal', {
             component: 'PollMembers',
-            props:
-              poll: poll
-      .catch (error) =>
-        Flash.warning 'poll_common_form.please_review_the_form'
-        console.error error
+            props: {
+              poll
+            }
+          });
+        }
+      }).catch(error => {
+        Flash.warning('poll_common_form.please_review_the_form');
+        console.error(error);
+      });
+    }
+  },
 
-  computed:
-    titlePlaceholder: ->
-      if @pollTemplate && @pollTemplate.titlePlaceholder
-        I18n.t('common.prefix_eg', {val: @pollTemplate.titlePlaceholder})
-      else
-        I18n.t('poll_proposal_form.title_placeholder')
+  computed: {
+    titlePlaceholder() {
+      if (this.pollTemplate && this.pollTemplate.titlePlaceholder) {
+        return I18n.t('common.prefix_eg', {val: this.pollTemplate.titlePlaceholder});
+      } else {
+        return I18n.t('poll_proposal_form.title_placeholder');
+      }
+    },
 
-    votingMethodsItems: ->
-      Object.keys(@votingMethodsI18n).map (key) =>
-        {text: @$t(@votingMethodsI18n[key].title), value: key}
+    votingMethodsItems() {
+      return Object.keys(this.votingMethodsI18n).map(key => {
+        return {text: this.$t(this.votingMethodsI18n[key].title), value: key};
+    });
+    },
 
-    knownOptions: ->
-      (AppConfig.pollTypes[@poll.pollType].common_poll_options || [])
+    knownOptions() {
+      return (AppConfig.pollTypes[this.poll.pollType].common_poll_options || []);
+    },
 
-    formattedDuration: -> 
-      return '' unless @poll.meetingDuration
-      minutes = parseInt(@poll.meetingDuration)
-      duration = intervalToDuration({ start: new Date, end: addMinutes(new Date, minutes) })
-      formatDuration(duration, { format: ['hours', 'minutes'] })
+    formattedDuration() { 
+      if (!this.poll.meetingDuration) { return ''; }
+      const minutes = parseInt(this.poll.meetingDuration);
+      const duration = intervalToDuration({ start: new Date, end: addMinutes(new Date, minutes) });
+      return formatDuration(duration, { format: ['hours', 'minutes'] });
+    },
 
-    visiblePollOptions: -> @pollOptions.filter (o) -> !o._destroy
-    
-    hasOptions: -> @poll.config().has_options
-    minOptions: -> @poll.config().min_options
-    allowAnonymous: -> !@poll.config().prevent_anonymous
-    stanceReasonRequiredItems: ->
-      [
-        {text: @$t('poll_common_form.stance_reason_required'), value: 'required'},
-        {text: @$t('poll_common_form.stance_reason_optional'), value: 'optional'},
-        {text: @$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
-      ]
+    visiblePollOptions() { return this.pollOptions.filter(o => !o._destroy); },
+  
+    hasOptions() { return this.poll.config().has_options; },
+    minOptions() { return this.poll.config().min_options; },
+    allowAnonymous() { return !this.poll.config().prevent_anonymous; },
+    stanceReasonRequiredItems() {
+      return [
+        {text: this.$t('poll_common_form.stance_reason_required'), value: 'required'},
+        {text: this.$t('poll_common_form.stance_reason_optional'), value: 'optional'},
+        {text: this.$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
+      ];
+    },
 
-    titlePath: ->
-      (@poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type'
+    titlePath() {
+      return (this.poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type';
+    },
 
-    titleArgs: -> 
-      {pollType: @poll.translatedPollType().toLowerCase()}
+    titleArgs() { 
+      return {pollType: this.poll.translatedPollType().toLowerCase()};
+    },
 
-    closesSoon: ->
-      !(@poll.closingAt && isAfter(@poll.closingAt, addHours(new Date(), 24)))
+    closesSoon() {
+      return !(this.poll.closingAt && isAfter(this.poll.closingAt, addHours(new Date(), 24)));
+    },
 
-    closingSoonItems: ->
-      'nobody author undecided_voters voters'.split(' ').map (name) =>
-        {text: @$t("poll_common_settings.notify_on_closing_soon.#{name}"), value: name}
+    closingSoonItems() {
+      return 'nobody author undecided_voters voters'.split(' ').map(name => {
+        return {text: this.$t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
+    });
+    },
 
-    optionFormat: -> @poll.pollOptionNameFormat
-    hasOptionIcon: -> @poll.config().has_option_icon
-    i18nItems: -> 
-      compact 'agree abstain disagree consent objection block yes no'.split(' ').map (name) =>
-        return null if @poll.pollOptionNames.includes(name)
-        text: @$t('poll_proposal_options.'+name)
-        value: name
-
+    optionFormat() { return this.poll.pollOptionNameFormat; },
+    hasOptionIcon() { return this.poll.config().has_option_icon; },
+    i18nItems() { 
+      return compact('agree abstain disagree consent objection block yes no'.split(' ').map(name => {
+        if (this.poll.pollOptionNames.includes(name)) { return null; }
+        return {
+          text: this.$t('poll_proposal_options.'+name),
+          value: name
+        };
+      })
+      );
+    }
+  }
+};
 </script>
 <template lang="pug">
 .poll-common-form

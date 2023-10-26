@@ -1,8 +1,10 @@
-<script lang="coffee">
-export default
-  props:
-    event: Object
-    eventable: Object
+<script lang="js">
+export default {
+    props: {
+      event: Object,
+      eventable: Object
+    }
+};
 </script>
 
 <template lang="pug">

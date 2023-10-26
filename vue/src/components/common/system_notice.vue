@@ -1,48 +1,54 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import EventBus from '@/shared/services/event_bus'
-import Session from '@/shared/services/session'
-import Records from '@/shared/services/records'
-import marked from 'marked'
-import md5 from 'md5'
-import I18n from '@/i18n'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
+import Records from '@/shared/services/records';
+import marked from 'marked';
+import md5 from 'md5';
+import I18n from '@/i18n';
 
-export default
-  data: ->
-    notice: false
-    showNotice: false
-    showDismiss: false
-    reload: false
+export default {
+  data() {
+    return {
+      notice: false,
+      showNotice: false,
+      showDismiss: false,
+      reload: false
+    };
+  },
 
-  mounted: ->
-    setInterval =>
-      Records.fetch
-        path: 'boot/version'
-        params:
-          version: AppConfig.version
-          release: AppConfig.release
+  mounted() {
+    setInterval(() => {
+      return Records.fetch({
+        path: 'boot/version',
+        params: {
+          version: AppConfig.version,
+          release: AppConfig.release,
           now: Date.now()
-      .then(@eatData)
-    ,
-      1000 * 60 * 5
-    EventBus.$on 'systemNotice', @eatData
-    EventBus.$on 'signedIn', => @showNotice = false
-    @eatData({version: AppConfig.version, notice: AppConfig.systemNotice})
+        }}).then(this.eatData);
+    } , 1000 * 60 * 5);
+    EventBus.$on('systemNotice', this.eatData);
+    EventBus.$on('signedIn', () => { return this.showNotice = false; });
+    this.eatData({version: AppConfig.version, notice: AppConfig.systemNotice});
+  },
 
-  methods:
-    eatData: (data) ->
-      @reload = data.reload
-      @notice = data.notice || (AppConfig.features.app.trials && @$route.path.startsWith('/d/') && !Session.isSignedIn() && I18n.t("powered_by.this_is_loomio_md"))
-      @showNotice = @reload || (@notice && !Session.user().hasExperienced(md5(@notice)))
-      @showDismiss = data.reload || data.notice
+  methods: {
+    eatData(data) {
+      this.reload = data.reload;
+      this.notice = data.notice || (AppConfig.features.app.trials && this.$route.path.startsWith('/d/') && !Session.isSignedIn() && I18n.t("powered_by.this_is_loomio_md"));
+      this.showNotice = this.reload || (this.notice && !Session.user().hasExperienced(md5(this.notice)));
+      this.showDismiss = data.reload || data.notice;
+    },
 
-    accept: ->
-      @showNotice = false
-      @notice && Records.users.saveExperience(md5(@notice))
-      if @reload
-        setTimeout ->
-          location.reload()
-        , 100
+    accept() {
+      this.showNotice = false;
+      this.notice && Records.users.saveExperience(md5(this.notice));
+      if (this.reload) {
+        setTimeout(() => location.reload() , 100);
+      }
+    }
+  }
+};
 
 </script>
 

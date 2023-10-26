@@ -1,65 +1,81 @@
-<script lang="coffee">
-import AppConfig                from '@/shared/services/app_config'
-import EventBus                 from '@/shared/services/event_bus'
-import RecordLoader             from '@/shared/services/record_loader'
-import AbilityService           from '@/shared/services/ability_service'
-import PollCommonForm from '@/components/poll/common/form'
-import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_template_wrapper'
-import Session from '@/shared/services/session'
-import AuthModalMixin from '@/mixins/auth_modal'
-import Records from '@/shared/services/records'
-import { compact, snakeCase, camelCase, max, map } from 'lodash'
+<script lang="js">
+import AppConfig                from '@/shared/services/app_config';
+import EventBus                 from '@/shared/services/event_bus';
+import RecordLoader             from '@/shared/services/record_loader';
+import AbilityService           from '@/shared/services/ability_service';
+import PollCommonForm from '@/components/poll/common/form';
+import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_template_wrapper';
+import Session from '@/shared/services/session';
+import AuthModalMixin from '@/mixins/auth_modal';
+import Records from '@/shared/services/records';
+import { compact, snakeCase, camelCase, max, map } from 'lodash';
 
-export default
-  components: {PollCommonForm, PollCommonChooseTemplateWrapper}
-  mixins: [ AuthModalMixin ]
+export default {
+  components: {PollCommonForm, PollCommonChooseTemplateWrapper},
+  mixins: [ AuthModalMixin ],
 
-  props:
+  props: {
     discussion: Object
+  },
 
-  data: ->
-    canAddComment: false
-    currentAction: 'add-comment'
-    newComment: null
-    poll: null
-    # showDecisionBadge: false
+  data() {
+    return {
+      canAddComment: false,
+      currentAction: 'add-comment',
+      newComment: null,
+      poll: null
+    };
+  },
+    // showDecisionBadge: false
 
-  created: ->
-    
-    @watchRecords
-      key: @discussion.id
-      collections: ['groups', 'memberships', 'polls']
-      query: (store) =>
-        @canAddComment = AbilityService.canAddComment(@discussion)
-    @resetComment()
+  created() {
+  
+    this.watchRecords({
+      key: this.discussion.id,
+      collections: ['groups', 'memberships', 'polls'],
+      query: store => {
+        return this.canAddComment = AbilityService.canAddComment(this.discussion);
+      }
+    });
+    this.resetComment();
+  },
 
-  methods:
-    # resetBadge: ->
-    #   if @canStartPoll && @discussion.discussionTemplateId && @discussion.activePolls().length == 0
-    #     @showDecisionBadge = true
+  methods: {
+    // resetBadge: ->
+    //   if @canStartPoll && @discussion.discussionTemplateId && @discussion.activePolls().length == 0
+    //     @showDecisionBadge = true
 
-    resetComment: ->
-      @newComment = Records.comments.build
-        bodyFormat: Session.defaultFormat()
-        discussionId: @discussion.id
+    resetComment() {
+      this.newComment = Records.comments.build({
+        bodyFormat: Session.defaultFormat(),
+        discussionId: this.discussion.id,
         authorId: Session.user().id
+      });
+    },
 
-    setPoll: (poll) -> @poll = poll
-    resetPoll: ->
-      @poll = null
-      @currentAction = 'add-comment'
+    setPoll(poll) { return this.poll = poll; },
+    resetPoll() {
+      this.poll = null;
+      this.currentAction = 'add-comment';
+    },
 
-    signIn:     -> @openAuthModal()
-    isLoggedIn: -> Session.isSignedIn()
+    signIn() { this.openAuthModal(); },
+    isLoggedIn() { return Session.isSignedIn(); }
+  },
 
-  watch:
-    'discussion.id': -> 
-      @resetComment()
-      @resetPoll()
+  watch: {
+    'discussion.id'() { 
+      this.resetComment();
+      this.resetPoll();
+    }
+  },
 
-  computed:
-    canStartPoll: ->
-      AbilityService.canStartPoll(@discussion)
+  computed: {
+    canStartPoll() {
+      return AbilityService.canStartPoll(this.discussion);
+    }
+  }
+};
 
 </script>
 

@@ -1,77 +1,99 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import Flash   from '@/shared/services/flash'
-import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import Flash   from '@/shared/services/flash';
+import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash';
 
-export default
-  props:
+export default {
+  props: {
     stance: Object
+  },
 
-  data: ->
-    stanceChoices: []
-    pollOptions: []
-    zone: null
-    stanceValues: []
+  data() {
+    return {
+      stanceChoices: [],
+      pollOptions: [],
+      zone: null,
+      stanceValues: []
+    };
+  },
 
-  beforeDestroy: ->
-    EventBus.$off 'timeZoneSelected', @setTimeZone
+  beforeDestroy() {
+    EventBus.$off('timeZoneSelected', this.setTimeZone);
+  },
 
-  created: ->
-    EventBus.$on 'timeZoneSelected', @setTimeZone
-    @watchRecords
-      collections: ['pollOptions']
-      query: (records) =>
-        @stanceValues = if @poll.canRespondMaybe then [2,1,0] else [2, 0]
-        if @stance.poll().optionsDiffer(@pollOptions)
-          @pollOptions = @stance.poll().pollOptionsForVoting()
-          @stanceChoices = @pollOptions.map (option) =>
-            pollOption: option
-            poll_option_id: option.id
-            score: @stance.scoreFor(option)
+  created() {
+    EventBus.$on('timeZoneSelected', this.setTimeZone);
+    this.watchRecords({
+      collections: ['pollOptions'],
+      query: records => {
+        this.stanceValues = this.poll.canRespondMaybe ? [2,1,0] : [2, 0];
+        if (this.stance.poll().optionsDiffer(this.pollOptions)) {
+          this.pollOptions = this.stance.poll().pollOptionsForVoting();
+          this.stanceChoices = this.pollOptions.map(option => {
+            return {
+              pollOption: option,
+              poll_option_id: option.id,
+              score: this.stance.scoreFor(option)
+            };
+          });
+        }
+      }
+    });
+  },
 
-  methods:
-    setTimeZone: (e, zone) ->
-      @zone = zone
+  methods: {
+    setTimeZone(e, zone) {
+      this.zone = zone;
+    },
 
-    submit: ->
-      @stance.stanceChoicesAttributes = @stanceChoices.map (choice) ->
-        {poll_option_id: choice.poll_option_id, score: choice.score}
+    submit() {
+      this.stance.stanceChoicesAttributes = this.stanceChoices.map(choice => ({
+        poll_option_id: choice.poll_option_id,
+        score: choice.score
+      }));
 
-      actionName = if !@stance.castAt then 'created' else 'updated'
-      @stance.save()
-      .then =>
-        EventBus.$emit "closeModal"
-        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
-      .catch => true
+      const actionName = !this.stance.castAt ? 'created' : 'updated';
+      this.stance.save().then(() => {
+        EventBus.$emit("closeModal");
+        Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
+      }).catch(() => true);
+    },
 
-    buttonStyleFor: (choice, score) ->
-      if choice.score == score
-        {opacity: 1}
-      else
-        {opacity: 0.3}
+    buttonStyleFor(choice, score) {
+      if (choice.score === score) {
+        return {opacity: 1};
+      } else {
+        return {opacity: 0.3};
+      }
+    },
 
-    imgForScore: (score) ->
-      name = switch score
-        when 2 then 'agree'
-        when 1 then 'abstain'
-        when 0 then 'disagree'
-      "/img/#{name}.svg"
+    imgForScore(score) {
+      const name = (() => { switch (score) {
+        case 2: return 'agree';
+        case 1: return 'abstain';
+        case 0: return 'disagree';
+      } })();
+      return `/img/${name}.svg`;
+    },
 
-    incrementScore: (choice) ->
-      if @poll.canRespondMaybe
-        choice.score = (choice.score + 5) % 3
-      else
-        choice.score = if choice.score == 2
-          0
-        else
-          2
+    incrementScore(choice) {
+      if (this.poll.canRespondMaybe) {
+        return choice.score = (choice.score + 5) % 3;
+      } else {
+        return choice.score = choice.score === 2 ? 0 : 2;
+      }
+    }
+  },
 
-  computed:
-    poll: -> @stance.poll()
-    currentUserTimeZone: ->
-      Session.user().timeZone
+  computed: {
+    poll() { return this.stance.poll(); },
+    currentUserTimeZone() {
+      return Session.user().timeZone;
+    }
+  }
+};
 
 </script>
 

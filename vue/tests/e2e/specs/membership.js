@@ -1,5 +1,4 @@
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
   'successfully_removes_a_group_member': (test) => {

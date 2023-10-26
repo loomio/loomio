@@ -1,7 +1,7 @@
 <script>
 import AppConfig from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
-import I18n from '@/i18n.coffee'
+import I18n from '@/i18n'
 let mediaRecorder;
 let chunks = [];
 let blob;

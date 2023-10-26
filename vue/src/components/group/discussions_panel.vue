@@ -1,187 +1,241 @@
-<script lang="coffee">
-import Records            from '@/shared/services/records'
-import AbilityService     from '@/shared/services/ability_service'
-import EventBus           from '@/shared/services/event_bus'
-import RecordLoader       from '@/shared/services/record_loader'
-import PageLoader         from '@/shared/services/page_loader'
-import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq} from 'lodash'
-import Session from '@/shared/services/session'
+<script lang="js">
+import Records            from '@/shared/services/records';
+import AbilityService     from '@/shared/services/ability_service';
+import EventBus           from '@/shared/services/event_bus';
+import RecordLoader       from '@/shared/services/record_loader';
+import PageLoader         from '@/shared/services/page_loader';
+import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq} from 'lodash';
+import Session from '@/shared/services/session';
 
-export default
-  created: ->
-    @onQueryInput = debounce (val) =>
-      @$router.replace(@mergeQuery(q: val))
-    , 1000
-    @init()
-    EventBus.$on 'signedIn', @init
+export default 
+{
+  created() {
+    this.onQueryInput = debounce(val => {
+      this.$router.replace(this.mergeQuery({q: val}));
+    }
+    , 1000);
+    this.init();
+    EventBus.$on('signedIn', this.init);
+  },
 
-  beforeDestroy: ->
-    EventBus.$off 'signedIn', @init
+  beforeDestroy() {
+    EventBus.$off('signedIn', this.init);
+  },
 
-  data: ->
-    group: null
-    discussions: []
-    loader: null
-    groupIds: []
-    per: 25
-    dummyQuery: null
+  data() {
+    return {
+      group: null,
+      discussions: [],
+      loader: null,
+      groupIds: [],
+      per: 25,
+      dummyQuery: null
+    };
+  },
 
-  methods:
-    routeQuery: (o) ->
-      @$router.replace(@mergeQuery(o))
+  methods: {
+    routeQuery(o) {
+      this.$router.replace(this.mergeQuery(o));
+    },
 
-    beforeDestroy: ->
-      EventBus.$off 'joinedGroup'
+    beforeDestroy() {
+      EventBus.$off('joinedGroup');
+    },
 
-    init: ->
-      Records.groups.findOrFetch(@$route.params.key).then (group) =>
-        @group = group
+    init() {
+      Records.groups.findOrFetch(this.$route.params.key).then(group => {
+        this.group = group;
 
-        EventBus.$emit 'currentComponent',
-          page: 'groupPage'
-          title: @group.name
-          group: @group
-          search:
-            placeholder: @$t('navbar.search_threads', name: @group.parentOrSelf().name)
+        EventBus.$emit('currentComponent', {
+          page: 'groupPage',
+          title: this.group.name,
+          group: this.group,
+          search: {
+            placeholder: this.$t('navbar.search_threads', {name: this.group.parentOrSelf().name})
+          }
+        }
+        );
 
-        EventBus.$on 'joinedGroup', (group) => @fetch()
+        EventBus.$on('joinedGroup', group => this.fetch());
 
-        @refresh()
+        this.refresh();
 
-        @watchRecords
-          key: @group.id
-          collections: ['discussions', 'groups', 'memberships']
-          query: => @query()
+        this.watchRecords({
+          key: this.group.id,
+          collections: ['discussions', 'groups', 'memberships'],
+          query: () => this.query()
+        });
+      });
+    },
 
-    refresh: ->
-      @loader = new PageLoader
-        path: 'discussions'
-        order: 'lastActivityAt'
-        params:
-          group_id: @group.id
-          exclude_types: 'group outcome poll'
-          filter: @$route.query.t
-          subgroups: @$route.query.subgroups || 'mine'
-          tags: @$route.query.tag
-          per: @per
+    refresh() {
+      this.loader = new PageLoader({
+        path: 'discussions',
+        order: 'lastActivityAt',
+        params: {
+          group_id: this.group.id,
+          exclude_types: 'group outcome poll',
+          filter: this.$route.query.t,
+          subgroups: this.$route.query.subgroups || 'mine',
+          tags: this.$route.query.tag,
+          per: this.per
+        }
+      });
 
-      @fetch()
-      @query()
+      this.fetch();
+      this.query();
+    },
 
-    query: ->
-      return unless @group
-      @publicGroupIds = @group.publicOrganisationIds()
+    query() {
+      if (!this.group) { return; }
+      this.publicGroupIds = this.group.publicOrganisationIds();
 
-      @groupIds = switch (@$route.query.subgroups || 'mine')
-        when 'mine' then uniq(concat(intersection(@group.organisationIds(), Session.user().groupIds()), @publicGroupIds, @group.id))
-        when 'all' then @group.organisationIds()
-        else [@group.id]
+      this.groupIds = (() => { switch (this.$route.query.subgroups || 'mine') {
+        case 'mine': return uniq(concat(intersection(this.group.organisationIds(), Session.user().groupIds()), this.publicGroupIds, this.group.id));
+        case 'all': return this.group.organisationIds();
+        default: return [this.group.id];
+      } })();
 
-      chain = Records.discussions.collection.chain()
-      chain = chain.find(discardedAt: null)
-      chain = chain.find(groupId: {$in: @groupIds})
+      let chain = Records.discussions.collection.chain();
+      chain = chain.find({discardedAt: null});
+      chain = chain.find({groupId: {$in: this.groupIds}});
 
-      switch @$route.query.t
-        when 'unread'
-          chain = chain.where (discussion) -> discussion.isUnread()
-        when 'closed'
-          chain = chain.find(closedAt: {$ne: null})
-        when 'templates'
-          chain = chain.find(template: true)
-        when 'all'
-          true # noop
-        else
-          chain = chain.find(closedAt: null)
+      switch (this.$route.query.t) {
+        case 'unread':
+          chain = chain.where(discussion => discussion.isUnread());
+          break;
+        case 'closed':
+          chain = chain.find({closedAt: {$ne: null}});
+          break;
+        case 'templates':
+          chain = chain.find({template: true});
+          break;
+        case 'all':
+          true; // noop
+          break;
+        default:
+          chain = chain.find({closedAt: null});
+      }
 
-      if @$route.query.tag
-        tag = Records.tags.find(groupId: @group.parentOrSelf().id, name: @$route.query.tag)[0]
-        chain = chain.find({tagIds: {'$contains': tag.id}})
+      if (this.$route.query.tag) {
+        const tag = Records.tags.find({groupId: this.group.parentOrSelf().id, name: this.$route.query.tag})[0];
+        chain = chain.find({tagIds: {'$contains': tag.id}});
+      }
 
-      if @loader.pageWindow[@page]
-        if @page == 1
-          chain = chain.find(lastActivityAt: {$gte: @loader.pageWindow[@page][0]})
-        else
-          chain = chain.find(lastActivityAt: {$jbetween: @loader.pageWindow[@page]})
-        @discussions = chain.simplesort('lastActivityAt', true).data()
-      else
-        @discussions = []
+      if (this.loader.pageWindow[this.page]) {
+        if (this.page === 1) {
+          chain = chain.find({lastActivityAt: {$gte: this.loader.pageWindow[this.page][0]}});
+        } else {
+          chain = chain.find({lastActivityAt: {$jbetween: this.loader.pageWindow[this.page]}});
+        }
+        return this.discussions = chain.simplesort('lastActivityAt', true).data();
+      } else {
+        return this.discussions = [];
+      }
+    },
 
-    fetch: ->
-      @loader.fetch(@page).then( => @query())
+    fetch() {
+      this.loader.fetch(this.page).then( () => this.query());
+    },
 
-    filterName: (filter) ->
-      switch filter
-        when 'unread' then 'discussions_panel.unread'
-        when 'all' then 'discussions_panel.all'
-        when 'closed' then 'discussions_panel.closed'
-        when 'subscribed' then 'change_volume_form.simple.loud'
-        else
-          'discussions_panel.open'
+    filterName(filter) {
+      switch (filter) {
+        case 'unread': return 'discussions_panel.unread';
+        case 'all': return 'discussions_panel.all';
+        case 'closed': return 'discussions_panel.closed';
+        case 'subscribed': return 'change_volume_form.simple.loud';
+        default:
+          return 'discussions_panel.open';
+      }
+    },
 
-    openSearchModal: ->
-      initialOrgId = null
-      initialGroupId = null
-      
-      if @group.isParent()
-        initialOrgId = @group.id
-      else
-        initialOrgId = @group.parentId
-        initialGroupId = @group.id
+    openSearchModal() {
+      let initialOrgId = null;
+      let initialGroupId = null;
+    
+      if (this.group.isParent()) {
+        initialOrgId = this.group.id;
+      } else {
+        initialOrgId = this.group.parentId;
+        initialGroupId = this.group.id;
+      }
 
-      EventBus.$emit 'openModal',
-        component: 'SearchModal'
-        persistent: false
-        maxWidth: 900
-        props:
-          initialOrgId: initialOrgId
-          initialGroupId: initialGroupId
-          initialQuery: @dummyQuery
+      EventBus.$emit('openModal', {
+        component: 'SearchModal',
+        persistent: false,
+        maxWidth: 900,
+        props: {
+          initialOrgId,
+          initialGroupId,
+          initialQuery: this.dummyQuery
+        }
+      }
+      );
+    }
+  },
 
-  watch:
-    '$route.params': 'init'
-    '$route.query': 'refresh'
-    'page' : ->
-      @fetch()
-      @query()
+  watch: {
+    '$route.params': 'init',
+    '$route.query': 'refresh',
+    'page'() {
+      this.fetch();
+      return this.query();
+    }
+  },
 
-  computed:
-    page:
-      get: -> parseInt(@$route.query.page) || 1
-      set: (val) ->
-        @$router.replace({query: Object.assign({}, @$route.query, {page: val})}) 
+  computed: {
+    page: {
+      get() { return parseInt(this.$route.query.page) || 1; },
+      set(val) {
+        return this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})});
+      }
+    }, 
 
-    totalPages: ->
-      Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
+    totalPages() {
+      return Math.ceil(parseFloat(this.loader.total) / parseFloat(this.per));
+    },
 
-    pinnedDiscussions: ->
-      orderBy(@discussions.filter((discussion) -> discussion.pinnedAt), ['pinnedAt'], ['desc'])
+    pinnedDiscussions() {
+      return orderBy(this.discussions.filter(discussion => discussion.pinnedAt), ['pinnedAt'], ['desc']);
+    },
 
-    regularDiscussions: ->
-      orderBy(@discussions.filter((discussion) -> !discussion.pinnedAt), ['lastActivityAt'], ['desc'])
+    regularDiscussions() {
+      return orderBy(this.discussions.filter(discussion => !discussion.pinnedAt), ['lastActivityAt'], ['desc']);
+    },
 
-    groupTags: ->
-      @group && @group.tags().filter (tag) -> tag.taggingsCount > 0
+    groupTags() {
+      return this.group && this.group.tags().filter(tag => tag.taggingsCount > 0);
+    },
 
-    loading: ->
-      @loader.loading
+    loading() {
+      return this.loader.loading;
+    },
 
-    noThreads: ->
-      !@loading && @discussions.length == 0
+    noThreads() {
+      return !this.loading && (this.discussions.length === 0);
+    },
 
-    canViewPrivateContent: ->
-      AbilityService.canViewPrivateContent(@group)
+    canViewPrivateContent() {
+      return AbilityService.canViewPrivateContent(this.group);
+    },
 
-    canStartThread: ->
-      AbilityService.canStartThread(@group)
+    canStartThread() {
+      return AbilityService.canStartThread(this.group);
+    },
 
-    isLoggedIn: ->
-      Session.isSignedIn()
+    isLoggedIn() {
+      return Session.isSignedIn();
+    },
 
-    unreadCount: ->
-      filter(@discussions, (discussion) -> discussion.isUnread()).length
+    unreadCount() {
+      return filter(this.discussions, discussion => discussion.isUnread()).length;
+    },
 
-    suggestClosedThreads: ->
-      ['undefined', 'open', 'unread'].includes(String(@$route.query.t)) && @group && @group.closedDiscussionsCount
+    suggestClosedThreads() {
+      return ['undefined', 'open', 'unread'].includes(String(this.$route.query.t)) && this.group && this.group.closedDiscussionsCount;
+    }
+  }
+};
 
 </script>
 

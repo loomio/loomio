@@ -1,37 +1,41 @@
-<script lang="coffee">
-import Session       from '@/shared/services/session'
-import Records       from '@/shared/services/records'
-import EventBus      from '@/shared/services/event_bus'
-import LmoUrlService from '@/shared/services/lmo_url_service'
+<script lang="js">
+import Session       from '@/shared/services/session';
+import Records       from '@/shared/services/records';
+import EventBus      from '@/shared/services/event_bus';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 
-import {compact, isEmpty}  from 'lodash'
+import {compact, isEmpty}  from 'lodash';
 
-export default
-  data: ->
-    poll: null
+export default {
+  data() {
+    return {poll: null};
+  },
 
-  created: -> @init()
+  created() { this.init(); },
 
-  watch:
+  watch: {
     '$route.params.key': 'init'
+  },
 
-  methods:
-    init: ->
-      Records.polls.findOrFetchById(@$route.params.key)
-      .then (poll) =>
-        @poll = poll
-        window.location.host = @poll.group().newHost if @poll.group().newHost
+  methods: {
+    init() {
+      Records.polls.findOrFetchById(this.$route.params.key).then(poll => {
+        this.poll = poll;
+        if (this.poll.group().newHost) { window.location.host = this.poll.group().newHost; }
 
-        EventBus.$emit 'currentComponent',
-          group: poll.group()
-          poll:  poll
-          title: poll.title
+        EventBus.$emit('currentComponent', {
+          group: poll.group(),
+          poll,
+          title: poll.title,
           page: 'pollPage'
-
-
-      .catch (error) ->
-        EventBus.$emit 'pageError', error
-        EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
+        });
+      }).catch(function(error) {
+        EventBus.$emit('pageError', error);
+        if ((error.status === 403) && !Session.isSignedIn()) { EventBus.$emit('openAuthModal'); }
+      });
+    }
+  }
+};
 
 </script>
 

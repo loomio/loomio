@@ -1,61 +1,72 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import AbilityService from '@/shared/services/ability_service'
-import Flash   from '@/shared/services/flash'
-import EventBus          from '@/shared/services/event_bus'
-import I18n           from '@/i18n'
-import { sortBy, debounce } from 'lodash'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import AbilityService from '@/shared/services/ability_service';
+import Flash   from '@/shared/services/flash';
+import EventBus          from '@/shared/services/event_bus';
+import I18n           from '@/i18n';
+import { sortBy, debounce } from 'lodash';
 
-export default
-  data: ->
-    selectedDiscussion: null
-    searchFragment: ''
-    searchResults: []
-    groupId: @poll.groupId
-    groups: sortBy(Session.user().groups(), 'fullName')
-    loading: false
+export default {
+  data() {
+    return {
+      selectedDiscussion: null,
+      searchFragment: '',
+      searchResults: [],
+      groupId: this.poll.groupId,
+      groups: sortBy(Session.user().groups(), 'fullName'),
+      loading: false
+    };
+  },
 
-  props:
+  props: {
     poll: Object
+  },
 
-  mounted: ->
-    Records.discussions.fetch
-      path: 'dashboard'
-      params:
+  mounted() {
+    Records.discussions.fetch({
+      path: 'dashboard',
+      params: {
         per: 50
-    .then => @getSuggestions()
+    }}).then(() => this.getSuggestions());
+  },
 
-  methods:
-    getSuggestions: ->
-      @searchResults = Records.discussions.collection.chain()
-        .find(groupId: @groupId)
-        .where((d) -> !!AbilityService.canStartPoll(d))
+  methods: {
+    getSuggestions() {
+      this.searchResults = Records.discussions.collection.chain()
+        .find({groupId: this.groupId})
+        .where(d => !!AbilityService.canStartPoll(d))
         .simplesort('id', true)
-        .data()
+        .data();
+    },
 
-    submit: ->
-      @poll.addToThread(@selectedDiscussion.id)
-      .then =>
-        Flash.success('add_poll_to_thread_modal.success', pollType: @poll.translatedPollType())
-        EventBus.$emit('closeModal')
+    submit() {
+      this.poll.addToThread(this.selectedDiscussion.id).then(() => {
+        Flash.success('add_poll_to_thread_modal.success', {pollType: this.poll.translatedPollType()});
+        EventBus.$emit('closeModal');
+      });
+    },
 
-    fetch: debounce ->
-      return unless @searchFragment
-      @loading = true
-      Records.discussions.search(@groupId, @searchFragment).then (data) =>
-        @loading = false
-        @searchResults = Records.discussions.collection.chain()
-          .find(groupId: @groupId)
-          .find(title: { $regex: [@searchFragment, 'i'] })
-          .where((d) -> !!AbilityService.canStartPoll(d))
+    fetch: debounce(function() {
+      if (!this.searchFragment) { return; }
+      this.loading = true;
+      Records.discussions.search(this.groupId, this.searchFragment).then(data => {
+        this.loading = false;
+        this.searchResults = Records.discussions.collection.chain()
+          .find({groupId: this.groupId})
+          .find({title: { $regex: [this.searchFragment, 'i'] }})
+          .where(d => !!AbilityService.canStartPoll(d))
           .simplesort('title')
-          .data()
-    , 500
+          .data();
+      });
+    } , 500)
+  },
 
-  watch:
-    searchFragment: 'fetch'
+  watch: {
+    searchFragment: 'fetch',
     groupId: 'getSuggestions'
+  }
+}
 
 </script>
 <template lang="pug">

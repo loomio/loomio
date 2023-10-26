@@ -1,39 +1,47 @@
-<script lang="coffee">
-import ThreadService from '@/shared/services/thread_service'
-import AbilityService from '@/shared/services/ability_service'
-import { pick, some } from 'lodash'
+<script lang="js">
+import ThreadService from '@/shared/services/thread_service';
+import AbilityService from '@/shared/services/ability_service';
+import { pick, some } from 'lodash';
 
-export default
-  props:
-    thread: Object
+export default {
+  props: {
+    thread: Object,
 
-    groupPage:
-      type: Boolean
+    groupPage: {
+      type: Boolean,
       default: false
+    },
 
-    showGroupName:
-      type: Boolean
+    showGroupName: {
+      type: Boolean,
       default: true
+    }
+  },
 
-  computed:
-    dockActions: ->
-      pick(ThreadService.actions(@thread, @), ['dismiss_thread'])
+  computed: {
+    dockActions() {
+      return pick(ThreadService.actions(this.thread, this), ['dismiss_thread']);
+    },
 
-    menuActions: ->
-      actions = if @groupPage
-        if @$vuetify.breakpoint.smAndDown
+    menuActions() {
+      const actions = this.groupPage ?
+        this.$vuetify.breakpoint.smAndDown ?
           ['dismiss_thread','pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
-        else
+        :
           ['pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
-      else
-        if @$vuetify.breakpoint.smAndDown
+      :
+        this.$vuetify.breakpoint.smAndDown ?
           ['dismiss_thread', 'close_thread', 'reopen_thread']
-        else
-          ['close_thread', 'reopen_thread']
-      pick(ThreadService.actions(@thread, @), actions)
+        :
+          ['close_thread', 'reopen_thread'];
+      return pick(ThreadService.actions(this.thread, this), actions);
+    },
 
-    canPerformAny: ->
-      some @menuActions, (action) -> action.canPerform()
+    canPerformAny() {
+      return some(this.menuActions, action => action.canPerform());
+    }
+  }
+};
 
 </script>
 

@@ -1,43 +1,57 @@
-<script lang="coffee">
-import Session        from '@/shared/services/session'
-import Records        from '@/shared/services/records'
-import AbilityService from '@/shared/services/ability_service'
-import AppConfig      from '@/shared/services/app_config'
-import EventBus from '@/shared/services/event_bus'
-import Flash from '@/shared/services/flash'
+<script lang="js">
+import Session        from '@/shared/services/session';
+import Records        from '@/shared/services/records';
+import AbilityService from '@/shared/services/ability_service';
+import AppConfig      from '@/shared/services/app_config';
+import EventBus from '@/shared/services/event_bus';
+import Flash from '@/shared/services/flash';
 
-export default
-  data: ->
-    submitted: false
-    message: Records.contactMessages.build()
-    isDisabled: false
-    helpLink: "https://help.loomio.com"
-    contactEmail: AppConfig.contactEmail
-    needMessage: false
+export default {
+  data() {
+    return {
+      submitted: false,
+      message: Records.contactMessages.build(),
+      isDisabled: false,
+      helpLink: "https://help.loomio.com",
+      contactEmail: AppConfig.contactEmail,
+      needMessage: false
+    };
+  },
 
-  mounted: ->
-    EventBus.$emit 'currentComponent',
-      titleKey: 'contact_message_form.contact_us'
+  mounted() {
+    EventBus.$emit('currentComponent', {
+      titleKey: 'contact_message_form.contact_us',
       page: 'inboxPage'
+    });
+  },
 
-  created: ->
-    if @isLoggedIn
-      @message.name = Session.user().name
-      @message.email = Session.user().email
-      @message.userId = Session.user().id
+  created() {
+    if (this.isLoggedIn) {
+      this.message.name = Session.user().name;
+      this.message.email = Session.user().email;
+      this.message.userId = Session.user().id;
+    }
+  },
 
-  methods:
-    submit: ->
-      if @message.message
-        @message.save()
-        .then =>
-          @submitted = true
-      else
-        @needMessage = true
+  methods: {
+    submit() {
+      if (this.message.message) {
+        return this.message.save()
+        .then(() => {
+          this.submitted = true;
+        });
+      } else {
+        this.needMessage = true;
+      }
+    }
+  },
 
-  computed:
-    isLoggedIn: ->
-      Session.isSignedIn()
+  computed: {
+    isLoggedIn() {
+      return Session.isSignedIn();
+    }
+  }
+};
 </script>
 
 <template lang="pug">

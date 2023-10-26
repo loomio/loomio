@@ -1,35 +1,45 @@
-<script lang="coffee">
-import Records   from '@/shared/services/records'
-import AppConfig from '@/shared/services/app_config'
-import {compact, orderBy} from 'lodash'
+<script lang="js">
+import Records   from '@/shared/services/records';
+import AppConfig from '@/shared/services/app_config';
+import {compact, orderBy} from 'lodash';
 
-export default
-  data: ->
-    notifications: []
-    unread: []
-    unreadCount: 0
-    unreadIds: []
-    open: false
+export default {
+  data() {
+    return {
+      notifications: [],
+      unread: [],
+      unreadCount: 0,
+      unreadIds: [],
+      open: false
+    };
+  },
 
-  methods:
-    clicked: ->
-      @open = !@open
-      if @open
-        @unread = Records.notifications.find(viewed: { $ne: true })
-        @unreadIds = @unread.map (n) -> n.id
-        Records.notifications.viewed()
-      else
-        @unreadIds = []
-        @unreadCount = 0
+  methods: {
+    clicked() {
+      this.open = !this.open;
+      if (this.open) {
+        this.unread = Records.notifications.find({viewed: { $ne: true }});
+        this.unreadIds = this.unread.map(n => n.id);
+        Records.notifications.viewed();
+      } else {
+        this.unreadIds = [];
+        this.unreadCount = 0;
+      }
+    }
+  },
 
-  created: ->
-    Records.notifications.fetchNotifications()
-    @watchRecords
-      collections: ['notifications']
-      query: (store) =>
-        @notifications = store.notifications.collection.chain().simplesort('id', true).data()
-        @unread = store.notifications.find(viewed: { $ne: true })
-        @unreadCount = @unreadCount
+  created() {
+    Records.notifications.fetchNotifications();
+    this.watchRecords({
+      collections: ['notifications'],
+      query: store => {
+        this.notifications = store.notifications.collection.chain().simplesort('id', true).data();
+        this.unread = store.notifications.find({viewed: { $ne: true }});
+        this.unreadCount = this.unreadCount;
+      }
+    });
+  }
+};
 
 </script>
 <template lang="pug">

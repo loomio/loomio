@@ -1,123 +1,146 @@
-<script lang="coffee">
-import AppConfig      from '@/shared/services/app_config'
-import Session        from '@/shared/services/session'
-import Records        from '@/shared/services/records'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
-import InboxService   from '@/shared/services/inbox_service'
+<script lang="js">
+import AppConfig      from '@/shared/services/app_config';
+import Session        from '@/shared/services/session';
+import Records        from '@/shared/services/records';
+import EventBus       from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import LmoUrlService  from '@/shared/services/lmo_url_service';
+import InboxService   from '@/shared/services/inbox_service';
 
 import { isUndefined, sortBy, filter, find, head, each, uniq, map, sum, compact,
-         concat, intersection, difference, orderBy } from 'lodash'
+concat, intersection, difference, orderBy } from 'lodash';
 
-export default
-  data: ->
-    organization: null
-    open: false
-    group: null
-    version: AppConfig.version
-    tree: []
-    myGroups: []
-    otherGroups: []
-    organizations: []
-    unreadCounts: {}
-    expandedGroupIds: []
-    openGroups: []
-    unreadDirectThreadsCount: 0
+export default {
+  data() {
+    return {
+      organization: null,
+      open: false,
+      group: null,
+      version: AppConfig.version,
+      tree: [],
+      myGroups: [],
+      otherGroups: [],
+      organizations: [],
+      unreadCounts: {},
+      expandedGroupIds: [],
+      openGroups: [],
+      unreadDirectThreadsCount: 0
+    };
+  },
 
-  created: ->
-    EventBus.$on 'toggleSidebar', => @open = !@open
+  created() {
+    EventBus.$on('toggleSidebar', () => { return this.open = !this.open; });
 
-    EventBus.$on 'currentComponent', (data) =>
-      @group = data.group
-      if @group
-        @organization = data.group.parentOrSelf()
-        @expandedGroupIds = [@organization.id]
-      else
-        @organization = null
+    EventBus.$on('currentComponent', data => {
+      this.group = data.group;
+      if (this.group) {
+        this.organization = data.group.parentOrSelf();
+        this.expandedGroupIds = [this.organization.id];
+      } else {
+        this.organization = null;
+      }
+    });
 
-    @watchRecords
-      collections: ['groups', 'memberships', 'discussions']
-      query: (store) =>
-        @unreadDirectThreadsCount =
-          Records.discussions.collection.chain().
-                  find({groupId: null}).
-                  where((thread) -> thread.isUnread()).data().length
-        @updateGroups()
+    this.watchRecords({
+      collections: ['groups', 'memberships', 'discussions'],
+      query: store => {
+        this.unreadDirectThreadsCount =
+        Records.discussions.collection.chain().
+        find({groupId: null}).
+        where(thread => thread.isUnread()).data().length;
+        this.updateGroups();
+      }
+    });
 
-    EventBus.$on 'signedIn', (user) =>
-      @fetchData()
-      @openIfPinned()
+    EventBus.$on('signedIn', user => {
+      this.fetchData();
+      this.openIfPinned();
+    });
 
-    @fetchData() if Session.isSignedIn()
+    if (Session.isSignedIn()) { return this.fetchData(); }
+  },
 
-  mounted: ->
-    @openIfPinned()
+  mounted() {
+    this.openIfPinned();
+  },
 
-  watch:
-    organization: 'updateGroups'
+  watch: {
+    organization: 'updateGroups',
 
-    open: (val) ->
-      EventBus.$emit("sidebarOpen", val)
+    open(val) {
+      EventBus.$emit("sidebarOpen", val);
+    }
+  },
 
-  methods:
-    memberGroups: (group) ->
-      group.subgroups().filter (g) -> !g.archivedAt && g.membershipFor(Session.user())
+  methods: {
+    memberGroups(group) {
+      return group.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user()));
+    },
 
-    openIfPinned: ->
-      @open = !!Session.isSignedIn() && !!Session.user().experiences['sidebar'] && @$vuetify.breakpoint.lgAndUp
+    openIfPinned() {
+      this.open = !!Session.isSignedIn() && !!Session.user().experiences['sidebar'] && this.$vuetify.breakpoint.lgAndUp;
+    },
 
-    fetchData: ->
-      Records.users.fetchGroups().then =>
-        if @$router.history.current.path == "/dashboard" && Session.user().groups().length == 1
-          @$router.replace("/g/#{Session.user().groups()[0].key}")
-        if @$router.history.current.path == "/dashboard" && Session.user().groups().length == 0
-          if AppConfig.features.app.subscriptions
-            @$router.replace("/demo")
-          else
-            @$router.replace("/g/new")
+    fetchData() {
+      Records.users.fetchGroups().then(() => {
+        if ((this.$router.history.current.path === "/dashboard") && (Session.user().groups().length === 1)) {
+          this.$router.replace(`/g/${Session.user().groups()[0].key}`);
+        }
+        if ((this.$router.history.current.path === "/dashboard") && (Session.user().groups().length === 0)) {
+          this.$router.replace("/g/new");
+        }
+      });
+      InboxService.load();
+    },
 
-      InboxService.load()
+    goToGroup(group) {
+      this.$router.push(this.urlFor(group));
+    },
 
-    goToGroup: (group) ->
-      @$router.push @urlFor(group)
+    updateGroups() {
+      this.organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
+      this.openCounts = {};
+      this.closedCounts = {};
+      this.openGroups = [];
+      Session.user().groups().forEach(group => {
+        this.openCounts[group.id] = filter(group.discussions(), discussion => discussion.isUnread()).length;
+      });
+      Session.user().parentGroups().forEach(group => {
+        if (this.organization && (this.organization.id === group.parentOrSelf().id)) {
+          this.openGroups[group.id] = true;
+        }
+        this.closedCounts[group.id] = this.openCounts[group.id] + sum(map(this.memberGroups(group), subgroup => this.openCounts[subgroup.id]));
+      });
+    },
 
-    updateGroups: ->
-      @organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || []
-      @openCounts = {}
-      @closedCounts = {}
-      @openGroups = []
-      Session.user().groups().forEach (group) =>
-        @openCounts[group.id] = filter(group.discussions(), (discussion) -> discussion.isUnread()).length
-      Session.user().parentGroups().forEach (group) =>
-        if @organization && @organization.id == group.parentOrSelf().id
-          @openGroups[group.id] = true
-        @closedCounts[group.id] = @openCounts[group.id] + sum(map(@memberGroups(group), (subgroup) => @openCounts[subgroup.id]))
+    unreadThreadCount() {
+      return InboxService.unreadCount();
+    },
 
-    unreadThreadCount: ->
-      InboxService.unreadCount()
+    canViewPublicGroups() { return AbilityService.canViewPublicGroups(); },
+    setProfilePicture() { EventBus.$emit('openModal', {component: 'ChangePictureForm'}); }
+  },
 
-    canViewPublicGroups: -> AbilityService.canViewPublicGroups()
-    setProfilePicture: -> EventBus.$emit 'openModal', {component: 'ChangePictureForm'}
-
-  computed:
-    helpURL: -> 
-      siteUrl = new URL(AppConfig.baseUrl)
-      "https://help.loomio.com/en/?utm_source=#{siteUrl.host}"
-    isSignedIn: -> Session.isSignedIn()
-    showHelp: -> AppConfig.features.app.help_link
-    user: -> Session.user()
-    activeGroup: -> if @group then [@group.id] else []
-    logoUrl: -> AppConfig.theme.app_logo_src
-    showContact: -> AppConfig.features.app.show_contact
-    canStartGroups: -> AbilityService.canStartGroups()
-    canStartDemo: -> AppConfig.features.app.demos
-    showTemplateGallery: -> AppConfig.features.app.template_gallery
-    showExploreGroups: -> AppConfig.features.app.explore_public_groups
-    needProfilePicture: ->
-      Session.isSignedIn() && @user && !@user.avatarUrl && !@user.hasExperienced('changePicture')
-
-
+  computed: {
+    helpURL() { 
+      const siteUrl = new URL(AppConfig.baseUrl);
+      return `https://help.loomio.com/en/?utm_source=${siteUrl.host}`;
+    },
+    isSignedIn() { return Session.isSignedIn(); },
+    showHelp() { return AppConfig.features.app.help_link; },
+    user() { return Session.user(); },
+    activeGroup() { if (this.group) { return [this.group.id]; } else { return []; } },
+    logoUrl() { return AppConfig.theme.app_logo_src; },
+    showContact() { return AppConfig.features.app.show_contact; },
+    canStartGroups() { return AbilityService.canStartGroups(); },
+    canStartDemo() { return AppConfig.features.app.demos; },
+    showTemplateGallery() { return AppConfig.features.app.template_gallery; },
+    showExploreGroups() { return AppConfig.features.app.explore_public_groups; },
+    needProfilePicture() {
+      return Session.isSignedIn() && this.user && !this.user.avatarUrl && !this.user.hasExperienced('changePicture');
+    }
+  }
+};
 </script>
 
 <template lang="pug">

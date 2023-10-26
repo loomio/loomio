@@ -1,27 +1,37 @@
-<script lang="coffee">
-import { differenceInDays, format, parseISO } from 'date-fns'
-import Session         from '@/shared/services/session'
-import AuthModalMixin      from '@/mixins/auth_modal'
+<script lang="js">
+import { differenceInDays, format, parseISO } from 'date-fns';
+import Session         from '@/shared/services/session';
+import AuthModalMixin      from '@/mixins/auth_modal';
 export default
-  mixins: [ AuthModalMixin ]
-  props:
+{
+  mixins: [ AuthModalMixin ],
+  props: {
     group: Object
+  },
 
-  methods:
-    signIn: -> @openAuthModal()
+  methods: {
+    signIn() { this.openAuthModal(); }
+  },
 
-  computed:
-    isLoggedIn: -> Session.isSignedIn()
-    isWasGift: ->
-      @group.subscription.plan == 'was-gift'
-    isTrialing: ->
-      @group.membersInclude(Session.user()) && @group.subscription.plan == 'trial'
-    isExpired: ->
-      @isTrialing && !@group.subscription.active
-    daysRemaining: ->
-      differenceInDays(parseISO(@group.subscription.expires_at), new Date) + 1
-    createdDate: ->
-      format(new Date(@group.createdAt), 'do LLLL yyyy')
+  computed: {
+    isLoggedIn() { return Session.isSignedIn(); },
+    isWasGift() {
+      return this.group.subscription.plan === 'was-gift';
+    },
+    isTrialing() {
+      return this.group.membersInclude(Session.user()) && (this.group.subscription.plan === 'trial');
+    },
+    isExpired() {
+      return this.isTrialing && !this.group.subscription.active;
+    },
+    daysRemaining() {
+      return differenceInDays(parseISO(this.group.subscription.expires_at), new Date) + 1;
+    },
+    createdDate() {
+      return format(new Date(this.group.createdAt), 'do LLLL yyyy');
+    }
+  }
+};
 </script>
 <template lang="pug">
 v-alert(outlined color="primary" dense v-if="isTrialing")

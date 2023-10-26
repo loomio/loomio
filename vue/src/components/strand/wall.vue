@@ -1,22 +1,24 @@
-<script lang="coffee">
-import ThreadLoader from '@/shared/loaders/thread_loader'
-import RangeSet from '@/shared/services/range_set'
-import { camelCase, first, last, some } from 'lodash'
+<script lang="js">
+import ThreadLoader from '@/shared/loaders/thread_loader';
+import RangeSet from '@/shared/services/range_set';
+import { camelCase, first, last, some } from 'lodash';
 
-export default
-  props:
-    threads: Array
+export default {
+  props: {threads: Array },
 
-  data: ->
-    loaders: []
+  data() {
+    return {loaders: []};
+  },
 
-  mounted: ->
-    @threads.forEach (thread) =>
-      loader = new ThreadLoader(thread)
-      loader.addLoadUnreadRule()
-      loader.fetch()
-      @loaders.push(loader)
-
+  mounted() {
+    this.threads.forEach(thread => {
+      const loader = new ThreadLoader(thread);
+      loader.addLoadUnreadRule();
+      loader.fetch();
+      this.loaders.push(loader);
+    });
+  }
+};
 </script>
 
 <template lang="pug">

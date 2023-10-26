@@ -1,5 +1,4 @@
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
   'displays_parent_group_in_sidebar_if_member_of_a_subgroup': (test) => {

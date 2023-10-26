@@ -1,44 +1,58 @@
-<script lang="coffee">
-import AppConfig          from '@/shared/services/app_config'
-import Records            from '@/shared/services/records'
-import Session            from '@/shared/services/session'
-import Flash              from '@/shared/services/flash'
-import EventBus           from '@/shared/services/event_bus'
-import AbilityService     from '@/shared/services/ability_service'
+<script lang="js">
+import AppConfig          from '@/shared/services/app_config';
+import Records            from '@/shared/services/records';
+import Session            from '@/shared/services/session';
+import Flash              from '@/shared/services/flash';
+import EventBus           from '@/shared/services/event_bus';
+import AbilityService     from '@/shared/services/ability_service';
 
-import {groupBy} from 'lodash'
+import {groupBy} from 'lodash';
 
-export default
-  data: ->
-    records: {}
-    tasksByRecordKey: {}
-    loading: true
+export default {
+  data() {
+    return {
+      records: {},
+      tasksByRecordKey: {},
+      loading: true
+    };
+  },
 
-  mounted: ->
-    Records.tasks.remote.fetch('/').then (data) =>
-      ids = data['tasks'].map (t) -> t.id
-      tasks = Records.tasks.find(ids).filter (t) -> t.record()?
-      tasks.forEach (t) =>
-        recordKey = t.recordType + t.recordId
-        if !@records[recordKey]?
-          @records[recordKey] = t.record()
-      @tasksByRecordKey = groupBy tasks, (t) -> t.recordType + t.recordId
-    .finally =>
-      @loading = false
+  mounted() {
+    Records.tasks.remote.fetch('/').then(data => {
+      const ids = data['tasks'].map(t => t.id);
+      const tasks = Records.tasks.find(ids).filter(t => t.record() != null);
+      tasks.forEach(t => {
+        const recordKey = t.recordType + t.recordId;
+        if ((this.records[recordKey] == null)) {
+          this.records[recordKey] = t.record();
+        }
+      });
+      this.tasksByRecordKey = groupBy(tasks, t => t.recordType + t.recordId);
+    }).finally(() => {
+      this.loading = false;
+    });
+  },
 
-  methods:
-    taskUrlFor: (record) ->
-      if record.isA('discussion')
-        @urlFor(record)+'/0'
-      else
-        @urlFor(record)
+  methods: {
+    taskUrlFor(record) {
+      if (record.isA('discussion')) {
+        return this.urlFor(record)+'/0';
+      } else {
+        return this.urlFor(record);
+      }
+    },
 
-    toggleDone: (task) ->
-      task.toggleDone().then ->
-        if task.done
-          Flash.success 'tasks.task_updated_done'
-        else
-          Flash.success 'tasks.task_updated_not_done'
+    toggleDone(task) {
+      return task.toggleDone().then(function() {
+        if (task.done) {
+          Flash.success('tasks.task_updated_done');
+        } else {
+          Flash.success('tasks.task_updated_not_done');
+        }
+      });
+    }
+  }
+};
 
 </script>
 

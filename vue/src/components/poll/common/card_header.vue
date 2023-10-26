@@ -1,22 +1,33 @@
-<script lang="coffee">
-import AbilityService from '@/shared/services/ability_service'
-import { map, compact, pick } from 'lodash'
+<script lang="js">
+import AbilityService from '@/shared/services/ability_service';
+import { map, compact, pick } from 'lodash';
 
 export default
-  props:
+{
+  props: {
     poll: Object
+  },
 
-  computed:
-    groups: ->
-      map compact([(@poll.groupId && @poll.group()), (@poll.discussionId && @poll.discussion())]), (model) =>
-        if model.isA('discussion')
-          text: model.name || model.title
-          disabled: false
-          to: @urlFor(model)+'/'+@poll.createdEvent().sequenceId
-        else
-          text: model.name || model.title
-          disabled: false
-          to: @urlFor(model)
+  computed: {
+    groups() {
+      return map(compact([(this.poll.groupId && this.poll.group()), (this.poll.discussionId && this.poll.discussion())]), model => {
+        if (model.isA('discussion')) {
+          return {
+            text: model.name || model.title,
+            disabled: false,
+            to: this.urlFor(model)+'/'+this.poll.createdEvent().sequenceId
+          };
+        } else {
+          return {
+            text: model.name || model.title,
+            disabled: false,
+            to: this.urlFor(model)
+          };
+        }
+      });
+    }
+  }
+};
 </script>
 
 <template lang="pug">

@@ -1,28 +1,37 @@
-<script lang="coffee">
+<script lang="js">
+import { emojisByCategory, srcForEmoji } from '@/shared/helpers/emojis';
+import { each, keys, pick } from 'lodash';
 
-import { emojisByCategory, srcForEmoji } from '@/shared/helpers/emojis'
-import { each, keys, pick } from 'lodash'
-
-export default
-  props:
-    isPoll: Boolean
-    insert:
-      type: Function
+export default {
+  props: {
+    isPoll: Boolean,
+    insert: {
+      type: Function,
       required: true
+    }
+  },
 
-  data: ->
-    search: ''
-    showMore: false
+  data() {
+    return {
+      search: '',
+      showMore: false
+    };
+  },
 
-  methods:
-    srcForEmoji: srcForEmoji
+  methods: {
+    srcForEmoji
+  },
 
-  computed:
-    emojis: ->
-      if @showMore
-        emojisByCategory
-      else
-        pick(emojisByCategory, ['common', 'hands', 'expressions'])
+  computed: {
+    emojis() {
+      if (this.showMore) {
+        return emojisByCategory;
+      } else {
+        return pick(emojisByCategory, ['common', 'hands', 'expressions']);
+      }
+    }
+  }
+};
 
 </script>
 

@@ -1,5 +1,4 @@
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+pageHelper = require('../helpers/pageHelper')
 
 // GK: dislaying discussions from open groups
 // GK: displaying public discussions?

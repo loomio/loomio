@@ -1,19 +1,24 @@
-<script lang="coffee">
-import OutcomeService from '@/shared/services/outcome_service'
-import EventService from '@/shared/services/event_service'
+<script lang="js">
+import OutcomeService from '@/shared/services/outcome_service';
+import EventService from '@/shared/services/event_service';
 
-import { pick } from 'lodash'
+import { pick } from 'lodash';
 
-export default
-  props:
-    event: Object
+export default {
+  props: {
+    event: Object,
     eventable: Object
+  },
 
-  computed:
-    dockActions: ->
-      OutcomeService.actions(@eventable, @)
-    menuActions: ->
-      pick EventService.actions(@event, @), ['pin_event', 'unpin_event', 'notification_history']
+  computed: {
+    dockActions() {
+      return OutcomeService.actions(this.eventable, this);
+    },
+    menuActions() {
+      return pick(EventService.actions(this.event, this), ['pin_event', 'unpin_event', 'notification_history']);
+    }
+  }
+};
 
 </script>
 

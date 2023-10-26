@@ -1,19 +1,25 @@
-<script lang="coffee">
-import Records  from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import Flash  from '@/shared/services/flash'
+<script lang="js">
+import Records  from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import Flash  from '@/shared/services/flash';
 
 export default
-  props:
+{
+  props: {
     user: Object
-  data: ->
-    contactRequest: Records.contactRequests.build(recipientId: @user.id)
-  methods:
-    submit: ->
-      @contactRequest.save()
-      .then =>
-        Flash.success "contact_request_form.email_sent", {name: @user.name}
-        @close()
+  },
+  data() {
+    return {contactRequest: Records.contactRequests.build({recipientId: this.user.id})};
+  },
+  methods: {
+    submit() {
+      this.contactRequest.save().then(() => {
+        Flash.success("contact_request_form.email_sent", {name: this.user.name});
+        this.close();
+      });
+    }
+  }
+};
 
 </script>
 <template lang="pug">

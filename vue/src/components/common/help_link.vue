@@ -1,8 +1,10 @@
-<script lang="coffee">
-export default
-  props:
-    text: String
+<script lang="js">
+export default {
+  props: {
+    text: String,
     path: String
+  }
+}
 </script>
 
 <template lang="pug">

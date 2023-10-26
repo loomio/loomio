@@ -1,38 +1,48 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import AbilityService from '@/shared/services/ability_service'
-import RecordLoader   from '@/shared/services/record_loader'
-import Session        from '@/shared/services/session'
-import {includes, some, compact, intersection, orderBy, slice, filter, isEmpty} from 'lodash'
-import LmoUrlService from '@/shared/services/lmo_url_service'
-import { exact, approximate } from '@/shared/helpers/format_time'
+<script lang="js">
+import Records        from '@/shared/services/records';
+import AbilityService from '@/shared/services/ability_service';
+import RecordLoader   from '@/shared/services/record_loader';
+import Session        from '@/shared/services/session';
+import {includes, some, compact, intersection, orderBy, slice, filter, isEmpty} from 'lodash';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+import { exact, approximate } from '@/shared/helpers/format_time';
 
 export default
-  data: ->
-    requests: []
-    group: null
+{
+  data() {
+    return {
+      requests: [],
+      group: null
+    };
+  },
 
-  created: ->
-    Records.groups.findOrFetch(@$route.params.key).then (group) =>
-      @group = group
+  created() {
+    Records.groups.findOrFetch(this.$route.params.key).then(group => {
+      this.group = group;
 
-      if AbilityService.canManageMembershipRequests(@group)
-        Records.membershipRequests.fetchPendingByGroup(@group.key, per: 100)
-        Records.membershipRequests.fetchPreviousByGroup(@group.key, per: 100)
-        @watchRecords
-          collections: ['membershipRequests']
-          query: (store) =>
-            @requests = @group.membershipRequests()
+      if (AbilityService.canManageMembershipRequests(this.group)) {
+        Records.membershipRequests.fetchPendingByGroup(this.group.key, {per: 100});
+        Records.membershipRequests.fetchPreviousByGroup(this.group.key, {per: 100});
+        this.watchRecords({
+          collections: ['membershipRequests'],
+          query: store => {this.requests = this.group.membershipRequests(); }
+        });
+      }
+    });
+  },
 
-  computed:
-    unapprovedRequestsByOldestFirst: ->
-      unapproved = filter @requests, (request) -> !request.respondedAt
-      orderBy unapproved, ['createdAt'], ['asc']
+  computed: {
+    unapprovedRequestsByOldestFirst() {
+      const unapproved = filter(this.requests, request => !request.respondedAt);
+      return orderBy(unapproved, ['createdAt'], ['asc']);
+    },
 
-    approvedRequestsByNewestFirst: ->
-      approved = filter @requests, (request) -> request.respondedAt
-      orderBy approved, ['respondedAt'], ['desc']
-
+    approvedRequestsByNewestFirst() {
+      const approved = filter(this.requests, request => request.respondedAt);
+      return orderBy(approved, ['respondedAt'], ['desc']);
+    }
+  }
+};
 </script>
 <template lang="pug">
 .requests-panel

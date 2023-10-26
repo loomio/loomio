@@ -2,14 +2,14 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
-const components = require('./src/components.coffee');
+const components = require('./src/components');
 
 module.exports = {
   mode: 'development',
-  entry: ['./src/main.coffee'],
+  entry: ['./src/main'],
   devtool: 'inline-source-map',
   resolve: {
-    extensions: [ '.js', '.coffee', '.haml'],
+    extensions: [ '.js'],
     modules: [path.resolve(__dirname), path.resolve(__dirname, 'node_modules')],
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
@@ -21,15 +21,9 @@ module.exports = {
   },
   module: {
     rules: [
-      // { test: /\.styl$/, use: ['null-loader'], },
       { test: /\.html$/, use: 'vue-template-loader' },
       { test: /\.vue$/,  loader: 'vue-loader' },
       { test: /\.pug$/,  use: 'pug-plain-loader'},
-      { test: /\.coffee$/,
-        use: [ {
-                 loader: 'coffee-loader',
-                 options: { transpile: { presets: ['@babel/env'] }}
-               } ]}]
   },
   plugins: [
     new WebpackNightWatchPlugin({

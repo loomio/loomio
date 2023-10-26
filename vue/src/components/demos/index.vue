@@ -1,72 +1,93 @@
-<script lang="coffee">
-import AuthModalMixin      from '@/mixins/auth_modal'
-import AppConfig          from '@/shared/services/app_config'
-import Records            from '@/shared/services/records'
-import Session            from '@/shared/services/session'
-import EventBus           from '@/shared/services/event_bus'
-import Flash              from '@/shared/services/flash'
-import AbilityService     from '@/shared/services/ability_service'
-import RecordLoader       from '@/shared/services/record_loader'
-import { capitalize, take, keys, every, orderBy, debounce } from 'lodash'
-import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
-import PlausibleService from '@/shared/services/plausible_service'
+<script lang="js">
+import AuthModalMixin      from '@/mixins/auth_modal';
+import AppConfig          from '@/shared/services/app_config';
+import Records            from '@/shared/services/records';
+import Session            from '@/shared/services/session';
+import EventBus           from '@/shared/services/event_bus';
+import Flash              from '@/shared/services/flash';
+import AbilityService     from '@/shared/services/ability_service';
+import RecordLoader       from '@/shared/services/record_loader';
+import { capitalize, take, keys, every, orderBy, debounce } from 'lodash';
+import { subDays, addDays, subWeeks, subMonths } from 'date-fns';
+import PlausibleService from '@/shared/services/plausible_service';
 
-export default
-  mixins: [ AuthModalMixin ]
-  data: ->
-    templates: []
-    loaded: false
-    processing: false
-    trials: AppConfig.features.app.trials
+export default 
+{
+  mixins: [ AuthModalMixin ],
+  data() {
+    return {
+      templates: [],
+      loaded: false,
+      processing: false,
+      trials: AppConfig.features.app.trials
+    };
+  },
 
-  created: ->
-    EventBus.$on 'signedIn', @init
+  created() {
+    EventBus.$on('signedIn', this.init);
+  },
 
-  beforeDestroy: ->
-    EventBus.$off 'signedIn', @init
+  beforeDestroy() {
+    EventBus.$off('signedIn', this.init);
+  },
 
-  mounted: ->
-    EventBus.$emit('content-title-visible', false)
-    EventBus.$emit 'currentComponent',
-      titleKey: 'templates.try_loomio'
-      page: 'threadsPage'
-      search:
-        placeholder: @$t('navbar.search_all_threads')
-    @init()
+  mounted() {
+    EventBus.$emit('content-title-visible', false);
+    EventBus.$emit('currentComponent', {
+      titleKey: 'templates.try_loomio',
+      page: 'threadsPage',
+      search: {
+        placeholder: this.$t('navbar.search_all_threads')
+      }
+    }
+    );
+    this.init();
+  },
 
-  watch:
+  watch: {
     '$route.query': 'refresh'
+  },
 
-  methods:
-    init: ->
-      Records.fetch(path: 'demos').then (data) =>
-        @loaded = true
+  methods: {
+    init() {
+      Records.fetch({path: 'demos'}).then(data => {
+        this.loaded = true;
+      });
 
-      @watchRecords
-        key: 'demosIndex'
-        collections: ['demos']
-        query: =>
-          @demos = Records.demos.collection.chain().find(id: {$ne: null}).simplesort('priority', true).data()
+      return this.watchRecords({
+        key: 'demosIndex',
+        collections: ['demos'],
+        query: () => {
+          this.demos = Records.demos.collection.chain().find({id: {$ne: null}}).simplesort('priority', true).data();
+        }
+      });
+    },
 
-    startDemo: (id) ->
-      if Session.isSignedIn()
-        @cloneTemplate(id)
-      else
-        @openAuthModal()
+    startDemo(id) {
+      if (Session.isSignedIn()) {
+        this.cloneTemplate(id);
+      } else {
+        this.openAuthModal();
+      }
+    },
 
-    cloneTemplate: (id) ->
-      PlausibleService.trackEvent('start_demo')
-      Flash.wait('templates.generating_demo')
-      @processing = true
-      Records.post
-        path: 'demos/clone'
-        params:
-          id: id
-      .then (data) =>
-        Flash.success('templates.demo_created')
-        @$router.push @urlFor(Records.groups.find(data.groups[0].id))
-      .finally =>
-        @processing = false
+    cloneTemplate(id) {
+      PlausibleService.trackEvent('start_demo');
+      Flash.wait('templates.generating_demo');
+      this.processing = true;
+      Records.post({
+        path: 'demos/clone',
+        params: {
+          id
+        }}).then(data => {
+          Flash.success('templates.demo_created');
+          this.$router.push(this.urlFor(Records.groups.find(data.groups[0].id)));
+        }).finally(() => {
+          this.processing = false;
+      });
+    }
+  }
+};
 
 </script>
 

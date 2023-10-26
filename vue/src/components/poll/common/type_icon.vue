@@ -1,8 +1,10 @@
-<script lang="coffee">
-export default
-  props:
-    poll: Object
+<script lang="js">
+export default {
+  props: {
+    poll: Object,
     small: Boolean
+  }
+};
 </script>
 
 <template lang="pug">

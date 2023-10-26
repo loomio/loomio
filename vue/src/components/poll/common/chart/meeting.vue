@@ -1,47 +1,68 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import AppConfig from '@/shared/services/app_config'
-import Session from '@/shared/services/session'
+<script lang="js">
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
+ */
+import EventBus from '@/shared/services/event_bus';
+import AppConfig from '@/shared/services/app_config';
+import Session from '@/shared/services/session';
 
-import {sum, map, sortBy, find, compact, uniq} from 'lodash'
+import {sum, map, sortBy, find, compact, uniq} from 'lodash';
 
 export default
-  props:
-    poll: Object
-    zone: Object
+  ({
+    props: {
+      poll: Object,
+      zone: Object
+    },
 
-  data: ->
-    decidedVoters: []
+    data() {
+      return {decidedVoters: []};
+    },
 
-  created: ->
-    @watchRecords
-      collections: ['users']
-      query: (store) =>
-        @decidedVoters = @poll.decidedVoters()
+    created() {
+      return this.watchRecords({
+        collections: ['users'],
+        query: store => {
+          this.decidedVoters = this.poll.decidedVoters();
+        }
+      });
+    },
 
-  methods:
-    scoreColor: (score) ->
-      switch score
-        when 2 then AppConfig.pollColors.proposal[0]
-        when 1 then AppConfig.pollColors.proposal[1]
-        when 0 then AppConfig.pollColors.proposal[2]
+    methods: {
+      scoreColor(score) {
+        switch (score) {
+          case 2: return AppConfig.pollColors.proposal[0];
+          case 1: return AppConfig.pollColors.proposal[1];
+          case 0: return AppConfig.pollColors.proposal[2];
+        }
+      },
 
-    bgColor: (score) ->
-      switch score
-        when 2 then "rgba(0, 209, 119, 0.5)"
-        when 1 then "rgba(246, 168, 43, 0.5)"
+      bgColor(score) {
+        switch (score) {
+          case 2: return "rgba(0, 209, 119, 0.5)";
+          case 1: return "rgba(246, 168, 43, 0.5)";
+        }
+      },
 
-    classForScore: (score) ->
-      switch score
-        when 2 then 'poll-meeting-chart__cell--yes'
-        when 1 then 'poll-meeting-chart__cell--maybe'
-        else
-          'poll-meeting-chart__cell--no'
+      classForScore(score) {
+        switch (score) {
+          case 2: return 'poll-meeting-chart__cell--yes';
+          case 1: return 'poll-meeting-chart__cell--maybe';
+          default:
+            return 'poll-meeting-chart__cell--no';
+        }
+      }
+    },
 
-  computed:
-    datesAsOptions: -> @poll.datesAsOptions()
-    currentUserTimeZone: ->
-      Session.user().timeZone
+    computed: {
+      datesAsOptions() { return this.poll.datesAsOptions(); },
+      currentUserTimeZone() {
+        return Session.user().timeZone;
+      }
+    }
+  });
 </script>
 
 <template lang="pug">

@@ -1,78 +1,93 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import Flash from '@/shared/services/flash'
-import EventBus from '@/shared/services/event_bus'
-import Session        from '@/shared/services/session'
-import AbilityService from '@/shared/services/ability_service'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Flash from '@/shared/services/flash';
+import EventBus from '@/shared/services/event_bus';
+import Session        from '@/shared/services/session';
+import AbilityService from '@/shared/services/ability_service';
 
-import Vue     from 'vue'
-import { uniq, map, sortBy, head, find, filter, sum } from 'lodash'
-import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns'
-import { exact} from '@/shared/helpers/format_time'
+import Vue     from 'vue';
+import { uniq, map, sortBy, head, find, filter, sum } from 'lodash';
+import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns';
+import { exact} from '@/shared/helpers/format_time';
 
-import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import I18n from '@/i18n'
+import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
+import I18n from '@/i18n';
 
-export default
-  components:
-    RecipientsAutocomplete: RecipientsAutocomplete
+export default {
+  components: {
+    RecipientsAutocomplete
+  },
 
-  props:
-    outcome: Object
+  props: {
+    outcome: Object,
     close: Function
+  },
 
-  data: ->
-    options: []
-    bestOption: null
-    isDisabled: false
-    review: false
-    isShowingDatePicker: false
-    dateToday: format(new Date, 'yyyy-MM-dd')
+  data() {
+    return {
+      options: [],
+      bestOption: null,
+      isDisabled: false,
+      review: false,
+      isShowingDatePicker: false,
+      dateToday: format(new Date, 'yyyy-MM-dd')
+    };
+  },
 
-  created: ->
-    if @poll.datesAsOptions()
-      @options = map @outcome.poll().pollOptions(), (option) ->
-        id:        option.id
-        value:     exact(parseISO(option.name))
+  created() {
+    if (this.poll.datesAsOptions()) {
+      this.options = map(this.outcome.poll().pollOptions(), option => ({
+        id:        option.id,
+        value:     exact(parseISO(option.name)),
         attendees: option.stances().length
+      }));
 
-      @options.unshift
-        id: null
-        value: I18n.t('common.none')
+      this.options.unshift({
+        id: null,
+        value: I18n.t('common.none'),
         attendees: 0
+      });
 
-      @bestOption = head sortBy @options, (option) ->
-        -1 * option.attendees # sort descending, so the best option is first
+      this.bestOption = head(sortBy(this.options, option => -1 * option.attendees)
+      ); // sort descending, so the best option is first
 
-      Vue.set(@outcome, 'calendarInvite', true)
+      Vue.set(this.outcome, 'calendarInvite', true);
 
-      @outcome.pollOptionId = @outcome.pollOptionId or @bestOption.id
-      @outcome.eventSummary = @outcome.eventSummary or @outcome.poll().title
-      
-  computed:
-    poll: -> @outcome.poll()
+      this.outcome.pollOptionId = this.outcome.pollOptionId || this.bestOption.id;
+      this.outcome.eventSummary = this.outcome.eventSummary || this.outcome.poll().title;
+    }
+  },
+    
+  computed: {
+    poll() { return this.outcome.poll(); }
+  },
 
-  methods:
-    submit: ->
-      @outcome.eventDescription = @outcome.statement if @poll.datesAsOptions()
-      @outcome.includeActor = 1 if @outcome.calendarInvite
+  methods: {
+    submit() {
+      let actionName;
+      if (this.poll.datesAsOptions()) { this.outcome.eventDescription = this.outcome.statement; }
+      if (this.outcome.calendarInvite) { this.outcome.includeActor = 1; }
 
-      if @outcome.isNew()
-        actionName = "created"
-      else
-        actionName = "updated"
+      if (this.outcome.isNew()) {
+        actionName = "created";
+      } else {
+        actionName = "updated";
+      }
 
-      @outcome.save()
-      .then (data) =>
-        Flash.success("poll_common_outcome_form.outcome_#{actionName}")
-        @closeModal()
-      .catch (error) => true
+      this.outcome.save().then(data => {
+        Flash.success(`poll_common_outcome_form.outcome_${actionName}`);
+        return this.closeModal();
+      }).catch(error => true);
+    },
 
-    newRecipients: (val) ->
-      @recipients = val
-      @outcome.recipientAudience = (val.find((i) -> i.type=='audience') || {}).id
-      @outcome.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
-      @outcome.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
+    newRecipients(val) {
+      this.recipients = val;
+      this.outcome.recipientAudience = (val.find(i => i.type==='audience') || {}).id;
+      this.outcome.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
+      this.outcome.recipientEmails = map(filter(val, o => o.type === 'email'), 'name');
+    }
+  }
+};
 
 </script>
 

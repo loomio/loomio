@@ -1,23 +1,32 @@
-<script lang="coffee">
-import Records      from '@/shared/services/records.coffee'
-import openModal      from '@/shared/helpers/open_modal'
-export default
-  props:
+<script lang="js">
+import Records      from '@/shared/services/records';
+import openModal      from '@/shared/helpers/open_modal';
+export default {
+  props: {
     discussion: Object
-  methods:
-    openMoveCommentsModal: ->
-      openModal
-        component: 'MoveCommentsModal'
-        props:
-          discussion: @discussion
-  computed:
-    styles: ->
-      { bar, top } = @$vuetify.application
-      return
-        display: 'flex'
-        position: 'sticky'
-        top: "#{bar + top}px"
+  },
+  methods: {
+    openMoveCommentsModal() {
+      openModal({
+        component: 'MoveCommentsModal',
+        props: {
+          discussion: this.discussion
+        }
+      });
+    }
+  },
+  computed: {
+    styles() {
+      const { bar, top } = this.$vuetify.application;
+      return{
+        display: 'flex',
+        position: 'sticky',
+        top: `${bar + top}px`,
         zIndex: 1
+      };
+    }
+  }
+};
 </script>
 
 <template lang='pug'>

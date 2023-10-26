@@ -7,7 +7,7 @@ import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
-import I18n from '@/i18n.coffee';
+import I18n from '@/i18n';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
 

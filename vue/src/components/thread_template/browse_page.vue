@@ -1,39 +1,49 @@
-<script lang="coffee">
-import Records       from '@/shared/services/records'
-import Session       from '@/shared/services/session'
-import LmoUrlService from '@/shared/services/lmo_url_service'
-import EventBus      from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import DiscussionTemplateService from '@/shared/services/discussion_template_service'
-import utils         from '@/shared/record_store/utils'
-import { compact } from 'lodash'
-import VuetifyColors  from 'vuetify/lib/util/colors'
+<script lang="js">
+import Records       from '@/shared/services/records';
+import Session       from '@/shared/services/session';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+import EventBus      from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import DiscussionTemplateService from '@/shared/services/discussion_template_service';
+import utils         from '@/shared/record_store/utils';
+import { compact } from 'lodash';
+import VuetifyColors  from 'vuetify/lib/util/colors';
 
-colors = Object.keys(VuetifyColors).filter((name) -> name != 'shades').map (name) -> VuetifyColors[name]['base']
+const colors = Object.keys(VuetifyColors).filter(name => name !== 'shades').map(name => VuetifyColors[name]['base']);
 
-export default
-  data: ->
-    results: []
-    query: @$route.query.query
-    loading: false
-    tags: []
+export default {
+  data() {
+    return {
+      results: [],
+      query: this.$route.query.query,
+      loading: false,
+      tags: []
+    };
+  },
 
-  mounted: ->
-    @fetch()
-    Records.remote.get('discussion_templates/browse_tags').then (data) =>
-      @tags = data
+  mounted() {
+    this.fetch();
+    Records.remote.get('discussion_templates/browse_tags').then(data => {
+      this.tags = data;
+    });
+  },
 
-  methods:
-    changed: -> @fetch()
-    fetch: ->
-      @loading = true
-      @results = []
-      Records.remote.get('discussion_templates/browse', {query: @query}).then (data) =>
-        @results = data.results.map(utils.parseJSON)
-        @loading = false
+  methods: {
+    changed() { return this.fetch(); },
+    fetch() {
+      this.loading = true;
+      this.results = [];
+      Records.remote.get('discussion_templates/browse', {query: this.query}).then(data => {
+        this.results = data.results.map(utils.parseJSON);
+        this.loading = false;
+      });
+    },
 
-    tagColor: (tag)->
-      colors[@tags.indexOf(tag) % colors.length]
+    tagColor(tag){
+      return colors[this.tags.indexOf(tag) % colors.length];
+    }
+  }
+};
 
 </script>
 <template lang="pug">

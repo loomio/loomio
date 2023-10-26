@@ -1,56 +1,75 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import AppConfig from '@/shared/services/app_config'
-import Records from '@/shared/services/records'
-import Flash  from '@/shared/services/flash'
+<script lang="js">
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
+ */
+import EventBus from '@/shared/services/event_bus';
+import AppConfig from '@/shared/services/app_config';
+import Records from '@/shared/services/records';
+import Flash  from '@/shared/services/flash';
 
-export default
-  props:
+export default {
+  props: {
     chatbot: Object
+  },
 
-  data: ->
-    kinds: AppConfig.webhookEventKinds
-    testing: false
-    formats: [
-      {text: @$t('webhook.formats.markdown'), value: "markdown"}
-      {text: @$t('webhook.formats.microsoft'), value: "microsoft"}
-      {text: @$t('webhook.formats.slack'), value: "slack"}
-      {text: @$t('webhook.formats.discord'), value: "discord"}
-    ]
+  data() {
+    return {
+      kinds: AppConfig.webhookEventKinds,
+      testing: false,
+      formats: [
+        {text: this.$t('webhook.formats.markdown'), value: "markdown"},
+        {text: this.$t('webhook.formats.microsoft'), value: "microsoft"},
+        {text: this.$t('webhook.formats.slack'), value: "slack"},
+        {text: this.$t('webhook.formats.discord'), value: "discord"}
+        ]
+    };
+  },
 
-  methods:
-    destroy: ->
-      @chatbot.destroy().then =>
-        Flash.success 'poll_common_delete_modal.success'
-        EventBus.$emit('closeModal')
-      .catch (b) =>
-        Flash.error 'common.something_went_wrong'
-        console.log @chatbot.errors
-        
-    submit: ->
-      @chatbot.save()
-      .then =>
-        Flash.success 'chatbot.saved'
-        EventBus.$emit('closeModal')
-      .catch (b) =>
-        Flash.warning 'common.check_for_errors_and_try_again'
+  methods: {
+    destroy() {
+      this.chatbot.destroy().then(() => {
+        Flash.success('poll_common_delete_modal.success');
+        EventBus.$emit('closeModal');
+      }).catch(b => {
+        Flash.error('common.something_went_wrong');
+        console.log(this.chatbot.errors);
+      });
+    },
 
-    testConnection: ->
-      @testing = true
-      Records.remote.post('chatbots/test',
-        server: @chatbot.server
+    submit() {
+      this.chatbot.save().then(() => {
+        Flash.success('chatbot.saved');
+        EventBus.$emit('closeModal');
+      }).catch(b => {
+        Flash.warning('common.check_for_errors_and_try_again');
+      });
+    },
+
+    testConnection() {
+      this.testing = true;
+      Records.remote.post('chatbots/test', {
+        server: this.chatbot.server,
         kind: 'slack_webhook'
-      ).finally =>
-        Flash.success('chatbot.check_for_test_message')
-        @testing = false
+      }).finally(() => {
+        Flash.success('chatbot.check_for_test_message');
+        this.testing = false;
+      });
+    }
+  },
 
-  computed:
-    url: ->
-      switch @chatbot.webhookKind
-        when "slack" then "https://help.loomio.com/en/user_manual/groups/integrations/slack"
-        when "discord" then "https://help.loomio.com/en/user_manual/groups/integrations/discord"
-        when "microsoft" then "https://help.loomio.com/en/user_manual/groups/integrations/microsoft_teams"
-        when "mattermost" then "https://help.loomio.com/en/user_manual/groups/integrations/mattermost"
+  computed: {
+    url() {
+      switch (this.chatbot.webhookKind) {
+      case "slack": return "https://help.loomio.com/en/user_manual/groups/integrations/slack";
+      case "discord": return "https://help.loomio.com/en/user_manual/groups/integrations/discord";
+      case "microsoft": return "https://help.loomio.com/en/user_manual/groups/integrations/microsoft_teams";
+      case "mattermost": return "https://help.loomio.com/en/user_manual/groups/integrations/mattermost";
+      }
+    }
+  }
+};
 
 </script>
 <template lang="pug">

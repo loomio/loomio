@@ -1,89 +1,110 @@
-<script lang="coffee">
-import AppConfig      from '@/shared/services/app_config'
-import Session        from '@/shared/services/session'
-import Records        from '@/shared/services/records'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
-import openModal      from '@/shared/helpers/open_modal'
-import UserService    from '@/shared/services/user_service'
-import Flash   from '@/shared/services/flash'
-import { includes, uniq, debounce } from 'lodash'
-import {exact} from '@/shared/helpers/format_time'
+<script lang="js">
+import AppConfig      from '@/shared/services/app_config';
+import Session        from '@/shared/services/session';
+import Records        from '@/shared/services/records';
+import EventBus       from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import LmoUrlService  from '@/shared/services/lmo_url_service';
+import openModal      from '@/shared/helpers/open_modal';
+import UserService    from '@/shared/services/user_service';
+import Flash   from '@/shared/services/flash';
+import { includes, uniq, debounce } from 'lodash';
+import {exact} from '@/shared/helpers/format_time';
 
-export default
-  data: ->
-    user: null
-    originalUser: null
-    existingEmails: []
-    currentTime: new Date()
+export default {
+  data() {
+    return {
+      user: null,
+      originalUser: null,
+      existingEmails: [],
+      currentTime: new Date()
+    };
+  },
 
-  created: ->
-    setInterval((=> @currentTime = new Date()), 10000)
-    @init()
-    EventBus.$emit 'currentComponent', { titleKey: 'profile_page.edit_profile', page: 'profilePage'}
-    EventBus.$on 'updateProfile', @init
-    EventBus.$on 'signedIn', @init
+  created() {
+    setInterval((() => { this.currentTime = new Date(); }), 10000);
+    this.init();
+    EventBus.$emit('currentComponent', { titleKey: 'profile_page.edit_profile', page: 'profilePage'});
+    EventBus.$on('updateProfile', this.init);
+    return EventBus.$on('signedIn', this.init);
+  },
 
-  beforeDestroy: ->
-    EventBus.$off 'updateProfile', @init
-    EventBus.$off 'signedIn', @init
+  beforeDestroy() {
+    EventBus.$off('updateProfile', this.init);
+    EventBus.$off('signedIn', this.init);
+  },
 
-  computed:
-    showHelpTranslate: -> AppConfig.features.app.help_link
-    availableLocales: -> AppConfig.locales
-    dateTimeFormats: ->
-      observeLocale = @user.selectedLocale # tell vue this matters
-      'iso day_iso abbr day_abbr'.split(' ').map (pref) =>
-        {value: pref, text: exact(@currentTime, @user.timeZone, pref)}
-    actions: -> UserService.actions(Session.user(), @)
-    emailExists: -> includes(@existingEmails, @user.email)
+  computed: {
+    showHelpTranslate() { return AppConfig.features.app.help_link; },
+    availableLocales() { return AppConfig.locales; },
+    dateTimeFormats() {
+      const observeLocale = this.user.selectedLocale; // tell vue this matters
+      return 'iso day_iso abbr day_abbr'.split(' ').map(pref => {
+        return {value: pref, text: exact(this.currentTime, this.user.timeZone, pref)};
+      });
+    },
+    actions() { return UserService.actions(Session.user(), this); },
+    emailExists() { return includes(this.existingEmails, this.user.email); }
+  },
 
-  methods:
-    init: ->
-      return unless Session.isSignedIn()
-      @originalUser = Session.user()
-      @user = @originalUser.clone()
-      Session.updateLocale(@user.locale)
+  methods: {
+    init() {
+      if (!Session.isSignedIn()) { return; }
+      this.originalUser = Session.user();
+      this.user = this.originalUser.clone();
+      Session.updateLocale(this.user.locale);
+    },
 
-    changePicture: ->
-      openModal
-        component: 'ChangePictureForm'
+    changePicture() {
+      openModal({component: 'ChangePictureForm'});
+    },
 
-    changePassword: ->
-      @openChangePasswordModal(@user)
+    changePassword() {
+      this.openChangePasswordModal(this.user);
+    },
 
-    openDeleteUserModal: ->
-      @isDeleteUserModalOpen = true
+    openDeleteUserModal() {
+      this.isDeleteUserModalOpen = true;
+    },
 
-    closeDeleteUserModal: ->
-      @isDeleteUserModalOpen = false
+    closeDeleteUserModal() {
+      this.isDeleteUserModalOpen = false;
+    },
 
-    openSendVerificationModal: ->
-      openModal
-        component: 'ConfirmModal'
-        props:
-          confirm:
-            submit: => Records.users.sendMergeVerificationEmail(@user.email)
-            text:
-              title:    'merge_accounts.modal.title'
-              raw_helptext: @$t('merge_accounts.modal.helptext', sourceEmail: @originalUser.email, targetEmail: @user.email)
-              submit:   'merge_accounts.modal.submit'
+    openSendVerificationModal() {
+      openModal({
+        component: 'ConfirmModal',
+        props: {
+          confirm: {
+            submit: () => Records.users.sendMergeVerificationEmail(this.user.email),
+            text: {
+              title:    'merge_accounts.modal.title',
+              raw_helptext: this.$t('merge_accounts.modal.helptext', {sourceEmail: this.originalUser.email, targetEmail: this.user.email}),
+              submit:   'merge_accounts.modal.submit',
               flash:    'merge_accounts.modal.flash'
+            }
+          }
+        }
+      });
+    },
 
-    checkEmailExistence: debounce ->
-      return if @originalUser.email == @user.email
-      Records.users.checkEmailExistence(@user.email).then (res) =>
-        if res.exists
-          @existingEmails = uniq(@existingEmails.concat([res.email]))
-    , 250
+    checkEmailExistence: debounce(function() {
+      if (this.originalUser.email === this.user.email) { return; }
+      Records.users.checkEmailExistence(this.user.email).then(res => {
+        if (res.exists) {
+          this.existingEmails = uniq(this.existingEmails.concat([res.email]));
+        }
+      });
+    } , 250),
 
-    submit: ->
-      Records.users.updateProfile(@user)
-      .then =>
-        Flash.success 'profile_page.messages.updated'
-        @init()
-      .catch => true
+    submit() {
+      Records.users.updateProfile(this.user).then(() => {
+        Flash.success('profile_page.messages.updated');
+        this.init();
+      }).catch(() => true);
+    }
+  }
+};
 
 </script>
 <template lang="pug">

@@ -1,259 +1,310 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import AppConfig from '@/shared/services/app_config'
-import FileUploader from '@/shared/services/file_uploader'
-import FilesList from './files_list.vue'
-import EventBus from '@/shared/services/event_bus'
-import I18n from '@/i18n'
-import { convertToMd } from '@/shared/services/format_converter'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import AppConfig from '@/shared/services/app_config';
+import FileUploader from '@/shared/services/file_uploader';
+import FilesList from './files_list.vue';
+import EventBus from '@/shared/services/event_bus';
+import I18n from '@/i18n';
+import { convertToMd } from '@/shared/services/format_converter';
 
-import Blockquote from '@tiptap/extension-blockquote'
-import Bold from '@tiptap/extension-bold'
-import BulletList from '@tiptap/extension-bullet-list'
-import CodeBlock from '@tiptap/extension-code-block'
-import Code from '@tiptap/extension-code'
-import Document from '@tiptap/extension-document'
-import Dropcursor from '@tiptap/extension-dropcursor'
-import GapCursor from '@tiptap/extension-gapcursor'
-import HardBreak from '@tiptap/extension-hard-break'
-import Heading from '@tiptap/extension-heading'
-import History from '@tiptap/extension-history'
-import HorizontalRule from '@tiptap/extension-horizontal-rule'
-import Italic from '@tiptap/extension-italic'
-import Link from '@tiptap/extension-link'
-import ListItem from '@tiptap/extension-list-item'
-import OrderedList from '@tiptap/extension-ordered-list'
-import Paragraph from '@tiptap/extension-paragraph'
-import Placeholder from '@tiptap/extension-placeholder'
-import Strike from '@tiptap/extension-strike'
-import TableCell from '@tiptap/extension-table-cell'
-import TableHeader from '@tiptap/extension-table-header'
-import TableRow from '@tiptap/extension-table-row'
-import Table from '@tiptap/extension-table'
-# import TaskList from '@tiptap/extension-task-list'
-import {CustomTaskItem} from './extension_custom_task_item'
-import {CustomTaskList} from './extension_custom_task_list'
-import TextStyle from '@tiptap/extension-text-style'
-# import TextAlign from '@tiptap/extension-text-align'
-import Text from '@tiptap/extension-text'
-import Underline from '@tiptap/extension-underline'
-import {CustomMention} from './extension_mention'
-import {CustomImage} from './extension_image'
-import {Video} from './extension_image'
-import {Audio} from './extension_image'
-import {Iframe} from './extension_iframe'
+import Blockquote from '@tiptap/extension-blockquote';
+import Bold from '@tiptap/extension-bold';
+import BulletList from '@tiptap/extension-bullet-list';
+import CodeBlock from '@tiptap/extension-code-block';
+import Code from '@tiptap/extension-code';
+import Document from '@tiptap/extension-document';
+import Dropcursor from '@tiptap/extension-dropcursor';
+import GapCursor from '@tiptap/extension-gapcursor';
+import HardBreak from '@tiptap/extension-hard-break';
+import Heading from '@tiptap/extension-heading';
+import History from '@tiptap/extension-history';
+import HorizontalRule from '@tiptap/extension-horizontal-rule';
+import Italic from '@tiptap/extension-italic';
+import Link from '@tiptap/extension-link';
+import ListItem from '@tiptap/extension-list-item';
+import OrderedList from '@tiptap/extension-ordered-list';
+import Paragraph from '@tiptap/extension-paragraph';
+import Placeholder from '@tiptap/extension-placeholder';
+import Strike from '@tiptap/extension-strike';
+import TableCell from '@tiptap/extension-table-cell';
+import TableHeader from '@tiptap/extension-table-header';
+import TableRow from '@tiptap/extension-table-row';
+import Table from '@tiptap/extension-table';
+// import TaskList from '@tiptap/extension-task-list'
+import {CustomTaskItem} from './extension_custom_task_item';
+import {CustomTaskList} from './extension_custom_task_list';
+import TextStyle from '@tiptap/extension-text-style';
+// import TextAlign from '@tiptap/extension-text-align'
+import Text from '@tiptap/extension-text';
+import Underline from '@tiptap/extension-underline';
+import {CustomMention} from './extension_mention';
+import {CustomImage} from './extension_image';
+import {Video} from './extension_image';
+import {Audio} from './extension_image';
+import {Iframe} from './extension_iframe';
 
-import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2'
+import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2';
 
-import {getEmbedLink} from '@/shared/helpers/embed_link.coffee'
+import {getEmbedLink} from '@/shared/helpers/embed_link';
 
-import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning.coffee'
-import SuggestionList from './suggestion_list'
-import Attaching from './attaching.coffee'
-import {compact, uniq, throttle, difference, reject, uniqBy} from 'lodash'
-import TextHighlightBtn from './text_highlight_btn'
-import TextAlignBtn from './text_align_btn'
-import { TextAlign } from './extension_text_align'
-import { Highlight } from './extension_highlight'
+import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning';
+import SuggestionList from './suggestion_list';
+import Attaching from './attaching';
+import {compact, uniq, throttle, difference, reject, uniqBy} from 'lodash';
+import TextHighlightBtn from './text_highlight_btn';
+import TextAlignBtn from './text_align_btn';
+import { TextAlign } from './extension_text_align';
+import { Highlight } from './extension_highlight';
 
-isValidHttpUrl = (string) ->
-  url = undefined
-  try
-    url = new URL(string)
-  catch _
-    return false
-  url.protocol == 'http:' or url.protocol == 'https:'
+const isValidHttpUrl = function(string) {
+  let url = undefined;
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+  return (url.protocol === 'http:') || (url.protocol === 'https:');
+};
 
 export default
-  mixins: [CommonMentioning, HtmlMentioning, Attaching]
-  props:
-    focusId: String
-    model: Object
-    field: String
-    label: String
-    placeholder: String
-    maxLength: Number
-    shouldReset: Boolean
+{
+  mixins: [CommonMentioning, HtmlMentioning, Attaching],
+  props: {
+    focusId: String,
+    model: Object,
+    field: String,
+    label: String,
+    placeholder: String,
+    maxLength: Number,
+    shouldReset: Boolean,
     autofocus: Boolean
+  },
 
   components: {
-    EditorContent
-    TextAlignBtn
-    TextHighlightBtn
-    SuggestionList
+    EditorContent,
+    TextAlignBtn,
+    TextHighlightBtn,
+    SuggestionList,
     FilesList
-  }
+  },
 
-  data: ->
-    loading: true
-    socket: null
-    count: 0
-    editor: null
-    expanded: false
-    closeEmojiMenu: false
-    linkUrl: ""
-    iframeUrl: ""
-    linkDialogIsOpen: false
-    iframeDialogIsOpen: false
-    fetchedUrls: []
+  data() {
+    return {
+      loading: true,
+      socket: null,
+      count: 0,
+      editor: null,
+      expanded: false,
+      closeEmojiMenu: false,
+      linkUrl: "",
+      iframeUrl: "",
+      linkDialogIsOpen: false,
+      iframeDialogIsOpen: false,
+      fetchedUrls: []
+    };
+  },
 
-  computed:
-    format: ->
-      @model["#{@field}Format"]
+  computed: {
+    format() {
+      return this.model[`${this.field}Format`];
+    },
 
-    reasonTooLong: -> 
-      @editor.getCharacterCount() >= @maxLength
+    reasonTooLong() { 
+      return this.editor.getCharacterCount() >= this.maxLength;
+    }
+  },
 
-  mounted: ->
-    EventBus.$on 'focusEditor', (focusId) => 
-      @editor.commands.focus() if @focusId == focusId
+  mounted() {
+    EventBus.$on('focusEditor', focusId => { 
+      if (this.focusId === focusId) { return this.editor.commands.focus(); }
+    });
 
-    @expanded = Session.user().experiences['html-editor.expanded']
-    @model.beforeSaves.push( => @updateModel() )
-    @editor = new Editor
-      editorProps:
-        scrollThreshold: 100
+    this.expanded = Session.user().experiences['html-editor.expanded'];
+    this.model.beforeSaves.push( () => this.updateModel() );
+    this.editor = new Editor({
+      editorProps: {
+        scrollThreshold: 100,
         scrollMargin: 100
-      autofocus: @autofocus
+      },
+      autofocus: this.autofocus,
       extensions: [
-        Blockquote
-        Bold
-        BulletList
-        CodeBlock
-        CustomImage.configure({attachFile: @attachFile, attachImageFile: @attachImageFile})
-        Video
-        Audio
-        Document
-        Dropcursor
-        GapCursor
-        Heading
-        Highlight.configure({ multicolor: true })
-        History
-        HorizontalRule
-        Italic
-        Iframe
-        Link
-        ListItem
-        OrderedList
-        Paragraph
-        Placeholder.configure(placeholder: => @placeholder)
-        Strike
-        Text
-        Table
-        TableHeader
-        TableRow
-        TableCell
-        CustomTaskList
-        CustomTaskItem
-        CustomMention.configure(MentionPluginConfig.bind(@)())
-        TextStyle
-        TextAlign.configure({ types: ['heading', 'paragraph'] })
+        Blockquote,
+        Bold,
+        BulletList,
+        CodeBlock,
+        CustomImage.configure({attachFile: this.attachFile, attachImageFile: this.attachImageFile}),
+        Video,
+        Audio,
+        Document,
+        Dropcursor,
+        GapCursor,
+        Heading,
+        Highlight.configure({ multicolor: true }),
+        History,
+        HorizontalRule,
+        Italic,
+        Iframe,
+        Link,
+        ListItem,
+        OrderedList,
+        Paragraph,
+        Placeholder.configure({placeholder: () => this.placeholder}),
+        Strike,
+        Text,
+        Table,
+        TableHeader,
+        TableRow,
+        TableCell,
+        CustomTaskList,
+        CustomTaskItem,
+        CustomMention.configure(MentionPluginConfig.bind(this)()),
+        TextStyle,
+        TextAlign.configure({ types: ['heading', 'paragraph'] }),
         Underline
-      ]
-      content: @model[@field]
-      onUpdate: =>
-        @checkLength() if @maxLength
-        @scrapeLinkPreviews() if @model.isNew()
-      onCreate: =>
-        @editor.commands.focus('end') if @model.isNew() && @editor.getCharacterCount() > 0 && @autofocus
+      ],
+      content: this.model[this.field],
+      onUpdate: () => {
+        if (this.maxLength) { this.checkLength(); }
+        if (this.model.isNew()) { this.scrapeLinkPreviews(); }
+      },
+      onCreate: () => {
+        if (this.model.isNew() && (this.editor.getCharacterCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
+      }
+    });
+  },
 
-  watch:
+  watch: {
     'shouldReset': 'reset'
+  },
 
-  methods:
-    openRecordVideoModal: ->
-      EventBus.$emit 'openModal',
-        component: 'RecordVideoModal'
-        props:
-          saveFn: @mediaRecorded
+  methods: {
+    openRecordVideoModal() {
+      EventBus.$emit('openModal', {
+        component: 'RecordVideoModal',
+        props: {
+          saveFn: this.mediaRecorded
+        }
+      }
+      );
+    },
 
-    openRecordAudioModal: ->
-      EventBus.$emit 'openModal',
-        component: 'RecordAudioModal'
-        props:
-          saveFn: @mediaRecorded
+    openRecordAudioModal() {
+      EventBus.$emit('openModal', {
+        component: 'RecordAudioModal',
+        props: {
+          saveFn: this.mediaRecorded
+        }
+      }
+      );
+    },
 
-    checkLength: ->
-      @model.saveDisabled = @editor.getCharacterCount() > @maxLength
+    checkLength() {
+      this.model.saveDisabled = this.editor.getCharacterCount() > this.maxLength;
+    },
 
-    setCount: (count) ->
-      @count = count
+    setCount(count) {
+      this.count = count;
+    },
 
-    tiptapAddress: ->
-      if @model.isNew()
-        compact([AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, 'new', @model.groupId, @model.discussionId, @model.parentId, Session.user().secretToken]).join('/')
-      else
-        [AppConfig.theme.channels_uri, 'tiptap', @model.constructor.singular, @model.id, (@model.secretToken || Session.user().secretToken)].join('/')
+    tiptapAddress() {
+      if (this.model.isNew()) {
+        return compact([AppConfig.theme.channels_uri, 'tiptap', this.model.constructor.singular, 'new', this.model.groupId, this.model.discussionId, this.model.parentId, Session.user().secretToken]).join('/');
+      } else {
+        return [AppConfig.theme.channels_uri, 'tiptap', this.model.constructor.singular, this.model.id, (this.model.secretToken || Session.user().secretToken)].join('/');
+      }
+    },
 
-    selectedText: ->
-      state = @editor.state
-      selection = @editor.state.selection
-      { from, to } = selection
-      state.doc.textBetween(from, to, ' ')
+    selectedText() {
+      const {
+        state
+      } = this.editor;
+      const {
+        selection
+      } = this.editor.state;
+      const { from, to } = selection;
+      return state.doc.textBetween(from, to, ' ');
+    },
 
-    reset: ->
-      @editor.chain().clearContent().run()
-      @resetFiles()
-      @model.beforeSave = => @updateModel()
+    reset() {
+      this.editor.chain().clearContent().run();
+      this.resetFiles();
+      this.model.beforeSave = () => this.updateModel();
+    },
 
-    convertToMd: ->
-      if confirm I18n.t('formatting.markdown_confirm')
-        @updateModel()
-        convertToMd(@model, @field)
-        Records.users.saveExperience('html-editor.uses-markdown')
+    convertToMd() {
+      if (confirm(I18n.t('formatting.markdown_confirm'))) {
+        this.updateModel();
+        convertToMd(this.model, this.field);
+        Records.users.saveExperience('html-editor.uses-markdown');
+      }
+    },
 
-    toggleExpanded: ->
-      @expanded = !@expanded
-      Records.users.saveExperience('html-editor.expanded', @expanded)
+    toggleExpanded() {
+      this.expanded = !this.expanded;
+      Records.users.saveExperience('html-editor.expanded', this.expanded);
+    },
 
-    setLinkUrl: ->
-      if @linkUrl
-        @linkUrl = "http://".concat(@linkUrl) unless @linkUrl.includes("://")
-        @editor.chain().setLink(href: @linkUrl).focus().run()
-        @fetchLinkPreviews([@linkUrl])
-        @linkUrl = null
-      @linkDialogIsOpen = false
+    setLinkUrl() {
+      if (this.linkUrl) {
+        if (!this.linkUrl.includes("://")) { this.linkUrl = "http://".concat(this.linkUrl); }
+        this.editor.chain().setLink({href: this.linkUrl}).focus().run();
+        this.fetchLinkPreviews([this.linkUrl]);
+        this.linkUrl = null;
+      }
+      this.linkDialogIsOpen = false;
+    },
 
-    setIframeUrl: () ->
-      return unless isValidHttpUrl(@iframeUrl)
-      @editor.chain().setIframe(src: getEmbedLink(@iframeUrl)).focus().run()
-      @iframeUrl = null
-      @iframeDialogIsOpen = false
+    setIframeUrl() {
+      if (!isValidHttpUrl(this.iframeUrl)) { return; }
+      this.editor.chain().setIframe({src: getEmbedLink(this.iframeUrl)}).focus().run();
+      this.iframeUrl = null;
+      this.iframeDialogIsOpen = false;
+    },
 
-    emojiPicked: (shortcode, unicode) ->
-      @editor.chain()
+    emojiPicked(shortcode, unicode) {
+      this.editor.chain()
           .insertContent(unicode)
           .focus()
-          .run()
-      @closeEmojiMenu = false
+          .run();
+      this.closeEmojiMenu = false;
+    },
 
-    updateModel: ->
-      return unless @format == 'html'
-      @model[@field] = @editor.getHTML()
-      @updateFiles()
+    updateModel() {
+      if (this.format !== 'html') { return; }
+      this.model[this.field] = this.editor.getHTML();
+      this.updateFiles();
+    },
 
-    removeLinkPreview: (url) ->
-      @model.linkPreviews = reject(@model.linkPreviews, (p) -> p.url == url)
+    removeLinkPreview(url) {
+      this.model.linkPreviews = reject(this.model.linkPreviews, p => p.url === url);
+    },
 
-    scrapeLinkPreviews: throttle ->
-      parser = new DOMParser()
-      doc = parser.parseFromString(@editor.getHTML(), 'text/html')
-      @fetchLinkPreviews difference((Array.from(doc.querySelectorAll('a')).map (el) => el.href), @fetchedUrls)
+    scrapeLinkPreviews: throttle(function() {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(this.editor.getHTML(), 'text/html');
+      this.fetchLinkPreviews(difference((Array.from(doc.querySelectorAll('a')).map(el => el.href)), this.fetchedUrls));
+    }
     ,
       500
     ,
-      {leading: false}
+      {leading: false}),
 
-    fetchLinkPreviews: (urls) ->
-      if urls.length
-        @fetchedUrls = uniq @fetchedUrls.concat(urls)
-        Records.remote.post('link_previews', {urls: urls}).then (data) =>
-          @model.linkPreviews = uniqBy(@model.linkPreviews.concat(data.previews), 'url')
+    fetchLinkPreviews(urls) {
+      if (urls.length) {
+        this.fetchedUrls = uniq(this.fetchedUrls.concat(urls));
+        Records.remote.post('link_previews', {urls}).then(data => {
+          this.model.linkPreviews = uniqBy(this.model.linkPreviews.concat(data.previews), 'url');
+        });
+      }
+    }
+  },
 
-  beforeDestroy: ->
-    @editor.destroy() if @editor
-    # @socket.close() if @socket
+  beforeDestroy() {
+    if (this.editor) { this.editor.destroy(); }
+  }
+};
+  // @socket.close() if @socket
 
 </script>
 

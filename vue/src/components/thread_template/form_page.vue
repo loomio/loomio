@@ -1,32 +1,42 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import Session from '@/shared/services/session'
-import Flash  from '@/shared/services/flash'
-import ThreadTemplateForm from '@/components/thread_template/form'
+<script lang="js">
+import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
+import Flash  from '@/shared/services/flash';
+import ThreadTemplateForm from '@/components/thread_template/form';
 
-export default
-  components: {ThreadTemplateForm}
+export default {
+  components: {ThreadTemplateForm},
 
-  data: ->
-    discussionTemplate: null
-    group: null
+  data() {
+    return {
+      discussionTemplate: null,
+      group: null
+    };
+  },
 
-  created: ->
-    if templateId = parseInt(@$route.params.id)
-      Records.discussionTemplates.findOrFetchById(templateId).then (template) =>
-        @discussionTemplate = template.clone()
-    else if (templateId = parseInt(@$route.query.template_id)) && (groupId = parseInt(@$route.query.group_id))
-      Records.discussionTemplates.findOrFetchById(templateId).then (template) =>
-        @discussionTemplate = template.clone()
-        @discussionTemplate.id = null
-        @discussionTemplate.groupId = groupId
-        @discussionTemplate.public = false
-    else if (templateKey = @$route.query.template_key) && (groupId = parseInt(@$route.query.group_id))
-      Records.discussionTemplates.findOrFetchByKey(templateKey, groupId).then (template) =>
-        @discussionTemplate = template.clone()
-    else if groupId = parseInt(@$route.query.group_id)
-      @discussionTemplate = Records.discussionTemplates.build(groupId: groupId)
+  created() {
+    let groupId, templateId, templateKey;
+    if (templateId = parseInt(this.$route.params.id)) {
+      Records.discussionTemplates.findOrFetchById(templateId).then(template => {
+        this.discussionTemplate = template.clone();
+      });
+    } else if ((templateId = parseInt(this.$route.query.template_id)) && (groupId = parseInt(this.$route.query.group_id))) {
+      Records.discussionTemplates.findOrFetchById(templateId).then(template => {
+        this.discussionTemplate = template.clone();
+        this.discussionTemplate.id = null;
+        this.discussionTemplate.groupId = groupId;
+        this.discussionTemplate.public = false;
+      });
+    } else if ((templateKey = this.$route.query.template_key) && (groupId = parseInt(this.$route.query.group_id))) {
+      Records.discussionTemplates.findOrFetchByKey(templateKey, groupId).then(template => {
+        this.discussionTemplate = template.clone();
+      });
+    } else if (groupId = parseInt(this.$route.query.group_id)) {
+      this.discussionTemplate = Records.discussionTemplates.build({groupId});
+    }
+  }
+};
 
 </script>
 <template lang="pug">

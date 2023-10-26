@@ -1,13 +1,18 @@
-<script lang="coffee">
+<script lang="js">
 export default
-  props:
-    elevation:
-      type: Number
-      default: 0
-    group: Object
-    size:
-      type: Number
-      default: 28
+  ({
+    props: {
+      elevation: {
+        type: Number,
+        default: 0
+      },
+      group: Object,
+      size: {
+        type: Number,
+        default: 28
+      }
+    }
+  });
 </script>
 
 <template lang="pug">

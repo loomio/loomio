@@ -1,83 +1,100 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import AbilityService from '@/shared/services/ability_service'
-import Flash   from '@/shared/services/flash'
-import EventBus          from '@/shared/services/event_bus'
-import { sortBy, debounce } from 'lodash'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import AbilityService from '@/shared/services/ability_service';
+import Flash   from '@/shared/services/flash';
+import EventBus          from '@/shared/services/event_bus';
+import { sortBy, debounce } from 'lodash';
 
-export default
-  data: ->
-    selectedDiscussion: null
-    searchFragment: ''
-    searchResults: []
-    groupId: @discussion.groupId
-    groups: sortBy(Session.user().groups(), 'fullName')
-    loading: false
+export default {
+  data() {
+    return {
+      selectedDiscussion: null,
+      searchFragment: '',
+      searchResults: [],
+      groupId: this.discussion.groupId,
+      groups: sortBy(Session.user().groups(), 'fullName'),
+      loading: false
+    };
+  },
 
-  props:
+  props: {
     discussion: Object
+  },
 
-  mounted: ->
-    Records.discussions.fetch
-      path: 'dashboard'
-      params:
-        exclude_types: 'user group poll'
+  mounted() {
+    Records.discussions.fetch({
+      path: 'dashboard',
+      params: {
+        exclude_types: 'user group poll',
         per: 50
-    .then => @getSuggestions()
+      }}).then(() => this.getSuggestions());
+  },
 
-  methods:
-    getSuggestions: ->
-      @searchResults = Records.discussions.collection.chain()
-        .find(groupId: @groupId)
-        .where((d) -> !!AbilityService.canStartPoll(d))
+  methods: {
+    getSuggestions() {
+      this.searchResults = Records.discussions.collection.chain()
+        .find({groupId: this.groupId})
+        .where(d => !!AbilityService.canStartPoll(d))
         .simplesort('id', true)
-        .data()
+        .data();
+    },
 
-    resetSourceDiscussion: ->
-      @discussion.update(forkedEventIds: [])
+    resetSourceDiscussion() {
+      this.discussion.update({forkedEventIds: []});
+    },
 
-    startNewThread: ->
-      @selectedDiscussion = Records.discussions.build(groupId: @groupId)
-      @setIsForking()
-      @resetSourceDiscussion()
-      EventBus.$emit 'openModal',
+    startNewThread() {
+      this.selectedDiscussion = Records.discussions.build({groupId: this.groupId});
+      this.setIsForking();
+      this.resetSourceDiscussion();
+      EventBus.$emit('openModal', {
         component: 'DiscussionForm',
-        props:
-          discussion: @selectedDiscussion
+        props: {
+          discussion: this.selectedDiscussion
+        }
+      }
+      );
+    },
 
-    submit: ->
-      @loading = true
-      @selectedDiscussion.moveComments()
-      .then =>
-        @loading = false
-        @resetSourceDiscussion()
-        @selectedDiscussion.update(forkedEventIds: [])
-        EventBus.$emit('closeModal')
-        Flash.success("discussion_fork_actions.moved")
-        @$router.push @urlFor(@selectedDiscussion)
+    submit() {
+      this.loading = true;
+      this.selectedDiscussion.moveComments().then(() => {
+        this.loading = false;
+        this.resetSourceDiscussion();
+        this.selectedDiscussion.update({forkedEventIds: []});
+        EventBus.$emit('closeModal');
+        Flash.success("discussion_fork_actions.moved");
+        this.$router.push(this.urlFor(this.selectedDiscussion));
+      });
+    },
 
-    setIsForking: ->
-      @selectedDiscussion.update(forkedEventIds: @discussion.forkedEventIds)
+    setIsForking() {
+      this.selectedDiscussion.update({forkedEventIds: this.discussion.forkedEventIds});
+    },
 
-    fetch: debounce ->
-      return unless @searchFragment
-      @loading = true
-      Records.discussions.search(@groupId, @searchFragment).then (data) =>
-        @loading = false
-        @searchResults = Records.discussions.collection.chain()
-          .find(groupId: @groupId)
-          .find({ id: { $ne: @discussion.id } })
-          .find(title: { $regex: [@searchFragment, 'i'] })
-          .where((d) -> !!AbilityService.canAddComment(d))
+    fetch: debounce(function() {
+      if (!this.searchFragment) { return; }
+      this.loading = true;
+      Records.discussions.search(this.groupId, this.searchFragment).then(data => {
+        this.loading = false;
+        this.searchResults = Records.discussions.collection.chain()
+          .find({groupId: this.groupId})
+          .find({ id: { $ne: this.discussion.id } })
+          .find({title: { $regex: [this.searchFragment, 'i'] }})
+          .where(d => !!AbilityService.canAddComment(d))
           .simplesort('title')
-          .data()
-    , 500
+          .data();
+      });
+    } , 500)
+  },
 
-  watch:
-    selectedDiscussion: 'setIsForking'
-    searchFragment: 'fetch'
+  watch: {
+    selectedDiscussion: 'setIsForking',
+    searchFragment: 'fetch',
     groupId: 'getSuggestions'
+  }
+};
 
 </script>
 <template lang="pug">

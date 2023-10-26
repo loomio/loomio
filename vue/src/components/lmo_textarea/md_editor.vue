@@ -1,101 +1,127 @@
-<script lang="coffee">
-import { convertToHtml } from '@/shared/services/format_converter'
-import { CommonMentioning, MdMentioning } from './mentioning.coffee'
-import Records from '@/shared/services/records'
-import FilesList from './files_list.vue'
-import SuggestionList from './suggestion_list'
-import Attaching from './attaching.coffee'
-import {escapeRegExp} from 'lodash'
+<script lang="js">
+import { convertToHtml } from '@/shared/services/format_converter';
+import { CommonMentioning, MdMentioning } from './mentioning';
+import Records from '@/shared/services/records';
+import FilesList from './files_list.vue';
+import SuggestionList from './suggestion_list';
+import Attaching from './attaching';
+import {escapeRegExp} from 'lodash';
 
 export default
-  mixins: [CommonMentioning, MdMentioning, Attaching]
-  props:
-    model: Object
-    field: String
-    label: String
-    placeholder: String
-    shouldReset: Boolean
-    maxLength: Number
-    autofocus:
-      type: Boolean
+{
+  mixins: [CommonMentioning, MdMentioning, Attaching],
+  props: {
+    model: Object,
+    field: String,
+    label: String,
+    placeholder: String,
+    shouldReset: Boolean,
+    maxLength: Number,
+    autofocus: {
+      type: Boolean,
       default: false
+    }
+  },
 
-  components:
-    FilesList: FilesList
-    SuggestionList: SuggestionList
+  components: {
+    FilesList,
+    SuggestionList
+  },
 
-  data: ->
-    preview: false
+  data() {
+    return {preview: false};
+  },
 
-  watch:
+  watch: {
     shouldReset: 'reset'
+  },
 
-  methods:
-    reset: ->
-      @preview = false
-      @resetFiles()
+  methods: {
+    reset() {
+      this.preview = false;
+      this.resetFiles();
+    },
 
-    convertToHtml: ->
-      convertToHtml(@model, @field)
-      Records.users.saveExperience('html-editor.uses-markdown', false)
+    convertToHtml() {
+      convertToHtml(this.model, this.field);
+      Records.users.saveExperience('html-editor.uses-markdown', false);
+    },
 
-    onPaste: (event) ->
-      items = Array.from(event.clipboardData.items)
+    onPaste(event) {
+      const items = Array.from(event.clipboardData.items);
 
-      return if items.filter((item) => item.getAsFile()).length == 0
+      if (items.filter(item => item.getAsFile()).length === 0) { return; }
 
-      event.preventDefault()
-      @handleUploads items.map (item) =>
-        new File([item.getAsFile()],
+      event.preventDefault();
+      this.handleUploads(items.map(item => {
+        return new File([item.getAsFile()],
                  event.clipboardData.getData('text/plain') || Date.now(),
-                 {lastModified: Date.now(), type: item.type})
+                 {lastModified: Date.now(), type: item.type});
+      })
+      );
+    },
 
-    handleUploads: (files) ->
-      Array.from(files).forEach (file) =>
-        if ((/image/i).test(file.type))
-          @insertImage(file)
-        else
-          @attachFile({file: file})
+    handleUploads(files) {
+      Array.from(files).forEach(file => {
+        if ((/image/i).test(file.type)) {
+          this.insertImage(file);
+        } else {
+          this.attachFile({file});
+        }
+      });
+    },
 
-    insertImage: (file) ->
-      name = file.name.replace(/[\W_]+/g, '') | 'file';
+    insertImage(file) {
+      const name = file.name.replace(/[\W_]+/g, '') | 'file';
 
-      uploadingText = (pct) ->
-        "![uploading-#{name}](#{"*".repeat parseInt(pct / 5)})"
+      const uploadingText = pct => `![uploading-${name}](${"*".repeat(parseInt(pct / 5))})`;
 
-      insertPlaceholder = (text) =>
-        beforeText = @model[@field].slice(0, @textarea().selectionStart)
-        afterText = @model[@field].slice(@textarea().selectionStart)
-        @model[@field] = beforeText + "\n" + text + "\n" + afterText
+      const insertPlaceholder = text => {
+        const beforeText = this.model[this.field].slice(0, this.textarea().selectionStart);
+        const afterText = this.model[this.field].slice(this.textarea().selectionStart);
+        this.model[this.field] = beforeText + "\n" + text + "\n" + afterText;
+      };
 
-      updatePlaceholder = (text) =>
-        @model[@field] = @model[@field].replace(///!\[uploading-#{name}\]\(\**\)///, text)
+      const updatePlaceholder = text => {
+        this.model[this.field] = this.model[this.field].replace(new RegExp(`!\\[uploading-${name}\\]\\(\\**\\)`), text);
+      };
 
-      insertPlaceholder(uploadingText(0))
+      insertPlaceholder(uploadingText(0));
 
-      @attachImageFile
-        file: file
-        onProgress: (e) =>
-          updatePlaceholder(uploadingText(parseInt(e.loaded / e.total * 100)))
+      return this.attachImageFile({
+        file,
+        onProgress: e => {
+          updatePlaceholder(uploadingText(parseInt((e.loaded / e.total) * 100)));
+        },
 
-        onComplete: (blob) =>
-          updatePlaceholder("![#{name}](#{blob.preview_url})")
+        onComplete: blob => {
+          updatePlaceholder(`![${name}](${blob.preview_url})`);
+        },
 
-        onFailure: () =>
-          updatePlaceholder("![#{name}](#{@$t('formatting.upload_failed')}")
+        onFailure: () => {
+          updatePlaceholder(`![${name}](${this.$t('formatting.upload_failed')}`);
+        }
+      });
+    },
 
-    onDrop: (event) ->
-      return unless event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length
-      event.preventDefault()
-      @handleUploads(event.dataTransfer.files)
+    onDrop(event) {
+      if (!event.dataTransfer || !event.dataTransfer.files || !event.dataTransfer.files.length) { return; }
+      event.preventDefault();
+      this.handleUploads(event.dataTransfer.files);
+    },
 
-    onDragOver: (event) -> false
+    onDragOver(event) { return false; }
+  },
 
-  computed:
-    previewAction: ->
-      if @preview then 'common.action.edit' else 'common.action.preview'
-    previewIcon: ->
-      if @preview then 'mdi-pencil' else 'mdi-eye'
+  computed: {
+    previewAction() {
+      if (this.preview) { return 'common.action.edit'; } else { return 'common.action.preview'; }
+    },
+    previewIcon() {
+      if (this.preview) { return 'mdi-pencil'; } else { return 'mdi-eye'; }
+    }
+  }
+};
 
 </script>
 

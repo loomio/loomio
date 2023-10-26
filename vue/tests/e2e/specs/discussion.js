@@ -1,5 +1,4 @@
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
   // 'presents_new_discussion_form_for_a_group_from_params': (test) => {

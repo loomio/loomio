@@ -1,45 +1,57 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import AppConfig from '@/shared/services/app_config'
-import Records from '@/shared/services/records'
-import Flash  from '@/shared/services/flash'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import AppConfig from '@/shared/services/app_config';
+import Records from '@/shared/services/records';
+import Flash  from '@/shared/services/flash';
 
-export default
-  props:
+export default {
+  props: {
     chatbot: Object
+  },
 
-  data: ->
-    kinds: AppConfig.webhookEventKinds
-    testing: false
+  data() {
+    return {
+      kinds: AppConfig.webhookEventKinds,
+      testing: false
+    };
+  },
 
-  methods:
-    submit: ->
-      @chatbot.save()
-      .then =>
-        Flash.success 'chatbot.saved'
-        EventBus.$emit('closeModal')
-      .catch (b) =>
-        Flash.error 'common.something_went_wrong'
-        console.log @chatbot.errors
+  methods: {
+    submit() {
+      this.chatbot.save()
+      .then(() => {
+        Flash.success('chatbot.saved');
+        EventBus.$emit('closeModal');
+      }).catch(b => {
+        Flash.error('common.something_went_wrong');
+        console.log(this.chatbot.errors);
+      });
+    },
 
-    destroy: ->
-      @chatbot.destroy().then =>
-        Flash.success 'poll_common_delete_modal.success'
-        EventBus.$emit('closeModal')
-      .catch (b) =>
-        Flash.error 'common.something_went_wrong'
-        console.log @chatbot.errors
+    destroy() {
+      this.chatbot.destroy().then(() => {
+        Flash.success('poll_common_delete_modal.success');
+        EventBus.$emit('closeModal');
+      }).catch(b => {
+        Flash.error('common.something_went_wrong');
+        console.log(this.chatbot.errors);
+      });
+    },
 
-    testConnection: ->
-      @testing = true
-      Records.remote.post('chatbots/test',
-        server: @chatbot.server
-        access_token: @chatbot.accessToken
-        channel: @chatbot.channel
+    testConnection() {
+      this.testing = true;
+      Records.remote.post('chatbots/test', {
+        server: this.chatbot.server,
+        access_token: this.chatbot.accessToken,
+        channel: this.chatbot.channel,
         group_name: "group name was here"
-      ).finally =>
-        Flash.success('chatbot.check_for_test_message')
-        @testing = false
+      }).finally(() => {
+        Flash.success('chatbot.check_for_test_message');
+        this.testing = false;
+      });
+    }
+  }
+};
 
 </script>
 <template lang="pug">
@@ -76,8 +88,6 @@ v-card.chatbot-matrix-form
       :key="kind" 
       :label="$t('webhook.event_kinds.' + kind)" 
       :value="kind")
-
-
 
     v-card-actions
       v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")

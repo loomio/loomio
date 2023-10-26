@@ -1,57 +1,80 @@
-<script lang="coffee">
-import AppConfig      from '@/shared/services/app_config'
-import Session        from '@/shared/services/session'
-import Records        from '@/shared/services/records'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
+<script lang="js">
+import AppConfig      from '@/shared/services/app_config';
+import Session        from '@/shared/services/session';
+import Records        from '@/shared/services/records';
+import EventBus       from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import LmoUrlService  from '@/shared/services/lmo_url_service';
 
 export default
-  props:
+{
+  props: {
     poll: Object
+  },
 
-  data: ->
-    stance: null
+  data() {
+    return {stance: null};
+  },
 
-  created: ->
-    if parseInt(@$route.query.set_outcome) == @poll.id
-      EventBus.$emit 'openModal',
-        component: 'PollCommonOutcomeModal'
-        props:
-          outcome: Records.outcomes.build(pollId: @poll.id)
+  created() {
+    if (parseInt(this.$route.query.set_outcome) === this.poll.id) {
+      EventBus.$emit('openModal', {
+        component: 'PollCommonOutcomeModal',
+        props: {
+          outcome: Records.outcomes.build({pollId: this.poll.id})
+        }
+      }
+      );
+    }
 
-    if parseInt(@$route.query.change_vote) == @poll.id
-      EventBus.$emit 'openModal',
-        component: 'PollCommonEditVoteModal'
-        props:
-          stance: @poll.myStance()
+    if (parseInt(this.$route.query.change_vote) === this.poll.id) {
+      EventBus.$emit('openModal', {
+        component: 'PollCommonEditVoteModal',
+        props: {
+          stance: this.poll.myStance()
+        }
+      }
+      );
+    }
 
-    EventBus.$on 'deleteMyStance', (pollId) =>
-      if pollId == @poll.id
-        @stance = null 
+    EventBus.$on('deleteMyStance', pollId => {
+      if (pollId === this.poll.id) {
+        return this.stance = null;
+      }
+    }); 
 
-    @watchRecords
-      collections: ["stances"]
-      query: (records) =>
-        if @stance && !@stance.castAt && @poll.myStance() && @poll.myStance().castAt
-          @stance = @lastStanceOrNew().clone()
+    this.watchRecords({
+      collections: ["stances"],
+      query: records => {
+        if (this.stance && !this.stance.castAt && this.poll.myStance() && this.poll.myStance().castAt) {
+          this.stance = this.lastStanceOrNew().clone();
+        }
 
-        if @stance && @stance.castAt && @poll.myStance() && !@poll.myStance().castAt
-          @stance = @lastStanceOrNew().clone()
+        if (this.stance && this.stance.castAt && this.poll.myStance() && !this.poll.myStance().castAt) {
+          this.stance = this.lastStanceOrNew().clone();
+        }
 
-        if !@stance && AbilityService.canParticipateInPoll(@poll)
-          @stance = @lastStanceOrNew().clone()
+        if (!this.stance && AbilityService.canParticipateInPoll(this.poll)) {
+          this.stance = this.lastStanceOrNew().clone();
+        }
+      }
+    });
+  },
 
-  methods:
-    lastStanceOrNew: ->
-      stance = @poll.myStance() || Records.stances.build(
-        reasonFormat: Session.defaultFormat()
-        pollId:    @poll.id,
+  methods: {
+    lastStanceOrNew() {
+      const stance = this.poll.myStance() || Records.stances.build({
+        reasonFormat: Session.defaultFormat(),
+        pollId:    this.poll.id,
         userId:    AppConfig.currentUserId
-      )
-      if @$route.params.poll_option_id
-        stance.choose(@$route.params.poll_option_id)
-      stance
+      });
+      if (this.$route.params.poll_option_id) {
+        stance.choose(this.$route.params.poll_option_id);
+      }
+      return stance;
+    }
+  }
+};
 
 </script>
 

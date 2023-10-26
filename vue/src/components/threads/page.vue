@@ -1,50 +1,66 @@
-<script lang="coffee">
-import AppConfig          from '@/shared/services/app_config'
-import Records            from '@/shared/services/records'
-import Session            from '@/shared/services/session'
-import EventBus           from '@/shared/services/event_bus'
-import AbilityService     from '@/shared/services/ability_service'
-import RecordLoader       from '@/shared/services/record_loader'
-import { capitalize, take, keys, every, orderBy, debounce } from 'lodash'
-import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
+<script lang="js">
+import AppConfig          from '@/shared/services/app_config';
+import Records            from '@/shared/services/records';
+import Session            from '@/shared/services/session';
+import EventBus           from '@/shared/services/event_bus';
+import AbilityService     from '@/shared/services/ability_service';
+import RecordLoader       from '@/shared/services/record_loader';
+import { capitalize, take, keys, every, orderBy, debounce } from 'lodash';
+import { subDays, addDays, subWeeks, subMonths } from 'date-fns';
 
-export default
-  data: ->
-    threads: []
-    loader: {}
+export default {
+  data() {
+    return {
+      threads: [],
+      loader: {}
+    };
+  },
 
-  created: ->
-    EventBus.$on 'signedIn', @init
+  created() {
+    return EventBus.$on('signedIn', this.init);
+  },
 
-  beforeDestroy: ->
-    EventBus.$off 'signedIn', @init
+  beforeDestroy() {
+    return EventBus.$off('signedIn', this.init);
+  },
 
-  mounted: ->
-    EventBus.$emit('content-title-visible', false)
-    EventBus.$emit 'currentComponent',
-      titleKey: @titleKey
-      page: 'threadsPage'
-      search:
-        placeholder: @$t('navbar.search_all_threads')
-    @init()
+  mounted() {
+    EventBus.$emit('content-title-visible', false);
+    EventBus.$emit('currentComponent', {
+      titleKey: this.titleKey,
+      page: 'threadsPage',
+      search: {
+        placeholder: this.$t('navbar.search_all_threads')
+      }
+    });
+    this.init();
+  },
 
-  watch:
+  watch: {
     '$route.query': 'refresh'
+  },
 
-  methods:
-    init: ->
-      @loader = new RecordLoader
-        collection: 'discussions'
-        path: 'direct'
-        params:
+  methods: {
+    init() {
+      this.loader = new RecordLoader({
+        collection: 'discussions',
+        path: 'direct',
+        params: {
           exclude_types: 'poll group outcome'
-      @loader.fetchRecords()
+        }
+      });
+      this.loader.fetchRecords();
 
-      @watchRecords
-        key: 'dashboard'
-        collections: ['discussions']
-        query: =>
-          @threads = Records.discussions.collection.chain().find(groupId: null).simplesort('lastActivityAt', true).data()
+      this.watchRecords({
+        key: 'dashboard',
+        collections: ['discussions'],
+        query: () => {
+          this.threads = Records.discussions.collection.chain().find({groupId: null}).simplesort('lastActivityAt', true).data();
+        }
+      });
+    }
+  }
+};
 
 </script>
 

@@ -1,72 +1,93 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import Session        from '@/shared/services/session'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import { debounce, some, every } from 'lodash'
+<script lang="js">
+import Records        from '@/shared/services/records';
+import Session        from '@/shared/services/session';
+import EventBus       from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import { debounce, some, every } from 'lodash';
 
 export default
-  data: ->
-    group: null
-    loading: true
+{
+  data() {
+    return {
+      group: null,
+      loading: true
+    };
+  },
 
-  created: ->
-    @onQueryInput = debounce (val) =>
-      @$router.replace(@mergeQuery(q: val))
-    , 500
+  created() {
+    this.onQueryInput = debounce(val => {
+      return this.$router.replace(this.mergeQuery({q: val}));
+    }
+    , 500);
 
-    Records.groups.findOrFetch(@$route.params.key).then (group) =>
-      @group = group
+    Records.groups.findOrFetch(this.$route.params.key).then(group => {
+      this.group = group;
 
-      EventBus.$emit 'currentComponent',
-        page: 'groupPage'
-        title: @group.name
-        group: @group
+      EventBus.$emit('currentComponent', {
+        page: 'groupPage',
+        title: this.group.name,
+        group: this.group
+      }
+      );
 
-      Records.groups.fetchByParent(@group).then =>
-        @loading = false
-        EventBus.$emit 'subgroupsLoaded', @group
+      Records.groups.fetchByParent(this.group).then(() => {
+        this.loading = false;
+        return EventBus.$emit('subgroupsLoaded', this.group);
+      });
 
-      @watchRecords
-        collections: ['memberships', 'groups']
-        query: @findRecords
+      this.watchRecords({
+        collections: ['memberships', 'groups'],
+        query: this.findRecords
+      });
 
-      @findRecords()
+      this.findRecords();
+    });
+  },
 
-  computed:
-    canCreateSubgroups: ->
-      AbilityService.canCreateSubgroups(@group)
+  computed: {
+    canCreateSubgroups() {
+      return AbilityService.canCreateSubgroups(this.group);
+    }
+  },
 
-  methods:
-    findRecords: ->
-      memberIds = Records.memberships.find(userId: Session.user().id).map (m) -> m.groupId
-      visibleIds = Records.groups.collection.chain().
-                     find(parentId: @group.id).
-                     find(groupPrivacy: {$in: ['closed', 'open']}).data().map (g) -> g.id
+  methods: {
+    findRecords() {
+      const memberIds = Records.memberships.find({userId: Session.user().id}).map(m => m.groupId);
+      const visibleIds = Records.groups.collection.chain().
+                     find({parentId: this.group.id}).
+                     find({groupPrivacy: {$in: ['closed', 'open']}}).data().map(g => g.id);
 
-      chain = Records.groups.collection.chain().
-                     find(parentId: @group.id, id: {$in: memberIds.concat(visibleIds)}).
-                     simplesort('name')
+      let chain = Records.groups.collection.chain().
+                     find({parentId: this.group.id, id: {$in: memberIds.concat(visibleIds)}}).
+                     simplesort('name');
 
-      if @$route.query.q
-        chain = chain.where (group) =>
-          some [group.name, group.description], (field) =>
-            RegExp(@$route.query.q, "i").test(field)
+      if (this.$route.query.q) {
+        chain = chain.where(group => {
+          return some([group.name, group.description], field => {
+            return RegExp(this.$route.query.q, "i").test(field);
+          });
+        });
+      }
 
-      @subgroups = chain.data()
+      this.subgroups = chain.data();
+    },
 
-    startSubgroup: ->
-      EventBus.$emit('openModal',
-                      component: 'GroupNewForm',
-                      props: {
-                        group: Records.groups.build(parentId: @group.id)
-                      })
+    startSubgroup() {
+      EventBus.$emit('openModal', {
+        component: 'GroupNewForm',
+        props: {
+          group: Records.groups.build({parentId: this.group.id})
+        }
+      });
+    },
 
+    stripDescription(description) { return (description || '').replace(new RegExp(`<[^>]*>?`, 'gm'), ''); }
+  },
 
-    stripDescription: (description) -> (description || '').replace(///<[^>]*>?///gm, '')
-
-  watch:
+  watch: {
     '$route.query': 'findRecords'
+  }
+};
 </script>
 <template lang="pug">
 div(v-if="group")

@@ -1,52 +1,64 @@
-<script lang="coffee">
-import Records     from '@/shared/services/records'
-import FlashService   from '@/shared/services/flash'
-import { times } from 'lodash'
-import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time'
-import { format, parse, isValid } from 'date-fns'
-import I18n from '@/i18n.coffee'
+<script lang="js">
+import Records     from '@/shared/services/records';
+import FlashService   from '@/shared/services/flash';
+import { times } from 'lodash';
+import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time';
+import { format, parse, isValid } from 'date-fns';
+import I18n from '@/i18n';
 
-export default
-  props:
-    value: Date
-    min: Date
-    dateLabel: Object
+export default {
+  props: {
+    value: Date,
+    min: Date,
+    dateLabel: Object,
     timeLabel: Object
+  },
 
-  created: ->
-    @newValue = @value
+  created() {
+    return this.newValue = this.value;
+  },
 
-  data: ->
-    dateStr: @value && format(@value, 'yyyy-MM-dd') || ''
-    timeStr: @value && format(@value, 'HH:mm') || ''
-    minStr:  @value && format(@min, 'yyyy-MM-dd') || ''
-    dateMenu: false
-    times: hoursOfDay()
-    placeholder: format(new Date(), 'yyyy-MM-dd')
-    validDate: (val) =>
-      isValid(parse(val, "yyyy-MM-dd", new Date()))
+  data() {
+    return {
+      dateStr: (this.value && format(this.value, 'yyyy-MM-dd')) || '',
+      timeStr: (this.value && format(this.value, 'HH:mm')) || '',
+      minStr:  (this.value && format(this.min, 'yyyy-MM-dd')) || '',
+      dateMenu: false,
+      times: hoursOfDay(),
+      placeholder: format(new Date(), 'yyyy-MM-dd'),
+      validDate: val => {
+        return isValid(parse(val, "yyyy-MM-dd", new Date()));
+      }
+    };
+  },
 
-  methods:
-    updateNewValue: ->
-      val = parse("#{@dateStr} #{@timeStr}", "yyyy-MM-dd HH:mm", new Date)
-      return unless isValid(val)
-      @newValue = val
-      @$emit('input', @newValue)
+  methods: {
+    updateNewValue() {
+      const val = parse(`${this.dateStr} ${this.timeStr}`, "yyyy-MM-dd HH:mm", new Date);
+      if (!isValid(val)) { return; }
+      this.newValue = val;
+      this.$emit('input', this.newValue);
+    }
+  },
 
-  watch:
-    dateStr: -> @updateNewValue()
-    timeStr: -> @updateNewValue()
+  watch: {
+    dateStr() { this.updateNewValue(); },
+    timeStr() { this.updateNewValue(); }
+  },
 
-  computed:
-    twelvehour: -> timeFormat() != 'HH:mm'
-    timeHint: -> 
-      try 
-        d = parse(@timeStr, 'HH:mm', new Date)
-        format(d, timeFormat())
-      catch
-        FlashService.error("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')})
-        I18n.t("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')})
-
+  computed: {
+    twelvehour() { return timeFormat() !== 'HH:mm'; },
+    timeHint() {
+      try {
+        const d = parse(this.timeStr, 'HH:mm', new Date);
+        return format(d, timeFormat());
+      } catch (error) {
+        FlashService.error("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')});
+        return I18n.t("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')});
+      }
+    }
+  }
+};
 </script>
 <template lang="pug">
 v-layout.date-time-picker

@@ -1,31 +1,38 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import { capitalize } from 'lodash'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import { capitalize } from 'lodash';
 
-export default
-  props:
+export default {
+  props: {
     user: Object
+  },
 
-  methods:
-    capitalize: capitalize
+  methods: {
+    capitalize,
 
-    select: (provider) ->
-      # EventBus.emit $scope, 'processing'
-      window.location = "#{provider.href}?back_to=#{window.location.href}"
+    select(provider) {
+      window.location = `${provider.href}?back_to=${window.location.href}`;
+    },
 
-    iconClass: (provider) ->
-      "mdi-" + if (provider == 'saml') then 'key-variant' else provider
+    iconClass(provider) {
+      return "mdi-" + ((provider === 'saml') ? 'key-variant' : provider);
+    },
 
-    providerColor: (provider) ->
-      switch provider
-        when 'facebook' then '#3b5998'
-        when 'google' then '#dd4b39'
-        when 'slack' then '#e9a820'
-        when 'saml' then @$vuetify.theme.themes.light.primary
+    providerColor(provider) {
+      switch (provider) {
+      case 'facebook': return '#3b5998';
+      case 'google': return '#dd4b39';
+      case 'slack': return '#e9a820';
+      case 'saml': return this.$vuetify.theme.themes.light.primary;
+      }
+    }
+  },
 
-  computed:
-    emailLogin: -> AppConfig.features.app.email_login
-    providers: -> AppConfig.identityProviders.filter (provider) -> provider.name != 'slack'
+  computed: {
+    emailLogin() { return AppConfig.features.app.email_login; },
+    providers() { return AppConfig.identityProviders.filter(provider => provider.name !== 'slack'); }
+  }
+}
 </script>
 
 <template lang="pug">

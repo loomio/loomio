@@ -1,36 +1,44 @@
-<script lang="coffee">
-import Session  from '@/shared/services/session'
-import Records  from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import PollCommonDirective from '@/components/poll/common/directive'
-import PollService from '@/shared/services/poll_service'
-import { pick } from 'lodash'
+<script lang="js">
+import Session  from '@/shared/services/session';
+import Records  from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import PollCommonDirective from '@/components/poll/common/directive';
+import PollService from '@/shared/services/poll_service';
+import { pick } from 'lodash';
 
-import PollCommonChartMeeting from '@/components/poll/common/chart/meeting'
-import PollCommonChartTable from '@/components/poll/common/chart/table'
-import PollCommonPercentVoted from '@/components/poll/common/percent_voted'
-import PollCommonTargetProgress from '@/components/poll/common/target_progress'
+import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
+import PollCommonChartTable from '@/components/poll/common/chart/table';
+import PollCommonPercentVoted from '@/components/poll/common/percent_voted';
+import PollCommonTargetProgress from '@/components/poll/common/target_progress';
 
 export default
-  components: {
-    PollCommonChartTable,
-    PollCommonChartMeeting,
-    PollCommonPercentVoted,
-    PollCommonTargetProgress
-  }
+  ({
+    components: {
+      PollCommonChartTable,
+      PollCommonChartMeeting,
+      PollCommonPercentVoted,
+      PollCommonTargetProgress
+    },
 
-  props:
-    poll: Object
+    props: {
+      poll: Object
+    },
 
-  data: ->
-    votersByOptionId: {}
+    data() {
+      return {votersByOptionId: {}};
+    },
 
-  created: ->
-    @watchRecords
-      collections: ['polls']
-      query: =>
-        if Session.isSignedIn()
-          Records.users.fetchAnyMissingById(@poll.decidedVoterIds())
+    created() {
+      this.watchRecords({
+        collections: ['polls'],
+        query: () => {
+          if (Session.isSignedIn()) {
+            Records.users.fetchAnyMissingById(this.poll.decidedVoterIds());
+          }
+        }
+      });
+    }
+  });
 
 </script>
 

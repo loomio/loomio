@@ -1,10 +1,15 @@
-<script lang="coffee">
+<script lang="js">
 export default
-  props:
+{
+  props: {
     files: Array
-  methods:
-    progressStyle: (width) ->
-      {'background-color': @$vuetify.theme.accent, 'width': width+'%'}
+  },
+  methods: {
+    progressStyle(width) {
+      return {'background-color': this.$vuetify.theme.accent, 'width': width+'%'};
+    }
+  }
+};
 </script>
 
 <template lang="pug">

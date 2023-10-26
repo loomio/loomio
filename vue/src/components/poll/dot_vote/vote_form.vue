@@ -1,75 +1,104 @@
-<script lang="coffee">
-import Records  from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import Flash   from '@/shared/services/flash'
-import { sum, map, head, filter, without, sortBy, isEqual } from 'lodash'
+<script lang="js">
+import Records  from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import Flash   from '@/shared/services/flash';
+import { sum, map, head, filter, without, sortBy, isEqual } from 'lodash';
 
-export default
-  props:
+export default {
+  props: {
     stance: Object
+  },
 
-  data: ->
-    pollOptions: []
-    stanceChoices: []
+  data() {
+    return {
+      pollOptions: [],
+      stanceChoices: []
+    };
+  },
 
-  created: ->
-    @watchRecords
-      collections: ['pollOptions']
-      query: (records) =>
-        if @stance.poll().optionsDiffer(@pollOptions)
-          @pollOptions = @stance.poll().pollOptionsForVoting()
-          @stanceChoices = map @pollOptions, (option) =>
-            option: option
-            score: @stance.scoreFor(option)
+  created() {
+    this.watchRecords({
+      collections: ['pollOptions'],
+      query: records => {
+        if (this.stance.poll().optionsDiffer(this.pollOptions)) {
+          this.pollOptions = this.stance.poll().pollOptionsForVoting();
+          this.stanceChoices = map(this.pollOptions, option => {
+            return {
+              option,
+              score: this.stance.scoreFor(option)
+            };
+          });
+        }
+      }
+    });
+  },
 
-  methods:
-    submit: ->
-      if sum(map(@stanceChoices, 'score')) > 0
-        @stance.stanceChoicesAttributes = map @stanceChoices, (choice) =>
-          poll_option_id: choice.option.id
-          score: choice.score
-      actionName = if !@stance.castAt then 'created' else 'updated'
-      @stance.save()
-      .then =>
-        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
-        EventBus.$emit "closeModal"
-      .catch => true
+  methods: {
+    submit() {
+      if (sum(map(this.stanceChoices, 'score')) > 0) {
+        this.stance.stanceChoicesAttributes = map(this.stanceChoices, choice => {
+          return {
+            poll_option_id: choice.option.id,
+            score: choice.score
+          };
+        });
+      }
+      const actionName = !this.stance.castAt ? 'created' : 'updated';
+      this.stance.save().then(() => {
+        Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
+        EventBus.$emit("closeModal");
+      }).catch(() => true);
+    },
 
-    rulesForChoice: (choice) ->
-      [(v) => (v <= @maxForChoice(choice)) || @$t('poll_dot_vote_vote_form.too_many_dots')]
+    rulesForChoice(choice) {
+      return [v => (v <= this.maxForChoice(choice)) || this.$t('poll_dot_vote_vote_form.too_many_dots')];
+    },
 
-    percentageFor: (choice) ->
-      max = dotsPerPerson
-      return unless max > 0
-      "#{100 * choice.score / max}% 100%"
+    percentageFor(choice) {
+      const max = dotsPerPerson;
+      if (!(max > 0)) { return; }
+      return `${(100 * choice.score) / max}% 100%`;
+    },
 
-    backgroundImageFor: (option) ->
-      "url(/img/poll_backgrounds/#{option.color.replace('#','')}.png)"
+    backgroundImageFor(option) {
+      return `url(/img/poll_backgrounds/${option.color.replace('#','')}.png)`;
+    },
 
-    styleData: (choice) ->
-      'border-color': choice.option.color
-      'background-image': @backgroundImageFor(choice.option)
-      'background-size': @percentageFor(choice)
+    styleData(choice) {
+      return {
+        'border-color': choice.option.color,
+        'background-image': this.backgroundImageFor(choice.option),
+        'background-size': this.percentageFor(choice)
+      };
+    },
 
-    adjust: (choice, amount) ->
-      choice.score += amount
+    adjust(choice, amount) {
+      return choice.score += amount;
+    },
 
-    maxForChoice: (choice) ->
-      @dotsPerPerson - sum(map(without(@stanceChoices, choice), 'score'))
+    maxForChoice(choice) {
+      return this.dotsPerPerson - sum(map(without(this.stanceChoices, choice), 'score'));
+    }
+  },
 
-  computed:
-    poll: -> @stance.poll()
-    
-    dotsRemaining: ->
-      @dotsPerPerson - sum(map(@stanceChoices, 'score'))
+  computed: {
+    poll() { return this.stance.poll(); },
+  
+    dotsRemaining() {
+      return this.dotsPerPerson - sum(map(this.stanceChoices, 'score'));
+    },
 
-    dotsPerPerson: ->
-      @stance.poll().dotsPerPerson
+    dotsPerPerson() {
+      return this.stance.poll().dotsPerPerson;
+    },
 
-    alertColor: ->
-      return 'success' if @dotsRemaining == 0 
-      return 'primary' if @dotsRemaining > 0
-      return 'error'   if @dotsRemaining < 0
+    alertColor() {
+      if (this.dotsRemaining === 0) { return 'success'; } 
+      if (this.dotsRemaining > 0) { return 'primary'; }
+      if (this.dotsRemaining < 0) { return 'error'; }
+    }
+  }
+};
 
 </script>
 

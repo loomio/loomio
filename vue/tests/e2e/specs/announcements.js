@@ -1,5 +1,4 @@
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+pageHelper = require('../helpers/pageHelper')
 
 // GK: a couple of these are dependent on the poll page which we haven't done yet
 

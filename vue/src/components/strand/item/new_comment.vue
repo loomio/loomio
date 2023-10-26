@@ -1,36 +1,44 @@
-<script lang="coffee">
-import AbilityService from '@/shared/services/ability_service'
+<script lang="js">
+import AbilityService from '@/shared/services/ability_service';
 
-import { pick, pickBy, assign, compact } from 'lodash'
-import CommentService from '@/shared/services/comment_service'
-import EventService from '@/shared/services/event_service'
-import Session from '@/shared/services/session'
+import { pick, pickBy, assign, compact } from 'lodash';
+import CommentService from '@/shared/services/comment_service';
+import EventService from '@/shared/services/event_service';
+import Session from '@/shared/services/session';
 
-export default
-  props:
-    event: Object
+export default {
+  props: {
+    event: Object,
     eventable: Object
+  },
 
-  data: ->
-    confirmOpts: null
-    commentActions: CommentService.actions(@eventable, @, @event)
-    eventActions: EventService.actions(@event, @)
+  data() {
+    return {
+      confirmOpts: null,
+      commentActions: CommentService.actions(this.eventable, this, this.event),
+      eventActions: EventService.actions(this.event, this)
+    };
+  },
 
-  computed:
-    dockActions: ->
-      assign(
-        pickBy @commentActions, (v) -> v.dock
+  computed: {
+    dockActions() {
+      return assign(
+        pickBy(this.commentActions, v => v.dock)
       ,
-        pick @eventActions, []
-      )
+        pick(this.eventActions, [])
+      );
+    },
 
-    menuActions: ->
-      actions = assign(
-        pick @eventActions, ['pin_event', 'unpin_event', 'move_event', 'copy_url']
+    menuActions() {
+      const actions = assign(
+        pick(this.eventActions, ['pin_event', 'unpin_event', 'move_event', 'copy_url'])
       ,
-        pickBy @commentActions, (v) -> v.menu
-      )
-      pick actions, ['pin_event', 'unpin_event', 'reply_to_comment',  'admin_edit_comment', 'copy_url', 'notification_history', 'move_event', 'discard_comment', 'undiscard_comment']
+        pickBy(this.commentActions, v => v.menu)
+      );
+      return pick(actions, ['pin_event', 'unpin_event', 'reply_to_comment',  'admin_edit_comment', 'copy_url', 'notification_history', 'move_event', 'discard_comment', 'undiscard_comment']);
+    }
+  }
+};
 
 </script>
 

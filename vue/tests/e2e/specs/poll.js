@@ -1,6 +1,5 @@
 format = require('date-fns/format')
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
   'can_start_a_proposal_in_a_group': (test) => {

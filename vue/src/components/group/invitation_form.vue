@@ -1,113 +1,133 @@
-<script lang="coffee">
-import GroupService from '@/shared/services/group_service'
-import Records        from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import EventBus from '@/shared/services/event_bus'
-import AppConfig      from '@/shared/services/app_config'
-import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import AbilityService from '@/shared/services/ability_service'
-import Flash   from '@/shared/services/flash'
-import { uniq, debounce } from 'lodash'
-import I18n from '@/i18n.coffee'
+<script lang="js">
+import GroupService from '@/shared/services/group_service';
+import Records        from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import EventBus from '@/shared/services/event_bus';
+import AppConfig      from '@/shared/services/app_config';
+import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
+import AbilityService from '@/shared/services/ability_service';
+import Flash   from '@/shared/services/flash';
+import { uniq, debounce } from 'lodash';
+import I18n from '@/i18n';
 
 export default
-  components:
-    RecipientsAutocomplete: RecipientsAutocomplete
+{
+  components: {
+    RecipientsAutocomplete
+  },
 
-  props:
+  props: {
     group: Object
+  },
 
-  data: ->
-    query: ''
-    recipients: []
-    reset: false
-    saving: false
-    groupIds: [@group.id]
-    excludedUserIds: []
-    message: null
-    subscription: @group.parentOrSelf().subscription
-    cannotInvite: false
-    upgradeUrl: AppConfig.baseUrl + 'upgrade'
+  data() {
+    return {
+      query: '',
+      recipients: [],
+      reset: false,
+      saving: false,
+      groupIds: [this.group.id],
+      excludedUserIds: [],
+      message: null,
+      subscription: this.group.parentOrSelf().subscription,
+      cannotInvite: false,
+      upgradeUrl: AppConfig.baseUrl + 'upgrade'
+    };
+  },
 
-  mounted: ->
-    @message = I18n.t('announcement.form.invitation_message_default')
+  mounted() {
+    this.message = I18n.t('announcement.form.invitation_message_default');
 
-    @updateSuggestions()
-    @watchRecords
-      collections: ['memberships', 'groups']
-      query: (records) => 
-        @updateSuggestions()
-        @subscription = @group.parentOrSelf().subscription
-        @cannotInvite = !@subscription.active || (@subscription.max_members && @invitationsRemaining < 1)
+    this.updateSuggestions();
+    this.watchRecords({
+      collections: ['memberships', 'groups'],
+      query: records => { 
+        this.updateSuggestions();
+        this.subscription = this.group.parentOrSelf().subscription;
+        return this.cannotInvite = !this.subscription.active || (this.subscription.max_members && (this.invitationsRemaining < 1));
+      }
+    });
+  },
 
-  methods:
-    fetchMemberships: debounce ->
-      @loading = true
-      Records.memberships.fetch
-        params:
-          exclude_types: 'group'
-          q: @query
-          group_id: @group.id
+  methods: {
+    fetchMemberships: debounce(function() {
+      this.loading = true;
+      Records.memberships.fetch({
+        params: {
+          exclude_types: 'group',
+          q: this.query,
+          group_id: this.group.id,
           per: 20
-      .finally =>
-        @loading = false
-    , 300
+        }}).finally(() => {
+        return this.loading = false;
+      });
+    }
+    , 300),
 
-    inviteRecipients: ->
-      @saving = true
-      Records.remote.post 'announcements',
-        group_id: @group.id
-        invited_group_ids: @groupIds
-        recipient_emails: @recipients.filter((r) -> r.type == 'email').map((r) -> r.id)
-        recipient_user_ids: @recipients.filter((r) -> r.type == 'user').map((r) -> r.id)
-        recipient_message: @message
+    inviteRecipients() {
+      this.saving = true;
+      Records.remote.post('announcements', {
+        group_id: this.group.id,
+        invited_group_ids: this.groupIds,
+        recipient_emails: this.recipients.filter(r => r.type === 'email').map(r => r.id),
+        recipient_user_ids: this.recipients.filter(r => r.type === 'user').map(r => r.id),
+        recipient_message: this.message
+      }).then(data => {
+        Flash.success('announcement.flash.success', { count: data.memberships.length });
+        EventBus.$emit('closeModal');
+      }).finally(() => {
+        this.saving = false;
+      });
+    },
 
-      .then (data) =>
-        Flash.success('announcement.flash.success', { count: data.memberships.length })
-        EventBus.$emit('closeModal')
-      .finally =>
-        @saving = false
+    newQuery(query) {
+      this.query = query;
+      this.fetchMemberships();
+      this.updateSuggestions();
+    },
 
-    newQuery: (query) ->
-      @query = query
-      @fetchMemberships()
-      @updateSuggestions()
+    newRecipients(recipients) { return this.recipients = recipients; },
 
-    newRecipients: (recipients) -> @recipients = recipients
+    updateSuggestions() {
+      this.excludedUserIds = this.group.memberIds();
+    }
+  },
 
-    updateSuggestions: ->
-      @excludedUserIds = @group.memberIds()
+    // findUsers: ->
+    //   userIdsInGroup = Records.memberships.collection.
+    //     chain().find(groupId: @group.id).
+    //     data().map (m) -> m.userId
+    //   membershipsChain = Records.memberships.collection.chain()
+    //   membershipsChain = membershipsChain.find(groupId: { $in: @group.parentOrSelf().organisationIds() })
+    //   membershipsChain = membershipsChain.find(userId: { $nin: userIdsInGroup })
+    //
+    //   userIdsNotInGroup = uniq membershipsChain.data().map((m) -> m.userId)
+    //
+    //   chain = Records.users.collection.chain()
+    //   chain = chain.find(id: {$in: userIdsNotInGroup})
+    //
+    //
+    //   if @query
+    //     chain = chain.find
+    //       $or: [
+    //         {name: {'$regex': ["^#{@query}", "i"]}}
+    //         {username: {'$regex': ["^#{@query}", "i"]}}
+    //         {name: {'$regex': [" #{@query}", "i"]}}
+    //       ]
+    //   chain.data()
 
-    # findUsers: ->
-    #   userIdsInGroup = Records.memberships.collection.
-    #     chain().find(groupId: @group.id).
-    #     data().map (m) -> m.userId
-    #   membershipsChain = Records.memberships.collection.chain()
-    #   membershipsChain = membershipsChain.find(groupId: { $in: @group.parentOrSelf().organisationIds() })
-    #   membershipsChain = membershipsChain.find(userId: { $nin: userIdsInGroup })
-    #
-    #   userIdsNotInGroup = uniq membershipsChain.data().map((m) -> m.userId)
-    #
-    #   chain = Records.users.collection.chain()
-    #   chain = chain.find(id: {$in: userIdsNotInGroup})
-    #
-    #
-    #   if @query
-    #     chain = chain.find
-    #       $or: [
-    #         {name: {'$regex': ["^#{@query}", "i"]}}
-    #         {username: {'$regex': ["^#{@query}", "i"]}}
-    #         {name: {'$regex': [" #{@query}", "i"]}}
-    #       ]
-    #   chain.data()
-
-  computed:
-    invitableGroups: ->
-      @group.parentOrSelf().selfAndSubgroups().filter (g) -> AbilityService.canAddMembersToGroup(g)
-    tooManyInvitations: ->
-      @subscription.max_members && (@invitationsRemaining < 0)
-    invitationsRemaining: ->
-      (@subscription.max_members || 0) - @group.parentOrSelf().orgMembershipsCount - @recipients.length
+  computed: {
+    invitableGroups() {
+      return this.group.parentOrSelf().selfAndSubgroups().filter(g => AbilityService.canAddMembersToGroup(g));
+    },
+    tooManyInvitations() {
+      return this.subscription.max_members && (this.invitationsRemaining < 0);
+    },
+    invitationsRemaining() {
+      return (this.subscription.max_members || 0) - this.group.parentOrSelf().orgMembershipsCount - this.recipients.length;
+    }
+  }
+};
 
 
 </script>

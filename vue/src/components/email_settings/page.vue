@@ -1,75 +1,92 @@
-<script lang="coffee">
-import Session        from '@/shared/services/session'
-import Records        from '@/shared/services/records'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import AppConfig      from '@/shared/services/app_config'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
-import ChangeVolumeModalMixin from '@/mixins/change_volume_modal'
-import { uniq, compact, concat, sortBy, map, pick } from 'lodash'
-import UserService from '@/shared/services/user_service'
-import Flash from '@/shared/services/flash'
+<script lang="js">
+import Session        from '@/shared/services/session';
+import Records        from '@/shared/services/records';
+import EventBus       from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import AppConfig      from '@/shared/services/app_config';
+import LmoUrlService  from '@/shared/services/lmo_url_service';
+import ChangeVolumeModalMixin from '@/mixins/change_volume_modal';
+import { uniq, compact, concat, sortBy, map, pick } from 'lodash';
+import UserService from '@/shared/services/user_service';
+import Flash from '@/shared/services/flash';
 
-export default
-  mixins: [ChangeVolumeModalMixin]
-  data: ->
-    newsletterEnabled: AppConfig.newsletterEnabled
-    user: null
-    groups: []
-  created: ->
-    @init()
-    EventBus.$on 'signedIn', @init
-    @watchRecords
-      collections: ['groups', 'memberships']
-      query: (store) =>
-        groups = Session.user().groups()
-        user = Session.user()
-        @groups = sortBy groups, 'fullName'
-  beforeDestroy: ->
-    EventBus.$off 'signedIn', @init
+export default {
+  mixins: [ChangeVolumeModalMixin],
+  data() {
+    return {
+      newsletterEnabled: AppConfig.newsletterEnabled,
+      user: null,
+      groups: []
+    };
+  },
+  created() {
+    this.init();
+    EventBus.$on('signedIn', this.init);
+    this.watchRecords({
+      collections: ['groups', 'memberships'],
+      query: store => {
+        const groups = Session.user().groups();
+        const user = Session.user();
+        return this.groups = sortBy(groups, 'fullName');
+      }
+    });
+  },
+  beforeDestroy() {
+    return EventBus.$off('signedIn', this.init);
+  },
 
-  mounted: ->
-    EventBus.$emit 'currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'}
+  mounted() {
+    return EventBus.$emit('currentComponent', { titleKey: 'email_settings_page.header', page: 'emailSettingsPage'});
+  },
 
-  methods:
-    submit: ->
-      Records.users.updateProfile(@user)
-      .then =>
-        Flash.success 'email_settings_page.messages.updated'
-      .catch (error) => true
+  methods: {
+    submit() {
+      Records.users.updateProfile(this.user).then(() => {
+        Flash.success('email_settings_page.messages.updated');
+      }).catch(error => true);
+    },
 
-    init: ->
-      return unless Session.isSignedIn() or Session.user().restricted?
-      Session.user().attributeNames.push('unsubscribeToken')
-      @originalUser = Session.user()
-      @user = Session.user().clone()
+    init() {
+      if (!Session.isSignedIn() && (Session.user().restricted == null)) { return; }
+      Session.user().attributeNames.push('unsubscribeToken');
+      this.originalUser = Session.user();
+      this.user = Session.user().clone();
+    },
 
-    groupVolume: (group) ->
-      group.membershipFor(Session.user()).volume
+    groupVolume(group) {
+      return group.membershipFor(Session.user()).volume;
+    },
 
-    changeDefaultMembershipVolume: ->
-      @openChangeVolumeModal(Session.user())
+    changeDefaultMembershipVolume() {
+      this.openChangeVolumeModal(Session.user());
+    },
 
-    editSpecificGroupVolume: (group) ->
-      @openChangeVolumeModal(Session.user())
-  computed:
-    emailDays: ->
-      [
-        {value: null, text: @$t('email_settings_page.never')}
-        {value: 7, text: @$t('email_settings_page.every_day')}
-        {value: 8, text: @$t('email_settings_page.every_second_day')}
-        {value: 1, text: @$t('email_settings_page.monday')}
-        {value: 2, text: @$t('email_settings_page.tuesday')}
-        {value: 3, text: @$t('email_settings_page.wednesday')}
-        {value: 4, text: @$t('email_settings_page.thursday')}
-        {value: 5, text: @$t('email_settings_page.friday')}
-        {value: 6, text: @$t('email_settings_page.saturday')}
-        {value: 0, text: @$t('email_settings_page.sunday')}
-      ]
-    actions: -> pick UserService.actions(Session.user(), @), ['reactivate_user', 'deactivate_user']
+    editSpecificGroupVolume(group) {
+      this.openChangeVolumeModal(Session.user());
+    }
+  },
+  computed: {
+    emailDays() {
+      return [
+        {value: null, text: this.$t('email_settings_page.never')},
+        {value: 7, text: this.$t('email_settings_page.every_day')},
+        {value: 8, text: this.$t('email_settings_page.every_second_day')},
+        {value: 1, text: this.$t('email_settings_page.monday')},
+        {value: 2, text: this.$t('email_settings_page.tuesday')},
+        {value: 3, text: this.$t('email_settings_page.wednesday')},
+        {value: 4, text: this.$t('email_settings_page.thursday')},
+        {value: 5, text: this.$t('email_settings_page.friday')},
+        {value: 6, text: this.$t('email_settings_page.saturday')},
+        {value: 0, text: this.$t('email_settings_page.sunday')}
+      ];
+    },
+    actions() { return pick(UserService.actions(Session.user(), this), ['reactivate_user', 'deactivate_user']); },
 
-    defaultSettingsDescription: ->
-      "email_settings_page.default_settings.#{Session.user().defaultMembershipVolume}_description"
+    defaultSettingsDescription() {
+      return `email_settings_page.default_settings.${Session.user().defaultMembershipVolume}_description`;
+    }
+  }
+};
 </script>
 
 <template lang="pug">

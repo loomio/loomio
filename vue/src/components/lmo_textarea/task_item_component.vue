@@ -1,60 +1,71 @@
-<script lang="coffee">
-import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-2'
-import { isArray } from 'lodash'
+<script lang="js">
+import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-2';
+import { isArray } from 'lodash';
 export default
-  components: { NodeViewWrapper, NodeViewContent }
+{
+  components: { NodeViewWrapper, NodeViewContent },
 
-  props: nodeViewProps
+  props: nodeViewProps,
 
-  data: ->
-    modalOpen: false
-    date: null
-    remind: 0
-    checked: @node.attrs.checked
-    reminders: [
-      {text: @$t('tasks.no_reminder'), value: null}
-      {text: @$t('tasks.on_due_date'), value: 0}
-      {text: @$t('tasks.1_day_before'), value: 1}
-      {text: @$t('tasks.2_day_before'), value: 2}
-      {text: @$t('tasks.3_day_before'), value: 3}
-      {text: @$t('tasks.7_day_before'), value: 7}
-    ]
-    mentioned: []
+  data() {
+    return {
+      modalOpen: false,
+      date: null,
+      remind: 0,
+      checked: this.node.attrs.checked,
+      reminders: [
+        {text: this.$t('tasks.no_reminder'), value: null},
+        {text: this.$t('tasks.on_due_date'), value: 0},
+        {text: this.$t('tasks.1_day_before'), value: 1},
+        {text: this.$t('tasks.2_day_before'), value: 2},
+        {text: this.$t('tasks.3_day_before'), value: 3},
+        {text: this.$t('tasks.7_day_before'), value: 7}
+      ],
+      mentioned: []
+    };
+  },
 
-  methods:
-    findMentioned: (node) ->
-      # console.log node.toString()
-      # if node.content
-      #   if isArray(node.content)
-      #     node.content.forEach (n) =>
-      #       @findMentioned(n)
-      #   else
-      #     @findMentioned(node.content)
-      #
-      # if node.type == 'mention'
-      #   @menitoned << node.attrs.id
+  methods: {
+    findMentioned(node) {},
+      // console.log node.toString()
+      // if node.content
+      //   if isArray(node.content)
+      //     node.content.forEach (n) =>
+      //       @findMentioned(n)
+      //   else
+      //     @findMentioned(node.content)
+      //
+      // if node.type == 'mention'
+      //   @menitoned << node.attrs.id
 
-    onCheckboxChange: (val) ->
-      @checked = !@checked
-      @updateAttributes({ checked: @checked })
+    onCheckboxChange(val) {
+      this.checked = !this.checked;
+      this.updateAttributes({ checked: this.checked });
+    },
 
-    openModal: ->
-      @findMentioned(@node)
-      @date = @node.attrs.dueOn
-      @remind = if @date then (parseInt(@node.attrs.remind) || null) else 0
-      @modalOpen = true
+    openModal() {
+      this.findMentioned(this.node);
+      this.date = this.node.attrs.dueOn;
+      this.remind = this.date ? (parseInt(this.node.attrs.remind) || null) : 0;
+      this.modalOpen = true;
+    },
 
-    saveAndClose: ->
-      @updateAttributes({dueOn: @date, remind: @remind})
-      @modalOpen = false
+    saveAndClose() {
+      this.updateAttributes({dueOn: this.date, remind: this.remind});
+      this.modalOpen = false;
+    },
 
-    clearAndClose: ->
-      @updateAttributes({dueOn: null, remind: null})
-      @modalOpen = false
+    clearAndClose() {
+      this.updateAttributes({dueOn: null, remind: null});
+      this.modalOpen = false;
+    }
+  },
 
-  computed:
-    isEmpty: -> @node.toString() == "taskItem(paragraph)"
-    hasMention: -> @node.toString().includes('mention')
+  computed: {
+    isEmpty() { return this.node.toString() === "taskItem(paragraph)"; },
+    hasMention() { return this.node.toString().includes('mention'); }
+  }
+};
 
 </script>
 

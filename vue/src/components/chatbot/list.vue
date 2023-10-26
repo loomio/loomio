@@ -1,55 +1,71 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import AppConfig from '@/shared/services/app_config'
-import ChatbotService from '@/shared/services/chatbot_service'
-import Records from '@/shared/services/records'
-import Flash  from '@/shared/services/flash'
-import openModal from '@/shared/helpers/open_modal'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import AppConfig from '@/shared/services/app_config';
+import ChatbotService from '@/shared/services/chatbot_service';
+import Records from '@/shared/services/records';
+import Flash  from '@/shared/services/flash';
+import openModal from '@/shared/helpers/open_modal';
 
-export default
-  props:
+export default {
+  props: {
     group: Object
+  },
 
-  data: ->
-    chatbots: []
-    kinds: ['matrix', 'slack', 'discord', 'mattermost', 'teams']
-    loading: true
-    addActions: {}
-    icons:
-      matrix: 'mdi-matrix'
-      slack: 'mdi-slack'
-      discord: 'mdi-discord'
-      mattermost: 'mdi-chat-processing'
-      teams: 'mdi-microsoft-teams'
+  data() {
+    return {
+      chatbots: [],
+      kinds: ['matrix', 'slack', 'discord', 'mattermost', 'teams'],
+      loading: true,
+      addActions: {},
+      icons: {
+        matrix: 'mdi-matrix',
+        slack: 'mdi-slack',
+        discord: 'mdi-discord',
+        mattermost: 'mdi-chat-processing',
+        teams: 'mdi-microsoft-teams'
+      }
+    };
+  },
 
-  mounted: ->
-    @addActions = ChatbotService.addActions(@group)
+  mounted() {
+    this.addActions = ChatbotService.addActions(this.group);
 
-    @watchRecords
-      collections: ["chatbots"]
-      query: (records) =>
-        @chatbots = Records.chatbots.find(groupId: @group.id)
+    this.watchRecords({
+      collections: ["chatbots"],
+      query: records => {
+        this.chatbots = Records.chatbots.find({groupId: this.group.id});
+      }
+    });
 
-    Records.chatbots.fetch(params: {group_id: @group.id}).then =>
-      @loading = false
+    Records.chatbots.fetch({params: {group_id: this.group.id}}).then(() => {
+      this.loading = false;
+    });
+  },
 
-  methods:
-    deleteChatbot: (bot) ->
-      # confirm modal then
-      bot.destroy()
+  methods: {
+    deleteChatbot(bot) {
+      bot.destroy();
+    },
 
-    editChatbot: (bot) ->
-      if bot.kind == "webhook"
-        openModal
-          component: 'ChatbotWebhookForm'
-          props:
+    editChatbot(bot) {
+      if (bot.kind === "webhook") {
+        openModal({
+          component: 'ChatbotWebhookForm',
+          props: {
             chatbot: bot
-      else
-        openModal
-          component: 'ChatbotMatrixForm'
-          props:
+          }
+        });
+      } else {
+        openModal({
+          component: 'ChatbotMatrixForm',
+          props: {
             chatbot: bot
- 
+          }
+        });
+      }
+    }
+  }
+};
 
 </script>
 <template lang="pug">

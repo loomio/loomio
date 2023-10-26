@@ -1,23 +1,27 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import PollCommonDirective from '@/components/poll/common/directive.vue'
-import Flash   from '@/shared/services/flash'
-import { sortBy } from 'lodash'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import PollCommonDirective from '@/components/poll/common/directive.vue';
+import Flash   from '@/shared/services/flash';
+import { sortBy } from 'lodash';
 
-export default
-  props:
+export default {
+  props: {
     stance: Object
-  components:
-    PollCommonDirective: PollCommonDirective
+  },
+  components: {
+    PollCommonDirective
+  },
 
-  methods:
-    submit: ->
-      actionName = if !@stance.castAt then 'created' else 'updated'
-      @stance.save()
-      .then =>
-        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
-        @close()
-      .catch (error) => true
+  methods: {
+    submit() {
+      const actionName = !this.stance.castAt ? 'created' : 'updated';
+      this.stance.save().then(() => {
+        Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
+        this.close();
+      }).catch(error => true);
+    }
+  }
+};
 </script>
 <template lang="pug">
 v-card.poll-common-edit-vote-modal

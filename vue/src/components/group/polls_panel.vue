@@ -1,117 +1,152 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import AbilityService from '@/shared/services/ability_service'
-import Records from '@/shared/services/records'
-import PageLoader from '@/shared/services/page_loader'
-import EventBus       from '@/shared/services/event_bus'
-import Session       from '@/shared/services/session'
-import { debounce, some, every, compact, omit, values, keys, intersection, uniq } from 'lodash'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import AbilityService from '@/shared/services/ability_service';
+import Records from '@/shared/services/records';
+import PageLoader from '@/shared/services/page_loader';
+import EventBus       from '@/shared/services/event_bus';
+import Session       from '@/shared/services/session';
+import { debounce, some, every, compact, omit, values, keys, intersection, uniq } from 'lodash';
 
 export default
-  data: ->
-    group: null
-    polls: []
-    loader: null
-    pollTypes: AppConfig.pollTypes
-    per: 25
-    dummyQuery: null
+{
+  data() {
+    return {
+      group: null,
+      polls: [],
+      loader: null,
+      pollTypes: AppConfig.pollTypes,
+      per: 25,
+      dummyQuery: null
+    };
+  },
 
-  created: ->
-    @group = Records.groups.find(@$route.params.key)
+  created() {
+    this.group = Records.groups.find(this.$route.params.key);
 
-    @initLoader()
+    this.initLoader();
 
-    @watchRecords
-      collections: ['polls', 'groups', 'stances']
-      query: => @findRecords()
+    this.watchRecords({
+      collections: ['polls', 'groups', 'stances'],
+      query: () => this.findRecords()
+    });
 
-    @loader.fetch(@page).then =>
-      EventBus.$emit 'currentComponent',
-        page: 'groupPage'
-        title: @group.name
-        group: @group
+    this.loader.fetch(this.page).then(() => {
+      EventBus.$emit('currentComponent', {
+        page: 'groupPage',
+        title: this.group.name,
+        group: this.group
+      });
+    });
+  },
 
-  methods:
-    openSearchModal: ->
-      initialOrgId = null
-      initialGroupId = null
-      
-      if @group.isParent()
-        initialOrgId = @group.id
-      else
-        initialOrgId = @group.parentId
-        initialGroupId = @group.id
+  methods: {
+    openSearchModal() {
+      let initialOrgId = null;
+      let initialGroupId = null;
+    
+      if (this.group.isParent()) {
+        initialOrgId = this.group.id;
+      } else {
+        initialOrgId = this.group.parentId;
+        initialGroupId = this.group.id;
+      }
 
-      EventBus.$emit 'openModal',
-        component: 'SearchModal'
-        persistent: false
-        maxWidth: 900
-        props:
-          initialType: 'Poll'
-          initialOrgId: initialOrgId
-          initialGroupId: initialGroupId  
-          initialQuery: @dummyQuery
+      EventBus.$emit('openModal', {
+        component: 'SearchModal',
+        persistent: false,
+        maxWidth: 900,
+        props: {
+          initialType: 'Poll',
+          initialOrgId,
+          initialGroupId,  
+          initialQuery: this.dummyQuery
+        }
+      });
+    },
 
-    initLoader: ->
-      @loader = new PageLoader
-        path: 'polls'
-        order: 'createdAt'
-        params:
-          exclude_types: 'group'
-          group_key: @$route.params.key
-          status: @$route.query.status
-          poll_type: @$route.query.poll_type
-          subgroups: @$route.query.subgroups
-          per: @per
+    initLoader() {
+      this.loader = new PageLoader({
+        path: 'polls',
+        order: 'createdAt',
+        params: {
+          exclude_types: 'group',
+          group_key: this.$route.params.key,
+          status: this.$route.query.status,
+          poll_type: this.$route.query.poll_type,
+          subgroups: this.$route.query.subgroups,
+          per: this.per
+        }
+      });
+    },
 
-    findRecords: ->
-      groupIds = switch (@$route.query.subgroups || 'mine')
-        when 'all' then @group.organisationIds()
-        when 'none' then [@group.id]
-        when 'mine' then uniq([@group.id].concat(intersection(@group.organisationIds(), Session.user().groupIds())))
+    findRecords() {
+      const groupIds = (() => { switch (this.$route.query.subgroups || 'mine') {
+        case 'all': return this.group.organisationIds();
+        case 'none': return [this.group.id];
+        case 'mine': return uniq([this.group.id].concat(intersection(this.group.organisationIds(), Session.user().groupIds())));
+      } })();
 
-      chain = Records.polls.collection.chain()
-      chain = chain.find(groupId: {$in: groupIds})
-      chain = chain.find(discardedAt: null)
+      let chain = Records.polls.collection.chain();
+      chain = chain.find({groupId: {$in: groupIds}});
+      chain = chain.find({discardedAt: null});
 
-      switch @$route.query.status
-        when 'active'
-          chain = chain.find({'closedAt': null})
-        when 'closed'
-          chain = chain.find({'closedAt': {$ne: null}})
-        when 'vote'
-          chain = chain.find({'closedAt': null}).where((p) -> p.iCanVote() && !p.iHaveVoted())
+      switch (this.$route.query.status) {
+        case 'active':
+          chain = chain.find({'closedAt': null});
+          break;
+        case 'closed':
+          chain = chain.find({'closedAt': {$ne: null}});
+          break;
+        case 'vote':
+          chain = chain.find({'closedAt': null}).where(p => p.iCanVote() && !p.iHaveVoted());
+          break;
+      }
 
-      if @$route.query.poll_type
-        chain = chain.find({'pollType': @$route.query.poll_type})
+      if (this.$route.query.poll_type) {
+        chain = chain.find({'pollType': this.$route.query.poll_type});
+      }
 
-      if @loader.pageWindow[@page]
-        if @page == 1
-          chain = chain.find(createdAt: {$gte: @loader.pageWindow[@page][0]})
-        else
-          chain = chain.find(createdAt: {$jbetween: @loader.pageWindow[@page]})
-        @polls = chain.simplesort('createdAt', true).data()
-      else
-        @polls = []
+      if (this.loader.pageWindow[this.page]) {
+        if (this.page === 1) {
+          chain = chain.find({createdAt: {$gte: this.loader.pageWindow[this.page][0]}});
+        } else {
+          chain = chain.find({createdAt: {$jbetween: this.loader.pageWindow[this.page]}});
+        }
+        this.polls = chain.simplesort('createdAt', true).data();
+      } else {
+        this.polls = [];
+      }
+    }
+  },
 
-  watch:
-    '$route.query.status': ->
-      @initLoader().fetch(@page)
-    '$route.query.poll_type': ->
-      @initLoader().fetch(@page)
-    '$route.query.subgroups': ->
-      @initLoader().fetch(@page)
-    '$route.query.page': ->
-      @loader.fetch(@page)
+  watch: {
+    '$route.query.status'() {
+      this.initLoader().fetch(this.page);
+    },
+    '$route.query.poll_type'() {
+      this.initLoader().fetch(this.page);
+    },
+    '$route.query.subgroups'() {
+      this.initLoader().fetch(this.page);
+    },
+    '$route.query.page'() {
+      this.loader.fetch(this.page);
+    }
+  },
 
-  computed:
-    totalPages: ->
-      Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
-    canStartPoll: -> AbilityService.canStartPoll(@group)
-    page:
-      get: -> parseInt(@$route.query.page) || 1
-      set: (val) ->
-        @$router.replace({query: Object.assign({}, @$route.query, {page: val})}) 
+  computed: {
+    totalPages() {
+      return Math.ceil(parseFloat(this.loader.total) / parseFloat(this.per));
+    },
+    canStartPoll() { return AbilityService.canStartPoll(this.group); },
+    page: {
+      get() { return parseInt(this.$route.query.page) || 1; },
+      set(val) {
+        return this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})});
+      }
+    }
+  }
+};
 </script>
 
 <template lang="pug">
