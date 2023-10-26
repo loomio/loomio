@@ -44,7 +44,7 @@ export default
       @$route.path == '/try'
 
     startTrial: ->
-      @$route.path == '/g/new'
+      AppConfig.features.app.trials && @$route.path == '/g/new'
 
 </script>
 <template lang="pug">
