@@ -1,21 +1,26 @@
-import Vue from 'vue'
-import RestfulClient from '@/shared/record_store/restful_client'
-import AppConfig from '@/shared/services/app_config'
-import Records from '@/shared/services/records'
-import i18n from '@/i18n.coffee'
-import * as Sentry from '@sentry/vue'
-import { forEach, snakeCase } from 'lodash'
-import router from '@/routes.coffee'
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
+ */
+import Vue from 'vue';
+import RestfulClient from '@/shared/record_store/restful_client';
+import AppConfig from '@/shared/services/app_config';
+import Records from '@/shared/services/records';
+import i18n from '@/i18n.coffee';
+import * as Sentry from '@sentry/vue';
+import { forEach, snakeCase } from 'lodash';
+import router from '@/routes.coffee';
 
-export default (callback) ->
-  client = new RestfulClient('boot')
-  client.get('site').then (appConfig) ->
-    appConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
-    forEach appConfig, (v, k) -> Vue.set(AppConfig, k, v)
+export default (function(callback) {
+  const client = new RestfulClient('boot');
+  return client.get('site').then(function(appConfig) {
+    appConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    forEach(appConfig, (v, k) => Vue.set(AppConfig, k, v));
 
-    if AppConfig.sentry_dsn
-      Sentry.init(
-        Vue: Vue,
+    if (AppConfig.sentry_dsn) {
+      Sentry.init({
+        Vue,
         ignoreErrors: [
           "Avoided redundant navigation to current location",
           "NotFoundError: Node.removeChild",
@@ -48,19 +53,26 @@ export default (callback) ->
         ],
         tracesSampleRate: AppConfig.features.app.sentry_sample_rate,
         tracePropagationTargets: ["localhost", AppConfig.baseUrl, /^\//],
-      )
-      Sentry.configureScope (scope) ->
-        scope.setTag("loomio_version", AppConfig.version)
+      });
+      Sentry.configureScope(scope => scope.setTag("loomio_version", AppConfig.version));
+    }
 
-    ['shortcut icon'].forEach (name) ->
-      link = document.createElement('link')
-      link.rel = name
-      link.href = AppConfig.theme.icon_src
-      document.getElementsByTagName('head')[0].appendChild(link)
+    ['shortcut icon'].forEach(function(name) {
+      const link = document.createElement('link');
+      link.rel = name;
+      link.href = AppConfig.theme.icon_src;
+      return document.getElementsByTagName('head')[0].appendChild(link);
+    });
 
-    forEach Records, (recordInterface, k) ->
-      model = Object.getPrototypeOf(recordInterface).model
-      if model && AppConfig.permittedParams[snakeCase(model.singular)]
-        model.serializableAttributes = AppConfig.permittedParams[snakeCase(model.singular)]
+    forEach(Records, function(recordInterface, k) {
+      const {
+        model
+      } = Object.getPrototypeOf(recordInterface);
+      if (model && AppConfig.permittedParams[snakeCase(model.singular)]) {
+        return model.serializableAttributes = AppConfig.permittedParams[snakeCase(model.singular)];
+      }
+  });
 
-    callback(appConfig)
+    return callback(appConfig);
+  });
+});
