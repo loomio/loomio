@@ -1,10 +1,3 @@
-// TODO: This file was created by bulk-decaffeinate.
-// Sanity-check the conversion and remove this comment.
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import {sortBy, isString, filter, uniq, map, debounce} from 'lodash';
 import Records from '@/shared/services/records';
 import getCaretCoordinates from 'textarea-caret';
@@ -22,7 +15,7 @@ export var CommonMentioning = {
   },
 
   mounted() {
-    return this.fetchMentionable = debounce(function() {
+    this.fetchMentionable = debounce(function() {
       if (!this.query) { return; }
       this.fetchingMentions = true;
       return Records.users.fetchMentionable(this.query, this.model).then(response => {
@@ -43,7 +36,7 @@ export var CommonMentioning = {
         (u.username || '').toLowerCase().startsWith(this.query) ||
         (u.name || '').toLowerCase().includes(` ${this.query}`));
       });
-      return this.mentionable = sortBy(unsorted, u => 0 - Records.events.find({actorId: u.id}).length);
+      this.mentionable = sortBy(unsorted, u => 0 - Records.events.find({actorId: u.id}).length);
     }
   }
 };
@@ -89,7 +82,7 @@ export var MdMentioning = {
         if (user = this.mentionable[this.navigatedUserIndex]) {
           this.selectUser(user);
           this.query = '';
-          return event.preventDefault();
+          event.preventDefault();
         }
       }
     },
@@ -101,13 +94,13 @@ export var MdMentioning = {
       this.model[this.field] = beforeText + user.username + ' ' + afterText;
       this.textarea().selectionEnd = (beforeText + user.username).length + 1;
       this.textarea().focus;
-      return this.query = '';
+      this.query = '';
     },
 
     updatePopup() {
       if (!this.$refs.field) { return; }
       const coords = getCaretCoordinates(this.textarea(), this.textarea().selectionStart - this.query.length);
-      return this.suggestionListStyles = {
+      this.suggestionListStyles = {
         position: 'absolute',
         top: ((coords.top - this.textarea().scrollTop) + coords.height + 16) + 'px',
         left: coords.left + 'px'
@@ -122,21 +115,21 @@ export var HtmlMentioning = {
   },
 
   created() {
-    return this.insertMention = () => ({});
+    this.insertMention = () => ({});
   },
 
   methods: {
     upHandler() {
-      return this.navigatedUserIndex = ((this.navigatedUserIndex + this.mentionable.length) - 1) % this.mentionable.length;
+      this.navigatedUserIndex = ((this.navigatedUserIndex + this.mentionable.length) - 1) % this.mentionable.length;
     },
 
     downHandler() {
-      return this.navigatedUserIndex = (this.navigatedUserIndex + 1) % this.mentionable.length;
+      this.navigatedUserIndex = (this.navigatedUserIndex + 1) % this.mentionable.length;
     },
 
     enterHandler() {
       const user = this.mentionable[this.navigatedUserIndex];
-      if (user) { return this.selectUser(user); }
+      if (user) { this.selectUser(user); }
     },
 
     selectUser(user) {
@@ -146,13 +139,13 @@ export var HtmlMentioning = {
         id: user.username,
         label: user.name
       });
-      return this.editor.chain().focus();
+      this.editor.chain().focus();
     },
 
     updatePopup(coords) {
       // return unless node
       // coords = node.getBoundingClientRect()
-      return this.suggestionListStyles = {
+      this.suggestionListStyles = {
         position: 'fixed',
         top: coords.y + 24 + 'px',
         left: coords.x + 'px'
@@ -176,7 +169,7 @@ export var MentionPluginConfig = function() {
             this.insertMention = props.command;
             this.updatePopup(props.clientRect());
             this.fetchMentionable();
-            return this.findMentionable();
+            this.findMentionable();
           },
 
           // is called when a suggestion has changed
@@ -187,14 +180,14 @@ export var MentionPluginConfig = function() {
             this.navigatedUserIndex = 0;
             this.updatePopup(props.clientRect());
             this.fetchMentionable();
-            return this.findMentionable();
+            this.findMentionable();
           },
 
           // is called when a suggestion is cancelled
           onExit: props => {
             this.query = null;
             this.suggestionRange = null;
-            return this.navigatedUserIndex = 0;
+            this.navigatedUserIndex = 0;
           },
 
           // is called on every keyDown event while a suggestion is active

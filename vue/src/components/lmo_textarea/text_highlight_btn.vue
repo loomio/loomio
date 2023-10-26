@@ -1,26 +1,35 @@
-<script lang="coffee">
-import colors from 'vuetify/lib/util/colors'
-import {map, compact, pick, keys} from 'lodash'
+<script lang="js">
+import colors from 'vuetify/lib/util/colors';
+import {map, compact, pick, keys} from 'lodash';
 
 export default
-  props:
+{
+  props: {
     editor: Object
+  },
 
-  data: ->
-    colors: pick(colors, "red pink purple blue green yellow orange brown grey".split(" "))
+  data() {
+    return {colors: pick(colors, "red pink purple blue green yellow orange brown grey".split(" "))};
+  },
 
-  computed:
-    activeColorKey: ->
-      return null unless @editor.isActive('highlight')
-      keys(@colors).find (name) => @editor.isActive('highlight', {color: name})
+  computed: {
+    activeColorKey() {
+      if (!this.editor.isActive('highlight')) { return null; }
+      return keys(this.colors).find(name => this.editor.isActive('highlight', {color: name}));
+    },
 
-    buttonBgColor: ->
-      (@colors[@activeColorKey] || {lighten1: null}).lighten2
-    buttonFgColor: ->
-      if @buttonBgColor
-        '#000'
-      else
-        undefined
+    buttonBgColor() {
+      return (this.colors[this.activeColorKey] || {lighten1: null}).lighten2;
+    },
+    buttonFgColor() {
+      if (this.buttonBgColor) {
+        return '#000';
+      } else {
+        return undefined;
+      }
+    }
+  }
+};
 </script>
 
 <template lang="pug">

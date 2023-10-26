@@ -1,45 +1,57 @@
-<script lang="coffee">
-import PollService    from '@/shared/services/poll_service'
-import AbilityService from '@/shared/services/ability_service'
-import EventBus       from '@/shared/services/event_bus'
-import EventService from '@/shared/services/event_service'
-import { pick, pickBy, assign } from 'lodash'
+<script lang="js">
+import PollService    from '@/shared/services/poll_service';
+import AbilityService from '@/shared/services/ability_service';
+import EventBus       from '@/shared/services/event_bus';
+import EventService from '@/shared/services/event_service';
+import { pick, pickBy, assign } from 'lodash';
 
-export default
-  props:
-    event: Object
-    collapsed: Boolean
+export default {
+  props: {
+    event: Object,
+    collapsed: Boolean,
     eventable: Object
+  },
 
-  created: ->
-    EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
-    @watchRecords
-      collections: ["stances", "polls"]
-      query: (records) =>
-        @pollActions = PollService.actions(@poll, @, @event)
-        @eventActions = EventService.actions(@event, @)
-        @myStance = @poll.myStance()
+  created() {
+    EventBus.$on('stanceSaved', () => EventBus.$emit('refreshStance'));
+    this.watchRecords({
+      collections: ["stances", "polls"],
+      query: records => {
+        this.pollActions = PollService.actions(this.poll, this, this.event);
+        this.eventActions = EventService.actions(this.event, this);
+        this.myStance = this.poll.myStance();
+      }
+    });
+  },
 
-  beforeDestroy: ->
-    EventBus.$off 'stanceSaved'
+  beforeDestroy() {
+    EventBus.$off('stanceSaved');
+  },
 
-  data: ->
-    buttonPressed: false
-    myStance: null
-    pollActions: null
-    eventActions: null
+  data() {
+    return {
+      buttonPressed: false,
+      myStance: null,
+      pollActions: null,
+      eventActions: null
+    };
+  },
 
-  computed:
-    poll: -> @eventable
+  computed: {
+    poll() { return this.eventable; },
 
-    menuActions: ->
-      assign(
-        pickBy @pollActions, (v) -> v.menu
+    menuActions() {
+      return assign(
+        pickBy(this.pollActions, v => v.menu)
       ,
-        pickBy @eventActions, (v) -> v.menu
-      )
-    dockActions: ->
-      pickBy @pollActions, (v) -> v.dock
+        pickBy(this.eventActions, v => v.menu)
+      );
+    },
+    dockActions() {
+      return pickBy(this.pollActions, v => v.dock);
+    }
+  }
+};
 
 </script>
 

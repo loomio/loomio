@@ -1,62 +1,85 @@
-<script lang="coffee">
-import svg from 'svg.js'
-import AppConfig from '@/shared/services/app_config'
-import { sum, values, compact, keys, each } from 'lodash'
+<script lang="js">
+import svg from 'svg.js';
+import AppConfig from '@/shared/services/app_config';
+import { sum, values, compact, keys, each } from 'lodash';
 
 export default
-  props:
-    slices: Array
+{
+  props: {
+    slices: Array,
     size: Number
+  },
 
-  data: ->
-    svgEl: null
-    shapes: []
+  data() {
+    return {
+      svgEl: null,
+      shapes: []
+    };
+  },
 
-  computed:
-    radius: ->
-      @size / 2.0
+  computed: {
+    radius() {
+      return this.size / 2.0;
+    }
+  },
 
-  methods:
-    arcPath: (startAngle, endAngle) ->
-      rad = Math.PI / 180
-      x1 = @radius + (@radius * Math.cos(-startAngle * rad))
-      x2 = @radius + (@radius * Math.cos(-endAngle * rad))
-      y1 = @radius + (@radius * Math.sin(-startAngle * rad))
-      y2 = @radius + (@radius * Math.sin(-endAngle * rad))
-      ["M", @radius, @radius, "L", x1, y1, "A", @radius, @radius, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"].join(' ')
+  methods: {
+    arcPath(startAngle, endAngle) {
+      const rad = Math.PI / 180;
+      const x1 = this.radius + (this.radius * Math.cos(-startAngle * rad));
+      const x2 = this.radius + (this.radius * Math.cos(-endAngle * rad));
+      const y1 = this.radius + (this.radius * Math.sin(-startAngle * rad));
+      const y2 = this.radius + (this.radius * Math.sin(-endAngle * rad));
+      return ["M", this.radius, this.radius, "L", x1, y1, "A", this.radius, this.radius, 0, +((endAngle - startAngle) > 180), 0, x2, y2, "z"].join(' ');
+    },
 
-    draw: ->
-      @shapes.forEach (shape) -> shape.remove()
-      start = 90
+    draw() {
+      this.shapes.forEach(shape => shape.remove());
+      let start = 90;
 
-      switch @slices.length
-        when 0
-          @shapes.push @svgEl.circle(@size).attr
-            'stroke-width': 0
+      switch (this.slices.length) {
+        case 0:
+          return this.shapes.push(this.svgEl.circle(this.size).attr({
+            'stroke-width': 0,
             fill: '#BBBBBB'
-        when 1
-          each @slices, (option) =>
-            @shapes.push @svgEl.circle(@size).attr
-              'stroke-width': 0
+          })
+          );
+        case 1:
+          return each(this.slices, option => {
+            return this.shapes.push(this.svgEl.circle(this.size).attr({
+              'stroke-width': 0,
               fill: option.color
-        else
-          each @slices, (option) =>
-            angle = 360 * option.value / 100
-            @shapes.push @svgEl.path(@arcPath(start, start + angle)).attr
-              'stroke-width': 0
+            })
+            );
+          });
+        default:
+          return each(this.slices, option => {
+            const angle = (360 * option.value) / 100;
+            this.shapes.push(this.svgEl.path(this.arcPath(start, start + angle)).attr({
+              'stroke-width': 0,
               fill: option.color
-            start += angle
+            })
+            );
+            return start += angle;
+          });
+      }
+    }
+  },
 
-  watch:
-    'slices': -> @draw()
+  watch: {
+    'slices'() { this.draw(); }
+  },
 
-  mounted: ->
-    @svgEl = svg(@$el).size('100%', '100%')
-    @draw()
+  mounted() {
+    this.svgEl = svg(this.$el).size('100%', '100%');
+    this.draw();
+  },
 
-  beforeDestroy: ->
-    @svgEl.clear()
-    delete @shapes
+  beforeDestroy() {
+    this.svgEl.clear();
+    delete this.shapes;
+  }
+};
 </script>
 
 <template lang="pug">

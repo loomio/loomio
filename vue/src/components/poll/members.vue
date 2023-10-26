@@ -1,136 +1,159 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import Flash from '@/shared/services/flash'
-import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import StanceService from '@/shared/services/stance_service'
-import {map, debounce, without, filter, uniq, uniqBy, some, find, compact} from 'lodash'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import Flash from '@/shared/services/flash';
+import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
+import StanceService from '@/shared/services/stance_service';
+import {map, debounce, without, filter, uniq, uniqBy, some, find, compact} from 'lodash';
 
-export default
-  components:
-    RecipientsAutocomplete: RecipientsAutocomplete
+export default {
+  components: {
+    RecipientsAutocomplete
+  },
 
-  props:
+  props: {
     poll: Object
+  },
 
-  data: ->
-    users: []
-    userIds: []
-    isMember: {}
-    isMemberAdmin: {}
-    isStanceAdmin: {}
-    reset: false
-    saving: false
-    loading: false
-    initialRecipients: []
-    actionNames: []
-    service: StanceService
-    query: ''
-    message: ''
+  data() {
+    return {
+      users: [],
+      userIds: [],
+      isMember: {},
+      isMemberAdmin: {},
+      isStanceAdmin: {},
+      reset: false,
+      saving: false,
+      loading: false,
+      initialRecipients: [],
+      actionNames: [],
+      service: StanceService,
+      query: '',
+      message: ''
+    };
+  },
 
-  mounted: ->
-    @poll.notifyRecipients = true
-    @actionNames = ['makeAdmin', 'removeAdmin', 'revoke'] # 'resend'
+  mounted() {
+    this.poll.notifyRecipients = true;
+    this.actionNames = ['makeAdmin', 'removeAdmin', 'revoke']; // 'resend'
 
-    @fetchStances()
-    @updateStances()
+    this.fetchStances();
+    this.updateStances();
 
-    @watchRecords
-      collections: ['stances', 'memberships', 'users']
-      query: (records) => @updateStances()
+    this.watchRecords({
+      collections: ['stances', 'memberships', 'users'],
+      query: records => this.updateStances()
+    });
+  },
 
-  computed:
-    wipOrEmpty: -> if @poll.closingAt then '' else 'wip_'
-    someRecipients: ->
-      @poll.recipientAudience ||
-      @poll.recipientUserIds.length ||
-      @poll.recipientEmails.length ||
-      @poll.recipientChatbotIds.length
+  computed: {
+    wipOrEmpty() { if (this.poll.closingAt) { return ''; } else { return 'wip_'; } },
+    someRecipients() {
+      return this.poll.recipientAudience ||
+      this.poll.recipientUserIds.length ||
+      this.poll.recipientEmails.length ||
+      this.poll.recipientChatbotIds.length;
+    }
+  },
 
-  methods:
-    canPerform: (action, poll, user) ->
-      switch action
-        when 'makeAdmin'
-          poll.adminsInclude(Session.user()) && !@isStanceAdmin[user.id] && !@isMemberAdmin[user.id]
-        when 'removeAdmin'
-          poll.adminsInclude(Session.user()) && @isStanceAdmin[user.id]
-        when 'revoke'
-          poll.adminsInclude(Session.user())
+  methods: {
+    canPerform(action, poll, user) {
+      switch (action) {
+        case 'makeAdmin':
+          return poll.adminsInclude(Session.user()) && !this.isStanceAdmin[user.id] && !this.isMemberAdmin[user.id];
+        case 'removeAdmin':
+          return poll.adminsInclude(Session.user()) && this.isStanceAdmin[user.id];
+        case 'revoke':
+          return poll.adminsInclude(Session.user());
+      }
+    },
 
-    perform: (action, poll, user) ->
-      @userIds = []
-      @isMember = {}
-      @isMemberAdmin= {}
-      @isStanceAdmin= {}
-      @service[action].perform(poll, user).then =>
-        @fetchStances()
+    perform(action, poll, user) {
+      this.userIds = [];
+      this.isMember = {};
+      this.isMemberAdmin= {};
+      this.isStanceAdmin= {};
+      this.service[action].perform(poll, user).then(() => {
+        this.fetchStances();
+      });
+    },
 
-    inviteRecipients: ->
-      @saving = true
-      Records.remote.post 'announcements',
-        poll_id: @poll.id
-        recipient_audience: @poll.recipientAudience
-        recipient_user_ids: @poll.recipientUserIds
-        recipient_chatbot_ids: @poll.recipientChatbotIds
-        recipient_emails: @poll.recipientEmails
-        include_actor: true
-        recipient_message: @message
-        exclude_members: true
-        notify_recipients: @poll.notifyRecipients
-      .then (data) =>
-        count = data.stances.length
-        if @poll.notifyRecipients
-          Flash.success('announcement.flash.success', { count: count })
-        else
-          Flash.success('poll_common_form.count_voters_added', { count: count })
+    inviteRecipients() {
+      this.saving = true;
+      Records.remote.post('announcements', {
+        poll_id: this.poll.id,
+        recipient_audience: this.poll.recipientAudience,
+        recipient_user_ids: this.poll.recipientUserIds,
+        recipient_chatbot_ids: this.poll.recipientChatbotIds,
+        recipient_emails: this.poll.recipientEmails,
+        include_actor: true,
+        recipient_message: this.message,
+        exclude_members: true,
+        notify_recipients: this.poll.notifyRecipients
+      }).then(data => {
+        const count = data.stances.length;
+        if (this.poll.notifyRecipients) {
+          Flash.success('announcement.flash.success', { count });
+        } else {
+          Flash.success('poll_common_form.count_voters_added', { count });
+        }
 
-        @reset = !@reset
-      .finally =>
-        @saving = false
+        this.reset = !this.reset;
+      }).finally(() => {
+        this.saving = false;
+      });
+    },
 
-    toHash: (a) ->
-      h = {}
-      a.forEach (i) -> h[i] = true
-      h
+    toHash(a) {
+      const h = {};
+      a.forEach(i => h[i] = true);
+      return h;
+    },
 
-    newQuery: (query) ->
-      @query = query
-      @updateStances()
-      @fetchStances()
+    newQuery(query) {
+      this.query = query;
+      this.updateStances();
+      this.fetchStances();
+    },
 
-    fetchStances: debounce ->
-      @loading = true
-      Records.fetch
-        path: 'stances/users'
-        params:
-          exclude_types: 'poll group'
-          poll_id: @poll.id
-          query: @query
-      .then (data) =>
-        @isMember = @toHash(data['meta']['member_ids'])
-        @isMemberAdmin = @toHash(data['meta']['member_admin_ids'])
-        @isStanceAdmin = @toHash(data['meta']['stance_admin_ids'])
-        @userIds = uniq compact @userIds.concat(map data['users'], 'id')
-        @updateStances()
-      .finally =>
-        @loading = false
-    , 300
+    fetchStances: debounce(function() {
+      this.loading = true;
+      Records.fetch({
+        path: 'stances/users',
+        params: {
+          exclude_types: 'poll group',
+          poll_id: this.poll.id,
+          query: this.query
+      }}).then(data => {
+        this.isMember = this.toHash(data['meta']['member_ids']);
+        this.isMemberAdmin = this.toHash(data['meta']['member_admin_ids']);
+        this.isStanceAdmin = this.toHash(data['meta']['stance_admin_ids']);
+        this.userIds = uniq(compact(this.userIds.concat(map(data['users'], 'id'))));
+        this.updateStances();
+      }).finally(() => {
+        this.loading = false;
+      });
+    } , 300),
 
-    updateStances: ->
-      chain = Records.users.collection.chain()
-      chain = chain.find(id: {$in: @userIds})
+    updateStances() {
+      let chain = Records.users.collection.chain();
+      chain = chain.find({id: {$in: this.userIds}});
 
-      if @query
-        chain = chain.find
+      if (this.query) {
+        chain = chain.find({
           $or: [
-            {name: {'$regex': ["^#{@query}", "i"]}},
-            {email: {'$regex': ["#{@query}", "i"]}},
-            {username: {'$regex': ["^#{@query}", "i"]}},
-            {name: {'$regex': [" #{@query}", "i"]}}
-          ]
+            {name: {'$regex': [`^${this.query}`, "i"]}},
+            {email: {'$regex': [`${this.query}`, "i"]}},
+            {username: {'$regex': [`^${this.query}`, "i"]}},
+            {name: {'$regex': [` ${this.query}`, "i"]}}
+          ]});
+      }
 
-      @users = chain.data()
+      this.users = chain.data();
+    }
+  }
+};
 </script>
 
 <template lang="pug">

@@ -1,27 +1,34 @@
-<script lang="coffee">
-
+<script lang="js">
 export default
-  props:
+{
+  props: {
     editor: Object
+  },
 
-  methods:
-    isActive: (alignment) ->
-      @editor.isActive({ textAlign: alignment })
+  methods: {
+    isActive(alignment) {
+      return this.editor.isActive({ textAlign: alignment });
+    }
+  },
 
-  computed:
-    showOutline: ->
-      @editor.isActive({ textAlign: 'right' }) ||
-      @editor.isActive({ textAlign: 'center' })
+  computed: {
+    showOutline() {
+      return this.editor.isActive({ textAlign: 'right' }) || this.editor.isActive({ textAlign: 'center' });
+    },
 
-    current: ->
-      ['left', 'center', 'right'].find((v) => @isActive(v)) || "left"
+    current() {
+      return ['left', 'center', 'right'].find(v => this.isActive(v)) || "left";
+    },
 
-    alignments: ->
-      [
+    alignments() {
+      return [
         { label: 'formatting.left_align', value: 'left' },
         { label: 'formatting.center_align', value: 'center' },
         { label: 'formatting.right_align', value: 'right' },
-      ]
+      ];
+    }
+  }
+};
 
 </script>
 

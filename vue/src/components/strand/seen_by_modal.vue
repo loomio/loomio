@@ -1,21 +1,28 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import { orderBy } from 'lodash'
-export default
-  props:
+<script lang="js">
+import Records        from '@/shared/services/records';
+import { orderBy } from 'lodash';
+export default {
+  props: {
     discussion: Object
-  data: ->
-    historyData: []
-    historyLoading: false
-    historyError: false
-  created: ->
-    @historyLoading = true
-    Records.fetch(path: "discussions/#{@discussion.id}/history").then (data) =>
-      @historyLoading = false
-      @historyData = orderBy(data, ['last_read_at'], ['desc']) || []
-    , (err) =>
-      @historyLoading = false
-      @historyError = true
+  },
+  data() {
+    return {
+      historyData: [],
+      historyLoading: false,
+      historyError: false
+    };
+  },
+  created() {
+    this.historyLoading = true;
+    Records.fetch({path: `discussions/${this.discussion.id}/history`}).then(data => {
+      this.historyLoading = false;
+      this.historyData = orderBy(data, ['last_read_at'], ['desc']) || [];
+    } , err => {
+      this.historyLoading = false;
+      this.historyError = true;
+    });
+  }
+};
 </script>
 <template lang="pug">
 v-card

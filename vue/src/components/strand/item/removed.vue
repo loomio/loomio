@@ -1,17 +1,22 @@
-<script lang="coffee">
-import CommentService from '@/shared/services/comment_service'
-import { pick } from 'lodash'
-export default
-  props:
-    event: Object
+<script lang="js">
+import CommentService from '@/shared/services/comment_service';
+import { pick } from 'lodash';
+export default {
+  props: {
+    event: Object,
     eventable: Object
+  },
 
-  computed:
-    menuActions: ->
-      if @event.kind == 'new_comment'
-        pick(CommentService.actions(@eventable, @), 'undiscard_comment', 'delete_comment')
-      else
-        {}
+  computed: {
+    menuActions() {
+      if (this.event.kind === 'new_comment') {
+        return pick(CommentService.actions(this.eventable, this), 'undiscard_comment', 'delete_comment');
+      } else {
+        return {};
+      }
+    }
+  }
+};
 </script>
 
 <template lang="pug">

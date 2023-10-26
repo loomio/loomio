@@ -1,21 +1,28 @@
-<script lang="coffee">
-import OutcomeService from '@/shared/services/outcome_service'
-import parseISO from 'date-fns/parseISO'
-import { pickBy } from 'lodash'
-export default
-  props:
+<script lang="js">
+import OutcomeService from '@/shared/services/outcome_service';
+import parseISO from 'date-fns/parseISO';
+import { pickBy } from 'lodash';
+export default {
+  props: {
     outcome: Object
-  methods:
-    parseISO: parseISO
+  },
+  methods: {
+    parseISO
+  },
 
-  data: ->
-    actions: OutcomeService.actions(@outcome, @)
+  data() {
+    return {actions: OutcomeService.actions(this.outcome, this)};
+  },
 
-  computed:
-    menuActions: ->
-      pickBy OutcomeService.actions(@outcome, @), (v, k) -> v.menu
-    dockActions: ->
-      pickBy OutcomeService.actions(@outcome, @), (v, k) -> v.dock > 0
+  computed: {
+    menuActions() {
+      return pickBy(OutcomeService.actions(this.outcome, this), (v, k) => v.menu);
+    },
+    dockActions() {
+      return pickBy(OutcomeService.actions(this.outcome, this), (v, k) => v.dock > 0);
+    }
+  }
+};
 
 </script>
 

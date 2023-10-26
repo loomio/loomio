@@ -1,8 +1,10 @@
-<script lang="coffee">
-export default
-  props:
-    label: Object
+<script lang="js">
+export default {
+  props: {
+    label: Object,
     loading: Boolean
+  }
+};
 </script>
 
 <template lang="pug">

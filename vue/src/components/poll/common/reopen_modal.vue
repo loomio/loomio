@@ -1,25 +1,31 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import Flash   from '@/shared/services/flash'
-import { addDays } from 'date-fns'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Flash   from '@/shared/services/flash';
+import { addDays } from 'date-fns';
 
-export default
-  props:
-    poll: Object
+export default {
+  props: {
+    poll: Object,
     close: Function
+  },
 
-  created: ->
-    @poll.closingAt = addDays(new Date, 7)
+  created() {
+    this.poll.closingAt = addDays(new Date, 7);
+  },
 
-  methods:
-    submit: ->
-      @poll.reopen()
-      .then =>
-        @poll.processing = false
-        Flash.success("poll_common_reopen_form.success", {poll_type: @poll.translatedPollType()})
-        @close()
-  data: ->
-    isDisabled: false
+  methods: {
+    submit() {
+      this.poll.reopen().then(() => {
+        this.poll.processing = false;
+        Flash.success("poll_common_reopen_form.success", {poll_type: this.poll.translatedPollType()});
+        this.close();
+      });
+    }
+  },
+  data() {
+    return {isDisabled: false};
+  }
+}
 </script>
 
 <template lang="pug">

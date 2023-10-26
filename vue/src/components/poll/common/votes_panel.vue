@@ -1,73 +1,92 @@
-<script lang="coffee">
-import PageLoader         from '@/shared/services/page_loader'
-import Records from '@/shared/services/records'
-import EventBus     from '@/shared/services/event_bus'
-import { parseISO } from 'date-fns'
-import { debounce } from 'lodash'
-import I18n from '@/i18n'
+<script lang="js">
+import PageLoader         from '@/shared/services/page_loader';
+import Records from '@/shared/services/records';
+import EventBus     from '@/shared/services/event_bus';
+import { parseISO } from 'date-fns';
+import { debounce } from 'lodash';
+import I18n from '@/i18n';
 
-export default
-  props:
+export default {
+  props: {
     poll: Object
+  },
 
-  data: ->
-    stances: []
-    per: 25
-    loader: null
-    pollOptionItems: [{text: I18n.t('discussions_panel.all'), value: null}].concat(@poll.pollOptions().map (o, i) => 
-      {text: o.optionName(), value: o.id})
-    page: parseInt(@$route.query.page) || 1 
-    pollOptionId: parseInt(@$route.query.poll_option_id) || null
-    name: @$route.query.name
+  data() {
+    return {
+      stances: [],
+      per: 25,
+      loader: null,
+      pollOptionItems: [{text: I18n.t('discussions_panel.all'), value: null}].concat(this.poll.pollOptions().map((o, i) => { 
+        return {text: o.optionName(), value: o.id};
+      })),
+      page: parseInt(this.$route.query.page) || 1, 
+      pollOptionId: parseInt(this.$route.query.poll_option_id) || null,
+      name: this.$route.query.name
+    };
+  },
 
-  created: ->
-    @fetchNow()
+  created() {
+    this.fetchNow();
+  },
 
-  computed:
-    totalPages: ->
-      Math.ceil(parseFloat(@loader.total) / parseFloat(@per))
+  computed: {
+    totalPages() {
+      return Math.ceil(parseFloat(this.loader.total) / parseFloat(this.per));
+    }
+  },
 
-  watch:
-    page: (val, lastVal) ->
-      return if val == lastVal
-      @$router.replace({query: Object.assign({}, @$route.query, {page: val})}) 
-      @fetch()
+  watch: {
+    page(val, lastVal) {
+      if (val === lastVal) { return; }
+      this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})}); 
+      this.fetch();
+    },
 
-    pollOptionId: (val, lastVal) ->
-      return if val == lastVal
-      @page = 1
-      @name = null
-      @$router.replace({query: Object.assign({}, @$route.query, {poll_option_id: val, name: null})}) 
-      @fetch()
+    pollOptionId(val, lastVal) {
+      if (val === lastVal) { return; }
+      this.page = 1;
+      this.name = null;
+      this.$router.replace({query: Object.assign({}, this.$route.query, {poll_option_id: val, name: null})}); 
+      this.fetch();
+    }
+  },
 
-  methods:
-    nameChanged: ->
-      @$router.replace({query: Object.assign({}, @$route.query, {name: @name})}) 
-      @fetch()
+  methods: {
+    nameChanged() {
+      this.$router.replace({query: Object.assign({}, this.$route.query, {name: this.name})}); 
+      this.fetch();
+    },
 
-    fetch: debounce ->
-      @fetchNow()
-    , 50
+    fetch: debounce(function() {
+      this.fetchNow();
+    } , 50),
 
-    fetchNow: ->
-      @loader = new PageLoader
-        path: 'stances'
-        order: 'orderAt'
-        params:
-          per: @per
-          poll_id: @poll.id
-          poll_option_id: @pollOptionId
-          name: @name
-      @loader.fetch(@page).then(=> @findRecords()).then => @scrollTo('#votes')
+    fetchNow() {
+      this.loader = new PageLoader({
+        path: 'stances',
+        order: 'orderAt',
+        params: {
+          per: this.per,
+          poll_id: this.poll.id,
+          poll_option_id: this.pollOptionId,
+          name: this.name
+        }
+      });
+      this.loader.fetch(this.page).then(() => this.findRecords()).then(() => this.scrollTo('#votes'));
+    },
 
 
-    findRecords: ->
-      if @loader.pageWindow[@page]
-        chain = Records.stances.collection.chain().find(id: {$in: @loader.pageIds[@page]})
-        chain = chain.simplesort('orderAt', true)
-        @stances = chain.data()
-      else
-        @stances = []
+    findRecords() {
+      if (this.loader.pageWindow[this.page]) {
+        let chain = Records.stances.collection.chain().find({id: {$in: this.loader.pageIds[this.page]}});
+        chain = chain.simplesort('orderAt', true);
+        this.stances = chain.data();
+      } else {
+        this.stances = [];
+      }
+    }
+  }
+};
 
 </script>
 

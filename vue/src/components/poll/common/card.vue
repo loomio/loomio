@@ -1,44 +1,58 @@
-<script lang="coffee">
-import Session  from '@/shared/services/session'
-import Records  from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import PollCommonDirective from '@/components/poll/common/directive'
-import PollTemplateBanner from '@/components/poll/template_banner'
-import PollService from '@/shared/services/poll_service'
-import { pickBy } from 'lodash'
+<script lang="js">
+import Session  from '@/shared/services/session';
+import Records  from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import PollCommonDirective from '@/components/poll/common/directive';
+import PollTemplateBanner from '@/components/poll/template_banner';
+import PollService from '@/shared/services/poll_service';
+import { pickBy } from 'lodash';
 
 export default
-  components: { PollCommonDirective, PollTemplateBanner}
+{
+  components: { PollCommonDirective, PollTemplateBanner},
 
-  props:
-    poll: Object
+  props: {
+    poll: Object,
     isPage: Boolean
+  },
 
-  created: ->
-    EventBus.$on 'stanceSaved', => EventBus.$emit 'refreshStance'
-    @watchRecords
-      collections: ["stances", "outcomes"]
-      query: (records) =>
-        @actions = PollService.actions(@poll)
-        @myStance = @poll.myStance() || Records.stances.build()
-        @outcome = @poll.outcome()
+  created() {
+    EventBus.$on('stanceSaved', () => EventBus.$emit('refreshStance'));
+    this.watchRecords({
+      collections: ["stances", "outcomes"],
+      query: records => {
+        this.actions = PollService.actions(this.poll);
+        this.myStance = this.poll.myStance() || Records.stances.build();
+        return this.outcome = this.poll.outcome();
+      }
+    });
+  },
 
-  data: ->
-    actions: {}
-    buttonPressed: false
-    myStance: null
-    outcome: @poll.outcome()
+  data() {
+    return {
+      actions: {},
+      buttonPressed: false,
+      myStance: null,
+      outcome: this.poll.outcome()
+    };
+  },
 
-  methods:
-    titleVisible: (visible) ->
-      EventBus.$emit('content-title-visible', visible) if @isPage
+  methods: {
+    titleVisible(visible) {
+      if (this.isPage) { EventBus.$emit('content-title-visible', visible); }
+    }
+  },
 
-  computed:
-    menuActions: ->
-      pickBy @actions, (v) -> v.menu
+  computed: {
+    menuActions() {
+      return pickBy(this.actions, v => v.menu);
+    },
 
-    dockActions: ->
-      pickBy @actions, (v) -> v.dock
+    dockActions() {
+      return pickBy(this.actions, v => v.dock);
+    }
+  }
+};
 
 
 </script>

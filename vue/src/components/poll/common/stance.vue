@@ -1,17 +1,22 @@
-<script lang="coffee">
-import Session from '@/shared/services/session'
-import { orderBy } from 'lodash'
+<script lang="js">
+import Session from '@/shared/services/session';
+import { orderBy } from 'lodash';
 
-export default
-  components:
-    PollCommonDirective: -> import('@/components/poll/common/directive')
+export default {
+  components: {
+    PollCommonDirective() { return import('@/components/poll/common/directive'); }
+  },
 
-  props:
+  props: {
     stance: Object
+  },
 
-  computed:
-    canEdit: ->
-      @stance.latest && @stance.participant() == Session.user()
+  computed: {
+    canEdit() {
+      return this.stance.latest && (this.stance.participant() === Session.user());
+    }
+  }
+};
 
 </script>
 

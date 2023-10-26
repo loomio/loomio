@@ -1,25 +1,31 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
 
-export default
-  props:
+export default {
+  props: {
     stance: Object
+  },
 
-  computed:
-    poll: -> @stance.poll()
-    variableScore: -> @poll.hasVariableScore()
-    pollType: -> @poll.pollType
-    datesAsOptions: -> @poll.datesAsOptions()
-    choices: -> @stance.sortedChoices()
+  computed: {
+    poll() { return this.stance.poll(); },
+    variableScore() { return this.poll.hasVariableScore(); },
+    pollType() { return this.poll.pollType; },
+    datesAsOptions() { return this.poll.datesAsOptions(); },
+    choices() { return this.stance.sortedChoices(); }
+  },
 
-  methods:
-    emitClick: -> @$emit('click')
+  methods: {
+    emitClick() { this.$emit('click'); },
 
-    colorFor: (score) ->
-      switch score
-        when 2 then AppConfig.pollColors.proposal[0]
-        when 1 then AppConfig.pollColors.proposal[1]
-        when 0 then AppConfig.pollColors.proposal[2]
+    colorFor(score) {
+      switch (score) {
+        case 2: return AppConfig.pollColors.proposal[0];
+        case 1: return AppConfig.pollColors.proposal[1];
+        case 0: return AppConfig.pollColors.proposal[2];
+      }
+    }
+  }
+};
 
 </script>
 

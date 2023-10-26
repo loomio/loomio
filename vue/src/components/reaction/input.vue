@@ -1,28 +1,36 @@
-<script lang="coffee">
-import { capitalize } from 'lodash'
-import Session from '@/shared/services/session'
-import Records from '@/shared/services/records'
+<script lang="js">
+import { capitalize } from 'lodash';
+import Session from '@/shared/services/session';
+import Records from '@/shared/services/records';
 
-export default
-  props:
-    model: Object
+export default {
+  props: {
+    model: Object,
     small: Boolean
+  },
 
-  data: ->
-    search: null
-    closeEmojiMenu: false
+  data() {
+    return {
+      search: null,
+      closeEmojiMenu: false
+    };
+  },
 
-  methods:
-    insert: (emoji) ->
-      params =
-        reactableType: capitalize(@model.constructor.singular)
-        reactableId: @model.id
+  methods: {
+    insert(emoji) {
+      const params = {
+        reactableType: capitalize(this.model.constructor.singular),
+        reactableId: this.model.id,
         userId: Session.user().id
+      };
 
-      reaction = Records.reactions.find(params)[0] || Records.reactions.build(params)
-      reaction.reaction = ":#{emoji}:"
-      reaction.save()
-      @closeEmojiMenu = true
+      const reaction = Records.reactions.find(params)[0] || Records.reactions.build(params);
+      reaction.reaction = `:${emoji}:`;
+      reaction.save();
+      this.closeEmojiMenu = true;
+    }
+  }
+};
 
 </script>
 

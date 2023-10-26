@@ -1,71 +1,95 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import Session from '@/shared/services/session'
-import Flash  from '@/shared/services/flash'
-import PollCommonForm from '@/components/poll/common/form'
-import PollCommonChooseTemplate from '@/components/poll/common/choose_template'
-import { compact } from 'lodash' 
-export default
-  components: {PollCommonForm, PollCommonChooseTemplate}
+<script lang="js">
+import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
+import Flash  from '@/shared/services/flash';
+import PollCommonForm from '@/components/poll/common/form';
+import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
+import { compact } from 'lodash'; 
 
-  data: ->
-    loading: false
-    poll: null
-    group: null
-    discussion: null
+export default {
+  components: {PollCommonForm, PollCommonChooseTemplate},
 
-  created: ->
-    # Sorry everyone, template_id is a poll_id in this case.
-    # After the first release of poll_templates we can start to modify this stuff
-    if templateId = parseInt(@$route.query.template_id)
-      @loading = true
-      Records.polls.findOrFetchById(templateId).then (poll) =>
-        @poll = poll.clonePoll()
-        if Session.user().groupIds().includes(poll.groupId)
-          @poll.groupId = poll.groupId
-          @group = @poll.group()
-        @loading = false
+  data() {
+    return {
+      loading: false,
+      poll: null,
+      group: null,
+      discussion: null
+    };
+  },
 
-    if discussionId = parseInt(@$route.query.discussion_id)
-      @loading = true
-      Records.discussions.findOrFetchById(discussionId).then (discussion) =>
-        @discussion = discussion
-        @group = discussion.group()
-        @loading = false
+  created() {
+    // Sorry everyone, template_id is a poll_id in this case.
+    // After the first release of poll_templates we can start to modify this stuff
+    let discussionId, groupId, templateId;
+    if (templateId = parseInt(this.$route.query.template_id)) {
+      this.loading = true;
+      Records.polls.findOrFetchById(templateId).then(poll => {
+        this.poll = poll.clonePoll();
+        if (Session.user().groupIds().includes(poll.groupId)) {
+          this.poll.groupId = poll.groupId;
+          this.group = this.poll.group();
+        }
+        this.loading = false;
+      });
+    }
 
-    if groupId = parseInt(@$route.query.group_id)
-      @loading = true
-      Records.groups.findOrFetchById(groupId).then (group) =>
-        @group = group
-        @loading = false
+    if (discussionId = parseInt(this.$route.query.discussion_id)) {
+      this.loading = true;
+      Records.discussions.findOrFetchById(discussionId).then(discussion => {
+        this.discussion = discussion;
+        this.group = discussion.group();
+        this.loading = false;
+      });
+    }
 
-    if @$route.params.key
-      @loading = true
-      Records.polls.findOrFetchById(@$route.params.key)
-      .then (poll) =>
-        @poll = poll.clone()
-        EventBus.$emit 'currentComponent',
-          group: poll.group()
-          poll:  poll
-          title: poll.title
+    if (groupId = parseInt(this.$route.query.group_id)) {
+      this.loading = true;
+      Records.groups.findOrFetchById(groupId).then(group => {
+        this.group = group;
+        this.loading = false;
+      });
+    }
+
+    if (this.$route.params.key) {
+      this.loading = true;
+      Records.polls.findOrFetchById(this.$route.params.key).then(poll => {
+        this.poll = poll.clone();
+        EventBus.$emit('currentComponent', {
+          group: poll.group(),
+          poll,
+          title: poll.title,
           page: 'pollFormPage'
-        @loading = false
-      .catch (error) ->
-        EventBus.$emit 'pageError', error
-        if error.status == 403 && !Session.isSignedIn()
-          EventBus.$emit 'openAuthModal'
+        });
+        this.loading = false;
+      }).catch(function(error) {
+        EventBus.$emit('pageError', error);
+        if ((error.status === 403) && !Session.isSignedIn()) {
+          EventBus.$emit('openAuthModal');
+        }
+      });
+    }
+  },
 
-  methods:
-    setPoll: (poll) ->
-      @poll = poll
+  methods: {
+    setPoll(poll) {
+      return this.poll = poll;
+    }
+  },
 
-  computed:
-    breadcrumbs: ->
-      compact([@group.parentId && @group.parent(), @group]).map (g) =>
-        text: g.name
-        disabled: false
-        to: @urlFor(g)
+  computed: {
+    breadcrumbs() {
+      return compact([this.group.parentId && this.group.parent(), this.group]).map(g => {
+        return {
+          text: g.name,
+          disabled: false,
+          to: this.urlFor(g)
+        };
+      });
+    }
+  }
+};
 
 </script>
 <template lang="pug">

@@ -1,156 +1,206 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import Session from '@/shared/services/session'
-import { compact, without, some, pick } from 'lodash'
-import Flash from '@/shared/services/flash'
-import Records from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import Session from '@/shared/services/session';
+import { compact, without, some, pick } from 'lodash';
+import Flash from '@/shared/services/flash';
+import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
 import { HandleDirective } from 'vue-slicksort';
-import { isSameYear, startOfHour, setHours }  from 'date-fns'
+import { isSameYear, startOfHour, setHours }  from 'date-fns';
 
-export default
-  directives: { handle: HandleDirective }
+export default {
+  directives: { handle: HandleDirective },
 
-  props:
-    isModal:
-      default: false
+  props: {
+    isModal: {
+      default: false,
       type: Boolean
+    },
     pollTemplate: Object
+  },
 
-  data: ->
-    newOption: null
-    lastPollType: @pollTemplate.pollType
-    pollOptions: @pollTemplate.pollOptionsAttributes()
+  data() {
+    return {
+      newOption: null,
+      lastPollType: this.pollTemplate.pollType,
+      pollOptions: this.pollTemplate.pollOptionsAttributes(),
 
-    votingMethodsI18n:
-      count:
-        title: 'poll_common_form.voting_methods.show_thumbsdecision_tools_card.proposal_title'
-        hint: 'poll_common_form.voting_methods.show_thumbs_hint'
-      question: 
-        title: 'poll_common_form.voting_methods.question'
-        hint: 'poll_common_form.voting_methods.question_hint'
-      proposal: 
-        title: 'decision_tools_card.proposal_title'
-        hint: 'poll_common_form.voting_methods.show_thumbs_hint'
-      poll: 
-        title: 'poll_common_form.voting_methods.simple_poll'
-        hint: 'poll_common_form.voting_methods.choose_hint'
-      meeting:
-        title: 'poll_common_form.voting_methods.time_poll'
-        hint: 'poll_common_form.voting_methods.time_poll_hint'
-      dot_vote:
-        title: 'decision_tools_card.dot_vote_title'
-        hint: 'poll_common_form.voting_methods.allocate_hint'
-      score: 
-        title: 'poll_common_form.voting_methods.score'
-        hint: 'poll_common_form.voting_methods.score_hint'
-      ranked_choice:
-        title: 'poll_common_form.voting_methods.ranked_choice'
-        hint: 'poll_common_form.voting_methods.ranked_choice_hint'
+      votingMethodsI18n: {
+        count: {
+          title: 'poll_common_form.voting_methods.show_thumbsdecision_tools_card.proposal_title',
+          hint: 'poll_common_form.voting_methods.show_thumbs_hint'
+        },
+        question: { 
+          title: 'poll_common_form.voting_methods.question',
+          hint: 'poll_common_form.voting_methods.question_hint'
+        },
+        proposal: { 
+          title: 'decision_tools_card.proposal_title',
+          hint: 'poll_common_form.voting_methods.show_thumbs_hint'
+        },
+        poll: { 
+          title: 'poll_common_form.voting_methods.simple_poll',
+          hint: 'poll_common_form.voting_methods.choose_hint'
+        },
+        meeting: {
+          title: 'poll_common_form.voting_methods.time_poll',
+          hint: 'poll_common_form.voting_methods.time_poll_hint'
+        },
+        dot_vote: {
+          title: 'decision_tools_card.dot_vote_title',
+          hint: 'poll_common_form.voting_methods.allocate_hint'
+        },
+        score: { 
+          title: 'poll_common_form.voting_methods.score',
+          hint: 'poll_common_form.voting_methods.score_hint'
+        },
+        ranked_choice: {
+          title: 'poll_common_form.voting_methods.ranked_choice',
+          hint: 'poll_common_form.voting_methods.ranked_choice_hint'
+        }
+      },
 
-    currentHideResults: @pollTemplate.hideResults
-    hideResultsItems: [
-      { text: @$t('common.off'), value: 'off' }
-      { text: @$t('poll_common_card.until_you_vote'), value: 'until_vote' }
-      { text: @$t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
-    ]
-
-  methods:
-    setPollOptionPriority: ->
-      i = 0
-      @pollOptions.forEach (o) -> o.priority = i++
-
-    removeOption: (option) ->
-      @newOption = null
-      @pollOptions = without(@pollOptions, option)
-
-    addOption: ->
-      option = 
-        name: ''
-        meaning: ''
-        prompt: ''
-        icon: 'agree'
-
-      EventBus.$emit 'openModal',
-        component: 'PollOptionForm'
-        props:
-          pollOption: option
-          poll: @pollTemplate
-          submitFn: (option) =>
-            if some(@pollOptions, (o) => o.name.toLowerCase() == option.name.toLowerCase())
-              Flash.error('poll_poll_form.option_already_added')
-            else
-              @pollOptions.push option
-
-    editOption: (option) ->
-      clone = pick(option, 'name', 'icon', 'meaning', 'prompt')
-
-      EventBus.$emit 'openModal',
-        component: 'PollOptionForm'
-        props:
-          edit: true
-          pollOption: clone
-          poll: @pollTemplate
-          submitFn: (clone) =>
-            Object.assign(option, clone)
-
-    submit: ->
-      actionName = if @pollTemplate.isNew() then 'created' else 'updated'
-      @pollTemplate.setErrors({})
-      @setPollOptionPriority()
-      @pollTemplate.pollOptions = @pollOptions
-      @pollTemplate.save().then (data) =>
-        Flash.success "poll_common.poll_template_saved"
-        if @isModal
-          EventBus.$emit('closeModal')
-        else
-          @$router.push @$route.query.return_to
-      .catch (error) =>
-        Flash.warning 'poll_common_form.please_review_the_form'
-        console.error error
-
-  computed:
-    hasOptions: -> @pollTemplate.config().has_options
-    breadcrumbs: ->
-      compact([@pollTemplate.group().parentId && @pollTemplate.group().parent(), @pollTemplate.group()]).map (g) =>
-        text: g.name
-        disabled: false
-        to: @urlFor(g)
-
-    votingMethodsItems: ->
-      without(Object.keys(@votingMethodsI18n), 'count').map (key) =>
-        {text: @$t(@votingMethodsI18n[key].title), value: key}
-
-    knownOptions: ->
-      (AppConfig.pollTypes[@pollTemplate.pollType].common_poll_options || [])
-
-    allowAnonymous: -> !@pollTemplate.config().prevent_anonymous
-    stanceReasonRequiredItems: ->
-      [
-        {text: @$t('poll_common_form.stance_reason_required'), value: 'required'},
-        {text: @$t('poll_common_form.stance_reason_optional'), value: 'optional'},
-        {text: @$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
+      currentHideResults: this.pollTemplate.hideResults,
+      hideResultsItems: [
+        { text: this.$t('common.off'), value: 'off' },
+        { text: this.$t('poll_common_card.until_you_vote'), value: 'until_vote' },
+        { text: this.$t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
       ]
+    };
+  },
 
-    titlePath: ->
-      if @pollTemplate.pollType == 'proposal'
-        (@pollTemplate.isNew() && 'poll_common.new_proposal_template') || 'poll_common.edit_proposal_template'
-      else
-        (@pollTemplate.isNew() && 'poll_common.new_poll_template') || 'poll_common.edit_poll_template'
+  methods: {
+    setPollOptionPriority() {
+      let i = 0;
+      this.pollOptions.forEach(o => o.priority = i++);
+    },
 
-    closingSoonItems: ->
-      'nobody author undecided_voters voters'.split(' ').map (name) =>
-        {text: @$t("poll_common_settings.notify_on_closing_soon.#{name}"), value: name}
+    removeOption(option) {
+      this.newOption = null;
+      this.pollOptions = without(this.pollOptions, option);
+    },
 
-    optionFormat: -> @pollTemplate.pollOptionNameFormat
-    hasOptionIcon: -> @pollTemplate.config().has_option_icon
-    i18nItems: -> 
-      compact 'agree abstain disagree consent objection block yes no'.split(' ').map (name) =>
-        return null if @pollTemplate.pollOptionNames.includes(name)
-        text: @$t('poll_proposal_options.'+name)
-        value: name
+    addOption() {
+      const option = { 
+        name: '',
+        meaning: '',
+        prompt: '',
+        icon: 'agree'
+      };
+
+      EventBus.$emit('openModal', {
+        component: 'PollOptionForm',
+        props: {
+          pollOption: option,
+          poll: this.pollTemplate,
+          submitFn: option => {
+            if (some(this.pollOptions, o => o.name.toLowerCase() === option.name.toLowerCase())) {
+              Flash.error('poll_poll_form.option_already_added');
+            } else {
+              this.pollOptions.push(option);
+            }
+          }
+        }
+      }
+      );
+    },
+
+    editOption(option) {
+      const clone = pick(option, 'name', 'icon', 'meaning', 'prompt');
+
+      EventBus.$emit('openModal', {
+        component: 'PollOptionForm',
+        props: {
+          edit: true,
+          pollOption: clone,
+          poll: this.pollTemplate,
+          submitFn: clone => {
+            return Object.assign(option, clone);
+          }
+        }
+      }
+      );
+    },
+
+    submit() {
+      const actionName = this.pollTemplate.isNew() ? 'created' : 'updated';
+      this.pollTemplate.setErrors({});
+      this.setPollOptionPriority();
+      this.pollTemplate.pollOptions = this.pollOptions;
+      this.pollTemplate.save().then(data => {
+        Flash.success("poll_common.poll_template_saved");
+        if (this.isModal) {
+          EventBus.$emit('closeModal');
+        } else {
+          this.$router.push(this.$route.query.return_to);
+        }
+      }).catch(error => {
+        Flash.warning('poll_common_form.please_review_the_form');
+        console.error(error);
+      });
+    }
+  },
+
+  computed: {
+    hasOptions() { return this.pollTemplate.config().has_options; },
+    breadcrumbs() {
+      return compact([this.pollTemplate.group().parentId && this.pollTemplate.group().parent(), this.pollTemplate.group()]).map(g => {
+        return {
+          text: g.name,
+          disabled: false,
+          to: this.urlFor(g)
+        };
+      });
+    },
+
+    votingMethodsItems() {
+      return without(Object.keys(this.votingMethodsI18n), 'count').map(key => {
+        return {text: this.$t(this.votingMethodsI18n[key].title), value: key};
+      });
+    },
+
+    knownOptions() {
+      return (AppConfig.pollTypes[this.pollTemplate.pollType].common_poll_options || []);
+    },
+
+    allowAnonymous() { return !this.pollTemplate.config().prevent_anonymous; },
+    stanceReasonRequiredItems() {
+      return [
+        {text: this.$t('poll_common_form.stance_reason_required'), value: 'required'},
+        {text: this.$t('poll_common_form.stance_reason_optional'), value: 'optional'},
+        {text: this.$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
+      ];
+    },
+
+    titlePath() {
+      if (this.pollTemplate.pollType === 'proposal') {
+        return (this.pollTemplate.isNew() && 'poll_common.new_proposal_template') || 'poll_common.edit_proposal_template';
+      } else {
+        return (this.pollTemplate.isNew() && 'poll_common.new_poll_template') || 'poll_common.edit_poll_template';
+      }
+    },
+
+    closingSoonItems() {
+      return 'nobody author undecided_voters voters'.split(' ').map(name => {
+        return {text: this.$t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
+      });
+    },
+
+    optionFormat() { return this.pollTemplate.pollOptionNameFormat; },
+    hasOptionIcon() { return this.pollTemplate.config().has_option_icon; },
+    i18nItems() { 
+      return compact('agree abstain disagree consent objection block yes no'.split(' ').map(name => {
+        if (this.pollTemplate.pollOptionNames.includes(name)) { return null; }
+        return {
+          text: this.$t('poll_proposal_options.'+name),
+          value: name
+        };
+      }));
+    }
+  }
+};
 
 </script>
 <template lang="pug">

@@ -1,77 +1,104 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import ReactionService from '@/shared/services/reaction_service'
-import {merge, capitalize, difference, keys, throttle, startsWith, each, compact} from 'lodash'
-import { colonToUnicode, stripColons, imgForEmoji, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import ReactionService from '@/shared/services/reaction_service';
+import {merge, capitalize, difference, keys, throttle, startsWith, each, compact} from 'lodash';
+import { colonToUnicode, stripColons, imgForEmoji, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis';
 
-export default
-  props:
-    model: Object
+export default {
+  props: {
+    model: Object,
     small: Boolean
+  },
 
-  data: ->
-    diameter: (@small && 20) || 24
-    maxNamesCount: 10
-    reactionHash: {all: []}
-    emojiSupported: emojiSupported
+  data() {
+    return {
+      diameter: (this.small && 20) || 24,
+      maxNamesCount: 10,
+      reactionHash: {all: []},
+      emojiSupported
+    };
+  },
 
-  created: ->
-    ReactionService.enqueueFetch(@model)
+  created() {
+    ReactionService.enqueueFetch(this.model);
+  },
 
-  mounted: ->
-    @watchRecords
-      collections: ['reactions']
-      query: (store) =>
-        @reactionHash = {all: []}
-        each Records.reactions.find(@reactionParams), (reaction) =>
-          unless @reactionHash[reaction.reaction]?
-            @reactionHash[reaction.reaction] = []
-          if user = Records.users.find(reaction.userId)
-            @reactionHash[reaction.reaction].push(user)
-            @reactionHash['all'].push(user)
-          true
+  mounted() {
+    this.watchRecords({
+      collections: ['reactions'],
+      query: store => {
+        this.reactionHash = {all: []};
+        each(Records.reactions.find(this.reactionParams), reaction => {
+          let user;
+          if (this.reactionHash[reaction.reaction] == null) {
+            this.reactionHash[reaction.reaction] = [];
+          }
+          if (user = Records.users.find(reaction.userId)) {
+            this.reactionHash[reaction.reaction].push(user);
+            this.reactionHash['all'].push(user);
+          }
+          return true;
+        });
+      }
+    });
+  },
 
-    # Records.reactions.enqueueFetch(@reactionParams)
+    // Records.reactions.enqueueFetch(@reactionParams)
 
-  computed:
-    reactionParams: ->
-      reactableType: capitalize(@model.constructor.singular)
-      reactableId: @model.id
+  computed: {
+    reactionParams() {
+      return {
+        reactableType: capitalize(this.model.constructor.singular),
+        reactableId: this.model.id
+      };
+    },
 
-    reactionTypes: ->
-      compact difference keys(@reactionHash), ['all']
+    reactionTypes() {
+      return compact(difference(keys(this.reactionHash), ['all']));
+    },
 
-    myReaction: ->
-      return unless Session.isSignedIn()
-      Records.reactions.find(merge({}, @reactionParams, userId: Session.userId))[0]
+    myReaction() {
+      if (!Session.isSignedIn()) { return; }
+      return Records.reactions.find(merge({}, this.reactionParams, {userId: Session.userId}))[0];
+    },
 
-    otherReaction: ->
-      Records.reactions.find(merge({}, @reactionParams, {userId: {'$ne': Session.userId}}))[0]
+    otherReaction() {
+      return Records.reactions.find(merge({}, this.reactionParams, {userId: {'$ne': Session.userId}}))[0];
+    },
 
-    reactionTypes: ->
-      difference keys(@reactionHash), ['all']
+    reactionTypes() {
+      return difference(keys(this.reactionHash), ['all']);
+    }
+  },
 
-  methods:
-    srcForEmoji: srcForEmoji
-    stripColons: stripColons
-    colonToUnicode: colonToUnicode
-    removeMine: (reaction) ->
-      mine = Records.reactions.find(merge({}, @reactionParams,
-        userId:   Session.user().id
-        reaction: reaction
-      ))[0]
-      mine.destroy() if mine
+  methods: {
+    srcForEmoji,
+    stripColons,
+    colonToUnicode,
+    removeMine(reaction) {
+      const mine = Records.reactions.find(merge({}, this.reactionParams, {
+        userId:   Session.user().id,
+        reaction
+      }
+      ))[0];
+      if (mine) { mine.destroy(); }
+    },
 
-    translate: (shortname) ->
-      title = emojiTitle(shortname)
-      if startsWith(title, "reactions.") then shortname else title
+    translate(shortname) {
+      const title = emojiTitle(shortname);
+      if (startsWith(title, "reactions.")) { return shortname; } else { return title; }
+    },
 
-    countFor: (reaction) ->
-      if @reactionHash[reaction]?
-        @reactionHash[reaction].length - @maxNamesCount
-      else
-        0
+    countFor(reaction) {
+      if (this.reactionHash[reaction] != null) {
+        return this.reactionHash[reaction].length - this.maxNamesCount;
+      } else {
+        return 0;
+      }
+    }
+  }
+};
 
 </script>
 <template lang="pug">

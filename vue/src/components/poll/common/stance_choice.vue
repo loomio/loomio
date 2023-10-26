@@ -1,42 +1,57 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
 
 export default
-  props:
-    poll:
-      type: Object
+{
+  props: {
+    poll: {
+      type: Object,
       required: true
-    stanceChoice:
-      type: Object
+    },
+    stanceChoice: {
+      type: Object,
       required: true
-    size:
-      type: Number
+    },
+    size: {
+      type: Number,
       default: 24
+    }
+  },
 
-  computed:
-    color: ->
-      @pollOption.color
+  computed: {
+    color() {
+      return this.pollOption.color;
+    },
 
-    pollOption: ->
-      @stanceChoice.pollOption
+    pollOption() {
+      return this.stanceChoice.pollOption;
+    },
 
-    pollType: ->
-      @poll.pollType
+    pollType() {
+      return this.poll.pollType;
+    },
 
-    optionName: ->
-      if AppConfig.pollTypes[@poll.pollType].poll_option_name_format == 'i18n'
-        @$t('poll_' + @pollType + '_options.' + @stanceChoice.pollOption.name)
-      else
-        @stanceChoice.pollOption.name
+    optionName() {
+      if (AppConfig.pollTypes[this.poll.pollType].poll_option_name_format === 'i18n') {
+        return this.$t('poll_' + this.pollType + '_options.' + this.stanceChoice.pollOption.name);
+      } else {
+        return this.stanceChoice.pollOption.name;
+      }
+    }
+  },
 
-  methods:
-    emitClick: -> @$emit('click')
+  methods: {
+    emitClick() { this.$emit('click'); },
 
-    colorFor: (score) ->
-      switch score
-        when 2 then AppConfig.pollColors.proposal[0]
-        when 1 then AppConfig.pollColors.proposal[1]
-        when 0 then AppConfig.pollColors.proposal[2]
+    colorFor(score) {
+      switch (score) {
+        case 2: return AppConfig.pollColors.proposal[0];
+        case 1: return AppConfig.pollColors.proposal[1];
+        case 0: return AppConfig.pollColors.proposal[2];
+      }
+    }
+  }
+};
 
 </script>
 

@@ -1,45 +1,62 @@
-<script lang="coffee">
-import Records  from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
+<script lang="js">
+import Records  from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
 
-import { exact } from '@/shared/helpers/format_time'
+import { exact } from '@/shared/helpers/format_time';
 
-export default
-  props:
-    model: Object
+export default {
+  props: {
+    model: Object,
     close: Function
+  },
 
-  created: ->
-    @getVersion(@model.versionsCount - 1)
+  created() {
+    this.getVersion(this.model.versionsCount - 1);
+  },
 
-  data: ->
-    index: 1
-    version: null
+  data() {
+    return {
+      index: 1,
+      version: null
+    };
+  },
 
-  methods:
-    getVersion: (index) ->
-      @index = index
-      @version = null
-      Records.versions.fetchVersion(@model, index).then (data) =>
-        @version = Records.versions.find(data.versions[0].id)
+  methods: {
+    getVersion(index) {
+      this.index = index;
+      this.version = null;
+      return Records.versions.fetchVersion(this.model, index).then(data => {
+        this.version = Records.versions.find(data.versions[0].id);
+      });
+    },
 
-    getNext: ->
-      if !@isNewest
-        @getVersion(@index + 1)
+    getNext() {
+      if (!this.isNewest) {
+        return this.getVersion(this.index + 1);
+      }
+    },
 
-    getPrevious: ->
-      if !@isOldest
-        @getVersion(@index - 1)
+    getPrevious() {
+      if (!this.isOldest) {
+        return this.getVersion(this.index - 1);
+      }
+    }
+  },
 
-  computed:
-    versionDate: ->
-      exact @version.createdAt
+  computed: {
+    versionDate() {
+      return exact(this.version.createdAt);
+    },
 
-    isOldest: ->
-      @index == 0
+    isOldest() {
+      return this.index === 0;
+    },
 
-    isNewest: ->
-      @index == @model.versionsCount - 1
+    isNewest() {
+      return this.index === (this.model.versionsCount - 1);
+    }
+  }
+};
 
 </script>
 

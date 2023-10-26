@@ -1,18 +1,23 @@
-<script lang="coffee">
-import Session from '@/shared/services/session'
-import TemplateBadge from '@/components/poll/common/template_badge'
-import LmoUrlService from '@/shared/services/lmo_url_service'
+<script lang="js">
+import Session from '@/shared/services/session';
+import TemplateBadge from '@/components/poll/common/template_badge';
+import LmoUrlService from '@/shared/services/lmo_url_service';
 
-export default
-  components: {TemplateBadge}
-  props:
-    poll: Object
+export default {
+  components: {TemplateBadge},
+  props: {
+    poll: Object,
     displayGroupName: Boolean
-  methods:
-    showGroupName: ->
-      @displayGroupName && @poll.groupId
-  computed:
-    link: -> LmoUrlService.discussionPoll(@poll)
+  },
+  methods: {
+    showGroupName() {
+      return this.displayGroupName && this.poll.groupId;
+    }
+  },
+  computed: {
+    link() { return LmoUrlService.discussionPoll(this.poll); }
+  }
+};
 </script>
 
 <template lang="pug">
