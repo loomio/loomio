@@ -63,6 +63,7 @@ gem 'blazer'
 gem 'terminal-table'
 gem 'tzinfo-data'
 gem 'pg_search'
+gem "heya", github: "honeybadger-io/heya"
 
 group :development, :test do
   gem 'listen'
