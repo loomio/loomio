@@ -14,7 +14,7 @@ import { isSameYear, startOfHour, setHours }  from 'date-fns';
 import I18n from '@/i18n';
 
 export default {
-  components: { PollCommonWipField, PollTemplateInfoPanel },
+  components: { PollTemplateInfoPanel },
   directives: { handle: HandleDirective },
 
   props: {
