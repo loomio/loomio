@@ -66,7 +66,8 @@ const router = new Router({
   },
 
   routes: [
-    {path: '/try', component: DemosPage},
+    {path: '/demo', component: DemosPage},
+    {path: '/try', redirect: '/g/new'},
     {path: '/users/sign_in', redirect: '/dashboard' },
     {path: '/users/sign_up', redirect: '/dashboard' },
     {path: '/tasks', component: TasksPage},

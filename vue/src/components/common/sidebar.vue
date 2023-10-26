@@ -87,14 +87,9 @@ export default {
           this.$router.replace(`/g/${Session.user().groups()[0].key}`);
         }
         if ((this.$router.history.current.path === "/dashboard") && (Session.user().groups().length === 0)) {
-          if (AppConfig.features.app.subscriptions) {
-            this.$router.replace("/try");
-          } else {
-            this.$router.replace("/g/new");
-          }
+          this.$router.replace("/g/new");
         }
       });
-
       InboxService.load();
     },
 

@@ -131,6 +131,7 @@ class RecordCloner
       link_previews
       created_at
       updated_at
+      category
     ]
 
     required_values = {
