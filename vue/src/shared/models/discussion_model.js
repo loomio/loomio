@@ -21,6 +21,7 @@ import I18n from '@/i18n';
 export default DiscussionModel = (function() {
   DiscussionModel = class DiscussionModel extends BaseModel {
     constructor(...args) {
+      super(...args);
       this.privateDefaultValue = this.privateDefaultValue.bind(this);
       this.saveVolume = this.saveVolume.bind(this);
       this.move = this.move.bind(this);
@@ -29,7 +30,6 @@ export default DiscussionModel = (function() {
       this.close = this.close.bind(this);
       this.reopen = this.reopen.bind(this);
       this.moveComments = this.moveComments.bind(this);
-      super(...args);
     }
 
     static initClass() {

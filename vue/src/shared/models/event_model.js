@@ -13,8 +13,8 @@ import {invokeMap, without} from 'lodash';
 export default EventModel = (function() {
   EventModel = class EventModel extends BaseModel {
     constructor(...args) {
-      this.removeFromThread = this.removeFromThread.bind(this);
       super(...args);
+      this.removeFromThread = this.removeFromThread.bind(this);
     }
 
     static initClass() {

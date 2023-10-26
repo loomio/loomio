@@ -23,11 +23,11 @@ import { snakeCase, camelCase, compact, head, orderBy, sortBy, map, includes, di
 export default PollModel = (function() {
   PollModel = class PollModel extends BaseModel {
     constructor(...args) {
+      super(...args);
       this.close = this.close.bind(this);
       this.reopen = this.reopen.bind(this);
       this.addToThread = this.addToThread.bind(this);
       this.addOption = this.addOption.bind(this);
-      super(...args);
     }
 
     static initClass() {
