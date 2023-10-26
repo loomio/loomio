@@ -30,6 +30,7 @@ export default DiscussionModel = (function() {
       this.close = this.close.bind(this);
       this.reopen = this.reopen.bind(this);
       this.moveComments = this.moveComments.bind(this);
+      this.discussion = this.discussion.bind(this);
     }
 
     static initClass() {

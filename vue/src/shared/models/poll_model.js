@@ -28,6 +28,7 @@ export default PollModel = (function() {
       this.reopen = this.reopen.bind(this);
       this.addToThread = this.addToThread.bind(this);
       this.addOption = this.addOption.bind(this);
+      this.poll = this.poll.bind(this);
     }
 
     static initClass() {
