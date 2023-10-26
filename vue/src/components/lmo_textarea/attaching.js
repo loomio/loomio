@@ -1,70 +1,100 @@
-import { forEach } from 'lodash'
-import FileUploader from '@/shared/services/file_uploader'
-import {insertImage} from './extension_image'
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
+ */
+import { forEach } from 'lodash';
+import FileUploader from '@/shared/services/file_uploader';
+import {insertImage} from './extension_image';
 export default
-  data: ->
-    files: []
-    imageFiles: []
+  ({
+    data() {
+      return {
+        files: [],
+        imageFiles: []
+      };
+    },
 
-  created: ->
-    @files = @model.attachments.filter((a) -> a.signed_id).map((a) -> {blob: a, file: {name: a.filename}})
+    created() {
+      return this.files = this.model.attachments.filter(a => a.signed_id).map(a => ({
+        blob: a,
+        file: {name: a.filename}
+      }));
+    },
 
-  watch:
-    files: -> @updateFiles()
-    imageFiles: -> @updateFiles()
+    watch: {
+      files() { return this.updateFiles(); },
+      imageFiles() { return this.updateFiles(); }
+    },
 
-  methods:
-    resetFiles: ->
-      @files = []
-      @imageFiles = []
+    methods: {
+      resetFiles() {
+        this.files = [];
+        return this.imageFiles = [];
+      },
 
-    updateFiles: ->
-      @model.files = @files.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
-      @model.imageFiles = @imageFiles.filter((w) => w.blob).map (wrapper) => wrapper.blob.signed_id
-      @emitUploading()
+      updateFiles() {
+        this.model.files = this.files.filter(w => w.blob).map(wrapper => wrapper.blob.signed_id);
+        this.model.imageFiles = this.imageFiles.filter(w => w.blob).map(wrapper => wrapper.blob.signed_id);
+        return this.emitUploading();
+      },
 
-    emitUploading: ->
-      @$emit('is-uploading', !((@model.files || []).length == @files.length && (@model.imageFiles || []).length == @imageFiles.length))
+      emitUploading() {
+        return this.$emit('is-uploading', !(((this.model.files || []).length === this.files.length) && ((this.model.imageFiles || []).length === this.imageFiles.length)));
+      },
 
-    removeFile: (name) ->
-      @files = @files.filter (wrapper) -> wrapper.file.name != name
+      removeFile(name) {
+        return this.files = this.files.filter(wrapper => wrapper.file.name !== name);
+      },
 
-    attachFile: ({file}) ->
-      wrapper = {file: file, key: file.name+file.size, percentComplete: 0, blob: null}
-      @files.push(wrapper)
-      @emitUploading()
-      uploader = new FileUploader onProgress: (e) ->
-        wrapper.percentComplete = parseInt(e.loaded / e.total * 100)
+      attachFile({file}) {
+        const wrapper = {file, key: file.name+file.size, percentComplete: 0, blob: null};
+        this.files.push(wrapper);
+        this.emitUploading();
+        const uploader = new FileUploader({onProgress(e) {
+          return wrapper.percentComplete = parseInt((e.loaded / e.total) * 100);
+        }
+        });
 
-      uploader.upload(file).then (blob) =>
-        wrapper.blob = blob
-        @updateFiles()
-      ,
-      (e) ->
-        console.log "attachment failed to upload"
+        return uploader.upload(file).then(blob => {
+          wrapper.blob = blob;
+          return this.updateFiles();
+        }
+        ,
+        e => console.log("attachment failed to upload"));
+      },
 
-    attachImageFile: ({file, onProgress, onComplete, onFailure}) ->
-      wrapper = {file: file, blob: null}
-      @imageFiles.push(wrapper)
-      @emitUploading()
-      uploader = new FileUploader onProgress: onProgress
-      uploader.upload(file).then((blob) =>
-        wrapper.blob = blob
-        onComplete(blob)
-        @updateFiles()
-      , onFailure)
+      attachImageFile({file, onProgress, onComplete, onFailure}) {
+        const wrapper = {file, blob: null};
+        this.imageFiles.push(wrapper);
+        this.emitUploading();
+        const uploader = new FileUploader({onProgress});
+        return uploader.upload(file).then(blob => {
+          wrapper.blob = blob;
+          onComplete(blob);
+          return this.updateFiles();
+        }
+        , onFailure);
+      },
 
-    fileSelected: ->
-      forEach @$refs.filesField.files, (file) => @attachFile(file: file)
+      fileSelected() {
+        return forEach(this.$refs.filesField.files, file => this.attachFile({file}));
+      },
 
-    # collab editor only
-    mediaRecorded: (blob) ->
-      insertImage(blob, @editor.view, null, @attachImageFile)
+      // collab editor only
+      mediaRecorded(blob) {
+        return insertImage(blob, this.editor.view, null, this.attachImageFile);
+      },
 
-    imageSelected: ->
-      # console.log 'state', @editor.state.tr.selection.from
-      Array.from(@$refs.imagesField.files || []).forEach (file) =>
-        if (/image|video/i).test(file.type)
-          insertImage(file, @editor.view, null, @attachImageFile)
-        else
-          @attachFile({file})
+      imageSelected() {
+        // console.log 'state', @editor.state.tr.selection.from
+        return Array.from(this.$refs.imagesField.files || []).forEach(file => {
+          if ((/image|video/i).test(file.type)) {
+            return insertImage(file, this.editor.view, null, this.attachImageFile);
+          } else {
+            return this.attachFile({file});
+          }
+        });
+      }
+    }
+  });

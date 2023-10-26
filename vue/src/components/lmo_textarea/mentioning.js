@@ -1,168 +1,224 @@
-import {sortBy, isString, filter, uniq, map, debounce} from 'lodash'
-import Records from '@/shared/services/records'
-import getCaretCoordinates from 'textarea-caret'
+/*
+ * decaffeinate suggestions:
+ * DS102: Remove unnecessary code created because of implicit returns
+ * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
+ */
+import {sortBy, isString, filter, uniq, map, debounce} from 'lodash';
+import Records from '@/shared/services/records';
+import getCaretCoordinates from 'textarea-caret';
 
-export CommonMentioning =
-  data: ->
-    mentionableUserIds: []
-    mentionable: []
-    query: ''
-    navigatedUserIndex: 0
-    suggestionListStyles: {}
-    fetchingMentions: false
+export var CommonMentioning = {
+  data() {
+    return {
+      mentionableUserIds: [],
+      mentionable: [],
+      query: '',
+      navigatedUserIndex: 0,
+      suggestionListStyles: {},
+      fetchingMentions: false
+    };
+  },
 
-  mounted: ->
-    @fetchMentionable = debounce ->
-      return unless @query
-      @fetchingMentions = true
-      Records.users.fetchMentionable(@query, @model).then (response) =>
-        @fetchingMentions = false
-        @mentionableUserIds = uniq(@mentionableUserIds.concat(map(response.users, 'id')))
-        @findMentionable()
+  mounted() {
+    return this.fetchMentionable = debounce(function() {
+      if (!this.query) { return; }
+      this.fetchingMentions = true;
+      return Records.users.fetchMentionable(this.query, this.model).then(response => {
+        this.fetchingMentions = false;
+        this.mentionableUserIds = uniq(this.mentionableUserIds.concat(map(response.users, 'id')));
+        return this.findMentionable();
+      });
+    }
     ,
-      500
+      500);
+  },
 
-  methods:
-    findMentionable: ->
-      @mentionableUserIds = uniq(@mentionableUserIds.concat(@model.participantIds()))
-      unsorted = filter Records.users.collection.chain().find(id: {$in: @mentionableUserIds}).data(), (u) =>
-        ((u.name || '').toLowerCase().startsWith(@query) or
-        (u.username || '').toLowerCase().startsWith(@query) or
-        (u.name || '').toLowerCase().includes(" #{@query}"))
-      @mentionable = sortBy(unsorted, (u) -> (0 - Records.events.find(actorId: u.id).length))
+  methods: {
+    findMentionable() {
+      this.mentionableUserIds = uniq(this.mentionableUserIds.concat(this.model.participantIds()));
+      const unsorted = filter(Records.users.collection.chain().find({id: {$in: this.mentionableUserIds}}).data(), u => {
+        return ((u.name || '').toLowerCase().startsWith(this.query) ||
+        (u.username || '').toLowerCase().startsWith(this.query) ||
+        (u.name || '').toLowerCase().includes(` ${this.query}`));
+      });
+      return this.mentionable = sortBy(unsorted, u => 0 - Records.events.find({actorId: u.id}).length);
+    }
+  }
+};
 
-export MdMentioning =
-  methods:
-    textarea: ->
-      @$refs.field.$el.querySelector('textarea')
+export var MdMentioning = {
+  methods: {
+    textarea() {
+      return this.$refs.field.$el.querySelector('textarea');
+    },
 
-    onKeyUp: (event) ->
-      res = @textarea().value.slice(0, @textarea().selectionStart).match(/@(\w+)$/)
-      if res
-        @query = res[1].toLowerCase()
-        @fetchMentionable()
-        @findMentionable()
-        @respondToKey(event)
-        @updatePopup()
-      else
-        @query = ''
+    onKeyUp(event) {
+      const res = this.textarea().value.slice(0, this.textarea().selectionStart).match(/@(\w+)$/);
+      if (res) {
+        this.query = res[1].toLowerCase();
+        this.fetchMentionable();
+        this.findMentionable();
+        this.respondToKey(event);
+        return this.updatePopup();
+      } else {
+        return this.query = '';
+      }
+    },
 
-    onKeyDown: (event) ->
-      @respondToKey(event) if @query
+    onKeyDown(event) {
+      if (this.query) { return this.respondToKey(event); }
+    },
 
-    respondToKey: (event) ->
-      if (event.keyCode == 38)
-        @navigatedUserIndex = ((@navigatedUserIndex + @mentionable.length) - 1) % @mentionable.length
-        event.preventDefault()
+    respondToKey(event) {
+      if (event.keyCode === 38) {
+        this.navigatedUserIndex = ((this.navigatedUserIndex + this.mentionable.length) - 1) % this.mentionable.length;
+        event.preventDefault();
+      }
 
-      # down
-      if (event.keyCode == 40)
-        @navigatedUserIndex = (@navigatedUserIndex + 1) % @mentionable.length
-        event.preventDefault()
+      // down
+      if (event.keyCode === 40) {
+        this.navigatedUserIndex = (this.navigatedUserIndex + 1) % this.mentionable.length;
+        event.preventDefault();
+      }
 
-      # enter or tab
-      if [13,9].includes(event.keyCode)
-        if user = @mentionable[@navigatedUserIndex]
-          @selectUser(user)
-          @query = ''
-          event.preventDefault()
+      // enter or tab
+      if ([13,9].includes(event.keyCode)) {
+        let user;
+        if (user = this.mentionable[this.navigatedUserIndex]) {
+          this.selectUser(user);
+          this.query = '';
+          return event.preventDefault();
+        }
+      }
+    },
 
-    selectUser: (user) ->
-      text = @textarea().value
-      beforeText = @textarea().value.slice(0, @textarea().selectionStart - @query.length)
-      afterText = @textarea().value.slice(@textarea().selectionStart)
-      @model[@field] = beforeText + user.username + ' ' + afterText
-      @textarea().selectionEnd = (beforeText + user.username).length + 1
-      @textarea().focus
-      @query = ''
+    selectUser(user) {
+      const text = this.textarea().value;
+      const beforeText = this.textarea().value.slice(0, this.textarea().selectionStart - this.query.length);
+      const afterText = this.textarea().value.slice(this.textarea().selectionStart);
+      this.model[this.field] = beforeText + user.username + ' ' + afterText;
+      this.textarea().selectionEnd = (beforeText + user.username).length + 1;
+      this.textarea().focus;
+      return this.query = '';
+    },
 
-    updatePopup: ->
-      return unless @$refs.field
-      coords = getCaretCoordinates(@textarea(), @textarea().selectionStart - @query.length)
-      @suggestionListStyles =
-        position: 'absolute'
-        top: ((coords.top - @textarea().scrollTop) + coords.height + 16) + 'px'
+    updatePopup() {
+      if (!this.$refs.field) { return; }
+      const coords = getCaretCoordinates(this.textarea(), this.textarea().selectionStart - this.query.length);
+      return this.suggestionListStyles = {
+        position: 'absolute',
+        top: ((coords.top - this.textarea().scrollTop) + coords.height + 16) + 'px',
         left: coords.left + 'px'
+      };
+    }
+  }
+};
 
-export HtmlMentioning =
-  data: ->
-    suggestionRange: null
+export var HtmlMentioning = {
+  data() {
+    return {suggestionRange: null};
+  },
 
-  created:->
-    @insertMention = -> {}
+  created() {
+    return this.insertMention = () => ({});
+  },
 
-  methods:
-    upHandler: ->
-      @navigatedUserIndex = ((@navigatedUserIndex + @mentionable.length) - 1) % @mentionable.length
+  methods: {
+    upHandler() {
+      return this.navigatedUserIndex = ((this.navigatedUserIndex + this.mentionable.length) - 1) % this.mentionable.length;
+    },
 
-    downHandler: ->
-      @navigatedUserIndex = (@navigatedUserIndex + 1) % @mentionable.length
+    downHandler() {
+      return this.navigatedUserIndex = (this.navigatedUserIndex + 1) % this.mentionable.length;
+    },
 
-    enterHandler: ->
-      user = @mentionable[@navigatedUserIndex]
-      @selectUser(user) if user
+    enterHandler() {
+      const user = this.mentionable[this.navigatedUserIndex];
+      if (user) { return this.selectUser(user); }
+    },
 
-    selectUser: (user) ->
-      # range: @suggestionRange
-      # attrs:
-      @insertMention
-        id: user.username
+    selectUser(user) {
+      // range: @suggestionRange
+      // attrs:
+      this.insertMention({
+        id: user.username,
         label: user.name
-      @editor.chain().focus()
+      });
+      return this.editor.chain().focus();
+    },
 
-    updatePopup: (coords) ->
-      # return unless node
-      # coords = node.getBoundingClientRect()
-      @suggestionListStyles =
-        position: 'fixed'
-        top: coords.y + 24 + 'px'
+    updatePopup(coords) {
+      // return unless node
+      // coords = node.getBoundingClientRect()
+      return this.suggestionListStyles = {
+        position: 'fixed',
+        top: coords.y + 24 + 'px',
         left: coords.x + 'px'
+      };
+    }
+  }
+};
 
-export MentionPluginConfig = ->
-  # is called when a suggestion starts
-  HTMLAttributes:
-    class: 'mention'
-  suggestion:
-    render: =>
-      onStart: ( props ) =>
-        @query = props.query.toLowerCase()
-        @suggestionRange = props.range
-        @insertMention = props.command
-        @updatePopup(props.clientRect())
-        @fetchMentionable()
-        @findMentionable()
+export var MentionPluginConfig = function() {
+  // is called when a suggestion starts
+  return {
+    HTMLAttributes: {
+      class: 'mention'
+    },
+    suggestion: {
+      render: () => {
+        return {
+          onStart: props => {
+            this.query = props.query.toLowerCase();
+            this.suggestionRange = props.range;
+            this.insertMention = props.command;
+            this.updatePopup(props.clientRect());
+            this.fetchMentionable();
+            return this.findMentionable();
+          },
 
-      # is called when a suggestion has changed
-      onUpdate: (props) =>
-        @query = props.query.toLowerCase()
-        @suggestionRange = props.range
-        @insertMention = props.command
-        @navigatedUserIndex = 0
-        @updatePopup(props.clientRect())
-        @fetchMentionable()
-        @findMentionable()
+          // is called when a suggestion has changed
+          onUpdate: props => {
+            this.query = props.query.toLowerCase();
+            this.suggestionRange = props.range;
+            this.insertMention = props.command;
+            this.navigatedUserIndex = 0;
+            this.updatePopup(props.clientRect());
+            this.fetchMentionable();
+            return this.findMentionable();
+          },
 
-      # is called when a suggestion is cancelled
-      onExit: (props) =>
-        @query = null
-        @suggestionRange = null
-        @navigatedUserIndex = 0
+          // is called when a suggestion is cancelled
+          onExit: props => {
+            this.query = null;
+            this.suggestionRange = null;
+            return this.navigatedUserIndex = 0;
+          },
 
-      # is called on every keyDown event while a suggestion is active
-      onKeyDown: (props) =>
-        # pressing up arrow
-        if (props.event.keyCode == 38)
-          @upHandler()
-          return true
+          // is called on every keyDown event while a suggestion is active
+          onKeyDown: props => {
+            // pressing up arrow
+            if (props.event.keyCode === 38) {
+              this.upHandler();
+              return true;
+            }
 
-        # pressing down arrow
-        if (props.event.keyCode == 40)
-          @downHandler()
-          return true
+            // pressing down arrow
+            if (props.event.keyCode === 40) {
+              this.downHandler();
+              return true;
+            }
 
-        # pressing enter or tab
-        if [13,9].includes(props.event.keyCode)
-          @enterHandler()
-          return true
+            // pressing enter or tab
+            if ([13,9].includes(props.event.keyCode)) {
+              this.enterHandler();
+              return true;
+            }
 
-        return false
+            return false;
+          }
+        };
+      }
+    }
+  };
+};
