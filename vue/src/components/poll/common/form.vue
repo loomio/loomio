@@ -465,7 +465,7 @@ export default {
     v-if="poll.specifiedVotersOnly"
     v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
 
-  v-checkbox.mt-0(v-if="!poll.specifiedVotersOnly" :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})" v-model="poll.notifyRecipients")
+  v-checkbox.mt-0(v-if="!poll.id && !poll.specifiedVotersOnly" :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})" v-model="poll.notifyRecipients")
 
   .d-flex.justify-center
     v-btn.my-4.poll-common-form__advanced-btn(@click="showAdvanced = !showAdvanced")
@@ -528,7 +528,7 @@ export default {
         :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
       )
 
-  common-notify-fields(:model="poll")
+  common-notify-fields(v-if="poll.id" :model="poll")
 
   v-card-actions.poll-common-form-actions
     help-link(path='en/user_manual/polls/intro_to_decisions')
