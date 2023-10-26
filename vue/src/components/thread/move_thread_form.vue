@@ -31,7 +31,7 @@ export default {
         Flash.success('move_thread_form.messages.success', { name: this.discussion.group().name });
         const discussionKey = data.discussions[0].key;
         Records.discussions.findOrFetchById(discussionKey, {}, true).then(discussion => {
-          this.close();
+          EventBus.$emit('closeModal');
           this.$router.push(`/d/${discussionKey}`);
         });
       }).catch(() => true);
