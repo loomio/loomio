@@ -76,11 +76,6 @@ module GroupService
       url = remote_cover_photo
       group.cover_photo.attach(io: URI.open(url), filename: File.basename(url))
       group.creator = actor if actor.is_logged_in?
-
-      if template_group = Group.find_by(handle: 'trial-group-template')
-        cloner = RecordCloner.new(recorded_at: template_group.discussions.last.updated_at)
-        cloner.clone_trial_content_into_group(group, actor)
-      end
       group.subscription = Subscription.new
     end
 
