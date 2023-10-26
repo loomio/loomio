@@ -1,8 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 export var getEmbedLink = function(link) {
   link = link || "";
   if (link.includes("youtube.com") || link.includes("youtu.be")) {

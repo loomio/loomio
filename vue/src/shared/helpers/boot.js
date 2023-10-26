@@ -1,8 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import Vue from 'vue';
 import RestfulClient from '@/shared/record_store/restful_client';
 import AppConfig from '@/shared/services/app_config';
@@ -14,7 +9,7 @@ import router from '@/routes.coffee';
 
 export default (function(callback) {
   const client = new RestfulClient('boot');
-  return client.get('site').then(function(appConfig) {
+  client.get('site').then(function(appConfig) {
     appConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     forEach(appConfig, (v, k) => Vue.set(AppConfig, k, v));
 
@@ -69,9 +64,9 @@ export default (function(callback) {
         model
       } = Object.getPrototypeOf(recordInterface);
       if (model && AppConfig.permittedParams[snakeCase(model.singular)]) {
-        return model.serializableAttributes = AppConfig.permittedParams[snakeCase(model.singular)];
+        model.serializableAttributes = AppConfig.permittedParams[snakeCase(model.singular)];
       }
-  });
+    });
 
     return callback(appConfig);
   });

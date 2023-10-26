@@ -1,9 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import { differenceInHours, formatDistanceStrict, isSameYear, isValid, parse } from 'date-fns';
 import { format, utcToZonedTime } from 'date-fns-tz';
 import defaultLocale from 'date-fns/locale/en-US';
@@ -109,9 +103,9 @@ export var hoursOfDay = () => [
 export var timeline = date => format(date, "yyyy-MM-dd");
 
 export var timeFormat = function() {
-    if (Session.user().dateTimePref.includes('abbr')) {
-      return 'h:mm a';
-    } else {
-      return 'HH:mm';
-    }
-  };
+  if (Session.user().dateTimePref.includes('abbr')) {
+    return 'h:mm a';
+  } else {
+    return 'HH:mm';
+  }
+};

@@ -1,9 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-// import emojione from 'emojione'
 import { marked } from 'marked';
 import { clone, kebabCase } from 'lodash';
 import { colonsToUnicode } from '@/shared/helpers/emojis';
