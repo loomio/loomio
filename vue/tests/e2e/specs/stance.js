@@ -1,5 +1,5 @@
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+
+pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
   'invite_guest_to_vote': (test) => {

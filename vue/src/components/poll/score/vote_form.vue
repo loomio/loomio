@@ -1,40 +1,57 @@
-<script lang="coffee">
-import Records  from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import Flash   from '@/shared/services/flash'
-import { head, filter, map, sortBy, isEqual } from 'lodash'
+<script lang="js">
+import Records  from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import Flash   from '@/shared/services/flash';
+import { head, filter, map, sortBy, isEqual } from 'lodash';
 
-export default
-  props:
+export default {
+  props: {
     stance: Object
+  },
 
-  data: ->
-    pollOptions: []
-    stanceChoices: []
+  data() {
+    return {
+      pollOptions: [],
+      stanceChoices: []
+    };
+  },
 
-  created: ->
-    @watchRecords
-      collections: ['pollOptions']
-      query: (records) =>
-        if @stance.poll().optionsDiffer(@pollOptions)
-          @pollOptions = @poll.pollOptionsForVoting()
-          @stanceChoices = map @pollOptions, (option) =>
-            score: @stance.scoreFor(option)
-            option: option
-  methods:
-    submit: ->
-      @stance.stanceChoicesAttributes = map @stanceChoices, (choice) =>
-        poll_option_id: choice.option.id
-        score: choice.score
-      actionName = if !@stance.castAt then 'created' else 'updated'
-      @stance.save()
-      .then =>
-        Flash.success "poll_#{@stance.poll().pollType}_vote_form.stance_#{actionName}"
-        EventBus.$emit "closeModal"
-      .catch => true
+  created() {
+    this.watchRecords({
+      collections: ['pollOptions'],
+      query: records => {
+        if (this.stance.poll().optionsDiffer(this.pollOptions)) {
+          this.pollOptions = this.poll.pollOptionsForVoting();
+          this.stanceChoices = map(this.pollOptions, option => {
+            return {
+              score: this.stance.scoreFor(option),
+              option
+            };
+          });
+        }
+      }
+    });
+  },
+  methods: {
+    submit() {
+      this.stance.stanceChoicesAttributes = map(this.stanceChoices, choice => {
+        return {
+          poll_option_id: choice.option.id,
+          score: choice.score
+        };
+      });
+      const actionName = !this.stance.castAt ? 'created' : 'updated';
+      this.stance.save().then(() => {
+        Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
+        EventBus.$emit("closeModal");
+      }).catch(() => true);
+    }
+  },
 
-  computed:
-    poll: -> @stance.poll()
+  computed: {
+    poll() { return this.stance.poll(); }
+  }
+};
 </script>
 
 <template lang='pug'>

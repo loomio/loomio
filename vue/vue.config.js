@@ -22,7 +22,7 @@ module.exports = env => {
     },
     configureWebpack: {
       entry: {
-        'app': './src/main.coffee'
+        'app': './src/main'
       },
       resolveLoader: {
         alias: {

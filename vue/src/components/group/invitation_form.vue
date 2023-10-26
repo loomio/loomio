@@ -8,7 +8,7 @@ import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
 import { uniq, debounce } from 'lodash';
-import I18n from '@/i18n.coffee';
+import I18n from '@/i18n';
 
 export default
 {

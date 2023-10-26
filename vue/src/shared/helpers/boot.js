@@ -2,10 +2,10 @@ import Vue from 'vue';
 import RestfulClient from '@/shared/record_store/restful_client';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
-import i18n from '@/i18n.coffee';
+import i18n from '@/i18n';
 import * as Sentry from '@sentry/vue';
 import { forEach, snakeCase } from 'lodash';
-import router from '@/routes.coffee';
+import router from '@/routes';
 
 export default (function(callback) {
   const client = new RestfulClient('boot');

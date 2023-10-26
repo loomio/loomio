@@ -4,7 +4,7 @@ import FlashService   from '@/shared/services/flash';
 import { times } from 'lodash';
 import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time';
 import { format, parse, isValid } from 'date-fns';
-import I18n from '@/i18n.coffee';
+import I18n from '@/i18n';
 
 export default {
   props: {

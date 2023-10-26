@@ -1,5 +1,5 @@
 <script lang="js">
-import Records      from '@/shared/services/records.coffee';
+import Records      from '@/shared/services/records';
 import openModal      from '@/shared/helpers/open_modal';
 export default {
   props: {

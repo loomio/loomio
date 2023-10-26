@@ -9,7 +9,7 @@ import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
 import Flash   from '@/shared/services/flash';
 import { isEmpty, compact, debounce } from 'lodash';
 import openModal from '@/shared/helpers/open_modal';
-import I18n from '@/i18n.coffee';
+import I18n from '@/i18n';
 
 export default
 {
