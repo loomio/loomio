@@ -17,7 +17,7 @@ export default {
       const actionName = !this.stance.castAt ? 'created' : 'updated';
       this.stance.save().then(() => {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
-        this.close();
+        EventBus.$emit('closeModal')
       }).catch(error => true);
     }
   }

@@ -15,7 +15,7 @@ export default
     submit() {
       this.contactRequest.save().then(() => {
         Flash.success("contact_request_form.email_sent", {name: this.user.name});
-        this.close();
+        EventBus.$emit('closeModal')
       });
     }
   }

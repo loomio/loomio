@@ -2,6 +2,7 @@
 import Session        from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import Flash from '@/shared/services/flash';
+import EventBus from '@/shared/services/event_bus';
 
 export default {
   data() {
@@ -28,7 +29,7 @@ export default {
     sendVerification() {
       Records.users.sendMergeVerificationEmail(this.targetEmail).then(() => {
         Flash.success('merge_accounts.modal.flash');
-        this.close();
+        EventBus.$emit('closeModal');
       });
     },
 
