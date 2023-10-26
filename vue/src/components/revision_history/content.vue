@@ -5,7 +5,7 @@ import { parseISO } from 'date-fns';
 import { reject, map, parseInt } from 'lodash';
 
 import {marked} from 'marked';
-import {customRenderer, options} from '@/shared/helpers/marked.coffee';
+import {customRenderer, options} from '@/shared/helpers/marked';
 marked.setOptions(Object.assign({renderer: customRenderer()}, options));
 
 export default {

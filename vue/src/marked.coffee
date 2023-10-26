@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import {marked} from 'marked'
-import {customRenderer, options} from '@/shared/helpers/marked.coffee'
+import {customRenderer, options} from '@/shared/helpers/marked'
 marked.setOptions Object.assign({renderer: customRenderer()}, options)
-import { emojiReplaceText } from '@/shared/helpers/emojis.coffee'
+import { emojiReplaceText } from '@/shared/helpers/emojis'
 
 render = (el, binding, vnode) ->
   return unless binding.value

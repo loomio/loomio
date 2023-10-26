@@ -1,5 +1,5 @@
 import {marked} from 'marked'
-import {customRenderer, options} from '@/shared/helpers/marked.coffee'
+import {customRenderer, options} from '@/shared/helpers/marked'
 
 export convertToHtml = (model, field) ->
   marked.setOptions Object.assign({renderer: customRenderer()}, options)

@@ -1,5 +1,5 @@
 <script lang="js">
-import { emojiReplaceText } from '@/shared/helpers/emojis.coffee';
+import { emojiReplaceText } from '@/shared/helpers/emojis';
 import { merge } from 'lodash';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
