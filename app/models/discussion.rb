@@ -61,7 +61,6 @@ class Discussion < ApplicationRecord
 
   scope :is_open, -> { kept.where(closed_at: nil) }
   scope :is_closed, -> { kept.where("closed_at is not null") }
-  scope :templates, -> { kept.where(template: true) }
 
   validates_presence_of :title, :group, :author
   validates :title, length: { maximum: 150 }
@@ -71,11 +70,12 @@ class Discussion < ApplicationRecord
   is_mentionable  on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
-  has_paper_trail only: [:title, :description, :description_format, :private, :group_id, :author_id, :tags]
+  has_paper_trail only: [:title, :description, :description_format, :private, :group_id, :author_id, :tags, :closed_at, :closer_id]
 
   belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
+  belongs_to :closer, foreign_key: 'closer_id', class_name: "User"
   has_many :polls, dependent: :destroy
   has_many :active_polls, -> { where(closed_at: nil) }, class_name: "Poll"
 
@@ -88,7 +88,7 @@ class Discussion < ApplicationRecord
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :readers,-> { merge DiscussionReader.not_revoked },  through: :discussion_readers, source: :user
+  has_many :readers,-> { merge DiscussionReader.active },  through: :discussion_readers, source: :user
   has_many :guests, -> { merge DiscussionReader.guests }, through: :discussion_readers, source: :user
   has_many :admin_guests, -> { merge DiscussionReader.admins }, through: :discussion_readers, source: :user
   include DiscussionExportRelations
@@ -119,7 +119,6 @@ class Discussion < ApplicationRecord
   update_counter_cache :group, :open_discussions_count
   update_counter_cache :group, :closed_discussions_count
   update_counter_cache :group, :closed_polls_count
-  update_counter_cache :group, :template_discussions_count
 
   def poll
     nil
@@ -145,7 +144,7 @@ class Discussion < ApplicationRecord
     User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      where('(m.id IS NOT NULL AND m.archived_at IS NULL) OR
+      where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
              (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
   end
 
@@ -153,7 +152,7 @@ class Discussion < ApplicationRecord
     User.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      where('(m.admin = TRUE AND m.id IS NOT NULL AND m.archived_at IS NULL) OR
+      where('(m.admin = TRUE AND m.id IS NOT NULL AND m.revoked_at IS NULL) OR
              (dr.admin = TRUE AND dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
   end
 

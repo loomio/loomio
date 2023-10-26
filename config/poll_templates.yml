@@ -4,7 +4,7 @@ question:
   process_subtitle_i18n: poll_templates.question_round.process_subtitle
   process_introduction_i18n: poll_templates.question_round.process_introduction
   reason_prompt_i18n: poll_templates.question_round.reason_prompt
-  title_i18n: poll_templates.question_round.title
+  title_placeholder_i18n: poll_templates.question_round.title
   details_i18n: poll_templates.question_round.details
   default_duration_in_days: 5
   tags_i18n:
@@ -15,7 +15,7 @@ count:
   process_name_i18n: decision_tools_card.count_title
   process_subtitle_i18n: poll_templates.opt_in.process_subtitle
   process_introduction_i18n: poll_templates.opt_in.process_introduction
-  title_i18n: poll_templates.opt_in.title
+  title_placeholder_i18n: poll_templates.opt_in.title
   details_i18n: poll_templates.opt_in.details
   default_duration_in_days: 3
   poll_options:
@@ -37,7 +37,7 @@ check:
   process_name_i18n: decision_tools_card.check_title
   process_subtitle_i18n: poll_templates.sense_check.process_subtitle
   process_introduction_i18n: poll_templates.sense_check.process_introduction
-  title_i18n: poll_templates.sense_check.title
+  title_placeholder_i18n: poll_templates.sense_check.title
   details_i18n: poll_templates.sense_check.details
   default_duration_in_days: 3
   tags_i18n:
@@ -67,7 +67,7 @@ proposal:
   process_name_i18n: decision_tools_card.proposal_title
   process_subtitle_i18n: poll_templates.proposal.process_subtitle
   process_introduction_i18n: poll_templates.proposal.process_introduction
-  title_i18n: poll_templates.proposal.title
+  title_placeholder_i18n: poll_templates.proposal.title
   details_i18n: poll_templates.proposal.details
   default_duration_in_days: 7
   poll_options:
@@ -97,7 +97,7 @@ meeting:
   process_subtitle_i18n: poll_templates.time_poll.process_subtitle
   process_introduction_i18n: poll_templates.time_poll.process_introduction
   reason_prompt_i18n: poll_templates.time_poll.reason_prompt
-  title_i18n: poll_templates.time_poll.title
+  title_placeholder_i18n: poll_templates.time_poll.title
   details_i18n: poll_templates.time_poll.details
   chart_type: grid
   min_score: 0
@@ -110,7 +110,7 @@ poll:
   process_name_i18n: poll_common_form.voting_methods.simple_poll
   process_subtitle_i18n: poll_templates.simple_poll.process_subtitle
   process_introduction_i18n: poll_templates.simple_poll.process_introduction
-  title_i18n: poll_templates.simple_poll.title
+  title_placeholder_i18n: poll_templates.simple_poll.title
   details_i18n: poll_templates.simple_poll.details
   default_duration_in_days: 3
 
@@ -119,7 +119,7 @@ dot_vote:
   process_name_i18n: decision_tools_card.dot_vote_title
   process_subtitle_i18n: poll_templates.dot_vote.process_subtitle
   process_introduction_i18n: poll_templates.dot_vote.process_introduction
-  title_i18n: poll_templates.dot_vote.title
+  title_placeholder_i18n: poll_templates.dot_vote.title
   details_i18n: poll_templates.dot_vote.details
   default_duration_in_days: 3
 
@@ -128,7 +128,7 @@ score:
   process_name_i18n: decision_tools_card.score_title
   process_subtitle_i18n: poll_templates.score_poll.process_subtitle
   process_introduction_i18n: poll_templates.score_poll.process_introduction
-  title_i18n: poll_templates.score_poll.title
+  title_placeholder_i18n: poll_templates.score_poll.title
   details_i18n: poll_templates.score_poll.details
   default_duration_in_days: 3
 
@@ -137,7 +137,7 @@ ranked_choice:
   process_name_i18n: decision_tools_card.ranked_choice_title
   process_subtitle_i18n: poll_templates.ranked_choice.process_subtitle
   process_introduction_i18n: poll_templates.ranked_choice.process_introduction
-  title_i18n: poll_templates.ranked_choice.title
+  title_placeholder_i18n: poll_templates.ranked_choice.title
   details_i18n: poll_templates.ranked_choice.details
 
 advice:
@@ -145,7 +145,7 @@ advice:
   process_name_i18n: decision_tools_card.advice_title
   process_subtitle_i18n: poll_templates.advice.process_subtitle
   process_introduction_i18n: poll_templates.advice.process_introduction
-  title_i18n: poll_templates.advice.title
+  title_placeholder_i18n: poll_templates.advice.title
   details_i18n: poll_templates.advice.details
   tags_i18n:
     - poll_common.advice_process
@@ -168,7 +168,7 @@ consent:
   process_name_i18n: decision_tools_card.consent_title
   process_subtitle_i18n: poll_templates.consent.process_subtitle
   process_introduction_i18n: poll_templates.consent.process_introduction
-  title_i18n: poll_templates.consent.title
+  title_placeholder_i18n: poll_templates.consent.title
   details_i18n: poll_templates.consent.details
   default_duration_in_days: 7
   tags_i18n:
@@ -188,7 +188,7 @@ consensus:
   process_name_i18n: decision_tools_card.consensus_title
   process_subtitle_i18n: poll_templates.consensus.process_subtitle
   process_introduction_i18n: poll_templates.consensus.process_introduction
-  title_i18n: poll_templates.consensus.title
+  title_placeholder_i18n: poll_templates.consensus.title
   details_i18n: poll_templates.consensus.details
   default_duration_in_days: 7
   notify_on_closing_soon: 3
@@ -225,7 +225,7 @@ gradients_of_agreement:
   process_name_i18n: decision_tools_card.gradients_of_agreement_title
   process_subtitle_i18n: poll_templates.gradients_of_agreement.process_subtitle
   process_introduction_i18n: poll_templates.gradients_of_agreement.process_introduction
-  title_i18n: poll_templates.gradients_of_agreement.title
+  title_placeholder_i18n: poll_templates.gradients_of_agreement.title
   details_i18n: poll_templates.gradients_of_agreement.details
   default_duration_in_days: 5
   tags_i18n:

@@ -18,11 +18,13 @@ class DiscussionSerializer < ApplicationSerializer
              :content_locale,
              :description,
              :description_format,
+             :discussion_template_id,
              :ranges,
              :items_count,
              :last_comment_at,
              :last_activity_at,
              :closed_at,
+             :closer_id,
              :seen_by_count,
              :members_count,
              :created_at,
@@ -36,9 +38,7 @@ class DiscussionSerializer < ApplicationSerializer
              :newest_first,
              :max_depth,
              :discarded_at,
-             :secret_token,
-             :source_template_id,
-             :template
+             :secret_token
 
   attributes_from_reader :discussion_reader_id,
                          :discussion_reader_volume,
@@ -55,8 +55,13 @@ class DiscussionSerializer < ApplicationSerializer
   has_many :active_polls, serializer: PollSerializer, root: :polls
   has_one :created_event, serializer: EventSerializer, root: :events
   has_one :forked_event, serializer: EventSerializer, root: :events
+  has_one :closer, serializer: AuthorSerializer, root: :users
 
   hide_when_discarded [:description, :title]
+
+  def include_closer?
+    object.closer_id.present?
+  end
 
   def include_mentioned_usernames?
     description_format == "md"

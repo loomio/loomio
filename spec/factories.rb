@@ -7,6 +7,7 @@ FactoryBot.define do
   factory :membership do |m|
     m.user { |u| u.association(:user)}
     m.group { |g| g.association(:group)}
+    accepted_at { 1.day.ago }
   end
 
   factory :pending_membership, class: Membership do |m|
@@ -215,6 +216,7 @@ FactoryBot.define do
     title { "This is a poll" }
     details { "with a description" }
     association :author, factory: :user
+    association :group
     poll_options { {name: "agree"} }
     created_at { 2.days.ago }
     notify_on_closing_soon { "voters" }

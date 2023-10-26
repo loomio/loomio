@@ -18,6 +18,9 @@ import StartGroupPage from './components/start_group/page'
 import ContactPage from './components/contact/page'
 import EmailSettingsPage from './components/email_settings/page'
 import ThreadFormPage from './components/thread/form_page'
+import ThreadTemplateFormPage from './components/thread_template/form_page'
+import ThreadTemplateIndexPage from './components/thread_template/index_page'
+import ThreadTemplateBrowsePage from './components/thread_template/browse_page'
 import UserPage from './components/user/page'
 import ThreadsPage from './components/threads/page'
 import StrandPage from './components/strand/page'
@@ -56,7 +59,8 @@ router = new Router
       { x: 0, y: 0 }
 
   routes: [
-    {path: '/try', component: DemosPage},
+    {path: '/demo', component: DemosPage},
+    {path: '/try', redirect: '/g/new'},
     {path: '/users/sign_in', redirect: '/dashboard' },
     {path: '/users/sign_up', redirect: '/dashboard' },
     {path: '/tasks', component: TasksPage},
@@ -76,6 +80,10 @@ router = new Router
     {path: '/u/:key/:stub?', component: UserPage },
     {path: '/d/new', component: ThreadFormPage },
     {path: '/d/:key/edit', component: ThreadFormPage },
+    {path: '/thread_templates/browse', component: ThreadTemplateBrowsePage },
+    {path: '/thread_templates/new', component: ThreadTemplateFormPage },
+    {path: '/thread_templates/:id', component: ThreadTemplateFormPage },
+    {path: '/thread_templates', component: ThreadTemplateIndexPage },
     {
       path: '/d/:key',
       component: StrandPage,

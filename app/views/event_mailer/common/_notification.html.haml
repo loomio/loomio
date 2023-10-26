@@ -13,7 +13,7 @@
         - if event.user
           %td= render "avatar", user: event.user
         %td.base-mailer__event-headline
-          %h2.text-subtitle-1.ml-2=raw t(key, actor: event.user.name, title: title, poll_type: poll_type, site_name: AppConfig.theme[:site_name])
+          %h2.text-subtitle-1.ml-2=raw t(key, actor: event.user.name_or_username, title: title, poll_type: poll_type, site_name: AppConfig.theme[:site_name])
       - if message.present?
         %tr
           %td{colspan: "2" }

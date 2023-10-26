@@ -5,7 +5,7 @@ describe MembershipService do
   let(:user)  { create :user }
   let(:admin) { create :user }
   let(:unverified_user) { create :user, email_verified: false }
-  let(:membership) { create :membership, group: group, user: unverified_user }
+  let(:membership) { create :membership, group: group, user: unverified_user, accepted_at: nil }
 
   before { group.add_admin! admin }
 
@@ -67,7 +67,7 @@ describe MembershipService do
 
   describe 'with alien group' do
     let!(:alien_group) { create :group }
-    let(:membership) { create :membership, group: group, inviter: admin, user: user, experiences: { invited_group_ids: [alien_group.id] }  }
+    let(:membership) { create :membership, group: group, inviter: admin, user: user, experiences: { invited_group_ids: [alien_group.id] }, accepted_at: nil  }
 
     before do
       MembershipService.redeem(membership: membership, actor: user)

@@ -62,6 +62,8 @@ fr:
     share_a_custom_configuration: Partager une configuration personnalisée avec d’autres membres de votre groupe
     loomio_default_templates: Modèles par défaut de Loomio
     which_templates_would_you_like_to_use: Quels modèles souhaitez-vous utiliser ?
+    template_gallery: Galerie de modèles
+    trial_needs_user: Pour démarrer votre essai gratuit de Loomio, veuillez vous connecter.
   doctypes:
     youtube_video: Video Youtube
     image: Image
@@ -314,6 +316,8 @@ fr:
     prefix_eg: par exemple {{val}}
     are_you_sure: Es-tu sûr?
     visit_loomio_help: Visitez l'aide de Loomio
+    admin_menu: Menu administrateur
+    api_docs: Documents sur l'API
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -727,6 +731,7 @@ fr:
     privacy_organisation: La discussion sera visible uniquement pour les membres de {{parent}} et les membres de {{group}}.
     fork_notice: Une nouvelle discussion sera créée avec %{count} items de {{title}}
     notify_group: Notifier le groupe
+    new_thread_from_template: 'Nouveau fil de discussion : %{process_name}'
   announcement:
     send_discussion: Envoyer la discussion
     send_group: Inviter des personnes à {{name}}
@@ -832,6 +837,9 @@ fr:
       visible_to_group: N'importe qui dans {{group}} pourra voir cette discussion
       visible_to_guests: Seules les personnes invitées peuvent voir cette discussion
       click_group_to_see_individuals: Cliquez sur groupe pour voir les individus
+      invite_people_to_evaluate_loomio: Invitez des personnes dans votre groupe Loomio pour prendre une décision ensemble
+      invitation_message_default: J'ai créé ce groupe Loomio pour nous aider à prendre des décisions ensemble. Veuillez accepter mon invitation. Cela ne prend qu’une minute pour s’inscrire. Merci.
+      type_or_paste_email_addresses_to_invite: Saisissez ou collez les adresses e-mail à inviter
     members_list:
       title: Partagé avec
       last_notified: Notifié⋅e(s)
@@ -1095,6 +1103,7 @@ fr:
       parent_members: 'Confidentialité: Ce groupe est visible pour les membres de {{parentGroupName}} et les membres de {{groupName}}'
       public: 'Confidentialité: Ce groupe est visible par tous sur internet'
       aria_label: 'Groupe privé : {{privacy}}'
+    decisions: Les décisions
   export_data_modal:
     title: Comment souhaitez-vous utiliser vos données ?
     as_csv: Ouvrir dans une feuille de calcul
@@ -1211,6 +1220,8 @@ fr:
     upload_logo: Télécharger le logo
     upload_cover_photo: Télécharger la photo de couverture
     group_handle_placeholder: 'Utilisé dans l''URL de votre groupe : {{host}}/{{handle}}'
+    new_description_placeholder: Pourquoi testez-vous Loomio ? Quelles décisions devez-vous prendre ensemble ?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Comment comptez-vous utiliser Loomio ?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Pourquoi est-ce important pour votre groupe ?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Quelles décisions devez-vous prendre ?</h3><p></p>
   group_export_modal:
     title: Exporter les données de votre groupe
     body: |
@@ -1354,6 +1365,8 @@ fr:
     help_translate: Pouvez vous nous aider à traduire Loomio?
     updated_on_sign_in: Fourni par votre navigateur et mis à jour lorsque vous vous connectez
     deactivated_user: Utilisateur désactivé
+    account_is_bot: Ceci est un compte de robot
+    bot_account_warning: Les comptes de robots ne seront pas invités à voter dans les sondages ou à participer aux discussions
   text_editor:
     x_of_y_characters: "{{x}} / {{y}} caractères"
     select_text_to_link: Sélectionnez le texte à lier et réessayez
@@ -1622,6 +1635,7 @@ fr:
       Notre objectif est de répondre à tous vos messages en moins de 24 heures.
     success: Merci pour votre message, {{name}}. Nous prendrons rapidement contact.
     success_via_email: Merci pour votre message, {{name}}. Nous vous répondrons par e-mail dans les 24 heures.
+    need_message: Veuillez entrer un message afin que nous puissions vous aider :-)
   explore_page:
     header: Explorer les groupes
     search_placeholder: Rechercher des groupes publics
@@ -1652,6 +1666,7 @@ fr:
     meeting: Réunion
     gradients_of_agreement_title: Gradients d'accord
     question_title: Tour de questions
+    recommended: Recommandé
   poll_option_form:
     edit_option: Option Modifier
     option_name: Nom de l’option
@@ -1777,6 +1792,8 @@ fr:
     include_subgroups_mine: "{{name}} et mes sous-groupes"
     include_subgroups_all: "{{name}} et tous les sous-groupes"
     no_results_found: Pas de résultats pour "{{search}}"
+    welcome_to_your_new_group: Bienvenue dans votre nouveau groupe Loomio !
+    lets_start_a_thread: Commençons un fil de discussion. Cliquez sur "Nouveau fil de discussion" pour continuer.
   members_panel:
     no_results: 'Aucun membres trouvés '
     everyone: Tous
@@ -1804,6 +1821,8 @@ fr:
     last_seen: Vu en dernier le {{date}}
     invited_by_name: Invité par {{name}}
     accepted: Membres
+    bot: Bot
+    all: Tous
   polls_panel:
     new_poll: Nouveau sondage
     any_type: Tous types
@@ -2406,6 +2425,7 @@ fr:
       read_memberships: lire les appartenances
       manage_memberships: gérer les appartenances (ajouter ou supprimer des membres du groupe)
     include_body_label: Inclure le corps du message dans la notification
+    deprecated: Cette API est obsolète. Veuillez passer à APIv2 (voir la documentation API dans le menu des paramètres de votre groupe)
   powered_by:
     this_is_loomio_md: Loomio est une application pour prendre des décisions ensemble. [Essayez gratuitement] (https://www.loomio.com)
     slogan: De meilleures décisions ensemble
@@ -2425,6 +2445,8 @@ fr:
       community: Groupe communautaire
       government: Gouvernement ou collectivités locales
       other: Autre
+      membership: Organisation des membres
+      self_managing: Organisation autogérée
   poll_templates:
     proposal:
       process_subtitle: Faire une proposition pour prendre une décision
@@ -2571,3 +2593,36 @@ fr:
   user_name_modal:
     user_name_updated: Nom d'utilisateur mis à jour
     set_user_name: Définir le nom d'utilisateur
+  thread_template:
+    browse_public_templates: Parcourir la galerie de modèles
+    thread_template_settings: Paramètres du modèle de fil de discussion
+    start_a_new_thread: Démarrer un nouveau fil de discussion
+    thread_template_saved: Modèle de discussion enregistré
+    these_are_public_templates: Ces modèles sont disponibles pour que vous puissiez les copier ou les modifier en fonction de votre groupe.
+    these_are_templates: Ce sont les modèles de fil de discussion de votre groupe. Les modèles vous guident à travers les processus décisionnels courants.
+    default_title_label: Titre par défaut
+    default_title_hint: Pré-remplissez le champ de titre avec du texte modifiable. Ceci est facultatif – laissez vide en cas de doute.
+    title_placeholder_label: Exemple de titre
+    title_placeholder_hint: Un exemple à afficher en arrière-plan du champ titre
+    title_placeholder_placeholder: par exemple, voici à quoi ressemble le texte d'arrière-plan
+    example_description_label: Exemple de description
+    example_description_placeholder: Fournir un modèle que les gens peuvent utiliser pour démarrer un fil de discussion avec
+    hidden_templates: Modèles cachés
+    confirm_delete: Êtes-vous sûr de vouloir supprimer définitivement ce modèle de fil de discussion ? Aucun fil de discussion ne sera supprimé pour cette raison.
+    add_proposal_or_poll_template: Ajouter une proposition ou un modèle de sondage
+    recommended_proposal_or_poll_templates: Modèles de proposition ou de sondage recommandés
+    decision_templates: Modèles de décision
+    decision_templates_help: Sélectionnez n’importe quelle proposition ou modèle de sondage qui aide à mener à bien ce processus.
+    share_in_template_gallery: Partagez ce modèle dans la galerie de modèles publique
+  record_modal:
+    record_video: Enregistrer une vidéo
+    record_audio: Enregistrement audio
+    record: Enregistrer
+    stop: Arrêt
+    no_mic: Impossible de trouver un microphone
+    no_camera: Impossible de trouver une caméra
+    listen_to_audio: Écouter l'audio
+    watch_video: Regarder la vidéo
+    audio_transcript: Transcription audio : %{text}
+    why_type_when_you_can_talk: Pourquoi taper quand on peut parler ? Envoyer un enregistrement vocal
+    transcript_included: Une transcription de l'enregistrement sera annexée à votre message

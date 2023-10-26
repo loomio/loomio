@@ -56,6 +56,8 @@ hu:
     demo_needs_user: A demó elindításához regisztrálnia kell (vagy be kell jelentkeznie) Loomio-felhasználóként. Ez ingyenes, és csak egy percet vesz igénybe.
     this_is_a_template_for_new_threads: Ez egy sablon az új szálak számára
     share_a_custom_configuration: Egyéni konfiguráció megosztása a csoport többi tagjával
+    template_gallery: Sablongaléria
+    trial_needs_user: Az ingyenes Loomio próbaidőszak megkezdéséhez jelentkezzen be.
   doctypes:
     image: Kép
     excel: Táblázat
@@ -308,6 +310,8 @@ hu:
     today: Ma
     in_x_days: "%{x} napon belül"
     visit_loomio_help: Látogassa meg a Loomio súgóját
+    admin_menu: Admin menü
+    api_docs: API-dokumentumok
   merge_accounts:
     modal:
       submit: Ellenőrzés
@@ -699,6 +703,7 @@ hu:
     privacy_private: Csak a csoport tagjai láthatják ezt a szálat
     fork_notice: 'Új szál jön létre %{count} elemmel a következőtől: {{title}}'
     notify_group: Értesítés a csoportról
+    new_thread_from_template: 'Új szál: %{process_name}'
   announcement:
     send_discussion: Téma küldése
     send_group: 'Meghívás a következőhöz: {{name}}'
@@ -772,6 +777,9 @@ hu:
       visible_to_group: A(z) {{csoport}} tagja láthatja ezt a szálat.
       visible_to_guests: Csak a meghívott személyek láthatják ezt a szálat.
       click_group_to_see_individuals: Kattintson a csoportra az egyének megtekintéséhez
+      invite_people_to_evaluate_loomio: Hívjon meg néhány embert a Loomio csoportjába, hogy közösen döntsenek
+      invitation_message_default: Azért hoztam létre ezt a Loomio csoportot, hogy segítsen nekünk közös döntéseket hozni. Kérem, fogadja el meghívásomat. Csak egy percet vesz igénybe a csatlakozás. Köszönöm.
+      type_or_paste_email_addresses_to_invite: Írja be vagy illessze be a meghíváshoz szükséges e-mail címeket
     members_list:
       title: Megosztva vele
       last_notified: Értesített
@@ -1047,6 +1055,7 @@ hu:
     view_closed_threads: Lezárt szálak megtekintése
     see_all_members: Az összes %{count} tag megtekintése
     pending_invitations: "+ %{count} függőben"
+    decisions: Döntések
   description_card:
     title: A csoport leírása
     placeholder: A csoport adminisztrátorai ezt a területet használhatják a csoport céljának leírására, így mindenki tudja, miért van itt.
@@ -1156,6 +1165,8 @@ hu:
     members_can_raise_motions_help: Lehetővé teszi a tagoknak, hogy szavazásokat indítsanak és javaslatokat tegyenek a megbeszéléseken vagy a csoporton belül
     admins_can_edit_user_content: Az adminisztrátorok szerkeszthetik a tagok megjegyzéseit
     admins_can_edit_user_content_help: A rendszergazdák szerkeszthetik a tagok által írt tartalmat
+    new_description_placeholder: Miért próbálod ki a Loomio-t? Milyen döntéseket kell közösen meghoznotok?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Hogyan kívánja használni a Loomio-t?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Miért fontos ez a csoportod számára?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Milyen döntéseket kell meghoznia?</h3><p></p>
   group_export_modal:
     title: Csoport adatok letöltése
     submit: Letöltés indítása
@@ -1291,6 +1302,8 @@ hu:
     help_translate: Tudna segíteni a Loomio lefordításában?
     updated_on_sign_in: A böngésző biztosítja, és bejelentkezéskor frissül
     deactivated_user: Deaktivált felhasználó
+    account_is_bot: Ez egy bot fiók
+    bot_account_warning: A robotfiókokat nem hívják meg szavazásra vagy vitákban való részvételre
   text_editor:
     insert_link: Illessz be egy hivatkozást
     insert_embedded_url: Videó beágyazása
@@ -1543,6 +1556,7 @@ hu:
     this_is_for: Ez egy nagyszerű hely értékesítési, képzési vagy előfizetési kérdésekhez, vagy támogatás kéréséhez a Loomio használatával.
     read_the_manual: Tudta, hogy a <a href="{{link}}" target="_blank">Súgó kézikönyvünk</a> GYIK-eket, valamint részletes útmutatókat tartalmaz a Loomióval kapcsolatos viták és döntések megkönnyítéséhez?
     success_via_email: Köszönjük üzenetét, {{name}}. 24 órán belül e-mailben válaszolunk.
+    need_message: Írj üzenetet, hogy segíthessünk :-)
   explore_page:
     header: Fedezze fel a csoportokat
     search_placeholder: Keress nyilvános csoportokat
@@ -1573,6 +1587,7 @@ hu:
     dot_vote_title: Pont szavazás
     gradients_of_agreement_title: Az egyetértés gradiensei
     question_title: Kérdés kör
+    recommended: Ajánlott
   poll_common:
     vote_now: Szavazz most
     have_your_say: Mondd el a véleményed
@@ -1688,6 +1703,8 @@ hu:
     include_subgroups_all: "{{name}} és minden alcsoport"
     no_results_found: Nincs eredmény a (z) "{{search}}" kifejezésre
     unread: Olvasatlan (%{count})
+    welcome_to_your_new_group: Üdvözöljük új Loomio csoportjában!
+    lets_start_a_thread: Kezdjünk egy szálat. A folytatáshoz kattintson az "Új szál" gombra.
   members_panel:
     everyone: Mindenki
     sort: Rendezés
@@ -1715,6 +1732,8 @@ hu:
     guest: Vendég
     last_seen: 'Utoljára látott: {{dátum}}'
     invited_by_name: 'Meghívta: {{name}}'
+    bot: Bot
+    all: Minden
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus
@@ -2236,6 +2255,7 @@ hu:
       read_memberships: tagságokat olvasni
       manage_memberships: tagságok kezelése (csoporttagok hozzáadása vagy eltávolítása)
     include_body_label: Az üzenet szövegrésze az értesítéshez
+    deprecated: Ez az API elavult. Kérjük, lépjen át APIv2-re (lásd az API-dokumentumokat a csoportbeállítások menüjében)
   powered_by:
     slogan: Jobb döntések közösen
     powered_by_loomio: A Loomio az oldal motorja
@@ -2255,6 +2275,8 @@ hu:
       government: Önkormányzat / Helyi önkormányzat
       other: Egyéb
       professional: Professzionális szolgáltató cég
+      membership: Tagsági szervezet
+      self_managing: Öngazdálkodó szervezet
   email_to_group:
     email_to_group_settings: E-mail-csoportok beállításai
     email_to_group_address: E-mail cím a csoporthoz
@@ -2510,3 +2532,36 @@ hu:
   user_name_modal:
     user_name_updated: Felhasználónév frissítve
     set_user_name: Felhasználónév beállítása
+  thread_template:
+    browse_public_templates: Böngésszen a sablongalériában
+    thread_template_settings: Szálsablon beállításai
+    start_a_new_thread: Indíts egy új témát
+    thread_template_saved: Szálsablon mentve
+    these_are_public_templates: Ezeket a sablonokat másolhatja vagy módosíthatja, hogy megfeleljen a csoportjának
+    these_are_templates: Ezek a szálsablonok a csoportodban. A sablonok végigvezetik a gyakori döntéshozatali folyamatokon.
+    default_title_label: Alapértelmezett cím
+    default_title_hint: Töltse ki előre a cím mezőt szerkeszthető szöveggel. Ez nem kötelező – hagyja üresen, ha nem biztos benne.
+    title_placeholder_label: Példa cím
+    title_placeholder_hint: A címmező hátterében megjelenítendő példa
+    title_placeholder_placeholder: pl. Így néz ki a háttérszöveg
+    example_description_label: Példa leírás
+    example_description_placeholder: Adjon meg egy sablont, amellyel az emberek szálat indíthatnak
+    hidden_templates: Rejtett sablonok
+    confirm_delete: Biztos benne, hogy véglegesen törli ezt a szálsablont? Ennek eredményeként egyetlen szál sem törlődik.
+    add_proposal_or_poll_template: Adjon hozzá javaslatot vagy szavazási sablont
+    recommended_proposal_or_poll_templates: Javasolt javaslat- vagy szavazási sablonok
+    decision_templates: Döntési sablonok
+    decision_templates_help: Válassza ki azokat az ajánlatokat vagy szavazási sablonokat, amelyek segítenek a folyamat befejezésében.
+    share_in_template_gallery: Ossza meg ezt a sablont a nyilvános sablongalériában
+  record_modal:
+    record_video: Videó rögzítése
+    record_audio: Hang rögzítése
+    record: Rekord
+    stop: Állj meg
+    no_mic: Nem található mikrofon
+    no_camera: Nem található kamera
+    listen_to_audio: Hallgassa meg a hangot
+    watch_video: Videót nézni
+    audio_transcript: 'Hang átirata: %{text}'
+    why_type_when_you_can_talk: Miért írj, ha tudsz beszélni? Hangfelvétel küldése
+    transcript_included: Az üzenethez csatoljuk a felvétel átiratát

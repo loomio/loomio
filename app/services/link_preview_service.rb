@@ -11,7 +11,8 @@ module LinkPreviewService
              doc.css('h1').first&.text].reject(&:blank?).first
 
     bad_titles = [
-      'Google Docs: Sign-in'
+      'Google Docs: Sign-in',
+      'Google Drive: Sign-in'
     ]
 
     return nil if title.blank?

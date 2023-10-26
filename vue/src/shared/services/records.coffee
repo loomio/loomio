@@ -5,6 +5,7 @@ import loki        from '@/shared/record_store/loki'
 import CommentRecordsInterface from '@/shared/interfaces/comment_records_interface'
 import ChatbotRecordsInterface from '@/shared/interfaces/chatbot_records_interface'
 import DiscussionRecordsInterface from '@/shared/interfaces/discussion_records_interface'
+import DiscussionTemplateRecordsInterface from '@/shared/interfaces/discussion_template_records_interface'
 import DiscussionReaderRecordsInterface from '@/shared/interfaces/discussion_reader_records_interface'
 import EventRecordsInterface from '@/shared/interfaces/event_records_interface'
 import GroupRecordsInterface from '@/shared/interfaces/group_records_interface'
@@ -12,7 +13,6 @@ import MembershipRecordsInterface from '@/shared/interfaces/membership_records_i
 import MembershipRequestRecordsInterface from '@/shared/interfaces/membership_request_records_interface'
 import NotificationRecordsInterface from '@/shared/interfaces/notification_records_interface'
 import UserRecordsInterface from '@/shared/interfaces/user_records_interface'
-import SearchResultRecordsInterface from '@/shared/interfaces/search_result_records_interface'
 import VersionRecordsInterface from '@/shared/interfaces/version_records_interface'
 import TranslationRecordsInterface from '@/shared/interfaces/translation_records_interface'
 import SessionRecordsInterface from '@/shared/interfaces/session_records_interface'
@@ -41,6 +41,7 @@ records.addRecordsInterface CommentRecordsInterface
 records.addRecordsInterface ChatbotRecordsInterface
 records.addRecordsInterface DemoRecordsInterface
 records.addRecordsInterface DiscussionRecordsInterface
+records.addRecordsInterface DiscussionTemplateRecordsInterface
 records.addRecordsInterface DiscussionReaderRecordsInterface
 records.addRecordsInterface EventRecordsInterface
 records.addRecordsInterface GroupRecordsInterface
@@ -48,7 +49,6 @@ records.addRecordsInterface MembershipRecordsInterface
 records.addRecordsInterface MembershipRequestRecordsInterface
 records.addRecordsInterface NotificationRecordsInterface
 records.addRecordsInterface UserRecordsInterface
-records.addRecordsInterface SearchResultRecordsInterface
 records.addRecordsInterface VersionRecordsInterface
 records.addRecordsInterface TranslationRecordsInterface
 records.addRecordsInterface SessionRecordsInterface

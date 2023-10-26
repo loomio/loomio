@@ -29,19 +29,20 @@ class Group < ApplicationRecord
   scope :not_demo, -> { joins(:subscription).where('subscriptions.plan != ?', 'demo') }
 
   has_many :discussions, dependent: :destroy
+  has_many :discussion_templates, dependent: :destroy
   has_many :public_discussions, -> { visible_to_public }, foreign_key: :group_id, class_name: 'Discussion'
   has_many :comments, through: :discussions
 
   has_many :all_memberships, dependent: :destroy, class_name: 'Membership'
   has_many :all_members, through: :all_memberships, source: :user
 
-  has_many :memberships, -> { where archived_at: nil }
+  has_many :memberships, -> { active }
   has_many :members, through: :memberships, source: :user
 
-  has_many :accepted_memberships, -> { accepted }, class_name: 'Membership'
+  has_many :accepted_memberships, -> { active.accepted }, class_name: "Membership"
   has_many :accepted_members, through: :accepted_memberships, source: :user
 
-  has_many :admin_memberships, -> { where admin: true, archived_at: nil }, class_name: 'Membership'
+  has_many :admin_memberships, -> { active.where(admin: true) }, class_name: 'Membership'
   has_many :admins, through: :admin_memberships, source: :user
 
   has_many :membership_requests, dependent: :destroy
@@ -118,7 +119,7 @@ class Group < ApplicationRecord
   define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
   define_counter_cache(:open_discussions_count)     { |g| g.discussions.is_open.count }
   define_counter_cache(:closed_discussions_count)   { |g| g.discussions.is_closed.count }
-  define_counter_cache(:template_discussions_count) { |g| g.discussions.templates.count }
+  define_counter_cache(:discussion_templates_count) { |g| g.discussion_templates.kept.count }
   define_counter_cache(:subgroups_count)            { |g| g.subgroups.published.count }
   update_counter_cache(:parent, :subgroups_count)
 
@@ -271,18 +272,16 @@ class Group < ApplicationRecord
 
   def archive!
     Group.where(id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
-    Membership.where(group_id: id_and_subgroup_ids).update_all(archived_at: DateTime.now)
     reload
   end
 
   def unarchive!
-    Group.where(id: all_subgroup_ids.concat([id])).update_all(archived_at: nil)
-    Membership.where(group_id: all_subgroup_ids.concat([id])).update_all(archived_at: nil)
+    Group.where(id: id_and_subgroup_ids).update_all(archived_at: nil)
     reload
   end
 
   def org_memberships_count
-    Membership.not_archived.where(group_id: id_and_subgroup_ids).count('distinct user_id')
+    Membership.active.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
   def org_members_count
@@ -328,7 +327,7 @@ class Group < ApplicationRecord
   end
 
   def id_and_subgroup_ids
-    subgroup_ids.concat([id]).compact
+    subgroup_ids.concat([id]).compact.uniq
   end
 
   def identity_for(type)
@@ -356,6 +355,14 @@ class Group < ApplicationRecord
     else
       true
     end
+  end
+
+  def category=(val)
+    self[:info]['category'] = val
+  end
+
+  def category
+    self[:info]['category']
   end
 
   def categorize_poll_templates=(val)

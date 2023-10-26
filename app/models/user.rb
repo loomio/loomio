@@ -18,7 +18,7 @@ class User < ApplicationRecord
   extend NoSpam
   no_spam_for :name, :email
 
-  has_paper_trail only: [:email_newsletter]
+  has_paper_trail only: [:email_newsletter, :deactivated_at, :deactivator_id]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
   BOT_EMAILS = {
@@ -67,16 +67,8 @@ class User < ApplicationRecord
            -> { where('memberships.admin = ?', true) },
            class_name: 'Membership'
 
-  has_many :memberships, -> { where(archived_at: nil) }, dependent: :destroy
+  has_many :memberships, -> { active }, dependent: :destroy
   has_many :all_memberships, dependent: :destroy, class_name: "Membership"
-
-  has_many :archived_memberships,
-           -> { where('archived_at IS NOT NULL') },
-           class_name: 'Membership'
-
-  has_many :invited_memberships,
-           class_name: 'Membership',
-           foreign_key: :inviter_id
 
   has_many :groups,
            through: :memberships,
@@ -123,6 +115,7 @@ class User < ApplicationRecord
   before_save :set_avatar_initials
   initialized_with_token :unsubscribe_token,        -> { Devise.friendly_token }
   initialized_with_token :email_api_key,            -> { SecureRandom.hex(16) }
+  initialized_with_token :api_key,                  -> { SecureRandom.hex(16) }
 
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
@@ -135,13 +128,15 @@ class User < ApplicationRecord
   scope :unverified, -> { where(email_verified: false) }
   scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
+  scope :humans, -> { where(bot: false) }
+  scope :bots, -> { where(bot: true) }
 
   scope :mention_search, -> (user, model, query) do
     return self.none unless model.present?
-    active.verified.search_for(query).
+    active.search_for(query).
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{model.group_id || 0}").
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id || 0}").
-      where("(m.id IS NOT NULL AND m.archived_at IS NULL) OR
+      where("(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
              (dr.id IS NOT NULL AND dr.inviter_id IS NOT NULL AND dr.revoked_at IS NULL)")
   end
 
@@ -305,6 +300,9 @@ class User < ApplicationRecord
     end
   end
 
+  def name_or_username
+    self[:name] || self[:username]
+  end
 
   # http://stackoverflow.com/questions/5140643/how-to-soft-delete-user-with-devise/8107966#8107966
   def active_for_authentication?

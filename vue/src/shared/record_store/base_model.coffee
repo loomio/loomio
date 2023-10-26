@@ -78,12 +78,22 @@ export default class BaseModel
     @afterUpdateFns.forEach (fn) => fn(@)
 
   attributeIsModified: (attributeName) ->
+    strip = (val) ->
+      doc = new DOMParser().parseFromString(val, 'text/html');
+      o = (doc.body.textContent || "").trim()
+      if ['null', 'undefined'].includes(o)
+        ''
+      else
+        o
+
     original = @unmodified[attributeName]
     current = @[attributeName]
     if utils.isTimeAttribute(attributeName)
       !(original == current or isEqual(original, current))
     else
-      original != current && original != null && current != ''
+      return false if strip(original) == strip(current)
+      # console.log("#{attributeName}: #{strip(original)}, #{strip(current)}")
+      original != current
 
   modifiedAttributes: ->
     filter @attributeNames, (name) =>

@@ -393,7 +393,7 @@ class Poll < ApplicationRecord
              (p.author_id = users.id AND p.group_id IS NULL) OR
              (p.author_id = users.id AND dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
              (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL AND dr.admin = TRUE) OR
-             (m.id  IS NOT NULL AND m.archived_at IS NULL AND m.admin = TRUE) OR
+             (m.id  IS NOT NULL AND m.revoked_at IS NULL AND m.admin = TRUE) OR
              (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE AND s.admin = TRUE)")
   end
 
@@ -404,7 +404,7 @@ class Poll < ApplicationRecord
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
       where("(dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-             (m.id  IS NOT NULL AND m.archived_at IS NULL) OR
+             (m.id  IS NOT NULL AND m.revoked_at IS NULL) OR
              (s.id  IS NOT NULL AND s.revoked_at  IS NULL AND latest = TRUE)")
   end
 

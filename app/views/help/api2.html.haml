@@ -1,0 +1,162 @@
+%main
+  %h1 Loomio API /api/b2
+
+  %p /api/b2 was released in October 2023. It will replace the previous /api/b1
+
+  %p.mt-4 
+    Your API key is: #{@api_key}
+    %br
+    - if current_user.bot?
+      This user account is a bot. That's good! It will not be included in polls and notifications
+    - else
+      %span This user account is a human. You may want to 
+      %a{href: "/profile"} setup a bot account
+      %span for API requests.
+
+  Select a group for example commands
+  %table
+    - current_user.adminable_groups.each do |group|
+      %tr
+        %td=group.id
+        %td
+          %a{href: "?group_id=#{group.id}"}=group.full_name
+
+  %h2 create discussion
+
+  %h3 example
+  %pre
+    curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "title":"example thread", "recipient_emails":["#{current_user.email}"], "api_key": "#{@api_key}"}' #{root_url}api/b2/discussions
+
+  %h3 params
+  %table
+    %tr
+      %td group_id
+      %td group where thread will exist
+    %tr
+      %td title
+      %td title of the thread (required)
+    %tr
+      %td description
+      %td context for the thread (optional)
+    %tr
+      %td description_format
+      %td string. either 'md' or 'html' (optional, default: md)
+    %tr
+      %td recipient_audience
+      %td string 'group' or null. if 'group' whole group will be notified about the new thread (optional)
+    %tr
+      %td recipient_user_ids
+      %td array of user ids to notify or invite to the thread (optional)
+    %tr
+      %td recipient_emails
+      %td array of email addresses of people to invite to the thread (optional)
+    %tr
+      %td recipient_message
+      %td string. message to include in the email invitation (optional)
+
+  %h2 show discussion
+  %p Fetch a discussion using the discussion id (an integer) or key (a string) using the following request format
+
+  %h3 example
+  %pre
+    curl #{root_url}api/b2/discussions/abc123?api_key=#{@api_key}
+
+  %h2 create poll
+  %h3 example
+  - closing_at = 7.days.from_now.at_beginning_of_hour.utc.iso8601
+  %pre
+    curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "title":"example poll", "poll_type": "proposal", "options": ["agree", "disagree"], "closing_at": "#{closing_at}", "recipient_emails":["#{current_user.email}"], "api_key": "#{@api_key}"}' #{root_url}api/b2/polls
+
+  %h3 params
+  %table
+    %tr
+      %td group_id
+      %td integer. optional. default: null. id of group for poll. If discussion_id is passed, group_id is ignored.
+    %tr
+      %td discussion_id
+      %td integer. optional. default: null. id of discussion thread to add this poll to.
+    %tr
+      %td title
+      %td string. required. title of the poll
+    %tr
+      %td poll_type
+      %td string. required. values: 'proposal', 'poll', 'count', 'score', 'ranked_choice', 'meeting', 'dot_vote'
+    %tr
+      %td details
+      %td string. optional. the body text of the poll
+    %tr
+      %td details_format
+      %td string. optional. default: md. values: 'md' or 'html'.
+    %tr
+      %td options
+      %td
+        array of strings.
+        If poll_type is proposal then valid values are 'agree', 'disagree', 'abstain', 'block'.
+        If poll_type is meeting then a provide iso8601 date or datetime strings '2021-02-01' or '2022-02-15T23:32:39Z'.
+        For all other poll_types, any string is valid.
+    %tr
+      %td closing_at
+      %td iso8601 string or null. default: null. Specify when the poll closes with an iso8601 string such as '#{closing_at}'. If null then voting is disabled and poll is considered "Work in progress".
+    %tr
+      %td specified_voters_only
+      %td boolean. optional. default: false. true: only specified people can vote, false: everyone in the group will be invited to vote
+    %tr
+      %td hide_results
+      %td string. optional. default: 'off'. values: 'off', 'until_vote', 'until_closed'. allow voters to see the results before the poll has closed
+    %tr
+      %td shuffle_options
+      %td boolean. default false. display options to voters in random order.
+    %tr
+      %td anonymous
+      %td boolean. optional. default: false. true: hide identities of voters.
+    %tr
+      %td recipient_audience
+      %td string 'group' or null. optional. default: null. if 'group' whole group will be notified about the new thread.
+    %tr
+      %td notify_on_closing_soon
+      %td string. optional. default: 'nobody'. values: 'nobody', 'author', 'undecided_voters' or 'voters'. specify the who to send a reminder notification to, 24 hours before the poll closes.
+    %tr
+      %td recipient_user_ids
+      %td array of user ids to notify or invite
+    %tr
+      %td recipient_emails
+      %td array of email addresses of people to invite to vote
+    %tr
+      %td recipient_message
+      %td message to include in the email invitation
+    %tr
+      %td notify_recipients
+      %td boolean. default false. false: add people to a poll without sending notifications. true: everyone invited (in this request) will get a notification email.
+
+  %h2 show poll
+  %p Fetch a poll using the poll id (an integer) or key (a string)
+
+  %h3 example
+  %pre
+    curl #{root_url}api/b2/polls/abc123?api_key=#{@api_key}
+
+  %h2 list memberships
+  - url = "#{root_url}api/b2/memberships?api_key=#{@api_key}&group_id=#{@group_id}"
+  %a{href: url}=url
+  %pre
+    curl #{url}
+
+  %h2 manage memberships  
+  %p send a list of emails. it will invite all the new email addresses to the group. 
+  %pre
+    curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "emails":["person@example.com"], "api_key": "#{@api_key}"}' #{root_url}api/b2/memberships
+
+  %p if you pass remove_absent=1 then any members of the group who were not included in the list will be removed from the group. <b>be careful, you could remove everyone in your group!</b>
+  %pre
+    curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "emails":["person@example.com"], "remove_absent": 1, "api_key": "#{@api_key}"}' #{root_url}api/b2/memberships
+
+  %h3 params
+  %table
+    %tr
+      %td emails
+      %td array of strings. required. email addresses of people to invite into the group
+    %tr
+      %td remove_absent
+      %td boolean. If true, remove anyone from the group who's email is not present in the list
+
+  %p this returns an object with {added_emails: ["person@added.com"], removed_emails: ["person@removed.com"]}.

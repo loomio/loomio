@@ -69,6 +69,7 @@ export default
       template(v-slot:divider)
         v-icon mdi-chevron-right
     v-spacer
+    tags-display(:tags="discussion.tags" :group="discussion.group()")
     v-chip(
       v-if="discussion.private"
       small outlined
@@ -86,9 +87,7 @@ export default
 
   strand-title(:discussion="discussion")
 
-  .my-1.mb-2(v-if="discussion.tags.length")
-    tags-display(:tags="discussion.tags" :group="discussion.group()")
-  .mb-2
+  .mb-4
     user-avatar.mr-2(:user='author', :size='36')
     router-link.text--secondary(:to="urlFor(author)") {{authorName}}
     mid-dot
@@ -105,8 +104,8 @@ export default
     link-previews(:model="discussion")
     document-list(:model='discussion')
     attachment-list(:attachments="discussion.attachments")
-    action-dock.py-2(:model='discussion', :actions='dockActions', :menu-actions='menuActions')
-  strand-actions-panel(v-if="discussion.newestFirst", :discussion="discussion")
+    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
+  strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
 </template>
 <style lang="sass">
 @import '@/css/variables'

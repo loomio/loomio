@@ -38,10 +38,33 @@ describe API::V1::MembershipsController do
     end
 
     it 'allows group admin to set name of unverified user' do
+      unverified_user.update(name: 'present')
       post :user_name, params: {id: unverified_user.id, name: 'celine', username: 'diva99'}
       expect(response.status).to eq 200
       expect(unverified_user.reload.name).to eq "celine"
       expect(unverified_user.reload.username).to eq "diva99"
+    end
+
+    it 'allows group admin to set name of verified, nil name user' do
+      user_named_biff.update(email_verified: true, name: nil)
+      post :user_name, params: {id: user_named_biff.id, name: 'celine', username: 'diva99'}
+      expect(response.status).to eq 200
+      expect(user_named_biff.reload.name).to eq "celine"
+      expect(user_named_biff.reload.username).to eq "diva99"
+    end
+
+    it 'allows group admin to set name of verified, blank name user' do
+      user_named_biff.update(email_verified: true, name: '')
+      post :user_name, params: {id: user_named_biff.id, name: 'celine', username: 'diva99'}
+      expect(response.status).to eq 200
+      expect(user_named_biff.reload.name).to eq "celine"
+      expect(user_named_biff.reload.username).to eq "diva99"
+    end
+
+    it 'disallows admin to set name,username of unverified user in other group' do
+      Membership.where(group_id: group.id, user_id: unverified_user.id).delete_all
+      post :user_name, params: {id: unverified_user.id, name: 'celine', username: 'diva99'}
+      expect(response.status).to eq 403
     end
 
     it 'disallows non admin to set name,username of unverified user' do
@@ -52,7 +75,7 @@ describe API::V1::MembershipsController do
 
     it 'disallows group admin to set name,username of verified user' do
       post :user_name, params: {id: user_named_biff.id, name: 'celine', username: 'diva99'}
-      expect(response.status).to eq 404
+      expect(response.status).to eq 403
     end
   end
 

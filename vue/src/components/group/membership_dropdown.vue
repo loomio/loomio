@@ -22,7 +22,8 @@ export default
       @canToggleAdmin()
 
     canSetName: ->
-      !@membership.acceptedAt && !@membership.user().emailVerified && AbilityService.canAdminister(@membership.group())
+      AbilityService.canAdminister(@membership.group()) &&
+      (!@membership.user().name || !@membership.user().emailVerified)
 
     canSetTitle: ->
       AbilityService.canSetMembershipTitle(@membership)

@@ -1,6 +1,5 @@
 <script lang="coffee">
 import {slice, orderBy} from 'lodash'
-
 export default
   props:
     threads: Array
@@ -10,11 +9,9 @@ export default
     order:
       type: String
       default: '-lastActivityAt'
-
   computed:
     orderedThreads: ->
       slice(orderBy(@threads, @order), 0, @limit)
-
 </script>
 
 <template lang="pug">

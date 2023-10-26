@@ -54,6 +54,8 @@ pl:
     you_can_test_it_out: Możesz zaprosić inne osoby do przyłączenia się, zintegrować je z innymi narzędziami i spróbować podjąć jakieś decyzje.
     view_demo: Zobacz prezentację
     share_a_custom_configuration: Udostępnij niestandardową konfigurację innym osobom w swojej grupie
+    template_gallery: Galeria szablonów
+    trial_needs_user: Aby rozpocząć bezpłatny okres próbny Loomio, zaloguj się.
   doctypes:
     youtube_video: Film z YouTube
     image: Obraz
@@ -306,6 +308,8 @@ pl:
     today: Dzisiaj
     in_x_days: za %{x} dni
     visit_loomio_help: Odwiedź Loomio pomocy
+    admin_menu: Menu administratora
+    api_docs: Dokumentacja API
   merge_accounts:
     modal:
       title: Połącz konta
@@ -701,6 +705,7 @@ pl:
     privacy_public: Każdy może wyświetlić ten wątek, jeśli ma link
     privacy_private: Tylko członkowie grupy mogą przeglądać ten wątek
     fork_notice: Zostanie utworzony nowy wątek zawierający %{count} elementów z {{title}}
+    new_thread_from_template: 'Nowy wątek: %{process_name}'
   announcement:
     send_discussion: Wyślij wątek
     send_group: Zaproś ludzi do {{name}}
@@ -785,6 +790,9 @@ pl:
       added_none: Nikt nie zostanie dodany.
       group_title: "{{name}} (%{count} osób)"
       click_group_to_see_individuals: Kliknij grupę, aby zobaczyć osoby
+      invite_people_to_evaluate_loomio: Zaproś kilka osób do swojej grupy Loomio, aby wspólnie podjąć decyzję
+      invitation_message_default: Założyłem tę grupę Loomio, aby pomóc nam wspólnie podejmować decyzje. Proszę przyjąć moje zaproszenie. Aby dołączyć, wystarczy minuta. Dziękuję.
+      type_or_paste_email_addresses_to_invite: Wpisz lub wklej adresy e-mail, które chcesz zaprosić
     members_list:
       title: Udostępniono
       last_notified: Powiadomiono
@@ -1058,6 +1066,7 @@ pl:
     show_closed: "%{count} Zamknięte"
     see_all_members: Zobacz wszystkich członków %{count}
     pending_invitations: "+ %{count} oczekujących"
+    decisions: Decyzje
   export_data_modal:
     title: Jak chcesz wykorzystać swoje dane?
     as_csv: Otwórz w arkuszu kalkulacyjnym
@@ -1172,6 +1181,8 @@ pl:
     members_can_raise_motions_help: Zezwalaj członkom na rozpoczynanie ankiet i propozycji w ramach dyskusji lub grupy
     admins_can_edit_user_content: Administratorzy mogą edytować komentarze członków
     admins_can_edit_user_content_help: Zezwalaj administratorom na edytowanie treści napisanych przez członków
+    new_description_placeholder: Dlaczego wypróbowujesz Loomio? Jakie decyzje musicie podjąć wspólnie?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Jak zamierzasz używać Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Dlaczego jest to ważne dla Twojej grupy?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Jakie decyzje musisz podjąć?</h3><p></p>
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -1315,6 +1326,8 @@ pl:
     help_translate: Czy możesz pomóc nam przetłumaczyć Loomio?
     updated_on_sign_in: Dostarczane przez przeglądarkę i aktualizowane po zalogowaniu
     deactivated_user: Dezaktywowany użytkownik
+    account_is_bot: To jest konto bota
+    bot_account_warning: Konta botów nie będą zapraszane do głosowania w ankietach ani do udziału w dyskusjach
   text_editor:
     insert_link: Wstaw link
     insert_embedded_url: Wstaw wideo
@@ -1576,6 +1589,7 @@ pl:
     this_is_for: To świetne miejsce na zapytania dotyczące sprzedaży, szkoleń, subskrypcji lub prośby o wsparcie przy użyciu Loomio.
     read_the_manual: Czy wiesz, że nasz <a href="{{link}}" target="_blank">Podręcznik pomocy</a> zawiera najczęściej zadawane pytania, a także szczegółowe przewodniki ułatwiające dyskusje i podejmowanie decyzji w Loomio?
     success_via_email: Dziękujemy za wiadomość, {{imię}}. Odpowiemy e-mailem w ciągu 24 godzin.
+    need_message: Wpisz wiadomość, abyśmy mogli Ci pomóc :-)
   explore_page:
     header: Przeglądaj grupy
     search_placeholder: Wyszukaj grupy publiczne
@@ -1606,6 +1620,7 @@ pl:
     dot_vote_title: Głosowanie w kropki
     gradients_of_agreement_title: Gradienty zgodności
     question_title: Runda pytań
+    recommended: Zalecana
   poll_common:
     vote_now: Głosuj teraz
     review_due: Przejrzyj do
@@ -1721,6 +1736,8 @@ pl:
     include_subgroups_all: "{{name}} i wszystkie podgrupy"
     no_results_found: Brak wyników dla "{{search}}"
     unread: nieprzeczytane (%{count})
+    welcome_to_your_new_group: Witamy w Twojej nowej grupie Loomio!
+    lets_start_a_thread: Załóżmy wątek. Kliknij „Nowy wątek”, aby kontynuować.
   members_panel:
     no_results: Nie znaleziono osób
     everyone: Wszyscy
@@ -1748,6 +1765,8 @@ pl:
     invited_by_name: Zaproszony/a przez {{name}}
     accepted: Osoby
     show_users_in_subgroups: Pokaż także użytkowników w podgrupach
+    bot: Nerw
+    all: Wszystko
   polls_panel:
     new_poll: Nowe głosowanie
     any_type: Wszystkie rodzaje
@@ -2304,6 +2323,7 @@ pl:
       show_poll: pokaż ankietę
       read_memberships: przeczytaj członkostwo
       manage_memberships: zarządzać członkostwem (dodawać lub usuwać członków grupy)
+    deprecated: Ten interfejs API jest przestarzały. Przejdź na APIv2 (zobacz dokumentację API w menu ustawień grupy)
   powered_by:
     slogan: Lepsze decyzje razem
     powered_by_loomio: Wspierany przez Loomio
@@ -2322,6 +2342,8 @@ pl:
       nonprofit: Organizacja non-profit lub organizacja pozarządowa
       professional: Profesjonalna firma usługowa
       community: Grupa społecznościowa
+      membership: Organizacja członkowska
+      self_managing: Samorządna organizacja
     describe_other: Jaką kategorię nadałbyś swojej grupie?
   email_to_group:
     email_to_group_settings: Ustawienia poczty e-mail do grupy
@@ -2532,3 +2554,36 @@ pl:
   user_name_modal:
     user_name_updated: Nazwa użytkownika zaktualizowana
     set_user_name: Ustaw nazwę użytkownika
+  thread_template:
+    browse_public_templates: Przeglądaj galerię szablonów
+    thread_template_settings: Ustawienia szablonu wątku
+    start_a_new_thread: Rozpocznij nowy wątek
+    thread_template_saved: Szablon wątku został zapisany
+    these_are_public_templates: Szablony te można skopiować lub zmodyfikować, aby dopasować je do potrzeb swojej grupy
+    these_are_templates: To są szablony wątków w Twojej grupie. Szablony prowadzą Cię przez typowe procesy podejmowania decyzji.
+    default_title_label: Domyślny tytuł
+    default_title_hint: Wypełnij pole tytułu tekstem edytowalnym. Jest to opcjonalne — pozostaw puste, jeśli nie jesteś pewien.
+    title_placeholder_label: Przykładowy tytuł
+    title_placeholder_hint: Przykład do wyświetlenia w tle pola tytułowego
+    title_placeholder_placeholder: np. Tak wygląda tekst w tle
+    example_description_label: Przykładowy opis
+    example_description_placeholder: Podaj szablon, za pomocą którego ludzie będą mogli rozpocząć wątek
+    hidden_templates: Ukryte szablony
+    confirm_delete: Czy na pewno chcesz trwale usunąć ten szablon wątku? W rezultacie żaden wątek nie zostanie usunięty.
+    add_proposal_or_poll_template: Dodaj szablon propozycji lub ankiety
+    recommended_proposal_or_poll_templates: Polecane szablony propozycji lub ankiet
+    decision_templates: Wzory decyzji
+    decision_templates_help: Wybierz dowolne szablony propozycji lub ankiet, które pomogą ukończyć ten proces.
+    share_in_template_gallery: Udostępnij ten szablon w publicznej galerii szablonów
+  record_modal:
+    record_video: Nagrać wideo
+    record_audio: Nagrać dźwięk
+    record: Nagrywać
+    stop: Zatrzymywać się
+    no_mic: Nie udało się znaleźć mikrofonu
+    no_camera: Nie udało się znaleźć aparatu
+    listen_to_audio: Słuchaj dźwięku
+    watch_video: Obejrzyj wideo
+    audio_transcript: 'Transkrypcja audio: %{text}'
+    why_type_when_you_can_talk: Po co pisać, skoro można rozmawiać? Wyślij nagranie głosowe
+    transcript_included: Transkrypcja nagrania zostanie dołączona do Twojej wiadomości

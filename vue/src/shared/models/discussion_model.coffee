@@ -47,23 +47,26 @@ export default class DiscussionModel extends BaseModel
     usersNotifiedCount: null
     discussionReaderUserId: null
     pinnedAt: null
-    template: false
+    poll_template_keys_or_ids: []
 
-  cloneTemplate: ->
+  buildCopy: ->
     clone = @clone()
     clone.id = null
     clone.key = null
     clone.title = I18n.t('templates.copy_of_title', {title: clone.title})
-    clone.sourceTemplateId = @id
     clone.authorId = Session.user().id
     clone.pinnedAt = null
     clone.forkedEventIds = []
     clone.groupId = null
     clone.closedAt = null
+    clone.closerId = null
     clone.createdAt = null
     clone.updatedAt = null
-    clone.template = false
     clone
+
+  pollTemplates: ->
+    compact @pollTemplateKeysOrIds.map (keyOrId) =>
+      @recordStore.pollTemplates.find(keyOrId)
 
   audienceValues: ->
     name: @group().name
@@ -75,15 +78,13 @@ export default class DiscussionModel extends BaseModel
     @hasMany 'polls', sortBy: 'createdAt', sortDesc: true, find: {discardedAt: null}
     @belongsTo 'group'
     @belongsTo 'author', from: 'users'
+    @belongsTo 'closer', from: 'users'
     @hasMany 'discussionReaders'
-
-    # @belongsTo 'createdEvent', from: 'events'
-    # @belongsTo 'forkedEvent', from: 'events'
 
   discussion: -> @
   
-  sourceTemplate: ->
-    @recordStore.discussions.find(@sourceTemplateId)
+  template: ->
+    @recordStore.discussionTemplates.find(@discussionTemplateId)
 
   tags: ->
     @recordStore.tags.collection.chain().find(id: {$in: @tagIds}).simplesort('priority').data()

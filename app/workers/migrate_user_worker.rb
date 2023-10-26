@@ -6,12 +6,11 @@ class MigrateUserWorker
   def perform(source_id, destination_id)
     @source = User.find_by!(id: source_id)
     @destination = User.find_by!(id: destination_id)
-    unarchive_memberships(@source)
     delete_duplicates
     operations.each { |operation| ActiveRecord::Base.connection.execute(operation) }
     migrate_stances
     update_counters
-    DeactivateUserWorker.new.perform(source_id)
+    DeactivateUserWorker.new.perform(source_id, destination_id)
     UserMailer.accounts_merged(destination.id).deliver_later
   end
 
@@ -34,10 +33,6 @@ class MigrateUserWorker
     polls: :author_id,
     versions: :whodunnit
   }.freeze
-
-  def unarchive_memberships(user)
-    Membership.where(user_id: user.id).where('archived_at is not null').update_all(archived_at: nil)
-  end
 
   def delete_duplicates
     Membership.delete(destination.all_memberships.

@@ -25,6 +25,10 @@ export default
 
   mounted: ->
     Records.users.fetchGroups()
+
+    Records.pollTemplates.findOrFetchByKeyOrId(@poll.pollTemplateKeyOrId()).then (template) =>
+      @pollTemplate = template
+
     @watchRecords
       collections: ['groups', 'memberships']
       query: =>
@@ -39,6 +43,7 @@ export default
     pollOptions: @poll.pollOptionsAttributes || @poll.clonePollOptions()
     groupItems: []
     showAdvanced: false
+    pollTemplate: null
 
     votingMethodsI18n:
       proposal: 
@@ -155,6 +160,12 @@ export default
         console.error error
 
   computed:
+    titlePlaceholder: ->
+      if @pollTemplate && @pollTemplate.titlePlaceholder
+        I18n.t('common.prefix_eg', {val: @pollTemplate.titlePlaceholder})
+      else
+        I18n.t('poll_proposal_form.title_placeholder')
+
     votingMethodsItems: ->
       Object.keys(@votingMethodsI18n).map (key) =>
         {text: @$t(@votingMethodsI18n[key].title), value: key}
@@ -214,7 +225,7 @@ export default
     v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
       v-icon mdi-close
 
-  poll-template-info-panel(:poll="poll")
+  poll-template-info-panel(v-if="pollTemplate" :poll-template="pollTemplate")
 
   v-select(
     v-if="!poll.id && !poll.discussionId"
@@ -227,7 +238,7 @@ export default
     type='text'
     required='true'
     :hint="$t('poll_common_form.title_hint')"
-    :placeholder="$t('common.prefix_eg', {val: poll.titlePlaceholder})"
+    :placeholder="titlePlaceholder"
     :label="$t('poll_common_form.title')"
     v-model='poll.title'
     maxlength='250')
@@ -284,7 +295,7 @@ export default
             v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
               v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
                 v-icon.text--secondary mdi-pencil
-            v-icon.text--secondary(v-handle, :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
+            v-icon.text--secondary(style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
 
     template(v-if="optionFormat == 'i18n'")
       p This poll cannot have new options added. (contact support if you see this message)
@@ -463,7 +474,8 @@ export default
 
   common-notify-fields(:model="poll")
 
-  .d-flex.justify-space-between.my-4.mt-4.poll-common-form-actions
+  v-card-actions.poll-common-form-actions
+    help-link(path='en/user_manual/polls/intro_to_decisions')
     v-spacer
     v-btn.poll-common-form__submit(
       color="primary"
@@ -472,7 +484,7 @@ export default
       :disabled="!poll.title || (hasOptions && pollOptions.length < minOptions)"
     )
       span(v-if='poll.id' v-t="'common.action.save_changes'")
-      span(v-if='!poll.id && poll.closingAt' v-t="'poll_common_form.start_poll'")
+      span(v-if='!poll.id && poll.closingAt' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
       span(v-if='!poll.id && !poll.closingAt' v-t="'poll_common_form.save_poll'")
 
 </template>

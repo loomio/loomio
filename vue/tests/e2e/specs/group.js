@@ -97,10 +97,13 @@ module.exports = {
     page.expectElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-    page.pause(500)
+
+    page.expectElement('.group-invitation-form')
+    page.click('.dismiss-modal-button')
 
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
+    page.pause(200)
     page.click('.group-form__permissions-tab')
 
     page.expectNoElement('.group-form__parent-members-can-see-discussions')
@@ -118,7 +121,9 @@ module.exports = {
     page.expectNoElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-    page.pause(500)
+
+    page.expectElement('.group-invitation-form')
+    page.click('.dismiss-modal-button')
 
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
@@ -139,7 +144,9 @@ module.exports = {
     page.expectNoElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-    page.pause(500)
+
+    page.expectElement('.group-invitation-form')
+    page.click('.dismiss-modal-button')
 
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
@@ -260,11 +267,12 @@ module.exports = {
     page.expectText('.dashboard-page__empty', 'Welcome! You are not a member of any groups yet.')
   },
 
-  'successfully_starts_a_discussion': (test) => {
+  'starts_a_discussion': (test) => {
     page = pageHelper(test)
 
     page.loadPath('setup_group')
     page.click('.discussions-panel__new-thread-button')
+    page.click('.thread-templates--template')
     page.fillIn('#discussion-title', 'Nobody puts baby in a corner')
     page.fillIn('.discussion-form .lmo-textarea div[contenteditable=true]', "I've had the time of my life")
     page.click('.discussion-form__submit')

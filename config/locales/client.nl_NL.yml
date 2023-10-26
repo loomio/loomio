@@ -37,6 +37,8 @@ nl_NL:
     demo_needs_user: Om een demo te starten, moet u zich aanmelden (of inloggen) als Loomio-gebruiker. Dit is gratis en duurt slechts een minuutje.
     this_is_a_template_for_new_threads: Dit is een sjabloon voor nieuwe threads
     share_a_custom_configuration: Deel een aangepaste configuratie met anderen in uw groep
+    template_gallery: Sjabloongalerij
+    trial_needs_user: Meld u aan om uw gratis Loomio-proefperiode te starten.
   doctypes:
     youtube_video: YouTube Video
     image: Afbeelding
@@ -289,6 +291,8 @@ nl_NL:
     today: Vandaag
     in_x_days: over %{x} dagen
     visit_loomio_help: Bezoek Loomio-hulp
+    admin_menu: Beheerdersmenu
+    api_docs: API-documenten
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -684,6 +688,7 @@ nl_NL:
     privacy_public: Iedereen kan deze thread bekijken als ze de link hebben
     privacy_private: Alleen leden van de groep kunnen deze thread bekijken
     fork_notice: Er wordt een nieuwe thread gemaakt met %{count} items uit {{title}}
+    new_thread_from_template: 'Nieuwe discussie: %{process_name}'
   announcement:
     send_discussion: Bord verzenden
     send_group: Nodig mensen uit voor {{name}}
@@ -773,6 +778,9 @@ nl_NL:
       multiple_notifications: Er worden {{notified}} meldingen verzonden.
       added: "%{count} mensen worden toegevoegd."
       group_title: "{{name}} (%{count} mensen)"
+      invite_people_to_evaluate_loomio: Nodig enkele mensen uit in jouw Loomio-groep om samen een beslissing te nemen
+      invitation_message_default: Ik heb deze Loomio-groep opgericht om ons te helpen samen beslissingen te nemen. Accepteer alstublieft mijn uitnodiging. Het duurt slechts een minuut om lid te worden. Bedankt.
+      type_or_paste_email_addresses_to_invite: Typ of plak de e-mailadressen die u wilt uitnodigen
     members_list:
       title: Gedeeld met
       last_notified: Gemeld
@@ -1041,6 +1049,7 @@ nl_NL:
     show_closed: "%{count} Gesloten"
     see_all_members: Bekijk alle %{count} leden
     pending_invitations: "+ %{count} in behandeling"
+    decisions: Beslissingen
   export_data_modal:
     title: Hoe wil je je data gebruiken?
     as_csv: Openen in een spreadsheet
@@ -1155,6 +1164,8 @@ nl_NL:
     members_can_raise_motions_help: Sta leden toe om polls en voorstellen te starten binnen discussies of de groep
     admins_can_edit_user_content: Beheerders kunnen de opmerkingen van leden bewerken
     admins_can_edit_user_content_help: Beheerders toestaan inhoud te bewerken die door leden is geschreven
+    new_description_placeholder: Waarom probeer je Loomio? Welke beslissingen moet je samen nemen?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Hoe wil je Loomio gebruiken?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Waarom is dit belangrijk voor uw groep?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Welke beslissingen moet u nemen?</h3><p></p>
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -1298,6 +1309,8 @@ nl_NL:
     help_translate: Kun jij ons helpen met het vertalen van Loomio?
     updated_on_sign_in: Verstrekt door uw browser en bijgewerkt wanneer u zich aanmeldt
     deactivated_user: Gedeactiveerde gebruiker
+    account_is_bot: Dit is een botaccount
+    bot_account_warning: Botaccounts worden niet uitgenodigd om te stemmen in opiniepeilingen of deel te nemen aan discussies
   text_editor:
     insert_link: Link invoegen
     insert_embedded_url: Video integreren
@@ -1559,6 +1572,7 @@ nl_NL:
     this_is_for: Dit is een geweldige plek voor vragen over verkoop, training of abonnementen, of om ondersteuning te vragen bij het gebruik van Loomio.
     read_the_manual: Wist je dat onze <a href="{{link}}" target="_blank">Help-handleiding</a> veelgestelde vragen bevat, evenals gedetailleerde handleidingen om discussies en beslissingen over Loomio te vergemakkelijken?
     success_via_email: Bedankt voor je bericht, {{name}}. We reageren binnen 24 uur per e-mail.
+    need_message: Vul een bericht in, zodat we je kunnen helpen :-)
   explore_page:
     header: Verken groepen
     search_placeholder: Zoek naar openbare groepen
@@ -1589,6 +1603,7 @@ nl_NL:
     dot_vote_title: Stip stemmen
     gradients_of_agreement_title: Gradiënten van overeenkomst
     question_title: Vragen ronde
+    recommended: Aanbevolen
   poll_common:
     vote_now: Stem nu
     review_due: Tijd voor beoordeling
@@ -1704,6 +1719,8 @@ nl_NL:
     include_subgroups_all: "{{name}} en alle subgroepen"
     no_results_found: Geen resultaten voor "{{search}}"
     unread: Ongelezen (%{count})
+    welcome_to_your_new_group: Welkom bij je nieuwe Loomio-groep!
+    lets_start_a_thread: Laten we een draadje starten. Klik op "Nieuw onderwerp" om door te gaan.
   members_panel:
     no_results: Geen leden gevonden
     everyone: Iedereen
@@ -1731,6 +1748,8 @@ nl_NL:
     invited_by_name: Uitgenodigd door {{name}}
     accepted: Leden
     show_users_in_subgroups: Toon ook gebruikers in subgroepen
+    bot: Bot
+    all: Alle
   polls_panel:
     new_poll: Nieuwe peiling
     any_type: Alle types
@@ -2287,6 +2306,7 @@ nl_NL:
     name_placeholder: Geef deze integratie een naam zodat u deze kunt identificeren
     event_kind_helptext: Van welke gebeurtenissen wilt u dat de webhook op de hoogte wordt gebracht?
     permissions_explaination: Selecteer welke acties door deze integratie kunnen worden uitgevoerd
+    deprecated: Deze API is verouderd. Ga naar APIv2 (zie API-documenten in het menu met groepsinstellingen)
   powered_by:
     slogan: Samen betere beslissingen
     powered_by_loomio: Powered by Loomio
@@ -2305,6 +2325,8 @@ nl_NL:
       government: Overheid/lokale overheid
       other: Andere
       board: Bestuur of commissie
+      membership: Lidmaatschap organisatie
+      self_managing: Zelfsturende organisatie
     describe_other: Welke categorie zou u uw groep geven?
   tasks:
     tasks: Taken
@@ -2532,3 +2554,36 @@ nl_NL:
   user_name_modal:
     user_name_updated: Gebruikersnaam bijgewerkt
     set_user_name: Gebruikersnaam instellen
+  thread_template:
+    browse_public_templates: Blader door de sjabloongalerij
+    thread_template_settings: Instellingen draadsjabloon
+    start_a_new_thread: Start een nieuw draadje
+    thread_template_saved: Draadsjabloon opgeslagen
+    these_are_public_templates: Deze sjablonen kunt u kopiëren of aanpassen aan uw groep
+    these_are_templates: Dit zijn de draadsjablonen in uw groep. Sjablonen begeleiden u door veelvoorkomende besluitvormingsprocessen.
+    default_title_label: Standaard titel
+    default_title_hint: Vul het titelveld vooraf in met bewerkbare tekst. Dit is optioneel. Laat het veld leeg als u het niet zeker weet.
+    title_placeholder_label: Voorbeeld titel
+    title_placeholder_hint: Een voorbeeld om op de achtergrond van het titelveld weer te geven
+    title_placeholder_placeholder: Zo ziet achtergrondtekst er bijvoorbeeld uit
+    example_description_label: Voorbeeld beschrijving
+    example_description_placeholder: Zorg voor een sjabloon waarmee mensen een thread kunnen starten
+    hidden_templates: Verborgen sjablonen
+    confirm_delete: Weet je zeker dat je deze threadsjabloon definitief wilt verwijderen? Er worden hierdoor geen threads verwijderd.
+    add_proposal_or_poll_template: Voeg een voorstel- of opiniepeilingssjabloon toe
+    recommended_proposal_or_poll_templates: Aanbevolen voorstel- of opiniepeilingssjablonen
+    decision_templates: Beslissingssjablonen
+    decision_templates_help: Selecteer eventuele voorstel- of opiniepeilingssjablonen die u helpen dit proces te voltooien.
+    share_in_template_gallery: Deel deze sjabloon in de openbare sjabloongalerij
+  record_modal:
+    record_video: Video opnemen
+    record_audio: Geluid opnemen
+    record: Dossier
+    stop: Stop
+    no_mic: Kon geen microfoon vinden
+    no_camera: Kon geen camera vinden
+    listen_to_audio: Luister naar audio
+    watch_video: Bekijk video
+    audio_transcript: 'Audiotranscript: %{text}'
+    why_type_when_you_can_talk: Waarom typen als je kunt praten? Stuur een spraakopname
+    transcript_included: Een transcriptie van de opname wordt aan uw bericht toegevoegd

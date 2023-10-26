@@ -43,6 +43,21 @@ Rails.application.routes.draw do
       resources :polls, only: [:create, :show]
       resources :memberships, only: [:index, :create]
     end
+    
+    namespace :b2 do
+      resources :discussions, only: [:create, :show]
+      resources :polls, only: [:create, :show]
+      resources :memberships, only: [:index, :create]
+    end
+
+    namespace :b3, only: [] do
+      resources :users do
+        collection do
+          post :deactivate
+          post :reactivate
+        end
+      end
+    end
 
     namespace :v1 do
       resources :attachments, only: [:index, :destroy]
@@ -180,6 +195,18 @@ Rails.application.routes.draw do
         get :direct, on: :collection
       end
 
+      resources :discussion_templates, only: [:create, :index, :show, :update, :destroy] do
+        collection do
+          get :browse_tags
+          get :browse
+          post :hide
+          post :unhide
+          post :discard
+          post :undiscard
+          post :positions
+        end
+      end
+
       resources :discussion_readers, only: [:index] do
         member do
           post :remove_admin
@@ -274,13 +301,6 @@ Rails.application.routes.draw do
         get :show, on: :collection
       end
 
-      resources :oauth_applications, only: [:show, :create, :update, :destroy] do
-        post :revoke_access, on: :member
-        post :upload_logo, on: :member
-        get :owned, on: :collection
-        get :authorized, on: :collection
-      end
-
       namespace(:sessions)        { get :unauthorized }
       devise_scope :user do
         resource :sessions, only: [:create, :destroy]
@@ -303,8 +323,14 @@ Rails.application.routes.draw do
   end
 
   resources :poll_templates, only: [] do
-    member do
-      get :dump_i18n_yaml
+    collection do
+      get :dump_i18n
+    end
+  end
+
+  resources :thread_templates, only: [] do
+    collection do
+      get :dump_i18n
     end
   end
   
@@ -321,10 +347,12 @@ Rails.application.routes.draw do
   get '/robots'     => 'robots#show'
   get '/manifest'   => 'manifest#show', format: :json
   get '/help/api'   => 'help#api'
+  get '/help/api2'   => 'help#api2'
+  get '/help/api3'   => 'help#api3'
 
   get '/start_group', to: redirect('/try')
 
-  get 'try'                                => 'application#index'
+  get 'try'                                => redirect("/g/new")
   get 'dashboard'                          => 'application#index', as: :dashboard
   get 'dashboard/:filter'                  => 'application#index'
   get 'inbox'                              => 'application#index', as: :inbox
@@ -353,6 +381,10 @@ Rails.application.routes.draw do
   get 'poll_templates/new'                 => 'application#index'
   get 'poll_templates/:id'                 => 'application#index'
   get 'poll_templates/:id/edit'            => 'application#index'
+  get 'thread_templates/browse'            => 'application#index'
+  get 'thread_templates/new'               => 'application#index'
+  get 'thread_templates/:id'               => 'application#index'
+  get 'thread_templates/:id/edit'          => 'application#index'
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
   get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export

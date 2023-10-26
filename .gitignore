@@ -1,3 +1,5 @@
+.irb_history
+
 # loomio.com marketing injections
 public/about/
 public/blog/
@@ -15,6 +17,7 @@ public/why-collaborative-decision-making/
 public/wp-content/
 
 # rails stuff
+.irb_history
 .bundle
 db/*.sqlite3
 config/database.yml
