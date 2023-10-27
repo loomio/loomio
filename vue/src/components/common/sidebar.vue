@@ -229,7 +229,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         v-icon(tile) mdi-plus
       v-list-item-title(v-t="'group_form.new_group'")
   v-divider
-  v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" to="/try" dense)
+  v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" to="/demo" dense)
     v-list-item-title(v-t="'templates.demo_group'")
     v-list-item-icon
       v-icon mdi-car-convertible
