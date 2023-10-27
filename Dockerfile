@@ -8,6 +8,10 @@ ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT=development
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
+WORKDIR /loomio
+
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+
 RUN apt-get update -qq && \
     apt-get install -y \
     build-essential \
@@ -17,29 +21,19 @@ RUN apt-get update -qq && \
     ffmpeg \
     poppler-utils \
     sudo \
+    nodejs \
+    npm \
     libpq-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists /usr/share/doc /usr/share/man
-
-WORKDIR /loomio
  
 COPY . .
  
 RUN bundle install && bundle exec bootsnap precompile --gemfile app/ lib/
 
-# FROM base as node
-
-RUN curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-RUN apt-get -y install nodejs npm
-
 WORKDIR /loomio/vue
 RUN npm install
 RUN npm run build
-
-# FROM base as final
-# RUN mkdir -p /loomio/public/blient/
-# COPY --from=node /loomio/public/blient/* /loomio/public/blient/
-
 WORKDIR /loomio
 
 EXPOSE 3000
