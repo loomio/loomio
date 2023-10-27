@@ -331,7 +331,7 @@ GEM
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    lograge (0.13.0)
+    lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
       railties (>= 4)
