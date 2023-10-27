@@ -65,7 +65,7 @@ export default
     },
 
     initLoader() {
-      this.loader = new PageLoader({
+      return this.loader = new PageLoader({
         path: 'polls',
         order: 'createdAt',
         params: {
