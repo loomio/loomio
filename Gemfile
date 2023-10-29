@@ -97,3 +97,5 @@ end
 if Dir.exist?('engines/loomio_subs')
   gem 'loomio_subs', path: 'engines/loomio_subs'
 end
+
+gem "maildown", "~> 3.3"
