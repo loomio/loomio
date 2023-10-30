@@ -292,7 +292,7 @@ module Dev::ScenariosHelper
     )
     PollService.create(poll: poll, actor: actor)
     create_fake_stances(poll: poll)
-    outcome    = fake_outcome(poll: poll, author: poll.author)
+    outcome    = fake_outcome(poll: poll, author: poll.author, review_on: Date.today)
 
     Events::OutcomeReviewDue.publish!(outcome)
     # OutcomeService.create(outcome: outcome, actor: actor, params: {recipient_emails: [observer.email]})

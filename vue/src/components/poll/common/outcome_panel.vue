@@ -34,13 +34,12 @@ v-alert.my-4.poll-common-outcome-panel(
   h2.title(v-t="'poll_common.outcome'")
   div.my-2
     user-avatar(:user="outcome.author()", :size="24").mr-2
-    small
-      space
-      //- .poll-common-outcome-panel__authored-by.caption.my-2
-      span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }")
-      mid-dot
-      time-ago(:date="outcome.createdAt")
-    span(v-if="outcome.reviewOn")
+    space
+    //- .poll-common-outcome-panel__authored-by.caption.my-2
+    span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }")
+    mid-dot
+    time-ago(:date="outcome.createdAt")
+    template(v-if="outcome.reviewOn")
       mid-dot
       span(v-t="'poll_common.review_due'")
       space

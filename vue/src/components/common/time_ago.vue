@@ -8,15 +8,13 @@ export default {
     date: [Date, String]
   },
 
-  data() {
-    return {parsedDate: null};
-  },
-
-  created() {
-    if (isString(this.date)) {
-      this.parsedDate = parseISO(this.date);
-    } else {
-      this.parsedDate = this.date;
+  computed: {
+    parsedDate() {
+      if (isString(this.date)) {
+        return parseISO(this.date);
+      } else {
+        return this.date;
+      }
     }
   }
 };
