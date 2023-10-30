@@ -83,7 +83,7 @@ export default new (GroupService = class GroupService {
         menu: true,
         canPerform() { return AbilityService.canAdminister(group); },
         perform() {
-          return EventBus.$emit('openModal', {
+          EventBus.$emit('openModal', {
             component: 'TagsSelect',
             props: {
               group

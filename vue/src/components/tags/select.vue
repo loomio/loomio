@@ -20,11 +20,11 @@ export default {
   },
 
   data() {
-    {allTags: this.group.tags()};
+    return {allTags: this.group.tags()};
   },
 
   mounted() {
-    return this.watchRecords({
+    this.watchRecords({
       key: 'tags'+this.group.id,
       collections: ['tags'],
       query: () => {
