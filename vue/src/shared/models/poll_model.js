@@ -89,6 +89,8 @@ export default PollModel = (function() {
         linkPreviews: [],
         notifyOnClosingSoon: 'undecided_voters',
         results: [],
+        pollTemplateId: null,
+        pollTempalteKey: null,
         pollOptionIds: [],
         pollOptionNameFormat: null,
         recipientMessage: null,

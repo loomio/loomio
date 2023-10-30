@@ -71,6 +71,8 @@ class PermittedParams < Struct.new(:params)
       :maximum_stance_choices,
       :chart_type,
       :document_ids, {document_ids: []},
+      :poll_template_id,
+      :poll_template_key,
       :poll_options_attributes, {poll_options_attributes: [:id, :name, :icon, :meaning, :prompt, :priority, :_destroy]},
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
@@ -114,6 +116,9 @@ class PermittedParams < Struct.new(:params)
       :meeting_duration,
       :can_respond_maybe,
       :poll_option_name_format,
+      :outcome_statement,
+      :outcome_statement_format,
+      :outcome_review_due_in_days,
       :link_previews, :files, :image_files, {link_previews: [:image, :title, :description, :url, :hostname, :fit, :align]}, {files: []}, {image_files: []}
     ]
   end

@@ -2123,14 +2123,18 @@ en:
     poll_type: "This %{poll_type} has closed. Take time to consider the results then share an outcome so people know what will happen next."
 
   poll_common_outcome_form:
+    review_due_in_days: Review the decision after how many days?
+    review_due_in_days_hint: A period of time (in days) to wait before reviewing the decision. (optional)
     review_date: Review date
     review_date_hint: Set a date to review the decision (optional)
     who_to_notify: Who do you want to notify about this outcome? (optional)
+    outcome_statement_template: Outcome statement template
     new_title: State outcome
     update_title: Update outcome
     outcome_created: Outcome created
     outcome_updated: Outcome updated
     statement_placeholder: Summarise the responses and explain what will happen next.
+    statement_template_placeholder: Provide a template for writing an outcome of the decision. (optional)
     you_will_be_notified: You will be notified on the review date.
     submit: Share outcome
 

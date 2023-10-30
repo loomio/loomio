@@ -15,8 +15,38 @@ import openModal      from '@/shared/helpers/open_modal';
 import i18n          from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
+import { startOfHour, addDays, format } from 'date-fns';
+
+function openSetOutcomeModal(poll) {
+  Records.pollTemplates.findOrFetchByKeyOrId(poll.pollTemplateKeyOrId()).then(template => {
+    const pollTemplate = template || {
+      outcomeStatement: null,
+      outcomeStatementFormat: Session.defaultFormat(),
+      outcomeReviewDueInDays: null,
+    };
+    let reviewOn = null
+    if (pollTemplate.outcomeReviewDueInDays) {
+      reviewOn = format(startOfHour(addDays(new Date(), pollTemplate.outcomeReviewDueInDays)), 'yyyy-MM-dd')
+    }
+    openModal({
+      component: 'PollCommonOutcomeModal',
+      props: {
+        outcome: Records.outcomes.build({
+          groupId: poll.groupId,
+          pollId: poll.id,
+          statement: pollTemplate.outcomeStatement,
+          statementFormat: pollTemplate.outcomeStatementFormat,
+          reviewOn: reviewOn,
+        })
+      }
+    });
+  });
+}
 
 export default new (PollService = class PollService {
+
+  openSetOutcomeModal(poll) { openSetOutcomeModal(poll) }
+
   actions(poll, vm, event) {
     if (!poll || !poll.config()) { return {}; }
     return {
@@ -120,22 +150,14 @@ export default new (PollService = class PollService {
           return AbilityService.canClosePoll(poll);
         },
         perform() {
+
           return openModal({
             component: 'ConfirmModal',
             props: {
               confirm: {
                 submit() { return poll.close(); },
                 successCallback() {
-                  return openModal({
-                    component: 'PollCommonOutcomeModal',
-                    props: {
-                      outcome: Records.outcomes.build({
-                        groupId: poll.groupId,
-                        pollId: poll.id,
-                        statementFormat: Session.defaultFormat()
-                      })
-                    }
-                  });
+                  openSetOutcomeModal(poll);
                 },
                 text: {
                   title: 'poll_common_close_form.title',
