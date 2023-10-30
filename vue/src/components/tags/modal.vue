@@ -59,19 +59,19 @@ v-card.tags-modal
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    v-text-field(v-model="tag.name", :label="$t('loomio_tags.name_label')" autofocus)
+    v-text-field.tags-modal__tag-name(v-model="tag.name" :label="$t('loomio_tags.name_label')" autofocus)
     validation-errors(:subject="tag" field="name")
 
-    label(for="input-708" class="v-label caption" v-t="'loomio_tags.color_label'") Color
+    label(for="input-708" class="v-label caption" v-t="'loomio_tags.color_label'")
 
     .tag-colors.d-flex
-      span.color-swatch(v-for="color in tag.constructor.colors", :key="color")
-        input(:id="color", v-model="tag.color", :value="color" type="radio")
-        label(:for="color", :style="{'background-color': color, color: color}") {{color}}
+      span.color-swatch(v-for="color in tag.constructor.colors" :key="color")
+        input(:id="color" v-model="tag.color" :value="color" type="radio")
+        label(:for="color" :style="{'background-color': color, color: color}") {{color}}
   v-card-actions
-    v-btn(v-if="tag.id", @click="deleteTag", v-t="'common.action.delete'", :disabled="loading")
+    v-btn(v-if="tag.id", @click="deleteTag" v-t="'common.action.delete'" :disabled="loading")
     v-spacer
-    v-btn.tag-form__submit(color="primary", @click="submit", v-t="'common.action.save'", :loading="loading")
+    v-btn.tag-form__submit(color="primary" @click="submit" v-t="'common.action.save'" :loading="loading")
 </template>
 
 <style lang="sass">

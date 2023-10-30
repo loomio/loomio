@@ -121,5 +121,5 @@ v-card.tags-modal
 
     v-card-actions
       v-spacer
-      v-btn.tag-form_new-tag(color="primary" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
+      v-btn.tag-form__new-tag(color="primary" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
 </template>
