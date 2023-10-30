@@ -3,6 +3,7 @@ import Records        from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
 import Session        from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
+import PollService from '@/shared/services/poll_service';
 
 export default {
   props: {
@@ -15,17 +16,7 @@ export default {
     },
 
     openOutcomeForm() {
-      const outcome = Records.outcomes.build({
-        pollId: this.poll.id,
-        groupId: this.poll.groupId,
-        statementFormat: Session.defaultFormat()
-      });
-      EventBus.$emit('openModal', {
-        component: 'PollCommonOutcomeModal',
-        props: {
-          outcome
-        }
-      });
+      PollService.openSetOutcomeModal(this.poll);
     }
   }
 };

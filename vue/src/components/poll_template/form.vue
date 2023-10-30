@@ -427,6 +427,21 @@ export default {
       v-model="pollTemplate.hideResults"
     )
 
+  lmo-textarea(
+    :model='pollTemplate'
+    field="outcomeStatement"
+    :placeholder="$t('poll_common_outcome_form.statement_template_placeholder')"
+    :label="$t('poll_common_outcome_form.outcome_statement_template')"
+  )
+
+  v-text-field(
+    :label="$t('poll_common_outcome_form.review_due_in_days')"
+    :hint="$t('poll_common_outcome_form.review_due_in_days_hint')"
+    type="number"
+    min="1"
+    v-model="pollTemplate.outcomeReviewDueInDays")
+  validation-errors(:subject="pollTemplate" field="outcomeReviewDueInDays")
+
   .d-flex.justify-space-between.my-4.mt-4.poll-common-form-actions
     v-spacer
     v-btn.poll-common-form__submit(

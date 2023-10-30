@@ -61,7 +61,10 @@ export default PollTemplateModel = (function() {
         pollOptionNameFormat: 'plain',
         shuffleOptions: false,
         hideResults: 'off',
-        position: 0
+        position: 0,
+        outcomeStatement: null,
+        outcomeStatementFormat: 'html',
+        outcomeReviewDueInDays: null
       };
     }
 

@@ -98,6 +98,12 @@ class Poll < ApplicationRecord
   TEMPLATE_VALUES.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
   end
+  
+  def poll_template
+    return PollTemplate.find_by(id: poll_template_id) if poll_template_id
+    return PollTemplateService.default_templates.find {|pt| pt.key == poll_template_key } if poll_template_key
+    return nil
+  end
 
   def create_missing_created_event!
     self.events.create(

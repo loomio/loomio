@@ -22,7 +22,7 @@ module Ability::Poll
     end
 
     can [:create], ::Poll do |poll|
-      # cannot use poll.admins for create, because it assumes poll exists in database
+      (poll.poll_template_id.nil? || poll.poll_template.public? || user.group_ids.include?(poll.poll_template.group_id)) &&
       (poll.discussion_id.nil? || !poll.discussion.closed_at) &&
       (
         (poll.group_id &&
