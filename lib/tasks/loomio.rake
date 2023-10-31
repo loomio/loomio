@@ -86,7 +86,16 @@ namespace :loomio do
         'pt_BR' => 'pt_BR',
         'pl' => 'pl',
         'ar' => 'ar',
-        'hu' => 'hu'
+        'hu' => 'hu',
+        'ca' => 'ca',
+        # 'ja' => 'ja',
+        # 'sv' => 'sv',
+        # 'ru' => 'ru',
+        # 'da' => 'da',
+        # 'tr' => 'tr',
+        # 'he' => 'he',
+        # 'el' => 'el',
+        # 'ko' => 'ko'
       }.each_pair do |file_locale, google_locale|
         foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
         foreign_paths = list_paths(foreign, [])
