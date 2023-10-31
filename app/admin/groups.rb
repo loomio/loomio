@@ -87,14 +87,15 @@ ActiveAdmin.register Group, as: 'Group' do
     end
 
     panel("Members") do
-      table_for group.all_memberships.includes(:user, :inviter).order(created_at: :desc).filter{|m| m.user }.each do |membership|
+      table_for group.all_memberships.includes(:user, :inviter, :revoker).order(created_at: :desc).filter{|m| m.user }.each do |membership|
         column(:name)        { |m| link_to m.user.name, admin_user_path(m.user) }
         column(:email)       { |m| m.user.email }
         column(:admin)       { |m| m.admin }
-        column(:inviter)     { |m| m.inviter.try(:name) }
         column(:created_at)  { |m| m.created_at }
         column(:accepted_at) { |m| m.accepted_at }
+        column(:inviter)     { |m| m.inviter.try(:name) }
         column(:revoked_at)  { |m| m.revoked_at }
+        column(:revoker)     { |m| m.revoker.try(:name) }
         column "Toggle admin" do |m|
           if m.admin?
             link_to("remove admin", remove_admin_admin_groups_path(membership_id: m.id, group_id: m.group_id), method: :post)
