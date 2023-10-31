@@ -570,7 +570,7 @@ GEM
     unicode-display_width (2.5.0)
     uri (0.12.2)
     uuidtools (2.2.0)
-    video_info (4.0.0)
+    video_info (4.1.0)
       iso8601 (~> 0.13.0)
       net_http_timeout_errors (~> 1.0.0)
       oga (~> 3.4)
