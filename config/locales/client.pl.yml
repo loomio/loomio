@@ -1596,6 +1596,8 @@ pl:
     read_the_manual: Czy wiesz, że nasz <a href="{{link}}" target="_blank">Podręcznik pomocy</a> zawiera najczęściej zadawane pytania, a także szczegółowe przewodniki ułatwiające dyskusje i podejmowanie decyzji w Loomio?
     success_via_email: Dziękujemy za wiadomość, {{imię}}. Odpowiemy e-mailem w ciągu 24 godzin.
     need_message: Wpisz wiadomość, abyśmy mogli Ci pomóc :-)
+    respond_asap: Wyślij wiadomość do zespołu Loomio, a my odpowiemy tak szybko, jak to możliwe.
+    happy_to_help_with: Chętnie pomożemy w przypadku zapytań sprzedażowych, próśb o wsparcie, próśb o funkcje, zgłaszania błędów lub problemów, których doświadczasz.
   explore_page:
     header: Przeglądaj grupy
     search_placeholder: Wyszukaj grupy publiczne

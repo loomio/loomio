@@ -1579,6 +1579,8 @@ nl_NL:
     read_the_manual: Wist je dat onze <a href="{{link}}" target="_blank">Help-handleiding</a> veelgestelde vragen bevat, evenals gedetailleerde handleidingen om discussies en beslissingen over Loomio te vergemakkelijken?
     success_via_email: Bedankt voor je bericht, {{name}}. We reageren binnen 24 uur per e-mail.
     need_message: Vul een bericht in, zodat we je kunnen helpen :-)
+    respond_asap: Stuur een bericht naar het Loomio-team en we reageren zo snel mogelijk.
+    happy_to_help_with: We helpen u graag met verkoopvragen, ondersteuningsverzoeken, functieverzoeken, het melden van bugs of problemen die u ondervindt.
   explore_page:
     header: Verken groepen
     search_placeholder: Zoek naar openbare groepen

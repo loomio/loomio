@@ -1563,6 +1563,8 @@ hu:
     read_the_manual: Tudta, hogy a <a href="{{link}}" target="_blank">Súgó kézikönyvünk</a> GYIK-eket, valamint részletes útmutatókat tartalmaz a Loomióval kapcsolatos viták és döntések megkönnyítéséhez?
     success_via_email: Köszönjük üzenetét, {{name}}. 24 órán belül e-mailben válaszolunk.
     need_message: Írj üzenetet, hogy segíthessünk :-)
+    respond_asap: Küldjön üzenetet a Loomio csapatának, és amint tudunk, válaszolunk.
+    happy_to_help_with: Örömmel segítünk értékesítési kérdésekben, támogatási kérésekben, funkciókra vonatkozó kérésekben, hibák vagy tapasztalt problémák bejelentésében.
   explore_page:
     header: Fedezze fel a csoportokat
     search_placeholder: Keress nyilvános csoportokat

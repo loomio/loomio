@@ -1604,6 +1604,8 @@ de:
     read_the_manual: Wussten Sie, dass unser <a href="{{link}}" target="_blank">Hilfehandbuch</a> häufig gestellte Fragen sowie detaillierte Anleitungen zur Erleichterung von Diskussionen und Entscheidungen zu Loomio enthält?
     success_via_email: Vielen Dank für Ihre Nachricht, {{name}}. Wir antworten innerhalb von 24 Stunden per E-Mail.
     need_message: Bitte geben Sie eine Nachricht ein, damit wir Ihnen helfen können :-)
+    respond_asap: Senden Sie eine Nachricht an das Loomio-Team und wir werden so schnell wie möglich antworten.
+    happy_to_help_with: Wir helfen Ihnen gerne bei Vertriebsanfragen, Supportanfragen, Funktionsanfragen, der Meldung von Fehlern oder Problemen, die Sie haben.
   explore_page:
     header: Gruppen entdecken
     search_placeholder: Nach öffentlichen Gruppen suchen

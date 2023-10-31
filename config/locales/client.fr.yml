@@ -1642,6 +1642,8 @@ fr:
     success: Merci pour votre message, {{name}}. Nous prendrons rapidement contact.
     success_via_email: Merci pour votre message, {{name}}. Nous vous répondrons par e-mail dans les 24 heures.
     need_message: Veuillez entrer un message afin que nous puissions vous aider :-)
+    respond_asap: Envoyez un message à l'équipe Loomio et nous vous répondrons dans les plus brefs délais.
+    happy_to_help_with: Nous serons heureux de vous aider avec les demandes commerciales, les demandes d'assistance, les demandes de fonctionnalités, les rapports de bogues ou les problèmes que vous rencontrez.
   explore_page:
     header: Explorer les groupes
     search_placeholder: Rechercher des groupes publics
