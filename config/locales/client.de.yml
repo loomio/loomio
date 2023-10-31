@@ -62,6 +62,7 @@ de:
     share_a_custom_configuration: Teilen Sie eine benutzerdefinierte Konfiguration mit anderen in Ihrer Gruppe
     template_gallery: Vorlagengalerie
     trial_needs_user: Um Ihre kostenlose Loomio-Testversion zu starten, melden Sie sich bitte an.
+    play_with_an_example_group: Spielen Sie mit einer Beispielgruppe
   doctypes:
     youtube_video: YouTube Video
     image: Image
@@ -508,6 +509,9 @@ de:
       user_list: Benutzer-Aktionen
     template_gallery: Vorlagengalerie
     examples_and_templates: Beispiele & Vorlagen
+    help_docs: Hilfedokumente
+    a_detailed_guide_to_loomio: Eine ausführliche Anleitung zu Loomio
+    talk_to_the_loomio_team: Sprechen Sie mit dem Loomio-Team
   strand_nav:
     newest: Neueste
     oldest: 'Älteste '
@@ -758,6 +762,7 @@ de:
       decided_voters: Alle, die abgestimmt haben
       undecided_voters: Unentschlossene
       non_voters: Noch nicht eingeladene Mitglieder von {{name}}
+      everyone_in_the_group: Jeder in der Gruppe
     form:
       too_many_invitations: 'Die Einladungsgrenze ist erreicht. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
 
@@ -819,6 +824,7 @@ de:
       invite_people_to_evaluate_loomio: Laden Sie einige Leute in Ihre Loomio-Gruppe ein, um gemeinsam eine Entscheidung zu treffen
       invitation_message_default: Ich habe diese Loomio-Gruppe gegründet, um uns dabei zu helfen, gemeinsam Entscheidungen zu treffen. Bitte nehmen Sie meine Einladung an. Der Beitritt dauert nur eine Minute. Danke schön.
       type_or_paste_email_addresses_to_invite: Geben oder fügen Sie E-Mail-Adressen ein, um einzuladen
+      group_has_no_members_yet: Sie sind das einzige Mitglied Ihrer Gruppe. Möglicherweise möchten Sie einige Personen in Ihre Gruppe einladen, bevor Sie einen Thread oder eine Entscheidung starten.
     members_list:
       title: geteilt mit
       last_notified: benachrichtigt
@@ -1917,6 +1923,10 @@ de:
     review_date: Prüfungsdatum
     review_date_hint: Legen Sie einen Termin für die Überprüfung der Entscheidung fest (optional)
     who_to_notify: Wen möchten Sie über dieses Ergebnis informieren? (Optional)
+    review_due_in_days: Überprüfen Sie die Entscheidung nach wie vielen Tagen?
+    review_due_in_days_hint: Eine Zeitspanne (in Tagen), die gewartet werden muss, bevor die Entscheidung überprüft wird. (Optional)
+    outcome_statement_template: Vorlage für eine Ergebniserklärung
+    statement_template_placeholder: Stellen Sie eine Vorlage zum Verfassen eines Entscheidungsergebnisses bereit. (Optional)
   poll_common_outcome_panel:
     authored_by: Von {{name}}
   poll_common_delete_modal:

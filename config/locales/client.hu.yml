@@ -58,6 +58,7 @@ hu:
     share_a_custom_configuration: Egyéni konfiguráció megosztása a csoport többi tagjával
     template_gallery: Sablongaléria
     trial_needs_user: Az ingyenes Loomio próbaidőszak megkezdéséhez jelentkezzen be.
+    play_with_an_example_group: Játssz egy példacsoporttal
   doctypes:
     image: Kép
     excel: Táblázat
@@ -500,6 +501,9 @@ hu:
     unread_threads: Olvasatlan szálak (%{count})
     template_gallery: Sablongaléria
     examples_and_templates: Példák és sablonok
+    help_docs: Súgó dokumentumok
+    a_detailed_guide_to_loomio: A Loomio részletes útmutatója
+    talk_to_the_loomio_team: Beszélj a Loomio csapatával
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -721,6 +725,7 @@ hu:
       decided_voters: Mindenki, aki szavazott
       undecided_voters: Mindenki, aki nem szavazott
       non_voters: A(z) {{name}} tagjai még nincsenek meghívva
+      everyone_in_the_group: Mindenki a csoportban
     form:
       too_many_invitations: 'A meghívási korlátot meghaladtad. <a href="{{upgradeUrl}}" target="_blank"> Frissítés </a>
 
@@ -780,6 +785,7 @@ hu:
       invite_people_to_evaluate_loomio: Hívjon meg néhány embert a Loomio csoportjába, hogy közösen döntsenek
       invitation_message_default: Azért hoztam létre ezt a Loomio csoportot, hogy segítsen nekünk közös döntéseket hozni. Kérem, fogadja el meghívásomat. Csak egy percet vesz igénybe a csatlakozás. Köszönöm.
       type_or_paste_email_addresses_to_invite: Írja be vagy illessze be a meghíváshoz szükséges e-mail címeket
+      group_has_no_members_yet: Ön a csoport egyetlen tagja. Érdemes lehet néhány embert meghívni a csoportjába, mielőtt szálat vagy döntést hozna létre.
     members_list:
       title: Megosztva vele
       last_notified: Értesített
@@ -1848,6 +1854,10 @@ hu:
     review_date_hint: Dátum meghatározása a határozat felülvizsgálatára (opcionális)
     who_to_notify: Kit szeretnél értesíteni erről az eredményről? (választható)
     you_will_be_notified: A felülvizsgálat időpontjáról értesítést kap.
+    review_due_in_days: Hány nap múlva vizsgálja felül a döntést?
+    review_due_in_days_hint: A határozat felülvizsgálata előtti várakozási idő (napokban). (választható)
+    outcome_statement_template: Eredménynyilatkozat-sablon
+    statement_template_placeholder: Adjon sablont a döntés eredményének megírásához. (választható)
   poll_common_outcome_panel:
     authored_by: 'tőle: {{name}}'
   poll_common_delete_modal:

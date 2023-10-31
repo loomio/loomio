@@ -56,6 +56,7 @@ uk:
     share_a_custom_configuration: Поділіться власною конфігурацією з іншими у вашій групі
     template_gallery: Галерея шаблонів
     trial_needs_user: Щоб розпочати безкоштовну пробну версію Loomio, увійдіть.
+    play_with_an_example_group: Пограйте з прикладом групи
   doctypes:
     youtube_video: Відео YouTube
     image: Зображення
@@ -503,6 +504,9 @@ uk:
     unread_threads: Непрочитані ланцюжки (%{count})
     template_gallery: Галерея шаблонів
     examples_and_templates: Приклади та шаблони
+    help_docs: Довідкові документи
+    a_detailed_guide_to_loomio: Детальний посібник із Loomio
+    talk_to_the_loomio_team: Поговоріть з командою Loomio
   strand_nav:
     newest: Найновіші
     oldest: Найстарші
@@ -753,6 +757,7 @@ uk:
       decided_voters: Усім, хто голосував
       undecided_voters: Виборцям, які не визначилися
       non_voters: Учасників {{name}} ще не запросили
+      everyone_in_the_group: Всі в групі
     form:
       too_many_invitations: 'Перевищено ліміт запрошень. <a href="{{upgradeUrl}}" target="_blank">Оновити план</a>
 
@@ -814,6 +819,7 @@ uk:
       invite_people_to_evaluate_loomio: Запросіть кількох людей до вашої групи Loomio, щоб разом прийняти рішення
       invitation_message_default: Я створив цю групу Loomio, щоб допомогти нам приймати рішення разом. Будь ласка, прийміть моє запрошення. Щоб приєднатися, потрібно лише хвилину. Дякую тобі.
       type_or_paste_email_addresses_to_invite: Введіть або вставте електронні адреси, щоб запросити
+      group_has_no_members_yet: Ви єдиний учасник вашої групи. Можливо, ви захочете запросити кількох людей до своєї групи, перш ніж розпочинати ланцюжок або приймати рішення.
     members_list:
       title: Поширити серед
       last_notified: Сповіщено
@@ -1931,6 +1937,10 @@ uk:
     statement_placeholder: Узагальнити відповіді і пояснити що буде відбуватися далі.
     you_will_be_notified: Ви отримаєте повідомлені про дату підсумків.
     submit: Поширити результат
+    review_due_in_days: Через скільки днів переглянути рішення?
+    review_due_in_days_hint: Період часу (у днях) перед переглядом рішення. (необов'язково)
+    outcome_statement_template: Шаблон звіту про результати
+    statement_template_placeholder: Надайте шаблон для написання результату рішення. (необов'язково)
   poll_common_outcome_panel:
     authored_by: від {{name}}
   poll_common_delete_modal:

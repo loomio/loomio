@@ -8,11 +8,10 @@ import GroupService    from '@/shared/services/group_service';
 import LmoUrlService     from '@/shared/services/lmo_url_service';
 import {compact, head, includes, filter, pickBy} from 'lodash';
 import OldPlanBanner from '@/components/group/old_plan_banner';
-import DemoBanner from '@/components/group/demo_banner';
 
 export default
 {
-  components: { OldPlanBanner, DemoBanner },
+  components: { OldPlanBanner },
 
   data() {
     return {
@@ -94,7 +93,6 @@ export default
 v-main
   loading(v-if="!group")
   v-container.group-page.max-width-1024.px-2.px-sm-4(v-if="group")
-    demo-banner(:group="group")
     div(style="position: relative")
       v-img(
         :src="group.coverUrl"

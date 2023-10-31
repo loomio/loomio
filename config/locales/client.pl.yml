@@ -56,6 +56,7 @@ pl:
     share_a_custom_configuration: Udostępnij niestandardową konfigurację innym osobom w swojej grupie
     template_gallery: Galeria szablonów
     trial_needs_user: Aby rozpocząć bezpłatny okres próbny Loomio, zaloguj się.
+    play_with_an_example_group: Zagraj z przykładową grupą
   doctypes:
     youtube_video: Film z YouTube
     image: Obraz
@@ -502,6 +503,9 @@ pl:
     unread_threads: Nieprzeczytane wątki (%{count})
     template_gallery: Galeria szablonów
     examples_and_templates: Przykłady i szablony
+    help_docs: Dokumenty pomocy
+    a_detailed_guide_to_loomio: Szczegółowy przewodnik po Loomio
+    talk_to_the_loomio_team: Porozmawiaj z zespołem Loomio
   strand_nav:
     newest: Najnowsze
     oldest: 'Od najstarszych '
@@ -732,6 +736,7 @@ pl:
       decided_voters: Wszyscy, którzy zagłosowali
       undecided_voters: Niezdecydowani głosujący
       non_voters: Osoby z {{name}} nie zostały jeszcze zaproszone
+      everyone_in_the_group: Wszyscy w grupie
     form:
       too_many_invitations: 'Przekroczono limit zaproszeń. <a href="{{upgradeUrl}}" target="_blank">Aktualizuj</a>
 
@@ -793,6 +798,7 @@ pl:
       invite_people_to_evaluate_loomio: Zaproś kilka osób do swojej grupy Loomio, aby wspólnie podjąć decyzję
       invitation_message_default: Założyłem tę grupę Loomio, aby pomóc nam wspólnie podejmować decyzje. Proszę przyjąć moje zaproszenie. Aby dołączyć, wystarczy minuta. Dziękuję.
       type_or_paste_email_addresses_to_invite: Wpisz lub wklej adresy e-mail, które chcesz zaprosić
+      group_has_no_members_yet: Jesteś jedynym członkiem swojej grupy. Przed rozpoczęciem wątku lub podjęciem decyzji możesz zaprosić kilka osób do swojej grupy.
     members_list:
       title: Udostępniono
       last_notified: Powiadomiono
@@ -1909,6 +1915,10 @@ pl:
     review_date: Data recenzji
     review_date_hint: Ustaw datę przeglądu decyzji (opcjonalnie)
     who_to_notify: Kogo chcesz powiadomić o tym wyniku? (opcjonalny)
+    review_due_in_days: Sprawdź decyzję po ilu dniach?
+    review_due_in_days_hint: Okres (w dniach) oczekiwania przed rozpatrzeniem decyzji. (opcjonalny)
+    outcome_statement_template: Wzór zestawienia wyników
+    statement_template_placeholder: Podaj wzór do zapisania wyniku decyzji. (opcjonalny)
   poll_common_outcome_panel:
     authored_by: Autorstwa {{name}}
   poll_common_delete_modal:

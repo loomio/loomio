@@ -62,6 +62,7 @@ es:
     which_templates_would_you_like_to_use: "¿Qué plantillas te gustaría usar?"
     template_gallery: Galería de plantillas
     trial_needs_user: Para iniciar su prueba gratuita de Loomio, inicie sesión.
+    play_with_an_example_group: Juega con un grupo de ejemplo
   doctypes:
     youtube_video: Video Youtube
     image: Imagen
@@ -526,6 +527,9 @@ es:
       threads_list: Acciones del hilo
       groups_list: Grupos
       user_list: Acciones de usuario
+    help_docs: Documentos de ayuda
+    a_detailed_guide_to_loomio: Una guía detallada de Loomio
+    talk_to_the_loomio_team: Habla con el equipo de Loomio
   strand_nav:
     newest: El más nuevo
     oldest: El más viejo
@@ -777,6 +781,7 @@ es:
       decided_voters: Todos los que votaron
       undecided_voters: Votantes indecisos
       non_voters: Miembros de {{name}} todavía no han sido invitados
+      everyone_in_the_group: Todos en el grupo
     form:
       too_many_invitations: 'Límite de invitaciones excedido. <a href="{{upgradeUrl}}" target="_blank">Mejore su abono</a>
 
@@ -838,6 +843,7 @@ es:
       invite_people_to_evaluate_loomio: Invita a algunas personas a tu grupo de Loomio para tomar una decisión juntos
       invitation_message_default: He creado este grupo de Loomio para ayudarnos a tomar decisiones juntos. Por favor acepte mi invitación. Sólo te llevará un minuto unirte. Gracias.
       type_or_paste_email_addresses_to_invite: Escriba o pegue direcciones de correo electrónico para invitar
+      group_has_no_members_yet: Eres el único miembro de tu grupo. Es posible que desees invitar a algunas personas a tu grupo antes de iniciar un hilo o una decisión.
     members_list:
       title: Compartido con
       last_notified: Notificado
@@ -1974,6 +1980,10 @@ es:
     statement_placeholder: Resuma las respuestas y explique lo que ocurrirá a continuación.
     you_will_be_notified: Se te notificará en la fecha de revisión
     submit: Compartr resultado
+    review_due_in_days: "¿Revisar la decisión después de cuántos días?"
+    review_due_in_days_hint: Un período de tiempo (en días) para esperar antes de revisar la decisión. (opcional)
+    outcome_statement_template: Plantilla de declaración de resultados
+    statement_template_placeholder: Proporcione una plantilla para escribir el resultado de la decisión. (opcional)
   poll_common_outcome_panel:
     authored_by: Por {{name}}
   poll_common_delete_modal:

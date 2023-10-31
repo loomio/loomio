@@ -64,6 +64,7 @@ pt_BR:
     watch_then_start: Assista ao vídeo e clique em "Iniciar demonstração" para experimentar o Loomio
     template_gallery: Galeria de modelos
     trial_needs_user: Para iniciar seu teste gratuito do Loomio, faça login.
+    play_with_an_example_group: Brinque com um grupo de exemplo
   doctypes:
     youtube_video: Vídeo do youtube
     image: Imagem
@@ -510,6 +511,9 @@ pt_BR:
       threads_list: Ações das conversas
       groups_list: Grupos
       user_list: Ações do usuário
+    help_docs: Documentos de ajuda
+    a_detailed_guide_to_loomio: Um guia detalhado do Loomio
+    talk_to_the_loomio_team: Fale com a equipe Loomio
   strand_nav:
     newest: Mais recente
     oldest: Mais antigo
@@ -761,6 +765,7 @@ pt_BR:
       decided_voters: Todos que votaram
       undecided_voters: Eleitores indecisos
       non_voters: Membros de {{name}} ainda não convidados
+      everyone_in_the_group: Todos no grupo
     form:
       too_many_invitations: 'Se acabaram os convites. <a href="{{upgradeUrl}}" target="_blank">Assine</a>
 
@@ -822,6 +827,7 @@ pt_BR:
       invite_people_to_evaluate_loomio: Convide algumas pessoas para o seu grupo Loomio para tomarem uma decisão juntos
       invitation_message_default: Criei este grupo Loomio para nos ajudar a tomar decisões juntos. Por favor, aceite meu convite. Leva apenas um minuto para entrar. Obrigado.
       type_or_paste_email_addresses_to_invite: Digite ou cole endereços de e-mail para convidar
+      group_has_no_members_yet: Você é o único membro do seu grupo. Você pode convidar algumas pessoas para o seu grupo antes de iniciar um tópico ou decisão.
     members_list:
       title: Compartilhado com
       last_notified: Notificado
@@ -1962,6 +1968,10 @@ pt_BR:
     statement_placeholder: Resuma as respostas e explique o que acontecerá na sequencia.
     you_will_be_notified: Você será notificado na data da revisão.
     submit: Compartilhar resultado
+    review_due_in_days: Rever a decisão após quantos dias?
+    review_due_in_days_hint: Um período de tempo (em dias) para esperar antes de revisar a decisão. (opcional)
+    outcome_statement_template: Modelo de declaração de resultados
+    statement_template_placeholder: Forneça um modelo para escrever o resultado da decisão. (opcional)
   poll_common_outcome_panel:
     authored_by: Por {{name}}
   poll_common_delete_modal:

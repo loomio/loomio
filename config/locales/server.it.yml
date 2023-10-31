@@ -374,3 +374,6 @@ it:
       process_introduction: "<p>Presentare il documento insieme a eventuali informazioni di base. Dichiara lo scopo del documento per aiutarti a rimanere concentrato.</p><p> Invita le persone a fornire informazioni e la loro esperienza e utilizzale per inquadrare il documento. Riconoscere e considerare feedback e contributi delle persone.</p><p> Integrare i contributi in una prima bozza del documento e nelle bozze successive fino a quando non sarà pronto per essere approvato.</p><p> Utilizza un sondaggio di controllo Sense per sondare le opinioni e chiarire eventuali problemi con la bozza.</p><p> Una volta considerato e incorporato il feedback nel documento, procedere all'approvazione o all'accordo con una proposta di consenso o consenso.</p><p> Il thread diventa una chiara registrazione dello stato di avanzamento della creazione del documento e delle decisioni prese.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">Qual è lo scopo del documento?</h3><p></p><h3 id="why-is-this-important"> Perché questo è importante?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Cosa stai chiedendo alle persone di fare?</h3><p></p>
       document: Documento
+    blank:
+      process_name: Modello vuoto
+      process_subtitle: Inizia una nuova discussione per qualsiasi scopo

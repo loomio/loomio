@@ -64,6 +64,7 @@ fr:
     which_templates_would_you_like_to_use: Quels modèles souhaitez-vous utiliser ?
     template_gallery: Galerie de modèles
     trial_needs_user: Pour démarrer votre essai gratuit de Loomio, veuillez vous connecter.
+    play_with_an_example_group: Jouez avec un groupe exemple
   doctypes:
     youtube_video: Video Youtube
     image: Image
@@ -528,6 +529,9 @@ fr:
       threads_list: Actions du fil de discussion
       groups_list: Groupes
       user_list: Actions utilisateur
+    help_docs: Documents d'aide
+    a_detailed_guide_to_loomio: Un guide détaillé de Loomio
+    talk_to_the_loomio_team: Parlez à l'équipe Loomio
   strand_nav:
     newest: Les plus récents
     oldest: Les plus anciens
@@ -779,6 +783,7 @@ fr:
       decided_voters: Tous ceux qui ont voté
       undecided_voters: Votants indécis
       non_voters: Les membres de {{name}} n'ont pas encore été invités
+      everyone_in_the_group: Tout le monde dans le groupe
     form:
       too_many_invitations: 'Invitations maximum atteintes. <a href="{{upgradeUrl}}" target="_blank">Mettre à jour</a>
 
@@ -840,6 +845,7 @@ fr:
       invite_people_to_evaluate_loomio: Invitez des personnes dans votre groupe Loomio pour prendre une décision ensemble
       invitation_message_default: J'ai créé ce groupe Loomio pour nous aider à prendre des décisions ensemble. Veuillez accepter mon invitation. Cela ne prend qu’une minute pour s’inscrire. Merci.
       type_or_paste_email_addresses_to_invite: Saisissez ou collez les adresses e-mail à inviter
+      group_has_no_members_yet: Vous êtes le seul membre de votre groupe. Vous souhaiterez peut-être inviter certaines personnes dans votre groupe avant de démarrer un fil de discussion ou une décision.
     members_list:
       title: Partagé avec
       last_notified: Notifié⋅e(s)
@@ -1980,6 +1986,10 @@ fr:
     statement_placeholder: Résumez les réponses et expliquez ce qui va suivre.
     you_will_be_notified: Vous serez alerté à la date de revue
     submit: Partager le résultat
+    review_due_in_days: Revoir la décision après combien de jours ?
+    review_due_in_days_hint: Un délai (en jours) à attendre avant de revoir la décision. (facultatif)
+    outcome_statement_template: Modèle de déclaration de résultat
+    statement_template_placeholder: Fournissez un modèle pour rédiger le résultat de la décision. (facultatif)
   poll_common_outcome_panel:
     authored_by: Par {{name}}
   poll_common_delete_modal:

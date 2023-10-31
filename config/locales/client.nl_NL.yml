@@ -39,6 +39,7 @@ nl_NL:
     share_a_custom_configuration: Deel een aangepaste configuratie met anderen in uw groep
     template_gallery: Sjabloongalerij
     trial_needs_user: Meld u aan om uw gratis Loomio-proefperiode te starten.
+    play_with_an_example_group: Speel met een voorbeeldgroep
   doctypes:
     youtube_video: YouTube Video
     image: Afbeelding
@@ -485,6 +486,9 @@ nl_NL:
     unread_threads: Ongelezen gesprekken (%{count})
     template_gallery: Sjabloongalerij
     examples_and_templates: Voorbeelden & sjablonen
+    help_docs: Help-documenten
+    a_detailed_guide_to_loomio: Een gedetailleerde gids voor Loomio
+    talk_to_the_loomio_team: Praat met het Loomio-team
   strand_nav:
     newest: Nieuwste
     oldest: Oudste
@@ -720,6 +724,7 @@ nl_NL:
       decided_voters: Iedereen die gestemd heeft
       undecided_voters: Twijfelende stemmers
       non_voters: Leden van {{name}} zijn nog niet uitgegnodigd
+      everyone_in_the_group: Iedereen in de groep
     form:
       too_many_invitations: 'Uitnodigingen-limiet bereikt. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
 
@@ -781,6 +786,7 @@ nl_NL:
       invite_people_to_evaluate_loomio: Nodig enkele mensen uit in jouw Loomio-groep om samen een beslissing te nemen
       invitation_message_default: Ik heb deze Loomio-groep opgericht om ons te helpen samen beslissingen te nemen. Accepteer alstublieft mijn uitnodiging. Het duurt slechts een minuut om lid te worden. Bedankt.
       type_or_paste_email_addresses_to_invite: Typ of plak de e-mailadressen die u wilt uitnodigen
+      group_has_no_members_yet: Jij bent het enige lid van jouw groep. Misschien wil je enkele mensen uitnodigen voor je groep voordat je een gesprek of beslissing start.
     members_list:
       title: Gedeeld met
       last_notified: Gemeld
@@ -1892,6 +1898,10 @@ nl_NL:
     review_date: Beoordelingsdatum
     review_date_hint: Stel een datum in om de beslissing te herzien (optioneel)
     who_to_notify: Wie wilt u op de hoogte stellen van deze uitkomst? (optioneel)
+    review_due_in_days: Na hoeveel dagen de beslissing herzien?
+    review_due_in_days_hint: Een periode (in dagen) die moet worden gewacht voordat de beslissing wordt herzien. (optioneel)
+    outcome_statement_template: Sjabloon voor resultaatverklaringen
+    statement_template_placeholder: Geef een sjabloon op voor het schrijven van de uitkomst van de beslissing. (optioneel)
   poll_common_outcome_panel:
     authored_by: Door {{name}}
   poll_common_delete_modal:

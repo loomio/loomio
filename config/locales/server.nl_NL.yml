@@ -417,3 +417,6 @@ nl_NL:
       process_introduction: "<p>Introduceer het document samen met eventuele achtergrondinformatie. Vermeld het doel van het document om gefocust te blijven.</p><p> Nodig mensen uit om informatie en hun expertise bij te dragen, en gebruik dit om het document te kaderen. Erken en overweeg feedback en bijdragen van mensen.</p><p> Integreer bijdragen in een eerste concept van het document en de daaropvolgende concepten totdat het klaar is om te worden goedgekeurd.</p><p> Gebruik een Sense-check-enquête om meningen te peilen en eventuele problemen met het concept op te helderen.</p><p> Zodra de feedback is overwogen en in het document is opgenomen, gaat u over tot goedkeuring of overeenstemming met een toestemmings- of consensusvoorstel.</p><p> De draad wordt een duidelijk overzicht van de voortgang van het maken van documenten en de genomen beslissingen.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">Wat is het doel van het document?</h3><p></p><h3 id="why-is-this-important"> Waarom is dit belangrijk?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Wat vraag je mensen om te doen?</h3><p></p>
       document: Document
+    blank:
+      process_name: Lege sjabloon
+      process_subtitle: Start voor welk doel dan ook een nieuw draadje

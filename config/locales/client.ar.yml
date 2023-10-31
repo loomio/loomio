@@ -39,6 +39,7 @@ ar:
     share_a_custom_configuration: شارك تكوينًا مخصصًا مع الآخرين في مجموعتك
     template_gallery: معرض النماذج
     trial_needs_user: لبدء النسخة التجريبية المجانية من Loomio، يرجى تسجيل الدخول.
+    play_with_an_example_group: العب مع مجموعة مثال
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -470,6 +471,9 @@ ar:
     unread_threads: المواضيع غير المقروءة (٪ {عدد})
     template_gallery: معرض النماذج
     examples_and_templates: أمثلة وقوالب
+    help_docs: مستندات المساعدة
+    a_detailed_guide_to_loomio: دليل مفصل لLoomio
+    talk_to_the_loomio_team: تحدث إلى فريق Loomio
   strand_nav:
     newest: الأحدث
     oldest: الأقدم
@@ -700,6 +704,7 @@ ar:
       undecided_voters: ناخبون مترددون
       non_voters: لم تتم دعوة {{اسم}} أعضاء بعد
       group: أعضاء {{name}}
+      everyone_in_the_group: الجميع في المجموعة
     form:
       too_many_invitations: 'تم تجاوز حد الدعوة. تطوير
 
@@ -761,6 +766,7 @@ ar:
       invite_people_to_evaluate_loomio: قم بدعوة بعض الأشخاص إلى مجموعة Loomio الخاصة بك لاتخاذ القرار معًا
       invitation_message_default: لقد قمت بإنشاء مجموعة Loomio هذه لمساعدتنا في اتخاذ القرارات معًا. أرجو أن تقبل دعوتي. يستغرق الانضمام دقيقة واحدة فقط. شكرًا لك.
       type_or_paste_email_addresses_to_invite: اكتب أو الصق عناوين البريد الإلكتروني للدعوة
+      group_has_no_members_yet: أنت العضو الوحيد في مجموعتك. قد ترغب في دعوة بعض الأشخاص إلى مجموعتك قبل بدء موضوع أو اتخاذ قرار.
     members_list:
       title: مشترك مع
       last_notified: أخطر
@@ -1877,6 +1883,10 @@ ar:
     review_date: تاريخ المراجعة
     review_date_hint: حدد موعدًا لمراجعة القرار (اختياري)
     who_to_notify: من الذي تريد إبلاغه بهذه النتيجة؟ (خياري)
+    review_due_in_days: مراجعة القرار بعد كم يوم؟
+    review_due_in_days_hint: فترة زمنية (بالأيام) للانتظار قبل مراجعة القرار. (خياري)
+    outcome_statement_template: نموذج بيان النتيجة
+    statement_template_placeholder: توفير نموذج لكتابة نتيجة القرار. (خياري)
   poll_common_outcome_panel:
     authored_by: ب{{الاسم}}
   poll_common_delete_modal:

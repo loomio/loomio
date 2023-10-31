@@ -418,3 +418,6 @@ pl:
       process_introduction: "<p>Przedstaw dokument wraz z wszelkimi dodatkowymi informacjami. Podaj cel dokumentu, aby pomóc Ci się skoncentrować.</p><p> Poproś inne osoby o udostępnienie informacji i swojej wiedzy specjalistycznej oraz wykorzystaj je do oprawienia dokumentu. Przyjmuj do wiadomości i uwzględniaj opinie i wkłady innych osób.</p><p> Integruj uwagi z pierwszą wersją dokumentu i kolejnymi wersjami roboczymi, aż będzie gotowa do zatwierdzenia.</p><p> Użyj ankiety Sense Check, aby poznać opinie i wyjaśnić wszelkie wątpliwości dotyczące wersji roboczej.</p><p> Po rozpatrzeniu i włączeniu opinii do dokumentu należy przystąpić do zatwierdzenia lub uzgodnienia propozycji zgody lub konsensusu.</p><p> Wątek staje się czytelnym zapisem postępu tworzenia dokumentu i podjętych decyzji.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">Jaki jest cel dokumentu?</h3><p></p><h3 id="why-is-this-important"> Dlaczego to jest ważne?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> O co prosisz ludzi?</h3><p></p>
       document: Dokument
+    blank:
+      process_name: Pusty szablon
+      process_subtitle: Załóż nowy wątek w dowolnym celu
