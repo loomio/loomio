@@ -15,7 +15,7 @@
     "test:e2e:single": "nightwatch --config ./tests/e2e/nightwatch.conf.js --test tests/e2e/specs/discussion.js  --testcase can_react_to_a_discussion"
   },
   "dependencies": {
-    "@sentry/browser": "^7.76.0",
+    "@sentry/browser": "^7.77.0",
     "@sentry/tracing": "^7.76.0",
     "@sentry/vue": "^7.76.0",
     "@tiptap/core": "2.0.0-beta.220",
