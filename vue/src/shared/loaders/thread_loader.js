@@ -27,7 +27,7 @@ export default class ThreadLoader {
     this.collapsed = Vue.observable({});
     this.loading = false;
     this.padding = 50;
-    return this.maxAutoLoadMore = 50;
+    this.maxAutoLoadMore = 500;
   }
 
   firstUnreadSequenceId() {
@@ -140,7 +140,7 @@ export default class ThreadLoader {
             $jgt: event.positionKey
           }
         },
-        simplesort: 'positionKey',
+        sortByPositionKey: true,
         limit: this.padding
       },
       remote: {
@@ -162,8 +162,7 @@ export default class ThreadLoader {
             $jlt: event.positionKey
           }
         },
-        simplesort: 'positionKey',
-        simplesortDesc: true,
+        sortByPositionKeyDesc: true,
         limit: this.padding
       },
       remote: {
@@ -184,8 +183,7 @@ export default class ThreadLoader {
           discussionId: this.discussion.id,
           parentId: event.id
         },
-        simplesort: 'positionKey',
-        simplesortDesc: true,
+        sortByPositionKeyDesc: true,
         limit: this.padding
       },
       remote: {
@@ -225,7 +223,7 @@ export default class ThreadLoader {
           depth: 1,
           position: {$gte: position}
         },
-        simplesort: 'positionKey',
+        sortByPositionKey: true,
         limit: this.padding
       },
       remote: {
@@ -245,7 +243,7 @@ export default class ThreadLoader {
           discussionId: this.discussion.id,
           positionKey: {$jgte: positionKey}
         },
-        simplesort: 'positionKey',
+        sortByPositionKey: true,
         limit: parseInt(this.padding/2)
       },
       remote: {
@@ -263,8 +261,7 @@ export default class ThreadLoader {
           discussionId: this.discussion.id,
           positionKey: {$jlt: positionKey}
         },
-        simplesort: 'positionKey',
-        simplesortDesc: true,
+        sortByPositionKeyDesc: true,
         limit: parseInt(this.padding/2)
       },
       remote: {
@@ -422,6 +419,18 @@ export default class ThreadLoader {
 
       if (rule.local.simplesort) {
         chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc);
+      } else if (rule.local.sortByPositionKey) {
+        chain = chain.sort((a,b) => {
+          if (a.positionKey == b.positionKey) { return 0 }
+          if (a.positionKey > b.positionKey) { return 1 }
+          if (a.positionKey < b.positionKey) { return -1 }
+        })
+      } else if (rule.local.sortByPositionKeyDesc) {
+        chain = chain.sort((a,b) => {
+          if (a.positionKey == b.positionKey) { return 0 }
+          if (a.positionKey > b.positionKey) { return -1 }
+          if (a.positionKey < b.positionKey) { return 1 }
+        })
       }
 
       if (rule.local.limit) {

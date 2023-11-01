@@ -141,9 +141,9 @@ export default {
         .strand-list__children(v-if="obj.event.childCount")
           strand-load-more(
             v-if="obj.children.length == 0"
-            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadChildren(obj.event)}"
+            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}"
             :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
-            @click="loader.loadChildren(obj.event)"
+            @click="loader.loadAfter(obj.event)"
             :loading="loader.loading == 'children'+obj.event.id")
           strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
         reply-form(:eventId="obj.event.id")
