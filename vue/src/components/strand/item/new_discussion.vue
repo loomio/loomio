@@ -2,6 +2,7 @@
 import ThreadService  from '@/shared/services/thread_service';
 import { map, compact, pick, pickBy, omit } from 'lodash';
 import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
 import StrandActionsPanel from '@/components/strand/actions_panel';
 
@@ -69,7 +70,7 @@ export default {
 
   methods: {
     viewed(viewed) {
-      if (viewed) { this.discussion.markAsSeen(); }
+      if (viewed && Session.isSignedIn()) { this.discussion.markAsSeen(); }
     },
 
     openSeenByModal() {
