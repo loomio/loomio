@@ -1,13 +1,325 @@
+---
 fi:
   group:
     stats:
       poll_types:
         proposal: Ehdotus
+        count: Kreivi
+        choose: Valita
+        allocate: jakaa
+        score: Pisteet
+        rank: Sijoitus
+        time: Aikakysely
+      group_stats: Ryhmätilastot
+      org_stats: Organisaatiotilastot (mukaan lukien alaryhmät)
+      visits: Vierailut
+      members: Jäsenet
+      subgroups: Alaryhmät
+      threads: Kierteet
+      polls: Äänestykset
+      votes: Äänet
+      comments: Kommentit
+      general: Kenraali
+    error:
+      handle_must_begin_with_parent_handle: Alkaa %{parent_handle}-
+      no_public_trials: Päivitä kokeiluversiosta muuttaaksesi ryhmän tietosuoja-asetusta
   email:
     unsubscribe: 'Lopeta tilaus tai muuta sinun sähköpostiasetuksia:'
+    common:
+      or_enter_code: Tai syötä alla oleva koodi
+      resend: Tämä vanhenee 24 tunnin kuluttua ja sitä voi käyttää vain kerran
+    login:
+      subject: Kirjaudu sisään %{site_name}
+      intro: Tämä on linkkisi kirjautuaksesi sisään %{site_name}
+      intro_code: Tämä on koodisi kirjautuaksesi sisään %{site_name}
+      login: Kirjaudu sisään käyttäjänä %{name}
+    reactivate:
+      subject: Aktivoi %{site_name}-tilisi uudelleen
+      intro: Hei %{name}, tässä on linkki %{site_name}-tilisi uudelleenaktivointiin
+      login: Aktivoi %{name} uudelleen
+    contact_request:
+      subject: "%{name} haluaa olla sinuun yhteydessä %{site_name}!"
+      intro: "%{name} (%{email}) on lähettänyt sinulle yhteydenottopyynnön."
+      footer: Voit vastata suoraan osoitteeseen %{name} vastaamalla tähän sähköpostiin.
+    reset_password:
+      greeting: 'Hei %{name} Tässä on linkki, jonka avulla voit nollata Loomio-tilisi salasanan:'
+      link_text: Nollaa salasana
+      signoff: Sait tämän, koska sähköpostisi syötettiin "Unohdin salasana" -lomakkeeseen %{hostname}. Salasanaasi ei kuitenkaan vaihdeta ennen kuin seuraat yllä olevaa linkkiä ja täytät lomakkeen. Jos sinulla on edelleen ongelmia kirjautumisessa, vastaa tähän sähköpostiin ja ota yhteyttä tukihenkilöön.
+    by_who: kirjoittaja %{person}
+    reply_to_this_discussion: Vastaa tähän keskusteluun
+    loomio_app_description: Helppokäyttöinen ja turvallinen paikka organisaatioille tehdä päätöksiä yhdessä.
+    view_group: Näytä ryhmä
+    to_join_group:
+      subject: "%{member} on kutsunut sinut ryhmään %{group_name} %{site_name}"
+      invitation_text: "%{member} on kutsunut sinut liittymään ryhmään %{group_name}."
+      invitation_text_html: on kutsunut sinut liittymään ryhmään
+      link_help: 'Napsauta alla olevaa linkkiä hyväksyäksesi kutsun:'
+      accept_invitation: Hyväksy kutsu
+      stop_emails: Lopeta sähköpostien vastaanottaminen sivustolta %{site_name}
+      accepting_is_important: On tärkeää hyväksyä kutsusi, jotta et menetä ilmoituksia sinua koskevista päätöksistä.
+    resend_to_join_group:
+      subject: "%{member} odottaa sinua liittymään ryhmään %{group_name} %{site_name}"
+    user_added_to_group:
+      subject: "%{who} on lisännyt sinut ryhmään %{which_group} %{site_name}"
+      content: "%{who} on lisännyt sinut ryhmään %{which_group}."
+      content_html: "<strong>%{who}</strong> on lisännyt sinut ryhmään <strong>%{which_group}</strong> ."
+      link_help: 'Klikkaa alla olevaa linkkiä päästäksesi ryhmään:'
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> peruuttaaksesi tilauksen tai muuttaaksesi sähköpostiasetuksiasi."
+    catch_up:
+      daily_subject: Eilen %{site_name}
+      weekly_subject: Viime viikolla %{site_name}
+      other_subject: Äskettäin %{site_name}
+      do_not_reply: Ole hyvä ja älä vastaa tähän sähköpostiin.
+      mark_as_read: Merkitse luetuksi
+      thanks_for_reading: Kiitos kun luit, mukavaa päivää!
+      marked_as_read_success: Kaikki sähköpostista on merkitty luetuksi
+      click_here: Klikkaa tästä
+    group_membership_approved:
+      intro: Pyyntösi päästä ryhmään %{group_name} on hyväksytty.
+      intro_html: Pyyntösi päästä ryhmään <strong>%{group_name}</strong> on hyväksytty.
+      link_help: 'Napsauta alla olevaa linkkiä liittyäksesi ryhmään %{group_name} ja aloittaaksesi:'
+      subject: Pyyntösi liittyä ryhmään %{group_name} on hyväksytty
+      join_group: Liittyä ryhmään
+    membership_request:
+      intro_html: on pyytänyt pääsyä yhteen ryhmistäsi.
+      subject: "%{who} on pyytänyt liittymistä ryhmään %{which_group}"
+      view_group: Voit hyväksyä tai hylätä pyynnön täällä
+      button_text: Näytä pyyntö
   footer:
     blog: Blogi
     contact: Ota yhteyttä
     privacy: Yksityisyys
     public_groups: Julkiset ryhmät
     terms: Termit
+    about: Noin
+    help: auta
+    pricing: Hinnoittelu
+    independent_install_html: '%{hostname} käyttää itsenäistä kopiota Loomiosta: <a href="http://github.com/loomio/loomio">lue lisää</a> .'
+  discussion_templates:
+    blank:
+      process_name: Tyhjä malli
+      process_subtitle: Aloita uusi ketju mihin tahansa tarkoitukseen
+    discuss_a_topic:
+      title_placeholder: Mikä on aihe, josta haluat keskustella?
+      process_name: Keskustele aiheesta
+      process_subtitle: Aloita keskustelu ryhmäsi kanssa
+      process_introduction: "<p>Onko sinulla jokin ongelma, ongelma tai mahdollisuus, jonka haluat ottaa esille ryhmäsi kanssa?</p><p> Esittele aihe, linkitä kaikkiin taustatietoihin ja pyydä kommentteja, ideoita ja apua.</p><p> Kutsu ihmisiä osallistumaan antamalla ajatuksiaan ja oleellisia tietoja. Käytä @maininta saadaksesi tiettyjen ihmisten huomion.</p><p> Päivitä viestiketjun konteksti keskustelun edetessä helpottaaksesi sitä kohti tulosta.</p><p> Älä odota, kunnes sinulla on kaikki tiedot aloittaaksesi ketjun. Käytä viestiketjua mieluummin kutsuaksesi ihmisiä auttamaan sinua tutkimaan aihetta ja löytämään ratkaisun.</p>"
+      description: <h3 id="introduce-and-describe-the-topic">Esittele ja kuvaile aihe</h3><p></p><h3 id="why-is-this-important"> Miksi tämä on tärkeää?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> Miten haluaisit ihmisten reagoivan?</h3><p></p>
+    onboarding_to_loomio:
+      title: Käytämme Loomioa ryhmässämme
+      process_name: Ilmoittautuminen Loomioon
+      process_subtitle: Lanka, joka auttaa uusia Loomion käyttäjiä harjoittelemaan kommenttien kirjoittamista ja äänestämistä.
+      process_introduction: "<p>Käytä tätä mallia esitelläksesi ihmisiä Loomioon.</p><p> Loistava tapa kokea Loomio on avata keskustelu Loomiossa ja tehdä päätös!</p><p> Aloita keskustelu seuraamalla alla olevia tekstikehotteita tai lisäämällä omat sanasi.</p><p> Suorita Sense check, jotta ryhmäsi voi äänestää ja nähdä tulokset.</p><p> Avaa Loomion arvo ottamalla ihmiset mukaan heidän ensimmäiseen päätökseensä.</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">Miksi olet kiinnostunut Loomion käytöstä?</h3><p> Olemme kiinnostuneita käyttämään Loomiota ihmisten osallistumiseen organisaatiotamme koskeviin päätöksiin.</p><h3 id="what-are-you-asking-people-to-do"> Mitä pyydät ihmisiä tekemään?</h3><p> Haluaisin kuulla ajatuksesi! Jätä kommentti alle ja äänestä ehdotusta.</p><p> Voit vastata jonkun kommenttiin klikkaamalla kommentin oikeassa alakulmassa olevaa vastauskuvaketta.</p><p> Käytä @mainintaa ilmoittaaksesi ihmisille.</p>
+      onboarding: Perehdytys
+    consent_process:
+      title_placeholder: Terveys- ja turvallisuuspolitiikkamme kehittäminen
+      process_name: Suostumusprosessi
+      process_subtitle: Tee päätös, joka on "turvallinen kokeilla" ilman vastalauseita.
+      process_introduction: '<p>Pyydä suostumus päätökseen, joka sinun on tehtävä, jos ehdotuksellesi ei ole merkittäviä vastalauseita, jotta voit tehdä nopean päätöksen, jota on "turvallinen kokeilla" nyt.</p><p> Tyypilliset roolit:</p><ul><li><p> Ehdottaja: Henkilö, joka ottaa esille aiheen, joka vaatii päätöstä.</p></li><li><p> Fasilitaattori: Joku, joka voi auttaa ehdotuksen tekijää tekemään työnsä tehokkaasti.</p></li></ul><p> Yleiset prosessin vaiheet:</p><p> Vaihe 1. Esitä ehdotus Loomio-säikeellä.</p><p> Vaihe 2. Edistä kysymyksiä, reaktioita ja kommentteja parantaaksesi ehdotusta Sense check -toiminnolla.</p><p> Vaihe 3. Muuta ehdotusta ehdotuksilla ja kommenteilla.</p><p> Vaihe 4. Kysy, onko jollakulla järkevää vastustusta muutettua ehdotusta vastaan suostumusehdotuksella.</p><p> Vaihe 5. Integroi pätevät vastalauseet ja luo ehdotuksesta muutettu versio, jonka kaikki hyväksyvät olevan "turvallista kokeilla", ja kun se on valmis, ilmoita päätöksen tulos.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Lue lisää: Suostumusprosessi.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Mikä on päätös, joka sinun on tehtävä?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> Miksi tämä on tärkeää ja mitä vaikutuksia sillä on?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Mitä tietoa ihmiset tarvitsevat kontekstiin?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Kuka on tämän prosessin ohjaaja?</h3><p></p>
+      consent: suostumus
+    advice_process:
+      title_placeholder: Kaipaan neuvoja uuden tietokoneen hankintaan
+      process_name: Neuvontaprosessi
+      process_subtitle: Pyydä neuvoja päätökseen, joka sinun on tehtävä.
+      process_introduction: '<p>Tee päätös niiden ihmisten neuvojen perusteella, joihin vaikutus vaikuttaa tai joilla on asiantuntemusta, jotta voit tehdä paremman päätöksen organisaatiollesi.</p><p> Tyypilliset roolit:</p><ul><li><p> Fasilitaattori: Henkilö, joka tekee päätöksen tai pyytää jotakuta helpottamaan.</p></li><li><p> Neuvonantajat: Henkilöt, joihin tämä vaikuttaa tai joilla on kutsumasi asiantuntemus.</p></li></ul><p> Yleiset prosessin vaiheet:</p><p> Vaihe 1. Hae näkemyksiä ennen kuin ehdotat toimia.</p><p> Vaihe 2. Tee ehdotus ja pyydä neuvoja - suorita neuvontaehdotus.</p><p> Vaihe 3. Ottaen huomioon saadut neuvot teet päätöksen ja ilmoitat neuvoja antaneille - kerro tulos.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Lue lisää: Neuvontaprosessi.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Mikä on päätös, joka sinun on tehtävä?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Miksi tämä on tärkeää ja mitä vaikutuksia sillä on?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> Mitä neuvoja kysyt auttaaksesi sinua tekemään hyvän päätöksen?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Kuka on tämän prosessin ohjaaja?</h3><p></p>
+      advice: Neuvoja
+    pass_a_resolution:
+      title_placeholder: Päätös hyväksyä strategia
+      process_name: Anna päätös
+      process_subtitle: Esittele päätöslauselman konteksti, taustatiedot, vastaa kysymyksiin ja tee ehdotus päätöslauselman hyväksymiseksi.
+      process_introduction: '<p>Robert''s Rules on kehys, joka koostuu joukosta koodeja ja eettisiä sääntöjä, jotka auttavat ryhmiä pitämään säännöllisiä kokouksia, joissa enemmistö voi hallita samalla kun vähemmistöjen äänet tulevat kuuluviin. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a> Jäsen tekee aloitteen toimenpiteen ehdottamiseksi tai päätöksen tekemiseksi sanomalla: "Muutan…". Toisen jäsenen on kannatettava esitystä sanomalla: "Tuen esitystä". Kun joku hyväksyy esityksen, ryhmä äänestää esityksestä. Se tapahtuu äänten enemmistöllä tai päätösvaltaisuudella sääntöjen määräysten mukaan.</p>'
+      description: "<p><strong>Ilmoita annettava päätös</strong></p><p></p><p> <strong>Piirrä konteksti ja taustatiedot</strong></p><p></p><p> <strong>Pyydä jäseniä esittämään kysymyksiä, kommentoimaan ja antamaan tietoja yhteisymmärryksen rakentamiseksi</strong></p><p></p>"
+      resolution: Resoluutio
+    decision_by_consensus:
+      title_placeholder: Uudistetaan organisaatiomme sääntöä
+      process_name: Päätös yksimielisesti
+      process_subtitle: Tee työehtosopimus kaikkien asianosaisten kanssa.
+      process_introduction: '<p>Rakenna yksimielisyyttä päätöksestä, joka sinun on tehtävä yhdessä, jotta pääset sopimukseen, joka tyydyttää kaikkien osallistujien tarpeet ja huolenaiheet.</p><p> Tyypilliset roolit:</p><ul><li><p> Nimitä avustaja. (Hallituksen kokouksissa tämä on yleensä puheenjohtaja.)</p></li><li><p> Päätösvaltaisuus tai suurin enemmistö jäsenistä osallistua organisaatiosi sääntöjen mukaisesti.</p></li></ul><p> Yleiset prosessin vaiheet:</p><p> Vaihe 1. Luo avoin tila keskustelulle aiheesta tai päätösehdotuksesta.</p><p> Vaihe 2. Testaa konsensusta ja esitä vastalauseet Sense check -ehdotuksella.</p><p> Vaihe 3. Selvennä mahdollisia kohtia, pyydä rakentavia muutoksia ja muuta ehdotusta.</p><p> Vaihe 4. Testaa yksimielisyys ja mahdolliset jäljellä olevat vastalauseet konsensusehdotuksella.</p><p> Vaihe 5. Kirjaa päätös tulosineen ja organisaation viralliseen pöytäkirjaan.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Lue lisää: Konsensusprosessi.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Mikä on päätös, joka sinun on tehtävä?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Miksi tämä on tärkeää ja mitä vaikutuksia sillä on?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Mitä tietoa ihmiset tarvitsevat kontekstiin?</h3><p></p><h3 id="who-is-the-facilitator"> Kuka on fasilitaattori?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Mitä edellytyksiä päätöksen tekemiseksi on täytettävä?</h3><h3 id=""></h3>
+      consensus: Yhteisymmärrys
+    share_links_and_info:
+      title_placeholder: Jaa linkkejä ja tietoa
+      process_name: Jaa linkkejä ja tietoa
+      process_subtitle: Lähetä tietoja, linkkejä ja raportteja jaettavaksi kommentteja ja keskustelua varten.
+      process_introduction: <p>Käytä viestiketjua "seinänä" tai "ilmoitustauluna" ryhmällesi lähettääksesi tietoja, uutisia ja ideoita, jotka haluat jakaa toistensa kanssa.</p><p> Kutsu ihmisiä käyttämään <strong>Lisää-linkkiä</strong> ja <strong>Upota videon</strong> muotoilutyökaluja auttaaksesi ryhmää pääsemään tietoihin Loomiosta. Käytä kommenttien <strong>otsikkoa</strong> kiinnittääksesi kommentin säikeen aikajanalle, jotta se on helposti löydettävissä.</p><p> <strong>Kiinnitä</strong> lanka niin, että se pysyy kiinni, ja rohkaise <strong>Reaktiota</strong> pitämään se vireänä, jolloin ihmiset tietävät, että näit heidän esineensä.</p><p> Tämän säikeen oletusnäyttö on <strong>Uusin</strong> , joten uusimmat kommentit ovat ketjun yläosassa.</p>
+      description: <p>Käytä tätä säiettä lähettääksesi tietoja, ilmoituksia ja asioita, jotka haluat jakaa – paikka, jossa voit nähdä, mitä tapahtuu, ja osallistua.</p><p data-text-align="start"> Jaa tapahtumia, raportteja, podcasteja ja muuta mielenkiintoista online-tietoa.</p><p data-text-align="start"> Käytä <strong>Lisää-linkkiä</strong> ja <strong>Upota videon</strong> muotoilutyökaluja auttaaksesi ihmisiä pääsemään tietoihin Loomiossa.</p>
+      information: Tiedot
+    prepare_for_a_meeting:
+      title_placeholder: Valmistaudutaan seuraavaan tapaamiseen
+      process_name: Valmistaudu tapaamiseen
+      process_subtitle: Rakenna esityslista, postita hallituksen paperit ja järjestä hallinnolliset asiat niin, että kaikki ovat ajan tasalla, kontekstissa ja valmiina.
+      description: <p><strong>Kokouksen painopiste</strong></p><p></p><p data-text-align="start"> <strong>Esityslista</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Edellisen kokouksen toimet</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Miten osallistujien tulisi valmistautua kokoukseen?</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Luettelo kokouksen asiakirjoista</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>Suunnittele tehokas kokous ottamalla ihmiset mukaan alusta alkaen, suuntautumalla tärkeimpiin aiheisiin ja hyödyntämällä arvokasta yhteistä aikaasi paremmin.</p><p> Käytä lankaa kokouksen säiliönä, kun haluat määrittää kokouksen painopisteen, asettaa esityslistan, löytää sopivan päivämäärän, julkaista tärkeimmät asiakirjat ja raportit, aloittaa keskustelun esityslistan kohdista, seurata toimia ja pöytäkirjaa.</p><p> Tämä auttaa kaikkia valmistautumaan kokoukseen lukemalla materiaalit ja pohtimalla keskustelunaiheita ja tehtäviä päätöksiä. Jäsenet saapuvat silloin todennäköisemmin paikallaan ja valmiina kokoukseen.</p><p> Lue lisää <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>kokoukseen valmistautumisesta</u></a> Loomion hyvän hallinnon oppaasta.</p>
+      meeting: Tapaaminen
+    build_a_policy:
+      title_placeholder: Rekrytointipolitiikkamme uudistaminen
+      process_name: Rakenna politiikka
+      process_subtitle: Työskentele tiimisi kanssa käytäntö- tai menettelyasiakirjan laatimiseksi ja sovimiseksi.
+      process_introduction: "<p><span>Säie on käytännöstä käytävän keskustelun säilö, jossa voit sopia vaatimuksista ja periaatteista sekä lähettää asiakirjaluonnoksia kommentoitavaksi.</span></p><p> <span>Käytä mallia käytäntöjen kehittämiseen pienen ryhmän kanssa tai tee siitä läpinäkyvä koko organisaatiolle ja pyydä kommentoimaan asiakirjan progressiivisia versioita.</span></p><p> <span>Käytä Sense check -ehdotusta ilmoittaaksesi ryhmän jäsenille, että asiakirjaluonnos on valmis tarkastettavaksi, ja kutsu ihmisiä lukemaan asiakirja ja vastaamaan kommentteihin tai kysymyksiin.</span></p><p> <span>Kun ”lopullinen” luonnos on valmis, esitä suostumus- tai konsensusehdotus asiakirjan hyväksymiseksi.</span></p>"
+      description: "<p><strong><span>Mikä on politiikka tai asiakirja, joka sinun on rakennettava?</span></strong></p><p></p><p> <strong><span>Miksi tämä on tärkeää?</span></strong></p><p></p><p> <strong><span>Mitä pyydät ihmisiä tekemään?</span></strong></p><p></p>"
+      policy: Käytäntö
+    elect_a_governance_position:
+      title_placeholder: Valtuuston nimitys ja valinta
+      process_name: Valitse hallintovirka
+      process_subtitle: Nimeä ja valitse joku hallitukseen, komiteaan tai hallitukseen.
+      process_introduction: "<p>Esittele tehtävän hallintorooli ja kriteerit, jotta jäsenet voivat arvioida ehdokkaita.</p><p> Kutsu ehdokkaaksi osallistumiskyselyllä. Pyydä ehdokkaita julkaisemaan kuva ehdokkaista sekä heidän elämänsä ja viittaukset. Upota videoviesti ehdokkaalta, jotta jäsenet voivat nähdä ja kuulla suoraan ehdokkaasta.</p><p> Jos olet valmis valitsemaan ehdokkaan, käytä suostumusehdotusta.</p><p> Jos sinulla on useita ehdokkaita virkaan, käytä Ranked Choice -ehdotusta, jossa äänestäjät voivat asettaa ehdokkaat paremmuusjärjestykseen.</p>"
+      description: '<h3 id="what-position-do-you-need-to-fill">Mikä paikka sinun on täytettävä?</h3><p></p><h3 id="why-is-this-important"> Miksi tämä on tärkeää?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand"> Millainen pätevyys, taidot ja kokemus tekevät hyvän ehdokkaan?</h3><p></p><h3 id="what-is-the-election-process"> Mikä on vaaliprosessi?</h3><p> Vaihe 1: Ehdokkaat - kutsumme ehdolle sopivia ehdokkaita.</p><p> Vaihe 2: Esittele ehdokkaat – liitä mukaan valokuva, lyhyt kuvaus ja viite jokaisesta ehdokkaasta.</p><p> Vaihe 3: Vaalit - äänestä ehdokkaan nimittämisestä tehtävään.</p>'
+      election: vaalit
+    funding_decision:
+      title_placeholder: Rahoitushakemus Robotics Roadshow -tapahtumaan
+      process_name: Rahoituspäätös
+      process_subtitle: Käsittele apuraha-, laina- tai investointihakemus ja tee rahoituspäätös.
+      process_introduction: "<p>Esitä rahoitushakemus, liitä asiakirjat ja muut tukimateriaalit.</p><p> Tee yhteenveto sovelluksesta säikeen kontekstissa.</p><p> Kutsu valtuutettuja henkilöitä tarkistamaan hakemus ja esittämään kysymyksiä. Varaa riittävästi aikaa keskustelulle.</p><p> Tee konsensusehdotus rahoituksen hyväksymiseksi.</p><p> Jos joku on eri mieltä, kysy syytä – esimerkiksi lisätietoja saatetaan tarvita. Pyydä eri mieltä olevaa henkilöä muuttamaan äänensä, kun hän on tyytyväinen.</p><p> Kun sinulla on selkeä päätös rahoitushakemuksesta, ilmoita tulos päätöksen kirjaamiseksi.</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">Esittele ja tee yhteenveto rahoitushakemuksesta</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Miten tämä hakemus sopii rahoituskriteerien kanssa?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Kenellä on oikeus hyväksyä tämä rahoituspäätös?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Pyydä päättäjiltä kysymyksiä hakemuksen käsittelyä varten</h3><p></p>
+      funding: Rahoitus
+    approve_a_document:
+      title_placeholder: Brändistrategiamme kehittäminen
+      process_name: Hyväksy asiakirja
+      process_subtitle: Esittele tärkeä asiakirja, politiikka tai sopimus, keskustele ja kehitä sitä.
+      process_introduction: "<p>Esittele asiakirja ja mahdolliset taustatiedot. Kerro asiakirjan tarkoitus auttaaksesi keskittymään.</p><p> Kutsu ihmisiä antamaan tietoja ja asiantuntemusta ja käytä tätä asiakirjan kehystämiseen. Ota huomioon ja huomioi ihmisten palaute ja panokset.</p><p> Integroi kommentit asiakirjan ensimmäiseen luonnokseen ja peräkkäisiin luonnoksiin, kunnes se on valmis hyväksyttäväksi.</p><p> Käytä Sense check -kyselyä mielipiteiden selvittämiseen ja luonnokseen liittyvien ongelmien selvittämiseen.</p><p> Kun palaute on otettu huomioon ja sisällytetty asiakirjaan, siirry hyväksymiseen tai hyväksymiseen suostumus- tai konsensusehdotuksen kanssa.</p><p> Säikeestä tulee selkeä tallenne asiakirjan luomisen edistymisestä ja tehdyistä päätöksistä.</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">Mikä on asiakirjan tarkoitus?</h3><p></p><h3 id="why-is-this-important"> Miksi tämä on tärkeää?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Mitä pyydät ihmisiä tekemään?</h3><p></p>
+      document: Asiakirja
+  explore:
+    header: Tutustu julkisiin ryhmiin
+  activerecord:
+    errors:
+      messages:
+        blank: ei voi olla tyhjä
+        invalid: ei ole kelvollinen arvo
+  errors:
+    clear_cache: Latausongelma havaittu. Pidä vaihtonäppäintä painettuna ja paina reload-näppäintä tai tyhjennä selaimen välimuisti.
+    noscript: Loomio vaatii javascriptin toimiakseen! Ota javascript käyttöön selaimessasi jatkaaksesi
+    upgrade_browser: Voi ei! Verkkoselaimesi on liian vanha, eikä Loomio välttämättä toimi kunnolla. <a href="https://browser-update.org/update.html">Päivitä selaimesi.</a>
+    return_home: Palata kotiin
+    not_found: 404 tiedostoa ei löydy.
+    messages:
+      email: ei ole kelvollinen sähköpostiosoite
+      spoofed_media_type: Tiedoston sisältö ei vastaa sen tiedostonimeä
+  user:
+    deleted_user: Poistettu käyttäjä
+    placeholder_name: Kutsuttu käyttäjä (%{hostname})
+    error:
+      sign_in_required_html: Sinun on kirjauduttava sisään jatkaaksesi. Ole hyvä <a href="/dashboard" target="_blank">ja kirjaudu sisään</a> ja lataa tämä sivu uudelleen jatkaaksesi.
+      recaptcha: Emme voineet vahvistaa, että et ole robotti. Yritä uudelleen!
+      bad_login: Valitettavasti tämä salasana ei vastaa tiedoissamme olevaa salasanaa
+      username_must_be_alphanumeric: Käyttäjänimien tulee olla vain pieniä kirjaimia ja numeroita
+  poll:
+    error:
+      cannot_add_options: Vaihtoehtoja ei voi lisätä tähän kyselyyn
+      cannot_remove_options: Vaihtoehtoja ei voi poistaa tästä kyselystä
+      must_have_options: On oltava vähintään yksi äänestysvaihtoehto
+      must_be_in_the_future: Täytyy olla tulevaisuudessa
+      templates_cannot_close: Malleja ei voi sulkea
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent}) jäsentä on ilmoittanut kantansa"
+      title: Otsikko
+      author: Tekijä
+      email: Sähköposti
+      user_id: käyttäjätunnus
+      created_at: Luotu klo
+      closing_at: Sulkeminen klo
+      closed_at: Suljettu klo
+      is_latest: On Uusin
+      engagement: Sitoumus
+      stances: Asenteet
+      participants: Osallistujat
+      details: Yksityiskohdat
+      group_name: Ryhmän nimi
+      discussion_title: Viestiketjun otsikko
+      outcome_author: Lopputuloksen kirjoittaja
+      outcome_created_at: Tulos luotu klo
+      outcome_statement: Tuloslausunto
+      poll_url: Äänestyksen URL-osoite
+      reason: Syy
+      participant: Osallistuja
+      also_available: Saatavilla myös in
+      total: Kaikki yhteensä
+    waiting_for_votes_from: Ääniä odotellessa
+  stance:
+    error:
+      too_short: Tee valinta
+  invitation:
+    invitation_cancelled: Valitettavasti ryhmän koordinaattori on peruuttanut tämän kutsun. Pyydä ryhmältäsi toinen kutsu.
+    invitation_already_used: Tämä kutsu on jo käytetty. Kirjaudu suoraan Loomoon jatkaaksesi ryhmääsi.
+  subscriptions:
+    active: Aktiivinen
+    inactive: Epäaktiivinen
+  base_mailer:
+    via_loomio: "%{name} (%{site_name}:n kautta)"
+  user_mailer:
+    group_export_ready:
+      subject: 'Ryhmätietojen vienti: %{group_name}'
+      body_html: Lataa ryhmätietosi <a href="%{url}">tästä</a> . Huomaa, että tämä linkki vanhenee viikon kuluttua.
+    deactivated:
+      subject: Käyttäjätilisi %{site_name} on poistettu käytöstä.
+      body_html: "<p>Sinä tai joku, jolla on pääsy tiliisi, on deaktivoinut Loomio-käyttäjätilisi.</p><p> Kaikki henkilötiedot on poistettu järjestelmästä.</p><p> Jos haluat palauttaa tämän käyttäjätilin ja siihen liittyvät kommentit ja äänet, ota yhteyttä tukeen ja viittaa: %{recovery_code}</p>"
+    accounts_merged:
+      subject: "%{site_name} käyttäjätilisi on yhdistetty."
+      body_html: Hei %{name}, kaksi loomio-tiliäsi on yhdistetty yhdeksi tiliksi. Voit käyttää loomioa tästä lähtien kirjautuessasi sisään käyttämällä <strong>%{email}</strong> .
+    merge_verification:
+      subject: Vahvista %{site_name} sähköpostiosoitteesi yhdistämistä varten
+      body_html: "<p>Hei %{name},</p><p> Pyyntö on yhdistää käyttäjätilisi osoitteeseen <strong>%{source_email}</strong> tähän osoitteeseen <strong>%{target_email}</strong> kuuluvaan tiliin.</p><p> Kun tämä prosessi on valmis, et voi enää kirjautua sisään osoitteella <strong>%{source_email}</strong> ja vain sovelluksella <strong>%{target_email}</strong> .</p><p> Vahvista, että tämä on se, mitä haluat tehdä.</p>"
+      verify: Vahvista sähköposti ja jatka
+      confirm_page:
+        confirm: Vahvista yhdistäminen
+        body_html: "<p>Vahvista, että haluat yhdistää <strong>%{source_email}</strong> -tilin tiliin <strong>%{target_email}</strong> .</p><p> Tilisi osoitteessa <strong>%{source_email}</strong> poistetaan, ja sen jälkeen voit kirjautua sisään vain <strong>%{target_email} -palvelun</strong> kautta.</p><p> Tämä muutos on peruuttamaton.</p>"
+        merge: Yhdistä tilit
+      complete_page:
+        title: Yhdistäminen onnistui!
+        body_html: <p>Käyttäjätilien yhdistäminen onnistui. Saat pian vahvistussähköpostin osoitteeseen <strong>%{target_email}</strong> .</p><p> Ota <a href="/contact" target="_blank">meihin yhteyttä,</a> jos sinulla on kysyttävää.</p>
+  announcement_count_emails: "%{count} sähköpostia"
+  email_actions:
+    unfollowed_discussion: Olet poistanut sähköpostit käytöstä ketjussa.
+  discussion_mailer:
+    reply_or_view_online_html: Vastaa tähän sähköpostiin suoraan tai <a href='%{url}'>katso se %{hostname} -palvelussa</a> .
+    turn_off_notifications_html: "<a href='%{url}'>Poista sähköpostit käytöstä</a> tässä keskustelussa."
+    change_email_preferences_html: Muuta <a href='%{email_preferences_url}'>sähköpostiasetuksiasi</a> .
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Peruuta</a> tämän säikeen muiden ilmoitusten tilaus."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Peruuta</a> tämän ketjun kommenttien tilaus."
+    unsubscribe_from_comment_replied_to_html: Tämä on vastausilmoitus.
+    unsubscribe_from_user_mentioned_html: Tämä on mainintailmoitus.
+    discussion_edited:
+      inline: "%{actor} muokkasi viestiketjun kontekstia"
+    discussion_closed:
+      inline: "%{actor} sulki ketjun"
+  password_reset:
+    change_your_password: Vaihda salasanasi
+    change_my_password: Vaihda salasana
+    confirm_new_password: Vahvista salasana
+    new_password: Uusi salasana
+    email_guidelines_html: "<p>Kirjoita sähköpostiosoitteesi ja sinulle lähetetään salasanan palautuslinkki.</p><p> Jos kirjaudut sisään tavallisesti Facebookin tai Googlen kautta, anna kyseiseen tiliin liitetty sähköpostiosoite.</p>"
+    reset_email_timeframe: Sähköpostin saapuminen voi kestää jopa 5 minuuttia. Jos se ei tule näkyviin, muista tarkistaa roskapostikansiosi.
+    length_restriction: Salasanan tulee olla vähintään 8 merkkiä pitkä.
+    forbidden_passwords: Yleiset salasanat, kuten "salasana", ovat kiellettyjä tilisi suojaamiseksi.
+  task_mailer:
+    task_due_reminder:
+      subject: 'Tehtävämuistutus: %{name}'
+      greeting: 'Hei %{name}, seuraavan tehtävän määrä on %{due}:'
+      view_task: Näytä sivustolla %{site_name}
+      update_or_comment: Jos olet jo suorittanut tämän tehtävän, rastita se. Jos se ei ole valmis, jaa edistymispäivitys.
+      due_today: tänään
+      due_in_count_days: "%{count} päivässä"
+  group_mailer:
+    resend: 'MUISTUTUS: %{member} odottaa sinua liittymään %{group_name}'
+    destroy_warning:
+      subject: Loomio-ryhmäsi on ajoitettu poistettavaksi.
+      body: '%{deletor} on ajoittanut Loomio-ryhmäsi: "%{group}" poistettavaksi. Jos et halua, että ryhmääsi poistetaan, vastaa tähän sähköpostiin. Jos olet varma, että haluat poistaa ryhmän, sinun ei tarvitse tehdä mitään. Kiitos.'
+  poll_mailer:
+    common:
+      why_send_this: Saat tämän sähköpostin, koska %{reason}
+      view_on_loomio: Katso se %{site_name}
+      create_outcome: Jaa tulos
+      your_response: 'Äänestit:'
+      you_voted: Äänestit!
+      not_invited: Ei kutsuttu
+      please_respond: Ole hyvä ja vastaa
+      time_zone: "(Ajat näkyvät %{zone}ssa)"
+      undecided_members: Päättämättömät jäsenet (%{count})
+      undecided_visitors: Päättämättömät vieraat (%{count})
+      more_undecided: "%{count} muuta..."
+      vote_now: Äänestä nyt
+      you_have_until: Sinulla on %{when} asti aikaa osallistua.
+      people_have_voted: "%{nom} %{dnom} ihmisestä on osallistunut (%{pct}%)"

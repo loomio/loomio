@@ -1,6 +1,45 @@
+---
 he:
   templates:
     try_loomio: נסו את Loomio
+    template_gallery: גלריית תבניות
+    title_template: תבנית %{title}
+    title_templates: "%{title} תבניות"
+    title_copy: "%{title} העתק"
+    copy_of_title: עותק של %{title}
+    loomio_default_templates: תבניות ברירת מחדל של Loomio
+    which_templates_would_you_like_to_use: באילו תבניות תרצה להשתמש?
+    login_to_start_demo: זו הדגמה של לומיו בפעולה. אתה מוזמן להסתכל מסביב.
+    sign_in_to_try_features: אם תרצה לנסות להצביע בהחלטת הדגמה, או להתחיל ניסיון חינם עבור הארגון שלך, לחץ על "היכנס".
+    click_button_to_start_demo: ברוך הבא! כדי לנסות הצבעה ותכונות אחרות, לחץ על התחל הדגמה.
+    welcome_to_your_demo: זו קבוצת הדגמה משלך!
+    try_voting_to_see_it_work: נסה להצביע בהצעה כדי לקבל תחושה של איך לומיו עובד.
+    delete_will_be_deleted_in_x_days: הדגמה זו תימחק בעוד %{x} ימים.
+    to_use_loomio_with_your_org_start_trial: כשתהיה מוכן לנסות את Loomio עם הארגון שלך, התחל גרסת ניסיון בחינם.
+    templates: תבניות
+    make_a_copy: צור עותק
+    this_thread_is_a_template: השרשור הזה הוא תבנית. צור עותק אם אתה רוצה להשתמש בו.
+    this_is_a_poll_template: זו תבנית סקר. צור עותק אם אתה רוצה להתחיל להצביע.
+    start_a_demo_group: התחל קבוצת הדגמה
+    start_a_demo: התחל הדגמה
+    demo_group: קבוצת הדגמה
+    play_with_an_example_group: שחקו עם קבוצה לדוגמה
+    look_and_feel: ראה כיצד נראית Loomio עבור ארגון קטן. למד את האפליקציה על ידי ניסיון.
+    watch_then_start: אנא צפה בסרטון ולאחר מכן לחץ על "התחל הדגמה" כדי לנסות את Loomio
+    generating_demo: אוקיי, חכה שם! יצירת הדגמה לוקחת בערך 20 שניות.
+    start_a_x_day_free_trial: התחל ניסיון חינם של {{day}} ימים
+    ready_to_trial: מוכן לנסות את Loomio עם הארגון שלך?
+    start_a_no_obligation_x_day_trial: התחל קבוצת Loomio עבור הארגון שלך עם ניסיון חינם של {{day}} ימים.
+    you_can_test_it_out: אתה יכול להזמין אנשים אחרים להצטרף, לשלב את זה עם הכלים האחרים שלך ולנסות לקבל כמה החלטות.
+    demo_created: קבוצת הדגמה נוצרה, בדיוק בשבילך!
+    start_demo: התחל הדגמה
+    view_demo: צפה בהדגמה
+    start_trial: התחל ניסיון
+    start_free_trial: להתחיל ניסיון ללא תשלום
+    demo_needs_user: כדי להתחיל הדגמה, עליך להירשם (או להיכנס) כמשתמש ב-Loomio. זה בחינם ולוקח רק דקה.
+    trial_needs_user: ברוך הבא! היכנס כדי להתחיל את תקופת הניסיון בחינם
+    this_is_a_template_for_new_threads: זוהי תבנית לשרשורים חדשים
+    share_a_custom_configuration: שתף תצורה מותאמת אישית עם אחרים בקבוצה שלך
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -13,10 +52,41 @@ he:
     free: חינם
     trial: ניסיון
     pro: פרו
+    starter: מַתנֵעַ
+    pro_nonprofit: לעמותות
+    community: קהילה
+    small: קָטָן
+    medium: בינוני
+    large: גָדוֹל
+    monthly: יַרחוֹן
+    yearly: מדי שנה
   current_plan_button:
     upgrade: שדרג
+    buy_now: קנה עכשיו
+    is_old_plan: ל-Loomio יש תוכניות תמחור פשוטות חדשות
+    change_plan: שנה תוכנית
+    view_plans: צפה בתוכניות
+    free_trial: ניסיון חינם. נותרו {{days}} ימים.
+    trial_expired: תקופת הניסיון שלך פג. שדרג כדי להמשיך להשתמש ב-Loomio.
+    tooltip: המחירים שלנו פנטסטיים! שדרג עוד היום ותיהנה ממה שלומיו יכולה להציע לקבוצה שלך.
+    was_gift_trial: 'הקבוצה שלך משתמשת ב-Loomio בחינם מאז {{createdDate}}. אין באפשרותנו להמשיך לספק שירות בחינם. אנא שדרג כדי להמשיך להשתמש ב-Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>קרא עוד.</a>'
+    was_gift_remaining: נותרו {{days}} ימים.
+    was_gift_expired: פג תוקף התוכנית החינמית שלך.
   subscription_status:
-    members: "חברים"
+    members: חברים
+    plan: לְתַכְנֵן
+    state: סטָטוּס
+    active_members: חברים פעילים
+    max_threads: מקסימום חוטים
+    max_members: מקסימום חברים
+    expires_at: פג תוקף
+    renews_at: מחדשת
+    referral_code: קוד הפניה
+    chargify_link: פורטל חיוב
+    referral_code_help: תן לחבר הנחה, קבל לעצמך קצת קרדיט!
+    manage_payment_details: ניהול פרטי תשלום
+    manage_subscription: ניהול מנוי
+    amount: כמות
   loomio_tags:
     tags: תגיות
     apply_tags: החל תגיות
@@ -28,6 +98,17 @@ he:
     helptext: תגיות מאפשרות לך לקטלג את השיחות ולמצוא אותם בקלות אחר כך
     tag_created: תגית נשמרה
     tags_marked: שיחה סומנה כ'{{name}}' ב{{groupName}}
+    all_tags: כל התגים
+    new_tag: תג חדש
+    card_title: תגי קטגוריה
+    destroy_tag: מחק תג
+    destroy_helptext: פעולה זו תמחק את התג הזה ותסיר אותו מכל השרשורים בקבוצה. האם אתה בטוח?
+    discussions_count_singular: "(שרשור %{count})"
+    discussions_count_plural: "(%{count} שרשורים)"
+    tag_destroyed: התג נמחק
+    no_tags_present: לא נמצאו שרשורים עם התג הזה! נסה לבחור אחד אחר
+    no_tags_in_group: לקבוצה הזו אין עדיין תגי קטגוריה
+    only_admins_can_edit_tags: מצטערים, רק מנהלי מערכת של {{קבוצה}} יכולים ליצור, לשנות שם או למחוק תגים
   timezones:
     local: זמן מקומי ({{value}})
   common:
@@ -47,38 +128,38 @@ he:
     time:
       am: am
       pm: pm
-    closing_in: 'סגירה {{time}}'
-    closed_ago: 'סגור {{time}}'
-    volume: 'עוצמה'
-    notification_volume: 'עוצמת התראה'
-    group: 'קבוצה'
-    groups: 'קבוצות'
-    organization: "ארגון"
-    organizations: "ארגונים"
-    threads: 'שיחות'
-    decisions: 'דיונים'
-    settings: 'הגדרות'
-    help: 'עזרה'
+    closing_in: סגירה {{time}}
+    closed_ago: סגור {{time}}
+    volume: עוצמה
+    notification_volume: עוצמת התראה
+    group: קבוצה
+    groups: קבוצות
+    organization: ארגון
+    organizations: ארגונים
+    threads: שיחות
+    decisions: דיונים
+    settings: הגדרות
+    help: עזרה
     anonymous: אנונימי
     email_address: כתובת דוא"ל
     privacy:
-      privacy: 'פרטיות'
-      public: 'פתוח לציבור'
-      open: 'פתוח'
-      closed: 'סגור'
-      private: 'פרטי'
-      secret: 'סודי'
-    selected: 'נבחר'
+      privacy: פרטיות
+      public: פתוח לציבור
+      open: פתוח
+      closed: סגור
+      private: פרטי
+      secret: סודי
+    selected: נבחר
     date_range:
-      today: 'היום'
-      yesterday: 'אתמול'
-      thisweek: 'השבוע'
-      thismonth: 'החודש'
-      older: 'ישן יותר'
-    more_help: 'עוד עזרה'
-    copy: 'העתק'
-    copy_text: 'העתק טקסט'
-    copied: 'הועתק ללוח הכתיבה'
+      today: היום
+      yesterday: אתמול
+      thisweek: השבוע
+      thismonth: החודש
+      older: ישן יותר
+    more_help: עוד עזרה
+    copy: העתק
+    copy_text: העתק טקסט
+    copied: הועתק ללוח הכתיבה
     points_abbrev: כל הצבעה שווה {{score}} נקודות
     total: סך הכל
     action:
@@ -86,30 +167,30 @@ he:
       preview: תצוגה מקדימה
       pin: סיכה
       unpin: הסר סיכה
-      search: 'חיפוש'
-      back: 'חזרה'
-      next: 'הבא'
-      close: 'סגור'
-      reopen: 'פתח מחדש'
-      save: 'שמירה'
-      move: 'העבר'
-      save_changes: 'שמור שינויים'
-      update_settings: 'עדכן הגדרות'
-      reply: 'השב'
-      edit: 'עריכה'
-      remove: 'הסרה'
-      like: 'אהבתי'
-      unlike: 'לא אהבתי'
-      update: 'עדכון'
-      cancel: 'ביטול'
-      show_more: "הראה עוד"
-      view_all: "צפייה בכל"
-      new_thread: "שיחה חדשה"
-      loading: 'נטען'
-      translate: 'תרגום'
-      upload: 'העלה'
-      uploading: 'עולה'
-      load_more: 'טען עוד'
+      search: חיפוש
+      back: חזרה
+      next: הבא
+      close: סגור
+      reopen: פתח מחדש
+      save: שמירה
+      move: העבר
+      save_changes: שמור שינויים
+      update_settings: עדכן הגדרות
+      reply: השב
+      edit: עריכה
+      remove: הסרה
+      like: אהבתי
+      unlike: לא אהבתי
+      update: עדכון
+      cancel: ביטול
+      show_more: הראה עוד
+      view_all: צפייה בכל
+      new_thread: שיחה חדשה
+      loading: נטען
+      translate: תרגום
+      upload: העלה
+      uploading: עולה
+      load_more: טען עוד
       share: שיתוף
       ok: אוקיי
       retry: נסה שוב
@@ -129,11 +210,60 @@ he:
       export: יצוא
       fork: הסתעפות
       apply: החל
+      filter: לְסַנֵן
+      undo_remove: בטל הסרה
+      hide: להתחבא
+      unhide: הצג
+      show_fewer: הצג פחות
+      view_count_more: הצג %{count} נוספים
+      view_count_responses: הצג %{count} תגובות
+      count_more: "%{count} נוספים"
+      count_responses: "%{count} תגובות"
+      add_subgroup: תת קבוצה חדשה
+      discard: להשליך
+      restore: לשחזר
+      unignore: לא להתעלם
+      add_people: הוסף אנשים
+      zoom: תקריב
+      align: יישר
     formatting_help:
-      label: 'פורמט'
-      title: 'למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך'
+      label: פורמט
+      title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
+    admin_menu: תפריט ניהול
+    api_docs: מסמכי API
+    prefix_eg: למשל {{val}}
+    are_you_sure: האם אתה בטוח?
+    loomio_help: לומיו עזרה
+    visit_loomio_help: בקר בעזרה של Loomio
+    help_and_guides: עזרה ומדריכים
+    optional: "(אופציונאלי)"
+    none: אף אחד
+    empty: ריק
+    no_results_found: לא נמצאו תוצאות
+    view: נוף
+    history: הִיסטוֹרִיָה
+    option: אוֹפְּצִיָה
+    add: לְהוֹסִיף
+    template: תבנית
+    links: קישורים
+    active_time_ago: פעיל לאחרונה {{time_ago}}
+    something_went_wrong: או - או! משהו השתבש
+    check_for_errors_and_try_again: אנא בדוק אם יש שגיאות בטופס ונסה שוב
+    please_try_again: בבקשה נסה שוב
+    required: נדרש
+    minutes: דקות
+    today: היום
+    in_x_days: בעוד %{x} ימים
+    reset: אִתחוּל
   emoji_picker:
     search: חיפוש
+    common: לעיתים קרובות בשימוש
+    expressions: פרצופים
+    hands: ידיים
+    people: אֲנָשִׁים
+    nature: טֶבַע
+    objects: דברים
+    places: מקומות
   ordinal:
     _1: ראשון
     _2: שני
@@ -149,11 +279,12 @@ he:
     sessions:
       signed_up: הצטרפות בוצעה בהצלחה!
     failure:
-      inactive: 'קיים חשבון בלתי פעיל הקשור למייל זה. אם אתם רוצים לאקטב את החשבון, צרו עימנו קשר.'
+      inactive: קיים חשבון בלתי פעיל הקשור למייל זה. אם אתם רוצים לאקטב את החשבון, צרו עימנו קשר.
   error_page:
-    forbidden: 'אין לך הרשאות לעשות זאת.'
-    page_not_found: 'אנחנו לא יכולים למצוא את זה. יתכן והוא נמחק או הוזז.'
-    internal_server_error: 'מצטערים,  היתה כאן שגיאה. אנא נסו שוב.'
+    forbidden: אין לך הרשאות לעשות זאת.
+    page_not_found: אנחנו לא יכולים למצוא את זה. יתכן והוא נמחק או הוזז.
+    internal_server_error: מצטערים,  היתה כאן שגיאה. אנא נסו שוב.
+    forbidden_view: אין לך הרשאה לצפות בזה.
   verify_email_notice:
     please_verify: תודה על השתתפותכם! אנא בדקו את המייל שלכם כדי לוודא את הצבעתכם.
   previous_polls_page:
@@ -161,196 +292,371 @@ he:
     polls_count: מראה {{loaded}} של {{total}} החלטות
     search_activities: חפש החלטות
   volume_levels:
-    loud: 'רועש'
-    normal: 'רגיל'
-    quiet: 'שקט'
-    mute: 'השתקה'
-    unmute: 'הסר השתקה'
+    loud: רועש
+    normal: רגיל
+    quiet: שקט
+    mute: השתקה
+    unmute: הסר השתקה
   pin_event_form:
     title_label: כותרת
+    title: הצמד לציר הזמן
+    hint: 'רמז לפעם הבאה: נסה להדגיש טקסט לפני שתלחץ על "הצמד".'
   change_volume_form:
     simple:
       label: התרעות
       normal: רגיל
       quiet: התעלמ/י
-    aria_label: "טופס שינוי הגדרות המייל"
-    loud_label: "כל הפעילויות"
-    normal_label: "הודעות"
-    quiet_label: "אין מיילים"
-    mute_label: "השתקה"
+      loud: נרשם
+      question: מתי אתה רוצה לקבל הודעה?
+      loud_explain: בכל פעם שיש פעילות
+      normal_explain: כשמישהו מבקש את תשומת הלב שלך
+      quiet_explain: אין התראות
+    aria_label: טופס שינוי הגדרות המייל
+    loud_label: כל הפעילויות
+    normal_label: הודעות
+    quiet_label: אין מיילים
+    mute_label: השתקה
     discussion:
-      apply_to_all: "יישם את הגדרות אלה על כל השיחות בקבוצה זו."
+      apply_to_all: יישם את הגדרות אלה על כל השיחות בקבוצה זו.
       messages:
-        loud: "מייל ישלח אליך על פעילות בשיחה זו."
-        normal: "מייל ישלח אליך על הצעות בשיחה זו."
-        quiet: "לא תקבל הודעת מייל על שיחה זו."
+        loud: מייל ישלח אליך על פעילות בשיחה זו.
+        normal: מייל ישלח אליך על הצעות בשיחה זו.
+        quiet: לא תקבל הודעת מייל על שיחה זו.
+      title: הודעות שרשור
+      loud_description: תישלח אליך בדוא"ל כל הפעילות בשרשור זה.
+      normal_description: תישלח אליך בדוא"ל רק פעילות חשובה בשרשור זה.
+      quiet_description: לא תישלח אליך דוא"ל כל פעילות בשרשור זה.
+      only_this_thread: חל על השרשור הזה בלבד
+      group: שנה התראות לקבוצה
+      user: שנה את הגדרות הודעות המשתמש
     membership:
-      loud_description: "מייל יישלח אליך כשיש פעילות בקבוצה זו."
-      normal_description: "מייל יישלח אליך כשיש פעילות בקבוצה זו."
-      quiet_description: "מייל לא יישלח אליך בנוגע לפעילות בקבוצה."
-      apply_to_all: "החל הגדרות אלו על כל הקבוצות שלי"
+      loud_description: מייל יישלח אליך כשיש פעילות בקבוצה זו.
+      normal_description: מייל יישלח אליך כשיש פעילות בקבוצה זו.
+      quiet_description: מייל לא יישלח אליך בנוגע לפעילות בקבוצה.
+      apply_to_all: החל הגדרות אלו על כל הקבוצות שלי
       messages:
-        loud: "מייל יישלח אליך על כל פעולה בקבוצה זו."
-        normal: "מייל יישלח אליך רק בהכרזות בקבוצה"
-        quiet: "לא יישלח אליך מייל בנוגע לקבוצה זו."
+        loud: מייל יישלח אליך על כל פעולה בקבוצה זו.
+        normal: מייל יישלח אליך רק בהכרזות בקבוצה
+        quiet: לא יישלח אליך מייל בנוגע לקבוצה זו.
+      title: התראות עבור {{title}}
+      apply_to_organization: החל על כל הקבוצות ב-{{ארגון}}
     all_groups:
-      loud_description: "מייל יישלח אליך על כל פעולה בקבוצות שלך."
+      loud_description: מייל יישלח אליך על כל פעולה בקבוצות שלך.
       messages:
-        loud: "מייל יישלח אליך על כל פעולה בקבוצות שלך."
-        normal: "יישלחו לך מיילים רק עבור הכרזות בקבוצות שלך."
-        quiet: "לא יישלחו לך מיילים על אף אחת מהקבוצות שלך"
+        loud: מייל יישלח אליך על כל פעולה בקבוצות שלך.
+        normal: יישלחו לך מיילים רק עבור הכרזות בקבוצות שלך.
+        quiet: לא יישלחו לך מיילים על אף אחת מהקבוצות שלך
+      title: העדפות הודעות לכל הקבוצות
+      normal_description: יישלח אליך בדוא"ל רק פעילות חשובה בכל הקבוצות שלך.
+      quiet_description: לא תישלח אליך דוא"ל כל פעילות באף אחת מהקבוצות שלך.
     user:
       title: הגדרות מייל לקבוצות חדשות
-      loud_description: "מייל יישלח אליך כשיש פעילות בכל קבוצה חדשה אליה הצטרפת."
-      normal_description: "מייל יישלח אליך כשיש הכרזות בכל קבוצה חדשה אליה הצטרפת."
-      quiet_description: "לא יישלח לך מייל על פעילות בכל קבוצה חדשה אליה הצטרפת."
-      apply_to_all: "החל הגדרות אלו על כל הקבוצות שלי"
+      loud_description: מייל יישלח אליך כשיש פעילות בכל קבוצה חדשה אליה הצטרפת.
+      normal_description: מייל יישלח אליך כשיש הכרזות בכל קבוצה חדשה אליה הצטרפת.
+      quiet_description: לא יישלח לך מייל על פעילות בכל קבוצה חדשה אליה הצטרפת.
+      apply_to_all: החל הגדרות אלו על כל הקבוצות שלי
       messages:
-        loud: "מייל יישלח אליך על כל פעולה בקבוצות חדשות."
-        normal: "מייל יישלח אליך על כל הכרזה בקבוצות חדשות"
-        quiet: "לא יישלחו אליך מיילים על קבוצות חדשות"
+        loud: מייל יישלח אליך על כל פעולה בקבוצות חדשות.
+        normal: מייל יישלח אליך על כל הכרזה בקבוצות חדשות
+        quiet: לא יישלחו אליך מיילים על קבוצות חדשות
+    explain_scope:
+      thread: זה משתנה כאשר תקבל הודעה על השרשור הזה
+      group: זה משתנה כאשר תקבל הודעה על כל השרשורים בקבוצה
+    saved: הגדרות ההתראה עודכנו
   close_explanation_modal:
     aria_label: סגור שיחה
     close_thread: סגור שיחה
     image_alt: סוגר את כל השיחות
+    body: <p style=";text-align:right;direction:rtl">סגור שרשורים ישנים או לא רלוונטיים כדי להסיר אותם מהתצוגה ולציין שהדיון נסגר.</p><p style=";text-align:right;direction:rtl"> כל אחד עדיין יכול להגיב או להתחיל סקר בשרשור סגור, אך הוא לא יופיע ברשימת השרשורים של הקבוצה או בלוח המחוונים.</p>
   inbox:
-    clear: 'נקה/י'
-    latest: 'אחרונים'
-    unread: 'לא-נקרא'
-    closing_in: 'סגורים'
+    clear: נקה/י
+    latest: אחרונים
+    unread: לא-נקרא
+    closing_in: סגורים
   sign_up_form:
     password_label: 'סיסמה:'
     password_confirmation_label: 'סיסמה זו שוב:'
   signed_out_modal:
-    aria_label: 'ההתחברות הסתיימה'
-    title: "ההתחברות שלך הסתיימה"
-    message: "הוצאת מההתחברות שלך בחלון אחר. תתחבר שוב כדי להמשיך."
-    ok: "אוקיי"
+    aria_label: ההתחברות הסתיימה
+    title: ההתחברות שלך הסתיימה
+    message: הוצאת מההתחברות שלך בחלון אחר. תתחבר שוב כדי להמשיך.
+    ok: אוקיי
   comment_reply_form:
-    aria_label: 'הוספת תגובה'
+    aria_label: הוספת תגובה
   comment_form:
-    aria_label: 'הוספת הערה'
+    aria_label: הוספת הערה
     attachments:
-      add_attachment: 'צרוף קובץ'
-      remove_attachment: 'הסרת קובץ מצורף'
+      add_attachment: צרוף קובץ
+      remove_attachment: הסרת קובץ מצורף
     messages:
-      created: 'הערה הוספה'
-      replied: '{{name}} עודכן על התגובה'
-      updated: 'הערה עודכנה'
-      destroyed: 'הערה נמחקה'
+      created: הערה הוספה
+      replied: "{{name}} עודכן על התגובה"
+      updated: הערה עודכנה
+      destroyed: הערה נמחקה
+      removed: התגובה הוסרה
     say_something: אמור משהו...
-    edit_comment: 'ערוך הערה'
-    delete_comment: 'מחקו תגובה'
-    cancel_reply: 'בטל תגובה'
-    confirm_delete_message: 'למחוק את התגובה? בטוחים?'
-    confirm_delete: 'מחק הערה'
-    in_reply_to: "הגב ל{{name}}"
-    write_a_comment: "כתוב הערה..."
-    post_comment: "שלחו תגובה"
+    edit_comment: ערוך הערה
+    delete_comment: מחקו תגובה
+    cancel_reply: בטל תגובה
+    confirm_delete_message: למחוק את התגובה? בטוחים?
+    confirm_delete: מחק הערה
+    in_reply_to: הגב ל{{name}}
+    write_a_comment: כתוב הערה...
+    post_comment: שלחו תגובה
     submit_button:
-      label: 'פוסט'
-    private_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה רק לחברים בקבוצה {{groupName}}.'
-    public_privacy_notice: 'ההערה שלך תהיה זמינה לצפייה לכולם.'
-    sign_in: "הרשם להצטרפות לדיון"
+      label: פוסט
+    private_privacy_notice: ההערה שלך תהיה זמינה לצפייה רק לחברים בקבוצה {{groupName}}.
+    public_privacy_notice: ההערה שלך תהיה זמינה לצפייה לכולם.
+    sign_in: הרשם להצטרפות לדיון
   thread_nav:
     participants: משתתפים
   sidebar:
-    threads: 'שיחות'
-    recent_threads: 'שיחות אחרונות'
-    muted_threads: 'שיחות שהושתקו'
-    start_group: 'ארגון חדש'
-    explore: 'קבוצות ציבוריות'
+    threads: שיחות
+    recent_threads: שיחות אחרונות
+    muted_threads: שיחות שהושתקו
+    start_group: ארגון חדש
+    explore: קבוצות ציבוריות
     explore_groups: חקור קבוצות
     start_thread: שיחה חדשה
     start_decision: החלטה חדשה
     aria_labels:
-      heading: 'תפריט צידי'
-      threads_list: 'פעולות בשיחות'
-      groups_list: 'קבוצות'
-      user_list: 'פעולות משתמש'
+      heading: תפריט צידי
+      threads_list: פעולות בשיחות
+      groups_list: קבוצות
+      user_list: פעולות משתמש
+    my_groups: הקבוצות שלי
+    other_groups: קבוצות אחרות
+    all_groups: כל הקבוצות
+    invite_only_threads: שרשורים להזמנה בלבד
+    direct_threads: חוטים ישירים
+    unread_threads: שרשורים שלא נקראו (%{count})
+    start_subgroup: תת קבוצה חדשה
+    more_groups: עוד קבוצות
+    template_gallery: גלריית תבניות
+    examples_and_templates: דוגמאות ותבניות
+    help_docs: מסמכי עזרה
+    a_detailed_guide_to_loomio: מדריך מפורט ל-Loomio
+    talk_to_the_loomio_team: דבר עם צוות Loomio
   strand_nav:
     newest_first: הכי חדש קודם
     oldest_first: הכי ישן קודם
+    newest: החדש ביותר
+    oldest: הוותיק ביותר
+    all_pinned: כל הפריטים המוצמדים
+    whole_thread: כל החוט
+    from_comment: מתוך כתובת אתר של תגובה
+    from_sequence_id: מתוך כתובת אתר של פריט שרשור
+    unread: חדש לך
   navbar:
-    recent_title: 'עבור לדשבורד'
-    unread_title: 'צפה בפעילות שלא נקראה'
-    start_thread: 'שיחה חדשה'
-    notifications: 'פאנל ההתרעות'
+    recent_title: עבור לדשבורד
+    unread_title: צפה בפעילות שלא נקראה
+    start_thread: שיחה חדשה
+    notifications: פאנל ההתרעות
     search:
-      label: 'שדה חיפוש; חפש קבוצות ושיחות'
-      results_aria_label: 'תוצאות חיפוש'
-      no_results: 'לא נמצאו שיחות'
-      close: 'סגור פאנל חיפוש'
-      placeholder: 'חיפוש'
-      loading: 'טוען תוצאות...'
-      discussions: 'שיחות'
-      proposals: 'הצעות'
-      comments: 'הערות'
-    sign_in: 'לוגין'
-    toggle_sidebar: 'החלף תפריט צידי'
-    logo_title: 'דף הבית'
+      label: שדה חיפוש; חפש קבוצות ושיחות
+      results_aria_label: תוצאות חיפוש
+      no_results: לא נמצאו שיחות
+      close: סגור פאנל חיפוש
+      placeholder: חיפוש
+      loading: טוען תוצאות...
+      discussions: שיחות
+      proposals: הצעות
+      comments: הערות
+    sign_in: לוגין
+    toggle_sidebar: החלף תפריט צידי
+    logo_title: דף הבית
+    search_all_threads: חפש בכל האשכולות
+    search_threads: חפש שרשורים ב-{{name}}
+    search_polls: חפש סקרים ב-{{name}}
+    search_members: חפש חברים ב-{{name}}
+    search_subgroups: חפש חברים ב-{{name}}
+    search_files: חפש קבצים ב-{{name}}
+    open_sidebar: פתח את סרגל הצד
+    close_sidebar: סגור את סרגל הצד
+    group_and_subgroups: "{{קבוצה}} ותתי קבוצות"
   user_dropdown:
-    button_label: 'תפריט משתמש'
-    edit_profile: 'עריכת פרופיל'
-    help: 'עזרה'
-    contact_site_name: 'צור קשר עם {{site_name}}'
-    sign_out: 'יציאה מהמערכת'
+    button_label: תפריט משתמש
+    edit_profile: עריכת פרופיל
+    help: עזרה
+    contact_site_name: צור קשר עם {{site_name}}
+    sign_out: יציאה מהמערכת
+    pin_sidebar: הצמד סרגל צד
+    unpin_sidebar: בטל את ההצמדה של סרגל הצד
+    enable_beta_features: אפשר תכונות בטא
+    disable_beta_features: השבת את תכונות הביטא
+    enable_dark_mode: הפעל מצב כהה
+    disable_dark_mode: השבת מצב כהה
+    email_settings: הגדרות התראות
+    contact_support: צור קשר עם תמיכה
+    beta_collab: "\U0001F9EA תכונות בטא מופעלות!"
+    outcomes: תוצאות
   membership_card:
-    group_members: "חברי הקבוצה"
-    discussion_members: "חברים בשיחה"
-    poll_members: "חברי {{pollType}}"
-    invite_to_group: "הזמן לקבוצה"
-    invite_to_discussion: "הזמן לשיחה"
-    invite_to_poll: "הזמן לבחור"
-    invitations: "הזמנה"
+    group_members: חברי הקבוצה
+    discussion_members: חברים בשיחה
+    poll_members: חברי {{pollType}}
+    invite_to_group: הזמן לקבוצה
+    invite_to_discussion: הזמן לשיחה
+    invite_to_poll: הזמן לבחור
+    invitations: הזמנה
+    voters: מצביעים
+    invite_to_wip_poll: הזמינו לתת משוב
   membership_dropdown:
-    set_title: "הגדר כותרת"
-    resend: "שלח הזמנה שוב"
-    invitation_resent: "הזמנה נשלחה שוב"
+    set_title: הגדר כותרת
+    resend: שלח הזמנה שוב
+    invitation_resent: הזמנה נשלחה שוב
     remove_from:
-      discussion: "הסר מהשיחה"
-      group: "הסר מהקבוצה"
-      poll: 'הסר מה{{pollType}}'
+      discussion: הסר מהשיחה
+      group: הסר מהקבוצה
+      poll: הסר מה{{pollType}}
     cancel_invitation: בטל הזמנה
+    set_name_and_username: הגדר שם ושם משתמש
+    make_coordinator: הפוך למנהל
+    demote_coordinator: הורדת אדמין
   notification_models:
     discussion: 'שיחה:'
-    comment: 'הערה ב'
+    comment: הערה ב
     outcome: 'תוצאה:'
+    poll: 'מִשׁאָל:'
+    stance: 'הַצבָּעָה:'
   notifications:
-    header: "התרעות"
-    no_notifications: "אין לך עדכונים"
+    header: התרעות
+    no_notifications: אין לך עדכונים
     with_title:
       user_mentioned: "%{actor} הזכיר אותך ב: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע ב:%{title}"
+      comment_replied_to: "%{actor} השיב לך ב: %{title}"
+      discussion_announced: "%{actor} הזמין אותך לשרשור: %{title}"
+      discussion_edited: "%{actor} ערך את הקשר השרשור: %{title}"
+      discussion_closed: "%{actor} סגר את השרשור: %{title}"
+      invitation_accepted: "%{actor} קיבל את הזמנתך להצטרף ל-%{title}"
+      membership_created: "%{actor} הזמין אותך להצטרף ל-%{title} ב-%{site_name}"
+      membership_resent: "%{actor} הזמין אותך להצטרף ל-%{title} ב-%{site_name}"
+      membership_requested: "%{actor} ביקש להצטרף ל-%{title}"
+      membership_request_approved: "%{actor} אישר את בקשתך להצטרף ל-%{title}"
+      new_comment: "%{actor} הגיב ב: %{title}"
+      new_coordinator: "%{actor} הפך אותך למנהל של %{title}"
+      new_discussion: "%{actor} התחיל שרשור: %{title}"
+      outcome_announced: "%{actor} שיתף תוצאה של %{poll_type}: %{title}"
+      outcome_created: "%{actor} שיתף תוצאה של %{poll_type}: %{title}"
+      outcome_updated: "%{actor} עדכנה את התוצאה של %{poll_type}: %{title}"
+      outcome_review_due: 'הגיע הזמן לבדוק את התוצאה של: %{title}'
+      poll_announced: "%{actor} הזמין אותך להצביע: %{title}"
+      poll_closed_by_user: "%{actor} סגר את %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} נסגר בעוד 24 שעות: %{title}"
+      poll_closing_soon_author: "%{poll_type} שלך נסגר בעוד 24 שעות: %{title}"
+      poll_created: "%{actor} התחיל %{poll_type}: %{title}"
+      poll_edited: "%{actor} עדכן את ה-%{poll_type}: %{title}"
+      poll_expired: "%{poll_type} נסגר: %{title}"
+      poll_expired_author: 'שתף את התוצאה של %{poll_type} שלך: %{title}'
+      poll_option_added: "%{actor} הוסיף אפשרויות ל-%{title}"
+      poll_reopened: "%{actor} פתח מחדש את %{poll_type}: %{title}"
+      poll_reminder: "%{actor} מזכיר לך להצביע ב-%{title}"
+      poll_reminder_wip: "%{actor} מזכיר לך לתת משוב: %{title}"
+      reaction_created: "%{actor} הגיב %{reaction} ל-%{model} שלך ב-%{title}"
+      stance_created: "%{actor} הצביע ב: %{title}"
+      stance_updated: "%{actor} הצביע ב: %{title}"
+      stance_created_option: "%{actor} הצביע %{option} ב-%{title}"
+      user_added_to_group: "%{actor} הוסיף אותך לקבוצה: %{title}"
     without_title:
       poll_expired: "%{poll_type} נסגר"
+      discussion_announced: "%{actor} הזמין אותך לשרשור"
+      discussion_edited: "%{actor} ערך את הקשר השרשור"
+      discussion_closed: "%{actor} סגר את השרשור"
+      group_announced: "%{actor} הזמין אותך לקבוצה"
+      comment_replied_to: "%{actor} השיב לך"
+      new_discussion: "%{actor} פתח שרשור"
+      new_comment: "%{actor} הגיב בשרשור"
+      membership_created: "%{actor} הזמין אותך להצטרף לקבוצה"
+      membership_resent: "%{actor} הזמין אותך להצטרף לקבוצה"
+      membership_requested: "%{actor} ביקש להצטרף לקבוצה שלך"
+      membership_request_approved: "%{actor} אישר את בקשתך להצטרף ל-%{title}"
+      outcome_announced: "%{actor} שיתף תוצאה של %{poll_type}"
+      outcome_created: "%{actor} שיתף תוצאה של %{poll_type}"
+      outcome_updated: "%{actor} עדכנה את התוצאה"
+      outcome_review_due: הגיע הזמן לסקור את התוצאה של %{poll_type}
+      poll_announced: "%{actor} הזמין אותך להצביע על %{poll_type}"
+      poll_announced_wip: "%{actor} רוצה את המשוב שלך על %{poll_type}"
+      poll_closed_by_user: "%{actor} סגר את %{poll_type}"
+      poll_closing_soon: "%{poll_type} נסגר בעוד 24 שעות"
+      poll_closing_soon_author: ה-%{poll_type} שלך נסגר בעוד 24 שעות
+      poll_created: "%{actor} התחיל %{poll_type}"
+      poll_edited: "%{actor} עדכן את ה-%{poll_type}"
+      poll_expired_author: שתף את התוצאה של %{poll_type} שלך
+      poll_option_added: "%{actor} הוסיף אפשרויות ל-%{poll_type}"
+      poll_reopened: "%{actor} פתח מחדש את %{poll_type}"
+      poll_reminder: "%{actor} מזכיר לך להצביע"
+      poll_reminder_wip: "%{actor} מזכיר לך לתת משוב"
+      reaction_created: "%{actor} הגיב %{reaction} ל-%{model} שלך"
+      stance_created: "%{actor} הצביע"
+      stance_updated: "%{actor} הצביע"
+      stance_created_option: "%{actor} הצביע %{option}"
+      user_mentioned: "%{actor} הזכיר אותך"
+      user_reminded: "%{actor} מזכיר לך להצביע"
+    hints:
+      poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
+      poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
+      outcome_review_due: שקול להתחיל סקר משוב או שרשור חדש המזמין הרהורים על האופן שבו ההחלטה יושמה.
   discussion_fork_actions:
     move: העבר
+    helptext: בחר פריטים שתרצה להעביר לשרשור אחר
+    search_placeholder: מצא שרשור לפי כותרת
+    moved: הערות מרגשות, זה עשוי לקחת רגע
+    move_to_existing_thread: העבר לשרשור קיים
+    start_new_thread: לחלופין, התחל שרשור חדש
   discussion_form:
     invite: הזמן
-    aria_label: 'טופס שיחה'
+    aria_label: טופס שיחה
     messages:
-      created: 'שיחה התחילה'
-      updated: 'שיחה עודכנה'
-      forked: 'פיצול שיחה נוצרה'
-    new_discussion_title: 'התחל/י שיחה חדשה'
-    edit_discussion_title: 'עריכת שיחה'
-    group_label: 'קבוצה'
-    group_placeholder: 'בחירת קבוצה'
-    title_label: 'תואר'
-    title_placeholder: 'על איזה נושא תרצה לדון?'
-    context_label: 'הקשר'
-    privacy_label: 'פרטיות'
-    privacy_organisation: 'משתמשי {{parent}} וה{{group}} יכולו לצפות בשיחה.'
+      created: שיחה התחילה
+      updated: שיחה עודכנה
+      forked: פיצול שיחה נוצרה
+    new_discussion_title: התחל/י שיחה חדשה
+    edit_discussion_title: עריכת שיחה
+    group_label: קבוצה
+    group_placeholder: בחירת קבוצה
+    title_label: תואר
+    title_placeholder: על איזה נושא תרצה לדון?
+    context_label: הקשר
+    privacy_label: פרטיות
+    privacy_organisation: משתמשי {{parent}} וה{{group}} יכולו לצפות בשיחה.
+    thread_templates: תבניות חוטים
+    new_thread_template: תבנית שרשור חדשה
+    edit_thread_template: ערוך תבנית שרשור
+    blank: רֵיק
+    blank_subtitle: התחל דיון ותראה לאן זה לוקח אותך
+    new_template: תבנית חדשה
+    new_template_subtitle: צור דוגמה שאחרים יכולים להעתיק
+    to: ל
+    direct_thread: חוט ישיר
+    invite_only_thread: שרשור להזמנה בלבד
+    none_direct_thread: שרשור ישיר (ללא קבוצה)
+    none_invite_only_thread: שרשור להזמנה בלבד (ללא קבוצה)
+    change_log_placeholder: לחלופין, תאר את השינויים שלך. הודעה זו תתווסף לשרשור.
+    change_log_label: מה השתנה?
+    start_thread: התחל שרשור
+    new_thread_from_template: 'שרשור חדש: %{process_name}'
+    moving_items_title: העבר פריטים לשרשור חדש
+    context_placeholder: ספק הקשר כלשהו לדיון הזה, כדי שאנשים ידעו איך להשתתף
+    privacy_public: כל אחד יכול לראות את השרשור הזה אם יש לו את הקישור
+    privacy_private: רק חברי הקבוצה יכולים לראות את השרשור הזה
+    fork_notice: ייווצר שרשור חדש עם %{count} פריטים מ-{{title}}
+    notify_group: הודע לקבוצה
   announcement:
     audiences:
       group: משתתפי ה{{name}}
+      everyone_in_the_group: כולם בקבוצה
+      discussion_group: כולם בשרשור
+      voters: כולם מוזמנים להצביע
+      decided_voters: כל מי שהצביע
+      undecided_voters: מצביעים מתלבטים
+      non_voters: חברים ב-{{name}} עדיין לא הוזמנו
     form:
-      too_many_invitations: |
-          הגעת לגבול ההזמנות המותר. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>
+      too_many_invitations: 'הגעת לגבול ההזמנות המותר. <a href="{{upgradeUrl}}" target="_blank">שדרג</a>
+
+        '
       no_invitations_remaining: |
-          <p>השתמשת בכל {{maxMembers}} ההזמנות האפשרויות לקבוצה זו.</p>
-          <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
+        <p>השתמשת בכל {{maxMembers}} ההזמנות האפשרויות לקבוצה זו.</p>
+        <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> כדי להמשיך לשתף פעולה ב-Loomio.</p>
       invitation_message_label: הודעה
       group_announced:
         title: הזמן לקבוצה
@@ -358,28 +664,107 @@ he:
       discussion_announced:
         title: הזמן לשיחה
         helptext: מי היית רוצה להזמין לשיחה?
+        notify_helptext: למי תרצה להודיע על השרשור?
       discussion_edited:
         title: עידכוני עריכות
+        helptext: למי תרצה להודיע על עדכון זה? (אופציונאלי)
       poll_announced:
         title: הזמן לבחור
         helptext: מי היית רוצה להזמין להצביע?
       poll_reminder:
         message_label: הודעה
+        title: תזכיר להצביע
+        helptext: למי תרצו להזכיר להצביע?
+        message_placeholder: הודעה אופציונלית לספר לאנשים מדוע עליהם להצביע
       wip_poll_reminder:
         message_label: הודעה
+        title: הזכירו לתת משוב
+        helptext: למי תרצה להזכיר לתת משוב?
+        message_placeholder: הודעה אופציונלית לכלול באימייל התראה
       poll_edited:
         title: עידכוני עריכות
+        helptext: למי תרצה להודיע על עדכון זה?
       outcome_announced:
         title: שתפ/י תוצאה
+        helptext: סכמו את תוצאות התהליך, כולל כל הבנות שנמצאו או נושאים שהובאו לאור.
       anyone_can_participate: כל אחד עם לינק יכול להשתתף
+      group_has_no_members_yet: אתה החבר היחיד בקבוצה שלך. ייתכן שתרצה להזמין כמה אנשים לקבוצה שלך לפני שתתחיל שרשור או החלטה.
+      invite_people_to_evaluate_loomio: הזמן כמה אנשים לקבוצת Loomio שלך כדי לקבל החלטה ביחד
+      invitations_remaining: נותרו %{count} הזמנות. <a href="{{upgradeUrl}}" target="_blank">שדרוג</a>
+      who_to_invite: את מי היית רוצה להזמין?
+      invitation_message_placeholder: הודעה לכלול במייל ההזמנה. (אופציונאלי)
+      invitation_message_default: הקמתי את קבוצת Loomio הזו כדי לעזור לנו לקבל החלטות ביחד. אנא קבל את ההזמנה שלי. זה לוקח רק דקה להצטרף. תודה.
+      wip_poll_announced:
+        title: הזמינו לתת משוב
+        helptext: את מי תרצו להזמין לתת משוב?
+      placeholder: אתה יכול להזין שמות או כתובות מייל
+      type_or_paste_email_addresses_to_invite: הקלד או הדבק כתובות דוא"ל להזמנה
+      notified_empty: אף אחד עדיין לא נבחר
+      single_notification: תישלח הודעה אחת.
+      multiple_notifications: יישלחו הודעות {{notified}}.
+      notified: "{{הודעה}} אנשים יקבלו הודעה."
+      notified_singular: אדם אחד יקבל הודעה.
+      notified_none: אף אחד לא יקבל הודעה.
+      added: "%{count} אנשים יתווספו."
+      added_singular: יצורף אדם אחד.
+      added_none: אף אחד לא יתווסף.
+      group_title: "{{name}} (%{count} אנשים)"
+      visible_to_group: כל אחד ב-{{קבוצה}} יוכל לראות את השרשור הזה.
+      visible_to_guests: רק אנשים שהוזמנו יכולים לראות את השרשור הזה.
+      click_group_to_see_individuals: לחץ על הקבוצה כדי לראות אנשים
     members_list:
       title: שותף עם
       last_notified: עודכן
       not_notified: לא עודכן עוד
-      no_members: "זה לא שותף עם אף אחד עוד!"
+      no_members: זה לא שותף עם אף אחד עוד!
+      group_admin: אחראי קבוצה
+      thread_admin: מנהל שרשור
+      last_read_at: נצפה לאחרונה {{time}}
+      has_not_read_thread: לא צפה בשרשור
     group_form:
       search_placeholder: חפש אנשים...
       modal_title: בחר את חברי הקבוצה
+    send_discussion: שלח שרשור
+    send_group: הזמן אנשים ל-{{name}}
+    send_poll: שלח {{type}}
+    send_outcome: שלח תוצאה
+    cannot_reveal_when_anonymous: מצטערים, איננו יכולים לחשוף מי הצביע או לא הצביע בסקר אנונימי.
+    discussion_notification_history: היסטוריית הודעות שרשור
+    group_notification_history: היסטוריית הזמנות לקבוצה
+    poll_notification_history: היסטוריית התראות בסקר
+    outcome_notification_history: היסטוריית הודעות על תוצאות
+    comment_notification_history: היסטוריית התראות על תגובות
+    notification_history_explanation: "✓ מציין שההודעה נקראה או שהמייל נפתח"
+    quick_add: 'תוספת מהירה:'
+    any_other_groups: יש עוד קבוצות?
+    notified_people: "{{name}} הודיע ל-{{length}} אנשים:"
+    preview: תצוגה מקדימה של אימייל
+    no_notifications_sent: לא נשלחו התראות
+    history_error: משהו השתבש! לא ניתן היה לטעון את ההיסטוריה.
+    inviting_guests_to_thread: האורחים אינם שייכים לקבוצה שלך, ויש להם גישה לשרשור זה בלבד
+    select_groups: בחר קבוצות
+    search_by_name_or_email: חפש לפי שם, או הזן הודעות אימייל כדי להזמין
+    search_by_name: חפש אנשים לפי שם
+    only_admins_can_announce: רק מנהלים יכולים להודיע לכל הקבוצה
+    only_admins_can_invite: רק מנהלי מערכת יכולים להזמין אורחים
+    only_admins_can_announce_or_invite: רק מנהלים יכולים להודיע לכל הקבוצה או להזמין אורחים
+    user_mentioned: "{{name}} הזכיר {{length}} אנשים:"
+    comment_replied_to: "{{name}} השיב ל-{{length}} אנשים:"
+    new_discussion: "{{name}} הזמין {{length}} אנשים לשרשור:"
+    discussion_announced: "{{name}} הזמין {{length}} אנשים לשרשור:"
+    poll_created: "{{name}} הזמין {{length}} אנשים להצביע:"
+    poll_announced: "{{name}} הזמין {{length}} אנשים להצביע:"
+    outcome_created: "{{name}} שיתף תוצאה עם {{length}} אנשים:"
+    outcome_announced: "{{name}} שיתף תוצאה עם {{length}} אנשים:"
+    announcement_created: "{{name}} הזמין {{length}} אנשים לשרשור:"
+    discussion_edited: "{{name}} ערך את השרשור, והודיע ל-{{length}} אנשים:"
+    poll_edited: "{{name}} ערך סקר, והודיע ל-{{length}} אנשים:"
+    outcome_edited: "{{name}} ערך תוצאה, והודיע ל-{{length}} אנשים:"
+    outcome_updated: "{{name}} ערך תוצאה, והודיע ל-{{length}} אנשים:"
+    poll_closing_soon: 'תזכורת סגירת הסקר של {{name}} הודיעה ל-{{length}} אנשים:'
+    poll_reminder: "{{name}} הזכיר ל-{{length}} אנשים להצביע:"
+    flash:
+      success: נשלחו %{count} התראות
   action_dock:
     add_resource: צרוף קובץ
     edit_group: עריכת תוכן הקבוצה
@@ -388,7 +773,7 @@ he:
     translate_thread: תרגום תוכן
     edit_poll: עריכת סקר
     announce_poll: הזמן אנשים להצביע
-    announce_poll_active: (אף אחד עוד לא הוזמן)
+    announce_poll_active: "(אף אחד עוד לא הוזמן)"
     translate_poll: תרגום סקר
     edit_stance: שנה דעה
     translate_stance: תרגום הצבעה
@@ -399,7 +784,7 @@ he:
     translate_comment: תרגום הערה
     edit_outcome: ערוך תוצאה
     announce_outcome: עדכן אנשים על התוצאה
-    announce_outcome_active: (אף אחד עוד לא עודכן על התוצאה)
+    announce_outcome_active: "(אף אחד עוד לא עודכן על התוצאה)"
     translate_outcome: תרגם תוצאה
     show_history: הצג היסטוריית עריכה
     edited: ערוך
@@ -411,23 +796,95 @@ he:
     tag_thread: ניהול תגיות
     close_thread: סגור שיחה
     delete_thread: מחיקת שיחה
+    actions_menu: תפריט פעולות
+    more_actions: יותר פעולות
+    react: לְהָגִיב
+    notify: לְהוֹדִיעַ
+    copy_url: העתק קישור
+    announce_thread: שלח שרשור
+    invite_guests: הזמן אורחים
+    edit_poll_type: ערוך את {{pollType}}
+    new_poll_type: חדש {{pollType}}
+    move_items: הזז פריטים
+    show_edits: הצג עריכות
+    show_notifications: תראה התראות
+    history: הִיסטוֹרִיָה
+    pin_event: הצמד לציר הזמן
+    unpin_event: בטל את ההצמדה מציר הזמן
+    move_thread: העבר לקבוצה
+    url_copied: הקישור הועתק ללוח
+    reopen_thread: פתח את השרשור מחדש
+    notification_history: היסטוריית הודעות
+    move_item: העבר פריט
+    add_poll_to_thread: הוסף לשרשור
+    count_members: "%{count} חברים"
+    count_voters: "%{count} מצביעים"
   formatting:
     link: הכנס לינק
     attach: צרוף קובץ
+    formatting_tools: כלי עיצוב טקסט
+    colors: צבעים
+    highlight: שִׂיא
+    alignment: יישור
+    lists: רשימות
+    expand: הצג כלי עיצוב נוספים
+    collapse: הצג פחות כלי עיצוב
+    bold: נוֹעָז
+    italicize: נטוי
+    blockquote: ציטוט
+    strikethrough: חוצה
+    underline: לָשִׂים דָגֵשׁ
+    code_block: בלוק קוד
+    insert_image: הוסף תמונה
+    insert_emoji: הכנס אמוג'י
+    heading_size: גודל הכותרת
+    heading1: מכוון ל 1
+    heading2: כותרת 2
+    heading3: כותרת 3
+    left_align: יישור לשמאל
+    center_align: יישור למרכז
+    right_align: יישור ימינה
+    justify_align: להצדיק יישור
+    paragraph: פסקה
+    bullet_list: רשימה
+    number_list: רשימה ממוספרת
+    check_list: צ'ק ליסט
+    task_list: רשימת מטלות
+    reset: אִתחוּל
+    text_color: צבע טקסט
+    background_color: צבע רקע
+    quote: ציטוט
+    embed: הטמע וידאו
+    divider: מחיצה
+    add_table: הוסף טבלה
+    remove_table: הסר את הטבלה
+    add_column_before: הוסף עמודה לפני
+    add_column_after: הוסף עמודה אחרי
+    remove_column: הסר עמודה
+    add_row_before: הוסף שורה לפני
+    add_row_after: הוסף שורה אחרי
+    remove_row: הסר שורה
+    merge_selected: מיזוג תאים נבחרים
+    wysiwyg: wysiwyg
+    edit_markdown: ערוך Markdown
+    markdown_confirm: ייתכן שחלק מהפורמטים יאבדו בהמרת תוכן wysiwyg ל-markdown.
+    upload_failed: העלאה נכשלה
   cover_photo_form:
-    heading: 'תמונת קאבר חדשה'
-    upload_link: 'העלה תמונת קאבר חדשה'
-    image_size_helptext: 'גודל תמונה אידיאלי הוא 1400px רוחב על 320px גובה'
-    upload_success: 'תמונת קאבר עודכנה בהצלחה'
+    heading: תמונת קאבר חדשה
+    upload_link: העלה תמונת קאבר חדשה
+    image_size_helptext: גודל תמונה אידיאלי הוא 1400px רוחב על 320px גובה
+    upload_success: תמונת קאבר עודכנה בהצלחה
   logo_photo_form:
-    heading: 'לוגו קבוצה חדש'
-    upload_link: 'העלה לוגו קבוצה חדש'
-    image_size_helptext: 'גודל תמונה אידאלי 100*100 פיקסלים'
-    upload_success: 'לוגו עודכן בהצלחה'
+    heading: לוגו קבוצה חדש
+    upload_link: העלה לוגו קבוצה חדש
+    image_size_helptext: גודל תמונה אידאלי 100*100 פיקסלים
+    upload_success: לוגו עודכן בהצלחה
   join_group_button:
     join_group: הצטרפו לקבוצה
     messages:
-      joined_group: 'את/ה עכשיו חבר/ה ב{{group}}'
+      joined_group: את/ה עכשיו חבר/ה ב{{group}}
+    not_a_member: אינך חבר כרגע בקבוצה זו.
+    membership_requested: התבקשה חברות
   membership_request_form:
     aria_label: טופס בקשת חברות
     heading: בקשת הצטרפות לקבוצה
@@ -436,25 +893,39 @@ he:
     introduction_label: למה אתה מעוניין להצטרף?
     submit_button: בקש/י להצטרף
     introduction_over_limit: תגובה ארוכה מידי
+    messages:
+      membership_requested: ביקשת להצטרף ל-{{group}}
   revision_history_modal:
     aria_label: היסטוריית שינויים
-    started_by: 'התחיל ע"י <strong>{{name}}</strong>'
-    edited_by: 'נערך ע"י <strong>{{name}}</strong>'
+    started_by: התחיל ע"י <strong>{{name}}</strong>
+    edited_by: נערך ע"י <strong>{{name}}</strong>
     posted: פורסם
     original_text: מקורי
     current_revision: אחרונים
-    closing_at_changed: "זמן סגירה נקבע ל{{time}}"
-    private_changed: "פרטיות נקבעה ל{{private}}"
-    group_id_changed: "הועבר ל{{name}}"
+    closing_at_changed: זמן סגירה נקבע ל{{time}}
+    private_changed: פרטיות נקבעה ל{{private}}
+    group_id_changed: הועבר ל{{name}}
+    discussion_header: עריכות דיון
+    comment_header: עריכות הערות
+    poll_header: עריכות סקר
+    outcome_header: עריכות תוצאה
+    stance_header: עריכות הצבעה
+    edit_by: ערוך על ידי {{name}} · {{date}}
+    field: שדה
+    before: לפני
+    after: לאחר
   reactions_input:
     add_your_reaction: הוסף את תגובתך
   reactions_display:
-    you: "אתה"
-    you_and_name: "את/ה ו{{name}}"
+    you: אתה
+    you_and_name: את/ה ו{{name}}
+    more_reactions: "%{count} נוספים"
+    you_and_name_and_count_more: אתה, {{name}} ועוד %{count}
+    name_and_count_more: "{{name}} ועוד %{count}"
   context_panel:
     thread_status:
-      pinned: "השיחה הזו הוצמדה למעלה. היא תשאר בראש רשימת השיחות בקבוצה לכל המשתמשים."
-      closed: "השיחה הזו נסגרה. היא לא תופיע בדשבורד, ותופיע כ'סגורה' בדף הקבוצה."
+      pinned: השיחה הזו הוצמדה למעלה. היא תשאר בראש רשימת השיחות בקבוצה לכל המשתמשים.
+      closed: השיחה הזו נסגרה. היא לא תופיע בדשבורד, ותופיע כ'סגורה' בדף הקבוצה.
   group_page:
     threads: שיחות
     members: חברים
@@ -465,42 +936,49 @@ he:
     private_threads: אתם צריכים להיות חבר לצפיה בשיחות פרטיות של הקבוצה
     messages:
       privacy:
-        members: 'רק חברים יכולים לצפות בקבוצה'
-        public: 'קבוצה זו פתוחה לצפיה לכולם'
-      leave_group_success: 'עזבת את הקבוצה'
-      archive_group_success: 'קבוצה זו הפכה ללא פעילה'
-    group_logo: 'לוגו הקבוצה'
-    new_photo: 'תמונה חדשה'
-    new_cover_photo: 'העלה תמונת קאבר חדשה'
-    new_group_logo: 'העלה לוגו קבוצה חדש'
-    open_discussions: 'שיחות פתוחות'
-    closed_discussions: 'שיחות סגורות'
-    discussions_placeholder: 'שיחה היא מקום מפגש משותף לדיון על נושא וקבלת החלטות משותפת.'
-    members_placeholder: 'רק אתה פה בינתיים... הזמן כמה אנשים להצטרף אליך!'
+        members: רק חברים יכולים לצפות בקבוצה
+        public: קבוצה זו פתוחה לצפיה לכולם
+        parent_members: קבוצה זו גלויה כעת רק לחברי הארגון שלך
+      leave_group_success: עזבת את הקבוצה
+      archive_group_success: קבוצה זו הפכה ללא פעילה
+    group_logo: לוגו הקבוצה
+    new_photo: תמונה חדשה
+    new_cover_photo: העלה תמונת קאבר חדשה
+    new_group_logo: העלה לוגו קבוצה חדש
+    open_discussions: שיחות פתוחות
+    closed_discussions: שיחות סגורות
+    discussions_placeholder: שיחה היא מקום מפגש משותף לדיון על נושא וקבלת החלטות משותפת.
+    members_placeholder: רק אתה פה בינתיים... הזמן כמה אנשים להצטרף אליך!
     member_options: אפשרויות חבר
-    subgroups_placeholder: 'תת קבוצות נותנות לצוותים את המקום שלהם להתעדכן לתכנים הרלוונטיים להם.'
-    invite_people: 'הזמן'
-    visibility_label: 'נראות'
-    options_label: 'אפשרויות'
+    subgroups_placeholder: תת קבוצות נותנות לצוותים את המקום שלהם להתעדכן לתכנים הרלוונטיים להם.
+    invite_people: הזמן
+    visibility_label: נראות
+    options_label: אפשרויות
     options:
-      label: 'אפשרויות'
-      edit_group: 'ערוך הגדרות קבוצה'
+      label: אפשרויות
+      edit_group: ערוך הגדרות קבוצה
       export_data: יצוא נתונים מהקבוצה
-      manage_members: 'ניהול חברים'
-      add_subgroup: 'הוספת תת קבוצה'
-      email_settings: 'העדפות דוא״ל'
-      leave_group: 'עזוב את הקבוצה'
-      deactivate_group: 'הפוך קבוצה ללא פעילה'
+      manage_members: ניהול חברים
+      add_subgroup: הוספת תת קבוצה
+      email_settings: העדפות דוא״ל
+      leave_group: עזוב את הקבוצה
+      deactivate_group: הפוך קבוצה ללא פעילה
+      become_coordinator: הפוך למנהל
+      export_data_as_json: ייצא נתוני קבוצה כ-JSON
+      export_data_as_csv: ייצא נתוני קבוצה כ-CSV
+      export_data_as_html: ייצוא נתוני קבוצה כ-HTML
+      manage_subscription: ניהול מנוי קבוצתי
+      subscription_status: מצב המנוי
     volume:
       loud: שלח מייל כשיש פעילות.
       loud_aria_description: עוצמת ההתראות שלך לקבוצה מוגדרת לרועש. מייל יישלח לך כשיש פעילות כלשהי בה.
       loud_message: הודעה תשלח לך במייל על כל פעילות ב"{{name}}."
       normal: 'שלח מייל רק לפעילות חשובה: שיחות חדשות, הצעות, תוצאות וכו''.'
       normal_aria_description: 'עוצמת ההתראות שלך לקבוצה מוגדרת כרגילה. מייל יישלח לך על פעילות חשובה, כגון: מישהו התחיל שיחה חדשה, העלה הצעה או קבע תוצאה.'
-      normal_message: 'אתה תקבל מיילים רק על אירועים חשובים ב"{{name}}".'
+      normal_message: אתה תקבל מיילים רק על אירועים חשובים ב"{{name}}".
       quiet: אל תשלחו מיילים על הקבוצה הזו. פעילות תופיע בדשבורד בלבד.
       quiet_aria_description: 'עוצמת ההתראות שלך לקבוצה מוגדרת כשקטה. לא תקבל כל מייל על פעילויות בקבוצה. פעילות בה תופיע בדשבורד בלבד. '
-      quiet_message: 'לא תקבל מיילים על פעילויות ב"{{name}}".'
+      quiet_message: לא תקבל מיילים על פעילויות ב"{{name}}".
       mute: החבא את הקבוצה הזו מהדשבורד ואל תעדכן אותי עליה אלא אם כן פונים אליי ב@.
       mute_aria_description: עוצמת ההתראות שלך לקבוצה מוגדרת כהשתק. לא תקבל מיילים אלא אם כן מזכירים אותך ופעילות הקבוצה לא תופיע בדשבורד שלך.
       mute_message: '"{{name}}" הוסר מהדשבורד שלך.'
@@ -509,20 +987,31 @@ he:
       parent_members: 'פרטיות: קבוצה זו זמינה לצפייה רק לחברי {{parentGroupName}} ולחברי {{groupName}}'
       public: 'פרטיות: קבוצה זו ציבורית ופתוחה לצפייה ברשת'
       aria_label: 'פרטיות הקבוצה: {{privacy}}'
+    stats: נתונים סטטיסטיים של הקבוצה
+    polls: סקרים
+    decisions: החלטות
+    files: קבצים
+    show_opened: "%{count} פתוח"
+    show_closed: "%{count} סגור"
+    no_more_threads: אין יותר שרשורים לטעון
+    view_closed_threads: הצג שרשורים סגורים
+    see_all_members: ראה את כל %{count} החברים
+    pending_invitations: "+ %{count} בהמתנה"
   description_card:
-    title: 'תאור הקבוצה'
+    title: תאור הקבוצה
     messages:
-      description_updated: 'תאור עודכן'
+      description_updated: תאור עודכן
+    placeholder: מנהלי קבוצות יכולים להשתמש באזור זה כדי לתאר את מטרת הקבוצה, כך שכולם יודעים למה הם כאן.
   leave_group_form:
-    aria_label: 'עזוב את הקבוצה'
-    title: 'עזוב את הקבוצה'
-    question: 'אתם בטוחים שאתם רוצים לצאת מהקבוצה?'
-    submit: 'כן, צא מהקבוצה'
+    aria_label: עזוב את הקבוצה
+    title: עזוב את הקבוצה
+    question: אתם בטוחים שאתם רוצים לצאת מהקבוצה?
+    submit: כן, צא מהקבוצה
   archive_group_form:
-    aria_label: 'הפוך קבוצה ללא פעילה'
-    title: 'הפוך קבוצה ללא פעילה'
-    question: 'אתה בטוח שאתה רוצה להפוך את הקבוצה ללא פעילה?'
-    submit: 'כן, הפוך קבוצה ללא פעילה'
+    aria_label: הפוך קבוצה ללא פעילה
+    title: הפוך קבוצה ללא פעילה
+    question: אתה בטוח שאתה רוצה להפוך את הקבוצה ללא פעילה?
+    submit: כן, הפוך קבוצה ללא פעילה
   group_form:
     aria_label: טופס הקבוצה;
     new_organisation: ארגון חדש
@@ -533,58 +1022,109 @@ he:
     edit_subgroup_heading: ערוך הגדרות תת הקבוצה
     group_name: שם הקבוצה
     start_organization_heading: ארגון חדש
-    group_name_placeholder: 'מה שם הקבוצה שלך?'
-    description: 'תיאור'
-    description_placeholder: 'תאר את מטרת הקבוצה כך שחבריה ידעו למה הם פה.'
+    group_name_placeholder: מה שם הקבוצה שלך?
+    description: תיאור
+    description_placeholder: תאר את מטרת הקבוצה כך שחבריה ידעו למה הם פה.
     privacy_statement:
-      public_on_web: 'שם, תיאור, וקבצים מצורפים בתוכן הקבוצה יהיו זמינים לצפייה לכולם'
-      private_to_group: 'שם ותאור יהיו זמינים לצפיה רק לחברים.'
-      private_to_parent_members: 'שם ותאור יהיו זמינים לחברי {{parent}}'
-    privacy: 'פרטיות'
-    confirm_change_to_secret: "אם אתה ממשיך, כל השיחות בקבוצה ובתת הקבוצות שלה יהיו פרטיות."
-    confirm_change_to_secret_subgroup: 'אם אתה ממשיך, כל השיחות בו יהיו פרטיות.'
-    confirm_change_to_public: 'אם אתה ממשיך, כל השיחות בקבוצה יהיו פומביים וזמינים ברשת.'
-    confirm_change_to_private_discussions_only: 'אם אתה ממשיך, כל שיחה פומבית בקבוצה תהפך לפרטית.'
+      public_on_web: שם, תיאור, וקבצים מצורפים בתוכן הקבוצה יהיו זמינים לצפייה לכולם
+      private_to_group: שם ותאור יהיו זמינים לצפיה רק לחברים.
+      private_to_parent_members: שם ותאור יהיו זמינים לחברי {{parent}}
+    privacy: פרטיות
+    confirm_change_to_secret: אם אתה ממשיך, כל השיחות בקבוצה ובתת הקבוצות שלה יהיו פרטיות.
+    confirm_change_to_secret_subgroup: אם אתה ממשיך, כל השיחות בו יהיו פרטיות.
+    confirm_change_to_public: אם אתה ממשיך, כל השיחות בקבוצה יהיו פומביים וזמינים ברשת.
+    confirm_change_to_private_discussions_only: אם אתה ממשיך, כל שיחה פומבית בקבוצה תהפך לפרטית.
     profile: פרופיל
-    subgroup_privacy_is_open_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פומביות."
-    subgroup_privacy_is_closed_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פרטיות."
-    subgroup_privacy_is_closed_public_threads_description: "כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. השיחות בתת הקבוצה הן פומביות או פרטיות."
-    subgroup_privacy_is_closed_secret_parent_description: "חברים ב{{parent}} יכולים למצוא את תת הקבוצה ולבקש להצטרף. כל השיחות בה פרטיות. רק חברים יכולים לראות מי חבר בקבוצה. "
-    subgroup_privacy_is_secret_description: 'רק חברים מוזמנים יכולים למצוא את תת הקבוצה, לראות מי בה ולראות את השיחה שבה.'
-    advanced_settings: "הגדרות מתקדמות"
-    how_do_people_join: "איך אנשים מצטרפים?"
-    membership_granted_upon_request: 'כל אחד יכול להצטרף לקבוצה.'
-    membership_granted_upon_approval: 'כל אחד יכול לבקש להצטרף אבל חייב לקבל אישור.'
-    membership_granted_upon_approval_secret_parent: '<strong>כל אחד מה{{parent}} יכול לבקש להצטרף לקבוצה</strong>.'
-    permissions: 'הרשאות'
-    thread_privacy: 'פרטיות השיחה'
-    public_threads: 'שיחות פומביות בלבד'
-    public_discussions_subgroup: 'כל אחד מ{{parentGroupName}} יכול לצפות בדיונים'
-    public_or_private_threads: 'אפשר שיחות פומביות ופרטיות'
-    private_threads: 'רק חברים יכולים לראות את הדיונים'
-    allow_public_threads: 'אפשר שיחות פומביות בקבוצה זו.'
-    submit_start_group: 'פתח קבוצה'
-    submit_start_subgroup: 'פתח תת קבוצה'
-    submit_update: 'עדכן הגדרות'
+    subgroup_privacy_is_open_description: כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פומביות.
+    subgroup_privacy_is_closed_description: כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. כל השיחות הן פרטיות.
+    subgroup_privacy_is_closed_public_threads_description: כל אחד יכול למצוא את תת הקבוצה הזו ולבקש להצטרף. רק חברים יכולים לראות מי בקבוצה. השיחות בתת הקבוצה הן פומביות או פרטיות.
+    subgroup_privacy_is_closed_secret_parent_description: 'חברים ב{{parent}} יכולים למצוא את תת הקבוצה ולבקש להצטרף. כל השיחות בה פרטיות. רק חברים יכולים לראות מי חבר בקבוצה. '
+    subgroup_privacy_is_secret_description: רק חברים מוזמנים יכולים למצוא את תת הקבוצה, לראות מי בה ולראות את השיחה שבה.
+    advanced_settings: הגדרות מתקדמות
+    how_do_people_join: איך אנשים מצטרפים?
+    membership_granted_upon_request: כל אחד יכול להצטרף לקבוצה.
+    membership_granted_upon_approval: כל אחד יכול לבקש להצטרף אבל חייב לקבל אישור.
+    membership_granted_upon_approval_secret_parent: "<strong>כל אחד מה{{parent}} יכול לבקש להצטרף לקבוצה</strong>."
+    permissions: הרשאות
+    thread_privacy: פרטיות השיחה
+    public_threads: שיחות פומביות בלבד
+    public_discussions_subgroup: כל אחד מ{{parentGroupName}} יכול לצפות בדיונים
+    public_or_private_threads: אפשר שיחות פומביות ופרטיות
+    private_threads: רק חברים יכולים לראות את הדיונים
+    allow_public_threads: אפשר שיחות פומביות בקבוצה זו.
+    submit_start_group: פתח קבוצה
+    submit_start_subgroup: פתח תת קבוצה
+    submit_update: עדכן הגדרות
     messages:
-      group_created: 'קבוצה נפתחה'
-      group_updated: 'קבוצה עודכנה'
+      group_created: קבוצה נפתחה
+      group_updated: קבוצה עודכנה
+    thread_defaults_help: הגדרות ברירת מחדל עבור שרשורים חדשים
+    click_to_change_image: לחץ כדי לשנות את תמונת השער (4x1) או הלוגו (1x1)
+    change_cover_image: לשנות את תמונת השער
+    change_logo: לשנות לוגו
+    permissions_explaination: 'ישנן שתי רמות חברות שיכולות להיות לאדם בקבוצה: מנהל וחבר. מנהלי מערכת יכולים לערוך את הגדרות הקבוצה, להפוך אנשים אחרים למנהלים ולבצע את כל הפעולות המפורטות למטה.'
+    parent_group: קבוצת הורים
+    new_subgroup: תת קבוצה חדשה
+    new_group_explainer: התחל קבוצת Loomio חדשה עבור הארגון שלך
+    new_subgroup_explainer: התחל תת-קבוצה בתוך קבוצה קיימת - חלל פרטי לצוות של אנשים מהארגון
+    group_settings: הגדרות קבוצה
+    subgroup_settings: הגדרות תת קבוצות
+    subgroup_name: שם תת-קבוצה
+    organization_name: שם ארגון
+    handle: ידית
+    group_handle_placeholder: 'בשימוש בכתובת האתר של הקבוצה שלך: {{host}}/{{handle}}'
+    edit_organization_heading: ערוך את הגדרות הארגון
+    subgroup_name_placeholder: מה השם של תת-הקבוצה שלך?
+    organization_name_placeholder: מה שם הארגון שלך?
+    new_description_placeholder: למה אתה מבחן את לומיו? אילו החלטות אתם צריכים לקבל ביחד?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio" style=";text-align:right;direction:rtl">איך אתה מתכוון להשתמש ב-Loomio?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important-for-your-group" style=";text-align:right;direction:rtl"> למה זה חשוב לקבוצה שלך?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-decisions-do-you-need-to-make" style=";text-align:right;direction:rtl"> אילו החלטות אתה צריך לקבל?</h3><p style=";text-align:right;direction:rtl"></p>
+    secret_by_default: הקבוצה שלך תהיה נגישה רק למי שמוזמן להצטרף. תוכל לשנות זאת מאוחר יותר.
+    group_privacy_is_open_description: רשום בפומבי. כל השרשורים הם ציבוריים.
+    group_privacy_is_closed_description: לא רשום. כל מי שיש לו את הקישור יכול לבקש להצטרף. כל השרשורים הם פרטיים.
+    group_privacy_is_closed_public_threads_description: לא רשום. כל מי שיש לו את הקישור יכול לבקש להצטרף. שרשורים יכולים להיות ציבוריים או פרטיים.
+    group_privacy_is_secret_description: רק אנשים שהוזמנו יכולים למצוא את הקבוצה. כל השרשורים הם פרטיים.
+    membership_granted_upon_invitation: הזמנה בלבד.
+    parent_members_can_see_discussions: חברים ב-{{parent}} יכולים לראות שרשורים פרטיים
+    parent_members_can_see_discussions_help: אפשר לחברי קבוצת האם לראות שרשורים וסקרים בתוך קבוצה זו, אך לא להשתתף בהם
+    members_can_announce: חברים יכולים להודיע לכולם בקבוצה
+    members_can_announce_help: אפשר לחברים להודיע לכולם בקבוצה על שרשור או סקר
+    members_can_add_members: חברים יכולים להזמין חברים
+    members_can_add_members_help: אפשר לחברים להזמין אנשים להצטרף לקבוצה זו
+    members_can_add_guests: חברים יכולים להזמין אורחים
+    members_can_add_guests_help: אפשר לחברים להזמין אורחים לשרשורים או לסקרים בקבוצה זו
+    members_can_create_subgroups: חברים יכולים ליצור תת קבוצות
+    members_can_create_subgroups_help: אפשר לחברים ליצור ולהיות מנהלים של תת-קבוצות חדשות
+    members_can_edit_discussions: חברים יכולים לנהל שרשורים והערות
+    members_can_edit_discussions_help: אפשר לחברים לערוך, להעביר, להצמיד, לתייג או לסגור שרשורים
+    members_can_edit_comments: חברים יכולים לערוך את ההערות שלהם
+    members_can_edit_comments_help: אפשר לחברים לערוך את ההערות שלהם בכל עת
+    members_can_delete_comments: חברים יכולים למחוק את ההערות שלהם
+    members_can_delete_comments_help: אפשר לחברים למחוק תגובות משלהם מהשרשורים
+    members_can_start_discussions: חברים יכולים לפתוח שרשורים חדשים
+    members_can_start_discussions_help: אפשר לחברים לפתוח שרשורים חדשים בתוך הקבוצה
+    members_can_raise_motions: חברים יכולים להתחיל סקרים
+    members_can_raise_motions_help: אפשר לחברים להתחיל סקרים והצעות בדיונים או בקבוצה
+    admins_can_edit_user_content: מנהלי מערכת יכולים לערוך תגובות של חברים
+    admins_can_edit_user_content_help: אפשר למנהלים לערוך תוכן שנכתב על ידי חברים
+    upload_logo: העלה לוגו
+    upload_cover_photo: העלה תמונת שער
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
-        <p>
-        אתה מוזמן להוריד עותק של תוכן הקבוצה בכל זמן.
-        <a href="https://help.loomio.org/en/user_manual/groups/data_export/">פרטים נוספים.</a>
-        </p>
-        <p>
-        לוקח כמה דקות להוריד, תלוי בגודל הקבוצה.
-        כשהקובץ מוכן, תקבל מייל עדכון עם לינק להורדת הקובץ
-        </p>
+      <p>
+      אתה מוזמן להוריד עותק של תוכן הקבוצה בכל זמן.
+      <a href="https://help.loomio.org/en/user_manual/groups/data_export/">פרטים נוספים.</a>
+      </p>
+      <p>
+      לוקח כמה דקות להוריד, תלוי בגודל הקבוצה.
+      כשהקובץ מוכן, תקבל מייל עדכון עם לינק להורדת הקובץ
+      </p>
     submit: התחל יצוא
     flash: יצוא תוכן הקבוצה החלה
   membership_requests_card:
-    heading: 'בקשות חברות'
+    heading: בקשות חברות
     manage_requests: ניהול בקשות
+    manage_requests_with_count: נהל בקשות (%{count})
   membership_requests_page:
     heading: בקשות חברות
     approve: אישור
@@ -597,35 +1137,52 @@ he:
       request_approved_success: בקשת מנוי אושרה
       request_ignored_success: בקשת מנוי ללא התייחסות
   invitation_form:
-    aria_label: 'טופס הזמנה'
-    invite_people: 'הזמינו אנשים'
-    invite_people_to_group: 'Iהזמנה ל{{name}}'
-    group: 'קבוצה'
-    group_placeholder: 'בחירת קבוצה'
-    shareable_link: 'לינק לשיתוף'
-    copy_link: 'העתק'
-    email_addresses: 'כתובת דואר אלקטרוני'
+    aria_label: טופס הזמנה
+    invite_people: הזמינו אנשים
+    invite_people_to_group: Iהזמנה ל{{name}}
+    group: קבוצה
+    group_placeholder: בחירת קבוצה
+    shareable_link: לינק לשיתוף
+    copy_link: העתק
+    email_addresses: כתובת דואר אלקטרוני
     email_addresses_placeholder: 'לדוגמא: helperbot@loomio.org, friendlybot@loomio.org'
-    email_explanation: 'לחלופין, הזן כתובות דואר אלקטרוני מתחת ושלח הזמנה במייל.'
-    add_custom_message: 'עשו את הזמנתכם אישית.'
-    add_custom_message_link: 'הוסף הודעה אישית.'
-    custom_message: 'הודעה אישית'
-    custom_message_placeholder: 'הוסף הודעה אישית לשליחה עם ההזמנה.'
-    add_members: 'הוסף חברים'
-    from_parent_group: 'מאת {{name}}.'
-    send: 'שליחה'
-    done: 'סיום'
+    email_explanation: לחלופין, הזן כתובות דואר אלקטרוני מתחת ושלח הזמנה במייל.
+    add_custom_message: עשו את הזמנתכם אישית.
+    add_custom_message_link: הוסף הודעה אישית.
+    custom_message: הודעה אישית
+    custom_message_placeholder: הוסף הודעה אישית לשליחה עם ההזמנה.
+    add_members: הוסף חברים
+    from_parent_group: מאת {{name}}.
+    send: שליחה
+    done: סיום
     messages:
-      invitation_sent: 'הזמנה נשלחה.'
-      no_invitations: 'אוי לא! אנא ודא שכתובת המייל שלך נכונה ותקנית ונסה שוב.'
-      max_invitations: 'אם אתה רוצה לשלוח יותר מ100 הזמנות, השתמש בלינק צוות.'
+      invitation_sent: הזמנה נשלחה.
+      no_invitations: אוי לא! אנא ודא שכתובת המייל שלך נכונה ותקנית ונסה שוב.
+      max_invitations: אם אתה רוצה לשלוח יותר מ100 הזמנות, השתמש בלינק צוות.
+      invitations_sent: נשלחו %{count} הזמנות.
+    group_url: כתובת האתר של הקבוצה
+    reusable_invitation_link: קישור להזמנה לשימוש חוזר
+    error: שגיאה בעת ניסיון להעתיק ללוח
+    invite_guests: הזמן אורחים
+    notify_people: הודע לאנשים
+    share_group: שתף את הקבוצה שלך
+    secret_group_url_explanation: זו הכתובת של הקבוצה שלך. רק חברים שהוזמנו יוכלו לראות את הקבוצה.
+    shareable_group_url_explanation: אתה יכול לשתף את הקישור הזה באופן ציבורי. אנשים יכולים לבקש להצטרף ואתה יכול לאשר או להתעלם מבקשות.
+    shareable_invitation_explanation: אל תשתף את הקישור הזה בפומבי. כל מי שיש לו יכול להצטרף לקבוצה שלך ללא אישורך. שתף את זה רק בתקשורת פרטית כדי לאפשר לאנשים בארגון שלך להצטרף.
+    shareable_link_reset: איפוס קישור ניתן לשיתוף. הקישור הקודם לא יעבוד יותר.
   memberships_page:
-    members: 'חברים'
-    name_label: 'שם'
-    remove_member_label: 'הסרה'
-    fragment_placeholder: 'סנן משתמשים לפי שם או שם משתמש'
+    members: חברים
+    name_label: שם
+    remove_member_label: הסרה
+    fragment_placeholder: סנן משתמשים לפי שם או שם משתמש
     messages:
-      remove_member_success: '{{name}} הןסר'
+      remove_member_success: "{{name}} הןסר"
+      make_admin_success: "{{name}} הוא כעת מנהל"
+      remove_admin_success: "{{name}} אינו עוד מנהל"
+    coordinator_label: מנהל מערכת
+    only_one_admin: יש רק מנהל אחד בקבוצה הזו. מומלץ למנות לפחות חבר אחד נוסף כמנהל.
+    remove_admin_from_self:
+      question: האם אתה בטוח שאתה כבר לא רוצה להיות מנהל?
   membership_remove_modal:
     invitation:
       title: בטל הזמנה
@@ -637,6 +1194,8 @@ he:
       message: אתה בטוח שאתה רוצה להסיר את {{name}}?
       flash: משתתף הוסר
       submit: הסרת משתתף
+      impact_for_subgroup: פעולה זו תסיר את הגישה שלהם לתת-הקבוצה (כולל שרשורים וסקרים), אך הם יישארו חברים בקבוצת האם.
+      impact_for_group: פעולה זו תסיר את הגישה שלהם לקבוצה (כולל שרשורים וסקרים) ולתת-קבוצות כלשהן.
   membership_form:
     modal_title:
       group: תן שם לקבוצה
@@ -646,54 +1205,77 @@ he:
     title_placeholder: 'לדוגמא: מתאם או מאפשר'
     updated: כותרת החברות עודכנה
   user_page:
-    contact_user: 'צור קשר עם {{name}}'
+    contact_user: צור קשר עם {{name}}
     location_field: 'מיקום: {{value}}'
     locale_field: 'שפה: {{value}}'
     online_field: 'אונליין: {{value}}'
-    invited: 'הוזמן {{value}}'
+    invited: הוזמן {{value}}
+    message_user: הודעה {{name}}
   contact_request_form:
-    modal_title: "דואר אלקטרוני {{name}}"
+    modal_title: דואר אלקטרוני {{name}}
     message_placeholder: הצג את עצמך ושתף למה היית רוצה ליצור קשר
     helptext: "{{name}} ישלח את שמך, כתובת הדואר וההודעה שלך"
-    email_sent: "דוא\"ל נשלח אל {{name}}"
+    email_sent: דוא"ל נשלח אל {{name}}
   profile_page:
     messages:
-      updated: 'פרופיל עודכן'
-      picture_changed: 'תמונת פרופיל עודכנה'
-      password_changed: 'סיסמה עודכנה'
-      deactivated: 'החשבון הושבת'
-    change_picture_link: 'שנה תמונה'
-    change_password_link: 'אפס סיסמה'
-    delete_account: 'מחר חשבון לצמיתות'
-    delete_user_link: 'מחק חשבון'
-    profile: 'פרופיל'
-    edit_profile: 'ערוך פרופיל'
-    picture_label: 'תמונה'
-    name_label: 'שם'
-    username_label: 'שם משתמש'
-    username_helptext: 'הכל אותיות ומספרים, מקסימום 30 תווים'
-    email_label: 'דואל'
-    short_bio_label: 'הצגה'
-    locale_label: 'שפה'
-    short_bio_placeholder: 'אנא הצג את עצמך, כולל מומחיות, נושאים המעניינים אותך, וקשרים עם ארגונים'
+      updated: פרופיל עודכן
+      picture_changed: תמונת פרופיל עודכנה
+      password_changed: סיסמה עודכנה
+      deactivated: החשבון הושבת
+    change_picture_link: שנה תמונה
+    change_password_link: אפס סיסמה
+    delete_account: מחר חשבון לצמיתות
+    delete_user_link: מחק חשבון
+    profile: פרופיל
+    edit_profile: ערוך פרופיל
+    picture_label: תמונה
+    name_label: שם
+    username_label: שם משתמש
+    username_helptext: הכל אותיות ומספרים, מקסימום 30 תווים
+    email_label: דואל
+    short_bio_label: הצגה
+    locale_label: שפה
+    short_bio_placeholder: אנא הצג את עצמך, כולל מומחיות, נושאים המעניינים אותך, וקשרים עם ארגונים
     locale_placeholder: בחר שפה מועדפת
-    location_label: 'מיקום'
-    location_placeholder: 'איפה אתה ממוקם?'
-    update_profile: 'עדכן פרופיל'
+    location_label: מיקום
+    location_placeholder: איפה אתה ממוקם?
+    update_profile: עדכן פרופיל
+    account_is_bot: זה חשבון בוט
+    bot_account_warning: חשבונות בוטים לא יוזמנו להצביע בסקרים או להשתתף בדיונים
+    incomplete_profile: פרופיל לא שלם!
+    set_your_profile_picture: הגדר את תמונת הפרופיל שלך
+    deactivated_user: משתמש מושבת
+    date_time_pref_label: פורמט תאריך ושעה
+    merge_accounts: מיזוג חשבונות
+    deactivate_account: השבת את חשבון המשתמש
+    help_translate: האם תוכל לעזור לנו לתרגם את Loomio?
+    updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
   text_editor:
     insert_link: הכנס לינק
+    x_of_y_characters: "{{x}} / {{y}} תווים"
+    select_text_to_link: בחר טקסט לקישור ונסה שוב
+    insert_embedded_url: הטמע וידאו
   change_picture_form:
-    helptext: 'אתה יכול לעלות תמונת פרופיל משלך או, אם יש לך חשבון <a href="https://en.gravatar.com/support/whatisgravatar/">אווטר</a>, אתה יכול להשתמש בו.'
-    use_initials: 'השתמש בראשי תיבות'
-    use_gravatar: 'שימוש בGravatar'
+    helptext: אתה יכול לעלות תמונת פרופיל משלך או, אם יש לך חשבון <a href="https://en.gravatar.com/support/whatisgravatar/">אווטר</a>, אתה יכול להשתמש בו.
+    use_initials: השתמש בראשי תיבות
+    use_gravatar: שימוש בGravatar
+    aria_label: טופס תמונת פרופיל
+    title: הגדר תמונת פרופיל
+    use_uploaded: העלה תמונה חדשה
+    existing_upload: העלאה קיימת
+    use_provider: השתמש בתמונה של {{ספק}}
   change_password_form:
     set_password: הגדר סיסמה
     password_changed: סיסמתך עודכנה
+    set_password_title: הגדר את הסיסמה
+    set_password_helptext: נא להזין סיסמה - מינימום 8 תווים
   deactivation_modal:
-    you_will_be_deleted: "חשבון המשתמש שלך כולל שמך, כתובת הדוא\"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו."
-    name_removed: 'הערות, הצעות ודיונים שביצעת ישראו אבל השם שלך יוסר מהם'
-    no_longer_group_member: 'אתה לא תהיה רשום יותר כמשתתף באף קבוצה'
-    no_emails: 'לא תקבל/י יותר עדכונים במייל.'
+    you_will_be_deleted: חשבון המשתמש שלך כולל שמך, כתובת הדוא"ל ופרטי זיהוי נוספים ימחקו מהמערכות שלנו.
+    name_removed: הערות, הצעות ודיונים שביצעת ישראו אבל השם שלך יוסר מהם
+    no_longer_group_member: אתה לא תהיה רשום יותר כמשתתף באף קבוצה
+    no_emails: לא תקבל/י יותר עדכונים במייל.
+    introduction: 'כאשר אתה מוחק את החשבון שלך:'
+    submit_delete: מחק את החשבון שלי עכשיו
   email_settings_page:
     monday: יום שני
     tuesday: יום שלישי
@@ -703,25 +1285,34 @@ he:
     saturday: יום שבת
     sunday: יום ראשון
     email_newsletter: הניוזלטר של לומיו
-    email_newsletter_description: "קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד\"כ 2-3 מיילים בשנה."
+    email_newsletter_description: קבל עדכונים על פיצ'רים חדשים, הדרכות, אירועים בעיר שלך ועתיד לומיו. בד"כ 2-3 מיילים בשנה.
     on_participation_label: הרשם בהשתתפות
-    on_participation_description: "כשאתה משתתף בשיחה, כל פעילות עתידית תשלח אליך למייל באופן מיידי."
+    on_participation_description: כשאתה משתתף בשיחה, כל פעילות עתידית תשלח אליך למייל באופן מיידי.
     announcement_label: הודעות
-    announcement_description: "אתה תקבל מייל בנוגע לכל תוכן שמוכרז ע\"י אנשים בקבוצות שלך"
+    announcement_description: אתה תקבל מייל בנוגע לכל תוכן שמוכרז ע"י אנשים בקבוצות שלך
     mentioned_label: איזכורים ותגובות
     update_settings: שמור שינויים
     specific_groups: הגדרות לקבוצות ספציפיות
     default_settings:
-      loud_description: "כשאתה מצטרף לקבוצה חדשה אתה תקבל מייל  <strong>כשיש פעילות</strong>."
-      normal_description: "כשאתה מצטרף לקבוצה חדשה אתה תקבל מייל על <strong>שיחות חדשות והצעות</strong>."
-      quiet_description: "כשאתה מצטרף לקבוצה חדשה, אתה  <strong>לא תקבל מייל על פעילות בקבוצה</strong>."
+      loud_description: כשאתה מצטרף לקבוצה חדשה אתה תקבל מייל  <strong>כשיש פעילות</strong>.
+      normal_description: כשאתה מצטרף לקבוצה חדשה אתה תקבל מייל על <strong>שיחות חדשות והצעות</strong>.
+      quiet_description: כשאתה מצטרף לקבוצה חדשה, אתה  <strong>לא תקבל מייל על פעילות בקבוצה</strong>.
     edit: עריכה
     messages:
       updated: הגדרות מייל עודכנו
     learn_more: למד עוד על הגדרות מייל...
+    every_day: כל יום
+    every_second_day: כל יום שני
+    header: הגדרות התראות
+    account_deactivated: החשבון של הושבת. לא תקבל שום אימייל, לעולם.
+    deactivate_header: עצור את כל המיילים לנצח
+    deactivate_description: אם לעולם לא תרצה לקבל מאיתנו אימייל נוסף לעולם, תוכל לבטל את ההפעלה של חשבון המשתמש שלך.
+    email_catch_up_day: דוא"ל סיכום
+    daily_summary_description: בחר מתי לקבל את דוא"ל הסיכום. אימייל זה מכיל פעילות חדשה שלא ראית. דרך טובה להישאר מעודכן אם אינך משתמש רגיל.
+    mentioned_description: כשמישהו @ מזכיר אותך בהערה או משיב לך, תקבל הודעת אימייל
   dashboard_page:
-    aria_label: 'לוח מכוונים'
-    recent_threads: "שיחות אחרונות"
+    aria_label: לוח מכוונים
+    recent_threads: שיחות אחרונות
     no_groups:
       show_all: ברוך הבא! אתה עוד לא חבר באף קבוצה עוד. <a href="/explore">חפש בקבוצות הפומביות</a> או <a href="/g/new">פתח קבוצה</a>.
       show_muted: אין לך אף שיחה מושתקת כי אתה לא חבר באף קבוצה.
@@ -737,11 +1328,11 @@ he:
     explain_mute:
       title: לא השתקת אף שיחה עוד.
       explanation_html: |
-          השתקה היא דרך להסתיר או להשקיט שיחות שאתה לא מעוניין בהן.
-          השתקה משמעה שלא תראה אותה ב<strong>לאחרונה</strong> או <strong>לא נקרא</strong>, ואתה לא תקבל עדכון על פעילות בשיחה זו, כמו הצעות.
-          אתה תקבל התראה רק אם מישהו only be alerted if someone <strong>@מזכיר</strong> את שמך.
-      instructions: 'להשתקת שיחה, רחף מעליה ולחץ על אייקון ההשתקה.'
-      see_muted_html: 'לצפיה בשיחות מושתקות, לחץ על  <strong>"מושתק"</strong>. אתה יכול לבטל השתקה ע"י ריחוף על השיחה ולחיצה על אותו האייקון.'
+        השתקה היא דרך להסתיר או להשקיט שיחות שאתה לא מעוניין בהן.
+        השתקה משמעה שלא תראה אותה ב<strong>לאחרונה</strong> או <strong>לא נקרא</strong>, ואתה לא תקבל עדכון על פעילות בשיחה זו, כמו הצעות.
+        אתה תקבל התראה רק אם מישהו only be alerted if someone <strong>@מזכיר</strong> את שמך.
+      instructions: להשתקת שיחה, רחף מעליה ולחץ על אייקון ההשתקה.
+      see_muted_html: לצפיה בשיחות מושתקות, לחץ על  <strong>"מושתק"</strong>. אתה יכול לבטל השתקה ע"י ריחוף על השיחה ולחיצה על אותו האייקון.
     filtering:
       filter_threads: סינון השיחות
       filter_threads_aria_label: סינון השיחות
@@ -756,18 +1347,23 @@ he:
       muted_aria_label: כרגע מראה שיחות מושתקות
       muted_description: הצג רק שיחות שהושתקו
     thread_preview:
-      you_voted: 'את/ה הצבעת {{position}}'
-      undecided: 'את/ה מתלבט/ת'
+      you_voted: את/ה הצבעת {{position}}
+      undecided: את/ה מתלבט/ת
     threads_from:
-      group: 'שיחות מאת'
-      pinned: 'שיחות נעוצות'
-      proposals: 'שיחות עם החלטות פעילות'
-      starred: 'שיחות שסומנו בכוכב'
-      today: 'היום'
-      yesterday: 'אתמול'
-      thisweek: 'השבוע הנוכחי'
-      thismonth: 'החודש הנוכחי'
-      older: 'ישן מחודש'
+      group: שיחות מאת
+      pinned: שיחות נעוצות
+      proposals: שיחות עם החלטות פעילות
+      starred: שיחות שסומנו בכוכב
+      today: היום
+      yesterday: אתמול
+      thisweek: השבוע הנוכחי
+      thismonth: החודש הנוכחי
+      older: ישן מחודש
+    polls_to_vote_on: סקרים להצביע עליהם
+    no_polls_to_vote_on: אין סקרים שאתה צריך להצביע עליהם
+    recent_polls: סקרים אחרונים
+    current_polls: סקרים נוכחיים
+    thread_dismissed: השרשור מסומן כנקראו
   inbox_page:
     no_threads: וואו! קראת את כל השיחות בתיבת המייל שלך
     unread_threads: שיחות שלא נקראו
@@ -779,21 +1375,24 @@ he:
       join_group: <a href="/explore">הצטרף</a> לקבוצה כדי לצפות בשיחות.
   discussion:
     max_threads_reached: |
-        <p>השתמשת בכל {{maxThreads}} השירשורים הפנויים בקבוצה זו.</p>
-        <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> בכדי להמשיך לשתף פעולה בLoomio.</p>
-    activity: 'פעילות'
-    activity_placeholder: 'אין פעילות עוד!'
-    load_previous: 'טען פעילויות מוקדמות יותר'
-    started_by: 'התחיל ע"י <strong>{{name}}</strong>'
+      <p>השתמשת בכל {{maxThreads}} השירשורים הפנויים בקבוצה זו.</p>
+      <p>שלב הבא, <a href="{{upgradeUrl}}" target="_blank">בחר חבילה</a> בכדי להמשיך לשתף פעולה בLoomio.</p>
+    activity: פעילות
+    activity_placeholder: אין פעילות עוד!
+    load_previous: טען פעילויות מוקדמות יותר
+    started_by: התחיל ע"י <strong>{{name}}</strong>
     pin:
-      pinned: 'השיחה נעוצה'
-      unpinned: 'שיחה כבר לא נעוצה'
+      pinned: השיחה נעוצה
+      unpinned: שיחה כבר לא נעוצה
     volume:
-      mute_message: 'השיחה הושתקה'
-      unmute_message: 'השיחה כבר לא הושתקה'
+      mute_message: השיחה הושתקה
+      unmute_message: השיחה כבר לא הושתקה
     closed:
-      reopened: 'השיחה נפתחה מחדש'
-      closed: 'השיחה נסגרה'
+      reopened: השיחה נפתחה מחדש
+      closed: השיחה נסגרה
+    invite_only: מוזמנים בלבד
+    private_thread: שרשור פרטי
+    subscription_canceled: <p style=";text-align:right;direction:rtl">המנוי שלך אינו פעיל.</p><p style=";text-align:right;direction:rtl"> אנא <a href="{{upgradeUrl}}" target="_blank">שדרג</a> כדי להמשיך להשתמש ב-Loomio.</p>
   activity_card:
     beginning: התחלה
     latest: אחרונים
@@ -802,81 +1401,123 @@ he:
     nested: מקונן
     attachment_display:
       aria_label: 'קובץ מצורף:'
-      image_alt: 'תמונה מצורפת'
+      image_alt: תמונה מצורפת
     comment: הערה
+    count_responses: "%{count} תגובות"
+    event_pinned: מוצמד לציר הזמן
+    event_unpinned: בוטלה ההצמדה מציר הזמן
+    end: סוֹף
+    unread: לא נקרא (%{count})
+    n_previous: טען %{count} תגובות קודמות
+    n_more: טען %{count} תגובות
+    add_comment: הוסף תגובה
+    add_poll: הוסף סקר
+    add_outcome: הוסף תוצאה
+    facilitate: לסייע
+    start_decision: התחל החלטה
+    start_vote: התחל להצביע
   thread_group:
     aria_label: שם הקבוצה
   thread_context:
-    aria_label: 'הקשר השיחה'
-    thread_options: 'אפשרויות השיחה'
-    edit: 'עריכה'
-    edit_thread: 'עריכה'
-    close_thread: 'סגירה'
-    reopen_thread: 'פתח מחדש'
-    pin_thread: 'סיכה'
-    unpin_thread: 'הסר סיכה'
-    mute_thread: 'השתק'
-    move_thread: 'העבר'
-    print_thread: 'הדפס'
-    delete_thread: 'מחיקה'
-    add_comment: 'הערה'
-    forked_from: "פוצל מ-"
+    aria_label: הקשר השיחה
+    thread_options: אפשרויות השיחה
+    edit: עריכה
+    edit_thread: עריכה
+    close_thread: סגירה
+    reopen_thread: פתח מחדש
+    pin_thread: סיכה
+    unpin_thread: הסר סיכה
+    mute_thread: השתק
+    move_thread: העבר
+    print_thread: הדפס
+    delete_thread: מחיקה
+    add_comment: הערה
+    forked_from: פוצל מ-
+    current_poll_type_banner: "{{pollType}} נוכחי"
+    item_maybe_deleted: לא ניתן למצוא את המיקום המבוקש בתוך השרשור. ייתכן שהוא נמחק.
+    email_settings: הגדרות התראות
+    seen_by_count: נראה על ידי %{count}
+    count_notified: הודעה על %{count}
   pin_thread_modal:
     title: דקור שיחה
-    helptext: "שיחות נעוצות תמיד יופיעו בראש רשימת השיחות בקבוצה שלהן. השיחות יכולות לשמש לעדכן חברים על הודעות חשובות, או לקדם תוכן משותף כמו תקנון התנהגות או קוי יסוד לקהילה."
-    helptext_two: "אתה יכול להוריד סיכות בכל עת ע\"י בחירה בהסר סיכה ברשימת האפשרויות של השיחה"
+    helptext: שיחות נעוצות תמיד יופיעו בראש רשימת השיחות בקבוצה שלהן. השיחות יכולות לשמש לעדכן חברים על הודעות חשובות, או לקדם תוכן משותף כמו תקנון התנהגות או קוי יסוד לקהילה.
+    helptext_two: אתה יכול להוריד סיכות בכל עת ע"י בחירה בהסר סיכה ברשימת האפשרויות של השיחה
     pin_thread: דקור שיחה
   delete_thread_form:
-    aria_label: 'מחיקת שיחה'
+    aria_label: מחיקת שיחה
     title: מחיקת שיחה
     body: האם אתה בטוח שהנך מעוניין למחוק את השיחה הזו?
-    confirm: 'מחיקת שיחה'
+    confirm: מחיקת שיחה
     messages:
       success: שיחה נמחקה
   move_thread_form:
     aria_label: העבר שיחה
     title: העבר שיחה
     confirm: העבר שיחה
-    confirm_change_to_private_thread: '{{groupName}} הינה קבוצה פתוחה. אם אתה ממשיך, השיחה הזו תהיה פומבית.'
+    confirm_change_to_private_thread: "{{groupName}} הינה קבוצה פתוחה. אם אתה ממשיך, השיחה הזו תהיה פומבית."
     messages:
       success: השיחה הועברה ל{{name}}
+    body: קבוצת יעד
   delete_comment_dialog:
-    title: 'מחקו תגובה'
+    title: מחקו תגובה
+    question: פעולה זו תמחק את התגובה הזו לצמיתות. אם תמשיך, לא ניתן לשחזר אותו.
   contact_message_form:
-    title: "היי! איך נוכל לעזור?"
-    contact_us_email: "אתה גם יכול לשלוח לנו מייל: <a href=\"mailto:{{email}}\">{{email}}</a>"
-    contact_us: 'צור קשר'
-    name_label: 'שמך'
-    name_placeholder: 'הכנס את שמך...'
-    subject_label: "נושא"
-    subject_placeholder: |
-        לדוגמא: בעיות רישום או הצעה לשיפור
-    email_label: 'כתובת הדוא״ל שלך'
-    email_placeholder: 'הכנס את כתובת הדואר האלקטרוני שלך...'
-    message_label: 'ההודעה שלך'
-    message_placeholder: 'אם אתם זקוקים לתמיכה, אנא נסו לספק כמה שיותר מידע שתוכלו.'
-    send_message: 'שלח הודעה'
-    new_contact_message: "תודה שיצרתם קשר. נחזור אליכם בקרוב!"
+    title: היי! איך נוכל לעזור?
+    contact_us_email: 'אתה גם יכול לשלוח לנו מייל: <a href="mailto:{{email}}">{{email}}</a>'
+    contact_us: צור קשר
+    name_label: שמך
+    name_placeholder: הכנס את שמך...
+    subject_label: נושא
+    subject_placeholder: 'לדוגמא: בעיות רישום או הצעה לשיפור
+
+      '
+    email_label: כתובת הדוא״ל שלך
+    email_placeholder: הכנס את כתובת הדואר האלקטרוני שלך...
+    message_label: ההודעה שלך
+    message_placeholder: אם אתם זקוקים לתמיכה, אנא נסו לספק כמה שיותר מידע שתוכלו.
+    send_message: שלח הודעה
+    new_contact_message: תודה שיצרתם קשר. נחזור אליכם בקרוב!
     consent_message: |
-        ביצירת קשר איתנו, אתם מאשרים לצוות שלנו גישה לחשבון שלכם, במידה וידרש. <br />
-        צוות התמיכה דובר אנגלית ויתרגם את ההודעה שלך עם Google Translate, במידת וידרש. <br />
-        אנחנו מתכננים לענות לכל ההודעות אלינו תוך 24 שעות.
-    success: "תודה על הודעתך, {{name}}. נחזור אליך בקרוב."
+      ביצירת קשר איתנו, אתם מאשרים לצוות שלנו גישה לחשבון שלכם, במידה וידרש. <br />
+      צוות התמיכה דובר אנגלית ויתרגם את ההודעה שלך עם Google Translate, במידת וידרש. <br />
+      אנחנו מתכננים לענות לכל ההודעות אלינו תוך 24 שעות.
+    success: תודה על הודעתך, {{name}}. נחזור אליך בקרוב.
+    alt_title: פנה לתמיכה של Loomio
+    need_message: אנא הכנס הודעה כדי שנוכל לעזור לך :-)
+    respond_asap: שלח הודעה לצוות Loomio ואנו נגיב בהקדם האפשרי.
+    happy_to_help_with: אנו שמחים לעזור עם פניות מכירה, בקשות תמיכה, בקשות תכונה, דיווח על באגים או בעיות שאתה חווה.
+    success_via_email: תודה על הודעתך, {{name}}. אנו נגיב בדוא"ל תוך 24 שעות.
   explore_page:
     header: חקור קבוצות
     search_placeholder: חיפוש בקבוצות פומביות
-    single_search_result: "התאמה עם קבוצה פומבית אחת <strong>{{searchTerm}}:</strong>"
+    single_search_result: התאמה עם קבוצה פומבית אחת <strong>{{searchTerm}}:</strong>
     multiple_search_results: "{{resultCount}} התאמות לקבוצות פומביות <strong>{{searchTerm}}:</strong>"
     newest_first: הכי חדש קודם
+    no_results_found: "<strong>לא מצאתם את הקבוצה שאתם מחפשים?</strong> אם הפרטיות של קבוצה מוגדרת ל'סודית', היא לא תופיע כאן."
+    biggest_first: הכי גדול קודם
+    order_by: סדר קבוצות לפי
   global:
     messages:
-      reload: 'טען מחדש'
+      reload: טען מחדש
+      app_update: גרסה חדשה של Loomio שוחררה. נא לשמור את העבודה שלך ולטעון מחדש.
   decision_tools_card:
     proposal_title: הצעה
     poll_title: סקר
     score_title: ניקוד סקר
     meeting_title: הצבעת זמן
     ranked_choice_title: דירוג בחירה
+    choose_type: בחר סוג סקר
+    title: לסייע
+    recommended: מוּמלָץ
+    question_title: סבב שאלות
+    advice_title: עֵצָה
+    consent_title: הַסכָּמָה
+    consensus_title: קוֹנסֶנזוּס
+    count_title: לבחור ב
+    check_title: בדיקת חושים
+    meeting: פְּגִישָׁה
+    dot_vote_title: הצבעה נקודה
+    gradients_of_agreement_title: שיפועים של הסכמה
   poll_common:
     vote_now: הצבע עכשיו
     have_your_say: חייב להגיד
@@ -906,6 +1547,64 @@ he:
     share_outcome: שתפ/י תוצאה
     view_all: צפה בכל
     save_changes: שמירה
+    superseded: הוחלף
+    need_help_with_templates: זקוק לעזרה ביצירת תבניות החלטה משלך?
+    categorize_poll_templates: סיווג תבניות סקר
+    show_all_templates_in_one_list: הצג את כל התבניות ברשימה אחת
+    advice_process: תהליך ייעוץ
+    consent_process: תהליך הסכמה
+    consensus_process: תהליך קונצנזוס
+    question_round: סבב שאלות
+    edit_template: ערוך תבנית
+    proposal: הצעה
+    run_process: הפעל תהליך
+    proposal_templates: תבניות הצעה
+    custom: המותאם אישית
+    custom_process: תהליך מותאם אישית
+    custom_poll: סקר מותאם אישית
+    delete_poll: מחק סקר
+    select_count_options: בחר {{count}} אפשרויות
+    select_minimum_to_maximum_options: בחר באפשרויות {{מינימום}} עד {{מקסימום}}
+    custom_poll_types: סוגי סקרים מותאמים אישית
+    hidden_poll_templates: תבניות סקר נסתרות
+    poll_template: תבנית סקר
+    poll_template_saved: תבנית הסקר נשמרה
+    poll_templates: תבניות סקר
+    poll_types: סוגי סקרים
+    new_proposal_template: תבנית הצעה חדשה
+    edit_proposal_template: ערוך תבנית הצעה
+    new_poll_template: תבנית סקר חדשה
+    edit_poll_template: ערוך תבנית סקר
+    new_poll_type: סוג סקר חדש
+    edit_poll_type: ערוך את סוג הסקר
+    new_custom_poll: סקר מותאם אישית חדש
+    edit_custom_poll: ערוך סקר מותאם אישית
+    create_a_custom_poll_type: צור סוג סקר חדש עם מינוח והגדרות מותאמים אישית
+    create_a_custom_process: צור תהליך חדש עם טרמינולוגיה ואפשרויות משלך
+    create_a_custom_poll: צור סקר עם מינוח והגדרות מותאמים אישית
+    decision: הַחְלָטָה
+    decision_templates: תבניות החלטה
+    remove_your_vote: הסר את ההצבעה שלך
+    remove_your_response: הסר את התגובה שלך
+    review_due: סקירה בשל
+    please_vote: אנא הצבע
+    response: תְגוּבָה
+    reason_placeholder: הסבר בקצרה מדוע הצבעת כך, ולאחר מכן לחץ על 'שלח הצבעה'
+    current_results: תוצאות נוכחיות
+    close_early: סגור מוקדם
+    participate: לְהִשְׂתַתֵף
+    outcomes: תוצאות
+    submit_vote: שלח הצבעה
+    submit_response: שלח תגובה
+    update_vote: עדכון הצבעה
+    update_response: עדכן תגובה
+    change_vote: שנה את ההצבעה שלך
+    change_response: שנה את התגובה שלך
+    max_score: ציון מקסימלי
+    min_score: ציון מינימום
+    too_long: יותר מדי זמן
+    edit_warning: עריכה מומלצת רק עבור שינויים קלים או תיקון שגיאות כתיב. לשינויים משמעותיים, סגור את ה-{{pollType}} הזה והתחל חדש.
+    no_voting: לדיון בלבד, ההצבעה מושבתת
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:
@@ -918,22 +1617,62 @@ he:
       options_added: אפשרויות חדשות נוספו
   poll_common_card:
     show_results: הראה תוצאות
+    hide_results: הסתר תוצאות
+    until_vote: עד להצבעה
+    until_you_vote: עד שתצביע
+    until_poll_type_closed: עד ש-{{pollType}} ייסגר
+    until_voting_is_closed: עד לסגירת ההצבעה
+    deleted: סקר זה נמחק
   discussions_panel:
     open: פתוח
     all: הכל
     closed: סגור
+    unread: לא נקרא (%{count})
+    include_subgroups_mine: "{{name}} ותתי הקבוצות שלי"
+    include_subgroups_all: "{{name}} וכל תת הקבוצות"
+    no_results_found: אין תוצאות עבור "{{חיפוש}}"
+    welcome_to_your_new_group: ברוכים הבאים לקבוצת Loomio החדשה שלך!
+    lets_start_a_thread: בואו נפתח שרשור. לחץ על "שרשור חדש" כדי להמשיך.
   members_panel:
-    order_by_name: 'שם'
-    header_name: 'שם'
-    header_username: 'שם משתמש'
-    invitations: 'הזמנה'
-    accepted: 'חברים'
+    order_by_name: שם
+    header_name: שם
+    header_username: שם משתמש
+    invitations: הזמנה
+    accepted: חברים
+    bot: בוט
+    no_results: לא נמצאו חברים
+    everyone: כל אחד
+    all: את כל
+    sort: סוג
+    order_label: להזמין
+    order_by_created: הוותיק ביותר
+    show_users_in_subgroups: הצג משתמשים גם בתתי קבוצות
+    order_by_created_desc: החדש ביותר
+    order_by_admin_desc: מנהלי מערכת
+    loaded_of_total: "{{loaded}} מתוך {{total}}"
+    view_requests: הצג בקשות
+    header_role: תַפְקִיד
+    header_invited_by: מוזמן על ידי
+    header_invited: מוזמן
+    header_actions: פעולות
+    directory: מַדרִיך
+    requests: בקשות
+    admin: מנהל מערכת
+    guest: אוֹרֵחַ
+    sharable_link: קישור ניתן לשיתוף
+    last_seen: נראה לאחרונה {{תאריך}}
+    invited_by_name: הוזמן על ידי {{name}}
   polls_panel:
-    all: 'הכל'
-    open: 'פתוח'
-    closed: 'סגור'
+    all: הכל
+    open: פתוח
+    closed: סגור
+    new_poll: סקר חדש
+    any_type: כל הסוגים
+    any_status: כל סטטוס
+    need_vote: צריך הצבעה
+    no_polls: לא נמצאו סקרים
   poll_common_collapsed:
-    by_who: "על פי {{name}}"
+    by_who: על פי {{name}}
   poll_common_calendar_invite:
     calendar_invite: הוסף הזמנה ליומן עם תוצאה זו
     poll_option_id: זמן פגישה
@@ -945,6 +1684,7 @@ he:
     event_description_placeholder: מה התוכנית/לו"ז לפגישה?
     location: מיקום
     location_placeholder: איפה תתקיים הפגישה?
+    event_summary: שם הפגישה
   poll_common_settings:
     multiple_choice:
       title: ריבוי אפשרויות
@@ -960,10 +1700,41 @@ he:
       helptext_on: כשנבחר, מידע על המשתתפים לא יוצג עם כל תגובה.
     can_respond_maybe:
       title: מצביעים יכולים להשיב "אם נדרש"
+    who_can_vote: מי יכול להצביע?
+    short_reason_can_be_helpful: שמירה על הסיבות להצבעה קצרות מקלה על הבנתן. אוסף של נימוקים תמציתיים הוא משאב נהדר לקבלת החלטה.
+    specified_voters_only_true: אנשים מוזמנים בלבד
+    specified_voters_only_false_group: כל אחד בקבוצה
+    specified_voters_only_false_discussion: כל אחד בשרשור
+    invite_people_next: אתה יכול לבחור מי מוזמן להצביע לאחר שתתחיל את ה-{{poll_type}}
+    shuffle_options:
+      shuffle_options: ערבוב אפשרויות
+      title: הצג אפשרויות בסדר אקראי
+      helptext: אפשרות להיות ראשונה ברשימה יכולה לתת לה הטיה. השתמש בהגדרה זו כדי להתמודד עם האפקט הזה.
+    notify_on_closing_soon:
+      voting_closes_too_soon: מכיוון שההצבעה נסגרת תוך 24 שעות, לא יישלחו תזכורות לסגירה בקרוב.
+      closes_too_soon: מכיוון שה-{{pollType}} הזה נסגר תוך 24 שעות, לא יישלחו תזכורות לסגירה בקרוב.
+      title: 24 שעות לפני סגירת {{pollType}}, שלח תזכורת אל
+      voting_title: 24 שעות לפני סגירת ההצבעה, שלח תזכורת ל
+      nobody: אף אחד
+      author: מחבר (אני)
+      undecided_voters: מצביעים מתלבטים
+      voters: כל המצביעים
+    voter_can_add_options:
+      title: הבוחרים יכולים להוסיף אפשרויות חלופיות
+    allow_long_reason:
+      title: אפשר להצביע 'סיבה' להיות יותר מ-500 תווים
+    hide_results_until_closed:
+      title: הסתר את התוצאות עד לסגירה
+      helptext_on: אל תראה כיצד אנשים הצביעו עד שהסקר ייסגר
   poll_common_closing_at_field:
     closing: סוגרים
+    no_closing_date: אין תאריך סגירה
+    closing_date: תאריך סגירה
+    closing_hour: זמן הסגירה
+    invalid_date: תאריך לא חוקי
   poll_card:
     started_by: התחיל לפי {{name}}
+    poll_type_by_name: "%{poll_type} מאת %{name}"
   poll_common_votes_panel:
     newest_first: הכי חדש קודם
     oldest_first: הכי ישן קודם
@@ -972,9 +1743,16 @@ he:
     no_votes_yet: לא בוצעה עוד אף בחירה.
     change_results_order: שנה סדר התוצאות
     none_of_the_above: (אף אחד מהנ"ל)
+    vote_removed: ההצבעה הוסרה
+    undecided: לֹא הֶחלֵטִי
+    undecided_first: קודם כל מתלבט
+    name_or_username: שם או שם משתמש
   poll_common_undecided_panel:
     show_invitations: הראה הצעות ממתינות
-    invitation_count_singular: "אדם אחד נוסף הוזמן דרך המייל להשתתף"
+    invitation_count_singular: אדם אחד נוסף הוזמן דרך המייל להשתתף
+    show_undecided: הצג %{count} מתלבטים
+    undecided_users: מתלבט (%{count})
+    invitation_count_plural: '%{count} אנשים נוספים הוזמנו להשתתף בדוא"ל'
   poll_common_undecided_user:
     reminded: תזכורת נשלחה!
     reminder_sent: הודעת תזכורת נשלחה
@@ -984,15 +1762,38 @@ he:
     outcome_updated: תוצאה עודכנה
     statement_placeholder: סכם את התגובות והסבר מה יקרה בהמשך.
     submit: שתפ/י תוצאה
+    review_due_in_days: לבדוק את ההחלטה לאחר כמה ימים?
+    review_due_in_days_hint: פרק זמן (בימים) להמתנה לפני בחינת ההחלטה. (אופציונאלי)
+    review_date: תאריך ביקורת
+    review_date_hint: קבע תאריך לבדיקת ההחלטה (אופציונלי)
+    who_to_notify: למי אתה רוצה להודיע על התוצאה הזו? (אופציונאלי)
+    outcome_statement_template: תבנית הצהרת תוצאה
+    new_title: תוצאה של המדינה
+    statement_template_placeholder: ספק תבנית לכתיבת תוצאה של ההחלטה. (אופציונאלי)
+    you_will_be_notified: תקבל הודעה בתאריך הבדיקה.
   poll_common_outcome_panel:
-    authored_by: 'לפי {{name}}'
+    authored_by: לפי {{name}}
   poll_common_delete_modal:
     question: אתה בטוח שברצונך למחוק את זה?
     success: נמחק בהצלחה
+    title: מחק את {{pollType}}
   poll_common_form:
     voting_methods:
       ranked_choice: דירוג בחירה
       time_poll: הצבעת זמן
+      question: סבב שאלות
+      question_hint: הזמן שאלות והערות על ההצעה שלך
+      show_thumbs: הפגנת אצבעות
+      show_thumbs_hint: הבוחרים בוחרים באגודל למעלה, למטה, הצידה או יד למעלה
+      choose: בחר
+      simple_poll: סקר פשוט
+      choose_hint: הבוחרים בוחרים באפשרות (או האפשרויות) הטובות ביותר
+      score: ציון
+      score_hint: הבוחרים מעניקים ניקוד לכל אפשרות
+      allocate: לְהַקְצוֹת
+      allocate_hint: הבוחרים מחלקים תקציב של נקודות בין האפשרויות
+      ranked_choice_hint: הבוחרים מסדרים את האפשרויות לפי הסדר מהרוב למועדף לפחות
+      time_poll_hint: הבוחרים מציינים מתי הם פנויים להיפגש
     title: כותרת
     details: פירוט
     options: אפשרויות
@@ -1002,12 +1803,76 @@ he:
     start: התחלה
     start_poll: התחל סקר
     update: עדכון
+    notify_everyone_when_poll_starts: הודע לכולם כאשר %{poll_type} מתחיל
+    option_has_votes_confirm_delete: חלק מהאנשים הצביעו עבור אפשרות זו, האם אתה בטוח שברצונך למחוק אותה?
+    example_title: כותרת לדוגמה
+    example_title_hint: תן דוגמה לכותרת הצעה טובה
+    example_details_placeholder: ספק נקודת התחלה להצעה או סקר. שאלות יכולות להיות הנחיות שימושיות כדי לגרום לאנשים לכתוב. כלול כללים או תזכורות שהמשתתפים יצטרכו לדעת.
+    confirm_delete: האם אתה בטוח שברצונך למחוק תבנית סקר זו? אי אפשר לבטל את זה.
+    show_advanced_settings: הצג הגדרות מתקדמות
+    hide_advanced_settings: הסתר הגדרות מתקדמות
+    choose_at_least: תבחר לפחות
+    choose_at_most: בחר לכל היותר
+    please_review_the_form: אנא עיין בטופס
+    option_added_please_add_details: נוספה אפשרות! אנא הוסף כמה פרטים כדי שאנשים ידעו מה זה אומר.
+    default_duration_in_days: משך ברירת המחדל בימים
+    default_duration_in_days_hint: כמה ימים צריך לתת לאנשים להצביע?
+    how_many_options_can_a_voter_choose: כמה מהאפשרויות הללו יכול לבחור לבחור?
+    minimum_choices: מינימום בחירות
+    maximum_choices: מקסימום אפשרויות בחירה
+    content: תוֹכֶן
+    reminder: תִזכּוֹרֶת
+    your_in_zone: 'אזור זמן נוכחי: %{zone}'
+    show_other_zones: הצג אזורי זמן אחרים
+    hide_other_zones: הסתר אזורי זמן אחרים
+    this_is_a_template_for_new_polls: זוהי תבנית לסקרים חדשים
+    voting_method: שיטת ההצבעה
+    process: תהליך
+    process_name: כותרת התבנית
+    process_name_hint: איך אתה קורא לתבנית הזו? למשל ייעוץ תפקידים, בדיקת טמפרטורה, אישור דקות
+    process_subtitle: כותרת משנה של תבנית
+    process_subtitle_hint: תיאור בשורה אחת של מתי או מדוע להשתמש בתבנית זו
+    process_introduction: עזרה בתבנית
+    process_introduction_hint: כמה פסקאות שמסבירות כיצד להשתמש בתבנית. כלול קישורים למשאבים שעשויים להיות מועילים.
+    you_can_set_a_prompt_per_option: ערוך את ההנחיה עבור כל אפשרות מכרטיסיית הפרטים
+    chart_type: סוג תרשים
+    title_hint: מהי ההחלטה שאתה צריך לקבל?
+    no_options_add_some: לסקר הזה אין אפשרויות, הוסף כמה למטה.
+    example_details: פרטים לדוגמה
+    details_placeholder: זו ההזדמנות שלך להסביר על מה אנשים מצביעים
+    options_placeholder: רשום את האפשרויות הזמינות
+    stance_reason_required_label: מתן סיבה בעת ההצבעה הוא...
+    stance_reason_required: נדרש
+    stance_reason_optional: אופציונאלי
+    stance_reason_disabled: נָכֶה
+    stance_reason_is_required: אנא ספק סיבה להצבעה שלך
+    limit_reason_length: הגבל את הסיבה ל-500 תווים לכל היותר
+    save_poll: שמור סקר
+    start_poll_type: התחל את {{poll_type}}
+    share_poll_type: שתף את {{poll_type}}
+    who_may_vote: מי רשאי להצביע ב-{{poll_type}} הזה?
+    add_voters: הוסף מצביעים
+    notify_invitees: שלח הודעות
+    no_notifications_warning: הבוחרים לא יקבלו הודעה. זה שימושי אם אתה מפעיל הרבה סקרים ומתכננים להודיע לכולם מאוחר יותר.
+    count_voters_added: נוספו %{count} מצביעים
+    poll_type_created: "%{poll_type} נוצר"
+    poll_type_started: "%{poll_type} התחיל"
+    reason_prompt: הנחיית סיבה
+    anonymous_voting: הצבעה אנונימית
+    anonymous_voting_description: אם מופעל, זהות הבוחרים לא תקושר להצבעות שלהם. אי אפשר לבטל את זה.
+    votes_are_anonymous: ההצבעות הן אנונימיות
+    vote_reason: סיבה להצביע
+    vote_reason_description: זה יכול לעזור להבין מדוע אנשים הצביעו כפי שהם הצביעו. עם הגדרה זו, אתה יכול לבקש מאנשים לשתף את מחשבותיהם כשהם מצביעים.
+    hide_results_description: אם אתה רוצה שאנשים יצביעו בלי לדעת איך אחרים הצביעו, אתה יכול להסתיר את תוצאות הסקר.
+    process_helptext: תן שם ותאר את התהליך המשמש להפעלת סקר זה.
+    reminder_helptext: שלח הודעת 'נסגר בקרוב' לפני סגירת הסקר. זו יכולה להיות הזדמנות לאנשים לראות כיצד אחרים הצביעו ולשקול מחדש את ההצבעה שלהם, או סתם דרך להגביר את ההשתתפות בסקר.
   poll_proposal_form:
     start_header: התחל הצעה
     edit_header: ערוך הצעה
     title_placeholder: 'לדוגמא: בוא ניסע לירח!'
     proposal_created: הצעה החלה
     proposal_updated: הצעה עודכנה
+    details_placeholder: מהם הפרטים של ההצעה שלך?
   poll_poll_form:
     start_header: התחל סקר
     edit_header: עריכת סקר
@@ -1017,19 +1882,40 @@ he:
     remove_option: הסר אפשרות
     poll_created: סקר נוצר
     poll_updated: סקר עודכן
+    multiple_choice_subtitle: דרך פשוטה להעריך את הפופולריות של אפשרויות
+    tip: הצע בחירה בין אפשרויות
+    new_option: אפשרות חדשה
+    add_option_hint: הזן שם קצר עבור האפשרות
+    option_added: נוספה אפשרות
+    option_already_added: האפשרות כבר נוספה לסקר
   poll_meeting_form:
     timeslots: משבצות זמן
     no_options: הזן זמנים באיזור הזמן שלך ({{zone}}). משתתפים יראו את הזמנים מתורגמים לאיזורי הזמן שלהם.
     meeting_duration: אורך הפגישה
+    add_option_placeholder: הוסף זמן חדש
+    time_slot_added: נוספה משבצת זמן
+    time_slot_already_added: משבצת זמן כבר נוספה
+    participants_see_local_times: Pariticpants יראו זמנים מותאמים לאזור הזמן שלהם
+    use_24_hour_format: שְׁגִיאָה! השתמש בפורמט של 24 שעות, למשל %{time}
   poll_ranked_choice_form:
-    no_options: "לא הוספת עוד אף אפשרות."
+    no_options: לא הוספת עוד אף אפשרות.
     add_option_placeholder: הזן בחירה חדשה
     minimum_stance_choices: אפשרויות לדירוג
     ranked_choice_created: דירוג הבחירה נוצר
     ranked_choice_updated: דירוג הבחירה עודכן
+    minimum_stance_choices_helptext: כמה ברירות מקבל הבוחר?
+    minimum_stance_choices_hint: כלומר דרג את 3 הטעמים המובילים שלך של גלידה
+    rank: דַרגָה
+    points: נקודות
+    average: מְמוּצָע
+    mean: מתכוון
+    pct_of_points: "% מהנקודות"
+    pct_of_voters: "% מהמצביעים"
+    percent: אָחוּז
   poll_meeting_time_field:
-    new_time_slot: ' משבצת זמן חדשה'
+    new_time_slot: " משבצת זמן חדשה"
     closing_hour: שעת סגירה
+    add_time_slot: הוסף משבצת זמן
   poll_proposal_vote_form:
     default_reason_placeholder: אנא נמק
     abstain_reason_placeholder: תן לאנשים לדעת מדוע אתה משנה את החלטתך
@@ -1040,19 +1926,30 @@ he:
     stance_updated: הצבעה עודכנה
     vote: הצבעה
   poll_proposal_options:
-    'yes': 'כן'
-    'no': 'לא'
+    'yes': כן
+    'no': לא
     agree: בעד
     abstain: נמנע
     disagree: נגד
     block: חסום
     agree_meaning: הצעה זו טובה דיה להיות מאומצת ע"י הקבוצה
+    select_an_option: בחר אפשרות
+    consent: הַסכָּמָה
+    unsure: לא בטוח
+    objection: הִתנַגְדוּת
+    object: לְהִתְנַגֵד
+    no_voting: אין הצבעה
   poll_count_form:
     title_placeholder: 'לדוגמא: מי רוצה להצטרף לקבוצת עבודה?'
     details_placeholder: הסבר איזו התחייבות נדרשת או תן פירוט על איך להשתתף.
+    pct_of_target: "% מהיעד"
+    agree_target_helptext: מהו מספר היעד של מתנדבים שתרצה לקבל?
+    agree_target_label: מספר יעד
   poll_count_options:
-    'yes': 'כן'
-    'no': 'לא'
+    'yes': כן
+    'no': לא
+    accept: לְקַבֵּל
+    decline: יְרִידָה
   poll_count_vote_form:
     reason_label: הודעה
     reason_placeholder: השאר הודעה, אם תרצה
@@ -1065,21 +1962,47 @@ he:
     stance_created: הצבעה נוצרה
     stance_updated: הצבעה עודכנה
   poll_meeting_vote_form:
-    can_attend: "יכול להופיע"
-    unable: "לא יכול"
+    can_attend: יכול להופיע
+    unable: לא יכול
     if_need_be: אם נדרש
     your_response: מתי תוכל להופיע?
     stance_created: זמינות נשמרה
     stance_updated: זמינות עודכנה
     reason_placeholder: הסבר מתי אתה פנוי (או תפוס), במידה והכותב צריך להוסיף אפשרויות.
+    local_time_zone: זמן מקומי - {{zone}}
   poll_dot_vote_vote_form:
     stance_created: הצבעה נוצרה
     stance_updated: הצבעה עודכנה
+    dots_remaining: נותרו %{count} נקודות
+    too_many_dots: השתמשת ביותר מדי נקודות
   poll_ranked_choice_vote_form:
     stance_created: בחירה תועדה במערכת
     stance_updated: בחירה עודכנה
+    helptext: גרור ושחרר אפשרויות לפי סדר העדפה (1 הוא האפשרות המועדפת עליך ביותר). %{count} הבחירות המובילות שלך יתועדו.
   thread_item:
-    event_removed: "הוסר מהשיחה"
+    event_removed: הוסר מהשיחה
+    removed: הפריט הוסר
+    deleted_group: קבוצה שנמחקה
+    invite_only_thread: הזמנה רק שרשור
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{מחבר}}</a> בתגובה ל <strong>-{{title}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{מחבר}}</a> ערך את כותרת השרשור"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{מחבר}}</a> ערך את הקשר השרשור"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{מחבר}}</a> שינה את פרטיות השרשור"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{מחבר}}</a> ערך את השרשור"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> העביר את השרשור מ <strong>-{{title}}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{מחבר}}</a> סגר את השרשור"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{מחבר}}</a> פתח מחדש את השרשור"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> יצר מזלג של השרשור הזה: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{מְחַבֵּר}}</a>"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> שיתף תוצאה"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> פתח מחדש את ה-{{polltype}}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> סגר את ה-{{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> התחיל {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{מחבר}}</a> ערך את ה-{{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> הוסיף אפשרויות ל-{{polltype}}"
+    poll_expired: "{{polltype}} נסגר"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> הצביע ב: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> עדכן את ההצבעה שלו ב: <strong>{{title}}</strong>"
   auth_form:
     sign_in: התחבר
     continue: המשך
@@ -1089,11 +2012,11 @@ he:
     enter_your_name: הזן את שמך
     more_providers: עוד
     email_not_present: כתובת מייל נדרשת כאן
-    invalid_email: "סליחה, אבל זה לא נראה כמו כתובת מייל תקינה"
-    invalid_password: "סליחה, סיסמה זו לא תואמת לזו שבמערכת"
-    invalid_token: "סליחה, אנחנו לא מסוגלים להשתמש בטוקן הזה כדי להכניס אותך. לחץ למטה לשלוח עוד אחד."
-    account_locked: "חשבונך ננעל אחרי נסיונות כושלים רבים מידי. בדוק במייל שלך לינק לביטול הנעילה"
-    email_not_found: "סליחה, לא מצאנו חשבון עם כתובת המייל הזו"
+    invalid_email: סליחה, אבל זה לא נראה כמו כתובת מייל תקינה
+    invalid_password: סליחה, סיסמה זו לא תואמת לזו שבמערכת
+    invalid_token: סליחה, אנחנו לא מסוגלים להשתמש בטוקן הזה כדי להכניס אותך. לחץ למטה לשלוח עוד אחד.
+    account_locked: חשבונך ננעל אחרי נסיונות כושלים רבים מידי. בדוק במייל שלך לינק לביטול הנעילה
+    email_not_found: סליחה, לא מצאנו חשבון עם כתובת המייל הזו
     email_placeholder: you@example.com
     login_with_token: 'אתה מוכן ומזומן! לחץ על הלינק למטה להמשיך. '
     login_link_helptext: לחץ על הכפתור למטה ואנחנו נשלח לך לינק להתחברות.
@@ -1107,33 +2030,505 @@ he:
     welcome_back: ברוך השב, {{name}}!
     set_password: הגדר סיסמה
     set_password_helptext: תרצה להשתמש בסיסמה בפעם הבאה?
-    hello: "שלום, {{name}}!"
+    hello: שלום, {{name}}!
     link_accounts: חבר חשבונות
     check_your_email: בדוק את המייל שלך!
-    login_link_sent: "שלחנו לך מייל ל{{email}}."
-    instructions: "לחץ על הלינק להתחברות, או הכנס את הקוד המופיע מטה:"
-    invalid_code: "סליחה, קוד זה לא תואם. בדוק את המייל ונסה שוב."
-    password_link_sent: "שלחנו לך מייל ל{{email}} עם הנחיות איך לאפס את סיסמתך."
+    login_link_sent: שלחנו לך מייל ל{{email}}.
+    instructions: 'לחץ על הלינק להתחברות, או הכנס את הקוד המופיע מטה:'
+    invalid_code: סליחה, קוד זה לא תואם. בדוק את המייל ונסה שוב.
+    password_link_sent: שלחנו לך מייל ל{{email}} עם הנחיות איך לאפס את סיסמתך.
     signed_in: התחברת בהצלחה
     email_verified: כתובת המייל אומתה בהצלחה
     name: שם
     email: דואר אלקטרוני
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
+    code: '000000'
+    youre_invited: הוזמנת להצטרף ל-{{group_name}}.
+    youre_invited_discussion: הוזמנת להצטרף לדיון.
+    youre_invited_poll: הוזמנת להצביע.
+    existing_account_can_sign_in: אם אתה כבר משתמש ב-{{site_name}}, היכנס עם החשבון הקיים שלך
+    sign_up_or_log_in: צור חשבון או היכנס אל {{site_name}}
+    sign_in_to_loomio: היכנס אל {{site_name}}
+    sign_in_help: בעיה בכניסה?
+    sign_up_as: צור חשבון בתור {{email}}
+    continue_with_provider: המשך עם {{ספק}}
+    continue_with_email: המשך במייל
+    invitation_required: אתה צריך הזמנה כדי ליצור חשבון. עקוב אחר הקישור ממייל ההזמנה שלך כדי להמשיך.
+    email_taken: כתובת האימייל כבר רשומה
+    enter_your_password: הזן את הסיסמה שלך כדי להמשיך
+    i_accept_all: אני מסכים ל-{{termsLink}} ו-{{privacyLink}}
+    newsletter_label: אני רוצה לקבל את ה-{{קישור}}
+    privacy_notice: לעולם לא נמכור את הנתונים שלך.<br> <a href='{{privacyUrl}}' target='_blank'>מדיניות הפרטיות</a>
+    forgot_password: שכחת את הסיסמא
+    login_link: שלח אימייל כניסה
+    sign_in_via_email: היכנס באמצעות דואר אלקטרוני
+    new_to_loomio: פעם ראשונה ב-{{site_name}}?
+    already_a_user: כבר יש לך חשבון?
+    email_address_of_existing_account: הזן את כתובת האימייל של החשבון הקיים שלך
+    instructions_code: 'הזן את הקוד מהמייל הזה:'
+    too_many_attempts: יותר מדי ניסיונות; נסה ללחוץ על הקישור בדוא"ל כדי להיכנס.
+    reactivate_link_sent: שלחנו לך אימייל עם הוראות להפעלה מחדש של חשבונך
   chatbot:
     webhook_url: Webhook URL
     username: שם משתמש
     password: סיסמה
+    configure_chatbot: הגדר צ'אטבוט
+    test_connection: בדיקת חיבור
+    test_connection_ok: נראה טוב! אתה אמור לראות הודעה בערוץ
+    test_connection_bad: משהו לא בסדר בהגדרות
+    name: שם צ'אטבוט
+    connection_test_successful: בדיקת חיבור הבוט של Loomio הצליחה!
+    chatbot: צ'טבוט
+    chatbots: צ'טבוטים
+    saved: צ'אטבוט נשמר!
+    homeserver_url: כתובת האתר של שרת הבית
+    channel: עָרוּץ
+    access_token: אסימון גישה
+    add_chatbot: הוסף צ'אטבוט
+    matrix: מַטרִיצָה
+    slack: רָפוּי
+    discord: מַחֲלוֹקֶת
+    mattermost: הכי חשוב
+    microsoft_teams: צוותי מיקרוסופט
+    event_kind_helptext: בחר אירועים שהבוט תמיד יקבל הודעה לגביהם. אם אתה לא בטוח, פשוט עזוב את כולם.
+    notification_only_label: שלח כותרת התראה בלבד
+    check_for_test_message: בדוק בחדר הצ'אט שלך להודעה מהבוט!
   webhook:
     removed: אינטגרציה הוסרה
     url_label: Webhook URL
     name_label: שם
+    integrations: אינטגרציות
+    api_keys: מפתחות API
+    webhooks: Webhooks
+    webhook: Webhook
+    add_api_key: הוסף מפתח API
+    edit_api_key: ערוך מפתח API
+    api: ממשק API
+    format: פוּרמָט
+    formats:
+      markdown: Markdown (עבור Mattermost, Zapier ואחרים)
+      microsoft: צוותי מיקרוסופט
+      slack: רָפוּי
+      discord: מַחֲלוֹקֶת
+    subtitle: התחבר ל-Loomio לשאר הכלים שלך עם ה-API שלנו
+    deprecated: ממשק API זה הוצא משימוש. נא לעבור ל-APIv2 (ראה מסמכי API בתפריט הגדרות הקבוצה שלך)
+    we_have_guides: עיין <a href="{{url}}" target="_blank">במדריכי הגדרת ה-webhook</a> שלנו לקבלת עזרה בחיבור השירות שלך.
+    add_webhook: הוסף webhook
+    show_docs: ראה שימוש ב-API
+    save_to_show_docs: לאחר השמירה, חזור לכאן כדי למצוא את מפתח ה-API שלך
+    edit_integration: ערוך אינטגרציה
+    add_integration: הוסף אינטגרציה
+    success: נוספה אינטגרציה!
+    remove: הסר אינטגרציה
+    confirm_remove: 'האם אתה בטוח שברצונך להסיר את השילוב: {{name}}?'
+    url_placeholder: https://hooks.example.com/...
+    name_placeholder: תן לשילוב הזה שם כדי שתוכל לזהות אותו
+    event_kind_helptext: על אילו אירועים אתה רוצה שה-webhook יקבל הודעה?
+    event_kinds:
+      new_discussion: נפתח שרשור
+      discussion_edited: שרשור נערך
+      poll_edited: סקר נערך
+      new_comment: מובאת הערה
+      poll_created: מתחיל סקר
+      stance_created: מתקבלת הצבעה
+      stance_updated: הצבעה משתנה
+      poll_closing_soon: סקר נסגר בקרוב
+      poll_expired: תוקף סקר יפוג
+      poll_closed_by_user: סקר נסגר באופן ידני
+      poll_reopened: משאל נפתח מחדש להצבעה
+      outcome_created: תוצאה משותפת
+      outcome_updated: תוצאה מתעדכנת
+      outcome_review_due: יש לבצע סקירת תוצאות
+    permissions_explaination: בחר אילו פעולות ניתן לבצע על ידי שילוב זה
+    permissions:
+      show_discussion: להראות דיון
+      create_discussion: ליצור דיון
+      create_poll: ליצור סקר
+      show_poll: הצג סקר
+      read_memberships: לקרוא חברות
+      manage_memberships: ניהול חברות (הוספה או הסרה של חברי קבוצה)
+    include_body_label: כלול את גוף ההודעה עם התראה
   powered_by:
     powered_by_loomio: מופעל ע"י לומיו
     privacy_policy: מדיניות פרטיות
     terms_of_service: תנאי שימוש
     front_page: עמוד ראשי
+    this_is_loomio_md: Loomio היא אפליקציה לקבלת החלטות ביחד. [נסה בחינם](https://www.loomio.com)
+    slogan: החלטות טובות יותר ביחד
   group_survey:
     categories:
       community: קבוצה קהילתית
       other: אחר
+      party: מפלגה פוליטית
+      coop: שיתופי
+      union: הִתאַחֲדוּת
+      board: ממשל ומועצות
+      nonprofit: ללא מטרות רווח
+      membership: ארגון חברות
+      professional: חברת שירות מקצועית
+      self_managing: ארגון בניהול עצמי
+      government: ממשלה/שלטון מקומי
+    describe_other: בחר את הקטגוריה שמתארת בצורה הטובה ביותר את הקבוצה שלך
+  tasks:
+    tasks: משימות
+    your_tasks: המשימות שלך
+    permission_denied: אין לך הרשאה לעדכן משימה זו
+    due_date: תאריך להגשה
+    send_reminder: שלח תזכורת (אם לא נעשה)
+    no_reminder: אין תזכורת
+    on_due_date: בתאריך יעד
+    1_day_before: יום אחד לפני
+    2_day_before: יומיים לפני
+    3_day_before: 3 ימים לפני
+    7_day_before: 7 ימים לפני
+    task_placeholder: הזן משימה ו@אזכר מישהו להקצות אותה
+    add_due_date: הוסף תאריך יעד
+    task_updated_done: המשימה סומנה כבוצעה!
+    task_updated_not_done: המשימה סומנה כלא בוצעה
+    no_tasks_assigned: לא הוקצו לך משימות
+  doctypes:
+    youtube_video: סרטון יוטיוב
+    image: תמונה
+    pdf: PDF
+    excel: גיליון אלקטרוני של אקסל
+    document: מסמך
+    csv: קובץ CSV
+    video: וִידֵאוֹ
+    text: קובץ טקסט
+    google_doc: גוגל דוק
+    google_sheet: גיליון אלקטרוני של גוגל
+    google_drive: גוגל דרייב
+    pull_request: משוך בקשה
+    trello_board: לוח טרלו
+    trello_card: כרטיס טרלו
+  poll_types:
+    proposal: הצעה
+    count: לבחור ב
+    check: בדיקת חושים
+    poll: מִשׁאָל
+    dot_vote: הצבעה נקודה
+    meeting: סקר זמן
+    ranked_choice: בחירה מדורגת
+    score: סקר ציון
+    question: סבב שאלות
+  merge_accounts:
+    modal:
+      title: מיזוג חשבונות
+      helptext: אתה יכול למזג את החשבון תחת <strong>{{sourceEmail}}</strong> לזה של <strong>{{targetEmail}}</strong> . לחץ על אמת והודעת דוא"ל אימות תישלח אל {{targetEmail}} כדי להתחיל בתהליך.
+      submit: תאשר
+      flash: מייל אימות נשלח!
+    email_taken: מצטערים, האימייל הזה כבר משויך למשתמש אחר. האם המייל הזה שייך לך?
+    find_out_more: גלה עוד.
+    placeholder_modal_text: <p style=";text-align:right;direction:rtl">אם ברצונך למזג שני חשבונות יחד, פשוט הזן את כתובת הדוא"ל המתאימה (השייכת לחשבון האחר) בשדה האימייל של דף הפרופיל שלך, ובצע את ההוראות שמופיעות.</p><p style=";text-align:right;direction:rtl"> זקוק לעזרה? <a href="/contact" target="_blank">צור איתנו קשר</a> .
+  email_to_group:
+    email_to_group_settings: הגדרות אימייל לקבוצה
+    email_to_group_address: כתובת אימייל לקבוצה
+    start_threads_via_email: התחל שרשורים באמצעות דואר אלקטרוני
+    your_address_for_this_group: כתובת האימייל שלך לקבוצה זו
+    send_email_to_start_thread: שלח דוא"ל לכתובת זו כדי לפתוח שרשור בקבוצה שלך.
+    subject_body_attachments: השרשור ישתמש בנושא האימייל, בגוף ובקבצים המצורפים.
+    address_starts_threads_as_you: אל תשתף את הכתובת הזו - כל מי שיש לו אותה יכול לפתוח שרשורים כמוך.
+    generate_new_address: צור כתובת חדשה
+    copy_address: העתק כתובת
+    email_me_this_address: דוא"ל לי כתובת זו
+    email_address_sent_to_you: כתובת מייל נשלחה אליך
+    email_address_copied_to_clipboard: כתובת האימייל הועתקה ללוח
+    new_address_generated: נוצרה כתובת דוא"ל חדשה לקבוצה
+    generate_new_address_question: ליצור כתובת דוא"ל חדשה לקבוצה?
+    generate_new_address_warning: כל כתובות האימייל ל-loomio הקיימות שלך יפסיקו לעבוד. אין ביטול. לך על זה?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: כתובת הדוא"ל שלך לפתיחת שרשורים ב-%{group}
+  search_modal:
+    all_content: כל התוכן
+    best_match: ההתאמה הטובה ביותר
+    any_tag: כל תג
+    all_subgroups: כל תת הקבוצות
+    parent_only: הורה בלבד
+  thread_template:
+    browse_public_templates: עיין בגלריית התבניות
+    thread_template_settings: הגדרות תבנית שרשור
+    start_a_new_thread: התחל שרשור חדש
+    thread_template_saved: תבנית השרשור נשמרה
+    these_are_public_templates: תבניות אלו זמינות להעתקה או שינוי כדי להתאים לקבוצה שלך
+    these_are_templates: אלו הן תבניות השרשור בקבוצה שלך. תבניות מנחות אותך בתהליכי קבלת החלטות נפוצים.
+    default_title_label: כותרת ברירת מחדל
+    default_title_hint: מלא מראש את שדה הכותרת בטקסט הניתן לעריכה. זה אופציונלי - השאר ריק אם אתה לא בטוח.
+    title_placeholder_label: כותרת לדוגמה
+    title_placeholder_hint: דוגמה להצגה ברקע של שדה הכותרת
+    title_placeholder_placeholder: למשל כך נראה טקסט רקע
+    example_description_label: תיאור לדוגמה
+    example_description_placeholder: ספק תבנית שאנשים יכולים להשתמש בה כדי להתחיל איתה שרשור
+    hidden_templates: תבניות נסתרות
+    confirm_delete: האם אתה בטוח שברצונך למחוק לצמיתות את תבנית השרשור הזו? שום שרשור לא יימחק כתוצאה מכך.
+    add_proposal_or_poll_template: הוסף הצעה או תבנית סקר
+    recommended_proposal_or_poll_templates: תבניות הצעה או סקר מומלצות
+    decision_templates: תבניות החלטה
+    decision_templates_help: בחר כל הצעה או תבניות סקר שיעזרו להשלים תהליך זה.
+    share_in_template_gallery: שתף תבנית זו בגלריית התבניות הציבורית
+  delete_group_modal:
+    title: מחק קבוצה
+    subgroup_title: מחק תת-קבוצה
+    parent_body: <h2 style=";text-align:right;direction:rtl">זו קבוצת ההורים שלך - לא תת קבוצה!</h2><br> אם תמחק את זה, כל תת-הקבוצות יימחקו לצמיתות. גם מנוי Loomio שלך יבוטל. מומלץ מאוד לייצא את נתוני הקבוצה שלך ולהוריד ידנית כל קבצים חשובים לפני שתעשה זאת. האם אתה בטוח שאתה רוצה להמשיך?
+    body: האם אתה בטוח שברצונך למחוק תת-קבוצה זו? כל השרשורים, הסקרים, הקבצים ותוכן קבוצתי אחר יימחקו לצמיתות. מומלץ לייצא את נתוני הקבוצה ולהוריד ידנית קבצים חשובים לפני שתמשיך.
+    confirm: הקלד '%{name}' כדי לאשר שברצונך למחוק את הקבוצה הזו.
+    success: קבוצה זו הועברה לארכיון ומתוכננת למחיקה קבועה בעוד שבועיים.
+  export_data_modal:
+    title: איך אתה רוצה להשתמש בנתונים שלך?
+    as_csv: פתח אותו בגיליון אלקטרוני
+    as_html: פתח אותו בדפדפן
+    as_json: ארח את הקבוצה הזו בשרת שלי
+  memberships_panel:
+    add_coordinator: הפוך למנהל
+    remove_coordinator: הורדת אדמין
+  user_name_modal:
+    user_name_updated: שם המשתמש עודכן
+    set_user_name: הגדר שם משתמש
+  thread_preview:
+    replies_count: "%{count} תשובות"
+    unread_count: "%{count} לא נקראו"
+  threads_page:
+    no_direct_threads: אין לך שרשורים ישירים
+    no_invite_only_threads: אין לך שרשורים להזמנה בלבד
+  discussion_last_seen_by:
+    title: נראה ע"י
+    no_one: אף אחד לא ראה את זה עדיין
+  thread_arrangement_form:
+    edit: ערוך פריסה
+    title: פריסת חוט
+    for_everyone: זה משנה את הפריסה עבור כולם, לא רק לך.
+    sorting: הכי ישן או הכי חדש קודם?
+    latest: החדש ביותר
+    latest_description: קרא תחילה את הפריטים החדשים ביותר
+    earliest: הוותיק ביותר
+    earliest_description: התעדכן בתגובות ישנות יותר לפני שתראה חדשות יותר
+    replies: כיצד להציג תשובות?
+    linear: רשימה שטוחה
+    linear_description: פריטים רשומים כפי שקרו, בזה אחר זה.
+    nested_once: תשובות Nest - תשובה ראשונה בלבד
+    nested_once_description: תשובות בכניסה מתחת לתגובה המקורית
+    nested_twice: שתי רמות של תשובות מקוננות
+    nested_twice_description: תשובות לכניסה לכל היותר פעמיים.
+    changing_nesting_is_slow: העיבוד של שינויים בקינון עשוי להימשך מספר דקות.
+  poll_option_form:
+    edit_option: אפשרות עריכה
+    option_name: שם האופציה
+    option_name_hint: שם קצר לאפשרות זו
+    option_name_validation: עדיף לשמור את השם קצר ולשים פרטים בשדה 'משמעות'
+    icon: סמל
+    meaning: מַשְׁמָעוּת
+    meaning_hint: משפט או שניים המסבירים מה המשמעות של בחירה באפשרות זו. אופציונאלי
+    prompt: הנחיית סיבה
+    prompt_hint: שאלה כדי לעורר את המצביעים לשתף בנימוקיהם או לשקול מחדש את עמדתם. אופציונאלי
+  group_files_panel:
+    no_files: לא נמצאו קבצים
+    filename: שם קובץ
+    uploaded_by: הועלה על ידי
+    uploaded_at: הועלה ב
+    delete_confirmation: האם אתה בטוח שברצונך למחוק את הקובץ המצורף הזה? הוא יוסר מכל הערה או שרשור הקשורים. אי אפשר לבטל את זה.
+  subgroups_panel:
+    search_subgroups_of_name: חפש בקבוצות משנה של {{name}}
+    group_without_subgroups: "{{name}} ללא תת-קבוצות"
+  poll_common_action_panel:
+    from_the_thread: מתוך תבנית השרשור
+    from_the_group: מתוך הקבוצה
+    default_templates: תבניות ברירת מחדל
+    default_template: תבנית ברירת מחדל
+    custom_template: תבנית מותאמת אישית
+    default_poll_types: סוגי סקר ברירת מחדל
+    suggested_templates: תבניות מוצעות
+    group_templates: תבניות קבוצה
+    basic_templates: תבניות בסיסיות
+    anonymous: ההצבעות הן אנונימיות
+    results_hidden_until_closed: התוצאות יוצגו לאחר סגירת ההצבעה
+    results_hidden_until_vote: התוצאות יוצגו לאחר ההצבעה
+    unable_to_vote: לא הוזמנת להצביע ב-%{poll_type} הזה
+    draft_mode: ההצבעה מושבתת. זה עדיין לא פתוח להצבעה.
+    voting_disabled_poll_is_template: ההצבעה מושבתת. זו תבנית.
+  poll_common_close_form:
+    title: לסגור את %{poll_type} עכשיו?
+    helptext: האם אתה בטוח שברצונך לסגור את ה-%{poll_type} הזה מוקדם ולשתף תוצאה?
+    close_poll_type: סגור %{poll_type}
+    poll_type_closed: "%{poll_type} נסגר"
+  poll_common_reopen_form:
+    title: פתח מחדש את {{poll_type}}
+    helptext: פתח מחדש את ה-{{poll_type}} אם אנשים צריכים עוד זמן כדי להשתתף
+    success: "{{poll_type}} נפתח מחדש"
+  poll_common_move_form:
+    title: העבר את {{poll_type}}
+    success: "{{poll_type}} הועבר אל {{קבוצה}}"
+  poll_common_wip_field:
+    voting_enabled: ההצבעה מופעלת
+    enable_voting: אפשר הצבעה
+    title: השבת את ההצבעה
+    past_tense: ההצבעה מושבתת
+    draft_mode: מצב טיוטה
+    disable_voting_during_development: ה-%{poll_type} הזה לא מוכן להצבעה
+    helptext: ה-%{poll_type} הזה הוא עבודה בתהליך. אתה יכול לאפשר הצבעה מאוחר יותר.
+    voting_open: ההצבעה פתוחה
+    this_is_ready_for_voting: "%{poll_type} הזה מוכן להצבעה"
+  poll_common_set_outcome_panel:
+    enter_outcome: הזן תוצאה
+    poll_type: "%{poll_type} זה נסגר. קח זמן לשקול את התוצאות ואז שתף תוצאה כדי שאנשים ידעו מה יקרה אחר כך."
+  record_modal:
+    record_video: להקליט סרטון
+    record_audio: הקלט אודיו
+    record: תקליט
+    stop: תפסיק
+    no_mic: לא הצליח למצוא מיקרופון
+    no_camera: לא הצלחתי למצוא מצלמה
+    listen_to_audio: האזינו לאודיו
+    watch_video: צפה בוידאו
+    audio_transcript: 'תמלול אודיו: %{text}'
+    why_type_when_you_can_talk: למה להקליד כשאפשר לדבר? שלח הקלטת קול
+    transcript_included: תמליל ההקלטה יצורף להודעה שלך
+  poll_dot_vote_form:
+    dots_per_person: נקודות לאדם
+    dots_per_person_helptext: המספר הכולל של הנקודות שכל אדם מתבקש להקצות.
+  poll_common_percent_voted:
+    sentence: "{{numerator}} מתוך {{מכנה}} אנשים השתתפו ({{percent}}%)"
+    target_progress: "{{percent}}% מהיעד הושג. ({{num}} / {{target}})"
+  poll_remove_vote:
+    title: להסיר את ההצבעה שלך?
+    helptext: האם אתה בטוח שברצונך להסיר את ההצבעה שלך? אתה תירשם כמתלבט ותוכל להצביע שוב מאוחר יותר אם תרצה.
+    confirm: הסר הצבעה
+    success: ההצבעה הוסרה
+  poll_templates:
+    proposal:
+      process_subtitle: העלה הצעה לקבלת החלטה
+      process_introduction: <p style=";text-align:right;direction:rtl">ההצעה הקלאסית של Loomio עוזרת לך לקבל החלטה, וממירה דיון לתוצאה ברורה.</p><p style=";text-align:right;direction:rtl"> הצע דרך פעולה והזמן אנשים להגיב בהצבעה מסכים, נמנע או לא מסכים.</p><p style=";text-align:right;direction:rtl"> כאשר אנשים מצביעים, הם יכולים לתת סיבה מדוע הם הצביעו בצורה זו. אתה יכול לראות איפה כל השאר עומדים בעניין, ומדוע.</p><p style=";text-align:right;direction:rtl"> בדרך זו אתה יכול להשתמש בהצעה כדי לבקש מאנשים תגובה, לחשוף מידע חדש ולבנות הבנה משותפת - כדי לעזור לקבוצה שלך לקבל החלטה טובה יותר ומושכלת יותר.</p><p style=";text-align:right;direction:rtl"> הצעה ודיון נלוות יוצרים תיעוד משלה כיצד ההחלטה הגיעה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>קרא עוד על השימוש בהצעה הקלאסית של Loomio בתהליך ההחלטה הפשוטה</u></a> .</p>
+      title: אשר את קונספט המותג החדש
+      details: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> כדי שההצעה הזו תעבור, אנחנו צריכים שרוב החברים יצביעו מסכים.</p><p style=";text-align:right;direction:rtl"> אם אתה לא מסכים, אמור למה ומה צריך לשנות כדי שתסכים.</p>
+      agree: לְהַסכִּים
+      agree_meaning: אני תומך בהצעה
+      agree_prompt: מה אתה אוהב בהצעה וכיצד היא תועיל לקבוצה?
+      abstain: לְהִתְנַזֵר
+      abstain_meaning: בחירה שלא, או לא יכולה להצביע בהחלטה זו.
+      abstain_prompt: מדוע אתה נמנע, או שאתה לא מרגיש שאתה יכול להצביע בהחלטה זו?
+      disagree: לא מסכים
+      disagree_meaning: צריך לשנות משהו בהצעה הזו לפני שאוכל לתמוך בה.
+      disagree_prompt: כיצד ניתן לשפר את ההצעה הזו כדי שתוכל לתמוך בה?
+    advice:
+      process_subtitle: בקש עצה לגבי החלטה שאתה צריך לקבל
+      process_introduction: <p style=";text-align:right;direction:rtl">בקש עצה לגבי החלטה שאתה צריך לקבל, עם עצות של אנשים שנפגעו או שיש להם מומחיות, כדי שתוכל לקבל החלטה טובה יותר עבור הארגון שלך.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> ייעוץ עוזר לך לקבל החלטה טובה יותר עבור הארגון שלך.</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> טיפוח מערכות יחסים, הזדמנויות למידה ותשומות מגוונות.</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לעורר יוזמה ויצירתיות, ועבודה מהנה יותר.</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>קרא עוד על תהליך הייעוץ</u></a> .</p>
+      title: עזור לטאקאשי לקנות מחשב חדש
+      details: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go" style=";text-align:right;direction:rtl"> <strong>איזו עצה אתה מבקש מאנשים כדי לעזור לך לקבל החלטה טובה?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> אני מבקש ממך מידע שיעזור לי לקבל החלטה טובה עבור הארגון שלנו.</p>
+      agree: לְהַסכִּים
+      agree_meaning: הצעתי את עצתי לגבי החלטה זו
+      agree_prompt: סכמו את עצתכם או תנו הערה מועילה
+      abstain: לְהִתְנַזֵר
+      abstain_meaning: אין לי עצה להציע
+      abstain_prompt: יש לך הערות שעשויות לעזור?
+    consent:
+      process_subtitle: קבלו החלטה שהיא 'בטוחה לנסות', ללא התנגדויות
+      process_introduction: <p style=";text-align:right;direction:rtl">בקש הסכמה על החלטה שאתה צריך לקבל, כאשר אין התנגדויות משמעותיות להצעה שלך, כדי שתוכל לקבל החלטה מהירה עבור הארגון שלך ש'בטוחה לנסות'.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> שאפו להחלטה 'טובה מספיק'</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> עירבו קולות רבים כדי לפתח הצעה ישימה</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> שאל אם למישהו יש התנגדות מוצדקת</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> תקן את ההצעה לפתרון התנגדויות</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">קרא עוד על תהליך ההסכמה</a> .</p>
+      title: שכור את קלואי לתפקיד עיצוב
+      details: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-of-people-in-this-proposal" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים בהצעה הזו?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> אם יש לך התנגדות, אנא אמר מדוע והצע שינוי בהצעה שיהפוך אותה לבטוחה.</p><p style=";text-align:right;direction:rtl"> זכור שאנו מחפשים הסכמה להחלטה 'טובה מספיק' ש'בטוחה לנסות', כדי שנוכל לקבל החלטה טובה עבור הארגון שלנו.</p>
+      consent: הַסכָּמָה
+      consent_meaning: בטוח לנסות את ההצעה
+      consent_prompt: מה אתה אוהב בהצעה וכיצד היא תועיל לארגון?
+      objection: הִתנַגְדוּת
+      objection_meaning: יש לי התנגדות תקפה ואני חושב שההצעה תגרום נזק
+      objection_prompt: איזה שינוי בהצעה הזו נדרש כדי להפוך אותה ל'בטוחה לנסות', כדי שתוכל לתמוך בה?
+    consensus:
+      process_subtitle: להגיע להסכם קיבוצי עם כל המעורבים
+      process_introduction: <p style=";text-align:right;direction:rtl">בנה קונצנזוס להחלטה שאתה צריך לקבל, כדי להגיע להסכם שיספק את הצרכים והחששות של כל המשתתפים.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לדון ולפתח הצעה ביחד</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> לכלול ולכבד את כל המעורבים</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> חפש הסכמה מרוב האנשים</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">קרא עוד על תהליך הקונצנזוס</a> .</p>
+      title: אשר את קונספט המותג החדש
+      details: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl"><strong>מהי ההחלטה שאתה צריך לקבל?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> כדי שההצעה הזו תעבור, אנחנו צריכים שרוב החברים יצביעו מסכים.</p><p style=";text-align:right;direction:rtl"> אם אתה לא מסכים, אמור למה ומה צריך לשנות כדי שתסכים.</p>
+      agree: לְהַסכִּים
+      agree_meaning: אני תומך בהצעה
+      agree_prompt: מה אתה אוהב בהצעה וכיצד היא תועיל לארגון?
+      abstain: לְהִתְנַזֵר
+      abstain_meaning: ההחלטה הזו לא משפיעה עלי ואני מרוצה מכל מה שהקבוצה תחליט
+      abstain_prompt: מדוע אתה נמנע, או שאתה לא מרגיש שאתה יכול להצביע בהחלטה זו?
+      disagree: לא מסכים
+      disagree_meaning: צריך לשנות משהו בהצעה הזו לפני שאוכל לתמוך בה
+      disagree_prompt: כיצד ניתן לשפר את ההצעה הזו כדי שתוכל לתמוך בה?
+      block: לַחסוֹם
+      block_meaning: אני חוסם את ההצעה הזאת וחושב שהיא לא צריכה להמשיך
+      block_prompt: הסבירו את התנגדותכם להצעה זו ומדוע היא לא צריכה לצאת לפועל
+    question_round:
+      process_subtitle: הזמן שאלות הבהרה כדי לעזור לאנשים להבין הצעה
+      process_introduction: <p style=";text-align:right;direction:rtl">סבב שאלות הוא הזדמנות לאנשים לשאול שאלות הבהרה לגבי ההצעה, כך שכולם יבינו את ההצעה לפני שהם אומרים מה הם חושבים עליה.</p><p style=";text-align:right;direction:rtl"> סבב שאלת הלומיו הוא הצעה מיוחדת ללא אפשרויות הצבעה. זה מאפשר למשתתפים לשאול שאלות בפרק הזמן שהגדרתם לסבב.</p><p style=";text-align:right;direction:rtl"> סבב שאלות משמש בדרך כלל כשלב בתהליך ההסכמה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">קרא עוד על תהליך ההסכמה</a> .</p>
+      title: אילו שאלות יש לך לגבי מדיניות הבריאות והבטיחות?
+      details: <h3 id="what-are-you-proposing" style=";text-align:right;direction:rtl"><strong>מה אתה מציע?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> זהו סבב שאלות, בו אתם מוזמנים לשאול שאלות הבהרה.</p><p style=";text-align:right;direction:rtl"> מה אתה צריך לדעת כדי להבין את ההצעה?</p><p style=";text-align:right;direction:rtl"> נא להגיב לפני סיום סבב השאלות.</p>
+      reason_prompt: מה אתה צריך לדעת כדי להבין את ההצעה?
+    sense_check:
+      process_subtitle: בקשו משוב, שאלות וחששות
+      process_introduction: <p style=";text-align:right;direction:rtl">הצעת בדיקת Sense היא דרך טובה לקבל משוב, להזמין שאלות ולגלות חששות. זה עוזר להבהיר ולשפר הצעה לפני המעבר להחלטה.</p><p style=";text-align:right;direction:rtl"> Sense check מאפשרת לאנשים לדעת שמתגבשת הצעה ומעודדת אותם לעסוק. זוהי הזדמנות להקשיב לאנשים, לחוש כיצד הם מרגישים ולהגיב כראוי - פתיחת הפוטנציאל לשלב את התרומות שלהם כדי לקבל החלטה טובה יותר.</p><p style=";text-align:right;direction:rtl"> השתמש בהצעת בדיקת Sense בתהליך ההסכמה כדי להזמין תגובות והערות לשיפור ההצעה, ובתהליך קונצנזוס כדי לבדוק קונצנזוס.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>קרא עוד על שימוש ב-Sense check בתהליך ההחלטה הפשוטה</u></a> <span>.</span></p>
+      title: איך אתה מרגיש לגבי הקונספטים החדשים של המותג?
+      details: <h3 id="what-are-you-proposing" style=";text-align:right;direction:rtl"><strong>מה אתה מציע?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> איך אתה מרגיש לגבי ההצעה? השאירו תגובה או תנו הצעה לשיפור.</p><p style=";text-align:right;direction:rtl"> בדיקת ה-Sense הזו היא הזדמנות להשקעה ותרומה שלך, כדי לעזור לנו לקבל החלטה טובה יותר.</p>
+      looks_good: נראה טוב
+      looks_good_meaning: אני שמח לאן זה הולך
+      looks_good_prompt: האם יש לך הערות או הצעות לשיפור ההצעה?
+      abstain: לְהִתְנַזֵר
+      abstain_meaning: אין לי מה להוסיף, וגם לא שום התנגדות לעבודה הזו.
+      abstain_prompt: הימנעות משמעה הסכמה להנחיית הצעה זו. האם יש סיבה שאתה מצביע להימנעות?
+      concerned: מודאג
+      concerned_meaning: ייתכן שמשהו בעניין הזה צריך להשתנות כדי שאוכל להסכים או להסכים
+      concerned_prompt: מה הדאגה שלך וכיצד ניתן לטפל בה?
+    gradients_of_agreement:
+      process_subtitle: הביעו תמיכה בהצעה בסולם של 8 נקודות
+      process_introduction: <p style=";text-align:right;direction:rtl">הצעת דרגות ההסכמה מאפשרת לחברי קבוצה להביע את תמיכתם בהצעה בדרגות בקנה מידה, ומציעה דרכים רבות יותר להביע תמיכה מאשר במונחים של "מסכים" ו"לא מסכים".</p><p style=";text-align:right;direction:rtl"> השתמש בדרגות הסכמה כסיבוב מקדים, כדי לבדוק תמיכה בהצעה לפני המעבר להסכם רשמי.</p><p style=";text-align:right;direction:rtl"> שיפועים של הסכמה מאפשרים לאנשים לדעת שמתגבשת הצעה ומעודדים אותם לעסוק. זוהי הזדמנות להקשיב לאנשים, לחוש כיצד הם מרגישים ולהגיב כראוי - פתיחת הפוטנציאל לשלב את התרומות שלהם כדי לקבל החלטה טובה יותר.</p>
+      title: איך אתה אוהב את הצהרת הערכים החדשה?
+      details: <h3 id="what-are-you-proposing" style=";text-align:right;direction:rtl"><strong>מה אתה מציע?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> איך אתה אוהב את ההצעה? הביעו את תמיכתכם בקנה מידה למטה והשאירו הערה או הצעה לשיפור.</p><p style=";text-align:right;direction:rtl"> הצעת דרגות ההסכם הזו היא לבחון תמיכה בהצעה, והזדמנות לקלט שלך לפני המעבר להסכם רשמי.</p>
+      whole_hearted_endorsement: תמיכה מכל הלב
+      whole_hearted_endorsement_meaning: אני באמת אוהב את זה!
+      whole_hearted_endorsement_prompt: מה אתה אוהב בזה?
+      agreement_with_minor_contention: הסכם עם טענה מינורית
+      agreement_with_minor_contention_meaning: לא מושלם, אבל זה מספיק טוב
+      agreement_with_minor_contention_prompt: מה הדאגה שלך?
+      support_with_reservations: תמיכה בהזמנות
+      support_with_reservations_meaning: אני יכול לחיות עם זה
+      support_with_reservations_prompt: מה ההסתייגויות שלך?
+      abstain_meaning: הנושא הזה לא משפיע עליי
+      abstain_prompt: יש לך משהו שאתה רוצה להוסיף?
+      more_discussion_needed: צריך עוד דיון
+      more_discussion_needed_meaning: אני עדיין לא מבין את הנושאים מספיק טוב
+      more_discussion_needed_prompt: מה אתה לא מבין?
+      don_t_like_but_will_support: לא אוהב אבל יתמוך
+      don_t_like_but_will_support_meaning: זה לא נהדר אבל אני לא רוצה להחזיק את הקבוצה
+      don_t_like_but_will_support_prompt: מה היית רוצה לראות שיפור?
+      serious_disagreement: אי הסכמה חמורה
+      serious_disagreement_meaning: אני לא שותף לזה - אל תסמוך עליי
+      serious_disagreement_prompt: עם מה אתה לא מסכים?
+      veto: וֵטוֹ
+      veto_meaning: אני חוסם את ההצעה הזו
+      veto_prompt: למה אתה חוסם את ההצעה? מה צריך להשתנות כדי שתתמוך בזה?
+    simple_poll:
+      process_subtitle: מצא את האפשרות הפופולרית ביותר
+      process_introduction: <p style=";text-align:right;direction:rtl">לפני קבלת החלטה, מצא מהן האפשרויות שהכי חשובות לאנשים.</p><p style=";text-align:right;direction:rtl"> סקר פשוט עוזר לך למצוא את האפשרות או האפשרויות הפופולריות ביותר עם בחירה יחידה או מרובה.</p><p style=";text-align:right;direction:rtl"> כתוב כל פרט על האפשרויות בשדה הפרטים, ולאחר מכן הזן את שם האפשרות ולחץ על + כדי להוסיף.</p><p style=";text-align:right;direction:rtl"> הגדר את <strong>אפשרויות המינימום</strong> ואת <strong>האפשרויות המקסימליות</strong> שבוחר יכול לבחור. השאר את הבחירה המקסימלית בתור 1 עבור סקר בחירה יחיד.</p><p style=";text-align:right;direction:rtl"> אתה יכול להשתמש בסמל העיפרון לצד כל אפשרות כדי להוסיף <strong>משמעות</strong> לאופציה, הסבר נוסף על האפשרות לעזור לאנשים בהצבעה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">קרא עוד על סקר פשוט</a> .</p>
+      title: היכן צריך להיות מוקד הכיוון האסטרטגי שלנו?
+      details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>על מה הסקר הזה?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> בחר את האפשרויות שאתה מעדיף.</p>
+    score_poll:
+      process_subtitle: מדוד את מידת התמיכה עבור כל אפשרות
+      process_introduction: <p style=";text-align:right;direction:rtl">השתמש בסקר ציון כאשר אתה רוצה לסקור אנשים על רצונם, ההעדפות או העניין שלהם בכל אפשרות.</p><p style=";text-align:right;direction:rtl"> <span>המשתתפים מתבקשים להעריך כל אפשרות ולהקצות ניקוד על ידי הזזת מחוון לאורך סולם.</span></p><p style=";text-align:right;direction:rtl"> <span>התוצאות מוצגות בצורה גרפית יחד עם טבלה עבור כל אפשרות המציגה את סך הנקודות, הנקודות הממוצעות ומספר המצביעים.</span></p><p style=";text-align:right;direction:rtl"> הגדרות מתקדמות כוללות 'ההצבעות הן אנונימיות' ו'הצג אפשרויות בסדר אקראי' - משמש בדרך כלל עבור סקר ציון כדי להפחית כל הטיית הצבעה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">קרא עוד על סקר ציון</a> .</p>
+      title: הערכת אופן קבלת ההחלטות בארגון שלנו
+      details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>על מה הסקר הזה?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> בחר את האפשרויות שאתה מעדיף.</p>
+    dot_vote:
+      process_subtitle: הקצו תקציב של נקודות לחשיפת סדרי עדיפויות
+      process_introduction: <p style=";text-align:right;direction:rtl">הצבעת נקודה שימושית לקבוצות המנסות להקצות משאב מוגבל למספר אפשרויות. זה חורג מסקר פשוט בכך שהוא עוזר למשתתפים להעריך שיש מגבלה בעת בחירת אפשרויות.</p><p style=";text-align:right;direction:rtl"> כל אחד מקבל מספר קבוע של נקודות. אתה מחליט כמה.</p><p style=";text-align:right;direction:rtl"> הם מציבים נקודות ליד האפשרויות המוצגות שהם אוהבים. המשתתפים יכולים למקם את כל הנקודות שלהם על אפשרות אחת או לפרוס על מספר אפשרויות.</p><p style=";text-align:right;direction:rtl"> כאשר המשתתפים מקצים נקודות, הם עשויים לחרוג ממגבלת תקציב הנקודות ולכן מומלץ לשקול כיצד הם מוציאים את הנקודות שלהם בזהירות.</p><p style=";text-align:right;direction:rtl"> אפשרויות עם הכי הרבה נקודות "מנצחות". טבלת התוצאות מספקת נתונים נוספים שיעזרו לך לנתח תוצאות.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> % מהנקודות</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> נקודות</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מתכוון</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מצביעים</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">קרא עוד על הצבעה נקודה</a> .</p>
+      title: בחירת נושאים לכנס שלנו
+      details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>על מה הסקר הזה?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> בסקר זה יש לך תקציב של 8 נקודות להקצות לאפשרויות המועדפות עליך. אתה יכול למקם את כל הנקודות על אפשרות אחת או לפזר אותן.</p>
+    ranked_choice:
+      process_subtitle: הבן את ההעדפה המסודרת של אפשרויות
+      process_introduction: <p style=";text-align:right;direction:rtl">בחירה מדורגת שימושית כאשר יש לך מספר רב של אפשרויות, או שאתה מקיים בחירות.</p><p style=";text-align:right;direction:rtl"> תבנית סקר זו מציעה שורה של אפשרויות לאנשים להצביע בסדר המועדף עליהם.</p><p style=";text-align:right;direction:rtl"> אתה יכול להגדיר את מספר הבחירות שיקבל הבוחר.</p><p style=";text-align:right;direction:rtl"> <span>הבוחרים גוררים ושחרר את האפשרויות לפי סדר העדפות (מספר 1 הוא האפשרות המועדפת עליך ביותר).</span></p><p style=";text-align:right;direction:rtl"> <span>הגדרות מתקדמות כוללות 'ההצבעות הן אנונימיות' ו'הצג אפשרויות בסדר אקראי' - בשימוש נפוץ עבור</span> בחירה מכוונת כדי להפחית כל הטיית הצבעה.</p><p style=";text-align:right;direction:rtl"> התוצאות מוצגות בסדר מדורג. טבלת התוצאות מספקת נתונים נוספים שיעזרו לך לנתח תוצאות.</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> דַרגָה</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> % מהנקודות</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> נקודות</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מתכוון</p></li></ul><p style=";text-align:right;direction:rtl"> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">קרא עוד על בחירה מדורגת</a> .</p>
+      title: בחר דירקטורים למועצת הממשל
+      details: <h3 id="what-is-this-poll-about" style=";text-align:right;direction:rtl"><strong>על מה הסקר הזה?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></h3><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> הצביעו על ידי דירוג האפשרויות לפי סדר העדפתכם. האפשרות שמדורגת ראשונה בתוצאות מנצחת.</p>
+    time_poll:
+      process_subtitle: מצא מתי אנשים זמינים להיפגש
+      process_introduction: <p style=";text-align:right;direction:rtl"><span>חסוך זמן בתאום תאריך לפגישה או לאירוע שלך.</span></p><p style=";text-align:right;direction:rtl"> סקר זמן מקל לראות את הזמינות של כולם ולמצוא את הזמן הטוב ביותר.</p><p style=";text-align:right;direction:rtl"> תן לסקר Time שלך כותרת ופרטים. הזן רשימה של אפשרויות תאריך ושעה באזור הזמן שלך.</p><p style=";text-align:right;direction:rtl"> בעת הגדרת משבצות זמן, התחשב באנשים באזורי זמן שונים. המשתתפים יראו זמנים מקומיים באזור הזמן שלהם.</p><p style=";text-align:right;direction:rtl"> הגדר משך פגישה.</p><p style=";text-align:right;direction:rtl"> עם סגירת משאל השעה, קבע תוצאה עם הזמן הטוב ביותר וכל הנחיות לפגישה.</p><p style=";text-align:right;direction:rtl"> <span>Loomio תכלול הזמנה ליומן עם הודעת האימייל על התוצאה, כך שהמשתתפים יוכלו להוסיף ליומן שלהם.</span></p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">קרא עוד על סקר זמן</a> .</p>
+      title: בוא נמצא תאריך לפגישה הבאה שלנו
+      details: <p style=";text-align:right;direction:rtl"><strong>מהו הפגישה או האירוע?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <span>סמן את משבצות הזמן שאתה זמין עם הסמל הירוק 'אגודל למעלה' או השאר את 'אגודל למטה' האדום במקום כאשר אינו זמין.</span></p><p style=";text-align:right;direction:rtl"> <span>השתמש בסמל 'אגודלים הצידה' כדי לומר שאתה זמין 'אם צריך'.</span></p>
+      reason_prompt: האם יש משהו שאתה יכול להגיד כדי לעזור למארגן למצוא זמן מתאים?
+    opt_in:
+      process_subtitle: מצא מתנדבים או בקש משתתפים
+      process_introduction: '<p style=";text-align:right;direction:rtl">השתמש ב-Opt-in כדי להזמין אנשים להצטרף לצוות, ועדה או קבוצת עבודה, או להשתתף באירוע.</p><p style=";text-align:right;direction:rtl"> ל-''Opt-in'' יש שתי אפשרויות הצבעה: קבל או דחה.</p><p style=";text-align:right;direction:rtl"> אתה יכול להגדיר מספר יעד של אנשים שאתה מחפש, נניח 3 אנשים שיצטרפו לקבוצת העבודה שלך.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">קרא עוד על Opt-in</a> .</p>'
+      title: קבוצת עבודה לניסוח מדיניות הקיימות החדשה שלנו
+      details: <p style=";text-align:right;direction:rtl"><strong>מהו הצוות, קבוצת העבודה או האירוע שאליו אתה מזמין אנשים?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>למה זה חשוב?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>מה אתה מבקש מאנשים לעשות?</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> בחר 'קבל' כדי להשתתף!</p>
+      accept_meaning: אני מוכן להשתתף
+      accept_prompt: למה אתה מתנדב בשביל זה?
+      decline_meaning: אני לא יכול להשתתף
+      decline_prompt: יש משהו שהיית רוצה להגיד?
+  add_poll_to_thread_modal:
+    success: הצלחה, {{pollType}} נוסף לשרשור!

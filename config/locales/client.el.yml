@@ -1,15 +1,106 @@
+---
 el:
   templates:
     try_loomio: Δοκιμάστε το Loomio
+    template_gallery: Γκαλερί προτύπων
+    title_template: Πρότυπο %{title}
+    title_templates: Πρότυπα %{title}
+    title_copy: "%{title} Αντιγραφή"
+    copy_of_title: Αντίγραφο %{title}
+    loomio_default_templates: Προεπιλεγμένα πρότυπα Loomio
+    which_templates_would_you_like_to_use: Ποια πρότυπα θα θέλατε να χρησιμοποιήσετε;
+    login_to_start_demo: Αυτό είναι ένα demo του Loomio σε δράση. Είστε ευπρόσδεκτοι να ρίξετε μια ματιά τριγύρω.
+    sign_in_to_try_features: Εάν θέλετε να δοκιμάσετε να ψηφίσετε σε μια απόφαση επίδειξης ή να ξεκινήσετε μια δωρεάν δοκιμή για τον οργανισμό σας, κάντε κλικ στην επιλογή "σύνδεση".
+    click_button_to_start_demo: Καλως ΗΡΘΑΤΕ! Για να δοκιμάσετε να ψηφίσετε και άλλες λειτουργίες, κάντε κλικ στην έναρξη επίδειξης.
+    welcome_to_your_demo: Αυτή είναι η δική σας ομάδα επίδειξης!
+    try_voting_to_see_it_work: Δοκιμάστε να ψηφίσετε σε μια πρόταση για να καταλάβετε πώς λειτουργεί το Loomio.
+    delete_will_be_deleted_in_x_days: Αυτή η επίδειξη θα διαγραφεί σε %{x} ημέρες.
+    to_use_loomio_with_your_org_start_trial: Όταν είστε έτοιμοι να δοκιμάσετε το Loomio με τον οργανισμό σας, ξεκινήστε μια δωρεάν δοκιμή.
+    templates: Πρότυπα
+    make_a_copy: Κάνε ένα αντίγραφο
+    this_thread_is_a_template: Αυτό το νήμα είναι ένα πρότυπο. Δημιουργήστε ένα αντίγραφο εάν θέλετε να το χρησιμοποιήσετε.
+    this_is_a_poll_template: Αυτό είναι ένα πρότυπο δημοσκόπησης. Δημιουργήστε ένα αντίγραφο εάν θέλετε να αρχίσετε να ψηφίζετε.
+    start_a_demo_group: Ξεκινήστε μια ομάδα επίδειξης
+    start_a_demo: Ξεκινήστε μια επίδειξη
+    demo_group: Ομάδα επίδειξης
+    play_with_an_example_group: Παίξτε με μια ομάδα παραδειγμάτων
+    look_and_feel: Δείτε πώς είναι το Loomio για έναν μικρό οργανισμό. Μάθετε την εφαρμογή δοκιμάζοντάς την.
+    watch_then_start: Παρακαλούμε παρακολουθήστε το βίντεο και, στη συνέχεια, κάντε κλικ στην επιλογή "Έναρξη επίδειξης" για να δοκιμάσετε το Loomio
+    generating_demo: Εντάξει, περίμενε εκεί! Η δημιουργία μιας επίδειξης διαρκεί περίπου 20 δευτερόλεπτα.
+    start_a_x_day_free_trial: Ξεκινήστε μια δωρεάν δοκιμή {{day}} ημερών
+    ready_to_trial: Είστε έτοιμοι να δοκιμάσετε το Loomio με τον οργανισμό σας;
+    start_a_no_obligation_x_day_trial: Ξεκινήστε μια ομάδα Loomio για τον οργανισμό σας με μια δωρεάν δοκιμή ημέρας {{day}}.
+    you_can_test_it_out: Μπορείτε να προσκαλέσετε άλλα άτομα να συμμετάσχουν, να το ενσωματώσετε με τα άλλα εργαλεία σας και να δοκιμάσετε να πάρετε κάποιες αποφάσεις.
+    demo_created: Η ομάδα επίδειξης δημιουργήθηκε, μόνο για εσάς!
+    start_demo: Έναρξη επίδειξης
+    view_demo: Προβολή επίδειξης
+    start_trial: Έναρξη δοκιμής
+    start_free_trial: Ξεκινήστε τη δωρεάν δοκιμή
+    demo_needs_user: Για να ξεκινήσετε μια επίδειξη, πρέπει να εγγραφείτε (ή να συνδεθείτε) ως χρήστης του Loomio. Αυτό είναι δωρεάν και διαρκεί μόνο ένα λεπτό.
+    trial_needs_user: Καλως ΗΡΘΑΤΕ! Συνδεθείτε για να ξεκινήσετε τη δωρεάν δοκιμή σας
+    this_is_a_template_for_new_threads: Αυτό είναι ένα πρότυπο για νέα νήματα
+    share_a_custom_configuration: Μοιραστείτε μια προσαρμοσμένη διαμόρφωση με άλλους στην ομάδα σας
   plan_names:
     free: Δωρεάν
     pro: Επαγγελματικό
+    starter: Μίζα
+    trial: Δίκη
+    pro_nonprofit: Για ΜΚΟ
+    community: Κοινότητα
+    small: Μικρό
+    medium: Μεσαίο
+    large: Μεγάλο
+    monthly: Μηνιαίο
+    yearly: Ετησίως
   current_plan_button:
     upgrade: Αναβάθμιση
+    buy_now: Αγορασε τωρα
+    is_old_plan: Η Loomio έχει νέα απλά σχέδια τιμολόγησης
+    change_plan: Αλλαγή σχεδίου
+    view_plans: Προβολή σχεδίων
+    free_trial: Δωρεάν δοκιμή. Απομένουν {{days}} ημέρες.
+    trial_expired: Η δοκιμή σας έχει λήξει. Κάντε αναβάθμιση για να συνεχίσετε να χρησιμοποιείτε το Loomio.
+    tooltip: Οι τιμές μας είναι φανταστικές! Αναβαθμίστε σήμερα και απολαύστε όσα μπορεί να προσφέρει η Loomio στην ομάδα σας.
+    was_gift_trial: 'Η ομάδα σας χρησιμοποιεί δωρεάν το Loomio από τις {{createdDate}}. Δεν μπορούμε να συνεχίσουμε να παρέχουμε δωρεάν υπηρεσία. Κάντε αναβάθμιση για να συνεχίσετε να χρησιμοποιείτε το Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Διαβάστε περισσότερα.</a>'
+    was_gift_remaining: Απομένουν {{days}} ημέρες.
+    was_gift_expired: Το δωρεάν πρόγραμμά σας έχει πλέον λήξει.
   subscription_status:
-    members: "Μέλη"
+    members: Μέλη
+    plan: Σχέδιο
+    state: Κατάσταση
+    active_members: Ενεργά μέλη
+    max_threads: Μέγιστα νήματα
+    max_members: Μέγιστος αριθμός μελών
+    expires_at: Λήγει
+    renews_at: Ανανεώνει
+    referral_code: Κωδικός παραπομπής
+    chargify_link: Πύλη χρέωσης
+    referral_code_help: Κάντε έκπτωση σε έναν φίλο, κερδίστε λίγη πίστωση στον εαυτό σας!
+    manage_payment_details: Διαχείριση στοιχείων πληρωμής
+    manage_subscription: Διαχείριση συνδρομής
+    amount: Ποσό
   loomio_tags:
     name_label: Όνομα
+    all_tags: Όλες οι ετικέτες
+    tags: Ετικέτες
+    apply_tags: Εφαρμογή ετικετών
+    new_tag: Νέα ετικέτα
+    color_label: Χρώμα
+    card_title: Ετικέτες κατηγορίας
+    modal_title: Δημιουργήστε μια νέα ετικέτα
+    modal_edit_title: Επεξεργασία ετικετών
+    modal_destroy_title: Αφαίρεση ετικέτας
+    destroy_tag: Διαγραφή ετικέτας
+    destroy_helptext: Αυτό θα διαγράψει αυτήν την ετικέτα και θα την αφαιρέσει από όλα τα νήματα στην ομάδα. Είσαι σίγουρος?
+    helptext: Οι ετικέτες σάς επιτρέπουν να κατηγοριοποιείτε τις συνομιλίες και να τις βρίσκετε εύκολα αργότερα
+    discussions_count_singular: "(%{count} νήμα)"
+    discussions_count_plural: "(%{count} νήματα)"
+    tag_created: Η ετικέτα αποθηκεύτηκε
+    tag_destroyed: Η ετικέτα διαγράφηκε
+    tags_marked: Νήματα με την επισήμανση "{{name}}" στο {{groupName}}
+    no_tags_present: Δεν βρέθηκαν νήματα με αυτήν την ετικέτα! Δοκιμάστε να επιλέξετε ένα άλλο
+    no_tags_in_group: Αυτή η ομάδα δεν έχει ακόμη ετικέτες κατηγορίας
+    only_admins_can_edit_tags: Λυπούμαστε, μόνο οι διαχειριστές του {{group}} μπορούν να δημιουργήσουν, να μετονομάσουν ή να διαγράψουν ετικέτες
   timezones:
     local: Τοπική ώρα ({{value}})
   common:
@@ -27,59 +118,59 @@ el:
     time:
       am: π.μ.
       pm: μ.μ.
-    closing_in: 'Κλείνει {{time}}'
-    closed_ago: 'Έκλεισε {{time}}'
-    volume: 'Ένταση'
-    notification_volume: 'Ένταση ειδοποιήσεων'
-    group: 'Ομάδα'
-    groups: 'Ομάδες'
-    threads: 'Θέματα'
-    decisions: 'Αποφάσεις'
-    settings: 'Ρυθμίσεις'
-    help: 'Βοήθεια'
+    closing_in: Κλείνει {{time}}
+    closed_ago: Έκλεισε {{time}}
+    volume: Ένταση
+    notification_volume: Ένταση ειδοποιήσεων
+    group: Ομάδα
+    groups: Ομάδες
+    threads: Θέματα
+    decisions: Αποφάσεις
+    settings: Ρυθμίσεις
+    help: Βοήθεια
     email_address: Ηλεκτρονική διεύθυνση
     privacy:
-      privacy: 'Ιδιωτικότητα'
-      public: 'Δημόσιο'
-      open: 'Άνοιγμα'
-      closed: 'Έκλεισε'
-      private: 'Ιδιωτικό'
-      secret: 'Κρυφό'
-    selected: 'Επιλεγμένα'
+      privacy: Ιδιωτικότητα
+      public: Δημόσιο
+      open: Άνοιγμα
+      closed: Έκλεισε
+      private: Ιδιωτικό
+      secret: Κρυφό
+    selected: Επιλεγμένα
     date_range:
-      today: 'Σήμερα'
-      yesterday: 'Εχθές'
-      thisweek: 'Αυτή την εβδομάδα'
-      thismonth: 'Αυτό το μήνα'
-      older: 'Παλιότερα'
-    more_help: 'Περισσότερη βοήθεια'
-    copy: 'Αντιγραφή'
-    copy_text: 'Αντιγραφή κειμένου'
-    copied: 'Αντιγράφηκε στο πρόχειρο'
+      today: Σήμερα
+      yesterday: Εχθές
+      thisweek: Αυτή την εβδομάδα
+      thismonth: Αυτό το μήνα
+      older: Παλιότερα
+    more_help: Περισσότερη βοήθεια
+    copy: Αντιγραφή
+    copy_text: Αντιγραφή κειμένου
+    copied: Αντιγράφηκε στο πρόχειρο
     action:
       print: Εκτύπωση
-      search: 'Εύρεση'
-      back: 'Πίσω'
-      next: 'Επόμενο'
-      close: 'Κλείσε'
-      save: 'Αποθήκευση'
-      save_changes: 'Αποθήκευση αλλαγών'
-      update_settings: 'Ενημέρωση ρυθμίσεων'
-      reply: 'Απάντηση'
-      edit: 'Επεξεργασία'
-      remove: 'Αφαίρεση'
-      like: 'Αρέσει'
-      unlike: 'Δεν μ''άρέσει'
-      update: 'Ενημέρωση'
-      cancel: 'Ακύρωση'
-      show_more: "Δείξε περισσότερα"
-      view_all: "Εμφάνιση όλων"
-      new_thread: "Νέο θέμα"
-      loading: 'Φορτώνει'
-      translate: 'Μετάφραση'
-      upload: 'Ανέβασμα'
-      uploading: 'Φορτώνει'
-      load_more: 'Φόρτωση περισσότερα'
+      search: Εύρεση
+      back: Πίσω
+      next: Επόμενο
+      close: Κλείσε
+      save: Αποθήκευση
+      save_changes: Αποθήκευση αλλαγών
+      update_settings: Ενημέρωση ρυθμίσεων
+      reply: Απάντηση
+      edit: Επεξεργασία
+      remove: Αφαίρεση
+      like: Αρέσει
+      unlike: Δεν μ'άρέσει
+      update: Ενημέρωση
+      cancel: Ακύρωση
+      show_more: Δείξε περισσότερα
+      view_all: Εμφάνιση όλων
+      new_thread: Νέο θέμα
+      loading: Φορτώνει
+      translate: Μετάφραση
+      upload: Ανέβασμα
+      uploading: Φορτώνει
+      load_more: Φόρτωση περισσότερα
       share: Μοίρασμα
       ok: Εντάξει
       retry: Ξαναδοκιμάστε
@@ -90,177 +181,627 @@ el:
       unsubscribe: Κατάργηση εγγραφής
       subscribe: Εγγραφή
       invite: Πρόσκληση
+      preview: Προεπισκόπηση
+      pin: Καρφίτσα
+      unpin: Ξεκαρφιτσώνω
+      filter: Φίλτρο
+      reopen: Ξανανοίγω
+      move: Κίνηση
+      undo_remove: Αναίρεση κατάργησης
+      hide: Κρύβω
+      unhide: Απόκρυψη
+      show_fewer: Εμφάνιση λιγότερων
+      view_count_more: Προβολή %{count} ακόμη
+      view_count_responses: Προβολή %{count} απαντήσεων
+      count_more: "%{count} ακόμη"
+      count_responses: "%{count} απαντήσεις"
+      add_subgroup: Νέα υποομάδα
+      discard: Απορρίπτω
+      restore: Επαναφέρω
+      unignore: Παράβλεψη
+      remind: Υπενθυμίζω
+      resend: Εκ νέου αποστολή
+      send: Στείλετε
+      joined: Εντάχθηκαν
+      last_seen: Εθεάθη τελευταία
+      resent: Η πρόσκληση στάλθηκε εκ νέου
+      export: Εξαγωγή
+      fork: Πιρούνι
+      apply: Ισχύουν
+      add_people: Προσθέτω ανθρώπους
+      zoom: Ανίπταμαι διαγωνίως
+      align: Ευθυγραμμίζω
     formatting_help:
-      label: 'Μορφοποίηση'
+      label: Μορφοποίηση
+      title: Μάθετε πώς να χρησιμοποιείτε το Markdown για να μορφοποιήσετε το κείμενό σας
+    admin_menu: Μενού διαχειριστή
+    api_docs: Έγγραφα API
+    prefix_eg: π.χ. {{val}}
+    are_you_sure: Είσαι σίγουρος?
+    loomio_help: Βοήθεια Loomio
+    visit_loomio_help: Επισκεφτείτε τη βοήθεια του Loomio
+    help_and_guides: Βοήθεια και οδηγοί
+    optional: "(Προαιρετικός)"
+    none: Κανένας
+    empty: Αδειάζω
+    no_results_found: Δεν βρέθηκαν αποτελέσματα
+    view: Θέα
+    history: Ιστορία
+    option: Επιλογή
+    add: Προσθήκη
+    you: Εσείς
+    attachments: Συνημμένα
+    template: Πρότυπο
+    links: Συνδέσεις
+    active_time_ago: Τελευταία ενεργή {{time_ago}}
+    something_went_wrong: Ωχ! Κάτι πήγε στραβά
+    check_for_errors_and_try_again: Ελέγξτε τη φόρμα για σφάλματα και δοκιμάστε ξανά
+    please_try_again: ΠΑΡΑΚΑΛΩ προσπαθησε ξανα
+    organization: Οργάνωση
+    organizations: Οργανώσεις
+    anonymous: Ανώνυμος
+    required: Απαιτείται
+    minutes: Λεπτά
+    today: σήμερα
+    in_x_days: σε %{x} ημέρες
+    reset: Επαναφορά
+    points_abbrev: Κάθε ψήφος αξίζει {{score}} βαθμούς
+    total: Σύνολο
   emoji_picker:
     search: Εύρεση
+    common: Συχνά χρησιμοποιούμενο
+    expressions: Πρόσωπα
+    hands: Χέρια
+    people: Ανθρωποι
+    nature: Φύση
+    objects: Πράγματα
+    places: Μέρη
   devise:
     failure:
-      inactive: 'Υπάρχει ανενεργός λογαριασμός συνδεδεμένος με αυτή την ηλεκτρονική διεύθυνση. Εάν θέλετε να ξανά-ενεργοποιήσετε τον λογαριασμό σας, επικοινωνήστε μαζί μας.'
+      inactive: Υπάρχει ανενεργός λογαριασμός συνδεδεμένος με αυτή την ηλεκτρονική διεύθυνση. Εάν θέλετε να ξανά-ενεργοποιήσετε τον λογαριασμό σας, επικοινωνήστε μαζί μας.
+    sessions:
+      signed_up: Εγγραφείτε με επιτυχία!
   error_page:
-    forbidden: 'Δεν έχετε το δικαίωμα για να το κάνετε αυτό.'
-    page_not_found: 'Ήταν αδύνατον να βρούμε αυτό. Πιθανώς έχει διαγραφεί ή μετακινηθεί.'
-    internal_server_error: 'Συγνώμη, αλλά κάτι πήγε λάθος. Παρακαλούμε προσπαθήστε ξανά.'
+    forbidden: Δεν έχετε το δικαίωμα για να το κάνετε αυτό.
+    page_not_found: Ήταν αδύνατον να βρούμε αυτό. Πιθανώς έχει διαγραφεί ή μετακινηθεί.
+    internal_server_error: Συγνώμη, αλλά κάτι πήγε λάθος. Παρακαλούμε προσπαθήστε ξανά.
+    forbidden_view: Δεν έχετε άδεια να το δείτε.
   previous_polls_page:
     heading: Δραστηρίοτητες στο {{name}}
     polls_count: Βλέπετε {{loaded}} των {{total}} αποφάσεων
     search_activities: Ψάξτε αποφάσεις
   volume_levels:
-    loud: 'Δυνατά'
-    normal: 'Κανονικά'
-    quiet: 'Ήσυχα'
-    mute: 'Σίγαση'
-    unmute: 'Κατάργηση σίγασης'
+    loud: Δυνατά
+    normal: Κανονικά
+    quiet: Ήσυχα
+    mute: Σίγαση
+    unmute: Κατάργηση σίγασης
   pin_event_form:
     title_label: Τίτλος
+    title: Καρφίτσωμα στη γραμμή χρόνου
+    hint: 'Συμβουλή για την επόμενη φορά: Δοκιμάστε να επισημάνετε κάποιο κείμενο προτού κάνετε κλικ στο "Καρφίτσωμα".'
   change_volume_form:
     simple:
       label: Ειδοποιήσεις
       normal: Κανονικά
       quiet: Αγνοήστε
-    aria_label: "Αλλαγή ρυθμίσεων ηλεκτρονικής διεύθυνσης φόρμας"
-    loud_label: "Όλες οι δραστηριότητες"
-    normal_label: "Ανακοινώσεις"
-    quiet_label: "Όχι emails"
-    mute_label: "Σίγαση"
+      loud: Εγγεγραμμένος
+      question: Πότε θέλετε να ειδοποιηθείτε;
+      loud_explain: όποτε υπάρχει δραστηριότητα
+      normal_explain: όταν κάποιος ζητά την προσοχή σας
+      quiet_explain: δεν υπάρχουν ειδοποιήσεις
+    aria_label: Αλλαγή ρυθμίσεων ηλεκτρονικής διεύθυνσης φόρμας
+    loud_label: Όλες οι δραστηριότητες
+    normal_label: Ανακοινώσεις
+    quiet_label: Όχι emails
+    mute_label: Σίγαση
     discussion:
-      apply_to_all: "Εφαρμόστε αυτές τις ρυθμίσεις σε όλα τα θέματα σε αυτή την ομάδα."
+      apply_to_all: Εφαρμόστε αυτές τις ρυθμίσεις σε όλα τα θέματα σε αυτή την ομάδα.
       messages:
-        loud: "Θα σας έρχετε ηλεκτρονικό μήνυμα για την δραστηριότητα σε αυτό το θέμα."
-        normal: "Θα σας έρχετε ηλεκτρονικό μήνυμα σχετικά με τις προτάσεις σε αυτό το θέμα."
-        quiet: "Δεν θα σας έρχεται ηλεκτρονικό μήνυμα σχετικά με αυτό το θέμα."
+        loud: Θα σας έρχετε ηλεκτρονικό μήνυμα για την δραστηριότητα σε αυτό το θέμα.
+        normal: Θα σας έρχετε ηλεκτρονικό μήνυμα σχετικά με τις προτάσεις σε αυτό το θέμα.
+        quiet: Δεν θα σας έρχεται ηλεκτρονικό μήνυμα σχετικά με αυτό το θέμα.
+      title: Ειδοποιήσεις νήματος
+      loud_description: Θα λάβετε email για όλες τις δραστηριότητες σε αυτό το νήμα.
+      normal_description: Θα λάβετε email μόνο σημαντική δραστηριότητα σε αυτό το νήμα.
+      quiet_description: Δεν θα σας σταλεί με email καμία δραστηριότητα σε αυτό το νήμα.
+      only_this_thread: Ισχύει μόνο για αυτό το νήμα
+      group: Αλλαγή ειδοποιήσεων για ομάδα
+      user: Αλλάξτε τις ρυθμίσεις ειδοποιήσεων χρήστη
     membership:
-      loud_description: "Θα σας έρχεται ηλεκτρονικό μήνυμα όται υπάρχει δραστηριότητα σε αυτή την ομάδα."
-      normal_description: "Θα σας έρχεται ηλεκτρονικό μήνυμα όται υπάρχει δραστηριότητα σε αυτή την ομάδα."
-      quiet_description: "Δεν θα σας έρχονται ηλεκτρονικά μηνύματα σχετικά με την δραστηριότητα σε αυτή την ομάδα."
-      apply_to_all: "Εφαρμόστε αυτές τις ρυθμίσεις σε όλες τις ομάδες μου."
+      loud_description: Θα σας έρχεται ηλεκτρονικό μήνυμα όται υπάρχει δραστηριότητα σε αυτή την ομάδα.
+      normal_description: Θα σας έρχεται ηλεκτρονικό μήνυμα όται υπάρχει δραστηριότητα σε αυτή την ομάδα.
+      quiet_description: Δεν θα σας έρχονται ηλεκτρονικά μηνύματα σχετικά με την δραστηριότητα σε αυτή την ομάδα.
+      apply_to_all: Εφαρμόστε αυτές τις ρυθμίσεις σε όλες τις ομάδες μου.
       messages:
-        loud: "Θα σας έρχονται ηλεκτρονικά μηνύματα με όλη την δραστηριότητα σε αυτή την ομάδα."
-        normal: "Θα σας έρχεται ηλεκτρονικό μήνυμα μόνο με τις ανακοινώσεις σε αυτή την ομάδα."
-        quiet: "Δεν θα σας έρχονται ηλεκτρονικά μηνύματα σχετικά με αυτή την ομάδα."
+        loud: Θα σας έρχονται ηλεκτρονικά μηνύματα με όλη την δραστηριότητα σε αυτή την ομάδα.
+        normal: Θα σας έρχεται ηλεκτρονικό μήνυμα μόνο με τις ανακοινώσεις σε αυτή την ομάδα.
+        quiet: Δεν θα σας έρχονται ηλεκτρονικά μηνύματα σχετικά με αυτή την ομάδα.
+      title: Ειδοποιήσεις για {{title}}
+      apply_to_organization: Εφαρμογή σε όλες τις ομάδες στον {{organization}}
     all_groups:
-      loud_description: "Θα σας έρχονται ηλεκτρονικά μηνύματα με όλη την δραστηριότητα σε όλες τις ομάδες σας."
+      loud_description: Θα σας έρχονται ηλεκτρονικά μηνύματα με όλη την δραστηριότητα σε όλες τις ομάδες σας.
       messages:
-        loud: "Θα σας έρχονται ηλεκτρονικά μηνύματα με όλη την δραστηριότητα σε όλες τις ομάδες σας."
-        normal: "Θα σας έρχονται ηλεκτρονικά μηνύματα μόνο με τις ανακοινώσεις σε όλες τις ομάδες σας."
-        quiet: "Δεν θα σας έρχεται κανένα ηλεκτρονικό μήνυμα σε καμία από τις ομάδες σας."
+        loud: Θα σας έρχονται ηλεκτρονικά μηνύματα με όλη την δραστηριότητα σε όλες τις ομάδες σας.
+        normal: Θα σας έρχονται ηλεκτρονικά μηνύματα μόνο με τις ανακοινώσεις σε όλες τις ομάδες σας.
+        quiet: Δεν θα σας έρχεται κανένα ηλεκτρονικό μήνυμα σε καμία από τις ομάδες σας.
+      title: Προτιμήσεις ειδοποιήσεων για όλες τις ομάδες
+      normal_description: Θα λαμβάνετε email μόνο για σημαντικές δραστηριότητες σε όλες τις ομάδες σας.
+      quiet_description: Δεν θα λάβετε email καμία δραστηριότητα σε καμία από τις ομάδες σας.
     user:
       title: Ρυθμίσεις ηλεκτρονικών μηνυμάτων για νέες ομάδες
-      apply_to_all: "Εφαρμόστε αυτές τις ρυθμίσεις σε όλες τις ομάδες μου."
+      apply_to_all: Εφαρμόστε αυτές τις ρυθμίσεις σε όλες τις ομάδες μου.
+      loud_description: Θα λαμβάνετε email κάθε φορά που υπάρχει δραστηριότητα σε όποιες νέες ομάδες γίνετε μέλος.
+      normal_description: Θα λάβετε email σχετικά με ανακοινώσεις σε όποιες νέες ομάδες γίνετε μέλος.
+      quiet_description: Δεν θα λαμβάνετε μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με τη δραστηριότητα σε καμία νέα ομάδα στην οποία γίνετε μέλος.
+      messages:
+        loud: Θα λάβετε email για όλες τις δραστηριότητες σε νέες ομάδες.
+        normal: Θα λάβετε email σχετικά με ανακοινώσεις σε νέες ομάδες.
+        quiet: Δεν θα λάβετε email για νέες ομάδες.
+    explain_scope:
+      thread: Αυτό αλλάζει όταν θα ειδοποιηθείτε για αυτό το νήμα
+      group: Αυτό αλλάζει όταν θα ειδοποιηθείτε για όλα τα νήματα στην ομάδα
+    saved: Οι ρυθμίσεις ειδοποιήσεων ενημερώθηκαν
   inbox:
-    clear: 'Καθάρισμα'
-    latest: 'Τελευταία'
-    unread: 'Αδιάβαστα'
-    closing_in: 'Κλείνει'
+    clear: Καθάρισμα
+    latest: Τελευταία
+    unread: Αδιάβαστα
+    closing_in: Κλείνει
   sign_up_form:
     password_label: 'Κωδικός:'
     password_confirmation_label: 'Ξανά τον ίδιο κωδικό:'
   signed_out_modal:
-    aria_label: 'Η σύνοδος έληξε'
-    title: "Η σύνοδος σας έληξε"
-    ok: "Εντάξει"
+    aria_label: Η σύνοδος έληξε
+    title: Η σύνοδος σας έληξε
+    ok: Εντάξει
+    message: Έχετε αποσυνδεθεί από άλλο παράθυρο. Παρακαλώ συνδεθείτε ξανά για να συνεχίσετε.
   comment_form:
-    aria_label: 'Πρόσθεσε ένα σχόλιο'
+    aria_label: Πρόσθεσε ένα σχόλιο
     attachments:
-      add_attachment: 'Επισυνάψτε αρχείο'
-      remove_attachment: 'Αφαίρεσε συννημένο'
+      add_attachment: Επισυνάψτε αρχείο
+      remove_attachment: Αφαίρεσε συννημένο
     messages:
-      created: 'Το σχόλιο προστέθηκε'
-      replied: '{{name}} ειδοποιήθηκε για την απάντηση'
-      updated: 'Σχόλιο ανανεώθηκε'
-      destroyed: 'Σχόλιο διαγράφτηκε'
-    edit_comment: 'Επεξεργασία σχόλιου'
-    delete_comment: 'Διαγραφή σχόλιου'
-    cancel_reply: 'Ακύρωση Απάντησης'
-    confirm_delete_message: 'Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?'
-    confirm_delete: 'Διαγραφή σχολίου'
-    post_comment: "Δημοσίευση σχόλιου"
+      created: Το σχόλιο προστέθηκε
+      replied: "{{name}} ειδοποιήθηκε για την απάντηση"
+      updated: Σχόλιο ανανεώθηκε
+      destroyed: Σχόλιο διαγράφτηκε
+      removed: Το σχόλιο καταργήθηκε
+    edit_comment: Επεξεργασία σχόλιου
+    delete_comment: Διαγραφή σχόλιου
+    cancel_reply: Ακύρωση Απάντησης
+    confirm_delete_message: Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το σχόλιο?
+    confirm_delete: Διαγραφή σχολίου
+    post_comment: Δημοσίευση σχόλιου
     submit_button:
-      label: 'Δημοσίευση'
-    private_privacy_notice: 'Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα {{groupName}}.'
-    public_privacy_notice: 'Το σχόλιο σας θα είναι ορατό σε όλους στο διαδίκτυο.'
-    sign_in: "Εισέλθετε για να συμμετάσχετε στην συζήτηση"
+      label: Δημοσίευση
+    private_privacy_notice: Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα {{groupName}}.
+    public_privacy_notice: Το σχόλιο σας θα είναι ορατό σε όλους στο διαδίκτυο.
+    sign_in: Εισέλθετε για να συμμετάσχετε στην συζήτηση
+    say_something: Πες κάτι...
+    in_reply_to: Απάντηση στο {{name}}
+    write_a_comment: Γράψε ένα σχόλιο...
   sidebar:
-    threads: 'Θέματα'
-    recent_threads: 'Πρόσφατα θέματα'
-    muted_threads: 'Θέματα σε σίγαση'
-    explore: 'Δημόσιες ομάδες'
+    threads: Θέματα
+    recent_threads: Πρόσφατα θέματα
+    muted_threads: Θέματα σε σίγαση
+    explore: Δημόσιες ομάδες
     start_thread: Νέο θέμα
     start_decision: Νέα απόφαση
     aria_labels:
-      heading: 'Πλευρική στήλη'
-      threads_list: 'Ενέργειες θεμάτων'
-      groups_list: 'Ομάδες'
-      user_list: 'Ενέργειες χρήστη'
+      heading: Πλευρική στήλη
+      threads_list: Ενέργειες θεμάτων
+      groups_list: Ομάδες
+      user_list: Ενέργειες χρήστη
+    my_groups: Οι ομάδες μου
+    other_groups: Άλλες ομάδες
+    all_groups: Όλες οι ομάδες
+    invite_only_threads: Νήματα μόνο για πρόσκληση
+    direct_threads: Άμεσες κλωστές
+    unread_threads: Μη αναγνωσμένα νήματα (%{count})
+    start_group: Νέα οργάνωση
+    start_subgroup: Νέα υποομάδα
+    explore_groups: Εξερευνήστε ομάδες
+    more_groups: Περισσότερες ομάδες
+    template_gallery: Γκαλερί προτύπων
+    examples_and_templates: Παραδείγματα & πρότυπα
+    help_docs: Έγγραφα βοήθειας
+    a_detailed_guide_to_loomio: Ένας λεπτομερής οδηγός για το Loomio
+    talk_to_the_loomio_team: Μιλήστε με την ομάδα του Loomio
   navbar:
-    recent_title: 'Πήγαινε στον πίνακα διαχείρισης'
-    unread_title: 'Δες την αδιάβαστη δραστηριότητα'
-    start_thread: 'Νέο θέμα'
-    notifications: 'Πίνακας ειδοποιήσεων'
+    recent_title: Πήγαινε στον πίνακα διαχείρισης
+    unread_title: Δες την αδιάβαστη δραστηριότητα
+    start_thread: Νέο θέμα
+    notifications: Πίνακας ειδοποιήσεων
     search:
-      label: 'Πεδίο εύρεσης; ψάξτε για ομάδες και θέματα'
-      results_aria_label: 'Αποτελέσματα εύρεσης'
-      no_results: 'Δεν βρέθηκαν θέματα'
-      close: 'Κλείσε τον πίνακα εύρεσης'
-      placeholder: 'Εύρεση'
-      loading: 'Φορτώνει αποτελέσματα...'
-      discussions: 'Θέματα'
-      proposals: 'Προτάσεις'
-      comments: 'Σχόλια'
-    sign_in: 'Είσοδος'
-    toggle_sidebar: 'Εναλλαγή πλευρικής στήλης'
-    logo_title: 'Κεντρική σελίδα'
+      label: Πεδίο εύρεσης; ψάξτε για ομάδες και θέματα
+      results_aria_label: Αποτελέσματα εύρεσης
+      no_results: Δεν βρέθηκαν θέματα
+      close: Κλείσε τον πίνακα εύρεσης
+      placeholder: Εύρεση
+      loading: Φορτώνει αποτελέσματα...
+      discussions: Θέματα
+      proposals: Προτάσεις
+      comments: Σχόλια
+    sign_in: Είσοδος
+    toggle_sidebar: Εναλλαγή πλευρικής στήλης
+    logo_title: Κεντρική σελίδα
+    search_all_threads: Αναζήτηση όλων των νημάτων
+    search_threads: Αναζήτηση νημάτων στο {{name}}
+    search_polls: Αναζήτηση δημοσκοπήσεων σε {{name}}
+    search_members: Αναζήτηση μελών στο {{name}}
+    search_subgroups: Αναζήτηση μελών στο {{name}}
+    search_files: Αναζήτηση αρχείων σε {{name}}
+    open_sidebar: Ανοίξτε την πλαϊνή γραμμή
+    close_sidebar: Κλείσιμο πλαϊνής γραμμής
+    group_and_subgroups: "{{group}} και υποομάδες"
   membership_dropdown:
-    make_coordinator: 'Κάντε τον/την διαχειριστή'
+    make_coordinator: Κάντε τον/την διαχειριστή
+    set_name_and_username: Ορίστε όνομα και όνομα χρήστη
+    set_title: Ορισμός τίτλου
+    resend: Ξαναστέλνω πρόσκληση
+    invitation_resent: Η πρόσκληση στάλθηκε εκ νέου
+    demote_coordinator: Υποβιβασμός διαχειριστή
+    remove_from:
+      discussion: Αφαίρεση από το νήμα
+      group: Αφαίρεση από την ομάδα
+      poll: Κατάργηση από {{pollType}}
+    cancel_invitation: Ακύρωση πρόσκλησης
   notifications:
-    header: "Ειδοποιήσεις"
-    no_notifications: "Δεν έχετε καμία ειδοποίηση"
+    header: Ειδοποιήσεις
+    no_notifications: Δεν έχετε καμία ειδοποίηση
+    with_title:
+      comment_replied_to: 'Ο %{actor} σας απάντησε στο: %{title}'
+      discussion_announced: 'Ο %{actor} σας προσκάλεσε στο νήμα: %{title}'
+      discussion_edited: 'Ο %{actor} επεξεργάστηκε το πλαίσιο του νήματος: %{title}'
+      discussion_closed: "%{actor} έκλεισε το νήμα: %{title}"
+      invitation_accepted: Ο %{actor} αποδέχτηκε την πρόσκλησή σας για συμμετοχή στο %{title}
+      membership_created: Ο %{actor} σας προσκάλεσε να γίνετε μέλος του %{title} στο %{site_name}
+      membership_resent: Ο %{actor} σας προσκάλεσε να γίνετε μέλος του %{title} στο %{site_name}
+      membership_requested: Ο %{actor} ζήτησε να συμμετάσχει στο %{title}
+      membership_request_approved: Ο %{actor} ενέκρινε το αίτημά σας για συμμετοχή στο %{title}
+      new_comment: 'Ο %{actor} σχολίασε στο: %{title}'
+      new_coordinator: Ο %{actor} σας έκανε διαχειριστή του %{title}
+      new_discussion: 'Ο %{actor} ξεκίνησε ένα νήμα: %{title}'
+      outcome_announced: 'Ο %{actor} μοιράστηκε ένα %{poll_type} αποτέλεσμα: %{title}'
+      outcome_created: 'Ο %{actor} μοιράστηκε ένα %{poll_type} αποτέλεσμα: %{title}'
+      outcome_updated: 'Ο %{actor} ενημέρωσε το %{poll_type} αποτέλεσμα: %{title}'
+      outcome_review_due: 'Ήρθε η ώρα να ελέγξετε το αποτέλεσμα: %{title}'
+      poll_announced: 'Ο %{actor} σας προσκάλεσε να ψηφίσετε: %{title}'
+      poll_closed_by_user: 'Ο %{actor} έκλεισε το %{poll_type}: %{title}'
+      poll_closing_soon: "%{poll_type} κλείνει σε 24 ώρες: %{title}"
+      poll_closing_soon_author: 'Το %{poll_type} σας κλείνει σε 24 ώρες: %{title}'
+      poll_created: 'Ο %{actor} ξεκίνησε ένα %{poll_type}: %{title}'
+      poll_edited: 'Ο %{actor} ενημέρωσε το %{poll_type}: %{title}'
+      poll_expired: 'Ο %{poll_type} έκλεισε: %{title}'
+      poll_expired_author: 'Μοιραστείτε το αποτέλεσμα του %{poll_type} σας: %{title}'
+      poll_option_added: Ο %{actor} πρόσθεσε επιλογές στο %{title}
+      poll_reopened: 'Ο %{actor} άνοιξε ξανά το %{poll_type}: %{title}'
+      poll_reminder: Ο %{actor} σας υπενθυμίζει να ψηφίσετε %{title}
+      poll_reminder_wip: 'Ο %{actor} σας υπενθυμίζει να δώσετε σχόλια: %{title}'
+      reaction_created: Ο %{actor} αντέδρασε %{reaction} στο %{model} σας στο %{title}
+      stance_created: 'Ο %{actor} ψήφισε: %{title}'
+      stance_updated: 'Ο %{actor} ψήφισε: %{title}'
+      stance_created_option: Ο %{actor} ψήφισε %{option} στο %{title}
+      user_added_to_group: 'Ο %{actor} σας πρόσθεσε στην ομάδα: %{title}'
+      user_mentioned: 'Ο %{actor} σας ανέφερε στο: %{title}'
+      user_reminded: 'Ο %{actor} σας υπενθυμίζει να ψηφίσετε: %{title}'
+    without_title:
+      discussion_announced: Ο %{actor} σας προσκάλεσε σε ένα νήμα
+      discussion_edited: Ο %{actor} επεξεργάστηκε το περιβάλλον του νήματος
+      discussion_closed: Ο %{actor} έκλεισε το νήμα
+      group_announced: Ο %{actor} σας προσκάλεσε σε μια ομάδα
+      comment_replied_to: Ο %{actor} σας απάντησε
+      new_discussion: Ο %{actor} ξεκίνησε ένα νήμα
+      new_comment: Ο %{actor} σχολίασε σε ένα νήμα
+      membership_created: Ο %{actor} σας προσκάλεσε να συμμετάσχετε σε μια ομάδα
+      membership_resent: Ο %{actor} σας προσκάλεσε να συμμετάσχετε σε μια ομάδα
+      membership_requested: Ο %{actor} ζήτησε να συμμετάσχει στην ομάδα σας
+      membership_request_approved: Ο %{actor} ενέκρινε το αίτημά σας για συμμετοχή στο %{title}
+      outcome_announced: Ο %{actor} μοιράστηκε ένα %{poll_type} αποτέλεσμα
+      outcome_created: Ο %{actor} μοιράστηκε ένα %{poll_type} αποτέλεσμα
+      outcome_updated: Ο %{actor} ενημέρωσε το αποτέλεσμα
+      outcome_review_due: Ήρθε η ώρα να ελέγξετε το αποτέλεσμα %{poll_type}
+      poll_announced: Ο %{actor} σας προσκάλεσε να ψηφίσετε σε ένα %{poll_type}
+      poll_announced_wip: Ο %{actor} θέλει τα σχόλιά σας για ένα %{poll_type}
+      poll_closed_by_user: Ο %{actor} έκλεισε το %{poll_type}
+      poll_closing_soon: "%{poll_type} κλείνει σε 24 ώρες"
+      poll_closing_soon_author: Το %{poll_type} σας κλείνει σε 24 ώρες
+      poll_created: Ο %{actor} ξεκίνησε ένα %{poll_type}
+      poll_edited: Ο %{actor} ενημέρωσε το %{poll_type}
+      poll_expired: Το %{poll_type} έκλεισε
+      poll_expired_author: Μοιραστείτε το αποτέλεσμα του %{poll_type} σας
+      poll_option_added: Ο %{actor} πρόσθεσε επιλογές στο %{poll_type}
+      poll_reopened: Ο %{actor} άνοιξε ξανά το %{poll_type}
+      poll_reminder: Ο %{actor} σας υπενθυμίζει να ψηφίσετε
+      poll_reminder_wip: Ο %{actor} σας υπενθυμίζει να υποβάλετε σχόλια
+      reaction_created: Ο %{actor} αντέδρασε %{reaction} στο %{model} σας
+      stance_created: Ο %{actor} ψήφισε
+      stance_updated: Ο %{actor} ψήφισε
+      stance_created_option: Ο %{actor} ψήφισε %{option}
+      user_mentioned: Ο %{actor} σας ανέφερε
+      user_reminded: Ο %{actor} σας υπενθυμίζει να ψηφίσετε
+    hints:
+      poll_closing_soon: Τώρα είναι η κατάλληλη στιγμή για να ψηφίσετε, να αλλάξετε γνώμη ή να ενθαρρύνετε άλλους να συμμετάσχουν.
+      poll_closing_soon_author: Μπορεί να θέλετε να υπενθυμίσετε στους ανθρώπους να ψηφίσουν ή να παρατείνετε την προθεσμία.
+      outcome_review_due: Εξετάστε το ενδεχόμενο να ξεκινήσετε μια δημοσκόπηση σχολίων ή ένα νέο νήμα που προσκαλεί προβληματισμούς σχετικά με τον τρόπο εφαρμογής της απόφασης.
   discussion_form:
     invite: Πρόσκληση
-    aria_label: 'Φόρμα θέματος'
+    aria_label: Φόρμα θέματος
     start_thread: Ξεκινήστε ένα θέμα
     messages:
-      created: 'Το θέμα ξεκίνησε'
-      updated: 'Το θέμα ανανεώθηκε'
-    new_discussion_title: 'Ξεκινήστε ένα νέο θέμα'
-    edit_discussion_title: 'Επεξεργασία θέματος'
-    group_label: 'Ομάδα'
-    group_placeholder: 'Διαλέξτε μια ομάδα'
-    title_label: 'Τίτλος'
-    title_placeholder: 'Ποιο είναι το θέμα που θέλετε να συζητήσετε;'
-    context_label: 'Περιεχόμενο'
-    privacy_label: 'Απόρρητο'
-    privacy_public: 'Οποιοσδήποτε μπορεί να δει αυτό το θέμα. Μόνο μέλη μπορούν να συμμετάσχουν.'
-    privacy_private: 'Το θέμα θα είναι ορατό μόνο στα μέλη της ομάδας {{group}}.'
-    privacy_organisation: 'Το θέμα θα είναι ορατό μόνο στα μέλη της {{parent}} και μέλη της ομάδα {{group}}.'
+      created: Το θέμα ξεκίνησε
+      updated: Το θέμα ανανεώθηκε
+      forked: Δημιουργήθηκε η διχάλα κλωστής
+    new_discussion_title: Ξεκινήστε ένα νέο θέμα
+    edit_discussion_title: Επεξεργασία θέματος
+    group_label: Ομάδα
+    group_placeholder: Διαλέξτε μια ομάδα
+    title_label: Τίτλος
+    title_placeholder: Ποιο είναι το θέμα που θέλετε να συζητήσετε;
+    context_label: Περιεχόμενο
+    privacy_label: Απόρρητο
+    privacy_public: Οποιοσδήποτε μπορεί να δει αυτό το θέμα. Μόνο μέλη μπορούν να συμμετάσχουν.
+    privacy_private: Το θέμα θα είναι ορατό μόνο στα μέλη της ομάδας {{group}}.
+    privacy_organisation: Το θέμα θα είναι ορατό μόνο στα μέλη της {{parent}} και μέλη της ομάδα {{group}}.
+    thread_templates: Πρότυπα νημάτων
+    new_thread_template: Νέο πρότυπο νήματος
+    edit_thread_template: Επεξεργασία προτύπου νήματος
+    blank: Κενό
+    blank_subtitle: Ξεκινήστε μια συζήτηση και δείτε πού θα σας οδηγήσει
+    new_template: Νέο πρότυπο
+    new_template_subtitle: Δημιουργήστε ένα παράδειγμα που μπορούν να αντιγράψουν άλλοι
+    to: Προς την
+    direct_thread: Απευθείας κλωστή
+    invite_only_thread: Νήμα μόνο για πρόσκληση
+    none_direct_thread: Άμεσο νήμα (χωρίς ομάδα)
+    none_invite_only_thread: Νήμα μόνο για πρόσκληση (χωρίς ομάδα)
+    change_log_placeholder: Προαιρετικά, περιγράψτε τις αλλαγές σας. Αυτό το μήνυμα θα προστεθεί στο νήμα.
+    change_log_label: Τι άλλαξε;
+    new_thread_from_template: 'Νέο νήμα: %{process_name}'
+    moving_items_title: Μετακίνηση στοιχείων σε νέο νήμα
+    context_placeholder: Δώστε κάποιο πλαίσιο για αυτήν τη συζήτηση, ώστε οι άνθρωποι να γνωρίζουν πώς να συμμετέχουν
+    fork_notice: Θα δημιουργηθεί ένα νέο νήμα με %{count} στοιχεία από {{title}}
+    notify_group: Ειδοποίηση ομάδας
   announcement:
     form:
       invitation_message_label: Μήνυμα
       poll_reminder:
         message_label: Μήνυμα
+        title: Υπενθύμιση για ψηφοφορία
+        helptext: Ποιον θα θέλατε να υπενθυμίσετε να ψηφίσει;
+        message_placeholder: Προαιρετικό μήνυμα για να πει στους ανθρώπους γιατί πρέπει να ψηφίσουν
       wip_poll_reminder:
         message_label: Μήνυμα
+        title: Υπενθύμιση για να δώσετε σχόλια
+        helptext: Ποιον θα θέλατε να υπενθυμίσετε για να δώσει σχόλια;
+        message_placeholder: Προαιρετικό μήνυμα που θα συμπεριληφθεί στο email ειδοποίησης
+      group_has_no_members_yet: Είστε το μόνο μέλος της ομάδας σας. Μπορεί να θέλετε να προσκαλέσετε κάποια άτομα στην ομάδα σας πριν ξεκινήσετε ένα νήμα ή μια απόφαση.
+      invite_people_to_evaluate_loomio: Προσκαλέστε μερικά άτομα στην ομάδα σας Loomio για να λάβετε μαζί μια απόφαση
+      too_many_invitations: Υπέρβαση του ορίου πρόσκλησης. <a href="{{upgradeUrl}}" target="_blank">Αναβαθμίζω</a>
+      no_invitations_remaining: <p>Έχετε χρησιμοποιήσει όλες τις προσκλήσεις {{maxMembers}} που είναι διαθέσιμες σε αυτήν την ομάδα.</p><p> Επόμενο βήμα, <a href="{{upgradeUrl}}" target="_blank">επιλέξτε ένα σχέδιο</a> για να συνεχίσετε τη συνεργασία στο Loomio.</p>
+      invitations_remaining: Απομένουν %{count} προσκλήσεις. <a href="{{upgradeUrl}}" target="_blank">Αναβαθμίζω</a>
+      who_to_invite: Ποιον θα θέλατε να προσκαλέσετε;
+      invitation_message_placeholder: Ένα μήνυμα που πρέπει να συμπεριληφθεί στο email της πρόσκλησης. (προαιρετικός)
+      invitation_message_default: Έχω δημιουργήσει αυτήν την ομάδα Loomio για να μας βοηθήσει να πάρουμε αποφάσεις μαζί. Παρακαλώ αποδεχτείτε την πρόσκλησή μου. Χρειάζεται μόνο ένα λεπτό για να εγγραφείτε. Ευχαριστώ.
+      group_announced:
+        title: Πρόσκληση σε ομάδα
+        helptext: Ποιον θα θέλατε να προσκαλέσετε στην ομάδα;
+      discussion_announced:
+        title: Πρόσκληση σε νήμα
+        helptext: Ποιον θα θέλατε να προσκαλέσετε στο νήμα;
+        notify_helptext: Ποιον θα θέλατε να ειδοποιήσετε για το νήμα;
+      discussion_edited:
+        title: Ειδοποίηση για τροποποιήσεις
+        helptext: Ποιον θα θέλατε να ειδοποιήσετε για αυτήν την ενημέρωση; (προαιρετικός)
+      poll_announced:
+        title: Πρόσκληση για ψηφοφορία
+        helptext: Ποιον θα θέλατε να προσκαλέσετε να ψηφίσει;
+      wip_poll_announced:
+        title: Προσκαλέστε να δώσετε σχόλια
+        helptext: Ποιον θα θέλατε να προσκαλέσετε να δώσει σχόλια;
+      poll_edited:
+        title: Ειδοποίηση για τροποποιήσεις
+        helptext: Ποιον θα θέλατε να ειδοποιήσετε για αυτήν την ενημέρωση;
+      outcome_announced:
+        title: Μοιραστείτε το αποτέλεσμα
+        helptext: Συνοψίστε τα αποτελέσματα της διαδικασίας, συμπεριλαμβανομένων τυχόν κατανοήσεων που βρέθηκαν ή ζητημάτων που ήρθαν στο φως.
+      anyone_can_participate: Όποιος έχει σύνδεσμο μπορεί να συμμετάσχει
+      placeholder: Μπορείτε να εισαγάγετε ονόματα ή διευθύνσεις email
+      type_or_paste_email_addresses_to_invite: Πληκτρολογήστε ή επικολλήστε διευθύνσεις email για πρόσκληση
+      notified_empty: Κανείς δεν έχει επιλέξει ακόμα
+      single_notification: Θα σταλεί 1 ειδοποίηση.
+      multiple_notifications: Θα σταλούν {{notified}} ειδοποιήσεις.
+      notified: "{{notified}} άτομα θα ειδοποιηθούν."
+      notified_singular: Θα ειδοποιηθεί 1 άτομο.
+      notified_none: Κανείς δεν θα ειδοποιηθεί.
+      added: Θα προστεθούν %{count} άτομα.
+      added_singular: Θα προστεθεί 1 άτομο.
+      added_none: Δεν θα προστεθεί κανείς.
+      group_title: "{{name}} (%{count} άτομα)"
+      visible_to_group: Οποιοσδήποτε στην {{group}} θα μπορεί να δει αυτό το νήμα.
+      visible_to_guests: Μόνο οι προσκεκλημένοι μπορούν να δουν αυτό το νήμα.
+      click_group_to_see_individuals: Κάντε κλικ στην ομάδα για να δείτε άτομα
+    send_discussion: Αποστολή νήματος
+    send_group: Προσκαλέστε άτομα στο {{name}}
+    send_poll: Αποστολή {{type}}
+    send_outcome: Αποστολή αποτελέσματος
+    cannot_reveal_when_anonymous: Λυπούμαστε, δεν μπορούμε να αποκαλύψουμε ποιος ψήφισε ή δεν ψήφισε σε μια ανώνυμη δημοσκόπηση.
+    discussion_notification_history: Ιστορικό ειδοποιήσεων νήματος
+    group_notification_history: Ιστορικό ομαδικών προσκλήσεων
+    poll_notification_history: Ιστορικό ειδοποιήσεων δημοσκόπησης
+    outcome_notification_history: Ιστορικό ειδοποιήσεων αποτελεσμάτων
+    comment_notification_history: Ιστορικό ειδοποιήσεων σχολίων
+    notification_history_explanation: "✓ υποδηλώνει ότι η ειδοποίηση διαβάστηκε ή ότι το email έχει ανοίξει"
+    quick_add: 'Γρήγορη προσθήκη:'
+    any_other_groups: Καμιά άλλη ομάδα;
+    notified_people: 'Ο χρήστης {{name}} ειδοποίησε {{length}} άτομα:'
+    preview: Προεπισκόπηση email
+    no_notifications_sent: Δεν έχουν σταλεί ειδοποιήσεις
+    history_error: Κάτι πήγε στραβά! Δεν ήταν δυνατή η φόρτωση του ιστορικού.
+    inviting_guests_to_thread: Οι επισκέπτες δεν ανήκουν στην ομάδα σας και έχουν πρόσβαση μόνο σε αυτό το νήμα
+    select_groups: Επιλέξτε ομάδες
+    search_by_name_or_email: Κάντε αναζήτηση με βάση το όνομα ή πληκτρολογήστε email για πρόσκληση
+    search_by_name: Αναζήτηση ατόμων με όνομα
+    only_admins_can_announce: Μόνο οι διαχειριστές μπορούν να ειδοποιήσουν ολόκληρη την ομάδα
+    only_admins_can_invite: Μόνο οι διαχειριστές μπορούν να προσκαλέσουν επισκέπτες
+    only_admins_can_announce_or_invite: Μόνο οι διαχειριστές μπορούν να ειδοποιήσουν ολόκληρη την ομάδα ή να προσκαλέσουν επισκέπτες
+    user_mentioned: 'Ο χρήστης {{name}} ανέφερε {{length}} άτομα:'
+    comment_replied_to: 'Ο χρήστης {{name}} απάντησε σε {{length}} άτομα:'
+    new_discussion: 'Ο χρήστης {{name}} προσκάλεσε {{length}} άτομα στο νήμα:'
+    discussion_announced: 'Ο χρήστης {{name}} προσκάλεσε {{length}} άτομα στο νήμα:'
+    poll_created: 'Ο χρήστης {{name}} προσκάλεσε {{length}} άτομα να ψηφίσουν:'
+    poll_announced: 'Ο χρήστης {{name}} προσκάλεσε {{length}} άτομα να ψηφίσουν:'
+    outcome_created: 'Ο χρήστης {{name}} μοιράστηκε ένα αποτέλεσμα με {{length}} άτομα:'
+    outcome_announced: 'Ο χρήστης {{name}} μοιράστηκε ένα αποτέλεσμα με {{length}} άτομα:'
+    announcement_created: 'Ο χρήστης {{name}} προσκάλεσε {{length}} άτομα στο νήμα:'
+    discussion_edited: 'Ο χρήστης {{name}} επεξεργάστηκε το νήμα, ειδοποιώντας {{length}} άτομα:'
+    poll_edited: 'Ο χρήστης {{name}} επεξεργάστηκε μια δημοσκόπηση, ειδοποιώντας {{length}} άτομα:'
+    outcome_edited: 'Ο χρήστης {{name}} επεξεργάστηκε ένα αποτέλεσμα, ειδοποιώντας {{length}} άτομα:'
+    outcome_updated: 'Ο χρήστης {{name}} επεξεργάστηκε ένα αποτέλεσμα, ειδοποιώντας {{length}} άτομα:'
+    poll_closing_soon: 'Η υπενθύμιση κλεισίματος της δημοσκόπησης του {{name}} ειδοποίησε {{length}} άτομα:'
+    poll_reminder: 'Ο χρήστης {{name}} υπενθύμισε σε {{length}} άτομα να ψηφίσουν:'
+    audiences:
+      group: "{{όνομα}}"
+      everyone_in_the_group: Όλοι στην ομάδα
+      discussion_group: Όλοι στο νήμα
+      voters: Όλοι καλούνται να ψηφίσουν
+      decided_voters: Όλοι όσοι ψήφισαν
+      undecided_voters: Αναποφάσιστοι ψηφοφόροι
+      non_voters: Τα μέλη του {{name}} δεν έχουν προσκληθεί ακόμη
+    members_list:
+      title: Μοιρασμένο με
+      last_notified: Ειδοποιήθηκε
+      not_notified: Δεν έχει ειδοποιηθεί ακόμα
+      no_members: Αυτό δεν έχει κοινοποιηθεί ακόμα με κανέναν!
+      group_admin: Διαχειριστής ομάδας
+      thread_admin: Διαχειριστής νήματος
+      last_read_at: Τελευταία προβολή {{time}}
+      has_not_read_thread: Δεν έχει δει το νήμα
+    group_form:
+      search_placeholder: Αναζήτηση ατόμων...
+      modal_title: Επιλέξτε μέλη της ομάδας
+    flash:
+      success: "%{count} ειδοποιήσεις στάλθηκαν"
   action_dock:
     edit_stance: Αλλάξε θέση
     edited: Επεξεργάστηκε
     count_members: "%{count} μέλη "
+    actions_menu: Μενού ενεργειών
+    more_actions: Περισσότερες δράσεις
+    react: Αντιδρώ
+    notify: Κοινοποιώ
+    add_resource: Προσθέστε ένα συνημμένο
+    edit_group: Επεξεργασία περιβάλλοντος ομάδας
+    add_comment: Σχόλιο
+    copy_url: Αντιγραφή συνδέσμου
+    edit_thread: Επεξεργασία περιβάλλοντος
+    announce_thread: Αποστολή νήματος
+    invite_guests: Προσκαλέστε επισκέπτες
+    translate_thread: Μετάφραση περιβάλλοντος
+    edit_poll: Επεξεργασία δημοσκόπησης
+    edit_poll_type: Επεξεργασία {{pollType}}
+    new_poll_type: Νέο {{pollType}}
+    move_items: Μετακίνηση στοιχείων
+    announce_poll: Προσκαλέστε τους ανθρώπους να ψηφίσουν
+    announce_poll_active: "(Κανένας δεν έχει προσκληθεί ακόμα)"
+    translate_poll: Μετάφραση δημοσκόπησης
+    translate_stance: Μετάφραση ψήφου
+    edit_comment: Επεξεργασία σχολίου
+    delete_comment: Διαγραφή σχολίου
+    reply_to_comment: Απάντηση
+    fork_comment: Πιρούνι κλωστή
+    translate_comment: Μετάφραση σχολίου
+    edit_outcome: Επεξεργασία αποτελέσματος
+    announce_outcome: Ενημερώστε τους ανθρώπους για αυτό το αποτέλεσμα
+    announce_outcome_active: "(Κανείς δεν έχει ενημερωθεί για αυτό το αποτέλεσμα ακόμα)"
+    translate_outcome: Μετάφραση του αποτελέσματος
+    show_history: Εμφάνιση ιστορικού επεξεργασίας
+    show_edits: Εμφάνιση τροποποιήσεων
+    show_notifications: Εμφάνιση ειδοποιήσεων
+    history: Ιστορία
+    pin_thread: Κλωστή καρφίτσας
+    unpin_thread: Ξεκαρφιτσώστε το νήμα
+    pin_event: Καρφίτσωμα στη γραμμή χρόνου
+    unpin_event: Ξεκαρφιτσώστε από τη γραμμή χρόνου
+    comment_copied: Η διεύθυνση URL σχολίου αντιγράφηκε στο πρόχειρο
+    move_thread: Μετακίνηση στην ομάδα
+    poll_copied: Η διεύθυνση URL απόφασης αντιγράφηκε στο πρόχειρο
+    discussion_copied: Η διεύθυνση URL του νήματος αντιγράφηκε στο πρόχειρο
+    url_copied: Ο σύνδεσμος αντιγράφηκε στο πρόχειρο
+    tag_thread: Διαχείριση ετικετών
+    close_thread: Κλείστε το νήμα
+    reopen_thread: Ανοίξτε ξανά το νήμα
+    delete_thread: Διαγραφή νήματος
+    notification_history: Ιστορικό ειδοποιήσεων
+    move_item: Μετακίνηση στοιχείου
+    add_poll_to_thread: Προσθήκη στο νήμα
+    count_voters: "%{count} ψηφοφόροι"
   formatting:
     attach: Επισυνάψτε αρχείο
+    formatting_tools: Εργαλεία μορφοποίησης κειμένου
+    colors: Χρωματιστά
+    highlight: Αποκορύφωμα
+    alignment: Ευθυγραμμία
+    lists: Κονίστρα
+    expand: Εμφάνιση περισσότερων εργαλείων μορφοποίησης
+    collapse: Εμφάνιση λιγότερων εργαλείων μορφοποίησης
+    bold: Τολμηρός
+    italicize: Τυπώνω με κυρτά γράμματα
+    blockquote: Παραθέτω, αναφορά
+    strikethrough: Strikethrough
+    underline: Υπογραμμίζω
+    link: Εισαγωγή συνδέσμου
+    code_block: Μπλοκ κωδικών
+    insert_image: Εισαγωγή εικόνας
+    insert_emoji: Εισαγάγετε emoji
+    heading_size: Μέγεθος επικεφαλίδας
+    heading1: Επικεφαλίδα 1
+    heading2: Επικεφαλίδα 2
+    heading3: Επικεφαλίδα 3
+    left_align: Αριστερά στοίχιση
+    center_align: Στοίχιση στο κέντρο
+    right_align: Δεξιά στοίχιση
+    justify_align: Δικαιολογήστε την ευθυγράμμιση
+    paragraph: Παράγραφος
+    bullet_list: Λίστα
+    number_list: Αριθμημένη λίστα
+    check_list: ΛΙΣΤΑ ΕΛΕΓΧΟΥ
+    task_list: Λίστα εργασιών
+    reset: Επαναφορά
+    text_color: Χρώμα κειμένου
+    background_color: Χρώμα του φόντου
+    quote: Παραθέτω, αναφορά
+    embed: Ενσωμάτωση βίντεο
+    divider: Διαιρών
+    add_table: Προσθήκη πίνακα
+    remove_table: Αφαιρέστε τον πίνακα
+    add_column_before: Προσθήκη στήλης πριν
+    add_column_after: Προσθήκη στήλης μετά
+    remove_column: Κατάργηση στήλης
+    add_row_before: Προσθήκη σειράς πριν
+    add_row_after: Προσθήκη σειράς μετά
+    remove_row: Αφαίρεση σειράς
+    merge_selected: Συγχώνευση επιλεγμένων κελιών
+    wysiwyg: wysiwyg
+    edit_markdown: Επεξεργασία Markdown
+    markdown_confirm: Κάποια μορφοποίηση μπορεί να χαθεί μετατρέποντας το περιεχόμενο wysiwyg σε markdown.
+    upload_failed: Η μεταφόρτωση απέτυχε
   cover_photo_form:
-    heading: 'Νέα φωτογραφία εξωφύλλου'
-    upload_link: 'Ανεβάστε νέα φωτογραφία εξωφύλλου'
-    image_size_helptext: 'Το καταλληλότερο μέγεθος εικόνας είναι 1400×320px'
-    upload_success: 'Η φωτογραφία εξωφύλλου ανανεώθηκε επιτυχώς'
+    heading: Νέα φωτογραφία εξωφύλλου
+    upload_link: Ανεβάστε νέα φωτογραφία εξωφύλλου
+    image_size_helptext: Το καταλληλότερο μέγεθος εικόνας είναι 1400×320px
+    upload_success: Η φωτογραφία εξωφύλλου ανανεώθηκε επιτυχώς
   logo_photo_form:
-    heading: 'Νέο λογότυπο ομάδας'
-    upload_link: 'Ανεβάστε νέο λογότυπο ομάδας'
-    image_size_helptext: 'Ιδανικό μέγεθος είναι 100×100px'
-    upload_success: 'Το λογότυπο ανανεώθηκε επιτυχώς'
+    heading: Νέο λογότυπο ομάδας
+    upload_link: Ανεβάστε νέο λογότυπο ομάδας
+    image_size_helptext: Ιδανικό μέγεθος είναι 100×100px
+    upload_success: Το λογότυπο ανανεώθηκε επιτυχώς
   join_group_button:
     join_group: Συμμετάσχετε στην ομάδα
     membership_requested: Αίτηση μέλους έχει ζητηθεί.
     messages:
-      joined_group: 'Τώρα είστε μέλος της ομάδας {{group}}'
+      joined_group: Τώρα είστε μέλος της ομάδας {{group}}
+    not_a_member: Δεν είστε μέλος αυτής της ομάδας.
   membership_request_form:
     aria_label: Φόρμα αιτήματος μέλους
     heading: Δηλώστε συμμετοχή στην ομάδα
@@ -269,55 +810,113 @@ el:
     introduction_label: Γιατί θέλετε να συμμετάσχετε;
     submit_button: Ρωτήστε για να συμμετάσχετε
     introduction_over_limit: Η απάντηση είναι πολύ μεγάλη
+    messages:
+      membership_requested: Έχετε ζητήσει να συμμετάσχετε στην {{group}}
   revision_history_modal:
     aria_label: Αναθεώρηση ιστορικού
-    started_by: 'Ξεκίνησε από <strong>{{name}}</strong>'
-    edited_by: 'Επεξεργάστηκε από <strong>{{name}}</strong>'
+    started_by: Ξεκίνησε από <strong>{{name}}</strong>
+    edited_by: Επεξεργάστηκε από <strong>{{name}}</strong>
     posted: Δημοσιεύθηκε
     current_revision: Τελευταία
+    discussion_header: Επεξεργασίες συζήτησης
+    comment_header: Επεξεργασίες σχολίων
+    poll_header: Επεξεργασίες δημοσκόπησης
+    outcome_header: Επεξεργασίες αποτελεσμάτων
+    stance_header: Τροποποιήσεις ψήφου
+    edit_by: Επεξεργασία από {{name}} · {{date}}
+    field: Πεδίο
+    before: Πριν
+    after: Μετά
+    original_text: Πρωτότυπο
+    closing_at_changed: η ώρα κλεισίματος ορίστηκε σε {{time}}
+    private_changed: το απόρρητο ορίστηκε σε {{ιδιωτικό}}
+    group_id_changed: μεταφέρθηκε στο {{name}}
   group_page:
     threads: Θέματα
     members: Μέλη
     settings: Ρυθμίσεις
     subgroups: Υποομάδες
     messages:
-      archive_group_success: 'Αυτή η ομάδα έχει απενεργοποιηθεί'
-    group_logo: 'Λογότυπο ομάδας'
-    new_photo: 'Νέα φωτογραφία'
-    new_cover_photo: 'Ανεβάστε νέα φωτογραφία εξωφύλλου'
-    new_group_logo: 'Ανεβάστε νέο λογότυπο ομάδας'
-    discussions_placeholder: 'Ένα νήμα είναι όπου όλοι μπορούν να συζητήσουν ένα θέμα και να πάρουν αποφάσεις μαζί.'
+      archive_group_success: Αυτή η ομάδα έχει απενεργοποιηθεί
+      privacy:
+        members: Αυτή η ομάδα είναι πλέον ορατή μόνο στα μέλη
+        parent_members: Αυτή η ομάδα είναι πλέον ορατή μόνο στα μέλη του οργανισμού σας
+        public: Αυτή η ομάδα είναι πλέον ορατή στο κοινό
+      leave_group_success: Έχετε αποχωρήσει από αυτήν την ομάδα
+    group_logo: Λογότυπο ομάδας
+    new_photo: Νέα φωτογραφία
+    new_cover_photo: Ανεβάστε νέα φωτογραφία εξωφύλλου
+    new_group_logo: Ανεβάστε νέο λογότυπο ομάδας
+    discussions_placeholder: Ένα νήμα είναι όπου όλοι μπορούν να συζητήσουν ένα θέμα και να πάρουν αποφάσεις μαζί.
     members_placeholder: 'Είστε ο μοναδικός εδώ: προσκαλέστε κάποια άτομα να συμμετάσχουν μαζί σας!'
     member_options: Επιλογές μέλους
-    invite_people: 'Πρόσκληση'
-    visibility_label: 'Ορατότητα'
-    options_label: 'Ρυθμίσεις'
+    invite_people: Πρόσκληση
+    visibility_label: Ορατότητα
+    options_label: Ρυθμίσεις
     options:
-      label: 'Ρυθμίσεις'
-      edit_group: 'Επεξεργαστείτε τις ρυθμίσεις της ομάδας'
-      manage_members: 'Διαχείριση μελών'
-      add_subgroup: 'Προσθέστε υποομάδα'
-      email_settings: 'Προτιμήσεις Ηλεκτρονικού Ταχυδρομείου'
+      label: Ρυθμίσεις
+      edit_group: Επεξεργαστείτε τις ρυθμίσεις της ομάδας
+      manage_members: Διαχείριση μελών
+      add_subgroup: Προσθέστε υποομάδα
+      email_settings: Προτιμήσεις Ηλεκτρονικού Ταχυδρομείου
       leave_group: 'Φύγετε από την ομάδα '
-      deactivate_group: 'Απενεργοποίηση ομάδας'
+      deactivate_group: Απενεργοποίηση ομάδας
+      become_coordinator: Γίνε διαχειριστής
+      export_data: Εξαγωγή δεδομένων ομάδας
+      export_data_as_json: Εξαγωγή δεδομένων ομάδας ως JSON
+      export_data_as_csv: Εξαγωγή δεδομένων ομάδας ως CSV
+      export_data_as_html: Εξαγωγή δεδομένων ομάδας ως HTML
+      manage_subscription: Διαχείριση της συνδρομής ομάδας
+      subscription_status: Κατάσταση συνδρομής
     volume:
       loud: Αποστολή ηλεκτρονικού μηνύματος όποτε υπάρχει δραστηριότητα.
       quiet: Μην στείλετε ηλεκτρονικό μήνυμα για αυτή την ομάδα. Η δραστηριότητα θα εμφανιστεί στο ταμπλό.
       mute: Απόκρυψη αυτής της ομάδας από το ταμπλό και καμμία ειδοποιήση εκτός εάν @αναφερθώ.
+      loud_aria_description: Η ένταση των ειδοποιήσεών σας για αυτήν την ομάδα έχει οριστεί σε Δυνατή. Θα λαμβάνετε email όποτε υπάρχει δραστηριότητα.
+      loud_message: Θα λάβετε email για όλη τη δραστηριότητα στο "{{name}}."
+      normal: 'Απλώς στείλτε email σημαντική δραστηριότητα: Νέα θέματα και προτάσεις, αποτελέσματα κ.λπ.'
+      normal_aria_description: Ο όγκος των ειδοποιήσεών σας για αυτήν την ομάδα έχει οριστεί σε Κανονική. Απλώς θα λάβετε email σημαντική δραστηριότητα, όπως όταν κάποιος ξεκινά ένα νέο νήμα, θέτει μια πρόταση ή ορίζει ένα αποτέλεσμα.
+      normal_message: Θα λαμβάνετε email μόνο για σημαντικά συμβάντα στο "{{name}}".
+      quiet_aria_description: Η ένταση των ειδοποιήσεών σας για αυτήν την ομάδα έχει οριστεί σε Αθόρυβη. Δεν θα λάβετε μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με τη δραστηριότητα σε αυτήν την ομάδα. Η ομαδική δραστηριότητα θα εμφανίζεται στον Πίνακα ελέγχου σας.
+      quiet_message: Δεν θα λάβετε μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με τη δραστηριότητα στο "{{name}}".
+      mute_aria_description: Ο όγκος των ειδοποιήσεών σας για αυτήν την ομάδα έχει οριστεί σε Σίγαση. Δεν θα λάβετε μήνυμα ηλεκτρονικού ταχυδρομείου εκτός εάν κάποιος σας αναφέρει και η ομαδική δραστηριότητα δεν θα εμφανίζεται στον Πίνακα ελέγχου σας.
+      mute_message: Το "{{name}}" έχει αφαιρεθεί από τον πίνακα ελέγχου σας.
+    stats: Στατιστικά ομάδας
+    polls: Δημοσκοπήσεις
+    decisions: Αποφάσεις
+    files: Αρχεία
+    show_opened: "%{count} Άνοιγμα"
+    show_closed: "%{count} Κλειστό"
+    no_threads_here: Δεν υπάρχουν νήματα για να δείτε εδώ!
+    search_threads: Αναζήτηση για νήματα...
+    private_threads: Θα πρέπει να είστε μέλος για να δείτε ιδιωτικά νήματα σε αυτήν την ομάδα
+    no_more_threads: Δεν υπάρχουν άλλα νήματα για φόρτωση
+    view_closed_threads: Προβολή κλειστών νημάτων
+    open_discussions: Ανοίξτε νήματα
+    closed_discussions: Κλειστά νήματα
+    see_all_members: Δείτε και τα %{count} μέλη
+    pending_invitations: "+ %{count} σε εκκρεμότητα"
+    subgroups_placeholder: Οι υποομάδες δίνουν στις ομάδες το δικό τους χώρο και κρατούν τις ειδοποιήσεις εστιασμένες στα σωστά άτομα.
+    privacy:
+      private: 'Απόρρητο: Αυτή η ομάδα είναι ορατή μόνο στα μέλη'
+      parent_members: 'Απόρρητο: Αυτή η ομάδα είναι ορατή στα μέλη του {{parentGroupName}} και στα μέλη του {{groupName}}'
+      public: 'Απόρρητο: Αυτή η ομάδα είναι ορατή στον ιστό'
+      aria_label: 'Απόρρητο ομάδας: {{privacy}}'
   description_card:
-    title: 'Περιγραφή ομάδας'
+    title: Περιγραφή ομάδας
     messages:
-      description_updated: 'Η περιγραφή ανανεώθηκε'
+      description_updated: Η περιγραφή ανανεώθηκε
+    placeholder: Οι διαχειριστές ομάδων μπορούν να χρησιμοποιήσουν αυτήν την περιοχή για να περιγράψουν τον σκοπό της ομάδας, ώστε όλοι να γνωρίζουν γιατί βρίσκονται εδώ.
   leave_group_form:
-    aria_label: 'Φύγετε από την ομάδα'
+    aria_label: Φύγετε από την ομάδα
     title: 'Φύγετε από την ομάδα '
-    question: 'Είστε σίγουροι ότι θέλετε να φύγετε από την ομάδα;'
-    submit: 'Ναι, φύγετε από την ομάδα'
+    question: Είστε σίγουροι ότι θέλετε να φύγετε από την ομάδα;
+    submit: Ναι, φύγετε από την ομάδα
   archive_group_form:
-    aria_label: 'Απενεργοποίηση ομάδας'
-    title: 'Απενεργοποίηση ομάδας'
-    question: 'Είστε σίγουροι ότι θέλετε να απενεργοποίησετε την ομάδα;'
-    submit: 'Ναι, απενεργοποίηστε την ομάδα'
+    aria_label: Απενεργοποίηση ομάδας
+    title: Απενεργοποίηση ομάδας
+    question: Είστε σίγουροι ότι θέλετε να απενεργοποίησετε την ομάδα;
+    submit: Ναι, απενεργοποίηστε την ομάδα
   group_form:
     aria_label: Φόρμα ομάδας
     new_group: Νέα ομάδα
@@ -327,51 +926,198 @@ el:
     edit_subgroup_heading: Επεξεργαστείτε τις ρυθμίσεις της υπο ομάδας
     group_settings: Ρυθμίσεις ομάδας
     group_name: Όνομα ομάδας
-    group_name_placeholder: 'Ποιο είναι το όνομα της ομάδα σας?'
-    description: 'Περιγραφή'
-    description_placeholder: 'Περιγράψτε τον σκοπό της ομάδας σας, ώστε τα μέλη της ομάδας σας να γνωρίζουν γιατί είναι εδώ.'
+    group_name_placeholder: Ποιο είναι το όνομα της ομάδα σας?
+    description: Περιγραφή
+    description_placeholder: Περιγράψτε τον σκοπό της ομάδας σας, ώστε τα μέλη της ομάδας σας να γνωρίζουν γιατί είναι εδώ.
     privacy_statement:
-      private_to_group: 'Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη.'
-      private_to_parent_members: 'Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη του {{parent}}'
-    privacy: 'Ιδιωτικότητα'
+      private_to_group: Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη.
+      private_to_parent_members: Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη του {{parent}}
+      public_on_web: Το όνομα, η περιγραφή και τα συνημμένα στο πλαίσιο της ομάδας θα είναι ορατά στο κοινό
+    privacy: Ιδιωτικότητα
     profile: Προφίλ
-    permissions: 'Δικαιώματα'
-    thread_privacy: 'Ιδιωτικότητα του θέματος'
-    public_threads: 'Μόνο δημόσια θέματα'
-    public_discussions_subgroup: 'Οποιοσδήποτε στο {{parentGroupName}} μπορεί να δει τις συζητήσεις'
-    public_or_private_threads: 'Επιτρέπονται δημόσια και ιδιωτικά θέματα'
-    private_threads: 'Μόνο τα μέλη μπορούν να δεις τις συζητήσεις'
-    allow_public_threads: 'Επιτρέπονται δημόσια θέματα σε αυτή την ομάδα.'
-    submit_start_group: 'Δημιουργία ομάδας'
-    submit_start_subgroup: 'Δημιουργία υπο ομάδας'
-    submit_update: 'Ενημέρωση ρυθμίσεων'
+    permissions: Δικαιώματα
+    thread_privacy: Ιδιωτικότητα του θέματος
+    public_threads: Μόνο δημόσια θέματα
+    public_discussions_subgroup: Οποιοσδήποτε στο {{parentGroupName}} μπορεί να δει τις συζητήσεις
+    public_or_private_threads: Επιτρέπονται δημόσια και ιδιωτικά θέματα
+    private_threads: Μόνο τα μέλη μπορούν να δεις τις συζητήσεις
+    allow_public_threads: Επιτρέπονται δημόσια θέματα σε αυτή την ομάδα.
+    submit_start_group: Δημιουργία ομάδας
+    submit_start_subgroup: Δημιουργία υπο ομάδας
+    submit_update: Ενημέρωση ρυθμίσεων
     messages:
-      group_created: 'Η ομάδα ξεκίνησε'
-      group_updated: 'Η ομάδα ενημερώθηκε'
+      group_created: Η ομάδα ξεκίνησε
+      group_updated: Η ομάδα ενημερώθηκε
+    thread_defaults_help: Προεπιλεγμένες ρυθμίσεις για νέα νήματα
+    click_to_change_image: Κάντε κλικ για να αλλάξετε την εικόνα εξωφύλλου (4x1) ή το λογότυπο (1x1)
+    change_cover_image: αλλαγή εικόνας εξωφύλλου
+    change_logo: αλλαγή λογότυπου
+    permissions_explaination: 'Υπάρχουν δύο επίπεδα ιδιότητας μέλους που μπορεί να έχει ένα άτομο σε μια ομάδα: διαχειριστής και μέλος. Οι διαχειριστές μπορούν να επεξεργάζονται τις ρυθμίσεις της ομάδας, να κάνουν άλλα άτομα διαχειριστές και να εκτελούν όλες τις ενέργειες που αναφέρονται παρακάτω.'
+    parent_group: Ομάδα γονέων
+    new_organisation: Νέα οργάνωση
+    new_subgroup: Νέα υποομάδα
+    new_group_explainer: Ξεκινήστε μια νέα ομάδα Loomio για τον οργανισμό σας
+    new_subgroup_explainer: Ξεκινήστε μια υποομάδα μέσα σε μια υπάρχουσα ομάδα - έναν ιδιωτικό χώρο για μια ομάδα ατόμων από τον οργανισμό
+    subgroup_settings: Ρυθμίσεις υποομάδας
+    subgroup_name: Όνομα υποομάδας
+    organization_name: Ονομα Οργανισμού
+    handle: Λαβή
+    group_handle_placeholder: 'Χρησιμοποιείται στη διεύθυνση URL της ομάδας σας: {{host}}/{{handle}}'
+    start_organization_heading: Νέα οργάνωση
+    edit_organization_heading: Επεξεργασία ρυθμίσεων οργανισμού
+    subgroup_name_placeholder: Ποιο είναι το όνομα της υποομάδας σας;
+    organization_name_placeholder: Ποιο είναι το όνομα του οργανισμού σας;
+    new_description_placeholder: Γιατί δοκιμάζεις το Loomio; Τι αποφάσεις πρέπει να πάρετε μαζί;
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Πώς σκοπεύετε να χρησιμοποιήσετε το Loomio;</h3><p></p><h3 id="why-is-this-important-for-your-group"> Γιατί είναι αυτό σημαντικό για την ομάδα σας;</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Τι αποφάσεις πρέπει να πάρετε;</h3><p></p>
+    secret_by_default: Η ομάδα σας θα είναι προσβάσιμη μόνο από όσους έχουν προσκληθεί να συμμετάσχουν. Μπορείτε να το αλλάξετε αργότερα.
+    group_privacy_is_open_description: Δημόσια λίστα. Όλα τα νήματα είναι δημόσια.
+    group_privacy_is_closed_description: Ακαταχώριστος. Οποιοσδήποτε διαθέτει τον σύνδεσμο μπορεί να ζητήσει να συμμετάσχει. Όλα τα νήματα είναι ιδιωτικά.
+    group_privacy_is_closed_public_threads_description: Ακαταχώριστος. Οποιοσδήποτε διαθέτει τον σύνδεσμο μπορεί να ζητήσει να συμμετάσχει. Τα νήματα μπορεί να είναι δημόσια ή ιδιωτικά.
+    group_privacy_is_secret_description: Μόνο τα προσκεκλημένα άτομα μπορούν να βρουν την ομάδα. Όλα τα νήματα είναι ιδιωτικά.
+    confirm_change_to_secret: Εάν συνεχίσετε, όλα τα νήματα σε αυτήν την ομάδα και τις υποομάδες της θα γίνουν ιδιωτικά.
+    confirm_change_to_secret_subgroup: Εάν συνεχίσετε, όλα τα νήματα θα γίνουν ιδιωτικά.
+    confirm_change_to_public: Εάν συνεχίσετε, όλα τα νήματα σε αυτήν την ομάδα θα δημοσιοποιηθούν στον ιστό.
+    confirm_change_to_private_discussions_only: Εάν συνεχίσετε, τυχόν δημόσια νήματα σε αυτήν την ομάδα θα γίνουν ιδιωτικά.
+    subgroup_privacy_is_open_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι δημόσια.
+    subgroup_privacy_is_closed_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι ιδιωτικά.
+    subgroup_privacy_is_closed_public_threads_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Τα νήματα μπορεί να είναι δημόσια ή ιδιωτικά.
+    subgroup_privacy_is_closed_secret_parent_description: Τα μέλη του {{γονέα}} μπορούν να βρουν αυτήν την υποομάδα και να ζητήσουν να γίνουν μέλη. Όλα τα νήματα είναι ιδιωτικά. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα.
+    subgroup_privacy_is_secret_description: Μόνο τα προσκεκλημένα μέλη μπορούν να βρουν αυτήν την υποομάδα, να δουν ποιος είναι σε αυτήν και να δουν νήματα.
+    advanced_settings: Προηγμένες ρυθμίσεις
+    how_do_people_join: Πώς εντάσσονται οι άνθρωποι;
+    membership_granted_upon_request: Οποιοσδήποτε μπορεί να συμμετάσχει στην ομάδα.
+    membership_granted_upon_approval: Οποιοσδήποτε μπορεί να ζητήσει να συμμετάσχει, αλλά πρέπει να εγκριθεί.
+    membership_granted_upon_invitation: Μόνο πρόσκληση.
+    membership_granted_upon_approval_secret_parent: "<strong>Κατόπιν αιτήματος,</strong> οποιοσδήποτε από το {{γονέας}} μπορεί να ζητήσει να συμμετάσχει στην ομάδα."
+    parent_members_can_see_discussions: Τα μέλη του {{γονέα}} μπορούν να δουν ιδιωτικά νήματα
+    parent_members_can_see_discussions_help: Να επιτρέπεται στα μέλη της γονικής ομάδας να βλέπουν, αλλά όχι να συμμετέχουν, νήματα και δημοσκοπήσεις σε αυτήν την ομάδα
+    members_can_announce: Τα μέλη μπορούν να ειδοποιήσουν όλους στην ομάδα
+    members_can_announce_help: Επιτρέψτε στα μέλη να ειδοποιούν όλους στην ομάδα για ένα νήμα ή μια δημοσκόπηση
+    members_can_add_members: Τα μέλη μπορούν να προσκαλέσουν μέλη
+    members_can_add_members_help: Επιτρέψτε στα μέλη να προσκαλούν άτομα να συμμετάσχουν σε αυτήν την ομάδα
+    members_can_add_guests: Τα μέλη μπορούν να προσκαλέσουν επισκέπτες
+    members_can_add_guests_help: Επιτρέψτε στα μέλη να προσκαλούν επισκέπτες σε νήματα ή δημοσκοπήσεις σε αυτήν την ομάδα
+    members_can_create_subgroups: Τα μέλη μπορούν να δημιουργήσουν υποομάδες
+    members_can_create_subgroups_help: Επιτρέψτε στα μέλη να δημιουργήσουν και να γίνουν διαχειριστές νέων υποομάδων
+    members_can_edit_discussions: Τα μέλη μπορούν να διαχειρίζονται νήματα και σχόλια
+    members_can_edit_discussions_help: Επιτρέψτε στα μέλη να επεξεργάζονται, να μετακινούν, να καρφιτσώνουν, να προσθέτουν ετικέτες ή να κλείνουν νήματα
+    members_can_edit_comments: Τα μέλη μπορούν να επεξεργαστούν τα δικά τους σχόλια
+    members_can_edit_comments_help: Επιτρέψτε στα μέλη να επεξεργάζονται τα δικά τους σχόλια ανά πάσα στιγμή
+    members_can_delete_comments: Τα μέλη μπορούν να διαγράψουν τα δικά τους σχόλια
+    members_can_delete_comments_help: Επιτρέψτε στα μέλη να διαγράψουν τα δικά τους σχόλια από τα νήματα
+    members_can_start_discussions: Τα μέλη μπορούν να ξεκινήσουν νέα θέματα
+    members_can_start_discussions_help: Επιτρέψτε στα μέλη να ξεκινήσουν νέα νήματα εντός της ομάδας
+    members_can_raise_motions: Τα μέλη μπορούν να ξεκινήσουν ψηφοφορίες
+    members_can_raise_motions_help: Επιτρέψτε στα μέλη να ξεκινήσουν δημοσκοπήσεις και προτάσεις εντός των συζητήσεων ή της ομάδας
+    admins_can_edit_user_content: Οι διαχειριστές μπορούν να επεξεργαστούν τα σχόλια των μελών
+    admins_can_edit_user_content_help: Επιτρέψτε στους διαχειριστές να επεξεργάζονται περιεχόμενο γραμμένο από μέλη
+    upload_logo: Μεταφόρτωση λογότυπου
+    upload_cover_photo: Ανεβάστε φωτογραφία εξωφύλλου
   membership_requests_card:
-    heading: 'Αιτήσεις εγγραφής μελών'
+    heading: Αιτήσεις εγγραφής μελών
     manage_requests: Διαχείριση αιτήσεων
+    manage_requests_with_count: Διαχείριση αιτημάτων (%{count})
   membership_requests_page:
     heading: Αιτήσεις εγγραφής μελών
     approve: Έγκριση
     ignore: Αγνοήστε
+    no_pending_requests: Προς το παρόν, δεν υπάρχουν εκκρεμείς αιτήσεις μέλους για αυτήν την ομάδα.
+    no_previous_requests: Προς το παρόν δεν υπάρχουν προηγούμενα αιτήματα μέλους για αυτήν την ομάδα.
+    previous_requests: Προηγούμενα Αιτήματα
+    previous_request_response: "{{response}} από {{responder}}"
+    messages:
+      request_approved_success: Εγκρίθηκε το αίτημα ένταξης
+      request_ignored_success: Το αίτημα συμμετοχής αγνοήθηκε
   invitation_form:
-    invite_people: 'Προσκαλέστε άτομα'
-    copy_link: 'Αντιγραφή'
-    done: 'Έγινε'
+    invite_people: Προσκαλέστε άτομα
+    copy_link: Αντιγραφή
+    done: Έγινε
+    group_url: Διεύθυνση URL ομάδας
+    reusable_invitation_link: Επαναχρησιμοποιήσιμος σύνδεσμος πρόσκλησης
+    error: Σφάλμα κατά την προσπάθεια αντιγραφής στο πρόχειρο
+    aria_label: Φόρμα πρόσκλησης
+    invite_guests: Προσκαλέστε επισκέπτες
+    notify_people: Ειδοποιήστε τους ανθρώπους
+    invite_people_to_group: Πρόσκληση στο {{name}}
+    group: Ομάδα
+    group_placeholder: Επιλέξτε μια ομάδα
+    shareable_link: Σύνδεσμος με δυνατότητα κοινής χρήσης
+    share_group: Μοιραστείτε την ομάδα σας
+    email_addresses: Διευθύνσεις ηλεκτρονικού ταχυδρομείου
+    email_addresses_placeholder: π.χ. helperbot@loomio.org, friendlybot@loomio.org
+    secret_group_url_explanation: Αυτή είναι η διεύθυνση για την ομάδα σας. Μόνο τα προσκεκλημένα μέλη θα μπορούν να δουν την ομάδα.
+    shareable_group_url_explanation: Μπορείτε να μοιραστείτε αυτόν τον σύνδεσμο δημόσια. Τα άτομα μπορούν να ζητήσουν συμμετοχή και εσείς μπορείτε να εγκρίνετε ή να αγνοήσετε αιτήματα.
+    shareable_invitation_explanation: Μην κοινοποιείτε αυτόν τον σύνδεσμο δημόσια. Οποιοσδήποτε το έχει μπορεί να εγγραφεί στην ομάδα σας χωρίς την έγκρισή σας. Μοιραστείτε το μόνο μέσω ιδιωτικών επικοινωνιών για να επιτρέψετε σε άτομα στον οργανισμό σας να συμμετέχουν.
+    shareable_link_reset: Επαναφορά συνδέσμου με δυνατότητα κοινής χρήσης. Ο προηγούμενος σύνδεσμος δεν θα λειτουργεί πλέον.
+    email_explanation: Εναλλακτικά, εισαγάγετε παρακάτω διευθύνσεις email για να στείλετε προσκλήσεις μέσω email.
+    add_custom_message: Κάντε την πρόσκλησή σας προσωπική,
+    add_custom_message_link: προσθέστε ένα προσαρμοσμένο μήνυμα.
+    custom_message: Προσαρμοσμένο μήνυμα
+    custom_message_placeholder: Εισαγάγετε ένα προσωπικό μήνυμα που θα συμπεριλάβετε στην πρόσκληση.
+    add_members: Προσθήκη μελών
+    from_parent_group: από όνομα}}.
+    send: Στείλετε
+    messages:
+      invitation_sent: Η πρόσκληση στάλθηκε.
+      invitations_sent: "%{count} προσκλήσεις στάλθηκαν."
+      no_invitations: Ωχ! Επαληθεύστε ότι η διεύθυνση email είναι σωστή και δοκιμάστε ξανά.
+      max_invitations: Εάν θέλετε να στείλετε περισσότερες από 100 προσκλήσεις, χρησιμοποιήστε έναν σύνδεσμο ομάδας.
   memberships_page:
-    members: 'Μέλη'
-    name_label: 'Όνομα'
-    remove_member_label: 'Αφαιρέστε'
+    members: Μέλη
+    name_label: Όνομα
+    remove_member_label: Αφαιρέστε
+    coordinator_label: διαχειριστής
+    fragment_placeholder: Φιλτράρισμα χρηστών κατά όνομα ή όνομα χρήστη...
+    only_one_admin: Υπάρχει μόνο ένας διαχειριστής σε αυτήν την ομάδα. Συνιστάται να ορίσετε τουλάχιστον ένα ακόμη μέλος ως διαχειριστή.
+    messages:
+      remove_member_success: Καταργήθηκε το {{name}}
+      make_admin_success: Ο χρήστης {{name}} είναι πλέον διαχειριστής
+      remove_admin_success: Ο χρήστης {{name}} δεν είναι πλέον διαχειριστής
+    remove_admin_from_self:
+      question: Είστε σίγουροι ότι δεν θέλετε πλέον να είστε διαχειριστής;
   profile_page:
-    profile: 'Προφίλ'
-    picture_label: 'Εικόνα'
-    name_label: 'Όνομα'
-    username_label: 'Όνομα χρήστη'
-    email_label: 'Ηλεκτρονική Διεύθυνση'
-    locale_label: 'Γλώσσα'
+    profile: Προφίλ
+    picture_label: Εικόνα
+    name_label: Όνομα
+    username_label: Όνομα χρήστη
+    email_label: Ηλεκτρονική Διεύθυνση
+    locale_label: Γλώσσα
+    account_is_bot: Αυτός είναι ένας λογαριασμός bot
+    bot_account_warning: Οι λογαριασμοί bot δεν θα κληθούν να ψηφίσουν σε δημοσκοπήσεις ή να συμμετάσχουν σε συζητήσεις
+    incomplete_profile: Ημιτελές προφίλ!
+    set_your_profile_picture: Ορίστε την εικόνα του προφίλ σας
+    messages:
+      updated: Το προφιλ ενημερωθηκε
+      picture_changed: Η εικόνα προφίλ ενημερώθηκε
+      password_changed: Ο κωδικός ενημερώθηκε
+      deactivated: Ο λογαριασμός απενεργοποιήθηκε
+    deactivated_user: Απενεργοποιημένος χρήστης
+    date_time_pref_label: Μορφή ημερομηνίας και ώρας
+    merge_accounts: Συγχώνευση λογαριασμών
+    change_picture_link: Αλλαξε φωτογραφία
+    change_password_link: Επαναφέρετε τον κωδικό πρόσβασης
+    delete_account: Οριστική διαγραφή λογαριασμού
+    delete_user_link: Διαγραφή λογαριασμού
+    edit_profile: Επεξεργασία προφίλ
+    username_helptext: Όλα τα πεζά γράμματα και οι αριθμοί, έως 30 χαρακτήρες
+    short_bio_label: Εισαγωγή
+    short_bio_placeholder: Συστηθείτε, συμπεριλάβετε τομείς εξειδίκευσης, θέματα ενδιαφέροντος και τυχόν συνδεδεμένους οργανισμούς
+    locale_placeholder: Επιλέξτε τη γλώσσα που προτιμάτε
+    location_label: Τοποθεσία
+    location_placeholder: Που βασίζεσαι;
+    update_profile: Ανανέωση προφίλ
+    deactivate_account: Απενεργοποίηση λογαριασμού χρήστη
+    help_translate: Μπορείτε να μας βοηθήσετε να μεταφράσουμε το Loomio;
+    updated_on_sign_in: Παρέχεται από το πρόγραμμα περιήγησής σας και ενημερώνεται όταν συνδέεστε
   change_picture_form:
-    use_gravatar: 'Χρησιμοποιήστε Gravatar'
+    use_gravatar: Χρησιμοποιήστε Gravatar
+    aria_label: Φόρμα φωτογραφίας προφίλ
+    title: Ορισμός φωτογραφίας προφίλ
+    helptext: Μπορείτε να ανεβάσετε τη δική σας εικόνα προφίλ ή εάν έχετε λογαριασμό <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> , μπορείτε να τη χρησιμοποιήσετε.
+    use_initials: Χρησιμοποιήστε αρχικά
+    use_uploaded: Ανεβάστε νέα φωτογραφία
+    existing_upload: Υπάρχουσα μεταφόρτωση
+    use_provider: Χρησιμοποιήστε τη φωτογραφία {{provider}}
   email_settings_page:
     monday: Δευτέρα
     tuesday: Τρίτη
@@ -381,79 +1127,1372 @@ el:
     saturday: Σάββατο
     sunday: Κυριακή
     announcement_label: Ανακοινώσεις
+    every_day: Κάθε μέρα
+    every_second_day: Κάθε δεύτερη μέρα
+    header: Ρυθμίσεις ειδοποιήσεων
+    account_deactivated: Ο λογαριασμός σας έχει απενεργοποιηθεί. Δεν θα λάβετε ποτέ κανένα email.
+    deactivate_header: Σταματήστε όλα τα email για πάντα
+    deactivate_description: Εάν δεν θέλετε να λάβετε ποτέ άλλο email από εμάς, μπορείτε να απενεργοποιήσετε τον λογαριασμό χρήστη σας.
+    email_newsletter: Ενημερωτικό δελτίο Loomio
+    email_newsletter_description: Λάβετε ενημερώσεις σχετικά με νέες δυνατότητες, εκπαίδευση, εκδηλώσεις στην πόλη σας και το μέλλον του Loomio. Συνήθως 2 ή 3 email το χρόνο.
+    email_catch_up_day: Ενημερωτικό email σύνοψης
+    daily_summary_description: Επιλέξτε πότε θα λαμβάνετε το συνοπτικό μήνυμα ηλεκτρονικού ταχυδρομείου. Αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου περιέχει οποιαδήποτε νέα δραστηριότητα που δεν έχετε δει. Ένας καλός τρόπος για να μείνετε ενημερωμένοι εάν δεν είστε τακτικός χρήστης.
+    on_participation_label: Εγγραφείτε για συμμετοχή
+    on_participation_description: Όταν συμμετέχετε σε ένα νήμα, όλη η περαιτέρω δραστηριότητα θα σας αποσταλεί αμέσως μέσω email.
+    announcement_description: Θα λάβετε ένα email για όλο το περιεχόμενο που έχει ανακοινωθεί από άτομα στις ομάδες σας
+    mentioned_label: Αναφορές & Απαντήσεις
+    mentioned_description: Όταν κάποιος @ σας αναφέρει σε ένα σχόλιο ή σας απαντήσει, θα λάβετε ένα μήνυμα ηλεκτρονικού ταχυδρομείου ειδοποίησης
+    update_settings: Αποθήκευσε τις αλλαγές
+    specific_groups: Ρυθμίσεις για συγκεκριμένες ομάδες
+    default_settings:
+      loud_description: Όταν γίνετε μέλος σε μια νέα ομάδα, θα λαμβάνετε email <strong>κάθε φορά που υπάρχει δραστηριότητα</strong> .
+      normal_description: Όταν γίνετε μέλος σε μια νέα ομάδα, θα λάβετε email για <strong>νέα θέματα και προτάσεις</strong> .
+      quiet_description: Όταν γίνετε μέλος σε μια νέα ομάδα, <strong>δεν θα λαμβάνετε email σχετικά με τη δραστηριότητα</strong> .
+    edit: Επεξεργασία
+    messages:
+      updated: Οι ρυθμίσεις email ενημερώθηκαν
+    learn_more: Μάθετε περισσότερα σχετικά με τις ρυθμίσεις email...
   dashboard_page:
-    aria_label: 'Πίνακας Εργαλείων'
-    recent_threads: "Πρόσφατα θέματα"
+    aria_label: Πίνακας Εργαλείων
+    recent_threads: Πρόσφατα θέματα
     mark_as_read: Σημείωσε ως διαβασμένα
     filtering:
       proposals: Προτάσεις
+      filter_threads: Νήματα φίλτρου
+      filter_threads_aria_label: Νήματα φίλτρου
+      dropdown_heading: Φιλτράρισμα πίνακα ελέγχου
+      all: Πρόσφατα θέματα
+      all_aria_label: Εμφάνιση πρόσφατων νημάτων
+      all_description: Προβολή πρόσφατων νημάτων
+      proposals_aria_label: Αυτήν τη στιγμή εμφανίζονται νήματα με ενεργές προτάσεις
+      proposals_description: Προβολή μόνο νημάτων με ενεργές προτάσεις
+      muted: Σίγαση νημάτων
+      muted_aria_label: Το ρεύμα εμφανίζει σίγαση νημάτων
+      muted_description: Προβολή μόνο των νημάτων που έχουν τεθεί σε σίγαση
     threads_from:
-      today: 'Σήμερα'
-      yesterday: 'Εχθές'
+      today: Σήμερα
+      yesterday: Εχθές
+      group: Νήματα από
+      pinned: Καρφιτσωμένες κλωστές
+      proposals: Νήματα με ενεργές αποφάσεις
+      starred: Νήματα με αστέρι
+      thisweek: Αυτή την εβδομάδα
+      thismonth: Αυτο το μηνα
+      older: Παλιότερο από ένα μήνα
+    polls_to_vote_on: Δημοσκοπήσεις για ψηφοφορία
+    no_polls_to_vote_on: Δεν υπάρχουν δημοσκοπήσεις για τις οποίες χρειάζεται να ψηφίσετε
+    recent_polls: Πρόσφατες δημοσκοπήσεις
+    current_polls: Τρέχουσες δημοσκοπήσεις
+    no_groups:
+      show_all: Καλως ΗΡΘΑΤΕ! Δεν είστε ακόμη μέλος σε καμία ομάδα. <a href="/explore">Περιηγηθείτε σε δημόσιες ομάδες</a> ή <a href="/g/new">Ξεκινήστε μια ομάδα</a> .
+      show_muted: Δεν έχετε κανένα νήμα σε σίγαση επειδή δεν είστε μέλος καμίας ομάδας.
+    no_threads:
+      show_all: Δεν έχετε πρόσφατες συζητήσεις.
+      show_proposals: Δεν υπάρχουν ενεργές προτάσεις αυτήν τη στιγμή.
+      show_muted: Δεν έχετε σίγαση νημάτων.
+    view_recent: Προβολή όλων των πρόσφατων νημάτων;
+    load_more: Φόρτωση περισσότερων νημάτων
+    dismiss: Απολύω
+    thread_dismissed: Το νήμα επισημάνθηκε ως αναγνωσμένο
+    thread_recalled: Το νήμα ανακλήθηκε
+    explain_mute:
+      title: Δεν έχετε θέσει ακόμα σε σίγαση κανένα νήμα.
+      explanation_html: Η σίγαση είναι ένας τρόπος απόκρυψης ή σίγασης των νημάτων που δεν σας ενδιαφέρουν. Η σίγαση σημαίνει ότι δεν θα το βλέπετε στα <strong>Πρόσφατα</strong> ή <strong>Μη αναγνωσμένα</strong> και δεν θα ειδοποιηθείτε για δραστηριότητα σε αυτό το νήμα, όπως προτάσεις. Θα ειδοποιηθείτε μόνο εάν κάποιος <strong>@αναφέρει</strong> το όνομά σας.
+      instructions: Για σίγαση ενός νήματος, τοποθετήστε το δείκτη του ποντικιού πάνω του και κάντε κλικ στο εικονίδιο σίγασης.
+      see_muted_html: Για να δείτε τα νήματα σε σίγαση, κάντε κλικ στην <strong>επιλογή "Σίγαση"</strong> . Μπορείτε να καταργήσετε τη σίγαση τοποθετώντας το δείκτη του ποντικιού και κάνοντας κλικ στο ίδιο εικονίδιο.
+    thread_preview:
+      you_voted: Ψηφίσατε {{position}}
+      undecided: Είσαι αναποφάσιστος
   inbox_page:
     no_groups:
       start: Εκίνηση
       or: ή
+      explanation: Δεν έχετε μη αναγνωσμένα νήματα επειδή δεν είστε μέλος καμίας ομάδας.
+      join_group: <a href="/explore">εγγραφείτε σε</a> μια ομάδα για να δείτε νήματα.
+    no_threads: Ουάου! Έχετε διαβάσει όλα τα νήματα στα εισερχόμενά σας.
+    unread_threads: Μη αναγνωσμένα νήματα
+    view_more: Δείτε περισσότερα
   discussion:
-    started_by: 'Ξεκίνησε από τον/την <strong>{{name}}</strong>'
+    started_by: Ξεκίνησε από τον/την <strong>{{name}}</strong>
+    invite_only: Μόνο με πρόσκληση
+    private_thread: Ιδιωτικό νήμα
+    max_threads_reached: <p>Έχετε χρησιμοποιήσει όλα τα νήματα {{maxThreads}} που είναι διαθέσιμα σε αυτήν την ομάδα.</p><p> Επόμενο βήμα, <a href="{{upgradeUrl}}" target="_blank">επιλέξτε ένα σχέδιο</a> για να συνεχίσετε τη συνεργασία στο Loomio.</p>
+    subscription_canceled: <p>Η συνδρομή σας δεν είναι ενεργή.</p><p> Κάντε <a href="{{upgradeUrl}}" target="_blank">αναβάθμιση</a> για να συνεχίσετε να χρησιμοποιείτε το Loomio.</p>
+    activity: Δραστηριότητα
+    activity_placeholder: Καμία δραστηριότητα ακόμα!
+    load_previous: Φόρτωση προηγούμενης δραστηριότητας
+    pin:
+      pinned: Το νήμα καρφώθηκε
+      unpinned: Το νήμα ξεκαρφιτσώθηκε
+    volume:
+      mute_message: Το νήμα τέθηκε σε σίγαση
+      unmute_message: Καταργήθηκε η σίγαση του νήματος
+    closed:
+      reopened: Το νήμα άνοιξε ξανά
+      closed: Το νήμα έκλεισε
   activity_card:
     latest: Τελευταία
     context: Περιεχόμενο
+    count_responses: "%{count} απαντήσεις"
+    event_pinned: Καρφιτσωμένο στη γραμμή χρόνου
+    event_unpinned: Ξεκαρφιτσώθηκε από τη γραμμή χρόνου
+    beginning: Αρχή
+    end: Τέλος
+    unread: Μη αναγνωσμένο (%{count})
+    chronological: Χρονολογικός
+    nested: Φωλιασμένο
+    attachment_display:
+      aria_label: 'Συνημμένο αρχείο:'
+      image_alt: Συνημμένη εικόνα
+    n_previous: Φόρτωση %{count} προηγούμενων απαντήσεων
+    n_more: Φόρτωση %{count} απαντήσεων
+    add_comment: Πρόσθεσε σχόλιο
+    add_poll: Προσθήκη δημοσκόπησης
+    add_outcome: Προσθέστε το αποτέλεσμα
+    comment: Σχόλιο
+    facilitate: Διευκολύνω
+    start_decision: Απόφαση έναρξης
+    start_vote: Έναρξη ψηφοφορίας
   thread_group:
     aria_label: Όνομα ομάδας
   thread_context:
-    close_thread: 'Κλείσε'
-    mute_thread: 'Σίγαση'
-    delete_thread: 'Διαγραφή'
+    close_thread: Κλείσε
+    mute_thread: Σίγαση
+    delete_thread: Διαγραφή
+    current_poll_type_banner: Τρέχουσα {{pollType}}
+    item_maybe_deleted: Δεν είναι δυνατή η εύρεση της ζητούμενης τοποθεσίας μέσα στο νήμα. Μπορεί να έχει διαγραφεί.
+    aria_label: Περιεχόμενο νήματος
+    thread_options: Επιλογές νήματος
+    email_settings: Ρυθμίσεις ειδοποιήσεων
+    edit: Επεξεργασία
+    edit_thread: Επεξεργασία
+    reopen_thread: Ξανανοίγω
+    pin_thread: Καρφίτσα
+    unpin_thread: Ξεκαρφιτσώνω
+    move_thread: Κίνηση
+    print_thread: Τυπώνω
+    add_comment: Σχόλιο
+    seen_by_count: Προβλήθηκε από %{count}
+    count_notified: Ειδοποιήθηκε %{count}
+    forked_from: Διχαλωτή από
   delete_comment_dialog:
-    title: 'Διαγραφή σχόλιου'
+    title: Διαγραφή σχόλιου
+    question: Αυτό θα διαγράψει οριστικά αυτό το σχόλιο. Εάν συνεχίσετε, δεν είναι δυνατή η επαναφορά του.
   contact_message_form:
-    name_label: 'Το όνομα σας'
-    subject_label: "Θέμα"
-    email_label: 'Η Ηλεκτρονική Διεύθυνση σας'
-    message_label: 'Το μήνυμα σας'
+    name_label: Το όνομα σας
+    subject_label: Θέμα
+    email_label: Η Ηλεκτρονική Διεύθυνση σας
+    message_label: Το μήνυμα σας
+    alt_title: Επικοινωνήστε με την Υποστήριξη Loomio
+    need_message: Παρακαλώ εισάγετε ένα μήνυμα για να σας βοηθήσουμε :-)
+    respond_asap: Στείλτε ένα μήνυμα στην ομάδα του Loomio και θα απαντήσουμε το συντομότερο δυνατό.
+    happy_to_help_with: Είμαστε στην ευχάριστη θέση να σας βοηθήσουμε με ερωτήσεις πωλήσεων, αιτήματα υποστήριξης, αιτήματα λειτουργιών, αναφορά σφαλμάτων ή ζητήματα που αντιμετωπίζετε.
+    title: Γεια σου! Πώς μπορούμε να βοηθήσουμε?
+    contact_us_email: 'Μπορείτε επίσης να μας στείλετε email: <a href="mailto:{{email}}">{{email}}</a>'
+    contact_us: Επικοινωνήστε μαζί μας
+    name_placeholder: Εισάγετε το όνομά σας...
+    subject_placeholder: 'Π.χ.: Πρόβλημα σύνδεσης ή Πρόταση λειτουργίας'
+    email_placeholder: Εισάγετε τη διευθύνση του ηλεκτρονικού ταχυδρομείου σας...
+    message_placeholder: Εάν ζητάτε υποστήριξη, προσπαθήστε να παρέχετε όσες περισσότερες πληροφορίες μπορείτε.
+    send_message: Να στείλετε μήνυμα
+    new_contact_message: Ευχαριστώ για την επικοινωνία. θα επικοινωνήσουμε μαζί σας σύντομα!
+    consent_message: Επικοινωνώντας μαζί μας, συναινείτε στο προσωπικό μας να έχει πρόσβαση στον λογαριασμό σας όπως απαιτείται.<br /> Η ομάδα υποστήριξής μας μιλάει αγγλικά και θα μεταφράσει το μήνυμά σας με τη Μετάφραση Google εάν απαιτείται.<br /> Στόχος μας είναι να απαντάμε σε όλα τα μηνύματα εντός 24 ωρών.
+    success: Ευχαριστούμε για το μήνυμά σας, {{name}}. Θα έχετε νέα μας σύντομα.
+    success_via_email: Ευχαριστούμε για το μήνυμά σας, {{name}}. Θα απαντήσουμε μέσω email εντός 24 ωρών.
   decision_tools_card:
     proposal_title: Πρόταση
     poll_title: Ψηφοφορία
     meeting_title: Χρόνος ψηφοφορίας
+    choose_type: Επιλέξτε τύπο δημοσκόπησης
+    title: Διευκολύνω
+    recommended: Συνιστάται
+    question_title: Γύρος ερώτησης
+    advice_title: Συμβουλή
+    consent_title: Συγκατάθεση
+    consensus_title: Ομοφωνία
+    count_title: Συμμετοχή
+    check_title: Έλεγχος αίσθησης
+    meeting: Συνάντηση
+    score_title: Δημοσκόπηση βαθμολογίας
+    dot_vote_title: Τελεία ψήφου
+    ranked_choice_title: Κατάταξη επιλογή
+    gradients_of_agreement_title: Διαβαθμίσεις συμφωνίας
   poll_common:
     have_your_say: Πείτε την γνώμη σας
     save_changes: Αποθήκευση
+    superseded: Αντικαταστάθηκε
+    need_help_with_templates: Χρειάζεστε βοήθεια για τη δημιουργία των δικών σας προτύπων αποφάσεων;
+    categorize_poll_templates: Κατηγοριοποιήστε τα πρότυπα δημοσκοπήσεων
+    show_all_templates_in_one_list: Εμφάνιση όλων των προτύπων σε μία λίστα
+    advice_process: Διαδικασία συμβουλών
+    consent_process: Διαδικασία συναίνεσης
+    consensus_process: Διαδικασία συναίνεσης
+    question_round: Γύρος ερώτησης
+    edit_template: Επεξεργασία προτύπου
+    proposal: Πρόταση
+    run_process: Εκτέλεση διαδικασίας
+    proposal_templates: Πρότυπα προτάσεων
+    custom: Εθιμο
+    custom_process: Προσαρμοσμένη διαδικασία
+    custom_poll: Προσαρμοσμένη δημοσκόπηση
+    delete_poll: Διαγραφή δημοσκόπησης
+    select_count_options: Επιλέξτε {{count}} επιλογές
+    select_minimum_to_maximum_options: Επιλέξτε {{minimum}} έως {{maximum}} επιλογές
+    custom_poll_types: Προσαρμοσμένοι τύποι δημοσκόπησης
+    hidden_poll_templates: Κρυφά πρότυπα δημοσκοπήσεων
+    poll_template: Πρότυπο δημοσκόπησης
+    poll_template_saved: Το πρότυπο δημοσκόπησης αποθηκεύτηκε
+    poll_templates: Πρότυπα δημοσκοπήσεων
+    poll_types: Τύποι δημοσκοπήσεων
+    new_proposal_template: Νέο πρότυπο πρότασης
+    edit_proposal_template: Επεξεργασία προτύπου πρότασης
+    new_poll_template: Νέο πρότυπο δημοσκόπησης
+    edit_poll_template: Επεξεργασία προτύπου δημοσκόπησης
+    new_poll_type: Νέος τύπος δημοσκόπησης
+    edit_poll_type: Επεξεργασία τύπου δημοσκόπησης
+    new_custom_poll: Νέα προσαρμοσμένη δημοσκόπηση
+    edit_custom_poll: Επεξεργασία προσαρμοσμένης δημοσκόπησης
+    create_a_custom_poll_type: Δημιουργήστε έναν νέο τύπο δημοσκόπησης με προσαρμοσμένη ορολογία και ρυθμίσεις
+    create_a_custom_process: Δημιουργήστε μια νέα διαδικασία με τη δική σας ορολογία και επιλογές
+    create_a_custom_poll: Δημιουργήστε μια δημοσκόπηση με προσαρμοσμένη ορολογία και ρυθμίσεις
+    decision: Απόφαση
+    decision_templates: Πρότυπα αποφάσεων
+    remove_your_vote: Καταργήστε την ψήφο σας
+    remove_your_response: Καταργήστε την απάντησή σας
+    vote_now: Ψηφίστε τώρα
+    review_due: Οφειλόμενη επανεξέταση
+    your_response: Η απάντησή σου
+    change_your_response: Επεξεργασία απάντησης
+    please_vote: Παρακαλώ ψηφίστε
+    reason: Λόγος
+    response: Απάντηση
+    reason_placeholder: Εξηγήστε εν συντομία γιατί ψηφίσατε με αυτόν τον τρόπο και, στη συνέχεια, κάντε κλικ στην επιλογή "Υποβολή ψήφου"
+    message: Μήνυμα
+    results: Αποτελέσματα
+    current_results: Τρέχοντα αποτελέσματα
+    responses: Απαντήσεις
+    close_poll_type: Κλείσιμο {{pollType}}
+    close_early: Κλείσιμο νωρίς
+    totals: Σύνολα
+    participate: Συμμετέχω
+    vote: Ψήφος
+    votes: Ψήφοι
+    update_outcome: Ενημερώστε το αποτέλεσμα
+    outcome: Αποτέλεσμα
+    outcomes: Αποτελέσματα
+    statement: Δήλωση
+    change_your_stance: Επεξεργασία απάντησης
+    load_more: Φόρτωσε περισσότερα
+    details: Λεπτομέριες
+    participant_name: Το όνομα σου
+    participant_email: Διεύθυνση ηλεκτρονικού ταχυδρομείου
+    submit_vote: Υποβολή ψήφου
+    submit_response: Υποβολή απάντησης
+    update_vote: Ενημέρωση ψήφου
+    update_response: Ενημέρωση απάντησης
+    share_poll: Κοινή χρήση δημοσκόπησης
+    share_proposal: Μοιραστείτε την πρόταση
+    share_count: Κοινή χρήση επιταγής
+    start_poll: Ξεκινήστε μια απόφαση
+    publish_poll: Κοινή χρήση δημοσκόπησης
+    share_outcome: Μοιραστείτε το αποτέλεσμα
+    view_all: Προβολή όλων
+    change_vote: Άλλαξε την ψήφο σου
+    change_response: Αλλάξτε την απάντησή σας
+    max_score: Μέγιστη βαθμολογία
+    min_score: Ελάχιστη βαθμολογία
+    too_long: Πολύ μακρύ
+    edit_warning: Η επεξεργασία συνιστάται μόνο για μικρές αλλαγές ή για διόρθωση ορθογραφικών λαθών. Για σημαντικές αλλαγές, κλείστε αυτό το {{pollType}} και ξεκινήστε ένα νέο.
+    no_voting: Μόνο για συζήτηση, η ψηφοφορία απενεργοποιήθηκε
   discussions_panel:
     open: Άνοιγμα
     all: Όλα
     closed: Έκλεισε
+    unread: Μη αναγνωσμένο (%{count})
+    include_subgroups_mine: "{{name}} και οι υποομάδες μου"
+    include_subgroups_all: "{{name}} και όλες οι υποομάδες"
+    no_results_found: Δεν υπάρχουν αποτελέσματα για "{{αναζήτηση}}"
+    welcome_to_your_new_group: Καλώς ήρθατε στη νέα σας ομάδα Loomio!
+    lets_start_a_thread: Ας ξεκινήσουμε ένα νήμα. Κάντε κλικ στο "Νέο νήμα" για να συνεχίσετε.
   members_panel:
-    everyone: 'Όλοι'
-    order_by_name: 'Όνομα'
-    header_name: 'Όνομα'
-    header_username: 'Όνομα χρήστη'
-    accepted: 'Μέλη'
+    everyone: Όλοι
+    order_by_name: Όνομα
+    header_name: Όνομα
+    header_username: Όνομα χρήστη
+    accepted: Μέλη
+    bot: Bot
+    no_results: Δεν βρέθηκαν μέλη
+    all: Ολα
+    sort: Είδος
+    order_label: Σειρά
+    order_by_created: Το πιο παλιό
+    show_users_in_subgroups: Εμφάνιση χρηστών και σε υποομάδες
+    order_by_created_desc: Νεότερο
+    order_by_admin_desc: Διαχειριστές
+    loaded_of_total: "{{loaded}} από {{total}}"
+    view_requests: Προβολή αιτημάτων
+    header_role: Ρόλος
+    header_invited_by: Προσκεκλημένος από
+    header_invited: Καλεσμένος
+    header_actions: Ενέργειες
+    directory: Ευρετήριο
+    invitations: Προσκλήσεις
+    requests: Αιτήσεων
+    admin: διαχειριστής
+    guest: Επισκέπτης
+    sharable_link: Σύνδεσμος με δυνατότητα κοινής χρήσης
+    last_seen: Τελευταία επίσκεψη {{ημερομηνία}}
+    invited_by_name: Προσκλήθηκε από {{name}}
   polls_panel:
-    all: 'Όλα'
-    open: 'Άνοιγμα'
-    closed: 'Έκλεισε'
+    all: Όλα
+    open: Άνοιγμα
+    closed: Έκλεισε
+    new_poll: Νέα δημοσκόπηση
+    any_type: Ολοι οι τύποι
+    any_status: Οποιαδήποτε κατάσταση
+    need_vote: Χρειάζεται ψήφος
+    no_polls: Δεν βρέθηκαν δημοσκοπήσεις
   poll_common_form:
     voting_methods:
       time_poll: Χρόνος ψηφοφορίας
+      question: Γύρος ερώτησης
+      question_hint: Προσκαλέστε ερωτήσεις και σχόλια για την πρότασή σας
+      show_thumbs: Εμφάνιση αντίχειρων
+      show_thumbs_hint: Οι ψηφοφόροι επιλέγουν τον αντίχειρα προς τα πάνω, προς τα κάτω, προς τα πλάγια ή το χέρι προς τα πάνω
+      choose: Επιλέγω
+      simple_poll: Απλή δημοσκόπηση
+      choose_hint: Οι ψηφοφόροι επιλέγουν την καλύτερη επιλογή (ή επιλογές)
+      score: Σκορ
+      score_hint: Οι ψηφοφόροι δίνουν μια βαθμολογία σε κάθε επιλογή
+      allocate: Διανέμω
+      allocate_hint: Οι ψηφοφόροι κατανέμουν έναν προϋπολογισμό βαθμών μεταξύ των επιλογών
+      ranked_choice: Κατάταξη επιλογή
+      ranked_choice_hint: Οι ψηφοφόροι οργανώνουν επιλογές με σειρά από τις περισσότερες προς τις λιγότερο προτιμώμενες
+      time_poll_hint: Οι ψηφοφόροι υποδεικνύουν πότε είναι διαθέσιμοι να συναντηθούν
     closed: Έκλεισε
     start: Εκίνηση
+    notify_everyone_when_poll_starts: Ειδοποίηση όλων όταν ξεκινά το %{poll_type}
+    option_has_votes_confirm_delete: Μερικοί άνθρωποι ψήφισαν υπέρ αυτής της επιλογής, είστε βέβαιοι ότι θέλετε να τη διαγράψετε;
+    example_title: Παράδειγμα τίτλου
+    example_title_hint: Δώστε ένα παράδειγμα ενός καλού τίτλου πρότασης
+    example_details_placeholder: Δώστε ένα σημείο εκκίνησης για μια πρόταση ή δημοσκόπηση. Οι ερωτήσεις μπορεί να είναι χρήσιμες προτροπές για να κάνουν τους ανθρώπους να γράφουν. Συμπεριλάβετε τυχόν κανόνες ή υπενθυμίσεις που θα πρέπει να γνωρίζουν οι συμμετέχοντες.
+    confirm_delete: Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το πρότυπο δημοσκόπησης; Αυτό δεν μπορεί να αναιρεθεί.
+    show_advanced_settings: Εμφάνιση σύνθετων ρυθμίσεων
+    hide_advanced_settings: Απόκρυψη σύνθετων ρυθμίσεων
+    choose_at_least: Επιλέξτε τουλάχιστον
+    choose_at_most: Διαλέξτε το πολύ
+    please_review_the_form: Ελέγξτε τη φόρμα
+    option_added_please_add_details: Η επιλογή προστέθηκε! Προσθέστε κάποιες λεπτομέρειες, ώστε οι άλλοι να γνωρίζουν τι σημαίνει.
+    default_duration_in_days: Προεπιλεγμένη διάρκεια σε ημέρες
+    default_duration_in_days_hint: Πόσες μέρες πρέπει να δοθούν για να ψηφίσει ο κόσμος;
+    how_many_options_can_a_voter_choose: Πόσες από αυτές τις επιλογές μπορεί να επιλέξει ένας ψηφοφόρος;
+    minimum_choices: Ελάχιστες επιλογές
+    maximum_choices: Μέγιστες επιλογές
+    content: Περιεχόμενο
+    reminder: Υπενθύμιση
+    your_in_zone: 'Τρέχουσα ζώνη ώρας: %{zone}'
+    show_other_zones: Εμφάνιση άλλων ζωνών ώρας
+    hide_other_zones: Απόκρυψη άλλων ζωνών ώρας
+    this_is_a_template_for_new_polls: Αυτό είναι ένα πρότυπο για νέες δημοσκοπήσεις
+    voting_method: Μέθοδος ψηφοφορίας
+    process: Επεξεργάζομαι, διαδικασία
+    process_name: Τίτλος προτύπου
+    process_name_hint: Πώς ονομάζετε αυτό το πρότυπο; Π.χ. συμβουλές ρόλου, Έλεγχος θερμοκρασίας, Έγκριση πρακτικών
+    process_subtitle: Υπότιτλος προτύπου
+    process_subtitle_hint: Μια περιγραφή μιας γραμμής για το πότε ή γιατί να χρησιμοποιήσετε αυτό το πρότυπο
+    process_introduction: Βοήθεια για το πρότυπο
+    process_introduction_hint: Μερικές παράγραφοι που εξηγούν πώς να χρησιμοποιήσετε το πρότυπο. Συμπεριλάβετε συνδέσμους σε πόρους που μπορεί να είναι χρήσιμοι.
+    you_can_set_a_prompt_per_option: Επεξεργαστείτε το μήνυμα προτροπής για κάθε επιλογή από την καρτέλα λεπτομερειών
+    chart_type: Τύπος γραφήματος
+    title: Τίτλος
+    title_hint: Ποια είναι η απόφαση που πρέπει να πάρετε;
+    no_options_add_some: Αυτή η δημοσκόπηση δεν έχει επιλογές, προσθέστε μερικές παρακάτω.
+    details: Λεπτομέριες
+    example_details: Παραδείγματα λεπτομερειών
+    details_placeholder: Αυτή είναι η ευκαιρία σας να εξηγήσετε τι ψηφίζει ο κόσμος
+    options: Επιλογές
+    options_placeholder: Καταχωρίστε τις διαθέσιμες επιλογές
+    no_options: Δεν έχετε προσθέσει ακόμα καμία επιλογή.
+    closing: Κλείσιμο
+    start_poll: Έναρξη δημοσκόπησης
+    stance_reason_required_label: Δίνοντας έναν λόγο όταν η ψηφοφορία είναι ...
+    stance_reason_required: Απαιτείται
+    stance_reason_optional: Προαιρετικός
+    stance_reason_disabled: άτομα με ειδικές ανάγκες
+    stance_reason_is_required: Δώστε έναν λόγο με την ψήφο σας
+    limit_reason_length: Περιορίστε τον λόγο στους 500 χαρακτήρες το πολύ
+    save_poll: Αποθήκευση δημοσκόπησης
+    start_poll_type: Έναρξη {{poll_type}}
+    share_poll_type: Κοινή χρήση {{poll_type}}
+    who_may_vote: Ποιος μπορεί να ψηφίσει σε αυτό το {{poll_type}};
+    update: Εκσυγχρονίζω
+    add_voters: Προσθήκη ψηφοφόρων
+    notify_invitees: Αποστολή ειδοποιήσεων
+    no_notifications_warning: Οι ψηφοφόροι δεν θα ειδοποιηθούν. Αυτό είναι χρήσιμο εάν διεξάγετε πολλές δημοσκοπήσεις και σκοπεύετε να ειδοποιήσετε όλους αργότερα.
+    count_voters_added: Προστέθηκαν %{count} ψηφοφόροι
+    poll_type_created: Δημιουργήθηκε %{poll_type}
+    poll_type_started: Ξεκίνησε το %{poll_type}
+    reason_prompt: Προτροπή λόγων
+    anonymous_voting: Ανώνυμη ψηφοφορία
+    anonymous_voting_description: Εάν ενεργοποιηθεί, η ταυτότητα των ψηφοφόρων δεν θα συσχετιστεί με τις ψήφους τους. Αυτό δεν μπορεί να αναιρεθεί.
+    votes_are_anonymous: Οι ψήφοι είναι ανώνυμες
+    vote_reason: Λόγος ψήφου
+    vote_reason_description: Μπορεί να είναι χρήσιμο να κατανοήσουμε γιατί οι άνθρωποι ψήφισαν όπως ψήφισαν. Με αυτήν τη ρύθμιση, μπορείτε να ζητήσετε από τους χρήστες να μοιραστούν τις σκέψεις τους όταν ψηφίζουν.
+    hide_results_description: Εάν θέλετε οι άνθρωποι να ψηφίζουν χωρίς να γνωρίζουν πώς ψήφισαν οι άλλοι, μπορείτε να αποκρύψετε τα αποτελέσματα της δημοσκόπησης.
+    process_helptext: Ονομάστε και περιγράψτε τη διαδικασία που χρησιμοποιείται για την εκτέλεση αυτής της δημοσκόπησης.
+    reminder_helptext: Στείλτε μια ειδοποίηση "Κλείσιμο σύντομα" πριν κλείσει η ψηφοφορία. Αυτό μπορεί να είναι μια ευκαιρία για τους ανθρώπους να δουν πώς ψήφισαν οι άλλοι και να επανεξετάσουν τη δική τους ψήφο ή απλώς ένας τρόπος να αυξήσουν τη συμμετοχή στη δημοσκόπηση.
   poll_proposal_options:
-    'yes': 'Ναι'
-    'no': 'Όχι'
+    'yes': Ναι
+    'no': Όχι
+    select_an_option: Επιλέξτε μια επιλογή
+    agree: Συμφωνώ
+    consent: Συγκατάθεση
+    abstain: Απέχω
+    unsure: Αβέβαιος
+    disagree: Διαφωνώ
+    objection: Ενσταση
+    object: Αντικείμενο
+    block: ΟΙΚΟΔΟΜΙΚΟ ΤΕΤΡΑΓΩΝΟ
+    no_voting: Χωρίς ψήφο
   poll_count_options:
     decline: Απόρριψη
-    'yes': 'Ναι'
-    'no': 'Όχι'
+    'yes': Ναι
+    'no': Όχι
+    accept: Αποδέχομαι
   auth_form:
     email_placeholder: you@example.com
     name_placeholder: Το όνομα σας
+    code: '000000'
+    youre_invited: Έχετε προσκληθεί να συμμετάσχετε στο {{group_name}}.
+    youre_invited_discussion: Έχετε προσκληθεί να συμμετάσχετε στη συζήτηση.
+    youre_invited_poll: Έχετε προσκληθεί να ψηφίσετε.
+    existing_account_can_sign_in: Εάν είστε ήδη χρήστης του {{site_name}}, συνδεθείτε με τον υπάρχοντα λογαριασμό σας
+    sign_up_or_log_in: Δημιουργήστε λογαριασμό ή συνδεθείτε στο {{site_name}}
+    sign_in_to_loomio: Συνδεθείτε στο {{site_name}}
+    sign_in_help: Έχετε δυσκολία να συνδεθείτε;
+    sign_in: Συνδεθείτε
+    continue: Να συνεχίσει
+    create_account: Δημιουργήστε λογαριασμό
+    sign_up_as: Δημιουργία λογαριασμού ως {{email}}
+    sign_in_as: Συνδεθείτε ως {{name}}
+    continue_with_provider: Συνέχεια με {{provider}}
+    continue_with_email: Συνεχίστε με email
+    or_enter_your_email: Ή, πληκτρολογήστε τη διεύθυνση email σας
+    enter_your_name: Εισάγετε το όνομά σας
+    invitation_required: Χρειάζεστε μια πρόσκληση για να δημιουργήσετε έναν λογαριασμό. Ακολουθήστε τον σύνδεσμο από το email πρόσκλησής σας για να συνεχίσετε.
+    more_providers: Περισσότερο
+    email_not_present: Απαιτείται διεύθυνση email
+    invalid_email: Λυπούμαστε, δεν μοιάζει με έγκυρη διεύθυνση email
+    invalid_password: Λυπούμαστε, αυτός ο κωδικός πρόσβασης δεν ταιριάζει με αυτόν που έχουμε στο αρχείο
+    invalid_token: Λυπούμαστε, δεν μπορέσαμε να χρησιμοποιήσουμε αυτό το διακριτικό για να συνδεθείτε. Κάντε κλικ παρακάτω για να στείλετε ένα άλλο.
+    account_locked: Ο λογαριασμός σας έχει κλειδωθεί μετά από πάρα πολλές αποτυχημένες προσπάθειες σύνδεσης. Ελέγξτε το email σας για σύνδεσμο ξεκλειδώματος
+    email_not_found: Λυπούμαστε, δεν μπορέσαμε να βρούμε λογαριασμό με αυτήν τη διεύθυνση ηλεκτρονικού ταχυδρομείου
+    email_taken: Η διεύθυνση email είναι ήδη καταχωρημένη
+    login_with_token: Είσαι έτοιμος! Κάντε κλικ στον παρακάτω σύνδεσμο για να συνεχίσετε.
+    login_link_helptext: Κάντε κλικ στο κουμπί παρακάτω και θα σας στείλουμε έναν σύνδεσμο για να συνδεθείτε.
+    enter_your_password: Εισαγάγετε τον κωδικό πρόσβασής σας για να συνεχίσετε
+    check_spam_folder: Εάν το email δεν φτάσει σύντομα, ελέγξτε το φάκελο ανεπιθύμητης αλληλογραφίας σας.
+    sign_up_helptext: Συμπληρώστε αυτήν τη φόρμα για να δημιουργήσετε έναν λογαριασμό χρήστη
+    i_accept_all: Αποδέχομαι τους {{termsLink}} και τον {{privacyLink}}
+    newsletter_label: Θέλω να λάβω το {{link}}
+    name_required: Εισαγάγετε ένα όνομα
+    terms_required: Πρέπει να συμφωνήσετε με τους Όρους Παροχής Υπηρεσιών
+    account_inactive: Ωχ, φαίνεται ότι ο λογαριασμός για το {{email}} έχει απενεργοποιηθεί!
+    privacy_notice: Δεν θα πουλήσουμε ποτέ τα δεδομένα σας.<br> <a href='{{privacyUrl}}' target='_blank'>Πολιτική απορρήτου</a>
+    welcome: Νέος χρήστης {{siteName}};
+    welcome_back: Καλώς ήρθατε πίσω, {{name}}!
+    forgot_password: Ξεχάσατε τον κωδικό
+    login_link: Αποστολή email σύνδεσης
+    sign_in_via_email: Συνδεθείτε μέσω email
+    set_password: Ορίστε κωδικό
+    set_password_helptext: Θέλετε να χρησιμοποιήσετε κωδικό πρόσβασης την επόμενη φορά;
+    hello: Γεια σας, {{name}}!
+    new_to_loomio: Πρώτη φορά στο {{site_name}};
+    already_a_user: Έχετε ήδη λογαριασμό?
+    email_address_of_existing_account: Εισαγάγετε τη διεύθυνση email του υπάρχοντος λογαριασμού σας
+    link_accounts: Σύνδεση λογαριασμών
+    check_your_email: Ελέγξτε το email σας!
+    login_link_sent: Έχουμε στείλει ένα μήνυμα ηλεκτρονικού ταχυδρομείου στη διεύθυνση {{email}}.
+    instructions: 'Κάντε κλικ στον σύνδεσμο για να συνδεθείτε ή πληκτρολογήστε τον παρακάτω κωδικό:'
+    instructions_code: 'Εισαγάγετε τον κωδικό από αυτό το email:'
+    too_many_attempts: Πάρα πολλές προσπάθειες. δοκιμάστε να κάνετε κλικ στον σύνδεσμο στο email για να συνδεθείτε.
+    invalid_code: Λυπούμαστε, αυτός ο κωδικός δεν ταιριάζει. Ελέγξτε το email και δοκιμάστε ξανά.
+    password_link_sent: Έχουμε στείλει ένα μήνυμα ηλεκτρονικού ταχυδρομείου στη διεύθυνση {{email}} με οδηγίες σχετικά με τον τρόπο ορισμού του κωδικού πρόσβασής σας.
+    reactivate_link_sent: Σας έχουμε στείλει ένα μήνυμα ηλεκτρονικού ταχυδρομείου με οδηγίες για την επανενεργοποίηση του λογαριασμού σας
+    signed_in: Η σύνδεση έγινε με επιτυχία
+    email_verified: Το email επαληθεύτηκε με επιτυχία
+    name: Ονομα
+    email: ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ
+    password: Κωδικός πρόσβασης
+    reactivate: Επανενεργοποίηση λογαριασμού
   chatbot:
     username: Όνομα χρήστη
     password: Κωδικός
+    configure_chatbot: Διαμόρφωση chatbot
+    test_connection: ΔΟΚΙΜΗ ΣΥΝΔΕΣΗΣ
+    test_connection_ok: Φαίνεται καλό! Θα πρέπει να δείτε ένα μήνυμα στο κανάλι
+    test_connection_bad: Κάτι δεν πάει καλά με τις ρυθμίσεις
+    name: Όνομα Chatbot
+    connection_test_successful: Επιτυχής δοκιμή σύνδεσης Loomio bot!
+    chatbot: Chatbot
+    chatbots: Chatbots
+    saved: Το Chatbot αποθηκεύτηκε!
+    webhook_url: URL webhook
+    homeserver_url: URL διακομιστή οικίας
+    channel: Κανάλι
+    access_token: Διακριτικό πρόσβασης
+    add_chatbot: Προσθήκη chatbot
+    matrix: Μήτρα
+    slack: Χαλαρότητα
+    discord: Διχόνοια
+    mattermost: Το πιο σημαντικό
+    microsoft_teams: Ομάδες της Microsoft
+    event_kind_helptext: Επιλέξτε συμβάντα για τα οποία θα ειδοποιείται πάντα το bot. Εάν δεν είστε σίγουροι, απλώς αφήστε τα όλα εκτός.
+    notification_only_label: Αποστολή μόνο επικεφαλίδας ειδοποίησης
+    check_for_test_message: Ελέγξτε το chatroom σας για μήνυμα από το bot!
   webhook:
     name_label: Όνομα
+    integrations: Ενσωματώσεις
+    api_keys: Κλειδιά API
+    webhooks: Webhooks
+    webhook: Webhook
+    add_api_key: Προσθήκη κλειδιού API
+    edit_api_key: Επεξεργασία κλειδιού API
+    api: API
+    format: Μορφή
+    formats:
+      markdown: Markdown (για τους Mattermost, Zapier και άλλους)
+      microsoft: Ομάδες της Microsoft
+      slack: Χαλαρότητα
+      discord: Διχόνοια
+    subtitle: Συνδεθείτε στο Loomio με τα υπόλοιπα εργαλεία σας με το API μας
+    deprecated: Αυτό το API έχει καταργηθεί. Μεταβείτε στο APIv2 (δείτε έγγραφα API στο μενού ρυθμίσεων της ομάδας σας)
+    we_have_guides: Δείτε τους <a href="{{url}}" target="_blank">οδηγούς ρύθμισης webhook</a> για βοήθεια σχετικά με τη σύνδεση της υπηρεσίας σας.
+    add_webhook: Προσθήκη webhook
+    show_docs: Δείτε τη χρήση API
+    save_to_show_docs: Αφού αποθηκεύσετε, επιστρέψτε εδώ για να βρείτε το κλειδί API σας
+    edit_integration: Επεξεργασία ενσωμάτωσης
+    add_integration: Προσθήκη ενοποίησης
+    success: Η ενσωμάτωση προστέθηκε!
+    remove: Κατάργηση ενοποίησης
+    confirm_remove: 'Είστε βέβαιοι ότι θέλετε να καταργήσετε την ενσωμάτωση: {{name}};'
+    removed: Η ενσωμάτωση καταργήθηκε
+    url_label: URL webhook
+    url_placeholder: https://hooks.example.com/...
+    name_placeholder: Δώστε σε αυτήν την ενσωμάτωση ένα όνομα για να μπορείτε να την αναγνωρίσετε
+    event_kind_helptext: Για ποια συμβάντα θέλετε να ειδοποιείται το webhook;
+    event_kinds:
+      new_discussion: Ένα νήμα έχει ξεκινήσει
+      discussion_edited: Ένα νήμα επεξεργάζεται
+      poll_edited: Μια δημοσκόπηση επεξεργάζεται
+      new_comment: Γίνεται ένα σχόλιο
+      poll_created: Έχει ξεκινήσει μια ψηφοφορία
+      stance_created: Γίνεται ψηφοφορία
+      stance_updated: Μια ψηφοφορία αλλάζει
+      poll_closing_soon: Μια ψηφοφορία κλείνει σύντομα
+      poll_expired: Λήγει μια δημοσκόπηση
+      poll_closed_by_user: Μια ψηφοφορία κλείνει χειροκίνητα
+      poll_reopened: Ανοίγει εκ νέου η κάλπη για ψηφοφορία
+      outcome_created: Ένα αποτέλεσμα μοιράζεται
+      outcome_updated: Ενημερώνεται ένα αποτέλεσμα
+      outcome_review_due: Αναμένεται επανεξέταση του αποτελέσματος
+    permissions_explaination: Επιλέξτε ποιες ενέργειες μπορούν να εκτελεστούν από αυτήν την ενοποίηση
+    permissions:
+      show_discussion: δείχνουν συζήτηση
+      create_discussion: δημιουργήστε συζήτηση
+      create_poll: δημιουργία δημοσκόπησης
+      show_poll: εμφάνιση δημοσκόπησης
+      read_memberships: διαβάστε τις συνδρομές
+      manage_memberships: διαχείριση συνδρομών (προσθήκη ή αφαίρεση μελών ομάδας)
+    include_body_label: Συμπεριλάβετε το σώμα του μηνύματος με ειδοποίηση
   group_survey:
     categories:
       community: Ομάδα Κοινότητας
       other: Άλλο
+      party: Πολιτικό κόμμα
+      coop: Συνεργατική
+      union: Ενωση
+      board: Διακυβέρνηση & συμβούλια
+      nonprofit: Μη κερδοσκοπικος
+      membership: Οργάνωση μελών
+      professional: Επαγγελματική εταιρεία παροχής υπηρεσιών
+      self_managing: Αυτοδιαχειριζόμενος οργανισμός
+      government: Κυβέρνηση/Τοπική Αυτοδιοίκηση
+    describe_other: Επιλέξτε την κατηγορία που περιγράφει καλύτερα την ομάδα σας
+  tasks:
+    tasks: Καθήκοντα
+    your_tasks: Τα καθήκοντά σας
+    permission_denied: Δεν έχετε άδεια να ενημερώσετε αυτήν την εργασία
+    due_date: Ημερομηνία λήξης
+    send_reminder: Αποστολή υπενθύμισης (αν δεν έχει γίνει)
+    no_reminder: Καμία υπενθύμιση
+    on_due_date: Στην προθεσμία
+    1_day_before: 1 μέρα πριν
+    2_day_before: 2 μέρες πριν
+    3_day_before: 3 μέρες πριν
+    7_day_before: 7 μέρες πριν
+    task_placeholder: Εισαγάγετε μια εργασία και @αναφέρετε κάποιον που θα την αναθέσει
+    add_due_date: Προσθήκη ημερομηνίας λήξης
+    task_updated_done: Η εργασία επισημάνθηκε ως ολοκληρωμένη!
+    task_updated_not_done: Η εργασία επισημάνθηκε ως μη ολοκληρωμένη
+    no_tasks_assigned: Δεν σας έχουν ανατεθεί εργασίες
+  doctypes:
+    youtube_video: Βίντεο YouTube
+    image: Εικόνα
+    pdf: PDF
+    excel: Υπολογιστικό φύλλο Excel
+    document: Εγγραφο
+    csv: Αρχείο CSV
+    video: βίντεο
+    text: Αρχείο κειμένου
+    google_doc: Έγγραφο Google
+    google_sheet: Υπολογιστικό φύλλο Google
+    google_drive: Google Drive
+    pull_request: Αίτημα έλξης
+    trello_board: Πίνακας Trello
+    trello_card: Κάρτα Trello
+  poll_types:
+    proposal: πρόταση
+    count: συμμετοχή
+    check: έλεγχος αίσθησης
+    poll: ψηφοφορία
+    dot_vote: ψηφοφορία τελεία
+    meeting: δημοσκόπηση χρόνου
+    ranked_choice: κατάταξης επιλογής
+    score: δημοσκόπηση βαθμολογίας
+    question: γύρος ερωτήσεων
+  merge_accounts:
+    modal:
+      title: Συγχώνευση λογαριασμών
+      helptext: Μπορείτε να συγχωνεύσετε τον λογαριασμό στο <strong>{{sourceEmail}}</strong> σε αυτόν του <strong>{{targetEmail}}</strong> . Κάντε κλικ στην Επαλήθευση και θα σταλεί ένα μήνυμα ηλεκτρονικού ταχυδρομείου επαλήθευσης στη διεύθυνση {{targetEmail}} για να ξεκινήσει η διαδικασία.
+      submit: Επαληθεύω
+      flash: Το email επαλήθευσης στάλθηκε!
+    email_taken: Λυπούμαστε, αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου έχει ήδη συσχετιστεί με άλλον χρήστη. Αυτό το email σας ανήκει;
+    find_out_more: Μάθετε περισσότερα.
+    placeholder_modal_text: <p>Εάν θέλετε να συγχωνεύσετε δύο λογαριασμούς, απλώς εισαγάγετε την αντίστοιχη διεύθυνση email (που ανήκει στον άλλο λογαριασμό) στο πεδίο email της σελίδας προφίλ σας και ακολουθήστε τις οδηγίες που εμφανίζονται.</p><p> Χρειάζεστε βοήθεια? <a href="/contact" target="_blank">Επικοινωνήστε μαζί μας</a> .
+  ordinal:
+    _1: 1ος
+    _2: 2ο
+    _3: 3η
+    _4: 4η
+    _5: 5η
+    _6: 6η
+    _7: 7η
+    _8: 8ο
+    _9: 9η
+    _10: 10η
+  verify_email_notice:
+    please_verify: Ευχαριστούμε για τη συμμετοχή! Ελέγξτε το email σας για έναν σύνδεσμο για να επαληθεύσετε την ψήφο σας.
+  email_to_group:
+    email_to_group_settings: Ρυθμίσεις email σε ομάδα
+    email_to_group_address: Διεύθυνση ηλεκτρονικού ταχυδρομείου σε ομάδα
+    start_threads_via_email: Έναρξη νημάτων μέσω email
+    your_address_for_this_group: Η διεύθυνση email σας για αυτήν την ομάδα
+    send_email_to_start_thread: Στείλτε email σε αυτή τη διεύθυνση για να ξεκινήσετε ένα νήμα στην ομάδα σας.
+    subject_body_attachments: Το νήμα θα χρησιμοποιεί το θέμα του email, το σώμα και τα συνημμένα αρχεία.
+    address_starts_threads_as_you: Μην κοινοποιείτε αυτήν τη διεύθυνση - οποιοσδήποτε την έχει μπορεί να ξεκινήσει νήματα όπως εσείς.
+    generate_new_address: Δημιουργία νέας διεύθυνσης
+    copy_address: Αντιγραφή διεύθυνσης
+    email_me_this_address: Στείλτε μου αυτή τη διεύθυνση email
+    email_address_sent_to_you: Η διεύθυνση email σας εστάλη
+    email_address_copied_to_clipboard: Η διεύθυνση ηλεκτρονικού ταχυδρομείου αντιγράφηκε στο πρόχειρο
+    new_address_generated: Δημιουργήθηκε νέα διεύθυνση email προς ομάδα
+    generate_new_address_question: Δημιουργία νέας διεύθυνσης email σε ομάδα;
+    generate_new_address_warning: Όλες οι υπάρχουσες διευθύνσεις email-to-loomio σας θα σταματήσουν να λειτουργούν. Δεν υπάρχει αναίρεση. Προχώρα?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: Η διεύθυνση email σας για να ξεκινήσετε νήματα στο %{group}
+  close_explanation_modal:
+    aria_label: Κλείστε το νήμα
+    close_thread: Κλείστε το νήμα
+    body: "<p>Κλείστε παλιά ή άσχετα νήματα για να τα αφαιρέσετε από την προβολή και να υποδείξετε ότι η συζήτηση έχει κλείσει.</p><p> Οποιοσδήποτε μπορεί ακόμα να σχολιάσει ή να ξεκινήσει μια δημοσκόπηση σε ένα κλειστό νήμα, αλλά δεν θα εμφανίζεται στη λίστα νημάτων της ομάδας ή στον πίνακα ελέγχου.</p>"
+    image_alt: Κλείσιμο όλων των νημάτων
+  comment_reply_form:
+    aria_label: Προσθέστε μια απάντηση
+  thread_nav:
+    participants: Συμμετέχοντες
+  strand_nav:
+    newest: Νεότερο
+    oldest: Το πιο παλιό
+    newest_first: Πρώτα τα νεότερα
+    oldest_first: Πρώτα τα πιο παλιά
+    all_pinned: Όλα τα καρφιτσωμένα στοιχεία
+    whole_thread: Όλο το νήμα
+    from_comment: Από μια διεύθυνση url σχολίου
+    from_sequence_id: Από ένα url στοιχείου νήματος
+    unread: Καινούργιο για εσάς
+  search_modal:
+    all_content: Όλο το περιεχόμενο
+    best_match: Ταιριάζει καλύτερα
+    any_tag: Οποιαδήποτε ετικέτα
+    all_subgroups: Όλες οι υποομάδες
+    parent_only: Μόνο γονέας
+  user_dropdown:
+    pin_sidebar: Καρφιτσώστε την πλαϊνή γραμμή
+    unpin_sidebar: Ξεκαρφιτσώστε την πλαϊνή γραμμή
+    enable_beta_features: Ενεργοποίηση λειτουργιών beta
+    disable_beta_features: Απενεργοποιήστε τις λειτουργίες beta
+    enable_dark_mode: Ενεργοποίηση σκοτεινής λειτουργίας
+    disable_dark_mode: Απενεργοποιήστε τη σκοτεινή λειτουργία
+    button_label: Μενού χρήστη
+    edit_profile: Επεξεργασία προφίλ
+    email_settings: Ρυθμίσεις ειδοποιήσεων
+    help: Βοήθεια
+    contact_site_name: Επικοινωνία με {{site_name}}
+    contact_support: Επικοινωνήστε με την υποστήριξη
+    sign_out: Αποσύνδεση
+    beta_collab: "\U0001F9EA Οι λειτουργίες beta ενεργοποιήθηκαν!"
+    outcomes: Αποτελέσματα
+  membership_card:
+    group_members: Μέλη ομάδας
+    discussion_members: Μέλη νήματος
+    poll_members: "{{pollType}} μέλη"
+    voters: Ψηφοφόροι
+    invite_to_group: Πρόσκληση σε ομάδα
+    invite_to_discussion: Πρόσκληση σε νήμα
+    invite_to_poll: Πρόσκληση για ψηφοφορία
+    invite_to_wip_poll: Προσκαλέστε να δώσετε σχόλια
+    invitations: Προσκλήσεις
+  notification_models:
+    discussion: 'Νήμα:'
+    comment: σχόλιο μέσα
+    poll: 'ψηφοφορία:'
+    outcome: 'αποτέλεσμα:'
+    stance: 'ψήφος:'
+  discussion_fork_actions:
+    helptext: Επιλέξτε στοιχεία που θέλετε να μετακινήσετε σε άλλο νήμα
+    move: Κίνηση
+    search_placeholder: Βρείτε νήμα ανά τίτλο
+    moved: Μετακινώντας τα σχόλια, αυτό μπορεί να διαρκέσει λίγο
+    move_to_existing_thread: Μετακίνηση στο υπάρχον νήμα
+    start_new_thread: Ή, ξεκινήστε νέο νήμα
+  thread_template:
+    browse_public_templates: Περιηγηθείτε στη συλλογή προτύπων
+    thread_template_settings: Ρυθμίσεις προτύπου νήματος
+    start_a_new_thread: Ξεκινήστε ένα νέο νήμα
+    thread_template_saved: Το πρότυπο νήματος αποθηκεύτηκε
+    these_are_public_templates: Αυτά τα πρότυπα είναι διαθέσιμα για να τα αντιγράψετε ή να τα τροποποιήσετε ώστε να ταιριάζουν στην ομάδα σας
+    these_are_templates: Αυτά είναι τα πρότυπα νημάτων στην ομάδα σας. Τα πρότυπα σας καθοδηγούν σε κοινές διαδικασίες λήψης αποφάσεων.
+    default_title_label: Προεπιλεγμένος τίτλος
+    default_title_hint: Συμπληρώστε εκ των προτέρων το πεδίο τίτλου με επεξεργάσιμο κείμενο. Αυτό είναι προαιρετικό - αφήστε το κενό εάν δεν είστε σίγουροι.
+    title_placeholder_label: Παράδειγμα τίτλου
+    title_placeholder_hint: Ένα παράδειγμα για εμφάνιση στο φόντο του πεδίου τίτλου
+    title_placeholder_placeholder: π.χ. Έτσι μοιάζει το κείμενο φόντου
+    example_description_label: Παράδειγμα περιγραφής
+    example_description_placeholder: Παρέχετε ένα πρότυπο με το οποίο οι χρήστες μπορούν να χρησιμοποιήσουν για να ξεκινήσουν ένα νήμα
+    hidden_templates: Κρυφά πρότυπα
+    confirm_delete: Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά αυτό το πρότυπο νήματος; Κανένα νήμα δεν θα διαγραφεί ως αποτέλεσμα αυτού.
+    add_proposal_or_poll_template: Προσθήκη πρότασης ή προτύπου δημοσκόπησης
+    recommended_proposal_or_poll_templates: Προτεινόμενα πρότυπα πρότασης ή δημοσκόπησης
+    decision_templates: Πρότυπα αποφάσεων
+    decision_templates_help: Επιλέξτε οποιαδήποτε πρόταση ή πρότυπα δημοσκόπησης που βοηθούν στην ολοκλήρωση αυτής της διαδικασίας.
+    share_in_template_gallery: Μοιραστείτε αυτό το πρότυπο στη δημόσια συλλογή προτύπων
+  reactions_input:
+    add_your_reaction: Προσθέστε την αντίδρασή σας
+  reactions_display:
+    more_reactions: "%{count} ακόμη"
+    you: Εσείς
+    you_and_name: Εσείς και ο {{name}}
+    you_and_name_and_count_more: Εσείς, ο {{name}} και %{count} ακόμη
+    name_and_count_more: "{{name}} και %{count} ακόμη"
+  context_panel:
+    thread_status:
+      pinned: Αυτό το νήμα έχει καρφιτσωθεί. Θα παραμείνει στην κορυφή της λίστας νημάτων της ομάδας για όλους τους χρήστες.
+      closed: Αυτό το νήμα έχει κλείσει. Δεν θα εμφανίζεται πλέον στον πίνακα εργαλείων και θα εμφανίζεται στη λίστα "κλειστό" στη σελίδα της ομάδας
+  delete_group_modal:
+    title: Διαγραφή ομάδας
+    subgroup_title: Διαγραφή υποομάδας
+    parent_body: "<h2>Αυτή είναι η γονική σας ομάδα - όχι υποομάδα!</h2><br> Εάν το διαγράψετε, τυχόν υποομάδες θα διαγραφούν οριστικά. Η συνδρομή σας στο Loomio θα ακυρωθεί επίσης. Συνιστάται ιδιαίτερα η εξαγωγή των δεδομένων της ομάδας σας και η μη αυτόματη λήψη τυχόν σημαντικών αρχείων προτού το κάνετε αυτό. Εισαι σιγουρος οτι θελεις να συνεχισεις?"
+    body: Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτήν την υποομάδα; Όλα τα νήματα, οι δημοσκοπήσεις, τα αρχεία και άλλο περιεχόμενο ομάδας θα διαγραφούν οριστικά. Συνιστάται η εξαγωγή των δεδομένων της ομάδας και η μη αυτόματη λήψη τυχόν σημαντικών αρχείων προτού συνεχίσετε.
+    confirm: Πληκτρολογήστε '%{name}' για να επιβεβαιώσετε ότι θέλετε να διαγράψετε αυτήν την ομάδα.
+    success: Αυτή η ομάδα έχει αρχειοθετηθεί και έχει προγραμματιστεί για οριστική διαγραφή σε 2 εβδομάδες.
+  export_data_modal:
+    title: Πώς θέλετε να χρησιμοποιήσετε τα δεδομένα σας;
+    as_csv: Ανοίξτε το σε υπολογιστικό φύλλο
+    as_html: Ανοίξτε το σε ένα πρόγραμμα περιήγησης
+    as_json: Φιλοξενώ αυτήν την ομάδα στον δικό μου διακομιστή
+  group_export_modal:
+    title: Εξαγωγή δεδομένων ομάδας
+    body: <p>Μπορείτε να κάνετε λήψη ενός αντιγράφου των δεδομένων της ομάδας σας ανά πάσα στιγμή. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Μάθετε περισσότερα.</a></p><p> Χρειάζονται λίγα λεπτά για να ολοκληρωθεί, ανάλογα με το μέγεθος της ομάδας σας. Όταν είναι έτοιμο, θα λάβετε ένα email με έναν σύνδεσμο για τη λήψη του αρχείου.</p>
+    submit: Έναρξη εξαγωγής
+    flash: Ξεκίνησε η εξαγωγή ομαδικών δεδομένων
+  membership_remove_modal:
+    invitation:
+      title: Ακύρωση πρόσκλησης
+      message: Είστε βέβαιοι ότι θέλετε να ακυρώσετε την πρόσκληση για τον χρήστη {{name}};
+      flash: Η πρόσκληση ακυρώθηκε
+      submit: Ακύρωση πρόσκλησης
+    membership:
+      title: Κατάργηση μέλους
+      message: Είστε βέβαιοι ότι θέλετε να καταργήσετε το {{name}};
+      impact_for_subgroup: Αυτό θα καταργήσει την πρόσβασή τους στην υποομάδα (συμπεριλαμβανομένων των νημάτων και των δημοσκοπήσεων), αλλά θα παραμείνει μέλος της γονικής ομάδας.
+      impact_for_group: Αυτό θα καταργήσει την πρόσβασή τους στην ομάδα (συμπεριλαμβανομένων των νημάτων και των δημοσκοπήσεων) και τυχόν υποομάδες.
+      flash: Το μέλος αφαιρέθηκε
+      submit: Κατάργηση μέλους
+  memberships_panel:
+    add_coordinator: Κάντε Διαχειριστή
+    remove_coordinator: Υποβιβασμός διαχειριστή
+  membership_form:
+    modal_title:
+      group: Ορισμός τίτλου
+    title_helptext:
+      group: Αυτός ο τίτλος θα εμφανίζεται δίπλα στο όνομα του χρήστη {{name}} σε αυτήν την ομάδα. Χρησιμοποιήστε το για να ενημερώσετε τους ανθρώπους για το ρόλο τους.
+    title_label: τίτλος
+    title_placeholder: Π.χ. «Συντονιστής» ή «Διευκολυντής»
+    updated: Ο τίτλος μέλους ενημερώθηκε
+  user_name_modal:
+    user_name_updated: Το όνομα χρήστη ενημερώθηκε
+    set_user_name: Ορισμός ονόματος χρήστη
+  user_page:
+    contact_user: Ονομα επαφής}}
+    location_field: 'Τοποθεσία: {{value}}'
+    locale_field: 'Γλώσσα: {{value}}'
+    online_field: 'Διαδικτυακό: {{value}}'
+    invited: Προσκλήθηκε {{value}}
+    message_user: Μήνυμα {{name}}
+  contact_request_form:
+    modal_title: email {{name}}
+    message_placeholder: Συστηθείτε και μοιραστείτε γιατί θέλετε να επικοινωνήσετε.
+    helptext: Το όνομα, η διεύθυνση ηλεκτρονικού ταχυδρομείου και το μήνυμά σας στο {{name}} θα σταλεί μέσω email
+    email_sent: Το email στάλθηκε στο {{name}}
+  text_editor:
+    x_of_y_characters: "{{x}} / {{y}} χαρακτήρες"
+    select_text_to_link: Επιλέξτε κείμενο για σύνδεση και δοκιμάστε ξανά
+    insert_link: Εισαγωγή συνδέσμου
+    insert_embedded_url: Ενσωμάτωση βίντεο
+  change_password_form:
+    set_password_title: Ορίστε τον κωδικό πρόσβασής σας
+    set_password_helptext: Εισαγάγετε έναν κωδικό πρόσβασης - τουλάχιστον 8 χαρακτήρες
+    set_password: Ορίστε κωδικό
+    password_changed: Ο κωδικός πρόσβασής σας έχει ενημερωθεί
+  deactivation_modal:
+    introduction: 'Όταν διαγράφετε τον λογαριασμό σας:'
+    you_will_be_deleted: Ο λογαριασμός χρήστη σας, συμπεριλαμβανομένου του ονόματος, της διεύθυνσης email σας και άλλων προσωπικών δεδομένων ταυτοποίησης θα διαγραφεί από τα συστήματά μας.
+    name_removed: Τα σχόλια, οι προτάσεις και οι συζητήσεις που έχετε κάνει θα παραμείνουν αλλά το όνομά σας θα αφαιρεθεί από αυτά
+    no_longer_group_member: Δεν θα καταχωρίζεστε πλέον ως μέλος οποιασδήποτε ομάδας
+    no_emails: Δεν θα λαμβάνετε πλέον μηνύματα ηλεκτρονικού ταχυδρομείου ειδοποίησης
+    submit_delete: Διαγραφή του λογαριασμού μου τώρα
+  thread_preview:
+    replies_count: "%{count} απαντήσεις"
+    unread_count: "%{count} μη αναγνωσμένα"
+  threads_page:
+    no_direct_threads: Δεν έχετε απευθείας νήματα
+    no_invite_only_threads: Δεν έχετε νήματα μόνο για πρόσκληση
+  discussion_last_seen_by:
+    title: Θεάθηκε από
+    no_one: Κανείς δεν το έχει δει ακόμα αυτό
+  pin_thread_modal:
+    title: Κλωστή καρφίτσας
+    helptext: Τα καρφιτσωμένα νήματα εμφανίζονται πάντα στην κορυφή της λίστας νημάτων της ομάδας τους. Μπορούν να χρησιμοποιηθούν για την ενημέρωση των μελών για σημαντικές ανακοινώσεις ή για την προώθηση κοινού υλικού, όπως κώδικα συμπεριφοράς ή κοινοτικές οδηγίες.
+    helptext_two: Μπορείτε να αφαιρέσετε καρφίτσες ανά πάσα στιγμή επιλέγοντας «Ξεκαρφίτσωμα» από το αναπτυσσόμενο νήμα
+    pin_thread: Κλωστή καρφίτσας
+  thread_arrangement_form:
+    edit: Επεξεργασία διάταξης
+    title: Διάταξη νήματος
+    for_everyone: Αυτό αλλάζει τη διάταξη για όλους, όχι μόνο για εσάς.
+    sorting: Πρώτα το παλαιότερο ή το νεότερο;
+    latest: Νεότερο
+    latest_description: Διαβάστε πρώτα τα νεότερα στοιχεία
+    earliest: Το πιο παλιό
+    earliest_description: Ενημερωθείτε για παλαιότερα σχόλια πριν δείτε νεότερα
+    replies: Πώς να εμφανίσετε τις απαντήσεις;
+    linear: Επίπεδη λίστα
+    linear_description: Αντικείμενα που παρατίθενται όπως συνέβησαν, το ένα μετά το άλλο.
+    nested_once: Απαντήσεις Nest - μόνο πρώτη απάντηση
+    nested_once_description: Απαντήσεις εσοχή κάτω από το αρχικό σχόλιο
+    nested_twice: Δύο επίπεδα ένθετων απαντήσεων
+    nested_twice_description: Η εσοχή απαντά το πολύ δύο φορές.
+    changing_nesting_is_slow: Η επεξεργασία των αλλαγών στην ένθεση μπορεί να διαρκέσει μερικά λεπτά.
+  delete_thread_form:
+    aria_label: Διαγραφή νήματος
+    title: Διαγραφή νήματος
+    body: Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το νήμα;
+    confirm: Διαγραφή νήματος
+    messages:
+      success: Το νήμα διαγράφηκε
+  move_thread_form:
+    aria_label: Μετακίνηση νήματος
+    title: Μετακίνηση νήματος
+    body: Ομάδα προορισμών
+    confirm: Μετακίνηση νήματος
+    confirm_change_to_private_thread: Το {{groupName}} είναι μια ανοιχτή ομάδα. Εάν συνεχίσετε, αυτό το νήμα θα δημοσιοποιηθεί.
+    messages:
+      success: Το νήμα έχει μετακινηθεί στο {{name}}
+  explore_page:
+    header: Εξερευνήστε ομάδες
+    search_placeholder: Αναζήτηση για δημόσιες ομάδες
+    single_search_result: 1 δημόσια ομάδα που αντιστοιχεί στο <strong>{{searchTerm}}:</strong>
+    multiple_search_results: "{{resultCount}} δημόσιες ομάδες που αντιστοιχούν στο <strong>{{searchTerm}}:</strong>"
+    no_results_found: <strong>Δεν μπορείτε να βρείτε την ομάδα που ψάχνετε;</strong> Εάν το απόρρητο μιας ομάδας έχει οριστεί ως "μυστικό", δεν θα εμφανίζεται εδώ.
+    newest_first: Πρώτα τα νεότερα
+    biggest_first: Η μεγαλύτερη πρώτη
+    order_by: Παραγγελία ομάδων κατά
+  global:
+    messages:
+      app_update: Κυκλοφόρησε μια νέα έκδοση του Loomio. Αποθηκεύστε την εργασία σας και φορτώστε ξανά.
+      reload: Γεμίζω πάλι
+  poll_option_form:
+    edit_option: Επιλογή επεξεργασίας
+    option_name: Όνομα επιλογής
+    option_name_hint: Ένα σύντομο όνομα για αυτήν την επιλογή
+    option_name_validation: Είναι καλύτερο να διατηρήσετε το όνομα σύντομο και να βάλετε λεπτομέρειες στο πεδίο "Σημασία".
+    icon: Εικόνισμα
+    meaning: Εννοια
+    meaning_hint: Μια ή δύο προτάσεις που εξηγούν τι σημαίνει η επιλογή αυτής της επιλογής. Προαιρετικός
+    prompt: Προτροπή λόγων
+    prompt_hint: Μια ερώτηση που θα παρακινήσει τους ψηφοφόρους να μοιραστούν το σκεπτικό τους ή να επανεξετάσουν τη θέση τους. Προαιρετικός
+  poll_common_attachment_form:
+    label: Συνημμένα
+  poll_common_add_option:
+    button:
+      add_option: Προσθέστε άλλη επιλογή
+    modal:
+      title: Προσθέστε μια επιλογή
+    form:
+      add_options: Προσθήκη επιλογών
+      options_added: Προστέθηκαν νέες επιλογές
+  poll_common_card:
+    show_results: Εμφάνιση αποτελεσμάτων
+    hide_results: Απόκρυψη αποτελεσμάτων
+    until_vote: Μέχρι να γίνει η ψηφοφορία
+    until_you_vote: Μέχρι να ψηφίσετε
+    until_poll_type_closed: Μέχρι να κλείσει το {{pollType}}
+    until_voting_is_closed: Μέχρι να κλείσει η ψηφοφορία
+    deleted: Αυτή η δημοσκόπηση έχει διαγραφεί
+  group_files_panel:
+    no_files: Δεν βρέθηκαν αρχεία
+    filename: Ονομα αρχείου
+    uploaded_by: Ανέβηκε από
+    uploaded_at: Ανέβηκε στο
+    delete_confirmation: Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το συνημμένο; Θα αφαιρεθεί από οποιοδήποτε σχετικό σχόλιο ή νήμα. Αυτό δεν μπορεί να αναιρεθεί.
+  subgroups_panel:
+    search_subgroups_of_name: Αναζήτηση υποομάδων του {{name}}
+    group_without_subgroups: "{{name}} χωρίς υποομάδες"
+  poll_common_action_panel:
+    from_the_thread: Από το πρότυπο νήματος
+    from_the_group: Από την ομάδα
+    default_templates: Προεπιλεγμένα πρότυπα
+    default_template: Προεπιλεγμένο πρότυπο
+    custom_template: Προσαρμοσμένο πρότυπο
+    default_poll_types: Προεπιλεγμένοι τύποι δημοσκοπήσεων
+    suggested_templates: Προτεινόμενα πρότυπα
+    group_templates: Πρότυπα ομάδας
+    basic_templates: Βασικά πρότυπα
+    anonymous: Οι ψήφοι είναι ανώνυμες
+    results_hidden_until_closed: Τα αποτελέσματα θα εμφανιστούν μετά την ολοκλήρωση της ψηφοφορίας
+    results_hidden_until_vote: Τα αποτελέσματα θα εμφανιστούν μετά την ψηφοφορία
+    unable_to_vote: Δεν έχετε προσκληθεί να ψηφίσετε σε αυτό το %{poll_type}
+    draft_mode: Η ψηφοφορία απενεργοποιήθηκε. Αυτό δεν είναι ακόμη ανοιχτό για ψηφοφορία.
+    voting_disabled_poll_is_template: Η ψηφοφορία απενεργοποιήθηκε. Αυτό είναι ένα πρότυπο.
+  poll_common_collapsed:
+    by_who: από όνομα}}
+  poll_common_calendar_invite:
+    calendar_invite: Συμπεριλάβετε μια πρόσκληση ημερολογίου με αυτό το αποτέλεσμα
+    poll_option_id: Ωρα συνάντησης
+    helptext_on: Οι χρήστες θα μπορούν να προσθέσουν αυτήν τη συνάντηση στο ημερολόγιό τους
+    helptext_off: Δεν θα σταλεί πρόσκληση σε σύσκεψη
+    event_duration: Διάρκεια
+    event_summary: Όνομα συνάντησης
+    event_summary_placeholder: Πώς θα θέλατε να ονομαστεί αυτή η συνάντηση;
+    event_description: Περιγραφή συνάντησης
+    event_description_placeholder: Ποια είναι η ατζέντα αυτής της συνάντησης;
+    location: Τοποθεσία
+    location_placeholder: Πού θα γίνει αυτή η συνάντηση;
+  poll_common_settings:
+    who_can_vote: Ποιος μπορεί να ψηφίσει;
+    short_reason_can_be_helpful: Η διατήρηση σύντομων λόγων ψηφοφορίας τους κάνει πιο κατανοητούς. Μια συλλογή συνοπτικών λόγων είναι μια εξαιρετική πηγή για τη λήψη μιας απόφασης.
+    specified_voters_only_true: Μόνο προσκεκλημένοι
+    specified_voters_only_false_group: Οποιοσδήποτε στην ομάδα
+    specified_voters_only_false_discussion: Οποιοσδήποτε στο νήμα
+    invite_people_next: Μπορείτε να επιλέξετε ποιος θα προσκληθεί να ψηφίσει αφού ξεκινήσετε το {{poll_type}}
+    shuffle_options:
+      shuffle_options: Τυχαία επιλογή
+      title: Εμφάνιση επιλογών με τυχαία σειρά
+      helptext: Μια επιλογή που είναι πρώτη στη λίστα μπορεί να της δώσει μια προκατάληψη. Χρησιμοποιήστε αυτήν τη ρύθμιση για να αντιμετωπίσετε αυτό το αποτέλεσμα.
+    multiple_choice:
+      title: Πολλαπλή επιλογή
+      helptext_on: Όταν επιλεγεί, οι συμμετέχοντες θα μπορούν να επιλέξουν πολλές επιλογές.
+    anyone_can_participate:
+      title: Όποιος έχει σύνδεσμο μπορεί να συμμετάσχει
+      helptext_on: Όταν επιλεγεί, οποιοσδήποτε έχει τον σύνδεσμο προς τη δημοσκόπηση μπορεί να συμμετάσχει.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Επειδή η ψηφοφορία κλείνει εντός 24 ωρών, δεν θα σταλούν υπενθυμίσεις για σύντομο κλείσιμο.
+      closes_too_soon: Επειδή αυτό το {{pollType}} κλείνει εντός 24 ωρών, δεν θα σταλούν υπενθυμίσεις για το κλείσιμο σύντομα.
+      title: 24 ώρες πριν από το κλείσιμο του {{pollType}}, στείλτε μια υπενθύμιση στο
+      voting_title: 24 ώρες πριν από τη λήξη της ψηφοφορίας, στείλτε μια υπενθύμιση στο
+      nobody: Κανείς
+      author: Συγγραφέας (εγώ)
+      undecided_voters: Αναποφάσιστοι ψηφοφόροι
+      voters: Όλοι οι ψηφοφόροι
+    notify_on_participate:
+      title: Ειδοποιήστε με όταν συμμετέχουν άτομα
+      helptext_on: Όταν επιλεγεί, θα ειδοποιείστε κάθε φορά που κάποιος συμμετέχει.
+    anonymous:
+      title: Ανώνυμοι ψηφοφόροι
+      helptext_on: Όταν επιλεγεί, οι πληροφορίες των συμμετεχόντων δεν θα εμφανίζονται με κάθε απάντηση.
+    voter_can_add_options:
+      title: Οι ψηφοφόροι μπορούν να προσθέσουν εναλλακτικές επιλογές
+    can_respond_maybe:
+      title: Οι ψηφοφόροι μπορούν να απαντήσουν "αν χρειαστεί"
+    allow_long_reason:
+      title: Επιτρέψτε στον «λόγο» ψήφου να είναι μεγαλύτερος από 500 χαρακτήρες
+    hide_results_until_closed:
+      title: Απόκρυψη αποτελεσμάτων μέχρι να κλείσει
+      helptext_on: Μην δείχνεις πώς ψήφισε ο κόσμος μέχρι να κλείσει η κάλπη
+  poll_common_close_form:
+    title: Κλείσιμο %{poll_type} τώρα;
+    helptext: Είστε βέβαιοι ότι θέλετε να κλείσετε αυτό το %{poll_type} νωρίς και να μοιραστείτε ένα αποτέλεσμα;
+    close_poll_type: Κλείσιμο %{poll_type}
+    poll_type_closed: "%{poll_type} έκλεισε"
+  poll_common_reopen_form:
+    title: Άνοιγμα ξανά {{poll_type}}
+    helptext: Ανοίξτε ξανά το {{poll_type}} εάν οι χρήστες χρειάζονται περισσότερο χρόνο για να συμμετάσχουν
+    success: Το {{poll_type}} άνοιξε ξανά
+  poll_common_move_form:
+    title: Μετακίνηση {{poll_type}}
+    success: Το {{poll_type}} μετακινήθηκε στο {{group}}
+  poll_common_wip_field:
+    voting_enabled: Η ψηφοφορία ενεργοποιήθηκε
+    enable_voting: Ενεργοποίηση ψηφοφορίας
+    title: Απενεργοποίηση ψηφοφορίας
+    past_tense: Η ψηφοφορία απενεργοποιήθηκε
+    draft_mode: Πρόχειρη λειτουργία
+    disable_voting_during_development: Αυτό το %{poll_type} δεν είναι έτοιμο για ψηφοφορία
+    helptext: Αυτό το %{poll_type} είναι ένα έργο σε εξέλιξη. Μπορείτε να ενεργοποιήσετε την ψηφοφορία αργότερα.
+    voting_open: Ανοιχτή ψηφοφορία
+    this_is_ready_for_voting: αυτό το %{poll_type} είναι έτοιμο για ψηφοφορία
+  poll_common_closing_at_field:
+    closing: Κλείσιμο
+    no_closing_date: Χωρίς ημερομηνία λήξης
+    closing_date: Λήξη προθεσμίας
+    closing_hour: Ωρα κλεισίματος
+    invalid_date: Ακυρη ημερομηνία
+  poll_card:
+    poll_type_by_name: "%{poll_type} από %{name}"
+    started_by: Ξεκίνησε από {{name}}
+  poll_common_votes_panel:
+    vote_removed: Η ψήφος καταργήθηκε
+    undecided: Αναποφάσιστος
+    newest_first: Πρώτα τα νεότερα
+    oldest_first: Πρώτα τα πιο παλιά
+    priority_first: Συμφωνώ πρώτα
+    priority_last: Αποκλεισμός πρώτα
+    undecided_first: Αναποφάσιστος πρώτος
+    no_votes_yet: Δεν έχουν τεθεί ακόμη ψήφοι.
+    change_results_order: Αλλαγή σειράς αποτελεσμάτων
+    none_of_the_above: "(Κανένα από τα παραπάνω)"
+    name_or_username: Όνομα ή όνομα χρήστη
+  poll_common_undecided_panel:
+    show_undecided: Εμφάνιση %{count} αναποφάσιστων
+    show_invitations: Εμφάνιση προσκλήσεων σε εκκρεμότητα
+    undecided_users: Αναποφάσιστος (%{count})
+    invitation_count_singular: 1 επιπλέον άτομο έχει προσκληθεί να συμμετάσχει μέσω email
+    invitation_count_plural: "%{count} επιπλέον άτομα έχουν προσκληθεί να συμμετάσχουν μέσω email"
+  poll_common_undecided_user:
+    reminded: Η υπενθύμιση στάλθηκε!
+    reminder_sent: Η ειδοποίηση υπενθύμισης εστάλη
+  poll_common_set_outcome_panel:
+    enter_outcome: Εισαγάγετε το αποτέλεσμα
+    poll_type: Αυτό το %{poll_type} έκλεισε. Αφιερώστε χρόνο για να εξετάσετε τα αποτελέσματα και, στη συνέχεια, μοιραστείτε ένα αποτέλεσμα, ώστε οι άνθρωποι να γνωρίζουν τι θα συμβεί στη συνέχεια.
+  poll_common_outcome_form:
+    review_due_in_days: Επανεξέταση της απόφασης μετά από πόσες ημέρες;
+    review_due_in_days_hint: Χρονικό διάστημα (σε ημέρες) αναμονής πριν επανεξεταστεί η απόφαση. (προαιρετικός)
+    review_date: Ημερομηνία αναθεώρησης
+    review_date_hint: Ορίστε μια ημερομηνία για την επανεξέταση της απόφασης (προαιρετικό)
+    who_to_notify: Ποιον θέλετε να ειδοποιήσετε για αυτό το αποτέλεσμα; (προαιρετικός)
+    outcome_statement_template: Πρότυπο δήλωσης αποτελεσμάτων
+    new_title: Κράτος αποτέλεσμα
+    update_title: Ενημέρωση αποτελέσματος
+    outcome_created: Το αποτέλεσμα δημιουργήθηκε
+    outcome_updated: Το αποτέλεσμα ενημερώθηκε
+    statement_placeholder: Συνοψίστε τις απαντήσεις και εξηγήστε τι θα συμβεί στη συνέχεια.
+    statement_template_placeholder: Παρέχετε ένα πρότυπο για τη σύνταξη ενός αποτελέσματος της απόφασης. (προαιρετικός)
+    you_will_be_notified: Θα ενημερωθείτε κατά την ημερομηνία ελέγχου.
+    submit: Μοιραστείτε το αποτέλεσμα
+  poll_common_outcome_panel:
+    authored_by: Από όνομα}}
+  poll_common_delete_modal:
+    question: Είστε βέβαιοι ότι θέλετε να το διαγράψετε;
+    title: Διαγραφή {{pollType}}
+    success: Διαγράφηκε με επιτυχία
+  poll_proposal_form:
+    start_header: Πρόταση έναρξης
+    edit_header: Επεξεργασία πρότασης
+    title_placeholder: Π.χ. Πάμε στο φεγγάρι!
+    details_placeholder: Ποιες είναι οι λεπτομέρειες της πρότασής σας;
+    proposal_created: Η πρόταση ξεκίνησε
+    proposal_updated: Η πρόταση ενημερώθηκε
+  record_modal:
+    record_video: Εγγραφή βίντεο
+    record_audio: Εγγραφή ήχου
+    record: Ρεκόρ
+    stop: Να σταματήσει
+    no_mic: Δεν ήταν δυνατή η εύρεση μικροφώνου
+    no_camera: Δεν ήταν δυνατή η εύρεση κάμερας
+    listen_to_audio: Ακούστε ήχο
+    watch_video: Δες το βίντεο
+    audio_transcript: 'Ηχητική μεταγραφή: %{text}'
+    why_type_when_you_can_talk: Γιατί πληκτρολογείτε όταν μπορείτε να μιλήσετε; Στείλτε μια ηχογράφηση
+    transcript_included: Μια μεταγραφή της ηχογράφησης θα προσαρτηθεί στο μήνυμά σας
+  poll_poll_form:
+    multiple_choice_subtitle: Ένας απλός τρόπος για να αξιολογήσετε τη δημοτικότητα των επιλογών
+    start_header: Έναρξη δημοσκόπησης
+    edit_header: Επεξεργασία δημοσκόπησης
+    tip: Προσφέρετε μια επιλογή μεταξύ επιλογών
+    title_placeholder: Π.χ. Πού θέλετε να πάτε διακοπές;
+    details_placeholder: Δώστε τυχόν διευκρινιστικές λεπτομέρειες που μπορεί να χρειαστούν οι άνθρωποι για να απαντήσουν στην ερώτηση.
+    add_option_placeholder: Προσθήκη επιλογής
+    new_option: Νέα επιλογή
+    add_option_hint: Εισαγάγετε ένα σύντομο όνομα για την επιλογή
+    remove_option: Κατάργηση επιλογής
+    poll_created: Δημοσκόπηση δημιουργήθηκε
+    poll_updated: Η δημοσκόπηση ενημερώθηκε
+    option_added: Προστέθηκε η επιλογή
+    option_already_added: Η επιλογή έχει ήδη προστεθεί στη δημοσκόπηση
+  poll_dot_vote_form:
+    dots_per_person: Πόντοι ανά άτομο
+    dots_per_person_helptext: Ο συνολικός αριθμός πόντων που καλείται να κατανείμει κάθε άτομο.
+  poll_meeting_form:
+    timeslots: χρονοθυρίδες
+    no_options: Εισαγάγετε ώρες στην τρέχουσα ζώνη ώρας ({{zone}}). Οι συμμετέχοντες βλέπουν τις ώρες μεταφρασμένες στην τοπική τους ζώνη ώρας.
+    meeting_duration: Διάρκεια συνάντησης
+    add_option_placeholder: Προσθήκη νέας ώρας
+    time_slot_added: Προστέθηκε χρονοθυρίδα
+    time_slot_already_added: Η χρονοθυρίδα έχει ήδη προστεθεί
+    participants_see_local_times: Οι συμμετέχοντες θα βλέπουν τις ώρες προσαρμοσμένες στη ζώνη ώρας τους
+    use_24_hour_format: Λάθος! Χρήση μορφής 24 ωρών π.χ. %{time}
+  poll_ranked_choice_form:
+    no_options: Δεν έχετε προσθέσει ακόμα καμία επιλογή.
+    add_option_placeholder: Εισαγάγετε μια νέα επιλογή
+    minimum_stance_choices: Επιλογές κατάταξης
+    minimum_stance_choices_helptext: Πόσες επιλογές έχει ο ψηφοφόρος;
+    minimum_stance_choices_hint: δηλ. Κατατάξτε τις 3 κορυφαίες γεύσεις παγωτού σας
+    ranked_choice_created: Δημιουργήθηκε η κατάταξη επιλογή
+    ranked_choice_updated: Η κατάταξη επιλογή ενημερώθηκε
+    rank: Τάξη
+    points: Πόντοι
+    average: Μέση τιμή
+    mean: Σημαίνω
+    pct_of_points: "% των πόντων"
+    pct_of_voters: "% των ψηφοφόρων"
+    percent: Τοις εκατό
+  poll_meeting_time_field:
+    add_time_slot: Προσθήκη χρονοθυρίδας
+    new_time_slot: Νέο χρονικό διάστημα
+    closing_hour: Ώρα κλεισίματος
+  poll_proposal_vote_form:
+    default_reason_placeholder: Εξηγήστε το σκεπτικό σας
+    abstain_reason_placeholder: Ενημερώστε τους άλλους γιατί επιλέγετε να εξαιρεθείτε από αυτήν την απόφαση
+    agree_reason_placeholder: Τι σας αρέσει στην πρόταση και πώς θα ωφελήσει την ομάδα;
+    disagree_reason_placeholder: Πώς θα μπορούσε να βελτιωθεί αυτή η πρόταση ώστε να μπορέσετε να την υποστηρίξετε;
+    block_reason_placeholder: Εξηγήστε την αντίρρησή σας σε αυτήν την πρόταση και γιατί δεν πρέπει να προχωρήσει
+    stance_created: Η ψηφοφορία δημιουργήθηκε
+    stance_updated: Η ψηφοφορία ενημερώθηκε
+    vote: Ψήφος
+  poll_count_form:
+    pct_of_target: "% του στόχου"
+    agree_target_helptext: Ποιος είναι ο αριθμός-στόχος των εθελοντών που θα θέλατε να έχετε;
+    agree_target_label: Αριθμός στόχος
+  poll_common_percent_voted:
+    sentence: "{{numerator}} από {{denominator}} άτομα έχουν συμμετάσχει ({{percent}}%)"
+    target_progress: "{{percent}}% του στόχου επιτεύχθηκε. ({{num}} / {{στόχος}})"
+  poll_meeting_chart_panel:
+    total: Σύνολο
+  poll_remove_vote:
+    title: Να καταργηθεί η ψήφος σας;
+    helptext: Είστε βέβαιοι ότι θέλετε να καταργήσετε την ψήφο σας; Θα καταχωρηθείτε ως αναποφάσιστοι και μπορείτε να ψηφίσετε ξανά αργότερα, εάν το επιθυμείτε.
+    confirm: Κατάργηση ψήφου
+    success: Η ψήφος καταργήθηκε
+  poll_poll_vote_form:
+    stance_created: Η ψηφοφορία δημιουργήθηκε
+    stance_updated: Η ψηφοφορία ενημερώθηκε
+  poll_score_vote_form:
+    stance_created: Η ψηφοφορία δημιουργήθηκε
+    stance_updated: Η ψηφοφορία ενημερώθηκε
+  poll_meeting_vote_form:
+    local_time_zone: Τοπική ώρα - {{zone}}
+    can_attend: Μπορεί να παρευρεθεί
+    unable: Ανίκανος
+    if_need_be: Αν χρειαστεί
+    your_response: Πότε μπορείτε να παρευρεθείτε;
+    stance_created: Η διαθεσιμότητα αποθηκεύτηκε
+    stance_updated: Η διαθεσιμότητα ενημερώθηκε
+    reason_placeholder: Εξηγήστε πότε είστε ελεύθεροι (ή απασχολημένοι), σε περίπτωση που ο συγγραφέας θέλει να προσθέσει επιλογές.
+  poll_dot_vote_vote_form:
+    dots_remaining: Απομένουν %{count} κουκκίδες
+    too_many_dots: Έχετε χρησιμοποιήσει πάρα πολλές τελείες
+    stance_created: Η ψηφοφορία δημιουργήθηκε
+    stance_updated: Η ψηφοφορία ενημερώθηκε
+  poll_ranked_choice_vote_form:
+    helptext: Επιλογές μεταφοράς και απόθεσης με σειρά προτίμησης (1 είναι η πιο προτιμώμενη επιλογή σας). Οι κορυφαίες %{count} επιλογές σας θα καταγραφούν.
+    stance_created: Η επιλογή καταγράφηκε
+    stance_updated: Η επιλογή ενημερώθηκε
+  poll_templates:
+    proposal:
+      process_subtitle: Υποβάλετε μια πρόταση για να λάβετε μια απόφαση
+      process_introduction: <p>Η κλασική πρόταση Loomio σάς βοηθά να πάρετε μια απόφαση, μετατρέποντας μια συζήτηση σε ένα σαφές αποτέλεσμα.</p><p> Προτείνετε μια πορεία δράσης και καλέστε τους ανθρώπους να απαντήσουν ψηφίζοντας συμφωνώ, απόσχω ή διαφωνώ.</p><p> Καθώς οι άνθρωποι ψηφίζουν, μπορούν να δώσουν έναν λόγο για τον οποίο ψήφισαν με αυτόν τον τρόπο. Μπορείτε να δείτε πού βρίσκονται όλοι οι άλλοι για το θέμα και γιατί.</p><p> Με αυτόν τον τρόπο μπορείτε να χρησιμοποιήσετε μια πρόταση για να παρακινήσετε τους ανθρώπους να απαντήσουν, να αποκαλύψετε νέες πληροφορίες και να δημιουργήσετε κοινή κατανόηση - για να βοηθήσετε την ομάδα σας να λάβει μια καλύτερη, πιο τεκμηριωμένη απόφαση.</p><p> Μια πρόταση και σχετική συζήτηση δημιουργεί το δικό της αρχείο για το πώς προέκυψε η απόφαση.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Διαβάστε περισσότερα σχετικά με τη χρήση της κλασικής πρότασης Loomio στη διαδικασία απλής απόφασης</u></a> .</p>
+      title: Εγκρίνετε τη νέα ιδέα της επωνυμίας
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Ποια είναι η απόφαση που πρέπει να πάρετε;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></h3><p></p><p> Για να περάσει αυτή η πρόταση, χρειάζεται η πλειοψηφία των μελών να ψηφίσει Συμφωνώ.</p><p> Εάν διαφωνείτε, πείτε γιατί και τι πρέπει να αλλάξει για να συμφωνήσετε.</p>
+      agree: Συμφωνώ
+      agree_meaning: Υποστηρίζω την πρόταση
+      agree_prompt: Τι σας αρέσει στην πρόταση και πώς θα ωφελήσει την ομάδα;
+      abstain: Απέχω
+      abstain_meaning: Επιλέγοντας να μην ψηφίσετε ή δεν μπορείτε να ψηφίσετε σε αυτήν την απόφαση.
+      abstain_prompt: Γιατί απέχετε ή δεν νιώθετε ότι μπορείτε να ψηφίσετε αυτήν την απόφαση;
+      disagree: Διαφωνώ
+      disagree_meaning: Κάτι σε αυτήν την πρόταση πρέπει να αλλάξει για να μπορέσω να την υποστηρίξω.
+      disagree_prompt: Πώς θα μπορούσε να βελτιωθεί αυτή η πρόταση ώστε να μπορέσετε να την υποστηρίξετε;
+    advice:
+      process_subtitle: Ζητήστε συμβουλές για μια απόφαση που πρέπει να πάρετε
+      process_introduction: <p>Ζητήστε συμβουλές για μια απόφαση που πρέπει να λάβετε, με τη συμβουλή ατόμων που επηρεάζονται ή που διαθέτουν εμπειρία, ώστε να μπορείτε να πάρετε μια καλύτερη απόφαση για τον οργανισμό σας.</p><ul><li><p> Οι συμβουλές σάς βοηθούν να πάρετε μια καλύτερη απόφαση για τον οργανισμό σας.</p></li><li><p> Προώθηση σχέσεων, ευκαιριών μάθησης και διαφορετικών εισροών.</p></li><li><p> Τονώστε την πρωτοβουλία και τη δημιουργικότητα, και πιο ευχάριστη δουλειά.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Διαβάστε περισσότερα για τη διαδικασία Συμβουλών</u></a> .</p>
+      title: Βοηθήστε τον Takashi να αγοράσει έναν νέο υπολογιστή
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Ποια είναι η απόφαση που πρέπει να πάρετε;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Τι συμβουλές ζητάτε από τους ανθρώπους για να σας βοηθήσουν να πάρετε μια καλή απόφαση;</strong></h3><p></p><p> Ζητώ τη συμβολή σας για να με βοηθήσετε να πάρω μια καλή απόφαση για τον οργανισμό μας.</p>
+      agree: Συμφωνώ
+      agree_meaning: Έχω δώσει τη συμβουλή μου για αυτήν την απόφαση
+      agree_prompt: Συνοψίστε τις συμβουλές σας ή κάντε ένα χρήσιμο σχόλιο
+      abstain: Απέχω
+      abstain_meaning: Δεν έχω καμία συμβουλή να δώσω
+      abstain_prompt: Έχετε κάποια σχόλια που μπορεί να σας φανούν χρήσιμα;
+    consent:
+      process_subtitle: Πάρτε μια απόφαση που είναι «ασφαλής να δοκιμάσετε», χωρίς αντιρρήσεις
+      process_introduction: <p>Αναζητήστε τη συναίνεση για μια απόφαση που πρέπει να λάβετε, όπου δεν υπάρχουν ουσιαστικές αντιρρήσεις για την πρότασή σας, ώστε να μπορείτε να πάρετε μια γρήγορη απόφαση για τον οργανισμό σας που είναι «ασφαλής να δοκιμάσετε».</p><ul><li><p> Στοχεύστε σε μια «αρκετά καλή» απόφαση</p></li><li><p> Συμμετάσχετε πολλές φωνές για να αναπτύξετε μια εφαρμόσιμη πρόταση</p></li><li><p> Ρωτήστε αν κάποιος έχει έγκυρη αντίρρηση</p></li><li><p> Τροποποίηση της πρότασης για επίλυση ενστάσεων</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Διαβάστε περισσότερα σχετικά με τη διαδικασία συναίνεσης</a> .</p>
+      title: Προσλάβετε την Chloe για ρόλο σχεδιαστή
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Ποια είναι η απόφαση που πρέπει να πάρετε;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Τι ζητάτε από τους ανθρώπους αυτής της πρότασης;</strong></h3><p></p><p> Εάν έχετε αντίρρηση, πείτε γιατί και προτείνετε μια αλλαγή στην πρόταση που την καθιστά ασφαλή.</p><p> Να θυμάστε ότι ζητάμε συγκατάθεση για μια «αρκετά καλή» απόφαση που είναι «ασφαλής για δοκιμή», ώστε να μπορούμε να πάρουμε μια καλή απόφαση για τον οργανισμό μας.</p>
+      consent: Συγκατάθεση
+      consent_meaning: Η πρόταση είναι ασφαλής να δοκιμάσετε
+      consent_prompt: Τι σας αρέσει σχετικά με την πρόταση και πώς θα ωφελήσει τον οργανισμό;
+      objection: Ενσταση
+      objection_meaning: Έχω μια έγκυρη αντίρρηση και πιστεύω ότι η πρόταση θα προκαλέσει βλάβη
+      objection_prompt: Ποια αλλαγή σε αυτήν την πρόταση χρειάζεται για να είναι «ασφαλής η δοκιμή», ώστε να μπορείτε να την υποστηρίξετε;
+    consensus:
+      process_subtitle: Συνάψτε συλλογική σύμβαση με όλους τους εμπλεκόμενους
+      process_introduction: <p>Δημιουργήστε συναίνεση για μια απόφαση που πρέπει να λάβετε, για να καταλήξετε σε μια συμφωνία που να ικανοποιεί τις ανάγκες και τις ανησυχίες όλων των συμμετεχόντων.</p><ul><li><p> Συζητήστε και αναπτύξτε μια πρόταση μαζί</p></li><li><p> Συμπεριλάβετε και σεβαστείτε όλους τους εμπλεκόμενους</p></li><li><p> Αναζητήστε συμφωνία από τους περισσότερους ανθρώπους</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Διαβάστε περισσότερα για τη διαδικασία Συναίνεσης</a> .</p>
+      title: Εγκρίνετε τη νέα ιδέα της επωνυμίας
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Ποια είναι η απόφαση που πρέπει να πάρετε;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></h3><p></p><p> Για να περάσει αυτή η πρόταση, χρειάζεται η πλειοψηφία των μελών να ψηφίσει Συμφωνώ.</p><p> Εάν διαφωνείτε, πείτε γιατί και τι πρέπει να αλλάξει για να συμφωνήσετε.</p>
+      agree: Συμφωνώ
+      agree_meaning: Υποστηρίζω την πρόταση
+      agree_prompt: Τι σας αρέσει σχετικά με την πρόταση και πώς θα ωφελήσει τον οργανισμό;
+      abstain: Απέχω
+      abstain_meaning: Αυτή η απόφαση δεν με επηρεάζει και είμαι ευχαριστημένος με ό,τι αποφασίσει η ομάδα
+      abstain_prompt: Γιατί απέχετε ή δεν νιώθετε ότι μπορείτε να ψηφίσετε αυτήν την απόφαση;
+      disagree: Διαφωνώ
+      disagree_meaning: Κάτι σε αυτήν την πρόταση πρέπει να αλλάξει για να μπορέσω να την υποστηρίξω
+      disagree_prompt: Πώς θα μπορούσε να βελτιωθεί αυτή η πρόταση ώστε να μπορέσετε να την υποστηρίξετε;
+      block: ΟΙΚΟΔΟΜΙΚΟ ΤΕΤΡΑΓΩΝΟ
+      block_meaning: Μπλοκάρω αυτήν την πρόταση και πιστεύω ότι δεν πρέπει να προχωρήσει
+      block_prompt: Εξηγήστε την αντίρρησή σας σε αυτήν την πρόταση και γιατί δεν πρέπει να προχωρήσει
+    question_round:
+      process_subtitle: Προσκαλέστε διευκρινιστικές ερωτήσεις για να βοηθήσετε τους ανθρώπους να κατανοήσουν μια πρόταση
+      process_introduction: <p>Ο γύρος ερωτήσεων είναι μια ευκαιρία για τους ανθρώπους να κάνουν διευκρινιστικές ερωτήσεις σχετικά με την πρόταση, έτσι ώστε όλοι να κατανοήσουν την πρόταση προτού πουν τη γνώμη τους για αυτήν.</p><p> Ο γύρος Loomio Question είναι μια ειδική πρόταση χωρίς επιλογές ψήφου. Επιτρέπει στους συμμετέχοντες να κάνουν ερωτήσεις εντός μιας διάρκειας που έχετε ορίσει για τον γύρο.</p><p> Ο γύρος ερωτήσεων χρησιμοποιείται συνήθως ως βήμα στη διαδικασία συναίνεσης.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Διαβάστε περισσότερα σχετικά με τη διαδικασία συναίνεσης</a> .</p>
+      title: Τι ερωτήσεις έχετε σχετικά με την Πολιτική Υγείας και Ασφάλειας;
+      details: <h3 id="what-are-you-proposing"><strong>Τι προτείνεις;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></h3><p></p><p> Αυτός είναι ένας γύρος ερωτήσεων, όπου καλείστε να κάνετε διευκρινιστικές ερωτήσεις.</p><p> Τι πρέπει να γνωρίζετε για να κατανοήσετε την πρόταση;</p><p> Απαντήστε πριν κλείσει ο γύρος της ερώτησης.</p>
+      reason_prompt: Τι πρέπει να γνωρίζετε για να κατανοήσετε την πρόταση;
+    sense_check:
+      process_subtitle: Ζητήστε σχόλια, ερωτήσεις και ανησυχίες
+      process_introduction: <p>Η πρόταση ελέγχου Sense είναι ένας καλός τρόπος για να λάβετε σχόλια, να ζητήσετε ερωτήσεις και να αποκαλύψετε ανησυχίες. Βοηθά στη διευκρίνιση και τη βελτίωση μιας πρότασης πριν προχωρήσετε σε μια απόφαση.</p><p> Ο έλεγχος αίσθησης ενημερώνει τους ανθρώπους ότι σχηματίζεται μια πρόταση και τους ενθαρρύνει να συμμετάσχουν. Είναι μια ευκαιρία να ακούσετε τους ανθρώπους, να αισθανθείτε πώς νιώθουν και να ανταποκριθούν κατάλληλα - ανοίγοντας τη δυνατότητα να ενσωματώσετε τη συνεισφορά τους για να λάβετε μια καλύτερη απόφαση.</p><p> Χρησιμοποιήστε την πρόταση ελέγχου αίσθησης στη διαδικασία συναίνεσης για να προσκαλέσετε αντιδράσεις και σχόλια για να βελτιώσετε την πρόταση και σε μια διαδικασία συναίνεσης για να ελέγξετε τη συναίνεση.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Διαβάστε περισσότερα σχετικά με τη χρήση του Sense check στη διαδικασία απλής απόφασης</u></a> <span>.</span></p>
+      title: Πώς αισθάνεστε για τις νέες ιδέες της μάρκας;
+      details: <h3 id="what-are-you-proposing"><strong>Τι προτείνεις;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></h3><p></p><p> Πώς αισθάνεστε για την πρόταση; Αφήστε ένα σχόλιο ή κάντε μια πρόταση για βελτίωση.</p><p> Αυτός ο έλεγχος Sense είναι μια ευκαιρία για τη συμβολή και τη συνεισφορά σας, για να μας βοηθήσετε να λάβουμε μια καλύτερη απόφαση.</p>
+      looks_good: Φαίνεται καλό
+      looks_good_meaning: Είμαι ευχαριστημένος με το πού πάει αυτό
+      looks_good_prompt: Έχετε κάποια σχόλια ή προτάσεις για να βελτιώσετε την πρόταση;
+      abstain: Απέχω
+      abstain_meaning: Δεν έχω τίποτα να προσθέσω, ούτε αντίρρηση για αυτή τη δουλειά.
+      abstain_prompt: Η αποχή συνεπάγεται τη συναίνεση με την κατεύθυνση αυτής της πρότασης. Υπάρχει λόγος που ψηφίζετε υπέρ της αποχής;
+      concerned: Ενδιαφερόμενος
+      concerned_meaning: Κάτι σχετικά με αυτό μπορεί να χρειαστεί να αλλάξει για να συναινέσω ή να συμφωνήσω
+      concerned_prompt: Ποια είναι η ανησυχία σας και πώς μπορεί να αντιμετωπιστεί;
+    gradients_of_agreement:
+      process_subtitle: Εκφράστε την υποστήριξη για μια πρόταση σε κλίμακα 8 βαθμών
+      process_introduction: "<p>Η πρόταση Gradients of contract δίνει τη δυνατότητα στα μέλη μιας ομάδας να εκφράσουν την υποστήριξή τους για μια πρόταση σε βαθμούς σε μια κλίμακα, προσφέροντας περισσότερους τρόπους έκφρασης υποστήριξης παρά με όρους «συμφωνώ» και «διαφωνώ».</p><p> Χρησιμοποιήστε τις κλίσεις συμφωνίας ως προκαταρκτικό γύρο, για να δοκιμάσετε την υποστήριξη μιας πρότασης πριν προχωρήσετε σε μια επίσημη συμφωνία.</p><p> Οι κλίσεις συμφωνίας ενημερώνουν τους ανθρώπους ότι σχηματίζεται μια πρόταση και τους ενθαρρύνει να συμμετάσχουν. Είναι μια ευκαιρία να ακούσετε τους ανθρώπους, να αισθανθείτε πώς νιώθουν και να ανταποκριθούν κατάλληλα - ανοίγοντας τη δυνατότητα να ενσωματώσετε τη συνεισφορά τους για να λάβετε μια καλύτερη απόφαση.</p>"
+      title: Πώς σας φαίνεται η νέα δήλωση αξιών;
+      details: <h3 id="what-are-you-proposing"><strong>Τι προτείνεις;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></h3><p></p><p> Πώς σας φαίνεται η πρόταση; Εκφράστε την υποστήριξή σας στην παρακάτω κλίμακα και αφήστε ένα σχόλιο ή πρόταση για βελτίωση.</p><p> Αυτή η πρόταση Διαβάθμισης συμφωνίας είναι να δοκιμάσει την υποστήριξη για την πρόταση και μια ευκαιρία για τη συμβολή σας πριν προχωρήσετε σε μια επίσημη συμφωνία.</p>
+      whole_hearted_endorsement: Ολόψυχη έγκριση
+      whole_hearted_endorsement_meaning: Μου αρέσει πολύ!
+      whole_hearted_endorsement_prompt: Τι σου αρέσει σε αυτό?
+      agreement_with_minor_contention: Συμφωνία με μικρές αντιπαραθέσεις
+      agreement_with_minor_contention_meaning: Δεν είναι τέλειο, αλλά είναι αρκετά καλό
+      agreement_with_minor_contention_prompt: Ποια είναι η ανησυχία σας;
+      support_with_reservations: Υποστήριξη με κρατήσεις
+      support_with_reservations_meaning: Μπορώ να ζήσω με αυτό
+      support_with_reservations_prompt: Ποιες είναι οι κρατήσεις σας;
+      abstain_meaning: Αυτό το θέμα δεν με επηρεάζει
+      abstain_prompt: Έχετε κάτι που θα θέλατε να προσθέσετε;
+      more_discussion_needed: Χρειάζεται περισσότερη συζήτηση
+      more_discussion_needed_meaning: Δεν καταλαβαίνω ακόμα αρκετά καλά τα θέματα
+      more_discussion_needed_prompt: Τι δεν καταλαβαίνεις?
+      don_t_like_but_will_support: Δεν μου αρέσει αλλά θα υποστηρίξω
+      don_t_like_but_will_support_meaning: Δεν είναι υπέροχο, αλλά δεν θέλω να κρατήσω την ομάδα
+      don_t_like_but_will_support_prompt: Τι θα θέλατε να δείτε να βελτιώνεται;
+      serious_disagreement: Σοβαρή διαφωνία
+      serious_disagreement_meaning: Δεν συμφωνώ με αυτό - μην υπολογίζετε σε εμένα
+      serious_disagreement_prompt: Με τι διαφωνείτε;
+      veto: Βέτο
+      veto_meaning: Μπλοκάρω αυτήν την πρόταση
+      veto_prompt: Γιατί μπλοκάρετε την πρόταση; Τι πρέπει να αλλάξει για να το υποστηρίξεις;
+    simple_poll:
+      process_subtitle: Βρείτε την πιο δημοφιλή επιλογή
+      process_introduction: <p>Πριν πάρετε μια απόφαση, βρείτε ποιες επιλογές ενδιαφέρονται περισσότερο οι άνθρωποι.</p><p> Η απλή δημοσκόπηση σάς βοηθά να βρείτε την πιο δημοφιλή επιλογή ή επιλογές με μία ή πολλαπλή επιλογή.</p><p> Γράψτε τυχόν λεπτομέρειες σχετικά με τις επιλογές στο πεδίο λεπτομερειών, μετά πληκτρολογήστε το όνομα της επιλογής και κάντε κλικ στο + για προσθήκη.</p><p> Ορίστε τις <strong>Ελάχιστες επιλογές</strong> και <strong>τις Μέγιστες επιλογές</strong> που μπορεί να επιλέξει ένας ψηφοφόρος. Αφήστε τη μέγιστη επιλογή ως 1 για δημοσκόπηση μίας επιλογής.</p><p> Μπορείτε να χρησιμοποιήσετε το εικονίδιο με το μολύβι δίπλα σε κάθε επιλογή για να προσθέσετε ένα <strong>νόημα</strong> της επιλογής, μια περαιτέρω επεξεργασία της επιλογής για να βοηθήσετε τους ανθρώπους όταν ψηφίζουν.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Διαβάστε περισσότερα για το Simple poll</a> .</p>
+      title: Πού πρέπει να είναι το επίκεντρο της στρατηγικής μας κατεύθυνσης;
+      details: <h3 id="what-is-this-poll-about"><strong>Τι είναι αυτή η δημοσκόπηση;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></h3><p></p><p> Επιλέξτε τις επιλογές που προτιμάτε.</p>
+    score_poll:
+      process_subtitle: Μετρήστε τον βαθμό υποστήριξης για κάθε επιλογή
+      process_introduction: <p>Χρησιμοποιήστε τη δημοσκόπηση βαθμολογίας όταν θέλετε να ερευνήσετε τους ανθρώπους για την επιθυμία, την προτίμηση ή το ενδιαφέρον τους για κάθε επιλογή.</p><p> <span>Ζητείται από τους συμμετέχοντες να αξιολογήσουν κάθε επιλογή και να ορίσουν μια βαθμολογία μετακινώντας ένα ρυθμιστικό κατά μήκος μιας κλίμακας.</span></p><p> <span>Τα αποτελέσματα εμφανίζονται γραφικά μαζί με έναν πίνακα για κάθε επιλογή που δείχνει τους συνολικούς βαθμούς, τους μέσους όρους και τον αριθμό των ψηφοφόρων.</span></p><p> Οι σύνθετες ρυθμίσεις περιλαμβάνουν "Οι ψήφοι είναι ανώνυμες" και "Εμφάνιση επιλογών με τυχαία σειρά" - που χρησιμοποιούνται συνήθως για τη δημοσκόπηση βαθμολογίας για τη μείωση τυχόν προκατάληψης ψήφου.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Διαβάστε περισσότερα για το Score poll</a> .</p>
+      title: Αξιολόγηση του τρόπου με τον οποίο λαμβάνονται οι αποφάσεις στον οργανισμό μας
+      details: <h3 id="what-is-this-poll-about"><strong>Τι είναι αυτή η δημοσκόπηση;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></h3><p></p><p> Επιλέξτε τις επιλογές που προτιμάτε.</p>
+    dot_vote:
+      process_subtitle: Διαθέστε έναν προϋπολογισμό βαθμών για να αποκαλύψετε τις προτεραιότητες
+      process_introduction: <p>Η ψηφοφορία με τελείες είναι χρήσιμη για ομάδες που προσπαθούν να εκχωρήσουν έναν περιορισμένο πόρο σε έναν αριθμό επιλογών. Ξεπερνά μια απλή δημοσκόπηση, βοηθώντας τους συμμετέχοντες να εκτιμήσουν ότι υπάρχει περιορισμός κατά την επιλογή επιλογών.</p><p> Καθένας από τους συμμετέχοντες λαμβάνει έναν καθορισμένο αριθμό κουκκίδων. Εσείς αποφασίζετε πόσα.</p><p> Τοποθετούν κουκκίδες δίπλα στις επιλογές που παρουσιάζονται που τους αρέσουν. Οι συμμετέχοντες μπορούν να τοποθετήσουν όλες τις κουκκίδες τους σε μία μόνο επιλογή ή να τις κατανείμουν σε πολλές επιλογές.</p><p> Καθώς οι συμμετέχοντες κατανέμουν κουκκίδες, μπορεί να υπερβούν το όριο προϋπολογισμού κουκκίδων και έτσι ενθαρρύνονται να εξετάσουν προσεκτικά πώς ξοδεύουν τις κουκκίδες τους.</p><p> Οι επιλογές με τις περισσότερες τελείες «κερδίζουν». Ο πίνακας αποτελεσμάτων παρέχει πρόσθετα δεδομένα για να σας βοηθήσει να αναλύσετε τα αποτελέσματα.</p><ul><li><p> % των πόντων</p></li><li><p> Πόντοι</p></li><li><p> Σημαίνω</p></li><li><p> Ψηφοφόροι</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Διαβάστε περισσότερα για το Dot vote</a> .</p>
+      title: Επιλογή θεμάτων για το συνέδριό μας
+      details: <h3 id="what-is-this-poll-about"><strong>Τι είναι αυτή η δημοσκόπηση;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></h3><p></p><p> Σε αυτή τη δημοσκόπηση έχετε έναν προϋπολογισμό 8 κουκκίδων για να διαθέσετε στις επιλογές που προτιμάτε. Μπορείτε να τοποθετήσετε όλες τις κουκκίδες σε μία επιλογή ή να τις απλώσετε.</p>
+    ranked_choice:
+      process_subtitle: Κατανοήστε τη διατεταγμένη προτίμηση των επιλογών
+      process_introduction: '<p>Η επιλογή κατάταξης είναι χρήσιμη όταν έχετε μεγάλο αριθμό επιλογών ή όταν διεξάγετε εκλογές.</p><p> Αυτό το πρότυπο δημοσκόπησης προσφέρει μια σειρά επιλογών στα άτομα να ψηφίσουν με τη σειρά που προτιμούν.</p><p> Μπορείτε να ορίσετε τον αριθμό των επιλογών που έχει ο ψηφοφόρος.</p><p> <span>Οι ψηφοφόροι σύρουν και αποθέτουν επιλογές με σειρά προτίμησης (το #1 είναι η πιο προτιμώμενη επιλογή σας).</span></p><p> <span>Οι σύνθετες ρυθμίσεις περιλαμβάνουν "Οι ψήφοι είναι ανώνυμες" και "Εμφάνιση επιλογών με τυχαία σειρά" - που χρησιμοποιούνται συνήθως για την επιλογή R</span> anked για μείωση τυχόν προκατάληψης ψήφου.</p><p> Τα αποτελέσματα εμφανίζονται με σειρά κατάταξης. Ο πίνακας αποτελεσμάτων παρέχει πρόσθετα δεδομένα για να σας βοηθήσει να αναλύσετε τα αποτελέσματα.</p><ul><li><p> Τάξη</p></li><li><p> % των πόντων</p></li><li><p> Πόντοι</p></li><li><p> Σημαίνω</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Διαβάστε περισσότερα για Κατάταξη επιλογή</a> .</p>'
+      title: Εκλογή διευθυντών στο διοικητικό συμβούλιο
+      details: <h3 id="what-is-this-poll-about"><strong>Τι είναι αυτή η δημοσκόπηση;</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Γιατί είναι σημαντικό?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></h3><p></p><p> Ψηφίστε ταξινομώντας τις επιλογές με τη σειρά της προτίμησής σας. Η επιλογή που κατατάσσεται πρώτη στα αποτελέσματα κερδίζει.</p>
+    time_poll:
+      process_subtitle: Βρείτε πότε είναι διαθέσιμα άτομα για συνάντηση
+      process_introduction: <p><span>Εξοικονομήστε χρόνο κανονίζοντας μια ημερομηνία για τη συνάντηση ή την εκδήλωσή σας.</span></p><p> Η δημοσκόπηση στο Time σας διευκολύνει να δείτε τη διαθεσιμότητα όλων και να βρείτε την καλύτερη ώρα.</p><p> Δώστε τίτλο και λεπτομέρειες στη δημοσκόπησή σας στο Time. Εισαγάγετε μια λίστα επιλογών ημερομηνίας και ώρας στη ζώνη ώρας σας.</p><p> Όταν ορίζετε χρονοθυρίδες, λάβετε υπόψη άτομα σε διαφορετικές ζώνες ώρας. Οι συμμετέχοντες θα βλέπουν τοπικές ώρες στη ζώνη ώρας τους.</p><p> Ορίστε μια διάρκεια συνάντησης.</p><p> Όταν κλείσει η ψηφοφορία του Time, ορίστε ένα αποτέλεσμα με την καλύτερη ώρα και τυχόν οδηγίες για τη συνάντηση.</p><p> <span>Το Loomio θα περιλαμβάνει μια πρόσκληση ημερολογίου με το email ειδοποίησης αποτελεσμάτων, ώστε οι συμμετέχοντες να μπορούν να προσθέσουν στο ημερολόγιό τους.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Διαβάστε περισσότερα για τη δημοσκόπηση του Time</a> .</p>
+      title: Ας βρούμε ημερομηνία για την επόμενη συνάντησή μας
+      details: <p><strong>Τι είναι η συνάντηση ή εκδήλωση;</strong></p><p></p><p> <strong>Γιατί είναι σημαντικό?</strong></p><p></p><p> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></p><p></p><p> <span>Σημειώστε τις χρονοθυρίδες που διαθέτετε με το πράσινο εικονίδιο «μπράβος προς τα πάνω» ή αφήστε το κόκκινο «μπράβο κάτω» στη θέση του όταν δεν είναι διαθέσιμο.</span></p><p> <span>Χρησιμοποιήστε το εικονίδιο "αντίχειρες στο πλάι" για να πείτε ότι είστε διαθέσιμοι "αν χρειαστεί".</span></p>
+      reason_prompt: Υπάρχει κάτι που μπορείτε να πείτε για να βοηθήσετε τον διοργανωτή να βρει τον κατάλληλο χρόνο;
+    opt_in:
+      process_subtitle: Βρείτε εθελοντές ή ζητήστε συμμετέχοντες
+      process_introduction: '<p>Χρησιμοποιήστε το Opt-in για να προσκαλέσετε άτομα σε μια ομάδα, επιτροπή ή ομάδα εργασίας ή να συμμετάσχουν σε μια εκδήλωση.</p><p> Το "opt-in" έχει δύο επιλογές ψηφοφορίας: Αποδοχή ή Απόρριψη.</p><p> Μπορείτε να ορίσετε έναν αριθμό-στόχο ατόμων που αναζητάτε, ας πούμε 3 άτομα για να συμμετάσχουν στην ομάδα εργασίας σας.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Διαβάστε περισσότερα σχετικά με το Opt-in</a> .</p>'
+      title: Ομάδα εργασίας για τη σύνταξη της νέας μας πολιτικής αειφορίας
+      details: "<p><strong>Ποια είναι η ομάδα, η ομάδα εργασίας ή η εκδήλωση στην οποία προσκαλείτε άτομα;</strong></p><p></p><p> <strong>Γιατί είναι σημαντικό?</strong></p><p></p><p> <strong>Τι ζητάτε από τους ανθρώπους να κάνουν;</strong></p><p></p><p> Επιλέξτε «Αποδοχή» για να συμμετάσχετε!</p>"
+      accept_meaning: Είμαι πρόθυμος να συμμετάσχω
+      accept_prompt: Γιατί προσφέρετε εθελοντικά για αυτό;
+      decline_meaning: Δεν μπορώ να συμμετάσχω
+      decline_prompt: Υπάρχει κάτι που θα θέλατε να πείτε;
+  thread_item:
+    removed: Το στοιχείο καταργήθηκε
+    deleted_group: Διαγράφηκε ομάδα
+    invite_only_thread: Πρόσκληση μόνο νήματος
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> σε απάντηση στο <strong>{{title}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> επεξεργάστηκε τον τίτλο του νήματος"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> επεξεργάστηκε το πλαίσιο του νήματος"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> άλλαξε το απόρρητο του νήματος"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> επεξεργάστηκε το νήμα"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>Ο {{author}}</a> μετακίνησε το νήμα από <strong>το {{title}}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> έκλεισε το νήμα"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> άνοιξε ξανά το νήμα"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> δημιούργησε ένα fork αυτού του νήματος: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{συγγραφέας}}</a>"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> μοιράστηκε ένα αποτέλεσμα"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> άνοιξε ξανά το {{polltype}}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> έκλεισε το {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> ξεκίνησε ένα {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>Ο {{author}}</a> επεξεργάστηκε το {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> πρόσθεσε επιλογές στο {{polltype}}"
+    poll_expired: "{{polltype}} έκλεισε"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> ψήφισε: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> ενημέρωσε την ψήφο του για: <strong>{{title}}</strong>"
+    event_removed: Καταργήθηκε από το νήμα
+  add_poll_to_thread_modal:
+    success: Επιτυχία, το {{pollType}} προστέθηκε στο νήμα!
+  powered_by:
+    this_is_loomio_md: Το Loomio είναι μια εφαρμογή για τη λήψη αποφάσεων από κοινού. [Δοκιμάστε δωρεάν](https://www.loomio.com)
+    slogan: Καλύτερες αποφάσεις μαζί
+    powered_by_loomio: Με την υποστήριξη του Loomio
+    privacy_policy: Πολιτική απορρήτου
+    terms_of_service: Οροι χρήσης
+    front_page: Εξώφυλλο

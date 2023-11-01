@@ -1,6 +1,45 @@
+---
 tr:
   templates:
     try_loomio: Loomio'yu deneyin
+    template_gallery: Şablon galerisi
+    title_template: "%{title} Şablonu"
+    title_templates: "%{title} Şablonları"
+    title_copy: "%{title} Kopyala"
+    copy_of_title: "%{title} kopyası"
+    loomio_default_templates: Loomio varsayılan şablonları
+    which_templates_would_you_like_to_use: Hangi şablonları kullanmak istersiniz?
+    login_to_start_demo: Bu Loomio'nun çalışırken bir demosu. Etrafınıza bir göz atabilirsiniz.
+    sign_in_to_try_features: Bir demo kararında oy kullanmayı denemek veya kuruluşunuz için ücretsiz deneme başlatmak istiyorsanız "oturum aç"ı tıklayın.
+    click_button_to_start_demo: Hoş geldin! Oylamayı ve diğer özellikleri denemek için demoyu başlat'ı tıklayın.
+    welcome_to_your_demo: Bu sizin kendi demo grubunuzdur!
+    try_voting_to_see_it_work: Loomio'nun nasıl çalıştığına dair fikir edinmek için bir teklife oy vermeyi deneyin.
+    delete_will_be_deleted_in_x_days: Bu demo %{x} gün içinde silinecek.
+    to_use_loomio_with_your_org_start_trial: Kuruluşunuzda Loomio'yu denemeye hazır olduğunuzda ücretsiz deneme sürümünü başlatın.
+    templates: Şablonlar
+    make_a_copy: Bir kopyasını çıkarmak
+    this_thread_is_a_template: Bu konu bir şablondur. Kullanmak istiyorsanız bir kopyasını alın.
+    this_is_a_poll_template: Bu bir anket şablonu. Oy vermeye başlamak istiyorsanız bir kopyasını alın.
+    start_a_demo_group: Bir demo grubu başlatın
+    start_a_demo: Demoyu başlat
+    demo_group: Demo grubu
+    play_with_an_example_group: Örnek bir grupla oynayın
+    look_and_feel: Loomio'nun küçük bir kuruluş için nasıl göründüğünü görün. Uygulamayı deneyerek öğrenin.
+    watch_then_start: Lütfen videoyu izleyin ve ardından Loomio'yu denemek için "Demoyu Başlat"a tıklayın
+    generating_demo: Tamam, orada bekle! Bir demo oluşturmak yaklaşık 20 saniye sürer.
+    start_a_x_day_free_trial: "{{day}} günlük ücretsiz deneme sürümünü başlatın"
+    ready_to_trial: Kuruluşunuzda Loomio'yu denemeye hazır mısınız?
+    start_a_no_obligation_x_day_trial: Ücretsiz {{day}} günlük deneme süresiyle kuruluşunuz için bir Loomio grubu başlatın.
+    you_can_test_it_out: Başkalarını katılmaya davet edebilir, diğer araçlarınızla entegre edebilir ve bazı kararlar almayı deneyebilirsiniz.
+    demo_created: Demo grubu sadece sizin için oluşturuldu!
+    start_demo: Demoyu başlat
+    view_demo: Demoyu görüntüle
+    start_trial: Deneme sürümünü başlat
+    start_free_trial: Deneme sürümüne başla
+    demo_needs_user: Bir demoyu başlatmak için Loomio kullanıcısı olarak kaydolmanız (veya oturum açmanız) gerekir. Bu ücretsizdir ve yalnızca bir dakika sürer.
+    trial_needs_user: Hoş geldin! Ücretsiz denemenizi başlatmak için lütfen oturum açın
+    this_is_a_template_for_new_threads: Bu yeni konular için bir şablondur
+    share_a_custom_configuration: Özel bir yapılandırmayı grubunuzdaki diğer kişilerle paylaşın
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -8,7 +47,7 @@ tr:
         start_thread: Bir müzakere başlatın
         make_decision: Bir karar başlatın
       learn_more: Loomio Yardım'da daha fazla bilgi edinin
-      celebration_message: Güzel! Grubunuz hazır! 🎉
+      celebration_message: "Güzel! Grubunuz hazır! \U0001F389"
       dismiss_this_card: Bu kartı kapat
   plan_names:
     free: Bedava
@@ -18,24 +57,37 @@ tr:
     large: Büyük
     monthly: Aylık
     yearly: Yıllık
+    starter: Başlangıç
+    pro: Profesyonel
+    pro_nonprofit: Kâr Amacı Gütmeyen Kuruluş İçin
+    community: Toplum
   current_plan_button:
     upgrade: Yükselt
     free_trial: Ücretsiz deneme. {{days}} gün kaldı.
     trial_expired: Deneme süresi doldu. Loomio'yu kullanmaya devam etmek için paketinizi   yükseltin.
-    tooltip: "Fiyatlarımız harika! Bugün paketinizi yükseltin ve Loomio'nun grubunuza neler sunabileceğini keşfedin."
+    tooltip: Fiyatlarımız harika! Bugün paketinizi yükseltin ve Loomio'nun grubunuza neler sunabileceğini keşfedin.
     was_gift_trial: "{{CreatedDate}} tarihinden beri grubunuz Loomio'yu ücretsiz kullanıyor. Ücretsiz bir hizmet sunmaya devam edemiyoruz. Loomio'yu kullanmaya devam etmek için lütfen paketinizi yükseltin. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Daha fazla bilgi.</a>"
     was_gift_remaining: "{{days}} gün kaldı."
-    was_gift_expired: "Ücretsiz planınızın süresi doldu."
+    was_gift_expired: Ücretsiz planınızın süresi doldu.
+    buy_now: Şimdi al
+    is_old_plan: Loomio'nun yeni basit fiyatlandırma planları var
+    change_plan: Plan değiştir
+    view_plans: Planları görüntüle
   subscription_status:
-    plan: "Plan"
-    state: "Statü"
-    members: "Üyeler"
-    active_members: "Aktif üyeler"
-    max_threads: "Maks. konular"
-    max_members: "Maks. üyeler"
-    expires_at: "Süre sonu"
-    renews_at: "Yenileme"
-    referral_code_help: "Bir arkadaşınıza indirim verin, kendinize kredi kazanın!"
+    plan: Plan
+    state: Statü
+    members: Üyeler
+    active_members: Aktif üyeler
+    max_threads: Maks. konular
+    max_members: Maks. üyeler
+    expires_at: Süre sonu
+    renews_at: Yenileme
+    referral_code_help: Bir arkadaşınıza indirim verin, kendinize kredi kazanın!
+    referral_code: Yönlendirme Kodu
+    chargify_link: Faturalandırma portalı
+    manage_payment_details: Ödeme ayrıntılarını yönet
+    manage_subscription: Aboneliği Yönet
+    amount: Miktar
   loomio_tags:
     all_tags: Tüm etiketler
     tags: Etiketler
@@ -48,6 +100,16 @@ tr:
     helptext: Etiketler, konuşmaları kategorilere ayırmanızı ve daha sonra kolayca bulmanızı sağlar
     tag_created: Etiket kaydedildi
     tags_marked: 'Müzakereler {{groupName}} içinde ''{{name}}'' ile işaretlendi '
+    new_tag: Yeni etiket
+    card_title: Kategori etiketleri
+    destroy_tag: Etiketi sil
+    destroy_helptext: Bu işlem, bu etiketi silecek ve gruptaki tüm ileti dizilerinden kaldıracaktır. Emin misin?
+    discussions_count_singular: "(%{count} konu)"
+    discussions_count_plural: "(%{count} konu)"
+    tag_destroyed: Etiket silindi
+    no_tags_present: Bu etikete sahip konu bulunamadı! Başka bir tane seçmeyi deneyin
+    no_tags_in_group: Bu grupta henüz kategori etiketi yok
+    only_admins_can_edit_tags: Üzgünüz, yalnızca {{group}} grubunun yöneticileri etiketleri oluşturabilir, yeniden adlandırabilir veya silebilir
   poll_types:
     proposal: öneri
     poll: anket
@@ -55,6 +117,9 @@ tr:
     meeting: zaman anketi
     ranked_choice: tercihli oy
     score: skor anketi
+    count: katılım
+    check: duyu kontrolü
+    question: soru turu
   new_poll_types:
     proposal: öneri
     count: miktar
@@ -89,73 +154,73 @@ tr:
     time:
       am: am
       pm: pm
-    closing_in: 'Kapanış {{time}}'
-    closed_ago: 'Kapandı {{time}}'
-    volume: 'Hacim'
-    notification_volume: 'Bildirim ses düzeyi'
-    group: 'Grup'
-    groups: 'Gruplar'
-    organization: "Organizasyon"
-    organizations: "Organizasyonlar"
-    threads: 'Müzakereler'
-    decisions: 'Kararlar'
-    settings: 'Ayarlar'
-    help: 'Yardım'
+    closing_in: Kapanış {{time}}
+    closed_ago: Kapandı {{time}}
+    volume: Hacim
+    notification_volume: Bildirim ses düzeyi
+    group: Grup
+    groups: Gruplar
+    organization: Organizasyon
+    organizations: Organizasyonlar
+    threads: Müzakereler
+    decisions: Kararlar
+    settings: Ayarlar
+    help: Yardım
     anonymous: Anonim
     required: Zorunlu
     email_address: E-posta adresi
     privacy:
-      privacy: 'Gizlilik'
-      public: 'Genel'
-      open: 'Açık'
-      closed: 'Kapalı'
-      private: 'Özel'
-      secret: 'Gizli'
-    selected: 'Seçilmiş'
+      privacy: Gizlilik
+      public: Genel
+      open: Açık
+      closed: Kapalı
+      private: Özel
+      secret: Gizli
+    selected: Seçilmiş
     date_range:
-      today: 'Bugün'
-      yesterday: 'Dün'
-      thisweek: 'Bu Hafta'
-      thismonth: 'Bu Ay'
-      older: 'Eski'
-    more_help: 'Daha fazla yardım'
-    copy: 'Kopyala'
-    reset: 'Sıfırla'
-    copy_text: 'Metni kopyala'
-    copied: 'Panoya kopyalandı'
-    points_abbrev: ' Her oy {{Score}} puan değerinde'
+      today: Bugün
+      yesterday: Dün
+      thisweek: Bu Hafta
+      thismonth: Bu Ay
+      older: Eski
+    more_help: Daha fazla yardım
+    copy: Kopyala
+    reset: Sıfırla
+    copy_text: Metni kopyala
+    copied: Panoya kopyalandı
+    points_abbrev: " Her oy {{Score}} puan değerinde"
     total: Toplam
     action:
       print: Yazdır
       preview: Ön izleme
       pin: Sabitle
       unpin: Sabitlemeyi kaldır
-      search: 'Arama'
-      filter: 'Filtrele'
-      back: 'Geri'
-      next: 'Sonraki'
-      close: 'Kapat'
-      reopen: 'Yeniden aç'
-      save: 'Kaydet'
-      move: 'Taşı'
-      save_changes: 'Değişiklikleri kaydet'
-      update_settings: 'Ayarları güncelle'
-      reply: 'Cevapla'
-      edit: 'Düzenle'
-      remove: 'Kaldır'
-      like: 'Beğen'
-      unlike: 'Beğenmekten vazgeç'
-      update: 'Güncelle'
-      cancel: 'İptal et'
-      show_more: "Daha fazla göster"
-      view_all: "Hepsini görüntüle"
-      new_thread: "Yeni müzakere"
-      add_subgroup: 'Yeni alt grup'
-      loading: 'Yükleniyor'
-      translate: 'Tercüme et'
-      upload: 'Yükle'
-      uploading: 'Yükleniyor'
-      load_more: 'Daha fazla yükle'
+      search: Arama
+      filter: Filtrele
+      back: Geri
+      next: Sonraki
+      close: Kapat
+      reopen: Yeniden aç
+      save: Kaydet
+      move: Taşı
+      save_changes: Değişiklikleri kaydet
+      update_settings: Ayarları güncelle
+      reply: Cevapla
+      edit: Düzenle
+      remove: Kaldır
+      like: Beğen
+      unlike: Beğenmekten vazgeç
+      update: Güncelle
+      cancel: İptal et
+      show_more: Daha fazla göster
+      view_all: Hepsini görüntüle
+      new_thread: Yeni müzakere
+      add_subgroup: Yeni alt grup
+      loading: Yükleniyor
+      translate: Tercüme et
+      upload: Yükle
+      uploading: Yükleniyor
+      load_more: Daha fazla yükle
       share: Paylaş
       ok: Tamam
       retry: Yeniden dene
@@ -177,16 +242,47 @@ tr:
       fork: Çatal
       apply: Uygula
       add_people: Kişileri ekle
+      undo_remove: Kaldırmayı geri al
+      hide: Saklamak
+      unhide: Göster
+      show_fewer: Daha azını göster
+      view_count_more: "%{count} tane daha görüntüle"
+      view_count_responses: "%{count} yanıtı görüntüle"
+      count_more: "%{count} tane daha"
+      count_responses: "%{count} yanıt"
+      discard: At
+      restore: Eski haline getirmek
+      zoom: Yakınlaştır
+      align: Hizala
     formatting_help:
-      label: 'Biçimlendirme'
-      title: 'Metninizi biçimlendirmek için Markdown''u nasıl kullanacağınızı öğrenin'
+      label: Biçimlendirme
+      title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
+    admin_menu: Yönetici menüsü
+    api_docs: API belgeleri
+    prefix_eg: örneğin {{val}}
+    are_you_sure: Emin misin?
+    loomio_help: Loomio yardımı
+    visit_loomio_help: Loomio yardımını ziyaret edin
+    help_and_guides: Yardım ve kılavuzlar
+    optional: "(İsteğe bağlı)"
+    none: Hiçbiri
+    template: Şablon
+    links: Bağlantılar
+    something_went_wrong: Ah ah! Bir şeyler yanlış gitti
+    check_for_errors_and_try_again: Lütfen formda hata olup olmadığını kontrol edin ve tekrar deneyin.
+    please_try_again: Lütfen tekrar deneyin
+    minutes: dakika
+    today: Bugün
+    in_x_days: "%{x} gün içinde"
   merge_accounts:
     modal:
       title: Hesapları birleştir
       submit: Doğrula
       flash: Doğrulama e-postası gönderildi!
+      helptext: "<strong>{{sourceEmail}}</strong> altındaki hesabı <strong>{{targetEmail}}</strong> hesabıyla birleştirebilirsiniz. Doğrula'yı tıkladığınızda işlemi başlatmak için {{targetEmail}} adresine bir doğrulama e-postası gönderilecektir."
     email_taken: Üzgünüz, bu e-posta zaten başka bir kullanıcıyla ilişkilendirilmiş. Bu e-posta size mi ait?
     find_out_more: Daha fazla bilgi.
+    placeholder_modal_text: <p>İki hesabı birleştirmek istiyorsanız, ilgili e-posta adresini (diğer hesaba ait olan) Profil sayfanızın e-posta alanına girmeniz ve görüntülenen talimatları izlemeniz yeterlidir.</p><p> Yardıma mı ihtiyacınız var? <a href="/contact" target="_blank">Bizimle iletişime geçin</a> .
   emoji_picker:
     search: Arama
     common: Sıklıkla kullanılan
@@ -194,6 +290,8 @@ tr:
     nature: Doğa
     objects: Eşyalar
     places: Mekanlar
+    expressions: Yüzler
+    people: İnsanlar
   ordinal:
     _1: 1'nci
     _2: 2'nci
@@ -209,118 +307,434 @@ tr:
     sessions:
       signed_up: Başarılı bir şekilde kaydoldunuz!
     failure:
-      inactive: 'Bu e-posta adresiyle ilişkili devre dışı bırakılmış bir hesap var. Hesabınızı yeniden etkinleştirmek istiyorsanız, bizimle iletişime geçin.'
+      inactive: Bu e-posta adresiyle ilişkili devre dışı bırakılmış bir hesap var. Hesabınızı yeniden etkinleştirmek istiyorsanız, bizimle iletişime geçin.
   error_page:
-    forbidden: 'Bunu yapmaya yetkin bulunmuyor.'
-    page_not_found: 'Bulunamadı. Bu taşınmış veya silinmiş olabilir.'
-    internal_server_error: 'Üzgünüz, yanlış giden birşeyler oldu. Lütfen tekrar deneyin.'
+    forbidden: Bunu yapmaya yetkin bulunmuyor.
+    page_not_found: Bulunamadı. Bu taşınmış veya silinmiş olabilir.
+    internal_server_error: Üzgünüz, yanlış giden birşeyler oldu. Lütfen tekrar deneyin.
+    forbidden_view: Bunu görüntüleme izniniz yok.
   verify_email_notice:
     please_verify: Katıldığınız için teşekkürler! Oyunuzu doğrulamak için lütfen e-postanızı kontrol edin.
   previous_polls_page:
-    heading: '{{name}} içindeki etkinlikler'
+    heading: "{{name}} içindeki etkinlikler"
     search_activities: Kararları ara
+    polls_count: "{{total}} karardan {{loaded}} tanesi gösteriliyor"
   volume_levels:
-    loud: 'Yüksek sesli'
-    normal: 'Normal'
-    quiet: 'Sessiz'
-    mute: 'Sesi kıs'
-    unmute: 'Sesi aç'
+    loud: Yüksek sesli
+    normal: Normal
+    quiet: Sessiz
+    mute: Sesi kıs
+    unmute: Sesi aç
   pin_event_form:
     title: Zaman çizelgesine sabitle
     title_label: Başlık
+    hint: 'Bir sonraki sefer için ipucu: "Sabitle"ye tıklamadan önce bir metni vurgulamayı deneyin.'
   change_volume_form:
     simple:
       label: Bildirimler
       normal: Normal
       quiet: Yok say
-    aria_label: "E-posta ayarları formunu değiştir"
-    loud_label: "Tüm aktiviteler"
-    normal_label: "Duyurular"
-    quiet_label: "E-posta yok"
-    mute_label: "Sesi kıs"
+      loud: Abone olundu
+      question: Ne zaman bilgilendirilmek istiyorsunuz?
+      loud_explain: ne zaman aktivite olsa
+      normal_explain: birisi ilginizi istediğinde
+      quiet_explain: bildirim yok
+    aria_label: E-posta ayarları formunu değiştir
+    loud_label: Tüm aktiviteler
+    normal_label: Duyurular
+    quiet_label: E-posta yok
+    mute_label: Sesi kıs
     membership:
-      loud_description: "Bu grupta ne zaman bir faaliyet olursa size eposta ile gönderilecek."
-      normal_description: "Bu grupta ne zaman bir faaliyet olursa size eposta ile gönderilecek."
+      loud_description: Bu grupta ne zaman bir faaliyet olursa size eposta ile gönderilecek.
+      normal_description: Bu grupta ne zaman bir faaliyet olursa size eposta ile gönderilecek.
+      title: "{{title}} için bildirimler"
+      quiet_description: Bu gruptaki etkinlikler hakkında size e-posta gönderilmeyecek.
+      apply_to_all: Bu ayarları tüm gruplarıma uygula.
+      apply_to_organization: "{{organizasyon}} içindeki tüm gruplara uygula"
+      messages:
+        loud: Bu gruptaki tüm etkinlikler size e-postayla gönderilecektir.
+        normal: Bu gruptaki duyurular yalnızca e-postayla tarafınıza gönderilecektir.
+        quiet: Bu grup hakkında size e-posta gönderilmeyecek.
+    explain_scope:
+      thread: Bu konu hakkında bilgilendirileceğiniz zaman bu durum değişir
+      group: Bu durum, gruptaki tüm ileti dizileri hakkında bilgilendirildiğinizde değişir
+    saved: Bildirim ayarları güncellendi
+    discussion:
+      title: Konu bildirimleri
+      loud_description: Bu başlıktaki tüm etkinlikler size e-postayla gönderilecektir.
+      normal_description: Bu başlıktaki yalnızca önemli etkinlikler size e-postayla gönderilecektir.
+      quiet_description: Bu başlıktaki hiçbir etkinlik size e-postayla gönderilmeyecek.
+      apply_to_all: Bu ayarları bu gruptaki tüm ileti dizilerine uygulayın.
+      only_this_thread: Yalnızca bu konu için geçerlidir
+      group: Grup için bildirimleri değiştirme
+      user: Kullanıcı bildirim ayarlarını değiştirme
+      messages:
+        loud: Bu başlıktaki etkinlik size e-postayla gönderilecektir.
+        normal: Bu başlıktaki teklifler hakkında size e-posta gönderilecektir.
+        quiet: Bu konu hakkında size e-posta gönderilmeyecek.
+    all_groups:
+      title: Tüm gruplar için bildirim tercihleri
+      loud_description: Tüm gruplarınızdaki tüm etkinlikler size e-postayla gönderilecektir.
+      normal_description: Tüm gruplarınızdaki yalnızca önemli etkinlikler size e-postayla gönderilecektir.
+      quiet_description: Gruplarınızın herhangi birindeki herhangi bir etkinlik size e-postayla gönderilmeyecek.
+      messages:
+        loud: Tüm gruplarınızdaki tüm etkinlikler size e-postayla gönderilecektir.
+        normal: Tüm gruplarınızdaki duyurular yalnızca e-postayla gönderilecektir.
+        quiet: Gruplarınızın hiçbiriyle ilgili e-posta almayacaksınız.
+    user:
+      title: Yeni gruplar için e-posta ayarları
+      loud_description: Katıldığınız yeni gruplarda etkinlik olduğunda size e-posta gönderilecektir.
+      normal_description: Katıldığınız tüm yeni gruplardaki duyurular hakkında e-postayla bilgilendirileceksiniz.
+      quiet_description: Katıldığınız yeni grupların etkinlikleri hakkında size e-posta gönderilmeyecek.
+      apply_to_all: Bu ayarları tüm gruplarıma uygula.
+      messages:
+        loud: Yeni gruplardaki tüm etkinlikler size e-postayla gönderilecektir.
+        normal: Yeni gruplardaki duyurular hakkında e-postayla bilgilendirileceksiniz.
+        quiet: Yeni gruplar hakkında e-posta almayacaksınız.
   inbox:
-    clear: 'Temizle'
-    latest: 'En yeniler'
-    unread: 'Okunmamış'
-    closing_in: 'Kapanış'
+    clear: Temizle
+    latest: En yeniler
+    unread: Okunmamış
+    closing_in: Kapanış
   signed_out_modal:
-    ok: "Tamam"
+    ok: Tamam
+    aria_label: Oturum sona erdi
+    title: Oturumunuz sona erdi
+    message: Başka bir pencereden çıkış yaptınız. Devam etmek için lütfen tekrar oturum açın.
   comment_form:
-    aria_label: 'Bir yorum ekle'
+    aria_label: Bir yorum ekle
     attachments:
-      add_attachment: 'Dosya ekle'
-      remove_attachment: 'Eki kaldır'
+      add_attachment: Dosya ekle
+      remove_attachment: Eki kaldır
     messages:
-      created: 'Yorum eklendi'
-      replied: '{{name}} cevaptan haberdar edildi'
-      updated: 'Yorum güncellendi'
-      destroyed: 'Yorum silindi'
-    edit_comment: 'Yorumu düzenle'
-    delete_comment: 'Yorumu sil'
-    cancel_reply: 'Cevabı İptal Et'
-    confirm_delete_message: 'Bu yorumu silmek istediğinden emin misin?'
-    confirm_delete: 'Yorumu sil'
-    post_comment: "Yorum gönder"
+      created: Yorum eklendi
+      replied: "{{name}} cevaptan haberdar edildi"
+      updated: Yorum güncellendi
+      destroyed: Yorum silindi
+      removed: Yorum kaldırıldı
+    edit_comment: Yorumu düzenle
+    delete_comment: Yorumu sil
+    cancel_reply: Cevabı İptal Et
+    confirm_delete_message: Bu yorumu silmek istediğinden emin misin?
+    confirm_delete: Yorumu sil
+    post_comment: Yorum gönder
     submit_button:
-      label: 'Gönder'
-    private_privacy_notice: 'Yorumunuz sadece {{groupName}} grubunun üyelerine görünür olacak.'
-    public_privacy_notice: 'Yorumunuz web üzerindeki herkese görünür olacak.'
+      label: Gönder
+    private_privacy_notice: Yorumunuz sadece {{groupName}} grubunun üyelerine görünür olacak.
+    public_privacy_notice: Yorumunuz web üzerindeki herkese görünür olacak.
+    say_something: Bir şey söylemek...
+    in_reply_to: "{{name}}'a yanıt ver"
+    write_a_comment: Bir yorum Yaz...
+    sign_in: Konuşmaya katılmak için giriş yapın
   sidebar:
-    threads: 'Müzakereler'
-    start_subgroup: 'Yeni alt grup'
-    explore: 'Genel gruplar'
+    threads: Müzakereler
+    start_subgroup: Yeni alt grup
+    explore: Genel gruplar
     start_thread: Yeni konu
     aria_labels:
-      groups_list: 'Gruplar'
-      user_list: 'Kullanıcı eylemleri'
+      groups_list: Gruplar
+      user_list: Kullanıcı eylemleri
+      heading: Kenar çubuğu
+      threads_list: Konu eylemleri
+    my_groups: Gruplarım
+    other_groups: Diğer gruplar
+    all_groups: Tüm gruplar
+    recent_threads: Son konular
+    invite_only_threads: Yalnızca davetli ileti dizileri
+    direct_threads: Doğrudan konular
+    unread_threads: Okunmamış ileti dizileri (%{count})
+    muted_threads: Yoksayılan ileti dizileri
+    start_group: Yeni organizasyon
+    explore_groups: Grupları keşfedin
+    start_decision: Yeni karar
+    more_groups: Daha fazla grup
+    template_gallery: Şablon galerisi
+    examples_and_templates: Örnekler ve şablonlar
+    help_docs: Yardım dokümanları
+    a_detailed_guide_to_loomio: Loomio için ayrıntılı bir rehber
+    talk_to_the_loomio_team: Loomio ekibiyle konuşun
   navbar:
-    recent_title: 'Kontrol paneline git'
-    unread_title: 'Okunmamış etkinlikleri görüntüle'
-    start_thread: 'Yeni müzakere'
-    notifications: 'Bildirim paneli'
+    recent_title: Kontrol paneline git
+    unread_title: Okunmamış etkinlikleri görüntüle
+    start_thread: Yeni müzakere
+    notifications: Bildirim paneli
     search:
-      results_aria_label: 'Arama sonuçları'
-      no_results: 'Hiçbir müzakere bulunamadı'
-      close: 'Arama panelini kapat'
-      placeholder: 'Arama'
-      loading: 'Sonuçlar yükleniyor...'
-      discussions: 'Müzakereler'
-      proposals: 'Öneriler'
-      comments: 'Yorumlar'
-    sign_in: 'Oturum aç'
-    logo_title: 'Ana sayfa'
+      results_aria_label: Arama sonuçları
+      no_results: Hiçbir müzakere bulunamadı
+      close: Arama panelini kapat
+      placeholder: Arama
+      loading: Sonuçlar yükleniyor...
+      discussions: Müzakereler
+      proposals: Öneriler
+      comments: Yorumlar
+      label: Arama alanı; grupları ve konuları arayın
+    sign_in: Oturum aç
+    logo_title: Ana sayfa
+    search_all_threads: Tüm konuları ara
+    search_threads: "{{name}}'de konu ara"
+    search_polls: "{{name}} anketlerini ara"
+    search_members: "{{name}}'da üye ara"
+    search_subgroups: "{{name}}'da üye ara"
+    search_files: "{{name}} içindeki dosyaları arayın"
+    toggle_sidebar: Kenar çubuğunu aç/kapat
+    open_sidebar: Kenar çubuğunu aç
+    close_sidebar: Kenar çubuğunu kapat
+    group_and_subgroups: "{{grup}} ve alt gruplar"
   membership_dropdown:
-    invitation_resent: "Davetiye tekrar gönderildi"
+    invitation_resent: Davetiye tekrar gönderildi
     cancel_invitation: Davetiyeyi iptal et
+    set_name_and_username: Adı ve kullanıcı adını ayarlayın
+    set_title: Başlığı ayarla
+    resend: Yeniden gönderme daveti
+    make_coordinator: Admin yap
+    demote_coordinator: Yöneticinin rütbesini düşür
+    remove_from:
+      discussion: Konu dizisinden kaldır
+      group: Gruptan kaldır
+      poll: "{{pollType}}'dan kaldır"
   notifications:
-    header: "Bildirimler"
+    header: Bildirimler
+    no_notifications: Hiçbir bildiriminiz yok
+    with_title:
+      comment_replied_to: "%{actor} size şurada yanıt verdi: %{title}"
+      discussion_announced: "%{actor} sizi şu başlığa davet etti: %{title}"
+      discussion_edited: "%{actor} konu içeriğini düzenledi: %{title}"
+      discussion_closed: "%{actor} konuyu kapattı: %{title}"
+      invitation_accepted: "%{actor}, %{title}'a katılma davetinizi kabul etti"
+      membership_created: "%{actor} sizi %{site_name} sitesinde %{title}'a katılmaya davet etti"
+      membership_resent: "%{actor} sizi %{site_name} sitesinde %{title}'a katılmaya davet etti"
+      membership_requested: "%{actor}, %{title}'a katılma talebinde bulundu"
+      membership_request_approved: "%{actor}, %{title}'a katılma isteğinizi onayladı"
+      new_comment: "%{actor} yorum yaptı: %{title}"
+      new_coordinator: "%{actor} seni %{title} yöneticisi yaptı"
+      new_discussion: "%{actor} bir konu başlattı: %{title}"
+      outcome_announced: "%{actor}, %{poll_type} sonucunu paylaştı: %{title}"
+      outcome_created: "%{actor}, %{poll_type} sonucunu paylaştı: %{title}"
+      outcome_updated: "%{actor}, %{poll_type} sonucunu güncelledi: %{title}"
+      outcome_review_due: 'Şunun sonucunu gözden geçirmenin zamanı geldi: %{title}'
+      poll_announced: "%{actor} sizi oy vermeye davet etti: %{title}"
+      poll_closed_by_user: "%{actor} %{poll_type}'ı kapattı: %{title}"
+      poll_closing_soon: "%{poll_type} 24 saat içinde kapanıyor: %{title}"
+      poll_closing_soon_author: "%{poll_type} anketiniz 24 saat içinde kapanıyor: %{title}"
+      poll_created: "%{actor} bir %{poll_type} başlattı: %{title}"
+      poll_edited: "%{actor}, %{poll_type} anketini güncelledi: %{title}"
+      poll_expired: "%{poll_type} kapandı: %{title}"
+      poll_expired_author: "%{poll_type}: %{title} anketinizin sonucunu paylaşın"
+      poll_option_added: "%{actor}, %{title} öğesine seçenekler ekledi"
+      poll_reopened: "%{actor}, %{poll_type}: %{title} anketini yeniden açtı"
+      poll_reminder: "%{actor} size %{title} için oy vermenizi hatırlatıyor"
+      poll_reminder_wip: "%{actor} size geri bildirimde bulunmanızı hatırlatıyor: %{title}"
+      reaction_created: "%{actor}, %{title} içindeki %{model}'inize %{reaction} tepki gösterdi"
+      stance_created: "%{actor} oy verdi: %{title}"
+      stance_updated: "%{actor} oy verdi: %{title}"
+      stance_created_option: "%{actor}, %{title} içinde %{option} oyu verdi"
+      user_added_to_group: "%{actor} sizi şu gruba ekledi: %{title}"
+      user_mentioned: "%{actor} sizden şu konuda bahsetti: %{title}"
+      user_reminded: "%{actor} size oy vermenizi hatırlatıyor: %{title}"
+    without_title:
+      discussion_announced: "%{actor} sizi bir konuya davet etti"
+      discussion_edited: "%{actor} konu içeriğini düzenledi"
+      discussion_closed: "%{actor} konuyu kapattı"
+      group_announced: "%{actor} sizi bir gruba davet etti"
+      comment_replied_to: "%{actor} size yanıt verdi"
+      new_discussion: "%{actor} bir konu başlattı"
+      new_comment: "%{actor} bir konuya yorum yaptı"
+      membership_created: "%{actor} sizi bir gruba katılmaya davet etti"
+      membership_resent: "%{actor} sizi bir gruba katılmaya davet etti"
+      membership_requested: "%{actor} grubunuza katılma talebinde bulundu"
+      membership_request_approved: "%{actor}, %{title}'a katılma isteğinizi onayladı"
+      outcome_announced: "%{actor}, %{poll_type} sonucunu paylaştı"
+      outcome_created: "%{actor}, %{poll_type} sonucunu paylaştı"
+      outcome_updated: "%{actor} sonucu güncelledi"
+      outcome_review_due: "%{poll_type} sonucunu gözden geçirmenin zamanı geldi"
+      poll_announced: "%{actor} sizi %{poll_type} için oy kullanmaya davet etti"
+      poll_announced_wip: "%{actor}, %{poll_type} hakkında geri bildiriminizi istiyor"
+      poll_closed_by_user: "%{actor}, %{poll_type} anketini kapattı"
+      poll_closing_soon: "%{poll_type} 24 saat içinde kapanıyor"
+      poll_closing_soon_author: "%{poll_type} anketiniz 24 saat içinde kapanıyor"
+      poll_created: "%{actor} bir %{poll_type} başlattı"
+      poll_edited: "%{actor}, %{poll_type} anketini güncelledi"
+      poll_expired: "%{poll_type} kapandı"
+      poll_expired_author: "%{poll_type} anketinizin sonucunu paylaşın"
+      poll_option_added: "%{actor}, %{poll_type}'a seçenekler ekledi"
+      poll_reopened: "%{actor}, %{poll_type} anketini yeniden açtı"
+      poll_reminder: "%{actor} size oy vermenizi hatırlatıyor"
+      poll_reminder_wip: "%{actor} size geri bildirimde bulunmanızı hatırlatıyor"
+      reaction_created: "%{actor}, %{model}'inize %{reaction} tepki gösterdi"
+      stance_created: "%{aktör} oy verdi"
+      stance_updated: "%{aktör} oy verdi"
+      stance_created_option: "%{actor}, %{option}'a oy verdi"
+      user_mentioned: "%{actor} sizden bahsetti"
+      user_reminded: "%{actor} size oy vermenizi hatırlatıyor"
+    hints:
+      poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
+      poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
+      outcome_review_due: Kararın nasıl uygulandığına dair düşünceleri davet eden bir geri bildirim anketi veya yeni bir başlık başlatmayı düşünün.
   discussion_fork_actions:
     move: Taşı
+    helptext: Başka bir konuya taşımak istediğiniz öğeleri seçin
+    search_placeholder: Konuyu başlığa göre bul
+    moved: Yorumlar taşınıyor, bu işlem biraz zaman alabilir
+    move_to_existing_thread: Mevcut konuya git
+    start_new_thread: Veya yeni konu başlatın
   discussion_form:
     invite: Davet et
     start_thread: Konu başlat
     messages:
-      created: 'Müzakere başlatıldı'
-      updated: 'Müzakere güncellendi'
-    new_discussion_title: 'Yeni müzakere başlat'
-    edit_discussion_title: 'Müzakereyi düzenle'
-    group_label: 'Grup'
-    group_placeholder: 'Bir grup seç'
-    title_label: 'Başlık'
-    title_placeholder: 'Müzakere etmek istediğiniz konu nedir?'
-    context_label: 'İçerik'
-    privacy_label: 'Gizlilik'
-    privacy_organisation: 'Müzakere {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.'
+      created: Müzakere başlatıldı
+      updated: Müzakere güncellendi
+      forked: Konu çatalı oluşturuldu
+    new_discussion_title: Yeni müzakere başlat
+    edit_discussion_title: Müzakereyi düzenle
+    group_label: Grup
+    group_placeholder: Bir grup seç
+    title_label: Başlık
+    title_placeholder: Müzakere etmek istediğiniz konu nedir?
+    context_label: İçerik
+    privacy_label: Gizlilik
+    privacy_organisation: Müzakere {{parent}} ve {{group}} gruplarının üyelerine görünür olacaktır.
+    thread_templates: Konu şablonları
+    new_thread_template: Yeni konu şablonu
+    edit_thread_template: Konu şablonunu düzenle
+    blank: Boşluk
+    blank_subtitle: Bir tartışma başlatın ve sizi nereye götüreceğini görün
+    new_template: Yeni şablon
+    new_template_subtitle: Başkalarının kopyalayabileceği bir örnek oluşturun
+    to: İle
+    direct_thread: Doğrudan iplik
+    invite_only_thread: Yalnızca davetle girilebilen konu
+    none_direct_thread: Doğrudan iş parçacığı (grup yok)
+    none_invite_only_thread: Yalnızca davetli ileti dizisi (grup yok)
+    change_log_placeholder: İsteğe bağlı olarak değişikliklerinizi açıklayın. Bu mesaj konuya eklenecektir.
+    change_log_label: Ne değişti?
+    aria_label: Konu formu
+    new_thread_from_template: 'Yeni konu: %{process_name}'
+    moving_items_title: Öğeleri yeni konuya taşı
+    context_placeholder: Bu tartışmaya bir bağlam sağlayın, böylece insanlar nasıl katılacaklarını bilirler
+    privacy_public: Bağlantıya sahip olan herkes bu konuyu görüntüleyebilir
+    privacy_private: Bu konuyu yalnızca grubun üyeleri görebilir
+    fork_notice: "{{title}} adlı kaynaktan %{count} öğeyle yeni bir ileti dizisi oluşturulacak"
+    notify_group: Grubu bilgilendir
   announcement:
     form:
       invitation_message_label: Mesaj
       poll_reminder:
         message_label: Mesaj
+        title: Oy vermeyi hatırlat
+        helptext: Kime oy vermesini hatırlatmak istersiniz?
+        message_placeholder: İnsanlara neden oy vermeleri gerektiğini anlatan isteğe bağlı mesaj
       wip_poll_reminder:
         message_label: Mesaj
+        title: Geri bildirimde bulunmayı hatırlat
+        helptext: Geri bildirimde bulunmasını kime hatırlatmak istersiniz?
+        message_placeholder: Bildirim e-postasına eklenecek isteğe bağlı mesaj
+      group_has_no_members_yet: Grubunuzun tek üyesi sizsiniz. Bir konuya veya karara başlamadan önce bazı kişileri grubunuza davet etmek isteyebilirsiniz.
+      invite_people_to_evaluate_loomio: Birlikte karar vermeleri için birkaç kişiyi Loomio grubunuza davet edin
+      too_many_invitations: Davet sınırı aşıldı. <a href="{{upgradeUrl}}" target="_blank">Güncelleme</a>
+      no_invitations_remaining: <p>Bu gruba sunulan {{maxMembers}} davetiyenin tamamını kullandınız.</p><p> Bir sonraki adım, Loomio üzerinde işbirliğine devam etmek için <a href="{{upgradeUrl}}" target="_blank">bir plan seçin</a> .</p>
+      invitations_remaining: '%{count} davetiye kaldı. <a href="{{upgradeUrl}}" target="_blank">Güncelleme</a>'
+      who_to_invite: Kimi davet etmek istersiniz?
+      invitation_message_placeholder: Davet e-postasına eklenecek bir mesaj. (isteğe bağlı)
+      invitation_message_default: Birlikte karar almamıza yardımcı olmak için bu Loomio grubunu kurdum. Lütfen davetimi kabul edin. Katılmak sadece bir dakikanızı alır. Teşekkür ederim.
+      group_announced:
+        title: Gruba davet et
+        helptext: Gruba kimleri davet etmek istersiniz?
+      discussion_announced:
+        title: Konuya davet et
+        helptext: Konuya kimi davet etmek istersiniz?
+        notify_helptext: Konuyla ilgili kimi bilgilendirmek istersiniz?
+      discussion_edited:
+        title: Düzenlemeleri bildir
+        helptext: Bu güncelleme hakkında kimi bilgilendirmek istersiniz? (isteğe bağlı)
+      poll_announced:
+        title: Oy vermeye davet edin
+        helptext: Kimi oy vermeye davet etmek istersiniz?
+      wip_poll_announced:
+        title: Geri bildirimde bulunmaya davet edin
+        helptext: Geri bildirim vermesi için kimi davet etmek istersiniz?
+      poll_edited:
+        title: Düzenlemeleri bildir
+        helptext: Bu güncelleme hakkında kimi bilgilendirmek istersiniz?
+      outcome_announced:
+        title: Sonucu paylaş
+        helptext: Bulunan anlayışlar veya gün ışığına çıkarılan sorunlar da dahil olmak üzere sürecin sonuçlarını özetleyin.
+      anyone_can_participate: Bağlantıya sahip olan herkes katılabilir
+      placeholder: İsimleri veya e-posta adreslerini girebilirsiniz
+      type_or_paste_email_addresses_to_invite: Davet edilecek e-posta adreslerini yazın veya yapıştırın
+      notified_empty: Henüz kimse seçilmedi
+      single_notification: 1 bildirim gönderilecek.
+      multiple_notifications: "{{notified}} bildirim gönderilecek."
+      notified: "{{notified}} kişiye bilgi verilecek."
+      notified_singular: 1 kişiye bilgi verilecektir.
+      notified_none: Kimseye bilgi verilmeyecek.
+      added: "%{count} kişi eklenecek."
+      added_singular: 1 kişi eklenecektir.
+      added_none: Kimse eklenmeyecek.
+      group_title: "{{name}} (%{count} kişi)"
+      visible_to_group: "{{group}} grubundaki herkes bu ileti dizisini görebilecek."
+      visible_to_guests: Bu konuyu yalnızca davet edilen kişiler görebilir.
+      click_group_to_see_individuals: Bireyleri görmek için grubu tıklayın
+    send_discussion: Konuyu gönder
+    send_group: İnsanları {{name}}'ye davet edin
+    send_poll: "{{type}} gönder"
+    send_outcome: Sonucu gönder
+    cannot_reveal_when_anonymous: Üzgünüz, isimsiz bir ankete kimin oy verip vermediğini açıklayamayız.
+    discussion_notification_history: Konu bildirim geçmişi
+    group_notification_history: Grup daveti geçmişi
+    poll_notification_history: Anket bildirim geçmişi
+    outcome_notification_history: Sonuç bildirim geçmişi
+    comment_notification_history: Yorum bildirim geçmişi
+    notification_history_explanation: "✓ bildirimin okunduğunu veya e-postanın açıldığını belirtir"
+    quick_add: 'Hızlı ekleme:'
+    any_other_groups: Başka grup var mı?
+    notified_people: "{{name}}, {{length}} kişiye bilgi verdi:"
+    preview: E-postayı Önizle
+    no_notifications_sent: Hiçbir bildirim gönderilmedi
+    history_error: Bir şeyler yanlış gitti! Geçmiş yüklenemedi.
+    inviting_guests_to_thread: Misafirler grubunuza ait değil ve yalnızca bu konuya erişebilirler
+    select_groups: Grupları seçin
+    search_by_name_or_email: Ada göre arayın veya davet edilecek e-postaları girin
+    search_by_name: Kişileri ada göre arayın
+    only_admins_can_announce: Yalnızca yöneticiler tüm gruba bildirimde bulunabilir
+    only_admins_can_invite: Yalnızca yöneticiler misafir davet edebilir
+    only_admins_can_announce_or_invite: Yalnızca yöneticiler tüm gruba bildirimde bulunabilir veya konukları davet edebilir
+    user_mentioned: "{{name}}, {{length}} kişiden bahsetti:"
+    comment_replied_to: "{{name}}, {{length}} kişiye yanıt verdi:"
+    new_discussion: "{{name}}, konuya {{length}} kişiyi davet etti:"
+    discussion_announced: "{{name}}, konuya {{length}} kişiyi davet etti:"
+    poll_created: "{{name}}, {{length}} kişiyi oy vermeye davet etti:"
+    poll_announced: "{{name}}, {{length}} kişiyi oy vermeye davet etti:"
+    outcome_created: "{{name}}, {{length}} kişiyle bir sonuç paylaştı:"
+    outcome_announced: "{{name}}, {{length}} kişiyle bir sonuç paylaştı:"
+    announcement_created: "{{name}}, konuya {{length}} kişiyi davet etti:"
+    discussion_edited: "{{name}} konuyu düzenleyerek {{length}} kişiye bilgi verdi:"
+    poll_edited: "{{name}} bir anket düzenleyerek {{length}} kişiye bilgi verdi:"
+    outcome_edited: "{{name}}, {{length}} kişiye bilgi veren bir sonucu düzenledi:"
+    outcome_updated: "{{name}}, {{length}} kişiye bilgi veren bir sonucu düzenledi:"
+    poll_closing_soon: "{{name}}'nin anket kapanış hatırlatıcısı {{length}} kişiye şunu bildirdi:"
+    poll_reminder: "{{name}}, {{length}} kişiye oy vermesini hatırlattı:"
+    audiences:
+      group: "{{isim}}"
+      everyone_in_the_group: Gruptaki herkes
+      discussion_group: Konudaki herkes
+      voters: Herkes oy kullanmaya davet edildi
+      decided_voters: Oy veren herkes
+      undecided_voters: Kararsız seçmen
+      non_voters: "{{name}} üyeleri henüz davet edilmedi"
+    members_list:
+      title: İle paylaştı
+      last_notified: Bildirildi
+      not_notified: Henüz bildirilmedi
+      no_members: Bu henüz kimseyle paylaşılmadı!
+      group_admin: Grup Yöneticisi
+      thread_admin: Konu yöneticisi
+      last_read_at: Son görüntülenen {{time}}
+      has_not_read_thread: Konuyu görüntülemedi
+    group_form:
+      search_placeholder: İnsanları arayın...
+      modal_title: Grup üyelerini seçin
+    flash:
+      success: "%{count} bildirim gönderildi"
   action_dock:
     edit_stance: Konumunu değiştir
     edited: Düzenlendi
@@ -328,20 +742,119 @@ tr:
     pin_event: Zaman çizelgesine sabitle
     tag_thread: Etiketleri yönet
     delete_thread: Müzakereyi sil
+    actions_menu: Eylemler menüsü
+    more_actions: Daha fazla hareket
+    react: Tepki
+    notify: Bildir
+    add_resource: Ek ekle
+    edit_group: Grup içeriğini düzenle
+    add_comment: Yorum
+    copy_url: Bağlantıyı kopyala
+    edit_thread: İçeriği düzenle
+    announce_thread: Konuyu gönder
+    invite_guests: Misafirleri davet et
+    translate_thread: Bağlamı çevir
+    edit_poll: Anketi düzenle
+    edit_poll_type: "{{pollType}} düzenle"
+    new_poll_type: Yeni {{pollType}}
+    move_items: Öğeleri taşı
+    announce_poll: İnsanları oy vermeye davet edin
+    announce_poll_active: "(Henüz kimse davet edilmedi)"
+    translate_poll: Anketi çevir
+    translate_stance: Oylamayı çevir
+    edit_comment: Yorumu düzenle
+    delete_comment: Yorumu sil
+    reply_to_comment: Cevap vermek
+    fork_comment: Çatal ipliği
+    translate_comment: Yorumu çevir
+    edit_outcome: Sonucu düzenle
+    announce_outcome: İnsanları bu sonuç hakkında bilgilendirin
+    announce_outcome_active: "(Bu sonuçtan henüz hiç kimse haberdar edilmedi)"
+    translate_outcome: Sonucu çevir
+    show_history: Düzenleme geçmişini göster
+    show_edits: Düzenlemeleri göster
+    show_notifications: Bildirimleri göster
+    pin_thread: Konuyu sabitle
+    unpin_thread: Konunun sabitlemesini kaldır
+    unpin_event: Zaman çizelgesindeki sabitlemeyi kaldır
+    comment_copied: Yorum URL'si panoya kopyalandı
+    move_thread: Gruba taşı
+    poll_copied: Karar URL'si panoya kopyalandı
+    discussion_copied: Konu URL'si panoya kopyalandı
+    url_copied: link kopyalandı
+    close_thread: Konuyu kapat
+    reopen_thread: Konuyu yeniden aç
+    notification_history: Bildirim geçmişi
+    move_item: Öğeyi taşı
+    add_poll_to_thread: Konuya ekle
+    count_members: "%{count} üye"
+    count_voters: "%{count} seçmen"
   formatting:
     attach: Dosya ekle
     reset: Sıfırla
+    formatting_tools: Metin biçimlendirme araçları
+    colors: Renkler
+    highlight: Vurgulamak
+    alignment: Hizalama
+    lists: Listeler
+    expand: Daha fazla biçimlendirme aracı göster
+    collapse: Daha az biçimlendirme aracı göster
+    bold: Gözü pek
+    italicize: İtalik
+    blockquote: Alıntı
+    strikethrough: Üstü çizili
+    underline: Altını çizmek
+    link: Bağlantı ekle
+    code_block: Kod bloğu
+    insert_image: Resim ekle
+    insert_emoji: Emoji ekle
+    heading_size: Başlık boyutu
+    heading1: Başlık 1
+    heading2: Başlık 2
+    heading3: Başlık 3
+    left_align: Sola hizala
+    center_align: Ortaya hizala
+    right_align: Sağa hizala
+    justify_align: Hizalamayı iki yana yasla
+    paragraph: Paragraf
+    bullet_list: Liste
+    number_list: Numaralı liste
+    check_list: Kontrol listesi
+    task_list: Görev listesi
+    text_color: Metin rengi
+    background_color: Arka plan rengi
+    quote: Alıntı
+    embed: Videoyu yerleştir
+    divider: Bölücü
+    add_table: Tablo ekle
+    remove_table: Tabloyu kaldır
+    add_column_before: Öncesine sütun ekle
+    add_column_after: Sonrasına sütun ekle
+    remove_column: Sütunu kaldır
+    add_row_before: Öncesine satır ekle
+    add_row_after: Sonrasına satır ekle
+    remove_row: Satırı kaldır
+    merge_selected: Seçilen hücreleri birleştir
+    wysiwyg: wysiwyg
+    edit_markdown: İşaretlemeyi Düzenle
+    markdown_confirm: Wysiwyg içeriği markdown'a dönüştürülürken bazı biçimlendirmeler kaybolabilir.
+    upload_failed: Yükleme başarısız
   cover_photo_form:
-    heading: 'Yeni kapak fotoğrafı'
-    upload_link: 'Yeni kapak fotoğrafı yükle'
+    heading: Yeni kapak fotoğrafı
+    upload_link: Yeni kapak fotoğrafı yükle
+    image_size_helptext: İdeal görüntü boyutu 1400×320 pikseldir
+    upload_success: Kapak fotoğrafı başarıyla güncellendi
   logo_photo_form:
-    heading: 'Yeni grup logosu'
-    upload_link: 'Yeni grup logosu yükle'
+    heading: Yeni grup logosu
+    upload_link: Yeni grup logosu yükle
+    image_size_helptext: İdeal görsel boyutu 100×100 pikseldir
+    upload_success: Logo başarıyla güncellendi
   join_group_button:
     join_group: Gruba katıl
     membership_requested: Üyelik talep edildi
     messages:
-      joined_group: 'Şu an {{group}} grubunun bir üyesisin.'
+      joined_group: Şu an {{group}} grubunun bir üyesisin.
+    not_a_member: Şu anda bu grubun üyesi değilsiniz.
   membership_request_form:
     heading: Gruba katılmak için talep gönder
     name_label: İsim
@@ -349,14 +862,34 @@ tr:
     introduction_label: Neden katılmak istiyorsun?
     submit_button: Katılmak için talep gönder
     introduction_over_limit: Yanıt çok uzun
+    aria_label: Üyelik talep formu
+    messages:
+      membership_requested: "{{group}}'a katılma talebinde bulundunuz"
   revision_history_modal:
     aria_label: Revizyon geçmişi
-    started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
-    edited_by: '<strong>{{name}}</strong> tarafından düzenlendi'
+    started_by: "<strong>{{name}}</strong> tarafından başlatıldı"
+    edited_by: "<strong>{{name}}</strong> tarafından düzenlendi"
     posted: Gönderildi
     current_revision: En yeniler
+    discussion_header: Tartışma düzenlemeleri
+    comment_header: Yorum düzenlemeleri
+    poll_header: Anket düzenlemeleri
+    outcome_header: Sonuç düzenlemeleri
+    stance_header: Düzenlemelere oy verin
+    edit_by: "{{name}} tarafından düzenle · {{date}}"
+    field: Alan
+    before: Önce
+    after: Sonrasında
+    original_text: Orijinal
+    closing_at_changed: kapanış saati {{time}} olarak ayarlandı
+    private_changed: gizlilik {{özel}} olarak ayarlandı
+    group_id_changed: "{{name}}'a taşındı"
   reactions_display:
-    you: "Sen"
+    you: Sen
+    more_reactions: "%{count} tane daha"
+    you_and_name: Sen ve {{name}}
+    you_and_name_and_count_more: Siz, {{name}} ve %{count} kişi daha
+    name_and_count_more: "{{name}} ve %{count} tane daha"
   group_page:
     threads: Müzakereler
     members: Üyeler
@@ -364,28 +897,36 @@ tr:
     subgroups: Alt gruplar
     messages:
       privacy:
-        members: 'Bu grup şu an sadece grup üyeleri tarafından görülebilir'
-        public: 'Bu grup şu an herkese görünür'
-      leave_group_success: 'Bu grubu terkettin'
-      archive_group_success: 'Bu grup devre dışı bırakıldı'
-    group_logo: 'Grup logosu'
-    new_photo: 'yeni fotoğraf'
-    new_cover_photo: 'Yeni kapak fotoğrafı yükle'
-    new_group_logo: 'Yeni grup logosu yükle'
-    discussions_placeholder: 'Müzakere, herkesin bir başlık hakkında tartışarak birlikte kararlar aldığı yerdir.'
+        members: Bu grup şu an sadece grup üyeleri tarafından görülebilir
+        public: Bu grup şu an herkese görünür
+        parent_members: Bu grup artık yalnızca kuruluşunuzun üyeleri tarafından görülebilir
+      leave_group_success: Bu grubu terkettin
+      archive_group_success: Bu grup devre dışı bırakıldı
+    group_logo: Grup logosu
+    new_photo: yeni fotoğraf
+    new_cover_photo: Yeni kapak fotoğrafı yükle
+    new_group_logo: Yeni grup logosu yükle
+    discussions_placeholder: Müzakere, herkesin bir başlık hakkında tartışarak birlikte kararlar aldığı yerdir.
     members_placeholder: 'Burada tek kişi sensin: sana katılması için başkalarını davet et!'
     member_options: Üye seçenekleri
-    invite_people: 'Davet et'
-    visibility_label: 'Görünürlük'
-    options_label: 'Seçenekler'
+    invite_people: Davet et
+    visibility_label: Görünürlük
+    options_label: Seçenekler
     options:
-      label: 'Seçenekler'
-      edit_group: 'Grup ayarlarını düzenle'
-      manage_members: 'Üyeleri Yönet'
-      add_subgroup: 'Alt Grup Ekle'
-      email_settings: 'E-posta tercihleri'
-      leave_group: 'Gruptan ayrıl'
-      deactivate_group: 'Grubu devre dışı bırak'
+      label: Seçenekler
+      edit_group: Grup ayarlarını düzenle
+      manage_members: Üyeleri Yönet
+      add_subgroup: Alt Grup Ekle
+      email_settings: E-posta tercihleri
+      leave_group: Gruptan ayrıl
+      deactivate_group: Grubu devre dışı bırak
+      become_coordinator: Yönetici olun
+      export_data: Grup verilerini dışa aktar
+      export_data_as_json: Grup verilerini JSON olarak dışa aktar
+      export_data_as_csv: Grup verilerini CSV olarak dışa aktar
+      export_data_as_html: Grup verilerini HTML olarak dışa aktar
+      manage_subscription: Grup aboneliğini yönet
+      subscription_status: Abonelik durumu
     volume:
       loud: Herhangi bir etkinlik olduğunda e-posta gönder.
       loud_aria_description: Bu grup için bildirim ses düzeyiniz Yüksek Ses'e ayarlandı. Her ne zaman bir faaliyet olursa size e-posta gönderilecektir.
@@ -404,8 +945,27 @@ tr:
       parent_members: 'Gizlilik: Bu grup sadece {{parentGroupName}} ve {{groupName}} gruplarının üyelerine görünür.'
       public: 'Gizlilik: Bu grup web üzerinde görülebilir'
       aria_label: 'Grup gizliliği: {{privacy}}'
+    stats: Grup istatistikleri
+    polls: Anketler
+    decisions: Kararlar
+    files: Dosyalar
+    show_opened: "%{count} Açık"
+    show_closed: "%{count} Kapalı"
+    no_threads_here: Burada görülecek konu yok!
+    search_threads: Konu ara...
+    private_threads: Bu gruptaki özel konuları görüntülemek için üye olmanız gerekir
+    no_more_threads: Yüklenecek başka konu yok
+    view_closed_threads: Kapatılan konuları görüntüle
+    open_discussions: Konuları aç
+    closed_discussions: Kapalı konular
+    see_all_members: "%{count} üyenin tümünü görün"
+    pending_invitations: "+ %{count} beklemede"
+    subgroups_placeholder: Alt gruplar ekiplere kendi alanlarını verir ve bildirimlerin doğru kişilere odaklanmasını sağlar.
   description_card:
-    title: 'Grup açıklaması'
+    title: Grup açıklaması
+    placeholder: Grup yöneticileri bu alanı grubun amacını açıklamak için kullanabilir, böylece herkes neden burada olduklarını bilir.
+    messages:
+      description_updated: Açıklama güncellendi
   group_form:
     new_group: Yeni grup
     new_subgroup: Yeni alt grup
@@ -414,43 +974,98 @@ tr:
     edit_group_heading: Grup ayarlarını düzenle
     edit_subgroup_heading: Alt grup ayarlarını düzenle
     group_name: Grup adı
-    group_name_placeholder: 'Grup isminizin adı nedir?'
-    description: 'Tanım'
-    description_placeholder: 'Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.'
+    group_name_placeholder: Grup isminizin adı nedir?
+    description: Tanım
+    description_placeholder: Grubunuzun amacını açıklayın ki grup üyeleriniz neden burada olduklarını bilsin.
     privacy_statement:
-      private_to_group: 'Ad ve açıklama sadece grup üyelerine görünür olacaktır.'
-      private_to_parent_members: 'Ad ve açıklama sadece {{parent}} grubunun üyelerine görünür olacaktır.'
-    privacy: 'Gizlilik'
-    confirm_change_to_secret: "Eğer devam ederseniz, bu gruptaki tüm müzakereler ve onların alt grupları gizlenecektir."
-    confirm_change_to_secret_subgroup: 'Eğer devam ederseniz, tüm müzakereler gizli yapılacaktır.'
-    confirm_change_to_public: 'Eğer devam ederseniz, bu gruptaki tüm müzakereler web üzerinde herkese açık olacaktır.'
-    confirm_change_to_private_discussions_only: 'Eğer devam ederseniz, bu gruptaki kamuya açık tüm müzakereler gizlenecektir.'
+      private_to_group: Ad ve açıklama sadece grup üyelerine görünür olacaktır.
+      private_to_parent_members: Ad ve açıklama sadece {{parent}} grubunun üyelerine görünür olacaktır.
+      public_on_web: Grup bağlamına ilişkin ad, açıklama ve ekler herkese açık olacak
+    privacy: Gizlilik
+    confirm_change_to_secret: Eğer devam ederseniz, bu gruptaki tüm müzakereler ve onların alt grupları gizlenecektir.
+    confirm_change_to_secret_subgroup: Eğer devam ederseniz, tüm müzakereler gizli yapılacaktır.
+    confirm_change_to_public: Eğer devam ederseniz, bu gruptaki tüm müzakereler web üzerinde herkese açık olacaktır.
+    confirm_change_to_private_discussions_only: Eğer devam ederseniz, bu gruptaki kamuya açık tüm müzakereler gizlenecektir.
     profile: Profil
-    subgroup_privacy_is_open_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır."
-    subgroup_privacy_is_closed_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir."
-    subgroup_privacy_is_closed_public_threads_description: "Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açık veya gizli olabilir."
+    subgroup_privacy_is_open_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır.
+    subgroup_privacy_is_closed_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir.
+    subgroup_privacy_is_closed_public_threads_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açık veya gizli olabilir.
     subgroup_privacy_is_closed_secret_parent_description: "{{Parent}} grubunun üyeleri bu alt grubu bulabilir ve katılmayı isteyebilir. Tüm müzakereler gizlidir. Sadece üyeler grupta kim olduğunu görebilir."
-    subgroup_privacy_is_secret_description: 'Sadece davet edilen üyeler bu alt grubu bulabilir, kimlerin grupta olduğunu ve müzakereleri görebilir.'
-    advanced_settings: "Gelişmiş ayarlar"
-    how_do_people_join: "Kişiler nasıl katılabilir?"
-    membership_granted_upon_request: 'Herkes gruba katılabilir.'
-    membership_granted_upon_approval: 'Herkes katılım talebinde bulunabilir, ancak onaylanması gerekir.'
-    permissions: 'İzinler'
-    thread_privacy: 'Müzakere gizliliği'
-    public_threads: 'Sadece kamuya açık olan müzakereler'
-    public_discussions_subgroup: '{{parentGroupName}} grubunda bulunan herkes müzakereleri görebilir'
-    public_or_private_threads: 'Kamuya açık ve gizli müzakerelere izin ver'
-    private_threads: 'Sadece üyeler müzakereleri görebilir'
-    allow_public_threads: 'Bu grupta kamuya açık müzakerelere izin ver.'
-    submit_start_group: 'Grup başlat'
-    submit_start_subgroup: 'Alt grup başlat'
-    submit_update: 'Ayarları güncelle'
+    subgroup_privacy_is_secret_description: Sadece davet edilen üyeler bu alt grubu bulabilir, kimlerin grupta olduğunu ve müzakereleri görebilir.
+    advanced_settings: Gelişmiş ayarlar
+    how_do_people_join: Kişiler nasıl katılabilir?
+    membership_granted_upon_request: Herkes gruba katılabilir.
+    membership_granted_upon_approval: Herkes katılım talebinde bulunabilir, ancak onaylanması gerekir.
+    permissions: İzinler
+    thread_privacy: Müzakere gizliliği
+    public_threads: Sadece kamuya açık olan müzakereler
+    public_discussions_subgroup: "{{parentGroupName}} grubunda bulunan herkes müzakereleri görebilir"
+    public_or_private_threads: Kamuya açık ve gizli müzakerelere izin ver
+    private_threads: Sadece üyeler müzakereleri görebilir
+    allow_public_threads: Bu grupta kamuya açık müzakerelere izin ver.
+    submit_start_group: Grup başlat
+    submit_start_subgroup: Alt grup başlat
+    submit_update: Ayarları güncelle
     messages:
-      group_created: 'Grup başlatıldı'
-      group_updated: 'Grup güncellendi'
+      group_created: Grup başlatıldı
+      group_updated: Grup güncellendi
+    thread_defaults_help: Yeni ileti dizileri için varsayılan ayarlar
+    click_to_change_image: Kapak resmini (4x1) veya logoyu (1x1) değiştirmek için tıklayın
+    change_cover_image: kapak resmini değiştir
+    change_logo: logoyu değiştir
+    permissions_explaination: 'Bir kişinin bir gruba sahip olabileceği iki üyelik düzeyi vardır: yönetici ve üye. Yöneticiler grup ayarlarını düzenleyebilir, diğer kişileri yönetici yapabilir ve aşağıda listelenen tüm eylemleri gerçekleştirebilir.'
+    aria_label: Grup formu
+    parent_group: Ebeveyn grubu
+    new_organisation: Yeni organizasyon
+    new_group_explainer: Kuruluşunuz için yeni bir Loomio grubu başlatın
+    new_subgroup_explainer: Mevcut bir grup içinde bir alt grup başlatın - kuruluştaki kişilerden oluşan bir ekip için özel bir alan
+    group_settings: Grup ayarları
+    subgroup_settings: Alt grup ayarları
+    subgroup_name: Alt grup adı
+    organization_name: Kuruluş Adı
+    handle: Halletmek
+    group_handle_placeholder: 'Grup URL''nizde kullanılır: {{host}}/{{handle}}'
+    start_organization_heading: Yeni organizasyon
+    edit_organization_heading: Kuruluş ayarlarını düzenleyin
+    subgroup_name_placeholder: Alt grubunuzun adı nedir?
+    organization_name_placeholder: Kuruluşunuzun adı nedir?
+    new_description_placeholder: Neden Loomio'yu deniyorsun? Hangi kararları birlikte almanız gerekiyor?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Loomio'yu nasıl kullanmayı düşünüyorsunuz?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Bu grubunuz için neden önemli?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Hangi kararları vermeniz gerekiyor?</h3><p></p>
+    secret_by_default: Grubunuza yalnızca katılmaya davet edilen kişiler erişebilir. Bunu daha sonra değiştirebilirsiniz.
+    group_privacy_is_open_description: Halka açık. Tüm konular herkese açıktır.
+    group_privacy_is_closed_description: Liste dışı. Bağlantıya sahip olan herkes katılma isteğinde bulunabilir. Tüm konular özeldir.
+    group_privacy_is_closed_public_threads_description: Liste dışı. Bağlantıya sahip olan herkes katılma isteğinde bulunabilir. Konular genel veya özel olabilir.
+    group_privacy_is_secret_description: Grubu yalnızca davet edilen kişiler bulabilir. Tüm konular özeldir.
+    membership_granted_upon_invitation: Yalnızca davetiye.
+    membership_granted_upon_approval_secret_parent: "<strong>Talep üzerine</strong> {{parent}} ülkesinden herkes gruba katılma isteğinde bulunabilir."
+    parent_members_can_see_discussions: "{{parent}} üyeleri özel ileti dizilerini görebilir"
+    parent_members_can_see_discussions_help: Ana grup üyelerinin bu gruptaki konuları ve anketleri görmesine izin ver ancak bunlara katılmalarına izin verme
+    members_can_announce: Üyeler gruptaki herkese bildirimde bulunabilir
+    members_can_announce_help: Üyelerin gruptaki herkesi bir konu veya anket hakkında bilgilendirmesine izin ver
+    members_can_add_members: Üyeler üye davet edebilir
+    members_can_add_members_help: Üyelerin, kişileri bu gruba katılmaya davet etmesine izin ver
+    members_can_add_guests: Üyeler misafir davet edebilir
+    members_can_add_guests_help: Üyelerin bu gruptaki konulara veya anketlere konuk davet etmesine izin ver
+    members_can_create_subgroups: Üyeler alt gruplar oluşturabilir
+    members_can_create_subgroups_help: Üyelerin yeni alt gruplar oluşturmasına ve yöneticileri olmasına izin ver
+    members_can_edit_discussions: Üyeler konuları ve yorumları yönetebilir
+    members_can_edit_discussions_help: Üyelerin konuları düzenlemesine, taşımasına, sabitlemesine, etiketlemesine veya kapatmasına izin ver
+    members_can_edit_comments: Üyeler kendi yorumlarını düzenleyebilir
+    members_can_edit_comments_help: Üyelerin istedikleri zaman kendi yorumlarını düzenlemesine izin ver
+    members_can_delete_comments: Üyeler kendi yorumlarını silebilir
+    members_can_delete_comments_help: Üyelerin başlıklardaki kendi yorumlarını silmelerine izin ver
+    members_can_start_discussions: Üyeler yeni konu başlatabilir
+    members_can_start_discussions_help: Üyelerin grup içinde yeni konu açmasına izin ver
+    members_can_raise_motions: Üyeler anket başlatabilir
+    members_can_raise_motions_help: Üyelerin tartışmalar veya grup içinde anket ve teklif başlatmasına izin ver
+    admins_can_edit_user_content: Yöneticiler üyelerin yorumlarını düzenleyebilir
+    admins_can_edit_user_content_help: Yöneticilerin üyeler tarafından yazılan içeriği düzenlemesine izin ver
+    upload_logo: Logoyu yükle
+    upload_cover_photo: Kapak fotoğrafını yükle
   membership_requests_card:
-    heading: 'Üyelik talepleri'
+    heading: Üyelik talepleri
     manage_requests: Talepleri yönet
+    manage_requests_with_count: İstekleri yönet (%{count})
   membership_requests_page:
     heading: Üyelik talepleri
     approve: Onayla
@@ -458,61 +1073,113 @@ tr:
     no_pending_requests: Bu grup için şu an hiçbir bekleyen üyelik talebi bulunmamaktadır.
     no_previous_requests: Bu grup için şu an hiçbir bekleyen geçmiş üyelik talebi bulunmamaktadır.
     previous_requests: Önceki Talepler
-    previous_request_response: '{{responder}} tarafından: {{response}} '
+    previous_request_response: "{{responder}} tarafından: {{response}} "
     messages:
       request_approved_success: Üyelik talebi onaylandı
       request_ignored_success: Üyelik talebi yok sayıldı.
   invitation_form:
-    invite_people: 'Kişileri davet et'
-    group: 'Grup'
-    shareable_link: 'Paylaşılabilir bağlantı'
-    copy_link: 'Kopyala'
-    email_addresses: 'E-posta adresleri'
-    email_addresses_placeholder: 'Örn. helperbot@loomio.org, friendlybot@loomio.org'
-    add_custom_message: 'Davetinizi kişiselleştirin,'
-    add_custom_message_link: 'özel bir mesaj ekleyin.'
-    custom_message: 'Özel mesaj'
-    custom_message_placeholder: 'Davetiyeye dahil etmek için bir kişisel mesaj girin.'
-    add_members: 'Üyeleri ekle'
-    from_parent_group: '{{name}} tarafından.'
-    send: 'Gönder'
-    done: 'Tamamlandı'
+    invite_people: Kişileri davet et
+    group: Grup
+    shareable_link: Paylaşılabilir bağlantı
+    copy_link: Kopyala
+    email_addresses: E-posta adresleri
+    email_addresses_placeholder: Örn. helperbot@loomio.org, friendlybot@loomio.org
+    add_custom_message: Davetinizi kişiselleştirin,
+    add_custom_message_link: özel bir mesaj ekleyin.
+    custom_message: Özel mesaj
+    custom_message_placeholder: Davetiyeye dahil etmek için bir kişisel mesaj girin.
+    add_members: Üyeleri ekle
+    from_parent_group: "{{name}} tarafından."
+    send: Gönder
+    done: Tamamlandı
     messages:
-      invitation_sent: 'Davetiye gönderildi.'
-      max_invitations: 'Eğer 100''den fazla davetiye göndermek istiyorsanız, bir takım linki kullanınız.'
+      invitation_sent: Davetiye gönderildi.
+      max_invitations: Eğer 100'den fazla davetiye göndermek istiyorsanız, bir takım linki kullanınız.
+      invitations_sent: "%{count} davetiye gönderildi."
+      no_invitations: Ahh! Lütfen e-posta adresinin doğru olduğunu doğrulayın ve tekrar deneyin.
+    group_url: Grup URL'si
+    reusable_invitation_link: Yeniden kullanılabilir davetiye bağlantısı
+    error: Panoya kopyalamaya çalışırken hata oluştu
+    aria_label: Davet formu
+    invite_guests: Misafirleri davet et
+    notify_people: İnsanları bilgilendir
+    invite_people_to_group: "{{name}}'ye davet et"
+    group_placeholder: Bir grup seçin
+    share_group: Grubunuzu paylaşın
+    secret_group_url_explanation: Bu grubunuzun adresidir. Grubu yalnızca davet edilen üyeler görebilir.
+    shareable_group_url_explanation: Bu bağlantıyı herkese açık olarak paylaşabilirsiniz. İnsanlar katılma isteğinde bulunabilir ve siz de istekleri onaylayabilir veya yok sayabilirsiniz.
+    shareable_invitation_explanation: Bu bağlantıyı herkese açık olarak paylaşmayın. Bu özelliğe sahip olan herkes sizin onayınız olmadan grubunuza katılabilir. Kuruluşunuzdaki kişilerin katılmasına izin vermek için bunu yalnızca özel iletişimlerde paylaşın.
+    shareable_link_reset: Paylaşılabilir bağlantı sıfırlandı. Önceki bağlantı artık çalışmayacak.
+    email_explanation: Alternatif olarak, davetiyeleri e-postayla göndermek için aşağıya e-posta adreslerini girin.
   memberships_page:
-    members: 'Üyeler'
-    name_label: 'İsim'
-    remove_member_label: 'Kaldır'
-    fragment_placeholder: 'Kullanıcıları ad ya da kullanıcı adına göre filtrele...'
+    members: Üyeler
+    name_label: İsim
+    remove_member_label: Kaldır
+    fragment_placeholder: Kullanıcıları ad ya da kullanıcı adına göre filtrele...
     messages:
-      remove_member_success: '{{name}} kaldırıldı'
+      remove_member_success: "{{name}} kaldırıldı"
+      make_admin_success: "{{name}} artık yönetici"
+      remove_admin_success: "{{name}} artık yönetici değil"
+    coordinator_label: Yönetici
+    only_one_admin: Bu grupta yalnızca bir yönetici var. Yönetici olarak en az bir üyeyi daha atamanız önerilir.
+    remove_admin_from_self:
+      question: Artık yönetici olmak istemediğinizden emin misiniz?
   membership_remove_modal:
     invitation:
       title: Davetiyeyi iptal et
       flash: Davetiye iptal edildi
       submit: Davetiyeyi iptal et
+      message: "{{name}} davetini iptal etmek istediğinizden emin misiniz?"
     membership:
       title: Üyeyi kaldır
       submit: Üyeyi kaldır
+      message: "{{name}}'ı kaldırmak istediğinizden emin misiniz?"
+      impact_for_subgroup: Bu, onların alt gruba (konu başlıkları ve anketler dahil) erişimlerini kaldıracak, ancak ana grubun üyesi olarak kalacaklar.
+      impact_for_group: Bu, onların gruba (konu başlıkları ve anketler dahil) ve tüm alt gruplara erişimlerini kaldıracaktır.
+      flash: Üye kaldırıldı
   profile_page:
     messages:
-      updated: 'Profil güncellendi'
-      picture_changed: 'Profil resmi güncellendi'
-      password_changed: 'Şifre güncellendi'
-      deactivated: 'Hesap devre dışı bırakıldı'
+      updated: Profil güncellendi
+      picture_changed: Profil resmi güncellendi
+      password_changed: Şifre güncellendi
+      deactivated: Hesap devre dışı bırakıldı
     merge_accounts: Hesapları birleştir
-    change_picture_link: 'Resmi değiştir'
-    profile: 'Profil'
-    edit_profile: 'Profili düzenle'
-    picture_label: 'Resim'
-    name_label: 'İsim'
-    username_label: 'Kullanıcı adı'
-    email_label: 'E-posta'
-    locale_label: 'Dil'
-    update_profile: 'Profili güncelle'
+    change_picture_link: Resmi değiştir
+    profile: Profil
+    edit_profile: Profili düzenle
+    picture_label: Resim
+    name_label: İsim
+    username_label: Kullanıcı adı
+    email_label: E-posta
+    locale_label: Dil
+    update_profile: Profili güncelle
+    account_is_bot: Bu bir bot hesabıdır
+    bot_account_warning: Bot hesapları anketlerde oy kullanmaya veya tartışmalara katılmaya davet edilmeyecektir.
+    incomplete_profile: Eksik profil!
+    set_your_profile_picture: Profil resmini ayarla
+    deactivated_user: Devre dışı bırakılmış kullanıcı
+    date_time_pref_label: Tarih ve saat biçimi
+    change_password_link: Şifreyi yenile
+    delete_account: Hesabı Kalıcı Olarak Sil
+    delete_user_link: Hesabı sil
+    username_helptext: Tamamı küçük harf ve rakamlar, maksimum 30 karakter
+    short_bio_label: giriiş
+    short_bio_placeholder: Lütfen kendinizi tanıtın, uzmanlık alanlarınızı, ilgi alanlarınızı ve bağlı kuruluşları dahil edin
+    locale_placeholder: Tercih ettiğiniz dili seçin
+    location_label: Konum
+    location_placeholder: Nereye dayanır?
+    deactivate_account: Kullanıcı hesabını devre dışı bırak
+    help_translate: Loomio'yu tercüme etmemize yardım edebilir misiniz?
+    updated_on_sign_in: Tarayıcınız tarafından sağlanır ve oturum açtığınızda güncellenir
   change_picture_form:
-    use_gravatar: 'Gravatar kullan'
+    use_gravatar: Gravatar kullan
+    aria_label: Profil fotoğrafı formu
+    title: Profil fotoğrafını ayarla
+    helptext: Kendi profil resminizi yükleyebilir veya <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> hesabınız varsa onu kullanabilirsiniz.
+    use_initials: Baş harfleri kullan
+    use_uploaded: Yeni fotoğraf yükle
+    existing_upload: Mevcut yükleme
+    use_provider: "{{provider}} fotoğrafını kullan"
   email_settings_page:
     monday: Pazartesi
     tuesday: Salı
@@ -521,13 +1188,34 @@ tr:
     friday: Cuma
     saturday: Cumartesi
     sunday: Pazar
-    on_participation_description: "Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir."
+    on_participation_description: Bir müzakereye katıldığınızda, ileriye yönelik tüm etkinlikler derhal size e-postayla gönderilecektir.
     announcement_label: Duyurular
     edit: Düzenle
     messages:
       updated: E-posta ayarları güncellendi
+    every_day: Her gün
+    every_second_day: Her ikinci günde
+    header: Bildirim ayarları
+    account_deactivated: Hesabınız devre dışı bırakıldı. Hiçbir zaman e-posta almayacaksınız.
+    deactivate_header: Tüm e-postaları sonsuza kadar durdur
+    deactivate_description: Bir daha bizden e-posta almak istemiyorsanız kullanıcı hesabınızı devre dışı bırakabilirsiniz.
+    email_newsletter: Loomio Haber Bülteni
+    email_newsletter_description: Şehrinizdeki yeni özellikler, eğitimler, etkinlikler ve Loomio'nun geleceği hakkında güncellemeler alın. Genellikle yılda 2 veya 3 e-posta.
+    email_catch_up_day: Yakalama özeti e-postası
+    daily_summary_description: Yakalama özeti e-postasının ne zaman alınacağını seçin. Bu e-posta, görmediğiniz yeni etkinlikleri içerir. Düzenli bir kullanıcı değilseniz güncel kalmanın iyi bir yolu.
+    on_participation_label: Katılıma abone olun
+    announcement_description: Gruplarınızdaki kişiler tarafından duyurulan tüm içerikler hakkında bir e-posta alacaksınız
+    mentioned_label: Bahsetmeler ve Yanıtlar
+    mentioned_description: Birisi bir yorumda sizden @bahsettiğinde veya size yanıt verdiğinde bir bildirim e-postası alırsınız
+    update_settings: Değişiklikleri Kaydet
+    specific_groups: Belirli gruplara yönelik ayarlar
+    default_settings:
+      loud_description: Yeni bir gruba katıldığınızda, <strong>etkinlik olduğunda</strong> size e-posta gönderilecektir.
+      normal_description: Yeni bir gruba katıldığınızda, <strong>yeni konular ve teklifler</strong> hakkında size e-posta gönderilecektir.
+      quiet_description: Yeni bir gruba katıldığınızda <strong>etkinlik hakkında e-posta almayacaksınız</strong> .
+    learn_more: E-posta ayarları hakkında daha fazla bilgi edinin...
   dashboard_page:
-    aria_label: 'Kontrol paneli'
+    aria_label: Kontrol paneli
     no_threads:
       show_all: Herhangi bir yeni müzakereniz yok.
       show_proposals: Şu anda etkin herhangi bir öneri yok.
@@ -549,14 +1237,34 @@ tr:
       muted_aria_label: Şu anda sesi kısılmış müzakereler görüntüleniyor
       muted_description: Sadece sesi kısılmış müzakereleri görüntüleyin
     threads_from:
-      group: 'tarafından müzakereler'
-      proposals: 'Aktif kararları olan müzakereler'
-      starred: 'Yıldızlı müzakereler'
-      today: 'Bugün'
-      yesterday: 'Dün'
-      thisweek: 'Bu hafta'
-      thismonth: 'Bu ay'
-      older: 'Bir aydan daha eski'
+      group: tarafından müzakereler
+      proposals: Aktif kararları olan müzakereler
+      starred: Yıldızlı müzakereler
+      today: Bugün
+      yesterday: Dün
+      thisweek: Bu hafta
+      thismonth: Bu ay
+      older: Bir aydan daha eski
+      pinned: Sabitlenmiş konular
+    polls_to_vote_on: Oy verilecek anketler
+    no_polls_to_vote_on: Oy vermeniz gereken anket yok
+    recent_polls: Son anketler
+    current_polls: Güncel anketler
+    recent_threads: Son konular
+    no_groups:
+      show_all: Hoş geldin! Henüz hiçbir gruba üye değilsiniz. <a href="/explore">Genel gruplara göz atın</a> veya <a href="/g/new">Grup başlatın</a> .
+      show_muted: Herhangi bir gruba üye olmadığınız için sessize alınan konunuz yok.
+    dismiss: Azletmek
+    thread_dismissed: Konu okundu olarak işaretlendi
+    thread_recalled: Konu geri çağrıldı
+    explain_mute:
+      title: Henüz hiçbir ileti dizisini yoksaymadınız.
+      explanation_html: Sessize alma, ilgilenmediğiniz ileti dizilerini gizlemenin veya susturmanın bir yoludur. Sessize alma, bunu <strong>En Son</strong> veya <strong>Okunmamış'da</strong> göremeyeceğiniz ve o ileti dizisindeki teklifler gibi etkinlikler hakkında bilgilendirilmeyeceğiniz anlamına gelir. Yalnızca birisi adınızdan <strong>@</strong> bahsettiğinde uyarı alırsınız.
+      instructions: Bir ileti dizisini sessize almak için üzerine gelin ve sessize alma simgesine tıklayın.
+      see_muted_html: Yoksayılan konularınızı görmek için <strong>"Yoksayıldı"yı</strong> tıklayın. Aynı simgenin üzerine gelip tıklayarak sesi açabilirsiniz.
+    thread_preview:
+      you_voted: "{{pozisyon}} için oy verdiniz"
+      undecided: kararsızsın
   inbox_page:
     no_threads: Yaşasın! Gelen kutunuzdaki bütün müzakereleri okudunuz.
     unread_threads: Okunmamış müzakereler
@@ -564,105 +1272,1244 @@ tr:
     no_groups:
       start: Başla
       or: veya
+      explanation: Herhangi bir gruba üye olmadığınız için okunmamış konunuz yok.
+      join_group: Konuları görmek için bir gruba <a href="/explore">katılın</a> .
   discussion:
-    activity: 'Etkinlik'
-    activity_placeholder: 'Henüz etkinlik yok!'
-    load_previous: 'Daha önceki aktiviteyi yükle'
-    started_by: '<strong>{{name}}</strong> tarafından başlatıldı'
+    activity: Etkinlik
+    activity_placeholder: Henüz etkinlik yok!
+    load_previous: Daha önceki aktiviteyi yükle
+    started_by: "<strong>{{name}}</strong> tarafından başlatıldı"
     volume:
-      mute_message: 'Müzakerenin sesi kısıldı'
+      mute_message: Müzakerenin sesi kısıldı
+      unmute_message: Konunun sesi açıldı
+    invite_only: Yalnızca davetle
+    private_thread: Özel konu
+    max_threads_reached: <p>Bu gruba sunulan {{maxThreads}} konunun tamamını kullandınız.</p><p> Bir sonraki adım, Loomio üzerinde işbirliğine devam etmek için <a href="{{upgradeUrl}}" target="_blank">bir plan seçin</a> .</p>
+    subscription_canceled: <p>Aboneliğiniz aktif değil.</p><p> Loomio'yu kullanmaya devam etmek için lütfen <a href="{{upgradeUrl}}" target="_blank">yükseltin</a> .</p>
+    pin:
+      pinned: Konu sabitlendi
+      unpinned: Konunun sabitlemesi kaldırıldı
+    closed:
+      reopened: Konu yeniden açıldı
+      closed: Konu kapatıldı
   activity_card:
     latest: En yeniler
     context: İçerik
     attachment_display:
       aria_label: 'Dosya eklendi:'
-      image_alt: 'Resim eklendi'
+      image_alt: Resim eklendi
+    count_responses: "%{count} yanıt"
+    event_pinned: Zaman çizelgesine sabitlendi
+    event_unpinned: Zaman çizelgesindeki sabitleme kaldırıldı
+    beginning: Başlangıç
+    end: Son
+    unread: Okunmamış (%{count})
+    chronological: Kronolojik
+    nested: Yuvalanmış
+    n_previous: "%{count} önceki yanıtı yükle"
+    n_more: "%{count} yanıtı yükle"
+    add_comment: Yorum ekle
+    add_poll: Anket ekle
+    add_outcome: Sonuç ekle
+    comment: Yorum
+    facilitate: Kolaylaştırmak
+    start_decision: Kararı başlat
+    start_vote: Oylamayı başlat
   thread_group:
     aria_label: Grup adı
   thread_context:
-    aria_label: 'Müzakere içeriği'
-    thread_options: 'Müzakere seçenekleri'
-    edit: 'Düzenle'
-    edit_thread: 'Düzenle'
-    close_thread: 'Kapat'
-    reopen_thread: 'Yeniden aç'
-    pin_thread: 'Pin'
-    unpin_thread: 'Sabitlemeyi kaldır'
-    mute_thread: 'Sesi kıs'
-    move_thread: 'Taşı'
-    print_thread: 'Yazdır'
-    delete_thread: 'Sil'
+    aria_label: Müzakere içeriği
+    thread_options: Müzakere seçenekleri
+    edit: Düzenle
+    edit_thread: Düzenle
+    close_thread: Kapat
+    reopen_thread: Yeniden aç
+    pin_thread: Pin
+    unpin_thread: Sabitlemeyi kaldır
+    mute_thread: Sesi kıs
+    move_thread: Taşı
+    print_thread: Yazdır
+    delete_thread: Sil
+    current_poll_type_banner: Mevcut {{pollType}}
+    item_maybe_deleted: Konu dizisinde istenen konum bulunamıyor. Silinmiş olabilir.
+    email_settings: Bildirim ayarları
+    add_comment: Yorum
+    seen_by_count: "%{count} tarafından görüldü"
+    count_notified: "%{count} bilgilendirildi"
+    forked_from: Çatallı
   delete_thread_form:
-    aria_label: 'Müzakereyi sil'
+    aria_label: Müzakereyi sil
     title: Müzakereyi sil
     body: Bu müzakereyi silmek istediğinden emin misin?
-    confirm: 'Müzakereyi sil'
+    confirm: Müzakereyi sil
     messages:
       success: Müzakere silindi
   move_thread_form:
     aria_label: Müzakereyi taşı
     title: Müzakereyi taşı
     confirm: Müzakereyi taşı
-    confirm_change_to_private_thread: '{{groupName}} açık bir gruptur. Eğer devam ederseniz, müzakere herkese açılacaktır.'
+    confirm_change_to_private_thread: "{{groupName}} açık bir gruptur. Eğer devam ederseniz, müzakere herkese açılacaktır."
     messages:
       success: 'Müzakere {{name}} grubuna taşındı '
+    body: Hedef grubu
   delete_comment_dialog:
-    title: 'Yorumu sil'
+    title: Yorumu sil
+    question: Bu işlem, bu yorumu kalıcı olarak silecektir. Devam ederseniz geri yüklenemez.
   contact_message_form:
-    contact_us: 'Bizimle iletişime geçin'
-    name_label: 'Adın'
-    name_placeholder: 'Adınızı giriniz...'
-    subject_label: "Konu"
-    email_label: 'E-posta adresin'
-    email_placeholder: 'Eposta adresinizi giriniz...'
-    message_label: 'Mesajın'
-    send_message: 'Mesaj gönder'
+    contact_us: Bizimle iletişime geçin
+    name_label: Adın
+    name_placeholder: Adınızı giriniz...
+    subject_label: Konu
+    email_label: E-posta adresin
+    email_placeholder: Eposta adresinizi giriniz...
+    message_label: Mesajın
+    send_message: Mesaj gönder
+    alt_title: Loomio Desteğiyle İletişime Geçin
+    need_message: Size yardımcı olabilmemiz için lütfen bir mesaj girin :-)
+    respond_asap: Loomio ekibine bir mesaj gönderin; mümkün olan en kısa sürede yanıt vereceğiz.
+    happy_to_help_with: Satış soruları, destek talepleri, özellik talepleri, hataların veya karşılaştığınız sorunların raporlanması konusunda yardımcı olmaktan mutluluk duyarız.
+    title: Merhaba! Nasıl yardımcı olabiliriz?
+    contact_us_email: 'Ayrıca bize e-posta da gönderebilirsiniz: <a href="mailto:{{email}}">{{email}}</a>'
+    subject_placeholder: 'Örn: Oturum açmayla ilgili sorun veya Özellik önerisi'
+    message_placeholder: Destek talep ediyorsanız lütfen mümkün olduğunca fazla bilgi sağlamaya çalışın.
+    new_contact_message: İletişime geçtiğiniz için teşekkür ederiz; yakında size geri döneceğiz!
+    consent_message: Bizimle iletişime geçerek personelimizin gerektiğinde hesabınıza erişmesine izin vermiş olursunuz.<br /> Destek ekibimiz İngilizce konuşur ve gerekirse mesajınızı Google Çeviri ile tercüme edecektir.<br /> Tüm mesajlara 24 saat içerisinde yanıt vermeyi hedefliyoruz.
+    success: Mesajın için teşekkürler {{name}}. Yakında bizden haber alacaksınız.
+    success_via_email: Mesajın için teşekkürler {{name}}. 24 saat içinde e-posta yoluyla yanıt vereceğiz.
   global:
     messages:
-      reload: 'Tekrar yükle'
+      reload: Tekrar yükle
+      app_update: Loomio'nun yeni bir sürümü yayınlandı. Lütfen çalışmanızı kaydedin ve yeniden yükleyin.
   decision_tools_card:
     proposal_title: Öneri
     poll_title: Anket
+    choose_type: Anket türünü seçin
+    title: Kolaylaştırmak
+    recommended: Tavsiye edilen
+    question_title: Soru turu
+    advice_title: Tavsiye
+    consent_title: Onay
+    consensus_title: Uzlaşma
+    count_title: Kaydol
+    check_title: Anlam kontrolü
+    meeting: Toplantı
+    score_title: Puan anketi
+    dot_vote_title: Nokta oyu
+    meeting_title: Zaman anketi
+    ranked_choice_title: Dereceli seçim
+    gradients_of_agreement_title: Anlaşmanın gradyanları
   poll_common:
     have_your_say: Söz sahibi ol
     start_poll: Bir karar başlatın
     save_changes: Kaydet
+    superseded: Değiştirildi
+    need_help_with_templates: Kendi karar şablonlarınızı oluşturma konusunda yardıma mı ihtiyacınız var?
+    categorize_poll_templates: Anket şablonlarını kategorilere ayırın
+    show_all_templates_in_one_list: Tüm şablonları tek listede göster
+    advice_process: Tavsiye süreci
+    consent_process: Onay süreci
+    consensus_process: Uzlaşma süreci
+    question_round: Soru turu
+    edit_template: Şablonu düzenle
+    proposal: Teklif
+    run_process: İşlemi çalıştır
+    proposal_templates: Teklif şablonları
+    custom: Gelenek
+    custom_process: Özel süreç
+    custom_poll: Özel anket
+    delete_poll: Anketi sil
+    select_count_options: "{{count}} seçeneği seçin"
+    select_minimum_to_maximum_options: "{{minimum}} ile {{maksimum}} arası seçenekleri belirleyin"
+    custom_poll_types: Özel anket türleri
+    hidden_poll_templates: Gizli anket şablonları
+    poll_template: Anket şablonu
+    poll_template_saved: Anket şablonu kaydedildi
+    poll_templates: Anket şablonları
+    poll_types: Anket türleri
+    new_proposal_template: Yeni teklif şablonu
+    edit_proposal_template: Teklif şablonunu düzenle
+    new_poll_template: Yeni anket şablonu
+    edit_poll_template: Anket şablonunu düzenle
+    new_poll_type: Yeni anket türü
+    edit_poll_type: Anket türünü düzenle
+    new_custom_poll: Yeni özel anket
+    edit_custom_poll: Özel anketi düzenle
+    create_a_custom_poll_type: Özel terminoloji ve ayarlarla yeni bir anket türü oluşturun
+    create_a_custom_process: Kendi terminolojiniz ve seçeneklerinizle yeni bir süreç yaratın
+    create_a_custom_poll: Özel terminoloji ve ayarlarla bir anket oluşturun
+    decision: Karar
+    decision_templates: Karar şablonları
+    remove_your_vote: Oyunuzu kaldırın
+    remove_your_response: Yanıtınızı kaldırın
+    vote_now: Şimdi oyla
+    review_due: İnceleme zamanı geldi
+    your_response: Cevabın
+    change_your_response: Yanıtı düzenle
+    please_vote: Lütfen oy verin
+    reason: Sebep
+    response: Cevap
+    reason_placeholder: Neden bu şekilde oy verdiğinizi kısaca açıklayın ve ardından 'Oyu Gönder'i tıklayın
+    message: İleti
+    results: Sonuçlar
+    current_results: Mevcut sonuçlar
+    responses: Tepkiler
+    close_poll_type: "{{pollType}}'ı kapat"
+    close_early: Erken kapat
+    totals: Toplamlar
+    participate: Katılmak
+    vote: Oy
+    votes: Oylar
+    update_outcome: Sonucu güncelle
+    outcome: Sonuç
+    outcomes: Sonuçlar
+    statement: İfade
+    change_your_stance: Yanıtı düzenle
+    load_more: Daha fazla yükle
+    details: Detaylar
+    participant_name: Adınız
+    participant_email: E-posta adresi
+    submit_vote: Oy gönder
+    submit_response: Yanıtı gönder
+    update_vote: Oyu güncelle
+    update_response: Yanıtı güncelle
+    share_poll: Anketi paylaş
+    share_proposal: Teklifi paylaş
+    share_count: Çeki paylaş
+    publish_poll: Anketi paylaş
+    share_outcome: Sonucu paylaş
+    view_all: Hepsini gör
+    change_vote: Oyunuzu değiştirin
+    change_response: Yanıtınızı değiştirin
+    max_score: En yüksek puan
+    min_score: Minimum puan
+    too_long: Çok uzun
+    edit_warning: Düzenleme yalnızca küçük değişiklikler veya yazım hatalarının düzeltilmesi için önerilir. Önemli değişiklikler için bu {{pollType}} dosyasını kapatın ve yeni bir tane başlatın.
+    no_voting: Yalnızca tartışma amaçlıdır, oylama devre dışı bırakıldı
   poll_common_attachment_form:
     label: Ekler
   discussions_panel:
     open: Açık
     all: Hepsi
     closed: Kapalı
+    unread: Okunmamış (%{count})
+    include_subgroups_mine: "{{name}} ve alt gruplarım"
+    include_subgroups_all: "{{name}} ve tüm alt gruplar"
+    no_results_found: '"{{search}}" için sonuç yok'
+    welcome_to_your_new_group: Yeni Loomio grubunuza hoş geldiniz!
+    lets_start_a_thread: Bir konu başlatalım. Devam etmek için "Yeni konu"yu tıklayın.
   members_panel:
-    order_by_name: 'İsim'
-    header_name: 'İsim'
-    header_username: 'Kullanıcı adı'
-    accepted: 'Üyeler'
+    order_by_name: İsim
+    header_name: İsim
+    header_username: Kullanıcı adı
+    accepted: Üyeler
+    bot: Bot
+    no_results: Üye bulunamadı
+    everyone: Herkes
+    all: Tüm
+    sort: Düzenlemek
+    order_label: Emir
+    order_by_created: En eski
+    show_users_in_subgroups: Kullanıcıları alt gruplarda da göster
+    order_by_created_desc: En yeni
+    order_by_admin_desc: Yöneticiler
+    loaded_of_total: "{{loaded}} / {{total}}"
+    view_requests: İstekleri görüntüle
+    header_role: Rol
+    header_invited_by: Tarafından davet edildi
+    header_invited: Davet edildi
+    header_actions: Hareketler
+    directory: Rehber
+    invitations: Davetiyeler
+    requests: İstekler
+    admin: Yönetici
+    guest: Misafir
+    sharable_link: Paylaşılabilir Bağlantı
+    last_seen: Son görülme {{date}}
+    invited_by_name: "{{name}} tarafından davet edildi"
   polls_panel:
-    all: 'Hepsi'
-    open: 'Açık'
-    closed: 'Kapalı'
+    all: Hepsi
+    open: Açık
+    closed: Kapalı
+    new_poll: Yeni anket
+    any_type: Her türlü
+    any_status: Herhangi bir durum
+    need_vote: Oy Gerekiyor
+    no_polls: Anket bulunamadı
   poll_common_form:
     closed: Kapalı
     start: Başla
     stance_reason_required: Zorunlu
+    notify_everyone_when_poll_starts: "%{poll_type} başladığında herkesi bilgilendir"
+    option_has_votes_confirm_delete: Bazı kişiler bu seçeneğe oy verdi, silmek istediğinizden emin misiniz?
+    example_title: Örnek başlık
+    example_title_hint: İyi bir teklif başlığına örnek verin
+    example_details_placeholder: Bir teklif veya anket için bir başlangıç noktası sağlayın. Sorular, insanların yazmaya başlamasını sağlamak için yararlı ipuçları olabilir. Katılımcıların bilmesi gereken kuralları veya hatırlatıcıları ekleyin.
+    confirm_delete: Bu anket şablonunu silmek istediğinizden emin misiniz? Bu geri alınamaz.
+    show_advanced_settings: Gelişmiş ayarları göster
+    hide_advanced_settings: Gelişmiş ayarları gizle
+    choose_at_least: En azından seç
+    choose_at_most: En fazla seç
+    please_review_the_form: Lütfen formu inceleyin
+    option_added_please_add_details: Seçenek eklendi! İnsanların bunun ne anlama geldiğini bilmesi için lütfen biraz ayrıntı ekleyin.
+    default_duration_in_days: Gün cinsinden varsayılan süre
+    default_duration_in_days_hint: İnsanlara oy kullanmaları için kaç gün süre verilmeli?
+    how_many_options_can_a_voter_choose: Bir seçmen bu seçeneklerden kaçını tercih edebilir?
+    minimum_choices: Asgari seçenekler
+    maximum_choices: Maksimum seçenek
+    content: İçerik
+    reminder: Hatırlatma
+    your_in_zone: 'Geçerli saat dilimi: %{zone}'
+    show_other_zones: Diğer saat dilimlerini göster
+    hide_other_zones: Diğer saat dilimlerini gizle
+    this_is_a_template_for_new_polls: Bu yeni anketler için bir şablondur
+    voting_method: Oylama yöntemi
+    voting_methods:
+      question: Soru turu
+      question_hint: Teklifinizle ilgili soru ve yorumlarınızı davet edin
+      show_thumbs: Başparmak gösterisi
+      show_thumbs_hint: Seçmenler başparmak yukarı, aşağı, yan veya el yukarı seçeneğini seçiyor
+      choose: Seçmek
+      simple_poll: Basit anket
+      choose_hint: Seçmenler en iyi seçeneği (veya seçenekleri) seçer
+      score: Gol
+      score_hint: Seçmenler her seçeneğe bir puan veriyor
+      allocate: Tahsis Et
+      allocate_hint: Seçmenler seçenekler arasında bir puan bütçesi ayırıyor
+      ranked_choice: Dereceli seçim
+      ranked_choice_hint: Seçmenler seçenekleri en çok tercih edilenden en az tercih edilene doğru sıralıyor
+      time_poll: Zaman anketi
+      time_poll_hint: Seçmenler ne zaman buluşmaya uygun olduklarını belirtiyor
+    process: İşlem
+    process_name: Şablon başlığı
+    process_name_hint: Bu şablona ne ad veriyorsunuz? Örn. Rol tavsiyesi, Sıcaklık kontrolü, Tutanak onayı
+    process_subtitle: Şablon alt başlığı
+    process_subtitle_hint: Bu şablonun ne zaman ve neden kullanılacağına dair tek satırlık bir açıklama
+    process_introduction: Şablon yardımı
+    process_introduction_hint: Şablonun nasıl kullanılacağını açıklayan birkaç paragraf. Yararlı olabilecek kaynaklara bağlantılar ekleyin.
+    you_can_set_a_prompt_per_option: Ayrıntılar sekmesinden her seçenek için istemi düzenleyin
+    chart_type: Grafik tipi
+    title: Başlık
+    title_hint: Vermeniz gereken karar nedir?
+    no_options_add_some: Bu anketin seçeneği yok, aşağıya birkaç tane ekleyin.
+    details: Detaylar
+    example_details: Örnek ayrıntılar
+    details_placeholder: Bu, insanların neye oy verdiğini açıklama fırsatınızdır
+    options: Seçenekler
+    options_placeholder: Mevcut seçenekleri listeleyin
+    no_options: Henüz herhangi bir seçenek eklemediniz.
+    closing: Kapanış
+    start_poll: Anketi başlat
+    stance_reason_required_label: Oy verirken gerekçe göstermek...
+    stance_reason_optional: İsteğe bağlı
+    stance_reason_disabled: Engelli
+    stance_reason_is_required: Lütfen oyunuzu verirken bir neden belirtin
+    limit_reason_length: Nedeni maksimum 500 karakterle sınırlayın
+    save_poll: Anketi kaydet
+    start_poll_type: "{{poll_type}} başlat"
+    share_poll_type: "{{poll_type}} paylaş"
+    who_may_vote: Bu {{poll_type}}'da kimler oy kullanabilir?
+    update: Güncelleme
+    add_voters: Seçmen ekle
+    notify_invitees: Bildirim gönder
+    no_notifications_warning: Seçmenlere bildirim yapılmayacaktır. Çok sayıda anket yapıyorsanız ve daha sonra herkesi bilgilendirmeyi planlıyorsanız bu kullanışlıdır.
+    count_voters_added: "%{count} seçmen eklendi"
+    poll_type_created: "%{poll_type} oluşturuldu"
+    poll_type_started: "%{poll_type} başlatıldı"
+    reason_prompt: Neden istemi
+    anonymous_voting: İsimsiz oylama
+    anonymous_voting_description: Etkinleştirilirse seçmenlerin kimlikleri oylarıyla ilişkilendirilmeyecektir. Bu geri alınamaz.
+    votes_are_anonymous: Oylar anonimdir
+    vote_reason: Oy nedeni
+    vote_reason_description: İnsanların neden bu şekilde oy verdiklerini anlamak faydalı olabilir. Bu ayarla, insanlardan oy verirken düşüncelerini paylaşmalarını isteyebilirsiniz.
+    hide_results_description: İnsanların, başkalarının nasıl oy verdiğini bilmeden oy vermesini istiyorsanız anket sonuçlarını gizleyebilirsiniz.
+    process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.
+    reminder_helptext: Anket kapanmadan önce 'Yakında kapatılacak' bildirimi gönderin. Bu, insanların başkalarının nasıl oy verdiğini görmeleri ve kendi oylarını yeniden değerlendirmeleri için bir fırsat olabileceği gibi, yalnızca ankete katılımı artırmanın bir yolu da olabilir.
   poll_proposal_options:
-    'yes': 'Evet'
-    'no': 'Hayır'
+    'yes': Evet
+    'no': Hayır
+    select_an_option: Bir seçenek seçin
+    agree: Kabul etmek
+    consent: Onay
+    abstain: Çekimser
+    unsure: Emin değilim
+    disagree: Aynı fikirde olmamak
+    objection: İtiraz
+    object: Nesne
+    block: Engellemek
+    no_voting: Oylama yok
   poll_count_options:
-    'yes': 'Evet'
-    'no': 'Hayır'
+    'yes': Evet
+    'no': Hayır
+    accept: Kabul etmek
+    decline: Reddetmek
   poll_meeting_chart_panel:
     total: Toplam
   auth_form:
     name_placeholder: Adın
     name: İsim
+    code: '000000'
+    youre_invited: "{{group_name}} grubuna katılmaya davet edildiniz."
+    youre_invited_discussion: Tartışmaya katılmaya davet edildiniz.
+    youre_invited_poll: Oy vermeye davet edildiniz.
+    existing_account_can_sign_in: Zaten bir {{site_name}} kullanıcısıysanız mevcut hesabınızla oturum açın
+    sign_up_or_log_in: Hesap oluşturun veya {{site_name}} sitesinde oturum açın
+    sign_in_to_loomio: "{{site_name}} sitesinde oturum açın"
+    sign_in_help: giriş yapmakta sorun mu yaşıyorsunuz?
+    sign_in: Kayıt olmak
+    continue: Devam etmek
+    create_account: Hesap oluşturmak
+    sign_up_as: "{{email}} olarak hesap oluştur"
+    sign_in_as: "{{name}} olarak oturum açın"
+    continue_with_provider: "{{provider}} ile devam et"
+    continue_with_email: E-postayla devam et
+    or_enter_your_email: Veya e-posta adresinizi girin
+    enter_your_name: Adınızı giriniz
+    invitation_required: Hesap oluşturmak için davetiyeye ihtiyacınız var. Devam etmek için davet e-postanızdaki bağlantıyı takip edin.
+    more_providers: Daha
+    email_not_present: Bir e-posta adresi gerekli
+    invalid_email: Üzgünüz, bu geçerli bir e-posta adresine benzemiyor
+    invalid_password: Üzgünüz, bu şifre kayıtlı şifremizle eşleşmiyor
+    invalid_token: Üzgünüz, oturum açmanız için bu jetonu kullanamadık. Başka bir jeton göndermek için aşağıya tıklayın.
+    account_locked: Çok sayıda başarısız giriş denemesinden sonra hesabınız kilitlendi. Kilit açma bağlantısı için e-postanızı kontrol edin
+    email_not_found: Üzgünüz, bu e-posta adresine sahip bir hesap bulamadık
+    email_taken: E-posta adresi zaten kayıtlı
+    email_placeholder: sen@example.com
+    login_with_token: Hazırsınız! Devam etmek için aşağıdaki bağlantıya tıklayın.
+    login_link_helptext: Aşağıdaki düğmeyi tıkladığınızda size oturum açmanız için bir bağlantı göndereceğiz.
+    enter_your_password: Devam etmek için şifrenizi girin
+    check_spam_folder: E-posta kısa sürede ulaşmazsa spam klasörünüzü kontrol edin.
+    sign_up_helptext: Kullanıcı hesabı oluşturmak için lütfen bu formu doldurun
+    i_accept_all: "{{termsLink}} ve {{privacyLink}} hükümlerini kabul ediyorum"
+    newsletter_label: "{{link}} bağlantısını almak istiyorum"
+    name_required: Lütfen bir ad girin
+    terms_required: Hizmet Şartlarını kabul etmelisiniz
+    account_inactive: Uh-oh, {{email}} hesabının devre dışı bırakıldığı anlaşılıyor!
+    privacy_notice: Verilerinizi asla satmayacağız.<br> <a href='{{privacyUrl}}' target='_blank'>Gizlilik Politikası</a>
+    welcome: "{{siteName}}'da yeni misiniz?"
+    welcome_back: Tekrar hoş geldiniz {{name}}!
+    forgot_password: Parolanızı mı unuttunuz
+    login_link: Oturum açma e-postasını gönder
+    sign_in_via_email: E-posta yoluyla oturum açın
+    set_password: Şifreyi belirle
+    set_password_helptext: Bir dahaki sefere şifre mi kullanmak istiyorsunuz?
+    hello: Merhaba {{name}}!
+    new_to_loomio: "{{site_name}}'da ilk kez mi ziyaret ediyorsunuz?"
+    already_a_user: Zaten hesabınız var mı?
+    email_address_of_existing_account: Mevcut hesabınızın e-posta adresini girin
+    link_accounts: Hesapları bağlayın
+    check_your_email: E-postanı kontrol et!
+    login_link_sent: "{{email}} adresine bir e-posta gönderdik."
+    instructions: 'Oturum açmak için bağlantıya tıklayın veya aşağıdaki kodu girin:'
+    instructions_code: 'Bu e-postadaki kodu girin:'
+    too_many_attempts: Çok fazla deneme; Oturum açmak için e-postadaki bağlantıya tıklamayı deneyin.
+    invalid_code: Maalesef bu kod eşleşmedi. E-postayı kontrol edin ve tekrar deneyin.
+    password_link_sent: "{{email}} adresine, şifrenizi nasıl belirleyeceğinize ilişkin talimatları içeren bir e-posta gönderdik."
+    reactivate_link_sent: Hesabınızı yeniden etkinleştirme talimatlarını içeren bir e-posta gönderdik
+    signed_in: Başarıyla oturum açıldı
+    email_verified: E-posta başarıyla doğrulandı
+    email: E-posta
+    password: Şifre
+    reactivate: Hesabı yeniden aktif et
   chatbot:
     username: Kullanıcı adı
     password: Şifre
+    configure_chatbot: Chatbot'u yapılandır
+    test_connection: Test bağlantısı
+    test_connection_ok: İyi görünüyor! Kanalda bir mesaj görmelisiniz
+    test_connection_bad: Ayarlarda bir sorun var
+    name: Sohbet robotu adı
+    connection_test_successful: Loomio bot bağlantı testi başarılı!
+    chatbot: Sohbet robotu
+    chatbots: Sohbet robotları
+    saved: Chatbot kaydedildi!
+    webhook_url: Web kancası URL'si
+    homeserver_url: Ev sunucusu URL'si
+    channel: Kanal
+    access_token: Erişim Jetonu
+    add_chatbot: Sohbet robotu ekle
+    matrix: Matris
+    slack: Gevşek
+    discord: Anlaşmazlık
+    mattermost: En önemlisi
+    microsoft_teams: Microsoft Ekipleri
+    event_kind_helptext: Botun her zaman bilgilendirileceği etkinlikleri seçin. Emin değilseniz hepsini bırakın.
+    notification_only_label: Yalnızca bildirim başlığını gönder
+    check_for_test_message: Bottan gelecek bir mesaj için sohbet odanızı kontrol edin!
   webhook:
     name_label: İsim
+    integrations: Entegrasyonlar
+    api_keys: API anahtarları
+    webhooks: Web kancaları
+    webhook: Web kancası
+    add_api_key: API anahtarı ekle
+    edit_api_key: API anahtarını düzenle
+    api: API'si
+    format: Biçim
+    formats:
+      markdown: Markdown (Mattermost, Zapier ve diğerleri için)
+      microsoft: Microsoft Ekipleri
+      slack: Gevşek
+      discord: Anlaşmazlık
+    subtitle: API'mızla Loomio'ya diğer araçlarınıza bağlanın
+    deprecated: Bu API kullanımdan kaldırıldı. Lütfen APIv2'ye geçin (grup ayarları menünüzdeki API belgelerine bakın)
+    we_have_guides: Hizmetinizi bağlama konusunda yardım için <a href="{{url}}" target="_blank">webhook kurulum kılavuzlarımıza</a> bakın.
+    add_webhook: Web kancası ekle
+    show_docs: API kullanımına bakın
+    save_to_show_docs: Kaydettikten sonra buraya dönüp API anahtarınızı bulun
+    edit_integration: Entegrasyonu düzenle
+    add_integration: Entegrasyon ekle
+    success: Entegrasyon eklendi!
+    remove: Entegrasyonu kaldır
+    confirm_remove: 'Entegrasyonu kaldırmak istediğinizden emin misiniz: {{name}}?'
+    removed: Entegrasyon kaldırıldı
+    url_label: Web kancası URL'si
+    url_placeholder: https://hooks.example.com/...
+    name_placeholder: Bu entegrasyona bir ad verin, böylece onu tanımlayabilirsiniz
+    event_kind_helptext: Webhook'un hangi olaylardan haberdar olmasını istiyorsunuz?
+    event_kinds:
+      new_discussion: Bir iş parçacığı başlatıldı
+      discussion_edited: Bir konu düzenlendi
+      poll_edited: Bir anket düzenlendi
+      new_comment: Bir yorum yapıldı
+      poll_created: Bir anket başlatıldı
+      stance_created: Bir oy veriliyor
+      stance_updated: Bir oy değiştirildi
+      poll_closing_soon: Anket yakında kapanıyor
+      poll_expired: Bir anketin süresi doluyor
+      poll_closed_by_user: Bir anket manuel olarak kapatılır
+      poll_reopened: Oylama için anket yeniden açıldı
+      outcome_created: Sonuç paylaşıldı
+      outcome_updated: Bir sonuç güncellendi
+      outcome_review_due: Sonuç incelemesi zamanı geldi
+    permissions_explaination: Bu entegrasyon tarafından hangi eylemlerin gerçekleştirilebileceğini seçin
+    permissions:
+      show_discussion: tartışmayı göster
+      create_discussion: tartışma yarat
+      create_poll: anket oluştur
+      show_poll: anketi göster
+      read_memberships: üyelikleri oku
+      manage_memberships: üyelikleri yönetme (grup üyelerini ekleme veya kaldırma)
+    include_body_label: Mesaj gövdesini bildirime dahil et
   group_survey:
     categories:
       community: Topluluk grubu
       other: Diğer
+      party: Siyasi parti
+      coop: Kooperatif
+      union: Birlik
+      board: Yönetim ve kurullar
+      nonprofit: Kâr amacı gütmeyen
+      membership: Üyelik organizasyonu
+      professional: Profesyonel hizmet şirketi
+      self_managing: Kendi kendini yöneten organizasyon
+      government: Hükümet/Yerel Yönetim
+    describe_other: Grubunuzu en iyi tanımlayan kategoriyi seçin
+  tasks:
+    tasks: Görevler
+    your_tasks: Görevleriniz
+    permission_denied: Bu görevi güncelleme izniniz yok
+    due_date: Bitiş tarihi
+    send_reminder: Hatırlatıcı gönder (yapılmadıysa)
+    no_reminder: Hatırlatma yok
+    on_due_date: Vade tarihinde
+    1_day_before: 1 gün önce
+    2_day_before: 2 gün önce
+    3_day_before: 3 gün önce
+    7_day_before: 7 gün önce
+    task_placeholder: Bir görev girin ve bu görevi atayacak birinden @bahsedin
+    add_due_date: Son tarih ekle
+    task_updated_done: Görev tamamlandı olarak işaretlendi!
+    task_updated_not_done: Görev yapılmadı olarak işaretlendi
+    no_tasks_assigned: Size atanan herhangi bir görev yok
+  doctypes:
+    youtube_video: Youtube videosu
+    image: Resim
+    pdf: PDF'ler
+    excel: Excel elektronik tablo
+    document: Belge
+    csv: CSV Dosyası
+    video: Video
+    text: Metin dosyası
+    google_doc: Google Dokümanı
+    google_sheet: Google E-tablosu
+    google_drive: Google sürücü
+    pull_request: Çekme İsteği
+    trello_board: Trello Kurulu
+    trello_card: Trello Kartı
+  email_to_group:
+    email_to_group_settings: Gruba e-posta ayarları
+    email_to_group_address: Gruba e-posta adresi
+    start_threads_via_email: Konuları e-postayla başlat
+    your_address_for_this_group: Bu grup için e-posta adresiniz
+    send_email_to_start_thread: Grubunuzda bir konu başlatmak için bu adrese e-posta gönderin.
+    subject_body_attachments: Konuda e-postanın konusu, gövdesi ve ekli dosyalar kullanılacaktır.
+    address_starts_threads_as_you: Bu adresi paylaşmayın; bu adrese sahip olan herkes sizin adınıza konu başlatabilir.
+    generate_new_address: Yeni adres oluştur
+    copy_address: Adresi kopyala
+    email_me_this_address: Bu adresi bana e-postayla gönder
+    email_address_sent_to_you: Size gönderilen e-posta adresi
+    email_address_copied_to_clipboard: E-posta adresi panoya kopyalandı
+    new_address_generated: Yeni gruba e-posta adresi oluşturuldu
+    generate_new_address_question: Yeni e-posta grubu adresi oluşturulsun mu?
+    generate_new_address_warning: Mevcut tüm e-posta-loomio adresleriniz çalışmayı durduracaktır. Geri alma yok. Devam etmek?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: "%{group} grubunda konu başlatmak için e-posta adresiniz"
+  close_explanation_modal:
+    aria_label: Konuyu kapat
+    close_thread: Konuyu kapat
+    body: "<p>Eski veya ilgisiz konuları görünümden kaldırmak ve tartışmanın kapandığını belirtmek için kapatın.</p><p> Herkes kapalı bir başlıkta yorum yapabilir veya anket başlatabilir ancak bu, grubun başlık listesinde veya kontrol panelinde görünmez.</p>"
+    image_alt: Konuların tümü kapatılıyor
+  sign_up_form:
+    password_label: 'Şifre:'
+    password_confirmation_label: 'Yine o şifre:'
+  comment_reply_form:
+    aria_label: Yanıt ekle
+  thread_nav:
+    participants: Katılımcılar
+  strand_nav:
+    newest: En yeni
+    oldest: En eski
+    newest_first: En yeni ilk
+    oldest_first: Önce en eski
+    all_pinned: Tüm sabitlenmiş öğeler
+    whole_thread: Konunun tamamı
+    from_comment: Bir yorum URL'sinden
+    from_sequence_id: Bir iş parçacığı öğesi URL'sinden
+    unread: Senin için yeni
+  search_modal:
+    all_content: Tüm içerik
+    best_match: En iyi eşleşme
+    any_tag: Herhangi bir etiket
+    all_subgroups: Tüm alt gruplar
+    parent_only: Yalnızca ebeveyn
+  user_dropdown:
+    pin_sidebar: Kenar çubuğunu sabitle
+    unpin_sidebar: Kenar çubuğunun sabitlemesini kaldır
+    enable_beta_features: Beta özelliklerini etkinleştir
+    disable_beta_features: Beta özelliklerini devre dışı bırak
+    enable_dark_mode: Karanlık modu etkinleştir
+    disable_dark_mode: Karanlık modu devre dışı bırak
+    button_label: Kullanıcı menüsü
+    edit_profile: Profili Düzenle
+    email_settings: Bildirim ayarları
+    help: Yardım
+    contact_site_name: "{{site_name}} ile iletişime geçin"
+    contact_support: İletişim desteği
+    sign_out: oturumu Kapat
+    beta_collab: "\U0001F9EA Beta özellikleri etkinleştirildi!"
+    outcomes: Sonuçlar
+  membership_card:
+    group_members: Grup üyeleri
+    discussion_members: Konu üyeleri
+    poll_members: "{{pollType}} üye"
+    voters: Seçmenler
+    invite_to_group: Gruba davet et
+    invite_to_discussion: Konuya davet et
+    invite_to_poll: Oy vermeye davet et
+    invite_to_wip_poll: Geri bildirimde bulunmaya davet edin
+    invitations: Davetiyeler
+  notification_models:
+    discussion: 'iplik:'
+    comment: yorum yapın
+    poll: 'anket:'
+    outcome: 'sonuç:'
+    stance: 'oy:'
+  thread_template:
+    browse_public_templates: Şablon galerisine göz atın
+    thread_template_settings: Konu şablonu ayarları
+    start_a_new_thread: Yeni bir konu başlat
+    thread_template_saved: Konu şablonu kaydedildi
+    these_are_public_templates: Bu şablonlar grubunuza uyacak şekilde kopyalamanız veya değiştirmeniz için mevcuttur
+    these_are_templates: Bunlar grubunuzdaki konu şablonlarıdır. Şablonlar ortak karar alma süreçlerinde size yol gösterir.
+    default_title_label: Varsayılan başlık
+    default_title_hint: Başlık alanını düzenlenebilir metinle önceden doldurun. Bu isteğe bağlıdır; emin değilseniz boş bırakın.
+    title_placeholder_label: Örnek başlık
+    title_placeholder_hint: Başlık alanının arka planında görüntülenecek bir örnek
+    title_placeholder_placeholder: örneğin arka plan metni böyle görünüyor
+    example_description_label: Örnek açıklama
+    example_description_placeholder: İnsanların konu başlatmak için kullanabileceği bir şablon sağlayın
+    hidden_templates: Gizli şablonlar
+    confirm_delete: Bu konu şablonunu kalıcı olarak silmek istediğinizden emin misiniz? Bunun sonucunda hiçbir konu silinmeyecektir.
+    add_proposal_or_poll_template: Teklif veya anket şablonu ekleyin
+    recommended_proposal_or_poll_templates: Önerilen teklif veya anket şablonları
+    decision_templates: Karar şablonları
+    decision_templates_help: Bu süreci tamamlamaya yardımcı olacak herhangi bir teklif veya anket şablonunu seçin.
+    share_in_template_gallery: Bu şablonu genel şablon galerisinde paylaşın
+  reactions_input:
+    add_your_reaction: Tepkinizi ekleyin
+  context_panel:
+    thread_status:
+      pinned: Bu konu sabitlendi. Tüm kullanıcılar için grubun ileti dizisi listesinin en üstünde kalacaktır.
+      closed: Bu konu kapatıldı. Artık kontrol panelinde görünmeyecek ve grup sayfasında 'kapalı' altında listelenecek
+  delete_group_modal:
+    title: Grubu sil
+    subgroup_title: Alt grubu sil
+    parent_body: "<h2>Bu sizin ana grubunuzdur - bir alt grup değil!</h2><br> Bunu silerseniz tüm alt gruplar da kalıcı olarak silinir. Loomio aboneliğiniz de iptal edilecektir. Bunu yapmadan önce grup verilerinizi dışa aktarmanız ve önemli dosyaları manuel olarak indirmeniz önemle tavsiye edilir. Devam etmek istediğine emin misin?"
+    body: Bu alt grubu silmek istediğinizden emin misiniz? Tüm konular, anketler, dosyalar ve diğer grup içerikleri kalıcı olarak silinecektir. Devam etmeden önce grup verilerini dışa aktarmanız ve önemli dosyaları manuel olarak indirmeniz önerilir.
+    confirm: Bu grubu silmek istediğinizi onaylamak için '%{name}' yazın.
+    success: Bu grup arşivlendi ve 2 hafta içinde kalıcı olarak silinmesi planlanıyor.
+  export_data_modal:
+    title: Verilerinizi nasıl kullanmak istiyorsunuz?
+    as_csv: Bir e-tabloda açın
+    as_html: Bir tarayıcıda açın
+    as_json: Bu grubu kendi sunucumda barındır
+  leave_group_form:
+    aria_label: Gruptan ayrıl
+    title: Gruptan ayrıl
+    question: Bu gruptan ayrılmak istediğinizden emin misiniz?
+    submit: Evet, bu gruptan ayrıl
+  archive_group_form:
+    aria_label: Grubu devre dışı bırak
+    title: Grubu devre dışı bırak
+    question: Bu grubu devre dışı bırakmak istediğinizden emin misiniz?
+    submit: Evet, Bu grubu devre dışı bırak
+  group_export_modal:
+    title: Grup verilerini dışa aktar
+    body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
+    submit: Dışa aktarmayı başlat
+    flash: Grup verilerini dışa aktarma işlemi başladı
+  memberships_panel:
+    add_coordinator: Admin yap
+    remove_coordinator: Yöneticinin rütbesini düşür
+  membership_form:
+    modal_title:
+      group: Başlığı ayarla
+    title_helptext:
+      group: Bu başlık, bu grup içinde {{name}}'nin adının yanında görünecek. İnsanların rollerini bilmelerini sağlamak için bunu kullanın.
+    title_label: başlık
+    title_placeholder: Örneğin 'Koordinatör' veya 'Kolaylaştırıcı'
+    updated: Üyelik başlığı güncellendi
+  user_name_modal:
+    user_name_updated: Kullanıcı adı güncellendi
+    set_user_name: Kullanıcı adını ayarla
+  user_page:
+    contact_user: "{{name}} ile iletişime geçin"
+    location_field: 'Konum: {{value}}'
+    locale_field: 'Dil: {{value}}'
+    online_field: 'Çevrimiçi: {{value}}'
+    invited: Davet edildi {{value}}
+    message_user: Mesaj {{name}}
+  contact_request_form:
+    modal_title: "{{name}}'a e-posta gönderin"
+    message_placeholder: Kendinizi tanıtın ve neden iletişim kurmak istediğinizi paylaşın.
+    helptext: Adınız, e-posta adresiniz ve mesajınız {{name}}'a e-postayla gönderilecek
+    email_sent: "{{name}} adresine e-posta gönderildi"
+  text_editor:
+    x_of_y_characters: "{{x}} / {{y}} karakter"
+    select_text_to_link: Bağlanacak metni seçin ve tekrar deneyin
+    insert_link: Bağlantı ekle
+    insert_embedded_url: Videoyu yerleştir
+  change_password_form:
+    set_password_title: Parolanızı ayarlayın
+    set_password_helptext: Lütfen bir şifre girin - minimum 8 karakter
+    set_password: Şifreyi belirle
+    password_changed: şifreniz güncellenmiştir
+  deactivation_modal:
+    introduction: 'Hesabınızı sildiğinizde:'
+    you_will_be_deleted: Adınız, e-posta adresiniz ve diğer kişisel bilgilerinizi içeren kullanıcı hesabınız sistemlerimizden silinecektir.
+    name_removed: Yaptığınız yorumlar, teklifler ve tartışmalar kalacak ancak adınız bunlardan kaldırılacak
+    no_longer_group_member: Artık hiçbir grubun üyesi olarak listelenmeyeceksiniz
+    no_emails: Artık bildirim e-postaları almayacaksınız
+    submit_delete: Hesabımı hemen sil
+  thread_preview:
+    replies_count: "%{count} yanıt"
+    unread_count: "%{count} okunmamış"
+  threads_page:
+    no_direct_threads: Doğrudan konunuz yok
+    no_invite_only_threads: Yalnızca davetle girilebilen konu diziniz yok
+  discussion_last_seen_by:
+    title: Tarafından görüldü
+    no_one: Bunu henüz kimse görmedi
+  pin_thread_modal:
+    title: Konuyu sabitle
+    helptext: Sabitlenen konular her zaman kendi gruplarının konu listesinin en üstünde görünür. Üyeleri önemli duyurular hakkında bilgilendirmek veya davranış kuralları veya topluluk kuralları gibi ortak materyalleri tanıtmak için kullanılabilirler.
+    helptext_two: Konu açılır menüsünden 'Sabitlemeyi kaldır'ı seçerek raptiyeleri istediğiniz zaman kaldırabilirsiniz
+    pin_thread: Konuyu sabitle
+  thread_arrangement_form:
+    edit: Düzeni düzenle
+    title: Konu düzeni
+    for_everyone: Bu, düzeni yalnızca sizin için değil, herkes için değiştirir.
+    sorting: Önce en eski mi yoksa en yeni mi?
+    latest: En yeni
+    latest_description: Önce en yeni öğeleri okuyun
+    earliest: En eski
+    earliest_description: Yeni yorumları görmeden önce eski yorumları takip edin
+    replies: Yanıtlar nasıl görüntülenir?
+    linear: Düz liste
+    linear_description: Öğeler, birbiri ardına, oldukları gibi listelendi.
+    nested_once: Nest yanıtları - yalnızca ilk yanıt
+    nested_once_description: Orijinal yorumun altındaki yanıtlara girinti ekleyin
+    nested_twice: İki düzeyde iç içe yanıt
+    nested_twice_description: Girinti en fazla iki kez yanıt verir.
+    changing_nesting_is_slow: İç içe yerleştirmede yapılan değişikliklerin işlenmesi birkaç dakika sürebilir.
+  explore_page:
+    header: Grupları keşfedin
+    search_placeholder: Herkese açık grupları arayın
+    single_search_result: "<strong>{{searchTerm}} ile eşleşen 1 genel grup:</strong>"
+    multiple_search_results: "{ <strong>{searchTerm}} ile eşleşen {{resultCount}} herkese açık grup:</strong>"
+    no_results_found: "<strong>Aradığınız grubu bulamıyor musunuz?</strong> Bir grubun gizliliği 'gizli' olarak ayarlanmışsa burada görünmez."
+    newest_first: En yeni ilk
+    biggest_first: İlk önce en büyüğü
+    order_by: 'Grupları şuna göre sırala:'
+  poll_option_form:
+    edit_option: Düzenleme seçeneği
+    option_name: Seçenek adı
+    option_name_hint: Bu seçeneğin kısa adı
+    option_name_validation: Adı kısa tutmak ve 'Anlam' alanına ayrıntı koymak en iyisidir
+    icon: Simge
+    meaning: Anlam
+    meaning_hint: Bu seçeneği seçmenin ne anlama geldiğini açıklayan bir veya iki cümle. İsteğe bağlı
+    prompt: Neden istemi
+    prompt_hint: Seçmenleri gerekçelerini paylaşmaya veya konumlarını yeniden düşünmeye sevk edecek bir soru. İsteğe bağlı
+  poll_common_add_option:
+    button:
+      add_option: Başka bir seçenek ekle
+    modal:
+      title: Bir seçenek ekle
+    form:
+      add_options: Seçenek ekle
+      options_added: Yeni seçenekler eklendi
+  poll_common_card:
+    show_results: Sonuçları göster
+    hide_results: Sonuçları gizle
+    until_vote: Oy verilene kadar
+    until_you_vote: Oy verene kadar
+    until_poll_type_closed: "{{pollType}} kapatılana kadar"
+    until_voting_is_closed: Oylama bitene kadar
+    deleted: Bu anket silindi
+  group_files_panel:
+    no_files: Hiçbir dosya bulunamadı
+    filename: Dosya adı
+    uploaded_by: 'Yükleyen:'
+    uploaded_at: 'Yüklenme tarihi:'
+    delete_confirmation: Bu eki silmek istediğinizden emin misiniz? İlgili herhangi bir yorumdan veya başlıktan kaldırılacaktır. Bu geri alınamaz.
+  subgroups_panel:
+    search_subgroups_of_name: "{{name}} alt gruplarını ara"
+    group_without_subgroups: Alt grupları olmayan {{name}}
+  poll_common_action_panel:
+    from_the_thread: Konu şablonundan
+    from_the_group: Gruptan
+    default_templates: Varsayılan şablonlar
+    default_template: Varsayılan şablon
+    custom_template: Özel şablon
+    default_poll_types: Varsayılan anket türleri
+    suggested_templates: Önerilen şablonlar
+    group_templates: Grup şablonları
+    basic_templates: Temel şablonlar
+    anonymous: Oylar anonimdir
+    results_hidden_until_closed: Sonuçlar oylama bittikten sonra gösterilecek
+    results_hidden_until_vote: Sonuçlar oy verdikten sonra gösterilecek
+    unable_to_vote: Bu %{poll_type} anketinde oy kullanmaya davet edilmediniz
+    draft_mode: Oylama devre dışı bırakıldı. Bu henüz oylamaya açık değil.
+    voting_disabled_poll_is_template: Oylama devre dışı bırakıldı. Bu bir şablon.
+  poll_common_collapsed:
+    by_who: isimle}}
+  poll_common_calendar_invite:
+    calendar_invite: Bu sonucu içeren bir takvim davetiyesi ekleyin
+    poll_option_id: Buluşma zamanı
+    helptext_on: Kullanıcılar bu toplantıyı takvimlerine ekleyebilecek
+    helptext_off: Toplantı daveti gönderilmeyecek
+    event_duration: Süre
+    event_summary: Toplantı adı
+    event_summary_placeholder: Bu toplantıya ne ad vermek istersiniz?
+    event_description: Toplantı açıklaması
+    event_description_placeholder: Bu toplantının gündemi nedir?
+    location: Konum
+    location_placeholder: Bu toplantı nerede yapılacak?
+  poll_common_settings:
+    who_can_vote: Kimler oy verebilir?
+    short_reason_can_be_helpful: Oy gerekçelerinin kısa tutulması anlaşılmasını kolaylaştırır. Kısa ve öz nedenlerden oluşan bir derleme, karar vermek için harika bir kaynaktır.
+    specified_voters_only_true: Yalnızca davet edilen kişiler
+    specified_voters_only_false_group: Gruptaki herkes
+    specified_voters_only_false_discussion: Konudaki herkes
+    invite_people_next: "{{poll_type}} başlattıktan sonra kimlerin oy vermeye davet edileceğini seçebilirsiniz"
+    shuffle_options:
+      shuffle_options: Karıştırma seçenekleri
+      title: Seçenekleri rastgele sırayla göster
+      helptext: Listede ilk sırada yer alan bir seçenek ona önyargı verebilir. Bu etkiyi ortadan kaldırmak için bu ayarı kullanın.
+    multiple_choice:
+      title: Çoktan seçmeli
+      helptext_on: Seçildiğinde katılımcılar birden fazla seçeneği işaretleyebilecektir.
+    anyone_can_participate:
+      title: Bağlantıya sahip olan herkes katılabilir
+      helptext_on: Seçildiğinde anket bağlantısına sahip olan herkes katılabilir.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Oylama 24 saat içinde sona ereceğinden yakın zamanda kapanış hatırlatması gönderilmeyecektir.
+      closes_too_soon: Bu {{pollType}} 24 saat içinde kapanacağından yakın zamanda kapanma hatırlatması gönderilmeyecek.
+      title: "{{pollType}} kapanmadan 24 saat önce şu adrese bir hatırlatma gönderin:"
+      voting_title: 'Oylama kapanmadan 24 saat önce şu adrese bir hatırlatma gönderin:'
+      nobody: Hiç kimse
+      author: Yazar (ben)
+      undecided_voters: Kararsız seçmen
+      voters: Tüm seçmenler
+    notify_on_participate:
+      title: İnsanlar katıldığında bana haber ver
+      helptext_on: Seçtiğinizde, birisi katıldığında bilgilendirileceksiniz.
+    anonymous:
+      title: İsimsiz seçmenler
+      helptext_on: Seçildiğinde katılımcı bilgileri her yanıtta gösterilmeyecektir.
+    voter_can_add_options:
+      title: Seçmenler alternatif seçenekler ekleyebilir
+    can_respond_maybe:
+      title: Seçmen "gerekirse" yanıtını verebilir
+    allow_long_reason:
+      title: Oy 'nedeninin' 500 karakterden uzun olmasına izin ver
+    hide_results_until_closed:
+      title: Sonuçları kapatılana kadar gizle
+      helptext_on: Anket kapatılana kadar insanların nasıl oy verdiklerini gösterme
+  poll_common_close_form:
+    title: "%{poll_type} şimdi kapatılsın mı?"
+    helptext: Bu %{poll_type}'ı erken kapatmak ve sonucu paylaşmak istediğinizden emin misiniz?
+    close_poll_type: "%{poll_type}'ı kapat"
+    poll_type_closed: "%{poll_type} kapatıldı"
+  poll_common_reopen_form:
+    title: "{{poll_type}} yeniden aç"
+    helptext: İnsanların katılmak için daha fazla zamana ihtiyacı varsa {{poll_type}} anketini yeniden açın
+    success: "{{poll_type}} yeniden açıldı"
+  poll_common_move_form:
+    title: "{{poll_type}} taşı"
+    success: "{{poll_type}}, {{group}} grubuna taşındı"
+  poll_common_wip_field:
+    voting_enabled: Oylama etkinleştirildi
+    enable_voting: Oylamayı etkinleştir
+    title: Oylamayı devre dışı bırak
+    past_tense: Oylama devre dışı bırakıldı
+    draft_mode: Taslak modu
+    disable_voting_during_development: Bu %{poll_type} oylanmaya hazır değil
+    helptext: Bu %{poll_type} üzerinde çalışma devam ediyor. Oylamayı daha sonra etkinleştirebilirsiniz.
+    voting_open: Oylama açık
+    this_is_ready_for_voting: bu %{poll_type} oylamaya hazır
+  poll_common_closing_at_field:
+    closing: Kapanış
+    no_closing_date: Kapanış tarihi yok
+    closing_date: Kapanış tarihi
+    closing_hour: Kapanış saati
+    invalid_date: Geçersiz tarih
+  poll_card:
+    poll_type_by_name: "%{poll_type}, %{name} tarafından"
+    started_by: "{{name}} tarafından başlatıldı"
+  poll_common_votes_panel:
+    vote_removed: Oy kaldırıldı
+    undecided: Kararsız
+    newest_first: En yeni ilk
+    oldest_first: Önce en eski
+    priority_first: İlk önce katılıyorum
+    priority_last: Önce engelle
+    undecided_first: İlk önce kararsızım
+    no_votes_yet: Henüz oy verilmedi.
+    change_results_order: Sonuçların sırasını değiştir
+    none_of_the_above: "(Yukarıdakilerin hiçbiri)"
+    name_or_username: Ad veya kullanıcı adı
+  poll_common_undecided_panel:
+    show_undecided: "%{count} kararsızı göster"
+    show_invitations: Bekleyen Davetiyeleri Göster
+    undecided_users: Kararsız (%{count})
+    invitation_count_singular: 1 kişi daha e-posta yoluyla katılmaya davet edildi
+    invitation_count_plural: "%{count} kişi daha e-posta yoluyla katılmaya davet edildi"
+  poll_common_undecided_user:
+    reminded: hatırlatıcı gönderildi!
+    reminder_sent: Hatırlatma bildirimi gönderildi
+  poll_common_set_outcome_panel:
+    enter_outcome: Sonucu girin
+    poll_type: Bu %{poll_type} kapandı. Sonuçları düşünmeye zaman ayırın ve ardından sonucu paylaşın, böylece insanlar bundan sonra ne olacağını bilsin.
+  poll_common_outcome_form:
+    review_due_in_days: Karar kaç gün sonra gözden geçirilir?
+    review_due_in_days_hint: Kararın gözden geçirilmesinden önce beklenecek süre (gün cinsinden). (isteğe bağlı)
+    review_date: Gözden geçirme tarihi
+    review_date_hint: Kararın gözden geçirileceği tarihi belirleyin (isteğe bağlı)
+    who_to_notify: Bu sonuç hakkında kimi bilgilendirmek istiyorsunuz? (isteğe bağlı)
+    outcome_statement_template: Sonuç beyanı şablonu
+    new_title: Devlet sonucu
+    update_title: Sonucu güncelle
+    outcome_created: Sonuç oluşturuldu
+    outcome_updated: Sonuç güncellendi
+    statement_placeholder: Yanıtları özetleyin ve bundan sonra ne olacağını açıklayın.
+    statement_template_placeholder: Kararın sonucunu yazmak için bir şablon sağlayın. (isteğe bağlı)
+    you_will_be_notified: İnceleme tarihinde bilgilendirileceksiniz.
+    submit: Sonucu paylaş
+  poll_common_outcome_panel:
+    authored_by: İsimle}}
+  poll_common_delete_modal:
+    question: Bunu silmek istediğinizden emin misiniz?
+    title: "{{pollType}}'ı sil"
+    success: Başarıyla silindi
+  poll_proposal_form:
+    start_header: Teklifi başlat
+    edit_header: Teklifi düzenle
+    title_placeholder: Örneğin Aya gidelim!
+    details_placeholder: Teklifinizin detayları nelerdir?
+    proposal_created: Teklif başladı
+    proposal_updated: Teklif güncellendi
+  record_modal:
+    record_video: Video kaydetmek
+    record_audio: Ses kaydı
+    record: Kayıt
+    stop: Durmak
+    no_mic: Mikrofon bulunamadı
+    no_camera: Kamera bulamadım
+    listen_to_audio: Sesi dinle
+    watch_video: Video izle
+    audio_transcript: 'Ses transkript: %{text}'
+    why_type_when_you_can_talk: Konuşabilecekken neden yazasınız ki? Ses kaydı gönder
+    transcript_included: Kaydın transkripti mesajınıza eklenecek
+  poll_poll_form:
+    multiple_choice_subtitle: Seçeneklerin popülerliğini değerlendirmenin basit bir yolu
+    start_header: Anketi başlat
+    edit_header: Anketi düzenle
+    tip: Seçenekler arasında seçim yapma olanağı sunun
+    title_placeholder: Örneğin tatile nereye gitmek istersiniz?
+    details_placeholder: İnsanların soruyu yanıtlamak için ihtiyaç duyabilecekleri açıklayıcı ayrıntıları sağlayın.
+    add_option_placeholder: Seçenek ekle
+    new_option: Yeni seçenek
+    add_option_hint: Seçenek için kısa bir ad girin
+    remove_option: Seçeneği kaldır
+    poll_created: Anket oluşturuldu
+    poll_updated: Anket güncellendi
+    option_added: Seçenek eklendi
+    option_already_added: Seçenek zaten ankete eklendi
+  poll_dot_vote_form:
+    dots_per_person: Kişi başına puan
+    dots_per_person_helptext: Her kişiden ayırması istenen toplam puan sayısı.
+  poll_meeting_form:
+    timeslots: Zaman dilimleri
+    no_options: Geçerli saat diliminizdeki ({{zone}}) saatleri girin. Katılımcılar saatleri kendi yerel saat dilimlerine çevrilmiş olarak görürler.
+    meeting_duration: Toplantı süresi
+    add_option_placeholder: Yeni zaman ekle
+    time_slot_added: Zaman aralığı eklendi
+    time_slot_already_added: Zaman aralığı zaten eklendi
+    participants_see_local_times: Katılımcılar kendi saat dilimlerine göre yerelleştirilmiş saatleri görecekler
+    use_24_hour_format: Hata! 24 saat biçimini kullanın, örneğin %{time}
+  poll_ranked_choice_form:
+    no_options: Henüz herhangi bir seçenek eklemediniz.
+    add_option_placeholder: Yeni bir seçim girin
+    minimum_stance_choices: Sıralama seçenekleri
+    minimum_stance_choices_helptext: Seçmenin kaç seçeneği var?
+    minimum_stance_choices_hint: yani en iyi 3 dondurma çeşidini sıralayın
+    ranked_choice_created: Dereceli seçim oluşturuldu
+    ranked_choice_updated: Dereceli seçimi güncellendi
+    rank: Rütbe
+    points: Puanlar
+    average: Ortalama
+    mean: Anlam
+    pct_of_points: puanların yüzdesi
+    pct_of_voters: Seçmenlerin yüzdesi
+    percent: Yüzde
+  poll_meeting_time_field:
+    add_time_slot: Zaman aralığı ekle
+    new_time_slot: Yeni zaman dilimi
+    closing_hour: Kapanış saati
+  poll_proposal_vote_form:
+    default_reason_placeholder: Lütfen gerekçenizi açıklayın
+    abstain_reason_placeholder: İnsanlara bu karardan neden vazgeçtiğinizi bildirin
+    agree_reason_placeholder: Teklifin nesini beğendiniz ve gruba nasıl fayda sağlayacak?
+    disagree_reason_placeholder: Bu öneriyi destekleyebilmeniz için nasıl geliştirilebilir?
+    block_reason_placeholder: Bu teklife itirazınızı ve neden yapılmaması gerektiğini açıklayın
+    stance_created: Oy oluşturuldu
+    stance_updated: Oy güncellendi
+    vote: Oy
+  poll_count_form:
+    pct_of_target: Hedefin %'si
+    agree_target_helptext: Sahip olmasını istediğiniz hedef gönüllü sayısı nedir?
+    agree_target_label: Hedef numarası
+  poll_common_percent_voted:
+    sentence: "{{numerator}} / {{denominator}} kişi katıldı ({{percent}}%)"
+    target_progress: Hedefin %{{percent}} kadarına ulaşıldı. ({{sayı}} / {{hedef}})
+  poll_remove_vote:
+    title: Oyunuz kaldırılsın mı?
+    helptext: Oyunuzu kaldırmak istediğinizden emin misiniz? Kararsız olarak listeleneceksiniz ve dilerseniz daha sonra tekrar oy kullanabileceksiniz.
+    confirm: Oyu kaldır
+    success: Oy kaldırıldı
+  poll_poll_vote_form:
+    stance_created: Oy oluşturuldu
+    stance_updated: Oy güncellendi
+  poll_score_vote_form:
+    stance_created: Oy oluşturuldu
+    stance_updated: Oy güncellendi
+  poll_meeting_vote_form:
+    local_time_zone: Yerel saat - {{zone}}
+    can_attend: Katılabilir
+    unable: Aciz
+    if_need_be: gerekirse
+    your_response: Ne zaman katılabilirsiniz?
+    stance_created: Müsaitlik durumu kaydedildi
+    stance_updated: Kullanılabilirlik güncellendi
+    reason_placeholder: Yazarın seçenekler eklemek istemesi ihtimaline karşı, ne zaman boş (ya da meşgul) olduğunuzu açıklayın.
+  poll_dot_vote_vote_form:
+    dots_remaining: "%{count} nokta kaldı"
+    too_many_dots: Çok fazla nokta kullandın
+    stance_created: Oy oluşturuldu
+    stance_updated: Oy güncellendi
+  poll_ranked_choice_vote_form:
+    helptext: Tercih sırasına göre seçenekleri sürükleyip bırakın (1, en çok tercih ettiğiniz seçenektir). En iyi %{count} tercihiniz kaydedilecek.
+    stance_created: Seçim kaydedildi
+    stance_updated: Seçim güncellendi
+  poll_templates:
+    proposal:
+      process_subtitle: Karar vermek için bir öneride bulunun
+      process_introduction: <p>Klasik Loomio teklifi, bir tartışmayı net bir sonuca dönüştürerek karar vermenize yardımcı olur.</p><p> Bir eylem planı önerin ve insanları katılıyorum, çekimser veya katılmıyorum şeklinde oy vererek yanıt vermeye davet edin.</p><p> İnsanlar oy verirken neden bu şekilde oy verdiklerinin bir nedenini belirtebilirler. Herkesin bu konuda nerede durduğunu ve nedenini görebilirsiniz.</p><p> Bu şekilde, grubunuzun daha iyi, daha bilinçli bir karar almasına yardımcı olmak için insanları yanıt vermeye teşvik etmek, yeni bilgiler ortaya çıkarmak ve ortak anlayış oluşturmak için bir öneriden yararlanabilirsiniz.</p><p> Bir teklif ve ilgili tartışma, kararın nasıl ortaya çıktığına dair kendi kaydını oluşturur.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Basit karar sürecinde klasik Loomio teklifinin kullanılması hakkında daha fazlasını okuyun</u></a> .</p>
+      title: Yeni Marka konseptini onaylayın
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Bu önerinin geçmesi için üyelerin çoğunluğunun Kabul oyu vermesi gerekiyor.</p><p> Katılmıyorsanız nedenini ve Katılmanız için neyin değişmesi gerektiğini söyleyin.</p>
+      agree: Kabul etmek
+      agree_meaning: Öneriyi destekliyorum
+      agree_prompt: Teklifin nesini beğendiniz ve gruba nasıl fayda sağlayacak?
+      abstain: Çekimser
+      abstain_meaning: Bu kararda oy kullanmamayı seçmek veya oy kullanamamak.
+      abstain_prompt: Bu kararda neden çekimser kalıyorsunuz ya da oy kullanamayacağınızı düşünüyorsunuz?
+      disagree: Aynı fikirde olmamak
+      disagree_meaning: Bu öneriyi destekleyebilmem için önce bir şeyin değiştirilmesi gerekiyor.
+      disagree_prompt: Bu öneriyi destekleyebilmeniz için nasıl geliştirilebilir?
+    advice:
+      process_subtitle: Vermeniz gereken bir kararla ilgili tavsiye alın
+      process_introduction: <p>Kuruluşunuz için daha iyi bir karar verebilmeniz için, vermeniz gereken kararla ilgili olarak etkilenen veya uzman kişilerin tavsiyelerini alın.</p><ul><li><p> Tavsiye, kuruluşunuz için daha iyi bir karar vermenize yardımcı olur.</p></li><li><p> İlişkileri, öğrenme fırsatlarını ve çeşitli girdileri teşvik edin.</p></li><li><p> İnisiyatifi ve yaratıcılığı teşvik edin ve çalışmayı daha keyifli hale getirin.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Tavsiye süreci hakkında daha fazlasını okuyun</u></a> .</p>
+      title: Takashi'nin yeni bir bilgisayar almasına yardım et
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>İyi bir karar vermenize yardımcı olmak için insanlardan ne gibi tavsiyeler istiyorsunuz?</strong></h3><p></p><p> Kuruluşumuz için iyi bir karar vermeme yardımcı olmak için görüşlerinizi bekliyorum.</p>
+      agree: Kabul etmek
+      agree_meaning: Bu kararla ilgili tavsiyelerimi sundum
+      agree_prompt: Tavsiyenizi özetleyin veya faydalı bir yorum yapın
+      abstain: Çekimser
+      abstain_meaning: sunabileceğim bir tavsiyem yok
+      abstain_prompt: Yardımcı olabilecek yorumlarınız var mı?
+    consent:
+      process_subtitle: İtiraz etmeden 'denemesi güvenli' bir karar verin
+      process_introduction: <p>Teklifinize anlamlı bir itirazın olmadığı, vermeniz gereken bir karar için onay isteyin; böylece kuruluşunuz için 'denemesi güvenli' olan hızlı bir karar verebilirsiniz.</p><ul><li><p> 'Yeterince iyi' bir karar hedefleyin</p></li><li><p> Uygulanabilir bir teklif geliştirmek için birçok görüşe yer verin</p></li><li><p> Herhangi birinin geçerli bir itirazı olup olmadığını sorun</p></li><li><p> İtirazları çözmek için öneriyi değiştirin</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Onay süreci hakkında daha fazlasını okuyun</a> .</p>
+      title: Tasarım rolü için Chloe'yi işe alın
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Bu teklifte insanlardan ne istiyorsunuz?</strong></h3><p></p><p> Bir İtirazınız varsa lütfen nedenini söyleyin ve teklifte onu güvenli hale getirecek bir değişiklik önerin.</p><p> Kuruluşumuz için iyi bir karar verebilmemiz amacıyla 'denemesi güvenli' olan 'yeterince iyi' bir karar için onay aradığımızı unutmayın.</p>
+      consent: Onay
+      consent_meaning: Teklifi denemek güvenlidir
+      consent_prompt: Teklifin nesini beğendiniz ve kuruluşa nasıl fayda sağlayacak?
+      objection: İtiraz
+      objection_meaning: Geçerli bir itirazım var ve teklifin zarar vereceğini düşünüyorum
+      objection_prompt: Bu teklifi 'denemeyi güvenli' hale getirmek ve böylece destekleyebilmeniz için bu teklifte nasıl bir değişiklik yapılması gerekiyor?
+    consensus:
+      process_subtitle: İlgili herkesle toplu sözleşmeye varın
+      process_introduction: <p>Tüm katılımcıların ihtiyaçlarını ve endişelerini karşılayan bir anlaşmaya varmak için vermeniz gereken karar konusunda fikir birliği oluşturun.</p><ul><li><p> Bir teklifi birlikte tartışın ve geliştirin</p></li><li><p> İlgili herkesi dahil edin ve saygı gösterin</p></li><li><p> Çoğu insandan anlaşma isteyin</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Konsensüs süreci hakkında daha fazlasını okuyun</a> .</p>
+      title: Yeni Marka konseptini onaylayın
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vermeniz gereken karar nedir?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Bu önerinin geçmesi için üyelerin çoğunluğunun Kabul oyu vermesi gerekiyor.</p><p> Katılmıyorsanız nedenini ve Katılmanız için neyin değişmesi gerektiğini söyleyin.</p>
+      agree: Kabul etmek
+      agree_meaning: Öneriyi destekliyorum
+      agree_prompt: Teklifin nesini beğendiniz ve kuruluşa nasıl fayda sağlayacak?
+      abstain: Çekimser
+      abstain_meaning: Bu karar beni etkilemiyor ve grubun kararı ne olursa olsun memnunum
+      abstain_prompt: Bu kararda neden çekimser kalıyorsunuz ya da oy kullanamayacağınızı düşünüyorsunuz?
+      disagree: Aynı fikirde olmamak
+      disagree_meaning: Bu öneriyi destekleyebilmem için önce bir şeyin değiştirilmesi gerekiyor
+      disagree_prompt: Bu öneriyi destekleyebilmeniz için nasıl geliştirilebilir?
+      block: Engellemek
+      block_meaning: Bu öneriyi engelliyorum ve devam etmemesi gerektiğini düşünüyorum
+      block_prompt: Bu teklife itirazınızı ve neden yapılmaması gerektiğini açıklayın
+    question_round:
+      process_subtitle: İnsanların bir teklifi anlamalarına yardımcı olmak için açıklayıcı sorular davet edin
+      process_introduction: <p>Soru turu, insanların teklif hakkında açıklayıcı sorular sorması için bir fırsattır, böylece herkes teklif hakkında ne düşündüğünü söylemeden önce teklifi anlar.</p><p> Loomio Soru turu, oylama seçeneği olmayan özel bir tekliftir. Katılımcıların tur için belirlediğiniz süre içerisinde soru sorabilmesini sağlar.</p><p> Soru turu genellikle Onay sürecinde bir adım olarak kullanılır.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Onay süreci hakkında daha fazlasını okuyun</a> .</p>
+      title: Sağlık ve Güvenlik politikası hakkında ne gibi sorularınız var?
+      details: <h3 id="what-are-you-proposing"><strong>Ne öneriyorsun?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Bu, açıklayıcı sorular sormaya davet edildiğiniz bir soru turudur.</p><p> Teklifi anlamak için bilmeniz gerekenler nelerdir?</p><p> Lütfen Soru turu kapanmadan önce yanıt verin.</p>
+      reason_prompt: Teklifi anlamak için bilmeniz gerekenler nelerdir?
+    sense_check:
+      process_subtitle: Geri bildirim, soru ve endişelerinizi isteyin
+      process_introduction: <p>Sense check teklifi geri bildirim almanın, soruları davet etmenin ve endişeleri ortaya çıkarmanın iyi bir yoludur. Bir karara geçmeden önce teklifin netleştirilmesine ve geliştirilmesine yardımcı olur.</p><p> Anlam kontrolü, insanların bir teklifin oluştuğunu bilmesini sağlar ve onları katılıma teşvik eder. İnsanları dinlemek, nasıl hissettiklerini anlamak ve uygun şekilde yanıt vermek için bir fırsattır; daha iyi bir karar vermek için onların katkılarını birleştirme potansiyelini açar.</p><p> Teklifi geliştirmek amacıyla tepkileri ve yorumları davet etmek için Onay sürecinde ve Konsensüs sürecinde fikir birliğini test etmek için Anlam kontrolü teklifini kullanın.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Basit karar sürecinde Anlam kontrolünü kullanma hakkında daha fazla bilgi edinin</u></a> <span>.</span></p>
+      title: Yeni marka konseptleri hakkında ne düşünüyorsunuz?
+      details: <h3 id="what-are-you-proposing"><strong>Ne öneriyorsun?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Teklif hakkında ne düşünüyorsunuz? Bir yorum bırakın veya iyileştirme için bir öneride bulunun.</p><p> Bu Sense kontrolü, daha iyi bir karar vermemize yardımcı olacak katkılarınız ve katkılarınız için bir fırsattır.</p>
+      looks_good: İyi görünüyor
+      looks_good_meaning: Bu işin nereye gittiğinden memnunum
+      looks_good_prompt: Teklifin daha iyi hale getirilmesi için herhangi bir yorumunuz veya öneriniz var mı?
+      abstain: Çekimser
+      abstain_meaning: Bu çalışmaya ne ekleyecek bir şeyim, ne de bir itirazım var.
+      abstain_prompt: Çekimser kalmak, bu teklifin yönüne rıza göstermek anlamına gelir. Çekimser oy vermenizin bir nedeni var mı?
+      concerned: Endişeli
+      concerned_meaning: Onay vermem veya kabul etmem için bununla ilgili bir şeyin değişmesi gerekebilir
+      concerned_prompt: Endişeniz nedir ve nasıl ele alınabilir?
+    gradients_of_agreement:
+      process_subtitle: 8 puanlık bir ölçekte bir teklif için hızlı destek
+      process_introduction: <p>Anlaşma teklifinin dereceleri, bir grup üyelerinin bir teklife yönelik desteklerini belirli bir ölçekte derece cinsinden ifade etmelerine olanak tanıyarak, desteği ifade etmenin "katılıyorum" ve "katılmıyorum" ifadelerinden daha fazla yolunu sunar.</p><p> Resmi bir anlaşmaya geçmeden önce bir teklifin desteğini test etmek için Anlaşma Aşamalarını bir ön tur olarak kullanın.</p><p> Anlaşma dereceleri, insanların bir teklifin oluştuğunu bilmesini sağlar ve onları katılıma teşvik eder. İnsanları dinlemek, nasıl hissettiklerini anlamak ve uygun şekilde yanıt vermek için bir fırsattır; daha iyi bir karar vermek için onların katkılarını birleştirme potansiyelini açar.</p>
+      title: Yeni değerler beyanını nasıl buldunuz?
+      details: <h3 id="what-are-you-proposing"><strong>Ne öneriyorsun?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Teklifi nasıl buldun? Desteğinizi aşağıdaki ölçekte ifade edin ve iyileştirme için bir yorum veya öneri bırakın.</p><p> Bu Anlaşma Teklifinin Aşamaları, teklife verilen desteği test etmek ve resmi bir anlaşmaya geçmeden önce katkılarınız için bir fırsattır.</p>
+      whole_hearted_endorsement: Gönülden Onay
+      whole_hearted_endorsement_meaning: Gerçekten beğendim!
+      whole_hearted_endorsement_prompt: Bunun nesinden hoşlanıyorsun?
+      agreement_with_minor_contention: Küçük çekişmeli anlaşma
+      agreement_with_minor_contention_meaning: Mükemmel değil ama yeterince iyi
+      agreement_with_minor_contention_prompt: Senin endişen nedir?
+      support_with_reservations: Rezervasyonlarla destek
+      support_with_reservations_meaning: Bununla yaşayabilirim
+      support_with_reservations_prompt: Rezervasyonlarınız neler?
+      abstain_meaning: Bu sorun beni etkilemez
+      abstain_prompt: Eklemek istediğiniz bir şey var mı?
+      more_discussion_needed: Daha fazla tartışmaya ihtiyaç var
+      more_discussion_needed_meaning: Sorunları henüz yeterince iyi anlamadım
+      more_discussion_needed_prompt: Neyi anlamıyorsun?
+      don_t_like_but_will_support: Sevmiyorum ama destekleyeceğim
+      don_t_like_but_will_support_meaning: Harika değil ama grubu oyalamak istemiyorum
+      don_t_like_but_will_support_prompt: Neyin iyileştirildiğini görmek istersiniz?
+      serious_disagreement: Ciddi anlaşmazlık
+      serious_disagreement_meaning: Ben buna katılmıyorum - bana güvenme
+      serious_disagreement_prompt: Neye katılmıyorsun?
+      veto: Veto
+      veto_meaning: Bu teklifi engelliyorum
+      veto_prompt: Teklifi neden engelliyorsunuz? Bunu desteklemeniz için neyin değişmesi gerekiyor?
+    simple_poll:
+      process_subtitle: En popüler seçeneği bulun
+      process_introduction: <p>Bir karar vermeden önce insanların en çok hangi seçenek(ler)i önemsediğini öğrenin.</p><p> Basit anket, tek veya çoktan seçmeli olarak en popüler seçeneği veya seçenekleri bulmanıza yardımcı olur.</p><p> Ayrıntılar alanına seçeneklerle ilgili tüm ayrıntıları yazın, ardından seçeneğin adını girin ve eklemek için + düğmesine tıklayın.</p><p> Bir seçmenin seçebileceği <strong>Minimum seçenekleri</strong> ve <strong>Maksimum seçenekleri</strong> ayarlayın. Tek seçenekli anket için maksimum seçeneği 1 olarak bırakın.</p><p> Seçeneğe bir <strong>anlam</strong> eklemek için her seçeneğin yanındaki kurşun kalem simgesini kullanabilirsiniz; oy verme sırasında insanlara yardımcı olmak için seçeneği daha ayrıntılı bir şekilde detaylandırabilirsiniz.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Basit anket hakkında daha fazlasını okuyun</a> .</p>
+      title: Stratejik yönümüzün odağı nerede olmalı?
+      details: <h3 id="what-is-this-poll-about"><strong>Bu anket neyle ilgili?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Tercih ettiğiniz seçeneği/seçenekleri seçin.</p>
+    score_poll:
+      process_subtitle: Her seçeneğin destek derecesini ölçün
+      process_introduction: <p>İnsanlara her seçeneğe ilişkin istekleri, tercihleri veya ilgileri doğrultusunda anket yapmak istediğinizde Puan anketini kullanın.</p><p> <span>Katılımcılardan her seçeneği değerlendirmeleri ve kaydırıcıyı ölçek boyunca hareket ettirerek bir puan vermeleri istenir.</span></p><p> <span>Sonuçlar, her seçenek için toplam puanları, ortalama puanları ve seçmen sayısını gösteren bir tabloyla birlikte grafiksel olarak görüntülenir.</span></p><p> Gelişmiş Ayarlar, 'Oylar anonimdir' ve 'Seçenekleri rastgele sırada göster' seçeneklerini içerir; bunlar genellikle oylamada önyargıları azaltmak amacıyla Puan anketi için kullanılır.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Puan anketi hakkında daha fazlasını okuyun</a> .</p>
+      title: Kuruluşumuzda kararların nasıl alındığını değerlendirmek
+      details: <h3 id="what-is-this-poll-about"><strong>Bu anket neyle ilgili?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Tercih ettiğiniz seçeneği/seçenekleri seçin.</p>
+    dot_vote:
+      process_subtitle: Öncelikleri ortaya çıkarmak için puanlardan oluşan bir bütçe ayırın
+      process_introduction: <p>Nokta oylama, sınırlı bir kaynağı bir dizi seçeneğe ayırmaya çalışan gruplar için kullanışlıdır. Katılımcıların seçenekleri seçerken bir kısıtlama olduğunu anlamalarına yardımcı olarak basit bir anketin ötesine geçer.</p><p> Katılımcıların her birine belirli sayıda nokta verilir. Kaç tane olduğuna siz karar verin.</p><p> Beğendikleri seçeneklerin yanına noktalar koyarlar. Katılımcılar tüm noktalarını tek bir seçeneğe yerleştirebilecekleri gibi birden fazla seçeneğe de dağıtabilirler.</p><p> Katılımcılar noktaları tahsis ettikçe nokta bütçe sınırını aşabilirler ve bu nedenle noktalarını nasıl harcayacaklarını dikkatli bir şekilde düşünmeye teşvik edilirler.</p><p> En çok noktaya sahip seçenekler “kazanır”. Sonuçlar tablosu, sonuçları analiz etmenize yardımcı olacak ek veriler sağlar.</p><ul><li><p> puanların yüzdesi</p></li><li><p> Puanlar</p></li><li><p> Anlam</p></li><li><p> Seçmenler</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Nokta oyu hakkında daha fazlasını okuyun</a> .</p>
+      title: Konferansımız için tema seçimi
+      details: <h3 id="what-is-this-poll-about"><strong>Bu anket neyle ilgili?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Bu ankette tercih ettiğiniz seçeneklere ayırabileceğiniz 8 noktalık bir bütçeniz var. Tüm noktaları tek bir seçeneğe yerleştirebilir veya dağıtabilirsiniz.</p>
+    ranked_choice:
+      process_subtitle: Seçeneklerin sıralı tercihini anlayın
+      process_introduction: <p>Sıralamalı seçim, çok sayıda seçeneğiniz olduğunda veya bir seçim yaptığınızda kullanışlıdır.</p><p> Bu anket şablonu, insanların tercih ettikleri sıraya göre oy vermeleri için bir dizi seçenek sunar.</p><p> Seçmenin alacağı seçim sayısını ayarlayabilirsiniz.</p><p> <span>Seçmenler seçenekleri tercih sırasına göre sürükleyip bırakıyor (1, en çok tercih ettiğiniz seçenek).</span></p><p> <span>Gelişmiş Ayarlar, 'Oylar anonimdir' ve 'Seçenekleri rastgele sırayla göster' seçeneklerini içerir; bunlar genellikle oylama önyargısını azaltmak amacıyla Sıralı seçim için kullanılır</span> .</p><p> Sonuçlar sıralı olarak gösterilir. Sonuçlar tablosu, sonuçları analiz etmenize yardımcı olacak ek veriler sağlar.</p><ul><li><p> Rütbe</p></li><li><p> puanların yüzdesi</p></li><li><p> Puanlar</p></li><li><p> Anlam</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Dereceli seçimi hakkında daha fazlasını okuyun</a> .</p>
+      title: Yönetim kuruluna direktörleri seçin
+      details: <h3 id="what-is-this-poll-about"><strong>Bu anket neyle ilgili?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Bu neden önemli?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></h3><p></p><p> Seçenekleri tercihinize göre sıralayarak oy verin. Sonuçlarda ilk sırada yer alan seçenek kazanır.</p>
+    time_poll:
+      process_subtitle: İnsanların ne zaman buluşmaya uygun olduğunu öğrenin
+      process_introduction: <p><span>Toplantınız veya etkinliğiniz için tarih ayarlarken zaman kazanın.</span></p><p> Zaman anketi herkesin müsaitlik durumunu görmeyi ve en iyi zamanı bulmayı kolaylaştırır.</p><p> Zaman anketinize bir başlık ve ayrıntılar verin. Saat diliminize göre tarih ve saat seçeneklerinin bir listesini girin.</p><p> Zaman dilimlerini ayarlarken farklı zaman dilimlerindeki insanları göz önünde bulundurun. Katılımcılar, kendi saat dilimlerinde yerelleştirilmiş saatleri görecektir.</p><p> Bir toplantı süresi ayarlayın.</p><p> Zaman anketi kapandığında, en iyi zamanı ve toplantı için tüm talimatları içeren bir sonuç belirleyin.</p><p> <span>Loomio, katılımcıların takvimlerine ekleme yapabilmeleri için sonuç bildirimi e-postasını içeren bir takvim davetiyesi içerecektir.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Zaman anketi hakkında daha fazlasını okuyun</a> .</p>
+      title: Bir sonraki toplantımız için bir tarih bulalım
+      details: "<p><strong>Toplantı veya etkinlik nedir?</strong></p><p></p><p> <strong>Bu neden önemli?</strong></p><p></p><p> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></p><p></p><p> <span>Uygun olduğunuz zaman aralıklarını yeşil 'beğendim' simgesiyle işaretleyin veya kullanılamadığında kırmızı 'beğenmedim' simgesini yerinde bırakın.</span></p><p> <span>'Gerekirse' müsait olduğunuzu söylemek için 'başparmaklar yanlara' simgesini kullanın.</span></p>"
+      reason_prompt: Organizatörün uygun bir zaman bulmasına yardımcı olmak için söyleyebileceğiniz bir şey var mı?
+    opt_in:
+      process_subtitle: Gönüllü bulun veya katılımcı isteyin
+      process_introduction: '<p>İnsanları bir ekibe, komiteye veya çalışma grubuna katılmaya ya da bir etkinliğe katılmaya davet etmek için Etkinleştirmeyi kullanın.</p><p> ''Kabul et''in iki oylama seçeneği vardır: Kabul Et veya Reddet.</p><p> Aradığınız kişi sayısını, örneğin çalışma grubunuza katılacak 3 kişiyi tanımlayabilirsiniz.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Etkinleştirme hakkında daha fazlasını okuyun</a> .</p>'
+      title: Yeni sürdürülebilirlik politikamızın taslağını hazırlayacak çalışma grubu
+      details: "<p><strong>İnsanları davet ettiğiniz ekip, çalışma grubu veya etkinlik nedir?</strong></p><p></p><p> <strong>Bu neden önemli?</strong></p><p></p><p> <strong>İnsanlardan ne yapmalarını istiyorsunuz?</strong></p><p></p><p> Katılmak için 'Kabul Et'i seçin!</p>"
+      accept_meaning: katılmaya hazırım
+      accept_prompt: Neden buna gönüllü oluyorsun?
+      decline_meaning: katılamıyorum
+      decline_prompt: Söylemek istediğin bir şey var mı?
+  thread_item:
+    removed: Öğe kaldırıldı
+    deleted_group: Silinen grup
+    invite_only_thread: Yalnızca ileti dizisini davet et
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}},</a> <strong>{{title}}'</strong> a yanıt olarak"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> konu başlığını düzenledi"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> konu içeriğini düzenledi"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ileti dizisinin gizliliğini değiştirdi"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> konuyu düzenledi"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}},</a> konuyu <strong>{{title}}</strong> başlığından taşıdı"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> konuyu kapattı"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> konuyu yeniden açtı"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> bu konunun bir çatalını oluşturdu: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{yazar}}</a>"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> bir sonuç paylaştı"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}},</a> {{polltype}} anketini yeniden açtı"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}},</a> {{polltype}}'yi kapattı"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> bir {{polltype}} başlattı"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}},</a> {{polltype}} dosyasını düzenledi"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}},</a> {{polltype}} seçeneğine seçenekler ekledi"
+    poll_expired: "{{polltype}} kapalı"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> oy verdi: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> şu konudaki oylarını güncelledi: <strong>{{title}}</strong>"
+    event_removed: Konudan kaldırıldı
+  add_poll_to_thread_modal:
+    success: Başarılı, {{pollType}} konuya eklendi!
+  powered_by:
+    this_is_loomio_md: Loomio, birlikte karar almaya yönelik bir uygulamadır. [Ücretsiz deneyin](https://www.loomio.com)
+    slogan: Birlikte daha iyi kararlar
+    powered_by_loomio: Loomio tarafından desteklenmektedir
+    privacy_policy: Gizlilik Politikası
+    terms_of_service: Kullanım Şartları
+    front_page: Ön Sayfa

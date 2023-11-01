@@ -1,3 +1,4 @@
+---
 ja:
   group:
     stats:
@@ -5,20 +6,117 @@ ja:
       threads: ディスカッション
       poll_types:
         proposal: 提案
+        count: カウント
+        choose: 選ぶ
+        allocate: 割り当てる
+        score: スコア
+        rank: ランク
+        time: タイムポーリング
+      group_stats: グループ統計
+      org_stats: 組織統計 (サブグループを含む)
+      visits: 訪問
+      subgroups: サブグループ
+      polls: 投票
+      votes: 投票
+      comments: コメント
+      general: 一般的な
+    error:
+      handle_must_begin_with_parent_handle: "%{parent_handle} で始める必要があります -"
+      no_public_trials: グループのプライバシー設定を変更するには、試用版からアップグレードしてください
   poll:
     export:
       title: タイトル
       author: 作成者
       email: Eメール
       details: 詳細
+      percent_voted: "%{num}/%{denom} (%{percent}) 人のメンバーが自分の立場を表明しました"
+      user_id: ユーザーID
+      created_at: 作成日
+      closing_at: 終了時間
+      closed_at: 閉店時間
+      is_latest: 最新です
+      engagement: 婚約
+      stances: スタンス
+      participants: 参加者
+      group_name: グループ名
+      discussion_title: スレッドタイトル
+      outcome_author: 結果の著者
+      outcome_created_at: 結果の作成場所
+      outcome_statement: 成果報告書
+      poll_url: 投票URL
+      reason: 理由
+      participant: 参加者
+      also_available: 以下でも利用可能
+      total: 合計
+    error:
+      cannot_add_options: この投票にオプションを追加できません
+      cannot_remove_options: この投票からオプションを削除できません
+      must_have_options: 少なくとも 1 つの投票オプションが必要です
+      must_be_in_the_future: きっと未来にあるはず
+      templates_cannot_close: テンプレートを閉じることができません
+    waiting_for_votes_from: からの投票を待っています
   email:
-    unsubscribe: '購読をやめる、またはEメール設定を変更する：'
-    unsubscribe_html: "購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>"
+    unsubscribe: 購読をやめる、またはEメール設定を変更する：
+    unsubscribe_html: 購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>
     catch_up:
       click_here: ここをクリック
+      daily_subject: 昨日の %{site_name}
+      weekly_subject: 先週の %{site_name}
+      other_subject: 最近 %{site_name} で
+      do_not_reply: このメールには返信しないでください。
+      mark_as_read: 既読にする
+      thanks_for_reading: 読んでいただきありがとうございます、良い一日をお過ごしください!
+      marked_as_read_success: メールのすべてが既読としてマークされています
     membership_request:
       subject: " %{who}  が %{which_group} に参加するようにお願いしています"
       view_group: ここでリクエストを承認または拒否できます
+      intro_html: があなたのグループの 1 つへのアクセスをリクエストしました。
+      button_text: リクエストの表示
+    common:
+      or_enter_code: または、以下のコードを入力してください
+      resend: これは 24 時間で期限切れになり、1 回のみ使用できます
+    login:
+      subject: "%{site_name} にサインインします"
+      intro: これは %{site_name} にサインインするためのリンクです
+      intro_code: これは %{site_name} にサインインするためのコードです
+      login: "%{name} としてサインインします"
+    reactivate:
+      subject: "%{site_name} アカウントを再アクティブ化します"
+      intro: こんにちは %{name}。%{site_name} アカウントを再アクティブ化するためのリンクがあります
+      login: "%{name} を再アクティブ化します"
+    contact_request:
+      subject: "%{name} は %{site_name} であなたとつながりたいと考えています!"
+      intro: "%{name} (%{email}) が接続リクエストを送信しました。"
+      footer: このメールに返信することで、%{name} に直接返信できます。
+    reset_password:
+      greeting: 'こんにちは %{name} こちらは、Loomio アカウントのパスワードをリセットするために使用できるリンクです:'
+      link_text: あなたのパスワードをリセット
+      signoff: "%{hostname} の「パスワードを忘れた場合」フォームに電子メールが入力されたため、このメッセージを受信しました。ただし、上記のリンクをクリックしてフォームに記入するまで、パスワードは変更されません。引き続きログインの問題が発生する場合は、このメールに返信してサポート担当者に連絡してください。"
+    by_who: "%{人} 著"
+    reply_to_this_discussion: このディスカッションに返信する
+    loomio_app_description: 組織が一緒に意思決定を行うための使いやすく安全な場所。
+    view_group: グループを表示する
+    to_join_group:
+      subject: "%{member} が %{site_name} の %{group_name} に参加するよう招待しています"
+      invitation_text: "%{member} があなたをグループ %{group_name} に招待しました。"
+      invitation_text_html: あなたをグループに招待しました
+      link_help: 招待を受け入れるには、以下のリンクをクリックしてください。
+      accept_invitation: 招待を受ける
+      stop_emails: "%{site_name} からのメールの受信を停止する"
+      accepting_is_important: 自分に関係する決定に関する通知を見逃さないように、招待を受け入れることが重要です。
+    resend_to_join_group:
+      subject: "%{member} は、%{site_name} の %{group_name} にあなたが参加するのを待っています"
+    user_added_to_group:
+      subject: "%{who} があなたを %{site_name} の %{that_group} に追加しました"
+      content: "%{who} があなたを %{that_group} に追加しました。"
+      content_html: "<strong>%{who}</strong>があなたを<strong>%{that_group}</strong>に追加しました。"
+      link_help: 以下のリンクをクリックしてグループに移動します。
+    group_membership_approved:
+      intro: グループ %{group_name} へのアクセス要求が承認されました。
+      intro_html: グループ<strong>%{group_name}</strong>へのアクセス要求が承認されました。
+      link_help: '以下のリンクをクリックして %{group_name} に参加し、開始してください:'
+      subject: "%{group_name} への参加リクエストが承認されました"
+      join_group: グループに参加
   footer:
     about: 会社情報
     blog: ブログ
@@ -28,3 +126,200 @@ ja:
     pricing: 価格設定
     public_groups: 公開グループ
     terms: 使用条件
+    independent_install_html: '%{hostname} は Loomio の独立したコピーを実行しています:<a href="http://github.com/loomio/loomio">詳細を確認してください</a>。'
+  discussion_templates:
+    blank:
+      process_name: 空のテンプレート
+      process_subtitle: 目的を問わず新しいスレッドを開始します
+    discuss_a_topic:
+      title_placeholder: 話したいトピックは何ですか?
+      process_name: トピックについて話し合う
+      process_subtitle: グループでディスカッションを開始する
+      process_introduction: "<p>あなたのグループで提起したい問題、問題、または機会はありますか?</p><p>トピックを紹介し、背景情報にリンクし、コメント、アイデア、支援を求めます。</p><p>意見や関連情報を投稿して参加するよう人々を招待します。特定の人の注意を引くには @mention を使用します。</p><p>ディスカッションの進行に応じてスレッドのコンテキストを更新し、結果に向けて議論を促進します。</p><p>スレッドを開始するためのすべての情報が揃うまで待たないでください。むしろ、スレッドを使用して、トピックを調査して解決策を見つけるのに協力してくれる人を招待してください。</p>"
+      description: <h3 id="introduce-and-describe-the-topic">トピックの紹介と説明</h3><p></p><h3 id="why-is-this-important">何でこれが大切ですか？</h3><p></p><h3 id="how-would-you-like-people-to-respond">人々にどのように反応してもらいたいですか？</h3><p></p>
+    onboarding_to_loomio:
+      title: グループで Loomio を使用する
+      process_name: Loomio へのオンボーディング
+      process_subtitle: Loomio を初めて使用する人がコメントを書いたり投票したりする練習をするのに役立つスレッドです。
+      process_introduction: "<p>このテンプレートを使用して、Loomio を人々に紹介します。</p><p> Loomio を体験する素晴らしい方法は、Loomio でディスカッションを開いて決定を下すことです。</p><p>以下のテキスト プロンプトに従うか、独自の言葉を挿入してディスカッションを開始してください。</p><p>センスチェックを実行して、グループが投票して結果を確認できるようにします。</p><p>最初の決定に人々を巻き込むことで、Loomio の価値を引き出します。</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">Loomio の使用に興味を持った理由は何ですか?</h3><p>私たちは、Loomio を使用して、組織に関する意思決定に人々を参加させることに興味があります。</p><h3 id="what-are-you-asking-people-to-do">あなたは人々に何をするように求めていますか？</h3><p>ぜひご意見をお聞かせください。以下にコメントを残して、提案に投票してください。</p><p>コメントの右下にある返信アイコンをクリックすると、他の人のコメントに返信できます。</p><p> @mention を使用して人々に通知します。</p>
+      onboarding: オンボーディング
+    consent_process:
+      title_placeholder: 健康と安全に関する方針の策定
+      process_name: 同意プロセス
+      process_subtitle: 異議を唱えずに「試しても安全」な決定を下してください。
+      process_introduction: '<p>自分の提案に重大な反対がない場合、下す必要のある決定について同意を求めてください。そうすれば、今すぐ「試しても安全」な迅速な決定を下すことができます。</p><p>典型的な役割:</p><ul><li><p>提案者: 決定を必要とする話題を提起する人。</p></li><li><p>ファシリテーター: 提案者が効率的に仕事を遂行できるよう支援できる人。</p></li></ul><p>一般的なプロセス手順:</p><p>ステップ 1. Loomio スレッドで提案を提示します。</p><p>ステップ 2. センス チェックを使用して、提案を改善するための一連の質問、反応、コメントを促進します。</p><p>ステップ 3. 提案やコメントを追加して提案を修正します。</p><p>ステップ 4. 同意提案を伴う修正提案に対して意味のある反対意見があるかどうかを尋ねます。</p><p>ステップ 5. 有効な反対意見を統合して、全員が「試しても安全」であると同意する提案の修正版を作成し、完了したら決定結果を述べます。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">続きを読む: 同意プロセス。</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">あなたがしなければならない決断は何ですか?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have">これはなぜ重要ですか?また、それがどのような影響を及ぼしますか?</h3><p></p><h3 id="what-information-do-people-need-for-context">人々はコンテキストに関してどのような情報を必要としているでしょうか?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">このプロセスの進行役は誰ですか?</h3><p></p>
+      consent: 同意
+    advice_process:
+      title_placeholder: 新しいコンピュータを購入するためのアドバイスを求めています
+      process_name: アドバイスプロセス
+      process_subtitle: 決断が必要な場合はアドバイスを求めてください。
+      process_introduction: '<p>組織にとってより良い意思決定ができるよう、影響を受ける人々や専門知識を持つ人々のアドバイスをもとに意思決定を行ってください。</p><p>典型的な役割:</p><ul><li><p>ファシリテーター: 意思決定を行う人、または誰かに進行を依頼する人。</p></li><li><p>アドバイザー: 影響を受ける人、またはあなたが招待する専門知識を持つ人。</p></li></ul><p>一般的なプロセス手順:</p><p>ステップ 1. アクションを提案する前に、意見を求めて視点を検討します。</p><p>ステップ 2. 提案を作成してアドバイスを求める - アドバイス提案を実行します。</p><p>ステップ 3. 受け取ったアドバイスを考慮して、決定を下し、アドバイスをくれた人々に通知し、結果を述べます。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">続きを読む: アドバイスのプロセス。</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">あなたがしなければならない決断は何ですか?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">これはなぜ重要ですか?また、それがどのような影響を及ぼしますか?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">正しい決断を下すためにどのようなアドバイスを求めていますか?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">このプロセスの進行役は誰ですか?</h3><p></p>
+      advice: アドバイス
+    pass_a_resolution:
+      title_placeholder: 戦略承認の決議
+      process_name: 決議案を可決する
+      process_subtitle: 背景情報や背景情報を添えて決議案を紹介し、質問に答え、決議案を可決するための提案を行います。
+      process_introduction: <p>ロバートのルールは、グループが少数派の声を聞き入れながら多数派が支配できる秩序ある会議を開催するのに役立つ、一連の規範と倫理規則で構成されるフレームワークです。 <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a>メンバーは、「私は…に移動します」と言って、アクションを提案するか決定を下す動議を作成します。別のメンバーは、「動議を承認します」と言って動議を承認しなければなりません。誰かが動議に賛成票を投じると、グループはその動議に投票します。細則の規定に応じて過半数または定足数によって可決されます。</p>
+      description: "<p><strong>可決される決議を述べます</strong></p><p></p><p><strong>コンテキストと背景情報の概要を説明します</strong></p><p></p><p><strong>メンバーを招待して、質問したり、コメントしたり、情報を提供したりして、共通の理解を構築します。</strong></p><p></p>"
+      resolution: 解決
+    decision_by_consensus:
+      title_placeholder: 組織規約の改定
+      process_name: 総意による決定
+      process_subtitle: 関係者全員と労働協約を締結します。
+      process_introduction: '<p>すべての参加者のニーズと懸念を満たす合意に達するために、一緒に行う必要がある決定についての合意を形成します。</p><p>典型的な役割:</p><ul><li><p>ファシリテーターを任命します。 （取締役会会議では通常、議長が議長となります。）</p></li><li><p>組織の規約で指定されている、定足数または超過半数のメンバーが参加すること。</p></li></ul><p>一般的なプロセス手順:</p><p>ステップ 1. 問題または提案された決定について話し合うためのオープンスペースを作成します。</p><p>ステップ 2. コンセンサスをテストし、センスチェック提案で反対意見を明らかにします。</p><p>ステップ 3. ポイントを明確にし、建設的な修正を求め、提案を修正します。</p><p>ステップ 4. コンセンサス提案で同意と残りの異議をテストします。</p><p>ステップ 5. 決定を結果とともに組織の公式議事録に記録します。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">詳細: 合意プロセス。</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">あなたがしなければならない決断は何ですか?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">これはなぜ重要ですか?また、それがどのような影響を及ぼしますか?</h3><p></p><h3 id="what-information-do-people-need-for-context">人々はコンテキストに関してどのような情報を必要としているでしょうか?</h3><p></p><h3 id="who-is-the-facilitator">ファシリテーターは誰ですか?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">決定するにはどのような条件を満たす必要がありますか?</h3><h3 id=""></h3>
+      consensus: コンセンサス
+    share_links_and_info:
+      title_placeholder: リンクと情報を共有する
+      process_name: リンクと情報を共有する
+      process_subtitle: 情報、リンク、レポートを投稿して、コメントやディスカッションのために共有します。
+      process_introduction: "<p>グループの「壁」または「掲示板」としてスレッドを使用し、互いに共有したい情報、ニュース項目、アイデアを投稿します。</p><p>グループが Loomio 内から情報にアクセスできるように、<strong>リンクの挿入</strong>と<strong>ビデオの埋め込み</strong>フォーマット ツールを使用するように人々を招待します。コメントの<strong>見出しを</strong>使用してコメントをスレッド タイムラインに固定すると、簡単に見つけられるようになります。</p><p>糸がくっつくように<strong>ピンで固定し</strong>、<strong>反応を</strong>促して糸を活性化させ、アイテムを見たことを人々に知らせます。</p><p>このスレッドのデフォルト表示は<strong>「最新」</strong>なので、最新のコメントがスレッドの先頭に表示されます。</p>"
+      description: <p>このスレッドを使用して、情報、通知、共有したいことを投稿してください。何が起こっているかを確認し、参加できる場所です。</p><p data-text-align="start">イベント、レポート、ポッドキャスト、その他の興味深いオンライン情報を共有します。</p><p data-text-align="start"><strong>リンクの挿入</strong>と<strong>ビデオの</strong>埋め込みフォーマットツールを使用して、ユーザーが Loomio 内の情報にアクセスできるようにします。</p>
+      information: 情報
+    prepare_for_a_meeting:
+      title_placeholder: 次回の会議の準備中
+      process_name: 会議の準備をする
+      process_subtitle: 議題を作成し、役員会の文書を投稿し、管理事項を整理することで、全員が最新情報を把握し、状況を把握し、準備を整えることができます。
+      description: <p><strong>会議の焦点</strong></p><p></p><p data-text-align="start"><strong>議題の概要</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>前回のミーティングからのアクション</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>参加者は会議に向けてどのように準備すればよいでしょうか?</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>会議の資料リスト</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>最初から参加者を巻き込み、最も重要な議題に向けて調整することで効果的な会議を計画し、一緒に過ごす貴重な時間を有効に活用しましょう。</p><p>スレッドを会議のコンテナとして使用して、会議の焦点を確立し、議題を設定し、適切な日付を見つけ、重要な文書とレポートを投稿し、議題項目についてのディスカッションを開始し、アクションと議事録を作成してフォローアップします。</p><p>これは、全員が資料を読み、議論のテーマや下すべき決定について考えることで、会議の準備をするのに役立ちます。そうすれば、メンバーは文脈を理解した上で会議に到着し、会議の準備が整う可能性が高くなります。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>会議の準備</u></a>について詳しくは、Loomio のグッド ガバナンス ガイドをご覧ください。</p>
+      meeting: ミーティング
+    build_a_policy:
+      title_placeholder: 採用方針の見直し
+      process_name: ポリシーを構築する
+      process_subtitle: チームと協力してポリシーまたは手順文書を作成し、合意します。
+      process_introduction: "<p><span>スレッドはポリシーに関するディスカッションのコンテナであり、要件と原則に同意したり、コメントのために文書草案を投稿したりできます。</span></p><p><span>テンプレートを使用して、少人数のグループでポリシーを作成したり、組織全体に透過的にポリシーを作成して、ドキュメントの進歩的なバージョンについてコメントを求めたりできます。</span></p><p><span>センス チェックの提案を使用して、草案ドキュメントのレビューの準備ができたことをグループ メンバーに通知し、ドキュメントを読んでコメントや質問に回答するよう招待します。</span></p><p> <span>「最終」草案の準備ができたら、文書を承認するための同意またはコンセンサス提案を提出します。</span></p>"
+      description: "<p><strong><span>構築する必要があるポリシーまたは文書は何ですか?</span></strong></p><p></p><p><strong><span>何でこれが大切ですか？</span></strong></p><p></p><p><strong><span>あなたは人々に何をするように求めていますか？</span></strong></p><p></p>"
+      policy: ポリシー
+    elect_a_governance_position:
+      title_placeholder: 評議会の指名と選挙
+      process_name: ガバナンスの役職を選出する
+      process_subtitle: 評議会、委員会、または取締役会のガバナンスの役割に誰かを指名し、選出します。
+      process_introduction: "<p>メンバーが候補者を評価できるように、ガバナンスの役割とそのポジションの基準を紹介します。</p><p>オプトイン投票で候補者を募集します。候補者に候補者の写真を経歴や経歴とともに投稿してもらいます。候補者からのビデオ メッセージを埋め込み、メンバーが候補者を直接見たり聞いたりできるようにします。</p><p>候補者を選出する準備ができている場合は、同意提案を使用してください。</p><p> 1 つの役職に複数の候補者がいる場合は、有権者が候補者を優先順にランク付けできるランク付き選択提案を使用します。</p>"
+      description: '<h3 id="what-position-do-you-need-to-fill">どのポジションを埋める必要がありますか?</h3><p></p><h3 id="why-is-this-important">何でこれが大切ですか？</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand">どのような資格、スキル、経験が優れた候補者となるのでしょうか?</h3><p></p><h3 id="what-is-the-election-process">選挙プロセスとは何ですか?</h3><p>ステージ 1: 推薦 - 適切な候補者の推薦を募集しています。</p><p>ステージ 2: 候補者を紹介します - 各候補者の写真、簡単な略歴、参考文献を含めます。</p><p>ステージ 3: 選挙 - 投票して候補者をその役割に任命します。</p>'
+      election: 選挙
+    funding_decision:
+      title_placeholder: ロボティクスロードショーへの資金申請
+      process_name: 資金調達の決定
+      process_subtitle: 助成金、融資、または投資の申請を処理し、資金調達の決定を行います。
+      process_introduction: "<p>資金調達の申請書を紹介し、書類やその他の裏付け資料を添付します。</p><p>スレッド コンテキストでアプリケーションを要約します。</p><p>権限のある人にアプリケーションを確認して質問してもらいます。議論のために十分な時間を取りましょう。</p><p>資金提供を承認するためのコンセンサス提案を提起します。</p><p>誰かが同意しない場合は、理由を尋ねてください。たとえば、より多くの情報が必要な場合があります。同意しない人に、満足したら投票を変更するよう勧めます。</p><p>資金提供の申請について明確な決定を下した場合は、結果を述べて決定を記録します。</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">資金調達申請の紹介と概要</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria">この申請は資金調達基準にどのように適合しますか?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision">この資金調達決定を承認する権限を持つのは誰ですか?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica">申請を処理するために意思決定者からの質問を募る</h3><p></p>
+      funding: 資金調達
+    approve_a_document:
+      title_placeholder: ブランド戦略の策定
+      process_name: 文書を承認する
+      process_subtitle: 重要な文書、ポリシー、または合意を導入し、議論し、作成します。
+      process_introduction: "<p>背景情報とともにドキュメントを紹介します。集中力を維持できるように文書の目的を述べます。</p><p>人々に情報や専門知識を提供してもらい、それを使って文書を構成します。人々からのフィードバックや貢献を認識し、考慮します。</p><p>承認の準備が整うまで、文書の最初の草案とその後の草案に貢献を統合します。</p><p>センスチェック投票を使用して意見を調査し、草案の問題点を明らかにします。</p><p>フィードバックが検討されて文書に組み込まれたら、同意またはコンセンサス提案の承認または同意に進みます。</p><p>スレッドは、文書作成の進行状況と行われた決定の明確な記録になります。</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">文書の目的は何ですか?</h3><p></p><h3 id="why-is-this-important">何でこれが大切ですか？</h3><p></p><h3 id="what-are-you-asking-people-to-do">あなたは人々に何をするように求めていますか？</h3><p></p>
+      document: 書類
+  explore:
+    header: 公開グループを探索する
+  activerecord:
+    errors:
+      messages:
+        blank: 空白にすることはできません
+        invalid: は有効な値ではありません
+  errors:
+    clear_cache: 読み込みの問題が検出されました。 Shift キーを押しながらリロードを押すか、ブラウザのキャッシュをクリアします。
+    noscript: Loomio を機能させるには JavaScript が必要です。続行するにはブラウザで JavaScript を有効にしてください
+    upgrade_browser: ええとああ！ Webブラウザが古すぎるため、Loomioが正しく動作しない可能性があります。<a href="https://browser-update.org/update.html">ブラウザをアップグレードしてください。</a>
+    return_home: 帰宅
+    not_found: 404 ファイルが見つかりません。
+    messages:
+      email: 有効な電子メールアドレスではありません
+      spoofed_media_type: そのファイルの内容がファイル名と一致しません
+  user:
+    deleted_user: 削除されたユーザー
+    placeholder_name: 招待されたユーザー (%{hostname})
+    error:
+      sign_in_required_html: 続行するにはサインインする必要があります。続行するには<a href="/dashboard" target="_blank">、サインインし</a>てこのページをリロードしてください。
+      recaptcha: あなたがロボットではないことを確認できませんでした。もう一度試してください。
+      bad_login: 申し訳ありませんが、そのパスワードはファイルにあるパスワードと一致しません
+      username_must_be_alphanumeric: ユーザー名は小文字と数字のみである必要があります
+  stance:
+    error:
+      too_short: 選択してください
+  invitation:
+    invitation_cancelled: 申し訳ありませんが、この招待はグループ コーディネーターによって取り消されました。グループに別の招待状をリクエストしてください。
+    invitation_already_used: この招待状はすでに使用されています。グループに進むには、loomio に直接サインインしてください。
+  subscriptions:
+    active: アクティブ
+    inactive: 非活性
+  base_mailer:
+    via_loomio: "%{name} (%{site_name} 経由)"
+  user_mailer:
+    group_export_ready:
+      subject: "%{group_name} のグループ データのエクスポート"
+      body_html: <a href="%{url}">ここから</a>グループデータをダウンロードしてください。このリンクは 1 週間後に期限切れになりますのでご注意ください。
+    deactivated:
+      subject: "%{site_name} ユーザー アカウントは無効化されました。"
+      body_html: "<p>あなた、またはあなたのアカウントにアクセスできる誰かが、あなたの Loomio ユーザー アカウントを無効にしました。</p><p>すべての個人データはシステムから削除されました。</p><p>このユーザー アカウントおよび関連するコメントと投票を復元したい場合は、サポートおよび参照先: %{recovery_code} に連絡してください。</p>"
+    accounts_merged:
+      subject: "%{site_name} ユーザー アカウントが統合されました。"
+      body_html: こんにちは %{name} さん、あなたの 2 つの loomio アカウントが 1 つのアカウントに統合されました。今後 loomio にアクセスするには、サインイン時に<strong>%{email}</strong>を使用してください。
+    merge_verification:
+      subject: 結合するために %{site_name} のメール アドレスを確認してください
+      body_html: "<p>こんにちは、%{名前} さん</p><p>アドレス<strong>%{source_email}</strong>のユーザー アカウントを、このアドレス<strong>%{target_email}</strong>に属するアカウントと結合するリクエストが行われました。</p><p>このプロセスが完了すると、 <strong>%{source_email}</strong>でログインできなくなり、 <strong>%{target_email}</strong>でのみログインできるようになります。</p><p>これがあなたがやりたいことであることを確認してください。</p>"
+      verify: メールを確認して次に進みます
+      confirm_page:
+        confirm: マージの確認
+        body_html: "<p><strong>%{source_email}</strong>のアカウントを<strong>%{target_email}</strong>のアカウントに統合することを確認してください。</p><p> <strong>%{source_email}</strong>の下のアカウントは削除され、その後は<strong>%{target_email}</strong>経由でのみサインインできるようになります。</p><p>この変化は元に戻せません。</p>"
+        merge: アカウントを統合する
+      complete_page:
+        title: マージが成功しました!
+        body_html: <p>ユーザー アカウントの結合は成功しました。すぐに<strong>%{target_email}</strong>に確認メールが届きます。</p><p>さらにご不明な点がございましたら、<a href="/contact" target="_blank">お問い合わせください</a>。</p>
+  announcement_count_emails: "%{count} 件のメール"
+  email_actions:
+    unfollowed_discussion: スレッドの電子メールをオフにしました。
+  discussion_mailer:
+    reply_or_view_online_html: このメールに直接返信するか、 <a href='%{url}'>%{hostname} で表示してください</a>。
+    turn_off_notifications_html: このディスカッションでは<a href='%{url}'>電子メールをオフにしてください</a>。
+    change_email_preferences_html: "<a href='%{email_preferences_url}'>電子メール設定</a>を変更します。"
+    unsubscribe_from_discussion_announced_html: このスレッドでのさらなるお知らせの<a href='%{url}'>購読を解除してください</a>。
+    unsubscribe_from_new_comment_html: このスレッドのコメントの<a href='%{url}'>購読を解除します</a>。
+    unsubscribe_from_comment_replied_to_html: 返信通知です。
+    unsubscribe_from_user_mentioned_html: メンション通知です。
+    discussion_edited:
+      inline: "%{actor} がスレッド コンテキストを編集しました"
+    discussion_closed:
+      inline: "%{actor} がスレッドを閉じました"
+  password_reset:
+    change_your_password: パスワードを変更してください
+    change_my_password: パスワードを変更する
+    confirm_new_password: パスワードを認証する
+    new_password: 新しいパスワード
+    email_guidelines_html: "<p>メールアドレスを入力すると、パスワードリセットリンクが送信されます。</p><p>通常 Facebook または Google 経由でサインインする場合は、そのアカウントに関連付けられている電子メール アドレスを入力します。</p>"
+    reset_email_timeframe: メールが届くまでに最大 5 分ほどかかる場合があります。表示されない場合は、必ず迷惑メールフォルダーを確認してください。
+    length_restriction: パスワードは 8 文字以上である必要があります。
+    forbidden_passwords: アカウントを安全に保つために、「password」などの一般的なパスワードは禁止されています。
+  task_mailer:
+    task_due_reminder:
+      subject: 'タスクリマインダー: %{name}'
+      greeting: 'こんにちは %{name}。次のタスクの期限は %{due} です:'
+      view_task: "%{site_name} で表示"
+      update_or_comment: このタスクをすでに完了している場合は、チェックを入れてください。完了していない場合は、進捗状況を共有してください。
+      due_today: 今日
+      due_in_count_days: "%{count} 日後"
+  group_mailer:
+    resend: 'リマインダー: %{member} はあなたが %{group_name} に参加するのを待っています'
+    destroy_warning:
+      subject: Loomio グループは削除される予定です。
+      body: 'あなたの Loomio グループ: "%{group}" は %{deletor} によって削除されるようにスケジュールされています。グループの削除を希望されない場合は、このメールにご返信ください。グループを削除してもよい場合は、何もする必要はありません。ありがとう。'
+  poll_mailer:
+    common:
+      why_send_this: このメールを受け取った理由は %{reason}
+      view_on_loomio: "%{site_name} で見る"
+      create_outcome: 結果を共有する
+      your_response: あなたは投票しました：
+      you_voted: あなたは投票しました！
+      not_invited: 招待されていません
+      please_respond: 答えてください
+      time_zone: "(時間は%{zone}に表示されます)"
+      undecided_members: 未決定のメンバー (%{count})
+      undecided_visitors: 未決定のゲスト (%{count})
+      more_undecided: あと %{count} 件...
+      vote_now: 今すぐ投票してください
+      you_have_until: "%{when} までに参加してください。"
+      people_have_voted: "%{dnom} 人中 %{nom} 人が参加しました (%{pct}%)"

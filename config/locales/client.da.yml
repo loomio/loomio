@@ -1,6 +1,45 @@
+---
 da:
   templates:
     try_loomio: Prøv Loomio
+    template_gallery: Skabelongalleri
+    title_template: "%{title} skabelon"
+    title_templates: "%{title} skabeloner"
+    title_copy: "%{title} Kopi"
+    copy_of_title: Kopi af %{title}
+    loomio_default_templates: Loomio standard skabeloner
+    which_templates_would_you_like_to_use: Hvilke skabeloner vil du gerne bruge?
+    login_to_start_demo: Dette er en demo af Loomio i aktion. Du er velkommen til at kigge dig omkring.
+    sign_in_to_try_features: Hvis du gerne vil prøve at stemme i en demobeslutning eller starte en gratis prøveperiode for din organisation, skal du klikke på "log ind".
+    click_button_to_start_demo: Velkommen! For at prøve at stemme og andre funktioner skal du klikke på start demo.
+    welcome_to_your_demo: Dette er din helt egen demogruppe!
+    try_voting_to_see_it_work: Prøv at stemme i et forslag for at få en fornemmelse af, hvordan Loomio fungerer.
+    delete_will_be_deleted_in_x_days: Denne demo vil blive slettet om %{x} dage.
+    to_use_loomio_with_your_org_start_trial: Når du er klar til at prøve Loomio med din organisation, skal du starte en gratis prøveperiode.
+    templates: Skabeloner
+    make_a_copy: Lav en kopi
+    this_thread_is_a_template: Denne tråd er en skabelon. Lav en kopi, hvis du vil bruge den.
+    this_is_a_poll_template: Dette er en afstemningsskabelon. Lav en kopi, hvis du vil begynde at stemme.
+    start_a_demo_group: Start en demogruppe
+    start_a_demo: Start en demo
+    demo_group: Demo gruppe
+    play_with_an_example_group: Spil med en eksempelgruppe
+    look_and_feel: Se, hvordan Loomio ser ud for en lille organisation. Lær appen ved at prøve den.
+    watch_then_start: Se venligst videoen, og klik derefter på "Start Demo" for at prøve Loomio
+    generating_demo: Ok, vent lige der! Det tager omkring 20 sekunder at generere en demo.
+    start_a_x_day_free_trial: Start en {{day}} dages gratis prøveperiode
+    ready_to_trial: Klar til at prøve Loomio med din organisation?
+    start_a_no_obligation_x_day_trial: Start en Loomio-gruppe til din organisation med en gratis prøveperiode på {{day}} dage.
+    you_can_test_it_out: Du kan invitere andre til at deltage, integrere det med dine andre værktøjer og prøve at træffe nogle beslutninger.
+    demo_created: Demogruppe oprettet, kun til dig!
+    start_demo: Start demo
+    view_demo: Se demo
+    start_trial: Start prøveversion
+    start_free_trial: Start gratis prøveperiode
+    demo_needs_user: For at starte en demo skal du tilmelde dig (eller logge på) som Loomio-bruger. Dette er gratis og tager kun et minut.
+    trial_needs_user: Velkommen! Log venligst ind for at starte din gratis prøveperiode
+    this_is_a_template_for_new_threads: Dette er en skabelon til nye tråde
+    share_a_custom_configuration: Del en brugerdefineret konfiguration med andre i din gruppe
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -8,14 +47,52 @@ da:
   plan_names:
     free: Gratis
     pro: Pro
+    starter: Forret
+    trial: Forsøg
+    pro_nonprofit: For nonprofit
+    community: Fællesskab
+    small: Lille
+    medium: Medium
+    large: Stor
+    monthly: Månedlige
+    yearly: Årligt
   subscription_status:
-    members: "Medlemmer"
+    members: Medlemmer
+    plan: Plan
+    state: Status
+    active_members: Aktive medlemmer
+    max_threads: Max tråde
+    max_members: Max medlemmer
+    expires_at: Udløber
+    renews_at: Fornyer
+    referral_code: Henvisningskode
+    chargify_link: Faktureringsportal
+    referral_code_help: Giv en ven rabat, få dig selv kredit!
+    manage_payment_details: Administrer betalingsoplysninger
+    manage_subscription: Administrer abonnement
+    amount: Beløb
   loomio_tags:
     name_label: Navn
     color_label: Farve
     modal_title: Opret nyt mærke
     modal_edit_title: Rediger mærke
     modal_destroy_title: Slet mærke
+    all_tags: Alle tags
+    tags: Tags
+    apply_tags: Anvend tags
+    new_tag: Nyt tag
+    card_title: Kategori tags
+    destroy_tag: Slet tag
+    destroy_helptext: Dette vil slette dette tag og fjerne det fra alle tråde i gruppen. Er du sikker?
+    helptext: Tags giver dig mulighed for at kategorisere samtaler og nemt finde dem senere
+    discussions_count_singular: "(%{count} tråd)"
+    discussions_count_plural: "(%{count} tråde)"
+    tag_created: Tag gemt
+    tag_destroyed: Tag slettet
+    tags_marked: Tråde markeret med '{{name}}' i {{groupName}}
+    no_tags_present: Der blev ikke fundet nogen tråde med det tag! Prøv at vælge en anden
+    no_tags_in_group: Denne gruppe har endnu ingen kategori-tags
+    only_admins_can_edit_tags: Beklager, kun administratorer af {{gruppe}} kan oprette, omdøbe eller slette tags
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -35,60 +112,60 @@ da:
     time:
       am: am
       pm: pm
-    closing_in: 'Lukker {{time}}'
-    closed_ago: 'Lukket {{time}}'
-    volume: 'Lydstyrke'
-    notification_volume: 'Mængde af beskeder'
-    group: 'Gruppe'
-    groups: 'Grupper'
-    threads: 'Debatter'
-    decisions: 'Beslutninger'
-    settings: 'Indstillinger'
-    help: 'Hjælp'
+    closing_in: Lukker {{time}}
+    closed_ago: Lukket {{time}}
+    volume: Lydstyrke
+    notification_volume: Mængde af beskeder
+    group: Gruppe
+    groups: Grupper
+    threads: Debatter
+    decisions: Beslutninger
+    settings: Indstillinger
+    help: Hjælp
     email_address: Emailadresse
     privacy:
-      privacy: 'Privatindstilliger'
-      public: 'Offentlig'
-      open: 'Offentlig'
-      closed: 'Lukket'
-      private: 'Privat'
-      secret: 'Hemmelig'
-    selected: 'Valgt(e)'
+      privacy: Privatindstilliger
+      public: Offentlig
+      open: Offentlig
+      closed: Lukket
+      private: Privat
+      secret: Hemmelig
+    selected: Valgt(e)
     date_range:
-      today: 'I dag'
-      yesterday: 'I går'
-      thisweek: 'I denne uge'
-      thismonth: 'I denne måned'
-      older: 'Ældre'
-    more_help: 'Mere hjælp'
-    copy: 'Kopier'
-    copy_text: 'Kopier tekst'
-    copied: 'Kopieret til clipboard'
+      today: I dag
+      yesterday: I går
+      thisweek: I denne uge
+      thismonth: I denne måned
+      older: Ældre
+    more_help: Mere hjælp
+    copy: Kopier
+    copy_text: Kopier tekst
+    copied: Kopieret til clipboard
     action:
       print: Print
-      search: 'Søg'
-      back: 'Tilbage'
-      next: 'Næste'
-      close: 'Luk'
-      save: 'Gem'
-      move: 'Flyt'
-      save_changes: 'Gem ændringer'
-      update_settings: 'Opdater indstillinger'
-      reply: 'Svar'
-      edit: 'Rediger'
-      remove: 'Slet'
-      like: 'Synes om'
-      unlike: 'Synes ikke om'
-      update: 'Opdater'
-      cancel: 'Annuller'
-      show_more: "Vis mere"
-      view_all: "Se alle"
-      new_thread: "Ny tråd"
-      loading: 'Indlæser'
-      translate: 'Oversæt'
-      upload: 'Upload'
-      uploading: 'Uploader'
-      load_more: 'Hent mere'
+      search: Søg
+      back: Tilbage
+      next: Næste
+      close: Luk
+      save: Gem
+      move: Flyt
+      save_changes: Gem ændringer
+      update_settings: Opdater indstillinger
+      reply: Svar
+      edit: Rediger
+      remove: Slet
+      like: Synes om
+      unlike: Synes ikke om
+      update: Opdater
+      cancel: Annuller
+      show_more: Vis mere
+      view_all: Se alle
+      new_thread: Ny tråd
+      loading: Indlæser
+      translate: Oversæt
+      upload: Upload
+      uploading: Uploader
+      load_more: Hent mere
       share: Del
       ok: Ok
       retry: Forsøg igen
@@ -99,191 +176,641 @@ da:
       unsubscribe: Afmeld
       subscribe: Abonnér
       invite: Inviter
+      preview: Forhåndsvisning
+      pin: Pin
+      unpin: Frigør
+      filter: Filter
+      reopen: Åbn igen
+      undo_remove: Fortryd fjernelse
+      hide: Skjule
+      unhide: Vis frem
+      show_fewer: Vis færre
+      view_count_more: Se %{count} mere
+      view_count_responses: Se %{count} svar
+      count_more: "%{count} mere"
+      count_responses: "%{count} svar"
+      add_subgroup: Ny undergruppe
+      discard: Kassér
+      restore: Gendan
+      unignore: Ignorer
+      remind: Minde om
+      resend: Send igen
+      send: Sende
+      joined: Tiltrådte
+      last_seen: Sidst set
+      resent: Invitation sendt igen
+      export: Eksport
+      fork: Gaffel
+      apply: ansøge
+      add_people: Tilføj Folk
+      zoom: Zoom
+      align: Juster
     formatting_help:
-      label: 'Formatering'
+      label: Formatering
+      title: Lær, hvordan du bruger Markdown til at formatere din tekst
+    admin_menu: Admin menu
+    api_docs: API-dokumenter
+    prefix_eg: f.eks. {{val}}
+    are_you_sure: Er du sikker?
+    loomio_help: Loomio hjælp
+    visit_loomio_help: Besøg Loomio hjælp
+    help_and_guides: Hjælp og vejledninger
+    optional: "(Valgfri)"
+    none: Ingen
+    empty: Tom
+    view: Udsigt
+    history: Historie
+    option: Mulighed
+    add: Tilføje
+    you: Du
+    template: Skabelon
+    links: Links
+    active_time_ago: Sidst aktive {{time_ago}}
+    something_went_wrong: Åh åh! Noget gik galt
+    check_for_errors_and_try_again: Tjek venligst formularen for fejl, og prøv igen
+    please_try_again: Prøv igen
+    organization: Organisation
+    organizations: Organisationer
+    anonymous: Anonym
+    required: Påkrævet
+    minutes: Referat
+    today: i dag
+    in_x_days: om %{x} dage
+    reset: Nulstil
+    points_abbrev: Hver stemme er {{score}} point værd
+    total: Total
   emoji_picker:
     search: Søg
+    common: Hyppigt brugt
+    expressions: Ansigter
+    hands: Hænder
+    people: Mennesker
+    nature: Natur
+    objects: Ting
+    places: Steder
   devise:
     failure:
-      inactive: 'Der er en deaktiveret konto tilknyttet til denne emailadresse. Hvis du ønsker at aktivere din konto, kontakt os.'
+      inactive: Der er en deaktiveret konto tilknyttet til denne emailadresse. Hvis du ønsker at aktivere din konto, kontakt os.
+    sessions:
+      signed_up: Tilmeldt med succes!
   error_page:
-    forbidden: 'Du har ikke adgang til at gøre dette.'
-    page_not_found: 'Vi kunne ikke finde det du bad om. Måske er det blevet slettet eller flyttet,'
-    internal_server_error: 'Noget gik desværre galt. Prøv igen.'
+    forbidden: Du har ikke adgang til at gøre dette.
+    page_not_found: Vi kunne ikke finde det du bad om. Måske er det blevet slettet eller flyttet,
+    internal_server_error: Noget gik desværre galt. Prøv igen.
+    forbidden_view: Du har ikke tilladelse til at se dette.
   previous_polls_page:
     heading: Aktiviteter i {{name}}
     polls_count: Viser {{loaded}} af {{total}} aktiviteter
     search_activities: Søg aktiviteter
   volume_levels:
-    loud: 'Høj'
-    normal: 'Normal'
-    quiet: 'Lav'
-    mute: 'Slået fra'
-    unmute: 'Slået til'
+    loud: Høj
+    normal: Normal
+    quiet: Lav
+    mute: Slået fra
+    unmute: Slået til
   pin_event_form:
     title_label: Titel
+    title: Fastgør til tidslinjen
+    hint: 'Tip til næste gang: Prøv at fremhæve noget tekst, før du klikker på "Fastgør".'
   change_volume_form:
     simple:
       label: Notifikationer
       normal: Normal
       quiet: Ignorér
-    aria_label: "Rediger emailindstillinger"
-    loud_label: "Al aktivitet"
-    normal_label: "Normal"
-    quiet_label: "Ingen emails"
-    mute_label: "Slå fra"
+      loud: Abonneret
+      question: Hvornår vil du have besked?
+      loud_explain: når der er aktivitet
+      normal_explain: når nogen beder om din opmærksomhed
+      quiet_explain: ingen meddelelser
+    aria_label: Rediger emailindstillinger
+    loud_label: Al aktivitet
+    normal_label: Normal
+    quiet_label: Ingen emails
+    mute_label: Slå fra
     discussion:
-      apply_to_all: "Gem disse indstillinger for alle debatter i denne gruppe."
+      apply_to_all: Gem disse indstillinger for alle debatter i denne gruppe.
       messages:
-        loud: "Du vil få emails ved enhver aktivitet i denne debat."
-        normal: "Du vil få email ved forslag i denne debat."
-        quiet: "Du vil ikke få emails ved aktivitet i denne debat."
+        loud: Du vil få emails ved enhver aktivitet i denne debat.
+        normal: Du vil få email ved forslag i denne debat.
+        quiet: Du vil ikke få emails ved aktivitet i denne debat.
+      title: Trådmeddelelser
+      loud_description: Du vil blive mailet til al aktivitet i denne tråd.
+      normal_description: Du vil kun blive mailet til vigtig aktivitet i denne tråd.
+      quiet_description: Du vil ikke blive mailet til nogen aktivitet i denne tråd.
+      only_this_thread: Gælder kun denne tråd
+      group: Skift meddelelser for gruppen
+      user: Skift indstillinger for brugermeddelelser
     membership:
-      loud_description: "Du vil modtage en email hver gang der er aktivitet i denne gruppe."
-      normal_description: "Du vil modtage en email hver gang der er aktivitet i denne gruppe."
-      quiet_description: "Du vil ikke modtage emails ved nogen aktivitet i denne gruppe."
-      apply_to_all: "Gem disse indstillinger for all mine grupper."
+      loud_description: Du vil modtage en email hver gang der er aktivitet i denne gruppe.
+      normal_description: Du vil modtage en email hver gang der er aktivitet i denne gruppe.
+      quiet_description: Du vil ikke modtage emails ved nogen aktivitet i denne gruppe.
+      apply_to_all: Gem disse indstillinger for all mine grupper.
       messages:
-        loud: "Du vil få emails ved enhver aktivitet i denne gruppe."
-        normal: "Du vil få emails ved publiceringer i denne gruppe."
-        quiet: "Du vil ikke få emails ved nogen aktivitet i denne gruppe."
+        loud: Du vil få emails ved enhver aktivitet i denne gruppe.
+        normal: Du vil få emails ved publiceringer i denne gruppe.
+        quiet: Du vil ikke få emails ved nogen aktivitet i denne gruppe.
+      title: Notifikationer for {{title}}
+      apply_to_organization: Anvend på alle grupper i {{organisation}}
     all_groups:
-      loud_description: "Du vil få emails ved enhver aktivitet i alle dine grupper."
+      loud_description: Du vil få emails ved enhver aktivitet i alle dine grupper.
       messages:
-        loud: "Du vil få emails ved enhver aktivitet i alle dine grupper."
-        normal: "Du vil få emails ved publiceringer i alle dine grupper."
-        quiet: "Du vil ikke få emails ved nogen aktivitet i ngoen af dine grupper."
+        loud: Du vil få emails ved enhver aktivitet i alle dine grupper.
+        normal: Du vil få emails ved publiceringer i alle dine grupper.
+        quiet: Du vil ikke få emails ved nogen aktivitet i ngoen af dine grupper.
+      title: Notifikationspræferencer for alle grupper
+      normal_description: Du vil kun blive mailet til vigtig aktivitet i alle dine grupper.
+      quiet_description: Du vil ikke blive mailet til nogen aktivitet i nogen af dine grupper.
     user:
       title: Emailindstillinger for nye grupper
-      loud_description: "Du vil modtage en email hver gang der er aktivitet i nye grupper du bliver medlem af."
-      normal_description: "Du vil modtage en email hver ved publiceringer i nye grupper du bliver medlem af.."
-      quiet_description: "Du vil ikke få emails ved nogen aktivitet i nye grupper du bliver medlem af."
-      apply_to_all: "Gem disse indstillinger for all mine grupper."
+      loud_description: Du vil modtage en email hver gang der er aktivitet i nye grupper du bliver medlem af.
+      normal_description: Du vil modtage en email hver ved publiceringer i nye grupper du bliver medlem af..
+      quiet_description: Du vil ikke få emails ved nogen aktivitet i nye grupper du bliver medlem af.
+      apply_to_all: Gem disse indstillinger for all mine grupper.
       messages:
-        loud: "Du vil få emails ved enhver aktivitet i alle nye grupper du bliver medlem af."
-        normal: "Du vil få emails ved publiceringer i alle nye grupper du bliver medlem af."
-        quiet: "Du vil ikke få emails ved nogen aktivitet i nogen af de nye fupper du bliver medlem af."
+        loud: Du vil få emails ved enhver aktivitet i alle nye grupper du bliver medlem af.
+        normal: Du vil få emails ved publiceringer i alle nye grupper du bliver medlem af.
+        quiet: Du vil ikke få emails ved nogen aktivitet i nogen af de nye fupper du bliver medlem af.
+    explain_scope:
+      thread: Dette ændres, når du får besked om denne tråd
+      group: Dette ændres, når du får besked om alle tråde i gruppen
+    saved: Notifikationsindstillinger opdateret
   inbox:
-    clear: 'Ryd'
-    latest: 'Seneste'
-    unread: 'Ulæst'
-    closing_in: 'Ved at lukke'
+    clear: Ryd
+    latest: Seneste
+    unread: Ulæst
+    closing_in: Ved at lukke
   sign_up_form:
     password_label: 'Adgangskode:'
     password_confirmation_label: 'Gentag adgangskode:'
   signed_out_modal:
-    aria_label: 'Logget ud'
-    title: "Du er nu logget ud"
-    ok: "Ok"
+    aria_label: Logget ud
+    title: Du er nu logget ud
+    ok: Ok
+    message: Du er blevet logget ud fra et andet vindue. Log venligst ind igen for at fortsætte.
   comment_form:
-    aria_label: 'Tilføj en kommentar'
+    aria_label: Tilføj en kommentar
     attachments:
-      add_attachment: 'Vedhæft fil'
-      remove_attachment: 'Slet vedhæftning'
+      add_attachment: Vedhæft fil
+      remove_attachment: Slet vedhæftning
     messages:
-      created: 'Kommentar tilføjet'
-      replied: '{{name}} er notificeret om svar'
-      updated: 'Kommentar redigeret'
-      destroyed: 'Kommentar slette'
-    edit_comment: 'Rediger kommentar'
-    delete_comment: 'Slet kommentar'
-    cancel_reply: 'Fortryd svar'
-    confirm_delete_message: 'Er du sikker på at du vil slette denne kommentar?'
-    confirm_delete: 'Slet kommentar'
-    post_comment: "Indsend kommentar"
+      created: Kommentar tilføjet
+      replied: "{{name}} er notificeret om svar"
+      updated: Kommentar redigeret
+      destroyed: Kommentar slette
+      removed: Kommentar fjernet
+    edit_comment: Rediger kommentar
+    delete_comment: Slet kommentar
+    cancel_reply: Fortryd svar
+    confirm_delete_message: Er du sikker på at du vil slette denne kommentar?
+    confirm_delete: Slet kommentar
+    post_comment: Indsend kommentar
     submit_button:
-      label: 'Gem'
-    private_privacy_notice: 'Din kommentar til kun være synlig for medlemmer af {{groupName}}.'
-    public_privacy_notice: 'Din kommentar til kun være synlig for all på internettet.'
-    sign_in: "Log ind for at deltage i debatten"
+      label: Gem
+    private_privacy_notice: Din kommentar til kun være synlig for medlemmer af {{groupName}}.
+    public_privacy_notice: Din kommentar til kun være synlig for all på internettet.
+    sign_in: Log ind for at deltage i debatten
+    say_something: Sig noget...
+    in_reply_to: Svar til {{name}}
+    write_a_comment: Skriv en kommentar...
   sidebar:
-    threads: 'Debatter'
-    recent_threads: 'Seneste debatter'
-    muted_threads: 'Uden notifikationer'
-    explore: 'Offentlige grupper'
+    threads: Debatter
+    recent_threads: Seneste debatter
+    muted_threads: Uden notifikationer
+    explore: Offentlige grupper
     start_thread: Opret debat
     start_decision: Opret stillingtagen
     aria_labels:
-      heading: 'Menu'
-      threads_list: 'Debat handlinger'
-      groups_list: 'Grupper'
-      user_list: 'Bruger handlinger'
+      heading: Menu
+      threads_list: Debat handlinger
+      groups_list: Grupper
+      user_list: Bruger handlinger
+    my_groups: Mine grupper
+    other_groups: Andre grupper
+    all_groups: Alle grupper
+    invite_only_threads: Tråde kun for invitationer
+    direct_threads: Direkte tråde
+    unread_threads: Ulæste tråde (%{count})
+    start_group: Ny organisation
+    start_subgroup: Ny undergruppe
+    explore_groups: Udforsk grupper
+    more_groups: Flere grupper
+    template_gallery: Skabelongalleri
+    examples_and_templates: Eksempler og skabeloner
+    help_docs: Hjælpedokumenter
+    a_detailed_guide_to_loomio: En detaljeret guide til Loomio
+    talk_to_the_loomio_team: Tal med Loomio-teamet
   strand_nav:
     newest_first: Nyeste først
     oldest_first: Ældste først
+    newest: Nyeste
+    oldest: Ældste
+    all_pinned: Alle fastgjorte elementer
+    whole_thread: Hele tråden
+    from_comment: Fra en kommentar-url
+    from_sequence_id: Fra en url for et trådelement
+    unread: Nyt for dig
   navbar:
-    recent_title: 'Vis dashboard'
-    unread_title: 'Vis ulæste aktiviteter'
-    start_thread: 'Opret debat'
-    notifications: 'Notifikations panel'
+    recent_title: Vis dashboard
+    unread_title: Vis ulæste aktiviteter
+    start_thread: Opret debat
+    notifications: Notifikations panel
     search:
-      label: 'Søg; søg i grupper og debatter'
-      results_aria_label: 'Søgeresultat'
-      no_results: 'Ingen debatter fundet'
-      close: 'Luk søge panel'
-      placeholder: 'Søg'
-      loading: 'Henter resultater...'
-      discussions: 'Debatter'
-      proposals: 'Forslag'
-      comments: 'Kommentarer'
-    sign_in: 'Log ind'
-    toggle_sidebar: 'Vis/skjul menu'
-    logo_title: 'Hjem'
+      label: Søg; søg i grupper og debatter
+      results_aria_label: Søgeresultat
+      no_results: Ingen debatter fundet
+      close: Luk søge panel
+      placeholder: Søg
+      loading: Henter resultater...
+      discussions: Debatter
+      proposals: Forslag
+      comments: Kommentarer
+    sign_in: Log ind
+    toggle_sidebar: Vis/skjul menu
+    logo_title: Hjem
+    search_all_threads: Søg i alle tråde
+    search_threads: Søg i tråde i {{name}}
+    search_polls: Søg afstemninger i {{name}}
+    search_members: Søg efter medlemmer i {{name}}
+    search_subgroups: Søg efter medlemmer i {{name}}
+    search_files: Søg efter filer i {{name}}
+    open_sidebar: Åbn sidepanelet
+    close_sidebar: Luk sidebjælken
+    group_and_subgroups: "{{gruppe}} og undergrupper"
   membership_dropdown:
     cancel_invitation: Fortryd invitation
+    set_name_and_username: Indstil navn og brugernavn
+    set_title: Indstil titel
+    resend: Send invitationen igen
+    invitation_resent: Invitation sendt igen
+    make_coordinator: Gør admin
+    demote_coordinator: Nedryk admin
+    remove_from:
+      discussion: Fjern fra tråden
+      group: Fjern fra gruppen
+      poll: Fjern fra {{pollType}}
   notifications:
-    header: "Notifikationer"
-    no_notifications: "Du har ikke nogen notifikationer"
+    header: Notifikationer
+    no_notifications: Du har ikke nogen notifikationer
+    with_title:
+      comment_replied_to: "%{actor} svarede dig i: %{title}"
+      discussion_announced: "%{actor} inviterede dig til tråden: %{title}"
+      discussion_edited: "%{actor} redigerede trådkonteksten: %{title}"
+      discussion_closed: "%{actor} lukkede tråden: %{title}"
+      invitation_accepted: "%{actor} accepterede din invitation til at deltage i %{title}"
+      membership_created: "%{actor} inviterede dig til at deltage i %{title} på %{site_name}"
+      membership_resent: "%{actor} inviterede dig til at deltage i %{title} på %{site_name}"
+      membership_requested: "%{actor} anmodede om at deltage i %{title}"
+      membership_request_approved: "%{actor} godkendte din anmodning om at blive medlem af %{title}"
+      new_comment: "%{actor} kommenterede i: %{title}"
+      new_coordinator: "%{actor} har gjort dig til administrator af %{title}"
+      new_discussion: "%{actor} startede en tråd: %{title}"
+      outcome_announced: "%{actor} delte et %{poll_type}-resultat: %{title}"
+      outcome_created: "%{actor} delte et %{poll_type}-resultat: %{title}"
+      outcome_updated: "%{actor} opdaterede %{poll_type}-resultatet: %{title}"
+      outcome_review_due: 'Det er tid til at gennemgå resultatet af: %{title}'
+      poll_announced: "%{actor} inviterede dig til at stemme: %{title}"
+      poll_closed_by_user: "%{actor} lukkede %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} lukker om 24 timer: %{title}"
+      poll_closing_soon_author: 'Din %{poll_type} lukker om 24 timer: %{title}'
+      poll_created: "%{actor} startede en %{poll_type}: %{title}"
+      poll_edited: "%{actor} opdaterede %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} har lukket: %{title}"
+      poll_expired_author: 'Del resultatet af din %{poll_type}: %{title}'
+      poll_option_added: "%{actor} tilføjede muligheder til %{title}"
+      poll_reopened: "%{actor} genåbnede %{poll_type}: %{title}"
+      poll_reminder: "%{actor} minder dig om at stemme på %{title}"
+      poll_reminder_wip: "%{actor} minder dig om at give feedback: %{title}"
+      reaction_created: "%{actor} reagerede %{reaction} på din %{model} i %{title}"
+      stance_created: "%{actor} stemte i: %{title}"
+      stance_updated: "%{actor} stemte i: %{title}"
+      stance_created_option: "%{actor} stemte %{option} i %{title}"
+      user_added_to_group: "%{actor} føjede dig til gruppen: %{title}"
+      user_mentioned: "%{actor} nævnte dig i: %{title}"
+      user_reminded: "%{actor} minder dig om at stemme i: %{title}"
+    without_title:
+      discussion_announced: "%{actor} inviterede dig til en tråd"
+      discussion_edited: "%{actor} redigerede trådkonteksten"
+      discussion_closed: "%{actor} lukkede tråden"
+      group_announced: "%{actor} inviterede dig til en gruppe"
+      comment_replied_to: "%{actor} svarede dig"
+      new_discussion: "%{actor} startede en tråd"
+      new_comment: "%{actor} kommenterede i en tråd"
+      membership_created: "%{actor} inviterede dig til at deltage i en gruppe"
+      membership_resent: "%{actor} inviterede dig til at deltage i en gruppe"
+      membership_requested: "%{actor} har anmodet om at deltage i din gruppe"
+      membership_request_approved: "%{actor} godkendte din anmodning om at blive medlem af %{title}"
+      outcome_announced: "%{actor} delte et %{poll_type}-resultat"
+      outcome_created: "%{actor} delte et %{poll_type}-resultat"
+      outcome_updated: "%{actor} opdaterede resultatet"
+      outcome_review_due: Det er tid til at gennemgå %{poll_type}-resultatet
+      poll_announced: "%{actor} inviterede dig til at stemme på en %{poll_type}"
+      poll_announced_wip: "%{actor} vil have din feedback på en %{poll_type}"
+      poll_closed_by_user: "%{actor} lukkede %{poll_type}"
+      poll_closing_soon: "%{poll_type} lukker om 24 timer"
+      poll_closing_soon_author: Din %{poll_type} lukker om 24 timer
+      poll_created: "%{actor} startede en %{poll_type}"
+      poll_edited: "%{actor} opdaterede %{poll_type}"
+      poll_expired: "%{poll_type} er lukket"
+      poll_expired_author: Del resultatet af din %{poll_type}
+      poll_option_added: "%{actor} tilføjede muligheder til %{poll_type}"
+      poll_reopened: "%{actor} genåbnede %{poll_type}"
+      poll_reminder: "%{actor} minder dig om at stemme"
+      poll_reminder_wip: "%{actor} minder dig om at give feedback"
+      reaction_created: "%{actor} reagerede %{reaction} på din %{model}"
+      stance_created: "%{actor} stemte"
+      stance_updated: "%{actor} stemte"
+      stance_created_option: "%{actor} stemte %{option}"
+      user_mentioned: "%{actor} nævnte dig"
+      user_reminded: "%{actor} minder dig om at stemme"
+    hints:
+      poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
+      poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
+      outcome_review_due: Overvej at starte en feedback-afstemning eller en ny tråd, der inviterer til refleksioner over, hvordan beslutningen er blevet implementeret.
   discussion_fork_actions:
     move: Flyt
+    helptext: Vælg emner, du vil flytte til en anden tråd
+    search_placeholder: Find tråd efter titel
+    moved: Bevægende kommentarer, det kan tage et øjeblik
+    move_to_existing_thread: Flyt til eksisterende tråd
+    start_new_thread: Eller start en ny tråd
   discussion_form:
     invite: Inviter
-    aria_label: 'Debat'
+    aria_label: Debat
     messages:
-      created: 'Debat oprettet'
-      updated: 'Debat redigeret'
-    new_discussion_title: 'Opret ny debat'
-    edit_discussion_title: 'Rediger debat'
-    group_label: 'Gruppe'
-    group_placeholder: 'Vælg en gruppe'
-    title_label: 'Titel'
-    title_placeholder: 'Hvilket emne ønsker du at have en debat om?'
-    context_label: 'Beskrivelse'
-    privacy_label: 'Privatinstillinger'
-    privacy_public: 'Alle kan se debatten. Kun medlemmer kan deltage.'
-    privacy_private: 'Debatten kan kun ses af medlemmer af gruppen {{group}}.'
-    privacy_organisation: 'Debatten kan ses af medlemmer af gruppen {{parent}} og af medlemmer af gruppen {{group}}.'
+      created: Debat oprettet
+      updated: Debat redigeret
+      forked: Trådgaffel oprettet
+    new_discussion_title: Opret ny debat
+    edit_discussion_title: Rediger debat
+    group_label: Gruppe
+    group_placeholder: Vælg en gruppe
+    title_label: Titel
+    title_placeholder: Hvilket emne ønsker du at have en debat om?
+    context_label: Beskrivelse
+    privacy_label: Privatinstillinger
+    privacy_public: Alle kan se debatten. Kun medlemmer kan deltage.
+    privacy_private: Debatten kan kun ses af medlemmer af gruppen {{group}}.
+    privacy_organisation: Debatten kan ses af medlemmer af gruppen {{parent}} og af medlemmer af gruppen {{group}}.
+    thread_templates: Tråd skabeloner
+    new_thread_template: Ny trådskabelon
+    edit_thread_template: Rediger trådskabelon
+    blank: Blank
+    blank_subtitle: Start en diskussion og se, hvor det fører dig hen
+    new_template: Ny skabelon
+    new_template_subtitle: Lav et eksempel, som andre kan kopiere
+    to: Til
+    direct_thread: Direkte tråd
+    invite_only_thread: Tråd kun for invitationer
+    none_direct_thread: Direkte tråd (ingen gruppe)
+    none_invite_only_thread: Tråd kun for invitationer (ingen gruppe)
+    change_log_placeholder: Beskriv eventuelt dine ændringer. Denne besked vil blive tilføjet til tråden.
+    change_log_label: Hvad er ændret?
+    start_thread: Start tråden
+    new_thread_from_template: 'Ny tråd: %{process_name}'
+    moving_items_title: Flyt emner til en ny tråd
+    context_placeholder: Giv en vis kontekst til denne diskussion, så folk ved, hvordan de skal deltage
+    fork_notice: Der oprettes en ny tråd med %{count} elementer fra {{title}}
+    notify_group: Underret gruppe
   announcement:
     form:
       invitation_message_label: Besked
       poll_reminder:
         message_label: Besked
+        title: Mind om at stemme
+        helptext: Hvem vil du gerne minde om at stemme?
+        message_placeholder: Valgfri besked for at fortælle folk, hvorfor de skal stemme
       wip_poll_reminder:
         message_label: Besked
+        title: Mind om at give feedback
+        helptext: Hvem vil du gerne minde om at give feedback?
+        message_placeholder: Valgfri besked til at inkludere i notifikations-e-mail
       outcome_announced:
         title: Del resultat
+        helptext: Opsummer resultaterne af processen, herunder eventuelle fundne forståelser eller problemer, der er bragt frem i lyset.
       anyone_can_participate: Alle kan deltage
+      group_has_no_members_yet: Du er det eneste medlem af din gruppe. Du vil måske invitere nogle personer til din gruppe, før du starter en tråd eller beslutning.
+      invite_people_to_evaluate_loomio: Inviter nogle personer til din Loomio-gruppe for at træffe en beslutning sammen
+      too_many_invitations: Invitationsgrænsen er overskredet. <a href="{{upgradeUrl}}" target="_blank">Opgrader</a>
+      no_invitations_remaining: <p>Du har brugt alle {{maxMembers}} invitationer, der er tilgængelige for denne gruppe.</p><p> Næste trin <a href="{{upgradeUrl}}" target="_blank">skal du vælge en plan</a> for at fortsætte samarbejdet om Loomio.</p>
+      invitations_remaining: '%{count} invitationer tilbage. <a href="{{upgradeUrl}}" target="_blank">Opgrader</a>'
+      who_to_invite: Hvem vil du invitere?
+      invitation_message_placeholder: En besked, der skal inkluderes i invitationsmailen. (valgfri)
+      invitation_message_default: Jeg har oprettet denne Loomio-gruppe for at hjælpe os med at træffe beslutninger sammen. Accepter venligst min invitation. Det tager kun et minut at deltage. Tak skal du have.
+      group_announced:
+        title: Inviter til gruppe
+        helptext: Hvem vil du invitere med i gruppen?
+      discussion_announced:
+        title: Inviter til tråd
+        helptext: Hvem vil du invitere til tråden?
+        notify_helptext: Hvem vil du gerne give besked om tråden?
+      discussion_edited:
+        title: Giv besked om redigeringer
+        helptext: Hvem vil du gerne give besked om denne opdatering? (valgfri)
+      poll_announced:
+        title: Inviter til at stemme
+        helptext: Hvem vil du invitere til at stemme?
+      wip_poll_announced:
+        title: Inviter til at give feedback
+        helptext: Hvem vil du invitere til at give feedback?
+      poll_edited:
+        title: Giv besked om redigeringer
+        helptext: Hvem vil du gerne give besked om denne opdatering?
+      placeholder: Du kan indtaste navne eller e-mailadresser
+      type_or_paste_email_addresses_to_invite: Indtast eller indsæt e-mailadresser for at invitere
+      notified_empty: Ingen er valgt endnu
+      single_notification: Der sendes 1 meddelelse.
+      multiple_notifications: "{{notified}} meddelelser vil blive sendt."
+      notified: "{{notified}} personer vil blive underrettet."
+      notified_singular: 1 person får besked.
+      notified_none: Ingen vil blive underrettet.
+      added: "%{count} personer vil blive tilføjet."
+      added_singular: 1 person vil blive tilføjet.
+      added_none: Ingen vil blive tilføjet.
+      group_title: "{{name}} (%{count} personer)"
+      visible_to_group: Alle i {{gruppe}} vil kunne se denne tråd.
+      visible_to_guests: Kun inviterede personer kan se denne tråd.
+      click_group_to_see_individuals: Klik på gruppe for at se personer
+    send_discussion: Send tråd
+    send_group: Inviter folk til {{name}}
+    send_poll: Send {{type}}
+    send_outcome: Send resultat
+    cannot_reveal_when_anonymous: Beklager, vi kan ikke afsløre, hvem der har eller ikke har stemt i en anonym afstemning.
+    discussion_notification_history: Trådmeddelelseshistorik
+    group_notification_history: Gruppeinvitationshistorik
+    poll_notification_history: Afstemningsmeddelelseshistorik
+    outcome_notification_history: Resultatmeddelelseshistorik
+    comment_notification_history: Kommentarmeddelelseshistorik
+    notification_history_explanation: "✓ angiver, at meddelelsen er blevet læst, eller e-mailen er blevet åbnet"
+    quick_add: 'Hurtig tilføjelse:'
+    any_other_groups: Andre grupper?
+    notified_people: "{{name}} underrettede {{length}} personer:"
+    preview: Forhåndsvisning af e-mail
+    no_notifications_sent: Der er ikke sendt nogen meddelelser
+    history_error: Noget gik galt! Historien kunne ikke indlæses.
+    inviting_guests_to_thread: Gæster tilhører ikke din gruppe og har kun adgang til denne tråd
+    select_groups: Vælg grupper
+    search_by_name_or_email: Søg efter navn, eller indtast e-mails for at invitere
+    search_by_name: Søg efter personer ved navn
+    only_admins_can_announce: Kun administratorer kan underrette hele gruppen
+    only_admins_can_invite: Kun administratorer kan invitere gæster
+    only_admins_can_announce_or_invite: Kun administratorer kan underrette hele gruppen eller invitere gæster
+    user_mentioned: "{{name}} nævnte {{length}} personer:"
+    comment_replied_to: "{{name}} svarede til {{length}} personer:"
+    new_discussion: "{{name}} inviterede {{length}} personer til tråden:"
+    discussion_announced: "{{name}} inviterede {{length}} personer til tråden:"
+    poll_created: "{{name}} inviterede {{length}} personer til at stemme:"
+    poll_announced: "{{name}} inviterede {{length}} personer til at stemme:"
+    outcome_created: "{{name}} delte et resultat med {{length}} personer:"
+    outcome_announced: "{{name}} delte et resultat med {{length}} personer:"
+    announcement_created: "{{name}} inviterede {{length}} personer til tråden:"
+    discussion_edited: "{{name}} redigerede tråden og underrettede {{length}} personer:"
+    poll_edited: "{{name}} redigerede en afstemning og gav {{length}} personer besked:"
+    outcome_edited: "{{name}} redigerede et resultat og underrettede {{length}} personer:"
+    outcome_updated: "{{name}} redigerede et resultat og underrettede {{length}} personer:"
+    poll_closing_soon: "{{name}}s påmindelse om lukning af afstemningen underrettede {{length}} personer:"
+    poll_reminder: "{{name}} mindede {{length}} personer om at stemme:"
+    audiences:
+      group: "{{navn}}"
+      everyone_in_the_group: Alle i gruppen
+      discussion_group: Alle i tråden
+      voters: Alle inviterede til at stemme
+      decided_voters: Alle der har stemt
+      undecided_voters: Ubeslutsomme vælgere
+      non_voters: Medlemmer af {{name}} endnu ikke inviteret
+    members_list:
+      title: Delt med
+      last_notified: Meddelt
+      not_notified: Ikke meddelt endnu
+      no_members: Dette er ikke blevet delt med nogen endnu!
+      group_admin: Gruppe administrator
+      thread_admin: Tråd administrator
+      last_read_at: Sidst set {{time}}
+      has_not_read_thread: Har ikke set tråden
+    group_form:
+      search_placeholder: Søg efter personer...
+      modal_title: Vælg gruppemedlemmer
+    flash:
+      success: "%{count} meddelelser sendt"
   action_dock:
     edit_stance: Rediger stillingtagen
     edited: Redigeret
     delete_thread: Slet debat
+    actions_menu: Handlingsmenu
+    more_actions: flere handlinger
+    react: Reagere
+    notify: Underrette
+    add_resource: Tilføj en vedhæftet fil
+    edit_group: Rediger gruppekontekst
+    add_comment: Kommentar
+    copy_url: Kopier link
+    edit_thread: Rediger kontekst
+    announce_thread: Send tråd
+    invite_guests: Inviter gæster
+    translate_thread: Oversæt kontekst
+    edit_poll: Rediger afstemning
+    edit_poll_type: Rediger {{pollType}}
+    new_poll_type: Ny {{pollType}}
+    move_items: Flyt elementer
+    announce_poll: Inviter folk til at stemme
+    announce_poll_active: "(Ingen er blevet inviteret endnu)"
+    translate_poll: Oversæt afstemning
+    translate_stance: Oversæt stemme
+    edit_comment: Rediger kommentar
+    delete_comment: Slet kommentar
+    reply_to_comment: Svar
+    fork_comment: Gaffel tråd
+    translate_comment: Oversæt kommentar
+    edit_outcome: Rediger resultatet
+    announce_outcome: Giv folk besked om dette resultat
+    announce_outcome_active: "(Ingen er blevet underrettet om dette resultat endnu)"
+    translate_outcome: Oversæt resultat
+    show_history: Vis redigeringshistorik
+    show_edits: Vis redigeringer
+    show_notifications: Vis meddelelser
+    history: Historie
+    pin_thread: Pintråd
+    unpin_thread: Løsn gevindet
+    pin_event: Fastgør til tidslinjen
+    unpin_event: Frigør fra tidslinjen
+    comment_copied: Kommentar-URL kopieret til udklipsholder
+    move_thread: Flyt til gruppe
+    poll_copied: Beslutnings-URL kopieret til udklipsholder
+    discussion_copied: Tråd-URL kopieret til udklipsholder
+    url_copied: Linket er kopieret til udklipsholderen
+    tag_thread: Administrer tags
+    close_thread: Luk tråden
+    reopen_thread: Åbn tråden igen
+    notification_history: Notifikationshistorik
+    move_item: Flyt element
+    add_poll_to_thread: Tilføj til tråd
+    count_members: "%{count} medlemmer"
+    count_voters: "%{count} vælgere"
   formatting:
     attach: Vedhæft fil
+    formatting_tools: Tekstformateringsværktøjer
+    colors: Farver
+    highlight: Fremhæv
+    alignment: Justering
+    lists: Lister
+    expand: Vis flere formateringsværktøjer
+    collapse: Vis færre formateringsværktøjer
+    bold: Fremhævet
+    italicize: Kursivering
+    blockquote: Citere
+    strikethrough: Gennemstregning
+    underline: Understrege
+    link: Indsæt link
+    code_block: Kodeblok
+    insert_image: Indsæt billede
+    insert_emoji: Indsæt emoji
+    heading_size: Overskrift størrelse
+    heading1: Overskrift 1
+    heading2: Overskrift 2
+    heading3: Overskrift 3
+    left_align: Venstrejusteret
+    center_align: Centerjuster
+    right_align: Højrejuster
+    justify_align: Begrund align
+    paragraph: Afsnit
+    bullet_list: Liste
+    number_list: Nummereret liste
+    check_list: Tjekliste
+    task_list: Opgaveliste
+    reset: Nulstil
+    text_color: Tekstfarve
+    background_color: Baggrundsfarve
+    quote: Citere
+    embed: Indlejr video
+    divider: Afdeler
+    add_table: Tilføj tabel
+    remove_table: Fjern bordet
+    add_column_before: Tilføj kolonne før
+    add_column_after: Tilføj kolonne efter
+    remove_column: Fjern kolonne
+    add_row_before: Tilføj række før
+    add_row_after: Tilføj række efter
+    remove_row: Fjern række
+    merge_selected: Flet markerede celler
+    wysiwyg: wysiwyg
+    edit_markdown: Rediger Markdown
+    markdown_confirm: Noget formatering kan gå tabt ved at konvertere wysiwyg-indhold til markdown.
+    upload_failed: Upload fejlede
   cover_photo_form:
-    heading: 'Nyt forsidefoto'
-    upload_link: 'Upload er nyt forsidefoto'
-    image_size_helptext: 'Ideel billedstørrelse er 1400x320px'
-    upload_success: 'Forside foto gemt'
+    heading: Nyt forsidefoto
+    upload_link: Upload er nyt forsidefoto
+    image_size_helptext: Ideel billedstørrelse er 1400x320px
+    upload_success: Forside foto gemt
   logo_photo_form:
-    heading: 'Nyt gruppelogo'
-    upload_link: 'Upload nyt gruppelogo'
-    image_size_helptext: 'Ideel  billedstørrelse er 100x100px'
-    upload_success: 'Gruppelogo gemt'
+    heading: Nyt gruppelogo
+    upload_link: Upload nyt gruppelogo
+    image_size_helptext: Ideel  billedstørrelse er 100x100px
+    upload_success: Gruppelogo gemt
   join_group_button:
     join_group: Bliv medlem
     membership_requested: Anmodet om medlemsskab
     messages:
-      joined_group: 'Du er nu medlem af {{group}}'
+      joined_group: Du er nu medlem af {{group}}
+    not_a_member: Du er i øjeblikket ikke medlem af denne gruppe.
   membership_request_form:
     aria_label: Anmod om at blive medlem
     heading: Anmod om at blive medlem
@@ -292,12 +819,27 @@ da:
     introduction_label: Hvorfor vil du være medlem?
     submit_button: Anmod om medlemskab
     introduction_over_limit: Din introduktion er for lang
+    messages:
+      membership_requested: Du har anmodet om at blive medlem af {{gruppe}}
   revision_history_modal:
     aria_label: Versionshistorik
-    started_by: 'Oprette af <strong>{{name}}</strong>'
-    edited_by: 'Redigeret af <strong>{{name}}</strong>'
+    started_by: Oprette af <strong>{{name}}</strong>
+    edited_by: Redigeret af <strong>{{name}}</strong>
     posted: Gemt
     current_revision: Seneste
+    discussion_header: Diskussionsredigeringer
+    comment_header: Kommentarredigeringer
+    poll_header: Afstemningsredigeringer
+    outcome_header: Resultatredigeringer
+    stance_header: Stemmeredigeringer
+    edit_by: Rediger af {{name}} · {{date}}
+    field: Mark
+    before: Før
+    after: Efter
+    original_text: Original
+    closing_at_changed: lukketid indstillet til {{tid}}
+    private_changed: privatliv indstillet til {{privat}}
+    group_id_changed: flyttet til {{name}}
   group_page:
     threads: Debatter
     members: Medlemmer
@@ -305,38 +847,46 @@ da:
     subgroups: Undergrupper
     messages:
       privacy:
-        members: 'Denne gruppe er nu kun synlig for medlemmer'
-        public: 'Denne gruppe er ny synlig for offentligheden'
-      leave_group_success: 'Du har forladt denne gruppe'
-      archive_group_success: 'Denne gruppe er deaktiveret'
-    group_logo: 'Gruppelogo'
-    new_photo: 'Nyt photo'
-    new_cover_photo: 'Upload nyt forsidebillede'
-    new_group_logo: 'Upload nyt gruppelogo'
-    discussions_placeholder: 'En debat er et sted hvor alle kan give deres mening til kende omkring et specifikt emne og tage beslutninger sammen.'
-    members_placeholder: 'Du er det eneste medlem her, inviter nogle mennesker til at være med!'
+        members: Denne gruppe er nu kun synlig for medlemmer
+        public: Denne gruppe er ny synlig for offentligheden
+        parent_members: Denne gruppe er nu kun synlig for medlemmer af din organisation
+      leave_group_success: Du har forladt denne gruppe
+      archive_group_success: Denne gruppe er deaktiveret
+    group_logo: Gruppelogo
+    new_photo: Nyt photo
+    new_cover_photo: Upload nyt forsidebillede
+    new_group_logo: Upload nyt gruppelogo
+    discussions_placeholder: En debat er et sted hvor alle kan give deres mening til kende omkring et specifikt emne og tage beslutninger sammen.
+    members_placeholder: Du er det eneste medlem her, inviter nogle mennesker til at være med!
     member_options: Medlemsinstaillinger
-    invite_people: 'Inviter'
-    visibility_label: 'Visibility'
-    options_label: 'Indstillinger'
+    invite_people: Inviter
+    visibility_label: Visibility
+    options_label: Indstillinger
     options:
-      label: 'Indstillinger'
-      edit_group: 'Rediger gruppe indstillinger'
-      manage_members: 'Administrer medlemmer'
-      add_subgroup: 'Opret undergruppe'
-      email_settings: 'E-mail-indstillinger'
-      leave_group: 'Forlad gruppe'
-      deactivate_group: 'Deaktiver gruppe'
+      label: Indstillinger
+      edit_group: Rediger gruppe indstillinger
+      manage_members: Administrer medlemmer
+      add_subgroup: Opret undergruppe
+      email_settings: E-mail-indstillinger
+      leave_group: Forlad gruppe
+      deactivate_group: Deaktiver gruppe
+      become_coordinator: Bliv admin
+      export_data: Eksporter gruppedata
+      export_data_as_json: Eksporter gruppedata som JSON
+      export_data_as_csv: Eksporter gruppedata som CSV
+      export_data_as_html: Eksporter gruppedata som HTML
+      manage_subscription: Administrer gruppeabonnement
+      subscription_status: Abonnementsstatus
     volume:
       loud: Email ved enhver aktivitet.
       loud_aria_description: Din notifikations volume er sat til høj. Du vil modtage email ved enhver aktivitet i denne gruppe.
       loud_message: Du vil modtage email ved enhver aktivitet i "{{name}}."
       normal: 'Email kun ved vigtige hændelser: ved nye debatter, forslag og resultater osv.'
       normal_aria_description: Din email notifikations volume for denne gruppe er sat til normal. Du vil kun modtage email ved vigtige hændelser, så som ved oprettelse af en ny debat , opretter et forslag eller sætter et resultat
-      normal_message: 'Du vil kun modtage email ved vigtige hændelser i "{{name}}".'
+      normal_message: Du vil kun modtage email ved vigtige hændelser i "{{name}}".
       quiet: Send ikke emails fra denne gruppe. Aktivitet vil blive vist på dashboardet.
       quiet_aria_description: Din notifikations volume er sat til lav. Du vil ikke modtage email om aktivitet der sker i denne gruppe. Gruppens aktivitet vil blive vist på dit Dashboard.
-      quiet_message: 'You won''t be emailed about activity in "{{name}}".'
+      quiet_message: You won't be emailed about activity in "{{name}}".
       mute: Skjul denne gruppe fra dahsboardet og unlad at notificer med mindre at @mentioned.
       mute_aria_description: Dint notifikations volume for denne gruppe er sat til lydløs. Du vil ikke modtage email med mindre at nogen @mentions dig, og gruppens aktivitet vil ikke blive vist på dit dashboard.
       mute_message: '"{{name}}" er fjernet fra dit dashboard.'
@@ -345,20 +895,37 @@ da:
       parent_members: 'Privatinstillinger: Denne gruppe er synlig for medlemmer af {{parentGroupName}} og medlemmer af {{groupName}}'
       public: 'Privatinstillinger: Denne gruppe er synlig for alle på internettet'
       aria_label: 'Privatinstillinger: {{privacy}}'
+    stats: Gruppestatistik
+    polls: Afstemninger
+    decisions: Beslutninger
+    files: Filer
+    show_opened: "%{count} Åbn"
+    show_closed: "%{count} Lukket"
+    no_threads_here: Ingen tråde at se her!
+    search_threads: Søg efter tråde...
+    private_threads: Du skal være medlem for at se private tråde i denne gruppe
+    no_more_threads: Ikke flere tråde at indlæse
+    view_closed_threads: Se lukkede tråde
+    open_discussions: Åbne tråde
+    closed_discussions: Lukkede tråde
+    see_all_members: Se alle %{count} medlemmer
+    pending_invitations: "+ %{count} afventer"
+    subgroups_placeholder: Undergrupper giver teams deres egen plads og holder meddelelser fokuseret til de rigtige personer.
   description_card:
-    title: 'Gruppe beskrivelse'
+    title: Gruppe beskrivelse
     messages:
-      description_updated: 'Beskrivelse gemt'
+      description_updated: Beskrivelse gemt
+    placeholder: Gruppeadministratorer kan bruge dette område til at beskrive gruppens formål, så alle ved hvorfor de er her.
   leave_group_form:
-    aria_label: 'Forlad gruppe'
-    title: 'Forlad gruppe'
-    question: 'Er du sikker på at du vil forlade denne gruppe?'
-    submit: 'Ja, forlad denne gruppe'
+    aria_label: Forlad gruppe
+    title: Forlad gruppe
+    question: Er du sikker på at du vil forlade denne gruppe?
+    submit: Ja, forlad denne gruppe
   archive_group_form:
-    aria_label: 'Deaktiver gruppe'
-    title: 'Deaktiver gruppe'
-    question: 'Er du sikker på at du vil deaktivere denne gruppe?'
-    submit: 'Ja, deaktiver denne gruppe'
+    aria_label: Deaktiver gruppe
+    title: Deaktiver gruppe
+    question: Er du sikker på at du vil deaktivere denne gruppe?
+    submit: Ja, deaktiver denne gruppe
   group_form:
     aria_label: Gruppe formular
     new_group: Ny gruppe
@@ -367,44 +934,98 @@ da:
     edit_group_heading: Rediger gruppe indstillinger
     edit_subgroup_heading: Rediger undergruppe indstillinger
     group_name: Gruppenavn
-    group_name_placeholder: 'Hvad er navnet på din gruppe?'
-    description: 'Beskrivelse'
-    description_placeholder: 'Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.'
+    group_name_placeholder: Hvad er navnet på din gruppe?
+    description: Beskrivelse
+    description_placeholder: Beskriv formålet med denne  gruppe så at gruppens medlemmer ved hvorfor de er her.
     privacy_statement:
-      private_to_group: 'Navn og beskrivelse er kun tilgængelige for medlemmer.'
-      private_to_parent_members: 'Navn og beskrivelse er kun tilgængelige for medlemmer af {{parent}}'
-    privacy: 'Privatindstillinger'
-    confirm_change_to_secret: "Hvis du fortsætter så vil alle debatter i denne gruppe og undergrupper være private."
-    confirm_change_to_secret_subgroup: 'vis du fortsætter så vil alle debatter i denne gruppe være private.'
-    confirm_change_to_public: 'Hvis du fortsætter så vil alle debatter i denne gruppe være offentlige (alle på internettet kan læse dem).'
-    confirm_change_to_private_discussions_only: 'Hvis du fortsætter så vil alle offentlige debatter i denne gruppe blive lavet om til private debatter.'
+      private_to_group: Navn og beskrivelse er kun tilgængelige for medlemmer.
+      private_to_parent_members: Navn og beskrivelse er kun tilgængelige for medlemmer af {{parent}}
+      public_on_web: Navn, beskrivelse og vedhæftede filer til gruppekonteksten vil være synlige for offentligheden
+    privacy: Privatindstillinger
+    confirm_change_to_secret: Hvis du fortsætter så vil alle debatter i denne gruppe og undergrupper være private.
+    confirm_change_to_secret_subgroup: vis du fortsætter så vil alle debatter i denne gruppe være private.
+    confirm_change_to_public: Hvis du fortsætter så vil alle debatter i denne gruppe være offentlige (alle på internettet kan læse dem).
+    confirm_change_to_private_discussions_only: Hvis du fortsætter så vil alle offentlige debatter i denne gruppe blive lavet om til private debatter.
     profile: Profil
-    subgroup_privacy_is_open_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er offentlige (alle på internettet kan læse dem)."
-    subgroup_privacy_is_closed_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er private."
-    subgroup_privacy_is_closed_public_threads_description: "Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen.  Debatter kan være offentlige eller private."
-    subgroup_privacy_is_closed_secret_parent_description: "Medlemmer af {{parent}} kan finde denne undergruppe og anmode om at blive medlem. Alle debatter er private. Det er kun medlemmer der kan se hvem der er medlem i gruppen."
-    subgroup_privacy_is_secret_description: 'Det er kun inviterede medlemmer der kan finde undergruppen, se hvem der er medlem og se debatter.'
-    advanced_settings: "Avancerede indstillinger"
-    how_do_people_join: "Hvordan bliver man medlem?"
-    membership_granted_upon_request: 'Alle kan blive medlem'
-    membership_granted_upon_approval: 'Alle kan anmode om at blive medlem, men skal godkendes.'
-    membership_granted_upon_approval_secret_parent: '<strong>På anmodning</strong> så kan alle fra {{parent}} anmode om at blive medlem af gruppen.'
-    permissions: 'Rettigheder'
-    thread_privacy: 'Debat privatindstillinger'
-    public_threads: 'Kun offentlige debatter'
-    public_discussions_subgroup: 'Alle i {{parentGroupName}} kan læse debatter'
-    public_or_private_threads: 'Tillad både offentlige og private debatter'
-    private_threads: 'Det er kun medlemmer der kan se debatter'
-    allow_public_threads: 'Tillad offentlige debatter i denne gruppe.'
-    submit_start_group: 'Opret gruppe'
-    submit_start_subgroup: 'Opret undergruppe'
-    submit_update: 'Gem indstillinger'
+    subgroup_privacy_is_open_description: Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er offentlige (alle på internettet kan læse dem).
+    subgroup_privacy_is_closed_description: Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen. Alle debatter er private.
+    subgroup_privacy_is_closed_public_threads_description: Alle kan finde undergruppen og anmode om at blive medlem. Det er kun medlemmer der kan se hvem der er medlem i undergruppen.  Debatter kan være offentlige eller private.
+    subgroup_privacy_is_closed_secret_parent_description: Medlemmer af {{parent}} kan finde denne undergruppe og anmode om at blive medlem. Alle debatter er private. Det er kun medlemmer der kan se hvem der er medlem i gruppen.
+    subgroup_privacy_is_secret_description: Det er kun inviterede medlemmer der kan finde undergruppen, se hvem der er medlem og se debatter.
+    advanced_settings: Avancerede indstillinger
+    how_do_people_join: Hvordan bliver man medlem?
+    membership_granted_upon_request: Alle kan blive medlem
+    membership_granted_upon_approval: Alle kan anmode om at blive medlem, men skal godkendes.
+    membership_granted_upon_approval_secret_parent: "<strong>På anmodning</strong> så kan alle fra {{parent}} anmode om at blive medlem af gruppen."
+    permissions: Rettigheder
+    thread_privacy: Debat privatindstillinger
+    public_threads: Kun offentlige debatter
+    public_discussions_subgroup: Alle i {{parentGroupName}} kan læse debatter
+    public_or_private_threads: Tillad både offentlige og private debatter
+    private_threads: Det er kun medlemmer der kan se debatter
+    allow_public_threads: Tillad offentlige debatter i denne gruppe.
+    submit_start_group: Opret gruppe
+    submit_start_subgroup: Opret undergruppe
+    submit_update: Gem indstillinger
     messages:
-      group_created: 'Gruppe oprettet'
-      group_updated: 'Gruppe gemt'
+      group_created: Gruppe oprettet
+      group_updated: Gruppe gemt
+    thread_defaults_help: Standardindstillinger for nye tråde
+    click_to_change_image: Klik for at ændre forsidebillede (4x1) eller logo (1x1)
+    change_cover_image: skift forsidebillede
+    change_logo: skifte logo
+    permissions_explaination: 'Der er to niveauer af medlemskab, en person kan have til en gruppe: admin og medlem. Administratorer kan redigere gruppeindstillinger, gøre andre til administratorer og udføre alle de handlinger, der er angivet nedenfor.'
+    parent_group: Forældregruppe
+    new_organisation: Ny organisation
+    new_subgroup: Ny undergruppe
+    new_group_explainer: Start en ny Loomio-gruppe til din organisation
+    new_subgroup_explainer: Start en undergruppe inden for en eksisterende gruppe - et privat rum for et team af mennesker fra organisationen
+    group_settings: Gruppeindstillinger
+    subgroup_settings: Indstillinger for undergruppe
+    subgroup_name: Navn på undergruppe
+    organization_name: Organisationens navn
+    handle: Håndtere
+    group_handle_placeholder: 'Brugt i din gruppe-URL: {{host}}/{{handle}}'
+    start_organization_heading: Ny organisation
+    edit_organization_heading: Rediger organisationsindstillinger
+    subgroup_name_placeholder: Hvad er navnet på din undergruppe?
+    organization_name_placeholder: Hvad er navnet på din organisation?
+    new_description_placeholder: Hvorfor forsøger du Loomio? Hvilke beslutninger skal I træffe sammen?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Hvordan har du tænkt dig at bruge Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Hvorfor er dette vigtigt for din gruppe?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Hvilke beslutninger skal du tage?</h3><p></p>
+    secret_by_default: Din gruppe vil kun være tilgængelig for dem, der er inviteret til at deltage. Du kan ændre dette senere.
+    group_privacy_is_open_description: Offentligt opført. Alle tråde er offentlige.
+    group_privacy_is_closed_description: Unoteret. Alle med linket kan anmode om at deltage. Alle tråde er private.
+    group_privacy_is_closed_public_threads_description: Unoteret. Alle med linket kan anmode om at deltage. Tråde kan være offentlige eller private.
+    group_privacy_is_secret_description: Kun inviterede personer kan finde gruppen. Alle tråde er private.
+    membership_granted_upon_invitation: Kun invitation.
+    parent_members_can_see_discussions: Medlemmer af {{parent}} kan se private tråde
+    parent_members_can_see_discussions_help: Tillad medlemmer af forældregruppen at se, men ikke deltage i, tråde og afstemninger i denne gruppe
+    members_can_announce: Medlemmer kan underrette alle i gruppen
+    members_can_announce_help: Tillad medlemmer at underrette alle i gruppen om en tråd eller afstemning
+    members_can_add_members: Medlemmer kan invitere medlemmer
+    members_can_add_members_help: Tillad medlemmer at invitere folk til at deltage i denne gruppe
+    members_can_add_guests: Medlemmer kan invitere gæster
+    members_can_add_guests_help: Tillad medlemmer at invitere gæster til tråde eller afstemninger i denne gruppe
+    members_can_create_subgroups: Medlemmer kan oprette undergrupper
+    members_can_create_subgroups_help: Tillad medlemmer at oprette og blive administratorer af nye undergrupper
+    members_can_edit_discussions: Medlemmer kan administrere tråde og kommentarer
+    members_can_edit_discussions_help: Tillad medlemmer at redigere, flytte, fastgøre, tagge eller lukke tråde
+    members_can_edit_comments: Medlemmer kan redigere deres egne kommentarer
+    members_can_edit_comments_help: Tillad medlemmer at redigere deres egne kommentarer til enhver tid
+    members_can_delete_comments: Medlemmer kan slette deres egne kommentarer
+    members_can_delete_comments_help: Tillad medlemmer at slette deres egne kommentarer fra tråde
+    members_can_start_discussions: Medlemmer kan starte nye tråde
+    members_can_start_discussions_help: Tillad medlemmer at starte nye tråde i gruppen
+    members_can_raise_motions: Medlemmer kan starte afstemninger
+    members_can_raise_motions_help: Tillad medlemmer at starte afstemninger og forslag inden for diskussioner eller gruppen
+    admins_can_edit_user_content: Administratorer kan redigere medlemmers kommentarer
+    admins_can_edit_user_content_help: Tillad administratorer at redigere indhold skrevet af medlemmer
+    upload_logo: Upload logo
+    upload_cover_photo: Upload forsidebillede
   membership_requests_card:
-    heading: 'Anmodninger om medlemskab'
+    heading: Anmodninger om medlemskab
     manage_requests: Administrer anmodninger
+    manage_requests_with_count: Administrer anmodninger (%{count})
   membership_requests_page:
     heading: Anmodninger om medlemskab
     approve: Godkend
@@ -412,69 +1033,120 @@ da:
     no_pending_requests: Der er pt. ingen anmodninger om at blive medlem i denne gruppe.
     no_previous_requests: Der er pt. ingen tidligere anmodninger om at blive medlem i denne gruppe.
     previous_requests: Tidligere anmodninger
-    previous_request_response: '{{response}} af {{responder}} '
+    previous_request_response: "{{response}} af {{responder}} "
     messages:
       request_approved_success: Andmodning om medlemskab godkendt
       request_ignored_success: Andmodning om medlemskab ignoréret
   invitation_form:
-    aria_label: 'Invitation form'
-    invite_people: 'Inviter folk'
-    group: 'Gruppe'
-    group_placeholder: 'Vælg en gruppe'
-    shareable_link: 'Delbart link'
-    copy_link: 'Kopier'
-    email_addresses: 'Emailadresser'
-    email_addresses_placeholder: 'f.eks. helperbot@loomio.org, friendlybot@loomio.org'
+    aria_label: Invitation form
+    invite_people: Inviter folk
+    group: Gruppe
+    group_placeholder: Vælg en gruppe
+    shareable_link: Delbart link
+    copy_link: Kopier
+    email_addresses: Emailadresser
+    email_addresses_placeholder: f.eks. helperbot@loomio.org, friendlybot@loomio.org
     add_custom_message: 'Gør din invitation personlig, '
-    add_custom_message_link: 'skriv en personlig besked.'
-    custom_message: 'Personlig besked'
-    custom_message_placeholder: 'Indtast en personlig besked som bliver sendt med invitationen.'
-    add_members: 'Tilføj medlemmer'
-    from_parent_group: 'fra {{name}}.'
-    send: 'Send'
-    done: 'Udført'
+    add_custom_message_link: skriv en personlig besked.
+    custom_message: Personlig besked
+    custom_message_placeholder: Indtast en personlig besked som bliver sendt med invitationen.
+    add_members: Tilføj medlemmer
+    from_parent_group: fra {{name}}.
+    send: Send
+    done: Udført
     messages:
-      invitation_sent: 'Invitation sendt.'
-      no_invitations: 'Uha! Kontroller venligst at emailadressen er korrekt og prøv igen.'
-      max_invitations: 'Hvis du ønsker at sende mere end 100 invitationer, så benyt et delbart link.'
+      invitation_sent: Invitation sendt.
+      no_invitations: Uha! Kontroller venligst at emailadressen er korrekt og prøv igen.
+      max_invitations: Hvis du ønsker at sende mere end 100 invitationer, så benyt et delbart link.
+      invitations_sent: "%{count} invitationer sendt."
+    group_url: Gruppe-URL
+    reusable_invitation_link: Genanvendeligt invitationslink
+    error: Fejl under forsøg på at kopiere til udklipsholder
+    invite_guests: Inviter gæster
+    notify_people: Giv folk besked
+    invite_people_to_group: Inviter til {{name}}
+    share_group: Del din gruppe
+    secret_group_url_explanation: Dette er adressen for din gruppe. Kun inviterede medlemmer vil kunne se gruppen.
+    shareable_group_url_explanation: Du kan dele dette link offentligt. Folk kan anmode om at deltage, og du kan godkende eller ignorere anmodninger.
+    shareable_invitation_explanation: Del ikke dette link offentligt. Alle med det kan deltage i din gruppe uden din godkendelse. Del dette kun inden for privat kommunikation for at give personer i din organisation mulighed for at deltage.
+    shareable_link_reset: Nulstilling af link, der kan deles. Det forrige link virker ikke længere.
+    email_explanation: Alternativt kan du indtaste e-mailadresser nedenfor for at sende invitationer via e-mail.
   memberships_page:
-    members: 'Medlemmer'
-    name_label: 'Navn'
-    remove_member_label: 'Slet'
-    fragment_placeholder: 'Filtrer brugere på navn eller brugernavn...'
+    members: Medlemmer
+    name_label: Navn
+    remove_member_label: Slet
+    fragment_placeholder: Filtrer brugere på navn eller brugernavn...
     messages:
-      remove_member_success: '{{name}} slettet'
+      remove_member_success: "{{name}} slettet"
+      make_admin_success: "{{name}} er nu administrator"
+      remove_admin_success: "{{name}} er ikke længere en administrator"
+    coordinator_label: Admin
+    only_one_admin: Der er kun én administrator i denne gruppe. Det anbefales, at du udpeger mindst et medlem mere som administrator.
+    remove_admin_from_self:
+      question: Er du sikker på, at du ikke længere vil være administrator?
   membership_remove_modal:
     invitation:
       title: Fortryd invitation
       flash: Invitation fortrudt
       submit: Fortryd invitation
+      message: Er du sikker på, at du vil annullere invitationen til {{name}}?
     membership:
       title: Slet medlem
       submit: Slet medlem
+      message: Er du sikker på, at du vil fjerne {{name}}?
+      impact_for_subgroup: Dette vil fjerne deres adgang til undergruppen (inklusive tråde og afstemninger), men de forbliver medlem af den overordnede gruppe.
+      impact_for_group: Dette vil fjerne deres adgang til gruppen (inklusive tråde og afstemninger) og eventuelle undergrupper.
+      flash: Medlem fjernet
   profile_page:
     messages:
-      updated: 'Profile gemt'
-      picture_changed: 'Profile billeder gemt'
-      password_changed: 'Adgangskode gemt'
-      deactivated: 'Konto deaktiveret'
-    change_picture_link: 'Rediger billede'
-    change_password_link: 'Skift adgangskode'
-    profile: 'Profil'
-    edit_profile: 'Rediger Profil'
-    picture_label: 'Billede'
-    name_label: 'Navn'
-    username_label: 'Brugernavn'
-    email_label: 'Email'
-    locale_label: 'Sprog'
-    update_profile: 'Gem profil'
+      updated: Profile gemt
+      picture_changed: Profile billeder gemt
+      password_changed: Adgangskode gemt
+      deactivated: Konto deaktiveret
+    change_picture_link: Rediger billede
+    change_password_link: Skift adgangskode
+    profile: Profil
+    edit_profile: Rediger Profil
+    picture_label: Billede
+    name_label: Navn
+    username_label: Brugernavn
+    email_label: Email
+    locale_label: Sprog
+    update_profile: Gem profil
+    account_is_bot: Dette er en bot-konto
+    bot_account_warning: Botkonti vil ikke blive inviteret til at stemme i afstemninger eller deltage i diskussioner
+    incomplete_profile: Ufuldstændig profil!
+    set_your_profile_picture: Indstil dit profilbillede
+    deactivated_user: Deaktiveret bruger
+    date_time_pref_label: Dato- og tidsformat
+    merge_accounts: Flet konti
+    delete_account: Slet konto permanent
+    delete_user_link: Slet konto
+    username_helptext: Alle små bogstaver og tal, maksimalt 30 tegn
+    short_bio_label: Introduktion
+    short_bio_placeholder: Introducer venligst dig selv, medtag ekspertiseområder, emner af interesse og eventuelle tilknyttede organisationer
+    locale_placeholder: Vælg dit foretrukne sprog
+    location_label: Beliggenhed
+    location_placeholder: Hvor er du baseret?
+    deactivate_account: Deaktiver brugerkonto
+    help_translate: Kan du hjælpe os med at oversætte Loomio?
+    updated_on_sign_in: Leveres af din browser og opdateres, når du logger ind
   change_picture_form:
-    helptext: 'Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.'
-    use_initials: 'Benyt initialer'
-    use_gravatar: 'Brug Gravatar'
+    helptext: Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.
+    use_initials: Benyt initialer
+    use_gravatar: Brug Gravatar
+    aria_label: Formular til profilbillede
+    title: Indstil profilbillede
+    use_uploaded: Upload nyt billede
+    existing_upload: Eksisterende upload
+    use_provider: Brug {{provider}} billede
   deactivation_modal:
-    name_removed: 'Kommentarer, forslag og debatter som du har lavet vil forblive men dit navn vil blive fjernet fra dem'
-    no_longer_group_member: 'Du vil ikke længere bliver vist som medlem i nogen grupper'
+    name_removed: Kommentarer, forslag og debatter som du har lavet vil forblive men dit navn vil blive fjernet fra dem
+    no_longer_group_member: Du vil ikke længere bliver vist som medlem i nogen grupper
+    introduction: 'Når du sletter din konto:'
+    you_will_be_deleted: Din brugerkonto inklusive dit navn, e-mailadresse og andre personligt identificerende data vil blive slettet fra vores systemer.
+    no_emails: Du vil ikke længere modtage notifikations-e-mails
+    submit_delete: Slet min konto nu
   email_settings_page:
     monday: Mandag
     tuesday: Tirsdag
@@ -484,22 +1156,37 @@ da:
     saturday: Lørdag
     sunday: Søndag
     on_participation_label: Abonnér ved deltagelse
-    on_participation_description: "Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme."
+    on_participation_description: Når du deltager i en debat, så vil all fremtidig aktivitet i denne debat bliver emailet til dig med det samme.
     announcement_label: Normal
     update_settings: Gem ændringer
     specific_groups: Indstillinger for specifikke grupper
     default_settings:
-      loud_description: "When you join a new group, you will be emailed <strong>whenever there is activity</strong>."
-      normal_description: "When you join a new group, you will be emailed about <strong>new threads and proposals</strong>."
-      quiet_description: "When you join a new group, you <strong>won't be emailed about activity</strong>."
+      loud_description: When you join a new group, you will be emailed <strong>whenever there is activity</strong>.
+      normal_description: When you join a new group, you will be emailed about <strong>new threads and proposals</strong>.
+      quiet_description: When you join a new group, you <strong>won't be emailed about activity</strong>.
     edit: Rediger
     messages:
       updated: Emailindstillinger gemt
+    every_day: Hver dag
+    every_second_day: Hver anden dag
+    header: Notifikationsindstillinger
+    account_deactivated: Din konto er blevet deaktiveret. Du vil aldrig modtage nogen e-mails.
+    deactivate_header: Stop alle e-mails for altid
+    deactivate_description: Hvis du aldrig vil modtage en e-mail fra os igen, kan du deaktivere din brugerkonto.
+    email_newsletter: Loomio nyhedsbrev
+    email_newsletter_description: Få opdateringer om nye funktioner, træning, begivenheder i din by og fremtiden for Loomio. Normalt 2 eller 3 e-mails om året.
+    email_catch_up_day: Opsummerende e-mail
+    daily_summary_description: Vælg, hvornår du vil modtage opsummeringsmailen. Denne e-mail indeholder enhver ny aktivitet, som du ikke har set. En god måde at holde sig opdateret på, hvis du ikke er en almindelig bruger.
+    announcement_description: Du vil modtage en e-mail om alt indhold, der er blevet annonceret af personer i dine grupper
+    mentioned_label: Omtaler og svar
+    mentioned_description: Når nogen @omtaler dig i en kommentar eller svarer dig, modtager du en notifikations-e-mail
+    learn_more: Få mere at vide om e-mail-indstillinger...
   dashboard_page:
-    aria_label: 'Dashboard'
-    recent_threads: "Seneste debatter"
+    aria_label: Dashboard
+    recent_threads: Seneste debatter
     no_groups:
       show_muted: Du har ikke nogen debatter uden notifikationer da du ikke er medlem af nogen grupper.
+      show_all: Velkommen! Du er ikke medlem af nogen grupper endnu. <a href="/explore">Gennemse offentlige grupper</a> eller <a href="/g/new">Start en gruppe</a> .
     no_threads:
       show_all: Du har ikke nogen seneste debatter.
       show_proposals: Der er pt. ikke nogen aktive forslag.
@@ -511,11 +1198,11 @@ da:
     explain_mute:
       title: Det har ikke slået notifikationer fra på nogen debatter endnu.
       explanation_html: |
-          At slå notifikationer fra på en debat er en måde at skjule debatter på
-          At slå notifikationer fra på en debat betyder at du ikke vil se debatten under <strong>Seneste</strong> eller <strong>Ulæste</strong>, og du vil ikke modtage notifikationer om aktivitet i deb debat, f.eks. så som forslag.
-          Du vil kun modtage en notifikation hvis nogen <strong>@mentions</strong> dit navn.
-      instructions: 'For at slå notifikationer fra for en debat, hold musen henover debatten og klik på "lydløs" ikonet.'
-      see_muted_html: 'For at se dine debatter hvor notifikationer er slået fra, klik <strong>"Uden notifikationer"</strong>. Du kan slå notifikationer til ved at holde musen henover debatten og klik på det samme ikon.'
+        At slå notifikationer fra på en debat er en måde at skjule debatter på
+        At slå notifikationer fra på en debat betyder at du ikke vil se debatten under <strong>Seneste</strong> eller <strong>Ulæste</strong>, og du vil ikke modtage notifikationer om aktivitet i deb debat, f.eks. så som forslag.
+        Du vil kun modtage en notifikation hvis nogen <strong>@mentions</strong> dit navn.
+      instructions: For at slå notifikationer fra for en debat, hold musen henover debatten og klik på "lydløs" ikonet.
+      see_muted_html: For at se dine debatter hvor notifikationer er slået fra, klik <strong>"Uden notifikationer"</strong>. Du kan slå notifikationer til ved at holde musen henover debatten og klik på det samme ikon.
     filtering:
       filter_threads: Filtrer debatter
       filter_threads_aria_label: Filtrer debatter
@@ -528,17 +1215,26 @@ da:
       proposals_description: Vis kun debatter med aktive forslag
       muted_aria_label: Viser pt. debatter uden notifikationer
       muted_description: Vis kun debatter uden notifikationer
+      muted: Dæmpede tråde
     thread_preview:
-      you_voted: 'Du stemte {{position}}'
-      undecided: 'De har ikke stemt'
+      you_voted: Du stemte {{position}}
+      undecided: De har ikke stemt
     threads_from:
-      group: 'Debatter fra'
-      starred: 'Stjernemarkerede debatter'
-      today: 'I dag'
-      yesterday: 'I går'
-      thisweek: 'Denne uge'
-      thismonth: 'Denne måned'
-      older: 'Ældre end en måned'
+      group: Debatter fra
+      starred: Stjernemarkerede debatter
+      today: I dag
+      yesterday: I går
+      thisweek: Denne uge
+      thismonth: Denne måned
+      older: Ældre end en måned
+      pinned: Fastgjorte tråde
+      proposals: Tråde med aktive beslutninger
+    polls_to_vote_on: Afstemninger at stemme på
+    no_polls_to_vote_on: Der er ingen meningsmålinger, du behøver at stemme på
+    recent_polls: Seneste meningsmålinger
+    current_polls: Aktuelle meningsmålinger
+    thread_dismissed: Tråd markeret som læst
+    thread_recalled: Tråd tilbagekaldt
   inbox_page:
     no_threads: Woohoo! Du har læst alle dine debatindlæg i din indbox.
     unread_threads: Ulæste debatter
@@ -549,68 +1245,138 @@ da:
       or: eller
       join_group: <a href="/explore">bliv medlem</a> af en gruppe for at se debatter.
   discussion:
-    activity: 'Aktivitet'
-    activity_placeholder: 'Ingen aktivitet endnu!'
-    load_previous: 'Hent tidligere aktivitet'
-    started_by: 'Oprettet af <strong>{{name}}</strong>'
+    activity: Aktivitet
+    activity_placeholder: Ingen aktivitet endnu!
+    load_previous: Hent tidligere aktivitet
+    started_by: Oprettet af <strong>{{name}}</strong>
     volume:
-      unmute_message: 'Notifikationer slået til.'
+      unmute_message: Notifikationer slået til.
+      mute_message: Tråden er slået fra
+    invite_only: Kun invitation
+    private_thread: Privat tråd
+    max_threads_reached: <p>Du har brugt alle {{maxThreads}} tråde, der er tilgængelige for denne gruppe.</p><p> Næste trin <a href="{{upgradeUrl}}" target="_blank">skal du vælge en plan</a> for at fortsætte samarbejdet om Loomio.</p>
+    subscription_canceled: <p>Dit abonnement er ikke aktivt.</p><p> <a href="{{upgradeUrl}}" target="_blank">Opgrader</a> venligst for at fortsætte med at bruge Loomio.</p>
+    pin:
+      pinned: Tråd fastgjort
+      unpinned: Tråden er frigjort
+    closed:
+      reopened: Tråd åbnet igen
+      closed: Tråd lukket
   activity_card:
     latest: Seneste
     context: Beskrivelse
     attachment_display:
       aria_label: 'Fil vedhæftet:'
-      image_alt: 'Vedhæftet billede'
+      image_alt: Vedhæftet billede
     comment: Kommenter
+    count_responses: "%{count} svar"
+    event_pinned: Fastgjort til tidslinjen
+    event_unpinned: Frigjort fra tidslinjen
+    beginning: Starten
+    end: Ende
+    unread: Ulæst (%{count})
+    chronological: Kronologisk
+    nested: Indlejret
+    n_previous: Indlæs %{count} tidligere svar
+    n_more: Indlæs %{count} svar
+    add_comment: Tilføj kommentar
+    add_poll: Tilføj afstemning
+    add_outcome: Tilføj resultat
+    facilitate: Facilitere
+    start_decision: Start beslutning
+    start_vote: Start afstemning
   thread_group:
     aria_label: Gruppenavn
   thread_context:
-    aria_label: 'Debat beskrivelse'
-    thread_options: 'Debatindstillinger'
-    edit: 'Rediger'
-    edit_thread: 'Rediger'
-    close_thread: 'Luk'
-    mute_thread: 'Slå notifikationer fra'
-    move_thread: 'Flyt'
-    print_thread: 'Print'
-    delete_thread: 'Slet'
-    add_comment: 'Kommenter'
+    aria_label: Debat beskrivelse
+    thread_options: Debatindstillinger
+    edit: Rediger
+    edit_thread: Rediger
+    close_thread: Luk
+    mute_thread: Slå notifikationer fra
+    move_thread: Flyt
+    print_thread: Print
+    delete_thread: Slet
+    add_comment: Kommenter
+    current_poll_type_banner: Nuværende {{pollType}}
+    item_maybe_deleted: Kan ikke finde den ønskede placering i tråden. Det kan være blevet slettet.
+    email_settings: Notifikationsindstillinger
+    reopen_thread: Åbn igen
+    pin_thread: Pin
+    unpin_thread: Frigør
+    seen_by_count: Set af %{count}
+    count_notified: Meddelt %{count}
+    forked_from: Forked fra
   delete_thread_form:
-    aria_label: 'Slet debat'
+    aria_label: Slet debat
     title: Slet debat
     body: Er du sikker på at du vil slette denne debat?
-    confirm: 'Slet debat'
+    confirm: Slet debat
     messages:
       success: Debat slettet
   move_thread_form:
     aria_label: Flyt debat
     title: Flyt debat
     confirm: Flyt debat
-    confirm_change_to_private_thread: '{{groupName}} er ern offentlig gruppe. Hvis du fortsætter, så vil denne debat bliver gjort offentlig.'
+    confirm_change_to_private_thread: "{{groupName}} er ern offentlig gruppe. Hvis du fortsætter, så vil denne debat bliver gjort offentlig."
     messages:
       success: Debatten er flyttet til {{name}}
+    body: Destinationsgruppe
   delete_comment_dialog:
-    title: 'Slet kommentar'
+    title: Slet kommentar
+    question: Dette sletter denne kommentar permanent. Hvis du fortsætter, kan den ikke gendannes.
   contact_message_form:
-    contact_us: 'Kontakt os'
-    name_label: 'Dit navn'
-    name_placeholder: 'Indtast dit navn...'
-    subject_label: "Emne"
-    email_label: 'Din emailadresse'
-    email_placeholder: 'Indtast din emailadresse...'
-    message_label: 'Din besked'
-    send_message: 'Send besked'
+    contact_us: Kontakt os
+    name_label: Dit navn
+    name_placeholder: Indtast dit navn...
+    subject_label: Emne
+    email_label: Din emailadresse
+    email_placeholder: Indtast din emailadresse...
+    message_label: Din besked
+    send_message: Send besked
+    alt_title: Kontakt Loomio Support
+    need_message: Indtast venligst en besked, så vi kan hjælpe dig :-)
+    respond_asap: Send en besked til Loomio-teamet, så svarer vi så hurtigt vi kan.
+    happy_to_help_with: Vi hjælper gerne med salgsforespørgsler, supportanmodninger, funktionsanmodninger, rapportering af fejl eller problemer, du oplever.
+    title: Hej! Hvordan kan vi hjælpe?
+    contact_us_email: 'Du kan også sende os en e-mail: <a href="mailto:{{email}}">{{email}}</a>'
+    subject_placeholder: 'F.eks.: Problemer med at logge ind eller forslag til funktioner'
+    message_placeholder: Hvis du anmoder om support, så prøv at give så mange oplysninger som muligt.
+    new_contact_message: Tak for din henvendelse; vi vender snart tilbage til dig!
+    consent_message: Ved at kontakte os giver du samtykke til, at vores personale får adgang til din konto efter behov.<br /> Vores supportteam taler engelsk og oversætter din besked med Google Translate, hvis det kræves.<br /> Vi bestræber os på at svare på alle beskeder inden for 24 timer.
+    success: Tak for din besked, {{name}}. Du hører snart tilbage fra os.
+    success_via_email: Tak for din besked, {{name}}. Vi svarer via e-mail inden for 24 timer.
   explore_page:
-    single_search_result: "1 offentlig gruppe der matcher <strong>{{searchTerm}}:</strong>"
+    single_search_result: 1 offentlig gruppe der matcher <strong>{{searchTerm}}:</strong>
     multiple_search_results: "{{resultCount}} offentlige grupper der matcher <strong>{{searchTerm}}:</strong>"
     newest_first: Nyeste først
+    header: Udforsk grupper
+    search_placeholder: Søg efter offentlige grupper
+    no_results_found: "<strong>Kan du ikke finde den gruppe, du leder efter?</strong> Hvis en gruppes privatliv er indstillet til 'hemmeligt', vises det ikke her."
+    biggest_first: Største først
+    order_by: Bestil grupper efter
   global:
     messages:
-      reload: 'Genopfrisk'
+      reload: Genopfrisk
+      app_update: En ny version af Loomio er blevet frigivet. Gem venligst dit arbejde og genindlæs.
   decision_tools_card:
     proposal_title: Forslag
     poll_title: Meningsmåling
     meeting_title: Find et tidspunkt
+    choose_type: Vælg afstemningstype
+    title: Facilitere
+    recommended: Anbefalede
+    question_title: Spørgsmålsrunde
+    advice_title: Råd
+    consent_title: Samtykke
+    consensus_title: Konsensus
+    count_title: Tilmeld
+    check_title: Sense check
+    meeting: Møde
+    score_title: Score afstemning
+    dot_vote_title: Prik afstemning
+    ranked_choice_title: Rangeret valg
+    gradients_of_agreement_title: Gradienter af enighed
   poll_common:
     have_your_say: Giv din mening til kende
     your_response: Dit valg
@@ -634,36 +1400,180 @@ da:
     publish_poll: Den meningsmåling
     share_outcome: Del resultat
     save_changes: Gem
+    superseded: Afløst
+    need_help_with_templates: Har du brug for hjælp til at lave dine egne beslutningsskabeloner?
+    categorize_poll_templates: Kategoriser afstemningsskabeloner
+    show_all_templates_in_one_list: Vis alle skabeloner på én liste
+    advice_process: Rådgivningsproces
+    consent_process: Samtykkeproces
+    consensus_process: Konsensusproces
+    question_round: Spørgsmålsrunde
+    edit_template: Rediger skabelon
+    proposal: Forslag
+    run_process: Kør proces
+    proposal_templates: Forslagsskabeloner
+    custom: Brugerdefinerede
+    custom_process: Tilpasset proces
+    custom_poll: Tilpasset afstemning
+    delete_poll: Slet afstemning
+    select_count_options: Vælg {{count}} muligheder
+    select_minimum_to_maximum_options: Vælg {{minimum}} til {{maximum}} muligheder
+    custom_poll_types: Tilpassede afstemningstyper
+    hidden_poll_templates: Skjulte afstemningsskabeloner
+    poll_template: Afstemning skabelon
+    poll_template_saved: Afstemningsskabelonen er gemt
+    poll_templates: Afstemningsskabeloner
+    poll_types: Afstemningstyper
+    new_proposal_template: Ny forslagsskabelon
+    edit_proposal_template: Rediger forslagsskabelon
+    new_poll_template: Ny afstemningsskabelon
+    edit_poll_template: Rediger afstemningsskabelon
+    new_poll_type: Ny afstemningstype
+    edit_poll_type: Rediger afstemningstype
+    new_custom_poll: Ny tilpasset afstemning
+    edit_custom_poll: Rediger tilpasset afstemning
+    create_a_custom_poll_type: Opret en ny afstemningstype med tilpasset terminologi og indstillinger
+    create_a_custom_process: Opret en ny proces med din egen terminologi og muligheder
+    create_a_custom_poll: Opret en afstemning med tilpasset terminologi og indstillinger
+    decision: Afgørelse
+    decision_templates: Beslutningsskabeloner
+    remove_your_vote: Fjern din stemme
+    remove_your_response: Fjern dit svar
+    vote_now: Stem nu
+    review_due: Anmeldelse forfalder
+    change_your_response: Rediger svar
+    please_vote: Stem venligst
+    response: Respons
+    reason_placeholder: Forklar kort, hvorfor du stemte på denne måde, og klik derefter på 'Send afstemning'
+    current_results: Aktuelle resultater
+    close_poll_type: Luk {{pollType}}
+    close_early: Luk tidligt
+    totals: Totaler
+    participate: Deltage
+    outcomes: Resultater
+    change_your_stance: Rediger svar
+    submit_vote: Send afstemning
+    submit_response: Send svar
+    update_vote: Opdater afstemning
+    update_response: Opdater svar
+    view_all: Se alt
+    change_vote: Skift din stemme
+    change_response: Skift dit svar
+    max_score: Maksimal score
+    min_score: Minimum score
+    too_long: For langt
+    edit_warning: Redigering anbefales kun til mindre ændringer eller rettelse af stavefejl. For væsentlige ændringer skal du lukke denne {{pollType}} og starte en ny.
+    no_voting: Kun til diskussion, afstemning deaktiveret
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_card:
     show_results: Vis resultater
+    hide_results: Skjul resultater
+    until_vote: Indtil der er afgivet stemme
+    until_you_vote: Indtil du stemmer
+    until_poll_type_closed: Indtil {{pollType}} er lukket
+    until_voting_is_closed: Indtil afstemningen er lukket
+    deleted: Denne afstemning er blevet slettet
   discussions_panel:
     open: Offentlig
     all: Alle
     closed: Lukket
+    unread: Ulæst (%{count})
+    include_subgroups_mine: "{{name}} og mine undergrupper"
+    include_subgroups_all: "{{name}} og alle undergrupper"
+    no_results_found: Ingen resultater for "{{search}}"
+    welcome_to_your_new_group: Velkommen til din nye Loomio gruppe!
+    lets_start_a_thread: Lad os starte en tråd. Klik på "Ny tråd" for at fortsætte.
   members_panel:
-    order_by_name: 'Navn'
-    header_name: 'Navn'
-    header_username: 'Brugernavn'
-    accepted: 'Medlemmer'
+    order_by_name: Navn
+    header_name: Navn
+    header_username: Brugernavn
+    accepted: Medlemmer
+    bot: Bot
+    no_results: Ingen medlemmer fundet
+    everyone: Alle sammen
+    all: Alle
+    sort: Sortere
+    order_label: Bestille
+    order_by_created: Ældste
+    show_users_in_subgroups: Vis også brugere i undergrupper
+    order_by_created_desc: Nyeste
+    order_by_admin_desc: administratorer
+    loaded_of_total: "{{loaded}} af {{total}}"
+    view_requests: Se anmodninger
+    header_role: Rolle
+    header_invited_by: Inviteret af
+    header_invited: Inviteret
+    header_actions: Handlinger
+    directory: Vejviser
+    invitations: Invitationer
+    requests: Forespørgsler
+    admin: Admin
+    guest: Gæst
+    sharable_link: Delbart link
+    last_seen: Sidst set {{date}}
+    invited_by_name: Inviteret af {{name}}
   polls_panel:
-    all: 'Alle'
-    open: 'Offentlig'
-    closed: 'Lukket'
+    all: Alle
+    open: Offentlig
+    closed: Lukket
+    new_poll: Ny meningsmåling
+    any_type: Alle typer
+    any_status: Enhver status
+    need_vote: Skal stemme
+    no_polls: Ingen meningsmålinger fundet
   poll_common_collapsed:
-    by_who: "af {{name}}"
+    by_who: af {{name}}
   poll_common_settings:
     multiple_choice:
       title: Tillad flere valg
+      helptext_on: Når det er valgt, vil deltagerne kunne vælge flere muligheder.
     anyone_can_participate:
       title: Alle kan deltage
+      helptext_on: Når valgt, kan alle med linket til afstemningen deltage.
     notify_on_participate:
       title: Send en notifikation til mig når folk deltager
+      helptext_on: Når du er valgt, får du besked, hver gang nogen deltager.
+    who_can_vote: Hvem kan stemme?
+    short_reason_can_be_helpful: At holde stemmeårsagerne korte gør dem lettere at forstå. En samling af kortfattede grunde er en stor ressource til at træffe en beslutning.
+    specified_voters_only_true: Kun inviterede
+    specified_voters_only_false_group: Enhver i gruppen
+    specified_voters_only_false_discussion: Enhver i tråden
+    invite_people_next: Du kan vælge, hvem der er inviteret til at stemme, efter du har startet {{poll_type}}
+    shuffle_options:
+      shuffle_options: Bland muligheder
+      title: Vis muligheder i tilfældig rækkefølge
+      helptext: En mulighed, der er først på listen, kan give den en skævhed. Brug denne indstilling til at modvirke denne effekt.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Da afstemningen lukker inden for 24 timer, vil der ikke blive sendt nogen påmindelser om snart lukketid.
+      closes_too_soon: Fordi denne {{pollType}} lukker inden for 24 timer, vil der ikke blive sendt nogen påmindelser om lukke snart.
+      title: 24 timer før {{pollType}} lukker, send en påmindelse til
+      voting_title: 24 timer før afstemningen lukker, send en påmindelse til
+      nobody: Ingen
+      author: Forfatter (mig)
+      undecided_voters: Ubeslutsomme vælgere
+      voters: Alle vælgere
+    anonymous:
+      title: Anonyme vælgere
+      helptext_on: Når det er valgt, vises deltageroplysninger ikke med hvert svar.
+    voter_can_add_options:
+      title: Vælgerne kan tilføje alternative muligheder
+    can_respond_maybe:
+      title: Vælgerne kan svare "hvis det er nødvendigt"
+    allow_long_reason:
+      title: Tillad, at stemme "grund" er længere end 500 tegn
+    hide_results_until_closed:
+      title: Skjul resultater indtil lukket
+      helptext_on: Vis ikke, hvordan folk har stemt, før afstemningen er lukket
   poll_common_closing_at_field:
     closing: Lukker
+    no_closing_date: Ingen lukkedato
+    closing_date: Lukkedato
+    closing_hour: Lukketid
+    invalid_date: Ugyldig dato
   poll_card:
     started_by: Oprettet af {{name}}
+    poll_type_by_name: "%{poll_type} af %{name}"
   poll_common_votes_panel:
     newest_first: Nyeste først
     oldest_first: Ældste først
@@ -671,18 +1581,45 @@ da:
     priority_last: Blokkerer først
     no_votes_yet: Ingen stemmer er afgivet endnu
     change_results_order: Skift sorteringsrækkefølge for resultat
-    none_of_the_above: (Ingen af de tidligere)
+    none_of_the_above: "(Ingen af de tidligere)"
+    vote_removed: Stemme fjernet
+    undecided: Uafklaret
+    undecided_first: Uafklaret først
+    name_or_username: Navn eller brugernavn
   poll_common_outcome_form:
     update_title: Rediger resultat
     outcome_created: Resultat oprettet
     outcome_updated: Resultat gemt
     statement_placeholder: Give et kort resume af kommentarerne og fortæl hvad der er det næste skridt.
     submit: Del resultat
+    review_due_in_days: Gennemgå beslutningen efter hvor mange dage?
+    review_due_in_days_hint: En periode (i dage) til at vente, før beslutningen tages op til revision. (valgfri)
+    review_date: Anmeldelsesdato
+    review_date_hint: Angiv en dato for at gennemgå beslutningen (valgfrit)
+    who_to_notify: Hvem vil du give besked om dette resultat? (valgfri)
+    outcome_statement_template: Skabelon for resultaterklæring
+    new_title: Statens resultat
+    statement_template_placeholder: Giv en skabelon til at skrive et resultat af beslutningen. (valgfri)
+    you_will_be_notified: Du får besked på anmeldelsesdatoen.
   poll_common_outcome_panel:
-    authored_by: 'Af {{name}}'
+    authored_by: Af {{name}}
   poll_common_form:
     voting_methods:
       time_poll: Find et tidspunkt
+      question: Spørgsmålsrunde
+      question_hint: Inviter spørgsmål og kommentarer til dit forslag
+      show_thumbs: Vis tommelfinger
+      show_thumbs_hint: Vælgerne vælger tommelfinger op, ned, sidelæns eller hånd op
+      choose: Vælge
+      simple_poll: Simpel afstemning
+      choose_hint: Vælgerne vælger den bedste mulighed (eller muligheder)
+      score: Score
+      score_hint: Vælgerne tildeler en score til hver mulighed
+      allocate: Tildele
+      allocate_hint: Vælgerne fordeler et budget på point mellem mulighederne
+      ranked_choice: Rangeret valg
+      ranked_choice_hint: Vælgerne arrangerer valgmuligheder i rækkefølge fra mest til mindst foretrukne
+      time_poll_hint: Vælgerne angiver, hvornår de kan mødes
     title: Titel
     details: Beskrivelse
     options: Indstillinger
@@ -691,12 +1628,77 @@ da:
     start: Start
     start_poll: Opret meningsmåling
     update: Opdater
+    notify_everyone_when_poll_starts: Giv alle besked, når %{poll_type} starter
+    option_has_votes_confirm_delete: Nogle personer har stemt for denne mulighed, er du sikker på, at du vil slette den?
+    example_title: Eksempel titel
+    example_title_hint: Giv et eksempel på en god forslagstitel
+    example_details_placeholder: Giv et udgangspunkt for et forslag eller en afstemning. Spørgsmål kan være nyttige tilskyndelser til at få folk til at skrive. Medtag regler eller påmindelser, som deltagerne skal kende.
+    confirm_delete: Er du sikker på, at du vil slette denne afstemningsskabelon? Dette kan ikke fortrydes.
+    show_advanced_settings: Vis avancerede indstillinger
+    hide_advanced_settings: Skjul avancerede indstillinger
+    choose_at_least: Vælg i det mindste
+    choose_at_most: Vælg højst
+    please_review_the_form: Gennemgå venligst formularen
+    option_added_please_add_details: Mulighed tilføjet! Tilføj venligst nogle detaljer, så folk ved, hvad det betyder.
+    default_duration_in_days: Standardvarighed i dage
+    default_duration_in_days_hint: Hvor mange dage skal der gives folk til at stemme?
+    how_many_options_can_a_voter_choose: Hvor mange af disse muligheder kan en vælger vælge?
+    minimum_choices: Minimum valg
+    maximum_choices: Maksimal valg
+    content: Indhold
+    reminder: Påmindelse
+    your_in_zone: 'Aktuel tidszone: %{zone}'
+    show_other_zones: Vis andre tidszoner
+    hide_other_zones: Skjul andre tidszoner
+    this_is_a_template_for_new_polls: Dette er en skabelon til nye afstemninger
+    voting_method: Afstemningsmetode
+    process: Behandle
+    process_name: Skabelontitel
+    process_name_hint: Hvad kalder du denne skabelon? Fx Rollerådgivning, Temperaturtjek, Referatgodkendelse
+    process_subtitle: Skabelon undertekst
+    process_subtitle_hint: En enkelt-linje beskrivelse af, hvornår eller hvorfor man skal bruge denne skabelon
+    process_introduction: Skabelon hjælp
+    process_introduction_hint: Et par afsnit, der forklarer, hvordan man bruger skabelonen. Inkluder links til ressourcer, der kan være nyttige.
+    you_can_set_a_prompt_per_option: Rediger prompten for hver indstilling fra fanen Detaljer
+    chart_type: Diagramtype
+    title_hint: Hvad er den beslutning, du skal tage?
+    no_options_add_some: Denne afstemning har ingen muligheder, tilføj nogle nedenfor.
+    example_details: Eksempeldetaljer
+    details_placeholder: Dette er din mulighed for at forklare, hvad folk stemmer om
+    options_placeholder: Liste over de tilgængelige muligheder
+    no_options: Du har ikke tilføjet nogen muligheder endnu.
+    stance_reason_required_label: Angiv en begrundelse, når du stemmer...
+    stance_reason_required: Påkrævet
+    stance_reason_optional: Valgfri
+    stance_reason_disabled: handicappet
+    stance_reason_is_required: Angiv en begrundelse med din stemme
+    limit_reason_length: Begræns årsagen til maksimalt 500 tegn
+    save_poll: Gem afstemning
+    start_poll_type: Start {{poll_type}}
+    share_poll_type: Del {{poll_type}}
+    who_may_vote: Hvem kan stemme i denne {{poll_type}}?
+    add_voters: Tilføj vælgere
+    notify_invitees: Send meddelelser
+    no_notifications_warning: Vælgerne får ikke besked. Dette er nyttigt, hvis du kører mange afstemninger og planlægger at give alle besked senere.
+    count_voters_added: "%{count} vælgere tilføjet"
+    poll_type_created: "%{poll_type} oprettet"
+    poll_type_started: "%{poll_type} startede"
+    reason_prompt: Årsagsprompt
+    anonymous_voting: Anonym afstemning
+    anonymous_voting_description: Hvis det er aktiveret, vil vælgernes identitet ikke blive knyttet til deres stemmer. Dette kan ikke fortrydes.
+    votes_are_anonymous: Stemmerne er anonyme
+    vote_reason: Afstemningsårsag
+    vote_reason_description: Det kan være nyttigt at forstå, hvorfor folk stemte, som de gjorde. Med denne indstilling kan du bede folk om at dele deres tanker, når de stemmer.
+    hide_results_description: Hvis du vil have folk til at stemme uden at vide, hvordan andre har stemt, kan du skjule resultaterne af afstemningen.
+    process_helptext: Navngiv og beskriv den proces, der bliver brugt til at køre denne afstemning.
+    reminder_helptext: Send en 'Lukker snart'-meddelelse, før afstemningen lukker. Dette kan være en mulighed for folk til at se, hvordan andre har stemt og genoverveje deres egen stemme, eller blot en måde at øge deltagelsen i afstemningen på.
   poll_proposal_form:
     start_header: Opret forslag
     edit_header: Rediger forslag
     title_placeholder: F.eks. Lad os flyve til månen!
     proposal_created: Forslag oprettet
     proposal_updated: Forslag redigeret
+    details_placeholder: Hvad er detaljerne i dit forslag?
   poll_poll_form:
     start_header: Opret meningsmåling
     edit_header: Rediger meningsmåling
@@ -706,6 +1708,12 @@ da:
     remove_option: Slet valgmulighed
     poll_created: Meningsmåling oprettet
     poll_updated: Meningsmpling redigeret
+    multiple_choice_subtitle: En enkel måde at vurdere mulighedernes popularitet
+    tip: Tilbyd et valg mellem muligheder
+    new_option: Ny mulighed
+    add_option_hint: Indtast et kort navn for indstillingen
+    option_added: Mulighed tilføjet
+    option_already_added: Indstillingen er allerede tilføjet til afstemningen
   poll_proposal_vote_form:
     default_reason_placeholder: Begrund venligst dit valg
     abstain_reason_placeholder: Lad folk vide hvorfor du stemmer blankt på dette forslag
@@ -714,19 +1722,31 @@ da:
     block_reason_placeholder: Forklar venligst hvorfor du blokkerer dette forslag og hvorfor du mener at det ikke skal videre.
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
+    vote: Stemme
   poll_proposal_options:
-    'yes': 'Ja'
-    'no': 'Nej'
+    'yes': Ja
+    'no': Nej
     agree: Enig
     abstain: Stemmer blankt
     disagree: Uenig
     block: Blokkerer
     agree_meaning: Dette forslag er godt nok til at jeg mener at gruppen skal godkende det
+    select_an_option: Vælg en mulighed
+    consent: Samtykke
+    unsure: Usikker
+    objection: Indvending
+    object: Objekt
+    no_voting: Ingen afstemning
   poll_count_form:
     title_placeholder: F.eks. Hvem ønsker at være med i arbejdsgruppen?
+    pct_of_target: "% af målet"
+    agree_target_helptext: Hvad er målet for antallet af frivillige, du gerne vil have?
+    agree_target_label: Målnummer
   poll_count_options:
-    'yes': 'Ja'
-    'no': 'Nej'
+    'yes': Ja
+    'no': Nej
+    accept: Acceptere
+    decline: Nedgang
   poll_count_vote_form:
     reason_label: Besked
     reason_placeholder: Skrive en besked
@@ -742,20 +1762,749 @@ da:
     your_response: Hvornår har du tid?
     stance_created: Tilgængeligt tidspunkt gemt
     stance_updated: Tilgængeligt tidspunkt opdateret
+    local_time_zone: Lokal tid - {{zone}}
+    can_attend: Kan deltage
+    unable: Ude af stand
+    if_need_be: Hvis det er nødvendigt
+    reason_placeholder: Forklar, hvornår du er ledig (eller optaget), hvis forfatteren ønsker at tilføje muligheder.
   poll_dot_vote_vote_form:
     stance_created: Stemme afgivet
     stance_updated: Stemme redigeret
+    dots_remaining: "%{count} prikker tilbage"
+    too_many_dots: Du har brugt for mange prikker
   auth_form:
     email_placeholder: you@example.com
     name_placeholder: Dit navn
     name: Navn
     email: Email
+    code: '000000'
+    youre_invited: Du er blevet inviteret til at deltage i {{group_name}}.
+    youre_invited_discussion: Du er blevet inviteret til at deltage i diskussionen.
+    youre_invited_poll: Du er blevet inviteret til at stemme.
+    existing_account_can_sign_in: Hvis du allerede er en {{site_name}}-bruger, skal du logge ind med din eksisterende konto
+    sign_up_or_log_in: Opret konto, eller log ind på {{site_name}}
+    sign_in_to_loomio: Log ind på {{site_name}}
+    sign_in_help: Problemer med at logge ind?
+    sign_in: Log ind
+    continue: Blive ved
+    create_account: Opret konto
+    sign_up_as: Opret konto som {{email}}
+    sign_in_as: Log ind som {{name}}
+    continue_with_provider: Fortsæt med {{udbyder}}
+    continue_with_email: Fortsæt med e-mail
+    or_enter_your_email: Eller indtast din e-mailadresse
+    enter_your_name: Indtast dit navn
+    invitation_required: Du skal have en invitation for at oprette en konto. Følg linket fra din invitationsmail for at fortsætte.
+    more_providers: Mere
+    email_not_present: En e-mailadresse er påkrævet
+    invalid_email: Beklager, det ligner ikke en gyldig e-mailadresse
+    invalid_password: Beklager, den adgangskode stemmer ikke overens med den, vi har registreret
+    invalid_token: Beklager, vi kunne ikke bruge det token til at logge dig ind. Klik nedenfor for at sende endnu et.
+    account_locked: Din konto er blevet låst efter for mange mislykkede loginforsøg. Tjek din e-mail for et oplåsningslink
+    email_not_found: Beklager, vi kunne ikke finde en konto med den e-mailadresse
+    email_taken: E-mailadressen er allerede registreret
+    login_with_token: Du er klar! Klik på linket nedenfor for at fortsætte.
+    login_link_helptext: Klik på knappen nedenfor, og vi sender dig et link til at logge ind.
+    enter_your_password: Indtast din adgangskode for at fortsætte
+    check_spam_folder: Hvis e-mailen ikke ankommer snart, så tjek din spam-mappe.
+    sign_up_helptext: Udfyld venligst denne formular for at oprette en brugerkonto
+    i_accept_all: Jeg accepterer {{termsLink}} og {{privacyLink}}
+    newsletter_label: Jeg vil gerne modtage {{link}}
+    name_required: Indtast venligst et navn
+    terms_required: Du skal acceptere servicevilkårene
+    account_inactive: Åh, det ser ud til, at kontoen for {{email}} er blevet deaktiveret!
+    privacy_notice: Vi vil aldrig sælge dine data.<br> <a href='{{privacyUrl}}' target='_blank'>Fortrolighedspolitik</a>
+    welcome: Ny på {{siteName}}?
+    welcome_back: Velkommen tilbage, {{name}}!
+    forgot_password: Glemt kodeord
+    login_link: Send login-e-mail
+    sign_in_via_email: Log ind via e-mail
+    set_password: Indstil adgangskode
+    set_password_helptext: Vil du bruge en adgangskode næste gang?
+    hello: Hej {{name}}!
+    new_to_loomio: Første gang på {{site_name}}?
+    already_a_user: har du allerede en bruger?
+    email_address_of_existing_account: Indtast e-mail-adressen på din eksisterende konto
+    link_accounts: Link konti
+    check_your_email: Tjek din e-mail!
+    login_link_sent: Vi har sendt en e-mail til {{email}}.
+    instructions: 'Klik på linket for at logge ind, eller indtast koden nedenfor:'
+    instructions_code: 'Indtast koden fra den e-mail:'
+    too_many_attempts: For mange forsøg; prøv at klikke på linket i e-mailen for at logge ind.
+    invalid_code: Beklager, den kode stemte ikke. Tjek e-mailen, og prøv igen.
+    password_link_sent: Vi har sendt en e-mail til {{email}} med instruktioner om, hvordan du indstiller din adgangskode.
+    reactivate_link_sent: Vi har sendt dig en e-mail med instruktioner til at genaktivere din konto
+    signed_in: Log ind
+    email_verified: E-mail bekræftet
+    password: Adgangskode
+    reactivate: Genaktiver konto
   chatbot:
     username: Brugernavn
     password: Adgangskode
+    configure_chatbot: Konfigurer chatbot
+    test_connection: Test forbindelse
+    test_connection_ok: Ser godt ud! Du bør se en besked i kanalen
+    test_connection_bad: Der er noget galt med indstillingerne
+    name: Chatbot navn
+    connection_test_successful: Loomio bot-forbindelsestest lykkedes!
+    chatbot: Chatbot
+    chatbots: Chatbots
+    saved: Chatbot gemt!
+    webhook_url: Webhook URL
+    homeserver_url: Hjemmeserver URL
+    channel: Kanal
+    access_token: Adgangstoken
+    add_chatbot: Tilføj chatbot
+    matrix: Matrix
+    slack: Slap
+    discord: Uenighed
+    mattermost: Vigtigste
+    microsoft_teams: Microsoft Teams
+    event_kind_helptext: Vælg begivenheder, som botten altid får besked om. Hvis du ikke er sikker, skal du bare lade dem alle være væk.
+    notification_only_label: Send kun meddelelsesoverskrift
+    check_for_test_message: Tjek dit chatrum for en besked fra botten!
   webhook:
     name_label: Navn
+    integrations: Integrationer
+    api_keys: API nøgler
+    webhooks: Webhooks
+    webhook: Webhook
+    add_api_key: Tilføj API-nøgle
+    edit_api_key: Rediger API-nøgle
+    api: API
+    format: Format
+    formats:
+      markdown: Markdown (for Mattermost, Zapier og andre)
+      microsoft: Microsoft Teams
+      slack: Slap
+      discord: Uenighed
+    subtitle: Opret forbindelse til Loomio til resten af dine værktøjer med vores API
+    deprecated: Denne API er forældet. Flyt venligst til APIv2 (se API-dokumenter i din gruppeindstillingsmenu)
+    we_have_guides: Se vores <a href="{{url}}" target="_blank">webhook opsætningsvejledninger</a> for at få hjælp til at forbinde din tjeneste.
+    add_webhook: Tilføj webhook
+    show_docs: Se API-brug
+    save_to_show_docs: Når du har gemt, skal du vende tilbage hertil for at finde din API-nøgle
+    edit_integration: Rediger integration
+    add_integration: Tilføj integration
+    success: Integration tilføjet!
+    remove: Fjern integration
+    confirm_remove: 'Er du sikker på, at du vil fjerne integrationen: {{name}}?'
+    removed: Integration fjernet
+    url_label: Webhook URL
+    url_placeholder: https://hooks.example.com/...
+    name_placeholder: Giv denne integration et navn, så du kan identificere den
+    event_kind_helptext: Hvilke begivenheder ønsker du, at webhook skal have besked om?
+    event_kinds:
+      new_discussion: En tråd er startet
+      discussion_edited: En tråd er redigeret
+      poll_edited: En afstemning er redigeret
+      new_comment: Der kommer en kommentar
+      poll_created: En afstemning startes
+      stance_created: Der afgives stemme
+      stance_updated: En stemme ændres
+      poll_closing_soon: En afstemning lukker snart
+      poll_expired: En afstemning udløber
+      poll_closed_by_user: En afstemning lukkes manuelt
+      poll_reopened: En afstemning genåbnes for afstemning
+      outcome_created: Et resultat deles
+      outcome_updated: Et resultat opdateres
+      outcome_review_due: Der skal foretages en gennemgang af resultatet
+    permissions_explaination: Vælg hvilke handlinger der kan udføres af denne integration
+    permissions:
+      show_discussion: vise diskussion
+      create_discussion: skabe diskussion
+      create_poll: oprette afstemning
+      show_poll: vis afstemning
+      read_memberships: læse medlemskaber
+      manage_memberships: administrere medlemskaber (tilføj eller fjern gruppemedlemmer)
+    include_body_label: Inkluder meddelelsestekst med meddelelse
   group_survey:
     categories:
       community: Lokalgruppe
       other: Andre
+      party: Politisk parti
+      coop: Samarbejdsvillig
+      union: Union
+      board: Ledelse og bestyrelser
+      nonprofit: Nonprofit
+      membership: Medlemsorganisation
+      professional: Professionel servicevirksomhed
+      self_managing: Selvstyrende organisation
+      government: Regering/Lokalforvaltning
+    describe_other: Vælg den kategori, der bedst beskriver din gruppe
+  tasks:
+    tasks: Opgaver
+    your_tasks: Dine opgaver
+    permission_denied: Du har ikke tilladelse til at opdatere denne opgave
+    due_date: Afleveringsdato
+    send_reminder: Send påmindelse (hvis ikke gjort)
+    no_reminder: Ingen påmindelse
+    on_due_date: På forfaldsdato
+    1_day_before: 1 dag før
+    2_day_before: 2 dage før
+    3_day_before: 3 dage før
+    7_day_before: 7 dage før
+    task_placeholder: Indtast en opgave, og @omtal nogen, der skal tildele den
+    add_due_date: Tilføj forfaldsdato
+    task_updated_done: Opgave markeret som udført!
+    task_updated_not_done: Opgave markeret som ikke udført
+    no_tasks_assigned: Der er ingen opgaver tildelt dig
+  doctypes:
+    youtube_video: YouTube-video
+    image: Billede
+    pdf: PDF
+    excel: Excel regneark
+    document: Dokument
+    csv: CSV-fil
+    video: Video
+    text: Tekstfil
+    google_doc: Google Doc
+    google_sheet: Google-regneark
+    google_drive: Google Drev
+    pull_request: Træk anmodning
+    trello_board: Trello Board
+    trello_card: Trello kort
+  current_plan_button:
+    upgrade: Opgrader
+    buy_now: Køb nu
+    is_old_plan: Loomio har nye enkle prisplaner
+    change_plan: Skift plan
+    view_plans: Se planer
+    free_trial: Gratis prøveversion. {{days}} dage tilbage.
+    trial_expired: Din prøveperiode er udløbet. Opgrader for at fortsætte med at bruge Loomio.
+    tooltip: Vores priser er fantastiske! Opgrader i dag og nyd, hvad Loomio kan tilbyde din gruppe.
+    was_gift_trial: 'Din gruppe har brugt Loomio gratis siden {{createdDate}}. Vi kan ikke fortsætte med at levere en gratis service. Opgrader venligst for at fortsætte med at bruge Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Læs mere.</a>'
+    was_gift_remaining: "{{days}} dage tilbage."
+    was_gift_expired: Din gratis plan er nu udløbet.
+  poll_types:
+    proposal: forslag
+    count: Tilmeld
+    check: sansetjek
+    poll: afstemning
+    dot_vote: prik stemme
+    meeting: tidsmåling
+    ranked_choice: rangeret valg
+    score: score afstemning
+    question: spørgsmålsrunde
+  merge_accounts:
+    modal:
+      title: Flet konti
+      helptext: Du kan flette kontoen under <strong>{{sourceEmail}}</strong> til kontoen for <strong>{{targetEmail}}</strong> . Klik på Bekræft, og en bekræftelses-e-mail vil blive sendt til {{targetEmail}} for at starte processen.
+      submit: Verificere
+      flash: Bekræftelsesmail sendt!
+    email_taken: Beklager, den e-mail er allerede knyttet til en anden bruger. Tilhører den e-mail dig?
+    find_out_more: Find ud af mere.
+    placeholder_modal_text: <p>Hvis du gerne vil flette to konti sammen, skal du blot indtaste den respektive e-mailadresse (der hører til den anden konto) i e-mailfeltet på din profilside og følge instruktionerne, der vises.</p><p> Brug for hjælp? <a href="/contact" target="_blank">Kontakt os</a> .
+  ordinal:
+    _1: '1'
+    _2: '2'
+    _3: '3'
+    _4: '4'
+    _5: '5'
+    _6: '6'
+    _7: '7'
+    _8: '8'
+    _9: '9'
+    _10: '10'
+  verify_email_notice:
+    please_verify: Tak for din deltagelse! Tjek venligst din e-mail for et link til at bekræfte din stemme.
+  email_to_group:
+    email_to_group_settings: Indstillinger for e-mail-til-gruppe
+    email_to_group_address: E-mail-til-gruppe-adresse
+    start_threads_via_email: Start tråde via e-mail
+    your_address_for_this_group: Din e-mailadresse for denne gruppe
+    send_email_to_start_thread: Send e-mail til denne adresse for at starte en tråd i din gruppe.
+    subject_body_attachments: Tråden vil bruge e-mailens emne, brødtekst og vedhæftede filer.
+    address_starts_threads_as_you: Del ikke denne adresse - alle, der har den, kan starte tråde som dig.
+    generate_new_address: Generer ny adresse
+    copy_address: Kopiér adresse
+    email_me_this_address: Email mig denne adresse
+    email_address_sent_to_you: E-mailadresse sendt til dig
+    email_address_copied_to_clipboard: E-mailadresse kopieret til udklipsholder
+    new_address_generated: Ny e-mail-til-gruppe-adresse genereret
+    generate_new_address_question: Vil du generere ny e-mail-til-gruppe-adresse?
+    generate_new_address_warning: Alle dine eksisterende e-mail-til-loomio-adresser holder op med at fungere. Der er ingen fortrydelse. Fortsæt?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: Din e-mailadresse til at starte tråde i %{group}
+  close_explanation_modal:
+    aria_label: Luk tråden
+    close_thread: Luk tråden
+    body: "<p>Luk gamle eller irrelevante tråde for at fjerne dem fra visning og indikere, at diskussionen er lukket.</p><p> Enhver kan stadig kommentere eller starte en afstemning i en lukket tråd, men den vises ikke i gruppens trådliste eller på dashboardet.</p>"
+    image_alt: Alle lukker tråde
+  comment_reply_form:
+    aria_label: Tilføj et svar
+  thread_nav:
+    participants: Deltagere
+  search_modal:
+    all_content: Alt indhold
+    best_match: Bedste match
+    any_tag: Ethvert tag
+    all_subgroups: Alle undergrupper
+    parent_only: Kun forældre
+  user_dropdown:
+    pin_sidebar: Fastgør sidebjælken
+    unpin_sidebar: Frigør sidebjælken
+    enable_beta_features: Aktiver betafunktioner
+    disable_beta_features: Deaktiver betafunktioner
+    enable_dark_mode: Aktiver mørk tilstand
+    disable_dark_mode: Deaktiver mørk tilstand
+    button_label: Brugermenu
+    edit_profile: Rediger profil
+    email_settings: Notifikationsindstillinger
+    help: Hjælp
+    contact_site_name: Kontakt {{site_name}}
+    contact_support: Kontakt support
+    sign_out: Log ud
+    beta_collab: "\U0001F9EA Beta-funktioner aktiveret!"
+    outcomes: Resultater
+  membership_card:
+    group_members: Gruppemedlemmer
+    discussion_members: Trådmedlemmer
+    poll_members: "{{pollType}} medlemmer"
+    voters: Vælgere
+    invite_to_group: Inviter til gruppe
+    invite_to_discussion: Inviter til tråd
+    invite_to_poll: Inviter til at stemme
+    invite_to_wip_poll: Inviter til at give feedback
+    invitations: Invitationer
+  notification_models:
+    discussion: 'tråd:'
+    comment: kommentere ind
+    poll: 'afstemning:'
+    outcome: 'resultat:'
+    stance: 'stemme:'
+  thread_template:
+    browse_public_templates: Gennemse skabelongalleriet
+    thread_template_settings: Indstillinger for trådskabelon
+    start_a_new_thread: Start en ny tråd
+    thread_template_saved: Trådskabelon er gemt
+    these_are_public_templates: Disse skabeloner er tilgængelige for dig at kopiere eller ændre, så de passer til din gruppe
+    these_are_templates: Dette er trådskabelonerne i din gruppe. Skabeloner guider dig gennem fælles beslutningsprocesser.
+    default_title_label: Standard titel
+    default_title_hint: Forudfyld titelfeltet med redigerbar tekst. Dette er valgfrit - lad det være tomt, hvis du er usikker.
+    title_placeholder_label: Eksempel titel
+    title_placeholder_hint: Et eksempel til visning i baggrunden af titelfeltet
+    title_placeholder_placeholder: fx sådan ser baggrundstekst ud
+    example_description_label: Eksempelbeskrivelse
+    example_description_placeholder: Angiv en skabelon, som folk kan bruge til at starte en tråd med
+    hidden_templates: Skjulte skabeloner
+    confirm_delete: Er du sikker på, at du vil slette denne trådskabelon permanent? Ingen tråde vil blive slettet som følge af dette.
+    add_proposal_or_poll_template: Tilføj forslag eller afstemningsskabelon
+    recommended_proposal_or_poll_templates: Anbefalede forslag eller afstemningsskabeloner
+    decision_templates: Beslutningsskabeloner
+    decision_templates_help: Vælg forslag eller afstemningsskabeloner, der hjælper med at fuldføre denne proces.
+    share_in_template_gallery: Del denne skabelon i det offentlige skabelongalleri
+  reactions_input:
+    add_your_reaction: Tilføj din reaktion
+  reactions_display:
+    more_reactions: "%{count} mere"
+    you: Du
+    you_and_name: Dig og {{name}}
+    you_and_name_and_count_more: Dig, {{name}} og %{count} mere
+    name_and_count_more: "{{name}} og %{count} mere"
+  context_panel:
+    thread_status:
+      pinned: Denne tråd er blevet fastgjort. Det forbliver øverst på gruppens liste over tråde for alle brugere.
+      closed: Denne tråd er blevet lukket. Det vil ikke længere vises på dashboardet og vil blive vist under 'lukket' på gruppesiden
+  delete_group_modal:
+    title: Slet gruppe
+    subgroup_title: Slet undergruppe
+    parent_body: "<h2>Dette er din forældregruppe - ikke en undergruppe!</h2><br> Hvis du sletter dette, vil eventuelle undergrupper også blive slettet permanent. Dit Loomio-abonnement vil også blive annulleret. Det anbefales stærkt at eksportere dine gruppedata og manuelt downloade vigtige filer, før du gør dette. Er du sikker på, at du vil fortsætte?"
+    body: Er du sikker på, at du vil slette denne undergruppe? Alle tråde, afstemninger, filer og andet gruppeindhold slettes permanent. Det anbefales, at du eksporterer gruppedataene og manuelt downloader vigtige filer, før du fortsætter.
+    confirm: Skriv '%{name}' for at bekræfte, at du vil slette denne gruppe.
+    success: Denne gruppe er blevet arkiveret og er planlagt til permanent sletning om 2 uger.
+  export_data_modal:
+    title: Hvordan vil du bruge dine data?
+    as_csv: Åbn det i et regneark
+    as_html: Åbn den i en browser
+    as_json: Vær vært for denne gruppe på min egen server
+  group_export_modal:
+    title: Eksporter gruppedata
+    body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
+    submit: Start eksport
+    flash: Eksport af gruppedata startede
+  memberships_panel:
+    add_coordinator: Gør Admin
+    remove_coordinator: Nedryk admin
+  membership_form:
+    modal_title:
+      group: Indstil titel
+    title_helptext:
+      group: Denne titel vises ved siden af {{name}}s navn i denne gruppe. Brug det til at lade folk kende deres rolle.
+    title_label: titel
+    title_placeholder: F.eks. 'Koordinator' eller 'Facilitator'
+    updated: Medlemskabs titel er opdateret
+  user_name_modal:
+    user_name_updated: Brugernavn opdateret
+    set_user_name: Indstil brugernavn
+  user_page:
+    contact_user: Kontakt navn}}
+    location_field: 'Placering: {{value}}'
+    locale_field: 'Sprog: {{value}}'
+    online_field: 'Online: {{value}}'
+    invited: Inviteret {{value}}
+    message_user: Besked {{name}}
+  contact_request_form:
+    modal_title: E-mail {{name}}
+    message_placeholder: Præsentér dig selv og del, hvorfor du gerne vil i kontakt.
+    helptext: "{{name}} vil få en e-mail med dit navn, din e-mailadresse og din besked"
+    email_sent: E-mail sendt til {{name}}
+  text_editor:
+    x_of_y_characters: "{{x}} / {{y}} tegn"
+    select_text_to_link: Vælg tekst, der skal linkes, og prøv igen
+    insert_link: Indsæt link
+    insert_embedded_url: Indlejr video
+  change_password_form:
+    set_password_title: Indstil din adgangskode
+    set_password_helptext: Indtast venligst en adgangskode - minimum 8 tegn
+    set_password: Indstil adgangskode
+    password_changed: Din adgangskode er blevet opdateret
+  thread_preview:
+    replies_count: "%{count} svar"
+    unread_count: "%{count} ulæst"
+  threads_page:
+    no_direct_threads: Du har ingen direkte tråde
+    no_invite_only_threads: Du har ingen invitationstråde
+  discussion_last_seen_by:
+    title: Set af
+    no_one: Ingen har set dette endnu
+  pin_thread_modal:
+    title: Pintråd
+    helptext: Fastgjorte tråde vises altid øverst på deres gruppes liste over tråde. De kan bruges til at informere medlemmer om vigtige meddelelser eller til at promovere almindeligt materiale som en adfærdskodeks eller retningslinjer for fællesskabet.
+    helptext_two: Du kan til enhver tid fjerne stifter ved at vælge 'Unpin' fra rullemenuen med tråde
+    pin_thread: Pintråd
+  thread_arrangement_form:
+    edit: Rediger layout
+    title: Tråd layout
+    for_everyone: Dette ændrer layoutet for alle, ikke kun dig.
+    sorting: Ældste eller nyeste først?
+    latest: Nyeste
+    latest_description: Læs de nyeste varer først
+    earliest: Ældste
+    earliest_description: Hold dig opdateret med ældre kommentarer, før du ser nyere
+    replies: Hvordan viser man svar?
+    linear: Flad liste
+    linear_description: Elementer listet efterhånden som de skete.
+    nested_once: Nest-svar – kun første svar
+    nested_once_description: Indrykningssvar under den oprindelige kommentar
+    nested_twice: To niveauer af indlejrede svar
+    nested_twice_description: Indrykningssvar højst to gange.
+    changing_nesting_is_slow: Ændringer til indlejring kan tage et par minutter at behandle.
+  poll_option_form:
+    edit_option: Rediger mulighed
+    option_name: Mulighedens navn
+    option_name_hint: Et kort navn for denne mulighed
+    option_name_validation: Det er bedst at holde navnet kort og angive detaljer i feltet 'Betydning'
+    icon: Ikon
+    meaning: Betyder
+    meaning_hint: En sætning eller to, der forklarer, hvad det betyder at vælge denne mulighed. Valgfri
+    prompt: Årsagsprompt
+    prompt_hint: Et spørgsmål, der skal få vælgerne til at dele deres ræsonnement eller genoverveje deres holdning. Valgfri
+  poll_common_add_option:
+    button:
+      add_option: Tilføj en anden mulighed
+    modal:
+      title: Tilføj en mulighed
+    form:
+      add_options: Tilføj muligheder
+      options_added: Nye muligheder tilføjet
+  group_files_panel:
+    no_files: Ingen filer fundet
+    filename: Filnavn
+    uploaded_by: Uploadet af
+    uploaded_at: Uploadet kl
+    delete_confirmation: Er du sikker på, at du vil slette denne vedhæftede fil? Det vil blive fjernet fra enhver tilknyttet kommentar eller tråd. Dette kan ikke fortrydes.
+  subgroups_panel:
+    search_subgroups_of_name: Søg i undergrupper af {{name}}
+    group_without_subgroups: "{{navn}} uden undergrupper"
+  poll_common_action_panel:
+    from_the_thread: Fra trådskabelonen
+    from_the_group: Fra gruppen
+    default_templates: Standard skabeloner
+    default_template: Standard skabelon
+    custom_template: Brugerdefineret skabelon
+    default_poll_types: Standard afstemningstyper
+    suggested_templates: Foreslåede skabeloner
+    group_templates: Gruppeskabeloner
+    basic_templates: Grundlæggende skabeloner
+    anonymous: Stemmerne er anonyme
+    results_hidden_until_closed: Resultaterne vil blive vist efter afstemningen er afsluttet
+    results_hidden_until_vote: Resultaterne vil blive vist efter du har stemt
+    unable_to_vote: Du er ikke blevet inviteret til at stemme i denne %{poll_type}
+    draft_mode: Afstemning deaktiveret. Dette er ikke åbent for afstemning endnu.
+    voting_disabled_poll_is_template: Afstemning deaktiveret. Dette er en skabelon.
+  poll_common_calendar_invite:
+    calendar_invite: Medtag en kalenderinvitation med dette resultat
+    poll_option_id: Mødetid
+    helptext_on: Brugere vil kunne føje dette møde til deres kalender
+    helptext_off: Der udsendes ingen mødeinvitation
+    event_duration: Varighed
+    event_summary: Mødenavn
+    event_summary_placeholder: Hvad vil du kalde dette møde?
+    event_description: Mødebeskrivelse
+    event_description_placeholder: Hvad er dagsordenen for dette møde?
+    location: Beliggenhed
+    location_placeholder: Hvor finder dette møde sted?
+  poll_common_close_form:
+    title: Vil du lukke %{poll_type} nu?
+    helptext: Er du sikker på, at du vil lukke denne %{poll_type} tidligt og dele et resultat?
+    close_poll_type: Luk %{poll_type}
+    poll_type_closed: "%{poll_type} lukket"
+  poll_common_reopen_form:
+    title: Genåbn {{poll_type}}
+    helptext: Genåbn {{poll_type}}, hvis folk har brug for mere tid til at deltage
+    success: "{{poll_type}} genåbnet"
+  poll_common_move_form:
+    title: Flyt {{poll_type}}
+    success: "{{poll_type}} flyttet til {{gruppe}}"
+  poll_common_wip_field:
+    voting_enabled: Afstemning aktiveret
+    enable_voting: Aktiver afstemning
+    title: Deaktiver afstemning
+    past_tense: Afstemning deaktiveret
+    draft_mode: Kladdetilstand
+    disable_voting_during_development: Denne %{poll_type} er ikke klar til at blive stemt på
+    helptext: Denne %{poll_type} er i gang. Du kan aktivere afstemning senere.
+    voting_open: Afstemning åben
+    this_is_ready_for_voting: denne %{poll_type} er klar til afstemning
+  poll_common_undecided_panel:
+    show_undecided: Vis %{count} ubesluttede
+    show_invitations: Vis afventende invitationer
+    undecided_users: Ikke besluttet (%{count})
+    invitation_count_singular: 1 yderligere person er blevet inviteret til at deltage via e-mail
+    invitation_count_plural: "%{count} yderligere personer er blevet inviteret til at deltage via e-mail"
+  poll_common_undecided_user:
+    reminded: Påmindelse sendt!
+    reminder_sent: Påmindelse sendt
+  poll_common_set_outcome_panel:
+    enter_outcome: Indtast resultat
+    poll_type: Denne %{poll_type} er lukket. Tag dig tid til at overveje resultaterne, og del derefter et resultat, så folk ved, hvad der vil ske næste gang.
+  poll_common_delete_modal:
+    question: Er du sikker på, at du vil slette dette?
+    title: Slet {{pollType}}
+    success: Slettet
+  record_modal:
+    record_video: Optag video
+    record_audio: Optag lyd
+    record: Optage
+    stop: Hold op
+    no_mic: Kunne ikke finde en mikrofon
+    no_camera: Kunne ikke finde et kamera
+    listen_to_audio: Lyt til lyd
+    watch_video: Se video
+    audio_transcript: 'Lydtransskription: %{text}'
+    why_type_when_you_can_talk: Hvorfor skrive, når du kan tale? Send en stemmeoptagelse
+    transcript_included: En udskrift af optagelsen vil blive vedhæftet din besked
+  poll_dot_vote_form:
+    dots_per_person: Point pr person
+    dots_per_person_helptext: Det samlede antal point, hver person bliver bedt om at tildele.
+  poll_meeting_form:
+    timeslots: Tidsrum
+    no_options: Indtast tider i din aktuelle tidszone ({{zone}}). Deltagerne ser tider oversat til deres lokale tidszone.
+    meeting_duration: Mødevarighed
+    add_option_placeholder: Tilføj ny tid
+    time_slot_added: Tidsrum tilføjet
+    time_slot_already_added: Tidsrum er allerede tilføjet
+    participants_see_local_times: Pariticpants vil se tider lokaliseret til deres tidszone
+    use_24_hour_format: Fejl! Brug 24 timers format f.eks. %{tid}
+  poll_ranked_choice_form:
+    no_options: Du har ikke tilføjet nogen muligheder endnu.
+    add_option_placeholder: Indtast et nyt valg
+    minimum_stance_choices: Muligheder for at rangere
+    minimum_stance_choices_helptext: Hvor mange valgmuligheder får vælgeren?
+    minimum_stance_choices_hint: dvs. Ranger dine top 3 varianter af is
+    ranked_choice_created: Rangeringsvalg oprettet
+    ranked_choice_updated: Rangeringsvalg opdateret
+    rank: Rang
+    points: Points
+    average: Gennemsnit
+    mean: Betyde
+    pct_of_points: "% af point"
+    pct_of_voters: "% af vælgerne"
+    percent: Procent
+  poll_meeting_time_field:
+    add_time_slot: Tilføj tidsrum
+    new_time_slot: Nyt tidsrum
+    closing_hour: Lukketid
+  poll_common_percent_voted:
+    sentence: "{{numerator}} af {{denominator}} personer har deltaget ({{percent}}%)"
+    target_progress: "{{percent}} % af målet nået. ({{num}} / {{target}})"
+  poll_remove_vote:
+    title: Vil du fjerne din stemme?
+    helptext: Er du sikker på, at du vil fjerne din stemme? Du vil blive opført som uafklaret og kan stemme igen senere, hvis du ønsker det.
+    confirm: Fjern stemme
+    success: Stemme fjernet
+  poll_ranked_choice_vote_form:
+    helptext: Træk og slip muligheder i præferencerækkefølge (1 er din mest foretrukne mulighed). Dine top %{count} valg vil blive registreret.
+    stance_created: Valg optaget
+    stance_updated: Valg opdateret
+  poll_templates:
+    proposal:
+      process_subtitle: Rejs et forslag til at træffe en beslutning
+      process_introduction: <p>Det klassiske Loomio-forslag hjælper dig med at træffe en beslutning og konvertere en diskussion til et klart resultat.</p><p> Foreslå en handlingsmåde, og inviter folk til at svare ved at stemme enig, undlad at stemme eller uenig.</p><p> Når folk stemmer, kan de give en grund til, hvorfor de har stemt på denne måde. Du kan se, hvor alle andre står i sagen, og hvorfor.</p><p> På denne måde kan du bruge et forslag til at tilskynde folk til at svare, afdække ny information og opbygge en fælles forståelse - for at hjælpe din gruppe med at træffe en bedre, mere informeret beslutning.</p><p> Et forslag og tilhørende diskussion skaber sin egen registrering af, hvordan beslutningen kom.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Læs mere om at bruge det klassiske Loomio-forslag i Simple beslutningsprocessen</u></a> .</p>
+      title: Godkend det nye Brand-koncept
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvad er den beslutning, du skal tage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> For at dette forslag kan vedtages, kræver det, at flertallet af medlemmer stemmer Enig.</p><p> Hvis du er uenig, så sig hvorfor og hvad der skal ændres, for at du er enig.</p>
+      agree: Enig
+      agree_meaning: Jeg støtter forslaget
+      agree_prompt: Hvad kan du lide ved forslaget, og hvordan vil det gavne gruppen?
+      abstain: Afholde sig
+      abstain_meaning: Vælger ikke at eller kan ikke stemme i denne beslutning.
+      abstain_prompt: Hvorfor undlader du at stemme eller føler dig ikke i stand til at stemme i denne beslutning?
+      disagree: Være uenig
+      disagree_meaning: Noget i dette forslag skal ændres, før jeg kan støtte det.
+      disagree_prompt: Hvordan kan dette forslag forbedres, så du kan støtte det?
+    advice:
+      process_subtitle: Søg råd om en beslutning, du skal træffe
+      process_introduction: <p>Søg råd om en beslutning, du skal træffe, med råd fra personer, der er berørt, eller som har ekspertise, så du kan træffe en bedre beslutning for din organisation.</p><ul><li><p> Rådgivning hjælper dig med at træffe en bedre beslutning for din organisation.</p></li><li><p> Fremme relationer, læringsmuligheder og forskelligartet input.</p></li><li><p> Stimuler initiativ og kreativitet, og mere behageligt arbejde.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Læs mere om rådgivningsprocessen</u></a> .</p>
+      title: Hjælp Takashi med at købe en ny computer
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvad er den beslutning, du skal tage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Hvilket råd beder du folk om for at hjælpe dig med at træffe en god beslutning?</strong></h3><p></p><p> Jeg søger jeres input til at hjælpe mig med at træffe en god beslutning for vores organisation.</p>
+      agree: Enig
+      agree_meaning: Jeg har givet mit råd om denne beslutning
+      agree_prompt: Opsummer dine råd eller kom med en nyttig kommentar
+      abstain: Afholde sig
+      abstain_meaning: Jeg har ingen råd at give
+      abstain_prompt: Har du nogle kommentarer, der kan være nyttige?
+    consent:
+      process_subtitle: Træf en beslutning, der er 'sikker at prøve' uden indvendinger
+      process_introduction: <p>Søg samtykke til en beslutning, du skal træffe, hvor der ikke er nogen meningsfulde indvendinger mod dit forslag, så du kan træffe en hurtig beslutning for din organisation, som er 'sikker at prøve'.</p><ul><li><p> Sigt efter en 'god nok' beslutning</p></li><li><p> Involver mange stemmer for at udvikle et brugbart forslag</p></li><li><p> Spørg om nogen har en gyldig indvending</p></li><li><p> Ændre forslaget for at løse indsigelser</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Læs mere om samtykkeprocessen</a> .</p>
+      title: Lej Chloe til designrollen
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvad er den beslutning, du skal tage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Hvad beder du om folk i dette forslag?</strong></h3><p></p><p> Hvis du har en indsigelse, bedes du sige hvorfor og foreslå en ændring af forslaget, der gør det sikkert.</p><p> Husk, at vi søger samtykke til en 'god nok' beslutning, der er 'sikker at prøve', så vi kan træffe en god beslutning for vores organisation.</p>
+      consent: Samtykke
+      consent_meaning: Forslaget er sikkert at prøve
+      consent_prompt: Hvad kan du lide ved forslaget, og hvordan vil det gavne organisationen?
+      objection: Indvending
+      objection_meaning: Jeg har en gyldig indvending og tror, at forslaget vil forårsage skade
+      objection_prompt: Hvilken ændring af dette forslag er nødvendig for at gøre det 'sikkert at prøve', så du kan støtte det?
+    consensus:
+      process_subtitle: Indgå overenskomst med alle involverede
+      process_introduction: <p>Skab konsensus for en beslutning, du skal træffe, for at nå frem til en aftale, der tilfredsstiller alle deltageres behov og bekymringer.</p><ul><li><p> Diskuter og udvikle et forslag sammen</p></li><li><p> Inkluder og respekter alle involverede</p></li><li><p> Søg enighed fra de fleste</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Læs mere om konsensusprocessen</a> .</p>
+      title: Godkend det nye Brand-koncept
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Hvad er den beslutning, du skal tage?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> For at dette forslag kan vedtages, kræver det, at flertallet af medlemmer stemmer Enig.</p><p> Hvis du er uenig, så sig hvorfor og hvad der skal ændres, for at du er enig.</p>
+      agree: Enig
+      agree_meaning: Jeg støtter forslaget
+      agree_prompt: Hvad kan du lide ved forslaget, og hvordan vil det gavne organisationen?
+      abstain: Afholde sig
+      abstain_meaning: Denne beslutning påvirker mig ikke, og jeg er glad for, hvad gruppen end beslutter
+      abstain_prompt: Hvorfor undlader du at stemme eller føler dig ikke i stand til at stemme i denne beslutning?
+      disagree: Være uenig
+      disagree_meaning: Noget i dette forslag skal ændres, før jeg kan støtte det
+      disagree_prompt: Hvordan kan dette forslag forbedres, så du kan støtte det?
+      block: Blok
+      block_meaning: Jeg blokerer for dette forslag og mener, at det ikke skal fortsætte
+      block_prompt: Forklar din indsigelse mod dette forslag, og hvorfor det ikke bør gå videre
+    question_round:
+      process_subtitle: Inviter opklarende spørgsmål for at hjælpe folk med at forstå et forslag
+      process_introduction: <p>En spørgerunde er en mulighed for, at folk kan stille opklarende spørgsmål til forslaget, så alle forstår forslaget, før de siger, hvad de synes om det.</p><p> Loomio-spørgsmålsrunden er et særligt forslag uden afstemningsmuligheder. Det giver deltagerne mulighed for at stille spørgsmål inden for en varighed, du har angivet for runden.</p><p> En spørgsmålsrunde bruges almindeligvis som et trin i samtykkeprocessen.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Læs mere om samtykkeprocessen</a> .</p>
+      title: Hvilke spørgsmål har du om sundheds- og sikkerhedspolitikken?
+      details: <h3 id="what-are-you-proposing"><strong>Hvad foreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Dette er en spørgerunde, hvor du inviteres til at stille opklarende spørgsmål.</p><p> Hvad skal du vide, så du forstår forslaget?</p><p> Svar venligst inden spørgerunden lukker.</p>
+      reason_prompt: Hvad skal du vide, så du forstår forslaget?
+    sense_check:
+      process_subtitle: Bed om feedback, spørgsmål og bekymringer
+      process_introduction: <p>Sense-tjekforslaget er en god måde at få feedback, invitere til spørgsmål og afdække bekymringer. Det hjælper med at tydeliggøre og forbedre et forslag, før man går til en beslutning.</p><p> Sense-tjek lader folk vide, at et forslag dannes, og opmuntrer dem til at engagere sig. Det er en mulighed for at lytte til folk, fornemme, hvordan de har det og reagere hensigtsmæssigt - hvilket åbner potentialet for at inkorporere deres bidrag for at træffe en bedre beslutning.</p><p> Brug Sense-tjekforslaget i samtykkeprocessen til at invitere til reaktioner og kommentarer for at forbedre forslaget, og i en konsensusproces til at teste for konsensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Læs mere om brug af Sense check i Simple beslutningsprocessen</u></a> <span>.</span></p>
+      title: Hvordan har du det med de nye brandkoncepter?
+      details: <h3 id="what-are-you-proposing"><strong>Hvad foreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Hvordan har du det med forslaget? Efterlad en kommentar eller kom med et forslag til forbedring.</p><p> Dette Sense-tjek er en mulighed for dit input og bidrag til at hjælpe os med at træffe en bedre beslutning.</p>
+      looks_good: Ser godt ud
+      looks_good_meaning: Jeg er glad for, hvor det er på vej hen
+      looks_good_prompt: Har du kommentarer eller forslag til at gøre forslaget bedre?
+      abstain: Afholde sig
+      abstain_meaning: Jeg har ikke noget at tilføje eller nogen indvendinger mod dette arbejde.
+      abstain_prompt: At undlade at stemme indebærer samtykke med retningen af dette forslag. Er der en grund til, at du stemmer for at undlade at stemme?
+      concerned: Berørte
+      concerned_meaning: Noget ved dette skal muligvis ændres, for at jeg kan samtykke eller acceptere
+      concerned_prompt: Hvad er din bekymring, og hvordan kan den løses?
+    gradients_of_agreement:
+      process_subtitle: Udtryk støtte til et forslag på en 8-trins skala
+      process_introduction: <p>Forslaget om gradienter af enighed gør det muligt for medlemmer af en gruppe at udtrykke deres støtte til et forslag i grader på en skala, der tilbyder flere måder at udtrykke støtte på end i form af "enig" og "uenig".</p><p> Brug Gradients of Agreement som en indledende runde til at teste støtte til et forslag, før du går over til en formel aftale.</p><p> Gradienter af enighed lader folk vide, at et forslag er ved at blive dannet og opmuntrer dem til at engagere sig. Det er en mulighed for at lytte til folk, fornemme, hvordan de har det og reagere hensigtsmæssigt - hvilket åbner potentialet for at inkorporere deres bidrag for at træffe en bedre beslutning.</p>
+      title: Hvad synes du om den nye værdiangivelse?
+      details: <h3 id="what-are-you-proposing"><strong>Hvad foreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Hvordan kan du lide forslaget? Udtryk din støtte på skalaen nedenfor og efterlad en kommentar eller forslag til forbedring.</p><p> Dette Gradients of Agreement-forslag er for at teste støtte til forslaget og en mulighed for dit input, før du går over til en formel aftale.</p>
+      whole_hearted_endorsement: Helhjertet tilslutning
+      whole_hearted_endorsement_meaning: Jeg kan virkelig godt lide det!
+      whole_hearted_endorsement_prompt: Hvad kan du lide ved det?
+      agreement_with_minor_contention: Aftale med mindre indsigelser
+      agreement_with_minor_contention_meaning: Ikke perfekt, men det er godt nok
+      agreement_with_minor_contention_prompt: Hvad er din bekymring?
+      support_with_reservations: Support med forbehold
+      support_with_reservations_meaning: Jeg kan leve med det
+      support_with_reservations_prompt: Hvad er dine forbehold?
+      abstain_meaning: Dette spørgsmål berører mig ikke
+      abstain_prompt: Har du noget, du gerne vil tilføje?
+      more_discussion_needed: Mere diskussion nødvendig
+      more_discussion_needed_meaning: Jeg forstår ikke problemerne godt nok endnu
+      more_discussion_needed_prompt: Hvad forstår du ikke?
+      don_t_like_but_will_support: Kan ikke lide, men vil støtte
+      don_t_like_but_will_support_meaning: Det er ikke godt, men jeg vil ikke holde gruppen op
+      don_t_like_but_will_support_prompt: Hvad vil du gerne se forbedret?
+      serious_disagreement: Alvorlig uenighed
+      serious_disagreement_meaning: Jeg er ikke med på dette - regn ikke med mig
+      serious_disagreement_prompt: Hvad er du uenig i?
+      veto: Veto
+      veto_meaning: Jeg blokerer dette forslag
+      veto_prompt: Hvorfor blokerer du forslaget? Hvad skal ændres for at du kan støtte det?
+    simple_poll:
+      process_subtitle: Find den mest populære mulighed
+      process_introduction: <p>Inden du træffer en beslutning, skal du finde ud af, hvilke muligheder folk interesserer sig mest for.</p><p> Simpel afstemning hjælper dig med at finde den eller de mest populære muligheder med enkelt- eller flervalg.</p><p> Skriv eventuelle detaljer om mulighederne i detaljefeltet, indtast derefter navnet på indstillingen, og klik på + for at tilføje.</p><p> Indstil <strong>Minimum valg</strong> og <strong>Maksimum valg</strong> en vælger kan vælge. Lad det maksimale valg være 1 for en enkeltvalgsafstemning.</p><p> Du kan bruge blyantikonet ved siden af hver mulighed for at tilføje en <strong>betydning</strong> af indstillingen, en yderligere uddybning af muligheden for at hjælpe folk, når de stemmer.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Læs mere om Simple poll</a> .</p>
+      title: Hvor skal fokus for vores strategiske retning være?
+      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Vælg den eller de muligheder, du foretrækker.</p>
+    score_poll:
+      process_subtitle: Mål graden af støtte for hver mulighed
+      process_introduction: <p>Brug Score-afstemning, når du vil undersøge folk for deres ønsker, præferencer eller interesse for hver mulighed.</p><p> <span>Deltagerne bliver bedt om at evaluere hver mulighed og tildele en score ved at flytte en skyder langs en skala.</span></p><p> <span>Resultaterne vises grafisk sammen med en tabel for hver mulighed, der viser det samlede antal point, gennemsnitspoint og antallet af vælgere.</span></p><p> Avancerede indstillinger inkluderer 'Stemmer er anonyme' og 'Vis valgmuligheder i tilfældig rækkefølge' - almindeligvis brugt til Score-afstemning for at reducere enhver stemmebias.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Læs mere om Score-afstemning</a> .</p>
+      title: Vurderer, hvordan beslutninger træffes i vores organisation
+      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Vælg den eller de muligheder, du foretrækker.</p>
+    dot_vote:
+      process_subtitle: Tildel et budget med point for at afsløre prioriteter
+      process_introduction: <p>Punktafstemning er nyttig for grupper, der forsøger at allokere en begrænset ressource til en række muligheder. Det går ud over en simpel afstemning ved at hjælpe deltagerne med at forstå, at der er en begrænsning, når de skal vælge muligheder.</p><p> Deltagerne får hver et bestemt antal prikker. Du bestemmer selv hvor mange.</p><p> De placerer prikker ved siden af de præsenterede muligheder, som de kan lide. Deltagerne kan placere alle deres prikker på en enkelt mulighed eller fordelt på flere muligheder.</p><p> Efterhånden som deltagere tildeler prikker, kan de overskride prikbudgetgrænsen og opfordres derfor til at overveje, hvordan de bruger deres prikker omhyggeligt.</p><p> Valgmuligheder med flest prikker "vinder". Resultattabellen giver yderligere data til at hjælpe dig med at analysere resultater.</p><ul><li><p> % af point</p></li><li><p> Points</p></li><li><p> Betyde</p></li><li><p> Vælgere</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Læs mere om Dot vote</a> .</p>
+      title: Valg af temaer til vores konference
+      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> I denne afstemning har du et budget på 8 prikker til at allokere til de muligheder, du foretrækker. Du kan placere alle prikker på én mulighed eller sprede dem ud.</p>
+    ranked_choice:
+      process_subtitle: Forstå den ordnede præference for muligheder
+      process_introduction: <p>Rangeringsvalg er nyttigt, når du har et stort antal valgmuligheder eller holder et valg.</p><p> Denne afstemningsskabelon tilbyder en række muligheder for folk til at stemme i deres foretrukne rækkefølge.</p><p> Du kan indstille antallet af valg, vælgeren får.</p><p> <span>Vælgerne trækker og slipper i deres foretrukne rækkefølge (nr. 1 er din mest foretrukne mulighed).</span></p><p> <span>Avancerede indstillinger inkluderer 'Stemmer er anonyme' og 'Vis muligheder i tilfældig rækkefølge' - almindeligvis brugt til R</span> anket valg for at reducere enhver stemmeskævhed.</p><p> Resultaterne vises i rækkefølge. Resultattabellen giver yderligere data til at hjælpe dig med at analysere resultater.</p><ul><li><p> Rang</p></li><li><p> % af point</p></li><li><p> Points</p></li><li><p> Betyde</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Læs mere om Rangeret valg</a> .</p>
+      title: Vælg direktører til bestyrelsen
+      details: <h3 id="what-is-this-poll-about"><strong>Hvad handler denne afstemning om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Hvorfor er dette vigtigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Hvad beder du folk om at gøre?</strong></h3><p></p><p> Stem ved at rangordne mulighederne i den rækkefølge, du foretrækker. Den mulighed, der rangerer først i resultaterne, vinder.</p>
+    time_poll:
+      process_subtitle: Find, hvornår folk er tilgængelige for at mødes
+      process_introduction: <p><span>Spar tid på at arrangere en dato for dit møde eller arrangement.</span></p><p> Tidsmåling gør det nemt at se alles tilgængelighed og finde det bedste tidspunkt.</p><p> Giv din Time-afstemning en titel og detaljer. Indtast en liste over dato- og tidsindstillinger i din tidszone.</p><p> Når du indstiller tidsintervaller, skal du overveje personer i forskellige tidszoner. Deltagerne vil se tider lokaliseret i deres tidszone.</p><p> Indstil en mødevarighed.</p><p> Når Time-afstemningen lukker, skal du angive et resultat med det bedste tidspunkt og eventuelle instruktioner til mødet.</p><p> <span>Loomio vil inkludere en kalenderinvitation sammen med e-mailen om resultatet, så deltagerne kan føje til deres kalender.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Læs mere om Time poll</a> .</p>
+      title: Lad os finde en dato for vores næste møde
+      details: "<p><strong>Hvad er mødet eller begivenheden?</strong></p><p></p><p> <strong>Hvorfor er dette vigtigt?</strong></p><p></p><p> <strong>Hvad beder du folk om at gøre?</strong></p><p></p><p> <span>Marker de tidsrum, du er til rådighed, med det grønne 'thumbs up'-ikon eller lad den røde 'thumbs down' være på plads, når den ikke er tilgængelig.</span></p><p> <span>Brug 'thumbs sidewards'-ikonet for at sige, at du er tilgængelig 'hvis det er nødvendigt'.</span></p>"
+      reason_prompt: Er der noget, du kan sige for at hjælpe arrangøren med at finde et passende tidspunkt?
+    opt_in:
+      process_subtitle: Find frivillige eller spørg efter deltagere
+      process_introduction: '<p>Brug Opt-in til at invitere folk til at deltage i et team, udvalg eller arbejdsgruppe eller til at deltage i en begivenhed.</p><p> ''Tilmeld'' har to valgmuligheder: Accepter eller Afvis.</p><p> Du kan definere et mål for antallet af personer, du leder efter, f.eks. 3 personer til at deltage i din arbejdsgruppe.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Læs mere om Opt-in</a> .</p>'
+      title: Arbejdsgruppe til at udarbejde vores nye bæredygtighedspolitik
+      details: "<p><strong>Hvad er det team, arbejdsgruppe eller event, du inviterer folk til?</strong></p><p></p><p> <strong>Hvorfor er dette vigtigt?</strong></p><p></p><p> <strong>Hvad beder du folk om at gøre?</strong></p><p></p><p> Vælg 'Acceptér' for at deltage!</p>"
+      accept_meaning: Jeg er villig til at deltage
+      accept_prompt: Hvorfor melder du dig frivilligt til dette?
+      decline_meaning: Jeg kan ikke deltage
+      decline_prompt: Er der noget, du gerne vil sige?
+  thread_item:
+    removed: Varen er fjernet
+    deleted_group: Slettet gruppe
+    invite_only_thread: Inviter kun tråd
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> som svar til <strong>{{title}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> redigerede trådens titel"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> redigerede trådkonteksten"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ændrede trådens privatliv"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> redigerede tråden"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> flyttede tråden fra <strong>{{title}}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> lukkede tråden"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> genåbnede tråden"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> oprettede en forgrening af denne tråd: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{forfatter}}</a>"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> delte et resultat"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> genåbnede {{polltype}}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> lukkede {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> startede en {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> redigerede {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> tilføjede muligheder til {{polltype}}"
+    poll_expired: "{{polltype}} lukket"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> stemte på: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> opdaterede deres stemme om: <strong>{{title}}</strong>"
+    event_removed: Fjernet fra tråden
+  add_poll_to_thread_modal:
+    success: Det lykkedes, {{pollType}} blev tilføjet til tråden!
+  powered_by:
+    this_is_loomio_md: Loomio er en app til at træffe beslutninger sammen. [Prøv gratis](https://www.loomio.com)
+    slogan: Bedre beslutninger sammen
+    powered_by_loomio: Drevet af Loomio
+    privacy_policy: Fortrolighedspolitik
+    terms_of_service: Servicevilkår
+    front_page: Forside

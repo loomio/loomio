@@ -1,17 +1,109 @@
+---
 sv:
   templates:
     try_loomio: Prova Loomio
+    template_gallery: Mallgalleri
+    title_template: "%{title} mall"
+    title_templates: "%{title} mallar"
+    title_copy: "%{title} Kopiera"
+    copy_of_title: Kopia av %{title}
+    loomio_default_templates: Loomio standardmallar
+    which_templates_would_you_like_to_use: Vilka mallar skulle du vilja använda?
+    login_to_start_demo: Detta är en demo av Loomio i aktion. Du får gärna ta en titt.
+    sign_in_to_try_features: Om du vill prova att rösta i ett demobeslut, eller starta en gratis provperiod för din organisation, klicka på "logga in".
+    click_button_to_start_demo: Välkommen! För att prova röstning och andra funktioner, klicka på starta demo.
+    welcome_to_your_demo: Det här är din alldeles egna demogrupp!
+    try_voting_to_see_it_work: Prova att rösta i ett förslag för att få en känsla av hur Loomio fungerar.
+    delete_will_be_deleted_in_x_days: Den här demon kommer att raderas om %{x} dagar.
+    to_use_loomio_with_your_org_start_trial: När du är redo att prova Loomio med din organisation, starta en kostnadsfri provperiod.
+    templates: Mallar
+    make_a_copy: Göra en kopia
+    this_thread_is_a_template: Den här tråden är en mall. Gör en kopia om du vill använda den.
+    this_is_a_poll_template: Detta är en omröstningsmall. Gör en kopia om du vill börja rösta.
+    start_a_demo_group: Starta en demogrupp
+    start_a_demo: Starta en demo
+    demo_group: Demogrupp
+    play_with_an_example_group: Spela med en exempelgrupp
+    look_and_feel: Se hur Loomio ser ut för en liten organisation. Lär dig appen genom att testa den.
+    watch_then_start: Se videon och klicka sedan på "Starta demo" för att prova Loomio
+    generating_demo: Okej, vänta där! Att skapa en demo tar cirka 20 sekunder.
+    start_a_x_day_free_trial: Starta en {{day}} dagars kostnadsfri provperiod
+    ready_to_trial: Är du redo att prova Loomio med din organisation?
+    start_a_no_obligation_x_day_trial: Starta en Loomio-grupp för din organisation med en gratis provperiod på {{day}} dagar.
+    you_can_test_it_out: Du kan bjuda in andra att gå med, integrera det med dina andra verktyg och försöka fatta några beslut.
+    demo_created: Demogrupp skapad, bara för dig!
+    start_demo: Starta demo
+    view_demo: Se demo
+    start_trial: Starta testperiod
+    start_free_trial: Påbörja gratis försöksperiod
+    demo_needs_user: För att starta en demo måste du registrera dig (eller logga in) som Loomio-användare. Detta är gratis och tar bara en minut.
+    trial_needs_user: Välkommen! Logga in för att starta din kostnadsfria provperiod
+    this_is_a_template_for_new_threads: Detta är en mall för nya trådar
+    share_a_custom_configuration: Dela en anpassad konfiguration med andra i din grupp
   doctypes:
     youtube_video: YouTubevideo
     image: Bild
     pdf: PDF
     document: Dokument
+    excel: Excel kalkylark
+    csv: CSV-fil
+    video: Video
+    text: Textfil
+    google_doc: Google Dokument
+    google_sheet: Google kalkylblad
+    google_drive: Google Drive
+    pull_request: Dra förfrågan
+    trello_board: Trello Board
+    trello_card: Trello kort
   current_plan_button:
     upgrade: Uppgradera
+    buy_now: Köp nu
+    is_old_plan: Loomio har nya enkla prisplaner
+    change_plan: Ändra plan
+    view_plans: Se planer
+    free_trial: Gratis provperiod. {{days}} dagar kvar.
+    trial_expired: Din provperiod har löpt ut. Uppgradera för att fortsätta använda Loomio.
+    tooltip: Våra priser är fantastiska! Uppgradera idag och njut av vad Loomio kan erbjuda din grupp.
+    was_gift_trial: 'Din grupp har använt Loomio gratis sedan {{createdDate}}. Vi kan inte fortsätta tillhandahålla en gratis tjänst. Vänligen uppgradera för att fortsätta använda Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Läs mer.</a>'
+    was_gift_remaining: "{{days}} dagar kvar."
+    was_gift_expired: Din gratisplan har nu löpt ut.
   subscription_status:
-    members: "Medlemmar"
+    members: Medlemmar
+    plan: Planen
+    state: Status
+    active_members: Aktiva medlemmar
+    max_threads: Max trådar
+    max_members: Max medlemmar
+    expires_at: Upphör att gälla
+    renews_at: Förnyar
+    referral_code: Remisskod
+    chargify_link: Faktureringsportal
+    referral_code_help: Ge en vän rabatt, skaffa dig lite kredit!
+    manage_payment_details: Hantera betalningsinformation
+    manage_subscription: Hantera prenumeration
+    amount: Belopp
   loomio_tags:
     name_label: Namn
+    all_tags: Alla taggar
+    tags: Taggar
+    apply_tags: Använd taggar
+    new_tag: Ny tag
+    color_label: Färg
+    card_title: Kategoritaggar
+    modal_title: Skapa en ny tagg
+    modal_edit_title: Redigera taggar
+    modal_destroy_title: Ta bort taggen
+    destroy_tag: Ta bort tagg
+    destroy_helptext: Detta kommer att ta bort taggen och ta bort den från alla trådar i gruppen. Är du säker?
+    helptext: Taggar låter dig kategorisera konversationer och enkelt hitta dem senare
+    discussions_count_singular: "(%{count} tråd)"
+    discussions_count_plural: "(%{count} trådar)"
+    tag_created: Taggen har sparats
+    tag_destroyed: Taggen raderad
+    tags_marked: Trådar märkta med '{{name}}' i {{groupName}}
+    no_tags_present: Inga trådar hittades med den taggen! Försök att välja en annan
+    no_tags_in_group: Den här gruppen har inga kategoritaggar ännu
+    only_admins_can_edit_tags: Tyvärr, bara administratörer för {{grupp}} kan skapa, byta namn på eller ta bort taggar
   timezones:
     local: Lokal tid ({{value}})
   common:
@@ -30,62 +122,62 @@ sv:
     time:
       am: förmiddag
       pm: eftermiddag
-    closing_in: 'Stänger {{time}}'
-    closed_ago: 'Stängd {{time}}'
-    volume: 'Volym'
-    notification_volume: 'Notifieringsvolym'
-    group: 'Grupp'
-    groups: 'Grupper'
-    threads: 'Trådar'
-    decisions: 'Beslut'
-    settings: 'Inställningar'
-    help: 'Hjälp'
+    closing_in: Stänger {{time}}
+    closed_ago: Stängd {{time}}
+    volume: Volym
+    notification_volume: Notifieringsvolym
+    group: Grupp
+    groups: Grupper
+    threads: Trådar
+    decisions: Beslut
+    settings: Inställningar
+    help: Hjälp
     anonymous: Anonym
     email_address: Emailadress
     privacy:
-      privacy: 'Integritet'
-      public: 'Offentlig'
-      open: 'Öppen'
-      closed: 'Stängd'
-      private: 'Privat'
-      secret: 'Hemlig'
-    selected: 'Vald'
+      privacy: Integritet
+      public: Offentlig
+      open: Öppen
+      closed: Stängd
+      private: Privat
+      secret: Hemlig
+    selected: Vald
     date_range:
-      today: 'I dag'
-      yesterday: 'Igår'
-      thisweek: 'Denna Vecka'
-      thismonth: 'Denna Månad'
-      older: 'Äldre'
-    more_help: 'Mer hjälp'
-    copy: 'Kopiera'
-    copy_text: 'Kopiera text'
-    copied: 'Kopierad till urklipp'
+      today: I dag
+      yesterday: Igår
+      thisweek: Denna Vecka
+      thismonth: Denna Månad
+      older: Äldre
+    more_help: Mer hjälp
+    copy: Kopiera
+    copy_text: Kopiera text
+    copied: Kopierad till urklipp
     points_abbrev: Varje röst är värd {{score}} poäng
     total: Totalt
     action:
-      search: 'Sök'
-      back: 'Tillbaka'
-      next: 'Nästa'
-      close: 'Stäng'
-      reopen: 'Öppna igen'
-      save: 'Spara'
-      save_changes: 'Spara ändringar'
-      update_settings: 'Uppdatera inställningar'
-      reply: 'Svara'
-      edit: 'Redigera'
-      remove: 'Ta bort'
-      like: 'Gilla'
-      unlike: 'Sluta gilla'
-      update: 'Uppdatera'
-      cancel: 'Ångra'
-      show_more: "Visa mer"
-      view_all: "Visa Alla"
-      new_thread: "Ny tråd"
-      loading: 'Laddar'
-      translate: 'Översätt'
-      upload: 'Ladda upp'
-      uploading: 'Laddar upp'
-      load_more: 'Ladda fler'
+      search: Sök
+      back: Tillbaka
+      next: Nästa
+      close: Stäng
+      reopen: Öppna igen
+      save: Spara
+      save_changes: Spara ändringar
+      update_settings: Uppdatera inställningar
+      reply: Svara
+      edit: Redigera
+      remove: Ta bort
+      like: Gilla
+      unlike: Sluta gilla
+      update: Uppdatera
+      cancel: Ångra
+      show_more: Visa mer
+      view_all: Visa Alla
+      new_thread: Ny tråd
+      loading: Laddar
+      translate: Översätt
+      upload: Ladda upp
+      uploading: Laddar upp
+      load_more: Ladda fler
       share: Dela
       ok: Ok
       retry: Försök igen
@@ -104,15 +196,78 @@ sv:
       resent: Inbjudan skickad igen
       export: Exportera
       fork: Gaffel
+      print: Skriva ut
+      preview: Förhandsvisning
+      pin: Stift
+      unpin: Lossa
+      filter: Filtrera
+      move: Flytta
+      undo_remove: Ångra borttagning
+      hide: Dölj
+      unhide: Visa upp
+      show_fewer: Visa färre
+      view_count_more: Visa %{count} till
+      view_count_responses: Visa %{count} svar
+      count_more: "%{count} till"
+      count_responses: "%{count} svar"
+      add_subgroup: Ny undergrupp
+      discard: Kassera
+      restore: Återställ
+      unignore: Ignorera
+      apply: Tillämpa
+      add_people: Lägg till folk
+      zoom: Zoom
+      align: Justera
     formatting_help:
-      label: 'Utformning'
-      title: 'Lär dig hur du använder Märkspråk för att formatera din text'
+      label: Utformning
+      title: Lär dig hur du använder Märkspråk för att formatera din text
+    admin_menu: Admin meny
+    api_docs: API-dokument
+    prefix_eg: t.ex. {{val}}
+    are_you_sure: Är du säker?
+    loomio_help: Loomio hjälp
+    visit_loomio_help: Besök Loomio hjälp
+    help_and_guides: Hjälp & guider
+    optional: "(Frivillig)"
+    none: Ingen
+    empty: Tömma
+    no_results_found: Inga resultat funna
+    view: Se
+    history: Historia
+    option: Alternativ
+    add: Lägg till
+    attachments: Bilagor
+    template: Mall
+    links: Länkar
+    active_time_ago: Senast aktiv {{time_ago}}
+    something_went_wrong: Hoppsan! Något gick fel
+    check_for_errors_and_try_again: Kontrollera formuläret för fel och försök igen
+    please_try_again: Var god försök igen
+    organization: Organisation
+    organizations: Organisationer
+    required: Nödvändig
+    minutes: Minuter
+    today: i dag
+    in_x_days: om %{x} dagar
+    reset: Återställa
   merge_accounts:
     modal:
       submit: Verifiera
+      title: Slå samman konton
+      helptext: Du kan slå samman kontot under <strong>{{sourceEmail}}</strong> med kontot för <strong>{{targetEmail}}</strong> . Klicka på Verifiera så skickas ett verifieringsmeddelande till {{targetEmail}} för att påbörja processen.
+      flash: Verifieringsmail har skickats!
+    email_taken: Tyvärr, den e-postadressen är redan kopplad till en annan användare. Tillhör det mejlet dig?
+    find_out_more: Få reda på mer.
+    placeholder_modal_text: <p>Om du vill slå samman två konton anger du helt enkelt respektive e-postadress (som tillhör det andra kontot) i e-postfältet på din profilsida och följer instruktionerna som visas.</p><p> Behövs hjälp? <a href="/contact" target="_blank">Kontakta oss</a> .
   emoji_picker:
     search: Sök
     people: Människor
+    common: Ofta använd
+    expressions: Ansikten
+    hands: Händer
+    nature: Natur
+    objects: Saker
+    places: Platser
   ordinal:
     _1: 1:a
     _2: 2:a
@@ -128,11 +283,12 @@ sv:
     sessions:
       signed_up: Registreringen lyckades!
     failure:
-      inactive: 'Det är ett deaktiverat konto associerat med denna e-postadress. Om du vill återaktivera ditt konto, kontakta oss.'
+      inactive: Det är ett deaktiverat konto associerat med denna e-postadress. Om du vill återaktivera ditt konto, kontakta oss.
   error_page:
-    forbidden: 'Du saknar behörighet att göra detta.'
-    page_not_found: 'Vi kunde inte hitta det. Det kan ha blivit raderat eller flyttat.'
-    internal_server_error: 'Vi är ledsna, men något gick fel. Var god försök igen.'
+    forbidden: Du saknar behörighet att göra detta.
+    page_not_found: Vi kunde inte hitta det. Det kan ha blivit raderat eller flyttat.
+    internal_server_error: Vi är ledsna, men något gick fel. Var god försök igen.
+    forbidden_view: Du har inte behörighet att se detta.
   verify_email_notice:
     please_verify: Tack för att du deltar! Vänligen kolla din e-post efter en länk för att verifiera din röst.
   previous_polls_page:
@@ -140,196 +296,841 @@ sv:
     polls_count: Visar {{loaded}} av {{total}} beslut
     search_activities: Sök beslut
   volume_levels:
-    loud: 'Ljud'
-    normal: 'Normal'
-    quiet: 'Tyst'
-    mute: 'Tysta ned'
-    unmute: 'Ta bort nedtystning'
+    loud: Ljud
+    normal: Normal
+    quiet: Tyst
+    mute: Tysta ned
+    unmute: Ta bort nedtystning
   pin_event_form:
     title_label: Titel
+    title: Fäst till tidslinjen
+    hint: 'Tips till nästa gång: Försök att markera lite text innan du klickar på "Fäst".'
   change_volume_form:
     simple:
       label: Notifieringar
       normal: Normal
       quiet: Ignorera
-    aria_label: "Byt epostinställningars formulär"
-    loud_label: "All aktivitet"
-    normal_label: "Meddelanden"
-    quiet_label: "Inga e-post"
-    mute_label: "Tysta ned"
+      loud: Prenumererade
+      question: När vill du bli meddelad?
+      loud_explain: närhelst det är aktivitet
+      normal_explain: när någon ber om din uppmärksamhet
+      quiet_explain: inga notifikationer
+    aria_label: Byt epostinställningars formulär
+    loud_label: All aktivitet
+    normal_label: Meddelanden
+    quiet_label: Inga e-post
+    mute_label: Tysta ned
     discussion:
-      apply_to_all: "Tillämpa dessa inställningar på alla trådar i denna grupp."
+      apply_to_all: Tillämpa dessa inställningar på alla trådar i denna grupp.
       messages:
-        loud: "Du kommer att få e-post om aktivitet i denna tråd."
-        normal: "Du kommer att få e-post om förslag i denna tråd."
-        quiet: "Du kommer inte få e-post om denna tråd."
+        loud: Du kommer att få e-post om aktivitet i denna tråd.
+        normal: Du kommer att få e-post om förslag i denna tråd.
+        quiet: Du kommer inte få e-post om denna tråd.
+      title: Trådaviseringar
+      loud_description: Du kommer att få e-post med all aktivitet i denna tråd.
+      normal_description: Du kommer bara att få e-post med viktig aktivitet i denna tråd.
+      quiet_description: Du kommer inte att få e-post till någon aktivitet i den här tråden.
+      only_this_thread: Gäller endast denna tråd
+      group: Ändra aviseringar för gruppen
+      user: Ändra inställningar för användaraviseringar
     membership:
-      loud_description: "Du kommer att få e-post vid aktivitet i denna grupp."
-      normal_description: "Du kommer att få e-post vid aktivitet i denna grupp."
-      quiet_description: "Du kommer inte få e-post om aktivitet i denna grupp."
-      apply_to_all: "Tillämpa dessa inställningar i alla mina grupper."
+      loud_description: Du kommer att få e-post vid aktivitet i denna grupp.
+      normal_description: Du kommer att få e-post vid aktivitet i denna grupp.
+      quiet_description: Du kommer inte få e-post om aktivitet i denna grupp.
+      apply_to_all: Tillämpa dessa inställningar i alla mina grupper.
       messages:
-        loud: "Du kommer få e-post om alla aktiviteter i denna grupp. "
-        normal: "Du kommer bara få e-post vid meddelanden i denna grupp."
-        quiet: "Du kommer inte bli mailad om den här grupp."
+        loud: 'Du kommer få e-post om alla aktiviteter i denna grupp. '
+        normal: Du kommer bara få e-post vid meddelanden i denna grupp.
+        quiet: Du kommer inte bli mailad om den här grupp.
+      title: Aviseringar för {{title}}
+      apply_to_organization: Ansök på alla grupper i {{organisation}}
     all_groups:
-      loud_description: "Du kommer att bli mailad om alla aktivitetera i alla dina grupper"
+      loud_description: Du kommer att bli mailad om alla aktivitetera i alla dina grupper
       messages:
-        loud: "Du kommer att bli mailad om alla aktivitetera i alla dina grupper"
-        normal: "Du kommer endast att bli mailade meddelanden i alla dina grupper."
-        quiet: "Du kommer inte att mailas om någon av dina grupper."
+        loud: Du kommer att bli mailad om alla aktivitetera i alla dina grupper
+        normal: Du kommer endast att bli mailade meddelanden i alla dina grupper.
+        quiet: Du kommer inte att mailas om någon av dina grupper.
+      title: Aviseringsinställningar för alla grupper
+      normal_description: Du kommer bara att få e-post med viktig aktivitet i alla dina grupper.
+      quiet_description: Du kommer inte att få e-post till någon aktivitet i någon av dina grupper.
     user:
       title: E-post inställningar för nya grupper
-      loud_description: "Du kommer bli mailad när det finns aktiviteter i nya grupper du går med."
-      normal_description: "Du kommer bli mailad om meddelanden i nya grupper du går med."
-      quiet_description: "Du kommer inte bli mailad om aktivitet i några nya grupper du går med."
-      apply_to_all: "Tillämpa dessa inställningar i alla mina grupper."
+      loud_description: Du kommer bli mailad när det finns aktiviteter i nya grupper du går med.
+      normal_description: Du kommer bli mailad om meddelanden i nya grupper du går med.
+      quiet_description: Du kommer inte bli mailad om aktivitet i några nya grupper du går med.
+      apply_to_all: Tillämpa dessa inställningar i alla mina grupper.
       messages:
-        loud: "Du kommer att mailas alla aktiviteter i nya grupper."
-        normal: "Du kommer bli mailad om meddelande i nya grupper."
-        quiet: "Du kommer inte bli mailad om nya grupper."
+        loud: Du kommer att mailas alla aktiviteter i nya grupper.
+        normal: Du kommer bli mailad om meddelande i nya grupper.
+        quiet: Du kommer inte bli mailad om nya grupper.
+    explain_scope:
+      thread: Detta ändras när du får ett meddelande om den här tråden
+      group: Detta ändras när du får ett meddelande om alla trådar i gruppen
+    saved: Aviseringsinställningar uppdaterade
   close_explanation_modal:
     aria_label: Stäng tråd
     close_thread: Stäng tråd
     image_alt: Stänger alla trådar
+    body: "<p>Stäng gamla eller irrelevanta trådar för att ta bort dem och indikera att diskussionen har stängts.</p><p> Vem som helst kan fortfarande kommentera eller starta en omröstning i en stängd tråd, men den kommer inte att visas i gruppens trådlista eller på instrumentpanelen.</p>"
   inbox:
-    clear: 'Klar'
-    latest: 'Senaste'
-    unread: 'Olästa'
-    closing_in: 'Stänger'
+    clear: Klar
+    latest: Senaste
+    unread: Olästa
+    closing_in: Stänger
   sign_up_form:
     password_label: 'Lösenord:'
     password_confirmation_label: 'Återupprepa lösenord:'
   signed_out_modal:
-    aria_label: 'Sessionen avslutad'
-    title: "Din session är avslutad"
-    message: "Du har loggats ut från ett annat fönster. Var god logga in igen för att fortsätta."
-    ok: "Ok"
+    aria_label: Sessionen avslutad
+    title: Din session är avslutad
+    message: Du har loggats ut från ett annat fönster. Var god logga in igen för att fortsätta.
+    ok: Ok
   comment_reply_form:
-    aria_label: 'Lägg till svar'
+    aria_label: Lägg till svar
   comment_form:
-    aria_label: 'Lägg till kommentar'
+    aria_label: Lägg till kommentar
     attachments:
-      add_attachment: 'Bifoga fil'
-      remove_attachment: 'Ta bort bifogning'
+      add_attachment: Bifoga fil
+      remove_attachment: Ta bort bifogning
     messages:
-      created: 'Kommentar tillagd'
-      replied: '{{name}} har notfierats angående svar'
-      updated: 'Kommentar uppdaterad'
-      destroyed: 'Kommentar borttagen'
+      created: Kommentar tillagd
+      replied: "{{name}} har notfierats angående svar"
+      updated: Kommentar uppdaterad
+      destroyed: Kommentar borttagen
+      removed: Kommentar borttagen
     say_something: Säg något...
-    edit_comment: 'Edit kommentar'
-    delete_comment: 'Ta bort kommentaren'
-    cancel_reply: 'Ångra svar'
-    confirm_delete_message: 'Är du säker på att du vill ta bort denna kommentaren?'
-    confirm_delete: 'Ta bort kommentar'
-    in_reply_to: "Svara till {{name}} "
-    write_a_comment: "Skriv en kommentar..."
-    post_comment: "Skicka kommentar"
+    edit_comment: Edit kommentar
+    delete_comment: Ta bort kommentaren
+    cancel_reply: Ångra svar
+    confirm_delete_message: Är du säker på att du vill ta bort denna kommentaren?
+    confirm_delete: Ta bort kommentar
+    in_reply_to: 'Svara till {{name}} '
+    write_a_comment: Skriv en kommentar...
+    post_comment: Skicka kommentar
     submit_button:
-      label: 'Lägg upp'
-    private_privacy_notice: 'Din kommentar kommer bara vara synlig för medlemmar av {{groupName}}.'
-    public_privacy_notice: 'Din kommentar kommer att vara synlig för alla på nätet.'
-    sign_in: "Logga in för att delta i konversationen"
+      label: Lägg upp
+    private_privacy_notice: Din kommentar kommer bara vara synlig för medlemmar av {{groupName}}.
+    public_privacy_notice: Din kommentar kommer att vara synlig för alla på nätet.
+    sign_in: Logga in för att delta i konversationen
   sidebar:
-    threads: 'Trådar'
-    recent_threads: 'Senaste trådarna'
-    muted_threads: 'Stumma trådar'
-    explore: 'Publika grupper'
+    threads: Trådar
+    recent_threads: Senaste trådarna
+    muted_threads: Stumma trådar
+    explore: Publika grupper
     start_thread: Ny tråd
     start_decision: Nytt beslut
     aria_labels:
-      heading: 'Sidomeny'
+      heading: Sidomeny
+      threads_list: Trådar åtgärder
+      groups_list: Grupper
+      user_list: Användaråtgärder
+    my_groups: Mina grupper
+    other_groups: Andra grupper
+    all_groups: Alla grupper
+    invite_only_threads: Trådar endast för inbjudningar
+    direct_threads: Direkta trådar
+    unread_threads: Olästa trådar (%{count})
+    start_group: Ny organisation
+    start_subgroup: Ny undergrupp
+    explore_groups: Utforska grupper
+    more_groups: Fler grupper
+    template_gallery: Mallgalleri
+    examples_and_templates: Exempel & mallar
+    help_docs: Hjälpdokument
+    a_detailed_guide_to_loomio: En detaljerad guide till Loomio
+    talk_to_the_loomio_team: Prata med Loomio-teamet
   navbar:
-    recent_title: 'Gå till instrumentbrädan'
-    start_thread: 'Ny tråd'
+    recent_title: Gå till instrumentbrädan
+    start_thread: Ny tråd
     search:
-      placeholder: 'Sök'
-      discussions: 'Diskussioner'
-    logo_title: 'Hemsida'
+      placeholder: Sök
+      discussions: Diskussioner
+      label: Sökfält; sök efter grupper och trådar
+      results_aria_label: Sökresultat
+      no_results: Inga trådar hittades
+      close: Stäng sökpanelen
+      loading: Laddar resultat...
+      proposals: Förslag
+      comments: Kommentarer
+    logo_title: Hemsida
+    search_all_threads: Sök i alla trådar
+    search_threads: Sök i trådar i {{name}}
+    search_polls: Sök omröstningar i {{name}}
+    search_members: Sök medlemmar i {{name}}
+    search_subgroups: Sök medlemmar i {{name}}
+    search_files: Sök efter filer i {{name}}
+    unread_title: Visa oläst aktivitet
+    notifications: Aviseringspanel
+    sign_in: Logga in
+    toggle_sidebar: Växla sidofältet
+    open_sidebar: Öppna sidofältet
+    close_sidebar: Stäng sidofältet
+    group_and_subgroups: "{{grupp}} och undergrupper"
   membership_dropdown:
-    invitation_resent: "Inbjudan skickad igen"
+    invitation_resent: Inbjudan skickad igen
+    set_name_and_username: Ställ in namn och användarnamn
+    set_title: Ställ in titel
+    resend: Skicka inbjudan igen
+    make_coordinator: Gör admin
+    demote_coordinator: Degradera admin
+    remove_from:
+      discussion: Ta bort från tråden
+      group: Ta bort från grupp
+      poll: Ta bort från {{pollType}}
+    cancel_invitation: Avbryt inbjudan
   notifications:
-    header: "Notifieringar"
+    header: Notifieringar
+    no_notifications: Du har inga aviseringar
+    with_title:
+      comment_replied_to: "%{actor} svarade dig i: %{title}"
+      discussion_announced: "%{actor} bjöd in dig till tråden: %{title}"
+      discussion_edited: "%{actor} redigerade trådkontexten: %{title}"
+      discussion_closed: "%{actor} stängde tråden: %{title}"
+      invitation_accepted: "%{actor} accepterade din inbjudan att gå med i %{title}"
+      membership_created: "%{actor} bjöd in dig att gå med i %{title} på %{site_name}"
+      membership_resent: "%{actor} bjöd in dig att gå med i %{title} på %{site_name}"
+      membership_requested: "%{actor} begärde att gå med i %{title}"
+      membership_request_approved: "%{actor} godkände din begäran om att gå med i %{title}"
+      new_comment: "%{actor} kommenterade i: %{title}"
+      new_coordinator: "%{actor} gjorde dig till administratör för %{title}"
+      new_discussion: "%{actor} startade en tråd: %{title}"
+      outcome_announced: "%{actor} delade ett %{poll_type}-resultat: %{title}"
+      outcome_created: "%{actor} delade ett %{poll_type}-resultat: %{title}"
+      outcome_updated: "%{actor} uppdaterade %{poll_type}-resultatet: %{title}"
+      outcome_review_due: 'Det är dags att granska resultatet av: %{title}'
+      poll_announced: "%{actor} bjöd in dig att rösta: %{title}"
+      poll_closed_by_user: "%{actor} stängde %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} stänger om 24 timmar: %{title}"
+      poll_closing_soon_author: 'Din %{poll_type} stänger om 24 timmar: %{title}'
+      poll_created: "%{actor} startade en %{poll_type}: %{title}"
+      poll_edited: "%{actor} uppdaterade %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} har stängt: %{title}"
+      poll_expired_author: 'Dela resultatet av din %{poll_type}: %{title}'
+      poll_option_added: "%{actor} lade till alternativ till %{title}"
+      poll_reopened: "%{actor} öppnade igen %{poll_type}: %{title}"
+      poll_reminder: "%{actor} påminner dig om att rösta på %{title}"
+      poll_reminder_wip: "%{actor} påminner dig om att ge feedback: %{title}"
+      reaction_created: "%{actor} reagerade %{reaction} på din %{model} i %{title}"
+      stance_created: "%{actor} röstade in: %{title}"
+      stance_updated: "%{actor} röstade in: %{title}"
+      stance_created_option: "%{actor} röstade %{option} i %{title}"
+      user_added_to_group: "%{actor} lade till dig i gruppen: %{title}"
+      user_mentioned: "%{actor} nämnde dig i: %{title}"
+      user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
+    without_title:
+      discussion_announced: "%{actor} bjöd in dig till en tråd"
+      discussion_edited: "%{actor} redigerade trådkontexten"
+      discussion_closed: "%{actor} stängde tråden"
+      group_announced: "%{actor} bjöd in dig till en grupp"
+      comment_replied_to: "%{actor} svarade dig"
+      new_discussion: "%{actor} startade en tråd"
+      new_comment: "%{actor} kommenterade i en tråd"
+      membership_created: "%{actor} bjöd in dig att gå med i en grupp"
+      membership_resent: "%{actor} bjöd in dig att gå med i en grupp"
+      membership_requested: "%{actor} begärde att få gå med i din grupp"
+      membership_request_approved: "%{actor} godkände din begäran om att gå med i %{title}"
+      outcome_announced: "%{actor} delade ett %{poll_type}-resultat"
+      outcome_created: "%{actor} delade ett %{poll_type}-resultat"
+      outcome_updated: "%{actor} uppdaterade resultatet"
+      outcome_review_due: Det är dags att granska %{poll_type}-resultatet
+      poll_announced: "%{actor} bjöd in dig att rösta på en %{poll_type}"
+      poll_announced_wip: "%{actor} vill ha din feedback på en %{poll_type}"
+      poll_closed_by_user: "%{actor} stängde %{poll_type}"
+      poll_closing_soon: "%{poll_type} stänger om 24 timmar"
+      poll_closing_soon_author: Din %{poll_type} stänger om 24 timmar
+      poll_created: "%{actor} startade en %{poll_type}"
+      poll_edited: "%{actor} uppdaterade %{poll_type}"
+      poll_expired: "%{poll_type} har stängt"
+      poll_expired_author: Dela resultatet av din %{poll_type}
+      poll_option_added: "%{actor} lade till alternativ till %{poll_type}"
+      poll_reopened: "%{actor} öppnade igen %{poll_type}"
+      poll_reminder: "%{actor} påminner dig om att rösta"
+      poll_reminder_wip: "%{actor} påminner dig om att ge feedback"
+      reaction_created: "%{actor} reagerade %{reaction} på din %{model}"
+      stance_created: "%{actor} röstade"
+      stance_updated: "%{actor} röstade"
+      stance_created_option: "%{actor} röstade %{option}"
+      user_mentioned: "%{actor} nämnde dig"
+      user_reminded: "%{actor} påminner dig om att rösta"
+    hints:
+      poll_closing_soon: Nu är det ett bra tillfälle att rösta, ändra uppfattning eller uppmuntra andra att delta.
+      poll_closing_soon_author: Du kanske vill påminna folk om att rösta eller förlänga tidsfristen.
+      outcome_review_due: Överväg att starta en feedbackundersökning eller en ny tråd som inbjuder till reflektioner över hur beslutet har genomförts.
   discussion_form:
     invite: Bjud in
-    group_label: 'Grupp'
-    title_label: 'Titel'
-    context_label: 'Kontext'
-    privacy_label: 'Sekretesspolicy'
+    group_label: Grupp
+    title_label: Titel
+    context_label: Kontext
+    privacy_label: Sekretesspolicy
+    thread_templates: Trådmallar
+    new_thread_template: Ny trådmall
+    edit_thread_template: Redigera trådmall
+    blank: Tom
+    blank_subtitle: Starta en diskussion och se vart det tar dig
+    new_template: Ny mall
+    new_template_subtitle: Skapa ett exempel som andra kan kopiera
+    to: Till
+    direct_thread: Direkt tråd
+    invite_only_thread: Enbart inbjudningstråd
+    none_direct_thread: Direkt tråd (ingen grupp)
+    none_invite_only_thread: Enbart inbjudningstråd (ingen grupp)
+    change_log_placeholder: Beskriv eventuellt dina ändringar. Detta meddelande kommer att läggas till i tråden.
+    change_log_label: Vad har förändrats?
+    aria_label: Trådform
+    start_thread: Starta tråden
+    messages:
+      created: Tråden startade
+      updated: Tråden uppdaterad
+      forked: Trådgaffel skapad
+    new_discussion_title: Starta ny tråd
+    new_thread_from_template: 'Ny tråd: %{process_name}'
+    moving_items_title: Flytta objekt till ny tråd
+    edit_discussion_title: Redigera tråd
+    group_placeholder: Välj en grupp
+    title_placeholder: Vilket ämne vill du diskutera?
+    context_placeholder: Ange ett sammanhang för den här diskussionen, så att folk vet hur de ska delta
+    privacy_public: Vem som helst kan se denna tråd om de har länken
+    privacy_private: Endast medlemmar i gruppen kan se denna tråd
+    privacy_organisation: Tråden kommer att vara synlig för medlemmar av {{parent}} och medlemmar av {{grupp}}.
+    fork_notice: En ny tråd kommer att skapas med %{count} objekt från {{title}}
+    notify_group: Meddela gruppen
   announcement:
     form:
       invitation_message_label: Meddelande
       poll_reminder:
         message_label: Meddelande
+        title: Påminn om att rösta
+        helptext: Vem vill du påminna om att rösta?
+        message_placeholder: Valfritt meddelande för att berätta varför de ska rösta
       wip_poll_reminder:
         message_label: Meddelande
+        title: Påminn om att ge feedback
+        helptext: Vem vill du påminna om att ge feedback?
+        message_placeholder: Valfritt meddelande att inkludera i aviseringsmejl
+      group_has_no_members_yet: Du är den enda medlemmen i din grupp. Du kanske vill bjuda in några personer till din grupp innan du startar en tråd eller ett beslut.
+      invite_people_to_evaluate_loomio: Bjud in några personer till din Loomio-grupp för att fatta ett beslut tillsammans
+      too_many_invitations: Inbjudningsgränsen har överskridits. <a href="{{upgradeUrl}}" target="_blank">Uppgradera</a>
+      no_invitations_remaining: <p>Du har använt alla {{maxMembers}} inbjudningar som är tillgängliga för den här gruppen.</p><p> Nästa steg, <a href="{{upgradeUrl}}" target="_blank">välj en plan</a> för att fortsätta samarbeta på Loomio.</p>
+      invitations_remaining: '%{count} inbjudningar kvar. <a href="{{upgradeUrl}}" target="_blank">Uppgradera</a>'
+      who_to_invite: Vem skulle du vilja bjuda in?
+      invitation_message_placeholder: Ett meddelande att inkludera i e-postinbjudan. (frivillig)
+      invitation_message_default: Jag har skapat den här Loomio-gruppen för att hjälpa oss fatta beslut tillsammans. Vänligen acceptera min inbjudan. Det tar bara en minut att gå med. Tack.
+      group_announced:
+        title: Bjud in till grupp
+        helptext: Vem skulle du vilja bjuda in till gruppen?
+      discussion_announced:
+        title: Bjud in till tråd
+        helptext: Vem skulle du vilja bjuda in till tråden?
+        notify_helptext: Vem vill du meddela om tråden?
+      discussion_edited:
+        title: Meddela ändringar
+        helptext: Vem vill du meddela om den här uppdateringen? (frivillig)
+      poll_announced:
+        title: Bjud in att rösta
+        helptext: Vem skulle du vilja bjuda in att rösta?
+      wip_poll_announced:
+        title: Bjud in att ge feedback
+        helptext: Vem skulle du vilja bjuda in att ge feedback?
+      poll_edited:
+        title: Meddela ändringar
+        helptext: Vem vill du meddela om den här uppdateringen?
+      outcome_announced:
+        title: Dela resultatet
+        helptext: Sammanfatta resultatet av processen, inklusive eventuella överenskommelser eller problem som framkommit.
+      anyone_can_participate: Alla med länk kan delta
+      placeholder: Du kan ange namn eller e-postadresser
+      type_or_paste_email_addresses_to_invite: Skriv eller klistra in e-postadresser att bjuda in
+      notified_empty: Ingen har valts ännu
+      single_notification: 1 avisering kommer att skickas.
+      multiple_notifications: "{{notified}} aviseringar kommer att skickas."
+      notified: "{{notified}} personer kommer att meddelas."
+      notified_singular: 1 person kommer att meddelas.
+      notified_none: Ingen kommer att meddelas.
+      added: "%{count} personer kommer att läggas till."
+      added_singular: 1 person kommer att läggas till.
+      added_none: Ingen kommer att läggas till.
+      group_title: "{{name}} (%{count} personer)"
+      visible_to_group: Alla i {{grupp}} kommer att kunna se den här tråden.
+      visible_to_guests: Endast inbjudna personer kan se denna tråd.
+      click_group_to_see_individuals: Klicka på grupp för att se individer
+    send_discussion: Skicka tråd
+    send_group: Bjud in personer till {{name}}
+    send_poll: Skicka {{typ}}
+    send_outcome: Skicka resultat
+    cannot_reveal_when_anonymous: Tyvärr kan vi inte avslöja vem som har eller inte har röstat i en anonym omröstning.
+    discussion_notification_history: Trådaviseringshistorik
+    group_notification_history: Gruppinbjudningshistorik
+    poll_notification_history: Omröstningsaviseringshistorik
+    outcome_notification_history: Resultataviseringshistorik
+    comment_notification_history: Kommentarsaviseringshistorik
+    notification_history_explanation: "✓ indikerar att meddelandet har lästs eller e-postmeddelandet har öppnats"
+    quick_add: 'Snabb tillägg:'
+    any_other_groups: Några andra grupper?
+    notified_people: "{{name}} meddelade {{length}} personer:"
+    preview: Förhandsgranska e-post
+    no_notifications_sent: Inga aviseringar har skickats
+    history_error: Något gick fel! Det gick inte att ladda historiken.
+    inviting_guests_to_thread: Gäster tillhör inte din grupp och har endast tillgång till denna tråd
+    select_groups: Välj grupper
+    search_by_name_or_email: Sök på namn eller ange e-postmeddelanden för att bjuda in
+    search_by_name: Sök efter personer med namn
+    only_admins_can_announce: Endast administratörer kan meddela hela gruppen
+    only_admins_can_invite: Endast administratörer kan bjuda in gäster
+    only_admins_can_announce_or_invite: Endast administratörer kan meddela hela gruppen eller bjuda in gäster
+    user_mentioned: "{{name}} nämnde {{length}} personer:"
+    comment_replied_to: "{{name}} svarade {{length}} personer:"
+    new_discussion: "{{name}} bjöd in {{length}} personer till tråden:"
+    discussion_announced: "{{name}} bjöd in {{length}} personer till tråden:"
+    poll_created: "{{name}} bjöd in {{length}} personer att rösta:"
+    poll_announced: "{{name}} bjöd in {{length}} personer att rösta:"
+    outcome_created: "{{name}} delade ett resultat med {{length}} personer:"
+    outcome_announced: "{{name}} delade ett resultat med {{length}} personer:"
+    announcement_created: "{{name}} bjöd in {{length}} personer till tråden:"
+    discussion_edited: "{{name}} redigerade tråden och meddelade {{length}} personer:"
+    poll_edited: "{{name}} redigerade en omröstning och meddelade {{length}} personer:"
+    outcome_edited: "{{name}} redigerade ett resultat och meddelade {{length}} personer:"
+    outcome_updated: "{{name}} redigerade ett resultat och meddelade {{length}} personer:"
+    poll_closing_soon: "{{name}}s påminnelse om stängning av enkäten meddelade {{length}} personer:"
+    poll_reminder: "{{name}} påminde {{length}} personer att rösta:"
+    audiences:
+      group: "{{namn}}"
+      everyone_in_the_group: Alla i gruppen
+      discussion_group: Alla i tråden
+      voters: Alla inbjudna att rösta
+      decided_voters: Alla som röstade
+      undecided_voters: Obestämda väljare
+      non_voters: Medlemmar av {{name}} är ännu inte inbjudna
+    members_list:
+      title: Delad med
+      last_notified: Aviserat
+      not_notified: Inte meddelat ännu
+      no_members: Detta har inte delats med någon ännu!
+      group_admin: Gruppadministratör
+      thread_admin: Trådadmin
+      last_read_at: Senast visade {{time}}
+      has_not_read_thread: Har inte sett tråden
+    group_form:
+      search_placeholder: Sök efter personer...
+      modal_title: Välj gruppmedlemmar
+    flash:
+      success: "%{count} aviseringar har skickats"
   action_dock:
     delete_comment: Ta bort kommentar
     edited: Redigerad
     close_thread: Stäng tråd
+    actions_menu: Menyn Åtgärder
+    more_actions: Fler åtgärder
+    react: Reagera
+    notify: Meddela
+    add_resource: Lägg till en bilaga
+    edit_group: Redigera gruppsammanhang
+    add_comment: Kommentar
+    copy_url: Kopiera länk
+    edit_thread: Redigera sammanhang
+    announce_thread: Skicka tråd
+    invite_guests: Bjud in gäster
+    translate_thread: Översätt sammanhang
+    edit_poll: Redigera omröstning
+    edit_poll_type: Redigera {{pollType}}
+    new_poll_type: Ny {{pollType}}
+    move_items: Flytta objekt
+    announce_poll: Bjud in folk att rösta
+    announce_poll_active: "(Ingen har blivit inbjuden ännu)"
+    translate_poll: Översätt enkät
+    edit_stance: Ändra ställning
+    translate_stance: Översätt röst
+    edit_comment: Redigera kommentar
+    reply_to_comment: Svar
+    fork_comment: Gaffeltråd
+    translate_comment: Översätt kommentar
+    edit_outcome: Redigera resultatet
+    announce_outcome: Meddela folk om detta resultat
+    announce_outcome_active: "(Ingen har meddelats om detta resultat ännu)"
+    translate_outcome: Översätt resultat
+    show_history: Visa redigeringshistorik
+    show_edits: Visa redigeringar
+    show_notifications: Visa notifikationer
+    history: Historia
+    pin_thread: Pintråd
+    unpin_thread: Lossa gängan
+    pin_event: Fäst till tidslinjen
+    unpin_event: Lossa från tidslinjen
+    comment_copied: Kommentar URL kopierad till urklipp
+    move_thread: Flytta till grupp
+    poll_copied: Besluts-URL kopierad till urklipp
+    discussion_copied: Trådens URL kopierad till urklipp
+    url_copied: Länken har kopierats till urklipp
+    tag_thread: Hantera taggar
+    reopen_thread: Öppna tråden igen
+    delete_thread: Ta bort tråd
+    notification_history: Aviseringshistorik
+    move_item: Flytta objekt
+    add_poll_to_thread: Lägg till i tråden
+    count_members: "%{count} medlemmar"
+    count_voters: "%{count} väljare"
   formatting:
     attach: Bifoga fil
+    formatting_tools: Textformateringsverktyg
+    colors: Färger
+    highlight: Markera
+    alignment: Inriktning
+    lists: Listor
+    expand: Visa fler formateringsverktyg
+    collapse: Visa färre formateringsverktyg
+    bold: Djärv
+    italicize: Kursivera
+    blockquote: Citat
+    strikethrough: Genomstruken
+    underline: Understrykning
+    link: Infoga länk
+    code_block: Kodblock
+    insert_image: Infoga bild
+    insert_emoji: Infoga emoji
+    heading_size: Rubrikstorlek
+    heading1: Rubrik 1
+    heading2: Rubrik 2
+    heading3: Rubrik 3
+    left_align: Vänsterjustera
+    center_align: Centerjustera
+    right_align: Högerjustera
+    justify_align: Motivera justera
+    paragraph: Paragraf
+    bullet_list: Lista
+    number_list: Numrerad lista
+    check_list: Checklista
+    task_list: Uppgiftslista
+    reset: Återställa
+    text_color: Text färg
+    background_color: Bakgrundsfärg
+    quote: Citat
+    embed: Inbäddad video
+    divider: Delare
+    add_table: Lägg till tabell
+    remove_table: Ta bort bordet
+    add_column_before: Lägg till kolumn innan
+    add_column_after: Lägg till kolumn efter
+    remove_column: Ta bort kolumn
+    add_row_before: Lägg till rad innan
+    add_row_after: Lägg till rad efter
+    remove_row: Ta bort raden
+    merge_selected: Slå samman markerade celler
+    wysiwyg: wysiwyg
+    edit_markdown: Redigera Markdown
+    markdown_confirm: Viss formatering kan gå förlorad vid konvertering av wysiwyg-innehåll till markdown.
+    upload_failed: Uppladdningen misslyckades
   join_group_button:
     join_group: Bli medlem i gruppen
     membership_requested: Förfrågan om medlemskap
+    not_a_member: Du är för närvarande inte medlem i den här gruppen.
+    messages:
+      joined_group: Du är nu medlem i {{group}}
   membership_request_form:
     heading: Be att få gå med
     name_label: Namn
     email_label: Email
+    aria_label: Blankett för begäran om medlemskap
+    introduction_label: Varför vill du vara med?
+    submit_button: Be att få vara med
+    introduction_over_limit: Svaret är för långt
+    messages:
+      membership_requested: Du har begärt att få gå med i {{grupp}}
   revision_history_modal:
     current_revision: Senaste
+    aria_label: Revisionshistorik
+    discussion_header: Diskussionsredigeringar
+    comment_header: Kommentarsredigeringar
+    poll_header: Omröstningsredigeringar
+    outcome_header: Resultatredigeringar
+    stance_header: Rösta redigeringar
+    started_by: Startade av <strong>{{name}}</strong>
+    edited_by: Redigerad av <strong>{{name}}</strong>
+    edit_by: Redigera av {{name}} · {{date}}
+    posted: Postad
+    field: Fält
+    before: Innan
+    after: Efter
+    original_text: Original
+    closing_at_changed: stängningstid inställd på {{tid}}
+    private_changed: sekretess inställd på {{privat}}
+    group_id_changed: flyttade till {{name}}
   reactions_display:
-    you: "Du"
+    you: Du
+    more_reactions: "%{count} till"
+    you_and_name: Du och {{name}}
+    you_and_name_and_count_more: Du, {{name}} och %{count} till
+    name_and_count_more: "{{name}} och %{count} till"
   context_panel:
     thread_status:
-      closed: "Denna tråd är stängd. Den kommer inte längre att visas på instrumentbrädan, tråden kommer också vara listad som 'stängd' på gruppsidan."
+      closed: Denna tråd är stängd. Den kommer inte längre att visas på instrumentbrädan, tråden kommer också vara listad som 'stängd' på gruppsidan.
+      pinned: Den här tråden har fästs. Den förblir överst på gruppens lista över trådar för alla användare.
   group_page:
     threads: Trådar
     members: Medlemmar
     settings: Inställningar
-    invite_people: 'Bjud in'
-    options_label: 'Alternativ'
+    invite_people: Bjud in
+    options_label: Alternativ
     options:
-      label: 'Alternativ'
-      edit_group: 'Redigera gruppinställningarna'
-      email_settings: 'E-postinställningar'
-      leave_group: 'Lämna gruppen'
+      label: Alternativ
+      edit_group: Redigera gruppinställningarna
+      email_settings: E-postinställningar
+      leave_group: Lämna gruppen
+      become_coordinator: Bli admin
+      export_data: Exportera gruppdata
+      export_data_as_json: Exportera gruppdata som JSON
+      export_data_as_csv: Exportera gruppdata som CSV
+      export_data_as_html: Exportera gruppdata som HTML
+      manage_members: Hantera medlemmar
+      add_subgroup: Lägg till undergrupp
+      manage_subscription: Hantera gruppabonnemang
+      deactivate_group: Inaktivera grupp
+      subscription_status: Prenumerationsstatus
     volume:
       quiet: Skicka mig inte epost om den här gruppen. Aktivitet kommer att visas på instrumentbrädan.
       quiet_aria_description: Din notifikationsvolym för den här gruppen är satt till Tyst. Du kommer inta att få epost om aktivitet i den här gruppen. Grupp aktivitet kommer att visas på din instrumentbräda.
       mute: Göm denna grupp från instrumentbrädan och notifiera mig inte om jag inte är @omnämnd.
       mute_aria_description: Din notifikationsvolym för den här gruppen är satt till Stum. Du kommer inte att få epost om inte någon specifikt vidnämner dig och grupp aktivitet kommer inte att visas på din instrumentbräda.
       mute_message: '"{{name}}" har tagits bort från din instrumentbräda.'
+      loud: Mejla när det är aktivitet.
+      loud_aria_description: Din aviseringsvolym för den här gruppen är inställd på Högt. Du kommer att få e-post när det är aktivitet.
+      loud_message: Du kommer att få ett e-postmeddelande om all aktivitet i "{{name}}."
+      normal: 'Maila bara viktig aktivitet: Nya trådar och förslag, resultat etc.'
+      normal_aria_description: Din aviseringsvolym för den här gruppen är inställd på Normal. Du kommer bara att få ett e-postmeddelande med viktig aktivitet, till exempel när någon startar en ny tråd, tar upp ett förslag eller sätter ett resultat.
+      normal_message: Du kommer endast att få e-post om viktiga händelser i "{{name}}".
+      quiet_message: Du kommer inte att få e-post om aktivitet i "{{name}}".
+    stats: Gruppstatistik
+    polls: Omröstningar
+    decisions: Beslut
+    files: Filer
+    subgroups: Undergrupper
+    show_opened: "%{count} Öppna"
+    show_closed: "%{count} stängt"
+    no_threads_here: Inga trådar att se här!
+    search_threads: Sök efter trådar...
+    private_threads: Du måste vara medlem för att se privata trådar i den här gruppen
+    no_more_threads: Inga fler trådar att ladda
+    view_closed_threads: Se stängda trådar
+    messages:
+      privacy:
+        members: Denna grupp är nu endast synlig för medlemmar
+        parent_members: Den här gruppen är nu endast synlig för medlemmar i din organisation
+        public: Denna grupp är nu synlig för allmänheten
+      leave_group_success: Du har lämnat den här gruppen
+      archive_group_success: Denna grupp har avaktiverats
+    group_logo: Grupplogotyp
+    new_photo: nytt foto
+    new_cover_photo: Ladda upp nytt omslagsfoto
+    new_group_logo: Ladda upp ny grupplogotyp
+    open_discussions: Öppna trådar
+    closed_discussions: Slutna trådar
+    discussions_placeholder: En tråd är där alla kan diskutera ett ämne och fatta beslut tillsammans.
+    members_placeholder: 'Du är den enda här: bjud in några personer att gå med dig!'
+    member_options: Medlemsalternativ
+    see_all_members: Se alla %{count} medlemmar
+    pending_invitations: "+ %{count} väntande"
+    subgroups_placeholder: Undergrupper ger teamen sitt eget utrymme och håller aviseringar fokuserade till rätt personer.
+    visibility_label: Synlighet
+    privacy:
+      private: 'Sekretess: Denna grupp är endast synlig för medlemmar'
+      parent_members: 'Sekretess: Den här gruppen är synlig för medlemmar i {{parentGroupName}} och medlemmar av {{groupName}}'
+      public: 'Sekretess: Den här gruppen är synlig på webben'
+      aria_label: 'Gruppsekretess: {{privacy}}'
   group_form:
     new_group: Ny grupp
     group_name: Gruppnamn
-    group_name_placeholder: 'Vad heter din grupp?'
-    privacy: 'Integritet'
+    group_name_placeholder: Vad heter din grupp?
+    privacy: Integritet
     profile: Profil
-    submit_start_group: 'Startgrupp'
-    submit_update: 'Uppdatera inställningar'
+    submit_start_group: Startgrupp
+    submit_update: Uppdatera inställningar
+    thread_defaults_help: Standardinställningar för nya trådar
+    click_to_change_image: Klicka för att ändra omslagsbild (4x1) eller logotyp (1x1)
+    change_cover_image: byt omslagsbild
+    change_logo: ändra logotyp
+    permissions_explaination: 'Det finns två nivåer av medlemskap en person kan ha i en grupp: admin och medlem. Administratörer kan redigera gruppinställningar, göra andra till administratörer och utföra alla åtgärder som anges nedan.'
+    aria_label: Gruppform
+    parent_group: Föräldragrupp
+    new_organisation: Ny organisation
+    new_subgroup: Ny undergrupp
+    new_group_explainer: Starta en ny Loomio-grupp för din organisation
+    new_subgroup_explainer: Starta en undergrupp inom en befintlig grupp - ett privat utrymme för ett team av personer från organisationen
+    start_group_heading: Starta en grupp
+    start_subgroup_heading: Starta en undergrupp
+    edit_group_heading: Redigera gruppinställningar
+    edit_subgroup_heading: Redigera undergruppsinställningar
+    group_settings: Gruppinställningar
+    subgroup_settings: Undergruppsinställningar
+    subgroup_name: Undergrupps namn
+    organization_name: Organisations namn
+    handle: Hantera
+    group_handle_placeholder: 'Används i din grupp-URL: {{host}}/{{handle}}'
+    start_organization_heading: Ny organisation
+    edit_organization_heading: Redigera organisationsinställningar
+    subgroup_name_placeholder: Vad heter din undergrupp?
+    organization_name_placeholder: Vad heter din organisation?
+    description: Beskrivning
+    description_placeholder: Beskriv syftet med din grupp så att dina gruppmedlemmar vet varför de är här.
+    new_description_placeholder: Varför prövar du Loomio? Vilka beslut måste ni fatta tillsammans?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Hur tänker du använda Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Varför är detta viktigt för din grupp?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Vilka beslut behöver du ta?</h3><p></p>
+    secret_by_default: Din grupp kommer endast att vara tillgänglig för de som är inbjudna att gå med. Du kan ändra detta senare.
+    privacy_statement:
+      public_on_web: Namn, beskrivning och bilagor till gruppsammanhanget kommer att vara synliga för allmänheten
+      private_to_group: Namn och beskrivning kommer endast att vara synliga för medlemmar.
+      private_to_parent_members: Namn och beskrivning kommer att vara synliga för medlemmar av {{parent}}
+    group_privacy_is_open_description: Offentligt listad. Alla trådar är offentliga.
+    group_privacy_is_closed_description: Onoterat. Alla som har länken kan be om att få gå med. Alla trådar är privata.
+    group_privacy_is_closed_public_threads_description: Onoterat. Alla som har länken kan be om att få gå med. Trådar kan vara offentliga eller privata.
+    group_privacy_is_secret_description: Endast inbjudna personer kan hitta gruppen. Alla trådar är privata.
+    confirm_change_to_secret: Om du fortsätter kommer alla trådar i den här gruppen och dess undergrupper att göras privata.
+    confirm_change_to_secret_subgroup: Om du fortsätter kommer alla trådar att göras privata.
+    confirm_change_to_public: Om du fortsätter kommer alla trådar i den här gruppen att göras offentliga på webben.
+    confirm_change_to_private_discussions_only: Om du fortsätter kommer alla offentliga trådar i den här gruppen att göras privata.
+    subgroup_privacy_is_open_description: Vem som helst kan hitta denna undergrupp och be att få gå med. Endast medlemmar kan se vem som är med i gruppen. Alla trådar är offentliga.
+    subgroup_privacy_is_closed_description: Vem som helst kan hitta denna undergrupp och be att få gå med. Endast medlemmar kan se vem som är med i gruppen. Alla trådar är privata.
+    subgroup_privacy_is_closed_public_threads_description: Vem som helst kan hitta denna undergrupp och be att få gå med. Endast medlemmar kan se vem som är med i gruppen. Trådar kan vara offentliga eller privata.
+    subgroup_privacy_is_closed_secret_parent_description: Medlemmar av {{parent}} kan hitta denna undergrupp och be att få gå med. Alla trådar är privata. Endast medlemmar kan se vem som är med i gruppen.
+    subgroup_privacy_is_secret_description: Endast inbjudna medlemmar kan hitta den här undergruppen, se vem som är i den och se trådar.
+    advanced_settings: Avancerade inställningar
+    how_do_people_join: Hur går folk med?
+    membership_granted_upon_request: Vem som helst kan gå med i gruppen.
+    membership_granted_upon_approval: Vem som helst kan begära att få vara med men måste godkännas.
+    membership_granted_upon_invitation: Endast inbjudan.
+    membership_granted_upon_approval_secret_parent: "<strong>På begäran</strong> kan vem som helst från {{parent}} be om att få gå med i gruppen."
+    permissions: Behörigheter
+    thread_privacy: Trådens integritet
+    public_threads: Endast offentliga trådar
+    public_discussions_subgroup: Alla i {{parentGroupName}} kan se diskussioner
+    public_or_private_threads: Tillåt offentliga och privata trådar
+    private_threads: Endast medlemmar kan se diskussioner
+    allow_public_threads: Tillåt offentliga trådar i den här gruppen.
+    parent_members_can_see_discussions: Medlemmar av {{parent}} kan se privata trådar
+    parent_members_can_see_discussions_help: Tillåt medlemmar i föräldragruppen att se, men inte delta i, trådar och omröstningar inom denna grupp
+    members_can_announce: Medlemmar kan meddela alla i gruppen
+    members_can_announce_help: Tillåt medlemmar att meddela alla i gruppen om en tråd eller omröstning
+    members_can_add_members: Medlemmar kan bjuda in medlemmar
+    members_can_add_members_help: Tillåt medlemmar att bjuda in personer att gå med i den här gruppen
+    members_can_add_guests: Medlemmar kan bjuda in gäster
+    members_can_add_guests_help: Tillåt medlemmar att bjuda in gäster till trådar eller omröstningar i den här gruppen
+    members_can_create_subgroups: Medlemmar kan skapa undergrupper
+    members_can_create_subgroups_help: Tillåt medlemmar att skapa och bli administratörer för nya undergrupper
+    members_can_edit_discussions: Medlemmar kan hantera trådar och kommentarer
+    members_can_edit_discussions_help: Tillåt medlemmar att redigera, flytta, fästa, tagga eller stänga trådar
+    members_can_edit_comments: Medlemmar kan redigera sina egna kommentarer
+    members_can_edit_comments_help: Tillåt medlemmar att redigera sina egna kommentarer när som helst
+    members_can_delete_comments: Medlemmar kan ta bort sina egna kommentarer
+    members_can_delete_comments_help: Tillåt medlemmar att ta bort sina egna kommentarer från trådar
+    members_can_start_discussions: Medlemmar kan starta nya trådar
+    members_can_start_discussions_help: Tillåt medlemmar att starta nya trådar inom gruppen
+    members_can_raise_motions: Medlemmar kan starta omröstningar
+    members_can_raise_motions_help: Tillåt medlemmar att starta omröstningar och förslag inom diskussioner eller i gruppen
+    admins_can_edit_user_content: Administratörer kan redigera medlemmars kommentarer
+    admins_can_edit_user_content_help: Tillåt administratörer att redigera innehåll som skrivits av medlemmar
+    submit_start_subgroup: Starta undergrupp
+    messages:
+      group_created: Gruppen startade
+      group_updated: Gruppen uppdaterad
+    upload_logo: Ladda upp logotyp
+    upload_cover_photo: Ladda upp omslagsfoto
   membership_requests_page:
     approve: Godkänn
     ignore: Ignorera
+    heading: Medlemsförfrågningar
+    no_pending_requests: Det finns för närvarande inga väntande medlemsförfrågningar för denna grupp.
+    no_previous_requests: Det finns för närvarande inga tidigare medlemsförfrågningar för denna grupp.
+    previous_requests: Tidigare förfrågningar
+    previous_request_response: "{{response}} av {{responder}}"
+    messages:
+      request_approved_success: Medlemsansökan godkänd
+      request_ignored_success: Medlemskapsbegäran ignoreras
   invitation_form:
-    invite_people: 'Bjud in deltagare'
-    copy_link: 'Kopiera'
-    send: 'Skicka'
-    done: 'Klar'
+    invite_people: Bjud in deltagare
+    copy_link: Kopiera
+    send: Skicka
+    done: Klar
+    group_url: Grupp-URL
+    reusable_invitation_link: Återanvändbar inbjudningslänk
+    error: Fel vid försök att kopiera till urklipp
+    aria_label: Inbjudningsformulär
+    invite_guests: Bjud in gäster
+    notify_people: Meddela folk
+    invite_people_to_group: Bjud in till {{name}}
+    group: Grupp
+    group_placeholder: Välj en grupp
+    shareable_link: Delbar länk
+    share_group: Dela din grupp
+    email_addresses: Mejladresser
+    email_addresses_placeholder: t.ex. helperbot@loomio.org, friendlybot@loomio.org
+    secret_group_url_explanation: Det här är adressen till din grupp. Endast inbjudna medlemmar kommer att kunna se gruppen.
+    shareable_group_url_explanation: Du kan dela denna länk offentligt. Människor kan begära att få gå med och du kan godkänna eller ignorera förfrågningar.
+    shareable_invitation_explanation: Dela inte denna länk offentligt. Alla som har det kan gå med i din grupp utan ditt godkännande. Dela detta endast inom privat kommunikation för att tillåta personer i din organisation att gå med.
+    shareable_link_reset: Delbar länk återställd. Den tidigare länken fungerar inte längre.
+    email_explanation: Alternativt kan du ange e-postadresser nedan för att skicka inbjudningar via e-post.
+    add_custom_message: Gör din inbjudan personlig,
+    add_custom_message_link: lägg till ett anpassat meddelande.
+    custom_message: Anpassat meddelande
+    custom_message_placeholder: Ange ett personligt meddelande att inkludera i inbjudan.
+    add_members: Lägg till medlemmar
+    from_parent_group: från namn}}.
+    messages:
+      invitation_sent: Inbjudan skickad.
+      invitations_sent: "%{count} inbjudningar har skickats."
+      no_invitations: Hoppsan! Kontrollera att e-postadressen är korrekt och försök igen.
+      max_invitations: Om du vill skicka fler än 100 inbjudningar, använd en teamlänk.
   memberships_page:
-    members: 'Medlemmar'
-    name_label: 'Namn'
-    remove_member_label: 'Ta bort'
+    members: Medlemmar
+    name_label: Namn
+    remove_member_label: Ta bort
+    coordinator_label: Administration
+    fragment_placeholder: Filtrera användare efter namn eller användarnamn...
+    only_one_admin: Det finns bara en administratör i den här gruppen. Det rekommenderas att du utser minst en medlem till som admin.
+    messages:
+      remove_member_success: Tog bort {{name}}
+      make_admin_success: "{{name}} är nu administratör"
+      remove_admin_success: "{{name}} är inte längre en administratör"
+    remove_admin_from_self:
+      question: Är du säker på att du inte längre vill vara administratör?
   profile_page:
-    profile: 'Profil'
-    picture_label: 'Bild'
-    name_label: 'Namn'
-    username_label: 'Användarnamn'
-    email_label: 'Email'
-    locale_label: 'Språk'
+    profile: Profil
+    picture_label: Bild
+    name_label: Namn
+    username_label: Användarnamn
+    email_label: Email
+    locale_label: Språk
+    account_is_bot: Detta är ett botkonto
+    bot_account_warning: Botkonton kommer inte att bjudas in att rösta i omröstningar eller delta i diskussioner
+    incomplete_profile: Ofullständig profil!
+    set_your_profile_picture: Ställ in din profilbild
+    messages:
+      updated: Profil uppdaterad
+      picture_changed: Profilbilden uppdaterad
+      password_changed: lösenord uppdaterat
+      deactivated: Kontot avaktiverat
+    deactivated_user: Avaktiverad användare
+    date_time_pref_label: Datum- och tidsformat
+    merge_accounts: Slå samman konton
+    change_picture_link: Byt bild
+    change_password_link: Återställ lösenord
+    delete_account: Ta bort konto permanent
+    delete_user_link: Radera konto
+    edit_profile: Redigera profil
+    username_helptext: Alla små bokstäver och siffror, max 30 tecken
+    short_bio_label: Introduktion
+    short_bio_placeholder: Vänligen presentera dig själv, inkludera expertområden, ämnen av intresse och eventuella anslutna organisationer
+    locale_placeholder: Välj önskat språk
+    location_label: Plats
+    location_placeholder: Vart är du baserad?
+    update_profile: Uppdatera profil
+    deactivate_account: Inaktivera användarkonto
+    help_translate: Kan du hjälpa oss att översätta Loomio?
+    updated_on_sign_in: Tillhandahålls av din webbläsare och uppdateras när du loggar in
   change_picture_form:
-    use_gravatar: 'Använd Gravatar'
+    use_gravatar: Använd Gravatar
+    aria_label: Profilfotoformulär
+    title: Ställ in profilbild
+    helptext: Du kan ladda upp din egen profilbild, eller om du har ett <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar-</a> konto kan du använda det.
+    use_initials: Använd initialer
+    use_uploaded: Ladda upp nytt foto
+    existing_upload: Befintlig uppladdning
+    use_provider: Använd {{provider}} foto
   email_settings_page:
     monday: Måndag
     tuesday: Tisdag
@@ -339,82 +1140,1359 @@ sv:
     saturday: Lördag
     sunday: Söndag
     announcement_label: Meddelanden
+    every_day: Varje dag
+    every_second_day: Varannan dag
+    header: Aviseringsinställningar
+    account_deactivated: Ditt konto har avaktiverats. Du kommer aldrig att få några mejl.
+    deactivate_header: Stoppa alla e-postmeddelanden för alltid
+    deactivate_description: Om du aldrig vill få mer e-post från oss igen, kan du avaktivera ditt användarkonto.
+    email_newsletter: Loomio nyhetsbrev
+    email_newsletter_description: Få uppdateringar om nya funktioner, utbildning, evenemang i din stad och framtiden för Loomio. Vanligtvis 2 eller 3 e-postmeddelanden per år.
+    email_catch_up_day: E-post med sammanfattning
+    daily_summary_description: Välj när du vill få e-postmeddelandet med en sammanfattning. Det här e-postmeddelandet innehåller ny aktivitet som du inte har sett. Ett bra sätt att hålla sig uppdaterad om du inte är en vanlig användare.
+    on_participation_label: Prenumerera på deltagande
+    on_participation_description: När du deltar i en tråd kommer all ytterligare aktivitet att mailas till dig omedelbart.
+    announcement_description: Du kommer att få ett e-postmeddelande om allt innehåll som har annonserats av personer i dina grupper
+    mentioned_label: Omnämnanden och svar
+    mentioned_description: När någon @nämner dig i en kommentar eller svarar dig får du ett e-postmeddelande
+    update_settings: Spara ändringar
+    specific_groups: Inställningar för specifika grupper
+    default_settings:
+      loud_description: När du går med i en ny grupp kommer du att få ett e-postmeddelande <strong>när det är aktivitet</strong> .
+      normal_description: När du går med i en ny grupp kommer du att få ett e-postmeddelande om <strong>nya trådar och förslag</strong> .
+      quiet_description: När du går med i en ny grupp <strong>kommer du inte att få e-postmeddelanden om aktivitet</strong> .
+    edit: Redigera
+    messages:
+      updated: E-postinställningar uppdaterade
+    learn_more: Läs mer om e-postinställningar...
   dashboard_page:
-    aria_label: 'Instrumentbräda'
-    recent_threads: "Senaste trådarna"
+    aria_label: Instrumentbräda
+    recent_threads: Senaste trådarna
     mark_as_read: Markera som läst
     filtering:
       dropdown_heading: Filtrera instrumentbrädan.
+      filter_threads: Filtrera trådar
+      filter_threads_aria_label: Filtrera trådar
+      all: Senaste trådar
+      all_aria_label: Visar för närvarande senaste trådar
+      all_description: Visa de senaste trådarna
+      proposals: Förslag
+      proposals_aria_label: Visar för närvarande trådar med aktiva förslag
+      proposals_description: Visa endast trådar med aktiva förslag
+      muted: Dämpade trådar
+      muted_aria_label: Nuvarande visar avstängda trådar
+      muted_description: Visa bara trådar som har stängts av
     threads_from:
-      today: 'I dag'
-      yesterday: 'Igår'
+      today: I dag
+      yesterday: Igår
+      group: Trådar från
+      pinned: Nålade trådar
+      proposals: Trådar med aktiva beslut
+      starred: Stjärnmärkta trådar
+      thisweek: Denna vecka
+      thismonth: Den här månaden
+      older: Äldre än en månad
+    polls_to_vote_on: Omröstningar att rösta på
+    no_polls_to_vote_on: Det finns inga omröstningar du behöver rösta på
+    recent_polls: Senaste omröstningar
+    current_polls: Aktuella omröstningar
+    no_groups:
+      show_all: Välkommen! Du är inte medlem i några grupper än. <a href="/explore">Bläddra bland offentliga grupper</a> eller <a href="/g/new">starta en grupp</a> .
+      show_muted: Du har inga avstängda trådar eftersom du inte är medlem i några grupper.
+    no_threads:
+      show_all: Du har inga nya trådar.
+      show_proposals: Det finns inga aktiva förslag för närvarande.
+      show_muted: Du har inga dämpade trådar.
+    view_recent: Visa alla senaste trådar?
+    load_more: Ladda fler trådar
+    dismiss: Avfärda
+    thread_dismissed: Tråd markerad som läst
+    thread_recalled: Tråd återkallad
+    explain_mute:
+      title: Du har inte stängt av några trådar än.
+      explanation_html: Dämpning är ett sätt att dölja eller tysta trådar som du inte är intresserad av. Dämpning betyder att du inte kommer att se den i <strong>Senaste</strong> eller <strong>Olästa</strong> , och du kommer inte att meddelas om aktivitet i den tråden, som förslag. Du blir bara varnad om någon <strong>@nämner</strong> ditt namn.
+      instructions: Om du vill stänga av en tråd håller du muspekaren över den och klickar på tystnadsikonen.
+      see_muted_html: Om du vill se dina avstängda trådar klickar du på <strong>"Avstängd"</strong> . Du kan slå på ljudet genom att hålla muspekaren och klicka på samma ikon.
+    thread_preview:
+      you_voted: Du röstade {{position}}
+      undecided: Du är obestämd
   inbox_page:
     no_groups:
       start: Starta
       or: eller
+      explanation: Du har inga olästa trådar eftersom du inte är medlem i någon grupp.
+      join_group: <a href="/explore">gå med i</a> en grupp för att se trådar.
+    no_threads: Woohoo! Du har läst alla trådar i din inkorg.
+    unread_threads: Olästa trådar
+    view_more: Visa mer
   activity_card:
     latest: Senaste
     context: Kontext
+    count_responses: "%{count} svar"
+    event_pinned: Fäst till tidslinjen
+    event_unpinned: Lossade från tidslinjen
+    beginning: Början
+    end: Slutet
+    unread: Oläst (%{count})
+    chronological: Kronologiskt
+    nested: Kapslad
+    attachment_display:
+      aria_label: 'Fil bifogad:'
+      image_alt: Bifogad bild
+    n_previous: Ladda %{count} tidigare svar
+    n_more: Ladda %{count} svar
+    add_comment: Lägg till kommentar
+    add_poll: Lägg till enkät
+    add_outcome: Lägg till resultat
+    comment: Kommentar
+    facilitate: Främja
+    start_decision: Börja beslut
+    start_vote: Börja rösta
   thread_group:
     aria_label: Gruppnamn
   thread_context:
-    close_thread: 'Stäng'
-    reopen_thread: 'Öppna igen'
-    mute_thread: 'Tysta ned'
-    delete_thread: 'Radera'
+    close_thread: Stäng
+    reopen_thread: Öppna igen
+    mute_thread: Tysta ned
+    delete_thread: Radera
+    current_poll_type_banner: Aktuell {{pollType}}
+    item_maybe_deleted: Kan inte hitta den begärda platsen i tråden. Det kan ha tagits bort.
+    aria_label: Trådsammanhang
+    thread_options: Trådalternativ
+    email_settings: Aviseringsinställningar
+    edit: Redigera
+    edit_thread: Redigera
+    pin_thread: Stift
+    unpin_thread: Lossa
+    move_thread: Flytta
+    print_thread: Skriva ut
+    add_comment: Kommentar
+    seen_by_count: Sett av %{count}
+    count_notified: Aviserat %{count}
+    forked_from: Forked från
   delete_comment_dialog:
-    title: 'Ta bort kommentaren'
+    title: Ta bort kommentaren
+    question: Detta kommer att ta bort den här kommentaren permanent. Om du fortsätter kan den inte återställas.
   contact_message_form:
-    name_label: 'Ditt namn'
-    subject_label: "Ämne"
-    email_label: 'Din emailadress'
-    message_label: 'Ditt meddelande'
+    name_label: Ditt namn
+    subject_label: Ämne
+    email_label: Din emailadress
+    message_label: Ditt meddelande
+    alt_title: Kontakta Loomio Support
+    need_message: Skriv ett meddelande så kan vi hjälpa dig :-)
+    respond_asap: Skicka ett meddelande till Loomio-teamet så svarar vi så snart vi kan.
+    happy_to_help_with: Vi hjälper gärna till med försäljningsförfrågningar, supportförfrågningar, funktionsförfrågningar, rapportering av buggar eller problem som du upplever.
+    title: Hallå där! Hur kan vi hjälpa?
+    contact_us_email: 'Du kan också maila oss: <a href="mailto:{{email}}">{{email}}</a>'
+    contact_us: Kontakta oss
+    name_placeholder: Ange ditt namn...
+    subject_placeholder: 'Till exempel: problem med att logga in eller funktionsförslag'
+    email_placeholder: Skriv in din mailadress...
+    message_placeholder: Om du begär support, försök att ge så mycket information du kan.
+    send_message: Skicka meddelande
+    new_contact_message: Tack för att du hörde av dig; vi återkommer snart!
+    consent_message: Genom att kontakta oss samtycker du till att vår personal får tillgång till ditt konto vid behov.<br /> Vårt supportteam talar engelska och kommer att översätta ditt meddelande med Google Translate om det behövs.<br /> Vi strävar efter att svara på alla meddelanden inom 24 timmar.
+    success: Tack för ditt meddelande, {{name}}. Du hör snart från oss.
+    success_via_email: Tack för ditt meddelande, {{name}}. Vi svarar via e-post inom 24 timmar.
   decision_tools_card:
     proposal_title: Förslag
     poll_title: Undersökning
     score_title: Ränka röster
     meeting_title: Tidsröstning
     ranked_choice_title: Valfritt val
+    choose_type: Välj omröstningstyp
+    title: Främja
+    recommended: Rekommenderad
+    question_title: Frågerunda
+    advice_title: Råd
+    consent_title: Samtycke
+    consensus_title: Konsensus
+    count_title: Välj att delta
+    check_title: Sense check
+    meeting: Möte
+    dot_vote_title: Rösta prick
+    gradients_of_agreement_title: Gradienter av överensstämmelse
   poll_common:
     have_your_say: Gör din röst hörd
     save_changes: Spara
+    superseded: Ersatt
+    need_help_with_templates: Behöver du hjälp med att skapa dina egna beslutsmallar?
+    categorize_poll_templates: Kategorisera omröstningsmallar
+    show_all_templates_in_one_list: Visa alla mallar i en lista
+    advice_process: Rådgivningsprocess
+    consent_process: Samtyckesprocess
+    consensus_process: Konsensusprocess
+    question_round: Frågerunda
+    edit_template: Redigera mall
+    proposal: Förslag
+    run_process: Kör processen
+    proposal_templates: Förslagsmallar
+    custom: Beställnings
+    custom_process: Anpassad process
+    custom_poll: Anpassad omröstning
+    delete_poll: Ta bort omröstning
+    select_count_options: Välj {{count}} alternativ
+    select_minimum_to_maximum_options: Välj alternativen {{minimum}} till {{maximum}}
+    custom_poll_types: Anpassade omröstningstyper
+    hidden_poll_templates: Dolda omröstningsmallar
+    poll_template: Omröstningsmall
+    poll_template_saved: Omröstningsmall sparad
+    poll_templates: Omröstningsmallar
+    poll_types: Omröstningstyper
+    new_proposal_template: Ny förslagsmall
+    edit_proposal_template: Redigera förslagsmall
+    new_poll_template: Ny omröstningsmall
+    edit_poll_template: Redigera omröstningsmall
+    new_poll_type: Ny omröstningstyp
+    edit_poll_type: Redigera omröstningstyp
+    new_custom_poll: Ny anpassad omröstning
+    edit_custom_poll: Redigera anpassad omröstning
+    create_a_custom_poll_type: Skapa en ny omröstningstyp med anpassad terminologi och inställningar
+    create_a_custom_process: Skapa en ny process med din egen terminologi och alternativ
+    create_a_custom_poll: Skapa en omröstning med anpassad terminologi och inställningar
+    decision: Beslut
+    decision_templates: Beslutsmallar
+    remove_your_vote: Ta bort din röst
+    remove_your_response: Ta bort ditt svar
+    vote_now: Rösta nu
+    review_due: Granskning förfaller
+    your_response: Ditt svar
+    change_your_response: Redigera svar
+    please_vote: Vänligen rösta
+    reason: Anledning
+    response: Svar
+    reason_placeholder: Förklara kort varför du röstade på det här sättet och klicka sedan på "Skicka röst"
+    message: Meddelande
+    results: Resultat
+    current_results: Aktuella resultat
+    responses: Svar
+    close_poll_type: Stäng {{pollType}}
+    close_early: Stäng tidigt
+    totals: Summor
+    participate: Delta
+    vote: Rösta
+    votes: Röster
+    update_outcome: Uppdatera resultatet
+    outcome: Resultat
+    outcomes: Resultat
+    statement: Påstående
+    change_your_stance: Redigera svar
+    load_more: Ladda mer
+    details: Detaljer
+    participant_name: Ditt namn
+    participant_email: E-postadress
+    submit_vote: Lämna röst
+    submit_response: Skicka svar
+    update_vote: Uppdatera röst
+    update_response: Uppdatera svar
+    share_poll: Dela omröstning
+    share_proposal: Dela förslag
+    share_count: Dela check
+    start_poll: Börja ett beslut
+    publish_poll: Dela omröstning
+    share_outcome: Dela resultatet
+    view_all: Visa alla
+    change_vote: Ändra din röst
+    change_response: Ändra ditt svar
+    max_score: Maxpoäng
+    min_score: Minsta poäng
+    too_long: För länge
+    edit_warning: Redigering rekommenderas endast för mindre ändringar eller korrigering av stavfel. För betydande ändringar, stäng denna {{pollType}} och starta en ny.
+    no_voting: Endast för diskussion, röstning inaktiverad
   discussions_panel:
     open: Öppen
     all: Alla
     closed: Stängd
+    unread: Oläst (%{count})
+    include_subgroups_mine: "{{name}} och mina undergrupper"
+    include_subgroups_all: "{{name}} och alla undergrupper"
+    no_results_found: Inga resultat för "{{search}}"
+    welcome_to_your_new_group: Välkommen till din nya Loomio-grupp!
+    lets_start_a_thread: Låt oss starta en tråd. Klicka på "Ny tråd" för att fortsätta.
   members_panel:
-    order_by_name: 'Namn'
-    header_name: 'Namn'
-    header_username: 'Användarnamn'
-    accepted: 'Medlemmar'
+    order_by_name: Namn
+    header_name: Namn
+    header_username: Användarnamn
+    accepted: Medlemmar
+    bot: Bot
+    no_results: Inga medlemmar hittades
+    everyone: Alla
+    all: Allt
+    sort: Sortera
+    order_label: Beställa
+    order_by_created: Äldst
+    show_users_in_subgroups: Visa användare i undergrupper också
+    order_by_created_desc: Nyaste
+    order_by_admin_desc: Administratörer
+    loaded_of_total: "{{loaded}} av {{total}}"
+    view_requests: Visa förfrågningar
+    header_role: Roll
+    header_invited_by: Inbjuden av
+    header_invited: Inbjudna
+    header_actions: Handlingar
+    directory: Katalog
+    invitations: Inbjudningar
+    requests: Förfrågningar
+    admin: Administration
+    guest: Gäst
+    sharable_link: Delbar länk
+    last_seen: Sågs senast {{date}}
+    invited_by_name: Inbjuden av {{name}}
   polls_panel:
-    all: 'Alla'
-    open: 'Öppen'
-    closed: 'Stängd'
+    all: Alla
+    open: Öppen
+    closed: Stängd
+    new_poll: Ny omröstning
+    any_type: Alla typer
+    any_status: Vilken status som helst
+    need_vote: Behöver rösta
+    no_polls: Inga omröstningar hittades
   poll_common_form:
     voting_methods:
       ranked_choice: Valfritt val
       time_poll: Tidsröstning
+      question: Frågerunda
+      question_hint: Bjud in frågor och synpunkter på ditt förslag
+      show_thumbs: Visa tummen
+      show_thumbs_hint: Väljare väljer tumme upp, ner, i sidled eller hand upp
+      choose: Välja
+      simple_poll: Enkel omröstning
+      choose_hint: Väljarna väljer det bästa alternativet (eller alternativen)
+      score: Göra
+      score_hint: Väljarna tilldelar ett poäng till varje alternativ
+      allocate: Fördela
+      allocate_hint: Väljarna fördelar en budget på poäng mellan alternativen
+      ranked_choice_hint: Väljarna ordnar alternativen i ordning från mest till minst föredraget
+      time_poll_hint: Väljarna anger när de är tillgängliga att träffas
     closed: Stängd
     start: Starta
+    notify_everyone_when_poll_starts: Meddela alla när %{poll_type} startar
+    option_has_votes_confirm_delete: Vissa personer har röstat för det här alternativet, är du säker på att du vill ta bort det?
+    example_title: Exempeltitel
+    example_title_hint: Ge ett exempel på en bra förslagstitel
+    example_details_placeholder: Ge en utgångspunkt för ett förslag eller en omröstning. Frågor kan vara användbara uppmaningar för att få folk att skriva. Inkludera eventuella regler eller påminnelser som deltagarna behöver känna till.
+    confirm_delete: Är du säker på att du vill ta bort denna omröstningsmall? Detta kan inte göras ogjort.
+    show_advanced_settings: visa avancerade inställningar
+    hide_advanced_settings: Dölj avancerade inställningar
+    choose_at_least: Välj åtminstone
+    choose_at_most: Välj högst
+    please_review_the_form: Vänligen granska formuläret
+    option_added_please_add_details: Alternativ tillagt! Vänligen lägg till några detaljer så att folk vet vad det betyder.
+    default_duration_in_days: Standardvaraktighet i dagar
+    default_duration_in_days_hint: Hur många dagar ska man få för folk att rösta?
+    how_many_options_can_a_voter_choose: Hur många av dessa alternativ kan en väljare välja?
+    minimum_choices: Minsta val
+    maximum_choices: Maximalt val
+    content: Innehåll
+    reminder: Påminnelse
+    your_in_zone: 'Aktuell tidszon: %{zone}'
+    show_other_zones: Visa andra tidszoner
+    hide_other_zones: Dölj andra tidszoner
+    this_is_a_template_for_new_polls: Detta är en mall för nya omröstningar
+    voting_method: Röstningsmetod
+    process: Bearbeta
+    process_name: Mallens titel
+    process_name_hint: Vad kallar du denna mall? T ex Rollrådgivning, Temperaturkontroll, Protokollgodkännande
+    process_subtitle: Mall undertext
+    process_subtitle_hint: En beskrivning på en rad av när eller varför man ska använda denna mall
+    process_introduction: Mallhjälp
+    process_introduction_hint: Några stycken som förklarar hur man använder mallen. Inkludera länkar till resurser som kan vara till hjälp.
+    you_can_set_a_prompt_per_option: Redigera uppmaningen för varje alternativ från fliken Detaljer
+    chart_type: Diagramtyp
+    title: Titel
+    title_hint: Vad är det för beslut du behöver fatta?
+    no_options_add_some: Denna omröstning har inga alternativ, lägg till några nedan.
+    details: Detaljer
+    example_details: Exempeldetaljer
+    details_placeholder: Det här är din möjlighet att förklara vad folk röstar på
+    options: alternativ
+    options_placeholder: Lista de tillgängliga alternativen
+    no_options: Du har inte lagt till några alternativ än.
+    closing: Stängning
+    start_poll: Starta omröstning
+    stance_reason_required_label: Att ange en anledning när man röstar är...
+    stance_reason_required: Nödvändig
+    stance_reason_optional: Frivillig
+    stance_reason_disabled: Inaktiverad
+    stance_reason_is_required: Ange en anledning med din röst
+    limit_reason_length: Begränsa orsaken till maximalt 500 tecken
+    save_poll: Spara enkäten
+    start_poll_type: Starta {{poll_type}}
+    share_poll_type: Dela {{poll_type}}
+    who_may_vote: Vem får rösta i denna {{poll_type}}?
+    update: Uppdatering
+    add_voters: Lägg till väljare
+    notify_invitees: Skicka meddelanden
+    no_notifications_warning: Väljarna kommer inte att meddelas. Detta är användbart om du kör många omröstningar och planerar att meddela alla senare.
+    count_voters_added: "%{count} väljare har lagts till"
+    poll_type_created: "%{poll_type} skapad"
+    poll_type_started: "%{poll_type} startade"
+    reason_prompt: Orsaksuppmaning
+    anonymous_voting: Anonym röstning
+    anonymous_voting_description: Om det är aktiverat kommer väljarnas identitet inte att kopplas till deras röster. Detta kan inte göras ogjort.
+    votes_are_anonymous: Rösterna är anonyma
+    vote_reason: Rösta anledning
+    vote_reason_description: Det kan vara bra att förstå varför folk röstade som de gjorde. Med den här inställningen kan du uppmana människor att dela sina tankar när de röstar.
+    hide_results_description: Om du vill att folk ska rösta utan att veta hur andra har röstat kan du dölja resultatet av omröstningen.
+    process_helptext: Namnge och beskriv processen som används för att köra denna omröstning.
+    reminder_helptext: Skicka ett meddelande "Stänger snart" innan omröstningen stänger. Detta kan vara en möjlighet för människor att se hur andra har röstat och ompröva sin egen röst, eller bara ett sätt att öka deltagandet i omröstningen.
   poll_proposal_options:
-    'yes': 'Ja'
-    'no': 'Nej'
+    'yes': Ja
+    'no': Nej
+    select_an_option: Välj ett alternativ
+    agree: Hålla med
+    consent: Samtycke
+    abstain: Avstå
+    unsure: Osäker
+    disagree: Instämmer inte alls
+    objection: Invändning
+    object: Objekt
+    block: Blockera
+    no_voting: Ingen röstning
   poll_count_options:
-    'yes': 'Ja'
-    'no': 'Nej'
+    'yes': Ja
+    'no': Nej
+    accept: Acceptera
+    decline: Nedgång
   poll_meeting_chart_panel:
     total: Totalt
   poll_remove_vote:
     success: Röst borttagen
+    title: Ta bort din röst?
+    helptext: Är du säker på att du vill ta bort din röst? Du kommer att listas som obestämd och kan rösta igen senare om du vill.
+    confirm: Ta bort röst
   auth_form:
     name_placeholder: Ditt namn
+    code: 000 000
+    youre_invited: Du har blivit inbjuden att gå med i {{group_name}}.
+    youre_invited_discussion: Du har blivit inbjuden att delta i diskussionen.
+    youre_invited_poll: Du har blivit inbjuden att rösta.
+    existing_account_can_sign_in: Om du redan är en {{site_name}}-användare, logga in med ditt befintliga konto
+    sign_up_or_log_in: Skapa konto eller logga in på {{site_name}}
+    sign_in_to_loomio: Logga in på {{site_name}}
+    sign_in_help: problem att logga in?
+    sign_in: Logga in
+    continue: Fortsätta
+    create_account: Skapa konto
+    sign_up_as: Skapa konto som {{email}}
+    sign_in_as: Logga in som {{name}}
+    continue_with_provider: Fortsätt med {{provider}}
+    continue_with_email: Fortsätt med e-post
+    or_enter_your_email: Eller ange din e-postadress
+    enter_your_name: Ange ditt namn
+    invitation_required: Du behöver en inbjudan för att skapa ett konto. Följ länken från din inbjudningsmail för att fortsätta.
+    more_providers: Mer
+    email_not_present: En e-postadress krävs
+    invalid_email: Tyvärr, det ser inte ut som en giltig e-postadress
+    invalid_password: Tyvärr, det lösenordet stämmer inte överens med det vi har registrerat
+    invalid_token: Tyvärr, vi kunde inte använda den token för att logga in dig. Klicka nedan för att skicka en till.
+    account_locked: Ditt konto har låsts efter för många misslyckade inloggningsförsök. Kontrollera din e-post för en upplåsningslänk
+    email_not_found: Tyvärr, vi kunde inte hitta ett konto med den e-postadressen
+    email_taken: E-postadressen är redan registrerad
+    email_placeholder: du@exempel.com
+    login_with_token: Du är redo! Klicka på länken nedan för att fortsätta.
+    login_link_helptext: Klicka på knappen nedan så skickar vi en länk för att logga in till dig.
+    enter_your_password: Ange ditt lösenord för att fortsätta
+    check_spam_folder: Om mejlet inte kommer fram snart, kolla din skräppostmapp.
+    sign_up_helptext: Fyll i detta formulär för att skapa ett användarkonto
+    i_accept_all: Jag accepterar {{termsLink}} och {{privacyLink}}
+    newsletter_label: Jag vill ta emot {{länken}}
+    name_required: Vänligen ange ett namn
+    terms_required: Du måste godkänna användarvillkoren
+    account_inactive: Åh, det verkar som att kontot för {{email}} har inaktiverats!
+    privacy_notice: Vi kommer aldrig att sälja din data.<br> <a href='{{privacyUrl}}' target='_blank'>Integritetspolicy</a>
+    welcome: Ny på {{siteName}}?
+    welcome_back: Välkommen tillbaka, {{name}}!
+    forgot_password: glömt ditt lösenord
+    login_link: Skicka inloggningsmail
+    sign_in_via_email: Logga in via e-post
+    set_password: Välj lösenord
+    set_password_helptext: Vill du använda ett lösenord nästa gång?
+    hello: Hej, {{name}}!
+    new_to_loomio: Första gången på {{site_name}}?
+    already_a_user: Har du redan ett konto?
+    email_address_of_existing_account: Ange e-postadressen till ditt befintliga konto
+    link_accounts: Länka konton
+    check_your_email: Kolla din mail!
+    login_link_sent: Vi har skickat ett e-postmeddelande till {{email}}.
+    instructions: 'Klicka på länken för att logga in eller ange koden nedan:'
+    instructions_code: 'Ange koden från det e-postmeddelandet:'
+    too_many_attempts: För många försök; försök att klicka på länken i e-postmeddelandet för att logga in.
+    invalid_code: Tyvärr, den koden stämde inte. Kontrollera e-postmeddelandet och försök igen.
+    password_link_sent: Vi har skickat ett e-postmeddelande till {{email}} med instruktioner om hur du ställer in ditt lösenord.
+    reactivate_link_sent: Vi har skickat ett e-postmeddelande med instruktioner för att återaktivera ditt konto
+    signed_in: Inloggad
+    email_verified: E-posten har verifierats
+    name: namn
+    email: E-post
+    password: Lösenord
+    reactivate: Återaktivera kontot
   chatbot:
     username: Användarnamn
     password: Lösenord
+    configure_chatbot: Konfigurera chatbot
+    test_connection: Testa anslutningen
+    test_connection_ok: Ser bra ut! Du bör se ett meddelande i kanalen
+    test_connection_bad: Något är fel med inställningarna
+    name: Chatbot namn
+    connection_test_successful: Loomio botanslutningstest lyckats!
+    chatbot: Chatbot
+    chatbots: Chatbots
+    saved: Chatbot sparad!
+    webhook_url: Webhook URL
+    homeserver_url: Hemserverns URL
+    channel: Kanal
+    access_token: Access Token
+    add_chatbot: Lägg till chatbot
+    matrix: Matris
+    slack: Slak
+    discord: Disharmoni
+    mattermost: Det viktigaste
+    microsoft_teams: Microsoft Teams
+    event_kind_helptext: Välj händelser som boten alltid kommer att meddelas om. Om du inte är säker, låt dem vara avstängda.
+    notification_only_label: Skicka endast meddelanderubrik
+    check_for_test_message: Kolla ditt chattrum efter ett meddelande från boten!
   webhook:
     name_label: Namn
+    integrations: Integrationer
+    api_keys: API-nycklar
+    webhooks: Webhooks
+    webhook: Webhook
+    add_api_key: Lägg till API-nyckel
+    edit_api_key: Redigera API-nyckel
+    api: API
+    format: Formatera
+    formats:
+      markdown: Markdown (för Mattermost, Zapier och andra)
+      microsoft: Microsoft Teams
+      slack: Slak
+      discord: Disharmoni
+    subtitle: Anslut till Loomio till resten av dina verktyg med vårt API
+    deprecated: Detta API är utfasat. Vänligen flytta till APIv2 (se API-dokument i din gruppinställningar)
+    we_have_guides: Se våra <a href="{{url}}" target="_blank">webhook-installationsguider</a> för hjälp med att ansluta din tjänst.
+    add_webhook: Lägg till webhook
+    show_docs: Se API-användning
+    save_to_show_docs: När du har sparat, återvänd hit för att hitta din API-nyckel
+    edit_integration: Redigera integration
+    add_integration: Lägg till integration
+    success: Integration har lagts till!
+    remove: Ta bort integrationen
+    confirm_remove: 'Är du säker på att du vill ta bort integrationen: {{name}}?'
+    removed: Integration borttagen
+    url_label: Webhook URL
+    url_placeholder: https://hooks.example.com/...
+    name_placeholder: Ge denna integration ett namn så att du kan identifiera den
+    event_kind_helptext: Vilka händelser vill du att webhook ska meddelas om?
+    event_kinds:
+      new_discussion: En tråd startas
+      discussion_edited: En tråd redigeras
+      poll_edited: En omröstning redigeras
+      new_comment: En kommentar görs
+      poll_created: En omröstning startas
+      stance_created: En röst avges
+      stance_updated: En röst ändras
+      poll_closing_soon: En omröstning stänger snart
+      poll_expired: En omröstning löper ut
+      poll_closed_by_user: En omröstning stängs manuellt
+      poll_reopened: En omröstning öppnas igen för omröstning
+      outcome_created: Ett resultat delas
+      outcome_updated: Ett utfall uppdateras
+      outcome_review_due: En resultatgranskning är på väg
+    permissions_explaination: Välj vilka åtgärder som kan utföras av denna integration
+    permissions:
+      show_discussion: visa diskussion
+      create_discussion: skapa diskussion
+      create_poll: skapa undersökning
+      show_poll: visa omröstning
+      read_memberships: läsa medlemskap
+      manage_memberships: hantera medlemskap (lägg till eller ta bort gruppmedlemmar)
+    include_body_label: Inkludera meddelandetext med avisering
   group_survey:
     categories:
       community: Gemenskap grupp
       other: Andra
+      party: Politiskt parti
+      coop: Kooperativ
+      union: Union
+      board: Styrelse & styrelser
+      nonprofit: Ideell organisation
+      membership: Medlemsorganisation
+      professional: Professionellt serviceföretag
+      self_managing: Självförvaltande organisation
+      government: Regering/Lokalförvaltning
+    describe_other: Välj den kategori som bäst beskriver din grupp
+  tasks:
+    tasks: Uppgifter
+    your_tasks: Dina uppgifter
+    permission_denied: Du har inte behörighet att uppdatera den här uppgiften
+    due_date: Förfallodatum
+    send_reminder: Skicka påminnelse (om inte gjort)
+    no_reminder: Ingen påminnelse
+    on_due_date: På förfallodatum
+    1_day_before: 1 dag innan
+    2_day_before: 2 dagar innan
+    3_day_before: 3 dagar innan
+    7_day_before: 7 dagar innan
+    task_placeholder: Ange en uppgift och @nämn någon att tilldela den
+    add_due_date: Lägg till förfallodatum
+    task_updated_done: Uppgift markerad som klar!
+    task_updated_not_done: Uppgift markerad som ej klar
+    no_tasks_assigned: Det finns inga uppgifter tilldelade dig
+  plan_names:
+    free: Fri
+    starter: Förrätt
+    trial: Rättegång
+    pro: Proffs
+    pro_nonprofit: För ideell verksamhet
+    community: gemenskap
+    small: Små
+    medium: Medium
+    large: Stor
+    monthly: En gång i månaden
+    yearly: Årligen
+  poll_types:
+    proposal: förslag
+    count: opt-in
+    check: förnuftskontroll
+    poll: opinionsundersökning
+    dot_vote: prick rösta
+    meeting: tidsundersökning
+    ranked_choice: rankat val
+    score: poängundersökning
+    question: frågerundan
+  email_to_group:
+    email_to_group_settings: Inställningar för e-post till grupp
+    email_to_group_address: E-post-till-grupp-adress
+    start_threads_via_email: Starta trådar via e-post
+    your_address_for_this_group: Din e-postadress för denna grupp
+    send_email_to_start_thread: Skicka e-post till den här adressen för att starta en tråd i din grupp.
+    subject_body_attachments: Tråden kommer att använda e-postämnet, brödtexten och bifogade filer.
+    address_starts_threads_as_you: Dela inte den här adressen - alla som har den kan starta trådar som du.
+    generate_new_address: Skapa ny adress
+    copy_address: Kopiera adress
+    email_me_this_address: Maila mig den här adressen
+    email_address_sent_to_you: E-postadress skickas till dig
+    email_address_copied_to_clipboard: E-postadressen har kopierats till urklipp
+    new_address_generated: Ny e-post-till-grupp-adress genererad
+    generate_new_address_question: Generera ny e-post-till-grupp-adress?
+    generate_new_address_warning: Alla dina befintliga e-post-till-loomio-adresser kommer att sluta fungera. Det finns ingen ångra. Varsågod?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: Din e-postadress för att starta trådar i %{group}
+  thread_nav:
+    participants: Deltagare
+  strand_nav:
+    newest: Nyaste
+    oldest: Äldst
+    newest_first: Nyaste först
+    oldest_first: Äldst först
+    all_pinned: Alla fästa objekt
+    whole_thread: Hela tråden
+    from_comment: Från en kommentars-url
+    from_sequence_id: Från en webbadress för trådobjekt
+    unread: Nytt för dig
+  search_modal:
+    all_content: Allt innehåll
+    best_match: Bästa matchningen
+    any_tag: Vilken tagg som helst
+    all_subgroups: Alla undergrupper
+    parent_only: Endast förälder
+  user_dropdown:
+    pin_sidebar: Fäst sidofältet
+    unpin_sidebar: Lossa sidofältet
+    enable_beta_features: Aktivera betafunktioner
+    disable_beta_features: Inaktivera betafunktioner
+    enable_dark_mode: Aktivera mörkt läge
+    disable_dark_mode: Inaktivera mörkt läge
+    button_label: Användarmeny
+    edit_profile: Redigera profil
+    email_settings: Aviseringsinställningar
+    help: Hjälp
+    contact_site_name: Kontakta {{site_name}}
+    contact_support: Kontakta supporten
+    sign_out: Logga ut
+    beta_collab: "\U0001F9EA Betafunktioner aktiverade!"
+    outcomes: Resultat
+  membership_card:
+    group_members: Gruppmedlemmar
+    discussion_members: Trådmedlemmar
+    poll_members: "{{pollType}} medlemmar"
+    voters: Väljare
+    invite_to_group: Bjud in till grupp
+    invite_to_discussion: Bjud in till tråd
+    invite_to_poll: Bjud in att rösta
+    invite_to_wip_poll: Bjud in att ge feedback
+    invitations: Inbjudningar
+  notification_models:
+    discussion: 'tråd:'
+    comment: kommentera in
+    poll: 'opinionsundersökning:'
+    outcome: 'resultat:'
+    stance: 'rösta:'
+  discussion_fork_actions:
+    helptext: Välj objekt som du vill flytta till en annan tråd
+    move: Flytta
+    search_placeholder: Hitta tråd efter titel
+    moved: Rörande kommentarer, det här kan ta en stund
+    move_to_existing_thread: Flytta till befintlig tråd
+    start_new_thread: Eller starta en ny tråd
+  thread_template:
+    browse_public_templates: Bläddra i mallgalleriet
+    thread_template_settings: Inställningar för trådmall
+    start_a_new_thread: Starta en ny tråd
+    thread_template_saved: Trådmall sparad
+    these_are_public_templates: Dessa mallar är tillgängliga för dig att kopiera eller ändra för att passa din grupp
+    these_are_templates: Det här är trådmallarna i din grupp. Mallar guidar dig genom vanliga beslutsprocesser.
+    default_title_label: Standardtitel
+    default_title_hint: Förfyll titelfältet med redigerbar text. Detta är valfritt - lämna tomt om du är osäker.
+    title_placeholder_label: Exempeltitel
+    title_placeholder_hint: Ett exempel att visa i bakgrunden av titelfältet
+    title_placeholder_placeholder: t.ex. Så här ser bakgrundstext ut
+    example_description_label: Exempelbeskrivning
+    example_description_placeholder: Ge en mall som folk kan använda för att starta en tråd med
+    hidden_templates: Dolda mallar
+    confirm_delete: Är du säker på att du vill ta bort denna trådmall permanent? Inga trådar kommer att raderas som ett resultat av detta.
+    add_proposal_or_poll_template: Lägg till förslag eller omröstningsmall
+    recommended_proposal_or_poll_templates: Rekommenderade förslag eller omröstningsmallar
+    decision_templates: Beslutsmallar
+    decision_templates_help: Välj alla förslag eller omröstningsmallar som hjälper dig att slutföra denna process.
+    share_in_template_gallery: Dela den här mallen i det offentliga mallgalleriet
+  cover_photo_form:
+    heading: Nytt omslagsfoto
+    upload_link: Ladda upp nytt omslagsfoto
+    image_size_helptext: Idealisk bildstorlek är 1400×320px
+    upload_success: Omslagsbilden har uppdaterats
+  logo_photo_form:
+    heading: Ny grupplogotyp
+    upload_link: Ladda upp ny grupplogotyp
+    image_size_helptext: Idealisk bildstorlek är 100×100px
+    upload_success: Logotypen har uppdaterats
+  reactions_input:
+    add_your_reaction: Lägg till din reaktion
+  delete_group_modal:
+    title: Ta bort grupp
+    subgroup_title: Ta bort undergrupp
+    parent_body: "<h2>Det här är din föräldragrupp - inte en undergrupp!</h2><br> Om du tar bort detta kommer även eventuella undergrupper att raderas permanent. Ditt Loomio-abonnemang kommer också att avslutas. Det rekommenderas starkt att exportera din gruppdata och manuellt ladda ner alla viktiga filer innan du gör detta. Är du säker på att du vill fortsätta?"
+    body: Är du säker på att du vill ta bort den här undergruppen? Alla trådar, omröstningar, filer och annat gruppinnehåll kommer att raderas permanent. Det rekommenderas att du exporterar gruppdata och manuellt laddar ner alla viktiga filer innan du fortsätter.
+    confirm: Skriv '%{name}' för att bekräfta att du vill ta bort den här gruppen.
+    success: Den här gruppen har arkiverats och är planerad att raderas permanent om 2 veckor.
+  export_data_modal:
+    title: Hur vill du använda din data?
+    as_csv: Öppna den i ett kalkylblad
+    as_html: Öppna den i en webbläsare
+    as_json: Värd denna grupp på min egen server
+  description_card:
+    title: Gruppbeskrivning
+    placeholder: Gruppadministratörer kan använda det här området för att beskriva gruppens syfte, så att alla vet varför de är här.
+    messages:
+      description_updated: Beskrivning uppdaterad
+  leave_group_form:
+    aria_label: Lämna gruppen
+    title: Lämna gruppen
+    question: Är du säker på att du vill lämna den här gruppen?
+    submit: Ja, lämna den här gruppen
+  archive_group_form:
+    aria_label: Inaktivera grupp
+    title: Inaktivera grupp
+    question: Är du säker på att du vill inaktivera den här gruppen?
+    submit: Ja, inaktivera den här gruppen
+  group_export_modal:
+    title: Exportera gruppdata
+    body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
+    submit: Starta export
+    flash: Export av gruppdata har startat
+  membership_requests_card:
+    heading: Medlemsförfrågningar
+    manage_requests: Hantera förfrågningar
+    manage_requests_with_count: Hantera förfrågningar (%{count})
+  membership_remove_modal:
+    invitation:
+      title: Avbryt inbjudan
+      message: Är du säker på att du vill avbryta inbjudan till {{name}}?
+      flash: Inbjudan avbruten
+      submit: Avbryt inbjudan
+    membership:
+      title: Ta bort medlem
+      message: Är du säker på att du vill ta bort {{name}}?
+      impact_for_subgroup: Detta kommer att ta bort deras tillgång till undergruppen (inklusive trådar och omröstningar), men de kommer att förbli medlem i den överordnade gruppen.
+      impact_for_group: Detta tar bort deras åtkomst till gruppen (inklusive trådar och omröstningar) och eventuella undergrupper.
+      flash: Medlem borttagen
+      submit: Ta bort medlem
+  memberships_panel:
+    add_coordinator: Gör admin
+    remove_coordinator: Degradera admin
+  membership_form:
+    modal_title:
+      group: Ställ in titel
+    title_helptext:
+      group: Den här titeln kommer att visas bredvid {{name}}s namn inom den här gruppen. Använd den för att låta folk veta sin roll.
+    title_label: titel
+    title_placeholder: T.ex. "koordinator" eller "förmedlare"
+    updated: Medlemstitel uppdaterad
+  user_name_modal:
+    user_name_updated: Användarnamnet har uppdaterats
+    set_user_name: Ange användarnamn
+  user_page:
+    contact_user: Kontaktnamn}}
+    location_field: 'Plats: {{value}}'
+    locale_field: 'Språk: {{value}}'
+    online_field: 'Online: {{value}}'
+    invited: Bjöd in {{value}}
+    message_user: Meddelande {{name}}
+  contact_request_form:
+    modal_title: E-posta {{name}}
+    message_placeholder: Presentera dig själv och berätta varför du vill ta kontakt.
+    helptext: "{{name}} kommer att få ditt namn, din e-postadress och ditt meddelande via e-post"
+    email_sent: E-post skickat till {{name}}
+  text_editor:
+    x_of_y_characters: "{{x}} / {{y}} tecken"
+    select_text_to_link: Välj text att länka och försök igen
+    insert_link: Infoga länk
+    insert_embedded_url: Inbäddad video
+  change_password_form:
+    set_password_title: Ställ in ditt lösenord
+    set_password_helptext: Vänligen ange ett lösenord - minst 8 tecken
+    set_password: Välj lösenord
+    password_changed: ditt lösenord har uppdaterats
+  deactivation_modal:
+    introduction: 'När du tar bort ditt konto:'
+    you_will_be_deleted: Ditt användarkonto inklusive ditt namn, e-postadress och andra personligt identifierande data kommer att raderas från våra system.
+    name_removed: Kommentarer, förslag och diskussioner som du har gjort kommer att finnas kvar men ditt namn kommer att tas bort från dem
+    no_longer_group_member: Du kommer inte längre att listas som medlem i någon grupp
+    no_emails: Du kommer inte längre att få e-postmeddelanden
+    submit_delete: Ta bort mitt konto nu
+  thread_preview:
+    replies_count: "%{count} svar"
+    unread_count: "%{count} olästa"
+  threads_page:
+    no_direct_threads: Du har inga direkta trådar
+    no_invite_only_threads: Du har inga inbjudningstrådar
+  discussion:
+    invite_only: Endast inbjudna
+    private_thread: Privat tråd
+    max_threads_reached: <p>Du har använt alla {{maxThreads}} trådar som är tillgängliga för den här gruppen.</p><p> Nästa steg, <a href="{{upgradeUrl}}" target="_blank">välj en plan</a> för att fortsätta samarbeta på Loomio.</p>
+    subscription_canceled: <p>Ditt abonnemang är inte aktivt.</p><p> Vänligen <a href="{{upgradeUrl}}" target="_blank">uppgradera</a> för att fortsätta använda Loomio.</p>
+    activity: Aktivitet
+    activity_placeholder: Ingen aktivitet ännu!
+    load_previous: Ladda tidigare aktivitet
+    started_by: Startade av <strong>{{name}}</strong>
+    pin:
+      pinned: Tråd fastnålad
+      unpinned: Tråd lossad
+    volume:
+      mute_message: Tråd avstängd
+      unmute_message: Tråden avstängd
+    closed:
+      reopened: Tråden öppnad igen
+      closed: Tråd stängd
+  discussion_last_seen_by:
+    title: Ses av
+    no_one: Ingen har sett detta än
+  pin_thread_modal:
+    title: Pintråd
+    helptext: Fästa trådar visas alltid högst upp i gruppens lista med trådar. De kan användas för att informera medlemmar om viktiga meddelanden eller för att marknadsföra vanligt material som en uppförandekod eller riktlinjer för gemenskapen.
+    helptext_two: Du kan ta bort nålar när som helst genom att välja 'Unpin' från trådrullgardinsmenyn
+    pin_thread: Pintråd
+  thread_arrangement_form:
+    edit: Redigera layout
+    title: Trådlayout
+    for_everyone: Detta ändrar layouten för alla, inte bara dig.
+    sorting: Äldst eller nyaste först?
+    latest: Nyaste
+    latest_description: Läs de senaste artiklarna först
+    earliest: Äldst
+    earliest_description: Håll koll på äldre kommentarer innan du ser nyare
+    replies: Hur visar jag svar?
+    linear: Platt lista
+    linear_description: Föremål listade när de hände, en efter en.
+    nested_once: Nest-svar – endast det första svaret
+    nested_once_description: Indragssvar under den ursprungliga kommentaren
+    nested_twice: Två nivåer av kapslade svar
+    nested_twice_description: Indrag svarar högst två gånger.
+    changing_nesting_is_slow: Ändringar av kapsling kan ta ett par minuter att bearbeta.
+  delete_thread_form:
+    aria_label: Ta bort tråd
+    title: Ta bort tråd
+    body: Är du säker på att du vill ta bort den här tråden?
+    confirm: Ta bort tråd
+    messages:
+      success: Tråden raderad
+  move_thread_form:
+    aria_label: Flytta tråden
+    title: Flytta tråden
+    body: Destinationsgrupp
+    confirm: Flytta tråden
+    confirm_change_to_private_thread: "{{groupName}} är en öppen grupp. Om du fortsätter kommer denna tråd att offentliggöras."
+    messages:
+      success: Tråden har flyttats till {{name}}
+  explore_page:
+    header: Utforska grupper
+    search_placeholder: Sök efter offentliga grupper
+    single_search_result: 1 offentlig grupp som matchar <strong>{{searchTerm}}:</strong>
+    multiple_search_results: "{{resultCount}} offentliga grupper som matchar <strong>{{searchTerm}}:</strong>"
+    no_results_found: <strong>Hittar du inte gruppen du letar efter?</strong> Om en grupps integritet är inställd på "hemlig" visas den inte här.
+    newest_first: Nyaste först
+    biggest_first: Störst först
+    order_by: Beställ grupper efter
+  global:
+    messages:
+      app_update: En ny version av Loomio har släppts. Spara ditt arbete och ladda om.
+      reload: Ladda om
+  poll_option_form:
+    edit_option: Redigera alternativ
+    option_name: Alternativets namn
+    option_name_hint: Ett kort namn för detta alternativ
+    option_name_validation: Det är bäst att hålla namnet kort och ange detaljer i fältet "Mening".
+    icon: Ikon
+    meaning: Menande
+    meaning_hint: En mening eller två som förklarar vad det betyder att välja detta alternativ. Frivillig
+    prompt: Orsaksuppmaning
+    prompt_hint: En fråga för att få väljarna att dela med sig av sina resonemang eller ompröva sin ståndpunkt. Frivillig
+  poll_common_attachment_form:
+    label: Bilagor
+  poll_common_add_option:
+    button:
+      add_option: Lägg till ett annat alternativ
+    modal:
+      title: Lägg till ett alternativ
+    form:
+      add_options: Lägg till alternativ
+      options_added: Nya alternativ har lagts till
+  poll_common_card:
+    show_results: Visa resultat
+    hide_results: Dölj resultat
+    until_vote: Tills rösten är gjord
+    until_you_vote: Tills du röstar
+    until_poll_type_closed: Tills {{pollType}} är stängd
+    until_voting_is_closed: Tills omröstningen är stängd
+    deleted: Denna omröstning har tagits bort
+  group_files_panel:
+    no_files: Inga filer funna
+    filename: Filnamn
+    uploaded_by: uppladdad av
+    uploaded_at: Laddades upp kl
+    delete_confirmation: Är du säker på att du vill ta bort den här bilagan? Den kommer att tas bort från alla associerade kommentarer eller trådar. Detta kan inte göras ogjort.
+  subgroups_panel:
+    search_subgroups_of_name: Sök i undergrupper av {{name}}
+    group_without_subgroups: "{{name}} utan undergrupper"
+  poll_common_action_panel:
+    from_the_thread: Från trådmallen
+    from_the_group: Från gruppen
+    default_templates: Standardmallar
+    default_template: Standardmall
+    custom_template: Anpassad mall
+    default_poll_types: Standardundersökningstyper
+    suggested_templates: Föreslagna mallar
+    group_templates: Gruppmallar
+    basic_templates: Grundläggande mallar
+    anonymous: Rösterna är anonyma
+    results_hidden_until_closed: Resultaten kommer att visas efter att omröstningen har avslutats
+    results_hidden_until_vote: Resultaten kommer att visas efter att du röstat
+    unable_to_vote: Du har inte blivit inbjuden att rösta i denna %{poll_type}
+    draft_mode: Röstning inaktiverad. Detta är inte öppet för omröstning ännu.
+    voting_disabled_poll_is_template: Röstning inaktiverad. Detta är en mall.
+  poll_common_collapsed:
+    by_who: vid namn}}
+  poll_common_calendar_invite:
+    calendar_invite: Inkludera en kalenderinbjudan med detta resultat
+    poll_option_id: Mötestid
+    helptext_on: Användare kommer att kunna lägga till detta möte i sin kalender
+    helptext_off: Ingen mötesinbjudan kommer att skickas
+    event_duration: Varaktighet
+    event_summary: Mötesnamn
+    event_summary_placeholder: Vad skulle du vilja kalla detta möte?
+    event_description: Mötesbeskrivning
+    event_description_placeholder: Vad är agendan för detta möte?
+    location: Plats
+    location_placeholder: Var kommer detta möte att äga rum?
+  poll_common_settings:
+    who_can_vote: Vem kan rösta?
+    short_reason_can_be_helpful: Att hålla röstskäl korta gör dem lättare att förstå. En samling kortfattade skäl är en stor resurs för att fatta ett beslut.
+    specified_voters_only_true: Endast inbjudna personer
+    specified_voters_only_false_group: Vem som helst i gruppen
+    specified_voters_only_false_discussion: Någon i tråden
+    invite_people_next: Du kan välja vem som är inbjuden att rösta efter att du har startat {{poll_type}}
+    shuffle_options:
+      shuffle_options: Blanda alternativ
+      title: Visa alternativ i slumpmässig ordning
+      helptext: Ett alternativ som är först på listan kan ge det en partiskhet. Använd den här inställningen för att motverka den effekten.
+    multiple_choice:
+      title: Flera val
+      helptext_on: När det är valt kommer deltagarna att kunna välja flera alternativ.
+    anyone_can_participate:
+      title: Alla med länk kan delta
+      helptext_on: När valt kan vem som helst med länken till omröstningen delta.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Eftersom omröstningen stänger inom 24 timmar skickas inga påminnelser om snart stängning.
+      closes_too_soon: Eftersom denna {{pollType}} stänger inom 24 timmar kommer inga påminnelser om att stänga snart att skickas.
+      title: 24 timmar innan {{pollType}} stänger, skicka en påminnelse till
+      voting_title: 24 timmar innan omröstningen stänger, skicka en påminnelse till
+      nobody: Ingen
+      author: Författare (jag)
+      undecided_voters: Obestämda väljare
+      voters: Alla väljare
+    notify_on_participate:
+      title: Meddela mig när folk deltar
+      helptext_on: När du valt kommer du att meddelas när någon deltar.
+    anonymous:
+      title: Anonyma väljare
+      helptext_on: När det är valt kommer deltagarinformation inte att visas med varje svar.
+    voter_can_add_options:
+      title: Väljare kan lägga till alternativa alternativ
+    can_respond_maybe:
+      title: Väljare kan svara "om det behövs"
+    allow_long_reason:
+      title: Tillåt röstens "anledning" vara längre än 500 tecken
+    hide_results_until_closed:
+      title: Dölj resultat tills det stängs
+      helptext_on: Visa inte hur folk har röstat förrän omröstningen är stängd
+  poll_common_close_form:
+    title: Stäng %{poll_type} nu?
+    helptext: Är du säker på att du vill stänga denna %{poll_type} tidigt och dela ett resultat?
+    close_poll_type: Stäng %{poll_type}
+    poll_type_closed: "%{poll_type} stängd"
+  poll_common_reopen_form:
+    title: Öppna {{poll_type}} igen
+    helptext: Öppna {{poll_type}} igen om folk behöver mer tid för att delta
+    success: "{{poll_type}} öppnades igen"
+  poll_common_move_form:
+    title: Flytta {{poll_type}}
+    success: "{{poll_type}} flyttade till {{grupp}}"
+  poll_common_wip_field:
+    voting_enabled: Röstning aktiverad
+    enable_voting: Aktivera röstning
+    title: Inaktivera röstning
+    past_tense: Röstning inaktiverad
+    draft_mode: Utkastläge
+    disable_voting_during_development: Denna %{poll_type} är inte redo att röstas på
+    helptext: Denna %{poll_type} är ett pågående arbete. Du kan aktivera röstning senare.
+    voting_open: Röstning öppen
+    this_is_ready_for_voting: denna %{poll_type} är redo för omröstning
+  poll_common_closing_at_field:
+    closing: Stängning
+    no_closing_date: Inget slutdatum
+    closing_date: Slutdatum
+    closing_hour: Stängningstid
+    invalid_date: Ogiltigt datum
+  poll_card:
+    poll_type_by_name: "%{poll_type} av %{name}"
+    started_by: Startade av {{name}}
+  poll_common_votes_panel:
+    vote_removed: Rösten togs bort
+    undecided: Obeslutsam
+    newest_first: Nyaste först
+    oldest_first: Äldst först
+    priority_first: Håller med först
+    priority_last: Blockera först
+    undecided_first: Obestämd först
+    no_votes_yet: Inga röster har lagts ännu.
+    change_results_order: Ändra resultatordning
+    none_of_the_above: "(Inget av ovanstående)"
+    name_or_username: Namn eller användarnamn
+  poll_common_undecided_panel:
+    show_undecided: Visa %{count} osäkra
+    show_invitations: Visa väntande inbjudningar
+    undecided_users: Obestämd (%{count})
+    invitation_count_singular: Ytterligare 1 person har bjudits in att delta via e-post
+    invitation_count_plural: "%{count} ytterligare personer har bjudits in att delta via e-post"
+  poll_common_undecided_user:
+    reminded: Påminnelse skickad!
+    reminder_sent: Påminnelse har skickats
+  poll_common_set_outcome_panel:
+    enter_outcome: Ange resultat
+    poll_type: Denna %{poll_type} har stängts. Ta dig tid att överväga resultaten och dela sedan ett resultat så att folk vet vad som kommer att hända härnäst.
+  poll_common_outcome_form:
+    review_due_in_days: Se över beslutet efter hur många dagar?
+    review_due_in_days_hint: En tidsperiod (i dagar) att vänta innan beslutet granskas. (frivillig)
+    review_date: Gransknings datum
+    review_date_hint: Ställ in ett datum för att granska beslutet (valfritt)
+    who_to_notify: Vem vill du meddela om detta resultat? (frivillig)
+    outcome_statement_template: Mall för resultatförklaring
+    new_title: Statens resultat
+    update_title: Uppdatera resultatet
+    outcome_created: Resultat skapat
+    outcome_updated: Resultat uppdaterat
+    statement_placeholder: Sammanfatta svaren och förklara vad som kommer att hända härnäst.
+    statement_template_placeholder: Ge en mall för att skriva ett resultat av beslutet. (frivillig)
+    you_will_be_notified: Du kommer att meddelas vid granskningsdatumet.
+    submit: Dela resultatet
+  poll_common_outcome_panel:
+    authored_by: Vid namn}}
+  poll_common_delete_modal:
+    question: Är du säker på att du vill ta bort detta?
+    title: Ta bort {{pollType}}
+    success: Raderad
+  poll_proposal_form:
+    start_header: Starta förslag
+    edit_header: Redigera förslag
+    title_placeholder: T.ex. Låt oss gå till månen!
+    details_placeholder: Vilka är detaljerna i ditt förslag?
+    proposal_created: Förslaget startade
+    proposal_updated: Förslaget uppdaterat
+  record_modal:
+    record_video: Spela in video
+    record_audio: Spela in ljud
+    record: Spela in
+    stop: Sluta
+    no_mic: Det gick inte att hitta en mikrofon
+    no_camera: Kunde inte hitta en kamera
+    listen_to_audio: Lyssna på ljud
+    watch_video: Kolla på video
+    audio_transcript: 'Ljudavskrift: %{text}'
+    why_type_when_you_can_talk: Varför skriva när man kan prata? Skicka en röstinspelning
+    transcript_included: En utskrift av inspelningen kommer att bifogas till ditt meddelande
+  poll_poll_form:
+    multiple_choice_subtitle: Ett enkelt sätt att bedöma alternativens popularitet
+    start_header: Starta omröstning
+    edit_header: Redigera omröstning
+    tip: Erbjud ett val mellan alternativ
+    title_placeholder: T.ex. Vart vill du åka på semester?
+    details_placeholder: Ange alla förtydligande detaljer som folk kan behöva för att svara på frågan.
+    add_option_placeholder: Lägg till alternativ
+    new_option: Nytt alternativ
+    add_option_hint: Ange ett kort namn för alternativet
+    remove_option: Ta bort alternativ
+    poll_created: Omröstning skapad
+    poll_updated: Omröstningen uppdaterad
+    option_added: Alternativet har lagts till
+    option_already_added: Alternativet har redan lagts till i omröstningen
+  poll_dot_vote_form:
+    dots_per_person: Poäng per person
+    dots_per_person_helptext: Det totala antalet poäng varje person ombeds tilldela.
+  poll_meeting_form:
+    timeslots: Tidsluckor
+    no_options: Ange tider i din nuvarande tidszon ({{zone}}). Deltagarna ser tider översatta till sin lokala tidszon.
+    meeting_duration: Möteslängd
+    add_option_placeholder: Lägg till ny tid
+    time_slot_added: Tidslucka tillagd
+    time_slot_already_added: Tidslucka har redan lagts till
+    participants_see_local_times: Pariticpants kommer att se tider lokaliserade till deras tidszon
+    use_24_hour_format: Fel! Använd 24-timmarsformat t.ex. %{time}
+  poll_ranked_choice_form:
+    no_options: Du har inte lagt till några alternativ än.
+    add_option_placeholder: Ange ett nytt val
+    minimum_stance_choices: Alternativ för att rangordna
+    minimum_stance_choices_helptext: Hur många val får väljaren?
+    minimum_stance_choices_hint: dvs. Rangordna dina topp 3 smaker av glass
+    ranked_choice_created: Rangordnat val skapat
+    ranked_choice_updated: Rangordnat val uppdaterat
+    rank: Rang
+    points: Poäng
+    average: Genomsnitt
+    mean: Betyda
+    pct_of_points: "% av poängen"
+    pct_of_voters: "% av väljarna"
+    percent: Procent
+  poll_meeting_time_field:
+    add_time_slot: Lägg till tidslucka
+    new_time_slot: Ny tidslucka
+    closing_hour: Stängningstid
+  poll_proposal_vote_form:
+    default_reason_placeholder: Förklara gärna ditt resonemang
+    abstain_reason_placeholder: Låt andra veta varför du väljer bort det här beslutet
+    agree_reason_placeholder: Vad tycker du om förslaget och hur kommer det att gynna gruppen?
+    disagree_reason_placeholder: Hur skulle detta förslag kunna förbättras så att du kan stödja det?
+    block_reason_placeholder: Förklara din invändning mot detta förslag och varför det inte bör genomföras
+    stance_created: Röst skapad
+    stance_updated: Röst uppdaterad
+    vote: Rösta
+  poll_count_form:
+    pct_of_target: "% av målet"
+    agree_target_helptext: Hur många volontärer vill du ha?
+    agree_target_label: Målnummer
+  poll_common_percent_voted:
+    sentence: "{{numerator}} av {{denominator}} personer har deltagit ({{percent}}%)"
+    target_progress: "{{percent}} % av målet nått. ({{num}} / {{target}})"
+  poll_poll_vote_form:
+    stance_created: Röst skapad
+    stance_updated: Röst uppdaterad
+  poll_score_vote_form:
+    stance_created: Röst skapad
+    stance_updated: Röst uppdaterad
+  poll_meeting_vote_form:
+    local_time_zone: Lokal tid - {{zone}}
+    can_attend: Kan närvara
+    unable: Oförmögen
+    if_need_be: Om det behövs
+    your_response: När kan du vara med?
+    stance_created: Tillgänglighet sparad
+    stance_updated: Tillgänglighet uppdaterad
+    reason_placeholder: Förklara när du är ledig (eller upptagen), om författaren vill lägga till alternativ.
+  poll_dot_vote_vote_form:
+    dots_remaining: "%{count} punkter kvar"
+    too_many_dots: Du har använt för många prickar
+    stance_created: Röst skapad
+    stance_updated: Röst uppdaterad
+  poll_ranked_choice_vote_form:
+    helptext: Dra och släpp alternativ i prioritetsordning (1 är det mest föredragna alternativet). Dina bästa %{count} val kommer att registreras.
+    stance_created: Val inspelat
+    stance_updated: Valet uppdaterat
+  poll_templates:
+    proposal:
+      process_subtitle: Ta fram ett förslag för att fatta ett beslut
+      process_introduction: <p>Det klassiska Loomio-förslaget hjälper dig att fatta ett beslut och omvandlar en diskussion till ett tydligt resultat.</p><p> Föreslå ett tillvägagångssätt och bjud in personer att svara genom att rösta instämmer, avstår eller inte håller med.</p><p> När folk röstar kan de ge en anledning till varför de har röstat på det här sättet. Du kan se var alla andra står i frågan och varför.</p><p> På så sätt kan du använda ett förslag för att uppmana folk att svara, upptäcka ny information och bygga upp en delad förståelse - för att hjälpa din grupp att fatta ett bättre och mer välgrundat beslut.</p><p> Ett förslag och tillhörande diskussion skapar en egen redogörelse för hur beslutet kom till.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Läs mer om att använda det klassiska Loomio-förslaget i den enkla beslutsprocessen.</u></a></p>
+      title: Godkänn det nya varumärkeskonceptet
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vad är det för beslut du behöver fatta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> För att detta förslag ska gå igenom behöver vi att majoriteten av medlemmarna röstar överens.</p><p> Om du inte håller med, säg varför och vad som behöver ändras för att du ska hålla med.</p>
+      agree: Hålla med
+      agree_meaning: Jag stöder förslaget
+      agree_prompt: Vad tycker du om förslaget och hur kommer det att gynna gruppen?
+      abstain: Avstå
+      abstain_meaning: Att välja att inte eller inte kunna rösta i detta beslut.
+      abstain_prompt: Varför avstår du från att rösta, eller känner du inte att du kan rösta i detta beslut?
+      disagree: Instämmer inte alls
+      disagree_meaning: Något i detta förslag måste ändras innan jag kan stödja det.
+      disagree_prompt: Hur skulle detta förslag kunna förbättras så att du kan stödja det?
+    advice:
+      process_subtitle: Sök råd om ett beslut du behöver ta
+      process_introduction: <p>Sök råd om ett beslut du behöver fatta, med råd från personer som påverkas eller som har expertis, så att du kan fatta ett bättre beslut för din organisation.</p><ul><li><p> Råd hjälper dig att fatta bättre beslut för din organisation.</p></li><li><p> Främja relationer, lärandemöjligheter och mångsidig input.</p></li><li><p> Stimulera initiativ och kreativitet och roligare arbete.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Läs mer om rådgivningsprocessen</u></a> .</p>
+      title: Hjälp Takashi att köpa en ny dator
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vad är det för beslut du behöver fatta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Vilka råd ber du från folk för att hjälpa dig att fatta ett bra beslut?</strong></h3><p></p><p> Jag söker din input för att hjälpa mig att fatta ett bra beslut för vår organisation.</p>
+      agree: Hålla med
+      agree_meaning: Jag har gett mina råd om detta beslut
+      agree_prompt: Sammanfatta dina råd eller skriv en användbar kommentar
+      abstain: Avstå
+      abstain_meaning: Jag har inga råd att ge
+      abstain_prompt: Har du några kommentarer som kan vara till hjälp?
+    consent:
+      process_subtitle: Ta ett beslut som är "säkert att prova", utan invändningar
+      process_introduction: <p>Sök samtycke till ett beslut du behöver fatta, där det inte finns några meningsfulla invändningar mot ditt förslag, så att du kan fatta ett snabbt beslut för din organisation som är "säkert att prova".</p><ul><li><p> Sikta på ett "tillräckligt bra" beslut</p></li><li><p> Involvera många röster för att ta fram ett fungerande förslag</p></li><li><p> Fråga om någon har en giltig invändning</p></li><li><p> Ändra förslaget för att lösa invändningar</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Läs mer om samtyckesprocessen</a> .</p>
+      title: Anställ Chloe för designrollen
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vad är det för beslut du behöver fatta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Vad begär du av folk i detta förslag?</strong></h3><p></p><p> Om du har en invändning, säg varför och föreslå en ändring av förslaget som gör det säkert.</p><p> Kom ihåg att vi söker samtycke för ett "tillräckligt bra" beslut som är "säkert att prova", så att vi kan fatta ett bra beslut för vår organisation.</p>
+      consent: Samtycke
+      consent_meaning: Förslaget är säkert att prova
+      consent_prompt: Vad tycker du om förslaget och hur kommer det att gynna organisationen?
+      objection: Invändning
+      objection_meaning: Jag har en giltig invändning och tror att förslaget kommer att skada
+      objection_prompt: Vilken ändring av detta förslag behövs för att det ska vara "säkert att prova", så att du kan stödja det?
+    consensus:
+      process_subtitle: Nå kollektivavtal med alla inblandade
+      process_introduction: <p>Skapa konsensus för ett beslut du behöver fatta, för att nå en överenskommelse som tillfredsställer alla deltagares behov och angelägenheter.</p><ul><li><p> Diskutera och utveckla ett förslag tillsammans</p></li><li><p> Inkludera och respektera alla inblandade</p></li><li><p> Sök överenskommelse från de flesta</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Läs mer om konsensusprocessen</a> .</p>
+      title: Godkänn det nya varumärkeskonceptet
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Vad är det för beslut du behöver fatta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> För att detta förslag ska gå igenom behöver vi att majoriteten av medlemmarna röstar Godkänn.</p><p> Om du inte håller med, säg varför och vad som måste ändras för att du ska hålla med.</p>
+      agree: Hålla med
+      agree_meaning: Jag stöder förslaget
+      agree_prompt: Vad tycker du om förslaget och hur kommer det att gynna organisationen?
+      abstain: Avstå
+      abstain_meaning: Det här beslutet påverkar mig inte och jag är nöjd med vad gruppen än bestämmer
+      abstain_prompt: Varför avstår du från att rösta, eller känner du inte att du kan rösta i detta beslut?
+      disagree: Instämmer inte alls
+      disagree_meaning: Något i detta förslag måste ändras innan jag kan stödja det
+      disagree_prompt: Hur skulle detta förslag kunna förbättras så att du kan stödja det?
+      block: Blockera
+      block_meaning: Jag blockerar detta förslag och tycker att det inte ska gå vidare
+      block_prompt: Förklara din invändning mot detta förslag och varför det inte bör genomföras
+    question_round:
+      process_subtitle: Bjud in förtydligande frågor för att hjälpa människor att förstå ett förslag
+      process_introduction: <p>En Frågerunda är en möjlighet för människor att ställa klargörande frågor om förslaget, så att alla förstår förslaget innan de säger vad de tycker om det.</p><p> Loomio-frågeomgången är ett speciellt förslag utan röstningsmöjligheter. Det gör det möjligt för deltagarna att ställa frågor inom en tid som du anger för omgången.</p><p> En frågeomgång används vanligtvis som ett steg i samtyckesprocessen.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Läs mer om samtyckesprocessen</a> .</p>
+      title: Vilka frågor har du om hälso- och säkerhetspolicyn?
+      details: <h3 id="what-are-you-proposing"><strong>Vad föreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Detta är en frågerunda, där du bjuds in att ställa förtydligande frågor.</p><p> Vad behöver du veta för att du förstår förslaget?</p><p> Vänligen svara innan frågerundan stänger.</p>
+      reason_prompt: Vad behöver du veta för att du förstår förslaget?
+    sense_check:
+      process_subtitle: Be om feedback, frågor och funderingar
+      process_introduction: <p>Sense-checkförslaget är ett bra sätt att få feedback, bjuda in frågor och avslöja problem. Det hjälper till att förtydliga och förbättra ett förslag innan man går till beslut.</p><p> Sense check låter folk veta att ett förslag håller på att bildas och uppmuntrar dem att engagera sig. Det är en möjlighet att lyssna på människor, känna hur de känner och reagera på lämpligt sätt – vilket öppnar potentialen för att införliva deras bidrag för att fatta ett bättre beslut.</p><p> Använd Sense-kontrollförslaget i samtyckesprocessen för att bjuda in reaktioner och kommentarer för att förbättra förslaget, och i en konsensusprocess för att testa konsensus.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Läs mer om hur du använder Sense check i den enkla beslutsprocessen</u></a> <span>.</span></p>
+      title: Vad tycker du om de nya varumärkeskoncepten?
+      details: <h3 id="what-are-you-proposing"><strong>Vad föreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Vad tycker du om förslaget? Lämna en kommentar eller kom med ett förbättringsförslag.</p><p> Denna Sense-check är en möjlighet för din input och ditt bidrag, för att hjälpa oss att fatta ett bättre beslut.</p>
+      looks_good: Ser bra ut
+      looks_good_meaning: Jag är nöjd med vart det här är på väg
+      looks_good_prompt: Har du några synpunkter eller förslag för att göra förslaget bättre?
+      abstain: Avstå
+      abstain_meaning: Jag har inget att tillägga eller några invändningar mot detta arbete.
+      abstain_prompt: Att avstå innebär samtycke till riktningen i detta förslag. Finns det någon anledning till att du röstar för att avstå?
+      concerned: Bekymrad
+      concerned_meaning: Något i detta kan behöva ändras för att jag ska samtycka eller acceptera
+      concerned_prompt: Vad är ditt bekymmer och hur kan det lösas?
+    gradients_of_agreement:
+      process_subtitle: Uttrycka stöd för ett förslag på en 8-gradig skala
+      process_introduction: <p>Förslaget Gradients of Agreement gör det möjligt för medlemmar i en grupp att uttrycka sitt stöd för ett förslag i grader på en skala, vilket erbjuder fler sätt att uttrycka stöd än i termer av "håller med" och "inte håller med".</p><p> Använd Gradienter of Agreement som en preliminär omgång, för att testa stöd för ett förslag innan du går över till ett formellt avtal.</p><p> Gradienter av enighet låter folk veta att ett förslag håller på att bildas och uppmuntrar dem att engagera sig. Det är en möjlighet att lyssna på människor, känna hur de känner och reagera på lämpligt sätt – vilket öppnar potentialen för att införliva deras bidrag för att fatta ett bättre beslut.</p>
+      title: Hur tycker du om det nya värdeförklaringen?
+      details: <h3 id="what-are-you-proposing"><strong>Vad föreslår du?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Hur tycker du om förslaget? Uttryck ditt stöd på skalan nedan och lämna en kommentar eller förbättringsförslag.</p><p> Det här förslaget Gradients of Agreement är till för att testa stödet för förslaget och en möjlighet för din input innan du går över till ett formellt avtal.</p>
+      whole_hearted_endorsement: Helhjärtat stöd
+      whole_hearted_endorsement_meaning: Jag gillar det verkligen!
+      whole_hearted_endorsement_prompt: Vad gillar du med det?
+      agreement_with_minor_contention: Överenskommelse med mindre invändningar
+      agreement_with_minor_contention_meaning: Inte perfekt, men det är tillräckligt bra
+      agreement_with_minor_contention_prompt: Vad är ditt bekymmer?
+      support_with_reservations: Support med reservationer
+      support_with_reservations_meaning: Jag kan leva med det
+      support_with_reservations_prompt: Vilka är dina reservationer?
+      abstain_meaning: Den här frågan berör mig inte
+      abstain_prompt: Har du något du vill tillägga?
+      more_discussion_needed: Mer diskussion behövs
+      more_discussion_needed_meaning: Jag förstår inte problemen tillräckligt bra ännu
+      more_discussion_needed_prompt: Vad är det du inte förstår?
+      don_t_like_but_will_support: Gillar inte men kommer att stödja
+      don_t_like_but_will_support_meaning: Det är inte bra men jag vill inte hålla upp gruppen
+      don_t_like_but_will_support_prompt: Vad skulle du vilja se förbättras?
+      serious_disagreement: Allvarlig oenighet
+      serious_disagreement_meaning: Jag är inte med på det här - räkna inte med mig
+      serious_disagreement_prompt: Vad håller du inte med om?
+      veto: Veto
+      veto_meaning: Jag blockerar detta förslag
+      veto_prompt: Varför blockerar du förslaget? Vad behöver förändras för att du ska kunna stödja det?
+    simple_poll:
+      process_subtitle: Hitta det mest populära alternativet
+      process_introduction: <p>Innan du fattar ett beslut, ta reda på vilka alternativ som folk bryr sig mest om.</p><p> Enkel omröstning hjälper dig att hitta det eller de mest populära alternativen med ett eller flera val.</p><p> Skriv eventuella detaljer om alternativen i detaljfältet, ange sedan namnet på alternativet och klicka på + för att lägga till.</p><p> Ställ in <strong>Minimival</strong> och <strong>Maximal val</strong> som en väljare kan välja. Lämna det maximala valet som 1 för en enkätundersökning.</p><p> Du kan använda pennikonen bredvid varje alternativ för att lägga till en <strong>innebörd</strong> av alternativet, en ytterligare fördjupning om alternativet att hjälpa människor när de röstar.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Läs mer om Simple poll</a> .</p>
+      title: Var ska fokus för vår strategiska inriktning vara?
+      details: <h3 id="what-is-this-poll-about"><strong>Vad handlar den här omröstningen om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Välj det eller de alternativ du föredrar.</p>
+    score_poll:
+      process_subtitle: Mät graden av stöd för varje alternativ
+      process_introduction: <p>Använd Score poll när du vill undersöka människor för deras önskemål, preferenser eller intresse för varje alternativ.</p><p> <span>Deltagarna uppmanas att utvärdera varje alternativ och tilldela en poäng genom att flytta ett skjutreglage längs en skala.</span></p><p> <span>Resultaten visas grafiskt tillsammans med en tabell för varje alternativ som visar totalpoäng, medelpoäng och antal väljare.</span></p><p> Avancerade inställningar inkluderar "Röster är anonyma" och "Visa alternativ i slumpmässig ordning" - används ofta för poängundersökning för att minska eventuella röstningsfördomar.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Läs mer om Poängundersökning</a> .</p>
+      title: Att bedöma hur beslut fattas i vår organisation
+      details: <h3 id="what-is-this-poll-about"><strong>Vad handlar den här omröstningen om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Välj det eller de alternativ du föredrar.</p>
+    dot_vote:
+      process_subtitle: Tilldela en budget med poäng för att avslöja prioriteringar
+      process_introduction: <p>Punktröstning är användbart för grupper som försöker tilldela en begränsad resurs till ett antal alternativ. Det går utöver en enkel omröstning genom att hjälpa deltagarna att inse att det finns en begränsning när de väljer alternativ.</p><p> Deltagarna får var och en ett visst antal prickar. Du bestämmer hur många.</p><p> De placerar prickar bredvid presenterade alternativ som de gillar. Deltagarna kan placera alla sina prickar på ett enda alternativ eller spridas över flera alternativ.</p><p> När deltagarna allokerar prickar kan de överskrida punktbudgetgränsen och uppmuntras därför att noggrant överväga hur de spenderar sina prickar.</p><p> Alternativ med flest prickar "vinner". Resultattabellen innehåller ytterligare data som hjälper dig att analysera resultat.</p><ul><li><p> % av poängen</p></li><li><p> Poäng</p></li><li><p> Betyda</p></li><li><p> Väljare</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Läs mer om Dot vote</a> .</p>
+      title: Att välja teman för vår konferens
+      details: <h3 id="what-is-this-poll-about"><strong>Vad handlar den här omröstningen om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> I denna omröstning har du en budget på 8 punkter att allokera till de alternativ du föredrar. Du kan placera alla prickar på ett alternativ eller sprida ut dem.</p>
+    ranked_choice:
+      process_subtitle: Förstå den ordnade inställningen av alternativ
+      process_introduction: <p>Rangordnade val är användbart när du har ett stort antal alternativ, eller håller ett val.</p><p> Denna omröstningsmall erbjuder en rad alternativ för människor att rösta i sin föredragna ordning.</p><p> Du kan ställa in antalet val väljaren får.</p><p> <span>Väljare dra och släpp alternativen i prioritetsordning (#1 är ditt mest föredragna alternativ).</span></p><p> <span>Avancerade inställningar inkluderar "Röster är anonyma" och "Visa alternativ i slumpmässig ordning" - används ofta för att välja</span> rätt val för att minska eventuella röstningsfördomar.</p><p> Resultaten visas i rankad ordning. Resultattabellen innehåller ytterligare data som hjälper dig att analysera resultat.</p><ul><li><p> Rang</p></li><li><p> % av poängen</p></li><li><p> Poäng</p></li><li><p> Betyda</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Läs mer om Rankat val</a> .</p>
+      title: Välj styrelseledamöter till styrelsen
+      details: <h3 id="what-is-this-poll-about"><strong>Vad handlar den här omröstningen om?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Varför är detta viktigt?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Vad ber du folk att göra?</strong></h3><p></p><p> Rösta genom att rangordna alternativen i den ordning du föredrar. Alternativet som rankas först i resultaten vinner.</p>
+    time_poll:
+      process_subtitle: Hitta när människor är tillgängliga att träffas
+      process_introduction: <p><span>Spara tid på att ordna ett datum för ditt möte eller event.</span></p><p> Tidsundersökning gör det enkelt att se allas tillgänglighet och hitta den bästa tiden.</p><p> Ge din Time-undersökning en titel och detaljer. Ange en lista med datum- och tidsalternativ i din tidszon.</p><p> Tänk på personer i olika tidszoner när du ställer in tidsluckor. Deltagarna kommer att se tider lokaliserade i sin tidszon.</p><p> Ställ in en möteslängd.</p><p> När tidsundersökningen stängs, ställ in ett resultat med den bästa tiden och eventuella instruktioner för mötet.</p><p> <span>Loomio kommer att inkludera en kalenderinbjudan med e-postmeddelandet om resultatet, så att deltagarna kan lägga till i sin kalender.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Läs mer om Time poll</a> .</p>
+      title: Låt oss hitta ett datum för nästa möte
+      details: <p><strong>Vad är mötet eller händelsen?</strong></p><p></p><p> <strong>Varför är detta viktigt?</strong></p><p></p><p> <strong>Vad ber du folk att göra?</strong></p><p></p><p> <span>Markera de tidsluckor som du är tillgängliga med den gröna "tummen upp"-ikonen eller lämna den röda "tummen ner" på plats när den inte är tillgänglig.</span></p><p> <span>Använd ikonen "tummen åt sidan" för att säga att du är tillgänglig "om det behövs".</span></p>
+      reason_prompt: Finns det något du kan säga för att hjälpa arrangören att hitta en lämplig tidpunkt?
+    opt_in:
+      process_subtitle: Hitta volontärer eller fråga efter deltagare
+      process_introduction: '<p>Använd Opt-in för att bjuda in personer att gå med i ett team, en kommitté eller en arbetsgrupp, eller för att delta i ett evenemang.</p><p> "Opt-in" har två röstningsalternativ: Acceptera eller Avvisa.</p><p> Du kan definiera ett mål för antalet personer du letar efter, säg 3 personer för att gå med i din arbetsgrupp.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Läs mer om Opt-in</a> .</p>'
+      title: Arbetsgrupp för att ta fram vår nya hållbarhetspolicy
+      details: <p><strong>Vilket team, arbetsgrupp eller event bjuder du in folk till?</strong></p><p></p><p> <strong>Varför är detta viktigt?</strong></p><p></p><p> <strong>Vad ber du folk att göra?</strong></p><p></p><p> Välj "Acceptera" för att delta!</p>
+      accept_meaning: Jag är villig att delta
+      accept_prompt: Varför ställer du upp som frivillig för detta?
+      decline_meaning: Jag kan inte delta
+      decline_prompt: Finns det något du skulle vilja säga?
+  thread_item:
+    removed: Objektet har tagits bort
+    deleted_group: Raderad grupp
+    invite_only_thread: Bjud endast in tråd
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> som svar på <strong>{{title}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> redigerade trådens titel"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> redigerade trådkontexten"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ändrade trådens sekretess"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> redigerade tråden"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> flyttade tråden från <strong>{{title}}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> stängde tråden"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> öppnade tråden igen"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> skapade en fork av denna tråd: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{författare}}</a>"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> delade ett resultat"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> öppnade {{polltype}} igen"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> stängde {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> startade en {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> redigerade {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> lade till alternativ till {{polltype}}"
+    poll_expired: "{{polltype}} stängd"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> röstade på: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> uppdaterade sin röst på: <strong>{{title}}</strong>"
+    event_removed: Borttagen från tråden
+  add_poll_to_thread_modal:
+    success: Framgång, {{pollType}} har lagts till i tråden!
+  powered_by:
+    this_is_loomio_md: Loomio är en app för att fatta beslut tillsammans. [Prova gratis](https://www.loomio.com)
+    slogan: Bättre beslut tillsammans
+    powered_by_loomio: Drivs av Loomio
+    privacy_policy: Integritetspolicy
+    terms_of_service: Användarvillkor
+    front_page: Framsida

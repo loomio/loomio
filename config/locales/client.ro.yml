@@ -1,6 +1,45 @@
+---
 ro:
   templates:
     try_loomio: Incearca Loomio
+    template_gallery: Galerie de șabloane
+    title_template: Șablon %{title}
+    title_templates: "%{title} Șabloane"
+    title_copy: "%{title} Copiere"
+    copy_of_title: Copie a %{title}
+    loomio_default_templates: Șabloane implicite Loomio
+    which_templates_would_you_like_to_use: Ce șabloane ați dori să utilizați?
+    login_to_start_demo: Acesta este un demo al Loomio în acțiune. Ești binevenit să arunci o privire în jur.
+    sign_in_to_try_features: Dacă doriți să încercați să votați într-o decizie demonstrativă sau să începeți o perioadă de încercare gratuită pentru organizația dvs., faceți clic pe „conectare”.
+    click_button_to_start_demo: Bine ati venit! Pentru a încerca votarea și alte funcții, faceți clic pe Start demo.
+    welcome_to_your_demo: Acesta este propriul tău grup demonstrativ!
+    try_voting_to_see_it_work: Încercați să votați într-o propunere pentru a înțelege cum funcționează Loomio.
+    delete_will_be_deleted_in_x_days: Această demonstrație va fi ștearsă în %{x} zile.
+    to_use_loomio_with_your_org_start_trial: Când sunteți gata să încercați Loomio cu organizația dvs., începeți o perioadă de încercare gratuită.
+    templates: Șabloane
+    make_a_copy: Fa o copie
+    this_thread_is_a_template: Acest thread este un șablon. Faceți o copie dacă doriți să o utilizați.
+    this_is_a_poll_template: Acesta este un șablon de sondaj. Faceți o copie dacă doriți să începeți să votați.
+    start_a_demo_group: Începeți un grup demonstrativ
+    start_a_demo: Începeți o demonstrație
+    demo_group: Grup demonstrativ
+    play_with_an_example_group: Joacă-te cu un grup exemplu
+    look_and_feel: Vedeți cum arată Loomio pentru o organizație mică. Învață aplicația încercând-o.
+    watch_then_start: Vă rugăm să urmăriți videoclipul, apoi faceți clic pe „Start Demo” pentru a încerca Loomio
+    generating_demo: Ok, așteaptă chiar acolo! Generarea unei demonstrații durează aproximativ 20 de secunde.
+    start_a_x_day_free_trial: Începeți o perioadă de încercare gratuită de {{day}} zile
+    ready_to_trial: Ești gata să încerci Loomio cu organizația ta?
+    start_a_no_obligation_x_day_trial: Începeți un grup Loomio pentru organizația dvs. cu o perioadă de încercare gratuită de {{zi}} zile.
+    you_can_test_it_out: Puteți invita alte persoane să se alăture, să îl integrați cu celelalte instrumente și să încercați să luați unele decizii.
+    demo_created: Grup demonstrativ creat, doar pentru tine!
+    start_demo: Începeți demonstrația
+    view_demo: Vezi demonstrația
+    start_trial: Începe procesul
+    start_free_trial: Incepe o probă gratuită
+    demo_needs_user: Pentru a începe o demonstrație, trebuie să vă înregistrați (sau să vă conectați) ca utilizator Loomio. Acest lucru este gratuit și durează doar un minut.
+    trial_needs_user: Bine ati venit! Vă rugăm să vă conectați pentru a începe perioada de încercare gratuită
+    this_is_a_template_for_new_threads: Acesta este un șablon pentru fire noi
+    share_a_custom_configuration: Partajați o configurație personalizată altora din grupul dvs
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -16,8 +55,25 @@ ro:
     large: Mare
     monthly: Lunar
     yearly: Anual
+    starter: Incepator
+    pro: Pro
+    pro_nonprofit: Pentru nonprofit
+    community: Comunitate
   subscription_status:
-    members: "Membri"
+    members: Membri
+    plan: Plan
+    state: stare
+    active_members: Membrii activi
+    max_threads: Fire maxime
+    max_members: Max membri
+    expires_at: Expiră
+    renews_at: Reînnoiește
+    referral_code: Codul de recomandare
+    chargify_link: Portalul de facturare
+    referral_code_help: Oferă o reducere unui prieten, obține-ți un credit!
+    manage_payment_details: Gestionați detaliile de plată
+    manage_subscription: Gestionați abonamentul
+    amount: Cantitate
   loomio_tags:
     tags: Etichete
     apply_tags: Aplica etichete
@@ -29,6 +85,17 @@ ro:
     helptext: Etichetele te ajuta sa clasifici discutiile si sa le gasesti mai usor
     tag_created: Etichetă salvată
     tags_marked: Conversatii marcate '{{name}}' in {{groupName}}
+    all_tags: Toate etichetele
+    new_tag: Etichetă nouă
+    card_title: Etichete de categorie
+    destroy_tag: Ștergeți eticheta
+    destroy_helptext: Aceasta va șterge această etichetă și o va elimina din toate firele din grup. Esti sigur?
+    discussions_count_singular: "(%{count} fir)"
+    discussions_count_plural: "(%{count} fire)"
+    tag_destroyed: Eticheta a fost ștearsă
+    no_tags_present: Nu au fost găsite subiecte cu acea etichetă! Încercați să selectați altul
+    no_tags_in_group: Acest grup nu are încă etichete de categorie
+    only_admins_can_edit_tags: Ne pare rău, numai administratorii {{group}} pot crea, redenumi sau șterge etichete
   poll_types:
     proposal: propunere
     poll: sondaj
@@ -36,6 +103,9 @@ ro:
     meeting: sondaj pe perioadă
     ranked_choice: prioritizarea variantelor
     score: sondaj cu scor
+    count: înscriere
+    check: verificarea sensului
+    question: runda de intrebari
   new_poll_types:
     proposal: propunere
     count: numarătoare
@@ -67,69 +137,69 @@ ro:
     time:
       am: am
       pm: pm
-    closing_in: 'Spre inchidere {{time}}'
-    closed_ago: 'Inchis {{time}}'
-    volume: 'Volum'
-    notification_volume: 'Volum Notificari'
-    group: 'Grup'
-    groups: 'Grupuri'
-    organization: "Organizație"
-    organizations: "Organizații"
-    threads: 'Subiecte'
-    decisions: 'Decizii'
-    settings: 'Setari'
-    help: 'Ajutor'
+    closing_in: Spre inchidere {{time}}
+    closed_ago: Inchis {{time}}
+    volume: Volum
+    notification_volume: Volum Notificari
+    group: Grup
+    groups: Grupuri
+    organization: Organizație
+    organizations: Organizații
+    threads: Subiecte
+    decisions: Decizii
+    settings: Setari
+    help: Ajutor
     anonymous: Anonim
     email_address: Adresa email
     privacy:
-      privacy: 'Confidentialitate'
-      public: 'Public'
-      open: 'Deschis'
-      closed: 'Inchis'
-      private: 'Confidential'
-      secret: 'Secret'
-    selected: 'Selectat'
+      privacy: Confidentialitate
+      public: Public
+      open: Deschis
+      closed: Inchis
+      private: Confidential
+      secret: Secret
+    selected: Selectat
     date_range:
-      today: 'Astazi'
-      yesterday: 'Ieri'
-      thisweek: 'Saptamana aceasta'
-      thismonth: 'Luna aceasta'
-      older: 'Mai vechi'
-    more_help: 'Ajutor in plus'
-    copy: 'Copiaza'
-    reset: 'Resetează'
-    copy_text: 'Copiaza text'
-    copied: 'Copiat in clipboard'
+      today: Astazi
+      yesterday: Ieri
+      thisweek: Saptamana aceasta
+      thismonth: Luna aceasta
+      older: Mai vechi
+    more_help: Ajutor in plus
+    copy: Copiaza
+    reset: Resetează
+    copy_text: Copiaza text
+    copied: Copiat in clipboard
     points_abbrev: Fiecare vot valorează {{score}} puncte
     total: Total
     action:
       print: Imprima
       preview: Previzualizare
-      search: 'Cauta'
-      filter: 'Filtrează'
-      back: 'Inapoi'
-      next: 'Urmatorul'
-      close: 'Inchide'
-      reopen: 'Redeschide'
-      save: 'Salvare'
-      save_changes: 'Salvare modificari'
-      update_settings: 'Actualizeaza setarile'
-      reply: 'Raspunde'
-      edit: 'Editeaza'
-      remove: 'Sterge'
-      like: 'Apreciez'
-      unlike: 'Nu apreciez'
-      update: 'Actualizeaza'
-      cancel: 'Anuleaza'
-      show_more: "Vezi mai mult"
-      view_all: "Vezi tot"
-      new_thread: "Discutie noua"
-      add_subgroup: 'Grup nou subordonat'
-      loading: 'Se incarca'
-      translate: 'Traducere'
-      upload: 'Incarca'
-      uploading: 'Se trimite la server'
-      load_more: 'Incarca mai mult'
+      search: Cauta
+      filter: Filtrează
+      back: Inapoi
+      next: Urmatorul
+      close: Inchide
+      reopen: Redeschide
+      save: Salvare
+      save_changes: Salvare modificari
+      update_settings: Actualizeaza setarile
+      reply: Raspunde
+      edit: Editeaza
+      remove: Sterge
+      like: Apreciez
+      unlike: Nu apreciez
+      update: Actualizeaza
+      cancel: Anuleaza
+      show_more: Vezi mai mult
+      view_all: Vezi tot
+      new_thread: Discutie noua
+      add_subgroup: Grup nou subordonat
+      loading: Se incarca
+      translate: Traducere
+      upload: Incarca
+      uploading: Se trimite la server
+      load_more: Incarca mai mult
       share: Distribuie
       ok: Ok
       retry: Reincearca
@@ -150,15 +220,64 @@ ro:
       fork: Desparte
       apply: Aplică
       add_people: Adaugă persoane
+      pin: Pin
+      unpin: Anulați fixarea
+      move: Mișcare
+      undo_remove: Anulați eliminarea
+      hide: Ascunde
+      unhide: Afișează
+      show_fewer: Arată mai puține
+      view_count_more: Vedeți încă %{count}
+      view_count_responses: Vedeți %{count} răspunsuri
+      count_more: Încă %{count}
+      count_responses: "%{count} răspunsuri"
+      discard: Aruncă
+      restore: Restabili
+      unignore: Nu ignora
+      zoom: Zoom
+      align: Alinia
     formatting_help:
-      label: 'Formatare'
-      title: 'Invață să folosești Markdown pentru a formata textul'
+      label: Formatare
+      title: Invață să folosești Markdown pentru a formata textul
+    admin_menu: meniul admin
+    api_docs: Documente API
+    prefix_eg: de ex. {{val}}
+    are_you_sure: Esti sigur?
+    loomio_help: Loomio ajutor
+    visit_loomio_help: Vizitați ajutorul Loomio
+    help_and_guides: Ajutor și ghiduri
+    optional: "(Opțional)"
+    none: Nici unul
+    empty: Gol
+    no_results_found: Nici un rezultat gasit
+    view: Vedere
+    template: Șablon
+    links: Legături
+    something_went_wrong: Uh oh! Ceva n-a mers bine
+    check_for_errors_and_try_again: Verificați formularul pentru erori și încercați din nou
+    please_try_again: Vă rugăm să încercați din nou
+    required: Necesar
+    minutes: Minute
+    today: astăzi
+    in_x_days: în %{x} zile
   merge_accounts:
     modal:
       submit: Verifica
+      title: Îmbinați conturile
+      helptext: Puteți îmbina contul din <strong>{{sourceEmail}}</strong> în cel al <strong>{{targetEmail}}</strong> . Faceți clic pe Verificați și un e-mail de verificare va fi trimis la {{targetEmail}} pentru a începe procesul.
+      flash: Email de verificare trimis!
+    email_taken: Ne pare rău, acel e-mail este deja asociat cu un alt utilizator. E-mailul acela iti apartine?
+    find_out_more: Află mai multe.
+    placeholder_modal_text: <p>Dacă doriți să îmbinați două conturi împreună, introduceți pur și simplu adresa de e-mail respectivă (aparținând celuilalt cont) în câmpul de e-mail din pagina de profil și urmați instrucțiunile care apar.</p><p> Nevoie de ajutor? <a href="/contact" target="_blank">Contactati-ne</a> .
   emoji_picker:
     search: Cauta
     common: Utilizate frecvent
+    expressions: Chipurile
+    hands: Mâinile
+    people: oameni
+    nature: Natură
+    objects: Lucruri
+    places: Locuri
   ordinal:
     _1: 1st
     _2: 2nd
@@ -171,134 +290,444 @@ ro:
     _9: 9th
     _10: 10th
   error_page:
-    forbidden: 'Nu ai permisiune pentru aceasta actiune.'
-    page_not_found: 'Nu am gasit nimic corespunzator. Este posibil sa fie sters sau mutat.'
-    internal_server_error: 'Ne pare rau, ceva nu a mers cum trebuie. Te rugam sa mai incerci o data.'
+    forbidden: Nu ai permisiune pentru aceasta actiune.
+    page_not_found: Nu am gasit nimic corespunzator. Este posibil sa fie sters sau mutat.
+    internal_server_error: Ne pare rau, ceva nu a mers cum trebuie. Te rugam sa mai incerci o data.
+    forbidden_view: Nu aveți permisiunea de a vizualiza acest lucru.
   previous_polls_page:
     heading: Activitati in {{name}}
     search_activities: Cauta decizii
+    polls_count: Se afișează {{loaded}} din {{total}} decizii
   volume_levels:
-    loud: 'Tare'
-    normal: 'Normal'
-    quiet: 'Incet'
-    mute: 'Dezactivat'
-    unmute: 'Activare'
+    loud: Tare
+    normal: Normal
+    quiet: Incet
+    mute: Dezactivat
+    unmute: Activare
   pin_event_form:
     title_label: Titlu
+    title: Fixați pe cronologie
+    hint: 'Sfat pentru data viitoare: încercați să evidențiați un text înainte de a da clic pe „Fixați”.'
   change_volume_form:
     simple:
       label: Notificari
       normal: Normal
       quiet: 'Ignora '
-    loud_label: "Toate activitatile"
-    normal_label: "Anunturi"
-    quiet_label: "Nici un email"
-    mute_label: "Ascunde notificari"
+      loud: Abonat
+      question: Când vrei să fii notificat?
+      loud_explain: ori de câte ori există activitate
+      normal_explain: când cineva îți cere atenția
+      quiet_explain: nicio notificare
+    loud_label: Toate activitatile
+    normal_label: Anunturi
+    quiet_label: Nici un email
+    mute_label: Ascunde notificari
     discussion:
       messages:
-        quiet: "Nu vei primi emailuri legate de aceasta discutie"
+        quiet: Nu vei primi emailuri legate de aceasta discutie
+        loud: Veți primi prin e-mail activitatea din acest thread.
+        normal: Veți primi un e-mail despre propunerile din acest thread.
+      title: Notificări de subiecte
+      loud_description: Veți primi prin e-mail toată activitatea din acest thread.
+      normal_description: Veți primi prin e-mail doar activități importante din acest thread.
+      quiet_description: Nu veți primi prin e-mail nicio activitate din acest fir.
+      apply_to_all: Aplicați aceste setări la toate firele din acest grup.
+      only_this_thread: Se aplică numai acestui thread
+      group: Modificați notificările pentru grup
+      user: Modificați setările de notificare pentru utilizator
     membership:
-      loud_description: "Veti primi un email oricand va fi activitate in acest grup."
-      normal_description: "Veti primi un email oricand va fi activitate in acest grup."
-      apply_to_all: "Aplica aceste setari pentru toate grupurile mele"
+      loud_description: Veti primi un email oricand va fi activitate in acest grup.
+      normal_description: Veti primi un email oricand va fi activitate in acest grup.
+      apply_to_all: Aplica aceste setari pentru toate grupurile mele
+      title: Notificări pentru {{title}}
+      quiet_description: Nu veți primi e-mailuri despre activitatea din acest grup.
+      apply_to_organization: Aplicați la toate grupurile din {{organizație}}
+      messages:
+        loud: Veți primi prin e-mail toată activitatea din acest grup.
+        normal: Veți primi doar anunțuri prin e-mail din acest grup.
+        quiet: Nu veți primi e-mailuri despre acest grup.
     user:
       title: Setari de email pentru grupurile noi
-      apply_to_all: "Aplica aceste setari pentru toate grupurile mele"
+      apply_to_all: Aplica aceste setari pentru toate grupurile mele
+      loud_description: Veți primi un e-mail ori de câte ori există activitate în grupurile noi la care vă alăturați.
+      normal_description: Veți primi un e-mail despre anunțurile din orice grupuri noi la care vă alăturați.
+      quiet_description: Nu veți primi e-mailuri despre activitatea din niciun grup nou la care vă alăturați.
+      messages:
+        loud: Veți primi prin e-mail toată activitatea în grupuri noi.
+        normal: Veți primi un e-mail despre anunțurile din grupuri noi.
+        quiet: Nu veți primi e-mailuri despre grupuri noi.
+    explain_scope:
+      thread: Acest lucru se schimbă atunci când veți fi notificat despre acest fir
+      group: Acest lucru se schimbă atunci când veți fi notificat despre toate firele din grup
+    aria_label: Modificați formularul de setări de e-mail
+    saved: Setările de notificare au fost actualizate
+    all_groups:
+      title: Preferințe de notificare pentru toate grupurile
+      loud_description: Veți primi prin e-mail toată activitatea din toate grupurile dvs.
+      normal_description: Veți primi prin e-mail doar activități importante din toate grupurile dvs.
+      quiet_description: Nu veți primi prin e-mail nicio activitate din niciunul dintre grupurile dvs.
+      messages:
+        loud: Veți primi prin e-mail toată activitatea din toate grupurile dvs.
+        normal: Veți primi doar anunțuri prin e-mail în toate grupurile dvs.
+        quiet: Nu veți primi e-mailuri despre niciunul dintre grupurile dvs.
   inbox:
-    clear: 'Curata'
-    latest: 'Cel mai nou'
-    unread: 'Necitit'
-    closing_in: 'Inchidere'
+    clear: Curata
+    latest: Cel mai nou
+    unread: Necitit
+    closing_in: Inchidere
   sign_up_form:
     password_label: 'Parola:'
     password_confirmation_label: 'Introduceti parola inca o data:'
   signed_out_modal:
-    aria_label: 'Sesiune terminata'
-    title: "Sesiunea ta s-a terminat"
-    ok: "Ok"
+    aria_label: Sesiune terminata
+    title: Sesiunea ta s-a terminat
+    ok: Ok
+    message: Ați fost deconectat dintr-o altă fereastră. Vă rugăm să vă conectați din nou pentru a continua.
   comment_reply_form:
-    aria_label: 'Adauga raspuns'
+    aria_label: Adauga raspuns
   comment_form:
-    aria_label: 'Adauga un comentariu'
+    aria_label: Adauga un comentariu
     attachments:
-      add_attachment: 'Ataseaza fisier'
-      remove_attachment: 'Elimina fisierul'
+      add_attachment: Ataseaza fisier
+      remove_attachment: Elimina fisierul
     messages:
-      created: 'Comentariu adaugat.'
-      replied: '{{name}} a fost notificat despre replica'
-      updated: 'Comentariu actualizat.'
-      destroyed: 'Comentariu sters.'
+      created: Comentariu adaugat.
+      replied: "{{name}} a fost notificat despre replica"
+      updated: Comentariu actualizat.
+      destroyed: Comentariu sters.
+      removed: Comentariul a fost eliminat
     say_something: Spune ceva..
-    edit_comment: 'Editeaza comentariul'
-    delete_comment: 'Sterge comentariu'
-    cancel_reply: 'Anuleaza replica'
-    confirm_delete_message: 'Esti sigur ca vrei sa stergi acest comentariu?'
-    confirm_delete: 'Sterge comentariu'
-    in_reply_to: "Raspunde lui {{name}}"
-    write_a_comment: "Scrie un comentariu"
-    post_comment: "Scrie comentariu"
+    edit_comment: Editeaza comentariul
+    delete_comment: Sterge comentariu
+    cancel_reply: Anuleaza replica
+    confirm_delete_message: Esti sigur ca vrei sa stergi acest comentariu?
+    confirm_delete: Sterge comentariu
+    in_reply_to: Raspunde lui {{name}}
+    write_a_comment: Scrie un comentariu
+    post_comment: Scrie comentariu
     submit_button:
-      label: 'Postare'
-    private_privacy_notice: 'Comentariul tau va fi vizibile doar membrilor grupului {{groupName}}.'
-    public_privacy_notice: 'Comentariul tau va fi vizibil tuturor pe web.'
-    sign_in: "Intra in cont pentru a te alatura conversatiei"
+      label: Postare
+    private_privacy_notice: Comentariul tau va fi vizibile doar membrilor grupului {{groupName}}.
+    public_privacy_notice: Comentariul tau va fi vizibil tuturor pe web.
+    sign_in: Intra in cont pentru a te alatura conversatiei
   sidebar:
-    threads: 'Discutii'
-    recent_threads: 'Conversatii recente'
-    start_subgroup: 'Grup nou subordonat'
-    explore: 'Grupuri publice'
+    threads: Discutii
+    recent_threads: Conversatii recente
+    start_subgroup: Grup nou subordonat
+    explore: Grupuri publice
     start_thread: Conversatie noua
     start_decision: Decizie noua
     aria_labels:
-      groups_list: 'Grupuri'
-      user_list: 'Actiuni utilizator'
+      groups_list: Grupuri
+      user_list: Actiuni utilizator
+      heading: Bara laterală
+      threads_list: Threads de acțiuni
+    my_groups: Grupurile mele
+    other_groups: Alte grupuri
+    all_groups: Toate grupurile
+    invite_only_threads: Fire numai pe invitație
+    direct_threads: Fire directe
+    unread_threads: Fire necitite (%{count})
+    muted_threads: Fire dezactivate
+    start_group: Noua organizare
+    explore_groups: Explorează grupuri
+    more_groups: Mai multe grupuri
+    template_gallery: Galerie de șabloane
+    examples_and_templates: Exemple și șabloane
+    help_docs: Ajutor documente
+    a_detailed_guide_to_loomio: Un ghid detaliat pentru Loomio
+    talk_to_the_loomio_team: Vorbește cu echipa Loomio
   navbar:
-    recent_title: 'Mergi la tablou de bord'
-    unread_title: 'Vezi activitatea necitita'
-    start_thread: 'Conversatie noua'
-    notifications: 'Panoul notificarilor'
+    recent_title: Mergi la tablou de bord
+    unread_title: Vezi activitatea necitita
+    start_thread: Conversatie noua
+    notifications: Panoul notificarilor
     search:
-      results_aria_label: 'Rezultate cautare'
-      no_results: 'Nu s-a gasit nici o discutie'
-      close: 'Inchide cautarea'
-      placeholder: 'Cauta'
-      loading: 'Se incarca rezultatele...'
-      discussions: 'Discutii'
-      proposals: 'Propuneri'
-      comments: 'Comentarii'
-    sign_in: 'Intrare in cont'
-    logo_title: 'Pagina de start'
+      results_aria_label: Rezultate cautare
+      no_results: Nu s-a gasit nici o discutie
+      close: Inchide cautarea
+      placeholder: Cauta
+      loading: Se incarca rezultatele...
+      discussions: Discutii
+      proposals: Propuneri
+      comments: Comentarii
+      label: Câmp de căutare; caută grupuri și fire
+    sign_in: Intrare in cont
+    logo_title: Pagina de start
+    search_all_threads: Căutați în toate firele
+    search_threads: Căutați fire în {{name}}
+    search_polls: Căutați sondaje în {{name}}
+    search_members: Căutați membri în {{name}}
+    search_subgroups: Căutați membri în {{name}}
+    search_files: Căutați fișiere în {{name}}
+    toggle_sidebar: Comutați bara laterală
+    open_sidebar: Deschideți bara laterală
+    close_sidebar: Închideți bara laterală
+    group_and_subgroups: "{{grup}} și subgrupuri"
   user_dropdown:
-    edit_profile: 'Editare profil'
-    help: 'Ajutor'
-    contact_site_name: 'Contacteaza {{site_name}}'
-    sign_out: 'Iesire din cont'
+    edit_profile: Editare profil
+    help: Ajutor
+    contact_site_name: Contacteaza {{site_name}}
+    sign_out: Iesire din cont
+    pin_sidebar: Fixați bara laterală
+    unpin_sidebar: Anulați fixarea barei laterale
+    enable_beta_features: Activați funcțiile beta
+    disable_beta_features: Dezactivați funcțiile beta
+    enable_dark_mode: Activați modul întunecat
+    disable_dark_mode: Dezactivați modul întunecat
+    button_label: Meniul utilizatorului
+    email_settings: Setări de notificare
+    contact_support: Contactați asistența
+    beta_collab: "\U0001F9EA Funcțiile beta sunt activate!"
+    outcomes: Rezultate
   membership_dropdown:
-    invitation_resent: "Invitatie retrimisa"
-    make_coordinator: 'Promoveaza ca admin'
+    invitation_resent: Invitatie retrimisa
+    make_coordinator: Promoveaza ca admin
+    set_name_and_username: Setați numele și numele de utilizator
+    set_title: Setează titlul
+    resend: Retrimite invitatia
+    demote_coordinator: Retrocedați administratorul
+    remove_from:
+      discussion: Scoateți din fir
+      group: Eliminați din grup
+      poll: Eliminați din {{pollType}}
+    cancel_invitation: Anulează invitația
   notifications:
-    header: "Notificari"
-    no_notifications: "Nu ai nici o notificare"
+    header: Notificari
+    no_notifications: Nu ai nici o notificare
+    with_title:
+      comment_replied_to: "%{actor} ți-a răspuns în: %{title}"
+      discussion_announced: "%{actor} te-a invitat la subiectul: %{title}"
+      discussion_edited: "%{actor} a editat contextul firului de discuție: %{title}"
+      discussion_closed: "%{actor} a închis firul: %{title}"
+      invitation_accepted: "%{actor} a acceptat invitația dvs. de a se alătura %{title}"
+      membership_created: "%{actor} v-a invitat să vă alăturați %{title} pe %{site_name}"
+      membership_resent: "%{actor} v-a invitat să vă alăturați %{title} pe %{site_name}"
+      membership_requested: "%{actor} a solicitat să se alăture %{title}"
+      membership_request_approved: "%{actor} a aprobat solicitarea ta de a te alătura %{title}"
+      new_comment: "%{actor} a comentat în: %{title}"
+      new_coordinator: "%{actor} te-a făcut administrator al lui %{title}"
+      new_discussion: "%{actor} a început o discuție: %{title}"
+      outcome_announced: "%{actor} a distribuit un rezultat %{poll_type}: %{title}"
+      outcome_created: "%{actor} a distribuit un rezultat %{poll_type}: %{title}"
+      outcome_updated: "%{actor} a actualizat rezultatul %{poll_type}: %{title}"
+      outcome_review_due: 'Este timpul să revizuim rezultatul: %{title}'
+      poll_announced: "%{actor} te-a invitat să votezi: %{title}"
+      poll_closed_by_user: "%{actor} a închis %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} se închide în 24 de ore: %{title}"
+      poll_closing_soon_author: "%{poll_type} dvs. se închide în 24 de ore: %{title}"
+      poll_created: "%{actor} a început un %{poll_type}: %{title}"
+      poll_edited: "%{actor} a actualizat %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} s-a închis: %{title}"
+      poll_expired_author: 'Distribuiți rezultatul %{poll_type} dvs.: %{title}'
+      poll_option_added: "%{actor} a adăugat opțiuni la %{title}"
+      poll_reopened: "%{actor} a redeschis %{poll_type}: %{title}"
+      poll_reminder: "%{actor} vă reamintește să votați pentru %{title}"
+      poll_reminder_wip: "%{actor} vă reamintește să oferiți feedback: %{title}"
+      reaction_created: "%{actor} a reacționat %{reaction} la %{modelul dvs. din %{title}"
+      stance_created: "%{actor} a votat în: %{title}"
+      stance_updated: "%{actor} a votat în: %{title}"
+      stance_created_option: "%{actor} a votat %{option} în %{title}"
+      user_added_to_group: "%{actor} te-a adăugat în grupul: %{title}"
+      user_mentioned: "%{actor} te-a menționat în: %{title}"
+      user_reminded: "%{actor} vă reamintește să votați în: %{title}"
+    without_title:
+      discussion_announced: "%{actor} te-a invitat la o discuție"
+      discussion_edited: "%{actor} a editat contextul firului de discuție"
+      discussion_closed: "%{actor} a închis firul"
+      group_announced: "%{actor} te-a invitat într-un grup"
+      comment_replied_to: "%{actor} ți-a răspuns"
+      new_discussion: "%{actor} a început o discuție"
+      new_comment: "%{actor} a comentat într-un thread"
+      membership_created: "%{actor} v-a invitat să vă alăturați unui grup"
+      membership_resent: "%{actor} v-a invitat să vă alăturați unui grup"
+      membership_requested: "%{actor} a solicitat să se alăture grupului dvs"
+      membership_request_approved: "%{actor} a aprobat solicitarea ta de a te alătura %{title}"
+      outcome_announced: "%{actor} a distribuit un rezultat %{poll_type}"
+      outcome_created: "%{actor} a distribuit un rezultat %{poll_type}"
+      outcome_updated: "%{actor} a actualizat rezultatul"
+      outcome_review_due: Este timpul să revizuim rezultatul %{poll_type}
+      poll_announced: "%{actor} v-a invitat să votați la un %{poll_type}"
+      poll_announced_wip: "%{actor} dorește feedbackul dvs. la un %{poll_type}"
+      poll_closed_by_user: "%{actor} a închis %{poll_type}"
+      poll_closing_soon: "%{poll_type} se închide în 24 de ore"
+      poll_closing_soon_author: "%{poll_type} dvs. se închide în 24 de ore"
+      poll_created: "%{actor} a început un %{poll_type}"
+      poll_edited: "%{actor} a actualizat %{poll_type}"
+      poll_expired: "%{poll_type} s-a închis"
+      poll_expired_author: Distribuiți rezultatul %{poll_type} dvs.
+      poll_option_added: "%{actor} a adăugat opțiuni la %{poll_type}"
+      poll_reopened: "%{actor} a redeschis %{poll_type}"
+      poll_reminder: "%{actor} vă reamintește să votați"
+      poll_reminder_wip: "%{actor} vă reamintește să oferiți feedback"
+      reaction_created: "%{actor} a reacționat %{reaction} la %{modelul tău"
+      stance_created: "%{actor} a votat"
+      stance_updated: "%{actor} a votat"
+      stance_created_option: "%{actor} a votat %{option}"
+      user_mentioned: "%{actor} te-a menționat"
+      user_reminded: "%{actor} vă reamintește să votați"
+    hints:
+      poll_closing_soon: Acum este un moment bun să votezi, să te răzgândești sau să încurajezi pe alții să participe.
+      poll_closing_soon_author: Poate doriți să reamintiți oamenilor să voteze sau să prelungiți termenul.
+      outcome_review_due: Luați în considerare începerea unui sondaj de feedback sau a unui nou thread care să invite la reflecții asupra modului în care a fost implementată decizia.
   discussion_form:
     invite: Invită
     start_thread: Creaza o discutie
     messages:
-      created: 'Discutia a inceput'
-      updated: 'Discutie actualizata'
-    new_discussion_title: 'Creare discutie noua'
-    edit_discussion_title: 'Editeaza discutie'
-    group_label: 'Grup'
-    title_label: 'Titlu'
-    context_label: 'Context'
-    privacy_label: 'Confidentialitate'
-    privacy_organisation: 'Discutiile vor fi vizibile doar membrilor din {{parent}} si membrilor grupului {{group}}.'
+      created: Discutia a inceput
+      updated: Discutie actualizata
+      forked: S-a creat furca de fir
+    new_discussion_title: Creare discutie noua
+    edit_discussion_title: Editeaza discutie
+    group_label: Grup
+    title_label: Titlu
+    context_label: Context
+    privacy_label: Confidentialitate
+    privacy_organisation: Discutiile vor fi vizibile doar membrilor din {{parent}} si membrilor grupului {{group}}.
+    thread_templates: Șabloane de fire
+    new_thread_template: Șablon de fir nou
+    edit_thread_template: Editați șablonul de fir
+    blank: Gol
+    blank_subtitle: Începe o discuție și vezi unde te duce
+    new_template: Șablon nou
+    new_template_subtitle: Creați un exemplu pe care alții să-l poată copia
+    to: La
+    direct_thread: Fir direct
+    invite_only_thread: Firul numai pe invitație
+    none_direct_thread: Fir direct (fără grup)
+    none_invite_only_thread: Firul numai pe invitație (fără grup)
+    change_log_placeholder: Opțional, descrieți modificările dvs. Acest mesaj va fi adăugat în fir.
+    change_log_label: Ce sa schimbat?
+    aria_label: Forma firului
+    new_thread_from_template: 'Fir nou: %{process_name}'
+    moving_items_title: Mutați elementele într-un fir nou
+    group_placeholder: Selectați un grup
+    title_placeholder: Care este subiectul pe care doriți să îl discutați?
+    context_placeholder: Oferiți un context pentru această discuție, astfel încât oamenii să știe cum să participe
+    privacy_public: Oricine poate vedea acest thread dacă are linkul
+    privacy_private: Numai membrii grupului pot vizualiza acest subiect
+    fork_notice: Va fi creat un fir nou cu %{count} articole din {{title}}
+    notify_group: Notifică grupul
   announcement:
     form:
       invitation_message_label: Mesaj
       poll_reminder:
         message_label: Mesaj
+        title: Amintiți-vă să votați
+        helptext: Cui ai vrea să-i reamintești să voteze?
+        message_placeholder: Mesaj opțional pentru a spune oamenilor de ce ar trebui să voteze
       wip_poll_reminder:
         message_label: Mesaj
+        title: Amintiți-vă să oferiți feedback
+        helptext: Cui ai vrea să-i reamintești să dea feedback?
+        message_placeholder: Mesaj opțional de inclus în e-mailul de notificare
+      group_has_no_members_yet: Sunteți singurul membru al grupului dvs. Poate doriți să invitați câteva persoane în grupul dvs. înainte de a începe o discuție sau o decizie.
+      invite_people_to_evaluate_loomio: Invitați câteva persoane în grupul dvs. Loomio pentru a lua o decizie împreună
+      too_many_invitations: Limita de invitații a fost depășită. <a href="{{upgradeUrl}}" target="_blank">Actualizare</a>
+      no_invitations_remaining: <p>Ați folosit toate invitațiile {{maxMembers}} disponibile pentru acest grup.</p><p> Pasul următor, <a href="{{upgradeUrl}}" target="_blank">alegeți un plan</a> pentru a continua colaborarea pe Loomio.</p>
+      invitations_remaining: Au mai rămas %{count} invitații. <a href="{{upgradeUrl}}" target="_blank">Actualizare</a>
+      who_to_invite: Pe cine ai vrea să inviți?
+      invitation_message_placeholder: Un mesaj de inclus în e-mailul de invitație. (optional)
+      invitation_message_default: Am înființat acest grup Loomio pentru a ne ajuta să luăm decizii împreună. Vă rog să acceptați invitația mea. Durează doar un minut pentru a te alătura. Mulțumesc.
+      group_announced:
+        title: Invitați în grup
+        helptext: Pe cine ai vrea să inviți în grup?
+      discussion_announced:
+        title: Invită la thread
+        helptext: Pe cine ai vrea să inviți la subiect?
+        notify_helptext: Pe cine ai dori să anunți despre subiect?
+      discussion_edited:
+        title: Notificarea modificărilor
+        helptext: Pe cine ai dori să anunți despre această actualizare? (optional)
+      poll_announced:
+        title: Invită la vot
+        helptext: Pe cine ați dori să invitați la vot?
+      wip_poll_announced:
+        title: Invitați să oferiți feedback
+        helptext: Pe cine ați dori să invitați să dea feedback?
+      poll_edited:
+        title: Notificarea modificărilor
+        helptext: Pe cine ai dori să anunți despre această actualizare?
+      outcome_announced:
+        title: Împărtășiți rezultatul
+        helptext: Rezumați rezultatele procesului, inclusiv orice înțelegeri găsite sau probleme scoase la iveală.
+      anyone_can_participate: Oricine are link poate participa
+      placeholder: Puteți introduce nume sau adrese de e-mail
+      type_or_paste_email_addresses_to_invite: Tastați sau inserați adrese de e-mail pentru a invita
+      notified_empty: Nimeni nu a selectat încă
+      single_notification: Va fi trimisă 1 notificare.
+      multiple_notifications: "{{notified}} notificări vor fi trimise."
+      notified: "{{notified}} persoane vor fi notificate."
+      notified_singular: 1 persoană va fi anunțată.
+      notified_none: Nimeni nu va fi anunțat.
+      added: "%{count} persoane vor fi adăugate."
+      added_singular: Va fi adăugată 1 persoană.
+      added_none: Nimeni nu va fi adăugat.
+      group_title: "{{name}} (%{count} persoane)"
+      visible_to_group: Oricine din {{group}} va putea vedea acest fir.
+      visible_to_guests: Numai persoanele invitate pot vedea acest subiect.
+      click_group_to_see_individuals: Faceți clic pe grup pentru a vedea persoane
+    send_discussion: Trimiteți firul
+    send_group: Invită persoane la {{name}}
+    send_poll: Trimite {{type}}
+    send_outcome: Trimite rezultatul
+    cannot_reveal_when_anonymous: Ne pare rău, nu putem dezvălui cine a votat sau nu la un sondaj anonim.
+    discussion_notification_history: Istoricul notificărilor subiectelor
+    group_notification_history: Istoricul invitațiilor de grup
+    poll_notification_history: Istoricul notificărilor de sondaj
+    outcome_notification_history: Istoricul notificării rezultatelor
+    comment_notification_history: Istoricul notificărilor de comentarii
+    notification_history_explanation: "✓ indică faptul că notificarea a fost citită sau că e-mailul a fost deschis"
+    quick_add: 'Adăugare rapidă:'
+    any_other_groups: Alte grupuri?
+    notified_people: "{{name}} a notificat {{length}} persoane:"
+    preview: Previzualizare e-mail
+    no_notifications_sent: Nu au fost trimise notificări
+    history_error: Ceva n-a mers bine! Istoricul nu a putut fi încărcat.
+    inviting_guests_to_thread: Oaspeții nu aparțin grupului dvs. și au acces numai la acest subiect
+    select_groups: Selectați grupuri
+    search_by_name_or_email: Căutați după nume sau introduceți e-mailuri pentru a invita
+    search_by_name: Căutați oameni după nume
+    only_admins_can_announce: Doar administratorii pot notifica întregul grup
+    only_admins_can_invite: Doar administratorii pot invita oaspeți
+    only_admins_can_announce_or_invite: Doar administratorii pot notifica întregul grup sau pot invita invitați
+    user_mentioned: "{{name}} a menționat {{length}} persoane:"
+    comment_replied_to: "{{name}} a răspuns la {{length}} persoane:"
+    new_discussion: "{{name}} a invitat {{length}} persoane la subiect:"
+    discussion_announced: "{{name}} a invitat {{length}} persoane la subiect:"
+    poll_created: "{{name}} a invitat {{length}} persoane să voteze:"
+    poll_announced: "{{name}} a invitat {{length}} persoane să voteze:"
+    outcome_created: "{{name}} a distribuit un rezultat cu {{length}} persoane:"
+    outcome_announced: "{{name}} a distribuit un rezultat cu {{length}} persoane:"
+    announcement_created: "{{name}} a invitat {{length}} persoane la subiect:"
+    discussion_edited: "{{name}} a editat firul, notificând {{length}} persoane:"
+    poll_edited: "{{name}} a editat un sondaj, notificând {{length}} persoane:"
+    outcome_edited: "{{name}} a editat un rezultat, notificând {{length}} persoane:"
+    outcome_updated: "{{name}} a editat un rezultat, notificând {{length}} persoane:"
+    poll_closing_soon: 'Mementoul de închidere a sondajului lui {{name}} a notificat {{length}} persoane:'
+    poll_reminder: "{{name}} a reamintit {{length}} persoane să voteze:"
+    audiences:
+      group: "{{Nume}}"
+      everyone_in_the_group: Toți cei din grup
+      discussion_group: Toată lumea din fir
+      voters: Toți sunt invitați la vot
+      decided_voters: Toți cei care au votat
+      undecided_voters: Alegători nehotărâți
+      non_voters: Membrii grupului {{name}} nu au fost încă invitați
+    members_list:
+      title: Impartit cu
+      last_notified: Notificată
+      not_notified: Neanunțat încă
+      no_members: Acest lucru nu a fost trimis încă nimănui!
+      group_admin: Administratorul grupului
+      thread_admin: Admin subiect
+      last_read_at: Ultima vizualizare la {{time}}
+      has_not_read_thread: Nu a văzut firul
+    group_form:
+      search_placeholder: Cauta oameni...
+      modal_title: Selectați membrii grupului
+    flash:
+      success: "%{count} notificări trimise"
   action_dock:
     add_resource: Adauga atasament
     add_comment: Comenteaza
@@ -320,53 +749,173 @@ ro:
     unpin_thread: De-marcheaza conversatie
     delete_thread: Sterge discutia
     count_members: "%{count} membri"
+    actions_menu: Meniul Acțiuni
+    more_actions: Mai multe actiuni
+    react: Reacţiona
+    notify: Notifică
+    edit_group: Editați contextul grupului
+    copy_url: Copiază legătură
+    announce_thread: Trimiteți firul
+    invite_guests: Invitați oaspeți
+    edit_poll_type: Editați {{pollType}}
+    new_poll_type: "{{pollType}} nou"
+    move_items: Mutați articole
+    announce_poll: Invitați oamenii să voteze
+    announce_poll_active: "(Nimeni nu a fost invitat încă)"
+    edit_stance: Schimba poziția
+    fork_comment: File de furcă
+    announce_outcome: Anunțați oamenii despre acest rezultat
+    announce_outcome_active: "(Nimeni nu a fost anunțat încă despre acest rezultat)"
+    show_edits: Afișează editările
+    show_notifications: Arata notificari
+    pin_event: Fixați pe cronologie
+    unpin_event: Anulați fixarea din cronologie
+    comment_copied: Adresa URL a comentariului a fost copiată în clipboard
+    move_thread: Mutați în grup
+    poll_copied: Adresa URL a deciziei a fost copiată în clipboard
+    discussion_copied: Adresa URL a firului a fost copiată în clipboard
+    url_copied: Link copiat în clipboard
+    tag_thread: Gestionați etichetele
+    close_thread: Închideți firul
+    reopen_thread: Redeschideți firul
+    notification_history: Istoricul notificărilor
+    move_item: Mutați elementul
+    add_poll_to_thread: Adaugă la fir
+    count_voters: "%{count} alegători"
   formatting:
     attach: Ataseaza fisier
     reset: Resetează
+    formatting_tools: Instrumente de formatare a textului
+    colors: Culori
+    highlight: A evidentia
+    alignment: Aliniere
+    lists: Liste
+    expand: Afișați mai multe instrumente de formatare
+    collapse: Afișați mai puține instrumente de formatare
+    bold: Îndrăzneţ
+    italicize: Scrie cursiv
+    blockquote: Citat
+    strikethrough: Striat
+    underline: Subliniați
+    link: Introduceți linkul
+    code_block: Bloc de cod
+    insert_image: Inserați imaginea
+    insert_emoji: Introduceți emoji
+    heading_size: Dimensiunea titlului
+    heading1: Titlul 1
+    heading2: Titlul 2
+    heading3: Titlul 3
+    left_align: Aliniere la stânga
+    center_align: Alinierea la centru
+    right_align: Aliniați la dreapta
+    justify_align: Justifică alinierea
+    paragraph: Paragraf
+    bullet_list: Listă
+    number_list: Lista numerotata
+    check_list: Lista de verificare
+    task_list: Lista de sarcini
+    text_color: Culoarea textului
+    background_color: Culoare de fundal
+    quote: Citat
+    embed: Încorporați videoclipul
+    divider: Divizor
+    add_table: Adăugați un tabel
+    remove_table: Scoateți masa
+    add_column_before: Adăugați o coloană înainte
+    add_column_after: Adăugați coloana după
+    remove_column: Eliminați coloana
+    add_row_before: Adăugați rând înainte
+    add_row_after: Adăugați rând după
+    remove_row: Eliminați rândul
+    merge_selected: Îmbinați celulele selectate
+    wysiwyg: wysiwyg
+    edit_markdown: Editați Markdown
+    markdown_confirm: Este posibil ca unele formatări să se piardă conversia conținutului wysiwyg în markdown.
+    upload_failed: Încărcare eșuată
   cover_photo_form:
-    heading: 'Poza noua de fundal'
-    upload_link: 'Uploadeaza o noua poza de fundal'
+    heading: Poza noua de fundal
+    upload_link: Uploadeaza o noua poza de fundal
+    image_size_helptext: Dimensiunea ideală a imaginii este 1400×320px
+    upload_success: Fotografia de copertă a fost actualizată cu succes
   logo_photo_form:
-    heading: 'Logo de grup nou'
-    upload_link: 'Incarcare nou logo de grup'
+    heading: Logo de grup nou
+    upload_link: Incarcare nou logo de grup
+    image_size_helptext: Dimensiunea ideală a imaginii este 100×100px
+    upload_success: Logo-ul a fost actualizat cu succes
   join_group_button:
     join_group: Alatură-te grupului
     membership_requested: Cerere de intrare in grup primita.
+    not_a_member: În prezent nu sunteți membru al acestui grup.
+    messages:
+      joined_group: Acum sunteți membru al {{group}}
   membership_request_form:
     heading: Cere sa fi inclus in grup
     name_label: Nume
     email_label: Email
     introduction_label: De ce doresti sa te alaturi?
     introduction_over_limit: Raspuns prea lung
+    aria_label: Formular de cerere de membru
+    submit_button: Cereți să vă alăturați
+    messages:
+      membership_requested: Ați solicitat să vă alăturați {{grup}}
   revision_history_modal:
     aria_label: Istoric revizii
-    started_by: 'Inceput de <strong>{{name}}</strong>'
-    edited_by: 'Editat de <strong>{{name}}</strong>'
+    started_by: Inceput de <strong>{{name}}</strong>
+    edited_by: Editat de <strong>{{name}}</strong>
     posted: Adaugat
     current_revision: Cel mai nou
+    discussion_header: Editări de discuții
+    comment_header: Editări de comentarii
+    poll_header: Editări ale sondajului
+    outcome_header: Editări ale rezultatelor
+    stance_header: Votează modificările
+    edit_by: Editați după {{name}} · {{data}}
+    field: Camp
+    before: Inainte de
+    after: După
+    original_text: Original
+    closing_at_changed: ora de închidere setată la {{time}}
+    private_changed: confidențialitate setată la {{private}}
+    group_id_changed: mutat în {{name}}
   reactions_input:
     add_your_reaction: Adauga reactie
   reactions_display:
-    you: "Tu"
-    you_and_name: "Tu si {{name}}"
+    you: Tu
+    you_and_name: Tu si {{name}}
+    more_reactions: Încă %{count}
+    you_and_name_and_count_more: Tu, {{name}} și încă %{count}
+    name_and_count_more: "{{name}} și încă %{count}"
   group_page:
     threads: Discutii
     members: Membri
     settings: Setari
     messages:
       privacy:
-        public: 'Acest grup este acum vizibil public'
-      leave_group_success: 'Ai parasit acest grup'
-    new_cover_photo: 'Uploadeaza o noua poza de fundal'
-    new_group_logo: 'Incarcare nou logo de grup'
-    discussions_placeholder: 'O discutie este locul unde oricine poate deschide un subiect care să duca la luarea unei decizii..'
-    invite_people: 'Invită'
-    options_label: 'Optiuni'
+        public: Acest grup este acum vizibil public
+        members: Acest grup este acum vizibil numai pentru membri
+        parent_members: Acest grup este acum vizibil numai pentru membrii organizației dvs
+      leave_group_success: Ai parasit acest grup
+      archive_group_success: Acest grup a fost dezactivat
+    new_cover_photo: Uploadeaza o noua poza de fundal
+    new_group_logo: Incarcare nou logo de grup
+    discussions_placeholder: O discutie este locul unde oricine poate deschide un subiect care să duca la luarea unei decizii..
+    invite_people: Invită
+    options_label: Optiuni
     options:
-      label: 'Optiuni'
-      edit_group: 'Editeaza setarile grupului'
-      email_settings: 'Preferinte email'
-      leave_group: 'Paraseste grupul'
+      label: Optiuni
+      edit_group: Editeaza setarile grupului
+      email_settings: Preferinte email
+      leave_group: Paraseste grupul
+      become_coordinator: Deveniți admin
+      export_data: Exportați datele grupului
+      export_data_as_json: Exportați datele grupului ca JSON
+      export_data_as_csv: Exportați datele grupului ca CSV
+      export_data_as_html: Exportați datele grupului ca HTML
+      manage_members: Gestionați membrii
+      add_subgroup: Adăugați subgrup
+      manage_subscription: Gestionați abonamentul de grup
+      deactivate_group: Dezactivați grupul
+      subscription_status: Starea abonamentului
     volume:
       loud: Trimite email ori de cate ori exista activitate.
       normal: 'Trimite email pentru fiecare activitate importanta: discutii si propuneri noi, rezultate, etc.'
@@ -374,44 +923,236 @@ ro:
       quiet: Nu trimite email pentru acest grup. Activitatea va fi afisata pe tabloul de bord.
       mute: Ascunde acest grup din tabloul de comanda si notifica doar cand @va mentiona.
       mute_aria_description: Volumul notificarilor pentru aceast grup este pozitionat la Dezactivat. Vei primi email despre aceasta discutie doar cand cineva mentioneaza numele tau, iar activitatea grupului nu va fi afisata in tabloul tau de bord.
+      loud_aria_description: Volumul notificărilor pentru acest grup este setat la Tare. Veți primi un e-mail ori de câte ori există activitate.
+      loud_message: Veți primi un e-mail despre toată activitatea din „{{name}}”.
+      normal_message: Veți primi doar un e-mail despre evenimente importante din „{{name}}”.
+      quiet_aria_description: Volumul notificărilor pentru acest grup este setat la Silențios. Nu veți primi e-mailuri despre activitatea din acest grup. Activitatea grupului va fi afișată pe tabloul de bord.
+      quiet_message: Nu veți primi e-mailuri despre activitatea din „{{name}}”.
+      mute_message: "„{{name}}” a fost eliminat din tabloul de bord."
+    stats: Statistici de grup
+    polls: Sondaje
+    decisions: Deciziile
+    files: Fișiere
+    subgroups: Subgrupuri
+    show_opened: "%{count} Deschis"
+    show_closed: "%{count} închis"
+    no_threads_here: Nu există subiecte de văzut aici!
+    search_threads: Caută fire...
+    private_threads: Va trebui să fii membru pentru a vedea firele private din acest grup
+    no_more_threads: Nu mai există fire de încărcat
+    view_closed_threads: Vezi firele închise
+    group_logo: Sigla grupului
+    new_photo: poză nouă
+    open_discussions: Fire deschise
+    closed_discussions: Fire închise
+    members_placeholder: 'Ești singurul aici: invită niște oameni să ți se alăture!'
+    member_options: Opțiuni pentru membri
+    see_all_members: Vedeți toți membrii %{count}
+    pending_invitations: "+ %{count} în așteptare"
+    subgroups_placeholder: Subgrupurile oferă echipelor propriul spațiu și păstrează notificările concentrate către persoanele potrivite.
+    visibility_label: Vizibilitate
+    privacy:
+      private: 'Confidențialitate: acest grup este vizibil numai pentru membri'
+      parent_members: 'Confidențialitate: acest grup este vizibil pentru membrii {{parentGroupName}} și membrii {{groupName}}'
+      public: 'Confidențialitate: acest grup este vizibil pe web'
+      aria_label: 'Confidențialitate a grupului: {{privacy}}'
   group_form:
     new_group: Grup nou
     new_subgroup: Grup nou subordonat
     group_settings: Setarile grupului
     group_name: Numele grupului
-    group_name_placeholder: 'Cum se va numi grupul tău?'
-    privacy: 'Confidentialitate'
-    confirm_change_to_secret: "Daca vei continua, toate discutiile acestui grup precum si sub-grupurile lui vor deveni private."
-    confirm_change_to_secret_subgroup: 'Daca vei continua, toate discutiile vor deveni private.'
-    confirm_change_to_public: 'Daca vei continua, toate discutiile vor deveni publice pe web.'
-    confirm_change_to_private_discussions_only: 'Daca vei continua, toate discutiile publice ale acestui grup  vor deveni private.'
+    group_name_placeholder: Cum se va numi grupul tău?
+    privacy: Confidentialitate
+    confirm_change_to_secret: Daca vei continua, toate discutiile acestui grup precum si sub-grupurile lui vor deveni private.
+    confirm_change_to_secret_subgroup: Daca vei continua, toate discutiile vor deveni private.
+    confirm_change_to_public: Daca vei continua, toate discutiile vor deveni publice pe web.
+    confirm_change_to_private_discussions_only: Daca vei continua, toate discutiile publice ale acestui grup  vor deveni private.
     profile: Profil
-    thread_privacy: 'Confidentialitatea discutiei'
-    public_threads: 'Doar discutii publice'
-    public_or_private_threads: 'Permite discutii publice si private'
-    allow_public_threads: 'Permite discutii publice in acest grup'
-    submit_update: 'Actualizeaza setarile'
+    thread_privacy: Confidentialitatea discutiei
+    public_threads: Doar discutii publice
+    public_or_private_threads: Permite discutii publice si private
+    allow_public_threads: Permite discutii publice in acest grup
+    submit_update: Actualizeaza setarile
+    thread_defaults_help: Setări implicite pentru firele noi
+    click_to_change_image: Faceți clic pentru a schimba imaginea de copertă (4x1) sau sigla (1x1)
+    change_cover_image: schimba imaginea de copertă
+    change_logo: schimba sigla
+    permissions_explaination: 'Există două niveluri de apartenență pe care o persoană le poate avea la un grup: administrator și membru. Administratorii pot edita setările de grup, pot face alte persoane administratori și pot efectua toate acțiunile enumerate mai jos.'
+    aria_label: Forma grupului
+    parent_group: Grupul de părinți
+    new_organisation: Noua organizare
+    new_group_explainer: Începeți un nou grup Loomio pentru organizația dvs
+    new_subgroup_explainer: Începeți un subgrup în cadrul unui grup existent - un spațiu privat pentru o echipă de oameni din organizație
+    start_group_heading: Începeți un grup
+    start_subgroup_heading: Începeți un subgrup
+    edit_group_heading: Editați setările grupului
+    edit_subgroup_heading: Editați setările subgrupului
+    subgroup_settings: Setări subgrup
+    subgroup_name: Numele subgrupului
+    organization_name: Numele Organizatiei
+    handle: Mâner
+    group_handle_placeholder: 'Folosit în adresa URL a grupului dvs.: {{host}}/{{handle}}'
+    start_organization_heading: Noua organizare
+    edit_organization_heading: Editați setările organizației
+    subgroup_name_placeholder: Care este numele subgrupului dvs.?
+    organization_name_placeholder: Care este numele organizației dvs.?
+    description: Descriere
+    description_placeholder: Descrieți scopul grupului dvs., astfel încât membrii grupului să știe de ce sunt aici.
+    new_description_placeholder: De ce încerci Loomio? Ce decizii trebuie să luați împreună?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Cum intenționați să utilizați Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> De ce este acest lucru important pentru grupul tău?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Ce decizii trebuie să iei?</h3><p></p>
+    secret_by_default: Grupul tău va fi accesibil doar de către cei invitați să se alăture. Puteți schimba acest lucru mai târziu.
+    privacy_statement:
+      public_on_web: Numele, descrierea și atașamentele la contextul grupului vor fi vizibile pentru public
+      private_to_group: Numele și descrierea vor fi vizibile numai pentru membri.
+      private_to_parent_members: Numele și descrierea vor fi vizibile pentru membrii {{parent}}
+    group_privacy_is_open_description: Listată public. Toate subiectele sunt publice.
+    group_privacy_is_closed_description: Nelistate. Oricine are linkul poate cere să se alăture. Toate subiectele sunt private.
+    group_privacy_is_closed_public_threads_description: Nelistate. Oricine are linkul poate cere să se alăture. Firele pot fi publice sau private.
+    group_privacy_is_secret_description: Numai persoanele invitate pot găsi grupul. Toate subiectele sunt private.
+    subgroup_privacy_is_open_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Toate subiectele sunt publice.
+    subgroup_privacy_is_closed_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Toate subiectele sunt private.
+    subgroup_privacy_is_closed_public_threads_description: Oricine poate găsi acest subgrup și poate cere să se alăture. Numai membrii pot vedea cine face parte din grup. Firele pot fi publice sau private.
+    subgroup_privacy_is_closed_secret_parent_description: Membrii {{parent}} pot găsi acest subgrup și pot cere să se alăture. Toate subiectele sunt private. Numai membrii pot vedea cine face parte din grup.
+    subgroup_privacy_is_secret_description: Numai membrii invitați pot găsi acest subgrup, pot vedea cine face parte din el și pot vedea firele.
+    advanced_settings: Setari avansate
+    how_do_people_join: Cum se alătură oamenii?
+    membership_granted_upon_request: Oricine se poate alătura grupului.
+    membership_granted_upon_approval: Oricine poate solicita înscrierea, dar trebuie să fie aprobat.
+    membership_granted_upon_invitation: Doar cu invitație.
+    membership_granted_upon_approval_secret_parent: "<strong>La cerere,</strong> oricine din {{parent}} poate cere să se alăture grupului."
+    permissions: Permisiuni
+    public_discussions_subgroup: Oricine din {{parentGroupName}} poate vedea discuțiile
+    private_threads: Numai membrii pot vedea discuțiile
+    parent_members_can_see_discussions: Membrii {{parent}} pot vedea firele private
+    parent_members_can_see_discussions_help: Permiteți membrilor grupului părinte să vadă, dar să nu participe la, fire și sondaje din cadrul acestui grup
+    members_can_announce: Membrii pot notifica pe toți membrii grupului
+    members_can_announce_help: Permiteți membrilor să notifice pe toți cei din grup despre o discuție sau un sondaj
+    members_can_add_members: Membrii pot invita membri
+    members_can_add_members_help: Permite membrilor să invite persoane să se alăture acestui grup
+    members_can_add_guests: Membrii pot invita oaspeți
+    members_can_add_guests_help: Permite membrilor să invite oaspeți în fire sau sondaje din acest grup
+    members_can_create_subgroups: Membrii pot crea subgrupuri
+    members_can_create_subgroups_help: Permiteți membrilor să creeze și să devină administratori ai subgrupurilor noi
+    members_can_edit_discussions: Membrii pot gestiona fire și comentarii
+    members_can_edit_discussions_help: Permite membrilor să editeze, să mute, să fixeze, să eticheteze sau să închidă fire
+    members_can_edit_comments: Membrii își pot edita propriile comentarii
+    members_can_edit_comments_help: Permite membrilor să-și editeze propriile comentarii în orice moment
+    members_can_delete_comments: Membrii își pot șterge propriile comentarii
+    members_can_delete_comments_help: Permite membrilor să-și șteargă propriile comentarii din fire
+    members_can_start_discussions: Membrii pot începe fire noi
+    members_can_start_discussions_help: Permite membrilor să înceapă fire noi în cadrul grupului
+    members_can_raise_motions: Membrii pot începe sondaje
+    members_can_raise_motions_help: Permite membrilor să înceapă sondaje și propuneri în cadrul discuțiilor sau al grupului
+    admins_can_edit_user_content: Administratorii pot edita comentariile membrilor
+    admins_can_edit_user_content_help: Permiteți administratorilor să editeze conținutul scris de membri
+    submit_start_group: Începeți grupul
+    submit_start_subgroup: Începeți subgrupul
+    messages:
+      group_created: Grupul a început
+      group_updated: Grupul a fost actualizat
+    upload_logo: Încărcați sigla
+    upload_cover_photo: Încărcați fotografia de copertă
   membership_requests_page:
     approve: Aproba
     ignore: 'Ignora '
+    heading: Cereri de membru
+    no_pending_requests: În prezent, nu există solicitări de membru în așteptare pentru acest grup.
+    no_previous_requests: În prezent, nu există solicitări anterioare de aderare pentru acest grup.
+    previous_requests: Cereri anterioare
+    previous_request_response: "{{response}} de {{responder}}"
+    messages:
+      request_approved_success: Solicitarea de membru a fost aprobată
+      request_ignored_success: Solicitarea de membru a fost ignorată
   invitation_form:
-    invite_people: 'Invita oameni'
-    copy_link: 'Copiaza'
-    send: 'Trimite'
-    done: 'Gata'
+    invite_people: Invita oameni
+    copy_link: Copiaza
+    send: Trimite
+    done: Gata
+    group_url: Adresa URL a grupului
+    reusable_invitation_link: Link de invitație reutilizabil
+    error: Eroare la încercarea de a copia în clipboard
+    aria_label: Formular de invitație
+    invite_guests: Invitați oaspeți
+    notify_people: Anunțați oamenii
+    invite_people_to_group: Invitați la {{name}}
+    group: grup
+    group_placeholder: Selectați un grup
+    shareable_link: Link care poate fi partajat
+    share_group: Distribuiți grupul dvs
+    email_addresses: Adrese de email
+    email_addresses_placeholder: de exemplu, helperbot@loomio.org, friendlybot@loomio.org
+    secret_group_url_explanation: Aceasta este adresa grupului dvs. Numai membrii invitați vor putea vedea grupul.
+    shareable_group_url_explanation: Puteți distribui acest link în mod public. Oamenii pot solicita înscrierea, iar tu poți aproba sau ignora solicitările.
+    shareable_invitation_explanation: Nu distribuiți acest link în mod public. Oricine are acesta se poate alătura grupului tău fără aprobarea ta. Distribuiți acest lucru numai în cadrul comunicărilor private pentru a permite persoanelor din organizația dvs. să se alăture.
+    shareable_link_reset: Resetarea linkului care poate fi partajat. Linkul anterior nu va mai funcționa.
+    email_explanation: Alternativ, introduceți mai jos adresele de e-mail pentru a trimite invitații prin e-mail.
+    add_custom_message: Faceți-vă invitația personală,
+    add_custom_message_link: adăugați un mesaj personalizat.
+    custom_message: Mesaj personalizat
+    custom_message_placeholder: Introduceți un mesaj personal pe care să îl includeți în invitație.
+    add_members: Adăugați membri
+    from_parent_group: de la {{nume}}.
+    messages:
+      invitation_sent: Invitatie trimisa.
+      invitations_sent: "%{count} invitații trimise."
+      no_invitations: Uhoh! Vă rugăm să verificați că adresa de e-mail este corectă și să încercați din nou.
+      max_invitations: Dacă doriți să trimiteți mai mult de 100 de invitații, utilizați un link de echipă.
   memberships_page:
-    members: 'Membri'
-    name_label: 'Nume'
-    remove_member_label: 'Elimina'
+    members: Membri
+    name_label: Nume
+    remove_member_label: Elimina
+    coordinator_label: Admin
+    fragment_placeholder: Filtrați utilizatorii după nume sau nume de utilizator...
+    only_one_admin: Există un singur administrator în acest grup. Este recomandat să numiți cel puțin încă un membru ca administrator.
+    messages:
+      remove_member_success: S-a eliminat {{name}}
+      make_admin_success: "{{name}} este acum administrator"
+      remove_admin_success: "{{name}} nu mai este administrator"
+    remove_admin_from_self:
+      question: Ești sigur că nu mai vrei să fii administrator?
   profile_page:
-    profile: 'Profil'
-    picture_label: 'Fotografie'
-    name_label: 'Nume'
-    username_label: 'Nume utilizator'
-    email_label: 'Email'
-    locale_label: 'Limba'
+    profile: Profil
+    picture_label: Fotografie
+    name_label: Nume
+    username_label: Nume utilizator
+    email_label: Email
+    locale_label: Limba
+    account_is_bot: Acesta este un cont bot
+    bot_account_warning: Conturile bot nu vor fi invitate să voteze în sondaje sau să participe la discuții
+    incomplete_profile: Profil incomplet!
+    set_your_profile_picture: Setează-ți fotografia de profil
+    messages:
+      updated: profil actualizat
+      picture_changed: Poza de profil a fost actualizată
+      password_changed: Parolă actualizată
+      deactivated: Cont dezactivat
+    deactivated_user: Utilizator dezactivat
+    date_time_pref_label: Format de dată și oră
+    merge_accounts: Îmbinați conturile
+    change_picture_link: Schimbă imaginea
+    change_password_link: Reseteaza parola
+    delete_account: Ștergeți permanent contul
+    delete_user_link: Șterge cont
+    edit_profile: Editează profilul
+    username_helptext: Toate literele și cifrele mici, maximum 30 de caractere
+    short_bio_label: Introducere
+    short_bio_placeholder: Vă rugăm să vă prezentați, includeți domeniile de expertiză, subiectele de interes și orice organizații afiliate
+    locale_placeholder: Selectați limba preferată
+    location_label: Locație
+    location_placeholder: Unde aveți sediul?
+    update_profile: Actualizare profil
+    deactivate_account: Dezactivați contul de utilizator
+    help_translate: Ne puteți ajuta să traducem Loomio?
+    updated_on_sign_in: Furnizat de browserul dvs. și actualizat atunci când vă conectați
   change_picture_form:
-    use_gravatar: 'Foloseste Gravatar'
+    use_gravatar: Foloseste Gravatar
+    aria_label: Formular foto de profil
+    title: Setați fotografia de profil
+    helptext: Poți să-ți încarci propria poză de profil sau, dacă ai un cont <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> , o poți folosi.
+    use_initials: Folosiți inițialele
+    use_uploaded: Încarcă o fotografie nouă
+    existing_upload: Încărcare existentă
+    use_provider: Utilizați fotografia {{provider}}
   email_settings_page:
     monday: Luni
     tuesday: Marti
@@ -421,12 +1162,38 @@ ro:
     saturday: Sambata
     sunday: Duminica
     announcement_label: Anunturi
+    every_day: În fiecare zi
+    every_second_day: Fiecare a doua zi
+    header: Setări de notificare
+    account_deactivated: Contul tau a fost dezactivat. Nu veți primi niciun e-mail, niciodată.
+    deactivate_header: Opriți pentru totdeauna toate e-mailurile
+    deactivate_description: Dacă nu mai doriți să primiți niciodată un alt e-mail de la noi, vă puteți dezactiva contul de utilizator.
+    email_newsletter: Buletinul informativ Loomio
+    email_newsletter_description: Obțineți actualizări despre funcții noi, antrenamente, evenimente din orașul dvs. și viitorul Loomio. De obicei, 2 sau 3 e-mailuri pe an.
+    email_catch_up_day: E-mail cu rezumat de recuperare
+    daily_summary_description: Alegeți când să primiți e-mailul cu rezumatul de recuperare. Acest e-mail conține orice activitate nouă pe care nu ați văzut-o. O modalitate bună de a rămâne la curent dacă nu sunteți un utilizator obișnuit.
+    on_participation_label: Abonați-vă la participare
+    on_participation_description: Când participați la un thread, toate activitățile ulterioare vă vor fi trimise imediat prin e-mail.
+    announcement_description: Veți primi un e-mail despre tot conținutul care a fost anunțat de persoanele din grupurile dvs
+    mentioned_label: Mențiuni și răspunsuri
+    mentioned_description: Când cineva @ te menționează într-un comentariu sau îți răspunde, vei primi un e-mail de notificare
+    update_settings: Salvează modificările
+    specific_groups: Setări pentru anumite grupuri
+    default_settings:
+      loud_description: Când vă alăturați unui grup nou, veți primi un e-mail <strong>ori de câte ori există activitate</strong> .
+      normal_description: Când vă alăturați unui grup nou, veți primi un e-mail despre <strong>fire și propuneri noi</strong> .
+      quiet_description: Când vă alăturați unui grup nou, <strong>nu veți primi e-mail despre activitate</strong> .
+    edit: Editați | ×
+    messages:
+      updated: Setările de e-mail au fost actualizate
+    learn_more: Aflați mai multe despre setările de e-mail...
   dashboard_page:
-    aria_label: 'Tablou de bord'
-    recent_threads: "Conversatii recente"
+    aria_label: Tablou de bord
+    recent_threads: Conversatii recente
     no_threads:
       show_all: Nu ai nici o discutie recenta.
       show_muted: Nu ai nici o discutie dezactivata.
+      show_proposals: Nu există propuneri active în prezent.
     view_recent: Vezi toate discuțiile recente?
     load_more: Incarca mai multe discutii
     mark_as_read: Marcheaza ca citit
@@ -442,103 +1209,1305 @@ ro:
       proposals_description: Vezi doar discutii care au propuneri active
       muted_aria_label: Discutii dezactivate in curs
       muted_description: Vezi doar discutii care au fost dezactivate
+      dropdown_heading: Filtru de bord
+      muted: Fire dezactivate
     threads_from:
-      group: 'Discutii de la'
-      starred: 'Discutii marcate cu steluta'
-      today: 'Astazi'
-      yesterday: 'Ieri'
+      group: Discutii de la
+      starred: Discutii marcate cu steluta
+      today: Astazi
+      yesterday: Ieri
+      pinned: Fire fixate
+      proposals: Fire cu decizii active
+      thisweek: În această săptămână
+      thismonth: Luna aceasta
+      older: Mai vechi de o lună
+    polls_to_vote_on: Sondaje de votat
+    no_polls_to_vote_on: Nu există sondaje la care trebuie să votați
+    recent_polls: Sondajele recente
+    current_polls: Sondajele curente
+    no_groups:
+      show_all: Bine ati venit! Încă nu sunteți membru al niciunui grup. <a href="/explore">Răsfoiți grupuri publice</a> sau <a href="/g/new">începeți un grup</a> .
+      show_muted: Nu aveți subiecte dezactivate pentru că nu sunteți membru al niciunui grup.
+    thread_dismissed: Subiectul a fost marcat ca citit
+    thread_recalled: Firul a fost rechemat
+    explain_mute:
+      title: Nu ați dezactivat încă niciun subiect.
+      explanation_html: Dezactivarea sunetului este o modalitate de a ascunde sau de a ascunde firele care nu vă interesează. Dezactivarea sunetului înseamnă că nu o veți vedea în <strong>Recente</strong> sau <strong>Necitite</strong> și nu veți fi notificat despre activitatea din acel fir, cum ar fi propunerile. Vei fi avertizat doar dacă cineva <strong>@menționează</strong> numele tău.
+      instructions: Pentru a dezactiva sunetul unui fir, plasați cursorul peste el și dați clic pe pictograma dezactivare sunet.
+      see_muted_html: Pentru a vedea firele dvs. dezactivate, faceți clic pe <strong>„Dezactivat”</strong> . Puteți activa sunetul trecând cu mouse-ul și făcând clic pe aceeași pictogramă.
+    thread_preview:
+      you_voted: Ai votat {{poziție}}
+      undecided: Esti indecis
   inbox_page:
     no_threads: Woohoo! Ai citit toate discutiile din inbox.
     unread_threads: Discutii necitite
     no_groups:
       start: Incepe
       or: sau
+      explanation: Nu aveți fire necitite, deoarece nu sunteți membru al niciunui grup.
+      join_group: <a href="/explore">alăturați-vă</a> unui grup pentru a vedea firele.
+    view_more: Vezi mai mult
   discussion:
-    started_by: 'Inceput de <strong>{{name}}</strong>'
+    started_by: Inceput de <strong>{{name}}</strong>
+    invite_only: Numai pe baza invitatiei
+    private_thread: thread privat
+    max_threads_reached: <p>Ați folosit toate firele {{maxThreads}} disponibile pentru acest grup.</p><p> Pasul următor, <a href="{{upgradeUrl}}" target="_blank">alegeți un plan</a> pentru a continua colaborarea pe Loomio.</p>
+    subscription_canceled: <p>Abonamentul dvs. nu este activ.</p><p> Vă rugăm să <a href="{{upgradeUrl}}" target="_blank">faceți upgrade</a> pentru a continua să utilizați Loomio.</p>
+    activity: Activitate
+    activity_placeholder: Nicio activitate încă!
+    load_previous: Încărcați activitatea anterioară
+    pin:
+      pinned: Fir fixat
+      unpinned: Firul a fost anulat
+    volume:
+      mute_message: Subiectul este dezactivat
+      unmute_message: Subiectul este activat
+    closed:
+      reopened: Subiectul a fost redeschis
+      closed: Firul închis
   activity_card:
     latest: Cel mai nou
     context: Context
     comment: Comenteaza
+    count_responses: "%{count} răspunsuri"
+    event_pinned: Fixat în cronologie
+    event_unpinned: Deblocat din cronologie
+    beginning: Început
+    end: Sfârşit
+    unread: Necitit (%{count})
+    chronological: Cronologic
+    nested: Cuibărit
+    attachment_display:
+      aria_label: 'Fisier atasat:'
+      image_alt: Imagine atașată
+    n_previous: Încărcați %{count} răspunsuri anterioare
+    n_more: Încărcați %{count} răspunsuri
+    add_comment: Adauga comentariu
+    add_poll: Adăugați sondaj
+    add_outcome: Adăugați rezultatul
+    facilitate: Facilita
+    start_decision: Începe decizia
+    start_vote: Începeți votul
   thread_group:
     aria_label: Numele grupului
   thread_context:
-    aria_label: 'Contextul discutiei'
-    thread_options: 'Optiunile discutiei'
-    close_thread: 'Inchide'
-    reopen_thread: 'Redeschide'
-    mute_thread: 'Ascunde notificari'
-    delete_thread: 'Sterge'
-    add_comment: 'Comenteaza'
+    aria_label: Contextul discutiei
+    thread_options: Optiunile discutiei
+    close_thread: Inchide
+    reopen_thread: Redeschide
+    mute_thread: Ascunde notificari
+    delete_thread: Sterge
+    add_comment: Comenteaza
+    current_poll_type_banner: "{{pollType}} actual"
+    item_maybe_deleted: Nu se poate găsi locația solicitată în fir. Este posibil să fi fost șters.
+    email_settings: Setări de notificare
+    edit: Editați | ×
+    edit_thread: Editați | ×
+    pin_thread: Pin
+    unpin_thread: Anulați fixarea
+    move_thread: Mișcare
+    print_thread: Imprimare
+    seen_by_count: Văzut de %{count}
+    count_notified: "%{count} notificat"
+    forked_from: Bifurcat din
   pin_thread_modal:
     title: Marcheaza conversatie
     pin_thread: Marcheaza conversatie
+    helptext: Firele fixate apar întotdeauna în partea de sus a listei de fire a grupului lor. Acestea pot fi folosite pentru a informa membrii cu privire la anunțuri importante sau pentru a promova materiale comune, cum ar fi un cod de conduită sau linii directoare ale comunității.
+    helptext_two: Puteți elimina oricând pinii selectând „Anulați fixarea” din meniul drop-down
   delete_thread_form:
     title: Sterge discutia
     body: Esti sigur ca doresti sa stergi aceasta discutie?
     messages:
       success: Discutie stearsa
+    aria_label: Șterge firul
+    confirm: Șterge firul
   move_thread_form:
     aria_label: Muta discuția
     title: Muta discuția
     confirm: Muta discuția
     messages:
       success: Aceasta discutie a fost mutata la {{name}}
+    body: Grup de destinație
+    confirm_change_to_private_thread: "{{groupName}} este un grup deschis. Dacă continuați, acest thread va fi făcut public."
   delete_comment_dialog:
-    title: 'Sterge comentariu'
+    title: Sterge comentariu
+    question: Acest lucru va șterge definitiv acest comentariu. Dacă continuați, nu poate fi restaurat.
   contact_message_form:
-    name_label: 'Nume'
-    subject_label: "Subiect"
-    email_label: 'Adresa ta de email'
-    message_label: 'Mesaj'
+    name_label: Nume
+    subject_label: Subiect
+    email_label: Adresa ta de email
+    message_label: Mesaj
+    alt_title: Contactați asistența Loomio
+    need_message: Vă rugăm să introduceți un mesaj ca să vă putem ajuta :-)
+    respond_asap: Trimiteți un mesaj echipei Loomio și vă vom răspunde cât mai curând posibil.
+    happy_to_help_with: Suntem bucuroși să vă ajutăm cu întrebări de vânzări, solicitări de asistență, solicitări de funcții, raportarea erorilor sau problemelor pe care le întâmpinați.
+    title: Bună! Cum putem ajuta?
+    contact_us_email: 'De asemenea, ne puteți trimite un e-mail: <a href="mailto:{{email}}">{{email}}</a>'
+    contact_us: Contactaţi-ne
+    name_placeholder: Introdu numele tau...
+    subject_placeholder: 'De exemplu: probleme la conectare sau sugestie de funcții'
+    email_placeholder: Introdu adresa ta de e-mail...
+    message_placeholder: Dacă solicitați asistență, încercați să oferiți cât mai multe informații posibil.
+    send_message: Trimite mesaj
+    new_contact_message: Mulțumesc pentru contact; vom reveni la tine în curând!
+    consent_message: Contactându-ne, sunteți de acord ca personalul nostru să vă acceseze contul dacă este necesar.<br /> Echipa noastră de asistență vorbește engleză și vă va traduce mesajul cu Google Translate dacă este necesar.<br /> Ne propunem să răspundem la toate mesajele în termen de 24 de ore.
+    success: Vă mulțumim pentru mesaj, {{name}}. Veți primi răspunsuri de la noi în curând.
+    success_via_email: Vă mulțumim pentru mesaj, {{name}}. Vă vom răspunde prin e-mail în 24 de ore.
   decision_tools_card:
     proposal_title: Propunere
     poll_title: Sondaj
+    choose_type: Alegeți tipul de sondaj
+    title: Facilita
+    recommended: Recomandat
+    question_title: Runda de întrebări
+    advice_title: Sfat
+    consent_title: Consimţământ
+    consensus_title: Consens
+    count_title: Înscrieți-vă
+    check_title: Verificarea simțului
+    meeting: Întâlnire
+    score_title: Scor sondaj
+    dot_vote_title: Dot votează
+    meeting_title: Sondaj de timp
+    ranked_choice_title: Alegere clasată
+    gradients_of_agreement_title: Gradiente de acord
   poll_common:
     have_your_say: Sa ai ceva de spus
     start_poll: Creeaza o decizie
     save_changes: Salvare
+    superseded: Inlocuit
+    need_help_with_templates: Aveți nevoie de ajutor pentru a vă crea propriile șabloane de decizie?
+    categorize_poll_templates: Clasificați șabloanele de sondaje
+    show_all_templates_in_one_list: Afișați toate șabloanele într-o singură listă
+    advice_process: Procesul de consiliere
+    consent_process: Procesul de consimțământ
+    consensus_process: Procesul de consens
+    question_round: Runda de întrebări
+    edit_template: Editați șablonul
+    proposal: Propunere
+    run_process: Rulați procesul
+    proposal_templates: Modele de propuneri
+    custom: Personalizat
+    custom_process: Proces personalizat
+    custom_poll: Sondaj personalizat
+    delete_poll: Șterge sondajul
+    select_count_options: Selectați {{count}} opțiuni
+    select_minimum_to_maximum_options: Selectați opțiuni de la {{minimum}} la {{maximum}}
+    custom_poll_types: Tipuri de sondaje personalizate
+    hidden_poll_templates: Șabloane de sondaj ascunse
+    poll_template: Șablon de sondaj
+    poll_template_saved: Șablonul de sondaj a fost salvat
+    poll_templates: Șabloane de sondaj
+    poll_types: Tipuri de sondaje
+    new_proposal_template: Nou șablon de propunere
+    edit_proposal_template: Editați șablonul de propunere
+    new_poll_template: Nou șablon de sondaj
+    edit_poll_template: Editați șablonul de sondaj
+    new_poll_type: Nou tip de sondaj
+    edit_poll_type: Editați tipul sondajului
+    new_custom_poll: Nou sondaj personalizat
+    edit_custom_poll: Editați sondajul personalizat
+    create_a_custom_poll_type: Creați un nou tip de sondaj cu terminologie și setări personalizate
+    create_a_custom_process: Creați un nou proces cu propria terminologie și opțiuni
+    create_a_custom_poll: Creați un sondaj cu terminologie și setări personalizate
+    decision: Decizie
+    decision_templates: Modele de decizie
+    remove_your_vote: Eliminați-vă votul
+    remove_your_response: Eliminați răspunsul dvs
+    vote_now: Voteaza acum
+    review_due: Examinare scadentă
+    your_response: Raspunsul tau
+    change_your_response: Editați răspunsul
+    please_vote: Va rog sa votati
+    reason: Motiv
+    response: Raspuns
+    reason_placeholder: Explicați pe scurt de ce ați votat astfel, apoi faceți clic pe „Trimiteți votul”
+    message: Mesaj
+    results: Rezultate
+    current_results: Rezultate curente
+    responses: Răspunsuri
+    close_poll_type: Închideți {{pollType}}
+    close_early: Închideți devreme
+    totals: Totaluri
+    participate: Participa
+    vote: Vot
+    votes: Voturi
+    update_outcome: Actualizați rezultatul
+    outcome: Rezultat
+    outcomes: Rezultate
+    statement: Afirmație
+    change_your_stance: Editați răspunsul
+    load_more: Incarca mai mult
+    details: Detalii
+    participant_name: Numele dumneavoastră
+    participant_email: Adresa de e-mail
+    submit_vote: Trimiteți votul
+    submit_response: Trimiteți răspunsul
+    update_vote: Actualizați votul
+    update_response: Actualizați răspunsul
+    share_poll: Distribuie sondaj
+    share_proposal: Distribuiți propunerea
+    share_count: Partajați verificarea
+    publish_poll: Distribuie sondaj
+    share_outcome: Împărtășiți rezultatul
+    view_all: A vedea tot
+    change_vote: Schimbați-vă votul
+    change_response: Schimbați-vă răspunsul
+    max_score: Scorul maxim
+    min_score: Scor minim
+    too_long: Prea lung
+    edit_warning: Editarea este recomandată numai pentru modificări minore sau pentru remedierea erorilor de ortografie. Pentru modificări semnificative, închideți acest {{pollType}} și începeți unul nou.
+    no_voting: Doar pentru discuție, votul este dezactivat
   poll_common_attachment_form:
     label: Atașamente
   discussions_panel:
     open: Deschis
     all: Toate
     closed: Inchis
+    unread: Necitit (%{count})
+    include_subgroups_mine: "{{name}} și subgrupurile mele"
+    include_subgroups_all: "{{name}} și toate subgrupurile"
+    no_results_found: Niciun rezultat pentru „{{search}}”
+    welcome_to_your_new_group: Bun venit în noul tău grup Loomio!
+    lets_start_a_thread: Să începem un thread. Faceți clic pe „Fir nou” pentru a continua.
   members_panel:
-    everyone: 'Toti'
-    order_by_name: 'Nume'
-    header_name: 'Nume'
-    header_username: 'Nume utilizator'
-    accepted: 'Membri'
+    everyone: Toti
+    order_by_name: Nume
+    header_name: Nume
+    header_username: Nume utilizator
+    accepted: Membri
+    bot: Bot
+    no_results: Nu s-au găsit membri
+    all: Toate
+    sort: Fel
+    order_label: Ordin
+    order_by_created: Cel mai vechi
+    show_users_in_subgroups: Afișați utilizatorii și în subgrupuri
+    order_by_created_desc: Cel mai nou
+    order_by_admin_desc: Administratori
+    loaded_of_total: "{{loaded}} din {{total}}"
+    view_requests: Vizualizați solicitările
+    header_role: Rol
+    header_invited_by: Invitat de
+    header_invited: Invitat
+    header_actions: Acțiuni
+    directory: Director
+    invitations: Invitații
+    requests: Cereri
+    admin: Admin
+    guest: Oaspete
+    sharable_link: Link care poate fi partajat
+    last_seen: Văzut ultima dată {{date}}
+    invited_by_name: Invitat de {{name}}
   polls_panel:
-    all: 'Toate'
-    open: 'Deschis'
-    closed: 'Inchis'
+    all: Toate
+    open: Deschis
+    closed: Inchis
+    new_poll: Sondaj nou
+    any_type: Toate tipurile
+    any_status: Orice statut
+    need_vote: Am nevoie de vot
+    no_polls: Nu s-au găsit sondaje
   poll_common_form:
     closed: Inchis
     start: Incepe
+    notify_everyone_when_poll_starts: Notificați pe toată lumea când începe %{poll_type}
+    option_has_votes_confirm_delete: Unii oameni au votat pentru această opțiune, sunteți sigur că doriți să o ștergeți?
+    example_title: Exemplu de titlu
+    example_title_hint: Dați un exemplu de titlu de propunere bun
+    example_details_placeholder: Furnizați un punct de plecare pentru o propunere sau sondaj. Întrebările pot fi indicații utile pentru a-i determina pe oameni să scrie. Includeți orice reguli sau mementouri pe care participanții vor trebui să le cunoască.
+    confirm_delete: Sigur doriți să ștergeți acest șablon de sondaj? Acest lucru nu poate fi anulat.
+    show_advanced_settings: arata setarile avansate
+    hide_advanced_settings: Ascundeți setările avansate
+    choose_at_least: Alege macar
+    choose_at_most: Alege cel mult
+    please_review_the_form: Vă rugăm să revizuiți formularul
+    option_added_please_add_details: Opțiune adăugată! Vă rugăm să adăugați câteva detalii pentru ca oamenii să știe ce înseamnă.
+    default_duration_in_days: Durata implicită în zile
+    default_duration_in_days_hint: Câte zile ar trebui acordate oamenilor să voteze?
+    how_many_options_can_a_voter_choose: Câte dintre aceste opțiuni poate alege un alegător?
+    minimum_choices: Alegeri minime
+    maximum_choices: Opțiuni maxime
+    content: Conţinut
+    reminder: Aducere aminte
+    your_in_zone: 'Fus orar actual: %{zone}'
+    show_other_zones: Afișați alte fusuri orare
+    hide_other_zones: Ascundeți alte fusuri orare
+    this_is_a_template_for_new_polls: Acesta este un șablon pentru noi sondaje
+    voting_method: Metoda de vot
+    voting_methods:
+      question: Runda de întrebări
+      question_hint: Invitați întrebări și comentarii cu privire la propunerea dvs
+      show_thumbs: Arată degetul mare
+      show_thumbs_hint: Alegătorii aleg degetul mare în sus, în jos, lateral sau mâna sus
+      choose: Alege
+      simple_poll: Sondaj simplu
+      choose_hint: Alegătorii aleg cea mai bună opțiune (sau opțiuni)
+      score: Scor
+      score_hint: Alegătorii atribuie un punctaj fiecărei opțiuni
+      allocate: Aloca
+      allocate_hint: Alegătorii alocă un buget de puncte între opțiuni
+      ranked_choice: Alegere clasată
+      ranked_choice_hint: Alegătorii aranjează opțiunile în ordine de la cel mai mult la cel mai puțin preferat
+      time_poll: Sondaj de timp
+      time_poll_hint: Alegătorii indică când sunt disponibili pentru a se întâlni
+    process: Proces
+    process_name: Titlul șablonului
+    process_name_hint: Cum numești acest șablon? De exemplu, sfaturi privind rolul, verificarea temperaturii, aprobarea procesului-verbal
+    process_subtitle: Subtitrare șablon
+    process_subtitle_hint: O descriere pe o linie a când sau de ce să utilizați acest șablon
+    process_introduction: Ajutor șablon
+    process_introduction_hint: Câteva paragrafe care explică cum să folosești șablonul. Includeți linkuri către resurse care ar putea fi utile.
+    you_can_set_a_prompt_per_option: Editați solicitarea pentru fiecare opțiune din fila detalii
+    chart_type: Tipul graficului
+    title: Titlu
+    title_hint: Care este decizia pe care trebuie să o iei?
+    no_options_add_some: Acest sondaj nu are opțiuni, adăugați câteva mai jos.
+    details: Detalii
+    example_details: Exemple de detalii
+    details_placeholder: Aceasta este oportunitatea ta de a explica pentru ce votează oamenii
+    options: Opțiuni
+    options_placeholder: Listați opțiunile disponibile
+    no_options: Nu ați adăugat încă nicio opțiune.
+    closing: Închidere
+    start_poll: Începe sondajul
+    stance_reason_required_label: Oferirea unui motiv atunci când votați este...
+    stance_reason_required: Necesar
+    stance_reason_optional: Opțional
+    stance_reason_disabled: Dezactivat
+    stance_reason_is_required: Vă rugăm să furnizați un motiv cu votul dvs
+    limit_reason_length: Limitați motivul la maximum 500 de caractere
+    save_poll: Salvați sondajul
+    start_poll_type: Începeți {{poll_type}}
+    share_poll_type: Distribuie {{poll_type}}
+    who_may_vote: Cine poate vota în acest {{poll_type}}?
+    update: Actualizați
+    add_voters: Adăugați alegători
+    notify_invitees: Trimite notificări
+    no_notifications_warning: Alegătorii nu vor fi anunțați. Acest lucru este util dacă desfășurați o mulțime de sondaje și intenționați să notificați pe toată lumea mai târziu.
+    count_voters_added: "%{count} alegători adăugați"
+    poll_type_created: "%{poll_type} creat"
+    poll_type_started: "%{poll_type} a început"
+    reason_prompt: Motivul prompt
+    anonymous_voting: Vot anonim
+    anonymous_voting_description: Dacă este activată, identitatea alegătorilor nu va fi asociată cu voturile acestora. Acest lucru nu poate fi anulat.
+    votes_are_anonymous: Voturile sunt anonime
+    vote_reason: Motivul votului
+    vote_reason_description: Poate fi util să înțelegeți de ce oamenii au votat așa cum au votat. Cu această setare, puteți solicita oamenilor să-și împărtășească gândurile atunci când votează.
+    hide_results_description: Dacă doriți ca oamenii să voteze fără să știe cum au votat alții, puteți ascunde rezultatele sondajului.
+    process_helptext: Denumiți și descrieți procesul care este utilizat pentru a rula acest sondaj.
+    reminder_helptext: Trimiteți o notificare „Închidere în curând” înainte de închiderea sondajului. Aceasta poate fi o oportunitate pentru oameni de a vedea cum au votat alții și de a-și reconsidera propriul vot, sau doar o modalitate de a crește participarea la sondaj.
   poll_poll_form:
     edit_header: Editare sondaj
+    multiple_choice_subtitle: O modalitate simplă de a evalua popularitatea opțiunilor
+    start_header: Începe sondajul
+    tip: Oferiți o alegere între opțiuni
+    title_placeholder: De exemplu, unde vrei să mergi în vacanță?
+    details_placeholder: Furnizați orice detalii clarificatoare pe care oamenii ar putea avea nevoie pentru a răspunde la întrebare.
+    add_option_placeholder: Adăugați opțiunea
+    new_option: Opțiune nouă
+    add_option_hint: Introduceți un nume scurt pentru opțiune
+    remove_option: Eliminați opțiunea
+    poll_created: Sondaj creat
+    poll_updated: Sondajul a fost actualizat
+    option_added: Opțiune adăugată
+    option_already_added: Opțiune deja adăugată la sondaj
   poll_proposal_options:
-    'yes': 'Da'
-    'no': 'Nu'
+    'yes': Da
+    'no': Nu
+    select_an_option: Selecteaza o optiune
+    agree: De acord
+    consent: Consimţământ
+    abstain: abține-te
+    unsure: Nesigur
+    disagree: Dezacord
+    objection: Obiecţie
+    object: Obiect
+    block: bloc
+    no_voting: Fără vot
   poll_count_options:
     decline: Refuza
-    'yes': 'Da'
-    'no': 'Nu'
+    'yes': Da
+    'no': Nu
+    accept: Accept
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
     success: Vot sters
+    title: Îți elimini votul?
+    helptext: Sigur doriți să vă eliminați votul? Veți fi listat ca indecis și puteți vota din nou mai târziu, dacă doriți.
+    confirm: Eliminați votul
   auth_form:
     enter_your_name: Introdu numele tau
     name_placeholder: Nume
     name: Nume
+    code: '000000'
+    youre_invited: Ați fost invitat să vă alăturați {{group_name}}.
+    youre_invited_discussion: Ați fost invitat să vă alăturați discuției.
+    youre_invited_poll: Ai fost invitat la vot.
+    existing_account_can_sign_in: Dacă sunteți deja utilizator {{site_name}}, conectați-vă cu contul dvs. existent
+    sign_up_or_log_in: Creați un cont sau conectați-vă la {{site_name}}
+    sign_in_to_loomio: Conectați-vă la {{site_name}}
+    sign_in_help: Probleme la conectare?
+    sign_in: Conectare
+    continue: Continua
+    create_account: Creează cont
+    sign_up_as: Creează cont ca {{email}}
+    sign_in_as: Conectați-vă ca {{name}}
+    continue_with_provider: Continuați cu {{provider}}
+    continue_with_email: Continuați cu e-mailul
+    or_enter_your_email: Sau, introduceți adresa dvs. de e-mail
+    invitation_required: Aveți nevoie de o invitație pentru a vă crea un cont. Urmați linkul din e-mailul de invitație pentru a continua.
+    more_providers: Mai mult
+    email_not_present: Este necesară o adresă de e-mail
+    invalid_email: Ne pare rău, nu pare o adresă de e-mail validă
+    invalid_password: Ne pare rău, acea parolă nu se potrivește cu cea pe care o avem în dosar
+    invalid_token: Ne pare rău, nu am putut folosi acel simbol pentru a vă conecta. Faceți clic mai jos pentru a trimite altul.
+    account_locked: Contul dvs. a fost blocat după prea multe încercări eșuate de conectare. Verificați e-mailul pentru un link de deblocare
+    email_not_found: Ne pare rău, nu am putut găsi un cont cu acea adresă de e-mail
+    email_taken: Adresa de e-mail este deja înregistrată
+    email_placeholder: tu@example.com
+    login_with_token: Ești gata! Faceți clic pe linkul de mai jos pentru a continua.
+    login_link_helptext: Faceți clic pe butonul de mai jos și vă vom trimite un link pentru a vă conecta.
+    enter_your_password: Introduceți parola pentru a continua
+    check_spam_folder: Dacă e-mailul nu sosește curând, verificați folderul de spam.
+    sign_up_helptext: Vă rugăm să completați acest formular pentru a crea un cont de utilizator
+    i_accept_all: Accept {{termsLink}} și {{privacyLink}}
+    newsletter_label: Doresc să primesc {{link}}
+    name_required: Vă rugăm să introduceți un nume
+    terms_required: Trebuie să fiți de acord cu Termenii și condițiile
+    account_inactive: Uh-oh, se pare că contul pentru {{email}} a fost dezactivat!
+    privacy_notice: Nu vom vinde niciodată datele dvs.<br> <a href='{{privacyUrl}}' target='_blank'>Politica de confidențialitate</a>
+    welcome: Nou în {{siteName}}?
+    welcome_back: Bine ai revenit, {{name}}!
+    forgot_password: Aţi uitat parola
+    login_link: Trimite e-mail de conectare
+    sign_in_via_email: Conectați-vă prin e-mail
+    set_password: Seteaza parola
+    set_password_helptext: Doriți să utilizați o parolă data viitoare?
+    hello: Bună ziua, {{name}}!
+    new_to_loomio: Prima dată pe {{site_name}}?
+    already_a_user: ai deja un cont?
+    email_address_of_existing_account: Introdu adresa de e-mail a contului tău existent
+    link_accounts: Conectați conturile
+    check_your_email: Verifica-ti email-ul!
+    login_link_sent: Am trimis un e-mail la {{email}}.
+    instructions: 'Faceți clic pe link pentru a vă conecta sau introduceți codul de mai jos:'
+    instructions_code: 'Introdu codul din acel e-mail:'
+    too_many_attempts: Prea multe incercari; încercați să faceți clic pe linkul din e-mail pentru a vă conecta.
+    invalid_code: Ne pare rău, acel cod nu s-a potrivit. Verificați e-mailul și încercați din nou.
+    password_link_sent: Am trimis un e-mail către {{email}} cu instrucțiuni despre cum să vă setați parola.
+    reactivate_link_sent: V-am trimis un e-mail cu instrucțiuni pentru a vă reactiva contul
+    signed_in: Conectat cu succes
+    email_verified: E-mail verificat cu succes
+    email: E-mail
+    password: Parola
+    reactivate: Reactivați contul
   chatbot:
     username: Nume utilizator
     password: Parola
+    configure_chatbot: Configurați chatbot
+    test_connection: Test de conexiune
+    test_connection_ok: Arata bine! Ar trebui să vedeți un mesaj pe canal
+    test_connection_bad: Ceva este în neregulă cu setările
+    name: Nume chatbot
+    connection_test_successful: Testul conexiunii bot Loomio a reușit!
+    chatbot: Chatbot
+    chatbots: Chatbots
+    saved: Chatbot salvat!
+    webhook_url: Adresa URL a webhook
+    homeserver_url: Adresa URL a serverului de domiciliu
+    channel: Canal
+    access_token: Jeton de acces
+    add_chatbot: Adăugați chatbot
+    matrix: Matrice
+    slack: Slack
+    discord: Discordie
+    mattermost: Cel mai important
+    microsoft_teams: Microsoft Teams
+    event_kind_helptext: Selectați evenimente despre care botul va fi întotdeauna notificat. Dacă nu ești sigur, oprește-le pe toate.
+    notification_only_label: Trimiteți numai titlul notificării
+    check_for_test_message: Verificați camera de chat pentru un mesaj de la bot!
   webhook:
     name_label: Nume
+    integrations: Integrari
+    api_keys: Chei API
+    webhooks: Webhook-uri
+    webhook: Webhook
+    add_api_key: Adăugați cheia API
+    edit_api_key: Editați cheia API
+    api: API
+    format: Format
+    formats:
+      markdown: Markdown (pentru Mattermost, Zapier și alții)
+      microsoft: Microsoft Teams
+      slack: Slack
+      discord: Discordie
+    subtitle: Conectați-vă la Loomio la restul instrumentelor dvs. cu ajutorul API-ului nostru
+    deprecated: Acest API este depreciat. Treceți la APIv2 (consultați documentele API în meniul de setări ale grupului)
+    we_have_guides: Consultați <a href="{{url}}" target="_blank">ghidurile noastre de configurare webhook</a> pentru ajutor pentru conectarea serviciului dvs.
+    add_webhook: Adăugați webhook
+    show_docs: Vedeți utilizarea API-ului
+    save_to_show_docs: După ce salvați, reveniți aici pentru a găsi cheia dvs. API
+    edit_integration: Editați integrarea
+    add_integration: Adăugați integrare
+    success: Integrare adăugată!
+    remove: Eliminați integrarea
+    confirm_remove: 'Sigur doriți să eliminați integrarea: {{name}}?'
+    removed: Integrarea a fost eliminată
+    url_label: Adresa URL a webhook
+    url_placeholder: https://hooks.example.com/...
+    name_placeholder: Dați un nume acestei integrări, astfel încât să o puteți identifica
+    event_kind_helptext: Despre ce evenimente doriți să fie notificat webhook-ul?
+    event_kinds:
+      new_discussion: Este început un thread
+      discussion_edited: Se editează un thread
+      poll_edited: Un sondaj este editat
+      new_comment: Se face un comentariu
+      poll_created: A început un sondaj
+      stance_created: Se votează
+      stance_updated: Se schimbă un vot
+      poll_closing_soon: Un sondaj se închide în curând
+      poll_expired: Un sondaj expiră
+      poll_closed_by_user: Un sondaj este închis manual
+      poll_reopened: Un sondaj este redeschis pentru vot
+      outcome_created: Un rezultat este împărtășit
+      outcome_updated: Un rezultat este actualizat
+      outcome_review_due: Urmează o analiză a rezultatului
+    permissions_explaination: Selectați ce acțiuni pot fi efectuate prin această integrare
+    permissions:
+      show_discussion: arata discutia
+      create_discussion: creați o discuție
+      create_poll: Creaza un sondaj
+      show_poll: arată sondajul
+      read_memberships: citește abonamentele
+      manage_memberships: gestionați membrii (adăugați sau eliminați membrii grupului)
+    include_body_label: Includeți corpul mesajului cu notificarea
   group_survey:
     categories:
       community: Comunitate
       other: Altele
+      party: Partid politic
+      coop: De cooperare
+      union: Uniune
+      board: Guvernare și consilii
+      nonprofit: Nonprofit
+      membership: Organizație de membru
+      professional: Firma de servicii profesionale
+      self_managing: Organizație autogestionată
+      government: Guvern/Administrație locală
+    describe_other: Selectați categoria care descrie cel mai bine grupul dvs
+  tasks:
+    tasks: Sarcini
+    your_tasks: Sarcinile tale
+    permission_denied: Nu aveți permisiunea de a actualiza această sarcină
+    due_date: Data scadenței
+    send_reminder: Trimiteți memento (dacă nu ați făcut)
+    no_reminder: Nici un memento
+    on_due_date: La data scadentă
+    1_day_before: cu 1 zi inainte
+    2_day_before: cu 2 zile inainte
+    3_day_before: cu 3 zile inainte
+    7_day_before: cu 7 zile inainte
+    task_placeholder: Introduceți o sarcină și @menționați pe cineva care să o atribuie
+    add_due_date: Adăugați data scadentă
+    task_updated_done: Sarcina marcată ca finalizată!
+    task_updated_not_done: Sarcina marcată ca neterminată
+    no_tasks_assigned: Nu vă sunt atribuite sarcini
+  doctypes:
+    youtube_video: Video YouTube
+    image: Imagine
+    pdf: PDF
+    excel: Foaie de calcul Excel
+    document: Document
+    csv: Fișier CSV
+    video: Video
+    text: Fisier text
+    google_doc: Google Doc
+    google_sheet: Foaie de calcul Google
+    google_drive: Google Drive
+    pull_request: Cerere de tragere
+    trello_board: Placa Trello
+    trello_card: Cardul Trello
+  current_plan_button:
+    upgrade: Actualizare
+    buy_now: Cumpără acum
+    is_old_plan: Loomio are noi planuri simple de prețuri
+    change_plan: Schimbați planul
+    view_plans: Vezi planuri
+    free_trial: Încercare gratuită. Au mai rămas {{days}} zile.
+    trial_expired: Perioada de încercare a expirat. Faceți upgrade pentru a continua să utilizați Loomio.
+    tooltip: Preturile noastre sunt fantastice! Faceți upgrade astăzi și bucurați-vă de ceea ce poate oferi Loomio grupului dvs.
+    was_gift_trial: 'Grupul dvs. folosește Loomio gratuit începând cu {{createdDate}}. Nu putem continua să oferim un serviciu gratuit. Vă rugăm să faceți upgrade pentru a continua să utilizați Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Citeşte mai mult.</a>'
+    was_gift_remaining: Au mai rămas {{days}} zile.
+    was_gift_expired: Planul tău gratuit a expirat acum.
+  devise:
+    sessions:
+      signed_up: Înscris cu succes!
+    failure:
+      inactive: Există un cont dezactivat asociat cu această adresă de e-mail. Dacă doriți să vă reactivați contul, contactați-ne.
+  verify_email_notice:
+    please_verify: Mulțumim pentru participare! Vă rugăm să vă verificați e-mailul pentru un link pentru a vă verifica votul.
+  email_to_group:
+    email_to_group_settings: Setări de e-mail către grup
+    email_to_group_address: Adresă de e-mail către grup
+    start_threads_via_email: Începeți firele prin e-mail
+    your_address_for_this_group: Adresa dvs. de e-mail pentru acest grup
+    send_email_to_start_thread: Trimite e-mail la această adresă pentru a începe o discuție în grupul tău.
+    subject_body_attachments: Firul va folosi subiectul e-mailului, corpul și fișierele atașate.
+    address_starts_threads_as_you: Nu împărtăși această adresă - oricine o are poate începe fire ca tine.
+    generate_new_address: Generați o nouă adresă
+    copy_address: Copiați adresa
+    email_me_this_address: E-mail-mi această adresă
+    email_address_sent_to_you: Adresa de e-mail trimisă către dvs
+    email_address_copied_to_clipboard: Adresa de e-mail a fost copiată în clipboard
+    new_address_generated: A fost generată o nouă adresă de e-mail către grup
+    generate_new_address_question: Generați o nouă adresă de e-mail către grup?
+    generate_new_address_warning: Toate adresele tale existente de e-mail către loomio nu vor mai funcționa. Nu există nicio anulare. Daţi-i drumul?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: Adresa ta de e-mail pentru a începe firele în %{group}
+  close_explanation_modal:
+    aria_label: Închideți firul
+    close_thread: Închideți firul
+    body: "<p>Închideți firele vechi sau irelevante pentru a le elimina din vedere și a indica că discuția s-a încheiat.</p><p> Oricine poate să comenteze sau să înceapă un sondaj într-un thread închis, dar acesta nu va apărea în lista de fire a grupului sau în tabloul de bord.</p>"
+    image_alt: Fire de inchidere toate
+  thread_nav:
+    participants: Participanții
+  strand_nav:
+    newest: Cel mai nou
+    oldest: Cel mai vechi
+    newest_first: Cel mai nou primul
+    oldest_first: Cei mai in varsta primii
+    all_pinned: Toate elementele fixate
+    whole_thread: Întregul fir
+    from_comment: Dintr-o adresă URL de comentariu
+    from_sequence_id: Dintr-o adresă URL a articolului de fir
+    unread: Nou pentru tine
+  search_modal:
+    all_content: Tot conținutul
+    best_match: Cea mai buna potrivire
+    any_tag: Orice etichetă
+    all_subgroups: Toate subgrupurile
+    parent_only: Numai părinte
+  membership_card:
+    group_members: Membrii grupului
+    discussion_members: Membrii firului
+    poll_members: "{{pollType}} membri"
+    voters: Alegătorii
+    invite_to_group: Invitați în grup
+    invite_to_discussion: Invită la thread
+    invite_to_poll: Invită la vot
+    invite_to_wip_poll: Invitați să oferiți feedback
+    invitations: Invitații
+  notification_models:
+    discussion: 'fir:'
+    comment: comenta in
+    poll: 'sondaj:'
+    outcome: 'rezultat:'
+    stance: 'vot:'
+  discussion_fork_actions:
+    helptext: Selectați elementele pe care doriți să le mutați într-un alt subiect
+    move: Mișcare
+    search_placeholder: Găsiți firul după titlu
+    moved: Comentarii în mișcare, acest lucru ar putea dura un moment
+    move_to_existing_thread: Mutați la firul existent
+    start_new_thread: Sau, începe un nou thread
+  thread_template:
+    browse_public_templates: Răsfoiți galeria de șabloane
+    thread_template_settings: Setări pentru șablonul firului de discuție
+    start_a_new_thread: Începeți un nou thread
+    thread_template_saved: Șablonul de subiect a fost salvat
+    these_are_public_templates: Aceste șabloane sunt disponibile pentru a le copia sau modifica pentru a se potrivi grupului dvs
+    these_are_templates: Acestea sunt șabloanele de fire din grupul dvs. Șabloanele vă ghidează prin procesele comune de luare a deciziilor.
+    default_title_label: Titlul implicit
+    default_title_hint: Completați în prealabil câmpul de titlu cu text editabil. Acest lucru este opțional - lăsați necompletat dacă nu sunteți sigur.
+    title_placeholder_label: Exemplu de titlu
+    title_placeholder_hint: Un exemplu de afișat în fundalul câmpului de titlu
+    title_placeholder_placeholder: de exemplu, așa arată textul de fundal
+    example_description_label: Exemplu de descriere
+    example_description_placeholder: Furnizați un șablon pe care oamenii să-l poată folosi pentru a începe o discuție
+    hidden_templates: Șabloane ascunse
+    confirm_delete: Sigur doriți să ștergeți definitiv acest șablon de fir? Nu vor fi șterse fire ca urmare a acestui fapt.
+    add_proposal_or_poll_template: Adăugați o propunere sau un șablon de sondaj
+    recommended_proposal_or_poll_templates: Șabloane de propunere sau de sondaj recomandate
+    decision_templates: Modele de decizie
+    decision_templates_help: Selectați orice propunere sau șabloane de sondaj care ajută la finalizarea acestui proces.
+    share_in_template_gallery: Distribuiți acest șablon în galeria publică de șabloane
+  context_panel:
+    thread_status:
+      pinned: Acest thread a fost fixat. Acesta va rămâne în partea de sus a listei de fire a grupului pentru toți utilizatorii.
+      closed: Acest thread a fost închis. Nu va mai apărea pe tabloul de bord și va fi listat sub „închis” pe pagina grupului
+  delete_group_modal:
+    title: Șterge grupul
+    subgroup_title: Ștergeți subgrupul
+    parent_body: "<h2>Acesta este grupul tău părinte - nu un subgrup!</h2><br> Dacă ștergeți acest lucru, orice subgrupuri vor fi, de asemenea, șterse definitiv. Abonamentul dvs. Loomio va fi, de asemenea, anulat. Este foarte recomandat să exportați datele grupului și să descărcați manual orice fișiere importante înainte de a face acest lucru. Esti sigur ca vrei sa continui?"
+    body: Sigur doriți să ștergeți acest subgrup? Toate firele, sondajele, fișierele și alt conținut de grup vor fi șterse definitiv. Se recomandă să exportați datele grupului și să descărcați manual orice fișiere importante înainte de a continua.
+    confirm: Tastați „%{name}” pentru a confirma că doriți să ștergeți acest grup.
+    success: Acest grup a fost arhivat și este programat pentru ștergere definitivă în 2 săptămâni.
+  export_data_modal:
+    title: Cum doriți să vă folosiți datele?
+    as_csv: Deschideți-l într-o foaie de calcul
+    as_html: Deschideți-l într-un browser
+    as_json: Găzduiește acest grup pe propriul meu server
+  description_card:
+    title: Descrierea Grupului
+    placeholder: Administratorii grupului pot folosi această zonă pentru a descrie scopul grupului, astfel încât toată lumea să știe de ce sunt aici.
+    messages:
+      description_updated: Descrierea actualizată
+  leave_group_form:
+    aria_label: Paraseste grupul
+    title: Paraseste grupul
+    question: Sigur vrei să părăsești acest grup?
+    submit: Da, părăsiți acest grup
+  archive_group_form:
+    aria_label: Dezactivați grupul
+    title: Dezactivați grupul
+    question: Sigur doriți să dezactivați acest grup?
+    submit: Da, dezactivează acest grup
+  group_export_modal:
+    title: Exportați datele grupului
+    body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
+    submit: Începeți exportul
+    flash: Exportul datelor de grup a început
+  membership_requests_card:
+    heading: Cereri de membru
+    manage_requests: Gestionați cererile
+    manage_requests_with_count: Gestionați solicitările (%{count})
+  membership_remove_modal:
+    invitation:
+      title: Anulează invitația
+      message: Sigur doriți să anulați invitația către {{name}}?
+      flash: Invitația a fost anulată
+      submit: Anulează invitația
+    membership:
+      title: Eliminați membrul
+      message: Sigur doriți să eliminați {{name}}?
+      impact_for_subgroup: Acest lucru le va elimina accesul la subgrup (inclusiv fire de discuție și sondaje), dar vor rămâne membri ai grupului părinte.
+      impact_for_group: Acest lucru le va elimina accesul la grup (inclusiv fire și sondaje) și orice subgrupuri.
+      flash: Membru eliminat
+      submit: Eliminați membrul
+  memberships_panel:
+    add_coordinator: Faceți administrator
+    remove_coordinator: Retrocedați administratorul
+  membership_form:
+    modal_title:
+      group: Setează titlul
+    title_helptext:
+      group: Acest titlu va apărea lângă numele lui {{name}} în cadrul acestui grup. Folosiți-l pentru a le informa oamenilor rolul lor.
+    title_label: titlu
+    title_placeholder: De exemplu, „coordonator” sau „facilitator”
+    updated: Titlul de membru a fost actualizat
+  user_name_modal:
+    user_name_updated: Numele de utilizator a fost actualizat
+    set_user_name: Setați numele de utilizator
+  user_page:
+    contact_user: Nume de contact}}
+    location_field: 'Locație: {{value}}'
+    locale_field: 'Limbă: {{value}}'
+    online_field: 'Online: {{value}}'
+    invited: "{{value}} invitat"
+    message_user: Mesaj {{name}}
+  contact_request_form:
+    modal_title: E-mail {{name}}
+    message_placeholder: Prezentați-vă și spuneți de ce doriți să luați legătura.
+    helptext: "{{name}} va primi prin e-mail numele, adresa de e-mail și mesajul dvs"
+    email_sent: E-mail trimis la {{name}}
+  text_editor:
+    x_of_y_characters: "{{x}} / {{y}} caractere"
+    select_text_to_link: Selectați textul de conectat și încercați din nou
+    insert_link: Introduceți linkul
+    insert_embedded_url: Încorporați videoclipul
+  change_password_form:
+    set_password_title: Seteaza-ti parola
+    set_password_helptext: Vă rugăm să introduceți o parolă - minim 8 caractere
+    set_password: Seteaza parola
+    password_changed: parola ta a fost actualizata
+  deactivation_modal:
+    introduction: 'Când vă ștergeți contul:'
+    you_will_be_deleted: Contul dvs. de utilizator, inclusiv numele, adresa de e-mail și alte date de identificare personală, vor fi șterse din sistemele noastre.
+    name_removed: Comentariile, propunerile și discuțiile pe care le-ați făcut vor rămâne, dar numele dvs. va fi eliminat din ele
+    no_longer_group_member: Nu veți mai fi listat ca membru al niciunui grup
+    no_emails: Nu veți mai primi e-mailuri de notificare
+    submit_delete: Ștergeți contul meu acum
+  thread_preview:
+    replies_count: "%{count} răspunsuri"
+    unread_count: "%{count} necitite"
+  threads_page:
+    no_direct_threads: Nu ai fire directe
+    no_invite_only_threads: Nu aveți subiecte numai pe invitație
+  discussion_last_seen_by:
+    title: Văzut de
+    no_one: Nimeni nu a văzut asta încă
+  thread_arrangement_form:
+    edit: Editați aspectul
+    title: Dispunerea firului
+    for_everyone: Acest lucru schimbă aspectul pentru toată lumea, nu doar pentru tine.
+    sorting: Cel mai vechi sau cel mai nou mai întâi?
+    latest: Cel mai nou
+    latest_description: Citiți mai întâi cele mai noi articole
+    earliest: Cel mai vechi
+    earliest_description: Fiți la curent cu comentariile mai vechi înainte de a le vedea pe altele mai noi
+    replies: Cum se afișează răspunsurile?
+    linear: Lista plată
+    linear_description: Elementele enumerate așa cum s-au întâmplat, unul după altul.
+    nested_once: Răspunsuri Nest - numai primul răspuns
+    nested_once_description: Indentează răspunsurile sub comentariul original
+    nested_twice: Două niveluri de răspunsuri imbricate
+    nested_twice_description: Indentează răspunsurile de cel mult două ori.
+    changing_nesting_is_slow: Procesarea modificărilor la imbricare poate dura câteva minute.
+  explore_page:
+    header: Explorează grupuri
+    search_placeholder: Căutați grupuri publice
+    single_search_result: 1 grup public care se potrivește cu <strong>{{searchTerm}}:</strong>
+    multiple_search_results: "{{resultCount}} grupuri publice care se potrivesc cu <strong>{{searchTerm}}:</strong>"
+    no_results_found: "<strong>Nu puteți găsi grupul pe care îl căutați?</strong> Dacă confidențialitatea unui grup este setată la „secretă”, aceasta nu va apărea aici."
+    newest_first: Cel mai nou primul
+    biggest_first: Cel mai mare primul
+    order_by: Ordonați grupurile după
+  global:
+    messages:
+      app_update: O nouă versiune de Loomio a fost lansată. Salvați-vă munca și reîncărcați.
+      reload: Reîncărcați
+  poll_option_form:
+    edit_option: Opțiune de editare
+    option_name: Numele opțiunii
+    option_name_hint: Un nume scurt pentru această opțiune
+    option_name_validation: Cel mai bine este să păstrați numele scurt și să puneți detalii în câmpul „Semnificație”.
+    icon: Pictogramă
+    meaning: Sens
+    meaning_hint: O propoziție sau două care explică ce înseamnă alegerea acestei opțiuni. Opțional
+    prompt: Motivul prompt
+    prompt_hint: O întrebare pentru a determina alegătorii să-și împărtășească raționamentul sau să își reconsidere poziția. Opțional
+  poll_common_add_option:
+    button:
+      add_option: Adăugați o altă opțiune
+    modal:
+      title: Adăugați o opțiune
+    form:
+      add_options: Adăugați opțiuni
+      options_added: S-au adăugat noi opțiuni
+  poll_common_card:
+    show_results: Arată rezultate
+    hide_results: Ascunde rezultatele
+    until_vote: Până la vot
+    until_you_vote: Până când votezi
+    until_poll_type_closed: Până când {{pollType}} este închis
+    until_voting_is_closed: Până la închiderea votului
+    deleted: Acest sondaj a fost șters
+  group_files_panel:
+    no_files: Niciun fișier găsit
+    filename: Nume de fișier
+    uploaded_by: încărcat de
+    uploaded_at: Încărcat la
+    delete_confirmation: Sigur doriți să ștergeți acest atașament? Va fi eliminat din orice comentariu sau fir asociat. Acest lucru nu poate fi anulat.
+  subgroups_panel:
+    search_subgroups_of_name: Căutați subgrupuri de {{name}}
+    group_without_subgroups: "{{name}} fără subgrupuri"
+  poll_common_action_panel:
+    from_the_thread: Din șablonul firului
+    from_the_group: Din grup
+    default_templates: Șabloane implicite
+    default_template: Șablon implicit
+    custom_template: Șablon personalizat
+    default_poll_types: Tipuri de sondaj implicite
+    suggested_templates: Șabloane sugerate
+    group_templates: Șabloane de grup
+    basic_templates: Șabloane de bază
+    anonymous: Voturile sunt anonime
+    results_hidden_until_closed: Rezultatele vor fi afișate după încheierea votării
+    results_hidden_until_vote: Rezultatele vor fi afișate după ce votați
+    unable_to_vote: Nu ați fost invitat să votați în acest %{poll_type}
+    draft_mode: Votul este dezactivat. Acesta nu este încă deschis pentru vot.
+    voting_disabled_poll_is_template: Votul este dezactivat. Acesta este un șablon.
+  poll_common_collapsed:
+    by_who: dupa nume}}
+  poll_common_calendar_invite:
+    calendar_invite: Includeți o invitație în calendar cu acest rezultat
+    poll_option_id: Ora întâlnirii
+    helptext_on: Utilizatorii vor putea adăuga această întâlnire în calendarul lor
+    helptext_off: Nu va fi trimisă nicio invitație la întâlnire
+    event_duration: Durată
+    event_summary: Numele întâlnirii
+    event_summary_placeholder: Cum ai vrea să numești această întâlnire?
+    event_description: Descrierea întâlnirii
+    event_description_placeholder: Care este agenda acestei întâlniri?
+    location: Locație
+    location_placeholder: Unde va avea loc această întâlnire?
+  poll_common_settings:
+    who_can_vote: Cine poate vota?
+    short_reason_can_be_helpful: Menținerea scurtă a motivelor de vot le face mai ușor de înțeles. O colecție de motive concise este o resursă excelentă pentru a lua o decizie.
+    specified_voters_only_true: Doar persoane invitate
+    specified_voters_only_false_group: Oricine din grup
+    specified_voters_only_false_discussion: Oricine din topic
+    invite_people_next: Puteți alege cine este invitat să voteze după ce începeți {{poll_type}}
+    shuffle_options:
+      shuffle_options: Opțiuni de amestecare
+      title: Afișați opțiunile în ordine aleatorie
+      helptext: O opțiune care este prima pe listă îi poate da o părtinire. Utilizați această setare pentru a contracara acest efect.
+    multiple_choice:
+      title: Alegere multiplă
+      helptext_on: Când sunt selectați, participanții vor putea selecta mai multe opțiuni.
+    anyone_can_participate:
+      title: Oricine are link poate participa
+      helptext_on: Când este selectat, oricine are linkul către sondaj poate participa.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Deoarece votul se închide în 24 de ore, nu vor fi trimise mementouri de închidere în curând.
+      closes_too_soon: Deoarece acest {{pollType}} se închide în 24 de ore, nu vor fi trimise mementouri de închidere în curând.
+      title: Cu 24 de ore înainte de închiderea {{pollType}}, trimiteți un memento la
+      voting_title: Cu 24 de ore înainte de încheierea votului, trimiteți un memento la
+      nobody: Nimeni
+      author: Autorul (eu)
+      undecided_voters: Alegători nehotărâți
+      voters: Toți alegătorii
+    notify_on_participate:
+      title: Anunțați-mă când participă oamenii
+      helptext_on: Când este selectat, vei fi notificat ori de câte ori participă cineva.
+    anonymous:
+      title: Alegători anonimi
+      helptext_on: Când este selectat, informațiile despre participant nu vor fi afișate la fiecare răspuns.
+    voter_can_add_options:
+      title: Alegătorii pot adăuga opțiuni alternative
+    can_respond_maybe:
+      title: Alegătorii pot răspunde „dacă este nevoie”
+    allow_long_reason:
+      title: Permiteți ca „motivul” votului să aibă mai mult de 500 de caractere
+    hide_results_until_closed:
+      title: Ascundeți rezultatele până când este închis
+      helptext_on: Nu arătați cum au votat oamenii până când votul nu este închis
+  poll_common_close_form:
+    title: Închideți %{poll_type} acum?
+    helptext: Sigur doriți să închideți acest %{poll_type} mai devreme și să împărtășiți un rezultat?
+    close_poll_type: Închide %{poll_type}
+    poll_type_closed: "%{poll_type} închis"
+  poll_common_reopen_form:
+    title: Redeschideți {{poll_type}}
+    helptext: Redeschideți {{poll_type}} dacă oamenii au nevoie de mai mult timp pentru a participa
+    success: "{{poll_type}} redeschis"
+  poll_common_move_form:
+    title: Mutați {{poll_type}}
+    success: "{{poll_type}} mutat în {{group}}"
+  poll_common_wip_field:
+    voting_enabled: Votul este activat
+    enable_voting: Activați votul
+    title: Dezactivați votul
+    past_tense: Votul este dezactivat
+    draft_mode: Modul ciornă
+    disable_voting_during_development: Acest %{poll_type} nu este pregătit pentru a fi votat
+    helptext: Acest %{poll_type} este o lucrare în curs. Puteți activa votul mai târziu.
+    voting_open: Votul deschis
+    this_is_ready_for_voting: acest %{poll_type} este gata pentru vot
+  poll_common_closing_at_field:
+    closing: Închidere
+    no_closing_date: Fără dată de închidere
+    closing_date: Data limită
+    closing_hour: Oră de închidere
+    invalid_date: Data nevalidă
+  poll_card:
+    poll_type_by_name: "%{poll_type} de %{name}"
+    started_by: Început de {{name}}
+  poll_common_votes_panel:
+    vote_removed: Votul a fost eliminat
+    undecided: Nehotărât
+    newest_first: Cel mai nou primul
+    oldest_first: Cei mai in varsta primii
+    priority_first: Mai întâi de acord
+    priority_last: Blocați mai întâi
+    undecided_first: Mai întâi nehotărât
+    no_votes_yet: Nu au fost plasate încă voturi.
+    change_results_order: Modificați ordinea rezultatelor
+    none_of_the_above: "(Nici una dintre cele de mai sus)"
+    name_or_username: Nume sau nume de utilizator
+  poll_common_undecided_panel:
+    show_undecided: Afișați %{count} nehotărâți
+    show_invitations: Afișați invitațiile în așteptare
+    undecided_users: Nehotărât (%{count})
+    invitation_count_singular: O persoană suplimentară a fost invitată să participe prin e-mail
+    invitation_count_plural: "%{count} persoane suplimentare au fost invitate să participe prin e-mail"
+  poll_common_undecided_user:
+    reminded: Memento trimis!
+    reminder_sent: Notificare de memento trimisă
+  poll_common_set_outcome_panel:
+    enter_outcome: Introduceți rezultatul
+    poll_type: Acest %{poll_type} s-a închis. Fă-ți timp pentru a lua în considerare rezultatele, apoi împărtășește un rezultat, astfel încât oamenii să știe ce se va întâmpla în continuare.
+  poll_common_outcome_form:
+    review_due_in_days: Revizuiți decizia după câte zile?
+    review_due_in_days_hint: O perioadă de timp (în zile) de așteptat înainte de a revizui decizia. (optional)
+    review_date: Data revizuirii
+    review_date_hint: Stabiliți o dată pentru a revizui decizia (opțional)
+    who_to_notify: Pe cine vrei să anunți despre acest rezultat? (optional)
+    outcome_statement_template: Șablon de declarație de rezultat
+    new_title: Rezultatul de stat
+    update_title: Actualizați rezultatul
+    outcome_created: Rezultatul creat
+    outcome_updated: Rezultatul actualizat
+    statement_placeholder: Rezumați răspunsurile și explicați ce se va întâmpla în continuare.
+    statement_template_placeholder: Furnizați un șablon pentru redactarea unui rezultat al deciziei. (optional)
+    you_will_be_notified: Veți fi anunțat la data revizuirii.
+    submit: Împărtășiți rezultatul
+  poll_common_outcome_panel:
+    authored_by: Dupa nume}}
+  poll_common_delete_modal:
+    question: Sigur doriți să ștergeți acest lucru?
+    title: Ștergeți {{pollType}}
+    success: S-a șters cu succes
+  poll_proposal_form:
+    start_header: Începeți propunerea
+    edit_header: Editați propunerea
+    title_placeholder: De exemplu, să mergem pe lună!
+    details_placeholder: Care sunt detaliile propunerii tale?
+    proposal_created: A început propunerea
+    proposal_updated: Propunerea a fost actualizată
+  record_modal:
+    record_video: Înregistrați video
+    record_audio: Înregistrează audio
+    record: Record
+    stop: Stop
+    no_mic: Nu am putut găsi un microfon
+    no_camera: Nu am putut găsi o cameră
+    listen_to_audio: Ascultă audio
+    watch_video: Urmăriți videoclipul
+    audio_transcript: 'Transcriere audio: %{text}'
+    why_type_when_you_can_talk: De ce să tastați când puteți vorbi? Trimiteți o înregistrare vocală
+    transcript_included: O transcriere a înregistrării va fi atașată la mesajul dvs
+  poll_dot_vote_form:
+    dots_per_person: Puncte de persoană
+    dots_per_person_helptext: Numărul total de puncte pe care fiecare persoană i se cere să le aloce.
+  poll_meeting_form:
+    timeslots: Intervale de timp
+    no_options: Introduceți orele în fusul orar actual ({{zone}}). Participanții văd orele traduse în fusul orar local.
+    meeting_duration: Durata întâlnirii
+    add_option_placeholder: Adăugați o nouă oră
+    time_slot_added: S-a adăugat intervalul orar
+    time_slot_already_added: Interval orar deja adăugat
+    participants_see_local_times: Participanții vor vedea orele localizate în fusul lor orar
+    use_24_hour_format: Eroare! Folosiți formatul de 24 de ore, de exemplu %{time}
+  poll_ranked_choice_form:
+    no_options: Nu ați adăugat încă nicio opțiune.
+    add_option_placeholder: Introdu o nouă alegere
+    minimum_stance_choices: Opțiuni de clasare
+    minimum_stance_choices_helptext: Câte opțiuni are alegătorul?
+    minimum_stance_choices_hint: Adică Clasează-ți primele 3 arome de înghețată
+    ranked_choice_created: S-a creat alegerea clasată
+    ranked_choice_updated: Alegerea clasată a fost actualizată
+    rank: Rang
+    points: Puncte
+    average: In medie
+    mean: Rău
+    pct_of_points: "% din puncte"
+    pct_of_voters: "% din alegători"
+    percent: La sută
+  poll_meeting_time_field:
+    add_time_slot: Adăugați intervalul de timp
+    new_time_slot: Nou interval orar
+    closing_hour: Ora de închidere
+  poll_proposal_vote_form:
+    default_reason_placeholder: Vă rugăm să explicați raționamentul dvs
+    abstain_reason_placeholder: Spuneți-le oamenilor de ce renunțați la această decizie
+    agree_reason_placeholder: Ce vă place la propunere și cum va beneficia grupul?
+    disagree_reason_placeholder: Cum ar putea fi îmbunătățită această propunere, astfel încât să o puteți susține?
+    block_reason_placeholder: Explicați obiecția dumneavoastră față de această propunere și de ce nu ar trebui să meargă înainte
+    stance_created: Vot creat
+    stance_updated: Vot actualizat
+    vote: Vot
+  poll_count_form:
+    pct_of_target: "% din țintă"
+    agree_target_helptext: Care este numărul țintă de voluntari pe care ați dori să aveți?
+    agree_target_label: Numărul țintă
+  poll_common_percent_voted:
+    sentence: "{{numerator}} din {{denominator}} persoane au participat ({{percent}}%)"
+    target_progress: "{{percent}}% din obiectiv atins. ({{num}} / {{țintă}})"
+  poll_poll_vote_form:
+    stance_created: Vot creat
+    stance_updated: Vot actualizat
+  poll_score_vote_form:
+    stance_created: Vot creat
+    stance_updated: Vot actualizat
+  poll_meeting_vote_form:
+    local_time_zone: Ora locală - {{zonă}}
+    can_attend: Poate participa
+    unable: Imposibil
+    if_need_be: Dacă este nevoie
+    your_response: Când poți participa?
+    stance_created: Disponibilitate salvată
+    stance_updated: Disponibilitate actualizată
+    reason_placeholder: Explicați când sunteți liber (sau ocupat), în cazul în care autorul dorește să adauge opțiuni.
+  poll_dot_vote_vote_form:
+    dots_remaining: "%{count} puncte rămase"
+    too_many_dots: Ai folosit prea multe puncte
+    stance_created: Vot creat
+    stance_updated: Vot actualizat
+  poll_ranked_choice_vote_form:
+    helptext: Trageți și plasați opțiunile în ordinea preferințelor (1 fiind cea mai preferată opțiune). Cele mai importante %{count} opțiuni ale tale vor fi înregistrate.
+    stance_created: Alegere înregistrată
+    stance_updated: Alegerea a fost actualizată
+  poll_templates:
+    proposal:
+      process_subtitle: Ridicați o propunere pentru a lua o decizie
+      process_introduction: <p>Propunerea clasică Loomio vă ajută să luați o decizie, transformând o discuție într-un rezultat clar.</p><p> Sugerați un curs de acțiune și invitați oamenii să răspundă prin vot de acord, abținere sau dezacord.</p><p> Pe măsură ce oamenii votează, ei pot da un motiv pentru care au votat în acest fel. Puteți vedea unde stau toți ceilalți în această chestiune și de ce.</p><p> În acest fel, puteți folosi o propunere pentru a solicita oamenilor un răspuns, pentru a descoperi noi informații și pentru a construi o înțelegere comună - pentru a vă ajuta grupul să ia o decizie mai bună și mai informată.</p><p> O propunere și discuția asociată își creează propria înregistrare a modului în care a luat decizia.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Citiți mai multe despre utilizarea propunerii clasice Loomio în procesul de decizie simplă</u></a> .</p>
+      title: Aprobați noul concept de marcă
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Pentru ca această propunere să treacă, avem nevoie de majoritatea membrilor să voteze De acord.</p><p> Dacă nu sunteți de acord, spuneți de ce și ce trebuie să se schimbe pentru a fi de acord.</p>
+      agree: De acord
+      agree_meaning: Sustin propunerea
+      agree_prompt: Ce vă place la propunere și cum va beneficia grupul?
+      abstain: abține-te
+      abstain_meaning: Alegerea de a nu sau nu putea vota în această decizie.
+      abstain_prompt: De ce vă abțineți sau nu vă simțiți în măsură să votați în această decizie?
+      disagree: Dezacord
+      disagree_meaning: Ceva din această propunere trebuie schimbat înainte să o pot susține.
+      disagree_prompt: Cum ar putea fi îmbunătățită această propunere, astfel încât să o puteți susține?
+    advice:
+      process_subtitle: Cere sfaturi cu privire la o decizie pe care trebuie să o iei
+      process_introduction: <p>Cere sfaturi cu privire la o decizie pe care trebuie să o iei, cu sfatul persoanelor afectate sau care au expertiză, astfel încât să poți lua o decizie mai bună pentru organizația ta.</p><ul><li><p> Sfaturile vă ajută să luați o decizie mai bună pentru organizația dvs.</p></li><li><p> Încurajează relațiile, oportunitățile de învățare și contribuțiile diverse.</p></li><li><p> Stimulați inițiativa și creativitatea și munca mai plăcută.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Citiți mai multe despre procesul de consiliere</u></a> .</p>
+      title: Ajută-l pe Takashi să cumpere un computer nou
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Ce sfaturi le ceri oamenilor pentru a te ajuta să iei o decizie bună?</strong></h3><p></p><p> Doresc contribuția dvs. pentru a mă ajuta să iau o decizie bună pentru organizația noastră.</p>
+      agree: De acord
+      agree_meaning: Mi-am oferit sfatul cu privire la această decizie
+      agree_prompt: Rezumați-vă sfaturile sau faceți un comentariu util
+      abstain: abține-te
+      abstain_meaning: Nu am niciun sfat de oferit
+      abstain_prompt: Aveți comentarii care ar putea fi de ajutor?
+    consent:
+      process_subtitle: Luați o decizie „sigur de încercat”, fără obiecții
+      process_introduction: <p>Căutați consimțământul pentru o decizie pe care trebuie să o luați, în cazul în care nu există obiecții semnificative la propunerea dvs., astfel încât să puteți lua o decizie rapidă pentru organizația dvs., care este „sigur de încercat”.</p><ul><li><p> Țintește-te la o decizie „destul de bună”.</p></li><li><p> Implicați mai multe voci pentru a dezvolta o propunere viabilă</p></li><li><p> Întrebați dacă cineva are o obiecție valabilă</p></li><li><p> Modificați propunerea pentru soluționarea obiecțiilor</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Citiți mai multe despre procesul de consimțământ</a> .</p>
+      title: Angajează-l pe Chloe pentru rolul de design
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Ce ceri oamenilor din această propunere?</strong></h3><p></p><p> Dacă aveți o obiecție, vă rugăm să spuneți de ce și să propuneți o modificare a propunerii care o face sigură.</p><p> Amintiți-vă că căutăm consimțământul pentru o decizie „destul de bună” care este „sigur de încercat”, astfel încât să putem lua o decizie bună pentru organizația noastră.</p>
+      consent: Consimţământ
+      consent_meaning: Propunerea este sigură de încercat
+      consent_prompt: Ce vă place la propunere și cum va beneficia organizația?
+      objection: Obiecţie
+      objection_meaning: Am o obiecție valabilă și cred că propunerea va cauza prejudicii
+      objection_prompt: Ce modificare a acestei propuneri este necesară pentru ca aceasta să fie „încercată în siguranță”, astfel încât să o puteți susține?
+    consensus:
+      process_subtitle: Ajungeți la un acord colectiv cu toți cei implicați
+      process_introduction: <p>Creați un consens pentru o decizie pe care trebuie să o luați, pentru a ajunge la un acord care să satisfacă nevoile și preocupările tuturor participanților.</p><ul><li><p> Discutați și dezvoltați o propunere împreună</p></li><li><p> Includeți și respectați pe toți cei implicați</p></li><li><p> Căutați acordul celor mai mulți oameni</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Citiți mai multe despre procesul de consens</a> .</p>
+      title: Aprobați noul concept de marcă
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Care este decizia pe care trebuie să o iei?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Pentru ca această propunere să treacă, avem nevoie de majoritatea membrilor să voteze De acord.</p><p> Dacă nu sunteți de acord, spuneți de ce și ce trebuie să se schimbe pentru a fi de acord.</p>
+      agree: De acord
+      agree_meaning: Sustin propunerea
+      agree_prompt: Ce vă place la propunere și cum va beneficia organizația?
+      abstain: abține-te
+      abstain_meaning: Această decizie nu mă afectează și sunt mulțumit de orice decide grupul
+      abstain_prompt: De ce vă abțineți sau nu vă simțiți în măsură să votați în această decizie?
+      disagree: Dezacord
+      disagree_meaning: Ceva din această propunere trebuie schimbat înainte să o pot susține
+      disagree_prompt: Cum ar putea fi îmbunătățită această propunere, astfel încât să o puteți susține?
+      block: bloc
+      block_meaning: Blocez această propunere și cred că nu ar trebui să continue
+      block_prompt: Explicați obiecția dumneavoastră față de această propunere și de ce nu ar trebui să meargă înainte
+    question_round:
+      process_subtitle: Invitați întrebări de clarificare pentru a ajuta oamenii să înțeleagă o propunere
+      process_introduction: <p>O rundă de întrebări este o oportunitate pentru oameni de a pune întrebări clarificatoare despre propunere, astfel încât toată lumea să înțeleagă propunerea înainte de a spune ce cred despre ea.</p><p> Runda de întrebări Loomio este o propunere specială fără opțiuni de vot. Permite participanților să pună întrebări într-o perioadă stabilită de tine pentru rundă.</p><p> O rundă de întrebări este folosită în mod obișnuit ca pas în procesul de consimțământ.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Citiți mai multe despre procesul de consimțământ</a> .</p>
+      title: Ce întrebări aveți despre politica de sănătate și siguranță?
+      details: <h3 id="what-are-you-proposing"><strong>Ce propui?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Aceasta este o rundă de întrebări, în care sunteți invitat să puneți întrebări clarificatoare.</p><p> Ce trebuie să știți pentru a înțelege propunerea?</p><p> Vă rugăm să răspundeți înainte de încheierea rundei de întrebări.</p>
+      reason_prompt: Ce trebuie să știți pentru a înțelege propunerea?
+    sense_check:
+      process_subtitle: Cereți feedback, întrebări și preocupări
+      process_introduction: <p>Propunerea de verificare Sense este o modalitate bună de a obține feedback, de a invita întrebări și de a descoperi preocupări. Ajută la clarificarea și îmbunătățirea unei propuneri înainte de a trece la o decizie.</p><p> Verificarea sensului le permite oamenilor să știe că se formează o propunere și îi încurajează să se implice. Este o oportunitate de a asculta oamenii, de a simți cum se simt și de a răspunde în mod corespunzător - deschizând potențialul de a încorpora contribuțiile lor pentru a lua o decizie mai bună.</p><p> Utilizați propunerea de verificare Sense în procesul de consimțământ pentru a invita reacții și comentarii pentru a îmbunătăți propunerea, iar într-un proces de consens pentru a testa consensul.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Citiți mai multe despre utilizarea Sense check în Procesul de decizie simplă</u></a> <span>.</span></p>
+      title: Ce părere aveți despre noile concepte de brand?
+      details: <h3 id="what-are-you-proposing"><strong>Ce propui?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Cum vi se pare propunerea? Lăsați un comentariu sau faceți o sugestie de îmbunătățire.</p><p> Această verificare Sense este o oportunitate pentru contribuția și contribuția dvs., pentru a ne ajuta să luăm o decizie mai bună.</p>
+      looks_good: Arata bine
+      looks_good_meaning: Sunt mulțumit de unde merge asta
+      looks_good_prompt: Aveți comentarii sau sugestii pentru a îmbunătăți propunerea?
+      abstain: abține-te
+      abstain_meaning: Nu am nimic de adăugat, nici o obiecție la această lucrare.
+      abstain_prompt: Abținerea implică acordul cu direcția acestei propuneri. Există vreun motiv pentru care votați pentru a vă abține?
+      concerned: Îngrijorat
+      concerned_meaning: Este posibil să trebuiască să se schimbe ceva în legătură cu aceasta pentru ca eu să-mi dau acordul sau să fiu de acord
+      concerned_prompt: Care este preocuparea dumneavoastră și cum ar putea fi abordată?
+    gradients_of_agreement:
+      process_subtitle: Sprijin expres pentru o propunere pe o scară de 8 puncte
+      process_introduction: "<p>Propunerea Gradiente de acord permite membrilor unui grup să-și exprime sprijinul pentru o propunere în grade pe o scară, oferind mai multe moduri de exprimare a sprijinului decât în termeni de „de acord” și „de acord”.</p><p> Utilizați Gradiente de acord ca rundă preliminară, pentru a testa sprijinul pentru o propunere înainte de a trece la un acord oficial.</p><p> Gradientele de acord le permit oamenilor să știe că se formează o propunere și îi încurajează să se implice. Este o oportunitate de a asculta oamenii, de a simți cum se simt și de a răspunde în mod corespunzător - deschizând potențialul de a încorpora contribuțiile lor pentru a lua o decizie mai bună.</p>"
+      title: Cum îți place noua declarație de valori?
+      details: <h3 id="what-are-you-proposing"><strong>Ce propui?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Cum vi se pare propunerea? Exprimați-vă sprijinul pe scara de mai jos și lăsați un comentariu sau sugestie de îmbunătățire.</p><p> Această propunere Gradienți de acord este pentru a testa suportul pentru propunere și o oportunitate pentru aportul dvs. înainte de a trece la un acord oficial.</p>
+      whole_hearted_endorsement: Susținere din toată inima
+      whole_hearted_endorsement_meaning: Chiar imi place!
+      whole_hearted_endorsement_prompt: Ce-ti place in legatura cu asta?
+      agreement_with_minor_contention: Acord cu disputa minoră
+      agreement_with_minor_contention_meaning: Nu perfect, dar este suficient de bun
+      agreement_with_minor_contention_prompt: Care este preocuparea ta?
+      support_with_reservations: Suport cu rezervări
+      support_with_reservations_meaning: Pot trăi cu ea
+      support_with_reservations_prompt: Care sunt rezervele tale?
+      abstain_meaning: Această problemă nu mă afectează
+      abstain_prompt: Aveți ceva ce doriți să adăugați?
+      more_discussion_needed: Este nevoie de mai multe discuții
+      more_discussion_needed_meaning: Încă nu înțeleg destul de bine problemele
+      more_discussion_needed_prompt: Ce nu înțelegi?
+      don_t_like_but_will_support: Nu-mi place, dar va susține
+      don_t_like_but_will_support_meaning: Nu este grozav, dar nu vreau să rețin grupul
+      don_t_like_but_will_support_prompt: Ce ți-ar plăcea să vezi îmbunătățit?
+      serious_disagreement: Dezacord serios
+      serious_disagreement_meaning: Nu sunt de acord cu asta - nu conta pe mine
+      serious_disagreement_prompt: Cu ce nu ești de acord?
+      veto: Veto
+      veto_meaning: Blochez această propunere
+      veto_prompt: De ce blochezi propunerea? Ce trebuie să se schimbe pentru a-l susține?
+    simple_poll:
+      process_subtitle: Găsiți cea mai populară opțiune
+      process_introduction: <p>Înainte de a lua o decizie, găsește ce opțiune (opțiuni) interesează cel mai mult oamenilor.</p><p> Sondajul simplu vă ajută să găsiți cea mai populară opțiune sau opțiuni cu alegere unică sau multiplă.</p><p> Scrieți orice detalii despre opțiuni în câmpul de detalii, apoi introduceți numele opțiunii și faceți clic pe + pentru a adăuga.</p><p> Setați <strong>opțiunile minime</strong> și <strong>opțiunile maxime pe</strong> care le poate alege un alegător. Lăsați opțiunea maximă ca 1 pentru un sondaj cu o singură alegere.</p><p> Puteți folosi pictograma creion alături de fiecare opțiune pentru a adăuga o <strong>semnificație</strong> a opțiunii, o detaliere suplimentară a opțiunii de a ajuta oamenii atunci când votează.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Citiți mai multe despre Sondaj simplu</a> .</p>
+      title: Unde ar trebui să fie focalizarea direcției noastre strategice?
+      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Alegeți opțiunea (opțiunile) preferate.</p>
+    score_poll:
+      process_subtitle: Măsurați gradul de sprijin pentru fiecare opțiune
+      process_introduction: <p>Folosiți Sondajul Score atunci când doriți să chestionați oameni în funcție de dorința, preferința sau interesul lor pentru fiecare opțiune.</p><p> <span>Participanții sunt rugați să evalueze fiecare opțiune și să atribuie un scor prin mișcarea unui glisor de-a lungul unei scale.</span></p><p> <span>Rezultatele sunt afișate grafic împreună cu un tabel pentru fiecare opțiune care arată punctele totale, punctele medii și numărul de alegători.</span></p><p> Setările avansate includ „Voturile sunt anonime” și „Afișați opțiunile în ordine aleatorie” - utilizate în mod obișnuit pentru sondajul Score pentru a reduce orice părtinire de vot.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Citiți mai multe despre Sondajul Score</a> .</p>
+      title: Evaluarea modului în care sunt luate deciziile în organizația noastră
+      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Alegeți opțiunea (opțiunile) preferate.</p>
+    dot_vote:
+      process_subtitle: Alocați un buget de puncte pentru a dezvălui prioritățile
+      process_introduction: <p>Votul cu puncte este util pentru grupurile care încearcă să aloce o resursă limitată unui număr de opțiuni. Depășește un simplu sondaj, ajutând participanții să înțeleagă că există o constrângere atunci când selectează opțiuni.</p><p> Participanților li se acordă fiecăruia un număr stabilit de puncte. Tu decizi câte.</p><p> Ei plasează puncte lângă opțiunile prezentate care le plac. Participanții își pot plasa toate punctele pe o singură opțiune sau pot răspândi pe mai multe opțiuni.</p><p> Pe măsură ce participanții alocă puncte, aceștia pot depăși limita bugetului de puncte și, prin urmare, sunt încurajați să ia în considerare modul în care își cheltuiesc punctele cu atenție.</p><p> Opțiunile cu cele mai multe puncte „câștigă”. Tabelul cu rezultate oferă date suplimentare pentru a vă ajuta să analizați rezultatele.</p><ul><li><p> % din puncte</p></li><li><p> Puncte</p></li><li><p> Rău</p></li><li><p> Alegătorii</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Citiți mai multe despre Dot vote</a> .</p>
+      title: Alegerea temelor pentru conferința noastră
+      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> În acest sondaj aveți un buget de 8 puncte de alocat opțiunilor pe care le preferați. Puteți plasa toate punctele pe o singură opțiune sau le puteți extinde.</p>
+    ranked_choice:
+      process_subtitle: Înțelegeți preferințele ordonate ale opțiunilor
+      process_introduction: <p>Alegerea clasată este utilă atunci când aveți un număr mare de opțiuni sau organizați alegeri.</p><p> Acest șablon de sondaj oferă o serie de opțiuni pentru ca oamenii să voteze în ordinea preferată.</p><p> Puteți seta numărul de opțiuni pe care le are alegătorul.</p><p> <span>Alegătorii trageți și plasați opțiunile în ordinea preferințelor (nr. 1 fiind cea mai preferată opțiune).</span></p><p> <span>Setările avansate includ „Voturile sunt anonime” și „Afișați opțiunile în ordine aleatorie” - utilizate în mod obișnuit pentru alegerea R</span> anke pentru a reduce orice părtinire de vot.</p><p> Rezultatele sunt afișate în ordinea clasamentului. Tabelul cu rezultate oferă date suplimentare pentru a vă ajuta să analizați rezultatele.</p><ul><li><p> Rang</p></li><li><p> % din puncte</p></li><li><p> Puncte</p></li><li><p> Rău</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Citiți mai multe despre Alegerea clasată</a> .</p>
+      title: Alegeți directori în consiliul de guvernanță
+      details: <h3 id="what-is-this-poll-about"><strong>Despre ce este acest sondaj?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>De ce este acest lucru important?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Ce le ceri oamenilor să facă?</strong></h3><p></p><p> Votați clasând opțiunile în ordinea preferințelor dvs. Câștigă opțiunea care se află pe primul loc în rezultate.</p>
+    time_poll:
+      process_subtitle: Găsiți când oamenii sunt disponibili pentru a se întâlni
+      process_introduction: <p><span>Economisiți timp aranjarea unei date pentru întâlnirea sau evenimentul dvs.</span></p><p> Sondajul de timp face mai ușor să vedeți disponibilitatea tuturor și să găsiți cel mai bun moment.</p><p> Dați sondajului Time un titlu și detalii. Introduceți o listă de opțiuni de dată și oră în fusul dvs. orar.</p><p> Când setați intervale de timp, luați în considerare persoanele din diferite fusuri orare. Participanții vor vedea orele localizate în fusul lor orar.</p><p> Setați o durată a întâlnirii.</p><p> Când sondajul Time se închide, setați un rezultat cu cel mai bun timp și orice instrucțiuni pentru întâlnire.</p><p> <span>Loomio va include o invitație în calendar cu e-mailul de notificare a rezultatului, astfel încât participanții să poată adăuga la calendarul lor.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Citiți mai multe despre sondajul Time</a> .</p>
+      title: Să găsim o dată pentru următoarea noastră întâlnire
+      details: "<p><strong>Care este întâlnirea sau evenimentul?</strong></p><p></p><p> <strong>De ce este acest lucru important?</strong></p><p></p><p> <strong>Ce le ceri oamenilor să facă?</strong></p><p></p><p> <span>Marcați intervalele de timp pentru care sunteți disponibil cu pictograma verde „degetul mare în sus” sau lăsați „degetul mare în jos” roșu atunci când nu este disponibil.</span></p><p> <span>Utilizați pictograma „degetele mari în lateral” pentru a spune că sunteți disponibil „dacă este necesar”.</span></p>"
+      reason_prompt: Puteți spune ceva pentru a ajuta organizatorul să găsească un moment potrivit?
+    opt_in:
+      process_subtitle: Găsiți voluntari sau cereți participanți
+      process_introduction: '<p>Utilizați Opt-in pentru a invita persoane să se alăture unei echipe, comitete sau grup de lucru sau pentru a participa la un eveniment.</p><p> „Opt-in” are două opțiuni de vot: Accept sau Refuza.</p><p> Puteți defini un număr țintă de persoane pe care le căutați, să zicem 3 persoane care să se alăture grupului dvs. de lucru.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Citiți mai multe despre Opt-in</a> .</p>'
+      title: Grup de lucru pentru elaborarea noii noastre politici de sustenabilitate
+      details: "<p><strong>Care este echipa, grupul de lucru sau evenimentul la care invitați oamenii?</strong></p><p></p><p> <strong>De ce este acest lucru important?</strong></p><p></p><p> <strong>Ce le ceri oamenilor să facă?</strong></p><p></p><p> Selectează „Accept” pentru a participa!</p>"
+      accept_meaning: Sunt dispus să particip
+      accept_prompt: De ce te oferi voluntar pentru asta?
+      decline_meaning: Nu pot participa
+      decline_prompt: Există ceva ce ai vrea să spui?
+  thread_item:
+    removed: Element eliminat
+    deleted_group: Grup șters
+    invite_only_thread: Invitați numai firul
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ca răspuns la <strong>{{title}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a editat titlul firului"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a editat contextul firului de discuție"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a schimbat confidențialitatea firului"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a editat firul"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a mutat firul din <strong>{{title}}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a închis firul"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a redeschis firul"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a creat un furk al acestui thread: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{autor}}</a>"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a distribuit un rezultat"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a redeschis {{polltype}}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a închis {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a început un {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a editat {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a adăugat opțiuni la {{polltype}}"
+    poll_expired: "{{polltype}} închis"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> a votat pentru: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> și-a actualizat votul pe: <strong>{{title}}</strong>"
+    event_removed: Scos din fir
+  add_poll_to_thread_modal:
+    success: Succes, {{pollType}} adăugat la fir!
+  powered_by:
+    this_is_loomio_md: Loomio este o aplicație pentru a lua decizii împreună. [Încercați gratuit](https://www.loomio.com)
+    slogan: Decizii mai bune împreună
+    powered_by_loomio: Produs de Loomio
+    privacy_policy: Politica de confidențialitate
+    terms_of_service: Termenii serviciului
+    front_page: Prima pagina

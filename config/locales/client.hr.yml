@@ -1,58 +1,2496 @@
+---
 hr:
   templates:
     try_loomio: Isprobaj Loomio
+    template_gallery: Galerija predložaka
+    title_template: Predložak %{title}
+    title_templates: "%{title} Predlošci"
+    title_copy: "%{title} Kopiraj"
+    copy_of_title: Kopija %{title}
+    loomio_default_templates: Loomio zadani predlošci
+    which_templates_would_you_like_to_use: Koje predloške želite koristiti?
+    login_to_start_demo: Ovo je demo Loomio na djelu. Slobodno razgledajte.
+    sign_in_to_try_features: Ako želite isprobati glasanje u demo odluci ili započeti besplatnu probu za svoju organizaciju, kliknite "prijavi se".
+    click_button_to_start_demo: Dobrodošli! Da biste isprobali glasanje i druge značajke, kliknite započni demo.
+    welcome_to_your_demo: Ovo je vaša vlastita demo grupa!
+    try_voting_to_see_it_work: Pokušajte glasati za prijedlog da biste stekli osjećaj kako Loomio radi.
+    delete_will_be_deleted_in_x_days: Ovaj će demo biti izbrisan za %{x} dana.
+    to_use_loomio_with_your_org_start_trial: Kada budete spremni isprobati Loomio sa svojom organizacijom, pokrenite besplatnu probu.
+    templates: Predlošci
+    make_a_copy: Napravi kopiju
+    this_thread_is_a_template: Ova nit je predložak. Napravite kopiju ako je želite koristiti.
+    this_is_a_poll_template: Ovo je predložak ankete. Napravite kopiju ako želite započeti glasovanje.
+    start_a_demo_group: Pokrenite demo grupu
+    start_a_demo: Pokrenite demo
+    demo_group: Demo grupa
+    play_with_an_example_group: Igrajte se s primjerom skupine
+    look_and_feel: Pogledajte kako Loomio izgleda za malu organizaciju. Naučite aplikaciju isprobavajući je.
+    watch_then_start: Pogledajte video, zatim kliknite "Pokreni demo" da isprobate Loomio
+    generating_demo: U redu, čekaj ovdje! Generiranje demonstracije traje oko 20 sekundi.
+    start_a_x_day_free_trial: Započnite besplatno probno razdoblje od {{day}} dana
+    ready_to_trial: Jeste li spremni isprobati Loomio u svojoj organizaciji?
+    start_a_no_obligation_x_day_trial: Pokrenite Loomio grupu za svoju organizaciju s besplatnim {{day}}-dnevnim probnim razdobljem.
+    you_can_test_it_out: Možete pozvati druge ljude da se pridruže, integrirati ga sa svojim drugim alatima i pokušati donijeti neke odluke.
+    demo_created: Demo grupa stvorena, samo za vas!
+    start_demo: Pokreni demo
+    view_demo: Pogledaj demo
+    start_trial: Započni probu
+    start_free_trial: Započni besplatnu probu
+    demo_needs_user: Da biste započeli demo, morate se prijaviti (ili prijaviti) kao Loomio korisnik. Ovo je besplatno i traje samo minutu.
+    trial_needs_user: Dobrodošli! Prijavite se kako biste započeli besplatno probno razdoblje
+    this_is_a_template_for_new_threads: Ovo je predložak za nove teme
+    share_a_custom_configuration: Podijelite prilagođenu konfiguraciju s drugima u svojoj grupi
   subscription_status:
-    members: "Članovi"
+    members: Članovi
+    plan: Plan
+    state: Status
+    active_members: Aktivni članovi
+    max_threads: Max niti
+    max_members: Max članova
+    expires_at: Ističe
+    renews_at: Obnavlja
+    referral_code: Referentni kod
+    chargify_link: Portal za naplatu
+    referral_code_help: Dajte prijatelju popust, uzmite sebi kredit!
+    manage_payment_details: Upravljanje detaljima plaćanja
+    manage_subscription: Upravljanje pretplatom
+    amount: Iznos
   common:
     version: Verzija
     privacy:
-      public: 'Javno'
+      public: Javno
+      privacy: Privatnost
+      open: Otvoren
+      closed: Zatvoreno
+      private: Privatna
+      secret: Tajna
     action:
       clear: Obriši
+      print: Ispis
+      preview: Pregled
+      pin: Pin
+      unpin: Otkvači
+      search: traži
+      filter: filtar
+      back: leđa
+      next: Sljedeći
+      close: Zatvoriti
+      reopen: Ponovo otvoriti
+      save: Uštedjeti
+      move: Potez
+      save_changes: Spremi promjene
+      update_settings: Ažurirajte postavke
+      reply: Odgovor
+      edit: Uredi
+      remove: Ukloniti
+      undo_remove: Poništi uklanjanje
+      like: Kao
+      unlike: Za razliku od
+      update: Ažuriraj
+      cancel: Otkazati
+      hide: Sakriti
+      unhide: Otkrij
+      show_more: Prikaži više
+      show_fewer: Prikaži manje
+      view_count_more: Pogledajte još %{count}
+      view_count_responses: Pogledajte %{count} odgovora
+      count_more: Još %{count}
+      count_responses: "%{count} odgovora"
+      view_all: Pogledaj sve
+      new_thread: Nova nit
+      add_subgroup: Nova podskupina
+      loading: Učitavam
+      translate: Prevedi
+      upload: Učitaj
+      uploading: Prijenos
+      load_more: Učitaj više
+      share: Udio
+      ok: U redu
+      retry: Pokušaj ponovo
+      done: Gotovo
+      start: Početak
+      delete: Izbrisati
+      discard: Odbaciti
+      restore: Vratiti
+      unsubscribe: Odjavi pretplatu
+      subscribe: Pretplatite se
+      unignore: Poništi zanemarivanje
+      remind: Podsjetiti
+      resend: Ponovno pošalji
+      send: Poslati
+      joined: Spojen
+      last_seen: Zadnje viđeno
+      invite: Pozvati
+      resent: Pozivnica ponovno poslana
+      export: Izvoz
+      fork: Vilica
+      apply: primijeniti
+      add_people: Dodaj ljude
+      zoom: Zum
+      align: Uskladiti
+    admin_menu: Admin menu
+    api_docs: API dokumenti
+    prefix_eg: npr. {{val}}
+    are_you_sure: Jesi li siguran?
+    loomio_help: Loomio pomoć
+    visit_loomio_help: Posjetite pomoć za Loomio
+    help_and_guides: Pomoć i vodiči
+    please_wait: Molimo pričekajte
+    optional: "(nije obavezno)"
+    none: Nijedan
+    empty: Prazan
+    no_results_found: Nema rezultata
+    view: Pogled
+    or: ili
+    history: Povijest
+    option: Opcija
+    add: Dodati
+    you: Vas
+    expand: Proširiti
+    all_day: Cijeli dan
+    ok_got_it: U redu, shvatio sam
+    learn_more: Saznajte više
+    not_found: Nije pronađeno
+    time_zone: Vremenska zona
+    local_time: Lokalno vrijeme
+    attachments: Prilozi
+    template: Predložak
+    links: Linkovi
+    active_time_ago: Zadnji put aktivno {{time_ago}}
+    confirm_discard_changes: Odbaciti promjene?
+    something_went_wrong: Uh oh! Nešto je pošlo po zlu
+    check_for_errors_and_try_again: Provjerite ima li u obrascu pogrešaka i pokušajte ponovno
+    please_try_again: Molim te pokušaj ponovno
+    time:
+      am: am
+      pm: popodne
+    closing_in: Vrijeme zatvaranja}}
+    closed_ago: Zatvoreno {{time}}
+    volume: Volumen
+    notification_volume: Glasnoća obavijesti
+    group: Skupina
+    groups: grupe
+    organization: Organizacija
+    organizations: organizacije
+    threads: niti
+    decisions: Odluke
+    settings: postavke
+    help: Pomozite
+    anonymous: Anonimno
+    required: Potreban
+    email_address: Email adresa
+    minutes: minuta
+    selected: Odabran
+    today: danas
+    in_x_days: za %{x} dana
+    date_range:
+      today: Danas
+      yesterday: Jučer
+      thisweek: Ovaj tjedan
+      thismonth: Ovaj mjesec
+      older: Starije
+    more_help: Još pomoći
+    copy: Kopirati
+    reset: Resetiraj
+    copy_text: Kopiraj tekst
+    copied: Kopirano u međuspremnik
+    points_abbrev: Svaki glas vrijedi {{score}} bodova
+    total: Ukupno
+    formatting_help:
+      label: Oblikovanje
+      title: Naučite kako koristiti Markdown za oblikovanje teksta
   error_page:
-    forbidden: 'Nepostojeća dozvola za izvršenje.'
+    forbidden: Nepostojeća dozvola za izvršenje.
+    forbidden_view: Nemate dopuštenje za pregled ovoga.
+    page_not_found: To nismo uspjeli pronaći. Možda je izbrisan ili premješten.
+    internal_server_error: Žao nam je, ali nešto je pošlo krivo. Molim te pokušaj ponovno.
   change_volume_form:
     simple:
       label: Notifikacije
       quiet: Ignoriraj
+      loud: Pretplaćen
+      normal: Normalan
+      question: Kada želite biti obaviješteni?
+      loud_explain: kad god ima aktivnosti
+      normal_explain: kada netko traži tvoju pažnju
+      quiet_explain: nema obavijesti
+    explain_scope:
+      thread: Ovo se mijenja kada ćete biti obaviješteni o ovoj niti
+      group: Ovo se mijenja kada ćete biti obaviješteni o svim nitima u grupi
+    aria_label: Obrazac za promjenu postavki e-pošte
+    loud_label: Sve aktivnosti
+    normal_label: Obavijesti
+    quiet_label: Nema e-pošte
+    mute_label: Isključi zvuk
+    saved: Postavke obavijesti ažurirane
+    discussion:
+      title: Obavijesti o nitima
+      loud_description: Dobit ćete e-poštu o svim aktivnostima u ovoj temi.
+      normal_description: E-poštom ćete dobiti samo važne aktivnosti u ovoj temi.
+      quiet_description: Nećete primati e-poruke o aktivnostima u ovoj temi.
+      apply_to_all: Primijenite ove postavke na sve niti u ovoj grupi.
+      only_this_thread: Odnosi se samo na ovu temu
+      group: Promjena obavijesti za grupu
+      user: Promijenite postavke obavijesti korisnika
+      messages:
+        loud: Dobit ćete e-poštu o aktivnostima u ovoj niti.
+        normal: Dobit ćete e-poštu o prijedlozima u ovoj temi.
+        quiet: Nećete primati e-poruke o ovoj niti.
+    membership:
+      title: Obavijesti za {{title}}
+      loud_description: Dobit ćete e-poruku kad god bude aktivnosti u ovoj grupi.
+      normal_description: Dobit ćete e-poruku kad god bude aktivnosti u ovoj grupi.
+      quiet_description: Nećete primati e-poruke o aktivnostima u ovoj grupi.
+      apply_to_all: Primijeni ove postavke na sve moje grupe.
+      apply_to_organization: Primijeni na sve grupe u {{organization}}
+      messages:
+        loud: Dobit ćete e-poštu o svim aktivnostima u ovoj grupi.
+        normal: E-poštom ćete primati samo najave u ovoj grupi.
+        quiet: Nećete primati e-poruke o ovoj grupi.
+    all_groups:
+      title: Postavke obavijesti za sve grupe
+      loud_description: Dobit ćete e-poštu o svim aktivnostima u svim vašim grupama.
+      normal_description: E-poštom ćete dobiti samo važne aktivnosti u svim vašim grupama.
+      quiet_description: Nećete primati e-poruke o aktivnostima ni u jednoj od vaših grupa.
+      messages:
+        loud: Dobit ćete e-poštu o svim aktivnostima u svim vašim grupama.
+        normal: E-poštom ćete primati samo najave u svim svojim grupama.
+        quiet: Nećete primati e-poruke o svojim grupama.
+    user:
+      title: Postavke e-pošte za nove grupe
+      loud_description: Dobit ćete e-poruku kad god bude aktivnosti u bilo kojoj novoj grupi kojoj se pridružite.
+      normal_description: Dobit ćete e-poštu o najavama u svim novim grupama kojima se pridružite.
+      quiet_description: Nećete primati e-poruke o aktivnostima u novim grupama kojima se pridružite.
+      apply_to_all: Primijeni ove postavke na sve moje grupe.
+      messages:
+        loud: Dobit ćete e-poštu o svim aktivnostima u novim grupama.
+        normal: Dobit ćete e-poštu o najavama u novim grupama.
+        quiet: Nećete primati e-poruke o novim grupama.
   inbox:
-    clear: 'Obriši'
+    clear: Obriši
+    latest: Najnoviji
+    unread: Nepročitano
+    closing_in: Zatvaranje
   comment_form:
-    edit_comment: 'Ažuriranje komentara'
-    delete_comment: 'Obriši komentar'
-    confirm_delete_message: 'Jeste li sigurni da želite obrisati komentar?'
-    post_comment: "Komentiraj"
+    edit_comment: Ažuriranje komentara
+    delete_comment: Obriši komentar
+    confirm_delete_message: Jeste li sigurni da želite obrisati komentar?
+    post_comment: Komentiraj
+    aria_label: Dodaj komentar
+    attachments:
+      add_attachment: Priložite datoteku
+      remove_attachment: Ukloni privitak
+    messages:
+      created: Komentar dodan
+      replied: "{{name}} obaviješten o odgovoru"
+      updated: Komentar ažuriran
+      destroyed: Komentar izbrisan
+      removed: Komentar uklonjen
+    say_something: Reci nešto...
+    cancel_reply: Odustani od odgovora
+    confirm_delete: Obriši komentar
+    in_reply_to: Odgovorite {{name}}
+    write_a_comment: Napiši komentar...
+    submit_button:
+      label: Post
+    private_privacy_notice: Vaš će komentar biti vidljiv samo članovima grupe {{groupName}}.
+    public_privacy_notice: Vaš će komentar biti vidljiv svima na webu.
+    sign_in: Prijavite se da biste se pridružili razgovoru
   notifications:
-    header: "Notifikacije"
+    header: Notifikacije
+    no_notifications: Nemate nijednu obavijest
+    with_title:
+      comment_replied_to: "%{actor} vam je odgovorio u: %{title}"
+      discussion_announced: "%{actor} vas je pozvao u nit: %{title}"
+      discussion_edited: "%{actor} uredio je kontekst niti: %{title}"
+      discussion_closed: "%{actor} zatvorio je nit: %{title}"
+      invitation_accepted: "%{actor} je prihvatio vaš poziv da se pridruži %{title}"
+      membership_created: "%{actor} vas je pozvao da se pridružite %{title} na %{site_name}"
+      membership_resent: "%{actor} vas je pozvao da se pridružite %{title} na %{site_name}"
+      membership_requested: "%{actor} je zatražio pridruživanje %{title}"
+      membership_request_approved: "%{actor} je odobrio vaš zahtjev za pridruživanje %{title}"
+      new_comment: "%{actor} komentirao je u: %{title}"
+      new_coordinator: "%{actor} vas je postavio za administratora %{title}"
+      new_discussion: "%{actor} je započeo nit: %{title}"
+      outcome_announced: "%{actor} dijeli %{poll_type} ishod: %{title}"
+      outcome_created: "%{actor} dijeli %{poll_type} ishod: %{title}"
+      outcome_updated: "%{actor} je ažurirao %{poll_type} ishod: %{title}"
+      outcome_review_due: 'Vrijeme je da pregledate ishod: %{title}'
+      poll_announced: "%{actor} vas je pozvao da glasate: %{title}"
+      poll_closed_by_user: "%{actor} zatvorio je %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} zatvara se za 24 sata: %{title}"
+      poll_closing_soon_author: 'Vaš %{poll_type} se zatvara za 24 sata: %{title}'
+      poll_created: "%{actor} je započeo %{poll_type}: %{title}"
+      poll_edited: "%{actor} ažurirao je %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} je zatvoren: %{title}"
+      poll_expired_author: 'Podijelite rezultat svoje ankete %{poll_type}: %{title}'
+      poll_option_added: "%{actor} je dodao opcije u %{title}"
+      poll_reopened: "%{actor} ponovno je otvorio %{poll_type}: %{title}"
+      poll_reminder: "%{actor} vas podsjeća da glasate na %{title}"
+      poll_reminder_wip: "%{actor} vas podsjeća da date povratne informacije: %{title}"
+      reaction_created: "%{actor} je reagirao %{reaction} na vaš %{model} u %{title}"
+      stance_created: "%{actor} je glasao u: %{title}"
+      stance_updated: "%{actor} je glasao u: %{title}"
+      stance_created_option: "%{actor} je glasao %{option} u %{title}"
+      user_added_to_group: "%{actor} vas je dodao u grupu: %{title}"
+      user_mentioned: "%{actor} vas je spomenuo u: %{title}"
+      user_reminded: "%{actor} vas podsjeća da glasate u: %{title}"
+    without_title:
+      discussion_announced: "%{actor} vas je pozvao u nit"
+      discussion_edited: "%{actor} uredio je kontekst niti"
+      discussion_closed: "%{actor} je zatvorio nit"
+      group_announced: "%{actor} vas je pozvao u grupu"
+      comment_replied_to: "%{actor} vam je odgovorio"
+      new_discussion: "%{actor} je započeo nit"
+      new_comment: "%{actor} komentirao je u niti"
+      membership_created: "%{actor} vas je pozvao da se pridružite grupi"
+      membership_resent: "%{actor} vas je pozvao da se pridružite grupi"
+      membership_requested: "%{actor} je zatražio pridruživanje vašoj grupi"
+      membership_request_approved: "%{actor} je odobrio vaš zahtjev za pridruživanje %{title}"
+      outcome_announced: "%{actor} dijeli %{poll_type} ishod"
+      outcome_created: "%{actor} dijeli %{poll_type} ishod"
+      outcome_updated: "%{actor} je ažurirao ishod"
+      outcome_review_due: Vrijeme je da pregledate %{poll_type} ishod
+      poll_announced: "%{actor} vas je pozvao da glasate na %{poll_type}"
+      poll_announced_wip: "%{actor} želi vaše povratne informacije o %{poll_type}"
+      poll_closed_by_user: "%{actor} je zatvorio %{poll_type}"
+      poll_closing_soon: "%{poll_type} zatvara se za 24 sata"
+      poll_closing_soon_author: Vaš %{poll_type} se zatvara za 24 sata
+      poll_created: "%{actor} je započeo %{poll_type}"
+      poll_edited: "%{actor} ažurirao je %{poll_type}"
+      poll_expired: "%{poll_type} je zatvoren"
+      poll_expired_author: Podijelite rezultat svog %{poll_type}
+      poll_option_added: "%{actor} dodao je opcije u %{poll_type}"
+      poll_reopened: "%{actor} ponovno je otvorio %{poll_type}"
+      poll_reminder: "%{actor} vas podsjeća da glasate"
+      poll_reminder_wip: "%{actor} vas podsjeća da date povratne informacije"
+      reaction_created: "%{actor} je reagirao %{reaction} na vaš %{model}"
+      stance_created: "%{actor} je glasao"
+      stance_updated: "%{actor} je glasao"
+      stance_created_option: "%{actor} je glasao %{option}"
+      user_mentioned: "%{actor} vas je spomenuo"
+      user_reminded: "%{actor} vas podsjeća da glasate"
+    hints:
+      poll_closing_soon: Sada je dobro vrijeme da glasate, promijenite mišljenje ili potaknete druge da sudjeluju.
+      poll_closing_soon_author: Možete podsjetiti ljude da glasaju ili produžiti rok.
+      outcome_review_due: Razmotrite pokretanje ankete s povratnim informacijama ili nove teme pozivajući na razmišljanje o tome kako je odluka provedena.
   discussion_form:
-    privacy_label: 'Privatnost'
+    privacy_label: Privatnost
+    thread_templates: Predlošci niti
+    new_thread_template: Novi predložak niti
+    edit_thread_template: Uredi predložak niti
+    blank: Prazan
+    blank_subtitle: Započnite raspravu i vidite gdje će vas odvesti
+    new_template: Novi predložak
+    new_template_subtitle: Napravite primjer koji drugi mogu kopirati
+    to: Do
+    direct_thread: Izravna nit
+    invite_only_thread: Nit samo za pozivnicu
+    none_direct_thread: Izravna nit (bez grupe)
+    none_invite_only_thread: Nit samo za pozivnicu (bez grupe)
+    change_log_placeholder: Po želji, opišite svoje promjene. Ova će poruka biti dodana u temu.
+    change_log_label: Što se promijenilo?
+    invite: Pozvati
+    aria_label: Oblik niti
+    start_thread: Započni nit
+    messages:
+      created: Nit je započeta
+      updated: Tema ažurirana
+      forked: Račva niti je stvorena
+    new_discussion_title: Započni novu nit
+    new_thread_from_template: 'Nova nit: %{process_name}'
+    moving_items_title: Premjesti stavke u novu nit
+    edit_discussion_title: Uredi nit
+    group_label: Skupina
+    group_placeholder: Odaberite grupu
+    title_label: Titula
+    title_placeholder: Koja je tema o kojoj želite razgovarati?
+    context_label: Kontekst
+    context_placeholder: Pružite neki kontekst za ovu raspravu, tako da ljudi znaju kako sudjelovati
+    privacy_public: Svatko može vidjeti ovu nit ako ima vezu
+    privacy_private: Samo članovi grupe mogu vidjeti ovu nit
+    privacy_organisation: Nit će biti vidljiva članovima {{parent}} i članovima {{group}}.
+    fork_notice: Stvorit će se nova nit s %{count} stavki iz {{title}}
+    notify_group: Obavijesti grupu
   join_group_button:
     join_group: 'Pridruži se grupi '
     membership_requested: Članstvo zatraženo
+    not_a_member: Trenutno niste član ove grupe.
+    messages:
+      joined_group: Sada ste član {{group}}
   membership_request_form:
     heading: Zahtjev za pridruženjem grupi
+    aria_label: Obrazac zahtjeva za članstvo
+    name_label: Ime
+    email_label: E-mail
+    introduction_label: Zašto se želite pridružiti?
+    submit_button: Zatraži pridruživanje
+    introduction_over_limit: Odgovor je predug
+    messages:
+      membership_requested: Zatražili ste da se pridružite {{group}}
   group_page:
     members: Članovi
     options:
-      edit_group: 'Uredi postavke grupe'
-      email_settings: 'Postavke e-maila'
-      leave_group: 'Napusti grupu'
+      edit_group: Uredi postavke grupe
+      email_settings: Postavke e-maila
+      leave_group: Napusti grupu
+      label: Mogućnosti
+      become_coordinator: Postanite admin
+      export_data: Izvoz grupnih podataka
+      export_data_as_json: Izvezi podatke grupe kao JSON
+      export_data_as_csv: Izvoz podataka grupe kao CSV
+      export_data_as_html: Izvoz podataka grupe kao HTML
+      manage_members: Upravljanje članovima
+      add_subgroup: Dodaj podgrupu
+      manage_subscription: Upravljanje grupnom pretplatom
+      deactivate_group: Deaktiviraj grupu
+      subscription_status: Status pretplate
+    stats: Grupna statistika
+    threads: niti
+    polls: Ankete
+    decisions: Odluke
+    files: Datoteke
+    settings: postavke
+    subgroups: Podskupine
+    show_opened: "%{count} Otvoreno"
+    show_closed: "%{count} Zatvoreno"
+    no_threads_here: Ovdje nema niti za vidjeti!
+    search_threads: Traži teme...
+    private_threads: Morate biti član da biste vidjeli privatne teme u ovoj grupi
+    no_more_threads: Nema više niti za učitavanje
+    view_closed_threads: Pogledaj zatvorene teme
+    messages:
+      privacy:
+        members: Ova grupa je sada vidljiva samo članovima
+        parent_members: Ova grupa sada je vidljiva samo članovima vaše organizacije
+        public: Ova je grupa sada vidljiva javnosti
+      leave_group_success: Napustili ste ovu grupu
+      archive_group_success: Ova grupa je deaktivirana
+    group_logo: Logo grupe
+    new_photo: nova fotografija
+    new_cover_photo: Prenesi novu naslovnu fotografiju
+    new_group_logo: Učitaj novi logo grupe
+    open_discussions: Otvorene teme
+    closed_discussions: Zatvorene niti
+    discussions_placeholder: Nit je mjesto gdje svi mogu raspravljati o temi i zajedno donositi odluke.
+    members_placeholder: 'Vi ste jedini ovdje: pozovite neke ljude da vam se pridruže!'
+    member_options: Opcije za članove
+    see_all_members: Vidi sve %{count} članova
+    pending_invitations: "+ %{count} na čekanju"
+    subgroups_placeholder: Podgrupe daju timovima vlastiti prostor i usmjeravaju obavijesti na prave ljude.
+    invite_people: Pozvati
+    visibility_label: Vidljivost
+    options_label: Mogućnosti
+    volume:
+      loud: Pošalji e-poštu kad god ima aktivnosti.
+      loud_aria_description: Vaša glasnoća obavijesti za ovu grupu postavljena je na Glasno. Dobit ćete e-poruku kad god bude aktivnosti.
+      loud_message: Dobit ćete e-poštu o svim aktivnostima u "{{name}}."
+      normal: 'Samo pošaljite e-poštom važne aktivnosti: nove teme i prijedloge, rezultate itd.'
+      normal_aria_description: Vaša glasnoća obavijesti za ovu grupu postavljena je na Normalno. Samo ćete dobiti e-poruku o važnoj aktivnosti, kao što je kada netko započne novu temu, podigne prijedlog ili postavi ishod.
+      normal_message: Primat ćete samo e-poštu o važnim događajima u "{{name}}".
+      quiet: Ne šaljite e-poštu o ovoj grupi. Aktivnost će biti prikazana na nadzornoj ploči.
+      quiet_aria_description: Vaša glasnoća obavijesti za ovu grupu postavljena je na Tiho. Nećete primati e-poruke o aktivnostima u ovoj grupi. Aktivnost grupe bit će prikazana na vašoj nadzornoj ploči.
+      quiet_message: Nećete primati e-poruke o aktivnostima u "{{name}}".
+      mute: Sakrijte ovu grupu na nadzornoj ploči i ne šaljite obavijesti osim ako niste @spomenuti.
+      mute_aria_description: Vaša glasnoća obavijesti za ovu grupu postavljena je na Mute. Nećete dobiti e-poštu osim ako vas netko ne spomene, a aktivnost grupe neće biti prikazana na vašoj Nadzornoj ploči.
+      mute_message: '"{{name}}" je uklonjen s vaše nadzorne ploče.'
+    privacy:
+      private: 'Privatnost: Ova grupa je vidljiva samo članovima'
+      parent_members: 'Privatnost: Ova grupa je vidljiva članovima {{parentGroupName}} i članovima {{groupName}}'
+      public: 'Privatnost: Ova grupa je vidljiva na webu'
+      aria_label: 'Privatnost grupe: {{privacy}}'
   group_form:
     new_group: Nova grupa
     group_settings: Uredi postavke grupe
     group_name: Ime grupe
     profile: Profil
+    thread_defaults_help: Zadane postavke za nove niti
+    click_to_change_image: Kliknite za promjenu naslovne slike (4x1) ili logotipa (1x1)
+    change_cover_image: promijeni naslovnu sliku
+    change_logo: promijeniti logo
+    permissions_explaination: 'Postoje dvije razine članstva koje osoba može imati u grupi: administrator i član. Administratori mogu uređivati postavke grupe, postavljati druge osobe za administratore i izvoditi sve radnje navedene u nastavku.'
+    aria_label: Grupni oblik
+    parent_group: Roditeljska grupa
+    new_organisation: Nova organizacija
+    new_subgroup: Nova podskupina
+    new_group_explainer: Pokrenite novu Loomio grupu za svoju organizaciju
+    new_subgroup_explainer: Pokrenite podgrupu unutar postojeće grupe - privatni prostor za tim ljudi iz organizacije
+    start_group_heading: Započnite grupu
+    start_subgroup_heading: Pokrenite podgrupu
+    edit_group_heading: Uredite postavke grupe
+    edit_subgroup_heading: Uredite postavke podgrupe
+    subgroup_settings: Postavke podgrupe
+    subgroup_name: Naziv podgrupe
+    organization_name: Naziv organizacije
+    handle: Ručka
+    group_handle_placeholder: 'Koristi se u URL-u vaše grupe: {{host}}/{{handle}}'
+    start_organization_heading: Nova organizacija
+    edit_organization_heading: Uredite postavke organizacije
+    group_name_placeholder: Kako se zove vaša grupa?
+    subgroup_name_placeholder: Kako se zove vaša podgrupa?
+    organization_name_placeholder: Kako se zove vaša organizacija?
+    description: Opis
+    description_placeholder: Opišite svrhu svoje grupe kako bi članovi vaše grupe znali zašto su ovdje.
+    new_description_placeholder: Zašto isprobavaš Loomio? Koje odluke morate donijeti zajedno?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Kako namjeravate koristiti Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Zašto je to važno za vašu grupu?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Koje odluke trebate donijeti?</h3><p></p>
+    secret_by_default: Vašoj grupi će moći pristupiti samo oni koji su pozvani da se pridruže. Ovo možete promijeniti kasnije.
+    privacy_statement:
+      public_on_web: Naziv, opis i prilozi kontekstu grupe bit će vidljivi javnosti
+      private_to_group: Ime i opis bit će vidljivi samo članovima.
+      private_to_parent_members: Ime i opis bit će vidljivi članovima {{parent}}
+    privacy: Privatnost
+    group_privacy_is_open_description: Javno uvršten. Sve su teme javne.
+    group_privacy_is_closed_description: Nenavedeno. Svatko s vezom može zatražiti pridruživanje. Sve su teme privatne.
+    group_privacy_is_closed_public_threads_description: Nenavedeno. Svatko s vezom može zatražiti pridruživanje. Niti mogu biti javne ili privatne.
+    group_privacy_is_secret_description: Samo pozvane osobe mogu pronaći grupu. Sve su teme privatne.
+    confirm_change_to_secret: Ako nastavite, sve niti u ovoj grupi i njezinim podgrupama postat će privatne.
+    confirm_change_to_secret_subgroup: Ako nastavite, sve će niti postati privatne.
+    confirm_change_to_public: Ako nastavite, sve niti u ovoj grupi bit će javne na webu.
+    confirm_change_to_private_discussions_only: Ako nastavite, sve javne niti u ovoj grupi postat će privatne.
+    subgroup_privacy_is_open_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Sve su teme javne.
+    subgroup_privacy_is_closed_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Sve su teme privatne.
+    subgroup_privacy_is_closed_public_threads_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Niti mogu biti javne ili privatne.
+    subgroup_privacy_is_closed_secret_parent_description: Članovi {{parent}} mogu pronaći ovu podgrupu i zatražiti pridruživanje. Sve su teme privatne. Samo članovi mogu vidjeti tko je u grupi.
+    subgroup_privacy_is_secret_description: Samo pozvani članovi mogu pronaći ovu podgrupu, vidjeti tko je u njoj i vidjeti teme.
+    advanced_settings: Napredne postavke
+    how_do_people_join: Kako se ljudi pridružuju?
+    membership_granted_upon_request: Svatko se može pridružiti grupi.
+    membership_granted_upon_approval: Svatko može zatražiti pridruživanje, ali mora biti odobren.
+    membership_granted_upon_invitation: Samo uz pozivnicu.
+    membership_granted_upon_approval_secret_parent: "<strong>Na zahtjev</strong> bilo tko iz {{parent}} može tražiti da se pridruži grupi."
+    permissions: Dozvole
+    thread_privacy: Privatnost niti
+    public_threads: Samo javne niti
+    public_discussions_subgroup: Svatko u {{parentGroupName}} može vidjeti rasprave
+    public_or_private_threads: Dopusti javne i privatne niti
+    private_threads: Samo članovi mogu vidjeti rasprave
+    allow_public_threads: Dopusti javne niti u ovoj grupi.
+    parent_members_can_see_discussions: Članovi {{parent}} mogu vidjeti privatne niti
+    parent_members_can_see_discussions_help: Dopusti članovima nadređene grupe da vide, ali ne i da sudjeluju u temama i anketama unutar ove grupe
+    members_can_announce: Članovi mogu obavijestiti sve u grupi
+    members_can_announce_help: Dopustite članovima da obavijeste sve u grupi o niti ili anketi
+    members_can_add_members: Članovi mogu pozvati članove
+    members_can_add_members_help: Dopusti članovima da pozovu ljude da se pridruže ovoj grupi
+    members_can_add_guests: Članovi mogu pozvati goste
+    members_can_add_guests_help: Dopusti članovima pozivanje gostiju u teme ili ankete u ovoj grupi
+    members_can_create_subgroups: Članovi mogu kreirati podgrupe
+    members_can_create_subgroups_help: Dopustite članovima da kreiraju i postanu administratori novih podgrupa
+    members_can_edit_discussions: Članovi mogu upravljati nitima i komentarima
+    members_can_edit_discussions_help: Dopustite članovima da uređuju, premještaju, prikvačuju, označavaju ili zatvaraju niti
+    members_can_edit_comments: Članovi mogu uređivati vlastite komentare
+    members_can_edit_comments_help: Dopustite članovima da uređuju vlastite komentare u bilo kojem trenutku
+    members_can_delete_comments: Članovi mogu brisati vlastite komentare
+    members_can_delete_comments_help: Dopustite članovima brisanje vlastitih komentara iz niti
+    members_can_start_discussions: Članovi mogu započeti nove teme
+    members_can_start_discussions_help: Dopustite članovima da započnu nove niti unutar grupe
+    members_can_raise_motions: Članovi mogu pokrenuti ankete
+    members_can_raise_motions_help: Dopustite članovima pokretanje anketa i prijedloga unutar rasprava ili grupe
+    admins_can_edit_user_content: Administratori mogu uređivati komentare članova
+    admins_can_edit_user_content_help: Dopustite administratorima da uređuju sadržaj koji su napisali članovi
+    submit_start_group: Početna grupa
+    submit_start_subgroup: Započni podgrupu
+    submit_update: Ažurirajte postavke
+    messages:
+      group_created: Grupa je započela
+      group_updated: Grupa ažurirana
+    upload_logo: Učitaj logotip
+    upload_cover_photo: Prenesi naslovnu fotografiju
   membership_requests_page:
     ignore: Ignoriraj
+    heading: Zahtjevi za članstvo
+    approve: Odobriti
+    no_pending_requests: Trenutno nema neriješenih zahtjeva za članstvo u ovoj grupi.
+    no_previous_requests: Trenutno nema prethodnih zahtjeva za članstvo u ovoj grupi.
+    previous_requests: Prethodni zahtjevi
+    previous_request_response: "{{response}} od {{responder}}"
+    messages:
+      request_approved_success: Zahtjev za članstvo odobren
+      request_ignored_success: Zahtjev za članstvo zanemaren
   invitation_form:
-    invite_people: 'Pozovi ljude'
+    invite_people: Pozovi ljude
+    group_url: URL grupe
+    reusable_invitation_link: Pozivnica za višekratnu upotrebu
+    error: Pogreška prilikom pokušaja kopiranja u međuspremnik
+    aria_label: Obrazac poziva
+    invite_guests: Pozovi goste
+    notify_people: Obavijestite ljude
+    invite_people_to_group: Pozovi u {{name}}
+    group: Skupina
+    group_placeholder: Odaberite grupu
+    shareable_link: Poveznica za dijeljenje
+    share_group: Podijelite svoju grupu
+    copy_link: Kopirati
+    email_addresses: Email adrese
+    email_addresses_placeholder: npr. helperbot@loomio.org, friendlybot@loomio.org
+    secret_group_url_explanation: Ovo je adresa vaše grupe. Samo pozvani članovi moći će vidjeti grupu.
+    shareable_group_url_explanation: Ovu vezu možete podijeliti javno. Ljudi mogu zatražiti pridruživanje, a vi možete odobriti ili ignorirati zahtjeve.
+    shareable_invitation_explanation: Ne dijelite ovu vezu javno. Svatko tko ga ima može se pridružiti vašoj grupi bez vašeg odobrenja. Podijelite ovo samo unutar privatne komunikacije kako biste omogućili ljudima u vašoj organizaciji da se pridruže.
+    shareable_link_reset: Ponovno postavljanje veze za dijeljenje. Prethodni link više neće raditi.
+    email_explanation: Ili dolje unesite adrese e-pošte da biste poslali pozivnice putem e-pošte.
+    add_custom_message: Neka vaša pozivnica bude osobna,
+    add_custom_message_link: dodajte prilagođenu poruku.
+    custom_message: Prilagođena poruka
+    custom_message_placeholder: Unesite osobnu poruku koju ćete uključiti uz pozivnicu.
+    add_members: Dodajte članove
+    from_parent_group: od {{name}}.
+    send: Poslati
+    done: Gotovo
+    messages:
+      invitation_sent: Pozivnica je poslana.
+      invitations_sent: "%{count} poslanih pozivnica."
+      no_invitations: Uh oh! Provjerite je li adresa e-pošte ispravna i pokušajte ponovno.
+      max_invitations: Ako želite poslati više od 100 pozivnica, koristite timsku vezu.
   memberships_page:
-    members: 'Članovi'
+    members: Članovi
+    name_label: Ime
+    coordinator_label: Administrator
+    remove_member_label: Ukloniti
+    fragment_placeholder: Filtriraj korisnike po imenu ili korisničkom imenu...
+    only_one_admin: Postoji samo jedan admin u ovoj grupi. Preporuča se da barem još jednog člana imenujete administratorom.
+    messages:
+      remove_member_success: Uklonjeno {{name}}
+      make_admin_success: "{{name}} je sada administrator"
+      remove_admin_success: "{{name}} više nije administrator"
+    remove_admin_from_self:
+      question: Jeste li sigurni da više ne želite biti admin?
   profile_page:
-    profile: 'Profil'
+    profile: Profil
+    account_is_bot: Ovo je bot račun
+    bot_account_warning: Bot računi neće biti pozvani da glasaju u anketama ili sudjeluju u raspravama
+    incomplete_profile: Nepotpun profil!
+    set_your_profile_picture: Postavite svoju profilnu sliku
+    messages:
+      updated: Profil ažuriran
+      picture_changed: Profilna slika ažurirana
+      password_changed: Lozinka ažurirana
+      deactivated: Račun deaktiviran
+    deactivated_user: Deaktiviran korisnik
+    date_time_pref_label: Format datuma i vremena
+    merge_accounts: Spajanje računa
+    change_picture_link: Promjena slike
+    change_password_link: Resetiranje lozinke
+    delete_account: Trajno brisanje računa
+    delete_user_link: Izbriši račun
+    edit_profile: Uredi profil
+    picture_label: Slika
+    name_label: Ime
+    username_label: Korisničko ime
+    username_helptext: Sva mala slova i brojke, maksimalno 30 znakova
+    email_label: E-mail
+    short_bio_label: Uvod
+    locale_label: Jezik
+    short_bio_placeholder: Predstavite se, navedite područja stručnosti, teme od interesa i sve pridružene organizacije
+    locale_placeholder: Odaberite željeni jezik
+    location_label: Mjesto
+    location_placeholder: Gdje si smješten?
+    update_profile: Ažuriraj profil
+    deactivate_account: Deaktivirajte korisnički račun
+    help_translate: Možete li nam pomoći prevesti Loomio?
+    updated_on_sign_in: Dostavlja vaš preglednik i ažurira se kada se prijavite
   thread_group:
     aria_label: Ime grupe
   delete_comment_dialog:
-    title: 'Obriši komentar'
+    title: Obriši komentar
+    question: Ovo će trajno izbrisati ovaj komentar. Ako nastavite, ne može se vratiti.
   members_panel:
-    accepted: 'Članovi'
+    accepted: Članovi
+    bot: Bot
+    no_results: Nema pronađenih članova
+    everyone: Svatko
+    all: svi
+    sort: Vrsta
+    order_label: Narudžba
+    order_by_name: Ime
+    order_by_created: Najstariji
+    show_users_in_subgroups: Prikaži i korisnike u podgrupama
+    order_by_created_desc: Najnoviji
+    order_by_admin_desc: Administratori
+    loaded_of_total: "{{loaded}} od {{total}}"
+    view_requests: Pogledaj zahtjeve
+    header_name: Ime
+    header_username: Korisničko ime
+    header_role: Uloga
+    header_invited_by: Pozvao/la
+    header_invited: Pozvan
+    header_actions: Radnje
+    directory: Imenik
+    invitations: Pozivnice
+    requests: Zahtjevi
+    admin: Administrator
+    guest: Gost
+    sharable_link: Poveznica za dijeljenje
+    last_seen: Zadnji put viđen {{date}}
+    invited_by_name: Pozvao {{name}}
+  tasks:
+    tasks: Zadaci
+    your_tasks: Vaši zadaci
+    permission_denied: Nemate dopuštenje za ažuriranje ovog zadatka
+    due_date: Datum dospijeća
+    send_reminder: Pošalji podsjetnik (ako nije učinjeno)
+    no_reminder: Nema podsjetnika
+    on_due_date: Na datum dospijeća
+    1_day_before: 1 dan prije
+    2_day_before: 2 dana prije
+    3_day_before: 3 dana prije
+    7_day_before: 7 dana prije
+    task_placeholder: Unesite zadatak i @spomenite nekoga kome ćete ga dodijeliti
+    add_due_date: Dodajte rok
+    task_updated_done: Zadatak je označen kao obavljen!
+    task_updated_not_done: Zadatak označen kao neizvršen
+    no_tasks_assigned: Nema zadataka koji su vam dodijeljeni
+  doctypes:
+    youtube_video: YouTube video
+    image: Slika
+    pdf: PDF
+    excel: Excel proračunska tablica
+    document: Dokument
+    csv: CSV datoteka
+    video: Video
+    text: Tekstna datoteka
+    google_doc: Google dokument
+    google_sheet: Google proračunska tablica
+    google_drive: Google vožnja
+    pull_request: Zahtjev za povlačenje
+    trello_board: Trello ploča
+    trello_card: Trello kartica
+  plan_names:
+    free: Besplatno
+    starter: Starter
+    trial: suđenje
+    pro: profesionalac
+    pro_nonprofit: Za neprofitne organizacije
+    community: Zajednica
+    small: Mali
+    medium: Srednji
+    large: velika
+    monthly: Mjesečno
+    yearly: Godišnje
+  current_plan_button:
+    upgrade: Nadogradnja
+    buy_now: Kupi sada
+    is_old_plan: Loomio ima nove jednostavne planove cijena
+    change_plan: Promjena plana
+    view_plans: Pogledajte planove
+    free_trial: Besplatna proba. Još {{days}} dana.
+    trial_expired: Vaše probno razdoblje je isteklo. Nadogradite kako biste nastavili koristiti Loomio.
+    tooltip: Naše cijene su fantastične! Nadogradite danas i uživajte u onome što Loomio može ponuditi vašoj grupi.
+    was_gift_trial: 'Vaša grupa besplatno koristi Loomio od {{createdDate}}. Nismo u mogućnosti nastaviti pružati besplatnu uslugu. Nadogradite kako biste nastavili koristiti Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Čitaj više.</a>'
+    was_gift_remaining: Još {{days}} dana.
+    was_gift_expired: Vaš besplatni plan sada je istekao.
+  loomio_tags:
+    all_tags: Sve oznake
+    tags: Oznake
+    apply_tags: Primijeni oznake
+    new_tag: Nova oznaka
+    name_label: Ime
+    color_label: Boja
+    card_title: Oznake kategorije
+    modal_title: Napravite novu oznaku
+    modal_edit_title: Uredite oznake
+    modal_destroy_title: Ukloni oznaku
+    destroy_tag: Izbriši oznaku
+    destroy_helptext: Ovo će izbrisati ovu oznaku i ukloniti je iz svih niti u grupi. Jesi li siguran?
+    helptext: Oznake vam omogućuju da kategorizirate razgovore i lako ih pronađete kasnije
+    discussions_count_singular: "(%{count} nit)"
+    discussions_count_plural: "(%{count} niti)"
+    tag_created: Oznaka spremljena
+    tag_destroyed: Oznaka izbrisana
+    tags_marked: Niti s oznakom '{{name}}' u {{groupName}}
+    no_tags_present: Nisu pronađene niti s tom oznakom! Pokušajte odabrati neki drugi
+    no_tags_in_group: Ova grupa još nema oznake kategorije
+    only_admins_can_edit_tags: Nažalost, samo administratori grupe {{group}} mogu stvarati, preimenovati ili brisati oznake
+  poll_types:
+    proposal: prijedlog
+    count: uključiti se
+    check: provjera smisla
+    poll: anketa
+    dot_vote: glasovanje s točkom
+    meeting: vremenska anketa
+    ranked_choice: rangirani izbor
+    score: rezultat ankete
+    question: krug pitanja
+  timezones:
+    local: Lokalno vrijeme ({{value}})
+  merge_accounts:
+    modal:
+      title: Spajanje računa
+      helptext: Možete spojiti račun pod <strong>{{sourceEmail}}</strong> u onaj od <strong>{{targetEmail}}</strong> . Kliknite Potvrdi i e-pošta za potvrdu bit će poslana na {{targetEmail}} za početak postupka.
+      submit: Potvrdi
+      flash: E-pošta za potvrdu je poslana!
+    email_taken: Nažalost, ta je adresa e-pošte već povezana s drugim korisnikom. Pripada li taj email tvoj?
+    find_out_more: Saznaj više.
+    placeholder_modal_text: <p>Ako želite spojiti dva računa, jednostavno unesite odgovarajuću adresu e-pošte (koja pripada drugom računu) u polje za e-poštu na stranici profila i slijedite upute koje se pojavljuju.</p><p> Trebate pomoć? <a href="/contact" target="_blank">Kontaktirajte nas</a> .
+  emoji_picker:
+    search: traži
+    common: Često korišten
+    expressions: Lica
+    hands: Ruke
+    people: narod
+    nature: Priroda
+    objects: Stvari
+    places: Mjesta
+  ordinal:
+    _1: '1'
+    _2: '2'
+    _3: '3'
+    _4: '4'
+    _5: '5'
+    _6: '6'
+    _7: '7'
+    _8: '8'
+    _9: '9'
+    _10: '10'
+  devise:
+    sessions:
+      signed_up: Uspješno ste se prijavili!
+    failure:
+      inactive: Postoji deaktivirani račun povezan s ovom adresom e-pošte. Ako želite ponovno aktivirati svoj račun, kontaktirajte nas.
+  verify_email_notice:
+    please_verify: Hvala na sudjelovanju! Provjerite svoju e-poštu za vezu za potvrdu vašeg glasa.
+  previous_polls_page:
+    heading: Aktivnosti u {{name}}
+    polls_count: Prikazuje se {{loaded}} od {{total}} odluka
+    search_activities: Odluke o pretraživanju
+  email_to_group:
+    email_to_group_settings: Postavke e-pošte grupi
+    email_to_group_address: Adresa e-pošte grupi
+    start_threads_via_email: Započnite niti putem e-pošte
+    your_address_for_this_group: Vaša adresa e-pošte za ovu grupu
+    send_email_to_start_thread: Pošaljite e-poštu na ovu adresu da pokrenete nit u svojoj grupi.
+    subject_body_attachments: Nit će koristiti predmet e-pošte, tijelo i priložene datoteke.
+    address_starts_threads_as_you: Nemojte dijeliti ovu adresu - svatko tko je ima može započeti teme kao vi.
+    generate_new_address: Generiraj novu adresu
+    copy_address: Kopiraj adresu
+    email_me_this_address: Pošalji mi ovu adresu e-poštom
+    email_address_sent_to_you: E-mail adresa vam je poslana
+    email_address_copied_to_clipboard: Adresa e-pošte kopirana je u međuspremnik
+    new_address_generated: Generirana je nova adresa e-pošte za grupu
+    generate_new_address_question: Generirati novu adresu e-pošte za grupu?
+    generate_new_address_warning: Sve vaše postojeće email-to-loomio adrese prestat će raditi. Nema poništavanja. Samo naprijed?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: Vaša adresa e-pošte za pokretanje niti u %{group}
+  volume_levels:
+    loud: Glasno
+    normal: Normalan
+    quiet: Miran
+    mute: Isključi zvuk
+    unmute: Uključi zvuk
+  pin_event_form:
+    title: Prikvači na vremensku traku
+    title_label: Titula
+    hint: 'Savjet za sljedeći put: pokušajte označiti tekst prije nego što kliknete "Prikvači".'
+  close_explanation_modal:
+    aria_label: Zatvori nit
+    close_thread: Zatvori nit
+    body: "<p>Zatvorite stare ili nevažne teme kako biste ih uklonili iz prikaza i označili da je rasprava zatvorena.</p><p> Svatko i dalje može komentirati ili pokrenuti anketu u zatvorenoj niti, ali se neće pojaviti na popisu niti grupe ili na nadzornoj ploči.</p>"
+    image_alt: Zatvaranje svih tema
+  sign_up_form:
+    password_label: 'Lozinka:'
+    password_confirmation_label: 'Opet ta lozinka:'
+  signed_out_modal:
+    aria_label: Sesija je završila
+    title: Vaša sesija je završila
+    message: Odjavljeni ste iz drugog prozora. Prijavite se ponovno za nastavak.
+    ok: U redu
+  comment_reply_form:
+    aria_label: Dodajte odgovor
+  thread_nav:
+    participants: Sudionici
+  sidebar:
+    threads: niti
+    my_groups: Moje grupe
+    other_groups: Ostale grupe
+    all_groups: Sve grupe
+    recent_threads: Nedavne teme
+    invite_only_threads: Niti samo za pozivnice
+    direct_threads: Izravne niti
+    unread_threads: Nepročitane niti (%{count})
+    muted_threads: Utišane niti
+    start_group: Nova organizacija
+    start_subgroup: Nova podskupina
+    explore: Javne grupe
+    explore_groups: Istražite grupe
+    start_thread: Nova nit
+    start_decision: Nova odluka
+    more_groups: Više grupa
+    template_gallery: Galerija predložaka
+    examples_and_templates: Primjeri i predlošci
+    help_docs: Pomoćni dokumenti
+    a_detailed_guide_to_loomio: Detaljan vodič za Loomio
+    talk_to_the_loomio_team: Razgovarajte s Loomio timom
+    aria_labels:
+      heading: Bočna traka
+      threads_list: Akcije niti
+      groups_list: grupe
+      user_list: Radnje korisnika
+  strand_nav:
+    newest: Najnoviji
+    oldest: Najstariji
+    newest_first: Prvo najnoviji
+    oldest_first: Prvo najstariji
+    all_pinned: Sve prikvačene stavke
+    whole_thread: Cijela nit
+    from_comment: Iz url-a komentara
+    from_sequence_id: Iz url-a stavke niti
+    unread: Novo za vas
+  search_modal:
+    all_content: Sav sadržaj
+    best_match: Najbolji spoj
+    any_tag: Bilo koja oznaka
+    all_subgroups: Sve podskupine
+    parent_only: Samo roditelj
+  navbar:
+    search_all_threads: Pretraži sve teme
+    search_threads: Pretraži teme u {{name}}
+    search_polls: Pretraži ankete u {{name}}
+    search_members: Traži članove u {{name}}
+    search_subgroups: Traži članove u {{name}}
+    search_files: Traži datoteke u {{name}}
+    recent_title: Idi na nadzornu ploču
+    unread_title: Pogledajte nepročitanu aktivnost
+    start_thread: Nova nit
+    notifications: Ploča s obavijestima
+    search:
+      label: Polje za pretraživanje; traženje grupa i niti
+      results_aria_label: Rezultati pretraživanja
+      no_results: Nisu pronađene niti
+      close: Zatvori ploču za pretraživanje
+      placeholder: traži
+      loading: Učitavanje rezultata...
+      discussions: niti
+      proposals: Prijedlozi
+      comments: Komentari
+    sign_in: Prijaviti se
+    toggle_sidebar: Uključi/isključi bočnu traku
+    open_sidebar: Otvori bočnu traku
+    close_sidebar: Zatvori bočnu traku
+    logo_title: Početna stranica
+    group_and_subgroups: "{{group}} & podgrupe"
+  user_dropdown:
+    pin_sidebar: Prikvači bočnu traku
+    unpin_sidebar: Otkvači bočnu traku
+    enable_beta_features: Omogući beta značajke
+    disable_beta_features: Onemogući beta značajke
+    enable_dark_mode: Omogući tamni način rada
+    disable_dark_mode: Onemogući tamni način rada
+    button_label: Korisnički izbornik
+    edit_profile: Uredi profil
+    email_settings: Postavke obavijesti
+    help: Pomozite
+    contact_site_name: Kontaktirajte {{site_name}}
+    contact_support: Kontaktirajte podršku
+    sign_out: Odjavi se
+    beta_collab: "\U0001F9EA Beta značajke omogućene!"
+    outcomes: Ishodi
+  membership_card:
+    group_members: Članovi grupe
+    discussion_members: Članovi niti
+    poll_members: "{{pollType}} članova"
+    voters: Birači
+    invite_to_group: Pozovi u grupu
+    invite_to_discussion: Pozovi u nit
+    invite_to_poll: Pozovite na glasanje
+    invite_to_wip_poll: Pozovite da date povratne informacije
+    invitations: Pozivnice
+  membership_dropdown:
+    set_name_and_username: Postavite ime i korisničko ime
+    set_title: Postavite naslov
+    resend: Ponovno pošalji pozivnicu
+    invitation_resent: Pozivnica ponovno poslana
+    make_coordinator: Napravi admina
+    demote_coordinator: Degradiraj administratora
+    remove_from:
+      discussion: Ukloni iz niti
+      group: Ukloni iz grupe
+      poll: Ukloni iz {{pollType}}
+    cancel_invitation: Otkaži pozivnicu
+  notification_models:
+    discussion: 'nit:'
+    comment: komentirati
+    poll: 'anketa:'
+    outcome: 'ishod:'
+    stance: 'glasanje:'
+  discussion_fork_actions:
+    helptext: Odaberite stavke koje želite premjestiti u drugu nit
+    move: Potez
+    search_placeholder: Pronađite temu prema naslovu
+    moved: Dirljivi komentari, ovo bi moglo potrajati
+    move_to_existing_thread: Prelazak na postojeću nit
+    start_new_thread: Ili započnite novu temu
+  thread_template:
+    browse_public_templates: Pregledajte galeriju predložaka
+    thread_template_settings: Postavke predloška niti
+    start_a_new_thread: Započnite novu temu
+    thread_template_saved: Predložak niti spremljen
+    these_are_public_templates: Ovi predlošci dostupni su za kopiranje ili izmjenu kako bi odgovarali vašoj grupi
+    these_are_templates: Ovo su predlošci niti u vašoj grupi. Predlošci vas vode kroz uobičajene procese donošenja odluka.
+    default_title_label: Zadani naslov
+    default_title_hint: Prethodno ispunite polje naslova tekstom koji se može uređivati. Ovo nije obavezno - ostavite prazno ako niste sigurni.
+    title_placeholder_label: Primjer naslova
+    title_placeholder_hint: Primjer za prikaz u pozadini naslovnog polja
+    title_placeholder_placeholder: npr. Ovako izgleda pozadinski tekst
+    example_description_label: Opis primjera
+    example_description_placeholder: Navedite predložak koji ljudi mogu koristiti za pokretanje niti
+    hidden_templates: Skriveni predlošci
+    confirm_delete: Jeste li sigurni da želite trajno izbrisati ovaj predložak niti? Nijedna nit neće biti izbrisana kao rezultat toga.
+    add_proposal_or_poll_template: Dodajte prijedlog ili predložak ankete
+    recommended_proposal_or_poll_templates: Preporučeni predlošci prijedloga ili ankete
+    decision_templates: Predlošci odluka
+    decision_templates_help: Odaberite bilo koji prijedlog ili predložak ankete koji će vam pomoći da dovršite ovaj proces.
+    share_in_template_gallery: Podijelite ovaj predložak u javnoj galeriji predložaka
+  announcement:
+    send_discussion: Pošalji nit
+    send_group: Pozovi ljude u {{name}}
+    send_poll: Pošalji {{type}}
+    send_outcome: Pošalji ishod
+    cannot_reveal_when_anonymous: Nažalost, ne možemo otkriti tko je ili nije glasovao u anonimnoj anketi.
+    discussion_notification_history: Povijest obavijesti niti
+    group_notification_history: Povijest grupnih poziva
+    poll_notification_history: Povijest obavijesti o anketama
+    outcome_notification_history: Povijest obavijesti o ishodu
+    comment_notification_history: Povijest obavijesti o komentarima
+    notification_history_explanation: "✓ označava da je obavijest pročitana ili da je e-pošta otvorena"
+    quick_add: 'Brzo dodavanje:'
+    any_other_groups: Ima li drugih grupa?
+    notified_people: "{{name}} je obavijestio {{length}} osoba:"
+    preview: Pregled e-pošte
+    no_notifications_sent: Nisu poslane obavijesti
+    history_error: Nešto je pošlo po zlu! Nije moguće učitati povijest.
+    inviting_guests_to_thread: Gosti ne pripadaju vašoj grupi i imaju pristup samo ovoj temi
+    select_groups: Odaberite grupe
+    search_by_name_or_email: Pretražujte po imenu ili unesite adrese e-pošte za poziv
+    search_by_name: Tražite ljude po imenu
+    only_admins_can_announce: Samo administratori mogu obavijestiti cijelu grupu
+    only_admins_can_invite: Samo administratori mogu pozvati goste
+    only_admins_can_announce_or_invite: Samo administratori mogu obavijestiti cijelu grupu ili pozvati goste
+    user_mentioned: "{{name}} je spomenuo {{length}} osoba:"
+    comment_replied_to: "{{name}} je odgovorio {{length}} osobama:"
+    new_discussion: "{{name}} je pozvao {{length}} osoba u nit:"
+    discussion_announced: "{{name}} je pozvao {{length}} osoba u nit:"
+    poll_created: "{{name}} je pozvao {{length}} ljudi da glasaju:"
+    poll_announced: "{{name}} je pozvao {{length}} ljudi da glasaju:"
+    outcome_created: "{{name}} je podijelio ishod s {{length}} osoba:"
+    outcome_announced: "{{name}} je podijelio ishod s {{length}} osoba:"
+    announcement_created: "{{name}} je pozvao {{length}} osoba u nit:"
+    discussion_edited: "{{name}} je uredio nit, obavijestivši {{length}} osoba:"
+    poll_edited: "{{name}} je uredio anketu, obavijestivši {{length}} osoba:"
+    outcome_edited: "{{name}} je uredio ishod, obavještavajući {{length}} osoba:"
+    outcome_updated: "{{name}} je uredio ishod, obavještavajući {{length}} osoba:"
+    poll_closing_soon: 'Podsjetnik za zatvaranje ankete korisnika {{name}} obavijestio je {{length}} osoba:'
+    poll_reminder: "{{name}} je podsjetio {{length}} ljudi da glasaju:"
+    audiences:
+      group: "{{Ime}}"
+      everyone_in_the_group: Svi u grupi
+      discussion_group: Svi u temi
+      voters: Svi pozvani da glasaju
+      decided_voters: Svi koji su glasali
+      undecided_voters: Neodlučni glasači
+      non_voters: Članovi {{name}} još nisu pozvani
+    form:
+      group_has_no_members_yet: Vi ste jedini član svoje grupe. Možda ćete htjeti pozvati neke ljude u svoju grupu prije pokretanja niti ili odluke.
+      invite_people_to_evaluate_loomio: Pozovite neke ljude u svoju Loomio grupu da zajedno donesete odluku
+      too_many_invitations: Premašeno je ograničenje broja pozivnica. <a href="{{upgradeUrl}}" target="_blank">Nadogradnja</a>
+      no_invitations_remaining: <p>Iskoristili ste sve {{maxMembers}} pozivnice dostupne ovoj grupi.</p><p> Sljedeći korak, <a href="{{upgradeUrl}}" target="_blank">odaberite plan</a> za nastavak suradnje na Loomio.</p>
+      invitations_remaining: '%{count} preostalih pozivnica. <a href="{{upgradeUrl}}" target="_blank">Nadogradnja</a>'
+      who_to_invite: Koga biste htjeli pozvati?
+      invitation_message_placeholder: Poruka koju treba uključiti u e-poruku pozivnice. (neobavezno)
+      invitation_message_label: Poruka
+      invitation_message_default: Osnovao sam ovu Loomio grupu da nam pomogne u donošenju odluka zajedno. Molim vas prihvatite moj poziv. Za pridruživanje je potrebna samo minuta. Hvala vam.
+      group_announced:
+        title: Pozovi u grupu
+        helptext: Koga biste htjeli pozvati u grupu?
+      discussion_announced:
+        title: Pozovi u nit
+        helptext: Koga biste htjeli pozvati u temu?
+        notify_helptext: Koga želite obavijestiti o temi?
+      discussion_edited:
+        title: Obavijesti o izmjenama
+        helptext: Koga želite obavijestiti o ovom ažuriranju? (neobavezno)
+      poll_announced:
+        title: Pozovite na glasanje
+        helptext: Koga biste htjeli pozvati da glasa?
+      wip_poll_announced:
+        title: Pozovite da date povratne informacije
+        helptext: Koga želite pozvati da da povratne informacije?
+      poll_reminder:
+        title: Podsjeti na glasanje
+        helptext: Za koga biste htjeli podsjetiti da glasa?
+        message_label: Poruka
+        message_placeholder: Neobavezna poruka koja govori ljudima zašto bi trebali glasati
+      wip_poll_reminder:
+        title: Podsjetite da date povratne informacije
+        helptext: Koga želite podsjetiti da da povratne informacije?
+        message_label: Poruka
+        message_placeholder: Dodatna poruka koju treba uključiti u e-poruku obavijesti
+      poll_edited:
+        title: Obavijesti o izmjenama
+        helptext: Koga želite obavijestiti o ovom ažuriranju?
+      outcome_announced:
+        title: Podijelite ishod
+        helptext: Sažmite rezultate procesa, uključujući sva pronađena razumijevanja ili probleme koji su izneseni na vidjelo.
+      anyone_can_participate: Svatko s vezom može sudjelovati
+      placeholder: Možete unijeti imena ili adrese e-pošte
+      type_or_paste_email_addresses_to_invite: Upišite ili zalijepite adrese e-pošte koje želite pozvati
+      notified_empty: Još nitko nije odabrao
+      single_notification: Bit će poslana 1 obavijest.
+      multiple_notifications: Bit će poslano {{notified}} obavijesti.
+      notified: "{{notified}} osoba će biti obaviješteno."
+      notified_singular: 1 osoba će biti obaviještena.
+      notified_none: Nitko neće biti obaviješten.
+      added: Bit će dodano %{count} osoba.
+      added_singular: Dodat će se 1 osoba.
+      added_none: Nitko neće biti dodan.
+      group_title: "{{name}} (%{count} ljudi)"
+      visible_to_group: Svatko u {{group}} će moći vidjeti ovu nit.
+      visible_to_guests: Samo pozvane osobe mogu vidjeti ovu nit.
+      click_group_to_see_individuals: Pritisnite grupu da vidite pojedince
+    members_list:
+      title: Podijeljeno sa
+      last_notified: Obaviješten
+      not_notified: Još nije obaviješten
+      no_members: Ovo još nije podijeljeno ni s kim!
+      group_admin: Administrator grupe
+      thread_admin: Administrator teme
+      last_read_at: Zadnji put pogledano {{time}}
+      has_not_read_thread: Nije pogledao nit
+    group_form:
+      search_placeholder: Traži ljude...
+      modal_title: Odaberite članove grupe
+    flash:
+      success: Poslano %{count} obavijesti
+  action_dock:
+    actions_menu: Izbornik radnji
+    more_actions: Vise akcije
+    react: Reagirati
+    notify: Obavijestiti
+    add_resource: Dodajte privitak
+    edit_group: Uredite kontekst grupe
+    add_comment: Komentar
+    copy_url: Kopiraj link
+    edit_thread: Uredi kontekst
+    announce_thread: Pošalji nit
+    invite_guests: Pozovi goste
+    translate_thread: Prevedite kontekst
+    edit_poll: Uredi anketu
+    edit_poll_type: Uredi {{pollType}}
+    new_poll_type: Novi {{pollType}}
+    move_items: Premještanje stavki
+    announce_poll: Pozovite ljude da glasaju
+    announce_poll_active: "(Nitko još nije pozvan)"
+    translate_poll: Prevedi anketu
+    edit_stance: Promijeni položaj
+    translate_stance: Prevedi glasovanje
+    edit_comment: Uredi komentar
+    delete_comment: Obriši komentar
+    reply_to_comment: Odgovor
+    fork_comment: Viličasti navoj
+    translate_comment: Prevedi komentar
+    edit_outcome: Uredi ishod
+    announce_outcome: Obavijestite ljude o ovom ishodu
+    announce_outcome_active: "(Nitko još nije obaviješten o ovom ishodu)"
+    translate_outcome: Prevedi ishod
+    show_history: Prikaži povijest uređivanja
+    edited: Uređeno
+    show_edits: Prikaži izmjene
+    show_notifications: Prikaži obavijesti
+    history: Povijest
+    pin_thread: Pin konac
+    unpin_thread: Odspojite konac
+    pin_event: Prikvači na vremensku traku
+    unpin_event: Otkvači s vremenske trake
+    comment_copied: URL komentara kopiran je u međuspremnik
+    move_thread: Premjesti u grupu
+    poll_copied: URL odluke kopiran je u međuspremnik
+    discussion_copied: URL niti kopiran u međuspremnik
+    url_copied: Veza je kopirana u međuspremnik
+    tag_thread: Upravljanje oznakama
+    close_thread: Zatvori nit
+    reopen_thread: Ponovo otvori nit
+    delete_thread: Izbriši nit
+    notification_history: Povijest obavijesti
+    move_item: Premjesti stavku
+    add_poll_to_thread: Dodaj u nit
+    count_members: "%{count} članova"
+    count_voters: "%{count} birača"
+  formatting:
+    formatting_tools: Alati za oblikovanje teksta
+    colors: Boje
+    highlight: Istaknuti
+    alignment: Poravnanje
+    lists: Popisi
+    expand: Prikaži više alata za oblikovanje
+    collapse: Prikaži manje alata za oblikovanje
+    bold: Podebljano
+    italicize: Kurziv
+    blockquote: Citat
+    strikethrough: Precrtano
+    underline: Naglasiti
+    link: Umetni vezu
+    code_block: Blok koda
+    insert_image: Umetni sliku
+    insert_emoji: Umetnite emoji
+    attach: Priložite datoteku
+    heading_size: Veličina naslova
+    heading1: Naslov 1
+    heading2: Naslov 2
+    heading3: Naslov 3
+    left_align: Lijevo poravnanje
+    center_align: Poravnajte po sredini
+    right_align: Desno poravnanje
+    justify_align: Obostran poravnaj
+    paragraph: stavak
+    bullet_list: Popis
+    number_list: Numerirani popis
+    check_list: Spisak
+    task_list: Lista zadataka
+    reset: Resetiraj
+    text_color: Boja teksta
+    background_color: Boja pozadine
+    quote: Citat
+    embed: Ugradi video
+    divider: Šestar
+    add_table: Dodaj tablicu
+    remove_table: Ukloni tablicu
+    add_column_before: Dodaj stupac prije
+    add_column_after: Dodajte stupac nakon
+    remove_column: Ukloni stupac
+    add_row_before: Dodaj red ispred
+    add_row_after: Dodaj red nakon
+    remove_row: Ukloni red
+    merge_selected: Spoji odabrane ćelije
+    wysiwyg: wysiwyg
+    edit_markdown: Uredi Markdown
+    markdown_confirm: Dio oblikovanja može se izgubiti pretvaranjem wysiwyg sadržaja u markdown.
+    upload_failed: Prijenos nije uspio
+  cover_photo_form:
+    heading: Nova naslovna fotografija
+    upload_link: Prenesi novu naslovnu fotografiju
+    image_size_helptext: Idealna veličina slike je 1400×320px
+    upload_success: Naslovna fotografija uspješno ažurirana
+  logo_photo_form:
+    heading: Novi logo grupe
+    upload_link: Učitaj novi logo grupe
+    image_size_helptext: Idealna veličina slike je 100×100px
+    upload_success: Logotip je uspješno ažuriran
+  revision_history_modal:
+    aria_label: Povijest revizija
+    discussion_header: Uređivanja rasprave
+    comment_header: Uređivanje komentara
+    poll_header: Uređivanja ankete
+    outcome_header: Ispravke ishoda
+    stance_header: Glasajte izmjene
+    started_by: Pokrenuo <strong>{{name}}</strong>
+    edited_by: Uredio <strong>{{name}}</strong>
+    edit_by: Uredio {{name}} · {{date}}
+    posted: Objavljeno
+    field: Polje
+    before: Prije
+    after: Nakon
+    original_text: Izvornik
+    current_revision: Najnoviji
+    closing_at_changed: vrijeme zatvaranja postavljeno na {{vrijeme}}
+    private_changed: privatnost postavljena na {{private}}
+    group_id_changed: preselio u {{name}}
+  reactions_input:
+    add_your_reaction: Dodajte svoju reakciju
+  reactions_display:
+    more_reactions: Još %{count}
+    you: Vas
+    you_and_name: ti i {{name}}
+    you_and_name_and_count_more: Ti, {{name}} i još %{count}
+    name_and_count_more: "{{name}} i još %{count}"
+  context_panel:
+    thread_status:
+      pinned: Ova nit je prikvačena. Ostat će na vrhu popisa niti grupe za sve korisnike.
+      closed: Ova nit je zatvorena. Više se neće pojavljivati na nadzornoj ploči i bit će naveden pod 'zatvoreno' na stranici grupe
+  delete_group_modal:
+    title: Izbriši grupu
+    subgroup_title: Brisanje podgrupe
+    parent_body: "<h2>Ovo je vaša nadređena grupa - ne podgrupa!</h2><br> Ako ovo izbrišete, sve podgrupe također će biti trajno izbrisane. Vaša pretplata na Loomio također će biti otkazana. Toplo se preporučuje da prije toga izvezete podatke svoje grupe i ručno preuzmete sve važne datoteke. Jeste li sigurni da želite nastaviti?"
+    body: Jeste li sigurni da želite izbrisati ovu podgrupu? Sve teme, ankete, datoteke i drugi sadržaj grupe bit će trajno izbrisani. Preporuča se da izvezete podatke grupe i ručno preuzmete sve važne datoteke prije nastavka.
+    confirm: Upišite '%{name}' da potvrdite da želite izbrisati ovu grupu.
+    success: Ova je grupa arhivirana i zakazano je za trajno brisanje za 2 tjedna.
+  export_data_modal:
+    title: Kako želite koristiti svoje podatke?
+    as_csv: Otvorite ga u proračunskoj tablici
+    as_html: Otvorite ga u pregledniku
+    as_json: Domaćin ove grupe na vlastitom poslužitelju
+  description_card:
+    title: Opis grupe
+    placeholder: Administratori grupe mogu koristiti ovo područje za opis svrhe grupe, tako da svi znaju zašto su ovdje.
+    messages:
+      description_updated: Opis ažuriran
+  leave_group_form:
+    aria_label: Napusti grupu
+    title: Napusti grupu
+    question: Jeste li sigurni da želite napustiti ovu grupu?
+    submit: Da, napusti ovu grupu
+  archive_group_form:
+    aria_label: Deaktiviraj grupu
+    title: Deaktiviraj grupu
+    question: Jeste li sigurni da želite deaktivirati ovu grupu?
+    submit: Da, deaktiviraj ovu grupu
+  group_export_modal:
+    title: Izvoz grupnih podataka
+    body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
+    submit: Započni izvoz
+    flash: Pokrenut je izvoz podataka grupe
+  membership_requests_card:
+    heading: Zahtjevi za članstvo
+    manage_requests: Upravljanje zahtjevima
+    manage_requests_with_count: Upravljanje zahtjevima (%{count})
+  membership_remove_modal:
+    invitation:
+      title: Otkaži pozivnicu
+      message: Jeste li sigurni da želite otkazati pozivnicu za {{name}}?
+      flash: Pozivnica je otkazana
+      submit: Otkaži pozivnicu
+    membership:
+      title: Ukloni člana
+      message: Jeste li sigurni da želite ukloniti {{name}}?
+      impact_for_subgroup: Ovo će ukloniti njihov pristup podgrupi (uključujući teme i ankete), ali će ostati član nadređene grupe.
+      impact_for_group: Ovo će ukloniti njihov pristup grupi (uključujući teme i ankete) i svim podgrupama.
+      flash: Član uklonjen
+      submit: Ukloni člana
+  memberships_panel:
+    add_coordinator: Napravi admina
+    remove_coordinator: Degradiraj administratora
+  membership_form:
+    modal_title:
+      group: Postavite naslov
+    title_helptext:
+      group: Ovaj naslov će se pojaviti pored imena {{name}} unutar ove grupe. Iskoristite ga kako biste ljudima dali do znanja njihovu ulogu.
+    title_label: titula
+    title_placeholder: Npr. 'Koordinator' ili 'Facilitator'
+    updated: Naziv članstva ažuriran
+  user_name_modal:
+    user_name_updated: Korisničko ime ažurirano
+    set_user_name: Postavite korisničko ime
+  user_page:
+    contact_user: Ime kontakta}}
+    location_field: 'Lokacija: {{value}}'
+    locale_field: 'Jezik: {{value}}'
+    online_field: 'Online: {{value}}'
+    invited: Pozvan {{value}}
+    message_user: Pošalji poruku {{name}}
+  contact_request_form:
+    modal_title: Email {{name}}
+    message_placeholder: Predstavite se i recite zašto želite uspostaviti kontakt.
+    helptext: "{{name}} će dobiti vaše ime, adresu e-pošte i poruku e-poštom"
+    email_sent: E-pošta poslana {{name}}
+  text_editor:
+    x_of_y_characters: "{{x}} / {{y}} znakova"
+    select_text_to_link: Odaberite tekst za povezivanje i pokušajte ponovno
+    insert_link: Umetni vezu
+    insert_embedded_url: Ugradi video
+  change_picture_form:
+    aria_label: Obrazac za profilnu fotografiju
+    title: Postavite profilnu sliku
+    helptext: Možete učitati svoju profilnu sliku ili ako imate <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> račun, možete ga koristiti.
+    use_initials: Koristite inicijale
+    use_gravatar: Koristite Gravatar
+    use_uploaded: Učitaj novu fotografiju
+    existing_upload: Postojeći prijenos
+    use_provider: Upotrijebi {{provider}} fotografiju
+  change_password_form:
+    set_password_title: Postavite lozinku
+    set_password_helptext: Unesite lozinku - minimalno 8 znakova
+    set_password: Postavi lozinku
+    password_changed: Vaša lozinka je ažurirana
+  deactivation_modal:
+    introduction: 'Kada izbrišete svoj račun:'
+    you_will_be_deleted: Vaš korisnički račun uključujući vaše ime, adresu e-pošte i druge osobne podatke bit će izbrisani iz naših sustava.
+    name_removed: Komentari, prijedlozi i rasprave koje ste napravili ostat će, ali će vaše ime biti uklonjeno iz njih
+    no_longer_group_member: Više nećete biti navedeni kao član niti jedne grupe
+    no_emails: Više nećete primati obavijesti putem e-pošte
+    submit_delete: Izbriši moj račun sada
+  email_settings_page:
+    monday: ponedjeljak
+    tuesday: utorak
+    wednesday: srijeda
+    thursday: četvrtak
+    friday: petak
+    saturday: subota
+    sunday: nedjelja
+    every_day: Svaki dan
+    every_second_day: Svaki drugi dan
+    header: Postavke obavijesti
+    account_deactivated: Vaš račun je deaktiviran. Nikada nećete primati nikakve e-poruke.
+    deactivate_header: Zauvijek zaustavite sve e-poruke
+    deactivate_description: Ako nikada više ne želite primiti e-poštu od nas, možete deaktivirati svoj korisnički račun.
+    email_newsletter: Loomio bilten
+    email_newsletter_description: Primajte ažuriranja o novim značajkama, obuci, događajima u vašem gradu i budućnosti Loomija. Obično 2 ili 3 e-maila godišnje.
+    email_catch_up_day: Sažetak e-pošte za nadoknadu
+    daily_summary_description: Odaberite kada želite primiti e-poruku sa sažetkom nadoknade. Ova e-poruka sadrži sve nove aktivnosti koje niste vidjeli. Dobar način da ostanete u tijeku ako niste redoviti korisnik.
+    on_participation_label: Pretplatite se na sudjelovanje
+    on_participation_description: Kada sudjelujete u niti, sve daljnje aktivnosti bit će vam odmah poslane e-poštom.
+    announcement_label: Obavijesti
+    announcement_description: Primit ćete e-poruku o svim sadržajima koje su najavili ljudi u vašim grupama
+    mentioned_label: Spominjanja i odgovori
+    mentioned_description: Kada vas netko @spomene u komentaru ili vam odgovori, dobit ćete obavijest e-poštom
+    update_settings: Spremi promjene
+    specific_groups: Postavke za određene grupe
+    default_settings:
+      loud_description: Kada se pridružite novoj grupi, dobit ćete e-poruku <strong>kad god postoji aktivnost</strong> .
+      normal_description: Kada se pridružite novoj grupi, dobit ćete e-poštu o <strong>novim temama i prijedlozima</strong> .
+      quiet_description: Kada se pridružite novoj grupi, <strong>nećete primati e-poruke o aktivnostima</strong> .
+    edit: Uredi
+    messages:
+      updated: Postavke e-pošte ažurirane
+    learn_more: Saznajte više o postavkama e-pošte...
+  thread_preview:
+    replies_count: "%{count} odgovora"
+    unread_count: "%{count} nepročitano"
+  dashboard_page:
+    aria_label: Nadzorna ploča
+    polls_to_vote_on: Ankete za glasanje
+    no_polls_to_vote_on: Nema anketa za koje morate glasati
+    recent_polls: Nedavne ankete
+    current_polls: Aktualne ankete
+    recent_threads: Nedavne teme
+    no_groups:
+      show_all: Dobrodošli! Još niste član niti jedne grupe. <a href="/explore">Pregledajte javne grupe</a> ili <a href="/g/new">pokrenite grupu</a> .
+      show_muted: Nemate nijednu utišanu niti jer niste član niti jedne grupe.
+    no_threads:
+      show_all: Nemate nedavnih niti.
+      show_proposals: Trenutno nema aktivnih prijedloga.
+      show_muted: Nemate nijednu utišanu niti.
+    view_recent: Prikaži sve nedavne teme?
+    load_more: Učitaj više niti
+    mark_as_read: Označi kao pročitano
+    dismiss: Odbaciti
+    thread_dismissed: Tema je označena kao pročitana
+    thread_recalled: Tema opozvana
+    explain_mute:
+      title: Još niste utišali niti jednu nit.
+      explanation_html: Isključivanje je način da sakrijete ili utišate niti koje vas ne zanimaju. Isključivanje znači da ih nećete vidjeti u <strong>Nedavno</strong> ili <strong>Nepročitano</strong> i nećete biti obaviješteni o aktivnostima u toj niti, poput prijedloga. Bit ćete upozoreni samo ako netko <strong>@spomene</strong> vaše ime.
+      instructions: Da biste utišali nit, zadržite pokazivač iznad nje i kliknite ikonu za utišavanje.
+      see_muted_html: Da biste vidjeli svoje isključene niti, kliknite <strong>"Isključeno"</strong> . Možete uključiti zvuk tako da zadržite pokazivač i kliknete na istu ikonu.
+    filtering:
+      filter_threads: Filtriranje niti
+      filter_threads_aria_label: Filtriranje niti
+      dropdown_heading: Nadzorna ploča filtera
+      all: Nedavne teme
+      all_aria_label: Trenutno se prikazuju nedavne niti
+      all_description: Pogledajte nedavne teme
+      proposals: Prijedlozi
+      proposals_aria_label: Trenutno se prikazuju niti s aktivnim prijedlozima
+      proposals_description: Pogledajte samo niti s aktivnim prijedlozima
+      muted: Prigušene niti
+      muted_aria_label: Trenutno prikazuje utišane niti
+      muted_description: Pogledajte samo niti koje su utišane
+    thread_preview:
+      you_voted: Glasovali ste za {{position}}
+      undecided: Vi ste neodlučni
+    threads_from:
+      group: Teme iz
+      pinned: Prikvačene niti
+      proposals: Teme s aktivnim odlukama
+      starred: Niti sa zvjezdicom
+      today: Danas
+      yesterday: Jučer
+      thisweek: Ovaj tjedan
+      thismonth: Ovaj mjesec
+      older: Starije od mjesec dana
+  threads_page:
+    no_direct_threads: Nemate izravnih niti
+    no_invite_only_threads: Nemate niti samo za pozivnicu
+  inbox_page:
+    no_threads: Juhu! Pročitali ste sve teme u svojoj pristigloj pošti.
+    unread_threads: Nepročitane niti
+    view_more: Vidi više
+    no_groups:
+      explanation: Nemate nepročitanih niti jer niste član niti jedne grupe.
+      start: Početak
+      or: ili
+      join_group: <a href="/explore">pridružite se</a> grupi da vidite niti.
+  discussion:
+    invite_only: Samo uz pozivnicu
+    private_thread: Privatna nit
+    max_threads_reached: <p>Iskoristili ste sve {{maxThreads}} niti koje su dostupne ovoj grupi.</p><p> Sljedeći korak, <a href="{{upgradeUrl}}" target="_blank">odaberite plan</a> za nastavak suradnje na Loomio.</p>
+    subscription_canceled: <p>Vaša pretplata nije aktivna.</p><p> <a href="{{upgradeUrl}}" target="_blank">Nadogradite</a> kako biste nastavili koristiti Loomio.</p>
+    activity: Aktivnost
+    activity_placeholder: Još nema aktivnosti!
+    load_previous: Učitaj raniju aktivnost
+    started_by: Pokrenuo <strong>{{name}}</strong>
+    pin:
+      pinned: Nit pričvršćena
+      unpinned: Nit je otkvačena
+    volume:
+      mute_message: Nit je isključena
+      unmute_message: Nit je isključena
+    closed:
+      reopened: Tema ponovno otvorena
+      closed: Tema zatvorena
+  discussion_last_seen_by:
+    title: vidio od
+    no_one: Ovo još nitko nije vidio
+  activity_card:
+    count_responses: "%{count} odgovora"
+    event_pinned: Prikvačeno na vremensku traku
+    event_unpinned: Otkvačeno s vremenske trake
+    beginning: Početak
+    end: Kraj
+    unread: Nepročitano (%{count})
+    latest: Najnoviji
+    context: Kontekst
+    chronological: Kronološki
+    nested: Ugniježđeno
+    attachment_display:
+      aria_label: 'Datoteka u prilogu:'
+      image_alt: Slika u prilogu
+    n_previous: Učitaj %{count} prethodnih odgovora
+    n_more: Učitaj %{count} odgovora
+    add_comment: Dodaj komentar
+    add_poll: Dodaj anketu
+    add_outcome: Dodajte ishod
+    comment: Komentar
+    facilitate: Olakšati
+    start_decision: Početak odluke
+    start_vote: Pokreni glasovanje
+  thread_context:
+    current_poll_type_banner: Trenutačni {{pollType}}
+    item_maybe_deleted: Nije moguće pronaći traženu lokaciju unutar niti. Možda je izbrisano.
+    aria_label: Kontekst niti
+    thread_options: Opcije niti
+    email_settings: Postavke obavijesti
+    edit: Uredi
+    edit_thread: Uredi
+    close_thread: Zatvoriti
+    reopen_thread: Ponovo otvoriti
+    pin_thread: Pin
+    unpin_thread: Otkvači
+    mute_thread: Isključi zvuk
+    move_thread: Potez
+    print_thread: Ispis
+    delete_thread: Izbrisati
+    add_comment: Komentar
+    seen_by_count: Vidjelo %{count}
+    count_notified: Obavijest %{count}
+    forked_from: Račvasto iz
+  pin_thread_modal:
+    title: Pin konac
+    helptext: Prikvačene niti uvijek se pojavljuju na vrhu popisa niti svoje grupe. Mogu se koristiti za informiranje članova o važnim najavama ili za promicanje uobičajenih materijala poput kodeksa ponašanja ili smjernica zajednice.
+    helptext_two: Pribadače možete ukloniti u bilo kojem trenutku odabirom 'Otkvači' s padajućeg izbornika niti
+    pin_thread: Pin konac
+  thread_arrangement_form:
+    edit: Uredi izgled
+    title: Raspored niti
+    for_everyone: Ovo mijenja izgled za sve, ne samo za vas.
+    sorting: Najstarije ili prvo najnovije?
+    latest: Najnoviji
+    latest_description: Prvo pročitajte najnovije stavke
+    earliest: Najstariji
+    earliest_description: Nadoknadite starije komentare prije nego što vidite novije
+    replies: Kako prikazati odgovore?
+    linear: Ravna lista
+    linear_description: Stavke navedene kako su se dogodile, jedna za drugom.
+    nested_once: Nest odgovori - samo prvi odgovor
+    nested_once_description: Uvuci odgovore ispod izvornog komentara
+    nested_twice: Dvije razine ugniježđenih odgovora
+    nested_twice_description: Uvuci odgovore najviše dva puta.
+    changing_nesting_is_slow: Obrada promjena u gniježđenju može potrajati nekoliko minuta.
+  delete_thread_form:
+    aria_label: Izbriši nit
+    title: Izbriši nit
+    body: Jeste li sigurni da želite izbrisati ovu nit?
+    confirm: Izbriši nit
+    messages:
+      success: Nit izbrisana
+  move_thread_form:
+    aria_label: Premjesti nit
+    title: Premjesti nit
+    body: Odredišna grupa
+    confirm: Premjesti nit
+    confirm_change_to_private_thread: "{{groupName}} je otvorena grupa. Ako nastavite, ova nit će biti javna."
+    messages:
+      success: Nit je premještena na {{name}}
+  contact_message_form:
+    alt_title: Kontaktirajte Loomio podršku
+    need_message: Unesite poruku kako bismo vam mogli pomoći :-)
+    respond_asap: Pošaljite poruku Loomio timu i mi ćemo odgovoriti čim budemo mogli.
+    happy_to_help_with: Rado ćemo vam pomoći s upitima o prodaji, zahtjevima za podršku, zahtjevima za značajkama, prijavljivanjem grešaka ili problema s kojima se susrećete.
+    title: Bok tamo! Kako možemo pomoći?
+    contact_us_email: 'Također nam možete poslati e-poštu: <a href="mailto:{{email}}">{{email}}</a>'
+    contact_us: Kontaktirajte nas
+    name_label: Tvoje ime
+    name_placeholder: Unesite svoje ime...
+    subject_label: Predmet
+    subject_placeholder: 'Npr.: Problem s prijavom ili Prijedlog značajke'
+    email_label: Vaša email adresa
+    email_placeholder: Upisite svoju email adresu...
+    message_label: Tvoja poruka
+    message_placeholder: Ako tražite podršku, pokušajte dati što više informacija.
+    send_message: Pošalji poruku
+    new_contact_message: Hvala na javljanju; javit ćemo vam se uskoro!
+    consent_message: Ako nas kontaktirate, pristajete da naše osoblje pristupi vašem računu prema potrebi.<br /> Naš tim za podršku govori engleski i prevest će vašu poruku pomoću Google prevoditelja ako je potrebno.<br /> Nastojimo odgovoriti na sve poruke unutar 24 sata.
+    success: Hvala na tvojoj poruci, {{name}}. Uskoro ćemo vam se javiti.
+    success_via_email: Hvala na tvojoj poruci, {{name}}. Odgovorit ćemo putem e-pošte u roku od 24 sata.
+  explore_page:
+    header: Istražite grupe
+    search_placeholder: Tražite javne grupe
+    single_search_result: 1 javna grupa odgovara <strong>{{searchTerm}}:</strong>
+    multiple_search_results: "{{resultCount}} javnih grupa koje odgovaraju <strong>{{searchTerm}}:</strong>"
+    no_results_found: <strong>Ne možete pronaći grupu koju tražite?</strong> Ako je privatnost grupe postavljena na "tajno", neće se pojaviti ovdje.
+    newest_first: Prvo najnoviji
+    biggest_first: Najprije najveći
+    order_by: Poredaj grupe prema
+  global:
+    messages:
+      app_update: Objavljena je nova verzija Loomija. Spremite svoj rad i ponovno učitajte.
+      reload: Ponovno učitati
+  decision_tools_card:
+    choose_type: Odaberite vrstu ankete
+    title: Olakšati
+    recommended: Preporučeno
+    question_title: Krug pitanja
+    advice_title: Savjet
+    consent_title: Pristanak
+    consensus_title: Konsenzus
+    proposal_title: Prijedlog
+    count_title: Uključite se
+    check_title: Provjera smisla
+    poll_title: Anketa
+    meeting: Sastanak
+    score_title: Rezultat ankete
+    dot_vote_title: Glasanje s točkom
+    meeting_title: Vremenska anketa
+    ranked_choice_title: Rangirani izbor
+    gradients_of_agreement_title: Gradijenti slaganja
+  poll_option_form:
+    edit_option: Opcija uređivanja
+    option_name: Naziv opcije
+    option_name_hint: Kratak naziv za ovu opciju
+    option_name_validation: Najbolje je da naziv bude kratak i da pojedinosti unesete u polje "Značenje".
+    icon: Ikona
+    meaning: Značenje
+    meaning_hint: Rečenica ili dvije koje objašnjavaju što znači odabir ove opcije. Neobavezno
+    prompt: Upit za razlog
+    prompt_hint: Pitanje koje će potaknuti birače da podijele svoje obrazloženje ili preispitaju svoje stajalište. Neobavezno
+  poll_common:
+    superseded: Zamijenjeno
+    need_help_with_templates: Trebate li pomoć u izradi vlastitih predložaka odluka?
+    categorize_poll_templates: Kategorizirajte predloške anketa
+    show_all_templates_in_one_list: Prikaži sve predloške na jednom popisu
+    advice_process: Proces savjetovanja
+    consent_process: Proces pristanka
+    consensus_process: Proces konsenzusa
+    question_round: Krug pitanja
+    edit_template: Uredi predložak
+    proposal: Prijedlog
+    run_process: Pokreni proces
+    proposal_templates: Predlošci prijedloga
+    custom: Prilagođen
+    custom_process: Prilagođeni postupak
+    custom_poll: Prilagođena anketa
+    delete_poll: Izbriši anketu
+    select_count_options: Odaberite {{count}} opcija
+    select_minimum_to_maximum_options: Odaberite opcije od {{minimum}} do {{maximum}}
+    custom_poll_types: Prilagođene vrste anketa
+    hidden_poll_templates: Skriveni predlošci anketa
+    poll_template: Predložak ankete
+    poll_template_saved: Predložak ankete spremljen
+    poll_templates: Predlošci anketa
+    poll_types: Vrste anketa
+    new_proposal_template: Novi predložak prijedloga
+    edit_proposal_template: Uredi predložak prijedloga
+    new_poll_template: Novi predložak ankete
+    edit_poll_template: Uredi predložak ankete
+    new_poll_type: Nova vrsta ankete
+    edit_poll_type: Uredi vrstu ankete
+    new_custom_poll: Nova prilagođena anketa
+    edit_custom_poll: Uredi prilagođenu anketu
+    create_a_custom_poll_type: Stvorite novu vrstu ankete s prilagođenom terminologijom i postavkama
+    create_a_custom_process: Stvorite novi proces s vlastitom terminologijom i opcijama
+    create_a_custom_poll: Izradite anketu s prilagođenom terminologijom i postavkama
+    decision: Odluka
+    decision_templates: Predlošci odluka
+    remove_your_vote: Ukloni svoj glas
+    remove_your_response: Ukloni svoj odgovor
+    vote_now: Glasaj sad
+    review_due: Rok za pregled
+    have_your_say: Recite svoje mišljenje
+    your_response: Tvoj odgovor
+    change_your_response: Uredi odgovor
+    please_vote: Molim vas glasajte
+    reason: Razlog
+    response: Odgovor
+    reason_placeholder: Ukratko objasnite zašto ste glasali na ovaj način, a zatim kliknite 'Pošalji glas'
+    message: Poruka
+    results: Rezultati
+    current_results: Trenutni rezultati
+    responses: Odgovori
+    close_poll_type: Zatvori {{pollType}}
+    close_early: Zatvori ranije
+    totals: Ukupno
+    participate: Sudjelovati
+    vote: Glasanje
+    votes: Glasovi
+    update_outcome: Ažuriraj ishod
+    outcome: Ishod
+    outcomes: Ishodi
+    statement: Izjava
+    change_your_stance: Uredi odgovor
+    load_more: Učitaj više
+    details: pojedinosti
+    participant_name: Tvoje ime
+    participant_email: Email adresa
+    submit_vote: Pošaljite glas
+    submit_response: Pošalji odgovor
+    update_vote: Ažurirajte glasovanje
+    update_response: Ažuriraj odgovor
+    share_poll: Podijelite anketu
+    share_proposal: Prijedlog dijeljenja
+    share_count: Podijelite ček
+    start_poll: Započnite odluku
+    publish_poll: Podijelite anketu
+    share_outcome: Podijelite ishod
+    view_all: Pogledaj sve
+    save_changes: Uštedjeti
+    change_vote: Promijenite svoj glas
+    change_response: Promijenite svoj odgovor
+    max_score: Maksimalni rezultat
+    min_score: Minimalni rezultat
+    too_long: Predugo
+    edit_warning: Uređivanje se preporučuje samo za manje izmjene ili ispravljanje pravopisnih pogrešaka. Za značajne promjene zatvorite ovaj {{pollType}} i započnite novi.
+    no_voting: Samo za raspravu, glasovanje onemogućeno
+  poll_common_attachment_form:
+    label: Prilozi
+  poll_common_add_option:
+    button:
+      add_option: Dodajte drugu opciju
+    modal:
+      title: Dodajte opciju
+    form:
+      add_options: Dodaj opcije
+      options_added: Dodane su nove opcije
+  poll_common_card:
+    show_results: Prikaži rezultate
+    hide_results: Sakrij rezultate
+    until_vote: Dok se ne glasa
+    until_you_vote: Dok ne glasate
+    until_poll_type_closed: Dok se {{pollType}} ne zatvori
+    until_voting_is_closed: Do zatvaranja glasanja
+    deleted: Ova anketa je izbrisana
+  discussions_panel:
+    open: Otvoren
+    all: svi
+    unread: Nepročitano (%{count})
+    closed: Zatvoreno
+    include_subgroups_mine: "{{name}} i moje podgrupe"
+    include_subgroups_all: "{{name}} i sve podgrupe"
+    no_results_found: Nema rezultata za "{{search}}"
+    welcome_to_your_new_group: Dobrodošli u svoju novu Loomio grupu!
+    lets_start_a_thread: Pokrenimo nit. Kliknite "Nova nit" za nastavak.
+  polls_panel:
+    new_poll: Nova anketa
+    any_type: Svi tipovi
+    any_status: Bilo kakav status
+    all: svi
+    open: Otvoren
+    closed: Zatvoreno
+    need_vote: Treba glasati
+    no_polls: Nisu pronađene ankete
+  group_files_panel:
+    no_files: Nije pronađena nijedna datoteka
+    filename: Naziv datoteke
+    uploaded_by: Prenio korisnik
+    uploaded_at: Učitano u
+    delete_confirmation: Jeste li sigurni da želite izbrisati ovaj privitak? Bit će uklonjen iz svih povezanih komentara ili niti. To se ne može poništiti.
+  subgroups_panel:
+    search_subgroups_of_name: Traži podgrupe {{name}}
+    group_without_subgroups: "{{name}} bez podgrupa"
+  poll_common_action_panel:
+    from_the_thread: Iz predloška niti
+    from_the_group: Iz grupe
+    default_templates: Zadani predlošci
+    default_template: Zadani predložak
+    custom_template: Prilagođeni predložak
+    default_poll_types: Zadane vrste anketa
+    suggested_templates: Predloženi predlošci
+    group_templates: Skupni predlošci
+    basic_templates: Osnovni predlošci
+    anonymous: Glasovi su anonimni
+    results_hidden_until_closed: Rezultati će biti prikazani nakon završetka glasovanja
+    results_hidden_until_vote: Rezultati će biti prikazani nakon što glasate
+    unable_to_vote: Niste pozvani da glasate u ovom %{poll_type}
+    draft_mode: Glasanje onemogućeno. Ovo još nije otvoreno za glasovanje.
+    voting_disabled_poll_is_template: Glasanje onemogućeno. Ovo je predložak.
+  poll_common_collapsed:
+    by_who: imenom}}
+  poll_common_calendar_invite:
+    calendar_invite: Uz ovaj ishod uključite pozivnicu za kalendar
+    poll_option_id: Vrijeme sastanka
+    helptext_on: Korisnici će moći dodati ovaj sastanak u svoj kalendar
+    helptext_off: Poziv za sastanak neće biti poslan
+    event_duration: Trajanje
+    event_summary: Naziv sastanka
+    event_summary_placeholder: Kako biste željeli nazvati ovaj sastanak?
+    event_description: Opis sastanka
+    event_description_placeholder: Koji je dnevni red ovog sastanka?
+    location: Mjesto
+    location_placeholder: Gdje će se održati ovaj sastanak?
+  poll_common_settings:
+    who_can_vote: Tko može glasati?
+    short_reason_can_be_helpful: Ako su razlozi glasovanja kratki, lakše ih je razumjeti. Zbirka sažetih razloga odličan je izvor za donošenje odluke.
+    specified_voters_only_true: Samo pozvani ljudi
+    specified_voters_only_false_group: Bilo tko u grupi
+    specified_voters_only_false_discussion: Bilo tko u temi
+    invite_people_next: Možete odabrati tko je pozvan da glasa nakon što pokrenete {{poll_type}}
+    shuffle_options:
+      shuffle_options: Mogućnosti nasumične reprodukcije
+      title: Prikaži opcije nasumičnim redoslijedom
+      helptext: Opcija koja je prva na popisu može dati pristranost. Koristite ovu postavku da biste spriječili taj učinak.
+    multiple_choice:
+      title: Više izbora
+      helptext_on: Kada budu odabrani, sudionici će moći odabrati više opcija.
+    anyone_can_participate:
+      title: Svatko s vezom može sudjelovati
+      helptext_on: Kad je odabrano, svatko s vezom na anketu može sudjelovati.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Budući da glasanje završava unutar 24 sata, neće se slati podsjetnici o skorom zatvaranju.
+      closes_too_soon: Budući da se ovaj {{pollType}} zatvara unutar 24 sata, neće se slati podsjetnici o skorom zatvaranju.
+      title: 24 sata prije zatvaranja {{pollType}} pošaljite podsjetnik na
+      voting_title: 24 sata prije zatvaranja glasanja pošaljite podsjetnik na
+      nobody: Nitko
+      author: Autor (ja)
+      undecided_voters: Neodlučni glasači
+      voters: Svi birači
+    notify_on_participate:
+      title: Obavijesti me kada ljudi sudjeluju
+      helptext_on: Kada odaberete, bit ćete obaviješteni kad god netko sudjeluje.
+    anonymous:
+      title: Anonimni birači
+      helptext_on: Kada se odabere, informacije o sudioniku neće biti prikazane uz svaki odgovor.
+    voter_can_add_options:
+      title: Glasači mogu dodati alternativne opcije
+    can_respond_maybe:
+      title: Birači mogu odgovoriti "ako treba"
+    allow_long_reason:
+      title: Dopustite da 'razlog' glasovanja bude dulji od 500 znakova
+    hide_results_until_closed:
+      title: Sakrij rezultate do zatvaranja
+      helptext_on: Ne prikazuj kako su ljudi glasovali dok se glasanje ne zatvori
+  poll_common_close_form:
+    title: Sada zatvoriti %{poll_type}?
+    helptext: Jeste li sigurni da želite ranije zatvoriti ovaj %{poll_type} i podijeliti rezultat?
+    close_poll_type: Zatvori %{poll_type}
+    poll_type_closed: "%{poll_type} zatvoreno"
+  poll_common_reopen_form:
+    title: Ponovno otvori {{poll_type}}
+    helptext: Ponovno otvorite {{poll_type}} ako ljudima treba više vremena za sudjelovanje
+    success: "{{poll_type}} ponovno otvorena"
+  poll_common_move_form:
+    title: Premjesti {{poll_type}}
+    success: "{{poll_type}} premješteno u {{group}}"
+  poll_common_wip_field:
+    voting_enabled: Glasanje omogućeno
+    enable_voting: Omogući glasovanje
+    title: Onemogući glasovanje
+    past_tense: Glasanje onemogućeno
+    draft_mode: Način nacrta
+    disable_voting_during_development: Ovaj %{poll_type} nije spreman za glasovanje
+    helptext: Ovaj %{poll_type} je u tijeku. Glasovanje možete omogućiti kasnije.
+    voting_open: Glasanje otvoreno
+    this_is_ready_for_voting: ovaj %{poll_type} je spreman za glasanje
+  poll_common_closing_at_field:
+    closing: Zatvaranje
+    no_closing_date: Nema datuma zatvaranja
+    closing_date: Završni datum
+    closing_hour: Vrijeme zatvaranja
+    invalid_date: Nevažeći datum
+  poll_card:
+    poll_type_by_name: "%{poll_type} od %{name}"
+    started_by: Pokrenuo {{name}}
+  poll_common_votes_panel:
+    vote_removed: Glas uklonjen
+    undecided: Neodlučan
+    newest_first: Prvo najnoviji
+    oldest_first: Prvo najstariji
+    priority_first: Prvo se složite
+    priority_last: Prvo blokiraj
+    undecided_first: Prvo neodlučni
+    no_votes_yet: Još nema glasova.
+    change_results_order: Promjena redoslijeda rezultata
+    none_of_the_above: "(Ništa od navedenog)"
+    name_or_username: Ime ili korisničko ime
+  poll_common_undecided_panel:
+    show_undecided: Prikaži %{count} neodlučenih
+    show_invitations: Prikaži pozivnice na čekanju
+    undecided_users: Neodlučan (%{count})
+    invitation_count_singular: 1 dodatna osoba je pozvana da sudjeluje putem e-pošte
+    invitation_count_plural: "%{count} dodatnih osoba pozvano je na sudjelovanje putem e-pošte"
+  poll_common_undecided_user:
+    reminded: Podsjetnik poslan!
+    reminder_sent: Obavijest o podsjetniku je poslana
+  poll_common_set_outcome_panel:
+    enter_outcome: Unesite ishod
+    poll_type: Ovaj %{poll_type} je zatvoren. Odvojite vrijeme za razmatranje rezultata, a zatim podijelite ishod kako bi ljudi znali što će se sljedeće dogoditi.
+  poll_common_outcome_form:
+    review_due_in_days: Nakon koliko dana preispitati odluku?
+    review_due_in_days_hint: Razdoblje (u danima) za čekanje prije pregleda odluke. (neobavezno)
+    review_date: Datum pregleda
+    review_date_hint: Postavite datum za reviziju odluke (nije obavezno)
+    who_to_notify: Koga želite obavijestiti o ovom ishodu? (neobavezno)
+    outcome_statement_template: Predložak izjave o ishodu
+    new_title: Državni ishod
+    update_title: Ažuriraj ishod
+    outcome_created: Ishod stvoren
+    outcome_updated: Ishod ažuriran
+    statement_placeholder: Sažmite odgovore i objasnite što će se sljedeće dogoditi.
+    statement_template_placeholder: Navedite predložak za pisanje ishoda odluke. (neobavezno)
+    you_will_be_notified: O datumu pregleda bit ćete obaviješteni.
+    submit: Podijelite ishod
+  poll_common_outcome_panel:
+    authored_by: Imenom}}
+  poll_common_delete_modal:
+    question: Jeste li sigurni da želite ovo izbrisati?
+    title: Izbriši {{pollType}}
+    success: Uspješno izbrisano
+  poll_common_form:
+    notify_everyone_when_poll_starts: Obavijesti sve kad %{poll_type} počne
+    option_has_votes_confirm_delete: Neki su ljudi glasali za ovu opciju, jeste li sigurni da je želite izbrisati?
+    example_title: Primjer naslova
+    example_title_hint: Navedite primjer dobrog naslova prijedloga
+    example_details_placeholder: Navedite polazište za prijedlog ili anketu. Pitanja mogu biti korisni poticaji za poticanje ljudi da pišu. Uključite sva pravila ili podsjetnike koje sudionici moraju znati.
+    confirm_delete: Jeste li sigurni da želite izbrisati ovaj predložak ankete? To se ne može poništiti.
+    show_advanced_settings: Prikaži napredne postavke
+    hide_advanced_settings: Sakrij napredne postavke
+    choose_at_least: Odaberite barem
+    choose_at_most: Odaberite najviše
+    please_review_the_form: Pregledajte obrazac
+    option_added_please_add_details: Dodana opcija! Dodajte neke detalje kako bi ljudi znali što to znači.
+    default_duration_in_days: Zadano trajanje u danima
+    default_duration_in_days_hint: Koliko dana treba dati ljudima da glasaju?
+    how_many_options_can_a_voter_choose: Koliko od ovih opcija birač može izabrati?
+    minimum_choices: Minimalni izbori
+    maximum_choices: Maksimalan izbor
+    content: Sadržaj
+    reminder: Podsjetnik
+    your_in_zone: 'Trenutna vremenska zona: %{zone}'
+    show_other_zones: Prikaži druge vremenske zone
+    hide_other_zones: Sakrij druge vremenske zone
+    this_is_a_template_for_new_polls: Ovo je predložak za nove ankete
+    voting_method: Način glasovanja
+    voting_methods:
+      question: Krug pitanja
+      question_hint: Pozovite pitanja i komentare na vaš prijedlog
+      show_thumbs: Pokazivanje palca
+      show_thumbs_hint: Glasači biraju palac gore, dolje, bočno ili ruku gore
+      choose: Odaberite
+      simple_poll: Jednostavna anketa
+      choose_hint: Glasači biraju najbolju opciju (ili opcije)
+      score: Postići
+      score_hint: Glasači dodjeljuju bodove svakoj opciji
+      allocate: Dodijeliti
+      allocate_hint: Glasači dodjeljuju proračun bodova između opcija
+      ranked_choice: Rangirani izbor
+      ranked_choice_hint: Birači poredaju opcije redom od najviše do najmanje preferiranih
+      time_poll: Vremenska anketa
+      time_poll_hint: Birači pokazuju kada su dostupni za susret
+    process: Postupak
+    process_name: Naslov predloška
+    process_name_hint: Kako se zove ovaj predložak? Npr. savjet o ulozi, provjera temperature, odobrenje zapisnika
+    process_subtitle: Podnaslov predloška
+    process_subtitle_hint: Opis u jednom retku kada ili zašto koristiti ovaj predložak
+    process_introduction: Pomoć za predloške
+    process_introduction_hint: Nekoliko odlomaka koji objašnjavaju kako koristiti predložak. Uključite poveznice na resurse koji bi mogli biti od pomoći.
+    you_can_set_a_prompt_per_option: Uredite upit za svaku opciju na kartici s detaljima
+    chart_type: Vrsta grafikona
+    title: Titula
+    title_hint: Koju odluku trebate donijeti?
+    no_options_add_some: Ova anketa nema opcija, dodajte neke ispod.
+    details: pojedinosti
+    example_details: Primjer detalja
+    details_placeholder: Ovo je vaša prilika da objasnite o čemu ljudi glasaju
+    options: Mogućnosti
+    options_placeholder: Navedite dostupne opcije
+    no_options: Još niste dodali nijednu opciju.
+    closing: Zatvaranje
+    closed: Zatvoreno
+    start: Početak
+    start_poll: Započni anketu
+    stance_reason_required_label: Navođenje razloga prilikom glasanja je...
+    stance_reason_required: Potreban
+    stance_reason_optional: Neobavezno
+    stance_reason_disabled: Onemogućeno
+    stance_reason_is_required: Navedite razlog svog glasa
+    limit_reason_length: Ograničite razlog na najviše 500 znakova
+    save_poll: Spremi anketu
+    start_poll_type: Pokreni {{poll_type}}
+    share_poll_type: Dijeli {{poll_type}}
+    who_may_vote: Tko može glasati u ovoj {{poll_type}}?
+    update: Ažuriraj
+    add_voters: Dodajte birače
+    notify_invitees: Pošaljite obavijesti
+    no_notifications_warning: Birači neće biti obaviješteni. Ovo je korisno ako provodite puno anketa i planirate sve obavijestiti kasnije.
+    count_voters_added: "%{count} glasača dodano"
+    poll_type_created: "%{poll_type} stvoreno"
+    poll_type_started: "%{poll_type} je započeo"
+    reason_prompt: Upit za razlog
+    anonymous_voting: Anonimno glasovanje
+    anonymous_voting_description: Ako je omogućeno, identitet birača neće biti povezan s njihovim glasovima. To se ne može poništiti.
+    votes_are_anonymous: Glasovi su anonimni
+    vote_reason: Razlog glasanja
+    vote_reason_description: Može biti korisno razumjeti zašto su ljudi glasali na način na koji su glasali. Ovom postavkom možete potaknuti ljude da podijele svoja razmišljanja kada glasaju.
+    hide_results_description: Ako želite da ljudi glasaju, a da ne znaju kako su drugi glasovali, možete sakriti rezultate ankete.
+    process_helptext: Imenujte i opišite proces koji se koristi za pokretanje ove ankete.
+    reminder_helptext: Pošaljite obavijest 'Uskoro se zatvara' prije zatvaranja ankete. Ovo može biti prilika da ljudi vide kako su drugi glasovali i preispitaju svoj glas ili samo način da povećaju sudjelovanje u anketi.
+  poll_proposal_form:
+    start_header: Započni prijedlog
+    edit_header: Uredi prijedlog
+    title_placeholder: Npr. Idemo na mjesec!
+    details_placeholder: Koji su detalji vašeg prijedloga?
+    proposal_created: Prosidba je započela
+    proposal_updated: Prijedlog ažuriran
+  record_modal:
+    record_video: Snimi video
+    record_audio: Snimi audio
+    record: Snimiti
+    stop: Stop
+    no_mic: Nije moguće pronaći mikrofon
+    no_camera: Nije moguće pronaći kameru
+    listen_to_audio: Poslušajte audio zapis
+    watch_video: Gledaj video
+    audio_transcript: 'Audio transkript: %{text}'
+    why_type_when_you_can_talk: Zašto tipkati kada možete razgovarati? Pošaljite glasovnu snimku
+    transcript_included: Transkript snimke bit će pridodan vašoj poruci
+  poll_poll_form:
+    multiple_choice_subtitle: Jednostavan način za procjenu popularnosti opcija
+    start_header: Započni anketu
+    edit_header: Uredi anketu
+    tip: Ponudite izbor između opcija
+    title_placeholder: Npr. Gdje želite ići na odmor?
+    details_placeholder: Navedite sve pojašnjavajuće pojedinosti koje bi ljudi mogli trebati da odgovore na pitanje.
+    add_option_placeholder: Dodaj opciju
+    new_option: Nova opcija
+    add_option_hint: Unesite kratki naziv za opciju
+    remove_option: Ukloni opciju
+    poll_created: Anketa je kreirana
+    poll_updated: Anketa ažurirana
+    option_added: Dodana opcija
+    option_already_added: Opcija je već dodana u anketu
+  poll_dot_vote_form:
+    dots_per_person: Bodovi po osobi
+    dots_per_person_helptext: Ukupan broj bodova koje svaka osoba mora dodijeliti.
+  poll_meeting_form:
+    timeslots: Vremenski odsječci
+    no_options: Unesite vremena u svojoj trenutnoj vremenskoj zoni ({{zone}}). Sudionici vide vremena prevedena u njihovu lokalnu vremensku zonu.
+    meeting_duration: Trajanje sastanka
+    add_option_placeholder: Dodajte novo vrijeme
+    time_slot_added: Vrijeme je dodano
+    time_slot_already_added: Vrijeme je već dodano
+    participants_see_local_times: Sudionici će vidjeti vremena lokalizirana na njihovu vremensku zonu
+    use_24_hour_format: Greška! Koristite 24-satni format, npr. %{time}
+  poll_ranked_choice_form:
+    no_options: Još niste dodali nijednu opciju.
+    add_option_placeholder: Unesite novi izbor
+    minimum_stance_choices: Mogućnosti za rangiranje
+    minimum_stance_choices_helptext: Koliko izbora ima glasač?
+    minimum_stance_choices_hint: tj. rangirajte svoja top 3 okusa sladoleda
+    ranked_choice_created: Stvoren rangirani izbor
+    ranked_choice_updated: Rangirani izbor ažuriran
+    rank: Rang
+    points: Bodovi
+    average: Prosjek
+    mean: Zlobno
+    pct_of_points: "% bodova"
+    pct_of_voters: "% birača"
+    percent: postotak
+  poll_meeting_time_field:
+    add_time_slot: Dodajte vremenski odsjek
+    new_time_slot: Novi termin
+    closing_hour: Zatvaranje
+  poll_proposal_vote_form:
+    default_reason_placeholder: Molimo objasnite svoje obrazloženje
+    abstain_reason_placeholder: Obavijestite ljude zašto se odustajete od ove odluke
+    agree_reason_placeholder: Što vam se sviđa u vezi s prijedlogom i kako će koristiti grupi?
+    disagree_reason_placeholder: Kako bi se ovaj prijedlog mogao poboljšati da ga možete podržati?
+    block_reason_placeholder: Objasnite svoju primjedbu na ovaj prijedlog i zašto se ne bi trebao pokrenuti
+    stance_created: Glasanje je kreirano
+    stance_updated: Glasanje ažurirano
+    vote: Glasanje
+  poll_proposal_options:
+    select_an_option: Odaberite opciju
+    agree: Slažem se
+    consent: Pristanak
+    abstain: Suzdržati se
+    unsure: nesigurno
+    disagree: Ne slažem se
+    objection: Prigovor
+    object: Objekt
+    block: Blok
+    no_voting: Nema glasanja
+  poll_count_form:
+    pct_of_target: "% cilja"
+    agree_target_helptext: Koji je ciljni broj volontera koji biste željeli imati?
+    agree_target_label: Broj cilja
+  poll_count_options:
+    accept: Prihvatiti
+    decline: Odbiti
+    'yes': Da
+    'no': Ne
+  poll_common_percent_voted:
+    sentence: "{{numerator}} od {{denominator}} osoba je sudjelovalo ({{percent}}%)"
+    target_progress: Postignuto je {{percent}}% cilja. ({{num}} / {{target}})
+  poll_meeting_chart_panel:
+    total: Ukupno
+  poll_remove_vote:
+    title: Ukloniti svoj glas?
+    helptext: Jeste li sigurni da želite ukloniti svoj glas? Bit ćete navedeni kao neodlučni i možete ponovno glasovati kasnije ako želite.
+    confirm: Ukloni glas
+    success: Glas uklonjen
+  poll_poll_vote_form:
+    stance_created: Glasanje je kreirano
+    stance_updated: Glasanje ažurirano
+  poll_score_vote_form:
+    stance_created: Glasanje je kreirano
+    stance_updated: Glasanje ažurirano
+  poll_meeting_vote_form:
+    local_time_zone: Lokalno vrijeme - {{zone}}
+    can_attend: Može prisustvovati
+    unable: Nesposoban
+    if_need_be: Ako treba
+    your_response: Kada možete prisustvovati?
+    stance_created: Dostupnost spremljena
+    stance_updated: Dostupnost ažurirana
+    reason_placeholder: Objasnite kada ste slobodni (ili zauzeti), u slučaju da autor želi dodati opcije.
+  poll_dot_vote_vote_form:
+    dots_remaining: "%{count} preostalih točaka"
+    too_many_dots: Upotrijebili ste previše točaka
+    stance_created: Glasanje je kreirano
+    stance_updated: Glasanje ažurirano
+  poll_ranked_choice_vote_form:
+    helptext: Povucite i ispustite opcije prema željenom redu (1 je vaša najpoželjnija opcija). Vaši najbolji %{count} izbori bit će zabilježeni.
+    stance_created: Izbor zabilježen
+    stance_updated: Izbor ažuriran
+  poll_templates:
+    proposal:
+      process_subtitle: Podići prijedlog za donošenje odluke
+      process_introduction: <p>Klasični Loomio prijedlog pomaže vam da donesete odluku, pretvarajući raspravu u jasan ishod.</p><p> Predložite smjer radnje i pozovite ljude da odgovore glasanjem za slaganje, suzdržanost ili neslaganje.</p><p> Dok ljudi glasaju, mogu dati razlog zašto su glasali na ovaj način. Možete vidjeti kako svi ostali stoje po tom pitanju i zašto.</p><p> Na ovaj način možete upotrijebiti prijedlog da potaknete ljude na odgovor, otkrijete nove informacije i izgradite zajedničko razumijevanje - kako biste pomogli svojoj grupi da donese bolju odluku s više informacija.</p><p> Prijedlog i povezana rasprava stvaraju vlastiti zapis o tome kako je odluka donesena.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Pročitajte više o korištenju klasičnog Loomio prijedloga u jednostavnom postupku odlučivanja</u></a> .</p>
+      title: Odobrite novi koncept marke
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Koju odluku trebate donijeti?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Da bi ovaj prijedlog prošao, potrebna nam je većina članova da se slažem.</p><p> Ako se ne slažete, recite zašto i što treba promijeniti da biste se složili.</p>
+      agree: Slažem se
+      agree_meaning: Podržavam prijedlog
+      agree_prompt: Što vam se sviđa u vezi s prijedlogom i kako će koristiti grupi?
+      abstain: Suzdržati se
+      abstain_meaning: Odabrali da ne želite ili ne možete glasovati za ovu odluku.
+      abstain_prompt: Zašto ste suzdržani, odnosno ne možete glasati za ovu odluku?
+      disagree: Ne slažem se
+      disagree_meaning: Nešto u ovom prijedlogu treba promijeniti prije nego što ga mogu podržati.
+      disagree_prompt: Kako bi se ovaj prijedlog mogao poboljšati da ga možete podržati?
+    advice:
+      process_subtitle: Potražite savjet o odluci koju trebate donijeti
+      process_introduction: <p>Potražite savjet o odluci koju trebate donijeti, uz savjete ljudi na koje se to odnosi ili onih koji imaju stručnost, kako biste mogli donijeti bolju odluku za svoju organizaciju.</p><ul><li><p> Savjet vam pomaže da donesete bolju odluku za svoju organizaciju.</p></li><li><p> Njegujte odnose, prilike za učenje i različite doprinose.</p></li><li><p> Poticati inicijativu i kreativnost, te više uživati u radu.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Pročitajte više o postupku savjetovanja</u></a> .</p>
+      title: Pomozite Takashiju kupiti novo računalo
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Koju odluku trebate donijeti?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Koje savjete tražite od ljudi da vam pomognu da donesete dobru odluku?</strong></h3><p></p><p> Tražim vaše mišljenje kako biste mi pomogli da donesem dobru odluku za našu organizaciju.</p>
+      agree: Slažem se
+      agree_meaning: Dao sam svoj savjet o ovoj odluci
+      agree_prompt: Sažmite svoj savjet ili dajte koristan komentar
+      abstain: Suzdržati se
+      abstain_meaning: Nemam nikakav savjet za ponuditi
+      abstain_prompt: Imate li komentara koji bi mogli biti od pomoći?
+    consent:
+      process_subtitle: Donesite odluku koju je 'sigurno isprobati', bez prigovora
+      process_introduction: <p>Zatražite pristanak na odluku koju trebate donijeti, gdje nema smislenih prigovora na vaš prijedlog, tako da možete donijeti brzu odluku za svoju organizaciju koja je "sigurna za isprobavanje".</p><ul><li><p> Težite 'dovoljno dobroj' odluci</p></li><li><p> Uključite mnoge glasove kako biste razvili izvediv prijedlog</p></li><li><p> Pitajte ako netko ima valjan prigovor</p></li><li><p> Prijedlog dopuniti radi rješavanja prigovora</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Pročitajte više o postupku pristanka</a> .</p>
+      title: Angažirajte Chloe za dizajnersku ulogu
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Koju odluku trebate donijeti?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Što tražite od ljudi u ovom prijedlogu?</strong></h3><p></p><p> Ako imate primjedbu, recite zašto i predložite promjenu prijedloga koja će ga učiniti sigurnim.</p><p> Ne zaboravite da tražimo pristanak za 'dovoljno dobru' odluku koja je 'sigurna za isprobavanje', kako bismo mogli donijeti dobru odluku za našu organizaciju.</p>
+      consent: Pristanak
+      consent_meaning: Prijedlog je siguran za isprobati
+      consent_prompt: Što vam se sviđa kod prijedloga i kako će on koristiti organizaciji?
+      objection: Prigovor
+      objection_meaning: Imam opravdan prigovor i mislim da će prijedlog nanijeti štetu
+      objection_prompt: Koja je promjena ovog prijedloga potrebna da bi bio "siguran za isprobavanje", tako da ga možete podržati?
+    consensus:
+      process_subtitle: Postići kolektivni ugovor sa svim uključenima
+      process_introduction: <p>Izgradite konsenzus za odluku koju trebate donijeti, kako biste postigli dogovor koji zadovoljava potrebe i brige svih sudionika.</p><ul><li><p> Razgovarajte i zajedno izradite prijedlog</p></li><li><p> Uključite i poštujte sve uključene</p></li><li><p> Tražite suglasnost većine ljudi</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Pročitajte više o procesu konsenzusa</a> .</p>
+      title: Odobrite novi koncept marke
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Koju odluku trebate donijeti?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Da bi ovaj prijedlog prošao, potrebna nam je većina članova da se slažem.</p><p> Ako se ne slažete, recite zašto i što treba promijeniti da biste se složili.</p>
+      agree: Slažem se
+      agree_meaning: Podržavam prijedlog
+      agree_prompt: Što vam se sviđa kod prijedloga i kako će on koristiti organizaciji?
+      abstain: Suzdržati se
+      abstain_meaning: Ova odluka ne utječe na mene i zadovoljan sam što god grupa odluči
+      abstain_prompt: Zašto ste suzdržani, odnosno ne možete glasati za ovu odluku?
+      disagree: Ne slažem se
+      disagree_meaning: Nešto u ovom prijedlogu treba promijeniti prije nego što ga mogu podržati
+      disagree_prompt: Kako bi se ovaj prijedlog mogao poboljšati da ga možete podržati?
+      block: Blok
+      block_meaning: Blokiram ovaj prijedlog i smatram da se ne bi trebao nastaviti
+      block_prompt: Objasnite svoju primjedbu na ovaj prijedlog i zašto se ne bi trebao pokrenuti
+    question_round:
+      process_subtitle: Pozovite razjašnjavajuća pitanja kako biste pomogli ljudima da razumiju prijedlog
+      process_introduction: <p>Krug pitanja je prilika za ljude da postave razjašnjavajuća pitanja o prijedlogu, tako da svi razumiju prijedlog prije nego što kažu što misle o njemu.</p><p> Krug Loomio Question poseban je prijedlog bez mogućnosti glasovanja. Omogućuje sudionicima da postavljaju pitanja unutar trajanja koje ste postavili za krug.</p><p> Krug pitanja obično se koristi kao korak u procesu pristanka.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Pročitajte više o postupku pristanka</a> .</p>
+      title: Koja pitanja imate o politici zdravlja i sigurnosti?
+      details: <h3 id="what-are-you-proposing"><strong>Što predlažeš?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Ovo je krug pitanja u kojem ste pozvani da postavite razjašnjavajuća pitanja.</p><p> Što trebate znati kako biste razumjeli prijedlog?</p><p> Odgovorite prije zatvaranja kruga pitanja.</p>
+      reason_prompt: Što trebate znati kako biste razumjeli prijedlog?
+    sense_check:
+      process_subtitle: Zatražite povratne informacije, pitanja i nedoumice
+      process_introduction: <p>Prijedlog provjere Sense dobar je način za dobivanje povratnih informacija, postavljanje pitanja i otkrivanje problema. Pomaže razjasniti i poboljšati prijedlog prije nego što se prijeđe na odluku.</p><p> Provjera smisla daje ljudima do znanja da se priprema prijedlog i potiče ih na angažman. To je prilika da slušate ljude, osjetite kako se osjećaju i prikladno reagirate - otvarajući potencijal za uključivanje njihovih doprinosa u donošenje bolje odluke.</p><p> Upotrijebite prijedlog provjere smisla u procesu pristanka da pozovete reakcije i komentare kako biste poboljšali prijedlog, a u procesu konsenzusa za testiranje konsenzusa.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Pročitajte više o korištenju provjere smisla u postupku jednostavnog odlučivanja</u></a> <span>.</span></p>
+      title: Što mislite o novim konceptima robne marke?
+      details: <h3 id="what-are-you-proposing"><strong>Što predlažeš?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Što mislite o prijedlogu? Ostavite komentar ili dajte prijedlog za poboljšanje.</p><p> Ova Sense provjera prilika je za vaš doprinos i doprinos kako biste nam pomogli da donesemo bolju odluku.</p>
+      looks_good: Izgleda dobro
+      looks_good_meaning: Zadovoljan sam kuda ovo ide
+      looks_good_prompt: Imate li primjedbi ili prijedloga za poboljšanje prijedloga?
+      abstain: Suzdržati se
+      abstain_meaning: Nemam što dodati, niti bilo kakvu primjedbu na ovaj rad.
+      abstain_prompt: Suzdržanost podrazumijeva suglasnost sa smjerom ovog prijedloga. Postoji li razlog zašto glasate za suzdržanost?
+      concerned: Zabrinut
+      concerned_meaning: Nešto u vezi ovoga možda treba promijeniti da bih pristao ili se složio
+      concerned_prompt: Što vas brine i kako se to može riješiti?
+    gradients_of_agreement:
+      process_subtitle: Izrazite podršku prijedlogu na ljestvici od 8 stupnjeva
+      process_introduction: <p>Prijedlozi Gradijenata slaganja omogućuju članovima grupe da izraze svoju podršku prijedlogu u stupnjevima na ljestvici, nudeći više načina izražavanja podrške nego u terminima "slažem se" i "ne slažem se".</p><p> Upotrijebite Gradijente slaganja kao preliminarni krug za testiranje podrške za prijedlog prije prelaska na formalni sporazum.</p><p> Gradijent slaganja daje ljudima do znanja da se priprema prijedlog i potiče ih na angažman. To je prilika da slušate ljude, osjetite kako se osjećaju i prikladno reagirate - otvarajući potencijal za uključivanje njihovih doprinosa u donošenje bolje odluke.</p>
+      title: Kako vam se sviđa nova izjava o vrijednostima?
+      details: <h3 id="what-are-you-proposing"><strong>Što predlažeš?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Kako vam se sviđa prijedlog? Izrazite svoju podršku na donjoj ljestvici i ostavite komentar ili prijedlog za poboljšanje.</p><p> Ovaj prijedlog Gradijenata sporazuma je testiranje podrške za prijedlog i prilika za vaš doprinos prije prelaska na formalni sporazum.</p>
+      whole_hearted_endorsement: Potvrda od sveg srca
+      whole_hearted_endorsement_meaning: Stvarno mi se sviđa!
+      whole_hearted_endorsement_prompt: Što ti se sviđa kod toga?
+      agreement_with_minor_contention: Sporazum s manjim sporom
+      agreement_with_minor_contention_meaning: Nije savršeno, ali je dovoljno dobro
+      agreement_with_minor_contention_prompt: Što je tvoja briga?
+      support_with_reservations: Podrška s rezervacijom
+      support_with_reservations_meaning: Mogu živjeti s tim
+      support_with_reservations_prompt: Koje su vaše rezerve?
+      abstain_meaning: Ovo pitanje me se ne tiče
+      abstain_prompt: Želite li nešto dodati?
+      more_discussion_needed: Potrebna je dodatna rasprava
+      more_discussion_needed_meaning: Još ne razumijem probleme dovoljno dobro
+      more_discussion_needed_prompt: Što ne razumiješ?
+      don_t_like_but_will_support: Ne sviđa mi se, ali ću podržati
+      don_t_like_but_will_support_meaning: Nije sjajno, ali ne želim zadržavati grupu
+      don_t_like_but_will_support_prompt: Što biste željeli da se poboljša?
+      serious_disagreement: Ozbiljno neslaganje
+      serious_disagreement_meaning: Ne slažem se s tim - ne računajte na mene
+      serious_disagreement_prompt: S čime se ne slažete?
+      veto: Veto
+      veto_meaning: Blokiram ovaj prijedlog
+      veto_prompt: Zašto blokirate prijedlog? Što treba promijeniti da biste to podržali?
+    simple_poll:
+      process_subtitle: Pronađite najpopularniju opciju
+      process_introduction: <p>Prije nego što donesete odluku, saznajte koje su opcije do kojih je ljudima najviše stalo.</p><p> Jednostavna anketa pomaže vam pronaći najpopularniju opciju ili opcije s jednim ili višestrukim izborom.</p><p> Napišite sve pojedinosti o opcijama u polje s detaljima, zatim unesite naziv opcije i kliknite + za dodavanje.</p><p> Postavite <strong>Minimalni izbor</strong> i <strong>Maksimalni izbor</strong> koji glasač može izabrati. Ostavite najveći izbor kao 1 za anketu s jednim izborom.</p><p> Možete koristiti ikonu olovke uz svaku opciju da biste dodali <strong>značenje</strong> opcije, dodatno razradivši opciju kako biste pomogli ljudima prilikom glasovanja.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Pročitajte više o Jednostavnoj anketi</a> .</p>
+      title: Gdje bi trebao biti fokus našeg strateškog usmjerenja?
+      details: <h3 id="what-is-this-poll-about"><strong>O čemu se radi u ovoj anketi?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Odaberite opciju(e) koju preferirate.</p>
+    score_poll:
+      process_subtitle: Izmjerite stupanj podrške za svaku opciju
+      process_introduction: <p>Upotrijebite Score poll kada želite ispitati ljude o njihovim željama, preferencijama ili interesu za svaku opciju.</p><p> <span>Od sudionika se traži da procijene svaku opciju i dodijele rezultat pomicanjem klizača duž ljestvice.</span></p><p> <span>Rezultati su prikazani grafički zajedno s tablicom za svaku opciju koja prikazuje ukupne bodove, srednje bodove i broj glasača.</span></p><p> Napredne postavke uključuju 'Glasovi su anonimni' i 'Prikaži opcije nasumičnim redoslijedom' - obično se koriste za anketu Score kako bi se smanjila pristranost pri glasovanju.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Pročitajte više o Score anketi</a> .</p>
+      title: Procjena načina na koji se donose odluke u našoj organizaciji
+      details: <h3 id="what-is-this-poll-about"><strong>O čemu se radi u ovoj anketi?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Odaberite opciju(e) koju preferirate.</p>
+    dot_vote:
+      process_subtitle: Dodijelite proračun bodova kako biste otkrili prioritete
+      process_introduction: <p>Glasanje točkama korisno je za skupine koje pokušavaju dodijeliti ograničeni resurs određenom broju opcija. Nadilazi jednostavnu anketu pomažući sudionicima da shvate da postoji ograničenje pri odabiru opcija.</p><p> Svaki od sudionika dobiva određeni broj točaka. Vi odlučujete koliko.</p><p> Stavljaju točke pored predstavljenih opcija koje im se sviđaju. Sudionici mogu staviti sve svoje točke na jednu opciju ili ih rasporediti na više opcija.</p><p> Kako sudionici raspoređuju bodove, mogu premašiti ograničenje proračuna za bodove i stoga ih se potiče da pažljivo razmotre kako troše svoje bodove.</p><p> Pobjeđuju opcije s najviše točkica. Tablica s rezultatima pruža dodatne podatke koji će vam pomoći u analizi rezultata.</p><ul><li><p> % bodova</p></li><li><p> Bodovi</p></li><li><p> Zlobno</p></li><li><p> Birači</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Pročitajte više o Dot vote</a> .</p>
+      title: Odabir tema za našu konferenciju
+      details: <h3 id="what-is-this-poll-about"><strong>O čemu se radi u ovoj anketi?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> U ovoj anketi imate proračun od 8 točaka koje možete dodijeliti opcijama koje preferirate. Sve točkice možete staviti na jednu opciju ili ih rasporediti.</p>
+    ranked_choice:
+      process_subtitle: Razumjeti poredane preferencije opcija
+      process_introduction: <p>Izbor rangiranja koristan je kada imate veliki broj opcija ili održavate izbore.</p><p> Ovaj predložak ankete nudi niz opcija za glasanje prema željenom redoslijedu.</p><p> Možete postaviti broj izbora koje će glasač dobiti.</p><p> <span>Glasači mogu povući i ispustiti opcije prema željenom redu (broj 1 je vaša najpoželjnija opcija).</span></p><p> <span>Napredne postavke uključuju 'Glasovi su anonimni' i 'Prikaži opcije nasumičnim redoslijedom' - obično se koriste za rangirani</span> izbor kako bi se smanjila pristranost pri glasovanju.</p><p> Rezultati su prikazani u rangiranom redoslijedu. Tablica s rezultatima pruža dodatne podatke koji će vam pomoći u analizi rezultata.</p><ul><li><p> Rang</p></li><li><p> % bodova</p></li><li><p> Bodovi</p></li><li><p> Zlobno</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Pročitajte više o rangiranom izboru</a> .</p>
+      title: Birajte direktore u upravni odbor
+      details: <h3 id="what-is-this-poll-about"><strong>O čemu se radi u ovoj anketi?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Zašto je to važno?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Što tražite od ljudi da učine?</strong></h3><p></p><p> Glasujte rangiranjem opcija po svom izboru. Pobjeđuje opcija koja je prva u rezultatima.</p>
+    time_poll:
+      process_subtitle: Saznajte kada su ljudi dostupni za sastanak
+      process_introduction: <p><span>Uštedite vrijeme dogovarajući datum za vaš sastanak ili događaj.</span></p><p> Vremenska anketa olakšava uvid u svačiju dostupnost i pronalaženje najboljeg vremena.</p><p> Dajte svojoj Time anketi naslov i detalje. Unesite popis opcija datuma i vremena u vašoj vremenskoj zoni.</p><p> Prilikom postavljanja vremenskih odsječaka uzmite u obzir ljude u različitim vremenskim zonama. Sudionici će vidjeti vremena lokalizirana u njihovoj vremenskoj zoni.</p><p> Odredite trajanje sastanka.</p><p> Kada se anketa Time zatvori, postavite ishod s najboljim vremenom i svim uputama za sastanak.</p><p> <span>Loomio će uključiti pozivnicu za kalendar s e-poštom s obavijesti o ishodu, tako da sudionici mogu dodavati u svoj kalendar.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Pročitajte više o Time anketi</a> .</p>
+      title: Nađimo datum za sljedeći sastanak
+      details: "<p><strong>Što je sastanak ili događaj?</strong></p><p></p><p> <strong>Zašto je to važno?</strong></p><p></p><p> <strong>Što tražite od ljudi da učine?</strong></p><p></p><p> <span>Označite vremenske intervale za koje ste dostupni zelenom ikonom 'palac gore' ili ostavite crveni 'palac dolje' na mjestu kada niste dostupni.</span></p><p> <span>Upotrijebite ikonu 'palac u stranu' da kažete da ste dostupni 'ako bude potrebno'.</span></p>"
+      reason_prompt: Možete li reći nešto što bi pomoglo organizatoru da pronađe prikladno vrijeme?
+    opt_in:
+      process_subtitle: Pronađite volontere ili zatražite sudionike
+      process_introduction: '<p>Koristite Opt-in da pozovete ljude da se pridruže timu, odboru ili radnoj grupi ili da sudjeluju u događaju.</p><p> ''Opt-in'' ima dvije opcije glasanja: Prihvati ili Odbij.</p><p> Možete definirati ciljni broj ljudi koje tražite, recimo 3 osobe da se pridruže vašoj radnoj grupi.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Pročitajte više o uključivanju</a> .</p>'
+      title: Radna skupina za izradu nacrta naše nove politike održivosti
+      details: "<p><strong>Koji je tim, radna grupa ili događaj na koji pozivate ljude?</strong></p><p></p><p> <strong>Zašto je to važno?</strong></p><p></p><p> <strong>Što tražite od ljudi da učine?</strong></p><p></p><p> Odaberite 'Prihvati' za sudjelovanje!</p>"
+      accept_meaning: Voljan sam sudjelovati
+      accept_prompt: Zašto volontiraš za ovo?
+      decline_meaning: Ne mogu sudjelovati
+      decline_prompt: Želiš li nešto reći?
+  thread_item:
+    removed: Stavka uklonjena
+    deleted_group: Izbrisana grupa
+    invite_only_thread: Nit samo na poziv
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> kao odgovor na <strong>{{title}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> uredio je naslov teme"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> uredio je kontekst niti"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> promijenio je privatnost niti"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je uredio nit"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je premjestio nit iz <strong>{{title}}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je zatvorio temu"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ponovno je otvorio temu"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je stvorio račvanje ove niti: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{Autor}}</a>"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> podijelio je ishod"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ponovno je otvorio {{polltype}}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je zatvorio {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je započeo {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je uredio {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je dodao opcije u {{polltype}}"
+    poll_expired: "{{polltype}} zatvoreno"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je glasao za: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je ažurirao svoj glas za: <strong>{{title}}</strong>"
+    event_removed: Uklonjeno iz niti
+  add_poll_to_thread_modal:
+    success: Uspjeh, {{pollType}} dodan u nit!
+  auth_form:
+    code: '000000'
+    youre_invited: Pozvani ste da se pridružite {{group_name}}.
+    youre_invited_discussion: Pozvani ste da se pridružite raspravi.
+    youre_invited_poll: Pozvani ste da glasate.
+    existing_account_can_sign_in: Ako ste već korisnik {{site_name}}, prijavite se sa svojim postojećim računom
+    sign_up_or_log_in: Izradite račun ili se prijavite na {{site_name}}
+    sign_in_to_loomio: Prijavite se na {{site_name}}
+    sign_in_help: Problemi s prijavom?
+    sign_in: Prijaviti se
+    continue: Nastaviti
+    create_account: Napravi račun
+    sign_up_as: Izradi račun kao {{email}}
+    sign_in_as: Prijavite se kao {{name}}
+    continue_with_provider: Nastavite s {{provider}}
+    continue_with_email: Nastavite s e-poštom
+    or_enter_your_email: Ili unesite svoju adresu e-pošte
+    enter_your_name: Unesite svoje ime
+    invitation_required: Za kreiranje računa potrebna vam je pozivnica. Za nastavak slijedite vezu iz svoje pozivnice e-pošte.
+    more_providers: Više
+    email_not_present: Adresa e-pošte je obavezna
+    invalid_email: Nažalost, to ne izgleda kao valjana adresa e-pošte
+    invalid_password: Nažalost, ta lozinka ne odgovara onoj koju imamo u evidenciji
+    invalid_token: Nažalost, nismo mogli upotrijebiti taj token za vašu prijavu. Kliknite ispod da biste poslali drugi.
+    account_locked: Vaš račun je zaključan nakon previše neuspjelih pokušaja prijave. Provjerite svoju e-poštu za vezu za otključavanje
+    email_not_found: Nažalost, nismo mogli pronaći račun s tom adresom e-pošte
+    email_taken: Email adresa je već registrirana
+    email_placeholder: vi@example.com
+    login_with_token: Spreman si! Za nastavak kliknite vezu ispod.
+    login_link_helptext: Pritisnite gumb ispod i poslat ćemo vam poveznicu za prijavu.
+    enter_your_password: Unesite svoju lozinku za nastavak
+    check_spam_folder: Ako e-pošta ne stigne uskoro, provjerite svoju spam mapu.
+    sign_up_helptext: Ispunite ovaj obrazac za kreiranje korisničkog računa
+    i_accept_all: Prihvaćam {{termsLink}} i {{privacyLink}}
+    newsletter_label: Želim primiti {{link}}
+    name_placeholder: Tvoje ime
+    name_required: Molimo unesite ime
+    terms_required: Morate prihvatiti Uvjete usluge
+    account_inactive: Uh-oh, izgleda da je račun za {{email}} deaktiviran!
+    privacy_notice: Nikada nećemo prodati vaše podatke.<br> <a href='{{privacyUrl}}' target='_blank'>Politika privatnosti</a>
+    welcome: Novi ste na {{siteName}}?
+    welcome_back: Dobro došao natrag, {{name}}!
+    forgot_password: Zaboravili ste lozinku
+    login_link: Pošalji e-poštu za prijavu
+    sign_in_via_email: Prijavite se putem e-pošte
+    set_password: Postavi lozinku
+    set_password_helptext: Želite li sljedeći put koristiti lozinku?
+    hello: Pozdrav, {{name}}!
+    new_to_loomio: Prvi put na {{site_name}}?
+    already_a_user: Već imate račun?
+    email_address_of_existing_account: Unesite adresu e-pošte vašeg postojećeg računa
+    link_accounts: Povežite račune
+    check_your_email: Provjerite e-poštu!
+    login_link_sent: Poslali smo e-poruku na {{email}}.
+    instructions: 'Kliknite vezu za prijavu ili unesite kod ispod:'
+    instructions_code: 'Unesite kod iz te e-pošte:'
+    too_many_attempts: Previše pokušaja; pokušajte kliknuti vezu u e-poruci da biste se prijavili.
+    invalid_code: Žao nam je, taj kôd nije odgovarao. Provjerite e-poštu i pokušajte ponovo.
+    password_link_sent: Poslali smo e-poruku na {{email}} s uputama o tome kako postaviti lozinku.
+    reactivate_link_sent: Poslali smo vam e-poruku s uputama za ponovno aktiviranje vašeg računa
+    signed_in: Uspješno ste prijavljeni
+    email_verified: E-pošta je uspješno potvrđena
+    name: Ime
+    email: E-mail
+    password: Lozinka
+    reactivate: Ponovno aktiviranje računa
+  chatbot:
+    configure_chatbot: Konfigurirajte chatbot
+    test_connection: Testirajte vezu
+    test_connection_ok: Izgleda dobro! Trebali biste vidjeti poruku na kanalu
+    test_connection_bad: Nešto nije u redu s postavkama
+    name: Ime chatbota
+    connection_test_successful: Test veze Loomio bota uspješan!
+    chatbot: Chatbot
+    chatbots: Chatbotovi
+    saved: Chatbot spremljen!
+    webhook_url: Webhook URL
+    homeserver_url: URL kućnog poslužitelja
+    channel: Kanal
+    username: Korisničko ime
+    password: Lozinka
+    access_token: Pristupni token
+    add_chatbot: Dodaj chatbot
+    matrix: Matrica
+    slack: Zatišje
+    discord: Razdor
+    mattermost: najvažnije
+    microsoft_teams: Microsoftovi timovi
+    event_kind_helptext: Odaberite događaje o kojima će bot uvijek biti obaviješten. Ako niste sigurni, jednostavno ih sve isključite.
+    notification_only_label: Pošalji samo naslov obavijesti
+    check_for_test_message: Provjerite svoju chat sobu za poruku od bota!
+  webhook:
+    integrations: Integracije
+    api_keys: API ključevi
+    webhooks: Web-dojalice
+    webhook: Webhook
+    add_api_key: Dodaj API ključ
+    edit_api_key: Uredi API ključ
+    api: API
+    format: Format
+    formats:
+      markdown: Markdown (za Mattermost, Zapier i druge)
+      microsoft: Microsoftovi timovi
+      slack: Zatišje
+      discord: Razdor
+    subtitle: Povežite se na Loomio s ostalim svojim alatima pomoću našeg API-ja
+    deprecated: Ovaj API je zastario. Prijeđite na APIv2 (pogledajte API dokumente u izborniku postavki grupe)
+    we_have_guides: Pogledajte naše <a href="{{url}}" target="_blank">vodiče za postavljanje web-dojavnika</a> za pomoć pri povezivanju vaše usluge.
+    add_webhook: Dodajte web-dojavnik
+    show_docs: Pogledajte korištenje API-ja
+    save_to_show_docs: Nakon što spremite, vratite se ovdje kako biste pronašli svoj API ključ
+    edit_integration: Uredi integraciju
+    add_integration: Dodajte integraciju
+    success: Dodana integracija!
+    remove: Ukloni integraciju
+    confirm_remove: 'Jeste li sigurni da želite ukloniti integraciju: {{name}}?'
+    removed: Integracija uklonjena
+    url_label: Webhook URL
+    url_placeholder: https://kuke.example.com/...
+    name_label: Ime
+    name_placeholder: Dajte ovoj integraciji naziv kako biste je mogli identificirati
+    event_kind_helptext: O kojim događajima želite da webhook bude obaviješten?
+    event_kinds:
+      new_discussion: Pokrenuta je nit
+      discussion_edited: Nit je uređena
+      poll_edited: Anketa je uređena
+      new_comment: Daje se komentar
+      poll_created: Pokreće se anketa
+      stance_created: Glasuje se
+      stance_updated: Glasanje je promijenjeno
+      poll_closing_soon: Anketa se uskoro zatvara
+      poll_expired: Anketa ističe
+      poll_closed_by_user: Anketa se zatvara ručno
+      poll_reopened: Anketa je ponovno otvorena za glasovanje
+      outcome_created: Ishod se dijeli
+      outcome_updated: Ishod je ažuriran
+      outcome_review_due: Predstoji pregled ishoda
+    permissions_explaination: Odaberite koje se radnje mogu izvršiti ovom integracijom
+    permissions:
+      show_discussion: pokazati raspravu
+      create_discussion: stvoriti raspravu
+      create_poll: stvoriti anketu
+      show_poll: pokazati anketu
+      read_memberships: čitaj članstva
+      manage_memberships: upravljanje članstvom (dodavanje ili uklanjanje članova grupe)
+    include_body_label: Uključi tijelo poruke s obavijesti
+  powered_by:
+    this_is_loomio_md: Loomio je aplikacija za zajedničko donošenje odluka. [Isprobajte besplatno](https://www.loomio.com)
+    slogan: Bolje odluke zajedno
+    powered_by_loomio: Pokreće Loomio
+    privacy_policy: Politika privatnosti
+    terms_of_service: Uvjeti pružanja usluge
+    front_page: Naslovna strana
+  group_survey:
+    describe_other: Odaberite kategoriju koja najbolje opisuje vašu grupu
+    categories:
+      party: Politička stranka
+      coop: Zadruga
+      union: Unija
+      board: Upravljanje i odbori
+      nonprofit: neprofitna
+      membership: Organizacija članstva
+      professional: Tvrtka za profesionalne usluge
+      self_managing: Samoupravna organizacija
+      community: Grupa zajednice
+      government: Vlada/Lokalna uprava
+      other: ostalo

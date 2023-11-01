@@ -1,100 +1,2496 @@
+---
 fi:
   common:
     confirm_discard_changes: Hylätäänkö muutoksesi?
     time:
       am: aamupäivällä
       pm: iltapäivällä
-    closing_in: 'Sulkeutuu {{time}}'
-    closed_ago: 'Suljettu {{time}}'
-    volume: 'Äänenvoimakkuus'
-    notification_volume: 'Ilmoitusten äänenvoimakkuus'
-    group: 'Ryhmä'
-    groups: 'Ryhmät'
+    closing_in: Sulkeutuu {{time}}
+    closed_ago: Suljettu {{time}}
+    volume: Äänenvoimakkuus
+    notification_volume: Ilmoitusten äänenvoimakkuus
+    group: Ryhmä
+    groups: Ryhmät
     privacy:
-      privacy: 'Yksityisyys'
-      public: 'Julkinen'
-      open: 'Avoin'
-      closed: 'Suljettu'
-      private: 'Yksityinen'
-      secret: 'Salainen'
-    selected: 'Valittu'
+      privacy: Yksityisyys
+      public: Julkinen
+      open: Avoin
+      closed: Suljettu
+      private: Yksityinen
+      secret: Salainen
+    selected: Valittu
     date_range:
-      today: 'Tänään'
-      yesterday: 'Eilen'
-      thisweek: 'Tällä viikolla'
-      thismonth: 'Tässä kuussa'
-      older: 'Vanhempi'
-    more_help: 'Lisää apua'
-    copied: 'Kopioitu leikepöydälle'
+      today: Tänään
+      yesterday: Eilen
+      thisweek: Tällä viikolla
+      thismonth: Tässä kuussa
+      older: Vanhempi
+    more_help: Lisää apua
+    copied: Kopioitu leikepöydälle
     action:
-      back: 'Back'
-      close: 'Sulje'
-      save: 'Tallenna'
-      save_changes: 'Tallenna muutokset'
-      update_settings: 'Päivitä asetukset'
-      reply: 'Vastaa'
-      edit: 'Muokkaa'
-      remove: 'Poista'
-      like: 'Tykkää'
-      unlike: 'En tykkääkkään'
-      update: 'Päivitä'
-      cancel: 'Peruuta'
-      show_more: "Näytä lisää"
-      view_all: "Näytä kaikki"
-      new_thread: "Uusi aihe"
-      loading: 'Ladataan'
-      translate: 'Käännä'
-      upload: 'Lataa'
-      uploading: 'Lataaminen'
+      back: Back
+      close: Sulje
+      save: Tallenna
+      save_changes: Tallenna muutokset
+      update_settings: Päivitä asetukset
+      reply: Vastaa
+      edit: Muokkaa
+      remove: Poista
+      like: Tykkää
+      unlike: En tykkääkkään
+      update: Päivitä
+      cancel: Peruuta
+      show_more: Näytä lisää
+      view_all: Näytä kaikki
+      new_thread: Uusi aihe
+      loading: Ladataan
+      translate: Käännä
+      upload: Lataa
+      uploading: Lataaminen
+      print: Tulosta
+      preview: Esikatselu
+      pin: Pin
+      unpin: Irrota kiinnitys
+      search: Hae
+      filter: Suodattaa
+      next: Seuraava
+      reopen: Avaa uudelleen
+      move: Liikkua
+      undo_remove: Kumoa poistaminen
+      hide: Piilottaa
+      unhide: Näytä
+      show_fewer: Näytä vähemmän
+      view_count_more: Näytä %{count} muuta
+      view_count_responses: Näytä %{count} vastausta
+      count_more: "%{count} lisää"
+      count_responses: "%{count} vastausta"
+      add_subgroup: Uusi alaryhmä
+      load_more: Lataa lisää
+      share: Jaa
+      ok: Ok
+      retry: Yritä uudelleen
+      clear: Asia selvä
+      done: Tehty
+      start: alkaa
+      delete: Poistaa
+      discard: Hävitä
+      restore: Palauttaa
+      unsubscribe: Lopeta tilaus
+      subscribe: Tilaa
+      unignore: Jätä huomioimatta
+      remind: Muistuttaa
+      resend: Uudelleen lähettää
+      send: Lähettää
+      joined: Liittyi
+      last_seen: Viimeksi nähty
+      invite: Kutsu
+      resent: Kutsu lähetetty uudelleen
+      export: Viedä
+      fork: Haarukka
+      apply: Käytä
+      add_people: Lisää ihmisiä
+      zoom: Zoomaus
+      align: Kohdistaa
+    admin_menu: Admin valikko
+    api_docs: API-dokumentit
+    prefix_eg: esim. {{val}}
+    are_you_sure: Oletko varma?
+    loomio_help: Loomio apua
+    visit_loomio_help: Käy Loomio-ohjeessa
+    help_and_guides: Ohjeet ja oppaat
+    please_wait: Odota
+    optional: "(Valinnainen)"
+    version: Versio
+    none: Ei mitään
+    empty: Tyhjä
+    no_results_found: Ei tuloksia
+    view: Näytä
+    or: tai
+    history: Historia
+    option: Vaihtoehto
+    add: Lisätä
+    you: Sinä
+    expand: Laajentaa
+    all_day: Koko päivä
+    ok_got_it: OK tajusin
+    learn_more: Lue lisää
+    not_found: Ei löydetty
+    time_zone: Aikavyöhyke
+    local_time: Paikallinen aika
+    attachments: Liitteet
+    template: Sapluuna
+    links: Linkit
+    active_time_ago: Viimeksi aktiivinen {{time_ago}}
+    something_went_wrong: Voi ei! Jotain meni pieleen
+    check_for_errors_and_try_again: Tarkista lomake virheiden varalta ja yritä uudelleen
+    please_try_again: Yritä uudelleen
+    organization: Organisaatio
+    organizations: Organisaatiot
+    threads: Kierteet
+    decisions: Päätökset
+    settings: asetukset
+    help: auta
+    anonymous: Anonyymi
+    required: Edellytetään
+    email_address: Sähköpostiosoite
+    minutes: Pöytäkirja
+    today: tänään
+    in_x_days: "%{x} päivässä"
+    copy: Kopio
+    reset: Nollaa
+    copy_text: Kopioi teksti
+    points_abbrev: Jokainen ääni on {{score}} pisteen arvoinen
+    total: Kaikki yhteensä
+    formatting_help:
+      label: Muotoilu
+      title: Opi käyttämään Markdownia tekstin muotoiluun
   error_page:
-    forbidden: 'Sinulla ei ole oikeutta tehdä tätä.'
-    page_not_found: 'Emme voineet löytää tätä. Se voi olla poistettu tai siirretty.'
-    internal_server_error: 'Olemme pahoillamme, mutta jotain meni pieleen. Ole hyvä ja koeta uudestaan.'
+    forbidden: Sinulla ei ole oikeutta tehdä tätä.
+    page_not_found: Emme voineet löytää tätä. Se voi olla poistettu tai siirretty.
+    internal_server_error: Olemme pahoillamme, mutta jotain meni pieleen. Ole hyvä ja koeta uudestaan.
+    forbidden_view: Sinulla ei ole lupaa tarkastella tätä.
   volume_levels:
-    loud: 'Äänekäs'
+    loud: Äänekäs
+    normal: Normaali
+    quiet: Hiljainen
+    mute: Mykistä
+    unmute: Poista mykistys
   change_volume_form:
     simple:
       label: Ilmoitukset
+      loud: Tilattu
+      normal: Normaali
+      quiet: Jättää huomiotta
+      question: Milloin haluat saada ilmoituksen?
+      loud_explain: aina kun on toimintaa
+      normal_explain: kun joku pyytää huomiotasi
+      quiet_explain: ei ilmoituksia
+    explain_scope:
+      thread: Tämä muuttuu, kun saat ilmoituksen tästä viestiketjusta
+      group: Tämä muuttuu, kun saat ilmoituksen kaikista ryhmän säikeistä
+    aria_label: Muuta sähköpostin asetuslomaketta
+    loud_label: Kaikki toiminta
+    normal_label: Ilmoitukset
+    quiet_label: Ei sähköposteja
+    mute_label: Mykistä
+    saved: Ilmoitusasetukset päivitetty
+    discussion:
+      title: Viestiketjun ilmoitukset
+      loud_description: Saat sähköpostiisi kaikista tämän säikeen toiminnoista.
+      normal_description: Saat sähköpostiisi vain tärkeitä tapahtumia tässä viestiketjussa.
+      quiet_description: Sinulle ei lähetetä sähköpostia mistään tämän säikeen toiminnasta.
+      apply_to_all: Käytä näitä asetuksia kaikissa tämän ryhmän säikeissä.
+      only_this_thread: Koskee vain tätä säiettä
+      group: Muuta ryhmän ilmoituksia
+      user: Muuta käyttäjän ilmoitusasetuksia
+      messages:
+        loud: Saat sähköpostiisi tämän säikeen toiminnasta.
+        normal: Saat sähköpostiisi tämän ketjun ehdotuksista.
+        quiet: Sinulle ei lähetetä sähköpostia tästä ketjusta.
+    membership:
+      title: Ilmoitukset henkilölle {{title}}
+      loud_description: Saat sähköpostin aina, kun tässä ryhmässä on toimintaa.
+      normal_description: Saat sähköpostin aina, kun tässä ryhmässä on toimintaa.
+      quiet_description: Sinulle ei lähetetä sähköpostia tämän ryhmän toiminnasta.
+      apply_to_all: Käytä näitä asetuksia kaikissa ryhmissäni.
+      apply_to_organization: Käytä kaikkiin ryhmiin organisaatiossa {{organisation}}
+      messages:
+        loud: Saat sähköpostiisi kaikesta tämän ryhmän toiminnasta.
+        normal: Saat vain tämän ryhmän ilmoituksia sähköpostitse.
+        quiet: Sinulle ei lähetetä sähköpostia tästä ryhmästä.
+    all_groups:
+      title: Ilmoitusasetukset kaikille ryhmille
+      loud_description: Sinulle lähetetään sähköpostitse kaikki aktiviteetit kaikissa ryhmissäsi.
+      normal_description: Saat sähköpostiisi vain tärkeitä tapahtumia kaikissa ryhmissäsi.
+      quiet_description: Sinulle ei lähetetä sähköpostia mistään toiminnasta missään ryhmässäsi.
+      messages:
+        loud: Sinulle lähetetään sähköpostitse kaikki aktiviteetit kaikissa ryhmissäsi.
+        normal: Saat vain sähköposti-ilmoitukset kaikissa ryhmissäsi.
+        quiet: Sinulle ei lähetetä sähköpostia mistään ryhmistäsi.
+    user:
+      title: Sähköpostiasetukset uusille ryhmille
+      loud_description: Saat sähköpostiviestin aina, kun uusissa liittymisissäsi on toimintaa.
+      normal_description: Saat sähköpostiisi tiedot kaikista uusista ryhmistä, joihin liityit.
+      quiet_description: Sinulle ei lähetetä sähköpostia uusien liittymiesi ryhmien toiminnasta.
+      apply_to_all: Käytä näitä asetuksia kaikissa ryhmissäni.
+      messages:
+        loud: Saat sähköpostiisi kaikista uusien ryhmien toiminnoista.
+        normal: Saat sähköpostiisi uusien ryhmien ilmoituksista.
+        quiet: Sinulle ei lähetetä sähköpostia uusista ryhmistä.
   inbox:
-    unread: 'Lukematon'
+    unread: Lukematon
+    clear: Asia selvä
+    latest: Uusin
+    closing_in: Sulkeminen
   comment_form:
     messages:
-      updated: 'Kommentti päivitettiin'
-      destroyed: 'Kommentti poistettiin'
-    edit_comment: 'Muokkaa kommenttia'
-    delete_comment: 'Poista kommentti'
-    private_privacy_notice: 'Sinun kommenttisi tulee olemaan vain näkyvillä {{groupName}}-ryhmän jäsenille.'
-    public_privacy_notice: 'Sinun kommenttisi tulee olemaan näkyvillä kaikille webissä.'
+      updated: Kommentti päivitettiin
+      destroyed: Kommentti poistettiin
+      created: Kommentti lisätty
+      replied: "{{name}} on saanut vastauksen"
+      removed: Kommentti poistettu
+    edit_comment: Muokkaa kommenttia
+    delete_comment: Poista kommentti
+    private_privacy_notice: Sinun kommenttisi tulee olemaan vain näkyvillä {{groupName}}-ryhmän jäsenille.
+    public_privacy_notice: Sinun kommenttisi tulee olemaan näkyvillä kaikille webissä.
+    aria_label: Lisää kommentti
+    attachments:
+      add_attachment: Liitä tiedosto
+      remove_attachment: Poista liite
+    say_something: Sano jotain...
+    cancel_reply: Peruuta vastaus
+    confirm_delete_message: Haluatko varmasti poistaa tämän kommentin?
+    confirm_delete: Poista kommentti
+    in_reply_to: Vastaa henkilölle {{name}}
+    write_a_comment: Kirjoita kommentti...
+    post_comment: Lähetä Kommentti
+    submit_button:
+      label: Lähettää
+    sign_in: Kirjaudu sisään liittyäksesi keskusteluun
   navbar:
-    recent_title: 'Mene kojelaudalle'
-    unread_title: 'Katso lukemattomat toiminnat'
+    recent_title: Mene kojelaudalle
+    unread_title: Katso lukemattomat toiminnat
+    search_all_threads: Hae kaikista ketjuista
+    search_threads: Hae ketjuista {{name}}
+    search_polls: Hae kyselyitä kohteessa {{name}}
+    search_members: Hae jäseniä palvelusta {{name}}
+    search_subgroups: Hae jäseniä palvelusta {{name}}
+    search_files: Hae tiedostoja kohteesta {{name}}
+    start_thread: Uusi aihe
+    notifications: Ilmoituspaneeli
+    search:
+      label: Hakukenttä; etsi ryhmiä ja säikeitä
+      results_aria_label: Hakutulokset
+      no_results: Viestiä ei löytynyt
+      close: Sulje hakupaneeli
+      placeholder: Hae
+      loading: Ladataan tuloksia...
+      discussions: Kierteet
+      proposals: ehdotuksia
+      comments: Kommentit
+    sign_in: Kirjaudu sisään
+    toggle_sidebar: Vaihda sivupalkki
+    open_sidebar: Avaa sivupalkki
+    close_sidebar: Sulje sivupalkki
+    logo_title: Kotisivu
+    group_and_subgroups: "{{ryhmä}} ja alaryhmät"
   notifications:
-    header: "Ilmoitukset"
+    header: Ilmoitukset
+    no_notifications: Sinulla ei ole ilmoituksia
+    with_title:
+      comment_replied_to: "%{actor} vastasi sinulle kielessä: %{title}"
+      discussion_announced: "%{actor} kutsui sinut viestiketjuun: %{title}"
+      discussion_edited: "%{actor} muokkasi viestiketjun kontekstia: %{title}"
+      discussion_closed: "%{actor} sulki ketjun: %{title}"
+      invitation_accepted: "%{actor} hyväksyi kutsusi liittyä %{title}"
+      membership_created: "%{actor} kutsui sinut liittymään %{title} -sivustoon %{site_name}"
+      membership_resent: "%{actor} kutsui sinut liittymään %{title} -sivustoon %{site_name}"
+      membership_requested: "%{actor} pyysi liittymistä %{title}"
+      membership_request_approved: "%{actor} hyväksyi liittymispyyntösi %{title}"
+      new_comment: "%{actor} kommentoi: %{title}"
+      new_coordinator: "%{actor} teki sinusta %{title} -järjestelmänvalvojan"
+      new_discussion: "%{actor} aloitti ketjun: %{title}"
+      outcome_announced: "%{actor} jakoi %{poll_type} tuloksen: %{title}"
+      outcome_created: "%{actor} jakoi %{poll_type} tuloksen: %{title}"
+      outcome_updated: "%{actor} päivitti %{poll_type} tuloksen: %{title}"
+      outcome_review_due: 'On aika tarkastella lopputulosta: %{title}'
+      poll_announced: "%{actor} kutsui sinut äänestämään: %{title}"
+      poll_closed_by_user: "%{actor} sulki %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} sulkeutuu 24 tunnin kuluttua: %{title}"
+      poll_closing_soon_author: "%{poll_type} sulkeutuu 24 tunnin kuluttua: %{title}"
+      poll_created: "%{actor} aloitti %{poll_type}: %{title}"
+      poll_edited: "%{actor} päivitti %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} on sulkeutunut: %{title}"
+      poll_expired_author: 'Jaa %{poll_type}:n tulos: %{title}'
+      poll_option_added: "%{actor} lisäsi valintoja kohteeseen %{title}"
+      poll_reopened: "%{actor} avasi uudelleen %{poll_type}: %{title}"
+      poll_reminder: "%{actor} muistuttaa sinua äänestämään %{title}"
+      poll_reminder_wip: "%{actor} muistuttaa sinua antamasta palautetta: %{title}"
+      reaction_created: "%{actor} reagoi %{reaction} sinun %{malliisi %{title}"
+      stance_created: "%{actor} äänesti: %{title}"
+      stance_updated: "%{actor} äänesti: %{title}"
+      stance_created_option: "%{actor} äänesti %{option} %{title}"
+      user_added_to_group: "%{actor} lisäsi sinut ryhmään: %{title}"
+      user_mentioned: "%{actor} mainitsi sinut: %{title}"
+      user_reminded: "%{actor} muistuttaa sinua äänestämään: %{title}"
+    without_title:
+      discussion_announced: "%{actor} kutsui sinut viestiketjuun"
+      discussion_edited: "%{actor} muokkasi viestiketjun kontekstia"
+      discussion_closed: "%{actor} sulki ketjun"
+      group_announced: "%{actor} kutsui sinut ryhmään"
+      comment_replied_to: "%{actor} vastasi sinulle"
+      new_discussion: "%{actor} aloitti ketjun"
+      new_comment: "%{actor} kommentoi viestiketjua"
+      membership_created: "%{actor} kutsui sinut ryhmään"
+      membership_resent: "%{actor} kutsui sinut ryhmään"
+      membership_requested: "%{actor} pyysi liittyä ryhmääsi"
+      membership_request_approved: "%{actor} hyväksyi liittymispyyntösi %{title}"
+      outcome_announced: "%{actor} jakoi %{poll_type} tuloksen"
+      outcome_created: "%{actor} jakoi %{poll_type} tuloksen"
+      outcome_updated: "%{actor} päivitti tuloksen"
+      outcome_review_due: On aika tarkistaa %{poll_type} tulos
+      poll_announced: "%{actor} kutsui sinut äänestämään %{poll_type}"
+      poll_announced_wip: "%{actor} haluaa palautteesi aiheesta %{poll_type}"
+      poll_closed_by_user: "%{actor} sulki %{poll_type}"
+      poll_closing_soon: "%{poll_type} sulkeutuu 24 tunnin kuluttua"
+      poll_closing_soon_author: "%{poll_type} sulkeutuu 24 tunnin kuluttua"
+      poll_created: "%{actor} aloitti %{poll_type}"
+      poll_edited: "%{actor} päivitti %{poll_type}"
+      poll_expired: "%{poll_type} on sulkeutunut"
+      poll_expired_author: Jaa %{poll_type} tulos
+      poll_option_added: "%{actor} lisäsi valintoja kyselyyn %{poll_type}"
+      poll_reopened: "%{actor} avasi uudelleen %{poll_type}"
+      poll_reminder: "%{actor} muistuttaa sinua äänestämään"
+      poll_reminder_wip: "%{actor} muistuttaa sinua antamasta palautetta"
+      reaction_created: "%{actor} reagoi %{reaction} sinun %{malliisi}"
+      stance_created: "%{actor} äänesti"
+      stance_updated: "%{actor} äänesti"
+      stance_created_option: "%{actor} äänesti %{option}"
+      user_mentioned: "%{actor} mainitsi sinut"
+      user_reminded: "%{actor} muistuttaa sinua äänestämään"
+    hints:
+      poll_closing_soon: Nyt on hyvä aika äänestää, muuttaa mieltäsi tai kannustaa muita osallistumaan.
+      poll_closing_soon_author: Haluat ehkä muistuttaa ihmisiä äänestämään tai pidentää määräaikaa.
+      outcome_review_due: Harkitse palautekyselyn tai uuden ketjun aloittamista, joka kutsuu pohtimaan, miten päätös on toteutettu.
   discussion_form:
-    group_label: 'Ryhmä'
-    privacy_label: 'Yksityisyys'
+    group_label: Ryhmä
+    privacy_label: Yksityisyys
+    thread_templates: Lankamallit
+    new_thread_template: Uusi ketjumalli
+    edit_thread_template: Muokkaa ketjumallia
+    blank: Tyhjä
+    blank_subtitle: Aloita keskustelu ja katso mihin se sinut vie
+    new_template: Uusi malli
+    new_template_subtitle: Luo esimerkki, jonka muut voivat kopioida
+    to: Vastaanottaja
+    direct_thread: Suora lanka
+    invite_only_thread: Vain kutsu -ketju
+    none_direct_thread: Suora säie (ei ryhmää)
+    none_invite_only_thread: Vain kutsu -ketju (ei ryhmää)
+    change_log_placeholder: Vaihtoehtoisesti kuvaile muutokset. Tämä viesti lisätään ketjuun.
+    change_log_label: Mikä on muuttunut?
+    invite: Kutsu
+    aria_label: Lanka muoto
+    start_thread: Aloita lanka
+    messages:
+      created: Lanka alkoi
+      updated: Viestiä päivitetty
+      forked: Lankahaarukka luotu
+    new_discussion_title: Aloita uusi ketju
+    new_thread_from_template: 'Uusi säie: %{process_name}'
+    moving_items_title: Siirrä kohteita uuteen viestiketjuun
+    edit_discussion_title: Muokkaa lankaa
+    group_placeholder: Valitse ryhmä
+    title_label: Otsikko
+    title_placeholder: Mikä on aihe, josta haluat keskustella?
+    context_label: Konteksti
+    context_placeholder: Anna tälle keskustelulle kontekstia, jotta ihmiset tietävät, kuinka osallistua
+    privacy_public: Kuka tahansa voi tarkastella tätä ketjua, jos heillä on linkki
+    privacy_private: Vain ryhmän jäsenet voivat tarkastella tätä viestiketjua
+    privacy_organisation: Säie näkyy ryhmän {{parent}} ja {{group}} jäsenille.
+    fork_notice: Uusi säiettä luodaan %{count} kohdetta käyttäjältä {{title}}
+    notify_group: Ilmoita ryhmälle
   group_form:
-    privacy: 'Yksityisyys'
-    submit_update: 'Päivitä asetukset'
+    privacy: Yksityisyys
+    submit_update: Päivitä asetukset
+    thread_defaults_help: Uusien viestiketjujen oletusasetukset
+    click_to_change_image: Napsauta vaihtaaksesi kansikuvan (4x1) tai logon (1x1)
+    change_cover_image: vaihda kansikuva
+    change_logo: vaihtaa logoa
+    permissions_explaination: 'Henkilöllä voi olla kaksi jäsenyystasoa ryhmään: admin ja jäsen. Järjestelmänvalvojat voivat muokata ryhmän asetuksia, tehdä muista ihmisistä järjestelmänvalvojia ja suorittaa kaikki alla luetellut toiminnot.'
+    aria_label: Ryhmämuoto
+    parent_group: Vanhempi ryhmä
+    new_organisation: Uusi organisaatio
+    new_group: Uusi ryhmä
+    new_subgroup: Uusi alaryhmä
+    new_group_explainer: Aloita uusi Loomio-ryhmä organisaatiollesi
+    new_subgroup_explainer: Aloita alaryhmä olemassa olevan ryhmän sisällä – yksityinen tila organisaation henkilöiden ryhmälle
+    start_group_heading: Aloita ryhmä
+    start_subgroup_heading: Aloita alaryhmä
+    edit_group_heading: Muokkaa ryhmän asetuksia
+    edit_subgroup_heading: Muokkaa alaryhmän asetuksia
+    group_settings: Ryhmäasetukset
+    subgroup_settings: Alaryhmän asetukset
+    group_name: Ryhmän nimi
+    subgroup_name: Alaryhmän nimi
+    organization_name: Organisaation nimi
+    handle: Kahva
+    group_handle_placeholder: 'Käytetty ryhmäsi URL-osoitteessa: {{host}}/{{handle}}'
+    start_organization_heading: Uusi organisaatio
+    edit_organization_heading: Muokkaa organisaation asetuksia
+    group_name_placeholder: Mikä on ryhmäsi nimi?
+    subgroup_name_placeholder: Mikä on alaryhmäsi nimi?
+    organization_name_placeholder: Mikä on organisaatiosi nimi?
+    description: Kuvaus
+    description_placeholder: Kuvaile ryhmäsi tarkoitusta, jotta ryhmäsi jäsenet tietävät, miksi he ovat täällä.
+    new_description_placeholder: Miksi kokeilet Loomiota? Mitä päätöksiä sinun on tehtävä yhdessä?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Miten aiot käyttää Loomiota?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Miksi tämä on tärkeää ryhmällesi?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Mitä päätöksiä sinun on tehtävä?</h3><p></p>
+    secret_by_default: Ryhmääsi voivat käyttää vain ne, jotka on kutsuttu liittymään. Voit muuttaa tätä myöhemmin.
+    privacy_statement:
+      public_on_web: Ryhmäkontekstin nimi, kuvaus ja liitteet näkyvät julkisesti
+      private_to_group: Nimi ja kuvaus näkyvät vain jäsenille.
+      private_to_parent_members: Nimi ja kuvaus näkyvät ryhmän {{parent}} jäsenille
+    group_privacy_is_open_description: Julkisesti listattu. Kaikki viestiketjut ovat julkisia.
+    group_privacy_is_closed_description: Piilotettu. Kuka tahansa linkin saanut voi pyytää lupaa liittyä. Kaikki viestiketjut ovat yksityisiä.
+    group_privacy_is_closed_public_threads_description: Piilotettu. Kuka tahansa linkin saanut voi pyytää lupaa liittyä. Säikeet voivat olla julkisia tai yksityisiä.
+    group_privacy_is_secret_description: Vain kutsutut ihmiset voivat löytää ryhmän. Kaikki viestiketjut ovat yksityisiä.
+    confirm_change_to_secret: Jos jatkat, kaikki tämän ryhmän ja sen alaryhmien säikeet muutetaan yksityisiksi.
+    confirm_change_to_secret_subgroup: Jos jatkat, kaikki viestiketjut muutetaan yksityisiksi.
+    confirm_change_to_public: Jos jatkat, kaikki tämän ryhmän viestiketjut julkistetaan verkossa.
+    confirm_change_to_private_discussions_only: Jos jatkat, kaikki tämän ryhmän julkiset viestiketjut muutetaan yksityisiksi.
+    profile: Profiili
+    subgroup_privacy_is_open_description: Kuka tahansa voi löytää tämän alaryhmän ja pyytää liittymistä. Vain jäsenet näkevät ryhmän jäsenet. Kaikki viestiketjut ovat julkisia.
+    subgroup_privacy_is_closed_description: Kuka tahansa voi löytää tämän alaryhmän ja pyytää liittymistä. Vain jäsenet näkevät ryhmän jäsenet. Kaikki viestiketjut ovat yksityisiä.
+    subgroup_privacy_is_closed_public_threads_description: Kuka tahansa voi löytää tämän alaryhmän ja pyytää liittymistä. Vain jäsenet näkevät ryhmän jäsenet. Säikeet voivat olla julkisia tai yksityisiä.
+    subgroup_privacy_is_closed_secret_parent_description: Ryhmän {{parent}} jäsenet voivat löytää tämän alaryhmän ja pyytää saada liittyä siihen. Kaikki viestiketjut ovat yksityisiä. Vain jäsenet näkevät ryhmän jäsenet.
+    subgroup_privacy_is_secret_description: Vain kutsutut jäsenet voivat löytää tämän alaryhmän, nähdä keitä siinä on ja viestiketjuja.
+    advanced_settings: Lisäasetukset
+    how_do_people_join: Miten ihmiset liittyvät?
+    membership_granted_upon_request: Kuka tahansa voi liittyä ryhmään.
+    membership_granted_upon_approval: Kuka tahansa voi pyytää liittymistä, mutta se on hyväksyttävä.
+    membership_granted_upon_invitation: Vain kutsu.
+    membership_granted_upon_approval_secret_parent: "<strong>Pyynnöstä</strong> kuka tahansa {{vanhempi}} voi pyytää lupaa liittyä ryhmään."
+    permissions: Käyttöoikeudet
+    thread_privacy: Viestiketjun yksityisyys
+    public_threads: Vain julkiset viestiketjut
+    public_discussions_subgroup: Kaikki ryhmässä {{parentGroupName}} voivat nähdä keskustelut
+    public_or_private_threads: Salli julkiset ja yksityiset viestiketjut
+    private_threads: Vain jäsenet näkevät keskustelut
+    allow_public_threads: Salli julkiset viestiketjut tässä ryhmässä.
+    parent_members_can_see_discussions: Ryhmän {{parent}} jäsenet voivat nähdä yksityiset viestiketjut
+    parent_members_can_see_discussions_help: Salli pääryhmän jäsenten nähdä tämän ryhmän viestiketjut ja kyselyt, mutta he eivät osallistu niihin
+    members_can_announce: Jäsenet voivat ilmoittaa kaikille ryhmän jäsenille
+    members_can_announce_help: Salli jäsenten ilmoittaa kaikille ryhmän jäsenille viestiketjusta tai kyselystä
+    members_can_add_members: Jäsenet voivat kutsua jäseniä
+    members_can_add_members_help: Salli jäsenten kutsua ihmisiä liittymään tähän ryhmään
+    members_can_add_guests: Jäsenet voivat kutsua vieraita
+    members_can_add_guests_help: Salli jäsenten kutsua vieraita tämän ryhmän viestiketjuihin tai kyselyihin
+    members_can_create_subgroups: Jäsenet voivat luoda alaryhmiä
+    members_can_create_subgroups_help: Salli jäsenten luoda uusia alaryhmiä ja tulla niiden ylläpitäjiksi
+    members_can_edit_discussions: Jäsenet voivat hallita viestiketjuja ja kommentteja
+    members_can_edit_discussions_help: Salli jäsenten muokata, siirtää, kiinnittää, merkitä tai sulkea ketjuja
+    members_can_edit_comments: Jäsenet voivat muokata omia kommenttejaan
+    members_can_edit_comments_help: Salli jäsenten muokata omia kommenttejaan milloin tahansa
+    members_can_delete_comments: Jäsenet voivat poistaa omia kommenttejaan
+    members_can_delete_comments_help: Salli jäsenten poistaa omia kommenttejaan ketjuista
+    members_can_start_discussions: Jäsenet voivat aloittaa uusia ketjuja
+    members_can_start_discussions_help: Salli jäsenten aloittaa uusia ketjuja ryhmässä
+    members_can_raise_motions: Jäsenet voivat aloittaa äänestykset
+    members_can_raise_motions_help: Salli jäsenten aloittaa kyselyitä ja ehdotuksia keskusteluissa tai ryhmässä
+    admins_can_edit_user_content: Järjestelmänvalvojat voivat muokata jäsenten kommentteja
+    admins_can_edit_user_content_help: Salli järjestelmänvalvojien muokata jäsenten kirjoittamaa sisältöä
+    submit_start_group: Aloita ryhmä
+    submit_start_subgroup: Aloita alaryhmä
+    messages:
+      group_created: Ryhmä alkoi
+      group_updated: Ryhmä päivitetty
+    upload_logo: Lataa logo
+    upload_cover_photo: Lataa kansikuva
   invitation_form:
-    group: 'Ryhmä'
+    group: Ryhmä
+    group_url: Ryhmän URL-osoite
+    reusable_invitation_link: Uudelleen käytettävä kutsulinkki
+    error: Virhe yritettäessä kopioida leikepöydälle
+    aria_label: Kutsulomake
+    invite_people: Kutsu ihmisiä
+    invite_guests: Kutsu vieraita
+    notify_people: Ilmoita ihmisille
+    invite_people_to_group: Kutsu henkilöön {{name}}
+    group_placeholder: Valitse ryhmä
+    shareable_link: Jaettava linkki
+    share_group: Jaa ryhmäsi
+    copy_link: Kopio
+    email_addresses: Sähköpostiosoitteet
+    email_addresses_placeholder: esim. helperbot@loomio.org, friendlybot@loomio.org
+    secret_group_url_explanation: Tämä on ryhmäsi osoite. Vain kutsutut jäsenet näkevät ryhmän.
+    shareable_group_url_explanation: Voit jakaa tämän linkin julkisesti. Ihmiset voivat pyytää liittymistä, ja sinä voit hyväksyä tai jättää huomiotta pyynnöt.
+    shareable_invitation_explanation: Älä jaa tätä linkkiä julkisesti. Kuka tahansa, jolla on se, voi liittyä ryhmään ilman hyväksyntääsi. Jaa tämä vain yksityisviestinnässä, jotta organisaatiosi ihmiset voivat liittyä.
+    shareable_link_reset: Jaettavan linkin nollaus. Edellinen linkki ei enää toimi.
+    email_explanation: Vaihtoehtoisesti anna sähköpostiosoitteet alle lähettääksesi kutsut sähköpostitse.
+    add_custom_message: Tee kutsustasi henkilökohtainen,
+    add_custom_message_link: lisää mukautettu viesti.
+    custom_message: Mukautettu viesti
+    custom_message_placeholder: Kirjoita henkilökohtainen viesti, joka liitetään kutsuun.
+    add_members: Lisää jäseniä
+    from_parent_group: nimestä}}.
+    send: Lähettää
+    done: Tehty
+    messages:
+      invitation_sent: Kutsu lähetetty.
+      invitations_sent: "%{count} kutsua lähetetty."
+      no_invitations: Voi ei! Varmista, että sähköpostiosoite on oikea ja yritä uudelleen.
+      max_invitations: Jos haluat lähettää yli 100 kutsua, käytä tiimilinkkiä.
   memberships_page:
-    remove_member_label: 'Poista'
+    remove_member_label: Poista
+    members: Jäsenet
+    name_label: Nimi
+    coordinator_label: Admin
+    fragment_placeholder: Suodata käyttäjät nimen tai käyttäjänimen mukaan...
+    only_one_admin: Tässä ryhmässä on vain yksi ylläpitäjä. On suositeltavaa nimetä vähintään yksi jäsen lisää järjestelmänvalvojaksi.
+    messages:
+      remove_member_success: Poistettu {{name}}
+      make_admin_success: "{{name}} on nyt järjestelmänvalvoja"
+      remove_admin_success: "{{name}} ei ole enää järjestelmänvalvoja"
+    remove_admin_from_self:
+      question: Oletko varma, että et enää halua olla järjestelmänvalvoja?
   dashboard_page:
     threads_from:
-      today: 'Tänään'
-      yesterday: 'Eilen'
+      today: Tänään
+      yesterday: Eilen
+      group: Viestit osoitteesta
+      pinned: Kiinnitetyt langat
+      proposals: Säikeet aktiivisilla päätöksillä
+      starred: Tähdellä merkityt ketjut
+      thisweek: Tämä viikko
+      thismonth: Tässä kuussa
+      older: Yli kuukauden vanhempi
+    aria_label: Kojelauta
+    polls_to_vote_on: Äänestykset, joista äänestää
+    no_polls_to_vote_on: Ei ole kyselyjä, joista sinun pitäisi äänestää
+    recent_polls: Viimeaikaiset gallupit
+    current_polls: Nykyiset gallupit
+    recent_threads: Viimeaikaiset ketjut
+    no_groups:
+      show_all: Tervetuloa! Et ole vielä minkään ryhmän jäsen. <a href="/explore">Selaa julkisia ryhmiä</a> tai <a href="/g/new">aloita ryhmä</a> .
+      show_muted: Sinulla ei ole yhtään mykistettyä viestiketjua, koska et ole minkään ryhmän jäsen.
+    no_threads:
+      show_all: Sinulla ei ole viimeaikaisia ketjuja.
+      show_proposals: Tällä hetkellä ei ole aktiivisia ehdotuksia.
+      show_muted: Sinulla ei ole yhtään mykistettyä viestiketjua.
+    view_recent: Katsotaanko kaikki viimeisimmät viestiketjut?
+    load_more: Lataa lisää lankoja
+    mark_as_read: Merkitse luetuksi
+    dismiss: Hylkää
+    thread_dismissed: Säie merkitty luetuksi
+    thread_recalled: Lanka muistettu
+    explain_mute:
+      title: Et ole vielä mykisttänyt yhtään viestiketjua.
+      explanation_html: Mykistäminen on tapa piilottaa tai hiljentää viestiketjut, joista et ole kiinnostunut. Mykistäminen tarkoittaa, että et näe sitä <strong>Viimeisimmät-</strong> tai <strong>Lukemattomat -kohdassa</strong> , etkä saa ilmoituksia kyseisessä viestiketjussa tapahtuvasta toiminnasta, kuten ehdotuksista. Saat ilmoituksen vain, jos joku <strong>@mainitsee</strong> nimesi.
+      instructions: Mykistä viestiketju viemällä hiiri sen päälle ja napsauttamalla mykistyskuvaketta.
+      see_muted_html: Näet mykistetut viestiketjut napsauttamalla <strong>Mykistetty</strong> . Voit poistaa mykistyksen viemällä hiiren osoittimeen ja napsauttamalla samaa kuvaketta.
+    filtering:
+      filter_threads: Suodata langat
+      filter_threads_aria_label: Suodata langat
+      dropdown_heading: Suodattimen kojelauta
+      all: Viimeisimmät viestiketjut
+      all_aria_label: Tällä hetkellä näytetään viimeisimmät viestiketjut
+      all_description: Katso viimeisimmät viestiketjut
+      proposals: ehdotuksia
+      proposals_aria_label: Näytetään tällä hetkellä aktiivisia ehdotuksia sisältävät viestiketjut
+      proposals_description: Näytä vain viestiketjut, joissa on aktiivisia ehdotuksia
+      muted: Mykistetty säikeet
+      muted_aria_label: Nykyinen näyttää mykistetut viestiketjut
+      muted_description: Näytä vain viestiketjut, jotka on mykistetty
+    thread_preview:
+      you_voted: Äänestit {{position}}
+      undecided: Olet päättämätön
   thread_context:
-    close_thread: 'Sulje'
+    close_thread: Sulje
+    current_poll_type_banner: Nykyinen {{pollType}}
+    item_maybe_deleted: Pyydettyä sijaintia ei löydy säikeestä. Se on ehkä poistettu.
+    aria_label: Viestiketjun konteksti
+    thread_options: Viestivaihtoehdot
+    email_settings: Ilmoitusasetukset
+    edit: Muokata
+    edit_thread: Muokata
+    reopen_thread: Avaa uudelleen
+    pin_thread: Pin
+    unpin_thread: Irrota kiinnitys
+    mute_thread: Mykistä
+    move_thread: Liikkua
+    print_thread: Tulosta
+    delete_thread: Poistaa
+    add_comment: Kommentti
+    seen_by_count: "%{count} nähnyt"
+    count_notified: Ilmoitettu %{count}
+    forked_from: Haarukka alkaen
   delete_comment_dialog:
-    title: 'Poista kommentti'
+    title: Poista kommentti
+    question: Tämä poistaa tämän kommentin pysyvästi. Jos jatkat, sitä ei voi palauttaa.
   poll_common:
     save_changes: Tallenna
+    superseded: Korvattu
+    need_help_with_templates: Tarvitsetko apua omien päätösmallien luomisessa?
+    categorize_poll_templates: Luokittele kyselypohjat
+    show_all_templates_in_one_list: Näytä kaikki mallit yhdessä luettelossa
+    advice_process: Neuvontaprosessi
+    consent_process: Suostumusprosessi
+    consensus_process: Konsensusprosessi
+    question_round: Kysymyskierros
+    edit_template: Muokkaa mallia
+    proposal: Ehdotus
+    run_process: Suorita prosessi
+    proposal_templates: Ehdotusmallit
+    custom: Mukautettu
+    custom_process: Mukautettu prosessi
+    custom_poll: Mukautettu kysely
+    delete_poll: Poista kysely
+    select_count_options: Valitse {{count}} vaihtoehtoa
+    select_minimum_to_maximum_options: Valitse {{minimi}} - {{maximum}} vaihtoehtoa
+    custom_poll_types: Mukautetut kyselytyypit
+    hidden_poll_templates: Piilotetut kyselymallit
+    poll_template: Kyselymalli
+    poll_template_saved: Kyselymalli tallennettu
+    poll_templates: Kyselymallit
+    poll_types: Äänestystyypit
+    new_proposal_template: Uusi ehdotusmalli
+    edit_proposal_template: Muokkaa ehdotusmallia
+    new_poll_template: Uusi kyselymalli
+    edit_poll_template: Muokkaa kyselymallia
+    new_poll_type: Uusi kyselytyyppi
+    edit_poll_type: Muokkaa kyselyn tyyppiä
+    new_custom_poll: Uusi mukautettu kysely
+    edit_custom_poll: Muokkaa mukautettua kyselyä
+    create_a_custom_poll_type: Luo uusi kyselytyyppi mukautetulla terminologialla ja asetuksilla
+    create_a_custom_process: Luo uusi prosessi omalla terminologiallasi ja vaihtoehdoillasi
+    create_a_custom_poll: Luo kysely mukautetulla terminologialla ja asetuksilla
+    decision: Päätös
+    decision_templates: Päätösmallit
+    remove_your_vote: Poista äänesi
+    remove_your_response: Poista vastauksesi
+    vote_now: Äänestä nyt
+    review_due: Tarkistuksen määräaika
+    have_your_say: Ota kantaa
+    your_response: Vastauksesi
+    change_your_response: Muokkaa vastausta
+    please_vote: Ole hyvä ja äänestä
+    reason: Syy
+    response: Vastaus
+    reason_placeholder: Selitä lyhyesti, miksi äänestit tällä tavalla, ja napsauta sitten "Lähetä äänestys".
+    message: Viesti
+    results: Tulokset
+    current_results: Tämänhetkiset tulokset
+    responses: Vastaukset
+    close_poll_type: Sulje {{pollType}}
+    close_early: Sulje aikaisin
+    totals: Yhteensä
+    participate: Osallistua
+    vote: Äänestys
+    votes: Äänet
+    update_outcome: Päivitä tulos
+    outcome: Tulokset
+    outcomes: Tulokset
+    statement: lausunto
+    change_your_stance: Muokkaa vastausta
+    load_more: Lataa lisää
+    details: Yksityiskohdat
+    participant_name: Sinun nimesi
+    participant_email: Sähköpostiosoite
+    submit_vote: Lähetä äänestys
+    submit_response: Lähetä vastaus
+    update_vote: Päivitä äänestys
+    update_response: Päivitä vastaus
+    share_poll: Jaa kysely
+    share_proposal: Jaa ehdotus
+    share_count: Jaa sekki
+    start_poll: Aloita päätös
+    publish_poll: Jaa kysely
+    share_outcome: Jaa tulos
+    view_all: Näytä kaikki
+    change_vote: Vaihda äänesi
+    change_response: Muuta vastaustasi
+    max_score: Maksimipistemäärä
+    min_score: Minimipistemäärä
+    too_long: Liian pitkä
+    edit_warning: Muokkausta suositellaan vain pienten muutosten tai kirjoitusvirheiden korjaamisen yhteydessä. Jos haluat tehdä merkittäviä muutoksia, sulje tämä {{pollType}} ja aloita uusi.
+    no_voting: Vain keskustelua varten, äänestäminen estetty
   discussions_panel:
     open: Avoin
     closed: Suljettu
+    all: Kaikki
+    unread: Lukemattomat (%{count})
+    include_subgroups_mine: "{{name}} ja alaryhmäni"
+    include_subgroups_all: "{{nimi}} ja kaikki alaryhmät"
+    no_results_found: Ei tuloksia haulle "{{search}}"
+    welcome_to_your_new_group: Tervetuloa uuteen Loomio-ryhmääsi!
+    lets_start_a_thread: Aloitetaan lanka. Napsauta "Uusi säiettä" jatkaaksesi.
   polls_panel:
-    open: 'Avoin'
-    closed: 'Suljettu'
+    open: Avoin
+    closed: Suljettu
+    new_poll: Uusi kysely
+    any_type: Kaikki tyypit
+    any_status: Mikä tahansa tila
+    all: Kaikki
+    need_vote: Vaatii Äänestyksen
+    no_polls: Kyselyjä ei löytynyt
   poll_common_form:
     closed: Suljettu
+    notify_everyone_when_poll_starts: Ilmoita kaikille, kun %{poll_type} alkaa
+    option_has_votes_confirm_delete: Jotkut ihmiset ovat äänestäneet tämän vaihtoehdon puolesta. Haluatko varmasti poistaa sen?
+    example_title: Esimerkkiotsikko
+    example_title_hint: Anna esimerkki hyvästä ehdotuksen otsikosta
+    example_details_placeholder: Anna ehdotuksen tai kyselyn lähtökohta. Kysymykset voivat olla hyödyllisiä kehotteita saada ihmiset kirjoittamaan. Sisällytä kaikki säännöt tai muistutukset, jotka osallistujien tulee tietää.
+    confirm_delete: Haluatko varmasti poistaa tämän kyselymallin? Tätä ei voi peruuttaa.
+    show_advanced_settings: näytä lisäasetukset
+    hide_advanced_settings: Piilota lisäasetukset
+    choose_at_least: Valitse ainakin
+    choose_at_most: Valitse korkeintaan
+    please_review_the_form: Tarkista lomake
+    option_added_please_add_details: Vaihtoehto lisätty! Lisää tietoja, jotta ihmiset tietävät, mitä se tarkoittaa.
+    default_duration_in_days: Oletuskesto päivinä
+    default_duration_in_days_hint: Kuinka monta päivää ihmisille pitäisi antaa äänestää?
+    how_many_options_can_a_voter_choose: Kuinka monta näistä vaihtoehdoista äänestäjä voi valita?
+    minimum_choices: Vähimmäisvalinnat
+    maximum_choices: Maksimivalinnat
+    content: Sisältö
+    reminder: Muistutus
+    your_in_zone: 'Nykyinen aikavyöhyke: %{zone}'
+    show_other_zones: Näytä muut aikavyöhykkeet
+    hide_other_zones: Piilota muut aikavyöhykkeet
+    this_is_a_template_for_new_polls: Tämä on malli uusille kyselyille
+    voting_method: Äänestysmenetelmä
+    voting_methods:
+      question: Kysymyskierros
+      question_hint: Pyydä kysymyksiä ja kommentteja ehdotuksestasi
+      show_thumbs: Peukaloiden esitys
+      show_thumbs_hint: Äänestäjät valitsevat peukalon ylös, alas, sivuttain tai käden ylös
+      choose: Valita
+      simple_poll: Yksinkertainen kysely
+      choose_hint: Äänestäjät valitsevat parhaan vaihtoehdon (tai vaihtoehdot)
+      score: Pisteet
+      score_hint: Äänestäjät antavat kullekin vaihtoehdolle pistemäärän
+      allocate: jakaa
+      allocate_hint: Äänestäjät jakavat pistebudjetin vaihtoehtojen välillä
+      ranked_choice: Sijoitettu valinta
+      ranked_choice_hint: Äänestäjät järjestävät vaihtoehdot suosituimmasta vähiten
+      time_poll: Aikakysely
+      time_poll_hint: Äänestäjät ilmoittavat milloin he ovat valmiita tapaamaan
+    process: Käsitellä asiaa
+    process_name: Mallin otsikko
+    process_name_hint: Millä nimellä kutsut tätä mallia? Esim. roolineuvonta, lämpötilan tarkistus, pöytäkirjan hyväksyntä
+    process_subtitle: Mallin alaotsikko
+    process_subtitle_hint: Yksirivinen kuvaus siitä, milloin ja miksi tätä mallia tulee käyttää
+    process_introduction: Mallin ohje
+    process_introduction_hint: Muutama kappale, jossa selitetään mallin käyttöä. Liitä mukaan linkkejä resursseihin, joista voi olla apua.
+    you_can_set_a_prompt_per_option: Muokkaa kunkin vaihtoehdon kehotetta Tiedot-välilehdeltä
+    chart_type: Kaavion tyyppi
+    title: Otsikko
+    title_hint: Mikä on päätös, joka sinun on tehtävä?
+    no_options_add_some: Tässä kyselyssä ei ole vaihtoehtoja, lisää muutama alla.
+    details: Yksityiskohdat
+    example_details: Esimerkkitiedot
+    details_placeholder: Tämä on tilaisuutesi selittää, mitä ihmiset äänestävät
+    options: Vaihtoehdot
+    options_placeholder: Listaa käytettävissä olevat vaihtoehdot
+    no_options: Et ole vielä lisännyt yhtään vaihtoehtoa.
+    closing: Sulkeminen
+    start: alkaa
+    start_poll: Aloita kysely
+    stance_reason_required_label: Syyn ilmoittaminen äänestäessä on...
+    stance_reason_required: Edellytetään
+    stance_reason_optional: Valinnainen
+    stance_reason_disabled: Liikuntarajoitteinen
+    stance_reason_is_required: Ole hyvä ja perustele äänesi
+    limit_reason_length: Rajoita syy enintään 500 merkkiin
+    save_poll: Tallenna kysely
+    start_poll_type: Aloita {{poll_type}}
+    share_poll_type: Jaa {{poll_type}}
+    who_may_vote: Kuka voi äänestää tässä {{poll_type}}:ssa?
+    update: Päivittää
+    add_voters: Lisää äänestäjiä
+    notify_invitees: Lähetä ilmoituksia
+    no_notifications_warning: Äänestäjille ei tiedoteta. Tämä on hyödyllistä, jos järjestät paljon kyselyitä ja aiot ilmoittaa siitä kaikille myöhemmin.
+    count_voters_added: "%{count} äänestäjää lisätty"
+    poll_type_created: "%{poll_type} luotu"
+    poll_type_started: "%{poll_type} alkoi"
+    reason_prompt: Syykehote
+    anonymous_voting: Anonyymi äänestys
+    anonymous_voting_description: Jos tämä on käytössä, äänestäjien henkilöllisyyttä ei yhdistetä heidän ääniinsä. Tätä ei voi peruuttaa.
+    votes_are_anonymous: Äänet ovat anonyymejä
+    vote_reason: Äänestyksen syy
+    vote_reason_description: Voi olla hyödyllistä ymmärtää, miksi ihmiset äänestivät niin kuin äänestivät. Tällä asetuksella voit kehottaa ihmisiä jakamaan ajatuksensa äänestäessään.
+    hide_results_description: Jos haluat ihmisten äänestävän tietämättä kuinka muut ovat äänestäneet, voit piilottaa kyselyn tulokset.
+    process_helptext: Nimeä ja kuvaile prosessi, jota käytetään tämän kyselyn suorittamiseen.
+    reminder_helptext: Lähetä "Suljetaan pian" -ilmoitus ennen äänestyksen sulkeutumista. Tämä voi olla ihmisille mahdollisuus nähdä, miten muut ovat äänestäneet, ja harkita omaa ääntään, tai vain tapa lisätä osallistumista kyselyyn.
+  tasks:
+    tasks: Tehtävät
+    your_tasks: Sinun tehtäväsi
+    permission_denied: Sinulla ei ole lupaa päivittää tätä tehtävää
+    due_date: Eräpäivä
+    send_reminder: Lähetä muistutus (jos sitä ei ole tehty)
+    no_reminder: Ei muistutusta
+    on_due_date: Eräpäivänä
+    1_day_before: 1 päivää ennen
+    2_day_before: 2 päivää ennen
+    3_day_before: 3 päivää ennen
+    7_day_before: 7 päivää ennen
+    task_placeholder: Kirjoita tehtävä ja @mainitse joku, joka antaa sen
+    add_due_date: Lisää eräpäivä
+    task_updated_done: Tehtävä merkitty suoritetuksi!
+    task_updated_not_done: Tehtävä merkitty tekemättä
+    no_tasks_assigned: Sinulle ei ole määrätty tehtäviä
+  templates:
+    template_gallery: Malli galleria
+    title_template: "%{title} Malli"
+    title_templates: "%{title} Malleja"
+    title_copy: "%{title} Kopioi"
+    copy_of_title: Kopio %{title}
+    loomio_default_templates: Loomion oletusmallit
+    which_templates_would_you_like_to_use: Mitä malleja haluaisit käyttää?
+    login_to_start_demo: Tämä on demo Loomion toiminnasta. Tervetuloa katsomaan ympärillesi.
+    sign_in_to_try_features: Jos haluat kokeilla demopäätöksen äänestämistä tai aloittaa ilmaisen kokeilun organisaatiossasi, napsauta "kirjaudu sisään".
+    click_button_to_start_demo: Tervetuloa! Voit kokeilla äänestämistä ja muita ominaisuuksia napsauttamalla aloita esittely.
+    welcome_to_your_demo: Tämä on sinun oma demoryhmäsi!
+    try_voting_to_see_it_work: Kokeile äänestää ehdotuksesta saadaksesi käsityksen Loomion toiminnasta.
+    delete_will_be_deleted_in_x_days: Tämä demo poistetaan %{x} päivän kuluttua.
+    to_use_loomio_with_your_org_start_trial: Kun olet valmis kokeilemaan Loomiota organisaatiosi kanssa, aloita ilmainen kokeilu.
+    templates: Mallit
+    make_a_copy: Tee kopio
+    this_thread_is_a_template: Tämä lanka on malli. Ota kopio, jos haluat käyttää sitä.
+    this_is_a_poll_template: Tämä on kyselymalli. Tee kopio, jos haluat aloittaa äänestämisen.
+    try_loomio: Kokeile Loomiota
+    start_a_demo_group: Aloita demoryhmä
+    start_a_demo: Aloita demo
+    demo_group: Demo ryhmä
+    play_with_an_example_group: Pelaa esimerkkiryhmän kanssa
+    look_and_feel: Katso, miltä Loomio näyttää pienelle organisaatiolle. Opi sovellus kokeilemalla sitä.
+    watch_then_start: Katso video ja napsauta sitten "Aloita demo" kokeillaksesi Loomiota
+    generating_demo: Ok, odota siellä! Demon luominen kestää noin 20 sekuntia.
+    start_a_x_day_free_trial: Aloita {{day}} päivän ilmainen kokeilujakso
+    ready_to_trial: Oletko valmis kokeilemaan Loomiota organisaatiosi kanssa?
+    start_a_no_obligation_x_day_trial: Aloita Loomio-ryhmä organisaatiollesi ilmaisella {{day}} päivän kokeilujaksolla.
+    you_can_test_it_out: Voit kutsua muita ihmisiä mukaan, integroida sen muihin työkaluihisi ja yrittää tehdä päätöksiä.
+    demo_created: Demoryhmä luotu, juuri sinua varten!
+    start_demo: Aloita demo
+    view_demo: Katso demo
+    start_trial: Aloita kokeilujakso
+    start_free_trial: Aloita ilmainen kokeilu
+    demo_needs_user: Demon aloittamiseksi sinun on rekisteröidyttävä (tai kirjauduttava sisään) Loomio-käyttäjäksi. Tämä on ilmainen ja kestää vain minuutin.
+    trial_needs_user: Tervetuloa! Kirjaudu sisään aloittaaksesi ilmaisen kokeilujakson
+    this_is_a_template_for_new_threads: Tämä on malli uusille säikeille
+    share_a_custom_configuration: Jaa mukautettu kokoonpano muiden ryhmäsi jäsenten kanssa
+  doctypes:
+    youtube_video: YouTube-video
+    image: Kuva
+    pdf: PDF
+    excel: Excel-taulukko
+    document: Asiakirja
+    csv: CSV-tiedosto
+    video: Video
+    text: Tekstitiedosto
+    google_doc: Google Doc
+    google_sheet: Google-laskentataulukko
+    google_drive: Google asema
+    pull_request: Vedä pyyntö
+    trello_board: Trellon hallitus
+    trello_card: Trello kortti
+  plan_names:
+    free: Vapaa
+    starter: Käynnistin
+    trial: Oikeudenkäynti
+    pro: Pro
+    pro_nonprofit: Järjestölle
+    community: Yhteisö
+    small: Pieni
+    medium: Keskikokoinen
+    large: Suuri
+    monthly: Kuukausittain
+    yearly: Vuosittain
+  current_plan_button:
+    upgrade: Päivitä
+    buy_now: Osta nyt
+    is_old_plan: Loomiolla on uusia yksinkertaisia hinnoittelusuunnitelmia
+    change_plan: Muuta suunnitelmaa
+    view_plans: Katso suunnitelmat
+    free_trial: Ilmainen kokeilu. {{days}} päivää jäljellä.
+    trial_expired: Kokeilujaksosi on vanhentunut. Päivitä jatkaaksesi Loomion käyttöä.
+    tooltip: Hintamme ovat fantastiset! Päivitä jo tänään ja nauti siitä, mitä Loomio voi tarjota ryhmällesi.
+    was_gift_trial: 'Ryhmäsi on käyttänyt Loomioa ilmaiseksi {{createdDate}} lähtien. Emme voi jatkaa ilmaisen palvelun tarjoamista. Päivitä jatkaaksesi Loomion käyttöä. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Lue lisää.</a>'
+    was_gift_remaining: "{{days}} päivää jäljellä."
+    was_gift_expired: Ilmainen suunnitelmasi on nyt vanhentunut.
+  subscription_status:
+    plan: Suunnitelma
+    state: Tila
+    members: Jäsenet
+    active_members: Aktiiviset jäsenet
+    max_threads: Max lankoja
+    max_members: Max jäseniä
+    expires_at: Vanhenee
+    renews_at: Uusiutuu
+    referral_code: Viitekoodi
+    chargify_link: Laskutusportaali
+    referral_code_help: Anna ystävälle alennus, hanki itsellesi luottoa!
+    manage_payment_details: Hallinnoi maksutietoja
+    manage_subscription: Hallinnoi tilausta
+    amount: Määrä
+  loomio_tags:
+    all_tags: Kaikki tunnisteet
+    tags: Tunnisteet
+    apply_tags: Käytä tunnisteita
+    new_tag: Uusi tunniste
+    name_label: Nimi
+    color_label: Väri
+    card_title: Luokkatunnisteet
+    modal_title: Luo uusi tunniste
+    modal_edit_title: Muokkaa tunnisteita
+    modal_destroy_title: Poista tägi
+    destroy_tag: Poista tunniste
+    destroy_helptext: Tämä poistaa tämän tunnisteen ja poistaa sen kaikista ryhmän säikeistä. Oletko varma?
+    helptext: Tunnisteiden avulla voit luokitella keskustelut ja löytää ne helposti myöhemmin
+    discussions_count_singular: "(%{count} lanka)"
+    discussions_count_plural: "(%{count} säiettä)"
+    tag_created: Tagi tallennettu
+    tag_destroyed: Tunniste poistettu
+    tags_marked: Säikeet, jotka on merkitty '{{name}}' ryhmässä {{groupName}}
+    no_tags_present: Tällä tunnisteella ei löytynyt lankoja! Yritä valita toinen
+    no_tags_in_group: Tällä ryhmällä ei ole vielä luokkatunnisteita
+    only_admins_can_edit_tags: Valitettavasti vain ryhmän {{group}} ylläpitäjät voivat luoda, nimetä uudelleen tai poistaa tunnisteita
+  poll_types:
+    proposal: ehdotus
+    count: opt-in
+    check: aistien tarkistus
+    poll: kysely
+    dot_vote: pisteäänestys
+    meeting: aikakysely
+    ranked_choice: rankattu valinta
+    score: tulos kysely
+    question: kysymyskierros
+  timezones:
+    local: Paikallinen aika ({{value}})
+  merge_accounts:
+    modal:
+      title: Yhdistä tilit
+      helptext: Voit yhdistää <strong>{{sourceEmail}}-</strong> tilin tilin <strong>{{targetEmail}}</strong> tiliin. Napsauta Vahvista, niin osoitteeseen {{targetEmail}} lähetetään vahvistussähköposti prosessin aloittamiseksi.
+      submit: Vahvista
+      flash: Vahvistussähköposti lähetetty!
+    email_taken: Valitettavasti tämä sähköposti on jo liitetty toiseen käyttäjään. Kuuluuko tuo sähköposti sinulle?
+    find_out_more: Lue lisää.
+    placeholder_modal_text: <p>Jos haluat yhdistää kaksi tiliä, kirjoita vain vastaava sähköpostiosoite (joka kuuluu toiselle tilille) Profiilisivusi sähköpostikenttään ja seuraa näkyviin tulevia ohjeita.</p><p> Tarvitsetko apua? <a href="/contact" target="_blank">Ota meihin yhteyttä</a> .
+  emoji_picker:
+    search: Hae
+    common: Usein käytetty
+    expressions: Kasvot
+    hands: Kädet
+    people: Ihmiset
+    nature: Luonto
+    objects: Asiat
+    places: Paikat
+  ordinal:
+    _1: '1'
+    _2: '2'
+    _3: '3'
+    _4: '4'
+    _5: '5'
+    _6: '6'
+    _7: '7'
+    _8: '8'
+    _9: '9'
+    _10: '10'
+  devise:
+    sessions:
+      signed_up: Ilmoittautuminen onnistui!
+    failure:
+      inactive: Tähän sähköpostiosoitteeseen on liitetty deaktivoitu tili. Jos haluat aktivoida tilisi uudelleen, ota meihin yhteyttä.
+  verify_email_notice:
+    please_verify: Kiitos osallistumisesta! Tarkista sähköpostistasi linkki äänesi vahvistamiseksi.
+  previous_polls_page:
+    heading: Tapahtumat paikassa {{name}}
+    polls_count: Näytetään {{loaded}}/{{total}} päätöstä
+    search_activities: Etsi päätöksiä
+  email_to_group:
+    email_to_group_settings: Sähköposti ryhmälle -asetukset
+    email_to_group_address: Sähköpostiosoite ryhmälle
+    start_threads_via_email: Aloita ketjut sähköpostitse
+    your_address_for_this_group: Sähköpostiosoitteesi tälle ryhmälle
+    send_email_to_start_thread: Lähetä viesti tähän osoitteeseen aloittaaksesi ketjun ryhmässäsi.
+    subject_body_attachments: Säie käyttää sähköpostin aihetta, tekstiä ja liitetiedostoja.
+    address_starts_threads_as_you: Älä jaa tätä osoitetta – kuka tahansa, jolla on se, voi aloittaa viestiketjut sinun nimelläsi.
+    generate_new_address: Luo uusi osoite
+    copy_address: Kopioi osoite
+    email_me_this_address: Lähetä minulle tämä osoite
+    email_address_sent_to_you: Sähköpostiosoite lähetetty sinulle
+    email_address_copied_to_clipboard: Sähköpostiosoite kopioitu leikepöydälle
+    new_address_generated: Uusi sähköpostiosoite ryhmälle luotu
+    generate_new_address_question: Luodaanko uusi sähköpostiosoite ryhmälle?
+    generate_new_address_warning: Kaikki nykyiset sähköpostiosoitteesi lakkaavat toimimasta. Kumoa ei ole. Mene eteenpäin?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: Sähköpostiosoitteesi ketjujen aloittamiseksi %{group}
+  pin_event_form:
+    title: Kiinnitä aikajanalle
+    title_label: Otsikko
+    hint: 'Vihje seuraavaa kertaa varten: Yritä korostaa tekstiä ennen kuin napsautat "Kiinnitä".'
+  close_explanation_modal:
+    aria_label: Sulje lanka
+    close_thread: Sulje lanka
+    body: "<p>Sulje vanhat tai asiaankuulumattomat viestiketjut poistaaksesi ne näkyvistä ja ilmoittaaksesi, että keskustelu on päättynyt.</p><p> Kuka tahansa voi silti kommentoida tai aloittaa kyselyn suljetussa ketjussa, mutta se ei näy ryhmän viestiketjuluettelossa tai hallintapaneelissa.</p>"
+    image_alt: Suljetaan kaikki ketjut
+  sign_up_form:
+    password_label: 'Salasana:'
+    password_confirmation_label: 'Taas se salasana:'
+  signed_out_modal:
+    aria_label: Istunto päättyi
+    title: Istuntosi on päättynyt
+    message: Sinut on kirjattu ulos toisesta ikkunasta. Kirjaudu takaisin sisään jatkaaksesi.
+    ok: Ok
+  comment_reply_form:
+    aria_label: Lisää vastaus
+  thread_nav:
+    participants: Osallistujat
+  sidebar:
+    threads: Kierteet
+    my_groups: Minun ryhmäni
+    other_groups: Muut ryhmät
+    all_groups: Kaikki ryhmät
+    recent_threads: Viimeaikaiset ketjut
+    invite_only_threads: Vain kutsu -ketjut
+    direct_threads: Suorat säikeet
+    unread_threads: Lukemattomat viestiketjut (%{count})
+    muted_threads: Mykistetty säikeet
+    start_group: Uusi organisaatio
+    start_subgroup: Uusi alaryhmä
+    explore: Julkiset ryhmät
+    explore_groups: Tutustu ryhmiin
+    start_thread: Uusi aihe
+    start_decision: Uusi päätös
+    more_groups: Lisää ryhmiä
+    template_gallery: Malli galleria
+    examples_and_templates: Esimerkkejä ja malleja
+    help_docs: Ohjeasiakirjat
+    a_detailed_guide_to_loomio: Yksityiskohtainen opas Loomioon
+    talk_to_the_loomio_team: Keskustele Loomio-tiimin kanssa
+    aria_labels:
+      heading: Sivupalkki
+      threads_list: Säikeitä toimia
+      groups_list: Ryhmät
+      user_list: Käyttäjän toimet
+  strand_nav:
+    newest: Uusin
+    oldest: Vanhin
+    newest_first: Uusin ensin
+    oldest_first: Vanhin ensin
+    all_pinned: Kaikki kiinnitetyt kohteet
+    whole_thread: Koko lanka
+    from_comment: Kommentin URL-osoitteesta
+    from_sequence_id: Säikeen kohteen URL-osoitteesta
+    unread: Uutta sinulle
+  search_modal:
+    all_content: Kaikki sisältö
+    best_match: Paras ottelu
+    any_tag: Mikä tahansa tagi
+    all_subgroups: Kaikki alaryhmät
+    parent_only: Vain vanhemmille
+  user_dropdown:
+    pin_sidebar: Kiinnitä sivupalkki
+    unpin_sidebar: Irrota sivupalkki
+    enable_beta_features: Ota beta-ominaisuudet käyttöön
+    disable_beta_features: Poista beta-ominaisuudet käytöstä
+    enable_dark_mode: Ota tumma tila käyttöön
+    disable_dark_mode: Poista tumma tila käytöstä
+    button_label: Käyttäjävalikko
+    edit_profile: Muokkaa profiilia
+    email_settings: Ilmoitusasetukset
+    help: auta
+    contact_site_name: Ota yhteyttä {{site_name}}
+    contact_support: Ota yhteyttä tukeen
+    sign_out: Kirjaudu ulos
+    beta_collab: "\U0001F9EA Beta-ominaisuudet käytössä!"
+    outcomes: Tulokset
+  membership_card:
+    group_members: Ryhmän jäsenet
+    discussion_members: Viestiketjun jäsenet
+    poll_members: "{{pollType}} jäsentä"
+    voters: äänestäjät
+    invite_to_group: Kutsu ryhmään
+    invite_to_discussion: Kutsu ketjuun
+    invite_to_poll: Kutsu äänestämään
+    invite_to_wip_poll: Kutsu antamaan palautetta
+    invitations: Kutsut
+  membership_dropdown:
+    set_name_and_username: Aseta nimi ja käyttäjätunnus
+    set_title: Aseta otsikko
+    resend: Lähetä kutsu uudelleen
+    invitation_resent: Kutsu lähetetty uudelleen
+    make_coordinator: Nimeä ylläpitäjäksi
+    demote_coordinator: Alenna järjestelmänvalvojaa
+    remove_from:
+      discussion: Poista langasta
+      group: Poista ryhmästä
+      poll: Poista kohteesta {{pollType}}
+    cancel_invitation: Peruuta kutsu
+  notification_models:
+    discussion: 'lanka:'
+    comment: kommentoida sisään
+    poll: 'kysely:'
+    outcome: 'tulokset:'
+    stance: 'äänestys:'
+  discussion_fork_actions:
+    helptext: Valitse kohteet, jotka haluat siirtää toiseen viestiketjuun
+    move: Liikkua
+    search_placeholder: Etsi ketju otsikon mukaan
+    moved: Siirretään kommentteja, tämä voi kestää hetken
+    move_to_existing_thread: Siirrä olemassa olevaan viestiketjuun
+    start_new_thread: Tai aloita uusi ketju
+  thread_template:
+    browse_public_templates: Selaa malligalleriaa
+    thread_template_settings: Viestimallin asetukset
+    start_a_new_thread: Aloita uusi ketju
+    thread_template_saved: Viestimalli tallennettu
+    these_are_public_templates: Voit kopioida tai muokata näitä malleja ryhmällesi sopiviksi
+    these_are_templates: Nämä ovat ryhmäsi lankamallit. Mallit ohjaavat sinua yleisten päätöksentekoprosessien läpi.
+    default_title_label: Oletusotsikko
+    default_title_hint: Esitäytä otsikkokenttä muokattavalla tekstillä. Tämä on valinnainen – jätä tyhjäksi, jos olet epävarma.
+    title_placeholder_label: Esimerkkiotsikko
+    title_placeholder_hint: Esimerkki näytettäväksi otsikkokentän taustalla
+    title_placeholder_placeholder: esim. Tältä taustateksti näyttää
+    example_description_label: Esimerkkikuvaus
+    example_description_placeholder: Tarjoa malli, jonka avulla ihmiset voivat aloittaa viestiketjun
+    hidden_templates: Piilotetut mallit
+    confirm_delete: Haluatko varmasti poistaa tämän viestiketjumallin pysyvästi? Yhtään viestiketjua ei poisteta tämän seurauksena.
+    add_proposal_or_poll_template: Lisää ehdotus tai kyselymalli
+    recommended_proposal_or_poll_templates: Suositellut ehdotus- tai kyselypohjat
+    decision_templates: Päätösmallit
+    decision_templates_help: Valitse mikä tahansa ehdotus tai kyselymalli, joka auttaa tämän prosessin suorittamisessa.
+    share_in_template_gallery: Jaa tämä malli julkisessa malligalleriassa
+  announcement:
+    send_discussion: Lähetä lanka
+    send_group: Kutsu ihmisiä {{name}}
+    send_poll: Lähetä {{tyyppi}}
+    send_outcome: Lähetä tulos
+    cannot_reveal_when_anonymous: Valitettavasti emme voi paljastaa, kuka on äänestänyt tai ei ole äänestänyt nimettömässä kyselyssä.
+    discussion_notification_history: Viestiketjun ilmoitushistoria
+    group_notification_history: Ryhmäkutsuhistoria
+    poll_notification_history: Äänestyksen ilmoitushistoria
+    outcome_notification_history: Tulosilmoitushistoria
+    comment_notification_history: Kommenttien ilmoitushistoria
+    notification_history_explanation: "✓ osoittaa, että ilmoitus on luettu tai sähköposti on avattu"
+    quick_add: 'Pika lisäys:'
+    any_other_groups: Onko muita ryhmiä?
+    notified_people: "{{name}} ilmoitti {{length}} henkilölle:"
+    preview: Esikatsele sähköposti
+    no_notifications_sent: Ilmoituksia ei ole lähetetty
+    history_error: Jotain meni pieleen! Historiaa ei voitu ladata.
+    inviting_guests_to_thread: Vieraat eivät kuulu ryhmääsi, ja heillä on pääsy vain tähän viestiketjuun
+    select_groups: Valitse ryhmät
+    search_by_name_or_email: Hae nimellä tai kutsu kutsuun kirjoittamalla sähköpostit
+    search_by_name: Etsi ihmisiä nimellä
+    only_admins_can_announce: Vain ylläpitäjät voivat ilmoittaa koko ryhmälle
+    only_admins_can_invite: Vain järjestelmänvalvojat voivat kutsua vieraita
+    only_admins_can_announce_or_invite: Vain järjestelmänvalvojat voivat ilmoittaa koko ryhmälle tai kutsua vieraita
+    user_mentioned: "{{name}} mainitsi {{length}} henkilöä:"
+    comment_replied_to: "{{name}} vastasi {{length}} henkilölle:"
+    new_discussion: "{{name}} kutsui {{length}} henkilöä ketjuun:"
+    discussion_announced: "{{name}} kutsui {{length}} henkilöä ketjuun:"
+    poll_created: "{{name}} kutsui {{length}} henkilöä äänestämään:"
+    poll_announced: "{{name}} kutsui {{length}} henkilöä äänestämään:"
+    outcome_created: "{{name}} jakoi tuloksen {{length}} henkilön kanssa:"
+    outcome_announced: "{{name}} jakoi tuloksen {{length}} henkilön kanssa:"
+    announcement_created: "{{name}} kutsui {{length}} henkilöä ketjuun:"
+    discussion_edited: "{{name}} muokkasi viestiketjua ja ilmoitti {{length}} henkilölle:"
+    poll_edited: "{{name}} muokkasi kyselyä ja ilmoitti {{length}} henkilölle:"
+    outcome_edited: "{{name}} muokkasi tulosta ja ilmoitti {{length}} henkilölle:"
+    outcome_updated: "{{name}} muokkasi tulosta ja ilmoitti {{length}} henkilölle:"
+    poll_closing_soon: 'Käyttäjän {{name}} kyselyn sulkemismuistutus ilmoitti {{length}} henkilölle:'
+    poll_reminder: "{{name}} muistutti {{length}} henkilöä äänestämään:"
+    audiences:
+      group: "{{nimi}}"
+      everyone_in_the_group: Kaikki ryhmässä
+      discussion_group: Kaikki ketjussa
+      voters: Kaikki kutsuttiin äänestämään
+      decided_voters: Kaikki äänestäneet
+      undecided_voters: Epävarmat äänestäjät
+      non_voters: Ryhmän {{name}} jäseniä ei ole vielä kutsuttu
+    form:
+      group_has_no_members_yet: Olet ryhmäsi ainoa jäsen. Haluat ehkä kutsua ihmisiä ryhmääsi ennen kuin aloitat ketjun tai päätöksen.
+      invite_people_to_evaluate_loomio: Kutsu ihmisiä Loomio-ryhmääsi tekemään päätös yhdessä
+      too_many_invitations: Kutsujen raja ylitetty. <a href="{{upgradeUrl}}" target="_blank">Päivitä</a>
+      no_invitations_remaining: <p>Olet käyttänyt kaikki tämän ryhmän saatavilla olevat {{maxMembers}} kutsut.</p><p> <a href="{{upgradeUrl}}" target="_blank">Valitse seuraavaksi suunnitelma</a> jatkaaksesi yhteistyötä Loomiossa.</p>
+      invitations_remaining: '%{count} kutsua jäljellä. <a href="{{upgradeUrl}}" target="_blank">Päivitä</a>'
+      who_to_invite: Kenet haluaisit kutsua?
+      invitation_message_placeholder: Viesti, joka sisällytetään kutsusähköpostiin. (valinnainen)
+      invitation_message_label: Viesti
+      invitation_message_default: Olen perustanut tämän Loomio-ryhmän auttamaan meitä tekemään päätöksiä yhdessä. Ole hyvä ja hyväksy kutsuni. Liittyminen kestää vain minuutin. Kiitos.
+      group_announced:
+        title: Kutsu ryhmään
+        helptext: Kenet haluaisit kutsua ryhmään?
+      discussion_announced:
+        title: Kutsu ketjuun
+        helptext: Kenet haluaisit kutsua ketjuun?
+        notify_helptext: Kenelle haluat ilmoittaa ketjusta?
+      discussion_edited:
+        title: Ilmoita muokkauksista
+        helptext: Kenelle haluat ilmoittaa tästä päivityksestä? (valinnainen)
+      poll_announced:
+        title: Kutsu äänestämään
+        helptext: Ketä haluaisit kutsua äänestämään?
+      wip_poll_announced:
+        title: Kutsu antamaan palautetta
+        helptext: Kenet haluaisit kutsua antamaan palautetta?
+      poll_reminder:
+        title: Muistuta äänestämään
+        helptext: Ketä haluaisit muistuttaa äänestämään?
+        message_label: Viesti
+        message_placeholder: Valinnainen viesti kertoa ihmisille, miksi heidän pitäisi äänestää
+      wip_poll_reminder:
+        title: Muistuta antamasta palautetta
+        helptext: Ketä haluaisit muistuttaa antamaan palautetta?
+        message_label: Viesti
+        message_placeholder: Valinnainen viesti sisällytettäväksi ilmoitussähköpostiin
+      poll_edited:
+        title: Ilmoita muokkauksista
+        helptext: Kenelle haluat ilmoittaa tästä päivityksestä?
+      outcome_announced:
+        title: Jaa tulos
+        helptext: Tee yhteenveto prosessin tuloksista, mukaan lukien löydetyt ymmärrykset tai esiin tulleet ongelmat.
+      anyone_can_participate: Kaikki linkin saaneet voivat osallistua
+      placeholder: Voit kirjoittaa nimiä tai sähköpostiosoitteita
+      type_or_paste_email_addresses_to_invite: Kirjoita tai liitä sähköpostiosoitteet kutsuaksesi
+      notified_empty: Kukaan ei ole vielä valinnut
+      single_notification: 1 ilmoitus lähetetään.
+      multiple_notifications: "{{notified}} ilmoitusta lähetetään."
+      notified: "{{notified}} henkilölle ilmoitetaan."
+      notified_singular: 1 henkilölle ilmoitetaan.
+      notified_none: Kenellekään ei ilmoiteta.
+      added: "%{count} henkilöä lisätään."
+      added_singular: 1 henkilö lisätään.
+      added_none: Ketään ei lisätä.
+      group_title: "{{name}} (%{count} henkilöä)"
+      visible_to_group: Kuka tahansa ryhmästä {{ryhmä}} näkee tämän viestiketjun.
+      visible_to_guests: Vain kutsutut ihmiset voivat nähdä tämän ketjun.
+      click_group_to_see_individuals: Napsauta ryhmää nähdäksesi yksilöt
+    members_list:
+      title: Jaettu
+      last_notified: Ilmoitettu
+      not_notified: Ei vielä ilmoitettu
+      no_members: Tätä ei ole vielä jaettu kenenkään kanssa!
+      group_admin: Ryhmän ylläpitäjä
+      thread_admin: Viestiketjun ylläpitäjä
+      last_read_at: Viimeksi katsottu {{time}}
+      has_not_read_thread: Ei ole katsonut lankaa
+    group_form:
+      search_placeholder: Etsi ihmisiä...
+      modal_title: Valitse ryhmän jäsenet
+    flash:
+      success: "%{count} ilmoitusta lähetetty"
+  action_dock:
+    actions_menu: Toiminnot-valikko
+    more_actions: Lisää toimintaa
+    react: Reagoi
+    notify: Ilmoittaa
+    add_resource: Lisää liite
+    edit_group: Muokkaa ryhmän kontekstia
+    add_comment: Kommentti
+    copy_url: Kopioi linkki
+    edit_thread: Muokkaa kontekstia
+    announce_thread: Lähetä lanka
+    invite_guests: Kutsu vieraita
+    translate_thread: Käännä konteksti
+    edit_poll: Muokkaa kyselyä
+    edit_poll_type: Muokkaa {{pollType}}
+    new_poll_type: Uusi {{pollType}}
+    move_items: Siirrä kohteita
+    announce_poll: Kutsu ihmisiä äänestämään
+    announce_poll_active: "(Ketään ei ole vielä kutsuttu)"
+    translate_poll: Käännä kysely
+    edit_stance: Vaihda asentoa
+    translate_stance: Käännä äänestys
+    edit_comment: Muokkaa kommenttia
+    delete_comment: Poista kommentti
+    reply_to_comment: Vastaa
+    fork_comment: Haarukka lanka
+    translate_comment: Käännä kommentti
+    edit_outcome: Muokkaa tulosta
+    announce_outcome: Ilmoita ihmisille tästä tuloksesta
+    announce_outcome_active: "(Tästä tuloksesta ei ole vielä ilmoitettu kenellekään)"
+    translate_outcome: Käännä tulos
+    show_history: Näytä muokkaushistoria
+    edited: Muokattu
+    show_edits: Näytä muokkaukset
+    show_notifications: Näytä ilmoitukset
+    history: Historia
+    pin_thread: Kiinnitä lanka
+    unpin_thread: Irrota lanka
+    pin_event: Kiinnitä aikajanalle
+    unpin_event: Irrota aikajanalta
+    comment_copied: Kommentin URL-osoite kopioitu leikepöydälle
+    move_thread: Siirrä ryhmään
+    poll_copied: Päätöksen URL-osoite kopioitu leikepöydälle
+    discussion_copied: Viestiketjun URL-osoite kopioitu leikepöydälle
+    url_copied: Linkki kopioitu leikepöydälle
+    tag_thread: Hallitse tunnisteita
+    close_thread: Sulje lanka
+    reopen_thread: Avaa lanka uudelleen
+    delete_thread: Poista lanka
+    notification_history: Ilmoitushistoria
+    move_item: Siirrä kohde
+    add_poll_to_thread: Lisää ketjuun
+    count_members: "%{count} jäsentä"
+    count_voters: "%{count} äänestäjää"
+  formatting:
+    formatting_tools: Tekstin muotoilutyökalut
+    colors: värit
+    highlight: Kohokohta
+    alignment: Tasaus
+    lists: Luettelot
+    expand: Näytä lisää muotoilutyökaluja
+    collapse: Näytä vähemmän muotoilutyökaluja
+    bold: Lihavoitu
+    italicize: Kursivoida
+    blockquote: Lainata
+    strikethrough: Yliviivattu
+    underline: Korostaa
+    link: Lisää linkki
+    code_block: Koodilohko
+    insert_image: Lisää kuva
+    insert_emoji: Lisää emoji
+    attach: Liitä tiedosto
+    heading_size: Otsikon koko
+    heading1: Otsikko 1
+    heading2: Otsikko 2
+    heading3: Otsikko 3
+    left_align: Tasaa vasemmalle
+    center_align: Keskitä
+    right_align: Tasaus oikealle
+    justify_align: Tasaa tasaus
+    paragraph: Kohta
+    bullet_list: Lista
+    number_list: Numeroitu luettelo
+    check_list: Tarkistuslista
+    task_list: Tehtävälista
+    reset: Nollaa
+    text_color: Tekstin väri
+    background_color: Taustaväri
+    quote: Lainata
+    embed: Upotettu video
+    divider: Jakaja
+    add_table: Lisää taulukko
+    remove_table: Poista pöytä
+    add_column_before: Lisää sarake ennen
+    add_column_after: Lisää sarake perään
+    remove_column: Poista sarake
+    add_row_before: Lisää rivi ennen
+    add_row_after: Lisää rivi perään
+    remove_row: Poista rivi
+    merge_selected: Yhdistä valitut solut
+    wysiwyg: wysiwyg
+    edit_markdown: Muokkaa merkintää
+    markdown_confirm: Jotkut muotoilut saattavat kadota, kun wysiwyg-sisältö muunnetaan markdowniksi.
+    upload_failed: Lataus epäonnistui
+  cover_photo_form:
+    heading: Uusi kansikuva
+    upload_link: Lataa uusi kansikuva
+    image_size_helptext: Ihanteellinen kuvan koko on 1400 × 320 pikseliä
+    upload_success: Kansikuvan päivitys onnistui
+  logo_photo_form:
+    heading: Ryhmän uusi logo
+    upload_link: Lataa uusi ryhmän logo
+    image_size_helptext: Ihanteellinen kuvan koko on 100 × 100 pikseliä
+    upload_success: Logo päivitetty onnistuneesti
+  join_group_button:
+    not_a_member: Et ole tällä hetkellä tämän ryhmän jäsen.
+    join_group: Liittyä ryhmään
+    membership_requested: Jäsenyyttä pyydetty
+    messages:
+      joined_group: Olet nyt ryhmän {{group}} jäsen
+  membership_request_form:
+    aria_label: Jäsenhakemuslomake
+    heading: Pyydä liittymistä ryhmään
+    name_label: Nimi
+    email_label: Sähköposti
+    introduction_label: Miksi haluat liittyä?
+    submit_button: Pyydä liittymistä
+    introduction_over_limit: Vastaus liian pitkä
+    messages:
+      membership_requested: Olet pyytänyt liittymistä {{ryhmään}}
+  revision_history_modal:
+    aria_label: Versiohistoria
+    discussion_header: Keskustelun muokkaukset
+    comment_header: Kommenttien muokkaukset
+    poll_header: Äänestyksen muokkaukset
+    outcome_header: Lopputuloksen muokkaukset
+    stance_header: Äänestysmuokkaukset
+    started_by: 'Aloittaja <strong>: {{name}}</strong>'
+    edited_by: Muokannut <strong>{{name}}</strong>
+    edit_by: 'Muokkaaja: {{name}} · {{date}}'
+    posted: Lähetetty
+    field: Ala
+    before: Ennen
+    after: Jälkeen
+    original_text: Alkuperäinen
+    current_revision: Uusin
+    closing_at_changed: sulkemisaika asetettu {{time}}
+    private_changed: yksityisyys asetettu arvoon {{private}}
+    group_id_changed: siirretty paikkaan {{name}}
+  reactions_input:
+    add_your_reaction: Lisää reaktiosi
+  reactions_display:
+    more_reactions: "%{count} lisää"
+    you: Sinä
+    you_and_name: Sinä ja {{name}}
+    you_and_name_and_count_more: Sinä, {{name}} ja %{count} muuta
+    name_and_count_more: "{{name}} ja %{count} muuta"
+  context_panel:
+    thread_status:
+      pinned: Tämä lanka on kiinnitetty. Se pysyy ryhmän kaikkien käyttäjien viestiketjuluettelon yläosassa.
+      closed: Tämä ketju on suljettu. Se ei enää näy kojelaudassa, ja se on lueteltu ryhmäsivun "suljettu" -kohdassa
+  delete_group_modal:
+    title: Poista ryhmä
+    subgroup_title: Poista alaryhmä
+    parent_body: "<h2>Tämä on yläryhmäsi - ei alaryhmä!</h2><br> Jos poistat tämän, myös kaikki alaryhmät poistetaan pysyvästi. Myös Loomio-tilauksesi peruutetaan. On erittäin suositeltavaa viedä ryhmätiedot ja ladata manuaalisesti kaikki tärkeät tiedostot ennen tämän tekemistä. Oletko varma, että haluat jatkaa?"
+    body: Haluatko varmasti poistaa tämän aliryhmän? Kaikki viestiketjut, kyselyt, tiedostot ja muu ryhmän sisältö poistetaan pysyvästi. On suositeltavaa viedä ryhmätiedot ja ladata kaikki tärkeät tiedostot manuaalisesti ennen kuin jatkat.
+    confirm: Kirjoita '%{name}' vahvistaaksesi, että haluat poistaa tämän ryhmän.
+    success: Tämä ryhmä on arkistoitu ja se on tarkoitus poistaa pysyvästi 2 viikon kuluttua.
+  group_page:
+    stats: Ryhmätilastot
+    threads: Kierteet
+    polls: Äänestykset
+    decisions: Päätökset
+    members: Jäsenet
+    files: Tiedostot
+    settings: asetukset
+    subgroups: Alaryhmät
+    show_opened: "%{count} Avoinna"
+    show_closed: "%{count} Suljettu"
+    no_threads_here: Ei ketjuja täällä!
+    search_threads: Etsi ketjuja...
+    private_threads: Sinun on oltava jäsen nähdäksesi yksityisiä viestiketjuja tässä ryhmässä
+    no_more_threads: Ei enää ladattavia lankoja
+    view_closed_threads: Näytä suljetut viestiketjut
+    messages:
+      privacy:
+        members: Tämä ryhmä näkyy nyt vain jäsenille
+        parent_members: Tämä ryhmä näkyy nyt vain organisaatiosi jäsenille
+        public: Tämä ryhmä on nyt julkisesti nähtävissä
+      leave_group_success: Olet poistunut tästä ryhmästä
+      archive_group_success: Tämä ryhmä on poistettu käytöstä
+    group_logo: Ryhmän logo
+    new_photo: uusi valokuva
+    new_cover_photo: Lataa uusi kansikuva
+    new_group_logo: Lataa uusi ryhmän logo
+    open_discussions: Avaa ketjut
+    closed_discussions: Suljetut ketjut
+    discussions_placeholder: Lanka on, jossa kaikki voivat keskustella aiheesta ja tehdä päätöksiä yhdessä.
+    members_placeholder: 'Olet täällä ainoa: kutsu ihmisiä mukaan!'
+    member_options: Jäsenvaihtoehdot
+    see_all_members: Näytä kaikki %{count} jäsentä
+    pending_invitations: "+ %{count} vireillä"
+    subgroups_placeholder: Alaryhmät antavat tiimeille oman tilan ja pitävät ilmoitukset kohdistettuina oikeille ihmisille.
+    invite_people: Kutsu
+    visibility_label: Näkyvyys
+    options_label: Vaihtoehdot
+    options:
+      label: Vaihtoehdot
+      edit_group: Muokkaa ryhmän asetuksia
+      become_coordinator: Ryhdy järjestelmänvalvojaksi
+      export_data: Vie ryhmätiedot
+      export_data_as_json: Vie ryhmätiedot JSON-muodossa
+      export_data_as_csv: Vie ryhmätiedot CSV-muodossa
+      export_data_as_html: Vie ryhmätiedot HTML-muodossa
+      manage_members: Hallitse jäseniä
+      add_subgroup: Lisää alaryhmä
+      manage_subscription: Hallinnoi ryhmätilausta
+      email_settings: Sähköpostiasetukset
+      leave_group: Jätä ryhmä
+      deactivate_group: Poista ryhmä käytöstä
+      subscription_status: Tilauksen tila
+    volume:
+      loud: Sähköpostia aina kun on toimintaa.
+      loud_aria_description: Tämän ryhmän ilmoitusten äänenvoimakkuus on Kova. Saat sähköpostin aina, kun toimintaa on.
+      loud_message: Saat sähköpostin kaikesta toiminnasta kohteessa {{name}}.
+      normal: 'Lähetä vain sähköpostia tärkeästä toiminnasta: uudet viestiketjut ja ehdotukset, tulokset jne.'
+      normal_aria_description: Tämän ryhmän ilmoitusten äänenvoimakkuus on Normaali. Saat vain sähköpostiviestin tärkeästä toiminnasta, kuten kun joku aloittaa uuden ketjun, tekee ehdotuksen tai asettaa tuloksen.
+      normal_message: Sinulle lähetetään sähköpostia vain tärkeistä tapahtumista kohteessa {{name}}.
+      quiet: Älä lähetä sähköpostia tästä ryhmästä. Toiminta näkyy kojelaudassa.
+      quiet_aria_description: Tämän ryhmän ilmoitusten äänenvoimakkuus on Hiljainen. Sinulle ei lähetetä sähköpostia tämän ryhmän toiminnasta. Ryhmätoiminta näkyy hallintapaneelissasi.
+      quiet_message: Sinulle ei lähetetä sähköpostia toiminnasta kohteessa {{name}}.
+      mute: Piilota tämä ryhmä hallintapaneelista ja älä ilmoita, ellei @mainita.
+      mute_aria_description: Tämän ryhmän ilmoitusten äänenvoimakkuus on mykistetty. Sinulle ei lähetetä sähköpostia, ellei joku mainitse sinua, eikä ryhmätoimintaa näytetä hallintapaneelissasi.
+      mute_message: '"{{name}}" on poistettu hallintapaneelistasi.'
+    privacy:
+      private: 'Yksityisyys: Tämä ryhmä näkyy vain jäsenille'
+      parent_members: 'Yksityisyys: Tämä ryhmä näkyy ryhmän {{parentGroupName}} ja ryhmän {{groupName}} jäsenille'
+      public: 'Yksityisyys: Tämä ryhmä näkyy verkossa'
+      aria_label: 'Ryhmän tietosuoja: {{tietosuoja}}'
+  export_data_modal:
+    title: Miten haluat käyttää tietojasi?
+    as_csv: Avaa se laskentataulukossa
+    as_html: Avaa se selaimessa
+    as_json: Isännöi tätä ryhmää omalla palvelimellani
+  description_card:
+    title: Ryhmän kuvaus
+    placeholder: Ryhmän ylläpitäjät voivat käyttää tätä aluetta kuvaamaan ryhmän tarkoitusta, jotta kaikki tietävät miksi he ovat täällä.
+    messages:
+      description_updated: Kuvaus päivitetty
+  leave_group_form:
+    aria_label: Jätä ryhmä
+    title: Jätä ryhmä
+    question: Haluatko varmasti poistua tästä ryhmästä?
+    submit: Kyllä, poistu tästä ryhmästä
+  archive_group_form:
+    aria_label: Poista ryhmä käytöstä
+    title: Poista ryhmä käytöstä
+    question: Haluatko varmasti poistaa tämän ryhmän käytöstä?
+    submit: Kyllä, poista tämä ryhmä käytöstä
+  group_export_modal:
+    title: Vie ryhmätiedot
+    body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
+    submit: Aloita vienti
+    flash: Ryhmätietojen vienti aloitettu
+  membership_requests_card:
+    heading: Jäsenyyspyynnöt
+    manage_requests: Hallinnoi pyyntöjä
+    manage_requests_with_count: Hallinnoi pyyntöjä (%{count})
+  membership_requests_page:
+    heading: Jäsenyyspyynnöt
+    approve: Hyväksyä
+    ignore: Jättää huomiotta
+    no_pending_requests: Tälle ryhmälle ei ole tällä hetkellä vireillä olevia jäsenyyspyyntöjä.
+    no_previous_requests: Tälle ryhmälle ei ole tällä hetkellä aiempia jäsenpyyntöjä.
+    previous_requests: Aiemmat pyynnöt
+    previous_request_response: "{{response}} kirjoittaja {{responder}}"
+    messages:
+      request_approved_success: Jäsenhakemus hyväksytty
+      request_ignored_success: Jäsenyyspyyntö ohitettu
+  membership_remove_modal:
+    invitation:
+      title: Peruuta kutsu
+      message: Haluatko varmasti peruuttaa kutsun henkilölle {{name}}?
+      flash: Kutsu peruttu
+      submit: Peruuta kutsu
+    membership:
+      title: Poista jäsen
+      message: Haluatko varmasti poistaa käyttäjän {{name}}?
+      impact_for_subgroup: Tämä poistaa heidän pääsynsä alaryhmään (mukaan lukien viestiketjut ja kyselyt), mutta he pysyvät pääryhmän jäseninä.
+      impact_for_group: Tämä poistaa heidän pääsynsä ryhmään (mukaan lukien viestiketjut ja kyselyt) ja kaikkiin alaryhmiin.
+      flash: Jäsen poistettu
+      submit: Poista jäsen
+  memberships_panel:
+    add_coordinator: Nimeä ylläpitäjäksi
+    remove_coordinator: Alenna järjestelmänvalvojaa
+  membership_form:
+    modal_title:
+      group: Aseta otsikko
+    title_helptext:
+      group: Tämä otsikko näkyy käyttäjän {{name}} nimen vieressä tässä ryhmässä. Käytä sitä kertoaksesi ihmisille roolistaan.
+    title_label: otsikko
+    title_placeholder: Esim 'koordinaattori' tai 'fasilitaattori'
+    updated: Jäsennimike päivitetty
+  user_name_modal:
+    user_name_updated: Käyttäjätunnus päivitetty
+    set_user_name: Aseta käyttäjänimi
+  user_page:
+    contact_user: Ota yhteyttä {{name}}
+    location_field: 'Sijainti: {{arvo}}'
+    locale_field: 'Kieli: {{arvo}}'
+    online_field: 'Online: {{value}}'
+    invited: Kutsuttu {{arvo}}
+    message_user: Viesti {{name}}
+  contact_request_form:
+    modal_title: Sähköposti {{name}}
+    message_placeholder: Esittele itsesi ja kerro, miksi haluat ottaa yhteyttä.
+    helptext: "{{name}} saa sähköpostin nimesi, sähköpostiosoitteesi ja viestisi"
+    email_sent: Sähköposti lähetetty osoitteeseen {{name}}
+  profile_page:
+    account_is_bot: Tämä on bot-tili
+    bot_account_warning: Bottitilejä ei kutsuta äänestämään kyselyissä tai osallistumaan keskusteluihin
+    incomplete_profile: Epätäydellinen profiili!
+    set_your_profile_picture: Aseta profiilikuvasi
+    messages:
+      updated: profiili päivitetty
+      picture_changed: Profiilikuva päivitetty
+      password_changed: Salasana päivitetty
+      deactivated: Tili poistettu käytöstä
+    deactivated_user: Deaktivoitu käyttäjä
+    date_time_pref_label: Päivämäärän ja kellonajan muoto
+    merge_accounts: Yhdistä tilit
+    change_picture_link: Vaihda kuva
+    change_password_link: Nollaa salasana
+    delete_account: Poista tili pysyvästi
+    delete_user_link: Poista tili
+    profile: Profiili
+    edit_profile: Muokkaa profiilia
+    picture_label: Kuva
+    name_label: Nimi
+    username_label: Käyttäjätunnus
+    username_helptext: Kaikki pienet kirjaimet ja numerot, enintään 30 merkkiä
+    email_label: Sähköposti
+    short_bio_label: Johdanto
+    locale_label: Kieli
+    short_bio_placeholder: Esittele itsesi, mainitse osaamisalueet, kiinnostavat aiheet ja mahdolliset liitännäisorganisaatiot
+    locale_placeholder: Valitse haluamasi kieli
+    location_label: Sijainti
+    location_placeholder: Missä asut?
+    update_profile: Päivitä profiili
+    deactivate_account: Poista käyttäjätili käytöstä
+    help_translate: Voitko auttaa meitä kääntämään Loomio?
+    updated_on_sign_in: Selaimesi tarjoaa ja päivitetään, kun kirjaudut sisään
+  text_editor:
+    x_of_y_characters: "{{x}} / {{y}} merkkiä"
+    select_text_to_link: Valitse linkitettävä teksti ja yritä uudelleen
+    insert_link: Lisää linkki
+    insert_embedded_url: Upotettu video
+  change_picture_form:
+    aria_label: Profiilikuvalomake
+    title: Aseta profiilikuva
+    helptext: Voit ladata oman profiilikuvasi, tai jos sinulla on <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar-</a> tili, voit käyttää sitä.
+    use_initials: Käytä nimikirjaimia
+    use_gravatar: Käytä Gravataria
+    use_uploaded: Lataa uusi kuva
+    existing_upload: Olemassa oleva lataus
+    use_provider: Käytä {{provider}} valokuvaa
+  change_password_form:
+    set_password_title: Aseta salasanasi
+    set_password_helptext: Anna salasana - vähintään 8 merkkiä
+    set_password: Aseta salasana
+    password_changed: Salasanasi on päivitetty
+  deactivation_modal:
+    introduction: 'Kun poistat tilisi:'
+    you_will_be_deleted: Käyttäjätilisi, mukaan lukien nimesi, sähköpostiosoitteesi ja muut henkilökohtaiset tunnistetiedot, poistetaan järjestelmistämme.
+    name_removed: Tekemäsi kommentit, ehdotukset ja keskustelut säilyvät, mutta nimesi poistetaan niistä
+    no_longer_group_member: Sinua ei enää merkitä minkään ryhmän jäseneksi
+    no_emails: Et enää saa ilmoitussähköpostiviestejä
+    submit_delete: Poista tilini nyt
+  email_settings_page:
+    monday: maanantai
+    tuesday: tiistai
+    wednesday: keskiviikko
+    thursday: torstai
+    friday: perjantai
+    saturday: lauantai
+    sunday: sunnuntai
+    every_day: Joka päivä
+    every_second_day: Joka toinen päivä
+    header: Ilmoitusasetukset
+    account_deactivated: Käyttäjäsi on deaktivoitu. Et saa koskaan sähköpostiviestejä.
+    deactivate_header: Lopeta kaikki sähköpostit ikuisesti
+    deactivate_description: Jos et enää koskaan halua saada meiltä toista sähköpostia, voit poistaa käyttäjätilisi käytöstä.
+    email_newsletter: Loomio-uutiskirje
+    email_newsletter_description: Saat päivityksiä uusista ominaisuuksista, koulutuksesta, kaupungissasi tapahtuvista tapahtumista ja Loomion tulevaisuudesta. Yleensä 2-3 sähköpostia vuodessa.
+    email_catch_up_day: Yhteenveto sähköpostilla
+    daily_summary_description: Valitse, milloin haluat saada seurantayhteenvedon sähköpostin. Tämä sähköposti sisältää kaikkea uutta toimintaa, jota et ole nähnyt. Hyvä tapa pysyä ajan tasalla, jos et ole tavallinen käyttäjä.
+    on_participation_label: Ilmoittaudu osallistumiseen
+    on_participation_description: Kun osallistut ketjuun, kaikki muut tapahtumat lähetetään sinulle välittömästi sähköpostitse.
+    announcement_label: Ilmoitukset
+    announcement_description: Saat sähköpostin kaikesta sisällöstä, josta ryhmäsi ihmiset ovat ilmoittaneet
+    mentioned_label: Maininnat & vastaukset
+    mentioned_description: Kun joku @mainitsee sinut kommentissa tai vastaa sinulle, saat ilmoituksen sähköpostitse
+    update_settings: Tallenna muutokset
+    specific_groups: Asetukset tietyille ryhmille
+    default_settings:
+      loud_description: Kun liityt uuteen ryhmään, saat sähköpostiviestin <strong>aina, kun siellä on toimintaa</strong> .
+      normal_description: Kun liityt uuteen ryhmään, sinulle lähetetään sähköpostiviesti <strong>uusista ketjuista ja ehdotuksista</strong> .
+      quiet_description: Kun liityt uuteen ryhmään, sinulle <strong>ei lähetetä sähköpostia toiminnasta</strong> .
+    edit: Muokata
+    messages:
+      updated: Sähköpostiasetukset päivitetty
+    learn_more: Lisätietoja sähköpostiasetuksista...
+  thread_preview:
+    replies_count: "%{count} vastausta"
+    unread_count: "%{count} lukematonta"
+  threads_page:
+    no_direct_threads: Sinulla ei ole suoria lankoja
+    no_invite_only_threads: Sinulla ei ole vain kutsuun tarkoitettuja säikeitä
+  inbox_page:
+    no_threads: Woohoo! Olet lukenut kaikki postilaatikossasi olevat viestiketjut.
+    unread_threads: Lukemattomat ketjut
+    view_more: Katso lisää
+    no_groups:
+      explanation: Sinulla ei ole lukemattomia ketjuja, koska et ole minkään ryhmän jäsen.
+      start: alkaa
+      or: tai
+      join_group: <a href="/explore">Liity</a> ryhmään nähdäksesi viestiketjut.
+  discussion:
+    invite_only: Vain kutsusta
+    private_thread: Yksityinen lanka
+    max_threads_reached: <p>Olet käyttänyt kaikkia tässä ryhmässä käytettävissä olevia {{maxThreads}} säiettä.</p><p> <a href="{{upgradeUrl}}" target="_blank">Valitse seuraavaksi suunnitelma</a> jatkaaksesi yhteistyötä Loomiossa.</p>
+    subscription_canceled: <p>Tilauksesi ei ole aktiivinen.</p><p> <a href="{{upgradeUrl}}" target="_blank">Päivitä</a> jatkaaksesi Loomion käyttöä.</p>
+    activity: Toiminta
+    activity_placeholder: Ei toimintaa vielä!
+    load_previous: Lataa aikaisemmat toiminnot
+    started_by: 'Aloittaja <strong>: {{name}}</strong>'
+    pin:
+      pinned: Lanka kiinnitetty
+      unpinned: Lanka irrotettu
+    volume:
+      mute_message: Säie mykistetty
+      unmute_message: Säie poistettu
+    closed:
+      reopened: Viesti avattu uudelleen
+      closed: Ketju suljettu
+  discussion_last_seen_by:
+    title: Nähnyt
+    no_one: Kukaan ei ole vielä nähnyt tätä
+  activity_card:
+    count_responses: "%{count} vastausta"
+    event_pinned: Kiinnitetty aikajanalle
+    event_unpinned: Irrotettu aikajanalta
+    beginning: Alku
+    end: Loppu
+    unread: Lukemattomat (%{count})
+    latest: Uusin
+    context: Konteksti
+    chronological: Kronologinen
+    nested: Sisäkkäinen
+    attachment_display:
+      aria_label: 'Liitteenä oleva tiedosto:'
+      image_alt: Liitteenä kuva
+    n_previous: Lataa %{count} aiempaa vastausta
+    n_more: Lataa %{count} vastausta
+    add_comment: Lisää kommentti
+    add_poll: Lisää kysely
+    add_outcome: Lisää tulos
+    comment: Kommentti
+    facilitate: Helpottaa
+    start_decision: Aloita päätös
+    start_vote: Aloita äänestys
+  thread_group:
+    aria_label: Ryhmän nimi
+  pin_thread_modal:
+    title: Kiinnitä lanka
+    helptext: Kiinnitetyt viestiketjut näkyvät aina ryhmän viestiketjuluettelon yläosassa. Niitä voidaan käyttää tiedottamaan jäsenille tärkeistä ilmoituksista tai edistämään yleistä materiaalia, kuten käytännesääntöjä tai yhteisön ohjeita.
+    helptext_two: Voit poistaa nastat milloin tahansa valitsemalla 'Poista kiinnitys' avattavasta ketjuvalikosta
+    pin_thread: Kiinnitä lanka
+  thread_arrangement_form:
+    edit: Muokkaa asettelua
+    title: Langan asettelu
+    for_everyone: Tämä muuttaa asettelun kaikille, ei vain sinulle.
+    sorting: Vanhin vai uusin ensin?
+    latest: Uusin
+    latest_description: Lue uusimmat jutut ensin
+    earliest: Vanhin
+    earliest_description: Tutustu vanhoihin kommentteihin ennen kuin näet uudempia
+    replies: Miten vastaukset näytetään?
+    linear: Tasainen lista
+    linear_description: Kohteet lueteltu niiden tapahtuessa, yksi toisensa jälkeen.
+    nested_once: Nest-vastaukset – vain ensimmäinen vastaus
+    nested_once_description: Sisennä vastaukset alkuperäisen kommentin alle
+    nested_twice: Sisäkkäisten vastausten kaksi tasoa
+    nested_twice_description: Sisennä vastaus enintään kaksi kertaa.
+    changing_nesting_is_slow: Sisään tehtyjen muutosten käsittely voi kestää muutaman minuutin.
+  delete_thread_form:
+    aria_label: Poista lanka
+    title: Poista lanka
+    body: Haluatko varmasti poistaa tämän ketjun?
+    confirm: Poista lanka
+    messages:
+      success: Viesti poistettu
+  move_thread_form:
+    aria_label: Siirrä lankaa
+    title: Siirrä lankaa
+    body: Kohderyhmä
+    confirm: Siirrä lankaa
+    confirm_change_to_private_thread: "{{groupName}} on avoin ryhmä. Jos jatkat, tämä viestiketju julkaistaan."
+    messages:
+      success: Viesti on siirretty osoitteeseen {{name}}
+  contact_message_form:
+    alt_title: Ota yhteyttä Loomio-tukeen
+    need_message: Laita viestiä niin voimme auttaa :-)
+    respond_asap: Lähetä viesti Loomio-tiimille, niin vastaamme mahdollisimman pian.
+    happy_to_help_with: Autamme mielellämme myyntitiedusteluissa, tukipyynnöissä, ominaisuuspyynnöissä, virheistä tai kohtaamistasi ongelmista ilmoittamisessa.
+    title: Hei siellä! Kuinka voimme auttaa?
+    contact_us_email: 'Voit myös lähettää meille sähköpostia: <a href="mailto:{{email}}">{{email}}</a>'
+    contact_us: Ota meihin yhteyttä
+    name_label: Sinun nimesi
+    name_placeholder: Kirjoita nimesi...
+    subject_label: Aihe
+    subject_placeholder: 'Esim: sisäänkirjautumisongelma tai ominaisuusehdotus'
+    email_label: Sähköpostiosoitteesi
+    email_placeholder: Syötä sähköpostiosoitteesi...
+    message_label: Viestisi
+    message_placeholder: Jos pyydät tukea, yritä antaa mahdollisimman paljon tietoa.
+    send_message: Lähetä viesti
+    new_contact_message: Kiitos yhteydenotostasi; palaamme sinuun pian!
+    consent_message: Ottamalla meihin yhteyttä annat suostumuksesi siihen, että henkilökuntamme käyttää tiliäsi tarvittaessa.<br /> Tukitiimimme puhuu englantia ja kääntää viestisi tarvittaessa Google-kääntäjällä.<br /> Pyrimme vastaamaan kaikkiin viesteihin 24 tunnin sisällä.
+    success: Kiitos viestistäsi, {{name}}. Kuulet meistä pian.
+    success_via_email: Kiitos viestistäsi, {{name}}. Vastaamme sähköpostitse 24 tunnin kuluessa.
+  explore_page:
+    header: Tutustu ryhmiin
+    search_placeholder: Etsi julkisia ryhmiä
+    single_search_result: 1 julkinen ryhmä, joka vastaa <strong>{{searchTerm}}:</strong>
+    multiple_search_results: "{{resultCount}} julkista ryhmää, jotka vastaavat <strong>{{searchTerm}}:</strong>"
+    no_results_found: <strong>Etkö löydä etsimääsi ryhmää?</strong> Jos ryhmän yksityisyys on asetettu "salaiseksi", se ei näy tässä.
+    newest_first: Uusin ensin
+    biggest_first: Suurin ensin
+    order_by: Tilaa ryhmät mukaan
+  global:
+    messages:
+      app_update: Loomiosta on julkaistu uusi versio. Tallenna työsi ja lataa se uudelleen.
+      reload: Lataa uudelleen
+  decision_tools_card:
+    choose_type: Valitse kyselyn tyyppi
+    title: Helpottaa
+    recommended: Suositeltava
+    question_title: Kysymyskierros
+    advice_title: Neuvoja
+    consent_title: suostumus
+    consensus_title: Yhteisymmärrys
+    proposal_title: Ehdotus
+    count_title: Osallistu
+    check_title: Aistitarkistus
+    poll_title: Poll
+    meeting: Tapaaminen
+    score_title: Pisteet kyselyssä
+    dot_vote_title: Pisteäänestys
+    meeting_title: Aikakysely
+    ranked_choice_title: Sijoitettu valinta
+    gradients_of_agreement_title: Sopimuksen gradientit
+  poll_option_form:
+    edit_option: Muokkaa vaihtoehtoa
+    option_name: Vaihtoehdon nimi
+    option_name_hint: Lyhyt nimi tälle vaihtoehdolle
+    option_name_validation: On parasta pitää nimi lyhyenä ja lisätä yksityiskohdat Merkitys-kenttään
+    icon: Kuvake
+    meaning: Merkitys
+    meaning_hint: Pari lausetta, joissa selitetään, mitä tämän vaihtoehdon valitseminen tarkoittaa. Valinnainen
+    prompt: Syykehote
+    prompt_hint: Kysymys, joka kannustaa äänestäjiä jakamaan perustelunsa tai harkitsemaan uudelleen kantaansa. Valinnainen
+  poll_common_attachment_form:
+    label: Liitteet
+  poll_common_add_option:
+    button:
+      add_option: Lisää toinen vaihtoehto
+    modal:
+      title: Lisää vaihtoehto
+    form:
+      add_options: Lisää vaihtoehtoja
+      options_added: Uusia vaihtoehtoja lisätty
+  poll_common_card:
+    show_results: Näytä tulokset
+    hide_results: Piilota tulokset
+    until_vote: Kunnes äänestetään
+    until_you_vote: Kunnes äänestät
+    until_poll_type_closed: Kunnes {{pollType}} on suljettu
+    until_voting_is_closed: Kunnes äänestys päättyy
+    deleted: Tämä kysely on poistettu
+  members_panel:
+    bot: Bot
+    no_results: Jäseniä ei löytynyt
+    everyone: Kaikki
+    all: Kaikki
+    sort: Järjestellä
+    order_label: Tilaus
+    order_by_name: Nimi
+    order_by_created: Vanhin
+    show_users_in_subgroups: Näytä myös käyttäjät alaryhmissä
+    order_by_created_desc: Uusin
+    order_by_admin_desc: Järjestelmänvalvojat
+    loaded_of_total: "{{loaded}} / {{total}}"
+    view_requests: Näytä pyynnöt
+    header_name: Nimi
+    header_username: Käyttäjätunnus
+    header_role: Rooli
+    header_invited_by: Kutsuja
+    header_invited: Kutsuttu
+    header_actions: Toiminnot
+    directory: Hakemisto
+    invitations: Kutsut
+    requests: Pyynnöt
+    admin: Admin
+    guest: Vieras
+    sharable_link: Jaettava linkki
+    last_seen: Viimeksi nähty {{päivämäärä}}
+    invited_by_name: 'Kutsuja: {{name}}'
+    accepted: Jäsenet
+  group_files_panel:
+    no_files: Tiedostoja ei löytynyt
+    filename: Tiedoston nimi
+    uploaded_by: Lähettäjä
+    uploaded_at: Ladattu klo
+    delete_confirmation: Haluatko varmasti poistaa tämän liitteen? Se poistetaan kaikista siihen liittyvistä kommenteista tai viestiketjuista. Tätä ei voi peruuttaa.
+  subgroups_panel:
+    search_subgroups_of_name: Hae alaryhmiä {{name}}
+    group_without_subgroups: "{{name}} ilman alaryhmiä"
+  poll_common_action_panel:
+    from_the_thread: Lankamallista
+    from_the_group: Ryhmästä
+    default_templates: Oletusmallit
+    default_template: Oletusmalli
+    custom_template: Mukautettu malli
+    default_poll_types: Oletuskyselytyypit
+    suggested_templates: Ehdotetut mallit
+    group_templates: Ryhmämallit
+    basic_templates: Perusmallit
+    anonymous: Äänet ovat anonyymejä
+    results_hidden_until_closed: Tulokset näkyvät äänestyksen päätyttyä
+    results_hidden_until_vote: Tulokset näkyvät äänestämisen jälkeen
+    unable_to_vote: Sinua ei ole kutsuttu äänestämään tässä %{poll_type}
+    draft_mode: Äänestys estetty. Tämä ei ole vielä avoinna äänestettäväksi.
+    voting_disabled_poll_is_template: Äänestys estetty. Tämä on malli.
+  poll_common_collapsed:
+    by_who: nimeltä}}
+  poll_common_calendar_invite:
+    calendar_invite: Liitä tähän tulokseen kalenterikutsu
+    poll_option_id: Tapaamisaika
+    helptext_on: Käyttäjät voivat lisätä tämän kokouksen kalenteriinsa
+    helptext_off: Kokouskutsua ei lähetetä
+    event_duration: Kesto
+    event_summary: Kokouksen nimi
+    event_summary_placeholder: Millä nimellä haluaisit kutsua tätä kokousta?
+    event_description: Kokouksen kuvaus
+    event_description_placeholder: Mikä on tämän kokouksen asialista?
+    location: Sijainti
+    location_placeholder: Missä tämä kokous järjestetään?
+  poll_common_settings:
+    who_can_vote: Kuka voi äänestää?
+    short_reason_can_be_helpful: Äänestyssyiden pitäminen lyhyinä tekee niistä helpompia ymmärtää. Lyhyiden syiden kokoelma on loistava resurssi päätöksentekoon.
+    specified_voters_only_true: Vain kutsutut ihmiset
+    specified_voters_only_false_group: Kuka tahansa ryhmässä
+    specified_voters_only_false_discussion: Kuka tahansa ketjussa
+    invite_people_next: Voit valita, ketkä kutsutaan äänestämään, kun olet aloittanut {{poll_type}}
+    shuffle_options:
+      shuffle_options: Satunnaistoistovaihtoehdot
+      title: Näytä vaihtoehdot satunnaisessa järjestyksessä
+      helptext: Vaihtoehto, joka on luettelon ensimmäinen, voi antaa sille harhaa. Käytä tätä asetusta vastustaaksesi tätä vaikutusta.
+    multiple_choice:
+      title: Monivalinta
+      helptext_on: Kun osallistujat valitaan, he voivat valita useita vaihtoehtoja.
+    anyone_can_participate:
+      title: Kaikki linkin saaneet voivat osallistua
+      helptext_on: Valittuna kuka tahansa, jolla on linkki kyselyyn, voi osallistua.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Koska äänestys sulkeutuu 24 tunnin sisällä, ei pian sulkemismuistutuksia lähetetä.
+      closes_too_soon: Koska tämä {{pollType}} sulkeutuu 24 tunnin sisällä, muistutuksia sulkemisesta ei lähetetä.
+      title: 24 tuntia ennen {{pollType}} sulkemista, lähetä muistutus osoitteeseen
+      voting_title: 24 tuntia ennen äänestyksen päättymistä, lähetä muistutus osoitteeseen
+      nobody: Ei kukaan
+      author: Tekijä (minä)
+      undecided_voters: Epävarmat äänestäjät
+      voters: Kaikki äänestäjät
+    notify_on_participate:
+      title: Ilmoita minulle, kun ihmiset osallistuvat
+      helptext_on: Kun valitset, saat ilmoituksen aina, kun joku osallistuu.
+    anonymous:
+      title: Anonyymit äänestäjät
+      helptext_on: Kun tämä on valittuna, osallistujatietoja ei näytetä jokaisen vastauksen yhteydessä.
+    voter_can_add_options:
+      title: Äänestäjät voivat lisätä vaihtoehtoisia vaihtoehtoja
+    can_respond_maybe:
+      title: Äänestäjät voivat vastata "tarvittaessa"
+    allow_long_reason:
+      title: Salli äänestyssyyn olla yli 500 merkkiä pitkä
+    hide_results_until_closed:
+      title: Piilota tulokset sulkemiseen asti
+      helptext_on: Älä näytä, kuinka ihmiset ovat äänestäneet, ennen kuin äänestys on suljettu
+  poll_common_close_form:
+    title: Suljetaanko %{poll_type} nyt?
+    helptext: Haluatko varmasti sulkea tämän %{poll_type} aikaisin ja jakaa tuloksen?
+    close_poll_type: Sulje %{poll_type}
+    poll_type_closed: "%{poll_type} suljettu"
+  poll_common_reopen_form:
+    title: Avaa uudelleen {{poll_type}}
+    helptext: Avaa {{poll_type}} uudelleen, jos ihmiset tarvitsevat enemmän aikaa osallistuakseen
+    success: "{{poll_type}} avattu uudelleen"
+  poll_common_move_form:
+    title: Siirrä {{poll_type}}
+    success: "{{poll_type}} siirretty ryhmään {{group}}"
+  poll_common_wip_field:
+    voting_enabled: Äänestys käytössä
+    enable_voting: Ota äänestäminen käyttöön
+    title: Poista äänestäminen käytöstä
+    past_tense: Äänestys estetty
+    draft_mode: Luonnostila
+    disable_voting_during_development: Tämä %{poll_type} ei ole valmis äänestettäväksi
+    helptext: Tämä %{poll_type} on työn alla. Voit ottaa äänestämisen käyttöön myöhemmin.
+    voting_open: Äänestys auki
+    this_is_ready_for_voting: tämä %{poll_type} on valmis äänestämään
+  poll_common_closing_at_field:
+    closing: Sulkeminen
+    no_closing_date: Ei sulkemispäivää
+    closing_date: Sulkemispäivä
+    closing_hour: Sulkemisaika
+    invalid_date: Väärä päivämäärä
+  poll_card:
+    poll_type_by_name: "%{poll_type} tekijältä %{name}"
+    started_by: 'Aloittaja: {{name}}'
+  poll_common_votes_panel:
+    vote_removed: Ääni poistettu
+    undecided: Päättämätön
+    newest_first: Uusin ensin
+    oldest_first: Vanhin ensin
+    priority_first: Ensin samaa mieltä
+    priority_last: Estä ensin
+    undecided_first: Päättämätön ensin
+    no_votes_yet: Ääniä ei ole vielä annettu.
+    change_results_order: Muuta tulosten järjestystä
+    none_of_the_above: "(Ei mikään ylläolevista)"
+    name_or_username: Nimi tai käyttäjätunnus
+  poll_common_undecided_panel:
+    show_undecided: Näytä %{count} epävarmaa
+    show_invitations: Näytä odottavat kutsut
+    undecided_users: Päättämätön (%{count})
+    invitation_count_singular: 1 lisähenkilö on kutsuttu osallistumaan sähköpostitse
+    invitation_count_plural: "%{count} muuta henkilöä on kutsuttu osallistumaan sähköpostitse"
+  poll_common_undecided_user:
+    reminded: Muistutus lähetetty!
+    reminder_sent: Muistutusilmoitus lähetetty
+  poll_common_set_outcome_panel:
+    enter_outcome: Syötä tulos
+    poll_type: Tämä %{poll_type} on suljettu. Käytä aikaa tulosten pohtimiseen ja jaa sitten tulos, jotta ihmiset tietävät, mitä tapahtuu seuraavaksi.
+  poll_common_outcome_form:
+    review_due_in_days: Tarkista päätös kuinka monen päivän kuluttua?
+    review_due_in_days_hint: Aika (päivinä) odottaa ennen päätöksen tarkistamista. (valinnainen)
+    review_date: Tarkistuksen päivämäärä
+    review_date_hint: Aseta päivämäärä päätöksen tarkistamiselle (valinnainen)
+    who_to_notify: Kenelle haluat ilmoittaa tästä tuloksesta? (valinnainen)
+    outcome_statement_template: Tuloslausunnon malli
+    new_title: Valtion tulos
+    update_title: Päivitä tulos
+    outcome_created: Tulos luotu
+    outcome_updated: Tulos päivitetty
+    statement_placeholder: Tee yhteenveto vastauksista ja selitä, mitä tapahtuu seuraavaksi.
+    statement_template_placeholder: Anna malli päätöksen tuloksen kirjoittamista varten. (valinnainen)
+    you_will_be_notified: Sinulle ilmoitetaan tarkastelupäivänä.
+    submit: Jaa tulos
+  poll_common_outcome_panel:
+    authored_by: Nimeltä}}
+  poll_common_delete_modal:
+    question: Haluatko varmasti poistaa tämän?
+    title: Poista {{pollType}}
+    success: Poistettu onnistuneesti
+  poll_proposal_form:
+    start_header: Aloita ehdotus
+    edit_header: Muokkaa ehdotusta
+    title_placeholder: Esim. Mennään kuuhun!
+    details_placeholder: Mitkä ovat ehdotuksesi yksityiskohdat?
+    proposal_created: Ehdotus aloitettu
+    proposal_updated: Ehdotus päivitetty
+  record_modal:
+    record_video: Tallenna video
+    record_audio: Äänitä ääntä
+    record: Ennätys
+    stop: Lopettaa
+    no_mic: Mikrofonia ei löytynyt
+    no_camera: Kameraa ei löytynyt
+    listen_to_audio: Kuuntele ääntä
+    watch_video: Katso video
+    audio_transcript: 'Ääniteksti: %{text}'
+    why_type_when_you_can_talk: Miksi kirjoittaa, kun voi puhua? Lähetä äänitallenne
+    transcript_included: Tallenteen kopio liitetään viestiisi
+  poll_poll_form:
+    multiple_choice_subtitle: Yksinkertainen tapa arvioida vaihtoehtojen suosiota
+    start_header: Aloita kysely
+    edit_header: Muokkaa kyselyä
+    tip: Tarjoa valinta vaihtoehtojen välillä
+    title_placeholder: Esim. Minne haluat mennä lomalle?
+    details_placeholder: Anna selventäviä yksityiskohtia, joita ihmiset saattavat tarvita vastata kysymykseen.
+    add_option_placeholder: Lisää vaihtoehto
+    new_option: Uusi vaihtoehto
+    add_option_hint: Anna vaihtoehdolle lyhyt nimi
+    remove_option: Poista vaihtoehto
+    poll_created: Kysely luotu
+    poll_updated: Äänestys päivitetty
+    option_added: Vaihtoehto lisätty
+    option_already_added: Vaihtoehto on jo lisätty kyselyyn
+  poll_dot_vote_form:
+    dots_per_person: Pisteet per henkilö
+    dots_per_person_helptext: Pisteiden kokonaismäärä jokaista henkilöä pyydetään jakamaan.
+  poll_meeting_form:
+    timeslots: Aikavälit
+    no_options: Anna ajat nykyisellä aikavyöhykkeelläsi ({{zone}}). Osallistujat näkevät ajat käännettynä paikalliselle aikavyöhykkeelleen.
+    meeting_duration: Kokouksen kesto
+    add_option_placeholder: Lisää uusi aika
+    time_slot_added: Aikaväli lisätty
+    time_slot_already_added: Aikaväli on jo lisätty
+    participants_see_local_times: Osallistujat näkevät aikavyöhykkeelleen lokalisoidut ajat
+    use_24_hour_format: Virhe! Käytä 24 tunnin muotoa esim. %{time}
+  poll_ranked_choice_form:
+    no_options: Et ole vielä lisännyt yhtään vaihtoehtoa.
+    add_option_placeholder: Anna uusi valinta
+    minimum_stance_choices: Sijoitusvaihtoehdot
+    minimum_stance_choices_helptext: Kuinka monta vaihtoehtoa äänestäjä saa?
+    minimum_stance_choices_hint: eli Sijoita 3 parasta jäätelömakuasi
+    ranked_choice_created: Sijoitettu valinta luotu
+    ranked_choice_updated: Sijoitettu valinta päivitetty
+    rank: Sijoitus
+    points: Pisteet
+    average: Keskiverto
+    mean: Tarkoittaa
+    pct_of_points: "% pisteistä"
+    pct_of_voters: "% äänestäjistä"
+    percent: Prosentti
+  poll_meeting_time_field:
+    add_time_slot: Lisää aikaväli
+    new_time_slot: Uusi aikaväli
+    closing_hour: sulkemisaika
+  poll_proposal_vote_form:
+    default_reason_placeholder: Perustele perustelusi
+    abstain_reason_placeholder: Kerro muille, miksi kieltäydyt tästä päätöksestä
+    agree_reason_placeholder: Mitä pidät ehdotuksesta ja miten se hyödyttää ryhmää?
+    disagree_reason_placeholder: Miten tätä ehdotusta voitaisiin parantaa, jotta voit tukea sitä?
+    block_reason_placeholder: Perustele vastustavasi tätä ehdotusta ja miksi sen ei pitäisi mennä eteenpäin
+    stance_created: Äänestys luotu
+    stance_updated: Äänestys päivitetty
+    vote: Äänestys
+  poll_proposal_options:
+    select_an_option: Valitse vaihtoehto
+    agree: Olla samaa mieltä
+    consent: suostumus
+    abstain: Pidättäytyä äänestämästä
+    unsure: Epävarma
+    disagree: eri mieltä
+    objection: Vastalause
+    object: Esine
+    block: Lohko
+    no_voting: Ei äänestystä
+  poll_count_form:
+    pct_of_target: "% tavoitteesta"
+    agree_target_helptext: Mikä on tavoitemäärä vapaaehtoisia, jotka haluaisit saada?
+    agree_target_label: Kohdenumero
+  poll_count_options:
+    accept: Hyväksyä
+    decline: Hylkää
+    'yes': Joo
+    'no': Ei
+  poll_common_percent_voted:
+    sentence: "{{numerator}}/{{denominator}} henkilöä on osallistunut ({{percent}}%)"
+    target_progress: "{{percent}} % tavoitteesta saavutettu. ({{num}} / {{target}})"
+  poll_meeting_chart_panel:
+    total: Kaikki yhteensä
+  poll_remove_vote:
+    title: Poistetaanko äänesi?
+    helptext: Haluatko varmasti poistaa äänesi? Sinut merkitään päättämättömäksi ja voit äänestää myöhemmin uudelleen, jos haluat.
+    confirm: Poista ääni
+    success: Ääni poistettu
+  poll_poll_vote_form:
+    stance_created: Äänestys luotu
+    stance_updated: Äänestys päivitetty
+  poll_score_vote_form:
+    stance_created: Äänestys luotu
+    stance_updated: Äänestys päivitetty
+  poll_meeting_vote_form:
+    local_time_zone: Paikallinen aika - {{zone}}
+    can_attend: Saa osallistua
+    unable: Ei voi
+    if_need_be: Jos tarvitsee olla
+    your_response: Milloin voit osallistua?
+    stance_created: Saatavuus tallennettu
+    stance_updated: Saatavuus päivitetty
+    reason_placeholder: Selitä, milloin olet vapaa (tai kiireinen), jos kirjoittaja haluaa lisätä vaihtoehtoja.
+  poll_dot_vote_vote_form:
+    dots_remaining: "%{count} pistettä jäljellä"
+    too_many_dots: Olet käyttänyt liian monta pistettä
+    stance_created: Äänestys luotu
+    stance_updated: Äänestys päivitetty
+  poll_ranked_choice_vote_form:
+    helptext: Vedä ja pudota vaihtoehdot mieltymysjärjestyksessä (1 on suosituin vaihtoehto). Parhaat %{count} valintasi tallennetaan.
+    stance_created: Valinta tallennettu
+    stance_updated: Valinta päivitetty
+  poll_templates:
+    proposal:
+      process_subtitle: Tee ehdotus päätöksen tekemiseksi
+      process_introduction: <p>Klassinen Loomio-ehdotus auttaa sinua tekemään päätöksen ja muuttamaan keskustelun selkeäksi tulokseksi.</p><p> Ehdota toimintatapaa ja kehota ihmisiä vastaamaan äänestämällä samaa, tyhjää tai eri mieltä.</p><p> Kun ihmiset äänestävät, he voivat perustella miksi ovat äänestäneet tällä tavalla. Näet missä kaikki muut ovat asiassa ja miksi.</p><p> Tällä tavalla voit käyttää ehdotusta kannustaaksesi ihmisiä vastaamaan, paljastamaan uutta tietoa ja rakentamaan yhteisymmärrystä – auttamaan ryhmääsi tekemään paremman ja tietoisemman päätöksen.</p><p> Ehdotus ja siihen liittyvä keskustelu luovat oman kirjansa siitä, miten päätös syntyi.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lue lisää klassisen Loomio-ehdotuksen käyttämisestä yksinkertaisessa päätöksentekoprosessissa</u></a> .</p>
+      title: Hyväksy uusi brändikonsepti
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Mikä on päätös, joka sinun on tehtävä?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Jotta tämä ehdotus hyväksyttäisiin, tarvitsemme jäsenten enemmistön äänestävän Hyväksyn.</p><p> Jos olet eri mieltä, kerro miksi ja mitä on muutettava, jotta voit olla samaa mieltä.</p>
+      agree: Olla samaa mieltä
+      agree_meaning: Kannatan ehdotusta
+      agree_prompt: Mitä pidät ehdotuksesta ja miten se hyödyttää ryhmää?
+      abstain: Pidättäytyä äänestämästä
+      abstain_meaning: Päätti olla äänestämättä tai ei voi äänestää tässä päätöksessä.
+      abstain_prompt: Miksi pidättäydyt äänestämästä tai et tunne voivasi äänestää tässä päätöksessä?
+      disagree: eri mieltä
+      disagree_meaning: Jotain tässä ehdotuksessa on muutettava, ennen kuin voin tukea sitä.
+      disagree_prompt: Miten tätä ehdotusta voitaisiin parantaa, jotta voit tukea sitä?
+    advice:
+      process_subtitle: Pyydä neuvoja päätökseen, joka sinun on tehtävä
+      process_introduction: <p>Pyydä neuvoja päätöksestä, joka sinun on tehtävä, neuvoja ihmisiltä, joita asia koskee tai joilla on asiantuntemusta, jotta voit tehdä paremman päätöksen organisaatiollesi.</p><ul><li><p> Neuvonta auttaa sinua tekemään paremman päätöksen organisaatiollesi.</p></li><li><p> Edistä ihmissuhteita, oppimismahdollisuuksia ja monipuolista panosta.</p></li><li><p> Stimuloi aloitteellisuutta ja luovuutta ja nauti työstä.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Lue lisää neuvontaprosessista</u></a> .</p>
+      title: Auta Takashia ostamaan uusi tietokone
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Mikä on päätös, joka sinun on tehtävä?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Mitä neuvoja pyydät ihmisiltä auttaaksesi sinua tekemään hyvän päätöksen?</strong></h3><p></p><p> Pyydän panostasi auttaakseni minua tekemään hyvän päätöksen organisaatiollemme.</p>
+      agree: Olla samaa mieltä
+      agree_meaning: Olen antanut neuvoni tästä päätöksestä
+      agree_prompt: Tee yhteenveto neuvostasi tai anna hyödyllinen kommentti
+      abstain: Pidättäytyä äänestämästä
+      abstain_meaning: Minulla ei ole neuvoja annettavana
+      abstain_prompt: Onko sinulla kommentteja, joista voi olla apua?
+    consent:
+      process_subtitle: Tee päätös, joka on "turvallinen kokeilla" ilman vastalauseita
+      process_introduction: <p>Pyydä suostumus päätökseen, joka sinun on tehtävä, jos ehdotuksellesi ei ole merkittäviä vastalauseita, jotta voit tehdä organisaatiollesi nopean päätöksen, joka on "turvallinen kokeilla".</p><ul><li><p> Tavoittele "riittävän hyvää" päätöstä</p></li><li><p> Ota monet äänet mukaan toimivan ehdotuksen kehittämiseen</p></li><li><p> Kysy jos jollain on perusteltua vastalausetta</p></li><li><p> Muutetaan ehdotusta vastalauseiden ratkaisemiseksi</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Lue lisää suostumusprosessista</a> .</p>
+      title: Palkkaa Chloe suunnittelurooliin
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Mikä on päätös, joka sinun on tehtävä?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Mitä pyydät ihmisiltä tällä ehdotuksella?</strong></h3><p></p><p> Jos sinulla on vastalause, kerro miksi ja ehdota muutosta ehdotukseen, joka tekee siitä turvallisen.</p><p> Muista, että etsimme suostumusta "riittävän hyvälle" päätökselle, joka on "turvallinen kokeilla", jotta voimme tehdä hyvän päätöksen organisaatiollemme.</p>
+      consent: suostumus
+      consent_meaning: Ehdotusta on turvallista kokeilla
+      consent_prompt: Mitä pidät ehdotuksesta ja miten se hyödyttää organisaatiota?
+      objection: Vastalause
+      objection_meaning: Minulla on pätevä vastalause ja uskon, että ehdotuksesta on haittaa
+      objection_prompt: Mitä muutosta tähän ehdotukseen tarvitaan, jotta se olisi "turvallista kokeilla", jotta voit tukea sitä?
+    consensus:
+      process_subtitle: Tee työehtosopimus kaikkien asianosaisten kanssa
+      process_introduction: <p>Rakenna konsensus päätöksestä, joka sinun on tehtävä, jotta pääset sopimukseen, joka tyydyttää kaikkien osallistujien tarpeet ja huolenaiheet.</p><ul><li><p> Keskustele ja kehitä ehdotus yhdessä</p></li><li><p> Ota mukaan ja kunnioita kaikkia mukana olevia</p></li><li><p> Pyydä sopimus useimmilta ihmisiltä</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Lue lisää konsensusprosessista</a> .</p>
+      title: Hyväksy uusi brändikonsepti
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Mikä on päätös, joka sinun on tehtävä?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Jotta tämä ehdotus hyväksyttäisiin, tarvitsemme jäsenten enemmistön äänestävän Hyväksyn.</p><p> Jos olet eri mieltä, kerro miksi ja mitä on muutettava, jotta voit olla samaa mieltä.</p>
+      agree: Olla samaa mieltä
+      agree_meaning: Kannatan ehdotusta
+      agree_prompt: Mitä pidät ehdotuksesta ja miten se hyödyttää organisaatiota?
+      abstain: Pidättäytyä äänestämästä
+      abstain_meaning: Tämä päätös ei vaikuta minuun ja olen tyytyväinen siihen, mitä ryhmä päättää
+      abstain_prompt: Miksi pidättäydyt äänestämästä tai et tunne voivasi äänestää tässä päätöksessä?
+      disagree: eri mieltä
+      disagree_meaning: Jotain tässä ehdotuksessa on muutettava, ennen kuin voin tukea sitä
+      disagree_prompt: Miten tätä ehdotusta voitaisiin parantaa, jotta voit tukea sitä?
+      block: Lohko
+      block_meaning: Vastustan tämän ehdotuksen ja katson, että sen ei pitäisi edetä
+      block_prompt: Perustele vastustavasi tätä ehdotusta ja miksi sen ei pitäisi mennä eteenpäin
+    question_round:
+      process_subtitle: Esitä selventäviä kysymyksiä, jotta ihmiset ymmärtävät ehdotuksen
+      process_introduction: <p>Kyselykierros on ihmisille mahdollisuus esittää selventäviä kysymyksiä ehdotuksesta, jotta jokainen ymmärtää ehdotuksen ennen kuin he sanovat mielipiteensä siitä.</p><p> Loomio-kyselykierros on erityinen ehdotus, jossa ei ole äänestysvaihtoehtoja. Sen avulla osallistujat voivat esittää kysymyksiä kierrokselle asettamasi ajan kuluessa.</p><p> Kysymyskierrosta käytetään yleisesti suostumusprosessin vaiheena.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Lue lisää suostumusprosessista</a> .</p>
+      title: Mitä kysymyksiä sinulla on työturvallisuuspolitiikasta?
+      details: <h3 id="what-are-you-proposing"><strong>Mitä sinä ehdotat?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Tämä on kysymyskierros, jossa sinua pyydetään esittämään selventäviä kysymyksiä.</p><p> Mitä sinun tulee tietää, jotta ymmärrät ehdotuksen?</p><p> Ole hyvä ja vastaa ennen kyselykierroksen päättymistä.</p>
+      reason_prompt: Mitä sinun tulee tietää, jotta ymmärrät ehdotuksen?
+    sense_check:
+      process_subtitle: Pyydä palautetta, kysymyksiä ja huolenaiheita
+      process_introduction: <p>Sense check -ehdotus on hyvä tapa saada palautetta, esittää kysymyksiä ja paljastaa huolenaiheita. Se auttaa selventämään ja parantamaan ehdotusta ennen päätöksentekoon siirtymistä.</p><p> Sense check kertoo ihmisille, että ehdotus on muodostumassa, ja rohkaisee heitä sitoutumaan. Se on tilaisuus kuunnella ihmisiä, aistia heidän tunteitaan ja reagoida asianmukaisesti – avaa mahdollisuuksia sisällyttää heidän panoksensa tehdäkseen parempia päätöksiä.</p><p> Käytä Sense check -ehdotusta suostumusprosessissa pyytääksesi reaktioita ja kommentteja ehdotuksen parantamiseksi, ja Consensus-prosessissa konsensuksen testaamiseen.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lue lisää Sense checkin käytöstä yksinkertaisessa päätöksentekoprosessissa</u></a> <span>.</span></p>
+      title: Mitä mieltä olet uusista brändikonsepteista?
+      details: <h3 id="what-are-you-proposing"><strong>Mitä sinä ehdotat?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Mitä mieltä olet ehdotuksesta? Jätä kommentti tai tee parannusehdotus.</p><p> Tämä Sense check on tilaisuus antaa panoksesi ja panoksesi, jotta voimme tehdä paremman päätöksen.</p>
+      looks_good: Näyttää hyvältä
+      looks_good_meaning: Olen tyytyväinen mihin tämä on menossa
+      looks_good_prompt: Onko sinulla kommentteja tai ehdotuksia ehdotuksen parantamiseksi?
+      abstain: Pidättäytyä äänestämästä
+      abstain_meaning: Minulla ei ole mitään lisättävää, eikä vastusta tätä työtä.
+      abstain_prompt: Äänestämättä jättäminen merkitsee hyväksyntää tämän ehdotuksen ohjeiden kanssa. Onko sinulla syytä äänestää tyhjää?
+      concerned: Huolestunut
+      concerned_meaning: Jotain tässä on ehkä muutettava, jotta voin suostua tai suostua
+      concerned_prompt: Mikä on huolenaihe ja miten siihen voitaisiin puuttua?
+    gradients_of_agreement:
+      process_subtitle: Ilmaise tukensa ehdotukselle 8 pisteen asteikolla
+      process_introduction: <p>Sopimusgradientiehdotus antaa ryhmän jäsenille mahdollisuuden ilmaista tukensa ehdotukselle asteikolla, mikä tarjoaa enemmän tapoja ilmaista tukea kuin termeillä "samaa mieltä" ja "eri mieltä".</p><p> Käytä sopimusgradientteja alustavana kierroksena testataksesi ehdotuksen tukea ennen viralliseen sopimukseen siirtymistä.</p><p> Sopimuksen gradientit kertovat ihmisille, että ehdotus on muodostumassa, ja rohkaisee heitä sitoutumaan. Se on tilaisuus kuunnella ihmisiä, aistia heidän tunteitaan ja reagoida asianmukaisesti – avaa mahdollisuuksia sisällyttää heidän panoksensa tehdäkseen parempia päätöksiä.</p>
+      title: Mitä pidät uudesta arvolauseesta?
+      details: <h3 id="what-are-you-proposing"><strong>Mitä sinä ehdotat?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Mitä pidät ehdotuksesta? Ilmaise tukesi alla olevalla asteikolla ja jätä kommentti tai parannusehdotus.</p><p> Tämän Gradients of Agreement -ehdotuksen tarkoituksena on testata ehdotuksen tukea ja mahdollisuus antaa palautetta ennen viralliseen sopimukseen siirtymistä.</p>
+      whole_hearted_endorsement: Kokosydäminen kannatus
+      whole_hearted_endorsement_meaning: Pidän siitä todella!
+      whole_hearted_endorsement_prompt: Mitä pidät siitä?
+      agreement_with_minor_contention: Sopimus pienellä riidalla
+      agreement_with_minor_contention_meaning: Ei täydellinen, mutta riittävän hyvä
+      agreement_with_minor_contention_prompt: Mikä on huolenaiheesi?
+      support_with_reservations: Tuki varauksilla
+      support_with_reservations_meaning: Voin elää sen kanssa
+      support_with_reservations_prompt: Mitkä ovat varauksesi?
+      abstain_meaning: Tämä ongelma ei koske minua
+      abstain_prompt: Onko sinulla jotain, mitä haluaisit lisätä?
+      more_discussion_needed: Lisää keskustelua tarvitaan
+      more_discussion_needed_meaning: En ymmärrä asioita vielä tarpeeksi hyvin
+      more_discussion_needed_prompt: Mitä et ymmärrä?
+      don_t_like_but_will_support: En pidä, mutta tukee
+      don_t_like_but_will_support_meaning: Se ei ole hienoa, mutta en halua pitää ryhmää yllä
+      don_t_like_but_will_support_prompt: Mitä haluaisit parannettavan?
+      serious_disagreement: Vakavaa erimielisyyttä
+      serious_disagreement_meaning: En ole mukana tässä - älä luota minuun
+      serious_disagreement_prompt: Mistä olet eri mieltä?
+      veto: Veto
+      veto_meaning: estän tämän ehdotuksen
+      veto_prompt: Miksi estät ehdotuksen? Mitä sinun on muutettava, jotta voit tukea sitä?
+    simple_poll:
+      process_subtitle: Etsi suosituin vaihtoehto
+      process_introduction: <p>Ennen kuin teet päätöksen, selvitä, mitkä vaihtoehdot välittävät eniten.</p><p> Yksinkertainen kysely auttaa sinua löytämään suosituimman vaihtoehdon tai vaihtoehtoja yksi- tai monivalintavaihtoehdoilla.</p><p> Kirjoita tiedot vaihtoehdoista tietokenttään, kirjoita sitten vaihtoehdon nimi ja lisää napsauttamalla +.</p><p> Aseta <strong>vähimmäisvalinnat</strong> ja <strong>enimmäisvalinnat, jotka</strong> äänestäjä voi valita. Jätä yksivalintakyselyn enimmäisvalinta 1.</p><p> Voit käyttää kunkin vaihtoehdon vieressä olevaa kynäkuvaketta lisätäksesi vaihtoehdon <strong>merkityksen</strong> ja tarkentaa vaihtoehtoa, joka auttaa ihmisiä äänestämään.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Lue lisää Simple-kyselystä</a> .</p>
+      title: Missä strategisen suuntamme painopisteen tulisi olla?
+      details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Valitse vaihtoehto/vaihtoehdot, joista pidät.</p>
+    score_poll:
+      process_subtitle: Mittaa kunkin vaihtoehdon tuen aste
+      process_introduction: <p>Käytä Score-kyselyä, kun haluat kysyä ihmisiltä heidän toiveensa, mieltymyksensä tai kiinnostuksensa kutakin vaihtoehtoa kohtaan.</p><p> <span>Osallistujia pyydetään arvioimaan jokainen vaihtoehto ja antamaan pisteet liikuttamalla liukusäädintä asteikolla.</span></p><p> <span>Tulokset näytetään graafisesti ja kunkin vaihtoehdon taulukko, jossa näkyy kokonaispisteet, keskipisteet ja äänestäjien määrä.</span></p><p> Lisäasetukset sisältävät "Äänet ovat anonyymejä" ja "Näytä vaihtoehdot satunnaisessa järjestyksessä" - joita käytetään yleisesti Score-kyselyssä mahdollisten äänestysten vähentämiseksi.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Lue lisää Score-kyselystä</a> .</p>
+      title: Arvioimme, miten päätökset tehdään organisaatiossamme
+      details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Valitse vaihtoehto/vaihtoehdot, joista pidät.</p>
+    dot_vote:
+      process_subtitle: Varaa pistebudjetti prioriteettien paljastamiseksi
+      process_introduction: <p>Pisteäänestys on hyödyllinen ryhmille, jotka yrittävät varata rajoitetun resurssin useille vaihtoehdoille. Se menee yksinkertaista kyselyä pidemmälle auttamalla osallistujia ymmärtämään, että vaihtoehtoja valittaessa on rajoituksia.</p><p> Jokaiselle osallistujalle annetaan tietty määrä pisteitä. Sinä päätät kuinka monta.</p><p> He sijoittavat pisteitä niiden vaihtoehtojen viereen, joista he pitävät. Osallistujat voivat sijoittaa kaikki pisteensä yhteen vaihtoehtoon tai jakaa useille vaihtoehdoille.</p><p> Kun osallistujat jakavat pisteitä, he saattavat ylittää pistebudjetin rajan, joten heitä kehotetaan harkitsemaan tarkasti, kuinka he käyttävät pisteitään.</p><p> Eniten pisteitä sisältävät vaihtoehdot "voittavat". Tulostaulukossa on lisätietoja, joiden avulla voit analysoida tuloksia.</p><ul><li><p> % pisteistä</p></li><li><p> Pisteet</p></li><li><p> Tarkoittaa</p></li><li><p> äänestäjät</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Lue lisää pisteäänestyksestä</a> .</p>
+      title: Konferenssimme teemojen valinta
+      details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Tässä kyselyssä sinulla on 8 pisteen budjetti jakaaksesi haluamasi vaihtoehdot. Voit sijoittaa kaikki pisteet yhteen vaihtoehtoon tai levittää ne.</p>
+    ranked_choice:
+      process_subtitle: Ymmärrä vaihtoehtojen järjestetyt mieltymykset
+      process_introduction: <p>Ranking-valinta on hyödyllinen, kun sinulla on suuri määrä vaihtoehtoja tai kun olet järjestämässä vaaleja.</p><p> Tämä kyselymalli tarjoaa joukon vaihtoehtoja, joilla ihmiset voivat äänestää haluamassaan järjestyksessä.</p><p> Voit määrittää äänestäjän saamien vaihtoehtojen määrän.</p><p> <span>Äänestäjät vedä ja pudota vaihtoehtoja mieltymysjärjestyksessä (#1 on suosituin vaihtoehto).</span></p><p> <span>Lisäasetukset sisältävät 'Äänet ovat anonyymejä' ja 'Näytä vaihtoehdot satunnaisessa järjestyksessä' - käytetään yleisesti R ankoitujen valintojen yhteydessä</span> mahdollisten äänestysharhojen vähentämiseksi.</p><p> Tulokset näytetään paremmuusjärjestyksessä. Tulostaulukossa on lisätietoja, joiden avulla voit analysoida tuloksia.</p><ul><li><p> Sijoitus</p></li><li><p> % pisteistä</p></li><li><p> Pisteet</p></li><li><p> Tarkoittaa</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Lue lisää Ranked - valinnasta</a> .</p>
+      title: Valitaan hallituksen jäsenet hallitukseen
+      details: <h3 id="what-is-this-poll-about"><strong>Mistä tässä kyselyssä on kyse?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Miksi tämä on tärkeää?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Mitä pyydät ihmisiä tekemään?</strong></h3><p></p><p> Äänestä asettamalla vaihtoehdot paremmuusjärjestykseen. Vaihtoehto, joka on tuloksissa ensimmäisellä sijalla, voittaa.</p>
+    time_poll:
+      process_subtitle: Selvitä, milloin ihmiset ovat tavattavissa
+      process_introduction: <p><span>Säästä aikaa kokouksen tai tapahtuman päivämäärän järjestämisessä.</span></p><p> Aikakyselyn avulla on helppo nähdä kaikkien saatavuus ja löytää paras aika.</p><p> Anna aikakyselyllesi otsikko ja tiedot. Anna luettelo aikavyöhykkeesi päivämäärä- ja aikavaihtoehdoista.</p><p> Kun asetat aikavälejä, ota huomioon ihmiset eri aikavyöhykkeillä. Osallistujat näkevät ajat lokalisoituina aikavyöhykkeelleen.</p><p> Aseta kokouksen kesto.</p><p> Kun aikakysely sulkeutuu, aseta kokouksen tulos, jossa on paras aika ja mahdolliset ohjeet.</p><p> <span>Loomio liittää tulosilmoitussähköpostiin kalenterikutsun, jotta osallistujat voivat lisätä kalenteriinsa.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Lue lisää Aikakyselystä</a> .</p>
+      title: Etsitään päivämäärä seuraavalle tapaamisellemme
+      details: <p><strong>Mikä on kokous tai tapahtuma?</strong></p><p></p><p> <strong>Miksi tämä on tärkeää?</strong></p><p></p><p> <strong>Mitä pyydät ihmisiä tekemään?</strong></p><p></p><p> <span>Merkitse käytettävissäsi olevat aikavälit vihreällä peukalo ylös -kuvakkeella tai jätä punainen "peukalo alas" -merkki paikalleen, kun se ei ole käytettävissä.</span></p><p> <span>Käytä "peukalot sivuttain" -kuvaketta sanoaksesi, että olet käytettävissä "tarvittaessa".</span></p>
+      reason_prompt: Onko jotain, mitä voit sanoa auttamaan järjestäjää sopivan ajan löytämisessä?
+    opt_in:
+      process_subtitle: Etsi vapaaehtoisia tai pyydä osallistujia
+      process_introduction: '<p>Käytä Opt-in-toimintoa kutsuaksesi ihmisiä liittymään tiimiin, komiteaan tai työryhmään tai osallistumaan tapahtumaan.</p><p> "Opt-in" sisältää kaksi äänestysvaihtoehtoa: Hyväksy tai Hylkää.</p><p> Voit määrittää etsimiesi ihmisten tavoitemäärän, esimerkiksi 3 henkilöä liittymään työryhmään.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Lue lisää osallistumisesta</a> .</p>'
+      title: Työryhmä laatimaan uuden kestävän kehityksen politiikkamme
+      details: <p><strong>Mihin tiimiin, työryhmään tai tapahtumaan kutsut ihmisiä?</strong></p><p></p><p> <strong>Miksi tämä on tärkeää?</strong></p><p></p><p> <strong>Mitä pyydät ihmisiä tekemään?</strong></p><p></p><p> Valitse "Hyväksy" osallistuaksesi!</p>
+      accept_meaning: Olen valmis osallistumaan
+      accept_prompt: Miksi teet vapaaehtoistyötä tähän?
+      decline_meaning: En voi osallistua
+      decline_prompt: Onko jotain mitä haluaisit sanoa?
+  thread_item:
+    removed: Kohde poistettu
+    deleted_group: Poistettu ryhmä
+    invite_only_thread: Kutsu vain viestiketju
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> vastauksena käyttäjälle <strong>{{title}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> muokkasi ketjun otsikkoa"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> muokkasi viestiketjun kontekstia"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> muutti ketjun yksityisyyttä"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> muokkasi viestiketjua"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> siirsi ketjun käyttäjältä <strong>{{title}}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> sulki ketjun"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> avasi ketjun uudelleen"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> loi tämän ketjun haaran: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{tekijä}}</a>"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> jakoi tuloksen"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> avasi uudelleen {{polltype}}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> sulki {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> aloitti {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> muokkasi {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> lisäsi valintoja kyselyyn {{polltype}}"
+    poll_expired: "{{polltype}} suljettu"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> äänesti: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> päivitti äänensä aiheesta: <strong>{{title}}</strong>"
+    event_removed: Poistettu langasta
+  add_poll_to_thread_modal:
+    success: Onnistui, {{pollType}} lisättiin viestiketjuun!
+  auth_form:
+    code: '000000'
+    youre_invited: Sinut on kutsuttu liittymään ryhmään {{group_name}}.
+    youre_invited_discussion: Sinut on kutsuttu mukaan keskusteluun.
+    youre_invited_poll: Sinut on kutsuttu äänestämään.
+    existing_account_can_sign_in: Jos olet jo sivuston {{site_name}} käyttäjä, kirjaudu sisään nykyisellä tililläsi
+    sign_up_or_log_in: Luo tili tai kirjaudu sisään {{site_name}}
+    sign_in_to_loomio: Kirjaudu sisään {{site_name}}
+    sign_in_help: Ongelma sisäänkirjautumisessa?
+    sign_in: Kirjaudu sisään
+    continue: Jatkaa
+    create_account: Luo tili
+    sign_up_as: Luo tili nimellä {{email}}
+    sign_in_as: Kirjaudu sisään käyttäjänä {{name}}
+    continue_with_provider: Jatka palvelulla {{provider}}
+    continue_with_email: Jatka sähköpostilla
+    or_enter_your_email: Tai kirjoita sähköpostiosoitteesi
+    enter_your_name: Kirjoita nimesi
+    invitation_required: Tarvitset kutsun tilin luomiseen. Jatka seuraamalla kutsusähköpostissa olevaa linkkiä.
+    more_providers: Lisää
+    email_not_present: Sähköpostiosoite vaaditaan
+    invalid_email: Valitettavasti se ei näytä kelvolliselta sähköpostiosoitteelta
+    invalid_password: Valitettavasti tämä salasana ei vastaa tiedoissamme olevaa salasanaa
+    invalid_token: Valitettavasti emme voineet käyttää tätä tunnusta kirjautuaksemme sisään. Lähetä uusi tunnus napsauttamalla alla.
+    account_locked: Tilisi on lukittu liian monen epäonnistuneen kirjautumisyrityksen jälkeen. Tarkista sähköpostistasi lukituksen avauslinkki
+    email_not_found: Valitettavasti emme löytäneet tiliä tällä sähköpostiosoitteella
+    email_taken: Sähköpostiosoite on jo rekisteröity
+    email_placeholder: sinä@esimerkki.fi
+    login_with_token: Olet valmis! Napsauta alla olevaa linkkiä jatkaaksesi.
+    login_link_helptext: Napsauta alla olevaa painiketta, niin lähetämme sinulle linkin kirjautumiseen.
+    enter_your_password: Anna salasanasi jatkaaksesi
+    check_spam_folder: Jos sähköposti ei tule pian perille, tarkista roskapostikansiosi.
+    sign_up_helptext: Täytä tämä lomake luodaksesi käyttäjätilin
+    i_accept_all: Hyväksyn {{termsLink}} ja {{privacyLink}}
+    newsletter_label: Haluan vastaanottaa {{link}}
+    name_placeholder: Sinun nimesi
+    name_required: Anna nimi
+    terms_required: Sinun on hyväksyttävä palveluehdot
+    account_inactive: Huh, näyttää siltä, että {{email}} -tili on poistettu käytöstä!
+    privacy_notice: Emme koskaan myy tietojasi.<br> <a href='{{privacyUrl}}' target='_blank'>Tietosuojakäytäntö</a>
+    welcome: Onko {{siteName}} uusi käyttäjä?
+    welcome_back: Tervetuloa takaisin, {{name}}!
+    forgot_password: Unohtuiko salasana
+    login_link: Lähetä kirjautumissähköposti
+    sign_in_via_email: Kirjaudu sisään sähköpostitse
+    set_password: Aseta salasana
+    set_password_helptext: Haluatko käyttää salasanaa ensi kerralla?
+    hello: Hei {{name}}!
+    new_to_loomio: Ensimmäinen kerta sivustolla {{site_name}}?
+    already_a_user: Onko sinulla jo tili?
+    email_address_of_existing_account: Anna olemassa olevan tilisi sähköpostiosoite
+    link_accounts: Linkitä tilit
+    check_your_email: Tarkista sähköpostisi!
+    login_link_sent: Olemme lähettäneet sähköpostin osoitteeseen {{email}}.
+    instructions: 'Kirjaudu sisään napsauttamalla linkkiä tai syötä alla oleva koodi:'
+    instructions_code: 'Syötä koodi kyseisestä sähköpostista:'
+    too_many_attempts: Liian monta yritystä; yritä kirjautua sisään napsauttamalla sähköpostissa olevaa linkkiä.
+    invalid_code: Anteeksi, koodi ei täsmää. Tarkista sähköposti ja yritä uudelleen.
+    password_link_sent: Olemme lähettäneet sähköpostin osoitteeseen {{email}}, jossa on ohjeet salasanan asettamiseen.
+    reactivate_link_sent: Olemme lähettäneet sinulle sähköpostin, jossa on ohjeet tilisi uudelleenaktivointiin
+    signed_in: Kirjautuminen onnistui
+    email_verified: Sähköposti vahvistettu onnistuneesti
+    name: Nimi
+    email: Sähköposti
+    password: Salasana
+    reactivate: Aktivoi tili uudelleen
+  chatbot:
+    configure_chatbot: Määritä chatbot
+    test_connection: Testaa yhteys
+    test_connection_ok: Näyttää hyvältä! Sinun pitäisi nähdä viesti kanavalla
+    test_connection_bad: Jotain on vialla asetuksissa
+    name: Chatbotin nimi
+    connection_test_successful: Loomio-bottiyhteystesti onnistui!
+    chatbot: Chatbot
+    chatbots: Chatbotit
+    saved: Chatbot tallennettu!
+    webhook_url: Webhookin URL-osoite
+    homeserver_url: Kotipalvelimen URL-osoite
+    channel: kanava
+    username: Käyttäjätunnus
+    password: Salasana
+    access_token: Käyttöoikeustunnus
+    add_chatbot: Lisää chatbot
+    matrix: Matriisi
+    slack: löysä
+    discord: Ristiriita
+    mattermost: Tärkeintä
+    microsoft_teams: Microsoft Teams
+    event_kind_helptext: Valitse tapahtumat, joista botti saa aina ilmoituksen. Jos et ole varma, jätä ne kaikki pois.
+    notification_only_label: Lähetä vain ilmoituksen otsikko
+    check_for_test_message: Tarkista chat-huoneestasi viesti bottilta!
+  webhook:
+    integrations: Integraatiot
+    api_keys: API-avaimet
+    webhooks: Webhooks
+    webhook: Webhook
+    add_api_key: Lisää API-avain
+    edit_api_key: Muokkaa API-avainta
+    api: API
+    format: Muoto
+    formats:
+      markdown: Markdown (Mattermost, Zapier ja muut)
+      microsoft: Microsoft Teams
+      slack: löysä
+      discord: Ristiriita
+    subtitle: Yhdistä Loomioon muihin työkaluihisi API:llamme
+    deprecated: Tämä API on vanhentunut. Siirry APIv2:een (katso API-asiakirjat ryhmäasetusvalikosta)
+    we_have_guides: Katso <a href="{{url}}" target="_blank">webhook-asennusoppaistamme</a> apua palvelusi yhdistämiseen.
+    add_webhook: Lisää webhook
+    show_docs: Katso API-käyttö
+    save_to_show_docs: Kun olet tallentanut, palaa tänne löytääksesi API-avaimesi
+    edit_integration: Muokkaa integraatiota
+    add_integration: Lisää integraatio
+    success: Integraatio lisätty!
+    remove: Poista integraatio
+    confirm_remove: 'Haluatko varmasti poistaa integroinnin: {{name}}?'
+    removed: Integrointi poistettu
+    url_label: Webhookin URL-osoite
+    url_placeholder: https://hooks.example.com/...
+    name_label: Nimi
+    name_placeholder: Anna tälle integraatiolle nimi, jotta voit tunnistaa sen
+    event_kind_helptext: Mistä tapahtumista haluat, että webhook saa ilmoituksen?
+    event_kinds:
+      new_discussion: Lanka on aloitettu
+      discussion_edited: Viestiä on muokattu
+      poll_edited: Kyselyä on muokattu
+      new_comment: Kommentti on tehty
+      poll_created: Äänestys on alkanut
+      stance_created: Äänestys on annettu
+      stance_updated: Äänestys muutetaan
+      poll_closing_soon: Äänestys sulkeutuu pian
+      poll_expired: Äänestys vanhenee
+      poll_closed_by_user: Äänestys suljetaan manuaalisesti
+      poll_reopened: Äänestys avataan uudelleen äänestämistä varten
+      outcome_created: Tulos jaetaan
+      outcome_updated: Tulos päivitetään
+      outcome_review_due: Tulosarviointi on luvassa
+    permissions_explaination: Valitse, mitkä toiminnot voidaan suorittaa tällä integraatiolla
+    permissions:
+      show_discussion: näytä keskustelua
+      create_discussion: luoda keskustelua
+      create_poll: luo kysely
+      show_poll: näytä kysely
+      read_memberships: lue jäsenyydet
+      manage_memberships: hallita jäsenyyksiä (lisää tai poista ryhmän jäseniä)
+    include_body_label: Liitä viestin tekstiosa ilmoitukseen
+  powered_by:
+    this_is_loomio_md: Loomio on sovellus päätöksentekoon yhdessä. [Kokeile ilmaiseksi](https://www.loomio.com)
+    slogan: Yhdessä parempia päätöksiä
+    powered_by_loomio: Voimanlähteenä Loomio
+    privacy_policy: Tietosuojakäytäntö
+    terms_of_service: Käyttöehdot
+    front_page: Etusivu
+  group_survey:
+    describe_other: Valitse ryhmääsi parhaiten kuvaava luokka
+    categories:
+      party: Poliittinen puolue
+      coop: osuuskunta
+      union: liitto
+      board: Hallinto ja hallitukset
+      nonprofit: Voittoa tavoittelematon
+      membership: Jäsenjärjestö
+      professional: Ammattitaitoinen palveluyritys
+      self_managing: Itseään hoitava organisaatio
+      community: yhteisön ryhmä
+      government: Hallitus/paikallinen hallinto
+      other: Muut

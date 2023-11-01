@@ -1,6 +1,45 @@
+---
 ru:
   templates:
     try_loomio: Попробуйте Loomio
+    template_gallery: Галерея шаблонов
+    title_template: "%{title} Шаблон"
+    title_templates: "%{title} Шаблоны"
+    title_copy: "%{title} Копировать"
+    copy_of_title: Копия %{title}
+    loomio_default_templates: Шаблоны Loomio по умолчанию
+    which_templates_would_you_like_to_use: Какие шаблоны вы хотели бы использовать?
+    login_to_start_demo: Это демо-версия Loomio в действии. Вы можете осмотреться вокруг.
+    sign_in_to_try_features: Если вы хотите попробовать проголосовать за демо-решение или запустить бесплатную пробную версию для своей организации, нажмите «Войти».
+    click_button_to_start_demo: Добро пожаловать! Чтобы попробовать голосование и другие функции, нажмите «Начать демо».
+    welcome_to_your_demo: Это ваша собственная демо-группа!
+    try_voting_to_see_it_work: Попробуйте проголосовать за предложение, чтобы понять, как работает Loomio.
+    delete_will_be_deleted_in_x_days: Эта демо-версия будет удалена через %{x} дн.
+    to_use_loomio_with_your_org_start_trial: Когда вы будете готовы опробовать Loomio в своей организации, запустите бесплатную пробную версию.
+    templates: Шаблоны
+    make_a_copy: Сделать копию
+    this_thread_is_a_template: Эта тема является шаблоном. Сделайте копию, если хотите ее использовать.
+    this_is_a_poll_template: Это шаблон опроса. Сделайте копию, если хотите начать голосование.
+    start_a_demo_group: Создать демо-группу
+    start_a_demo: Запустить демо-версию
+    demo_group: Демо-группа
+    play_with_an_example_group: Поиграйте с примерной группой
+    look_and_feel: Посмотрите, как выглядит Loomio для небольшой организации. Изучите приложение, опробовав его.
+    watch_then_start: Пожалуйста, посмотрите видео, затем нажмите «Начать демо», чтобы попробовать Loomio.
+    generating_demo: Хорошо, подожди здесь! Создание демо-версии занимает около 20 секунд.
+    start_a_x_day_free_trial: Начните {{day}}-дневную бесплатную пробную версию
+    ready_to_trial: Готовы попробовать Loomio в своей организации?
+    start_a_no_obligation_x_day_trial: Создайте группу Loomio для своей организации с помощью бесплатной пробной версии на {{day}} дня.
+    you_can_test_it_out: Вы можете пригласить других людей присоединиться, интегрировать его с другими вашими инструментами и попробовать принять некоторые решения.
+    demo_created: Демо-группа создана специально для вас!
+    start_demo: Начать демо
+    view_demo: Посмотреть демо
+    start_trial: Начать пробный период
+    start_free_trial: Начать бесплатную пробную версию
+    demo_needs_user: Чтобы запустить демо-версию, вам необходимо зарегистрироваться (или войти) как пользователь Loomio. Это бесплатно и займет всего минуту.
+    trial_needs_user: Добро пожаловать! Пожалуйста, войдите в систему, чтобы начать бесплатную пробную версию
+    this_is_a_template_for_new_threads: Это шаблон для новых тем
+    share_a_custom_configuration: Поделитесь пользовательской конфигурацией с другими участниками вашей группы.
   loomio_onboarding:
     group_progress_card:
       activities:
@@ -18,12 +57,36 @@ ru:
     large: Крупная
     monthly: Ежемесячно
     yearly: Ежегодно
+    starter: Стартер
+    pro_nonprofit: Для некоммерческих организаций
+    community: Сообщество
   current_plan_button:
     upgrade: Обновить
     buy_now: Купи сейчас
     trial_expired: Срок вашей пробной версии истек. Обновите, чтобы продолжить использовать Loomio.
+    is_old_plan: У Loomio новые простые тарифные планы
+    change_plan: Изменить план
+    view_plans: Посмотреть планы
+    free_trial: Бесплатная пробная версия. Осталось {{days}} дней.
+    tooltip: Наши цены фантастические! Обновите версию сегодня и наслаждайтесь тем, что Loomio может предложить вашей группе.
+    was_gift_trial: 'Ваша группа использует Loomio бесплатно с {{createdDate}}. Мы не можем продолжать предоставлять бесплатную услугу. Пожалуйста, обновите версию, чтобы продолжить использование Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Читать далее.</a>'
+    was_gift_remaining: Осталось {{days}} дней.
+    was_gift_expired: Срок действия вашего бесплатного плана истек.
   subscription_status:
-    members: "Участники"
+    members: Участники
+    plan: План
+    state: Положение дел
+    active_members: Активные участники
+    max_threads: Максимальное количество потоков
+    max_members: Максимальное количество участников
+    expires_at: Срок действия истекает
+    renews_at: Обновляет
+    referral_code: Промо-код
+    chargify_link: Биллинговый портал
+    referral_code_help: Сделайте скидку другу, получите кредит себе!
+    manage_payment_details: Управление деталями платежа
+    manage_subscription: Управление подпиской
+    amount: Количество
   loomio_tags:
     tags: Метки
     apply_tags: Применить метки
@@ -35,6 +98,17 @@ ru:
     helptext: Метки позволяют разбивать обсуждения на категории и легко их потом находить
     tag_created: Метка записана
     tags_marked: Ветви, помеченные '{{name}}' в {{groupName}}
+    all_tags: Все теги
+    new_tag: Новый тег
+    card_title: Теги категорий
+    destroy_tag: Удалить тег
+    destroy_helptext: Это удалит этот тег и удалит его из всех тем в группе. Вы уверены?
+    discussions_count_singular: "(тема %{count})"
+    discussions_count_plural: "(тем: %{count})"
+    tag_destroyed: Тег удален.
+    no_tags_present: Тем с таким тегом не найдено! Попробуйте выбрать другой
+    no_tags_in_group: В этой группе пока нет тегов категорий.
+    only_admins_can_edit_tags: К сожалению, только администраторы {{group}} могут создавать, переименовывать или удалять теги.
   new_poll_types:
     poll: выбирать
   timezones:
@@ -57,69 +131,69 @@ ru:
     time:
       am: день
       pm: вечер
-    closing_in: 'Закрывается {{time}}'
-    closed_ago: 'Закрыто {{time}}'
-    volume: 'Громкость'
-    notification_volume: 'Громкость оповещений'
-    group: 'Группа'
-    groups: 'Группы'
-    organization: "Организация"
-    organizations: "Организации"
-    threads: 'Обсуждения'
-    decisions: 'Решения'
-    settings: 'Настройки'
-    help: 'Помощь'
+    closing_in: Закрывается {{time}}
+    closed_ago: Закрыто {{time}}
+    volume: Громкость
+    notification_volume: Громкость оповещений
+    group: Группа
+    groups: Группы
+    organization: Организация
+    organizations: Организации
+    threads: Обсуждения
+    decisions: Решения
+    settings: Настройки
+    help: Помощь
     anonymous: Анонимный
     email_address: Электронный адрес
     privacy:
-      privacy: 'Конфиденциальность'
-      public: 'Публичная'
-      open: 'Открыто'
-      closed: 'Закрыто'
-      private: 'Приватная'
-      secret: 'Выделить'
-    selected: 'Выбранные'
+      privacy: Конфиденциальность
+      public: Публичная
+      open: Открыто
+      closed: Закрыто
+      private: Приватная
+      secret: Выделить
+    selected: Выбранные
     date_range:
-      today: 'Сегодня'
-      yesterday: 'Вчера'
-      thisweek: 'Эта неделя'
-      thismonth: 'Этот месяц'
-      older: 'Ранее'
-    more_help: 'Дополнительная справка'
-    copy: 'Копировать'
-    copy_text: 'Копировать текст'
-    copied: 'Скопировать в буфер'
+      today: Сегодня
+      yesterday: Вчера
+      thisweek: Эта неделя
+      thismonth: Этот месяц
+      older: Ранее
+    more_help: Дополнительная справка
+    copy: Копировать
+    copy_text: Копировать текст
+    copied: Скопировать в буфер
     total: Всего
     action:
       print: Печать
       preview: Предварительный просмотр
       pin: Закрепить
       unpin: Открепить
-      search: 'Поиск'
-      filter: 'Фильтр'
-      back: 'Назад'
-      next: 'Следующее'
-      close: 'Закрыть'
-      reopen: 'Открыть вновь'
-      save: 'Сохранить'
-      move: 'Переместить'
-      save_changes: 'Сохранить изменения'
-      update_settings: 'Обновить настройки'
-      reply: 'Ответить'
-      edit: 'Редактировать'
-      remove: 'Удалить'
-      like: 'Нравится'
-      unlike: 'Не нравится'
-      update: 'Обновить'
-      cancel: 'Отмена'
-      show_more: "Показать больше"
-      view_all: "Показать все"
-      new_thread: "Новая тема"
-      loading: 'Загрузка'
-      translate: 'Перевести'
-      upload: 'Скачать'
-      uploading: 'скачивание'
-      load_more: 'Загрузить больше'
+      search: Поиск
+      filter: Фильтр
+      back: Назад
+      next: Следующее
+      close: Закрыть
+      reopen: Открыть вновь
+      save: Сохранить
+      move: Переместить
+      save_changes: Сохранить изменения
+      update_settings: Обновить настройки
+      reply: Ответить
+      edit: Редактировать
+      remove: Удалить
+      like: Нравится
+      unlike: Не нравится
+      update: Обновить
+      cancel: Отмена
+      show_more: Показать больше
+      view_all: Показать все
+      new_thread: Новая тема
+      loading: Загрузка
+      translate: Перевести
+      upload: Скачать
+      uploading: скачивание
+      load_more: Загрузить больше
       share: Поделиться
       ok: Хорошо
       retry: Повторите попытку
@@ -135,13 +209,72 @@ ru:
       invite: Приглашать
       resent: Переслать приглашение
       export: Экспортировать
+      undo_remove: Отменить удаление
+      hide: Скрывать
+      unhide: Показать
+      show_fewer: Показать меньше
+      view_count_more: Посмотреть еще %{count}
+      view_count_responses: Просмотреть %{count} ответов
+      count_more: ещё %{count}
+      count_responses: "%{count} ответов"
+      add_subgroup: Новая подгруппа
+      discard: Отказаться
+      restore: Восстановить
+      unignore: Не игнорировать
+      joined: Присоединился
+      last_seen: Последний раз видели
+      fork: Вилка
+      apply: Применять
+      add_people: Добавить людей
+      zoom: Увеличить
+      align: Выровнять
     formatting_help:
-      label: 'Форматирование'
+      label: Форматирование
+      title: Узнайте, как использовать Markdown для форматирования текста.
+    admin_menu: Меню администратора
+    api_docs: Документация по API
+    prefix_eg: например {{val}}
+    are_you_sure: Вы уверены?
+    loomio_help: Лумио помощь
+    visit_loomio_help: Посетите справку Loomio
+    help_and_guides: Помощь и руководства
+    optional: "(Необязательный)"
+    none: Никто
+    empty: Пустой
+    no_results_found: результатов не найдено
+    view: Вид
+    option: Вариант
+    attachments: Вложения
+    template: Шаблон
+    links: Ссылки
+    active_time_ago: Последняя активность {{time_ago}}
+    something_went_wrong: Ой-ой! Что-то пошло не так
+    check_for_errors_and_try_again: Пожалуйста, проверьте форму на наличие ошибок и повторите попытку.
+    please_try_again: Пожалуйста, попробуйте еще раз
+    required: Необходимый
+    minutes: Минуты
+    today: сегодня
+    in_x_days: через %{x} дней
+    reset: Перезагрузить
+    points_abbrev: Каждый голос приносит {{score}} баллов.
   merge_accounts:
     modal:
       submit: Подтвердить
+      title: Объединить аккаунты
+      helptext: Вы можете объединить учетную запись <strong>{{sourceEmail}}</strong> с учетной записью <strong>{{targetEmail}}</strong> . Нажмите «Подтвердить», и на адрес {{targetEmail}} будет отправлено письмо с подтверждением, чтобы начать процесс.
+      flash: Письмо с подтверждением отправлено!
+    email_taken: Извините, этот адрес электронной почты уже связан с другим пользователем. Этот адрес электронной почты принадлежит вам?
+    find_out_more: Узнать больше.
+    placeholder_modal_text: <p>Если вы хотите объединить две учетные записи, просто введите соответствующий адрес электронной почты (принадлежащий другой учетной записи) в поле электронной почты на странице вашего профиля и следуйте появившимся инструкциям.</p><p> Нужна помощь? <a href="/contact" target="_blank">Свяжитесь с нами</a> .
   emoji_picker:
     search: Поиск
+    common: Часто используемый
+    expressions: Лица
+    hands: Руки
+    people: Люди
+    nature: Природа
+    objects: Вещи
+    places: Места
   ordinal:
     _1: 1ый
     _2: 2ый
@@ -157,11 +290,12 @@ ru:
     sessions:
       signed_up: Зарегистрирован успешно!
     failure:
-      inactive: 'Аккаунт, связанный с указанным адресом электронной почты, деактивирован. Если вы хотите раективировать аккаунт, свяжитесь с нами.'
+      inactive: Аккаунт, связанный с указанным адресом электронной почты, деактивирован. Если вы хотите раективировать аккаунт, свяжитесь с нами.
   error_page:
-    forbidden: 'У вас недостаточно прав'
-    page_not_found: 'Не найдено. Возможно было удалено или перемещено.'
-    internal_server_error: 'Извините, что-то не так. Попробуйте снова.'
+    forbidden: У вас недостаточно прав
+    page_not_found: Не найдено. Возможно было удалено или перемещено.
+    internal_server_error: Извините, что-то не так. Попробуйте снова.
+    forbidden_view: У вас нет разрешения на просмотр этого.
   verify_email_notice:
     please_verify: Спасибо за участие! Пожалуйста, проверьте почтовый ящик, мы выслали на него ссылку, чтобы верифицировать Ваше голосование
   previous_polls_page:
@@ -169,154 +303,459 @@ ru:
     polls_count: Показать {{загруженное}}  {{итог}} решения
     search_activities: Поиск решений
   volume_levels:
-    loud: 'Заметный'
-    normal: 'Нормальный'
-    quiet: 'Ограниченный'
-    mute: 'Заглушен'
-    unmute: 'Включить'
+    loud: Заметный
+    normal: Нормальный
+    quiet: Ограниченный
+    mute: Заглушен
+    unmute: Включить
   pin_event_form:
     title_label: Название
+    title: Закрепить на временной шкале
+    hint: 'Совет на следующий раз: попробуйте выделить текст, прежде чем нажать «Закрепить».'
   change_volume_form:
     simple:
       label: Уведомления
       loud: Подписаться
       normal: Нормальный
       quiet: Игнорировать
-    aria_label: "Изменить настройки почтового ящика"
-    loud_label: "Вся активность"
-    normal_label: "Объявления"
-    quiet_label: "Нет "
-    mute_label: "Заглушен"
+      question: Когда вы хотите получить уведомление?
+      loud_explain: всякий раз, когда есть активность
+      normal_explain: когда кто-то просит твоего внимания
+      quiet_explain: нет уведомлений
+    aria_label: Изменить настройки почтового ящика
+    loud_label: Вся активность
+    normal_label: Объявления
+    quiet_label: 'Нет '
+    mute_label: Заглушен
     discussion:
-      apply_to_all: "Применить эти настройки ко всем темам в этой группе."
+      apply_to_all: Применить эти настройки ко всем темам в этой группе.
       messages:
-        loud: "Вы будете оповещенны по эмаилу о всей активности в этой теме."
-        normal: "Вам будут приходить электронные письма касательно предложений в этой ветке."
-        quiet: "Вы не будете получать письма об этой ветке."
+        loud: Вы будете оповещенны по эмаилу о всей активности в этой теме.
+        normal: Вам будут приходить электронные письма касательно предложений в этой ветке.
+        quiet: Вы не будете получать письма об этой ветке.
+      title: Уведомления о темах
+      loud_description: Обо всех действиях в этой теме вы будете получать по электронной почте.
+      normal_description: Вы будете получать по электронной почте только важные сведения о событиях в этой теме.
+      quiet_description: Вы не будете получать по электронной почте сообщения о каких-либо действиях в этой теме.
+      only_this_thread: Применимо только к этой теме
+      group: Изменение уведомлений для группы
+      user: Изменение настроек уведомлений пользователя
     membership:
-      loud_description: "Вы будете оповещенны по эмаилу о всей активности в этой группе."
-      normal_description: "Вы будете оповещенны по эмаилу о всей активности в этой группе."
-      apply_to_all: "Применить эти настройки для всех моих групп"
+      loud_description: Вы будете оповещенны по эмаилу о всей активности в этой группе.
+      normal_description: Вы будете оповещенны по эмаилу о всей активности в этой группе.
+      apply_to_all: Применить эти настройки для всех моих групп
+      title: Уведомления для {{title}}
+      quiet_description: Вы не будете получать электронные письма о активности в этой группе.
+      apply_to_organization: Применить ко всем группам в {{organization}}
+      messages:
+        loud: Обо всех действиях в этой группе вы будете получать по электронной почте.
+        normal: Объявления в этой группе будут приходить вам только по электронной почте.
+        quiet: Вы не будете получать электронные письма об этой группе.
     user:
       title: Настройки почты для новых групп
-      loud_description: "Вы будете уведомлены письмом на указанный почтовый адрес по каждой активности в тех группах, к которым Вы присоединитесь"
-      normal_description: "Вы будете уведомлены письмом на указанный почтовый ящик по каждому новому объявлению в группах, к которым Вы присоединились."
-      apply_to_all: "Применить эти настройки для всех моих групп"
+      loud_description: Вы будете уведомлены письмом на указанный почтовый адрес по каждой активности в тех группах, к которым Вы присоединитесь
+      normal_description: Вы будете уведомлены письмом на указанный почтовый ящик по каждому новому объявлению в группах, к которым Вы присоединились.
+      apply_to_all: Применить эти настройки для всех моих групп
+      quiet_description: Вы не будете получать электронные письма о действиях в новых группах, к которым вы присоединитесь.
+      messages:
+        loud: Обо всех действиях в новых группах вы будете получать по электронной почте.
+        normal: Об объявлениях в новых группах вы будете получать электронное письмо.
+        quiet: Вы не будете получать электронные письма о новых группах.
+    explain_scope:
+      thread: Это изменится, когда вы получите уведомление об этой теме.
+      group: Это изменится, когда вы будете получать уведомления обо всех обсуждениях в группе.
+    saved: Настройки уведомлений обновлены.
+    all_groups:
+      title: Настройки уведомлений для всех групп
+      loud_description: Вы будете получать по электронной почте всю активность во всех ваших группах.
+      normal_description: Вам будут приходить по электронной почте только важные действия во всех ваших группах.
+      quiet_description: Вы не будете получать по электронной почте сообщения о действиях ни в одной из ваших групп.
+      messages:
+        loud: Вы будете получать по электронной почте всю активность во всех ваших группах.
+        normal: Вам будут приходить только объявления по электронной почте во всех ваших группах.
+        quiet: Вы не будете получать электронные письма ни о одной из ваших групп.
   close_explanation_modal:
     aria_label: Закрыть тему
     close_thread: Закрыть тему
+    body: "<p>Закройте старые или нерелевантные темы, чтобы удалить их из поля зрения и указать, что обсуждение закрыто.</p><p> Любой желающий по-прежнему может комментировать или начинать опрос в закрытой теме, но он не будет отображаться в списке тем группы или на информационной панели.</p>"
+    image_alt: Закрытие всех тем
   inbox:
-    clear: 'Очистить'
-    latest: 'Последний'
-    unread: 'Непрочитанные'
-    closing_in: 'Закрывается'
+    clear: Очистить
+    latest: Последний
+    unread: Непрочитанные
+    closing_in: Закрывается
   sign_up_form:
     password_label: 'Пароль:'
     password_confirmation_label: 'Введите пароль повторно:'
   signed_out_modal:
-    aria_label: 'Сессия закончена'
-    title: "Ваша сессия закончилась"
-    ok: "Хорошо"
+    aria_label: Сессия закончена
+    title: Ваша сессия закончилась
+    ok: Хорошо
+    message: Вы вышли из другого окна. Пожалуйста, войдите снова, чтобы продолжить.
   comment_reply_form:
-    aria_label: 'Ответить'
+    aria_label: Ответить
   comment_form:
     aria_label: 'Добавить комментарий '
     attachments:
-      add_attachment: 'Приложить файл'
-      remove_attachment: 'Удалить вложение'
+      add_attachment: Приложить файл
+      remove_attachment: Удалить вложение
     messages:
-      created: 'Комментарий добавлен'
-      replied: '{{name}} оповещен об ответе'
-      updated: 'Комментарий обновлен'
-      destroyed: 'Комментарий удалён'
+      created: Комментарий добавлен
+      replied: "{{name}} оповещен об ответе"
+      updated: Комментарий обновлен
+      destroyed: Комментарий удалён
+      removed: Комментарий удален
     say_something: Скажи что-то...
-    edit_comment: 'Редактировать коментарий'
-    delete_comment: 'Удалить комментарий'
-    cancel_reply: 'Отменить ответ'
-    confirm_delete_message: 'Вы уверены что хотите удалить комментарий?'
-    confirm_delete: 'Удалить комментарий'
-    in_reply_to: "Ответить: {{name}}"
-    write_a_comment: "Напишите комментарий..."
-    post_comment: "Опубликовать"
+    edit_comment: Редактировать коментарий
+    delete_comment: Удалить комментарий
+    cancel_reply: Отменить ответ
+    confirm_delete_message: Вы уверены что хотите удалить комментарий?
+    confirm_delete: Удалить комментарий
+    in_reply_to: 'Ответить: {{name}}'
+    write_a_comment: Напишите комментарий...
+    post_comment: Опубликовать
     submit_button:
-      label: 'Опубликовать'
-    public_privacy_notice: 'Ваш комментарий будет виден всем пользователям сети'
-    sign_in: "Войдите чтобы присоеденится к разговору"
+      label: Опубликовать
+    public_privacy_notice: Ваш комментарий будет виден всем пользователям сети
+    sign_in: Войдите чтобы присоеденится к разговору
+    private_privacy_notice: Ваш комментарий будет виден только участникам {{groupName}}.
   thread_nav:
     participants: Участники
   sidebar:
-    threads: 'Обсуждения'
-    my_groups: 'Мои группы'
-    all_groups: 'Все группы'
-    recent_threads: 'Последние темы'
-    muted_threads: 'Выключить уведомления темы'
-    start_group: 'Новая организация'
-    explore: 'Публичная группа'
+    threads: Обсуждения
+    my_groups: Мои группы
+    all_groups: Все группы
+    recent_threads: Последние темы
+    muted_threads: Выключить уведомления темы
+    start_group: Новая организация
+    explore: Публичная группа
     start_thread: Новая тема
     start_decision: Новое решение
     aria_labels:
-      heading: 'Боковая панель'
-      groups_list: 'Группы'
-      user_list: 'Активность пользователя'
+      heading: Боковая панель
+      groups_list: Группы
+      user_list: Активность пользователя
+      threads_list: Действия с потоками
+    other_groups: Другие группы
+    invite_only_threads: Темы только по приглашению
+    direct_threads: Прямые темы
+    unread_threads: Непрочитанные темы (%{count})
+    start_subgroup: Новая подгруппа
+    explore_groups: Исследуйте группы
+    more_groups: Больше групп
+    template_gallery: Галерея шаблонов
+    examples_and_templates: Примеры и шаблоны
+    help_docs: Справочная документация
+    a_detailed_guide_to_loomio: Подробный путеводитель по Лумио
+    talk_to_the_loomio_team: Поговорите с командой Loomio
   navbar:
-    recent_title: 'В панель управления'
-    start_thread: 'Новая тема'
-    notifications: 'Панель уведомлений'
+    recent_title: В панель управления
+    start_thread: Новая тема
+    notifications: Панель уведомлений
     search:
-      results_aria_label: 'Результаты поиска'
-      no_results: 'Темы не найдены'
-      close: 'Закрыть панель поиска'
-      placeholder: 'Поиск'
-      loading: 'Загружаются результаты'
-      discussions: 'Обсуждения'
-      proposals: 'Голосования'
-      comments: 'Комментарии'
-    sign_in: 'Войти'
-    toggle_sidebar: 'Скрыть боковую панель'
-    logo_title: 'Домашняя страница'
+      results_aria_label: Результаты поиска
+      no_results: Темы не найдены
+      close: Закрыть панель поиска
+      placeholder: Поиск
+      loading: Загружаются результаты
+      discussions: Обсуждения
+      proposals: Голосования
+      comments: Комментарии
+      label: Поле поиска; поиск групп и тем
+    sign_in: Войти
+    toggle_sidebar: Скрыть боковую панель
+    logo_title: Домашняя страница
+    search_all_threads: Искать во всех темах
+    search_threads: Поиск тем в {{name}}
+    search_polls: Поиск опросов в {{name}}
+    search_members: Поиск участников в {{name}}
+    search_subgroups: Поиск участников в {{name}}
+    search_files: Искать файлы в {{name}}
+    unread_title: Просмотр непрочитанных действий
+    open_sidebar: Открыть боковую панель
+    close_sidebar: Закрыть боковую панель
+    group_and_subgroups: "{{group}} и подгруппы"
   user_dropdown:
-    edit_profile: 'Редактировать профиль'
-    help: 'Помощь'
-    sign_out: 'Выйти'
+    edit_profile: Редактировать профиль
+    help: Помощь
+    sign_out: Выйти
+    pin_sidebar: Закрепить боковую панель
+    unpin_sidebar: Открепить боковую панель
+    enable_beta_features: Включить бета-функции
+    disable_beta_features: Отключить бета-функции
+    enable_dark_mode: Включить темный режим
+    disable_dark_mode: Отключить темный режим
+    button_label: Меню пользователя
+    email_settings: Настройки уведомлений
+    contact_site_name: Свяжитесь с {{site_name}}
+    contact_support: Контактная поддержка
+    beta_collab: "\U0001F9EA Бета-функции включены!"
+    outcomes: Результаты
   membership_card:
-    invite_to_group: "Пригласите в группу"
+    invite_to_group: Пригласите в группу
+    group_members: Участники группы
+    discussion_members: Участники темы
+    poll_members: "{{pollType}} участников"
+    voters: Избиратели
+    invite_to_discussion: Пригласить в тред
+    invite_to_poll: Пригласить голосовать
+    invite_to_wip_poll: Пригласить оставить отзыв
+    invitations: Приглашения
   membership_dropdown:
-    invitation_resent: "Переслать приглашение"
-    make_coordinator: 'Сделать администратором'
+    invitation_resent: Переслать приглашение
+    make_coordinator: Сделать администратором
+    set_name_and_username: Установить имя и имя пользователя
+    set_title: Установить заголовок
+    resend: Отправить приглашение повторно
+    demote_coordinator: Понизить администратора
+    remove_from:
+      discussion: Удалить из темы
+      group: Удалить из группы
+      poll: Удалить из {{pollType}}
+    cancel_invitation: Отменить приглашение
   notifications:
-    header: "Уведомления"
-    no_notifications: "У Вас нет уведомлений"
+    header: Уведомления
+    no_notifications: У Вас нет уведомлений
     with_title:
       user_mentioned: "%{actor} упомянули вас в: %{title}"
       user_reminded: "%{actor} напоминает, чтобы вы проголосовали за: %{title}"
+      comment_replied_to: "%{actor} ответил вам в: %{title}"
+      discussion_announced: "%{actor} пригласил вас в тему: %{title}"
+      discussion_edited: "%{actor} отредактировал контекст треда: %{title}"
+      discussion_closed: "%{actor} закрыл тему: %{title}"
+      invitation_accepted: "%{actor} принял ваше приглашение присоединиться к %{title}"
+      membership_created: "%{actor} пригласил вас присоединиться к %{title} на %{site_name}"
+      membership_resent: "%{actor} пригласил вас присоединиться к %{title} на %{site_name}"
+      membership_requested: "%{actor} попросил присоединиться к %{title}"
+      membership_request_approved: "%{actor} одобрил ваш запрос на присоединение к %{title}"
+      new_comment: "%{actor} прокомментировал: %{title}"
+      new_coordinator: "%{actor} назначил вас администратором %{title}"
+      new_discussion: "%{actor} создал тему: %{title}"
+      outcome_announced: "%{actor} поделился результатом %{poll_type}: %{title}"
+      outcome_created: "%{actor} поделился результатом %{poll_type}: %{title}"
+      outcome_updated: "%{actor} обновил результат %{poll_type}: %{title}"
+      outcome_review_due: 'Пришло время подвести итоги: %{title}'
+      poll_announced: "%{actor} пригласил вас проголосовать: %{title}"
+      poll_closed_by_user: "%{actor} закрыл %{poll_type}: %{title}"
+      poll_closing_soon: "%{poll_type} закроется через 24 часа: %{title}"
+      poll_closing_soon_author: 'Ваш %{poll_type} закроется через 24 часа: %{title}'
+      poll_created: "%{actor} начал %{poll_type}: %{title}"
+      poll_edited: "%{actor} обновил %{poll_type}: %{title}"
+      poll_expired: "%{poll_type} закрылся: %{title}"
+      poll_expired_author: 'Поделитесь результатами вашего %{poll_type}: %{title}'
+      poll_option_added: "%{actor} добавил опции в %{title}"
+      poll_reopened: "%{actor} повторно открыл %{poll_type}: %{title}"
+      poll_reminder: "%{actor} напоминает вам проголосовать за %{title}"
+      poll_reminder_wip: "%{actor} напоминает вам оставить отзыв: %{title}"
+      reaction_created: "%{actor} отреагировал %{reaction} на вашу %{model} в %{title}"
+      stance_created: "%{actor} проголосовал за: %{title}"
+      stance_updated: "%{actor} проголосовал за: %{title}"
+      stance_created_option: "%{actor} проголосовал за %{option} в %{title}"
+      user_added_to_group: "%{actor} добавил вас в группу: %{title}"
     without_title:
       poll_expired: "%{poll_type} закрылся"
+      discussion_announced: "%{actor} пригласил вас в тред"
+      discussion_edited: "%{actor} отредактировал контекст треда"
+      discussion_closed: "%{actor} закрыл тему"
+      group_announced: "%{actor} пригласил вас в группу"
+      comment_replied_to: "%{actor} ответил вам"
+      new_discussion: "%{actor} создал тред"
+      new_comment: "%{actor} оставил комментарий в теме"
+      membership_created: "%{actor} пригласил вас присоединиться к группе"
+      membership_resent: "%{actor} пригласил вас присоединиться к группе"
+      membership_requested: "%{actor} попросил присоединиться к вашей группе"
+      membership_request_approved: "%{actor} одобрил ваш запрос на присоединение к %{title}"
+      outcome_announced: "%{actor} поделился результатом %{poll_type}"
+      outcome_created: "%{actor} поделился результатом %{poll_type}"
+      outcome_updated: "%{actor} обновил результат"
+      outcome_review_due: Пришло время просмотреть результат %{poll_type}
+      poll_announced: "%{actor} пригласил вас проголосовать в %{poll_type}"
+      poll_announced_wip: "%{actor} хочет получить ваш отзыв о %{poll_type}"
+      poll_closed_by_user: "%{actor} закрыл %{poll_type}"
+      poll_closing_soon: "%{poll_type} закроется через 24 часа"
+      poll_closing_soon_author: Ваш %{poll_type} закроется через 24 часа
+      poll_created: "%{actor} начал %{poll_type}"
+      poll_edited: "%{actor} обновил %{poll_type}"
+      poll_expired_author: Поделитесь результатами вашего %{poll_type}
+      poll_option_added: "%{actor} добавил параметры в %{poll_type}"
+      poll_reopened: "%{actor} повторно открыл %{poll_type}"
+      poll_reminder: "%{actor} напоминает вам проголосовать"
+      poll_reminder_wip: "%{actor} напоминает вам оставить отзыв"
+      reaction_created: "%{actor} отреагировал %{reaction} на вашу %{model}"
+      stance_created: "%{actor} проголосовало"
+      stance_updated: "%{actor} проголосовало"
+      stance_created_option: "%{actor} проголосовал за %{option}"
+      user_mentioned: "%{actor} упомянул вас"
+      user_reminded: "%{actor} напоминает вам проголосовать"
+    hints:
+      poll_closing_soon: Сейчас хорошее время, чтобы проголосовать, передумать или призвать других к участию.
+      poll_closing_soon_author: Возможно, вы захотите напомнить людям о необходимости проголосовать или продлить срок.
+      outcome_review_due: Подумайте о том, чтобы начать опрос обратной связи или создать новую тему, предлагающую поразмышлять о том, как было реализовано это решение.
   discussion_fork_actions:
     move: Переместить
+    helptext: Выберите элементы, которые вы хотите переместить в другую тему.
+    search_placeholder: Найти тему по названию
+    moved: Перемещение комментариев. Это может занять некоторое время.
+    move_to_existing_thread: Переместиться в существующую тему
+    start_new_thread: Или начните новую тему
   discussion_form:
     invite: Приглашать
-    aria_label: 'Форма темы'
+    aria_label: Форма темы
     messages:
-      created: 'Тема начата'
-      updated: 'Тема обновленна'
-    new_discussion_title: 'Начать новую тему'
-    edit_discussion_title: 'Редактировать тему'
-    group_label: 'Группа'
-    group_placeholder: 'Выбрать группу'
-    title_label: 'Название'
-    context_label: 'Описание'
-    privacy_label: 'Конфиденциальность'
+      created: Тема начата
+      updated: Тема обновленна
+      forked: Разветвление темы создано
+    new_discussion_title: Начать новую тему
+    edit_discussion_title: Редактировать тему
+    group_label: Группа
+    group_placeholder: Выбрать группу
+    title_label: Название
+    context_label: Описание
+    privacy_label: Конфиденциальность
+    thread_templates: Шаблоны тем
+    new_thread_template: Новый шаблон темы
+    edit_thread_template: Изменить шаблон темы
+    blank: Пустой
+    blank_subtitle: Начните обсуждение и посмотрите, куда оно вас приведет
+    new_template: Новый шаблон
+    new_template_subtitle: Создайте пример, который другие смогут скопировать
+    to: К
+    direct_thread: Прямая резьба
+    invite_only_thread: Ветка только по приглашению
+    none_direct_thread: Прямая нить (без группы)
+    none_invite_only_thread: Тема только по приглашению (без группы)
+    change_log_placeholder: При желании опишите ваши изменения. Это сообщение будет добавлено в тему.
+    change_log_label: Что изменилось?
+    start_thread: Начать тему
+    new_thread_from_template: 'Новая тема: %{process_name}'
+    moving_items_title: Переместить элементы в новую тему
+    title_placeholder: Какую тему вы хотите обсудить?
+    context_placeholder: Предоставьте некоторый контекст для этого обсуждения, чтобы люди знали, как участвовать.
+    privacy_public: Эту тему может просмотреть любой желающий, если у него есть ссылка.
+    privacy_private: Только участники группы могут просматривать эту тему
+    privacy_organisation: Цепочка будет видна участникам {{parent}} и участникам {{group}}.
+    fork_notice: Будет создана новая тема с элементами %{count} из {{title}}.
+    notify_group: Уведомить группу
   announcement:
     form:
       invitation_message_label: Сообщение
       group_announced:
         title: Пригласите в группу
+        helptext: Кого бы вы хотели пригласить в группу?
       poll_reminder:
         message_label: Сообщение
+        title: Напомнить проголосовать
+        helptext: Кому вы хотели бы напомнить о голосовании?
+        message_placeholder: Дополнительное сообщение, объясняющее людям, почему им следует голосовать.
       wip_poll_reminder:
         message_label: Сообщение
+        title: Напомнить оставить отзыв
+        helptext: Кому вы хотели бы напомнить о необходимости оставить отзыв?
+        message_placeholder: Дополнительное сообщение для включения в электронное письмо с уведомлением
       outcome_announced:
         title: Поделиться результатами
+        helptext: Подведите итоги процесса, включая любые достигнутые договоренности или выявленные проблемы.
+      group_has_no_members_yet: Вы единственный участник своей группы. Возможно, вы захотите пригласить некоторых людей в свою группу, прежде чем начинать обсуждение или принимать решение.
+      invite_people_to_evaluate_loomio: Пригласите несколько человек в свою группу Loomio, чтобы вместе принять решение.
+      too_many_invitations: Превышен лимит приглашений. <a href="{{upgradeUrl}}" target="_blank">Обновление</a>
+      no_invitations_remaining: <p>Вы использовали все приглашения {{maxMembers}}, доступные для этой группы.</p><p> Следующим шагом <a href="{{upgradeUrl}}" target="_blank">выберите план</a> для продолжения совместной работы с Loomio.</p>
+      invitations_remaining: 'Осталось приглашений: %{count}. <a href="{{upgradeUrl}}" target="_blank">Обновление</a>'
+      who_to_invite: Кого бы вы хотели пригласить?
+      invitation_message_placeholder: Сообщение, которое будет включено в электронное письмо с приглашением. (необязательный)
+      invitation_message_default: Я создал группу Loomio, чтобы помочь нам вместе принимать решения. Пожалуйста, примите мое приглашение. Чтобы присоединиться, потребуется всего минута. Спасибо.
+      discussion_announced:
+        title: Пригласить в тред
+        helptext: Кого бы вы хотели пригласить в тред?
+        notify_helptext: Кого вы хотите уведомить о теме?
+      discussion_edited:
+        title: Уведомлять об изменениях
+        helptext: Кого вы хотите уведомить об этом обновлении? (необязательный)
+      poll_announced:
+        title: Пригласить голосовать
+        helptext: Кого бы вы хотели пригласить проголосовать?
+      wip_poll_announced:
+        title: Пригласить оставить отзыв
+        helptext: Кого бы вы хотели пригласить оставить отзыв?
+      poll_edited:
+        title: Уведомлять об изменениях
+        helptext: Кого вы хотите уведомить об этом обновлении?
+      anyone_can_participate: Принять участие может любой, у кого есть ссылка
+      placeholder: Вы можете ввести имена или адреса электронной почты.
+      type_or_paste_email_addresses_to_invite: Введите или вставьте адреса электронной почты, чтобы пригласить
+      notified_empty: Еще никто не выбрал
+      single_notification: Будет отправлено 1 уведомление.
+      multiple_notifications: Уведомления {{notified}} будут отправлены.
+      notified: "{{notified}} человек будут уведомлены."
+      notified_singular: 1 человек будет уведомлен.
+      notified_none: Никто не будет уведомлен.
+      added: "%{count} человек будут добавлены."
+      added_singular: Будет добавлен 1 человек.
+      added_none: Никто не будет добавлен.
+      group_title: "{{name}} (%{count} человек)"
+      visible_to_group: Любой участник {{group}} сможет видеть эту тему.
+      visible_to_guests: Только приглашенные люди могут видеть эту тему.
+      click_group_to_see_individuals: Нажмите группу, чтобы увидеть отдельных лиц
+    send_discussion: Отправить тему
+    send_group: Пригласить людей в {{name}}
+    send_poll: Отправить {{type}}
+    send_outcome: Отправить результат
+    cannot_reveal_when_anonymous: К сожалению, мы не можем раскрыть, кто голосовал или не голосовал в анонимном опросе.
+    discussion_notification_history: История уведомлений о темах
+    group_notification_history: История приглашений в группы
+    poll_notification_history: История уведомлений об опросах
+    outcome_notification_history: История уведомлений о результатах
+    comment_notification_history: История уведомлений о комментариях
+    notification_history_explanation: "✓ указывает, что уведомление было прочитано или письмо было открыто."
+    quick_add: 'Быстрое добавление:'
+    any_other_groups: Есть еще группы?
+    notified_people: "{{name}} уведомил {{length}} человек:"
+    preview: Предварительный просмотр электронной почты
+    no_notifications_sent: Уведомлений не было отправлено
+    history_error: Что-то пошло не так! Не удалось загрузить историю.
+    inviting_guests_to_thread: Гости не входят в вашу группу и имеют доступ только к этой теме.
+    select_groups: Выберите группы
+    search_by_name_or_email: Найдите по имени или введите адреса электронной почты, чтобы пригласить
+    search_by_name: Ищите людей по имени
+    only_admins_can_announce: Только администраторы могут оповещать всю группу
+    only_admins_can_invite: Только администраторы могут приглашать гостей
+    only_admins_can_announce_or_invite: Только администраторы могут уведомлять всю группу или приглашать гостей.
+    user_mentioned: "{{name}} упомянул {{length}} человек:"
+    comment_replied_to: "{{name}} ответил {{length}} людям:"
+    new_discussion: "{{name}} пригласил {{length}} человек в ветку:"
+    discussion_announced: "{{name}} пригласил {{length}} человек в ветку:"
+    poll_created: "{{name}} пригласил {{length}} человек проголосовать:"
+    poll_announced: "{{name}} пригласил {{length}} человек проголосовать:"
+    outcome_created: "{{name}} поделился результатом с {{length}} людьми:"
+    outcome_announced: "{{name}} поделился результатом с {{length}} людьми:"
+    announcement_created: "{{name}} пригласил {{length}} человек в ветку:"
+    discussion_edited: "{{name}} отредактировал тред, уведомив {{length}} человек:"
+    poll_edited: "{{name}} отредактировал опрос, уведомив {{length}} человек:"
+    outcome_edited: "{{name}} отредактировал результат, уведомив {{length}} человек:"
+    outcome_updated: "{{name}} отредактировал результат, уведомив {{length}} человек:"
+    poll_closing_soon: 'Напоминание о закрытии опроса пользователя {{name}} уведомило {{length}} человек:'
+    poll_reminder: "{{name}} напомнил {{length}} людям проголосовать:"
+    audiences:
+      group: "{{имя}}"
+      everyone_in_the_group: Все в группе
+      discussion_group: Все в теме
+      voters: Приглашаем всех голосовать
+      decided_voters: Все, кто голосовал
+      undecided_voters: Неопределившиеся избиратели
+      non_voters: Участники {{name}} еще не приглашены
+    members_list:
+      title: Доступно с
+      last_notified: Уведомлено
+      not_notified: Еще не уведомлено
+      no_members: Этим пока никто не поделился!
+      group_admin: Администратор группы
+      thread_admin: Администратор темы
+      last_read_at: 'Последний просмотр: {{time}}'
+      has_not_read_thread: Не просматривал тему
+    group_form:
+      search_placeholder: Ищите людей...
+      modal_title: Выберите участников группы
+    flash:
+      success: "%{count} уведомлений отправлено"
   action_dock:
     add_resource: Добавить вложение
     add_comment: Комментарий
@@ -339,33 +778,139 @@ ru:
     tag_thread: Управлять метками
     close_thread: Закрыть тему
     delete_thread: Удалить тему
+    actions_menu: Меню действий
+    more_actions: Больше действий
+    react: Реагировать
+    notify: Поставить в известность
+    edit_group: Изменить контекст группы
+    copy_url: Копировать ссылку
+    announce_thread: Отправить тему
+    invite_guests: Приглашать гостей
+    edit_poll_type: Изменить {{pollType}}
+    new_poll_type: Новый {{pollType}}
+    move_items: Переместить элементы
+    announce_poll_active: "(еще никого не пригласили)"
+    fork_comment: Вилочная нить
+    announce_outcome: Сообщите людям об этом результате
+    announce_outcome_active: "(Никто еще не был уведомлен об этом результате)"
+    show_history: Показать историю изменений
+    show_edits: Показать изменения
+    show_notifications: Показать уведомления
+    unpin_thread: Открепить нить
+    pin_event: Закрепить на временной шкале
+    unpin_event: Открепить от временной шкалы
+    comment_copied: URL комментария скопирован в буфер обмена.
+    move_thread: Перейти в группу
+    poll_copied: URL-адрес решения скопирован в буфер обмена.
+    discussion_copied: URL-адрес темы скопирован в буфер обмена.
+    url_copied: Ссылка скопирована в буфер обмена
+    reopen_thread: Открыть заново тему
+    notification_history: История уведомлений
+    move_item: Переместить элемент
+    add_poll_to_thread: Добавить в тему
+    count_members: "%{count} участников"
+    count_voters: "%{count} избирателей"
   formatting:
     attach: Приложить файл
     merge_selected: Объединить выделенные ячейки
+    formatting_tools: Инструменты форматирования текста
+    colors: Цвета
+    highlight: Выделять
+    alignment: Выравнивание
+    lists: Списки
+    expand: Показать больше инструментов форматирования
+    collapse: Показать меньше инструментов форматирования
+    bold: Смелый
+    italicize: Выделить курсивом
+    blockquote: Цитировать
+    strikethrough: Зачеркивание
+    underline: Подчеркнуть
+    link: Вставить ссылку
+    code_block: Кодовый блок
+    insert_image: Вставить изображение
+    insert_emoji: Вставить смайлик
+    heading_size: Размер заголовка
+    heading1: Заголовок 1
+    heading2: Заголовок 2
+    heading3: Заголовок 3
+    left_align: Выравнивание по левому краю
+    center_align: Выровнять по центру
+    right_align: Выровнять по правому краю
+    justify_align: Выровнять по ширине
+    paragraph: Параграф
+    bullet_list: Список
+    number_list: Нумерованный список
+    check_list: Контрольный список
+    task_list: Список заданий
+    reset: Перезагрузить
+    text_color: Цвет текста
+    background_color: Фоновый цвет
+    quote: Цитировать
+    embed: Встроенное видео
+    divider: Разделитель
+    add_table: Добавить таблицу
+    remove_table: Удалить таблицу
+    add_column_before: Добавить столбец раньше
+    add_column_after: Добавить столбец после
+    remove_column: Удалить столбец
+    add_row_before: Добавить строку перед
+    add_row_after: Добавить строку после
+    remove_row: Удалить строку
+    wysiwyg: высивиг
+    edit_markdown: Редактировать уценку
+    markdown_confirm: Некоторое форматирование может быть потеряно при преобразовании содержимого WYSIWYG в уценку.
+    upload_failed: Загрузка не удалась
   cover_photo_form:
-    heading: 'Новое фото обложки'
-    upload_link: 'Загрузить новое фото обложки'
-    upload_success: 'Фото обложки успешно загружено'
+    heading: Новое фото обложки
+    upload_link: Загрузить новое фото обложки
+    upload_success: Фото обложки успешно загружено
+    image_size_helptext: Идеальный размер изображения — 1400×320 пикселей.
   logo_photo_form:
-    heading: ' Новый логотип группы'
-    upload_link: 'Загрузить новый логотип группы'
-    image_size_helptext: 'Идеальный размер изображения 100х100px'
-    upload_success: 'Логотип успешно изменен'
+    heading: " Новый логотип группы"
+    upload_link: Загрузить новый логотип группы
+    image_size_helptext: Идеальный размер изображения 100х100px
+    upload_success: Логотип успешно изменен
   join_group_button:
     join_group: Вступить в группу
     membership_requested: Заявка на участие
+    not_a_member: В настоящее время вы не являетесь участником этой группы.
+    messages:
+      joined_group: Теперь вы являетесь участником {{group}}
   membership_request_form:
     heading: Подать заявку на вступление
     name_label: Имя
     email_label: Email
     submit_button: Подать заявку на вступление
+    aria_label: Форма запроса на членство
+    introduction_label: Почему вы хотите присоединиться?
+    introduction_over_limit: Слишком длинный ответ
+    messages:
+      membership_requested: Вы подали запрос на вступление в {{group}}
   revision_history_modal:
     aria_label: История изменений
     posted: Размещено
     current_revision: Последний
+    discussion_header: Редактирование обсуждения
+    comment_header: Редактирование комментариев
+    poll_header: Редактирование опроса
+    outcome_header: Редактирование результатов
+    stance_header: Голосование за изменения
+    started_by: Автор <strong>{{name}}</strong>
+    edited_by: Отредактировал <strong>{{name}}</strong>
+    edit_by: Изменил {{name}} · {{date}}
+    field: Поле
+    before: До
+    after: После
+    original_text: Оригинал
+    closing_at_changed: время закрытия установлено на {{time}}
+    private_changed: для конфиденциальности установлено значение {{private}}
+    group_id_changed: переехал в {{name}}
   reactions_display:
-    you: "Вы"
-    you_and_name: "Вы и {{name}}"
+    you: Вы
+    you_and_name: Вы и {{name}}
+    more_reactions: ещё %{count}
+    you_and_name_and_count_more: Вы, {{name}} и ещё %{count}
+    name_and_count_more: "{{name}} и ещё %{count}"
   group_page:
     threads: Обсуждения
     members: Участники
@@ -373,26 +918,80 @@ ru:
     settings: Настройки
     subgroups: Подгруппы
     messages:
-      leave_group_success: 'Вы покинули эту группу'
-    new_cover_photo: 'Загрузить новое фото обложки'
-    new_group_logo: 'Загрузить новый логотип группы'
-    open_discussions: 'Открыть тему'
-    invite_people: 'Приглашать'
-    visibility_label: 'Видимость'
-    options_label: 'Опции'
+      leave_group_success: Вы покинули эту группу
+      privacy:
+        members: Эта группа теперь видна только участникам
+        parent_members: Эта группа теперь видна только участникам вашей организации.
+        public: Эта группа теперь видна всем
+      archive_group_success: Эта группа деактивирована
+    new_cover_photo: Загрузить новое фото обложки
+    new_group_logo: Загрузить новый логотип группы
+    open_discussions: Открыть тему
+    invite_people: Приглашать
+    visibility_label: Видимость
+    options_label: Опции
     options:
-      label: 'Опции'
-      edit_group: 'Редактировать настройки группы'
-      manage_members: 'Управлять участниками'
-      add_subgroup: 'Добавить подгруппу'
-      email_settings: 'Настройки уведомлений'
-      leave_group: 'Покинуть группу'
-      deactivate_group: 'Деактивировать группу'
+      label: Опции
+      edit_group: Редактировать настройки группы
+      manage_members: Управлять участниками
+      add_subgroup: Добавить подгруппу
+      email_settings: Настройки уведомлений
+      leave_group: Покинуть группу
+      deactivate_group: Деактивировать группу
+      become_coordinator: Стать администратором
+      export_data: Экспортировать данные группы
+      export_data_as_json: Экспортировать данные группы в формате JSON.
+      export_data_as_csv: Экспортировать данные группы в формате CSV.
+      export_data_as_html: Экспортировать данные группы в формате HTML
+      manage_subscription: Управление групповой подпиской
+      subscription_status: Статус подписки
+    stats: Статистика группы
+    polls: Опросы
+    decisions: Решения
+    show_opened: "%{count} открыто"
+    show_closed: "%{count} закрыто"
+    no_threads_here: Здесь нет тем, которые можно было бы увидеть!
+    search_threads: Ищите темы...
+    private_threads: Вам необходимо быть участником, чтобы просматривать частные темы в этой группе.
+    no_more_threads: Больше нет тем для загрузки
+    view_closed_threads: Посмотреть закрытые темы
+    group_logo: Логотип группы
+    new_photo: новая фотография
+    closed_discussions: Закрытые темы
+    discussions_placeholder: Ветка — это место, где каждый может обсудить какую-либо тему и вместе принять решение.
+    members_placeholder: 'Вы здесь единственный: пригласите несколько человек присоединиться к вам!'
+    member_options: Опции участника
+    see_all_members: Просмотреть всех участников (%{count})
+    pending_invitations: "+ %{count} в ожидании"
+    subgroups_placeholder: Подгруппы предоставляют командам собственное пространство и направляют уведомления нужным людям.
+    volume:
+      loud: Пишите по электронной почте всякий раз, когда есть активность.
+      loud_aria_description: Громкость уведомлений для этой группы установлена на Громко. Вы будете получать электронное письмо, когда будет активность.
+      loud_message: Вы будете получать по электронной почте обо всех действиях в «{{name}}».
+      normal: 'Просто отправьте электронное письмо о важных событиях: новые темы и предложения, результаты и т. д.'
+      normal_aria_description: Громкость уведомлений для этой группы установлена на «Обычная». Вам просто будут приходить по электронной почте сообщения о важных событиях, например, когда кто-то начинает новую беседу, выдвигает предложение или устанавливает результат.
+      normal_message: Вы будете получать электронные письма только о важных событиях в "{{name}}".
+      quiet: Не пишите об этой группе. Активность будет отображаться на информационной панели.
+      quiet_aria_description: Громкость уведомлений для этой группы установлена на «Тихо». Вы не будете получать электронные письма о активности в этой группе. Активность группы будет отображаться на вашей информационной панели.
+      quiet_message: Вы не будете получать электронные письма о действиях в "{{name}}".
+      mute: Скройте эту группу на панели управления и не отправляйте уведомления, если @упомянуто.
+      mute_aria_description: Громкость уведомлений для этой группы отключена. Вы не получите электронное письмо, если кто-то не упомянет вас, а активность группы не будет отображаться на вашей панели управления.
+      mute_message: "«{{name}}» был удален из вашей панели управления."
+    privacy:
+      private: 'Конфиденциальность: эта группа видна только ее участникам.'
+      parent_members: 'Конфиденциальность: эта группа видна участникам {{parentGroupName}} и участникам {{groupName}}.'
+      public: 'Конфиденциальность: эта группа видна в Интернете.'
+      aria_label: 'Конфиденциальность группы: {{privacy}}'
   leave_group_form:
-    submit: 'Да, покинуть эту группу'
+    submit: Да, покинуть эту группу
+    aria_label: Покинуть группу
+    title: Покинуть группу
+    question: Вы уверены, что хотите покинуть эту группу?
   archive_group_form:
-    aria_label: 'Деактивировать группу'
-    title: 'Деактивировать группу'
+    aria_label: Деактивировать группу
+    title: Деактивировать группу
+    question: Вы уверены, что хотите деактивировать эту группу?
+    submit: Да, деактивировать эту группу
   group_form:
     new_organisation: Новая организация
     new_group: Новая группа
@@ -402,32 +1001,185 @@ ru:
     edit_subgroup_heading: Редактировать настройки подгруппы
     group_name: Название группы
     start_organization_heading: Новая организация
-    description: 'Описание'
-    privacy: 'Конфиденциальность'
+    description: Описание
+    privacy: Конфиденциальность
     profile: Профиль
-    public_threads: 'Только публичные темы'
-    public_or_private_threads: 'Разрешить публичные и закрытые темы'
-    submit_update: 'Обновить настройки'
+    public_threads: Только публичные темы
+    public_or_private_threads: Разрешить публичные и закрытые темы
+    submit_update: Обновить настройки
+    thread_defaults_help: Настройки по умолчанию для новых тем
+    click_to_change_image: Нажмите, чтобы изменить изображение обложки (4x1) или логотип (1x1)
+    change_cover_image: изменить изображение обложки
+    change_logo: изменить логотип
+    permissions_explaination: 'Человек может иметь два уровня членства в группе: администратор и участник. Администраторы могут редактировать настройки группы, назначать других пользователей администраторами и выполнять все действия, перечисленные ниже.'
+    aria_label: Форма группы
+    parent_group: Родительская группа
+    new_subgroup: Новая подгруппа
+    new_group_explainer: Создайте новую группу Loomio для своей организации.
+    new_subgroup_explainer: Создать подгруппу внутри существующей группы — частное пространство для команды людей из организации.
+    group_settings: Настройки группы
+    subgroup_settings: Настройки подгруппы
+    subgroup_name: Название подгруппы
+    organization_name: Название организации
+    handle: Ручка
+    group_handle_placeholder: 'Используется в URL-адресе вашей группы: {{host}}/{{handle}}.'
+    edit_organization_heading: Изменить настройки организации
+    group_name_placeholder: Как называется ваша группа?
+    subgroup_name_placeholder: Как называется ваша подгруппа?
+    organization_name_placeholder: Как называется ваша организация?
+    description_placeholder: Опишите цель вашей группы, чтобы члены вашей группы знали, почему они здесь.
+    new_description_placeholder: Почему вы пробуете Лумио? Какие решения вам нужно принять вместе?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Как вы собираетесь использовать Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Почему это важно для вашей группы?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Какие решения вам нужно принять?</h3><p></p>
+    secret_by_default: Ваша группа будет доступна только тем, кто приглашен присоединиться. Вы можете изменить это позже.
+    privacy_statement:
+      public_on_web: Имя, описание и вложения в контекст группы будут видны всем.
+      private_to_group: Имя и описание будут видны только участникам.
+      private_to_parent_members: Имя и описание будут видны участникам {{parent}}.
+    group_privacy_is_open_description: Публично внесен в список. Все темы общедоступны.
+    group_privacy_is_closed_description: Не в списке. Любой, у кого есть ссылка, может попросить присоединиться. Все темы являются частными.
+    group_privacy_is_closed_public_threads_description: Не в списке. Любой, у кого есть ссылка, может попросить присоединиться. Темы могут быть публичными или частными.
+    group_privacy_is_secret_description: Группу могут найти только приглашенные люди. Все темы являются частными.
+    confirm_change_to_secret: Если вы продолжите, все темы в этой группе и ее подгруппах станут частными.
+    confirm_change_to_secret_subgroup: Если вы продолжите, все темы станут приватными.
+    confirm_change_to_public: Если вы продолжите, все обсуждения в этой группе станут общедоступными в Интернете.
+    confirm_change_to_private_discussions_only: Если вы продолжите, все общедоступные обсуждения в этой группе станут частными.
+    subgroup_privacy_is_open_description: Любой может найти эту подгруппу и попросить присоединиться. Только участники могут видеть, кто находится в группе. Все темы общедоступны.
+    subgroup_privacy_is_closed_description: Любой может найти эту подгруппу и попросить присоединиться. Только участники могут видеть, кто находится в группе. Все темы являются частными.
+    subgroup_privacy_is_closed_public_threads_description: Любой может найти эту подгруппу и попросить присоединиться. Только участники могут видеть, кто находится в группе. Темы могут быть публичными или частными.
+    subgroup_privacy_is_closed_secret_parent_description: Участники {{parent}} могут найти эту подгруппу и попросить присоединиться. Все темы являются частными. Только участники могут видеть, кто находится в группе.
+    subgroup_privacy_is_secret_description: Только приглашенные участники могут найти эту подгруппу, увидеть, кто в ней состоит, и просмотреть темы.
+    advanced_settings: Расширенные настройки
+    how_do_people_join: Как люди присоединяются?
+    membership_granted_upon_request: К группе может присоединиться любой желающий.
+    membership_granted_upon_approval: Любой может подать заявку на присоединение, но должен быть одобрен.
+    membership_granted_upon_invitation: Только приглашение.
+    membership_granted_upon_approval_secret_parent: "<strong>По запросу</strong> любой из {{parent}} может попросить присоединиться к группе."
+    permissions: Разрешения
+    thread_privacy: Конфиденциальность темы
+    public_discussions_subgroup: Любой пользователь в {{parentGroupName}} может видеть обсуждения.
+    private_threads: Только участники могут видеть обсуждения
+    allow_public_threads: Разрешить общедоступные темы в этой группе.
+    parent_members_can_see_discussions: Участники {{parent}} могут видеть частные обсуждения
+    parent_members_can_see_discussions_help: Разрешить членам родительской группы видеть, но не участвовать в обсуждениях и опросах в этой группе.
+    members_can_announce: Участники могут уведомлять всех в группе
+    members_can_announce_help: Разрешить участникам уведомлять всех в группе о теме или опросе
+    members_can_add_members: Участники могут приглашать участников
+    members_can_add_members_help: Разрешить участникам приглашать людей присоединиться к этой группе
+    members_can_add_guests: Участники могут приглашать гостей
+    members_can_add_guests_help: Разрешить участникам приглашать гостей в обсуждения или опросы в этой группе.
+    members_can_create_subgroups: Участники могут создавать подгруппы
+    members_can_create_subgroups_help: Разрешить участникам создавать и становиться администраторами новых подгрупп
+    members_can_edit_discussions: Участники могут управлять темами и комментариями.
+    members_can_edit_discussions_help: Разрешить участникам редактировать, перемещать, закреплять, отмечать или закрывать темы
+    members_can_edit_comments: Участники могут редактировать свои комментарии
+    members_can_edit_comments_help: Разрешить участникам редактировать свои комментарии в любое время
+    members_can_delete_comments: Участники могут удалять свои комментарии
+    members_can_delete_comments_help: Разрешить участникам удалять собственные комментарии из тем
+    members_can_start_discussions: Участники могут создавать новые темы
+    members_can_start_discussions_help: Разрешить участникам создавать новые темы внутри группы.
+    members_can_raise_motions: Участники могут начинать опросы
+    members_can_raise_motions_help: Разрешить участникам начинать опросы и предложения в обсуждениях или группе.
+    admins_can_edit_user_content: Администраторы могут редактировать комментарии участников.
+    admins_can_edit_user_content_help: Разрешить администраторам редактировать контент, написанный участниками
+    submit_start_group: Стартовая группа
+    submit_start_subgroup: Начать подгруппу
+    messages:
+      group_created: Группа началась
+      group_updated: Группа обновлена
+    upload_logo: Загрузить логотип
+    upload_cover_photo: Загрузить обложку
   membership_requests_page:
     approve: Подтвердить
     ignore: Игнорировать
-  invitation_form:
-    invite_people: 'Пригласите людей'
-    copy_link: 'Копировать'
-    custom_message: 'Сообщение от пользователя'
-    add_members: 'Добавить участников'
-    done: 'Сделано'
+    heading: Запросы на членство
+    no_pending_requests: В настоящее время нет ожидающих рассмотрения заявок на членство в этой группе.
+    no_previous_requests: В настоящее время нет предыдущих запросов на членство в этой группе.
+    previous_requests: Предыдущие запросы
+    previous_request_response: "{{response}} от {{responder}}"
     messages:
-      invitation_sent: 'Приглашение отправлено'
+      request_approved_success: Запрос на членство одобрен
+      request_ignored_success: Запрос на членство игнорируется
+  invitation_form:
+    invite_people: Пригласите людей
+    copy_link: Копировать
+    custom_message: Сообщение от пользователя
+    add_members: Добавить участников
+    done: Сделано
+    messages:
+      invitation_sent: Приглашение отправлено
+      invitations_sent: 'Приглашений отправлено: %{count}.'
+      no_invitations: Ух! Пожалуйста, проверьте правильность адреса электронной почты и повторите попытку.
+      max_invitations: Если вы хотите отправить более 100 приглашений, используйте командную ссылку.
+    group_url: URL группы
+    reusable_invitation_link: Многоразовая ссылка-приглашение
+    error: Ошибка при попытке копирования в буфер обмена
+    aria_label: Форма приглашения
+    invite_guests: Приглашать гостей
+    notify_people: Уведомить людей
+    invite_people_to_group: Пригласить в {{name}}
+    group: Группа
+    group_placeholder: Выберите группу
+    shareable_link: Ссылка для общего доступа
+    share_group: Поделитесь своей группой
+    email_addresses: Адрес электронной почты
+    email_addresses_placeholder: например helperbot@loomio.org, Friendlybot@loomio.org
+    secret_group_url_explanation: Это адрес вашей группы. Только приглашенные участники смогут видеть группу.
+    shareable_group_url_explanation: Вы можете поделиться этой ссылкой публично. Люди могут отправлять запросы на присоединение, а вы можете одобрять или игнорировать запросы.
+    shareable_invitation_explanation: Не делитесь этой ссылкой публично. Любой, у кого он есть, может присоединиться к вашей группе без вашего согласия. Делитесь этим только в личных сообщениях, чтобы позволить людям из вашей организации присоединиться.
+    shareable_link_reset: Сброс общей ссылки. Предыдущая ссылка больше не будет работать.
+    email_explanation: Вы также можете ввести адреса электронной почты ниже, чтобы отправить приглашения по электронной почте.
+    add_custom_message: Сделайте свое приглашение персональным,
+    add_custom_message_link: добавить собственное сообщение.
+    custom_message_placeholder: Введите личное сообщение, которое будет включено в приглашение.
+    from_parent_group: от имени}}.
+    send: Отправлять
   memberships_page:
-    members: 'Участники'
-    name_label: 'Имя'
-    remove_member_label: 'Удалить'
+    members: Участники
+    name_label: Имя
+    remove_member_label: Удалить
+    coordinator_label: Админ
+    fragment_placeholder: Фильтровать пользователей по имени или имени пользователя...
+    only_one_admin: В этой группе только один администратор. Рекомендуется назначить хотя бы еще одного участника администратором.
+    messages:
+      remove_member_success: Удален {{name}}
+      make_admin_success: "{{name}} теперь администратор"
+      remove_admin_success: "{{name}} больше не является администратором"
+    remove_admin_from_self:
+      question: Вы уверены, что больше не хотите быть администратором?
   profile_page:
-    profile: 'Профиль'
-    name_label: 'Имя'
-    email_label: 'Email'
-    locale_label: 'Язык'
+    profile: Профиль
+    name_label: Имя
+    email_label: Email
+    locale_label: Язык
+    account_is_bot: Это аккаунт бота
+    bot_account_warning: Аккаунты ботов не будут приглашены голосовать в опросах или участвовать в обсуждениях.
+    incomplete_profile: Неполный профиль!
+    set_your_profile_picture: Установите изображение профиля
+    messages:
+      updated: Профиль обновлен
+      picture_changed: Изображение профиля обновлено
+      password_changed: Пароль обновлен
+      deactivated: Аккаунт деактивирован
+    deactivated_user: Деактивированный пользователь
+    date_time_pref_label: Формат даты и времени
+    merge_accounts: Объединить аккаунты
+    change_picture_link: Изменить картинку
+    change_password_link: Сброс пароля
+    delete_account: Удалить аккаунт навсегда
+    delete_user_link: Удалить аккаунт
+    edit_profile: Редактировать профиль
+    picture_label: Картина
+    username_label: Имя пользователя
+    username_helptext: Все строчные буквы и цифры, максимум 30 символов.
+    short_bio_label: Введение
+    short_bio_placeholder: Пожалуйста, представьтесь, укажите области знаний, интересующие темы и любые дочерние организации.
+    locale_placeholder: Выберите предпочитаемый язык
+    location_label: Расположение
+    location_placeholder: Где вы расположены?
+    update_profile: Обновить профиль
+    deactivate_account: Деактивировать учетную запись пользователя
+    help_translate: Можете ли вы помочь нам перевести Лумио?
+    updated_on_sign_in: Предоставляется вашим браузером и обновляется при входе в систему.
   email_settings_page:
     monday: Понедельник
     tuesday: Вторник
@@ -438,73 +1190,207 @@ ru:
     sunday: Воскресенье
     announcement_label: Объявления
     edit: Редактировать
+    every_day: Каждый день
+    every_second_day: Каждый второй день
+    header: Настройки уведомлений
+    account_deactivated: Ваш аккаунт был деактивирован. Вы никогда не будете получать никаких писем.
+    deactivate_header: Остановить все электронные письма навсегда
+    deactivate_description: Если вы больше никогда не захотите получать от нас электронные письма, вы можете деактивировать свою учетную запись пользователя.
+    email_newsletter: Информационный бюллетень Лумио
+    email_newsletter_description: Получайте обновления о новых функциях, обучении, мероприятиях в вашем городе и будущем Loomio. Обычно 2 или 3 письма в год.
+    email_catch_up_day: Информационное письмо со сводкой
+    daily_summary_description: Выберите, когда получать электронное письмо со сводной информацией. Это электронное письмо содержит любые новые действия, которых вы не видели. Хороший способ оставаться в курсе событий, если вы не являетесь постоянным пользователем.
+    on_participation_label: Подпишитесь на участие
+    on_participation_description: Когда вы участвуете в теме, все дальнейшие действия будут немедленно отправляться вам по электронной почте.
+    announcement_description: Вы получите электронное письмо обо всем контенте, анонсированном людьми в ваших группах.
+    mentioned_label: Упоминания и ответы
+    mentioned_description: Когда кто-то @упомянит вас в комментарии или ответит вам, вы получите уведомление по электронной почте.
+    update_settings: Сохранить изменения
+    specific_groups: Настройки для определенных групп
+    default_settings:
+      loud_description: Когда вы присоединитесь к новой группе, вы будете получать уведомления по электронной почте <strong>о любой активности</strong> .
+      normal_description: Когда вы присоединитесь к новой группе, вы будете получать по электронной почте сообщения о <strong>новых темах и предложениях</strong> .
+      quiet_description: Когда вы присоединяетесь к новой группе, вы <strong>не будете получать электронные письма о ее активности</strong> .
+    messages:
+      updated: Настройки электронной почты обновлены.
+    learn_more: Подробнее о настройках электронной почты…
   dashboard_page:
-    aria_label: 'Кабинет'
-    recent_threads: "Последние темы"
+    aria_label: Кабинет
+    recent_threads: Последние темы
     mark_as_read: Отметить прочитанным
     dismiss: Отклонить
     filtering:
       filter_threads: Фильтр Темы
       filter_threads_aria_label: Фильтр Темы
       proposals: Голосования
+      dropdown_heading: Панель фильтров
+      all: Последние темы
+      all_aria_label: Сейчас показаны последние темы
+      all_description: Посмотреть последние темы
+      proposals_aria_label: Сейчас показаны темы с активными предложениями
+      proposals_description: Просматривать только темы с активными предложениями
+      muted: Приглушенные темы
+      muted_aria_label: Текущие показы отключенных тем
+      muted_description: Просматривать только темы, которые были отключены
     thread_preview:
-      you_voted: 'Ваш голос {{position}}.'
+      you_voted: Ваш голос {{position}}.
+      undecided: Вы не определились
     threads_from:
-      today: 'Сегодня'
-      yesterday: 'Вчера'
+      today: Сегодня
+      yesterday: Вчера
+      group: Темы из
+      pinned: Закрепленные темы
+      proposals: Темы с активными решениями
+      starred: Помеченные темы
+      thisweek: На этой неделе
+      thismonth: Этот месяц
+      older: Старше месяца
+    polls_to_vote_on: Опросы для голосования
+    no_polls_to_vote_on: Нет опросов, в которых нужно голосовать
+    recent_polls: Недавние опросы
+    current_polls: Текущие опросы
+    no_groups:
+      show_all: Добро пожаловать! Вы еще не состоите ни в одной группе. <a href="/explore">Просмотрите общедоступные группы</a> или <a href="/g/new">создайте группу</a> .
+      show_muted: У вас нет отключенных тем, поскольку вы не состоите ни в одной группе.
+    no_threads:
+      show_all: У вас нет недавних тем.
+      show_proposals: На данный момент активных предложений нет.
+      show_muted: У вас нет отключенных тем.
+    view_recent: Просмотреть все последние темы?
+    load_more: Загрузить больше тем
+    thread_dismissed: Тема отмечена как прочитанная
+    thread_recalled: Тема отозвана
+    explain_mute:
+      title: Вы еще не отключили ни одной темы.
+      explanation_html: Отключение звука – это способ скрыть или заглушить обсуждения, которые вам не интересны. Отключение звука означает, что вы не увидите его в <strong>списке "Недавние</strong> " или " <strong>Непрочитанные"</strong> и не будете получать уведомления об активности в этом обсуждении, например о предложениях. Вы получите предупреждение только в том случае, если кто-то <strong>@упомянет</strong> ваше имя.
+      instructions: Чтобы отключить звук обсуждения, наведите на него курсор и щелкните значок отключения звука.
+      see_muted_html: Чтобы просмотреть отключенные темы, нажмите <strong>«Отключено»</strong> . Вы можете включить звук, наведя указатель мыши на тот же значок и щелкнув его.
   inbox_page:
     unread_threads: Непрочтенные темы
     no_groups:
       start: Начать
       or: или
+      explanation: У вас нет непрочитанных тем, поскольку вы не состоите ни в одной группе.
+      join_group: <a href="/explore">присоединитесь</a> к группе, чтобы увидеть темы.
+    no_threads: Уууу! Вы прочитали все темы в своем почтовом ящике.
+    view_more: Посмотреть больше
   discussion:
     closed:
-      closed: 'Тема закрыта'
+      closed: Тема закрыта
+      reopened: Тема возобновлена
+    invite_only: Только по приглашению
+    private_thread: Частная тема
+    max_threads_reached: <p>Вы использовали все потоки {{maxThreads}}, доступные этой группе.</p><p> Следующим шагом <a href="{{upgradeUrl}}" target="_blank">выберите план</a> продолжения совместной работы с Loomio.</p>
+    subscription_canceled: <p>Ваша подписка не активна.</p><p> Пожалуйста <a href="{{upgradeUrl}}" target="_blank">, обновите версию</a> , чтобы продолжить использование Loomio.</p>
+    activity: Активность
+    activity_placeholder: Пока нет активности!
+    load_previous: Загрузить предыдущую активность
+    started_by: Автор <strong>{{name}}</strong>
+    pin:
+      pinned: Тема закреплена
+      unpinned: Тема откреплена
+    volume:
+      mute_message: Звук темы отключен
+      unmute_message: Звук темы включен
   activity_card:
     latest: Последний
     context: Описание
     attachment_display:
-      image_alt: 'Прикрепленное изображение'
+      image_alt: Прикрепленное изображение
+      aria_label: 'Прикрепленный файл:'
     comment: Комментарий
+    count_responses: "%{count} ответов"
+    event_pinned: Закреплено на временной шкале
+    event_unpinned: Откреплено от временной шкалы
+    beginning: Начало
+    end: Конец
+    unread: Непрочитано (%{count})
+    chronological: хронологический
+    nested: Вложенный
+    n_previous: Загрузить предыдущие ответы (%{count})
+    n_more: Загрузить %{count} ответов
+    add_comment: Добавить комментарий
+    add_poll: Добавить опрос
+    add_outcome: Добавить результат
+    facilitate: Способствовать
+    start_decision: Начать решение
+    start_vote: Начать голосование
   thread_group:
     aria_label: Название группы
   thread_context:
-    thread_options: 'Настройки обсуждения'
-    close_thread: 'Закрыть'
-    reopen_thread: 'Открыть вновь'
-    pin_thread: 'Закрепить'
-    unpin_thread: 'Открепить'
-    mute_thread: 'Заглушить'
-    move_thread: 'Переместить'
-    print_thread: 'Печать'
-    delete_thread: 'Удалить'
-    add_comment: 'Комментарий'
+    thread_options: Настройки обсуждения
+    close_thread: Закрыть
+    reopen_thread: Открыть вновь
+    pin_thread: Закрепить
+    unpin_thread: Открепить
+    mute_thread: Заглушить
+    move_thread: Переместить
+    print_thread: Печать
+    delete_thread: Удалить
+    add_comment: Комментарий
+    current_poll_type_banner: Текущий {{pollType}}
+    item_maybe_deleted: Невозможно найти запрошенное место в теме. Возможно, оно было удалено.
+    aria_label: Контекст потока
+    email_settings: Настройки уведомлений
+    edit: Редактировать
+    edit_thread: Редактировать
+    seen_by_count: Просмотрено %{count}
+    count_notified: Уведомлен %{count}
+    forked_from: Разветвлено от
   pin_thread_modal:
     title: Закрепить тему
     pin_thread: Закрепить тему
+    helptext: Закрепленные темы всегда отображаются вверху списка тем своей группы. Их можно использовать для информирования участников о важных объявлениях или для продвижения общих материалов, таких как кодекс поведения или правила сообщества.
+    helptext_two: Вы можете удалить булавки в любое время, выбрав «Открепить» в раскрывающемся списке тем.
   delete_thread_form:
-    aria_label: 'Удалить тему'
+    aria_label: Удалить тему
     title: Удалить тему
-    confirm: 'Удалить тему'
+    confirm: Удалить тему
     messages:
       success: Тема удалена
+    body: Вы уверены, что хотите удалить эту тему?
   delete_comment_dialog:
-    title: 'Удалить комментарий'
+    title: Удалить комментарий
+    question: Этот комментарий будет удален навсегда. Если вы продолжите, его невозможно будет восстановить.
   contact_message_form:
-    contact_us: 'Наши контакты'
-    name_label: 'Ваше имя'
-    name_placeholder: 'Введите ваше имя...'
-    subject_label: "Заголовок"
-    email_label: 'Ваш электронный адрес'
-    email_placeholder: 'Введите ваш электронный адрес...'
-    message_label: 'Ваше сообщение'
-    send_message: 'Отправить сообщение'
+    contact_us: Наши контакты
+    name_label: Ваше имя
+    name_placeholder: Введите ваше имя...
+    subject_label: Заголовок
+    email_label: Ваш электронный адрес
+    email_placeholder: Введите ваш электронный адрес...
+    message_label: Ваше сообщение
+    send_message: Отправить сообщение
+    alt_title: Свяжитесь со службой поддержки Loomio
+    need_message: Пожалуйста, оставьте сообщение, чтобы мы могли вам помочь :-)
+    respond_asap: Отправьте сообщение команде Loomio, и мы ответим, как только сможем.
+    happy_to_help_with: Мы будем рады помочь с запросами о продажах, запросами на поддержку, запросами на функции, сообщением об ошибках или проблемах, с которыми вы столкнулись.
+    title: Всем привет! Как мы можем помочь?
+    contact_us_email: 'Вы также можете написать нам по электронной почте: <a href="mailto:{{email}}">{{email}}</a>'
+    subject_placeholder: 'Например: проблемы со входом или предложение функции.'
+    message_placeholder: Если вы запрашиваете поддержку, постарайтесь предоставить как можно больше информации.
+    new_contact_message: Спасибо, что связались с нами; мы скоро свяжемся с вами!
+    consent_message: Обращаясь к нам, вы даете согласие на то, что наши сотрудники смогут при необходимости получать доступ к вашей учетной записи.<br /> Наша служба поддержки говорит по-английски и при необходимости переведет ваше сообщение с помощью Google Translate.<br /> Мы стремимся отвечать на все сообщения в течение 24 часов.
+    success: Спасибо за ваше сообщение, {{name}}. Вы скоро получите от нас ответ.
+    success_via_email: Спасибо за ваше сообщение, {{name}}. Мы ответим по электронной почте в течение 24 часов.
   decision_tools_card:
     proposal_title: Предложение
     poll_title: Опрос
     score_title: Оценка опроса
     meeting_title: Голосование за время встречи
     ranked_choice_title: Порядок ранжированния
+    choose_type: Выберите тип опроса
+    title: Способствовать
+    recommended: рекомендуемые
+    question_title: Раунд вопросов
+    advice_title: Совет
+    consent_title: Согласие
+    consensus_title: Консенсус
+    count_title: Выбрать в
+    check_title: Проверка чувств
+    meeting: Встреча
+    dot_vote_title: Точечное голосование
+    gradients_of_agreement_title: Градиенты согласия
   poll_common:
     vote_now: Голосовать!
     have_your_say: Выразить свое мнение
@@ -514,57 +1400,1109 @@ ru:
     start_poll: Начните решение
     share_outcome: Поделиться результатом
     save_changes: Сохранить
+    superseded: Заменено
+    need_help_with_templates: Нужна помощь в создании собственных шаблонов решений?
+    categorize_poll_templates: Классифицировать шаблоны опросов
+    show_all_templates_in_one_list: Показать все шаблоны в одном списке
+    advice_process: Процесс консультирования
+    consent_process: Процесс согласия
+    consensus_process: Процесс консенсуса
+    question_round: Раунд вопросов
+    edit_template: Редактировать шаблон
+    proposal: Предложение
+    run_process: Запустить процесс
+    proposal_templates: Шаблоны предложений
+    custom: Обычай
+    custom_process: Пользовательский процесс
+    custom_poll: Пользовательский опрос
+    delete_poll: Удалить опрос
+    select_count_options: Выберите {{count}} вариантов
+    select_minimum_to_maximum_options: Выберите варианты от {{минимум}} до {{максимум}}.
+    custom_poll_types: Пользовательские типы опросов
+    hidden_poll_templates: Скрытые шаблоны опросов
+    poll_template: Шаблон опроса
+    poll_template_saved: Шаблон опроса сохранен.
+    poll_templates: Шаблоны опросов
+    poll_types: Типы опросов
+    new_proposal_template: Новый шаблон предложения
+    edit_proposal_template: Изменить шаблон предложения
+    new_poll_template: Новый шаблон опроса
+    edit_poll_template: Изменить шаблон опроса
+    new_poll_type: Новый тип опроса
+    edit_poll_type: Изменить тип опроса
+    new_custom_poll: Новый пользовательский опрос
+    edit_custom_poll: Редактировать собственный опрос
+    create_a_custom_poll_type: Создайте новый тип опроса с собственной терминологией и настройками.
+    create_a_custom_process: Создайте новый процесс со своей собственной терминологией и опциями.
+    create_a_custom_poll: Создайте опрос с собственной терминологией и настройками.
+    decision: Решение
+    decision_templates: Шаблоны решений
+    remove_your_vote: Удалить свой голос
+    remove_your_response: Удалить свой ответ
+    review_due: Срок рассмотрения
+    your_response: Ваш ответ
+    change_your_response: Изменить ответ
+    please_vote: Пожалуйста, проголосуйте
+    response: Ответ
+    reason_placeholder: Кратко объясните, почему вы проголосовали таким образом, затем нажмите «Отправить голос».
+    message: Сообщение
+    current_results: Текущие результаты
+    close_poll_type: Закрыть {{pollType}}
+    close_early: Закрыть рано
+    totals: Итоги
+    participate: Участвовать
+    vote: Голосование
+    votes: Голоса
+    update_outcome: Обновить результат
+    outcome: Исход
+    outcomes: Результаты
+    statement: Заявление
+    change_your_stance: Изменить ответ
+    load_more: Загрузи больше
+    details: Подробности
+    participant_name: Ваше имя
+    participant_email: Адрес электронной почты
+    submit_vote: Отправить голос
+    submit_response: Отправить ответ
+    update_vote: Обновить голосование
+    update_response: Обновить ответ
+    share_poll: Поделиться опросом
+    share_proposal: Поделиться предложением
+    share_count: Поделиться чеком
+    publish_poll: Поделиться опросом
+    view_all: Посмотреть все
+    change_vote: Измените свой голос
+    change_response: Измените свой ответ
+    max_score: Максимальный балл
+    min_score: Минимальный балл
+    too_long: Слишком долго
+    edit_warning: Редактирование рекомендуется только для внесения незначительных изменений или исправления орфографических ошибок. Если есть существенные изменения, закройте этот {{pollType}} и начните новый.
+    no_voting: Только для обсуждения, голосование отключено
   discussions_panel:
     open: Открыто
     all: Все
     closed: Закрыто
+    unread: Непрочитано (%{count})
+    include_subgroups_mine: "{{name}} и мои подгруппы"
+    include_subgroups_all: "{{name}} и все подгруппы"
+    no_results_found: Нет результатов по запросу "{{search}}"
+    welcome_to_your_new_group: Добро пожаловать в вашу новую группу Loomio!
+    lets_start_a_thread: Давайте начнем тему. Нажмите «Новая тема», чтобы продолжить.
   members_panel:
-    order_by_name: 'Название'
-    header_name: 'Название'
-    accepted: 'Участники'
+    order_by_name: Название
+    header_name: Название
+    accepted: Участники
+    bot: Бот
+    no_results: Участники не найдены
+    everyone: Каждый
+    all: Все
+    sort: Сортировать
+    order_label: Заказ
+    order_by_created: Самый старый
+    show_users_in_subgroups: Показывать пользователей также в подгруппах
+    order_by_created_desc: Новейший
+    order_by_admin_desc: Админы
+    loaded_of_total: "{{загружено}} из {{total}}"
+    view_requests: Посмотреть запросы
+    header_username: Имя пользователя
+    header_role: Роль
+    header_invited_by: По приглашению
+    header_invited: Приглашенный
+    header_actions: Действия
+    directory: Каталог
+    invitations: Приглашения
+    requests: Запросы
+    admin: Админ
+    guest: Гость
+    sharable_link: Общая ссылка
+    last_seen: Последний раз видели {{date}}
+    invited_by_name: Приглашен пользователем {{name}}
   polls_panel:
-    all: 'Все'
-    open: 'Открыто'
-    closed: 'Закрыто'
+    all: Все
+    open: Открыто
+    closed: Закрыто
+    new_poll: Новый опрос
+    any_type: Все типы
+    any_status: Любой статус
+    need_vote: Нужно проголосовать
+    no_polls: Опросов не найдено
   poll_common_outcome_form:
     submit: Поделиться результатами
+    review_due_in_days: Пересмотреть решение через сколько дней?
+    review_due_in_days_hint: Период времени (в днях) ожидания перед рассмотрением решения. (необязательный)
+    review_date: Дата рассмотрения
+    review_date_hint: Установите дату пересмотра решения (необязательно)
+    who_to_notify: Кого вы хотите уведомить о таком результате? (необязательный)
+    outcome_statement_template: Образец отчета о результатах
+    new_title: Государственный результат
+    update_title: Обновить результат
+    outcome_created: Результат создан
+    outcome_updated: Результат обновлен
+    statement_placeholder: Обобщите ответы и объясните, что будет дальше.
+    statement_template_placeholder: Предоставьте шаблон для записи результатов решения. (необязательный)
+    you_will_be_notified: Вы будете уведомлены о дате рассмотрения.
   poll_common_form:
     voting_methods:
       ranked_choice: Порядок ранжированния
       time_poll: Голосование за время встречи
+      question: Раунд вопросов
+      question_hint: Приглашайте вопросы и комментарии по вашему предложению
+      show_thumbs: Показ больших пальцев
+      show_thumbs_hint: Избиратели выбирают большой палец вверх, вниз, в сторону или руку вверх.
+      choose: Выбирать
+      simple_poll: Простой опрос
+      choose_hint: Избиратели выбирают лучший вариант (или варианты)
+      score: Счет
+      score_hint: Избиратели присваивают балл каждому варианту
+      allocate: Выделить
+      allocate_hint: Избиратели распределяют бюджет баллов между вариантами
+      ranked_choice_hint: Избиратели расставляют варианты в порядке от наиболее к наименее предпочтительному.
+      time_poll_hint: Избиратели указывают, когда они готовы встретиться
     closed: Закрыто
     start: Начать
+    notify_everyone_when_poll_starts: Уведомить всех, когда начнется %{poll_type}
+    option_has_votes_confirm_delete: Некоторые люди проголосовали за этот вариант. Вы уверены, что хотите его удалить?
+    example_title: Пример названия
+    example_title_hint: Приведите пример хорошего названия предложения
+    example_details_placeholder: Обеспечьте отправную точку для предложения или опроса. Вопросы могут быть полезными подсказками, побуждающими людей писать. Включите любые правила или напоминания, которые необходимо знать участникам.
+    confirm_delete: Вы уверены, что хотите удалить этот шаблон опроса? Это не может быть отменено.
+    show_advanced_settings: Показать дополнительные настройки
+    hide_advanced_settings: Скрыть дополнительные настройки
+    choose_at_least: Выберите хотя бы
+    choose_at_most: Выбирайте максимум
+    please_review_the_form: Пожалуйста, просмотрите форму
+    option_added_please_add_details: Опция добавлена! Пожалуйста, добавьте некоторые подробности, чтобы люди знали, что это значит.
+    default_duration_in_days: Продолжительность по умолчанию в днях
+    default_duration_in_days_hint: Сколько дней нужно дать людям на голосование?
+    how_many_options_can_a_voter_choose: Сколько из этих вариантов может выбрать избиратель?
+    minimum_choices: Минимальный выбор
+    maximum_choices: Максимальный выбор
+    content: Содержание
+    reminder: Напоминание
+    your_in_zone: 'Текущий часовой пояс: %{zone}'
+    show_other_zones: Показать другие часовые пояса
+    hide_other_zones: Скрыть другие часовые пояса
+    this_is_a_template_for_new_polls: Это шаблон для новых опросов
+    voting_method: Метод голосования
+    process: Процесс
+    process_name: Название шаблона
+    process_name_hint: Как вы называете этот шаблон? Например, рекомендация по роли, проверка температуры, утверждение протокола.
+    process_subtitle: Подзаголовок шаблона
+    process_subtitle_hint: Однострочное описание того, когда и почему использовать этот шаблон.
+    process_introduction: Справка по шаблону
+    process_introduction_hint: Несколько абзацев, объясняющих, как использовать шаблон. Включите ссылки на ресурсы, которые могут быть полезны.
+    you_can_set_a_prompt_per_option: Отредактируйте подсказку для каждого параметра на вкладке сведений.
+    chart_type: Тип диаграммы
+    title: Заголовок
+    title_hint: Какое решение вам нужно принять?
+    no_options_add_some: В этом опросе нет вариантов, добавьте несколько ниже.
+    details: Подробности
+    example_details: Подробности примера
+    details_placeholder: Это ваша возможность объяснить, за что люди голосуют
+    options: Параметры
+    options_placeholder: Перечислите доступные варианты
+    no_options: Вы еще не добавили ни одного варианта.
+    closing: Закрытие
+    start_poll: Начать опрос
+    stance_reason_required_label: Указание причины, когда голосование...
+    stance_reason_required: Необходимый
+    stance_reason_optional: Необязательный
+    stance_reason_disabled: Неполноценный
+    stance_reason_is_required: Пожалуйста, укажите причину вашего голосования
+    limit_reason_length: Ограничьте причину максимум 500 символами.
+    save_poll: Сохранить опрос
+    start_poll_type: Начать {{poll_type}}
+    share_poll_type: Поделиться {{poll_type}}
+    who_may_vote: Кто может голосовать в этом {{poll_type}}?
+    update: Обновлять
+    add_voters: Добавить избирателей
+    notify_invitees: Отправлять уведомления
+    no_notifications_warning: Избиратели не будут уведомлены. Это полезно, если вы проводите много опросов и планируете уведомить всех позже.
+    count_voters_added: 'Добавлено избирателей: %{count}'
+    poll_type_created: "%{poll_type} создано"
+    poll_type_started: "%{poll_type} запущен"
+    reason_prompt: Причина подсказки
+    anonymous_voting: Анонимное голосование
+    anonymous_voting_description: Если эта опция включена, личность избирателей не будет связана с их голосами. Это не может быть отменено.
+    votes_are_anonymous: Голоса анонимны
+    vote_reason: Причина голосования
+    vote_reason_description: Может быть полезно понять, почему люди проголосовали именно так. С помощью этой настройки вы можете побудить людей поделиться своими мыслями во время голосования.
+    hide_results_description: Если вы хотите, чтобы люди голосовали, не зная, как проголосовали другие, вы можете скрыть результаты опроса.
+    process_helptext: Назовите и опишите процесс, который используется для проведения этого опроса.
+    reminder_helptext: Отправьте уведомление «Скоро закрывается» до закрытия опроса. Это может быть возможностью для людей увидеть, как проголосовали другие, и пересмотреть свой собственный голос, или просто способом увеличить число участников опроса.
   poll_poll_form:
     edit_header: Редактировать опрос
+    multiple_choice_subtitle: Простой способ оценить популярность опционов
+    start_header: Начать опрос
+    tip: Предложите выбор между вариантами
+    title_placeholder: Например, куда вы хотите поехать в отпуск?
+    details_placeholder: Укажите любую уточняющую информацию, которая может понадобиться людям для ответа на вопрос.
+    add_option_placeholder: Добавить вариант
+    new_option: Новая опция
+    add_option_hint: Введите короткое имя для опции
+    remove_option: Удалить опцию
+    poll_created: Опрос создан
+    poll_updated: Опрос обновлен
+    option_added: Опция добавлена
+    option_already_added: Вариант уже добавлен в опрос
   poll_proposal_options:
-    'yes': 'Да'
-    'no': 'Нет'
+    'yes': Да
+    'no': Нет
+    select_an_option: Выберите вариант
+    agree: Соглашаться
+    consent: Согласие
+    abstain: Воздерживаться
+    unsure: Не уверен
+    disagree: Не согласен
+    objection: Возражение
+    object: Объект
+    block: Блокировать
+    no_voting: Нет голосования
   poll_count_options:
-    'yes': 'Да'
-    'no': 'Нет'
+    'yes': Да
+    'no': Нет
+    accept: Принимать
+    decline: Отклонить
   poll_meeting_chart_panel:
     total: Всего
   poll_remove_vote:
     success: Голосование удалено
+    title: Удалить свой голос?
+    helptext: Вы уверены, что хотите удалить свой голос? Вы будете внесены в список не определившихся и сможете проголосовать еще раз позже, если захотите.
+    confirm: Удалить голосование
   auth_form:
     enter_your_name: Введите свое имя
-    invalid_password: "Извините, этот пароль не совпадает с тем, который у нас есть в файле"
+    invalid_password: Извините, этот пароль не совпадает с тем, который у нас есть в файле
     email_placeholder: You@example.com
     name_placeholder: Ваше имя
     name: Название
+    code: '000000'
+    youre_invited: Вас пригласили присоединиться к {{group_name}}.
+    youre_invited_discussion: Вас пригласили присоединиться к обсуждению.
+    youre_invited_poll: Вас пригласили проголосовать.
+    existing_account_can_sign_in: Если вы уже являетесь пользователем {{site_name}}, войдите в систему, используя существующую учетную запись.
+    sign_up_or_log_in: Создайте учетную запись или войдите на {{site_name}}
+    sign_in_to_loomio: Войдите на {{site_name}}
+    sign_in_help: Проблемы со входом?
+    sign_in: Войти
+    continue: Продолжать
+    create_account: Зарегистрироваться
+    sign_up_as: Создать учетную запись как {{email}}
+    sign_in_as: Войдите как {{name}}
+    continue_with_provider: Продолжить с {{provider}}
+    continue_with_email: Продолжить по электронной почте
+    or_enter_your_email: Или введите свой адрес электронной почты
+    invitation_required: Для создания учетной записи вам необходимо приглашение. Чтобы продолжить, перейдите по ссылке из письма с приглашением.
+    more_providers: Более
+    email_not_present: Требуется адрес электронной почты
+    invalid_email: Извините, это не похоже на действительный адрес электронной почты.
+    invalid_token: К сожалению, нам не удалось использовать этот токен для входа в систему. Нажмите ниже, чтобы отправить еще один.
+    account_locked: Ваша учетная запись была заблокирована после слишком большого количества неудачных попыток входа в систему. Проверьте свою электронную почту, чтобы найти ссылку для разблокировки.
+    email_not_found: К сожалению, нам не удалось найти учетную запись с таким адресом электронной почты.
+    email_taken: Адрес электронной почты уже зарегистрирован
+    login_with_token: Все готово! Нажмите на ссылку ниже, чтобы продолжить.
+    login_link_helptext: Нажмите кнопку ниже, и мы вышлем вам ссылку для входа.
+    enter_your_password: Введите свой пароль, чтобы продолжить
+    check_spam_folder: Если письмо не придет в ближайшее время, проверьте папку со спамом.
+    sign_up_helptext: Пожалуйста, заполните эту форму, чтобы создать учетную запись пользователя
+    i_accept_all: Я принимаю {{termsLink}} и {{privacyLink}}
+    newsletter_label: Я хочу получить {{link}}
+    name_required: Пожалуйста, введите имя
+    terms_required: Вы должны согласиться с Условиями обслуживания
+    account_inactive: Ой-ой, похоже, аккаунт для {{email}} деактивирован!
+    privacy_notice: Мы никогда не будем продавать ваши данные.<br> <a href='{{privacyUrl}}' target='_blank'>Политика конфиденциальности</a>
+    welcome: Впервые на сайте {{siteName}}?
+    welcome_back: С возвращением, {{name}}!
+    forgot_password: Забыли пароль
+    login_link: Отправить письмо для входа
+    sign_in_via_email: Войти по электронной почте
+    set_password: Установка пароля
+    set_password_helptext: Хотите использовать пароль в следующий раз?
+    hello: Здравствуйте, {{name}}!
+    new_to_loomio: Впервые на {{site_name}}?
+    already_a_user: У вас уже есть аккаунт?
+    email_address_of_existing_account: Введите адрес электронной почты вашей существующей учетной записи
+    link_accounts: Связать аккаунты
+    check_your_email: Проверьте свою электронную почту!
+    login_link_sent: Мы отправили электронное письмо на адрес {{email}}.
+    instructions: 'Нажмите на ссылку, чтобы войти, или введите код ниже:'
+    instructions_code: 'Введите код из этого письма:'
+    too_many_attempts: Слишком много попыток; попробуйте нажать на ссылку в письме, чтобы войти.
+    invalid_code: Извините, этот код не совпал. Проверьте электронную почту и повторите попытку.
+    password_link_sent: Мы отправили электронное письмо на адрес {{email}} с инструкциями по установке пароля.
+    reactivate_link_sent: Мы отправили вам электронное письмо с инструкциями по повторной активации вашей учетной записи.
+    signed_in: Вход выполнен успешно
+    email_verified: Электронная почта успешно подтверждена
+    email: Электронная почта
+    password: Пароль
+    reactivate: Повторно активировать учетную запись
   chatbot:
     password: Пароль
     slack: Slack
     microsoft_teams: Microsoft Teams
+    configure_chatbot: Настройка чат-бота
+    test_connection: Тестовое соединение
+    test_connection_ok: Выглядит неплохо! Вы должны увидеть сообщение на канале
+    test_connection_bad: Что-то не так с настройками
+    name: Имя чат-бота
+    connection_test_successful: Проверка подключения бота Loomio прошла успешно!
+    chatbot: Чат-бот
+    chatbots: Чат-боты
+    saved: Чат-бот сохранен!
+    webhook_url: URL вебхука
+    homeserver_url: URL-адрес домашнего сервера
+    channel: Канал
+    username: Имя пользователя
+    access_token: Токен доступа
+    add_chatbot: Добавить чат-бота
+    matrix: Матрица
+    discord: Раздор
+    mattermost: самое важное
+    event_kind_helptext: Выберите события, о которых бот всегда будет уведомлен. Если вы не уверены, просто оставьте их все выключенными.
+    notification_only_label: Отправлять только заголовок уведомления
+    check_for_test_message: Проверьте свой чат на наличие сообщения от бота!
   webhook:
     formats:
       microsoft: Microsoft Teams
       slack: Slack
+      markdown: Markdown (для Mattermost, Zapier и других)
+      discord: Раздор
     name_label: Название
+    integrations: Интеграции
+    api_keys: Ключи API
+    webhooks: Вебхуки
+    webhook: Вебхук
+    add_api_key: Добавить ключ API
+    edit_api_key: Изменить ключ API
+    api: API
+    format: Формат
+    subtitle: Подключитесь к Loomio и остальным вашим инструментам с помощью нашего API.
+    deprecated: Этот API устарел. Пожалуйста, перейдите на APIv2 (см. документацию API в меню настроек вашей группы).
+    we_have_guides: Чтобы получить помощь в подключении вашего сервиса, ознакомьтесь с нашими <a href="{{url}}" target="_blank">руководствами по настройке веб-перехватчика</a> .
+    add_webhook: Добавить вебхук
+    show_docs: См. использование API
+    save_to_show_docs: После сохранения вернитесь сюда, чтобы найти свой ключ API.
+    edit_integration: Изменить интеграцию
+    add_integration: Добавить интеграцию
+    success: Добавлена интеграция!
+    remove: Удалить интеграцию
+    confirm_remove: 'Вы уверены, что хотите удалить интеграцию: {{name}}?'
+    removed: Интеграция удалена
+    url_label: URL вебхука
+    url_placeholder: https://hooks.example.com/...
+    name_placeholder: Дайте этой интеграции имя, чтобы вы могли ее идентифицировать.
+    event_kind_helptext: О каких событиях вы хотите, чтобы вебхук уведомлялся?
+    event_kinds:
+      new_discussion: Поток запущен
+      discussion_edited: Тема отредактирована
+      poll_edited: Опрос отредактирован
+      new_comment: Комментарий сделан
+      poll_created: Опрос начат
+      stance_created: Голосование подается
+      stance_updated: Голосование изменено
+      poll_closing_soon: Опрос скоро закроется
+      poll_expired: Срок опроса истекает
+      poll_closed_by_user: Опрос закрывается вручную
+      poll_reopened: Опрос вновь открыт для голосования
+      outcome_created: Результат общий
+      outcome_updated: Результат обновлен
+      outcome_review_due: Ожидается рассмотрение результатов
+    permissions_explaination: Выберите, какие действия может выполнять эта интеграция
+    permissions:
+      show_discussion: показать обсуждение
+      create_discussion: создать обсуждение
+      create_poll: создать опрос
+      show_poll: показать опрос
+      read_memberships: читать членство
+      manage_memberships: управлять членством (добавлять или удалять участников группы)
+    include_body_label: Включить тело сообщения в уведомление
   powered_by:
     privacy_policy: Политика конфиденциальности
     terms_of_service: Условия использования
     front_page: Заглавная страница
+    this_is_loomio_md: Loomio — приложение для совместного принятия решений. [Попробуйте бесплатно](https://www.loomio.com)
+    slogan: Лучшие решения вместе
+    powered_by_loomio: При поддержке Лумио
   group_survey:
     categories:
       community: Общественные группы
+      party: Политическая партия
+      coop: Кооператив
+      union: Союз
+      board: Управление и советы
+      nonprofit: Некоммерческая организация
+      membership: Членская организация
+      professional: Профессиональная сервисная компания
+      self_managing: Самоуправляющаяся организация
+      government: Правительство/местное самоуправление
+      other: Другой
+    describe_other: Выберите категорию, которая лучше всего описывает вашу группу
+  tasks:
+    tasks: Задания
+    your_tasks: Ваши задачи
+    permission_denied: У вас недостаточно прав для обновления этой задачи.
+    due_date: Срок оплаты
+    send_reminder: Отправить напоминание (если не сделано)
+    no_reminder: Нет напоминаний
+    on_due_date: В срок
+    1_day_before: 1 день назад
+    2_day_before: за 2 дня до этого
+    3_day_before: за 3 дня до этого
+    7_day_before: 7 дней назад
+    task_placeholder: Введите задачу и @упомяните кого-нибудь, кто ее поручите.
+    add_due_date: Добавить дату сдачи
+    task_updated_done: Задача отмечена как выполненная!
+    task_updated_not_done: Задача помечена как невыполненная
+    no_tasks_assigned: Вам не назначено ни одной задачи
+  doctypes:
+    youtube_video: YouTube видео
+    image: Изображение
+    pdf: PDF
+    excel: Таблица Excel
+    document: Документ
+    csv: CSV-файл
+    video: видео
+    text: Текстовый файл
+    google_doc: Google Документ
+    google_sheet: Таблица Google
+    google_drive: Гугл Диск
+    pull_request: Запрос на извлечение
+    trello_board: Доска Трелло
+    trello_card: Карта Трелло
+  poll_types:
+    proposal: предложение
+    count: выбрать в
+    check: проверка чувств
+    poll: голосование
+    dot_vote: точечное голосование
+    meeting: опрос времени
+    ranked_choice: ранжированный выбор
+    score: опрос по очкам
+    question: раунд вопросов
+  email_to_group:
+    email_to_group_settings: Настройки отправки электронной почты в группу
+    email_to_group_address: Адрес электронной почты для группы
+    start_threads_via_email: Начать обсуждение по электронной почте
+    your_address_for_this_group: Ваш адрес электронной почты для этой группы
+    send_email_to_start_thread: Отправьте электронное письмо на этот адрес, чтобы начать обсуждение в своей группе.
+    subject_body_attachments: В цепочке будут использоваться тема, тело письма и прикрепленные файлы.
+    address_starts_threads_as_you: 'Не делитесь этим адресом: любой, у кого он есть, может создавать темы, как и вы.'
+    generate_new_address: Создать новый адрес
+    copy_address: Копировать адрес
+    email_me_this_address: Напишите мне этот адрес
+    email_address_sent_to_you: Адрес электронной почты отправлен вам
+    email_address_copied_to_clipboard: Адрес электронной почты скопирован в буфер обмена
+    new_address_generated: Создан новый адрес электронной почты для группы.
+    generate_new_address_question: Создать новый адрес электронной почты для группы?
+    generate_new_address_warning: Все ваши существующие адреса электронной почты в loomio перестанут работать. Отмена невозможна. Вперед, продолжать?
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: Ваш адрес электронной почты для создания тем в %{group}
+  strand_nav:
+    newest: Новейший
+    oldest: Самый старый
+    newest_first: Новички вперед
+    oldest_first: Сначала старые
+    all_pinned: Все закрепленные элементы
+    whole_thread: Вся ветка
+    from_comment: Из URL-адреса комментария
+    from_sequence_id: Из URL-адреса темы
+    unread: Новое для вас
+  search_modal:
+    all_content: Весь контент
+    best_match: Лучший матч
+    any_tag: Любой тег
+    all_subgroups: Все подгруппы
+    parent_only: Только для родителей
+  notification_models:
+    discussion: 'нить:'
+    comment: прокомментируйте в
+    poll: 'голосование:'
+    outcome: 'исход:'
+    stance: 'голосование:'
+  thread_template:
+    browse_public_templates: Просмотреть галерею шаблонов
+    thread_template_settings: Настройки шаблона темы
+    start_a_new_thread: Начать новую тему
+    thread_template_saved: Шаблон темы сохранен.
+    these_are_public_templates: Эти шаблоны можно копировать или изменять в соответствии с потребностями вашей группы.
+    these_are_templates: Это шаблоны тем в вашей группе. Шаблоны помогут вам в общих процессах принятия решений.
+    default_title_label: Название по умолчанию
+    default_title_hint: Предварительно заполните поле заголовка редактируемым текстом. Это необязательно. Если вы не уверены, оставьте поле пустым.
+    title_placeholder_label: Пример названия
+    title_placeholder_hint: Пример отображения на фоне поля заголовка
+    title_placeholder_placeholder: например, вот как выглядит фоновый текст
+    example_description_label: Пример описания
+    example_description_placeholder: Предоставьте шаблон, который люди смогут использовать, чтобы начать обсуждение.
+    hidden_templates: Скрытые шаблоны
+    confirm_delete: Вы уверены, что хотите навсегда удалить этот шаблон темы? В результате ни одна тема не будет удалена.
+    add_proposal_or_poll_template: Добавить предложение или шаблон опроса
+    recommended_proposal_or_poll_templates: Рекомендуемые шаблоны предложений или опросов
+    decision_templates: Шаблоны решений
+    decision_templates_help: Выберите любые предложения или шаблоны опросов, которые помогут завершить этот процесс.
+    share_in_template_gallery: Поделитесь этим шаблоном в общедоступной галерее шаблонов
+  reactions_input:
+    add_your_reaction: Добавьте свою реакцию
+  context_panel:
+    thread_status:
+      pinned: Эта тема была закреплена. Оно останется вверху списка тем группы для всех пользователей.
+      closed: Этот поток был закрыт. Он больше не будет отображаться на панели управления и будет указан в разделе «закрыто» на странице группы.
+  delete_group_modal:
+    title: Удалить группу
+    subgroup_title: Удалить подгруппу
+    parent_body: "<h2>Это ваша родительская группа, а не подгруппа!</h2><br> Если вы удалите это, все подгруппы также будут удалены без возможности восстановления. Ваша подписка на Loomio также будет отменена. Перед этим настоятельно рекомендуется экспортировать данные вашей группы и вручную загрузить все важные файлы. Вы уверены что хотите продолжить?"
+    body: Вы уверены, что хотите удалить эту подгруппу? Все темы, опросы, файлы и другой контент группы будут безвозвратно удалены. Прежде чем продолжить, рекомендуется экспортировать данные группы и вручную загрузить все важные файлы.
+    confirm: Введите «%{name}», чтобы подтвердить, что вы хотите удалить эту группу.
+    success: Эта группа заархивирована, и ее планируется безвозвратно удалить через 2 недели.
+  export_data_modal:
+    title: Как вы хотите использовать свои данные?
+    as_csv: Откройте его в электронной таблице
+    as_html: Откройте его в браузере
+    as_json: Разместить эту группу на моем собственном сервере
+  description_card:
+    title: Описание группы
+    placeholder: Администраторы группы могут использовать эту область для описания цели группы, чтобы все знали, почему они здесь.
+    messages:
+      description_updated: Описание обновлено
+  group_export_modal:
+    title: Экспортировать данные группы
+    body: <p>Вы можете загрузить копию данных вашей группы в любое время. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Узнать больше.</a></p><p> Это займет несколько минут, в зависимости от размера вашей группы. Когда он будет готов, вы получите электронное письмо со ссылкой для загрузки файла.</p>
+    submit: Начать экспорт
+    flash: Экспорт данных группы начат.
+  membership_requests_card:
+    heading: Запросы на членство
+    manage_requests: Управление запросами
+    manage_requests_with_count: Управление запросами (%{count})
+  membership_remove_modal:
+    invitation:
+      title: Отменить приглашение
+      message: Вы уверены, что хотите отменить приглашение на {{name}}?
+      flash: Приглашение отменено
+      submit: Отменить приглашение
+    membership:
+      title: Удалить участника
+      message: Вы уверены, что хотите удалить {{name}}?
+      impact_for_subgroup: Это лишит их доступа к подгруппе (включая темы и опросы), но они останутся членами родительской группы.
+      impact_for_group: Это приведет к удалению их доступа к группе (включая темы и опросы) и любым подгруппам.
+      flash: Участник удален
+      submit: Удалить участника
+  memberships_panel:
+    add_coordinator: Сделать администратором
+    remove_coordinator: Понизить администратора
+  membership_form:
+    modal_title:
+      group: Установить заголовок
+    title_helptext:
+      group: Этот заголовок появится рядом с именем {{name}} в этой группе. Используйте его, чтобы сообщить людям свою роль.
+    title_label: заголовок
+    title_placeholder: Например, «Координатор» или «Координатор».
+    updated: Название членства обновлено
+  user_name_modal:
+    user_name_updated: Имя пользователя обновлено
+    set_user_name: Установить имя пользователя
+  user_page:
+    contact_user: Контактное лицо}}
+    location_field: 'Местоположение: {{value}}'
+    locale_field: 'Язык: {{value}}'
+    online_field: 'В сети: {{value}}'
+    invited: Приглашен {{value}}
+    message_user: Сообщение {{имя}}
+  contact_request_form:
+    modal_title: Электронная почта {{name}}
+    message_placeholder: Представьтесь и расскажите, почему вы хотели бы связаться.
+    helptext: "{{name}} получит по электронной почте ваше имя, адрес электронной почты и сообщение."
+    email_sent: Письмо отправлено на адрес {{name}}
+  text_editor:
+    x_of_y_characters: "{{x}}/{{y}} символов"
+    select_text_to_link: Выделите текст для ссылки и повторите попытку.
+    insert_link: Вставить ссылку
+    insert_embedded_url: Встроенное видео
+  change_picture_form:
+    aria_label: Форма с фотографией профиля
+    title: Установить фото профиля
+    helptext: Вы можете загрузить собственное изображение профиля или использовать его, если у вас есть учетная запись <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> .
+    use_initials: Используйте инициалы
+    use_gravatar: Используйте Граватар
+    use_uploaded: Загрузить новую фотографию
+    existing_upload: Существующая загрузка
+    use_provider: Использовать фотографию {{provider}}
+  change_password_form:
+    set_password_title: Введите свой пароль
+    set_password_helptext: Пожалуйста, введите пароль - минимум 8 символов
+    set_password: Установка пароля
+    password_changed: Ваш пароль был обновлен
+  deactivation_modal:
+    introduction: 'Когда вы удаляете свою учетную запись:'
+    you_will_be_deleted: Ваша учетная запись пользователя, включая ваше имя, адрес электронной почты и другие личные данные, будет удалена из наших систем.
+    name_removed: Комментарии, предложения и обсуждения, которые вы сделали, останутся, но ваше имя будет удалено из них.
+    no_longer_group_member: Вы больше не будете указаны в качестве участника ни в одной группе.
+    no_emails: Вы больше не будете получать уведомления по электронной почте
+    submit_delete: Удалить мою учетную запись сейчас
+  thread_preview:
+    replies_count: "%{count} ответов"
+    unread_count: "%{count} непрочитано"
+  threads_page:
+    no_direct_threads: У вас нет прямых тем
+    no_invite_only_threads: У вас нет тем, доступных только по приглашению.
+  discussion_last_seen_by:
+    title: Виденный
+    no_one: Этого еще никто не видел
+  thread_arrangement_form:
+    edit: Изменить макет
+    title: Расположение резьбы
+    for_everyone: Это меняет макет для всех, а не только для вас.
+    sorting: Сначала самые старые или самые новые?
+    latest: Новейший
+    latest_description: Сначала читайте новинки
+    earliest: Самый старый
+    earliest_description: Просматривайте старые комментарии, прежде чем просматривать новые.
+    replies: Как отображать ответы?
+    linear: Плоский список
+    linear_description: События перечислены по мере их возникновения, один за другим.
+    nested_once: Гнездовые ответы – только первый ответ
+    nested_once_description: Отступ ответов под исходным комментарием
+    nested_twice: Два уровня вложенных ответов
+    nested_twice_description: Отступ отвечает не более двух раз.
+    changing_nesting_is_slow: Обработка изменений вложенности может занять несколько минут.
+  move_thread_form:
+    aria_label: Переместить тему
+    title: Переместить тему
+    body: Группа назначения
+    confirm: Переместить тему
+    confirm_change_to_private_thread: "{{groupName}} — открытая группа. Если вы продолжите, эта тема станет общедоступной."
+    messages:
+      success: Тема была перенесена в {{name}}
+  explore_page:
+    header: Исследуйте группы
+    search_placeholder: Поиск общедоступных групп
+    single_search_result: 1 общедоступная группа, соответствующая <strong>{{searchTerm}}:</strong>
+    multiple_search_results: Общедоступные группы {{resultCount}}, соответствующие запросу <strong>{{searchTerm}}:</strong>
+    no_results_found: "<strong>Не можете найти нужную группу?</strong> Если для конфиденциальности группы установлен статус «секретно», она здесь не появится."
+    newest_first: Новички вперед
+    biggest_first: Самый большой первый
+    order_by: Упорядочить группы по
+  global:
+    messages:
+      app_update: Вышла новая версия Loomio. Пожалуйста, сохраните вашу работу и перезагрузите.
+      reload: Перезагрузить
+  poll_option_form:
+    edit_option: Редактировать вариант
+    option_name: Название опции
+    option_name_hint: Короткое имя для этой опции
+    option_name_validation: Лучше всего сделать имя коротким и указать подробности в поле «Значение».
+    icon: Икона
+    meaning: Значение
+    meaning_hint: Пару предложений, объясняющих, что означает выбор этого варианта. Необязательный
+    prompt: Причина подсказки
+    prompt_hint: Вопрос, призванный побудить избирателей поделиться своими доводами или пересмотреть свою позицию. Необязательный
+  poll_common_attachment_form:
+    label: Вложения
+  poll_common_add_option:
+    button:
+      add_option: Добавить еще один вариант
+    modal:
+      title: Добавить вариант
+    form:
+      add_options: Добавить параметры
+      options_added: Добавлены новые опции
+  poll_common_card:
+    show_results: Показать результаты
+    hide_results: Скрыть результаты
+    until_vote: Пока голосование не будет подано
+    until_you_vote: Пока ты не проголосуешь
+    until_poll_type_closed: Пока {{pollType}} не закроется
+    until_voting_is_closed: Пока голосование не закрыто
+    deleted: Этот опрос был удален
+  group_files_panel:
+    no_files: Файлов не найдено
+    filename: Имя файла
+    uploaded_by: Загружено пользователем
+    uploaded_at: Загружено в
+    delete_confirmation: Вы уверены, что хотите удалить это вложение? Он будет удален из любого связанного комментария или темы. Это не может быть отменено.
+  subgroups_panel:
+    search_subgroups_of_name: Поиск в подгруппах {{name}}
+    group_without_subgroups: "{{name}} без подгрупп"
+  poll_common_action_panel:
+    from_the_thread: Из шаблона темы
+    from_the_group: Из группы
+    default_templates: Шаблоны по умолчанию
+    default_template: Шаблон по умолчанию
+    custom_template: Пользовательский шаблон
+    default_poll_types: Типы опросов по умолчанию
+    suggested_templates: Предлагаемые шаблоны
+    group_templates: Шаблоны групп
+    basic_templates: Базовые шаблоны
+    anonymous: Голоса анонимны
+    results_hidden_until_closed: Результаты будут показаны после закрытия голосования
+    results_hidden_until_vote: Результаты будут показаны после того, как вы проголосуете.
+    unable_to_vote: Вас не пригласили голосовать в этом %{poll_type}
+    draft_mode: Голосование отключено. Это еще не открыто для голосования.
+    voting_disabled_poll_is_template: Голосование отключено. Это шаблон.
+  poll_common_collapsed:
+    by_who: по имени}}
+  poll_common_calendar_invite:
+    calendar_invite: Включить приглашение в календарь с этим результатом
+    poll_option_id: Время встречи
+    helptext_on: Пользователи смогут добавить эту встречу в свой календарь.
+    helptext_off: Приглашение на встречу не будет отправлено
+    event_duration: Продолжительность
+    event_summary: Название встречи
+    event_summary_placeholder: Как бы вы хотели назвать эту встречу?
+    event_description: Описание встречи
+    event_description_placeholder: Какова повестка дня этой встречи?
+    location: Расположение
+    location_placeholder: Где будет проходить эта встреча?
+  poll_common_settings:
+    who_can_vote: Кто может голосовать?
+    short_reason_can_be_helpful: Если причины голосования будут краткими, их будет легче понять. Сборник кратких причин — отличный ресурс для принятия решения.
+    specified_voters_only_true: Только приглашенные люди
+    specified_voters_only_false_group: Любой в группе
+    specified_voters_only_false_discussion: Кто-нибудь в теме
+    invite_people_next: Вы можете выбрать, кого приглашают проголосовать после запуска {{poll_type}}.
+    shuffle_options:
+      shuffle_options: Параметры перемешивания
+      title: Показать варианты в случайном порядке
+      helptext: Вариант, стоящий первым в списке, может придать ему предвзятость. Используйте этот параметр, чтобы противостоять этому эффекту.
+    multiple_choice:
+      title: Большой выбор
+      helptext_on: При выборе участники смогут выбрать несколько вариантов.
+    anyone_can_participate:
+      title: Принять участие может любой, у кого есть ссылка
+      helptext_on: Если этот флажок установлен, участвовать может любой, у кого есть ссылка на опрос.
+    notify_on_closing_soon:
+      voting_closes_too_soon: Поскольку голосование завершится в течение 24 часов, напоминания о скором закрытии отправляться не будут.
+      closes_too_soon: Поскольку этот {{pollType}} закрывается в течение 24 часов, напоминания о скором закрытии отправляться не будут.
+      title: За 24 часа до закрытия {{pollType}} отправьте напоминание по адресу
+      voting_title: За 24 часа до окончания голосования отправьте напоминание по адресу
+      nobody: Никто
+      author: Автор (я)
+      undecided_voters: Неопределившиеся избиратели
+      voters: Все избиратели
+    notify_on_participate:
+      title: Сообщите мне, когда люди примут участие
+      helptext_on: Если этот флажок установлен, вы будете уведомлены всякий раз, когда кто-то примет участие.
+    anonymous:
+      title: Анонимные избиратели
+      helptext_on: Если этот параметр выбран, информация об участнике не будет отображаться при каждом ответе.
+    voter_can_add_options:
+      title: Избиратели могут добавлять альтернативные варианты
+    can_respond_maybe:
+      title: Избиратели могут ответить «в случае необходимости»
+    allow_long_reason:
+      title: Разрешить длину слова «причина» голосования более 500 символов.
+    hide_results_until_closed:
+      title: Скрыть результаты до закрытия
+      helptext_on: Не показывать, как люди проголосовали, пока опрос не будет закрыт.
+  poll_common_close_form:
+    title: Закрыть %{poll_type} сейчас?
+    helptext: Вы уверены, что хотите закрыть этот %{poll_type} раньше и поделиться результатом?
+    close_poll_type: Закрыть %{poll_type}
+    poll_type_closed: "%{poll_type} закрыто"
+  poll_common_reopen_form:
+    title: Повторно открыть {{poll_type}}
+    helptext: Повторно откройте {{poll_type}}, если людям нужно больше времени для участия.
+    success: "{{poll_type}} вновь открыт"
+  poll_common_move_form:
+    title: Переместить {{poll_type}}
+    success: "{{poll_type}} перемещен в {{group}}"
+  poll_common_wip_field:
+    voting_enabled: Голосование включено
+    enable_voting: Включить голосование
+    title: Отключить голосование
+    past_tense: Голосование отключено
+    draft_mode: Режим черновика
+    disable_voting_during_development: Этот %{poll_type} не готов к голосованию
+    helptext: Этот %{poll_type} находится в стадии разработки. Вы можете включить голосование позже.
+    voting_open: Голосование открыто
+    this_is_ready_for_voting: этот %{poll_type} готов к голосованию
+  poll_common_closing_at_field:
+    closing: Закрытие
+    no_closing_date: Нет даты закрытия
+    closing_date: Дата закрытия
+    closing_hour: Время закрытия
+    invalid_date: Недействительная дата
+  poll_card:
+    poll_type_by_name: "%{poll_type} от %{name}"
+    started_by: Автор {{name}}
+  poll_common_votes_panel:
+    vote_removed: Голосование удалено
+    undecided: Не определился
+    newest_first: Новички вперед
+    oldest_first: Сначала старые
+    priority_first: Согласитесь сначала
+    priority_last: Сначала заблокировать
+    undecided_first: Сначала не определился
+    no_votes_yet: Голоса еще не поданы.
+    change_results_order: Изменить порядок результатов
+    none_of_the_above: "(Ни один из вышеперечисленных)"
+    name_or_username: Имя или имя пользователя
+  poll_common_undecided_panel:
+    show_undecided: Показать %{count} не определился
+    show_invitations: Показать ожидающие приглашения
+    undecided_users: Не определено (%{count})
+    invitation_count_singular: Еще 1 человек был приглашен к участию по электронной почте
+    invitation_count_plural: "%{count} дополнительных людей были приглашены принять участие по электронной почте."
+  poll_common_undecided_user:
+    reminded: Напоминание отправлено!
+    reminder_sent: Напоминание отправлено
+  poll_common_set_outcome_panel:
+    enter_outcome: Введите результат
+    poll_type: Этот %{poll_type} закрыт. Уделите время обдумыванию результатов, а затем поделитесь ими, чтобы люди знали, что будет дальше.
+  poll_common_outcome_panel:
+    authored_by: По имени}}
+  poll_common_delete_modal:
+    question: Вы уверены, что хотите удалить это?
+    title: Удалить {{pollType}}
+    success: Успешно удалено
+  poll_proposal_form:
+    start_header: Начать предложение
+    edit_header: Изменить предложение
+    title_placeholder: Например, «Поехали на Луну!»
+    details_placeholder: Каковы детали вашего предложения?
+    proposal_created: Предложение запущено
+    proposal_updated: Предложение обновлено
+  record_modal:
+    record_video: Запись видео
+    record_audio: Запись аудио
+    record: Записывать
+    stop: Останавливаться
+    no_mic: Не удалось найти микрофон
+    no_camera: Не удалось найти камеру
+    listen_to_audio: Слушайте аудио
+    watch_video: Смотреть видео
+    audio_transcript: 'Расшифровка аудио: %{text}'
+    why_type_when_you_can_talk: Зачем печатать, если можно говорить? Отправить голосовую запись
+    transcript_included: К вашему сообщению будет приложена расшифровка записи.
+  poll_dot_vote_form:
+    dots_per_person: Баллы на человека
+    dots_per_person_helptext: Общее количество баллов, которое предлагается распределить каждому человеку.
+  poll_meeting_form:
+    timeslots: Временные интервалы
+    no_options: Введите время в вашем текущем часовом поясе ({{zone}}). Участники видят время, переведенное в их местный часовой пояс.
+    meeting_duration: Продолжительность встречи
+    add_option_placeholder: Добавить новое время
+    time_slot_added: Добавлен временной интервал
+    time_slot_already_added: Временной интервал уже добавлен
+    participants_see_local_times: Участники будут видеть время, привязанное к их часовому поясу.
+    use_24_hour_format: Ошибка! Используйте 24-часовой формат, например %{time}.
+  poll_ranked_choice_form:
+    no_options: Вы еще не добавили ни одного варианта.
+    add_option_placeholder: Введите новый выбор
+    minimum_stance_choices: Варианты ранжирования
+    minimum_stance_choices_helptext: Сколько вариантов выбора имеет избиратель?
+    minimum_stance_choices_hint: т.е. Оцените 3 лучших вкуса мороженого
+    ranked_choice_created: Рейтинговый выбор создан.
+    ranked_choice_updated: Рейтинговый выбор обновлен.
+    rank: Классифицировать
+    points: Точки
+    average: Средний
+    mean: Иметь в виду
+    pct_of_points: "% баллов"
+    pct_of_voters: "% избирателей"
+    percent: Процент
+  poll_meeting_time_field:
+    add_time_slot: Добавить временной интервал
+    new_time_slot: Новый временной интервал
+    closing_hour: Закрытие часа
+  poll_proposal_vote_form:
+    default_reason_placeholder: Пожалуйста, объясните свою аргументацию
+    abstain_reason_placeholder: Сообщите людям, почему вы отказываетесь от этого решения.
+    agree_reason_placeholder: Что вам нравится в этом предложении и какую пользу оно принесет группе?
+    disagree_reason_placeholder: Как можно улучшить это предложение, чтобы вы могли его поддержать?
+    block_reason_placeholder: Объясните свое возражение против этого предложения и почему его не следует продвигать.
+    stance_created: Голосование создано
+    stance_updated: Голосование обновлено
+    vote: Голосование
+  poll_count_form:
+    pct_of_target: "% от цели"
+    agree_target_helptext: Какое целевое количество волонтеров вы хотели бы иметь?
+    agree_target_label: Целевое число
+  poll_common_percent_voted:
+    sentence: Приняли участие {{numerator}} из {{denominator}} человек ({{percent}}%)
+    target_progress: "{{percent}} % цели достигнуто. ({{num}} / {{target}})"
+  poll_poll_vote_form:
+    stance_created: Голосование создано
+    stance_updated: Голосование обновлено
+  poll_score_vote_form:
+    stance_created: Голосование создано
+    stance_updated: Голосование обновлено
+  poll_meeting_vote_form:
+    local_time_zone: Местное время – {{zone}}
+    can_attend: Можно присутствовать
+    unable: Не могущий
+    if_need_be: Если понадобится
+    your_response: Когда вы сможете присутствовать?
+    stance_created: Наличие сохранено
+    stance_updated: Наличие обновлено
+    reason_placeholder: Объясните, когда вы свободны (или заняты), на случай, если автор захочет добавить варианты.
+  poll_dot_vote_vote_form:
+    dots_remaining: 'Осталось точек: %{count}'
+    too_many_dots: Вы использовали слишком много точек
+    stance_created: Голосование создано
+    stance_updated: Голосование обновлено
+  poll_ranked_choice_vote_form:
+    helptext: Перетащите параметры в порядке предпочтения (1 — наиболее предпочтительный вариант). Ваши самые популярные варианты (%{count}) будут записаны.
+    stance_created: Выбор записан
+    stance_updated: Выбор обновлен
+  poll_templates:
+    proposal:
+      process_subtitle: Поднимите предложение, чтобы принять решение
+      process_introduction: <p>Классическое предложение Loomio помогает вам принять решение, превращая обсуждение в четкий результат.</p><p> Предложите курс действий и предложите людям ответить, проголосовав за согласие, воздержание или несогласие.</p><p> Когда люди голосуют, они могут объяснить причину, по которой они проголосовали таким образом. Вы можете увидеть позицию остальных по этому вопросу и почему.</p><p> Таким образом, вы можете использовать предложение, чтобы побудить людей ответить, раскрыть новую информацию и добиться общего понимания – чтобы помочь вашей группе принять лучшее и более обоснованное решение.</p><p> Предложение и связанное с ним обсуждение создают собственную запись того, как было принято решение.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Подробнее об использовании классического предложения Loomio читайте в Простом процессе принятия решений</u></a> .</p>
+      title: Утвердить новую концепцию бренда
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Какое решение вам нужно принять?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Что вы просите людей сделать?</strong></h3><p></p><p> Чтобы это предложение было принято, нам нужно, чтобы большинство членов проголосовали за согласие.</p><p> Если вы не согласны, скажите, почему и что нужно изменить, чтобы вы согласились.</p>
+      agree: Соглашаться
+      agree_meaning: Я поддерживаю предложение
+      agree_prompt: Что вам нравится в этом предложении и какую пользу оно принесет группе?
+      abstain: Воздерживаться
+      abstain_meaning: Решение не голосовать или неспособность голосовать по этому решению.
+      abstain_prompt: Почему вы воздерживаетесь или не чувствуете себя способными проголосовать за это решение?
+      disagree: Не согласен
+      disagree_meaning: Что-то в этом предложении необходимо изменить, прежде чем я смогу его поддержать.
+      disagree_prompt: Как можно улучшить это предложение, чтобы вы могли его поддержать?
+    advice:
+      process_subtitle: Обратитесь за советом по поводу решения, которое вам нужно принять
+      process_introduction: <p>Обратитесь за советом к решению, которое вам необходимо принять, посоветуйтесь с людьми, которых это затронуло или у которых есть опыт, чтобы вы могли принять лучшее решение для своей организации.</p><ul><li><p> Советы помогут вам принять лучшее решение для вашей организации.</p></li><li><p> Развивайте отношения, возможности обучения и разнообразный вклад.</p></li><li><p> Стимулируйте инициативу и творчество, и работа будет более приятной.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Узнайте больше о процессе консультирования</u></a> .</p>
+      title: Помогите Такаши купить новый компьютер.
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Какое решение вам нужно принять?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>Какой совет вы просите у людей, чтобы помочь вам принять правильное решение?</strong></h3><p></p><p> Мне нужен ваш вклад, который поможет мне принять правильное решение для нашей организации.</p>
+      agree: Соглашаться
+      agree_meaning: Я предложил свой совет по поводу этого решения
+      agree_prompt: Обобщите свой совет или оставьте полезный комментарий.
+      abstain: Воздерживаться
+      abstain_meaning: У меня нет никаких советов, чтобы предложить
+      abstain_prompt: Есть ли у вас какие-либо комментарии, которые могут быть полезны?
+    consent:
+      process_subtitle: Примите решение, которое «безопасно попробовать», без возражений.
+      process_introduction: <p>Получите согласие на решение, которое вам необходимо принять, если против вашего предложения нет серьезных возражений, чтобы вы могли быстро принять решение для своей организации, которое «безопасно попробовать».</p><ul><li><p> Стремитесь к «достаточно хорошему» решению</p></li><li><p> Привлеките множество голосов для разработки работоспособного предложения.</p></li><li><p> Спросите, есть ли у кого-нибудь веские возражения</p></li><li><p> Изменить предложение для устранения возражений</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Узнайте больше о процессе получения согласия</a> .</p>
+      title: Наймите Хлою на роль дизайнера
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Какое решение вам нужно принять?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>Что вы просите от людей в этом предложении?</strong></h3><p></p><p> Если у вас есть возражение, укажите причину и предложите изменение предложения, которое сделает его безопасным.</p><p> Помните, что мы ищем согласия на «достаточно хорошее» решение, которое «безопасно попробовать», чтобы мы могли принять хорошее решение для нашей организации.</p>
+      consent: Согласие
+      consent_meaning: Предложение безопасно попробовать
+      consent_prompt: Что вам нравится в этом предложении и какую пользу оно принесет организации?
+      objection: Возражение
+      objection_meaning: У меня есть веские возражения, и я считаю, что это предложение причинит вред.
+      objection_prompt: Какое изменение необходимо внести в это предложение, чтобы сделать его «безопасным для попытки» и чтобы вы могли его поддержать?
+    consensus:
+      process_subtitle: Достичь коллективного соглашения со всеми участниками
+      process_introduction: <p>Достигните консенсуса для решения, которое вам необходимо принять, чтобы достичь соглашения, которое удовлетворит потребности и проблемы всех участников.</p><ul><li><p> Обсудите и разработайте предложение вместе</p></li><li><p> Вовлекайте и уважайте всех участников</p></li><li><p> Ищите согласия большинства людей</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/consensus_process/index.html">Узнайте больше о процессе консенсуса</a> .</p>
+      title: Утвердить новую концепцию бренда
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>Какое решение вам нужно принять?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Что вы просите людей сделать?</strong></h3><p></p><p> Чтобы это предложение было принято, нам нужно, чтобы большинство членов проголосовали за согласие.</p><p> Если вы не согласны, скажите, почему и что нужно изменить, чтобы вы согласились.</p>
+      agree: Соглашаться
+      agree_meaning: Я поддерживаю предложение
+      agree_prompt: Что вам нравится в этом предложении и какую пользу оно принесет организации?
+      abstain: Воздерживаться
+      abstain_meaning: Это решение меня не касается, и я доволен тем, что решит группа.
+      abstain_prompt: Почему вы воздерживаетесь или не чувствуете себя способными проголосовать за это решение?
+      disagree: Не согласен
+      disagree_meaning: Что-то в этом предложении необходимо изменить, прежде чем я смогу его поддержать.
+      disagree_prompt: Как можно улучшить это предложение, чтобы вы могли его поддержать?
+      block: Блокировать
+      block_meaning: Я блокирую это предложение и считаю, что оно не должно продолжаться.
+      block_prompt: Объясните свое возражение против этого предложения и почему его не следует продвигать.
+    question_round:
+      process_subtitle: Предложите уточняющие вопросы, чтобы помочь людям понять предложение.
+      process_introduction: <p>Раунд вопросов — это возможность задать уточняющие вопросы по поводу предложения, чтобы каждый понял предложение, прежде чем сказать, что они о нем думают.</p><p> Раунд вопросов Лумио — это специальное предложение без возможности голосования. Это позволяет участникам задавать вопросы в течение времени, установленного вами для раунда.</p><p> Раунд вопросов обычно используется в качестве этапа процесса получения согласия.</p><p> <a target="_blank" href="https://help.loomio.com/en/guides/consent_process/index.html">Узнайте больше о процессе получения согласия</a> .</p>
+      title: Какие вопросы у вас есть о политике охраны труда и техники безопасности?
+      details: <h3 id="what-are-you-proposing"><strong>Что вы предлагаете?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Что вы просите людей сделать?</strong></h3><p></p><p> Это раунд вопросов, в котором вам предлагается задать уточняющие вопросы.</p><p> Что вам нужно знать, чтобы понять предложение?</p><p> Пожалуйста, ответьте до завершения раунда вопросов.</p>
+      reason_prompt: Что вам нужно знать, чтобы понять предложение?
+    sense_check:
+      process_subtitle: Попросите обратную связь, вопросы и проблемы
+      process_introduction: <p>Предложение по проверке Sense — хороший способ получить обратную связь, задать вопросы и выявить проблемы. Это помогает уточнить и улучшить предложение, прежде чем перейти к принятию решения.</p><p> Проверка смысла позволяет людям узнать, что предложение формируется, и побуждает их к участию. Это возможность выслушать людей, почувствовать, что они чувствуют, и отреагировать соответствующим образом, открывая потенциал для использования их вклада для принятия лучшего решения.</p><p> Используйте предложение проверки смысла в процессе согласия, чтобы вызвать реакции и комментарии для улучшения предложения, а также в процессе консенсуса для проверки консенсуса.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Подробнее об использовании проверки Sense читайте в Простом процессе принятия решения</u></a> <span>.</span></p>
+      title: Как вы относитесь к новым концепциям бренда?
+      details: <h3 id="what-are-you-proposing"><strong>Что вы предлагаете?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Что вы просите людей сделать?</strong></h3><p></p><p> Как вы относитесь к этому предложению? Оставьте комментарий или внесите предложение по улучшению.</p><p> Эта проверка Sense — это возможность внести свой вклад и помочь нам принять лучшее решение.</p>
+      looks_good: Выглядит неплохо
+      looks_good_meaning: Я доволен тем, как это происходит
+      looks_good_prompt: Есть ли у вас какие-либо комментарии или предложения, чтобы сделать предложение лучше?
+      abstain: Воздерживаться
+      abstain_meaning: Мне нечего добавить или возразить против этой работы.
+      abstain_prompt: Воздержание подразумевает согласие с направлением этого предложения. Есть ли причина, по которой вы голосуете против?
+      concerned: Обеспокоенный
+      concerned_meaning: Чтобы я мог согласиться или согласиться, возможно, что-то в этом потребуется изменить.
+      concerned_prompt: Что вас беспокоит и как это можно решить?
+    gradients_of_agreement:
+      process_subtitle: Выразить поддержку предложения по 8-бальной шкале
+      process_introduction: "<p>Градиенты согласия предложения позволяют членам группы выражать свою поддержку предложения в градусах шкалы, предлагая больше способов выражения поддержки, чем в терминах «согласен» и «не согласен».</p><p> Используйте «Градиенты согласия» в качестве предварительного раунда, чтобы проверить поддержку предложения перед переходом к официальному соглашению.</p><p> Градиент согласия дает людям понять, что предложение формируется, и побуждает их к участию. Это возможность выслушать людей, почувствовать, что они чувствуют, и отреагировать соответствующим образом, открывая потенциал для использования их вклада для принятия лучшего решения.</p>"
+      title: Как вам новая формулировка ценностей?
+      details: <h3 id="what-are-you-proposing"><strong>Что вы предлагаете?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Что вы просите людей сделать?</strong></h3><p></p><p> Как вам предложение? Выразите свою поддержку по шкале ниже и оставьте комментарий или предложение по улучшению.</p><p> Это предложение «Градиенты согласия» предназначено для проверки поддержки предложения и возможности внести ваш вклад, прежде чем переходить к официальному соглашению.</p>
+      whole_hearted_endorsement: Искреннее одобрение
+      whole_hearted_endorsement_meaning: Мне это и вправду нравится!
+      whole_hearted_endorsement_prompt: Что вам нравится в нем?
+      agreement_with_minor_contention: Соглашение с незначительным разногласием
+      agreement_with_minor_contention_meaning: Не идеально, но достаточно хорошо
+      agreement_with_minor_contention_prompt: Что вас беспокоит?
+      support_with_reservations: Поддержка с бронированием
+      support_with_reservations_meaning: Я могу жить с этим
+      support_with_reservations_prompt: Каковы ваши оговорки?
+      abstain_meaning: Меня эта проблема не касается
+      abstain_prompt: Есть ли у вас что-нибудь, что вы хотели бы добавить?
+      more_discussion_needed: Необходимо больше обсуждения
+      more_discussion_needed_meaning: Я еще недостаточно хорошо понимаю суть проблемы
+      more_discussion_needed_prompt: Что вы не понимаете?
+      don_t_like_but_will_support: Не нравится, но поддержу
+      don_t_like_but_will_support_meaning: Это не здорово, но я не хочу задерживать группу
+      don_t_like_but_will_support_prompt: Что бы вы хотели улучшить?
+      serious_disagreement: Серьезное разногласие
+      serious_disagreement_meaning: Я не согласен с этим, не рассчитывайте на меня.
+      serious_disagreement_prompt: С чем вы не согласны?
+      veto: Вето
+      veto_meaning: Я блокирую это предложение
+      veto_prompt: Почему вы блокируете это предложение? Что нужно изменить, чтобы вы могли его поддержать?
+    simple_poll:
+      process_subtitle: Найдите самый популярный вариант
+      process_introduction: <p>Прежде чем принять решение, выясните, какой вариант(ы) волнует людей больше всего.</p><p> Простой опрос поможет вам найти самый популярный вариант или варианты с одним или несколькими вариантами ответов.</p><p> Напишите любую информацию о параметрах в поле сведений, затем введите название параметра и нажмите +, чтобы добавить.</p><p> Установите <strong>Минимальный выбор</strong> и <strong>Максимальный выбор,</strong> который может выбрать избиратель. Оставьте максимальный выбор равным 1 для опроса с одним выбором.</p><p> Вы можете использовать значок карандаша рядом с каждым вариантом, чтобы добавить <strong>значение</strong> параметра и уточнить вариант, чтобы помочь людям при голосовании.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Подробнее о Простом опросе</a> .</p>
+      title: На чем должно быть сосредоточено наше стратегическое направление?
+      details: <h3 id="what-is-this-poll-about"><strong>О чем этот опрос?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Что вы просите людей сделать?</strong></h3><p></p><p> Выберите вариант(ы), который вам нравится.</p>
+    score_poll:
+      process_subtitle: Оцените степень поддержки каждого варианта
+      process_introduction: <p>Используйте опрос Score, если хотите опросить людей на предмет их желаний, предпочтений или интереса к каждому варианту.</p><p> <span>Участникам предлагается оценить каждый вариант и присвоить балл, перемещая ползунок по шкале.</span></p><p> <span>Результаты отображаются графически вместе с таблицей для каждого варианта, показывающей общее количество баллов, средние баллы и количество избирателей.</span></p><p> Расширенные настройки включают «Голосования анонимны» и «Показать параметры в случайном порядке» — обычно используются для опроса с оценкой, чтобы уменьшить любую предвзятость при голосовании.</p><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Подробнее об опросе Score</a> .</p>
+      title: Оценка того, как принимаются решения в нашей организации
+      details: <h3 id="what-is-this-poll-about"><strong>О чем этот опрос?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Что вы просите людей сделать?</strong></h3><p></p><p> Выберите вариант(ы), который вам нравится.</p>
+    dot_vote:
+      process_subtitle: Выделите бюджет баллов для выявления приоритетов
+      process_introduction: <p>Точечное голосование полезно для групп, пытающихся выделить ограниченный ресурс для нескольких вариантов. Это выходит за рамки простого опроса и помогает участникам понять, что при выборе вариантов существуют ограничения.</p><p> Каждому участнику дается определенное количество точек. Вы сами решаете, сколько.</p><p> Они ставят точки рядом с представленными вариантами, которые им нравятся. Участники могут разместить все свои точки на одном варианте или распределить их по нескольким вариантам.</p><p> Распределяя точки, участники могут превысить лимит бюджета, поэтому им рекомендуется тщательно обдумать, как они тратят свои точки.</p><p> Варианты с наибольшим количеством точек «выигрывают». В таблице результатов представлены дополнительные данные, которые помогут вам проанализировать результаты.</p><ul><li><p> % баллов</p></li><li><p> Точки</p></li><li><p> Иметь в виду</p></li><li><p> Избиратели</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Узнайте больше о точечном голосовании</a> .</p>
+      title: Выбор тем для нашей конференции
+      details: <h3 id="what-is-this-poll-about"><strong>О чем этот опрос?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Что вы просите людей сделать?</strong></h3><p></p><p> В этом опросе у вас есть бюджет в 8 точек, который вы можете распределить между вариантами, которые вы предпочитаете. Вы можете разместить все точки на одном варианте или разложить их.</p>
+    ranked_choice:
+      process_subtitle: Понять упорядоченное предпочтение вариантов
+      process_introduction: <p>Ранговый выбор полезен, когда у вас есть большое количество вариантов или проводятся выборы.</p><p> Этот шаблон опроса предлагает людям ряд вариантов голосования в предпочитаемом ими порядке.</p><p> Вы можете установить количество вариантов выбора, которые получит избиратель.</p><p> <span>Избиратели перетаскивают варианты в порядке предпочтения (№1 — ваш наиболее предпочтительный вариант).</span></p><p> <span>Расширенные настройки включают «Голосование анонимное» и «Показать параметры в случайном порядке» — обычно используются для ранжированного</span> выбора, чтобы уменьшить предвзятость голосования.</p><p> Результаты отображаются в ранжированном порядке. В таблице результатов представлены дополнительные данные, которые помогут вам проанализировать результаты.</p><ul><li><p> Классифицировать</p></li><li><p> % баллов</p></li><li><p> Точки</p></li><li><p> Иметь в виду</p></li></ul><p> <a target="_blank"  href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Подробнее о рейтинговом выборе</a> .</p>
+      title: Избрать директоров в совет управления
+      details: <h3 id="what-is-this-poll-about"><strong>О чем этот опрос?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Почему это важно?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Что вы просите людей сделать?</strong></h3><p></p><p> Проголосуйте, расположив варианты в порядке ваших предпочтений. Выигрывает тот вариант, который займет первое место в результатах.</p>
+    time_poll:
+      process_subtitle: Узнайте, когда люди доступны для встреч
+      process_introduction: <p><span>Сэкономьте время, организовав дату встречи или мероприятия.</span></p><p> Опрос времени позволяет легко увидеть доступность каждого и найти лучшее время.</p><p> Дайте вашему опросу Time название и подробную информацию. Введите список параметров даты и времени в вашем часовом поясе.</p><p> При настройке временных интервалов учитывайте людей, находящихся в разных часовых поясах. Участники увидят время, указанное в их часовом поясе.</p><p> Установите продолжительность встречи.</p><p> Когда опрос времени закроется, установите результат с лучшим временем и инструкциями по встрече.</p><p> <span>Loomio включит приглашение в календаре в электронное письмо с уведомлением о результатах, чтобы участники могли добавить его в свой календарь.</span></p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Подробнее о опросе Time</a> .</p>
+      title: Давайте найдем дату нашей следующей встречи
+      details: "<p><strong>Что такое встреча или мероприятие?</strong></p><p></p><p> <strong>Почему это важно?</strong></p><p></p><p> <strong>Что вы просите людей сделать?</strong></p><p></p><p> <span>Отметьте доступные временные интервалы зеленым значком «палец вверх» или оставьте красный значок «палец вниз», если он недоступен.</span></p><p> <span>Используйте значок «большой палец в сторону», чтобы сказать, что вы доступны «в случае необходимости».</span></p>"
+      reason_prompt: Можете ли вы что-нибудь сказать, чтобы помочь организатору найти подходящее время?
+    opt_in:
+      process_subtitle: Найдите волонтеров или запросите участников
+      process_introduction: '<p>Используйте подписку, чтобы пригласить людей присоединиться к команде, комитету или рабочей группе или принять участие в мероприятии.</p><p> «Принятие» имеет два варианта голосования: принять или отклонить.</p><p> Вы можете определить целевое количество людей, которых вы ищете, скажем, 3 человека, которые присоединятся к вашей рабочей группе.</p><p> <a target="_blank" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Узнайте больше о подписке</a> .</p>'
+      title: Рабочая группа по разработке нашей новой политики устойчивого развития
+      details: "<p><strong>На какую команду, рабочую группу или мероприятие вы приглашаете людей?</strong></p><p></p><p> <strong>Почему это важно?</strong></p><p></p><p> <strong>Что вы просите людей сделать?</strong></p><p></p><p> Чтобы принять участие, выберите «Принять»!</p>"
+      accept_meaning: Я готов участвовать
+      accept_prompt: Почему вы добровольно соглашаетесь на это?
+      decline_meaning: Я не могу участвовать
+      decline_prompt: Есть ли что-нибудь, что вы хотели бы сказать?
+  thread_item:
+    removed: Объект удален.
+    deleted_group: Удаленная группа
+    invite_only_thread: Пригласить только тред
+    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> в ответ на <strong>сообщение {{title}}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> отредактировал название темы"
+    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> отредактировал контекст темы"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> изменил конфиденциальность темы"
+    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> отредактировал тему"
+    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> переместил тему из <strong>{{title}}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> закрыл тему"
+    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> возобновил обсуждение"
+    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> создал ответвление этой темы: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{автор}}</a>"
+    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> поделился результатом"
+    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> вновь открыл {{polltype}}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> закрыл {{polltype}}"
+    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> начал {{polltype}}"
+    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> отредактировал {{polltype}}"
+    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> добавил опции в {{polltype}}"
+    poll_expired: "{{polltype}} закрыто"
+    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> проголосовал за: <strong>{{title}}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> обновил свое голосование по вопросу: <strong>{{title}}</strong>"
+    event_removed: Удалено из темы
+  add_poll_to_thread_modal:
+    success: Успех, {{pollType}} добавлен в тему!

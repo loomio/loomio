@@ -1,3 +1,4 @@
+---
 he:
   explore:
     header: חקור את הקבוצות הציבוריות
@@ -15,6 +16,8 @@ he:
     messages:
       email: כתובת המייל אינו תקין
       spoofed_media_type: תוכנו של הקובץ אינו תואם לשמו
+    clear_cache: זוהתה בעיית טעינה. החזק את Shift ולחץ על טען מחדש, או נקה את מטמון הדפדפן שלך.
+    upgrade_browser: או - או! דפדפן האינטרנט שלך ישן מדי וייתכן ש-Loomio לא יפעל כראוי. אנא <a href="https://browser-update.org/update.html">שדרג את הדפדפן שלך.</a>
   group:
     stats:
       members: חברים
@@ -25,18 +28,34 @@ he:
       poll_types:
         proposal: הצעה
         time: הצבעת זמן
-  user:
-    deleted_user: "משתמש מחוק"
-    placeholder_name: "משתמש מוזמן (%{hostname})"
+        count: לספור
+        choose: בחר
+        allocate: לְהַקְצוֹת
+        score: ציון
+        rank: דַרגָה
+      group_stats: נתונים סטטיסטיים של הקבוצה
+      org_stats: נתונים סטטיסטיים של ארגון (כולל תת-קבוצות)
+      visits: ביקורים
+      polls: סקרים
+      general: כללי
     error:
-      recaptcha: "לא הצלחנו לאשר שאינך רובוט. אנא נסה שוב!"
-      bad_login: "סליחה, סיסמה זו לא תואמת לזו שבמערכת"
-      username_must_be_alphanumeric: "שם המשתמש נדרש להיות באותיות אנגלית קטנות ומספרים בלבד"
+      handle_must_begin_with_parent_handle: חייב להתחיל ב-%{parent_handle}-
+      no_public_trials: שדרג מניסיון כדי לשנות את הגדרת הפרטיות של הקבוצה
+  user:
+    deleted_user: משתמש מחוק
+    placeholder_name: משתמש מוזמן (%{hostname})
+    error:
+      recaptcha: לא הצלחנו לאשר שאינך רובוט. אנא נסה שוב!
+      bad_login: סליחה, סיסמה זו לא תואמת לזו שבמערכת
+      username_must_be_alphanumeric: שם המשתמש נדרש להיות באותיות אנגלית קטנות ומספרים בלבד
+      sign_in_required_html: עליך להיות מחובר כדי להמשיך. אנא <a href="/dashboard" target="_blank">היכנס</a> ואז טען מחדש את הדף הזה כדי להמשיך.
   poll:
     error:
       cannot_add_options: לא יכול להוסיף אפשרויות לסקר זה
       cannot_remove_options: לא יכול להוריד את האפשרויות מסקר זה
       must_have_options: חייבת להיות אפשרות סקר אחת לפחות
+      must_be_in_the_future: חייב להיות בעתיד
+      templates_cannot_close: לא ניתן לסגור תבניות
     export:
       percent_voted: "%{num}/%{denom} (%{percent}) משתתפים הצהירו את עמדתם"
       title: כותרת
@@ -60,6 +79,8 @@ he:
       participant: משתתף
       also_available: גם זמין ב
       total: סך הכל
+      user_id: זהות המשתמש
+    waiting_for_votes_from: מחכה להצבעות מ
   stance:
     error:
       too_short: אנא בצע בחירתך
@@ -72,54 +93,75 @@ he:
   user_mailer:
     group_export_ready:
       subject: איחוד ייצוא המידע עבור %{group_name}
-      body_html: |
-          הורד את המידע מהקבוצה שלך <a href="%{url}">פה</a>. שים לב שלינק זה יבוטל בתוך שבוע ימים.
+      body_html: 'הורד את המידע מהקבוצה שלך <a href="%{url}">פה</a>. שים לב שלינק זה יבוטל בתוך שבוע ימים.
+
+        '
     accounts_merged:
-      subject: "החשבונות שלך %{site_name} אוחדו. "
+      subject: 'החשבונות שלך %{site_name} אוחדו. '
       body_html: |
-          היי %{name},
-          שני חשבונות הלומיו אוחדו לחשבון אחד.
-          כדי להכנס ללומיו מעתה והלאה, נא להשתמש ב<strong>%{email}</strong> כדי להתחבר.
+        היי %{name},
+        שני חשבונות הלומיו אוחדו לחשבון אחד.
+        כדי להכנס ללומיו מעתה והלאה, נא להשתמש ב<strong>%{email}</strong> כדי להתחבר.
+    deactivated:
+      subject: חשבון המשתמש שלך ב-%{site_name} הושבת.
+      body_html: '<p style=";text-align:right;direction:rtl">אתה, או מישהו עם גישה לחשבון שלך, השבתת את חשבון המשתמש שלך ב-Loomio.</p><p style=";text-align:right;direction:rtl"> כל הנתונים האישיים הוסרו מהמערכת.</p><p style=";text-align:right;direction:rtl"> אם ברצונך לשחזר חשבון משתמש זה וההערות וההצבעות הקשורות אליו, אנא צור קשר עם התמיכה והפניה: %{recovery_code}</p>'
+    merge_verification:
+      subject: אמת את כתובת הדוא"ל שלך ב-%{site_name} למיזוג
+      body_html: <p style=";text-align:right;direction:rtl">היי %{name},</p><p style=";text-align:right;direction:rtl"> הוגשה בקשה למזג את חשבון המשתמש שלך תחת הכתובת <strong>%{source_email}</strong> עם החשבון השייך לכתובת זו, <strong>%{target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> לאחר השלמת תהליך זה, לא תוכל עוד להתחבר עם <strong>%{source_email}</strong> , ורק עם <strong>%{target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> אנא אשר שזה מה שאתה רוצה לעשות.</p>
+      verify: אמת את האימייל והמשך
+      confirm_page:
+        confirm: אשר מיזוג
+        body_html: <p style=";text-align:right;direction:rtl">אנא אשר שברצונך למזג את החשבון תחת <strong>%{source_email}</strong> לחשבון תחת <strong>%{target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> החשבון שלך תחת <strong>%{source_email}</strong> יימחק, ולאחר מכן תוכל להיכנס רק באמצעות <strong>%{target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> השינוי הזה הוא בלתי הפיך.</p>
+        merge: מיזוג חשבונות
+      complete_page:
+        title: מיזוג מוצלח!
+        body_html: <p style=";text-align:right;direction:rtl">מיזוג חשבונות המשתמש שלך הצליח. בקרוב תקבל דוא"ל אישור ב <strong>-%{target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> אנא <a href="/contact" target="_blank">צור איתנו קשר</a> אם יש לך שאלות נוספות.</p>
   email:
     common:
       or_enter_code: או, הזן את הקוד למטה
+      resend: תוקף זה יפוג בעוד 24 שעות וניתן להשתמש בו רק פעם אחת
     login:
       subject: התחבר ל%{site_name}
       login: התחבר כ%{name}
+      intro: זה הקישור שלך לכניסה אל %{site_name}
+      intro_code: זה הקוד שלך לכניסה אל %{site_name}
     reactivate:
       subject: 'אקטב מחדש את חשבונך %{site_name} '
       login: אקטב מחדש%{name}
+      intro: היי %{name}, הנה קישור להפעלה מחדש של חשבון %{site_name} שלך
     contact_request:
       subject: "%{name} מעוניין להתחבר איתך ב%{site_name}!"
       intro: "%{name} (%{email}) שלח לך הזמנה להתחברות."
-      footer: "תוכל לענות ל%{name} על ידי השבה במייל חזרה."
+      footer: תוכל לענות ל%{name} על ידי השבה במייל חזרה.
     reset_password:
       greeting: |
-          היי %{name}
-          הנה הלינק איתו תוכל לאפס את סיסמת החשבון שלך:
+        היי %{name}
+        הנה הלינק איתו תוכל לאפס את סיסמת החשבון שלך:
       link_text: איפוס סיסמתך
       signoff: |
-          קיבלת הודעה זו בגלל שהמייל שהזנת לטופס "שכחתי את הסיסמה" באתר %{hostname}.
-          הסיסמה לא תשתנה עד שתלחץ על הלינק למטה ותמלא את הטופס שנפתח.
-          אם בעיות ההתחברות ממשיכים, השב למייל זה ליצירת קשר עם איש תמיכה.
+        קיבלת הודעה זו בגלל שהמייל שהזנת לטופס "שכחתי את הסיסמה" באתר %{hostname}.
+        הסיסמה לא תשתנה עד שתלחץ על הלינק למטה ותמלא את הטופס שנפתח.
+        אם בעיות ההתחברות ממשיכים, השב למייל זה ליצירת קשר עם איש תמיכה.
     by_who: לפי %{person}
     reply_to_this_discussion: השב לדיון זה
     view_group: צפיה בקבוצה
     to_join_group:
       subject: "%{member} הזמין אותך להצטטרף ל%{group_name} ב%{site_name}"
       invitation_text: "%{member} הזמין אותך להצטרף לקבוצתו %{group_name}."
-      invitation_text_html: "הזמין אותך להצטרך לקבוצתו"
-      link_help: "לחץ על הלינק למטה לאשר את ההזמנה:"
-      accept_invitation: "אשר הזמנה"
+      invitation_text_html: הזמין אותך להצטרך לקבוצתו
+      link_help: 'לחץ על הלינק למטה לאשר את ההזמנה:'
+      accept_invitation: אשר הזמנה
+      stop_emails: הפסק לקבל אימיילים מ-%{site_name}
+      accepting_is_important: חשוב לאשר את הזמנתך, כדי שלא תפספס הודעות על החלטות הקשורות בך.
     resend_to_join_group:
       subject: "%{member} ממתין להצטרפותך ל%{group_name} ב%{site_name}"
     user_added_to_group:
       subject: "%{who} הוסיף אותך ל%{which_group} ב%{site_name}"
       content: "%{who} הוסיף אותך ל%{which_group}."
       content_html: "<strong>%{who}</strong> הוסיף אותך ל<strong>%{which_group}</strong>."
-      link_help: "לחץ על הלינק למטה כדי לעבור לקבוצה:"
+      link_help: 'לחץ על הלינק למטה כדי לעבור לקבוצה:'
     unsubscribe: 'בטל את המנוי או שנה את העדפות הדוא"ל שלך:'
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> לביטול המנוי או שינוי העדפות הדוא\"ל שלך."
+    unsubscribe_html: <a href='%{link_path}'>%{link_text}</a> לביטול המנוי או שינוי העדפות הדוא"ל שלך.
     catch_up:
       daily_subject: אתמול ב%{site_name}
       weekly_subject: בשבוע שעבר ב%{site_name}
@@ -128,24 +170,34 @@ he:
       thanks_for_reading: תודה שקראת. יום טוב!
       marked_as_read_success: כל הדברים במייל סומנו כנקראו
       click_here: הקליקו כאן
+      other_subject: לאחרונה ב-%{site_name}
     group_membership_approved:
-      intro: "בקשתך להכנס לקבוצה %{group_name} אושרה."
-      intro_html: "בקשתך להכנס לקבוצה <strong>%{group_name}</strong> אושרה."
-      link_help: "לחץ על הלינק למטה להצטרף ל%{group_name} ולהתחיל:"
-      subject: "בקשתך להצטרף ל%{group_name} אושרה"
-      join_group: "הצטרף לקבוצה"
+      intro: בקשתך להכנס לקבוצה %{group_name} אושרה.
+      intro_html: בקשתך להכנס לקבוצה <strong>%{group_name}</strong> אושרה.
+      link_help: 'לחץ על הלינק למטה להצטרף ל%{group_name} ולהתחיל:'
+      subject: בקשתך להצטרף ל%{group_name} אושרה
+      join_group: הצטרף לקבוצה
     membership_request:
       intro_html: ביקש רשות להצטרף לאחת הקבוצות שלך.
       subject: "%{who} ביקש להצטרף %{which_group}"
       view_group: אתה יכול לאשר או לשלול בקשות כאן
       button_text: צפה בבקשה
+    loomio_app_description: מקום קל לשימוש ומאובטח עבור ארגונים לקבל החלטות ביחד.
   announcement_count_emails: "%{count} מיילים"
   email_actions:
     unfollowed_discussion: השבתת הודעות אימייל עבור השיחה הזו.
   discussion_mailer:
-    reply_or_view_online_html: "הגב ישירות למייל זה או <a href='%{url}'>צפה בו ב%{hostname}</a>."
+    reply_or_view_online_html: הגב ישירות למייל זה או <a href='%{url}'>צפה בו ב%{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>השבת מיילים</a> לדיון זה."
-    change_email_preferences_html: "שנה את<a href='%{email_preferences_url}'>העדפות הדוא\"ל שלך</a>."
+    change_email_preferences_html: שנה את<a href='%{email_preferences_url}'>העדפות הדוא"ל שלך</a>.
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>בטל</a> את המנוי להודעות נוספות בשרשור זה."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>בטל את</a> המנוי לתגובות בשרשור זה."
+    unsubscribe_from_comment_replied_to_html: זוהי הודעת תשובה.
+    unsubscribe_from_user_mentioned_html: זו הודעת אזכור.
+    discussion_edited:
+      inline: "%{actor} ערך את הקשר השרשור"
+    discussion_closed:
+      inline: "%{actor} סגר את השרשור"
   footer:
     about: אודות
     blog: בלוג
@@ -162,31 +214,134 @@ he:
     confirm_new_password: אשר סיסמה
     new_password: סיסמה חדשה
     email_guidelines_html: |
-        <p>הזן את המייל שלך ונשלח לך לינק לאיפוס הסיסמה.</p>
-        <p>אם אתה רגיל להתחבר דרך פייסבוק או גוגל, הזן את כתובת המייל שמשויכת לחשבון.</p>
+      <p>הזן את המייל שלך ונשלח לך לינק לאיפוס הסיסמה.</p>
+      <p>אם אתה רגיל להתחבר דרך פייסבוק או גוגל, הזן את כתובת המייל שמשויכת לחשבון.</p>
     reset_email_timeframe: עשויות לחלוף עד 5 דקות עד שהאימייל יגיע. אם הוא לא מופיע, בדוק את תיקיית הספאם שלך.
     length_restriction: על הסיסמאות להיות באורך של לפחות 8 תווים.
     forbidden_passwords: סיסמאות נפוצות כגון "סיסמה" אסורות לשמור על בטיחות חשבונך.
   introduction_thread:
     title: ברוך הבא! אנא הצג את עצמך
     description: |
-        קח רגע כדי לאפשר לקבוצה להכיר אותך קצת יותר. פרסם תגובה למטה.
+      קח רגע כדי לאפשר לקבוצה להכיר אותך קצת יותר. פרסם תגובה למטה.
 
-        מה תפקידך או מהו אופן השתתפותך בקבוצה זו? מה אנשים צריכים לדעת עלייך כדי להבין מאיפה אתה בא?
+      מה תפקידך או מהו אופן השתתפותך בקבוצה זו? מה אנשים צריכים לדעת עלייך כדי להבין מאיפה אתה בא?
   how_it_works_thread:
     title: איך להשתמש בלומיו
   group_mailer:
     resend: 'תזכורת: %{member} ממתין שתצטרף %{group_name}'
+    destroy_warning:
+      subject: קבוצת Loomio שלך מתוכננת למחיקה.
+      body: 'קבוצת Loomio שלך: "%{group}" תוזמנה למחיקה על ידי %{deletor}. אם אינך רוצה שהקבוצה שלך תימחק, אנא השב לדוא"ל זה. אם אתה בטוח שברצונך למחוק את הקבוצה, אינך צריך לעשות דבר. תודה.'
   poll_mailer:
     common:
       why_send_this: אתה מקבל את המייל הזה בגלל %{reason}
       view_on_loomio: צפה בו ב-%{site_name}
       create_outcome: שתפ/י תוצאה
-      your_response: "בחירתך:"
+      your_response: 'בחירתך:'
       please_respond: אנא הגב
-      time_zone: (פעמים שמופיע ב-%{zone})
+      time_zone: "(פעמים שמופיע ב-%{zone})"
       undecided_members: משתתפים שטרם החליטו (%{count})
       undecided_visitors: אורחים שטרם החליטו (%{count})
       more_undecided: "%{count} עוד..."
       vote_now: הצבע עכשיו
       you_have_until: יש לך עד %{when} להשתתף.
+      you_voted: אתה הצבעת!
+      not_invited: לא מוזמן
+      people_have_voted: "%{nom} מתוך %{dnom} אנשים השתתפו (%{pct}%)"
+  discussion_templates:
+    blank:
+      process_name: תבנית ריקה
+      process_subtitle: פתח שרשור חדש לכל מטרה
+    discuss_a_topic:
+      title_placeholder: מהו הנושא שאתה רוצה לדון בו?
+      process_name: לדון בנושא
+      process_subtitle: התחל דיון עם הקבוצה שלך
+      process_introduction: <p style=";text-align:right;direction:rtl">האם יש בעיה, בעיה או הזדמנות שאתה רוצה להעלות עם הקבוצה שלך?</p><p style=";text-align:right;direction:rtl"> הצג את הנושא, קישור לכל מידע רקע ובקש הערות, רעיונות ועזרה.</p><p style=";text-align:right;direction:rtl"> הזמן אנשים להשתתף על ידי תרומה של מחשבותיהם ומידע רלוונטי. השתמש ב-@mention כדי למשוך את תשומת הלב של אנשים מסוימים.</p><p style=";text-align:right;direction:rtl"> עדכן את הקשר השרשור ככל שהדיון מתקדם כדי להקל עליו לקראת תוצאה.</p><p style=";text-align:right;direction:rtl"> אל תחכה עד שיהיה לך את כל המידע כדי לפתוח שרשור. השתמש בשרשור כדי להזמין אנשים לעזור לך לחקור את הנושא ולהבין פתרון.</p>
+      description: <h3 id="introduce-and-describe-the-topic" style=";text-align:right;direction:rtl">הצג ותאר את הנושא</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> למה זה חשוב?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="how-would-you-like-people-to-respond" style=";text-align:right;direction:rtl"> איך היית רוצה שאנשים יגיבו?</h3><p style=";text-align:right;direction:rtl"></p>
+    onboarding_to_loomio:
+      title: שימוש ב-Loomio עבור הקבוצה שלנו
+      process_name: עולה ל-Loomio
+      process_subtitle: שרשור שיעזור לאנשים חדשים ב-Loomio להתאמן בכתיבת תגובות והצבעה.
+      process_introduction: <p style=";text-align:right;direction:rtl">השתמש בתבנית זו כדי להכיר לאנשים את Loomio.</p><p style=";text-align:right;direction:rtl"> דרך מצוינת לחוות את Loomio היא על ידי פתיחת דיון בלומיו וקבלת החלטה!</p><p style=";text-align:right;direction:rtl"> התחל את הדיון על ידי ביצוע הנחיות הטקסט למטה או הכנס מילים משלך.</p><p style=";text-align:right;direction:rtl"> הפעל בדיקת Sense כדי שהקבוצה שלך תוכל להצביע ולראות את התוצאות.</p><p style=";text-align:right;direction:rtl"> פתח את הערך של Loomio על ידי שיתוף אנשים בהחלטה הראשונה שלהם.</p>
+      description: <h3 id="why-are-you-interested-in-using-loomio" style=";text-align:right;direction:rtl">מדוע אתה מעוניין להשתמש ב-Loomio?</h3><p style=";text-align:right;direction:rtl"> אנו מעוניינים להשתמש ב-Loomio כדי לערב אנשים בהחלטות לגבי הארגון שלנו.</p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> מה אתה מבקש מאנשים לעשות?</h3><p style=";text-align:right;direction:rtl"> אשמח לשמוע את דעתכם! השאירו תגובה למטה והצביעו בהצעה.</p><p style=";text-align:right;direction:rtl"> אתה יכול להשיב להערה של מישהו על ידי לחיצה על סמל התשובה שנמצא בפינה השמאלית התחתונה של התגובה.</p><p style=";text-align:right;direction:rtl"> השתמש ב-@ament כדי להודיע לאנשים.</p>
+      onboarding: עלייה למטוס
+    consent_process:
+      title_placeholder: פיתוח מדיניות הבריאות והבטיחות שלנו
+      process_name: תהליך הסכמה
+      process_subtitle: קבלו החלטה שהיא 'בטוחה לנסות', ללא התנגדויות.
+      process_introduction: '<p style=";text-align:right;direction:rtl">בקש הסכמה על החלטה שאתה צריך לקבל, כאשר אין התנגדויות משמעותיות להצעה שלך, כדי שתוכל לקבל החלטה מהירה ש''בטוח לנסות'' עכשיו.</p><p style=";text-align:right;direction:rtl"> תפקידים אופייניים:</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מציע: מי שמעלה נושא שדורש הכרעה.</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מנחה: מישהו שיכול לעזור למציע לעשות את עבודתו ביעילות.</p></li></ul><p style=";text-align:right;direction:rtl"> שלבי תהליך נפוצים:</p><p style=";text-align:right;direction:rtl"> שלב 1. הצג הצעה עם חוט של Loomio.</p><p style=";text-align:right;direction:rtl"> שלב 2. הנח סבב של שאלות, תגובות וכל הערה כדי לשפר את ההצעה עם בדיקת Sense.</p><p style=";text-align:right;direction:rtl"> שלב 3. תקן את ההצעה עם הצעות והערות.</p><p style=";text-align:right;direction:rtl"> שלב 4. שאל אם למישהו יש התנגדות משמעותית להצעה המתוקנת עם הצעת הסכמה.</p><p style=";text-align:right;direction:rtl"> שלב 5. שלב התנגדויות תקפות כדי ליצור גרסה מתוקנת של ההצעה שכולם מסכימים שהיא ''בטוחה לנסות'', וכשתשלמה ציינו את תוצאת ההחלטה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">קרא עוד: תהליך הסכמה.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl">מהי ההחלטה שאתה צריך לקבל?</h3><h3 id="" style=";text-align:right;direction:rtl"></h3><h3 id="why-is-this-important-and-what-impact-does-it-have" style=";text-align:right;direction:rtl"> למה זה חשוב ואיזו השפעה יש לזה?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-information-do-people-need-for-context" style=";text-align:right;direction:rtl"> איזה מידע אנשים צריכים להקשר?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="who-is-the-facilitator-for-this-process" style=";text-align:right;direction:rtl"> מי המנחה בתהליך זה?</h3><p style=";text-align:right;direction:rtl"></p>
+      consent: הַסכָּמָה
+    advice_process:
+      title_placeholder: מבקש ייעוץ לרכישת מחשב חדש
+      process_name: תהליך ייעוץ
+      process_subtitle: בקש עצה לגבי החלטה שאתה צריך לקבל.
+      process_introduction: '<p style=";text-align:right;direction:rtl">קבל החלטה בעזרת עצות של אנשים שהושפעו או שיש להם מומחיות, כדי שתוכל לקבל החלטה טובה יותר עבור הארגון שלך.</p><p style=";text-align:right;direction:rtl"> תפקידים אופייניים:</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מנחה: האדם שמקבל את ההחלטה, או בקש ממישהו להקל.</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> יועצים: אנשים שהושפעו או שיש להם מומחיות שאתה מזמין.</p></li></ul><p style=";text-align:right;direction:rtl"> שלבי תהליך נפוצים:</p><p style=";text-align:right;direction:rtl"> שלב 1. חפש קלט כדי להשמיע נקודות מבט לפני שאתה מציע פעולה.</p><p style=";text-align:right;direction:rtl"> שלב 2. הצע הצעה ופנה לייעוץ - הפעל הצעת ייעוץ.</p><p style=";text-align:right;direction:rtl"> שלב 3. בהתחשב בעצות שהתקבלו, אתה מקבל החלטה ומודיע לאנשים שנתנו עצות - ציינו תוצאה.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">קרא עוד: תהליך ייעוץ.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl">מהי ההחלטה שאתה צריך לקבל?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important-and-what-impact-does-it-have" style=";text-align:right;direction:rtl"> למה זה חשוב ואיזו השפעה יש לזה?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision" style=";text-align:right;direction:rtl"> איזו עצה אתה מבקש כדי לעזור לך לקבל החלטה טובה?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="who-is-the-facilitator-for-this-process" style=";text-align:right;direction:rtl"> מי המנחה של התהליך הזה?</h3><p style=";text-align:right;direction:rtl"></p>
+      advice: עֵצָה
+    pass_a_resolution:
+      title_placeholder: החלטה לאישור אסטרטגיה
+      process_name: להעביר החלטה
+      process_subtitle: הצג החלטה עם הקשר, מידע רקע, השב לשאלות והעלה הצעה להעביר את ההחלטה.
+      process_introduction: <p style=";text-align:right;direction:rtl">כללי רוברט היא מסגרת המורכבת ממערכת של קודים וכללי אתיקה המסייעים לקבוצות לקיים פגישות מסודרות המאפשרות לרוב לשלוט תוך מתן אפשרות לשמוע את קולות המיעוט. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a> חבר מגיש הצעה להציע פעולה או לקבל החלטה באמירה, "אני עובר ל...". חבר אחר חייב להביע את הבקשה באומרו, "אני מחליף את הבקשה". ברגע שמישהו מחליף את ההצעה, הקבוצה מצביעה על ההצעה. היא עוברת ברוב קולות או במניין חוקי בהתאם לכללים בתקנון.</p>
+      description: <p style=";text-align:right;direction:rtl"><strong>ציין את ההחלטה שתתקבל</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>תיאור הקשר ומידע רקע</strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong>הזמן חברים לשאול שאלות, להעיר הערות ולתרום כל מידע כדי לבנות הבנה משותפת</strong></p><p style=";text-align:right;direction:rtl"></p>
+      resolution: פתרון הבעיה
+    decision_by_consensus:
+      title_placeholder: תיקון חוקת הארגון שלנו
+      process_name: החלטה בהסכמה
+      process_subtitle: להגיע להסכם קיבוצי עם כל המעורבים.
+      process_introduction: '<p style=";text-align:right;direction:rtl">בנו קונצנזוס להחלטה שאתם צריכים לקבל ביחד, כדי להגיע להסכמה שתספק את הצרכים והחששות של כל המשתתפים.</p><p style=";text-align:right;direction:rtl"> תפקידים אופייניים:</p><ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> למנות מנחה. (בישיבות דירקטוריון זה בדרך כלל היושב-ראש.)</p></li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> מניין או רוב על של חברים להשתתף, כמפורט בתקנון הארגון שלך.</p></li></ul><p style=";text-align:right;direction:rtl"> שלבי תהליך נפוצים:</p><p style=";text-align:right;direction:rtl"> שלב 1. צור מקום פתוח לדיון על נושא או הצעת החלטה.</p><p style=";text-align:right;direction:rtl"> שלב 2. בדוק קונצנזוס וחשוף התנגדויות עם הצעת בדיקת Sense.</p><p style=";text-align:right;direction:rtl"> שלב 3. הבהירו את כל הנקודות, הזמינו שינויים בונים ותקן את ההצעה.</p><p style=";text-align:right;direction:rtl"> שלב 4. בדוק את ההסכמה ואת כל ההתנגדויות שנותרו עם הצעת קונצנזוס.</p><p style=";text-align:right;direction:rtl"> שלב 5. רשמו את ההחלטה עם תוצאה ובפרוטוקול הרשמי של הארגון.</p><p style=";text-align:right;direction:rtl"> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">קרא עוד: תהליך קונצנזוס.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make" style=";text-align:right;direction:rtl">מהי ההחלטה שאתה צריך לקבל?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important-and-what-impact-does-it-have" style=";text-align:right;direction:rtl"> למה זה חשוב ואיזו השפעה יש לזה?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-information-do-people-need-for-context" style=";text-align:right;direction:rtl"> איזה מידע אנשים צריכים להקשר?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="who-is-the-facilitator" style=";text-align:right;direction:rtl"> מי המנחה?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-conditions-need-to-be-met-for-a-decision" style=";text-align:right;direction:rtl"> אילו תנאים צריכים להתקיים כדי לקבל החלטה?</h3><h3 id="" style=";text-align:right;direction:rtl"></h3>
+      consensus: קוֹנסֶנזוּס
+    share_links_and_info:
+      title_placeholder: שתף קישורים ומידע
+      process_name: שתף קישורים ומידע
+      process_subtitle: פרסם מידע, קישורים ודוחות לשיתוף לצורך תגובה ודיון.
+      process_introduction: <p style=";text-align:right;direction:rtl">השתמש בשרשור בתור 'קיר' או 'לוח מודעות' עבור הקבוצה שלך כדי לפרסם מידע, חדשות ורעיונות שתרצה לשתף זה עם זה.</p><p style=";text-align:right;direction:rtl"> הזמן אנשים להשתמש בכלי <strong>הוספה של הקישור</strong> <strong>והטמעת כלי עיצוב וידאו</strong> כדי לעזור לקבוצה לגשת למידע מתוך Loomio. השתמש <strong>בכותרת</strong> על הערות כדי להצמיד את ההערה לציר הזמן של השרשור, כך שניתן יהיה למצוא אותה בקלות.</p><p style=";text-align:right;direction:rtl"> <strong>הצמידו</strong> את החוט כך שיידבק מסביב, ועודדו <strong>את תגובות</strong> כדי לשמור עליו אנרגיה, ליידע אנשים שראיתם את הפריט שלהם.</p><p style=";text-align:right;direction:rtl"> תצוגת ברירת המחדל של השרשור הזה היא <strong>הכי חדש</strong> , כך שהתגובות האחרונות נמצאות בראש השרשור.</p>
+      description: <p style=";text-align:right;direction:rtl">השתמש בשרשור זה כדי לפרסם מידע, הודעות ודברים שתרצה לשתף - מקום בו תוכל לראות מה קורה ולהיות מעורב.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> שתף אירועים, דוחות, פודקאסטים ומידע מקוון מעניין אחר.</p><p data-text-align="start" style=";text-align:right;direction:rtl"> השתמש בכלי <strong>הוספה של הקישור</strong> <strong>והטמעת וידאו</strong> כדי לעזור לאנשים לגשת למידע בתוך Loomio.</p>
+      information: מֵידָע
+    prepare_for_a_meeting:
+      title_placeholder: מתכוננים לפגישה הבאה שלנו
+      process_name: תתכוננו לפגישה
+      process_subtitle: בנו סדר יום, פרסמו ניירות ועד וארגן עניינים מנהליים כך שכולם יהיו מעודכנים, בהקשר ומוכנים.
+      description: <p style=";text-align:right;direction:rtl"><strong>מוקד המפגש</strong></p><p style=";text-align:right;direction:rtl"></p><p data-text-align="start" style=";text-align:right;direction:rtl"> <strong>מתווה סדר יום</strong></p><p data-text-align="start" style=";text-align:right;direction:rtl"></p><p data-text-align="start" style=";text-align:right;direction:rtl"> <strong>פעולות מהפגישה האחרונה</strong></p><p data-text-align="start" style=";text-align:right;direction:rtl"></p><p data-text-align="start" style=";text-align:right;direction:rtl"> <strong>כיצד על המשתתפים להתכונן למפגש?</strong></p><p data-text-align="start" style=";text-align:right;direction:rtl"></p><p data-text-align="start" style=";text-align:right;direction:rtl"> <strong>רשימת מסמכים לפגישה</strong></p><p data-text-align="start" style=";text-align:right;direction:rtl"></p>
+      process_introduction: <p style=";text-align:right;direction:rtl">תכנן פגישה אפקטיבית על ידי שיתוף אנשים מההתחלה, התיישרות עם הנושאים החשובים ביותר, ונצל טוב יותר את הזמן היקר שלך ביחד.</p><p style=";text-align:right;direction:rtl"> השתמש בשרשור כמכיל לפגישה שלך כדי ליצור מיקוד לפגישה, לקבוע את סדר היום, למצוא תאריך מתאים, לפרסם מסמכים ודוחות מרכזיים, להתחיל דיון על סעיפי סדר היום, לעקוב אחר פעולות ופרוטוקולים.</p><p style=";text-align:right;direction:rtl"> זה עוזר לכולם להתכונן לפגישה, על ידי קריאת החומרים וחשיבה על נושאי הדיון וההחלטות שיש לקבל. לאחר מכן יש סיכוי גבוה יותר שהחברים יגיעו בהקשר ומוכנים לפגישה.</p><p style=";text-align:right;direction:rtl"> קרא עוד על <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>הכנה לפגישה</u></a> במדריך לניהול תקין של Loomio.</p>
+      meeting: פְּגִישָׁה
+    build_a_policy:
+      title_placeholder: עדכון מדיניות הגיוס שלנו
+      process_name: בנה מדיניות
+      process_subtitle: עבוד עם הצוות שלך כדי לבנות ולהסכים למסמך מדיניות או נוהל.
+      process_introduction: <p style=";text-align:right;direction:rtl"><span>השרשור הוא המיכל לדיון על המדיניות, שבו אתה יכול להסכים על דרישות ועקרונות, ולפרסם טיוטות מסמכים להערה.</span></p><p style=";text-align:right;direction:rtl"> <span>השתמש בתבנית כדי לפתח מדיניות עם קבוצה קטנה של אנשים, או להפוך אותה לשקופה לכל הארגון, תוך הזמנת הערות על גרסאות מתקדמות של המסמך.</span></p><p style=";text-align:right;direction:rtl"> <span>השתמש בהצעת בדיקת Sense כדי להודיע לחברי הקבוצה שטיוטת מסמך מוכנה לבדיקה, והזמנת אנשים לקרוא את המסמך ולהגיב בכל הערה או שאלה.</span></p><p style=";text-align:right;direction:rtl"> <span>כאשר טיוטה 'סופית' מוכנה, העלה הצעת הסכמה או קונצנזוס לאישור המסמך.</span></p>
+      description: <p style=";text-align:right;direction:rtl"><strong><span>מה המדיניות או המסמך שאתה צריך לבנות?</span></strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong><span>למה זה חשוב?</span></strong></p><p style=";text-align:right;direction:rtl"></p><p style=";text-align:right;direction:rtl"> <strong><span>מה אתה מבקש מאנשים לעשות?</span></strong></p><p style=";text-align:right;direction:rtl"></p>
+      policy: מְדִינִיוּת
+    elect_a_governance_position:
+      title_placeholder: מועמדות ובחירות למועצה
+      process_name: בחר עמדת ממשל
+      process_subtitle: להציע ולבחור מישהו לתפקיד ממשל במועצה, ועדה או דירקטוריון.
+      process_introduction: <p style=";text-align:right;direction:rtl">הצג את תפקיד הממשל ואת הקריטריונים לתפקיד כדי לעזור לחברים להעריך מועמדים.</p><p style=";text-align:right;direction:rtl"> קריאה להגשת מועמדות עם סקר הסכמה. הזמן את המועמדים לפרסם תמונה של המועמד יחד עם הביוגרפיה וההפניות שלהם. הטמע הודעת וידאו מהמועמד כדי שהחברים יוכלו לראות ולשמוע ישירות מהמועמד.</p><p style=";text-align:right;direction:rtl"> אם אתה מוכן לבחור מועמד השתמש בהצעת הסכמה.</p><p style=";text-align:right;direction:rtl"> אם יש לך כמה מועמדים לתפקיד, השתמש בהצעת 'בחירה מדורגת' שבה הבוחרים יכולים לדרג את המועמדים לפי סדר העדפה.</p>
+      description: '<h3 id="what-position-do-you-need-to-fill" style=";text-align:right;direction:rtl">איזה תפקיד אתה צריך למלא?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> למה זה חשוב?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand" style=";text-align:right;direction:rtl"> אילו כישורים, כישורים וניסיון הופכים מועמד טוב?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-is-the-election-process" style=";text-align:right;direction:rtl"> מהו תהליך הבחירות?</h3><p style=";text-align:right;direction:rtl"> שלב 1: מועמדויות - אנו מזמינים מועמדות למועמדים מתאימים.</p><p style=";text-align:right;direction:rtl"> שלב 2: הצגת מועמדים - כלול תמונה, ביוגרפיה קצרה והתייחסות לכל מועמד.</p><p style=";text-align:right;direction:rtl"> שלב 3: בחירות - הצבעה למינוי מועמד לתפקיד.</p>'
+      election: בְּחִירָה
+    funding_decision:
+      title_placeholder: בקשת מימון ל-Robotics Roadshow
+      process_name: החלטת מימון
+      process_subtitle: טפל בבקשת מענק, הלוואה או השקעה וקבל החלטת מימון.
+      process_introduction: <p style=";text-align:right;direction:rtl">הגש בקשה למימון, צרף מסמכים וחומרים תומכים נוספים.</p><p style=";text-align:right;direction:rtl"> סכמו את היישום בהקשר השרשור.</p><p style=";text-align:right;direction:rtl"> הזמן אנשים מורשים לעיין באפליקציה ולשאול שאלות. אפשר מספיק זמן לדיון.</p><p style=";text-align:right;direction:rtl"> העלה הצעת קונצנזוס לאישור המימון.</p><p style=";text-align:right;direction:rtl"> אם מישהו לא מסכים, בקש סיבה - למשל, ייתכן שיהיה צורך במידע נוסף. הזמן את האדם שאינו מסכים לשנות את הצבעתו כאשר הוא מרוצה.</p><p style=";text-align:right;direction:rtl"> כאשר יש לך החלטה ברורה לגבי בקשת המימון, ציינו תוצאה לרישום ההחלטה.</p>
+      description: <h3 id="introduce-and-summarize-the-funding-application" style=";text-align:right;direction:rtl">הצג וסכם את בקשת המימון</h3><p style=";text-align:right;direction:rtl"></p><h3 id="how-does-this-application-fit-with-funding-criteria" style=";text-align:right;direction:rtl"> איך הבקשה הזו מתאימה לקריטריונים למימון?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="who-is-authorized-to-approve-this-funding-decision" style=";text-align:right;direction:rtl"> מי מוסמך לאשר החלטת מימון זו?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica" style=";text-align:right;direction:rtl"> הזמינו שאלות ממקבלי ההחלטות לטיפול בבקשה</h3><p style=";text-align:right;direction:rtl"></p>
+      funding: מימון
+    approve_a_document:
+      title_placeholder: פיתוח אסטרטגיית המותג שלנו
+      process_name: לאשר מסמך
+      process_subtitle: הציגו, דנו ופתחו מסמך, מדיניות או הסכם חשובים.
+      process_introduction: <p style=";text-align:right;direction:rtl">הצג את המסמך יחד עם כל מידע רקע. ציין את מטרת המסמך כדי לעזור להישאר ממוקד.</p><p style=";text-align:right;direction:rtl"> הזמן אנשים לתרום מידע ואת המומחיות שלהם, והשתמש בזה כדי למסגר את המסמך. להכיר ולשקול משוב ותרומות מאנשים.</p><p style=";text-align:right;direction:rtl"> שלב תרומות בטיוטה ראשונה של המסמך ובטיוטות עוקבות עד שהוא מוכן לאישור.</p><p style=";text-align:right;direction:rtl"> השתמש בסקר Sense Check כדי לסקר דעות ולהבהיר כל בעיה עם הטיוטה.</p><p style=";text-align:right;direction:rtl"> לאחר שמשוב נשקל ומשולב במסמך, המשך לאישור או הסכם עם הצעת הסכמה או קונצנזוס.</p><p style=";text-align:right;direction:rtl"> השרשור הופך לתיעוד ברור של התקדמות יצירת המסמכים וההחלטות שהתקבלו.</p>
+      description: <h3 id="what-is-the-purpose-of-the-document" style=";text-align:right;direction:rtl">מה מטרת המסמך?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="why-is-this-important" style=";text-align:right;direction:rtl"> למה זה חשוב?</h3><p style=";text-align:right;direction:rtl"></p><h3 id="what-are-you-asking-people-to-do" style=";text-align:right;direction:rtl"> מה אתה מבקש מאנשים לעשות?</h3><p style=";text-align:right;direction:rtl"></p>
+      document: מסמך
+  base_mailer:
+    via_loomio: "%{name} (דרך %{site_name})"
+  task_mailer:
+    task_due_reminder:
+      subject: 'תזכורת למשימה: %{name}'
+      greeting: 'היי %{name}, המשימה הבאה היא %{due}:'
+      view_task: הצג ב-%{site_name}
+      update_or_comment: אם כבר השלמת משימה זו, אנא סמן אותה. אם זה לא הושלם, אנא שתף עדכון התקדמות.
+      due_today: היום
+      due_in_count_days: בעוד %{count} ימים
