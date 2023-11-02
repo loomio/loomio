@@ -7,7 +7,7 @@ import * as Sentry from '@sentry/vue';
 import { forEach, snakeCase } from 'lodash';
 import router from '@/routes';
 
-export default (function(callback) {
+export default function(callback) {
   const client = new RestfulClient('boot');
   client.get('site').then(function(appConfig) {
     appConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -68,4 +68,4 @@ export default (function(callback) {
 
     return callback(appConfig);
   });
-});
+};
