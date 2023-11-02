@@ -1,10 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS206: Consider reworking classes to avoid initClass
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let StanceModel;
 import BaseModel       from '@/shared/record_store/base_model';
 import AppConfig       from '@/shared/services/app_config';
 import HasTranslations from '@/shared/mixins/has_translations';
@@ -14,147 +7,141 @@ import { sumBy, map, head, each, compact, flatten, includes, find, sortBy, parse
 
 const stancesBecameUpdatable = new Date("2020-08-11");
 
-export default StanceModel = (function() {
-  StanceModel = class StanceModel extends BaseModel {
-    static initClass() {
-      this.singular = 'stance';
-      this.plural = 'stances';
-      this.indices = ['pollId', 'latest', 'participantId'];
-      this.uniqueIndices = ['id'];
+export default class StanceModel extends BaseModel {
+  static singular = 'stance';
+  static plural = 'stances';
+  static indices = ['pollId', 'latest', 'participantId'];
+  static uniqueIndices = ['id'];
+
+  afterConstruction() {
+    return HasTranslations.apply(this);
+  }
+
+  defaultValues() {
+    return {
+      reason: '',
+      reasonFormat: 'html',
+      files: [],
+      imageFiles: [],
+      attachments: [],
+      linkPreviews: [],
+      revokedAt: null,
+      participantId: null,
+      pollId: null,
+      optionScores: {},
+      castAt: null
+    };
+  }
+
+  relationships() {
+    this.belongsTo('poll');
+    return this.belongsTo('participant', {from: 'users'});
+  }
+
+  edited() {
+    if (this.createdAt > stancesBecameUpdatable) {
+      return this.versionsCount > 2;
+    } else {
+      return this.versionsCount > 1;
     }
+  }
 
-    afterConstruction() {
-      return HasTranslations.apply(this);
+  discussion() { return this.poll().discussion(); }
+  participantName() {
+    if (this.participant()) {
+      return this.participant().nameWithTitle(this.poll().group());
+    } else {
+      return i18n.t('common.anonymous');
     }
+  }
 
-    defaultValues() {
-      return {
-        reason: '',
-        reasonFormat: 'html',
-        files: [],
-        imageFiles: [],
-        attachments: [],
-        linkPreviews: [],
-        revokedAt: null,
-        participantId: null,
-        pollId: null,
-        optionScores: {},
-        castAt: null
-      };
-    }
+  reactions() {
+    return this.recordStore.reactions.find({reactableId: this.id, reactableType: "Stance"});
+  }
 
-    relationships() {
-      this.belongsTo('poll');
-      return this.belongsTo('participant', {from: 'users'});
-    }
+  singleChoice() { return this.poll().singleChoice(); }
+  hasOptionIcon() { return this.poll().config().has_option_icon; }
 
-    edited() {
-      if (this.createdAt > stancesBecameUpdatable) {
-        return this.versionsCount > 2;
-      } else {
-        return this.versionsCount > 1;
-      }
-    }
+  participantIds() {
+    return this.poll().participantIds();
+  }
 
-    discussion() { return this.poll().discussion(); }
-    participantName() {
-      if (this.participant()) {
-        return this.participant().nameWithTitle(this.poll().group());
-      } else {
-        return i18n.t('common.anonymous');
-      }
-    }
+  memberIds() {
+    return this.poll().memberIds();
+  }
 
-    reactions() {
-      return this.recordStore.reactions.find({reactableId: this.id, reactableType: "Stance"});
-    }
+  group() {
+    return this.poll().group();
+  }
 
-    singleChoice() { return this.poll().singleChoice(); }
-    hasOptionIcon() { return this.poll().config().has_option_icon; }
+  isBlank() {
+    return (this.reason === '') || (this.reason === null) || (this.reason === '<p></p>');
+  }
 
-    participantIds() {
-      return this.poll().participantIds();
-    }
+  author() {
+    return this.participant();
+  }
 
-    memberIds() {
-      return this.poll().memberIds();
-    }
+  stanceChoice() {
+    return head(this.sortedChoices());
+  }
 
-    group() {
-      return this.poll().group();
-    }
+  pollOption() {
+    if (this.pollOptionId()) { return this.recordStore.pollOptions.find(this.pollOptionId()); }
+  }
 
-    isBlank() {
-      return (this.reason === '') || (this.reason === null) || (this.reason === '<p></p>');
-    }
+  pollOptionId() {
+    return this.pollOptionIds()[0];
+  }
 
-    author() {
-      return this.participant();
-    }
+  pollOptionIds() {
+    return map(Object.keys(this.optionScores), parseInt);
+  }
 
-    stanceChoice() {
-      return head(this.sortedChoices());
-    }
+  pollOptions() {
+    return this.recordStore.pollOptions.find(this.pollOptionIds());
+  }
 
-    pollOption() {
-      if (this.pollOptionId()) { return this.recordStore.pollOptions.find(this.pollOptionId()); }
-    }
-
-    pollOptionId() {
-      return this.pollOptionIds()[0];
-    }
-
-    pollOptionIds() {
-      return map(Object.keys(this.optionScores), parseInt);
-    }
-
-    pollOptions() {
-      return this.recordStore.pollOptions.find(this.pollOptionIds());
-    }
-
-    choose(optionIds) {
-      this.optionScores = {};
-      compact(flatten([optionIds])).forEach(function(id) {
-        return this.optionScores[id] = 1;
-      });
-      return this;
-    }
-
-    sortedChoices() {
-      const optionsById = {};
-      this.pollOptions().forEach(o => optionsById[o.id] = o);
-      const poll = this.poll();
-
-      let choices = map(this.optionScores, (score, pollOptionId) => {
-        return {
-          score,
-          rank: (poll.pollType === 'ranked_choice') && ((poll.minimumStanceChoices - score) + 1),
-          show: (score > 0) || (poll.pollType === "score"),
-          pollOption: optionsById[pollOptionId]
-        };
+  choose(optionIds) {
+    this.optionScores = {};
+    compact(flatten([optionIds])).forEach(function(id) {
+      return this.optionScores[id] = 1;
     });
+    return this;
+  }
 
-      choices = choices.filter(c => c.pollOption);
+  sortedChoices() {
+    const optionsById = {};
+    this.pollOptions().forEach(o => optionsById[o.id] = o);
+    const poll = this.poll();
 
-      if (poll.pollType === 'meeting') {
-        return sortBy(choices, c => c.pollOption.priority);
-      } else {
-        return sortBy(choices, '-score');
-      }
+    let choices = map(this.optionScores, (score, pollOptionId) => {
+      return {
+        score,
+        rank: (poll.pollType === 'ranked_choice') && ((poll.minimumStanceChoices - score) + 1),
+        show: (score > 0) || (poll.pollType === "score"),
+        pollOption: optionsById[pollOptionId]
+      };
+  });
+
+    choices = choices.filter(c => c.pollOption);
+
+    if (poll.pollType === 'meeting') {
+      return sortBy(choices, c => c.pollOption.priority);
+    } else {
+      return sortBy(choices, '-score');
     }
+  }
 
-    votedFor(option) {
-      return includes(map(this.pollOptions(), 'id'), option.id);
-    }
+  votedFor(option) {
+    return includes(map(this.pollOptions(), 'id'), option.id);
+  }
 
-    scoreFor(option) {
-      return this.optionScores[option.id] || 0;
-    }
+  scoreFor(option) {
+    return this.optionScores[option.id] || 0;
+  }
 
-    totalScore() {
-      return sumBy(this.sortedChoices(), 'score');
-    }
-  };
-  StanceModel.initClass();
-  return StanceModel;
-})();
+  totalScore() {
+    return sumBy(this.sortedChoices(), 'score');
+  }
+};

@@ -60,9 +60,7 @@ export default (function(callback) {
     });
 
     forEach(Records, function(recordInterface, k) {
-      const {
-        model
-      } = Object.getPrototypeOf(recordInterface);
+      const model = recordInterface.model
       if (model && AppConfig.permittedParams[snakeCase(model.singular)]) {
         model.serializableAttributes = AppConfig.permittedParams[snakeCase(model.singular)];
       }

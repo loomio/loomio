@@ -31,7 +31,6 @@ import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_
 import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_records_interface';
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface';
 import TaskRecordsInterface from '@/shared/interfaces/task_records_interface';
-import DemoRecordsInterface from '@/shared/interfaces/demo_records_interface';
 import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface';
 
 const db      = new loki('default.db');
@@ -39,7 +38,6 @@ const records = new RecordStore(db);
 
 records.addRecordsInterface(CommentRecordsInterface);
 records.addRecordsInterface(ChatbotRecordsInterface);
-records.addRecordsInterface(DemoRecordsInterface);
 records.addRecordsInterface(DiscussionRecordsInterface);
 records.addRecordsInterface(DiscussionTemplateRecordsInterface);
 records.addRecordsInterface(DiscussionReaderRecordsInterface);

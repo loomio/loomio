@@ -1,11 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS206: Consider reworking classes to avoid initClass
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let GroupRecordsInterface;
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface';
 import GroupModel           from '@/shared/models/group_model';
 import Session              from '@/shared/services/session';
@@ -13,59 +5,56 @@ import EventBus             from '@/shared/services/event_bus';
 import {uniq, concat, compact, map, includes, head} from 'lodash';
 import NullGroupModel   from '@/shared/models/null_group_model';
 
+export default class GroupRecordsInterface extends BaseRecordsInterface {
+  constructor(recordStore) {
+    super(recordStore);
+    this.model = GroupModel;
+    this.baseConstructor(recordStore);
+  }
 
-export default GroupRecordsInterface = (function() {
-  GroupRecordsInterface = class GroupRecordsInterface extends BaseRecordsInterface {
-    static initClass() {
-      this.prototype.model = GroupModel;
+  nullModel() { return new NullGroupModel(); }
+
+  fuzzyFind(id) {
+    // could be id or key or handle
+    return this.find(id) || head(this.find({handle: `${id}`.toLowerCase()}));
+  }
+
+  findOrFetch(id, options) {
+    if (options == null) { options = {}; }
+    const record = this.fuzzyFind(id);
+    if (record) {
+      this.remote.fetchById(id, options);
+      return Promise.resolve(record);
+    } else {
+      return this.remote.fetchById(id, options)
+      .then(() => this.fuzzyFind(id));
     }
+  }
 
-    nullModel() { return new NullGroupModel(); }
+  fetchByParent(parentGroup) {
+    return this.fetch({
+      path: `${parentGroup.id}/subgroups`});
+  }
 
-    fuzzyFind(id) {
-      // could be id or key or handle
-      return this.find(id) || head(this.find({handle: `${id}`.toLowerCase()}));
-    }
+  fetchExploreGroups(query, options) {
+    if (options == null) { options = {}; }
+    options['q'] = query;
+    return this.fetch({
+      params: options});
+  }
 
-    findOrFetch(id, options) {
-      if (options == null) { options = {}; }
-      const record = this.fuzzyFind(id);
-      if (record) {
-        this.remote.fetchById(id, options);
-        return Promise.resolve(record);
-      } else {
-        return this.remote.fetchById(id, options)
-        .then(() => this.fuzzyFind(id));
-      }
-    }
+  getExploreResultsCount(query, options) {
+    if (options == null) { options = {}; }
+    options['q'] = query;
+    return this.fetch({
+      path: 'count_explore_results',
+      params: options
+    });
+  }
 
-    fetchByParent(parentGroup) {
-      return this.fetch({
-        path: `${parentGroup.id}/subgroups`});
-    }
-
-    fetchExploreGroups(query, options) {
-      if (options == null) { options = {}; }
-      options['q'] = query;
-      return this.fetch({
-        params: options});
-    }
-
-    getExploreResultsCount(query, options) {
-      if (options == null) { options = {}; }
-      options['q'] = query;
-      return this.fetch({
-        path: 'count_explore_results',
-        params: options
-      });
-    }
-
-    getHandle({name, parentHandle}) {
-      return this.fetch({
-        path: 'suggest_handle',
-        params: {name, parent_handle: parentHandle}});
-    }
-  };
-  GroupRecordsInterface.initClass();
-  return GroupRecordsInterface;
-})();
+  getHandle({name, parentHandle}) {
+    return this.fetch({
+      path: 'suggest_handle',
+      params: {name, parent_handle: parentHandle}});
+  }
+};

@@ -1,287 +1,272 @@
-/*
- * decaffeinate suggestions:
- * DS002: Fix invalid constructor
- * DS102: Remove unnecessary code created because of implicit returns
- * DS206: Consider reworking classes to avoid initClass
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let GroupModel;
 import BaseModel    from '@/shared/record_store/base_model';
 import AppConfig    from '@/shared/services/app_config';
 import HasDocuments from '@/shared/mixins/has_documents';
 import HasTranslations  from '@/shared/mixins/has_translations';
 import {filter, some, map, each, compact} from 'lodash';
 
-export default GroupModel = (function() {
-  GroupModel = class GroupModel extends BaseModel {
-    constructor(...args) {
-      super(...args);
-      this.archive = this.archive.bind(this);
-      this.export = this.export.bind(this);
-      this.exportCSV = this.exportCSV.bind(this);
-      this.uploadLogo = this.uploadLogo.bind(this);
-      this.uploadCover = this.uploadCover.bind(this);
-    }
+export default class GroupModel extends BaseModel {
+  static singular = 'group';
+  static plural = 'groups';
+  static uniqueIndices = ['id', 'key'];
+  static indices = ['parentId'];
 
-    static initClass() {
-      this.singular = 'group';
-      this.plural = 'groups';
-      this.uniqueIndices = ['id', 'key'];
-      this.indices = ['parentId'];
-    }
+  constructor(...args) {
+    super(...args);
+    this.archive = this.archive.bind(this);
+    this.export = this.export.bind(this);
+    this.exportCSV = this.exportCSV.bind(this);
+    this.uploadLogo = this.uploadLogo.bind(this);
+    this.uploadCover = this.uploadCover.bind(this);
+  }
 
-    defaultValues() {
-      return {
-        parentId: null,
-        name: '',
-        description: '',
-        descriptionFormat: 'html',
-        groupPrivacy: 'secret',
-        handle: null,
-        discussionPrivacyOptions: 'private_only',
-        membershipGrantedUpon: 'approval',
-        membersCanAnnounce: true,
-        membersCanAddMembers: true,
-        membersCanEditDiscussions: true,
-        membersCanEditComments: true,
-        membersCanDeleteComments: true,
-        membersCanRaiseMotions: true,
-        membersCanStartDiscussions: true,
-        membersCanCreateSubgroups: false,
-        motionsCanBeEdited: false,
-        parentMembersCanSeeDiscussions: false,
-        category: null,
-        files: [],
-        imageFiles: [],
-        attachments: [],
-        linkPreviews: [],
-        subscription: {},
-        specifiedVotersOnly: false,
-        recipientMessage: null,
-        recipientAudience: null,
-        recipientUserIds: [],
-        recipientChatbotIds: [],
-        recipientEmails: [],
-        notifyRecipients: true,
-        isMember: false,
-        isAdmin: false
-      };
-    }
+  defaultValues() {
+    return {
+      parentId: null,
+      name: '',
+      description: '',
+      descriptionFormat: 'html',
+      groupPrivacy: 'secret',
+      handle: null,
+      discussionPrivacyOptions: 'private_only',
+      membershipGrantedUpon: 'approval',
+      membersCanAnnounce: true,
+      membersCanAddMembers: true,
+      membersCanEditDiscussions: true,
+      membersCanEditComments: true,
+      membersCanDeleteComments: true,
+      membersCanRaiseMotions: true,
+      membersCanStartDiscussions: true,
+      membersCanCreateSubgroups: false,
+      motionsCanBeEdited: false,
+      parentMembersCanSeeDiscussions: false,
+      category: null,
+      files: [],
+      imageFiles: [],
+      attachments: [],
+      linkPreviews: [],
+      subscription: {},
+      specifiedVotersOnly: false,
+      recipientMessage: null,
+      recipientAudience: null,
+      recipientUserIds: [],
+      recipientChatbotIds: [],
+      recipientEmails: [],
+      notifyRecipients: true,
+      isMember: false,
+      isAdmin: false
+    };
+  }
 
-    afterConstruction() {
-      if (this.privacyIsClosed()) {
-        this.allowPublicThreads = this.discussionPrivacyOptions === 'public_or_private';
-      }
-      HasDocuments.apply(this, {showTitle: true});
-      return HasTranslations.apply(this);
+  afterConstruction() {
+    if (this.privacyIsClosed()) {
+      this.allowPublicThreads = this.discussionPrivacyOptions === 'public_or_private';
     }
+    HasDocuments.apply(this, {showTitle: true});
+    return HasTranslations.apply(this);
+  }
 
-    relationships() {
-      this.hasMany('discussions', {find: {discardedAt: null}});
-      this.hasMany('polls', {find: {discardedAt: null}});
-      this.hasMany('membershipRequests');
-      this.hasMany('memberships');
-      this.hasMany('chatbots');
-      this.hasMany('allDocuments', {from: 'documents', with: 'groupId', of: 'id'});
-      this.hasMany('subgroups', {from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'});
-      this.belongsTo('parent', {from: 'groups'});
-      return this.belongsTo('creator', {from: 'users'});
-    }
+  relationships() {
+    this.hasMany('discussions', {find: {discardedAt: null}});
+    this.hasMany('polls', {find: {discardedAt: null}});
+    this.hasMany('membershipRequests');
+    this.hasMany('memberships');
+    this.hasMany('chatbots');
+    this.hasMany('allDocuments', {from: 'documents', with: 'groupId', of: 'id'});
+    this.hasMany('subgroups', {from: 'groups', with: 'parentId', of: 'id', orderBy: 'name'});
+    this.belongsTo('parent', {from: 'groups'});
+    return this.belongsTo('creator', {from: 'users'});
+  }
 
-    author() { return this.creator(); }
-  
-    isBlank() {
-      return (this.description === '') || (this.description === null) || (this.description === '<p></p>');
-    }
+  author() { return this.creator(); }
 
-    tags() {
-      return this.recordStore.tags.collection.chain().find({groupId: this.id}).simplesort('priority').data();
-    }
+  isBlank() {
+    return (this.description === '') || (this.description === null) || (this.description === '<p></p>');
+  }
 
-    tagsByName() {
-      return this.recordStore.tags.collection.chain().find({groupId: this.id}).simplesort('name').data();
-    }
+  tags() {
+    return this.recordStore.tags.collection.chain().find({groupId: this.id}).simplesort('priority').data();
+  }
 
-    tagNames() {
-      return this.recordStore.tags.collection.chain().find({groupId: this.id}).simplesort('name').data().map(t => t.name);
-    }
+  tagsByName() {
+    return this.recordStore.tags.collection.chain().find({groupId: this.id}).simplesort('name').data();
+  }
 
-    parentOrSelf() {
-      if (this.parentId) { return this.parent(); } else { return this; }
-    }
+  tagNames() {
+    return this.recordStore.tags.collection.chain().find({groupId: this.id}).simplesort('name').data().map(t => t.name);
+  }
 
-    group() { return this; }
+  parentOrSelf() {
+    if (this.parentId) { return this.parent(); } else { return this; }
+  }
 
-    fetchToken() {
-      return this.remote.getMember(this.id, 'token')
-      .then(() => this.token);
-    }
+  group() { return this; }
 
-    resetToken() {
-      return this.remote.postMember(this.id, 'reset_token')
-      .then(() => this.token);
-    }
+  fetchToken() {
+    return this.remote.getMember(this.id, 'token')
+    .then(() => this.token);
+  }
 
-    pendingMembershipRequests() {
-      return filter(this.membershipRequests(), membershipRequest => membershipRequest.isPending());
-    }
+  resetToken() {
+    return this.remote.postMember(this.id, 'reset_token')
+    .then(() => this.token);
+  }
 
-    hasPendingMembershipRequests() {
-      return some(this.pendingMembershipRequests());
-    }
+  pendingMembershipRequests() {
+    return filter(this.membershipRequests(), membershipRequest => membershipRequest.isPending());
+  }
 
-    hasPendingMembershipRequestFrom(user) {
-      return some(this.pendingMembershipRequests(), request => request.requestorId === user.id);
-    }
+  hasPendingMembershipRequests() {
+    return some(this.pendingMembershipRequests());
+  }
 
-    previousMembershipRequests() {
-      return filter(this.membershipRequests(), membershipRequest => !membershipRequest.isPending());
-    }
+  hasPendingMembershipRequestFrom(user) {
+    return some(this.pendingMembershipRequests(), request => request.requestorId === user.id);
+  }
 
-    hasPreviousMembershipRequests() {
-      return some(this.previousMembershipRequests());
-    }
+  previousMembershipRequests() {
+    return filter(this.membershipRequests(), membershipRequest => !membershipRequest.isPending());
+  }
 
-    pendingInvitations() {
-      return filter(this.invitations(), invitation => invitation.isPending() && invitation.singleUse);
-    }
+  hasPreviousMembershipRequests() {
+    return some(this.previousMembershipRequests());
+  }
 
-    hasPendingInvitations() {
-      return some(this.pendingInvitations());
-    }
+  pendingInvitations() {
+    return filter(this.invitations(), invitation => invitation.isPending() && invitation.singleUse);
+  }
 
-    hasSubgroups() {
-      return this.isParent() && this.subgroups().length;
-    }
+  hasPendingInvitations() {
+    return some(this.pendingInvitations());
+  }
 
-    publicOrganisationIds() {
-      return map(filter(this.subgroups().concat(this), group => group.groupPrivacy === 'open'), 'id');
-    }
+  hasSubgroups() {
+    return this.isParent() && this.subgroups().length;
+  }
 
-    organisationIds() {
-      return map(this.subgroups(), 'id').concat(this.id);
-    }
+  publicOrganisationIds() {
+    return map(filter(this.subgroups().concat(this), group => group.groupPrivacy === 'open'), 'id');
+  }
 
-    selfAndSubgroups() {
-      return this.recordStore.groups.find(this.selfAndSubgroupIds());
-    }
+  organisationIds() {
+    return map(this.subgroups(), 'id').concat(this.id);
+  }
 
-    selfAndSubgroupIds() {
-      return [this.id].concat(this.recordStore.groups.find({parentId: this.id}).map(g => g.id));
-    }
+  selfAndSubgroups() {
+    return this.recordStore.groups.find(this.selfAndSubgroupIds());
+  }
 
-    membershipFor(user) {
-      return this.recordStore.memberships.find({groupId: this.id, userId: user.id})[0];
-    }
+  selfAndSubgroupIds() {
+    return [this.id].concat(this.recordStore.groups.find({parentId: this.id}).map(g => g.id));
+  }
 
-    members() {
-      return this.recordStore.users.collection.find({id: {$in: this.memberIds()}});
-    }
+  membershipFor(user) {
+    return this.recordStore.memberships.find({groupId: this.id, userId: user.id})[0];
+  }
 
-    parentsAndSelf() {
-      return this.selfAndParents().reverse();
-    }
+  members() {
+    return this.recordStore.users.collection.find({id: {$in: this.memberIds()}});
+  }
 
-    selfAndParents() {
-      return compact([this].concat(this.parentId && this.parent().parentsAndSelf()));
-    }
+  parentsAndSelf() {
+    return this.selfAndParents().reverse();
+  }
 
-    parentAndSelfMemberships() {
-      return this.recordStore.memberships.collection.find({groupId: {$in: this.parentOrSelf().selfAndSubgroupIds()}});
-    }
+  selfAndParents() {
+    return compact([this].concat(this.parentId && this.parent().parentsAndSelf()));
+  }
 
-    parentAndSelfMembershipIds() {
-      return this.parentAndSelfMemberships().map(u => u.id);
-    }
+  parentAndSelfMemberships() {
+    return this.recordStore.memberships.collection.find({groupId: {$in: this.parentOrSelf().selfAndSubgroupIds()}});
+  }
 
-    parentAndSelfMembers() {
-      return this.recordStore.users.collection.find({id: {$in: this.parentAndSelfMemberships().map(m => m.userId)}});
-    }
+  parentAndSelfMembershipIds() {
+    return this.parentAndSelfMemberships().map(u => u.id);
+  }
 
-    parentAndSelfMemberIds() {
-      return this.parentAndSelfMembers().map(u => u.id);
-    }
+  parentAndSelfMembers() {
+    return this.recordStore.users.collection.find({id: {$in: this.parentAndSelfMemberships().map(m => m.userId)}});
+  }
 
-    membersInclude(user) {
-      return this.membershipFor(user) || false;
-    }
+  parentAndSelfMemberIds() {
+    return this.parentAndSelfMembers().map(u => u.id);
+  }
 
-    adminsInclude(user) {
-      return this.recordStore.memberships.find({groupId: this.id, userId: user.id, admin: true})[0] || false;
-    }
+  membersInclude(user) {
+    return this.membershipFor(user) || false;
+  }
 
-    adminMemberships() {
-      return this.recordStore.memberships.find({groupId: this.id, admin: true});
-    }
+  adminsInclude(user) {
+    return this.recordStore.memberships.find({groupId: this.id, userId: user.id, admin: true})[0] || false;
+  }
 
-    admins() {
-      return this.recordStore.users.find({id: {$in: this.adminIds()}});
-    }
+  adminMemberships() {
+    return this.recordStore.memberships.find({groupId: this.id, admin: true});
+  }
 
-    memberIds() {
-      return map(this.memberships(), 'userId');
-    }
+  admins() {
+    return this.recordStore.users.find({id: {$in: this.adminIds()}});
+  }
 
-    adminIds() {
-      return map(this.adminMemberships(), 'userId');
-    }
+  memberIds() {
+    return map(this.memberships(), 'userId');
+  }
 
-    parentName() {
-      if (this.parent() != null) { return this.parent().name; }
-    }
+  adminIds() {
+    return map(this.adminMemberships(), 'userId');
+  }
 
-    privacyIsOpen() {
-      return this.groupPrivacy === 'open';
-    }
+  parentName() {
+    if (this.parent() != null) { return this.parent().name; }
+  }
 
-    privacyIsClosed() {
-      return this.groupPrivacy === 'closed';
-    }
+  privacyIsOpen() {
+    return this.groupPrivacy === 'open';
+  }
 
-    privacyIsSecret() {
-      return this.groupPrivacy === 'secret';
-    }
+  privacyIsClosed() {
+    return this.groupPrivacy === 'closed';
+  }
 
-    isArchived() {
-      return (this.archivedAt != null);
-    }
+  privacyIsSecret() {
+    return this.groupPrivacy === 'secret';
+  }
 
-    isParent() {
-      return (this.parentId == null);
-    }
+  isArchived() {
+    return (this.archivedAt != null);
+  }
 
-    archive() {
-      return this.remote.patchMember(this.key, 'archive').then(() => {
-        this.remove();
-        return each(this.memberships(), m => m.remove());
-      });
-    }
+  isParent() {
+    return (this.parentId == null);
+  }
 
-    export() {
-      return this.remote.postMember(this.id, 'export');
-    }
+  archive() {
+    return this.remote.patchMember(this.key, 'archive').then(() => {
+      this.remove();
+      return each(this.memberships(), m => m.remove());
+    });
+  }
 
-    exportCSV() {
-      return this.remote.postMember(this.id, 'export_csv');
-    }
+  export() {
+    return this.remote.postMember(this.id, 'export');
+  }
 
-    uploadLogo(file) {
-      return this.remote.upload(`${this.key}/upload_photo/logo`, file, {}, function() {});
-    }
+  exportCSV() {
+    return this.remote.postMember(this.id, 'export_csv');
+  }
 
-    uploadCover(file) {
-      return this.remote.upload(`${this.key}/upload_photo/cover_photo`, file, {}, function() {});
-    }
+  uploadLogo(file) {
+    return this.remote.upload(`${this.key}/upload_photo/logo`, file, {}, function() {});
+  }
 
-    hasSubscription() {
-      return (this.subscriptionKind != null);
-    }
+  uploadCover(file) {
+    return this.remote.upload(`${this.key}/upload_photo/cover_photo`, file, {}, function() {});
+  }
 
-    isSubgroupOfSecretParent() {
-      return this.parent() && this.parent().privacyIsSecret();
-    }
-  };
-  GroupModel.initClass();
-  return GroupModel;
-})();
+  hasSubscription() {
+    return (this.subscriptionKind != null);
+  }
+
+  isSubgroupOfSecretParent() {
+    return this.parent() && this.parent().privacyIsSecret();
+  }
+};
