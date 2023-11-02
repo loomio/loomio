@@ -25,6 +25,9 @@ export default
     },
     
     methods: {
+      optionMeaning(id) {
+        return Records.pollOptions.find(id).meaning
+      },
       clampPercent(num) { return Math.max(0, Math.min(num, 100)); }
     },
 
@@ -79,9 +82,17 @@ export default
             style="width: 128px; min-width: 128px; padding: 0 8px 0 0"
           )
             div.rounded(:style="{width: clampPercent(option[poll.chartColumn])+'%', height: '24px', 'background-color': option.color}")
-          td(v-if="col == 'name' ", :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
-            span(v-if="option.name_format == 'plain'") {{option.name}}
-            span(v-if="option.name_format == 'i18n'" v-t="option.name")
+          td(v-if="col == 'name' " :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
+            template(v-if="option.meaning")
+              v-tooltip(right)
+                template(v-slot:activator="{ on, attrs }")
+                  span(v-bind="attrs" v-on="on")
+                    span(v-if="option.name_format == 'plain'") {{option.name}}
+                    span(v-if="option.name_format == 'i18n'" v-t="option.name")
+                span {{optionMeaning(option.id)}}
+            template(v-else)
+              span(v-if="option.name_format == 'plain'") {{option.name}}
+              span(v-if="option.name_format == 'i18n'" v-t="option.name")
             // poll-meeting-time(:name='option.name')
           td.text-right(v-if="col == 'target_percent' && option.icon == 'agree'") {{option.target_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'target_percent' && option.icon != 'agree'")
