@@ -16,9 +16,10 @@ export default class BaseModel {
     Comment: 'comments',
     CommentVote: 'comments',
     Membership: 'memberships',
-    MembershipRequest: 'membershipRequests'
+    MembershipRequest: 'membershipRequests',
+    DiscussionTemplate: 'discussionTemplates',
+    PollTemplate: 'pollTemplates',
   };
-
 
   // indicate to Loki our 'primary keys' - it promises to make these fast to lookup by.
   static uniqueIndices = ['id'];
@@ -219,22 +220,12 @@ export default class BaseModel {
   }
 
   belongsToPolymorphic(name) {
-    const typeMap = {
-      Group: 'groups',
-      Discussion: 'discussions',
-      Poll: 'polls',
-      Outcome: 'outcomes',
-      Stance: 'stances',
-      Comment: 'comments',
-      CommentVote: 'comments',
-      Membership: 'memberships',
-      MembershipRequest: 'membershipRequests'
-    };
 
     return this[name] = () => {
       const typeColumn = `${name}Type`;
       const idColumn = `${name}Id`;
-      return this.recordStore[typeMap[this[typeColumn]]].find(this[idColumn]);
+      console.log('hi', this[typeColumn])
+      return this.recordStore[BaseModel.eventTypeMap[this[typeColumn]]].find(this[idColumn]);
     };
   }
 
