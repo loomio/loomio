@@ -22,7 +22,10 @@ ActiveAdmin.register Group, as: 'Group' do
 
   member_action :update, :method => :put do
     group = Group.find(params[:id])
-    group.update(permitted_params[:group])
+    group.assign_attributes_and_files(permitted_params[:group])
+    privacy_change = GroupService::PrivacyChange.new(group)
+    group.save!
+    privacy_change.commit!
     redirect_to admin_groups_path, :notice => "Group updated"
   end
 
@@ -138,6 +141,7 @@ ActiveAdmin.register Group, as: 'Group' do
         else
           "Group privacy unknown"
         end
+
       end
 
       row :is_visible_to_public
@@ -198,7 +202,7 @@ ActiveAdmin.register Group, as: 'Group' do
       f.input :parent_id, label: "Parent Id"
       f.input :handle, as: :string
       f.input :subscription_id, label: "Subscription Id"
-      f.input :is_visible_to_public
+      f.input :is_visible_to_public, label: "Visible to public? (will change privacy of group, subgroups, discussions)"
       f.input :membership_granted_upon, as: :select, collection: %w[request approval invitation]
     end
     f.actions
