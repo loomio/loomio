@@ -9,43 +9,41 @@ import openModal      from '@/shared/helpers/open_modal';
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
 export default new class StanceService {
-  constructor() {
-    this.makeAdmin = {
-      name: 'membership_dropdown.make_coordinator',
-      canPerform(poll, user) {
-        return poll.adminsInclude(Session.user()) && !poll.adminsInclude(user);
-      },
-      perform(poll, user) {
-        return Records.remote.post('stances/make_admin', {participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'});
-      }
-    };
+  makeAdmin = {
+    name: 'membership_dropdown.make_coordinator',
+    canPerform(poll, user) {
+      return poll.adminsInclude(Session.user()) && !poll.adminsInclude(user);
+    },
+    perform(poll, user) {
+      return Records.remote.post('stances/make_admin', {participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'});
+    }
+  };
 
-    this.removeAdmin = {
-      name: 'membership_dropdown.demote_coordinator',
-      canPerform(poll, user) {
-        return poll.adminsInclude(Session.user()) && poll.adminsInclude(user);
-      },
-      perform(poll, user) {
-        return Records.remote.post('stances/remove_admin', {participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'});
-      }
-    };
+  removeAdmin = {
+    name: 'membership_dropdown.demote_coordinator',
+    canPerform(poll, user) {
+      return poll.adminsInclude(Session.user()) && poll.adminsInclude(user);
+    },
+    perform(poll, user) {
+      return Records.remote.post('stances/remove_admin', {participant_id: user.id, poll_id: poll.id, exclude_types: 'discussion'});
+    }
+  };
 
-    this.revoke = {
-      name: 'membership_dropdown.remove_from.poll',
-      canPerform(poll, user) {
-        return poll.adminsInclude(Session.user());
-      },
-      perform(poll, user) {
-        return Records.remote.post('stances/revoke', {participant_id: user.id, poll_id: poll.id})
-        .then(() => {
-          if (user.id === Session.user().id) {
-            EventBus.$emit('deleteMyStance', poll.id); 
-          }
-          return Flash.success("membership_remove_modal.invitation.flash");
-        });
-      }
-    };
-  }
+  revoke = {
+    name: 'membership_dropdown.remove_from.poll',
+    canPerform(poll, user) {
+      return poll.adminsInclude(Session.user());
+    },
+    perform(poll, user) {
+      return Records.remote.post('stances/revoke', {participant_id: user.id, poll_id: poll.id})
+      .then(() => {
+        if (user.id === Session.user().id) {
+          EventBus.$emit('deleteMyStance', poll.id); 
+        }
+        return Flash.success("membership_remove_modal.invitation.flash");
+      });
+    }
+  };
   
   actions(stance, vm, event) {
     return {

@@ -3,7 +3,7 @@ import Records from '@/shared/services/records';
 import { subWeeks } from 'date-fns';
 import { each, compact } from 'lodash';
 
-export default (function(options) {
+export default function(options) {
   let chain = Records.discussions.collection.chain();
   chain = chain.find({discardedAt: null});
   if (options.group) { chain = chain.find({groupId: { $in: options.group.organisationIds() }}); }
@@ -39,4 +39,4 @@ export default (function(options) {
     } })());
   }
   return chain.simplesort('lastActivityAt', true).data();
-});
+}
