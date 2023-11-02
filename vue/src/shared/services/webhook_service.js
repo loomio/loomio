@@ -1,16 +1,10 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let WebhookService;
 import Records        from '@/shared/services/records';
 import AppConfig      from '@/shared/services/app_config';
 import openModal      from '@/shared/helpers/open_modal';
 import EventBus from '@/shared/services/event_bus';
 import I18n from '@/i18n';
 
-export default new (WebhookService = class WebhookService {
+export default new class WebhookService {
   addAction(group) {
     return {
       name: 'webhook.add_integration',
@@ -79,4 +73,4 @@ export default new (WebhookService = class WebhookService {
       }
     };
   }
-});
+};

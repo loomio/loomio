@@ -1,13 +1,8 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 let RescueUnsavedEditsService;
 import {some, intersection, pick, uniq} from 'lodash';
 import I18n from '@/i18n';
 
-export default new (RescueUnsavedEditsService = class RescueUnsavedEditsService {
+export default new class RescueUnsavedEditsService {
   constructor() {
     this.models = [];
   }
@@ -61,4 +56,4 @@ export default new (RescueUnsavedEditsService = class RescueUnsavedEditsService 
   clear() {
     return this.models = [];
   }
-});
+};

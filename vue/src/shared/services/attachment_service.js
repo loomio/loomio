@@ -1,9 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let AttachmentService;
 import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import Session from '@/shared/services/session';
@@ -11,7 +5,7 @@ import Records from '@/shared/services/records';
 import openModal from '@/shared/helpers/open_modal';
 import Flash from '@/shared/services/flash';
 
-export default new (AttachmentService = class AttachmentService {
+export default new class AttachmentService {
   actions(attachment) {
     return {
       delete_attachment: {
@@ -65,4 +59,4 @@ export default new (AttachmentService = class AttachmentService {
       }
     };
   }
-});
+};

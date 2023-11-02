@@ -1,10 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let Session;
 import AppConfig     from '@/shared/services/app_config';
 import Records       from '@/shared/services/records';
 import LmoUrlService from '@/shared/services/lmo_url_service';
@@ -51,7 +44,7 @@ const loadLocale = function(locale) {
   }
 };
 
-export default new (Session = class Session {
+export default new class Session {
   returnTo() {
     const h = new URL(window.location.href);
     return h.pathname + h.search;
@@ -110,4 +103,4 @@ export default new (Session = class Session {
     const validProviders = AppConfig.identityProviders.map(p => p.name);
     if (validProviders.includes(AppConfig.pendingIdentity.identity_type)) { return AppConfig.pendingIdentity; }
   }
-});
+};

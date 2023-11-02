@@ -1,13 +1,6 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let HasDocuments;
 import {capitalize, uniq, union, filter, map, includes } from 'lodash';
 
-export default new (HasDocuments = class HasDocuments {
+export default new class HasDocuments {
   apply(model, opts) {
     if (opts == null) { opts = {}; }
     model.newDocumentIds     = model.newDocumentIds || [];
@@ -35,4 +28,4 @@ export default new (HasDocuments = class HasDocuments {
     model.showDocumentTitle = opts.showTitle;
     return model.documentsApplied = true;
   }
-});
+}

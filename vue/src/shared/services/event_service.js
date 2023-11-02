@@ -1,15 +1,9 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let EventService;
 import AbilityService from '@/shared/services/ability_service';
 import Flash from '@/shared/services/flash';
 import openModal from '@/shared/helpers/open_modal';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 
-export default new (EventService = class EventService {
+export default new class EventService {
   actions(event, vm) {
     return {
       move_event: {
@@ -61,4 +55,4 @@ export default new (EventService = class EventService {
       }
     };
   }
-});
+};

@@ -1,9 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let GroupService;
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
@@ -15,7 +9,7 @@ import AppConfig      from '@/shared/services/app_config';
 import i18n from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 
-export default new (GroupService = class GroupService {
+export default new class GroupService {
   actions(group) {
     const membership = group.membershipFor(Session.user());
     
@@ -252,4 +246,4 @@ export default new (GroupService = class GroupService {
       }
     };
   }
-});
+};

@@ -1,10 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let AbilityService;
 import AppConfig     from '@/shared/services/app_config';
 import Records       from '@/shared/services/records';
 import Session       from '@/shared/services/session';
@@ -13,7 +6,7 @@ import {intersection} from 'lodash';
 
 let user = () => Session.user();
 
-export default new (AbilityService = class AbilityService {
+export default new class AbilityService {
   isNotEmailVerified() {
     return Session.isSignedIn() && !Session.user().emailVerified;
   }
@@ -347,4 +340,4 @@ export default new (AbilityService = class AbilityService {
   canReopenPoll(poll) {
     return !poll.discardedAt && poll.closedAt && !poll.anonymous && poll.adminsInclude(Session.user());
   }
-});
+}

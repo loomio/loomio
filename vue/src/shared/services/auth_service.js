@@ -1,10 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let AuthService;
 import AppConfig from '@/shared/services/app_config';
 import Records   from '@/shared/services/records';
 import Session from '@/shared/services/session';
@@ -13,7 +6,7 @@ import Flash from '@/shared/services/flash';
 import i18n from '@/i18n';
 import {head, pickBy, camelCase, mapKeys, map, pick, identity, keys} from 'lodash';
 
-export default new (AuthService = class AuthService {
+export default new class AuthService {
   emailStatus(user) {
     const pendingToken = (AppConfig.pendingIdentity || {}).token;
     return Records.users.emailStatus(user.email, pendingToken).then(data => {
@@ -97,4 +90,4 @@ export default new (AuthService = class AuthService {
 
     return keys(user.errors).length === 0;
   }
-});
+}

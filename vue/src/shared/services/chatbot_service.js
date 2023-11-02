@@ -1,16 +1,10 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let ChatbotService;
 import Records        from '@/shared/services/records';
 import AppConfig      from '@/shared/services/app_config';
 import openModal      from '@/shared/helpers/open_modal';
 import EventBus from '@/shared/services/event_bus';
 import I18n from '@/i18n';
 
-export default new (ChatbotService = class ChatbotService {
+export default new class ChatbotService {
   addActions(group) {
     return {
       matrix: {
@@ -108,4 +102,4 @@ export default new (ChatbotService = class ChatbotService {
       }
     };
   }
-});
+};

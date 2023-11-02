@@ -1,10 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let ThreadService;
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
@@ -14,7 +7,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import { hardReload } from '@/shared/helpers/window';
 
-export default new (ThreadService = class ThreadService {
+export default new class ThreadService {
   actions(discussion, vm) {
     return {
       make_a_copy: {
@@ -384,4 +377,4 @@ export default new (ThreadService = class ThreadService {
       return Flash.success("discussion.pin.unpinned", 'undo', () => this.pin(thread));
     });
   }
-});
+};
