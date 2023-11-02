@@ -10,7 +10,7 @@ export default class EventModel extends BaseModel {
 
   constructor(...args) {
     super(...args);
-    // this.removeFromThread = this.removeFromThread.bind(this);
+    this.removeFromThread = this.removeFromThread.bind(this);
   }
 
   relationships() {

@@ -277,7 +277,7 @@ export default class ThreadLoader {
       local: {
         find: {
           discussionId: this.discussion.id,
-          sequenceId: {'$jgte': id}
+          sequenceId: {'$gte': id}
         },
         simplesort: 'sequenceId',
         limit: this.padding
@@ -357,7 +357,7 @@ export default class ThreadLoader {
       local: {
         find: {
           discussionId: this.discussion.id,
-          sequenceId: {$jgte: id}
+          sequenceId: {$gte: id}
         },
         limit: this.padding,
         order: 'sequenceId'
@@ -373,7 +373,6 @@ export default class ThreadLoader {
 
   addRule(rule) {
     const ruleString = JSON.stringify(rule);
-
     if (!this.ruleStrings.includes(ruleString)) {
       this.rules.push(rule);
       this.ruleStrings.push(ruleString);
@@ -472,7 +471,7 @@ export default class ThreadLoader {
     const lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0;
 
 
-    return collection.forEach(obj => {
+    collection.forEach(obj => {
       obj.isUnread = this.isUnread(obj.event);
       const isFirstInRange = some(ranges, range => range[0] === obj.event.position);
       const isLastInLastRange = last(ranges)[1] === obj.event.position;
@@ -494,7 +493,7 @@ export default class ThreadLoader {
       obj.missingAfterCount = (missingAfter && (lastPosition - last(ranges)[1])) || 0;
       obj.missingChildCount = obj.event.childCount - obj.children.length;
 
-      if (obj.children.length) { return this.addMetaData(obj.children); }
+      if (obj.children.length) { this.addMetaData(obj.children); }
     });
   }
 }
