@@ -59,12 +59,12 @@ v-sheet.emoji-picker.pa-2
   display: flex
   flex-direction: row
   flex-wrap: wrap
-  font-size: 48px
+  font-size: 36px
   margin-bottom: 16px
 
   img, span
-    width: 48px
-    height: 48px
+    width: 40px
+    height: 40px
     cursor: pointer
     text-align: center
     display: block
