@@ -224,7 +224,6 @@ export default class BaseModel {
     return this[name] = () => {
       const typeColumn = `${name}Type`;
       const idColumn = `${name}Id`;
-      console.log('hi', this[typeColumn])
       return this.recordStore[BaseModel.eventTypeMap[this[typeColumn]]].find(this[idColumn]);
     };
   }

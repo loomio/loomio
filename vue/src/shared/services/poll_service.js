@@ -1,9 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let PollService;
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
@@ -43,7 +37,7 @@ function openSetOutcomeModal(poll) {
   });
 }
 
-export default new (PollService = class PollService {
+export default new class PollService {
 
   openSetOutcomeModal(poll) { openSetOutcomeModal(poll) }
 
@@ -308,5 +302,5 @@ export default new (PollService = class PollService {
       }
     };
   }
-});
+};
 

@@ -1,8 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import DashboardPage from './components/dashboard/page';
 import InboxPage from './components/inbox/page';
 import ExplorePage from './components/explore/page';

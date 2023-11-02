@@ -1,12 +1,6 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let RangeSet;
 import {each, isEqual, last, max, map, sum, some, filter, compact, sortBy, inRange} from 'lodash';
 
-export default new (RangeSet = class RangeSet {
+export default new class RangeSet {
   parse(outer) {
     return map(outer.split(','), pair => map(pair.split('-'), s => parseInt(s)));
   }
@@ -113,4 +107,4 @@ export default new (RangeSet = class RangeSet {
   hardTest() {
     return {subtractRanges5: isEqual(this.subtractRanges)};
   }
-});
+};

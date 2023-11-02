@@ -1,8 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import { en } from '@/../../config/locales/client.en.yml';

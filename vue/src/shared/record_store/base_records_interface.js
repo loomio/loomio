@@ -1,10 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS206: Consider reworking classes to avoid initClass
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import RestfulClient from './restful_client';
 import {pick, each, merge, keys, isNumber, isString, isArray, debounce, difference, uniq} from 'lodash';
 import Vue           from 'vue';

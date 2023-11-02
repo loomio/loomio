@@ -1,9 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let CommentService;
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import Session from '@/shared/services/session';
@@ -12,7 +6,7 @@ import openModal from '@/shared/helpers/open_modal';
 import Flash from '@/shared/services/flash';
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
-export default new (CommentService = class CommentService {
+export default new class CommentService {
   actions(comment, vm, event) {
     const isOwnComment = comment.authorId === Session.userId;
     return {
@@ -153,4 +147,4 @@ export default new (CommentService = class CommentService {
       }
     };
   }
-});
+};
