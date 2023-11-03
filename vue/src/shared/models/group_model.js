@@ -211,6 +211,10 @@ export default class GroupModel extends BaseModel {
     return map(this.memberships(), 'userId');
   }
 
+  participantIds() {
+    return this.memberIds();
+  }
+
   adminIds() {
     return map(this.adminMemberships(), 'userId');
   }
