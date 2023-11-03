@@ -46,6 +46,11 @@ class PollQuery
       chain = chain.where.contains(tags: tags)
     end
 
+    if params[:status] == 'vote'
+      voted_poll_ids = Stance.where(latest: true).where.not(cast_at: nil).pluck(:poll_id)
+      chain = chain.where.not(id: voted_poll_ids)
+    end
+
     chain = chain.where(template: true) if params[:template]
     chain = chain.where(author_id: params[:author_id]) if params[:author_id]
     chain = chain.where(poll_type: params[:poll_type]) if params[:poll_type]
