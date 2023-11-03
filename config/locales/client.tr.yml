@@ -1485,6 +1485,7 @@ tr:
     too_long: Çok uzun
     edit_warning: Düzenleme yalnızca küçük değişiklikler veya yazım hatalarının düzeltilmesi için önerilir. Önemli değişiklikler için bu {{pollType}} dosyasını kapatın ve yeni bir tane başlatın.
     no_voting: Yalnızca tartışma amaçlıdır, oylama devre dışı bırakıldı
+    outdated: Modası geçmiş
   poll_common_attachment_form:
     label: Ekler
   discussions_panel:

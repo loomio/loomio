@@ -1722,6 +1722,7 @@ it:
     new_proposal_template: Nuovo modello di proposta
     edit_proposal_template: Modifica il modello di proposta
     outcomes: Risultati
+    outdated: Obsoleto
   poll_common_attachment_form:
     label: Allegati
   poll_common_add_option:

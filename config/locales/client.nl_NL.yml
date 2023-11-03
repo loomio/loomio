@@ -1701,6 +1701,7 @@ nl_NL:
     new_proposal_template: Nieuw voorstelsjabloon
     edit_proposal_template: Voorstelsjabloon bewerken
     outcomes: Resultaten
+    outdated: Verouderd
   poll_common_attachment_form:
     label: Bijlagen
   poll_common_add_option:

@@ -1725,6 +1725,7 @@ uk:
     new_proposal_template: Новий шаблон пропозиції
     edit_proposal_template: Редагувати шаблон пропозиції
     outcomes: Результати
+    outdated: Застаріла
   poll_common_attachment_form:
     label: Вкладення
   poll_common_add_option:

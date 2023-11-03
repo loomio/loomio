@@ -1459,6 +1459,7 @@ ro:
     too_long: Prea lung
     edit_warning: Editarea este recomandată numai pentru modificări minore sau pentru remedierea erorilor de ortografie. Pentru modificări semnificative, închideți acest {{pollType}} și începeți unul nou.
     no_voting: Doar pentru discuție, votul este dezactivat
+    outdated: Învechit
   poll_common_attachment_form:
     label: Atașamente
   discussions_panel:

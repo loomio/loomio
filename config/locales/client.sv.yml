@@ -1399,6 +1399,7 @@ sv:
     too_long: För länge
     edit_warning: Redigering rekommenderas endast för mindre ändringar eller korrigering av stavfel. För betydande ändringar, stäng denna {{pollType}} och starta en ny.
     no_voting: Endast för diskussion, röstning inaktiverad
+    outdated: Föråldrad
   discussions_panel:
     open: Öppen
     all: Alla

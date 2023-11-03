@@ -1685,6 +1685,7 @@ hu:
     new_proposal_template: Új ajánlatsablon
     edit_proposal_template: Szerkessze az ajánlatsablont
     outcomes: Eredmények
+    outdated: Elavult
   poll_common_attachment_form:
     label: Mellékletek
   poll_common_add_option:

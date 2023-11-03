@@ -1774,6 +1774,7 @@ fr:
     new_proposal_template: Nouveau modèle de proposition
     edit_proposal_template: Modifier le modèle de proposition
     outcomes: Résultats
+    outdated: Dépassé
   poll_common_attachment_form:
     label: Pièces jointes
   poll_common_add_option:

@@ -1756,6 +1756,7 @@ pt_BR:
     new_proposal_template: Novo modelo de proposta
     edit_proposal_template: Editar modelo de proposta
     outcomes: Resultados
+    outdated: Desatualizado
   poll_common_attachment_form:
     label: Anexos
   poll_common_add_option:

@@ -1676,6 +1676,7 @@ ca:
     submit_response: Envieu resposta
     update_response: Actualitza la resposta
     change_response: Canvia la teva resposta
+    outdated: Antiquat
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:

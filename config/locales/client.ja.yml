@@ -1100,6 +1100,7 @@ ja:
     too_long: 長すぎる
     edit_warning: 編集は、軽微な変更またはスペルミスの修正の場合にのみ推奨されます。重要な変更がある場合は、この {{pollType}} を閉じて、新しいものを開始してください。
     no_voting: ディスカッションのみのため、投票は無効です
+    outdated: 時代遅れ
   discussions_panel:
     open: 議論中
     closed: 議論終了

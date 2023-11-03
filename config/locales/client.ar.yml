@@ -1686,6 +1686,7 @@ ar:
     new_proposal_template: نموذج اقتراح جديد
     edit_proposal_template: تحرير نموذج الاقتراح
     outcomes: النتائج
+    outdated: عفا عليها الزمن
   poll_common_attachment_form:
     label: المرفقات
   poll_common_add_option:

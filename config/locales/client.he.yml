@@ -1605,6 +1605,7 @@ he:
     too_long: יותר מדי זמן
     edit_warning: עריכה מומלצת רק עבור שינויים קלים או תיקון שגיאות כתיב. לשינויים משמעותיים, סגור את ה-{{pollType}} הזה והתחל חדש.
     no_voting: לדיון בלבד, ההצבעה מושבתת
+    outdated: מְיוּשָׁן
   poll_common_attachment_form:
     label: קבצים מצורפים
   poll_common_add_option:

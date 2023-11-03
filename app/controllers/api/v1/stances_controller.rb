@@ -6,14 +6,19 @@ class API::V1::StancesController < API::V1::RestfulController
       poll_id: params[:stance][:poll_id],
       participant_id: current_user.id)
     update_action
-    update_response
+    respond_with_recent_stances
   end
 
   def uncast
     @stance = current_user.stances.latest.find(params[:id])
     StanceService.uncast(stance: @stance, actor: current_user)
-    @stance = @stance.poll.stances.latest.find_by(participant_id: current_user.id)
-    respond_with_resource
+    respond_with_recent_stances
+  end
+
+  def update
+    load_resource
+    update_action
+    respond_with_recent_stances
   end
 
   def index
@@ -91,10 +96,18 @@ class API::V1::StancesController < API::V1::RestfulController
 
     @stance.reload
     @stance.poll.update_counts!
-    respond_with_resource
+
+    @stances = @stance.poll.stances.where(participant_id: params[:participant_id])
+    respond_with_collection
   end
 
   private
+
+  def respond_with_recent_stances
+    @event = nil
+    @stances = @stance.poll.stances.where(revoked_at: nil, participant_id: current_user.id).order('id desc').limit(10)
+    respond_with_collection
+  end
 
   def current_user_is_admin?
     stance = Stance.find_by(id: params[:id])

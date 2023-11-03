@@ -1718,6 +1718,7 @@ pl:
     new_proposal_template: Nowy szablon oferty
     edit_proposal_template: Edytuj szablon propozycji
     outcomes: Wyniki
+    outdated: Przestarzały
   poll_common_attachment_form:
     label: Załączniki
   poll_common_add_option:

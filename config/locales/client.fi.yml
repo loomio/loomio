@@ -694,6 +694,7 @@ fi:
     too_long: Liian pitkä
     edit_warning: Muokkausta suositellaan vain pienten muutosten tai kirjoitusvirheiden korjaamisen yhteydessä. Jos haluat tehdä merkittäviä muutoksia, sulje tämä {{pollType}} ja aloita uusi.
     no_voting: Vain keskustelua varten, äänestäminen estetty
+    outdated: Vanhentunut
   discussions_panel:
     open: Avoin
     closed: Suljettu

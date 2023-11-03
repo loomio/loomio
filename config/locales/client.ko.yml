@@ -1661,6 +1661,7 @@ ko:
     too_long: 너무 오래
     edit_warning: 편집은 사소한 변경이나 철자 오류 수정에만 권장됩니다. 중요한 변경 사항이 있는 경우 이 {{pollType}}을 닫고 새 항목을 시작하세요.
     no_voting: 토론용으로만 투표할 수 없습니다.
+    outdated: 시대에 뒤쳐진
   poll_common_attachment_form:
     label: 첨부파일
   discussions_panel:

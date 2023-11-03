@@ -1770,6 +1770,7 @@ es:
     new_proposal_template: Nueva plantilla de propuesta
     edit_proposal_template: Editar plantilla de propuesta
     outcomes: Resultados
+    outdated: Anticuado
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:

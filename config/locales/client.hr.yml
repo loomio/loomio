@@ -1754,6 +1754,7 @@ hr:
     too_long: Predugo
     edit_warning: Uređivanje se preporučuje samo za manje izmjene ili ispravljanje pravopisnih pogrešaka. Za značajne promjene zatvorite ovaj {{pollType}} i započnite novi.
     no_voting: Samo za raspravu, glasovanje onemogućeno
+    outdated: Zastario
   poll_common_attachment_form:
     label: Prilozi
   poll_common_add_option:

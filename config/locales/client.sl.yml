@@ -1398,6 +1398,7 @@ sl:
     too_long: Predolgo
     edit_warning: Urejanje je priporočljivo samo za manjše spremembe ali popravljanje črkovalnih napak. Za večje spremembe zaprite to {{pollType}} in začnite novo.
     no_voting: Samo za razpravo, glasovanje onemogočeno
+    outdated: Zastarelo
   poll_common_attachment_form:
     label: Priloge
   discussions_panel:

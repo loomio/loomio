@@ -1464,6 +1464,7 @@ da:
     too_long: For langt
     edit_warning: Redigering anbefales kun til mindre ændringer eller rettelse af stavefejl. For væsentlige ændringer skal du lukke denne {{pollType}} og starte en ny.
     no_voting: Kun til diskussion, afstemning deaktiveret
+    outdated: Forældet
   poll_common_attachment_form:
     label: Vedhæftede filer
   poll_common_card:
