@@ -254,7 +254,7 @@ describe API::V1::StancesController do
       expect(response.status).to eq 200
       expect(json['polls'][0]['my_stance_id']).to be json['stances'][0]['id']
       expect(json['stances'][0]['participant_id']).to be nil
-      expect(json['events'][0]['actor_id']).to be nil
+      expect(json['events'][1]['actor_id']).to be nil
     end
 
     describe 'poll.specified_voters_only false' do
