@@ -1,10 +1,10 @@
 <script lang="js">
-import AuthService  from '@/shared/services/auth_service';
-import Session from '@/shared/services/session';
+import AuthService  from '@/services/auth_service';
+import Session from '@/services/session';
 import AuthModalMixin from '@/mixins/auth_modal';
-import AppConfig from '@/shared/services/app_config';
-import Flash from '@/shared/services/flash';
-import EventBus from '@/shared/services/event_bus';
+import AppConfig from '@/services/app_config';
+import Flash from '@/services/flash';
+import EventBus from '@/services/event_bus';
 
 export default {
   mixins: [AuthModalMixin],

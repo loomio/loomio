@@ -1,6 +1,6 @@
 <script lang="js">
-import AppConfig from '@/shared/services/app_config';
-import AbilityService from '@/shared/services/ability_service';
+import AppConfig from '@/services/app_config';
+import AbilityService from '@/services/ability_service';
 import { find } from 'lodash';
 
 export default {

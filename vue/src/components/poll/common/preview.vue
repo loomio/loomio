@@ -1,7 +1,7 @@
 <script lang="js">
-import Session from '@/shared/services/session';
+import Session from '@/services/session';
 import TemplateBadge from '@/components/poll/common/template_badge';
-import LmoUrlService from '@/shared/services/lmo_url_service';
+import LmoUrlService from '@/services/lmo_url_service';
 
 export default {
   components: {TemplateBadge},

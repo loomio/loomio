@@ -1,14 +1,14 @@
 <script lang="js">
-import Records        from '@/shared/services/records';
-import EventBus       from '@/shared/services/event_bus';
-import utils          from '@/shared/record_store/utils';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
-import AbilityService from '@/shared/services/ability_service';
-import Session from '@/shared/services/session';
-import AppConfig      from '@/shared/services/app_config';
-import Flash   from '@/shared/services/flash';
+import Records        from '@/services/records';
+import EventBus       from '@/services/event_bus';
+import utils          from '@/record_store/utils';
+import LmoUrlService  from '@/services/lmo_url_service';
+import AbilityService from '@/services/ability_service';
+import Session from '@/services/session';
+import AppConfig      from '@/services/app_config';
+import Flash   from '@/services/flash';
 import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash';
-import { encodeParams } from '@/shared/helpers/encode_params';
+import { encodeParams } from '@/helpers/encode_params';
 
 export default {
   props: {

@@ -1,6 +1,6 @@
 <script lang="js">
-import Flash from '@/shared/services/flash';
-import Records from '@/shared/services/records';
+import Flash from '@/services/flash';
+import Records from '@/services/records';
 
 export default
 {

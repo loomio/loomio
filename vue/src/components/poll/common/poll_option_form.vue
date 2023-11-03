@@ -1,6 +1,6 @@
 <script lang="js">
-import Records from '@/shared/services/records';
-import EventBus from '@/shared/services/event_bus';
+import Records from '@/services/records';
+import EventBus from '@/services/event_bus';
 import { pick } from 'lodash';
 import I18n from '@/i18n';
 

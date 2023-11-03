@@ -1,5 +1,5 @@
 <script lang="js">
-import { groupPrivacy } from '@/shared/helpers/helptext';
+import { groupPrivacy } from '@/helpers/helptext';
 
 export default
 {

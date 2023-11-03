@@ -1,5 +1,5 @@
 <script lang="js">
-import htmlDiff from "@/shared/helpers/html_diff";
+import htmlDiff from "@/helpers/html_diff";
 
 export default {
   props: {

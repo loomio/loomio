@@ -1,5 +1,5 @@
 <script lang="js">
-import { emojisByCategory, srcForEmoji } from '@/shared/helpers/emojis';
+import { emojisByCategory, srcForEmoji } from '@/helpers/emojis';
 import { each, keys, pick } from 'lodash';
 
 export default {

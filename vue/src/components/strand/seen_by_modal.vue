@@ -1,5 +1,5 @@
 <script lang="js">
-import Records        from '@/shared/services/records';
+import Records        from '@/services/records';
 import { orderBy } from 'lodash';
 export default {
   props: {

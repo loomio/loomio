@@ -1,5 +1,5 @@
 <script lang="js">
-import EventBus from "@/shared/services/event_bus";
+import EventBus from "@/services/event_bus";
 import GroupForm from '@/components/group/form.vue';
 import DiscussionForm from '@/components/discussion/form.vue';
 import EditCommentForm from '@/components/thread/edit_comment_form.vue';

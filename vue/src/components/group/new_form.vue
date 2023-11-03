@@ -1,14 +1,14 @@
 <script lang="js">
-import AppConfig      from '@/shared/services/app_config';
-import AbilityService from '@/shared/services/ability_service';
-import Records  from '@/shared/services/records';
-import EventBus  from '@/shared/services/event_bus';
-import Session  from '@/shared/services/session';
-import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
-import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
-import Flash   from '@/shared/services/flash';
+import AppConfig      from '@/services/app_config';
+import AbilityService from '@/services/ability_service';
+import Records  from '@/services/records';
+import EventBus  from '@/services/event_bus';
+import Session  from '@/services/session';
+import { groupPrivacy, groupPrivacyStatement } from '@/helpers/helptext';
+import { groupPrivacyConfirm } from '@/helpers/helptext';
+import Flash   from '@/services/flash';
 import { isEmpty, compact, debounce } from 'lodash';
-import openModal from '@/shared/helpers/open_modal';
+import openModal from '@/helpers/open_modal';
 import I18n from '@/i18n';
 
 export default

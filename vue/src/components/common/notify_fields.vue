@@ -1,6 +1,6 @@
 <script lang="js">
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
-import Session        from '@/shared/services/session';
+import Session        from '@/services/session';
 import {map, filter, find} from 'lodash';
 
 export default {

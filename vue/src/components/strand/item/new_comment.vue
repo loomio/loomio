@@ -1,10 +1,10 @@
 <script lang="js">
-import AbilityService from '@/shared/services/ability_service';
+import AbilityService from '@/services/ability_service';
 
 import { pick, pickBy, assign, compact } from 'lodash';
-import CommentService from '@/shared/services/comment_service';
-import EventService from '@/shared/services/event_service';
-import Session from '@/shared/services/session';
+import CommentService from '@/services/comment_service';
+import EventService from '@/services/event_service';
+import Session from '@/services/session';
 
 export default {
   props: {

@@ -1,7 +1,7 @@
 <script lang="js">
-import EventBus    from '@/shared/services/event_bus';
-import AuthService from '@/shared/services/auth_service';
-import AppConfig from '@/shared/services/app_config';
+import EventBus    from '@/services/event_bus';
+import AuthService from '@/services/auth_service';
+import AppConfig from '@/services/app_config';
 
 export default {
   props: {

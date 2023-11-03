@@ -1,9 +1,9 @@
 <script lang="js">
-import Session        from '@/shared/services/session';
-import Records        from '@/shared/services/records';
+import Session        from '@/services/session';
+import Records        from '@/services/records';
 import I18n           from '@/i18n';
-import EventBus from '@/shared/services/event_bus';
-import Flash from '@/shared/services/flash';
+import EventBus from '@/services/event_bus';
+import Flash from '@/services/flash';
 import { filter } from 'lodash';
 
 export default {

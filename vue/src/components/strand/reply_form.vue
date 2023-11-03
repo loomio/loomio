@@ -1,8 +1,8 @@
 <script lang="js">
-import EventBus from '@/shared/services/event_bus';
-import Session from '@/shared/services/session';
-import Records from '@/shared/services/records';
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
+import EventBus from '@/services/event_bus';
+import Session from '@/services/session';
+import Records from '@/services/records';
+import RescueUnsavedEditsService from '@/services/rescue_unsaved_edits_service';
 import { startCase } from 'lodash';
 
 export default {

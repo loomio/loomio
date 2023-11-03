@@ -1,7 +1,7 @@
 <script lang="js">
-import AppConfig from '@/shared/services/app_config';
-import Records   from '@/shared/services/records';
-import EventBus  from '@/shared/services/event_bus';
+import AppConfig from '@/services/app_config';
+import Records   from '@/services/records';
+import EventBus  from '@/services/event_bus';
 import UrlFor    from '@/mixins/url_for';
 import _truncate from 'lodash/truncate';
 import _map      from 'lodash/map';

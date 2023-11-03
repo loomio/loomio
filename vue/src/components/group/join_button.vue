@@ -1,9 +1,9 @@
 <script lang="js">
-import Session         from '@/shared/services/session';
-import Records         from '@/shared/services/records';
-import EventBus        from '@/shared/services/event_bus';
-import AbilityService  from '@/shared/services/ability_service';
-import Flash           from '@/shared/services/flash';
+import Session         from '@/services/session';
+import Records         from '@/services/records';
+import EventBus        from '@/services/event_bus';
+import AbilityService  from '@/services/ability_service';
+import Flash           from '@/services/flash';
 
 export default
 {

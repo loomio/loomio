@@ -1,6 +1,6 @@
 <script lang="js">
-import openModal      from '@/shared/helpers/open_modal';
-import AppConfig from '@/shared/services/app_config';
+import openModal      from '@/helpers/open_modal';
+import AppConfig from '@/services/app_config';
 
 export default 
 {

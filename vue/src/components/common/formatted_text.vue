@@ -1,10 +1,10 @@
 <script lang="js">
-import { emojiReplaceText } from '@/shared/helpers/emojis';
+import { emojiReplaceText } from '@/helpers/emojis';
 import { merge } from 'lodash';
-import Records from '@/shared/services/records';
-import Session from '@/shared/services/session';
-import Flash from '@/shared/services/flash';
-import AbilityService from '@/shared/services/ability_service';
+import Records from '@/services/records';
+import Session from '@/services/session';
+import Flash from '@/services/flash';
+import AbilityService from '@/services/ability_service';
 
 export default {
   props: {

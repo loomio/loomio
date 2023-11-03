@@ -1,5 +1,5 @@
 <script lang="js">
-import { exact } from '@/shared/helpers/format_time';
+import { exact } from '@/helpers/format_time';
 import { parseISO } from 'date-fns';
 
 export default {

@@ -1,10 +1,10 @@
 <script lang="js">
-import AppConfig    from '@/shared/services/app_config';
-import Session      from '@/shared/services/session';
-import Records      from '@/shared/services/records';
-import EventBus     from '@/shared/services/event_bus';
-import NullGroupModel   from '@/shared/models/null_group_model';
-import PollTemplateService     from '@/shared/services/poll_template_service';
+import AppConfig    from '@/services/app_config';
+import Session      from '@/services/session';
+import Records      from '@/services/records';
+import EventBus     from '@/services/event_bus';
+import NullGroupModel   from '@/models/null_group_model';
+import PollTemplateService     from '@/services/poll_template_service';
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
 import {map, without, compact} from 'lodash';
 import I18n from '@/i18n';

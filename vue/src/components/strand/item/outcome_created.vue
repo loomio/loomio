@@ -1,6 +1,6 @@
 <script lang="js">
-import OutcomeService from '@/shared/services/outcome_service';
-import EventService from '@/shared/services/event_service';
+import OutcomeService from '@/services/outcome_service';
+import EventService from '@/services/event_service';
 
 import { pick } from 'lodash';
 

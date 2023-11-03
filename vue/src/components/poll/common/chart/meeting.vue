@@ -1,7 +1,7 @@
 <script lang="js">
-import EventBus from '@/shared/services/event_bus';
-import AppConfig from '@/shared/services/app_config';
-import Session from '@/shared/services/session';
+import EventBus from '@/services/event_bus';
+import AppConfig from '@/services/app_config';
+import Session from '@/services/session';
 
 import {sum, map, sortBy, find, compact, uniq} from 'lodash';
 

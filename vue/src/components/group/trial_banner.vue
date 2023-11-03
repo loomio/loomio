@@ -1,6 +1,6 @@
 <script lang="js">
 import { differenceInDays, format, parseISO } from 'date-fns';
-import Session         from '@/shared/services/session';
+import Session         from '@/services/session';
 import AuthModalMixin      from '@/mixins/auth_modal';
 export default
 {

@@ -1,8 +1,8 @@
 <script lang="js">
-import Records        from '@/shared/services/records';
-import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import AppConfig      from '@/shared/services/app_config';
+import Records        from '@/services/records';
+import EventBus       from '@/services/event_bus';
+import AbilityService from '@/services/ability_service';
+import AppConfig      from '@/services/app_config';
 
 export default {
   props: {

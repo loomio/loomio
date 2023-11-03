@@ -1,11 +1,11 @@
 <script lang="js">
-import Records       from '@/shared/services/records';
-import Session from '@/shared/services/session';
-import Flash from '@/shared/services/flash';
+import Records       from '@/services/records';
+import Session from '@/services/session';
+import Flash from '@/services/flash';
 import AuthModalMixin from '@/mixins/auth_modal';
-import openModal      from '@/shared/helpers/open_modal';
-import AuthService from '@/shared/services/auth_service';
-import EventBus from '@/shared/services/event_bus';
+import openModal      from '@/helpers/open_modal';
+import AuthService from '@/services/auth_service';
+import EventBus from '@/services/event_bus';
 
 export default {
   mixins: [AuthModalMixin],

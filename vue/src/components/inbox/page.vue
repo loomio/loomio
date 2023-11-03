@@ -1,9 +1,9 @@
 <script lang="js">
-import AppConfig     from '@/shared/services/app_config';
-import Session       from '@/shared/services/session';
-import Records       from '@/shared/services/records';
-import EventBus      from '@/shared/services/event_bus';
-import ThreadFilter from '@/shared/services/thread_filter';
+import AppConfig     from '@/services/app_config';
+import Session       from '@/services/session';
+import Records       from '@/services/records';
+import EventBus      from '@/services/event_bus';
+import ThreadFilter from '@/services/thread_filter';
 import ThreadPreviewCollection from '@/components/thread/preview_collection';
 import {each, keys, sum, values, sortBy} from 'lodash';
 

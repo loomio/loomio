@@ -1,6 +1,6 @@
 <script lang="js">
 import { differenceInHours } from 'date-fns';
-import { exact, approximate } from '@/shared/helpers/format_time';
+import { exact, approximate } from '@/helpers/format_time';
 
 export default {
   props: {

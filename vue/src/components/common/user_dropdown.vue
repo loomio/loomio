@@ -1,8 +1,8 @@
 <script lang="js">
-import AppConfig       from '@/shared/services/app_config';
-import Session         from '@/shared/services/session';
-import Records         from '@/shared/services/records';
-import Flash from '@/shared/services/flash';
+import AppConfig       from '@/services/app_config';
+import Session         from '@/services/session';
+import Records         from '@/services/records';
+import Flash from '@/services/flash';
 
 export default {
   methods: {

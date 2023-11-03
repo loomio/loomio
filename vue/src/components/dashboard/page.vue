@@ -1,11 +1,11 @@
 <script lang="js">
-import AppConfig          from '@/shared/services/app_config';
-import Records            from '@/shared/services/records';
-import Session            from '@/shared/services/session';
-import EventBus           from '@/shared/services/event_bus';
-import AbilityService     from '@/shared/services/ability_service';
-import RecordLoader       from '@/shared/services/record_loader';
-import ThreadFilter       from '@/shared/services/thread_filter';
+import AppConfig          from '@/services/app_config';
+import Records            from '@/services/records';
+import Session            from '@/services/session';
+import EventBus           from '@/services/event_bus';
+import AbilityService     from '@/services/ability_service';
+import RecordLoader       from '@/services/record_loader';
+import ThreadFilter       from '@/services/thread_filter';
 import { capitalize, take, keys, every, orderBy, debounce } from 'lodash';
 import { subDays, addDays, subWeeks, subMonths } from 'date-fns';
 

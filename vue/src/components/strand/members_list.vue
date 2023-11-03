@@ -1,10 +1,10 @@
 <script lang="js">
-import EventBus from '@/shared/services/event_bus';
-import Records from '@/shared/services/records';
-import Session from '@/shared/services/session';
-import Flash from '@/shared/services/flash';
+import EventBus from '@/services/event_bus';
+import Records from '@/services/records';
+import Session from '@/services/session';
+import Flash from '@/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
-import DiscussionReaderService from '@/shared/services/discussion_reader_service';
+import DiscussionReaderService from '@/services/discussion_reader_service';
 import {map, debounce, without, filter, uniq, uniqBy, some, pick} from 'lodash';
 
 export default {

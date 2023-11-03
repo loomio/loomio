@@ -9,7 +9,7 @@ import {
 } from '@tiptap/core'
 
 let count = 0;
-import FileUploader from '@/shared/services/file_uploader'
+import FileUploader from '@/services/file_uploader'
 
 export const inputRegex = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/
 

@@ -1,9 +1,9 @@
 <script lang="js">
-import Records        from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
-import Session        from '@/shared/services/session';
-import EventBus from '@/shared/services/event_bus';
-import PollService from '@/shared/services/poll_service';
+import Records        from '@/services/records';
+import AbilityService from '@/services/ability_service';
+import Session        from '@/services/session';
+import EventBus from '@/services/event_bus';
+import PollService from '@/services/poll_service';
 
 export default {
   props: {

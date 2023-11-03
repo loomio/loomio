@@ -1,7 +1,7 @@
 <script lang="js">
-import { convertToHtml } from '@/shared/services/format_converter';
+import { convertToHtml } from '@/services/format_converter';
 import { CommonMentioning, MdMentioning } from './mentioning';
-import Records from '@/shared/services/records';
+import Records from '@/services/records';
 import FilesList from './files_list.vue';
 import SuggestionList from './suggestion_list';
 import Attaching from './attaching';

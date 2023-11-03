@@ -1,12 +1,12 @@
 <script lang="js">
-import Records from '@/shared/services/records';
-import Session from '@/shared/services/session';
+import Records from '@/services/records';
+import Session from '@/services/session';
 import FilesList from './files_list.vue';
-import EventBus  from '@/shared/services/event_bus';
+import EventBus  from '@/services/event_bus';
 
 import CollabEditor from './collab_editor';
 import MdEditor from './md_editor';
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
+import RescueUnsavedEditsService from '@/services/rescue_unsaved_edits_service';
 
 export default
 {

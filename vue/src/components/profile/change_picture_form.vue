@@ -1,11 +1,11 @@
 <script lang="js">
-import Session  from '@/shared/services/session';
-import Records  from '@/shared/services/records';
-import EventBus from '@/shared/services/event_bus';
+import Session  from '@/services/session';
+import Records  from '@/services/records';
+import EventBus from '@/services/event_bus';
 import Gravatar from 'vue-gravatar';
 import { capitalize } from 'lodash';
-import AppConfig from '@/shared/services/app_config';
-import Flash   from '@/shared/services/flash';
+import AppConfig from '@/services/app_config';
+import Flash   from '@/services/flash';
 
 export default {
   components: {

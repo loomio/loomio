@@ -1,10 +1,10 @@
 <script lang="js">
-import Records           from '@/shared/services/records';
-import RecordLoader      from '@/shared/services/record_loader';
-import EventBus          from '@/shared/services/event_bus';
-import AbilityService    from '@/shared/services/ability_service';
-import Session           from '@/shared/services/session';
-import AttachmentService from '@/shared/services/attachment_service';
+import Records           from '@/services/records';
+import RecordLoader      from '@/services/record_loader';
+import EventBus          from '@/services/event_bus';
+import AbilityService    from '@/services/ability_service';
+import Session           from '@/services/session';
+import AttachmentService from '@/services/attachment_service';
 
 import { isEmpty, intersection, debounce, filter, some, orderBy, uniq } from 'lodash';
 

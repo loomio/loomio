@@ -1,7 +1,7 @@
 <script lang="js">
-import PageLoader         from '@/shared/services/page_loader';
-import Records from '@/shared/services/records';
-import EventBus     from '@/shared/services/event_bus';
+import PageLoader         from '@/services/page_loader';
+import Records from '@/services/records';
+import EventBus     from '@/services/event_bus';
 import { parseISO } from 'date-fns';
 import { debounce } from 'lodash';
 import I18n from '@/i18n';

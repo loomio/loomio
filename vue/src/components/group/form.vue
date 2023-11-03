@@ -1,11 +1,11 @@
 <script lang="js">
-import AppConfig      from '@/shared/services/app_config';
-import AbilityService from '@/shared/services/ability_service';
-import Records  from '@/shared/services/records';
-import Flash   from '@/shared/services/flash';
-import EventBus   from '@/shared/services/event_bus';
-import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
-import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
+import AppConfig      from '@/services/app_config';
+import AbilityService from '@/services/ability_service';
+import Records  from '@/services/records';
+import Flash   from '@/services/flash';
+import EventBus   from '@/services/event_bus';
+import { groupPrivacy, groupPrivacyStatement } from '@/helpers/helptext';
+import { groupPrivacyConfirm } from '@/helpers/helptext';
 import { isEmpty, some, debounce } from 'lodash';
 
 export default

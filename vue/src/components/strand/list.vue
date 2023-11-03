@@ -11,8 +11,8 @@ import StrandItemRemoved from '@/components/strand/item/removed.vue';
 import StrandLoadMore from '@/components/strand/load_more.vue';
 import OtherKind from '@/components/strand/item/other_kind.vue';
 import ReplyForm from '@/components/strand/reply_form.vue';
-import RangeSet from '@/shared/services/range_set';
-import EventBus from '@/shared/services/event_bus';
+import RangeSet from '@/services/range_set';
+import EventBus from '@/services/event_bus';
 import { camelCase, first, last, some, sortedUniq, sortBy, without } from 'lodash';
 
 export default {
@@ -139,13 +139,15 @@ export default {
           strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
           component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
         .strand-list__children(v-if="obj.event.childCount")
-          strand-load-more(
-            v-if="obj.children.length == 0"
-            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}"
-            :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
-            @click="loader.loadAfter(obj.event)"
-            :loading="loader.loading == 'children'+obj.event.id")
-          strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
+          template(v-if="obj.event.kind == 'poll_created' && !poll.showResults()")
+          template(v-else)
+            strand-load-more(
+              v-if="obj.children.length == 0"
+              v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}"
+              :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
+              @click="loader.loadAfter(obj.event)"
+              :loading="loader.loading == 'children'+obj.event.id")
+            strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
         reply-form(:eventId="obj.event.id")
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")
       .d-flex.align-center

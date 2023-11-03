@@ -1,9 +1,9 @@
 <script lang="js">
-import Session from '@/shared/services/session';
-import AppConfig from '@/shared/services/app_config';
-import GroupService from '@/shared/services/group_service';
-import Flash from '@/shared/services/flash';
-import Records from '@/shared/services/records';
+import Session from '@/services/session';
+import AppConfig from '@/services/app_config';
+import GroupService from '@/services/group_service';
+import Flash from '@/services/flash';
+import Records from '@/services/records';
 
 export default 
 {

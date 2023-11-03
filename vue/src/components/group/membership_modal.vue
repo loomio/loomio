@@ -1,5 +1,5 @@
 <script lang="js">
-import Flash from '@/shared/services/flash';
+import Flash from '@/services/flash';
 
 export default
 {

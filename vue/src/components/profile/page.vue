@@ -1,15 +1,15 @@
 <script lang="js">
-import AppConfig      from '@/shared/services/app_config';
-import Session        from '@/shared/services/session';
-import Records        from '@/shared/services/records';
-import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
-import openModal      from '@/shared/helpers/open_modal';
-import UserService    from '@/shared/services/user_service';
-import Flash   from '@/shared/services/flash';
+import AppConfig      from '@/services/app_config';
+import Session        from '@/services/session';
+import Records        from '@/services/records';
+import EventBus       from '@/services/event_bus';
+import AbilityService from '@/services/ability_service';
+import LmoUrlService  from '@/services/lmo_url_service';
+import openModal      from '@/helpers/open_modal';
+import UserService    from '@/services/user_service';
+import Flash   from '@/services/flash';
 import { includes, uniq, debounce } from 'lodash';
-import {exact} from '@/shared/helpers/format_time';
+import {exact} from '@/helpers/format_time';
 
 export default {
   data() {

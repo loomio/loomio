@@ -1,6 +1,6 @@
 <script lang="js">
-import ThreadLoader from '@/shared/loaders/thread_loader';
-import RangeSet from '@/shared/services/range_set';
+import ThreadLoader from '@/loaders/thread_loader';
+import RangeSet from '@/services/range_set';
 import { camelCase, first, last, some } from 'lodash';
 
 export default {

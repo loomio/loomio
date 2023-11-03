@@ -1,10 +1,10 @@
 <script lang="js">
-import Records        from '@/shared/services/records';
-import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
+import Records        from '@/services/records';
+import EventBus       from '@/services/event_bus';
+import AbilityService from '@/services/ability_service';
 
 import { isEmpty }     from 'lodash';
-import { approximate } from '@/shared/helpers/format_time';
+import { approximate } from '@/helpers/format_time';
 
 export default {
   data() {

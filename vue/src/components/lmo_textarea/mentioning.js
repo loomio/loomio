@@ -1,5 +1,5 @@
 import {sortBy, isString, filter, uniq, map, debounce} from 'lodash';
-import Records from '@/shared/services/records';
+import Records from '@/services/records';
 import getCaretCoordinates from 'textarea-caret';
 
 export var CommonMentioning = {

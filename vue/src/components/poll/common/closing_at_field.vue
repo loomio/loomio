@@ -1,7 +1,7 @@
 <script lang="js">
-import AppConfig from '@/shared/services/app_config';
+import AppConfig from '@/services/app_config';
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter } from 'date-fns';
-import { hoursOfDay, exact, timeFormat} from '@/shared/helpers/format_time';
+import { hoursOfDay, exact, timeFormat} from '@/helpers/format_time';
 
 export default {
   props: {

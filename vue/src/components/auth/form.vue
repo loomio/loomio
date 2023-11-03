@@ -1,6 +1,6 @@
 <script lang="js">
-import AppConfig from '@/shared/services/app_config';
-import Session from '@/shared/services/session';
+import AppConfig from '@/services/app_config';
+import Session from '@/services/session';
 
 export default {
   props: {

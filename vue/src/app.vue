@@ -1,13 +1,13 @@
 <script lang="js">
-import AppConfig from '@/shared/services/app_config';
+import AppConfig from '@/services/app_config';
 import AuthModalMixin from '@/mixins/auth_modal';
-import EventBus from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import Session from '@/shared/services/session';
-import Flash from '@/shared/services/flash';
+import EventBus from '@/services/event_bus';
+import AbilityService from '@/services/ability_service';
+import Session from '@/services/session';
+import Flash from '@/services/flash';
 import { each, compact, truncate } from 'lodash';
-import openModal from '@/shared/helpers/open_modal';
-import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
+import openModal from '@/helpers/open_modal';
+import { initLiveUpdate, closeLiveUpdate } from '@/helpers/message_bus';
 import CustomCss from '@/components/custom_css';
 
 export default {

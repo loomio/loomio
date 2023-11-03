@@ -1,5 +1,5 @@
 <script lang="js">
-import Session from '@/shared/services/session';
+import Session from '@/services/session';
 
 export default
 {

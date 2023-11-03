@@ -1,12 +1,12 @@
 <script lang="js">
-import Records from '@/shared/services/records';
-import Session from '@/shared/services/session';
-import AppConfig from '@/shared/services/app_config';
-import FileUploader from '@/shared/services/file_uploader';
+import Records from '@/services/records';
+import Session from '@/services/session';
+import AppConfig from '@/services/app_config';
+import FileUploader from '@/services/file_uploader';
 import FilesList from './files_list.vue';
-import EventBus from '@/shared/services/event_bus';
+import EventBus from '@/services/event_bus';
 import I18n from '@/i18n';
-import { convertToMd } from '@/shared/services/format_converter';
+import { convertToMd } from '@/services/format_converter';
 
 import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
@@ -46,7 +46,7 @@ import {Iframe} from './extension_iframe';
 
 import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2';
 
-import {getEmbedLink} from '@/shared/helpers/embed_link';
+import {getEmbedLink} from '@/helpers/embed_link';
 
 import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning';
 import SuggestionList from './suggestion_list';

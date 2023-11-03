@@ -1,14 +1,14 @@
 <script lang="js">
-import Session        from '@/shared/services/session';
-import Records        from '@/shared/services/records';
-import EventBus       from '@/shared/services/event_bus';
-import AbilityService from '@/shared/services/ability_service';
-import AppConfig      from '@/shared/services/app_config';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
+import Session        from '@/services/session';
+import Records        from '@/services/records';
+import EventBus       from '@/services/event_bus';
+import AbilityService from '@/services/ability_service';
+import AppConfig      from '@/services/app_config';
+import LmoUrlService  from '@/services/lmo_url_service';
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal';
 import { uniq, compact, concat, sortBy, map, pick } from 'lodash';
-import UserService from '@/shared/services/user_service';
-import Flash from '@/shared/services/flash';
+import UserService from '@/services/user_service';
+import Flash from '@/services/flash';
 
 export default {
   mixins: [ChangeVolumeModalMixin],

@@ -1,9 +1,9 @@
 <script lang="js">
-import Session        from '@/shared/services/session';
-import StanceService        from '@/shared/services/stance_service';
-import AbilityService from '@/shared/services/ability_service';
-import openModal from '@/shared/helpers/open_modal';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
+import Session        from '@/services/session';
+import StanceService        from '@/services/stance_service';
+import AbilityService from '@/services/ability_service';
+import openModal from '@/helpers/open_modal';
+import LmoUrlService  from '@/services/lmo_url_service';
 
 export default {
   props: {

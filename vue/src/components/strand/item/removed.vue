@@ -1,5 +1,5 @@
 <script lang="js">
-import CommentService from '@/shared/services/comment_service';
+import CommentService from '@/services/comment_service';
 import { pick } from 'lodash';
 export default {
   props: {

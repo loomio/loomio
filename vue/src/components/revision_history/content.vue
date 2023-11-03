@@ -1,11 +1,11 @@
 <script lang="js">
-import Records from '@/shared/services/records';
-import { exact } from '@/shared/helpers/format_time';
+import Records from '@/services/records';
+import { exact } from '@/helpers/format_time';
 import { parseISO } from 'date-fns';
 import { reject, map, parseInt } from 'lodash';
 
 import {marked} from 'marked';
-import {customRenderer, options} from '@/shared/helpers/marked';
+import {customRenderer, options} from '@/helpers/marked';
 marked.setOptions(Object.assign({renderer: customRenderer()}, options));
 
 export default {

@@ -1,9 +1,9 @@
 <script lang="js">
-import Records        from '@/shared/services/records';
-import EventBus       from '@/shared/services/event_bus';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
+import Records        from '@/services/records';
+import EventBus       from '@/services/event_bus';
+import LmoUrlService  from '@/services/lmo_url_service';
 import AuthModalMixin from '@/mixins/auth_modal';
-import Session        from '@/shared/services/session';
+import Session        from '@/services/session';
 import I18n           from '@/i18n';
 
 import _isEmpty     from 'lodash/isEmpty';

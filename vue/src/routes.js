@@ -30,9 +30,9 @@ import './config/catch_navigation_duplicated.js';
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Session from '@/shared/services/session';
+import Session from '@/services/session';
 
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
+import RescueUnsavedEditsService from '@/services/rescue_unsaved_edits_service';
 
 Vue.use(Router);
 

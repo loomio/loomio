@@ -1,6 +1,6 @@
 <script lang="js">
-import Records   from '@/shared/services/records';
-import AppConfig from '@/shared/services/app_config';
+import Records   from '@/services/records';
+import AppConfig from '@/services/app_config';
 import {compact, orderBy} from 'lodash';
 
 export default {

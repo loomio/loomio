@@ -1,12 +1,12 @@
 <script lang="js">
-import Session        from '@/shared/services/session';
-import AbilityService from '@/shared/services/ability_service';
-import ThreadService from '@/shared/services/thread_service';
+import Session        from '@/services/session';
+import AbilityService from '@/services/ability_service';
+import ThreadService from '@/services/thread_service';
 import { map, sortBy, filter, debounce, without, uniq, find, compact } from 'lodash';
-import AppConfig from '@/shared/services/app_config';
-import Records from '@/shared/services/records';
-import EventBus from '@/shared/services/event_bus';
-import Flash   from '@/shared/services/flash';
+import AppConfig from '@/services/app_config';
+import Records from '@/services/records';
+import EventBus from '@/services/event_bus';
+import Flash   from '@/services/flash';
 import I18n from '@/i18n';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';

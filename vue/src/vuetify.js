@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
-import Session         from '@/shared/services/session';
+import Session         from '@/services/session';
 
 Vue.use(Vuetify);
 

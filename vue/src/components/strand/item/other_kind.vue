@@ -1,6 +1,6 @@
 <script lang="js">
-import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
-import Records        from '@/shared/services/records';
+import { eventHeadline, eventTitle, eventPollType } from '@/helpers/helptext';
+import Records        from '@/services/records';
 
 export default {
   props: {

@@ -1,8 +1,8 @@
 <script lang="js">
-import PollService    from '@/shared/services/poll_service';
-import AbilityService from '@/shared/services/ability_service';
-import EventBus       from '@/shared/services/event_bus';
-import EventService from '@/shared/services/event_service';
+import PollService    from '@/services/poll_service';
+import AbilityService from '@/services/ability_service';
+import EventBus       from '@/services/event_bus';
+import EventService from '@/services/event_service';
 import { pick, pickBy, assign } from 'lodash';
 
 export default {

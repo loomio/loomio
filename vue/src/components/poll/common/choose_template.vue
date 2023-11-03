@@ -1,9 +1,9 @@
 <script lang="js">
-import AppConfig    from '@/shared/services/app_config';
-import Session      from '@/shared/services/session';
-import Records      from '@/shared/services/records';
-import EventBus     from '@/shared/services/event_bus';
-import PollTemplateService     from '@/shared/services/poll_template_service';
+import AppConfig    from '@/services/app_config';
+import Session      from '@/services/session';
+import Records      from '@/services/records';
+import EventBus     from '@/services/event_bus';
+import PollTemplateService     from '@/services/poll_template_service';
 import {map, without, compact, pickBy} from 'lodash';
 import { ContainerMixin, HandleDirective } from 'vue-slicksort';
 import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';

@@ -1,8 +1,8 @@
 <script lang="js">
-import ThreadService  from '@/shared/services/thread_service';
+import ThreadService  from '@/services/thread_service';
 import { map, compact, pick } from 'lodash';
-import EventBus from '@/shared/services/event_bus';
-import openModal      from '@/shared/helpers/open_modal';
+import EventBus from '@/services/event_bus';
+import openModal      from '@/helpers/open_modal';
 
 export default {
   props: {

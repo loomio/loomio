@@ -1,5 +1,5 @@
 <script lang="js">
-import { approximate } from '@/shared/helpers/format_time';
+import { approximate } from '@/helpers/format_time';
 
 export default {
   props: {

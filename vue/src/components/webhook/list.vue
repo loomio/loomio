@@ -1,10 +1,10 @@
 <script lang="js">
-import EventBus from '@/shared/services/event_bus';
-import AppConfig from '@/shared/services/app_config';
-import WebhookService from '@/shared/services/webhook_service';
-import Records from '@/shared/services/records';
-import Flash  from '@/shared/services/flash';
-import openModal from '@/shared/helpers/open_modal';
+import EventBus from '@/services/event_bus';
+import AppConfig from '@/services/app_config';
+import WebhookService from '@/services/webhook_service';
+import Records from '@/services/records';
+import Flash  from '@/services/flash';
+import openModal from '@/helpers/open_modal';
 
 export default {
   props: {

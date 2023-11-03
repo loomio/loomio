@@ -1,7 +1,7 @@
 <script lang="js">
 import { differenceInDays, format, parseISO } from 'date-fns';
-import Session         from '@/shared/services/session';
-import Records         from '@/shared/services/records';
+import Session         from '@/services/session';
+import Records         from '@/services/records';
 export default
 {
   props: {

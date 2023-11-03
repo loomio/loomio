@@ -1,11 +1,11 @@
 <script lang="js">
-import EventBus from '@/shared/services/event_bus';
-import Records from '@/shared/services/records';
-import Session from '@/shared/services/session';
-import Flash from '@/shared/services/flash';
-import AnnouncementService from '@/shared/services/announcement_service';
+import EventBus from '@/services/event_bus';
+import Records from '@/services/records';
+import Session from '@/services/session';
+import Flash from '@/services/flash';
+import AnnouncementService from '@/services/announcement_service';
 import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash';
-import AbilityService from '@/shared/services/ability_service';
+import AbilityService from '@/services/ability_service';
 import NotificationsCount from './notifications_count';
 
 export default {

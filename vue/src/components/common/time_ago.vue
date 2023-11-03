@@ -1,5 +1,5 @@
 <script lang="js">
-import { approximate, exact } from '@/shared/helpers/format_time';
+import { approximate, exact } from '@/helpers/format_time';
 import { parseISO } from 'date-fns';
 import {isString} from 'lodash';
 

@@ -1,6 +1,6 @@
 <script lang="js">
-import Records      from '@/shared/services/records';
-import openModal      from '@/shared/helpers/open_modal';
+import Records      from '@/services/records';
+import openModal      from '@/helpers/open_modal';
 export default {
   props: {
     discussion: Object

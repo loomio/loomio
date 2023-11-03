@@ -1,6 +1,6 @@
 <script lang="js">
-import Session from '@/shared/services/session';
-import EventBus from '@/shared/services/event_bus';
+import Session from '@/services/session';
+import EventBus from '@/services/event_bus';
 import { uniq } from 'lodash';
 
 export default {

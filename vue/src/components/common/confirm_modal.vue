@@ -1,7 +1,7 @@
 <script lang="js">
-import Flash  from '@/shared/services/flash';
-import LmoUrlService from '@/shared/services/lmo_url_service';
-import EventBus from '@/shared/services/event_bus';
+import Flash  from '@/services/flash';
+import LmoUrlService from '@/services/lmo_url_service';
+import EventBus from '@/services/event_bus';
 
 export default {
   props: {

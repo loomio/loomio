@@ -1,7 +1,7 @@
 <script lang="js">
-import EventBus from '@/shared/services/event_bus';
+import EventBus from '@/services/event_bus';
 import PollCommonDirective from '@/components/poll/common/directive.vue';
-import Flash   from '@/shared/services/flash';
+import Flash   from '@/services/flash';
 import { sortBy } from 'lodash';
 
 export default {

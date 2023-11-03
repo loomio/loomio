@@ -1,4 +1,4 @@
-import EventBus from '@/shared/services/event_bus';
+import EventBus from '@/services/event_bus';
 
 export default {
   methods: {

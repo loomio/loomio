@@ -1,10 +1,10 @@
 <script lang="js">
-import Session  from '@/shared/services/session';
-import Records  from '@/shared/services/records';
-import EventBus from '@/shared/services/event_bus';
+import Session  from '@/services/session';
+import Records  from '@/services/records';
+import EventBus from '@/services/event_bus';
 import PollCommonDirective from '@/components/poll/common/directive';
 import PollTemplateBanner from '@/components/poll/template_banner';
-import PollService from '@/shared/services/poll_service';
+import PollService from '@/services/poll_service';
 import { pickBy } from 'lodash';
 
 export default

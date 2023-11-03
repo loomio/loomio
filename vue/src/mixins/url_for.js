@@ -1,4 +1,4 @@
-import LmoUrlService from '@/shared/services/lmo_url_service';
+import LmoUrlService from '@/services/lmo_url_service';
 import { pickBy, identity, isEqual } from 'lodash';
 
 // this is a vue mixin

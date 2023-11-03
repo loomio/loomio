@@ -1,6 +1,6 @@
 <script lang="js">
-import EventBus from '@/shared/services/event_bus';
-import Records from '@/shared/services/records';
+import EventBus from '@/services/event_bus';
+import Records from '@/services/records';
 import {map} from 'lodash';
 
 export default {

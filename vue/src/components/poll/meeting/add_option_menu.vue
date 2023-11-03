@@ -1,8 +1,8 @@
 <script lang="js">
-import Records from '@/shared/services/records';
-import Session from '@/shared/services/session';
-import Flash   from '@/shared/services/flash';
-import { exact }   from '@/shared/helpers/format_time';
+import Records from '@/services/records';
+import Session from '@/services/session';
+import Flash   from '@/services/flash';
+import { exact }   from '@/helpers/format_time';
 
 import { format, utcToZonedTime } from 'date-fns-tz';
 import { isSameYear, startOfHour }  from 'date-fns';

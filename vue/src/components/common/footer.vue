@@ -1,5 +1,5 @@
 <script lang="js">
-import AppConfig from '@/shared/services/app_config';
+import AppConfig from '@/services/app_config';
 
 export default {
   data() {

@@ -1,11 +1,11 @@
 <script lang="js">
-import Records        from '@/shared/services/records';
-import EventBus       from '@/shared/services/event_bus';
-import utils          from '@/shared/record_store/utils';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
-import AbilityService from '@/shared/services/ability_service';
+import Records        from '@/services/records';
+import EventBus       from '@/services/event_bus';
+import utils          from '@/record_store/utils';
+import LmoUrlService  from '@/services/lmo_url_service';
+import AbilityService from '@/services/ability_service';
 
-import Flash   from '@/shared/services/flash';
+import Flash   from '@/services/flash';
 
 
 export default

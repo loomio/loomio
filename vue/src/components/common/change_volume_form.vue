@@ -1,8 +1,8 @@
 <script lang="js">
-import Session from '@/shared/services/session';
+import Session from '@/services/session';
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal';
-import GroupService from '@/shared/services/group_service';
-import Flash from '@/shared/services/flash';
+import GroupService from '@/services/group_service';
+import Flash from '@/services/flash';
 
 export default {
   mixins: [ChangeVolumeModalMixin],

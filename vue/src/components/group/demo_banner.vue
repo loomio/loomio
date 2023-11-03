@@ -1,9 +1,9 @@
 <script lang="js">
 import { differenceInDays, format, parseISO } from 'date-fns';
-import Session         from '@/shared/services/session';
+import Session         from '@/services/session';
 import AuthModalMixin      from '@/mixins/auth_modal';
-import Flash              from '@/shared/services/flash';
-import Records            from '@/shared/services/records';
+import Flash              from '@/services/flash';
+import Records            from '@/services/records';
 export default
 {
   mixins: [ AuthModalMixin ],

@@ -1,12 +1,12 @@
 <script lang="js">
-import Records        from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
-import RecordLoader   from '@/shared/services/record_loader';
-import Session        from '@/shared/services/session';
-import EventBus       from '@/shared/services/event_bus';
+import Records        from '@/services/records';
+import AbilityService from '@/services/ability_service';
+import RecordLoader   from '@/services/record_loader';
+import Session        from '@/services/session';
+import EventBus       from '@/services/event_bus';
 import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp, map} from 'lodash';
-import LmoUrlService from '@/shared/services/lmo_url_service';
-import { exact, approximate } from '@/shared/helpers/format_time';
+import LmoUrlService from '@/services/lmo_url_service';
+import { exact, approximate } from '@/helpers/format_time';
 
 export default
 {

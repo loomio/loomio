@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import AppConfig from '@/shared/services/app_config';
+import AppConfig from '@/services/app_config';
 import vuetify from '@/vuetify';
 import router from '@/routes';
 import i18n from '@/i18n';
@@ -14,7 +14,7 @@ import CloseModal from '@/mixins/close_modal';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 import Vue2TouchEvents from 'vue2-touch-events';
-import PlausibleService from '@/shared/services/plausible_service';
+import PlausibleService from '@/services/plausible_service';
 
 
 Vue.use(Vue2TouchEvents);
@@ -25,8 +25,8 @@ Vue.mixin(FormatDate);
 
 Vue.config.productionTip = false;
 
-import boot from '@/shared/helpers/boot';
-import Session from '@/shared/services/session';
+import boot from '@/helpers/boot';
+import Session from '@/services/session';
 
 boot(function(data) {
   Session.apply(data);

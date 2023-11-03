@@ -1,5 +1,5 @@
 import { forEach } from 'lodash';
-import FileUploader from '@/shared/services/file_uploader';
+import FileUploader from '@/services/file_uploader';
 import {insertImage} from './extension_image';
 export default
 {

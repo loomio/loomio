@@ -1,4 +1,4 @@
-import Records from '@/shared/services/records';
+import Records from '@/services/records';
 
 export default {
   data() {

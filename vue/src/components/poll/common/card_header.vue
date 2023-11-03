@@ -1,5 +1,5 @@
 <script lang="js">
-import AbilityService from '@/shared/services/ability_service';
+import AbilityService from '@/services/ability_service';
 import { map, compact, pick } from 'lodash';
 
 export default

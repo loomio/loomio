@@ -1,14 +1,14 @@
 <script lang="js">
-import Records from '@/shared/services/records';
-import Flash from '@/shared/services/flash';
-import EventBus from '@/shared/services/event_bus';
-import Session        from '@/shared/services/session';
-import AbilityService from '@/shared/services/ability_service';
+import Records from '@/services/records';
+import Flash from '@/services/flash';
+import EventBus from '@/services/event_bus';
+import Session        from '@/services/session';
+import AbilityService from '@/services/ability_service';
 
 import Vue     from 'vue';
 import { uniq, map, sortBy, head, find, filter, sum } from 'lodash';
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns';
-import { exact} from '@/shared/helpers/format_time';
+import { exact} from '@/helpers/format_time';
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import I18n from '@/i18n';

@@ -1,13 +1,13 @@
 <script lang="js">
-import AppConfig                from '@/shared/services/app_config';
-import EventBus                 from '@/shared/services/event_bus';
-import RecordLoader             from '@/shared/services/record_loader';
-import AbilityService           from '@/shared/services/ability_service';
+import AppConfig                from '@/services/app_config';
+import EventBus                 from '@/services/event_bus';
+import RecordLoader             from '@/services/record_loader';
+import AbilityService           from '@/services/ability_service';
 import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_template_wrapper';
-import Session from '@/shared/services/session';
+import Session from '@/services/session';
 import AuthModalMixin from '@/mixins/auth_modal';
-import Records from '@/shared/services/records';
+import Records from '@/services/records';
 import { compact, snakeCase, camelCase, max, map } from 'lodash';
 
 export default {

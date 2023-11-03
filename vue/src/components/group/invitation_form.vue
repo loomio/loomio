@@ -1,12 +1,12 @@
 <script lang="js">
-import GroupService from '@/shared/services/group_service';
-import Records        from '@/shared/services/records';
-import Session from '@/shared/services/session';
-import EventBus from '@/shared/services/event_bus';
-import AppConfig      from '@/shared/services/app_config';
+import GroupService from '@/services/group_service';
+import Records        from '@/services/records';
+import Session from '@/services/session';
+import EventBus from '@/services/event_bus';
+import AppConfig      from '@/services/app_config';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
-import AbilityService from '@/shared/services/ability_service';
-import Flash   from '@/shared/services/flash';
+import AbilityService from '@/services/ability_service';
+import Flash   from '@/services/flash';
 import { uniq, debounce } from 'lodash';
 import I18n from '@/i18n';
 

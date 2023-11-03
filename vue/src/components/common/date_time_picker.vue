@@ -1,8 +1,8 @@
 <script lang="js">
-import Records     from '@/shared/services/records';
-import FlashService   from '@/shared/services/flash';
+import Records     from '@/services/records';
+import FlashService   from '@/services/flash';
 import { times } from 'lodash';
-import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time';
+import { hoursOfDay, timeFormat } from '@/helpers/format_time';
 import { format, parse, isValid } from 'date-fns';
 import I18n from '@/i18n';
 

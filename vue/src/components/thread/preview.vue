@@ -1,6 +1,6 @@
 <script lang="js">
-import ThreadService from '@/shared/services/thread_service';
-import AbilityService from '@/shared/services/ability_service';
+import ThreadService from '@/services/thread_service';
+import AbilityService from '@/services/ability_service';
 import { pick, some } from 'lodash';
 
 export default {

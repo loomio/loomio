@@ -1,6 +1,6 @@
 <script lang="js">
-import Records from '@/shared/services/records';
-import AbilityService from '@/shared/services/ability_service';
+import Records from '@/services/records';
+import AbilityService from '@/services/ability_service';
 
 export default {
   props: {

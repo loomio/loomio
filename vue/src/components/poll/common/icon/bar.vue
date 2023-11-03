@@ -1,6 +1,6 @@
 <script lang="js">
 import svg from 'svg.js';
-import AppConfig from '@/shared/services/app_config';
+import AppConfig from '@/services/app_config';
 import { take, map, max, each} from 'lodash';
 
 export default

@@ -1,7 +1,7 @@
 <script lang="js">
-import EventBus from '@/shared/services/event_bus';
-import Flash   from '@/shared/services/flash';
-import Records   from '@/shared/services/records';
+import EventBus from '@/services/event_bus';
+import Flash   from '@/services/flash';
+import Records   from '@/services/records';
 import { compact, sortBy, without, isEqual, map } from 'lodash';
 
 export default {

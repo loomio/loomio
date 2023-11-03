@@ -1,8 +1,8 @@
 <script lang="js">
-import Records from '@/shared/services/records';
-import EventBus from '@/shared/services/event_bus';
-import Session from '@/shared/services/session';
-import Flash  from '@/shared/services/flash';
+import Records from '@/services/records';
+import EventBus from '@/services/event_bus';
+import Session from '@/services/session';
+import Flash  from '@/services/flash';
 import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
 import { compact } from 'lodash'; 
