@@ -6,18 +6,12 @@ class API::V1::StancesController < API::V1::RestfulController
       poll_id: params[:stance][:poll_id],
       participant_id: current_user.id)
     update_action
-    respond_with_recent_stances
+    update_response
   end
 
   def uncast
     @stance = current_user.stances.latest.find(params[:id])
     StanceService.uncast(stance: @stance, actor: current_user)
-    respond_with_recent_stances
-  end
-
-  def update
-    load_resource
-    update_action
     respond_with_recent_stances
   end
 
