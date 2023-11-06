@@ -21,6 +21,7 @@ export default class ThreadLoader {
     this.visibleKeys = {};
     this.collapsed = Vue.observable({});
     this.loading = false;
+    this.firstLoad = false
     this.padding = 50;
     this.maxAutoLoadMore = 500;
   }
@@ -401,6 +402,7 @@ export default class ThreadLoader {
 
     return Promise.all(promises).finally(() => {
       this.fetchedRules = uniq(this.fetchedRules.concat(newRules));
+      this.firstLoad = true
       return this.loading = false;
     });
   }
