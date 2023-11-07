@@ -24,6 +24,7 @@ function LoomioVueResolver() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/blient/',
   server: {
     fs: {
       allow: ['..']
@@ -37,6 +38,10 @@ export default defineConfig({
           // proxy will be an instance of 'http-proxy'
         },
       },
+      '^/(saml|dev|brand|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|bug_tunnel|contact_messages|roboto.css|materialdesignicons.css|thumbicons.css)': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      }
     },
   },
   resolve: {
@@ -85,6 +90,8 @@ export default defineConfig({
     ViteYaml(),
   ],
   build: {
+    emptyOutDir: true,
+    outDir: '../public/blient',
     rollupOptions: {
       external: ['/roboto.css', '/materialdesignicons.css', '/thumbicons.css']
     }
