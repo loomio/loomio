@@ -5,19 +5,9 @@ import envCompatible from 'vite-plugin-env-compatible';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
-// import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
+import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 
-function VuetifyResolver() {
-  return {
-    type: 'component',
-    resolve: (name) => {
-      if (name.match(/^V[A-Z]/)) {
-        return { name, from: 'vuetify/lib' }
-      }
-    },
-  }
-}
 
 import LoomioComponents from './src/components.js';
 
@@ -35,6 +25,9 @@ function LoomioVueResolver() {
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
+    fs: {
+      allow: ['..']
+    },
     port: 8080,
     proxy: {
       '/api': {
@@ -55,6 +48,10 @@ export default defineConfig({
       {
         find: '@',
         replacement: path.resolve(__dirname, 'src')
+      },
+      {
+        find: './locales',
+        replacement: path.resolve(__dirname, '../../config/locales')
       }
     ],
     extensions: [

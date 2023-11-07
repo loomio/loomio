@@ -8,8 +8,7 @@ import CollabEditor from './collab_editor';
 import MdEditor from './md_editor';
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
-export default
-{
+export default {
   props: {
     focusId: String,
     model: Object,
