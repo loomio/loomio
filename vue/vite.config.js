@@ -13,7 +13,6 @@ function VuetifyResolver() {
     type: 'component',
     resolve: (name) => {
       if (name.match(/^V[A-Z]/)) {
-        console.log('resolving vuetify name', name);
         return { name, from: 'vuetify/lib' }
       }
     },
@@ -27,7 +26,6 @@ function LoomioVueResolver() {
     type: "component",
     resolve: (name) => {
       if (LoomioComponents[name]) {
-        console.log('resolving Loomio name', name);
         return { default: name, from: '/src/components/'+LoomioComponents[name]+'.vue' };
       }
     }
@@ -89,5 +87,9 @@ export default defineConfig({
     }),
     ViteYaml(),
   ],
-  build: {}
+  build: {
+    rollupOptions: {
+      external: ['/roboto.css', '/materialdesignicons.css', '/thumbicons.css']
+    }
+  }
 })

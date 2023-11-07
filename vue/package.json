@@ -8,14 +8,11 @@
     "not dead"
   ],
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "vite",
+    "build": "vite build",
     "test:e2e": "vue-cli-service test:e2e",
     "test:e2e:standalone": "nightwatch --config ./tests/e2e/nightwatch.conf.js --retries 3",
-    "test:e2e:single": "nightwatch --config ./tests/e2e/nightwatch.conf.js --test tests/e2e/specs/discussion.js  --testcase can_react_to_a_discussion",
-    "serve-vite": "vite",
-    "build-vite": "vite build",
-    "preview-vite": "vite preview"
+    "test:e2e:single": "nightwatch --config ./tests/e2e/nightwatch.conf.js --test tests/e2e/specs/discussion.js  --testcase can_react_to_a_discussion"
   },
   "dependencies": {
     "@sentry/browser": "^7.77.0",
