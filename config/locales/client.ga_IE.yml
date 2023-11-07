@@ -22,7 +22,7 @@ ga_IE:
     modal_edit_title: Cuir clib in eagar
     modal_destroy_title: Bain clib
   timezones:
-    local: An t-am áitiúil ({{luach}})
+    local: An t-am áitiúil (%{luach})
   common:
     please_wait: Fan le do thoil
     version: Leagan
@@ -43,8 +43,8 @@ ga_IE:
     time:
       am: rn
       pm: in
-    closing_in: 'Ag dúnadh {{time}}'
-    closed_ago: 'Dúnta {{time}}'
+    closing_in: 'Ag dúnadh %{time}'
+    closed_ago: 'Dúnta %{time}'
     volume: 'Airde'
     notification_volume: 'Airde an Fhógra'
     group: 'Baicle'
@@ -132,7 +132,7 @@ ga_IE:
     page_not_found: 'Theip orainn sin a aimsiú. B''fhéidir gur scriosadh é nó bogadh é.'
     internal_server_error: 'Is dona linn seo. Tá rud éigin cearr. Déan arís é le do thoil.'
   previous_polls_page:
-    heading: Gníomhaíocht in {{ainm}}
+    heading: Gníomhaíocht in %{ainm}
     search_activities: Cuardaigh cinntí
   volume_levels:
     loud: 'Ard'
@@ -262,7 +262,7 @@ ga_IE:
     join_group: Cláraigh leis an mbaicle
     membership_requested: Iarratas ballraíocht déanta
     messages:
-      joined_group: 'Is comhalta de {{group}} anois thú'
+      joined_group: 'Is comhalta de %{group} anois thú'
   membership_request_form:
     heading: Iarr cead dul isteach sa bhaicle
     name_label: Ainm
@@ -344,7 +344,7 @@ ga_IE:
     approve: Ceadaigh
     ignore: Déan neamhaird de
     previous_requests: Iarratais a bhí ann cheana
-    previous_request_response: '{{response}} ó {{responder}} '
+    previous_request_response: '%{response} ó %{responder} '
     messages:
       request_approved_success: Iarratas le bheith mar chomhalta ceadaithe
       request_ignored_success: Déanadh neamhaird ar iarratas le bheith mar chomhalta
@@ -357,7 +357,7 @@ ga_IE:
     email_addresses_placeholder: 'm.sh. helperbot@loomio.org, friendlybot@loomio.org'
     custom_message: 'Teachtaireacht saincheaptha'
     add_members: 'Cuir comhaltaí leis'
-    from_parent_group: 'ó {{name}}.'
+    from_parent_group: 'ó %{name}.'
     send: 'Seol'
     done: 'Déanta'
     messages:
@@ -368,7 +368,7 @@ ga_IE:
     remove_member_label: 'Bain é'
     fragment_placeholder: 'Scag na hainmneacha nó ainmneacha úsáideora...'
     messages:
-      remove_member_success: 'Baineadh {{name}}'
+      remove_member_success: 'Baineadh %{name}'
   membership_remove_modal:
     invitation:
       title: 'Cealaigh an cuireadh '
@@ -453,7 +453,7 @@ ga_IE:
     activity: 'Gníomhaíocht'
     activity_placeholder: 'Níl aon ghníomhaíocht ann go fóill!'
     load_previous: 'Luchtaigh gníomhaíocht níos luaithe ná seo'
-    started_by: 'Tosaithe ag <strong>{{name}}</strong> '
+    started_by: 'Tosaithe ag <strong>%{name}</strong> '
   activity_card:
     latest: Is déanaí
     context: Comhthéacs
@@ -531,8 +531,8 @@ ga_IE:
     closing: Ag dúnadh
     closed: Dúnta
     start: Tosaigh
-    start_poll_type: Tosaigh {{poll_type}}
-    share_poll_type: Comhroinn {{poll_type}}
+    start_poll_type: Tosaigh %{poll_type}
+    share_poll_type: Comhroinn %{poll_type}
     update: Nuashonraigh é
   poll_ranked_choice_form:
     no_options: "Níor chuir tú aon roghanna leis fós."
@@ -556,8 +556,8 @@ ga_IE:
     email_placeholder: tusa@suíomh.com
     name_placeholder: D'ainm
     name_required: Cuir isteach ainm
-    welcome_back: Fáilte ar ais, a {{name}}!
-    hello: "Hóra a {{name}}!"
+    welcome_back: Fáilte ar ais, a %{name}!
+    hello: "Hóra a %{name}!"
     name: Ainm
     email: Seoladh ríomhphoist
     password: Focal faire

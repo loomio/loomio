@@ -27,7 +27,6 @@ export default {
   },
 
   components: {
-    StrandList,
     NewDiscussion,
     NewComment,
     PollCreated,

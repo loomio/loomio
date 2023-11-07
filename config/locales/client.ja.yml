@@ -27,9 +27,9 @@ ja:
     look_and_feel: 小規模な組織にとって Loomio がどのようなものかをご覧ください。アプリを試してみて学習してください。
     watch_then_start: ビデオを見て「デモを開始」をクリックして Loomio をお試しください
     generating_demo: わかった、そこで待ってて！デモの生成には約 20 秒かかります。
-    start_a_x_day_free_trial: "{{day}} 日間の無料トライアルを開始する"
+    start_a_x_day_free_trial: "%{day} 日間の無料トライアルを開始する"
     ready_to_trial: あなたの組織で Loomio を試す準備はできていますか?
-    start_a_no_obligation_x_day_trial: "{{day}} 日間の無料トライアルを利用して、組織の Loomio グループを開始してください。"
+    start_a_no_obligation_x_day_trial: "%{day} 日間の無料トライアルを利用して、組織の Loomio グループを開始してください。"
     you_can_test_it_out: 他の人を参加に招待したり、他のツールと統合したり、いくつかの決定を下してみることができます。
     demo_created: あなた専用のデモ グループが作成されました。
     start_demo: デモを開始する
@@ -89,10 +89,10 @@ ja:
     discussions_count_plural: "(%{count} スレッド)"
     tag_created: タグが保存されました
     tag_destroyed: タグが削除されました
-    tags_marked: "{{groupName}} の「{{name}}」とマークされたスレッド"
+    tags_marked: "%{groupName} の「%{name}」とマークされたスレッド"
     no_tags_present: そのタグのスレッドは見つかりませんでした。別のものを選択してみてください
     no_tags_in_group: このグループにはまだカテゴリ タグがありません
-    only_admins_can_edit_tags: 申し訳ありませんが、タグを作成、名前変更、削除できるのは {{group}} の管理者だけです
+    only_admins_can_edit_tags: 申し訳ありませんが、タグを作成、名前変更、削除できるのは %{group} の管理者だけです
   common:
     version: バージョン
     or: または
@@ -185,7 +185,7 @@ ja:
       align: 整列
     admin_menu: 管理者メニュー
     api_docs: APIドキュメント
-    prefix_eg: '例: {{val}}'
+    prefix_eg: '例: %{val}'
     are_you_sure: 本気ですか？
     loomio_help: Loomioヘルプ
     visit_loomio_help: Loomio ヘルプにアクセス
@@ -210,12 +210,12 @@ ja:
     attachments: 添付ファイル
     template: テンプレート
     links: リンク
-    active_time_ago: 最後にアクティブだった {{time_ago}}
+    active_time_ago: 最後にアクティブだった %{time_ago}
     something_went_wrong: ええとああ！何か問題が発生しました
     check_for_errors_and_try_again: フォームにエラーがないか確認して、もう一度お試しください
     please_try_again: もう一度試してください
-    closing_in: 閉店時間}}
-    closed_ago: 閉店 {{時間}}
+    closing_in: 閉店時間}
+    closed_ago: 閉店 %{時間}
     volume: 音量
     notification_volume: 通知量
     threads: スレッド
@@ -232,7 +232,7 @@ ja:
     reset: リセット
     copy_text: テキストをコピーする
     copied: クリップボードにコピーされました
-    points_abbrev: 各投票には {{score}} ポイントの価値があります
+    points_abbrev: 各投票には %{score} ポイントの価値があります
     total: 合計
     formatting_help:
       label: 書式設定
@@ -288,12 +288,12 @@ ja:
         normal: このスレッドでの提案については電子メールで送信されます。
         quiet: このスレッドに関する電子メールは送信されません。
     membership:
-      title: "{{title}} の通知"
+      title: "%{title} の通知"
       loud_description: このグループでアクティビティがあるたびにメールが届きます。
       normal_description: このグループでアクティビティがあるたびにメールが届きます。
       quiet_description: このグループのアクティビティに関する電子メールは送信されません。
       apply_to_all: これらの設定をすべてのグループに適用します。
-      apply_to_organization: "{{組織}} 内のすべてのグループに適用"
+      apply_to_organization: "%{組織} 内のすべてのグループに適用"
       messages:
         loud: このグループ内のすべてのアクティビティが電子メールで送信されます。
         normal: このグループのお知らせは電子メールでのみ送信されます。
@@ -327,7 +327,7 @@ ja:
       remove_attachment: 添付ファイルを削除する
     messages:
       created: コメント追加
-      replied: "{{name}} に返信が通知されました"
+      replied: "%{name} に返信が通知されました"
       updated: コメントを更新しました
       destroyed: コメントが削除されました
       removed: コメントが削除されました
@@ -335,11 +335,11 @@ ja:
     edit_comment: コメントの編集
     cancel_reply: 返信をキャンセル
     confirm_delete: コメントの削除
-    in_reply_to: "{{name}} に返信"
+    in_reply_to: "%{name} に返信"
     write_a_comment: コメントを書く...
     submit_button:
       label: 役職
-    private_privacy_notice: あなたのコメントは {{groupName}} のメンバーのみに表示されます。
+    private_privacy_notice: あなたのコメントは %{groupName} のメンバーのみに表示されます。
     public_privacy_notice: あなたのコメントはウェブ上の誰でも見ることができます。
     sign_in: ログインして会話に参加してください
   sidebar:
@@ -381,11 +381,11 @@ ja:
       proposals: 提案
       comments: コメント
     search_all_threads: すべてのスレッドを検索
-    search_threads: "{{name}} のスレッドを検索"
-    search_polls: "{{name}} でアンケートを検索"
-    search_members: "{{name}} のメンバーを検索"
-    search_subgroups: "{{name}} のメンバーを検索"
-    search_files: "{{name}} でファイルを検索"
+    search_threads: "%{name} のスレッドを検索"
+    search_polls: "%{name} でアンケートを検索"
+    search_members: "%{name} のメンバーを検索"
+    search_subgroups: "%{name} のメンバーを検索"
+    search_files: "%{name} でファイルを検索"
     recent_title: ダッシュボードに進め
     unread_title: 未読のアクティビティを表示する
     start_thread: 新しいスレッド
@@ -395,7 +395,7 @@ ja:
     open_sidebar: サイドバーを開く
     close_sidebar: サイドバーを閉じる
     logo_title: ホームページ
-    group_and_subgroups: "{{グループ}} とサブグループ"
+    group_and_subgroups: "%{グループ} とサブグループ"
   notifications:
     header: 通知
     no_notifications: 通知はありません
@@ -509,8 +509,8 @@ ja:
     context_placeholder: このディスカッションのコンテキストを提供して、参加者が参加方法を理解できるようにします
     privacy_public: リンクがあれば誰でもこのスレッドを閲覧できます
     privacy_private: このスレッドはグループのメンバーのみが閲覧できます
-    privacy_organisation: このスレッドは、{{parent}} のメンバーと {{group}} のメンバーに表示されます。
-    fork_notice: "{{title}} の %{count} 個のアイテムを含む新しいスレッドが作成されます"
+    privacy_organisation: このスレッドは、%{parent} のメンバーと %{group} のメンバーに表示されます。
+    fork_notice: "%{title} の %{count} 個のアイテムを含む新しいスレッドが作成されます"
     notify_group: グループに通知
   announcement:
     form:
@@ -527,9 +527,9 @@ ja:
         message_placeholder: 通知メールに含めるオプションのメッセージ
       group_has_no_members_yet: あなたはあなたのグループの唯一のメンバーです。スレッドや決定を開始する前に、何人かをグループに招待したい場合があります。
       invite_people_to_evaluate_loomio: Loomio グループに何人かを招待して、一緒に意思決定をしましょう
-      too_many_invitations: 招待制限を超えました。<a href="{{upgradeUrl}}" target="_blank">アップグレード</a>
-      no_invitations_remaining: <p>このグループで利用できる {{maxMembers}} 件の招待状をすべて使用しました。</p><p>次のステップでは、Loomio でのコラボレーションを継続する<a href="{{upgradeUrl}}" target="_blank">プランを選択します</a>。</p>
-      invitations_remaining: 招待状は残り %{count} 件あります。<a href="{{upgradeUrl}}" target="_blank">アップグレード</a>
+      too_many_invitations: 招待制限を超えました。<a href="%{upgradeUrl}" target="_blank">アップグレード</a>
+      no_invitations_remaining: <p>このグループで利用できる %{maxMembers} 件の招待状をすべて使用しました。</p><p>次のステップでは、Loomio でのコラボレーションを継続する<a href="%{upgradeUrl}" target="_blank">プランを選択します</a>。</p>
+      invitations_remaining: 招待状は残り %{count} 件あります。<a href="%{upgradeUrl}" target="_blank">アップグレード</a>
       who_to_invite: 誰を招待したいですか?
       invitation_message_placeholder: 招待メールに含めるメッセージ。 (オプション)
       invitation_message_default: 私は、一緒に意思決定を行えるよう、この Loomio グループを設立しました。私の招待を受けてください。参加には 1 分しかかかりません。ありがとう。
@@ -560,20 +560,20 @@ ja:
       type_or_paste_email_addresses_to_invite: 招待する電子メール アドレスを入力または貼り付けます
       notified_empty: まだ誰も選択していません
       single_notification: 1件の通知が送信されます。
-      multiple_notifications: "{{notified}} 通知が送信されます。"
-      notified: "{{notified}} 人に通知されます。"
+      multiple_notifications: "%{notified} 通知が送信されます。"
+      notified: "%{notified} 人に通知されます。"
       notified_singular: 1名様に通知させていただきます。
       notified_none: 誰にも通知されません。
       added: "%{count} 人が追加されます。"
       added_singular: 1名追加となります。
       added_none: 誰も追加されません。
-      group_title: "{{name}} (%{count} 人)"
-      visible_to_group: "{{group}} 内の誰でもこのスレッドを見ることができます。"
+      group_title: "%{name} (%{count} 人)"
+      visible_to_group: "%{group} 内の誰でもこのスレッドを見ることができます。"
       visible_to_guests: 招待された人だけがこのスレッドを閲覧できます。
       click_group_to_see_individuals: グループをクリックすると個人が表示されます
     send_discussion: スレッドの送信
-    send_group: 他の人を {{name}} に招待します
-    send_poll: "{{タイプ}}を送信します"
+    send_group: 他の人を %{name} に招待します
+    send_poll: "%{タイプ}を送信します"
     send_outcome: 結果の送信
     cannot_reveal_when_anonymous: 申し訳ありませんが、匿名投票で誰が投票したか、誰が投票しなかったかを明らかにすることはできません。
     discussion_notification_history: スレッド通知履歴
@@ -584,7 +584,7 @@ ja:
     notification_history_explanation: "✓ 通知が読まれたか、電子メールが開封されたことを示します"
     quick_add: 'クイック追加:'
     any_other_groups: 他のグループはありますか？
-    notified_people: "{{name}} が {{length}} 人に通知しました:"
+    notified_people: "%{name} が %{length} 人に通知しました:"
     preview: プレビューメール
     no_notifications_sent: 通知は送信されていません
     history_error: 何か問題が発生しました!履歴を読み込めませんでした。
@@ -595,29 +595,29 @@ ja:
     only_admins_can_announce: 管理者のみがグループ全体に通知できます
     only_admins_can_invite: 管理者のみがゲストを招待できます
     only_admins_can_announce_or_invite: グループ全体に通知したり、ゲストを招待したりできるのは管理者だけです
-    user_mentioned: "{{name}} が {{length}} 人について言及しました:"
-    comment_replied_to: "{{name}} が {{length}} 人に返信しました:"
-    new_discussion: "{{name}} が {{length}} 人をスレッドに招待しました:"
-    discussion_announced: "{{name}} が {{length}} 人をスレッドに招待しました:"
-    poll_created: "{{name}} が {{length}} 人を投票に招待しました:"
-    poll_announced: "{{name}} が {{length}} 人を投票に招待しました:"
-    outcome_created: "{{name}} は結果を {{length}} 人と共有しました:"
-    outcome_announced: "{{name}} は結果を {{length}} 人と共有しました:"
-    announcement_created: "{{name}} が {{length}} 人をスレッドに招待しました:"
-    discussion_edited: "{{name}} がスレッドを編集し、{{length}} 人に通知しました:"
-    poll_edited: "{{name}} がアンケートを編集し、{{length}} 人に通知しました:"
-    outcome_edited: "{{name}} が結果を編集し、{{length}} 人に通知しました:"
-    outcome_updated: "{{name}} が結果を編集し、{{length}} 人に通知しました:"
-    poll_closing_soon: "{{name}} の投票終了リマインダーは、{{length}} 人に通知しました:"
-    poll_reminder: "{{name}} さんが {{length}} 人に投票するようリマインドしました:"
+    user_mentioned: "%{name} が %{length} 人について言及しました:"
+    comment_replied_to: "%{name} が %{length} 人に返信しました:"
+    new_discussion: "%{name} が %{length} 人をスレッドに招待しました:"
+    discussion_announced: "%{name} が %{length} 人をスレッドに招待しました:"
+    poll_created: "%{name} が %{length} 人を投票に招待しました:"
+    poll_announced: "%{name} が %{length} 人を投票に招待しました:"
+    outcome_created: "%{name} は結果を %{length} 人と共有しました:"
+    outcome_announced: "%{name} は結果を %{length} 人と共有しました:"
+    announcement_created: "%{name} が %{length} 人をスレッドに招待しました:"
+    discussion_edited: "%{name} がスレッドを編集し、%{length} 人に通知しました:"
+    poll_edited: "%{name} がアンケートを編集し、%{length} 人に通知しました:"
+    outcome_edited: "%{name} が結果を編集し、%{length} 人に通知しました:"
+    outcome_updated: "%{name} が結果を編集し、%{length} 人に通知しました:"
+    poll_closing_soon: "%{name} の投票終了リマインダーは、%{length} 人に通知しました:"
+    poll_reminder: "%{name} さんが %{length} 人に投票するようリマインドしました:"
     audiences:
-      group: "{{名前}}"
+      group: "%{名前}"
       everyone_in_the_group: グループの全員が
       discussion_group: スレッド内の全員
       voters: 投票に招待された全員
       decided_voters: 投票してくださった皆様
       undecided_voters: 未決定の有権者
-      non_voters: "{{name}} のメンバーはまだ招待されていません"
+      non_voters: "%{name} のメンバーはまだ招待されていません"
     members_list:
       title: 共有者
       last_notified: 通知済み
@@ -625,7 +625,7 @@ ja:
       no_members: これはまだ誰とも共有されていません。
       group_admin: グループ管理者
       thread_admin: スレッド管理者
-      last_read_at: 最終閲覧時間 {{time}}
+      last_read_at: 最終閲覧時間 %{time}
       has_not_read_thread: スレッドを見ていません
     group_form:
       search_placeholder: 人を探す...
@@ -637,7 +637,7 @@ ja:
     membership_requested: メンバーリクエストが送られました
     not_a_member: あなたは現在このグループのメンバーではありません。
     messages:
-      joined_group: あなたは現在、{{グループ}}のメンバーです
+      joined_group: あなたは現在、%{グループ}のメンバーです
   membership_request_form:
     heading: グループへの参加依頼
     name_label: 氏名
@@ -647,7 +647,7 @@ ja:
     submit_button: 参加を依頼する
     introduction_over_limit: 応答が長すぎます
     messages:
-      membership_requested: "{{グループ}}への参加をリクエストしました"
+      membership_requested: "%{グループ}への参加をリクエストしました"
   group_page:
     threads: ディスカッション
     members: メンバー
@@ -704,21 +704,21 @@ ja:
     volume:
       loud: アクティビティがあるたびにメールを送信します。
       loud_aria_description: このグループの通知音量は大音量に設定されています。アクティビティがあるたびにメールで通知されます。
-      loud_message: "「{{name}}」でのすべてのアクティビティについて電子メールが送信されます。"
+      loud_message: "「%{name}」でのすべてのアクティビティについて電子メールが送信されます。"
       normal: 新しいスレッドや提案、結果などの重要なアクティビティを電子メールで送信するだけです。
       normal_aria_description: このグループの通知音量は「標準」に設定されています。誰かが新しいスレッドを開始したとき、提案を提起したとき、結果を設定したときなど、重要なアクティビティが電子メールで送信されます。
-      normal_message: "「{{name}}」の重要なイベントについてのみメールが送信されます。"
+      normal_message: "「%{name}」の重要なイベントについてのみメールが送信されます。"
       quiet: このグループについてメールを送信しないでください。アクティビティがダッシュボードに表示されます。
       quiet_aria_description: このグループの通知音量は「静か」に設定されています。このグループのアクティビティに関する電子メールは送信されません。グループアクティビティがダッシュボードに表示されます。
-      quiet_message: "「{{name}}」でのアクティビティに関するメールは送信されません。"
+      quiet_message: "「%{name}」でのアクティビティに関するメールは送信されません。"
       mute: このグループをダッシュボードから非表示にし、@メンションがない限り通知しません。
       mute_aria_description: このグループの通知音量はミュートに設定されています。誰かがあなたに言及しない限り、電子メールは送信されません。また、グループのアクティビティはダッシュボードに表示されません。
-      mute_message: "「{{name}}」はダッシュボードから削除されました。"
+      mute_message: "「%{name}」はダッシュボードから削除されました。"
     privacy:
       private: 'プライバシー: このグループはメンバーのみに表示されます'
-      parent_members: 'プライバシー: このグループは、{{parentGroupName}} のメンバーと {{groupName}} のメンバーに表示されます'
+      parent_members: 'プライバシー: このグループは、%{parentGroupName} のメンバーと %{groupName} のメンバーに表示されます'
       public: 'プライバシー: このグループはウェブ上に表示されます'
-      aria_label: 'グループのプライバシー: {{プライバシー}}'
+      aria_label: 'グループのプライバシー: %{プライバシー}'
   group_form:
     new_group: 新しいグループ
     group_name: グループ名
@@ -746,7 +746,7 @@ ja:
     subgroup_name: サブグループ名
     organization_name: 組織名
     handle: ハンドル
-    group_handle_placeholder: 'グループ URL で使用: {{host}}/{{handle}}'
+    group_handle_placeholder: 'グループ URL で使用: %{host}/%{handle}'
     start_organization_heading: 新組織
     edit_organization_heading: 組織設定の編集
     subgroup_name_placeholder: あなたのサブグループの名前は何ですか?
@@ -759,7 +759,7 @@ ja:
     privacy_statement:
       public_on_web: グループ コンテキストの名前、説明、添付ファイルが一般公開されます。
       private_to_group: 名前と説明はメンバーのみに表示されます。
-      private_to_parent_members: 名前と説明は {{parent}} のメンバーに表示されます
+      private_to_parent_members: 名前と説明は %{parent} のメンバーに表示されます
     group_privacy_is_open_description: 上場済み。すべてのスレッドは公開されています。
     group_privacy_is_closed_description: 未公開。リンクを知っている人は誰でも参加をリクエストできます。すべてのスレッドは非公開です。
     group_privacy_is_closed_public_threads_description: 未公開。リンクを知っている人は誰でも参加をリクエストできます。スレッドはパブリックまたはプライベートにすることができます。
@@ -771,22 +771,22 @@ ja:
     subgroup_privacy_is_open_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーだけです。すべてのスレッドは公開されています。
     subgroup_privacy_is_closed_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーのみです。すべてのスレッドは非公開です。
     subgroup_privacy_is_closed_public_threads_description: 誰でもこのサブグループを見つけて参加をリクエストできます。グループに誰がいるかを確認できるのはメンバーだけです。スレッドはパブリックまたはプライベートにすることができます。
-    subgroup_privacy_is_closed_secret_parent_description: "{{parent}} のメンバーは、このサブグループを見つけて参加をリクエストできます。すべてのスレッドは非公開です。グループに誰がいるかを確認できるのはメンバーだけです。"
+    subgroup_privacy_is_closed_secret_parent_description: "%{parent} のメンバーは、このサブグループを見つけて参加をリクエストできます。すべてのスレッドは非公開です。グループに誰がいるかを確認できるのはメンバーだけです。"
     subgroup_privacy_is_secret_description: 招待されたメンバーのみがこのサブグループを見つけ、誰が参加しているかを確認し、スレッドを表示できます。
     advanced_settings: 高度な設定
     how_do_people_join: 人々はどうやって参加するのでしょうか？
     membership_granted_upon_request: 誰でもグループに参加できます。
     membership_granted_upon_approval: 誰でも参加をリクエストできますが、承認が必要です。
     membership_granted_upon_invitation: 招待制のみ。
-    membership_granted_upon_approval_secret_parent: "<strong>リクエストに応じて、</strong> {{parent}} の誰でもグループへの参加をリクエストできます。"
+    membership_granted_upon_approval_secret_parent: "<strong>リクエストに応じて、</strong> %{parent} の誰でもグループへの参加をリクエストできます。"
     permissions: 権限
     thread_privacy: スレッドのプライバシー
     public_threads: パブリックスレッドのみ
-    public_discussions_subgroup: "{{parentGroupName}} 内の誰でもディスカッションを閲覧できます"
+    public_discussions_subgroup: "%{parentGroupName} 内の誰でもディスカッションを閲覧できます"
     public_or_private_threads: パブリックスレッドとプライベートスレッドを許可する
     private_threads: メンバーのみがディスカッションを閲覧できます
     allow_public_threads: このグループでパブリック スレッドを許可します。
-    parent_members_can_see_discussions: "{{parent}} のメンバーはプライベート スレッドを閲覧できます"
+    parent_members_can_see_discussions: "%{parent} のメンバーはプライベート スレッドを閲覧できます"
     parent_members_can_see_discussions_help: 親グループのメンバーに、このグループ内のスレッドと投票の表示を許可しますが、参加は許可しません
     members_can_announce: メンバーはグループ内の全員に通知できます
     members_can_announce_help: メンバーがグループ内の全員にスレッドまたは投票について通知できるようにする
@@ -822,7 +822,7 @@ ja:
     no_pending_requests: 現在、このグループには保留中のメンバーシップ要求はありません。
     no_previous_requests: 現在、このグループに対する以前のメンバーシップ リクエストはありません。
     previous_requests: 以前のリクエスト
-    previous_request_response: "{{response}} by {{responder}}"
+    previous_request_response: "%{response} by %{responder}"
     messages:
       request_approved_success: メンバーシップリクエストが承認されました
       request_ignored_success: メンバーシップリクエストは無視されました
@@ -835,7 +835,7 @@ ja:
     aria_label: 招待状フォーム
     invite_guests: ゲストを招待する
     notify_people: 人々に通知する
-    invite_people_to_group: "{{name}} に招待する"
+    invite_people_to_group: "%{name} に招待する"
     group_placeholder: グループを選択してください
     shareable_link: 共有可能なリンク
     share_group: グループを共有する
@@ -852,7 +852,7 @@ ja:
     custom_message: カスタムメッセージ
     custom_message_placeholder: 招待状に含める個人的なメッセージを入力します。
     add_members: メンバーを追加する
-    from_parent_group: 名前から}}。
+    from_parent_group: 名前から}。
     send: 送信
     done: 終わり
     messages:
@@ -868,9 +868,9 @@ ja:
     fragment_placeholder: ユーザーを名前またはユーザー名でフィルターします...
     only_one_admin: このグループには管理者が 1 人だけいます。さらに少なくとも 1 人のメンバーを管理者として任命することをお勧めします。
     messages:
-      remove_member_success: "{{name}} を削除しました"
-      make_admin_success: "{{name}} は管理者になりました"
-      remove_admin_success: "{{name}} は管理者ではなくなりました"
+      remove_member_success: "%{name} を削除しました"
+      make_admin_success: "%{name} は管理者になりました"
+      remove_admin_success: "%{name} は管理者ではなくなりました"
     remove_admin_from_self:
       question: もう管理者になるのはやめてもよろしいですか?
   profile_page:
@@ -956,7 +956,7 @@ ja:
       muted_aria_label: 現在ミュートされたスレッドを表示しています
       muted_description: ミュートされたスレッドのみを表示します
     thread_preview:
-      you_voted: あなたは {{position}} に投票しました
+      you_voted: あなたは %{position} に投票しました
       undecided: あなたは未定です
   inbox_page:
     no_groups:
@@ -971,7 +971,7 @@ ja:
     aria_label: グループ名
   thread_context:
     close_thread: 締め切り
-    current_poll_type_banner: 現在の {{pollType}}
+    current_poll_type_banner: 現在の %{pollType}
     item_maybe_deleted: スレッド内で要求された場所が見つかりません。削除された可能性があります。
     aria_label: スレッドコンテキスト
     thread_options: ねじのオプション
@@ -1002,7 +1002,7 @@ ja:
     respond_asap: Loomio チームにメッセージを送信してください。できるだけ早く返信させていただきます。
     happy_to_help_with: 販売に関するお問い合わせ、サポート リクエスト、機能リクエスト、発生しているバグや問題の報告を喜んでお手伝いいたします。
     title: やあ！どのように我々は助けることができます？
-    contact_us_email: <a href="mailto:{{email}}">{{email}}</a>までメールでお問い合わせいただくこともできます。
+    contact_us_email: <a href="mailto:%{email}">%{email}</a>までメールでお問い合わせいただくこともできます。
     contact_us: お問い合わせ
     name_placeholder: あなたの名前を入力してください...
     subject_placeholder: '例: サインインの問題、または機能の提案'
@@ -1011,8 +1011,8 @@ ja:
     send_message: メッセージを送る
     new_contact_message: ご連絡いただきありがとうございます。すぐにご連絡いたします。
     consent_message: 当社にご連絡いただくことにより、当社のスタッフが必要に応じてお客様のアカウントにアクセスすることに同意したものとみなされます。<br />弊社のサポート チームは英語を話し、必要に応じて Google 翻訳でメッセージを翻訳します。<br />すべてのメッセージには 24 時間以内に返信するよう努めております。
-    success: メッセージありがとうございます、{{name}}。すぐにご連絡いたします。
-    success_via_email: メッセージありがとうございます、{{name}}。 24時間以内にメールにてご返答させていただきます。
+    success: メッセージありがとうございます、%{name}。すぐにご連絡いたします。
+    success_via_email: メッセージありがとうございます、%{name}。 24時間以内にメールにてご返答させていただきます。
   poll_common:
     have_your_say: 意見を言う
     save_changes: 保存
@@ -1032,8 +1032,8 @@ ja:
     custom_process: カスタムプロセス
     custom_poll: カスタム投票
     delete_poll: 投票の削除
-    select_count_options: "{{count}} 個のオプションを選択してください"
-    select_minimum_to_maximum_options: "{{minimum}} ～ {{maximum}} のオプションを選択してください"
+    select_count_options: "%{count} 個のオプションを選択してください"
+    select_minimum_to_maximum_options: "%{minimum} ～ %{maximum} のオプションを選択してください"
     custom_poll_types: カスタム投票タイプ
     hidden_poll_templates: 非表示の投票テンプレート
     poll_template: 投票テンプレート
@@ -1067,7 +1067,7 @@ ja:
     results: 結果
     current_results: 現在の結果
     responses: 反応
-    close_poll_type: "{{pollType}}を閉じる"
+    close_poll_type: "%{pollType}を閉じる"
     close_early: 早めに閉める
     totals: 合計
     participate: 参加する
@@ -1098,7 +1098,7 @@ ja:
     max_score: 最大スコア
     min_score: 最低スコア
     too_long: 長すぎる
-    edit_warning: 編集は、軽微な変更またはスペルミスの修正の場合にのみ推奨されます。重要な変更がある場合は、この {{pollType}} を閉じて、新しいものを開始してください。
+    edit_warning: 編集は、軽微な変更またはスペルミスの修正の場合にのみ推奨されます。重要な変更がある場合は、この %{pollType} を閉じて、新しいものを開始してください。
     no_voting: ディスカッションのみのため、投票は無効です
     outdated: 時代遅れ
   discussions_panel:
@@ -1106,9 +1106,9 @@ ja:
     closed: 議論終了
     all: 全て
     unread: 未読 (%{count})
-    include_subgroups_mine: "{{name}} と私のサブグループ"
-    include_subgroups_all: "{{name}} とすべてのサブグループ"
-    no_results_found: "「{{検索}}」の結果はありません"
+    include_subgroups_mine: "%{name} と私のサブグループ"
+    include_subgroups_all: "%{name} とすべてのサブグループ"
+    no_results_found: "「%{検索}」の結果はありません"
     welcome_to_your_new_group: 新しい Loomio グループへようこそ!
     lets_start_a_thread: スレッドを始めましょう。 「新しいスレッド」をクリックして続行します。
   members_panel:
@@ -1125,7 +1125,7 @@ ja:
     show_users_in_subgroups: サブグループ内のユーザーも表示
     order_by_created_desc: 最新
     order_by_admin_desc: 管理者
-    loaded_of_total: "{{total}}中{{読み込み済み}}"
+    loaded_of_total: "%{total}中%{読み込み済み}"
     view_requests: リクエストの表示
     header_username: ユーザー名
     header_role: 役割
@@ -1138,8 +1138,8 @@ ja:
     admin: 管理者
     guest: ゲスト
     sharable_link: 共有可能なリンク
-    last_seen: 最後に見たのは {{日付}}
-    invited_by_name: "{{name}} からの招待"
+    last_seen: 最後に見たのは %{日付}
+    invited_by_name: "%{name} からの招待"
   polls_panel:
     open: 議論中
     closed: 議論終了
@@ -1219,9 +1219,9 @@ ja:
     stance_reason_is_required: 投票には理由を添えてください
     limit_reason_length: 理由は最大 500 文字に制限してください
     save_poll: 投票を保存する
-    start_poll_type: "{{poll_type}}を開始"
-    share_poll_type: "{{poll_type}}を共有する"
-    who_may_vote: この {{poll_type}} に投票できるのは誰ですか?
+    start_poll_type: "%{poll_type}を開始"
+    share_poll_type: "%{poll_type}を共有する"
+    who_may_vote: この %{poll_type} に投票できるのは誰ですか?
     update: アップデート
     add_voters: 有権者の追加
     notify_invitees: 通知を送信する
@@ -1259,19 +1259,19 @@ ja:
   auth_form:
     name_placeholder: あなたの名前
     code: '000000'
-    youre_invited: "{{group_name}} への参加に招待されました。"
+    youre_invited: "%{group_name} への参加に招待されました。"
     youre_invited_discussion: ディスカッションに参加するよう招待されました。
     youre_invited_poll: 投票に招待されました。
-    existing_account_can_sign_in: すでに {{site_name}} ユーザーである場合は、既存のアカウントでサインインしてください
-    sign_up_or_log_in: アカウントを作成するか、{{site_name}} にサインインしてください
-    sign_in_to_loomio: "{{site_name}} にログインします"
+    existing_account_can_sign_in: すでに %{site_name} ユーザーである場合は、既存のアカウントでサインインしてください
+    sign_up_or_log_in: アカウントを作成するか、%{site_name} にサインインしてください
+    sign_in_to_loomio: "%{site_name} にログインします"
     sign_in_help: サインインするのに問題ありますか？
     sign_in: サインイン
     continue: 続く
     create_account: アカウントを作成する
-    sign_up_as: "{{email}} としてアカウントを作成"
-    sign_in_as: "{{name}}としてサインインします"
-    continue_with_provider: "{{プロバイダー}} を続行します"
+    sign_up_as: "%{email} としてアカウントを作成"
+    sign_in_as: "%{name}としてサインインします"
+    continue_with_provider: "%{プロバイダー} を続行します"
     continue_with_email: メールで続行
     or_enter_your_email: または、メールアドレスを入力してください
     enter_your_name: あなたの名前を入力してください
@@ -1290,31 +1290,31 @@ ja:
     enter_your_password: 続行するにはパスワードを入力してください
     check_spam_folder: メールがすぐに届かない場合は、迷惑メールフォルダーを確認してください。
     sign_up_helptext: ユーザーアカウントを作成するには、このフォームに記入してください
-    i_accept_all: "{{termsLink}} と {{privacyLink}} に同意します"
-    newsletter_label: "{{link}} を受け取りたい"
+    i_accept_all: "%{termsLink} と %{privacyLink} に同意します"
+    newsletter_label: "%{link} を受け取りたい"
     name_required: 名前を入力してください
     terms_required: 利用規約に同意する必要があります
-    account_inactive: ああ、{{email}} のアカウントが無効になったようです。
-    privacy_notice: 私たちはあなたのデータを決して販売しません。<br><a href='{{privacyUrl}}' target='_blank'>プライバシーポリシー</a>
-    welcome: "{{siteName}} を初めてご利用ですか?"
-    welcome_back: おかえりなさい、{{name}}!
+    account_inactive: ああ、%{email} のアカウントが無効になったようです。
+    privacy_notice: 私たちはあなたのデータを決して販売しません。<br><a href='%{privacyUrl}' target='_blank'>プライバシーポリシー</a>
+    welcome: "%{siteName} を初めてご利用ですか?"
+    welcome_back: おかえりなさい、%{name}!
     forgot_password: パスワードをお忘れですか
     login_link: サインインメールを送信する
     sign_in_via_email: 電子メールでサインインする
     set_password: パスワードを設定してください
     set_password_helptext: 次回からパスワードを使用しますか?
-    hello: こんにちは、{{名前}}！
-    new_to_loomio: "{{site_name}} を初めてご利用ですか?"
+    hello: こんにちは、%{名前}！
+    new_to_loomio: "%{site_name} を初めてご利用ですか?"
     already_a_user: すでにアカウントをお持ちですか？
     email_address_of_existing_account: 既存のアカウントのメールアドレスを入力してください
     link_accounts: アカウントをリンクする
     check_your_email: あなたのメールをチェック！
-    login_link_sent: "{{email}} にメールを送信しました。"
+    login_link_sent: "%{email} にメールを送信しました。"
     instructions: リンクをクリックしてサインインするか、以下のコードを入力します。
     instructions_code: 'そのメールにあるコードを入力してください:'
     too_many_attempts: 試行が多すぎます。電子メール内のリンクをクリックしてサインインしてみてください。
     invalid_code: 申し訳ありませんが、そのコードは一致しませんでした。メールを確認して、もう一度試してください。
-    password_link_sent: パスワードの設定方法を記載したメールを {{email}} に送信しました。
+    password_link_sent: パスワードの設定方法を記載したメールを %{email} に送信しました。
     reactivate_link_sent: アカウントを再開する手順を記載したメールを送信しました
     signed_in: 正常にサインインしました
     email_verified: メールが正常に認証されました
@@ -1364,7 +1364,7 @@ ja:
       discord: 不和
     subtitle: API を使用して Loomio と他のツールに接続します
     deprecated: この API は廃止されました。 APIv2 に移行してください (グループ設定メニューの API ドキュメントを参照)
-    we_have_guides: サービスの接続については、 <a href="{{url}}" target="_blank">Webhook セットアップ ガイドを</a>参照してください。
+    we_have_guides: サービスの接続については、 <a href="%{url}" target="_blank">Webhook セットアップ ガイドを</a>参照してください。
     add_webhook: Webhook を追加する
     show_docs: API の使用法を参照
     save_to_show_docs: 保存したら、ここに戻って API キーを見つけてください
@@ -1372,7 +1372,7 @@ ja:
     add_integration: 統合の追加
     success: 統合が追加されました！
     remove: 統合の削除
-    confirm_remove: '統合を削除してもよろしいですか: {{name}}?'
+    confirm_remove: '統合を削除してもよろしいですか: %{name}?'
     removed: 統合が削除されました
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
@@ -1454,11 +1454,11 @@ ja:
     is_old_plan: Loomioに新しいシンプルな料金プランが登場
     change_plan: プラン変更
     view_plans: プランを見る
-    free_trial: 無料トライアル。残り {{days}} 日です。
+    free_trial: 無料トライアル。残り %{days} 日です。
     trial_expired: 試用期間が終了しました。 Loomio を引き続き使用するにはアップグレードしてください。
     tooltip: 当社の価格は素晴らしいです!今すぐアップグレードして、Loomio がグループに提供できるものをお楽しみください。
-    was_gift_trial: 'あなたのグループは、{{createdDate}} 以来、Loomio を無料で使用しています。無料サービスの提供を継続することができなくなりました。 Loomio を引き続き使用するにはアップグレードしてください。 <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>続きを読む。</a>'
-    was_gift_remaining: 残り {{days}} 日です。
+    was_gift_trial: 'あなたのグループは、%{createdDate} 以来、Loomio を無料で使用しています。無料サービスの提供を継続することができなくなりました。 Loomio を引き続き使用するにはアップグレードしてください。 <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>続きを読む。</a>'
+    was_gift_remaining: 残り %{days} 日です。
     was_gift_expired: 無料プランの有効期限が切れました。
   poll_types:
     proposal: 提案
@@ -1471,11 +1471,11 @@ ja:
     score: スコア投票
     question: 質問ラウンド
   timezones:
-    local: 現地時間 ({{value}})
+    local: 現地時間 (%{value})
   merge_accounts:
     modal:
       title: アカウントを統合する
-      helptext: "<strong>{{sourceEmail}}</strong>のアカウントを<strong>{{targetEmail}}</strong>のアカウントに統合できます。 「確認」をクリックすると、プロセスを開始するための確認メールが {{targetEmail}} に送信されます。"
+      helptext: "<strong>%{sourceEmail}</strong>のアカウントを<strong>%{targetEmail}</strong>のアカウントに統合できます。 「確認」をクリックすると、プロセスを開始するための確認メールが %{targetEmail} に送信されます。"
       submit: 確認する
       flash: 確認メールを送信しました!
     email_taken: 申し訳ありませんが、そのメールはすでに別のユーザーに関連付けられています。そのメールはあなたのものですか?
@@ -1500,8 +1500,8 @@ ja:
   verify_email_notice:
     please_verify: ご参加いただきありがとうございました！投票を確認するためのリンクがある電子メールを確認してください。
   previous_polls_page:
-    heading: "{{name}}でのアクティビティ"
-    polls_count: "{{total}} 件中 {{loaded}} 件の決定を表示しています"
+    heading: "%{name}でのアクティビティ"
+    polls_count: "%{total} 件中 %{loaded} 件の決定を表示しています"
     search_activities: 検索の決定
   email_to_group:
     email_to_group_settings: グループへの電子メール設定
@@ -1576,7 +1576,7 @@ ja:
     edit_profile: プロファイル編集
     email_settings: 通知設定
     help: ヘルプ
-    contact_site_name: "{{site_name}} に問い合わせる"
+    contact_site_name: "%{site_name} に問い合わせる"
     contact_support: サポート問い合わせ先
     sign_out: サインアウト
     beta_collab: "\U0001F9EA ベータ版機能が有効になりました!"
@@ -1584,7 +1584,7 @@ ja:
   membership_card:
     group_members: グループの人（仲間）たち
     discussion_members: スレッドメンバー
-    poll_members: "{{pollType}} メンバー"
+    poll_members: "%{pollType} メンバー"
     voters: 有権者
     invite_to_group: グループに招待する
     invite_to_discussion: スレッドに招待する
@@ -1601,7 +1601,7 @@ ja:
     remove_from:
       discussion: スレッドから削除する
       group: グループから削除
-      poll: "{{pollType}} から削除"
+      poll: "%{pollType} から削除"
     cancel_invitation: 招待をキャンセルする
   notification_models:
     discussion: 糸：
@@ -1651,8 +1651,8 @@ ja:
     invite_guests: ゲストを招待する
     translate_thread: コンテキストを翻訳する
     edit_poll: 投票の編集
-    edit_poll_type: "{{pollType}}を編集"
-    new_poll_type: 新しい {{pollType}}
+    edit_poll_type: "%{pollType}を編集"
+    new_poll_type: 新しい %{pollType}
     move_items: アイテムを移動する
     announce_poll: 人々を投票に招待する
     announce_poll_active: "(まだ誰も招待されていません)"
@@ -1758,26 +1758,26 @@ ja:
     poll_header: 投票の編集
     outcome_header: 結果の編集
     stance_header: 編集の投票
-    started_by: "<strong>{{name}}</strong>によって開始されました"
-    edited_by: "<strong>{{name}}</strong>によって編集されました"
-    edit_by: "{{name}} · {{date}} によって編集"
+    started_by: "<strong>%{name}</strong>によって開始されました"
+    edited_by: "<strong>%{name}</strong>によって編集されました"
+    edit_by: "%{name} · %{date} によって編集"
     posted: 投稿しました
     field: 分野
     before: 前に
     after: 後
     original_text: オリジナル
     current_revision: 最新
-    closing_at_changed: 終了時刻を {{time}} に設定しました
-    private_changed: プライバシーを {{private}} に設定
-    group_id_changed: "{{name}} に移動しました"
+    closing_at_changed: 終了時刻を %{time} に設定しました
+    private_changed: プライバシーを %{private} に設定
+    group_id_changed: "%{name} に移動しました"
   reactions_input:
     add_your_reaction: あなたの反応を追加してください
   reactions_display:
     more_reactions: あと %{count} 件
     you: あなた
-    you_and_name: あなたと{{name}}
-    you_and_name_and_count_more: あなた、{{name}}、他 %{count} 人
-    name_and_count_more: "{{name}} と %{count} 件以上"
+    you_and_name: あなたと%{name}
+    you_and_name_and_count_more: あなた、%{name}、他 %{count} 人
+    name_and_count_more: "%{name} と %{count} 件以上"
   context_panel:
     thread_status:
       pinned: このスレッドは固定されました。これは、すべてのユーザーのグループのスレッド リストの先頭に残ります。
@@ -1821,12 +1821,12 @@ ja:
   membership_remove_modal:
     invitation:
       title: 招待をキャンセルする
-      message: "{{name}} への招待をキャンセルしてもよろしいですか?"
+      message: "%{name} への招待をキャンセルしてもよろしいですか?"
       flash: 招待がキャンセルされました
       submit: 招待をキャンセルする
     membership:
       title: メンバーの削除
-      message: 本当に {{name}} を削除してもよろしいですか?
+      message: 本当に %{name} を削除してもよろしいですか?
       impact_for_subgroup: これにより、サブグループ (スレッドや投票を含む) へのアクセス権が削除されますが、親グループのメンバーとして残ります。
       impact_for_group: これにより、グループ (スレッドや投票を含む) およびサブグループへのアクセスが削除されます。
       flash: メンバーが削除されました
@@ -1838,7 +1838,7 @@ ja:
     modal_title:
       group: タイトルを設定する
     title_helptext:
-      group: このタイトルは、このグループ内の {{name}} の名前の横に表示されます。人々に自分の役割を知らせるために使用します。
+      group: このタイトルは、このグループ内の %{name} の名前の横に表示されます。人々に自分の役割を知らせるために使用します。
     title_label: タイトル
     title_placeholder: '例: 「コーディネーター」または「ファシリテーター」'
     updated: 会員タイトルを更新しました
@@ -1846,19 +1846,19 @@ ja:
     user_name_updated: ユーザー名が更新されました
     set_user_name: ユーザー名を設定する
   user_page:
-    contact_user: 連絡先}}
-    location_field: '場所: {{値}}'
-    locale_field: '言語: {{値}}'
-    online_field: 'オンライン: {{値}}'
-    invited: "{{value}} を招待しました"
-    message_user: メッセージ {{名前}}
+    contact_user: 連絡先}
+    location_field: '場所: %{値}'
+    locale_field: '言語: %{値}'
+    online_field: 'オンライン: %{値}'
+    invited: "%{value} を招待しました"
+    message_user: メッセージ %{名前}
   contact_request_form:
-    modal_title: メールアドレス {{名前}}
+    modal_title: メールアドレス %{名前}
     message_placeholder: 自己紹介をして、連絡を取りたい理由を共有してください。
-    helptext: "{{name}} にあなたの名前、メールアドレス、メッセージがメールで送信されます"
-    email_sent: メールは {{name}} に送信されました
+    helptext: "%{name} にあなたの名前、メールアドレス、メッセージがメールで送信されます"
+    email_sent: メールは %{name} に送信されました
   text_editor:
-    x_of_y_characters: "{{x}} / {{y}} 文字"
+    x_of_y_characters: "%{x} / %{y} 文字"
     select_text_to_link: リンクするテキストを選択して再試行してください
     insert_link: リンクを挿入
     insert_embedded_url: 埋め込まれたビデオ
@@ -1870,7 +1870,7 @@ ja:
     use_gravatar: グラバターを使用する
     use_uploaded: 新しい写真をアップロードする
     existing_upload: 既存のアップロード
-    use_provider: "{{プロバイダー}} の写真を使用してください"
+    use_provider: "%{プロバイダー} の写真を使用してください"
   change_password_form:
     set_password_title: パスワードを作る
     set_password_helptext: パスワードを入力してください - 8文字以上
@@ -1926,12 +1926,12 @@ ja:
   discussion:
     invite_only: 招待のみ
     private_thread: プライベートスレッド
-    max_threads_reached: <p>このグループで利用可能なすべての {{maxThreads}} スレッドを使用しました。</p><p>次のステップでは、Loomio でのコラボレーションを継続する<a href="{{upgradeUrl}}" target="_blank">プランを選択します</a>。</p>
-    subscription_canceled: <p>あなたのサブスクリプションはアクティブではありません。</p><p> Loomio を引き続き使用するには<a href="{{upgradeUrl}}" target="_blank">アップグレードし</a>てください。</p>
+    max_threads_reached: <p>このグループで利用可能なすべての %{maxThreads} スレッドを使用しました。</p><p>次のステップでは、Loomio でのコラボレーションを継続する<a href="%{upgradeUrl}" target="_blank">プランを選択します</a>。</p>
+    subscription_canceled: <p>あなたのサブスクリプションはアクティブではありません。</p><p> Loomio を引き続き使用するには<a href="%{upgradeUrl}" target="_blank">アップグレードし</a>てください。</p>
     activity: 活動
     activity_placeholder: まだ活動はありません!
     load_previous: 以前のアクティビティをロードする
-    started_by: "<strong>{{name}}</strong>によって開始されました"
+    started_by: "<strong>%{name}</strong>によって開始されました"
     pin:
       pinned: ネジが固定されています
       unpinned: スレッドの固定が解除されました
@@ -2001,14 +2001,14 @@ ja:
     title: スレッドを移動する
     body: 宛先グループ
     confirm: スレッドを移動する
-    confirm_change_to_private_thread: "{{groupName}} はオープン グループです。続行すると、このスレッドは公開されます。"
+    confirm_change_to_private_thread: "%{groupName} はオープン グループです。続行すると、このスレッドは公開されます。"
     messages:
-      success: スレッドは {{name}} に移動されました
+      success: スレッドは %{name} に移動されました
   explore_page:
     header: グループを探索する
     search_placeholder: 公開グループを検索する
-    single_search_result: "<strong>{{searchTerm}} に一致する公開グループ 1 件:</strong>"
-    multiple_search_results: "{ <strong>{searchTerm}} に一致する {{resultCount}} 個の公開グループ:</strong>"
+    single_search_result: "<strong>%{searchTerm} に一致する公開グループ 1 件:</strong>"
+    multiple_search_results: "{ <strong>{searchTerm} に一致する %{resultCount} 個の公開グループ:</strong>"
     no_results_found: "<strong>探しているグループが見つかりませんか?</strong>グループのプライバシーが「秘密」に設定されている場合、ここには表示されません。"
     newest_first: 新しい順
     biggest_first: 一番大きいものから
@@ -2060,7 +2060,7 @@ ja:
     hide_results: 結果を非表示にする
     until_vote: 投票が行われるまで
     until_you_vote: 投票するまで
-    until_poll_type_closed: "{{pollType}}が終了するまで"
+    until_poll_type_closed: "%{pollType}が終了するまで"
     until_voting_is_closed: 投票が終了するまで
     deleted: この投票は削除されました
   group_files_panel:
@@ -2070,8 +2070,8 @@ ja:
     uploaded_at: にアップロードされました
     delete_confirmation: この添付ファイルを削除してもよろしいですか?関連するコメントまたはスレッドから削除されます。これは、元に戻すことはできません。
   subgroups_panel:
-    search_subgroups_of_name: "{{name}} のサブグループを検索"
-    group_without_subgroups: サブグループなしの {{name}}
+    search_subgroups_of_name: "%{name} のサブグループを検索"
+    group_without_subgroups: サブグループなしの %{name}
   poll_common_action_panel:
     from_the_thread: スレッドテンプレートから
     from_the_group: グループからは
@@ -2089,7 +2089,7 @@ ja:
     draft_mode: 投票が無効になりました。これはまだ投票を受け付けていません。
     voting_disabled_poll_is_template: 投票が無効になりました。これはテンプレートです。
   poll_common_collapsed:
-    by_who: 名前で}}
+    by_who: 名前で}
   poll_common_calendar_invite:
     calendar_invite: この結果をカレンダーへの招待状に含めます
     poll_option_id: 会議の時間
@@ -2108,7 +2108,7 @@ ja:
     specified_voters_only_true: 招待された人のみ
     specified_voters_only_false_group: グループ内の誰でも
     specified_voters_only_false_discussion: スレッド内の誰でも
-    invite_people_next: "{{poll_type}} を開始した後、投票に招待される人を選択できます"
+    invite_people_next: "%{poll_type} を開始した後、投票に招待される人を選択できます"
     shuffle_options:
       shuffle_options: シャッフルオプション
       title: オプションをランダムな順序で表示します
@@ -2121,8 +2121,8 @@ ja:
       helptext_on: 選択すると、投票へのリンクを知っている人は誰でも参加できます。
     notify_on_closing_soon:
       voting_closes_too_soon: 投票は 24 時間以内に終了するため、投票終了のリマインダーは送信されません。
-      closes_too_soon: この {{pollType}} は 24 時間以内に終了するため、もうすぐ終了するリマインダーは送信されません。
-      title: "{{pollType}} が終了する 24 時間前に、リマインダーを送信してください"
+      closes_too_soon: この %{pollType} は 24 時間以内に終了するため、もうすぐ終了するリマインダーは送信されません。
+      title: "%{pollType} が終了する 24 時間前に、リマインダーを送信してください"
       voting_title: 投票終了の 24 時間前にリマインダーを送信してください
       nobody: 誰でもない
       author: 著者（私）
@@ -2149,12 +2149,12 @@ ja:
     close_poll_type: "%{poll_type} を閉じる"
     poll_type_closed: "%{poll_type} は終了しました"
   poll_common_reopen_form:
-    title: "{{poll_type}}を再開します"
-    helptext: 参加するためにさらに時間が必要な場合は、{{poll_type}} を再開します
-    success: "{{poll_type}}が再開されました"
+    title: "%{poll_type}を再開します"
+    helptext: 参加するためにさらに時間が必要な場合は、%{poll_type} を再開します
+    success: "%{poll_type}が再開されました"
   poll_common_move_form:
-    title: "{{poll_type}} を移動"
-    success: "{{poll_type}} を {{group}} に移動しました"
+    title: "%{poll_type} を移動"
+    success: "%{poll_type} を %{group} に移動しました"
   poll_common_wip_field:
     voting_enabled: 投票可能
     enable_voting: 投票を有効にする
@@ -2173,7 +2173,7 @@ ja:
     invalid_date: 無効な日付
   poll_card:
     poll_type_by_name: "%{name} による %{poll_type}"
-    started_by: "{{name}}によって開始されました"
+    started_by: "%{name}によって開始されました"
   poll_common_votes_panel:
     vote_removed: 投票が削除されました
     undecided: 未定
@@ -2214,10 +2214,10 @@ ja:
     you_will_be_notified: 審査日は別途お知らせいたします。
     submit: 結果を共有する
   poll_common_outcome_panel:
-    authored_by: 名前で}}
+    authored_by: 名前で}
   poll_common_delete_modal:
     question: これを削除してもよろしいですか?
-    title: "{{pollType}}を削除"
+    title: "%{pollType}を削除"
     success: 正常に削除されました
   poll_proposal_form:
     start_header: 提案を開始する
@@ -2258,7 +2258,7 @@ ja:
     dots_per_person_helptext: 各人に割り当てるよう求められるポイントの合計数。
   poll_meeting_form:
     timeslots: タイムスロット
-    no_options: 現在のタイムゾーン ({{zone}}) の時刻を入力します。参加者には、現地のタイムゾーンに翻訳された時間が表示されます。
+    no_options: 現在のタイムゾーン (%{zone}) の時刻を入力します。参加者には、現地のタイムゾーンに翻訳された時間が表示されます。
     meeting_duration: 会議時間
     add_option_placeholder: 新しい時間を追加
     time_slot_added: 追加された時間帯
@@ -2298,8 +2298,8 @@ ja:
     agree_target_helptext: ボランティアの目標人数は何名ですか?
     agree_target_label: 目標数
   poll_common_percent_voted:
-    sentence: "{{denominator}} 人中 {{numerator}} 人が参加しました ({{percent}}%)"
-    target_progress: 目標の {{percent}}% に達しました。 ({{num}} / {{target}})
+    sentence: "%{denominator} 人中 %{numerator} 人が参加しました (%{percent}%)"
+    target_progress: 目標の %{percent}% に達しました。 (%{num} / %{target})
   poll_meeting_chart_panel:
     total: 合計
   poll_remove_vote:
@@ -2314,7 +2314,7 @@ ja:
     stance_created: 投票が作成されました
     stance_updated: 投票が更新されました
   poll_meeting_vote_form:
-    local_time_zone: 現地時間 - {{ゾーン}}
+    local_time_zone: 現地時間 - %{ゾーン}
     can_attend: 参加可能
     unable: 不可能
     if_need_be: 必要なら
@@ -2472,28 +2472,28 @@ ja:
     removed: アイテムが削除されました
     deleted_group: 削除されたグループ
     invite_only_thread: スレッドのみを招待
-    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a><strong>{{title}}</strong>に返信"
-    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>スレッドのタイトルを編集しました"
-    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>スレッドのコンテキストを編集しました"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>スレッドのプライバシーを変更しました"
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>スレッドを編集しました"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>スレッドを<strong>{{title}}</strong>から移動しました"
-    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>スレッドを閉じました"
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>スレッドを再開しました"
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>このスレッドのフォークを作成しました: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{著者}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>結果を共有しました"
-    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>{{polltype}} を再開しました"
-    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}} は</a>{{polltype}} を終了しました"
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>{{polltype}} を開始しました"
-    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>{{polltype}} を編集しました"
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>{{polltype}} にオプションを追加しました"
-    poll_expired: "{{polltype}} は終了しました"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>投票しました: <strong>{{title}}</strong>"
-    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}} が</a>次の投票を更新しました: <strong>{{title}}</strong>"
+    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author} が</a><strong>%{title}</strong>に返信"
+    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドのタイトルを編集しました"
+    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドのコンテキストを編集しました"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドのプライバシーを変更しました"
+    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを編集しました"
+    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを<strong>%{title}</strong>から移動しました"
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを閉じました"
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを再開しました"
+    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>このスレッドのフォークを作成しました: <strong><a href='d/%{key}'>%{title}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{著者}</a>"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>結果を共有しました"
+    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} を再開しました"
+    poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author} は</a>%{polltype} を終了しました"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} を開始しました"
+    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} を編集しました"
+    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} にオプションを追加しました"
+    poll_expired: "%{polltype} は終了しました"
+    stance_created: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>投票しました: <strong>%{title}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>次の投票を更新しました: <strong>%{title}</strong>"
     event_removed: スレッドから削除されました
   add_poll_to_thread_modal:
-    success: 成功しました。{{pollType}} がスレッドに追加されました。
+    success: 成功しました。%{pollType} がスレッドに追加されました。
   powered_by:
     this_is_loomio_md: Loomio は、一緒に意思決定を行うためのアプリです。 【無料お試し】（https://www.loomio.com）
     slogan: より良い意思決定を一緒に行う

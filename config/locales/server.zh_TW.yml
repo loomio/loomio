@@ -52,7 +52,7 @@ zh_TW:
       group_stats: 群組統計
       org_stats: 組織統計（包含子群組）
       visits: 造訪
-      members: 成員 ({{count}})
+      members: 成員 (%{count})
       subgroups: 子群組
       threads: 討論串
       polls: 投票

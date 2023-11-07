@@ -27,9 +27,9 @@ hr:
     look_and_feel: Pogledajte kako Loomio izgleda za malu organizaciju. Naučite aplikaciju isprobavajući je.
     watch_then_start: Pogledajte video, zatim kliknite "Pokreni demo" da isprobate Loomio
     generating_demo: U redu, čekaj ovdje! Generiranje demonstracije traje oko 20 sekundi.
-    start_a_x_day_free_trial: Započnite besplatno probno razdoblje od {{day}} dana
+    start_a_x_day_free_trial: Započnite besplatno probno razdoblje od %{day} dana
     ready_to_trial: Jeste li spremni isprobati Loomio u svojoj organizaciji?
-    start_a_no_obligation_x_day_trial: Pokrenite Loomio grupu za svoju organizaciju s besplatnim {{day}}-dnevnim probnim razdobljem.
+    start_a_no_obligation_x_day_trial: Pokrenite Loomio grupu za svoju organizaciju s besplatnim %{day}-dnevnim probnim razdobljem.
     you_can_test_it_out: Možete pozvati druge ljude da se pridruže, integrirati ga sa svojim drugim alatima i pokušati donijeti neke odluke.
     demo_created: Demo grupa stvorena, samo za vas!
     start_demo: Pokreni demo
@@ -130,7 +130,7 @@ hr:
       align: Uskladiti
     admin_menu: Admin menu
     api_docs: API dokumenti
-    prefix_eg: npr. {{val}}
+    prefix_eg: npr. %{val}
     are_you_sure: Jesi li siguran?
     loomio_help: Loomio pomoć
     visit_loomio_help: Posjetite pomoć za Loomio
@@ -156,7 +156,7 @@ hr:
     attachments: Prilozi
     template: Predložak
     links: Linkovi
-    active_time_ago: Zadnji put aktivno {{time_ago}}
+    active_time_ago: Zadnji put aktivno %{time_ago}
     confirm_discard_changes: Odbaciti promjene?
     something_went_wrong: Uh oh! Nešto je pošlo po zlu
     check_for_errors_and_try_again: Provjerite ima li u obrascu pogrešaka i pokušajte ponovno
@@ -164,8 +164,8 @@ hr:
     time:
       am: am
       pm: popodne
-    closing_in: Vrijeme zatvaranja}}
-    closed_ago: Zatvoreno {{time}}
+    closing_in: Vrijeme zatvaranja}
+    closed_ago: Zatvoreno %{time}
     volume: Volumen
     notification_volume: Glasnoća obavijesti
     group: Skupina
@@ -194,7 +194,7 @@ hr:
     reset: Resetiraj
     copy_text: Kopiraj tekst
     copied: Kopirano u međuspremnik
-    points_abbrev: Svaki glas vrijedi {{score}} bodova
+    points_abbrev: Svaki glas vrijedi %{score} bodova
     total: Ukupno
     formatting_help:
       label: Oblikovanje
@@ -237,12 +237,12 @@ hr:
         normal: Dobit ćete e-poštu o prijedlozima u ovoj temi.
         quiet: Nećete primati e-poruke o ovoj niti.
     membership:
-      title: Obavijesti za {{title}}
+      title: Obavijesti za %{title}
       loud_description: Dobit ćete e-poruku kad god bude aktivnosti u ovoj grupi.
       normal_description: Dobit ćete e-poruku kad god bude aktivnosti u ovoj grupi.
       quiet_description: Nećete primati e-poruke o aktivnostima u ovoj grupi.
       apply_to_all: Primijeni ove postavke na sve moje grupe.
-      apply_to_organization: Primijeni na sve grupe u {{organization}}
+      apply_to_organization: Primijeni na sve grupe u %{organization}
       messages:
         loud: Dobit ćete e-poštu o svim aktivnostima u ovoj grupi.
         normal: E-poštom ćete primati samo najave u ovoj grupi.
@@ -282,18 +282,18 @@ hr:
       remove_attachment: Ukloni privitak
     messages:
       created: Komentar dodan
-      replied: "{{name}} obaviješten o odgovoru"
+      replied: "%{name} obaviješten o odgovoru"
       updated: Komentar ažuriran
       destroyed: Komentar izbrisan
       removed: Komentar uklonjen
     say_something: Reci nešto...
     cancel_reply: Odustani od odgovora
     confirm_delete: Obriši komentar
-    in_reply_to: Odgovorite {{name}}
+    in_reply_to: Odgovorite %{name}
     write_a_comment: Napiši komentar...
     submit_button:
       label: Post
-    private_privacy_notice: Vaš će komentar biti vidljiv samo članovima grupe {{groupName}}.
+    private_privacy_notice: Vaš će komentar biti vidljiv samo članovima grupe %{groupName}.
     public_privacy_notice: Vaš će komentar biti vidljiv svima na webu.
     sign_in: Prijavite se da biste se pridružili razgovoru
   notifications:
@@ -409,15 +409,15 @@ hr:
     context_placeholder: Pružite neki kontekst za ovu raspravu, tako da ljudi znaju kako sudjelovati
     privacy_public: Svatko može vidjeti ovu nit ako ima vezu
     privacy_private: Samo članovi grupe mogu vidjeti ovu nit
-    privacy_organisation: Nit će biti vidljiva članovima {{parent}} i članovima {{group}}.
-    fork_notice: Stvorit će se nova nit s %{count} stavki iz {{title}}
+    privacy_organisation: Nit će biti vidljiva članovima %{parent} i članovima %{group}.
+    fork_notice: Stvorit će se nova nit s %{count} stavki iz %{title}
     notify_group: Obavijesti grupu
   join_group_button:
     join_group: 'Pridruži se grupi '
     membership_requested: Članstvo zatraženo
     not_a_member: Trenutno niste član ove grupe.
     messages:
-      joined_group: Sada ste član {{group}}
+      joined_group: Sada ste član %{group}
   membership_request_form:
     heading: Zahtjev za pridruženjem grupi
     aria_label: Obrazac zahtjeva za članstvo
@@ -427,7 +427,7 @@ hr:
     submit_button: Zatraži pridruživanje
     introduction_over_limit: Odgovor je predug
     messages:
-      membership_requested: Zatražili ste da se pridružite {{group}}
+      membership_requested: Zatražili ste da se pridružite %{group}
   group_page:
     members: Članovi
     options:
@@ -484,21 +484,21 @@ hr:
     volume:
       loud: Pošalji e-poštu kad god ima aktivnosti.
       loud_aria_description: Vaša glasnoća obavijesti za ovu grupu postavljena je na Glasno. Dobit ćete e-poruku kad god bude aktivnosti.
-      loud_message: Dobit ćete e-poštu o svim aktivnostima u "{{name}}."
+      loud_message: Dobit ćete e-poštu o svim aktivnostima u "%{name}."
       normal: 'Samo pošaljite e-poštom važne aktivnosti: nove teme i prijedloge, rezultate itd.'
       normal_aria_description: Vaša glasnoća obavijesti za ovu grupu postavljena je na Normalno. Samo ćete dobiti e-poruku o važnoj aktivnosti, kao što je kada netko započne novu temu, podigne prijedlog ili postavi ishod.
-      normal_message: Primat ćete samo e-poštu o važnim događajima u "{{name}}".
+      normal_message: Primat ćete samo e-poštu o važnim događajima u "%{name}".
       quiet: Ne šaljite e-poštu o ovoj grupi. Aktivnost će biti prikazana na nadzornoj ploči.
       quiet_aria_description: Vaša glasnoća obavijesti za ovu grupu postavljena je na Tiho. Nećete primati e-poruke o aktivnostima u ovoj grupi. Aktivnost grupe bit će prikazana na vašoj nadzornoj ploči.
-      quiet_message: Nećete primati e-poruke o aktivnostima u "{{name}}".
+      quiet_message: Nećete primati e-poruke o aktivnostima u "%{name}".
       mute: Sakrijte ovu grupu na nadzornoj ploči i ne šaljite obavijesti osim ako niste @spomenuti.
       mute_aria_description: Vaša glasnoća obavijesti za ovu grupu postavljena je na Mute. Nećete dobiti e-poštu osim ako vas netko ne spomene, a aktivnost grupe neće biti prikazana na vašoj Nadzornoj ploči.
-      mute_message: '"{{name}}" je uklonjen s vaše nadzorne ploče.'
+      mute_message: '"%{name}" je uklonjen s vaše nadzorne ploče.'
     privacy:
       private: 'Privatnost: Ova grupa je vidljiva samo članovima'
-      parent_members: 'Privatnost: Ova grupa je vidljiva članovima {{parentGroupName}} i članovima {{groupName}}'
+      parent_members: 'Privatnost: Ova grupa je vidljiva članovima %{parentGroupName} i članovima %{groupName}'
       public: 'Privatnost: Ova grupa je vidljiva na webu'
-      aria_label: 'Privatnost grupe: {{privacy}}'
+      aria_label: 'Privatnost grupe: %{privacy}'
   group_form:
     new_group: Nova grupa
     group_settings: Uredi postavke grupe
@@ -523,7 +523,7 @@ hr:
     subgroup_name: Naziv podgrupe
     organization_name: Naziv organizacije
     handle: Ručka
-    group_handle_placeholder: 'Koristi se u URL-u vaše grupe: {{host}}/{{handle}}'
+    group_handle_placeholder: 'Koristi se u URL-u vaše grupe: %{host}/%{handle}'
     start_organization_heading: Nova organizacija
     edit_organization_heading: Uredite postavke organizacije
     group_name_placeholder: Kako se zove vaša grupa?
@@ -537,7 +537,7 @@ hr:
     privacy_statement:
       public_on_web: Naziv, opis i prilozi kontekstu grupe bit će vidljivi javnosti
       private_to_group: Ime i opis bit će vidljivi samo članovima.
-      private_to_parent_members: Ime i opis bit će vidljivi članovima {{parent}}
+      private_to_parent_members: Ime i opis bit će vidljivi članovima %{parent}
     privacy: Privatnost
     group_privacy_is_open_description: Javno uvršten. Sve su teme javne.
     group_privacy_is_closed_description: Nenavedeno. Svatko s vezom može zatražiti pridruživanje. Sve su teme privatne.
@@ -550,22 +550,22 @@ hr:
     subgroup_privacy_is_open_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Sve su teme javne.
     subgroup_privacy_is_closed_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Sve su teme privatne.
     subgroup_privacy_is_closed_public_threads_description: Svatko može pronaći ovu podgrupu i zatražiti pridruživanje. Samo članovi mogu vidjeti tko je u grupi. Niti mogu biti javne ili privatne.
-    subgroup_privacy_is_closed_secret_parent_description: Članovi {{parent}} mogu pronaći ovu podgrupu i zatražiti pridruživanje. Sve su teme privatne. Samo članovi mogu vidjeti tko je u grupi.
+    subgroup_privacy_is_closed_secret_parent_description: Članovi %{parent} mogu pronaći ovu podgrupu i zatražiti pridruživanje. Sve su teme privatne. Samo članovi mogu vidjeti tko je u grupi.
     subgroup_privacy_is_secret_description: Samo pozvani članovi mogu pronaći ovu podgrupu, vidjeti tko je u njoj i vidjeti teme.
     advanced_settings: Napredne postavke
     how_do_people_join: Kako se ljudi pridružuju?
     membership_granted_upon_request: Svatko se može pridružiti grupi.
     membership_granted_upon_approval: Svatko može zatražiti pridruživanje, ali mora biti odobren.
     membership_granted_upon_invitation: Samo uz pozivnicu.
-    membership_granted_upon_approval_secret_parent: "<strong>Na zahtjev</strong> bilo tko iz {{parent}} može tražiti da se pridruži grupi."
+    membership_granted_upon_approval_secret_parent: "<strong>Na zahtjev</strong> bilo tko iz %{parent} može tražiti da se pridruži grupi."
     permissions: Dozvole
     thread_privacy: Privatnost niti
     public_threads: Samo javne niti
-    public_discussions_subgroup: Svatko u {{parentGroupName}} može vidjeti rasprave
+    public_discussions_subgroup: Svatko u %{parentGroupName} može vidjeti rasprave
     public_or_private_threads: Dopusti javne i privatne niti
     private_threads: Samo članovi mogu vidjeti rasprave
     allow_public_threads: Dopusti javne niti u ovoj grupi.
-    parent_members_can_see_discussions: Članovi {{parent}} mogu vidjeti privatne niti
+    parent_members_can_see_discussions: Članovi %{parent} mogu vidjeti privatne niti
     parent_members_can_see_discussions_help: Dopusti članovima nadređene grupe da vide, ali ne i da sudjeluju u temama i anketama unutar ove grupe
     members_can_announce: Članovi mogu obavijestiti sve u grupi
     members_can_announce_help: Dopustite članovima da obavijeste sve u grupi o niti ili anketi
@@ -602,7 +602,7 @@ hr:
     no_pending_requests: Trenutno nema neriješenih zahtjeva za članstvo u ovoj grupi.
     no_previous_requests: Trenutno nema prethodnih zahtjeva za članstvo u ovoj grupi.
     previous_requests: Prethodni zahtjevi
-    previous_request_response: "{{response}} od {{responder}}"
+    previous_request_response: "%{response} od %{responder}"
     messages:
       request_approved_success: Zahtjev za članstvo odobren
       request_ignored_success: Zahtjev za članstvo zanemaren
@@ -614,7 +614,7 @@ hr:
     aria_label: Obrazac poziva
     invite_guests: Pozovi goste
     notify_people: Obavijestite ljude
-    invite_people_to_group: Pozovi u {{name}}
+    invite_people_to_group: Pozovi u %{name}
     group: Skupina
     group_placeholder: Odaberite grupu
     shareable_link: Poveznica za dijeljenje
@@ -632,7 +632,7 @@ hr:
     custom_message: Prilagođena poruka
     custom_message_placeholder: Unesite osobnu poruku koju ćete uključiti uz pozivnicu.
     add_members: Dodajte članove
-    from_parent_group: od {{name}}.
+    from_parent_group: od %{name}.
     send: Poslati
     done: Gotovo
     messages:
@@ -648,9 +648,9 @@ hr:
     fragment_placeholder: Filtriraj korisnike po imenu ili korisničkom imenu...
     only_one_admin: Postoji samo jedan admin u ovoj grupi. Preporuča se da barem još jednog člana imenujete administratorom.
     messages:
-      remove_member_success: Uklonjeno {{name}}
-      make_admin_success: "{{name}} je sada administrator"
-      remove_admin_success: "{{name}} više nije administrator"
+      remove_member_success: Uklonjeno %{name}
+      make_admin_success: "%{name} je sada administrator"
+      remove_admin_success: "%{name} više nije administrator"
     remove_admin_from_self:
       question: Jeste li sigurni da više ne želite biti admin?
   profile_page:
@@ -705,7 +705,7 @@ hr:
     show_users_in_subgroups: Prikaži i korisnike u podgrupama
     order_by_created_desc: Najnoviji
     order_by_admin_desc: Administratori
-    loaded_of_total: "{{loaded}} od {{total}}"
+    loaded_of_total: "%{loaded} od %{total}"
     view_requests: Pogledaj zahtjeve
     header_name: Ime
     header_username: Korisničko ime
@@ -719,8 +719,8 @@ hr:
     admin: Administrator
     guest: Gost
     sharable_link: Poveznica za dijeljenje
-    last_seen: Zadnji put viđen {{date}}
-    invited_by_name: Pozvao {{name}}
+    last_seen: Zadnji put viđen %{date}
+    invited_by_name: Pozvao %{name}
   tasks:
     tasks: Zadaci
     your_tasks: Vaši zadaci
@@ -771,11 +771,11 @@ hr:
     is_old_plan: Loomio ima nove jednostavne planove cijena
     change_plan: Promjena plana
     view_plans: Pogledajte planove
-    free_trial: Besplatna proba. Još {{days}} dana.
+    free_trial: Besplatna proba. Još %{days} dana.
     trial_expired: Vaše probno razdoblje je isteklo. Nadogradite kako biste nastavili koristiti Loomio.
     tooltip: Naše cijene su fantastične! Nadogradite danas i uživajte u onome što Loomio može ponuditi vašoj grupi.
-    was_gift_trial: 'Vaša grupa besplatno koristi Loomio od {{createdDate}}. Nismo u mogućnosti nastaviti pružati besplatnu uslugu. Nadogradite kako biste nastavili koristiti Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Čitaj više.</a>'
-    was_gift_remaining: Još {{days}} dana.
+    was_gift_trial: 'Vaša grupa besplatno koristi Loomio od %{createdDate}. Nismo u mogućnosti nastaviti pružati besplatnu uslugu. Nadogradite kako biste nastavili koristiti Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Čitaj više.</a>'
+    was_gift_remaining: Još %{days} dana.
     was_gift_expired: Vaš besplatni plan sada je istekao.
   loomio_tags:
     all_tags: Sve oznake
@@ -795,10 +795,10 @@ hr:
     discussions_count_plural: "(%{count} niti)"
     tag_created: Oznaka spremljena
     tag_destroyed: Oznaka izbrisana
-    tags_marked: Niti s oznakom '{{name}}' u {{groupName}}
+    tags_marked: Niti s oznakom '%{name}' u %{groupName}
     no_tags_present: Nisu pronađene niti s tom oznakom! Pokušajte odabrati neki drugi
     no_tags_in_group: Ova grupa još nema oznake kategorije
-    only_admins_can_edit_tags: Nažalost, samo administratori grupe {{group}} mogu stvarati, preimenovati ili brisati oznake
+    only_admins_can_edit_tags: Nažalost, samo administratori grupe %{group} mogu stvarati, preimenovati ili brisati oznake
   poll_types:
     proposal: prijedlog
     count: uključiti se
@@ -810,11 +810,11 @@ hr:
     score: rezultat ankete
     question: krug pitanja
   timezones:
-    local: Lokalno vrijeme ({{value}})
+    local: Lokalno vrijeme (%{value})
   merge_accounts:
     modal:
       title: Spajanje računa
-      helptext: Možete spojiti račun pod <strong>{{sourceEmail}}</strong> u onaj od <strong>{{targetEmail}}</strong> . Kliknite Potvrdi i e-pošta za potvrdu bit će poslana na {{targetEmail}} za početak postupka.
+      helptext: Možete spojiti račun pod <strong>%{sourceEmail}</strong> u onaj od <strong>%{targetEmail}</strong> . Kliknite Potvrdi i e-pošta za potvrdu bit će poslana na %{targetEmail} za početak postupka.
       submit: Potvrdi
       flash: E-pošta za potvrdu je poslana!
     email_taken: Nažalost, ta je adresa e-pošte već povezana s drugim korisnikom. Pripada li taj email tvoj?
@@ -848,8 +848,8 @@ hr:
   verify_email_notice:
     please_verify: Hvala na sudjelovanju! Provjerite svoju e-poštu za vezu za potvrdu vašeg glasa.
   previous_polls_page:
-    heading: Aktivnosti u {{name}}
-    polls_count: Prikazuje se {{loaded}} od {{total}} odluka
+    heading: Aktivnosti u %{name}
+    polls_count: Prikazuje se %{loaded} od %{total} odluka
     search_activities: Odluke o pretraživanju
   email_to_group:
     email_to_group_settings: Postavke e-pošte grupi
@@ -941,11 +941,11 @@ hr:
     parent_only: Samo roditelj
   navbar:
     search_all_threads: Pretraži sve teme
-    search_threads: Pretraži teme u {{name}}
-    search_polls: Pretraži ankete u {{name}}
-    search_members: Traži članove u {{name}}
-    search_subgroups: Traži članove u {{name}}
-    search_files: Traži datoteke u {{name}}
+    search_threads: Pretraži teme u %{name}
+    search_polls: Pretraži ankete u %{name}
+    search_members: Traži članove u %{name}
+    search_subgroups: Traži članove u %{name}
+    search_files: Traži datoteke u %{name}
     recent_title: Idi na nadzornu ploču
     unread_title: Pogledajte nepročitanu aktivnost
     start_thread: Nova nit
@@ -965,7 +965,7 @@ hr:
     open_sidebar: Otvori bočnu traku
     close_sidebar: Zatvori bočnu traku
     logo_title: Početna stranica
-    group_and_subgroups: "{{group}} & podgrupe"
+    group_and_subgroups: "%{group} & podgrupe"
   user_dropdown:
     pin_sidebar: Prikvači bočnu traku
     unpin_sidebar: Otkvači bočnu traku
@@ -977,7 +977,7 @@ hr:
     edit_profile: Uredi profil
     email_settings: Postavke obavijesti
     help: Pomozite
-    contact_site_name: Kontaktirajte {{site_name}}
+    contact_site_name: Kontaktirajte %{site_name}
     contact_support: Kontaktirajte podršku
     sign_out: Odjavi se
     beta_collab: "\U0001F9EA Beta značajke omogućene!"
@@ -985,7 +985,7 @@ hr:
   membership_card:
     group_members: Članovi grupe
     discussion_members: Članovi niti
-    poll_members: "{{pollType}} članova"
+    poll_members: "%{pollType} članova"
     voters: Birači
     invite_to_group: Pozovi u grupu
     invite_to_discussion: Pozovi u nit
@@ -1002,7 +1002,7 @@ hr:
     remove_from:
       discussion: Ukloni iz niti
       group: Ukloni iz grupe
-      poll: Ukloni iz {{pollType}}
+      poll: Ukloni iz %{pollType}
     cancel_invitation: Otkaži pozivnicu
   notification_models:
     discussion: 'nit:'
@@ -1040,8 +1040,8 @@ hr:
     share_in_template_gallery: Podijelite ovaj predložak u javnoj galeriji predložaka
   announcement:
     send_discussion: Pošalji nit
-    send_group: Pozovi ljude u {{name}}
-    send_poll: Pošalji {{type}}
+    send_group: Pozovi ljude u %{name}
+    send_poll: Pošalji %{type}
     send_outcome: Pošalji ishod
     cannot_reveal_when_anonymous: Nažalost, ne možemo otkriti tko je ili nije glasovao u anonimnoj anketi.
     discussion_notification_history: Povijest obavijesti niti
@@ -1052,7 +1052,7 @@ hr:
     notification_history_explanation: "✓ označava da je obavijest pročitana ili da je e-pošta otvorena"
     quick_add: 'Brzo dodavanje:'
     any_other_groups: Ima li drugih grupa?
-    notified_people: "{{name}} je obavijestio {{length}} osoba:"
+    notified_people: "%{name} je obavijestio %{length} osoba:"
     preview: Pregled e-pošte
     no_notifications_sent: Nisu poslane obavijesti
     history_error: Nešto je pošlo po zlu! Nije moguće učitati povijest.
@@ -1063,35 +1063,35 @@ hr:
     only_admins_can_announce: Samo administratori mogu obavijestiti cijelu grupu
     only_admins_can_invite: Samo administratori mogu pozvati goste
     only_admins_can_announce_or_invite: Samo administratori mogu obavijestiti cijelu grupu ili pozvati goste
-    user_mentioned: "{{name}} je spomenuo {{length}} osoba:"
-    comment_replied_to: "{{name}} je odgovorio {{length}} osobama:"
-    new_discussion: "{{name}} je pozvao {{length}} osoba u nit:"
-    discussion_announced: "{{name}} je pozvao {{length}} osoba u nit:"
-    poll_created: "{{name}} je pozvao {{length}} ljudi da glasaju:"
-    poll_announced: "{{name}} je pozvao {{length}} ljudi da glasaju:"
-    outcome_created: "{{name}} je podijelio ishod s {{length}} osoba:"
-    outcome_announced: "{{name}} je podijelio ishod s {{length}} osoba:"
-    announcement_created: "{{name}} je pozvao {{length}} osoba u nit:"
-    discussion_edited: "{{name}} je uredio nit, obavijestivši {{length}} osoba:"
-    poll_edited: "{{name}} je uredio anketu, obavijestivši {{length}} osoba:"
-    outcome_edited: "{{name}} je uredio ishod, obavještavajući {{length}} osoba:"
-    outcome_updated: "{{name}} je uredio ishod, obavještavajući {{length}} osoba:"
-    poll_closing_soon: 'Podsjetnik za zatvaranje ankete korisnika {{name}} obavijestio je {{length}} osoba:'
-    poll_reminder: "{{name}} je podsjetio {{length}} ljudi da glasaju:"
+    user_mentioned: "%{name} je spomenuo %{length} osoba:"
+    comment_replied_to: "%{name} je odgovorio %{length} osobama:"
+    new_discussion: "%{name} je pozvao %{length} osoba u nit:"
+    discussion_announced: "%{name} je pozvao %{length} osoba u nit:"
+    poll_created: "%{name} je pozvao %{length} ljudi da glasaju:"
+    poll_announced: "%{name} je pozvao %{length} ljudi da glasaju:"
+    outcome_created: "%{name} je podijelio ishod s %{length} osoba:"
+    outcome_announced: "%{name} je podijelio ishod s %{length} osoba:"
+    announcement_created: "%{name} je pozvao %{length} osoba u nit:"
+    discussion_edited: "%{name} je uredio nit, obavijestivši %{length} osoba:"
+    poll_edited: "%{name} je uredio anketu, obavijestivši %{length} osoba:"
+    outcome_edited: "%{name} je uredio ishod, obavještavajući %{length} osoba:"
+    outcome_updated: "%{name} je uredio ishod, obavještavajući %{length} osoba:"
+    poll_closing_soon: 'Podsjetnik za zatvaranje ankete korisnika %{name} obavijestio je %{length} osoba:'
+    poll_reminder: "%{name} je podsjetio %{length} ljudi da glasaju:"
     audiences:
-      group: "{{Ime}}"
+      group: "%{Ime}"
       everyone_in_the_group: Svi u grupi
       discussion_group: Svi u temi
       voters: Svi pozvani da glasaju
       decided_voters: Svi koji su glasali
       undecided_voters: Neodlučni glasači
-      non_voters: Članovi {{name}} još nisu pozvani
+      non_voters: Članovi %{name} još nisu pozvani
     form:
       group_has_no_members_yet: Vi ste jedini član svoje grupe. Možda ćete htjeti pozvati neke ljude u svoju grupu prije pokretanja niti ili odluke.
       invite_people_to_evaluate_loomio: Pozovite neke ljude u svoju Loomio grupu da zajedno donesete odluku
-      too_many_invitations: Premašeno je ograničenje broja pozivnica. <a href="{{upgradeUrl}}" target="_blank">Nadogradnja</a>
-      no_invitations_remaining: <p>Iskoristili ste sve {{maxMembers}} pozivnice dostupne ovoj grupi.</p><p> Sljedeći korak, <a href="{{upgradeUrl}}" target="_blank">odaberite plan</a> za nastavak suradnje na Loomio.</p>
-      invitations_remaining: '%{count} preostalih pozivnica. <a href="{{upgradeUrl}}" target="_blank">Nadogradnja</a>'
+      too_many_invitations: Premašeno je ograničenje broja pozivnica. <a href="%{upgradeUrl}" target="_blank">Nadogradnja</a>
+      no_invitations_remaining: <p>Iskoristili ste sve %{maxMembers} pozivnice dostupne ovoj grupi.</p><p> Sljedeći korak, <a href="%{upgradeUrl}" target="_blank">odaberite plan</a> za nastavak suradnje na Loomio.</p>
+      invitations_remaining: '%{count} preostalih pozivnica. <a href="%{upgradeUrl}" target="_blank">Nadogradnja</a>'
       who_to_invite: Koga biste htjeli pozvati?
       invitation_message_placeholder: Poruka koju treba uključiti u e-poruku pozivnice. (neobavezno)
       invitation_message_label: Poruka
@@ -1133,15 +1133,15 @@ hr:
       type_or_paste_email_addresses_to_invite: Upišite ili zalijepite adrese e-pošte koje želite pozvati
       notified_empty: Još nitko nije odabrao
       single_notification: Bit će poslana 1 obavijest.
-      multiple_notifications: Bit će poslano {{notified}} obavijesti.
-      notified: "{{notified}} osoba će biti obaviješteno."
+      multiple_notifications: Bit će poslano %{notified} obavijesti.
+      notified: "%{notified} osoba će biti obaviješteno."
       notified_singular: 1 osoba će biti obaviještena.
       notified_none: Nitko neće biti obaviješten.
       added: Bit će dodano %{count} osoba.
       added_singular: Dodat će se 1 osoba.
       added_none: Nitko neće biti dodan.
-      group_title: "{{name}} (%{count} ljudi)"
-      visible_to_group: Svatko u {{group}} će moći vidjeti ovu nit.
+      group_title: "%{name} (%{count} ljudi)"
+      visible_to_group: Svatko u %{group} će moći vidjeti ovu nit.
       visible_to_guests: Samo pozvane osobe mogu vidjeti ovu nit.
       click_group_to_see_individuals: Pritisnite grupu da vidite pojedince
     members_list:
@@ -1151,7 +1151,7 @@ hr:
       no_members: Ovo još nije podijeljeno ni s kim!
       group_admin: Administrator grupe
       thread_admin: Administrator teme
-      last_read_at: Zadnji put pogledano {{time}}
+      last_read_at: Zadnji put pogledano %{time}
       has_not_read_thread: Nije pogledao nit
     group_form:
       search_placeholder: Traži ljude...
@@ -1172,8 +1172,8 @@ hr:
     invite_guests: Pozovi goste
     translate_thread: Prevedite kontekst
     edit_poll: Uredi anketu
-    edit_poll_type: Uredi {{pollType}}
-    new_poll_type: Novi {{pollType}}
+    edit_poll_type: Uredi %{pollType}
+    new_poll_type: Novi %{pollType}
     move_items: Premještanje stavki
     announce_poll: Pozovite ljude da glasaju
     announce_poll_active: "(Nitko još nije pozvan)"
@@ -1279,26 +1279,26 @@ hr:
     poll_header: Uređivanja ankete
     outcome_header: Ispravke ishoda
     stance_header: Glasajte izmjene
-    started_by: Pokrenuo <strong>{{name}}</strong>
-    edited_by: Uredio <strong>{{name}}</strong>
-    edit_by: Uredio {{name}} · {{date}}
+    started_by: Pokrenuo <strong>%{name}</strong>
+    edited_by: Uredio <strong>%{name}</strong>
+    edit_by: Uredio %{name} · %{date}
     posted: Objavljeno
     field: Polje
     before: Prije
     after: Nakon
     original_text: Izvornik
     current_revision: Najnoviji
-    closing_at_changed: vrijeme zatvaranja postavljeno na {{vrijeme}}
-    private_changed: privatnost postavljena na {{private}}
-    group_id_changed: preselio u {{name}}
+    closing_at_changed: vrijeme zatvaranja postavljeno na %{vrijeme}
+    private_changed: privatnost postavljena na %{private}
+    group_id_changed: preselio u %{name}
   reactions_input:
     add_your_reaction: Dodajte svoju reakciju
   reactions_display:
     more_reactions: Još %{count}
     you: Vas
-    you_and_name: ti i {{name}}
-    you_and_name_and_count_more: Ti, {{name}} i još %{count}
-    name_and_count_more: "{{name}} i još %{count}"
+    you_and_name: ti i %{name}
+    you_and_name_and_count_more: Ti, %{name} i još %{count}
+    name_and_count_more: "%{name} i još %{count}"
   context_panel:
     thread_status:
       pinned: Ova nit je prikvačena. Ostat će na vrhu popisa niti grupe za sve korisnike.
@@ -1342,12 +1342,12 @@ hr:
   membership_remove_modal:
     invitation:
       title: Otkaži pozivnicu
-      message: Jeste li sigurni da želite otkazati pozivnicu za {{name}}?
+      message: Jeste li sigurni da želite otkazati pozivnicu za %{name}?
       flash: Pozivnica je otkazana
       submit: Otkaži pozivnicu
     membership:
       title: Ukloni člana
-      message: Jeste li sigurni da želite ukloniti {{name}}?
+      message: Jeste li sigurni da želite ukloniti %{name}?
       impact_for_subgroup: Ovo će ukloniti njihov pristup podgrupi (uključujući teme i ankete), ali će ostati član nadređene grupe.
       impact_for_group: Ovo će ukloniti njihov pristup grupi (uključujući teme i ankete) i svim podgrupama.
       flash: Član uklonjen
@@ -1359,7 +1359,7 @@ hr:
     modal_title:
       group: Postavite naslov
     title_helptext:
-      group: Ovaj naslov će se pojaviti pored imena {{name}} unutar ove grupe. Iskoristite ga kako biste ljudima dali do znanja njihovu ulogu.
+      group: Ovaj naslov će se pojaviti pored imena %{name} unutar ove grupe. Iskoristite ga kako biste ljudima dali do znanja njihovu ulogu.
     title_label: titula
     title_placeholder: Npr. 'Koordinator' ili 'Facilitator'
     updated: Naziv članstva ažuriran
@@ -1367,19 +1367,19 @@ hr:
     user_name_updated: Korisničko ime ažurirano
     set_user_name: Postavite korisničko ime
   user_page:
-    contact_user: Ime kontakta}}
-    location_field: 'Lokacija: {{value}}'
-    locale_field: 'Jezik: {{value}}'
-    online_field: 'Online: {{value}}'
-    invited: Pozvan {{value}}
-    message_user: Pošalji poruku {{name}}
+    contact_user: Ime kontakta}
+    location_field: 'Lokacija: %{value}'
+    locale_field: 'Jezik: %{value}'
+    online_field: 'Online: %{value}'
+    invited: Pozvan %{value}
+    message_user: Pošalji poruku %{name}
   contact_request_form:
-    modal_title: Email {{name}}
+    modal_title: Email %{name}
     message_placeholder: Predstavite se i recite zašto želite uspostaviti kontakt.
-    helptext: "{{name}} će dobiti vaše ime, adresu e-pošte i poruku e-poštom"
-    email_sent: E-pošta poslana {{name}}
+    helptext: "%{name} će dobiti vaše ime, adresu e-pošte i poruku e-poštom"
+    email_sent: E-pošta poslana %{name}
   text_editor:
-    x_of_y_characters: "{{x}} / {{y}} znakova"
+    x_of_y_characters: "%{x} / %{y} znakova"
     select_text_to_link: Odaberite tekst za povezivanje i pokušajte ponovno
     insert_link: Umetni vezu
     insert_embedded_url: Ugradi video
@@ -1391,7 +1391,7 @@ hr:
     use_gravatar: Koristite Gravatar
     use_uploaded: Učitaj novu fotografiju
     existing_upload: Postojeći prijenos
-    use_provider: Upotrijebi {{provider}} fotografiju
+    use_provider: Upotrijebi %{provider} fotografiju
   change_password_form:
     set_password_title: Postavite lozinku
     set_password_helptext: Unesite lozinku - minimalno 8 znakova
@@ -1480,7 +1480,7 @@ hr:
       muted_aria_label: Trenutno prikazuje utišane niti
       muted_description: Pogledajte samo niti koje su utišane
     thread_preview:
-      you_voted: Glasovali ste za {{position}}
+      you_voted: Glasovali ste za %{position}
       undecided: Vi ste neodlučni
     threads_from:
       group: Teme iz
@@ -1507,12 +1507,12 @@ hr:
   discussion:
     invite_only: Samo uz pozivnicu
     private_thread: Privatna nit
-    max_threads_reached: <p>Iskoristili ste sve {{maxThreads}} niti koje su dostupne ovoj grupi.</p><p> Sljedeći korak, <a href="{{upgradeUrl}}" target="_blank">odaberite plan</a> za nastavak suradnje na Loomio.</p>
-    subscription_canceled: <p>Vaša pretplata nije aktivna.</p><p> <a href="{{upgradeUrl}}" target="_blank">Nadogradite</a> kako biste nastavili koristiti Loomio.</p>
+    max_threads_reached: <p>Iskoristili ste sve %{maxThreads} niti koje su dostupne ovoj grupi.</p><p> Sljedeći korak, <a href="%{upgradeUrl}" target="_blank">odaberite plan</a> za nastavak suradnje na Loomio.</p>
+    subscription_canceled: <p>Vaša pretplata nije aktivna.</p><p> <a href="%{upgradeUrl}" target="_blank">Nadogradite</a> kako biste nastavili koristiti Loomio.</p>
     activity: Aktivnost
     activity_placeholder: Još nema aktivnosti!
     load_previous: Učitaj raniju aktivnost
-    started_by: Pokrenuo <strong>{{name}}</strong>
+    started_by: Pokrenuo <strong>%{name}</strong>
     pin:
       pinned: Nit pričvršćena
       unpinned: Nit je otkvačena
@@ -1549,7 +1549,7 @@ hr:
     start_decision: Početak odluke
     start_vote: Pokreni glasovanje
   thread_context:
-    current_poll_type_banner: Trenutačni {{pollType}}
+    current_poll_type_banner: Trenutačni %{pollType}
     item_maybe_deleted: Nije moguće pronaći traženu lokaciju unutar niti. Možda je izbrisano.
     aria_label: Kontekst niti
     thread_options: Opcije niti
@@ -1602,16 +1602,16 @@ hr:
     title: Premjesti nit
     body: Odredišna grupa
     confirm: Premjesti nit
-    confirm_change_to_private_thread: "{{groupName}} je otvorena grupa. Ako nastavite, ova nit će biti javna."
+    confirm_change_to_private_thread: "%{groupName} je otvorena grupa. Ako nastavite, ova nit će biti javna."
     messages:
-      success: Nit je premještena na {{name}}
+      success: Nit je premještena na %{name}
   contact_message_form:
     alt_title: Kontaktirajte Loomio podršku
     need_message: Unesite poruku kako bismo vam mogli pomoći :-)
     respond_asap: Pošaljite poruku Loomio timu i mi ćemo odgovoriti čim budemo mogli.
     happy_to_help_with: Rado ćemo vam pomoći s upitima o prodaji, zahtjevima za podršku, zahtjevima za značajkama, prijavljivanjem grešaka ili problema s kojima se susrećete.
     title: Bok tamo! Kako možemo pomoći?
-    contact_us_email: 'Također nam možete poslati e-poštu: <a href="mailto:{{email}}">{{email}}</a>'
+    contact_us_email: 'Također nam možete poslati e-poštu: <a href="mailto:%{email}">%{email}</a>'
     contact_us: Kontaktirajte nas
     name_label: Tvoje ime
     name_placeholder: Unesite svoje ime...
@@ -1624,13 +1624,13 @@ hr:
     send_message: Pošalji poruku
     new_contact_message: Hvala na javljanju; javit ćemo vam se uskoro!
     consent_message: Ako nas kontaktirate, pristajete da naše osoblje pristupi vašem računu prema potrebi.<br /> Naš tim za podršku govori engleski i prevest će vašu poruku pomoću Google prevoditelja ako je potrebno.<br /> Nastojimo odgovoriti na sve poruke unutar 24 sata.
-    success: Hvala na tvojoj poruci, {{name}}. Uskoro ćemo vam se javiti.
-    success_via_email: Hvala na tvojoj poruci, {{name}}. Odgovorit ćemo putem e-pošte u roku od 24 sata.
+    success: Hvala na tvojoj poruci, %{name}. Uskoro ćemo vam se javiti.
+    success_via_email: Hvala na tvojoj poruci, %{name}. Odgovorit ćemo putem e-pošte u roku od 24 sata.
   explore_page:
     header: Istražite grupe
     search_placeholder: Tražite javne grupe
-    single_search_result: 1 javna grupa odgovara <strong>{{searchTerm}}:</strong>
-    multiple_search_results: "{{resultCount}} javnih grupa koje odgovaraju <strong>{{searchTerm}}:</strong>"
+    single_search_result: 1 javna grupa odgovara <strong>%{searchTerm}:</strong>
+    multiple_search_results: "%{resultCount} javnih grupa koje odgovaraju <strong>%{searchTerm}:</strong>"
     no_results_found: <strong>Ne možete pronaći grupu koju tražite?</strong> Ako je privatnost grupe postavljena na "tajno", neće se pojaviti ovdje.
     newest_first: Prvo najnoviji
     biggest_first: Najprije najveći
@@ -1684,8 +1684,8 @@ hr:
     custom_process: Prilagođeni postupak
     custom_poll: Prilagođena anketa
     delete_poll: Izbriši anketu
-    select_count_options: Odaberite {{count}} opcija
-    select_minimum_to_maximum_options: Odaberite opcije od {{minimum}} do {{maximum}}
+    select_count_options: Odaberite %{count} opcija
+    select_minimum_to_maximum_options: Odaberite opcije od %{minimum} do %{maximum}
     custom_poll_types: Prilagođene vrste anketa
     hidden_poll_templates: Skriveni predlošci anketa
     poll_template: Predložak ankete
@@ -1720,7 +1720,7 @@ hr:
     results: Rezultati
     current_results: Trenutni rezultati
     responses: Odgovori
-    close_poll_type: Zatvori {{pollType}}
+    close_poll_type: Zatvori %{pollType}
     close_early: Zatvori ranije
     totals: Ukupno
     participate: Sudjelovati
@@ -1752,7 +1752,7 @@ hr:
     max_score: Maksimalni rezultat
     min_score: Minimalni rezultat
     too_long: Predugo
-    edit_warning: Uređivanje se preporučuje samo za manje izmjene ili ispravljanje pravopisnih pogrešaka. Za značajne promjene zatvorite ovaj {{pollType}} i započnite novi.
+    edit_warning: Uređivanje se preporučuje samo za manje izmjene ili ispravljanje pravopisnih pogrešaka. Za značajne promjene zatvorite ovaj %{pollType} i započnite novi.
     no_voting: Samo za raspravu, glasovanje onemogućeno
     outdated: Zastario
   poll_common_attachment_form:
@@ -1770,7 +1770,7 @@ hr:
     hide_results: Sakrij rezultate
     until_vote: Dok se ne glasa
     until_you_vote: Dok ne glasate
-    until_poll_type_closed: Dok se {{pollType}} ne zatvori
+    until_poll_type_closed: Dok se %{pollType} ne zatvori
     until_voting_is_closed: Do zatvaranja glasanja
     deleted: Ova anketa je izbrisana
   discussions_panel:
@@ -1778,9 +1778,9 @@ hr:
     all: svi
     unread: Nepročitano (%{count})
     closed: Zatvoreno
-    include_subgroups_mine: "{{name}} i moje podgrupe"
-    include_subgroups_all: "{{name}} i sve podgrupe"
-    no_results_found: Nema rezultata za "{{search}}"
+    include_subgroups_mine: "%{name} i moje podgrupe"
+    include_subgroups_all: "%{name} i sve podgrupe"
+    no_results_found: Nema rezultata za "%{search}"
     welcome_to_your_new_group: Dobrodošli u svoju novu Loomio grupu!
     lets_start_a_thread: Pokrenimo nit. Kliknite "Nova nit" za nastavak.
   polls_panel:
@@ -1799,8 +1799,8 @@ hr:
     uploaded_at: Učitano u
     delete_confirmation: Jeste li sigurni da želite izbrisati ovaj privitak? Bit će uklonjen iz svih povezanih komentara ili niti. To se ne može poništiti.
   subgroups_panel:
-    search_subgroups_of_name: Traži podgrupe {{name}}
-    group_without_subgroups: "{{name}} bez podgrupa"
+    search_subgroups_of_name: Traži podgrupe %{name}
+    group_without_subgroups: "%{name} bez podgrupa"
   poll_common_action_panel:
     from_the_thread: Iz predloška niti
     from_the_group: Iz grupe
@@ -1818,7 +1818,7 @@ hr:
     draft_mode: Glasanje onemogućeno. Ovo još nije otvoreno za glasovanje.
     voting_disabled_poll_is_template: Glasanje onemogućeno. Ovo je predložak.
   poll_common_collapsed:
-    by_who: imenom}}
+    by_who: imenom}
   poll_common_calendar_invite:
     calendar_invite: Uz ovaj ishod uključite pozivnicu za kalendar
     poll_option_id: Vrijeme sastanka
@@ -1837,7 +1837,7 @@ hr:
     specified_voters_only_true: Samo pozvani ljudi
     specified_voters_only_false_group: Bilo tko u grupi
     specified_voters_only_false_discussion: Bilo tko u temi
-    invite_people_next: Možete odabrati tko je pozvan da glasa nakon što pokrenete {{poll_type}}
+    invite_people_next: Možete odabrati tko je pozvan da glasa nakon što pokrenete %{poll_type}
     shuffle_options:
       shuffle_options: Mogućnosti nasumične reprodukcije
       title: Prikaži opcije nasumičnim redoslijedom
@@ -1850,8 +1850,8 @@ hr:
       helptext_on: Kad je odabrano, svatko s vezom na anketu može sudjelovati.
     notify_on_closing_soon:
       voting_closes_too_soon: Budući da glasanje završava unutar 24 sata, neće se slati podsjetnici o skorom zatvaranju.
-      closes_too_soon: Budući da se ovaj {{pollType}} zatvara unutar 24 sata, neće se slati podsjetnici o skorom zatvaranju.
-      title: 24 sata prije zatvaranja {{pollType}} pošaljite podsjetnik na
+      closes_too_soon: Budući da se ovaj %{pollType} zatvara unutar 24 sata, neće se slati podsjetnici o skorom zatvaranju.
+      title: 24 sata prije zatvaranja %{pollType} pošaljite podsjetnik na
       voting_title: 24 sata prije zatvaranja glasanja pošaljite podsjetnik na
       nobody: Nitko
       author: Autor (ja)
@@ -1878,12 +1878,12 @@ hr:
     close_poll_type: Zatvori %{poll_type}
     poll_type_closed: "%{poll_type} zatvoreno"
   poll_common_reopen_form:
-    title: Ponovno otvori {{poll_type}}
-    helptext: Ponovno otvorite {{poll_type}} ako ljudima treba više vremena za sudjelovanje
-    success: "{{poll_type}} ponovno otvorena"
+    title: Ponovno otvori %{poll_type}
+    helptext: Ponovno otvorite %{poll_type} ako ljudima treba više vremena za sudjelovanje
+    success: "%{poll_type} ponovno otvorena"
   poll_common_move_form:
-    title: Premjesti {{poll_type}}
-    success: "{{poll_type}} premješteno u {{group}}"
+    title: Premjesti %{poll_type}
+    success: "%{poll_type} premješteno u %{group}"
   poll_common_wip_field:
     voting_enabled: Glasanje omogućeno
     enable_voting: Omogući glasovanje
@@ -1902,7 +1902,7 @@ hr:
     invalid_date: Nevažeći datum
   poll_card:
     poll_type_by_name: "%{poll_type} od %{name}"
-    started_by: Pokrenuo {{name}}
+    started_by: Pokrenuo %{name}
   poll_common_votes_panel:
     vote_removed: Glas uklonjen
     undecided: Neodlučan
@@ -1943,10 +1943,10 @@ hr:
     you_will_be_notified: O datumu pregleda bit ćete obaviješteni.
     submit: Podijelite ishod
   poll_common_outcome_panel:
-    authored_by: Imenom}}
+    authored_by: Imenom}
   poll_common_delete_modal:
     question: Jeste li sigurni da želite ovo izbrisati?
-    title: Izbriši {{pollType}}
+    title: Izbriši %{pollType}
     success: Uspješno izbrisano
   poll_common_form:
     notify_everyone_when_poll_starts: Obavijesti sve kad %{poll_type} počne
@@ -2018,9 +2018,9 @@ hr:
     stance_reason_is_required: Navedite razlog svog glasa
     limit_reason_length: Ograničite razlog na najviše 500 znakova
     save_poll: Spremi anketu
-    start_poll_type: Pokreni {{poll_type}}
-    share_poll_type: Dijeli {{poll_type}}
-    who_may_vote: Tko može glasati u ovoj {{poll_type}}?
+    start_poll_type: Pokreni %{poll_type}
+    share_poll_type: Dijeli %{poll_type}
+    who_may_vote: Tko može glasati u ovoj %{poll_type}?
     update: Ažuriraj
     add_voters: Dodajte birače
     notify_invitees: Pošaljite obavijesti
@@ -2076,7 +2076,7 @@ hr:
     dots_per_person_helptext: Ukupan broj bodova koje svaka osoba mora dodijeliti.
   poll_meeting_form:
     timeslots: Vremenski odsječci
-    no_options: Unesite vremena u svojoj trenutnoj vremenskoj zoni ({{zone}}). Sudionici vide vremena prevedena u njihovu lokalnu vremensku zonu.
+    no_options: Unesite vremena u svojoj trenutnoj vremenskoj zoni (%{zone}). Sudionici vide vremena prevedena u njihovu lokalnu vremensku zonu.
     meeting_duration: Trajanje sastanka
     add_option_placeholder: Dodajte novo vrijeme
     time_slot_added: Vrijeme je dodano
@@ -2132,8 +2132,8 @@ hr:
     'yes': Da
     'no': Ne
   poll_common_percent_voted:
-    sentence: "{{numerator}} od {{denominator}} osoba je sudjelovalo ({{percent}}%)"
-    target_progress: Postignuto je {{percent}}% cilja. ({{num}} / {{target}})
+    sentence: "%{numerator} od %{denominator} osoba je sudjelovalo (%{percent}%)"
+    target_progress: Postignuto je %{percent}% cilja. (%{num} / %{target})
   poll_meeting_chart_panel:
     total: Ukupno
   poll_remove_vote:
@@ -2148,7 +2148,7 @@ hr:
     stance_created: Glasanje je kreirano
     stance_updated: Glasanje ažurirano
   poll_meeting_vote_form:
-    local_time_zone: Lokalno vrijeme - {{zone}}
+    local_time_zone: Lokalno vrijeme - %{zone}
     can_attend: Može prisustvovati
     unable: Nesposoban
     if_need_be: Ako treba
@@ -2306,43 +2306,43 @@ hr:
     removed: Stavka uklonjena
     deleted_group: Izbrisana grupa
     invite_only_thread: Nit samo na poziv
-    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> kao odgovor na <strong>{{title}}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> uredio je naslov teme"
-    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> uredio je kontekst niti"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> promijenio je privatnost niti"
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je uredio nit"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je premjestio nit iz <strong>{{title}}</strong>"
-    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je zatvorio temu"
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ponovno je otvorio temu"
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je stvorio račvanje ove niti: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{Autor}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> podijelio je ishod"
-    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ponovno je otvorio {{polltype}}"
-    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je zatvorio {{polltype}}"
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je započeo {{polltype}}"
-    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je uredio {{polltype}}"
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je dodao opcije u {{polltype}}"
-    poll_expired: "{{polltype}} zatvoreno"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je glasao za: <strong>{{title}}</strong>"
-    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> je ažurirao svoj glas za: <strong>{{title}}</strong>"
+    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a> kao odgovor na <strong>%{title}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> uredio je naslov teme"
+    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> uredio je kontekst niti"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> promijenio je privatnost niti"
+    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je uredio nit"
+    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je premjestio nit iz <strong>%{title}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je zatvorio temu"
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ponovno je otvorio temu"
+    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je stvorio račvanje ove niti: <strong><a href='d/%{key}'>%{title}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{Autor}</a>"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> podijelio je ishod"
+    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ponovno je otvorio %{polltype}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je zatvorio %{polltype}"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je započeo %{polltype}"
+    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je uredio %{polltype}"
+    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je dodao opcije u %{polltype}"
+    poll_expired: "%{polltype} zatvoreno"
+    stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je glasao za: <strong>%{title}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je ažurirao svoj glas za: <strong>%{title}</strong>"
     event_removed: Uklonjeno iz niti
   add_poll_to_thread_modal:
-    success: Uspjeh, {{pollType}} dodan u nit!
+    success: Uspjeh, %{pollType} dodan u nit!
   auth_form:
     code: '000000'
-    youre_invited: Pozvani ste da se pridružite {{group_name}}.
+    youre_invited: Pozvani ste da se pridružite %{group_name}.
     youre_invited_discussion: Pozvani ste da se pridružite raspravi.
     youre_invited_poll: Pozvani ste da glasate.
-    existing_account_can_sign_in: Ako ste već korisnik {{site_name}}, prijavite se sa svojim postojećim računom
-    sign_up_or_log_in: Izradite račun ili se prijavite na {{site_name}}
-    sign_in_to_loomio: Prijavite se na {{site_name}}
+    existing_account_can_sign_in: Ako ste već korisnik %{site_name}, prijavite se sa svojim postojećim računom
+    sign_up_or_log_in: Izradite račun ili se prijavite na %{site_name}
+    sign_in_to_loomio: Prijavite se na %{site_name}
     sign_in_help: Problemi s prijavom?
     sign_in: Prijaviti se
     continue: Nastaviti
     create_account: Napravi račun
-    sign_up_as: Izradi račun kao {{email}}
-    sign_in_as: Prijavite se kao {{name}}
-    continue_with_provider: Nastavite s {{provider}}
+    sign_up_as: Izradi račun kao %{email}
+    sign_in_as: Prijavite se kao %{name}
+    continue_with_provider: Nastavite s %{provider}
     continue_with_email: Nastavite s e-poštom
     or_enter_your_email: Ili unesite svoju adresu e-pošte
     enter_your_name: Unesite svoje ime
@@ -2361,32 +2361,32 @@ hr:
     enter_your_password: Unesite svoju lozinku za nastavak
     check_spam_folder: Ako e-pošta ne stigne uskoro, provjerite svoju spam mapu.
     sign_up_helptext: Ispunite ovaj obrazac za kreiranje korisničkog računa
-    i_accept_all: Prihvaćam {{termsLink}} i {{privacyLink}}
-    newsletter_label: Želim primiti {{link}}
+    i_accept_all: Prihvaćam %{termsLink} i %{privacyLink}
+    newsletter_label: Želim primiti %{link}
     name_placeholder: Tvoje ime
     name_required: Molimo unesite ime
     terms_required: Morate prihvatiti Uvjete usluge
-    account_inactive: Uh-oh, izgleda da je račun za {{email}} deaktiviran!
-    privacy_notice: Nikada nećemo prodati vaše podatke.<br> <a href='{{privacyUrl}}' target='_blank'>Politika privatnosti</a>
-    welcome: Novi ste na {{siteName}}?
-    welcome_back: Dobro došao natrag, {{name}}!
+    account_inactive: Uh-oh, izgleda da je račun za %{email} deaktiviran!
+    privacy_notice: Nikada nećemo prodati vaše podatke.<br> <a href='%{privacyUrl}' target='_blank'>Politika privatnosti</a>
+    welcome: Novi ste na %{siteName}?
+    welcome_back: Dobro došao natrag, %{name}!
     forgot_password: Zaboravili ste lozinku
     login_link: Pošalji e-poštu za prijavu
     sign_in_via_email: Prijavite se putem e-pošte
     set_password: Postavi lozinku
     set_password_helptext: Želite li sljedeći put koristiti lozinku?
-    hello: Pozdrav, {{name}}!
-    new_to_loomio: Prvi put na {{site_name}}?
+    hello: Pozdrav, %{name}!
+    new_to_loomio: Prvi put na %{site_name}?
     already_a_user: Već imate račun?
     email_address_of_existing_account: Unesite adresu e-pošte vašeg postojećeg računa
     link_accounts: Povežite račune
     check_your_email: Provjerite e-poštu!
-    login_link_sent: Poslali smo e-poruku na {{email}}.
+    login_link_sent: Poslali smo e-poruku na %{email}.
     instructions: 'Kliknite vezu za prijavu ili unesite kod ispod:'
     instructions_code: 'Unesite kod iz te e-pošte:'
     too_many_attempts: Previše pokušaja; pokušajte kliknuti vezu u e-poruci da biste se prijavili.
     invalid_code: Žao nam je, taj kôd nije odgovarao. Provjerite e-poštu i pokušajte ponovo.
-    password_link_sent: Poslali smo e-poruku na {{email}} s uputama o tome kako postaviti lozinku.
+    password_link_sent: Poslali smo e-poruku na %{email} s uputama o tome kako postaviti lozinku.
     reactivate_link_sent: Poslali smo vam e-poruku s uputama za ponovno aktiviranje vašeg računa
     signed_in: Uspješno ste prijavljeni
     email_verified: E-pošta je uspješno potvrđena
@@ -2435,7 +2435,7 @@ hr:
       discord: Razdor
     subtitle: Povežite se na Loomio s ostalim svojim alatima pomoću našeg API-ja
     deprecated: Ovaj API je zastario. Prijeđite na APIv2 (pogledajte API dokumente u izborniku postavki grupe)
-    we_have_guides: Pogledajte naše <a href="{{url}}" target="_blank">vodiče za postavljanje web-dojavnika</a> za pomoć pri povezivanju vaše usluge.
+    we_have_guides: Pogledajte naše <a href="%{url}" target="_blank">vodiče za postavljanje web-dojavnika</a> za pomoć pri povezivanju vaše usluge.
     add_webhook: Dodajte web-dojavnik
     show_docs: Pogledajte korištenje API-ja
     save_to_show_docs: Nakon što spremite, vratite se ovdje kako biste pronašli svoj API ključ
@@ -2443,7 +2443,7 @@ hr:
     add_integration: Dodajte integraciju
     success: Dodana integracija!
     remove: Ukloni integraciju
-    confirm_remove: 'Jeste li sigurni da želite ukloniti integraciju: {{name}}?'
+    confirm_remove: 'Jeste li sigurni da želite ukloniti integraciju: %{name}?'
     removed: Integracija uklonjena
     url_label: Webhook URL
     url_placeholder: https://kuke.example.com/...

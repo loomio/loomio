@@ -4,7 +4,7 @@ import vuetify from '@/vuetify';
 import router from '@/routes';
 import i18n from '@/i18n';
 import app from '@/app.vue';
-import marked from '@/marked';
+import markedDirective from '@/marked_directive';
 import '@/observe_visibility';
 import './removeServiceWorker';
 import { pick } from 'lodash';

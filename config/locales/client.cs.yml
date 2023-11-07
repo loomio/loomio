@@ -24,9 +24,9 @@ cs:
     modal_edit_title: Upravit štítek
     modal_destroy_title: Odebrat štítek
     helptext: Štítky umožňují rozdělit konverzace do kategorií a snadno je později najít
-    tags_marked: Vlákna označená '{{name}}' ve skupině {{groupName}}
+    tags_marked: Vlákna označená '%{name}' ve skupině %{groupName}
   timezones:
-    local: Místní čas ({{value}})
+    local: Místní čas (%{value})
   common:
     please_wait: Prosím vyčkejte
     version: Verze
@@ -44,8 +44,8 @@ cs:
     time:
       am: dop.
       pm: odp.
-    closing_in: 'Uzavření {{time}}'
-    closed_ago: 'Uzavřeno {{time}}'
+    closing_in: 'Uzavření %{time}'
+    closed_ago: 'Uzavřeno %{time}'
     volume: 'Hlasitost'
     notification_volume: 'Hlasitost upozornění'
     group: 'Skupina'
@@ -144,8 +144,8 @@ cs:
   verify_email_notice:
     please_verify: Děkujeme za účast! Zkontrolujte prosím Vaši emailovou schránku, aby jste potvrdili Váš hlas pomocí odkazu.
   previous_polls_page:
-    heading: Aktivity v {{name}}
-    polls_count: Zobrazeno {{loaded}} z {{total}} rozhodnutí
+    heading: Aktivity v %{name}
+    polls_count: Zobrazeno %{loaded} z %{total} rozhodnutí
     search_activities: Vyhledat rozhodnutí
   volume_levels:
     loud: 'Hlasitý'
@@ -201,7 +201,7 @@ cs:
       remove_attachment: 'Odebrat přílohu'
     messages:
       created: 'Komentář přidán'
-      replied: '{{name}} upozorněn/a na odpověď'
+      replied: '%{name} upozorněn/a na odpověď'
       updated: 'Komentář aktualizován'
       destroyed: 'Komentář smazán'
     edit_comment: 'Upravit komentář'
@@ -209,11 +209,11 @@ cs:
     cancel_reply: 'Zrušit odpověď'
     confirm_delete_message: 'Opravdu chcete odstranit tento komentář?'
     confirm_delete: 'Odstranit komentář'
-    in_reply_to: "Odpovědět {{name}}"
+    in_reply_to: "Odpovědět %{name}"
     post_comment: "Odeslat komentář"
     submit_button:
       label: 'Odeslat'
-    private_privacy_notice: 'Váš komentář bude viditelný pouze pro členy {{groupName}}.'
+    private_privacy_notice: 'Váš komentář bude viditelný pouze pro členy %{groupName}.'
     public_privacy_notice: 'Váš komentář bude viditelný všem na webu.'
     sign_in: "Přihlaste se a připojte se ke konverzaci"
   sidebar:
@@ -283,7 +283,7 @@ cs:
     context_label: 'Souvislost'
     context_placeholder: "Poskytněte kontext této diskuze, aby lidé věděli, jak se do ní zapojit."
     privacy_label: 'Soukromí'
-    privacy_organisation: 'Vlákno bude vidět pro členy {{parent}} a členy {{group}}.'
+    privacy_organisation: 'Vlákno bude vidět pro členy %{parent} a členy %{group}.'
   announcement:
     form:
       invitation_message_label: Zpráva
@@ -326,7 +326,7 @@ cs:
     join_group: Připojit ke skupině
     membership_requested: Žádost o členství odeslána
     messages:
-      joined_group: 'Nyní jste členem {{group}}'
+      joined_group: 'Nyní jste členem %{group}'
   membership_request_form:
     heading: Zažádat o členství
     name_label: Jméno
@@ -335,14 +335,14 @@ cs:
     submit_button: Požádat o připojení
     introduction_over_limit: Odpověď je příliš dlouhá
     messages:
-      membership_requested: 'Požádali jste o vstup do {{group}}'
+      membership_requested: 'Požádali jste o vstup do %{group}'
   revision_history_modal:
     aria_label: Historie revizí
-    edited_by: 'Upravil/a <strong>{{name}}</strong>'
+    edited_by: 'Upravil/a <strong>%{name}</strong>'
     current_revision: Nejnovější
   reactions_display:
     you: "Vy"
-    you_and_name: "Vy a {{name}}"
+    you_and_name: "Vy a %{name}"
   context_panel:
     thread_status:
       pinned: "Toto vlákno bylo připnuté. Zůstane v horní části seznamu témat pro všechny uživatele."
@@ -387,7 +387,7 @@ cs:
       mute_aria_description: Hlasitost oznámení pro tuto skupinu je nastavena na hodnotu Ztlumit. Pokud se o vás někdo nezmíní, nebudou vám zasílány žádné e-maily a aktivita skupiny se nebude zobrazovat na vašem ovládacím panelu.
     privacy:
       private: 'Soukromí: Tato skupina je viditelná pouze pro členy'
-      parent_members: 'Soukromí: Tato skupina je viditelná pro členy {{parentGroupName}} a členy {{groupName}}.'
+      parent_members: 'Soukromí: Tato skupina je viditelná pro členy %{parentGroupName} a členy %{groupName}.'
       public: 'Soukromí: Tato skupina je viditelná na webu'
   description_card:
     title: 'Popis skupiny'
@@ -439,7 +439,7 @@ cs:
     ignore: Ignorovat
     no_pending_requests: V současné době nejsou v této skupině žádné nevyřízené žádosti o členství.
     previous_requests: Minulé žádosti
-    previous_request_response: '{{response}} od {{responder}} '
+    previous_request_response: '%{response} od %{responder} '
     messages:
       request_approved_success: Žádost o členství schválena
       request_ignored_success: Žádost o členství ignorována
@@ -464,9 +464,9 @@ cs:
     remove_member_label: 'Vyloučit'
     fragment_placeholder: 'Filtrování uživatelů podle jména nebo uživatelského jména...'
     messages:
-      remove_member_success: 'Odebrán {{name}}'
-      make_admin_success: '{{jméno}} je nyní správcem'
-      remove_admin_success: '{{jméno}} již není správce'
+      remove_member_success: 'Odebrán %{name}'
+      make_admin_success: '%{jméno} je nyní správcem'
+      remove_admin_success: '%{jméno} již není správce'
   membership_remove_modal:
     invitation:
       title: Stornovat pozvánku
@@ -554,7 +554,7 @@ cs:
     activity: 'Aktivita'
     activity_placeholder: 'Zatím žádná aktivita!'
     load_previous: 'Načíst dřívější aktivity'
-    started_by: 'Vytvořeno <strong>{{name}}</strong>'
+    started_by: 'Vytvořeno <strong>%{name}</strong>'
   activity_card:
     latest: Nejnovější
     context: Souvislost
@@ -587,7 +587,7 @@ cs:
     title: Přesunout téma
     confirm: Přesunout téma
     messages:
-      success: Téma bylo přesunuto {{name}}
+      success: Téma bylo přesunuto %{name}
   delete_comment_dialog:
     title: 'Odstranit komentář'
     question: 'Tím se tento komentář trvale odstraní. Pokud budete pokračovat, nebude možné jej obnovit.'
@@ -693,9 +693,9 @@ cs:
     email_placeholder: vy@priklad.cz
     name_placeholder: Vaše jméno
     name_required: Zadejte prosím jméno
-    welcome_back: Vítejte zpět, {{name}}!
+    welcome_back: Vítejte zpět, %{name}!
     set_password: Nastavit heslo
-    hello: "Ahoj, {{name}}!"
+    hello: "Ahoj, %{name}!"
     check_your_email: Zkontrolujte svůj e-mail!
     signed_in: Úspěšně jste se přihlásili
     name: Jméno

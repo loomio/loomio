@@ -27,9 +27,9 @@ el:
     look_and_feel: Δείτε πώς είναι το Loomio για έναν μικρό οργανισμό. Μάθετε την εφαρμογή δοκιμάζοντάς την.
     watch_then_start: Παρακαλούμε παρακολουθήστε το βίντεο και, στη συνέχεια, κάντε κλικ στην επιλογή "Έναρξη επίδειξης" για να δοκιμάσετε το Loomio
     generating_demo: Εντάξει, περίμενε εκεί! Η δημιουργία μιας επίδειξης διαρκεί περίπου 20 δευτερόλεπτα.
-    start_a_x_day_free_trial: Ξεκινήστε μια δωρεάν δοκιμή {{day}} ημερών
+    start_a_x_day_free_trial: Ξεκινήστε μια δωρεάν δοκιμή %{day} ημερών
     ready_to_trial: Είστε έτοιμοι να δοκιμάσετε το Loomio με τον οργανισμό σας;
-    start_a_no_obligation_x_day_trial: Ξεκινήστε μια ομάδα Loomio για τον οργανισμό σας με μια δωρεάν δοκιμή ημέρας {{day}}.
+    start_a_no_obligation_x_day_trial: Ξεκινήστε μια ομάδα Loomio για τον οργανισμό σας με μια δωρεάν δοκιμή ημέρας %{day}.
     you_can_test_it_out: Μπορείτε να προσκαλέσετε άλλα άτομα να συμμετάσχουν, να το ενσωματώσετε με τα άλλα εργαλεία σας και να δοκιμάσετε να πάρετε κάποιες αποφάσεις.
     demo_created: Η ομάδα επίδειξης δημιουργήθηκε, μόνο για εσάς!
     start_demo: Έναρξη επίδειξης
@@ -58,11 +58,11 @@ el:
     is_old_plan: Η Loomio έχει νέα απλά σχέδια τιμολόγησης
     change_plan: Αλλαγή σχεδίου
     view_plans: Προβολή σχεδίων
-    free_trial: Δωρεάν δοκιμή. Απομένουν {{days}} ημέρες.
+    free_trial: Δωρεάν δοκιμή. Απομένουν %{days} ημέρες.
     trial_expired: Η δοκιμή σας έχει λήξει. Κάντε αναβάθμιση για να συνεχίσετε να χρησιμοποιείτε το Loomio.
     tooltip: Οι τιμές μας είναι φανταστικές! Αναβαθμίστε σήμερα και απολαύστε όσα μπορεί να προσφέρει η Loomio στην ομάδα σας.
-    was_gift_trial: 'Η ομάδα σας χρησιμοποιεί δωρεάν το Loomio από τις {{createdDate}}. Δεν μπορούμε να συνεχίσουμε να παρέχουμε δωρεάν υπηρεσία. Κάντε αναβάθμιση για να συνεχίσετε να χρησιμοποιείτε το Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Διαβάστε περισσότερα.</a>'
-    was_gift_remaining: Απομένουν {{days}} ημέρες.
+    was_gift_trial: 'Η ομάδα σας χρησιμοποιεί δωρεάν το Loomio από τις %{createdDate}. Δεν μπορούμε να συνεχίσουμε να παρέχουμε δωρεάν υπηρεσία. Κάντε αναβάθμιση για να συνεχίσετε να χρησιμοποιείτε το Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Διαβάστε περισσότερα.</a>'
+    was_gift_remaining: Απομένουν %{days} ημέρες.
     was_gift_expired: Το δωρεάν πρόγραμμά σας έχει πλέον λήξει.
   subscription_status:
     members: Μέλη
@@ -97,12 +97,12 @@ el:
     discussions_count_plural: "(%{count} νήματα)"
     tag_created: Η ετικέτα αποθηκεύτηκε
     tag_destroyed: Η ετικέτα διαγράφηκε
-    tags_marked: Νήματα με την επισήμανση "{{name}}" στο {{groupName}}
+    tags_marked: Νήματα με την επισήμανση "%{name}" στο %{groupName}
     no_tags_present: Δεν βρέθηκαν νήματα με αυτήν την ετικέτα! Δοκιμάστε να επιλέξετε ένα άλλο
     no_tags_in_group: Αυτή η ομάδα δεν έχει ακόμη ετικέτες κατηγορίας
-    only_admins_can_edit_tags: Λυπούμαστε, μόνο οι διαχειριστές του {{group}} μπορούν να δημιουργήσουν, να μετονομάσουν ή να διαγράψουν ετικέτες
+    only_admins_can_edit_tags: Λυπούμαστε, μόνο οι διαχειριστές του %{group} μπορούν να δημιουργήσουν, να μετονομάσουν ή να διαγράψουν ετικέτες
   timezones:
-    local: Τοπική ώρα ({{value}})
+    local: Τοπική ώρα (%{value})
   common:
     please_wait: Παρακαλούμε περιμένετε
     version: Έκδοση
@@ -118,8 +118,8 @@ el:
     time:
       am: π.μ.
       pm: μ.μ.
-    closing_in: Κλείνει {{time}}
-    closed_ago: Έκλεισε {{time}}
+    closing_in: Κλείνει %{time}
+    closed_ago: Έκλεισε %{time}
     volume: Ένταση
     notification_volume: Ένταση ειδοποιήσεων
     group: Ομάδα
@@ -216,7 +216,7 @@ el:
       title: Μάθετε πώς να χρησιμοποιείτε το Markdown για να μορφοποιήσετε το κείμενό σας
     admin_menu: Μενού διαχειριστή
     api_docs: Έγγραφα API
-    prefix_eg: π.χ. {{val}}
+    prefix_eg: π.χ. %{val}
     are_you_sure: Είσαι σίγουρος?
     loomio_help: Βοήθεια Loomio
     visit_loomio_help: Επισκεφτείτε τη βοήθεια του Loomio
@@ -233,7 +233,7 @@ el:
     attachments: Συνημμένα
     template: Πρότυπο
     links: Συνδέσεις
-    active_time_ago: Τελευταία ενεργή {{time_ago}}
+    active_time_ago: Τελευταία ενεργή %{time_ago}
     something_went_wrong: Ωχ! Κάτι πήγε στραβά
     check_for_errors_and_try_again: Ελέγξτε τη φόρμα για σφάλματα και δοκιμάστε ξανά
     please_try_again: ΠΑΡΑΚΑΛΩ προσπαθησε ξανα
@@ -245,7 +245,7 @@ el:
     today: σήμερα
     in_x_days: σε %{x} ημέρες
     reset: Επαναφορά
-    points_abbrev: Κάθε ψήφος αξίζει {{score}} βαθμούς
+    points_abbrev: Κάθε ψήφος αξίζει %{score} βαθμούς
     total: Σύνολο
   emoji_picker:
     search: Εύρεση
@@ -267,8 +267,8 @@ el:
     internal_server_error: Συγνώμη, αλλά κάτι πήγε λάθος. Παρακαλούμε προσπαθήστε ξανά.
     forbidden_view: Δεν έχετε άδεια να το δείτε.
   previous_polls_page:
-    heading: Δραστηρίοτητες στο {{name}}
-    polls_count: Βλέπετε {{loaded}} των {{total}} αποφάσεων
+    heading: Δραστηρίοτητες στο %{name}
+    polls_count: Βλέπετε %{loaded} των %{total} αποφάσεων
     search_activities: Ψάξτε αποφάσεις
   volume_levels:
     loud: Δυνατά
@@ -317,8 +317,8 @@ el:
         loud: Θα σας έρχονται ηλεκτρονικά μηνύματα με όλη την δραστηριότητα σε αυτή την ομάδα.
         normal: Θα σας έρχεται ηλεκτρονικό μήνυμα μόνο με τις ανακοινώσεις σε αυτή την ομάδα.
         quiet: Δεν θα σας έρχονται ηλεκτρονικά μηνύματα σχετικά με αυτή την ομάδα.
-      title: Ειδοποιήσεις για {{title}}
-      apply_to_organization: Εφαρμογή σε όλες τις ομάδες στον {{organization}}
+      title: Ειδοποιήσεις για %{title}
+      apply_to_organization: Εφαρμογή σε όλες τις ομάδες στον %{organization}
     all_groups:
       loud_description: Θα σας έρχονται ηλεκτρονικά μηνύματα με όλη την δραστηριότητα σε όλες τις ομάδες σας.
       messages:
@@ -362,7 +362,7 @@ el:
       remove_attachment: Αφαίρεσε συννημένο
     messages:
       created: Το σχόλιο προστέθηκε
-      replied: "{{name}} ειδοποιήθηκε για την απάντηση"
+      replied: "%{name} ειδοποιήθηκε για την απάντηση"
       updated: Σχόλιο ανανεώθηκε
       destroyed: Σχόλιο διαγράφτηκε
       removed: Το σχόλιο καταργήθηκε
@@ -374,11 +374,11 @@ el:
     post_comment: Δημοσίευση σχόλιου
     submit_button:
       label: Δημοσίευση
-    private_privacy_notice: Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα {{groupName}}.
+    private_privacy_notice: Το σχόλιο σας θα είναι ορατό μόνο στα μέλη της ομάδα %{groupName}.
     public_privacy_notice: Το σχόλιο σας θα είναι ορατό σε όλους στο διαδίκτυο.
     sign_in: Εισέλθετε για να συμμετάσχετε στην συζήτηση
     say_something: Πες κάτι...
-    in_reply_to: Απάντηση στο {{name}}
+    in_reply_to: Απάντηση στο %{name}
     write_a_comment: Γράψε ένα σχόλιο...
   sidebar:
     threads: Θέματα
@@ -426,14 +426,14 @@ el:
     toggle_sidebar: Εναλλαγή πλευρικής στήλης
     logo_title: Κεντρική σελίδα
     search_all_threads: Αναζήτηση όλων των νημάτων
-    search_threads: Αναζήτηση νημάτων στο {{name}}
-    search_polls: Αναζήτηση δημοσκοπήσεων σε {{name}}
-    search_members: Αναζήτηση μελών στο {{name}}
-    search_subgroups: Αναζήτηση μελών στο {{name}}
-    search_files: Αναζήτηση αρχείων σε {{name}}
+    search_threads: Αναζήτηση νημάτων στο %{name}
+    search_polls: Αναζήτηση δημοσκοπήσεων σε %{name}
+    search_members: Αναζήτηση μελών στο %{name}
+    search_subgroups: Αναζήτηση μελών στο %{name}
+    search_files: Αναζήτηση αρχείων σε %{name}
     open_sidebar: Ανοίξτε την πλαϊνή γραμμή
     close_sidebar: Κλείσιμο πλαϊνής γραμμής
-    group_and_subgroups: "{{group}} και υποομάδες"
+    group_and_subgroups: "%{group} και υποομάδες"
   membership_dropdown:
     make_coordinator: Κάντε τον/την διαχειριστή
     set_name_and_username: Ορίστε όνομα και όνομα χρήστη
@@ -444,7 +444,7 @@ el:
     remove_from:
       discussion: Αφαίρεση από το νήμα
       group: Αφαίρεση από την ομάδα
-      poll: Κατάργηση από {{pollType}}
+      poll: Κατάργηση από %{pollType}
     cancel_invitation: Ακύρωση πρόσκλησης
   notifications:
     header: Ειδοποιήσεις
@@ -541,8 +541,8 @@ el:
     context_label: Περιεχόμενο
     privacy_label: Απόρρητο
     privacy_public: Οποιοσδήποτε μπορεί να δει αυτό το θέμα. Μόνο μέλη μπορούν να συμμετάσχουν.
-    privacy_private: Το θέμα θα είναι ορατό μόνο στα μέλη της ομάδας {{group}}.
-    privacy_organisation: Το θέμα θα είναι ορατό μόνο στα μέλη της {{parent}} και μέλη της ομάδα {{group}}.
+    privacy_private: Το θέμα θα είναι ορατό μόνο στα μέλη της ομάδας %{group}.
+    privacy_organisation: Το θέμα θα είναι ορατό μόνο στα μέλη της %{parent} και μέλη της ομάδα %{group}.
     thread_templates: Πρότυπα νημάτων
     new_thread_template: Νέο πρότυπο νήματος
     edit_thread_template: Επεξεργασία προτύπου νήματος
@@ -560,7 +560,7 @@ el:
     new_thread_from_template: 'Νέο νήμα: %{process_name}'
     moving_items_title: Μετακίνηση στοιχείων σε νέο νήμα
     context_placeholder: Δώστε κάποιο πλαίσιο για αυτήν τη συζήτηση, ώστε οι άνθρωποι να γνωρίζουν πώς να συμμετέχουν
-    fork_notice: Θα δημιουργηθεί ένα νέο νήμα με %{count} στοιχεία από {{title}}
+    fork_notice: Θα δημιουργηθεί ένα νέο νήμα με %{count} στοιχεία από %{title}
     notify_group: Ειδοποίηση ομάδας
   announcement:
     form:
@@ -577,9 +577,9 @@ el:
         message_placeholder: Προαιρετικό μήνυμα που θα συμπεριληφθεί στο email ειδοποίησης
       group_has_no_members_yet: Είστε το μόνο μέλος της ομάδας σας. Μπορεί να θέλετε να προσκαλέσετε κάποια άτομα στην ομάδα σας πριν ξεκινήσετε ένα νήμα ή μια απόφαση.
       invite_people_to_evaluate_loomio: Προσκαλέστε μερικά άτομα στην ομάδα σας Loomio για να λάβετε μαζί μια απόφαση
-      too_many_invitations: Υπέρβαση του ορίου πρόσκλησης. <a href="{{upgradeUrl}}" target="_blank">Αναβαθμίζω</a>
-      no_invitations_remaining: <p>Έχετε χρησιμοποιήσει όλες τις προσκλήσεις {{maxMembers}} που είναι διαθέσιμες σε αυτήν την ομάδα.</p><p> Επόμενο βήμα, <a href="{{upgradeUrl}}" target="_blank">επιλέξτε ένα σχέδιο</a> για να συνεχίσετε τη συνεργασία στο Loomio.</p>
-      invitations_remaining: Απομένουν %{count} προσκλήσεις. <a href="{{upgradeUrl}}" target="_blank">Αναβαθμίζω</a>
+      too_many_invitations: Υπέρβαση του ορίου πρόσκλησης. <a href="%{upgradeUrl}" target="_blank">Αναβαθμίζω</a>
+      no_invitations_remaining: <p>Έχετε χρησιμοποιήσει όλες τις προσκλήσεις %{maxMembers} που είναι διαθέσιμες σε αυτήν την ομάδα.</p><p> Επόμενο βήμα, <a href="%{upgradeUrl}" target="_blank">επιλέξτε ένα σχέδιο</a> για να συνεχίσετε τη συνεργασία στο Loomio.</p>
+      invitations_remaining: Απομένουν %{count} προσκλήσεις. <a href="%{upgradeUrl}" target="_blank">Αναβαθμίζω</a>
       who_to_invite: Ποιον θα θέλατε να προσκαλέσετε;
       invitation_message_placeholder: Ένα μήνυμα που πρέπει να συμπεριληφθεί στο email της πρόσκλησης. (προαιρετικός)
       invitation_message_default: Έχω δημιουργήσει αυτήν την ομάδα Loomio για να μας βοηθήσει να πάρουμε αποφάσεις μαζί. Παρακαλώ αποδεχτείτε την πρόσκλησή μου. Χρειάζεται μόνο ένα λεπτό για να εγγραφείτε. Ευχαριστώ.
@@ -610,20 +610,20 @@ el:
       type_or_paste_email_addresses_to_invite: Πληκτρολογήστε ή επικολλήστε διευθύνσεις email για πρόσκληση
       notified_empty: Κανείς δεν έχει επιλέξει ακόμα
       single_notification: Θα σταλεί 1 ειδοποίηση.
-      multiple_notifications: Θα σταλούν {{notified}} ειδοποιήσεις.
-      notified: "{{notified}} άτομα θα ειδοποιηθούν."
+      multiple_notifications: Θα σταλούν %{notified} ειδοποιήσεις.
+      notified: "%{notified} άτομα θα ειδοποιηθούν."
       notified_singular: Θα ειδοποιηθεί 1 άτομο.
       notified_none: Κανείς δεν θα ειδοποιηθεί.
       added: Θα προστεθούν %{count} άτομα.
       added_singular: Θα προστεθεί 1 άτομο.
       added_none: Δεν θα προστεθεί κανείς.
-      group_title: "{{name}} (%{count} άτομα)"
-      visible_to_group: Οποιοσδήποτε στην {{group}} θα μπορεί να δει αυτό το νήμα.
+      group_title: "%{name} (%{count} άτομα)"
+      visible_to_group: Οποιοσδήποτε στην %{group} θα μπορεί να δει αυτό το νήμα.
       visible_to_guests: Μόνο οι προσκεκλημένοι μπορούν να δουν αυτό το νήμα.
       click_group_to_see_individuals: Κάντε κλικ στην ομάδα για να δείτε άτομα
     send_discussion: Αποστολή νήματος
-    send_group: Προσκαλέστε άτομα στο {{name}}
-    send_poll: Αποστολή {{type}}
+    send_group: Προσκαλέστε άτομα στο %{name}
+    send_poll: Αποστολή %{type}
     send_outcome: Αποστολή αποτελέσματος
     cannot_reveal_when_anonymous: Λυπούμαστε, δεν μπορούμε να αποκαλύψουμε ποιος ψήφισε ή δεν ψήφισε σε μια ανώνυμη δημοσκόπηση.
     discussion_notification_history: Ιστορικό ειδοποιήσεων νήματος
@@ -634,7 +634,7 @@ el:
     notification_history_explanation: "✓ υποδηλώνει ότι η ειδοποίηση διαβάστηκε ή ότι το email έχει ανοίξει"
     quick_add: 'Γρήγορη προσθήκη:'
     any_other_groups: Καμιά άλλη ομάδα;
-    notified_people: 'Ο χρήστης {{name}} ειδοποίησε {{length}} άτομα:'
+    notified_people: 'Ο χρήστης %{name} ειδοποίησε %{length} άτομα:'
     preview: Προεπισκόπηση email
     no_notifications_sent: Δεν έχουν σταλεί ειδοποιήσεις
     history_error: Κάτι πήγε στραβά! Δεν ήταν δυνατή η φόρτωση του ιστορικού.
@@ -645,29 +645,29 @@ el:
     only_admins_can_announce: Μόνο οι διαχειριστές μπορούν να ειδοποιήσουν ολόκληρη την ομάδα
     only_admins_can_invite: Μόνο οι διαχειριστές μπορούν να προσκαλέσουν επισκέπτες
     only_admins_can_announce_or_invite: Μόνο οι διαχειριστές μπορούν να ειδοποιήσουν ολόκληρη την ομάδα ή να προσκαλέσουν επισκέπτες
-    user_mentioned: 'Ο χρήστης {{name}} ανέφερε {{length}} άτομα:'
-    comment_replied_to: 'Ο χρήστης {{name}} απάντησε σε {{length}} άτομα:'
-    new_discussion: 'Ο χρήστης {{name}} προσκάλεσε {{length}} άτομα στο νήμα:'
-    discussion_announced: 'Ο χρήστης {{name}} προσκάλεσε {{length}} άτομα στο νήμα:'
-    poll_created: 'Ο χρήστης {{name}} προσκάλεσε {{length}} άτομα να ψηφίσουν:'
-    poll_announced: 'Ο χρήστης {{name}} προσκάλεσε {{length}} άτομα να ψηφίσουν:'
-    outcome_created: 'Ο χρήστης {{name}} μοιράστηκε ένα αποτέλεσμα με {{length}} άτομα:'
-    outcome_announced: 'Ο χρήστης {{name}} μοιράστηκε ένα αποτέλεσμα με {{length}} άτομα:'
-    announcement_created: 'Ο χρήστης {{name}} προσκάλεσε {{length}} άτομα στο νήμα:'
-    discussion_edited: 'Ο χρήστης {{name}} επεξεργάστηκε το νήμα, ειδοποιώντας {{length}} άτομα:'
-    poll_edited: 'Ο χρήστης {{name}} επεξεργάστηκε μια δημοσκόπηση, ειδοποιώντας {{length}} άτομα:'
-    outcome_edited: 'Ο χρήστης {{name}} επεξεργάστηκε ένα αποτέλεσμα, ειδοποιώντας {{length}} άτομα:'
-    outcome_updated: 'Ο χρήστης {{name}} επεξεργάστηκε ένα αποτέλεσμα, ειδοποιώντας {{length}} άτομα:'
-    poll_closing_soon: 'Η υπενθύμιση κλεισίματος της δημοσκόπησης του {{name}} ειδοποίησε {{length}} άτομα:'
-    poll_reminder: 'Ο χρήστης {{name}} υπενθύμισε σε {{length}} άτομα να ψηφίσουν:'
+    user_mentioned: 'Ο χρήστης %{name} ανέφερε %{length} άτομα:'
+    comment_replied_to: 'Ο χρήστης %{name} απάντησε σε %{length} άτομα:'
+    new_discussion: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα στο νήμα:'
+    discussion_announced: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα στο νήμα:'
+    poll_created: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα να ψηφίσουν:'
+    poll_announced: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα να ψηφίσουν:'
+    outcome_created: 'Ο χρήστης %{name} μοιράστηκε ένα αποτέλεσμα με %{length} άτομα:'
+    outcome_announced: 'Ο χρήστης %{name} μοιράστηκε ένα αποτέλεσμα με %{length} άτομα:'
+    announcement_created: 'Ο χρήστης %{name} προσκάλεσε %{length} άτομα στο νήμα:'
+    discussion_edited: 'Ο χρήστης %{name} επεξεργάστηκε το νήμα, ειδοποιώντας %{length} άτομα:'
+    poll_edited: 'Ο χρήστης %{name} επεξεργάστηκε μια δημοσκόπηση, ειδοποιώντας %{length} άτομα:'
+    outcome_edited: 'Ο χρήστης %{name} επεξεργάστηκε ένα αποτέλεσμα, ειδοποιώντας %{length} άτομα:'
+    outcome_updated: 'Ο χρήστης %{name} επεξεργάστηκε ένα αποτέλεσμα, ειδοποιώντας %{length} άτομα:'
+    poll_closing_soon: 'Η υπενθύμιση κλεισίματος της δημοσκόπησης του %{name} ειδοποίησε %{length} άτομα:'
+    poll_reminder: 'Ο χρήστης %{name} υπενθύμισε σε %{length} άτομα να ψηφίσουν:'
     audiences:
-      group: "{{όνομα}}"
+      group: "%{όνομα}"
       everyone_in_the_group: Όλοι στην ομάδα
       discussion_group: Όλοι στο νήμα
       voters: Όλοι καλούνται να ψηφίσουν
       decided_voters: Όλοι όσοι ψήφισαν
       undecided_voters: Αναποφάσιστοι ψηφοφόροι
-      non_voters: Τα μέλη του {{name}} δεν έχουν προσκληθεί ακόμη
+      non_voters: Τα μέλη του %{name} δεν έχουν προσκληθεί ακόμη
     members_list:
       title: Μοιρασμένο με
       last_notified: Ειδοποιήθηκε
@@ -675,7 +675,7 @@ el:
       no_members: Αυτό δεν έχει κοινοποιηθεί ακόμα με κανέναν!
       group_admin: Διαχειριστής ομάδας
       thread_admin: Διαχειριστής νήματος
-      last_read_at: Τελευταία προβολή {{time}}
+      last_read_at: Τελευταία προβολή %{time}
       has_not_read_thread: Δεν έχει δει το νήμα
     group_form:
       search_placeholder: Αναζήτηση ατόμων...
@@ -699,8 +699,8 @@ el:
     invite_guests: Προσκαλέστε επισκέπτες
     translate_thread: Μετάφραση περιβάλλοντος
     edit_poll: Επεξεργασία δημοσκόπησης
-    edit_poll_type: Επεξεργασία {{pollType}}
-    new_poll_type: Νέο {{pollType}}
+    edit_poll_type: Επεξεργασία %{pollType}
+    new_poll_type: Νέο %{pollType}
     move_items: Μετακίνηση στοιχείων
     announce_poll: Προσκαλέστε τους ανθρώπους να ψηφίσουν
     announce_poll_active: "(Κανένας δεν έχει προσκληθεί ακόμα)"
@@ -800,7 +800,7 @@ el:
     join_group: Συμμετάσχετε στην ομάδα
     membership_requested: Αίτηση μέλους έχει ζητηθεί.
     messages:
-      joined_group: Τώρα είστε μέλος της ομάδας {{group}}
+      joined_group: Τώρα είστε μέλος της ομάδας %{group}
     not_a_member: Δεν είστε μέλος αυτής της ομάδας.
   membership_request_form:
     aria_label: Φόρμα αιτήματος μέλους
@@ -811,11 +811,11 @@ el:
     submit_button: Ρωτήστε για να συμμετάσχετε
     introduction_over_limit: Η απάντηση είναι πολύ μεγάλη
     messages:
-      membership_requested: Έχετε ζητήσει να συμμετάσχετε στην {{group}}
+      membership_requested: Έχετε ζητήσει να συμμετάσχετε στην %{group}
   revision_history_modal:
     aria_label: Αναθεώρηση ιστορικού
-    started_by: Ξεκίνησε από <strong>{{name}}</strong>
-    edited_by: Επεξεργάστηκε από <strong>{{name}}</strong>
+    started_by: Ξεκίνησε από <strong>%{name}</strong>
+    edited_by: Επεξεργάστηκε από <strong>%{name}</strong>
     posted: Δημοσιεύθηκε
     current_revision: Τελευταία
     discussion_header: Επεξεργασίες συζήτησης
@@ -823,14 +823,14 @@ el:
     poll_header: Επεξεργασίες δημοσκόπησης
     outcome_header: Επεξεργασίες αποτελεσμάτων
     stance_header: Τροποποιήσεις ψήφου
-    edit_by: Επεξεργασία από {{name}} · {{date}}
+    edit_by: Επεξεργασία από %{name} · %{date}
     field: Πεδίο
     before: Πριν
     after: Μετά
     original_text: Πρωτότυπο
-    closing_at_changed: η ώρα κλεισίματος ορίστηκε σε {{time}}
-    private_changed: το απόρρητο ορίστηκε σε {{ιδιωτικό}}
-    group_id_changed: μεταφέρθηκε στο {{name}}
+    closing_at_changed: η ώρα κλεισίματος ορίστηκε σε %{time}
+    private_changed: το απόρρητο ορίστηκε σε %{ιδιωτικό}
+    group_id_changed: μεταφέρθηκε στο %{name}
   group_page:
     threads: Θέματα
     members: Μέλη
@@ -873,14 +873,14 @@ el:
       quiet: Μην στείλετε ηλεκτρονικό μήνυμα για αυτή την ομάδα. Η δραστηριότητα θα εμφανιστεί στο ταμπλό.
       mute: Απόκρυψη αυτής της ομάδας από το ταμπλό και καμμία ειδοποιήση εκτός εάν @αναφερθώ.
       loud_aria_description: Η ένταση των ειδοποιήσεών σας για αυτήν την ομάδα έχει οριστεί σε Δυνατή. Θα λαμβάνετε email όποτε υπάρχει δραστηριότητα.
-      loud_message: Θα λάβετε email για όλη τη δραστηριότητα στο "{{name}}."
+      loud_message: Θα λάβετε email για όλη τη δραστηριότητα στο "%{name}."
       normal: 'Απλώς στείλτε email σημαντική δραστηριότητα: Νέα θέματα και προτάσεις, αποτελέσματα κ.λπ.'
       normal_aria_description: Ο όγκος των ειδοποιήσεών σας για αυτήν την ομάδα έχει οριστεί σε Κανονική. Απλώς θα λάβετε email σημαντική δραστηριότητα, όπως όταν κάποιος ξεκινά ένα νέο νήμα, θέτει μια πρόταση ή ορίζει ένα αποτέλεσμα.
-      normal_message: Θα λαμβάνετε email μόνο για σημαντικά συμβάντα στο "{{name}}".
+      normal_message: Θα λαμβάνετε email μόνο για σημαντικά συμβάντα στο "%{name}".
       quiet_aria_description: Η ένταση των ειδοποιήσεών σας για αυτήν την ομάδα έχει οριστεί σε Αθόρυβη. Δεν θα λάβετε μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με τη δραστηριότητα σε αυτήν την ομάδα. Η ομαδική δραστηριότητα θα εμφανίζεται στον Πίνακα ελέγχου σας.
-      quiet_message: Δεν θα λάβετε μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με τη δραστηριότητα στο "{{name}}".
+      quiet_message: Δεν θα λάβετε μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με τη δραστηριότητα στο "%{name}".
       mute_aria_description: Ο όγκος των ειδοποιήσεών σας για αυτήν την ομάδα έχει οριστεί σε Σίγαση. Δεν θα λάβετε μήνυμα ηλεκτρονικού ταχυδρομείου εκτός εάν κάποιος σας αναφέρει και η ομαδική δραστηριότητα δεν θα εμφανίζεται στον Πίνακα ελέγχου σας.
-      mute_message: Το "{{name}}" έχει αφαιρεθεί από τον πίνακα ελέγχου σας.
+      mute_message: Το "%{name}" έχει αφαιρεθεί από τον πίνακα ελέγχου σας.
     stats: Στατιστικά ομάδας
     polls: Δημοσκοπήσεις
     decisions: Αποφάσεις
@@ -899,9 +899,9 @@ el:
     subgroups_placeholder: Οι υποομάδες δίνουν στις ομάδες το δικό τους χώρο και κρατούν τις ειδοποιήσεις εστιασμένες στα σωστά άτομα.
     privacy:
       private: 'Απόρρητο: Αυτή η ομάδα είναι ορατή μόνο στα μέλη'
-      parent_members: 'Απόρρητο: Αυτή η ομάδα είναι ορατή στα μέλη του {{parentGroupName}} και στα μέλη του {{groupName}}'
+      parent_members: 'Απόρρητο: Αυτή η ομάδα είναι ορατή στα μέλη του %{parentGroupName} και στα μέλη του %{groupName}'
       public: 'Απόρρητο: Αυτή η ομάδα είναι ορατή στον ιστό'
-      aria_label: 'Απόρρητο ομάδας: {{privacy}}'
+      aria_label: 'Απόρρητο ομάδας: %{privacy}'
   description_card:
     title: Περιγραφή ομάδας
     messages:
@@ -931,14 +931,14 @@ el:
     description_placeholder: Περιγράψτε τον σκοπό της ομάδας σας, ώστε τα μέλη της ομάδας σας να γνωρίζουν γιατί είναι εδώ.
     privacy_statement:
       private_to_group: Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη.
-      private_to_parent_members: Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη του {{parent}}
+      private_to_parent_members: Το όνομα και η περιγραφή θα είναι ορατά μόνο στα μέλη του %{parent}
       public_on_web: Το όνομα, η περιγραφή και τα συνημμένα στο πλαίσιο της ομάδας θα είναι ορατά στο κοινό
     privacy: Ιδιωτικότητα
     profile: Προφίλ
     permissions: Δικαιώματα
     thread_privacy: Ιδιωτικότητα του θέματος
     public_threads: Μόνο δημόσια θέματα
-    public_discussions_subgroup: Οποιοσδήποτε στο {{parentGroupName}} μπορεί να δει τις συζητήσεις
+    public_discussions_subgroup: Οποιοσδήποτε στο %{parentGroupName} μπορεί να δει τις συζητήσεις
     public_or_private_threads: Επιτρέπονται δημόσια και ιδιωτικά θέματα
     private_threads: Μόνο τα μέλη μπορούν να δεις τις συζητήσεις
     allow_public_threads: Επιτρέπονται δημόσια θέματα σε αυτή την ομάδα.
@@ -962,7 +962,7 @@ el:
     subgroup_name: Όνομα υποομάδας
     organization_name: Ονομα Οργανισμού
     handle: Λαβή
-    group_handle_placeholder: 'Χρησιμοποιείται στη διεύθυνση URL της ομάδας σας: {{host}}/{{handle}}'
+    group_handle_placeholder: 'Χρησιμοποιείται στη διεύθυνση URL της ομάδας σας: %{host}/%{handle}'
     start_organization_heading: Νέα οργάνωση
     edit_organization_heading: Επεξεργασία ρυθμίσεων οργανισμού
     subgroup_name_placeholder: Ποιο είναι το όνομα της υποομάδας σας;
@@ -981,15 +981,15 @@ el:
     subgroup_privacy_is_open_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι δημόσια.
     subgroup_privacy_is_closed_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι ιδιωτικά.
     subgroup_privacy_is_closed_public_threads_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Τα νήματα μπορεί να είναι δημόσια ή ιδιωτικά.
-    subgroup_privacy_is_closed_secret_parent_description: Τα μέλη του {{γονέα}} μπορούν να βρουν αυτήν την υποομάδα και να ζητήσουν να γίνουν μέλη. Όλα τα νήματα είναι ιδιωτικά. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα.
+    subgroup_privacy_is_closed_secret_parent_description: Τα μέλη του %{γονέα} μπορούν να βρουν αυτήν την υποομάδα και να ζητήσουν να γίνουν μέλη. Όλα τα νήματα είναι ιδιωτικά. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα.
     subgroup_privacy_is_secret_description: Μόνο τα προσκεκλημένα μέλη μπορούν να βρουν αυτήν την υποομάδα, να δουν ποιος είναι σε αυτήν και να δουν νήματα.
     advanced_settings: Προηγμένες ρυθμίσεις
     how_do_people_join: Πώς εντάσσονται οι άνθρωποι;
     membership_granted_upon_request: Οποιοσδήποτε μπορεί να συμμετάσχει στην ομάδα.
     membership_granted_upon_approval: Οποιοσδήποτε μπορεί να ζητήσει να συμμετάσχει, αλλά πρέπει να εγκριθεί.
     membership_granted_upon_invitation: Μόνο πρόσκληση.
-    membership_granted_upon_approval_secret_parent: "<strong>Κατόπιν αιτήματος,</strong> οποιοσδήποτε από το {{γονέας}} μπορεί να ζητήσει να συμμετάσχει στην ομάδα."
-    parent_members_can_see_discussions: Τα μέλη του {{γονέα}} μπορούν να δουν ιδιωτικά νήματα
+    membership_granted_upon_approval_secret_parent: "<strong>Κατόπιν αιτήματος,</strong> οποιοσδήποτε από το %{γονέας} μπορεί να ζητήσει να συμμετάσχει στην ομάδα."
+    parent_members_can_see_discussions: Τα μέλη του %{γονέα} μπορούν να δουν ιδιωτικά νήματα
     parent_members_can_see_discussions_help: Να επιτρέπεται στα μέλη της γονικής ομάδας να βλέπουν, αλλά όχι να συμμετέχουν, νήματα και δημοσκοπήσεις σε αυτήν την ομάδα
     members_can_announce: Τα μέλη μπορούν να ειδοποιήσουν όλους στην ομάδα
     members_can_announce_help: Επιτρέψτε στα μέλη να ειδοποιούν όλους στην ομάδα για ένα νήμα ή μια δημοσκόπηση
@@ -1024,7 +1024,7 @@ el:
     no_pending_requests: Προς το παρόν, δεν υπάρχουν εκκρεμείς αιτήσεις μέλους για αυτήν την ομάδα.
     no_previous_requests: Προς το παρόν δεν υπάρχουν προηγούμενα αιτήματα μέλους για αυτήν την ομάδα.
     previous_requests: Προηγούμενα Αιτήματα
-    previous_request_response: "{{response}} από {{responder}}"
+    previous_request_response: "%{response} από %{responder}"
     messages:
       request_approved_success: Εγκρίθηκε το αίτημα ένταξης
       request_ignored_success: Το αίτημα συμμετοχής αγνοήθηκε
@@ -1038,7 +1038,7 @@ el:
     aria_label: Φόρμα πρόσκλησης
     invite_guests: Προσκαλέστε επισκέπτες
     notify_people: Ειδοποιήστε τους ανθρώπους
-    invite_people_to_group: Πρόσκληση στο {{name}}
+    invite_people_to_group: Πρόσκληση στο %{name}
     group: Ομάδα
     group_placeholder: Επιλέξτε μια ομάδα
     shareable_link: Σύνδεσμος με δυνατότητα κοινής χρήσης
@@ -1055,7 +1055,7 @@ el:
     custom_message: Προσαρμοσμένο μήνυμα
     custom_message_placeholder: Εισαγάγετε ένα προσωπικό μήνυμα που θα συμπεριλάβετε στην πρόσκληση.
     add_members: Προσθήκη μελών
-    from_parent_group: από όνομα}}.
+    from_parent_group: από όνομα}.
     send: Στείλετε
     messages:
       invitation_sent: Η πρόσκληση στάλθηκε.
@@ -1070,9 +1070,9 @@ el:
     fragment_placeholder: Φιλτράρισμα χρηστών κατά όνομα ή όνομα χρήστη...
     only_one_admin: Υπάρχει μόνο ένας διαχειριστής σε αυτήν την ομάδα. Συνιστάται να ορίσετε τουλάχιστον ένα ακόμη μέλος ως διαχειριστή.
     messages:
-      remove_member_success: Καταργήθηκε το {{name}}
-      make_admin_success: Ο χρήστης {{name}} είναι πλέον διαχειριστής
-      remove_admin_success: Ο χρήστης {{name}} δεν είναι πλέον διαχειριστής
+      remove_member_success: Καταργήθηκε το %{name}
+      make_admin_success: Ο χρήστης %{name} είναι πλέον διαχειριστής
+      remove_admin_success: Ο χρήστης %{name} δεν είναι πλέον διαχειριστής
     remove_admin_from_self:
       question: Είστε σίγουροι ότι δεν θέλετε πλέον να είστε διαχειριστής;
   profile_page:
@@ -1117,7 +1117,7 @@ el:
     use_initials: Χρησιμοποιήστε αρχικά
     use_uploaded: Ανεβάστε νέα φωτογραφία
     existing_upload: Υπάρχουσα μεταφόρτωση
-    use_provider: Χρησιμοποιήστε τη φωτογραφία {{provider}}
+    use_provider: Χρησιμοποιήστε τη φωτογραφία %{provider}
   email_settings_page:
     monday: Δευτέρα
     tuesday: Τρίτη
@@ -1201,7 +1201,7 @@ el:
       instructions: Για σίγαση ενός νήματος, τοποθετήστε το δείκτη του ποντικιού πάνω του και κάντε κλικ στο εικονίδιο σίγασης.
       see_muted_html: Για να δείτε τα νήματα σε σίγαση, κάντε κλικ στην <strong>επιλογή "Σίγαση"</strong> . Μπορείτε να καταργήσετε τη σίγαση τοποθετώντας το δείκτη του ποντικιού και κάνοντας κλικ στο ίδιο εικονίδιο.
     thread_preview:
-      you_voted: Ψηφίσατε {{position}}
+      you_voted: Ψηφίσατε %{position}
       undecided: Είσαι αναποφάσιστος
   inbox_page:
     no_groups:
@@ -1213,11 +1213,11 @@ el:
     unread_threads: Μη αναγνωσμένα νήματα
     view_more: Δείτε περισσότερα
   discussion:
-    started_by: Ξεκίνησε από τον/την <strong>{{name}}</strong>
+    started_by: Ξεκίνησε από τον/την <strong>%{name}</strong>
     invite_only: Μόνο με πρόσκληση
     private_thread: Ιδιωτικό νήμα
-    max_threads_reached: <p>Έχετε χρησιμοποιήσει όλα τα νήματα {{maxThreads}} που είναι διαθέσιμα σε αυτήν την ομάδα.</p><p> Επόμενο βήμα, <a href="{{upgradeUrl}}" target="_blank">επιλέξτε ένα σχέδιο</a> για να συνεχίσετε τη συνεργασία στο Loomio.</p>
-    subscription_canceled: <p>Η συνδρομή σας δεν είναι ενεργή.</p><p> Κάντε <a href="{{upgradeUrl}}" target="_blank">αναβάθμιση</a> για να συνεχίσετε να χρησιμοποιείτε το Loomio.</p>
+    max_threads_reached: <p>Έχετε χρησιμοποιήσει όλα τα νήματα %{maxThreads} που είναι διαθέσιμα σε αυτήν την ομάδα.</p><p> Επόμενο βήμα, <a href="%{upgradeUrl}" target="_blank">επιλέξτε ένα σχέδιο</a> για να συνεχίσετε τη συνεργασία στο Loomio.</p>
+    subscription_canceled: <p>Η συνδρομή σας δεν είναι ενεργή.</p><p> Κάντε <a href="%{upgradeUrl}" target="_blank">αναβάθμιση</a> για να συνεχίσετε να χρησιμοποιείτε το Loomio.</p>
     activity: Δραστηριότητα
     activity_placeholder: Καμία δραστηριότητα ακόμα!
     load_previous: Φόρτωση προηγούμενης δραστηριότητας
@@ -1259,7 +1259,7 @@ el:
     close_thread: Κλείσε
     mute_thread: Σίγαση
     delete_thread: Διαγραφή
-    current_poll_type_banner: Τρέχουσα {{pollType}}
+    current_poll_type_banner: Τρέχουσα %{pollType}
     item_maybe_deleted: Δεν είναι δυνατή η εύρεση της ζητούμενης τοποθεσίας μέσα στο νήμα. Μπορεί να έχει διαγραφεί.
     aria_label: Περιεχόμενο νήματος
     thread_options: Επιλογές νήματος
@@ -1288,7 +1288,7 @@ el:
     respond_asap: Στείλτε ένα μήνυμα στην ομάδα του Loomio και θα απαντήσουμε το συντομότερο δυνατό.
     happy_to_help_with: Είμαστε στην ευχάριστη θέση να σας βοηθήσουμε με ερωτήσεις πωλήσεων, αιτήματα υποστήριξης, αιτήματα λειτουργιών, αναφορά σφαλμάτων ή ζητήματα που αντιμετωπίζετε.
     title: Γεια σου! Πώς μπορούμε να βοηθήσουμε?
-    contact_us_email: 'Μπορείτε επίσης να μας στείλετε email: <a href="mailto:{{email}}">{{email}}</a>'
+    contact_us_email: 'Μπορείτε επίσης να μας στείλετε email: <a href="mailto:%{email}">%{email}</a>'
     contact_us: Επικοινωνήστε μαζί μας
     name_placeholder: Εισάγετε το όνομά σας...
     subject_placeholder: 'Π.χ.: Πρόβλημα σύνδεσης ή Πρόταση λειτουργίας'
@@ -1297,8 +1297,8 @@ el:
     send_message: Να στείλετε μήνυμα
     new_contact_message: Ευχαριστώ για την επικοινωνία. θα επικοινωνήσουμε μαζί σας σύντομα!
     consent_message: Επικοινωνώντας μαζί μας, συναινείτε στο προσωπικό μας να έχει πρόσβαση στον λογαριασμό σας όπως απαιτείται.<br /> Η ομάδα υποστήριξής μας μιλάει αγγλικά και θα μεταφράσει το μήνυμά σας με τη Μετάφραση Google εάν απαιτείται.<br /> Στόχος μας είναι να απαντάμε σε όλα τα μηνύματα εντός 24 ωρών.
-    success: Ευχαριστούμε για το μήνυμά σας, {{name}}. Θα έχετε νέα μας σύντομα.
-    success_via_email: Ευχαριστούμε για το μήνυμά σας, {{name}}. Θα απαντήσουμε μέσω email εντός 24 ωρών.
+    success: Ευχαριστούμε για το μήνυμά σας, %{name}. Θα έχετε νέα μας σύντομα.
+    success_via_email: Ευχαριστούμε για το μήνυμά σας, %{name}. Θα απαντήσουμε μέσω email εντός 24 ωρών.
   decision_tools_card:
     proposal_title: Πρόταση
     poll_title: Ψηφοφορία
@@ -1336,8 +1336,8 @@ el:
     custom_process: Προσαρμοσμένη διαδικασία
     custom_poll: Προσαρμοσμένη δημοσκόπηση
     delete_poll: Διαγραφή δημοσκόπησης
-    select_count_options: Επιλέξτε {{count}} επιλογές
-    select_minimum_to_maximum_options: Επιλέξτε {{minimum}} έως {{maximum}} επιλογές
+    select_count_options: Επιλέξτε %{count} επιλογές
+    select_minimum_to_maximum_options: Επιλέξτε %{minimum} έως %{maximum} επιλογές
     custom_poll_types: Προσαρμοσμένοι τύποι δημοσκόπησης
     hidden_poll_templates: Κρυφά πρότυπα δημοσκοπήσεων
     poll_template: Πρότυπο δημοσκόπησης
@@ -1371,7 +1371,7 @@ el:
     results: Αποτελέσματα
     current_results: Τρέχοντα αποτελέσματα
     responses: Απαντήσεις
-    close_poll_type: Κλείσιμο {{pollType}}
+    close_poll_type: Κλείσιμο %{pollType}
     close_early: Κλείσιμο νωρίς
     totals: Σύνολα
     participate: Συμμετέχω
@@ -1402,7 +1402,7 @@ el:
     max_score: Μέγιστη βαθμολογία
     min_score: Ελάχιστη βαθμολογία
     too_long: Πολύ μακρύ
-    edit_warning: Η επεξεργασία συνιστάται μόνο για μικρές αλλαγές ή για διόρθωση ορθογραφικών λαθών. Για σημαντικές αλλαγές, κλείστε αυτό το {{pollType}} και ξεκινήστε ένα νέο.
+    edit_warning: Η επεξεργασία συνιστάται μόνο για μικρές αλλαγές ή για διόρθωση ορθογραφικών λαθών. Για σημαντικές αλλαγές, κλείστε αυτό το %{pollType} και ξεκινήστε ένα νέο.
     no_voting: Μόνο για συζήτηση, η ψηφοφορία απενεργοποιήθηκε
     outdated: Απαρχαιωμένος
   discussions_panel:
@@ -1410,9 +1410,9 @@ el:
     all: Όλα
     closed: Έκλεισε
     unread: Μη αναγνωσμένο (%{count})
-    include_subgroups_mine: "{{name}} και οι υποομάδες μου"
-    include_subgroups_all: "{{name}} και όλες οι υποομάδες"
-    no_results_found: Δεν υπάρχουν αποτελέσματα για "{{αναζήτηση}}"
+    include_subgroups_mine: "%{name} και οι υποομάδες μου"
+    include_subgroups_all: "%{name} και όλες οι υποομάδες"
+    no_results_found: Δεν υπάρχουν αποτελέσματα για "%{αναζήτηση}"
     welcome_to_your_new_group: Καλώς ήρθατε στη νέα σας ομάδα Loomio!
     lets_start_a_thread: Ας ξεκινήσουμε ένα νήμα. Κάντε κλικ στο "Νέο νήμα" για να συνεχίσετε.
   members_panel:
@@ -1430,7 +1430,7 @@ el:
     show_users_in_subgroups: Εμφάνιση χρηστών και σε υποομάδες
     order_by_created_desc: Νεότερο
     order_by_admin_desc: Διαχειριστές
-    loaded_of_total: "{{loaded}} από {{total}}"
+    loaded_of_total: "%{loaded} από %{total}"
     view_requests: Προβολή αιτημάτων
     header_role: Ρόλος
     header_invited_by: Προσκεκλημένος από
@@ -1442,8 +1442,8 @@ el:
     admin: διαχειριστής
     guest: Επισκέπτης
     sharable_link: Σύνδεσμος με δυνατότητα κοινής χρήσης
-    last_seen: Τελευταία επίσκεψη {{ημερομηνία}}
-    invited_by_name: Προσκλήθηκε από {{name}}
+    last_seen: Τελευταία επίσκεψη %{ημερομηνία}
+    invited_by_name: Προσκλήθηκε από %{name}
   polls_panel:
     all: Όλα
     open: Άνοιγμα
@@ -1523,9 +1523,9 @@ el:
     stance_reason_is_required: Δώστε έναν λόγο με την ψήφο σας
     limit_reason_length: Περιορίστε τον λόγο στους 500 χαρακτήρες το πολύ
     save_poll: Αποθήκευση δημοσκόπησης
-    start_poll_type: Έναρξη {{poll_type}}
-    share_poll_type: Κοινή χρήση {{poll_type}}
-    who_may_vote: Ποιος μπορεί να ψηφίσει σε αυτό το {{poll_type}};
+    start_poll_type: Έναρξη %{poll_type}
+    share_poll_type: Κοινή χρήση %{poll_type}
+    who_may_vote: Ποιος μπορεί να ψηφίσει σε αυτό το %{poll_type};
     update: Εκσυγχρονίζω
     add_voters: Προσθήκη ψηφοφόρων
     notify_invitees: Αποστολή ειδοποιήσεων
@@ -1564,19 +1564,19 @@ el:
     email_placeholder: you@example.com
     name_placeholder: Το όνομα σας
     code: '000000'
-    youre_invited: Έχετε προσκληθεί να συμμετάσχετε στο {{group_name}}.
+    youre_invited: Έχετε προσκληθεί να συμμετάσχετε στο %{group_name}.
     youre_invited_discussion: Έχετε προσκληθεί να συμμετάσχετε στη συζήτηση.
     youre_invited_poll: Έχετε προσκληθεί να ψηφίσετε.
-    existing_account_can_sign_in: Εάν είστε ήδη χρήστης του {{site_name}}, συνδεθείτε με τον υπάρχοντα λογαριασμό σας
-    sign_up_or_log_in: Δημιουργήστε λογαριασμό ή συνδεθείτε στο {{site_name}}
-    sign_in_to_loomio: Συνδεθείτε στο {{site_name}}
+    existing_account_can_sign_in: Εάν είστε ήδη χρήστης του %{site_name}, συνδεθείτε με τον υπάρχοντα λογαριασμό σας
+    sign_up_or_log_in: Δημιουργήστε λογαριασμό ή συνδεθείτε στο %{site_name}
+    sign_in_to_loomio: Συνδεθείτε στο %{site_name}
     sign_in_help: Έχετε δυσκολία να συνδεθείτε;
     sign_in: Συνδεθείτε
     continue: Να συνεχίσει
     create_account: Δημιουργήστε λογαριασμό
-    sign_up_as: Δημιουργία λογαριασμού ως {{email}}
-    sign_in_as: Συνδεθείτε ως {{name}}
-    continue_with_provider: Συνέχεια με {{provider}}
+    sign_up_as: Δημιουργία λογαριασμού ως %{email}
+    sign_in_as: Συνδεθείτε ως %{name}
+    continue_with_provider: Συνέχεια με %{provider}
     continue_with_email: Συνεχίστε με email
     or_enter_your_email: Ή, πληκτρολογήστε τη διεύθυνση email σας
     enter_your_name: Εισάγετε το όνομά σας
@@ -1594,31 +1594,31 @@ el:
     enter_your_password: Εισαγάγετε τον κωδικό πρόσβασής σας για να συνεχίσετε
     check_spam_folder: Εάν το email δεν φτάσει σύντομα, ελέγξτε το φάκελο ανεπιθύμητης αλληλογραφίας σας.
     sign_up_helptext: Συμπληρώστε αυτήν τη φόρμα για να δημιουργήσετε έναν λογαριασμό χρήστη
-    i_accept_all: Αποδέχομαι τους {{termsLink}} και τον {{privacyLink}}
-    newsletter_label: Θέλω να λάβω το {{link}}
+    i_accept_all: Αποδέχομαι τους %{termsLink} και τον %{privacyLink}
+    newsletter_label: Θέλω να λάβω το %{link}
     name_required: Εισαγάγετε ένα όνομα
     terms_required: Πρέπει να συμφωνήσετε με τους Όρους Παροχής Υπηρεσιών
-    account_inactive: Ωχ, φαίνεται ότι ο λογαριασμός για το {{email}} έχει απενεργοποιηθεί!
-    privacy_notice: Δεν θα πουλήσουμε ποτέ τα δεδομένα σας.<br> <a href='{{privacyUrl}}' target='_blank'>Πολιτική απορρήτου</a>
-    welcome: Νέος χρήστης {{siteName}};
-    welcome_back: Καλώς ήρθατε πίσω, {{name}}!
+    account_inactive: Ωχ, φαίνεται ότι ο λογαριασμός για το %{email} έχει απενεργοποιηθεί!
+    privacy_notice: Δεν θα πουλήσουμε ποτέ τα δεδομένα σας.<br> <a href='%{privacyUrl}' target='_blank'>Πολιτική απορρήτου</a>
+    welcome: Νέος χρήστης %{siteName};
+    welcome_back: Καλώς ήρθατε πίσω, %{name}!
     forgot_password: Ξεχάσατε τον κωδικό
     login_link: Αποστολή email σύνδεσης
     sign_in_via_email: Συνδεθείτε μέσω email
     set_password: Ορίστε κωδικό
     set_password_helptext: Θέλετε να χρησιμοποιήσετε κωδικό πρόσβασης την επόμενη φορά;
-    hello: Γεια σας, {{name}}!
-    new_to_loomio: Πρώτη φορά στο {{site_name}};
+    hello: Γεια σας, %{name}!
+    new_to_loomio: Πρώτη φορά στο %{site_name};
     already_a_user: Έχετε ήδη λογαριασμό?
     email_address_of_existing_account: Εισαγάγετε τη διεύθυνση email του υπάρχοντος λογαριασμού σας
     link_accounts: Σύνδεση λογαριασμών
     check_your_email: Ελέγξτε το email σας!
-    login_link_sent: Έχουμε στείλει ένα μήνυμα ηλεκτρονικού ταχυδρομείου στη διεύθυνση {{email}}.
+    login_link_sent: Έχουμε στείλει ένα μήνυμα ηλεκτρονικού ταχυδρομείου στη διεύθυνση %{email}.
     instructions: 'Κάντε κλικ στον σύνδεσμο για να συνδεθείτε ή πληκτρολογήστε τον παρακάτω κωδικό:'
     instructions_code: 'Εισαγάγετε τον κωδικό από αυτό το email:'
     too_many_attempts: Πάρα πολλές προσπάθειες. δοκιμάστε να κάνετε κλικ στον σύνδεσμο στο email για να συνδεθείτε.
     invalid_code: Λυπούμαστε, αυτός ο κωδικός δεν ταιριάζει. Ελέγξτε το email και δοκιμάστε ξανά.
-    password_link_sent: Έχουμε στείλει ένα μήνυμα ηλεκτρονικού ταχυδρομείου στη διεύθυνση {{email}} με οδηγίες σχετικά με τον τρόπο ορισμού του κωδικού πρόσβασής σας.
+    password_link_sent: Έχουμε στείλει ένα μήνυμα ηλεκτρονικού ταχυδρομείου στη διεύθυνση %{email} με οδηγίες σχετικά με τον τρόπο ορισμού του κωδικού πρόσβασής σας.
     reactivate_link_sent: Σας έχουμε στείλει ένα μήνυμα ηλεκτρονικού ταχυδρομείου με οδηγίες για την επανενεργοποίηση του λογαριασμού σας
     signed_in: Η σύνδεση έγινε με επιτυχία
     email_verified: Το email επαληθεύτηκε με επιτυχία
@@ -1668,7 +1668,7 @@ el:
       discord: Διχόνοια
     subtitle: Συνδεθείτε στο Loomio με τα υπόλοιπα εργαλεία σας με το API μας
     deprecated: Αυτό το API έχει καταργηθεί. Μεταβείτε στο APIv2 (δείτε έγγραφα API στο μενού ρυθμίσεων της ομάδας σας)
-    we_have_guides: Δείτε τους <a href="{{url}}" target="_blank">οδηγούς ρύθμισης webhook</a> για βοήθεια σχετικά με τη σύνδεση της υπηρεσίας σας.
+    we_have_guides: Δείτε τους <a href="%{url}" target="_blank">οδηγούς ρύθμισης webhook</a> για βοήθεια σχετικά με τη σύνδεση της υπηρεσίας σας.
     add_webhook: Προσθήκη webhook
     show_docs: Δείτε τη χρήση API
     save_to_show_docs: Αφού αποθηκεύσετε, επιστρέψτε εδώ για να βρείτε το κλειδί API σας
@@ -1676,7 +1676,7 @@ el:
     add_integration: Προσθήκη ενοποίησης
     success: Η ενσωμάτωση προστέθηκε!
     remove: Κατάργηση ενοποίησης
-    confirm_remove: 'Είστε βέβαιοι ότι θέλετε να καταργήσετε την ενσωμάτωση: {{name}};'
+    confirm_remove: 'Είστε βέβαιοι ότι θέλετε να καταργήσετε την ενσωμάτωση: %{name};'
     removed: Η ενσωμάτωση καταργήθηκε
     url_label: URL webhook
     url_placeholder: https://hooks.example.com/...
@@ -1765,7 +1765,7 @@ el:
   merge_accounts:
     modal:
       title: Συγχώνευση λογαριασμών
-      helptext: Μπορείτε να συγχωνεύσετε τον λογαριασμό στο <strong>{{sourceEmail}}</strong> σε αυτόν του <strong>{{targetEmail}}</strong> . Κάντε κλικ στην Επαλήθευση και θα σταλεί ένα μήνυμα ηλεκτρονικού ταχυδρομείου επαλήθευσης στη διεύθυνση {{targetEmail}} για να ξεκινήσει η διαδικασία.
+      helptext: Μπορείτε να συγχωνεύσετε τον λογαριασμό στο <strong>%{sourceEmail}</strong> σε αυτόν του <strong>%{targetEmail}</strong> . Κάντε κλικ στην Επαλήθευση και θα σταλεί ένα μήνυμα ηλεκτρονικού ταχυδρομείου επαλήθευσης στη διεύθυνση %{targetEmail} για να ξεκινήσει η διαδικασία.
       submit: Επαληθεύω
       flash: Το email επαλήθευσης στάλθηκε!
     email_taken: Λυπούμαστε, αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου έχει ήδη συσχετιστεί με άλλον χρήστη. Αυτό το email σας ανήκει;
@@ -1838,7 +1838,7 @@ el:
     edit_profile: Επεξεργασία προφίλ
     email_settings: Ρυθμίσεις ειδοποιήσεων
     help: Βοήθεια
-    contact_site_name: Επικοινωνία με {{site_name}}
+    contact_site_name: Επικοινωνία με %{site_name}
     contact_support: Επικοινωνήστε με την υποστήριξη
     sign_out: Αποσύνδεση
     beta_collab: "\U0001F9EA Οι λειτουργίες beta ενεργοποιήθηκαν!"
@@ -1846,7 +1846,7 @@ el:
   membership_card:
     group_members: Μέλη ομάδας
     discussion_members: Μέλη νήματος
-    poll_members: "{{pollType}} μέλη"
+    poll_members: "%{pollType} μέλη"
     voters: Ψηφοφόροι
     invite_to_group: Πρόσκληση σε ομάδα
     invite_to_discussion: Πρόσκληση σε νήμα
@@ -1892,9 +1892,9 @@ el:
   reactions_display:
     more_reactions: "%{count} ακόμη"
     you: Εσείς
-    you_and_name: Εσείς και ο {{name}}
-    you_and_name_and_count_more: Εσείς, ο {{name}} και %{count} ακόμη
-    name_and_count_more: "{{name}} και %{count} ακόμη"
+    you_and_name: Εσείς και ο %{name}
+    you_and_name_and_count_more: Εσείς, ο %{name} και %{count} ακόμη
+    name_and_count_more: "%{name} και %{count} ακόμη"
   context_panel:
     thread_status:
       pinned: Αυτό το νήμα έχει καρφιτσωθεί. Θα παραμείνει στην κορυφή της λίστας νημάτων της ομάδας για όλους τους χρήστες.
@@ -1919,12 +1919,12 @@ el:
   membership_remove_modal:
     invitation:
       title: Ακύρωση πρόσκλησης
-      message: Είστε βέβαιοι ότι θέλετε να ακυρώσετε την πρόσκληση για τον χρήστη {{name}};
+      message: Είστε βέβαιοι ότι θέλετε να ακυρώσετε την πρόσκληση για τον χρήστη %{name};
       flash: Η πρόσκληση ακυρώθηκε
       submit: Ακύρωση πρόσκλησης
     membership:
       title: Κατάργηση μέλους
-      message: Είστε βέβαιοι ότι θέλετε να καταργήσετε το {{name}};
+      message: Είστε βέβαιοι ότι θέλετε να καταργήσετε το %{name};
       impact_for_subgroup: Αυτό θα καταργήσει την πρόσβασή τους στην υποομάδα (συμπεριλαμβανομένων των νημάτων και των δημοσκοπήσεων), αλλά θα παραμείνει μέλος της γονικής ομάδας.
       impact_for_group: Αυτό θα καταργήσει την πρόσβασή τους στην ομάδα (συμπεριλαμβανομένων των νημάτων και των δημοσκοπήσεων) και τυχόν υποομάδες.
       flash: Το μέλος αφαιρέθηκε
@@ -1936,7 +1936,7 @@ el:
     modal_title:
       group: Ορισμός τίτλου
     title_helptext:
-      group: Αυτός ο τίτλος θα εμφανίζεται δίπλα στο όνομα του χρήστη {{name}} σε αυτήν την ομάδα. Χρησιμοποιήστε το για να ενημερώσετε τους ανθρώπους για το ρόλο τους.
+      group: Αυτός ο τίτλος θα εμφανίζεται δίπλα στο όνομα του χρήστη %{name} σε αυτήν την ομάδα. Χρησιμοποιήστε το για να ενημερώσετε τους ανθρώπους για το ρόλο τους.
     title_label: τίτλος
     title_placeholder: Π.χ. «Συντονιστής» ή «Διευκολυντής»
     updated: Ο τίτλος μέλους ενημερώθηκε
@@ -1944,19 +1944,19 @@ el:
     user_name_updated: Το όνομα χρήστη ενημερώθηκε
     set_user_name: Ορισμός ονόματος χρήστη
   user_page:
-    contact_user: Ονομα επαφής}}
-    location_field: 'Τοποθεσία: {{value}}'
-    locale_field: 'Γλώσσα: {{value}}'
-    online_field: 'Διαδικτυακό: {{value}}'
-    invited: Προσκλήθηκε {{value}}
-    message_user: Μήνυμα {{name}}
+    contact_user: Ονομα επαφής}
+    location_field: 'Τοποθεσία: %{value}'
+    locale_field: 'Γλώσσα: %{value}'
+    online_field: 'Διαδικτυακό: %{value}'
+    invited: Προσκλήθηκε %{value}
+    message_user: Μήνυμα %{name}
   contact_request_form:
-    modal_title: email {{name}}
+    modal_title: email %{name}
     message_placeholder: Συστηθείτε και μοιραστείτε γιατί θέλετε να επικοινωνήσετε.
-    helptext: Το όνομα, η διεύθυνση ηλεκτρονικού ταχυδρομείου και το μήνυμά σας στο {{name}} θα σταλεί μέσω email
-    email_sent: Το email στάλθηκε στο {{name}}
+    helptext: Το όνομα, η διεύθυνση ηλεκτρονικού ταχυδρομείου και το μήνυμά σας στο %{name} θα σταλεί μέσω email
+    email_sent: Το email στάλθηκε στο %{name}
   text_editor:
-    x_of_y_characters: "{{x}} / {{y}} χαρακτήρες"
+    x_of_y_characters: "%{x} / %{y} χαρακτήρες"
     select_text_to_link: Επιλέξτε κείμενο για σύνδεση και δοκιμάστε ξανά
     insert_link: Εισαγωγή συνδέσμου
     insert_embedded_url: Ενσωμάτωση βίντεο
@@ -2015,14 +2015,14 @@ el:
     title: Μετακίνηση νήματος
     body: Ομάδα προορισμών
     confirm: Μετακίνηση νήματος
-    confirm_change_to_private_thread: Το {{groupName}} είναι μια ανοιχτή ομάδα. Εάν συνεχίσετε, αυτό το νήμα θα δημοσιοποιηθεί.
+    confirm_change_to_private_thread: Το %{groupName} είναι μια ανοιχτή ομάδα. Εάν συνεχίσετε, αυτό το νήμα θα δημοσιοποιηθεί.
     messages:
-      success: Το νήμα έχει μετακινηθεί στο {{name}}
+      success: Το νήμα έχει μετακινηθεί στο %{name}
   explore_page:
     header: Εξερευνήστε ομάδες
     search_placeholder: Αναζήτηση για δημόσιες ομάδες
-    single_search_result: 1 δημόσια ομάδα που αντιστοιχεί στο <strong>{{searchTerm}}:</strong>
-    multiple_search_results: "{{resultCount}} δημόσιες ομάδες που αντιστοιχούν στο <strong>{{searchTerm}}:</strong>"
+    single_search_result: 1 δημόσια ομάδα που αντιστοιχεί στο <strong>%{searchTerm}:</strong>
+    multiple_search_results: "%{resultCount} δημόσιες ομάδες που αντιστοιχούν στο <strong>%{searchTerm}:</strong>"
     no_results_found: <strong>Δεν μπορείτε να βρείτε την ομάδα που ψάχνετε;</strong> Εάν το απόρρητο μιας ομάδας έχει οριστεί ως "μυστικό", δεν θα εμφανίζεται εδώ.
     newest_first: Πρώτα τα νεότερα
     biggest_first: Η μεγαλύτερη πρώτη
@@ -2056,7 +2056,7 @@ el:
     hide_results: Απόκρυψη αποτελεσμάτων
     until_vote: Μέχρι να γίνει η ψηφοφορία
     until_you_vote: Μέχρι να ψηφίσετε
-    until_poll_type_closed: Μέχρι να κλείσει το {{pollType}}
+    until_poll_type_closed: Μέχρι να κλείσει το %{pollType}
     until_voting_is_closed: Μέχρι να κλείσει η ψηφοφορία
     deleted: Αυτή η δημοσκόπηση έχει διαγραφεί
   group_files_panel:
@@ -2066,8 +2066,8 @@ el:
     uploaded_at: Ανέβηκε στο
     delete_confirmation: Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το συνημμένο; Θα αφαιρεθεί από οποιοδήποτε σχετικό σχόλιο ή νήμα. Αυτό δεν μπορεί να αναιρεθεί.
   subgroups_panel:
-    search_subgroups_of_name: Αναζήτηση υποομάδων του {{name}}
-    group_without_subgroups: "{{name}} χωρίς υποομάδες"
+    search_subgroups_of_name: Αναζήτηση υποομάδων του %{name}
+    group_without_subgroups: "%{name} χωρίς υποομάδες"
   poll_common_action_panel:
     from_the_thread: Από το πρότυπο νήματος
     from_the_group: Από την ομάδα
@@ -2085,7 +2085,7 @@ el:
     draft_mode: Η ψηφοφορία απενεργοποιήθηκε. Αυτό δεν είναι ακόμη ανοιχτό για ψηφοφορία.
     voting_disabled_poll_is_template: Η ψηφοφορία απενεργοποιήθηκε. Αυτό είναι ένα πρότυπο.
   poll_common_collapsed:
-    by_who: από όνομα}}
+    by_who: από όνομα}
   poll_common_calendar_invite:
     calendar_invite: Συμπεριλάβετε μια πρόσκληση ημερολογίου με αυτό το αποτέλεσμα
     poll_option_id: Ωρα συνάντησης
@@ -2104,7 +2104,7 @@ el:
     specified_voters_only_true: Μόνο προσκεκλημένοι
     specified_voters_only_false_group: Οποιοσδήποτε στην ομάδα
     specified_voters_only_false_discussion: Οποιοσδήποτε στο νήμα
-    invite_people_next: Μπορείτε να επιλέξετε ποιος θα προσκληθεί να ψηφίσει αφού ξεκινήσετε το {{poll_type}}
+    invite_people_next: Μπορείτε να επιλέξετε ποιος θα προσκληθεί να ψηφίσει αφού ξεκινήσετε το %{poll_type}
     shuffle_options:
       shuffle_options: Τυχαία επιλογή
       title: Εμφάνιση επιλογών με τυχαία σειρά
@@ -2117,8 +2117,8 @@ el:
       helptext_on: Όταν επιλεγεί, οποιοσδήποτε έχει τον σύνδεσμο προς τη δημοσκόπηση μπορεί να συμμετάσχει.
     notify_on_closing_soon:
       voting_closes_too_soon: Επειδή η ψηφοφορία κλείνει εντός 24 ωρών, δεν θα σταλούν υπενθυμίσεις για σύντομο κλείσιμο.
-      closes_too_soon: Επειδή αυτό το {{pollType}} κλείνει εντός 24 ωρών, δεν θα σταλούν υπενθυμίσεις για το κλείσιμο σύντομα.
-      title: 24 ώρες πριν από το κλείσιμο του {{pollType}}, στείλτε μια υπενθύμιση στο
+      closes_too_soon: Επειδή αυτό το %{pollType} κλείνει εντός 24 ωρών, δεν θα σταλούν υπενθυμίσεις για το κλείσιμο σύντομα.
+      title: 24 ώρες πριν από το κλείσιμο του %{pollType}, στείλτε μια υπενθύμιση στο
       voting_title: 24 ώρες πριν από τη λήξη της ψηφοφορίας, στείλτε μια υπενθύμιση στο
       nobody: Κανείς
       author: Συγγραφέας (εγώ)
@@ -2145,12 +2145,12 @@ el:
     close_poll_type: Κλείσιμο %{poll_type}
     poll_type_closed: "%{poll_type} έκλεισε"
   poll_common_reopen_form:
-    title: Άνοιγμα ξανά {{poll_type}}
-    helptext: Ανοίξτε ξανά το {{poll_type}} εάν οι χρήστες χρειάζονται περισσότερο χρόνο για να συμμετάσχουν
-    success: Το {{poll_type}} άνοιξε ξανά
+    title: Άνοιγμα ξανά %{poll_type}
+    helptext: Ανοίξτε ξανά το %{poll_type} εάν οι χρήστες χρειάζονται περισσότερο χρόνο για να συμμετάσχουν
+    success: Το %{poll_type} άνοιξε ξανά
   poll_common_move_form:
-    title: Μετακίνηση {{poll_type}}
-    success: Το {{poll_type}} μετακινήθηκε στο {{group}}
+    title: Μετακίνηση %{poll_type}
+    success: Το %{poll_type} μετακινήθηκε στο %{group}
   poll_common_wip_field:
     voting_enabled: Η ψηφοφορία ενεργοποιήθηκε
     enable_voting: Ενεργοποίηση ψηφοφορίας
@@ -2169,7 +2169,7 @@ el:
     invalid_date: Ακυρη ημερομηνία
   poll_card:
     poll_type_by_name: "%{poll_type} από %{name}"
-    started_by: Ξεκίνησε από {{name}}
+    started_by: Ξεκίνησε από %{name}
   poll_common_votes_panel:
     vote_removed: Η ψήφος καταργήθηκε
     undecided: Αναποφάσιστος
@@ -2210,10 +2210,10 @@ el:
     you_will_be_notified: Θα ενημερωθείτε κατά την ημερομηνία ελέγχου.
     submit: Μοιραστείτε το αποτέλεσμα
   poll_common_outcome_panel:
-    authored_by: Από όνομα}}
+    authored_by: Από όνομα}
   poll_common_delete_modal:
     question: Είστε βέβαιοι ότι θέλετε να το διαγράψετε;
-    title: Διαγραφή {{pollType}}
+    title: Διαγραφή %{pollType}
     success: Διαγράφηκε με επιτυχία
   poll_proposal_form:
     start_header: Πρόταση έναρξης
@@ -2254,7 +2254,7 @@ el:
     dots_per_person_helptext: Ο συνολικός αριθμός πόντων που καλείται να κατανείμει κάθε άτομο.
   poll_meeting_form:
     timeslots: χρονοθυρίδες
-    no_options: Εισαγάγετε ώρες στην τρέχουσα ζώνη ώρας ({{zone}}). Οι συμμετέχοντες βλέπουν τις ώρες μεταφρασμένες στην τοπική τους ζώνη ώρας.
+    no_options: Εισαγάγετε ώρες στην τρέχουσα ζώνη ώρας (%{zone}). Οι συμμετέχοντες βλέπουν τις ώρες μεταφρασμένες στην τοπική τους ζώνη ώρας.
     meeting_duration: Διάρκεια συνάντησης
     add_option_placeholder: Προσθήκη νέας ώρας
     time_slot_added: Προστέθηκε χρονοθυρίδα
@@ -2294,8 +2294,8 @@ el:
     agree_target_helptext: Ποιος είναι ο αριθμός-στόχος των εθελοντών που θα θέλατε να έχετε;
     agree_target_label: Αριθμός στόχος
   poll_common_percent_voted:
-    sentence: "{{numerator}} από {{denominator}} άτομα έχουν συμμετάσχει ({{percent}}%)"
-    target_progress: "{{percent}}% του στόχου επιτεύχθηκε. ({{num}} / {{στόχος}})"
+    sentence: "%{numerator} από %{denominator} άτομα έχουν συμμετάσχει (%{percent}%)"
+    target_progress: "%{percent}% του στόχου επιτεύχθηκε. (%{num} / %{στόχος})"
   poll_meeting_chart_panel:
     total: Σύνολο
   poll_remove_vote:
@@ -2310,7 +2310,7 @@ el:
     stance_created: Η ψηφοφορία δημιουργήθηκε
     stance_updated: Η ψηφοφορία ενημερώθηκε
   poll_meeting_vote_form:
-    local_time_zone: Τοπική ώρα - {{zone}}
+    local_time_zone: Τοπική ώρα - %{zone}
     can_attend: Μπορεί να παρευρεθεί
     unable: Ανίκανος
     if_need_be: Αν χρειαστεί
@@ -2468,28 +2468,28 @@ el:
     removed: Το στοιχείο καταργήθηκε
     deleted_group: Διαγράφηκε ομάδα
     invite_only_thread: Πρόσκληση μόνο νήματος
-    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> σε απάντηση στο <strong>{{title}}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> επεξεργάστηκε τον τίτλο του νήματος"
-    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> επεξεργάστηκε το πλαίσιο του νήματος"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> άλλαξε το απόρρητο του νήματος"
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> επεξεργάστηκε το νήμα"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>Ο {{author}}</a> μετακίνησε το νήμα από <strong>το {{title}}</strong>"
-    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> έκλεισε το νήμα"
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> άνοιξε ξανά το νήμα"
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> δημιούργησε ένα fork αυτού του νήματος: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{συγγραφέας}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> μοιράστηκε ένα αποτέλεσμα"
-    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> άνοιξε ξανά το {{polltype}}"
-    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> έκλεισε το {{polltype}}"
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> ξεκίνησε ένα {{polltype}}"
-    poll_edited: "<a class='actor-link' href='/u/{{username}}'>Ο {{author}}</a> επεξεργάστηκε το {{polltype}}"
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> πρόσθεσε επιλογές στο {{polltype}}"
-    poll_expired: "{{polltype}} έκλεισε"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> ψήφισε: <strong>{{title}}</strong>"
-    stance_updated: "<a class='actor-link' href='/u/{{username}}'>Ο χρήστης {{author}}</a> ενημέρωσε την ψήφο του για: <strong>{{title}}</strong>"
+    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a> σε απάντηση στο <strong>%{title}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> επεξεργάστηκε τον τίτλο του νήματος"
+    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> επεξεργάστηκε το πλαίσιο του νήματος"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> άλλαξε το απόρρητο του νήματος"
+    discussion_edited: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> επεξεργάστηκε το νήμα"
+    discussion_moved: "<a class='actor-link' href='/u/%{username}'>Ο %{author}</a> μετακίνησε το νήμα από <strong>το %{title}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> έκλεισε το νήμα"
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> άνοιξε ξανά το νήμα"
+    discussion_forked: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> δημιούργησε ένα fork αυτού του νήματος: <strong><a href='d/%{key}'>%{title}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{συγγραφέας}</a>"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> μοιράστηκε ένα αποτέλεσμα"
+    poll_reopened: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> άνοιξε ξανά το %{polltype}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> έκλεισε το %{polltype}"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> ξεκίνησε ένα %{polltype}"
+    poll_edited: "<a class='actor-link' href='/u/%{username}'>Ο %{author}</a> επεξεργάστηκε το %{polltype}"
+    poll_option_added: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> πρόσθεσε επιλογές στο %{polltype}"
+    poll_expired: "%{polltype} έκλεισε"
+    stance_created: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> ψήφισε: <strong>%{title}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> ενημέρωσε την ψήφο του για: <strong>%{title}</strong>"
     event_removed: Καταργήθηκε από το νήμα
   add_poll_to_thread_modal:
-    success: Επιτυχία, το {{pollType}} προστέθηκε στο νήμα!
+    success: Επιτυχία, το %{pollType} προστέθηκε στο νήμα!
   powered_by:
     this_is_loomio_md: Το Loomio είναι μια εφαρμογή για τη λήψη αποφάσεων από κοινού. [Δοκιμάστε δωρεάν](https://www.loomio.com)
     slogan: Καλύτερες αποφάσεις μαζί
