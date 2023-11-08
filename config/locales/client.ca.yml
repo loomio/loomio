@@ -1696,7 +1696,7 @@ ca:
     until_poll_type_closed: Fins que es tanqui {{pollType}}
     until_voting_is_closed: Fins que es tanqui la votació
   discussions_panel:
-    open: Obre
+    open: Obret
     all: Tot
     closed: Tancat
     include_subgroups_mine: "{{name}} i els meus subgrups"
