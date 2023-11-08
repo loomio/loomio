@@ -506,7 +506,7 @@ GEM
     ruby-ll (2.1.3)
       ansi
       ast
-    ruby-openai (5.2.0)
+    ruby-openai (6.0.1)
       event_stream_parser (>= 0.3.0, < 1.0.0)
       faraday (>= 1)
       faraday-multipart (>= 1)
