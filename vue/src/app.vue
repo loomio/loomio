@@ -9,6 +9,9 @@ import { each, compact, truncate } from 'lodash';
 import openModal from '@/shared/helpers/open_modal';
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
 import CustomCss from '@/components/custom_css';
+import MaterialIcons from '@/css/materialdesignicons.css';
+import Roboto from '@/css/roboto.css';
+import Thumbicons from '@/css/thumbicons.css';
 
 export default {
   components: {CustomCss},

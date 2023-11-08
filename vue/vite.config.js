@@ -33,15 +33,62 @@ export default defineConfig({
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
-        changeOrigin: true,
-        configure: (proxy, options) => {
-          // proxy will be an instance of 'http-proxy'
-        },
       },
-      '^/(saml|dev|brand|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|bug_tunnel|contact_messages|roboto.css|materialdesignicons.css|thumbicons.css)': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-      }
+      // '^/(saml|dev|brand|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|bug_tunnel|contact_messages|css)/': {
+      //   target: 'http://localhost:3000',
+      //   changeOrigin: true,
+      // },
+      '/css': {
+        target: 'http://localhost:3000'
+      },
+      '/fonts': {
+        target: 'http://localhost:3000'
+      },
+      '/dev': {
+        target: 'http://localhost:3000'
+      },
+      '/saml': {
+        target: 'http://localhost:3000'
+      },
+      '/brand': {
+        target: 'http://localhost:3000'
+      },
+      '/theme': {
+        target: 'http://localhost:3000'
+      },
+      '/img': {
+        target: 'http://localhost:3000'
+      },
+      '/system': {
+        target: 'http://localhost:3000'
+      },
+      '/direct_uploads': {
+        target: 'http://localhost:3000'
+      },
+      '/rails': {
+        target: 'http://localhost:3000'
+      },
+      '/admin': {
+        target: 'http://localhost:3000'
+      },
+      '/assets': {
+        target: 'http://localhost:3000'
+      },
+      '/upgrade': {
+        target: 'http://localhost:3000'
+      },
+      '/pricing': {
+        target: 'http://localhost:3000'
+      },
+      '/email_actions': {
+        target: 'http://localhost:3000'
+      },
+      '/help': {
+        target: 'http://localhost:3000'
+      },
+      '/bug_tunnel': {
+        target: 'http://localhost:3000'
+      },
     },
   },
   resolve: {
@@ -54,10 +101,6 @@ export default defineConfig({
         find: '@',
         replacement: path.resolve(__dirname, 'src')
       },
-      {
-        find: './locales',
-        replacement: path.resolve(__dirname, '../../config/locales')
-      }
     ],
     extensions: [
       '.mjs',
@@ -93,7 +136,7 @@ export default defineConfig({
     emptyOutDir: true,
     outDir: '../public/blient',
     rollupOptions: {
-      external: ['/roboto.css', '/materialdesignicons.css', '/thumbicons.css']
+      external: ['/css/roboto.css', '/css/materialdesignicons.css', '/css/thumbicons.css']
     }
   }
 })
