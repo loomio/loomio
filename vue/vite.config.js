@@ -65,6 +65,9 @@ export default defineConfig({
       '/direct_uploads': {
         target: 'http://localhost:3000'
       },
+      '/login_tokens': {
+        target: 'http://localhost:3000'
+      },
       '/rails': {
         target: 'http://localhost:3000'
       },
@@ -134,9 +137,6 @@ export default defineConfig({
   ],
   build: {
     emptyOutDir: true,
-    outDir: '../public/blient',
-    rollupOptions: {
-      external: ['/css/roboto.css', '/css/materialdesignicons.css', '/css/thumbicons.css']
-    }
+    outDir: '../public/blient'
   }
 })

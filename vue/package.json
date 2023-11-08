@@ -83,9 +83,9 @@
     "vuetify": "2.6.15"
   },
   "devDependencies": {
-    "pug": "latest",
     "@modyfi/vite-plugin-yaml": "^1.0.4",
     "@originjs/vite-plugin-commonjs": "^1.0.1",
+    "pug": "latest",
     "unplugin-vue-components": "^0.25.2",
     "vite": "^2.7.2",
     "vite-plugin-env-compatible": "^1.1.1",
