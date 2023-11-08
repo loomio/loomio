@@ -570,7 +570,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.5.0)
-    uri (0.12.2)
+    uri (0.13.0)
     uuidtools (2.2.0)
     video_info (4.1.0)
       iso8601 (~> 0.13.0)
@@ -668,7 +668,7 @@ DEPENDENCIES
   terminal-table
   twitter-text!
   tzinfo-data
-  uri (= 0.12.2)
+  uri (= 0.13.0)
   uuidtools
   video_info
   webmock
