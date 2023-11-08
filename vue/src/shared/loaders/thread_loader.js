@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records';
-import { some, last, cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash';
+import { some, last, cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash-es';
 import Vue from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';

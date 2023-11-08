@@ -5,7 +5,7 @@ import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import DiscussionReaderService from '@/shared/services/discussion_reader_service';
-import {map, debounce, without, filter, uniq, uniqBy, some, pick} from 'lodash';
+import {map, debounce, without, filter, uniq, uniqBy, some, pick} from 'lodash-es';
 
 export default {
   components: {

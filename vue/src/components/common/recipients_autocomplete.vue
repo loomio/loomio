@@ -4,7 +4,7 @@ import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import AnnouncementService from '@/shared/services/announcement_service';
-import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash';
+import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash-es';
 import AbilityService from '@/shared/services/ability_service';
 import NotificationsCount from './notifications_count';
 

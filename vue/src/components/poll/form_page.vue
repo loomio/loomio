@@ -5,7 +5,7 @@ import Session from '@/shared/services/session';
 import Flash  from '@/shared/services/flash';
 import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
-import { compact } from 'lodash'; 
+import { compact } from 'lodash-es'; 
 
 export default {
   components: {PollCommonForm, PollCommonChooseTemplate},

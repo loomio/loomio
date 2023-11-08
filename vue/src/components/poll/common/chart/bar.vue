@@ -1,6 +1,6 @@
 <script lang="js">
 import Records from '@/shared/services/records';
-import { max, values, orderBy, compact } from 'lodash';
+import { max, values, orderBy, compact } from 'lodash-es';
 
 export default
   ({

@@ -6,7 +6,7 @@ import EventBus          from '@/shared/services/event_bus';
 import AbilityService    from '@/shared/services/ability_service';
 import GroupService    from '@/shared/services/group_service';
 import LmoUrlService     from '@/shared/services/lmo_url_service';
-import {compact, head, includes, filter, pickBy} from 'lodash';
+import {compact, head, includes, filter, pickBy} from 'lodash-es';
 import OldPlanBanner from '@/components/group/old_plan_banner';
 
 export default

@@ -1,4 +1,4 @@
-import {each} from 'lodash';
+import {each} from 'lodash-es';
 import Vue from 'vue';
 import I18n from '@/i18n';
 

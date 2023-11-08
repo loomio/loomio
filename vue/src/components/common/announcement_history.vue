@@ -7,7 +7,7 @@ import AbilityService from '@/shared/services/ability_service';
 import Session from '@/shared/services/session';
 import AppConfig      from '@/shared/services/app_config';
 import Flash   from '@/shared/services/flash';
-import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash';
+import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash-es';
 import { encodeParams } from '@/shared/helpers/encode_params';
 
 export default {

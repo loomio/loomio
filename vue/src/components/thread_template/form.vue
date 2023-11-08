@@ -4,7 +4,7 @@ import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import Flash  from '@/shared/services/flash';
 import I18n from '@/i18n';
-import { compact } from 'lodash';
+import { compact } from 'lodash-es';
 import { ContainerMixin, HandleDirective } from 'vue-slicksort';
 
 export default {

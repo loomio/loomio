@@ -7,7 +7,7 @@ import app from '@/app.vue';
 import markedDirective from '@/marked_directive';
 import '@/observe_visibility';
 import './removeServiceWorker';
-import { pick } from 'lodash';
+import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/browser';
 import WatchRecords from '@/mixins/watch_records';
 import CloseModal from '@/mixins/close_modal';

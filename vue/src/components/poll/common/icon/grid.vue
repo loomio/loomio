@@ -1,5 +1,5 @@
 <script lang="js">
-import {sum, map, sortBy, find, compact, uniq, slice, parseInt} from 'lodash';
+import {sum, map, sortBy, find, compact, uniq, slice, parseInt} from 'lodash-es';
 
 export default {
   props: {

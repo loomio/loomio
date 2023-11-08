@@ -4,7 +4,7 @@ import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
 import i18n from '@/i18n';
-import {head, pickBy, camelCase, mapKeys, map, pick, identity, keys} from 'lodash';
+import {head, pickBy, camelCase, mapKeys, map, pick, identity, keys} from 'lodash-es';
 
 export default new class AuthService {
   emailStatus(user) {

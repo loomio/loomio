@@ -8,7 +8,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import UserService    from '@/shared/services/user_service';
 import Flash   from '@/shared/services/flash';
-import { includes, uniq, debounce } from 'lodash';
+import { includes, uniq, debounce } from 'lodash-es';
 import {exact} from '@/shared/helpers/format_time';
 
 export default {

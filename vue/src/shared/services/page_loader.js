@@ -2,7 +2,7 @@ import Records from '@/shared/services/records';
 import utils         from '@/shared/record_store/utils';
 import RestfulClient from '@/shared/record_store/restful_client';
 import Vue from 'vue';
-import {merge, camelCase, defaults, max, orderBy, uniq, map } from 'lodash';
+import {merge, camelCase, defaults, max, orderBy, uniq, map } from 'lodash-es';
 
 export default class PageLoader {
   constructor(opts) {

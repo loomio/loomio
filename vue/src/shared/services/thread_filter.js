@@ -1,7 +1,7 @@
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import { subWeeks } from 'date-fns';
-import { each, compact } from 'lodash';
+import { each, compact } from 'lodash-es';
 
 export default function(options) {
   let chain = Records.discussions.collection.chain();

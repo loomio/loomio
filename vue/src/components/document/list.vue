@@ -2,7 +2,7 @@
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import {flatten, capitalize, includes} from 'lodash';
+import {flatten, capitalize, includes} from 'lodash-es';
 
 export default {
   props: {

@@ -4,7 +4,7 @@ import Session      from '@/shared/services/session';
 import Records      from '@/shared/services/records';
 import EventBus     from '@/shared/services/event_bus';
 import PollTemplateService     from '@/shared/services/poll_template_service';
-import {map, without, compact, pickBy} from 'lodash';
+import {map, without, compact, pickBy} from 'lodash-es';
 import { ContainerMixin, HandleDirective } from 'vue-slicksort';
 import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
 

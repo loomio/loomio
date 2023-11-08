@@ -51,7 +51,7 @@ import {getEmbedLink} from '@/shared/helpers/embed_link';
 import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning';
 import SuggestionList from './suggestion_list';
 import Attaching from './attaching';
-import {compact, uniq, throttle, difference, reject, uniqBy} from 'lodash';
+import {compact, uniq, throttle, difference, reject, uniqBy} from 'lodash-es';
 import TextHighlightBtn from './text_highlight_btn';
 import TextAlignBtn from './text_align_btn';
 import { TextAlign } from './extension_text_align';

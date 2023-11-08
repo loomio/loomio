@@ -1,7 +1,7 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
-import { sortBy, find, matchesProperty, take, map, isEqual, each } from 'lodash';
+import { sortBy, find, matchesProperty, take, map, isEqual, each } from 'lodash-es';
 
 export default {
   props: {

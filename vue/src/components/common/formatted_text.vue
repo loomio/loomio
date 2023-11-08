@@ -1,6 +1,6 @@
 <script lang="js">
 import { emojiReplaceText } from '@/shared/helpers/emojis';
-import { merge } from 'lodash';
+import { merge } from 'lodash-es';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';

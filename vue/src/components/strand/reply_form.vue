@@ -3,7 +3,7 @@ import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
-import { startCase } from 'lodash';
+import { startCase } from 'lodash-es';
 
 export default {
   props: {

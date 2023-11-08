@@ -6,7 +6,7 @@ import AuthService    from '@/shared/services/auth_service';
 import AbilityService from '@/shared/services/ability_service';
 import EventBus       from '@/shared/services/event_bus';
 
-import { each } from 'lodash';
+import { each } from 'lodash-es';
 
 import io from 'socket.io-client';
 

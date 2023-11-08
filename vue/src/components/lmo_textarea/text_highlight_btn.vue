@@ -1,6 +1,6 @@
 <script lang="js">
 import colors from 'vuetify/lib/util/colors';
-import {map, compact, pick, keys} from 'lodash';
+import {map, compact, pick, keys} from 'lodash-es';
 
 export default
 {

@@ -1,5 +1,5 @@
 <script lang="js">
-import {slice, orderBy} from 'lodash';
+import {slice, orderBy} from 'lodash-es';
 export default {
   props: {
     threads: Array,

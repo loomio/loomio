@@ -1,7 +1,7 @@
 <script lang="js">
 import { approximate, exact } from '@/shared/helpers/format_time';
 import { parseISO } from 'date-fns';
-import {isString} from 'lodash';
+import {isString} from 'lodash-es';
 
 export default {
   props: {

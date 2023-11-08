@@ -1,7 +1,7 @@
 <script lang="js">
 import svg from 'svg.js';
 import AppConfig from '@/shared/services/app_config';
-import { sum, values, compact, keys, each } from 'lodash';
+import { sum, values, compact, keys, each } from 'lodash-es';
 
 export default
 {
