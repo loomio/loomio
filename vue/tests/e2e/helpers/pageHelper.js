@@ -91,18 +91,13 @@ module.exports = function(test, browser) {
       return test.moveToElement(selector, 10, 10, callback);
     },
 
-    clearField(selector) {
-      return test.getValue(selector, function(result) {
-        if (!(result || {}).value) { return; }
-        const {
-          length
-        } = result.value;
-        let count = 0;
-        while (count < length) {
-          test.keys([test.Keys.BACK_SPACE]);
-          count += 1;
-        }
-        return test.pause(2000);
+    clearField (selector) {
+      const { BACK_SPACE } = test.Keys;
+
+      return test.getValue(selector, (result) => {
+        let chars = result.value.split('');
+        chars = chars.map(() => BACK_SPACE);
+        test.setValue(selector, chars);
       });
     },
 
