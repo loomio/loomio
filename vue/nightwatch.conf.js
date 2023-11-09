@@ -6,6 +6,7 @@ if (process.env.RAILS_ENV == 'test' ||
 module.exports = {
   // An array of folders (excluding subfolders) where your tests are located;
   // if this is not specified, the test source must be passed as the second argument to the test runner.
+  skip_testcases_on_fail: false,
   src_folders: ['tests/e2e/specs'],
   output_folder: 'tests/reports',
 
