@@ -3,7 +3,13 @@ pageHelper = require('../helpers/pageHelper')
 // GK: a couple of these are dependent on the poll page which we haven't done yet
 
 module.exports = {
-  // group invitation form
+  'a_warmup': (test) => {
+    // give the server time to warm up for the tests
+    page = pageHelper(test)
+    page.loadPath('setup_group')
+    page.pause(10000)
+  },
+
   'invite_to_group': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_group')
