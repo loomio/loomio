@@ -50,6 +50,7 @@ module.exports = function(test, browser) {
 
     click(selector, pause) {
       this.waitFor(selector);
+      test.moveToElement(selector, 10, 10)
       test.click(selector);
       if (pause) { return test.pause(pause); }
     },
