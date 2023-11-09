@@ -8,9 +8,6 @@ module.exports = {
   plugins: [],
   globals_path: '',
   webdriver: {},
-  test_workers: {
-    enabled: false
-  },
 
   test_settings: {
     default: {
@@ -31,7 +28,6 @@ module.exports = {
         start_process: true,
         server_path: ''
       },
-      
     },
     
     chrome: {
@@ -41,11 +37,7 @@ module.exports = {
           // More info on Chromedriver: https://sites.google.com/a/chromium.org/chromedriver/
           // w3c:false tells Chromedriver to run using the legacy JSONWire protocol (not required in Chrome 78)
           w3c: false,
-          args: process.env.RAILS_ENV == 'test' ? 
-          [
-            '--headless',
-            '--window-size=1280,2400'
-          ] : []
+          args: ['headless', 'window-size=1280,2400']
         }
       },
 

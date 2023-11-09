@@ -10,7 +10,7 @@
   "scripts": {
     "serve": "vite",
     "build": "vite build",
-    "test": "nightwatch --retries 3"
+    "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {
     "@sentry/browser": "^7.77.0",
