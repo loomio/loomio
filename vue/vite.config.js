@@ -77,6 +77,9 @@ export default defineConfig({
       '/assets': {
         target: 'http://localhost:3000'
       },
+      '/invitations': {
+        target: 'http://localhost:3000'
+      },
       '/upgrade': {
         target: 'http://localhost:3000'
       },
