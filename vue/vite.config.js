@@ -74,6 +74,7 @@ export default defineConfig({
     ViteYaml(),
   ],
   build: {
+    sourcemap: true,
     outDir: '../public',
     assetsDir: 'blient',
   },
