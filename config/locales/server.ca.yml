@@ -192,7 +192,7 @@ ca:
       undecided_members: Membres indecisos (%{count})
       undecided_visitors: Convidats indecisos (%{count})
       more_undecided: "%{count} més..."
-      you_have_until: Tens fins a %{quan} per participar.
+      you_have_until: Tens fins a %{when} per participar.
       people_have_voted: "%{nom} de %{dnom} persones han participat (%{pct}%)"
   discussion_templates:
     blank:

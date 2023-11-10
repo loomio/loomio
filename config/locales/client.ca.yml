@@ -260,7 +260,6 @@ ca:
       title: Aprèn a escriure el text en format Markdown
     admin_menu: Menú d'administració
     api_docs: Documents de l'API
-    prefix_eg: p. ex. %{val}
     are_you_sure: Estàs segur?
     loomio_help: Ajuda Loomio
     visit_loomio_help: Visiteu l'ajuda de Loomio
@@ -275,6 +274,7 @@ ca:
     minutes: Minuts
     today: avui
     in_x_days: en %{x} dies
+    prefix_eg: p. ex. %{val}
   merge_accounts:
     modal:
       title: Combina comptes
@@ -699,7 +699,7 @@ ca:
       decided_voters: Tothom que ja hagi votat
       undecided_voters: Votants indecisos
       non_voters: 'Encara no s''ha convidat als membres de %{name} '
-      group: "%{nom}"
+      group: "%{name}"
       everyone_in_the_group: Tothom del grup
     form:
       too_many_invitations: 'S''ha excedit el nombre d''invitacions <a href="%{upgradeUrl}" target="_blank">Millora </a>
@@ -2068,7 +2068,7 @@ ca:
     reason_placeholder: Deixeu un missatge si ho considereu oportú
   poll_common_percent_voted:
     sentence: "%{numerator} usuaris de %{denominator} ja han votat (%{percent}%)"
-    target_progress: "%{percent}% de l'objectiu assolit. (%{num} / %{objectiu})"
+    target_progress: "%{percent}% de l'objectiu assolit. (%{num}/%{target})"
   poll_meeting_chart_panel:
     total: Total
   poll_poll_vote_form:
@@ -2181,12 +2181,12 @@ ca:
     code: '000000'
     sign_up_or_log_in: Creeu un compte o inicieu la sessió a %{site_name}
     sign_up_as: Crea un compte com a %{email}
-    continue_with_provider: Continueu amb %{proveïdor}
     invitation_required: Necessites una invitació per crear un compte. Seguiu l'enllaç del correu electrònic d'invitació per continuar.
     i_accept_all: Accepto els %{termsLink} i %{privacyLink}
     newsletter_label: Vull rebre el %{link}
     instructions_code: 'Introduïu el codi d''aquest correu electrònic:'
     too_many_attempts: Massa intents; prova de fer clic a l'enllaç del correu electrònic per iniciar la sessió.
+    continue_with_provider: Continua amb %{provider}
   chatbot:
     webhook_url: URL del webhook
     username: Nom d'usuari
