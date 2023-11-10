@@ -99,7 +99,7 @@ jobs:
     - name: install node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'
+        node-version: '20'
     - name: start websocker server
       run: |
         echo $PWD
