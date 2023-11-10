@@ -6,6 +6,7 @@ import EventBus      from '@/shared/services/event_bus';
 import i18n          from '@/i18n';
 import Vue from 'vue';
 import { hardReload } from '@/shared/helpers/window';
+import * as Sentry from "@sentry/browser";
 import { pickBy, identity, compact } from 'lodash-es';
 
 const loadedLocales = ['en'];
@@ -34,8 +35,21 @@ const loadLocale = function(locale) {
     if (loadedLocales.includes(locale)) {
       return setI18nLanguage(locale);
     } else {
-      dateLocales[`/node_modules/date-fns/locale/${dateFnsLocale(locale)}/index.js`]().then(dateLocale => i18n.dateLocale = dateLocale.default);
-      clientLocales[`/../config/locales/client.${loomioLocale(locale)}.yml`]().then(function(mod) {
+      const dateLocaleKey = `/node_modules/date-fns/locale/${dateFnsLocale(locale)}/index.js`
+      const clientLocaleKey = `../config/locales/client.${loomioLocale(locale)}.yml`
+
+      if (!dateLocales[dateLocaleKey]){
+        Sentry.captureMessage(`missing dateLocale: ${dateLocaleKey}`)
+        return false
+      }
+
+      if (!clientLocales[clientLocaleKey]){
+        Sentry.captureMessage(`missing clientLocale: ${clientLocaleKey}`)
+        return false
+      }
+
+      dateLocales[dateLocaleKey]().then(dateLocale => i18n.dateLocale = dateLocale.default);
+      clientLocales[clientLocaleKey]().then(function(mod) {
         const data = mod.default[locale]
         loadedLocales.push(locale);
         i18n.setLocaleMessage(locale, data);
