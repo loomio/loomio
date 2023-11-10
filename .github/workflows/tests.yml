@@ -127,6 +127,7 @@ jobs:
         rm -rf node_modules
         npm install
         npm run build
+        mv ../public/index.html ../public/blient/
     - name: run e2es
       env:
         DISPLAY: ':99'
