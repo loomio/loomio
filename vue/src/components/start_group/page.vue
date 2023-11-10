@@ -6,8 +6,6 @@ import AuthModalMixin from '@/mixins/auth_modal';
 import Session        from '@/shared/services/session';
 import I18n           from '@/i18n';
 
-import _isEmpty     from 'lodash/isEmpty';
-
 export default {
   mixins: [AuthModalMixin],
   data() {

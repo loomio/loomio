@@ -3,8 +3,7 @@ import AppConfig from '@/shared/services/app_config';
 import Records   from '@/shared/services/records';
 import EventBus  from '@/shared/services/event_bus';
 import UrlFor    from '@/mixins/url_for';
-import _truncate from 'lodash/truncate';
-import _map      from 'lodash/map';
+import {truncate, map} from 'lodash-es';
 import {marked}    from 'marked';
 
 import { debounce, camelCase, orderBy } from 'lodash-es';
@@ -47,7 +46,7 @@ export default {
       Records.groups.getExploreResultsCount(this.query).then(data => {
         return this.resultsCount = data.count;
       });
-      this.groupIds = this.groupIds.concat(_map(response.groups, 'id'));
+      this.groupIds = this.groupIds.concat(map(response.groups, 'id'));
       this.canLoadMoreGroups = (response.groups || []).length === this.perPage;
       this.searching = false;
     },
@@ -74,7 +73,7 @@ export default {
       }
       const parser = new DOMParser();
       const doc = parser.parseFromString(description, 'text/html');
-      return _truncate(doc.body.textContent, {length: 100});
+      return truncate(doc.body.textContent, {length: 100});
     },
 
     handleOrderChange(val) {

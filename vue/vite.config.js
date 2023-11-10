@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import { createVuePlugin } from 'vite-plugin-vue2';
 import envCompatible from 'vite-plugin-env-compatible';
-import { createHtmlPlugin } from 'vite-plugin-html';
 import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
@@ -130,13 +129,6 @@ export default defineConfig({
     }),
     viteCommonjs(),
     envCompatible(),
-    createHtmlPlugin({
-      inject: {
-        data: {
-          title: 'vue'
-        }
-      }
-    }),
     ViteYaml(),
   ],
   build: {
