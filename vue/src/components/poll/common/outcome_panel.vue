@@ -1,7 +1,7 @@
 <script lang="js">
 import OutcomeService from '@/shared/services/outcome_service';
 import parseISO from 'date-fns/parseISO';
-import { pickBy } from 'lodash';
+import { pickBy } from 'lodash-es';
 export default {
   props: {
     outcome: Object

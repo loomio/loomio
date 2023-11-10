@@ -3,7 +3,7 @@ import AppConfig       from '@/shared/services/app_config';
 import HasTranslations from '@/shared/mixins/has_translations';
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
 import i18n from '@/i18n';
-import { sumBy, map, head, each, compact, flatten, includes, find, sortBy, parseInt } from 'lodash';
+import { sumBy, map, head, each, compact, flatten, includes, find, sortBy, parseInt } from 'lodash-es';
 
 const stancesBecameUpdatable = new Date("2020-08-11");
 

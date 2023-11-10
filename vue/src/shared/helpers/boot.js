@@ -4,7 +4,7 @@ import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import i18n from '@/i18n';
 import * as Sentry from '@sentry/vue';
-import { forEach, snakeCase } from 'lodash';
+import { forEach, snakeCase } from 'lodash-es';
 import router from '@/routes';
 
 export default function(callback) {

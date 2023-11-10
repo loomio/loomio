@@ -2,7 +2,7 @@
 import Records from '@/shared/services/records';
 import { exact } from '@/shared/helpers/format_time';
 import { parseISO } from 'date-fns';
-import { reject, map, parseInt } from 'lodash';
+import { reject, map, parseInt } from 'lodash-es';
 
 import {marked} from 'marked';
 import {customRenderer, options} from '@/shared/helpers/marked';

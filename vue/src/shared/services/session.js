@@ -6,9 +6,11 @@ import EventBus      from '@/shared/services/event_bus';
 import i18n          from '@/i18n';
 import Vue from 'vue';
 import { hardReload } from '@/shared/helpers/window';
-import { pickBy, identity, compact } from 'lodash';
+import { pickBy, identity, compact } from 'lodash-es';
 
 const loadedLocales = ['en'];
+const clientLocales = import.meta.glob('/../config/locales/client.*.yml')
+const dateLocales = import.meta.glob('/node_modules/date-fns/locale/*/index.js')
 
 const setI18nLanguage = function(locale) {
   i18n.locale = locale;
@@ -32,9 +34,9 @@ const loadLocale = function(locale) {
     if (loadedLocales.includes(locale)) {
       return setI18nLanguage(locale);
     } else {
-      import(`date-fns/locale/${dateFnsLocale(locale)}/index.js`).then(dateLocale => i18n.dateLocale = dateLocale);
-      return import(`@/../../config/locales/client.${loomioLocale(locale)}.yml`).then(function(data) {
-        data = data[locale];
+      dateLocales[`/node_modules/date-fns/locale/${dateFnsLocale(locale)}/index.js`]().then(dateLocale => i18n.dateLocale = dateLocale.default);
+      clientLocales[`/../config/locales/client.${loomioLocale(locale)}.yml`]().then(function(mod) {
+        const data = mod.default[locale]
         loadedLocales.push(locale);
         i18n.setLocaleMessage(locale, data);
         setI18nLanguage(locale);

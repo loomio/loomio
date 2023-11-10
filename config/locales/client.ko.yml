@@ -22,7 +22,7 @@ ko:
     start_a_demo_group: 데모 그룹 시작하기
     start_a_demo: 데모 시작하기
     generating_demo: 잠시만 기다려주세요! 데모를 만드는데 20초 정도 필요합니다!
-    start_a_x_day_free_trial: "{{day}} 일 무료 체험을 시작합니다.<br>"
+    start_a_x_day_free_trial: "%{day} 일 무료 체험을 시작합니다.<br>"
     template_gallery: 템플릿 갤러리
     title_template: "%{제목} 템플릿"
     title_templates: "%{제목} 템플릿"
@@ -46,7 +46,7 @@ ko:
     look_and_feel: 소규모 조직의 Loomio가 어떤 모습인지 알아보세요. 앱을 사용해 보면서 배워보세요.
     watch_then_start: 영상을 시청하신 후 "데모 시작"을 클릭하여 Loomio를 사용해 보세요.
     ready_to_trial: 귀하의 조직에서 Loomio를 사용해 볼 준비가 되셨나요?
-    start_a_no_obligation_x_day_trial: "{{day}}일 무료 평가판으로 귀하의 조직을 위한 Loomio 그룹을 시작해보세요."
+    start_a_no_obligation_x_day_trial: "%{day}일 무료 평가판으로 귀하의 조직을 위한 Loomio 그룹을 시작해보세요."
     you_can_test_it_out: 다른 사람들을 초대하여 다른 도구와 통합하고 몇 가지 결정을 내릴 수 있습니다.
     demo_created: 당신만을 위한 데모 그룹이 만들어졌습니다!
     start_demo: 데모 시작
@@ -99,11 +99,11 @@ ko:
   current_plan_button:
     upgrade: 업그레이드
     buy_now: 구매하기
-    free_trial: 무료체험. {{days}} 일 남았습니다.
+    free_trial: 무료체험. %{days} 일 남았습니다.
     trial_expired: 체험이 종료되었습니다. 루미오를 계속 사용하시려면 업그레이드 하십시오.
     tooltip: 저희 가격은 멋집니다! 지금 바로 업그레이드하여 루미오가 당신에게 제공하는 그룹을을 즐기십시오.
-    was_gift_trial: '당신의 그룹은 루미오를 {{createdDate}}부터 무료로 사용하고 있습니다. 저희는 계속 무료서비스를  제공할 수 없습니다.  루미오를 계속 사용할 수 있게 업그레이드를 해주십시오. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>자세히보기.</a>'
-    was_gift_remaining: "{{days}} 남은 날짜."
+    was_gift_trial: '당신의 그룹은 루미오를 %{createdDate}부터 무료로 사용하고 있습니다. 저희는 계속 무료서비스를  제공할 수 없습니다.  루미오를 계속 사용할 수 있게 업그레이드를 해주십시오. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>자세히보기.</a>'
+    was_gift_remaining: "%{days} 남은 날짜."
     was_gift_expired: 당신의 무료 Plan은 만료되었습니다.
     is_old_plan: Loomio에는 새로운 단순 가격 계획이 있습니다.
     change_plan: 계획 변경
@@ -138,9 +138,9 @@ ko:
     helptext: 태그는 당신이 토론들을 분류할 수 있게해주고 쉽게 찾을 수 있게 해줍니다.
     tag_created: 태그 저장됨
     tag_destroyed: 태그 삭제됨
-    tags_marked: 스레드는 {{GroupName}}에 '{{name}}'으로 표기되어있습니다.
+    tags_marked: 스레드는 %{GroupName}에 '%{name}'으로 표기되어있습니다.
     no_tags_in_group: 이 그룹은 카테고리나 태그가 아직 설정되지 않았습니다.
-    only_admins_can_edit_tags: 앗! {{group}}의 관리자에게 태그 생성, 수정, 삭제 권한이 있습니다.
+    only_admins_can_edit_tags: 앗! %{group}의 관리자에게 태그 생성, 수정, 삭제 권한이 있습니다.
     card_title: 카테고리 태그
     discussions_count_singular: "(%{count} 스레드)"
     discussions_count_plural: "(%{count} 스레드)"
@@ -164,7 +164,7 @@ ko:
     dot_vote: 할당
     meeting: 시간 투표
   timezones:
-    local: 현지시간 ({{value}})
+    local: 현지시간 (%{value})
   common:
     version: 버젼
     empty: 비었음
@@ -183,13 +183,13 @@ ko:
     time_zone: 시간대
     local_time: 현지시간
     attachments: 첨부파일
-    active_time_ago: 최근 활동 {{time_ago}}
+    active_time_ago: 최근 활동 %{time_ago}
     confirm_discard_changes: 수정을 취소하시겠습니까?
     time:
       am: 오전
       pm: 오후
-    closing_in: "{{time}} 남음"
-    closed_ago: "{{time}} 종료됨"
+    closing_in: "%{time} 남음"
+    closed_ago: "%{time} 종료됨"
     volume: 볼륨
     notification_volume: 알림 볼륨
     group: 그룹
@@ -222,7 +222,7 @@ ko:
     reset: 초기화
     copy_text: 텍스트 복사
     copied: 복사됨
-    points_abbrev: 투표당 {{sore}} 점
+    points_abbrev: 투표당 %{sore} 점
     total: 총
     action:
       print: 인쇄
@@ -293,7 +293,7 @@ ko:
       title: 당신의 글 서식 설정을 위한 Markdown 사용법 배우기
     admin_menu: 관리 메뉴
     api_docs: API 문서
-    prefix_eg: '예: {{val}}'
+    prefix_eg: '예: %{val}'
     are_you_sure: 확실합니까?
     loomio_help: 루미오 도움말
     visit_loomio_help: Loomio 도움말 방문
@@ -312,7 +312,7 @@ ko:
   merge_accounts:
     modal:
       title: 계정 연동
-      helptext: 당신은 <strong>{{sourceEmail}}</strong> 계정을 <strong>{{targetEmail}}</strong>에 연동할 수 있습니다.  인증을 클릭하면 인증 메일이 {{targetEmail}}으로 전송되어 연동을 시작합니다.
+      helptext: 당신은 <strong>%{sourceEmail}</strong> 계정을 <strong>%{targetEmail}</strong>에 연동할 수 있습니다.  인증을 클릭하면 인증 메일이 %{targetEmail}으로 전송되어 연동을 시작합니다.
       submit: 인증
       flash: 인증 메일이 전송되었습니다!
     email_taken: 죄송합니다. 해당 이메일이 이미 다른 유저와 연동되어 있습니다. 해당 이메일이 당신의 것입니까?
@@ -353,8 +353,8 @@ ko:
   verify_email_notice:
     please_verify: 참여 해주셔서 감사합니다! 이메일에서 투표 확인링크를 확인하십시오.
   previous_polls_page:
-    heading: "{{name}}의 활동"
-    polls_count: "{{total}}개의 결정 중 {{loaded}}개 표시"
+    heading: "%{name}의 활동"
+    polls_count: "%{total}개의 결정 중 %{loaded}개 표시"
     search_activities: 결정 검색
   volume_levels:
     loud: 크게
@@ -399,12 +399,12 @@ ko:
         normal: 이 스레드의 제안에 관해 이메일을 받게 됩니다.
         quiet: 이 스레드와 관련한 이메일을 더이상 받지 않습니다.
     membership:
-      title: "{{title}}에 대한 알림"
+      title: "%{title}에 대한 알림"
       loud_description: 이 그룹의 모든 활동 내역을 이메일로 받습니다.
       normal_description: 이 그룹의 모든 활동 내역을 이메일로 받습니다.
       quiet_description: 당신은 이 그룹의 활동에 대해 이메일을 받지 않습니다.
       apply_to_all: 내 그룹 전체에 이 설정을 적용합니다.
-      apply_to_organization: "{{organization}}의 모든 그룹에 적용합니다."
+      apply_to_organization: "%{organization}의 모든 그룹에 적용합니다."
       messages:
         loud: 이 그룹의 활동 내역을 메일로 받습니다.
         normal: 이 그룹의 공지사항만 이메일로 받습니다.
@@ -457,7 +457,7 @@ ko:
       remove_attachment: 첨부파일 삭제
     messages:
       created: 댓글을 추가하였습니다.
-      replied: "{{name}}이 답변하였습니다"
+      replied: "%{name}이 답변하였습니다"
       updated: 댓글을 수정하였습니다.
       destroyed: 댓글을 삭제하였습니다.
       removed: 댓글을 삭제하였습니다.
@@ -467,12 +467,12 @@ ko:
     cancel_reply: 답변 취소
     confirm_delete_message: 댓글을 지우시겠습니까?
     confirm_delete: 댓글 삭제
-    in_reply_to: "{{name}}에게 답변하기"
+    in_reply_to: "%{name}에게 답변하기"
     write_a_comment: 댓글 작성
     post_comment: 댓글달기
     submit_button:
       label: 저장하기
-    private_privacy_notice: 작성하신 댓글은 {{groupName}} 그룹만 볼 수 있습니다.
+    private_privacy_notice: 작성하신 댓글은 %{groupName} 그룹만 볼 수 있습니다.
     public_privacy_notice: 작성하신 댓글은 웹 상의 모두가 볼 수 있습니다.
     sign_in: 대화에 참여하려면 로그인 하세요
   thread_nav:
@@ -516,11 +516,11 @@ ko:
     oldest_first: 오래된 것부터
   navbar:
     search_all_threads: 모든 스레드 검색
-    search_threads: "{{name}}에서 스레드 검색"
-    search_polls: "{{name}}에서 투표 검색"
-    search_members: "{{name}}에서 멤버 검색"
-    search_subgroups: "{{name}}에서 멤버 검색"
-    search_files: "{{name}}에서 파일 검색"
+    search_threads: "%{name}에서 스레드 검색"
+    search_polls: "%{name}에서 투표 검색"
+    search_members: "%{name}에서 멤버 검색"
+    search_subgroups: "%{name}에서 멤버 검색"
+    search_files: "%{name}에서 파일 검색"
     recent_title: 대시보드로 이동
     unread_title: 읽지 않은 활동 보기
     start_thread: 새 스레드
@@ -540,7 +540,7 @@ ko:
     open_sidebar: 사이드바 열기
     close_sidebar: 사이드바 닫기
     logo_title: 홈페이지
-    group_and_subgroups: "{{group}}&소그룹"
+    group_and_subgroups: "%{group}&소그룹"
   user_dropdown:
     pin_sidebar: 사이드바 고정
     unpin_sidebar: 사이드바 고정해제
@@ -550,7 +550,7 @@ ko:
     edit_profile: 프로필 수정
     email_settings: 알림 설정
     help: 도움말
-    contact_site_name: "{{site_name}}에 문의"
+    contact_site_name: "%{site_name}에 문의"
     sign_out: 회원탈퇴
     enable_dark_mode: 어두운 모드 활성화
     disable_dark_mode: 다크 모드 비활성화
@@ -560,7 +560,7 @@ ko:
   membership_card:
     group_members: 그룹 멤버
     discussion_members: 스레드에 참여중인 멤버
-    poll_members: "{{pollType}} 멤버"
+    poll_members: "%{pollType} 멤버"
     voters: 투표자
     invite_to_group: 그룹 초대
     invite_to_discussion: 스레드 초대
@@ -576,7 +576,7 @@ ko:
     remove_from:
       discussion: 스레드에서 제거
       group: 그룹에서 제거
-      poll: "{{pollType}}에서 제거"
+      poll: "%{pollType}에서 제거"
     cancel_invitation: 초대 취소
     set_name_and_username: 이름 및 사용자 이름 설정
   notification_models:
@@ -689,7 +689,7 @@ ko:
     title_placeholder: 토의하고픈 주제는 무엇입니까?
     context_label: 내용
     privacy_label: 개인정보
-    privacy_organisation: 이 쓰레드는 {{parent}}와 {{group}}의 멤버만 볼 수 있습니다.
+    privacy_organisation: 이 쓰레드는 %{parent}와 %{group}의 멤버만 볼 수 있습니다.
     notify_group: 그룹 알림
     thread_templates: 스레드 템플릿
     new_thread_template: 새 스레드 템플릿
@@ -707,11 +707,11 @@ ko:
     context_placeholder: 사람들이 참여 방법을 알 수 있도록 이 토론에 대한 몇 가지 맥락을 제공하세요.
     privacy_public: 링크가 있으면 누구나 이 스레드를 볼 수 있습니다.
     privacy_private: 그룹의 구성원만 이 스레드를 볼 수 있습니다.
-    fork_notice: "{{title}}의 %{count}개 항목으로 새 스레드가 생성됩니다."
+    fork_notice: "%{title}의 %{count}개 항목으로 새 스레드가 생성됩니다."
   announcement:
     send_discussion: 스레드 전송
-    send_group: "{{name}}으로 초대"
-    send_poll: "{{type}} 전송"
+    send_group: "%{name}으로 초대"
+    send_poll: "%{type} 전송"
     send_outcome: 결과 전송
     discussion_notification_history: 스레드 알림 이력
     group_notification_history: 그룹 초대 이력
@@ -721,7 +721,7 @@ ko:
     notification_history_explanation: "✓는 이미 읽었거나, 열어본 적인 있는 이메일임을 나타냅니다."
     quick_add: '빠른 추가:'
     any_other_groups: 다른 그룹이 있습니까?
-    notified_people: "{{name}}가 {{length}} 명에게 알림:"
+    notified_people: "%{name}가 %{length} 명에게 알림:"
     preview: 이메일 미리보기
     no_notifications_sent: 전송된 알림이 없습니다.
     history_error: 문제가 발생했습니다! 이력을 불러올 수 없습니다.
@@ -732,16 +732,16 @@ ko:
       voters: 투표자 전원
       decided_voters: 투표 완료자 전원
       undecided_voters: 결정하지 않은 투표자들
-      non_voters: "{{name}}에 아직 초대받지 못한 멤버들"
-      group: "{{이름}}"
+      non_voters: "%{name}에 아직 초대받지 못한 멤버들"
+      group: "%{이름}"
       everyone_in_the_group: 그룹의 모든 사람
     form:
-      too_many_invitations: '초대 한도를 초과했습니다. <a href="{{upgradeUrl}}" target="_blank">업그레이드</a>
+      too_many_invitations: '초대 한도를 초과했습니다. <a href="%{upgradeUrl}" target="_blank">업그레이드</a>
 
         '
       no_invitations_remaining: |
-        <p>당신은 이 그룹에 사용할 수 있는 {{maxMembers}}개의 초대를 모두 사용하였습니다.</p>
-        <p>다음 단계는 Loomio와 계속 작업할 <a href="{{upgradeUrl}}" target="_blank">계획을 선택</a>합니다.</p>
+        <p>당신은 이 그룹에 사용할 수 있는 %{maxMembers}개의 초대를 모두 사용하였습니다.</p>
+        <p>다음 단계는 Loomio와 계속 작업할 <a href="%{upgradeUrl}" target="_blank">계획을 선택</a>합니다.</p>
       who_to_invite: 누구를 초대하고 싶으십니까?
       invitation_message_placeholder: 초대 메일에 메시지를 추가하기.(선택)
       invitation_message_label: 메시지
@@ -780,22 +780,22 @@ ko:
       notified: "%{count}명에게 알림이 전송됩니다."
       notified_singular: 1명에게 알림이 전송됩니다.
       notified_none: 아무도 알림을 받지 않습니다.
-      visible_to_group: "{{group}} 내의 모두가 이 스레드를 볼 수 있습니다"
+      visible_to_group: "%{group} 내의 모두가 이 스레드를 볼 수 있습니다"
       visible_to_guests: 초대된 사람들만 이 스레드를 볼 수 있습니다.
       group_has_no_members_yet: 귀하는 귀하 그룹의 유일한 구성원입니다. 스레드나 결정을 시작하기 전에 일부 사람들을 그룹에 초대할 수 있습니다.
       invite_people_to_evaluate_loomio: Loomio 그룹에 몇몇 사람들을 초대하여 함께 결정을 내리세요
-      invitations_remaining: '%{count}개의 초대장이 남아 있습니다. <a href="{{upgradeUrl}}" target="_blank">업그레이드</a>'
+      invitations_remaining: '%{count}개의 초대장이 남아 있습니다. <a href="%{upgradeUrl}" target="_blank">업그레이드</a>'
       invitation_message_default: 저는 우리가 함께 결정을 내릴 수 있도록 돕기 위해 이 Loomio 그룹을 만들었습니다. 내 초대를 수락해주세요. 가입하는데 1분밖에 걸리지 않습니다. 감사합니다.
       wip_poll_announced:
         title: 피드백 제공을 위해 초대
         helptext: 피드백을 제공하기 위해 누구를 초대하고 싶나요?
       type_or_paste_email_addresses_to_invite: 초대할 이메일 주소를 입력하거나 붙여넣으세요.
       single_notification: 1개의 알림이 전송됩니다.
-      multiple_notifications: "{{notified}} 알림이 전송됩니다."
+      multiple_notifications: "%{notified} 알림이 전송됩니다."
       added: "%{count}명이 추가됩니다."
       added_singular: 1명이 추가됩니다.
       added_none: 아무도 추가되지 않습니다.
-      group_title: "{{name}} (%{count}명)"
+      group_title: "%{name} (%{count}명)"
       click_group_to_see_individuals: 개인을 보려면 그룹을 클릭하세요.
     members_list:
       title: 공유
@@ -804,7 +804,7 @@ ko:
       no_members: 아직 아무에게도 공유되지 않았습니다!
       group_admin: 그룹관리자
       thread_admin: 스레드관리자
-      last_read_at: 마지막 확인 {{time}}
+      last_read_at: 마지막 확인 %{time}
       has_not_read_thread: 보지 않은 스레드
     group_form:
       search_placeholder: 사람들을 검색합니다...
@@ -815,21 +815,21 @@ ko:
     only_admins_can_announce: 관리자만 전체 그룹에 알릴 수 있습니다.
     only_admins_can_invite: 관리자만 손님을 초대할 수 있습니다
     only_admins_can_announce_or_invite: 관리자만 전체 그룹에 알리거나 게스트를 초대할 수 있습니다.
-    user_mentioned: "{{name}}님이 {{length}}명을 언급했습니다:"
-    comment_replied_to: "{{name}}님이 {{length}}명에게 답변했습니다."
-    new_discussion: "{{name}}님이 스레드에 {{length}}명을 초대했습니다:"
-    discussion_announced: "{{name}}님이 스레드에 {{length}}명을 초대했습니다:"
-    poll_created: "{{name}}님이 {{length}}명을 투표에 초대했습니다:"
-    poll_announced: "{{name}}님이 {{length}}명을 투표에 초대했습니다:"
-    outcome_created: "{{name}}님이 {{length}}명과 결과를 공유했습니다."
-    outcome_announced: "{{name}}님이 {{length}}명과 결과를 공유했습니다."
-    announcement_created: "{{name}}님이 스레드에 {{length}}명을 초대했습니다:"
-    discussion_edited: "{{name}}님이 스레드를 편집하여 {{length}}명에게 알렸습니다."
-    poll_edited: "{{name}}님이 설문조사를 편집하여 {{length}}명에게 알렸습니다."
-    outcome_edited: "{{name}}님이 결과를 수정하여 {{length}}명에게 알렸습니다."
-    outcome_updated: "{{name}}님이 결과를 수정하여 {{length}}명에게 알렸습니다."
-    poll_closing_soon: "{{name}}님의 설문조사 종료 알림으로 {{length}}명에게 다음이 통보되었습니다."
-    poll_reminder: "{{name}}님이 {{length}}명에게 투표할 것을 상기시켰습니다:"
+    user_mentioned: "%{name}님이 %{length}명을 언급했습니다:"
+    comment_replied_to: "%{name}님이 %{length}명에게 답변했습니다."
+    new_discussion: "%{name}님이 스레드에 %{length}명을 초대했습니다:"
+    discussion_announced: "%{name}님이 스레드에 %{length}명을 초대했습니다:"
+    poll_created: "%{name}님이 %{length}명을 투표에 초대했습니다:"
+    poll_announced: "%{name}님이 %{length}명을 투표에 초대했습니다:"
+    outcome_created: "%{name}님이 %{length}명과 결과를 공유했습니다."
+    outcome_announced: "%{name}님이 %{length}명과 결과를 공유했습니다."
+    announcement_created: "%{name}님이 스레드에 %{length}명을 초대했습니다:"
+    discussion_edited: "%{name}님이 스레드를 편집하여 %{length}명에게 알렸습니다."
+    poll_edited: "%{name}님이 설문조사를 편집하여 %{length}명에게 알렸습니다."
+    outcome_edited: "%{name}님이 결과를 수정하여 %{length}명에게 알렸습니다."
+    outcome_updated: "%{name}님이 결과를 수정하여 %{length}명에게 알렸습니다."
+    poll_closing_soon: "%{name}님의 설문조사 종료 알림으로 %{length}명에게 다음이 통보되었습니다."
+    poll_reminder: "%{name}님이 %{length}명에게 투표할 것을 상기시켰습니다:"
     flash:
       success: "%{count}개의 알림이 전송되었습니다."
   action_dock:
@@ -846,7 +846,7 @@ ko:
     invite_guests: 게스트 초대
     translate_thread: 내용 번역
     edit_poll: 투표 수정
-    edit_poll_type: "{{pollType}}수정"
+    edit_poll_type: "%{pollType}수정"
     move_items: 항목 이동
     announce_poll: 투표할 사람 초대
     announce_poll_active: "(아직 초대받은 사람이 없습니다)"
@@ -883,7 +883,7 @@ ko:
     notification_history: 알림 이력
     move_item: 항목 이동
     add_poll_to_thread: 스레드 추가
-    new_poll_type: 새로운 {{pollType}}
+    new_poll_type: 새로운 %{pollType}
     count_members: "%{count}명의 회원"
     count_voters: "%{count}명의 유권자"
   formatting:
@@ -951,7 +951,7 @@ ko:
     join_group: 그룹에 가입
     membership_requested: 요청 받은 멤버십
     messages:
-      joined_group: "{{group}}의 새로운 멤버가 되었습니다"
+      joined_group: "%{group}의 새로운 멤버가 되었습니다"
   membership_request_form:
     aria_label: 멤버십 요청 양식
     heading: 그룹에 가입신청하기
@@ -961,34 +961,34 @@ ko:
     submit_button: 가입신청하기
     introduction_over_limit: 답변이 너무 깁니다.
     messages:
-      membership_requested: "{{group}} 가입을 요청하셨습니다."
+      membership_requested: "%{group} 가입을 요청하셨습니다."
   revision_history_modal:
     aria_label: 검토 이력
     discussion_header: 토론 수정
     comment_header: 댓글 수정
     poll_header: 투표 수정
     outcome_header: 결과 수정
-    started_by: "<strong>{{name}}</strong>가 시작함"
-    edited_by: "<strong>{{name}}</strong>가 수정함"
-    edit_by: "{{name}}이 {{date}}에 수정"
+    started_by: "<strong>%{name}</strong>가 시작함"
+    edited_by: "<strong>%{name}</strong>가 수정함"
+    edit_by: "%{name}이 %{date}에 수정"
     posted: 저장됨
     field: 필드
     before: 전
     after: 후
     original_text: 원본
     current_revision: 최신
-    closing_at_changed: 종료 시간이 {{time}}으로 설정되었습니다.
-    private_changed: 공개정책이 {{private}}으로 설정되었습니다.
-    group_id_changed: "{{name}}으로 이동되었습니다."
+    closing_at_changed: 종료 시간이 %{time}으로 설정되었습니다.
+    private_changed: 공개정책이 %{private}으로 설정되었습니다.
+    group_id_changed: "%{name}으로 이동되었습니다."
     stance_header: 투표 수정
   reactions_input:
     add_your_reaction: 반응 추가
   reactions_display:
     you: 당신
-    you_and_name: 당신과 {{name}}
+    you_and_name: 당신과 %{name}
     more_reactions: "%{count}개 이상"
-    you_and_name_and_count_more: 귀하, {{name}}님 외 %{count}명
-    name_and_count_more: "{{name}} 외 %{count}개"
+    you_and_name_and_count_more: 귀하, %{name}님 외 %{count}명
+    name_and_count_more: "%{name} 외 %{count}개"
   context_panel:
     thread_status:
       pinned: 이 스레드는 고정되어있습니다. 스레드의 모든 사용자들의 그룹 목록의 가장 위에 표시됩니다.
@@ -1051,21 +1051,21 @@ ko:
     volume:
       loud: 활동이 있을 때마다 이메일 합니다.
       loud_aria_description: 이 그룹의 알림 소리를 크게 설정합니다. 이 그룹에 활동이 있을 때마다 이메일을 받습니다.
-      loud_message: ' "{{name}}." 그룹의 모든 활동 내역을 이메일로 받습니다.'
+      loud_message: ' "%{name}." 그룹의 모든 활동 내역을 이메일로 받습니다.'
       normal: 새로운 쓰레드 생성이나 제안, 결과 산출 등 중요한 활동 내역에 대해서만 이메일 합니다.
       normal_aria_description: 이 그룹의 알림 소리를 보통으로 설정합니다. 누군가 새로운 쓰레드를 시작하거나 중요한 활동이 있을 때만 이메일을 받습니다.
-      normal_message: '"{{name}}."에서 중요한 사안에 대해서만 이메일로 받습니다.'
+      normal_message: '"%{name}."에서 중요한 사안에 대해서만 이메일로 받습니다.'
       quiet: 이 그룹의 이메일을 받지 않습니. 활동내역은 대시보드에서만 볼 수 있습니다.
       quiet_aria_description: 이 그룹의 알림 소리가 묵음으로 설정됩니다. 이 그룹의 활동내역에 귀하에게 이메일을 발송하지 않습니다. 활동 내역은 대시보드에 보여집니다.
-      quiet_message: '"{{name}}." 그룹의 활동 내역에 대해 귀하에게 이메일을 보내지 않습니다.'
+      quiet_message: '"%{name}." 그룹의 활동 내역에 대해 귀하에게 이메일을 보내지 않습니다.'
       mute: "@mentioned로 언급되기 전까지는 이 그룹을 대시보드에서 감추고 알림을 비활성화해주세요."
       mute_aria_description: 이 그룹의 알림 소리가 묵음으로 설정됩니다. 누군가 당신을 언급하지 않는 한, 이 그룹의 활동내역에 대해 귀하에게 이메일을 발송하지 않습니다. 대시보드에 그룹 활동 내역이 보여지지 않습니다.
-      mute_message: '"{{name}}" 당신의 대시보드에서 삭제되었습니다.'
+      mute_message: '"%{name}" 당신의 대시보드에서 삭제되었습니다.'
     privacy:
       private: '공개정책 : 이 그룹은 멤버에게만 공개됩니다.'
-      parent_members: '공개정책 : 이 그룹은 {{parentGroupName}}의 멤버와 {{groupName}}의 멤버에게 공개됩니다.'
+      parent_members: '공개정책 : 이 그룹은 %{parentGroupName}의 멤버와 %{groupName}의 멤버에게 공개됩니다.'
       public: '공개정책 : 이 그룹은 인터넷에  공개됩니다.'
-      aria_label: '그룹 보호: {{privacy}}'
+      aria_label: '그룹 보호: %{privacy}'
     decisions: 결정
     show_opened: "%{count} 오픈"
     show_closed: "%{count} 마감됨"
@@ -1112,7 +1112,7 @@ ko:
     privacy_statement:
       public_on_web: 그룹의 이름, 설명, 그리고 첨부파일이 공개적으로 표시됩니다.
       private_to_group: 이름과 설명은 멤버만 볼 수 있습니다.
-      private_to_parent_members: "{{parent}}의 멤버가 이름과 설명을 볼 수 있습니다. "
+      private_to_parent_members: "%{parent}의 멤버가 이름과 설명을 볼 수 있습니다. "
     privacy: 개인정보
     group_privacy_is_closed_description: 공개하지 않습니다. 링크가 있는 사람은 누구나 가입신청 할 수 있습니다. 모든 스레드는 비공개입니다.
     group_privacy_is_closed_public_threads_description: 공개하지 않습니다. 링크가 있는 사람은 누구나 가입신청 할 수 있습니다. 스레드는 공개할 수도 있고 비공개로 설정할 수도 있습니다.
@@ -1125,17 +1125,17 @@ ko:
     subgroup_privacy_is_open_description: 누구나 이 소그룹을 찾고 가입신청을 할 수 있습니다. 그룹 멤버만 볼 수 있습니다. 모든 스레드는 공개됩니다.
     subgroup_privacy_is_closed_description: 누구나 이 소그룹을 찾고 가입신청을 할 수 있습니다. 그룹 멤버만 볼 수 있습니다. 모든 스레드는 비공개됩니다.
     subgroup_privacy_is_closed_public_threads_description: 누구나 이 소그룹을 찾고 가입신청을 할 수 있습니다. 오직 멤버만 볼 수 있습니다. 스레드는 공개하거나 비공개됩니다.
-    subgroup_privacy_is_closed_secret_parent_description: "{{parent}}의 멤버는 소그룹을 찾고 가입신청 할 수 있습니다. 모든 스레드는 비공개됩니다. 오직 그룹 멤버만 볼 수 있습니다."
+    subgroup_privacy_is_closed_secret_parent_description: "%{parent}의 멤버는 소그룹을 찾고 가입신청 할 수 있습니다. 모든 스레드는 비공개됩니다. 오직 그룹 멤버만 볼 수 있습니다."
     subgroup_privacy_is_secret_description: 초대된 멤버만 소그룹을 찾고 그 안에 있는 사람들과 스레드를 볼 수 있습니다.
     advanced_settings: 상세 설정
     how_do_people_join: 가입 방법은 무엇인가요?
     membership_granted_upon_request: 누구나 가입할 수 있습니다.
     membership_granted_upon_approval: 누구나 가입 신청을 할 수 있습니다만, 가입 허가가 필요합니다.
-    membership_granted_upon_approval_secret_parent: "<strong>요청에 의해</strong> {{parent}}의 누구나 그룹에 가입신청을 할 수 있습니다."
+    membership_granted_upon_approval_secret_parent: "<strong>요청에 의해</strong> %{parent}의 누구나 그룹에 가입신청을 할 수 있습니다."
     permissions: 허용
     thread_privacy: 쓰레드 프라이버시
     public_threads: 공개 쓰레드만
-    public_discussions_subgroup: "{{parentGroupName}}의 누구나 이 토론을 볼 수 있습니다."
+    public_discussions_subgroup: "%{parentGroupName}의 누구나 이 토론을 볼 수 있습니다."
     public_or_private_threads: 공개 및 비공개 쓰레드 허용
     private_threads: 오직 멤버만 이 토론을 볼 수 있습니다.
     allow_public_threads: 이 그룹에 공개 쓰레드를 허용합니다.
@@ -1158,14 +1158,14 @@ ko:
     subgroup_settings: 하위 그룹 설정
     subgroup_name: 하위 그룹 이름
     organization_name: 조직 이름
-    group_handle_placeholder: '그룹 URL에 사용됨: {{host}}/{{handle}}'
+    group_handle_placeholder: '그룹 URL에 사용됨: %{host}/%{handle}'
     subgroup_name_placeholder: 귀하의 하위 그룹 이름은 무엇입니까?
     new_description_placeholder: 왜 Loomio를 체험하시나요? 함께 어떤 결정을 내려야 합니까?
     new_description_html: <h3 id="how-do-you-intend-to-use-loomio">루미오를 어떻게 사용하실 계획이신가요?</h3><p></p><h3 id="why-is-this-important-for-your-group"> 이것이 귀하의 그룹에 왜 중요한가요?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> 어떤 결정을 내려야 합니까?</h3><p></p>
     secret_by_default: 귀하의 그룹은 가입 초대를 받은 사람들만 접근할 수 있습니다. 나중에 변경할 수 있습니다.
     group_privacy_is_open_description: 공개적으로 나열됩니다. 모든 스레드는 공개됩니다.
     membership_granted_upon_invitation: 초대만 가능합니다.
-    parent_members_can_see_discussions: "{{parent}}의 구성원은 비공개 스레드를 볼 수 있습니다."
+    parent_members_can_see_discussions: "%{parent}의 구성원은 비공개 스레드를 볼 수 있습니다."
     parent_members_can_see_discussions_help: 상위 그룹의 구성원이 이 그룹 내의 스레드 및 설문 조사를 볼 수 있지만 참여할 수는 없습니다.
     members_can_announce: 구성원은 그룹의 모든 사람에게 알릴 수 있습니다.
     members_can_announce_help: 구성원이 스레드 또는 설문조사에 대해 그룹의 모든 사람에게 알릴 수 있도록 허용
@@ -1210,7 +1210,7 @@ ko:
     no_pending_requests: '이 그룹에 보류 중인 멤버십 요청이 없습니다. '
     no_previous_requests: '현재 사전 신청된 멤버십 요청이 없습니다. '
     previous_requests: 이전 요청
-    previous_request_response: "{{responder}} 로부터 {{response}}"
+    previous_request_response: "%{responder} 로부터 %{response}"
     messages:
       request_approved_success: 멤버십 요청이 승인되었습니다.
       request_ignored_success: 멤버십 요청이 거절되었습니다.
@@ -1222,7 +1222,7 @@ ko:
     invite_people: 초대 명단
     invite_guests: 게스트 초대
     notify_people: 사람들에게 알림
-    invite_people_to_group: "{{name}}으로 초대"
+    invite_people_to_group: "%{name}으로 초대"
     group: 그룹
     group_placeholder: 그룹을 선택하세요
     shareable_link: '공유가능링크 '
@@ -1240,7 +1240,7 @@ ko:
     custom_message: 개인 메시지
     custom_message_placeholder: 초대의 글을 입력해주세요.
     add_members: 멤버 추가
-    from_parent_group: "{{name}} 로부터"
+    from_parent_group: "%{name} 로부터"
     send: 전송
     done: 완료
     messages:
@@ -1256,20 +1256,20 @@ ko:
     fragment_placeholder: 이름 혹은 아이디로 거르기
     only_one_admin: 이 그룹에는 한 명의 관리자만 있습니다. 최소한 한명 이상의 멤버를 관리자로 지정하는 것을 추천합니다.
     messages:
-      remove_member_success: 삭제된 {{name}}
-      make_admin_success: "{{name}}님은 이제 관리자입니다."
-      remove_admin_success: "{{name}}님은 더 이상 관리자가 아닙니다."
+      remove_member_success: 삭제된 %{name}
+      make_admin_success: "%{name}님은 이제 관리자입니다."
+      remove_admin_success: "%{name}님은 더 이상 관리자가 아닙니다."
     remove_admin_from_self:
       question: 관리자를 그만두시겠습니까?
   membership_remove_modal:
     invitation:
       title: 초대 취소
-      message: "{{name}}님에게 보낸 초대를 취소하시겠습니까?"
+      message: "%{name}님에게 보낸 초대를 취소하시겠습니까?"
       flash: 초대를 취소했습니다.
       submit: 초대 취소
     membership:
       title: 멤버 삭제
-      message: "{{name}}을 삭제하시겠습니까?"
+      message: "%{name}을 삭제하시겠습니까?"
       flash: 멤버가 삭제됨
       submit: 멤버 삭제
       impact_for_subgroup: 이렇게 하면 하위 그룹(스레드 및 설문 조사 포함)에 대한 액세스 권한이 제거되지만 상위 그룹의 구성원은 유지됩니다.
@@ -1281,22 +1281,22 @@ ko:
     modal_title:
       group: 그룹 제목 설정
     title_helptext:
-      group: 이 타이틀은 이 그룹의 {{name}} 옆에 표시될 것입니다. 사람들에게 그들의 역할을 알리는데 사용 하십시오.
+      group: 이 타이틀은 이 그룹의 %{name} 옆에 표시될 것입니다. 사람들에게 그들의 역할을 알리는데 사용 하십시오.
     title_label: 타이틀
     title_placeholder: 예를들어 '진행자', 또는 '의장'
     updated: 멤버십 타이틀이 업데이트 되었습니다.
   user_page:
-    contact_user: "{{name}}에게 연락"
-    location_field: '장소: {{value}}'
-    locale_field: '언어: {{value}}'
-    online_field: '접속: {{value}}'
-    invited: 초대됨 {{value}}
-    message_user: 메시지 {{name}}
+    contact_user: "%{name}에게 연락"
+    location_field: '장소: %{value}'
+    locale_field: '언어: %{value}'
+    online_field: '접속: %{value}'
+    invited: 초대됨 %{value}
+    message_user: 메시지 %{name}
   contact_request_form:
-    modal_title: 이메일 {{name}}
+    modal_title: 이메일 %{name}
     message_placeholder: 자기소개를 하고 연락하고 싶은 이유를 공유해보십시오
-    helptext: "{{name}}가 당신의 이름, 이메일 주소, 메시지를 포함한 이메일을 받게 됩니다."
-    email_sent: "{{name}}에게 이메일 전송"
+    helptext: "%{name}가 당신의 이름, 이메일 주소, 메시지를 포함한 이메일을 받게 됩니다."
+    email_sent: "%{name}에게 이메일 전송"
   profile_page:
     messages:
       updated: 프로필을 수정했습니다.
@@ -1334,7 +1334,7 @@ ko:
   text_editor:
     insert_link: 링크 삽입
     insert_embedded_url: 비디오 삽입
-    x_of_y_characters: "{{x}} / {{y}}자"
+    x_of_y_characters: "%{x} / %{y}자"
     select_text_to_link: 연결할 텍스트를 선택하고 다시 시도하세요.
   change_picture_form:
     aria_label: 프로필 사진 양식
@@ -1343,7 +1343,7 @@ ko:
     use_initials: 이니셜 사용
     use_gravatar: Gravatar 사용
     use_uploaded: 새로운 사진 업로드
-    use_provider: "{{provider}} 사진 사용"
+    use_provider: "%{provider} 사진 사용"
     existing_upload: 기존 업로드
   change_password_form:
     set_password_title: 비밀번호를 설정하십시오
@@ -1429,7 +1429,7 @@ ko:
       muted_aria_label: 알림 비활성화된 주제 보기
       muted_description: 알림 비활성화된 주제만 보기
     thread_preview:
-      you_voted: "{{position}}에 투표했습니다."
+      you_voted: "%{position}에 투표했습니다."
       undecided: 당신은 아직 결정하지 않았습니다.
     threads_from:
       group: 에서 비롯된 토론
@@ -1459,10 +1459,10 @@ ko:
     activity: 최근 활동
     activity_placeholder: 아직 활동내역 없음
     load_previous: 이전 활동내역 보기
-    started_by: "<strong>{{name}}</strong>님이 시작하였습니다."
+    started_by: "<strong>%{name}</strong>님이 시작하였습니다."
     invite_only: 초대 전용
-    max_threads_reached: <p>이 그룹에 사용 가능한 모든 {{maxThreads}} 스레드를 사용했습니다.</p><p> 다음 단계에서는 Loomio에서 계속 협업할 <a href="{{upgradeUrl}}" target="_blank">계획을 선택하세요</a> .</p>
-    subscription_canceled: <p>귀하의 구독이 활성화되어 있지 않습니다.</p><p> Loomio를 계속 사용하려면 <a href="{{upgradeUrl}}" target="_blank">업그레이드</a> 하세요.</p>
+    max_threads_reached: <p>이 그룹에 사용 가능한 모든 %{maxThreads} 스레드를 사용했습니다.</p><p> 다음 단계에서는 Loomio에서 계속 협업할 <a href="%{upgradeUrl}" target="_blank">계획을 선택하세요</a> .</p>
+    subscription_canceled: <p>귀하의 구독이 활성화되어 있지 않습니다.</p><p> Loomio를 계속 사용하려면 <a href="%{upgradeUrl}" target="_blank">업그레이드</a> 하세요.</p>
     pin:
       pinned: 스레드 고정
       unpinned: 스레드가 고정 해제됨
@@ -1511,7 +1511,7 @@ ko:
     delete_thread: 삭제
     add_comment: 댓글
     forked_from: 분기됨
-    current_poll_type_banner: 현재 {{pollType}}
+    current_poll_type_banner: 현재 %{pollType}
     item_maybe_deleted: 스레드 내에서 요청한 위치를 찾을 수 없습니다. 삭제되었을 수도 있습니다.
     edit_thread: 편집하다
     mute_thread: 무음
@@ -1532,9 +1532,9 @@ ko:
   move_thread_form:
     title: 쓰레드 이동
     confirm: 쓰레드 이동
-    confirm_change_to_private_thread: "{{groupName}}은 공개 그룹입니다. 이 주제도 공개됩니다. 계속 하시겠습니까?"
+    confirm_change_to_private_thread: "%{groupName}은 공개 그룹입니다. 이 주제도 공개됩니다. 계속 하시겠습니까?"
     messages:
-      success: 쓰레드가 {{name}} 으로 이동되었습니다.
+      success: 쓰레드가 %{name} 으로 이동되었습니다.
     aria_label: 스레드 이동
     body: 대상 그룹
   delete_comment_dialog:
@@ -1554,18 +1554,18 @@ ko:
     respond_asap: Loomio 팀에 메시지를 보내주시면 최대한 빨리 답변해 드리겠습니다.
     happy_to_help_with: 판매 문의, 지원 요청, 기능 요청, 버그 보고 또는 발생한 문제에 대해 기꺼이 도움을 드리겠습니다.
     title: 안녕하세요! 어떻게 도와드릴까요?
-    contact_us_email: 다음 주소로 이메일을 보내실 수도 있습니다. <a href="mailto:{{email}}">{{email}}</a>
+    contact_us_email: 다음 주소로 이메일을 보내실 수도 있습니다. <a href="mailto:%{email}">%{email}</a>
     subject_placeholder: '예: 로그인 문제 또는 기능 제안'
     message_placeholder: 지원을 요청하는 경우 가능한 한 많은 정보를 제공하도록 노력하십시오.
     new_contact_message: 연락해 주셔서 감사합니다. 곧 연락드리겠습니다!
     consent_message: 당사에 연락하시면 당사 직원이 필요에 따라 귀하의 계정에 액세스하는 데 동의하게 됩니다.<br /> 우리 지원팀은 영어를 구사하며 필요한 경우 Google 번역을 사용하여 메시지를 번역합니다.<br /> 우리는 24시간 이내에 모든 메시지에 응답하는 것을 목표로 합니다.
-    success: 메시지를 보내주셔서 감사합니다, {{name}}님. 곧 답변을 받으실 수 있습니다.
-    success_via_email: 메시지를 보내주셔서 감사합니다, {{name}}님. 24시간 이내에 이메일을 통해 답변해 드리겠습니다.
+    success: 메시지를 보내주셔서 감사합니다, %{name}님. 곧 답변을 받으실 수 있습니다.
+    success_via_email: 메시지를 보내주셔서 감사합니다, %{name}님. 24시간 이내에 이메일을 통해 답변해 드리겠습니다.
   explore_page:
     header: 그룹 탐색
     search_placeholder: 공개 그룹 검색
-    single_search_result: "<strong>{{searchTerm}}과 일치하는 공개 그룹 1개:</strong>"
-    multiple_search_results: "{ <strong>{searchTerm}}과(와) 일치하는 공개 그룹 {{resultCount}}개:</strong>"
+    single_search_result: "<strong>%{searchTerm}과 일치하는 공개 그룹 1개:</strong>"
+    multiple_search_results: "{ <strong>{searchTerm}과(와) 일치하는 공개 그룹 %{resultCount}개:</strong>"
     no_results_found: "<strong>원하는 그룹을 찾을 수 없나요?</strong> 그룹의 개인정보 보호가 '비밀'로 설정된 경우 여기에 표시되지 않습니다."
     newest_first: 최신순
     biggest_first: 가장 큰 것부터
@@ -1595,8 +1595,8 @@ ko:
     custom_process: 맞춤형 프로세스
     custom_poll: 맞춤 설문조사
     delete_poll: 설문조사 삭제
-    select_count_options: "{{count}}개의 옵션을 선택하세요"
-    select_minimum_to_maximum_options: "{{최소}}~{{최대}} 옵션을 선택하세요."
+    select_count_options: "%{count}개의 옵션을 선택하세요"
+    select_minimum_to_maximum_options: "%{최소}~%{최대} 옵션을 선택하세요."
     custom_poll_types: 맞춤 설문조사 유형
     hidden_poll_templates: 숨겨진 설문조사 템플릿
     poll_template: 설문조사 템플릿
@@ -1630,7 +1630,7 @@ ko:
     results: 결과
     current_results: 현재 결과
     responses: 응답
-    close_poll_type: "{{pollType}} 종료"
+    close_poll_type: "%{pollType} 종료"
     close_early: 조기 마감
     totals: 합계
     participate: 참가하다
@@ -1659,7 +1659,7 @@ ko:
     max_score: 최대 점수
     min_score: 최소 점수
     too_long: 너무 오래
-    edit_warning: 편집은 사소한 변경이나 철자 오류 수정에만 권장됩니다. 중요한 변경 사항이 있는 경우 이 {{pollType}}을 닫고 새 항목을 시작하세요.
+    edit_warning: 편집은 사소한 변경이나 철자 오류 수정에만 권장됩니다. 중요한 변경 사항이 있는 경우 이 %{pollType}을 닫고 새 항목을 시작하세요.
     no_voting: 토론용으로만 투표할 수 없습니다.
     outdated: 시대에 뒤쳐진
   poll_common_attachment_form:
@@ -1669,9 +1669,9 @@ ko:
     closed: 종료
     all: 모두
     unread: 읽지 않음(%{count})
-    include_subgroups_mine: "{{name}} 및 내 하위 그룹"
-    include_subgroups_all: "{{name}} 및 모든 하위 그룹"
-    no_results_found: '"{{검색}}"에 대한 검색결과가 없습니다.'
+    include_subgroups_mine: "%{name} 및 내 하위 그룹"
+    include_subgroups_all: "%{name} 및 모든 하위 그룹"
+    no_results_found: '"%{검색}"에 대한 검색결과가 없습니다.'
     welcome_to_your_new_group: 새로운 Loomio 그룹에 오신 것을 환영합니다!
     lets_start_a_thread: 스레드를 시작해보자. 계속하려면 '새 스레드'를 클릭하세요.
   members_panel:
@@ -1691,7 +1691,7 @@ ko:
     show_users_in_subgroups: 하위 그룹의 사용자도 표시
     order_by_created_desc: 최신
     order_by_admin_desc: 관리자
-    loaded_of_total: "{{총}}개 중 {{로드됨}}개"
+    loaded_of_total: "%{총}개 중 %{로드됨}개"
     view_requests: 요청 보기
     header_role: 역할
     header_invited_by: 초대자
@@ -1701,8 +1701,8 @@ ko:
     requests: 요청사항
     guest: 손님
     sharable_link: 공유 가능한 링크
-    last_seen: '마지막으로 확인된 날짜: {{date}}'
-    invited_by_name: "{{name}}님이 초대함"
+    last_seen: '마지막으로 확인된 날짜: %{date}'
+    invited_by_name: "%{name}님이 초대함"
   polls_panel:
     open: 진행중
     closed: 종료
@@ -1731,8 +1731,8 @@ ko:
     notify_on_closing_soon:
       undecided_voters: 결정하지 않은 투표자들
       voting_closes_too_soon: 투표는 24시간 이내에 종료되므로 곧 마감 알림이 전송되지 않습니다.
-      closes_too_soon: 이 {{pollType}}은 24시간 이내에 종료되므로 곧 종료 알림이 전송되지 않습니다.
-      title: "{{pollType}}이 종료되기 24시간 전에 다음 주소로 알림을 보내주세요."
+      closes_too_soon: 이 %{pollType}은 24시간 이내에 종료되므로 곧 종료 알림이 전송되지 않습니다.
+      title: "%{pollType}이 종료되기 24시간 전에 다음 주소로 알림을 보내주세요."
       voting_title: 투표가 종료되기 24시간 전에 다음 주소로 알림을 보내주세요.
       nobody: 아무도
       author: 작성자(나)
@@ -1742,7 +1742,7 @@ ko:
     specified_voters_only_true: 초대받은 사람만
     specified_voters_only_false_group: 그룹의 모든 사람
     specified_voters_only_false_discussion: 스레드에 있는 모든 사람
-    invite_people_next: "{{poll_type}}을(를) 시작한 후 투표에 초대받을 사람을 선택할 수 있습니다."
+    invite_people_next: "%{poll_type}을(를) 시작한 후 투표에 초대받을 사람을 선택할 수 있습니다."
     shuffle_options:
       shuffle_options: 셔플 옵션
       title: 옵션을 무작위 순서로 표시
@@ -1850,9 +1850,9 @@ ko:
     stance_reason_is_required: 투표 이유를 적어주세요
     limit_reason_length: 이유를 최대 500자로 제한하세요.
     save_poll: 설문조사 저장
-    start_poll_type: "{{poll_type}} 시작"
-    share_poll_type: "{{poll_type}} 공유"
-    who_may_vote: 이 {{poll_type}}에 누가 투표할 수 있나요?
+    start_poll_type: "%{poll_type} 시작"
+    share_poll_type: "%{poll_type} 공유"
+    who_may_vote: 이 %{poll_type}에 누가 투표할 수 있나요?
     update: 업데이트
     add_voters: 유권자 추가
     notify_invitees: 알림 보내기
@@ -1908,19 +1908,19 @@ ko:
     name_placeholder: 이름
     set_password: 비밀번호가 설정됨
     code: '000000'
-    youre_invited: 귀하는 {{group_name}}에 가입하도록 초대되었습니다.
+    youre_invited: 귀하는 %{group_name}에 가입하도록 초대되었습니다.
     youre_invited_discussion: 귀하는 토론에 참여하도록 초대되었습니다.
     youre_invited_poll: 귀하는 투표에 초대되었습니다.
-    existing_account_can_sign_in: 이미 {{site_name}} 사용자라면 기존 계정으로 로그인하세요.
-    sign_up_or_log_in: 계정을 만들거나 {{site_name}}에 로그인하세요.
-    sign_in_to_loomio: "{{site_name}}에 로그인하세요."
+    existing_account_can_sign_in: 이미 %{site_name} 사용자라면 기존 계정으로 로그인하세요.
+    sign_up_or_log_in: 계정을 만들거나 %{site_name}에 로그인하세요.
+    sign_in_to_loomio: "%{site_name}에 로그인하세요."
     sign_in_help: 로그인하는 데 문제가 있나요?
     sign_in: 로그인
     continue: 계속하다
     create_account: 계정 만들기
-    sign_up_as: "{{email}}(으)로 계정 만들기"
-    sign_in_as: "{{name}}(으)로 로그인"
-    continue_with_provider: "{{provider}}로 계속하기"
+    sign_up_as: "%{email}(으)로 계정 만들기"
+    sign_in_as: "%{name}(으)로 로그인"
+    continue_with_provider: "%{provider}로 계속하기"
     continue_with_email: 이메일로 계속
     or_enter_your_email: 또는 이메일 주소를 입력하세요.
     enter_your_name: 당신의 이름을 입력
@@ -1939,30 +1939,30 @@ ko:
     enter_your_password: 계속하려면 비밀번호를 입력하세요
     check_spam_folder: 이메일이 빨리 도착하지 않으면 스팸 폴더를 확인하세요.
     sign_up_helptext: 사용자 계정을 만들려면 이 양식을 작성해 주세요.
-    i_accept_all: 나는 {{termsLink}} 및 {{privacyLink}}에 동의합니다.
-    newsletter_label: "{{link}}을(를) 받고 싶습니다"
+    i_accept_all: 나는 %{termsLink} 및 %{privacyLink}에 동의합니다.
+    newsletter_label: "%{link}을(를) 받고 싶습니다"
     name_required: 이름을 입력하세요
     terms_required: 서비스 약관에 동의해야 합니다.
-    account_inactive: 아, {{email}} 계정이 비활성화된 것 같습니다!
-    privacy_notice: 우리는 귀하의 데이터를 절대 판매하지 않습니다.<br> <a href='{{privacyUrl}}' target='_blank'>개인 정보 정책</a>
-    welcome: "{{siteName}}에 처음이신가요?"
-    welcome_back: "{{name}} 님, 다시 오신 것을 환영합니다!"
+    account_inactive: 아, %{email} 계정이 비활성화된 것 같습니다!
+    privacy_notice: 우리는 귀하의 데이터를 절대 판매하지 않습니다.<br> <a href='%{privacyUrl}' target='_blank'>개인 정보 정책</a>
+    welcome: "%{siteName}에 처음이신가요?"
+    welcome_back: "%{name} 님, 다시 오신 것을 환영합니다!"
     forgot_password: 비밀번호를 잊으 셨나요
     login_link: 로그인 이메일 보내기
     sign_in_via_email: 이메일로 로그인
     set_password_helptext: 다음번에는 비밀번호를 사용하시겠습니까?
-    hello: 안녕하세요, {{name}} 님!
-    new_to_loomio: "{{site_name}}에 처음 오셨나요?"
+    hello: 안녕하세요, %{name} 님!
+    new_to_loomio: "%{site_name}에 처음 오셨나요?"
     already_a_user: 이미 계정이 있나요?
     email_address_of_existing_account: 기존 계정의 이메일 주소를 입력하세요.
     link_accounts: 계정 연결
     check_your_email: 이메일을 확인!
-    login_link_sent: "{{email}}(으)로 이메일을 보냈습니다."
+    login_link_sent: "%{email}(으)로 이메일을 보냈습니다."
     instructions: 링크를 클릭하여 로그인하거나 아래 코드를 입력하세요.
     instructions_code: 해당 이메일의 코드를 입력하세요.
     too_many_attempts: 시도 횟수가 너무 많습니다. 이메일에 있는 링크를 클릭하여 로그인해 보세요.
     invalid_code: 죄송합니다. 코드가 일치하지 않습니다. 이메일을 확인하고 다시 시도하세요.
-    password_link_sent: 비밀번호 설정 방법에 대한 지침이 포함된 이메일을 {{email}}로 보냈습니다.
+    password_link_sent: 비밀번호 설정 방법에 대한 지침이 포함된 이메일을 %{email}로 보냈습니다.
     reactivate_link_sent: 귀하의 계정을 다시 활성화하기 위한 지침이 포함된 이메일을 보내드렸습니다.
     signed_in: 성공적으로 로그인되었습니다
     email_verified: 이메일이 확인되었습니다.
@@ -2012,7 +2012,7 @@ ko:
       discord: 불화
     subtitle: API를 사용하여 Loomio에 나머지 도구를 연결하세요
     deprecated: 이 API는 더 이상 사용되지 않습니다. APIv2로 이동하세요(그룹 설정 메뉴의 API 문서 참조).
-    we_have_guides: 서비스 연결에 대한 도움말은 <a href="{{url}}" target="_blank">웹훅 설정 가이드를</a> 참조하세요.
+    we_have_guides: 서비스 연결에 대한 도움말은 <a href="%{url}" target="_blank">웹훅 설정 가이드를</a> 참조하세요.
     add_webhook: 웹훅 추가
     show_docs: API 사용량 보기
     save_to_show_docs: 저장한 후 여기로 돌아와서 API 키를 찾으세요.
@@ -2020,7 +2020,7 @@ ko:
     add_integration: 통합 추가
     success: 통합이 추가되었습니다!
     remove: 통합 제거
-    confirm_remove: "{{name}} 통합을 삭제하시겠습니까?"
+    confirm_remove: "%{name} 통합을 삭제하시겠습니까?"
     removed: 통합이 제거되었습니다.
     url_label: 웹훅 URL
     url_placeholder: https://hooks.example.com/...
@@ -2179,7 +2179,7 @@ ko:
     hide_results: 결과 숨기기
     until_vote: 투표가 완료될 때까지
     until_you_vote: 투표할 때까지
-    until_poll_type_closed: "{{pollType}}이 종료될 때까지"
+    until_poll_type_closed: "%{pollType}이 종료될 때까지"
     until_voting_is_closed: 투표가 마감될 때까지
     deleted: 이 설문조사는 삭제되었습니다.
   group_files_panel:
@@ -2189,8 +2189,8 @@ ko:
     uploaded_at: 업로드 시간
     delete_confirmation: 이 첨부파일을 삭제하시겠습니까? 관련 댓글이나 스레드에서 삭제됩니다. 이 취소 할 수 없습니다.
   subgroups_panel:
-    search_subgroups_of_name: "{{name}}의 하위 그룹 검색"
-    group_without_subgroups: 하위 그룹이 없는 {{name}}
+    search_subgroups_of_name: "%{name}의 하위 그룹 검색"
+    group_without_subgroups: 하위 그룹이 없는 %{name}
   poll_common_action_panel:
     from_the_thread: 스레드 템플릿에서
     from_the_group: 그룹에서
@@ -2208,19 +2208,19 @@ ko:
     draft_mode: 투표가 비활성화되었습니다. 아직 투표가 진행되지 않습니다.
     voting_disabled_poll_is_template: 투표가 비활성화되었습니다. 이것은 템플릿입니다.
   poll_common_collapsed:
-    by_who: 이름으로}}
+    by_who: 이름으로}
   poll_common_close_form:
     title: 지금 %{poll_type}을(를) 종료하시겠습니까?
     helptext: "%{poll_type}을(를) 조기에 종료하고 결과를 공유하시겠습니까?"
     close_poll_type: "%{poll_type} 닫기"
     poll_type_closed: "%{poll_type} 종료됨"
   poll_common_reopen_form:
-    title: "{{poll_type}} 다시 열기"
-    helptext: 참여하는 데 시간이 더 필요한 경우 {{poll_type}}을 다시 시작하세요.
-    success: "{{poll_type}}이 다시 열렸습니다."
+    title: "%{poll_type} 다시 열기"
+    helptext: 참여하는 데 시간이 더 필요한 경우 %{poll_type}을 다시 시작하세요.
+    success: "%{poll_type}이 다시 열렸습니다."
   poll_common_move_form:
-    title: "{{poll_type}} 이동"
-    success: "{{poll_type}}이(가) {{group}}(으)로 이동되었습니다."
+    title: "%{poll_type} 이동"
+    success: "%{poll_type}이(가) %{group}(으)로 이동되었습니다."
   poll_common_wip_field:
     voting_enabled: 투표 가능
     enable_voting: 투표 활성화
@@ -2239,7 +2239,7 @@ ko:
     invalid_date: 잘못된 날짜
   poll_card:
     poll_type_by_name: "%{poll_type} 작성자: %{name}"
-    started_by: "{{name}}님이 시작함"
+    started_by: "%{name}님이 시작함"
   poll_common_votes_panel:
     vote_removed: 투표가 삭제되었습니다.
     undecided: 미정
@@ -2265,10 +2265,10 @@ ko:
     enter_outcome: 결과 입력
     poll_type: 이 %{poll_type}이(가) 종료되었습니다. 시간을 내어 결과를 고려한 다음 결과를 공유하여 사람들이 다음에 무슨 일이 일어날지 알 수 있도록 하세요.
   poll_common_outcome_panel:
-    authored_by: 이름으로}}
+    authored_by: 이름으로}
   poll_common_delete_modal:
     question: 정말로 삭제하시겠습니까?
-    title: "{{pollType}} 삭제"
+    title: "%{pollType} 삭제"
     success: 삭제되었습니다.
   poll_proposal_form:
     start_header: 제안 시작
@@ -2294,7 +2294,7 @@ ko:
     dots_per_person_helptext: 각 사람에게 할당하도록 요청된 총 포인트 수입니다.
   poll_meeting_form:
     timeslots: 시간대
-    no_options: 현재 시간대({{zone}})의 시간을 입력하세요. 참가자는 현지 시간대로 번역된 시간을 볼 수 있습니다.
+    no_options: 현재 시간대(%{zone})의 시간을 입력하세요. 참가자는 현지 시간대로 번역된 시간을 볼 수 있습니다.
     meeting_duration: 회의 시간
     add_option_placeholder: 새로운 시간 추가
     time_slot_added: 시간대가 추가되었습니다.
@@ -2334,8 +2334,8 @@ ko:
     agree_target_helptext: 원하는 자원봉사자의 목표 수는 몇 명입니까?
     agree_target_label: 대상수
   poll_common_percent_voted:
-    sentence: "{{denominator}}명 중 {{numerator}}명이 참여했습니다({{percent}}%)."
-    target_progress: 목표의 {{percent}}%에 도달했습니다. ({{num}} / {{대상}})
+    sentence: "%{denominator}명 중 %{numerator}명이 참여했습니다(%{percent}%)."
+    target_progress: 목표의 %{percent}%에 도달했습니다. (%{num} / %{대상})
   poll_remove_vote:
     title: 투표를 삭제하시겠습니까?
     helptext: 투표를 삭제하시겠습니까? 미정으로 표시되며 원할 경우 나중에 다시 투표할 수 있습니다.
@@ -2348,7 +2348,7 @@ ko:
     stance_created: 투표가 생성되었습니다.
     stance_updated: 투표가 업데이트되었습니다.
   poll_meeting_vote_form:
-    local_time_zone: 현지 시간 - {{zone}}
+    local_time_zone: 현지 시간 - %{zone}
     can_attend: 참석 가능
     unable: 할 수 없는
     if_need_be: 필요하다면
@@ -2506,28 +2506,28 @@ ko:
     removed: 항목이 삭제되었습니다.
     deleted_group: 삭제된 그룹
     invite_only_thread: 스레드만 초대
-    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> <strong>{{title}}</strong> 에 대한 답변"
-    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> 스레드 제목을 수정했습니다."
-    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> 스레드 컨텍스트를 편집했습니다."
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}님</a> 이 스레드 개인정보 보호를 변경했습니다."
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> 스레드를 수정했습니다."
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> <strong>{{title}}</strong> 에서 스레드를 이동했습니다."
-    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> 스레드를 닫았습니다."
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}님</a> 이 스레드를 다시 열었습니다."
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> 이 스레드의 포크를 만들었습니다: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{작가}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}님</a> 이 결과를 공유했습니다"
-    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> {{polltype}}을(를) 다시 열었습니다."
-    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> {{polltype}}을(를) 마감했습니다."
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}님</a> 이 {{polltype}}을(를) 시작했습니다"
-    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> {{polltype}}을(를) 편집했습니다."
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> {{polltype}}에 옵션을 추가했습니다."
-    poll_expired: "{{polltype}} 종료됨"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}님이</a> 다음 항목에 투표했습니다: <strong>{{title}}</strong>"
-    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}가</a> 다음 항목에 대한 투표를 업데이트했습니다. <strong>{{title}}</strong>"
+    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> <strong>%{title}</strong> 에 대한 답변"
+    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> 스레드 제목을 수정했습니다."
+    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> 스레드 컨텍스트를 편집했습니다."
+    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}님</a> 이 스레드 개인정보 보호를 변경했습니다."
+    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> 스레드를 수정했습니다."
+    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> <strong>%{title}</strong> 에서 스레드를 이동했습니다."
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> 스레드를 닫았습니다."
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}님</a> 이 스레드를 다시 열었습니다."
+    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> 이 스레드의 포크를 만들었습니다: <strong><a href='d/%{key}'>%{title}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{작가}</a>"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}님</a> 이 결과를 공유했습니다"
+    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> %{polltype}을(를) 다시 열었습니다."
+    poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> %{polltype}을(를) 마감했습니다."
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}님</a> 이 %{polltype}을(를) 시작했습니다"
+    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> %{polltype}을(를) 편집했습니다."
+    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> %{polltype}에 옵션을 추가했습니다."
+    poll_expired: "%{polltype} 종료됨"
+    stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> 다음 항목에 투표했습니다: <strong>%{title}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}가</a> 다음 항목에 대한 투표를 업데이트했습니다. <strong>%{title}</strong>"
     event_removed: 대화목록에서 삭제됨
   add_poll_to_thread_modal:
-    success: 성공했습니다. {{pollType}}이 스레드에 추가되었습니다!
+    success: 성공했습니다. %{pollType}이 스레드에 추가되었습니다!
   powered_by:
     this_is_loomio_md: Loomio는 함께 결정을 내리는 앱입니다. [무료로 사용해 보세요](https://www.loomio.com)
     slogan: 함께하면 더 나은 결정을 내릴 수 있습니다

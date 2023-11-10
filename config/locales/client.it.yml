@@ -42,9 +42,9 @@ it:
     start_a_demo: Inizia una demo
     demo_group: Gruppo di prova
     generating_demo: Ok, aspetta un attimo! Creare una demo impiega circa 20 secondi.
-    start_a_x_day_free_trial: Inizia una prova gratuita di {{day}} giorni
+    start_a_x_day_free_trial: Inizia una prova gratuita di %{day} giorni
     ready_to_trial: Pronti per provare Loomio con la vostra organizzazione?
-    start_a_no_obligation_x_day_trial: Inizia un gruppo di Loomio con una prova gratuita di {{day}} giorni.
+    start_a_no_obligation_x_day_trial: Inizia un gruppo di Loomio con una prova gratuita di %{day} giorni.
     you_can_test_it_out: 'Puoi invitare altre persone a unirsi, integrarlo con gli altri tuoi strumenti, e provare a prendere delle decisioni.
 
       '
@@ -112,11 +112,11 @@ it:
     is_old_plan: Loomio ha delle nuove semplici formule di abbonamento
     change_plan: Cambia di piano
     view_plans: Vedi piani
-    free_trial: Prova gratuita. {{days]} giorni restanti.
+    free_trial: Prova gratuita. %{days]} giorni restanti.
     trial_expired: La tua prova è scaduta. Aggiorna per continuare usando Loomio.
     tooltip: 'Nostri prezzi sono fantastichi! Aggiorna oggi e godi quello  che Loomio può offrire al tuo grupo. '
-    was_gift_trial: 'Il tuo gruppo utilizza Loomio gratuitamente da {{createdDate}}. Non siamo in grado di continuare a fornire un servizio gratuito. Esegui l''aggiornamento per continuare a utilizzare Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Per saperne di più</a>'
-    was_gift_remaining: "{{days}} giorni restanti."
+    was_gift_trial: 'Il tuo gruppo utilizza Loomio gratuitamente da %{createdDate}. Non siamo in grado di continuare a fornire un servizio gratuito. Esegui l''aggiornamento per continuare a utilizzare Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Per saperne di più</a>'
+    was_gift_remaining: "%{days} giorni restanti."
     was_gift_expired: Il vostro piano gratuito è già scaduto
   subscription_status:
     plan: piano
@@ -151,10 +151,10 @@ it:
     discussions_count_plural: "(%{count} discussioni)"
     tag_created: Etichetta salvata
     tag_destroyed: Tag eliminato
-    tags_marked: Discussioni marcate con '{{name}}' nel gruppo {{groupName}}
+    tags_marked: Discussioni marcate con '%{name}' nel gruppo %{groupName}
     no_tags_present: Nessuna discussione trovata con questa etichetta. Prova selezionandone un'altra
     no_tags_in_group: Questo gruppo non ha ancora etichette di categoria
-    only_admins_can_edit_tags: Spiacenti, solo gli amministratori di {{group}} possono creare, rinominare o cancellare le etichette
+    only_admins_can_edit_tags: Spiacenti, solo gli amministratori di %{group} possono creare, rinominare o cancellare le etichette
   poll_types:
     proposal: proposta
     poll: Sondaggio
@@ -174,7 +174,7 @@ it:
     dot_vote: destinare
     meeting: sondaggio appuntamento
   timezones:
-    local: Ora locale ({{value}})
+    local: Ora locale (%{value})
   common:
     loomio_help: Aiuto di Loomio
     help_and_guides: Aiuto & guide
@@ -200,7 +200,7 @@ it:
     attachments: Allegati
     template: Modello
     links: Collegamenti
-    active_time_ago: Ultimamente attivo {{time_ago}}
+    active_time_ago: Ultimamente attivo %{time_ago}
     confirm_discard_changes: Scarta le modifiche?
     something_went_wrong: Uh oh! Qualcosa è andato storto
     check_for_errors_and_try_again: Per favore controlla gli errori nel modulo e riprova
@@ -208,8 +208,8 @@ it:
     time:
       am: am
       pm: pm
-    closing_in: chiude in {{time}}
-    closed_ago: Chiuso alle {{time}}
+    closing_in: chiude in %{time}
+    closed_ago: Chiuso alle %{time}
     volume: Volume
     notification_volume: Volume delle notifiche
     group: Gruppo
@@ -245,7 +245,7 @@ it:
     reset: Reimposta
     copy_text: Copia testo
     copied: Copiato negli appunti
-    points_abbrev: Ogni voto vale {{score}} punti
+    points_abbrev: Ogni voto vale %{score} punti
     total: Totale
     action:
       print: Stampa
@@ -314,7 +314,7 @@ it:
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
-    prefix_eg: ad esempio {{val}}
+    prefix_eg: ad esempio %{val}
     are_you_sure: Sei sicuro?
     visit_loomio_help: Visita Loomio aiuto
     admin_menu: Menù amministratore
@@ -322,7 +322,7 @@ it:
   merge_accounts:
     modal:
       title: Unisci account
-      helptext: È possibile unire l'account in <strong>{{sourceEmail}}</strong> in quello di <strong>{{targetEmail}}</strong>. Fare clic su Verifica e verrà inviato un messaggio di posta elettronica di verifica a {{targetEmail}} per avviare il processo.
+      helptext: È possibile unire l'account in <strong>%{sourceEmail}</strong> in quello di <strong>%{targetEmail}</strong>. Fare clic su Verifica e verrà inviato un messaggio di posta elettronica di verifica a %{targetEmail} per avviare il processo.
       submit: Verifica
       flash: Email di verifica inviato!
     email_taken: Spiacenti, quell'e-mail è già associata a un altro utente. Quell'email ti appartiene?
@@ -363,8 +363,8 @@ it:
   verify_email_notice:
     please_verify: Grazie della partecipazione! Cerca nella tua email un link e cliccaci per verificare il tuo voto.
   previous_polls_page:
-    heading: Attività in {{nome}}
-    polls_count: Mostra {{loaded}} su un totale di {{total}} decisioni
+    heading: Attività in %{nome}
+    polls_count: Mostra %{loaded} su un totale di %{total} decisioni
     search_activities: Cerca decisioni
   volume_levels:
     loud: Alto
@@ -409,12 +409,12 @@ it:
         normal: Riceverai un'email sulle proposte in questa discussione.
         quiet: Non riceverai email su questa discussione.
     membership:
-      title: Notifiche per {{title}}
+      title: Notifiche per %{title}
       loud_description: Riceverai un'email ogni volta che c'è attività in questo gruppo.
       normal_description: Riceverai un'email ogni volta che c'è attività in questo gruppo.
       quiet_description: Non riceverai un'email sulle attività in questo gruppo.
       apply_to_all: Applica questa configurazione a tutti i miei gruppi.
-      apply_to_organization: Applica a tutti i gruppi in {{organization}}
+      apply_to_organization: Applica a tutti i gruppi in %{organization}
       messages:
         loud: Riceverai un'email per tutte le attività in questo gruppo.
         normal: Riceverai email solo per gli annunci pubblicati in questo gruppo.
@@ -467,7 +467,7 @@ it:
       remove_attachment: Rimuovi l'allegato
     messages:
       created: Commento inserito
-      replied: "{{name}} è stato notificato della risposta"
+      replied: "%{name} è stato notificato della risposta"
       updated: Commento aggiornato
       destroyed: Commento cancellato.
       removed: Commento eliminato
@@ -477,12 +477,12 @@ it:
     cancel_reply: Annulla risposta
     confirm_delete_message: Sei sicuro che vuoi cancellare questo commento?
     confirm_delete: Cancella commento
-    in_reply_to: Rispondi a {{name}}
+    in_reply_to: Rispondi a %{name}
     write_a_comment: Scrivi un commento...
     post_comment: Pubblica un commento
     submit_button:
       label: Messaggio
-    private_privacy_notice: Il tuo commento sarà visibile solamente ai membri di {{groupName}}.
+    private_privacy_notice: Il tuo commento sarà visibile solamente ai membri di %{groupName}.
     public_privacy_notice: Il tuo commento sarà visibile a qualsiasi persona sul web.
     sign_in: Entra per partecipare alla discussione
   thread_nav:
@@ -526,11 +526,11 @@ it:
     unread: Nuovo per te
   navbar:
     search_all_threads: Cerca in tutte le discussioni
-    search_threads: Cerca le discussioni in  {{name}}
-    search_polls: Cerca i sondaggi in  {{name}}
-    search_members: Cerca i membri in  {{name}}
-    search_subgroups: Cerca i membri in  {{name}}
-    search_files: Cerca i files in  {{name}}
+    search_threads: Cerca le discussioni in  %{name}
+    search_polls: Cerca i sondaggi in  %{name}
+    search_members: Cerca i membri in  %{name}
+    search_subgroups: Cerca i membri in  %{name}
+    search_files: Cerca i files in  %{name}
     recent_title: Vai alla dashboard
     unread_title: Vedi le attività non lette
     start_thread: Nuova discussione
@@ -550,7 +550,7 @@ it:
     open_sidebar: barra laterale aperta
     close_sidebar: barra laterale chiusa
     logo_title: Home page
-    group_and_subgroups: "{{group}} & sottogruppi"
+    group_and_subgroups: "%{group} & sottogruppi"
   user_dropdown:
     pin_sidebar: Attiva la barra laterale
     unpin_sidebar: Rimuovi la barra laterale
@@ -562,7 +562,7 @@ it:
     edit_profile: Modifica profilo
     email_settings: Impostazioni notifiche
     help: Aiuto
-    contact_site_name: Contatto {{site_name}}
+    contact_site_name: Contatto %{site_name}
     contact_support: Contatta l'assistenza
     sign_out: Esci
     beta_collab: "\U0001F9EA Beta features attivate!"
@@ -570,7 +570,7 @@ it:
   membership_card:
     group_members: Membri del gruppo
     discussion_members: Membri della discussione
-    poll_members: Membri del sondaggio {{pollType}}
+    poll_members: Membri del sondaggio %{pollType}
     voters: Elettori
     invite_to_group: Invita nel gruppo
     invite_to_discussion: Invita nella discussione
@@ -586,7 +586,7 @@ it:
     remove_from:
       discussion: Rimuovi dalla discussione
       group: Rimuovi dal gruppo
-      poll: 'Rimuovi dal sondaggio {{pollType}} '
+      poll: 'Rimuovi dal sondaggio %{pollType} '
     cancel_invitation: Revoca invito
     set_name_and_username: Imposta nome e nome utente
   notification_models:
@@ -707,8 +707,8 @@ it:
     privacy_label: Privacy
     privacy_public: Chiunque può vedere la discussione se ha il link
     privacy_private: Solo i membri del gruppo possono vedere questa discussione
-    privacy_organisation: La discussione sarà visibile ai membri di {{parent}} e ai membri di {{group}}.
-    fork_notice: Una nuova discussione verrà creata con %{count} istanze da {{title}}
+    privacy_organisation: La discussione sarà visibile ai membri di %{parent} e ai membri di %{group}.
+    fork_notice: Una nuova discussione verrà creata con %{count} istanze da %{title}
     notify_group: Gruppo di notifica
     thread_templates: Modelli di filettatura
     new_thread_template: Nuovo modello di filo
@@ -720,8 +720,8 @@ it:
     new_thread_from_template: 'Nuovo thread: %{process_name}'
   announcement:
     send_discussion: Invia thread
-    send_group: Invita persone a {{name}}
-    send_poll: Invia {{type}}
+    send_group: Invita persone a %{name}
+    send_poll: Invia %{type}
     send_outcome: Invia risultato
     discussion_notification_history: Cronologia delle notifiche dei thread
     group_notification_history: Cronologia degli inviti di gruppo
@@ -731,7 +731,7 @@ it:
     notification_history_explanation: "✓ indica che la notifica è stata letta o che l'e-mail è stata aperta"
     quick_add: 'Aggiunta rapida:'
     any_other_groups: Altri gruppi?
-    notified_people: "{{name}} notifica {{length}} persone:"
+    notified_people: "%{name} notifica %{length} persone:"
     preview: Anteprima posta elettronica
     no_notifications_sent: Non sono state inviate notifiche
     history_error: Qualcosa è andato storto! Impossibile caricare la cronologia.
@@ -742,37 +742,37 @@ it:
     only_admins_can_announce: Solo gli amministratori possono notificare l'intero gruppo
     only_admins_can_invite: Solo gli amministratori possono invitare gli ospiti
     only_admins_can_announce_or_invite: Solo gli amministratori possono notificare l'intero gruppo o invitare gli ospiti
-    user_mentioned: "{{name}} ha menzionato {{length}} persone:"
-    comment_replied_to: "{{name}} ha risposto a {{length}} persone:"
-    new_discussion: "{{name}} ha invitato {{length}} persone al thread:"
-    discussion_announced: "{{name}} ha invitato {{length}} persone al thread:"
-    poll_created: "{{name}} ha invitato {{length}} persone a votare:"
-    poll_announced: "{{name}} ha invitato {{length}} persone a votare:"
-    outcome_created: "{{name}} ha condiviso un risultato con {{length}} persone:"
-    outcome_announced: "{{name}} ha condiviso un risultato con {{length}} persone:"
-    announcement_created: "{{name}} ha invitato {{length}} persone al thread:"
-    discussion_edited: "{{name}} ha modificato il thread, notificando {{length}} persone:"
-    poll_edited: "{{name}} ha modificato un sondaggio, notificando {{length}} persone:"
-    outcome_edited: "{{name}} ha modificato un risultato, notificando {{length}} persone:"
-    outcome_updated: "{{name}} ha modificato un risultato, notificando {{length}} persone:"
-    poll_closing_soon: "{{name}} promemoria di chiusura del sondaggio ha notificato {{length}} persone:"
-    poll_reminder: "{{name}} ha ricordato a {{length}} persone di votare:"
+    user_mentioned: "%{name} ha menzionato %{length} persone:"
+    comment_replied_to: "%{name} ha risposto a %{length} persone:"
+    new_discussion: "%{name} ha invitato %{length} persone al thread:"
+    discussion_announced: "%{name} ha invitato %{length} persone al thread:"
+    poll_created: "%{name} ha invitato %{length} persone a votare:"
+    poll_announced: "%{name} ha invitato %{length} persone a votare:"
+    outcome_created: "%{name} ha condiviso un risultato con %{length} persone:"
+    outcome_announced: "%{name} ha condiviso un risultato con %{length} persone:"
+    announcement_created: "%{name} ha invitato %{length} persone al thread:"
+    discussion_edited: "%{name} ha modificato il thread, notificando %{length} persone:"
+    poll_edited: "%{name} ha modificato un sondaggio, notificando %{length} persone:"
+    outcome_edited: "%{name} ha modificato un risultato, notificando %{length} persone:"
+    outcome_updated: "%{name} ha modificato un risultato, notificando %{length} persone:"
+    poll_closing_soon: "%{name} promemoria di chiusura del sondaggio ha notificato %{length} persone:"
+    poll_reminder: "%{name} ha ricordato a %{length} persone di votare:"
     audiences:
-      group: Membri di {{name}}
+      group: Membri di %{name}
       discussion_group: Tutti nel filo
       voters: Tutti invitati a votare
       decided_voters: Tutti coloro che hanno votato
       undecided_voters: Elettore indecisi
-      non_voters: Membri di {{name}} non ancora invitati
+      non_voters: Membri di %{name} non ancora invitati
       everyone_in_the_group: Tutti nel gruppo
     form:
-      too_many_invitations: 'Hai superato il limite di inviti. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>
+      too_many_invitations: 'Hai superato il limite di inviti. <a href="%{upgradeUrl}" target="_blank">Upgrade</a>
 
         '
       no_invitations_remaining: |
-        <p>sono stati utilizzati tutti gli inviti {{maxMembers}} disponibili per questo gruppo.</p>
-        <p>Il passaggio successivo, <a href="{{upgradeUrl}}" target="_blank">scegliere un piano</a> per continuare a collaborare su Loomio.</p>
-      invitations_remaining: '%{count} invitati rimanenti. <a href="{{upgradeUrl}}" target="_blank">Upgrade</a>'
+        <p>sono stati utilizzati tutti gli inviti %{maxMembers} disponibili per questo gruppo.</p>
+        <p>Il passaggio successivo, <a href="%{upgradeUrl}" target="_blank">scegliere un piano</a> per continuare a collaborare su Loomio.</p>
+      invitations_remaining: '%{count} invitati rimanenti. <a href="%{upgradeUrl}" target="_blank">Upgrade</a>'
       who_to_invite: Chi vorresti invitare?
       invitation_message_placeholder: Messaggio da includere nel messaggio di posta elettronica di invito. (facoltativo)
       invitation_message_label: Messaggio
@@ -812,15 +812,15 @@ it:
       placeholder: È possibile immettere nomi o indirizzi e-mail
       notified_empty: Nessuno è ancora stato selezionato.
       single_notification: Verrà inviato un avviso
-      multiple_notifications: Verranno inviati {{notified}} avvisi.
-      notified: 'A {{notified}} persone sarà inviato un avviso:'
+      multiple_notifications: Verranno inviati %{notified} avvisi.
+      notified: 'A %{notified} persone sarà inviato un avviso:'
       notified_singular: 1 persona sarà avvisata
       notified_none: Nessuno sarà avisato
       added: "%{count} persone saranno aggiunte."
       added_singular: Una persona sarà aggiunta
       added_none: Nessuno sarà aggiunto.
-      group_title: "{{name}} (%{count} persone)"
-      visible_to_group: Chiunque in {{group}} sarà in grado di vedere questa discussione.
+      group_title: "%{name} (%{count} persone)"
+      visible_to_group: Chiunque in %{group} sarà in grado di vedere questa discussione.
       visible_to_guests: Solo le persone invitate possono vedere questa discussione.
       click_group_to_see_individuals: Fai clic sul gruppo per visualizzare gli individui
       invite_people_to_evaluate_loomio: Invita alcune persone nel tuo gruppo Loomio per prendere una decisione insieme
@@ -834,7 +834,7 @@ it:
       no_members: Questo non è ancora stato condiviso con nessuno!
       group_admin: Amministratore gruppo
       thread_admin: Amministratore thread
-      last_read_at: Ultima vista {{time}}
+      last_read_at: Ultima vista %{time}
       has_not_read_thread: Non ha visualizzato la discussione
     group_form:
       search_placeholder: Cerca persone...
@@ -856,8 +856,8 @@ it:
     invite_guests: Invita ospiti
     translate_thread: Traduci il contesto
     edit_poll: Modifica sondaggio
-    edit_poll_type: Modifica {{pollType}}
-    new_poll_type: Nuovo {{pollType}}
+    edit_poll_type: Modifica %{pollType}
+    new_poll_type: Nuovo %{pollType}
     move_items: Sposta elementi
     announce_poll: Invita le persone a votare
     announce_poll_active: "(Nessuno è stato ancora invitato)"
@@ -961,7 +961,7 @@ it:
     join_group: Iscriviti al gruppo
     membership_requested: Iscrizione richiesta
     messages:
-      joined_group: Sei membro/a del gruppo {{group}}
+      joined_group: Sei membro/a del gruppo %{group}
   membership_request_form:
     aria_label: Modulo richiesta iscrizione
     heading: Chiedi di iscriverti al gruppo
@@ -971,34 +971,34 @@ it:
     submit_button: Chiedi di iscriverti
     introduction_over_limit: Risposta troppo lunga
     messages:
-      membership_requested: Hai una richiesta per partecipare a {{group}}
+      membership_requested: Hai una richiesta per partecipare a %{group}
   revision_history_modal:
     aria_label: Registro delle revisioni
     discussion_header: Modifiche alla discussione
     comment_header: Modifiche ai commenti
     poll_header: Modifiche al sondaggio
     outcome_header: Modifiche ai risultati
-    started_by: Iniziato da <strong>{{name}}</strong>
-    edited_by: Modificato da <strong>{{name}}</strong>
-    edit_by: Modifica in base a {{name}} · {{data}}
+    started_by: Iniziato da <strong>%{name}</strong>
+    edited_by: Modificato da <strong>%{name}</strong>
+    edit_by: Modifica in base a %{name} · %{data}
     posted: Pubblicato
     field: Campo
     before: Prima
     after: Dopo
     original_text: Originale
     current_revision: Più recente
-    closing_at_changed: orario di chiusura impostato su {{time}}
-    private_changed: privacy impostata su {{private}}
-    group_id_changed: spostato in {{name}}
+    closing_at_changed: orario di chiusura impostato su %{time}
+    private_changed: privacy impostata su %{private}
+    group_id_changed: spostato in %{name}
     stance_header: Vota le modifiche
   reactions_input:
     add_your_reaction: Aggiungi la tua reazione
   reactions_display:
     more_reactions: "%{count} in più"
     you: Tu
-    you_and_name: Tu e {{name}}
-    you_and_name_and_count_more: Tu, {{name}} e %{count} in più
-    name_and_count_more: "{{name}} e altri %{count} "
+    you_and_name: Tu e %{name}
+    you_and_name_and_count_more: Tu, %{name} e %{count} in più
+    name_and_count_more: "%{name} e altri %{count} "
   context_panel:
     thread_status:
       pinned: Questo thread è stato bloccato. Rimarrà in cima all'elenco dei thread del gruppo per tutti gli utenti.
@@ -1075,21 +1075,21 @@ it:
     volume:
       loud: Invia una mail in caso di qualsiasi tipo di attività.
       loud_aria_description: Il volume delle notifiche per questo gruppo è settato su Alto. Riceverai una mail in caso di qualsiasi attività nel gruppo.
-      loud_message: Riceverai le email relative alle attività in "{{name}}."
+      loud_message: Riceverai le email relative alle attività in "%{name}."
       normal: 'Invia emails solo in caso di attività importanti: nuove discussioni e proposte, risultati di votazioni ecc.'
       normal_aria_description: Il volume delle tue notifiche è settato su Normale. Verrai indormato/a via email sulle attività più importanti, ad esempio quando qualcuno lancia una nuova discussione, una proposta oppure stabilisce un esito.
-      normal_message: Riceverai un'email solamente per gli eventi importanti di "{{name}}"
+      normal_message: Riceverai un'email solamente per gli eventi importanti di "%{name}"
       quiet: Non inviare email su questo gruppo. Le attività verranno mostrate nella bacheca.
       quiet_aria_description: Il tuo livello delle notifiche per questo gruppo è settato su Quieto. Non riceverai email da questo gruppo e le sue attività verranno mostrate sulla tua bacheca.
-      quiet_message: Non riceverai email sulle attivita in "{{name}}".
+      quiet_message: Non riceverai email sulle attivita in "%{name}".
       mute: Non fare comparire questo gruppo sulla tua bacheca e non mandare notifiche a meno che tu non sia @menzionato.
       mute_aria_description: Il tuo livello delle notifiche per questo gruppo è settato su Muto. Non riceverai email da questo gruppo a meno che qualcuno non ti @menzioni e le sue attività non verranno mostrate sulla tua bacheca.
-      mute_message: '"{{name}}" è stata rimossa dalla tua dashboard.'
+      mute_message: '"%{name}" è stata rimossa dalla tua dashboard.'
     privacy:
       private: 'Privacy: questo gruppo è visibile solo ai suoi membri.'
-      parent_members: 'Privacy: questo gruppo è visibile solo ai membri di {{parentGroupName}}  e  {{groupName}}'
+      parent_members: 'Privacy: questo gruppo è visibile solo ai membri di %{parentGroupName}  e  %{groupName}'
       public: 'Privacy: Questo gruppo è visibile sul web'
-      aria_label: 'Privacy del gruppo: {{privacy}}'
+      aria_label: 'Privacy del gruppo: %{privacy}'
     decisions: Decisioni
   export_data_modal:
     title: Come vuoi usare i tuoi dati?
@@ -1147,7 +1147,7 @@ it:
     privacy_statement:
       public_on_web: Nome, descrizione ed allegati al gruppo saranno visibili a tutti
       private_to_group: Il nome e la descrizione saranno visibili solamente ai membri
-      private_to_parent_members: Nome e descrizione sarà visibile ai membri di {{parent}}
+      private_to_parent_members: Nome e descrizione sarà visibile ai membri di %{parent}
     privacy: Privacy
     group_privacy_is_closed_description: Non elencato. Chiunque abbia il link può chiedere di aderire. Tutti i thread sono privati.
     group_privacy_is_closed_public_threads_description: Non elencato. Chiunque abbia il link può chiedere di aderire. I thread possono essere pubblici o privati.
@@ -1160,22 +1160,22 @@ it:
     subgroup_privacy_is_open_description: Tutti/e possono trovare questo sotto-gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Tutte le discussioni sono pubbliche.
     subgroup_privacy_is_closed_description: Tutti/e possono trovare questo sotto-gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Tutte le discussioni sono private.
     subgroup_privacy_is_closed_public_threads_description: Tutti/e possono trovare questo sotto-gruppo e chiedere di iscriversi. Solo i membri possono vedere chi è nel gruppo. Le discussioni possono essere pubbliche o private.
-    subgroup_privacy_is_closed_secret_parent_description: I membri di {{parent}} possono trovare questo sotto-gruppo e chiedere di iscriversi. Tutte le discussioni sono private. Solo i membri possono vedere chi è nel gruppo.
+    subgroup_privacy_is_closed_secret_parent_description: I membri di %{parent} possono trovare questo sotto-gruppo e chiedere di iscriversi. Tutte le discussioni sono private. Solo i membri possono vedere chi è nel gruppo.
     subgroup_privacy_is_secret_description: Solo i membri invitati possono trovare questo sottogruppo, vedere chi è al suo interno e vedere le discussioni.
     advanced_settings: Impostazioni avanzate
     how_do_people_join: Come si uniscono al gruppo le persone?
     membership_granted_upon_request: Chiunque si può unire al gruppo.
     membership_granted_upon_approval: Chiunque può richiedere di essere aggiunto ma dev'essere approvato.
     membership_granted_upon_invitation: Solo su invito.
-    membership_granted_upon_approval_secret_parent: "<strong>Su richiesta</strong> chiunque da {{parent}} può chiedere di unirsi al gruppo."
+    membership_granted_upon_approval_secret_parent: "<strong>Su richiesta</strong> chiunque da %{parent} può chiedere di unirsi al gruppo."
     permissions: Permessi
     thread_privacy: Pricacy della discussione
     public_threads: Solo discussioni pubbliche
-    public_discussions_subgroup: Chiunque nel gruppo {{parentGroupName}} può vedere le discussioni
+    public_discussions_subgroup: Chiunque nel gruppo %{parentGroupName} può vedere le discussioni
     public_or_private_threads: Permetti discussioni pubbliche e private
     private_threads: Solo i membri possono vedere le discussioni
     allow_public_threads: Permetti discussioni pubbliche in questo gruppo.
-    parent_members_can_see_discussions: I membri di {{parent}} possono visualizzare thread privati
+    parent_members_can_see_discussions: I membri di %{parent} possono visualizzare thread privati
     parent_members_can_see_discussions_help: Consenti ai membri del gruppo padre di visualizzare, ma non partecipare, thread e sondaggi all'interno di questo gruppo
     members_can_announce: I membri possono avvisare tutti i membri del gruppo
     members_can_announce_help: Consenti ai membri di notificare a tutti i membri del gruppo un thread o un sondaggio
@@ -1205,7 +1205,7 @@ it:
       group_updated: Gruppo aggiornato
     upload_logo: Carica nuovo logo
     upload_cover_photo: Carica nuova immagine di copertina
-    group_handle_placeholder: 'Utilizzato nell''URL del tuo gruppo: {{host}}/{{handle}}'
+    group_handle_placeholder: 'Utilizzato nell''URL del tuo gruppo: %{host}/%{handle}'
     group_privacy_is_open_description: Quotato pubblicamente. Tutti i thread sono pubblici.
     new_description_placeholder: Perché stai provando Loomio? Quali decisioni dovete prendere insieme?
     new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Come intendi utilizzare Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Perché questo è importante per il tuo gruppo?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Quali decisioni devi prendere?</h3><p></p>
@@ -1225,7 +1225,7 @@ it:
     no_pending_requests: Attualmente per questo gruppo non sono presenti richieste di adesione in sospeso.
     no_previous_requests: Attualmente non ci sono richieste di partecipazione in sospeso per questo gruppo.
     previous_requests: Richieste precedenti
-    previous_request_response: "{{response}} da {{responder}} "
+    previous_request_response: "%{response} da %{responder} "
     messages:
       request_approved_success: Richiesta di partecipazione approvata
       request_ignored_success: Richiesta di partecipazione ignorata
@@ -1237,7 +1237,7 @@ it:
     invite_people: Invita persone
     invite_guests: Invita ospiti
     notify_people: Avvisa le persone
-    invite_people_to_group: Invita   {{name}}
+    invite_people_to_group: Invita   %{name}
     group: Gruppo
     group_placeholder: Scegli un gruppo
     shareable_link: Link pubblico condivisibile
@@ -1255,7 +1255,7 @@ it:
     custom_message: Messaggio personale
     custom_message_placeholder: Scrivi un messaggio personale da allegare all'invito.
     add_members: Aggiungi membri
-    from_parent_group: da {{name}}.
+    from_parent_group: da %{name}.
     send: Invia
     done: Fatto
     messages:
@@ -1271,20 +1271,20 @@ it:
     fragment_placeholder: Filtra gli utenti per nome o per username...
     only_one_admin: C'è solo un amministratore in questo gruppo. E' raccomandato aggiungere almeno un altro membro come amministratore.
     messages:
-      remove_member_success: "{{name}} rimosso."
-      make_admin_success: "{{name}} adesso è un amministratore"
-      remove_admin_success: "{{name}} non è più un amministratore"
+      remove_member_success: "%{name} rimosso."
+      make_admin_success: "%{name} adesso è un amministratore"
+      remove_admin_success: "%{name} non è più un amministratore"
     remove_admin_from_self:
       question: Sei sicuro che non vuoi più essere amministratore?
   membership_remove_modal:
     invitation:
       title: Revoca invito
-      message: Sei sicuro/a di volere ritirare l'invito fatto a {{name}}?
+      message: Sei sicuro/a di volere ritirare l'invito fatto a %{name}?
       flash: Invito cancellato
       submit: Revoca invito
     membership:
       title: Rimuovi membro
-      message: Sei sicuro/a di volere espellere {{name}}?
+      message: Sei sicuro/a di volere espellere %{name}?
       impact_for_group: Questo impedirà il loro accesso al gruppo (incluse discussioni e votazioni) e a tutti i sottogruppi.
       flash: Membro rimosso
       submit: Rimuovi membro
@@ -1296,22 +1296,22 @@ it:
     modal_title:
       group: Imposta il nome del gruppo
     title_helptext:
-      group: Questo titolo apparirà prima del nome {{name}} inserito in questo gruppo. Usalo per assegnare un ruolo alla persona.
+      group: Questo titolo apparirà prima del nome %{name} inserito in questo gruppo. Usalo per assegnare un ruolo alla persona.
     title_label: titolo
     title_placeholder: 'Ad esempio: ''Coordinatore'' o ''Facilitatore''.'
     updated: Titolo dell'iscrizione aggiornato
   user_page:
-    contact_user: Contatto {{name}}
-    location_field: 'Luogo: {{value}}'
-    locale_field: 'Lingua: {{value}}'
-    online_field: 'Online: {{value}}'
-    invited: Invitato {{value}}
-    message_user: Messaggio {{name}}
+    contact_user: Contatto %{name}
+    location_field: 'Luogo: %{value}'
+    locale_field: 'Lingua: %{value}'
+    online_field: 'Online: %{value}'
+    invited: Invitato %{value}
+    message_user: Messaggio %{name}
   contact_request_form:
-    modal_title: Email {{name}}
+    modal_title: Email %{name}
     message_placeholder: Scrivi una introduzione su chi sei e perchè ci contatti.
-    helptext: "{{name}}, sarà inviato via email il tuo nome,  il tuo indirizzo email ed il tuo messaggio"
-    email_sent: Email inviata a {{name}}
+    helptext: "%{name}, sarà inviato via email il tuo nome,  il tuo indirizzo email ed il tuo messaggio"
+    email_sent: Email inviata a %{name}
   profile_page:
     incomplete_profile: Profilo incompleto!
     set_your_profile_picture: Inserisci la tua immagine del profilo
@@ -1347,7 +1347,7 @@ it:
     account_is_bot: Questo è un account bot
     bot_account_warning: Gli account bot non saranno invitati a votare nei sondaggi o a partecipare alle discussioni
   text_editor:
-    x_of_y_characters: "{{x}} / {{y}} caratteri"
+    x_of_y_characters: "%{x} / %{y} caratteri"
     insert_link: Inserisci collegamento
     insert_embedded_url: Incorporare video
     select_text_to_link: Seleziona il testo da collegare e riprova
@@ -1358,7 +1358,7 @@ it:
     use_initials: Usa iniziali
     use_gravatar: Usa Gravatar
     use_uploaded: Carica una nuova foto
-    use_provider: Usa la foto {{provider}}
+    use_provider: Usa la foto %{provider}
     existing_upload: Caricamento esistente
   change_password_form:
     set_password_title: Imposta la password
@@ -1450,7 +1450,7 @@ it:
       muted_aria_label: Discussioni attualmente silenziate
       muted_description: Visualizza solo le discussioni che sono state silenziate.
     thread_preview:
-      you_voted: Tu hai votato  {{position}}
+      you_voted: Tu hai votato  %{position}
       undecided: Tu non hai votato
     threads_from:
       group: Discussioni da
@@ -1480,11 +1480,11 @@ it:
     private_thread: Discussione privata
     subscription_canceled: |
       <p>La tua iscrizione non è attiva.</p>
-      <p>Per favore <a href="{{upgradeUrl}}" target="_blank">scegli un abbonamento</a> per continuare a usare Loomio.</p>
+      <p>Per favore <a href="%{upgradeUrl}" target="_blank">scegli un abbonamento</a> per continuare a usare Loomio.</p>
     activity: Attività
     activity_placeholder: Ancora nessuna attività!
     load_previous: Carica attività precedente
-    started_by: Iniziato da <strong>{{name}}</strong>
+    started_by: Iniziato da <strong>%{name}</strong>
     pin:
       pinned: Discussione fissata in alto
       unpinned: Discussione non fissata in alto
@@ -1494,7 +1494,7 @@ it:
     closed:
       reopened: Discussione riaperta
       closed: Discussione chiusa
-    max_threads_reached: <p>Hai utilizzato tutti i {{maxThreads}} thread disponibili per questo gruppo.</p><p> Passaggio successivo, <a href="{{upgradeUrl}}" target="_blank">scegli un piano</a> per continuare a collaborare su Loomio.</p>
+    max_threads_reached: <p>Hai utilizzato tutti i %{maxThreads} thread disponibili per questo gruppo.</p><p> Passaggio successivo, <a href="%{upgradeUrl}" target="_blank">scegli un piano</a> per continuare a collaborare su Loomio.</p>
   discussion_last_seen_by:
     title: Visto da
     no_one: Nessuno l'ha ancora visto
@@ -1524,7 +1524,7 @@ it:
   thread_group:
     aria_label: Nome gruppo
   thread_context:
-    current_poll_type_banner: Corrente {{pollType}}
+    current_poll_type_banner: Corrente %{pollType}
     aria_label: Contesto della discussione
     thread_options: Opzioni delle discussioni
     email_settings: Impostazioni notifiche
@@ -1577,9 +1577,9 @@ it:
     title: Sposta discussione
     body: Gruppo di destinazione
     confirm: Sposta discussione
-    confirm_change_to_private_thread: "{{groupName}} é un gruppo aperto. Se procedi, questa discussione diventerà pubblica."
+    confirm_change_to_private_thread: "%{groupName} é un gruppo aperto. Se procedi, questa discussione diventerà pubblica."
     messages:
-      success: La discussione è stata spostata in {{name}}
+      success: La discussione è stata spostata in %{name}
   delete_comment_dialog:
     title: Cancella il commento
     question: Questo cancellerà definitivamente questo commento. Se procedi, non potrà essere recuperato.
@@ -1595,14 +1595,14 @@ it:
     send_message: Invia Messaggio
     title: Ciao! Come possiamo aiutare?
     this_is_for: Questo è un ottimo posto per richieste di vendita, formazione o abbonamento o per chiedere supporto utilizzando Loomio.
-    read_the_manual: Sapevi che il nostro <a href="{{link}}" target="_blank">manuale di aiuto</a> contiene domande frequenti e guide dettagliate per facilitare discussioni e decisioni su Loomio?
-    contact_us_email: 'Puoi anche inviarci un''e-mail: <a href="mailto:{{email}}">{{email}}</a>'
+    read_the_manual: Sapevi che il nostro <a href="%{link}" target="_blank">manuale di aiuto</a> contiene domande frequenti e guide dettagliate per facilitare discussioni e decisioni su Loomio?
+    contact_us_email: 'Puoi anche inviarci un''e-mail: <a href="mailto:%{email}">%{email}</a>'
     subject_placeholder: 'Ad esempio: problemi di accesso o suggerimento di funzionalità'
     message_placeholder: Se richiedi supporto, prova a fornire quante più informazioni possibili.
     new_contact_message: Grazie per averci contattato; ti risponderemo presto!
     consent_message: Contattandoci acconsenti al nostro personale di accedere al tuo account se necessario.<br /> Il nostro team di supporto parla inglese e, se necessario, tradurrà il tuo messaggio con Google Translate.<br /> Miriamo a rispondere a tutti i messaggi entro 24 ore.
-    success: Grazie per il tuo messaggio, {{name}}. Avrai presto nostre notizie.
-    success_via_email: Grazie per il tuo messaggio, {{name}}. Risponderemo via e-mail entro 24 ore.
+    success: Grazie per il tuo messaggio, %{name}. Avrai presto nostre notizie.
+    success_via_email: Grazie per il tuo messaggio, %{name}. Risponderemo via e-mail entro 24 ore.
     need_message: Per favore inserisci un messaggio così possiamo aiutarti :-)
     respond_asap: Invia un messaggio al team di Loomio e ti risponderemo il prima possibile.
     happy_to_help_with: Siamo felici di aiutarti con domande di vendita, richieste di supporto, richieste di funzionalità, segnalazione di bug o problemi che stai riscontrando.
@@ -1612,8 +1612,8 @@ it:
     newest_first: I voti più nuovi prima
     biggest_first: I più grandi prima
     order_by: Ornina i gruppi per
-    single_search_result: 1 gruppo pubblico corrispondente a <strong>{{searchTerm}}:</strong>
-    multiple_search_results: "{{resultCount}} gruppi pubblici corrispondenti a <strong>{{searchTerm}}:</strong>"
+    single_search_result: 1 gruppo pubblico corrispondente a <strong>%{searchTerm}:</strong>
+    multiple_search_results: "%{resultCount} gruppi pubblici corrispondenti a <strong>%{searchTerm}:</strong>"
     no_results_found: <strong>Non trovi il gruppo che stai cercando?</strong> Se la privacy di un gruppo è impostata su "segreto", non verrà visualizzato qui.
   decision_tools_card:
     choose_type: Scegli il tipo di sondaggio
@@ -1635,8 +1635,8 @@ it:
     recommended: Consigliato
   poll_common:
     delete_poll: Elimina votazione
-    select_count_options: Seleziona {{count}} opzioni
-    select_minimum_to_maximum_options: Seleziona da {{minimum}} a {{maximum}} opzioni
+    select_count_options: Seleziona %{count} opzioni
+    select_minimum_to_maximum_options: Seleziona da %{minimum} a %{maximum} opzioni
     remove_your_vote: Rimuovi il tuo voto
     vote_now: Vota ora
     have_your_say: Dite la vostra
@@ -1649,7 +1649,7 @@ it:
     results: Risultati
     current_results: Risultati attuali
     responses: Risposte
-    close_poll_type: Chiudi {{pollType}}
+    close_poll_type: Chiudi %{pollType}
     close_early: Chiudi in anticipo
     totals: Totali
     participate: Participare
@@ -1710,7 +1710,7 @@ it:
     decision: Decisione
     decision_templates: Modelli di decisione
     review_due: Revisione dovuta
-    edit_warning: La modifica è consigliata solo per modifiche minori o per correggere errori di ortografia. Per modifiche significative, chiudi questo {{pollType}} e iniziane uno nuovo.
+    edit_warning: La modifica è consigliata solo per modifiche minori o per correggere errori di ortografia. Per modifiche significative, chiudi questo %{pollType} e iniziane uno nuovo.
     remove_your_response: Rimuovi la tua risposta
     response: Risposta
     submit_response: Invia risposta
@@ -1736,7 +1736,7 @@ it:
   poll_common_card:
     show_results: Mostra risultati
     hide_results: Nascondere i risultati
-    until_poll_type_closed: 'fino alla chiusura di {{pollType}} '
+    until_poll_type_closed: 'fino alla chiusura di %{pollType} '
     deleted: Questo sondaggio è stato eliminato
     until_vote: Finché non si vota
     until_you_vote: Fino a votare
@@ -1746,9 +1746,9 @@ it:
     all: Tutte
     unread: Non letti (%{count})
     closed: Chiuso
-    include_subgroups_mine: "{{name}} e i sottogruppi"
-    include_subgroups_all: "{{name}} e tutti i sottogruppi"
-    no_results_found: Nessun risultato per "{{search}}"
+    include_subgroups_mine: "%{name} e i sottogruppi"
+    include_subgroups_all: "%{name} e tutti i sottogruppi"
+    no_results_found: Nessun risultato per "%{search}"
     welcome_to_your_new_group: Benvenuto nel tuo nuovo gruppo Loomio!
     lets_start_a_thread: Iniziamo un thread. Fare clic su "Nuova discussione" per continuare.
   members_panel:
@@ -1761,7 +1761,7 @@ it:
     show_users_in_subgroups: Mostrare anche gli utenti nei sottogruppi
     order_by_created_desc: Più recente
     order_by_admin_desc: Amministratori
-    loaded_of_total: "{{loaded}} di {{total}}"
+    loaded_of_total: "%{loaded} di %{total}"
     view_requests: Visualizzare le richieste
     header_name: Nome
     header_username: Nome Utente
@@ -1775,8 +1775,8 @@ it:
     admin: Admin
     guest: Ospite
     sharable_link: Collegamento condividibile
-    last_seen: Visto l'ultima volta {{date}}
-    invited_by_name: Invitato da {{name}}
+    last_seen: Visto l'ultima volta %{date}
+    invited_by_name: Invitato da %{name}
     accepted: Membri
     bot: Bot
     all: Tutto
@@ -1796,8 +1796,8 @@ it:
     uploaded_at: Caricato alle
     delete_confirmation: Sei sicuro di voler eliminare questo allegato? Verrà rimosso da qualsiasi commento o thread associato. Questo non può essere annullato.
   subgroups_panel:
-    search_subgroups_of_name: Cerca i sottogruppi di {{name}}
-    group_without_subgroups: "{{name}} senza sottogruppi"
+    search_subgroups_of_name: Cerca i sottogruppi di %{name}
+    group_without_subgroups: "%{name} senza sottogruppi"
   poll_common_action_panel:
     basic_templates: Modelli di base
     anonymous: I voti sono anonimi
@@ -1815,7 +1815,7 @@ it:
     draft_mode: Voto disattivato. Questo non è ancora aperto per il voto.
     voting_disabled_poll_is_template: Voto disattivato. Questo è un modello.
   poll_common_collapsed:
-    by_who: di {{name}}
+    by_who: di %{name}
   poll_common_calendar_invite:
     poll_option_id: Ora dell'incontro
     helptext_off: Nessun invito per l'incontro sarà inviato
@@ -1833,7 +1833,7 @@ it:
     specified_voters_only_true: Solo le persone invitate
     specified_voters_only_false_group: Chiunque nel gruppo
     specified_voters_only_false_discussion: Chiunque nella discussione
-    invite_people_next: Puoi scegliere chi è unvitato a votare dopo aver avviato il {{poll_type}}
+    invite_people_next: Puoi scegliere chi è unvitato a votare dopo aver avviato il %{poll_type}
     shuffle_options:
       shuffle_options: Mischia le opzioni
       title: Mostra le opzioni in ordine casuale
@@ -1845,13 +1845,13 @@ it:
       title: Chiunque con un link può partecipare
       helptext_on: Quando selezionato, chiunque abbia il link al sondaggio potrà partecipare.
     notify_on_closing_soon:
-      title: 24 ore prima che chiuda {{pollType}} , manda un sollecito a
+      title: 24 ore prima che chiuda %{pollType} , manda un sollecito a
       nobody: Nessuno
       author: Autore (me)
       undecided_voters: Elettore indecisi
       voters: Tutti i votanti
       voting_closes_too_soon: Poiché la votazione si chiude entro 24 ore, non verranno inviati promemoria di chiusura anticipata.
-      closes_too_soon: Poiché questo {{pollType}} chiude entro 24 ore, non verrà inviato alcun promemoria di chiusura imminente.
+      closes_too_soon: Poiché questo %{pollType} chiude entro 24 ore, non verrà inviato alcun promemoria di chiusura imminente.
       voting_title: 24 ore prima della chiusura delle votazioni, inviare un promemoria a
     notify_on_participate:
       title: Inviami notifica quando le persone partecipano
@@ -1875,12 +1875,12 @@ it:
     close_poll_type: Chiudi %{poll_type}
     poll_type_closed: "%{poll_type} chiusa"
   poll_common_reopen_form:
-    title: Riapri {{poll_type}}
-    helptext: Riapri il {{poll_type}} se le persone hanno bisogno di più tempo per partecipare
-    success: "{{poll_type}} riaperta"
+    title: Riapri %{poll_type}
+    helptext: Riapri il %{poll_type} se le persone hanno bisogno di più tempo per partecipare
+    success: "%{poll_type} riaperta"
   poll_common_move_form:
-    title: Sposta {{poll_type}}
-    success: "{{poll_type}} trasferita su {{group}}"
+    title: Sposta %{poll_type}
+    success: "%{poll_type} trasferita su %{group}"
   poll_common_wip_field:
     voting_enabled: Voto abilitato
     enable_voting: Abilita voto
@@ -1899,7 +1899,7 @@ it:
     invalid_date: Data non valida
   poll_card:
     poll_type_by_name: "%{poll_type} di %{name}"
-    started_by: Iniziato da {{name}}
+    started_by: Iniziato da %{name}
   poll_common_votes_panel:
     undecided: Indecisi
     newest_first: I voti più nuovi prima
@@ -1940,10 +1940,10 @@ it:
     outcome_statement_template: Modello di dichiarazione dei risultati
     statement_template_placeholder: Fornire un modello per scrivere l'esito della decisione. (opzionale)
   poll_common_outcome_panel:
-    authored_by: Di {{name}}
+    authored_by: Di %{name}
   poll_common_delete_modal:
     question: Sei sicuro che vuoi cancellarlo?
-    title: Cancella {{pollType}}
+    title: Cancella %{pollType}
     success: Eliminato con successo
   poll_common_form:
     new_poll_type_helptext: Crea un nuovo tipo di votazione per il tuo gruppo. Adatta la terminologia e le impostazioni così sarà semplice per le altre persone nel tuo gruppo avviare un processo decisionale specifico.
@@ -1990,9 +1990,9 @@ it:
     stance_reason_is_required: Per favore fornisci una motivazione con il tuo voto
     limit_reason_length: Limita la motivazione a un massimo di 500 caratteri
     save_poll: Salva la votazione
-    start_poll_type: Inizia {{poll_type}}
-    share_poll_type: Condividi {{poll_type}}
-    who_may_vote: Chi può votare in questa {{poll_type}}?
+    start_poll_type: Inizia %{poll_type}
+    share_poll_type: Condividi %{poll_type}
+    who_may_vote: Chi può votare in questa %{poll_type}?
     update: Aggiorna
     add_voters: Aggiungi votanti
     notify_invitees: Invia le notifiche
@@ -2080,7 +2080,7 @@ it:
   poll_meeting_form:
     tool_tip_collapsed: Scopri quando le persone sono disponibili a incontrarsi
     timeslots: Fasce orarie
-    no_options: Inserisci gli orari nel tuo attuale fuso orario ({{zone}}). I partecipanti vedranno gli orari nel proprio fuso orario.
+    no_options: Inserisci gli orari nel tuo attuale fuso orario (%{zone}). I partecipanti vedranno gli orari nel proprio fuso orario.
     meeting_duration: Durata dell'incontro
     add_option_placeholder: Aggiungi nuovo orario
     time_slot_added: Fascia oraria aggiunta
@@ -2148,8 +2148,8 @@ it:
     decline_prompt: C'è qualcosa che vorresti dire?
     reason_placeholder: Lascia un messaggio se vuoi
   poll_common_percent_voted:
-    sentence: "{{numerator}} su {{denominator}} persone hanno votato ({{percent}}%)"
-    target_progress: "{{percent}}% del target raggiunto. ({{num}} / {{target}})"
+    sentence: "%{numerator} su %{denominator} persone hanno votato (%{percent}%)"
+    target_progress: "%{percent}% del target raggiunto. (%{num} / %{target})"
   poll_meeting_chart_panel:
     total: Totale
   poll_remove_vote:
@@ -2164,7 +2164,7 @@ it:
     stance_created: Voto creato
     stance_updated: Voto aggiornato
   poll_meeting_vote_form:
-    local_time_zone: Ora locale - {{zone}}
+    local_time_zone: Ora locale - %{zone}
     can_attend: Può partecipare
     unable: Disabilita
     if_need_be: Solo se necessario
@@ -2185,43 +2185,43 @@ it:
     removed: Quesito rimosso
     deleted_group: Gruppo cancellato
     invite_only_thread: Discussione per soli invitati
-    comment_replied_to: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> in risposta a <strong>{{title}}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha modificato il titolo della discussione"
-    discussion_context_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>  ha modificato il contesto della discussione"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha cambiato le impostazioni di privacy della discussione"
-    discussion_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha modificato la discussione"
-    discussion_moved: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha spostato la discussione da <strong>{{title}}</strong>"
-    discussion_closed: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha chiuso la discussione"
-    discussion_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha riaperto la discussione"
-    discussion_forked: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha creato un ramo di questa discussione: <strong><a href='d/{{key}}'>{{title}}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a>"
-    outcome_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha condiviso un risultato"
-    poll_reopened: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha riaperto il {{polltype}}"
-    poll_closed_by_user: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha chiuso il {{polltype}}"
-    poll_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha avviato un {{polltype}}"
-    poll_edited: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha modificato il {{polltype}}"
-    poll_option_added: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha aggiunto delle opzioni al {{polltype}}"
-    poll_expired: "{{polltype}} chiuso"
-    stance_created: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> ha votato su: <strong>{{title}}</strong>"
-    stance_updated: "<a class='actor-link' href='/u/{{username}}'>{{author}}</a> hanno aggiornato il loro voto su: <strong>{{title}}</strong>"
+    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a> in risposta a <strong>%{title}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha modificato il titolo della discussione"
+    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>  ha modificato il contesto della discussione"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha cambiato le impostazioni di privacy della discussione"
+    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha modificato la discussione"
+    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha spostato la discussione da <strong>%{title}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha chiuso la discussione"
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha riaperto la discussione"
+    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha creato un ramo di questa discussione: <strong><a href='d/%{key}'>%{title}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha condiviso un risultato"
+    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha riaperto il %{polltype}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha chiuso il %{polltype}"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha avviato un %{polltype}"
+    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha modificato il %{polltype}"
+    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha aggiunto delle opzioni al %{polltype}"
+    poll_expired: "%{polltype} chiuso"
+    stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha votato su: <strong>%{title}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> hanno aggiornato il loro voto su: <strong>%{title}</strong>"
     event_removed: Rimosso dalla discussione
   add_poll_to_thread_modal:
-    success: Successo, {{pollType}} aggiunto alla discussione!
+    success: Successo, %{pollType} aggiunto alla discussione!
   auth_form:
     code: '000000'
-    youre_invited: Sei stato invitato a partecipare a {{group_name}}.
+    youre_invited: Sei stato invitato a partecipare a %{group_name}.
     youre_invited_discussion: Sei stato invitato a partecipare alla discussione
     youre_invited_poll: Sei stato invitato a votare
-    existing_account_can_sign_in: Se sei già un utente di {{site_name}}, accedi con il tuo account esistente
-    sign_up_or_log_in: Crea un account or accedi a {{site_name}}
-    sign_in_to_loomio: Accedi a {{site_name}}
+    existing_account_can_sign_in: Se sei già un utente di %{site_name}, accedi con il tuo account esistente
+    sign_up_or_log_in: Crea un account or accedi a %{site_name}
+    sign_in_to_loomio: Accedi a %{site_name}
     sign_in_help: Problemi nell'accesso?
     sign_in: Iscriviti
     continue: Continua
     create_account: Crea un account
-    sign_up_as: Crea un account come {{email}}
-    sign_in_as: Autenticati come {{name}}
-    continue_with_provider: Accedi con {{provider}}
+    sign_up_as: Crea un account come %{email}
+    sign_in_as: Autenticati come %{name}
+    continue_with_provider: Accedi con %{provider}
     continue_with_email: Accedi con la tua email
     or_enter_your_email: Oppure, inserisci il tuo indirizzo di email
     enter_your_name: Inserisci il tuo nome
@@ -2237,31 +2237,31 @@ it:
     enter_your_password: Inserisci la tua password per continuare
     check_spam_folder: Se l'email non arriva subito, cerca nella tua cartella spam.
     sign_up_helptext: Per favore comileta questo modulo per creare un account utente
-    i_accept_all: Accetto i {{termsLink}} e {{privacyLink}}
-    newsletter_label: Voglio ricevere la {{link}}
+    i_accept_all: Accetto i %{termsLink} e %{privacyLink}
+    newsletter_label: Voglio ricevere la %{link}
     name_placeholder: Il tuo nome
     name_required: Per favore inserisci un nome
     terms_required: Devi accettare i Termini del Servizio
-    account_inactive: Uh-oh, sembra come se l'account di {{email}} sia stato disattivato!
-    privacy_notice: Noi non venderemo mai i tuoi dati. <br><a href='{{privacyUrl}}' target='_blank'>Privacy policy</a>
-    welcome: Nuova su {{siteName}}?
-    welcome_back: Bentornata, {{name}}!
+    account_inactive: Uh-oh, sembra come se l'account di %{email} sia stato disattivato!
+    privacy_notice: Noi non venderemo mai i tuoi dati. <br><a href='%{privacyUrl}' target='_blank'>Privacy policy</a>
+    welcome: Nuova su %{siteName}?
+    welcome_back: Bentornata, %{name}!
     forgot_password: Password dimenticata
     login_link: Invia  email di accesso
     sign_in_via_email: Accedi con email
     set_password: Imposta password
     set_password_helptext: Vuoi usare una password la prossima volta?
-    hello: Ciao, {{name}}!
-    new_to_loomio: Prima volta su {{site_name}}?
+    hello: Ciao, %{name}!
+    new_to_loomio: Prima volta su %{site_name}?
     already_a_user: Hai già un account?
     email_address_of_existing_account: Inserisci l'indirizzo email del tuo account esistente
     link_accounts: Collega account
     check_your_email: Guarda nella tua casella di posta!
-    login_link_sent: Abbiamo inviato una email a {{email}}.
+    login_link_sent: Abbiamo inviato una email a %{email}.
     instructions: 'Click sul collegamento per accedere, o inserisci il codice seguente:'
     too_many_attempts: Troppi tentativi; prova ad accedere usando il link nell'email.
     invalid_code: Spiacenti, questo codice non corrisponde. Controlla l'email e prova ancora.
-    password_link_sent: Abbiamo inviato una email a {{email}} con le istruzioni su come impostare la tua password.
+    password_link_sent: Abbiamo inviato una email a %{email} con le istruzioni su come impostare la tua password.
     reactivate_link_sent: Ti abbiamo mandato una email con le istruzioni per riattivare il tuo account
     signed_in: Accesso riuscito
     email_verified: Email verificata con successo
@@ -2339,7 +2339,7 @@ it:
     api: API
     format: Formato
     subtitle: Collegati a Loomio al resto dei tuoi strumenti con la nostra API
-    we_have_guides: Consulta le nostre <a href="{{url}}" target="_blank">guide alla configurazione del webhook</a> per assistenza nella connessione del tuo servizio.
+    we_have_guides: Consulta le nostre <a href="%{url}" target="_blank">guide alla configurazione del webhook</a> per assistenza nella connessione del tuo servizio.
     add_webhook: Aggiungi webhook
     show_docs: Vedere l'utilizzo dell'API
     save_to_show_docs: Dopo aver salvato, torna qui per trovare la tua chiave API
@@ -2347,7 +2347,7 @@ it:
     add_integration: Aggiungi integrazione
     success: Integrazione aggiunta!
     remove: Rimuovi l'integrazione
-    confirm_remove: 'Sei sicuro di voler rimuovere l''integrazione: {{name}}?'
+    confirm_remove: 'Sei sicuro di voler rimuovere l''integrazione: %{name}?'
     removed: Integrazione rimossa
     name_placeholder: Assegna un nome a questa integrazione in modo da poterla identificare
     event_kind_helptext: Di quali eventi vuoi che il webhook riceva notifiche?

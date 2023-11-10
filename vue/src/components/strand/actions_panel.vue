@@ -8,7 +8,7 @@ import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_tem
 import Session from '@/shared/services/session';
 import AuthModalMixin from '@/mixins/auth_modal';
 import Records from '@/shared/services/records';
-import { compact, snakeCase, camelCase, max, map } from 'lodash';
+import { compact, snakeCase, camelCase, max, map } from 'lodash-es';
 
 export default {
   components: {PollCommonForm, PollCommonChooseTemplateWrapper},

@@ -6,7 +6,7 @@ import Flash   from '@/shared/services/flash';
 import EventBus   from '@/shared/services/event_bus';
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
-import { isEmpty, some, debounce } from 'lodash';
+import { isEmpty, some, debounce } from 'lodash-es';
 
 export default
 {

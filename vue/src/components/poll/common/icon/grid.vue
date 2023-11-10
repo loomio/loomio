@@ -1,42 +1,41 @@
 <script lang="js">
-import {sum, map, sortBy, find, compact, uniq, slice, parseInt} from 'lodash';
+import {sum, map, sortBy, find, compact, uniq, slice, parseInt} from 'lodash-es';
 
-export default
-  ({
-    props: {
-      poll: Object,
-      size: Number
-    },
+export default {
+  props: {
+    poll: Object,
+    size: Number
+  },
 
-    created() {
-      this.watchRecords({
-        collections: ['pollOptions'],
-        query: store => {
-          const max = 10;
-          this.results = slice(this.poll.results, 0, max);
-          this.voterIds = slice(this.poll.decidedVoterIds(), 0, max);
-        }
-      });
-    },
+  created() {
+    this.watchRecords({
+      collections: ['pollOptions'],
+      query: store => {
+        const max = 10;
+        this.results = slice(this.poll.results, 0, max);
+        this.voterIds = slice(this.poll.decidedVoterIds(), 0, max);
+      }
+    });
+  },
 
-    computed: {
-      cellHeight() { return this.size / this.results.length; },
-      cellWidth() { return this.size / this.voterIds.length; },
-      cellSize() { if (this.cellHeight > this.cellWidth) { return this.cellWidth; } else { return this.cellHeight; } }
-    },
+  computed: {
+    cellHeight() { return this.size / this.results.length; },
+    cellWidth() { return this.size / this.voterIds.length; },
+    cellSize() { if (this.cellHeight > this.cellWidth) { return this.cellWidth; } else { return this.cellHeight; } }
+  },
 
-    methods: {
-      classForScore(score) {
-        switch (score) {
-          case 2: return 'poll-meeting-chart__cell--yes';
-          case 1: return 'poll-meeting-chart__cell--maybe';
-          case 0: return 'poll-meeting-chart__cell--no';
-          default:
-            return 'poll-meeting-chart__cell--empty';
-        }
+  methods: {
+    classForScore(score) {
+      switch (score) {
+        case 2: return 'poll-meeting-chart__cell--yes';
+        case 1: return 'poll-meeting-chart__cell--maybe';
+        case 0: return 'poll-meeting-chart__cell--no';
+        default:
+          return 'poll-meeting-chart__cell--empty';
       }
     }
-  });
+  }
+};
 
 </script>
 

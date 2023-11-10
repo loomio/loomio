@@ -1,7 +1,7 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
-import { compact, without, some, pick } from 'lodash';
+import { compact, without, some, pick } from 'lodash-es';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';

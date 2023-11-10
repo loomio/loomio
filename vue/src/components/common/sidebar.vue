@@ -10,7 +10,7 @@ import PlausibleService from '@/shared/services/plausible_service';
 import Flash from '@/shared/services/flash';
 
 import { isUndefined, sortBy, filter, find, head, each, uniq, map, sum, compact,
-concat, intersection, difference, orderBy } from 'lodash';
+concat, intersection, difference, orderBy } from 'lodash-es';
 
 export default {
   data() {

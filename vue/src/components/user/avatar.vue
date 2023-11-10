@@ -1,7 +1,7 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import AppConfig from '@/shared/services/app_config';
-import { pick } from 'lodash';
+import { pick } from 'lodash-es';
 
 export default {
   props: {

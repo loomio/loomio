@@ -1,7 +1,7 @@
 import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
-import { pick }            from 'lodash';
+import { pick }            from 'lodash-es';
 import I18n             from '@/i18n';
 import { startOfHour, addDays } from 'date-fns';
 

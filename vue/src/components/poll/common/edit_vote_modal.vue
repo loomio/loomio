@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus';
 import PollCommonDirective from '@/components/poll/common/directive.vue';
 import Flash   from '@/shared/services/flash';
-import { sortBy } from 'lodash';
+import { sortBy } from 'lodash-es';
 
 export default {
   props: {

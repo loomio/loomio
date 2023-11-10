@@ -5,7 +5,7 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus      from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
-import { compact } from 'lodash';
+import { compact } from 'lodash-es';
 
 export default {
   data() {

@@ -1,11 +1,11 @@
 module ApplicationHelper
   def vue_css_includes
-    vue_index = File.read(Rails.root.join('public/blient/vue/index.html'))
+    vue_index = File.read(Rails.root.join('public/blient/index.html'))
     Nokogiri::HTML(vue_index).css('head link[as=style], head link[rel=stylesheet]').to_s
   end
 
   def vue_js_includes
-    vue_index = File.read(Rails.root.join('public/blient/vue/index.html'))
+    vue_index = File.read(Rails.root.join('public/blient/index.html'))
     Nokogiri::HTML(vue_index).css('head link[as=script], script').to_s
   end
 

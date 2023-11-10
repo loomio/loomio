@@ -13,7 +13,7 @@ import OtherKind from '@/components/strand/item/other_kind.vue';
 import ReplyForm from '@/components/strand/reply_form.vue';
 import RangeSet from '@/shared/services/range_set';
 import EventBus from '@/shared/services/event_bus';
-import { camelCase, first, last, some, sortedUniq, sortBy, without } from 'lodash';
+import { camelCase, first, last, some, sortedUniq, sortBy, without } from 'lodash-es';
 
 export default {
   name: 'strand-list',
@@ -27,7 +27,6 @@ export default {
   },
 
   components: {
-    StrandList,
     NewDiscussion,
     NewComment,
     PollCreated,

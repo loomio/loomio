@@ -4,7 +4,7 @@ import Session from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
 import EventBus          from '@/shared/services/event_bus';
-import { sortBy, debounce } from 'lodash';
+import { sortBy, debounce } from 'lodash-es';
 
 export default {
   data() {

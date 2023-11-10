@@ -61,7 +61,6 @@ jobs:
       PGPORT: 5432
       PGUSER: postgres
       RAILS_ENV: test
-      FEATURES_GROUP_SSO: 1
     services:
       postgres:
         image: postgres:latest
@@ -89,7 +88,7 @@ jobs:
     - name: install libvips
       run: |
         sudo apt-get update
-        sudo apt-get install -y libvips    
+        sudo apt-get install -y libvips
     - name: git checkout
       uses: actions/checkout@v2
     - name: install ruby
@@ -115,12 +114,9 @@ jobs:
         bundle exec rake db:setup
     - name: start rails server
       env:
-        PUMA_WORKERS: 2
+        PUMA_WORKERS: 1
         MIN_THREADS: 3
         MAX_THREADS: 3
-      # bundle install --binstubs
-      # bundle exec rails server -b 0.0.0.0 &
-      # bin/rails server -b 0.0.0.0 &
       run: |
         rm -f bin/*
         bundle install --binstubs
@@ -137,7 +133,7 @@ jobs:
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
-        npm run test:e2e:standalone
+        npm run test
     - name: upload e2e failure screenshots
       uses: actions/upload-artifact@v2
       if: ${{ always() }}

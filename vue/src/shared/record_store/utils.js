@@ -1,6 +1,6 @@
 let Utils;
 import parseISO from 'date-fns/parseISO';
-import { each, keys, map, camelCase, isArray} from 'lodash';
+import { each, keys, map, camelCase, isArray} from 'lodash-es';
 
 const transformKeys = function(attributes, transformFn) {
   const result = {};

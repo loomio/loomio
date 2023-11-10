@@ -104,7 +104,7 @@ lt:
     confirm_delete: 'Ištrinti komentarą'
     submit_button:
       label: 'Išsiųsti'
-    private_privacy_notice: 'Jūsų komentaras bus matomas tik {{groupName}} grupės nariams.'
+    private_privacy_notice: 'Jūsų komentaras bus matomas tik %{groupName} grupės nariams.'
   sidebar:
     threads: 'Temos'
   navbar:
@@ -134,7 +134,7 @@ lt:
     delete_thread: Ištrinti giją
   join_group_button:
     messages:
-      joined_group: 'Dabar jūs esate {{group}} grupės narys'
+      joined_group: 'Dabar jūs esate %{group} grupės narys'
   membership_request_form:
     email_label: El. paštas
   reactions_display:

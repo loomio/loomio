@@ -6,6 +6,7 @@ if (process.env.RAILS_ENV === 'test') {
 }
 
 module.exports = function(test, browser) {
+  test.resizeWindow(1000, 2000); 
   return {
     refresh() {
       return test.refresh();
@@ -50,8 +51,11 @@ module.exports = function(test, browser) {
 
     click(selector, pause) {
       this.waitFor(selector);
-      test.click(selector);
-      if (pause) { return test.pause(pause); }
+      // test.moveToElement(selector, -10, -10)
+      this.scrollTo(selector, () => {
+        test.click(selector);
+        if (pause) { test.pause(pause); }
+      })
     },
 
     scrollTo(selector, callback, wait) {
@@ -90,18 +94,13 @@ module.exports = function(test, browser) {
       return test.moveToElement(selector, 10, 10, callback);
     },
 
-    clearField(selector) {
-      return test.getValue(selector, function(result) {
-        if (!(result || {}).value) { return; }
-        const {
-          length
-        } = result.value;
-        let count = 0;
-        while (count < length) {
-          test.keys([test.Keys.BACK_SPACE]);
-          count += 1;
-        }
-        return test.pause(2000);
+    clearField (selector) {
+      const { BACK_SPACE } = test.Keys;
+
+      return test.getValue(selector, (result) => {
+        let chars = result.value.split('');
+        chars = chars.map(() => BACK_SPACE);
+        test.setValue(selector, chars);
       });
     },
 

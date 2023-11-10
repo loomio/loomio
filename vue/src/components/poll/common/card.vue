@@ -5,7 +5,7 @@ import EventBus from '@/shared/services/event_bus';
 import PollCommonDirective from '@/components/poll/common/directive';
 import PollTemplateBanner from '@/components/poll/template_banner';
 import PollService from '@/shared/services/poll_service';
-import { pickBy } from 'lodash';
+import { pickBy } from 'lodash-es';
 
 export default
 {

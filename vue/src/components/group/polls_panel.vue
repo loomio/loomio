@@ -5,7 +5,7 @@ import Records from '@/shared/services/records';
 import PageLoader from '@/shared/services/page_loader';
 import EventBus       from '@/shared/services/event_bus';
 import Session       from '@/shared/services/session';
-import { debounce, some, every, compact, omit, values, keys, intersection, uniq } from 'lodash';
+import { debounce, some, every, compact, omit, values, keys, intersection, uniq } from 'lodash-es';
 
 export default
 {

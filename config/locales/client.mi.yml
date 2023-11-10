@@ -13,8 +13,8 @@ mi:
     time:
       am: i te ata
       pm: i te ahiahi
-    closing_in: 'Ko te wā kāti {{time}}'
-    closed_ago: 'I kāti i {{time}}'
+    closing_in: 'Ko te wā kāti %{time}'
+    closed_ago: 'I kāti i %{time}'
     volume: 'Te kaha o te reo'
     notification_volume: 'Tohu kaha o te reo'
     group: 'Rōpū'

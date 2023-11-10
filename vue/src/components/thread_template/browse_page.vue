@@ -6,7 +6,7 @@ import EventBus      from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
 import utils         from '@/shared/record_store/utils';
-import { compact } from 'lodash';
+import { compact } from 'lodash-es';
 import VuetifyColors  from 'vuetify/lib/util/colors';
 
 const colors = Object.keys(VuetifyColors).filter(name => name !== 'shades').map(name => VuetifyColors[name]['base']);

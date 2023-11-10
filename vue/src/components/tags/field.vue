@@ -1,7 +1,7 @@
 <script lang="js">
 import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
-import { uniq } from 'lodash';
+import { uniq } from 'lodash-es';
 
 export default {
   props: {

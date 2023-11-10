@@ -3,14 +3,12 @@ import Session  from '@/shared/services/session';
 import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Gravatar from 'vue-gravatar';
-import { capitalize } from 'lodash';
+import { capitalize } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Flash   from '@/shared/services/flash';
 
 export default {
-  components: {
-    'v-gravatar': Gravatar
-  },
+  components: { Gravatar },
   data() {
     return {
       user: Session.user().clone(),
@@ -100,7 +98,7 @@ v-card.change-picture-form
         v-list-item-title(v-t="{ path: 'change_picture_form.use_provider', args: { provider: capitalize(provider.name) } }")
       v-list-item.change-picture-form__option(@click="submit('gravatar')")
         v-list-item-avatar
-          v-gravatar(:email='user.email' :alt='user.name' :size='128')
+          gravatar(:email='user.email' :alt='user.name' :size='128')
         v-list-item-title(v-t="'change_picture_form.use_gravatar'")
       v-list-item.change-picture-form__option(@click="submit('initials')")
         v-list-item-avatar.user-avatar

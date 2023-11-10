@@ -1,54 +1,53 @@
 <script lang="js">
 import Records from '@/shared/services/records';
-import { max, values, orderBy, compact } from 'lodash';
+import { max, values, orderBy, compact } from 'lodash-es';
 import BarIcon from '@/components/poll/common/icon/bar.vue';
 import PieIcon from '@/components/poll/common/icon/pie.vue';
 import GridIcon from '@/components/poll/common/icon/grid.vue';
 import Vue from 'vue';
 
-export default
-  ({
-    components: {BarIcon, PieIcon, GridIcon},
-    props: {
-      poll: Object
-    },
+export default {
+  components: {BarIcon, PieIcon, GridIcon},
+  props: {
+    poll: Object
+  },
 
-    data() {
-      return {
-        users: {},
-        slices: []
-      };
-    },
+  data() {
+    return {
+      users: {},
+      slices: []
+    };
+  },
 
-    watch: {
-      'poll.stanceCounts'() { this.slices = this.poll.pieSlices(); }
+  watch: {
+    'poll.stanceCounts'() { this.slices = this.poll.pieSlices(); }
+  },
+  
+  methods: {
+    optionMeaning(id) {
+      return Records.pollOptions.find(id).meaning
     },
-    
-    methods: {
-      optionMeaning(id) {
-        return Records.pollOptions.find(id).meaning
-      },
-      clampPercent(num) { return Math.max(0, Math.min(num, 100)); }
-    },
+    clampPercent(num) { return Math.max(0, Math.min(num, 100)); }
+  },
 
-    created() {
-      this.watchRecords({
-        collections: ['users', 'stances'],
-        query: () => {
-          this.poll.results.forEach(option => {
-            option.voter_ids.forEach(id => {
-              let user;
-              if ((user = Records.users.find(id))) {
-                Vue.set(this.users, id, user);
-              } else {
-                Records.users.addMissing(id);
-              }
-            });
+  created() {
+    this.watchRecords({
+      collections: ['users', 'stances'],
+      query: () => {
+        this.poll.results.forEach(option => {
+          option.voter_ids.forEach(id => {
+            let user;
+            if ((user = Records.users.find(id))) {
+              Vue.set(this.users, id, user);
+            } else {
+              Records.users.addMissing(id);
+            }
           });
-        }
-      });
-    }
-  });
+        });
+      }
+    });
+  }
+};
 
 </script>
 

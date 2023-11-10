@@ -1,7 +1,7 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
 import AbilityService from '@/shared/services/ability_service';
-import { find } from 'lodash';
+import { find } from 'lodash-es';
 
 export default {
   props: {

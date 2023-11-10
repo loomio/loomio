@@ -1,7 +1,7 @@
 import BaseModel        from '@/shared/record_store/base_model';
 import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
-import { compact, pick }         from 'lodash';
+import { compact, pick }         from 'lodash-es';
 
 export default class DiscussionTemplateModel extends BaseModel {
   static singular = 'discussionTemplate';
