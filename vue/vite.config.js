@@ -7,7 +7,7 @@ import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
-
+import { splitVendorChunkPlugin } from 'vite'
 
 import LoomioComponents from './src/components.js';
 
@@ -119,6 +119,7 @@ export default defineConfig({
     ]
   },
   plugins: [
+    splitVendorChunkPlugin(),
     createVuePlugin(),
     Components({
       directoryAsNamespace: true,
