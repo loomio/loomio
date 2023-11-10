@@ -6,6 +6,7 @@ if (process.env.RAILS_ENV === 'test') {
 }
 
 module.exports = function(test, browser) {
+  test.resizeWindow(1000, 2000); 
   return {
     refresh() {
       return test.refresh();
@@ -50,9 +51,11 @@ module.exports = function(test, browser) {
 
     click(selector, pause) {
       this.waitFor(selector);
-      test.moveToElement(selector, 10, 10)
-      test.click(selector);
-      if (pause) { return test.pause(pause); }
+      // test.moveToElement(selector, -10, -10)
+      this.scrollTo(selector, () => {
+        test.click(selector);
+        if (pause) { test.pause(pause); }
+      })
     },
 
     scrollTo(selector, callback, wait) {
