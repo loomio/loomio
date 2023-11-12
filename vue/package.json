@@ -52,7 +52,7 @@
     "@tiptap/extension-underline": "2.0.0-beta.220",
     "@tiptap/pm": "2.0.0-beta.220",
     "@tiptap/suggestion": "2.0.0-beta.220",
-    "@tiptap/vue-2": "2.0.0-beta.220",
+    "@tiptap/vue-3": "2.0.0-beta.220",
     "activestorage": "^5.2.8",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
@@ -70,15 +70,10 @@
     "textarea-caret": "^3.1.0",
     "turndown": "^7.1.2",
     "turndown-plugin-gfm": "^1.0.2",
-    "vue": "^2.6.14",
-    "vue-gravatar": "^1.4.1",
-    "vue-i18n": "8.28.2",
-    "vue-observe-visibility": "^1.0.0",
-    "vue-recaptcha": "^1.2.0",
-    "vue-router": "^3.6.5",
-    "vue-slicksort": "^1.2.0",
-    "vue2-touch-events": "^3.2.3",
-    "vuetify": "2.6.15"
+    "vue": "^3.3.8",
+    "vue-i18n": "^9.6.5",
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.4.0"
   },
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "latest",
@@ -89,6 +84,7 @@
     "unplugin-vue-components": "latest",
     "vite": "latest",
     "vite-plugin-env-compatible": "latest",
-    "vite-plugin-vue2": "latest"
+    "vite-plugin-vue": "latest",
+    "vite-plugin-vuetify": "latest"
   }
 }

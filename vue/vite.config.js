@@ -5,23 +5,22 @@ import envCompatible from 'vite-plugin-env-compatible';
 import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
-import Components from 'unplugin-vue-components/vite';
+// import Components from 'unplugin-vue-components/vite';
 import { splitVendorChunkPlugin } from 'vite'
 
-import LoomioComponents from './src/components.js';
+// import LoomioComponents from './src/components.js';
 
-function LoomioVueResolver() {
-  return {
-    type: "component",
-    resolve: (name) => {
-      if (LoomioComponents[name]) {
-        return { default: name, from: '/src/components/'+LoomioComponents[name]+'.vue' };
-      }
-    }
-  };
-}
+// function LoomioVueResolver() {
+//   return {
+//     type: "component",
+//     resolve: (name) => {
+//       if (LoomioComponents[name]) {
+//         return { default: name, from: '/src/components/'+LoomioComponents[name]+'.vue' };
+//       }
+//     }
+//   };
+// }
 
-// https://vitejs.dev/config/
 export default defineConfig({
   server: {
     fs: {
@@ -60,15 +59,17 @@ export default defineConfig({
     ]
   },
   plugins: [
+    vue(),
+    vuetify({ autoImport: true }),
     splitVendorChunkPlugin(),
     createVuePlugin(),
-    Components({
-      directoryAsNamespace: true,
-      resolvers: [
-        LoomioVueResolver(),
-        VuetifyResolver(),
-      ],
-    }),
+    // Components({
+    //   directoryAsNamespace: true,
+    //   resolvers: [
+    //     LoomioVueResolver(),
+    //     VuetifyResolver(),
+    //   ],
+    // }),
     viteCommonjs(),
     envCompatible(),
     ViteYaml(),
