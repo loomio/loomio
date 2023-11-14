@@ -216,14 +216,15 @@ export default class BaseModel {
       }
       return this.recordStore[args.from].nullModel();
     };
-    return this[name+'Is'] = obj => this.recordStore[args.from].find(this[args.by]) === obj;
+    this[name+'Is'] = obj => this.recordStore[args.from].find(this[args.by]) === obj;
   }
 
   belongsToPolymorphic(name) {
 
-    return this[name] = () => {
+    this[name] = () => {
       const typeColumn = `${name}Type`;
       const idColumn = `${name}Id`;
+
       return this.recordStore[BaseModel.eventTypeMap[this[typeColumn]]].find(this[idColumn]);
     };
   }
