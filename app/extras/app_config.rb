@@ -13,8 +13,6 @@ class AppConfig
     notifications
     doctypes
     locales
-    moment_locales
-    group_features
   )
 
   BANNED_CHARS = %(\\s:,;'"`<>)

@@ -12,7 +12,6 @@ module Boot
         permittedParams:     PermittedParamsSerializer.new({}),
         locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
         defaultLocale:       I18n.locale,
-        momentLocales:       AppConfig.moment_locales,
         newsletterEnabled:   ENV['NEWSLETTER_ENABLED'],
         recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
         baseUrl:             root_url,
