@@ -15,7 +15,6 @@ class AppConfig
     locales
     moment_locales
     group_features
-    translate_languages
   )
 
   BANNED_CHARS = %(\\s:,;'"`<>)

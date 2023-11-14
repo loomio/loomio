@@ -26,8 +26,7 @@ module Boot
           app:               AppConfig.app_features
         },
         inlineTranslation: {
-          isAvailable:       TranslationService.available?,
-          supportedLangs:    AppConfig.translate_languages
+          isAvailable:       TranslationService.available?
         },
         pollTypes:         AppConfig.poll_types,
         pollColors:        AppConfig.colors,
