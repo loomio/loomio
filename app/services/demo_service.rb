@@ -5,7 +5,7 @@ class DemoService
 		return unless demo
 
 		# precache translations
-		%w[fr de es pt it uk].each do |locale|
+		AppConfig.locales['supported'].each do |locale|
 			TranslationService.translate_group_content!(demo.group, locale, true)
 		end
 
