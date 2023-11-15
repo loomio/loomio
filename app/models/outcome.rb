@@ -91,7 +91,11 @@ class Outcome < ApplicationRecord
   def body
     statement
   end
-  
+
+  def body=(val)
+    self.statement = val
+  end
+
   def body_format
     statement_format
   end
