@@ -53,6 +53,7 @@ export default new class StanceService {
           return stance.castAt &&
           !stance.discardedAt &&
           !stance.revokedAt &&
+          stance.poll().showResults() &&
           stance.poll().membersInclude(Session.user()) &&
           ((stance.poll().discussionId === null) || !stance.poll().discussion().closedAt);
         }
@@ -75,6 +76,7 @@ export default new class StanceService {
           !stance.discardedAt &&
           !stance.revokedAt &&
           !stance.poll().anonymous &&
+          stance.poll().showResults() &&
           AbilityService.canAddComment(stance.poll().discussion());
         },
         perform() {

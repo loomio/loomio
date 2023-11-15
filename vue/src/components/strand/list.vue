@@ -137,7 +137,7 @@ export default {
         div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
           strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
           component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
-        .strand-list__children(v-if="obj.event.childCount")
+        .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
           strand-load-more(
             v-if="obj.children.length == 0"
             v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}"
