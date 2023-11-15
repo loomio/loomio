@@ -84,7 +84,7 @@ export default {
     },
 
     fetchData() {
-      Records.users.fetchGroups().then(() => {
+      Records.users.findOrFetchGroups().then(() => {
         if ((this.$router.history.current.path === "/dashboard") && (Session.user().groups().length === 1)) {
           this.$router.replace(`/g/${Session.user().groups()[0].key}`);
         }

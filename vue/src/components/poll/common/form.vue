@@ -24,7 +24,7 @@ export default {
   },
 
   mounted() {
-    Records.users.fetchGroups();
+    Records.users.findOrFetchGroups();
 
     Records.pollTemplates.findOrFetchByKeyOrId(this.poll.pollTemplateKeyOrId()).then(template => {
       this.pollTemplate = template;

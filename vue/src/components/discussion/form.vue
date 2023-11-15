@@ -35,27 +35,26 @@ export default {
   },
 
   mounted() {
-    Records.users.fetchGroups();
-
-    if (this.discussion.discussionTemplateId) {
-      Records.discussionTemplates.findOrFetchById(this.discussion.discussionTemplateId).then(template => {
-        this.discussionTemplate = template;
-        if ((template.recipientAudience === 'group') && this.discussion.groupId) {
-          return this.initialRecipients = [
-          { 
-            type: 'audience',
-            id: 'group',
-            icon: 'mdi-account-group',
-            name: I18n.t('announcement.audiences.group', {name: this.discussion.group().name}),
-            size: this.discussion.group().acceptedMembershipsCount
+    Records.users.findOrFetchGroups().then(() => {
+      if (this.discussion.discussionTemplateId) {
+        Records.discussionTemplates.findOrFetchById(this.discussion.discussionTemplateId).then(template => {
+          this.discussionTemplate = template;
+          console.log('template.recipientAudience',template.recipientAudience);
+          if ((template.recipientAudience === 'group') && this.discussion.groupId) {
+            return this.initialRecipients = [{
+              type: 'audience',
+              id: 'group',
+              icon: 'mdi-account-group',
+              name: I18n.t('announcement.audiences.group', {name: this.discussion.group().name}),
+              size: this.discussion.group().acceptedMembershipsCount
+            }];
           }
-          ];
-        }
-      })
-      .finally(() => { this.loaded = true; });
-    } else {
-      this.loaded = true;
-    }
+        })
+        .finally(() => { this.loaded = true; });
+      } else {
+        this.loaded = true;
+      }
+    });
 
     this.watchRecords({
       collections: ['groups', 'memberships'],
@@ -199,16 +198,6 @@ export default {
 
       tags-field(:model="discussion")
         
-      //- recipients-autocomplete(
-      //-   v-if="!discussion.id"
-      //-   :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
-      //-   :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
-      //-   :initial-recipients="initialRecipients"
-      //-   :hint="$t('announcement.form.placeholder')"
-      //-   :model="discussion"
-      //-   :reset="reset"
-      //- )
-
       lmo-textarea(
         :model='discussion'
         field="description"
