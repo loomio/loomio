@@ -143,7 +143,7 @@ export default {
       path: 'timeline',
       params: {
         discussion_id: this.discussion.id
-      }}).then(data => {
+    }}).then(data => {
       bootData = data;
       return this.buildItems(bootData);
     });
@@ -178,7 +178,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
       v-for="item in items"
       :key="item.key"
       :to="baseUrl+'/'+item.sequenceId")
-        .strand-nav__stance-icon-container(v-if="item.poll")
+        .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
           poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
         //- span {{item.key}}
         span {{item.title}}
