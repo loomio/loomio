@@ -11,9 +11,9 @@ export default class TaskModel extends BaseModel {
 
   toggleDone() {
     if (this.done) {
-      this.remote.postMember(this.id, 'mark_as_not_done');
+      return this.remote.postMember(this.id, 'mark_as_not_done');
     } else {
-      this.remote.postMember(this.id, 'mark_as_done');
+      return this.remote.postMember(this.id, 'mark_as_done');
     }
   }
 };
