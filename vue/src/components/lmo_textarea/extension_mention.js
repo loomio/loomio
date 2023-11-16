@@ -1,6 +1,5 @@
 import Mention from '@tiptap/extension-mention'
 import { Node, mergeAttributes } from '@tiptap/core'
-import Suggestion, { SuggestionOptions } from '@tiptap/suggestion'
 // getLabel(dom) {
 //   return dom.innerText.split(this.options.matcher.char).join('')
 // }

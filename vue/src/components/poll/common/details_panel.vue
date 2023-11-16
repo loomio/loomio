@@ -1,8 +1,11 @@
-<script lang="coffee">
+<script lang="js">
 
 export default
-  props:
-    poll: Object
+  ({
+    props: {
+      poll: Object
+    }
+  });
 </script>
 
 <template lang="pug">

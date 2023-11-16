@@ -1,11 +1,13 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import { max, values, orderBy, compact } from 'lodash'
+<script lang="js">
+import Records from '@/shared/services/records';
+import { max, values, orderBy, compact } from 'lodash-es';
 
 export default
-  props:
-    options: Array
-
+  ({
+    props: {
+      options: Array
+    }
+  });
 </script>
 
 <template lang="pug">

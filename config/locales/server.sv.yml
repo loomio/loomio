@@ -1,7 +1,16 @@
+---
 sv:
   errors:
     404:
       title: Inte hittad
+    clear_cache: Lastningsproblem upptäcktes. Håll ned shift och tryck på ladda om, eller rensa webbläsarens cacheminne.
+    noscript: Loomio kräver javascript för att fungera! Vänligen aktivera javascript i din webbläsare för att fortsätta
+    upgrade_browser: Hoppsan! Din webbläsare är för gammal och Loomio kanske inte fungerar korrekt. Vänligen <a href="https://browser-update.org/update.html">uppgradera din webbläsare.</a>
+    return_home: Återvända hem
+    not_found: 404-filen hittades inte.
+    messages:
+      email: inte en giltig e-postadress
+      spoofed_media_type: Innehållet i den filen matchar inte dess filnamn
   group:
     stats:
       members: Medlemmar
@@ -9,6 +18,22 @@ sv:
       poll_types:
         proposal: Förslag
         time: Tidsröstning
+        count: Räkna
+        choose: Välja
+        allocate: Fördela
+        score: Göra
+        rank: Rang
+      group_stats: Gruppstatistik
+      org_stats: Organisationsstatistik (inklusive undergrupper)
+      visits: Besök
+      subgroups: Undergrupper
+      polls: Omröstningar
+      votes: Röster
+      comments: Kommentarer
+      general: Allmän
+    error:
+      handle_must_begin_with_parent_handle: Måste börja med %{parent_handle}-
+      no_public_trials: Vänligen uppgradera från testversion för att ändra gruppens sekretessinställning
   poll:
     export:
       title: Titel
@@ -16,9 +41,36 @@ sv:
       email: Email
       details: Detaljer
       total: Totalt
+      percent_voted: "%{num}/%{denom} (%{percent}) medlemmar har angett sin position"
+      user_id: användar ID
+      created_at: Skapad vid
+      closing_at: Stänger kl
+      closed_at: Stängt kl
+      is_latest: Är Senaste
+      engagement: Engagemang
+      stances: Ställningar
+      participants: Deltagare
+      group_name: Grupp namn
+      discussion_title: Trådens titel
+      outcome_author: Resultatförfattare
+      outcome_created_at: Resultat skapat kl
+      outcome_statement: Utfallsförklaring
+      poll_url: Enkätens URL
+      reason: Anledning
+      participant: Deltagare
+      also_available: Finns även i
+    error:
+      cannot_add_options: Det går inte att lägga till alternativ i denna omröstning
+      cannot_remove_options: Det går inte att ta bort alternativ från denna omröstning
+      must_have_options: Måste ha minst ett omröstningsalternativ
+      must_be_in_the_future: Måste vara i framtiden
+      templates_cannot_close: Mallar kan inte stängas
+    waiting_for_votes_from: Väntar på röster från
   email:
     reset_password:
       link_text: Återställ ditt lösenord
+      greeting: 'Hej %{name} Här är en länk som du kan använda för att återställa lösenordet på ditt Loomio-konto:'
+      signoff: Du fick detta eftersom din e-postadress skrevs in i formuläret "Glömt lösenord" på %{hostname}. Ditt lösenord kommer dock inte att ändras förrän du följer länken ovan och fyller i formuläret. Om du fortsätter att ha problem med att logga in, svara på det här e-postmeddelandet för att kontakta en supportperson.
     by_who: av %{person}
     reply_to_this_discussion: Svara på denna diskussion
     unsubscribe: 'Avregistrera dig eller ändra dina e-postinställningar:'
@@ -28,9 +80,54 @@ sv:
       thanks_for_reading: Tack för läsning, ha en bra dag!
       marked_as_read_success: Allt från mail har markerats som läst
       click_here: Klicka här
+      daily_subject: Igår på %{site_name}
+      weekly_subject: Förra veckan på %{site_name}
+      other_subject: Nyligen på %{site_name}
+      do_not_reply: Var god och svara ej på detta mail.
     membership_request:
       subject: "%{who} har begärt att få gå med %{which_group}"
       view_group: Du kan godkänna eller avslå begäran här
+      intro_html: har begärt åtkomst till en av dina grupper.
+      button_text: Visa begäran
+    common:
+      or_enter_code: Eller ange koden nedan
+      resend: Detta upphör att gälla om 24 timmar och kan endast användas en gång
+    login:
+      subject: Logga in på %{site_name}
+      intro: Det här är din länk för att logga in på %{site_name}
+      intro_code: Det här är din kod för att logga in på %{site_name}
+      login: Logga in som %{name}
+    reactivate:
+      subject: Återaktivera ditt %{site_name}-konto
+      intro: Hej %{name}, här är en länk för att återaktivera ditt %{site_name}-konto
+      login: Återaktivera %{name}
+    contact_request:
+      subject: "%{name} vill komma i kontakt med dig på %{site_name}!"
+      intro: "%{name} (%{email}) har skickat en begäran om anslutning till dig."
+      footer: Du kan svara %{name} direkt genom att svara på det här e-postmeddelandet.
+    loomio_app_description: En lättanvänd, säker plats för organisationer att fatta beslut tillsammans.
+    view_group: Visa grupp
+    to_join_group:
+      subject: "%{member} har bjudit in dig att gå med i %{group_name} på %{site_name}"
+      invitation_text: "%{member} har bjudit in dig att gå med i deras grupp %{group_name}."
+      invitation_text_html: har bjudit in dig att gå med i deras grupp
+      link_help: 'Klicka på länken nedan för att acceptera inbjudan:'
+      accept_invitation: Acceptera inbjudan
+      stop_emails: Sluta ta emot e-postmeddelanden från %{site_name}
+      accepting_is_important: Det är viktigt att acceptera din inbjudan, så att du inte missar meddelanden om beslut som involverar dig.
+    resend_to_join_group:
+      subject: "%{member} väntar på att du ska gå med i %{group_name} på %{site_name}"
+    user_added_to_group:
+      subject: "%{who} har lagt till dig i %{which_group} på %{site_name}"
+      content: "%{who} har lagt till dig i %{which_group}."
+      content_html: "<strong>%{who}</strong> har lagt till dig i <strong>%{which_group}</strong> ."
+      link_help: 'Klicka på länken nedan för att gå till gruppen:'
+    group_membership_approved:
+      intro: Din begäran om åtkomst till gruppen %{group_name} har godkänts.
+      intro_html: Din begäran om åtkomst till gruppen <strong>%{group_name}</strong> har godkänts.
+      link_help: 'Klicka på länken nedan för att gå med i %{group_name} och komma igång:'
+      subject: Din begäran om att gå med i %{group_name} har godkänts
+      join_group: Gå med i grupp
   footer:
     about: Om
     blog: Blogg
@@ -40,3 +137,191 @@ sv:
     pricing: Prissättning
     public_groups: Öppna grupper
     terms: Villkor
+    independent_install_html: '%{hostname} kör en oberoende kopia av Loomio: <a href="http://github.com/loomio/loomio">läs mer</a> .'
+  discussion_templates:
+    blank:
+      process_name: Tom mall
+      process_subtitle: Starta en ny tråd för alla ändamål
+    discuss_a_topic:
+      title_placeholder: Vilket ämne vill du diskutera?
+      process_name: Diskutera ett ämne
+      process_subtitle: Starta en diskussion med din grupp
+      process_introduction: "<p>Finns det en fråga, ett problem eller en möjlighet du vill ta upp med din grupp?</p><p> Introducera ämnet, länka till eventuell bakgrundsinformation och be om kommentarer, idéer och hjälp.</p><p> Bjud in människor att delta genom att bidra med sina tankar och relevant information. Använd @omnämnande för att få särskilda personers uppmärksamhet.</p><p> Uppdatera trådkontexten allt eftersom diskussionen fortskrider för att underlätta den mot ett resultat.</p><p> Vänta inte tills du har all information för att starta en tråd. Använd hellre tråden för att bjuda in folk att hjälpa dig utforska ämnet och hitta en lösning.</p>"
+      description: <h3 id="introduce-and-describe-the-topic">Introducera och beskriv ämnet</h3><p></p><h3 id="why-is-this-important"> Varför är detta viktigt?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> Hur vill du att folk ska svara?</h3><p></p>
+    onboarding_to_loomio:
+      title: Använder Loomio för vår grupp
+      process_name: Ombordstigning till Loomio
+      process_subtitle: En tråd för att hjälpa människor som är nya i Loomio att träna på att skriva kommentarer och rösta.
+      process_introduction: "<p>Använd den här mallen för att introducera människor till Loomio.</p><p> Ett bra sätt att uppleva Loomio är att öppna en diskussion i Loomio och fatta ett beslut!</p><p> Få igång diskussionen genom att följa textanvisningarna nedan eller lägg in dina egna ord.</p><p> Kör en Sense-kontroll så att din grupp kan rösta och se resultatet.</p><p> Lås upp värdet av Loomio genom att involvera människor i deras första beslut.</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">Varför är du intresserad av att använda Loomio?</h3><p> Vi är intresserade av att använda Loomio för att involvera människor i beslut om vår organisation.</p><h3 id="what-are-you-asking-people-to-do"> Vad ber du folk att göra?</h3><p> Jag skulle älska att höra dina tankar! Lämna en kommentar nedan och rösta i förslaget.</p><p> Du kan svara på någons kommentar genom att klicka på svarsikonen längst ner till höger i kommentaren.</p><p> Använd @mention för att meddela folk.</p>
+      onboarding: Onboarding
+    consent_process:
+      title_placeholder: Utveckla vår hälso- och säkerhetspolicy
+      process_name: Samtyckesprocess
+      process_subtitle: Ta ett beslut som är "säkert att prova", utan invändningar.
+      process_introduction: '<p>Sök samtycke till ett beslut du behöver fatta, där det inte finns några meningsfulla invändningar mot ditt förslag, så att du kan fatta ett snabbt beslut som är "säkert att prova" nu.</p><p> Typiska roller:</p><ul><li><p> Förslagsställare: Den som tar upp ett ämne som kräver ett beslut.</p></li><li><p> Handledare: Någon som kan hjälpa förslagsställaren att göra sitt jobb effektivt.</p></li></ul><p> Vanliga processsteg:</p><p> Steg 1. Presentera ett förslag med en Loomio-tråd.</p><p> Steg 2. Underlätta en runda med frågor, reaktioner och eventuella kommentarer för att förbättra förslaget med en Sense-check.</p><p> Steg 3. Ändra förslaget med förslag och kommentarer.</p><p> Steg 4. Fråga om någon har en meningsfull invändning mot det ändrade förslaget med ett samtyckesförslag.</p><p> Steg 5. Integrera giltiga invändningar för att skapa en ändrad version av förslaget som alla samtycker till är "säkert att prova", och när det är klart ange beslutsresultatet.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Läs mer: Samtyckesprocessen.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Vad är det för beslut du behöver fatta?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> Varför är detta viktigt och vilken effekt har det?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Vilken information behöver människor för sitt sammanhang?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Vem är facilitator för denna process?</h3><p></p>
+      consent: Samtycke
+    advice_process:
+      title_placeholder: Söker råd för att köpa en ny dator
+      process_name: Rådgivningsprocess
+      process_subtitle: Sök råd om ett beslut du behöver ta.
+      process_introduction: '<p>Ta ett beslut med råd från personer som påverkas eller som har expertis, så att du kan fatta ett bättre beslut för din organisation.</p><p> Typiska roller:</p><ul><li><p> Facilitator: Den person som fattar beslutet, eller be någon att underlätta.</p></li><li><p> Rådgivare: Personer som påverkas eller har expertis som du bjuder in.</p></li></ul><p> Vanliga processsteg:</p><p> Steg 1. Sök input för att få fram perspektiv innan du föreslår åtgärder.</p><p> Steg 2. Gör ett förslag och sök råd – kör ett rådsförslag.</p><p> Steg 3. Med beaktande av mottagna råd fattar du ett beslut och informerar de personer som har gett råd – ange ett utfall.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Läs mer: Rådgivningsprocess.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Vad är det för beslut du behöver fatta?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Varför är detta viktigt och vilken effekt har det?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> Vilka råd ber du om för att hjälpa dig att fatta ett bra beslut?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Vem är facilitator för denna process?</h3><p></p>
+      advice: Råd
+    pass_a_resolution:
+      title_placeholder: Beslut om att godkänna strategi
+      process_name: Anta en resolution
+      process_subtitle: Introducera resolution med sammanhang, bakgrundsinformation, svara på frågor och ta fram ett förslag för att anta resolutionen.
+      process_introduction: '<p>Roberts regler är ett ramverk som består av en uppsättning koder och etiska regler som hjälper grupper att hålla ordnade möten som låter majoriteten styra samtidigt som minoritetsröster kan höras. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a> En medlem gör en motion om att föreslå en åtgärd eller fatta ett beslut genom att säga, "Jag flyttar till...". En annan ledamot måste understödja motionen genom att säga: "Jag bifaller motionen." När någon sekunderar motionen röstar gruppen om motionen. Det antas med majoritet eller beslutförhet beroende på reglerna i stadgarna.</p>'
+      description: "<p><strong>Ange vilket beslut som ska fattas</strong></p><p></p><p> <strong>Beskriv sammanhang och bakgrundsinformation</strong></p><p></p><p> <strong>Bjud in medlemmar att ställa frågor, kommentera och bidra med all information för att skapa en gemensam förståelse</strong></p><p></p>"
+      resolution: Upplösning
+    decision_by_consensus:
+      title_placeholder: Revidering av vår organisations stadgar
+      process_name: Beslut med konsensus
+      process_subtitle: Nå kollektivavtal med alla inblandade.
+      process_introduction: '<p>Bygg konsensus för ett beslut som ni måste fatta tillsammans, för att nå en överenskommelse som tillfredsställer alla deltagares behov och angelägenheter.</p><p> Typiska roller:</p><ul><li><p> Utse en handledare. (På styrelsemöten är detta vanligtvis ordföranden.)</p></li><li><p> Ett kvorum eller övermajoritet av medlemmar att delta, enligt vad som anges i din organisations stadgar.</p></li></ul><p> Vanliga processsteg:</p><p> Steg 1. Skapa ett öppet utrymme för diskussion om en fråga eller ett förslag till beslut.</p><p> Steg 2. Testa för konsensus och avslöja invändningar med ett Sense-kontrollförslag.</p><p> Steg 3. Klargör eventuella punkter, bjud in konstruktiva ändringar och ändra förslaget.</p><p> Steg 4. Testa för överenskommelse och eventuella kvarvarande invändningar med ett konsensusförslag.</p><p> Steg 5. Anteckna beslutet med ett resultat och i organisationens officiella protokoll.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Läs mer: Konsensusprocess.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Vad är det för beslut du behöver fatta?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Varför är detta viktigt och vilken effekt har det?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Vilken information behöver människor för sitt sammanhang?</h3><p></p><h3 id="who-is-the-facilitator"> Vem är facilitator?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Vilka villkor måste vara uppfyllda för ett beslut?</h3><h3 id=""></h3>
+      consensus: Konsensus
+    share_links_and_info:
+      title_placeholder: Dela länkar och information
+      process_name: Dela länkar och information
+      process_subtitle: Lägg upp information, länkar och rapporter att dela för kommentarer och diskussion.
+      process_introduction: <p>Använd en tråd som en "vägg" eller "anslagstavla" för din grupp för att lägga upp information, nyheter och idéer som du vill dela med varandra.</p><p> Bjud in personer att använda verktygen <strong>Infoga länk</strong> och <strong>Bädda in videoformatering</strong> för att hjälpa gruppen att få tillgång till information från Loomio. Använd en <strong>rubrik</strong> på kommentarer för att fästa kommentaren till trådens tidslinje, så att den lätt kan hittas.</p><p> <strong>Nåla fast</strong> tråden så att den fastnar och uppmuntra <strong>Reaktioner</strong> att hålla den pigga, så att folk vet att du såg deras föremål.</p><p> Standardvisningen för denna tråd är <strong>Nyast</strong> så de senaste kommentarerna finns överst i tråden.</p>
+      description: <p>Använd den här tråden för att lägga upp information, meddelanden och saker du vill dela - en plats där du kan se vad som händer och engagera dig.</p><p data-text-align="start"> Dela evenemang, rapporter, podcasts och annan intressant onlineinformation.</p><p data-text-align="start"> Använd <strong>länken Infoga</strong> och <strong>Bädda in videoformateringsverktyg</strong> för att hjälpa människor att få tillgång till information inom Loomio.</p>
+      information: Information
+    prepare_for_a_meeting:
+      title_placeholder: Förbereder för nästa möte
+      process_name: Förbered dig för ett möte
+      process_subtitle: Bygg en agenda, posta styrelsepapper och organisera administrativa ärenden så att alla är uppdaterade, i sitt sammanhang och förberedda.
+      description: <p><strong>Fokus för mötet</strong></p><p></p><p data-text-align="start"> <strong>Översikt av agenda</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Åtgärder från senaste mötet</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Hur ska deltagarna förbereda sig inför mötet?</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Lista över dokument för mötet</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>Planera ett effektivt möte genom att involvera människor från början, anpassa dig till de viktigaste ämnena och utnyttja din dyrbara tid tillsammans bättre.</p><p> Använd en tråd som behållare för ditt möte för att skapa fokus för mötet, sätta agendan, hitta ett lämpligt datum, lägga upp viktiga dokument och rapporter, starta diskussion om agendapunkter, följa upp med åtgärder och protokoll.</p><p> Detta hjälper alla att förbereda sig inför mötet, genom att läsa materialet och fundera över diskussionsämnen och de beslut som ska fattas. Medlemmar är då mer benägna att anlända i sitt sammanhang och redo för mötet.</p><p> Läs mer om <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>att förbereda ett möte</u></a> i Good Governance Guide to Loomio.</p>
+      meeting: Möte
+    build_a_policy:
+      title_placeholder: Reviderar vår anställningspolicy
+      process_name: Bygg en policy
+      process_subtitle: Arbeta med ditt team för att skapa och komma överens om ett policy- eller procedurdokument.
+      process_introduction: <p><span>Tråden är behållaren för diskussion om policyn, där du kan komma överens om krav och principer och lägga upp dokumentutkast för kommentarer.</span></p><p> <span>Använd mallen för att utveckla policyer med en liten grupp människor, eller göra den transparent för hela organisationen och bjuda in kommentarer om progressiva versioner av dokumentet.</span></p><p> <span>Använd ett Sense-kontrollförslag för att meddela gruppmedlemmarna att ett utkast till dokument är redo för granskning, och bjud in personer att läsa dokumentet och svara med eventuella kommentarer eller frågor.</span></p><p> <span>När ett "slutligt" utkast är klart, ta fram ett samtycke eller konsensusförslag för att godkänna dokumentet.</span></p>
+      description: "<p><strong><span>Vilken policy eller dokument behöver du bygga?</span></strong></p><p></p><p> <strong><span>Varför är detta viktigt?</span></strong></p><p></p><p> <strong><span>Vad ber du folk att göra?</span></strong></p><p></p>"
+      policy: Politik
+    elect_a_governance_position:
+      title_placeholder: Fullmäktigenominering och val
+      process_name: Välj en ledningsposition
+      process_subtitle: Nominera och välj någon till en styrande roll i råd, kommitté eller styrelse.
+      process_introduction: "<p>Introducera den styrande rollen och kriterierna för tjänsten för att hjälpa medlemmar att bedöma kandidater.</p><p> Ring för nomineringar med en opt-in-undersökning. Bjud in de nominerade att lägga upp ett foto på kandidaten tillsammans med deras biografi och referenser. Bädda in ett videomeddelande från kandidaten så att medlemmar kan se och höra direkt från kandidaten.</p><p> Om du är redo att välja en kandidat använd ett samtyckesförslag.</p><p> Om du har flera kandidater till en position, använd förslaget Rankat val där väljarna kan rangordna kandidaterna i prioritetsordning.</p>"
+      description: '<h3 id="what-position-do-you-need-to-fill">Vilken tjänst behöver du fylla?</h3><p></p><h3 id="why-is-this-important"> Varför är detta viktigt?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand"> Vilka kvalifikationer, färdigheter och erfarenheter gör en bra kandidat?</h3><p></p><h3 id="what-is-the-election-process"> Vad är valprocessen?</h3><p> Steg 1: Nomineringar – vi bjuder in nomineringar på lämpliga kandidater.</p><p> Steg 2: Presentera kandidater - inkludera ett foto, kort bio och referens för varje kandidat.</p><p> Steg 3: Val - rösta för att utse en kandidat till rollen.</p>'
+      election: Val
+    funding_decision:
+      title_placeholder: Finansieringsansökan för Robotics Roadshow
+      process_name: Finansieringsbeslut
+      process_subtitle: Behandla en bidrags-, låne- eller investeringsansökan och fatta ett finansieringsbeslut.
+      process_introduction: "<p>Inför en ansökan om finansiering, bifoga dokument och annat stödmaterial.</p><p> Sammanfatta ansökan i trådsammanhang.</p><p> Bjud in behöriga personer att granska ansökan och ställa frågor. Ge tillräckligt med tid för diskussion.</p><p> Ta fram ett konsensusförslag för att godkänna finansieringen.</p><p> Om någon inte håller med, fråga efter en anledning – till exempel kan mer information behövas. Be personen som inte håller med om att ändra sin röst när han är nöjd.</p><p> När du har ett tydligt beslut om finansieringsansökan, ange ett utfall för att anteckna beslutet.</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">Introducera och sammanfatta finansieringsansökan</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Hur stämmer denna ansökan med finansieringskriterier?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Vem har rätt att godkänna detta finansieringsbeslut?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Bjud in frågor från beslutsfattare att behandla ansökan</h3><p></p>
+      funding: Finansiering
+    approve_a_document:
+      title_placeholder: Utvecklar vår varumärkesstrategi
+      process_name: Godkänn ett dokument
+      process_subtitle: Introducera, diskutera och utveckla ett viktigt dokument, policy eller avtal.
+      process_introduction: "<p>Introducera dokumentet tillsammans med eventuell bakgrundsinformation. Ange syftet med dokumentet för att hålla fokus.</p><p> Bjud in personer att bidra med information och deras expertis, och använd detta för att rama in dokumentet. Erkänn och överväg feedback och bidrag från människor.</p><p> Integrera bidrag i ett första utkast av dokumentet och på varandra följande utkast tills det är redo att godkännas.</p><p> Använd en Sense-kontrollundersökning för att kartlägga åsikter och klargöra eventuella problem med utkastet.</p><p> När feedback har beaktats och införlivats i dokumentet, fortsätt till godkännande eller överenskommelse med ett samtycke eller konsensusförslag.</p><p> Tråden blir en tydlig registrering av framstegen i dokumentskapandet och fattade beslut.</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">Vad är syftet med dokumentet?</h3><p></p><h3 id="why-is-this-important"> Varför är detta viktigt?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Vad ber du folk att göra?</h3><p></p>
+      document: Dokumentera
+  explore:
+    header: Utforska offentliga grupper
+  activerecord:
+    errors:
+      messages:
+        blank: kan inte vara tom
+        invalid: är inte ett giltigt värde
+  user:
+    deleted_user: Ta bort användare
+    placeholder_name: Inbjuden användare (%{hostname})
+    error:
+      sign_in_required_html: Du måste vara inloggad för att fortsätta. <a href="/dashboard" target="_blank">Logga in</a> och ladda sedan om sidan för att fortsätta.
+      recaptcha: Vi kunde inte verifiera att du inte är en robot. Var god försök igen!
+      bad_login: Tyvärr, det lösenordet stämmer inte överens med det vi har registrerat
+      username_must_be_alphanumeric: Användarnamn får endast vara små bokstäver och siffror
+  stance:
+    error:
+      too_short: Vänligen gör ett urval
+  invitation:
+    invitation_cancelled: Tyvärr, denna inbjudan har återkallats av gruppsamordnaren. Begär ytterligare en inbjudan från din grupp.
+    invitation_already_used: Den här inbjudan har redan använts. Logga in på loomio direkt för att fortsätta till din grupp.
+  subscriptions:
+    active: Aktiva
+    inactive: Inaktiv
+  base_mailer:
+    via_loomio: "%{name} (via %{site_name})"
+  user_mailer:
+    group_export_ready:
+      subject: Gruppdataexport för %{group_name}
+      body_html: Ladda ner din gruppdata <a href="%{url}">här</a> . Observera att denna länk kommer att upphöra att gälla om en vecka.
+    deactivated:
+      subject: Ditt %{site_name} användarkonto har inaktiverats.
+      body_html: "<p>Du, eller någon med åtkomst till ditt konto, har inaktiverat ditt Loomio-användarkonto.</p><p> Alla personuppgifter har tagits bort från systemet.</p><p> Om du vill återställa det här användarkontot och tillhörande kommentarer och röster, vänligen kontakta supporten och referera: %{recovery_code}</p>"
+    accounts_merged:
+      subject: Dina %{site_name} användarkonton har slagits samman.
+      body_html: Hej %{name}, Dina två loomio-konton har slagits samman till ett konto. För att komma åt loomio från och med nu, använd <strong>%{email}</strong> när du loggar in.
+    merge_verification:
+      subject: Verifiera din %{site_name} e-postadress för sammanslagning
+      body_html: "<p>Hej %{name},</p><p> En begäran gjordes om att slå samman ditt användarkonto under adressen <strong>%{source_email}</strong> med kontot som tillhör denna adress, <strong>%{target_email}</strong> .</p><p> När den här processen är klar kommer du inte längre att kunna logga in med <strong>%{source_email}</strong> och endast med <strong>%{target_email}</strong> .</p><p> Vänligen bekräfta att detta är vad du vill göra.</p>"
+      verify: Verifiera e-postmeddelandet och fortsätt
+      confirm_page:
+        confirm: Bekräfta sammanslagning
+        body_html: "<p>Bekräfta att du vill slå samman kontot under <strong>%{source_email}</strong> med kontot under <strong>%{target_email}</strong> .</p><p> Ditt konto under <strong>%{source_email}</strong> kommer att raderas, och du kommer därefter endast att kunna logga in via <strong>%{target_email}</strong> .</p><p> Denna förändring är oåterkallelig.</p>"
+        merge: Slå samman konton
+      complete_page:
+        title: Sammanfogningen lyckades!
+        body_html: <p>Sammanfogningen av dina användarkonton lyckades. Du kommer att få en bekräftelse via e-post till <strong>%{target_email}</strong> inom kort.</p><p> <a href="/contact" target="_blank">Kontakta oss</a> om du har ytterligare frågor.</p>
+  announcement_count_emails: "%{count} e-postmeddelanden"
+  email_actions:
+    unfollowed_discussion: Du har stängt av e-post för tråden.
+  discussion_mailer:
+    reply_or_view_online_html: Svara direkt på det här e-postmeddelandet eller <a href='%{url}'>se det på %{hostname}</a> .
+    turn_off_notifications_html: "<a href='%{url}'>Stäng av e-postmeddelanden</a> för den här diskussionen."
+    change_email_preferences_html: Ändra dina <a href='%{email_preferences_url}'>e-postinställningar</a> .
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Avsluta prenumerationen</a> på ytterligare meddelanden i denna tråd."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Avsluta prenumerationen</a> på kommentarer i denna tråd."
+    unsubscribe_from_comment_replied_to_html: Detta är ett svarsmeddelande.
+    unsubscribe_from_user_mentioned_html: Detta är ett omnämnande.
+    discussion_edited:
+      inline: "%{actor} redigerade trådkontexten"
+    discussion_closed:
+      inline: "%{actor} stängde tråden"
+  password_reset:
+    change_your_password: Ändra ditt lösenord
+    change_my_password: ändra lösenord
+    confirm_new_password: Bekräfta lösenord
+    new_password: Nytt lösenord
+    email_guidelines_html: "<p>Ange din e-postadress så får du en länk för återställning av lösenord.</p><p> Om du normalt loggar in via Facebook eller Google anger du den e-postadress som är kopplad till det kontot.</p>"
+    reset_email_timeframe: Det kan ta upp till 5 minuter innan mejlet kommer fram. Om det inte dyker upp, var noga med att kontrollera din skräppostmapp.
+    length_restriction: Lösenord måste vara minst 8 tecken långa.
+    forbidden_passwords: Vanliga lösenord som "lösenord" är förbjudna för att skydda ditt konto.
+  task_mailer:
+    task_due_reminder:
+      subject: 'Uppgiftspåminnelse: %{name}'
+      greeting: 'Hej %{name}, följande uppgift ska betalas %{due}:'
+      view_task: Visa på %{site_name}
+      update_or_comment: Om du redan har slutfört den här uppgiften, markera den. Om det inte är komplett, vänligen dela en förloppsuppdatering.
+      due_today: i dag
+      due_in_count_days: om %{count} dagar
+  group_mailer:
+    resend: 'PÅMINNELSE: %{member} väntar på att du ska gå med i %{group_name}'
+    destroy_warning:
+      subject: Din Loomio-grupp är schemalagd för radering.
+      body: 'Din Loomio-grupp: "%{group}" har schemalagts för radering av %{deletor}. Om du inte vill att din grupp ska tas bort, vänligen svara på det här e-postmeddelandet. Om du är säker på att du vill ta bort gruppen behöver du inte göra någonting. Tack.'
+  poll_mailer:
+    common:
+      why_send_this: Du får det här e-postmeddelandet eftersom %{reason}
+      view_on_loomio: Se den på %{site_name}
+      create_outcome: Dela resultatet
+      your_response: 'Du röstade:'
+      you_voted: Du röstade!
+      not_invited: Inte inbjuden
+      please_respond: Vänligen svara
+      time_zone: "(Tiderna visas i %{zone})"
+      undecided_members: Obestämda medlemmar (%{count})
+      undecided_visitors: Obestämda gäster (%{count})
+      more_undecided: "%{count} till..."
+      vote_now: Rösta nu
+      you_have_until: Du har fram till %{när} på dig att delta.
+      people_have_voted: "%{nom} av %{dnom} personer har deltagit (%{pct}%)"

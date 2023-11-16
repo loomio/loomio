@@ -1,31 +1,40 @@
-<script lang="coffee">
-import AuthService from '@/shared/services/auth_service'
-import EventBus    from '@/shared/services/event_bus'
+<script lang="js">
+import AuthService from '@/shared/services/auth_service';
+import EventBus    from '@/shared/services/event_bus';
 
-export default
-  props:
+export default {
+  props: {
     user: Object
-  data: ->
-    email: @user.email
-    loading: false
-
-  watch:
-    # GK: NB: not sure why this hack is necessary, but email is not set otherwise
-    'user.email': ->
-      @email = @user.email
-  methods:
-    submit: ->
-      return unless @validateEmail()
-      @user.email = @email
-      @loading = true
-      AuthService.emailStatus(@user).finally => @loading = false
-    validateEmail: ->
-      @user.errors = {}
-      if !@email
-        @user.errors.email = [@$t('auth_form.email_not_present')]
-      else if !@email.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)
-        @user.errors.email = [@$t('auth_form.invalid_email')]
-      !@user.errors.email?
+  },
+  data() {
+    return {
+      email: this.user.email,
+      loading: false
+    };
+  },
+  watch: {
+    'user.email'() {
+      this.email = this.user.email;
+    }
+  },
+  methods: {
+    submit() {
+      if (!this.validateEmail()) { return; }
+      this.user.email = this.email;
+      this.loading = true;
+      AuthService.emailStatus(this.user).finally(() => { this.loading = false; });
+    },
+    validateEmail() {
+      this.user.errors = {};
+      if (!this.email) {
+        this.user.errors.email = [this.$t('auth_form.email_not_present')];
+      } else if (!this.email.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)) {
+        this.user.errors.email = [this.$t('auth_form.invalid_email')];
+      }
+      return (this.user.errors.email == null);
+    }
+  }
+};
 </script>
 <template lang="pug">
 .auth-email-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")

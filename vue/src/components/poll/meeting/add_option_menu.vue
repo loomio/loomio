@@ -1,27 +1,34 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import Flash   from '@/shared/services/flash'
-import { exact }   from '@/shared/helpers/format_time'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import Flash   from '@/shared/services/flash';
+import { exact }   from '@/shared/helpers/format_time';
 
-import { format, utcToZonedTime } from 'date-fns-tz'
-import { isSameYear, startOfHour }  from 'date-fns'
+import { format, utcToZonedTime } from 'date-fns-tz';
+import { isSameYear, startOfHour }  from 'date-fns';
 
-export default
-  props:
-    poll: Object
+export default {
+  props: {
+    poll: Object,
     value: Date
+  },
 
-  data: ->
-    min: new Date
-    zoneCounts: []
-    showTimeZones: false
+  data() {
+    return {
+      min: new Date,
+      zoneCounts: [],
+      showTimeZones: false
+    };
+  },
 
-  computed:
-    currentTimeZone: -> Session.user().timeZone
+  computed: {
+    currentTimeZone() { return Session.user().timeZone; }
+  },
 
-  methods:
-    timeInZone: (zone) -> exact(@value, zone)
+  methods: {
+    timeInZone(zone) { return exact(this.value, zone); }
+  }
+};
 
 </script>
 <template lang="pug">

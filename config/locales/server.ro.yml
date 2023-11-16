@@ -1,3 +1,4 @@
+---
 ro:
   explore:
     header: Explreaza grupuri publice
@@ -11,6 +12,12 @@ ro:
       title: Nu am găsit
     messages:
       spoofed_media_type: Continutul acelui fisier nu corespunde cu numele lui
+      email: nu este o adresă de e-mail validă
+    clear_cache: Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului.
+    noscript: Loomio necesită javascript pentru a funcționa! Vă rugăm să activați javascript în browser pentru a continua
+    upgrade_browser: Uh oh! Browserul dvs. web este prea vechi și este posibil ca Loomio să nu funcționeze corect. Vă rugăm <a href="https://browser-update.org/update.html">să actualizați browserul.</a>
+    return_home: Intoarce-te acasa
+    not_found: Fișierul 404 nu a fost găsit.
   group:
     stats:
       members: Membri
@@ -18,11 +25,29 @@ ro:
       comments: Comentarii
       poll_types:
         proposal: Propunere
+        count: Numara
+        choose: Alege
+        allocate: Aloca
+        score: Scor
+        rank: Rang
+        time: Sondaj de timp
+      group_stats: Statistici de grup
+      org_stats: Statistici ale organizației (inclusiv subgrupuri)
+      visits: Vizite
+      subgroups: Subgrupuri
+      polls: Sondaje
+      votes: Voturi
+      general: General
+    error:
+      handle_must_begin_with_parent_handle: Trebuie să înceapă cu %{parent_handle}-
+      no_public_trials: Vă rugăm să faceți upgrade de la versiunea de încercare pentru a modifica setarea de confidențialitate a grupului
   poll:
     error:
       cannot_add_options: Nu poti adauga optiuni la sondajul acesta
       cannot_remove_options: Nu poti sterge optiuni din acest sondaj
       must_have_options: Intr-un sondaj trebuie sa existe macar o optiune
+      must_be_in_the_future: Trebuie să fie în viitor
+      templates_cannot_close: Șabloanele nu se pot închide
     export:
       title: Titlu
       author: Autor
@@ -31,27 +56,56 @@ ro:
       details: Detalii
       group_name: Numele Grupului
       total: Total
+      percent_voted: "%{num}/%{denom} (%{percent}) membri și-au declarat poziția"
+      user_id: ID-ul de utilizator
+      created_at: Creat la
+      closing_at: Închidere la
+      closed_at: Închis la
+      is_latest: Este cel mai recent
+      stances: Posturi
+      participants: Participanții
+      discussion_title: Titlul subiectului
+      outcome_author: Autor de rezultat
+      outcome_created_at: Rezultat creat la
+      outcome_statement: Declarație de rezultat
+      poll_url: Adresa URL a sondajului
+      reason: Motiv
+      participant: Participant
+      also_available: Disponibil și în
+    waiting_for_votes_from: Astept voturile de la
   stance:
     error:
       too_short: Te rog selecteaza o optiune
   email:
     login:
       login: Intra in contul %{name}
+      subject: Conectați-vă la %{site_name}
+      intro: Acesta este linkul dvs. pentru a vă conecta la %{site_name}
+      intro_code: Acesta este codul dvs. pentru a vă conecta la %{site_name}
     contact_request:
-      footer: "Poti sa raspunzi direct %{name} prin raspuns la acest email"
+      footer: Poti sa raspunzi direct %{name} prin raspuns la acest email
+      subject: "%{name} ar dori să se conecteze cu tine pe %{site_name}!"
+      intro: "%{name} (%{email}) v-a trimis o solicitare de conectare."
     reset_password:
       link_text: Reseteaza-ti parola
+      greeting: 'Bună %{name} Iată un link pe care îl puteți folosi pentru a reseta parola din contul dvs. Loomio:'
+      signoff: Ați primit acest lucru deoarece e-mailul dvs. a fost introdus în formularul „Am uitat parola” de pe %{hostname}. Cu toate acestea, parola dvs. nu va fi schimbată până când veți urma linkul de mai sus și completați formularul. Dacă întâmpinați în continuare probleme la conectare, răspundeți la acest e-mail pentru a contacta o persoană de asistență.
     by_who: de catre %{person}
     reply_to_this_discussion: Raspunde acestei discutii
     view_group: Vizualizeaza grupul
     to_join_group:
       subject: "%{member} te-a invitat sa intri in %{group_name} pe %{site_name}"
       invitation_text: "%{member} te-a invitat sa te alaturi grupului lor %{group_name}."
-      invitation_text_html: "te-a invitat sa te alaturi grupului lor"
-      link_help: "Apasa pe linkul de mai jos pentru a accepta invitatia:"
-      accept_invitation: "Accepta invitatia"
+      invitation_text_html: te-a invitat sa te alaturi grupului lor
+      link_help: 'Apasa pe linkul de mai jos pentru a accepta invitatia:'
+      accept_invitation: Accepta invitatia
+      stop_emails: Nu mai primiți e-mailuri de la %{site_name}
+      accepting_is_important: Este important să vă acceptați invitația, pentru a nu rata notificări despre deciziile care vă implică.
     user_added_to_group:
-      link_help: "Apasa pe linkul de mai jos pentru a intra in grup:"
+      link_help: 'Apasa pe linkul de mai jos pentru a intra in grup:'
+      subject: "%{who} te-a adăugat la %{which_group} pe %{site_name}"
+      content: "%{who} te-a adăugat la %{which_group}."
+      content_html: "<strong>%{who}</strong> te-a adăugat la <strong>%{which_group}</strong> ."
     unsubscribe: 'Dezabonare sau schimbarea preferintelor de email:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
     catch_up:
@@ -61,17 +115,41 @@ ro:
       thanks_for_reading: Multumesc pentru lectura, o zi buna!
       marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
       click_here: Apasa aici
+      weekly_subject: Săptămâna trecută pe %{site_name}
+      other_subject: Recent pe %{site_name}
     group_membership_approved:
-      subject: "Cererea ta de a te alatura grupului %{group_name} a fost acceptata"
-      join_group: "Alatura-te grupului"
+      subject: Cererea ta de a te alatura grupului %{group_name} a fost acceptata
+      join_group: Alatura-te grupului
+      intro: Solicitarea dvs. de acces la grupul %{group_name} a fost aprobată.
+      intro_html: Solicitarea dvs. de acces la grupul <strong>%{group_name}</strong> a fost aprobată.
+      link_help: 'Faceți clic pe linkul de mai jos pentru a vă alătura %{group_name} și a începe:'
     membership_request:
       subject: "%{who} a cerut sa intre in %{which_group}"
       view_group: Aici poti aproba sau nu cererea
       button_text: Vizualizeaza cerere
+      intro_html: a solicitat acces la unul dintre grupurile dvs.
+    common:
+      or_enter_code: Sau introduceți codul de mai jos
+      resend: Acesta va expira în 24 de ore și poate fi folosit o singură dată
+    reactivate:
+      subject: Reactivați-vă contul %{site_name}
+      intro: Bună %{name}, iată un link pentru a vă reactiva contul %{site_name}
+      login: Reactivați %{name}
+    loomio_app_description: Un loc sigur și ușor de utilizat pentru ca organizațiile să ia decizii împreună.
+    resend_to_join_group:
+      subject: "%{member} vă așteaptă să vă alăturați %{group_name} pe %{site_name}"
   discussion_mailer:
-    reply_or_view_online_html: "Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>."
+    reply_or_view_online_html: Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Nu mai trimite email</a> pentru aceasta discutie."
-    change_email_preferences_html: "Modifica-ti <a href='%{email_preferences_url}'> preferintele de email</a>."
+    change_email_preferences_html: Modifica-ti <a href='%{email_preferences_url}'> preferintele de email</a>.
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Dezabonați-vă</a> de la anunțuri ulterioare din acest thread."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Dezabonați-vă</a> de la comentariile din acest thread."
+    unsubscribe_from_comment_replied_to_html: Aceasta este o notificare de răspuns.
+    unsubscribe_from_user_mentioned_html: Aceasta este o notificare de mențiune.
+    discussion_edited:
+      inline: "%{actor} a editat contextul firului de discuție"
+    discussion_closed:
+      inline: "%{actor} a închis firul"
   footer:
     about: Despre
     blog: Blog
@@ -86,3 +164,164 @@ ro:
     reset_email_timeframe: In aproximativ 5 minute vei primi un email. Daca nu apare verifica si recipientul spam.
     length_restriction: Parola trebuie sa contina cel putin 8 caractere.
     forbidden_passwords: Parole comune cum ar fi “parola” nu sunt permise, in vederea sigurantei contului tau.
+    change_your_password: Schimbați-vă parola
+    change_my_password: Schimbaţi parola
+    confirm_new_password: Confirmă parola
+    new_password: Parolă Nouă
+    email_guidelines_html: "<p>Introdu adresa ta de e-mail și vi se va trimite un link de resetare a parolei.</p><p> Dacă vă conectați în mod normal prin Facebook sau Google, introduceți adresa de e-mail asociată contului respectiv.</p>"
+  discussion_templates:
+    blank:
+      process_name: Șablon gol
+      process_subtitle: Începeți un thread nou pentru orice scop
+    discuss_a_topic:
+      title_placeholder: Care este subiectul pe care doriți să îl discutați?
+      process_name: Discutați un subiect
+      process_subtitle: Începeți o discuție cu grupul dvs
+      process_introduction: "<p>Există vreo problemă, problemă sau oportunitate pe care doriți să o abordați cu grupul dvs.?</p><p> Introduceți subiectul, trimiteți la orice informații de fundal și cereți comentarii, idei și ajutor.</p><p> Invitați oamenii să participe contribuind cu gândurile și informațiile relevante. Folosiți @mention pentru a atrage atenția anumitor persoane.</p><p> Actualizați contextul firului pe măsură ce discuția progresează pentru a o facilita spre un rezultat.</p><p> Nu așteptați până când aveți toate informațiile pentru a începe un thread. Mai degrabă folosiți firul pentru a invita oameni să vă ajute să explorați subiectul și să găsiți o soluție.</p>"
+      description: <h3 id="introduce-and-describe-the-topic">Introduceți și descrieți subiectul</h3><p></p><h3 id="why-is-this-important"> De ce este acest lucru important?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> Cum ați dori să răspundă oamenii?</h3><p></p>
+    onboarding_to_loomio:
+      title: Folosind Loomio pentru grupul nostru
+      process_name: Înregistrare la Loomio
+      process_subtitle: Un fir pentru a-i ajuta pe cei nou în Loomio să exerseze scrisul de comentarii și votarea.
+      process_introduction: "<p>Utilizați acest șablon pentru a prezenta oamenilor Loomio.</p><p> O modalitate excelentă de a experimenta Loomio este de a deschide o discuție în Loomio și de a lua o decizie!</p><p> Începeți discuția urmând instrucțiunile de mai jos sau introduceți propriile cuvinte.</p><p> Rulați o verificare Sense, astfel încât grupul dvs. să poată vota și să vadă rezultatele.</p><p> Deblocați valoarea Loomio prin implicarea oamenilor în prima lor decizie.</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">De ce ești interesat să folosești Loomio?</h3><p> Suntem interesați să folosim Loomio pentru a implica oamenii în deciziile despre organizația noastră.</p><h3 id="what-are-you-asking-people-to-do"> Ce le ceri oamenilor să facă?</h3><p> Mi-ar plăcea să vă aud gândurile! Lăsați un comentariu mai jos și votați propunerea.</p><p> Puteți răspunde la comentariul cuiva făcând clic pe pictograma de răspuns situată în partea dreaptă jos a comentariului.</p><p> Utilizați @mention pentru a notifica oamenii.</p>
+      onboarding: La imbarcare
+    consent_process:
+      title_placeholder: Dezvoltarea politicii noastre de sănătate și siguranță
+      process_name: Procesul de consimțământ
+      process_subtitle: Luați o decizie „sigur de încercat”, fără obiecții.
+      process_introduction: '<p>Cereți consimțământul pentru o decizie pe care trebuie să o luați, în cazul în care nu există obiecții semnificative la propunerea dvs., astfel încât să puteți lua o decizie rapidă care este „sigur de încercat” acum.</p><p> Roluri tipice:</p><ul><li><p> Proponer: Persoana care ridică un subiect care necesită o decizie.</p></li><li><p> Facilitator: cineva care poate ajuta solicitantul să-și facă treaba eficient.</p></li></ul><p> Etape comune ale procesului:</p><p> Pasul 1. Prezentați o propunere cu un fir Loomio.</p><p> Pasul 2. Facilitați o rundă de întrebări, reacții și orice comentarii pentru a îmbunătăți propunerea cu o verificare Sense.</p><p> Pasul 3. Modificați propunerea cu sugestii și comentarii.</p><p> Pasul 4. Întrebați dacă cineva are o obiecție semnificativă la propunerea modificată cu o propunere de consimțământ.</p><p> Pasul 5. Integrați obiecțiile valide pentru a crea o versiune modificată a propunerii pe care toată lumea consimțând că este „încercată în siguranță” și, când este finalizată, precizați rezultatul deciziei.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Citește mai mult: Procesul de consimțământ.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Care este decizia pe care trebuie să o iei?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> De ce este acest lucru important și ce impact are?</h3><p></p><h3 id="what-information-do-people-need-for-context"> De ce informații au nevoie oamenii pentru context?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Cine este facilitatorul acestui proces?</h3><p></p>
+      consent: Consimţământ
+    advice_process:
+      title_placeholder: Caut sfaturi pentru a cumpăra un computer nou
+      process_name: Procesul de consiliere
+      process_subtitle: Cere sfaturi cu privire la o decizie pe care trebuie să o iei.
+      process_introduction: '<p>Luați o decizie cu sfatul persoanelor afectate sau care au experiență, astfel încât să puteți lua o decizie mai bună pentru organizația dvs.</p><p> Roluri tipice:</p><ul><li><p> Facilitator: Persoana care ia decizia sau cere cuiva să faciliteze.</p></li><li><p> Consilieri: oameni care sunt afectați sau au expertiză pe care le invitați.</p></li></ul><p> Etape comune ale procesului:</p><p> Pasul 1. Căutați contribuții pentru a analiza perspectivele înainte de a propune acțiuni.</p><p> Pasul 2. Faceți o propunere și căutați sfaturi - rulați o propunere de sfaturi.</p><p> Pasul 3. Luând în considerare sfaturile primite, luați o decizie și informați persoanele care au dat sfaturi - declarați un rezultat.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Citește mai mult: Procesul de consiliere.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Care este decizia pe care trebuie să o iei?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> De ce este acest lucru important și ce impact are?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> Ce sfaturi cereți pentru a vă ajuta să luați o decizie bună?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Cine este facilitatorul acestui proces?</h3><p></p>
+      advice: Sfat
+    pass_a_resolution:
+      title_placeholder: Rezoluție de aprobare a strategiei
+      process_name: Dați o rezoluție
+      process_subtitle: Introduceți rezoluția cu context, informații de fundal, răspundeți la întrebări și ridicați o propunere pentru adoptarea rezoluției.
+      process_introduction: '<p>Regulile lui Robert este un cadru care constă dintr-un set de coduri și reguli de etică care ajută grupurile să organizeze întâlniri ordonate care permit majorității să guverneze, permițând în același timp să se audă vocile minorităților. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a> Un membru face o moțiune de a propune o acțiune sau de a lua o decizie spunând „Mă mut la...”. Un alt membru trebuie să susțină moțiunea spunând: „Suport moțiunea”. Odată ce cineva secundează moțiunea, grupul votează moțiunea. Se trece cu majoritate de voturi sau cu cvorum în funcție de regulile din statut.</p>'
+      description: "<p><strong>Indicați rezoluția care urmează să fie adoptată</strong></p><p></p><p> <strong>Subliniați contextul și informațiile de fundal</strong></p><p></p><p> <strong>Invitați membrii să pună întrebări, să facă comentarii și să contribuie cu orice informație pentru a construi o înțelegere comună</strong></p><p></p>"
+      resolution: Rezoluţie
+    decision_by_consensus:
+      title_placeholder: Revizuirea constituției organizației noastre
+      process_name: Decizie prin consens
+      process_subtitle: Ajungeți la un acord colectiv cu toți cei implicați.
+      process_introduction: '<p>Creați un consens pentru o decizie pe care trebuie să o luați împreună, pentru a ajunge la un acord care să satisfacă nevoile și preocupările tuturor participanților.</p><p> Roluri tipice:</p><ul><li><p> Numiți un facilitator. (În reuniunile consiliului, acesta este de obicei președintele.)</p></li><li><p> Un cvorum sau o supramajoritate de membri care să participe, conform prevederilor din statutul organizației dvs.</p></li></ul><p> Etape comune ale procesului:</p><p> Pasul 1. Creați un spațiu deschis pentru discuții despre o problemă sau o decizie propusă.</p><p> Pasul 2. Testați pentru consens și expuneți obiecțiile cu o propunere de verificare Sense.</p><p> Pasul 3. Clarificați orice puncte, invitați modificări constructive și modificați propunerea.</p><p> Pasul 4. Testați acordul și orice obiecții rămase cu o propunere de consens.</p><p> Pasul 5. Înregistrați decizia cu un rezultat și în procesele verbale oficiale ale organizației.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Citește mai mult: Proces de consens.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Care este decizia pe care trebuie să o iei?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> De ce este acest lucru important și ce impact are?</h3><p></p><h3 id="what-information-do-people-need-for-context"> De ce informații au nevoie oamenii pentru context?</h3><p></p><h3 id="who-is-the-facilitator"> Cine este facilitatorul?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Ce condiții trebuie îndeplinite pentru o decizie?</h3><h3 id=""></h3>
+      consensus: Consens
+    share_links_and_info:
+      title_placeholder: Distribuiți linkuri și informații
+      process_name: Distribuiți linkuri și informații
+      process_subtitle: Postați informații, link-uri și rapoarte pentru a le distribui pentru comentarii și discuții.
+      process_introduction: "<p>Folosiți un fir ca „perete” sau „tablou de informare” pentru grupul dvs. pentru a posta informații, știri și idei pe care ați dori să le împărtășiți.</p><p> Invitați oameni să folosească instrumentele de formatare video <strong>Inserați linkul</strong> și <strong>încorporați</strong> pentru a ajuta grupul să acceseze informații din Loomio. Utilizați un <strong>titlu</strong> la comentarii pentru a fixa comentariul în cronologia firului, astfel încât să poată fi găsit cu ușurință.</p><p> <strong>Fixați</strong> firul astfel încât să se lipească și încurajați <strong>Reactions</strong> să-l mențină plin de energie, anunțând oamenii că le-ați văzut articolul.</p><p> Afișarea implicită a acestui subiect este <strong>Cele mai noi</strong> , așa că cele mai recente comentarii sunt în partea de sus a firului.</p>"
+      description: <p>Folosiți acest fir pentru a posta informații, notificări și lucruri pe care doriți să le împărtășiți - un loc unde puteți vedea ce se întâmplă și să vă implicați.</p><p data-text-align="start"> Partajați evenimente, rapoarte, podcasturi și alte informații interesante online.</p><p data-text-align="start"> Utilizați instrumentele de formatare video <strong>Inserați linkul</strong> și <strong>încorporați</strong> pentru a ajuta oamenii să acceseze informațiile din Loomio.</p>
+      information: informație
+    prepare_for_a_meeting:
+      title_placeholder: Ne pregătim pentru următoarea noastră întâlnire
+      process_name: Pregătiți-vă pentru o întâlnire
+      process_subtitle: Construiește o agendă, postează documentele de bord și organizează chestiunile administrative, astfel încât toată lumea să fie la curent, în context și pregătit.
+      description: <p><strong>Focalizarea întâlnirii</strong></p><p></p><p data-text-align="start"> <strong>Schițați agenda</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Acțiuni de la ultima întâlnire</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Cum ar trebui să se pregătească participanții pentru întâlnire?</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Lista documentelor pentru întâlnire</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>Planificați o întâlnire eficientă prin implicarea oamenilor de la început, aliniându-vă la cele mai importante subiecte și profitați mai bine de timpul prețios împreună.</p><p> Utilizați un fir ca container pentru întâlnirea dvs. pentru a stabili un punct focal pentru întâlnire, pentru a stabili agenda, pentru a găsi o dată potrivită, pentru a posta documente și rapoarte cheie, pentru a începe discuția cu privire la punctele de pe ordinea de zi, pentru a continua cu acțiuni și minute.</p><p> Acest lucru îi ajută pe toți să se pregătească pentru întâlnire, citind materialele și gândindu-se la subiectele de discuție și la deciziile care trebuie luate. Atunci este mai probabil ca membrii să ajungă în context și să fie pregătiți pentru întâlnire.</p><p> Citiți mai multe despre <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>Pregătirea pentru o întâlnire</u></a> în Ghidul de bună guvernare pentru Loomio.</p>
+      meeting: Întâlnire
+    build_a_policy:
+      title_placeholder: Revizuirea politicii noastre de angajare
+      process_name: Construiește o politică
+      process_subtitle: Lucrați cu echipa dvs. pentru a construi și a conveni asupra unui document de politică sau de procedură.
+      process_introduction: "<p><span>Firul este containerul pentru discuții despre politică, unde puteți conveni cerințe și principii și puteți posta proiecte de documente pentru comentarii.</span></p><p> <span>Utilizați șablonul pentru a dezvolta o politică cu un grup mic de persoane sau faceți-l transparent pentru întreaga organizație, invitând comentarii asupra versiunilor progresive ale documentului.</span></p><p> <span>Utilizați o propunere de verificare Sense pentru a notifica membrii grupului că o schiță de document este gata pentru examinare și invitați oamenii să citească documentul și să răspundă cu orice comentarii sau întrebări.</span></p><p> <span>Când un proiect „final” este gata, ridicați o propunere de consimțământ sau de consens pentru a aproba documentul.</span></p>"
+      description: "<p><strong><span>Care este politica sau documentul pe care trebuie să-l construiți?</span></strong></p><p></p><p> <strong><span>De ce este acest lucru important?</span></strong></p><p></p><p> <strong><span>Ce le ceri oamenilor să facă?</span></strong></p><p></p>"
+      policy: Politică
+    elect_a_governance_position:
+      title_placeholder: Numirea și alegerea Consiliului
+      process_name: Alegeți o funcție de guvernare
+      process_subtitle: Numiți și alegeți pe cineva pentru un rol de guvernanță în consiliu, comitet sau consiliu.
+      process_introduction: "<p>Introduceți rolul de guvernanță și criteriile pentru poziție pentru a ajuta membrii să evalueze candidații.</p><p> Apel pentru nominalizări cu un sondaj de înscriere. Invitați nominalizații să posteze o fotografie a candidatului împreună cu biografia și referințele lor. Încorporați un mesaj video de la candidat, astfel încât membrii să poată vedea și auzi direct de la candidat.</p><p> Dacă sunteți gata să alegeți un candidat, utilizați o propunere de consimțământ.</p><p> Dacă aveți mai mulți candidați pentru o poziție, utilizați propunerea Ranked Choice, unde alegătorii pot clasifica candidații în ordinea preferințelor.</p>"
+      description: '<h3 id="what-position-do-you-need-to-fill">Ce post trebuie să ocupați?</h3><p></p><h3 id="why-is-this-important"> De ce este acest lucru important?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand"> Ce calificări, aptitudini și experiențe fac un candidat bun?</h3><p></p><h3 id="what-is-the-election-process"> Care este procesul electoral?</h3><p> Etapa 1: Nominalizări - invităm nominalizări pentru candidații potriviți.</p><p> Etapa 2: Prezentați candidații - includeți o fotografie, o scurtă biografie și o referință pentru fiecare candidat.</p><p> Etapa 3: Alegere - votează pentru a numi un candidat pentru acest rol.</p>'
+      election: Alegere
+    funding_decision:
+      title_placeholder: Cerere de finanțare pentru Robotics Roadshow
+      process_name: Decizia de finanțare
+      process_subtitle: Procesați o cerere de grant, împrumut sau investiție și luați o decizie de finanțare.
+      process_introduction: "<p>Introduceți o cerere de finanțare, atașați documente și alte materiale justificative.</p><p> Rezumați aplicația în contextul firului.</p><p> Invitați persoane autorizate să examineze aplicația și să pună întrebări. Acordați suficient timp pentru discuții.</p><p> Ridicați o propunere de consens pentru aprobarea finanțării.</p><p> Dacă cineva nu este de acord, întrebați un motiv - de exemplu, poate fi nevoie de mai multe informații. Invitați persoana care nu este de acord să-și schimbe votul atunci când este mulțumit.</p><p> Când aveți o decizie clară cu privire la cererea de finanțare, indicați un rezultat pentru a înregistra decizia.</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">Introduceți și rezumați cererea de finanțare</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Cum se potrivește această aplicație cu criteriile de finanțare?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Cine este autorizat să aprobe această decizie de finanțare?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Invitați întrebări de la factorii de decizie pentru a procesa cererea</h3><p></p>
+      funding: Finanțarea
+    approve_a_document:
+      title_placeholder: Dezvoltarea strategiei noastre de brand
+      process_name: Aprobați un document
+      process_subtitle: Introduceți, discutați și dezvoltați un document, o politică sau un acord important.
+      process_introduction: "<p>Introduceți documentul împreună cu orice informații de fundal. Precizați scopul documentului pentru a vă ajuta să vă concentrați.</p><p> Invitați oamenii să contribuie cu informații și cu expertiza lor și folosiți-o pentru a încadra documentul. Recunoașteți și luați în considerare feedback-ul și contribuțiile oamenilor.</p><p> Integrați contribuțiile într-o primă schiță a documentului și proiectele succesive până când acesta este gata de aprobare.</p><p> Utilizați un sondaj de verificare Sense pentru a analiza opiniile și a clarifica orice probleme legate de proiect.</p><p> Odată ce feedback-ul este luat în considerare și încorporat în document, treceți la aprobare sau acord cu o propunere de consimțământ sau consens.</p><p> Firul devine o înregistrare clară a progresului creării documentelor și a deciziilor luate.</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">Care este scopul documentului?</h3><p></p><h3 id="why-is-this-important"> De ce este acest lucru important?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Ce le ceri oamenilor să facă?</h3><p></p>
+      document: Document
+  user:
+    deleted_user: Utilizator șters
+    placeholder_name: Utilizator invitat (%{hostname})
+    error:
+      sign_in_required_html: Trebuie să fiți conectat pentru a continua. <a href="/dashboard" target="_blank">Conectați-vă</a> , apoi reîncărcați această pagină pentru a continua.
+      recaptcha: Nu am putut verifica dacă nu ești un robot. Vă rugăm să încercați din nou!
+      bad_login: Ne pare rău, acea parolă nu se potrivește cu cea pe care o avem în dosar
+      username_must_be_alphanumeric: Numele de utilizator trebuie să fie doar cu litere mici și cifre
+  invitation:
+    invitation_cancelled: Ne pare rău, această invitație a fost revocată de coordonatorul grupului. Vă rugăm să solicitați o altă invitație de la grupul dvs.
+    invitation_already_used: Această invitație a fost deja folosită. Vă rugăm să vă conectați direct la loomio pentru a continua în grupul dvs.
+  subscriptions:
+    active: Activ
+    inactive: Inactiv
+  base_mailer:
+    via_loomio: "%{name} (prin %{site_name})"
+  user_mailer:
+    group_export_ready:
+      subject: Export de date de grup pentru %{group_name}
+      body_html: Descărcați datele grupului dvs. <a href="%{url}">aici</a> . Vă rugăm să rețineți că acest link va expira peste o săptămână.
+    deactivated:
+      subject: Contul dvs. de utilizator %{site_name} a fost dezactivat.
+      body_html: "<p>Dvs. sau cineva cu acces la contul dvs. v-ați dezactivat contul de utilizator Loomio.</p><p> Toate datele personale au fost eliminate din sistem.</p><p> Dacă doriți să recuperați acest cont de utilizator și comentariile și voturile asociate, vă rugăm să contactați asistența și referința: %{recovery_code}</p>"
+    accounts_merged:
+      subject: Conturile dvs. de utilizator %{site_name} au fost îmbinate.
+      body_html: Bună %{name}, Cele două conturi loomio au fost îmbinate într-un singur cont. Pentru a accesa loomio de acum înainte, utilizați <strong>%{email}</strong> când vă conectați.
+    merge_verification:
+      subject: Verificați adresa dvs. de e-mail %{site_name} pentru îmbinare
+      body_html: "<p>Bună %{name},</p><p> A fost făcută o solicitare de îmbinare a contului dvs. de utilizator sub adresa <strong>%{source_email}</strong> cu contul care aparține acestei adrese, <strong>%{target_email}</strong> .</p><p> După finalizarea acestui proces, nu vă veți mai putea autentifica cu <strong>%{source_email}</strong> și numai cu <strong>%{target_email}</strong> .</p><p> Vă rugăm să confirmați că aceasta este ceea ce doriți să faceți.</p>"
+      verify: Verificați e-mailul și continuați
+      confirm_page:
+        confirm: Confirmați îmbinarea
+        body_html: "<p>Vă rugăm să confirmați că doriți să îmbinați contul de sub <strong>%{source_email}</strong> în contul de sub <strong>%{target_email}</strong> .</p><p> Contul dvs. de sub <strong>%{source_email}</strong> va fi șters și, ulterior, vă veți putea conecta numai prin <strong>%{target_email}</strong> .</p><p> Această schimbare este ireversibilă.</p>"
+        merge: Îmbinați conturile
+      complete_page:
+        title: Îmbinare reușită!
+        body_html: <p>Fuzionarea conturilor dvs. de utilizator a avut succes. Veți primi în curând un e-mail de confirmare la <strong>%{target_email}</strong> .</p><p> Vă rugăm <a href="/contact" target="_blank">să ne contactați</a> dacă aveți întrebări suplimentare.</p>
+  announcement_count_emails: "%{count} e-mailuri"
+  email_actions:
+    unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.
+  task_mailer:
+    task_due_reminder:
+      subject: 'Memento de sarcină: %{name}'
+      greeting: 'Bună %{name}, următoarea sarcină urmează %{due}:'
+      view_task: Vizualizați pe %{site_name}
+      update_or_comment: Dacă ați finalizat deja această sarcină, vă rugăm să o bifați. Dacă nu este complet, vă rugăm să distribuiți o actualizare a progresului.
+      due_today: astăzi
+      due_in_count_days: în %{count} zile
+  group_mailer:
+    resend: 'METOARE: %{member} vă așteaptă să vă alăturați %{group_name}'
+    destroy_warning:
+      subject: Grupul dvs. Loomio este programat pentru ștergere.
+      body: 'Grupul dvs. Loomio: „%{group}” a fost programat pentru ștergere de către %{deletor}. Dacă nu doriți ca grupul dvs. să fie șters, vă rugăm să răspundeți la acest e-mail. Dacă sunteți sigur că doriți să ștergeți grupul, nu trebuie să faceți nimic. Mulțumesc.'
+  poll_mailer:
+    common:
+      why_send_this: Primiți acest e-mail deoarece %{reason}
+      view_on_loomio: Vizualizați-l pe %{site_name}
+      create_outcome: Împărtășiți rezultatul
+      your_response: 'Ai votat:'
+      you_voted: Ai votat!
+      not_invited: Nu sunt invitate
+      please_respond: Vă rugăm să răspundeți
+      time_zone: "(Ore afișate în %{zone})"
+      undecided_members: Membri nehotărâți (%{count})
+      undecided_visitors: Oaspeți nehotărâți (%{count})
+      more_undecided: Încă %{count}...
+      vote_now: Voteaza acum
+      you_have_until: Ai timp până la %{când} pentru a participa.
+      people_have_voted: "%{nom} din %{dnom} persoane au participat (%{pct}%)"

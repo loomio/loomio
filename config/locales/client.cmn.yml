@@ -21,7 +21,7 @@ cmn:
     modal_destroy_title: 删除标签
     helptext: 标签让您可以分类讨论，就可以较容易地在稍后找到它们
     tag_created: 标签已保存
-    tags_marked: 话题已标记为在 {{groupName}} 中的 '{{name}}'
+    tags_marked: 话题已标记为在 %{groupName} 中的 '%{name}'
   poll_types:
     proposal: 提议
     poll: 投票
@@ -38,7 +38,7 @@ cmn:
     dot_vote: 分配
     meeting: 时间投票
   timezones:
-    local: 当地时间 ({{value}})
+    local: 当地时间 (%{value})
   common:
     version: 版本
     view: 查看
@@ -55,13 +55,13 @@ cmn:
     time_zone: 时区
     local_time: 当地时间
     attachments: 附件
-    active_time_ago: 最后活跃 {{time_ago}}
+    active_time_ago: 最后活跃 %{time_ago}
     confirm_discard_changes: 丢弃您的变更？
     time:
       am: am
       pm: pm
-    closing_in: '截止 {{time}}'
-    closed_ago: '已截止 {{time}}'
+    closing_in: '截止 %{time}'
+    closed_ago: '已截止 %{time}'
     volume: '音量'
     notification_volume: '通知音量'
     group: '组'
@@ -93,7 +93,7 @@ cmn:
     reset: '重置'
     copy_text: '复制文字'
     copied: '已经复制到剪贴板'
-    points_abbrev: 每个投票价值 {{score}} 分
+    points_abbrev: 每个投票价值 %{score} 分
     total: 总共
     action:
       print: 打印
@@ -175,8 +175,8 @@ cmn:
   verify_email_notice:
     please_verify: 感謝參與！請檢查您的電子郵件來找找驗證您的投票的連結。
   previous_polls_page:
-    heading: 在 {{name}} 中的动态
-    polls_count: 显示 {{total}} 中的 {{loaded}} 个决策
+    heading: 在 %{name} 中的动态
+    polls_count: 显示 %{total} 中的 %{loaded} 个决策
     search_activities: 搜索决策
   volume_levels:
     loud: '大声'
@@ -213,7 +213,7 @@ cmn:
       normal_description: "您將會在這個群組有任何動態時收到電子郵件。"
       quiet_description: "您将不会收到任何关于此群组动态的电子邮件。"
       apply_to_all: "应用这些设定到我所有的群组。"
-      apply_to_organization: "应用到所有在 {{organization}} 中的群组"
+      apply_to_organization: "应用到所有在 %{organization} 中的群组"
       messages:
         loud: "您将会收到关于此群组所有动态的电子邮件。"
         normal: "您将只会收到在这个群组内关于公告的电子邮件。"
@@ -259,7 +259,7 @@ cmn:
       remove_attachment: '移除附件'
     messages:
       created: '意见已加入'
-      replied: '{{name}} 回复通知'
+      replied: '%{name} 回复通知'
       updated: '意见已更新'
       destroyed: '意见已删除'
     say_something: 留下些想法⋯
@@ -268,12 +268,12 @@ cmn:
     cancel_reply: '取消回复'
     confirm_delete_message: '你确定你想要删除这条意见吗？'
     confirm_delete: '删除意见'
-    in_reply_to: "回复給 {{name}}"
+    in_reply_to: "回复給 %{name}"
     write_a_comment: "发表意见"
     post_comment: "文章评论"
     submit_button:
       label: '发表'
-    private_privacy_notice: '您的意见只会被 {{groupName}} 群组的成员看到。'
+    private_privacy_notice: '您的意见只会被 %{groupName} 群组的成员看到。'
     public_privacy_notice: '您的意见将会被任何在网络上的人看到。'
     sign_in: "登入以加入对话"
   thread_nav:
@@ -301,11 +301,11 @@ cmn:
     oldest: 最早
   navbar:
     search_all_threads: 搜索所有话题
-    search_threads: '在 {{name}} 中搜索话题'
-    search_polls: '在 {{name}} 中搜索投票'
-    search_members: '在 {{name}} 中搜索成员'
-    search_subgroups: '在 {{name}} 中搜索成员'
-    search_files: '在 {{name}} 中搜索文件'
+    search_threads: '在 %{name} 中搜索话题'
+    search_polls: '在 %{name} 中搜索投票'
+    search_members: '在 %{name} 中搜索成员'
+    search_subgroups: '在 %{name} 中搜索成员'
+    search_files: '在 %{name} 中搜索文件'
     recent_title: '访问仪表板'
     unread_title: '查看未读取的动态'
     start_thread: '新话题'
@@ -323,16 +323,16 @@ cmn:
     sign_in: '登陆'
     toggle_sidebar: '切换侧边栏'
     logo_title: '首页'
-    group_and_subgroups: '{{group}} 与子群组'
+    group_and_subgroups: '%{group} 与子群组'
   user_dropdown:
     button_label: '用户菜单'
     help: '帮助'
-    contact_site_name: '联络 {{site_name}}'
+    contact_site_name: '联络 %{site_name}'
     sign_out: '登出'
   membership_card:
     group_members: "群组成员"
     discussion_members: "话题成员"
-    poll_members: "{{pollType}} 成员"
+    poll_members: "%{pollType} 成员"
     invite_to_group: "邀请加入群组"
     invite_to_discussion: "邀请到话题"
     invite_to_poll: "邀请到投票"
@@ -367,25 +367,25 @@ cmn:
     title_placeholder: '您想讨论的主题是？'
     context_label: '上下文'
     privacy_label: '隐私'
-    privacy_organisation: '此话题只会被“{{parent}}”群组的成员以及“{{group}}”群组的成员看到。'
+    privacy_organisation: '此话题只会被“%{parent}”群组的成员以及“%{group}”群组的成员看到。'
   announcement:
     send_discussion: 发送话题
-    send_group: 邀请伙伴到 {{name}}
+    send_group: 邀请伙伴到 %{name}
     discussion_notification_history: 话题通知历史
     group_notification_history: 群组邀请历史
     quick_add: "快速添加"
     any_other_groups: "任何其他群组？"
-    notified_people: "{{name}} 已通知 {{length}} 个伙伴："
+    notified_people: "%{name} 已通知 %{length} 个伙伴："
     no_notifications_sent: 还没有发送通知
     history_error: 发生了一点问题！无法载入历史。
     audiences:
-      group: '{{name}} 的成员'
+      group: '%{name} 的成员'
     form:
       too_many_invitations: |
-          已超过邀请限制。<a href="{{upgradeUrl}}" target="_blank">升级</a>
+          已超过邀请限制。<a href="%{upgradeUrl}" target="_blank">升级</a>
       no_invitations_remaining: |
-          <p>您已经使用了此群组可用的全部 {{maxMembers}} 个邀请。</p>
-          <p>下一步，<a href="{{upgradeUrl}}" target="_blank">选择一个计划</a>以继续在 Loomio 上协作。</p>
+          <p>您已经使用了此群组可用的全部 %{maxMembers} 个邀请。</p>
+          <p>下一步，<a href="%{upgradeUrl}" target="_blank">选择一个计划</a>以继续在 Loomio 上协作。</p>
       invitation_message_label: 信息
       group_announced:
         title: 邀请加入群组
@@ -451,7 +451,7 @@ cmn:
   join_group_button:
     join_group: 加入群组
     messages:
-      joined_group: '您现在是 {{group}} 的成员了'
+      joined_group: '您现在是 %{group} 的成员了'
   membership_request_form:
     heading: 申请加入群組
     name_label: 名字
@@ -459,7 +459,7 @@ cmn:
     introduction_label: 为什么您想要加入？
     submit_button: 申请加入
   revision_history_modal:
-    started_by: '由 <strong>{{name}}</strong> 所启动'
+    started_by: '由 <strong>%{name}</strong> 所启动'
     posted: 已发表
     original_text: 原版
     current_revision: 最新
@@ -501,16 +501,16 @@ cmn:
     volume:
       loud: 只要有活动就立刻寄发电子邮件。
       loud_aria_description: 您在此群组的通知音量设定为大声。只要一有动态，您就会收到电子邮件。
-      loud_message: 所有在“{{name}}”中的活动会以电子邮件的方式通知您。
+      loud_message: 所有在“%{name}”中的活动会以电子邮件的方式通知您。
       normal: '只在有重要的动态时寄发电子邮件：新话题及提案、结果等等。'
       normal_aria_description: 您在此群组的通知音量设定为普通。您将只会在有重要动态时收到电子邮件，像是当某人启动新话题、提出提案或是结果产出。
-      normal_message: '在“{{name}}”中只有重要的活动会以电子邮件的方式通知您。'
+      normal_message: '在“%{name}”中只有重要的活动会以电子邮件的方式通知您。'
       quiet: 不要寄发任何关于此群组的电子邮件。活动将会显示在仪表板上。
       quiet_aria_description: 您在此群组的通知音量设定为安静。您将不会收到任何有关此群组动态的电子邮件。群组动态将会显示在您的仪表板上。
-      quiet_message: '在“{{name}}”中的活动不再以电子邮件的方式通知您了。'
+      quiet_message: '在“%{name}”中的活动不再以电子邮件的方式通知您了。'
       mute: 从仪表板上隐藏此群组，除非 @提及，否则将不会通知。
       mute_aria_description: 您在此群组的通知音量设定为静音。您将不会收到任何电子邮件，除非有人提及您，且群组动态将不会显示在您的仪表板上。
-      mute_message: '“{{name}}”已从您的仪表板中移除。'
+      mute_message: '“%{name}”已从您的仪表板中移除。'
   export_data_modal:
     title: 您想要如何使用您的资料？
     as_json: 将此群组在我自己的伺服器上托管
@@ -538,17 +538,17 @@ cmn:
     subgroup_privacy_is_open_description: "任何人都可以找到这个子群组并要求加入。只有成员才能看见谁在群组里。所有的话题都是公开的。"
     subgroup_privacy_is_closed_description: "任何人都可以找到这个子群组并要求加入。只有成员才能看见谁在群组里。所有的话题都是私密的。"
     subgroup_privacy_is_closed_public_threads_description: "任何人都可以找到这个子群组并要求加入。只有成员才能看见谁在群组里。话题可以是公开或私密的。"
-    subgroup_privacy_is_closed_secret_parent_description: "{{parent}} 的成员可以找到这个子群组并要求加入。所有话题都是私密的。只有成员才能看见谁在群组里。"
+    subgroup_privacy_is_closed_secret_parent_description: "%{parent} 的成员可以找到这个子群组并要求加入。所有话题都是私密的。只有成员才能看见谁在群组里。"
     subgroup_privacy_is_secret_description: '只有被邀请的成员才能找到此子群组，并查看有谁在里面以及查看话题。'
     advanced_settings: "高级设置"
     how_do_people_join: "伙伴要怎样加入？"
     membership_granted_upon_request: '任何人都能加入此群组。'
     membership_granted_upon_approval: '任何人都可以要求加入，但必须经过审核。'
-    membership_granted_upon_approval_secret_parent: '<strong>通过提交申请</strong>：任何在 {{parent}} 群组的人都可以申请加入群组。'
+    membership_granted_upon_approval_secret_parent: '<strong>通过提交申请</strong>：任何在 %{parent} 群组的人都可以申请加入群组。'
     permissions: '权限'
     thread_privacy: '话题隐私设置'
     public_threads: '仅限公开话题'
-    public_discussions_subgroup: '任何在 {{parentGroupName}} 群组的人都能看到这则话题'
+    public_discussions_subgroup: '任何在 %{parentGroupName} 群组的人都能看到这则话题'
     public_or_private_threads: '允许公开与非公开话题'
     private_threads: '只有成员才能看到话题'
     allow_public_threads: '允许在此群组中公开话题。'
@@ -597,7 +597,7 @@ cmn:
     custom_message: '自定义消息'
     custom_message_placeholder: '输入要包含在邀请函内的私人讯息。'
     add_members: '添加成员'
-    from_parent_group: '从 {{name}}'
+    from_parent_group: '从 %{name}'
     send: '发送'
     done: '完成'
     messages:
@@ -609,19 +609,19 @@ cmn:
     fragment_placeholder: '以名称或用户名过滤用户...'
     only_one_admin: 此群组中只有一个管理员。建议您至少再指定一名成员为管理员。
     messages:
-      make_admin_success: '{{name}} 现在是管理员了'
-      remove_admin_success: '{{name}} 不再是管理员了'
+      make_admin_success: '%{name} 现在是管理员了'
+      remove_admin_success: '%{name} 不再是管理员了'
     remove_admin_from_self:
       question: '您确定您不想要再当管理员了吗？'
   membership_remove_modal:
     invitation:
       title: 取消邀请
-      message: 您确定想要取消给 {{name}} 的邀请吗？
+      message: 您确定想要取消给 %{name} 的邀请吗？
       flash: 邀请已取消
       submit: 取消邀请
     membership:
       title: 移除成员
-      message: 您确定您想要移除 {{name}} 吗？
+      message: 您确定您想要移除 %{name} 吗？
       flash: 成员已移除
       submit: 移除成员
   memberships_panel:
@@ -631,15 +631,15 @@ cmn:
     modal_title:
       group: 设置群组标题
     title_helptext:
-      group: 这个标题会出现在这个群组中的 {{name}} 名称旁。使用它来让伙伴们知道他们的角色。
+      group: 这个标题会出现在这个群组中的 %{name} 名称旁。使用它来让伙伴们知道他们的角色。
     title_label: 标题
     title_placeholder: 例子：“协调者”或“主持人”
   user_page:
-    locale_field: '语言：{{value}}'
-    invited: '已邀请 {{value}}'
+    locale_field: '语言：%{value}'
+    invited: '已邀请 %{value}'
   contact_request_form:
-    helptext: "{{name}} 将会寄送包含您的名字、电子邮件地址与信息的电子邮件"
-    email_sent: "电子邮件发送给 {{name}}"
+    helptext: "%{name} 将会寄送包含您的名字、电子邮件地址与信息的电子邮件"
+    email_sent: "电子邮件发送给 %{name}"
   profile_page:
     messages:
       password_changed: '密码已更新'
@@ -736,13 +736,13 @@ cmn:
       join_group: <a href="/explore">加入</a>群组以观看话题。
   discussion:
     max_threads_reached: |+
-        <p>您已经使用了此群组可用的全部 {{maxMembers}} 个邀请。</p>
-        <p>下一步，<a href="{{upgradeUrl}}" target="_blank">选择一个计划</a>以继续在 Loomio 上协作。</p>
+        <p>您已经使用了此群组可用的全部 %{maxMembers} 个邀请。</p>
+        <p>下一步，<a href="%{upgradeUrl}" target="_blank">选择一个计划</a>以继续在 Loomio 上协作。</p>
 
     activity: '动态'
     activity_placeholder: '尚无动态！'
     load_previous: '载入更早的动态'
-    started_by: '由 <strong>{{name}}</strong> 所启动'
+    started_by: '由 <strong>%{name}</strong> 所启动'
     pin:
       pinned: '话题已置顶'
       unpinned: '话题已取消置顶'
@@ -791,9 +791,9 @@ cmn:
     aria_label: 移动话题
     title: 移动话题
     confirm: 移动话题
-    confirm_change_to_private_thread: '{{groupName}} 是一个公开的群组，若您继续，这个话题将会变为公开。'
+    confirm_change_to_private_thread: '%{groupName} 是一个公开的群组，若您继续，这个话题将会变为公开。'
     messages:
-      success: 话题已被移动到 {{name}}
+      success: 话题已被移动到 %{name}
   delete_comment_dialog:
     title: '删除意见'
   contact_message_form:
@@ -811,7 +811,7 @@ cmn:
     share_outcome: 分享成果
     view_all: 查看全部
     save_changes: 保存
-    edit_warning: 小变动或修正拼字错误建议使用编辑。若是重大变更，请关闭此 {{pollType}} 并开始一个新的。
+    edit_warning: 小变动或修正拼字错误建议使用编辑。若是重大变更，请关闭此 %{pollType} 并开始一个新的。
   poll_common_attachment_form:
     label: 附件
   discussions_panel:
@@ -879,7 +879,7 @@ cmn:
     poll_created: 投票已创建
   poll_meeting_form:
     tool_tip_collapsed: 找到人们可以会面的时间
-    no_options: 输入您目前时区 ({{zone}}) 的时间。参与者可以看到翻译成他们本地时区的时间。
+    no_options: 输入您目前时区 (%{zone}) 的时间。参与者可以看到翻译成他们本地时区的时间。
   poll_proposal_vote_form:
     default_reason_placeholder: 请解释您的理由
     abstain_reason_placeholder: 让人们知道您为什么作出了这个决定
@@ -902,7 +902,7 @@ cmn:
   auth_form:
     invalid_email: "抱歉，这看起来不是有效的电子邮件地址"
     account_locked: "您的帐号因为太多次失败的登入尝试而被锁定。请检查您的电子邮件以取得解锁连结"
-    welcome_back: 欢迎回来，{{name}}！
+    welcome_back: 欢迎回来，%{name}！
     set_password: 设置密码
     name: 名称
     email: 电子邮件

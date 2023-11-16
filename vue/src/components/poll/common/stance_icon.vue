@@ -1,15 +1,19 @@
-<script lang="coffee">
-export default
-  props:
-    stance: Object
-    poll: Object
-    size:
-      type: Number
+<script lang="js">
+export default {
+  props: {
+    stance: Object,
+    poll: Object,
+    size: {
+      type: Number,
       default: 20
+    }
+  },
 
-  computed:
-    hasOptionIcon: -> @poll.config().has_option_icon
-    pollOption: -> @stance.pollOption()
+  computed: {
+    hasOptionIcon() { return this.poll.config().has_option_icon; },
+    pollOption() { return this.stance.pollOption(); }
+  }
+};
 
 </script>
 

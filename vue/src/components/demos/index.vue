@@ -1,72 +1,66 @@
-<script lang="coffee">
-import AuthModalMixin      from '@/mixins/auth_modal'
-import AppConfig          from '@/shared/services/app_config'
-import Records            from '@/shared/services/records'
-import Session            from '@/shared/services/session'
-import EventBus           from '@/shared/services/event_bus'
-import Flash              from '@/shared/services/flash'
-import AbilityService     from '@/shared/services/ability_service'
-import RecordLoader       from '@/shared/services/record_loader'
-import { capitalize, take, keys, every, orderBy, debounce } from 'lodash'
-import { subDays, addDays, subWeeks, subMonths } from 'date-fns'
-import PlausibleService from '@/shared/services/plausible_service'
+<script lang="js">
+import AuthModalMixin      from '@/mixins/auth_modal';
+import AppConfig          from '@/shared/services/app_config';
+import Records            from '@/shared/services/records';
+import Session            from '@/shared/services/session';
+import EventBus           from '@/shared/services/event_bus';
+import Flash              from '@/shared/services/flash';
+import AbilityService     from '@/shared/services/ability_service';
+import RecordLoader       from '@/shared/services/record_loader';
+import { capitalize, take, keys, every, orderBy, debounce } from 'lodash-es';
+import { subDays, addDays, subWeeks, subMonths } from 'date-fns';
+import PlausibleService from '@/shared/services/plausible_service';
 
-export default
-  mixins: [ AuthModalMixin ]
-  data: ->
-    templates: []
-    loaded: false
-    processing: false
-    trials: AppConfig.features.app.trials
+export default 
+{
+  mixins: [ AuthModalMixin ],
+  data() {
+    return {
+      templates: [],
+      loaded: false,
+      processing: false,
+      trials: AppConfig.features.app.trials
+    };
+  },
 
-  created: ->
-    EventBus.$on 'signedIn', @init
+  mounted() {
+    EventBus.$emit('content-title-visible', false);
+    EventBus.$emit('currentComponent', {
+      titleKey: 'templates.try_loomio',
+      page: 'threadsPage',
+      search: {
+        placeholder: this.$t('navbar.search_all_threads')
+      }
+    }
+    );
+  },
 
-  beforeDestroy: ->
-    EventBus.$off 'signedIn', @init
-
-  mounted: ->
-    EventBus.$emit('content-title-visible', false)
-    EventBus.$emit 'currentComponent',
-      titleKey: 'templates.try_loomio'
-      page: 'threadsPage'
-      search:
-        placeholder: @$t('navbar.search_all_threads')
-    @init()
-
-  watch:
+  watch: {
     '$route.query': 'refresh'
+  },
 
-  methods:
-    init: ->
-      Records.fetch(path: 'demos').then (data) =>
-        @loaded = true
+  methods: {
+    startDemo() {
+      if (Session.isSignedIn()) {
+        this.cloneTemplate();
+      } else {
+        this.openAuthModal();
+      }
+    },
 
-      @watchRecords
-        key: 'demosIndex'
-        collections: ['demos']
-        query: =>
-          @demos = Records.demos.collection.chain().find(id: {$ne: null}).simplesort('priority', true).data()
-
-    startDemo: (id) ->
-      if Session.isSignedIn()
-        @cloneTemplate(id)
-      else
-        @openAuthModal()
-
-    cloneTemplate: (id) ->
-      PlausibleService.trackEvent('start_demo')
-      Flash.wait('templates.generating_demo')
-      @processing = true
-      Records.post
-        path: 'demos/clone'
-        params:
-          id: id
-      .then (data) =>
-        Flash.success('templates.demo_created')
-        @$router.push @urlFor(Records.groups.find(data.groups[0].id))
-      .finally =>
-        @processing = false
+    cloneTemplate() {
+      PlausibleService.trackEvent('start_demo');
+      Flash.wait('templates.generating_demo');
+      this.processing = true;
+      Records.post({path: 'demos/clone'}).then(data => {
+          Flash.success('templates.demo_created');
+          this.$router.push(this.urlFor(Records.groups.find(data.groups[0].id)));
+        }).finally(() => {
+          this.processing = false;
+      });
+    }
+  }
+};
 
 </script>
 
@@ -84,11 +78,10 @@ v-main
 
     v-overlay(:value="processing")
 
-    div.d-flex.justify-center.mt-8(v-if="loaded")
+    div.d-flex.justify-center.mt-8
       div
-        p(v-t="'templates.watch_then_start'")
-        p.text-center(v-for="demo in demos", :key="demo.id")
-          v-btn(@click="startDemo(demo.id)" v-t="'templates.start_demo'" color="primary")
+        p.text-center
+          v-btn(@click="startDemo()" v-t="'templates.start_demo'" color="primary")
 
     //- template(v-if="trials")
     //-   h2.mt-8.text-title(v-t="'templates.ready_to_trial'")

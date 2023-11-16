@@ -1,12 +1,15 @@
-<script lang="coffee">
-import { approximate } from '@/shared/helpers/format_time'
+<script lang="js">
+import { approximate } from '@/shared/helpers/format_time';
 
-export default
-  props:
+export default {
+  props: {
     date: Date
+  },
 
-  methods:
-    approximate: approximate
+  methods: {
+    approximate
+  }
+};
 
 </script>
 <template lang="pug">

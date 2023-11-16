@@ -1,26 +1,35 @@
-<script lang="coffee">
-import { differenceInDays, format, parseISO } from 'date-fns'
-import Session         from '@/shared/services/session'
-import Records         from '@/shared/services/records'
+<script lang="js">
+import { differenceInDays, format, parseISO } from 'date-fns';
+import Session         from '@/shared/services/session';
+import Records         from '@/shared/services/records';
 export default
-  props:
+{
+  props: {
     group: Object
+  },
 
-  data: ->
-    isHidden: Session.user().hasExperienced('old-plan-banner')
+  data() {
+    return {isHidden: Session.user().hasExperienced('old-plan-banner')};
+  },
 
-  methods:
-    hideBanner: ->
-      Records.users.saveExperience('old-plan-banner')
-      @isHidden = true
+  methods: {
+    hideBanner() {
+      Records.users.saveExperience('old-plan-banner');
+      this.isHidden = true;
+    }
+  },
 
-  computed:
-    isAdmin: ->
-      @group.adminsInclude(Session.user())
+  computed: {
+    isAdmin() {
+      return this.group.adminsInclude(Session.user());
+    },
 
-    isOldPlan: ->
-      plans = "pp-basic-monthly pp-pro-monthly ap-active-monthly npap-active-monthly pp-basic-annual pp-pro-annual pp-community-annual ap-active-annual ap-community-annual npap-active-annual small-monthly small-yearly"
-      plans.includes(@group.subscription.plan)
+    isOldPlan() {
+      const plans = "pp-basic-monthly pp-pro-monthly ap-active-monthly npap-active-monthly pp-basic-annual pp-pro-annual pp-community-annual ap-active-annual ap-community-annual npap-active-annual small-monthly small-yearly";
+      return plans.includes(this.group.subscription.plan);
+    }
+  }
+};
 </script>
 <template lang="pug">
 v-alert(outlined color="secondary" dense v-if="isAdmin && isOldPlan && !isHidden")

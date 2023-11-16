@@ -163,7 +163,7 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    render file: Rails.root.join('public/blient/vue/index.html'), layout: false, status: status
+    render file: Rails.root.join('public/blient/index.html'), layout: false, status: status
   end
 
   def redirect_to(url, opts = {})

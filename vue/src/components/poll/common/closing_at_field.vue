@@ -1,49 +1,63 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter } from 'date-fns'
-import { hoursOfDay, exact, timeFormat} from '@/shared/helpers/format_time'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter } from 'date-fns';
+import { hoursOfDay, exact, timeFormat} from '@/shared/helpers/format_time';
 
-export default
-  props:
+export default {
+  props: {
     poll: Object
+  },
 
-  data: ->
-    closingHour: format(@poll.closingAt || startOfHour(new Date()), 'HH:mm')
-    closingDate: format(@poll.closingAt || new Date(), 'yyyy-MM-dd')
-    dateToday: format(new Date, 'yyyy-MM-dd')
-    times: hoursOfDay()
-    timeZone: AppConfig.timeZone
-    isShowingDatePicker: false
-    validDate: => isValid(parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd HH:mm", new Date()))
+  data() {
+    return {
+      closingHour: format(this.poll.closingAt || startOfHour(new Date()), 'HH:mm'),
+      closingDate: format(this.poll.closingAt || new Date(), 'yyyy-MM-dd'),
+      dateToday: format(new Date, 'yyyy-MM-dd'),
+      times: hoursOfDay(),
+      timeZone: AppConfig.timeZone,
+      isShowingDatePicker: false,
+      validDate: () => isValid(parse(`${this.closingDate} ${this.closingHour}`, "yyyy-MM-dd HH:mm", new Date()))
+    };
+  },
 
-  methods:
-    exact: exact
-    updateClosingAt: ->
-      date = parse("#{@closingDate} #{@closingHour}", "yyyy-MM-dd HH:mm", new Date())
-      if isValid(date)
-        @poll.closingAt = date
+  methods: {
+    exact,
+    updateClosingAt() {
+      const date = parse(`${this.closingDate} ${this.closingHour}`, "yyyy-MM-dd HH:mm", new Date());
+      if (isValid(date)) {
+        this.poll.closingAt = date;
+      }
+    }
+  },
 
-  computed:
-    twelvehour: -> timeFormat() != 'HH:mm'
+  computed: {
+    twelvehour() { return timeFormat() !== 'HH:mm'; },
 
-    closingAtHint: ->
-      format(@poll.closingAt, timeFormat())
+    closingAtHint() {
+      return format(this.poll.closingAt, timeFormat());
+    },
 
-    label: ->
-      return false unless @poll.closingAt
-      formatDistance(@poll.closingAt, new Date, {addSuffix: true})
+    label() {
+      if (!this.poll.closingAt) { return false; }
+      return formatDistance(this.poll.closingAt, new Date, {addSuffix: true});
+    }
+  },
 
 
-  watch:
-    'poll.closingAt': (val) ->
-      return unless val
-      @closingHour = format(val, 'HH:mm')
-      @closingDate = format(val, 'yyyy-MM-dd')
+  watch: {
+    'poll.closingAt'(val) {
+      if (!val) { return; }
+      this.closingHour = format(val, 'HH:mm');
+      this.closingDate = format(val, 'yyyy-MM-dd');
+    },
 
-    closingDate: (val) ->
-      @updateClosingAt()
+    closingDate(val) {
+      this.updateClosingAt();
+    },
 
-    closingHour: (val) -> @updateClosingAt()
+    closingHour(val) { this.updateClosingAt(); }
+  }
+};
 </script>
 
 <template lang="pug">

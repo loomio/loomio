@@ -1,47 +1,59 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import EventBus       from '@/shared/services/event_bus'
-import utils          from '@/shared/record_store/utils'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
-import AbilityService from '@/shared/services/ability_service'
+<script lang="js">
+import Records        from '@/shared/services/records';
+import EventBus       from '@/shared/services/event_bus';
+import utils          from '@/shared/record_store/utils';
+import LmoUrlService  from '@/shared/services/lmo_url_service';
+import AbilityService from '@/shared/services/ability_service';
 
-import Flash   from '@/shared/services/flash'
+import Flash   from '@/shared/services/flash';
 
 
 export default
-  props:
+{
+  props: {
     group: Object
-  data: ->
-    dialog: false
+  },
+  data() {
+    return {dialog: false};
+  },
 
-  methods:
-    copyText: (text) ->
-      navigator.clipboard.writeText(text).then ->
-        Flash.success('common.copied')
-      , ->
-        Flash.error('invitation_form.error')
+  methods: {
+    copyText(text) {
+      navigator.clipboard.writeText(text).then(() => Flash.success('common.copied')
+      , () => Flash.error('invitation_form.error'));
+    },
 
-    resetInvitationLink: ->
-      @group.resetToken().then =>
-        Flash.success('invitation_form.shareable_link_reset')
+    resetInvitationLink() {
+      this.group.resetToken().then(() => {
+        Flash.success('invitation_form.shareable_link_reset');
+      });
+    }
+  },
 
-  computed:
-    groupUrl: ->
-      LmoUrlService.group(@group, null, { absolute: true })
+  computed: {
+    groupUrl() {
+      return LmoUrlService.group(this.group, null, { absolute: true });
+    },
 
-    invitationLink: ->
-      if @group.token
-        LmoUrlService.shareableLink(@group)
-      else
-        @$t('common.action.loading')
+    invitationLink() {
+      if (this.group.token) {
+        return LmoUrlService.shareableLink(this.group);
+      } else {
+        return this.$t('common.action.loading');
+      }
+    },
 
-    canAddMembers: ->
-      AbilityService.canAddMembersToGroup(@group) && !@pending
+    canAddMembers() {
+      return AbilityService.canAddMembersToGroup(this.group) && !this.pending;
+    }
+  },
 
-  watch:
-    dialog: (val) ->
-      @group.fetchToken() if !!val
-
+  watch: {
+    dialog(val) {
+      if (!!val) { this.group.fetchToken(); }
+    }
+  }
+};
 </script>
 
 <template lang="pug">

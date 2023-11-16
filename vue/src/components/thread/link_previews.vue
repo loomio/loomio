@@ -1,13 +1,16 @@
-<script lang="coffee">
-import LinkPreview from '@/components/thread/link_preview'
+<script lang="js">
+import LinkPreview from '@/components/thread/link_preview';
 
-export default
-  components: {LinkPreview}
-  props:
-    model: Object
-    remove:
-      default: null
+export default {
+  components: {LinkPreview},
+  props: {
+    model: Object,
+    remove: {
+      default: null,
       type: Function
+    }
+  }
+};
 </script>
 <template lang="pug">
 .link-previews.mb-3(v-if="model.linkPreviews && model.linkPreviews.length")

@@ -1,6 +1,7 @@
-<script lang="coffee">
-export default
+<script lang="js">
+export default {
   props: ['error']
+}
 </script>
 <template lang="pug">
 v-main.pb-12

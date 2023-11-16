@@ -1,38 +1,50 @@
-<script lang="coffee">
-import Flash  from '@/shared/services/flash'
-import LmoUrlService from '@/shared/services/lmo_url_service'
-import EventBus from '@/shared/services/event_bus'
+<script lang="js">
+import Flash  from '@/shared/services/flash';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+import EventBus from '@/shared/services/event_bus';
 
-export default
-  props:
-    close:
-      type: Function
-      default: ->
-        EventBus.$emit('closeModal')
+export default {
+  props: {
+    close: {
+      type: Function,
+      default() {
+        EventBus.$emit('closeModal');
+      }
+    },
     confirm: Object
+  },
 
-  data: ->
-    isDisabled: false
-    confirmText: ''
+  data() {
+    return {
+      isDisabled: false,
+      confirmText: ''
+    };
+  },
 
-  methods:
-    submit: ->
-      @isDisabled = true
-      @confirm.submit().then =>
-        @close()
-        @$router.push "#{@confirm.redirect}"     if @confirm.redirect?
-        @confirm.successCallback()        if typeof @confirm.successCallback is 'function'
-        Flash.success(@confirm.text.flash, @confirm.textArgs) if @confirm.text.flash
-      .finally =>
-        @isDisabled = false
+  methods: {
+    submit() {
+      this.isDisabled = true;
+      this.confirm.submit().then(() => {
+        this.close();
+        if (this.confirm.redirect != null) { this.$router.push(`${this.confirm.redirect}`); }
+        if (typeof this.confirm.successCallback === 'function') { this.confirm.successCallback(); }
+        if (this.confirm.text.flash) { Flash.success(this.confirm.text.flash, this.confirm.textArgs); }
+      }).finally(() => {
+        this.isDisabled = false;
+      });
+    }
+  },
 
-  computed:
-    canProceed: ->
-      if @confirm.text.confirm_text
-        @confirmText.trim()  == @confirm.text.confirm_text.trim()
-      else
-        true
-
+  computed: {
+    canProceed() {
+      if (this.confirm.text.confirm_text) {
+        return this.confirmText.trim()  === this.confirm.text.confirm_text.trim();
+      } else {
+        return true;
+      }
+    }
+  }
+}
 </script>
 
 <template lang="pug">

@@ -32,7 +32,7 @@ class PollService
       actor: actor
     )
 
-    poll.assign_attributes_and_files(params.except(:poll_type, :discussion_id))
+    poll.assign_attributes_and_files(params.except(:poll_type, :discussion_id, :poll_template_id, :poll_template_key))
 
     # check again, because the group id could be updated to a untrusted group
     actor.ability.authorize! :update, poll

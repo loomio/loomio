@@ -2,20 +2,13 @@ class AppConfig
   CONFIG_FILES = %w(
     webhook_event_kinds
     colors
-    durations
     emojis
-    plugins
     poll_types
     poll_templates
     discussion_templates
     providers
-    timezones
-    notifications
     doctypes
     locales
-    moment_locales
-    group_features
-    translate_languages
   )
 
   BANNED_CHARS = %(\\s:,;'"`<>)

@@ -1,13 +1,16 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
+<script lang="js">
+import Records from '@/shared/services/records';
 
-export default
-  props:
-    comment: Object
+export default {
+  props: {
+    comment: Object,
     close: Function
+  },
 
-  data: ->
-    isDisabled: false
+  data() {
+    return {isDisabled: false};
+  }
+};
 
 </script>
 

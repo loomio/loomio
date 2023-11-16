@@ -88,6 +88,14 @@ class Outcome < ApplicationRecord
     author_id
   end
 
+  def body
+    statement
+  end
+
+  def body=(val)
+    self.statement = val
+  end
+
   def body_format
     statement_format
   end

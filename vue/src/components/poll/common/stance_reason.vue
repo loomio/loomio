@@ -1,21 +1,28 @@
-<script lang="coffee">
-export default
-  props:
-    poll: Object
-    stance: Object
+<script lang="js">
+export default {
+  props: {
+    poll: Object,
+    stance: Object,
     prompt: String
-  computed:
-    label: ->
-      if @poll.config().has_options
-        'poll_common.reason'
-      else
-        'poll_common.response'
+  },
+  computed: {
+    label() {
+      if (this.poll.config().has_options) {
+        return 'poll_common.reason';
+      } else {
+        return 'poll_common.response';
+      }
+    },
 
-    maxLength: ->
-      if @poll.limitReasonLength
-        500
-      else
-        undefined
+    maxLength() {
+      if (this.poll.limitReasonLength) {
+        return 500;
+      } else {
+        return undefined;
+      }
+    }
+  }
+}
 </script>
 
 <template lang="pug">

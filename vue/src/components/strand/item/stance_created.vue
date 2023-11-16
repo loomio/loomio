@@ -1,28 +1,34 @@
-<script lang="coffee">
-import Session        from '@/shared/services/session'
-import StanceService        from '@/shared/services/stance_service'
-import AbilityService from '@/shared/services/ability_service'
-import openModal from '@/shared/helpers/open_modal'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
+<script lang="js">
+import Session        from '@/shared/services/session';
+import StanceService        from '@/shared/services/stance_service';
+import AbilityService from '@/shared/services/ability_service';
+import openModal from '@/shared/helpers/open_modal';
+import LmoUrlService  from '@/shared/services/lmo_url_service';
 
-export default
-  props:
-    event: Object
-    eventable: Object
+export default {
+  props: {
+    event: Object,
+    eventable: Object,
     collapsed: Boolean
+  },
 
-  computed:
-    actor: -> @event.actor()
-    actorName: -> @event.actorName()
-    poll: -> @eventable.poll()
-    actions: -> StanceService.actions(@eventable, @, @event)
-    componentType:  ->
-      if @actor
-        'router-link'
-      else
-        'div'
-    link: ->
-      LmoUrlService.event @event
+  computed: {
+    actor() { return this.event.actor(); },
+    actorName() { return this.event.actorName(); },
+    poll() { return this.eventable.poll(); },
+    actions() { return StanceService.actions(this.eventable, this, this.event); },
+    componentType() {
+      if (this.actor) {
+        return 'router-link';
+      } else {
+        return 'div';
+      }
+    },
+    link() {
+      return LmoUrlService.event(this.event);
+    }
+  }
+};
 </script>
 
 <template lang="pug">
@@ -41,7 +47,7 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
           time-ago(:date='eventable.updatedAt || eventable.castAt')
         template(v-if="!eventable.latest")
           mid-dot.text--secondary
-          span.text--secondary(v-t="'poll_common.superseded'")
+          span.text--secondary(v-t="'poll_common.outdated'")
     .poll-common-stance(v-if="poll.showResults() && !collapsed")
       v-layout(v-if="!eventable.hasOptionIcon()" wrap align-center)
         strand-item-headline.text--secondary(:event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt")

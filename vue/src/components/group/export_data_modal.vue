@@ -1,36 +1,52 @@
-<script lang="coffee">
-import openModal      from '@/shared/helpers/open_modal'
-import AppConfig from '@/shared/services/app_config'
+<script lang="js">
+import openModal      from '@/shared/helpers/open_modal';
+import AppConfig from '@/shared/services/app_config';
 
-export default
-  props:
+export default 
+{
+  props: {
     group: Object
-  methods:
-    openConfirmModalForJson: ->
-      openModal
-        component: 'ConfirmModal'
-        props:
-          confirm:
-            submit: @group.export
-            text:
-              title:    'group_export_modal.title'
-              helptext: 'group_export_modal.body'
-              submit:   'group_export_modal.submit'
+  },
+  methods: {
+    openConfirmModalForJson() {
+      openModal({
+        component: 'ConfirmModal',
+        props: {
+          confirm: {
+            submit: this.group.export,
+            text: {
+              title:    'group_export_modal.title',
+              helptext: 'group_export_modal.body',
+              submit:   'group_export_modal.submit',
               flash:    'group_export_modal.flash'
-    openConfirmModalForCSV: ->
-      openModal
-        component: 'ConfirmModal'
-        props:
-          confirm:
-            submit: @group.exportCSV
-            text:
-              title:    'group_export_modal.title'
-              helptext: 'group_export_modal.body'
-              submit:   'group_export_modal.submit'
+            }
+          }
+        }
+      });
+    },
+    openConfirmModalForCSV() {
+      openModal({
+        component: 'ConfirmModal',
+        props: {
+          confirm: {
+            submit: this.group.exportCSV,
+            text: {
+              title:    'group_export_modal.title',
+              helptext: 'group_export_modal.body',
+              submit:   'group_export_modal.submit',
               flash:    'group_export_modal.flash'
-  computed:
-    baseUrl: ->
-      AppConfig.baseUrl
+            }
+          }
+        }
+      });
+    }
+  },
+  computed: {
+    baseUrl() {
+      return AppConfig.baseUrl;
+    }
+  }
+};
 
 </script>
 <template lang="pug">

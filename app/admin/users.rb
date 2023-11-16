@@ -122,7 +122,7 @@ ActiveAdmin.register User do
     end
 
     panel("Memberships") do
-      table_for user.memberships.includes(:group, :user, :revoker).order(:id).each do |m|
+      table_for user.all_memberships.includes(:group, :user).order(:id).each do |m|
         column :id
         column :group_name do |g|
           group = g.group
@@ -132,9 +132,6 @@ ActiveAdmin.register User do
         column :admin
         column :accepted_at
         column :revoked_at
-        column :revoker do |m|
-          m.revoker.present? ? m.revoker.name : ''
-        end
       end
     end
 

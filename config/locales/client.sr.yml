@@ -14,8 +14,8 @@ sr:
     time:
       am: am
       pm: pm
-    closing_in: 'Ističe {{time}}'
-    closed_ago: 'Isteklo {{time}}'
+    closing_in: 'Ističe %{time}'
+    closed_ago: 'Isteklo %{time}'
     volume: 'Obim'
     notification_volume: 'Obim Notifikacija'
     group: 'Grupa'
@@ -129,7 +129,7 @@ sr:
       remove_attachment: 'Ukloni dodatak'
     messages:
       created: 'Komentar je dodat'
-      replied: '{{name}} je obavešten/a o odgovoru'
+      replied: '%{name} je obavešten/a o odgovoru'
       updated: 'Komentar je osvežen'
       destroyed: 'Komentar je obrisan'
     edit_comment: 'Izmeni komentar'
@@ -139,7 +139,7 @@ sr:
     post_comment: "Postavi komentar"
     submit_button:
       label: 'Upiši'
-    private_privacy_notice: 'Vaš komentar će biti vidljiv samo za članove {{groupName}}.'
+    private_privacy_notice: 'Vaš komentar će biti vidljiv samo za članove %{groupName}.'
     public_privacy_notice: 'Vaš komentar će biti vidljiv svima na mreži.'
     sign_in: "Prijavite se za priključivanje konverzaciji"
   sidebar:
@@ -185,8 +185,8 @@ sr:
     context_label: 'Kontekst'
     privacy_label: 'Privatnost'
     privacy_public: 'Svako može videti nit. Samo se članovi mogu pridružiti.'
-    privacy_private: 'Nit će biti vidljiva isključivo članovima {{group}}.'
-    privacy_organisation: 'Nit će biti vidljiva članovima {{parent}} i članovima {{group}}.'
+    privacy_private: 'Nit će biti vidljiva isključivo članovima %{group}.'
+    privacy_organisation: 'Nit će biti vidljiva članovima %{parent} i članovima %{group}.'
   announcement:
     form:
       invitation_message_label: Poruka
@@ -204,14 +204,14 @@ sr:
     join_group: Pridruži se grupi
     membership_requested: Članstvo je zatraženo
     messages:
-      joined_group: 'Vi ste sada član {{group}}'
+      joined_group: 'Vi ste sada član %{group}'
   membership_request_form:
     heading: Pitaj da se pridružiš grupi
     name_label: Ime
     email_label: ePošta
   revision_history_modal:
-    started_by: 'Pokrenuto od <strong>{{name}}</strong>'
-    edited_by: 'Izmenjeno od <strong>{{name}}</strong>'
+    started_by: 'Pokrenuto od <strong>%{name}</strong>'
+    edited_by: 'Izmenjeno od <strong>%{name}</strong>'
     posted: Postavljeno
     current_revision: Poslednje
   group_page:
@@ -243,21 +243,21 @@ sr:
     volume:
       loud: ePoruka kada god ima aktivnosti.
       loud_aria_description: Obim tvojih obaveštenja za ovu grupu je postavljen na Glasno. Dobijaćeš ePoruke kada god ima aktivnosti ovde.
-      loud_message: Bićete obavešteni ePorukom o svim aktivnostima u "{{name}}."
+      loud_message: Bićete obavešteni ePorukom o svim aktivnostima u "%{name}."
       normal: 'Obavesti samo o važnim aktivnostima: Nove niti i predlozi, ishodi itd'
       normal_aria_description: Obim tvojih obaveštenja za ovu grupu je postavljen na Normalno. Bićete obavešteni ePorukom samo o važnim aktivnostima, kao što je kada neko pokrene novu nit, iznese predlog ili odredi jedan ishod.
-      normal_message: 'Bićete obaveteni samo o važnim događajima u "{{name}}".'
+      normal_message: 'Bićete obaveteni samo o važnim događajima u "%{name}".'
       quiet: Ne obaveštavaj o ovoj grupi. Aktivnost će biti prikazana na početnoj strani.
       quiet_aria_description: Vaš obim obaveštenja za ovu grupu je postavljen na Tiho. Nećeti biti obaveštavani ePorukom o aktivnostima u ovoj grupi. Aktivnosti grupe će biti prikazane na Vašoj Radnoj Površini.
-      quiet_message: 'Nećete primati ePoruke o aktivnostima u "{{name}}".'
+      quiet_message: 'Nećete primati ePoruke o aktivnostima u "%{name}".'
       mute: Sakrij ovu grupu i ne obaveštavaj dok ne budem @naznačen/a.
       mute_aria_description: Vaš obim obaveštenja za ovu grupu je postavljen na Utišano. Nećete biti obaveštavani ePorukom osim ako Vas neko ne pomene i aktivnosti grupe neće biti prikazane na Vašoj Radnoj Površini.
-      mute_message: '"{{name}}" je uklonjeno sa Vaše radne table.'
+      mute_message: '"%{name}" je uklonjeno sa Vaše radne table.'
     privacy:
       private: 'Privatnost: Ova grupa je vidljiva samo članovima'
-      parent_members: 'Privatnost: Ova grupa je vidljiva članovima {{parentGroupName}} i članovima {{groupName}}'
+      parent_members: 'Privatnost: Ova grupa je vidljiva članovima %{parentGroupName} i članovima %{groupName}'
       public: 'Privatnost: Ova grupa je vidljiva na mreži'
-      aria_label: 'Privatnost grupe:  {{privacy}}'
+      aria_label: 'Privatnost grupe:  %{privacy}'
   group_form:
     new_group: Nova grupa
     start_group_heading: Kreiraj grupu
@@ -272,7 +272,7 @@ sr:
     description_placeholder: 'Opiši svrhu svoje grupe tako da tvoji članovi grupe znaju zašto su ovde.'
     privacy_statement:
       private_to_group: 'Naziv i opis će biti vidljivi samo članovima.'
-      private_to_parent_members: 'Naziv i opis će biti vidljivi samo članovima  {{parent}}'
+      private_to_parent_members: 'Naziv i opis će biti vidljivi samo članovima  %{parent}'
     privacy: 'Privatnost'
     confirm_change_to_secret: "Ako nastavite, sve niti u ovoj grupi i njenim podgrupama će postati privatne."
     confirm_change_to_secret_subgroup: 'Ako nastavite, sve niti postaće privatne.'
@@ -286,7 +286,7 @@ sr:
     permissions: 'Dozvole'
     thread_privacy: 'Privatnost niti'
     public_threads: 'Samo javne niti'
-    public_discussions_subgroup: 'Svako u {{parentGroupName}} može videti diskusije'
+    public_discussions_subgroup: 'Svako u %{parentGroupName} može videti diskusije'
     public_or_private_threads: 'Omogući javne i privatne niti'
     private_threads: 'Samo članovi mogu videti diskusije'
     allow_public_threads: 'Dopusti javne niti u ovoj grupi.'
@@ -306,7 +306,7 @@ sr:
     no_pending_requests: Nema trenutno zahteva za članstvom u ovoj grupi.
     no_previous_requests: Trenutno nema prethodnih zahteva za članstvom u ovoj grupi.
     previous_requests: Prethodni zahtevi
-    previous_request_response: '{{response}} od {{responder}} '
+    previous_request_response: '%{response} od %{responder} '
     messages:
       request_approved_success: Zahtev za članstvom odobren
       request_ignored_success: Zahtev za članstvom je ignorisan
@@ -322,7 +322,7 @@ sr:
     custom_message: 'Tvoja poruka'
     custom_message_placeholder: 'Unesite ličnu poruku koja će biti deo pozivnice.'
     add_members: 'Dodaj članove'
-    from_parent_group: 'od {{name}}.'
+    from_parent_group: 'od %{name}.'
     send: 'Pošalji'
     done: 'Urađeno'
     messages:
@@ -334,7 +334,7 @@ sr:
     remove_member_label: 'Ukloni'
     fragment_placeholder: 'Filtriraj korisnike po imenu ili korisničkom imenu...'
     messages:
-      remove_member_success: 'Uklonjen(a) {{name}}'
+      remove_member_success: 'Uklonjen(a) %{name}'
   membership_remove_modal:
     invitation:
       title: Otkaži poziv
@@ -402,7 +402,7 @@ sr:
       muted_aria_label: Trenutno prikazuje utišane niti
       muted_description: Vidi samo niti koje su utišane
     thread_preview:
-      you_voted: 'Glasali ste {{position}}'
+      you_voted: 'Glasali ste %{position}'
       undecided: 'Neodlučni ste'
     threads_from:
       group: 'Niti od'
@@ -425,7 +425,7 @@ sr:
     activity: 'Aktivnost'
     activity_placeholder: 'Još uvek bez aktivnosti!'
     load_previous: 'Učitaj ranije aktivnosti'
-    started_by: 'Kreirano od strane <strong>{{name}}</strong> '
+    started_by: 'Kreirano od strane <strong>%{name}</strong> '
   activity_card:
     latest: Poslednje
     context: Kontekst
@@ -449,9 +449,9 @@ sr:
   move_thread_form:
     title: Premesti nit
     confirm: Premesti nit
-    confirm_change_to_private_thread: '{{groupName}} je jedna otvorena grupa. Ako nastavite, ova nit će postati javna.'
+    confirm_change_to_private_thread: '%{groupName} je jedna otvorena grupa. Ako nastavite, ova nit će postati javna.'
     messages:
-      success: Nit je premeštena u {{name}}
+      success: Nit je premeštena u %{name}
   delete_comment_dialog:
     title: 'Obriši komentar'
   contact_message_form:
@@ -464,8 +464,8 @@ sr:
     message_label: 'Tvoja poruka'
     send_message: 'Pošalji Poruku'
   explore_page:
-    single_search_result: "1 javna grupa se podudara sa <strong>{{searchTerm}}:</strong>"
-    multiple_search_results: "{{resultCount}} javnih grupa se podudara sa <strong>{{searchTerm}}:</strong>"
+    single_search_result: "1 javna grupa se podudara sa <strong>%{searchTerm}:</strong>"
+    multiple_search_results: "%{resultCount} javnih grupa se podudara sa <strong>%{searchTerm}:</strong>"
   global:
     messages:
       reload: 'Osveži'

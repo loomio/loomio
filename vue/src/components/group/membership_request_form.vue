@@ -1,30 +1,40 @@
-<script lang="coffee">
-import Session        from '@/shared/services/session'
-import Records        from '@/shared/services/records'
-import AbilityService from '@/shared/services/ability_service'
-import Flash  from '@/shared/services/flash'
+<script lang="js">
+import Session        from '@/shared/services/session';
+import Records        from '@/shared/services/records';
+import AbilityService from '@/shared/services/ability_service';
+import Flash  from '@/shared/services/flash';
 
 export default
-  props:
-    group: Object
+{
+  props: {
+    group: Object,
     close: Function
+  },
 
-  methods:
-    submit: ->
-      @membershipRequest.save()
-      .then =>
-        Flash.success 'membership_request_form.messages.membership_requested', {group: @group.fullName}
-        @close()
+  methods: {
+    submit() {
+      this.membershipRequest.save().then(() => {
+        Flash.success('membership_request_form.messages.membership_requested', {group: this.group.fullName});
+        this.close();
+      });
+    }
+  },
 
-  data: ->
-    membershipRequest: Records.membershipRequests.build
-      groupId: @group.id
-      name: Session.user().name
-      email: Session.user().email
-      introduction: null
+  data() {
+    return {
+      membershipRequest: Records.membershipRequests.build({
+        groupId: this.group.id,
+        name: Session.user().name,
+        email: Session.user().email,
+        introduction: null
+      })
+    };
+  },
 
-  computed:
-    isSignedIn: -> Session.isSignedIn()
+  computed: {
+    isSignedIn() { return Session.isSignedIn(); }
+  }
+};
 </script>
 <template lang="pug">
 v-card.membership-request-form

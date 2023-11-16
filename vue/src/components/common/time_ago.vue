@@ -1,21 +1,23 @@
-<script lang="coffee">
-import { approximate, exact } from '@/shared/helpers/format_time'
-import { parseISO } from 'date-fns'
-import {isString} from 'lodash'
+<script lang="js">
+import { approximate, exact } from '@/shared/helpers/format_time';
+import { parseISO } from 'date-fns';
+import {isString} from 'lodash-es';
 
-export default
-  props:
+export default {
+  props: {
     date: [Date, String]
+  },
 
-  data: ->
-    parsedDate: null
-
-  created: ->
-    if isString(@date)
-      @parsedDate = parseISO(@date)
-    else
-      @parsedDate = @date
-
+  computed: {
+    parsedDate() {
+      if (isString(this.date)) {
+        return parseISO(this.date);
+      } else {
+        return this.date;
+      }
+    }
+  }
+};
 </script>
 
 <template lang="pug">

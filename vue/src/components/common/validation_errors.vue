@@ -1,8 +1,10 @@
-<script lang="coffee">
-export default
-  props:
-    subject: Object
+<script lang="js">
+export default {
+  props: {
+    subject: Object,
     field: String
+  }
+};
 </script>
 
 <template lang="pug">

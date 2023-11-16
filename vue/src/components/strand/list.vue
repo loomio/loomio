@@ -1,75 +1,88 @@
-<script lang="coffee">
-import StrandList from '@/components/strand/list.vue'
-import NewComment from '@/components/strand/item/new_comment.vue'
-import NewDiscussion from '@/components/strand/item/new_discussion.vue'
-import DiscussionEdited from '@/components/strand/item/discussion_edited.vue'
-import PollCreated from '@/components/strand/item/poll_created.vue'
-import StanceCreated from '@/components/strand/item/stance_created.vue'
-import StanceUpdated from '@/components/strand/item/stance_updated.vue'
-import OutcomeCreated from '@/components/strand/item/outcome_created.vue'
-import StrandItemRemoved from '@/components/strand/item/removed.vue'
-import StrandLoadMore from '@/components/strand/load_more.vue'
-import OtherKind from '@/components/strand/item/other_kind.vue'
-import ReplyForm from '@/components/strand/reply_form.vue'
-import RangeSet from '@/shared/services/range_set'
-import EventBus from '@/shared/services/event_bus'
-import { camelCase, first, last, some, sortedUniq, sortBy, without } from 'lodash'
+<script lang="js">
+import StrandList from '@/components/strand/list.vue';
+import NewComment from '@/components/strand/item/new_comment.vue';
+import NewDiscussion from '@/components/strand/item/new_discussion.vue';
+import DiscussionEdited from '@/components/strand/item/discussion_edited.vue';
+import PollCreated from '@/components/strand/item/poll_created.vue';
+import StanceCreated from '@/components/strand/item/stance_created.vue';
+import StanceUpdated from '@/components/strand/item/stance_updated.vue';
+import OutcomeCreated from '@/components/strand/item/outcome_created.vue';
+import StrandItemRemoved from '@/components/strand/item/removed.vue';
+import StrandLoadMore from '@/components/strand/load_more.vue';
+import OtherKind from '@/components/strand/item/other_kind.vue';
+import ReplyForm from '@/components/strand/reply_form.vue';
+import RangeSet from '@/shared/services/range_set';
+import EventBus from '@/shared/services/event_bus';
+import { camelCase, first, last, some, sortedUniq, sortBy, without } from 'lodash-es';
 
-export default
-  name: 'strand-list'
-  props:
-    loader: Object
-    newestFirst: Boolean
-    collection:
-      type: Array
+export default {
+  name: 'strand-list',
+  props: {
+    loader: Object,
+    newestFirst: Boolean,
+    collection: {
+      type: Array,
       required: true
+    }
+  },
 
-  components:
-    StrandList: StrandList
-    NewDiscussion: NewDiscussion
-    NewComment: NewComment
-    PollCreated: PollCreated
-    StanceCreated: StanceCreated
-    StanceUpdated: StanceUpdated
-    OutcomeCreated: OutcomeCreated
-    OtherKind: OtherKind
-    StrandLoadMore: StrandLoadMore
-    DiscussionEdited: DiscussionEdited
-    StrandItemRemoved: StrandItemRemoved
-    ReplyForm: ReplyForm
+  components: {
+    NewDiscussion,
+    NewComment,
+    PollCreated,
+    StanceCreated,
+    StanceUpdated,
+    OutcomeCreated,
+    OtherKind,
+    StrandLoadMore,
+    DiscussionEdited,
+    StrandItemRemoved,
+    ReplyForm
+  },
 
-  computed:
-    directedCollection: ->
-      if @newestFirst
-        @collection.reverse()
-      else
-        @collection
+  computed: {
+    directedCollection() {
+      if (this.newestFirst) {
+        return this.collection.reverse();
+      } else {
+        return this.collection;
+      }
+    }
+  },
 
-  methods:
-    isFocused: (event) ->
-      (event.depth == 1 && event.position == @loader.focusAttrs.position) ||
-      (event.positionKey == @loader.focusAttrs.positionKey) ||
-      (event.sequenceId == @loader.focusAttrs.sequenceId) ||
-      (event.eventableType == 'Comment' && event.eventableId == @loader.focusAttrs.commentId)
+  methods: {
+    isFocused(event) {
+      return ((event.depth === 1) && (event.position === this.loader.focusAttrs.position)) ||
+      (event.positionKey === this.loader.focusAttrs.positionKey) ||
+      (event.sequenceId === this.loader.focusAttrs.sequenceId) ||
+      ((event.eventableType === 'Comment') && (event.eventableId === this.loader.focusAttrs.commentId));
+    },
 
-    positionKeyPrefix: (event) ->
-      if event.depth < 1
-        event.positionKey.split('-').slice(0, event.depth - 1)
-      else
-        null
+    positionKeyPrefix(event) {
+      if (event.depth < 1) {
+        return event.positionKey.split('-').slice(0, event.depth - 1);
+      } else {
+        return null;
+      }
+    },
 
-    componentForKind: (kind) ->
-      camelCase if ['stance_created', 'stance_updated', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind)
+    componentForKind(kind) {
+      return camelCase(['stance_created', 'stance_updated', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind) ?
         kind
-      else
+      :
         'other_kind'
+      );
+    },
 
-    classes: (event) ->
-      return [] unless event
-      ["lmo-action-dock-wrapper",
-       "positionKey-#{event.positionKey}",
-       "sequenceId-#{event.sequenceId}",
-       "position-#{event.position}"]
+    classes(event) {
+      if (!event) { return []; }
+      return ["lmo-action-dock-wrapper",
+       `positionKey-${event.positionKey}`,
+       `sequenceId-${event.sequenceId}`,
+       `position-${event.position}`];
+    }
+  }
+};
 
 </script>
 
@@ -124,12 +137,12 @@ export default
         div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
           strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
           component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
-        .strand-list__children(v-if="obj.event.childCount")
+        .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
           strand-load-more(
             v-if="obj.children.length == 0"
-            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadChildren(obj.event)}"
+            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}"
             :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
-            @click="loader.loadChildren(obj.event)"
+            @click="loader.loadAfter(obj.event)"
             :loading="loader.loading == 'children'+obj.event.id")
           strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
         reply-form(:eventId="obj.event.id")

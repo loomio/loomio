@@ -1,26 +1,25 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import AbilityService from '@/shared/services/ability_service'
-import Session        from '@/shared/services/session'
-import EventBus from '@/shared/services/event_bus'
+<script lang="js">
+import Records        from '@/shared/services/records';
+import AbilityService from '@/shared/services/ability_service';
+import Session        from '@/shared/services/session';
+import EventBus from '@/shared/services/event_bus';
+import PollService from '@/shared/services/poll_service';
 
-export default
-  props:
+export default {
+  props: {
     poll: Object
+  },
 
-  methods:
-    showPanel: ->
-      AbilityService.canSetPollOutcome(@poll)
+  methods: {
+    showPanel() {
+      return AbilityService.canSetPollOutcome(this.poll);
+    },
 
-    openOutcomeForm: ->
-      outcome = Records.outcomes.build
-        pollId: @poll.id
-        groupId: @poll.groupId
-        statementFormat: Session.defaultFormat()
-      EventBus.$emit 'openModal',
-        component: 'PollCommonOutcomeModal'
-        props:
-          outcome: outcome
+    openOutcomeForm() {
+      PollService.openSetOutcomeModal(this.poll);
+    }
+  }
+};
 
 </script>
 

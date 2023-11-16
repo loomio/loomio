@@ -1,26 +1,31 @@
-<script lang="coffee">
-import Session        from '@/shared/services/session'
-import Records        from '@/shared/services/records'
-import Flash   from '@/shared/services/flash'
+<script lang="js">
+import Session        from '@/shared/services/session';
+import Records        from '@/shared/services/records';
+import Flash   from '@/shared/services/flash';
 
-export default
-  props:
-    user: Object
+export default {
+  props: {
+    user: Object,
     close: Function
-  data: ->
-    processing: false
+  },
+  data() {
+    return {processing: false};
+  },
 
-  created: ->
-    @user.password = ''
-    @user.passwordConfirmation = ''
+  created() {
+    this.user.password = '';
+    this.user.passwordConfirmation = '';
+  },
 
-  methods:
-    submit: ->
-      Records.users.updateProfile(@user)
-      .then =>
-        Flash.success "change_password_form.password_changed"
-        @close()
-      .catch => true
+  methods: {
+    submit() {
+      Records.users.updateProfile(this.user).then(() => {
+        Flash.success("change_password_form.password_changed");
+        this.close();
+      }).catch(() => true);
+    }
+  }
+};
 
 </script>
 <template lang="pug">

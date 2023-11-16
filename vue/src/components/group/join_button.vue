@@ -1,58 +1,80 @@
-<script lang="coffee">
-import Session         from '@/shared/services/session'
-import Records         from '@/shared/services/records'
-import EventBus        from '@/shared/services/event_bus'
-import AbilityService  from '@/shared/services/ability_service'
-import Flash           from '@/shared/services/flash'
+<script lang="js">
+import Session         from '@/shared/services/session';
+import Records         from '@/shared/services/records';
+import EventBus        from '@/shared/services/event_bus';
+import AbilityService  from '@/shared/services/ability_service';
+import Flash           from '@/shared/services/flash';
 
 export default
-  props:
-    group:
-      required: true
+{
+  props: {
+    group: {
+      required: true,
       type: Object
+    },
 
     block: Boolean
+  },
 
-  data: ->
-    membership: null
-    hasRequestedMembership: false
+  data() {
+    return {
+      membership: null,
+      hasRequestedMembership: false
+    };
+  },
 
-  created: ->
-    if !Session.user().membershipFor(@group)
-      Records.membershipRequests.fetchMyPendingByGroup(@group.id)
+  created() {
+    if (!Session.user().membershipFor(this.group)) {
+      Records.membershipRequests.fetchMyPendingByGroup(this.group.id);
+    }
 
-    @watchRecords
-      collections: ['memberships', "membershipRequests"]
-      query: =>
-        @hasRequestedMembership = @group.hasPendingMembershipRequestFrom(Session.user())
-        @membership = Session.user().membershipFor(@group)
+    this.watchRecords({
+      collections: ['memberships', "membershipRequests"],
+      query: () => {
+        this.hasRequestedMembership = this.group.hasPendingMembershipRequestFrom(Session.user());
+        return this.membership = Session.user().membershipFor(this.group);
+      }
+    });
+  },
 
-  methods:
-    join: ->
-      if Session.isSignedIn()
-        if @canJoinGroup
-          Records.memberships.joinGroup(@group).then =>
-            EventBus.$emit 'joinedGroup', {group: @group}
-            Flash.success('join_group_button.messages.joined_group', group: @group.fullName)
-        else
-          EventBus.$emit('openModal',
+  methods: {
+    join() {
+      if (Session.isSignedIn()) {
+        if (this.canJoinGroup) {
+          return Records.memberships.joinGroup(this.group).then(() => {
+            EventBus.$emit('joinedGroup', {group: this.group});
+            Flash.success('join_group_button.messages.joined_group', {group: this.group.fullName});
+          });
+        } else {
+          EventBus.$emit('openModal', {
                           component: 'MembershipRequestForm',
-                          props: { group: @group })
-      else
-        EventBus.$emit('openModal', component: 'AuthModal')
+                          props: { group: this.group }
+                        });
+        }
+      } else {
+        EventBus.$emit('openModal', {component: 'AuthModal'});
+      }
+    }
+  },
 
-  computed:
-    label: ->
-      if @hasRequestedMembership
-        'join_group_button.membership_requested'
-      else
-        'join_group_button.join_group'
+  computed: {
+    label() {
+      if (this.hasRequestedMembership) {
+        return 'join_group_button.membership_requested';
+      } else {
+        return 'join_group_button.join_group';
+      }
+    },
 
-    canJoinGroup: ->
-      @group && AbilityService.canJoinGroup(@group)
+    canJoinGroup() {
+      return this.group && AbilityService.canJoinGroup(this.group);
+    },
 
-    canRequestMembership: ->
-      AbilityService.canRequestMembership(@group)
+    canRequestMembership() {
+      return AbilityService.canRequestMembership(this.group);
+    }
+  }
+};
 
 </script>
 

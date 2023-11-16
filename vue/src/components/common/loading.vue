@@ -1,10 +1,13 @@
-<script lang="coffee">
-export default
-  props:
-    until: null
-    diameter:
-      type: Number
+<script lang="js">
+export default {
+  props: {
+    until: null,
+    diameter: {
+      type: Number,
       default: 30
+    }
+  }
+}
 </script>
 
 <template lang="pug">

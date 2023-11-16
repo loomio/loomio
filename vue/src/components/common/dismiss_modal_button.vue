@@ -1,15 +1,20 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
-export default
-  props:
-    close: Function
+export default {
+  props: {
+    close: Function,
     model: Object
-  methods:
-    closeModal: ->
-      if !@model || RescueUnsavedEditsService.okToLeave(@model)
-        if @close then @close() else EventBus.$emit('closeModal')
+  },
+  methods: {
+    closeModal() {
+      if (!this.model || RescueUnsavedEditsService.okToLeave(this.model)) {
+        if (this.close) { return this.close(); } else { return EventBus.$emit('closeModal'); }
+      }
+    }
+  }
+};
 
 </script>
 

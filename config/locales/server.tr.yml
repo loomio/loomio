@@ -1,7 +1,16 @@
+---
 tr:
   errors:
     404:
       title: Bulunamadı
+    clear_cache: Yükleme sorunu algılandı. Shift tuşunu basılı tutun ve yeniden yükle tuşuna basın veya tarayıcınızın önbelleğini temizleyin.
+    noscript: Loomio'nun çalışması için javascript gerekiyor! Devam etmek için lütfen tarayıcınızda javascript'i etkinleştirin
+    upgrade_browser: Ah ah! Web tarayıcınız çok eski ve Loomio düzgün çalışmayabilir. Lütfen <a href="https://browser-update.org/update.html">tarayıcınızı yükseltin.</a>
+    return_home: Eve dön
+    not_found: 404 dosyası bulunamadı.
+    messages:
+      email: geçerli olmayan e-posta adresi
+      spoofed_media_type: Bu dosyanın içeriği dosya adıyla eşleşmiyor
   group:
     stats:
       members: Üyeler
@@ -10,6 +19,21 @@ tr:
       comments: Yorumlar
       poll_types:
         proposal: Öneri
+        count: Saymak
+        choose: Seçmek
+        allocate: Tahsis Et
+        score: Gol
+        rank: Rütbe
+        time: Zaman anketi
+      group_stats: Grup istatistikleri
+      org_stats: Organizasyon istatistikleri (alt gruplar dahil)
+      visits: Ziyaretler
+      polls: Anketler
+      votes: Oylar
+      general: Genel
+    error:
+      handle_must_begin_with_parent_handle: "%{parent_handle}- ile başlamalıdır"
+      no_public_trials: Grup gizlilik ayarını değiştirmek için lütfen deneme sürümünden yükseltme yapın
   poll:
     export:
       title: Başlık
@@ -18,23 +42,72 @@ tr:
       details: Detaylar
       group_name: Grup adı
       total: Toplam
+      percent_voted: "%{num}/%{denom} (%{percent}) üye konumlarını belirtti"
+      user_id: Kullanıcı kimliği
+      created_at: Oluşturulma Tarihi
+      closing_at: Kapanış Saati
+      closed_at: Kapanış Tarihi
+      is_latest: En Son
+      engagement: Nişanlanmak
+      stances: Duruşlar
+      participants: Katılımcılar
+      discussion_title: Konu Başlığı
+      outcome_author: Sonuç Yazarı
+      outcome_created_at: Sonuç Oluşturulma Tarihi
+      outcome_statement: Sonuç Beyanı
+      poll_url: Anket URL'si
+      reason: Sebep
+      participant: Katılımcı
+      also_available: Ayrıca mevcut
+    error:
+      cannot_add_options: Bu ankete seçenekler eklenemiyor
+      cannot_remove_options: Bu anketteki seçenekler kaldırılamıyor
+      must_have_options: En az bir anket seçeneği olmalıdır
+      must_be_in_the_future: Gelecekte olmalı
+      templates_cannot_close: Şablonlar kapatılamıyor
+    waiting_for_votes_from: Taraflardan oy bekliyorum
   user_mailer:
     merge_verification:
       confirm_page:
         merge: Hesapları birleştir
+        confirm: Birleştirmeyi onayla
+        body_html: "<p>Lütfen <strong>%{source_email}</strong> altındaki hesabı <strong>%{target_email}</strong> altındaki hesapla birleştirmek istediğinizi onaylayın.</p><p> <strong>%{source_email}</strong> altındaki hesabınız silinecek ve bundan sonra yalnızca <strong>%{target_email}</strong> üzerinden oturum açabileceksiniz.</p><p> Bu değişiklik geri döndürülemez.</p>"
+      subject: Birleştirme için %{site_name} e-posta adresinizi doğrulayın
+      body_html: "<p>Merhaba %{name},</p><p> <strong>%{source_email}</strong> adresi altındaki kullanıcı hesabınızın, <strong>%{target_email}</strong> adresine ait hesapla birleştirilmesi için bir istekte bulunuldu.</p><p> Bu işlem tamamlandıktan sonra artık <strong>%{source_email}</strong> ile değil, yalnızca <strong>%{target_email}</strong> ile oturum açabileceksiniz.</p><p> Lütfen yapmak istediğiniz şeyin bu olduğunu onaylayın.</p>"
+      verify: E-postayı doğrulayın ve devam edin
+      complete_page:
+        title: Birleştirme başarılı!
+        body_html: <p>Kullanıcı hesaplarınızın birleştirilmesi başarılı oldu. Kısa süre içinde <strong>%{target_email}</strong> adresine bir onay e-postası alacaksınız.</p><p> Başka sorularınız varsa lütfen <a href="/contact" target="_blank">bizimle iletişime geçin</a> .</p>
+    group_export_ready:
+      subject: "%{group_name} için grup verilerini dışa aktarma"
+      body_html: Grup verilerinizi <a href="%{url}">buradan</a> indirin. Bu bağlantının süresinin bir hafta içinde dolacağını lütfen unutmayın.
+    deactivated:
+      subject: "%{site_name} kullanıcı hesabınız devre dışı bırakıldı."
+      body_html: "<p>Siz veya hesabınıza erişimi olan biri, Loomio kullanıcı hesabınızı devre dışı bıraktınız.</p><p> Tüm kişisel veriler sistemden kaldırılmıştır.</p><p> Bu kullanıcı hesabını ve ilgili yorumları ve oyları kurtarmak istiyorsanız lütfen destek ekibiyle iletişime geçin ve şu adresi referans alın: %{recovery_code}</p>"
+    accounts_merged:
+      subject: "%{site_name} kullanıcı hesaplarınız birleştirildi."
+      body_html: Merhaba %{name}, İki loomio hesabınız tek hesapta birleştirildi. Artık Loomio'ya erişmek için lütfen oturum açarken <strong>%{email} adresini</strong> kullanın.
   email:
     reset_password:
       link_text: Parolanızı sıfırlayın
-    by_who: '%{person} tarafından'
+      greeting: 'Merhaba %{name} Burada Loomio hesabınızın şifresini sıfırlamak için kullanabileceğiniz bir bağlantı bulunmaktadır:'
+      signoff: Bunu, e-postanız %{hostname} üzerindeki "Şifremi unuttum" formuna girildiği için aldınız. Ancak yukarıdaki bağlantıyı takip edip formu doldurana kadar şifreniz değişmeyecektir. Giriş yapmakta sorun yaşamaya devam ederseniz, bir destek yetkilisiyle iletişime geçmek için bu e-postayı yanıtlayın.
+    by_who: "%{person} tarafından"
     reply_to_this_discussion: Bu müzakereyi yanıtla
     view_group: Grubu gör
     to_join_group:
       invitation_text: "%{member} sizi %{group_name} grubuna davet etti."
-      invitation_text_html: "sizi gruba davet etti"
-      link_help: "Davetiyeyi kabul etmek için aşağıdaki bağlantıyı tıklayın:"
-      accept_invitation: "Daveti onayla"
+      invitation_text_html: sizi gruba davet etti
+      link_help: 'Davetiyeyi kabul etmek için aşağıdaki bağlantıyı tıklayın:'
+      accept_invitation: Daveti onayla
+      subject: "%{member} sizi %{site_name} sitesinde %{group_name} grubuna katılmaya davet etti"
+      stop_emails: "%{site_name} adresinden e-posta almayı durdurun"
+      accepting_is_important: Sizi ilgilendiren kararlarla ilgili bildirimleri kaçırmamanız için davetinizi kabul etmeniz önemlidir.
     user_added_to_group:
-      link_help: "Gruba gitmek için aşağıdaki bağlantıyı tıklayın:"
+      link_help: 'Gruba gitmek için aşağıdaki bağlantıyı tıklayın:'
+      subject: "%{who} sizi %{site_name} sitesindeki %{hangi_group} grubuna ekledi"
+      content: "%{who} sizi %{what_group} grubuna ekledi."
+      content_html: "<strong>%{who}</strong> sizi <strong>%{hangi_group}</strong> grubuna ekledi."
     unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
     catch_up:
@@ -42,12 +115,52 @@ tr:
       thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
       marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
       click_here: Buraya tıkla
+      daily_subject: Dün %{site_name}'de
+      weekly_subject: Geçen hafta %{site_name}'de
+      other_subject: Son zamanlarda %{site_name}'de
+      do_not_reply: lütfen bu emaile cevap vermeyiniz.
     membership_request:
       subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
       view_group: Burada isteği onaylayabilir ya da reddedebilirsin
+      intro_html: gruplarınızdan birine erişim istedi.
+      button_text: İsteği görüntüle
+    common:
+      or_enter_code: Veya aşağıdaki kodu girin
+      resend: Bu süre 24 saat içinde sona erecek ve yalnızca bir kez kullanılabilir
+    login:
+      subject: "%{site_name}'de oturum açın"
+      intro: Bu, %{site_name} sitesinde oturum açma bağlantınızdır
+      intro_code: Bu, %{site_name} sitesinde oturum açmak için kullanacağınız koddur
+      login: "%{name} olarak oturum açın"
+    reactivate:
+      subject: "%{site_name} hesabınızı yeniden etkinleştirin"
+      intro: Merhaba %{name}, burada %{site_name} hesabınızı yeniden etkinleştirmeniz için bir bağlantı var
+      login: "%{name}'yi yeniden etkinleştir"
+    contact_request:
+      subject: "%{name} sizinle %{site_name} üzerinden bağlantı kurmak istiyor!"
+      intro: "%{name} (%{email}) size bağlanma isteği gönderdi."
+      footer: Bu e-postayı yanıtlayarak %{name} adlı kişiye doğrudan yanıt verebilirsiniz.
+    loomio_app_description: Kuruluşların birlikte karar verebileceği, kullanımı kolay, güvenli bir yer.
+    resend_to_join_group:
+      subject: "%{member}, %{site_name} sitesinde %{group_name} grubuna katılmanızı bekliyor"
+    group_membership_approved:
+      intro: "%{group_name} grubuna erişim talebiniz onaylandı."
+      intro_html: "<strong>%{group_name}</strong> grubuna erişim talebiniz onaylandı."
+      link_help: "%{group_name} grubuna katılmak ve başlamak için aşağıdaki bağlantıya tıklayın:"
+      subject: "%{group_name} grubuna katılma isteğiniz onaylandı"
+      join_group: Gruba katılmak
   discussion_mailer:
-    reply_or_view_online_html: "Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>."
-    turn_off_notifications_html: "Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>."
+    reply_or_view_online_html: Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>.
+    turn_off_notifications_html: Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>.
+    change_email_preferences_html: "<a href='%{email_preferences_url}'>E-posta tercihlerinizi</a> değiştirin."
+    unsubscribe_from_discussion_announced_html: Bu başlıktaki diğer duyurulara olan <a href='%{url}'>aboneliğinizi iptal edin</a> .
+    unsubscribe_from_new_comment_html: Bu konudaki yorumların <a href='%{url}'>aboneliğini iptal edin</a> .
+    unsubscribe_from_comment_replied_to_html: Bu bir yanıt bildirimidir.
+    unsubscribe_from_user_mentioned_html: Bu bir bahsetme bildirimidir.
+    discussion_edited:
+      inline: "%{actor} konu içeriğini düzenledi"
+    discussion_closed:
+      inline: "%{actor} konuyu kapattı"
   footer:
     about: Hakkında
     blog: Blog
@@ -62,3 +175,153 @@ tr:
     reset_email_timeframe: E-postanın ulaşması 5 dakikaya kadar sürebilir. Eğer e-posta ulaşmazsa, spam klasörünüzü kontrol ettiğinizden emin olun.
     length_restriction: Şifreler en az 8 karakter uzunluğunda olmalıdır.
     forbidden_passwords: ' "12345" gibi yaygın şifreler hesabınızın güvenliği için yasaklanmıştır.'
+    change_your_password: Şifreni değiştir
+    change_my_password: Şifre değiştir
+    confirm_new_password: Şifreyi Onayla
+    new_password: Yeni Şifre
+    email_guidelines_html: "<p>E-posta adresinizi girin, size bir şifre sıfırlama bağlantısı gönderilecektir.</p><p> Normalde Facebook veya Google üzerinden oturum açıyorsanız söz konusu hesapla ilişkili e-posta adresini girin.</p>"
+  discussion_templates:
+    blank:
+      process_name: Boş şablon
+      process_subtitle: Herhangi bir amaç için yeni bir konu başlatın
+    discuss_a_topic:
+      title_placeholder: Tartışmak istediğiniz konu nedir?
+      process_name: Bir konuyu tartışın
+      process_subtitle: Grubunuzla bir tartışma başlatın
+      process_introduction: "<p>Grubunuzla gündeme getirmek istediğiniz bir konu, sorun veya fırsat var mı?</p><p> Konuyu tanıtın, arka plan bilgilerine bağlantı verin ve yorum, fikir ve yardım isteyin.</p><p> İnsanları düşüncelerine ve ilgili bilgilerine katkıda bulunarak katılmaya davet edin. Belirli kişilerin dikkatini çekmek için @bahsetmeyi kullanın.</p><p> Bir sonuca doğru ilerlemeyi kolaylaştırmak için tartışma ilerledikçe başlık içeriğini güncelleyin.</p><p> Konu başlatmak için tüm bilgilere sahip olana kadar beklemeyin. Bunun yerine konuyu keşfetmenize ve bir çözüm bulmanıza yardımcı olacak insanları davet etmek için konuyu kullanın.</p>"
+      description: <h3 id="introduce-and-describe-the-topic">Konuyu tanıtın ve açıklayın</h3><p></p><h3 id="why-is-this-important"> Bu neden önemli?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> İnsanların nasıl yanıt vermesini istersiniz?</h3><p></p>
+    onboarding_to_loomio:
+      title: Grubumuz için Loomio'yu kullanma
+      process_name: Loomio'ya Giriş
+      process_subtitle: Loomio'ya yeni başlayan kişilerin yorum yazma ve oy verme konusunda pratik yapmasına yardımcı olacak bir konu.
+      process_introduction: "<p>İnsanları Loomio'yla tanıştırmak için bu şablonu kullanın.</p><p> Loomio'yu deneyimlemenin harika bir yolu, Loomio'da bir tartışma açıp bir karar vermektir!</p><p> Aşağıdaki metin talimatlarını takip ederek veya kendi kelimelerinizi ekleyerek tartışmayı başlatın.</p><p> Grubunuzun oy verebilmesi ve sonuçları görebilmesi için bir Sense kontrolü çalıştırın.</p><p> İnsanları ilk kararlarına dahil ederek Loomio'nun değerini ortaya çıkarın.</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">Neden Loomio'yu kullanmakla ilgileniyorsunuz?</h3><p> İnsanları kuruluşumuzla ilgili kararlara dahil etmek için Loomio'yu kullanmak istiyoruz.</p><h3 id="what-are-you-asking-people-to-do"> İnsanlardan ne yapmalarını istiyorsunuz?</h3><p> Düşüncelerinizi duymayı çok isterim! Aşağıya bir yorum bırakın ve teklife oy verin.</p><p> Yorumun sağ alt kısmında bulunan yanıtla simgesine tıklayarak birinin yorumuna yanıt verebilirsiniz.</p><p> İnsanları bilgilendirmek için @bahsetmeyi kullanın.</p>
+      onboarding: İlk katılım
+    consent_process:
+      title_placeholder: Sağlık ve Güvenlik Politikamızı Geliştirmek
+      process_name: Onay süreci
+      process_subtitle: İtiraz etmeden 'denemesi güvenli' bir karar verin.
+      process_introduction: '<p>Teklifinize anlamlı bir itirazın olmadığı, vermeniz gereken bir karar için onay isteyin; böylece şimdi ''denemesi güvenli'' olan hızlı bir karar verebilirsiniz.</p><p> Tipik roller:</p><ul><li><p> Teklif Sahibi: Karar gerektiren bir konuyu gündeme getiren kişi.</p></li><li><p> Kolaylaştırıcı: Teklif sahibinin işini verimli bir şekilde yapmasına yardımcı olabilecek kişi.</p></li></ul><p> Ortak işlem adımları:</p><p> Adım 1. Loomio başlığıyla bir teklif sunun.</p><p> Adım 2. Teklifi geliştirmek için bir dizi soruyu, tepkiyi ve her türlü yorumu bir Sense kontrolüyle kolaylaştırın.</p><p> Adım 3. Teklifi öneri ve yorumlarla değiştirin.</p><p> Adım 4. Değiştirilen teklife Rıza teklifiyle anlamlı bir itirazı olan herhangi birinin olup olmadığını sorun.</p><p> Adım 5. Teklifin, herkesin ''denemenin güvenli'' olduğunu kabul ettiği değiştirilmiş bir versiyonunu oluşturmak için geçerli itirazları entegre edin ve tamamlandığında kararın sonucunu belirtin.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Devamını oku: Onay süreci.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Vermeniz gereken karar nedir?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> Bu neden önemlidir ve etkisi nedir?</h3><p></p><h3 id="what-information-do-people-need-for-context"> İnsanların bağlam için hangi bilgilere ihtiyacı var?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Bu sürecin kolaylaştırıcısı kim?</h3><p></p>
+      consent: Onay
+    advice_process:
+      title_placeholder: Yeni bir bilgisayar satın almak için tavsiye arıyorum
+      process_name: Tavsiye süreci
+      process_subtitle: Vermeniz gereken bir kararla ilgili tavsiye alın.
+      process_introduction: '<p>Etkilenen veya uzman kişilerin tavsiyeleriyle karar verin, böylece kuruluşunuz için daha iyi bir karar verebilirsiniz.</p><p> Tipik roller:</p><ul><li><p> Kolaylaştırıcı: Kararı veren veya birinden kolaylaştırıcı olmasını isteyen kişi.</p></li><li><p> Danışmanlar: Etkilenen veya davet ettiğiniz uzmanlığa sahip kişiler.</p></li></ul><p> Ortak işlem adımları:</p><p> Adım 1. Eylem önermeden önce perspektifleri belirlemek için girdi arayın.</p><p> Adım 2. Bir teklif yapın ve tavsiye alın - bir Tavsiye teklifi yürütün.</p><p> Adım 3. Aldığınız tavsiyeleri dikkate alarak bir karar verirsiniz ve tavsiye veren kişileri bilgilendirirsiniz - bir sonuç belirtirsiniz.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Devamını oku: Tavsiye süreci.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Vermeniz gereken karar nedir?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Bu neden önemlidir ve etkisi nedir?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> İyi bir karar vermenize yardımcı olmak için ne gibi tavsiyeler istiyorsunuz?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Bu sürecin kolaylaştırıcısı kim?</h3><p></p>
+      advice: Tavsiye
+    pass_a_resolution:
+      title_placeholder: Stratejiyi onaylama kararı
+      process_name: Bir karar verin
+      process_subtitle: Çözümü bağlamla, arka plan bilgileriyle birlikte tanıtın, soruları yanıtlayın ve çözümü geçirmek için bir öneride bulunun.
+      process_introduction: <p>Robert'ın Kuralları, grupların, çoğunluğun yönetmesine izin verirken azınlığın seslerinin de duyulmasına izin veren düzenli toplantılar yapmasına yardımcı olan bir dizi kural ve etik kuralından oluşan bir çerçevedir. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardfect.com/blog/roberts-rules-of-order-cheat-sheet/</a> Bir üye, “şuna geçiyorum…” diyerek bir eylem önermek veya karar vermek için öneride bulunur. Bir başka üyenin de “Önergeyi destekliyorum” diyerek önergeyi desteklemesi gerekiyor. Birisi önergeyi onayladığında grup önergeyi oylar. Tüzükteki kurallara bağlı olarak çoğunluk veya yetersayı ile geçer.</p>
+      description: "<p><strong>Alınacak kararı belirtin</strong></p><p></p><p> <strong>Bağlam ve arka plan bilgilerinin ana hatlarını çizin</strong></p><p></p><p> <strong>Ortak anlayış oluşturmak için üyeleri soru sormaya, yorum yapmaya ve her türlü bilgiye katkıda bulunmaya davet edin</strong></p><p></p>"
+      resolution: Çözünürlük
+    decision_by_consensus:
+      title_placeholder: Kuruluşumuzun tüzüğünün revize edilmesi
+      process_name: Konsensüs yoluyla karar
+      process_subtitle: İlgili herkesle toplu sözleşmeye varın.
+      process_introduction: '<p>Tüm katılımcıların ihtiyaçlarını ve endişelerini karşılayan bir anlaşmaya varmak için birlikte vermeniz gereken bir karar için fikir birliği oluşturun.</p><p> Tipik roller:</p><ul><li><p> Bir kolaylaştırıcı atayın. (Yönetim kurulu toplantılarında bu kişi genellikle Başkandır.)</p></li><li><p> Kuruluşunuzun tüzüğünde belirtildiği gibi, katılım için üye yeter sayısı veya çoğunluğu.</p></li></ul><p> Ortak işlem adımları:</p><p> Adım 1. Bir konu veya önerilen karar hakkında tartışma için açık bir alan oluşturun.</p><p> Adım 2. Bir Sense kontrol teklifiyle fikir birliğini test edin ve itirazları ortaya çıkarın.</p><p> Adım 3. Varsa noktaları açıklığa kavuşturun, yapıcı değişiklikleri davet edin ve teklifte değişiklik yapın.</p><p> Adım 4. Bir Uzlaşma teklifiyle anlaşmayı ve kalan itirazları test edin.</p><p> Adım 5. Kararı, sonucuyla birlikte kuruluşun resmi tutanaklarına kaydedin.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Devamını oku: Uzlaşma süreci.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Vermeniz gereken karar nedir?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Bu neden önemlidir ve etkisi nedir?</h3><p></p><h3 id="what-information-do-people-need-for-context"> İnsanların bağlam için hangi bilgilere ihtiyacı var?</h3><p></p><h3 id="who-is-the-facilitator"> Kolaylaştırıcı kim?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Karar için hangi şartların yerine getirilmesi gerekiyor?</h3><h3 id=""></h3>
+      consensus: Uzlaşma
+    share_links_and_info:
+      title_placeholder: Bağlantıları ve bilgileri paylaşın
+      process_name: Bağlantıları ve bilgileri paylaşın
+      process_subtitle: Yorum ve tartışma için paylaşılacak bilgileri, bağlantıları ve raporları yayınlayın.
+      process_introduction: "<p>Grubunuzun birbirinizle paylaşmak istediğiniz bilgileri, haberleri ve fikirleri yayınlaması için bir konuyu 'duvar' veya 'ilan panosu' olarak kullanın.</p><p> Grubun Loomio içinden bilgilere erişmesine yardımcı olmak için insanları <strong>Ekle bağlantısını</strong> ve <strong>Göm video</strong> biçimlendirme araçlarını kullanmaya davet edin. Yorumu başlık zaman çizelgesine sabitlemek için Yorumlarda <strong>Başlık</strong> kullanın, böylece kolayca bulunabilir.</p><p> İpliği sabitleyecek şekilde <strong>sabitleyin</strong> ve <strong>Reaksiyonları</strong> enerji dolu tutması için teşvik edin, insanlara ürünlerini gördüğünüzü bildirin.</p><p> Bu konunun varsayılan görünümü <strong>En Yeni'dir</strong> , dolayısıyla en son yorumlar konunun en üstünde yer alır.</p>"
+      description: <p>Bilgileri, bildirimleri ve paylaşmak istediğiniz şeyleri göndermek için bu başlığı kullanın; neler olup bittiğini görebileceğiniz ve dahil olabileceğiniz bir yer.</p><p data-text-align="start"> Etkinlikleri, raporları, podcast'leri ve diğer ilginç çevrimiçi bilgileri paylaşın.</p><p data-text-align="start"> İnsanların Loomio'daki bilgilere erişmesine yardımcı olmak için <strong>Ekle bağlantısını</strong> ve <strong>Göm video</strong> biçimlendirme araçlarını kullanın.</p>
+      information: Bilgi
+    prepare_for_a_meeting:
+      title_placeholder: Bir sonraki toplantımıza hazırlanıyoruz
+      process_name: Toplantıya hazırlanın
+      process_subtitle: Herkesin güncel, bağlamsal ve hazırlıklı olması için bir gündem oluşturun, pano kağıtları gönderin ve idari konuları düzenleyin.
+      description: <p><strong>Toplantının odak noktası</strong></p><p></p><p data-text-align="start"> <strong>Gündemin ana hatları</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Son toplantının eylemleri</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Katılımcılar toplantıya nasıl hazırlanmalı?</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Toplantıya ilişkin belgelerin listesi</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>İnsanları en baştan dahil ederek, en önemli konulara odaklanarak etkili bir toplantı planlayın ve değerli zamanınızı birlikte daha iyi değerlendirin.</p><p> Toplantının odağını belirlemek, gündemi belirlemek, uygun bir tarih bulmak, önemli belgeleri ve raporları yayınlamak, gündem maddeleri üzerinde tartışma başlatmak, eylemleri ve tutanakları takip etmek için toplantınızın kapsayıcısı olarak bir başlık kullanın.</p><p> Bu, herkesin materyalleri okuyarak, tartışma konuları ve alınacak kararlar üzerinde düşünerek toplantıya hazırlanmasına yardımcı olur. Böylece üyelerin toplantıya bağlam içinde ve hazır olarak gelme olasılıkları daha yüksek olur.</p><p> Loomio İyi Yönetişim Kılavuzu'nda <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>Toplantıya hazırlanma</u></a> hakkında daha fazla bilgi edinin.</p>
+      meeting: Toplantı
+    build_a_policy:
+      title_placeholder: İşe alma politikamızı revize ediyoruz
+      process_name: Bir politika oluşturun
+      process_subtitle: Bir politika veya prosedür belgesi oluşturmak ve üzerinde anlaşmak için ekibinizle birlikte çalışın.
+      process_introduction: "<p><span>Konu başlığı, gereksinimler ve ilkeler üzerinde anlaşabileceğiniz ve yorum yapmak üzere belge taslaklarını gönderebileceğiniz, politikayla ilgili tartışmaların yapıldığı kapsayıcıdır.</span></p><p> <span>Küçük bir grup insanla politika geliştirmek için şablonu kullanın veya belgenin ilerleyen sürümlerine ilişkin yorumları davet ederek bunu tüm kuruluşa şeffaf hale getirin.</span></p><p> <span>Grup üyelerine taslak belgenin incelenmeye hazır olduğunu bildirmek için bir Duyu kontrolü önerisi kullanın ve insanları belgeyi okumaya ve yorum veya sorularını yanıtlamaya davet edin.</span></p><p> <span>'Nihai' taslak hazır olduğunda, belgeyi onaylamak için bir Onay veya Uzlaşı teklifi yapın.</span></p>"
+      description: "<p><strong><span>Oluşturmanız gereken politika veya belge nedir?</span></strong></p><p></p><p> <strong><span>Bu neden önemli?</span></strong></p><p></p><p> <strong><span>İnsanlardan ne yapmalarını istiyorsunuz?</span></strong></p><p></p>"
+      policy: Politika
+    elect_a_governance_position:
+      title_placeholder: Konsey adaylığı ve seçimi
+      process_name: Bir yönetim pozisyonu seçin
+      process_subtitle: Konsey, komite veya kurulda yönetim rolüne birini aday gösterin ve seçin.
+      process_introduction: "<p>Üyelerin adayları değerlendirmesine yardımcı olmak için yönetişim rolünü ve pozisyona ilişkin kriterleri tanıtın.</p><p> Bir Opt-in anketi ile adaylık çağrısı yapın. Adayları, biyografileri ve referanslarıyla birlikte adayın bir fotoğrafını paylaşmaya davet edin. Üyelerin adayı doğrudan görebilmesi ve duyabilmesi için adaydan gelen bir video mesajı ekleyin.</p><p> Bir adayı seçmeye hazırsanız bir Onay teklifi kullanın.</p><p> Bir pozisyon için birden fazla adayınız varsa seçmenlerin adayları tercih sırasına göre sıralayabileceği Sıralamalı Seçim teklifini kullanın.</p>"
+      description: '<h3 id="what-position-do-you-need-to-fill">Hangi pozisyonu doldurmanız gerekiyor?</h3><p></p><h3 id="why-is-this-important"> Bu neden önemli?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand"> Hangi nitelikler, beceriler ve deneyimler iyi bir aday olur?</h3><p></p><h3 id="what-is-the-election-process"> Seçim süreci nedir?</h3><p> Aşama 1: Aday Gösterme – uygun adayları aday göstermeye davet ediyoruz.</p><p> Aşama 2: Adayları tanıtın - her aday için bir fotoğraf, kısa özgeçmiş ve referans ekleyin.</p><p> Aşama 3: Seçim - bir adayı role atamak için oy verin.</p>'
+      election: Seçim
+    funding_decision:
+      title_placeholder: Robotik Tanıtım Turu için finansman başvurusu
+      process_name: Finansman kararı
+      process_subtitle: Bir hibe, kredi veya yatırım başvurusunu işleme koyun ve bir finansman kararı verin.
+      process_introduction: "<p>Finansman için bir başvuru yapın, belgeleri ve diğer destekleyici malzemeleri ekleyin.</p><p> Uygulamayı iş parçacığı bağlamında özetleyin.</p><p> Yetkili kişileri başvuruyu incelemeye ve soru sormaya davet edin. Tartışma için yeterli zaman tanıyın.</p><p> Finansmanı onaylamak için bir Konsensus teklifi hazırlayın.</p><p> Birisi aynı fikirde değilse nedenini sorun; örneğin daha fazla bilgiye ihtiyaç duyulabilir. Kabul etmeyen kişiyi memnun kaldığında oyunu değiştirmeye davet edin.</p><p> Finansman başvurusu hakkında net bir karara sahip olduğunuzda, kararın kaydedilmesi için bir sonuç belirtin.</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">Finansman başvurusunu tanıtın ve özetleyin</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Bu başvuru finansman kriterlerine nasıl uyuyor?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Bu finansman kararını onaylamaya kim yetkilidir?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Başvuruyu işleme koymak için karar vericilerin sorularını davet edin</h3><p></p>
+      funding: Finansman
+    approve_a_document:
+      title_placeholder: Marka stratejimizi geliştirmek
+      process_name: Bir belgeyi onaylama
+      process_subtitle: Önemli bir belgeyi, politikayı veya anlaşmayı tanıtın, tartışın ve geliştirin.
+      process_introduction: "<p>Belgeyi arka plan bilgileriyle birlikte tanıtın. Odaklanmanıza yardımcı olmak için belgenin amacını belirtin.</p><p> İnsanları bilgi ve uzmanlıklarıyla katkıda bulunmaya davet edin ve bunu belgeyi çerçevelemek için kullanın. İnsanların geri bildirimlerini ve katkılarını kabul edin ve değerlendirin.</p><p> Katkıları belgenin ilk taslağına ve onaylanmaya hazır olana kadar sonraki taslaklara entegre edin.</p><p> Görüşleri araştırmak ve taslakla ilgili sorunları açıklığa kavuşturmak için Sense kontrol anketini kullanın.</p><p> Geri bildirim dikkate alınıp belgeye dahil edildikten sonra onaya geçin veya bir Onay veya Konsensüs teklifiyle anlaşmaya varın.</p><p> Konu, belge oluşturma sürecinin ve alınan kararların net bir kaydı haline gelir.</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">Belgenin amacı nedir?</h3><p></p><h3 id="why-is-this-important"> Bu neden önemli?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> İnsanlardan ne yapmalarını istiyorsunuz?</h3><p></p>
+      document: Belge
+  explore:
+    header: Herkese açık grupları keşfedin
+  activerecord:
+    errors:
+      messages:
+        blank: boş olamaz
+        invalid: geçerli bir değer değil
+  user:
+    deleted_user: Silinmiş kullanıcı
+    placeholder_name: Davet edilen kullanıcı (%{ana bilgisayar adı})
+    error:
+      sign_in_required_html: Devam etmek için oturum açmalısınız. Lütfen <a href="/dashboard" target="_blank">oturum açın</a> ve devam etmek için bu sayfayı yeniden yükleyin.
+      recaptcha: Robot olmadığınızı doğrulayamadık. Lütfen tekrar deneyin!
+      bad_login: Üzgünüz, bu şifre kayıtlı şifremizle eşleşmiyor
+      username_must_be_alphanumeric: Kullanıcı adları yalnızca küçük harf ve rakamlardan oluşmalıdır
+  stance:
+    error:
+      too_short: Lütfen bir seçim yapın
+  invitation:
+    invitation_cancelled: Üzgünüz, bu davet grup koordinatörü tarafından iptal edildi. Lütfen grubunuzdan başka bir davetiye isteyin.
+    invitation_already_used: Bu davetiye zaten kullanıldı. Grubunuza devam etmek için lütfen doğrudan Loomio'da oturum açın.
+  subscriptions:
+    active: Aktif
+    inactive: Etkin değil
+  base_mailer:
+    via_loomio: "%{name} (%{site_name} aracılığıyla)"
+  announcement_count_emails: "%{count} e-posta"
+  email_actions:
+    unfollowed_discussion: Konu başlığı için e-postaları kapattınız.
+  task_mailer:
+    task_due_reminder:
+      subject: 'Görev hatırlatıcısı: %{name}'
+      greeting: 'Merhaba %{name}, aşağıdaki görevin teslim tarihi %{due}:'
+      view_task: "%{site_name} sitesinde görüntüle"
+      update_or_comment: Bu görevi zaten tamamladıysanız lütfen işaretleyin. Tamamlanmadıysa lütfen bir ilerleme güncellemesi paylaşın.
+      due_today: Bugün
+      due_in_count_days: "%{count} gün içinde"
+  group_mailer:
+    resend: 'HATIRLATMA: %{member}, %{group_name} grubuna katılmanızı bekliyor'
+    destroy_warning:
+      subject: Loomio grubunuzun silinmesi planlandı.
+      body: 'Loomio grubunuz: "%{group}", %{deletor} tarafından silinmek üzere planlandı. Grubunuzun silinmesini istemiyorsanız lütfen bu e-postayı yanıtlayın. Grubu silmek istediğinizden eminseniz herhangi bir işlem yapmanıza gerek yoktur. Teşekkür ederim.'
+  poll_mailer:
+    common:
+      why_send_this: Bu e-postayı %{reason} nedeniyle alıyorsunuz
+      view_on_loomio: "%{site_name} sitesinde görüntüle"
+      create_outcome: Sonucu paylaş
+      your_response: 'Oy verdiniz:'
+      you_voted: Oy verdiniz!
+      not_invited: Davet edilmemiş
+      please_respond: Lütfen cevap ver
+      time_zone: "(%{zone}'da görüntülenen zamanlar)"
+      undecided_members: Kararsız Üyeler (%{count})
+      undecided_visitors: Kararsız Misafirler (%{count})
+      more_undecided: "%{count} tane daha..."
+      vote_now: Şimdi oyla
+      you_have_until: Katılmak için %{when} tarihine kadar vaktiniz var.
+      people_have_voted: "%{dnom} kişinin %{nom}'u katıldı (%{pct}%)"

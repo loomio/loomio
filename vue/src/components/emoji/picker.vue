@@ -1,28 +1,37 @@
-<script lang="coffee">
+<script lang="js">
+import { emojisByCategory, srcForEmoji } from '@/shared/helpers/emojis';
+import { each, keys, pick } from 'lodash-es';
 
-import { emojisByCategory, srcForEmoji } from '@/shared/helpers/emojis'
-import { each, keys, pick } from 'lodash'
-
-export default
-  props:
-    isPoll: Boolean
-    insert:
-      type: Function
+export default {
+  props: {
+    isPoll: Boolean,
+    insert: {
+      type: Function,
       required: true
+    }
+  },
 
-  data: ->
-    search: ''
-    showMore: false
+  data() {
+    return {
+      search: '',
+      showMore: false
+    };
+  },
 
-  methods:
-    srcForEmoji: srcForEmoji
+  methods: {
+    srcForEmoji
+  },
 
-  computed:
-    emojis: ->
-      if @showMore
-        emojisByCategory
-      else
-        pick(emojisByCategory, ['common', 'hands', 'expressions'])
+  computed: {
+    emojis() {
+      if (this.showMore) {
+        return emojisByCategory;
+      } else {
+        return pick(emojisByCategory, ['common', 'hands', 'expressions']);
+      }
+    }
+  }
+};
 
 </script>
 
@@ -50,12 +59,12 @@ v-sheet.emoji-picker.pa-2
   display: flex
   flex-direction: row
   flex-wrap: wrap
-  font-size: 48px
+  font-size: 36px
   margin-bottom: 16px
 
   img, span
-    width: 48px
-    height: 48px
+    width: 40px
+    height: 40px
     cursor: pointer
     text-align: center
     display: block

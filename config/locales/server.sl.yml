@@ -1,3 +1,4 @@
+---
 sl:
   explore:
     header: Razišči javne skupine
@@ -13,6 +14,8 @@ sl:
     messages:
       email: ni veljaven email naslov
       spoofed_media_type: Vsebina te datoteke se ne ujema z imenom
+    clear_cache: Zaznana težava pri nalaganju. Držite shift in pritisnite Reload ali počistite predpomnilnik brskalnika.
+    upgrade_browser: Ojoj! Vaš spletni brskalnik je prestar in Loomio morda ne bo deloval pravilno. Prosimo, <a href="https://browser-update.org/update.html">nadgradite svoj brskalnik.</a>
   group:
     stats:
       members: Člani
@@ -21,17 +24,63 @@ sl:
       comments: Komentarji
       poll_types:
         proposal: Predlog
+        count: štetje
+        choose: Izberite
+        allocate: Dodeli
+        score: rezultat
+        rank: Rank
+        time: Časovna anketa
+      group_stats: Statistika skupine
+      org_stats: Statistika organizacije (vključno s podskupinami)
+      visits: Obiski
+      polls: Ankete
+      votes: Glasovi
+      general: Splošno
+    error:
+      handle_must_begin_with_parent_handle: Začeti se mora z %{parent_handle}-
+      no_public_trials: Če želite spremeniti nastavitev zasebnosti skupine, nadgradite preskusno različico
   user:
-    deleted_user: "Izbrisan uporabnik"
-    placeholder_name: "Povabljen uporabnik (%{hostname})"
+    deleted_user: Izbrisan uporabnik
+    placeholder_name: Povabljen uporabnik (%{hostname})
+    error:
+      sign_in_required_html: Za nadaljevanje morate biti prijavljeni. Za nadaljevanje <a href="/dashboard" target="_blank">se prijavite</a> in znova naložite to stran.
+      recaptcha: Nismo mogli preveriti, da niste robot. Prosim poskusite ponovno!
+      bad_login: Žal se to geslo ne ujema s tistim, ki ga imamo v arhivu
+      username_must_be_alphanumeric: Uporabniška imena morajo biti sestavljena samo iz malih črk in številk
   poll:
     export:
       title: Naslov
       author: Avtor
       email: Email
       details: Podrobnosti
+      percent_voted: "%{num}/%{denom} (%{percent}) članov je izrazilo svoje stališče"
+      user_id: Uporabniško ime
+      created_at: Ustvarjeno pri
+      closing_at: Zapiranje pri
+      closed_at: Zaprto pri
+      is_latest: Je najnovejši
+      engagement: Zaroka
+      stances: Stališča
+      participants: Udeleženci
+      group_name: Ime skupine
+      discussion_title: Naslov teme
+      outcome_author: Izid Avtor
+      outcome_created_at: Izid Ustvarjen pri
+      outcome_statement: Izjava o rezultatih
+      poll_url: URL ankete
+      reason: Razlog
+      participant: Udeleženec
+      also_available: Na voljo tudi v
+      total: Skupaj
+    error:
+      cannot_add_options: V to anketo ni mogoče dodati možnosti
+      cannot_remove_options: Iz te ankete ni mogoče odstraniti možnosti
+      must_have_options: Imeti mora vsaj eno možnost ankete
+      must_be_in_the_future: Mora biti v prihodnosti
+      templates_cannot_close: Predloge ni mogoče zapreti
+    waiting_for_votes_from: Čakanje na glasove od
   email:
-    by_who: '%{person}'
+    by_who: "%{person}"
     reply_to_this_discussion: Odgovori na to razpravo
     unsubscribe: 'Odjavi se ali spremeni svoje email nastavitve:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih email nastavitev."
@@ -40,12 +89,70 @@ sl:
       thanks_for_reading: Super, prebral/a si vse novice. Lep dan!
       marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
       click_here: Klikni sem
+      daily_subject: Včeraj na %{site_name}
+      weekly_subject: Prejšnji teden na %{site_name}
+      other_subject: Pred kratkim na %{site_name}
+      do_not_reply: Prosim, ne odgovarjajte na to e-pošto.
     membership_request:
       subject: "%{who} je zaprosil za vstop v %{which_group}"
       view_group: Prošnjo lahko odobriš ali zavrneš tukaj
+      intro_html: je zahteval dostop do ene od vaših skupin.
+      button_text: Ogled zahteve
+    common:
+      or_enter_code: Ali pa vnesite spodnjo kodo
+      resend: To bo poteklo v 24 urah in ga je mogoče uporabiti samo enkrat
+    login:
+      subject: Prijavite se v %{site_name}
+      intro: To je vaša povezava za prijavo na %{site_name}
+      intro_code: To je vaša koda za prijavo v %{site_name}
+      login: Prijavite se kot %{name}
+    reactivate:
+      subject: Ponovno aktivirajte svoj račun %{site_name}
+      intro: Pozdravljeni %{name}, tukaj je povezava za ponovno aktiviranje vašega računa %{site_name}
+      login: Ponovno aktiviraj %{name}
+    contact_request:
+      subject: "%{name} se želi povezati z vami na %{site_name}!"
+      intro: "%{name} (%{email}) vam je poslal zahtevo za povezavo."
+      footer: "%{name} lahko odgovorite neposredno tako, da odgovorite na to e-pošto."
+    reset_password:
+      greeting: 'Živjo %{name} Tukaj je povezava, ki jo lahko uporabite za ponastavitev gesla v vašem računu Loomio:'
+      link_text: Ponastavi geslo
+      signoff: To ste prejeli, ker je bil vaš e-poštni naslov vnesen v obrazec »Pozabljeno geslo« na %{hostname}. Vendar pa vaše geslo ne bo spremenjeno, dokler ne sledite zgornji povezavi in izpolnite obrazca. Če boste imeli še naprej težave pri prijavi, odgovorite na to e-poštno sporočilo in kontaktirajte osebo za podporo.
+    loomio_app_description: Preprosto za uporabo in varno mesto za organizacije, kjer lahko skupaj sprejemajo odločitve.
+    view_group: Ogled skupine
+    to_join_group:
+      subject: "%{member} vas je povabil, da se pridružite %{group_name} na %{site_name}"
+      invitation_text: "%{member} vas je povabil, da se pridružite njihovi skupini %{group_name}."
+      invitation_text_html: vas je povabil, da se pridružite njihovi skupini
+      link_help: 'Kliknite spodnjo povezavo, da sprejmete povabilo:'
+      accept_invitation: Sprejmi povabilo
+      stop_emails: Nehaj prejemati e-pošto od %{site_name}
+      accepting_is_important: Pomembno je, da sprejmete vaše povabilo, da ne boste zamudili obvestil o odločitvah, ki vas zadevajo.
+    resend_to_join_group:
+      subject: "%{member} čaka, da se pridružiš %{group_name} na %{site_name}"
+    user_added_to_group:
+      subject: "%{who} vas je dodal v %{which_group} na %{site_name}"
+      content: "%{who} vas je dodal v %{which_group}."
+      content_html: "<strong>%{who}</strong> vas je dodal v <strong>%{which_group}</strong> ."
+      link_help: 'Za obisk skupine kliknite spodnjo povezavo:'
+    group_membership_approved:
+      intro: Vaša zahteva za dostop do skupine %{group_name} je bila odobrena.
+      intro_html: Vaša zahteva za dostop do skupine <strong>%{group_name}</strong> je bila odobrena.
+      link_help: 'Kliknite spodnjo povezavo, da se pridružite %{group_name} in začnete:'
+      subject: Vaša zahteva za pridružitev %{group_name} je bila odobrena
+      join_group: Pridruži se skupini
   discussion_mailer:
-    reply_or_view_online_html: "Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>."
+    reply_or_view_online_html: Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Izklopi emaile</a> za to razpravo."
+    change_email_preferences_html: Spremenite svoje <a href='%{email_preferences_url}'>e-poštne nastavitve</a> .
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Odjavite se</a> od nadaljnjih objav v tej temi."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Odjavite se</a> od komentarjev v tej temi."
+    unsubscribe_from_comment_replied_to_html: To je obvestilo o odgovoru.
+    unsubscribe_from_user_mentioned_html: To je obvestilo o omembi.
+    discussion_edited:
+      inline: "%{actor} je uredil kontekst niti"
+    discussion_closed:
+      inline: "%{actor} je zaprl nit"
   footer:
     about: O nas
     blog: Blog
@@ -56,3 +163,163 @@ sl:
     public_groups: Javne skupine
     terms: Pogoji
     independent_install_html: '%{hostname} uporablja neodvisno kopijo Loomia: <a href="http://github.com/loomio/loomio">več informacij</a>.'
+  discussion_templates:
+    blank:
+      process_name: Prazna predloga
+      process_subtitle: Začnite novo nit za kateri koli namen
+    discuss_a_topic:
+      title_placeholder: O kateri temi želite razpravljati?
+      process_name: Razpravljajte o temi
+      process_subtitle: Začnite razpravo s svojo skupino
+      process_introduction: "<p>Ali obstaja vprašanje, težava ali priložnost, ki jo želite izpostaviti svoji skupini?</p><p> Predstavite temo, povežite se z osnovnimi informacijami in prosite za komentarje, ideje in pomoč.</p><p> Povabite ljudi k sodelovanju tako, da prispevajo svoje misli in ustrezne informacije. Uporabite @mention, da pritegnete pozornost določenih ljudi.</p><p> Posodobite kontekst niti, ko razprava napreduje, da jo pripeljete do izida.</p><p> Ne čakajte, da boste imeli vse informacije, da začnete nit. Raje uporabite nit, da povabite ljudi, da vam pomagajo raziskati temo in najti rešitev.</p>"
+      description: <h3 id="introduce-and-describe-the-topic">Predstavite in opišite temo</h3><p></p><h3 id="why-is-this-important"> Zakaj je to pomembno?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> Kako želite, da se ljudje odzovejo?</h3><p></p>
+    onboarding_to_loomio:
+      title: Uporaba Loomio za našo skupino
+      process_name: Vkrcanje na Loomio
+      process_subtitle: Nit, ki ljudem, ki šele poznajo Loomio, pomaga pri pisanju komentarjev in glasovanju.
+      process_introduction: "<p>Uporabite to predlogo, da ljudem predstavite Loomio.</p><p> Odličen način, da izkusite Loomio, je, da odprete razpravo v Loomiu in sprejmete odločitev!</p><p> Začnite razpravo tako, da sledite spodnjim besedilnim pozivom ali vstavite svoje besede.</p><p> Zaženite preverjanje Sense, da bo vaša skupina lahko glasovala in videla rezultate.</p><p> Odklenite vrednost Loomio tako, da ljudi vključite v njihovo prvo odločitev.</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">Zakaj vas zanima uporaba Loomio?</h3><p> Zanima nas uporaba Loomia za vključevanje ljudi v odločitve o naši organizaciji.</p><h3 id="what-are-you-asking-people-to-do"> Kaj zahtevaš od ljudi?</h3><p> Rad bi slišal vaše misli! Pustite komentar spodaj in glasujte za predlog.</p><p> Na komentar nekoga lahko odgovorite s klikom na ikono za odgovor v spodnjem desnem kotu komentarja.</p><p> Za obveščanje ljudi uporabite @mention.</p>
+      onboarding: Na vkrcanje
+    consent_process:
+      title_placeholder: Razvoj naše politike zdravja in varnosti
+      process_name: Postopek soglasja
+      process_subtitle: Sprejmite odločitev, ki je 'varna za poskus', brez ugovorov.
+      process_introduction: '<p>Poiščite soglasje glede odločitve, ki jo morate sprejeti, pri čemer ni nobenih pomembnih ugovorov zoper vaš predlog, tako da lahko sprejmete hitro odločitev, ki jo je zdaj ''varno preizkusiti''.</p><p> Tipične vloge:</p><ul><li><p> Predlagatelj: Oseba, ki odpre temo, ki zahteva odločitev.</p></li><li><p> Moderator: Nekdo, ki predlagatelju lahko pomaga učinkovito opravljati svoje delo.</p></li></ul><p> Pogosti koraki postopka:</p><p> Korak 1. Predstavite predlog z nitjo Loomio.</p><p> 2. korak. Omogočite krog vprašanj, odzivov in komentarjev, da izboljšate predlog s preverjanjem Sense.</p><p> 3. korak. Predlog dopolnite s predlogi in pripombami.</p><p> 4. korak. Vprašajte, ali ima kdo smiseln ugovor na spremenjeni predlog s predlogom za soglasje.</p><p> Korak 5. Vključite veljavne ugovore, da ustvarite spremenjeno različico predloga, za katero se vsi strinjajo, da je "varno poskusiti", in ko je dokončana, navedite izid odločitve.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Preberite več: Postopek soglasja.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Kakšno odločitev morate sprejeti?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> Zakaj je to pomembno in kakšen vpliv ima?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Katere informacije ljudje potrebujejo za kontekst?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Kdo je moderator tega procesa?</h3><p></p>
+      consent: Soglasje
+    advice_process:
+      title_placeholder: Iščem nasvet za nakup novega računalnika
+      process_name: Postopek svetovanja
+      process_subtitle: Poiščite nasvet glede odločitve, ki jo morate sprejeti.
+      process_introduction: '<p>Odločite se po nasvetu ljudi, na katere to vpliva, ali tistih, ki imajo strokovno znanje, da boste lahko sprejeli boljšo odločitev za svojo organizacijo.</p><p> Tipične vloge:</p><ul><li><p> Pospeševalec: oseba, ki sprejema odločitev, ali prosite nekoga, da pomaga.</p></li><li><p> Svetovalci: Ljudje, na katere vpliva ali imajo strokovno znanje, ki jih povabite.</p></li></ul><p> Pogosti koraki postopka:</p><p> 1. korak. Preden predlagate ukrepanje, poiščite prispevek, da preučite perspektive.</p><p> 2. korak. Podajte predlog in poiščite nasvet – zaženite predlog nasveta.</p><p> Korak 3. Ob upoštevanju prejetega nasveta se odločite in obvestite ljudi, ki so svetovali – navedite rezultat.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Preberite več: Svetovalni postopek.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Kakšno odločitev morate sprejeti?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Zakaj je to pomembno in kakšen vpliv ima?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> Kakšen nasvet prosite za dobro odločitev?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Kdo je moderator tega procesa?</h3><p></p>
+      advice: nasvet
+    pass_a_resolution:
+      title_placeholder: Sklep o potrditvi strategije
+      process_name: Sprejmite resolucijo
+      process_subtitle: Predstavite resolucijo s kontekstom, osnovnimi informacijami, odgovorite na vprašanja in podajte predlog za sprejetje resolucije.
+      process_introduction: '<p>Robertova pravila so okvir, ki je sestavljen iz nabora kodeksov in etičnih pravil, ki skupinam pomagajo pri organiziranju urejenih sestankov, ki večini omogočajo vladanje, hkrati pa omogočajo slišanje glasov manjšine. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a> Član naredi predlog za predlaganje dejanja ali odločitev tako, da reče: "Preselim se v ...". Drugi član mora podpreti predlog z besedami: "Podpiram predlog." Ko nekdo podpre predlog, skupina glasuje o predlogu. Sprejema se z večino glasov ali sklepčnostjo, odvisno od pravil statuta.</p>'
+      description: "<p><strong>Navedite sklep, ki bo sprejet</strong></p><p></p><p> <strong>Oris konteksta in informacij o ozadju</strong></p><p></p><p> <strong>Povabite člane, da postavljajo vprašanja, dajejo komentarje in prispevajo kakršne koli informacije za ustvarjanje skupnega razumevanja</strong></p><p></p>"
+      resolution: Resolucija
+    decision_by_consensus:
+      title_placeholder: Revizija statuta naše organizacije
+      process_name: Odločitev s soglasjem
+      process_subtitle: Sklenite kolektivno pogodbo z vsemi vpletenimi.
+      process_introduction: '<p>Ustvarite soglasje za odločitev, ki jo morate sprejeti skupaj, da dosežete dogovor, ki bo zadovoljil potrebe in skrbi vseh udeležencev.</p><p> Tipične vloge:</p><ul><li><p> Določite moderatorja. (Na sejah odbora je to običajno predsednik.)</p></li><li><p> Sklepčnost ali velika večina članov za sodelovanje, kot je določeno v statutu vaše organizacije.</p></li></ul><p> Pogosti koraki postopka:</p><p> 1. korak. Ustvarite odprt prostor za razpravo o vprašanju ali predlagani odločitvi.</p><p> 2. korak. Preizkusite soglasje in izpostavite ugovore s predlogom za preverjanje občutka.</p><p> 3. korak. Pojasnite vse točke, povabite k konstruktivnim spremembam in spremenite predlog.</p><p> 4. korak. Preizkusite soglasje in vse preostale ugovore s predlogom soglasja.</p><p> Korak 5. Odločitev zabeležite z izidom in v uradni zapisnik organizacije.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Preberite več: Postopek soglasja.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Kakšno odločitev morate sprejeti?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Zakaj je to pomembno in kakšen vpliv ima?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Katere informacije ljudje potrebujejo za kontekst?</h3><p></p><h3 id="who-is-the-facilitator"> Kdo je moderator?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Kateri pogoji morajo biti izpolnjeni za odločitev?</h3><h3 id=""></h3>
+      consensus: Soglasje
+    share_links_and_info:
+      title_placeholder: Delite povezave in informacije
+      process_name: Delite povezave in informacije
+      process_subtitle: Objavite informacije, povezave in poročila za skupno rabo za komentiranje in razpravo.
+      process_introduction: "<p>Uporabite nit kot 'zid' ali 'oglasno desko' za svojo skupino, da objavite informacije, novice in zamisli, ki jih želite deliti drug z drugim.</p><p> Povabite ljudi, naj uporabijo orodja za oblikovanje <strong>Vstavi povezavo</strong> in <strong>Vdelaj videoposnetka</strong> , da skupini pomagajo pri dostopu do informacij znotraj Loomia. Uporabite <strong>naslov</strong> na komentarjih, da pripnete komentar na časovnico niti, da ga je mogoče zlahka najti.</p><p> <strong>Pripnite</strong> nit tako, da se bo držala, in spodbudite <strong>Reactions</strong> , da jo ohranijo pod napetostjo, s čimer bodo ljudje vedeli, da ste videli njihov predmet.</p><p> Privzeti prikaz te niti je <strong>Najnovejši,</strong> tako da so najnovejši komentarji na vrhu niti.</p>"
+      description: <p>Uporabite to nit za objavo informacij, obvestil in stvari, ki jih želite deliti - mesto, kjer lahko vidite, kaj se dogaja, in sodelujete.</p><p data-text-align="start"> Delite dogodke, poročila, poddaje in druge zanimive spletne informacije.</p><p data-text-align="start"> Uporabite orodji <strong>Vstavi povezavo</strong> in <strong>Vdelaj video</strong> formatiranje, da ljudem pomagate pri dostopu do informacij znotraj Loomio.</p>
+      information: Informacije
+    prepare_for_a_meeting:
+      title_placeholder: Priprave na naslednje srečanje
+      process_name: Pripravite se na sestanek
+      process_subtitle: Sestavite dnevni red, objavite dokumente in organizirajte administrativne zadeve, tako da bodo vsi na tekočem, v kontekstu in pripravljeni.
+      description: <p><strong>Poudarek sestanka</strong></p><p></p><p data-text-align="start"> <strong>Okvirni dnevni red</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Dejanja z zadnjega srečanja</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Kako naj se udeleženci pripravijo na srečanje?</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Seznam dokumentov za sejo</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>Načrtujte učinkovit sestanek tako, da ljudi vključite že na začetku, se uskladite glede na najpomembnejše teme in bolje izkoristite svoj dragoceni skupni čas.</p><p> Uporabite nit kot vsebnik za svoj sestanek, da določite fokus sestanka, določite dnevni red, poiščete ustrezen datum, objavite ključne dokumente in poročila, začnete razpravo o točkah dnevnega reda, sledite dejanjem in zapisnikom.</p><p> To pomaga vsem, da se pripravijo na sestanek, tako da preberejo gradivo in razmišljajo o temah razprave in odločitvah, ki jih je treba sprejeti. Tako je večja verjetnost, da bodo člani prispeli v kontekstu in pripravljeni na sestanek.</p><p> Preberite več o <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>pripravi na sestanek</u></a> v Vodniku dobrega upravljanja za Loomio.</p>
+      meeting: Srečanje
+    build_a_policy:
+      title_placeholder: Revizija naše politike zaposlovanja
+      process_name: Ustvarite politiko
+      process_subtitle: Sodelujte s svojo ekipo pri oblikovanju in dogovoru o politiki ali dokumentu postopka.
+      process_introduction: "<p><span>Nit je vsebnik za razpravo o politiki, kjer se lahko dogovorite o zahtevah in načelih ter objavite osnutke dokumentov za komentiranje.</span></p><p> <span>Uporabite predlogo za razvoj politike z majhno skupino ljudi ali pa jo naredite pregledno za celotno organizacijo in povabite komentarje na napredne različice dokumenta.</span></p><p> <span>Uporabite predlog za preverjanje Sense, da obvestite člane skupine, da je osnutek dokumenta pripravljen za pregled, in povabite ljudi, naj preberejo dokument in odgovorijo s komentarji ali vprašanji.</span></p><p> <span>Ko je 'končni' osnutek pripravljen, dvignite soglasje ali predlog soglasja za odobritev dokumenta.</span></p>"
+      description: "<p><strong><span>Kakšno politiko ali dokument morate sestaviti?</span></strong></p><p></p><p> <strong><span>Zakaj je to pomembno?</span></strong></p><p></p><p> <strong><span>Kaj zahtevaš od ljudi?</span></strong></p><p></p>"
+      policy: Politika
+    elect_a_governance_position:
+      title_placeholder: Imenovanje in izvolitev v svet
+      process_name: Izberite vodstveni položaj
+      process_subtitle: Imenujte in izvolite nekoga za vlogo upravljanja v svetu, odboru ali odboru.
+      process_introduction: "<p>Predstavite vlogo upravljanja in merila za položaj, ki bodo članom pomagali oceniti kandidate.</p><p> Razpis za nominacije z anketo Opt-in. Povabite nominirance, naj objavijo fotografijo kandidata skupaj z biografijo in referencami. Vdelajte video sporočilo kandidata, da lahko člani vidijo in slišijo neposredno kandidata.</p><p> Če ste pripravljeni izvoliti kandidata, uporabite predlog za soglasje.</p><p> Če imate več kandidatov za položaj, uporabite predlog Ranked Choice, kjer lahko volivci razvrstijo kandidate po prednostnem vrstnem redu.</p>"
+      description: '<h3 id="what-position-do-you-need-to-fill">Katero delovno mesto morate zapolniti?</h3><p></p><h3 id="why-is-this-important"> Zakaj je to pomembno?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand"> Katere kvalifikacije, veščine in izkušnje naredijo dobrega kandidata?</h3><p></p><h3 id="what-is-the-election-process"> Kakšen je postopek volitev?</h3><p> 1. stopnja: Nominacije - vabimo k nominacijam ustreznih kandidatov.</p><p> 2. stopnja: Predstavite kandidate – vključite fotografijo, kratek življenjepis in referenco za vsakega kandidata.</p><p> Faza 3: Izvolitev - glasovanje za imenovanje kandidata za vlogo.</p>'
+      election: Volitve
+    funding_decision:
+      title_placeholder: Prijava za financiranje Robotics Roadshow
+      process_name: Odločitev o financiranju
+      process_subtitle: Obdelajte vlogo za nepovratna sredstva, posojilo ali naložbo in se odločite za financiranje.
+      process_introduction: "<p>Oddajte vlogo za financiranje, priložite dokumente in druga dodatna gradiva.</p><p> Povzemite aplikacijo v kontekstu niti.</p><p> Pooblaščene osebe povabite k pregledu prijave in postavljanju vprašanj. Pustite dovolj časa za razpravo.</p><p> Pripravite soglasni predlog za odobritev financiranja.</p><p> Če se nekdo ne strinja, vprašajte za razlog – morda bo na primer potrebnih več informacij. Povabite osebo, ki se ne strinja, da spremeni svoj glas, ko bo z njim zadovoljna.</p><p> Ko imate jasno odločitev glede vloge za financiranje, navedite rezultat, da zabeležite odločitev.</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">Predstavite in povzemite vlogo za financiranje</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Kako ta vloga ustreza merilom financiranja?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Kdo je pooblaščen za odobritev tega sklepa o financiranju?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Povabite vprašanja odločevalcev za obdelavo prijave</h3><p></p>
+      funding: financiranje
+    approve_a_document:
+      title_placeholder: Razvoj naše strategije blagovne znamke
+      process_name: Odobrite dokument
+      process_subtitle: Predstavite, razpravljajte in razvijajte pomemben dokument, politiko ali sporazum.
+      process_introduction: "<p>Predstavite dokument skupaj z vsemi osnovnimi informacijami. Navedite namen dokumenta, da boste lažje ostali osredotočeni.</p><p> Povabite ljudi, da prispevajo informacije in svoje strokovno znanje, in to uporabite za oblikovanje dokumenta. Potrdite in upoštevajte povratne informacije in prispevke ljudi.</p><p> Vključite prispevke v prvi osnutek dokumenta in naslednje osnutke, dokler ni pripravljen za odobritev.</p><p> Uporabite anketo Sense check, da preverite mnenja in razjasnite morebitne težave z osnutkom.</p><p> Ko so povratne informacije preučene in vključene v dokument, nadaljujte z odobritvijo ali dogovorom s soglasjem ali predlogom soglasja.</p><p> Nit postane jasen zapis napredka pri ustvarjanju dokumenta in sprejetih odločitev.</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">Kakšen je namen dokumenta?</h3><p></p><h3 id="why-is-this-important"> Zakaj je to pomembno?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Kaj zahtevaš od ljudi?</h3><p></p>
+      document: Dokument
+  stance:
+    error:
+      too_short: Prosimo, izberite
+  invitation:
+    invitation_cancelled: Oprostite, to povabilo je preklical koordinator skupine. Zahtevajte novo povabilo svoje skupine.
+    invitation_already_used: To povabilo je bilo že uporabljeno. Za nadaljevanje v svojo skupino se prijavite neposredno v loomio.
+  subscriptions:
+    active: Aktiven
+    inactive: Neaktiven
+  base_mailer:
+    via_loomio: "%{name} (prek %{site_name})"
+  user_mailer:
+    group_export_ready:
+      subject: Izvoz podatkov skupine za %{group_name}
+      body_html: <a href="%{url}">Tukaj</a> prenesite svoje podatke o skupini. Upoštevajte, da bo ta povezava potekla čez en teden.
+    deactivated:
+      subject: Vaš uporabniški račun %{site_name} je bil deaktiviran.
+      body_html: "<p>Vi ali nekdo z dostopom do vašega računa ste deaktivirali vaš uporabniški račun Loomio.</p><p> Vsi osebni podatki so bili odstranjeni iz sistema.</p><p> Če želite obnoviti ta uporabniški račun in povezane komentarje ter glasove, se obrnite na podporo in navedite: %{recovery_code}</p>"
+    accounts_merged:
+      subject: Vaši uporabniški računi %{site_name} so bili združeni.
+      body_html: Pozdravljeni, %{name}, vaša dva računa loomio sta bila združena v en račun. Za dostop do loomio od zdaj naprej uporabite <strong>%{email},</strong> ko se prijavite.
+    merge_verification:
+      subject: Preverite svoj e-poštni naslov %{site_name} za združevanje
+      body_html: "<p>Pozdravljeni %{name},</p><p> Podana je bila zahteva za združitev vašega uporabniškega računa pod naslovom <strong>%{source_email}</strong> z računom, ki pripada temu naslovu, <strong>%{target_email}</strong> .</p><p> Ko je ta postopek končan, se ne boste mogli več prijaviti z <strong>%{source_email}</strong> , ampak samo z <strong>%{target_email}</strong> .</p><p> Potrdite, da je to tisto, kar želite storiti.</p>"
+      verify: Preverite e-pošto in nadaljujte
+      confirm_page:
+        confirm: Potrdite združitev
+        body_html: "<p>Potrdite, da želite združiti račun pod <strong>%{source_email}</strong> z računom pod <strong>%{target_email}</strong> .</p><p> Vaš račun pod <strong>%{source_email}</strong> bo izbrisan, nato pa se boste lahko vpisali le prek <strong>%{target_email}</strong> .</p><p> Ta sprememba je nepovratna.</p>"
+        merge: Združite račune
+      complete_page:
+        title: Združevanje uspešno!
+        body_html: <p>Združitev vaših uporabniških računov je bila uspešna. Kmalu boste prejeli potrditveno e-poštno sporočilo na <strong>%{target_email}</strong> .</p><p> Prosimo, <a href="/contact" target="_blank">kontaktirajte nas</a> , če imate dodatna vprašanja.</p>
+  announcement_count_emails: "%{count} e-poštnih sporočil"
+  email_actions:
+    unfollowed_discussion: Izklopili ste e-pošto za nit.
+  password_reset:
+    change_your_password: Zamenjajte geslo
+    change_my_password: Spremeni geslo
+    confirm_new_password: Potrdi geslo
+    new_password: Novo geslo
+    email_guidelines_html: "<p>Vnesite svoj e-poštni naslov in prejeli boste povezavo za ponastavitev gesla.</p><p> Če se običajno prijavljate prek Facebooka ali Googla, vnesite e-poštni naslov, povezan s tem računom.</p>"
+    reset_email_timeframe: Lahko traja do 5 minut, da e-poštno sporočilo prispe. Če se ne prikaže, preverite mapo z vsiljeno pošto.
+    length_restriction: Gesla morajo biti dolga vsaj 8 znakov.
+    forbidden_passwords: Običajna gesla, kot je »geslo«, so zaradi varnosti vašega računa prepovedana.
+  task_mailer:
+    task_due_reminder:
+      subject: 'Opomnik opravila: %{name}'
+      greeting: 'Pozdravljeni %{name}, naslednja naloga je pred %{due}:'
+      view_task: Ogled na %{site_name}
+      update_or_comment: Če ste to nalogo že opravili, jo odkljukajte. Če ni dokončan, delite posodobitev napredka.
+      due_today: danes
+      due_in_count_days: čez %{count} dni
+  group_mailer:
+    resend: 'OPOMNIK: %{member} čaka, da se pridružiš %{group_name}'
+    destroy_warning:
+      subject: Vaša skupina Loomio je načrtovana za izbris.
+      body: '%{deletor} je načrtoval brisanje vaše skupine Loomio: "%{group}". Če ne želite, da se vaša skupina izbriše, odgovorite na to e-pošto. Če ste prepričani, da želite izbrisati skupino, vam ni treba storiti ničesar. Hvala vam.'
+  poll_mailer:
+    common:
+      why_send_this: To e-pošto ste prejeli, ker %{reason}
+      view_on_loomio: Oglejte si ga na %{site_name}
+      create_outcome: Delite rezultat
+      your_response: 'Glasovali ste:'
+      you_voted: Glasovali ste!
+      not_invited: Ni povabljen
+      please_respond: Prosim odgovori
+      time_zone: "(Časi so prikazani v %{zone})"
+      undecided_members: Neodločeni člani (%{count})
+      undecided_visitors: Neodločeni gostje (%{count})
+      more_undecided: še %{count} ...
+      vote_now: Glasujte zdaj
+      you_have_until: Časa za sodelovanje imate do %{when}.
+      people_have_voted: "%{nom} od %{dnom} oseb je sodelovalo (%{pct}%)"

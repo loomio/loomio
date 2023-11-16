@@ -1,11 +1,13 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import Session from '@/shared/services/session'
-import Records from '@/shared/services/records'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import Session from '@/shared/services/session';
+import Records from '@/shared/services/records';
 
-export default
-  props:
+export default {
+  props: {
     discussionTemplate: Object
+  }
+};
 
 </script>
 <template lang="pug">

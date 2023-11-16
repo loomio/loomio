@@ -1,17 +1,23 @@
-<script lang="coffee">
-import Flash from '@/shared/services/flash'
+<script lang="js">
+import Flash from '@/shared/services/flash';
 
 export default
-  props:
+{
+  props: {
     membership: Object
-  data: ->
-    isDisabled: false
-  methods:
-    submit: ->
-      @membership.save()
-      .then =>
-        Flash.success "membership_form.updated"
-        @closeModal()
+  },
+  data() {
+    return {isDisabled: false};
+  },
+  methods: {
+    submit() {
+      this.membership.save().then(() => {
+        Flash.success("membership_form.updated");
+        this.closeModal();
+      });
+    }
+  }
+}
 
 </script>
 <template lang="pug">

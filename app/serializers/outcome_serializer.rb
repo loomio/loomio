@@ -20,6 +20,7 @@ class OutcomeSerializer < ApplicationSerializer
              :versions_count
 
   has_one :author, serializer: AuthorSerializer, root: :users
+  has_one :poll, serializer: PollSerializer, root: :polls
 
   def group_id
     (cache_fetch(:polls_by_id, poll_id) { object.poll }).group_id

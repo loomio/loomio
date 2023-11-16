@@ -1,12 +1,15 @@
-<script lang="coffee">
-export default
-  props:
+<script lang="js">
+export default {
+  props: {
     poll: Object
+  },
 
-  computed:
-    agreeResult: -> @poll.results.find (r) -> r.icon == 'agree'
-    agreeCount: -> @agreeResult.voter_count
-    targetPercent: -> @agreeResult.target_percent
+  computed: {
+    agreeResult() { return this.poll.results.find(r => r.icon === 'agree'); },
+    agreeCount() { return this.agreeResult.voter_count; },
+    targetPercent() { return this.agreeResult.target_percent; }
+  }
+};
 </script>
 
 <template lang="pug">

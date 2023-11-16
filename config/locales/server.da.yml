@@ -1,7 +1,16 @@
+---
 da:
   errors:
     404:
       title: Ingen resultater fundet
+    clear_cache: Indlæsningsproblem fundet. Hold shift nede, og tryk på genindlæs, eller tøm din browsers cache.
+    noscript: Loomio kræver javascript for at virke! Aktiver venligst javascript i din browser for at fortsætte
+    upgrade_browser: Åh åh! Din webbrowser er for gammel, og Loomio fungerer muligvis ikke korrekt. <a href="https://browser-update.org/update.html">Opgrader venligst din browser.</a>
+    return_home: Vende hjem
+    not_found: 404 fil ikke fundet.
+    messages:
+      email: ikke en gyldig e-mailadresse
+      spoofed_media_type: Indholdet af denne fil stemmer ikke overens med dens filnavn
   group:
     stats:
       members: Medlemmer
@@ -12,6 +21,19 @@ da:
       poll_types:
         proposal: Forslag
         time: Find et tidspunkt
+        count: Tælle
+        choose: Vælge
+        allocate: Tildele
+        score: Score
+        rank: Rang
+      group_stats: Gruppestatistik
+      org_stats: Organisationsstatistik (inklusive undergrupper)
+      visits: Besøg
+      polls: Afstemninger
+      general: Generel
+    error:
+      handle_must_begin_with_parent_handle: Skal begynde med %{parent_handle}-
+      no_public_trials: Opgrader venligst fra prøveversion for at ændre gruppebeskyttelsesindstillingen
   poll:
     export:
       title: Titel
@@ -21,29 +43,56 @@ da:
       group_name: Gruppenavn
       reason: Begrundelse
       total: Total
+      percent_voted: "%{num}/%{denom} (%{percent}) medlemmer har tilkendegivet deres holdning"
+      user_id: bruger ID
+      created_at: Oprettet kl
+      closing_at: Lukker kl
+      closed_at: Lukket kl
+      is_latest: Er Seneste
+      engagement: Engagement
+      stances: Standpunkter
+      participants: Deltagere
+      discussion_title: Trådtitel
+      outcome_author: Resultatforfatter
+      outcome_created_at: Resultat oprettet kl
+      outcome_statement: Resultaterklæring
+      poll_url: Afstemnings-URL
+      participant: Deltager
+      also_available: Fås også i
+    error:
+      cannot_add_options: Kan ikke tilføje valgmuligheder til denne afstemning
+      cannot_remove_options: Kan ikke fjerne valgmuligheder fra denne afstemning
+      must_have_options: Skal have mindst én afstemningsmulighed
+      must_be_in_the_future: Skal være i fremtiden
+      templates_cannot_close: Skabeloner kan ikke lukkes
+    waiting_for_votes_from: Venter på stemmer fra
   email:
     reset_password:
       greeting: |+
-          Hej %{name}
-          Her er et link som du kan bruge til at nulstill din adgangskode for din Loomio konto:
+        Hej %{name}
+        Her er et link som du kan bruge til at nulstill din adgangskode for din Loomio konto:
 
       link_text: Nulstil din adgangskode
       signoff: |
-          Du modtager denne email fordi din email adresse blev indtastet i "Jeg har glemt min adgangskode"  formular on %{hostname}.
-          Din adgangkode vil først blive ændret når du klikker på linket herover og udfylder formularen.
-          Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
+        Du modtager denne email fordi din email adresse blev indtastet i "Jeg har glemt min adgangskode"  formular on %{hostname}.
+        Din adgangkode vil først blive ændret når du klikker på linket herover og udfylder formularen.
+        Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
     by_who: af %{person}
     reply_to_this_discussion: Svar på denne diskussion
     view_group: Vis gruppe
     to_join_group:
       invitation_text: "%{member} har inviteret dig til at deltage i deres gruppe %{group_name}."
-      invitation_text_html: "har inviteret dig til at deltage i deres gruppe"
-      link_help: "Klik på linket herunder for at acceptere invitationen:"
-      accept_invitation: "Acceptér invitation"
+      invitation_text_html: har inviteret dig til at deltage i deres gruppe
+      link_help: 'Klik på linket herunder for at acceptere invitationen:'
+      accept_invitation: Acceptér invitation
+      subject: "%{member} har inviteret dig til at deltage i %{group_name} på %{site_name}"
+      stop_emails: Stop med at modtage e-mails fra %{site_name}
+      accepting_is_important: Det er vigtigt at acceptere din invitation, så du ikke går glip af meddelelser om beslutninger, der involverer dig.
     user_added_to_group:
       content: "%{who} har tilføjet dig til %{which_group}."
       content_html: "<strong>%{who}</strong> har tilføjet dig til <strong>%{which_group}</strong>."
-      link_help: "Klik på linket herunder for at gå til gruppen:"
+      link_help: 'Klik på linket herunder for at gå til gruppen:'
+      subject: "%{who} har føjet dig til %{which_group} på %{site_name}"
     unsubscribe: 'Afmeld abonnement eller rediger dine e-mail-indstillinger:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> for at afmelde abonnement eller ændre dine e-mail-indstillinger."
     catch_up:
@@ -51,19 +100,52 @@ da:
       thanks_for_reading: Tak fordi du læste, hav en god dag!
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
       click_here: Klik her
+      daily_subject: I går på %{site_name}
+      weekly_subject: Sidste uge på %{site_name}
+      other_subject: For nylig på %{site_name}
+      do_not_reply: Svar venligst ikke på denne e-mail.
     group_membership_approved:
-      intro: "Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt."
-      intro_html: "Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt."
-      link_help: "Klik på linket herunder for at blive medlem af %{group_name}:"
-      join_group: "Bliv medlem"
+      intro: Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt.
+      intro_html: Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt.
+      link_help: 'Klik på linket herunder for at blive medlem af %{group_name}:'
+      join_group: Bliv medlem
+      subject: Din anmodning om at deltage i %{group_name} er blevet godkendt
     membership_request:
       intro_html: har anmodet om adgang til en af dine Loomio-grupper.
       subject: "%{who} har anmodet om medlemskab af %{which_group}"
       view_group: Du kan godkende eller afvise anmodningen her
       button_text: Vis anmodning
+    common:
+      or_enter_code: Eller indtast koden nedenfor
+      resend: Dette udløber om 24 timer og kan kun bruges én gang
+    login:
+      subject: Log ind på %{site_name}
+      intro: Dette er dit link til at logge ind på %{site_name}
+      intro_code: Dette er din kode til at logge ind på %{site_name}
+      login: Log ind som %{name}
+    reactivate:
+      subject: Genaktiver din %{site_name}-konto
+      intro: Hej %{name}, her er et link til at genaktivere din %{site_name}-konto
+      login: Genaktiver %{name}
+    contact_request:
+      subject: "%{name} vil gerne i forbindelse med dig på %{site_name}!"
+      intro: "%{name} (%{email}) har sendt dig en anmodning om at oprette forbindelse."
+      footer: Du kan svare %{name} direkte ved at svare på denne e-mail.
+    loomio_app_description: Et let at bruge, sikkert sted for organisationer at træffe beslutninger sammen.
+    resend_to_join_group:
+      subject: "%{member} venter på, at du slutter dig til %{group_name} på %{site_name}"
   discussion_mailer:
-    reply_or_view_online_html: "Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>."
+    reply_or_view_online_html: Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Slå email notifikationer fra</a> for denne diskussion."
+    change_email_preferences_html: Skift dine <a href='%{email_preferences_url}'>e-mail-præferencer</a> .
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Afmeld</a> yderligere meddelelser i denne tråd."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Afmeld</a> kommentarer i denne tråd."
+    unsubscribe_from_comment_replied_to_html: Dette er en svarmeddelelse.
+    unsubscribe_from_user_mentioned_html: Dette er en omtalemeddelelse.
+    discussion_edited:
+      inline: "%{actor} redigerede trådkonteksten"
+    discussion_closed:
+      inline: "%{actor} lukkede tråden"
   footer:
     about: Om
     blog: Blog
@@ -78,12 +160,17 @@ da:
     reset_email_timeframe: Vent venligst i op til 5 minutter på at emailen kommer. Hvis den ikke kommer, så kontroller din spam folder.
     length_restriction: Adgangskode skal være mindst 8 tegn.
     forbidden_passwords: Almindelige adgangskoder så som "password" er forbudt for at sikre dun konto.
+    change_your_password: skift dit kodeord
+    change_my_password: Skift kodeord
+    confirm_new_password: Bekræft kodeord
+    new_password: Nyt kodeord
+    email_guidelines_html: "<p>Indtast din e-mailadresse, og du vil få tilsendt et link til nulstilling af adgangskode.</p><p> Hvis du normalt logger ind via Facebook eller Google, skal du indtaste den e-mailadresse, der er knyttet til den pågældende konto.</p>"
   introduction_thread:
     title: Velkommen, introducér dig selv
     description: |
-        Brug et øjeblik på at beskrive dig selv, så at gruppen ved hvem du er. Opret en kommentar herunder
+      Brug et øjeblik på at beskrive dig selv, så at gruppen ved hvem du er. Opret en kommentar herunder
 
-        Hvad er din rolle eller tilgang til at deltaget i denne gruppe? Hvad er vigtigt for andre deltagere at vide om dig for at bedre forstå dit perspektiv?
+      Hvad er din rolle eller tilgang til at deltaget i denne gruppe? Hvad er vigtigt for andre deltagere at vide om dig for at bedre forstå dit perspektiv?
   how_it_works_thread:
     title: Sådan bruger du Loomio
   poll_mailer:
@@ -91,4 +178,164 @@ da:
       why_send_this: Du modtager denne email fordi %{reason}
       create_outcome: Del resultat
       please_respond: Svar venligst
-      time_zone: (Tider er vist i %{zone})
+      time_zone: "(Tider er vist i %{zone})"
+      view_on_loomio: Se det på %{site_name}
+      your_response: 'Du stemte:'
+      you_voted: Du stemte!
+      not_invited: Ikke inviteret
+      undecided_members: Ubesluttede medlemmer (%{count})
+      undecided_visitors: Ubeslutsomme gæster (%{count})
+      more_undecided: "%{count} mere..."
+      vote_now: Stem nu
+      you_have_until: Du har indtil %{when} til at deltage.
+      people_have_voted: "%{nom} af %{dnom} personer har deltaget (%{pct}%)"
+  discussion_templates:
+    blank:
+      process_name: Tom skabelon
+      process_subtitle: Start en ny tråd til ethvert formål
+    discuss_a_topic:
+      title_placeholder: Hvad er det emne, du vil diskutere?
+      process_name: Diskuter et emne
+      process_subtitle: Start en diskussion med din gruppe
+      process_introduction: "<p>Er der et problem, et problem eller en mulighed, du ønsker at tage op med din gruppe?</p><p> Introducer emnet, link til enhver baggrundsinformation og bed om kommentarer, ideer og hjælp.</p><p> Inviter folk til at deltage ved at bidrage med deres tanker og relevant information. Brug @omtale for at få bestemte personers opmærksomhed.</p><p> Opdater trådkonteksten, efterhånden som diskussionen skrider frem for at lette den mod et resultat.</p><p> Vent ikke med at starte en tråd, til du har alle oplysningerne. Brug hellere tråden til at invitere folk til at hjælpe dig med at udforske emnet og finde en løsning.</p>"
+      description: <h3 id="introduce-and-describe-the-topic">Introducer og beskriv emnet</h3><p></p><h3 id="why-is-this-important"> Hvorfor er dette vigtigt?</h3><p></p><h3 id="how-would-you-like-people-to-respond"> Hvordan vil du have folk til at reagere?</h3><p></p>
+    onboarding_to_loomio:
+      title: Bruger Loomio til vores gruppe
+      process_name: Onboarding til Loomio
+      process_subtitle: En tråd til at hjælpe folk, der er nye til Loomio, med at øve sig i at skrive kommentarer og stemme.
+      process_introduction: "<p>Brug denne skabelon til at introducere folk til Loomio.</p><p> En fantastisk måde at opleve Loomio på er ved at åbne en diskussion i Loomio og træffe en beslutning!</p><p> Få diskussionen i gang ved at følge tekstmeddelelserne nedenfor eller indsætte dine egne ord.</p><p> Kør et Sense-tjek, så din gruppe kan stemme og se resultaterne.</p><p> Lås op for værdien af Loomio ved at involvere folk i deres første beslutning.</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">Hvorfor er du interesseret i at bruge Loomio?</h3><p> Vi er interesserede i at bruge Loomio til at involvere folk i beslutninger om vores organisation.</p><h3 id="what-are-you-asking-people-to-do"> Hvad beder du folk om at gøre?</h3><p> Jeg ville elske at høre dine tanker! Efterlad en kommentar nedenfor og stem i forslaget.</p><p> Du kan svare på en persons kommentar ved at klikke på svarikonet nederst til højre i kommentaren.</p><p> Brug @omtale til at underrette folk.</p>
+      onboarding: Onboarding
+    consent_process:
+      title_placeholder: Udvikling af vores sundheds- og sikkerhedspolitik
+      process_name: Samtykkeproces
+      process_subtitle: Træf en beslutning, der er 'sikker at prøve' uden indvendinger.
+      process_introduction: '<p>Søg samtykke til en beslutning, du skal træffe, hvor der ikke er nogen meningsfulde indvendinger mod dit forslag, så du kan træffe en hurtig beslutning, der er ''sikker at prøve'' nu.</p><p> Typiske roller:</p><ul><li><p> Forslagsstiller: Den person, der rejser et emne, der kræver en beslutning.</p></li><li><p> Facilitator: En person, der kan hjælpe forslagsstilleren med at udføre deres arbejde effektivt.</p></li></ul><p> Almindelige procestrin:</p><p> Trin 1. Præsentér et forslag med en Loomio-tråd.</p><p> Trin 2. Faciliter en runde af spørgsmål, reaktioner og eventuelle kommentarer for at forbedre forslaget med et Sense-tjek.</p><p> Trin 3. Rediger forslaget med forslag og kommentarer.</p><p> Trin 4. Spørg, om nogen har en meningsfuld indsigelse mod det ændrede forslag med et samtykkeforslag.</p><p> Trin 5. Integrer gyldige indsigelser for at skabe en ændret version af forslaget, som alle giver samtykke til er ''sikkert at prøve'', og når det er afsluttet, angiv beslutningsresultatet.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Læs mere: Samtykkeproces.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Hvad er den beslutning, du skal tage?</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have"> Hvorfor er dette vigtigt, og hvilken effekt har det?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Hvilken information har folk brug for til kontekst?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Hvem er facilitator for denne proces?</h3><p></p>
+      consent: Samtykke
+    advice_process:
+      title_placeholder: Søger råd til at købe en ny computer
+      process_name: Rådgivningsproces
+      process_subtitle: Søg råd om en beslutning, du skal træffe.
+      process_introduction: '<p>Træf en beslutning med råd fra personer, der er berørt, eller som har ekspertise, så du kan træffe en bedre beslutning for din organisation.</p><p> Typiske roller:</p><ul><li><p> Facilitator: Den person, der træffer beslutningen, eller bed nogen om at facilitere.</p></li><li><p> Rådgivere: Personer, der er berørt eller har ekspertise, som du inviterer.</p></li></ul><p> Almindelige procestrin:</p><p> Trin 1. Søg input til at aflæse perspektiver, før du foreslår handling.</p><p> Trin 2. Lav et forslag og søg råd – kør et Rådgivningsforslag.</p><p> Trin 3. Under hensyntagen til modtagne råd træffer du en beslutning og informerer de personer, der har givet råd – angiv et resultat.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">Læs mere: Rådgivningsproces.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Hvad er den beslutning, du skal tage?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Hvorfor er dette vigtigt, og hvilken effekt har det?</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision"> Hvilket råd beder du om for at hjælpe dig med at træffe en god beslutning?</h3><p></p><h3 id="who-is-the-facilitator-for-this-process"> Hvem er facilitator for denne proces?</h3><p></p>
+      advice: Råd
+    pass_a_resolution:
+      title_placeholder: Beslutning om at godkende strategi
+      process_name: Vedtag en beslutning
+      process_subtitle: Introducer beslutning med kontekst, baggrundsinformation, svar på spørgsmål og rejs et forslag til at vedtage beslutningen.
+      process_introduction: '<p>Robert''s Rules er en ramme, der består af et sæt koder og etiske regler, der hjælper grupper med at holde ordnede møder, der tillader flertallet at regere, samtidig med at minoritetsstemmer bliver hørt. <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a> Et medlem fremsætter et forslag om at foreslå en handling eller træffe en beslutning ved at sige: "Jeg flytter til...". Et andet medlem skal imødekomme forslaget ved at sige: "Jeg fremsætter forslaget." Så snart nogen stemmer for forslaget, stemmer gruppen om forslaget. Det vedtages ved stemmeflertal eller beslutningsdygtigt afhængigt af reglerne i vedtægterne.</p>'
+      description: "<p><strong>Angiv den beslutning, der skal vedtages</strong></p><p></p><p> <strong>Skitser kontekst og baggrundsinformation</strong></p><p></p><p> <strong>Inviter medlemmer til at stille spørgsmål, komme med kommentarer og bidrage med enhver information for at opbygge en fælles forståelse</strong></p><p></p>"
+      resolution: Løsning
+    decision_by_consensus:
+      title_placeholder: Revision af vores organisations vedtægter
+      process_name: Beslutning ved konsensus
+      process_subtitle: Indgå overenskomst med alle involverede.
+      process_introduction: '<p>Skab konsensus for en beslutning, I skal træffe sammen, for at nå frem til en aftale, der tilfredsstiller alle deltageres behov og bekymringer.</p><p> Typiske roller:</p><ul><li><p> Udpeg en facilitator. (På bestyrelsesmøder er dette normalt formanden.)</p></li><li><p> Et kvorum eller overflertal af medlemmer til at deltage, som specificeret i din organisations vedtægter.</p></li></ul><p> Almindelige procestrin:</p><p> Trin 1. Skab et åbent rum for diskussion om et problem eller en foreslået beslutning.</p><p> Trin 2. Test for konsensus og afslør indsigelser med et Sense-tjekforslag.</p><p> Trin 3. Klargør eventuelle punkter, inviter til konstruktive ændringer og ændr forslaget.</p><p> Trin 4. Test for enighed og eventuelle resterende indvendinger med et konsensusforslag.</p><p> Trin 5. Notér beslutningen med et resultat og i organisationens officielle referat.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Læs mere: Konsensusproces.</a></p>'
+      description: <h3 id="what-is-the-decision-you-need-to-make">Hvad er den beslutning, du skal tage?</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have"> Hvorfor er dette vigtigt, og hvilken effekt har det?</h3><p></p><h3 id="what-information-do-people-need-for-context"> Hvilken information har folk brug for til kontekst?</h3><p></p><h3 id="who-is-the-facilitator"> Hvem er facilitatoren?</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision"> Hvilke betingelser skal være opfyldt for en afgørelse?</h3><h3 id=""></h3>
+      consensus: Konsensus
+    share_links_and_info:
+      title_placeholder: Del links og info
+      process_name: Del links og info
+      process_subtitle: Send info, links og rapporter til deling til kommentarer og diskussion.
+      process_introduction: "<p>Brug en tråd som en 'væg' eller 'opslagstavle' for din gruppe til at sende information, nyheder og ideer, du gerne vil dele med hinanden.</p><p> Inviter folk til at bruge <strong>Indsæt link</strong> og <strong>Integrer videoformateringsværktøjer</strong> for at hjælpe gruppen med at få adgang til oplysninger fra Loomio. Brug en <strong>overskrift</strong> på kommentarer til at fastgøre kommentaren til trådens tidslinje, så den let kan findes.</p><p> <strong>Sæt</strong> tråden fast, så den klæber rundt, og opfordr <strong>Reaktioner</strong> til at holde den i energi, så folk ved, at du har set deres genstand.</p><p> Standardvisningen af denne tråd er <strong>Nyeste</strong> , så de seneste kommentarer er øverst i tråden.</p>"
+      description: <p>Brug denne tråd til at poste info, opslag og ting, du gerne vil dele - et sted, hvor du kan se, hvad der foregår, og blive involveret.</p><p data-text-align="start"> Del begivenheder, rapporter, podcasts og anden interessant online information.</p><p data-text-align="start"> Brug <strong>Indsæt link</strong> og <strong>Integrer videoformateringsværktøjer</strong> til at hjælpe folk med at få adgang til oplysninger i Loomio.</p>
+      information: Information
+    prepare_for_a_meeting:
+      title_placeholder: Forberedelse til vores næste møde
+      process_name: Forbered dig på et møde
+      process_subtitle: Byg en dagsorden, post bestyrelsespapirer og organiser administrative sager, så alle er opdaterede, i sammenhæng og forberedte.
+      description: <p><strong>Mødets fokus</strong></p><p></p><p data-text-align="start"> <strong>Oversigt over dagsorden</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Handlinger fra sidste møde</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Hvordan skal deltagerne forberede sig til mødet?</strong></p><p data-text-align="start"></p><p data-text-align="start"> <strong>Liste over dokumenter til mødet</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>Planlæg et effektivt møde ved at involvere folk fra starten, tilpasse sig de vigtigste emner, og udnytte jeres dyrebare tid sammen bedre.</p><p> Brug en tråd som beholder for dit møde til at etablere et fokus for mødet, sætte dagsordenen, finde en passende dato, poste centrale dokumenter og rapporter, starte diskussion om dagsordenspunkter, følge op med handlinger og referater.</p><p> Dette hjælper alle med at forberede sig til mødet ved at læse materialerne og tænke over diskussionsemner og de beslutninger, der skal træffes. Medlemmer er så mere tilbøjelige til at ankomme i kontekst og klar til mødet.</p><p> Læs mere om <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>Forberedelse til et møde</u></a> i Good Governance Guide til Loomio.</p>
+      meeting: Møde
+    build_a_policy:
+      title_placeholder: Revidering af vores ansættelsespolitik
+      process_name: Lav en politik
+      process_subtitle: Arbejd sammen med dit team om at opbygge og aftale et politik- eller proceduredokument.
+      process_introduction: "<p><span>Tråden er beholderen til diskussion om politikken, hvor man kan aftale krav og principper og poste dokumentudkast til kommentar.</span></p><p> <span>Brug skabelonen til at udvikle en politik med en lille gruppe mennesker, eller gør den gennemsigtig for hele organisationen ved at invitere til kommentarer til progressive versioner af dokumentet.</span></p><p> <span>Brug et Sense-tjekforslag til at give gruppemedlemmer besked om, at et udkast til dokument er klar til gennemgang, og inviter folk til at læse dokumentet og svare med eventuelle kommentarer eller spørgsmål.</span></p><p> <span>Når et 'endeligt' udkast er klar, rejs et samtykke eller konsensusforslag for at godkende dokumentet.</span></p>"
+      description: "<p><strong><span>Hvad er den politik eller det dokument, du skal bygge?</span></strong></p><p></p><p> <strong><span>Hvorfor er dette vigtigt?</span></strong></p><p></p><p> <strong><span>Hvad beder du folk om at gøre?</span></strong></p><p></p>"
+      policy: Politik
+    elect_a_governance_position:
+      title_placeholder: Rådsopstilling og valg
+      process_name: Vælg en ledelsesposition
+      process_subtitle: Nominer og vælg en person til en ledelsesrolle i råd, udvalg eller bestyrelse.
+      process_introduction: "<p>Introducer ledelsesrollen og kriterierne for stillingen for at hjælpe medlemmer med at vurdere kandidater.</p><p> Indkaldelse til nomineringer med en opt-in-afstemning. Inviter de nominerede til at poste et billede af kandidaten sammen med deres bio og referencer. Integrer en videobesked fra kandidaten, så medlemmer kan se og høre direkte fra kandidaten.</p><p> Hvis du er klar til at vælge en kandidat, brug et samtykkeforslag.</p><p> Hvis du har flere kandidater til en stilling, skal du bruge et forslag til rangering, hvor vælgerne kan rangordne kandidater i præferencerækkefølge.</p>"
+      description: '<h3 id="what-position-do-you-need-to-fill">Hvilken stilling skal du udfylde?</h3><p></p><h3 id="why-is-this-important"> Hvorfor er dette vigtigt?</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand"> Hvilke kvalifikationer, færdigheder og erfaringer gør en god kandidat?</h3><p></p><h3 id="what-is-the-election-process"> Hvad er valgprocessen?</h3><p> Trin 1: Nomineringer - vi inviterer til nomineringer af egnede kandidater.</p><p> Fase 2: Introducer kandidater - medtag et foto, kort biografi og reference for hver kandidat.</p><p> Trin 3: Valg - stemme for at udpege en kandidat til rollen.</p>'
+      election: Valg
+    funding_decision:
+      title_placeholder: Finansieringsansøgning til Robotics Roadshow
+      process_name: Finansieringsbeslutning
+      process_subtitle: Behandl en ansøgning om tilskud, lån eller investering og tag en finansieringsbeslutning.
+      process_introduction: "<p>Indfør en ansøgning om støtte, vedlæg dokumenter og andet støttemateriale.</p><p> Opsummer ansøgningen i trådkonteksten.</p><p> Inviter autoriserede personer til at gennemgå ansøgningen og stille spørgsmål. Giv tilstrækkelig tid til diskussion.</p><p> Rejs et konsensusforslag for at godkende finansieringen.</p><p> Hvis nogen er uenige, så spørg om en årsag – for eksempel kan der være behov for flere oplysninger. Inviter personen, der er uenig, til at ændre sin stemme, når han er tilfreds.</p><p> Når du har en klar afgørelse om støtteansøgningen, skal du angive et resultat for at registrere afgørelsen.</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">Introducer og opsummer finansieringsansøgningen</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria"> Hvordan passer denne ansøgning med finansieringskriterier?</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision"> Hvem er bemyndiget til at godkende denne finansieringsbeslutning?</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica"> Inviter spørgsmål fra beslutningstagere til at behandle ansøgningen</h3><p></p>
+      funding: Finansiering
+    approve_a_document:
+      title_placeholder: Udvikling af vores brandstrategi
+      process_name: Godkend et dokument
+      process_subtitle: Introducer, diskuter og udvikle et vigtigt dokument, politik eller aftale.
+      process_introduction: "<p>Introducer dokumentet sammen med eventuelle baggrundsoplysninger. Angiv formålet med dokumentet for at hjælpe med at holde fokus.</p><p> Inviter folk til at bidrage med information og deres ekspertise, og brug dette til at indramme dokumentet. Anerkend og overvej feedback og bidrag fra folk.</p><p> Integrer bidrag i et første udkast til dokumentet og efterfølgende udkast, indtil det er klar til at blive godkendt.</p><p> Brug en Sense-tjek-afstemning til at undersøge meninger og afklare eventuelle problemer med udkastet.</p><p> Når feedback er overvejet og indarbejdet i dokumentet, skal du fortsætte til godkendelse eller aftale med et samtykke eller konsensusforslag.</p><p> Tråden bliver en klar registrering af fremskridt i oprettelse af dokumenter og truffet beslutninger.</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">Hvad er formålet med dokumentet?</h3><p></p><h3 id="why-is-this-important"> Hvorfor er dette vigtigt?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Hvad beder du folk om at gøre?</h3><p></p>
+      document: Dokument
+  explore:
+    header: Udforsk offentlige grupper
+  activerecord:
+    errors:
+      messages:
+        blank: kan ikke være blank
+        invalid: er ikke en gyldig værdi
+  user:
+    deleted_user: Slettet bruger
+    placeholder_name: Inviteret bruger (%{hostname})
+    error:
+      sign_in_required_html: Du skal være logget ind for at fortsætte. <a href="/dashboard" target="_blank">Log ind</a> og genindlæs siden for at fortsætte.
+      recaptcha: Vi var ikke i stand til at bekræfte, at du ikke er en robot. Prøv igen!
+      bad_login: Beklager, den adgangskode stemmer ikke overens med den, vi har registreret
+      username_must_be_alphanumeric: Brugernavne må kun være små bogstaver og tal
+  stance:
+    error:
+      too_short: Foretag venligst et valg
+  invitation:
+    invitation_cancelled: Beklager, denne invitation er blevet tilbagekaldt af gruppekoordinatoren. Anmod om en anden invitation fra din gruppe.
+    invitation_already_used: Denne invitation er allerede blevet brugt. Log ind på loomio direkte for at fortsætte til din gruppe.
+  subscriptions:
+    active: Aktiv
+    inactive: Inaktiv
+  base_mailer:
+    via_loomio: "%{name} (via %{site_name})"
+  user_mailer:
+    group_export_ready:
+      subject: Eksport af gruppedata for %{group_name}
+      body_html: Download dine gruppedata <a href="%{url}">her</a> . Bemærk venligst, at dette link udløber om en uges tid.
+    deactivated:
+      subject: Din %{site_name} brugerkonto er blevet deaktiveret.
+      body_html: "<p>Du, eller en person med adgang til din konto, har deaktiveret din Loomio-brugerkonto.</p><p> Alle personlige data er blevet fjernet fra systemet.</p><p> Hvis du ønsker at gendanne denne brugerkonto og tilknyttede kommentarer og stemmer, bedes du kontakte support og reference: %{recovery_code}</p>"
+    accounts_merged:
+      subject: Dine %{site_name} brugerkonti er blevet flettet.
+      body_html: Hej %{name}, Dine to loomio-konti er blevet slået sammen til én konto. For at få adgang til loomio fra nu af skal du bruge <strong>%{email},</strong> når du logger ind.
+    merge_verification:
+      subject: Bekræft din %{site_name}-e-mailadresse for at flette
+      body_html: "<p>Hej %{name},</p><p> Der blev fremsat en anmodning om at flette din brugerkonto under adressen <strong>%{source_email}</strong> med den konto, der tilhører denne adresse, <strong>%{target_email}</strong> .</p><p> Når denne proces er fuldført, vil du ikke længere være i stand til at logge ind med <strong>%{source_email}</strong> og kun med <strong>%{target_email}</strong> .</p><p> Bekræft venligst, at det er det, du vil gøre.</p>"
+      verify: Bekræft e-mail og fortsæt
+      confirm_page:
+        confirm: Bekræft fletning
+        body_html: "<p>Bekræft venligst, at du gerne vil flette kontoen under <strong>%{source_email}</strong> til kontoen under <strong>%{target_email}</strong> .</p><p> Din konto under <strong>%{source_email}</strong> vil blive slettet, og du vil derefter kun kunne logge ind via <strong>%{target_email}</strong> .</p><p> Denne ændring er irreversibel.</p>"
+        merge: Flet konti
+      complete_page:
+        title: Sammenlægningen lykkedes!
+        body_html: <p>Sammenlægningen af dine brugerkonti lykkedes. Du vil snart modtage en bekræftelses-e-mail på <strong>%{target_email}</strong> .</p><p> <a href="/contact" target="_blank">Kontakt os</a> venligst, hvis du har yderligere spørgsmål.</p>
+  announcement_count_emails: "%{count} e-mails"
+  email_actions:
+    unfollowed_discussion: Du har slået e-mails fra for tråden.
+  task_mailer:
+    task_due_reminder:
+      subject: 'Opgavepåmindelse: %{name}'
+      greeting: 'Hej %{name}, følgende opgave skal betales %{due}:'
+      view_task: Vis på %{site_name}
+      update_or_comment: Hvis du allerede har fuldført denne opgave, skal du sætte kryds ved den. Hvis det ikke er komplet, bedes du dele en statusopdatering.
+      due_today: i dag
+      due_in_count_days: om %{count} dage
+  group_mailer:
+    resend: 'PÅMINDELSE: %{member} venter på, at du bliver medlem af %{group_name}'
+    destroy_warning:
+      subject: Din Loomio-gruppe er planlagt til sletning.
+      body: 'Din Loomio-gruppe: "%{group}" er planlagt til sletning af %{deletor}. Hvis du ikke ønsker, at din gruppe skal slettes, bedes du besvare denne e-mail. Hvis du er sikker på, at du vil slette gruppen, behøver du ikke at gøre noget. Tak skal du have.'

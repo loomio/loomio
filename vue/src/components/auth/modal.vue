@@ -1,37 +1,48 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import Records       from '@/shared/services/records'
-import EventBus      from '@/shared/services/event_bus'
-import AuthService   from '@/shared/services/auth_service'
-import Session from '@/shared/services/session'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import Records       from '@/shared/services/records';
+import EventBus      from '@/shared/services/event_bus';
+import AuthService   from '@/shared/services/auth_service';
+import Session from '@/shared/services/session';
 
-import AuthInactive from '@/components/auth/inactive'
+import AuthInactive from '@/components/auth/inactive';
 
-export default
-  components:
-    AuthInactive: AuthInactive
-  props:
-    preventClose: Boolean
+export default {
+  components: {
+    AuthInactive
+  },
+
+  props: {
+    preventClose: Boolean,
     close: Function
+  },
 
-  data: ->
-    siteName: AppConfig.theme.site_name
-    titleKey: 'auth_form.sign_in_to_loomio'
-    user: Records.users.build(createAccount: false)
-    isDisabled: false
-    pendingProviderIdentity: Session.providerIdentity()
+  data() {
+    return {
+      siteName: AppConfig.theme.site_name,
+      titleKey: 'auth_form.sign_in_to_loomio',
+      user: Records.users.build({createAccount: false}),
+      isDisabled: false,
+      pendingProviderIdentity: Session.providerIdentity()
+    };
+  },
 
-  mounted: ->
-    AuthService.applyEmailStatus(@user, AppConfig.pendingIdentity)
+  mounted() {
+    AuthService.applyEmailStatus(this.user, AppConfig.pendingIdentity);
+  },
 
-  methods:
-    back: -> @user.emailStatus = null
+  methods: {
+    back() { this.user.emailStatus = null; }
+  },
 
-  computed:
-    showBackButton: ->
-      @user.emailStatus and
-      !@user.sentLoginLink and
-      !@user.sentPasswordLink
+  computed: {
+    showBackButton() {
+      return this.user.emailStatus &&
+            !this.user.sentLoginLink &&
+            !this.user.sentPasswordLink;
+    }
+  }
+}
 </script>
 <template lang="pug">
 .auth-modal

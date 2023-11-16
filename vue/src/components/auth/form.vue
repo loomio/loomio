@@ -1,50 +1,67 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import Session from '@/shared/services/session'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import Session from '@/shared/services/session';
 
-export default
-  props:
-    user: Object
+export default {
+  props: {
+    user: Object,
     preventClose: Boolean
+  },
 
-  data: ->
-    emailLogin: AppConfig.features.app.email_login
-    siteName: AppConfig.theme.site_name
-    privacyUrl: AppConfig.theme.privacy_url
-    isDisabled: false
-    pendingGroup: null
+  data() {
+    return {
+      emailLogin: AppConfig.features.app.email_login,
+      siteName: AppConfig.theme.site_name,
+      privacyUrl: AppConfig.theme.privacy_url,
+      isDisabled: false,
+      pendingGroup: null
+    };
+  },
 
-  created: ->
-    @watchRecords
-      key: 'authForm'
-      collections: ['groups']
-      query: (store) =>
-        @pendingGroup = store.groups.find(@pendingIdentity.group_id)
+  created() {
+    this.watchRecords({
+      key: 'authForm',
+      collections: ['groups'],
+      query: store => {
+        this.pendingGroup = store.groups.find(this.pendingIdentity.group_id);
+      }
+    });
+  },
 
-  computed:
-    userLocale: ->
-      Session.user().locale
+  computed: {
+    userLocale() {
+      return Session.user().locale;
+    },
 
-    isInvitedNewUser: ->
-      AppConfig.pending_identity.email_verified == false
+    isInvitedNewUser() {
+      return AppConfig.pending_identity.email_verified === false;
+    },
 
-    loginComplete: ->
-      @user.sentLoginLink or @user.sentPasswordLink
+    loginComplete() {
+      return this.user.sentLoginLink || this.user.sentPasswordLink;
+    },
 
-    pendingDiscussion: ->
-      @pendingIdentity.identity_type == 'discussion_reader'
+    pendingDiscussion() {
+      return this.pendingIdentity.identity_type === 'discussion_reader';
+    },
 
-    pendingPoll: ->
-      @pendingIdentity.identity_type == 'stance'
+    pendingPoll() {
+      return this.pendingIdentity.identity_type === 'stance';
+    },
 
-    pendingIdentity: ->
-      (AppConfig.pending_identity || {})
+    pendingIdentity() {
+      return (AppConfig.pending_identity || {});
+    },
 
-    startDemo: ->
-      @$route.path == '/try'
+    startDemo() {
+      return this.$route.path === '/try';
+    },
 
-    startTrial: ->
-      AppConfig.features.app.trials && @$route.path == '/g/new'
+    startTrial() {
+      return AppConfig.features.app.trials && this.$route.path == '/g/new'
+    }
+  }
+}
 
 </script>
 <template lang="pug">
