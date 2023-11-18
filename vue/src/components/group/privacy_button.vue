@@ -23,7 +23,7 @@ export default
 v-tooltip(bottom)
   template(v-slot:activator="{on, attrs}")
     v-btn.group-privacy-button(icon v-on="on" v-bind="attrs" :aria-label='privacyDescription')
-      v-icon {{iconClass}}
+      common-icon(:name="iconClass")
       //- span(v-t="'common.privacy.' + group.groupPrivacy")
   | {{privacyDescription}}
 </template>

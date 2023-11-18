@@ -65,7 +65,7 @@ v-dialog(v-model='dialog' max-width="600px")
       h1.headline(tabindex="-1" v-t="'invitation_form.share_group'")
       v-spacer
       v-btn.dismiss-modal-button(icon small @click='dialog = false')
-        v-icon mdi-window-close
+        common-icon(name="mdi-window-close")
     v-card-text
       template(v-if="group.groupPrivacy != 'secret'")
         span.subtitle-2(v-t="'invitation_form.group_url'")
@@ -73,16 +73,16 @@ v-dialog(v-model='dialog' max-width="600px")
         v-layout(align-center)
           v-text-field.shareable-link-modal__shareable-link(:value='groupUrl' :disabled='true')
           v-btn.shareable-link-modal__copy(icon color="primary" :title="$t('common.copy')" @click='copyText(groupUrl)')
-            v-icon mdi-content-copy
+            common-icon(name="mdi-content-copy")
       div(v-if="canAddMembers")
         span.subtitle-2(v-t="'invitation_form.reusable_invitation_link'")
         p.mt-2.mb-0.caption(v-t="'invitation_form.shareable_invitation_explanation'")
         v-layout(align-center)
           v-text-field.shareable-link-modal__shareable-link(:value='invitationLink' :disabled='true')
           v-btn.shareable-link-modal__copy(icon color="primary" :title="$t('common.copy')" @click='copyText(invitationLink)')
-            v-icon mdi-content-copy
+            common-icon(name="mdi-content-copy")
           v-btn.shareable-link-modal__reset(icon color="warning" :title="$t('common.reset')" @click="resetInvitationLink()")
-            v-icon mdi-lock-reset
+            common-icon(name="mdi-lock-reset")
 
       v-btn(href="https://help.loomio.org/en/user_manual/groups/membership/" target="_blank" v-t="'common.help'")
 </template>

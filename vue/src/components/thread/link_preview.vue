@@ -50,7 +50,7 @@ div
             :title="$t('common.action.done')"
             style="right: 8px"
             @click="editing = false")
-        v-icon mdi-check
+        common-icon(name="mdi-check")
       v-card-title
         v-text-field(filled v-model="preview.title")
       v-card-subtitle
@@ -65,35 +65,35 @@ div
               icon
               @click="remove(preview.url)"
               :title="$t('common.action.remove')")
-          v-icon mdi-close
+          common-icon(name="mdi-close")
         v-btn.link-preview__btn(color="primary"
               style="right: 48px"
               icon
               outlined
               @click="editing = true"
               :title="$t('common.action.edit')")
-          v-icon mdi-pencil
+          common-icon(name="mdi-pencil")
 
         template(v-if="preview.image")
           v-btn.link-preview__btn(@click="preview.fit = (preview.fit == 'cover' ? 'contain' : 'cover')"
                 color="primary" icon outlined
                 style="right: 88px"
                 :title="$t('common.action.zoom')")
-            v-icon(v-if="preview.fit == 'contain'") mdi-magnify-plus-outline
-            v-icon(v-else) mdi-magnify-minus-outline
+            common-icon(v-if="preview.fit == 'contain'" name="mdi-magnify-plus-outline")
+            common-icon(v-else name="mdi-magnify-minus-outline")
           v-btn.link-preview__btn(v-if="preview.fit == 'cover'"
                 @click="preview.align = (preview.align == 'top' ? 'center' : 'top')"
                 color="primary" icon outlined
                 style="right: 128px"
                 :title="$t('common.action.align')")
-            v-icon(v-if="preview.align == 'top'") mdi-format-vertical-align-center
-            v-icon(v-else) mdi-format-vertical-align-top
+            common-icon(v-if="preview.align == 'top'" name="mdi-format-vertical-align-center")
+            common-icon(v-else name="mdi-format-vertical-align-top")
 
       a.link-preview-link(:href="preview.url" target="_blank" rel="nofollow ugc noreferrer noopener")
         div.ml-4
         .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': (preview.fit || 'contain'), 'background-position': (preview.align || 'center')}")
         v-card-title.text--secondary
-          v-icon.mr-1 mdi-open-in-new
+          common-icon.mr-1(name="mdi-open-in-new")
           | {{preview.title}}
         v-card-subtitle
           span(v-if="doctype.name != 'other'" v-t="'doctypes.'+doctype.name")

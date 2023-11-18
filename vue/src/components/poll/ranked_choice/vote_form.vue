@@ -68,7 +68,7 @@ export default {
       v-sheet.mb-2.rounded.poll-ranked-choice-vote-form__option(outlined :style="{'border-color': option.color}")
         v-list-item
           v-list-item-icon
-            v-icon(style="cursor: pointer", :color="option.color") mdi-drag
+            common-icon(style="cursor: pointer", :color="option.color" name="mdi-drag")
           v-list-item-content
             v-list-item-title {{option.name}}
             v-list-item-subtitle {{option.meaning}}

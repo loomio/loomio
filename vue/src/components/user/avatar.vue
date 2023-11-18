@@ -62,7 +62,7 @@ component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && use
     img(:alt='user.avatarInitials' :src='imageUrl')
   v-avatar(v-else :title='user.name' :size='size' :color="color")
     span.user-avatar--initials(v-if="user.avatarKind == 'initials'" :style="{'font-size': fontSize, width: size+'px', height: size+'px'}") {{user.avatarInitials}}
-    v-icon(v-else) {{user.avatarKind}}
+    common-icon(v-else :name="user.avatarKind")
 </template>
 
 <style lang="sass">

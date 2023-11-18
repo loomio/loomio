@@ -50,7 +50,7 @@ v-card.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.check_your_email'")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
   v-sheet.mx-4
     submit-overlay(:value='loading')
     p.mb-4(v-if='user.sentLoginLink')

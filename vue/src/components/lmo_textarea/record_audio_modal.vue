@@ -168,7 +168,7 @@ export default {
     .d-flex.justify-space-between
       h1.headline(v-t="'record_modal.record_audio'")
       v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='dismiss')
-        v-icon mdi-close
+        common-icon(name="mdi-close")
     v-alert(v-if="error" type="error") {{error}}
     div(v-else)
       v-alert(type="info" v-if="!url && !onAir" icon="mdi-microphone")

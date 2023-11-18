@@ -18,5 +18,5 @@ export default
 <template lang="pug">
 v-avatar(:size="size" tile :class="'rounded elevation-' + elevation" @click="$emit('click')")
   img(:alt="group.name" v-if="group.logoUrl" :src="group.logoUrl")
-  v-icon(v-if="!group.logoUrl") mdi-account-group
+  common-icon(v-if="!group.logoUrl" name="mdi-account-group")
 </template>

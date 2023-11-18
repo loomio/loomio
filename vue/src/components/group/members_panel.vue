@@ -198,7 +198,7 @@ export default
             span(v-if="$route.query.filter == 'pending'" v-t="'members_panel.invitations'")
             span(v-if="$route.query.filter == 'accepted'" v-t="'members_panel.accepted'")
             span(v-if="!$route.query.filter" v-t="'members_panel.all'")
-            v-icon mdi-menu-down
+            common-icon(name="mdi-menu-down")
         v-list
           v-list-item.members-panel__filters-everyone(:to="mergeQuery({filter: null})")
             v-list-item-title(v-t="'members_panel.all'")

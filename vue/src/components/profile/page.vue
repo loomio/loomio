@@ -171,7 +171,7 @@ v-main
                 space
                 v-tooltip(top)
                   template(v-slot:activator="{on, attrs}")
-                    v-icon(v-bind="attrs" v-on="on" small) mdi-information-outline
+                    common-icon(v-bind="attrs" v-on="on" small name="mdi-information-outline")
                   span(v-t="'profile_page.updated_on_sign_in'")
               v-checkbox(v-model="user.bot" :label="$t('profile_page.account_is_bot')")
               v-alert(v-if="user.bot" type="warning")
@@ -191,7 +191,7 @@ v-main
         v-list
           v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()" :class="'user-page__' + key")
             v-list-item-icon
-              v-icon {{action.icon}}
+              common-icon(:name="action.icon")
             v-list-item-title(v-t="action.name")
 
 </template>

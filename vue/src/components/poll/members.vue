@@ -204,7 +204,7 @@ export default {
         v-menu(offset-y)
           template(v-slot:activator="{on, attrs}")
             v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
-              v-icon mdi-dots-vertical
+              common-icon(name="mdi-dots-vertical")
           v-list
             v-list-item(v-for="action in actionNames" v-if="canPerform(action, poll, user)" @click="perform(action, poll, user)" :key="action")
               v-list-item-title(v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }")

@@ -101,11 +101,11 @@ export default {
 v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
   v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
     v-avatar(tile size="36px")
-      v-icon mdi-menu
+      common-icon(name="mdi-menu")
   v-toolbar-title(v-if="showTitle" @click="$vuetify.goTo('head', {duration: 0})") {{title}}
   v-spacer
   v-btn(@click="openSearchModal" icon :title="$t('common.action.search')")
-    v-icon mdi-magnify
+    common-icon(name="mdi-magnify")
   notifications(v-if='isLoggedIn')
   v-toolbar-items
   v-btn.navbar__sign-in(text v-if='!isLoggedIn' v-t="'auth_form.sign_in'" @click='signIn()')

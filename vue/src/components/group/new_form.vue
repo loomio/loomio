@@ -215,7 +215,7 @@ v-card.group-form
 
     div.pt-2(v-if="!group.parentId")
       span.text--secondary
-        //- v-icon mdi-lock-outline
+        //- common-icon(name="mdi-lock-outline")
         span(v-t="'common.privacy.privacy'")
         span :
         space

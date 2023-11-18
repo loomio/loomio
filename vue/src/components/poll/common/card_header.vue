@@ -34,7 +34,7 @@ export default
 .poll-common-card-header.d-flex.align-center.mr-3.ml-2.pb-2.pt-4.flex-wrap
   v-breadcrumbs(:items="groups")
     template(v-slot:divider)
-      v-icon mdi-chevron-right
+      common-icon(name="mdi-chevron-right")
   v-spacer
   tags-display(:tags="poll.tags" :group="poll.group()")
 </template>

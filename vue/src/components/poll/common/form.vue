@@ -277,9 +277,9 @@ export default {
     v-spacer
 
     v-btn(v-if="poll.id" icon :to="urlFor(poll)" aria-hidden='true')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
     v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
 
   poll-template-info-panel(v-if="pollTemplate" :poll-template="pollTemplate")
 
@@ -347,11 +347,11 @@ export default {
                 @click="removeOption(option)"
                 :title="$t('common.action.delete')"
               )
-                v-icon.text--secondary mdi-delete
+                common-icon.text--secondary(name="mdi-delete")
             v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
               v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                v-icon.text--secondary mdi-pencil
-            v-icon.text--secondary(style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
+                common-icon.text--secondary(name="mdi-pencil")
+            common-icon.text--secondary(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
 
     template(v-if="optionFormat == 'i18n'")
       p This poll cannot have new options added. (contact support if you see this message)

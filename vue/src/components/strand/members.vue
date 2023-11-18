@@ -49,7 +49,7 @@ export default {
 
   user-avatar(v-for="reader in readers" :user="reader.user()" :size="28" :key="reader.id")
   v-btn(small icon @click="openInviteModal" :title="$t('invitation_form.invite_people')")
-    v-icon mdi-plus
+    common-icon(name="mdi-plus")
 </template>
 
 <style lang="sass">

@@ -90,14 +90,14 @@ export default {
       .d-flex
         v-breadcrumbs.px-4(:items="breadcrumbs")
           template(v-slot:divider)
-            v-icon mdi-chevron-right
+            common-icon(name="mdi-chevron-right")
       v-card
         v-card-title.d-flex.pr-3
           h1.headline(v-if="!showSettings" tabindex="-1" v-t="'thread_template.start_a_new_thread'")
           h1.headline(v-if="showSettings" tabindex="-1" v-t="'thread_template.hidden_templates'")
           v-spacer
           v-btn(v-if="showSettings" icon @click="showSettings = false")
-            v-icon mdi-close
+            common-icon(name="mdi-close")
 
 
         v-alert.mx-4(v-if="!showSettings && group && group.discussionsCount < 2" type="info" text outlined v-t="'thread_template.these_are_templates'") 
@@ -110,7 +110,7 @@ export default {
               v-menu(v-if="!showSettings" offset-y)
                 template(v-slot:activator="{on, attrs}")
                   v-btn(icon v-bind="attrs" v-on="on" :title="$t('common.admin_menu')")
-                    v-icon mdi-cog
+                    common-icon(name="mdi-cog")
                 v-list
                   v-list-item(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
                     v-list-item-title(v-t="'discussion_form.new_template'")
@@ -125,7 +125,7 @@ export default {
                     v-list-item-title {{template.processName || template.title}}
                     v-list-item-subtitle {{template.processSubtitle}}
                   v-list-item-action.handle(style="cursor: grab")
-                    v-icon mdi-drag-vertical
+                    common-icon(name="mdi-drag-vertical")
 
           template(v-if="!isSorting")
             v-list-item.thread-templates--template(

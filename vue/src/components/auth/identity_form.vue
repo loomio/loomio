@@ -44,7 +44,7 @@ v-card.auth-identity-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.
     h1.headline(tabindex="-1" role="status" aria-live="polite"  v-t="{ path: 'auth_form.hello', args: { name: user.name || user.email } }")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
   v-sheet.mx-4.pb-4
     .mb-4.text-center
       v-layout(justify-center)
