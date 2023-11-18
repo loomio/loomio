@@ -37,7 +37,6 @@ RUN bundle install && bundle exec bootsnap precompile --gemfile app/ lib/
 WORKDIR /loomio/vue
 RUN npm install
 RUN npm run build
-RUN mv /loomio/public/index.html /loomio/public/blient/index.html
 WORKDIR /loomio
 
 EXPOSE 3000

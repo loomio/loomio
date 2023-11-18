@@ -75,7 +75,13 @@ export default defineConfig({
   ],
   build: {
     sourcemap: true,
-    outDir: '../public',
-    assetsDir: 'blient',
+    emptyOutDir: true,
+    outDir: '../public/blient',
   },
+  experimental: {
+    renderBuiltUrl(filename, { hostId, hostType, type } ) {
+      // { hostId: string, hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }
+      return '/client/' + filename;
+    }
+  }
 })
