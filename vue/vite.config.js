@@ -84,7 +84,7 @@ export default defineConfig({
   experimental: {
     renderBuiltUrl(filename, { hostId, hostType, type } ) {
       // { hostId: string, hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }
-      return '/client/' + filename;
+      return '/blient/' + filename;
     }
   }
 })
