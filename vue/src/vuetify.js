@@ -10,7 +10,7 @@ const useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-sche
 
 
 export default new Vuetify({
-  iconfont: 'mdi',
+  iconfont: 'mdiSvg',
   theme: {
     dark: false,
     options: {

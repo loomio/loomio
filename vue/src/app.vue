@@ -101,7 +101,6 @@ v-app.app-is-booted
 </template>
 
 <style lang="sass">
-@import '@/css/materialdesignicons.css'
 @import '@/css/roboto.css'
 @import '@/css/thumbicons.css'
 
