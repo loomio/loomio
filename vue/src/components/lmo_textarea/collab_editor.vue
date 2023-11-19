@@ -436,7 +436,7 @@ div
                 common-icon(small name="mdi-table")
               //- markdown (save experience)
               v-btn(small icon @click="convertToMd", :title="$t('formatting.edit_markdown')")
-                common-icon(small name="mdi-language-markdown-outline")
+                common-icon.e2e-markdown-btn(small name="mdi-language-markdown-outline")
 
             v-btn.html-editor__expand(v-if="!expanded" icon @click="toggleExpanded", :title="$t('formatting.expand')")
               common-icon(small name="mdi-chevron-right")
