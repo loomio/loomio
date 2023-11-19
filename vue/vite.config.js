@@ -24,6 +24,9 @@ function LoomioVueResolver() {
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
+    warmup: {
+      clientFiles: ['./src/app.vue'],
+    },
     fs: {
       allow: ['..']
     },
