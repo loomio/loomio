@@ -72,7 +72,7 @@ export default {
       if (icons) {
         this.loaded = true;
       } else {
-        setTimeout(() => { this.checkLoaded() }, 500);
+        setTimeout(() => { this.checkLoaded() }, 250);
       }
     }
   }
