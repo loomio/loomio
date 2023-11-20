@@ -5,7 +5,6 @@ import AbilityService from '@/shared/services/ability_service';
 import FlashService   from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { snakeCase } from 'lodash-es';
-import UserNameModal from  '@/components/group/user_name_modal';
 
 export default
 {
