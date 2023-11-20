@@ -8,8 +8,6 @@ import { snakeCase } from 'lodash-es';
 
 export default
 {
-  components: { UserNameModal },
-
   props: {
     membership: Object
   },
