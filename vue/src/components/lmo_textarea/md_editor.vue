@@ -156,5 +156,5 @@ div(style="position: relative")
   files-list(:files="files" v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")
-    input(ref="filesField" type="file" name="files" multiple=true)
+    input.d-none(ref="filesField" type="file" name="files" multiple=true)
 </template>

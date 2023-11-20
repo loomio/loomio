@@ -8,7 +8,6 @@ import colors from 'vuetify/lib/util/colors';
 
 const useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-
 export default new Vuetify({
   icons: {
     iconfont: 'mdiSvg',
