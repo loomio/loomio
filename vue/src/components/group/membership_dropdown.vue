@@ -14,7 +14,7 @@ export default
 
   methods: {
     canPerformAction() {
-      return this.canSetTitle()         ||
+      return this.canSetTitle()        ||
             this.canSetName()          ||
             this.canRemoveMembership() ||
             this.canResendMembership() ||

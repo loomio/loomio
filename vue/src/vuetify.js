@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
-import Session         from '@/shared/services/session';
+import Session from '@/shared/services/session';
 
 Vue.use(Vuetify);
 
@@ -10,7 +10,9 @@ const useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-sche
 
 
 export default new Vuetify({
-  iconfont: 'mdiSvg',
+  icons: {
+    iconfont: 'mdiSvg',
+  },
   theme: {
     dark: false,
     options: {
