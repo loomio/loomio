@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import path from 'path';
-import { createVuePlugin } from 'vite-plugin-vue2';
+import vue from '@vitejs/plugin-vue2'
 import envCompatible from 'vite-plugin-env-compatible';
 import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
@@ -64,7 +64,7 @@ export default defineConfig({
   },
   plugins: [
     splitVendorChunkPlugin(),
-    createVuePlugin(),
+    vue(),
     Components({
       directoryAsNamespace: true,
       resolvers: [
