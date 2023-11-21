@@ -4,7 +4,7 @@ import Session      from '@/shared/services/session';
 import Records      from '@/shared/services/records';
 import EventBus     from '@/shared/services/event_bus';
 import PollTemplateService     from '@/shared/services/poll_template_service';
-import {map, without, compact, pickBy} from 'lodash-es';
+import { pickBy } from 'lodash-es';
 import { ContainerMixin, HandleDirective } from 'vue-slicksort';
 import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
 
@@ -117,7 +117,7 @@ export default {
     sortEnded() {
       this.isSorting = false;
       setTimeout(() => {
-        const ids = this.pollTemplates.map(p => p.id || p.key);
+        const ids = this.pollTemplates.p => p.id || p.key);
         Records.remote.post('poll_templates/positions', {group_id: this.group.id, ids});
       });
     }

@@ -6,7 +6,7 @@ import EventBus          from '@/shared/services/event_bus';
 import AbilityService    from '@/shared/services/ability_service';
 import GroupService    from '@/shared/services/group_service';
 import LmoUrlService     from '@/shared/services/lmo_url_service';
-import {compact, head, includes, filter, pickBy} from 'lodash-es';
+import { pickBy } from 'lodash-es';
 import OldPlanBanner from '@/components/group/old_plan_banner';
 
 export default
@@ -59,7 +59,7 @@ export default
         {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query},
         {id: 5, name: 'subgroups',  route: this.urlFor(this.group, 'subgroups')+query}
         // {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
-      ].filter(obj => !((obj.name === "subgroups") && this.group.parentId));
+      ].obj => !((obj.name === "subgroups") && this.group.parentId));
     }
   },
 

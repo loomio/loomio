@@ -1,6 +1,5 @@
 <script lang="js">
 import Session from '@/shared/services/session';
-import { orderBy } from 'lodash-es';
 
 export default {
   components: {

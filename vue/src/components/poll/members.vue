@@ -5,7 +5,7 @@ import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import StanceService from '@/shared/services/stance_service';
-import {map, debounce, without, filter, uniq, uniqBy, some, find, compact} from 'lodash-es';
+import { map, debounce, uniq, compact } from 'lodash-es';
 
 export default {
   components: {
@@ -138,10 +138,10 @@ export default {
 
     updateStances() {
       let chain = Records.users.collection.chain();
-      chain = chain.find({id: {$in: this.userIds}});
+      chain = chain.({id: {$in: this.userIds}});
 
       if (this.query) {
-        chain = chain.find({
+        chain = chain.({
           $or: [
             {name: {'$regex': [`^${this.query}`, "i"]}},
             {email: {'$regex': [`${this.query}`, "i"]}},

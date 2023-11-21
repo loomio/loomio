@@ -1,5 +1,5 @@
 import RestfulClient from './restful_client';
-import {pick, each, merge, keys, isNumber, isString, isArray, debounce, difference, uniq} from 'lodash-es';
+import {each, keys, isNumber, isString, isArray, debounce, difference, uniq} from 'lodash-es';
 import Vue           from 'vue';
 
 export default class BaseRecordsInterface {

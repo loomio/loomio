@@ -3,7 +3,6 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
-import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash-es';
 
 export default {
   props: {
@@ -31,7 +30,7 @@ export default {
         this.stanceValues = this.poll.canRespondMaybe ? [2,1,0] : [2, 0];
         if (this.stance.poll().optionsDiffer(this.pollOptions)) {
           this.pollOptions = this.stance.poll().pollOptionsForVoting();
-          this.stanceChoices = this.pollOptions.map(option => {
+          this.stanceChoices = this.pollOptions.ption => {
             return {
               pollOption: option,
               poll_option_id: option.id,

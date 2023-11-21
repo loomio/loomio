@@ -6,11 +6,9 @@ import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
-import { addHours, isAfter } from 'date-fns';
+import { addMinutes, intervalToDuration, formatDuration, addHours, isAfter, startOfHour, setHours } from 'date-fns';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
-import { isSameYear, startOfHour, setHours }  from 'date-fns';
 import I18n from '@/i18n';
 
 export default {

@@ -2,7 +2,7 @@
 import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import ThreadService from '@/shared/services/thread_service';
-import { map, sortBy, filter, debounce, without, uniq, find, compact } from 'lodash-es';
+import { compact } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';

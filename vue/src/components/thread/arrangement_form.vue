@@ -1,7 +1,6 @@
 <script lang="js">
 import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
-import { map, sortBy, filter } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import Flash   from '@/shared/services/flash';

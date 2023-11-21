@@ -13,7 +13,7 @@ import OtherKind from '@/components/strand/item/other_kind.vue';
 import ReplyForm from '@/components/strand/reply_form.vue';
 import RangeSet from '@/shared/services/range_set';
 import EventBus from '@/shared/services/event_bus';
-import { camelCase, first, last, some, sortedUniq, sortBy, without } from 'lodash-es';
+import { camelCase } from 'lodash-es';
 
 export default {
   name: 'strand-list',
@@ -144,7 +144,7 @@ export default {
             :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
             @click="loader.loadAfter(obj.event)"
             :loading="loader.loading == 'children'+obj.event.id")
-          strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
+          strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
         reply-form(:eventId="obj.event.id")
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")
       .d-flex.align-center

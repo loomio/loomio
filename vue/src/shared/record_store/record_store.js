@@ -1,7 +1,7 @@
 import RecordView from '@/shared/record_store/record_view';
 import RestfulClient from './restful_client';
 import utils         from '@/shared/record_store/utils';
-import { snakeCase, isEmpty, camelCase, map, keys, each, intersection, merge, pick } from 'lodash-es';
+import { snakeCase, isEmpty, camelCase, map, keys, each, intersection, pick } from 'lodash-es';
 
 export default class RecordStore {
 

@@ -4,7 +4,7 @@ import AbilityService from '@/shared/services/ability_service';
 import RecordLoader   from '@/shared/services/record_loader';
 import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
-import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp, map} from 'lodash-es';
+import { intersection, debounce, map } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
 
@@ -91,7 +91,7 @@ export default
       const userIds = [];
       const membershipIds = [];
       chain.data().forEach(function(m) {
-        if (!userIds.includes(m.userId)) {
+        if (!userIds.(m.userId)) {
           userIds.push(m.userId);
           return membershipIds.push(m.id);
         }

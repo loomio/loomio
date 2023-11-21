@@ -1,6 +1,6 @@
 <script lang="js">
 import ThreadService  from '@/shared/services/thread_service';
-import { map, compact, pick, pickBy, omit } from 'lodash-es';
+import { omit } from 'lodash-es';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
@@ -58,7 +58,7 @@ export default {
     },
 
     groups() {
-      return this.discussion.group().parentsAndSelf().map(group => {
+      return this.discussion.group(
         return {
           text: group.name,
           disabled: false,

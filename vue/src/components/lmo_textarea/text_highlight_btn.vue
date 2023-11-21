@@ -1,6 +1,6 @@
 <script lang="js">
 import colors from 'vuetify/lib/util/colors';
-import {map, compact, pick, keys} from 'lodash-es';
+import { pick } from 'lodash-es';
 
 export default
 {
@@ -15,7 +15,7 @@ export default
   computed: {
     activeColorKey() {
       if (!this.editor.isActive('highlight')) { return null; }
-      return keys(this.colors).find(name => this.editor.isActive('highlight', {color: name}));
+      return Object.keys(this.colors).find(name => this.editor.isActive('highlight', {color: name}));
     },
 
     buttonBgColor() {

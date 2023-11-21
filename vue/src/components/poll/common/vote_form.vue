@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import Records   from '@/shared/services/records';
-import { compact, sortBy, without, isEqual, map } from 'lodash-es';
+import { compact } from 'lodash-es';
 
 export default {
   props: {
@@ -69,7 +69,7 @@ export default {
       if (this.singleChoice) {
         this.stance.stanceChoicesAttributes = [{poll_option_id: this.selectedOptionId}];
       } else {
-        this.stance.stanceChoicesAttributes = this.selectedOptionIds.map(id => {
+        this.stance.stanceChoicesAttributes = this.selectedOptionIds.(id => {
           return {poll_option_id: id};
         });
       }

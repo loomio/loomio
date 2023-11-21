@@ -6,7 +6,7 @@ import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 
 import Vue     from 'vue';
-import { uniq, map, sortBy, head, find, filter, sum } from 'lodash-es';
+import { map, sortBy, head } from 'lodash-es';
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns';
 import { exact} from '@/shared/helpers/format_time';
 
@@ -82,7 +82,7 @@ export default {
 
     newRecipients(val) {
       this.recipients = val;
-      this.outcome.recipientAudience = (val.find(i => i.type==='audience') || {}).id;
+      this.outcome.recipientAudience = (val i.type==='audience') || {}).id;
       this.outcome.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
       this.outcome.recipientEmails = map(filter(val, o => o.type === 'email'), 'name');
     }

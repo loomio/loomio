@@ -4,7 +4,7 @@ import AbilityService     from '@/shared/services/ability_service';
 import EventBus           from '@/shared/services/event_bus';
 import RecordLoader       from '@/shared/services/record_loader';
 import PageLoader         from '@/shared/services/page_loader';
-import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq} from 'lodash-es';
+import { debounce, orderBy, intersection, concat, uniq } from 'lodash-es';
 import Session from '@/shared/services/session';
 
 export default 
@@ -228,7 +228,7 @@ export default
     },
 
     unreadCount() {
-      return filter(this.discussions, discussion => discussion.isUnread()).length;
+      return this.discussions.filter(discussion => discussion.isUnread()).length;
     },
 
     suggestClosedThreads() {

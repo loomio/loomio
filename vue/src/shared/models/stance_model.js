@@ -3,7 +3,7 @@ import AppConfig       from '@/shared/services/app_config';
 import HasTranslations from '@/shared/mixins/has_translations';
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
 import i18n from '@/i18n';
-import { sumBy, map, head, each, compact, flatten, includes, find, sortBy, parseInt } from 'lodash-es';
+import { sumBy, map, head, compact, flatten, includes } from 'lodash-es';
 
 const stancesBecameUpdatable = new Date("2020-08-11");
 
@@ -56,7 +56,7 @@ export default class StanceModel extends BaseModel {
   }
 
   reactions() {
-    return this.recordStore.reactions.find({reactableId: this.id, reactableType: "Stance"});
+    return this.recordStore.reactions.id, reactableType: "Stance"});
   }
 
   singleChoice() { return this.poll().singleChoice(); }
@@ -87,7 +87,7 @@ export default class StanceModel extends BaseModel {
   }
 
   pollOption() {
-    if (this.pollOptionId()) { return this.recordStore.pollOptions.find(this.pollOptionId()); }
+    if (this.pollOptionId()) { return this.recordStore.pollOptions.)); }
   }
 
   pollOptionId() {
@@ -99,7 +99,7 @@ export default class StanceModel extends BaseModel {
   }
 
   pollOptions() {
-    return this.recordStore.pollOptions.find(this.pollOptionIds());
+    return this.recordStore.pollOptions.));
   }
 
   choose(optionIds) {
