@@ -45,8 +45,8 @@ div
 
     v-list-item-action(v-if="!request.respondedAt")
       v-btn.membership-requests-page__approve(text icon @click='approve(request)')
-        v-icon mdi-check
+        common-icon(name="mdi-check")
     v-list-item-action(v-if="!request.respondedAt")
       v-btn.membership-requests-page__ignore(text icon @click='ignore(request)')
-        v-icon mdi-close
+        common-icon(name="mdi-close")
 </template>

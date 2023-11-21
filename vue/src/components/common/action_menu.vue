@@ -25,7 +25,7 @@ export default {
   v-menu(offset-y)
     template(v-slot:activator="{ on, attrs }" )
       v-btn.action-menu--btn(:title="name" :icon="icon" :small="small" v-on="on" v-bind="attrs" @click.prevent)
-        v-icon(v-if="icon" :small="small") {{menuIcon}}
+        common-icon(v-if="icon" :small="small" :name="menuIcon")
         span(v-if="!icon") {{name}}
 
     v-list
@@ -37,7 +37,7 @@ export default {
           @click="action.perform()"
           :class="'action-dock__button--' + name")
           v-list-item-icon
-            v-icon {{action.icon}}
+            common-icon(:name="action.icon")
           v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: (action.nameArgs && action.nameArgs()) }")
         v-list-item(
           dense
@@ -46,6 +46,6 @@ export default {
           :to="action.to()"
           :class="'action-dock__button--' + name")
           v-list-item-icon
-            v-icon {{action.icon}}
+            common-icon(:name="action.icon")
           v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: (action.nameArgs && action.nameArgs()) }")
 </template>

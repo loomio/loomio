@@ -143,6 +143,6 @@ v-main
         v-list
           v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()")
             v-list-item-icon
-              v-icon {{action.icon}}
+              common-icon(:name="action.icon")
             v-list-item-title(v-t="action.name")
 </template>

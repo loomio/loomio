@@ -161,7 +161,7 @@ export default
             span(v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'")
             span(v-if="$route.query.status == 'vote'" v-t="'polls_panel.need_vote'")
             span(v-if="!$route.query.status" v-t="'polls_panel.any_status'")
-            v-icon mdi-menu-down
+            common-icon(name="mdi-menu-down")
         v-list(dense)
           v-list-item(:to="mergeQuery({status: null })" v-t="'polls_panel.any_status'")
           v-list-item(:to="mergeQuery({status: 'active'})" v-t="'polls_panel.open'")
@@ -172,7 +172,7 @@ export default
           v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
             span(v-if="$route.query.poll_type" v-t="'poll_types.'+$route.query.poll_type")
             span(v-if="!$route.query.poll_type" v-t="'polls_panel.any_type'")
-            v-icon mdi-menu-down
+            common-icon(name="mdi-menu-down")
         v-list(dense)
           v-list-item(:to="mergeQuery({poll_type: null})" )
             v-list-item-title(v-t="'polls_panel.any_type'")

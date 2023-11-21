@@ -8,10 +8,8 @@ import Flash from '@/shared/services/flash';
 import { each, compact, truncate } from 'lodash-es';
 import openModal from '@/shared/helpers/open_modal';
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
-import CustomCss from '@/components/custom_css';
 
 export default {
-  components: {CustomCss},
   mixins: [AuthModalMixin],
   data() {
     return {pageError: null};
@@ -101,7 +99,6 @@ v-app.app-is-booted
 </template>
 
 <style lang="sass">
-@import '@/css/materialdesignicons.css'
 @import '@/css/roboto.css'
 @import '@/css/thumbicons.css'
 

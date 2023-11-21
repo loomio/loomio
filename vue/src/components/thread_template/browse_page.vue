@@ -55,7 +55,7 @@ export default {
           h1.headline(tabindex="-1" v-t="'templates.template_gallery'")
           v-spacer
           v-btn.back-button(v-if="$route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-            v-icon mdi-close
+            common-icon(name="mdi-close")
 
 
         v-alert.mx-4(type="info" text outlined v-t="'thread_template.these_are_public_templates'") 
@@ -114,6 +114,6 @@ export default {
                 :to="'/thread_templates/new?template_id='+result.id+'&group_id='+$route.query.group_id"
                 title="Make a copy of this template and edit it"
               )
-                v-icon mdi-pencil
+                common-icon(name="mdi-pencil")
 
 </template>

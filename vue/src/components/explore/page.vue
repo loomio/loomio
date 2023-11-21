@@ -135,11 +135,11 @@ v-main
           v-card-text
             .explore-page__group-description {{groupDescription(group)}}
             v-layout.explore-page__group-stats(justify-start align-center)
-              v-icon.mr-2 mdi-account-multiple
+              common-icon.mr-2(name="mdi-account-multiple")
               span.mr-4 {{group.membershipsCount}}
-              v-icon.mr-2 mdi-comment-text-outline
+              common-icon.mr-2(name="mdi-comment-text-outline")
               span.mr-4 {{group.discussionsCount}}
-              v-icon.mr-2 mdi-thumbs-up-down
+              common-icon.mr-2(name="mdi-thumbs-up-down")
               span.mr-4 {{group.pollsCount}}
       .lmo-show-more(v-show='canLoadMoreGroups')
         v-btn(v-show="!searching" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more")

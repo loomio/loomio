@@ -142,7 +142,7 @@ div
           tr(v-for="item in items" :key="item.id")
             td
               v-layout(align-center)
-                v-icon mdi-{{item.icon}}
+                common-icon(:name="'mdi-'+ item.icon")
                 a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
             td
               user-avatar(:user="item.author()")

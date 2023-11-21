@@ -149,7 +149,7 @@ v-main
         :to="tab.route"
         :class="'group-page-' + tab.name + '-tab' "
       )
-        //- v-icon mdi-comment-multiple
+        //- common-icon(name="mdi-comment-multiple")
         span(v-t="'group_page.'+tab.name")
     router-view
 </template>

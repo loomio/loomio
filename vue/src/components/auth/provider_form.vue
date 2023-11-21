@@ -39,7 +39,7 @@ export default {
 .auth-provider-form(v-if='providers.length')
   v-layout.auth-provider-form__providers(column)
     v-btn.auth-provider-form__provider.my-2(v-for='provider in providers' :key="provider.id" outlined :color="providerColor(provider.name)" @click='select(provider)')
-      v-icon {{ iconClass(provider.name) }}
+      common-icon(:name="iconClass(provider.name)")
       space
       span(v-t="{ path: 'auth_form.continue_with_provider', args: { provider: capitalize(provider.name) } }")
     p.my-2.text-center.auth-email-form__or-enter-email(v-if='emailLogin', v-t="'auth_form.or_enter_your_email'")

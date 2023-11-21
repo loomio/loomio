@@ -55,7 +55,7 @@ v-list-item.thread-preview.thread-preview__link(
   v-list-item-content
     v-list-item-title(style="align-items: center")
       span(v-if='thread.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
-        v-icon(small) mdi-pin-outline
+        common-icon(small name="mdi-pin-outline")
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
       v-chip.ml-1(x-small label outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
       tags-display.ml-1(:tags="thread.tags" :group="thread.group()" smaller)

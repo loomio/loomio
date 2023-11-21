@@ -10,7 +10,7 @@ export default {
 <template lang="pug">
 v-btn.help-link.text--secondary(elevation="0" :href="'https://help.loomio.com/'+path" target="_blank" :title="$t(text)")
   span(v-t="'common.help'")
-  v-icon.ml-1(small) mdi-open-in-new
+  common-icon.ml-1(small name="mdi-open-in-new")
 </template>
 
 <style lang="sass">

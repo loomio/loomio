@@ -92,10 +92,10 @@ export default {
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
       template(v-slot:divider)
-        v-icon mdi-chevron-right
+        common-icon(name="mdi-chevron-right")
     v-spacer
     v-btn.back-button(v-if="$route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
 
   v-card-title.px-0
     h1.text-h4(v-if="discussionTemplate.id" tabindex="-1" v-t="'discussion_form.edit_thread_template'")
@@ -165,10 +165,10 @@ export default {
                 span {{ template.processName }}
               v-list-item-subtitle {{ template.processSubtitle }}
             v-list-item-action.handle(v-handle style="cursor: grab")
-                v-icon mdi-drag-vertical
+                common-icon(name="mdi-drag-vertical")
             v-list-item-action
               v-btn(icon @click="removePollTemplate(template)")
-                v-icon mdi-close
+                common-icon(name="mdi-close")
   v-select(
     v-model="selectedPollTemplate"
     :items="pollTemplateItems"

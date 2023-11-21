@@ -1,97 +1,53 @@
 <script lang="js">
 import EventBus from "@/shared/services/event_bus";
-import GroupForm from '@/components/group/form.vue';
-import DiscussionForm from '@/components/discussion/form.vue';
-import EditCommentForm from '@/components/thread/edit_comment_form.vue';
-import ConfirmModal from '@/components/common/confirm_modal.vue';
-import ArrangementForm from '@/components/thread/arrangement_form.vue';
-import ChangeVolumeForm from '@/components/common/change_volume_form';
-import PollCommonModal from '@/components/poll/common/modal';
-import PollCommonEditVoteModal from '@/components/poll/common/edit_vote_modal';
-import ContactRequestForm from '@/components/contact/request_form';
-import AuthModal from '@/components/auth/modal';
-import MembershipRequestForm from '@/components/group/membership_request_form';
-import MembershipModal from '@/components/group/membership_modal';
-import EmailToGroupSettings from '@/components/group/email_to_group_settings';
-import ChangePasswordForm from '@/components/profile/change_password_form';
-import ChatbotList from '@/components/chatbot/list';
-import ChatbotMatrixForm from '@/components/chatbot/matrix_form';
-import ChatbotWebhookForm from '@/components/chatbot/webhook_form';
-import PollCommonOutcomeModal from '@/components/poll/common/outcome_modal';
-import PollCommonReopenModal from '@/components/poll/common/reopen_modal';
-import PollOptionForm from '@/components/poll/common/poll_option_form';
-import PollTemplateForm from '@/components/poll_template/form';
-import MoveThreadForm from '@/components/thread/move_thread_form';
-import PollCommonMoveForm from '@/components/poll/common/move_form';
-import RevisionHistoryModal from '@/components/revision_history/modal';
-import TagsSelect from '@/components/tags/select';
-import TagsModal from '@/components/tags/modal';
-import WebhookForm from '@/components/webhook/form';
-import WebhookList from '@/components/webhook/list';
-import ChangePictureForm from '@/components/profile/change_picture_form';
-import GroupNewForm from '@/components/group/new_form';
-import PinEventForm from '@/components/thread/pin_event_form';
-import MoveCommentsModal from '@/components/discussion/move_comments_modal';
-import ExportDataModal from '@/components/group/export_data_modal';
-import AddPollToThreadModal from '@/components/poll/add_to_thread_modal';
-import StrandMembersList from '@/components/strand/members_list';
-import SeenByModal from '@/components/strand/seen_by_modal';
-import PollMembers from '@/components/poll/members';
-import PollReminderForm from '@/components/poll/reminder_form';
-import GroupInvitationForm from '@/components/group/invitation_form';
-import AnnouncementHistory from '@/components/common/announcement_history';
-import SearchModal from '@/components/search/modal';
-import UserNameModal from '@/components/group/user_name_modal';
-import RecordVideoModal from '@/components/lmo_textarea/record_video_modal';
-import RecordAudioModal from '@/components/lmo_textarea/record_audio_modal';
 
 export default
 {
   components: {
-    AnnouncementHistory,
-    GroupForm,
-    DiscussionForm,
-    EditCommentForm,
-    ConfirmModal,
-    ChangeVolumeForm,
-    ChatbotList,
-    ChatbotMatrixForm,
-    ChatbotWebhookForm,
-    EmailToGroupSettings,
-    PollCommonModal,
-    PollCommonEditVoteModal,
-    ContactRequestForm,
-    AuthModal,
-    MembershipRequestForm,
-    MembershipModal,
-    ChangePasswordForm,
-    PollCommonOutcomeModal,
-    PollCommonReopenModal,
-    PollCommonMoveForm,
-    PollOptionForm,
-    MoveThreadForm,
-    RevisionHistoryModal,
-    PollTemplateForm,
-    TagsModal,
-    TagsSelect,
-    WebhookForm,
-    WebhookList,
-    ChangePictureForm,
-    GroupNewForm,
-    PinEventForm,
-    MoveCommentsModal,
-    ExportDataModal,
-    AddPollToThreadModal,
-    StrandMembersList,
-    PollMembers,
-    PollReminderForm,
-    GroupInvitationForm,
-    SeenByModal,
-    ArrangementForm,
-    SearchModal,
-    UserNameModal,
-    RecordVideoModal,
-    RecordAudioModal
+    GroupForm: () => import('@/components/group/form.vue'),
+    DiscussionForm: () => import('@/components/discussion/form.vue'),
+    EditCommentForm: () => import('@/components/thread/edit_comment_form.vue'),
+    ConfirmModal: () => import('@/components/common/confirm_modal.vue'),
+    ArrangementForm: () => import('@/components/thread/arrangement_form.vue'),
+    ChangeVolumeForm: () => import('@/components/common/change_volume_form'),
+    PollCommonModal: () => import('@/components/poll/common/modal'),
+    PollCommonEditVoteModal: () => import('@/components/poll/common/edit_vote_modal'),
+    ContactRequestForm: () => import('@/components/contact/request_form'),
+    AuthModal: () => import('@/components/auth/modal'),
+    MembershipRequestForm: () => import('@/components/group/membership_request_form'),
+    MembershipModal: () => import('@/components/group/membership_modal'),
+    EmailToGroupSettings: () => import('@/components/group/email_to_group_settings'),
+    ChangePasswordForm: () => import('@/components/profile/change_password_form'),
+    ChatbotList: () => import('@/components/chatbot/list'),
+    ChatbotMatrixForm: () => import('@/components/chatbot/matrix_form'),
+    ChatbotWebhookForm: () => import('@/components/chatbot/webhook_form'),
+    PollCommonOutcomeModal: () => import('@/components/poll/common/outcome_modal'),
+    PollCommonReopenModal: () => import('@/components/poll/common/reopen_modal'),
+    PollOptionForm: () => import('@/components/poll/common/poll_option_form'),
+    PollTemplateForm: () => import('@/components/poll_template/form'),
+    MoveThreadForm: () => import('@/components/thread/move_thread_form'),
+    PollCommonMoveForm: () => import('@/components/poll/common/move_form'),
+    RevisionHistoryModal: () => import('@/components/revision_history/modal'),
+    TagsSelect: () => import('@/components/tags/select'),
+    TagsModal: () => import('@/components/tags/modal'),
+    WebhookForm: () => import('@/components/webhook/form'),
+    WebhookList: () => import('@/components/webhook/list'),
+    ChangePictureForm: () => import('@/components/profile/change_picture_form'),
+    GroupNewForm: () => import('@/components/group/new_form'),
+    PinEventForm: () => import('@/components/thread/pin_event_form'),
+    MoveCommentsModal: () => import('@/components/discussion/move_comments_modal'),
+    ExportDataModal: () => import('@/components/group/export_data_modal'),
+    AddPollToThreadModal: () => import('@/components/poll/add_to_thread_modal'),
+    StrandMembersList: () => import('@/components/strand/members_list'),
+    SeenByModal: () => import('@/components/strand/seen_by_modal'),
+    PollMembers: () => import('@/components/poll/members'),
+    PollReminderForm: () => import('@/components/poll/reminder_form'),
+    GroupInvitationForm: () => import('@/components/group/invitation_form'),
+    AnnouncementHistory: () => import('@/components/common/announcement_history'),
+    SearchModal: () => import('@/components/search/modal'),
+    UserNameModal: () => import('@/components/group/user_name_modal'),
+    RecordVideoModal: () => import('@/components/lmo_textarea/record_video_modal'),
+    RecordAudioModal: () => import('@/components/lmo_textarea/record_audio_modal'),
   },
 
   data() {

@@ -113,11 +113,11 @@ v-card.tags-modal
       sortable-item(v-for="(tag, index) in allTags", :index="index", :key="tag.id")
         v-list-item
           .handle(v-handle)
-            v-icon mdi-drag-vertical
+            common-icon(name="mdi-drag-vertical")
           v-chip(:color="tag.color" v-handle outlined) {{tag.name}}
           v-spacer
           v-btn(icon @click="openEditTagModal(tag)")
-            v-icon.text--secondary mdi-pencil
+            common-icon.text--secondary(name="mdi-pencil")
 
     v-card-actions
       v-spacer

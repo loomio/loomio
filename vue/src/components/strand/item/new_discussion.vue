@@ -91,7 +91,7 @@ export default {
   v-layout.ml-n2(align-center wrap)
     v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
       template(v-slot:divider)
-        v-icon mdi-chevron-right
+        common-icon(name="mdi-chevron-right")
     v-spacer
     tags-display(:tags="discussion.tags" :group="discussion.group()")
     v-chip(

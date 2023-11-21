@@ -40,10 +40,10 @@ class Outcome < ApplicationRecord
         LEFT JOIN users ON users.id = outcomes.author_id
         LEFT JOIN polls ON polls.id = outcomes.poll_id
       WHERE polls.discarded_at IS NULL 
-        #{id ? " AND outcomes.id = #{id.to_s} LIMIT 1" : ""}
-        #{author_id ? " AND outcomes.author_id = #{author_id.to_s}" : ""}
-        #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_s}" : ""}
-        #{poll_id ? " AND outcomes.poll_id = #{poll_id.to_s}" : ""}
+        #{id ? " AND outcomes.id = #{id.to_s.to_i} LIMIT 1" : ""}
+        #{author_id ? " AND outcomes.author_id = #{author_id.to_s.to_i}" : ""}
+        #{discussion_id ? " AND polls.discussion_id = #{discussion_id.to_s.to_i}" : ""}
+        #{poll_id ? " AND outcomes.poll_id = #{poll_id.to_s.to_i}" : ""}
     SQL
   end
   is_rich_text    on: :statement

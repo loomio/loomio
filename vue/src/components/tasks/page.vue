@@ -69,13 +69,13 @@ v-main
           v-list-item(v-for="task in tasks" :key="task.id")
             v-list-item-action
               v-btn(color="accent" icon @click="toggleDone(task)")
-                v-icon(v-if="task.done") mdi-checkbox-marked
-                v-icon(v-else) mdi-checkbox-blank-outline
+                common-icon(v-if="task.done" name="mdi-checkbox-marked")
+                common-icon(v-else name="mdi-checkbox-blank-outline")
             v-list-item-title {{task.name}}
     p(v-if="!loading && Object.keys(records).length == 0" v-t="'tasks.no_tasks_assigned'")
     .d-flex.justify-center
       v-chip(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
-        v-icon.mr-2 mdi-help-circle-outline
+        common-icon.mr-2(name="mdi-help-circle-outline")
         span(v-t="'common.help'")
         span :
         space

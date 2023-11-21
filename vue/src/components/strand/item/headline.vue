@@ -40,14 +40,14 @@ export default {
 <template lang="pug">
 h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
   div.d-flex.align-center
-    //- v-icon(v-if="event.pinned") mdi-pin
+    //- common-icon(v-if="event.pinned" name="mdi-pin")
     slot(name="headline")
       span.strand-item__headline.text--secondary(v-html='headline')
     mid-dot.text--secondary
     router-link.text--secondary.text-body-2(:to='link')
       time-ago(:date='datetime')
     mid-dot(v-if="event.pinned")
-    v-icon(v-if="event.pinned") mdi-pin-outline
+    common-icon(v-if="event.pinned" name="mdi-pin-outline")
 
 </template>
 <style lang="sass">

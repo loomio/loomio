@@ -84,7 +84,7 @@ node-view-wrapper(as="li")
         span(v-t="'tasks.due_date'")
         v-spacer
         v-btn(icon @click="modalOpen = false")
-          v-icon mdi-close
+          common-icon(name="mdi-close")
       v-date-picker(v-model="date" no-title scrollable :show-current="false" :min="(new Date()).toISOString().substring(0,10)")
       v-card-text
         v-select(v-model="remind" :label="$t('tasks.send_reminder')" :items="reminders")

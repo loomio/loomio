@@ -92,7 +92,7 @@ section.document-list(v-if="couldHaveDocuments")
       .attachment-list__item-details
         a.document-list__title(:href='document.url' target='_blank') {{ document.title }}
         v-btn.ml-2(v-if="canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument(document)')
-          v-icon(size="medium") mdi-delete
+          common-icon(size="medium" name="mdi-delete")
 </template>
 <style lang="sass">
 .document-list

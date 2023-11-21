@@ -209,11 +209,11 @@ export default {
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
       template(v-slot:divider)
-        v-icon mdi-chevron-right
+        common-icon(name="mdi-chevron-right")
     v-spacer
     dismiss-modal-button(v-if="isModal" :model='pollTemplate')
     v-btn.back-button(v-if="!isModal && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
   v-card-title.px-0
     h1.text-h4(tabindex="-1" v-t="titlePath")
 
@@ -305,11 +305,11 @@ export default {
                 @click="removeOption(option)"
                 :title="$t('common.action.delete')"
               )
-                v-icon.text--secondary mdi-delete
+                common-icon.text--secondary(name="mdi-delete")
             v-list-item-action.ml-0
               v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                v-icon.text--secondary mdi-pencil
-            v-icon.text--secondary(v-handle, :title="$t('common.action.move')") mdi-drag-vertical
+                common-icon.text--secondary(name="mdi-pencil")
+            common-icon.text--secondary(v-handle :title="$t('common.action.move')" name="mdi-drag-vertical")
 
     .d-flex.justify-center
       v-btn.poll-template-form__add-option-btn.my-2(@click="addOption" v-t="'poll_common_add_option.modal.title'")

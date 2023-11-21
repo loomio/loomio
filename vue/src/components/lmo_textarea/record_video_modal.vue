@@ -119,7 +119,7 @@ export default {
     .d-flex.justify-space-between
       h1.headline(v-t="'record_modal.record_video'")
       v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='dismiss')
-        v-icon mdi-close
+        common-icon(name="mdi-close")
  
     v-alert(v-if="error" type="error") {{error}}
     div(v-else)

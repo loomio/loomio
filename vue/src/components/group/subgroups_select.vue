@@ -35,7 +35,7 @@ export default
 v-menu
   template(v-slot:activator="{on, attrs}")
     v-btn(icon v-on="on" v-bind="attrs")
-      v-icon mdi-menu-down
+      common-icon(name="mdi-menu-down")
   v-list
     v-list-item(v-for="link in parentLinks" :to="link.path" v-t="{path: link.name, args: {name: parentName}}")
     v-divider

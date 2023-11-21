@@ -21,6 +21,7 @@ module.exports = {
   CommonNotifyFields: 'common/notify_fields',
   ConfirmModal: 'common/confirm_modal',
   ContactForm: 'contact/form',
+  CommonIcon: 'common/icon',
   ContactRequestForm: 'contact/request_form',
   ContactRequestModal: 'contact/request_modal',
   ContextPanel: 'thread/context_panel',
