@@ -124,13 +124,13 @@ a
 
 .text-almost-black
   color: rgba(0, 0, 0, 0.87)
-
+  
 .max-width-640
-  max-width: 640px
+  max-width: 640px !important
 .max-width-800
-  max-width: 800px
+  max-width: 800px !important
 .max-width-1024
-  max-width: 1024px
+  max-width: 1024px !important
 
 @media (prefers-color-scheme: dark)
   body
