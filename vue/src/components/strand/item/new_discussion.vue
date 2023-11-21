@@ -58,7 +58,7 @@ export default {
     },
 
     groups() {
-      return this.discussion.group(
+      return this.discussion.group().parentsAndSelf().map(group => {
         return {
           text: group.name,
           disabled: false,

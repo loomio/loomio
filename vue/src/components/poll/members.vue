@@ -138,10 +138,10 @@ export default {
 
     updateStances() {
       let chain = Records.users.collection.chain();
-      chain = chain.({id: {$in: this.userIds}});
+      chain = chain.find({id: {$in: this.userIds}});
 
       if (this.query) {
-        chain = chain.({
+        chain = chain.find({
           $or: [
             {name: {'$regex': [`^${this.query}`, "i"]}},
             {email: {'$regex': [`${this.query}`, "i"]}},

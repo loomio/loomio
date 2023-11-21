@@ -30,7 +30,7 @@ export default {
         this.stanceValues = this.poll.canRespondMaybe ? [2,1,0] : [2, 0];
         if (this.stance.poll().optionsDiffer(this.pollOptions)) {
           this.pollOptions = this.stance.poll().pollOptionsForVoting();
-          this.stanceChoices = this.pollOptions.ption => {
+          this.stanceChoices = this.pollOptions.map(option => {
             return {
               pollOption: option,
               poll_option_id: option.id,

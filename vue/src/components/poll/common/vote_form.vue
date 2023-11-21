@@ -69,7 +69,7 @@ export default {
       if (this.singleChoice) {
         this.stance.stanceChoicesAttributes = [{poll_option_id: this.selectedOptionId}];
       } else {
-        this.stance.stanceChoicesAttributes = this.selectedOptionIds.(id => {
+        this.stance.stanceChoicesAttributes = this.selectedOptionIds.map(id => {
           return {poll_option_id: id};
         });
       }
