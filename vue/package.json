@@ -82,6 +82,7 @@
     "vuetify": "2.6.15"
   },
   "devDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "latest",
     "@modyfi/vite-plugin-yaml": "latest",
     "@originjs/vite-plugin-commonjs": "latest",
     "nightwatch": "^3.3.2",
