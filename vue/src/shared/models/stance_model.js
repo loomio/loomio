@@ -56,7 +56,7 @@ export default class StanceModel extends BaseModel {
   }
 
   reactions() {
-    return this.recordStore.reactions.id, reactableType: "Stance"});
+    return this.recordStore.reactions.find({reactableId: this.id, reactableType: "Stance"});
   }
 
   singleChoice() { return this.poll().singleChoice(); }
@@ -87,7 +87,7 @@ export default class StanceModel extends BaseModel {
   }
 
   pollOption() {
-    if (this.pollOptionId()) { return this.recordStore.pollOptions.)); }
+    if (this.pollOptionId()) { return this.recordStore.pollOptions.find(this.pollOptionId()); }
   }
 
   pollOptionId() {
@@ -99,7 +99,7 @@ export default class StanceModel extends BaseModel {
   }
 
   pollOptions() {
-    return this.recordStore.pollOptions.));
+    return this.recordStore.pollOptions.find(this.pollOptionIds());
   }
 
   choose(optionIds) {

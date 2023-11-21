@@ -59,7 +59,7 @@ export default
         {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query},
         {id: 5, name: 'subgroups',  route: this.urlFor(this.group, 'subgroups')+query}
         // {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
-      ].obj => !((obj.name === "subgroups") && this.group.parentId));
+      ].filter(obj => !((obj.name === "subgroups") && this.group.parentId));
     }
   },
 

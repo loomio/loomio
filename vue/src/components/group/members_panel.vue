@@ -91,7 +91,7 @@ export default
       const userIds = [];
       const membershipIds = [];
       chain.data().forEach(function(m) {
-        if (!userIds.(m.userId)) {
+        if (!userIds.includes(m.userId)) {
           userIds.push(m.userId);
           return membershipIds.push(m.id);
         }

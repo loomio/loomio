@@ -117,7 +117,7 @@ export default {
     sortEnded() {
       this.isSorting = false;
       setTimeout(() => {
-        const ids = this.pollTemplates.p => p.id || p.key);
+        const ids = this.pollTemplates.map(p => p.id || p.key);
         Records.remote.post('poll_templates/positions', {group_id: this.group.id, ids});
       });
     }

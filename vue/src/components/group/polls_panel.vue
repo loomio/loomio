@@ -177,7 +177,7 @@ export default
           v-list-item(:to="mergeQuery({poll_type: null})" )
             v-list-item-title(v-t="'polls_panel.any_type'")
           v-list-item(
-            v-for="pollType in Object.
+            v-for="pollType in Object.keys(pollTypes)"
             :key="pollType"
             :to="mergeQuery({poll_type: pollType})"
           )

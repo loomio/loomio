@@ -394,7 +394,7 @@ export default class ThreadLoader {
     const newRules = [];
     const promises = this.rules.filter(rule => rule.remote)
                      .filter(rule => !this.fetchedRules.includes(JSON.stringify(rule.remote)))
-                     .(rule => {
+                     .map(rule => {
       newRules.push(JSON.stringify(rule.remote));
       const params = Object.assign({}, rule.remote, {exclude_types: 'group discussion'});
       return Records.events.fetch({params});
@@ -436,9 +436,9 @@ export default class ThreadLoader {
       return this.records = this.records.concat(chain.data());
     });
 
-    this.records = uniq(this.records.concat(compact(this.records.(o => o.parent()))));
+    this.records = uniq(this.records.concat(compact(this.records.map(o => o.parent()))));
     this.records = orderBy(this.records, 'positionKey');
-    const eventIds = this.records.(event => event.id);
+    const eventIds = this.records.map(event => event.id);
 
     const orphans = this.records.filter(event => (event.parentId === null) || !eventIds.includes(event.parentId));
 
@@ -449,7 +449,7 @@ export default class ThreadLoader {
 
     var nest = function(records) {
       let r;
-      return r = records.(event => ({
+      return r = records.map(event => ({
         event,
         children: (eventsByParentId[event.id] && nest(eventsByParentId[event.id])) || [],
         eventable: event.model()
@@ -467,7 +467,7 @@ export default class ThreadLoader {
   }
 
   addMetaData(collection) {
-    const positions = collection.(e => e.event.position);
+    const positions = collection.map(e => e.event.position);
     const ranges = RangeSet.arrayToRanges(positions);
     const parentExists = collection[0] && collection[0].event && collection[0].event.parent();
     const lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0;

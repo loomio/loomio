@@ -82,7 +82,7 @@ export default {
 
     newRecipients(val) {
       this.recipients = val;
-      this.outcome.recipientAudience = (val i.type==='audience') || {}).id;
+      this.outcome.recipientAudience = (val.find(i => i.type==='audience') || {}).id;
       this.outcome.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
       this.outcome.recipientEmails = map(filter(val, o => o.type === 'email'), 'name');
     }
