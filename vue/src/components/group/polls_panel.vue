@@ -5,6 +5,7 @@ import Records from '@/shared/services/records';
 import PageLoader from '@/shared/services/page_loader';
 import EventBus       from '@/shared/services/event_bus';
 import Session       from '@/shared/services/session';
+import { intersection } from 'lodash-es';
 import { uniq } from 'lodash-es';
 
 export default
