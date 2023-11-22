@@ -30,7 +30,6 @@ export default {
 </script>
 <template lang="pug">
 v-card.change-password-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
-  .lmo-disabled-form(v-show='processing')
   v-card-title
     h1.headline(tabindex="-1" v-t="'change_password_form.set_password_title'")
     v-spacer
@@ -45,5 +44,5 @@ v-card.change-password-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.sto
       validation-errors(:subject='user', field='passwordConfirmation')
   v-card-actions
     v-spacer
-    v-btn.change-password-form__submit(color="primary" @click='submit()' v-t="'change_password_form.set_password'")
+    v-btn.change-password-form__submit(:loading="processing" color="primary" @click='submit()' v-t="'change_password_form.set_password'")
 </template>

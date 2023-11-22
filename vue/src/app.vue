@@ -99,8 +99,11 @@ v-app.app-is-booted
 </template>
 
 <style lang="sass">
+@import '@/css/variables.scss'
+@import '@/css/utilities.scss'
 @import '@/css/roboto.css'
 @import '@/css/thumbicons.css'
+@import '@/css/print.scss'
 
 
 // .strand-page [id]::before

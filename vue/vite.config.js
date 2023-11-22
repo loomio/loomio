@@ -23,6 +23,17 @@ function LoomioVueResolver() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      sass: {
+        additionalData: [
+          '@import "./src/css/variables"',
+          '@import "vuetify/src/styles/settings/_variables"',
+          '', // end with newline
+        ].join('\n'),
+      },
+    },
+  },
   server: {
     warmup: {
       clientFiles: ['./src/app.vue'],
