@@ -51,20 +51,27 @@ export default {
   }
 };
 </script>
-<template lang="pug">
-v-card.move-thread-form
-  submit-overlay(:value='discussion.processing')
-  v-card-title
-    h1.headline(tabindex="-1" v-t="'move_thread_form.title'")
-    v-spacer
-    dismiss-modal-button
-  v-card-text
-    v-select#group-dropdown.move-thread-form__group-dropdown(v-model='discussion.groupId' :required='true' @change='updateTarget()' :items='availableGroups' item-value='id' item-text='fullName' :label="$t('move_thread_form.body')")
-      template(v-slot:item='data')
-        v-list-item-content.group-dropdown-item
-          v-list-item-title.group-dropdown-item-group-name
-            span {{ data.item.fullName }}
-  v-card-actions
-    v-spacer
-    v-btn.move-thread-form__submit(color="primary" type='button' v-t="'move_thread_form.confirm'" @click='moveThread()')
+<template>
+
+<v-card class="move-thread-form">
+  <submit-overlay :value="discussion.processing"></submit-overlay>
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="'move_thread_form.title'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <v-select class="move-thread-form__group-dropdown" id="group-dropdown" v-model="discussion.groupId" :required="true" @change="updateTarget()" :items="availableGroups" item-value="id" item-text="fullName" :label="$t('move_thread_form.body')">
+      <template v-slot:item="data">
+        <v-list-item-content class="group-dropdown-item">
+          <v-list-item-title class="group-dropdown-item-group-name"><span>{{ data.item.fullName }}</span></v-list-item-title>
+        </v-list-item-content>
+      </template>
+    </v-select>
+  </v-card-text>
+  <v-card-actions>
+    <v-spacer></v-spacer>
+    <v-btn class="move-thread-form__submit" color="primary" type="button" v-t="'move_thread_form.confirm'" @click="moveThread()"></v-btn>
+  </v-card-actions>
+</v-card>
 </template>

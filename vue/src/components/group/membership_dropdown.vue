@@ -108,27 +108,35 @@ export default
 };
 </script>
 
-<template lang="pug">
-.membership-dropdown.lmo-no-print(v-if='canPerformAction()')
-  v-menu.lmo-dropdown-menu(offset-y)
-    template(v-slot:activator="{on, attrs}")
-      v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
-        //- span(v-t="'membership_dropdown.membership_options'")
-        common-icon(name="mdi-dots-vertical")
-    v-list.group-actions-dropdown__menu-content
-      v-list-item.membership-dropdown__set-title(v-if='canSetName()' @click='setName()')
-        v-list-item-title(v-t="'membership_dropdown.set_name_and_username'")
-      v-list-item.membership-dropdown__set-title(v-if='canSetTitle()' @click='setTitle()')
-        v-list-item-title(v-t="'membership_dropdown.set_title'")
-      v-list-item.membership-dropdown__resend(v-if='canResendMembership()' @click='resendMembership()', :disabled='membership.resent')
-        v-list-item-title(v-t="'membership_dropdown.resend'", v-if='!membership.resent')
-        v-list-item-title(v-t="'membership_dropdown.invitation_resent'", v-if='membership.resent')
-      v-list-item.membership-dropdown__toggle-admin(v-if='canToggleAdmin()' @click='toggleAdmin()')
-        v-list-item-title(v-t="'membership_dropdown.make_coordinator'", v-if='!membership.admin')
-        v-list-item-title(v-t="'membership_dropdown.demote_coordinator'", v-if='membership.admin')
-      v-list-item.membership-dropdown__remove(v-if='canRemoveMembership()' @click='removeMembership()')
-        v-list-item-title(v-if='membership.acceptedAt' v-t="'membership_dropdown.remove_from.group'")
-        //- v-list-item-title(v-if='membership.acceptedAt')
-        //-   span "remove membership"
-        v-list-item-title(v-t="'membership_dropdown.cancel_invitation'", v-if='!membership.acceptedAt')
+<template>
+
+<div class="membership-dropdown lmo-no-print" v-if="canPerformAction()">
+  <v-menu class="lmo-dropdown-menu" offset-y="offset-y">
+    <template v-slot:activator="{on, attrs}">
+      <v-btn class="membership-dropdown__button" icon="icon" v-on="on" v-bind="attrs">
+        <common-icon name="mdi-dots-vertical"></common-icon>
+      </v-btn>
+    </template>
+    <v-list class="group-actions-dropdown__menu-content">
+      <v-list-item class="membership-dropdown__set-title" v-if="canSetName()" @click="setName()">
+        <v-list-item-title v-t="'membership_dropdown.set_name_and_username'"></v-list-item-title>
+      </v-list-item>
+      <v-list-item class="membership-dropdown__set-title" v-if="canSetTitle()" @click="setTitle()">
+        <v-list-item-title v-t="'membership_dropdown.set_title'"></v-list-item-title>
+      </v-list-item>
+      <v-list-item class="membership-dropdown__resend" v-if="canResendMembership()" @click="resendMembership()" :disabled="membership.resent">
+        <v-list-item-title v-t="'membership_dropdown.resend'" v-if="!membership.resent"></v-list-item-title>
+        <v-list-item-title v-t="'membership_dropdown.invitation_resent'" v-if="membership.resent"></v-list-item-title>
+      </v-list-item>
+      <v-list-item class="membership-dropdown__toggle-admin" v-if="canToggleAdmin()" @click="toggleAdmin()">
+        <v-list-item-title v-t="'membership_dropdown.make_coordinator'" v-if="!membership.admin"></v-list-item-title>
+        <v-list-item-title v-t="'membership_dropdown.demote_coordinator'" v-if="membership.admin"></v-list-item-title>
+      </v-list-item>
+      <v-list-item class="membership-dropdown__remove" v-if="canRemoveMembership()" @click="removeMembership()">
+        <v-list-item-title v-if="membership.acceptedAt" v-t="'membership_dropdown.remove_from.group'"></v-list-item-title>
+        <v-list-item-title v-t="'membership_dropdown.cancel_invitation'" v-if="!membership.acceptedAt"></v-list-item-title>
+      </v-list-item>
+    </v-list>
+  </v-menu>
+</div>
 </template>

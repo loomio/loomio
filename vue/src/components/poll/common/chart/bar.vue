@@ -9,17 +9,13 @@ export default
   });
 </script>
 
-<template lang="pug">
-.poll-common-chart-bar
-  div.d-flex.rounded
-    div.rounded.text-truncate.pa-2(
-      v-for="option in options"
-      :key="option.id"
-      v-if="option.rawScorePercent() > 0"
-      :style="{width: option.rawScorePercent()+'%', 'background-color': option.color}"
-    )
-      span {{option.optionName()}}
-      //- span {{option.optionName()}} {{option.scorePercent()}}%
+<template>
+
+<div class="poll-common-chart-bar">
+  <div class="d-flex rounded">
+    <div class="rounded text-truncate pa-2" v-for="option in options" :key="option.id" v-if="option.rawScorePercent() > 0" :style="{width: option.rawScorePercent()+'%', 'background-color': option.color}"><span>{{option.optionName()}}</span></div>
+  </div>
+</div>
 </template>
 <style lang="sass">
 .theme--dark

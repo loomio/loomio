@@ -159,75 +159,64 @@ export default
 };
 </script>
 
-<template lang="pug">
-v-card.group-form
-  v-overlay(:value="uploading")
-    v-progress-circular(size="64" :value="progress")
-  //- submit-overlay(:value='group.processing')
-  v-card-title
-    v-layout(justify-space-between style="align-items: center")
-      .group-form__group-title
-        h1.headline(tabindex="-1" v-if='group.parentId' v-t="'group_form.new_subgroup'")
-        h1.headline(tabindex="-1" v-if='!group.parentId' v-t="'group_form.new_group'")
-      dismiss-modal-button(v-if="group.parentId" :model="group")
-  .px-4
-    p.text--secondary(v-if='!group.parentId' v-t="'group_form.new_group_explainer'")
-    p.text--secondary(v-if='group.parentId' v-t="'group_form.new_subgroup_explainer'")
-    v-select.group-form__parent-group(v-if="parentGroups.length > 1" v-model='group.parentId' :items="parentGroups" :label="$t('group_form.parent_group')")
-    v-text-field.group-form__name#group-name(
-      v-model='group.name'
-      :placeholder="$t(groupNamePlaceholder)"
-      :rules='[rules.required]'
-      maxlength='255'
-      :label="$t(groupNameLabel)"
-      @keyup="suggestHandle()")
-    validation-errors(:subject="group", field="name")
+<template>
 
-    div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
-      v-text-field.group-form__handle#group-handle(:loading="loadingHandle" v-model='group.handle' :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
-      validation-errors(:subject="group", field="handle")
-
-    v-select(v-if='!group.parentId' v-model="group.category" :items="categoryItems" :label="$t('group_survey.describe_other')")
-
-    lmo-textarea.group-form__group-description(
-      :model='group'
-      field="description"
-      :placeholder="$t('group_form.new_description_placeholder')"
-      :label="$t('group_form.description')")
-
-    div(v-if="group.parentId")
-      .group-form__section.group-form__privacy
-        v-radio-group(v-model='group.groupPrivacy' :label="$t('common.privacy.privacy')")
-          v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
-            template(slot='label')
-              .group-form__privacy-title
-                strong(v-t="'common.privacy.' + privacy")
-                mid-dot
-                span {{ privacyStringFor(privacy) }}
-
-      p.group-form__privacy-statement.text-caption.text--secondary {{privacyStatement}}
-      .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
-        v-subheader(v-t="'group_form.how_do_people_join'")
-        v-radio-group(v-model='group.membershipGrantedUpon')
-          v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
-            template(slot='label')
-              span(v-t="'group_form.membership_granted_upon_' + granted")
-
-    div.pt-2(v-if="!group.parentId")
-      span.text--secondary
-        //- common-icon(name="mdi-lock-outline")
-        span(v-t="'common.privacy.privacy'")
-        span :
-        space
-        span(v-t="'common.privacy.secret'")
-      p.text-caption.text--secondary
-        span(v-t="'group_form.secret_by_default'")
-
-
-  v-card-actions.ma-2
-    help-link(path="en/user_manual/groups/starting_a_group")
-    v-spacer
-    v-btn.group-form__submit-button(:loading="group.processing" color="primary" @click='submit()')
-      span(v-if='group.isParent()' v-t="'group_form.submit_start_group'")
-      span(v-if='!group.isParent()' v-t="'group_form.submit_start_subgroup'")
+<v-card class="group-form">
+  <v-overlay :value="uploading">
+    <v-progress-circular size="64" :value="progress"></v-progress-circular>
+  </v-overlay>
+  <v-card-title>
+    <v-layout justify-space-between="justify-space-between" style="align-items: center">
+      <div class="group-form__group-title">
+        <h1 class="headline" tabindex="-1" v-if="group.parentId" v-t="'group_form.new_subgroup'"></h1>
+        <h1 class="headline" tabindex="-1" v-if="!group.parentId" v-t="'group_form.new_group'"></h1>
+      </div>
+      <dismiss-modal-button v-if="group.parentId" :model="group"></dismiss-modal-button>
+    </v-layout>
+  </v-card-title>
+  <div class="px-4">
+    <p class="text--secondary" v-if="!group.parentId" v-t="'group_form.new_group_explainer'"></p>
+    <p class="text--secondary" v-if="group.parentId" v-t="'group_form.new_subgroup_explainer'"></p>
+    <v-select class="group-form__parent-group" v-if="parentGroups.length > 1" v-model="group.parentId" :items="parentGroups" :label="$t('group_form.parent_group')"></v-select>
+    <v-text-field class="group-form__name" id="group-name" v-model="group.name" :placeholder="$t(groupNamePlaceholder)" :rules="[rules.required]" maxlength="255" :label="$t(groupNameLabel)" @keyup="suggestHandle()"></v-text-field>
+    <validation-errors :subject="group" field="name"></validation-errors>
+    <div v-if="!group.parentId || (group.parentId && group.parent().handle)">
+      <v-text-field class="group-form__handle" id="group-handle" :loading="loadingHandle" v-model="group.handle" :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength="100" :label="$t('group_form.handle')"></v-text-field>
+      <validation-errors :subject="group" field="handle"></validation-errors>
+    </div>
+    <v-select v-if="!group.parentId" v-model="group.category" :items="categoryItems" :label="$t('group_survey.describe_other')"></v-select>
+    <lmo-textarea class="group-form__group-description" :model="group" field="description" :placeholder="$t('group_form.new_description_placeholder')" :label="$t('group_form.description')"></lmo-textarea>
+    <div v-if="group.parentId">
+      <div class="group-form__section group-form__privacy">
+        <v-radio-group v-model="group.groupPrivacy" :label="$t('common.privacy.privacy')">
+          <v-radio v-for="privacy in privacyOptions" :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value="privacy" :aria-label="privacy">
+            <template slot="label">
+              <div class="group-form__privacy-title"><strong v-t="'common.privacy.' + privacy"></strong>
+                <mid-dot></mid-dot><span>{{ privacyStringFor(privacy) }}</span>
+              </div>
+            </template>
+          </v-radio>
+        </v-radio-group>
+      </div>
+      <p class="group-form__privacy-statement text-caption text--secondary">{{privacyStatement}}</p>
+      <div class="group-form__section group-form__joining lmo-form-group" v-if="group.privacyIsOpen()">
+        <v-subheader v-t="'group_form.how_do_people_join'"></v-subheader>
+        <v-radio-group v-model="group.membershipGrantedUpon">
+          <v-radio v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value="granted">
+            <template slot="label"><span v-t="'group_form.membership_granted_upon_' + granted"></span></template>
+          </v-radio>
+        </v-radio-group>
+      </div>
+    </div>
+    <div class="pt-2" v-if="!group.parentId"><span class="text--secondary"><span v-t="'common.privacy.privacy'"></span><span>:</span>
+        <space></space><span v-t="'common.privacy.secret'"></span></span>
+      <p class="text-caption text--secondary"><span v-t="'group_form.secret_by_default'"></span></p>
+    </div>
+  </div>
+  <v-card-actions class="ma-2">
+    <help-link path="en/user_manual/groups/starting_a_group"></help-link>
+    <v-spacer></v-spacer>
+    <v-btn class="group-form__submit-button" :loading="group.processing" color="primary" @click="submit()"><span v-if="group.isParent()" v-t="'group_form.submit_start_group'"></span><span v-if="!group.isParent()" v-t="'group_form.submit_start_subgroup'"></span></v-btn>
+  </v-card-actions>
+</v-card>
 </template>

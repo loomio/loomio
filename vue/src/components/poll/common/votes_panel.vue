@@ -90,39 +90,39 @@ export default {
 
 </script>
 
-<template lang="pug">
-.poll-common-votes-panel
-  //- v-layout.poll-common-votes-panel__header
-    //- v-select(style="max-width: 200px" dense solo v-model='order' :items="sortOptions" @change='refresh()' aria-label="$t('poll_common_votes_panel.change_results_order')")
-  h2.text-h5.my-2#votes(v-t="'poll_common.votes'")
-  .d-flex
-    v-select.mr-2(:items="pollOptionItems" :label="$t('common.option')" v-model="pollOptionId")
-    v-text-field(v-if="!poll.anonymous" v-model="name" @change="nameChanged" :label="$t('poll_common_votes_panel.name_or_username')")
-  .poll-common-votes-panel__no-votes.text--secondary(v-if='!poll.votersCount' v-t="'poll_common_votes_panel.no_votes_yet'")
-  .poll-common-votes-panel__has-votes(v-if='poll.votersCount')
-    .poll-common-votes-panel__stance(v-for='stance in stances', :key='stance.id')
-      .poll-common-votes-panel__avatar.pr-3
-        user-avatar(:user='stance.participant()', :size='24')
-      .poll-common-votes-panel__stance-content
-        .poll-common-votes-panel__stance-name-and-option
-          v-layout.text-body-2(align-center)
-            span.text--secondary {{ stance.participantName() }}
-            span(v-if="poll.showResults() && stance.castAt && poll.hasOptionIcon()")
-              poll-common-stance-choice.pl-2.pr-1(
-                :poll="poll", 
-                :stance-choice="stance.stanceChoice()")
-              space
-            span(v-if='!stance.castAt' )
-              space
-              span(v-t="'poll_common_votes_panel.undecided'" )
-            span(v-if="stance.castAt")
-              mid-dot(v-if="!poll.hasOptionIcon()")
-              time-ago.text--secondary(:date="stance.castAt")
-        .poll-common-stance(v-if="poll.showResults() && stance.castAt")
-          poll-common-stance-choices(:stance='stance')
-          formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
-    loading(v-if="loader.loading")
-    v-pagination(v-model="page", :length="totalPages", :disabled="totalPages == 1")
+<template>
+
+<div class="poll-common-votes-panel">
+  <h2 class="text-h5 my-2" id="votes" v-t="'poll_common.votes'"></h2>
+  <div class="d-flex">
+    <v-select class="mr-2" :items="pollOptionItems" :label="$t('common.option')" v-model="pollOptionId"></v-select>
+    <v-text-field v-if="!poll.anonymous" v-model="name" @change="nameChanged" :label="$t('poll_common_votes_panel.name_or_username')"></v-text-field>
+  </div>
+  <div class="poll-common-votes-panel__no-votes text--secondary" v-if="!poll.votersCount" v-t="'poll_common_votes_panel.no_votes_yet'"></div>
+  <div class="poll-common-votes-panel__has-votes" v-if="poll.votersCount">
+    <div class="poll-common-votes-panel__stance" v-for="stance in stances" :key="stance.id">
+      <div class="poll-common-votes-panel__avatar pr-3">
+        <user-avatar :user="stance.participant()" :size="24"></user-avatar>
+      </div>
+      <div class="poll-common-votes-panel__stance-content">
+        <div class="poll-common-votes-panel__stance-name-and-option">
+          <v-layout class="text-body-2" align-center="align-center"><span class="text--secondary">{{ stance.participantName() }}</span><span v-if="poll.showResults() && stance.castAt && poll.hasOptionIcon()">
+              <poll-common-stance-choice class="pl-2 pr-1" :poll="poll" :stance-choice="stance.stanceChoice()"></poll-common-stance-choice>
+              <space></space></span><span v-if="!stance.castAt">
+              <space></space><span v-t="'poll_common_votes_panel.undecided'"></span></span><span v-if="stance.castAt">
+              <mid-dot v-if="!poll.hasOptionIcon()"></mid-dot>
+              <time-ago class="text--secondary" :date="stance.castAt"></time-ago></span></v-layout>
+        </div>
+        <div class="poll-common-stance" v-if="poll.showResults() && stance.castAt">
+          <poll-common-stance-choices :stance="stance"></poll-common-stance-choices>
+          <formatted-text class="poll-common-stance-created__reason" :model="stance" column="reason"></formatted-text>
+        </div>
+      </div>
+    </div>
+    <loading v-if="loader.loading"></loading>
+    <v-pagination v-model="page" :length="totalPages" :disabled="totalPages == 1"></v-pagination>
+  </div>
+</div>
 </template>
 
 <style lang="sass">

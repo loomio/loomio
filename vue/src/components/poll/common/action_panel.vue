@@ -78,24 +78,21 @@ export default
 
 </script>
 
-<template lang="pug">
-.poll-common-action-panel(v-if="!poll.closedAt" style="position: relative")
-  v-alert.poll-common-action-panel__anonymous-message.mt-6(dense outlined type="info" v-if='poll.anonymous')
-    span(v-t="'poll_common_action_panel.anonymous'")
-      
-  v-overlay.rounded.elevation-1(absolute v-if="!poll.closingAt", :opacity="0.33", :z-index="2")
-    v-alert.poll-common-action-panel__results-hidden-until-vote.my-2.elevation-5(
-       dense type="info"
-    )
-      span(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
-      
-  template(v-else)
-    .poll-common-vote-form(v-if='stance && !stance.castAt')
-      h3.title.py-3(v-t="'poll_common.have_your_say'")
+<template>
 
-  poll-common-directive(:class="{'pa-2': !poll.closingAt}" v-if="stance && !stance.castAt", :stance='stance' name='vote-form')
-
-  .poll-common-unable-to-vote(v-if='!stance')
-    v-alert.my-4(type="warning" outlined dense v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}")
-        
+<div class="poll-common-action-panel" v-if="!poll.closedAt" style="position: relative">
+  <v-alert class="poll-common-action-panel__anonymous-message mt-6" dense="dense" outlined="outlined" type="info" v-if="poll.anonymous"><span v-t="'poll_common_action_panel.anonymous'"></span></v-alert>
+  <v-overlay class="rounded elevation-1" absolute="absolute" v-if="!poll.closingAt" :opacity="0.33" :z-index="2">
+    <v-alert class="poll-common-action-panel__results-hidden-until-vote my-2 elevation-5" dense="dense" type="info"><span v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}"></span></v-alert>
+  </v-overlay>
+  <template v-else>
+    <div class="poll-common-vote-form" v-if="stance && !stance.castAt">
+      <h3 class="title py-3" v-t="'poll_common.have_your_say'"></h3>
+    </div>
+  </template>
+  <poll-common-directive :class="{'pa-2': !poll.closingAt}" v-if="stance && !stance.castAt" :stance="stance" name="vote-form"></poll-common-directive>
+  <div class="poll-common-unable-to-vote" v-if="!stance">
+    <v-alert class="my-4" type="warning" outlined="outlined" dense="dense" v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}"></v-alert>
+  </div>
+</div>
 </template>

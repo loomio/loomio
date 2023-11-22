@@ -44,12 +44,14 @@ export default {
   }
 }
 </script>
-<template lang="pug">
-.auth-modal
-  auth-form(v-if="!user.authForm" :user='user' :prevent-close="preventClose")
-  auth-signin-form(v-if='user.authForm == "signIn"' :user='user')
-  auth-signup-form(v-if='user.authForm == "signUp"' :user='user')
-  auth-identity-form(v-if='user.authForm == "identity"' :user='user' :identity='pendingProviderIdentity')
-  auth-complete(v-if='user.authForm == "complete"' :user='user')
-  auth-inactive(v-if='user.authForm == "inactive"' :user='user')
+<template>
+
+<div class="auth-modal">
+  <auth-form v-if="!user.authForm" :user="user" :prevent-close="preventClose"></auth-form>
+  <auth-signin-form v-if="user.authForm == 'signIn'" :user="user"></auth-signin-form>
+  <auth-signup-form v-if="user.authForm == 'signUp'" :user="user"></auth-signup-form>
+  <auth-identity-form v-if="user.authForm == 'identity'" :user="user" :identity="pendingProviderIdentity"></auth-identity-form>
+  <auth-complete v-if="user.authForm == 'complete'" :user="user"></auth-complete>
+  <auth-inactive v-if="user.authForm == 'inactive'" :user="user"></auth-inactive>
+</div>
 </template>

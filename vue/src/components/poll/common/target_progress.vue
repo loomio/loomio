@@ -12,10 +12,7 @@ export default {
 };
 </script>
 
-<template lang="pug">
+<template>
 
-p.text--secondary.my-2(v-if="poll.closingAt")
-  span(
-    v-t="{path: 'poll_common_percent_voted.target_progress', args: { num: agreeCount, target: poll.agreeTarget, percent: targetPercent } }"
-  )
+<p class="text--secondary my-2" v-if="poll.closingAt"><span v-t="{path: 'poll_common_percent_voted.target_progress', args: { num: agreeCount, target: poll.agreeTarget, percent: targetPercent } }"></span></p>
 </template>

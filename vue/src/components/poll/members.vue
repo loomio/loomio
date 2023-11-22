@@ -156,63 +156,59 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.poll-members-form
-  .px-4.pt-4
-    .d-flex.justify-space-between
-      //- template(v-if="poll.notifyRecipients")
-      h1.headline(v-t="'announcement.form.'+wipOrEmpty+'poll_announced.title'")
-      //- h1.headline(v-if="!poll.closingAt" v-t="'announcement.form.wip_poll_announced.title'")
-      //- h1.headline(v-else v-t="'poll_common_form.add_voters'")
-      dismiss-modal-button
-    recipients-autocomplete(
-      :label="poll.notifyRecipients ? $t('announcement.form.'+wipOrEmpty+'poll_announced.helptext') : $t('poll_common_form.who_may_vote', {poll_type: poll.translatedPollType()})"
-      :placeholder="$t('announcement.form.placeholder')"
-      :model="poll"
-      :reset="reset"
-      :excludedAudiences="['voters', 'undecided_voters', 'non_voters', 'decided_voters']"
-      :excludedUserIds="userIds"
-      :initialRecipients="initialRecipients"
-      includeActor
-      :excludeMembers="true"
-      @new-query="newQuery")
+<template>
 
-    .d-flex.align-center
-      v-checkbox(:disabled="!someRecipients" :label="$t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients")
-      v-spacer
-      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
-        span(v-t="'common.action.invite'" v-if="poll.notifyRecipients")
-        span(v-t="'poll_common_form.add_voters'" v-else)
-    v-alert(dense type="warning" text v-if="someRecipients && !poll.notifyRecipients")
-      span(v-t="'poll_common_form.no_notifications_warning'")
-    v-textarea(v-if="poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
-  v-list.poll-members-form__list
-    v-subheader
-      span(v-t="'membership_card.voters'")
-      space
-      span ({{users.length}} / {{poll.votersCount}})
-    v-list-item(v-for="user in users" :key="user.id")
-      v-list-item-avatar
-        user-avatar(:user="user" :size="24")
-      v-list-item-content
-        v-list-item-title
-          span.mr-2 {{user.nameWithTitle(poll.group())}}
-          v-chip.mr-1(v-if="!isMember[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
-
-      v-list-item-action
-        v-menu(offset-y)
-          template(v-slot:activator="{on, attrs}")
-            v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
-              common-icon(name="mdi-dots-vertical")
-          v-list
-            v-list-item(v-for="action in actionNames" v-if="canPerform(action, poll, user)" @click="perform(action, poll, user)" :key="action")
-              v-list-item-title(v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }")
-
-    v-list-item(v-if="query && users.length == 0")
-      v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
-  .d-flex.justify-end.mx-4.pb-4
-    help-link(
-      path="en/user_manual/polls/starting_proposals/index.html#invite-members")
-    v-spacer
+<div class="poll-members-form">
+  <div class="px-4 pt-4">
+    <div class="d-flex justify-space-between">
+      <h1 class="headline" v-t="'announcement.form.'+wipOrEmpty+'poll_announced.title'"></h1>
+      <dismiss-modal-button></dismiss-modal-button>
+    </div>
+    <recipients-autocomplete :label="poll.notifyRecipients ? $t('announcement.form.'+wipOrEmpty+'poll_announced.helptext') : $t('poll_common_form.who_may_vote', {poll_type: poll.translatedPollType()})" :placeholder="$t('announcement.form.placeholder')" :model="poll" :reset="reset" :excludedAudiences="['voters', 'undecided_voters', 'non_voters', 'decided_voters']" :excludedUserIds="userIds" :initialRecipients="initialRecipients" includeActor="includeActor" :excludeMembers="true" @new-query="newQuery"></recipients-autocomplete>
+    <div class="d-flex align-center">
+      <v-checkbox :disabled="!someRecipients" :label="$t('poll_common_form.notify_invitees')" v-model="poll.notifyRecipients"></v-checkbox>
+      <v-spacer></v-spacer>
+      <v-btn class="poll-members-form__submit" color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients"><span v-t="'common.action.invite'" v-if="poll.notifyRecipients"></span><span v-t="'poll_common_form.add_voters'" v-else></span></v-btn>
+    </div>
+    <v-alert dense="dense" type="warning" text="text" v-if="someRecipients && !poll.notifyRecipients"><span v-t="'poll_common_form.no_notifications_warning'"></span></v-alert>
+    <v-textarea v-if="poll.notifyRecipients && someRecipients" filled="filled" rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')"></v-textarea>
+  </div>
+  <v-list class="poll-members-form__list">
+    <v-subheader><span v-t="'membership_card.voters'"></span>
+      <space></space><span>({{users.length}} / {{poll.votersCount}})</span>
+    </v-subheader>
+    <v-list-item v-for="user in users" :key="user.id">
+      <v-list-item-avatar>
+        <user-avatar :user="user" :size="24"></user-avatar>
+      </v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title><span class="mr-2">{{user.nameWithTitle(poll.group())}}</span>
+          <v-chip class="mr-1" v-if="!isMember[user.id]" outlined="outlined" x-small="x-small" label="label" v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')"></v-chip>
+          <v-chip class="mr-1" v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined="outlined" x-small="x-small" label="label" v-t="'members_panel.admin'"></v-chip>
+        </v-list-item-title>
+      </v-list-item-content>
+      <v-list-item-action>
+        <v-menu offset-y="offset-y">
+          <template v-slot:activator="{on, attrs}">
+            <v-btn class="membership-dropdown__button" icon="icon" v-on="on" v-bind="attrs">
+              <common-icon name="mdi-dots-vertical"></common-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item v-for="action in actionNames" v-if="canPerform(action, poll, user)" @click="perform(action, poll, user)" :key="action">
+              <v-list-item-title v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }"></v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-list-item-action>
+    </v-list-item>
+    <v-list-item v-if="query && users.length == 0">
+      <v-list-item-title v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}"></v-list-item-title>
+    </v-list-item>
+  </v-list>
+  <div class="d-flex justify-end mx-4 pb-4">
+    <help-link path="en/user_manual/polls/starting_proposals/index.html#invite-members"></help-link>
+    <v-spacer></v-spacer>
+  </div>
+</div>
 </template>

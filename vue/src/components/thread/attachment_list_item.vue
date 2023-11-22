@@ -40,17 +40,14 @@ export default {
   }
 };
 </script>
-<template lang="pug">
-v-card.mt-3(outlined).attachment-list-item-link
-  a(:href="attachment.download_url" target="_blank")
-    v-card-title
-      common-icon.mr-2(small :name="'mdi-' + attachment.icon")
-      span.text--secondary
-        |{{ attachment.filename }}
-        space
-        span.text-caption
-          |{{ prettifyBytes(attachment.byte_size) }}
-    .attachment-list-item-image.mb-2(v-if="attachment.preview_url" :style="{'background-image': 'url('+attachment.preview_url+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}")
+<template>
+
+<v-card class="mt-3 attachment-list-item-link" outlined="outlined"><a :href="attachment.download_url" target="_blank">
+    <v-card-title>
+      <common-icon class="mr-2" small="small" :name="'mdi-' + attachment.icon"></common-icon><span class="text--secondary">{{ attachment.filename }}
+        <space></space><span class="text-caption">{{ prettifyBytes(attachment.byte_size) }}</span></span>
+    </v-card-title>
+    <div class="attachment-list-item-image mb-2" v-if="attachment.preview_url" :style="{'background-image': 'url('+attachment.preview_url+')', 'background-size': backgroundSize, 'background-position': backgroundPosition}"></div></a></v-card>
 </template>
 
 <style lang="sass">

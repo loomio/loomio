@@ -39,18 +39,24 @@ export default {
 
 </script>
 
-<template lang="pug">
-div.poll-common-icon-grid.d-flex.align-center.justify-center
-  table(v-if="voterIds.length")
-    tr(v-for="option in results" :key="option.id")
-      td( v-for="id in voterIds" :key="id")
-        .poll-meeting-icon__cell(:style="{height: cellSize+'px', width: cellSize +'px'}" :class="classForScore(option.voter_scores[id])")
-          | &nbsp;
-  table(v-if="voterIds.length == 0")
-    tr(v-for="option in results" :key="option.id")
-      td(v-for="option in results" :key="option.id")
-        .poll-meeting-icon__cell.poll-meeting-chart__cell--empty(:style="{height: cellSize+'px', width: cellSize +'px'}")
-          | &nbsp;
+<template>
+
+<div class="poll-common-icon-grid d-flex align-center justify-center">
+  <table v-if="voterIds.length">
+    <tr v-for="option in results" :key="option.id">
+      <td v-for="id in voterIds" :key="id">
+        <div class="poll-meeting-icon__cell" :style="{height: cellSize+'px', width: cellSize +'px'}" :class="classForScore(option.voter_scores[id])">&nbsp;</div>
+      </td>
+    </tr>
+  </table>
+  <table v-if="voterIds.length == 0">
+    <tr v-for="option in results" :key="option.id">
+      <td v-for="option in results" :key="option.id">
+        <div class="poll-meeting-icon__cell poll-meeting-chart__cell--empty" :style="{height: cellSize+'px', width: cellSize +'px'}">&nbsp;</div>
+      </td>
+    </tr>
+  </table>
+</div>
 </template>
 
 <style lang="sass">

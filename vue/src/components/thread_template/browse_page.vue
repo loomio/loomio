@@ -45,74 +45,46 @@ export default {
 };
 
 </script>
-<template lang="pug">
-.thread-templates-page
-  v-main
-    v-container.max-width-800.px-0.px-sm-3
-      v-card
-        v-card-title.d-flex.pr-3
-          h1.headline(tabindex="-1" v-t="'templates.template_gallery'")
-          v-spacer
-          v-btn.back-button(v-if="$route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-            common-icon(name="mdi-close")
+<template>
 
-
-        v-alert.mx-4(type="info" text outlined v-t="'thread_template.these_are_public_templates'") 
-        .d-flex.px-4.align-center
-          v-combobox(
-            :loading="loading"
-            autofocus
-            filled
-            rounded
-            single-line
-            hide-selected
-            clearable
-            @change="changed"
-            append-icon="mdi-magnify"
-            @click:append="fetch"
-            v-model="query"
-            :placeholder="$t('common.action.search')"
-            @keydown.enter.prevent="fetch"
-            hide-details
-            :items="tags"
-            )
-
-        v-list.append-sort-here(three-line)
-          v-list-item(
-            v-for="result in results" 
-            :key="result.id"
-            :to="'/d/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key)+ '&group_id='+ $route.query.group_id"
-            title="Use this template to start a new thread"
-          )
-            v-list-item-avatar
-              v-avatar(:size="38" tile)
-                img(:alt="result.groupName || result.authorName" :src="result.avatarUrl")
-
-            v-list-item-content
-              v-list-item-title.d-flex
-                span {{result.processName || result.title}}
-                v-spacer
-                v-chip.ml-1(
-                  v-for="tag in result.tags"
-                  :key="tag"
-                  outlined
-                  xSmall
-                  :color="tagColor(tag)"
-                ) {{tag}}
-
-              v-list-item-subtitle.text--primary {{result.processSubtitle}}
-              v-list-item-subtitle 
-                span
-                  span {{result.authorName}}
-                  mid-dot
-                  span {{result.groupName}}
-
-            v-list-item-action
-              v-btn.text--secondary(
-                icon
-                :to="'/thread_templates/new?template_id='+result.id+'&group_id='+$route.query.group_id"
-                title="Make a copy of this template and edit it"
-              )
-                common-icon(name="mdi-pencil")
-
+<div class="thread-templates-page">
+  <v-main>
+    <v-container class="max-width-800 px-0 px-sm-3">
+      <v-card>
+        <v-card-title class="d-flex pr-3">
+          <h1 class="headline" tabindex="-1" v-t="'templates.template_gallery'"></h1>
+          <v-spacer></v-spacer>
+          <v-btn class="back-button" v-if="$route.query.return_to" icon="icon" :aria-label="$t('common.action.cancel')" :to="$route.query.return_to">
+            <common-icon name="mdi-close"></common-icon>
+          </v-btn>
+        </v-card-title>
+        <v-alert class="mx-4" type="info" text="text" outlined="outlined" v-t="'thread_template.these_are_public_templates'"> </v-alert>
+        <div class="d-flex px-4 align-center">
+          <v-combobox :loading="loading" autofocus="autofocus" filled="filled" rounded="rounded" single-line="single-line" hide-selected="hide-selected" clearable="clearable" @change="changed" append-icon="mdi-magnify" @click:append="fetch" v-model="query" :placeholder="$t('common.action.search')" @keydown.enter.prevent="fetch" hide-details="hide-details" :items="tags"></v-combobox>
+        </div>
+        <v-list class="append-sort-here" three-line="three-line">
+          <v-list-item v-for="result in results" :key="result.id" :to="'/d/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key)+ '&group_id='+ $route.query.group_id" title="Use this template to start a new thread">
+            <v-list-item-avatar>
+              <v-avatar :size="38" tile="tile"><img :alt="result.groupName || result.authorName" :src="result.avatarUrl"/></v-avatar>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title class="d-flex"><span>{{result.processName || result.title}}</span>
+                <v-spacer></v-spacer>
+                <v-chip class="ml-1" v-for="tag in result.tags" :key="tag" outlined="outlined" xSmall="xSmall" :color="tagColor(tag)">{{tag}}</v-chip>
+              </v-list-item-title>
+              <v-list-item-subtitle class="text--primary">{{result.processSubtitle}}</v-list-item-subtitle>
+              <v-list-item-subtitle> <span><span>{{result.authorName}}</span>
+                  <mid-dot></mid-dot><span>{{result.groupName}}</span></span></v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-btn class="text--secondary" icon="icon" :to="'/thread_templates/new?template_id='+result.id+'&group_id='+$route.query.group_id" title="Make a copy of this template and edit it">
+                <common-icon name="mdi-pencil"></common-icon>
+              </v-btn>
+            </v-list-item-action>
+          </v-list-item>
+        </v-list>
+      </v-card>
+    </v-container>
+  </v-main>
+</div>
 </template>

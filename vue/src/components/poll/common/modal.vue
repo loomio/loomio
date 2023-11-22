@@ -21,13 +21,17 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card.poll-common-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()").pb-2
-  submit-overlay(:value="poll.processing")
-  v-card-title
-    h1.headline(tabindex="-1" v-t="title_key")
-    v-spacer
-    dismiss-modal-button(:model='poll')
-  div.px-4
-    poll-common-form(:poll='poll')
+<template>
+
+<v-card class="poll-common-modal pb-2" @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()">
+  <submit-overlay :value="poll.processing"></submit-overlay>
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="title_key"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button :model="poll"></dismiss-modal-button>
+  </v-card-title>
+  <div class="px-4">
+    <poll-common-form :poll="poll"></poll-common-form>
+  </div>
+</v-card>
 </template>

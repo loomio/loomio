@@ -239,70 +239,69 @@ export default
 
 </script>
 
-<template lang="pug">
-div.discussions-panel(v-if="group")
-  v-layout.py-3(align-center wrap)
-    v-menu
-      template(v-slot:activator="{ on, attrs }")
-        v-btn.mr-2.text-lowercase.discussions-panel__filters(v-on="on" v-bind="attrs" text)
-          span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
-          common-icon(name="mdi-menu-down")
-      v-list
-        v-list-item.discussions-panel__filters-open(@click="routeQuery({t: null})")
-          v-list-item-title(v-t="'discussions_panel.open'")
-        v-list-item.discussions-panel__filters-all(@click="routeQuery({t: 'all'})")
-          v-list-item-title(v-t="'discussions_panel.all'")
-        v-list-item.discussions-panel__filters-closed(@click="routeQuery({t: 'closed'})")
-          v-list-item-title(v-t="'discussions_panel.closed'")
-        v-list-item.discussions-panel__filters-unread(@click="routeQuery({t: 'unread'})")
-          v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
+<template>
 
-    v-menu(offset-y)
-      template(v-slot:activator="{ on, attrs }")
-        v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
-          span(v-if="$route.query.tag") {{$route.query.tag}}
-          span(v-else v-t="'loomio_tags.tags'")
-          common-icon(name="mdi-menu-down")
-      v-sheet.pa-1
-        tags-display(:tags="group.tagNames()" :group="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId")
-    v-text-field.mr-2.flex-grow-1(
-      v-model="dummyQuery"
-      clearable solo hide-details
-      @click="openSearchModal"
-      @change="openSearchModal"
-      @keyup.enter="openSearchModal"
-      @click:append="openSearchModal"
-      :placeholder="$t('navbar.search_threads', {name: group.name})"
-      append-icon="mdi-magnify")
-    v-btn.discussions-panel__new-thread-button(
-      v-if='canStartThread'
-      v-t="'navbar.start_thread'"
-      :to="'/thread_templates/?group_id='+group.id"
-      color='primary')
-
-  v-alert(color="info" text outlined v-if="noThreads")
-    v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
-    p.px-4(v-t="'discussions_panel.lets_start_a_thread'")
-
-  v-card.discussions-panel(v-else outlined)
-    div(v-if="loader.status == 403")
-      p.pa-4.text-center(v-t="'error_page.forbidden'")
-    div(v-else)
-      .discussions-panel__content
-        //- .discussions-panel__list--empty.pa-4(v-if='noThreads')
-        //-   p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
-        //-   p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
-        .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
-          v-list.thread-previews(two-line)
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions", :key="thread.id", :thread="thread" group-page)
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions", :key="thread.id", :thread="thread" group-page)
-
-        loading(v-if="loading && discussions.length == 0")
-
-        v-pagination(v-model="page", :length="totalPages", :total-visible="7", :disabled="totalPages == 1")
-        .d-flex.justify-center
-          router-link.discussions-panel__view-closed-threads.text-center.pa-1(:to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'")
-
+<div class="discussions-panel" v-if="group">
+  <v-layout class="py-3" align-center="align-center" wrap="wrap">
+    <v-menu>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn class="mr-2 text-lowercase discussions-panel__filters" v-on="on" v-bind="attrs" text="text"><span v-t="{path: filterName($route.query.t), args: {count: unreadCount}}"></span>
+          <common-icon name="mdi-menu-down"></common-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item class="discussions-panel__filters-open" @click="routeQuery({t: null})">
+          <v-list-item-title v-t="'discussions_panel.open'"></v-list-item-title>
+        </v-list-item>
+        <v-list-item class="discussions-panel__filters-all" @click="routeQuery({t: 'all'})">
+          <v-list-item-title v-t="'discussions_panel.all'"></v-list-item-title>
+        </v-list-item>
+        <v-list-item class="discussions-panel__filters-closed" @click="routeQuery({t: 'closed'})">
+          <v-list-item-title v-t="'discussions_panel.closed'"></v-list-item-title>
+        </v-list-item>
+        <v-list-item class="discussions-panel__filters-unread" @click="routeQuery({t: 'unread'})">
+          <v-list-item-title v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}"></v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+    <v-menu offset-y="offset-y">
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn class="mr-2 text-lowercase" v-on="on" v-bind="attrs" text="text"><span v-if="$route.query.tag">{{$route.query.tag}}</span><span v-else v-t="'loomio_tags.tags'"></span>
+          <common-icon name="mdi-menu-down"></common-icon>
+        </v-btn>
+      </template>
+      <v-sheet class="pa-1">
+        <tags-display :tags="group.tagNames()" :group="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId"></tags-display>
+      </v-sheet>
+    </v-menu>
+    <v-text-field class="mr-2 flex-grow-1" v-model="dummyQuery" clearable="clearable" solo="solo" hide-details="hide-details" @click="openSearchModal" @change="openSearchModal" @keyup.enter="openSearchModal" @click:append="openSearchModal" :placeholder="$t('navbar.search_threads', {name: group.name})" append-icon="mdi-magnify"></v-text-field>
+    <v-btn class="discussions-panel__new-thread-button" v-if="canStartThread" v-t="'navbar.start_thread'" :to="'/thread_templates/?group_id='+group.id" color="primary"></v-btn>
+  </v-layout>
+  <v-alert color="info" text="text" outlined="outlined" v-if="noThreads">
+    <v-card-title v-t="'discussions_panel.welcome_to_your_new_group'"></v-card-title>
+    <p class="px-4" v-t="'discussions_panel.lets_start_a_thread'"></p>
+  </v-alert>
+  <v-card class="discussions-panel" v-else outlined="outlined">
+    <div v-if="loader.status == 403">
+      <p class="pa-4 text-center" v-t="'error_page.forbidden'"></p>
+    </div>
+    <div v-else>
+      <div class="discussions-panel__content">
+        <div class="discussions-panel__list thread-preview-collection__container" v-if="discussions.length">
+          <v-list class="thread-previews" two-line="two-line">
+            <thread-preview :show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions" :key="thread.id" :thread="thread" group-page="group-page"></thread-preview>
+            <thread-preview :show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions" :key="thread.id" :thread="thread" group-page="group-page"></thread-preview>
+          </v-list>
+        </div>
+        <loading v-if="loading && discussions.length == 0"></loading>
+        <v-pagination v-model="page" :length="totalPages" :total-visible="7" :disabled="totalPages == 1"></v-pagination>
+        <div class="d-flex justify-center">
+          <router-link class="discussions-panel__view-closed-threads text-center pa-1" :to="'?t=closed'" v-if="suggestClosedThreads" v-t="'group_page.view_closed_threads'"></router-link>
+        </div>
+      </div>
+    </div>
+  </v-card>
+</div>
 </template>
 
 <style lang="sass">

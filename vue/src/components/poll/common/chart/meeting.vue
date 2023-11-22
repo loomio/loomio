@@ -57,27 +57,32 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.poll-meeting-chart-panel
-  table.poll-meeting-chart-table
-    thead
-      tr
-        td.text--secondary(v-if="datesAsOptions") {{currentUserTimeZone}}
-        td.pr-2.total.text--secondary(v-t="'poll_common.votes'")
-        td(v-for="user in decidedVoters" :key="user.id")
-          user-avatar(:user="user" :size="24")
-    tbody
-      tr(v-for="option in poll.results" :key="option.id")
-        td.poll-meeting-chart__meeting-time
-          poll-meeting-time(v-if="datesAsOptions" :name='option.name' :zone='zone')
-          span(v-if="option.name_format == 'i18n'" v-t="option.name")
-          span(v-if="option.name_format == 'none'") {{option.name}} 
-        td.total.text-right.pr-2
-          span(v-if="poll.canRespondMaybe") {{option.score/2}}
-          span(v-else="poll.canRespondMaybe") {{option.score}}
-        td(v-for="user in decidedVoters" :key="user.id")
-          .poll-meeting-chart__cell(:class="classForScore(option.voter_scores[user.id])")
-            | &nbsp;
+<template>
+
+<div class="poll-meeting-chart-panel">
+  <table class="poll-meeting-chart-table">
+    <thead>
+      <tr>
+        <td class="text--secondary" v-if="datesAsOptions">{{currentUserTimeZone}}</td>
+        <td class="pr-2 total text--secondary" v-t="'poll_common.votes'"></td>
+        <td v-for="user in decidedVoters" :key="user.id">
+          <user-avatar :user="user" :size="24"></user-avatar>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="option in poll.results" :key="option.id">
+        <td class="poll-meeting-chart__meeting-time">
+          <poll-meeting-time v-if="datesAsOptions" :name="option.name" :zone="zone"></poll-meeting-time><span v-if="option.name_format == 'i18n'" v-t="option.name"></span><span v-if="option.name_format == 'none'">{{option.name}} </span>
+        </td>
+        <td class="total text-right pr-2"><span v-if="poll.canRespondMaybe">{{option.score/2}}</span><span v-else="poll.canRespondMaybe">{{option.score}}</span></td>
+        <td v-for="user in decidedVoters" :key="user.id">
+          <div class="poll-meeting-chart__cell" :class="classForScore(option.voter_scores[user.id])">&nbsp;</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </template>
 
 <style lang="sass">

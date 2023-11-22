@@ -57,41 +57,40 @@ export default
 };
 
 </script>
-<template lang="pug">
-v-card.email-to-group-settings
-  div(v-if="!confirmReset")
-    v-card-title
-      h1.text-h6(v-t="'email_to_group.start_threads_via_email'")
-      v-spacer
-      dismiss-modal-button
-    v-card-text
-      p(v-t="'email_to_group.your_address_for_this_group'")
-      v-text-field(
-        readonly
-        outlined
-        v-model="address"
-        append-icon="mdi-content-copy"
-        @click:append="copyText"
-      )
-      p
-        span(v-t="'email_to_group.send_email_to_start_thread'")
-        space
-        span(v-t="'email_to_group.subject_body_attachments'")
-        space
-        span(v-t="'email_to_group.address_starts_threads_as_you'")
+<template>
 
-      .d-flex.flex-wrap
-        v-btn(@click="confirmReset = true" v-t="'common.reset'")
-        v-spacer
-        //- v-btn(@click="sendGroupAddress" v-t="'email_to_group.email_me_this_address'")
-  div(v-if="confirmReset")
-    v-card-title
-      h1.text-h6(v-t="'email_to_group.generate_new_address_question'")
-    v-card-text
-      p(v-t="'email_to_group.generate_new_address_warning'")
-      .d-flex
-        v-btn(@click="confirmReset = false" v-t="'common.action.cancel'")
-        v-spacer
-        v-btn(:loading="loading" @click="resetKey" v-t="'email_to_group.generate_new_address'")
-
+<v-card class="email-to-group-settings">
+  <div v-if="!confirmReset">
+    <v-card-title>
+      <h1 class="text-h6" v-t="'email_to_group.start_threads_via_email'"></h1>
+      <v-spacer></v-spacer>
+      <dismiss-modal-button></dismiss-modal-button>
+    </v-card-title>
+    <v-card-text>
+      <p v-t="'email_to_group.your_address_for_this_group'"></p>
+      <v-text-field readonly="readonly" outlined="outlined" v-model="address" append-icon="mdi-content-copy" @click:append="copyText"></v-text-field>
+      <p><span v-t="'email_to_group.send_email_to_start_thread'"></span>
+        <space></space><span v-t="'email_to_group.subject_body_attachments'"></span>
+        <space></space><span v-t="'email_to_group.address_starts_threads_as_you'"></span>
+      </p>
+      <div class="d-flex flex-wrap">
+        <v-btn @click="confirmReset = true" v-t="'common.reset'"></v-btn>
+        <v-spacer></v-spacer>
+      </div>
+    </v-card-text>
+  </div>
+  <div v-if="confirmReset">
+    <v-card-title>
+      <h1 class="text-h6" v-t="'email_to_group.generate_new_address_question'"></h1>
+    </v-card-title>
+    <v-card-text>
+      <p v-t="'email_to_group.generate_new_address_warning'"></p>
+      <div class="d-flex">
+        <v-btn @click="confirmReset = false" v-t="'common.action.cancel'"></v-btn>
+        <v-spacer></v-spacer>
+        <v-btn :loading="loading" @click="resetKey" v-t="'email_to_group.generate_new_address'"></v-btn>
+      </div>
+    </v-card-text>
+  </div>
+</v-card>
 </template>

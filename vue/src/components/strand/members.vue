@@ -40,15 +40,14 @@ export default {
 
 </script>
 
-<template lang="pug">
-.strand-members.d-flex
-  //- mid-dot
-  //- span(v-show='discussion.seenByCount > 0')
-  //-   a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
+<template>
 
-  user-avatar(v-for="reader in readers" :user="reader.user()" :size="28" :key="reader.id")
-  v-btn(small icon @click="openInviteModal" :title="$t('invitation_form.invite_people')")
-    common-icon(name="mdi-plus")
+<div class="strand-members d-flex">
+  <user-avatar v-for="reader in readers" :user="reader.user()" :size="28" :key="reader.id"></user-avatar>
+  <v-btn small="small" icon="icon" @click="openInviteModal" :title="$t('invitation_form.invite_people')">
+    <common-icon name="mdi-plus"></common-icon>
+  </v-btn>
+</div>
 </template>
 
 <style lang="sass">

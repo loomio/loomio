@@ -56,33 +56,44 @@ export default
 };
 </script>
 
-<template lang="pug">
-v-dialog(v-model='dialog' max-width="600px")
-  template(v-slot:activator="{ on, attrs }")
-    v-btn.mr-2(v-on="on" v-bind="attrs" color="primary" outlined v-t="'members_panel.sharable_link'")
-  v-card.shareable-link-modal
-    v-card-title
-      h1.headline(tabindex="-1" v-t="'invitation_form.share_group'")
-      v-spacer
-      v-btn.dismiss-modal-button(icon small @click='dialog = false')
-        common-icon(name="mdi-window-close")
-    v-card-text
-      template(v-if="group.groupPrivacy != 'secret'")
-        span.subtitle-2(v-t="'invitation_form.group_url'")
-        p.mt-2.mb-0.caption(v-t="'invitation_form.secret_group_url_explanation'")
-        v-layout(align-center)
-          v-text-field.shareable-link-modal__shareable-link(:value='groupUrl' :disabled='true')
-          v-btn.shareable-link-modal__copy(icon color="primary" :title="$t('common.copy')" @click='copyText(groupUrl)')
-            common-icon(name="mdi-content-copy")
-      div(v-if="canAddMembers")
-        span.subtitle-2(v-t="'invitation_form.reusable_invitation_link'")
-        p.mt-2.mb-0.caption(v-t="'invitation_form.shareable_invitation_explanation'")
-        v-layout(align-center)
-          v-text-field.shareable-link-modal__shareable-link(:value='invitationLink' :disabled='true')
-          v-btn.shareable-link-modal__copy(icon color="primary" :title="$t('common.copy')" @click='copyText(invitationLink)')
-            common-icon(name="mdi-content-copy")
-          v-btn.shareable-link-modal__reset(icon color="warning" :title="$t('common.reset')" @click="resetInvitationLink()")
-            common-icon(name="mdi-lock-reset")
+<template>
 
-      v-btn(href="https://help.loomio.org/en/user_manual/groups/membership/" target="_blank" v-t="'common.help'")
+<v-dialog v-model="dialog" max-width="600px">
+  <template v-slot:activator="{ on, attrs }">
+    <v-btn class="mr-2" v-on="on" v-bind="attrs" color="primary" outlined="outlined" v-t="'members_panel.sharable_link'"></v-btn>
+  </template>
+  <v-card class="shareable-link-modal">
+    <v-card-title>
+      <h1 class="headline" tabindex="-1" v-t="'invitation_form.share_group'"></h1>
+      <v-spacer></v-spacer>
+      <v-btn class="dismiss-modal-button" icon="icon" small="small" @click="dialog = false">
+        <common-icon name="mdi-window-close"></common-icon>
+      </v-btn>
+    </v-card-title>
+    <v-card-text>
+      <template v-if="group.groupPrivacy != 'secret'"><span class="subtitle-2" v-t="'invitation_form.group_url'"></span>
+        <p class="mt-2 mb-0 caption" v-t="'invitation_form.secret_group_url_explanation'"></p>
+        <v-layout align-center="align-center">
+          <v-text-field class="shareable-link-modal__shareable-link" :value="groupUrl" :disabled="true"></v-text-field>
+          <v-btn class="shareable-link-modal__copy" icon="icon" color="primary" :title="$t('common.copy')" @click="copyText(groupUrl)">
+            <common-icon name="mdi-content-copy"></common-icon>
+          </v-btn>
+        </v-layout>
+      </template>
+      <div v-if="canAddMembers"><span class="subtitle-2" v-t="'invitation_form.reusable_invitation_link'"></span>
+        <p class="mt-2 mb-0 caption" v-t="'invitation_form.shareable_invitation_explanation'"></p>
+        <v-layout align-center="align-center">
+          <v-text-field class="shareable-link-modal__shareable-link" :value="invitationLink" :disabled="true"></v-text-field>
+          <v-btn class="shareable-link-modal__copy" icon="icon" color="primary" :title="$t('common.copy')" @click="copyText(invitationLink)">
+            <common-icon name="mdi-content-copy"></common-icon>
+          </v-btn>
+          <v-btn class="shareable-link-modal__reset" icon="icon" color="warning" :title="$t('common.reset')" @click="resetInvitationLink()">
+            <common-icon name="mdi-lock-reset"></common-icon>
+          </v-btn>
+        </v-layout>
+      </div>
+      <v-btn href="https://help.loomio.org/en/user_manual/groups/membership/" target="_blank" v-t="'common.help'"></v-btn>
+    </v-card-text>
+  </v-card>
+</v-dialog>
 </template>

@@ -51,27 +51,29 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card.tags-modal
-  v-card-title
-    h1.headline(v-if="tag.id" tabindex="-1" v-t="'loomio_tags.modal_edit_title'")
-    h1.headline(v-if="!tag.id" tabindex="-1" v-t="'loomio_tags.modal_title'")
-    v-spacer
-    dismiss-modal-button(:close="close")
-  v-card-text
-    v-text-field.tags-modal__tag-name(v-model="tag.name" :label="$t('loomio_tags.name_label')" autofocus)
-    validation-errors(:subject="tag" field="name")
+<template>
 
-    label(for="input-708" class="v-label caption" v-t="'loomio_tags.color_label'")
-
-    .tag-colors.d-flex
-      span.color-swatch(v-for="color in tag.constructor.colors" :key="color")
-        input(:id="color" v-model="tag.color" :value="color" type="radio")
-        label(:for="color" :style="{'background-color': color, color: color}") {{color}}
-  v-card-actions
-    v-btn(v-if="tag.id", @click="deleteTag" v-t="'common.action.delete'" :disabled="loading")
-    v-spacer
-    v-btn.tag-form__submit(color="primary" @click="submit" v-t="'common.action.save'" :loading="loading")
+<v-card class="tags-modal">
+  <v-card-title>
+    <h1 class="headline" v-if="tag.id" tabindex="-1" v-t="'loomio_tags.modal_edit_title'"></h1>
+    <h1 class="headline" v-if="!tag.id" tabindex="-1" v-t="'loomio_tags.modal_title'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button :close="close"></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <v-text-field class="tags-modal__tag-name" v-model="tag.name" :label="$t('loomio_tags.name_label')" autofocus="autofocus"></v-text-field>
+    <validation-errors :subject="tag" field="name"></validation-errors>
+    <label class="v-label caption" for="input-708" v-t="'loomio_tags.color_label'"></label>
+    <div class="tag-colors d-flex"><span class="color-swatch" v-for="color in tag.constructor.colors" :key="color">
+        <input :id="color" v-model="tag.color" :value="color" type="radio"/>
+        <label :for="color" :style="{'background-color': color, color: color}">{{color}}</label></span></div>
+  </v-card-text>
+  <v-card-actions>
+    <v-btn v-if="tag.id" @click="deleteTag" v-t="'common.action.delete'" :disabled="loading"></v-btn>
+    <v-spacer></v-spacer>
+    <v-btn class="tag-form__submit" color="primary" @click="submit" v-t="'common.action.save'" :loading="loading"></v-btn>
+  </v-card-actions>
+</v-card>
 </template>
 
 <style lang="sass">

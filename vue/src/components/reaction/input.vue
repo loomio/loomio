@@ -34,12 +34,16 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
-  template(v-slot:activator="{on, attrs}")
-    v-btn.emoji-picker__toggle.action-button(icon :small="small" v-on="on" v-bind="attrs" )
-      common-icon(:small="small" name="mdi-emoticon-outline")
-  emoji-picker(:insert="insert" :is-poll="model.isA('poll') || model.isA('stance') || model.isA('outcome')")
+<template>
+
+<v-menu class="reactions-input" :close-on-content-click="true" v-model="closeEmojiMenu">
+  <template v-slot:activator="{on, attrs}">
+    <v-btn class="emoji-picker__toggle action-button" icon="icon" :small="small" v-on="on" v-bind="attrs">
+      <common-icon :small="small" name="mdi-emoticon-outline"></common-icon>
+    </v-btn>
+  </template>
+  <emoji-picker :insert="insert" :is-poll="model.isA('poll') || model.isA('stance') || model.isA('outcome')"></emoji-picker>
+</v-menu>
 </template>
 
 <style lang="sass">

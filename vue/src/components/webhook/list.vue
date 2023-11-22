@@ -40,24 +40,33 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card.webhook-list
-  v-card-title
-    h1.headline(tabindex="-1" v-t="'webhook.api_keys'")
-    v-spacer
-    dismiss-modal-button(:close="close")
-  v-card-text
-    p.text--secondary(v-t="'webhook.subtitle'")
-    v-alert(type="warning" v-t="'webhook.deprecated'")
-    loading(v-if="loading")
-    v-list(v-if="!loading")
-      v-list-item(v-for="webhook in webhooks" :key="webhook.id")
-        v-list-item-content
-          v-list-item-title {{webhook.name}}
-        v-list-item-action
-          action-menu(:actions="webhookActions(webhook)" icon)
-  v-card-actions
-    help-link(path="en/user_manual/groups/integrations/api")
-    v-spacer
-    v-btn(color='primary' @click='addAction(group).perform()' v-t="addAction(group).name")
+<template>
+
+<v-card class="webhook-list">
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="'webhook.api_keys'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button :close="close"></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <p class="text--secondary" v-t="'webhook.subtitle'"></p>
+    <v-alert type="warning" v-t="'webhook.deprecated'"></v-alert>
+    <loading v-if="loading"></loading>
+    <v-list v-if="!loading">
+      <v-list-item v-for="webhook in webhooks" :key="webhook.id">
+        <v-list-item-content>
+          <v-list-item-title>{{webhook.name}}</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-action>
+          <action-menu :actions="webhookActions(webhook)" icon="icon"></action-menu>
+        </v-list-item-action>
+      </v-list-item>
+    </v-list>
+  </v-card-text>
+  <v-card-actions>
+    <help-link path="en/user_manual/groups/integrations/api"></help-link>
+    <v-spacer></v-spacer>
+    <v-btn color="primary" @click="addAction(group).perform()" v-t="addAction(group).name"></v-btn>
+  </v-card-actions>
+</v-card>
 </template>

@@ -89,60 +89,62 @@ export default {
 };
 </script>
 
-<template lang="pug">
-v-main
-  v-container.email-settings-page.max-width-1024.px-0.px-sm-3(v-if='user')
+<template>
 
-    v-card.mb-4(v-if="user.deactivatedAt")
-      //- v-card-title
-      //-   h1.headline(tabindex="-1" v-t="'email_settings_page.header'")
-      v-card-text
-        p(v-t="'email_settings_page.account_deactivated'")
-
-    v-card.mb-4(v-if="!user.deactivatedAt")
-      //- v-card-title
-      //-   h1.headline(tabindex="-1" v-t="'email_settings_page.header'")
-      v-card-text
-        .email-settings-page__email-settings
-          .email-settings-page__global-settings
-            form
-              .email-settings-page__global-settings
-                v-checkbox#mentioned-email.md-checkbox--with-summary.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
-                  div(slot="label")
-                    strong(v-t="'email_settings_page.mentioned_label'")
-                    .email-settings-page__input-description(v-t="'email_settings_page.mentioned_description'")
-                v-checkbox#on-participation-email.md-checkbox--with-summary.email-settings-page__on-participation(v-model='user.emailOnParticipation')
-                  div(slot="label")
-                    strong(v-t="'email_settings_page.on_participation_label'")
-                    .email-settings-page__input-description(v-t="'email_settings_page.on_participation_description'")
-                .text-subtitle-1
-                  strong(v-t="'email_settings_page.email_catch_up_day'")
-                p(v-t="'email_settings_page.daily_summary_description'")
-                v-select#email-catch-up-day(
-                  solo
-                  max-width="100px"
-                  :items="emailDays"
-                  :label="$t('email_settings_page.email_catch_up_day')"
-                  v-model="user.emailCatchUpDay")
-                //- v-checkbox#daily-summary-email.md-checkbox--with-summary.email-settings-page__daily-summary(v-model='user.emailCatchUp')
-                //-   div(slot="label")
-                //-     strong(v-t="'email_settings_page.daily_summary_label'")
-                //-     .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
-      v-card-actions
-        help-link(path="en/user_manual/users/email_settings/#user-email-settings")
-        v-spacer
-        v-btn.email-settings-page__update-button(color="primary" @click="submit()" v-t="'email_settings_page.update_settings'")
-
-    change-volume-form.mb-4(:model="user" :show-close="false")
-
-    v-card
-      v-card-title
-        h1.headline(tabindex="-1" v-t="'email_settings_page.deactivate_header'")
-      v-card-text
-        p(v-t="'email_settings_page.deactivate_description'")
-        v-list
-          v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()")
-            v-list-item-icon
-              common-icon(:name="action.icon")
-            v-list-item-title(v-t="action.name")
+<v-main>
+  <v-container class="email-settings-page max-width-1024 px-0 px-sm-3" v-if="user">
+    <v-card class="mb-4" v-if="user.deactivatedAt">
+      <v-card-text>
+        <p v-t="'email_settings_page.account_deactivated'"></p>
+      </v-card-text>
+    </v-card>
+    <v-card class="mb-4" v-if="!user.deactivatedAt">
+      <v-card-text>
+        <div class="email-settings-page__email-settings">
+          <div class="email-settings-page__global-settings">
+            <form>
+              <div class="email-settings-page__global-settings">
+                <v-checkbox class="md-checkbox--with-summary email-settings-page__mentioned" id="mentioned-email" v-model="user.emailWhenMentioned">
+                  <div slot="label"><strong v-t="'email_settings_page.mentioned_label'"></strong>
+                    <div class="email-settings-page__input-description" v-t="'email_settings_page.mentioned_description'"></div>
+                  </div>
+                </v-checkbox>
+                <v-checkbox class="md-checkbox--with-summary email-settings-page__on-participation" id="on-participation-email" v-model="user.emailOnParticipation">
+                  <div slot="label"><strong v-t="'email_settings_page.on_participation_label'"></strong>
+                    <div class="email-settings-page__input-description" v-t="'email_settings_page.on_participation_description'"></div>
+                  </div>
+                </v-checkbox>
+                <div class="text-subtitle-1"><strong v-t="'email_settings_page.email_catch_up_day'"></strong></div>
+                <p v-t="'email_settings_page.daily_summary_description'"></p>
+                <v-select id="email-catch-up-day" solo="solo" max-width="100px" :items="emailDays" :label="$t('email_settings_page.email_catch_up_day')" v-model="user.emailCatchUpDay"></v-select>
+              </div>
+            </form>
+          </div>
+        </div>
+      </v-card-text>
+      <v-card-actions>
+        <help-link path="en/user_manual/users/email_settings/#user-email-settings"></help-link>
+        <v-spacer></v-spacer>
+        <v-btn class="email-settings-page__update-button" color="primary" @click="submit()" v-t="'email_settings_page.update_settings'"></v-btn>
+      </v-card-actions>
+    </v-card>
+    <change-volume-form class="mb-4" :model="user" :show-close="false"></change-volume-form>
+    <v-card>
+      <v-card-title>
+        <h1 class="headline" tabindex="-1" v-t="'email_settings_page.deactivate_header'"></h1>
+      </v-card-title>
+      <v-card-text>
+        <p v-t="'email_settings_page.deactivate_description'"></p>
+        <v-list>
+          <v-list-item v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()">
+            <v-list-item-icon>
+              <common-icon :name="action.icon"></common-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-t="action.name"></v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-card-text>
+    </v-card>
+  </v-container>
+</v-main>
 </template>

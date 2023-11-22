@@ -11,7 +11,9 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.attachment-list.mb-2(v-if="attachments && attachments.length")
-  attachment-list-item(v-for="attachment in attachments", :key="attachment.id", :attachment="attachment")
+<template>
+
+<div class="attachment-list mb-2" v-if="attachments && attachments.length">
+  <attachment-list-item v-for="attachment in attachments" :key="attachment.id" :attachment="attachment"></attachment-list-item>
+</div>
 </template>

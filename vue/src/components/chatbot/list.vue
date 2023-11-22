@@ -68,21 +68,29 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card.chatbot-list
-  v-card-title
-    h1.headline(tabindex="-1") Chatbots
-    v-spacer
-    dismiss-modal-button
-  v-card-text
-    loading(v-if="loading")
-    template(v-if="!loading")
-      v-list-item(v-for="bot in chatbots" :key="bot.id" @click="editChatbot(bot)")
-        v-list-item-content
-          v-list-item-title {{bot.name}}
-          v-list-item-subtitle {{bot.kind}} {{bot.server}} {{bot.channel}}
-  v-card-actions.px-4
-    help-link(path='en/user_manual/groups/integrations/chatbots')
-    v-spacer
-    action-menu(:actions='addActions' :name="$t('chatbot.add_chatbot')")
+<template>
+
+<v-card class="chatbot-list">
+  <v-card-title>
+    <h1 class="headline" tabindex="-1">Chatbots</h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <loading v-if="loading"></loading>
+    <template v-if="!loading">
+      <v-list-item v-for="bot in chatbots" :key="bot.id" @click="editChatbot(bot)">
+        <v-list-item-content>
+          <v-list-item-title>{{bot.name}}</v-list-item-title>
+          <v-list-item-subtitle>{{bot.kind}} {{bot.server}} {{bot.channel}}</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </template>
+  </v-card-text>
+  <v-card-actions class="px-4">
+    <help-link path="en/user_manual/groups/integrations/chatbots"></help-link>
+    <v-spacer></v-spacer>
+    <action-menu :actions="addActions" :name="$t('chatbot.add_chatbot')"></action-menu>
+  </v-card-actions>
+</v-card>
 </template>

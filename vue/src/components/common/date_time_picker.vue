@@ -59,27 +59,16 @@ export default {
   }
 };
 </script>
-<template lang="pug">
-v-layout.date-time-picker
-  v-menu(ref='dateTimePicker' v-model='dateMenu' offset-y min-width='290px')
-    template(v-slot:activator='{ on, attrs }')
-      v-text-field.date-time-picker__date-field(
-        v-model='dateStr'
-        v-on='on'
-        v-bind='attrs'
-        :placeholder="placeholder"
-        :rules="[validDate]"
-        prepend-icon="mdi-calendar")
-    v-date-picker.date-time-picker__date-picker(
-      v-model='dateStr'
-      no-title
-      :min='minStr'
-      @input="dateMenu = false")
-  v-spacer
-  v-combobox.date-time-picker__time-field(
-    :hint="twelvehour ? timeHint : null"
-    :persistent-hint="twelvehour"
-    v-model="timeStr"
-    :items="times"
-    prepend-icon="mdi-clock-outline")
+<template>
+
+<v-layout class="date-time-picker">
+  <v-menu ref="dateTimePicker" v-model="dateMenu" offset-y="offset-y" min-width="290px">
+    <template v-slot:activator="{ on, attrs }">
+      <v-text-field class="date-time-picker__date-field" v-model="dateStr" v-on="on" v-bind="attrs" :placeholder="placeholder" :rules="[validDate]" prepend-icon="mdi-calendar"></v-text-field>
+    </template>
+    <v-date-picker class="date-time-picker__date-picker" v-model="dateStr" no-title="no-title" :min="minStr" @input="dateMenu = false"></v-date-picker>
+  </v-menu>
+  <v-spacer></v-spacer>
+  <v-combobox class="date-time-picker__time-field" :hint="twelvehour ? timeHint : null" :persistent-hint="twelvehour" v-model="timeStr" :items="times" prepend-icon="mdi-clock-outline"></v-combobox>
+</v-layout>
 </template>

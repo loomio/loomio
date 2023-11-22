@@ -91,14 +91,13 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-main
-  v-container.start-discussion-page.max-width-800.px-0.px-sm-3
-    v-card
-      discussion-form(
-        v-if="discussion"
-        :discussion='discussion'
-        is-page
-        :key="discussion.id"
-        :user="user")
+<template>
+
+<v-main>
+  <v-container class="start-discussion-page max-width-800 px-0 px-sm-3">
+    <v-card>
+      <discussion-form v-if="discussion" :discussion="discussion" is-page="is-page" :key="discussion.id" :user="user"></discussion-form>
+    </v-card>
+  </v-container>
+</v-main>
 </template>

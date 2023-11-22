@@ -44,13 +44,17 @@ export default
   }
 };
 </script>
-<template lang="pug">
-.requests-panel
-  h2.ma-4.headline(v-t="'membership_requests_card.heading'")
-  loading(v-if="!group")
-  v-card.mt-4(outlined v-else="group")
-    p.text-center.pa-4(v-if="!requests.length" v-t="'common.no_results_found'")
-    v-list(two-line)
-      membership-request(v-for="request in unapprovedRequestsByOldestFirst" :request="request" :key="request.id")
-      membership-request(v-for="request in approvedRequestsByNewestFirst" :request="request" :key="request.id")
+<template>
+
+<div class="requests-panel">
+  <h2 class="ma-4 headline" v-t="'membership_requests_card.heading'"></h2>
+  <loading v-if="!group"></loading>
+  <v-card class="mt-4" outlined="outlined" v-else="group">
+    <p class="text-center pa-4" v-if="!requests.length" v-t="'common.no_results_found'"></p>
+    <v-list two-line="two-line">
+      <membership-request v-for="request in unapprovedRequestsByOldestFirst" :request="request" :key="request.id"></membership-request>
+      <membership-request v-for="request in approvedRequestsByNewestFirst" :request="request" :key="request.id"></membership-request>
+    </v-list>
+  </v-card>
+</div>
 </template>

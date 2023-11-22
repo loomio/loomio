@@ -92,33 +92,36 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card.change-volume-form
-  form
-    submit-overlay(:value='model.processing')
-    v-card-title
-      h1.headline.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: title } }")
-      v-spacer
-      dismiss-modal-button(v-if="showClose")
-    v-card-text
-      p(v-t="'change_volume_form.simple.question'")
-      v-radio-group.text-lowercase.mb-4(hide-details v-model='volume')
-        v-radio.volume-loud(value='loud' :label="labelFor('loud')")
-        v-radio.volume-normal(value='normal' :label="labelFor('normal')")
-        v-radio.volume-quiet(value='quiet' :label="labelFor('quiet')")
+<template>
 
-      v-alert(v-if="model.isA('discussion')" dense text type="info")
-        span(v-t="'change_volume_form.explain_scope.thread'")
-      v-alert(v-if="model.isA('membership')" dense text type="info" v-t="'change_volume_form.explain_scope.group'")
-      div(v-if="model.isA('membership') && model.group().parentOrSelf().hasSubgroups()")
-        v-checkbox#apply-to-all.mb-4(v-if="model.isA('membership')" v-model='applyToAll', :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })" hide-details)
-
-      p.mt-4(v-if="model.isA('discussion')")
-        a(@click="openGroupVolumeModal()" v-t="'change_volume_form.discussion.group'")
-      p.mt-4(v-if="model.isA('membership')")
-        a(@click="openUserPreferences()" v-t="'change_volume_form.discussion.user'")
-    v-card-actions(align-center)
-      help-link(path="en/user_manual/users/email_settings/#group-email-notification-settings")
-      v-spacer
-      v-btn.change-volume-form__submit(type='button', :disabled='!formChanged', v-t="'common.action.update'" @click='submit()' color="primary")
+<v-card class="change-volume-form">
+  <form>
+    <submit-overlay :value="model.processing"></submit-overlay>
+    <v-card-title>
+      <h1 class="headline change-volume-form__title" v-t="{ path: translateKey() + '.title', args: { title: title } }"></h1>
+      <v-spacer></v-spacer>
+      <dismiss-modal-button v-if="showClose"></dismiss-modal-button>
+    </v-card-title>
+    <v-card-text>
+      <p v-t="'change_volume_form.simple.question'"></p>
+      <v-radio-group class="text-lowercase mb-4" hide-details="hide-details" v-model="volume">
+        <v-radio class="volume-loud" value="loud" :label="labelFor('loud')"></v-radio>
+        <v-radio class="volume-normal" value="normal" :label="labelFor('normal')"></v-radio>
+        <v-radio class="volume-quiet" value="quiet" :label="labelFor('quiet')"></v-radio>
+      </v-radio-group>
+      <v-alert v-if="model.isA('discussion')" dense="dense" text="text" type="info"><span v-t="'change_volume_form.explain_scope.thread'"></span></v-alert>
+      <v-alert v-if="model.isA('membership')" dense="dense" text="text" type="info" v-t="'change_volume_form.explain_scope.group'"></v-alert>
+      <div v-if="model.isA('membership') && model.group().parentOrSelf().hasSubgroups()">
+        <v-checkbox class="mb-4" id="apply-to-all" v-if="model.isA('membership')" v-model="applyToAll" :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })" hide-details="hide-details"></v-checkbox>
+      </div>
+      <p class="mt-4" v-if="model.isA('discussion')"><a @click="openGroupVolumeModal()" v-t="'change_volume_form.discussion.group'"></a></p>
+      <p class="mt-4" v-if="model.isA('membership')"><a @click="openUserPreferences()" v-t="'change_volume_form.discussion.user'"></a></p>
+    </v-card-text>
+    <v-card-actions align-center="align-center">
+      <help-link path="en/user_manual/users/email_settings/#group-email-notification-settings"></help-link>
+      <v-spacer></v-spacer>
+      <v-btn class="change-volume-form__submit" type="button" :disabled="!formChanged" v-t="'common.action.update'" @click="submit()" color="primary"></v-btn>
+    </v-card-actions>
+  </form>
+</v-card>
 </template>

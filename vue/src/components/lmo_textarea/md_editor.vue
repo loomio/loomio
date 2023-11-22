@@ -124,36 +124,27 @@ export default
 
 </script>
 
-<template lang="pug">
-div(style="position: relative")
-  v-textarea(
-    v-if="!preview"
-    filled
-    ref="field"
-    v-model="model[field]"
-    :placeholder="placeholder"
-    :label="label"
-    @keyup="onKeyUp"
-    @keydown="onKeyDown"
-    @paste="onPaste"
-    @drop="onDrop"
-    @dragover.prevent="onDragOver")
-  formatted-text(v-if="preview" :model="model" :column="field")
-  v-sheet.pa-4.my-4.poll-common-outcome-panel(v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2")
-    p(v-t="'common.empty'")
+<template>
 
-  v-layout.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
-    v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
-      common-icon(name="mdi-paperclip")
-    v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.wysiwyg'")
-    v-spacer
-    v-btn.mr-4(text x-small @click="preview = !preview" v-t="previewAction")
-
-    slot(name="actions")
-  suggestion-list(:query="query" :loading="fetchingMentions" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername @select-user="selectUser")
-
-  files-list(:files="files" v-on:removeFile="removeFile")
-
-  form(style="display: block" @change="fileSelected")
-    input.d-none(ref="filesField" type="file" name="files" multiple=true)
+<div style="position: relative">
+  <v-textarea v-if="!preview" filled="filled" ref="field" v-model="model[field]" :placeholder="placeholder" :label="label" @keyup="onKeyUp" @keydown="onKeyDown" @paste="onPaste" @drop="onDrop" @dragover.prevent="onDragOver"></v-textarea>
+  <formatted-text v-if="preview" :model="model" :column="field"></formatted-text>
+  <v-sheet class="pa-4 my-4 poll-common-outcome-panel" v-if="preview && model[field].trim().length == 0" color="primary lighten-5" elevation="2">
+    <p v-t="'common.empty'"></p>
+  </v-sheet>
+  <v-layout class="menubar" align-center="align-center" :aria-label="$t('formatting.formatting_tools')">
+    <v-btn icon="icon" @click="$refs.filesField.click()" :title="$t('formatting.attach')">
+      <common-icon name="mdi-paperclip"></common-icon>
+    </v-btn>
+    <v-btn text="text" x-small="x-small" @click="convertToHtml(model, field)" v-t="'formatting.wysiwyg'"></v-btn>
+    <v-spacer></v-spacer>
+    <v-btn class="mr-4" text="text" x-small="x-small" @click="preview = !preview" v-t="previewAction"></v-btn>
+    <slot name="actions"></slot>
+  </v-layout>
+  <suggestion-list :query="query" :loading="fetchingMentions" :mentionable="mentionable" :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex" showUsername="showUsername" @select-user="selectUser"></suggestion-list>
+  <files-list :files="files" v-on:removeFile="removeFile"></files-list>
+  <form style="display: block" @change="fileSelected">
+    <input class="d-none" ref="filesField" type="file" name="files" multiple="multiple"/>
+  </form>
+</div>
 </template>

@@ -113,23 +113,27 @@ export default {
 }
 </script>
 
-<template lang="pug">
-.recording-modal
-  .pa-4
-    .d-flex.justify-space-between
-      h1.headline(v-t="'record_modal.record_video'")
-      v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='dismiss')
-        common-icon(name="mdi-close")
- 
-    v-alert(v-if="error" type="error") {{error}}
-    div(v-else)
-      video(ref="video" width="640" height="360" autoplay muted playsinline)
+<template>
 
-      .d-flex
-        v-spacer
-        v-btn.poll-members-form__submit(v-if="!onAir" color="primary" @click="start" v-t="'record_modal.record'")
-        v-btn.poll-members-form__submit(v-if="onAir" color="primary" @click="stop" v-t="'record_modal.stop'")
-        v-spacer
-        v-btn.poll-members-form__submit(v-if="!onAir && url" color="primary" @click="submit" v-t="'common.action.save'")
- 
+<div class="recording-modal">
+  <div class="pa-4">
+    <div class="d-flex justify-space-between">
+      <h1 class="headline" v-t="'record_modal.record_video'"></h1>
+      <v-btn class="dismiss-modal-button" icon="icon" :aria-label="$t('common.action.cancel')" @click="dismiss">
+        <common-icon name="mdi-close"></common-icon>
+      </v-btn>
+    </div>
+    <v-alert v-if="error" type="error">{{error}}</v-alert>
+    <div v-else>
+      <video ref="video" width="640" height="360" autoplay="autoplay" muted="muted" playsinline="playsinline"></video>
+      <div class="d-flex">
+        <v-spacer></v-spacer>
+        <v-btn class="poll-members-form__submit" v-if="!onAir" color="primary" @click="start" v-t="'record_modal.record'"></v-btn>
+        <v-btn class="poll-members-form__submit" v-if="onAir" color="primary" @click="stop" v-t="'record_modal.stop'"></v-btn>
+        <v-spacer></v-spacer>
+        <v-btn class="poll-members-form__submit" v-if="!onAir && url" color="primary" @click="submit" v-t="'common.action.save'"></v-btn>
+      </div>
+    </div>
+  </div>
+</div>
 </template>

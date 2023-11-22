@@ -97,16 +97,21 @@ export default {
 };
 </script>
 
-<template lang="pug">
-v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
-  v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
-    v-avatar(tile size="36px")
-      common-icon(name="mdi-menu")
-  v-toolbar-title(v-if="showTitle" @click="$vuetify.goTo('head', {duration: 0})") {{title}}
-  v-spacer
-  v-btn(@click="openSearchModal" icon :title="$t('common.action.search')")
-    common-icon(name="mdi-magnify")
-  notifications(v-if='isLoggedIn')
-  v-toolbar-items
-  v-btn.navbar__sign-in(text v-if='!isLoggedIn' v-t="'auth_form.sign_in'" @click='signIn()')
+<template>
+
+<v-app-bar class="lmo-no-print" app="app" clipped-right="clipped-right" elevate-on-scroll="elevate-on-scroll" color="background">
+  <v-btn class="navbar__sidenav-toggle" icon="icon" @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')">
+    <v-avatar tile="tile" size="36px">
+      <common-icon name="mdi-menu"></common-icon>
+    </v-avatar>
+  </v-btn>
+  <v-toolbar-title v-if="showTitle" @click="$vuetify.goTo('head', {duration: 0})">{{title}}</v-toolbar-title>
+  <v-spacer></v-spacer>
+  <v-btn @click="openSearchModal" icon="icon" :title="$t('common.action.search')">
+    <common-icon name="mdi-magnify"></common-icon>
+  </v-btn>
+  <notifications v-if="isLoggedIn"></notifications>
+  <v-toolbar-items></v-toolbar-items>
+  <v-btn class="navbar__sign-in" text="text" v-if="!isLoggedIn" v-t="'auth_form.sign_in'" @click="signIn()"></v-btn>
+</v-app-bar>
 </template>

@@ -13,8 +13,9 @@ export default {
 };
 </script>
 
-<template lang="pug">
-pre.poll-meeting-time {{time}}
+<template>
+
+<pre class="poll-meeting-time">{{time}}</pre>
 </template>
 
 <style lang="sass">

@@ -62,34 +62,20 @@ export default
 
 </script>
 
-<template lang="pug">
-v-main
-  v-container.templates-page.max-width-1024.px-0.px-sm-3
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
-    //- p(v-t="'templates.look_and_feel'")
-    .d-flex.justify-center
-      <iframe class="mx-auto" width="560" height="315" src="https://www.youtube-nocookie.com/embed/oIEKA9WTIDc" title="Loomio demo group introduction" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
-    //- h2.text-title.my-4(v-t="'templates.start_a_demo'")
-    //- v-card.mb-3(v-if='!loaded' aria-hidden='true')
-    //-   v-list(two-line)
-    //-     loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]', :key='index' )
+<template>
 
-    v-overlay(:value="processing")
-
-    div.d-flex.justify-center.mt-8
-      div
-        p.text-center
-          v-btn(@click="startDemo()" v-t="'templates.start_demo'" color="primary")
-
-    //- template(v-if="trials")
-    //-   h2.mt-8.text-title(v-t="'templates.ready_to_trial'")
-    //-   v-card.my-4
-    //-     v-card-title(v-t="{path:'templates.start_a_x_day_free_trial', args: {day: 7}}")
-    //-     v-card-text
-    //-       span(v-t="{path: 'templates.start_a_no_obligation_x_day_trial', args: {day: 7}}")
-    //-       space
-    //-       span(v-t="'templates.you_can_test_it_out'")
-    //-     v-card-actions
-    //-       v-spacer
-    //-       v-btn(to="/g/new" color="primary" v-t="'templates.start_trial'")
+<v-main>
+  <v-container class="templates-page max-width-1024 px-0 px-sm-3">
+    <h1 class="display-1 my-4" tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'"></h1>
+    <div class="d-flex justify-center"><iframe class="mx-auto" width="560" height="315" src="https://www.youtube-nocookie.com/embed/oIEKA9WTIDc" title="Loomio demo group introduction" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe></div>
+    <v-overlay :value="processing"></v-overlay>
+    <div class="d-flex justify-center mt-8">
+      <div>
+        <p class="text-center">
+          <v-btn @click="startDemo()" v-t="'templates.start_demo'" color="primary"></v-btn>
+        </p>
+      </div>
+    </div>
+  </v-container>
+</v-main>
 </template>

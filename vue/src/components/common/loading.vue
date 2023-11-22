@@ -10,9 +10,12 @@ export default {
 }
 </script>
 
-<template lang="pug">
-div
-  v-layout.my-4.page-loading(justify-center v-if="!until")
-    v-progress-circular(indeterminate color='primary')
-  slot(v-if="until")
+<template>
+
+<div>
+  <v-layout class="my-4 page-loading" justify-center="justify-center" v-if="!until">
+    <v-progress-circular indeterminate="indeterminate" color="primary"></v-progress-circular>
+  </v-layout>
+  <slot v-if="until"></slot>
+</div>
 </template>

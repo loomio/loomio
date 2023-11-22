@@ -37,18 +37,19 @@ export default {
 
 </script>
 
-<template lang="pug">
-h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
-  div.d-flex.align-center
-    //- common-icon(v-if="event.pinned" name="mdi-pin")
-    slot(name="headline")
-      span.strand-item__headline.text--secondary(v-html='headline')
-    mid-dot.text--secondary
-    router-link.text--secondary.text-body-2(:to='link')
-      time-ago(:date='datetime')
-    mid-dot(v-if="event.pinned")
-    common-icon(v-if="event.pinned" name="mdi-pin-outline")
+<template>
 
+<h3 class="strand-item__headline thread-item__title text-body-2 pb-1" tabindex="-1">
+  <div class="d-flex align-center">
+    <slot name="headline"><span class="strand-item__headline text--secondary" v-html="headline"></span></slot>
+    <mid-dot class="text--secondary"></mid-dot>
+    <router-link class="text--secondary text-body-2" :to="link">
+      <time-ago :date="datetime"></time-ago>
+    </router-link>
+    <mid-dot v-if="event.pinned"></mid-dot>
+    <common-icon v-if="event.pinned" name="mdi-pin-outline"></common-icon>
+  </div>
+</h3>
 </template>
 <style lang="sass">
 .strand-item__headline

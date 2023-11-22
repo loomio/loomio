@@ -118,31 +118,34 @@ export default {
 };
 </script>
 
-<template lang='pug'>
-v-main
-  v-container.explore-page.max-width-1024.px-0.px-sm-3
-    //- h1.headline(tabindex="-1" v-t="'explore_page.header'")
-    v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")
-    v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="order")
-    loading(:until="!searching")
-    .explore-page__no-results-found(v-show='noResultsFound' v-html="$t('explore_page.no_results_found')")
-    .explore-page__search-results(v-show='showMessage' v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})")
-    v-row.explore-page__groups.my-4(v-show="!searching" wrap)
-      v-col(:lg="6" :md="6" :sm="12" v-for='group in orderedGroups' :key='group.id')
-        v-card.explore-page__group.my-4(:to='urlFor(group)')
-          v-img.explore-page__group-cover(:src="group.coverUrl" max-height="120")
-          v-card-title {{ group.name }}
-          v-card-text
-            .explore-page__group-description {{groupDescription(group)}}
-            v-layout.explore-page__group-stats(justify-start align-center)
-              common-icon.mr-2(name="mdi-account-multiple")
-              span.mr-4 {{group.membershipsCount}}
-              common-icon.mr-2(name="mdi-comment-text-outline")
-              span.mr-4 {{group.discussionsCount}}
-              common-icon.mr-2(name="mdi-thumbs-up-down")
-              span.mr-4 {{group.pollsCount}}
-      .lmo-show-more(v-show='canLoadMoreGroups')
-        v-btn(v-show="!searching" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more")
+<template>
 
-
+<v-main>
+  <v-container class="explore-page max-width-1024 px-0 px-sm-3">
+    <v-text-field v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify"></v-text-field>
+    <v-select @change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="order"></v-select>
+    <loading :until="!searching"></loading>
+    <div class="explore-page__no-results-found" v-show="noResultsFound" v-html="$t('explore_page.no_results_found')"></div>
+    <div class="explore-page__search-results" v-show="showMessage" v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})"></div>
+    <v-row class="explore-page__groups my-4" v-show="!searching" wrap="wrap">
+      <v-col :lg="6" :md="6" :sm="12" v-for="group in orderedGroups" :key="group.id">
+        <v-card class="explore-page__group my-4" :to="urlFor(group)">
+          <v-img class="explore-page__group-cover" :src="group.coverUrl" max-height="120"></v-img>
+          <v-card-title>{{ group.name }}</v-card-title>
+          <v-card-text>
+            <div class="explore-page__group-description">{{groupDescription(group)}}</div>
+            <v-layout class="explore-page__group-stats" justify-start="justify-start" align-center="align-center">
+              <common-icon class="mr-2" name="mdi-account-multiple"></common-icon><span class="mr-4">{{group.membershipsCount}}</span>
+              <common-icon class="mr-2" name="mdi-comment-text-outline"></common-icon><span class="mr-4">{{group.discussionsCount}}</span>
+              <common-icon class="mr-2" name="mdi-thumbs-up-down"></common-icon><span class="mr-4">{{group.pollsCount}}</span>
+            </v-layout>
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <div class="lmo-show-more" v-show="canLoadMoreGroups">
+        <v-btn class="explore-page__show-more" v-show="!searching" @click="loadMore()" v-t="'common.action.show_more'"></v-btn>
+      </div>
+    </v-row>
+  </v-container>
+</v-main>
 </template>

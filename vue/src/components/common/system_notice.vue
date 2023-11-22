@@ -52,13 +52,14 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-system-bar.system-notice(v-if="showNotice" app color="primary" height="40")
-  .d-flex.justify-space-between(style="width: 100%")
-    .system-notice__message.text-subtitle-1
-      span(v-if="notice" v-marked="notice")
-      span(v-else="notice" v-t="'global.messages.app_update'")
-    v-btn.system-notice__hide(v-if="showDismiss" small outlined @click="accept" v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'")
+<template>
+
+<v-system-bar class="system-notice" v-if="showNotice" app="app" color="primary" height="40">
+  <div class="d-flex justify-space-between" style="width: 100%">
+    <div class="system-notice__message text-subtitle-1"><span v-if="notice" v-marked="notice"></span><span v-else="notice" v-t="'global.messages.app_update'"></span></div>
+    <v-btn class="system-notice__hide" v-if="showDismiss" small="small" outlined="outlined" @click="accept" v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'"></v-btn>
+  </div>
+</v-system-bar>
 </template>
 
 <style lang="sass">

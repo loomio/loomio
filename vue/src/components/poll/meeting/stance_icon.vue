@@ -10,8 +10,7 @@ export default {
 };
 </script>
 
-<template lang="pug">
-v-avatar.poll-meeting-stance-icon(left :size="size")
-  img.poll-common-form__icon(src="/img/abstain.svg" v-if="score == 1")
-  img.poll-common-form__icon(src="/img/agree.svg" v-if="score == 2")
+<template>
+
+<v-avatar class="poll-meeting-stance-icon" left="left" :size="size"><img class="poll-common-form__icon" src="/img/abstain.svg" v-if="score == 1"/><img class="poll-common-form__icon" src="/img/agree.svg" v-if="score == 2"/></v-avatar>
 </template>

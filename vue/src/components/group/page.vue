@@ -89,69 +89,35 @@ export default
 
 </script>
 
-<template lang="pug">
-v-main
-  loading(v-if="!group")
-  v-container.group-page.max-width-1024.px-2.px-sm-4(v-if="group")
-    div(style="position: relative")
-      v-img(
-        :src="group.coverUrl"
-        style="border-radius: 8px"
-        max-height="256"
-        eager)
+<template>
 
-      v-img.ma-2.d-none.d-sm-block.rounded(
-        v-if="group.logoUrl"
-        :src="group.logoUrl"
-        style="border-radius: 8px; position: absolute; bottom: 0"
-        height="96"
-        width="96" 
-        eager)
-      v-img.ma-2.d-sm-none.rounded(
-        v-if="group.logoUrl"
-        :src="group.logoUrl"
-        style="border-radius: 8px; position: absolute; bottom: 0"
-        height="48"
-        width="48" 
-        eager)
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
-      span(v-if="group && group.parentId")
-        router-link(:to="urlFor(group.parent())") {{group.parent().name}}
-        space
-        span.text--secondary.text--lighten-1 &gt;
-        space
-      span.group-page__name.mr-4 {{group.name}}
-    old-plan-banner(:group="group")
-    trial-banner(:group="group")
-    formatted-text.group-page__description(
-      v-if="group"
-      :model="group"
-      column="description")
-    action-dock(
-      :model='group'
-      :actions='dockActions'
-      menu-icon='mdi-cog'
-      :menu-actions='menuActions')
-    join-group-button(:group='group')
-    link-previews(:model="group")
-    document-list(:model='group')
-    attachment-list(:attachments="group.attachments")
-    v-divider.mt-4
-    v-tabs(
-      v-model="activeTab"
-      background-color="transparent"
-      center-active
-      grow
-    )
-      v-tab(
-        v-for="tab of tabs"
-        :key="tab.id"
-        :to="tab.route"
-        :class="'group-page-' + tab.name + '-tab' "
-      )
-        //- common-icon(name="mdi-comment-multiple")
-        span(v-t="'group_page.'+tab.name")
-    router-view
+<v-main>
+  <loading v-if="!group"></loading>
+  <v-container class="group-page max-width-1024 px-2 px-sm-4" v-if="group">
+    <div style="position: relative">
+      <v-img :src="group.coverUrl" style="border-radius: 8px" max-height="256" eager="eager"></v-img>
+      <v-img class="ma-2 d-none d-sm-block rounded" v-if="group.logoUrl" :src="group.logoUrl" style="border-radius: 8px; position: absolute; bottom: 0" height="96" width="96" eager="eager"></v-img>
+      <v-img class="ma-2 d-sm-none rounded" v-if="group.logoUrl" :src="group.logoUrl" style="border-radius: 8px; position: absolute; bottom: 0" height="48" width="48" eager="eager"></v-img>
+    </div>
+    <h1 class="display-1 my-4" tabindex="-1" v-observe-visibility="{callback: titleVisible}"><span v-if="group && group.parentId">
+        <router-link :to="urlFor(group.parent())">{{group.parent().name}}</router-link>
+        <space></space><span class="text--secondary text--lighten-1">></span>
+        <space></space></span><span class="group-page__name mr-4">{{group.name}}</span></h1>
+    <old-plan-banner :group="group"></old-plan-banner>
+    <trial-banner :group="group"></trial-banner>
+    <formatted-text class="group-page__description" v-if="group" :model="group" column="description"></formatted-text>
+    <action-dock :model="group" :actions="dockActions" menu-icon="mdi-cog" :menu-actions="menuActions"></action-dock>
+    <join-group-button :group="group"></join-group-button>
+    <link-previews :model="group"></link-previews>
+    <document-list :model="group"></document-list>
+    <attachment-list :attachments="group.attachments"></attachment-list>
+    <v-divider class="mt-4"></v-divider>
+    <v-tabs v-model="activeTab" background-color="transparent" center-active="center-active" grow="grow">
+      <v-tab v-for="tab of tabs" :key="tab.id" :to="tab.route" :class="'group-page-' + tab.name + '-tab' "><span v-t="'group_page.'+tab.name"></span></v-tab>
+    </v-tabs>
+    <router-view></router-view>
+  </v-container>
+</v-main>
 </template>
 
 <style lang="sass">

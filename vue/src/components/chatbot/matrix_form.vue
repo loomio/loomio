@@ -54,44 +54,27 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card.chatbot-matrix-form
-  v-card-title
-    h1.headline(tabindex="-1" v-t="'chatbot.chatbot'")
-    v-spacer
-    dismiss-modal-button
-  v-card-text
-    v-text-field(:label="$t('chatbot.name')" v-model="chatbot.name" hint="The name of your chatroom")
-    v-text-field(:label="$t('chatbot.homeserver_url')"  v-model="chatbot.server" hint="https://example.com")
-    v-text-field(
-      :label="$t('chatbot.access_token')"
-      v-model="chatbot.accessToken"
-      placeholder="Looks like: syt_cm9ZXJ0Lmd1dGiaWNG9vbWWv_QsMCFvOcUxucxajF_1Ty2"
-      hint="Login as the bot user, then find: User menu > All settings > Help & about > Access token")
-    v-text-field(
-      :label="$t('chatbot.channel')"
-      v-model="chatbot.channel"
-      placeholder="E.g. #general:example.com or !hZAAvLtRpxPTHIvfLC:example.com"
-      hint="As bot user: Room options > Settings > Advanced > Internal room ID")
-      
-    v-checkbox.webhook-form__include-body(
-      v-model="chatbot.notificationOnly", 
-      :label="$t('chatbot.notification_only_label')" 
-      hide-details)
+<template>
 
-    p.mt-4.text--secondary(v-t="'chatbot.event_kind_helptext'")
-
-    v-checkbox.webhook-form__event-kind(
-      hide-details 
-      v-for='kind in kinds' 
-      v-model='chatbot.eventKinds' 
-      :key="kind" 
-      :label="$t('webhook.event_kinds.' + kind)" 
-      :value="kind")
-
-    v-card-actions
-      v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")
-      v-spacer
-      //- v-btn(:disabled="!chatbot.accessToken" @click='testConnection' v-t="'chatbot.test_connection'" :loading="testing")
-      v-btn(color='primary' @click='submit' v-t="'common.action.save'")
+<v-card class="chatbot-matrix-form">
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="'chatbot.chatbot'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <v-text-field :label="$t('chatbot.name')" v-model="chatbot.name" hint="The name of your chatroom"></v-text-field>
+    <v-text-field :label="$t('chatbot.homeserver_url')" v-model="chatbot.server" hint="https://example.com"></v-text-field>
+    <v-text-field :label="$t('chatbot.access_token')" v-model="chatbot.accessToken" placeholder="Looks like: syt_cm9ZXJ0Lmd1dGiaWNG9vbWWv_QsMCFvOcUxucxajF_1Ty2" hint="Login as the bot user, then find: User menu > All settings > Help & about > Access token"></v-text-field>
+    <v-text-field :label="$t('chatbot.channel')" v-model="chatbot.channel" placeholder="E.g. #general:example.com or !hZAAvLtRpxPTHIvfLC:example.com" hint="As bot user: Room options > Settings > Advanced > Internal room ID"></v-text-field>
+    <v-checkbox class="webhook-form__include-body" v-model="chatbot.notificationOnly" :label="$t('chatbot.notification_only_label')" hide-details="hide-details"></v-checkbox>
+    <p class="mt-4 text--secondary" v-t="'chatbot.event_kind_helptext'"></p>
+    <v-checkbox class="webhook-form__event-kind" hide-details="hide-details" v-for="kind in kinds" v-model="chatbot.eventKinds" :key="kind" :label="$t('webhook.event_kinds.' + kind)" :value="kind"></v-checkbox>
+    <v-card-actions>
+      <v-btn v-if="chatbot.id" @click="destroy" v-t="'common.action.delete'"></v-btn>
+      <v-spacer></v-spacer>
+      <v-btn color="primary" @click="submit" v-t="'common.action.save'"></v-btn>
+    </v-card-actions>
+  </v-card-text>
+</v-card>
 </template>

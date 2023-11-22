@@ -72,36 +72,51 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card.change-picture-form
-  v-overlay(:value="uploading")
-    v-progress-circular(size="64" :value="progress")
-  v-card-title
-    h1.headline(tabindex="-1" v-t="'change_picture_form.title'")
-    v-spacer
-    dismiss-modal-button
-  v-card-text
-    p.text--secondary(v-html="$t('change_picture_form.helptext')")
-    v-list.change-picture-form__options-list
-      v-list-item.change-picture-form__option(@click='selectFile()')
-        v-list-item-avatar
-          common-icon(name="mdi-camera")
-        v-list-item-title(v-t="'change_picture_form.use_uploaded'")
-          input.hidden.change-picture-form__file-input(type="file" ref="fileInput" @change='uploadFile' accept="image/png, image/jpeg, image/webp")
-      v-list-item.change-picture-form__option(v-if="previous_uploaded_avatar" @click="submit('uploaded')")
-        v-list-item-avatar
-          img(:src="previous_uploaded_avatar")
-        v-list-item-title(v-t="'change_picture_form.existing_upload'")
-      v-list-item(v-for="provider in providers" :key="provider.id" @click="selectProvider(provider)")
-        v-list-item-avatar
-          common-icon(:name=" iconClass(provider.name) ")
-        v-list-item-title(v-t="{ path: 'change_picture_form.use_provider', args: { provider: capitalize(provider.name) } }")
-      v-list-item.change-picture-form__option(@click="submit('gravatar')")
-        v-list-item-avatar
-          gravatar(:email='user.email' :alt='user.name' :size='128')
-        v-list-item-title(v-t="'change_picture_form.use_gravatar'")
-      v-list-item.change-picture-form__option(@click="submit('initials')")
-        v-list-item-avatar.user-avatar
-          v-avatar.user-avatar__initials--small {{user.avatarInitials}}
-        v-list-item-title(v-t="'change_picture_form.use_initials'")
+<template>
+
+<v-card class="change-picture-form">
+  <v-overlay :value="uploading">
+    <v-progress-circular size="64" :value="progress"></v-progress-circular>
+  </v-overlay>
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="'change_picture_form.title'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <p class="text--secondary" v-html="$t('change_picture_form.helptext')"></p>
+    <v-list class="change-picture-form__options-list">
+      <v-list-item class="change-picture-form__option" @click="selectFile()">
+        <v-list-item-avatar>
+          <common-icon name="mdi-camera"></common-icon>
+        </v-list-item-avatar>
+        <v-list-item-title v-t="'change_picture_form.use_uploaded'">
+          <input class="hidden change-picture-form__file-input" type="file" ref="fileInput" @change="uploadFile" accept="image/png, image/jpeg, image/webp"/>
+        </v-list-item-title>
+      </v-list-item>
+      <v-list-item class="change-picture-form__option" v-if="previous_uploaded_avatar" @click="submit('uploaded')">
+        <v-list-item-avatar><img :src="previous_uploaded_avatar"/></v-list-item-avatar>
+        <v-list-item-title v-t="'change_picture_form.existing_upload'"></v-list-item-title>
+      </v-list-item>
+      <v-list-item v-for="provider in providers" :key="provider.id" @click="selectProvider(provider)">
+        <v-list-item-avatar>
+          <common-icon :name=" iconClass(provider.name) "></common-icon>
+        </v-list-item-avatar>
+        <v-list-item-title v-t="{ path: 'change_picture_form.use_provider', args: { provider: capitalize(provider.name) } }"></v-list-item-title>
+      </v-list-item>
+      <v-list-item class="change-picture-form__option" @click="submit('gravatar')">
+        <v-list-item-avatar>
+          <gravatar :email="user.email" :alt="user.name" :size="128"></gravatar>
+        </v-list-item-avatar>
+        <v-list-item-title v-t="'change_picture_form.use_gravatar'"></v-list-item-title>
+      </v-list-item>
+      <v-list-item class="change-picture-form__option" @click="submit('initials')">
+        <v-list-item-avatar class="user-avatar">
+          <v-avatar class="user-avatar__initials--small">{{user.avatarInitials}}</v-avatar>
+        </v-list-item-avatar>
+        <v-list-item-title v-t="'change_picture_form.use_initials'"></v-list-item-title>
+      </v-list-item>
+    </v-list>
+  </v-card-text>
+</v-card>
 </template>

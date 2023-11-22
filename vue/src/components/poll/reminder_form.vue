@@ -66,29 +66,20 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.poll-remind
-  .pa-4
-    .d-flex.justify-space-between
-      h1.headline(v-t="'announcement.form.'+wipOrEmpty+'poll_reminder.title'")
-      dismiss-modal-button
-    recipients-autocomplete(
-      existingOnly
-      :label="$t('announcement.form.'+wipOrEmpty+'poll_reminder.helptext')"
-      :placeholder="$t('announcement.form.placeholder')"
-      :model="poll"
-      :reset="reset"
-      :excludedUserIds="userIds"
-      :excludedAudiences="['group', 'discussion_group']"
-      :initialRecipients="initialRecipients")
+<template>
 
-    v-textarea(
-      :label="$t('announcement.form.poll_reminder.message_label')"
-      :placeholder="$t('announcement.form.poll_reminder.message_placeholder')"
-      v-model="poll.recipientMessage")
-
-    .d-flex
-      v-spacer
-      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="submit" )
-        span(v-t="'common.action.remind'")
+<div class="poll-remind">
+  <div class="pa-4">
+    <div class="d-flex justify-space-between">
+      <h1 class="headline" v-t="'announcement.form.'+wipOrEmpty+'poll_reminder.title'"></h1>
+      <dismiss-modal-button></dismiss-modal-button>
+    </div>
+    <recipients-autocomplete existingOnly="existingOnly" :label="$t('announcement.form.'+wipOrEmpty+'poll_reminder.helptext')" :placeholder="$t('announcement.form.placeholder')" :model="poll" :reset="reset" :excludedUserIds="userIds" :excludedAudiences="['group', 'discussion_group']" :initialRecipients="initialRecipients"></recipients-autocomplete>
+    <v-textarea :label="$t('announcement.form.poll_reminder.message_label')" :placeholder="$t('announcement.form.poll_reminder.message_placeholder')" v-model="poll.recipientMessage"></v-textarea>
+    <div class="d-flex">
+      <v-spacer></v-spacer>
+      <v-btn class="poll-members-form__submit" color="primary" :disabled="!someRecipients" :loading="saving" @click="submit"><span v-t="'common.action.remind'"></span></v-btn>
+    </div>
+  </div>
+</div>
 </template>

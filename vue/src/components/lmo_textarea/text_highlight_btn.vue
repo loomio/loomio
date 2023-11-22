@@ -32,24 +32,21 @@ export default
 };
 </script>
 
-<template lang="pug">
-v-menu
-  template(v-slot:activator="{ on, attrs }")
-    div.rounded-lg.color-picker-btn
-      v-btn.drop-down-button(
-        small icon
-        :style="{'background-color': buttonBgColor, color: buttonFgColor}" 
-        v-on="on"
-        v-bind="attrs"
-        :title="$t('formatting.colors')"
-      )
-        common-icon(small name="mdi-palette")
-  v-card.color-picker.pa-2
-    .swatch.swatch-color(v-for="(value, key) in colors"
-                         :class="{'swatch--selected': key == activeColorKey }"
-                         :style="{'background-color': value.lighten1}"
-                         @click="editor.chain().setHighlight({color: key}).focus().run()") &nbsp;
-    v-btn.mt-2(block x-small outlined @click="editor.chain().unsetHighlight().focus().run()" v-t="'formatting.reset'")
+<template>
+
+<v-menu>
+  <template v-slot:activator="{ on, attrs }">
+    <div class="rounded-lg color-picker-btn">
+      <v-btn class="drop-down-button" small="small" icon="icon" :style="{'background-color': buttonBgColor, color: buttonFgColor}" v-on="on" v-bind="attrs" :title="$t('formatting.colors')">
+        <common-icon small="small" name="mdi-palette"></common-icon>
+      </v-btn>
+    </div>
+  </template>
+  <v-card class="color-picker pa-2">
+    <div class="swatch swatch-color" v-for="(value, key) in colors" :class="{'swatch--selected': key == activeColorKey }" :style="{'background-color': value.lighten1}" @click="editor.chain().setHighlight({color: key}).focus().run()">&nbsp;</div>
+    <v-btn class="mt-2" block="block" x-small="x-small" outlined="outlined" @click="editor.chain().unsetHighlight().focus().run()" v-t="'formatting.reset'"></v-btn>
+  </v-card>
+</v-menu>
 </template>
 
 <style lang="sass">

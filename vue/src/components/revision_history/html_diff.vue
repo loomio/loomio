@@ -12,8 +12,9 @@ export default {
 }
 
 </script>
-<template lang="pug">
-.html-diff(v-html='diff()')
+<template>
+
+<div class="html-diff" v-html="diff()"></div>
 </template>
 
 <style lang="sass">

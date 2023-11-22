@@ -267,280 +267,144 @@ export default {
   }
 };
 </script>
-<template lang="pug">
-.poll-common-form
-  submit-overlay(:value="poll.processing")
-  v-card-title.px-0
-    h1.text-h4(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
-    v-spacer
+<template>
 
-    v-btn(v-if="poll.id" icon :to="urlFor(poll)" aria-hidden='true')
-      common-icon(name="mdi-close")
-    v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
-      common-icon(name="mdi-close")
-
-  poll-template-info-panel(v-if="pollTemplate" :poll-template="pollTemplate")
-
-  v-select(
-    v-if="!poll.id && !poll.discussionId"
-    v-model="poll.groupId"
-    :items="groupItems"
-    :label="$t('common.group')"
-  )
-
-  v-text-field.poll-common-form-fields__title(
-    type='text'
-    required='true'
-    :hint="$t('poll_common_form.title_hint')"
-    :placeholder="titlePlaceholder"
-    :label="$t('poll_common_form.title')"
-    v-model='poll.title'
-    maxlength='250')
-  validation-errors(:subject='poll' field='title')
-
-  tags-field(:model="poll")
-
-  lmo-textarea.poll-common-form-fields__details(
-    :model='poll'
-    field="details"
-    :placeholder="$t('poll_common_form.details_placeholder')"
-    :label="$t('poll_common_form.details')"
-    :should-reset="shouldReset"
-  )
-
-  template(v-if="hasOptions")
-    .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
-    v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
-    sortable-list(
-      v-model="pollOptions" 
-      append-to=".app-is-booted" 
-      use-drag-handle 
-      lock-axis="y"
-      v-if="pollOptions.length"
-    )
-      sortable-item(
-        v-for="(option, priority) in visiblePollOptions"
-        :index="priority"
-        :key="option.name"
-        :item="option"
-        v-if="!option._destroy"
-      )
-        v-sheet.mb-2.rounded(outlined)
-          v-list-item(style="user-select: none")
-            v-list-item-icon(v-if="hasOptionIcon" v-handle)
-              v-avatar(size="48")
-                img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
-         
-            v-list-item-content(v-handle)
-              v-list-item-title
-                span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
-                span(v-if="optionFormat == 'plain'") {{option.name}}
-                span(v-if="optionFormat == 'iso8601'")
-                  poll-meeting-time(:name="option.name")
-              v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
-
-            v-list-item-action
-              v-btn(
-                icon
-                @click="removeOption(option)"
-                :title="$t('common.action.delete')"
-              )
-                common-icon.text--secondary(name="mdi-delete")
-            v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
-              v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                common-icon.text--secondary(name="mdi-pencil")
-            common-icon.text--secondary(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
-
-    template(v-if="optionFormat == 'i18n'")
-      p This poll cannot have new options added. (contact support if you see this message)
-
-    template(v-if="optionFormat == 'plain'")
-      .d-flex.justify-center
-        v-btn.poll-common-form__add-option-btn.my-2(@click="addOption" v-t="'poll_common_add_option.modal.title'")
-
-    template(v-if="optionFormat == 'iso8601'")
-      .v-label.v-label--active.px-0.text-caption.pt-2(v-t="'poll_poll_form.new_option'")
-      .d-flex.align-center
-        date-time-picker(:min="minDate" v-model="newDateOption")
-        v-btn.poll-meeting-form__option-button.ml-4(
-          :title="$t('poll_meeting_time_field.add_time_slot')"
-          outlined color="primary"
-          @click='addDateOption()'
-          v-t="'poll_poll_form.add_option_placeholder'"
-        )
-      poll-meeting-add-option-menu(:poll="poll" :value="newDateOption")
-
-  template(v-if="optionFormat == 'iso8601'")
-    .d-flex.align-center
-      v-text-field.text-right(
-        style="max-width: 120px; text-align: right"
-        :label="$t('poll_meeting_form.meeting_duration')"
-        v-model="poll.meetingDuration"
-        type="number"
-      )
-      span.pl-2.text--secondary(v-t="'common.minutes'")
-      span.pl-1.text--secondary(v-if="formattedDuration") ({{formattedDuration}})
-
-  template(v-if="poll.pollType == 'count'")
-    p.text--secondary(v-t="'poll_count_form.agree_target_helptext'")
-    .d-flex
-      v-text-field.poll-common-form__agree-target(
-        v-model="poll.agreeTarget"
-        type="number"
-        :step="1"
-        :label="$t('poll_count_form.agree_target_label')"
-      )
-
-  .d-flex(v-if="poll.pollType == 'score'")
-    v-text-field.poll-score-form__min(
-      v-model="poll.minScore"
-      type="number"
-      :step="1"
-      :label="$t('poll_common.min_score')")
-    v-spacer
-    v-text-field.poll-score-form__max(
-      v-model="poll.maxScore"
-      type="number"
-      :step="1"
-      :label="$t('poll_common.max_score')")
-
-  template(v-if="poll.pollType == 'poll'")
-    p.text--secondary(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
-    .d-flex
-      v-text-field.poll-common-form__minimum-stance-choices(
-        v-model="poll.minimumStanceChoices"
-        type="number"
-        :step="1"
-        :hint="$t('poll_common_form.choose_at_least')"
-        :label="$t('poll_common_form.minimum_choices')")
-      v-spacer
-      v-text-field.poll-common-form__maximum-stance-choices(
-        v-model="poll.maximumStanceChoices"
-        type="number"
-        :step="1"
-        :hint="$t('poll_common_form.choose_at_most')"
-        :label="$t('poll_common_form.maximum_choices')")
-
-  .d-flex.align-center(v-if="poll.pollType == 'ranked_choice'")
-    v-text-field.lmo-number-input(
-      v-model="poll.minimumStanceChoices"
-      :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')"
-      :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')"
-      type="number"
-      :min="1"
-      :max="poll.pollOptionNames.length")
-    validation-errors(:subject="poll", field="minimumStanceChoices")
-
-  template(v-if="poll.pollType == 'dot_vote'")
-    v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
-    validation-errors(:subject="poll" field="dotsPerPerson")
-
-  v-divider.my-4
-
-  poll-common-closing-at-field(:poll="poll")
-  //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.reminder'")
-  //- p.text--secondary(v-t="'poll_common_form.reminder_helptext'")
-  p(v-if="poll.closingAt && closesSoon" 
-    v-t="{path: 'poll_common_settings.notify_on_closing_soon.voting_closes_too_soon', args: {pollType: poll.translatedPollType()}}")
-
-  v-radio-group(
-    v-model="poll.specifiedVotersOnly"
-    :disabled="!poll.closingAt"
-    :label="$t('poll_common_settings.who_can_vote')"
-  )
-    v-radio(
-      v-if="poll.discussionId && !poll.groupId"
-      :value="false"
-      :label="$t('poll_common_settings.specified_voters_only_false_discussion')")
-    v-radio(
-      v-if="poll.groupId"
-      :value="false"
-      :label="$t('poll_common_settings.specified_voters_only_false_group')")
-    v-radio.poll-common-settings__specified-voters-only(
-      :value="true"
-      :label="$t('poll_common_settings.specified_voters_only_true')")
-  .caption.mt-n4.text--secondary.text-caption(
-    v-if="poll.specifiedVotersOnly"
-    v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
-
-  v-checkbox.mt-0(v-if="!poll.id && !poll.specifiedVotersOnly" :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})" v-model="poll.notifyRecipients")
-
-  .d-flex.justify-center
-    v-btn.my-4.poll-common-form__advanced-btn(@click="showAdvanced = !showAdvanced")
-      span(v-if='showAdvanced' v-t="'poll_common_form.hide_advanced_settings'")
-      span(v-else v-t="'poll_common_form.show_advanced_settings'")
-
-  div(v-show="showAdvanced")
-    v-select(
-      :disabled="!poll.closingAt"
-      :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"
-      v-model="poll.notifyOnClosingSoon"
-      :items="closingSoonItems")
-
-    template(v-if="allowAnonymous")
-      //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.anonymous_voting'")
-      //- p.text--secondary(v-t="'poll_common_form.anonymous_voting_description'")
-      v-checkbox.poll-common-checkbox-option.poll-settings-anonymous(
-        :disabled="!poll.isNew()"
-        v-model="poll.anonymous"
-        :label="$t('poll_common_form.votes_are_anonymous')")
-
-
-    template(v-if="poll.config().can_shuffle_options")
-      //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_settings.shuffle_options.shuffle_options'")
-      //- p.text--secondary(v-t="'poll_common_settings.shuffle_options.helptext'")
-      v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options.mt-4.pt-2(
-        v-model="poll.shuffleOptions"
-        :label="$t('poll_common_settings.shuffle_options.title')")
-
-    //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.vote_reason'")
-    //- p.text--secondary(v-t="'poll_common_form.vote_reason_description'")
-    template(v-if="!poll.config().hide_reason_required")
-      v-select(
-        :label="$t('poll_common_form.stance_reason_required_label')"
-        :items="stanceReasonRequiredItems"
-        v-model="poll.stanceReasonRequired"
-      )
-
-    v-text-field(
-      v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
-      v-model="poll.reasonPrompt"
-      :label="$t('poll_common_form.reason_prompt')"
-      :hint="$t('poll_option_form.prompt_hint')"
-      :placeholder="$t('poll_common.reason_placeholder')")
-
-    template(v-if="poll.stanceReasonRequired != 'disabled'")
-      //- p.text--secondary(v-t="'poll_common_settings.short_reason_can_be_helpful'")
-      v-checkbox.poll-common-checkbox-option(
-        v-model="poll.limitReasonLength"
-        :label="$t('poll_common_form.limit_reason_length')"
-      )
-
-    template(v-if="allowAnonymous")
-      //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_card.hide_results'")
-      //- p.text--secondary(v-t="'poll_common_form.hide_results_description'")
-      v-select.poll-common-settings__hide-results.mt-6.pt-2(
-        :label="$t('poll_common_card.hide_results')"
-        :items="hideResultsItems"
-        v-model="poll.hideResults"
-        :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
-      )
-
-  common-notify-fields(v-if="poll.id" :model="poll")
-
-  v-card-actions.poll-common-form-actions
-    help-link(path='en/user_manual/polls/intro_to_decisions')
-    v-spacer
-    v-btn.poll-common-form__submit(
-      color="primary"
-      @click='submit()'
-      :loading="poll.processing"
-      :disabled="!poll.title || (hasOptions && pollOptions.length < minOptions)"
-    )
-      span(v-if='poll.id' v-t="'common.action.save_changes'")
-      span(v-if='!poll.id && poll.closingAt' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")
-      span(v-if='!poll.id && !poll.closingAt' v-t="'poll_common_form.save_poll'")
-
+<div class="poll-common-form">
+  <submit-overlay :value="poll.processing"></submit-overlay>
+  <v-card-title class="px-0">
+    <h1 class="text-h4" tabindex="-1" v-t="{path: titlePath, args: titleArgs}"></h1>
+    <v-spacer></v-spacer>
+    <v-btn v-if="poll.id" icon="icon" :to="urlFor(poll)" aria-hidden="true">
+      <common-icon name="mdi-close"></common-icon>
+    </v-btn>
+    <v-btn v-if="!poll.id" icon="icon" @click="$emit('setPoll', null)" aria-hidden="true">
+      <common-icon name="mdi-close"></common-icon>
+    </v-btn>
+  </v-card-title>
+  <poll-template-info-panel v-if="pollTemplate" :poll-template="pollTemplate"></poll-template-info-panel>
+  <v-select v-if="!poll.id && !poll.discussionId" v-model="poll.groupId" :items="groupItems" :label="$t('common.group')"></v-select>
+  <v-text-field class="poll-common-form-fields__title" type="text" required="true" :hint="$t('poll_common_form.title_hint')" :placeholder="titlePlaceholder" :label="$t('poll_common_form.title')" v-model="poll.title" maxlength="250"></v-text-field>
+  <validation-errors :subject="poll" field="title"></validation-errors>
+  <tags-field :model="poll"></tags-field>
+  <lmo-textarea class="poll-common-form-fields__details" :model="poll" field="details" :placeholder="$t('poll_common_form.details_placeholder')" :label="$t('poll_common_form.details')" :should-reset="shouldReset"></lmo-textarea>
+  <template v-if="hasOptions">
+    <div class="v-label v-label--active px-0 text-caption py-2" v-t="'poll_common_form.options'"></div>
+    <v-subheader class="px-0" v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'"></v-subheader>
+    <sortable-list v-model="pollOptions" append-to=".app-is-booted" use-drag-handle="use-drag-handle" lock-axis="y" v-if="pollOptions.length">
+      <sortable-item v-for="(option, priority) in visiblePollOptions" :index="priority" :key="option.name" :item="option" v-if="!option._destroy">
+        <v-sheet class="mb-2 rounded" outlined="outlined">
+          <v-list-item style="user-select: none">
+            <v-list-item-icon v-if="hasOptionIcon" v-handle="v-handle">
+              <v-avatar size="48"><img :src="'/img/' + option.icon + '.svg'" aria-hidden="true"/></v-avatar>
+            </v-list-item-icon>
+            <v-list-item-content v-handle="v-handle">
+              <v-list-item-title><span v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name"></span><span v-if="optionFormat == 'plain'">{{option.name}}</span><span v-if="optionFormat == 'iso8601'">
+                  <poll-meeting-time :name="option.name"></poll-meeting-time></span></v-list-item-title>
+              <v-list-item-subtitle class="poll-common-vote-form__allow-wrap">{{option.meaning}}</v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-btn icon="icon" @click="removeOption(option)" :title="$t('common.action.delete')">
+                <common-icon class="text--secondary" name="mdi-delete"></common-icon>
+              </v-btn>
+            </v-list-item-action>
+            <v-list-item-action class="ml-0" v-if="poll.pollType != 'meeting'">
+              <v-btn icon="icon" @click="editOption(option)" :title="$t('common.action.edit')">
+                <common-icon class="text--secondary" name="mdi-pencil"></common-icon>
+              </v-btn>
+            </v-list-item-action>
+            <common-icon class="text--secondary" name="mdi-drag-vertical" style="cursor: grab" v-handle="v-handle" :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'"> </common-icon>
+          </v-list-item>
+        </v-sheet>
+      </sortable-item>
+    </sortable-list>
+    <template v-if="optionFormat == 'i18n'">
+      <p>This poll cannot have new options added. (contact support if you see this message)</p>
+    </template>
+    <template v-if="optionFormat == 'plain'">
+      <div class="d-flex justify-center">
+        <v-btn class="poll-common-form__add-option-btn my-2" @click="addOption" v-t="'poll_common_add_option.modal.title'"></v-btn>
+      </div>
+    </template>
+    <template v-if="optionFormat == 'iso8601'">
+      <div class="v-label v-label--active px-0 text-caption pt-2" v-t="'poll_poll_form.new_option'"></div>
+      <div class="d-flex align-center">
+        <date-time-picker :min="minDate" v-model="newDateOption"></date-time-picker>
+        <v-btn class="poll-meeting-form__option-button ml-4" :title="$t('poll_meeting_time_field.add_time_slot')" outlined="outlined" color="primary" @click="addDateOption()" v-t="'poll_poll_form.add_option_placeholder'"></v-btn>
+      </div>
+      <poll-meeting-add-option-menu :poll="poll" :value="newDateOption"></poll-meeting-add-option-menu>
+    </template>
+  </template>
+  <template v-if="optionFormat == 'iso8601'">
+    <div class="d-flex align-center">
+      <v-text-field class="text-right" style="max-width: 120px; text-align: right" :label="$t('poll_meeting_form.meeting_duration')" v-model="poll.meetingDuration" type="number"></v-text-field><span class="pl-2 text--secondary" v-t="'common.minutes'"></span><span class="pl-1 text--secondary" v-if="formattedDuration">({{formattedDuration}})</span>
+    </div>
+  </template>
+  <template v-if="poll.pollType == 'count'">
+    <p class="text--secondary" v-t="'poll_count_form.agree_target_helptext'"></p>
+    <div class="d-flex">
+      <v-text-field class="poll-common-form__agree-target" v-model="poll.agreeTarget" type="number" :step="1" :label="$t('poll_count_form.agree_target_label')"></v-text-field>
+    </div>
+  </template>
+  <div class="d-flex" v-if="poll.pollType == 'score'">
+    <v-text-field class="poll-score-form__min" v-model="poll.minScore" type="number" :step="1" :label="$t('poll_common.min_score')"></v-text-field>
+    <v-spacer></v-spacer>
+    <v-text-field class="poll-score-form__max" v-model="poll.maxScore" type="number" :step="1" :label="$t('poll_common.max_score')"></v-text-field>
+  </div>
+  <template v-if="poll.pollType == 'poll'">
+    <p class="text--secondary" v-t="'poll_common_form.how_many_options_can_a_voter_choose'"></p>
+    <div class="d-flex">
+      <v-text-field class="poll-common-form__minimum-stance-choices" v-model="poll.minimumStanceChoices" type="number" :step="1" :hint="$t('poll_common_form.choose_at_least')" :label="$t('poll_common_form.minimum_choices')"></v-text-field>
+      <v-spacer></v-spacer>
+      <v-text-field class="poll-common-form__maximum-stance-choices" v-model="poll.maximumStanceChoices" type="number" :step="1" :hint="$t('poll_common_form.choose_at_most')" :label="$t('poll_common_form.maximum_choices')"></v-text-field>
+    </div>
+  </template>
+  <div class="d-flex align-center" v-if="poll.pollType == 'ranked_choice'">
+    <v-text-field class="lmo-number-input" v-model="poll.minimumStanceChoices" :label="$t('poll_ranked_choice_form.minimum_stance_choices_helptext')" :hint="$t('poll_ranked_choice_form.minimum_stance_choices_hint')" type="number" :min="1" :max="poll.pollOptionNames.length"></v-text-field>
+    <validation-errors :subject="poll" field="minimumStanceChoices"></validation-errors>
+  </div>
+  <template v-if="poll.pollType == 'dot_vote'">
+    <v-text-field :label="$t('poll_dot_vote_form.dots_per_person')" type="number" min="1" v-model="poll.dotsPerPerson"></v-text-field>
+    <validation-errors :subject="poll" field="dotsPerPerson"></validation-errors>
+  </template>
+  <v-divider class="my-4"></v-divider>
+  <poll-common-closing-at-field :poll="poll"></poll-common-closing-at-field>
+  <p v-if="poll.closingAt && closesSoon" v-t="{path: 'poll_common_settings.notify_on_closing_soon.voting_closes_too_soon', args: {pollType: poll.translatedPollType()}}"></p>
+  <v-radio-group v-model="poll.specifiedVotersOnly" :disabled="!poll.closingAt" :label="$t('poll_common_settings.who_can_vote')">
+    <v-radio v-if="poll.discussionId && !poll.groupId" :value="false" :label="$t('poll_common_settings.specified_voters_only_false_discussion')"></v-radio>
+    <v-radio v-if="poll.groupId" :value="false" :label="$t('poll_common_settings.specified_voters_only_false_group')"></v-radio>
+    <v-radio class="poll-common-settings__specified-voters-only" :value="true" :label="$t('poll_common_settings.specified_voters_only_true')"></v-radio>
+  </v-radio-group>
+  <div class="caption mt-n4 text--secondary text-caption" v-if="poll.specifiedVotersOnly" v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})"></div>
+  <v-checkbox class="mt-0" v-if="!poll.id && !poll.specifiedVotersOnly" :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})" v-model="poll.notifyRecipients"></v-checkbox>
+  <div class="d-flex justify-center">
+    <v-btn class="my-4 poll-common-form__advanced-btn" @click="showAdvanced = !showAdvanced"><span v-if="showAdvanced" v-t="'poll_common_form.hide_advanced_settings'"></span><span v-else v-t="'poll_common_form.show_advanced_settings'"></span></v-btn>
+  </div>
+  <div v-show="showAdvanced">
+    <v-select :disabled="!poll.closingAt" :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')" v-model="poll.notifyOnClosingSoon" :items="closingSoonItems"></v-select>
+    <template v-if="allowAnonymous">
+      <v-checkbox class="poll-common-checkbox-option poll-settings-anonymous" :disabled="!poll.isNew()" v-model="poll.anonymous" :label="$t('poll_common_form.votes_are_anonymous')"></v-checkbox>
+    </template>
+    <template v-if="poll.config().can_shuffle_options">
+      <v-checkbox class="poll-common-checkbox-option poll-settings-shuffle-options mt-4 pt-2" v-model="poll.shuffleOptions" :label="$t('poll_common_settings.shuffle_options.title')"></v-checkbox>
+    </template>
+    <template v-if="!poll.config().hide_reason_required">
+      <v-select :label="$t('poll_common_form.stance_reason_required_label')" :items="stanceReasonRequiredItems" v-model="poll.stanceReasonRequired"></v-select>
+    </template>
+    <v-text-field v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)" v-model="poll.reasonPrompt" :label="$t('poll_common_form.reason_prompt')" :hint="$t('poll_option_form.prompt_hint')" :placeholder="$t('poll_common.reason_placeholder')"></v-text-field>
+    <template v-if="poll.stanceReasonRequired != 'disabled'">
+      <v-checkbox class="poll-common-checkbox-option" v-model="poll.limitReasonLength" :label="$t('poll_common_form.limit_reason_length')"></v-checkbox>
+    </template>
+    <template v-if="allowAnonymous">
+      <v-select class="poll-common-settings__hide-results mt-6 pt-2" :label="$t('poll_common_card.hide_results')" :items="hideResultsItems" v-model="poll.hideResults" :disabled="!poll.isNew() && currentHideResults == 'until_closed'"></v-select>
+    </template>
+  </div>
+  <common-notify-fields v-if="poll.id" :model="poll"></common-notify-fields>
+  <v-card-actions class="poll-common-form-actions">
+    <help-link path="en/user_manual/polls/intro_to_decisions"></help-link>
+    <v-spacer></v-spacer>
+    <v-btn class="poll-common-form__submit" color="primary" @click="submit()" :loading="poll.processing" :disabled="!poll.title || (hasOptions && pollOptions.length < minOptions)"><span v-if="poll.id" v-t="'common.action.save_changes'"></span><span v-if="!poll.id && poll.closingAt" v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}"></span><span v-if="!poll.id && !poll.closingAt" v-t="'poll_common_form.save_poll'"></span></v-btn>
+  </v-card-actions>
+</div>
 </template>
 <style>
 .lmo-form-label {

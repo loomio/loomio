@@ -20,7 +20,9 @@ export default {
 };
 </script>
 
-<template lang="pug">
-v-list.thread-previews(two-line)
-  thread-preview(v-for="thread in orderedThreads", :key="thread.id", :thread="thread")
+<template>
+
+<v-list class="thread-previews" two-line="two-line">
+  <thread-preview v-for="thread in orderedThreads" :key="thread.id" :thread="thread"></thread-preview>
+</v-list>
 </template>

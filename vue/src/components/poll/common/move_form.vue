@@ -41,18 +41,22 @@ export default {
 }
 
 </script>
-<template lang="pug">
-v-card.poll-common-move-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
-  submit-overlay(:value="poll.processing")
-  v-card-title
-    h1.headline(tabindex="-1" v-t="{path: 'poll_common_move_form.title', args: {poll_type: poll.translatedPollType() }}")
-    v-spacer
-    dismiss-modal-button
-  v-card-text
-    loading(v-if="!groups.length")
-    v-select(v-if="groups.length" v-model="groupId" :items="groups" :label="$t('move_thread_form.body')")
-  v-card-actions.poll-common-form-actions
-    v-spacer
-    v-btn.poll-common-form__submit(color="primary" @click='submit()' :loading="poll.processing")
-      span(v-t="'common.action.move'")
+<template>
+
+<v-card class="poll-common-move-form" @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()">
+  <submit-overlay :value="poll.processing"></submit-overlay>
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="{path: 'poll_common_move_form.title', args: {poll_type: poll.translatedPollType() }}"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <loading v-if="!groups.length"></loading>
+    <v-select v-if="groups.length" v-model="groupId" :items="groups" :label="$t('move_thread_form.body')"></v-select>
+  </v-card-text>
+  <v-card-actions class="poll-common-form-actions">
+    <v-spacer></v-spacer>
+    <v-btn class="poll-common-form__submit" color="primary" @click="submit()" :loading="poll.processing"><span v-t="'common.action.move'"></span></v-btn>
+  </v-card-actions>
+</v-card>
 </template>

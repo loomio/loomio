@@ -115,39 +115,50 @@ export default {
 
 </script>
 
-<template lang="pug">
+<template>
 
-.revision-history-content
-  .mb-3(v-if="titleChanges")
-    v-label(v-t="'discussion_form.title_label'")
-    html-diff.headline(:before="titleChanges[0]" :after="titleChanges[1]")
-
-  .mb-3(v-if="!stanceChoices && otherFields.length")
-    v-simple-table(dense)
-      thead
-        tr
-          th(v-t="'revision_history_modal.field'")
-          th(v-t="'revision_history_modal.before'")
-          th(v-t="'revision_history_modal.after'")
-      tbody
-        tr(v-for="field in otherFields")
-          td {{field.key}}
-          td {{field.was}}
-          td {{field.now}}
-
-  .mb-3(v-if="stanceChoices")
-    .text-secondary(v-t="'revision_history_modal.before'")
-    v-simple-table.mb-4(dense)
-      tr(v-for="choice in stanceChoices.was")
-        td(:style="'border-left: 2px solid '+choice.color") {{choice.name}}
-        td {{choice.score}}
-    .text-secondary(v-t="'revision_history_modal.after'")
-    v-simple-table.mb-4(dense)
-      tr(v-for="choice in stanceChoices.now")
-        td(:style="'border-left: 2px solid '+choice.color") {{choice.name}}
-        td {{choice.score}}
-  .mb-3(v-if="bodyChanges")
-    v-label(v-t="bodyLabel")
-    html-diff.lmo-markdown-wrapper(:before="bodyChanges[0]" :after="bodyChanges[1]")
-
+<div class="revision-history-content">
+  <div class="mb-3" v-if="titleChanges">
+    <v-label v-t="'discussion_form.title_label'"></v-label>
+    <html-diff class="headline" :before="titleChanges[0]" :after="titleChanges[1]"></html-diff>
+  </div>
+  <div class="mb-3" v-if="!stanceChoices && otherFields.length">
+    <v-simple-table dense="dense">
+      <thead>
+        <tr>
+          <th v-t="'revision_history_modal.field'"></th>
+          <th v-t="'revision_history_modal.before'"></th>
+          <th v-t="'revision_history_modal.after'"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="field in otherFields">
+          <td>{{field.key}}</td>
+          <td>{{field.was}}</td>
+          <td>{{field.now}}</td>
+        </tr>
+      </tbody>
+    </v-simple-table>
+  </div>
+  <div class="mb-3" v-if="stanceChoices">
+    <div class="text-secondary" v-t="'revision_history_modal.before'"></div>
+    <v-simple-table class="mb-4" dense="dense">
+      <tr v-for="choice in stanceChoices.was">
+        <td :style="'border-left: 2px solid '+choice.color">{{choice.name}}</td>
+        <td>{{choice.score}}</td>
+      </tr>
+    </v-simple-table>
+    <div class="text-secondary" v-t="'revision_history_modal.after'"></div>
+    <v-simple-table class="mb-4" dense="dense">
+      <tr v-for="choice in stanceChoices.now">
+        <td :style="'border-left: 2px solid '+choice.color">{{choice.name}}</td>
+        <td>{{choice.score}}</td>
+      </tr>
+    </v-simple-table>
+  </div>
+  <div class="mb-3" v-if="bodyChanges">
+    <v-label v-t="bodyLabel"></v-label>
+    <html-diff class="lmo-markdown-wrapper" :before="bodyChanges[0]" :after="bodyChanges[1]"></html-diff>
+  </div>
+</div>
 </template>

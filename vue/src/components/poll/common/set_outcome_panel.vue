@@ -23,17 +23,14 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-alert.my-4.poll-common-set-outcome-panel(
-  icon="mdi-flag-checkered"
-  prominent
-  outlined
-  v-if="showPanel()"
-  color="primary"
-  elevation="3")
-  v-row(align="center")
-    v-col.grow
-      span(v-t="{path: 'poll_common_set_outcome_panel.poll_type', args: {poll_type: poll.translatedPollType()}}")
-    v-col.shrink
-      v-btn.poll-common-set-outcome-panel__submit(color="primary" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_outcome'")
+<template>
+
+<v-alert class="my-4 poll-common-set-outcome-panel" icon="mdi-flag-checkered" prominent="prominent" outlined="outlined" v-if="showPanel()" color="primary" elevation="3">
+  <v-row align="center">
+    <v-col class="grow"><span v-t="{path: 'poll_common_set_outcome_panel.poll_type', args: {poll_type: poll.translatedPollType()}}"></span></v-col>
+    <v-col class="shrink">
+      <v-btn class="poll-common-set-outcome-panel__submit" color="primary" @click="openOutcomeForm()" v-t="'poll_common_set_outcome_panel.enter_outcome'"></v-btn>
+    </v-col>
+  </v-row>
+</v-alert>
 </template>

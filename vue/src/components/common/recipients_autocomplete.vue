@@ -318,83 +318,41 @@ export default {
 
 </script>
 
-<template lang="pug">
-div.recipients-autocomplete
-  //- chips attribute is messing with e2es; no behaviour change noticed
-  v-autocomplete.announcement-form__input(
-    multiple
-    return-object
-    auto-select-first
-    hide-selected
-    v-model='recipients'
-    @change="query = null"
-    :search-input.sync="query"
-    item-text='name'
-    hide-no-data
-    :loading="loading"
-    :label="label"
-    :placeholder="placeholder"
-    :items='suggestions'
-    )
-    template(v-slot:no-data)
-      v-list-item
-        v-list-item-icon
-          common-icon(v-if="!query" name="mdi-account-search")
-          common-icon(v-if="query" name="mdi-information-outline")
-        v-list-item-content
-          v-list-item-title
-            span(v-if="query" v-t="'common.no_results_found'")
-            span(v-else)
-              span(v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'")
-              span(v-if="!canAddGuests" v-t="'announcement.search_by_name'")
-          v-list-item-subtitle
-            span(v-if="!canAddGuests && !canNotifyGroup"
-                 v-t="'announcement.only_admins_can_announce_or_invite'")
-            span(v-if="!canAddGuests && canNotifyGroup"
-                 v-t="'announcement.only_admins_can_invite'")
-            span(v-if="canAddGuests && !canNotifyGroup"
-                 v-t="'announcement.only_admins_can_announce'")
-    template(v-slot:selection='data')
-      v-chip.chip--select-multi(
-        v-if="data.item.type =='audience'"
-        :value='data.selected'
-        close
-        color='primary'
-        @click:close='remove(data.item)'
-        @click='expand(data.item)')
-        span
-          common-icon.mr-1(small name="data.item.icon")
-        span {{ data.item.name }}
-      v-chip.chip--select-multi(
-        v-else
-        :value='data.selected'
-        close
-        outlined
-        color='primary'
-        @click:close='remove(data.item)')
-        span
-          user-avatar.mr-1(
-            v-if="data.item.type == 'user'"
-            :user="data.item.user"
-            :size="24" no-link)
-          common-icon.mr-1(v-else small name="data.item.icon")
-        span {{ data.item.name }}
-        span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
-          space
-          span ({{ $t('common.you') }})
-    template(v-slot:item='data')
-      v-list-item-avatar
-        user-avatar(v-if="data.item.type == 'user'", :user="data.item.user", :size="24" no-link)
-        common-icon.mr-1(v-else small name="data.item.icon")
-      v-list-item-content.announcement-chip__content
-        v-list-item-title
-          span {{data.item.name}}
-          span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
-            space
-            span ({{ $t('common.you') }})
-  notifications-count(
-    v-show="recipients.length"
-    :model='model'
-    :exclude-members="excludeMembers"
-    :include-actor="includeActor")
+<template>
+
+<div class="recipients-autocomplete">
+  <v-autocomplete class="announcement-form__input" multiple="multiple" return-object="return-object" auto-select-first="auto-select-first" hide-selected="hide-selected" v-model="recipients" @change="query = null" :search-input.sync="query" item-text="name" hide-no-data="hide-no-data" :loading="loading" :label="label" :placeholder="placeholder" :items="suggestions">
+    <template v-slot:no-data="v-slot:no-data">
+      <v-list-item>
+        <v-list-item-icon>
+          <common-icon v-if="!query" name="mdi-account-search"></common-icon>
+          <common-icon v-if="query" name="mdi-information-outline"></common-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title><span v-if="query" v-t="'common.no_results_found'"></span><span v-else><span v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'"></span><span v-if="!canAddGuests" v-t="'announcement.search_by_name'"></span></span></v-list-item-title>
+          <v-list-item-subtitle><span v-if="!canAddGuests && !canNotifyGroup" v-t="'announcement.only_admins_can_announce_or_invite'"></span><span v-if="!canAddGuests && canNotifyGroup" v-t="'announcement.only_admins_can_invite'"></span><span v-if="canAddGuests && !canNotifyGroup" v-t="'announcement.only_admins_can_announce'"></span></v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </template>
+    <template v-slot:selection="data">
+      <v-chip class="chip--select-multi" v-if="data.item.type =='audience'" :value="data.selected" close="close" color="primary" @click:close="remove(data.item)" @click="expand(data.item)"><span>
+          <common-icon class="mr-1" small="small" name="data.item.icon"></common-icon></span><span>{{ data.item.name }}</span></v-chip>
+      <v-chip class="chip--select-multi" v-else :value="data.selected" close="close" outlined="outlined" color="primary" @click:close="remove(data.item)"><span>
+          <user-avatar class="mr-1" v-if="data.item.type == 'user'" :user="data.item.user" :size="24" no-link="no-link"></user-avatar>
+          <common-icon class="mr-1" v-else small="small" name="data.item.icon"></common-icon></span><span>{{ data.item.name }}</span><span v-if="data.item.type == 'user' && currentUserId == data.item.id">
+          <space></space><span>({{ $t('common.you') }})</span></span></v-chip>
+    </template>
+    <template v-slot:item="data">
+      <v-list-item-avatar>
+        <user-avatar v-if="data.item.type == 'user'" :user="data.item.user" :size="24" no-link="no-link"></user-avatar>
+        <common-icon class="mr-1" v-else small="small" name="data.item.icon"></common-icon>
+      </v-list-item-avatar>
+      <v-list-item-content class="announcement-chip__content">
+        <v-list-item-title><span>{{data.item.name}}</span><span v-if="data.item.type == 'user' && currentUserId == data.item.id">
+            <space></space><span>({{ $t('common.you') }})</span></span></v-list-item-title>
+      </v-list-item-content>
+    </template>
+  </v-autocomplete>
+  <notifications-count v-show="recipients.length" :model="model" :exclude-members="excludeMembers" :include-actor="includeActor"></notifications-count>
+</div>
 </template>

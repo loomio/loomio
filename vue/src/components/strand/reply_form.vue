@@ -53,16 +53,9 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.reply-form(v-if="show")
-  //- p reply formwrapper {{eventable.constructor.singular}}
+<template>
 
-  comment-form(
-    :comment="newComment"
-    avatar-size="36"
-    @comment-submitted="show= false"
-    @cancel-reply="show = false"
-    autofocus)
-
-
+<div class="reply-form" v-if="show">
+  <comment-form :comment="newComment" avatar-size="36" @comment-submitted="show= false" @cancel-reply="show = false" autofocus="autofocus"></comment-form>
+</div>
 </template>

@@ -14,12 +14,15 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-card.edit-comment-form
-  submit-overlay(:value='comment.processing')
-  v-card-title
-    h1.headline(tabindex="-1" v-t="'comment_form.edit_comment'")
-    v-spacer
-    dismiss-modal-button(:model="comment")
-  comment-form.mx-4(:comment="comment" @comment-submitted="close()" autofocus)
+<template>
+
+<v-card class="edit-comment-form">
+  <submit-overlay :value="comment.processing"></submit-overlay>
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="'comment_form.edit_comment'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button :model="comment"></dismiss-modal-button>
+  </v-card-title>
+  <comment-form class="mx-4" :comment="comment" @comment-submitted="close()" autofocus="autofocus"></comment-form>
+</v-card>
 </template>

@@ -31,10 +31,9 @@ export default {
 };
 
 </script>
-<template lang="pug">
-.poll-meeting-add-option-menu
-  p.text-caption.text--secondary
-    span(v-t="{path: 'poll_common_form.your_in_zone', args: {zone: currentTimeZone}}")
-    br
-    span(v-t="'poll_meeting_form.participants_see_local_times'")
+<template>
+
+<div class="poll-meeting-add-option-menu">
+  <p class="text-caption text--secondary"><span v-t="{path: 'poll_common_form.your_in_zone', args: {zone: currentTimeZone}}"></span><br/><span v-t="'poll_meeting_form.participants_see_local_times'"></span></p>
+</div>
 </template>

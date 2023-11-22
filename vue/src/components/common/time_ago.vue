@@ -20,8 +20,8 @@ export default {
 };
 </script>
 
-<template lang="pug">
-abbr.time-ago(:title='exactDate(parsedDate)') {{approximateDate(parsedDate)}}
+<template>
+<abbr class="time-ago" :title="exactDate(parsedDate)">{{approximateDate(parsedDate)}}</abbr>
 </template>
 
 <style lang="sass">

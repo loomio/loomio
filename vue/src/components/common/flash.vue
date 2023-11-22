@@ -25,22 +25,10 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-snackbar.flash-root(
-  top
-  v-model="isOpen"
-  :color="flash.level == 'success' ? 'primary' : flash.level"
-  :timeout="flash.duration")
-  span.flash-root__message(
-    v-if="flash.message"
-    role="status"
-    aria-live="assertive"
-    v-t="{path: flash.message, args: flash.options}")
-  span.flash-root__message(
-    v-if="flash.text"
-    role="status"
-    aria-live="assertive")
-  v-progress-linear.mt-2(v-if="flash.level == 'wait'" :value="seconds")
-  .flash-root__action(v-if="flash.actionFn")
-    a(@click="flash.actionFn()", v-t="flash.action")
+<template>
+
+<v-snackbar class="flash-root" top="top" v-model="isOpen" :color="flash.level == 'success' ? 'primary' : flash.level" :timeout="flash.duration"><span class="flash-root__message" v-if="flash.message" role="status" aria-live="assertive" v-t="{path: flash.message, args: flash.options}"></span><span class="flash-root__message" v-if="flash.text" role="status" aria-live="assertive"></span>
+  <v-progress-linear class="mt-2" v-if="flash.level == 'wait'" :value="seconds"></v-progress-linear>
+  <div class="flash-root__action" v-if="flash.actionFn"><a @click="flash.actionFn()" v-t="flash.action"></a></div>
+</v-snackbar>
 </template>

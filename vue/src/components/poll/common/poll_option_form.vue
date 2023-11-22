@@ -38,36 +38,24 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card.poll-common-option-form
-  v-card-title
-    h1.headline(v-if="edit" v-t="$t('poll_option_form.edit_option')")
-    h1.headline(v-else v-t="$t('poll_poll_form.add_option_placeholder')")
-    v-spacer
-    dismiss-modal-button
-  v-card-text
-    v-text-field.poll-option-form__name(
-      autofocus
-      :label="$t('poll_option_form.option_name')"
-      v-model="pollOption.name"
-      :hint="$t('poll_option_form.option_name_hint')"
-      counter
-      :rules="nameRules"
-    )
-    v-select(v-if="hasOptionIcon", :label="$t('poll_option_form.icon')" v-model="pollOption.icon", :items="icons")
-    v-textarea(
-      v-if="hasOptionMeaning"
-      :label="$t('poll_option_form.meaning')"
-      :hint="$t('poll_option_form.meaning_hint')"
-      v-model="pollOption.meaning"
-      counter="280")
-    v-text-field(
-      v-if="hasOptionPrompt"
-      :label="$t('poll_option_form.prompt')"
-      :hint="$t('poll_option_form.prompt_hint')"
-      :placeholder="$t('poll_common.reason_placeholder')"
-      v-model="pollOption.prompt")
-  v-card-actions
-    v-spacer
-    v-btn.poll-option-form__done-btn(@click="submit" v-t="'common.action.done'") 
+<template>
+
+<v-card class="poll-common-option-form">
+  <v-card-title>
+    <h1 class="headline" v-if="edit" v-t="$t('poll_option_form.edit_option')"></h1>
+    <h1 class="headline" v-else v-t="$t('poll_poll_form.add_option_placeholder')"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <v-text-field class="poll-option-form__name" autofocus="autofocus" :label="$t('poll_option_form.option_name')" v-model="pollOption.name" :hint="$t('poll_option_form.option_name_hint')" counter="counter" :rules="nameRules"></v-text-field>
+    <v-select v-if="hasOptionIcon" :label="$t('poll_option_form.icon')" v-model="pollOption.icon" :items="icons"></v-select>
+    <v-textarea v-if="hasOptionMeaning" :label="$t('poll_option_form.meaning')" :hint="$t('poll_option_form.meaning_hint')" v-model="pollOption.meaning" counter="280"></v-textarea>
+    <v-text-field v-if="hasOptionPrompt" :label="$t('poll_option_form.prompt')" :hint="$t('poll_option_form.prompt_hint')" :placeholder="$t('poll_common.reason_placeholder')" v-model="pollOption.prompt"></v-text-field>
+  </v-card-text>
+  <v-card-actions>
+    <v-spacer></v-spacer>
+    <v-btn class="poll-option-form__done-btn" @click="submit" v-t="'common.action.done'"></v-btn>
+  </v-card-actions>
+</v-card>
 </template>

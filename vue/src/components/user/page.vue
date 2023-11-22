@@ -57,35 +57,45 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-main.user-page__profile
-  v-container.user-page.max-width-800.mt-4.px-0.px-sm-3
-    loading(v-if='isEmptyUser')
-    div(v-else).user-page__content
-      v-card
-        v-card-title
-          v-layout.align-center.justify-center
-            h1.headline {{user.name}}
-        v-card-text
-          v-layout.user-page__info.mb-5.align-center.justify-center(column)
-            user-avatar.mb-5(:user='user' :size='192' :no-link="true")
-            .text--secondary @{{user.username}}
-            formatted-text(v-if="user" :model="user" column="shortBio")
-            div(v-t="{ path: 'user_page.locale_field', args: { value: user.localeName() } }", v-if='user.localeName()')
-            span
-              span(v-t="'common.time_zone'")
-              span : {{user.timeZone}}
-            div(v-t="{ path: 'user_page.location_field', args: { value: user.location } }", v-if='user.location')
-            div(v-t="{ path: 'user_page.online_field', args: { value: approximate(user.lastSeenAt) } }", v-if='user.lastSeenAt')
-            v-btn.my-4.user-page__contact-user(v-if="canContactUser" color="accent" outlined :to="'/d/new?user_id=' + user.id" v-t="{ path: 'user_page.message_user', args: { name: user.firstName() } }")
-      v-card.mt-4.user-page__groups
-        v-card-text
-          h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
-          v-list(dense)
-            v-list-item.user-page__group(v-for='group in groups' :key='group.id' :to='urlFor(group)')
-              v-list-item-avatar
-                v-avatar.mr-2(tile size="48")
-                  img(:src='group.logoUrl')
-              v-list-item-title {{group.fullName}}
-          loading(v-if='loadingGroupsForExecuting')
+<template>
+
+<v-main class="user-page__profile">
+  <v-container class="user-page max-width-800 mt-4 px-0 px-sm-3">
+    <loading v-if="isEmptyUser"></loading>
+    <div class="user-page__content" v-else>
+      <v-card>
+        <v-card-title>
+          <v-layout class="align-center justify-center">
+            <h1 class="headline">{{user.name}}</h1>
+          </v-layout>
+        </v-card-title>
+        <v-card-text>
+          <v-layout class="user-page__info mb-5 align-center justify-center" column="column">
+            <user-avatar class="mb-5" :user="user" :size="192" :no-link="true"></user-avatar>
+            <div class="text--secondary">@{{user.username}}</div>
+            <formatted-text v-if="user" :model="user" column="shortBio"></formatted-text>
+            <div v-t="{ path: 'user_page.locale_field', args: { value: user.localeName() } }" v-if="user.localeName()"></div><span><span v-t="'common.time_zone'"></span><span>: {{user.timeZone}}</span></span>
+            <div v-t="{ path: 'user_page.location_field', args: { value: user.location } }" v-if="user.location"></div>
+            <div v-t="{ path: 'user_page.online_field', args: { value: approximate(user.lastSeenAt) } }" v-if="user.lastSeenAt"></div>
+            <v-btn class="my-4 user-page__contact-user" v-if="canContactUser" color="accent" outlined="outlined" :to="'/d/new?user_id=' + user.id" v-t="{ path: 'user_page.message_user', args: { name: user.firstName() } }"></v-btn>
+          </v-layout>
+        </v-card-text>
+      </v-card>
+      <v-card class="mt-4 user-page__groups">
+        <v-card-text>
+          <h3 class="lmo-h3 user-page__groups-title" v-t="'common.groups'"></h3>
+          <v-list dense="dense">
+            <v-list-item class="user-page__group" v-for="group in groups" :key="group.id" :to="urlFor(group)">
+              <v-list-item-avatar>
+                <v-avatar class="mr-2" tile="tile" size="48"><img :src="group.logoUrl"/></v-avatar>
+              </v-list-item-avatar>
+              <v-list-item-title>{{group.fullName}}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+          <loading v-if="loadingGroupsForExecuting"></loading>
+        </v-card-text>
+      </v-card>
+    </div>
+  </v-container>
+</v-main>
 </template>

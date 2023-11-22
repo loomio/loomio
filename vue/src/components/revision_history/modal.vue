@@ -60,21 +60,25 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-card.revision-history-modal
-  v-card-title
-    h1.headline(tabindex="-1" v-t="'revision_history_modal.' + model.constructor.singular + '_header'")
-    v-spacer
-    dismiss-modal-button(:close="close")
-  .revision-history-modal__body.pa-4
-    v-layout(align-center justify-space-between)
-      v-btn.revision-history-nav--previous(icon :disabled='isOldest' @click='getPrevious()')
-        common-icon(name="mdi-arrow-left")
+<template>
 
-      span(v-if="version" v-t="{path: 'revision_history_modal.edit_by', args: {name: version.authorName(), date: versionDate}}")
-
-      v-btn.revision-history-nav--next(icon :disabled='isNewest' @click='getNext()')
-        common-icon(name="mdi-arrow-right")
-    v-divider.mb-3
-    revision-history-content(v-if='version' :model='model' :version='version')
+<v-card class="revision-history-modal">
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="'revision_history_modal.' + model.constructor.singular + '_header'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button :close="close"></dismiss-modal-button>
+  </v-card-title>
+  <div class="revision-history-modal__body pa-4">
+    <v-layout align-center="align-center" justify-space-between="justify-space-between">
+      <v-btn class="revision-history-nav--previous" icon="icon" :disabled="isOldest" @click="getPrevious()">
+        <common-icon name="mdi-arrow-left"></common-icon>
+      </v-btn><span v-if="version" v-t="{path: 'revision_history_modal.edit_by', args: {name: version.authorName(), date: versionDate}}"></span>
+      <v-btn class="revision-history-nav--next" icon="icon" :disabled="isNewest" @click="getNext()">
+        <common-icon name="mdi-arrow-right"></common-icon>
+      </v-btn>
+    </v-layout>
+    <v-divider class="mb-3"></v-divider>
+    <revision-history-content v-if="version" :model="model" :version="version"></revision-history-content>
+  </div>
+</v-card>
 </template>

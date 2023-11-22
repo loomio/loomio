@@ -23,11 +23,11 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.strand-other-kind
-  //- | hi {{event.model().poll().title}}
-  span.text--secondary(v-html='headline')
-  mid-dot.text--secondary
-  time-ago.text--secondary(:date='event.createdAt')
-  formatted-text.thread-item__body(:model="eventable" column="statement")
+<template>
+
+<div class="strand-other-kind"><span class="text--secondary" v-html="headline"></span>
+  <mid-dot class="text--secondary"></mid-dot>
+  <time-ago class="text--secondary" :date="event.createdAt"></time-ago>
+  <formatted-text class="thread-item__body" :model="eventable" column="statement"></formatted-text>
+</div>
 </template>

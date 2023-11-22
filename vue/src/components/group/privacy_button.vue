@@ -19,11 +19,13 @@ export default
 };
 </script>
 
-<template lang="pug">
-v-tooltip(bottom)
-  template(v-slot:activator="{on, attrs}")
-    v-btn.group-privacy-button(icon v-on="on" v-bind="attrs" :aria-label='privacyDescription')
-      common-icon(:name="iconClass")
-      //- span(v-t="'common.privacy.' + group.groupPrivacy")
-  | {{privacyDescription}}
+<template>
+
+<v-tooltip bottom="bottom">
+  <template v-slot:activator="{on, attrs}">
+    <v-btn class="group-privacy-button" icon="icon" v-on="on" v-bind="attrs" :aria-label="privacyDescription">
+      <common-icon :name="iconClass"></common-icon>
+    </v-btn>
+  </template>{{privacyDescription}}
+</v-tooltip>
 </template>

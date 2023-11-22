@@ -95,31 +95,30 @@ export default {
 };
 
 </script>
-<template lang="pug">
-.poll-form-page
-  v-main
-    v-container.max-width-800.px-0.px-sm-3
-      loading(:until="!loading")
-        div.pa-4.py-0(v-if="group")
-          .d-flex
-            v-breadcrumbs.px-0.pt-0(:items="breadcrumbs")
-              template(v-slot:divider)
-                common-icon(name="mdi-chevron-right")
-        v-card.poll-common-modal(v-if="isLoggedIn")
-          v-card-title
-            h1.text-h5(v-t="'poll_common.decision_templates'")
+<template>
 
-          poll-common-form.px-4(
-            v-if="poll"
-            :poll="poll"
-            @setPoll="setPoll"
-            redirect-on-save
-          )
-
-          poll-common-choose-template(
-            v-if="!poll"
-            @setPoll="setPoll"
-            :discussion="discussion"
-            :group="group"
-          )
+<div class="poll-form-page">
+  <v-main>
+    <v-container class="max-width-800 px-0 px-sm-3">
+      <loading :until="!loading">
+        <div class="pa-4 py-0" v-if="group">
+          <div class="d-flex">
+            <v-breadcrumbs class="px-0 pt-0" :items="breadcrumbs">
+              <template v-slot:divider="v-slot:divider">
+                <common-icon name="mdi-chevron-right"></common-icon>
+              </template>
+            </v-breadcrumbs>
+          </div>
+        </div>
+        <v-card class="poll-common-modal" v-if="isLoggedIn">
+          <v-card-title>
+            <h1 class="text-h5" v-t="'poll_common.decision_templates'"></h1>
+          </v-card-title>
+          <poll-common-form class="px-4" v-if="poll" :poll="poll" @setPoll="setPoll" redirect-on-save="redirect-on-save"></poll-common-form>
+          <poll-common-choose-template v-if="!poll" @setPoll="setPoll" :discussion="discussion" :group="group"></poll-common-choose-template>
+        </v-card>
+      </loading>
+    </v-container>
+  </v-main>
+</div>
 </template>

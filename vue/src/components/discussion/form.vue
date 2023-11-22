@@ -146,79 +146,43 @@ export default {
 }
 </script>
 
-<template lang="pug">
-.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
-  submit-overlay(:value='discussion.processing')
-  v-card-title
-    h1.text-h4(v-observe-visibility="{callback: titleVisible}")
-      span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
-      template(v-else)
-        //- span(v-if="discussionTemplate && !discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: discussionTemplate.processName}}")
-        span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
-        span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
-    v-spacer
-    dismiss-modal-button(
-      v-if="!isPage"
-      aria-hidden='true'
-      :model="discussion")
-    v-btn(
-      v-if="isPage && discussion.id"
-      icon
-      aria-hidden='true'
-      :to="urlFor(discussion)"
-    )
-      common-icon(name="mdi-close")
-    v-btn.back-button(v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-      common-icon(name="mdi-close")
+<template>
 
-
-  .pa-4
-    thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
-
-    v-select.pb-4(
-      :disabled="!!discussion.id"
-      v-model="discussion.groupId"
-      :items="groupItems"
-      :label="$t('common.group')"
-      :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')"
-      persistent-hint
-    )
-
-    div(v-if="showUpgradeMessage")
-      p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
-      p(v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
-
-    .discussion-form__group-selected(v-if='!showUpgradeMessage')
-      v-text-field#discussion-title.discussion-form__title-input(
-        :label="$t('discussion_form.title_label')"
-        :placeholder="titlePlaceholder"
-        v-model='discussion.title' maxlength='255' required
-      )
-      validation-errors(:subject='discussion', field='title')
-
-      tags-field(:model="discussion")
-        
-      lmo-textarea(
-        :model='discussion'
-        field="description"
-        :label="$t('discussion_form.context_label')"
-        :placeholder="$t('discussion_form.context_placeholder')"
-      )
-
-      common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
-      //- p.discussion-form__visibility
-
-      v-card-actions
-        help-link(path='en/user_manual/threads/starting_threads')
-        v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
-          span(v-t="'thread_arrangement_form.edit'")
-        v-spacer
-        v-btn.discussion-form__submit(
-          color="primary"
-          @click="submit()"
-          :disabled="submitIsDisabled"
-          :loading="discussion.processing"
-        )
-          span(v-if="!discussion.id" v-t="'discussion_form.start_thread'")
-          span(v-if="discussion.id" v-t="'common.action.save'")
+<div class="discussion-form" @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()">
+  <submit-overlay :value="discussion.processing"></submit-overlay>
+  <v-card-title>
+    <h1 class="text-h4" v-observe-visibility="{callback: titleVisible}"><span v-if="isMovingItems" v-t="'discussion_form.moving_items_title'"></span>
+      <template v-else><span v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'"></span><span v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'"></span></template>
+    </h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button v-if="!isPage" aria-hidden="true" :model="discussion"></dismiss-modal-button>
+    <v-btn v-if="isPage && discussion.id" icon="icon" aria-hidden="true" :to="urlFor(discussion)">
+      <common-icon name="mdi-close"></common-icon>
+    </v-btn>
+    <v-btn class="back-button" v-if="isPage && $route.query.return_to" icon="icon" :aria-label="$t('common.action.cancel')" :to="$route.query.return_to">
+      <common-icon name="mdi-close"></common-icon>
+    </v-btn>
+  </v-card-title>
+  <div class="pa-4">
+    <thread-template-help-panel v-if="discussionTemplate" :discussion-template="discussionTemplate"></thread-template-help-panel>
+    <v-select class="pb-4" :disabled="!!discussion.id" v-model="discussion.groupId" :items="groupItems" :label="$t('common.group')" :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')" persistent-hint="persistent-hint"></v-select>
+    <div v-if="showUpgradeMessage">
+      <p v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})"></p>
+      <p v-if="!subscriptionActive" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})"></p>
+    </div>
+    <div class="discussion-form__group-selected" v-if="!showUpgradeMessage">
+      <v-text-field class="discussion-form__title-input" id="discussion-title" :label="$t('discussion_form.title_label')" :placeholder="titlePlaceholder" v-model="discussion.title" maxlength="255" required="required"></v-text-field>
+      <validation-errors :subject="discussion" field="title"></validation-errors>
+      <tags-field :model="discussion"></tags-field>
+      <lmo-textarea :model="discussion" field="description" :label="$t('discussion_form.context_label')" :placeholder="$t('discussion_form.context_placeholder')"></lmo-textarea>
+      <common-notify-fields v-if="loaded" :model="discussion" :initial-recipients="initialRecipients"></common-notify-fields>
+      <v-card-actions>
+        <help-link path="en/user_manual/threads/starting_threads"></help-link>
+        <v-btn class="discussion-form__edit-layout" v-if="discussion.id" @click="openEditLayout"><span v-t="'thread_arrangement_form.edit'"></span></v-btn>
+        <v-spacer></v-spacer>
+        <v-btn class="discussion-form__submit" color="primary" @click="submit()" :disabled="submitIsDisabled" :loading="discussion.processing"><span v-if="!discussion.id" v-t="'discussion_form.start_thread'"></span><span v-if="discussion.id" v-t="'common.action.save'"></span></v-btn>
+      </v-card-actions>
+    </div>
+  </div>
+</div>
 </template>

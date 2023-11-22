@@ -86,50 +86,40 @@ export default {
 
 </script>
 
-<template lang="pug">
-.strand-new-discussion.context-panel#context(v-observe-visibility="{callback: viewed, once: true}")
-  v-layout.ml-n2(align-center wrap)
-    v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
-      template(v-slot:divider)
-        common-icon(name="mdi-chevron-right")
-    v-spacer
-    tags-display(:tags="discussion.tags" :group="discussion.group()")
-    v-chip(
-      v-if="discussion.private"
-      small outlined
-      :title="$t('discussion_form.privacy_private')"
-      )
-      i.mdi.mdi-lock-outline.mr-1
-      span(v-t="'common.privacy.private'")
-    v-chip(
-      v-if="!discussion.private"
-      small outlined
-      :title="$t('discussion_form.privacy_public')"
-      )
-      i.mdi.mdi-earth.mr-1
-      span(v-t="'common.privacy.public'")
+<template>
 
-  strand-title(:discussion="discussion")
-
-  .mb-4
-    user-avatar.mr-2(:user='author', :size='36')
-    router-link.text--secondary(:to="urlFor(author)") {{authorName}}
-    mid-dot
-    router-link.text--secondary(:to='urlFor(discussion)')
-      time-ago(:date='discussion.createdAt')
-    span(v-show='discussion.seenByCount > 0')
-      mid-dot
-      a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
-    span(v-show='discussion.usersNotifiedCount != null')
-      mid-dot
-      a.context-panel__users_notified_count(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
-  template(v-if="!collapsed")
-    formatted-text.context-panel__description(:model="discussion" column="description")
-    link-previews(:model="discussion")
-    document-list(:model='discussion')
-    attachment-list(:attachments="discussion.attachments")
-    action-dock.py-2(:model='discussion' :actions='dockActions' :menu-actions='menuActions')
-  strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
+<div class="strand-new-discussion context-panel" id="context" v-observe-visibility="{callback: viewed, once: true}">
+  <v-layout class="ml-n2" align-center="align-center" wrap="wrap">
+    <v-breadcrumbs class="context-panel__breadcrumbs" :items="groups">
+      <template v-slot:divider="v-slot:divider">
+        <common-icon name="mdi-chevron-right"></common-icon>
+      </template>
+    </v-breadcrumbs>
+    <v-spacer></v-spacer>
+    <tags-display :tags="discussion.tags" :group="discussion.group()"></tags-display>
+    <v-chip v-if="discussion.private" small="small" outlined="outlined" :title="$t('discussion_form.privacy_private')"><i class="mdi mdi-lock-outline mr-1"></i><span v-t="'common.privacy.private'"></span></v-chip>
+    <v-chip v-if="!discussion.private" small="small" outlined="outlined" :title="$t('discussion_form.privacy_public')"><i class="mdi mdi-earth mr-1"></i><span v-t="'common.privacy.public'"></span></v-chip>
+  </v-layout>
+  <strand-title :discussion="discussion"></strand-title>
+  <div class="mb-4">
+    <user-avatar class="mr-2" :user="author" :size="36"></user-avatar>
+    <router-link class="text--secondary" :to="urlFor(author)">{{authorName}}</router-link>
+    <mid-dot></mid-dot>
+    <router-link class="text--secondary" :to="urlFor(discussion)">
+      <time-ago :date="discussion.createdAt"></time-ago>
+    </router-link><span v-show="discussion.seenByCount > 0">
+      <mid-dot></mid-dot><a class="context-panel__seen_by_count" v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }" @click="openSeenByModal()"></a></span><span v-show="discussion.usersNotifiedCount != null">
+      <mid-dot></mid-dot><a class="context-panel__users_notified_count" v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }" @click="actions.notification_history.perform"></a></span>
+  </div>
+  <template v-if="!collapsed">
+    <formatted-text class="context-panel__description" :model="discussion" column="description"></formatted-text>
+    <link-previews :model="discussion"></link-previews>
+    <document-list :model="discussion"></document-list>
+    <attachment-list :attachments="discussion.attachments"></attachment-list>
+    <action-dock class="py-2" :model="discussion" :actions="dockActions" :menu-actions="menuActions"></action-dock>
+  </template>
+  <strand-actions-panel v-if="discussion.newestFirst" :discussion="discussion"></strand-actions-panel>
+</div>
 </template>
 <style lang="sass">
 @import '@/css/variables'

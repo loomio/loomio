@@ -44,40 +44,55 @@ export default {
 
 </script>
 
-<template lang="pug">
-div.user-dropdown
-  v-list-item(v-if="!user.experiences['sidebar']" @click="togglePinned" dense)
-      v-list-item-title(v-t="'user_dropdown.pin_sidebar'")
-      v-list-item-icon
-        common-icon(name="mdi-pin")
-  v-list-item(v-if="user.experiences['sidebar']" @click="togglePinned" dense)
-      v-list-item-title(v-t="'user_dropdown.unpin_sidebar'")
-      v-list-item-icon
-        common-icon(name="mdi-pin-off")
-  v-list-item.user-dropdown__list-item-button--profile(to="/profile" dense)
-    v-list-item-title(v-t="'user_dropdown.edit_profile'")
-    v-list-item-icon
-      common-icon(name="mdi-account")
-  v-list-item.user-dropdown__list-item-button--email-settings(to="/email_preferences" dense)
-    v-list-item-title(v-t="'user_dropdown.email_settings'")
-    v-list-item-icon
-      common-icon(name="mdi-cog-outline")
-  v-list-item(v-if="!isDark" @click="toggleDark" dense)
-      v-list-item-title(v-t="'user_dropdown.enable_dark_mode'")
-      v-list-item-icon
-        common-icon(name="mdi-weather-night")
-  v-list-item(v-if="isDark" @click="toggleDark" dense)
-      v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
-      v-list-item-icon
-        common-icon(name="mdi-white-balance-sunny")
-  v-list-item(@click="signOut()" dense)
-    v-list-item-title(v-t="'user_dropdown.sign_out'")
-    v-list-item-icon
-      common-icon(name="mdi-exit-to-app")
-  v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" dense :title="release")
-    v-list-item-title.text--secondary
-      span(v-t="'common.version'")
-      space
-      span {{version}}
+<template>
 
+<div class="user-dropdown">
+  <v-list-item v-if="!user.experiences['sidebar']" @click="togglePinned" dense="dense">
+    <v-list-item-title v-t="'user_dropdown.pin_sidebar'"></v-list-item-title>
+    <v-list-item-icon>
+      <common-icon name="mdi-pin"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item v-if="user.experiences['sidebar']" @click="togglePinned" dense="dense">
+    <v-list-item-title v-t="'user_dropdown.unpin_sidebar'"></v-list-item-title>
+    <v-list-item-icon>
+      <common-icon name="mdi-pin-off"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item class="user-dropdown__list-item-button--profile" to="/profile" dense="dense">
+    <v-list-item-title v-t="'user_dropdown.edit_profile'"></v-list-item-title>
+    <v-list-item-icon>
+      <common-icon name="mdi-account"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item class="user-dropdown__list-item-button--email-settings" to="/email_preferences" dense="dense">
+    <v-list-item-title v-t="'user_dropdown.email_settings'"></v-list-item-title>
+    <v-list-item-icon>
+      <common-icon name="mdi-cog-outline"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item v-if="!isDark" @click="toggleDark" dense="dense">
+    <v-list-item-title v-t="'user_dropdown.enable_dark_mode'"></v-list-item-title>
+    <v-list-item-icon>
+      <common-icon name="mdi-weather-night"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item v-if="isDark" @click="toggleDark" dense="dense">
+    <v-list-item-title v-t="'user_dropdown.disable_dark_mode'"></v-list-item-title>
+    <v-list-item-icon>
+      <common-icon name="mdi-white-balance-sunny"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item @click="signOut()" dense="dense">
+    <v-list-item-title v-t="'user_dropdown.sign_out'"></v-list-item-title>
+    <v-list-item-icon>
+      <common-icon name="mdi-exit-to-app"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item href="https://github.com/loomio/loomio/releases" target="_blank" dense="dense" :title="release">
+    <v-list-item-title class="text--secondary"><span v-t="'common.version'"></span>
+      <space></space><span>{{version}}</span>
+    </v-list-item-title>
+  </v-list-item>
+</div>
 </template>

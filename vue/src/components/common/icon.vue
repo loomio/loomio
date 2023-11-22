@@ -343,18 +343,7 @@ export default {
 };
 </script>
 
-<template lang="pug">
-v-icon(
-  color="color"
-  :dense="dense"
-  :large="large"
-  :left="left"
-  :light="light"
-  :right="right"
-  :small="small"
-  :tag="tag"
-  :x-large="XLarge"
-  :x-small="XSmall"
-  :size="size"
-) {{ iconSVG() }}
+<template>
+
+<v-icon color="color" :dense="dense" :large="large" :left="left" :light="light" :right="right" :small="small" :tag="tag" :x-large="XLarge" :x-small="XSmall" :size="size">{{ iconSVG() }}</v-icon>
 </template>

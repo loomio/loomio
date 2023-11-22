@@ -26,31 +26,29 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-alert.my-4.poll-common-outcome-panel(
-  v-if="outcome"
-  color="primary"
-  outlined)
-  h2.title(v-t="'poll_common.outcome'")
-  div.my-2
-    user-avatar(:user="outcome.author()", :size="24").mr-2
-    space
-    //- .poll-common-outcome-panel__authored-by.caption.my-2
-    span(v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }")
-    mid-dot
-    time-ago(:date="outcome.createdAt")
-    template(v-if="outcome.reviewOn")
-      mid-dot
-      span(v-t="'poll_common.review_due'")
-      space
-      time-ago(:date="outcome.reviewOn")
-  .poll-common-outcome__event-info(v-if="outcome.poll().datesAsOptions() && outcome.pollOption()")
-    .title {{outcome.eventSummary}}
-    span {{exactDate(parseISO(outcome.pollOption().name))}}
-    p {{outcome.eventLocation}}
-  formatted-text(:model="outcome" column="statement")
-  link-previews(:model="outcome")
-  document-list(:model="outcome")
-  attachment-list(:attachments="outcome.attachments")
-  action-dock(:model="outcome", :actions="dockActions", :menuActions="menuActions")
+<template>
+
+<v-alert class="my-4 poll-common-outcome-panel" v-if="outcome" color="primary" outlined="outlined">
+  <h2 class="title" v-t="'poll_common.outcome'"></h2>
+  <div class="my-2">
+    <user-avatar class="mr-2" :user="outcome.author()" :size="24"></user-avatar>
+    <space></space><span v-t="{ path: 'poll_common_outcome_panel.authored_by', args: { name: outcome.authorName() } }"></span>
+    <mid-dot></mid-dot>
+    <time-ago :date="outcome.createdAt"></time-ago>
+    <template v-if="outcome.reviewOn">
+      <mid-dot></mid-dot><span v-t="'poll_common.review_due'"></span>
+      <space></space>
+      <time-ago :date="outcome.reviewOn"></time-ago>
+    </template>
+  </div>
+  <div class="poll-common-outcome__event-info" v-if="outcome.poll().datesAsOptions() && outcome.pollOption()">
+    <div class="title">{{outcome.eventSummary}}</div><span>{{exactDate(parseISO(outcome.pollOption().name))}}</span>
+    <p>{{outcome.eventLocation}}</p>
+  </div>
+  <formatted-text :model="outcome" column="statement"></formatted-text>
+  <link-previews :model="outcome"></link-previews>
+  <document-list :model="outcome"></document-list>
+  <attachment-list :attachments="outcome.attachments"></attachment-list>
+  <action-dock :model="outcome" :actions="dockActions" :menuActions="menuActions"></action-dock>
+</v-alert>
 </template>

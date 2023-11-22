@@ -97,20 +97,23 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card
-  submit-overlay(:value='selectedDiscussion && selectedDiscussion.processing')
-  v-card-title
-    h1.headline(tabindex="-1" v-t="'action_dock.move_items'")
-    v-spacer
-    dismiss-modal-button(aria-hidden='true')
-  v-card-text
-    v-select(v-model="groupId" :items="groups" item-text="fullName" item-value="id")
-    v-autocomplete(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
-  v-card-actions
-    v-spacer
-    v-btn(color="primary" outlined @click="startNewThread()" :loading="discussion.processing")
-      span(v-t="'discussion_fork_actions.start_new_thread'")
-    v-btn(color="primary" @click="submit()" :disabled="!selectedDiscussion" :loading="discussion.processing")
-      span(v-t="'common.action.save'")
+<template>
+
+<v-card>
+  <submit-overlay :value="selectedDiscussion && selectedDiscussion.processing"></submit-overlay>
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="'action_dock.move_items'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button aria-hidden="true"></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <v-select v-model="groupId" :items="groups" item-text="fullName" item-value="id"></v-select>
+    <v-autocomplete hide-no-data="hide-no-data" return-object="return-object" v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading"></v-autocomplete>
+  </v-card-text>
+  <v-card-actions>
+    <v-spacer></v-spacer>
+    <v-btn color="primary" outlined="outlined" @click="startNewThread()" :loading="discussion.processing"><span v-t="'discussion_fork_actions.start_new_thread'"></span></v-btn>
+    <v-btn color="primary" @click="submit()" :disabled="!selectedDiscussion" :loading="discussion.processing"><span v-t="'common.action.save'"></span></v-btn>
+  </v-card-actions>
+</v-card>
 </template>

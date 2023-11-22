@@ -39,14 +39,16 @@ export default {
 
 
 </script>
-<template lang="pug">
-v-card.current-poll-banner.mb-4.py-2.px-4.lmo-no-print(:style="styles" v-if="event && $route.params.sequence_id != event.sequenceId" :elevation="3" :aria-label="$t('thread_context.current_poll_type_banner', {pollType: poll.translatedPollType()})")
-  v-avatar.mr-4(:size="36" tile)
-    poll-common-icon-panel(:poll='poll' :size="36")
-  .current-poll-banner__title.mr-4
-    span {{poll.title}}
-  v-spacer
-  v-btn(color="primary" :to="urlFor(event)" v-t="'common.view'")
+<template>
+
+<v-card class="current-poll-banner mb-4 py-2 px-4 lmo-no-print" :style="styles" v-if="event && $route.params.sequence_id != event.sequenceId" :elevation="3" :aria-label="$t('thread_context.current_poll_type_banner', {pollType: poll.translatedPollType()})">
+  <v-avatar class="mr-4" :size="36" tile="tile">
+    <poll-common-icon-panel :poll="poll" :size="36"></poll-common-icon-panel>
+  </v-avatar>
+  <div class="current-poll-banner__title mr-4"><span>{{poll.title}}</span></div>
+  <v-spacer></v-spacer>
+  <v-btn color="primary" :to="urlFor(event)" v-t="'common.view'"></v-btn>
+</v-card>
 </template>
 
 <style lang="sass">

@@ -166,21 +166,18 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app fixed right clipped color="background" floating)
-  div.mt-12
-  div.strand-nav__toc
-    //- | {{items}}
-    router-link.strand-nav__entry.text-caption(
-      :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': item.unread}"
-      :style="{'border-width': (item.depth * 2)+'px'}"
-      v-for="item in items"
-      :key="item.key"
-      :to="baseUrl+'/'+item.sequenceId")
-        .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
-          poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
-        //- span {{item.key}}
-        span {{item.title}}
+<template>
+
+<v-navigation-drawer class="lmo-no-print disable-select thread-sidebar" v-if="discussion" v-model="open" :permanent="$vuetify.breakpoint.mdAndUp" width="230px" app="app" fixed="fixed" right="right" clipped="clipped" color="background" floating="floating">
+  <div class="mt-12"></div>
+  <div class="strand-nav__toc">
+    <router-link class="strand-nav__entry text-caption" :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': item.unread}" :style="{'border-width': (item.depth * 2)+'px'}" v-for="item in items" :key="item.key" :to="baseUrl+'/'+item.sequenceId">
+      <div class="strand-nav__stance-icon-container" v-if="item.poll && item.poll.showResults()">
+        <poll-common-icon-panel class="poll-proposal-chart-panel__chart mr-1" :poll="item.poll" show-my-stance="show-my-stance" :size="18" :stanceSize="12"></poll-common-icon-panel>
+      </div><span>{{item.title}}</span>
+    </router-link>
+  </div>
+</v-navigation-drawer>
 </template>
 
 <style lang="sass">

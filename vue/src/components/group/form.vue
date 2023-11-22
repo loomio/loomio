@@ -156,162 +156,142 @@ export default
 };
 </script>
 
-<template lang="pug">
-v-card.group-form
-  v-overlay(:value="uploading")
-    v-progress-circular(size="64", :value="progress")
-  submit-overlay(:value='group.processing')
-  v-card-title
-    v-layout(justify-space-between style="align-items: center")
-      .group-form__group-title
-        h1.headline(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
-        h1.headline(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
-      dismiss-modal-button(:model="group")
-  //- v-card-text
-  v-tabs(fixed-tabs)
-    v-tab(v-t="'group_form.profile'")
-    v-tab.group-form__privacy-tab(v-t="'group_form.privacy'")
-    v-tab.group-form__permissions-tab(v-t="'group_form.permissions'")
+<template>
 
-    v-tab-item
-      .mt-8.px-4
-        v-img.group_form__file-select.rounded(:aspect-ratio="4/1", :src="realGroup.coverUrl" @click="selectCoverPhoto()")
-        group-avatar.group_form__file-select.group_form__logo(:group="realGroup", :size="64" @click="selectLogo()")
-        .v-input
-          label.v-label.v-label--active.lmo-font-12px
-            a(v-t="'group_form.change_cover_image'" @click="selectCoverPhoto()")
-            space
-            | (2048x512 px)
-            space
-            span(v-t="'common.or'")
-            space
-            a(v-t="'group_form.change_logo'" @click="selectLogo()")
-            space
-            | (256x256 px)
-        v-text-field.group-form__name#group-name.mt-4(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]' maxlength='255', :label="$t(groupNameLabel)")
-        div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
-          v-text-field.group-form__handle#group-handle(v-model='group.handle', :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength='100', :label="$t('group_form.handle')")
-          validation-errors(:subject="group" field="handle")
-        v-spacer
-
-        input.d-none.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto' accept="image/png, image/jpeg, image/webp")
-        input.d-none.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo' accept="image/png, image/jpeg, image/webp")
-
-        lmo-textarea.group-form__group-description(:model='group' field="description", :placeholder="$t('group_form.description_placeholder')", :label="$t('group_form.description')")
-        validation-errors(:subject="group" field="name")
-
-    v-tab-item
-      .mt-8.px-4
-        .group-form__section.group-form__privacy
-          v-radio-group(v-model='group.groupPrivacy')
-            v-radio(
-              v-for='privacy in privacyOptions'
-              :key="privacy"
-              :class="'group-form__privacy-' + privacy"
-              :value='privacy'
-              :aria-label='privacy'
-            )
-              template(slot='label')
-                .group-form__privacy-title
-                  strong(v-t="'common.privacy.' + privacy")
-                  mid-dot
-                  span {{ privacyStringFor(privacy) }}
-          validation-errors(:subject="group" field="groupPrivacy")
-        p.group-form__privacy-statement.text--secondary {{privacyStatement}}
-        .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
-          v-subheader(v-t="'group_form.how_do_people_join'")
-          v-radio-group(v-model='group.membershipGrantedUpon')
-            v-radio(
-              v-for="granted in ['request', 'approval', 'invitation']"
-              :key="granted"
-              :class="'group-form__membership-granted-upon-' + granted"
-              :value='granted'
-            )
-              template(slot='label')
-                span(v-t="'group_form.membership_granted_upon_' + granted")
-
-    v-tab-item
-      .mt-8.px-4.group-form__section.group-form__permissions
-        p.group-form__privacy-statement.text--secondary(v-t="'group_form.permissions_explaination'")
-        //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='group.privacyIsClosed() && !group.isSubgroupOfSecretParent()')
-        v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group["parentMembersCanSeeDiscussions"]' v-if='group.parentId && group.privacyIsClosed()')
-          template(v-slot:label)
-            div
-              span(v-t="{path: 'group_form.parent_members_can_see_discussions', args: {parent: group.parent().name}}")
-              br
-              span.caption(v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: group.parent().name}}")
-        v-checkbox.group-form__members-can-add-members(hide-details v-model='group["membersCanAddMembers"]')
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.members_can_add_members'")
-              br
-              span.caption(v-t="'group_form.members_can_add_members_help'")
-        v-checkbox.group-form__members-can-add-guests(hide-details v-model='group["membersCanAddGuests"]')
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.members_can_add_guests'")
-              br
-              span.caption(v-t="'group_form.members_can_add_guests_help'")
-        v-checkbox.group-form__members-can-announce(
-          :label="$t('group_form.members_can_announce')"
-          v-model='group["membersCanAnnounce"]'
-          hide-details
-        )
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.members_can_announce'")
-              br
-              span.caption(v-t="'group_form.members_can_announce_help'")
-        v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='group["membersCanCreateSubgroups"]' v-if='group.isParent()')
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.members_can_create_subgroups'")
-              br
-              span.caption(v-t="'group_form.members_can_create_subgroups_help'")
-        v-checkbox.group-form__members-can-start-discussions(hide-details v-model='group["membersCanStartDiscussions"]')
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.members_can_start_discussions'")
-              br
-              span.caption(v-t="'group_form.members_can_start_discussions_help'")
-        v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='group["membersCanEditDiscussions"]')
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.members_can_edit_discussions'")
-              br
-              span.caption(v-t="'group_form.members_can_edit_discussions_help'")
-        v-checkbox.group-form__members-can-edit-comments(hide-details v-model='group["membersCanEditComments"]')
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.members_can_edit_comments'")
-              br
-              span.caption(v-t="'group_form.members_can_edit_comments_help'")
-        v-checkbox.group-form__members-can-delete-comments(hide-details v-model='group["membersCanDeleteComments"]')
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.members_can_delete_comments'")
-              br
-              span.caption(v-t="'group_form.members_can_delete_comments_help'")
-        v-checkbox.group-form__members-can-raise-motions(hide-details v-model='group["membersCanRaiseMotions"]')
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.members_can_raise_motions'")
-              br
-              span.caption(v-t="'group_form.members_can_raise_motions_help'")
-        v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='group["adminsCanEditUserContent"]')
-          template(v-slot:label)
-            div
-              span(v-t="'group_form.admins_can_edit_user_content'")
-              br
-              span.caption(v-t="'group_form.admins_can_edit_user_content_help'")
-
-  v-card-actions.ml-2.mr-2.mt-4
-    help-link(path="en/user_manual/groups/settings")
-    v-spacer
-    v-btn.group-form__submit-button(color="primary" @click='submit()')
-      span(v-if='group.isNew() && group.isParent()' v-t="'group_form.submit_start_group'")
-      span(v-if='group.isNew() && !group.isParent()' v-t="'group_form.submit_start_subgroup'")
-      span(v-if='!group.isNew()' v-t="'common.action.update_settings'")
+<v-card class="group-form">
+  <v-overlay :value="uploading">
+    <v-progress-circular size="64" :value="progress"></v-progress-circular>
+  </v-overlay>
+  <submit-overlay :value="group.processing"></submit-overlay>
+  <v-card-title>
+    <v-layout justify-space-between="justify-space-between" style="align-items: center">
+      <div class="group-form__group-title">
+        <h1 class="headline" tabindex="-1" v-if="group.parentId" v-t="'group_form.subgroup_settings'"></h1>
+        <h1 class="headline" tabindex="-1" v-if="!group.parentId" v-t="'group_form.group_settings'"></h1>
+      </div>
+      <dismiss-modal-button :model="group"></dismiss-modal-button>
+    </v-layout>
+  </v-card-title>
+  <v-tabs fixed-tabs="fixed-tabs">
+    <v-tab v-t="'group_form.profile'"></v-tab>
+    <v-tab class="group-form__privacy-tab" v-t="'group_form.privacy'"></v-tab>
+    <v-tab class="group-form__permissions-tab" v-t="'group_form.permissions'"></v-tab>
+    <v-tab-item>
+      <div class="mt-8 px-4">
+        <v-img class="group_form__file-select rounded" :aspect-ratio="4/1" :src="realGroup.coverUrl" @click="selectCoverPhoto()"></v-img>
+        <group-avatar class="group_form__file-select group_form__logo" :group="realGroup" :size="64" @click="selectLogo()"></group-avatar>
+        <div class="v-input">
+          <label class="v-label v-label--active lmo-font-12px"><a v-t="'group_form.change_cover_image'" @click="selectCoverPhoto()"></a>
+            <space></space>(2048x512 px)
+            <space></space><span v-t="'common.or'"></span>
+            <space></space><a v-t="'group_form.change_logo'" @click="selectLogo()"></a>
+            <space></space>(256x256 px)
+          </label>
+        </div>
+        <v-text-field class="group-form__name mt-4" id="group-name" v-model="group.name" :placeholder="$t(groupNamePlaceholder)" :rules="[rules.required]" maxlength="255" :label="$t(groupNameLabel)"></v-text-field>
+        <div v-if="!group.parentId || (group.parentId && group.parent().handle)">
+          <v-text-field class="group-form__handle" id="group-handle" v-model="group.handle" :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength="100" :label="$t('group_form.handle')"></v-text-field>
+          <validation-errors :subject="group" field="handle"></validation-errors>
+        </div>
+        <v-spacer></v-spacer>
+        <input class="d-none change-picture-form__file-input" type="file" ref="coverPhotoInput" @change="uploadCoverPhoto" accept="image/png, image/jpeg, image/webp"/>
+        <input class="d-none change-picture-form__file-input" type="file" ref="logoInput" @change="uploadLogo" accept="image/png, image/jpeg, image/webp"/>
+        <lmo-textarea class="group-form__group-description" :model="group" field="description" :placeholder="$t('group_form.description_placeholder')" :label="$t('group_form.description')"></lmo-textarea>
+        <validation-errors :subject="group" field="name"></validation-errors>
+      </div>
+    </v-tab-item>
+    <v-tab-item>
+      <div class="mt-8 px-4">
+        <div class="group-form__section group-form__privacy">
+          <v-radio-group v-model="group.groupPrivacy">
+            <v-radio v-for="privacy in privacyOptions" :key="privacy" :class="'group-form__privacy-' + privacy" :value="privacy" :aria-label="privacy">
+              <template slot="label">
+                <div class="group-form__privacy-title"><strong v-t="'common.privacy.' + privacy"></strong>
+                  <mid-dot></mid-dot><span>{{ privacyStringFor(privacy) }}</span>
+                </div>
+              </template>
+            </v-radio>
+          </v-radio-group>
+          <validation-errors :subject="group" field="groupPrivacy"></validation-errors>
+        </div>
+        <p class="group-form__privacy-statement text--secondary">{{privacyStatement}}</p>
+        <div class="group-form__section group-form__joining lmo-form-group" v-if="group.privacyIsOpen()">
+          <v-subheader v-t="'group_form.how_do_people_join'"></v-subheader>
+          <v-radio-group v-model="group.membershipGrantedUpon">
+            <v-radio v-for="granted in ['request', 'approval', 'invitation']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value="granted">
+              <template slot="label"><span v-t="'group_form.membership_granted_upon_' + granted"></span></template>
+            </v-radio>
+          </v-radio-group>
+        </div>
+      </div>
+    </v-tab-item>
+    <v-tab-item>
+      <div class="mt-8 px-4 group-form__section group-form__permissions">
+        <p class="group-form__privacy-statement text--secondary" v-t="'group_form.permissions_explaination'"></p>
+        <v-checkbox class="group-form__parent-members-can-see-discussions" hide-details="hide-details" v-model="group['parentMembersCanSeeDiscussions']" v-if="group.parentId && group.privacyIsClosed()">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="{path: 'group_form.parent_members_can_see_discussions', args: {parent: group.parent().name}}"></span><br/><span class="caption" v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: group.parent().name}}"></span></div>
+          </template>
+        </v-checkbox>
+        <v-checkbox class="group-form__members-can-add-members" hide-details="hide-details" v-model="group['membersCanAddMembers']">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="'group_form.members_can_add_members'"></span><br/><span class="caption" v-t="'group_form.members_can_add_members_help'"></span></div>
+          </template>
+        </v-checkbox>
+        <v-checkbox class="group-form__members-can-add-guests" hide-details="hide-details" v-model="group['membersCanAddGuests']">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="'group_form.members_can_add_guests'"></span><br/><span class="caption" v-t="'group_form.members_can_add_guests_help'"></span></div>
+          </template>
+        </v-checkbox>
+        <v-checkbox class="group-form__members-can-announce" :label="$t('group_form.members_can_announce')" v-model="group['membersCanAnnounce']" hide-details="hide-details">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="'group_form.members_can_announce'"></span><br/><span class="caption" v-t="'group_form.members_can_announce_help'"></span></div>
+          </template>
+        </v-checkbox>
+        <v-checkbox class="group-form__members-can-create-subgroups" hide-details="hide-details" v-model="group['membersCanCreateSubgroups']" v-if="group.isParent()">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="'group_form.members_can_create_subgroups'"></span><br/><span class="caption" v-t="'group_form.members_can_create_subgroups_help'"></span></div>
+          </template>
+        </v-checkbox>
+        <v-checkbox class="group-form__members-can-start-discussions" hide-details="hide-details" v-model="group['membersCanStartDiscussions']">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="'group_form.members_can_start_discussions'"></span><br/><span class="caption" v-t="'group_form.members_can_start_discussions_help'"></span></div>
+          </template>
+        </v-checkbox>
+        <v-checkbox class="group-form__members-can-edit-discussions" hide-details="hide-details" v-model="group['membersCanEditDiscussions']">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="'group_form.members_can_edit_discussions'"></span><br/><span class="caption" v-t="'group_form.members_can_edit_discussions_help'"></span></div>
+          </template>
+        </v-checkbox>
+        <v-checkbox class="group-form__members-can-edit-comments" hide-details="hide-details" v-model="group['membersCanEditComments']">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="'group_form.members_can_edit_comments'"></span><br/><span class="caption" v-t="'group_form.members_can_edit_comments_help'"></span></div>
+          </template>
+        </v-checkbox>
+        <v-checkbox class="group-form__members-can-delete-comments" hide-details="hide-details" v-model="group['membersCanDeleteComments']">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="'group_form.members_can_delete_comments'"></span><br/><span class="caption" v-t="'group_form.members_can_delete_comments_help'"></span></div>
+          </template>
+        </v-checkbox>
+        <v-checkbox class="group-form__members-can-raise-motions" hide-details="hide-details" v-model="group['membersCanRaiseMotions']">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="'group_form.members_can_raise_motions'"></span><br/><span class="caption" v-t="'group_form.members_can_raise_motions_help'"></span></div>
+          </template>
+        </v-checkbox>
+        <v-checkbox class="group-form__admins-can-edit-user-content" hide-details="hide-details" v-model="group['adminsCanEditUserContent']">
+          <template v-slot:label="v-slot:label">
+            <div><span v-t="'group_form.admins_can_edit_user_content'"></span><br/><span class="caption" v-t="'group_form.admins_can_edit_user_content_help'"></span></div>
+          </template>
+        </v-checkbox>
+      </div>
+    </v-tab-item>
+  </v-tabs>
+  <v-card-actions class="ml-2 mr-2 mt-4">
+    <help-link path="en/user_manual/groups/settings"></help-link>
+    <v-spacer></v-spacer>
+    <v-btn class="group-form__submit-button" color="primary" @click="submit()"><span v-if="group.isNew() && group.isParent()" v-t="'group_form.submit_start_group'"></span><span v-if="group.isNew() && !group.isParent()" v-t="'group_form.submit_start_subgroup'"></span><span v-if="!group.isNew()" v-t="'common.action.update_settings'"></span></v-btn>
+  </v-card-actions>
+</v-card>
 </template>
 <style lang="sass">
 .lmo-font-12px

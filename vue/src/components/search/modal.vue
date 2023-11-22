@@ -170,50 +170,40 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card.search-modal
-  .d-flex.px-4.pt-4.align-center
-    v-text-field(
-      :loading="loading"
-      autofocus
-      filled
-      rounded
-      single-line
-      append-icon="mdi-magnify"
-      append-outer-icon="mdi-close"
-      @click:append-outer="closeModal"
-      @click:append="fetch"
-      v-model="query"
-      :placeholder="$t('common.action.search')"
-      @keydown.enter.prevent="fetch"
-      hide-details
-      )
-  .d-flex.px-4.align-center
-    v-select.mr-2(v-model="orgId" :items="orgItems")
-    v-select.mr-2(v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId")
-    v-select.mr-2(v-if="tagItems.length" v-model="tag" :items="tagItems")
-    v-select.mr-2(v-model="type" :items="typeItems")
-    v-select(v-model="order" :items="orderItems")
-  v-list(two-line)
-    v-list-item.poll-common-preview(v-if="!loading && resultsQuery && results.length == 0")
-      v-list-item-title(v-t="{path: 'discussions_panel.no_results_found', args: {search: resultsQuery}}")
-    v-list-item.poll-common-preview(v-for="result in results" :key="result.id" :to="urlForResult(result)")
-      v-list-item-avatar 
-        poll-common-icon-panel(v-if="['Outcome', 'Poll'].includes(result.searchable_type)" :poll='pollById(result.poll_id)' show-my-stance)
-        user-avatar(v-else :user="userById(result.author_id)")
-      v-list-item-content
-        v-list-item-title.d-flex
-          span.text-truncate {{ result.poll_title || result.discussion_title }}
-          tags-display.ml-1(:tags="result.tags" :group="groupById(result.group_id)" smaller)
-          v-spacer
-          time-ago.text--secondary(style="font-size: 0.875rem;" :date="result.authored_at")
-        v-list-item-subtitle.text--primary(v-html="result.highlight")
-        v-list-item-subtitle
-          span
-            span {{result.searchable_type}}
-            mid-dot
-            span {{result.author_name}}
-            mid-dot
-            span {{result.group_name || $t('discussion.invite_only')}}
+<template>
 
+<v-card class="search-modal">
+  <div class="d-flex px-4 pt-4 align-center">
+    <v-text-field :loading="loading" autofocus="autofocus" filled="filled" rounded="rounded" single-line="single-line" append-icon="mdi-magnify" append-outer-icon="mdi-close" @click:append-outer="closeModal" @click:append="fetch" v-model="query" :placeholder="$t('common.action.search')" @keydown.enter.prevent="fetch" hide-details="hide-details"></v-text-field>
+  </div>
+  <div class="d-flex px-4 align-center">
+    <v-select class="mr-2" v-model="orgId" :items="orgItems"></v-select>
+    <v-select class="mr-2" v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId"></v-select>
+    <v-select class="mr-2" v-if="tagItems.length" v-model="tag" :items="tagItems"></v-select>
+    <v-select class="mr-2" v-model="type" :items="typeItems"></v-select>
+    <v-select v-model="order" :items="orderItems"></v-select>
+  </div>
+  <v-list two-line="two-line">
+    <v-list-item class="poll-common-preview" v-if="!loading && resultsQuery && results.length == 0">
+      <v-list-item-title v-t="{path: 'discussions_panel.no_results_found', args: {search: resultsQuery}}"></v-list-item-title>
+    </v-list-item>
+    <v-list-item class="poll-common-preview" v-for="result in results" :key="result.id" :to="urlForResult(result)">
+      <v-list-item-avatar> 
+        <poll-common-icon-panel v-if="['Outcome', 'Poll'].includes(result.searchable_type)" :poll="pollById(result.poll_id)" show-my-stance="show-my-stance"></poll-common-icon-panel>
+        <user-avatar v-else :user="userById(result.author_id)"></user-avatar>
+      </v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title class="d-flex"><span class="text-truncate">{{ result.poll_title || result.discussion_title }}</span>
+          <tags-display class="ml-1" :tags="result.tags" :group="groupById(result.group_id)" smaller="smaller"></tags-display>
+          <v-spacer></v-spacer>
+          <time-ago class="text--secondary" style="font-size: 0.875rem;" :date="result.authored_at"></time-ago>
+        </v-list-item-title>
+        <v-list-item-subtitle class="text--primary" v-html="result.highlight"></v-list-item-subtitle>
+        <v-list-item-subtitle><span><span>{{result.searchable_type}}</span>
+            <mid-dot></mid-dot><span>{{result.author_name}}</span>
+            <mid-dot></mid-dot><span>{{result.group_name || $t('discussion.invite_only')}}</span></span></v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+  </v-list>
+</v-card>
 </template>

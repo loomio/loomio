@@ -55,37 +55,32 @@ export default {
 };
 </script>
 
-<template lang='pug'>
-.poll-ranked-choice-vote-form.lmo-relative
-  p.text--secondary(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
-  sortable-list(v-model="pollOptions" lock-axis="y" axis="y" append-to=".app-is-booted")
-    sortable-item(
-      v-for="(option, index) in pollOptions"
-      :index="index"
-      :key="option.id"
-      :item="option"
-    )
-      v-sheet.mb-2.rounded.poll-ranked-choice-vote-form__option(outlined :style="{'border-color': option.color}")
-        v-list-item
-          v-list-item-icon
-            common-icon(style="cursor: pointer", :color="option.color" name="mdi-drag")
-          v-list-item-content
-            v-list-item-title {{option.name}}
-            v-list-item-subtitle {{option.meaning}}
-          v-list-item-action
-            span(style="font-size: 1.4rem" v-if="index+1 <= numChoices") # {{index+1}}
+<template>
 
-  validation-errors(:subject='stance' field='stanceChoices')
-  poll-common-stance-reason(:stance='stance', :poll='poll')
-  v-card-actions.poll-common-form-actions
-    v-btn.poll-common-vote-form__submit(
-      block
-      :disabled="!poll.isVotable()"
-      @click='submit()'
-      :loading="stance.processing"
-      color="primary"
-    )
-      span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
+<div class="poll-ranked-choice-vote-form lmo-relative">
+  <p class="text--secondary" v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }"></p>
+  <sortable-list v-model="pollOptions" lock-axis="y" axis="y" append-to=".app-is-booted">
+    <sortable-item v-for="(option, index) in pollOptions" :index="index" :key="option.id" :item="option">
+      <v-sheet class="mb-2 rounded poll-ranked-choice-vote-form__option" outlined="outlined" :style="{'border-color': option.color}">
+        <v-list-item>
+          <v-list-item-icon>
+            <common-icon style="cursor: pointer" :color="option.color" name="mdi-drag"></common-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>{{option.name}}</v-list-item-title>
+            <v-list-item-subtitle>{{option.meaning}}</v-list-item-subtitle>
+          </v-list-item-content>
+          <v-list-item-action><span style="font-size: 1.4rem" v-if="index+1 <= numChoices"># {{index+1}}</span></v-list-item-action>
+        </v-list-item>
+      </v-sheet>
+    </sortable-item>
+  </sortable-list>
+  <validation-errors :subject="stance" field="stanceChoices"></validation-errors>
+  <poll-common-stance-reason :stance="stance" :poll="poll"></poll-common-stance-reason>
+  <v-card-actions class="poll-common-form-actions">
+    <v-btn class="poll-common-vote-form__submit" block="block" :disabled="!poll.isVotable()" @click="submit()" :loading="stance.processing" color="primary"><span v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'"></span></v-btn>
+  </v-card-actions>
+</div>
 </template>
 
 <style lang="sass">

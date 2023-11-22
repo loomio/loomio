@@ -162,27 +162,33 @@ export default {
 }
 </script>
 
-<template lang="pug">
-.recording-modal
-  .pa-4
-    .d-flex.justify-space-between
-      h1.headline(v-t="'record_modal.record_audio'")
-      v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='dismiss')
-        common-icon(name="mdi-close")
-    v-alert(v-if="error" type="error") {{error}}
-    div(v-else)
-      v-alert(type="info" v-if="!url && !onAir" icon="mdi-microphone")
-        span(v-t="'record_modal.why_type_when_you_can_talk'")
-        template(v-if="transcriptionAvailable")
-          br
-          span(v-t="'record_modal.transcript_included'")
-      .d-flex.flex-column.align-center.pb-8
-        canvas(v-show="onAir" ref="visualizer" height="64" width="256")
-        audio(v-show="!onAir" ref="audio" autoplay controls playsinline)
-      .d-flex
-        v-spacer
-        v-btn.poll-members-form__submit(v-if="!onAir" color="primary" @click="start" v-t="'record_modal.record'")
-        v-btn.poll-members-form__submit(v-if="onAir" color="primary" @click="stop" v-t="'record_modal.stop'")
-        v-spacer
-        v-btn.poll-members-form__submit(v-if="!onAir && url" color="primary" @click="submit" v-t="'common.action.save'") 
+<template>
+
+<div class="recording-modal">
+  <div class="pa-4">
+    <div class="d-flex justify-space-between">
+      <h1 class="headline" v-t="'record_modal.record_audio'"></h1>
+      <v-btn class="dismiss-modal-button" icon="icon" :aria-label="$t('common.action.cancel')" @click="dismiss">
+        <common-icon name="mdi-close"></common-icon>
+      </v-btn>
+    </div>
+    <v-alert v-if="error" type="error">{{error}}</v-alert>
+    <div v-else>
+      <v-alert type="info" v-if="!url && !onAir" icon="mdi-microphone"><span v-t="'record_modal.why_type_when_you_can_talk'"></span>
+        <template v-if="transcriptionAvailable"><br/><span v-t="'record_modal.transcript_included'"></span></template>
+      </v-alert>
+      <div class="d-flex flex-column align-center pb-8">
+        <canvas v-show="onAir" ref="visualizer" height="64" width="256"></canvas>
+        <audio v-show="!onAir" ref="audio" autoplay="autoplay" controls="controls" playsinline="playsinline"></audio>
+      </div>
+      <div class="d-flex">
+        <v-spacer></v-spacer>
+        <v-btn class="poll-members-form__submit" v-if="!onAir" color="primary" @click="start" v-t="'record_modal.record'"></v-btn>
+        <v-btn class="poll-members-form__submit" v-if="onAir" color="primary" @click="stop" v-t="'record_modal.stop'"></v-btn>
+        <v-spacer></v-spacer>
+        <v-btn class="poll-members-form__submit" v-if="!onAir && url" color="primary" @click="submit" v-t="'common.action.save'"></v-btn>
+      </div>
+    </div>
+  </div>
+</div>
 </template>

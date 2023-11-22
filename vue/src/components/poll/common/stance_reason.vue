@@ -25,17 +25,10 @@ export default {
 }
 </script>
 
-<template lang="pug">
-.poll-common-stance-reason
-  lmo-textarea.poll-common-vote-form__reason(
-    :focus-id="'poll-'+poll.id"
-    v-if="poll.stanceReasonRequired != 'disabled'"
-    :model='stance'
-    field="reason"
-    :label="$t(label)"
-    :placeholder="prompt || poll.reasonPrompt || $t('poll_common.reason_placeholder')"
-    :max-length='maxLength'
-  )
-  validation-errors(:subject="stance" field="reason")
+<template>
 
+<div class="poll-common-stance-reason">
+  <lmo-textarea class="poll-common-vote-form__reason" :focus-id="'poll-'+poll.id" v-if="poll.stanceReasonRequired != 'disabled'" :model="stance" field="reason" :label="$t(label)" :placeholder="prompt || poll.reasonPrompt || $t('poll_common.reason_placeholder')" :max-length="maxLength"></lmo-textarea>
+  <validation-errors :subject="stance" field="reason"></validation-errors>
+</div>
 </template>

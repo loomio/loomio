@@ -42,12 +42,14 @@ export default {
 
 </script>
 
-<template lang="pug">
-section.strand-item__new-comment.new-comment(:id="'comment-'+ eventable.id")
-  strand-item-headline(:event="event" :eventable="eventable")
-  formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
-  link-previews(:model="eventable")
-  document-list(:model='eventable')
-  attachment-list(:attachments="eventable.attachments")
-  action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions' small left)
+<template>
+
+<section class="strand-item__new-comment new-comment" :id="'comment-'+ eventable.id">
+  <strand-item-headline :event="event" :eventable="eventable"></strand-item-headline>
+  <formatted-text class="thread-item__body new-comment__body" :model="eventable" column="body"></formatted-text>
+  <link-previews :model="eventable"></link-previews>
+  <document-list :model="eventable"></document-list>
+  <attachment-list :attachments="eventable.attachments"></attachment-list>
+  <action-dock :model="eventable" :actions="dockActions" :menu-actions="menuActions" small="small" left="left"></action-dock>
+</section>
 </template>

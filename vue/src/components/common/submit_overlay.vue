@@ -6,7 +6,9 @@ export default {
 };
 </script>
 
-<template lang="pug">
-v-overlay.submit-overlay(:value="value")
-  v-progress-circular(indeterminate size="64")
+<template>
+
+<v-overlay class="submit-overlay" :value="value">
+  <v-progress-circular indeterminate="indeterminate" size="64"></v-progress-circular>
+</v-overlay>
 </template>

@@ -33,24 +33,18 @@ export default
   }
 };
 </script>
-<template lang="pug">
-v-alert(outlined color="primary" dense v-if="isTrialing")
-  .d-flex.align-center
-    div.pr-1(v-if="isWasGift")
-      span(v-if="isExpired" v-html="$t('current_plan_button.was_gift_expired')")
-      span(v-if="!isExpired" v-html="$t('current_plan_button.was_gift_remaining', { days: daysRemaining } )")
-      space
-      span(v-html="$t('current_plan_button.was_gift_trial', {createdDate: createdDate })")
-    div.pr-1(v-if="!isWasGift")
-      span(v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")
-      span(v-if="isExpired" v-t="'current_plan_button.trial_expired'")
-    v-spacer
-    v-btn(
-      color="primary"
-      :href="'/upgrade/'+group.id"
-      target="_blank"
-      :title="$t('current_plan_button.tooltip')"
-    )
-      common-icon(name="mdi-rocket")
-      span(v-t="'current_plan_button.view_plans'")
+<template>
+
+<v-alert outlined="outlined" color="primary" dense="dense" v-if="isTrialing">
+  <div class="d-flex align-center">
+    <div class="pr-1" v-if="isWasGift"><span v-if="isExpired" v-html="$t('current_plan_button.was_gift_expired')"></span><span v-if="!isExpired" v-html="$t('current_plan_button.was_gift_remaining', { days: daysRemaining } )"></span>
+      <space></space><span v-html="$t('current_plan_button.was_gift_trial', {createdDate: createdDate })"></span>
+    </div>
+    <div class="pr-1" v-if="!isWasGift"><span v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}"></span><span v-if="isExpired" v-t="'current_plan_button.trial_expired'"></span></div>
+    <v-spacer></v-spacer>
+    <v-btn color="primary" :href="'/upgrade/'+group.id" target="_blank" :title="$t('current_plan_button.tooltip')">
+      <common-icon name="mdi-rocket"></common-icon><span v-t="'current_plan_button.view_plans'"></span>
+    </v-btn>
+  </div>
+</v-alert>
 </template>

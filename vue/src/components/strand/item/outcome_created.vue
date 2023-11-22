@@ -22,12 +22,9 @@ export default {
 
 </script>
 
-<template lang="pug">
-section.outcome-created.strand-item__outcome-created(id="'outcome-'+ eventable.id")
-  strand-item-headline(:event="event" :eventable="eventable")
-  //- formatted-text.thread-item__body.new-comment__body(:model="eventable" column="body")
-  //- link-previews(:model="poll")
-  //- document-list(:model='eventable' skip-fetch)
-  //- attachment-list(:attachments="eventable.attachments")
-  //- action-dock(:model='eventable' :actions='dockActions' :menu-actions='menuActions' icons)
+<template>
+
+<section class="outcome-created strand-item__outcome-created" id="'outcome-'+ eventable.id">
+  <strand-item-headline :event="event" :eventable="eventable"></strand-item-headline>
+</section>
 </template>

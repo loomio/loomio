@@ -78,48 +78,41 @@ export default {
 
 </script>
 
-<template lang="pug">
-section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm-4': !discussion.newestFirst}")
-  template(v-if="discussion.closedAt")
-    v-alert(type="info" text outlined)
-      span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: discussion.closer().name} }")
-      mid-dot
-      time-ago(:date='discussion.closedAt')
-  template(v-else)
-    v-divider(aria-hidden="true")
-    v-tabs.activity-panel__actions.mb-3(grow text v-model="currentAction")
-      v-tabs-slider
-      v-tab(href='#add-comment')
-        span(v-t="'thread_context.add_comment'")
-      v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
-        //- span(v-t="'poll_common_form.start_poll'")
-        span(v-t="'poll_common.decision'")
-        //- v-badge(v-if="showDecisionBadge" inline dot)
-    v-tabs-items(v-model="currentAction")
-      v-tab-item(value="add-comment")
-        .add-comment-panel
-          comment-form(
-            v-if='canAddComment'
-            :comment="newComment"
-            @comment-submitted="resetComment")
-          .add-comment-panel__join-actions(v-if='!canAddComment')
-            join-group-button(
-              v-if='isLoggedIn()'
-              :group='discussion.group()'
-              :block='true')
-            v-btn.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'" @click='signIn()' v-if='!isLoggedIn()')
-      v-tab-item(value="add-poll" v-if="canStartPoll")
-        .poll-common-start-form
-          poll-common-form(
-            v-if="poll"
-            :poll="poll"
-            @setPoll="setPoll"
-            @saveSuccess="resetPoll")
-          poll-common-choose-template-wrapper(
-            v-if="!poll"
-            @setPoll="setPoll"
-            :discussion="discussion"
-            :group="discussion.group()")
+<template>
+
+<section class="actions-panel" id="add-comment" :key="discussion.id" :class="{'mt-2 px-2 px-sm-4': !discussion.newestFirst}">
+  <template v-if="discussion.closedAt">
+    <v-alert type="info" text="text" outlined="outlined"><span v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: discussion.closer().name} }"></span>
+      <mid-dot></mid-dot>
+      <time-ago :date="discussion.closedAt"></time-ago>
+    </v-alert>
+  </template>
+  <template v-else>
+    <v-divider aria-hidden="true"></v-divider>
+    <v-tabs class="activity-panel__actions mb-3" grow="grow" text="text" v-model="currentAction">
+      <v-tabs-slider></v-tabs-slider>
+      <v-tab href="#add-comment"><span v-t="'thread_context.add_comment'"></span></v-tab>
+      <v-tab class="activity-panel__add-poll" href="#add-poll" v-if="canStartPoll"><span v-t="'poll_common.decision'"></span></v-tab>
+    </v-tabs>
+    <v-tabs-items v-model="currentAction">
+      <v-tab-item value="add-comment">
+        <div class="add-comment-panel">
+          <comment-form v-if="canAddComment" :comment="newComment" @comment-submitted="resetComment"></comment-form>
+          <div class="add-comment-panel__join-actions" v-if="!canAddComment">
+            <join-group-button v-if="isLoggedIn()" :group="discussion.group()" :block="true"></join-group-button>
+            <v-btn class="add-comment-panel__sign-in-btn" v-t="'comment_form.sign_in'" @click="signIn()" v-if="!isLoggedIn()"></v-btn>
+          </div>
+        </div>
+      </v-tab-item>
+      <v-tab-item value="add-poll" v-if="canStartPoll">
+        <div class="poll-common-start-form">
+          <poll-common-form v-if="poll" :poll="poll" @setPoll="setPoll" @saveSuccess="resetPoll"></poll-common-form>
+          <poll-common-choose-template-wrapper v-if="!poll" @setPoll="setPoll" :discussion="discussion" :group="discussion.group()"></poll-common-choose-template-wrapper>
+        </div>
+      </v-tab-item>
+    </v-tabs-items>
+  </template>
+</section>
 </template>
 
 <style lang="sass">

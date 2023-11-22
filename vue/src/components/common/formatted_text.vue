@@ -66,11 +66,13 @@ export default {
 };
 </script>
 
-<template lang="pug">
-div.lmo-markdown-wrapper
-  div(v-if="!hasTranslation && isMd" v-marked='cookedText')
-  div(v-if="!hasTranslation && isHtml" v-html='text')
-  translation(v-if="hasTranslation" :model='model' :field='column')
+<template>
+
+<div class="lmo-markdown-wrapper">
+  <div v-if="!hasTranslation && isMd" v-marked="cookedText"></div>
+  <div v-if="!hasTranslation && isHtml" v-html="text"></div>
+  <translation v-if="hasTranslation" :model="model" :field="column"></translation>
+</div>
 </template>
 
 <style lang="sass">

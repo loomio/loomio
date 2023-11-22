@@ -31,15 +31,18 @@ export default
   }
 };
 </script>
-<template lang="pug">
-v-alert(outlined color="secondary" dense v-if="isAdmin && isOldPlan && !isHidden")
-  v-layout(align-center)
-    div.pr-1
-      span(v-t="'current_plan_button.is_old_plan'")
-    v-spacer
-    v-btn.mr-2(color="primary" :href="'/upgrade/'+group.id" target="_blank" :title="$t('current_plan_button.tooltip')")
-      common-icon(name="mdi-rocket")
-      span(v-if="isOldPlan" v-t="'current_plan_button.view_plans'")
-    v-btn(icon @click="hideBanner" :title="$t('common.action.close')")
-      common-icon(name="mdi-close")
+<template>
+
+<v-alert outlined="outlined" color="secondary" dense="dense" v-if="isAdmin && isOldPlan && !isHidden">
+  <v-layout align-center="align-center">
+    <div class="pr-1"><span v-t="'current_plan_button.is_old_plan'"></span></div>
+    <v-spacer></v-spacer>
+    <v-btn class="mr-2" color="primary" :href="'/upgrade/'+group.id" target="_blank" :title="$t('current_plan_button.tooltip')">
+      <common-icon name="mdi-rocket"></common-icon><span v-if="isOldPlan" v-t="'current_plan_button.view_plans'"></span>
+    </v-btn>
+    <v-btn icon="icon" @click="hideBanner" :title="$t('common.action.close')">
+      <common-icon name="mdi-close"></common-icon>
+    </v-btn>
+  </v-layout>
+</v-alert>
 </template>

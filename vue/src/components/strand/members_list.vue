@@ -146,66 +146,55 @@ export default {
 
 </script>
 
-<template lang="pug">
-.strand-members-list
-  .px-4.pt-4
-    .d-flex.justify-space-between
-      h1.headline(v-t="'announcement.form.discussion_announced.title'")
-      dismiss-modal-button
+<template>
 
-    recipients-autocomplete(
-      :label="$t('announcement.form.discussion_announced.helptext')"
-      :placeholder="$t('announcement.form.placeholder')"
-      :model="discussion"
-      :excluded-audiences="['discussion_group']"
-      :reset="reset"
-      @new-query="newQuery"
-      @new-recipients="newRecipients")
-
-    v-textarea(
-      v-if="hasRecipients"
-      filled
-      rows="3"
-      v-model="message"
-      :label="$t('announcement.form.invitation_message_label')"
-      :placeholder="$t('announcement.form.invitation_message_placeholder')"
-    )
-
-    .d-flex
-      v-spacer
-      v-btn.strand-members-list__submit(
-        color="primary"
-        :disabled="!recipients.length"
-        :loading="saving"
-        @click="inviteRecipients"
-        v-t="'common.action.invite'")
-
-  v-list(two-line)
-    v-subheader
-      span(v-t="'membership_card.discussion_members'")
-      space
-      span ({{discussion.membersCount}})
-    v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")
-      v-list-item-avatar
-        user-avatar(:user="reader.user()" :size="24")
-      v-list-item-content
-        v-list-item-title
-          span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
-          v-chip.mr-1(v-if="discussion.groupId && isGuest(reader)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip.mr-1(v-if="reader.admin" outlined x-small label v-t="'announcement.members_list.thread_admin'")
-          v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined x-small label v-t="'announcement.members_list.group_admin'")
-        v-list-item-subtitle
-          span(v-if="reader.lastReadAt" v-t="{ path: 'announcement.members_list.last_read_at', args: { time: approximateDate(reader.lastReadAt) } }")
-          span(v-else v-t="'announcement.members_list.has_not_read_thread'")
-          //- time-ago(:date="reader.lastReadAt")
-      v-list-item-action
-        v-menu(offset-y)
-          template(v-slot:activator="{on, attrs}")
-            v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
-              common-icon(name="mdi-dots-vertical")
-          v-list
-            v-list-item(v-for="action in actionNames" v-if="service[action].canPerform(reader)" @click="service[action].perform(reader)" :key="action")
-              v-list-item-title(v-t="service[action].name")
-    v-list-item(v-if="query && readers.length == 0")
-      v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")
+<div class="strand-members-list">
+  <div class="px-4 pt-4">
+    <div class="d-flex justify-space-between">
+      <h1 class="headline" v-t="'announcement.form.discussion_announced.title'"></h1>
+      <dismiss-modal-button></dismiss-modal-button>
+    </div>
+    <recipients-autocomplete :label="$t('announcement.form.discussion_announced.helptext')" :placeholder="$t('announcement.form.placeholder')" :model="discussion" :excluded-audiences="['discussion_group']" :reset="reset" @new-query="newQuery" @new-recipients="newRecipients"></recipients-autocomplete>
+    <v-textarea v-if="hasRecipients" filled="filled" rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')"></v-textarea>
+    <div class="d-flex">
+      <v-spacer></v-spacer>
+      <v-btn class="strand-members-list__submit" color="primary" :disabled="!recipients.length" :loading="saving" @click="inviteRecipients" v-t="'common.action.invite'"></v-btn>
+    </div>
+  </div>
+  <v-list two-line="two-line">
+    <v-subheader><span v-t="'membership_card.discussion_members'"></span>
+      <space></space><span>({{discussion.membersCount}})</span>
+    </v-subheader>
+    <v-list-item v-for="reader in readers" :user="reader.user()" :key="reader.id">
+      <v-list-item-avatar>
+        <user-avatar :user="reader.user()" :size="24"></user-avatar>
+      </v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title><span class="mr-2">{{reader.user().nameWithTitle(discussion.group())}}</span>
+          <v-chip class="mr-1" v-if="discussion.groupId && isGuest(reader)" outlined="outlined" x-small="x-small" label="label" v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')"></v-chip>
+          <v-chip class="mr-1" v-if="reader.admin" outlined="outlined" x-small="x-small" label="label" v-t="'announcement.members_list.thread_admin'"></v-chip>
+          <v-chip class="mr-1" v-if="isGroupAdmin(reader)" outlined="outlined" x-small="x-small" label="label" v-t="'announcement.members_list.group_admin'"></v-chip>
+        </v-list-item-title>
+        <v-list-item-subtitle><span v-if="reader.lastReadAt" v-t="{ path: 'announcement.members_list.last_read_at', args: { time: approximateDate(reader.lastReadAt) } }"></span><span v-else v-t="'announcement.members_list.has_not_read_thread'"></span></v-list-item-subtitle>
+      </v-list-item-content>
+      <v-list-item-action>
+        <v-menu offset-y="offset-y">
+          <template v-slot:activator="{on, attrs}">
+            <v-btn class="membership-dropdown__button" icon="icon" v-on="on" v-bind="attrs">
+              <common-icon name="mdi-dots-vertical"></common-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item v-for="action in actionNames" v-if="service[action].canPerform(reader)" @click="service[action].perform(reader)" :key="action">
+              <v-list-item-title v-t="service[action].name"></v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-list-item-action>
+    </v-list-item>
+    <v-list-item v-if="query && readers.length == 0">
+      <v-list-item-title v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}"></v-list-item-title>
+    </v-list-item>
+  </v-list>
+</div>
 </template>

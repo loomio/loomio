@@ -90,39 +90,38 @@ export default
 
 </script>
 
-<template lang="pug">
-v-main
-  v-container.dashboard-page.max-width-1024.px-0.px-sm-3
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'")
+<template>
 
-    dashboard-polls-panel
-
-    v-card.mb-3(v-if='!dashboardLoaded')
-      v-list(two-line)
-        v-subheader(v-t="'dashboard_page.recent_threads'")
-        loading-content(
-          :lineCount='2'
-          v-for='(item, index) in [1,2,3]'
-          :key='index' )
-
-    div(v-if="dashboardLoaded")
-      section.dashboard-page__loaded
-        .dashboard-page__empty(v-if='discussions.length == 0')
-          p(v-html="$t('dashboard_page.no_groups.show_all')" v-if='noGroups')
-          .dashboard-page__no-threads(v-if='!noGroups')
-            span(v-show="filter == 'show_all'" v-t="'dashboard_page.no_threads.show_all'")
-            //- p(v-t="'dashboard_page.no_threads.show_all'")
-            span(v-show="filter == 'show_muted' && userHasMuted", v-t="'dashboard_page.no_threads.show_muted'")
-            router-link(to='/dashboard', v-show="filter != 'show_all' && userHasMuted")
-              span(v-t="'dashboard_page.view_recent'")
-        .dashboard-page__collections(v-if='discussions.length')
-          v-card.mb-3.thread-preview-collection__container.thread-previews-container
-            v-list.thread-previews(two-line)
-              v-subheader(v-t="'dashboard_page.recent_threads'")
-              thread-preview(
-                v-for="thread in discussions"
-                :key="thread.id"
-                :thread="thread")
-          .dashboard-page__footer(v-if='!loader.exhausted')  
-          loading(v-show='loader.loading')
+<v-main>
+  <v-container class="dashboard-page max-width-1024 px-0 px-sm-3">
+    <h1 class="display-1 my-4" tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'"></h1>
+    <dashboard-polls-panel></dashboard-polls-panel>
+    <v-card class="mb-3" v-if="!dashboardLoaded">
+      <v-list two-line="two-line">
+        <v-subheader v-t="'dashboard_page.recent_threads'"></v-subheader>
+        <loading-content :lineCount="2" v-for="(item, index) in [1,2,3]" :key="index"></loading-content>
+      </v-list>
+    </v-card>
+    <div v-if="dashboardLoaded">
+      <section class="dashboard-page__loaded">
+        <div class="dashboard-page__empty" v-if="discussions.length == 0">
+          <p v-html="$t('dashboard_page.no_groups.show_all')" v-if="noGroups"></p>
+          <div class="dashboard-page__no-threads" v-if="!noGroups"><span v-show="filter == 'show_all'" v-t="'dashboard_page.no_threads.show_all'"></span><span v-show="filter == 'show_muted' && userHasMuted" v-t="'dashboard_page.no_threads.show_muted'"></span>
+            <router-link to="/dashboard" v-show="filter != 'show_all' && userHasMuted"><span v-t="'dashboard_page.view_recent'"></span></router-link>
+          </div>
+        </div>
+        <div class="dashboard-page__collections" v-if="discussions.length">
+          <v-card class="mb-3 thread-preview-collection__container thread-previews-container">
+            <v-list class="thread-previews" two-line="two-line">
+              <v-subheader v-t="'dashboard_page.recent_threads'"></v-subheader>
+              <thread-preview v-for="thread in discussions" :key="thread.id" :thread="thread"></thread-preview>
+            </v-list>
+          </v-card>
+          <div class="dashboard-page__footer" v-if="!loader.exhausted"> </div>
+          <loading v-show="loader.loading"></loading>
+        </div>
+      </section>
+    </div>
+  </v-container>
+</v-main>
 </template>

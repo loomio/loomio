@@ -101,18 +101,22 @@ export default {
 };
 
 </script>
-<template lang="pug">
-.reactions-display.mr-2(v-if="reactionTypes.length")
-  .reactions-display__emojis
-    .reaction.lmo-pointer(@click="removeMine(reaction)" v-for="reaction in reactionTypes" :key="reaction")
-      v-tooltip(bottom)
-        template(v-slot:activator="{ on, attrs }")
-          .reactions-display__group(v-on="on" v-bind="attrs")
-            span(:class="(small &&'small') || undefined" v-if="emojiSupported") {{colonToUnicode(reaction)}}
-            img.emoji(v-else :src="srcForEmoji(colonToUnicode(reaction))")
-            user-avatar.reactions-display__author(no-link v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
-        .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
-          span {{ user.name }}
+<template>
+
+<div class="reactions-display mr-2" v-if="reactionTypes.length">
+  <div class="reactions-display__emojis">
+    <div class="reaction lmo-pointer" @click="removeMine(reaction)" v-for="reaction in reactionTypes" :key="reaction">
+      <v-tooltip bottom="bottom">
+        <template v-slot:activator="{ on, attrs }">
+          <div class="reactions-display__group" v-on="on" v-bind="attrs"><span :class="(small &&'small') || undefined" v-if="emojiSupported">{{colonToUnicode(reaction)}}</span><img class="emoji" v-else :src="srcForEmoji(colonToUnicode(reaction))"/>
+            <user-avatar class="reactions-display__author" no-link="no-link" v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter"></user-avatar>
+          </div>
+        </template>
+        <div class="reactions-display__name" v-for="user in reactionHash[reaction]" :key="user.id"><span>{{ user.name }}</span></div>
+      </v-tooltip>
+    </div>
+  </div>
+</div>
 </template>
 
 <style lang="sass">

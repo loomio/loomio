@@ -31,17 +31,21 @@ export default {
 };
 
 </script>
-<template lang="pug">
-v-card.pin-event-form
-  v-card-title
-    span(v-t="'pin_event_form.title'")
-    v-spacer
-    dismiss-modal-button(aria-hidden='true')
-  v-card-text
-    v-form(@submit.prevent="submit()")
-      v-text-field(:disabled="loading" ref="focus" v-model="title" :label="$t('pin_event_form.title_label')")
-    //- p.caption(v-t="'pin_event_form.hint'")
-  v-card-actions
-    v-spacer
-    v-btn(color="primary" @click="submit()" :loading="loading" v-t="'common.action.save'")
+<template>
+
+<v-card class="pin-event-form">
+  <v-card-title><span v-t="'pin_event_form.title'"></span>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button aria-hidden="true"></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <v-form @submit.prevent="submit()">
+      <v-text-field :disabled="loading" ref="focus" v-model="title" :label="$t('pin_event_form.title_label')"></v-text-field>
+    </v-form>
+  </v-card-text>
+  <v-card-actions>
+    <v-spacer></v-spacer>
+    <v-btn color="primary" @click="submit()" :loading="loading" v-t="'common.action.save'"></v-btn>
+  </v-card-actions>
+</v-card>
 </template>

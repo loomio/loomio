@@ -82,17 +82,20 @@ export default {
 };
 </script>
 
-<template lang="pug">
-section.document-list(v-if="couldHaveDocuments")
-  p.caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
-  .document-list__documents
-    .attachment-list__item(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
-      a.attachment-list__preview(v-if='document.isAnImage() && !hidePreview' :href='document.url' target='_blank')
-        img(:src='document.webUrl', :alt='document.title')
-      .attachment-list__item-details
-        a.document-list__title(:href='document.url' target='_blank') {{ document.title }}
-        v-btn.ml-2(v-if="canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument(document)')
-          common-icon(size="medium" name="mdi-delete")
+<template>
+
+<section class="document-list" v-if="couldHaveDocuments">
+  <p class="caption" v-if="!model.hasDocuments() && placeholder" v-t="placeholder"></p>
+  <div class="document-list__documents">
+    <div class="attachment-list__item" :class="{'document-list__document--image': document.isAnImage() && !hidePreview}" v-for="document in documents" :key="document.id"><a class="attachment-list__preview" v-if="document.isAnImage() && !hidePreview" :href="document.url" target="_blank"><img :src="document.webUrl" :alt="document.title"/></a>
+      <div class="attachment-list__item-details"><a class="document-list__title" :href="document.url" target="_blank">{{ document.title }}</a>
+        <v-btn class="ml-2" v-if="canDelete" icon="icon" :aria-label="$t('common.action.delete')" @click="deleteDocument(document)">
+          <common-icon size="medium" name="mdi-delete"></common-icon>
+        </v-btn>
+      </div>
+    </div>
+  </div>
+</section>
 </template>
 <style lang="sass">
 .document-list

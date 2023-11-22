@@ -20,10 +20,13 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.strand-wall
-  v-card(v-for="loader in loaders" :key="loader.id")
-    strand-card(:loader="loader")
+<template>
+
+<div class="strand-wall">
+  <v-card v-for="loader in loaders" :key="loader.id">
+    <strand-card :loader="loader"></strand-card>
+  </v-card>
+</div>
 </template>
 
 <style lang="sass">

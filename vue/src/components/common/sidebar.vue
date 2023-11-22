@@ -159,114 +159,145 @@ export default {
 };
 </script>
 
-<template lang="pug">
-v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
-  template(v-slot:prepend)
-  template(v-slot:append)
-    v-layout.mx-10.my-2(column align-center style="max-height: 64px")
-      v-img(:src="logoUrl")
+<template>
 
-  v-list-group.sidebar__user-dropdown
-    template(v-slot:activator)
-      v-list-item-icon.mr-2
-        user-avatar(:user="user")
-      v-list-item-content
-        v-list-item-title {{user.name}}
-        v-list-item-subtitle {{user.email}}
-    user-dropdown
-  template(v-if="needProfilePicture")
-    v-divider
-    v-list-item.sidebar__list-item-button--recent(@click="setProfilePicture" color="warning")
-      v-list-item-icon
-        common-icon(name="mdi-emoticon-outline")
-      v-list-item-content
-        v-list-item-title(v-t="'profile_page.incomplete_profile'")
-        v-list-item-subtitle(v-t="'profile_page.set_your_profile_picture'")
-  v-divider
-
-  v-list-item.sidebar__list-item-button--recent(dense to="/dashboard")
-    v-list-item-title(v-t="'dashboard_page.aria_label'")
-  v-list-item(dense to="/inbox")
-    v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
-  v-list-item.sidebar__list-item-button--private(dense to="/threads/direct")
-    v-list-item-title
-      span(v-t="'sidebar.invite_only_threads'")
-      span(v-if="unreadDirectThreadsCount > 0")
-        space
-        span ({{unreadDirectThreadsCount}})
-  v-list-item.sidebar__list-item-button--start-thread(dense to="/d/new")
-    v-list-item-title(v-t="'sidebar.start_thread'")
-    v-list-item-icon
-      common-icon(name="mdi-plus")
-  v-list-item(dense to="/tasks" :disabled="organizations.length == 0")
-    v-list-item-title(v-t="'tasks.tasks'")
-  v-divider
-
-  v-list.sidebar__groups(dense)
-    template(v-for="parentGroup in organizations")
-      template(v-if="memberGroups(parentGroup).length")
-        v-list-group(v-model="openGroups[parentGroup.id]" @click="goToGroup(parentGroup)")
-          template(v-slot:activator)
-            v-list-item-avatar(aria-hidden="true")
-              group-avatar(:group="parentGroup")
-            v-list-item-content
-              v-list-item-title
-                span {{parentGroup.name}}
-                template(v-if="closedCounts[parentGroup.id]")
-                  | &nbsp;
-                  span ({{closedCounts[parentGroup.id]}})
-          v-list-item(:to="urlFor(parentGroup)+'?subgroups=none'")
-            v-list-item-content
-              v-list-item-title
-                span {{parentGroup.name}}
-                template(v-if='openCounts[parentGroup.id]')
-                  | &nbsp;
-                  span ({{openCounts[parentGroup.id]}})
-          v-list-item(v-for="group in memberGroups(parentGroup)", :key="group.id", :to="urlFor(group)")
-            v-list-item-content
-              v-list-item-title
-                span {{group.name}}
-                template(v-if='openCounts[group.id]')
-                  | &nbsp;
-                  span ({{openCounts[group.id]}})
-      template(v-else)
-        v-list-item(:to="urlFor(parentGroup)")
-          v-list-item-avatar
-            group-avatar(:group="parentGroup")
-          v-list-item-content
-            v-list-item-title
-              span {{parentGroup.name}}
-              template(v-if='openCounts[parentGroup.id]')
-                | &nbsp;
-                span ({{openCounts[parentGroup.id]}})
-
-    v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroups" to="/g/new")
-      v-list-item-avatar
-        common-icon(tile name="mdi-plus")
-      v-list-item-title(v-t="'group_form.new_group'")
-  v-divider
-  v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" @click="startOrFindDemo" two-line dense)
-    v-list-item-content
-      v-list-item-title(v-t="'templates.start_a_demo'")
-      v-list-item-subtitle(v-t="'templates.play_with_an_example_group'")
-    v-list-item-icon
-      common-icon(name="mdi-car-convertible")
-  v-list-item(v-if="showHelp", :href="helpURL" target="_blank" dense two-line)
-    v-list-item-content
-      v-list-item-title(v-t="'sidebar.help_docs'")
-      v-list-item-subtitle(v-t="'sidebar.a_detailed_guide_to_loomio'")
-    v-list-item-icon
-      common-icon(name="mdi-book-open-page-variant")
-  v-list-item(dense to="/explore" v-if="showExploreGroups")
-    v-list-item-title(v-t="'sidebar.explore_groups'")
-    v-list-item-icon
-      common-icon(name="mdi-map-search")
-  v-list-item(v-if="showContact" @click="$router.replace('/contact')" dense two-line)
-    v-list-item-content
-      v-list-item-title(v-t="'user_dropdown.contact_support'")
-      v-list-item-subtitle(v-t="'sidebar.talk_to_the_loomio_team'")
-    v-list-item-icon
-      common-icon(name="mdi-face-agent")
+<v-navigation-drawer class="sidenav-left lmo-no-print" app="app" v-model="open">
+  <template v-slot:prepend="v-slot:prepend"></template>
+  <template v-slot:append="v-slot:append">
+    <v-layout class="mx-10 my-2" column="column" align-center="align-center" style="max-height: 64px">
+      <v-img :src="logoUrl"></v-img>
+    </v-layout>
+  </template>
+  <v-list-group class="sidebar__user-dropdown">
+    <template v-slot:activator="v-slot:activator">
+      <v-list-item-icon class="mr-2">
+        <user-avatar :user="user"></user-avatar>
+      </v-list-item-icon>
+      <v-list-item-content>
+        <v-list-item-title>{{user.name}}</v-list-item-title>
+        <v-list-item-subtitle>{{user.email}}</v-list-item-subtitle>
+      </v-list-item-content>
+    </template>
+    <user-dropdown></user-dropdown>
+  </v-list-group>
+  <template v-if="needProfilePicture">
+    <v-divider></v-divider>
+    <v-list-item class="sidebar__list-item-button--recent" @click="setProfilePicture" color="warning">
+      <v-list-item-icon>
+        <common-icon name="mdi-emoticon-outline"></common-icon>
+      </v-list-item-icon>
+      <v-list-item-content>
+        <v-list-item-title v-t="'profile_page.incomplete_profile'"></v-list-item-title>
+        <v-list-item-subtitle v-t="'profile_page.set_your_profile_picture'"></v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+  </template>
+  <v-divider></v-divider>
+  <v-list-item class="sidebar__list-item-button--recent" dense="dense" to="/dashboard">
+    <v-list-item-title v-t="'dashboard_page.aria_label'"></v-list-item-title>
+  </v-list-item>
+  <v-list-item dense="dense" to="/inbox">
+    <v-list-item-title v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }"></v-list-item-title>
+  </v-list-item>
+  <v-list-item class="sidebar__list-item-button--private" dense="dense" to="/threads/direct">
+    <v-list-item-title><span v-t="'sidebar.invite_only_threads'"></span><span v-if="unreadDirectThreadsCount > 0">
+        <space></space><span>({{unreadDirectThreadsCount}})</span></span></v-list-item-title>
+  </v-list-item>
+  <v-list-item class="sidebar__list-item-button--start-thread" dense="dense" to="/d/new">
+    <v-list-item-title v-t="'sidebar.start_thread'"></v-list-item-title>
+    <v-list-item-icon>
+      <common-icon name="mdi-plus"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item dense="dense" to="/tasks" :disabled="organizations.length == 0">
+    <v-list-item-title v-t="'tasks.tasks'"></v-list-item-title>
+  </v-list-item>
+  <v-divider></v-divider>
+  <v-list class="sidebar__groups" dense="dense">
+    <template v-for="parentGroup in organizations">
+      <template v-if="memberGroups(parentGroup).length">
+        <v-list-group v-model="openGroups[parentGroup.id]" @click="goToGroup(parentGroup)">
+          <template v-slot:activator="v-slot:activator">
+            <v-list-item-avatar aria-hidden="true">
+              <group-avatar :group="parentGroup"></group-avatar>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title><span>{{parentGroup.name}}</span>
+                <template v-if="closedCounts[parentGroup.id]">&nbsp;<span>({{closedCounts[parentGroup.id]}})</span></template>
+              </v-list-item-title>
+            </v-list-item-content>
+          </template>
+          <v-list-item :to="urlFor(parentGroup)+'?subgroups=none'">
+            <v-list-item-content>
+              <v-list-item-title><span>{{parentGroup.name}}</span>
+                <template v-if="openCounts[parentGroup.id]">&nbsp;<span>({{openCounts[parentGroup.id]}})</span></template>
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item v-for="group in memberGroups(parentGroup)" :key="group.id" :to="urlFor(group)">
+            <v-list-item-content>
+              <v-list-item-title><span>{{group.name}}</span>
+                <template v-if="openCounts[group.id]">&nbsp;<span>({{openCounts[group.id]}})</span></template>
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+      </template>
+      <template v-else>
+        <v-list-item :to="urlFor(parentGroup)">
+          <v-list-item-avatar>
+            <group-avatar :group="parentGroup"></group-avatar>
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title><span>{{parentGroup.name}}</span>
+              <template v-if="openCounts[parentGroup.id]">&nbsp;<span>({{openCounts[parentGroup.id]}})</span></template>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+    </template>
+    <v-list-item class="sidebar__list-item-button--start-group" v-if="canStartGroups" to="/g/new">
+      <v-list-item-avatar>
+        <common-icon tile="tile" name="mdi-plus"></common-icon>
+      </v-list-item-avatar>
+      <v-list-item-title v-t="'group_form.new_group'"></v-list-item-title>
+    </v-list-item>
+  </v-list>
+  <v-divider></v-divider>
+  <v-list-item class="sidebar__list-item-button--start-group" v-if="canStartDemo" @click="startOrFindDemo" two-line="two-line" dense="dense">
+    <v-list-item-content>
+      <v-list-item-title v-t="'templates.start_a_demo'"></v-list-item-title>
+      <v-list-item-subtitle v-t="'templates.play_with_an_example_group'"></v-list-item-subtitle>
+    </v-list-item-content>
+    <v-list-item-icon>
+      <common-icon name="mdi-car-convertible"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item v-if="showHelp" :href="helpURL" target="_blank" dense="dense" two-line="two-line">
+    <v-list-item-content>
+      <v-list-item-title v-t="'sidebar.help_docs'"></v-list-item-title>
+      <v-list-item-subtitle v-t="'sidebar.a_detailed_guide_to_loomio'"></v-list-item-subtitle>
+    </v-list-item-content>
+    <v-list-item-icon>
+      <common-icon name="mdi-book-open-page-variant"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item dense="dense" to="/explore" v-if="showExploreGroups">
+    <v-list-item-title v-t="'sidebar.explore_groups'"></v-list-item-title>
+    <v-list-item-icon>
+      <common-icon name="mdi-map-search"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+  <v-list-item v-if="showContact" @click="$router.replace('/contact')" dense="dense" two-line="two-line">
+    <v-list-item-content>
+      <v-list-item-title v-t="'user_dropdown.contact_support'"></v-list-item-title>
+      <v-list-item-subtitle v-t="'sidebar.talk_to_the_loomio_team'"></v-list-item-subtitle>
+    </v-list-item-content>
+    <v-list-item-icon>
+      <common-icon name="mdi-face-agent"></common-icon>
+    </v-list-item-icon>
+  </v-list-item>
+</v-navigation-drawer>
 </template>
 <style lang="sass">
 .sidenav-left

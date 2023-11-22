@@ -150,67 +150,56 @@ export default
 };
 </script>
 
-<template lang="pug">
-.polls-panel
-  loading(v-if="!group")
-  div(v-if="group")
-    v-layout.py-2(align-center wrap)
-      v-menu
-        template(v-slot:activator="{ on, attrs }")
-          v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
-            span(v-if="$route.query.status == 'active'" v-t="'polls_panel.open'")
-            span(v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'")
-            span(v-if="$route.query.status == 'vote'" v-t="'polls_panel.need_vote'")
-            span(v-if="!$route.query.status" v-t="'polls_panel.any_status'")
-            common-icon(name="mdi-menu-down")
-        v-list(dense)
-          v-list-item(:to="mergeQuery({status: null })" v-t="'polls_panel.any_status'")
-          v-list-item(:to="mergeQuery({status: 'active'})" v-t="'polls_panel.open'")
-          v-list-item(:to="mergeQuery({status: 'closed'})" v-t="'polls_panel.closed'")
-          v-list-item(:to="mergeQuery({status: 'vote'})" v-t="'polls_panel.need_vote'")
-      v-menu
-        template(v-slot:activator="{ on, attrs }")
-          v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
-            span(v-if="$route.query.poll_type" v-t="'poll_types.'+$route.query.poll_type")
-            span(v-if="!$route.query.poll_type" v-t="'polls_panel.any_type'")
-            common-icon(name="mdi-menu-down")
-        v-list(dense)
-          v-list-item(:to="mergeQuery({poll_type: null})" )
-            v-list-item-title(v-t="'polls_panel.any_type'")
-          v-list-item(
-            v-for="pollType in Object.keys(pollTypes)"
-            :key="pollType"
-            :to="mergeQuery({poll_type: pollType})"
-          )
-            v-list-item-title(v-t="'poll_types.'+pollType")
-      v-text-field.mr-2(
-        clearable
-        hide-details
-        solo
-        v-model="dummyQuery"
-        @click="openSearchModal"
-        @change="openSearchModal"
-        @keyup.enter="openSearchModal"
-        @click:append="openSearchModal"
-        :placeholder="$t('navbar.search_polls', {name: group.name})"
-        append-icon="mdi-magnify")
-      v-btn.polls-panel__new-poll-button(
-        :to="'/p/new?group_id='+group.id"
-        color='primary'
-        v-if='canStartPoll'
-        v-t="'sidebar.start_decision'")
-    v-card(outlined)
-      div(v-if="loader.status == 403")
-        p.pa-4.text-center(v-t="'error_page.forbidden'")
-      div(v-else)
-        v-list(two-line avatar v-if='polls.length && loader.pageWindow[page]')
-          poll-common-preview(
-            :poll='poll'
-            v-for='poll in polls'
-            :key='poll.id'
-            :display-group-name="poll.groupId != group.id")
-        p.pa-4.text-center(v-if='polls.length == 0 && !loader.loading' v-t="'polls_panel.no_polls'")
-        loading(v-if="loader.loading")
-        v-pagination(v-model="page" :length="totalPages" :total-visible="7" :disabled="totalPages == 1")
+<template>
 
+<div class="polls-panel">
+  <loading v-if="!group"></loading>
+  <div v-if="group">
+    <v-layout class="py-2" align-center="align-center" wrap="wrap">
+      <v-menu>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn class="mr-2 text-lowercase" v-on="on" v-bind="attrs" text="text"><span v-if="$route.query.status == 'active'" v-t="'polls_panel.open'"></span><span v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'"></span><span v-if="$route.query.status == 'vote'" v-t="'polls_panel.need_vote'"></span><span v-if="!$route.query.status" v-t="'polls_panel.any_status'"></span>
+            <common-icon name="mdi-menu-down"></common-icon>
+          </v-btn>
+        </template>
+        <v-list dense="dense">
+          <v-list-item :to="mergeQuery({status: null })" v-t="'polls_panel.any_status'"></v-list-item>
+          <v-list-item :to="mergeQuery({status: 'active'})" v-t="'polls_panel.open'"></v-list-item>
+          <v-list-item :to="mergeQuery({status: 'closed'})" v-t="'polls_panel.closed'"></v-list-item>
+          <v-list-item :to="mergeQuery({status: 'vote'})" v-t="'polls_panel.need_vote'"></v-list-item>
+        </v-list>
+      </v-menu>
+      <v-menu>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn class="mr-2 text-lowercase" v-on="on" v-bind="attrs" text="text"><span v-if="$route.query.poll_type" v-t="'poll_types.'+$route.query.poll_type"></span><span v-if="!$route.query.poll_type" v-t="'polls_panel.any_type'"></span>
+            <common-icon name="mdi-menu-down"></common-icon>
+          </v-btn>
+        </template>
+        <v-list dense="dense">
+          <v-list-item :to="mergeQuery({poll_type: null})">
+            <v-list-item-title v-t="'polls_panel.any_type'"></v-list-item-title>
+          </v-list-item>
+          <v-list-item v-for="pollType in Object.keys(pollTypes)" :key="pollType" :to="mergeQuery({poll_type: pollType})">
+            <v-list-item-title v-t="'poll_types.'+pollType"></v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <v-text-field class="mr-2" clearable="clearable" hide-details="hide-details" solo="solo" v-model="dummyQuery" @click="openSearchModal" @change="openSearchModal" @keyup.enter="openSearchModal" @click:append="openSearchModal" :placeholder="$t('navbar.search_polls', {name: group.name})" append-icon="mdi-magnify"></v-text-field>
+      <v-btn class="polls-panel__new-poll-button" :to="'/p/new?group_id='+group.id" color="primary" v-if="canStartPoll" v-t="'sidebar.start_decision'"></v-btn>
+    </v-layout>
+    <v-card outlined="outlined">
+      <div v-if="loader.status == 403">
+        <p class="pa-4 text-center" v-t="'error_page.forbidden'"></p>
+      </div>
+      <div v-else>
+        <v-list two-line="two-line" avatar="avatar" v-if="polls.length && loader.pageWindow[page]">
+          <poll-common-preview :poll="poll" v-for="poll in polls" :key="poll.id" :display-group-name="poll.groupId != group.id"></poll-common-preview>
+        </v-list>
+        <p class="pa-4 text-center" v-if="polls.length == 0 && !loader.loading" v-t="'polls_panel.no_polls'"></p>
+        <loading v-if="loader.loading"></loading>
+        <v-pagination v-model="page" :length="totalPages" :total-visible="7" :disabled="totalPages == 1"></v-pagination>
+      </div>
+    </v-card>
+  </div>
+</div>
 </template>

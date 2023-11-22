@@ -24,20 +24,25 @@ export default
 };
 
 </script>
-<template lang="pug">
-v-card.user-name-modal
-  submit-overlay(:value='user.processing')
-  v-card-title
-    h1.headline(tabindex="-1" v-t="'membership_dropdown.set_name_and_username'")
-    v-spacer
-    dismiss-modal-button
-  v-card-text
-    v-text-field(:label="$t('profile_page.email_label')" v-model="user.email" disabled)
-    v-text-field(:label="$t('profile_page.name_label')" v-model="user.name")
-    validation-errors(:subject='user' field='name')
-    v-text-field(:label="$t('profile_page.username_label')" v-model="user.username")
-    validation-errors(:subject='user', field='username')
-  v-card-actions
-    v-spacer
-    v-btn.primary(@click="submit" v-t="'common.action.save'")
+<template>
+
+<v-card class="user-name-modal">
+  <submit-overlay :value="user.processing"></submit-overlay>
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="'membership_dropdown.set_name_and_username'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <v-text-field :label="$t('profile_page.email_label')" v-model="user.email" disabled="disabled"></v-text-field>
+    <v-text-field :label="$t('profile_page.name_label')" v-model="user.name"></v-text-field>
+    <validation-errors :subject="user" field="name"></validation-errors>
+    <v-text-field :label="$t('profile_page.username_label')" v-model="user.username"></v-text-field>
+    <validation-errors :subject="user" field="username"></validation-errors>
+  </v-card-text>
+  <v-card-actions>
+    <v-spacer></v-spacer>
+    <v-btn class="primary" @click="submit" v-t="'common.action.save'"></v-btn>
+  </v-card-actions>
+</v-card>
 </template>

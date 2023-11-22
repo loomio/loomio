@@ -31,14 +31,16 @@ export default
   });
 </script>
 
-<template lang="pug">
-.poll-common-chart-preview(:style="{width: size+'px', height: size+'px'}" aria-hidden="true")
-  bar-icon(v-if="poll.chartType == 'bar'", :poll="poll", :size='size')
-  pie-icon(v-if="poll.chartType == 'pie'", :slices="slices", :size='size')
-  grid-icon(v-if="poll.chartType == 'grid'", :poll="poll", :size='size')
-  .poll-common-chart-preview__stance-container(v-if='showMyStance && (myStance || poll.iCanVote())')
-    poll-common-stance-icon(:poll="poll", :stance="myStance", :size="stanceSize")
+<template>
 
+<div class="poll-common-chart-preview" :style="{width: size+'px', height: size+'px'}" aria-hidden="true">
+  <bar-icon v-if="poll.chartType == 'bar'" :poll="poll" :size="size"></bar-icon>
+  <pie-icon v-if="poll.chartType == 'pie'" :slices="slices" :size="size"></pie-icon>
+  <grid-icon v-if="poll.chartType == 'grid'" :poll="poll" :size="size"></grid-icon>
+  <div class="poll-common-chart-preview__stance-container" v-if="showMyStance && (myStance || poll.iCanVote())">
+    <poll-common-stance-icon :poll="poll" :stance="myStance" :size="stanceSize"></poll-common-stance-icon>
+  </div>
+</div>
 </template>
 
 <style lang="sass">

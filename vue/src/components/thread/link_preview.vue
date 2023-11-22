@@ -41,64 +41,53 @@ export default {
   }
 };
 </script>
-<template lang="pug">
-div
-  template(v-if="editing")
-    v-card.link-preview.mt-3(outlined style="position: relative")
-      .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': (preview.fit || 'contain'), 'background-position': (preview.align || 'center')}")
-      v-btn.link-preview__btn(color="primary" icon outlined
-            :title="$t('common.action.done')"
-            style="right: 8px"
-            @click="editing = false")
-        common-icon(name="mdi-check")
-      v-card-title
-        v-text-field(filled v-model="preview.title")
-      v-card-subtitle
-        v-textarea(filled v-model="preview.description")
+<template>
 
-  template(v-else)
-    v-card.link-preview.link-preview-link.mt-3(outlined style="position: relative")
-      template(v-if="remove")
-        v-btn.link-preview__btn(color="primary"
-              outlined
-              style="right: 8px"
-              icon
-              @click="remove(preview.url)"
-              :title="$t('common.action.remove')")
-          common-icon(name="mdi-close")
-        v-btn.link-preview__btn(color="primary"
-              style="right: 48px"
-              icon
-              outlined
-              @click="editing = true"
-              :title="$t('common.action.edit')")
-          common-icon(name="mdi-pencil")
-
-        template(v-if="preview.image")
-          v-btn.link-preview__btn(@click="preview.fit = (preview.fit == 'cover' ? 'contain' : 'cover')"
-                color="primary" icon outlined
-                style="right: 88px"
-                :title="$t('common.action.zoom')")
-            common-icon(v-if="preview.fit == 'contain'" name="mdi-magnify-plus-outline")
-            common-icon(v-else name="mdi-magnify-minus-outline")
-          v-btn.link-preview__btn(v-if="preview.fit == 'cover'"
-                @click="preview.align = (preview.align == 'top' ? 'center' : 'top')"
-                color="primary" icon outlined
-                style="right: 128px"
-                :title="$t('common.action.align')")
-            common-icon(v-if="preview.align == 'top'" name="mdi-format-vertical-align-center")
-            common-icon(v-else name="mdi-format-vertical-align-top")
-
-      a.link-preview-link(:href="preview.url" target="_blank" rel="nofollow ugc noreferrer noopener")
-        div.ml-4
-        .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': (preview.fit || 'contain'), 'background-position': (preview.align || 'center')}")
-        v-card-title.text--secondary
-          common-icon.mr-1(name="mdi-open-in-new")
-          | {{preview.title}}
-        v-card-subtitle
-          span(v-if="doctype.name != 'other'" v-t="'doctypes.'+doctype.name")
-          span.link-preview__hostname(v-else v-html="preview.hostname")
-        v-card-text.text--secondary(v-if="preview.description") {{preview.description}}
+<div>
+  <template v-if="editing">
+    <v-card class="link-preview mt-3" outlined="outlined" style="position: relative">
+      <div class="link-preview__image" v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': (preview.fit || 'contain'), 'background-position': (preview.align || 'center')}"></div>
+      <v-btn class="link-preview__btn" color="primary" icon="icon" outlined="outlined" :title="$t('common.action.done')" style="right: 8px" @click="editing = false">
+        <common-icon name="mdi-check"></common-icon>
+      </v-btn>
+      <v-card-title>
+        <v-text-field filled="filled" v-model="preview.title"></v-text-field>
+      </v-card-title>
+      <v-card-subtitle>
+        <v-textarea filled="filled" v-model="preview.description"></v-textarea>
+      </v-card-subtitle>
+    </v-card>
+  </template>
+  <template v-else>
+    <v-card class="link-preview link-preview-link mt-3" outlined="outlined" style="position: relative">
+      <template v-if="remove">
+        <v-btn class="link-preview__btn" color="primary" outlined="outlined" style="right: 8px" icon="icon" @click="remove(preview.url)" :title="$t('common.action.remove')">
+          <common-icon name="mdi-close"></common-icon>
+        </v-btn>
+        <v-btn class="link-preview__btn" color="primary" style="right: 48px" icon="icon" outlined="outlined" @click="editing = true" :title="$t('common.action.edit')">
+          <common-icon name="mdi-pencil"></common-icon>
+        </v-btn>
+        <template v-if="preview.image">
+          <v-btn class="link-preview__btn" @click="preview.fit = (preview.fit == 'cover' ? 'contain' : 'cover')" color="primary" icon="icon" outlined="outlined" style="right: 88px" :title="$t('common.action.zoom')">
+            <common-icon v-if="preview.fit == 'contain'" name="mdi-magnify-plus-outline"></common-icon>
+            <common-icon v-else name="mdi-magnify-minus-outline"></common-icon>
+          </v-btn>
+          <v-btn class="link-preview__btn" v-if="preview.fit == 'cover'" @click="preview.align = (preview.align == 'top' ? 'center' : 'top')" color="primary" icon="icon" outlined="outlined" style="right: 128px" :title="$t('common.action.align')">
+            <common-icon v-if="preview.align == 'top'" name="mdi-format-vertical-align-center"></common-icon>
+            <common-icon v-else name="mdi-format-vertical-align-top"></common-icon>
+          </v-btn>
+        </template>
+      </template><a class="link-preview-link" :href="preview.url" target="_blank" rel="nofollow ugc noreferrer noopener">
+        <div class="ml-4"></div>
+        <div class="link-preview__image" v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': (preview.fit || 'contain'), 'background-position': (preview.align || 'center')}"></div>
+        <v-card-title class="text--secondary">
+          <common-icon class="mr-1" name="mdi-open-in-new"></common-icon>{{preview.title}}
+        </v-card-title>
+        <v-card-subtitle><span v-if="doctype.name != 'other'" v-t="'doctypes.'+doctype.name"></span><span class="link-preview__hostname" v-else v-html="preview.hostname"></span></v-card-subtitle>
+        <v-card-text class="text--secondary" v-if="preview.description">{{preview.description}}</v-card-text></a>
+    </v-card>
+  </template>
+</div>
 </template>
 
 <style lang="sass">

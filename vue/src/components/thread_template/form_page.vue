@@ -39,14 +39,17 @@ export default {
 };
 
 </script>
-<template lang="pug">
-.poll-form-page
-  v-main
-    v-container.max-width-800.px-0.px-sm-3
-      v-card.poll-common-modal
-        div.pa-4
-          thread-template-form(
-            v-if="discussionTemplate"
-            :discussion-template="discussionTemplate"
-          )
+<template>
+
+<div class="poll-form-page">
+  <v-main>
+    <v-container class="max-width-800 px-0 px-sm-3">
+      <v-card class="poll-common-modal">
+        <div class="pa-4">
+          <thread-template-form v-if="discussionTemplate" :discussion-template="discussionTemplate"></thread-template-form>
+        </div>
+      </v-card>
+    </v-container>
+  </v-main>
+</div>
 </template>

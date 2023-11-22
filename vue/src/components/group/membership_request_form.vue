@@ -36,22 +36,29 @@ export default
   }
 };
 </script>
-<template lang="pug">
-v-card.membership-request-form
-  submit-overlay(:value='membershipRequest.processing')
-  v-card-title
-    h1.headline(tabindex="-1" v-t="'membership_request_form.heading'")
-    v-spacer
-    dismiss-modal-button(:close="close")
-  v-card-text
-    .membership-request-form__visitor(v-if='!isSignedIn')
-      v-text-field.membership-request-form__name(v-model='membershipRequest.name' :required='true' :label="$t('membership_request_form.name_label')")
-      v-text-field.membership-request-form__email(v-model='membershipRequest.email' :required='true' :label="$t('membership_request_form.email_label')")
-      validation-errors(:subject='membershipRequest' field='email')
-    .membership-request-form__reason
-      v-textarea.membership-request-form__introduction(v-model='membershipRequest.introduction' :required='false' maxlength='250' :label="$t('membership_request_form.introduction_label')")
-  v-card-actions
-    v-btn.membership-request-form__cancel-btn(@click='close()' v-t="'common.action.cancel'")
-    v-spacer
-    v-btn.membership-request-form__submit-btn(color="primary" @click='submit()' v-t="'membership_request_form.submit_button'")
+<template>
+
+<v-card class="membership-request-form">
+  <submit-overlay :value="membershipRequest.processing"></submit-overlay>
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="'membership_request_form.heading'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button :close="close"></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <div class="membership-request-form__visitor" v-if="!isSignedIn">
+      <v-text-field class="membership-request-form__name" v-model="membershipRequest.name" :required="true" :label="$t('membership_request_form.name_label')"></v-text-field>
+      <v-text-field class="membership-request-form__email" v-model="membershipRequest.email" :required="true" :label="$t('membership_request_form.email_label')"></v-text-field>
+      <validation-errors :subject="membershipRequest" field="email"></validation-errors>
+    </div>
+    <div class="membership-request-form__reason">
+      <v-textarea class="membership-request-form__introduction" v-model="membershipRequest.introduction" :required="false" maxlength="250" :label="$t('membership_request_form.introduction_label')"></v-textarea>
+    </div>
+  </v-card-text>
+  <v-card-actions>
+    <v-btn class="membership-request-form__cancel-btn" @click="close()" v-t="'common.action.cancel'"></v-btn>
+    <v-spacer></v-spacer>
+    <v-btn class="membership-request-form__submit-btn" color="primary" @click="submit()" v-t="'membership_request_form.submit_button'"></v-btn>
+  </v-card-actions>
+</v-card>
 </template>

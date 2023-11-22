@@ -36,12 +36,15 @@ export default {
   }
 };
 </script>
-<template lang="pug">
-.auth-email-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
-  .auth-email-form__email
-    v-text-field#email.lmo-primary-form-input(outlined name='email' type='email' :placeholder="$t('auth_form.email_placeholder')" :label="$t('common.email_address')" v-model='email' autocomplete="username email")
-    validation-errors(:subject='user' field='email')
-    v-btn.auth-email-form__submit(color="primary" @click='submit()' :disabled='!email' v-t="'auth_form.continue_with_email'" :loading="loading")
+<template>
+
+<div class="auth-email-form" @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()">
+  <div class="auth-email-form__email">
+    <v-text-field class="lmo-primary-form-input" id="email" outlined="outlined" name="email" type="email" :placeholder="$t('auth_form.email_placeholder')" :label="$t('common.email_address')" v-model="email" autocomplete="username email"></v-text-field>
+    <validation-errors :subject="user" field="email"></validation-errors>
+    <v-btn class="auth-email-form__submit" color="primary" @click="submit()" :disabled="!email" v-t="'auth_form.continue_with_email'" :loading="loading"></v-btn>
+  </div>
+</div>
 </template>
 
 <style lang="sass">

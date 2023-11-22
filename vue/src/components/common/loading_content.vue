@@ -10,10 +10,13 @@ export default {
   }
 };
 </script>
-<template lang="pug">
-.loading-content
-  .loading-content__background-wrapper(v-for='(block, index) in blocks' :key='index')
-    .loading-content__background(v-for='(line, index) in lines' :key='index')
+<template>
+
+<div class="loading-content">
+  <div class="loading-content__background-wrapper" v-for="(block, index) in blocks" :key="index">
+    <div class="loading-content__background" v-for="(line, index) in lines" :key="index"></div>
+  </div>
+</div>
 </template>
 <style lang="sass">
 .loading-content__background-wrapper

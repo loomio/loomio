@@ -69,18 +69,22 @@ export default {
 }
 
 </script>
-<template lang="pug">
-v-card
-  submit-overlay(:value='poll.processing')
-  v-card-title
-    h1.headline(tabindex="-1" v-t="'action_dock.add_poll_to_thread'")
-    v-spacer
-    dismiss-modal-button(aria-hidden='true')
-  v-card-text
-    v-select(v-model="groupId" :items="groups" item-text="fullName" item-value="id")
-    v-autocomplete.add-to-thread-modal__search(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
-  v-card-actions
-    v-spacer
-    v-btn.add-to-thread-modal__submit(color="primary" @click="submit()" :disabled="!selectedDiscussion" :loading="poll.processing")
-      span(v-t="'common.action.save'")
+<template>
+
+<v-card>
+  <submit-overlay :value="poll.processing"></submit-overlay>
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" v-t="'action_dock.add_poll_to_thread'"></h1>
+    <v-spacer></v-spacer>
+    <dismiss-modal-button aria-hidden="true"></dismiss-modal-button>
+  </v-card-title>
+  <v-card-text>
+    <v-select v-model="groupId" :items="groups" item-text="fullName" item-value="id"></v-select>
+    <v-autocomplete class="add-to-thread-modal__search" hide-no-data="hide-no-data" return-object="return-object" v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading"></v-autocomplete>
+  </v-card-text>
+  <v-card-actions>
+    <v-spacer></v-spacer>
+    <v-btn class="add-to-thread-modal__submit" color="primary" @click="submit()" :disabled="!selectedDiscussion" :loading="poll.processing"><span v-t="'common.action.save'"></span></v-btn>
+  </v-card-actions>
+</v-card>
 </template>

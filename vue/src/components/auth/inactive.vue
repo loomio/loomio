@@ -18,15 +18,20 @@ export default {
 }
 
 </script>
-<template lang="pug">
-v-card.auth-inactive.text-center
-  v-card-title
-    h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="'profile_page.messages.deactivated'")
-    v-spacer
-    v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
-      common-icon(name="mdi-close")
-  v-sheet.mx-4.pb-4
-    p.title {{user.email}}
-    p(v-t="'devise.failure.inactive'")
-    v-btn(to="/contact" v-t="{path: 'user_dropdown.contact_site_name', args: {site_name: siteName}}")
+<template>
+
+<v-card class="auth-inactive text-center">
+  <v-card-title>
+    <h1 class="headline" tabindex="-1" role="status" aria-live="assertive" v-t="'profile_page.messages.deactivated'"></h1>
+    <v-spacer></v-spacer>
+    <v-btn class="back-button" icon="icon" :title="$t('common.action.back')" @click="user.authForm = null">
+      <common-icon name="mdi-close"></common-icon>
+    </v-btn>
+  </v-card-title>
+  <v-sheet class="mx-4 pb-4">
+    <p class="title">{{user.email}}</p>
+    <p v-t="'devise.failure.inactive'"></p>
+    <v-btn to="/contact" v-t="{path: 'user_dropdown.contact_site_name', args: {site_name: siteName}}"></v-btn>
+  </v-sheet>
+</v-card>
 </template>

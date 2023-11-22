@@ -83,63 +83,82 @@ export default {
   }
 };
 </script>
-<template lang="pug">
-.thread-templates-page
-  v-main
-    v-container.max-width-800.px-0.px-sm-3
-      .d-flex
-        v-breadcrumbs.px-4(:items="breadcrumbs")
-          template(v-slot:divider)
-            common-icon(name="mdi-chevron-right")
-      v-card
-        v-card-title.d-flex.pr-3
-          h1.headline(v-if="!showSettings" tabindex="-1" v-t="'thread_template.start_a_new_thread'")
-          h1.headline(v-if="showSettings" tabindex="-1" v-t="'thread_template.hidden_templates'")
-          v-spacer
-          v-btn(v-if="showSettings" icon @click="showSettings = false")
-            common-icon(name="mdi-close")
+<template>
 
-
-        v-alert.mx-4(v-if="!showSettings && group && group.discussionsCount < 2" type="info" text outlined v-t="'thread_template.these_are_templates'") 
-
-        v-list.append-sort-here(two-line)
-          .d-flex
-            v-subheader(v-if="!showSettings" v-t="'templates.templates'")
-            v-spacer
-            div.mr-3(v-if="userIsAdmin")
-              v-menu(v-if="!showSettings" offset-y)
-                template(v-slot:activator="{on, attrs}")
-                  v-btn(icon v-bind="attrs" v-on="on" :title="$t('common.admin_menu')")
-                    common-icon(name="mdi-cog")
-                v-list
-                  v-list-item(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
-                    v-list-item-title(v-t="'discussion_form.new_template'")
-                  v-list-item(@click="showSettings = true")
-                    v-list-item-title(v-t="'thread_template.hidden_templates'")
-
-          template(v-if="isSorting")
-            sortable-list(v-model="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")
-              sortable-item(v-for="(template, index) in templates" :index="index" :key="template.id || template.key")
-                v-list-item(:key="template.id")
-                  v-list-item-content
-                    v-list-item-title {{template.processName || template.title}}
-                    v-list-item-subtitle {{template.processSubtitle}}
-                  v-list-item-action.handle(style="cursor: grab")
-                    common-icon(name="mdi-drag-vertical")
-
-          template(v-if="!isSorting")
-            v-list-item.thread-templates--template(
-              v-for="(template, i) in templates" 
-              :key="template.id"
-              :to="'/d/new?' + (template.id ? 'template_id='+template.id : 'template_key='+template.key)+ '&group_id='+ $route.query.group_id + '&return_to='+returnTo"
-            )
-              v-list-item-content
-                v-list-item-title {{template.processName || template.title}}
-                v-list-item-subtitle {{template.processSubtitle}}
-              v-list-item-action
-                action-menu(:actions='actions[i]' small icon :name="$t('action_dock.more_actions')")
-
-      .d-flex.justify-center.my-2(v-if="!showSettings && userIsAdmin")
-        v-btn(:to="'/thread_templates/browse?group_id=' + $route.query.group_id + '&return_to='+returnTo")
-          span(v-t="'thread_template.browse_public_templates'")
+<div class="thread-templates-page">
+  <v-main>
+    <v-container class="max-width-800 px-0 px-sm-3">
+      <div class="d-flex">
+        <v-breadcrumbs class="px-4" :items="breadcrumbs">
+          <template v-slot:divider="v-slot:divider">
+            <common-icon name="mdi-chevron-right"></common-icon>
+          </template>
+        </v-breadcrumbs>
+      </div>
+      <v-card>
+        <v-card-title class="d-flex pr-3">
+          <h1 class="headline" v-if="!showSettings" tabindex="-1" v-t="'thread_template.start_a_new_thread'"></h1>
+          <h1 class="headline" v-if="showSettings" tabindex="-1" v-t="'thread_template.hidden_templates'"></h1>
+          <v-spacer></v-spacer>
+          <v-btn v-if="showSettings" icon="icon" @click="showSettings = false">
+            <common-icon name="mdi-close"></common-icon>
+          </v-btn>
+        </v-card-title>
+        <v-alert class="mx-4" v-if="!showSettings && group && group.discussionsCount < 2" type="info" text="text" outlined="outlined" v-t="'thread_template.these_are_templates'"> </v-alert>
+        <v-list class="append-sort-here" two-line="two-line">
+          <div class="d-flex">
+            <v-subheader v-if="!showSettings" v-t="'templates.templates'"></v-subheader>
+            <v-spacer></v-spacer>
+            <div class="mr-3" v-if="userIsAdmin">
+              <v-menu v-if="!showSettings" offset-y="offset-y">
+                <template v-slot:activator="{on, attrs}">
+                  <v-btn icon="icon" v-bind="attrs" v-on="on" :title="$t('common.admin_menu')">
+                    <common-icon name="mdi-cog"></common-icon>
+                  </v-btn>
+                </template>
+                <v-list>
+                  <v-list-item :to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo">
+                    <v-list-item-title v-t="'discussion_form.new_template'"></v-list-item-title>
+                  </v-list-item>
+                  <v-list-item @click="showSettings = true">
+                    <v-list-item-title v-t="'thread_template.hidden_templates'"></v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+            </div>
+          </div>
+          <template v-if="isSorting">
+            <sortable-list v-model="templates" @sort-end="sortEnded" append-to=".append-sort-here" lock-axis="y" axis="y">
+              <sortable-item v-for="(template, index) in templates" :index="index" :key="template.id || template.key">
+                <v-list-item :key="template.id">
+                  <v-list-item-content>
+                    <v-list-item-title>{{template.processName || template.title}}</v-list-item-title>
+                    <v-list-item-subtitle>{{template.processSubtitle}}</v-list-item-subtitle>
+                  </v-list-item-content>
+                  <v-list-item-action class="handle" style="cursor: grab">
+                    <common-icon name="mdi-drag-vertical"></common-icon>
+                  </v-list-item-action>
+                </v-list-item>
+              </sortable-item>
+            </sortable-list>
+          </template>
+          <template v-if="!isSorting">
+            <v-list-item class="thread-templates--template" v-for="(template, i) in templates" :key="template.id" :to="'/d/new?' + (template.id ? 'template_id='+template.id : 'template_key='+template.key)+ '&group_id='+ $route.query.group_id + '&return_to='+returnTo">
+              <v-list-item-content>
+                <v-list-item-title>{{template.processName || template.title}}</v-list-item-title>
+                <v-list-item-subtitle>{{template.processSubtitle}}</v-list-item-subtitle>
+              </v-list-item-content>
+              <v-list-item-action>
+                <action-menu :actions="actions[i]" small="small" icon="icon" :name="$t('action_dock.more_actions')"></action-menu>
+              </v-list-item-action>
+            </v-list-item>
+          </template>
+        </v-list>
+      </v-card>
+      <div class="d-flex justify-center my-2" v-if="!showSettings && userIsAdmin">
+        <v-btn :to="'/thread_templates/browse?group_id=' + $route.query.group_id + '&return_to='+returnTo"><span v-t="'thread_template.browse_public_templates'"></span></v-btn>
+      </div>
+    </v-container>
+  </v-main>
+</div>
 </template>

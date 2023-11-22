@@ -7,10 +7,11 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.strand-item__load-more
-  v-btn.action-button(block text outlined @click="$emit('click')" :loading="loading")
-    span(v-t="label")
+<template>
+
+<div class="strand-item__load-more">
+  <v-btn class="action-button" block="block" text="text" outlined="outlined" @click="$emit('click')" :loading="loading"><span v-t="label"></span></v-btn>
+</div>
 </template>
 
 <style lang="sass">

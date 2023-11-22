@@ -23,10 +23,12 @@ export default {
 }
 </script>
 
-<template lang="pug">
-.translation
-  .translated-body(v-if="isMd" v-marked='translated')
-  .translated-body(v-if="isHtml" v-html='translated')
+<template>
+
+<div class="translation">
+  <div class="translated-body" v-if="isMd" v-marked="translated"></div>
+  <div class="translated-body" v-if="isHtml" v-html="translated"></div>
+</div>
 </template>
 <style lang="sass">
 .translation__body

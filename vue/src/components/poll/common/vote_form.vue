@@ -112,69 +112,39 @@ export default {
 
 </script>
 
-<template lang="pug">
-form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
-  submit-overlay(:value="stance.processing")
+<template>
 
-  v-alert(v-if="poll.config().has_options && !poll.singleChoice()", :color="optionCountAlertColor")
-    span(
-      v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
-      v-t="{path: 'poll_common.select_count_options', args: {count: poll.minimumStanceChoices}}")
-    span(
-      v-else 
-      v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.minimumStanceChoices, maximum: poll.maximumStanceChoices}}")
-  v-sheet.poll-common-vote-form__button.mb-2.rounded(
-    outlined
-    :style="(isSelected(option) && {'border-color': option.color}) || {}"
-    v-for='option in options'
-    :key='option.id'
-    :class="classes(option)"
-  )
-    label
-      input(
-        v-if="singleChoice"
-        v-model="selectedOptionId"
-        :value="option.id"
-        :aria-label="option.optionName()"
-        type="radio"
-        name="name"
-      )
-      input(
-        v-if="!singleChoice"
-        v-model="selectedOptionIds"
-        :value="option.id"
-        :aria-label="option.optionName()"
-        type="checkbox"
-        name="name"
-      )
-      v-list-item
-        v-list-item-icon
-          template(v-if="hasOptionIcon")
-            v-avatar(size="48")
-              img( aria-hidden="true", :src="'/img/' + option.icon + '.svg'")
-          template(v-else)
-            common-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)" :color="option.color")
-            common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="option.color")
-            common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="option.color")
-            common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="option.color")
-        v-list-item-content
-          v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
-          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
-
-  poll-common-stance-reason(
-    :stance='stance'
-    :poll='poll'
-    :selectedOptionId="selectedOptionId"
-    :prompt="optionPrompt")
-  v-card-actions.poll-common-form-actions
-    v-btn.poll-common-vote-form__submit(
-      @click='submit()'
-      :disabled='!optionCountValid || !poll.isVotable()'
-      :loading="stance.processing"
-      color="primary"
-      block
-    )
-      span(v-t="submitText")
+<form class="poll-common-vote-form" @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()">
+  <submit-overlay :value="stance.processing"></submit-overlay>
+  <v-alert v-if="poll.config().has_options && !poll.singleChoice()" :color="optionCountAlertColor"><span v-if="poll.minimumStanceChoices == poll.maximumStanceChoices" v-t="{path: 'poll_common.select_count_options', args: {count: poll.minimumStanceChoices}}"></span><span v-else v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.minimumStanceChoices, maximum: poll.maximumStanceChoices}}"></span></v-alert>
+  <v-sheet class="poll-common-vote-form__button mb-2 rounded" outlined="outlined" :style="(isSelected(option) && {'border-color': option.color}) || {}" v-for="option in options" :key="option.id" :class="classes(option)">
+    <label>
+      <input v-if="singleChoice" v-model="selectedOptionId" :value="option.id" :aria-label="option.optionName()" type="radio" name="name"/>
+      <input v-if="!singleChoice" v-model="selectedOptionIds" :value="option.id" :aria-label="option.optionName()" type="checkbox" name="name"/>
+      <v-list-item>
+        <v-list-item-icon>
+          <template v-if="hasOptionIcon">
+            <v-avatar size="48"><img aria-hidden="true" :src="'/img/' + option.icon + '.svg'"/></v-avatar>
+          </template>
+          <template v-else>
+            <common-icon name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)" :color="option.color"></common-icon>
+            <common-icon name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="option.color"></common-icon>
+            <common-icon name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="option.color"></common-icon>
+            <common-icon name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="option.color"></common-icon>
+          </template>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title class="poll-common-vote-form__button-text">{{option.optionName()}}</v-list-item-title>
+          <v-list-item-subtitle class="poll-common-vote-form__allow-wrap">{{option.meaning}}</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </label>
+  </v-sheet>
+  <poll-common-stance-reason :stance="stance" :poll="poll" :selectedOptionId="selectedOptionId" :prompt="optionPrompt"></poll-common-stance-reason>
+  <v-card-actions class="poll-common-form-actions">
+    <v-btn class="poll-common-vote-form__submit" @click="submit()" :disabled="!optionCountValid || !poll.isVotable()" :loading="stance.processing" color="primary" block="block"><span v-t="submitText"></span></v-btn>
+  </v-card-actions>
+</form>
 </template>
 
 <style lang="sass">

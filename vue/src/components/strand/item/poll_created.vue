@@ -55,27 +55,31 @@ export default {
 
 </script>
 
-<template lang="pug">
-section.strand-item.poll-created
-  v-layout(justify-space-between)
-    .poll-common-card__title.headline.pb-1(tabindex="-1")
-      //- poll-common-type-icon(:poll="poll")
-      space
-      router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
-      translation(v-if="poll.translation.title", :model='poll', field='title')
-  .pt-2(v-if="!collapsed")
-    poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
-    poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
-    .poll-common-details-panel__started-by.text--secondary.mb-4
-      span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
-      mid-dot
-      poll-common-closing-at.ml-1(:poll='poll')
-      tags-display.ml-2(:tags="poll.tags" :group="poll.group()" smaller)
-    formatted-text.poll-common-details-panel__details(:model="poll" column="details")
-    link-previews(:model="poll")
-    attachment-list(:attachments="poll.attachments")
-    document-list(:model='poll')
-    poll-common-chart-panel(:poll='poll')
-    poll-common-action-panel(:poll='poll')
-    action-dock.my-2(:actions="dockActions", :menu-actions="menuActions")
+<template>
+
+<section class="strand-item poll-created">
+  <v-layout justify-space-between="justify-space-between">
+    <div class="poll-common-card__title headline pb-1" tabindex="-1">
+      <space></space>
+      <router-link :to="urlFor(poll)" v-if="!poll.translation.title">{{poll.title}}</router-link>
+      <translation v-if="poll.translation.title" :model="poll" field="title"></translation>
+    </div>
+  </v-layout>
+  <div class="pt-2" v-if="!collapsed">
+    <poll-common-set-outcome-panel :poll="poll" v-if="!poll.outcome()"></poll-common-set-outcome-panel>
+    <poll-common-outcome-panel :outcome="poll.outcome()" v-if="poll.outcome()"></poll-common-outcome-panel>
+    <div class="poll-common-details-panel__started-by text--secondary mb-4"><span v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }"></span>
+      <mid-dot></mid-dot>
+      <poll-common-closing-at class="ml-1" :poll="poll"></poll-common-closing-at>
+      <tags-display class="ml-2" :tags="poll.tags" :group="poll.group()" smaller="smaller"></tags-display>
+    </div>
+    <formatted-text class="poll-common-details-panel__details" :model="poll" column="details"></formatted-text>
+    <link-previews :model="poll"></link-previews>
+    <attachment-list :attachments="poll.attachments"></attachment-list>
+    <document-list :model="poll"></document-list>
+    <poll-common-chart-panel :poll="poll"></poll-common-chart-panel>
+    <poll-common-action-panel :poll="poll"></poll-common-action-panel>
+    <action-dock class="my-2" :actions="dockActions" :menu-actions="menuActions"></action-dock>
+  </div>
+</section>
 </template>

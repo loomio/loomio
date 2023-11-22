@@ -56,28 +56,37 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-main
-  v-container.dashboard-page.max-width-1024.px-0.px-sm-3
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'tasks.your_tasks'")
-    loading(v-if="loading")
-    template(v-for="(tasks, recordKey) in tasksByRecordKey")
-      v-card.mb-3
-        v-card-title
-          router-link(:to="taskUrlFor(records[recordKey])") {{records[recordKey].discussion().title}}
-        v-list(subheader)
-          v-list-item(v-for="task in tasks" :key="task.id")
-            v-list-item-action
-              v-btn(color="accent" icon @click="toggleDone(task)")
-                common-icon(v-if="task.done" name="mdi-checkbox-marked")
-                common-icon(v-else name="mdi-checkbox-blank-outline")
-            v-list-item-title {{task.name}}
-    p(v-if="!loading && Object.keys(records).length == 0" v-t="'tasks.no_tasks_assigned'")
-    .d-flex.justify-center
-      v-chip(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
-        common-icon.mr-2(name="mdi-help-circle-outline")
-        span(v-t="'common.help'")
-        span :
-        space
-        span(v-t="'tasks.tasks'")
+<template>
+
+<v-main>
+  <v-container class="dashboard-page max-width-1024 px-0 px-sm-3">
+    <h1 class="display-1 my-4" tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'tasks.your_tasks'"></h1>
+    <loading v-if="loading"></loading>
+    <template v-for="(tasks, recordKey) in tasksByRecordKey">
+      <v-card class="mb-3">
+        <v-card-title>
+          <router-link :to="taskUrlFor(records[recordKey])">{{records[recordKey].discussion().title}}</router-link>
+        </v-card-title>
+        <v-list subheader="subheader">
+          <v-list-item v-for="task in tasks" :key="task.id">
+            <v-list-item-action>
+              <v-btn color="accent" icon="icon" @click="toggleDone(task)">
+                <common-icon v-if="task.done" name="mdi-checkbox-marked"></common-icon>
+                <common-icon v-else name="mdi-checkbox-blank-outline"></common-icon>
+              </v-btn>
+            </v-list-item-action>
+            <v-list-item-title>{{task.name}}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-card>
+    </template>
+    <p v-if="!loading && Object.keys(records).length == 0" v-t="'tasks.no_tasks_assigned'"></p>
+    <div class="d-flex justify-center">
+      <v-chip outlined="outlined" href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank">
+        <common-icon class="mr-2" name="mdi-help-circle-outline"></common-icon><span v-t="'common.help'"></span><span>:</span>
+        <space></space><span v-t="'tasks.tasks'"></span>
+      </v-chip>
+    </div>
+  </v-container>
+</v-main>
 </template>

@@ -11,9 +11,11 @@ export default
   });
 </script>
 
-<template lang="pug">
-.sortable-list-item
-  slot
+<template>
+
+<div class="sortable-list-item">
+  <slot></slot>
+</div>
 </template>
 
 <style lang="sass">

@@ -89,25 +89,35 @@ export default
   }
 };
 </script>
-<template lang="pug">
-div(v-if="group")
-  v-layout.my-2(align-center wrap)
-    v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" append-icon="mdi-magnify")
-    v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
+<template>
 
-  v-card.group-subgroups-panel(outlined)
-    p.text-center.pa-4(v-if="!loading && !subgroups.length" v-t="'common.no_results_found'")
-    v-list(v-else avatar three-line)
-      v-list-item.subgroups-card__list-item(v-if="group.subgroups().length > 0" :to="urlFor(group)+'?subgroups=none'")
-        v-list-item-avatar.subgroups-card__list-item-logo
-          group-avatar(:group="group" :size="28")
-        v-list-item-content
-          v-list-item-title(v-t="{path: 'subgroups_panel.group_without_subgroups', args: {name: group.name}}")
-          v-list-item-subtitle {{ stripDescription(group.description) }}
-      v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
-        v-list-item-avatar.subgroups-card__list-item-logo
-          group-avatar(:group="group" :size="28")
-        v-list-item-content
-          v-list-item-title {{ group.name }}
-          v-list-item-subtitle {{ stripDescription(group.description) }}
+<div v-if="group">
+  <v-layout class="my-2" align-center="align-center" wrap="wrap">
+    <v-text-field class="mr-2" clearable="clearable" hide-details="hide-details" solo="solo" :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" append-icon="mdi-magnify"></v-text-field>
+    <v-btn class="subgroups-card__start" color="primary" @click="startSubgroup()" v-if="canCreateSubgroups" v-t="'common.action.add_subgroup'"></v-btn>
+  </v-layout>
+  <v-card class="group-subgroups-panel" outlined="outlined">
+    <p class="text-center pa-4" v-if="!loading && !subgroups.length" v-t="'common.no_results_found'"></p>
+    <v-list v-else avatar="avatar" three-line="three-line">
+      <v-list-item class="subgroups-card__list-item" v-if="group.subgroups().length > 0" :to="urlFor(group)+'?subgroups=none'">
+        <v-list-item-avatar class="subgroups-card__list-item-logo">
+          <group-avatar :group="group" :size="28"></group-avatar>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title v-t="{path: 'subgroups_panel.group_without_subgroups', args: {name: group.name}}"></v-list-item-title>
+          <v-list-item-subtitle>{{ stripDescription(group.description) }}</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item class="subgroups-card__list-item" v-for="group in subgroups" :key="group.id" :to="urlFor(group)">
+        <v-list-item-avatar class="subgroups-card__list-item-logo">
+          <group-avatar :group="group" :size="28"></group-avatar>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title>{{ group.name }}</v-list-item-title>
+          <v-list-item-subtitle>{{ stripDescription(group.description) }}</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </v-card>
+</div>
 </template>

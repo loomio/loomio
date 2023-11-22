@@ -31,47 +31,58 @@ export default {
 };
 </script>
 
-<template lang="pug">
+<template>
 
-section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id", :event="event")
-  template(v-if="eventable.castAt && !eventable.revokedAt")
-    template(v-if="eventable.hasOptionIcon()")
-      .d-flex
-        component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
-        space
-        space
-        poll-common-stance-choice(v-if="poll.showResults()", :poll="poll", :stance-choice="eventable.stanceChoice()")
-        space
-        router-link.text--secondary(:to='link')
-          space
-          time-ago(:date='eventable.updatedAt || eventable.castAt')
-        template(v-if="!eventable.latest")
-          mid-dot.text--secondary
-          span.text--secondary(v-t="'poll_common.outdated'")
-    .poll-common-stance(v-if="poll.showResults() && !collapsed")
-      v-layout(v-if="!eventable.hasOptionIcon()" wrap align-center)
-        strand-item-headline.text--secondary(:event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt")
-      poll-common-stance-choices(:stance="eventable")
-      formatted-text.poll-common-stance-created__reason(:model="eventable", column="reason")
-      link-previews(:model="eventable")
-      attachment-list(:attachments="eventable.attachments")
-    action-dock(:model='eventable', :actions='actions' small left)
-  template(v-if="!eventable.castAt && !eventable.revokedAt")
-    .d-flex
-      component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
-      mid-dot.text--secondary
-      span(v-t="'poll_common_votes_panel.undecided'")
-      mid-dot.text--secondary
-      router-link.text--secondary(:to='link')
-        time-ago(:date='eventable.updatedAt')
-    action-dock(:model='eventable', :actions='actions' small)
-  template(v-if="eventable.revokedAt")
-    .d-flex
-      component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
-      mid-dot.text--secondary
-      span.text--secondary(v-t="'poll_common_votes_panel.vote_removed'")
-      mid-dot.text--secondary
-      router-link.text--secondary(:to='link')
-        time-ago(:date='eventable.updatedAt')
-    action-dock(:model='eventable', :actions='actions' small)
+<section class="strand-item__stance-created stance-created" id="'comment-'+ eventable.id" :event="event">
+  <template v-if="eventable.castAt && !eventable.revokedAt">
+    <template v-if="eventable.hasOptionIcon()">
+      <div class="d-flex">
+        <component class="text--secondary" :is="componentType" :to="actor && urlFor(actor)">{{actorName}}</component>
+        <space></space>
+        <space></space>
+        <poll-common-stance-choice v-if="poll.showResults()" :poll="poll" :stance-choice="eventable.stanceChoice()"></poll-common-stance-choice>
+        <space></space>
+        <router-link class="text--secondary" :to="link">
+          <space></space>
+          <time-ago :date="eventable.updatedAt || eventable.castAt"></time-ago>
+        </router-link>
+        <template v-if="!eventable.latest">
+          <mid-dot class="text--secondary"></mid-dot><span class="text--secondary" v-t="'poll_common.outdated'"></span>
+        </template>
+      </div>
+    </template>
+    <div class="poll-common-stance" v-if="poll.showResults() && !collapsed">
+      <v-layout v-if="!eventable.hasOptionIcon()" wrap="wrap" align-center="align-center">
+        <strand-item-headline class="text--secondary" :event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt"></strand-item-headline>
+      </v-layout>
+      <poll-common-stance-choices :stance="eventable"></poll-common-stance-choices>
+      <formatted-text class="poll-common-stance-created__reason" :model="eventable" column="reason"></formatted-text>
+      <link-previews :model="eventable"></link-previews>
+      <attachment-list :attachments="eventable.attachments"></attachment-list>
+    </div>
+    <action-dock :model="eventable" :actions="actions" small="small" left="left"></action-dock>
+  </template>
+  <template v-if="!eventable.castAt && !eventable.revokedAt">
+    <div class="d-flex">
+      <component class="text--secondary" :is="componentType" :to="actor && urlFor(actor)">{{actorName}}</component>
+      <mid-dot class="text--secondary"></mid-dot><span v-t="'poll_common_votes_panel.undecided'"></span>
+      <mid-dot class="text--secondary"></mid-dot>
+      <router-link class="text--secondary" :to="link">
+        <time-ago :date="eventable.updatedAt"></time-ago>
+      </router-link>
+    </div>
+    <action-dock :model="eventable" :actions="actions" small="small"></action-dock>
+  </template>
+  <template v-if="eventable.revokedAt">
+    <div class="d-flex">
+      <component class="text--secondary" :is="componentType" :to="actor && urlFor(actor)">{{actorName}}</component>
+      <mid-dot class="text--secondary"></mid-dot><span class="text--secondary" v-t="'poll_common_votes_panel.vote_removed'"></span>
+      <mid-dot class="text--secondary"></mid-dot>
+      <router-link class="text--secondary" :to="link">
+        <time-ago :date="eventable.updatedAt"></time-ago>
+      </router-link>
+    </div>
+    <action-dock :model="eventable" :actions="actions" small="small"></action-dock>
+  </template>
+</section>
 </template>

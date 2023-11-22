@@ -55,14 +55,11 @@ export default
 
 </script>
 
-<template lang="pug">
-span.poll-common-stance-choice.text-truncate(:class="'poll-common-stance-choice--' + pollType" row)
-  v-avatar(tile :size="size" v-if='poll.config().has_option_icon')
-    img(:src="'/img/' + pollOption.icon + '.svg'", :alt='optionName')
-  v-chip(v-if='poll.pollOptionNameFormat == "iso8601"'
-    outlined :color="colorFor(stanceChoice.score)" @click="emitClick")
-    poll-meeting-time(:name="optionName")
-  span(v-if='!poll.config().has_option_icon && poll.pollOptionNameFormat != "iso8601"')
-    common-icon.mr-2(small :color="pollOption.color" name="mdi-check-circle")
-    span {{ optionName }}
+<template>
+<span class="poll-common-stance-choice text-truncate" :class="'poll-common-stance-choice--' + pollType" row="row">
+  <v-avatar tile="tile" :size="size" v-if="poll.config().has_option_icon"><img :src="'/img/' + pollOption.icon + '.svg'" :alt="optionName"/></v-avatar>
+  <v-chip v-if="poll.pollOptionNameFormat == 'iso8601'" outlined="outlined" :color="colorFor(stanceChoice.score)" @click="emitClick">
+    <poll-meeting-time :name="optionName"></poll-meeting-time>
+  </v-chip><span v-if="!poll.config().has_option_icon && poll.pollOptionNameFormat != 'iso8601'">
+    <common-icon class="mr-2" small="small" :color="pollOption.color" name="mdi-check-circle"></common-icon><span>{{ optionName }}</span></span></span>
 </template>

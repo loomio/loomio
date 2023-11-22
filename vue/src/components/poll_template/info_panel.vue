@@ -10,9 +10,12 @@ export default {
 };
 
 </script>
-<template lang="pug">
-div(v-if="pollTemplate")
-  v-alert.poll-template-info-panel(v-if="pollTemplate.processIntroduction" type="info" text outlined)
-    formatted-text(:model="pollTemplate" column="processIntroduction")
-  v-alert.poll-template-info-panel(v-else type="info" text outlined) {{pollTemplate.processSubtitle}}
+<template>
+
+<div v-if="pollTemplate">
+  <v-alert class="poll-template-info-panel" v-if="pollTemplate.processIntroduction" type="info" text="text" outlined="outlined">
+    <formatted-text :model="pollTemplate" column="processIntroduction"></formatted-text>
+  </v-alert>
+  <v-alert class="poll-template-info-panel" v-else type="info" text="text" outlined="outlined">{{pollTemplate.processSubtitle}}</v-alert>
+</div>
 </template>

@@ -82,8 +82,9 @@ export default
 };
 </script>
 
-<template lang="pug">
-.poll-proposal-chart(:style="{width: size+'px', height: size+'px'}")
+<template>
+
+<div class="poll-proposal-chart" :style="{width: size+'px', height: size+'px'}"></div>
 </template>
 <style lang="sass">
 .poll-proposal-chart

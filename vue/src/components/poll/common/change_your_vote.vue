@@ -6,8 +6,10 @@ export default {
 };
 </script>
 
-<template lang="pug">
-.poll-common-change-your-vote
-  v-subheader(v-t="'poll_common.your_response'")
-  poll-common-stance(:stance="stance")
+<template>
+
+<div class="poll-common-change-your-vote">
+  <v-subheader v-t="'poll_common.your_response'"></v-subheader>
+  <poll-common-stance :stance="stance"></poll-common-stance>
+</div>
 </template>

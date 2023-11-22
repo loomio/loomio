@@ -29,11 +29,14 @@ export default {
 };
 </script>
 
-<template lang='pug'>
-v-banner.discussion-fork-actions(single-line sticky :elevation="4" v-if='discussion.forkedEventIds.length' icon="mdi-call-split" color="primary" :style="styles")
-  span(v-t="'discussion_fork_actions.helptext'")
-  template(v-slot:actions)
-    v-btn(color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'")
-    v-btn(icon @click='discussion.forkedEventIds = []')
-      common-icon(name="mdi-close")
+<template>
+
+<v-banner class="discussion-fork-actions" single-line="single-line" sticky="sticky" :elevation="4" v-if="discussion.forkedEventIds.length" icon="mdi-call-split" color="primary" :style="styles"><span v-t="'discussion_fork_actions.helptext'"></span>
+  <template v-slot:actions="v-slot:actions">
+    <v-btn color="primary" @click="openMoveCommentsModal()" v-t="'discussion_fork_actions.move'"></v-btn>
+    <v-btn icon="icon" @click="discussion.forkedEventIds = []">
+      <common-icon name="mdi-close"></common-icon>
+    </v-btn>
+  </template>
+</v-banner>
 </template>

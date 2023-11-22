@@ -37,10 +37,15 @@ export default {
 
 </script>
 
-<template lang="pug">
-.poll-page
-  v-main
-    v-container.max-width-800.pa-sm-3.pa-0
-      loading(:until="poll")
-        poll-common-card(:poll='poll' is-page)
+<template>
+
+<div class="poll-page">
+  <v-main>
+    <v-container class="max-width-800 pa-sm-3 pa-0">
+      <loading :until="poll">
+        <poll-common-card :poll="poll" is-page="is-page"></poll-common-card>
+      </loading>
+    </v-container>
+  </v-main>
+</div>
 </template>

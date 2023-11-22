@@ -48,30 +48,28 @@ export default
   }
 };
 </script>
-<template lang="pug">
-div
-  v-overlay(:value="loading")
-  v-alert(outlined color="primary" dense v-if="isDemo")
-    template(v-if="!isLoggedIn")
-      .text-center
-        span(v-t="'templates.login_to_start_demo'")
-        br
-        span(v-t="'templates.sign_in_to_try_features'")
-    template(v-if="isLoggedIn && isPublicDemo")
-      .d-flex.align-center
-        span(v-t="'templates.click_button_to_start_demo'")
-        v-spacer
-        v-btn.ml-2(color="primary" @click="cloneDemo" target="_blank")
-          span(v-t="'templates.start_demo'")
-    template(v-if="isLoggedIn && !isPublicDemo")
-      .text-center
-        p
-          span(v-t="'templates.welcome_to_your_demo'")
-          space
-          span(v-t="'templates.try_voting_to_see_it_work'")
-          br
-          span(v-t="'templates.to_use_loomio_with_your_org_start_trial'")
+<template>
 
-        v-btn(outlined color="primary" to="/g/new" target="_blank")
-          span(v-t="'templates.start_free_trial'")
+<div>
+  <v-overlay :value="loading"></v-overlay>
+  <v-alert outlined="outlined" color="primary" dense="dense" v-if="isDemo">
+    <template v-if="!isLoggedIn">
+      <div class="text-center"><span v-t="'templates.login_to_start_demo'"></span><br/><span v-t="'templates.sign_in_to_try_features'"></span></div>
+    </template>
+    <template v-if="isLoggedIn && isPublicDemo">
+      <div class="d-flex align-center"><span v-t="'templates.click_button_to_start_demo'"></span>
+        <v-spacer></v-spacer>
+        <v-btn class="ml-2" color="primary" @click="cloneDemo" target="_blank"><span v-t="'templates.start_demo'"></span></v-btn>
+      </div>
+    </template>
+    <template v-if="isLoggedIn && !isPublicDemo">
+      <div class="text-center">
+        <p><span v-t="'templates.welcome_to_your_demo'"></span>
+          <space></space><span v-t="'templates.try_voting_to_see_it_work'"></span><br/><span v-t="'templates.to_use_loomio_with_your_org_start_trial'"></span>
+        </p>
+        <v-btn outlined="outlined" color="primary" to="/g/new" target="_blank"><span v-t="'templates.start_free_trial'"></span></v-btn>
+      </div>
+    </template>
+  </v-alert>
+</div>
 </template>

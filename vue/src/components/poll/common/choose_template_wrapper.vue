@@ -52,19 +52,22 @@ export default {
 };
 </script>
 
-<template lang="pug">
-div
-  .poll-templates-select-group(v-if="selectedGroup.isNullGroup")
-    p(v-t="'templates.which_templates_would_you_like_to_use'")
-    v-list
-      v-list-item(v-for="group in groups" :key="group.id" @click="selectGroup(group)")
-        v-list-item-avatar(aria-hidden="true")
-          group-avatar(:group="group" v-if="!group.parentId")
-        v-list-item-content
-          v-list-item-title {{group.name}}
-  poll-common-choose-template(
-    v-else 
-    @setPoll="setPoll"
-    :discussion="discussion"
-    :group="selectedGroup")
+<template>
+
+<div>
+  <div class="poll-templates-select-group" v-if="selectedGroup.isNullGroup">
+    <p v-t="'templates.which_templates_would_you_like_to_use'"></p>
+    <v-list>
+      <v-list-item v-for="group in groups" :key="group.id" @click="selectGroup(group)">
+        <v-list-item-avatar aria-hidden="true">
+          <group-avatar :group="group" v-if="!group.parentId"></group-avatar>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title>{{group.name}}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </div>
+  <poll-common-choose-template v-else @setPoll="setPoll" :discussion="discussion" :group="selectedGroup"></poll-common-choose-template>
+</div>
 </template>

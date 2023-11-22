@@ -30,13 +30,17 @@ export default
 };
 </script>
 
-<template lang="pug">
-.poll-common-card-header.d-flex.align-center.mr-3.ml-2.pb-2.pt-4.flex-wrap
-  v-breadcrumbs(:items="groups")
-    template(v-slot:divider)
-      common-icon(name="mdi-chevron-right")
-  v-spacer
-  tags-display(:tags="poll.tags" :group="poll.group()")
+<template>
+
+<div class="poll-common-card-header d-flex align-center mr-3 ml-2 pb-2 pt-4 flex-wrap">
+  <v-breadcrumbs :items="groups">
+    <template v-slot:divider="v-slot:divider">
+      <common-icon name="mdi-chevron-right"></common-icon>
+    </template>
+  </v-breadcrumbs>
+  <v-spacer></v-spacer>
+  <tags-display :tags="poll.tags" :group="poll.group()"></tags-display>
+</div>
 </template>
 
 <style lang="sass">

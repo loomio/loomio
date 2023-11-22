@@ -57,9 +57,6 @@ export default {
 
 </script>
 
-<template lang="pug">
-span(:style="styles")
-  abbr.closing-in.timeago--inline(v-if="poll.closingAt")
-    span(v-t="{ path: translationKey, args: { time: timeMethod(time) } }" :title="exact(time)")
-  span(v-else v-t="'poll_common_wip_field.past_tense'")
+<template>
+<span :style="styles"><abbr class="closing-in timeago--inline" v-if="poll.closingAt"><span v-t="{ path: translationKey, args: { time: timeMethod(time) } }" :title="exact(time)"></span></abbr><span v-else v-t="'poll_common_wip_field.past_tense'"></span></span>
 </template>

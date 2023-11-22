@@ -85,17 +85,18 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-app.app-is-booted
-  system-notice
-  navbar
-  sidebar
-  router-view(v-if="!pageError")
-  common-error(v-if="pageError" :error="pageError")
-  v-spacer
-  common-footer
-  modal-launcher
-  common-flash
+<template>
+<v-app class="app-is-booted">
+  <system-notice></system-notice>
+  <navbar></navbar>
+  <sidebar></sidebar>
+  <router-view v-if="!pageError"></router-view>
+  <common-error v-if="pageError" :error="pageError"></common-error>
+  <v-spacer></v-spacer>
+  <common-footer></common-footer>
+  <modal-launcher></modal-launcher>
+  <common-flash></common-flash>
+</v-app>
 </template>
 
 <style lang="sass">

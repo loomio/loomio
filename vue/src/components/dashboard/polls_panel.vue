@@ -61,26 +61,25 @@ export default
 
 </script>
 
-<template lang="pug">
-.polls-panel(v-if='otherPolls.length || votePolls.length || loader.loading')
-  v-card.mb-2
-    v-list(two-line avatar)
-      template
-        v-card-title(v-t="'dashboard_page.polls_to_vote_on'")
-        poll-common-preview(
-          v-if="votePolls.length",
-          :poll="poll",
-          v-for="poll in votePolls",
-          :key="poll.id"
-        )
-        v-card-text(
-          v-if="votePolls.length == 0",
-          v-t="'dashboard_page.no_polls_to_vote_on'"
-        )
-      template(v-if="otherPolls.length")
-        v-card-title(v-t="'dashboard_page.recent_polls'")
-        poll-common-preview(:poll='poll' v-for='poll in otherPolls' :key='poll.id')
-      template(v-if='!votePolls.length && !otherPolls.length && loader.loading')
-        v-card-title(v-t="'group_page.polls'")
-        loading-content(:lineCount='2' v-for='(item, index) in [1]' :key='index' )
+<template>
+
+<div class="polls-panel" v-if="otherPolls.length || votePolls.length || loader.loading">
+  <v-card class="mb-2">
+    <v-list two-line="two-line" avatar="avatar">
+      <template>
+        <v-card-title v-t="'dashboard_page.polls_to_vote_on'"></v-card-title>
+        <poll-common-preview v-if="votePolls.length" :poll="poll" v-for="poll in votePolls" :key="poll.id"></poll-common-preview>
+        <v-card-text v-if="votePolls.length == 0" v-t="'dashboard_page.no_polls_to_vote_on'"></v-card-text>
+      </template>
+      <template v-if="otherPolls.length">
+        <v-card-title v-t="'dashboard_page.recent_polls'"></v-card-title>
+        <poll-common-preview :poll="poll" v-for="poll in otherPolls" :key="poll.id"></poll-common-preview>
+      </template>
+      <template v-if="!votePolls.length && !otherPolls.length && loader.loading">
+        <v-card-title v-t="'group_page.polls'"></v-card-title>
+        <loading-content :lineCount="2" v-for="(item, index) in [1]" :key="index"></loading-content>
+      </template>
+    </v-list>
+  </v-card>
+</div>
 </template>

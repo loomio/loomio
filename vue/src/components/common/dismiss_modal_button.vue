@@ -18,7 +18,9 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='closeModal')
-  common-icon(name="mdi-close")
+<template>
+
+<v-btn class="dismiss-modal-button" icon="icon" :aria-label="$t('common.action.cancel')" @click="closeModal">
+  <common-icon name="mdi-close"></common-icon>
+</v-btn>
 </template>

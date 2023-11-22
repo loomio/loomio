@@ -69,29 +69,32 @@ export default
 
 </script>
 
-<template lang="pug">
-node-view-wrapper(as="li")
-  //- input.flex-shrink-0(style="z-index: 2300" type="checkbox" :checked="node.attrs.checked" @change="onCheckboxChange")
-  v-simple-checkbox(contenteditable="false" color="accent" :ripple="false" type="checkbox" :value="checked" @click="onCheckboxChange")
-  node-view-content(as="span" :class="{'task-item-text': true, 'task-item-is-empty': isEmpty}" :data-placeholder="$t('tasks.task_placeholder')")
-  v-chip.ml-2(v-if="hasMention" contenteditable="false" color="primary" x-small @click="openModal")
-    | 📅
-    span.ml-1(v-if="node.attrs.dueOn") {{node.attrs.dueOn}}
-    span.ml-1(v-else v-t="'tasks.add_due_date'")
-  v-dialog(contenteditable="false" ref="dialog" v-model="modalOpen" persistent width="290px")
-    v-card
-      v-card-title
-        span(v-t="'tasks.due_date'")
-        v-spacer
-        v-btn(icon @click="modalOpen = false")
-          common-icon(name="mdi-close")
-      v-date-picker(v-model="date" no-title scrollable :show-current="false" :min="(new Date()).toISOString().substring(0,10)")
-      v-card-text
-        v-select(v-model="remind" :label="$t('tasks.send_reminder')" :items="reminders")
-      v-card-actions
-        v-btn(text color="primary" @click="clearAndClose" v-t="$t('common.action.remove')")
-        v-spacer
-        v-btn(text color="primary" @click="saveAndClose" v-t="$t('common.action.ok')" :disabled="!date")
+<template>
+
+<node-view-wrapper as="li">
+  <v-simple-checkbox contenteditable="false" color="accent" :ripple="false" type="checkbox" :value="checked" @click="onCheckboxChange"></v-simple-checkbox>
+  <node-view-content as="span" :class="{'task-item-text': true, 'task-item-is-empty': isEmpty}" :data-placeholder="$t('tasks.task_placeholder')"></node-view-content>
+  <v-chip class="ml-2" v-if="hasMention" contenteditable="false" color="primary" x-small="x-small" @click="openModal">📅<span class="ml-1" v-if="node.attrs.dueOn">{{node.attrs.dueOn}}</span><span class="ml-1" v-else v-t="'tasks.add_due_date'"></span></v-chip>
+  <v-dialog contenteditable="false" ref="dialog" v-model="modalOpen" persistent="persistent" width="290px">
+    <v-card>
+      <v-card-title><span v-t="'tasks.due_date'"></span>
+        <v-spacer></v-spacer>
+        <v-btn icon="icon" @click="modalOpen = false">
+          <common-icon name="mdi-close"></common-icon>
+        </v-btn>
+      </v-card-title>
+      <v-date-picker v-model="date" no-title="no-title" scrollable="scrollable" :show-current="false" :min="(new Date()).toISOString().substring(0,10)"></v-date-picker>
+      <v-card-text>
+        <v-select v-model="remind" :label="$t('tasks.send_reminder')" :items="reminders"></v-select>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn text="text" color="primary" @click="clearAndClose" v-t="$t('common.action.remove')"></v-btn>
+        <v-spacer></v-spacer>
+        <v-btn text="text" color="primary" @click="saveAndClose" v-t="$t('common.action.ok')" :disabled="!date"></v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</node-view-wrapper>
 </template>
 
 <style lang="sass">

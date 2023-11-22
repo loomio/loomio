@@ -47,25 +47,14 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-combobox.tags-field__input(
-  multiple
-  hide-selected
-  v-model='model.tags'
-  :label="$t('loomio_tags.tags')"
-  :items='items'
-  )
-  template(v-slot:selection='data')
-    v-chip.chip--select-multi(
-      :key="JSON.stringify(data.item)"
-      :value='data.item'
-      close
-      outlined
-      :color='colorFor(data.item)'
-      @click:close='remove(data)')
-      span {{ data.item }}
-  template(v-slot:item='data')
-    v-chip.chip--select-multi(outlined :color='colorFor(data.item)' )
-      span {{ data.item }}
+<template>
 
+<v-combobox class="tags-field__input" multiple="multiple" hide-selected="hide-selected" v-model="model.tags" :label="$t('loomio_tags.tags')" :items="items">
+  <template v-slot:selection="data">
+    <v-chip class="chip--select-multi" :key="JSON.stringify(data.item)" :value="data.item" close="close" outlined="outlined" :color="colorFor(data.item)" @click:close="remove(data)"><span>{{ data.item }}</span></v-chip>
+  </template>
+  <template v-slot:item="data">
+    <v-chip class="chip--select-multi" outlined="outlined" :color="colorFor(data.item)"><span>{{ data.item }}</span></v-chip>
+  </template>
+</v-combobox>
 </template>

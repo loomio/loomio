@@ -17,8 +17,11 @@ export default {
 };
 </script>
 
-<template lang="pug">
-v-main
-  v-container.max-width-800.start-group-page.px-0.px-sm-3
-    group-new-form(:group="group")
+<template>
+
+<v-main>
+  <v-container class="max-width-800 start-group-page px-0 px-sm-3">
+    <group-new-form :group="group"></group-new-form>
+  </v-container>
+</v-main>
 </template>

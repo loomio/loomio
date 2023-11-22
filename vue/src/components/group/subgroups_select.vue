@@ -31,15 +31,19 @@ export default
 };
 </script>
 
-<template lang="pug">
-v-menu
-  template(v-slot:activator="{on, attrs}")
-    v-btn(icon v-on="on" v-bind="attrs")
-      common-icon(name="mdi-menu-down")
-  v-list
-    v-list-item(v-for="link in parentLinks" :to="link.path" v-t="{path: link.name, args: {name: parentName}}")
-    v-divider
-    v-subheader(v-t="'group_page.subgroups'")
-    v-list-item(v-for="link in subgroupLinks" :to="link.path" v-t="link.name")
+<template>
 
+<v-menu>
+  <template v-slot:activator="{on, attrs}">
+    <v-btn icon="icon" v-on="on" v-bind="attrs">
+      <common-icon name="mdi-menu-down"></common-icon>
+    </v-btn>
+  </template>
+  <v-list>
+    <v-list-item v-for="link in parentLinks" :to="link.path" v-t="{path: link.name, args: {name: parentName}}"></v-list-item>
+    <v-divider></v-divider>
+    <v-subheader v-t="'group_page.subgroups'"></v-subheader>
+    <v-list-item v-for="link in subgroupLinks" :to="link.path" v-t="link.name"></v-list-item>
+  </v-list>
+</v-menu>
 </template>

@@ -11,6 +11,7 @@ export default {
 };
 </script>
 
-<template lang="pug">
-stance-updated(:event="event" :eventable="eventable" :collapsed="collapsed")
+<template>
+
+<stance-updated :event="event" :eventable="eventable" :collapsed="collapsed"></stance-updated>
 </template>

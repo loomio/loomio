@@ -96,42 +96,23 @@ export default {
 
 </script>
 
-<template lang='pug'>
-form.poll-meeting-vote-form(@submit.prevent='submit()')
-  p.text--secondary(
-    v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}"
-  )
-  .poll-common-vote-form__options
-    v-layout.poll-common-vote-form__option(
-      v-for='choice in stanceChoices'
-      :key='choice.id'
-      wrap 
-    )
-      poll-common-stance-choice(
-        :poll="stance.poll()"
-        :stance-choice='choice'
-        :zone='zone'
-        @click="incrementScore(choice)"
-      )
-      v-spacer
-      v-btn.poll-meeting-vote-form--box(
-        v-for='i in stanceValues'
-        :key='i'
-        @click='choice.score = i'
-        :style="buttonStyleFor(choice, i)"
-        icon
-      )
-        v-avatar(:size="36")
-          img.poll-common-form__icon(:src="imgForScore(i)")
-  validation-errors(:subject='stance', field='stanceChoices')
-  poll-common-stance-reason(:stance='stance', :poll='poll')
-  v-card-actions.poll-common-form-actions
-    v-btn.poll-common-vote-form__submit(
-      block
-      :disabled="!poll.isVotable()"
-      :loading="stance.processing"
-      color="primary"
-      type='submit'
-    )
-      span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
+<template>
+
+<form class="poll-meeting-vote-form" @submit.prevent="submit()">
+  <p class="text--secondary" v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}"></p>
+  <div class="poll-common-vote-form__options">
+    <v-layout class="poll-common-vote-form__option" v-for="choice in stanceChoices" :key="choice.id" wrap="wrap">
+      <poll-common-stance-choice :poll="stance.poll()" :stance-choice="choice" :zone="zone" @click="incrementScore(choice)"></poll-common-stance-choice>
+      <v-spacer></v-spacer>
+      <v-btn class="poll-meeting-vote-form--box" v-for="i in stanceValues" :key="i" @click="choice.score = i" :style="buttonStyleFor(choice, i)" icon="icon">
+        <v-avatar :size="36"><img class="poll-common-form__icon" :src="imgForScore(i)"/></v-avatar>
+      </v-btn>
+    </v-layout>
+  </div>
+  <validation-errors :subject="stance" field="stanceChoices"></validation-errors>
+  <poll-common-stance-reason :stance="stance" :poll="poll"></poll-common-stance-reason>
+  <v-card-actions class="poll-common-form-actions">
+    <v-btn class="poll-common-vote-form__submit" block="block" :disabled="!poll.isVotable()" :loading="stance.processing" color="primary" type="submit"><span v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'"></span></v-btn>
+  </v-card-actions>
+</form>
 </template>

@@ -56,13 +56,14 @@ export default {
 
 </script>
 
-<template lang="pug">
-component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)" :style="{ 'width': size + 'px', margin: '0' }")
-  v-avatar(v-if="imageUrl" :title='user.name' :size='size')
-    img(:alt='user.avatarInitials' :src='imageUrl')
-  v-avatar(v-else :title='user.name' :size='size' :color="color")
-    span.user-avatar--initials(v-if="user.avatarKind == 'initials'" :style="{'font-size': fontSize, width: size+'px', height: size+'px'}") {{user.avatarInitials}}
-    common-icon(v-else :name="user.avatarKind")
+<template>
+
+<component class="user-avatar" aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)" :style="{ 'width': size + 'px', margin: '0' }">
+  <v-avatar v-if="imageUrl" :title="user.name" :size="size"><img :alt="user.avatarInitials" :src="imageUrl"/></v-avatar>
+  <v-avatar v-else :title="user.name" :size="size" :color="color"><span class="user-avatar--initials" v-if="user.avatarKind == 'initials'" :style="{'font-size': fontSize, width: size+'px', height: size+'px'}">{{user.avatarInitials}}</span>
+    <common-icon v-else :name="user.avatarKind"></common-icon>
+  </v-avatar>
+</component>
 </template>
 
 <style lang="sass">

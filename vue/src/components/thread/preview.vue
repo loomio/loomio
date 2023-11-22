@@ -45,32 +45,32 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-list-item.thread-preview.thread-preview__link(
-  :class="{'thread-preview--unread-border': thread.isUnread()}"
-  :to='urlFor(thread)'
-)
-  v-list-item-avatar
-    user-avatar(:user='thread.author()', :size='40' no-link)
-  v-list-item-content
-    v-list-item-title(style="align-items: center")
-      span(v-if='thread.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
-        common-icon(small name="mdi-pin-outline")
-      span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
-      v-chip.ml-1(x-small label outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
-      tags-display.ml-1(:tags="thread.tags" :group="thread.group()" smaller)
-    v-list-item-subtitle
-      span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}
-      mid-dot(v-if="showGroupName")
-      span.thread-preview__items-count(v-t="{path: 'thread_preview.replies_count', args: {count: thread.itemsCount}}")
-      space
-      span.thread-preview__unread-count(v-if='thread.hasUnreadActivity()' v-t="{path: 'thread_preview.unread_count', args: {count: thread.unreadItemsCount()}}")
-      mid-dot
-      active-time-ago(:date="thread.lastActivityAt")
-  v-list-item-action(v-if='$vuetify.breakpoint.mdAndUp')
-    action-dock(:actions="dockActions")
-  v-list-item-action(v-if='canPerformAny')
-    action-menu(:actions="menuActions" icon)
+<template>
+
+<v-list-item class="thread-preview thread-preview__link" :class="{'thread-preview--unread-border': thread.isUnread()}" :to="urlFor(thread)">
+  <v-list-item-avatar>
+    <user-avatar :user="thread.author()" :size="40" no-link="no-link"></user-avatar>
+  </v-list-item-avatar>
+  <v-list-item-content>
+    <v-list-item-title style="align-items: center"><span v-if="thread.pinnedAt" :title="$t('context_panel.thread_status.pinned')">
+        <common-icon small="small" name="mdi-pin-outline"></common-icon></span><span class="thread-preview__title" :class="{'thread-preview--unread': thread.isUnread() }">{{thread.title}}</span>
+      <v-chip class="ml-1" x-small="x-small" label="label" outlined="outlined" color="warning" v-if="thread.closedAt" v-t="'common.privacy.closed'"></v-chip>
+      <tags-display class="ml-1" :tags="thread.tags" :group="thread.group()" smaller="smaller"></tags-display>
+    </v-list-item-title>
+    <v-list-item-subtitle><span class="thread-preview__group-name" v-if="showGroupName">{{ thread.group().name }}</span>
+      <mid-dot v-if="showGroupName"></mid-dot><span class="thread-preview__items-count" v-t="{path: 'thread_preview.replies_count', args: {count: thread.itemsCount}}"></span>
+      <space></space><span class="thread-preview__unread-count" v-if="thread.hasUnreadActivity()" v-t="{path: 'thread_preview.unread_count', args: {count: thread.unreadItemsCount()}}"></span>
+      <mid-dot></mid-dot>
+      <active-time-ago :date="thread.lastActivityAt"></active-time-ago>
+    </v-list-item-subtitle>
+  </v-list-item-content>
+  <v-list-item-action v-if="$vuetify.breakpoint.mdAndUp">
+    <action-dock :actions="dockActions"></action-dock>
+  </v-list-item-action>
+  <v-list-item-action v-if="canPerformAny">
+    <action-menu :actions="menuActions" icon="icon"></action-menu>
+  </v-list-item-action>
+</v-list-item>
 </template>
 
 <style lang="sass">

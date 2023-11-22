@@ -35,15 +35,18 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-sheet.emoji-picker.pa-2
-  div(v-for='(emojiGroup, category) in emojis', :key='category')
-    h5(v-t="'emoji_picker.'+category")
-    div.emoji-picker__emojis
-      span(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName') {{ emoji }}
-  .d-flex.justify-center.pb-2
-    v-btn(v-if="!showMore" x-small @click.stop="showMore = true" v-t="'common.action.show_more'")
-    v-btn(v-if="showMore" x-small @click.stop="showMore = false" v-t="'common.action.show_fewer'")
+<template>
+
+<v-sheet class="emoji-picker pa-2">
+  <div v-for="(emojiGroup, category) in emojis" :key="category">
+    <h5 v-t="'emoji_picker.'+category"></h5>
+    <div class="emoji-picker__emojis"><span v-for="(emoji, emojiName) in emojiGroup" :key="emojiName" @click="insert(emojiName, emoji)" :title="emojiName">{{ emoji }}</span></div>
+  </div>
+  <div class="d-flex justify-center pb-2">
+    <v-btn v-if="!showMore" x-small="x-small" @click.stop="showMore = true" v-t="'common.action.show_more'"></v-btn>
+    <v-btn v-if="showMore" x-small="x-small" @click.stop="showMore = false" v-t="'common.action.show_fewer'"></v-btn>
+  </div>
+</v-sheet>
 </template>
 
 <style lang="sass">

@@ -54,40 +54,25 @@ export default {
 };
 </script>
 
-<template lang='pug'>
-form.poll-score-vote-form(@submit.prevent='submit()')
-  .poll-score-vote-form__options
-    v-list-item.poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.option.id')
-      v-list-item-content
-        v-list-item-title {{ choice.option.name }}
-        v-list-item-subtitle(style="white-space: inherit") {{ choice.option.meaning }}
-        v-slider.poll-score-vote-form__score-slider.mt-4(
-          :disabled="!poll.isVotable()"
-          v-model='choice.score'
-          :color="choice.option.color"
-          :height="4"
-          :min="poll.minScore"
-          :max="poll.maxScore"
-        )
-      v-list-item-action(style="max-width: 128px")
-        v-text-field.text-right(
-          type="number"
-          max-width="20px"
-          filled
-          rounded
-          dense
-          v-model="choice.score"
-        )
+<template>
 
-  validation-errors(:subject='stance', field='stanceChoices')
-  poll-common-stance-reason(:stance='stance', :poll='poll')
-  v-card-actions.poll-common-form-actions
-    v-btn.poll-common-vote-form__submit(
-      block
-      :disabled="!poll.isVotable()"
-      :loading="stance.processing"
-      color="primary"
-      type='submit'
-    )
-      span(v-t="'poll_common.submit_vote'")
+<form class="poll-score-vote-form" @submit.prevent="submit()">
+  <div class="poll-score-vote-form__options">
+    <v-list-item class="poll-dot-vote-vote-form__option" v-for="choice in stanceChoices" :key="choice.option.id">
+      <v-list-item-content>
+        <v-list-item-title>{{ choice.option.name }}</v-list-item-title>
+        <v-list-item-subtitle style="white-space: inherit">{{ choice.option.meaning }}</v-list-item-subtitle>
+        <v-slider class="poll-score-vote-form__score-slider mt-4" :disabled="!poll.isVotable()" v-model="choice.score" :color="choice.option.color" :height="4" :min="poll.minScore" :max="poll.maxScore"></v-slider>
+      </v-list-item-content>
+      <v-list-item-action style="max-width: 128px">
+        <v-text-field class="text-right" type="number" max-width="20px" filled="filled" rounded="rounded" dense="dense" v-model="choice.score"></v-text-field>
+      </v-list-item-action>
+    </v-list-item>
+  </div>
+  <validation-errors :subject="stance" field="stanceChoices"></validation-errors>
+  <poll-common-stance-reason :stance="stance" :poll="poll"></poll-common-stance-reason>
+  <v-card-actions class="poll-common-form-actions">
+    <v-btn class="poll-common-vote-form__submit" block="block" :disabled="!poll.isVotable()" :loading="stance.processing" color="primary" type="submit"><span v-t="'poll_common.submit_vote'"></span></v-btn>
+  </v-card-actions>
+</form>
 </template>

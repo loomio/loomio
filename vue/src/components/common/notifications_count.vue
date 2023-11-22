@@ -40,18 +40,13 @@ export default {
 };
 </script>
 
-<template lang="pug">
-p.common-notifications-count.text--secondary.caption
-  span(v-if="model.groupId && model.group().membershipsCount < 2" v-t="'announcement.form.group_has_no_members_yet'")
-  template(v-else)
-    template(v-if="model.notifyRecipients")
-      span(v-if="count == 0" v-t="'announcement.form.notified_none'")
-      span(v-if="count == 1" v-t="'announcement.form.single_notification'")
-      span(v-if="count > 1" v-t="{path: 'announcement.form.multiple_notifications', args: {notified: count}}")
-    template(v-else)
-      span(v-if="count == 0" v-t="'announcement.form.added_none'")
-      span(v-if="count == 1" v-t="'announcement.form.added_singular'")
-      span(v-if="count > 1" v-t="{path: 'announcement.form.added', args: {count: count}}")
-    space
-    span(v-if="model.recipientAudience && !model.anonymous" v-t="'announcement.form.click_group_to_see_individuals'")
+<template>
+
+<p class="common-notifications-count text--secondary caption"><span v-if="model.groupId && model.group().membershipsCount < 2" v-t="'announcement.form.group_has_no_members_yet'"></span>
+  <template v-else>
+    <template v-if="model.notifyRecipients"><span v-if="count == 0" v-t="'announcement.form.notified_none'"></span><span v-if="count == 1" v-t="'announcement.form.single_notification'"></span><span v-if="count > 1" v-t="{path: 'announcement.form.multiple_notifications', args: {notified: count}}"></span></template>
+    <template v-else><span v-if="count == 0" v-t="'announcement.form.added_none'"></span><span v-if="count == 1" v-t="'announcement.form.added_singular'"></span><span v-if="count > 1" v-t="{path: 'announcement.form.added', args: {count: count}}"></span></template>
+    <space></space><span v-if="model.recipientAudience && !model.anonymous" v-t="'announcement.form.click_group_to_see_individuals'"></span>
+  </template>
+</p>
 </template>

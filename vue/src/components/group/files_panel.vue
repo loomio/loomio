@@ -122,37 +122,52 @@ export default
 
 </script>
 
-<template lang="pug">
-div
-  v-layout.py-2(align-center wrap)
-    v-text-field(clearable hide-details solo @input="onQueryInput" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
-  v-card.group-files-panel(outlined)
-    div(v-if="loader.status == 403")
-      p.pa-4.text-center(v-t="'error_page.forbidden'")
-    div(v-else)
-      p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
-      v-simple-table(v-else :items="items" hide-default-footer)
-        thead
-          tr
-            th(v-t="'group_files_panel.filename'")
-            th(v-t="'group_files_panel.uploaded_by'")
-            th(v-t="'group_files_panel.uploaded_at'")
-            th(v-if="canAdminister")
-        tbody
-          tr(v-for="item in items" :key="item.id")
-            td
-              v-layout(align-center)
-                common-icon(:name="'mdi-'+ item.icon")
-                a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
-            td
-              user-avatar(:user="item.author()")
-            td
-              time-ago(:date="item.createdAt")
-            td(v-if="canAdminister")
-              action-menu(v-if="Object.keys(actionsFor(item)).length" :actions="actionsFor(item)" icon)
+<template>
 
-      v-layout(justify-center)
-        .d-flex.flex-column.justify-center.align-center
-          //- span(v-if="loader.total == null") {{items.length}} / {{attachmentLoader.total}}
-          v-btn.my-2(outlined color='primary' v-if="!attachmentLoader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'")
+<div>
+  <v-layout class="py-2" align-center="align-center" wrap="wrap">
+    <v-text-field clearable="clearable" hide-details="hide-details" solo="solo" @input="onQueryInput" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify"></v-text-field>
+  </v-layout>
+  <v-card class="group-files-panel" outlined="outlined">
+    <div v-if="loader.status == 403">
+      <p class="pa-4 text-center" v-t="'error_page.forbidden'"></p>
+    </div>
+    <div v-else>
+      <p class="text-center pa-4" v-if="!loading && !items.length" v-t="'common.no_results_found'"></p>
+      <v-simple-table v-else :items="items" hide-default-footer="hide-default-footer">
+        <thead>
+          <tr>
+            <th v-t="'group_files_panel.filename'"></th>
+            <th v-t="'group_files_panel.uploaded_by'"></th>
+            <th v-t="'group_files_panel.uploaded_at'"></th>
+            <th v-if="canAdminister"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in items" :key="item.id">
+            <td>
+              <v-layout align-center="align-center">
+                <common-icon :name="'mdi-'+ item.icon"></common-icon><a :href="item.downloadUrl || item.url">{{item.filename || item.title }}</a>
+              </v-layout>
+            </td>
+            <td>
+              <user-avatar :user="item.author()"></user-avatar>
+            </td>
+            <td>
+              <time-ago :date="item.createdAt"></time-ago>
+            </td>
+            <td v-if="canAdminister">
+              <action-menu v-if="Object.keys(actionsFor(item)).length" :actions="actionsFor(item)" icon="icon"></action-menu>
+            </td>
+          </tr>
+        </tbody>
+      </v-simple-table>
+      <v-layout justify-center="justify-center">
+        <div class="d-flex flex-column justify-center align-center">
+          <v-btn class="my-2" outlined="outlined" color="primary" v-if="!attachmentLoader.exhausted" :loading="loading" @click="fetch()" v-t="'common.action.load_more'"></v-btn>
+        </div>
+      </v-layout>
+    </div>
+  </v-card>
+</div>
 </template>

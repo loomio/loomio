@@ -75,8 +75,9 @@ export default
   });
 </script>
 
-<template lang="pug">
-.bar-chart(ref="svg" :style="{height: size+'px', width: size+'px'}")
+<template>
+
+<div class="bar-chart" ref="svg" :style="{height: size+'px', width: size+'px'}"></div>
 </template>
 
 <style lang="sass">

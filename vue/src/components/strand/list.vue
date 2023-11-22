@@ -86,87 +86,66 @@ export default {
 
 </script>
 
-<template lang="pug">
-.strand-list
-  .strand-item(
-    v-for="obj in directedCollection"
-    :key="obj.event.id"
-    :class="{'strand-item--deep': obj.event.depth > 1}"
-  )
-    .strand-item__row(v-if="!newestFirst && obj.missingEarlierCount")
-      .strand-item__gutter
-        .strand-item__stem-wrapper
-          .strand-item__stem.strand-item__stem--broken
-      //- | top !newestFirst && obj.missingEarlierCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
-        @click="loader.loadBefore(obj.event)"
-        :loading="loader.loading == 'before'+obj.event.id")
+<template>
 
-    .strand-item__row(v-if="newestFirst && obj.missingAfterCount")
-      .strand-item__gutter
-        .strand-item__stem-wrapper
-          .strand-item__stem.strand-item__stem--broken
-      //- | top newestFirst && obj.missingAfterCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
-        @click="loader.loadAfter(obj.event)"
-        :loading="loader.loading == 'after'+obj.event.id")
-
-    .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
-      .strand-item__gutter(v-if="obj.event.depth > 0")
-        .d-flex.justify-center
-          v-checkbox.thread-item__is-forking(
-            v-if="loader.discussion.forkedEventIds.length"
-            @change="obj.event.toggleForking()"
-            :disabled="obj.event.forkingDisabled()"
-            v-model="obj.event.isForking()"
-          )
-          template(v-else)
-            user-avatar(
-              :user="obj.event.actor()"
-              :size="(obj.event.depth > 1) ? 28 : 36"
-              no-link
-            )
-        .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
-          .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
-      .strand-item__main(style="overflow: hidden")
-        //- div {{obj.event.kind}} {{obj.event.positionKey}} {{obj.event.sequenceId}} {{isFocused(obj.event)}} childCount{{obj.event.childCount}} chdrn {{obj.children.length}}
-        div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
-          strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
-          component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
-        .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
-          strand-load-more(
-            v-if="obj.children.length == 0"
-            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}"
-            :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
-            @click="loader.loadAfter(obj.event)"
-            :loading="loader.loading == 'children'+obj.event.id")
-          strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
-        reply-form(:eventId="obj.event.id")
-    .strand-item__row(v-if="loader.collapsed[obj.event.id]")
-      .d-flex.align-center
-        .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
-          common-icon(name="mdi-unfold-more-horizontal")
-        strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.eventable" collapsed)
-
-    .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
-      //- | bottom newestFirst && obj.missingEarlierCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
-        @click="loader.loadBefore(obj.event)"
-        :loading="loader.loading == 'before'+obj.event.id")
-
-    .strand-item__row(v-if="!newestFirst && obj.missingAfterCount" )
-      //- | bottom !newestFirst && obj.missingAfterCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
-        @click="loader.loadAfter(obj.event)"
-        :loading="loader.loading == 'after'+obj.event.id")
+<div class="strand-list">
+  <div class="strand-item" v-for="obj in directedCollection" :key="obj.event.id" :class="{'strand-item--deep': obj.event.depth > 1}">
+    <div class="strand-item__row" v-if="!newestFirst && obj.missingEarlierCount">
+      <div class="strand-item__gutter">
+        <div class="strand-item__stem-wrapper">
+          <div class="strand-item__stem strand-item__stem--broken"></div>
+        </div>
+      </div>
+      <strand-load-more v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}" :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}" @click="loader.loadBefore(obj.event)" :loading="loader.loading == 'before'+obj.event.id"></strand-load-more>
+    </div>
+    <div class="strand-item__row" v-if="newestFirst && obj.missingAfterCount">
+      <div class="strand-item__gutter">
+        <div class="strand-item__stem-wrapper">
+          <div class="strand-item__stem strand-item__stem--broken"></div>
+        </div>
+      </div>
+      <strand-load-more v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}" :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}" @click="loader.loadAfter(obj.event)" :loading="loader.loading == 'after'+obj.event.id"></strand-load-more>
+    </div>
+    <div class="strand-item__row" v-if="!loader.collapsed[obj.event.id]">
+      <div class="strand-item__gutter" v-if="obj.event.depth > 0">
+        <div class="d-flex justify-center">
+          <v-checkbox class="thread-item__is-forking" v-if="loader.discussion.forkedEventIds.length" @change="obj.event.toggleForking()" :disabled="obj.event.forkingDisabled()" v-model="obj.event.isForking()"></v-checkbox>
+          <template v-else>
+            <user-avatar :user="obj.event.actor()" :size="(obj.event.depth > 1) ? 28 : 36" no-link="no-link"></user-avatar>
+          </template>
+        </div>
+        <div class="strand-item__stem-wrapper" @click.stop="loader.collapse(obj.event)">
+          <div class="strand-item__stem" :class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}"></div>
+        </div>
+      </div>
+      <div class="strand-item__main" style="overflow: hidden">
+        <div :class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}">
+          <strand-item-removed v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable"></strand-item-removed>
+          <component v-else :is="componentForKind(obj.event.kind)" :event="obj.event" :eventable="obj.eventable"></component>
+        </div>
+        <div class="strand-list__children" v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())">
+          <strand-load-more v-if="obj.children.length == 0" v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}" :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}" @click="loader.loadAfter(obj.event)" :loading="loader.loading == 'children'+obj.event.id"></strand-load-more>
+          <strand-list class="flex-grow-1" :loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst"></strand-list>
+        </div>
+        <reply-form :eventId="obj.event.id"></reply-form>
+      </div>
+    </div>
+    <div class="strand-item__row" v-if="loader.collapsed[obj.event.id]">
+      <div class="d-flex align-center">
+        <div class="strand-item__circle mr-2" v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)">
+          <common-icon name="mdi-unfold-more-horizontal"></common-icon>
+        </div>
+        <strand-item-headline class="text--secondary" :event="obj.event" :eventable="obj.eventable" collapsed="collapsed"></strand-item-headline>
+      </div>
+    </div>
+    <div class="strand-item__row" v-if="newestFirst && obj.missingEarlierCount">
+      <strand-load-more v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}" :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}" @click="loader.loadBefore(obj.event)" :loading="loader.loading == 'before'+obj.event.id"></strand-load-more>
+    </div>
+    <div class="strand-item__row" v-if="!newestFirst && obj.missingAfterCount">
+      <strand-load-more v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}" :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}" @click="loader.loadAfter(obj.event)" :loading="loader.loading == 'after'+obj.event.id"></strand-load-more>
+    </div>
+  </div>
+</div>
 </template>
 
 <style lang="sass">

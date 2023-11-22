@@ -54,32 +54,24 @@ export default {
 
 </script>
 
-<template lang="pug">
-v-layout.comment-form
-  .thread-item__avatar.mr-3
-    user-avatar(
-      :user='comment.author() || actor'
-      :size='comment.parentId ? 28 : 36'
-    )
-  form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
-    submit-overlay(:value='comment.processing')
-    lmo-textarea.ml-n1(
-      :model='comment'
-      @is-uploading="handleIsUploading"
-      field="body"
-      :placeholder="placeholder"
-      :autofocus="autofocus"
-      :shouldReset="shouldReset")
-      template(v-slot:actions)
-        v-btn.comment-form__submit-button(
-          :disabled="!canSubmit"
-          color="primary"
-          type='submit'
-          v-t="comment.isNew() ? 'comment_form.post_comment' : 'common.action.save' ")
-    v-alert(color="error" v-if="comment.saveFailed")
-      span(v-t="'common.something_went_wrong'")
-      space
-      span(v-t="'common.please_try_again'")
+<template>
+
+<v-layout class="comment-form">
+  <div class="thread-item__avatar mr-3">
+    <user-avatar :user="comment.author() || actor" :size="comment.parentId ? 28 : 36"></user-avatar>
+  </div>
+  <form class="thread-item__body comment-form__body" v-on:submit.prevent="submit()" @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()">
+    <submit-overlay :value="comment.processing"></submit-overlay>
+    <lmo-textarea class="ml-n1" :model="comment" @is-uploading="handleIsUploading" field="body" :placeholder="placeholder" :autofocus="autofocus" :shouldReset="shouldReset">
+      <template v-slot:actions="v-slot:actions">
+        <v-btn class="comment-form__submit-button" :disabled="!canSubmit" color="primary" type="submit" v-t="comment.isNew() ? 'comment_form.post_comment' : 'common.action.save' "></v-btn>
+      </template>
+    </lmo-textarea>
+    <v-alert color="error" v-if="comment.saveFailed"><span v-t="'common.something_went_wrong'"></span>
+      <space></space><span v-t="'common.please_try_again'"></span>
+    </v-alert>
+  </form>
+</v-layout>
 </template>
 
 <style lang="sass">
