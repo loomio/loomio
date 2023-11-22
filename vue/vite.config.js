@@ -46,7 +46,11 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3000',
       },
-      '^/(saml|dev|brand|login_tokens|theme|fonts|img|join|invitations|system|direct_uploads|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|bug_tunnel|contact_messages|css)/': {
+      '/direct_uploads': {
+        target: 'http://localhost:3000',
+        changeOrigin: false,
+      },
+      '^/(saml|dev|brand|login_tokens|theme|fonts|img|join|invitations|system|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|bug_tunnel|contact_messages|css)/': {
         target: 'http://localhost:3000',
         changeOrigin: true,
       },
