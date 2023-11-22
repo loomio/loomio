@@ -7,7 +7,7 @@ import i18n          from '@/i18n';
 import Vue from 'vue';
 import { hardReload } from '@/shared/helpers/window';
 import * as Sentry from "@sentry/browser";
-import { pickBy, identity, compact } from 'lodash-es';
+import { compact } from 'lodash-es';
 
 const loadedLocales = ['en'];
 const clientLocales = import.meta.glob('/../config/locales/client.*.yml')

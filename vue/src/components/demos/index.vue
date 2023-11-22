@@ -7,8 +7,6 @@ import EventBus           from '@/shared/services/event_bus';
 import Flash              from '@/shared/services/flash';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
-import { capitalize, take, keys, every, orderBy, debounce } from 'lodash-es';
-import { subDays, addDays, subWeeks, subMonths } from 'date-fns';
 import PlausibleService from '@/shared/services/plausible_service';
 
 export default 

@@ -4,7 +4,7 @@ import Session from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import EventBus from '@/shared/services/event_bus';
 import Flash  from '@/shared/services/flash';
-import { map, orderBy } from 'lodash-es';
+import { map } from 'lodash-es';
 
 export default {
   props: {

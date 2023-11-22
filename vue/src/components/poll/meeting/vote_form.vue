@@ -3,7 +3,6 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
-import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash-es';
 
 export default {
   props: {

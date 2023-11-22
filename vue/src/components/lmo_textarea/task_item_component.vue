@@ -1,6 +1,6 @@
 <script lang="js">
 import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-2';
-import { isArray } from 'lodash-es';
+// import { isArray } from 'lodash-es';
 export default
 {
   components: { NodeViewWrapper, NodeViewContent },

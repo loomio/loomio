@@ -3,7 +3,7 @@ import AppConfig       from '@/shared/services/app_config';
 import HasDocuments    from '@/shared/mixins/has_documents';
 import RecordStore    from '@/shared/record_store/record_store';
 import HasTranslations from '@/shared/mixins/has_translations';
-import {capitalize, map, last, invokeMap} from 'lodash-es';
+import {capitalize, map, invokeMap} from 'lodash-es';
 
 export default class CommentModel extends BaseModel {
   static singular = 'comment';
@@ -54,7 +54,7 @@ export default class CommentModel extends BaseModel {
   }
 
   // isMostRecent: ->
-  //   last(@discussion().comments()) == @
+  //   discussion().comments()) == @
   participantIds() {
     return this.discussion().participantIds();
   }

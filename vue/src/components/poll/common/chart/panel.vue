@@ -4,8 +4,6 @@ import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import PollCommonDirective from '@/components/poll/common/directive';
 import PollService from '@/shared/services/poll_service';
-import { pick } from 'lodash-es';
-
 import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
 import PollCommonChartTable from '@/components/poll/common/chart/table';
 import PollCommonPercentVoted from '@/components/poll/common/percent_voted';

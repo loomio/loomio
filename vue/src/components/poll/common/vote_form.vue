@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import Records   from '@/shared/services/records';
-import { compact, sortBy, without, isEqual, map } from 'lodash-es';
+import { compact } from 'lodash-es';
 
 export default {
   props: {

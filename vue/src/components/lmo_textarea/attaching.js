@@ -1,4 +1,3 @@
-import { forEach } from 'lodash-es';
 import FileUploader from '@/shared/services/file_uploader';
 import {insertImage} from './extension_image';
 export default
@@ -73,7 +72,7 @@ export default
     },
 
     fileSelected() {
-      forEach(this.$refs.filesField.files, file => this.attachFile({file}));
+      this.$refs.filesField.files.forEach(file => this.attachFile({file}));
     },
 
     // collab editor only

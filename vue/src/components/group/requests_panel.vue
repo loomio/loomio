@@ -3,7 +3,7 @@ import Records        from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
 import RecordLoader   from '@/shared/services/record_loader';
 import Session        from '@/shared/services/session';
-import {includes, some, compact, intersection, orderBy, slice, filter, isEmpty} from 'lodash-es';
+import { orderBy } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
 
@@ -33,12 +33,12 @@ export default
 
   computed: {
     unapprovedRequestsByOldestFirst() {
-      const unapproved = filter(this.requests, request => !request.respondedAt);
+      const unapproved = this.requests.filter(request => !request.respondedAt);
       return orderBy(unapproved, ['createdAt'], ['asc']);
     },
 
     approvedRequestsByNewestFirst() {
-      const approved = filter(this.requests, request => request.respondedAt);
+      const approved = this.requests.filter(request => request.respondedAt);
       return orderBy(approved, ['respondedAt'], ['desc']);
     }
   }

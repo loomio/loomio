@@ -9,8 +9,7 @@ import InboxService   from '@/shared/services/inbox_service';
 import PlausibleService from '@/shared/services/plausible_service';
 import Flash from '@/shared/services/flash';
 
-import { isUndefined, sortBy, filter, find, head, each, uniq, map, sum, compact,
-concat, intersection, difference, orderBy } from 'lodash-es';
+import { map, sum, compact } from 'lodash-es';
 
 export default {
   data() {
@@ -105,7 +104,7 @@ export default {
       this.closedCounts = {};
       this.openGroups = [];
       Session.user().groups().forEach(group => {
-        this.openCounts[group.id] = filter(group.discussions(), discussion => discussion.isUnread()).length;
+        this.openCounts[group.id] = group.discussions().filter(discussion => discussion.isUnread()).length;
       });
       Session.user().parentGroups().forEach(group => {
         if (this.organization && (this.organization.id === group.parentOrSelf().id)) {

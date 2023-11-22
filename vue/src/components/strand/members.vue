@@ -1,7 +1,6 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
-import {map} from 'lodash-es';
 
 export default {
   props: {
