@@ -1,9 +1,9 @@
 class AddMemberEmailAliasModel < ActiveRecord::Migration[7.0]
   def change
     create_table :member_email_aliases do |t|
-      t.string :email
+      t.citext :email, null: false
       t.boolean :must_validate, null: false, default: true
-      t.integer :user_id, null: false
+      t.integer :user_id
       t.integer :group_id, null: false
       t.integer :author_id, null: false
       t.timestamps

@@ -19,13 +19,16 @@ class ReceivedEmailService
       email.update_attribute(:released, true)
     else
       if group = Group.find_by(handle: email.route_path)
-        email.update(group_id: group.id)
+        unless address_is_blocked(email, group)
+          email.update(group_id: group.id)
+        end
+
         if actor = actor_from_email_and_group(email, group)
-          discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor)
+          discussion = DiscussionService.create(
+            discussion: Discussion.new(discussion_params(email)),
+            actor: actor)
           email.update(released: true)
         end
-      else
-        # group not found. leave the email unreleased
       end
     end
   end
@@ -87,12 +90,16 @@ class ReceivedEmailService
     User.find_by!(id: params['u'], email_api_key: params['k'])
   end
 
+  def self.address_is_blocked(email, group)
+    MemberEmailAlias.blocked.find_by(email: email.sender_email, group_id: group.id)
+  end
+
   def self.actor_from_email_and_group(email, group)
     if actor = email.is_validated? && User.find_by(email: email.sender_email)
       return actor if group.members.exists?(actor.id)
     end
 
-    if email_alias = MemberEmailAlias.find_by(email: email.sender_email, group_id: group.id)
+    if email_alias = MemberEmailAlias.allowed.find_by(email: email.sender_email, group_id: group.id)
       return nil if email_alias.must_validate && !email.is_validated?
       return email_alias.user if group.members.exists?(email_alias.user.id)
     end

@@ -363,6 +363,11 @@ en:
     search_activities: Search decisions
 
   email_to_group:
+    block_email: Block address
+    confirm_block: Block this email address?
+    confirm_block_body: This email, and any further emails from %{sender} will be automatically deleted.
+    confirm_delete: Delete this email?
+    confirm_delete_body: This email will be deleted. Any future emails from %{sender} will be unaffected.
     unreleased_emails: Unreleased emails
     email_to_group_settings: Email-to-group settings
     email_to_group_address: Email-to-group address

@@ -160,6 +160,28 @@ describe ReceivedEmailsController do
       expect(e.group_id).to eq group.id
     end
 
+
+    it "blocked member alias, does not start discussion" do
+      a = MemberEmailAlias.create(
+        user_id: nil,
+        email: 'memberalias@example.com',
+        group_id: group.id,
+        author_id: group.admins.first.id
+      )
+
+      h = mailin_params(
+        from: a.email,
+        to: "#{group.handle}@#{ENV['REPLY_HOSTNAME']}",
+        subject: "the topic at hand",
+        body: "greetings earthlings"
+      )
+
+      expect { post :create, params: h}.to change { Discussion.count }.by(0)
+      e = ReceivedEmail.last
+      expect(e.released).to eq false
+      expect(e.group_id).to eq nil
+    end
+
     it "invalid dkim&spf, must_validate: true, member alias does not start discussion" do
       a = MemberEmailAlias.create(
         user_id: user.id,

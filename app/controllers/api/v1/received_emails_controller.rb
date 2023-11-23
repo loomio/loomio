@@ -19,8 +19,21 @@ class API::V1::ReceivedEmailsController < API::V1::RestfulController
     respond_with_resource
   end
 
+  def block
+    @received_email = ReceivedEmail.unreleased.where(group_id: current_user.adminable_group_ids).find(params[:id])
+    MemberEmailAlias.create!(
+      email: @received_email.sender_email,
+      user_id: nil,
+      group_id: @received_email.group_id,
+      author_id: current_user.id
+    )
+    ReceivedEmailService.route(@received_email)
+    respond_with_resource
+  end
+
   def destroy
-    raise "not ready"
+    @received_email = ReceivedEmail.unreleased.where(group_id: current_user.adminable_group_ids).find(params[:id])
+    raise 'finish me'
   end
 
   private

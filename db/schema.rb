@@ -493,9 +493,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_005012) do
   end
 
   create_table "member_email_aliases", force: :cascade do |t|
-    t.string "email"
+    t.citext "email", null: false
     t.boolean "must_validate", default: true, null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.integer "group_id", null: false
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
