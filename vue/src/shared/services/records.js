@@ -32,6 +32,7 @@ import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface';
 import TaskRecordsInterface from '@/shared/interfaces/task_records_interface';
 import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface';
+import ReceivedEmailRecordsInterface from '@/shared/interfaces/received_email_records_interface';
 
 const db      = new loki('default.db');
 const records = new RecordStore(db);
@@ -66,6 +67,7 @@ records.addRecordsInterface(MessageChannelRecordsInterface);
 records.addRecordsInterface(TagRecordsInterface);
 records.addRecordsInterface(TaskRecordsInterface);
 records.addRecordsInterface(WebhookRecordsInterface);
+records.addRecordsInterface(ReceivedEmailRecordsInterface);
 
 AppConfig.records = records;
 export default records;

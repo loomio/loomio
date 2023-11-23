@@ -216,6 +216,12 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :received_emails, only: [:index, :destroy] do
+        member do
+          post :allow
+        end
+      end
+
       resources :tags, only: [:create, :update, :destroy] do
         collection do
           post :priority
@@ -366,6 +372,7 @@ Rails.application.routes.draw do
   get 'apps/authorized'                    => 'application#index'
   get 'apps/registered/:id'                => 'application#index'
   get 'apps/registered/:id/:slug'          => 'application#index'
+  get 'g/:key/emails'                      => 'application#index', as: :group_emails
   get 'g/:key/membership_requests'         => 'application#index', as: :group_membership_requests
   get 'g/:key/members/requests'            => 'application#index', as: :group_members_requests
   get 'g/:key/memberships'                 => 'application#index', as: :group_memberships

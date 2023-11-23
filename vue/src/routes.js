@@ -11,6 +11,7 @@ const PollTemplateFormPage = () => import('./components/poll_template/form_page'
 const TasksPage = () => import('./components/tasks/page');
 const GroupDiscussionsPanel = () => import('./components/group/discussions_panel');
 const GroupPollsPanel = () => import('./components/group/polls_panel');
+const GroupEmailsPanel = () => import('./components/group/emails_panel');
 const MembersPanel = () => import('./components/group/members_panel');
 const GroupTagsPanel = () => import('./components/group/tags_panel');
 const GroupSubgroupsPanel = () => import('./components/group/subgroups_panel');
@@ -39,6 +40,7 @@ Vue.use(Router);
 
 const groupPageChildren = [
   {path: 'tags/:tag?', component: GroupTagsPanel, meta: {noScroll: true} },
+  {path: 'emails', component: GroupEmailsPanel, meta: {noScroll: true}},
   {path: 'polls', component: GroupPollsPanel, meta: {noScroll: true}},
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},

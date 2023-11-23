@@ -1,5 +1,8 @@
 class ReceivedEmail < ApplicationRecord
   has_many_attached :attachments
+  belongs_to :group
+
+  scope :unreleased, -> { where(released: false) }
 
   def header(name)
     headers.find { |key, value| key.downcase == name.to_s.downcase }&.last

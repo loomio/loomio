@@ -38,8 +38,7 @@ export default {
           props: {
             user: Session.user()
           }
-        }
-        );
+        });
       });
     },
 

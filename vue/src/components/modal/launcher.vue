@@ -17,6 +17,7 @@ export default
     MembershipRequestForm: () => import('@/components/group/membership_request_form'),
     MembershipModal: () => import('@/components/group/membership_modal'),
     EmailToGroupSettings: () => import('@/components/group/email_to_group_settings'),
+    MemberEmailAliasModal: () => import('@/components/group/member_email_alias_modal'),
     ChangePasswordForm: () => import('@/components/profile/change_password_form'),
     ChatbotList: () => import('@/components/chatbot/list'),
     ChatbotMatrixForm: () => import('@/components/chatbot/matrix_form'),

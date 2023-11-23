@@ -363,6 +363,7 @@ en:
     search_activities: Search decisions
 
   email_to_group:
+    unreleased_emails: Unreleased emails
     email_to_group_settings: Email-to-group settings
     email_to_group_address: Email-to-group address
     start_threads_via_email: Start threads via email

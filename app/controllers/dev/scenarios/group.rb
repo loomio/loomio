@@ -5,10 +5,28 @@ module Dev::Scenarios::Group
     create_group.add_member! emilio
     redirect_to group_url(create_group)
   end
+
   def setup_group
     sign_in patrick
     create_group.add_member! emilio
     redirect_to group_url(create_group)
+  end
+
+  def setup_group_with_received_email
+    sign_in patrick
+    create_group.add_member! emilio
+    ReceivedEmail.create(
+      group_id: create_group.id,
+      body_html: "<html><body>hello everyone.</body></html>",
+      dkim_valid: true,
+      spf_valid: true,
+      headers: {
+        from: '"Michael Angelo" <michael@gmail.com>',
+        to: create_group.handle + "@#{ENV['REPLY_HOSTNAME']}",
+        subject: 'big deal'
+      }
+    )
+    redirect_to group_emails_url(create_group)
   end
 
   def setup_user_no_group
