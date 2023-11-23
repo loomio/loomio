@@ -20,6 +20,10 @@ class ReceivedEmail < ApplicationRecord
     route_address.split('@')[0]
   end
 
+  def is_validated?
+    dkim_valid || spf_valid
+  end
+
   def sender_email
     String(header('from')).scan(AppConfig::EMAIL_REGEX).uniq.first
   end

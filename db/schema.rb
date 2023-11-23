@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_30_021314) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_23_005012) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -490,6 +490,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_021314) do
     t.integer "code", null: false
     t.boolean "is_reactivation", default: false, null: false
     t.index ["token"], name: "index_login_tokens_on_token"
+  end
+
+  create_table "member_email_aliases", force: :cascade do |t|
+    t.string "email"
+    t.boolean "must_validate", default: true, null: false
+    t.integer "user_id", null: false
+    t.integer "group_id", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "membership_requests", id: :serial, force: :cascade do |t|
