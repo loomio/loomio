@@ -4,11 +4,13 @@ import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import { debounce, some } from 'lodash-es';
+import { mdiMagnify } from '@mdi/js';
 
 export default
 {
   data() {
     return {
+      mdiMagnify,
       group: null,
       loading: true
     };
@@ -92,7 +94,7 @@ export default
 <template lang="pug">
 div(v-if="group")
   v-layout.my-2(align-center wrap)
-    v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" append-icon="mdi-magnify")
+    v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" :append-icon="mdiMagnify")
     v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
 
   v-card.group-subgroups-panel(outlined)

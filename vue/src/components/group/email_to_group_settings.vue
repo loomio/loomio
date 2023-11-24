@@ -4,6 +4,7 @@ import AppConfig from '@/shared/services/app_config';
 import GroupService from '@/shared/services/group_service';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
+import { mdiContentCopy } from '@mdi/js';
 
 export default 
 {
@@ -13,6 +14,7 @@ export default
 
   data() {
     return {
+      mdiContentCopy,
       key: null,
       confirmReset: false,
       loading: false
@@ -70,7 +72,7 @@ v-card.email-to-group-settings
         readonly
         outlined
         v-model="address"
-        append-icon="mdi-content-copy"
+        :append-icon="mdiContentCopy"
         @click:append="copyText"
       )
       p

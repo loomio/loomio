@@ -5,13 +5,14 @@ import Records from '@/shared/services/records';
 import PageLoader from '@/shared/services/page_loader';
 import EventBus       from '@/shared/services/event_bus';
 import Session       from '@/shared/services/session';
-import { intersection } from 'lodash-es';
-import { uniq } from 'lodash-es';
+import { intersection, uniq } from 'lodash-es';
+import { mdiMagnify } from '@mdi/js';
 
 export default
 {
   data() {
     return {
+      mdiMagnify,
       group: null,
       polls: [],
       loader: null,
@@ -193,7 +194,7 @@ export default
         @keyup.enter="openSearchModal"
         @click:append="openSearchModal"
         :placeholder="$t('navbar.search_polls', {name: group.name})"
-        append-icon="mdi-magnify")
+        :append-icon="mdiMagnify")
       v-btn.polls-panel__new-poll-button(
         :to="'/p/new?group_id='+group.id"
         color='primary'
