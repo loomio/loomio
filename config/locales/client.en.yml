@@ -162,6 +162,7 @@ en:
     local: Local time (%{value})
 
   common:
+    value: "%{value}"
     admin_menu: Admin menu
     api_docs: API docs
     prefix_eg: "e.g. %{val}"
@@ -262,6 +263,7 @@ en:
       unlike: 'Unlike'
       update: 'Update'
       cancel: 'Cancel'
+      confirm: Confirm
       hide: 'Hide'
       unhide: 'Unhide'
       show_more: "Show more"
@@ -363,9 +365,16 @@ en:
     search_activities: Search decisions
 
   email_to_group:
+    add_alias: Add alias
+    who_is_the_owner_of_email: Who is the owner of %{email}?
+    is_name_the_owner_of_email: Is %{name} the owner of %{email}?
+    all_email_will_belong_to_name: All messages from %{email} will be attributed to %{name}
+    email_aliases: Aliases and ignored addresses
     block_email: Block address
+    no_emails_to_release: No emails waiting for release
+    release_rules: Release rules
     confirm_block: Block this email address?
-    confirm_block_body: This email, and any further emails from %{sender} will be automatically deleted.
+    confirm_block_body: This email, and any further emails from %{sender} will be ignored.
     confirm_delete: Delete this email?
     confirm_delete_body: This email will be deleted. Any future emails from %{sender} will be unaffected.
     unreleased_emails: Unreleased emails
@@ -1243,7 +1252,7 @@ en:
     subgroup_name: Subgroup name
     organization_name: Organization name
     handle: Handle
-    group_handle_placeholder: "Used in your group URL: %{host}/%{handle}"
+    group_handle_placeholder: "For your group URL and email: %{host}/%{handle}, %{handle}@%{host}"
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What is the name of your group?'

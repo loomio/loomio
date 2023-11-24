@@ -25,6 +25,30 @@ export default new class GroupService {
     //         group: group
 
     return {
+      email_group: {
+        name: 'common.value',
+        nameArgs: () => { return {value: group.handle+"@"+AppConfig.theme.reply_hostname} },
+        icon: 'mdi-email',
+        dock: 2,
+        canPerform() {
+          return group.handle && AbilityService.canStartThread(group);
+        },
+        perform() {
+          EventBus.$emit('openModal', {
+            component: 'InfoModal',
+            props: {
+              paths: {
+                title: 'email to group',
+                body: 'you can email your group'
+              },
+              args: {
+                handle: group.handle
+              }
+            }
+          });
+        }
+      },
+
       translate_group: {
         name: 'common.action.translate',
         icon: 'mdi-translate',

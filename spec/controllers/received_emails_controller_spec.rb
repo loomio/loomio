@@ -36,6 +36,17 @@ describe ReceivedEmailsController do
     discussion.group.add_member! another_user
   end
 
+  it "forwards specific emails to contact" do
+    h = mailin_params(
+      to: "contact@#{ENV['REPLY_HOSTNAME']}", 
+      body: "yo this is for contact"
+    )
+    post :create, params: h
+
+    last_email = ActionMailer::Base.deliveries.last
+    expect(last_email.to).to include 'support@loomio.example.org'
+  end
+
   it "creates a reply to comment via email" do
     h = mailin_params(
       to: "c=#{comment.id}&d=#{discussion.id}&u=#{user.id}&k=#{user.email_api_key}@#{ENV['REPLY_HOSTNAME']}", 
@@ -188,7 +199,8 @@ describe ReceivedEmailsController do
         email: 'memberalias@example.com',
         group_id: group.id,
         author_id: group.admins.first.id,
-        must_validate: true
+        require_dkim: true,
+        require_spf: true
       )
 
       h = mailin_params(
@@ -212,7 +224,8 @@ describe ReceivedEmailsController do
         email: 'memberalias@example.com',
         group_id: group.id,
         author_id: group.admins.first.id,
-        must_validate: false
+        require_dkim: false,
+        require_spf: false
       )
 
       h = mailin_params(

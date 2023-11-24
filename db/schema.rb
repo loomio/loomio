@@ -494,7 +494,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_005012) do
 
   create_table "member_email_aliases", force: :cascade do |t|
     t.citext "email", null: false
-    t.boolean "must_validate", default: true, null: false
+    t.boolean "require_dkim", default: true, null: false
+    t.boolean "require_spf", default: true, null: false
     t.integer "user_id"
     t.integer "group_id", null: false
     t.integer "author_id", null: false

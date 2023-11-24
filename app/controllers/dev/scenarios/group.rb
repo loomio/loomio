@@ -15,17 +15,20 @@ module Dev::Scenarios::Group
   def setup_group_with_received_email
     sign_in patrick
     create_group.add_member! emilio
-    ReceivedEmail.create(
-      group_id: create_group.id,
-      body_html: "<html><body>hello everyone.</body></html>",
-      dkim_valid: true,
-      spf_valid: true,
-      headers: {
-        from: '"Michael Angelo" <michael@gmail.com>',
-        to: create_group.handle + "@#{ENV['REPLY_HOSTNAME']}",
-        subject: 'big deal'
-      }
-    )
+    5.times do
+      name = Faker::Name.name
+      email = ReceivedEmail.create(
+        group_id: create_group.id,
+        body_html: "<html><body>hello everyone.</body></html>",
+        dkim_valid: true,
+        spf_valid: true,
+        headers: {
+          from: "\"#{name}\" <#{Faker::Internet.email(name: name)}>",
+          to: create_group.handle + "@#{ENV['REPLY_HOSTNAME']}",
+          subject: Faker::TvShows::TheFreshPrinceOfBelAir.quote
+        }
+      )
+    end
     redirect_to group_emails_url(create_group)
   end
 

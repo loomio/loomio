@@ -1,6 +1,7 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
+import { debounce } from 'lodash-es';
 
 export default {
   props: {
@@ -12,7 +13,8 @@ export default {
   data() {
     return {
       q: null,
-      users: []
+      users: [],
+      selectedUser: null
     }
   },
 
@@ -20,8 +22,11 @@ export default {
     this.fetch();
   },
 
+  watch: {
+    q: 'fetch'
+  },
   methods: {
-    fetch() {
+    fetch: debounce(function() {
       Records.memberships.fetch({
         params: {
           q: this.q,
@@ -31,7 +36,7 @@ export default {
       }).then((data) => {
         this.users = Records.users.find(data.users.map(u => u.id))
       });
-    }
+    }, 250)
   }
 };
 
@@ -39,10 +44,11 @@ export default {
 <template lang="pug">
 v-card
   v-card-title
-    h1.headline Add alias for {{email}}
+    h1.headline(v-t="'email_to_group.add_alias'")
     v-spacer
     dismiss-modal-button
-  v-card-text
+  .pa-4(v-if="!selectedUser")
+    p.text--secondary(v-t="{path: 'email_to_group.who_is_the_owner_of_email', args:{email: email}}")
     v-text-field(
       v-model="q"
       autofocus
@@ -51,10 +57,18 @@ v-card
       single-line
       hide-details
       :placeholder="$t('common.action.search')"
-      @keydown.enter.prevent="fetch"
-      @change="fetch"
     )
     v-list(v-for="user in users")
-      v-list-item(@click="submit(user.id)") {{user.name}}
+      v-list-item(@click="selectedUser = user") {{user.name}}
+
+  .pa-4(v-if="selectedUser")
+    p(v-t="{path: 'email_to_group.is_name_the_owner_of_email', args: {name: selectedUser.name, email: email}}")
+    p(v-t="{path: 'email_to_group.all_email_will_belong_to_name', args: {name: selectedUser.name, email: email}}")
+  v-card-actions(v-if="selectedUser")
+    v-btn(@click="selectedUser = null" v-t="'common.action.cancel'")
+    v-spacer
+    v-btn(color="primary" @click="submit(selectedUser.id)" v-t="'common.action.confirm'")
+
+
 
 </template>

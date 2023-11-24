@@ -1,5 +1,12 @@
 class ReceivedEmailService
+  def self.route_all
+    ReceivedEmail.unreleased.where(group_id: nil).each do |email|
+      route(email)
+    end
+  end
+
   def self.route(email)
+    return nil unless email.route_address
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
@@ -18,6 +25,21 @@ class ReceivedEmailService
 
       email.update_attribute(:released, true)
     else
+      if ['rob', 'michael', 'contact'].include? email.route_path
+        BaseMailer.contact_message(
+          email.sender_name,
+          email.sender_email,
+          email.subject,
+          email.body,
+          {
+            site: ENV['CANONICAL_HOST'],
+            deliver_to: email.route_address
+          }
+        ).deliver_later
+        email.update(released: true)
+        return
+      end
+
       if group = Group.find_by(handle: email.route_path)
         unless address_is_blocked(email, group)
           email.update(group_id: group.id)
@@ -95,12 +117,13 @@ class ReceivedEmailService
   end
 
   def self.actor_from_email_and_group(email, group)
-    if actor = email.is_validated? && User.find_by(email: email.sender_email)
+    if actor = (email.dkim_valid || email.spf_valid) && User.find_by(email: email.sender_email)
       return actor if group.members.exists?(actor.id)
     end
 
     if email_alias = MemberEmailAlias.allowed.find_by(email: email.sender_email, group_id: group.id)
-      return nil if email_alias.must_validate && !email.is_validated?
+      return nil if email_alias.require_dkim && !email.dkim_valid
+      return nil if email_alias.require_spf && !email.spf_valid
       return email_alias.user if group.members.exists?(email_alias.user.id)
     end
 

@@ -5,6 +5,19 @@ class API::V1::ReceivedEmailsController < API::V1::RestfulController
     respond_with_collection
   end
 
+  def aliases
+    raise CanCan::AccessDenied unless current_user.adminable_group_ids.include?(params[:group_id].to_i)
+    aliases = MemberEmailAlias.where(group_id: params[:group_id])
+    render json: aliases, scope: default_scope, each_serializer: MemberEmailAliasSerializer, root: :aliases, meta: meta.merge({root: :aliases, total: collection_count}) 
+  end
+
+  def destroy_alias
+    member_email_alias = MemberEmailAlias.where(group_id: current_user.adminable_group_ids).find(params[:id])
+    member_email_alias.destroy
+    ReceivedEmailService.route_all
+    success_response
+  end
+
   def allow
     @received_email = ReceivedEmail.unreleased.where(group_id: current_user.adminable_group_ids).find(params[:id])
     user = @received_email.group.members.find(params[:user_id])
@@ -12,7 +25,8 @@ class API::V1::ReceivedEmailsController < API::V1::RestfulController
       email: @received_email.sender_email,
       user: user,
       group_id: @received_email.group_id,
-      must_validate: @received_email.is_validated?,
+      require_dkim: @received_email.dkim_valid,
+      require_spf: @received_email.spf_valid,
       author_id: current_user.id
     )
     ReceivedEmailService.route(@received_email)
@@ -27,13 +41,8 @@ class API::V1::ReceivedEmailsController < API::V1::RestfulController
       group_id: @received_email.group_id,
       author_id: current_user.id
     )
-    ReceivedEmailService.route(@received_email)
+    @received_email.update(group_id: nil)
     respond_with_resource
-  end
-
-  def destroy
-    @received_email = ReceivedEmail.unreleased.where(group_id: current_user.adminable_group_ids).find(params[:id])
-    raise 'finish me'
   end
 
   private

@@ -216,9 +216,15 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :received_emails, only: [:index, :destroy] do
+      resources :received_emails, only: [:index] do
+        collection do
+          get :aliases
+          delete :destroy_alias
+        end
+        
         member do
           post :allow
+          post :block
         end
       end
 
