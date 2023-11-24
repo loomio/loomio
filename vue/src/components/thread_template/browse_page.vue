@@ -7,12 +7,14 @@ import AbilityService from '@/shared/services/ability_service';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
 import utils         from '@/shared/record_store/utils';
 import VuetifyColors  from 'vuetify/lib/util/colors';
+import { mdiMagnify } from '@mdi/js';
 
 const colors = Object.keys(VuetifyColors).filter(name => name !== 'shades').map(name => VuetifyColors[name]['base']);
 
 export default {
   data() {
     return {
+      mdiMagnify,
       results: [],
       query: this.$route.query.query,
       loading: false,
@@ -68,7 +70,7 @@ export default {
             hide-selected
             clearable
             @change="changed"
-            append-icon="mdi-magnify"
+            :append-icon="mdiMagnify"
             @click:append="fetch"
             v-model="query"
             :placeholder="$t('common.action.search')"

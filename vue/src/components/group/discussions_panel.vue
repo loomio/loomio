@@ -6,6 +6,7 @@ import RecordLoader       from '@/shared/services/record_loader';
 import PageLoader         from '@/shared/services/page_loader';
 import { debounce, orderBy, intersection, concat, uniq } from 'lodash-es';
 import Session from '@/shared/services/session';
+import { mdiMagnify } from '@mdi/js';
 
 export default 
 {
@@ -29,7 +30,8 @@ export default
       loader: null,
       groupIds: [],
       per: 25,
-      dummyQuery: null
+      dummyQuery: null,
+      mdiMagnify
     };
   },
 
@@ -273,7 +275,7 @@ div.discussions-panel(v-if="group")
       @keyup.enter="openSearchModal"
       @click:append="openSearchModal"
       :placeholder="$t('navbar.search_threads', {name: group.name})"
-      append-icon="mdi-magnify")
+      :append-icon="mdiMagnify")
     v-btn.discussions-panel__new-thread-button(
       v-if='canStartThread'
       v-t="'navbar.start_thread'"

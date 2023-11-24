@@ -3,6 +3,7 @@ import Records     from '@/shared/services/records';
 import FlashService   from '@/shared/services/flash';
 import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time';
 import { format, parse, isValid } from 'date-fns';
+import { mdiCalendar, mdiClockOutline } from '@mdi/js';
 import I18n from '@/i18n';
 
 export default {
@@ -19,6 +20,8 @@ export default {
 
   data() {
     return {
+      mdiCalendar,
+      mdiClockOutline,
       dateStr: (this.value && format(this.value, 'yyyy-MM-dd')) || '',
       timeStr: (this.value && format(this.value, 'HH:mm')) || '',
       minStr:  (this.value && format(this.min, 'yyyy-MM-dd')) || '',
@@ -69,7 +72,7 @@ v-layout.date-time-picker
         v-bind='attrs'
         :placeholder="placeholder"
         :rules="[validDate]"
-        prepend-icon="mdi-calendar")
+        :prepend-icon="mdiCalendar")
     v-date-picker.date-time-picker__date-picker(
       v-model='dateStr'
       no-title
@@ -81,5 +84,5 @@ v-layout.date-time-picker
     :persistent-hint="twelvehour"
     v-model="timeStr"
     :items="times"
-    prepend-icon="mdi-clock-outline")
+    :prepend-icon="mdiClockOutline")
 </template>

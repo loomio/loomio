@@ -7,11 +7,13 @@ import EventBus       from '@/shared/services/event_bus';
 import { intersection, debounce, map } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
+import { mdiMagnify } from '@mdi/js';
 
 export default
 {
   data() {
     return {
+      mdiMagnify,
       loader: null,
       group: null,
       per: 25,
@@ -208,7 +210,7 @@ export default
             v-list-item-title(v-t="'members_panel.order_by_admin_desc'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
             v-list-item-title(v-t="'members_panel.invitations'")
-      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" append-icon="mdi-magnify")
+      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" :append-icon="mdiMagnify")
       v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
       shareable-link-modal(v-if='canAddMembers' :group="group")
       v-btn.group-page__requests-tab(
