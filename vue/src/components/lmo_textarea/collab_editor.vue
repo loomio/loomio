@@ -293,7 +293,7 @@ export default
     fetchLinkPreviews(urls) {
       if (urls.length) {
         this.fetchedUrls = uniq(this.fetchedUrls.concat(urls));
-        Records.remote.post('link_previews', {urls, discussion_id: model.discussion().id}).then(data => {
+        Records.remote.post('link_previews', {urls}).then(data => {
           this.model.linkPreviews = uniqBy(this.model.linkPreviews.concat(data.previews), 'url');
         });
       }
