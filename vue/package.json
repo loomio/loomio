@@ -78,7 +78,7 @@
     "vue-router": "^3.6.5",
     "vue-slicksort": "^1.2.0",
     "vue2-touch-events": "^3.2.3",
-    "@mdi/js": "^7.3.67",
+    "@mdi/js": "^6.9.96",
     "vuetify": "2.6.15"
   },
   "devDependencies": {
