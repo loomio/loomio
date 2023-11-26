@@ -501,6 +501,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_005012) do
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email", "group_id"], name: "index_member_email_aliases_on_email_and_group_id", unique: true
   end
 
   create_table "membership_requests", id: :serial, force: :cascade do |t|

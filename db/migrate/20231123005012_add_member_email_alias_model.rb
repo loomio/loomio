@@ -9,5 +9,6 @@ class AddMemberEmailAliasModel < ActiveRecord::Migration[7.0]
       t.integer :author_id, null: false
       t.timestamps
     end
+    add_index :member_email_aliases, [:email, :group_id], unique: true
   end
 end
