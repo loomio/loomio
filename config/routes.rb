@@ -145,7 +145,6 @@ Rails.application.routes.draw do
           get  :contactable
           get  :avatar_uploaded
           get  :email_api_key
-          post :send_email_to_group_address
           post :reset_email_api_key
           post :update_profile
           post :set_volume

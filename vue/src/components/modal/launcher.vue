@@ -8,7 +8,6 @@ export default
     DiscussionForm: () => import('@/components/discussion/form.vue'),
     EditCommentForm: () => import('@/components/thread/edit_comment_form.vue'),
     ConfirmModal: () => import('@/components/common/confirm_modal.vue'),
-    InfoModal: () => import('@/components/common/info_modal.vue'),
     ArrangementForm: () => import('@/components/thread/arrangement_form.vue'),
     ChangeVolumeForm: () => import('@/components/common/change_volume_form'),
     PollCommonModal: () => import('@/components/poll/common/modal'),

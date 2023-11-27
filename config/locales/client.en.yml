@@ -378,21 +378,13 @@ en:
     confirm_delete: Delete this email?
     confirm_delete_body: This email will be deleted. Any future emails from %{sender} will be unaffected.
     unreleased_emails: Unreleased emails
-    email_to_group_settings: Email-to-group settings
-    email_to_group_address: Email-to-group address
-    start_threads_via_email: Start threads via email
-    your_address_for_this_group: Your email address for this group
-    send_email_to_start_thread: Send email to this address to start a thread in your group.
+    start_a_thread_by_email: Start a thread by email
+    send_email_to_start_thread: Email this address to start a thread in your group.
     subject_body_attachments: The thread will use the email subject, body and attached files.
-    address_starts_threads_as_you: "Don't share this address - anyone who has it can start threads as you."
-    generate_new_address: Generate new address
     copy_address: Copy address
     email_me_this_address: Email me this address
-    email_address_sent_to_you: Email address sent to you
     email_address_copied_to_clipboard: Email address copied to clipboard
-    new_address_generated: New email-to-group address generated
-    generate_new_address_question: Generate new email-to-group address?
-    generate_new_address_warning: All your existing email-to-loomio addresses will stop working. There is no undo. Go ahead?
+    forward_email_to_move_conversation: "Tip: Move an existing email conversation to Loomio by forwarding it to this address."
 
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Your email address to start threads in %{group}

@@ -13,17 +13,6 @@ export default new class GroupService {
   actions(group) {
     const membership = group.membershipFor(Session.user());
     
-    // email_to_group:
-    //   name: 'email_to_group.email_to_group_address'
-    //   icon: 'mdi-send'
-    //   menu: true
-    //   canPerform: -> AbilityService.canStartThread(group)
-    //   perform: ->
-    //     openModal
-    //       component: 'EmailToGroupSettings'
-    //       props:
-    //         group: group
-
     return {
       email_group: {
         name: 'common.value',
@@ -35,15 +24,10 @@ export default new class GroupService {
         },
         perform() {
           EventBus.$emit('openModal', {
-            component: 'InfoModal',
+            component: 'EmailToGroupSettings',
+            persistent: false,
             props: {
-              paths: {
-                title: 'email to group',
-                body: 'you can email your group'
-              },
-              args: {
-                handle: group.handle
-              }
+              group: group
             }
           });
         }
