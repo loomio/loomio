@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_23_005012) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_28_215840) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -822,6 +822,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_23_005012) do
     t.boolean "released", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reserved_handles", force: :cascade do |t|
+    t.citext "handle", null: false
+    t.string "email"
   end
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|

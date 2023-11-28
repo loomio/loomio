@@ -691,7 +691,7 @@ en:
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
 
     without_title:
-      unknown_sender: "Review email from unrecognised sender"
+      unknown_sender: "Please review email from unrecognised sender"
       discussion_announced: '%{actor} invited you to a thread'
       discussion_edited: '%{actor} edited the thread context'
       discussion_closed: "%{actor} closed the thread"

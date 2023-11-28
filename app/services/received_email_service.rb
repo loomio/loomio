@@ -1,4 +1,13 @@
 class ReceivedEmailService
+  def self.refresh_reserved_handles
+    reserved_handles = File.readlines(Rails.root.join("db/handle_banlist.txt")).map(&:chomp).map do |handle| 
+      {handle: handle, email: "#{handle}@#{ENV['REPLY_HOSTNAME']}"}
+    end
+
+    ReservedHandle.delete_all
+    ReservedHandle.insert_all(reserved_handles, record_timestamps: false)
+  end
+
   def self.route_all
     ReceivedEmail.unreleased.where(group_id: nil).each do |email|
       route(email)
@@ -25,7 +34,7 @@ class ReceivedEmailService
 
       email.update_attribute(:released, true)
     else
-      if ['rob', 'michael', 'contact'].include? email.route_path
+      if reserved_handle = ReservedHandle.find_by(handle: email.route_path)
         BaseMailer.contact_message(
           email.sender_name,
           email.sender_email,
