@@ -18,7 +18,6 @@ module Dev::Scenarios::Group
     5.times do
       name = Faker::Name.name
       email = ReceivedEmail.create(
-        group_id: create_group.id,
         body_html: "<html><body>hello everyone.</body></html>",
         dkim_valid: true,
         spf_valid: true,
@@ -29,6 +28,7 @@ module Dev::Scenarios::Group
         }
       )
     end
+    ReceivedEmailService.route_all
     redirect_to group_emails_url(create_group)
   end
 

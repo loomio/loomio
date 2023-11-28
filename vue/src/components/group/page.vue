@@ -65,11 +65,10 @@ export default
 
   methods: {
     init() {
-      Records.groups.findOrFetch(this.$route.params.key)
-      .then(group => {
+      Records.groups.findOrFetch(this.$route.params.key).then(group => {
         this.group = group;
         if (this.group.newHost) { window.location.host = this.group.newHost; }
-    }).catch(error => {
+      }).catch(error => {
         EventBus.$emit('pageError', error);
         if ((error.status === 403) && !Session.isSignedIn()) { EventBus.$emit('openAuthModal'); }
       });

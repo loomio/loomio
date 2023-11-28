@@ -51,6 +51,10 @@ class ReceivedEmail < ApplicationRecord
     String(header('subject')).gsub(/^( *(re|fwd?)(:| ) *)+/i, '')
   end
 
+  def title
+    "#{sender_email}: #{subject}"
+  end
+
   def is_addressed_to_loomio?
     route_address.present?
   end

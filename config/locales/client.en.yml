@@ -365,11 +365,13 @@ en:
     search_activities: Search decisions
 
   email_to_group:
+    review_email: Review email
     add_alias: Add alias
     who_is_the_owner_of_email: Who is the owner of %{email}?
     is_name_the_owner_of_email: Is %{name} the owner of %{email}?
     all_email_will_belong_to_name: All messages from %{email} will be attributed to %{name}
     email_aliases: Aliases and ignored addresses
+    belongs_to_name: Belongs to %{name}
     block_email: Block address
     no_emails_to_release: No emails waiting for release
     release_rules: Release rules
@@ -651,6 +653,7 @@ en:
     no_notifications: "You don't have any notifications"
 
     with_title:
+      unknown_sender: "Please review email from unrecognised sender"
       comment_replied_to: "%{actor} replied to you in: %{title}"
       discussion_announced: "%{actor} invited you to the thread: %{title}"
       discussion_edited: "%{actor} edited the thread context: %{title}"
@@ -688,6 +691,7 @@ en:
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
 
     without_title:
+      unknown_sender: "Review email from unrecognised sender"
       discussion_announced: '%{actor} invited you to a thread'
       discussion_edited: '%{actor} edited the thread context'
       discussion_closed: "%{actor} closed the thread"

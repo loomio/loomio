@@ -3,7 +3,7 @@
 - title = link_to(event.eventable.title, url)
 - poll_type = @poll ? t("poll_types.#{@poll.poll_type}") : nil
 - with_title = local_assigns.fetch(:with_title, false) ? "with_title" : "without_title"
-- with_author = (@recipient.id == event.eventable.author_id && I18n.exists?("notifications.#{with_title}.#{@event_key}_author")) ? "_author" : ''
+- with_author = (event.eventable.respond_to?(:author_id) && @recipient.id == event.eventable.author_id && I18n.exists?("notifications.#{with_title}.#{@event_key}_author")) ? "_author" : ''
 - key = "notifications.#{with_title}.#{@event_key}#{with_author}"
 
 .rounded.mb-4{style: 'border: 1px solid #eee'}

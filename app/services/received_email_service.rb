@@ -41,15 +41,17 @@ class ReceivedEmailService
       end
 
       if group = Group.find_by(handle: email.route_path)
-        unless address_is_blocked(email, group)
+        if !address_is_blocked(email, group)
           email.update(group_id: group.id)
-        end
 
-        if actor = actor_from_email_and_group(email, group)
-          discussion = DiscussionService.create(
-            discussion: Discussion.new(discussion_params(email)),
-            actor: actor)
-          email.update(released: true)
+          if actor = actor_from_email_and_group(email, group)
+            discussion = DiscussionService.create(
+              discussion: Discussion.new(discussion_params(email)),
+              actor: actor)
+            email.update(released: true)
+          else
+            Events::UnknownSender.publish!(email)
+          end
         end
       end
     end

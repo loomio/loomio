@@ -1,5 +1,5 @@
 <script lang="js">
-import Records        from '@/shared/services/records';
+import Records  from '@/shared/services/records';
 import EventBus from "@/shared/services/event_bus";
 import Flash from "@/shared/services/flash";
 
@@ -128,8 +128,10 @@ export default
             v-list-item-title
               span {{alias.email}}
             v-list-item-subtitle
-              span(v-if="alias.user_id") {{userById(alias.user_id).nameWithTitle(group)}}
+              span(v-if="alias.user_id" v-t="{path: 'email_to_group.belongs_to_name', args: {name: userById(alias.user_id).name}}")
               span(v-if="!alias.user_id" v-t="'membership_requests_page.ignore'")
+              mid-dot
+              time-ago(:date='alias.created_at')
 
           v-list-item-action
             v-btn.group-emails-panel__delete(text icon @click='destroyAlias(alias)' title="destroy")

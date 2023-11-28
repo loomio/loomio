@@ -61,7 +61,7 @@ v-card
     v-list(v-for="user in users")
       v-list-item(@click="selectedUser = user") {{user.name}}
 
-  .pa-4(v-if="selectedUser")
+  .pa-4.text--secondary(v-if="selectedUser")
     p(v-t="{path: 'email_to_group.is_name_the_owner_of_email', args: {name: selectedUser.name, email: email}}")
     p(v-t="{path: 'email_to_group.all_email_will_belong_to_name', args: {name: selectedUser.name, email: email}}")
   v-card-actions(v-if="selectedUser")
