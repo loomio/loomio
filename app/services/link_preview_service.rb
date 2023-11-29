@@ -35,7 +35,7 @@ module LinkPreviewService
   def self.fetch_urls(urls)
     previews = []
     threads = []
-    urls.reject {|u| BlockedDomain.where(name: URI(u).host).exists? }.each do |u|
+    Array(urls).compact.reject {|u| BlockedDomain.where(name: URI(u).host).exists? }.each do |u|
       # spawn a new thread for each url
       threads << Thread.new do
         previews.push fetch(u)
