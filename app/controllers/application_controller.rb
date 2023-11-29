@@ -166,17 +166,17 @@ class ApplicationController < ActionController::Base
     render file: Rails.root.join('public/blient/index.html'), layout: false, status: status
   end
 
-  def redirect_to(url, opts = {})
-    return super unless url.is_a? String # GK: for now this override only covers cases where a string has been passed in, so it does not cover cases of a Hash or a Record being passed in
-    host = URI(url).host
-    if ENV['USE_VUE'] && Rails.env.development? && host == "localhost"
-      path = URI(url).path
-      query = URI(url).query ? "?#{URI(url).query}" : ""
-      super "http://localhost:8080#{path}#{query}"
-    else
-      super
-    end
-  end
+  # def redirect_to(url, opts = {})
+  #   return super unless url.is_a? String # GK: for now this override only covers cases where a string has been passed in, so it does not cover cases of a Hash or a Record being passed in
+  #   host = URI(url).host
+  #   if ENV['USE_VUE'] && Rails.env.development? && host == "localhost"
+  #     path = URI(url).path
+  #     query = URI(url).query ? "?#{URI(url).query}" : ""
+  #     super "http://localhost:8080#{path}#{query}"
+  #   else
+  #     super
+  #   end
+  # end
 
   def is_old_browser?
     browser.ie? || (browser.safari? && browser.version.to_i < 12)

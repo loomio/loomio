@@ -4,14 +4,14 @@ class MembershipsController < ApplicationController
   def join
     group = Group.published.find_by!(token: params.require(:token))
     session[:pending_group_token] = group.token
-    redirect_to back_to_url || polymorphic_url(group)
+    redirect_to back_to_url || polymorphic_url(group), allow_other_host: true
   end
 
   def show
     session[:pending_membership_token] = membership.token
-    redirect_to back_to_url || polymorphic_url(Group.find_by(id: membership.group_id))
+    redirect_to back_to_url || polymorphic_url(Group.find_by(id: membership.group_id)), allow_other_host: true
   rescue ActiveRecord::RecordNotFound
-    redirect_to join_url(Group.find_by!(token: params[:token]))
+    redirect_to join_url(Group.find_by!(token: params[:token])), allow_other_host: true
   end
 
   def consume

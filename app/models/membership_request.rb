@@ -15,7 +15,7 @@ class MembershipRequest < ApplicationRecord
   belongs_to :responder, class_name: 'User'
   has_many :admins, through: :group
 
-  validates :introduction, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :introduction, length: { maximum: AppConfig.settings[:max_message_length] }
 
   scope :dangling, -> { joins('left join groups on groups.id = group_id').where('groups.id is null') }
   scope :pending, -> { where(response: nil).order('created_at DESC') }

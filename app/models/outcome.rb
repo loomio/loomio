@@ -69,7 +69,7 @@ class Outcome < ApplicationRecord
 
   has_paper_trail only: [:statement, :statement_format, :author_id, :review_on]
   define_counter_cache(:versions_count) { |d| d.versions.count }
-  validates :statement, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :statement, presence: true, length: { maximum: AppConfig.settings[:max_message_length] }
   validate :has_valid_poll_option
 
   scope :review_due_not_published, -> (due_date) do
