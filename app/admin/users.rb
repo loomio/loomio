@@ -78,7 +78,7 @@ ActiveAdmin.register User do
   end
 
   member_action :deactivate, method: :put do
-    DeactivateUserWorker.perform_async(params[:id])
+    DeactivateUserWorker.perform_async(params[:id], current_user.id)
     redirect_to admin_users_path, :notice => "User scheduled for deactivation immediately"
   end
 
