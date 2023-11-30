@@ -111,7 +111,7 @@ export default {
 
   strand-title(:discussion="discussion")
 
-  .mb-4
+  .mb-4.text-body-2
     user-avatar.mr-2(:user='author', :size='36')
     router-link.text--secondary(:to="urlFor(author)") {{authorName}}
     mid-dot

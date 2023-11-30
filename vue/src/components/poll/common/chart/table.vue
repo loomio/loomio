@@ -56,7 +56,7 @@ export default {
     thead
       tr
         template(v-for="col in poll.resultColumns")
-          th.text-left(v-if="col == 'chart'")
+          th.text-left(v-if="col == 'chart'" v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
           th.text-left(v-if="col == 'name'" v-t='"common.option"')
           th.text-right(v-if="col == 'target_percent'" v-t='"poll_count_form.pct_of_target"')
           th.text-right(v-if="col == 'score_percent'" v-t='"poll_ranked_choice_form.pct_of_points"')

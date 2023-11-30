@@ -99,23 +99,20 @@ v-app.app-is-booted
 </template>
 
 <style lang="sass">
-@import '@/css/variables.scss'
 @import '@/css/utilities.scss'
 @import '@/css/roboto.css'
 @import '@/css/thumbicons.css'
 @import '@/css/print.scss'
 
-
-// .strand-page [id]::before
-//   content: ''
-//   display: block
-//   height:      72px
-//   margin-top: -72px
-//   visibility: hidden
-
-.v-application .text-body-2
-  font-size: 15px !important
+.v-application .text-body-3
+  font-size: 0.9375rem !important
   letter-spacing: normal !important
+  font-weight: 400
+
+.v-application .text-body-4
+  font-size: 1rem !important
+  letter-spacing: normal !important
+  font-weight: 400
 
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
