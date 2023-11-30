@@ -137,7 +137,7 @@ export default
 .group-invitation-form
   .px-4.pt-4
     .d-flex.justify-space-between
-      h1.headline(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
+      h1.text-h5(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
       dismiss-modal-button
 
     div.py-4(v-if="cannotInvite")
@@ -156,8 +156,8 @@ export default
         @new-query="newQuery"
         @new-recipients="newRecipients")
       div(v-if="subscription.max_members")
-        p.caption(v-if="!tooManyInvitations" v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
-        p.caption(v-if="tooManyInvitations" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
+        p.text-caption(v-if="!tooManyInvitations" v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
+        p.text-caption(v-if="tooManyInvitations" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
       div.mb-4(v-if="invitableGroups.length > 1")
         label.lmo-label(v-t="'announcement.select_groups'")
         //- v-label Select groups

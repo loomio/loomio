@@ -97,7 +97,7 @@ export default {
 v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='outcome.processing')
   v-card-title
-    h1.headline
+    h1.text-h5
       span(v-if='outcome.isNew()' v-t="'poll_common_outcome_form.new_title'")
       span(v-if='!outcome.isNew()' v-t="'poll_common_outcome_form.update_title'")
     v-spacer

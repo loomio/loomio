@@ -65,7 +65,7 @@ export default {
 <template lang="pug">
 v-main
   v-container.threads-page.max-width-1024.px-0.px-sm-3
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'sidebar.invite_only_threads'")
+    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'sidebar.invite_only_threads'")
     v-layout.mb-3
       //- v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
 

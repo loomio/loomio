@@ -17,7 +17,7 @@ export default {
 <template lang="pug">
 v-footer
   v-layout(justify-space-around)
-    .powered-by.caption
+    .powered-by.text-caption
       a(:href="poweredUrl" v-t="'powered_by.powered_by_loomio'" target="_blank")
       span(v-if="privacyUrl")
         | &nbsp;

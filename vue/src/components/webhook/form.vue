@@ -38,7 +38,7 @@ export default {
 v-card.webhook-form
   form(@submit.prevent="submit")
     v-card-title
-      h1.headline(tabindex="-1" v-t="!webhook.id ? 'webhook.add_api_key' : 'webhook.edit_api_key'")
+      h1.text-h5(tabindex="-1" v-t="!webhook.id ? 'webhook.add_api_key' : 'webhook.edit_api_key'")
       v-spacer
       dismiss-modal-button(:close="close")
     v-card-text.install-webhook-form

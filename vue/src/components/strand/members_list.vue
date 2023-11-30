@@ -150,7 +150,7 @@ export default {
 .strand-members-list
   .px-4.pt-4
     .d-flex.justify-space-between
-      h1.headline(v-t="'announcement.form.discussion_announced.title'")
+      h1.text-h5(v-t="'announcement.form.discussion_announced.title'")
       dismiss-modal-button
 
     recipients-autocomplete(

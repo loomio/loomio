@@ -54,8 +54,8 @@ export default {
 <template lang="pug">
 v-card.tags-modal
   v-card-title
-    h1.headline(v-if="tag.id" tabindex="-1" v-t="'loomio_tags.modal_edit_title'")
-    h1.headline(v-if="!tag.id" tabindex="-1" v-t="'loomio_tags.modal_title'")
+    h1.text-h5(v-if="tag.id" tabindex="-1" v-t="'loomio_tags.modal_edit_title'")
+    h1.text-h5(v-if="!tag.id" tabindex="-1" v-t="'loomio_tags.modal_title'")
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text

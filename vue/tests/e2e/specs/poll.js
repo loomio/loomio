@@ -384,7 +384,7 @@ module.exports = {
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.escape()
-    page.expectElement('.headline')
+    page.expectElement('.text-h5')
     page.click('.poll-members-form__submit')
     page.expectText('.poll-members-form__list', 'test@example.com')
     page.click('.dismiss-modal-button')

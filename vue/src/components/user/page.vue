@@ -65,7 +65,7 @@ v-main.user-page__profile
       v-card
         v-card-title
           v-layout.align-center.justify-center
-            h1.headline {{user.name}}
+            h1.text-h5 {{user.name}}
         v-card-text
           v-layout.user-page__info.mb-5.align-center.justify-center(column)
             user-avatar.mb-5(:user='user' :size='192' :no-link="true")

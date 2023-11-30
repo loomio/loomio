@@ -71,7 +71,7 @@ export default {
 <template lang="pug">
 v-card.chatbot-list
   v-card-title
-    h1.headline(tabindex="-1") Chatbots
+    h1.text-h5(tabindex="-1") Chatbots
     v-spacer
     dismiss-modal-button
   v-card-text

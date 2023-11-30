@@ -459,7 +459,7 @@ export default {
     v-radio.poll-common-settings__specified-voters-only(
       :value="true"
       :label="$t('poll_common_settings.specified_voters_only_true')")
-  .caption.mt-n4.text--secondary.text-caption(
+  .text-caption.mt-n4.text--secondary.text-caption(
     v-if="poll.specifiedVotersOnly"
     v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
 

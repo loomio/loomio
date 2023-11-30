@@ -27,7 +27,7 @@ export default {
 <template lang="pug">
 v-card
   v-card-title
-    h1.headline(tabindex="-1" v-t="'discussion_last_seen_by.title'")
+    h1.text-h5(tabindex="-1" v-t="'discussion_last_seen_by.title'")
     v-spacer
     dismiss-modal-button
   v-layout(justify-center)

@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template lang="pug">
-.strand-other-kind
+.strand-other-kind.text-body-2
   //- | hi {{event.model().poll().title}}
   span.text--secondary(v-html='headline')
   mid-dot.text--secondary

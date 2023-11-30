@@ -31,7 +31,7 @@ export default {
 
 <template lang="pug">
 .poll-common-stance-choices.pb-2.pt-2(v-if="poll.pollType != 'question' && !poll.hasOptionIcon()")
-  span.caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
+  span.text-caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
   template(v-else)
     template(v-if="!datesAsOptions")
       .poll-common-stance-choice.text-truncate(

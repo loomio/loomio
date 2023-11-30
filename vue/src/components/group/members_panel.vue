@@ -239,20 +239,20 @@ export default
                   span(v-if="membership.acceptedAt && membership.userEmail") <{{membership.userEmail}}>
                   span(v-else) {{membership.userEmail}}
                 space
-                span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
+                span.text-caption(v-if="$route.query.subgroups") {{membership.group().name}}
                 space
-                span.title.caption {{membership.user().title(group)}}
+                span.text-caption {{membership.user().title(group)}}
                 space
                 v-chip(v-if="membership.user().bot" x-small outlined label v-t="'members_panel.bot'")
                 span(v-if="membership.groupId == group.id && membership.admin")
                   space
                   v-chip(x-small outlined label v-t="'members_panel.admin'")
                   space
-                span.caption.text--secondary(v-if="membership.acceptedAt")
+                span.text-caption.text--secondary(v-if="membership.acceptedAt")
                   span(v-t="'common.action.joined'")
                   space
                   time-ago(:date="membership.acceptedAt")
-                span.caption.text--secondary(v-if="!membership.acceptedAt")
+                span.text-caption.text--secondary(v-if="!membership.acceptedAt")
                   template(v-if="membership.inviterId")
                     span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
                     space
