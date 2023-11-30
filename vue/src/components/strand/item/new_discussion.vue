@@ -132,7 +132,6 @@ export default {
   strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
 </template>
 <style lang="sass">
-@import '@/css/variables'
 .context-panel__heading-pin
   margin-left: 4px
 
@@ -145,10 +144,6 @@ export default {
   position: relative
   font-size: 14px
   top: 2px
-
-.context-panel__details
-  color: $grey-on-white
-  align-items: center
 
 .context-panel__description
   > p:last-of-type
