@@ -26,7 +26,7 @@ v-card.auth-inactive.text-center
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")
   v-sheet.mx-4.pb-4
-    p.title {{user.email}}
+    p.text-h6 {{user.email}}
     p(v-t="'devise.failure.inactive'")
     v-btn(to="/contact" v-t="{path: 'user_dropdown.contact_site_name', args: {site_name: siteName}}")
 </template>
