@@ -44,7 +44,7 @@ h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
     slot(name="headline")
       span.strand-item__headline.text--secondary(v-html='headline')
     mid-dot.text--secondary
-    router-link.text--secondary.text-body-3(:to='link')
+    router-link.text--secondary.text-body-2(:to='link')
       time-ago(:date='datetime')
     mid-dot(v-if="event.pinned")
     common-icon(v-if="event.pinned" name="mdi-pin-outline")
