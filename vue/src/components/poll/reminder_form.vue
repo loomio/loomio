@@ -70,7 +70,7 @@ export default {
 .poll-remind
   .pa-4
     .d-flex.justify-space-between
-      h1.headline(v-t="'announcement.form.'+wipOrEmpty+'poll_reminder.title'")
+      h1.text-h5(v-t="'announcement.form.'+wipOrEmpty+'poll_reminder.title'")
       dismiss-modal-button
     recipients-autocomplete(
       existingOnly

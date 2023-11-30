@@ -97,7 +97,7 @@ export default {
 <template lang="pug">
 v-card.tags-modal
   v-card-title
-    h1.headline(tabindex="-1" v-t="'loomio_tags.card_title'")
+    h1.text-h5(tabindex="-1" v-t="'loomio_tags.card_title'")
     v-spacer
     dismiss-modal-button(:close="close")
 

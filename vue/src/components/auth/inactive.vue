@@ -21,7 +21,7 @@ export default {
 <template lang="pug">
 v-card.auth-inactive.text-center
   v-card-title
-    h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="'profile_page.messages.deactivated'")
+    h1.text-h5(tabindex="-1" role="status" aria-live="assertive" v-t="'profile_page.messages.deactivated'")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")

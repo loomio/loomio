@@ -115,7 +115,7 @@ v-main
       v-card
         submit-overlay(:value='user.processing')
         //- v-card-title
-        //-   h1.headline(tabindex="-1" v-t="'profile_page.edit_profile'")
+        //-   h1.text-h5(tabindex="-1" v-t="'profile_page.edit_profile'")
         v-card-text
           v-layout
             v-flex.profile-page__details

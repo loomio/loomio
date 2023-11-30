@@ -62,13 +62,13 @@ export default {
 v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   template(v-if='!allow')
     v-card-title(v-if='!allow')
-      h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.invitation_required'")
+      h1.text-h5(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.invitation_required'")
       v-spacer
       v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
         common-icon(name="mdi-close")
   template(v-else)
     v-card-title
-      h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome', args: { siteName: siteName } }")
+      h1.text-h5(tabindex="-1" role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome', args: { siteName: siteName } }")
       v-spacer
       v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
         common-icon(name="mdi-close")

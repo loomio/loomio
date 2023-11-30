@@ -55,7 +55,7 @@ export default {
 v-card.move-thread-form
   submit-overlay(:value='discussion.processing')
   v-card-title
-    h1.headline(tabindex="-1" v-t="'move_thread_form.title'")
+    h1.text-h5(tabindex="-1" v-t="'move_thread_form.title'")
     v-spacer
     dismiss-modal-button
   v-card-text

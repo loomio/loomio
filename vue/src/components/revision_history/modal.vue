@@ -63,7 +63,7 @@ export default {
 <template lang="pug">
 v-card.revision-history-modal
   v-card-title
-    h1.headline(tabindex="-1" v-t="'revision_history_modal.' + model.constructor.singular + '_header'")
+    h1.text-h5(tabindex="-1" v-t="'revision_history_modal.' + model.constructor.singular + '_header'")
     v-spacer
     dismiss-modal-button(:close="close")
   .revision-history-modal__body.pa-4

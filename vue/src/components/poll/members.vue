@@ -161,9 +161,9 @@ export default {
   .px-4.pt-4
     .d-flex.justify-space-between
       //- template(v-if="poll.notifyRecipients")
-      h1.headline(v-t="'announcement.form.'+wipOrEmpty+'poll_announced.title'")
-      //- h1.headline(v-if="!poll.closingAt" v-t="'announcement.form.wip_poll_announced.title'")
-      //- h1.headline(v-else v-t="'poll_common_form.add_voters'")
+      h1.text-h5(v-t="'announcement.form.'+wipOrEmpty+'poll_announced.title'")
+      //- h1.text-h5(v-if="!poll.closingAt" v-t="'announcement.form.wip_poll_announced.title'")
+      //- h1.text-h5(v-else v-t="'poll_common_form.add_voters'")
       dismiss-modal-button
     recipients-autocomplete(
       :label="poll.notifyRecipients ? $t('announcement.form.'+wipOrEmpty+'poll_announced.helptext') : $t('poll_common_form.who_may_vote', {poll_type: poll.translatedPollType()})"

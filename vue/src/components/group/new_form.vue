@@ -167,8 +167,8 @@ v-card.group-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(tabindex="-1" v-if='group.parentId' v-t="'group_form.new_subgroup'")
-        h1.headline(tabindex="-1" v-if='!group.parentId' v-t="'group_form.new_group'")
+        h1.text-h5(tabindex="-1" v-if='group.parentId' v-t="'group_form.new_subgroup'")
+        h1.text-h5(tabindex="-1" v-if='!group.parentId' v-t="'group_form.new_group'")
       dismiss-modal-button(v-if="group.parentId" :model="group")
   .px-4
     p.text--secondary(v-if='!group.parentId' v-t="'group_form.new_group_explainer'")

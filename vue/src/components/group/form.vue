@@ -164,8 +164,8 @@ v-card.group-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
-        h1.headline(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
+        h1.text-h5(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
+        h1.text-h5(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
       dismiss-modal-button(:model="group")
   //- v-card-text
   v-tabs(fixed-tabs)

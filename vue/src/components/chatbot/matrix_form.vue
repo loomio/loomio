@@ -57,7 +57,7 @@ export default {
 <template lang="pug">
 v-card.chatbot-matrix-form
   v-card-title
-    h1.headline(tabindex="-1" v-t="'chatbot.chatbot'")
+    h1.text-h5(tabindex="-1" v-t="'chatbot.chatbot'")
     v-spacer
     dismiss-modal-button
   v-card-text

@@ -47,7 +47,7 @@ export default {
 <template lang="pug">
 v-card.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-card-title
-    h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.check_your_email'")
+    h1.text-h5(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.check_your_email'")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")
@@ -61,7 +61,7 @@ v-card.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     p.mb-4(v-if='user.sentPasswordLink', v-t="{ path: 'auth_form.password_link_sent', args: { email: user.email }}")
     .auth-complete__code-input.mb-4(v-if='user.sentLoginLink && attempts < 3')
       .auth-complete__code.mx-auto(style="max-width: 256px")
-        v-text-field.headline.lmo-primary-form-input(
+        v-text-field.text-h5.lmo-primary-form-input(
           outlined
           label="Code"
           :placeholder="$t('auth_form.code')"

@@ -26,7 +26,7 @@ export default {
 v-card.poll-common-edit-vote-modal
   submit-overlay(:value="stance.processing")
   v-card-title
-    h1.headline
+    h1.text-h5
       span(v-if="!stance.castAt", v-t="'poll_common.have_your_say'")
       span(v-if="stance.castAt", v-t="'poll_common.change_your_response'")
     v-spacer

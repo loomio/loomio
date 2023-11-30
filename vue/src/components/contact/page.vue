@@ -87,5 +87,5 @@ v-main
 
     v-card.contact-form__success(v-show='submitted')
       v-card-title
-        h1.headline(tabindex="-1" v-t="$t('contact_message_form.success_via_email', { name: message.name })")
+        h1.text-h5(tabindex="-1" v-t="$t('contact_message_form.success_via_email', { name: message.name })")
 </template>

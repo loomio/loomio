@@ -97,7 +97,7 @@ v-card.change-volume-form
   form
     submit-overlay(:value='model.processing')
     v-card-title
-      h1.headline.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: title } }")
+      h1.text-h5.change-volume-form__title(v-t="{ path: translateKey() + '.title', args: { title: title } }")
       v-spacer
       dismiss-modal-button(v-if="showClose")
     v-card-text

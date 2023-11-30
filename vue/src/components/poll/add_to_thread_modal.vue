@@ -73,7 +73,7 @@ export default {
 v-card
   submit-overlay(:value='poll.processing')
   v-card-title
-    h1.headline(tabindex="-1" v-t="'action_dock.add_poll_to_thread'")
+    h1.text-h5(tabindex="-1" v-t="'action_dock.add_poll_to_thread'")
     v-spacer
     dismiss-modal-button(aria-hidden='true')
   v-card-text

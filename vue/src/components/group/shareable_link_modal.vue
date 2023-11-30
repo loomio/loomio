@@ -62,7 +62,7 @@ v-dialog(v-model='dialog' max-width="600px")
     v-btn.mr-2(v-on="on" v-bind="attrs" color="primary" outlined v-t="'members_panel.sharable_link'")
   v-card.shareable-link-modal
     v-card-title
-      h1.headline(tabindex="-1" v-t="'invitation_form.share_group'")
+      h1.text-h5(tabindex="-1" v-t="'invitation_form.share_group'")
       v-spacer
       v-btn.dismiss-modal-button(icon small @click='dialog = false')
         common-icon(name="mdi-window-close")

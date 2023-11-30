@@ -48,7 +48,7 @@ export default {
 <template lang="pug">
 v-card
   v-card-title
-    h1.headline Merge accounts
+    h1.text-h5 Merge accounts
     v-spacer
     dismiss-modal-button
   v-card-text

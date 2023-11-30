@@ -77,7 +77,7 @@ v-card.change-picture-form
   v-overlay(:value="uploading")
     v-progress-circular(size="64" :value="progress")
   v-card-title
-    h1.headline(tabindex="-1" v-t="'change_picture_form.title'")
+    h1.text-h5(tabindex="-1" v-t="'change_picture_form.title'")
     v-spacer
     dismiss-modal-button
   v-card-text

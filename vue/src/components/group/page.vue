@@ -114,7 +114,7 @@ v-main
         height="48"
         width="48" 
         eager)
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
+    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
         space

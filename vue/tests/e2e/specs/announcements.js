@@ -18,7 +18,7 @@ module.exports = {
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.expectElement('.headline')
+    page.expectElement('.text-h5')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
   },
@@ -55,7 +55,7 @@ module.exports = {
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.escape()
-    page.expectElement('.headline')
+    page.expectElement('.text-h5')
     page.click('.strand-members-list__submit')
     page.expectText('.strand-members-list', 'test@example.com')
     page.expectFlash('1 notifications sent')
@@ -80,7 +80,7 @@ module.exports = {
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.escape()
-    page.expectElement('.headline')
+    page.expectElement('.text-h5')
     page.click('.poll-members-form__submit')
     page.expectFlash('1 notifications sent')
   },

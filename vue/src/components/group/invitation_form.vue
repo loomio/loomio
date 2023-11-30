@@ -137,7 +137,7 @@ export default
 .group-invitation-form
   .px-4.pt-4
     .d-flex.justify-space-between
-      h1.headline(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
+      h1.text-h5(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
       dismiss-modal-button
 
     div.py-4(v-if="cannotInvite")
