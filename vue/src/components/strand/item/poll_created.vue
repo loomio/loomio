@@ -61,7 +61,7 @@ section.strand-item.poll-created
     .poll-common-card__title.text-h6.pb-1(tabindex="-1")
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title", :model='poll', field='title')
-  .pt-2(v-if="!collapsed")
+  div(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
     .poll-common-details-panel__started-by.text--secondary.text-body-2.mb-4
