@@ -121,7 +121,7 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
         :style="buttonStyleFor(choice, i)"
         icon
       )
-        v-avatar(:size="36")
+        v-avatar(:size="32")
           img.poll-common-form__icon(:src="imgForScore(i)")
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')

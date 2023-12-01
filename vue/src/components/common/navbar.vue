@@ -100,7 +100,7 @@ export default {
 <template lang="pug">
 v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
   v-btn.navbar__sidenav-toggle(icon @click="toggleSidebar()" :aria-label="$t(sidebarOpen ? 'navbar.close_sidebar' : 'navbar.open_sidebar')")
-    v-avatar(tile size="36px")
+    v-avatar(tile size="32px")
       common-icon(name="mdi-menu")
   v-toolbar-title(v-if="showTitle" @click="$vuetify.goTo('head', {duration: 0})") {{title}}
   v-spacer
