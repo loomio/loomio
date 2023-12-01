@@ -50,7 +50,7 @@
     "@tiptap/extension-text-style": "2.1.12",
     "@tiptap/extension-typography": "2.1.12",
     "@tiptap/extension-underline": "2.1.12",
-    "@tiptap/pm": "2.1.12",
+    "@tiptap/pm": "2.1.13",
     "@tiptap/suggestion": "2.1.12",
     "@tiptap/vue-2": "2.1.12",
     "activestorage": "^5.2.8",
