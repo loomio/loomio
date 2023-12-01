@@ -10,7 +10,7 @@ class DiscussionTemplate < ApplicationRecord
 
   update_counter_cache :group, :discussion_templates_count
 
-  validates :description, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :description, length: { maximum: AppConfig.settings[:max_message_length] }
   
   validates :process_name, presence: true
   # validates :process_subtitle, presence: true

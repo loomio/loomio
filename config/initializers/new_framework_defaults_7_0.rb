@@ -51,11 +51,10 @@
 # The ActiveStorage video previewer will now use scene change detection to generate
 # better preview images (rather than the previous default of using the first frame
 # of the video).
-# Rails.application.config.active_storage.video_preview_arguments =
-#   "-vf 'select=eq(n\\,0)+eq(key\\,1)+gt(scene\\,0.015),loop=loop=-1:size=2,trim=start_frame=1' -frames:v 1 -f image2"
+Rails.application.config.active_storage.video_preview_arguments = "-vf 'select=eq(n\\,0)+eq(key\\,1)+gt(scene\\,0.015),loop=loop=-1:size=2,trim=start_frame=1' -frames:v 1 -f image2"
 
 # Automatically infer `inverse_of` for associations with a scope.
-# Rails.application.config.active_record.automatic_scope_inversing = true
+Rails.application.config.active_record.automatic_scope_inversing = true
 
 # Raise when running tests if fixtures contained foreign key violations
 # Rails.application.config.active_record.verify_foreign_keys_for_fixtures = true
@@ -66,14 +65,7 @@
 # Rails.application.config.active_record.partial_inserts = false
 
 # Protect from open redirect attacks in `redirect_back_or_to` and `redirect_to`.
-# Rails.application.config.action_controller.raise_on_open_redirects = true
-
-# Change the variant processor for Active Storage.
-# Changing this default means updating all places in your code that
-# generate variants to use image processing macros and ruby-vips
-# operations. See the upgrading guide for detail on the changes required.
-# The `:mini_magick` option is not deprecated; it's fine to keep using it.
-# Rails.application.config.active_storage.variant_processor = :vips
+Rails.application.config.action_controller.raise_on_open_redirects = true
 
 # Enable parameter wrapping for JSON.
 # Previously this was set in an initializer. It's fine to keep using that initializer if you've customized it.
@@ -97,7 +89,6 @@
 #   "Referrer-Policy" => "strict-origin-when-cross-origin"
 # }
 
-
 # ** Please read carefully, this must be configured in config/application.rb **
 # Change the format of the cache entry.
 # Changing this default means that all new cache entries added to the cache
@@ -105,31 +96,4 @@
 # Only change this value after your application is fully deployed to Rails 7.0
 # and you have no plans to rollback.
 # When you're ready to change format, add this to `config/application.rb` (NOT this file):
-#  config.active_support.cache_format_version = 7.0
-
-
-# Cookie serializer: 2 options
-# 
-# If you're upgrading and haven't set `cookies_serializer` previously, your cookie serializer
-# is `:marshal`. The default for new apps is `:json`.
-#
-# Rails.application.config.action_dispatch.cookies_serializer = :json
-#
-#
-# To migrate an existing application to the `:json` serializer, use the `:hybrid` option.
-# 
-# Rails transparently deserializes existing (Marshal-serialized) cookies on read and
-# re-writes them in the JSON format.
-# 
-# It is fine to use `:hybrid` long term; you should do that until you're confident *all* your cookies
-# have been converted to JSON. To keep using `:hybrid` long term, move this config to its own
-# initializer or to `config/application.rb`.
-#
-# Rails.application.config.action_dispatch.cookies_serializer = :hybrid
-#
-#
-# If your cookies can't yet be serialized to JSON, keep using `:marshal` for backward-compatibility.
-#
-# If you have configured the serializer elsewhere, you can remove this section of the file.
-# 
-# See https://guides.rubyonrails.org/action_controller_overview.html#cookies for more information.
+Rails.application.config.active_support.cache_format_version = 7.0

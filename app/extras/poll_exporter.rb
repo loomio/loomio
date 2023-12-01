@@ -1,6 +1,10 @@
 class PollExporter
-  include Routing
-
+  include Rails.application.routes.url_helpers
+  
+  def default_url_options
+    ActionMailer::Base.default_url_options
+  end
+  
   def initialize(poll)
     @poll = poll
   end

@@ -44,7 +44,7 @@ module HasRichText
         end
         after_save :"parse_and_update_tasks_#{field}!"
 
-        validates field, {length: {maximum: Rails.application.secrets.max_message_length}}
+        validates field, {length: {maximum: AppConfig.settings[:max_message_length]}}
         validates_inclusion_of :"#{field}_format", in: ['html', 'md']
         if respond_to?(:after_discard)
           after_discard do

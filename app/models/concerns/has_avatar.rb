@@ -1,6 +1,5 @@
 module HasAvatar
   include AvatarInitials
-  include Routing
   extend ActiveSupport::Concern
 
   included do

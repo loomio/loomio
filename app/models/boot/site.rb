@@ -1,7 +1,7 @@
 module Boot
   class Site
     include LocalesHelper
-    include Routing
+    # include Routing
 
     def payload
       @payload ||= {

@@ -64,7 +64,7 @@ class Discussion < ApplicationRecord
 
   validates_presence_of :title, :group, :author
   validates :title, length: { maximum: 150 }
-  validates :description, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :description, length: { maximum: AppConfig.settings[:max_message_length] }
   validate :privacy_is_permitted_by_group
 
   is_mentionable  on: :description

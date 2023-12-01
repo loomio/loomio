@@ -32,6 +32,12 @@ class AppConfig
     doctypes.detect { |type| type['name'] == 'image' }['regex']
   end
 
+  def self.settings
+    {
+      max_message_length: ENV.fetch('LMO_MAX_MESSAGE_LENGTH', 100000)
+    }
+  end
+
   def self.theme
 
     brand_colors = {

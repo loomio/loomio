@@ -19,7 +19,7 @@ end
 
 module Loomio
   class Application < Rails::Application
-    config.load_defaults 6.0
+    config.load_defaults 6.1
     config.middleware.use Rack::Deflater
     config.middleware.use Rack::Attack
     config.active_job.queue_adapter = :sidekiq
@@ -58,9 +58,8 @@ module Loomio
     config.assets.version = '1.4'
 
     # required for heroku
-    config.assets.initialize_on_precompile = false
-
-    config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
+    # config.assets.initialize_on_precompile = false
+    # config.action_mailer.preview_paths = "#{Rails.root}/spec/mailers/previews"
 
     config.active_storage.variant_processor = :vips
 

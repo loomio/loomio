@@ -15,7 +15,7 @@ class PollTemplate < ApplicationRecord
   update_counter_cache :group, :poll_templates_count
 
   validates :poll_type, inclusion: { in: AppConfig.poll_types.keys }
-  validates :details, length: { maximum: Rails.application.secrets.max_message_length }
+  validates :details, length: { maximum: AppConfig.settings[:max_message_length] }
   validates :process_name, presence: true
   validates :process_subtitle, presence: true
   validates :default_duration_in_days, presence: true

@@ -1,5 +1,10 @@
 class Identities::Saml < Identities::Base
-  include Routing
+  include Rails.application.routes.url_helpers
+  
+  def default_url_options
+    ActionMailer::Base.default_url_options
+  end
+
   set_identity_type :saml
   attr_accessor :response
 

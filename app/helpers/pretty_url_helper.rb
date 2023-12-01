@@ -1,5 +1,9 @@
 module PrettyUrlHelper
-  include Routing
+  include Rails.application.routes.url_helpers
+  
+  def default_url_options
+    ActionMailer::Base.default_url_options
+  end
 
   def join_url(model, opts = {})
     super opts.merge(model: model.class.to_s.underscore, token: model.group.token)

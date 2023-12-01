@@ -62,7 +62,8 @@ class Comment < ApplicationRecord
   validate :parent_comment_belongs_to_same_discussion
   validate :has_body_or_attachment
 
-  alias_attribute :author, :user
+  alias_method :author, :user
+  alias_method :author=, :user=
   alias_attribute :author_id, :user_id
 
   scope :dangling, -> { joins('left join discussions on discussion_id = discussions.id').where('discussion_id is not null and discussions.id is null') }
