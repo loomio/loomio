@@ -90,15 +90,16 @@ div
             common-icon(v-else name="mdi-format-vertical-align-top")
 
       a.link-preview-link(:href="preview.url" target="_blank" rel="nofollow ugc noreferrer noopener")
-        div.ml-4
-        .link-preview__image(v-if="preview.image" :style="{'background-image': 'url('+preview.image+')', 'background-size': (preview.fit || 'contain'), 'background-position': (preview.align || 'center')}")
-        v-card-title.text--secondary
-          common-icon.mr-1(name="mdi-open-in-new")
-          | {{preview.title}}
-        v-card-subtitle
-          span(v-if="doctype.name != 'other'" v-t="'doctypes.'+doctype.name")
-          span.link-preview__hostname(v-else v-html="preview.hostname")
-        v-card-text.text--secondary(v-if="preview.description") {{preview.description}}
+        div.d-sm-flex
+          .link-preview__image.ml-sm-4(v-if="preview.image" style="min-width: 128px" :style="{'background-image': 'url('+preview.image+')', 'background-size': (preview.fit || 'contain'), 'background-position': (preview.align || 'center')}")
+          div
+            v-card-title.text--secondary
+              common-icon.mr-1(name="mdi-open-in-new")
+              span(v-html="preview.title")
+            v-card-subtitle
+              span(v-if="doctype.name != 'other'" v-t="'doctypes.'+doctype.name")
+              span.link-preview__hostname(v-else v-html="preview.hostname")
+            v-card-text.text--secondary(v-if="preview.description" v-html="preview.description")
 </template>
 
 <style lang="sass">

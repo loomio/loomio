@@ -23,8 +23,8 @@ module LinkPreviewService
              doc.css('img[itemprop="image"]').attr('src')&.text,
              doc.css('link[rel="image_src"]').attr('href')&.text].reject(&:blank?).first
 
-    {title: title,
-     description: description,
+    {title: String(title).truncate(240),
+     description: String(description).truncate(240),
      image: image,
      url: url,
      fit: 'contain',
