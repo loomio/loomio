@@ -127,7 +127,7 @@ export default {
           template(v-else)
             user-avatar(
               :user="obj.event.actor()"
-              :size="(obj.event.depth > 1) ? 28 : 36"
+              :size="(obj.event.depth > 1) ? 28 : 32"
               no-link
             )
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
