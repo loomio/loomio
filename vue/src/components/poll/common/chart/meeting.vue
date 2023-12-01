@@ -62,8 +62,8 @@ export default {
   table.poll-meeting-chart-table
     thead
       tr
-        td.text--secondary(v-if="datesAsOptions") {{currentUserTimeZone}}
-        td.pr-2.total.text--secondary(v-t="'poll_common.votes'")
+        td.text--secondary.text-body-2(v-if="datesAsOptions") {{currentUserTimeZone}}
+        td.pr-2.total.text--secondary.text-body-2(v-t="'poll_common.votes'")
         td(v-for="user in decidedVoters" :key="user.id")
           user-avatar(:user="user" :size="24")
     tbody
@@ -72,7 +72,7 @@ export default {
           poll-meeting-time(v-if="datesAsOptions" :name='option.name' :zone='zone')
           span(v-if="option.name_format == 'i18n'" v-t="option.name")
           span(v-if="option.name_format == 'none'") {{option.name}} 
-        td.total.text-right.pr-2
+        td.total.text-right.pr-2.text-body-2
           span(v-if="poll.canRespondMaybe") {{option.score/2}}
           span(v-else="poll.canRespondMaybe") {{option.score}}
         td(v-for="user in decidedVoters" :key="user.id")
