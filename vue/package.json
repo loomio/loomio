@@ -31,7 +31,7 @@
     "@tiptap/extension-history": "2.1.12",
     "@tiptap/extension-horizontal-rule": "2.1.12",
     "@tiptap/extension-image": "2.1.12",
-    "@tiptap/extension-italic": "2.1.12",
+    "@tiptap/extension-italic": "2.1.13",
     "@tiptap/extension-link": "2.1.12",
     "@tiptap/extension-list-item": "2.1.12",
     "@tiptap/extension-mention": "2.1.12",
