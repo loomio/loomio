@@ -1,10 +1,14 @@
 <script lang="js">
+import { truncate } from 'lodash-es';
+
 let doctypes = [];
 import("@/../../config/doctypes.yml").then(function(data) {
   const keys = Object.keys(data).filter(k => parseInt(k).toString() === k);
   const values = keys.map(k => data[k]);
   return doctypes = values;
 });
+
+
 
 export default {
   props: {
@@ -19,6 +23,8 @@ export default {
   data() {
     return {editing: false};
   },
+
+  methods: { truncate },
 
   computed: {
     doctype() {
@@ -98,8 +104,8 @@ div
               span(v-html="preview.title")
             v-card-subtitle
               span(v-if="doctype.name != 'other'" v-t="'doctypes.'+doctype.name")
-              span.link-preview__hostname(v-else v-html="preview.hostname")
-            v-card-text.text--secondary(v-if="preview.description" v-html="preview.description")
+              span.link-preview__hostname(v-else v-html="truncate(preview.hostname, {length: 240})")
+            v-card-text.text--secondary(v-if="preview.description" v-html="truncate(preview.description, {length: 240})")
 </template>
 
 <style lang="sass">
