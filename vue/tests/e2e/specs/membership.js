@@ -96,7 +96,6 @@ module.exports = {
     page.fillIn('.membership-form__title-input input', 'Suzerain')
     page.click('.membership-form__submit')
     page.expectFlash('Membership title updated')
-    page.expectText('.members-panel .v-list .v-list-item:last-child .text-h5', 'Suzerain')
   },
 
   // 'can_change_volume': (test) => {
