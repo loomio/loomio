@@ -54,7 +54,7 @@ v-menu.notifications(v-model="open" offset-y bottom)
     v-list(v-if="notifications.length > 0" dense)
       v-list-item.notification(:class="{'v-list-item--active': unreadIds.includes(n.id)}" v-for="n in notifications" :key="n.id" :to="n.href()")
         v-list-item-avatar
-          user-avatar(v-if="n.actor()" :user="n.actor()" :size="36")
+          user-avatar(v-if="n.actor()" :user="n.actor()")
         v-list-item-content
           v-list-item-title.notification__content
             span(v-t="{path: 'notifications.with_title.'+n.kind, args: n.args()}")

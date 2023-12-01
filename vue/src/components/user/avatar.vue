@@ -13,7 +13,7 @@ export default {
     coordinator: Boolean,
     size: {
       type: Number,
-      default: 36
+      default: 32
     },
     noLink: Boolean,
     colors: Object
