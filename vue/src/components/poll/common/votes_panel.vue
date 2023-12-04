@@ -25,7 +25,7 @@ export default {
     };
   },
 
-  created() {
+  mounted() {
     this.fetchNow();
   },
 
