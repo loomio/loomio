@@ -42,6 +42,7 @@ ActiveAdmin.register User do
     column :email_verified
     column :locale
     column :time_zone
+    column :bot
     actions
   end
 
@@ -51,6 +52,7 @@ ActiveAdmin.register User do
       f.input :email, as: :string
       f.input :username, as: :string
       f.input :is_admin
+      f.input :bot, label: 'Bot account (do not add to polls)'
     end
     f.actions
   end
@@ -61,6 +63,7 @@ ActiveAdmin.register User do
     user.email = params[:user][:email]
     user.username = params[:user][:username]
     user.is_admin = params[:user][:is_admin]
+    user.bot = params[:user][:bot]
     user.save
     redirect_to admin_users_path, :notice => "User updated"
   end
