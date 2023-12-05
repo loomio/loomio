@@ -74,19 +74,19 @@ div
   template(v-else)
     v-card.link-preview.link-preview-link.mt-3(outlined style="position: relative")
       template(v-if="remove")
-      div(style="position: relative; float: right")
-        v-btn.link-preview__btn.mr-1(style="position: relative" color="primary"
-              icon
-              outlined
-              @click="editing = true"
-              :title="$t('common.action.edit')")
-          common-icon(name="mdi-pencil")
-        v-btn.link-preview__btn.mr-1(style="position: relative" color="primary"
-              outlined
-              icon
-              @click="remove(preview.url)"
-              :title="$t('common.action.remove')")
-          common-icon(name="mdi-close")
+        div(style="position: relative; float: right")
+          v-btn.link-preview__btn.mr-1(style="position: relative" color="primary"
+                icon
+                outlined
+                @click="editing = true"
+                :title="$t('common.action.edit')")
+            common-icon(name="mdi-pencil")
+          v-btn.link-preview__btn.mr-1(style="position: relative" color="primary"
+                outlined
+                icon
+                @click="remove(preview.url)"
+                :title="$t('common.action.remove')")
+            common-icon(name="mdi-close")
 
       a.link-preview-link(:href="preview.url" target="_blank" rel="nofollow ugc noreferrer noopener")
         div.d-sm-flex
