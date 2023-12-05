@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import vue from '@vitejs/plugin-vue2'
 import envCompatible from 'vite-plugin-env-compatible';
-import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
+// import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
@@ -23,17 +23,17 @@ function LoomioVueResolver() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  css: {
-    preprocessorOptions: {
-      sass: {
-        additionalData: [
-          '@import "./src/css/variables"',
-          '@import "vuetify/src/styles/settings/_variables"',
-          '', // end with newline
-        ].join('\n'),
-      },
-    },
-  },
+  // css: {
+  //   preprocessorOptions: {
+  //     sass: {
+  //       additionalData: [
+  //         '@import "./src/css/variables"',
+  //         '@import "vuetify/src/styles/settings/_variables"',
+  //         '', // end with newline
+  //       ].join('\n'),
+  //     },
+  //   },
+  // },
   server: {
     warmup: {
       clientFiles: ['./src/app.vue'],
@@ -87,7 +87,7 @@ export default defineConfig({
         VuetifyResolver(),
       ],
     }),
-    viteCommonjs(),
+    // viteCommonjs(),
     envCompatible(),
     ViteYaml(),
   ],

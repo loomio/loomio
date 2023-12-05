@@ -58,15 +58,13 @@ export default {
 <template lang="pug">
 section.strand-item.poll-created
   v-layout(justify-space-between)
-    .poll-common-card__title.headline.pb-1(tabindex="-1")
-      //- poll-common-type-icon(:poll="poll")
-      space
+    .poll-common-card__title.text-h6.pb-1(tabindex="-1")
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title", :model='poll', field='title')
-  .pt-2(v-if="!collapsed")
+  div(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
-    .poll-common-details-panel__started-by.text--secondary.mb-4
+    .poll-common-details-panel__started-by.text--secondary.text-body-2.mb-4
       span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
       mid-dot
       poll-common-closing-at.ml-1(:poll='poll')

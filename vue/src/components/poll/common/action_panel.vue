@@ -91,7 +91,7 @@ export default
       
   template(v-else)
     .poll-common-vote-form(v-if='stance && !stance.castAt')
-      h3.title.py-3(v-t="'poll_common.have_your_say'")
+      h3.text-h6.py-3(v-t="'poll_common.have_your_say'")
 
   poll-common-directive(:class="{'pa-2': !poll.closingAt}" v-if="stance && !stance.castAt", :stance='stance' name='vote-form')
 

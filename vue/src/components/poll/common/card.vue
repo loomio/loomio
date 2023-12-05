@@ -78,7 +78,7 @@ v-sheet
       :menu-actions="menuActions"
       :actions="dockActions")
     .poll-common-card__results-shown.mt-4
-      poll-common-votes-panel(:poll='poll')
+      poll-common-votes-panel(:key="poll.id" :poll='poll')
 </template>
 <style lang="sass">
 .v-card__title .poll-common-card__title

@@ -95,13 +95,13 @@ v-main
 
     v-card.mb-4(v-if="user.deactivatedAt")
       //- v-card-title
-      //-   h1.headline(tabindex="-1" v-t="'email_settings_page.header'")
+      //-   h1.text-h5(tabindex="-1" v-t="'email_settings_page.header'")
       v-card-text
         p(v-t="'email_settings_page.account_deactivated'")
 
     v-card.mb-4(v-if="!user.deactivatedAt")
       //- v-card-title
-      //-   h1.headline(tabindex="-1" v-t="'email_settings_page.header'")
+      //-   h1.text-h5(tabindex="-1" v-t="'email_settings_page.header'")
       v-card-text
         .email-settings-page__email-settings
           .email-settings-page__global-settings
@@ -137,7 +137,7 @@ v-main
 
     v-card
       v-card-title
-        h1.headline(tabindex="-1" v-t="'email_settings_page.deactivate_header'")
+        h1.text-h5(tabindex="-1" v-t="'email_settings_page.deactivate_header'")
       v-card-text
         p(v-t="'email_settings_page.deactivate_description'")
         v-list

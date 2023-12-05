@@ -41,8 +41,8 @@ export default {
 <template lang="pug">
 v-card.poll-common-option-form
   v-card-title
-    h1.headline(v-if="edit" v-t="$t('poll_option_form.edit_option')")
-    h1.headline(v-else v-t="$t('poll_poll_form.add_option_placeholder')")
+    h1.text-h5(v-if="edit" v-t="$t('poll_option_form.edit_option')")
+    h1.text-h5(v-else v-t="$t('poll_poll_form.add_option_placeholder')")
     v-spacer
     dismiss-modal-button
   v-card-text

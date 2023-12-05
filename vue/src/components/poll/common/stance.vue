@@ -21,7 +21,7 @@ export default {
 
 <template lang="pug">
 .poll-common-stance
-  span.caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
+  span.text-caption(v-if='!stance.castAt' v-t="'poll_common_votes_panel.undecided'" )
   span(v-else)
     poll-common-stance-choices(:stance="stance")
     formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")

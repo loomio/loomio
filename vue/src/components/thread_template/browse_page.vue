@@ -53,7 +53,7 @@ export default {
     v-container.max-width-800.px-0.px-sm-3
       v-card
         v-card-title.d-flex.pr-3
-          h1.headline(tabindex="-1" v-t="'templates.template_gallery'")
+          h1.text-h5(tabindex="-1" v-t="'templates.template_gallery'")
           v-spacer
           v-btn.back-button(v-if="$route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
             common-icon(name="mdi-close")

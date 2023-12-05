@@ -40,7 +40,7 @@ export default
 v-card.membership-request-form
   submit-overlay(:value='membershipRequest.processing')
   v-card-title
-    h1.headline(tabindex="-1" v-t="'membership_request_form.heading'")
+    h1.text-h5(tabindex="-1" v-t="'membership_request_form.heading'")
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text

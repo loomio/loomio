@@ -36,7 +36,7 @@ export default {
 section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id", :event="event")
   template(v-if="eventable.castAt && !eventable.revokedAt")
     template(v-if="eventable.hasOptionIcon()")
-      .d-flex
+      .d-flex.text-body-2
         component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
         space
         space

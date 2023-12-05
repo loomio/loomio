@@ -93,8 +93,8 @@ export default {
             common-icon(name="mdi-chevron-right")
       v-card
         v-card-title.d-flex.pr-3
-          h1.headline(v-if="!showSettings" tabindex="-1" v-t="'thread_template.start_a_new_thread'")
-          h1.headline(v-if="showSettings" tabindex="-1" v-t="'thread_template.hidden_templates'")
+          h1.text-h5(v-if="!showSettings" tabindex="-1" v-t="'thread_template.start_a_new_thread'")
+          h1.text-h5(v-if="showSettings" tabindex="-1" v-t="'thread_template.hidden_templates'")
           v-spacer
           v-btn(v-if="showSettings" icon @click="showSettings = false")
             common-icon(name="mdi-close")

@@ -83,7 +83,7 @@ export default {
 
 <template lang="pug">
 section.document-list(v-if="couldHaveDocuments")
-  p.caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
+  p.text-caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
   .document-list__documents
     .attachment-list__item(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
       a.attachment-list__preview(v-if='document.isAnImage() && !hidePreview' :href='document.url' target='_blank')

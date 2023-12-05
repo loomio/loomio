@@ -47,7 +47,7 @@ h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
     router-link.text--secondary.text-body-2(:to='link')
       time-ago(:date='datetime')
     mid-dot(v-if="event.pinned")
-    common-icon(v-if="event.pinned" name="mdi-pin-outline")
+    common-icon.text--disabled(v-if="event.pinned" name="mdi-pin-outline")
 
 </template>
 <style lang="sass">

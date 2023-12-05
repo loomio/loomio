@@ -186,12 +186,12 @@ img.emoji
     margin-top: 0
 
   h1
-    font-size: 2.125rem
+    font-size: 1.75rem
     font-weight: 400
     letter-spacing: 0.015625rem
 
   h2
-    font-size: 1.5rem
+    font-size: 1.25rem
     font-weight: 400
     letter-spacing: normal
 
