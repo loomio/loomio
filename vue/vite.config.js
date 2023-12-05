@@ -1,8 +1,6 @@
 import { defineConfig } from 'vite';
 import path from 'path';
 import vue from '@vitejs/plugin-vue2'
-import envCompatible from 'vite-plugin-env-compatible';
-// import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
@@ -87,8 +85,6 @@ export default defineConfig({
         VuetifyResolver(),
       ],
     }),
-    // viteCommonjs(),
-    envCompatible(),
     ViteYaml(),
   ],
   build: {
