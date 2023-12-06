@@ -50,14 +50,10 @@ export default
       EventBus.$emit('openModal', {
         component: 'MemberEmailAliasModal',
         props: {
-          email: email.senderEmail,
+          receivedEmail: email,
           group: this.group,
-          submit: (userId) => {
-            Records.receivedEmails.remote.postMember(email.id, 'allow', {user_id: userId}).then(() => {
-              EventBus.$emit('closeModal');
-              Flash.success('email_to_group.email_released');
-              this.fetchAliases();
-            });
+          callbackFn: () => {
+            this.fetchAliases();
           }
         }
       });
@@ -104,8 +100,8 @@ export default
   h2.ma-4.headline(v-t="'email_to_group.unreleased_emails'")
   loading(v-if="!group")
   v-card.mt-4(outlined v-if="group")
-    v-alert.text-center(v-if="emails.length == 0" v-t="'email_to_group.no_emails_to_release'")
-    v-list(two-line)
+    v-alert.text-center.text--secondary(v-if="emails.length == 0" v-t="'email_to_group.no_emails_to_release'")
+    v-list(v-else two-line)
       v-list-item(v-for="email in emails" :key="email.id")
         v-list-item-content
           v-list-item-title

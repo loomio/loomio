@@ -365,6 +365,7 @@ en:
     search_activities: Search decisions
 
   email_to_group:
+    email_released: Email released and alias created
     not_available_to_trial_or_demo: This feature is not available for trial or demo groups
     review_email: Review email
     add_alias: Add alias
