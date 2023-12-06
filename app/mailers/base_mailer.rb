@@ -38,9 +38,12 @@ class BaseMailer < ActionMailer::Base
     @utm_hash = { utm_medium: 'email', utm_campaign: action_name }
   end
 
-
   def from_user_via_loomio(user)
-    "\"#{I18n.t('base_mailer.via_loomio', name: user.name, site_name: AppConfig.theme[:site_name])}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
+    if user.present?
+      "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
+    else
+      "\"#{I18n.t('base_mailer.via_loomio', name: user.name, site_name: AppConfig.theme[:site_name])}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
+    end
   end
 
   def send_single_mail(locale: , to:, subject_key:, subject_params: {}, subject_prefix: '', subject_is_title: false, **options)
