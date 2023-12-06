@@ -311,6 +311,7 @@ fr:
       align: Alignement
       hide: Cacher
       unhide: Afficher
+      confirm: Confirmer
     formatting_help:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
@@ -319,6 +320,7 @@ fr:
     visit_loomio_help: Visitez l'aide de Loomio
     admin_menu: Menu administrateur
     api_docs: Documents sur l'API
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -382,6 +384,24 @@ fr:
     new_address_generated: Nouvelle adresse e-mail à groupe générée
     generate_new_address_question: Générer une nouvelle adresse e-mail à groupe ?
     generate_new_address_warning: Toutes vos adresses e-mail à loomio existantes cesseront de fonctionner. Il n’y a pas d’annulation. Allez-y?
+    not_available_to_trial_or_demo: Cette fonctionnalité n'est pas disponible pour les groupes d'essai ou de démonstration
+    review_email: Vérifier l'e-mail
+    add_alias: Ajouter un alias
+    who_is_the_owner_of_email: Qui est le propriétaire de %{email} ?
+    is_name_the_owner_of_email: "%{name} est-il le propriétaire de %{email} ?"
+    all_email_will_belong_to_name: Tous les messages de %{email} seront attribués à %{name}
+    email_aliases: Alias et adresses ignorées
+    belongs_to_name: Appartient à %{name}
+    block_email: Bloquer l'adresse
+    no_emails_to_release: Aucun e-mail en attente de sortie
+    release_rules: Règles de publication
+    confirm_block: Bloquer cette adresse e-mail ?
+    confirm_block_body: Cet e-mail et tout autre e-mail provenant de %{sender} seront ignorés.
+    confirm_delete: Supprimer cet e-mail ?
+    confirm_delete_body: Cet e-mail sera supprimé. Les futurs e-mails de %{sender} ne seront pas affectés.
+    unreleased_emails: E-mails inédits
+    start_a_thread_by_email: Démarrer un fil de discussion par e-mail
+    forward_email_to_move_conversation: 'Astuce : déplacez une conversation par e-mail existante vers Loomio en la transférant à cette adresse.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Votre adresse e-mail pour démarrer les threads dans %{group}
   volume_levels:
@@ -652,6 +672,7 @@ fr:
       user_mentioned: "%{actor} vous a mentionné·e dans: %{title}"
       user_reminded: "%{actor} attend votre vote sur: %{title}"
       membership_resent: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
+      unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
     without_title:
       discussion_announced: "%{actor} vous a invité à la discussion"
       discussion_edited: "%{actor} a modifié le contexte de la discussion"
@@ -687,6 +708,7 @@ fr:
       user_mentioned: "%{actor} vous a mentionné"
       user_reminded: "%{actor} vous rappelle de voter"
       membership_resent: "%{actor} vous a invité à rejoindre un groupe"
+      unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
       poll_closing_soon_author: Vous voudrez peut-être rappeler aux gens de voter ou de prolonger la date limite.

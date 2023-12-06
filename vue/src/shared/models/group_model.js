@@ -273,4 +273,8 @@ export default class GroupModel extends BaseModel {
   isSubgroupOfSecretParent() {
     return this.parent() && this.parent().privacyIsSecret();
   }
+
+  isTrialOrDemo() {
+    return ['trial', 'demo'].includes(this.parentOrSelf().subscription.plan)
+  }
 };

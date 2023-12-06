@@ -218,6 +218,7 @@ sv:
       add_people: Lägg till folk
       zoom: Zoom
       align: Justera
+      confirm: Bekräfta
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
@@ -250,6 +251,7 @@ sv:
     today: i dag
     in_x_days: om %{x} dagar
     reset: Återställa
+    value: "%{value}"
   merge_accounts:
     modal:
       submit: Verifiera
@@ -517,6 +519,7 @@ sv:
       user_added_to_group: "%{actor} lade till dig i gruppen: %{title}"
       user_mentioned: "%{actor} nämnde dig i: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
+      unknown_sender: Granska e-post från okänd avsändare
     without_title:
       discussion_announced: "%{actor} bjöd in dig till en tråd"
       discussion_edited: "%{actor} redigerade trådkontexten"
@@ -552,6 +555,7 @@ sv:
       stance_created_option: "%{actor} röstade %{option}"
       user_mentioned: "%{actor} nämnde dig"
       user_reminded: "%{actor} påminner dig om att rösta"
+      unknown_sender: Granska e-post från okänd avsändare
     hints:
       poll_closing_soon: Nu är det ett bra tillfälle att rösta, ändra uppfattning eller uppmuntra andra att delta.
       poll_closing_soon_author: Du kanske vill påminna folk om att rösta eller förlänga tidsfristen.
@@ -1777,6 +1781,24 @@ sv:
     new_address_generated: Ny e-post-till-grupp-adress genererad
     generate_new_address_question: Generera ny e-post-till-grupp-adress?
     generate_new_address_warning: Alla dina befintliga e-post-till-loomio-adresser kommer att sluta fungera. Det finns ingen ångra. Varsågod?
+    not_available_to_trial_or_demo: Den här funktionen är inte tillgänglig för prov- eller demogrupper
+    review_email: Granska mejl
+    add_alias: Lägg till alias
+    who_is_the_owner_of_email: Vem är ägaren till %{email}?
+    is_name_the_owner_of_email: Är %{name} ägare till %{email}?
+    all_email_will_belong_to_name: Alla meddelanden från %{email} kommer att tillskrivas %{name}
+    email_aliases: Alias och ignorerade adresser
+    belongs_to_name: Tillhör %{name}
+    block_email: Blockera adress
+    no_emails_to_release: Inga e-postmeddelanden som väntar på release
+    release_rules: Släpp regler
+    confirm_block: Blockera den här e-postadressen?
+    confirm_block_body: Detta e-postmeddelande och eventuella ytterligare e-postmeddelanden från %{sender} kommer att ignoreras.
+    confirm_delete: Vill du ta bort det här e-postmeddelandet?
+    confirm_delete_body: Detta e-postmeddelande kommer att raderas. Eventuella framtida e-postmeddelanden från %{sender} kommer inte att påverkas.
+    unreleased_emails: E-postmeddelanden som inte har släppts
+    start_a_thread_by_email: Starta en tråd via e-post
+    forward_email_to_move_conversation: 'Tips: Flytta en befintlig e-postkonversation till Loomio genom att vidarebefordra den till den här adressen.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Din e-postadress för att starta trådar i %{group}
   thread_nav:

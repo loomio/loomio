@@ -186,6 +186,7 @@ sl:
       add_people: Dodajte osebe
       zoom: Zoom
       align: Poravnaj
+      confirm: Potrdi
     admin_menu: Administratorski meni
     api_docs: API dokumenti
     prefix_eg: npr. %{val}
@@ -233,6 +234,7 @@ sl:
     formatting_help:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila
+    value: "%{value}"
   emoji_picker:
     search: Išči
     common: Pogosto uporabljen
@@ -492,6 +494,7 @@ sl:
       user_added_to_group: "%{actor} vas je dodal v skupino: %{title}"
       user_mentioned: "%{actor} vas je omenil v: %{title}"
       user_reminded: "%{actor} vas opominja, da glasujete v: %{title}"
+      unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
     without_title:
       discussion_announced: "%{actor} vas je povabil v nit"
       discussion_edited: "%{actor} je uredil kontekst niti"
@@ -527,6 +530,7 @@ sl:
       stance_created_option: "%{actor} je glasoval %{option}"
       user_mentioned: "%{actor} vas je omenil"
       user_reminded: "%{actor} vas opominja, da glasujete"
+      unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
     hints:
       poll_closing_soon: Zdaj je pravi čas, da glasujete, si premislite ali spodbudite druge k sodelovanju.
       poll_closing_soon_author: Morda boste želeli opomniti ljudi, naj glasujejo ali podaljšati rok.
@@ -1834,6 +1838,24 @@ sl:
     new_address_generated: Ustvarjen nov e-poštni naslov za skupino
     generate_new_address_question: Želite ustvariti nov e-poštni naslov za skupino?
     generate_new_address_warning: Vsi vaši obstoječi e-poštni naslovi za loomio bodo prenehali delovati. Ni razveljavitve. Kar daj?
+    not_available_to_trial_or_demo: Ta funkcija ni na voljo za poskusne ali demo skupine
+    review_email: Pregled e-pošte
+    add_alias: Dodaj vzdevek
+    who_is_the_owner_of_email: Kdo je lastnik %{email}?
+    is_name_the_owner_of_email: Ali je %{name} lastnik %{email}?
+    all_email_will_belong_to_name: Vsa sporočila od %{email} bodo dodeljena %{name}
+    email_aliases: Vzdevki in prezrti naslovi
+    belongs_to_name: Pripada %{name}
+    block_email: Blokiraj naslov
+    no_emails_to_release: Ni e-poštnih sporočil, ki čakajo na objavo
+    release_rules: Pravila za sprostitev
+    confirm_block: Želite blokirati ta e-poštni naslov?
+    confirm_block_body: To e-poštno sporočilo in vsa nadaljnja e-poštna sporočila %{sender} bodo prezrta.
+    confirm_delete: Želite izbrisati to e-pošto?
+    confirm_delete_body: Ta e-pošta bo izbrisana. To ne bo vplivalo na vsa prihodnja e-poštna sporočila %{sender}.
+    unreleased_emails: Neobjavljena e-poštna sporočila
+    start_a_thread_by_email: Začni nit po e-pošti
+    forward_email_to_move_conversation: 'Nasvet: premaknite obstoječi e-poštni pogovor v Loomio tako, da ga posredujete na ta naslov.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Vaš e-poštni naslov za začetek niti v %{group}
   sign_up_form:

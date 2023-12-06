@@ -111,6 +111,12 @@ describe API::V1::ReceivedEmailsController do
       expect(response.status).to eq 404
     end
 
+    it 'allow trial group' do
+      Subscription.for(received_email.group).update(plan: 'trial')
+      expect { post :allow, params: { id: received_email.id, user_id: user.id } }.not_to change { MemberEmailAlias.count }
+      expect(response.status).to eq 403
+    end
+
     it 'block correct id' do
       expect { post :block, params: { id: received_email.id, user_id: user.id } }.to change { MemberEmailAlias.count }.by(1)
       json = JSON.parse(response.body)

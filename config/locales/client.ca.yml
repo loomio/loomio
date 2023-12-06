@@ -255,6 +255,7 @@ ca:
       restore: Restaurar
       zoom: Zoom
       align: Alinear
+      confirm: Confirmeu
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
@@ -275,6 +276,7 @@ ca:
     today: avui
     in_x_days: en %{x} dies
     prefix_eg: p. ex. %{val}
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Combina comptes
@@ -590,6 +592,7 @@ ca:
       user_added_to_group: "%{actor} t'ha afegit al grup: %{title}"
       user_mentioned: "%{actor} t'ha mencionat a: %{title}"
       user_reminded: "%{actor} us recorda que voteu a: %{title}"
+      unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
     without_title:
       discussion_announced: "%{actor} t'ha convidat a un fil"
       discussion_edited: "%{actor} ha editat el context del fil"
@@ -625,6 +628,7 @@ ca:
       stance_created_option: "%{actor} ha votat %{option}"
       user_mentioned: "%{actor} t'ha mencionat"
       user_reminded: "%{actor} us recorda que heu de votar"
+      unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
     hints:
       poll_closing_soon: Ara és un bon moment per votar, canviar d'opinió o animar els altres a participar.
       poll_closing_soon_author: És possible que vulgueu recordar a la gent que voten o allargar el termini.
@@ -2338,6 +2342,24 @@ ca:
     new_address_generated: S'ha generat una nova adreça de correu electrònic al grup
     generate_new_address_question: Voleu generar una nova adreça de correu electrònic al grup?
     generate_new_address_warning: Totes les vostres adreces de correu electrònic a loomio existents deixaran de funcionar. No hi ha cap desfer. Endavant?
+    not_available_to_trial_or_demo: Aquesta funció no està disponible per a grups de prova o de demostració
+    review_email: Revisa el correu electrònic
+    add_alias: Afegeix un àlies
+    who_is_the_owner_of_email: Qui és el propietari de %{email}?
+    is_name_the_owner_of_email: "%{name} és el propietari de %{email}?"
+    all_email_will_belong_to_name: Tots els missatges de %{email} s'atribuiran a %{name}
+    email_aliases: Àlies i adreces ignorades
+    belongs_to_name: Pertany a %{name}
+    block_email: Bloquejar l'adreça
+    no_emails_to_release: No hi ha correus electrònics esperant el llançament
+    release_rules: Normes d'alliberament
+    confirm_block: Bloquejar aquesta adreça electrònica?
+    confirm_block_body: Aquest correu electrònic i qualsevol altre correu electrònic de %{sender} s'ignorarà.
+    confirm_delete: Vols suprimir aquest correu electrònic?
+    confirm_delete_body: Aquest correu electrònic se suprimirà. Els futurs correus electrònics de %{sender} no es veuran afectats.
+    unreleased_emails: Correus electrònics no publicats
+    start_a_thread_by_email: Inicieu un fil per correu electrònic
+    forward_email_to_move_conversation: 'Consell: moveu una conversa de correu electrònic existent a Loomio reenviant-la a aquesta adreça.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: La teva adreça de correu electrònic per iniciar fils a %{group}
   search_modal:

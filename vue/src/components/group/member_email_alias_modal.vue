@@ -47,27 +47,31 @@ v-card
     h1.headline(v-t="'email_to_group.add_alias'")
     v-spacer
     dismiss-modal-button
-  .pa-4(v-if="!selectedUser")
-    p.text--secondary(v-t="{path: 'email_to_group.who_is_the_owner_of_email', args:{email: email}}")
-    v-text-field(
-      v-model="q"
-      autofocus
-      filled
-      rounded
-      single-line
-      hide-details
-      :placeholder="$t('common.action.search')"
-    )
-    v-list(v-for="user in users")
-      v-list-item(@click="selectedUser = user") {{user.name}}
+  template(v-if="group.isTrialOrDemo()")
+    .pa-4
+      p(v-t="'email_to_group.not_available_to_trial_or_demo'")
+  template(v-else)
+    .pa-4(v-if="!selectedUser")
+      p.text--secondary(v-t="{path: 'email_to_group.who_is_the_owner_of_email', args:{email: email}}")
+      v-text-field(
+        v-model="q"
+        autofocus
+        filled
+        rounded
+        single-line
+        hide-details
+        :placeholder="$t('common.action.search')"
+      )
+      v-list(v-for="user in users")
+        v-list-item(@click="selectedUser = user") {{user.name}}
 
-  .pa-4.text--secondary(v-if="selectedUser")
-    p(v-t="{path: 'email_to_group.is_name_the_owner_of_email', args: {name: selectedUser.name, email: email}}")
-    p(v-t="{path: 'email_to_group.all_email_will_belong_to_name', args: {name: selectedUser.name, email: email}}")
-  v-card-actions(v-if="selectedUser")
-    v-btn(@click="selectedUser = null" v-t="'common.action.cancel'")
-    v-spacer
-    v-btn(color="primary" @click="submit(selectedUser.id)" v-t="'common.action.confirm'")
+    .pa-4.text--secondary(v-if="selectedUser")
+      p(v-t="{path: 'email_to_group.is_name_the_owner_of_email', args: {name: selectedUser.name, email: email}}")
+      p(v-t="{path: 'email_to_group.all_email_will_belong_to_name', args: {name: selectedUser.name, email: email}}")
+    v-card-actions(v-if="selectedUser")
+      v-btn(@click="selectedUser = null" v-t="'common.action.cancel'")
+      v-spacer
+      v-btn(color="primary" @click="submit(selectedUser.id)" v-t="'common.action.confirm'")
 
 
 

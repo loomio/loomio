@@ -205,6 +205,7 @@ da:
       add_people: Tilføj Folk
       zoom: Zoom
       align: Juster
+      confirm: Bekræfte
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
@@ -239,6 +240,7 @@ da:
     reset: Nulstil
     points_abbrev: Hver stemme er %{score} point værd
     total: Total
+    value: "%{value}"
   emoji_picker:
     search: Søg
     common: Hyppigt brugt
@@ -487,6 +489,7 @@ da:
       user_added_to_group: "%{actor} føjede dig til gruppen: %{title}"
       user_mentioned: "%{actor} nævnte dig i: %{title}"
       user_reminded: "%{actor} minder dig om at stemme i: %{title}"
+      unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
     without_title:
       discussion_announced: "%{actor} inviterede dig til en tråd"
       discussion_edited: "%{actor} redigerede trådkonteksten"
@@ -522,6 +525,7 @@ da:
       stance_created_option: "%{actor} stemte %{option}"
       user_mentioned: "%{actor} nævnte dig"
       user_reminded: "%{actor} minder dig om at stemme"
+      unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
     hints:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
@@ -2025,6 +2029,24 @@ da:
     new_address_generated: Ny e-mail-til-gruppe-adresse genereret
     generate_new_address_question: Vil du generere ny e-mail-til-gruppe-adresse?
     generate_new_address_warning: Alle dine eksisterende e-mail-til-loomio-adresser holder op med at fungere. Der er ingen fortrydelse. Fortsæt?
+    not_available_to_trial_or_demo: Denne funktion er ikke tilgængelig for prøve- eller demogrupper
+    review_email: Gennemgå e-mail
+    add_alias: Tilføj alias
+    who_is_the_owner_of_email: Hvem er ejeren af %{email}?
+    is_name_the_owner_of_email: Er %{name} ejeren af %{email}?
+    all_email_will_belong_to_name: Alle beskeder fra %{email} vil blive tilskrevet %{name}
+    email_aliases: Aliaser og ignorerede adresser
+    belongs_to_name: Tilhører %{name}
+    block_email: Bloker adresse
+    no_emails_to_release: Ingen e-mails, der venter på udgivelse
+    release_rules: Frigivelsesregler
+    confirm_block: Vil du blokere denne e-mailadresse?
+    confirm_block_body: Denne e-mail og eventuelle yderligere e-mails fra %{sender} vil blive ignoreret.
+    confirm_delete: Vil du slette denne e-mail?
+    confirm_delete_body: Denne e-mail vil blive slettet. Eventuelle fremtidige e-mails fra %{sender} vil ikke blive påvirket.
+    unreleased_emails: Ikke-udgivne e-mails
+    start_a_thread_by_email: Start en tråd via e-mail
+    forward_email_to_move_conversation: 'Tip: Flyt en eksisterende e-mail-samtale til Loomio ved at videresende den til denne adresse.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Din e-mailadresse til at starte tråde i %{group}
   close_explanation_modal:

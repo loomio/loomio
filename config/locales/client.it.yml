@@ -311,6 +311,7 @@ it:
       align: Allinea
       hide: Nascondere
       unhide: Scopri
+      confirm: Confermare
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
@@ -319,6 +320,7 @@ it:
     visit_loomio_help: Visita Loomio aiuto
     admin_menu: Menù amministratore
     api_docs: Documenti API
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Unisci account
@@ -634,6 +636,7 @@ it:
       user_mentioned: "%{actor} ti ha menzionato in: %{title}"
       user_reminded: "%{actor} ti sta ricordando di votare su: %{title}"
       membership_resent: "%{actor} ti ha invitato a iscriverti a %{title} su %{site_name}"
+      unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
     without_title:
       discussion_announced: "%{actor} ti ha invitato a una discussione"
       discussion_edited: "%{actor} ha modificato il contesto della discussione"
@@ -669,6 +672,7 @@ it:
       user_mentioned: "%{actor} ti ha menzionato"
       user_reminded: "%{actor}ti sta ricordando di votare"
       membership_resent: "%{actor} ti ha invitato a unirti a un gruppo"
+      unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
     hints:
       poll_closing_soon: Ora è un buon momento per votare, cambiare idea o incoraggiare altri a partecipare.
       poll_closing_soon_author: Potresti voler ricordare alle persone di votare o prorogare la scadenza.
@@ -2390,6 +2394,24 @@ it:
     new_address_generated: Nuovo indirizzo e-mail al gruppo generato
     generate_new_address_question: Generare un nuovo indirizzo email di gruppo?
     generate_new_address_warning: Tutti i tuoi indirizzi e-mail a loomio esistenti smetteranno di funzionare. Non è possibile annullare. Andare avanti?
+    not_available_to_trial_or_demo: Questa funzione non è disponibile per i gruppi di prova o demo
+    review_email: Esamina l'e-mail
+    add_alias: Aggiungi alias
+    who_is_the_owner_of_email: Chi è il proprietario di %{email}?
+    is_name_the_owner_of_email: "%{name} è il proprietario di %{email}?"
+    all_email_will_belong_to_name: Tutti i messaggi provenienti da %{email} verranno attribuiti a %{name}
+    email_aliases: Alias e indirizzi ignorati
+    belongs_to_name: Appartiene a %{name}
+    block_email: Blocca indirizzo
+    no_emails_to_release: Nessuna email in attesa di rilascio
+    release_rules: Regole di rilascio
+    confirm_block: Bloccare questo indirizzo email?
+    confirm_block_body: Questa email e qualsiasi altra email proveniente da %{sender} verranno ignorate.
+    confirm_delete: Eliminare questa email?
+    confirm_delete_body: Questa email verrà eliminata. Eventuali email future provenienti da %{sender} non saranno interessate.
+    unreleased_emails: E-mail inedite
+    start_a_thread_by_email: Avvia una discussione tramite email
+    forward_email_to_move_conversation: 'Suggerimento: sposta una conversazione email esistente su Loomio inoltrandola a questo indirizzo.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Il tuo indirizzo email per avviare discussioni in %{group}
   global:

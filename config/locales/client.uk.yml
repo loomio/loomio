@@ -296,6 +296,7 @@ uk:
       view_count_responses: Переглянути %{count} відповідей
       count_more: ще %{count}
       count_responses: "%{count} відповідей"
+      confirm: Підтвердити
     formatting_help:
       label: Форматувати
       title: Дізнайтесь як використовувати Markdown для форматування текту
@@ -311,6 +312,7 @@ uk:
     visit_loomio_help: Відвідайте довідку Loomio
     admin_menu: Меню адміністратора
     api_docs: Документи API
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Об’єднати облікові записи
@@ -627,6 +629,7 @@ uk:
       stance_created_option: "%{actor} проголосував за %{option} у %{title}"
       user_added_to_group: "%{actor} додав вас до групи: %{title}"
       membership_resent: "%{actor} запросив вас приєднатися до %{title} на %{site_name}"
+      unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
     without_title:
       poll_expired: "%{poll_type} закрито"
       discussion_announced: "%{actor} запросив вас до ланцюжка"
@@ -662,6 +665,7 @@ uk:
       user_mentioned: "%{actor} згадав вас"
       user_reminded: "%{actor} нагадує вам проголосувати"
       membership_resent: "%{actor} запросив вас приєднатися до групи"
+      unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
     hints:
       poll_closing_soon: Зараз гарний час, щоб проголосувати, змінити свою думку або заохотити інших до участі.
       poll_closing_soon_author: Ви можете нагадати людям проголосувати або продовжити кінцевий термін.
@@ -2396,6 +2400,24 @@ uk:
     new_address_generated: Створено нову адресу електронної пошти для групи
     generate_new_address_question: Створити нову адресу електронної пошти для групи?
     generate_new_address_warning: Усі ваші наявні адреси електронної пошти до Loomio перестануть працювати. Відмінити не можна. Йти вперед?
+    not_available_to_trial_or_demo: Ця функція недоступна для пробних або демонстраційних груп
+    review_email: Перегляд електронної пошти
+    add_alias: Додати псевдонім
+    who_is_the_owner_of_email: Хто є власником %{email}?
+    is_name_the_owner_of_email: "%{name} є власником %{email}?"
+    all_email_will_belong_to_name: Усі повідомлення від %{email} буде віднесено до %{name}
+    email_aliases: Псевдоніми та ігноровані адреси
+    belongs_to_name: Належить %{name}
+    block_email: Заблокувати адресу
+    no_emails_to_release: Немає електронних листів, які очікують випуску
+    release_rules: Правила випуску
+    confirm_block: Заблокувати цю електронну адресу?
+    confirm_block_body: Цей електронний лист та будь-які подальші листи від %{sender} будуть проігноровані.
+    confirm_delete: Видалити цей електронний лист?
+    confirm_delete_body: Цей електронний лист буде видалено. Це не вплине на будь-які майбутні електронні листи від %{sender}.
+    unreleased_emails: Неопубліковані електронні листи
+    start_a_thread_by_email: Почніть ланцюжок електронною поштою
+    forward_email_to_move_conversation: 'Порада: перемістіть наявну бесіду електронною поштою до Loomio, переславши її на цю адресу.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Ваша адреса електронної пошти для створення тем у %{group}
   thread_preview:

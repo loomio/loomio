@@ -226,6 +226,7 @@ he:
       add_people: הוסף אנשים
       zoom: תקריב
       align: יישר
+      confirm: לְאַשֵׁר
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -255,6 +256,7 @@ he:
     today: היום
     in_x_days: בעוד %{x} ימים
     reset: אִתחוּל
+    value: "%{value}"
   emoji_picker:
     search: חיפוש
     common: לעיתים קרובות בשימוש
@@ -557,6 +559,7 @@ he:
       stance_updated: "%{actor} הצביע ב: %{title}"
       stance_created_option: "%{actor} הצביע %{option} ב-%{title}"
       user_added_to_group: "%{actor} הוסיף אותך לקבוצה: %{title}"
+      unknown_sender: אנא עיין באימייל משולח לא מזוהה
     without_title:
       poll_expired: "%{poll_type} נסגר"
       discussion_announced: "%{actor} הזמין אותך לשרשור"
@@ -592,6 +595,7 @@ he:
       stance_created_option: "%{actor} הצביע %{option}"
       user_mentioned: "%{actor} הזכיר אותך"
       user_reminded: "%{actor} מזכיר לך להצביע"
+      unknown_sender: אנא עיין באימייל משולח לא מזוהה
     hints:
       poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
       poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
@@ -2238,6 +2242,24 @@ he:
     new_address_generated: נוצרה כתובת דוא"ל חדשה לקבוצה
     generate_new_address_question: ליצור כתובת דוא"ל חדשה לקבוצה?
     generate_new_address_warning: כל כתובות האימייל ל-loomio הקיימות שלך יפסיקו לעבוד. אין ביטול. לך על זה?
+    not_available_to_trial_or_demo: תכונה זו אינה זמינה עבור קבוצות ניסיון או הדגמה
+    review_email: עיין באימייל
+    add_alias: הוסף כינוי
+    who_is_the_owner_of_email: מי הבעלים של %{email}?
+    is_name_the_owner_of_email: האם %{name} הוא הבעלים של %{email}?
+    all_email_will_belong_to_name: כל ההודעות מ-%{email} ייוחסו ל-%{name}
+    email_aliases: כינויים וכתובות שהתעלמו מהן
+    belongs_to_name: שייך ל-%{name}
+    block_email: כתובת חסום
+    no_emails_to_release: אין מיילים שמחכים לשחרור
+    release_rules: חוקי שחרור
+    confirm_block: לחסום את כתובת האימייל הזו?
+    confirm_block_body: אימייל זה וכל הודעות דוא"ל נוספות מ-%{sender} יתעלמו.
+    confirm_delete: למחוק את האימייל הזה?
+    confirm_delete_body: מייל זה יימחק. אימיילים עתידיים מ-%{sender} לא יושפעו.
+    unreleased_emails: מיילים שלא פורסמו
+    start_a_thread_by_email: התחל שרשור במייל
+    forward_email_to_move_conversation: 'טיפ: העבר שיחת דוא"ל קיימת ל-Loomio על ידי העברתה לכתובת זו.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: כתובת הדוא"ל שלך לפתיחת שרשורים ב-%{group}
   search_modal:

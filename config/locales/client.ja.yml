@@ -183,6 +183,7 @@ ja:
       add_people: 人の追加
       zoom: ズーム
       align: 整列
+      confirm: 確認する
     admin_menu: 管理者メニュー
     api_docs: APIドキュメント
     prefix_eg: '例: %{val}'
@@ -237,6 +238,7 @@ ja:
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
+    value: "％{価値}"
   emoji_picker:
     search: 検索
     common: 頻繁に使用される
@@ -435,6 +437,7 @@ ja:
       user_added_to_group: "%{actor} があなたをグループに追加しました: %{title}"
       user_mentioned: "%{actor} が次の記事であなたの名前を挙げました: %{title}"
       user_reminded: "%{actor} が投票するよう促しています: %{title}"
+      unknown_sender: 認識できない送信者からのメールを確認してください
     without_title:
       discussion_announced: "%{actor} があなたをスレッドに招待しました"
       discussion_edited: "%{actor} がスレッド コンテキストを編集しました"
@@ -470,6 +473,7 @@ ja:
       stance_created_option: "%{actor} が %{option} に投票しました"
       user_mentioned: "%{actor} さんがあなたについて言及しました"
       user_reminded: "%{actor} が投票を促しています"
+      unknown_sender: 認識できない送信者からのメールを確認してください
     hints:
       poll_closing_soon: 今こそ、投票したり、考えを変えたり、他の人に参加を奨励したりするのに良い時期です。
       poll_closing_soon_author: 投票するよう人々に思い出させたり、期限を延長したりすることもできます。
@@ -1519,6 +1523,24 @@ ja:
     new_address_generated: 新しい電子メール宛先グループ アドレスが生成されました
     generate_new_address_question: 新しい電子メール宛先グループ アドレスを生成しますか?
     generate_new_address_warning: 既存のすべてのメール to loomio アドレスは機能しなくなります。元に戻すことはできません。どうぞ？
+    not_available_to_trial_or_demo: この機能はトライアルまたはデモグループでは利用できません
+    review_email: メールの確認
+    add_alias: エイリアスの追加
+    who_is_the_owner_of_email: "%{email} の所有者は誰ですか?"
+    is_name_the_owner_of_email: "%{name} は %{email} の所有者ですか?"
+    all_email_will_belong_to_name: "%{email} からのすべてのメッセージは %{name} に帰属します"
+    email_aliases: エイリアスと無視されるアドレス
+    belongs_to_name: "%{name} に属します"
+    block_email: ブロックアドレス
+    no_emails_to_release: リリースを待っているメールはありません
+    release_rules: リリースルール
+    confirm_block: このメールアドレスをブロックしますか?
+    confirm_block_body: このメールと、%{sender} からの今後のメールは無視されます。
+    confirm_delete: このメールを削除しますか?
+    confirm_delete_body: このメールは削除されます。 %{sender} からの今後のメールは影響を受けません。
+    unreleased_emails: 未公開メール
+    start_a_thread_by_email: 電子メールでスレッドを開始する
+    forward_email_to_move_conversation: 'ヒント: 既存のメール会話をこのアドレスに転送して、Loomio に移動します。'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: "%{group} でスレッドを開始するためのメール アドレス"
   volume_levels:

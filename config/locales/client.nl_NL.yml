@@ -275,6 +275,7 @@ nl_NL:
       restore: Herstellen
       zoom: Zoom
       align: Uitlijnen
+      confirm: Bevestigen
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
@@ -294,6 +295,7 @@ nl_NL:
     visit_loomio_help: Bezoek Loomio-hulp
     admin_menu: Beheerdersmenu
     api_docs: API-documenten
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -609,6 +611,7 @@ nl_NL:
       stance_created_option: "%{actor} stemde op %{option} in %{title}"
       user_added_to_group: "%{actor} heeft je toegevoegd aan de groep: %{title}"
       membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van %{title} op %{site_name}"
+      unknown_sender: Controleer de e-mail van een onbekende afzender
     without_title:
       discussion_closed: "%{actor} sloot het bord"
       poll_expired: "%{poll_type} is gesloten"
@@ -644,6 +647,7 @@ nl_NL:
       user_mentioned: "%{actor} heeft je genoemd"
       user_reminded: "%{actor} herinnert je eraan om te stemmen"
       membership_resent: "%{actor} heeft je uitgenodigd om lid te worden van een groep"
+      unknown_sender: Controleer de e-mail van een onbekende afzender
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
@@ -2374,6 +2378,24 @@ nl_NL:
     new_address_generated: Nieuw e-mail-naar-groepsadres gegenereerd
     generate_new_address_question: Nieuw e-mail-naar-groepsadres genereren?
     generate_new_address_warning: Al uw bestaande e-mail-naar-loomio-adressen werken niet meer. Er is geen ongedaan maken. Doe Maar?
+    not_available_to_trial_or_demo: Deze functie is niet beschikbaar voor proef- of demogroepen
+    review_email: E-mail beoordelen
+    add_alias: Alias toevoegen
+    who_is_the_owner_of_email: Wie is de eigenaar van %{email}?
+    is_name_the_owner_of_email: Is %{name} de eigenaar van %{email}?
+    all_email_will_belong_to_name: Alle berichten van %{email} worden toegeschreven aan %{name}
+    email_aliases: Aliassen en genegeerde adressen
+    belongs_to_name: Behoort tot %{naam}
+    block_email: Blokkeer adres
+    no_emails_to_release: Geen e-mails die wachten op vrijgave
+    release_rules: Regels vrijgeven
+    confirm_block: Dit e-mailadres blokkeren?
+    confirm_block_body: Deze e-mail en eventuele verdere e-mails van %{sender} worden genegeerd.
+    confirm_delete: Deze e-mail verwijderen?
+    confirm_delete_body: Deze e-mail wordt verwijderd. Eventuele toekomstige e-mails van %{sender} blijven onaangetast.
+    unreleased_emails: Niet-vrijgegeven e-mails
+    start_a_thread_by_email: Start een draad per e-mail
+    forward_email_to_move_conversation: 'Tip: Verplaats een bestaand e-mailgesprek naar Loomio door het door te sturen naar dit adres.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Uw e-mailadres om threads te starten in %{group}
   thread_preview:

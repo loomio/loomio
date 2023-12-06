@@ -32,6 +32,27 @@ module Dev::Scenarios::Group
     redirect_to group_emails_url(create_group)
   end
 
+  def setup_trial_group_with_received_email
+    sign_in patrick
+    create_group.subscription.update(plan: 'trial')
+    create_group.add_member! emilio
+    5.times do
+      name = Faker::Name.name
+      email = ReceivedEmail.create(
+        body_html: "<html><body>hello everyone.</body></html>",
+        dkim_valid: true,
+        spf_valid: true,
+        headers: {
+          from: "\"#{name}\" <#{Faker::Internet.email(name: name)}>",
+          to: create_group.handle + "@#{ENV['REPLY_HOSTNAME']}",
+          subject: Faker::TvShows::TheFreshPrinceOfBelAir.quote
+        }
+      )
+    end
+    ReceivedEmailService.route_all
+    redirect_to group_emails_url(create_group)
+  end
+
   def setup_user_no_group
     sign_in patrick
     redirect_to dashboard_url

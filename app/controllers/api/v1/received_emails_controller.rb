@@ -20,17 +20,21 @@ class API::V1::ReceivedEmailsController < API::V1::RestfulController
 
   def allow
     @received_email = ReceivedEmail.unreleased.where(group_id: current_user.adminable_group_ids).find(params[:id])
-    user = @received_email.group.members.find(params[:user_id])
-    MemberEmailAlias.create!(
-      email: @received_email.sender_email,
-      user: user,
-      group_id: @received_email.group_id,
-      require_dkim: @received_email.dkim_valid,
-      require_spf: @received_email.spf_valid,
-      author_id: current_user.id
-    )
-    ReceivedEmailService.route(@received_email)
-    respond_with_resource
+    if @received_email.group.is_trial_or_demo?
+      respond_with_error(403, "trial groups cannot add aliases")
+    else
+      user = @received_email.group.members.find(params[:user_id])
+      MemberEmailAlias.create!(
+        email: @received_email.sender_email,
+        user: user,
+        group_id: @received_email.group_id,
+        require_dkim: @received_email.dkim_valid,
+        require_spf: @received_email.spf_valid,
+        author_id: current_user.id
+      )
+      ReceivedEmailService.route(@received_email)
+      respond_with_resource
+    end
   end
 
   def block

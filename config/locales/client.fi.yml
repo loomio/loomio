@@ -91,6 +91,7 @@ fi:
       add_people: Lisää ihmisiä
       zoom: Zoomaus
       align: Kohdistaa
+      confirm: Vahvistaa
     admin_menu: Admin valikko
     api_docs: API-dokumentit
     prefix_eg: esim. %{val}
@@ -144,6 +145,7 @@ fi:
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
+    value: "%{value}"
   error_page:
     forbidden: Sinulla ei ole oikeutta tehdä tätä.
     page_not_found: Emme voineet löytää tätä. Se voi olla poistettu tai siirretty.
@@ -313,6 +315,7 @@ fi:
       user_added_to_group: "%{actor} lisäsi sinut ryhmään: %{title}"
       user_mentioned: "%{actor} mainitsi sinut: %{title}"
       user_reminded: "%{actor} muistuttaa sinua äänestämään: %{title}"
+      unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
     without_title:
       discussion_announced: "%{actor} kutsui sinut viestiketjuun"
       discussion_edited: "%{actor} muokkasi viestiketjun kontekstia"
@@ -348,6 +351,7 @@ fi:
       stance_created_option: "%{actor} äänesti %{option}"
       user_mentioned: "%{actor} mainitsi sinut"
       user_reminded: "%{actor} muistuttaa sinua äänestämään"
+      unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
     hints:
       poll_closing_soon: Nyt on hyvä aika äänestää, muuttaa mieltäsi tai kannustaa muita osallistumaan.
       poll_closing_soon_author: Haluat ehkä muistuttaa ihmisiä äänestämään tai pidentää määräaikaa.
@@ -1004,6 +1008,24 @@ fi:
     new_address_generated: Uusi sähköpostiosoite ryhmälle luotu
     generate_new_address_question: Luodaanko uusi sähköpostiosoite ryhmälle?
     generate_new_address_warning: Kaikki nykyiset sähköpostiosoitteesi lakkaavat toimimasta. Kumoa ei ole. Mene eteenpäin?
+    not_available_to_trial_or_demo: Tämä ominaisuus ei ole saatavilla kokeilu- tai demoryhmille
+    review_email: Tarkista sähköposti
+    add_alias: Lisää alias
+    who_is_the_owner_of_email: Kuka on osoitteen %{email} omistaja?
+    is_name_the_owner_of_email: Onko %{name} %{email}:n omistaja?
+    all_email_will_belong_to_name: Kaikki viestit lähettäjältä %{email} liitetään osoitteeseen %{name}
+    email_aliases: Aliakset ja huomiotta jätetyt osoitteet
+    belongs_to_name: Kuuluu %{name}
+    block_email: Estä osoite
+    no_emails_to_release: Ei julkaisua odottavia sähköposteja
+    release_rules: Julkaisusäännöt
+    confirm_block: Estä tämä sähköpostiosoite?
+    confirm_block_body: Tämä sähköposti ja kaikki muut sähköpostit lähettäjältä %{sender} ohitetaan.
+    confirm_delete: Poistetaanko tämä sähköposti?
+    confirm_delete_body: Tämä sähköposti poistetaan. Tämä ei vaikuta tuleviin sähköpostiviesteihin %{sender}lta.
+    unreleased_emails: Julkaisemattomat sähköpostit
+    start_a_thread_by_email: Aloita viestiketju sähköpostitse
+    forward_email_to_move_conversation: 'Vinkki: Siirrä olemassa oleva sähköpostikeskustelu Loomioon lähettämällä se edelleen tähän osoitteeseen.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Sähköpostiosoitteesi ketjujen aloittamiseksi %{group}
   pin_event_form:

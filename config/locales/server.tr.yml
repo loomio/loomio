@@ -325,3 +325,6 @@ tr:
       vote_now: Şimdi oyla
       you_have_until: Katılmak için %{when} tarihine kadar vaktiniz var.
       people_have_voted: "%{dnom} kişinin %{nom}'u katıldı (%{pct}%)"
+  event_mailer:
+    received_email:
+      explaination_html: "<p>Bu e-postayı Loomio grubunun yöneticisi olduğunuz için alıyorsunuz: %{group}.</p><p> Grup tanınmayan bir e-posta adresinden bir e-posta aldı.</p><p> Mesaj grubun bir üyesinden geliyorsa lütfen e-postayı inceleyin ve üyeyi seçin.</p><p> Mesaj istenmeyense, bu adresten gelecek diğer e-postaları engelleyebilirsiniz.</p>"

@@ -350,3 +350,6 @@ hu:
     blank:
       process_name: Üres sablon
       process_subtitle: Indítson új témát bármilyen célból
+  event_mailer:
+    received_email:
+      explaination_html: "<p>Azért kapta ezt az e-mailt, mert Ön a(z) %{group} Loomio csoport adminisztrátora.</p><p> A csoport e-mailt kapott egy ismeretlen e-mail címről.</p><p> Ha az üzenet a csoport egyik tagjától származik, kérjük, tekintse át az e-mailt, és válassza ki a tagot.</p><p> Ha az üzenet nem kívánt, letilthatja az erről a címről érkező további e-maileket.</p>"

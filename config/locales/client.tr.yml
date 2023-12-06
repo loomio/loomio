@@ -254,6 +254,7 @@ tr:
       restore: Eski haline getirmek
       zoom: Yakınlaştır
       align: Hizala
+      confirm: Onaylamak
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
@@ -274,6 +275,7 @@ tr:
     minutes: dakika
     today: Bugün
     in_x_days: "%{x} gün içinde"
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Hesapları birleştir
@@ -531,6 +533,7 @@ tr:
       user_added_to_group: "%{actor} sizi şu gruba ekledi: %{title}"
       user_mentioned: "%{actor} sizden şu konuda bahsetti: %{title}"
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor: %{title}"
+      unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
     without_title:
       discussion_announced: "%{actor} sizi bir konuya davet etti"
       discussion_edited: "%{actor} konu içeriğini düzenledi"
@@ -566,6 +569,7 @@ tr:
       stance_created_option: "%{actor}, %{option}'a oy verdi"
       user_mentioned: "%{actor} sizden bahsetti"
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor"
+      unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
     hints:
       poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
       poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
@@ -1853,6 +1857,24 @@ tr:
     new_address_generated: Yeni gruba e-posta adresi oluşturuldu
     generate_new_address_question: Yeni e-posta grubu adresi oluşturulsun mu?
     generate_new_address_warning: Mevcut tüm e-posta-loomio adresleriniz çalışmayı durduracaktır. Geri alma yok. Devam etmek?
+    not_available_to_trial_or_demo: Bu özellik deneme veya demo gruplarında mevcut değildir
+    review_email: E-postayı inceleyin
+    add_alias: Takma ad ekle
+    who_is_the_owner_of_email: "%{email}'in sahibi kim?"
+    is_name_the_owner_of_email: "%{name}, %{email} hesabının sahibi mi?"
+    all_email_will_belong_to_name: "%{email} adresinden gelen tüm iletiler %{name} ile ilişkilendirilecek"
+    email_aliases: Takma adlar ve göz ardı edilen adresler
+    belongs_to_name: "%{name}'ye ait"
+    block_email: Adresi engelle
+    no_emails_to_release: Yayınlanmayı bekleyen e-posta yok
+    release_rules: Yayın kuralları
+    confirm_block: Bu e-posta adresi engellensin mi?
+    confirm_block_body: Bu e-posta ve %{sender} tarafından gönderilen diğer e-postalar dikkate alınmayacaktır.
+    confirm_delete: Bu e-posta silinsin mi?
+    confirm_delete_body: Bu e-posta silinecek. %{sender}'dan gelecek e-postalar etkilenmeyecektir.
+    unreleased_emails: Yayınlanmamış e-postalar
+    start_a_thread_by_email: E-postayla konu başlat
+    forward_email_to_move_conversation: 'İpucu: Mevcut bir e-posta görüşmesini bu adrese ileterek Loomio''ya taşıyın.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: "%{group} grubunda konu başlatmak için e-posta adresiniz"
   close_explanation_modal:

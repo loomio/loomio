@@ -228,6 +228,7 @@ ru:
       add_people: Добавить людей
       zoom: Увеличить
       align: Выровнять
+      confirm: Подтверждать
     formatting_help:
       label: Форматирование
       title: Узнайте, как использовать Markdown для форматирования текста.
@@ -257,6 +258,7 @@ ru:
     in_x_days: через %{x} дней
     reset: Перезагрузить
     points_abbrev: Каждый голос приносит %{score} баллов.
+    value: "%{value}"
   merge_accounts:
     modal:
       submit: Подтвердить
@@ -552,6 +554,7 @@ ru:
       stance_updated: "%{actor} проголосовал за: %{title}"
       stance_created_option: "%{actor} проголосовал за %{option} в %{title}"
       user_added_to_group: "%{actor} добавил вас в группу: %{title}"
+      unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
     without_title:
       poll_expired: "%{poll_type} закрылся"
       discussion_announced: "%{actor} пригласил вас в тред"
@@ -587,6 +590,7 @@ ru:
       stance_created_option: "%{actor} проголосовал за %{option}"
       user_mentioned: "%{actor} упомянул вас"
       user_reminded: "%{actor} напоминает вам проголосовать"
+      unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
     hints:
       poll_closing_soon: Сейчас хорошее время, чтобы проголосовать, передумать или призвать других к участию.
       poll_closing_soon_author: Возможно, вы захотите напомнить людям о необходимости проголосовать или продлить срок.
@@ -1896,6 +1900,24 @@ ru:
     new_address_generated: Создан новый адрес электронной почты для группы.
     generate_new_address_question: Создать новый адрес электронной почты для группы?
     generate_new_address_warning: Все ваши существующие адреса электронной почты в loomio перестанут работать. Отмена невозможна. Вперед, продолжать?
+    not_available_to_trial_or_demo: Эта функция недоступна для пробных или демонстрационных групп.
+    review_email: Проверить электронное письмо
+    add_alias: Добавить псевдоним
+    who_is_the_owner_of_email: Кто является владельцем %{email}?
+    is_name_the_owner_of_email: Является ли %{name} владельцем %{email}?
+    all_email_will_belong_to_name: Все сообщения от %{email} будут принадлежать %{name}.
+    email_aliases: Псевдонимы и игнорируемые адреса
+    belongs_to_name: Принадлежит %{name}
+    block_email: Заблокировать адрес
+    no_emails_to_release: Нет писем, ожидающих релиза
+    release_rules: Правила выпуска
+    confirm_block: Заблокировать этот адрес электронной почты?
+    confirm_block_body: Это письмо и любые другие письма от %{sender} будут игнорироваться.
+    confirm_delete: Удалить это письмо?
+    confirm_delete_body: Это письмо будет удалено. Все будущие электронные письма от %{sender} останутся без изменений.
+    unreleased_emails: Неизданные электронные письма
+    start_a_thread_by_email: Начать обсуждение по электронной почте
+    forward_email_to_move_conversation: 'Совет: Переместите существующую беседу по электронной почте в Loomio, переслав ее на этот адрес.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Ваш адрес электронной почты для создания тем в %{group}
   strand_nav:

@@ -302,6 +302,12 @@ class Group < ApplicationRecord
     subscription.max_members && parent_group.org_memberships_count >= subscription.max_members
   end
 
+  def is_trial_or_demo?
+    parent_group = parent_or_self
+    subscription = Subscription.for(parent_group)
+    ['trial', 'demo'].include?(subscription.plan)
+  end
+
   def is_subgroup_of_hidden_parent?
     is_subgroup? and parent.is_hidden_from_public?
   end

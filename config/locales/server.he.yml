@@ -345,3 +345,6 @@ he:
       update_or_comment: אם כבר השלמת משימה זו, אנא סמן אותה. אם זה לא הושלם, אנא שתף עדכון התקדמות.
       due_today: היום
       due_in_count_days: בעוד %{count} ימים
+  event_mailer:
+    received_email:
+      explaination_html: '<p style=";text-align:right;direction:rtl">אתה מקבל דוא"ל זה מכיוון שאתה מנהל של קבוצת Loomio: %{group}.</p><p style=";text-align:right;direction:rtl"> הקבוצה קיבלה אימייל מכתובת אימייל לא מזוהה.</p><p style=";text-align:right;direction:rtl"> אם ההודעה היא מחבר בקבוצה, אנא עיין באימייל ובחר את החבר.</p><p style=";text-align:right;direction:rtl"> אם ההודעה אינה רצויה, תוכל לחסום כל אימייל נוסף מכתובת זו.</p>'

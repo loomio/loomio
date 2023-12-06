@@ -236,6 +236,7 @@ ro:
       unignore: Nu ignora
       zoom: Zoom
       align: Alinia
+      confirm: A confirma
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
@@ -260,6 +261,7 @@ ro:
     minutes: Minute
     today: astăzi
     in_x_days: în %{x} zile
+    value: "%{value}"
   merge_accounts:
     modal:
       submit: Verifica
@@ -531,6 +533,7 @@ ro:
       user_added_to_group: "%{actor} te-a adăugat în grupul: %{title}"
       user_mentioned: "%{actor} te-a menționat în: %{title}"
       user_reminded: "%{actor} vă reamintește să votați în: %{title}"
+      unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
     without_title:
       discussion_announced: "%{actor} te-a invitat la o discuție"
       discussion_edited: "%{actor} a editat contextul firului de discuție"
@@ -566,6 +569,7 @@ ro:
       stance_created_option: "%{actor} a votat %{option}"
       user_mentioned: "%{actor} te-a menționat"
       user_reminded: "%{actor} vă reamintește să votați"
+      unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
     hints:
       poll_closing_soon: Acum este un moment bun să votezi, să te răzgândești sau să încurajezi pe alții să participe.
       poll_closing_soon_author: Poate doriți să reamintiți oamenilor să voteze sau să prelungiți termenul.
@@ -1866,6 +1870,24 @@ ro:
     new_address_generated: A fost generată o nouă adresă de e-mail către grup
     generate_new_address_question: Generați o nouă adresă de e-mail către grup?
     generate_new_address_warning: Toate adresele tale existente de e-mail către loomio nu vor mai funcționa. Nu există nicio anulare. Daţi-i drumul?
+    not_available_to_trial_or_demo: Această funcție nu este disponibilă pentru grupurile de probă sau demonstrații
+    review_email: Examinați e-mailul
+    add_alias: Adăugați alias
+    who_is_the_owner_of_email: Cine este proprietarul %{email}?
+    is_name_the_owner_of_email: "%{name} este proprietarul %{email}?"
+    all_email_will_belong_to_name: Toate mesajele de la %{email} vor fi atribuite lui %{name}
+    email_aliases: Aliasuri și adrese ignorate
+    belongs_to_name: Aparține lui %{name}
+    block_email: Blocați adresa
+    no_emails_to_release: Niciun e-mail care să aștepte lansarea
+    release_rules: Reguli de lansare
+    confirm_block: Blocați această adresă de e-mail?
+    confirm_block_body: Acest e-mail și orice alte e-mailuri de la %{sender} vor fi ignorate.
+    confirm_delete: Ștergeți acest e-mail?
+    confirm_delete_body: Acest e-mail va fi șters. E-mailurile viitoare de la %{sender} nu vor fi afectate.
+    unreleased_emails: E-mailuri neeliberate
+    start_a_thread_by_email: Începeți o discuție prin e-mail
+    forward_email_to_move_conversation: 'Sfat: mutați o conversație de e-mail existentă la Loomio redirecționând-o la această adresă.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Adresa ta de e-mail pentru a începe firele în %{group}
   close_explanation_modal:

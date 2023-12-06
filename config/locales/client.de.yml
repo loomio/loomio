@@ -304,6 +304,7 @@ de:
       align: Ausrichten
       hide: Verstecken
       unhide: Einblenden
+      confirm: Bestätigen
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
@@ -317,6 +318,7 @@ de:
     visit_loomio_help: Besuchen Sie die Loomio-Hilfe
     admin_menu: Admin-Menü
     api_docs: API-Dokumente
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -632,6 +634,7 @@ de:
       stance_created_option: "%{actor} hat für %{option} in %{title} abgestimmt"
       user_added_to_group: "%{actor} hat Sie zur Gruppe hinzugefügt: %{title}"
       membership_resent: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten"
+      unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
     without_title:
       discussion_closed: "%{actor}den Thread geschlossen"
       poll_expired: "%{poll_type} wurde abgeschlossen"
@@ -667,6 +670,7 @@ de:
       user_mentioned: "%{actor} hat Sie erwähnt"
       user_reminded: "%{actor} erinnert Sie daran, abzustimmen"
       membership_resent: "%{actor} hat Sie eingeladen, einer Gruppe beizutreten"
+      unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, Ihre Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchten Sie die Menschen an die Abstimmung erinnern oder die Frist verlängern.
@@ -2377,6 +2381,24 @@ de:
     new_address_generated: Neue E-Mail-an-Gruppen-Adresse generiert
     generate_new_address_question: Neue E-Mail-an-Gruppen-Adresse generieren?
     generate_new_address_warning: Alle Ihre vorhandenen E-Mail-zu-loomio-Adressen funktionieren nicht mehr. Es gibt kein Rückgängigmachen. Fortfahren?
+    not_available_to_trial_or_demo: Diese Funktion ist für Test- oder Demogruppen nicht verfügbar
+    review_email: Überprüfen Sie die E-Mail
+    add_alias: Alias hinzufügen
+    who_is_the_owner_of_email: Wer ist der Eigentümer von %{email}?
+    is_name_the_owner_of_email: Ist %{name} der Besitzer von %{email}?
+    all_email_will_belong_to_name: Alle Nachrichten von %{email} werden %{name} zugeordnet
+    email_aliases: Aliase und ignorierte Adressen
+    belongs_to_name: Gehört zu %{name}
+    block_email: Adresse sperren
+    no_emails_to_release: Keine E-Mails warten auf Veröffentlichung
+    release_rules: Freigaberegeln
+    confirm_block: Diese E-Mail-Adresse blockieren?
+    confirm_block_body: Diese E-Mail und alle weiteren E-Mails von %{sender} werden ignoriert.
+    confirm_delete: Diese E-Mail löschen?
+    confirm_delete_body: Diese E-Mail wird gelöscht. Alle zukünftigen E-Mails von %{sender} bleiben davon unberührt.
+    unreleased_emails: Unveröffentlichte E-Mails
+    start_a_thread_by_email: Starten Sie einen Thread per E-Mail
+    forward_email_to_move_conversation: 'Tipp: Verschieben Sie eine bestehende E-Mail-Konversation zu Loomio, indem Sie sie an diese Adresse weiterleiten.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Ihre E-Mail-Adresse zum Starten von Threads in %{group}
   thread_preview:

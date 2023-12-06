@@ -211,6 +211,7 @@ el:
       add_people: Προσθέτω ανθρώπους
       zoom: Ανίπταμαι διαγωνίως
       align: Ευθυγραμμίζω
+      confirm: Επιβεβαιώνω
     formatting_help:
       label: Μορφοποίηση
       title: Μάθετε πώς να χρησιμοποιείτε το Markdown για να μορφοποιήσετε το κείμενό σας
@@ -247,6 +248,7 @@ el:
     reset: Επαναφορά
     points_abbrev: Κάθε ψήφος αξίζει %{score} βαθμούς
     total: Σύνολο
+    value: "%{value}"
   emoji_picker:
     search: Εύρεση
     common: Συχνά χρησιμοποιούμενο
@@ -485,6 +487,7 @@ el:
       user_added_to_group: 'Ο %{actor} σας πρόσθεσε στην ομάδα: %{title}'
       user_mentioned: 'Ο %{actor} σας ανέφερε στο: %{title}'
       user_reminded: 'Ο %{actor} σας υπενθυμίζει να ψηφίσετε: %{title}'
+      unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
     without_title:
       discussion_announced: Ο %{actor} σας προσκάλεσε σε ένα νήμα
       discussion_edited: Ο %{actor} επεξεργάστηκε το περιβάλλον του νήματος
@@ -520,6 +523,7 @@ el:
       stance_created_option: Ο %{actor} ψήφισε %{option}
       user_mentioned: Ο %{actor} σας ανέφερε
       user_reminded: Ο %{actor} σας υπενθυμίζει να ψηφίσετε
+      unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
     hints:
       poll_closing_soon: Τώρα είναι η κατάλληλη στιγμή για να ψηφίσετε, να αλλάξετε γνώμη ή να ενθαρρύνετε άλλους να συμμετάσχουν.
       poll_closing_soon_author: Μπορεί να θέλετε να υπενθυμίσετε στους ανθρώπους να ψηφίσουν ή να παρατείνετε την προθεσμία.
@@ -1800,6 +1804,24 @@ el:
     new_address_generated: Δημιουργήθηκε νέα διεύθυνση email προς ομάδα
     generate_new_address_question: Δημιουργία νέας διεύθυνσης email σε ομάδα;
     generate_new_address_warning: Όλες οι υπάρχουσες διευθύνσεις email-to-loomio σας θα σταματήσουν να λειτουργούν. Δεν υπάρχει αναίρεση. Προχώρα?
+    not_available_to_trial_or_demo: Αυτή η λειτουργία δεν είναι διαθέσιμη για δοκιμαστικές ή δοκιμαστικές ομάδες
+    review_email: Ελέγξτε το email
+    add_alias: Προσθέστε ψευδώνυμο
+    who_is_the_owner_of_email: Ποιος είναι ο κάτοχος του %{email};
+    is_name_the_owner_of_email: Είναι ο %{name} κάτοχος του %{email};
+    all_email_will_belong_to_name: Όλα τα μηνύματα από %{email} θα αποδοθούν στο %{name}
+    email_aliases: Ψευδώνυμα και αγνοημένες διευθύνσεις
+    belongs_to_name: Ανήκει στο %{name}
+    block_email: Διεύθυνση αποκλεισμού
+    no_emails_to_release: Δεν υπάρχουν email σε αναμονή για κυκλοφορία
+    release_rules: Κανόνες απελευθέρωσης
+    confirm_block: Αποκλεισμός αυτής της διεύθυνσης ηλεκτρονικού ταχυδρομείου;
+    confirm_block_body: Αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου και τυχόν περαιτέρω μηνύματα ηλεκτρονικού ταχυδρομείου από το %{sender} θα αγνοηθούν.
+    confirm_delete: Διαγραφή αυτού του email;
+    confirm_delete_body: Αυτό το email θα διαγραφεί. Τυχόν μελλοντικά μηνύματα ηλεκτρονικού ταχυδρομείου από %{sender} δεν θα επηρεαστούν.
+    unreleased_emails: Ακυκλοφόρητα email
+    start_a_thread_by_email: Ξεκινήστε ένα νήμα μέσω email
+    forward_email_to_move_conversation: 'Συμβουλή: Μετακινήστε μια υπάρχουσα συνομιλία ηλεκτρονικού ταχυδρομείου στο Loomio προωθώντας την σε αυτήν τη διεύθυνση.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Η διεύθυνση email σας για να ξεκινήσετε νήματα στο %{group}
   close_explanation_modal:

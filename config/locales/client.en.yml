@@ -365,6 +365,7 @@ en:
     search_activities: Search decisions
 
   email_to_group:
+    not_available_to_trial_or_demo: This feature is not available for trial or demo groups
     review_email: Review email
     add_alias: Add alias
     who_is_the_owner_of_email: Who is the owner of %{email}?
