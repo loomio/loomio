@@ -2493,6 +2493,9 @@ hu:
       concerned: Aggódó
       concerned_meaning: Lehet, hogy ezen valamit módosítani kell ahhoz, hogy beleegyezhessem vagy beleegyezhessek
       concerned_prompt: Mi aggaszt, és hogyan lehet kezelni?
+      not_sure: Nem biztos
+      not_sure_meaning: Kérdésem van, vagy több időre van szükségem
+      not_sure_prompt: Mely részek nem világosak számodra? Hogyan lehetne ezt megoldani?
     gradients_of_agreement:
       process_subtitle: Nyolcfokozatú skálán fejezze ki támogatását egy javaslathoz
       process_introduction: "<p>Az egyetértés gradiensei javaslat lehetővé teszi, hogy egy csoport tagjai egy skálán fokokban fejezzék ki támogatásukat egy javaslattal kapcsolatban, több módot kínálva a támogatás kifejezésére, mint az „egyetértek” és a „nem értek egyet”.</p><p> Használja az Egyetértési gradienseket előzetes körként, hogy tesztelje egy javaslat támogatottságát, mielőtt formális megállapodásra lépne.</p><p> Az egyetértés gradiensei tudatják az emberekkel, hogy javaslat van kialakulóban, és részvételre ösztönzi őket. Ez egy lehetőség arra, hogy meghallgassuk az embereket, érzékeljük, hogyan érzik magukat, és megfelelően reagáljunk – megnyílik a lehetőség, hogy beépítsük hozzájárulásaikat egy jobb döntés meghozatalához.</p>"

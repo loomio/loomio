@@ -2421,6 +2421,9 @@ sv:
       concerned: Bekymrad
       concerned_meaning: Något i detta kan behöva ändras för att jag ska samtycka eller acceptera
       concerned_prompt: Vad är ditt bekymmer och hur kan det lösas?
+      not_sure: Vet inte
+      not_sure_meaning: Jag har en fråga eller behöver mer tid
+      not_sure_prompt: Vilka delar är otydliga för dig? Hur kunde detta lösas?
     gradients_of_agreement:
       process_subtitle: Uttrycka stöd för ett förslag på en 8-gradig skala
       process_introduction: <p>Förslaget Gradients of Agreement gör det möjligt för medlemmar i en grupp att uttrycka sitt stöd för ett förslag i grader på en skala, vilket erbjuder fler sätt att uttrycka stöd än i termer av "håller med" och "inte håller med".</p><p> Använd Gradienter of Agreement som en preliminär omgång, för att testa stöd för ett förslag innan du går över till ett formellt avtal.</p><p> Gradienter av enighet låter folk veta att ett förslag håller på att bildas och uppmuntrar dem att engagera sig. Det är en möjlighet att lyssna på människor, känna hur de känner och reagera på lämpligt sätt – vilket öppnar potentialen för att införliva deras bidrag för att fatta ett bättre beslut.</p>

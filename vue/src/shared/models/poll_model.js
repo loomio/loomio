@@ -163,7 +163,7 @@ export default class PollModel extends BaseModel {
 
   pieSlices() {
     let slices = [];
-    if (this.pollType === 'count') {
+    if ((this.pollType === 'count') && this.results.find(r => r.icon === 'agree')) {
       const agree = this.results.find(r => r.icon === 'agree');
       if (agree.score < this.agreeTarget) {
         const pct = (parseFloat(agree.score) / parseFloat(this.agreeTarget)) * 100;

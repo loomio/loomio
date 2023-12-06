@@ -2554,6 +2554,9 @@ pt_BR:
       concerned: Preocupado
       concerned_meaning: Algo sobre isso pode precisar mudar para eu consentir ou concordar
       concerned_prompt: Qual é a sua preocupação e como ela pode ser abordada?
+      not_sure: Não tenho certeza
+      not_sure_meaning: Tenho uma dúvida ou preciso de mais tempo
+      not_sure_prompt: Que partes não estão claras para você? Como isso poderia ser resolvido?
     gradients_of_agreement:
       process_subtitle: Apoio expresso a uma proposta em uma escala de 8 pontos
       process_introduction: "<p>A proposta Gradientes de concordância permite que membros de um grupo expressem seu apoio a uma proposta em graus em uma escala, oferecendo mais formas de expressar apoio do que em termos de “concordo” e “discordo”.</p><p> Use Gradientes de acordo como uma rodada preliminar para testar o suporte a uma proposta antes de passar para um acordo formal.</p><p> Gradientes de acordo permitem que as pessoas saibam que uma proposta está se formando e as encoraja a se envolver. É uma oportunidade de ouvir as pessoas, sentir como elas se sentem e responder adequadamente - abrindo o potencial de incorporar suas contribuições para uma melhor decisão.</p>"

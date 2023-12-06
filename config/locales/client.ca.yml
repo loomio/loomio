@@ -2509,6 +2509,9 @@ ca:
       concerned: Preocupat
       concerned_meaning: Pot ser que alguna cosa hagi de canviar per donar-me el meu consentiment o acceptar-ho
       concerned_prompt: Quina és la teva preocupació i com es podria abordar?
+      not_sure: No n'estic segur
+      not_sure_meaning: Tinc una pregunta o necessito més temps
+      not_sure_prompt: Quines parts no teniu clares? Com es podria solucionar això?
     gradients_of_agreement:
       process_subtitle: Expressar suport a una proposta en una escala de 8 punts
       process_introduction: <p>La proposta de Gradients d'acord permet als membres d'un grup expressar el seu suport a una proposta en graus a escala, oferint més maneres d'expressar suport que en termes d'"acord" i "en desacord".</p><p> Utilitzeu Gradients d'acord com a ronda preliminar, per provar el suport a una proposta abans de passar a un acord formal.</p><p> Els gradients d'acord permeten a la gent saber que s'està formant una proposta i els anima a participar. És una oportunitat per escoltar a la gent, sentir com se senten i respondre adequadament, obrint el potencial per incorporar les seves contribucions per prendre una millor decisió.</p>

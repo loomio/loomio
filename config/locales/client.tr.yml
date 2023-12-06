@@ -2438,6 +2438,9 @@ tr:
       concerned: Endişeli
       concerned_meaning: Onay vermem veya kabul etmem için bununla ilgili bir şeyin değişmesi gerekebilir
       concerned_prompt: Endişeniz nedir ve nasıl ele alınabilir?
+      not_sure: Emin değil
+      not_sure_meaning: Bir sorum var veya daha fazla zamana ihtiyacım var
+      not_sure_prompt: Hangi kısımlar sizin için net değil? Bu nasıl çözülebilir?
     gradients_of_agreement:
       process_subtitle: 8 puanlık bir ölçekte bir teklif için hızlı destek
       process_introduction: <p>Anlaşma teklifinin dereceleri, bir grup üyelerinin bir teklife yönelik desteklerini belirli bir ölçekte derece cinsinden ifade etmelerine olanak tanıyarak, desteği ifade etmenin "katılıyorum" ve "katılmıyorum" ifadelerinden daha fazla yolunu sunar.</p><p> Resmi bir anlaşmaya geçmeden önce bir teklifin desteğini test etmek için Anlaşma Aşamalarını bir ön tur olarak kullanın.</p><p> Anlaşma dereceleri, insanların bir teklifin oluştuğunu bilmesini sağlar ve onları katılıma teşvik eder. İnsanları dinlemek, nasıl hissettiklerini anlamak ve uygun şekilde yanıt vermek için bir fırsattır; daha iyi bir karar vermek için onların katkılarını birleştirme potansiyelini açar.</p>

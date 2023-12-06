@@ -2433,6 +2433,9 @@ da:
       concerned: Berørte
       concerned_meaning: Noget ved dette skal muligvis ændres, for at jeg kan samtykke eller acceptere
       concerned_prompt: Hvad er din bekymring, og hvordan kan den løses?
+      not_sure: Ikke sikker
+      not_sure_meaning: Jeg har et spørgsmål eller har brug for mere tid
+      not_sure_prompt: Hvilke dele er uklare for dig? Hvordan kunne dette løses?
     gradients_of_agreement:
       process_subtitle: Udtryk støtte til et forslag på en 8-trins skala
       process_introduction: <p>Forslaget om gradienter af enighed gør det muligt for medlemmer af en gruppe at udtrykke deres støtte til et forslag i grader på en skala, der tilbyder flere måder at udtrykke støtte på end i form af "enig" og "uenig".</p><p> Brug Gradients of Agreement som en indledende runde til at teste støtte til et forslag, før du går over til en formel aftale.</p><p> Gradienter af enighed lader folk vide, at et forslag er ved at blive dannet og opmuntrer dem til at engagere sig. Det er en mulighed for at lytte til folk, fornemme, hvordan de har det og reagere hensigtsmæssigt - hvilket åbner potentialet for at inkorporere deres bidrag for at træffe en bedre beslutning.</p>

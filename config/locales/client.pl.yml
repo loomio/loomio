@@ -2515,6 +2515,9 @@ pl:
       concerned: Zainteresowany
       concerned_meaning: Być może trzeba będzie coś zmienić, abym mógł wyrazić zgodę
       concerned_prompt: Jakie są Twoje obawy i jak można je rozwiązać?
+      not_sure: Niepewny
+      not_sure_meaning: Mam pytanie lub potrzebuję więcej czasu
+      not_sure_prompt: Które fragmenty są dla Ciebie niejasne? Jak można to rozwiązać?
     gradients_of_agreement:
       process_subtitle: Wyraź poparcie dla wniosku w 8-stopniowej skali
       process_introduction: "<p>Gradienty propozycji porozumienia umożliwiają członkom grupy wyrażanie poparcia dla propozycji w stopniach na skali, oferując więcej sposobów wyrażania poparcia niż „zgadzam się” i „nie zgadzam się”.</p><p> Użyj Gradientów porozumienia jako rundy wstępnej, aby przetestować poparcie dla propozycji przed przejściem do formalnej umowy.</p><p> Gradienty zgody informują ludzi o powstawaniu propozycji i zachęcają ich do zaangażowania. Jest to okazja do wysłuchania ludzi, wyczucia, jak się czują i odpowiedniego reagowania – otwierając potencjał do uwzględnienia ich wkładu w podejmowanie lepszych decyzji.</p>"

@@ -2436,6 +2436,9 @@ ro:
       concerned: Îngrijorat
       concerned_meaning: Este posibil să trebuiască să se schimbe ceva în legătură cu aceasta pentru ca eu să-mi dau acordul sau să fiu de acord
       concerned_prompt: Care este preocuparea dumneavoastră și cum ar putea fi abordată?
+      not_sure: Nu sunt sigur
+      not_sure_meaning: Am o întrebare sau am nevoie de mai mult timp
+      not_sure_prompt: Ce părți vă sunt neclare? Cum ar putea fi rezolvat acest lucru?
     gradients_of_agreement:
       process_subtitle: Sprijin expres pentru o propunere pe o scară de 8 puncte
       process_introduction: "<p>Propunerea Gradiente de acord permite membrilor unui grup să-și exprime sprijinul pentru o propunere în grade pe o scară, oferind mai multe moduri de exprimare a sprijinului decât în termeni de „de acord” și „de acord”.</p><p> Utilizați Gradiente de acord ca rundă preliminară, pentru a testa sprijinul pentru o propunere înainte de a trece la un acord oficial.</p><p> Gradientele de acord le permit oamenilor să știe că se formează o propunere și îi încurajează să se implice. Este o oportunitate de a asculta oamenii, de a simți cum se simt și de a răspunde în mod corespunzător - deschizând potențialul de a încorpora contribuțiile lor pentru a lua o decizie mai bună.</p>"

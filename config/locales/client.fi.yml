@@ -2259,6 +2259,9 @@ fi:
       concerned: Huolestunut
       concerned_meaning: Jotain tässä on ehkä muutettava, jotta voin suostua tai suostua
       concerned_prompt: Mikä on huolenaihe ja miten siihen voitaisiin puuttua?
+      not_sure: Epävarma
+      not_sure_meaning: Minulla on kysymys tai tarvitsen lisää aikaa
+      not_sure_prompt: Mitkä osat ovat sinulle epäselviä? Miten tämä voitaisiin ratkaista?
     gradients_of_agreement:
       process_subtitle: Ilmaise tukensa ehdotukselle 8 pisteen asteikolla
       process_introduction: <p>Sopimusgradientiehdotus antaa ryhmän jäsenille mahdollisuuden ilmaista tukensa ehdotukselle asteikolla, mikä tarjoaa enemmän tapoja ilmaista tukea kuin termeillä "samaa mieltä" ja "eri mieltä".</p><p> Käytä sopimusgradientteja alustavana kierroksena testataksesi ehdotuksen tukea ennen viralliseen sopimukseen siirtymistä.</p><p> Sopimuksen gradientit kertovat ihmisille, että ehdotus on muodostumassa, ja rohkaisee heitä sitoutumaan. Se on tilaisuus kuunnella ihmisiä, aistia heidän tunteitaan ja reagoida asianmukaisesti – avaa mahdollisuuksia sisällyttää heidän panoksensa tehdäkseen parempia päätöksiä.</p>

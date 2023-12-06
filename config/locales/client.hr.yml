@@ -2259,6 +2259,9 @@ hr:
       concerned: Zabrinut
       concerned_meaning: Nešto u vezi ovoga možda treba promijeniti da bih pristao ili se složio
       concerned_prompt: Što vas brine i kako se to može riješiti?
+      not_sure: Nisam siguran
+      not_sure_meaning: Imam pitanje ili trebam više vremena
+      not_sure_prompt: Koji dijelovi su vam nejasni? Kako bi se to moglo riješiti?
     gradients_of_agreement:
       process_subtitle: Izrazite podršku prijedlogu na ljestvici od 8 stupnjeva
       process_introduction: <p>Prijedlozi Gradijenata slaganja omogućuju članovima grupe da izraze svoju podršku prijedlogu u stupnjevima na ljestvici, nudeći više načina izražavanja podrške nego u terminima "slažem se" i "ne slažem se".</p><p> Upotrijebite Gradijente slaganja kao preliminarni krug za testiranje podrške za prijedlog prije prelaska na formalni sporazum.</p><p> Gradijent slaganja daje ljudima do znanja da se priprema prijedlog i potiče ih na angažman. To je prilika da slušate ljude, osjetite kako se osjećaju i prikladno reagirate - otvarajući potencijal za uključivanje njihovih doprinosa u donošenje bolje odluke.</p>

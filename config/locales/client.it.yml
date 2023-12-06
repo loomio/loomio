@@ -2515,6 +2515,9 @@ it:
       concerned: Interessato
       concerned_meaning: Potrebbe essere necessario cambiare qualcosa in questo per consentirmi o essere d'accordo
       concerned_prompt: Qual è la tua preoccupazione e come potrebbe essere affrontata?
+      not_sure: Non è sicuro
+      not_sure_meaning: Ho una domanda o ho bisogno di più tempo
+      not_sure_prompt: Quali parti non ti sono chiare? Come potrebbe essere risolto?
     gradients_of_agreement:
       process_subtitle: Esprimere sostegno per una proposta su una scala a 8 punti
       process_introduction: <p>La proposta Gradienti di accordo consente ai membri di un gruppo di esprimere il proprio sostegno a una proposta in gradi su una scala, offrendo più modi di esprimere sostegno che in termini di "accordo" e "disaccordo".</p><p> Utilizzare Gradienti di accordo come round preliminare, per testare il supporto per una proposta prima di passare a un accordo formale.</p><p> I gradienti di accordo consentono alle persone di sapere che si sta formando una proposta e le incoraggiano a impegnarsi. È un'opportunità per ascoltare le persone, percepire come si sentono e rispondere in modo appropriato, aprendo la possibilità di incorporare i loro contributi per prendere una decisione migliore.</p>

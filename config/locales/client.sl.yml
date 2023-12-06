@@ -2421,6 +2421,9 @@ sl:
       concerned: Zaskrbljen
       concerned_meaning: Nekaj o tem bo morda treba spremeniti, da se strinjam ali strinjam
       concerned_prompt: Kaj vas skrbi in kako bi to lahko rešili?
+      not_sure: Nisem prepričan
+      not_sure_meaning: Imam vprašanje ali potrebujem več časa
+      not_sure_prompt: Kateri deli so vam nejasni? Kako bi to lahko rešili?
     gradients_of_agreement:
       process_subtitle: Izrazite podporo predlogu na 8-stopenjski lestvici
       process_introduction: "<p>Predlog gradientov soglasja omogoča članom skupine, da izrazijo svojo podporo predlogu v stopnjah na lestvici, kar ponuja več načinov izražanja podpore kot z izrazoma »strinjam se« in »se ne strinjam«.</p><p> Uporabite Gradiente soglasja kot predhodni krog, da preizkusite podporo za predlog, preden preidete na uradni dogovor.</p><p> Gradienti soglasja sporočajo ljudem, da se pripravlja predlog, in jih spodbujajo k sodelovanju. To je priložnost, da prisluhnemo ljudem, zaznamo, kako se počutijo, in se ustrezno odzovemo – odpiramo možnosti za vključitev njihovih prispevkov, da sprejmemo boljšo odločitev.</p>"

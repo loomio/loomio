@@ -2523,6 +2523,9 @@ de:
       concerned: Betroffen
       concerned_meaning: Möglicherweise muss sich hieran etwas ändern, damit ich zustimmen oder zustimmen kann
       concerned_prompt: Was ist Ihr Anliegen und wie könnte es angegangen werden?
+      not_sure: Nicht sicher
+      not_sure_meaning: Ich habe eine Frage oder brauche mehr Zeit
+      not_sure_prompt: Welche Teile sind Ihnen unklar? Wie könnte das gelöst werden?
     gradients_of_agreement:
       process_subtitle: Drücken Sie Ihre Unterstützung für einen Vorschlag auf einer 8-Punkte-Skala aus
       process_introduction: "<p>Der Vorschlag „Gradienten der Zustimmung“ ermöglicht es Mitgliedern einer Gruppe, ihre Unterstützung für einen Vorschlag in Graden auf einer Skala auszudrücken. Dies bietet mehr Möglichkeiten, Unterstützung auszudrücken als durch „stimme zu“ und „stimme nicht zu“.</p><p> Nutzen Sie „Gradients of Agreement“ als Vorrunde, um die Unterstützung für einen Vorschlag zu testen, bevor Sie zu einer formellen Vereinbarung übergehen.</p><p> Übereinstimmungsgrade lassen die Menschen wissen, dass ein Vorschlag entsteht, und ermutigen sie, sich zu engagieren. Es ist eine Gelegenheit, den Menschen zuzuhören, ihre Gefühle zu spüren und angemessen zu reagieren – und so die Möglichkeit zu eröffnen, ihre Beiträge einzubeziehen, um eine bessere Entscheidung zu treffen.</p>"

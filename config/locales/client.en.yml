@@ -2546,6 +2546,9 @@ en:
         do you feel about the proposal?  Leave a comment or make a suggestion for improvement.</p><p>This
         Sense check is an opportunity for your input and contribution, to help us make
         a better decision.</p>
+      not_sure: Not sure
+      not_sure_meaning: I have a question or need more time
+      not_sure_prompt: What parts are unclear to you? How could this be solved?
       looks_good: Looks good
       looks_good_meaning: I'm happy with where this is going
       looks_good_prompt: Do you have any comments or suggestions to make the proposal

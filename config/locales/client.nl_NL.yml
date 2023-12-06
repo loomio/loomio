@@ -2515,6 +2515,9 @@ nl_NL:
       concerned: Bezorgd
       concerned_meaning: Mogelijk moet hier iets aan veranderen voordat ik instem of akkoord ga
       concerned_prompt: Waar maakt u zich zorgen over en hoe kan dit worden aangepakt?
+      not_sure: Niet zeker
+      not_sure_meaning: Ik heb een vraag of heb meer tijd nodig
+      not_sure_prompt: Welke onderdelen zijn voor jou onduidelijk? Hoe zou dit opgelost kunnen worden?
     gradients_of_agreement:
       process_subtitle: Spreek uw steun uit voor een voorstel op een 8-puntsschaal
       process_introduction: <p>Het voorstel Gradients of agreement stelt leden van een groep in staat om hun steun voor een voorstel uit te drukken in graden op een schaal, waardoor meer manieren worden geboden om hun steun uit te drukken dan in termen van "mee eens" en "oneens".</p><p> Gebruik Gradiënten van overeenstemming als voorronde om de steun voor een voorstel te testen voordat u overgaat tot een formele overeenkomst.</p><p> Gradiënten van overeenstemming laten mensen weten dat er een voorstel in voorbereiding is en moedigt hen aan om mee te doen. Het is een kans om naar mensen te luisteren, aan te voelen hoe ze zich voelen en gepast te reageren - waardoor het potentieel wordt geopend om hun bijdragen te integreren om een betere beslissing te nemen.</p>
