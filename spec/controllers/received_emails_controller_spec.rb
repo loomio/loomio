@@ -37,6 +37,7 @@ describe ReceivedEmailsController do
   end
 
   it "forwards specific emails to contact" do
+    ForwardEmailRule.create(handle: 'contact', email:'support@loomio.example.org')
     h = mailin_params(
       to: "contact@#{ENV['REPLY_HOSTNAME']}", 
       body: "yo this is for contact"

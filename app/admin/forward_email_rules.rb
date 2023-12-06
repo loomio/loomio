@@ -1,4 +1,4 @@
-ActiveAdmin.register ReservedHandle do
+ActiveAdmin.register ForwardEmailRule do
   filter :handle
   filter :email
 

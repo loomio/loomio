@@ -37,7 +37,19 @@ class ReceivedEmail < ApplicationRecord
     end
   end
 
-  def body
+  def body_format
+    if body_html.present?
+      'html'
+    else
+      'md'
+    end
+  end
+
+  def full_body
+    self.body_html.presence || self.body_text
+  end
+
+  def reply_body
     text = if body_html.present?
       Premailer.new(body_html, line_length: 10000, with_html_string: true).to_plain_text
     else

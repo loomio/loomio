@@ -369,6 +369,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_215840) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "forward_email_rules", force: :cascade do |t|
+    t.citext "handle", null: false
+    t.string "email"
+  end
+
   create_table "group_identities", id: :serial, force: :cascade do |t|
     t.integer "group_id", null: false
     t.integer "identity_id", null: false
@@ -822,11 +827,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_215840) do
     t.boolean "released", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "reserved_handles", force: :cascade do |t|
-    t.citext "handle", null: false
-    t.string "email"
   end
 
   create_table "stance_choices", id: :serial, force: :cascade do |t|

@@ -1,11 +1,11 @@
 class ReceivedEmailService
-  def self.refresh_reserved_handles
-    reserved_handles = File.readlines(Rails.root.join("db/handle_banlist.txt")).map(&:chomp).map do |handle| 
+  def self.refresh_forward_email_rules
+    forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle| 
       {handle: handle, email: "#{handle}@#{ENV['REPLY_HOSTNAME']}"}
     end
 
-    ReservedHandle.delete_all
-    ReservedHandle.insert_all(reserved_handles, record_timestamps: false)
+    ForwardEmailRule.delete_all
+    ForwardEmailRule.insert_all(forward_email_rules, record_timestamps: false)
   end
 
   def self.route_all
@@ -34,16 +34,13 @@ class ReceivedEmailService
 
       email.update_attribute(:released, true)
     else
-      if reserved_handle = ReservedHandle.find_by(handle: email.route_path)
-        BaseMailer.contact_message(
-          email.sender_name,
-          email.sender_email,
-          email.subject,
-          email.body,
-          {
-            site: ENV['CANONICAL_HOST'],
-            deliver_to: email.route_address
-          }
+      if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
+        BaseMailer.forward_message(
+          to: forward_email_rule.email,
+          reply_to: email.route_address,
+          subject: email.subject,
+          body_text: email.body_text,
+          body_html: email.body_html
         ).deliver_later
         email.update(released: true)
         return
@@ -146,8 +143,8 @@ class ReceivedEmailService
     {
       group_id: Group.find_by!(handle: (params['handle'] || email.route_path)).id,
       title: email.subject,
-      body: email.body,
-      body_format: 'md',
+      body: email.full_body,
+      body_format: email.body_format,
       files: email.attachments.map {|a| a.blob }
     }.compact
   end
@@ -174,7 +171,7 @@ class ReceivedEmailService
       discussion_id: params['d'].to_i,
       parent_id: parent_id,
       parent_type: parent_type,
-      body: email.body,
+      body: email.reply_body,
       body_format: 'md',
       files: email.attachments.map {|a| a.blob }
     }.compact

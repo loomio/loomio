@@ -5,4 +5,4 @@ end
 BlacklistedPassword.delete_all
 BlacklistedPassword.insert_all(attrs, record_timestamps: false)
 
-ReceivedEmailService.refresh_reserved_handles
+ReceivedEmailService.refresh_forward_email_rules
