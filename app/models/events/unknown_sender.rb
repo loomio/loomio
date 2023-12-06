@@ -6,6 +6,10 @@ class Events::UnknownSender < Event
     super received_email
   end
 
+  def wait_time
+    0.minute
+  end
+
   private
 
   def notification_recipients
