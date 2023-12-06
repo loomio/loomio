@@ -64,7 +64,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def title
-    "#{sender_email}: #{subject}"
+    route_address
   end
 
   def is_addressed_to_loomio?
