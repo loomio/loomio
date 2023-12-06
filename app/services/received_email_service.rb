@@ -16,6 +16,7 @@ class ReceivedEmailService
 
   def self.route(email)
     return nil unless email.route_address
+    return nil if email.released
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
