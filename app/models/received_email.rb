@@ -37,6 +37,14 @@ class ReceivedEmail < ApplicationRecord
     end
   end
 
+  def sender_name_and_email
+    if sender_name
+      "\"#{sender_name}\" <#{sender_email}>"
+    else
+      sender_email
+    end
+  end
+
   def body_format
     if body_html.present?
       'html'
@@ -64,7 +72,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def title
-    route_address
+    sender_name_and_email
   end
 
   def is_addressed_to_loomio?
