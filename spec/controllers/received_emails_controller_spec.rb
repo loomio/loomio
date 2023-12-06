@@ -37,7 +37,7 @@ describe ReceivedEmailsController do
   end
 
   it "forwards specific emails to contact" do
-    ForwardEmailRule.create(handle: 'contact', email:'support@loomio.example.org')
+    ForwardEmailRule.create(handle: 'contact', email: "support@#{ENV['REPLY_HOSTNAME']}")
     h = mailin_params(
       to: "contact@#{ENV['REPLY_HOSTNAME']}", 
       body: "yo this is for contact"
@@ -45,7 +45,7 @@ describe ReceivedEmailsController do
     post :create, params: h
 
     last_email = ActionMailer::Base.deliveries.last
-    expect(last_email.to).to include 'support@loomio.example.org'
+    expect(last_email.to).to include "support@#{ENV['REPLY_HOSTNAME']}"
   end
 
   it "creates a reply to comment via email" do
