@@ -17,23 +17,21 @@ class ReceivedEmailService
   def self.route(email)
     return nil unless email.route_address
     return nil if email.released
+    return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
+    return nil if email.sender_hostname.downcase == ENV['SMTP_DOMAIN'].downcase
+    
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
-      CommentService.create(
-        comment: Comment.new(comment_params(email)),
-        actor: actor_from_email(email)
-      )
+      if comment = CommentService.create(comment: Comment.new(comment_params(email)), actor: actor_from_email(email))
+        email.update_attribute(:released, true) if comment.persisted?
+      end
 
-      email.update_attribute(:released, true)
     when /[^\s]+\+u=.+&k=.+/ 
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
-      DiscussionService.create(
-        discussion: Discussion.new(discussion_params(email)),
-        actor: actor_from_email(email)
-      )
-
-      email.update_attribute(:released, true)
+      if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
+        email.update_attribute(:released, true) if discussion.persisted?
+      end
     else
       if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
         ForwardMailer.forward_message(
@@ -53,10 +51,9 @@ class ReceivedEmailService
           email.update(group_id: group.id)
 
           if actor = actor_from_email_and_group(email, group)
-            discussion = DiscussionService.create(
-              discussion: Discussion.new(discussion_params(email)),
-              actor: actor)
-            email.update(released: true)
+            if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor)
+              email.update(released: true) if discussion.persisted?
+            end
           else
             Events::UnknownSender.publish!(email)
           end

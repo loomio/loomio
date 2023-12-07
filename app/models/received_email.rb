@@ -24,6 +24,10 @@ class ReceivedEmail < ApplicationRecord
     route_address.split('@')[0]
   end
 
+  def sender_hostname
+    sender_email.split('@')[1]
+  end
+
   def sender_email
     String(header('from')).scan(AppConfig::EMAIL_REGEX).uniq.first
   end

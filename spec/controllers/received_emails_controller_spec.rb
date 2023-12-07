@@ -36,6 +36,18 @@ describe ReceivedEmailsController do
     discussion.group.add_member! another_user
   end
 
+  it "ignores emails from reply_hostname" do
+    ForwardEmailRule.create(handle: 'homer', email: "homer@loomio.com")
+    h = mailin_params(
+      to: "homer@#{ENV['REPLY_HOSTNAME']}", 
+      body: "yo this is for contact",
+      from: "homer@#{ENV['REPLY_HOSTNAME']}"
+    )
+    post :create, params: h
+
+    expect(ActionMailer::Base.deliveries.last).to be nil
+  end
+
   it "forwards specific emails to contact" do
     ForwardEmailRule.create(handle: 'homer', email: "homer@simpson.com")
     h = mailin_params(

@@ -388,7 +388,7 @@ en:
     copy_address: Copy address
     email_me_this_address: Email me this address
     email_address_copied_to_clipboard: Email address copied to clipboard
-    forward_email_to_move_conversation: "Tip: Forward an existing email conversation to Loomio when you need to make a decision or keep a record."
+    forward_email_to_move_conversation: "Tip: Forward an email conversation to Loomio when you need to make a decision or keep a record."
 
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Your email address to start threads in %{group}
