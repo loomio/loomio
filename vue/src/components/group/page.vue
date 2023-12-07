@@ -155,6 +155,6 @@ v-main
 
 <style lang="css">
 .action-dock__button--email_group {
-  text-transform: none;
+  text-transform: none !important;
 }
 </style>
