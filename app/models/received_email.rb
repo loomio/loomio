@@ -37,6 +37,10 @@ class ReceivedEmail < ApplicationRecord
     end
   end
 
+  def from
+    header('from').strip
+  end
+  
   def sender_name_and_email
     if sender_name
       "\"#{sender_name}\" <#{sender_email}>"

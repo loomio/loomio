@@ -36,9 +36,10 @@ class ReceivedEmailService
       email.update_attribute(:released, true)
     else
       if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
-        BaseMailer.forward_message(
+        ForwardMailer.forward_message(
+          from: "\"#{email.sender_name}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
           to: forward_email_rule.email,
-          reply_to: email.route_address,
+          reply_to: email.from,
           subject: email.subject,
           body_text: email.body_text,
           body_html: email.body_html

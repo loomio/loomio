@@ -23,16 +23,6 @@ class BaseMailer < ActionMailer::Base
     )
   end
 
-  def forward_message(to:, reply_to:, subject:, body_text: nil, body_html: nil)
-    mail(
-      to: to,
-      reply_to: reply_to,
-      subject: subject
-    )
-    @body_text = body_text
-    @body_html = body_html
-  end
-
   protected
   def utm_hash
     @utm_hash = { utm_medium: 'email', utm_campaign: action_name }
