@@ -30,9 +30,9 @@ class BaseMailer < ActionMailer::Base
 
   def from_user_via_loomio(user)
     if user.present?
-      "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
-    else
       "\"#{I18n.t('base_mailer.via_loomio', name: user.name, site_name: AppConfig.theme[:site_name])}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
+    else
+      "\"#{AppConfig.theme[:site_name]}\" <#{NOTIFICATIONS_EMAIL_ADDRESS}>"
     end
   end
 
