@@ -3,6 +3,7 @@ class ReceivedEmail < ApplicationRecord
   belongs_to :group
 
   scope :unreleased, -> { where(released: false) }
+  scope :released, -> { where(released: true) }
 
   def header(name)
     headers.find { |key, value| key.downcase == name.to_s.downcase }&.last
@@ -40,7 +41,7 @@ class ReceivedEmail < ApplicationRecord
   def from
     header('from').strip
   end
-  
+
   def sender_name_and_email
     if sender_name
       "\"#{sender_name}\" <#{sender_email}>"
