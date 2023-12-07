@@ -213,10 +213,8 @@ img.emoji
   word-break: break-word
 
   img
-    aspect-ratio: attr(width) / attr(height)
     max-width: 100%
     max-height: 600px
-    width: auto
     height: auto
 
   ol, ul
