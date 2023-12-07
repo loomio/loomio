@@ -37,15 +37,15 @@ describe ReceivedEmailsController do
   end
 
   it "forwards specific emails to contact" do
-    ForwardEmailRule.create(handle: 'contact', email: "support@#{ENV['REPLY_HOSTNAME']}")
+    ForwardEmailRule.create(handle: 'homer', email: "homer@simpson.com")
     h = mailin_params(
-      to: "contact@#{ENV['REPLY_HOSTNAME']}", 
+      to: "homer@#{ENV['REPLY_HOSTNAME']}", 
       body: "yo this is for contact"
     )
     post :create, params: h
 
     last_email = ActionMailer::Base.deliveries.last
-    expect(last_email.to).to include "support@#{ENV['REPLY_HOSTNAME']}"
+    expect(last_email.to).to include "homer@simpson.com"
   end
 
   it "creates a reply to comment via email" do
