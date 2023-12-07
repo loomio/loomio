@@ -338,11 +338,14 @@ img.emoji
     font-weight: bold
 
   table table
-    margin: 0
-    border: 0
+    margin: 0 !important
+    border: 0 !important
 
   td td
-    padding: 0
+    padding: 0 !important
+
+  td td td
+    border: 0 !important
 
   table
     p
