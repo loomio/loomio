@@ -13,18 +13,26 @@ export default new class GroupService {
   actions(group) {
     const membership = group.membershipFor(Session.user());
     
-    // email_to_group:
-    //   name: 'email_to_group.email_to_group_address'
-    //   icon: 'mdi-send'
-    //   menu: true
-    //   canPerform: -> AbilityService.canStartThread(group)
-    //   perform: ->
-    //     openModal
-    //       component: 'EmailToGroupSettings'
-    //       props:
-    //         group: group
-
     return {
+      email_group: {
+        name: 'common.value',
+        nameArgs: () => { return {value: group.handle+"@"+AppConfig.theme.reply_hostname} },
+        icon: 'mdi-email',
+        dock: 2,
+        canPerform() {
+          return group.handle && AbilityService.canStartThread(group);
+        },
+        perform() {
+          EventBus.$emit('openModal', {
+            component: 'EmailToGroupSettings',
+            persistent: false,
+            props: {
+              group: group
+            }
+          });
+        }
+      },
+
       translate_group: {
         name: 'common.action.translate',
         icon: 'mdi-translate',

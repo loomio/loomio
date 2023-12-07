@@ -66,7 +66,7 @@ tr:
     free_trial: Ücretsiz deneme. %{days} gün kaldı.
     trial_expired: Deneme süresi doldu. Loomio'yu kullanmaya devam etmek için paketinizi   yükseltin.
     tooltip: Fiyatlarımız harika! Bugün paketinizi yükseltin ve Loomio'nun grubunuza neler sunabileceğini keşfedin.
-    was_gift_trial: "%{CreatedDate} tarihinden beri grubunuz Loomio'yu ücretsiz kullanıyor. Ücretsiz bir hizmet sunmaya devam edemiyoruz. Loomio'yu kullanmaya devam etmek için lütfen paketinizi yükseltin. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Daha fazla bilgi.</a>"
+    was_gift_trial: "%{createdDate} tarihinden beri grubunuz Loomio'yu ücretsiz kullanıyor. Ücretsiz bir hizmet sunmaya devam edemiyoruz. Loomio'yu kullanmaya devam etmek için lütfen paketinizi yükseltin. <a href='https://help.loomio.org/en/plan-changes/' target='_blank' style='text-decoration: underline;'>Daha fazla bilgi.</a>"
     was_gift_remaining: "%{days} gün kaldı."
     was_gift_expired: Ücretsiz planınızın süresi doldu.
     buy_now: Şimdi al
@@ -188,7 +188,7 @@ tr:
     reset: Sıfırla
     copy_text: Metni kopyala
     copied: Panoya kopyalandı
-    points_abbrev: " Her oy %{Score} puan değerinde"
+    points_abbrev: " Her oy %{score} puan değerinde"
     total: Toplam
     action:
       print: Yazdır
@@ -254,6 +254,7 @@ tr:
       restore: Eski haline getirmek
       zoom: Yakınlaştır
       align: Hizala
+      confirm: Onaylamak
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
@@ -274,6 +275,7 @@ tr:
     minutes: dakika
     today: Bugün
     in_x_days: "%{x} gün içinde"
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Hesapları birleştir
@@ -350,7 +352,7 @@ tr:
       title: "%{title} için bildirimler"
       quiet_description: Bu gruptaki etkinlikler hakkında size e-posta gönderilmeyecek.
       apply_to_all: Bu ayarları tüm gruplarıma uygula.
-      apply_to_organization: "%{organizasyon} içindeki tüm gruplara uygula"
+      apply_to_organization: "%{organization} içindeki tüm gruplara uygula"
       messages:
         loud: Bu gruptaki tüm etkinlikler size e-postayla gönderilecektir.
         normal: Bu gruptaki duyurular yalnızca e-postayla tarafınıza gönderilecektir.
@@ -479,7 +481,7 @@ tr:
     toggle_sidebar: Kenar çubuğunu aç/kapat
     open_sidebar: Kenar çubuğunu aç
     close_sidebar: Kenar çubuğunu kapat
-    group_and_subgroups: "%{grup} ve alt gruplar"
+    group_and_subgroups: "%{group} ve alt gruplar"
   membership_dropdown:
     invitation_resent: Davetiye tekrar gönderildi
     cancel_invitation: Davetiyeyi iptal et
@@ -531,6 +533,7 @@ tr:
       user_added_to_group: "%{actor} sizi şu gruba ekledi: %{title}"
       user_mentioned: "%{actor} sizden şu konuda bahsetti: %{title}"
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor: %{title}"
+      unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
     without_title:
       discussion_announced: "%{actor} sizi bir konuya davet etti"
       discussion_edited: "%{actor} konu içeriğini düzenledi"
@@ -561,11 +564,12 @@ tr:
       poll_reminder: "%{actor} size oy vermenizi hatırlatıyor"
       poll_reminder_wip: "%{actor} size geri bildirimde bulunmanızı hatırlatıyor"
       reaction_created: "%{actor}, %{model}'inize %{reaction} tepki gösterdi"
-      stance_created: "%{aktör} oy verdi"
-      stance_updated: "%{aktör} oy verdi"
+      stance_created: "%{actor} oy verdi"
+      stance_updated: "%{actor} oy verdi"
       stance_created_option: "%{actor}, %{option}'a oy verdi"
       user_mentioned: "%{actor} sizden bahsetti"
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor"
+      unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
     hints:
       poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
       poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
@@ -714,7 +718,7 @@ tr:
     poll_closing_soon: "%{name}'nin anket kapanış hatırlatıcısı %{length} kişiye şunu bildirdi:"
     poll_reminder: "%{name}, %{length} kişiye oy vermesini hatırlattı:"
     audiences:
-      group: "%{isim}"
+      group: "%{name}"
       everyone_in_the_group: Gruptaki herkes
       discussion_group: Konudaki herkes
       voters: Herkes oy kullanmaya davet edildi
@@ -882,7 +886,7 @@ tr:
     after: Sonrasında
     original_text: Orijinal
     closing_at_changed: kapanış saati %{time} olarak ayarlandı
-    private_changed: gizlilik %{özel} olarak ayarlandı
+    private_changed: gizlilik %{private} olarak ayarlandı
     group_id_changed: "%{name}'a taşındı"
   reactions_display:
     you: Sen
@@ -990,7 +994,7 @@ tr:
     subgroup_privacy_is_open_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açıktır.
     subgroup_privacy_is_closed_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler gizlidir.
     subgroup_privacy_is_closed_public_threads_description: Herkes alt grubu bulabilir ve katılmayı isteyebilir. Sadece üyeler grupta kim olduğunu görebilir. Tüm müzakereler kamuya açık veya gizli olabilir.
-    subgroup_privacy_is_closed_secret_parent_description: "%{Parent} grubunun üyeleri bu alt grubu bulabilir ve katılmayı isteyebilir. Tüm müzakereler gizlidir. Sadece üyeler grupta kim olduğunu görebilir."
+    subgroup_privacy_is_closed_secret_parent_description: "%{parent} grubunun üyeleri bu alt grubu bulabilir ve katılmayı isteyebilir. Tüm müzakereler gizlidir. Sadece üyeler grupta kim olduğunu görebilir."
     subgroup_privacy_is_secret_description: Sadece davet edilen üyeler bu alt grubu bulabilir, kimlerin grupta olduğunu ve müzakereleri görebilir.
     advanced_settings: Gelişmiş ayarlar
     how_do_people_join: Kişiler nasıl katılabilir?
@@ -1263,7 +1267,7 @@ tr:
       instructions: Bir ileti dizisini sessize almak için üzerine gelin ve sessize alma simgesine tıklayın.
       see_muted_html: Yoksayılan konularınızı görmek için <strong>"Yoksayıldı"yı</strong> tıklayın. Aynı simgenin üzerine gelip tıklayarak sesi açabilirsiniz.
     thread_preview:
-      you_voted: "%{pozisyon} için oy verdiniz"
+      you_voted: "%{position} için oy verdiniz"
       undecided: kararsızsın
   inbox_page:
     no_threads: Yaşasın! Gelen kutunuzdaki bütün müzakereleri okudunuz.
@@ -1419,7 +1423,7 @@ tr:
     custom_poll: Özel anket
     delete_poll: Anketi sil
     select_count_options: "%{count} seçeneği seçin"
-    select_minimum_to_maximum_options: "%{minimum} ile %{maksimum} arası seçenekleri belirleyin"
+    select_minimum_to_maximum_options: "%{minimum} ile %{maximum} arası seçenekleri belirleyin"
     custom_poll_types: Özel anket türleri
     hidden_poll_templates: Gizli anket şablonları
     poll_template: Anket şablonu
@@ -1842,8 +1846,6 @@ tr:
     email_to_group_address: Gruba e-posta adresi
     start_threads_via_email: Konuları e-postayla başlat
     your_address_for_this_group: Bu grup için e-posta adresiniz
-    send_email_to_start_thread: Grubunuzda bir konu başlatmak için bu adrese e-posta gönderin.
-    subject_body_attachments: Konuda e-postanın konusu, gövdesi ve ekli dosyalar kullanılacaktır.
     address_starts_threads_as_you: Bu adresi paylaşmayın; bu adrese sahip olan herkes sizin adınıza konu başlatabilir.
     generate_new_address: Yeni adres oluştur
     copy_address: Adresi kopyala
@@ -1853,6 +1855,24 @@ tr:
     new_address_generated: Yeni gruba e-posta adresi oluşturuldu
     generate_new_address_question: Yeni e-posta grubu adresi oluşturulsun mu?
     generate_new_address_warning: Mevcut tüm e-posta-loomio adresleriniz çalışmayı durduracaktır. Geri alma yok. Devam etmek?
+    not_available_to_trial_or_demo: Bu özellik deneme veya demo gruplarında mevcut değildir
+    review_email: E-postayı inceleyin
+    add_alias: Takma ad ekle
+    who_is_the_owner_of_email: "%{email}'in sahibi kim?"
+    is_name_the_owner_of_email: "%{name}, %{email} hesabının sahibi mi?"
+    all_email_will_belong_to_name: "%{email} adresinden gelen tüm iletiler %{name} ile ilişkilendirilecek"
+    email_aliases: Takma adlar ve göz ardı edilen adresler
+    belongs_to_name: "%{name}'ye ait"
+    block_email: Adresi engelle
+    no_emails_to_release: Yayınlanmayı bekleyen e-posta yok
+    release_rules: Yayın kuralları
+    confirm_block: Bu e-posta adresi engellensin mi?
+    confirm_block_body: Bu e-posta ve %{sender} tarafından gönderilen diğer e-postalar dikkate alınmayacaktır.
+    confirm_delete: Bu e-posta silinsin mi?
+    confirm_delete_body: Bu e-posta silinecek. %{sender}'dan gelecek e-postalar etkilenmeyecektir.
+    unreleased_emails: Yayınlanmamış e-postalar
+    start_a_thread_by_email: E-postayla konu başlat
+    email_released: E-posta yayınlandı ve takma ad oluşturuldu
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: "%{group} grubunda konu başlatmak için e-posta adresiniz"
   close_explanation_modal:
@@ -2047,7 +2067,7 @@ tr:
     header: Grupları keşfedin
     search_placeholder: Herkese açık grupları arayın
     single_search_result: "<strong>%{searchTerm} ile eşleşen 1 genel grup:</strong>"
-    multiple_search_results: "{ <strong>{searchTerm} ile eşleşen %{resultCount} herkese açık grup:</strong>"
+    multiple_search_results: "{ <strong>%{searchTerm} ile eşleşen %{resultCount} herkese açık grup:</strong>"
     no_results_found: "<strong>Aradığınız grubu bulamıyor musunuz?</strong> Bir grubun gizliliği 'gizli' olarak ayarlanmışsa burada görünmez."
     newest_first: En yeni ilk
     biggest_first: İlk önce en büyüğü
@@ -2104,7 +2124,7 @@ tr:
     draft_mode: Oylama devre dışı bırakıldı. Bu henüz oylamaya açık değil.
     voting_disabled_poll_is_template: Oylama devre dışı bırakıldı. Bu bir şablon.
   poll_common_collapsed:
-    by_who: isimle}
+    by_who: "%{name}"
   poll_common_calendar_invite:
     calendar_invite: Bu sonucu içeren bir takvim davetiyesi ekleyin
     poll_option_id: Buluşma zamanı
@@ -2229,7 +2249,7 @@ tr:
     you_will_be_notified: İnceleme tarihinde bilgilendirileceksiniz.
     submit: Sonucu paylaş
   poll_common_outcome_panel:
-    authored_by: İsimle}
+    authored_by: "%{name}"
   poll_common_delete_modal:
     question: Bunu silmek istediğinizden emin misiniz?
     title: "%{pollType}'ı sil"
@@ -2314,7 +2334,7 @@ tr:
     agree_target_label: Hedef numarası
   poll_common_percent_voted:
     sentence: "%{numerator} / %{denominator} kişi katıldı (%{percent}%)"
-    target_progress: Hedefin %%{percent} kadarına ulaşıldı. (%{sayı} / %{hedef})
+    target_progress: Hedefin %%{percent} kadarına ulaşıldı. (%{num} / %{target})
   poll_remove_vote:
     title: Oyunuz kaldırılsın mı?
     helptext: Oyunuzu kaldırmak istediğinizden emin misiniz? Kararsız olarak listeleneceksiniz ve dilerseniz daha sonra tekrar oy kullanabileceksiniz.
@@ -2494,7 +2514,7 @@ tr:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konuyu kapattı"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> konuyu yeniden açtı"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> bu konunun bir çatalını oluşturdu: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{yazar}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> bir sonuç paylaştı"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author},</a> %{polltype} anketini yeniden açtı"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author},</a> %{polltype}'yi kapattı"

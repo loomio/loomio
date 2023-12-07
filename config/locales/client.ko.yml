@@ -24,10 +24,10 @@ ko:
     generating_demo: 잠시만 기다려주세요! 데모를 만드는데 20초 정도 필요합니다!
     start_a_x_day_free_trial: "%{day} 일 무료 체험을 시작합니다.<br>"
     template_gallery: 템플릿 갤러리
-    title_template: "%{제목} 템플릿"
-    title_templates: "%{제목} 템플릿"
-    title_copy: "%{제목} 사본"
-    copy_of_title: "%{제목} 사본"
+    title_template: "%{title} 템플릿"
+    title_templates: "%{title} 템플릿"
+    title_copy: "%{title} 사본"
+    copy_of_title: "%{title} 사본"
     loomio_default_templates: Loomio 기본 템플릿
     which_templates_would_you_like_to_use: 어떤 템플릿을 사용하시겠습니까?
     login_to_start_demo: 이것은 Loomio의 실제 데모입니다. 주변을 둘러보시면 좋습니다.
@@ -138,7 +138,7 @@ ko:
     helptext: 태그는 당신이 토론들을 분류할 수 있게해주고 쉽게 찾을 수 있게 해줍니다.
     tag_created: 태그 저장됨
     tag_destroyed: 태그 삭제됨
-    tags_marked: 스레드는 %{GroupName}에 '%{name}'으로 표기되어있습니다.
+    tags_marked: 스레드는 %{groupName}에 '%{name}'으로 표기되어있습니다.
     no_tags_in_group: 이 그룹은 카테고리나 태그가 아직 설정되지 않았습니다.
     only_admins_can_edit_tags: 앗! %{group}의 관리자에게 태그 생성, 수정, 삭제 권한이 있습니다.
     card_title: 카테고리 태그
@@ -222,7 +222,7 @@ ko:
     reset: 초기화
     copy_text: 텍스트 복사
     copied: 복사됨
-    points_abbrev: 투표당 %{sore} 점
+    points_abbrev: 투표당 %{score} 점
     total: 총
     action:
       print: 인쇄
@@ -288,6 +288,7 @@ ko:
       export: 내보내다
       zoom: 줌
       align: 맞추다
+      confirm: 확인하다
     formatting_help:
       label: 서식
       title: 당신의 글 서식 설정을 위한 Markdown 사용법 배우기
@@ -309,6 +310,7 @@ ko:
     minutes: 분
     today: 오늘
     in_x_days: "%{x}일 후"
+    value: "%{value}"
   merge_accounts:
     modal:
       title: 계정 연동
@@ -624,6 +626,7 @@ ko:
       user_added_to_group: "%{actor}님이 귀하를 그룹 %{title}에 추가했습니다."
       user_mentioned: "%{actor}님이 %{title}에서 당신을 멘션했습니다."
       user_reminded: "%{actor}님이 %{title}에 투표하라고 알림을 보냈습니다."
+      unknown_sender: 알 수 없는 발신자가 보낸 이메일을 검토하세요.
     without_title:
       discussion_announced: "%{actor}님이 당신을 스레드에 초대했습니다"
       discussion_edited: "%{actor}님이 스레드 컨텍스트를 편집했습니다."
@@ -659,6 +662,7 @@ ko:
       stance_created_option: "%{actor}님이 %{option}에 투표했습니다."
       user_mentioned: "%{actor}님이 당신을 멘션했습니다."
       user_reminded: "%{actor}님이 투표하라고 알림을 보내고 있습니다."
+      unknown_sender: 알 수 없는 발신자가 보낸 이메일을 검토하세요.
     hints:
       poll_closing_soon: 지금이야말로 투표를 하거나, 마음을 바꾸거나, 다른 사람들의 참여를 독려할 좋은 시간입니다.
       poll_closing_soon_author: 사람들에게 투표를 상기시키거나 마감일을 연장할 수도 있습니다.
@@ -733,7 +737,7 @@ ko:
       decided_voters: 투표 완료자 전원
       undecided_voters: 결정하지 않은 투표자들
       non_voters: "%{name}에 아직 초대받지 못한 멤버들"
-      group: "%{이름}"
+      group: "%{name}"
       everyone_in_the_group: 그룹의 모든 사람
     form:
       too_many_invitations: '초대 한도를 초과했습니다. <a href="%{upgradeUrl}" target="_blank">업그레이드</a>
@@ -1565,7 +1569,7 @@ ko:
     header: 그룹 탐색
     search_placeholder: 공개 그룹 검색
     single_search_result: "<strong>%{searchTerm}과 일치하는 공개 그룹 1개:</strong>"
-    multiple_search_results: "{ <strong>{searchTerm}과(와) 일치하는 공개 그룹 %{resultCount}개:</strong>"
+    multiple_search_results: "{ <strong>%{searchTerm}과(와) 일치하는 공개 그룹 %{resultCount}개:</strong>"
     no_results_found: "<strong>원하는 그룹을 찾을 수 없나요?</strong> 그룹의 개인정보 보호가 '비밀'로 설정된 경우 여기에 표시되지 않습니다."
     newest_first: 최신순
     biggest_first: 가장 큰 것부터
@@ -1596,7 +1600,7 @@ ko:
     custom_poll: 맞춤 설문조사
     delete_poll: 설문조사 삭제
     select_count_options: "%{count}개의 옵션을 선택하세요"
-    select_minimum_to_maximum_options: "%{최소}~%{최대} 옵션을 선택하세요."
+    select_minimum_to_maximum_options: "%{minimum}~%{maximum} 옵션을 선택하세요."
     custom_poll_types: 맞춤 설문조사 유형
     hidden_poll_templates: 숨겨진 설문조사 템플릿
     poll_template: 설문조사 템플릿
@@ -1671,7 +1675,7 @@ ko:
     unread: 읽지 않음(%{count})
     include_subgroups_mine: "%{name} 및 내 하위 그룹"
     include_subgroups_all: "%{name} 및 모든 하위 그룹"
-    no_results_found: '"%{검색}"에 대한 검색결과가 없습니다.'
+    no_results_found: '"%{search}"에 대한 검색결과가 없습니다.'
     welcome_to_your_new_group: 새로운 Loomio 그룹에 오신 것을 환영합니다!
     lets_start_a_thread: 스레드를 시작해보자. 계속하려면 '새 스레드'를 클릭하세요.
   members_panel:
@@ -1691,7 +1695,7 @@ ko:
     show_users_in_subgroups: 하위 그룹의 사용자도 표시
     order_by_created_desc: 최신
     order_by_admin_desc: 관리자
-    loaded_of_total: "%{총}개 중 %{로드됨}개"
+    loaded_of_total: "%{loaded}개 중 %{total}개"
     view_requests: 요청 보기
     header_role: 역할
     header_invited_by: 초대자
@@ -2069,8 +2073,6 @@ ko:
     email_to_group_address: 이메일-그룹 주소
     start_threads_via_email: 이메일을 통해 스레드 시작
     your_address_for_this_group: 이 그룹의 이메일 주소
-    send_email_to_start_thread: 그룹에서 스레드를 시작하려면 이 주소로 이메일을 보내세요.
-    subject_body_attachments: 스레드는 이메일 제목, 본문, 첨부 파일을 사용합니다.
     address_starts_threads_as_you: 이 주소를 공유하지 마십시오. 이 주소를 가지고 있는 사람은 누구나 귀하처럼 스레드를 시작할 수 있습니다.
     generate_new_address: 새 주소 생성
     copy_address: 주소 복사
@@ -2080,6 +2082,24 @@ ko:
     new_address_generated: 새 이메일-그룹 주소가 생성되었습니다.
     generate_new_address_question: 새로운 이메일-그룹 주소를 생성하시겠습니까?
     generate_new_address_warning: 기존의 모든 email-to-loomio 주소는 작동이 중지됩니다. 실행 취소할 수 없습니다. 계속하시겠습니까?
+    not_available_to_trial_or_demo: 이 기능은 평가판 또는 데모 그룹에서는 사용할 수 없습니다.
+    review_email: 이메일 검토
+    add_alias: 별칭 추가
+    who_is_the_owner_of_email: "%{email}의 소유자는 누구입니까?"
+    is_name_the_owner_of_email: "%{name}이(가) %{email}의 소유자인가요?"
+    all_email_will_belong_to_name: "%{email}의 모든 메시지는 %{name}님에게 귀속됩니다."
+    email_aliases: 별칭 및 무시된 주소
+    belongs_to_name: "%{name}에 속함"
+    block_email: 블록 주소
+    no_emails_to_release: 출시를 기다리는 이메일이 없습니다.
+    release_rules: 릴리스 규칙
+    confirm_block: 이 이메일 주소를 차단하시겠습니까?
+    confirm_block_body: 이 이메일과 %{sender}님이 보내는 모든 추가 이메일은 무시됩니다.
+    confirm_delete: 이 이메일을 삭제하시겠습니까?
+    confirm_delete_body: 이 이메일은 삭제됩니다. 향후 %{sender}님이 보내는 모든 이메일은 영향을 받지 않습니다.
+    unreleased_emails: 공개되지 않은 이메일
+    start_a_thread_by_email: 이메일로 스레드 시작
+    email_released: 이메일이 공개되고 별칭이 생성되었습니다.
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: "%{group}에서 스레드를 시작하기 위한 이메일 주소"
   search_modal:
@@ -2207,8 +2227,6 @@ ko:
     unable_to_vote: 귀하는 이 %{poll_type} 투표에 초대되지 않았습니다.
     draft_mode: 투표가 비활성화되었습니다. 아직 투표가 진행되지 않습니다.
     voting_disabled_poll_is_template: 투표가 비활성화되었습니다. 이것은 템플릿입니다.
-  poll_common_collapsed:
-    by_who: 이름으로}
   poll_common_close_form:
     title: 지금 %{poll_type}을(를) 종료하시겠습니까?
     helptext: "%{poll_type}을(를) 조기에 종료하고 결과를 공유하시겠습니까?"
@@ -2264,8 +2282,6 @@ ko:
   poll_common_set_outcome_panel:
     enter_outcome: 결과 입력
     poll_type: 이 %{poll_type}이(가) 종료되었습니다. 시간을 내어 결과를 고려한 다음 결과를 공유하여 사람들이 다음에 무슨 일이 일어날지 알 수 있도록 하세요.
-  poll_common_outcome_panel:
-    authored_by: 이름으로}
   poll_common_delete_modal:
     question: 정말로 삭제하시겠습니까?
     title: "%{pollType} 삭제"
@@ -2335,7 +2351,7 @@ ko:
     agree_target_label: 대상수
   poll_common_percent_voted:
     sentence: "%{denominator}명 중 %{numerator}명이 참여했습니다(%{percent}%)."
-    target_progress: 목표의 %{percent}%에 도달했습니다. (%{num} / %{대상})
+    target_progress: 목표의 %{percent}%에 도달했습니다. (%{num} / %{target})
   poll_remove_vote:
     title: 투표를 삭제하시겠습니까?
     helptext: 투표를 삭제하시겠습니까? 미정으로 표시되며 원할 경우 나중에 다시 투표할 수 있습니다.
@@ -2515,7 +2531,7 @@ ko:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> 스레드를 닫았습니다."
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}님</a> 이 스레드를 다시 열었습니다."
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> 이 스레드의 포크를 만들었습니다: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{작가}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}님</a> 이 결과를 공유했습니다"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> %{polltype}을(를) 다시 열었습니다."
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> %{polltype}을(를) 마감했습니다."

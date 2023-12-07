@@ -311,6 +311,7 @@ fr:
       align: Alignement
       hide: Cacher
       unhide: Afficher
+      confirm: Confirmer
     formatting_help:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
@@ -319,6 +320,7 @@ fr:
     visit_loomio_help: Visitez l'aide de Loomio
     admin_menu: Menu administrateur
     api_docs: Documents sur l'API
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -371,8 +373,6 @@ fr:
     email_to_group_address: Adresse e-mail au groupe
     start_threads_via_email: Démarrer les discussions par e-mail
     your_address_for_this_group: Votre adresse e-mail pour ce groupe
-    send_email_to_start_thread: Envoyez un e-mail à cette adresse pour démarrer un fil de discussion dans votre groupe.
-    subject_body_attachments: Le fil de discussion utilisera l’objet de l’e-mail, le corps et les fichiers joints.
     address_starts_threads_as_you: Ne partagez pas cette adresse - toute personne qui l’a peut démarrer des discussions pendant que vous.
     generate_new_address: Générer une nouvelle adresse
     copy_address: Copier l’adresse
@@ -382,6 +382,24 @@ fr:
     new_address_generated: Nouvelle adresse e-mail à groupe générée
     generate_new_address_question: Générer une nouvelle adresse e-mail à groupe ?
     generate_new_address_warning: Toutes vos adresses e-mail à loomio existantes cesseront de fonctionner. Il n’y a pas d’annulation. Allez-y?
+    not_available_to_trial_or_demo: Cette fonctionnalité n'est pas disponible pour les groupes d'essai ou de démonstration
+    review_email: Vérifier l'e-mail
+    add_alias: Ajouter un alias
+    who_is_the_owner_of_email: Qui est le propriétaire de %{email} ?
+    is_name_the_owner_of_email: "%{name} est-il le propriétaire de %{email} ?"
+    all_email_will_belong_to_name: Tous les messages de %{email} seront attribués à %{name}
+    email_aliases: Alias et adresses ignorées
+    belongs_to_name: Appartient à %{name}
+    block_email: Bloquer l'adresse
+    no_emails_to_release: Aucun e-mail en attente de sortie
+    release_rules: Règles de publication
+    confirm_block: Bloquer cette adresse e-mail ?
+    confirm_block_body: Cet e-mail et tout autre e-mail provenant de %{sender} seront ignorés.
+    confirm_delete: Supprimer cet e-mail ?
+    confirm_delete_body: Cet e-mail sera supprimé. Les futurs e-mails de %{sender} ne seront pas affectés.
+    unreleased_emails: E-mails inédits
+    start_a_thread_by_email: Démarrer un fil de discussion par e-mail
+    email_released: E-mail publié et alias créé
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Votre adresse e-mail pour démarrer les threads dans %{group}
   volume_levels:
@@ -652,6 +670,7 @@ fr:
       user_mentioned: "%{actor} vous a mentionné·e dans: %{title}"
       user_reminded: "%{actor} attend votre vote sur: %{title}"
       membership_resent: "%{actor} vous a invité à rejoindre %{title} sur %{site_name}"
+      unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
     without_title:
       discussion_announced: "%{actor} vous a invité à la discussion"
       discussion_edited: "%{actor} a modifié le contexte de la discussion"
@@ -687,6 +706,7 @@ fr:
       user_mentioned: "%{actor} vous a mentionné"
       user_reminded: "%{actor} vous rappelle de voter"
       membership_resent: "%{actor} vous a invité à rejoindre un groupe"
+      unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
       poll_closing_soon_author: Vous voudrez peut-être rappeler aux gens de voter ou de prolonger la date limite.
@@ -1510,9 +1530,7 @@ fr:
     max_threads_reached: |
       <p>Vous avez épuisé toutes les %{maxThreads} invitations disponible pour ce groupe.</p>
       <p>Étape suivante, <a href="%{upgradeUrl}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
-    subscription_canceled: 'Votre abonnement n''est pas actif. Veuillez passer en version premium pour continuer à utiliser Loomio.
-
-      '
+    subscription_canceled: 'Votre abonnement n''est pas actif. Veuillez passer en version premium pour continuer à utiliser Loomio. %{upgradeUrl}'
     activity: Activité
     activity_placeholder: Aucune activité pour l’instant !
     load_previous: Afficher les activités précédentes
@@ -1740,7 +1758,7 @@ fr:
     max_score: Score maximum
     min_score: Score minimum
     too_long: Trop long
-    edit_warning: La révision n'est recommandée que pour des modifications mineures ou pour corriger des fautes d’orthographe. Pour des changements significatifs, fermer ce %{typedesonsage}  et démarrez-en un nouveau.
+    edit_warning: La révision n'est recommandée que pour des modifications mineures ou pour corriger des fautes d’orthographe. Pour des changements significatifs, fermer ce %{pollType} et démarrez-en un nouveau.
     no_voting: Pour discussion seulement, vote désactivé
     categorize_poll_templates: Catégoriser les modèles de sondage
     show_all_templates_in_one_list: Afficher tous les modèles dans une liste
@@ -2233,7 +2251,7 @@ fr:
     reason_placeholder: Laissez un message si vous le voulez
   poll_common_percent_voted:
     sentence: "%{numerator} personnes sur %{denominator} ont voté (%{percent}%)"
-    target_progress: "%{pourcentage}% de la cible atteinte. (%{num} / %{cible})"
+    target_progress: "%{percent}% de la cible atteinte. (%{num} / %{target})"
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
@@ -2305,7 +2323,7 @@ fr:
     create_account: Créez un compte
     sign_up_as: Créer un compte en tant que %{email}
     sign_in_as: Se connecter comme  %{name}
-    continue_with_provider: Continuer avec %{fournisseur}
+    continue_with_provider: Continuer avec %{provider}
     continue_with_email: Connectez-vous avec votre adresse mail
     or_enter_your_email: Ou saisir votre adresse e-mail
     enter_your_name: Entrez votre nom
@@ -2325,7 +2343,7 @@ fr:
     check_spam_folder: Si vous ne recevez pas l'e-mail, veuillez vérifier le répertoire des spams.
     sign_up_helptext: Merci de remplir ce formulaire pour créer un compte
     i_accept_all: J’accepte les %{termsLink} et %{privacyLink}
-    newsletter_label: Je veux recevoir le %{lien}
+    newsletter_label: Je veux recevoir le %{link}
     name_placeholder: Votre nom
     name_required: Entrez un nom
     terms_required: Vous devez accepter les Conditions d'utilisation
@@ -2339,7 +2357,7 @@ fr:
     set_password: Définir un mot de passe
     set_password_helptext: Vous souhaitez un mot de passe pour la prochaine fois ?
     hello: Bonjour, %{name} !
-    new_to_loomio: Première fois sur %{{nom_du_site}} ?
+    new_to_loomio: Première fois sur %{site_name} ?
     already_a_user: Vous avez déjà un compte ?
     email_address_of_existing_account: Entrez l'adresse e-mail de votre compte existant
     link_accounts: Comptes associés

@@ -365,6 +365,15 @@ en:
   base_mailer:
     via_loomio: '%{name} (via %{site_name})'
 
+  event_mailer:
+    received_email:
+      explaination_html: |
+        <p>You are receiving this email because you are an admin for the Loomio group: %{group}.</p>
+        <p>The group has received an email from an unrecognised email address.</p>
+        <p>If the message is from a member of the group, please review the email and select the member.</p>
+        <p>If the message is unwanted, you can block any further email from that address.</p>
+
+
   user_mailer:
     group_export_ready:
       subject: Group data export for %{group_name}

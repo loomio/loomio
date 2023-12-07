@@ -16,6 +16,6 @@ export default class DiscussionReaderModel extends BaseModel {
 
   relationships() {
     this.belongsTo('user', {from: 'users'});
-    return this.belongsTo('discussion');
+    this.belongsTo('discussion');
   }
 };

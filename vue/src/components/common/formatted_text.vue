@@ -213,10 +213,8 @@ img.emoji
   word-break: break-word
 
   img
-    aspect-ratio: attr(width) / attr(height)
     max-width: 100%
     max-height: 600px
-    width: auto
     height: auto
 
   ol, ul
@@ -338,6 +336,16 @@ img.emoji
 
   thead td
     font-weight: bold
+
+  table table
+    margin: 0 !important
+    border: 0 !important
+
+  td td
+    padding: 0 !important
+
+  td td td
+    border: 0 !important
 
   table
     p

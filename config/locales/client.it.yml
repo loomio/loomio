@@ -112,7 +112,7 @@ it:
     is_old_plan: Loomio ha delle nuove semplici formule di abbonamento
     change_plan: Cambia di piano
     view_plans: Vedi piani
-    free_trial: Prova gratuita. %{days]} giorni restanti.
+    free_trial: Prova gratuita. %{days} giorni restanti.
     trial_expired: La tua prova è scaduta. Aggiorna per continuare usando Loomio.
     tooltip: 'Nostri prezzi sono fantastichi! Aggiorna oggi e godi quello  che Loomio può offrire al tuo grupo. '
     was_gift_trial: 'Il tuo gruppo utilizza Loomio gratuitamente da %{createdDate}. Non siamo in grado di continuare a fornire un servizio gratuito. Esegui l''aggiornamento per continuare a utilizzare Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Per saperne di più</a>'
@@ -311,6 +311,7 @@ it:
       align: Allinea
       hide: Nascondere
       unhide: Scopri
+      confirm: Confermare
     formatting_help:
       label: Formattazione
       title: Impara come usare il Markdown per formattare il tuo testo
@@ -319,6 +320,7 @@ it:
     visit_loomio_help: Visita Loomio aiuto
     admin_menu: Menù amministratore
     api_docs: Documenti API
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Unisci account
@@ -363,7 +365,7 @@ it:
   verify_email_notice:
     please_verify: Grazie della partecipazione! Cerca nella tua email un link e cliccaci per verificare il tuo voto.
   previous_polls_page:
-    heading: Attività in %{nome}
+    heading: Attività in %{name}
     polls_count: Mostra %{loaded} su un totale di %{total} decisioni
     search_activities: Cerca decisioni
   volume_levels:
@@ -634,6 +636,7 @@ it:
       user_mentioned: "%{actor} ti ha menzionato in: %{title}"
       user_reminded: "%{actor} ti sta ricordando di votare su: %{title}"
       membership_resent: "%{actor} ti ha invitato a iscriverti a %{title} su %{site_name}"
+      unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
     without_title:
       discussion_announced: "%{actor} ti ha invitato a una discussione"
       discussion_edited: "%{actor} ha modificato il contesto della discussione"
@@ -669,6 +672,7 @@ it:
       user_mentioned: "%{actor} ti ha menzionato"
       user_reminded: "%{actor}ti sta ricordando di votare"
       membership_resent: "%{actor} ti ha invitato a unirti a un gruppo"
+      unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
     hints:
       poll_closing_soon: Ora è un buon momento per votare, cambiare idea o incoraggiare altri a partecipare.
       poll_closing_soon_author: Potresti voler ricordare alle persone di votare o prorogare la scadenza.
@@ -980,7 +984,7 @@ it:
     outcome_header: Modifiche ai risultati
     started_by: Iniziato da <strong>%{name}</strong>
     edited_by: Modificato da <strong>%{name}</strong>
-    edit_by: Modifica in base a %{name} · %{data}
+    edit_by: Modifica in base a %{name} · %{date}
     posted: Pubblicato
     field: Campo
     before: Prima
@@ -2379,8 +2383,6 @@ it:
     email_to_group_address: Indirizzo e-mail al gruppo
     start_threads_via_email: Avvia discussioni tramite e-mail
     your_address_for_this_group: Il tuo indirizzo email per questo gruppo
-    send_email_to_start_thread: Invia un'e-mail a questo indirizzo per avviare una discussione nel tuo gruppo.
-    subject_body_attachments: Il thread utilizzerà l'oggetto dell'e-mail, il corpo e i file allegati.
     address_starts_threads_as_you: 'Non condividere questo indirizzo: chiunque lo abbia può avviare thread come te.'
     generate_new_address: Genera nuovo indirizzo
     copy_address: Copia indirizzo
@@ -2390,6 +2392,24 @@ it:
     new_address_generated: Nuovo indirizzo e-mail al gruppo generato
     generate_new_address_question: Generare un nuovo indirizzo email di gruppo?
     generate_new_address_warning: Tutti i tuoi indirizzi e-mail a loomio esistenti smetteranno di funzionare. Non è possibile annullare. Andare avanti?
+    not_available_to_trial_or_demo: Questa funzione non è disponibile per i gruppi di prova o demo
+    review_email: Esamina l'e-mail
+    add_alias: Aggiungi alias
+    who_is_the_owner_of_email: Chi è il proprietario di %{email}?
+    is_name_the_owner_of_email: "%{name} è il proprietario di %{email}?"
+    all_email_will_belong_to_name: Tutti i messaggi provenienti da %{email} verranno attribuiti a %{name}
+    email_aliases: Alias e indirizzi ignorati
+    belongs_to_name: Appartiene a %{name}
+    block_email: Blocca indirizzo
+    no_emails_to_release: Nessuna email in attesa di rilascio
+    release_rules: Regole di rilascio
+    confirm_block: Bloccare questo indirizzo email?
+    confirm_block_body: Questa email e qualsiasi altra email proveniente da %{sender} verranno ignorate.
+    confirm_delete: Eliminare questa email?
+    confirm_delete_body: Questa email verrà eliminata. Eventuali email future provenienti da %{sender} non saranno interessate.
+    unreleased_emails: E-mail inedite
+    start_a_thread_by_email: Avvia una discussione tramite email
+    email_released: E-mail rilasciata e alias creato
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Il tuo indirizzo email per avviare discussioni in %{group}
   global:
@@ -2597,6 +2617,6 @@ it:
     no_camera: Impossibile trovare una fotocamera
     listen_to_audio: Ascolta l'audio
     watch_video: Guarda un video
-    audio_transcript: 'Trascrizione audio: %{testo}'
+    audio_transcript: 'Trascrizione audio: %{text}'
     why_type_when_you_can_talk: Perché scrivere quando puoi parlare? Invia una registrazione vocale
     transcript_included: Una trascrizione della registrazione verrà allegata al tuo messaggio

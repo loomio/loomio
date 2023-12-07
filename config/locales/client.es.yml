@@ -46,7 +46,7 @@ es:
     generating_demo: Vale, ¡espera allí mismo! Generar una demostración toma alrededor de 20 segundos.
     start_a_x_day_free_trial: Iniciar una prueba gratuita de %{day} día
     ready_to_trial: "¿Listo para probar Loomio con su organización?"
-    start_a_no_obligation_x_day_trial: Inicie un grupo de Loomio para su organización con una prueba gratuita de %{día}.
+    start_a_no_obligation_x_day_trial: Inicie un grupo de Loomio para su organización con una prueba gratuita de %{day}.
     you_can_test_it_out: 'Puede invitar a otras personas a unirse, integrarlo con sus otras herramientas e intentar tomar algunas decisiones.
 
       '
@@ -309,6 +309,7 @@ es:
       align: Alinear
       hide: Esconder
       unhide: Mostrar
+      confirm: Confirmar
     formatting_help:
       label: 'Formato '
       title: Aprenda a usar Markdown para dar formato a su texto
@@ -317,6 +318,7 @@ es:
     visit_loomio_help: Visita la ayuda de Loomio
     admin_menu: Menú de administración
     api_docs: Documentos API
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Fusionar cuentas
@@ -369,8 +371,6 @@ es:
     email_to_group_address: Dirección de correo electrónico a grupo
     start_threads_via_email: Iniciar hilos por correo electrónico
     your_address_for_this_group: Su dirección de correo electrónico para este grupo
-    send_email_to_start_thread: Envía un correo electrónico a esta dirección para iniciar un hilo en tu grupo.
-    subject_body_attachments: El hilo utilizará el asunto del correo electrónico, el cuerpo y los archivos adjuntos.
     address_starts_threads_as_you: No comparta esta dirección, cualquiera que la tenga puede iniciar hilos como usted.
     generate_new_address: Generar nueva dirección
     copy_address: Copiar dirección
@@ -380,6 +380,24 @@ es:
     new_address_generated: Nueva dirección de correo electrónico a grupo generada
     generate_new_address_question: "¿Generar una nueva dirección de correo electrónico a grupo?"
     generate_new_address_warning: Todas sus direcciones de correo electrónico existentes a loomio dejarán de funcionar. No hay deshacer. ¿Adelante?
+    not_available_to_trial_or_demo: Esta función no está disponible para grupos de prueba o demostración.
+    review_email: Revisar correo electrónico
+    add_alias: Agregar alias
+    who_is_the_owner_of_email: "¿Quién es el propietario de %{email}?"
+    is_name_the_owner_of_email: "¿Es %{name} el propietario de %{email}?"
+    all_email_will_belong_to_name: Todos los mensajes de %{email} se atribuirán a %{name}
+    email_aliases: Alias y direcciones ignoradas
+    belongs_to_name: Pertenece a %{name}
+    block_email: Dirección de bloque
+    no_emails_to_release: No hay correos electrónicos esperando su liberación.
+    release_rules: Reglas de liberación
+    confirm_block: "¿Bloquear esta dirección de correo electrónico?"
+    confirm_block_body: Este correo electrónico y cualquier otro correo electrónico de %{sender} serán ignorados.
+    confirm_delete: "¿Eliminar este correo electrónico?"
+    confirm_delete_body: Este correo electrónico será eliminado. Cualquier correo electrónico futuro de %{sender} no se verá afectado.
+    unreleased_emails: Correos electrónicos inéditos
+    start_a_thread_by_email: Iniciar un hilo por correo electrónico
+    email_released: Correo electrónico liberado y alias creado
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Tu dirección de correo electrónico para iniciar hilos en %{group}
   volume_levels:
@@ -650,6 +668,7 @@ es:
       user_mentioned: "%{actor} te mencionó en: %{title}"
       user_reminded: "%{actor} te está recordando que votes en %{title}"
       membership_resent: "%{actor} te invitó a unirte a %{title} en %{site_name}"
+      unknown_sender: Revise el correo electrónico del remitente no reconocido
     without_title:
       discussion_announced: "%{actor} te invitó al hilo"
       discussion_edited: "%{actor} editó el contenido del hilo"
@@ -685,6 +704,7 @@ es:
       user_mentioned: "%{actor} te mencionó"
       user_reminded: "%{actor} te está recordando que votes"
       membership_resent: "%{actor} te invitó a unirte a un grupo"
+      unknown_sender: Revise el correo electrónico del remitente no reconocido
     hints:
       poll_closing_soon: Ahora es un buen momento para votar, cambiar de opinión o animar a otros a participar.
       poll_closing_soon_author: Es posible que desee recordar a las personas que voten o extiendan la fecha límite.
@@ -748,7 +768,7 @@ es:
     notification_history_explanation: Indica que se ha leído la notificación o que se ha abierto el correo electrónico
     quick_add: 'Adición breve:'
     any_other_groups: Algún otro grupo?
-    notified_people: "%{name} notificado %{lenght} gente:"
+    notified_people: "%{name} notificado %{length} gente:"
     preview: Vista preliminar del email
     no_notifications_sent: No se han enviado notificaciones
     history_error: Algo ha salido mal! No se pudo cargar la historia
@@ -987,7 +1007,7 @@ es:
     submit_button: 'Solicita membresía '
     introduction_over_limit: La respuesta es muy larga
     messages:
-      membership_requested: Has solicitado unirte a %{grupo}
+      membership_requested: Has solicitado unirte a %{group}
   revision_history_modal:
     aria_label: Historial de revisión
     discussion_header: Ediciones de debates
@@ -1329,7 +1349,7 @@ es:
     locale_field: 'Idioma: %{value}'
     online_field: 'Online: %{value}'
     invited: Invitado/a %{value}
-    message_user: Mensaje %{nombre}
+    message_user: Mensaje %{name}
   contact_request_form:
     modal_title: 'Correo electrónico: %{name}'
     message_placeholder: Comparte una breve introducción personal y di porqué te quieres contactar.
@@ -1923,7 +1943,7 @@ es:
     close_poll_type: Cierra %{poll_type}
     poll_type_closed: "%{poll_type} cerró"
   poll_common_reopen_form:
-    title: Volver a abrir %{poll-type}
+    title: Volver a abrir %{poll_type}
     helptext: Vuelve a abrir el %{poll_type} si la gente necesita más tiempo para participar
     success: "%{poll_type} reabierto"
   poll_common_move_form:
@@ -2056,7 +2076,7 @@ es:
     limit_reason_length: Limitar el motivo a un máximo de 500 caracteres
     save_poll: Guardar encuesta
     start_poll_type: Comenzar %{poll_type}
-    share_poll_type: Compartir %{poll-type}
+    share_poll_type: Compartir %{poll_type}
     who_may_vote: "¿Quién debería votar en este %{poll_type}?"
     update: Actualizar
     add_voters: Añadir votantes
@@ -2227,7 +2247,7 @@ es:
     reason_placeholder: 'Deja un mensaje si quieres '
   poll_common_percent_voted:
     sentence: "%{numerator} de %{denominator} gente ha votado (%{percent}%))"
-    target_progress: "%{porcentaje}% del objetivo alcanzado. (%{num} / %{target})"
+    target_progress: "%{percent}% del objetivo alcanzado. (%{num} / %{target})"
   poll_meeting_chart_panel:
     total: Total
   poll_remove_vote:
@@ -2263,12 +2283,12 @@ es:
     removed: Elemento eliminado
     deleted_group: Grupo eliminado
     invite_only_thread: Hilo sólo con invitación
-    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a>en respuesta a <strong>%{título}</strong>"
+    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a>en respuesta a <strong>%{title}</strong>"
     discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>editó el título del hilo"
     discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>editó el contexto del hilo"
     discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>cambió la política de privacidad "
     discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>editó el hilo"
-    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a>movió el hilo desde <strong>%{título}</strong> "
+    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a>movió el hilo desde <strong>%{title}</strong> "
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a>cerró el hilo"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>reabrió el hilo"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>creó un tenedor de este hilo:<strong><a href='d/%{key}'>%{title}</a></strong>"
@@ -2284,7 +2304,7 @@ es:
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a>editó su voto en: <strong>%{title}</strong>"
     event_removed: Eliminado del hilo
   add_poll_to_thread_modal:
-    success: Éxito, %{poll_type} añadido al hilo
+    success: Éxito, %{pollType} añadido al hilo
   auth_form:
     code: '000000'
     youre_invited: Te han invitado a unirte al grupo %{group_name}.
@@ -2299,7 +2319,7 @@ es:
     create_account: Crear una cuenta
     sign_up_as: Crear cuenta como %{email}
     sign_in_as: Ingresa como %{name}
-    continue_with_provider: Continuar con %{proveedor}
+    continue_with_provider: Continuar con %{provider}
     continue_with_email: Continuar con email
     or_enter_your_email: O, introduzca su dirección de correo electrónico
     enter_your_name: Ingresa tu nombre

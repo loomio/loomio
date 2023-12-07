@@ -290,6 +290,7 @@ pl:
       restore: Przywrócić
       zoom: Powiększenie
       align: Wyrównywać
+      confirm: Potwierdzać
     formatting_help:
       label: Formatowanie
       title: Naucz się używać Markdown, by sformatować swój tekst
@@ -311,6 +312,7 @@ pl:
     visit_loomio_help: Odwiedź Loomio pomocy
     admin_menu: Menu administratora
     api_docs: Dokumentacja API
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Połącz konta
@@ -626,6 +628,7 @@ pl:
       stance_created_option: "%{actor} zagłosował na %{option} w %{title}"
       user_added_to_group: "%{actor} dodał Cię do grupy: %{title}"
       membership_resent: "%{actor} zaprosił Cię do %{title} w %{site_name}"
+      unknown_sender: Sprawdź wiadomość e-mail od nierozpoznanego nadawcy
     without_title:
       poll_expired: "%{poll_type} zakończyła się "
       discussion_announced: "%{actor} zaprosił Cię do wątku"
@@ -661,6 +664,7 @@ pl:
       user_mentioned: "%{actor} wspomniał o tobie"
       user_reminded: "%{actor} przypomina Ci o głosowaniu"
       membership_resent: "%{actor} zaprosił Cię do przyłączenia się do grupy"
+      unknown_sender: Sprawdź wiadomość e-mail od nierozpoznanego nadawcy
     hints:
       poll_closing_soon: Teraz jest dobry czas na głosowanie, zmianę zdania lub zachęcenie innych do udziału.
       poll_closing_soon_author: Możesz przypomnieć ludziom o głosowaniu lub przedłużyć termin.
@@ -963,7 +967,7 @@ pl:
     submit_button: Poproś o dołączenie
     introduction_over_limit: Odpowiedź zbyt długa
     messages:
-      membership_requested: Prosiłeś o dołączenie do %{grupy}
+      membership_requested: Prosiłeś o dołączenie do %{group}
   revision_history_modal:
     aria_label: Historia poprawek
     discussion_header: Edycje dyskusji
@@ -1594,7 +1598,7 @@ pl:
     alt_title: Skontaktuj się z pomocą techniczną Loomio
     this_is_for: To świetne miejsce na zapytania dotyczące sprzedaży, szkoleń, subskrypcji lub prośby o wsparcie przy użyciu Loomio.
     read_the_manual: Czy wiesz, że nasz <a href="%{link}" target="_blank">Podręcznik pomocy</a> zawiera najczęściej zadawane pytania, a także szczegółowe przewodniki ułatwiające dyskusje i podejmowanie decyzji w Loomio?
-    success_via_email: Dziękujemy za wiadomość, %{imię}. Odpowiemy e-mailem w ciągu 24 godzin.
+    success_via_email: Dziękujemy za wiadomość, %{name}. Odpowiemy e-mailem w ciągu 24 godzin.
     need_message: Wpisz wiadomość, abyśmy mogli Ci pomóc :-)
     respond_asap: Wyślij wiadomość do zespołu Loomio, a my odpowiemy tak szybko, jak to możliwe.
     happy_to_help_with: Chętnie pomożemy w przypadku zapytań sprzedażowych, próśb o wsparcie, próśb o funkcje, zgłaszania błędów lub problemów, których doświadczasz.
@@ -1683,7 +1687,7 @@ pl:
     custom_process: Proces niestandardowy
     custom_poll: Ankieta niestandardowa
     delete_poll: Usuń ankietę
-    select_count_options: Wybierz %{liczba} opcji
+    select_count_options: Wybierz %{count} opcji
     select_minimum_to_maximum_options: Wybierz opcje od %{minimum} do %{maximum}
     custom_poll_types: Niestandardowe typy ankiet
     example_polls_from_thread_template: Przykłady z szablonu wątku
@@ -2131,7 +2135,7 @@ pl:
     decline_prompt: Czy jest coś, co chciałbyś powiedzieć?
   poll_common_percent_voted:
     sentence: "%{numerator} z %{denominator} ludzi zagłosowało (%{percent}%)"
-    target_progress: Osiągnięto %{percent}% celu. (%{num} / %{cel})
+    target_progress: Osiągnięto %{percent}% celu. (%{num} / %{target})
   poll_meeting_chart_panel:
     total: W sumie
   poll_remove_vote:
@@ -2178,7 +2182,7 @@ pl:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> zamknął wątek"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ponownie otworzył wątek"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> utworzył rozwidlenie tego wątku: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{autor}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> udostępnił wynik"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ponownie otworzył %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> zamknął %{polltype}"
@@ -2363,8 +2367,6 @@ pl:
     email_to_group_address: Adres e-mail do grupy
     start_threads_via_email: Rozpocznij wątki przez e-mail
     your_address_for_this_group: Twój adres e-mail dla tej grupy
-    send_email_to_start_thread: Wyślij wiadomość e-mail na ten adres, aby rozpocząć wątek w swojej grupie.
-    subject_body_attachments: Wątek będzie używał tematu wiadomości e-mail, treści i załączonych plików.
     address_starts_threads_as_you: Nie udostępniaj tego adresu – każdy, kto go ma, może zakładać wątki tak jak Ty.
     generate_new_address: Wygeneruj nowy adres
     copy_address: Skopiuj adres
@@ -2374,6 +2376,24 @@ pl:
     new_address_generated: Wygenerowano nowy adres e-mail do grupy
     generate_new_address_question: Wygenerować nowy adres e-mail do grupy?
     generate_new_address_warning: Wszystkie istniejące adresy e-mail do loomio przestaną działać. Nie ma możliwości cofnięcia. Zacząć robić?
+    not_available_to_trial_or_demo: Ta funkcja nie jest dostępna dla grup próbnych i demonstracyjnych
+    review_email: Przejrzyj e-mail
+    add_alias: Dodaj alias
+    who_is_the_owner_of_email: Kto jest właścicielem %{email}?
+    is_name_the_owner_of_email: Czy %{name} jest właścicielem %{email}?
+    all_email_will_belong_to_name: Wszystkie wiadomości od %{email} zostaną przypisane do %{name}
+    email_aliases: Aliasy i ignorowane adresy
+    belongs_to_name: Należy do %{name}
+    block_email: Zablokuj adres
+    no_emails_to_release: Żadnych e-maili oczekujących na wydanie
+    release_rules: Zasady wydania
+    confirm_block: Zablokować ten adres e-mail?
+    confirm_block_body: Ten e-mail i wszelkie dalsze e-maile od %{sender} zostaną zignorowane.
+    confirm_delete: Usunąć tego e-maila?
+    confirm_delete_body: Ten e-mail zostanie usunięty. Nie będzie to miało wpływu na przyszłe e-maile od %{sender}.
+    unreleased_emails: Niepublikowane e-maile
+    start_a_thread_by_email: Rozpocznij wątek przez e-mail
+    email_released: E-mail zwolniony i utworzony alias
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Twój adres e-mail do rozpoczynania wątków w %{group}
   thread_preview:

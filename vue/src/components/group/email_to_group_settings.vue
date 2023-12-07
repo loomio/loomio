@@ -29,22 +29,12 @@ export default
 
   computed: {
     address() {
-      return `${this.group.fullName} <${this.group.handle}+u=${Session.user().id}&k=${this.key}@${AppConfig.theme['reply_hostname']}>`;
+      // return `${this.group.fullName} <${this.group.handle}@${AppConfig.theme['reply_hostname']}>`;
+      return `${this.group.handle}@${AppConfig.theme['reply_hostname']}`;
     }
   },
 
   methods: {
-    resetKey() {
-      this.loading = true;
-      Records.remote.post('profile/reset_email_api_key').then(data => {
-        this.key = data.email_api_key;
-        Flash.success('email_to_group.new_address_generated');
-    }).finally(() => {
-        this.loading = false;
-        this.confirmReset = false;
-      });
-    },
-
     copyText() {
       navigator.clipboard.writeText(this.address);
       Flash.success("email_to_group.email_address_copied_to_clipboard");
@@ -61,39 +51,27 @@ export default
 </script>
 <template lang="pug">
 v-card.email-to-group-settings
-  div(v-if="!confirmReset")
+  div
     v-card-title
-      h1.text-h6(v-t="'email_to_group.start_threads_via_email'")
+      h1.text-h6(v-t="'email_to_group.start_a_thread_by_email'")
       v-spacer
       dismiss-modal-button
-    v-card-text
-      p(v-t="'email_to_group.your_address_for_this_group'")
+
+    .pa-4
       v-text-field(
         readonly
         outlined
+        filled
         v-model="address"
         :append-icon="mdiContentCopy"
         @click:append="copyText"
       )
-      p
-        span(v-t="'email_to_group.send_email_to_start_thread'")
-        space
-        span(v-t="'email_to_group.subject_body_attachments'")
-        space
-        span(v-t="'email_to_group.address_starts_threads_as_you'")
-
-      .d-flex.flex-wrap
-        v-btn(@click="confirmReset = true" v-t="'common.reset'")
-        v-spacer
-        //- v-btn(@click="sendGroupAddress" v-t="'email_to_group.email_me_this_address'")
-  div(v-if="confirmReset")
-    v-card-title
-      h1.text-h6(v-t="'email_to_group.generate_new_address_question'")
-    v-card-text
-      p(v-t="'email_to_group.generate_new_address_warning'")
-      .d-flex
-        v-btn(@click="confirmReset = false" v-t="'common.action.cancel'")
-        v-spacer
-        v-btn(:loading="loading" @click="resetKey" v-t="'email_to_group.generate_new_address'")
+      .text--secondary
+        p
+          span(v-t="'email_to_group.send_email_to_start_thread'")
+        p
+          span(v-t="'email_to_group.subject_body_attachments'")
+        p
+          span(v-t="'email_to_group.forward_email_to_move_conversation'")
 
 </template>

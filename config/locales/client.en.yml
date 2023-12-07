@@ -162,6 +162,7 @@ en:
     local: Local time (%{value})
 
   common:
+    value: "%{value}"
     admin_menu: Admin menu
     api_docs: API docs
     prefix_eg: "e.g. %{val}"
@@ -262,6 +263,7 @@ en:
       unlike: 'Unlike'
       update: 'Update'
       cancel: 'Cancel'
+      confirm: Confirm
       hide: 'Hide'
       unhide: 'Unhide'
       show_more: "Show more"
@@ -363,21 +365,30 @@ en:
     search_activities: Search decisions
 
   email_to_group:
-    email_to_group_settings: Email-to-group settings
-    email_to_group_address: Email-to-group address
-    start_threads_via_email: Start threads via email
-    your_address_for_this_group: Your email address for this group
-    send_email_to_start_thread: Send email to this address to start a thread in your group.
-    subject_body_attachments: The thread will use the email subject, body and attached files.
-    address_starts_threads_as_you: "Don't share this address - anyone who has it can start threads as you."
-    generate_new_address: Generate new address
+    email_released: Email released and alias created
+    not_available_to_trial_or_demo: This feature is not available for trial or demo groups
+    review_email: Review email
+    add_alias: Add alias
+    who_is_the_owner_of_email: Who is the owner of %{email}?
+    is_name_the_owner_of_email: Is %{name} the owner of %{email}?
+    all_email_will_belong_to_name: All messages from %{email} will be attributed to %{name}
+    email_aliases: Aliases and ignored addresses
+    belongs_to_name: Belongs to %{name}
+    block_email: Block address
+    no_emails_to_release: No emails waiting for release
+    release_rules: Release rules
+    confirm_block: Block this email address?
+    confirm_block_body: This email, and any further emails from %{sender} will be ignored.
+    confirm_delete: Delete this email?
+    confirm_delete_body: This email will be deleted. Any future emails from %{sender} will be unaffected.
+    unreleased_emails: Unreleased emails
+    start_a_thread_by_email: Start a thread by email
+    send_email_to_start_thread: Send an email to this address to start a thread in your group.
+    subject_body_attachments: The email subject becomes the thread title, the body of the email becomes the description, and any attached files will be attached to the thread.
     copy_address: Copy address
     email_me_this_address: Email me this address
-    email_address_sent_to_you: Email address sent to you
     email_address_copied_to_clipboard: Email address copied to clipboard
-    new_address_generated: New email-to-group address generated
-    generate_new_address_question: Generate new email-to-group address?
-    generate_new_address_warning: All your existing email-to-loomio addresses will stop working. There is no undo. Go ahead?
+    forward_email_to_move_conversation: "Tip: Forward an existing email conversation to Loomio when you need to make a decision or keep a record."
 
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Your email address to start threads in %{group}
@@ -644,6 +655,7 @@ en:
     no_notifications: "You don't have any notifications"
 
     with_title:
+      unknown_sender: "Please review email from unrecognised sender"
       comment_replied_to: "%{actor} replied to you in: %{title}"
       discussion_announced: "%{actor} invited you to the thread: %{title}"
       discussion_edited: "%{actor} edited the thread context: %{title}"
@@ -681,6 +693,7 @@ en:
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
 
     without_title:
+      unknown_sender: "Please review email from unrecognised sender"
       discussion_announced: '%{actor} invited you to a thread'
       discussion_edited: '%{actor} edited the thread context'
       discussion_closed: "%{actor} closed the thread"
@@ -1237,7 +1250,7 @@ en:
     subgroup_name: Subgroup name
     organization_name: Organization name
     handle: Handle
-    group_handle_placeholder: "Used in your group URL: %{host}/%{handle}"
+    group_handle_placeholder: "For your group URL and email: %{host}/%{handle}, %{handle}@%{host}"
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What is the name of your group?'

@@ -1,5 +1,22 @@
 class ReceivedEmailService
+  def self.refresh_forward_email_rules
+    forward_email_rules = File.readlines(Rails.root.join("db/default_forward_email_rules.txt")).map(&:chomp).map do |handle| 
+      {handle: handle, email: "#{handle}@#{ENV['REPLY_HOSTNAME']}"}
+    end
+
+    ForwardEmailRule.delete_all
+    ForwardEmailRule.insert_all(forward_email_rules, record_timestamps: false)
+  end
+
+  def self.route_all
+    ReceivedEmail.unreleased.where(group_id: nil).each do |email|
+      route(email)
+    end
+  end
+
   def self.route(email)
+    return nil unless email.route_address
+    return nil if email.released
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
@@ -18,10 +35,33 @@ class ReceivedEmailService
 
       email.update_attribute(:released, true)
     else
-      # general email-to-group, eg.  enspiral@mail.loomio.com
-      # if from member email and spf, dkim pass, then pass through quarantine
-      # else needs approval from group admin. leave for later
-      raise "general email to group not supported yet"
+      if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
+        ForwardMailer.forward_message(
+          from: "\"#{email.sender_name}\" <#{BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS}>",
+          to: forward_email_rule.email,
+          reply_to: email.from,
+          subject: email.subject,
+          body_text: email.body_text,
+          body_html: email.body_html
+        ).deliver_later
+        email.update(released: true)
+        return
+      end
+
+      if group = Group.find_by(handle: email.route_path)
+        if !address_is_blocked(email, group)
+          email.update(group_id: group.id)
+
+          if actor = actor_from_email_and_group(email, group)
+            discussion = DiscussionService.create(
+              discussion: Discussion.new(discussion_params(email)),
+              actor: actor)
+            email.update(released: true)
+          else
+            Events::UnknownSender.publish!(email)
+          end
+        end
+      end
     end
   end
 
@@ -38,7 +78,8 @@ class ReceivedEmailService
   end
 
   def self.delete_old_emails
-    ReceivedEmail.where("created_at < ?", 14.days.ago).destroy_all
+    ReceivedEmail.released.where("created_at < ?", 7.days.ago).destroy_all
+    ReceivedEmail.unreleased.where("created_at < ?", 60.days.ago).destroy_all
   end
 
   private
@@ -82,13 +123,31 @@ class ReceivedEmailService
     User.find_by!(id: params['u'], email_api_key: params['k'])
   end
 
+  def self.address_is_blocked(email, group)
+    MemberEmailAlias.blocked.find_by(email: email.sender_email, group_id: group.id)
+  end
+
+  def self.actor_from_email_and_group(email, group)
+    if actor = (email.dkim_valid || email.spf_valid) && User.find_by(email: email.sender_email)
+      return actor if group.members.exists?(actor.id)
+    end
+
+    if email_alias = MemberEmailAlias.allowed.find_by(email: email.sender_email, group_id: group.id)
+      return nil if email_alias.require_dkim && !email.dkim_valid
+      return nil if email_alias.require_spf && !email.spf_valid
+      return email_alias.user if group.members.exists?(email_alias.user.id)
+    end
+
+    nil
+  end
+
   def self.discussion_params(email)
     params = parse_route_params(email.route_path)
     {
-      group_id: Group.find_by!(handle: params['handle']),
+      group_id: Group.find_by!(handle: (params['handle'] || email.route_path)).id,
       title: email.subject,
-      body: email.body,
-      body_format: 'md',
+      body: email.full_body,
+      body_format: email.body_format,
       files: email.attachments.map {|a| a.blob }
     }.compact
   end
@@ -115,7 +174,7 @@ class ReceivedEmailService
       discussion_id: params['d'].to_i,
       parent_id: parent_id,
       parent_type: parent_type,
-      body: email.body,
+      body: email.reply_body,
       body_format: 'md',
       files: email.attachments.map {|a| a.blob }
     }.compact

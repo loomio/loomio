@@ -339,3 +339,6 @@ da:
     destroy_warning:
       subject: Din Loomio-gruppe er planlagt til sletning.
       body: 'Din Loomio-gruppe: "%{group}" er planlagt til sletning af %{deletor}. Hvis du ikke ønsker, at din gruppe skal slettes, bedes du besvare denne e-mail. Hvis du er sikker på, at du vil slette gruppen, behøver du ikke at gøre noget. Tak skal du have.'
+  event_mailer:
+    received_email:
+      explaination_html: "<p>Du modtager denne e-mail, fordi du er administrator for Loomio-gruppen: %{group}.</p><p> Gruppen har modtaget en e-mail fra en ikke-genkendt e-mailadresse.</p><p> Hvis beskeden er fra et medlem af gruppen, skal du gennemgå e-mailen og vælge medlemmet.</p><p> Hvis beskeden er uønsket, kan du blokere yderligere e-mails fra den adresse.</p>"

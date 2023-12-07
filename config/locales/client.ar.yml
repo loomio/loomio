@@ -259,6 +259,7 @@ ar:
       restore: يعيد
       zoom: تكبير
       align: محاذاة
+      confirm: يتأكد
     formatting_help:
       label: التنسيق
       title: تعرف على كيفية استخدام Markdown لتنسيق النص الخاص بك
@@ -279,6 +280,7 @@ ar:
     visit_loomio_help: قم بزيارة مساعدة Loomio
     admin_menu: قائمة المشرف
     api_docs: مستندات API
+    value: "٪{قيمة}"
   merge_accounts:
     modal:
       title: دمج الحسابات
@@ -594,6 +596,7 @@ ar:
       user_mentioned: أشار٪ {ممثل} إليك في:٪ {title}
       user_reminded: يذكرك٪ {ممثل} بالتصويت في:٪ {title}
       membership_resent: دعاك %{actor} للانضمام إلى %{title} على %{site_name}
+      unknown_sender: يرجى مراجعة البريد الإلكتروني من مرسل غير معروف
     without_title:
       discussion_announced: دعاك٪ {ممثل} إلى موضوع
       discussion_edited: قام٪ {ممثل} بتحرير سياق الموضوع
@@ -629,6 +632,7 @@ ar:
       user_mentioned: ذكرك٪ {ممثل}
       user_reminded: يذكرك٪ {ممثل} بالتصويت
       membership_resent: دعاك %{actor} للانضمام إلى مجموعة
+      unknown_sender: يرجى مراجعة البريد الإلكتروني من مرسل غير معروف
     hints:
       poll_closing_soon: الآن هو الوقت المناسب للتصويت أو تغيير رأيك أو تشجيع الآخرين على المشاركة.
       poll_closing_soon_author: قد ترغب في تذكير الناس بالتصويت أو تمديد الموعد النهائي.
@@ -2369,6 +2373,24 @@ ar:
     new_address_generated: تم إنشاء عنوان بريد إلكتروني جديد للمجموعة
     generate_new_address_question: إنشاء عنوان بريد إلكتروني جديد للمجموعة؟
     generate_new_address_warning: ستتوقف جميع عناوين البريد الإلكتروني إلى loomio الحالية عن العمل. لا يوجد تراجع. تفضل؟
+    not_available_to_trial_or_demo: هذه الميزة غير متاحة للمجموعات التجريبية أو التجريبية
+    review_email: مراجعة البريد الإلكتروني
+    add_alias: أضف اسمًا مستعارًا
+    who_is_the_owner_of_email: من هو مالك %{email}؟
+    is_name_the_owner_of_email: هل %{name} هو مالك %{email}؟
+    all_email_will_belong_to_name: جميع الرسائل من %{email} ستنسب إلى %{name}
+    email_aliases: الأسماء المستعارة والعناوين التي تم تجاهلها
+    belongs_to_name: ينتمي إلى %{name}
+    block_email: عنوان الكتلة
+    no_emails_to_release: لا توجد رسائل بريد إلكتروني في انتظار الإصدار
+    release_rules: قواعد الإصدار
+    confirm_block: هل تريد حظر عنوان البريد الإلكتروني هذا؟
+    confirm_block_body: سيتم تجاهل هذا البريد الإلكتروني وأي رسائل بريد إلكتروني أخرى من %{sender}.
+    confirm_delete: هل تريد حذف هذا البريد الإلكتروني؟
+    confirm_delete_body: سيتم حذف هذا البريد الإلكتروني. لن تتأثر أي رسائل بريد إلكتروني مستقبلية من %{sender}.
+    unreleased_emails: رسائل البريد الإلكتروني التي لم يتم إصدارها
+    start_a_thread_by_email: بدء موضوع عن طريق البريد الإلكتروني
+    forward_email_to_move_conversation: 'نصيحة: انقل محادثة بريد إلكتروني موجودة إلى Loomio عن طريق إعادة توجيهها إلى هذا العنوان.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: عنوان بريدك الإلكتروني لبدء المواضيع في٪ {group}
   thread_preview:

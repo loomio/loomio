@@ -323,5 +323,8 @@ sv:
       undecided_visitors: Obestämda gäster (%{count})
       more_undecided: "%{count} till..."
       vote_now: Rösta nu
-      you_have_until: Du har fram till %{när} på dig att delta.
+      you_have_until: Du har fram till %{when} på dig att delta.
       people_have_voted: "%{nom} av %{dnom} personer har deltagit (%{pct}%)"
+  event_mailer:
+    received_email:
+      explaination_html: "<p>Du får det här e-postmeddelandet eftersom du är administratör för Loomio-gruppen: %{group}.</p><p> Gruppen har fått ett e-postmeddelande från en okänd e-postadress.</p><p> Om meddelandet kommer från en medlem i gruppen, vänligen granska e-postmeddelandet och välj medlem.</p><p> Om meddelandet är oönskat kan du blockera ytterligare e-postmeddelanden från den adressen.</p>"

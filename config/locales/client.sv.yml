@@ -103,7 +103,7 @@ sv:
     tags_marked: Trådar märkta med '%{name}' i %{groupName}
     no_tags_present: Inga trådar hittades med den taggen! Försök att välja en annan
     no_tags_in_group: Den här gruppen har inga kategoritaggar ännu
-    only_admins_can_edit_tags: Tyvärr, bara administratörer för %{grupp} kan skapa, byta namn på eller ta bort taggar
+    only_admins_can_edit_tags: Tyvärr, bara administratörer för %{group} kan skapa, byta namn på eller ta bort taggar
   timezones:
     local: Lokal tid (%{value})
   common:
@@ -218,6 +218,7 @@ sv:
       add_people: Lägg till folk
       zoom: Zoom
       align: Justera
+      confirm: Bekräfta
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
@@ -250,6 +251,7 @@ sv:
     today: i dag
     in_x_days: om %{x} dagar
     reset: Återställa
+    value: "%{value}"
   merge_accounts:
     modal:
       submit: Verifiera
@@ -343,7 +345,7 @@ sv:
         normal: Du kommer bara få e-post vid meddelanden i denna grupp.
         quiet: Du kommer inte bli mailad om den här grupp.
       title: Aviseringar för %{title}
-      apply_to_organization: Ansök på alla grupper i %{organisation}
+      apply_to_organization: Ansök på alla grupper i %{organization}
     all_groups:
       loud_description: Du kommer att bli mailad om alla aktivitetera i alla dina grupper
       messages:
@@ -465,7 +467,7 @@ sv:
     toggle_sidebar: Växla sidofältet
     open_sidebar: Öppna sidofältet
     close_sidebar: Stäng sidofältet
-    group_and_subgroups: "%{grupp} och undergrupper"
+    group_and_subgroups: "%{group} och undergrupper"
   membership_dropdown:
     invitation_resent: Inbjudan skickad igen
     set_name_and_username: Ställ in namn och användarnamn
@@ -517,6 +519,7 @@ sv:
       user_added_to_group: "%{actor} lade till dig i gruppen: %{title}"
       user_mentioned: "%{actor} nämnde dig i: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
+      unknown_sender: Granska e-post från okänd avsändare
     without_title:
       discussion_announced: "%{actor} bjöd in dig till en tråd"
       discussion_edited: "%{actor} redigerade trådkontexten"
@@ -552,6 +555,7 @@ sv:
       stance_created_option: "%{actor} röstade %{option}"
       user_mentioned: "%{actor} nämnde dig"
       user_reminded: "%{actor} påminner dig om att rösta"
+      unknown_sender: Granska e-post från okänd avsändare
     hints:
       poll_closing_soon: Nu är det ett bra tillfälle att rösta, ändra uppfattning eller uppmuntra andra att delta.
       poll_closing_soon_author: Du kanske vill påminna folk om att rösta eller förlänga tidsfristen.
@@ -591,7 +595,7 @@ sv:
     context_placeholder: Ange ett sammanhang för den här diskussionen, så att folk vet hur de ska delta
     privacy_public: Vem som helst kan se denna tråd om de har länken
     privacy_private: Endast medlemmar i gruppen kan se denna tråd
-    privacy_organisation: Tråden kommer att vara synlig för medlemmar av %{parent} och medlemmar av %{grupp}.
+    privacy_organisation: Tråden kommer att vara synlig för medlemmar av %{parent} och medlemmar av %{group}.
     fork_notice: En ny tråd kommer att skapas med %{count} objekt från %{title}
     notify_group: Meddela gruppen
   announcement:
@@ -650,12 +654,12 @@ sv:
       added_singular: 1 person kommer att läggas till.
       added_none: Ingen kommer att läggas till.
       group_title: "%{name} (%{count} personer)"
-      visible_to_group: Alla i %{grupp} kommer att kunna se den här tråden.
+      visible_to_group: Alla i %{group} kommer att kunna se den här tråden.
       visible_to_guests: Endast inbjudna personer kan se denna tråd.
       click_group_to_see_individuals: Klicka på grupp för att se individer
     send_discussion: Skicka tråd
     send_group: Bjud in personer till %{name}
-    send_poll: Skicka %{typ}
+    send_poll: Skicka %{type}
     send_outcome: Skicka resultat
     cannot_reveal_when_anonymous: Tyvärr kan vi inte avslöja vem som har eller inte har röstat i en anonym omröstning.
     discussion_notification_history: Trådaviseringshistorik
@@ -693,7 +697,7 @@ sv:
     poll_closing_soon: "%{name}s påminnelse om stängning av enkäten meddelade %{length} personer:"
     poll_reminder: "%{name} påminde %{length} personer att rösta:"
     audiences:
-      group: "%{namn}"
+      group: "%{name}"
       everyone_in_the_group: Alla i gruppen
       discussion_group: Alla i tråden
       voters: Alla inbjudna att rösta
@@ -833,7 +837,7 @@ sv:
     submit_button: Be att få vara med
     introduction_over_limit: Svaret är för långt
     messages:
-      membership_requested: Du har begärt att få gå med i %{grupp}
+      membership_requested: Du har begärt att få gå med i %{group}
   revision_history_modal:
     current_revision: Senaste
     aria_label: Revisionshistorik
@@ -850,8 +854,8 @@ sv:
     before: Innan
     after: Efter
     original_text: Original
-    closing_at_changed: stängningstid inställd på %{tid}
-    private_changed: sekretess inställd på %{privat}
+    closing_at_changed: stängningstid inställd på %{time}
+    private_changed: sekretess inställd på %{private}
     group_id_changed: flyttade till %{name}
   reactions_display:
     you: Du
@@ -1069,7 +1073,7 @@ sv:
     custom_message: Anpassat meddelande
     custom_message_placeholder: Ange ett personligt meddelande att inkludera i inbjudan.
     add_members: Lägg till medlemmar
-    from_parent_group: från namn}.
+    from_parent_group: från %{name}.
     messages:
       invitation_sent: Inbjudan skickad.
       invitations_sent: "%{count} inbjudningar har skickats."
@@ -1597,7 +1601,7 @@ sv:
     check_spam_folder: Om mejlet inte kommer fram snart, kolla din skräppostmapp.
     sign_up_helptext: Fyll i detta formulär för att skapa ett användarkonto
     i_accept_all: Jag accepterar %{termsLink} och %{privacyLink}
-    newsletter_label: Jag vill ta emot %{länken}
+    newsletter_label: Jag vill ta emot %{link}
     name_required: Vänligen ange ett namn
     terms_required: Du måste godkänna användarvillkoren
     account_inactive: Åh, det verkar som att kontot för %{email} har inaktiverats!
@@ -1766,8 +1770,6 @@ sv:
     email_to_group_address: E-post-till-grupp-adress
     start_threads_via_email: Starta trådar via e-post
     your_address_for_this_group: Din e-postadress för denna grupp
-    send_email_to_start_thread: Skicka e-post till den här adressen för att starta en tråd i din grupp.
-    subject_body_attachments: Tråden kommer att använda e-postämnet, brödtexten och bifogade filer.
     address_starts_threads_as_you: Dela inte den här adressen - alla som har den kan starta trådar som du.
     generate_new_address: Skapa ny adress
     copy_address: Kopiera adress
@@ -1777,6 +1779,24 @@ sv:
     new_address_generated: Ny e-post-till-grupp-adress genererad
     generate_new_address_question: Generera ny e-post-till-grupp-adress?
     generate_new_address_warning: Alla dina befintliga e-post-till-loomio-adresser kommer att sluta fungera. Det finns ingen ångra. Varsågod?
+    not_available_to_trial_or_demo: Den här funktionen är inte tillgänglig för prov- eller demogrupper
+    review_email: Granska mejl
+    add_alias: Lägg till alias
+    who_is_the_owner_of_email: Vem är ägaren till %{email}?
+    is_name_the_owner_of_email: Är %{name} ägare till %{email}?
+    all_email_will_belong_to_name: Alla meddelanden från %{email} kommer att tillskrivas %{name}
+    email_aliases: Alias och ignorerade adresser
+    belongs_to_name: Tillhör %{name}
+    block_email: Blockera adress
+    no_emails_to_release: Inga e-postmeddelanden som väntar på release
+    release_rules: Släpp regler
+    confirm_block: Blockera den här e-postadressen?
+    confirm_block_body: Detta e-postmeddelande och eventuella ytterligare e-postmeddelanden från %{sender} kommer att ignoreras.
+    confirm_delete: Vill du ta bort det här e-postmeddelandet?
+    confirm_delete_body: Detta e-postmeddelande kommer att raderas. Eventuella framtida e-postmeddelanden från %{sender} kommer inte att påverkas.
+    unreleased_emails: E-postmeddelanden som inte har släppts
+    start_a_thread_by_email: Starta en tråd via e-post
+    email_released: E-post släppt och alias skapat
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Din e-postadress för att starta trådar i %{group}
   thread_nav:
@@ -1933,7 +1953,7 @@ sv:
     user_name_updated: Användarnamnet har uppdaterats
     set_user_name: Ange användarnamn
   user_page:
-    contact_user: Kontaktnamn}
+    contact_user: 'Kontakt %{name}'
     location_field: 'Plats: %{value}'
     locale_field: 'Språk: %{value}'
     online_field: 'Online: %{value}'
@@ -2092,7 +2112,7 @@ sv:
     draft_mode: Röstning inaktiverad. Detta är inte öppet för omröstning ännu.
     voting_disabled_poll_is_template: Röstning inaktiverad. Detta är en mall.
   poll_common_collapsed:
-    by_who: vid namn}
+    by_who: vid %{name}
   poll_common_calendar_invite:
     calendar_invite: Inkludera en kalenderinbjudan med detta resultat
     poll_option_id: Mötestid
@@ -2157,7 +2177,7 @@ sv:
     success: "%{poll_type} öppnades igen"
   poll_common_move_form:
     title: Flytta %{poll_type}
-    success: "%{poll_type} flyttade till %{grupp}"
+    success: "%{poll_type} flyttade till %{group}"
   poll_common_wip_field:
     voting_enabled: Röstning aktiverad
     enable_voting: Aktivera röstning
@@ -2217,7 +2237,7 @@ sv:
     you_will_be_notified: Du kommer att meddelas vid granskningsdatumet.
     submit: Dela resultatet
   poll_common_outcome_panel:
-    authored_by: Vid namn}
+    authored_by: Vid %{name}
   poll_common_delete_modal:
     question: Är du säker på att du vill ta bort detta?
     title: Ta bort %{pollType}
@@ -2477,7 +2497,7 @@ sv:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> stängde tråden"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> öppnade tråden igen"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> skapade en fork av denna tråd: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{författare}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> delade ett resultat"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> öppnade %{polltype} igen"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> stängde %{polltype}"

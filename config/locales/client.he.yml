@@ -108,7 +108,7 @@ he:
     tag_destroyed: התג נמחק
     no_tags_present: לא נמצאו שרשורים עם התג הזה! נסה לבחור אחד אחר
     no_tags_in_group: לקבוצה הזו אין עדיין תגי קטגוריה
-    only_admins_can_edit_tags: מצטערים, רק מנהלי מערכת של %{קבוצה} יכולים ליצור, לשנות שם או למחוק תגים
+    only_admins_can_edit_tags: מצטערים, רק מנהלי מערכת של %{group} יכולים ליצור, לשנות שם או למחוק תגים
   timezones:
     local: זמן מקומי (%{value})
   common:
@@ -226,6 +226,7 @@ he:
       add_people: הוסף אנשים
       zoom: תקריב
       align: יישר
+      confirm: לְאַשֵׁר
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
@@ -255,6 +256,7 @@ he:
     today: היום
     in_x_days: בעוד %{x} ימים
     reset: אִתחוּל
+    value: "%{value}"
   emoji_picker:
     search: חיפוש
     common: לעיתים קרובות בשימוש
@@ -339,7 +341,7 @@ he:
         normal: מייל יישלח אליך רק בהכרזות בקבוצה
         quiet: לא יישלח אליך מייל בנוגע לקבוצה זו.
       title: התראות עבור %{title}
-      apply_to_organization: החל על כל הקבוצות ב-%{ארגון}
+      apply_to_organization: החל על כל הקבוצות ב-%{organization}
     all_groups:
       loud_description: מייל יישלח אליך על כל פעולה בקבוצות שלך.
       messages:
@@ -473,7 +475,7 @@ he:
     search_files: חפש קבצים ב-%{name}
     open_sidebar: פתח את סרגל הצד
     close_sidebar: סגור את סרגל הצד
-    group_and_subgroups: "%{קבוצה} ותתי קבוצות"
+    group_and_subgroups: "%{group} ותתי קבוצות"
   user_dropdown:
     button_label: תפריט משתמש
     edit_profile: עריכת פרופיל
@@ -557,6 +559,7 @@ he:
       stance_updated: "%{actor} הצביע ב: %{title}"
       stance_created_option: "%{actor} הצביע %{option} ב-%{title}"
       user_added_to_group: "%{actor} הוסיף אותך לקבוצה: %{title}"
+      unknown_sender: אנא עיין באימייל משולח לא מזוהה
     without_title:
       poll_expired: "%{poll_type} נסגר"
       discussion_announced: "%{actor} הזמין אותך לשרשור"
@@ -592,6 +595,7 @@ he:
       stance_created_option: "%{actor} הצביע %{option}"
       user_mentioned: "%{actor} הזכיר אותך"
       user_reminded: "%{actor} מזכיר לך להצביע"
+      unknown_sender: אנא עיין באימייל משולח לא מזוהה
     hints:
       poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
       poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
@@ -702,14 +706,14 @@ he:
       notified_empty: אף אחד עדיין לא נבחר
       single_notification: תישלח הודעה אחת.
       multiple_notifications: יישלחו הודעות %{notified}.
-      notified: "%{הודעה} אנשים יקבלו הודעה."
+      notified: "%{notified} אנשים יקבלו הודעה."
       notified_singular: אדם אחד יקבל הודעה.
       notified_none: אף אחד לא יקבל הודעה.
       added: "%{count} אנשים יתווספו."
       added_singular: יצורף אדם אחד.
       added_none: אף אחד לא יתווסף.
       group_title: "%{name} (%{count} אנשים)"
-      visible_to_group: כל אחד ב-%{קבוצה} יוכל לראות את השרשור הזה.
+      visible_to_group: כל אחד ב-%{group} יוכל לראות את השרשור הזה.
       visible_to_guests: רק אנשים שהוזמנו יכולים לראות את השרשור הזה.
       click_group_to_see_individuals: לחץ על הקבוצה כדי לראות אנשים
     members_list:
@@ -1263,7 +1267,7 @@ he:
     title: הגדר תמונת פרופיל
     use_uploaded: העלה תמונה חדשה
     existing_upload: העלאה קיימת
-    use_provider: השתמש בתמונה של %{ספק}
+    use_provider: השתמש בתמונה של %{provider}
   change_password_form:
     set_password: הגדר סיסמה
     password_changed: סיסמתך עודכנה
@@ -1564,7 +1568,7 @@ he:
     custom_poll: סקר מותאם אישית
     delete_poll: מחק סקר
     select_count_options: בחר %{count} אפשרויות
-    select_minimum_to_maximum_options: בחר באפשרויות %{מינימום} עד %{מקסימום}
+    select_minimum_to_maximum_options: בחר באפשרויות %{minimum} עד %{maximum}
     custom_poll_types: סוגי סקרים מותאמים אישית
     hidden_poll_templates: תבניות סקר נסתרות
     poll_template: תבנית סקר
@@ -1631,7 +1635,7 @@ he:
     unread: לא נקרא (%{count})
     include_subgroups_mine: "%{name} ותתי הקבוצות שלי"
     include_subgroups_all: "%{name} וכל תת הקבוצות"
-    no_results_found: אין תוצאות עבור "%{חיפוש}"
+    no_results_found: אין תוצאות עבור "%{search}"
     welcome_to_your_new_group: ברוכים הבאים לקבוצת Loomio החדשה שלך!
     lets_start_a_thread: בואו נפתח שרשור. לחץ על "שרשור חדש" כדי להמשיך.
   members_panel:
@@ -1661,7 +1665,7 @@ he:
     admin: מנהל מערכת
     guest: אוֹרֵחַ
     sharable_link: קישור ניתן לשיתוף
-    last_seen: נראה לאחרונה %{תאריך}
+    last_seen: נראה לאחרונה %{date}
     invited_by_name: הוזמן על ידי %{name}
   polls_panel:
     all: הכל
@@ -1985,21 +1989,21 @@ he:
     removed: הפריט הוסר
     deleted_group: קבוצה שנמחקה
     invite_only_thread: הזמנה רק שרשור
-    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{מחבר}</a> בתגובה ל <strong>-%{title}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{מחבר}</a> ערך את כותרת השרשור"
-    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{מחבר}</a> ערך את הקשר השרשור"
-    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{מחבר}</a> שינה את פרטיות השרשור"
-    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{מחבר}</a> ערך את השרשור"
+    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a> בתגובה ל <strong>-%{title}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ערך את כותרת השרשור"
+    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ערך את הקשר השרשור"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> שינה את פרטיות השרשור"
+    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ערך את השרשור"
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> העביר את השרשור מ <strong>-%{title}</strong>"
-    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{מחבר}</a> סגר את השרשור"
-    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{מחבר}</a> פתח מחדש את השרשור"
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> סגר את השרשור"
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> פתח מחדש את השרשור"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> יצר מזלג של השרשור הזה: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{מְחַבֵּר}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> שיתף תוצאה"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> פתח מחדש את ה-%{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> סגר את ה-%{polltype}"
     poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> התחיל %{polltype}"
-    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{מחבר}</a> ערך את ה-%{polltype}"
+    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ערך את ה-%{polltype}"
     poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a> הוסיף אפשרויות ל-%{polltype}"
     poll_expired: "%{polltype} נסגר"
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> הצביע ב: <strong>%{title}</strong>"
@@ -2053,13 +2057,13 @@ he:
     sign_in_to_loomio: היכנס אל %{site_name}
     sign_in_help: בעיה בכניסה?
     sign_up_as: צור חשבון בתור %{email}
-    continue_with_provider: המשך עם %{ספק}
+    continue_with_provider: המשך עם %{provider}
     continue_with_email: המשך במייל
     invitation_required: אתה צריך הזמנה כדי ליצור חשבון. עקוב אחר הקישור ממייל ההזמנה שלך כדי להמשיך.
     email_taken: כתובת האימייל כבר רשומה
     enter_your_password: הזן את הסיסמה שלך כדי להמשיך
     i_accept_all: אני מסכים ל-%{termsLink} ו-%{privacyLink}
-    newsletter_label: אני רוצה לקבל את ה-%{קישור}
+    newsletter_label: אני רוצה לקבל את ה-%{link}
     privacy_notice: לעולם לא נמכור את הנתונים שלך.<br> <a href='%{privacyUrl}' target='_blank'>מדיניות הפרטיות</a>
     forgot_password: שכחת את הסיסמא
     login_link: שלח אימייל כניסה
@@ -2227,8 +2231,6 @@ he:
     email_to_group_address: כתובת אימייל לקבוצה
     start_threads_via_email: התחל שרשורים באמצעות דואר אלקטרוני
     your_address_for_this_group: כתובת האימייל שלך לקבוצה זו
-    send_email_to_start_thread: שלח דוא"ל לכתובת זו כדי לפתוח שרשור בקבוצה שלך.
-    subject_body_attachments: השרשור ישתמש בנושא האימייל, בגוף ובקבצים המצורפים.
     address_starts_threads_as_you: אל תשתף את הכתובת הזו - כל מי שיש לו אותה יכול לפתוח שרשורים כמוך.
     generate_new_address: צור כתובת חדשה
     copy_address: העתק כתובת
@@ -2238,6 +2240,24 @@ he:
     new_address_generated: נוצרה כתובת דוא"ל חדשה לקבוצה
     generate_new_address_question: ליצור כתובת דוא"ל חדשה לקבוצה?
     generate_new_address_warning: כל כתובות האימייל ל-loomio הקיימות שלך יפסיקו לעבוד. אין ביטול. לך על זה?
+    not_available_to_trial_or_demo: תכונה זו אינה זמינה עבור קבוצות ניסיון או הדגמה
+    review_email: עיין באימייל
+    add_alias: הוסף כינוי
+    who_is_the_owner_of_email: מי הבעלים של %{email}?
+    is_name_the_owner_of_email: האם %{name} הוא הבעלים של %{email}?
+    all_email_will_belong_to_name: כל ההודעות מ-%{email} ייוחסו ל-%{name}
+    email_aliases: כינויים וכתובות שהתעלמו מהן
+    belongs_to_name: שייך ל-%{name}
+    block_email: כתובת חסום
+    no_emails_to_release: אין מיילים שמחכים לשחרור
+    release_rules: חוקי שחרור
+    confirm_block: לחסום את כתובת האימייל הזו?
+    confirm_block_body: אימייל זה וכל הודעות דוא"ל נוספות מ-%{sender} יתעלמו.
+    confirm_delete: למחוק את האימייל הזה?
+    confirm_delete_body: מייל זה יימחק. אימיילים עתידיים מ-%{sender} לא יושפעו.
+    unreleased_emails: מיילים שלא פורסמו
+    start_a_thread_by_email: התחל שרשור במייל
+    email_released: דוא"ל שוחרר והכינוי נוצר
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: כתובת הדוא"ל שלך לפתיחת שרשורים ב-%{group}
   search_modal:
@@ -2357,7 +2377,7 @@ he:
     success: "%{poll_type} נפתח מחדש"
   poll_common_move_form:
     title: העבר את %{poll_type}
-    success: "%{poll_type} הועבר אל %{קבוצה}"
+    success: "%{poll_type} הועבר אל %{group}"
   poll_common_wip_field:
     voting_enabled: ההצבעה מופעלת
     enable_voting: אפשר הצבעה
@@ -2387,7 +2407,7 @@ he:
     dots_per_person: נקודות לאדם
     dots_per_person_helptext: המספר הכולל של הנקודות שכל אדם מתבקש להקצות.
   poll_common_percent_voted:
-    sentence: "%{numerator} מתוך %{מכנה} אנשים השתתפו (%{percent}%)"
+    sentence: "%{numerator} מתוך %{denominator} אנשים השתתפו (%{percent}%)"
     target_progress: "%{percent}% מהיעד הושג. (%{num} / %{target})"
   poll_remove_vote:
     title: להסיר את ההצבעה שלך?

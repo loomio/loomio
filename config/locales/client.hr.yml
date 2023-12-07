@@ -128,6 +128,7 @@ hr:
       add_people: Dodaj ljude
       zoom: Zum
       align: Uskladiti
+      confirm: Potvrdi
     admin_menu: Admin menu
     api_docs: API dokumenti
     prefix_eg: npr. %{val}
@@ -164,7 +165,7 @@ hr:
     time:
       am: am
       pm: popodne
-    closing_in: Vrijeme zatvaranja}
+    closing_in: Vrijeme %{time}
     closed_ago: Zatvoreno %{time}
     volume: Volumen
     notification_volume: Glasnoća obavijesti
@@ -199,6 +200,7 @@ hr:
     formatting_help:
       label: Oblikovanje
       title: Naučite kako koristiti Markdown za oblikovanje teksta
+    value: "%{value}"
   error_page:
     forbidden: Nepostojeća dozvola za izvršenje.
     forbidden_view: Nemate dopuštenje za pregled ovoga.
@@ -335,6 +337,7 @@ hr:
       user_added_to_group: "%{actor} vas je dodao u grupu: %{title}"
       user_mentioned: "%{actor} vas je spomenuo u: %{title}"
       user_reminded: "%{actor} vas podsjeća da glasate u: %{title}"
+      unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
     without_title:
       discussion_announced: "%{actor} vas je pozvao u nit"
       discussion_edited: "%{actor} uredio je kontekst niti"
@@ -370,6 +373,7 @@ hr:
       stance_created_option: "%{actor} je glasao %{option}"
       user_mentioned: "%{actor} vas je spomenuo"
       user_reminded: "%{actor} vas podsjeća da glasate"
+      unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
     hints:
       poll_closing_soon: Sada je dobro vrijeme da glasate, promijenite mišljenje ili potaknete druge da sudjeluju.
       poll_closing_soon_author: Možete podsjetiti ljude da glasaju ili produžiti rok.
@@ -856,8 +860,6 @@ hr:
     email_to_group_address: Adresa e-pošte grupi
     start_threads_via_email: Započnite niti putem e-pošte
     your_address_for_this_group: Vaša adresa e-pošte za ovu grupu
-    send_email_to_start_thread: Pošaljite e-poštu na ovu adresu da pokrenete nit u svojoj grupi.
-    subject_body_attachments: Nit će koristiti predmet e-pošte, tijelo i priložene datoteke.
     address_starts_threads_as_you: Nemojte dijeliti ovu adresu - svatko tko je ima može započeti teme kao vi.
     generate_new_address: Generiraj novu adresu
     copy_address: Kopiraj adresu
@@ -867,6 +869,24 @@ hr:
     new_address_generated: Generirana je nova adresa e-pošte za grupu
     generate_new_address_question: Generirati novu adresu e-pošte za grupu?
     generate_new_address_warning: Sve vaše postojeće email-to-loomio adrese prestat će raditi. Nema poništavanja. Samo naprijed?
+    not_available_to_trial_or_demo: Ova značajka nije dostupna za probne ili demo grupe
+    review_email: Pregledajte e-poštu
+    add_alias: Dodaj alias
+    who_is_the_owner_of_email: Tko je vlasnik %{email}?
+    is_name_the_owner_of_email: Je li %{name} vlasnik %{email}?
+    all_email_will_belong_to_name: Sve poruke od %{email} bit će pripisane %{name}
+    email_aliases: Aliasi i zanemarene adrese
+    belongs_to_name: Pripada %{name}
+    block_email: Blokiraj adresu
+    no_emails_to_release: Nema e-poruka koje čekaju na objavu
+    release_rules: Pravila izdavanja
+    confirm_block: Blokirati ovu adresu e-pošte?
+    confirm_block_body: Ova e-poruka i sve daljnje e-poruke od %{sender} bit će zanemarene.
+    confirm_delete: Izbrisati ovu e-poštu?
+    confirm_delete_body: Ovaj email će biti izbrisan. To neće utjecati na sve buduće e-poruke od %{sender}.
+    unreleased_emails: Neobjavljene e-poruke
+    start_a_thread_by_email: Započnite nit e-poštom
+    email_released: Otpuštena e-pošta i stvoren alias
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Vaša adresa e-pošte za pokretanje niti u %{group}
   volume_levels:
@@ -1079,7 +1099,7 @@ hr:
     poll_closing_soon: 'Podsjetnik za zatvaranje ankete korisnika %{name} obavijestio je %{length} osoba:'
     poll_reminder: "%{name} je podsjetio %{length} ljudi da glasaju:"
     audiences:
-      group: "%{Ime}"
+      group: "%{name}"
       everyone_in_the_group: Svi u grupi
       discussion_group: Svi u temi
       voters: Svi pozvani da glasaju
@@ -1288,7 +1308,7 @@ hr:
     after: Nakon
     original_text: Izvornik
     current_revision: Najnoviji
-    closing_at_changed: vrijeme zatvaranja postavljeno na %{vrijeme}
+    closing_at_changed: vrijeme zatvaranja postavljeno na %{time}
     private_changed: privatnost postavljena na %{private}
     group_id_changed: preselio u %{name}
   reactions_input:
@@ -1367,7 +1387,7 @@ hr:
     user_name_updated: Korisničko ime ažurirano
     set_user_name: Postavite korisničko ime
   user_page:
-    contact_user: Ime kontakta}
+    contact_user: "kontakta %{name}"
     location_field: 'Lokacija: %{value}'
     locale_field: 'Jezik: %{value}'
     online_field: 'Online: %{value}'
@@ -1818,7 +1838,7 @@ hr:
     draft_mode: Glasanje onemogućeno. Ovo još nije otvoreno za glasovanje.
     voting_disabled_poll_is_template: Glasanje onemogućeno. Ovo je predložak.
   poll_common_collapsed:
-    by_who: imenom}
+    by_who: "%{name}"
   poll_common_calendar_invite:
     calendar_invite: Uz ovaj ishod uključite pozivnicu za kalendar
     poll_option_id: Vrijeme sastanka
@@ -1943,7 +1963,7 @@ hr:
     you_will_be_notified: O datumu pregleda bit ćete obaviješteni.
     submit: Podijelite ishod
   poll_common_outcome_panel:
-    authored_by: Imenom}
+    authored_by: "%{name}"
   poll_common_delete_modal:
     question: Jeste li sigurni da želite ovo izbrisati?
     title: Izbriši %{pollType}
@@ -2315,7 +2335,7 @@ hr:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je zatvorio temu"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ponovno je otvorio temu"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je stvorio račvanje ove niti: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{Autor}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> podijelio je ishod"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ponovno je otvorio %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je zatvorio %{polltype}"

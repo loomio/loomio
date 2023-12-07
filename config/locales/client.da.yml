@@ -92,7 +92,7 @@ da:
     tags_marked: Tråde markeret med '%{name}' i %{groupName}
     no_tags_present: Der blev ikke fundet nogen tråde med det tag! Prøv at vælge en anden
     no_tags_in_group: Denne gruppe har endnu ingen kategori-tags
-    only_admins_can_edit_tags: Beklager, kun administratorer af %{gruppe} kan oprette, omdøbe eller slette tags
+    only_admins_can_edit_tags: Beklager, kun administratorer af %{group} kan oprette, omdøbe eller slette tags
   timezones:
     local: Lokal tid (%{value})
   common:
@@ -205,6 +205,7 @@ da:
       add_people: Tilføj Folk
       zoom: Zoom
       align: Juster
+      confirm: Bekræfte
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
@@ -239,6 +240,7 @@ da:
     reset: Nulstil
     points_abbrev: Hver stemme er %{score} point værd
     total: Total
+    value: "%{value}"
   emoji_picker:
     search: Søg
     common: Hyppigt brugt
@@ -310,7 +312,7 @@ da:
         normal: Du vil få emails ved publiceringer i denne gruppe.
         quiet: Du vil ikke få emails ved nogen aktivitet i denne gruppe.
       title: Notifikationer for %{title}
-      apply_to_organization: Anvend på alle grupper i %{organisation}
+      apply_to_organization: Anvend på alle grupper i %{organization}
     all_groups:
       loud_description: Du vil få emails ved enhver aktivitet i alle dine grupper.
       messages:
@@ -435,7 +437,7 @@ da:
     search_files: Søg efter filer i %{name}
     open_sidebar: Åbn sidepanelet
     close_sidebar: Luk sidebjælken
-    group_and_subgroups: "%{gruppe} og undergrupper"
+    group_and_subgroups: "%{group} og undergrupper"
   membership_dropdown:
     cancel_invitation: Fortryd invitation
     set_name_and_username: Indstil navn og brugernavn
@@ -487,6 +489,7 @@ da:
       user_added_to_group: "%{actor} føjede dig til gruppen: %{title}"
       user_mentioned: "%{actor} nævnte dig i: %{title}"
       user_reminded: "%{actor} minder dig om at stemme i: %{title}"
+      unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
     without_title:
       discussion_announced: "%{actor} inviterede dig til en tråd"
       discussion_edited: "%{actor} redigerede trådkonteksten"
@@ -522,6 +525,7 @@ da:
       stance_created_option: "%{actor} stemte %{option}"
       user_mentioned: "%{actor} nævnte dig"
       user_reminded: "%{actor} minder dig om at stemme"
+      unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
     hints:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
@@ -627,7 +631,7 @@ da:
       added_singular: 1 person vil blive tilføjet.
       added_none: Ingen vil blive tilføjet.
       group_title: "%{name} (%{count} personer)"
-      visible_to_group: Alle i %{gruppe} vil kunne se denne tråd.
+      visible_to_group: Alle i %{group} vil kunne se denne tråd.
       visible_to_guests: Kun inviterede personer kan se denne tråd.
       click_group_to_see_individuals: Klik på gruppe for at se personer
     send_discussion: Send tråd
@@ -670,7 +674,7 @@ da:
     poll_closing_soon: "%{name}s påmindelse om lukning af afstemningen underrettede %{length} personer:"
     poll_reminder: "%{name} mindede %{length} personer om at stemme:"
     audiences:
-      group: "%{navn}"
+      group: "%{name}"
       everyone_in_the_group: Alle i gruppen
       discussion_group: Alle i tråden
       voters: Alle inviterede til at stemme
@@ -820,7 +824,7 @@ da:
     submit_button: Anmod om medlemskab
     introduction_over_limit: Din introduktion er for lang
     messages:
-      membership_requested: Du har anmodet om at blive medlem af %{gruppe}
+      membership_requested: Du har anmodet om at blive medlem af %{group}
   revision_history_modal:
     aria_label: Versionshistorik
     started_by: Oprette af <strong>%{name}</strong>
@@ -837,8 +841,8 @@ da:
     before: Før
     after: Efter
     original_text: Original
-    closing_at_changed: lukketid indstillet til %{tid}
-    private_changed: privatliv indstillet til %{privat}
+    closing_at_changed: lukketid indstillet til %{time}
+    private_changed: privatliv indstillet til %{private}
     group_id_changed: flyttet til %{name}
   group_page:
     threads: Debatter
@@ -1791,7 +1795,7 @@ da:
     create_account: Opret konto
     sign_up_as: Opret konto som %{email}
     sign_in_as: Log ind som %{name}
-    continue_with_provider: Fortsæt med %{udbyder}
+    continue_with_provider: Fortsæt med %{provider}
     continue_with_email: Fortsæt med e-mail
     or_enter_your_email: Eller indtast din e-mailadresse
     enter_your_name: Indtast dit navn
@@ -2014,8 +2018,6 @@ da:
     email_to_group_address: E-mail-til-gruppe-adresse
     start_threads_via_email: Start tråde via e-mail
     your_address_for_this_group: Din e-mailadresse for denne gruppe
-    send_email_to_start_thread: Send e-mail til denne adresse for at starte en tråd i din gruppe.
-    subject_body_attachments: Tråden vil bruge e-mailens emne, brødtekst og vedhæftede filer.
     address_starts_threads_as_you: Del ikke denne adresse - alle, der har den, kan starte tråde som dig.
     generate_new_address: Generer ny adresse
     copy_address: Kopiér adresse
@@ -2025,6 +2027,24 @@ da:
     new_address_generated: Ny e-mail-til-gruppe-adresse genereret
     generate_new_address_question: Vil du generere ny e-mail-til-gruppe-adresse?
     generate_new_address_warning: Alle dine eksisterende e-mail-til-loomio-adresser holder op med at fungere. Der er ingen fortrydelse. Fortsæt?
+    not_available_to_trial_or_demo: Denne funktion er ikke tilgængelig for prøve- eller demogrupper
+    review_email: Gennemgå e-mail
+    add_alias: Tilføj alias
+    who_is_the_owner_of_email: Hvem er ejeren af %{email}?
+    is_name_the_owner_of_email: Er %{name} ejeren af %{email}?
+    all_email_will_belong_to_name: Alle beskeder fra %{email} vil blive tilskrevet %{name}
+    email_aliases: Aliaser og ignorerede adresser
+    belongs_to_name: Tilhører %{name}
+    block_email: Bloker adresse
+    no_emails_to_release: Ingen e-mails, der venter på udgivelse
+    release_rules: Frigivelsesregler
+    confirm_block: Vil du blokere denne e-mailadresse?
+    confirm_block_body: Denne e-mail og eventuelle yderligere e-mails fra %{sender} vil blive ignoreret.
+    confirm_delete: Vil du slette denne e-mail?
+    confirm_delete_body: Denne e-mail vil blive slettet. Eventuelle fremtidige e-mails fra %{sender} vil ikke blive påvirket.
+    unreleased_emails: Ikke-udgivne e-mails
+    start_a_thread_by_email: Start en tråd via e-mail
+    email_released: E-mail frigivet og alias oprettet
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Din e-mailadresse til at starte tråde i %{group}
   close_explanation_modal:
@@ -2139,7 +2159,7 @@ da:
     user_name_updated: Brugernavn opdateret
     set_user_name: Indstil brugernavn
   user_page:
-    contact_user: Kontakt navn}
+    contact_user: Kontakt %{name}
     location_field: 'Placering: %{value}'
     locale_field: 'Sprog: %{value}'
     online_field: 'Online: %{value}'
@@ -2217,7 +2237,7 @@ da:
     delete_confirmation: Er du sikker på, at du vil slette denne vedhæftede fil? Det vil blive fjernet fra enhver tilknyttet kommentar eller tråd. Dette kan ikke fortrydes.
   subgroups_panel:
     search_subgroups_of_name: Søg i undergrupper af %{name}
-    group_without_subgroups: "%{navn} uden undergrupper"
+    group_without_subgroups: "%{name} uden undergrupper"
   poll_common_action_panel:
     from_the_thread: Fra trådskabelonen
     from_the_group: Fra gruppen
@@ -2257,7 +2277,7 @@ da:
     success: "%{poll_type} genåbnet"
   poll_common_move_form:
     title: Flyt %{poll_type}
-    success: "%{poll_type} flyttet til %{gruppe}"
+    success: "%{poll_type} flyttet til %{group}"
   poll_common_wip_field:
     voting_enabled: Afstemning aktiveret
     enable_voting: Aktiver afstemning
@@ -2307,7 +2327,7 @@ da:
     time_slot_added: Tidsrum tilføjet
     time_slot_already_added: Tidsrum er allerede tilføjet
     participants_see_local_times: Pariticpants vil se tider lokaliseret til deres tidszone
-    use_24_hour_format: Fejl! Brug 24 timers format f.eks. %{tid}
+    use_24_hour_format: Fejl! Brug 24 timers format f.eks. %{time}
   poll_ranked_choice_form:
     no_options: Du har ikke tilføjet nogen muligheder endnu.
     add_option_placeholder: Indtast et nyt valg
@@ -2489,7 +2509,7 @@ da:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> lukkede tråden"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> genåbnede tråden"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> oprettede en forgrening af denne tråd: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{forfatter}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> delte et resultat"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> genåbnede %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> lukkede %{polltype}"

@@ -377,3 +377,6 @@ ar:
     blank:
       process_name: نموذج فارغ
       process_subtitle: بدء موضوع جديد لأي غرض من الأغراض
+  event_mailer:
+    received_email:
+      explaination_html: '<p style=";text-align:right;direction:rtl">أنت تتلقى هذا البريد الإلكتروني لأنك مسؤول في مجموعة Loomio: %{group}.</p><p style=";text-align:right;direction:rtl"> تلقت المجموعة بريدًا إلكترونيًا من عنوان بريد إلكتروني غير معروف.</p><p style=";text-align:right;direction:rtl"> إذا كانت الرسالة من أحد أعضاء المجموعة، يرجى مراجعة البريد الإلكتروني واختيار العضو.</p><p style=";text-align:right;direction:rtl"> إذا كانت الرسالة غير مرغوب فيها، فيمكنك حظر أي بريد إلكتروني آخر من هذا العنوان.</p>'

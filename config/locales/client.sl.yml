@@ -186,6 +186,7 @@ sl:
       add_people: Dodajte osebe
       zoom: Zoom
       align: Poravnaj
+      confirm: Potrdi
     admin_menu: Administratorski meni
     api_docs: API dokumenti
     prefix_eg: npr. %{val}
@@ -214,7 +215,7 @@ sl:
     something_went_wrong: Ojoj! Nekaj je šlo narobe
     check_for_errors_and_try_again: Preverite obrazec za napake in poskusite znova
     please_try_again: Prosim poskusite ponovno
-    closing_in: Zapiralni čas}
+    closing_in: Zapiralni %{time}
     closed_ago: Zaprto %{time}
     notification_volume: Glasnost obvestil
     anonymous: Anonimno
@@ -233,6 +234,7 @@ sl:
     formatting_help:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila
+    value: "%{value}"
   emoji_picker:
     search: Išči
     common: Pogosto uporabljen
@@ -295,7 +297,7 @@ sl:
       normal_description: Ob vsaki dejavnosti v tej skupini boste prejeli e-poštno sporočilo.
       quiet_description: O dejavnostih v tej skupini ne boste obveščeni po e-pošti.
       apply_to_all: Uporabi te nastavitve za vse moje skupine.
-      apply_to_organization: Uporabi za vse skupine v %{organizaciji}
+      apply_to_organization: Uporabi za vse skupine v %{organization}
       messages:
         loud: O vseh aktivnostih v tej skupini boste obveščeni po e-pošti.
         normal: Prejemali boste samo obvestila v tej skupini po e-pošti.
@@ -414,7 +416,7 @@ sl:
     toggle_sidebar: Preklop stranske vrstice
     open_sidebar: Odpri stransko vrstico
     close_sidebar: Zapri stransko vrstico
-    group_and_subgroups: "%{skupina} in podskupine"
+    group_and_subgroups: "%{group} in podskupine"
   user_dropdown:
     button_label: Uporabniški meni
     edit_profile: Uredi profil
@@ -492,6 +494,7 @@ sl:
       user_added_to_group: "%{actor} vas je dodal v skupino: %{title}"
       user_mentioned: "%{actor} vas je omenil v: %{title}"
       user_reminded: "%{actor} vas opominja, da glasujete v: %{title}"
+      unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
     without_title:
       discussion_announced: "%{actor} vas je povabil v nit"
       discussion_edited: "%{actor} je uredil kontekst niti"
@@ -527,6 +530,7 @@ sl:
       stance_created_option: "%{actor} je glasoval %{option}"
       user_mentioned: "%{actor} vas je omenil"
       user_reminded: "%{actor} vas opominja, da glasujete"
+      unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
     hints:
       poll_closing_soon: Zdaj je pravi čas, da glasujete, si premislite ali spodbudite druge k sodelovanju.
       poll_closing_soon_author: Morda boste želeli opomniti ljudi, naj glasujejo ali podaljšati rok.
@@ -671,7 +675,7 @@ sl:
     poll_closing_soon: 'Opomnik o zaprtju ankete osebe %{name} je obvestil %{length} ljudi:'
     poll_reminder: "%{name} je opomnil %{length} oseb, naj glasujejo:"
     audiences:
-      group: "%{ime}"
+      group: "%{name}"
       everyone_in_the_group: Vsi v skupini
       discussion_group: Vsi v temi
       voters: K glasovanju vabljeni vsi
@@ -808,7 +812,7 @@ sl:
     submit_button: Prosite za pridružitev
     introduction_over_limit: Odziv je predolg
     messages:
-      membership_requested: Zahtevali ste, da se pridružite %{skupini}
+      membership_requested: Zahtevali ste, da se pridružite %{group}
   group_page:
     threads: Razprave
     members: Člani
@@ -1823,8 +1827,6 @@ sl:
     email_to_group_address: E-poštni naslov skupine
     start_threads_via_email: Začnite niti prek e-pošte
     your_address_for_this_group: Vaš e-poštni naslov za to skupino
-    send_email_to_start_thread: Pošljite e-pošto na ta naslov, da začnete nit v svoji skupini.
-    subject_body_attachments: Nit bo uporabila zadevo e-pošte, telo in priložene datoteke.
     address_starts_threads_as_you: Ne delite tega naslova – kdor ga ima, lahko začne teme kot vi.
     generate_new_address: Ustvari nov naslov
     copy_address: Kopiraj naslov
@@ -1834,6 +1836,24 @@ sl:
     new_address_generated: Ustvarjen nov e-poštni naslov za skupino
     generate_new_address_question: Želite ustvariti nov e-poštni naslov za skupino?
     generate_new_address_warning: Vsi vaši obstoječi e-poštni naslovi za loomio bodo prenehali delovati. Ni razveljavitve. Kar daj?
+    not_available_to_trial_or_demo: Ta funkcija ni na voljo za poskusne ali demo skupine
+    review_email: Pregled e-pošte
+    add_alias: Dodaj vzdevek
+    who_is_the_owner_of_email: Kdo je lastnik %{email}?
+    is_name_the_owner_of_email: Ali je %{name} lastnik %{email}?
+    all_email_will_belong_to_name: Vsa sporočila od %{email} bodo dodeljena %{name}
+    email_aliases: Vzdevki in prezrti naslovi
+    belongs_to_name: Pripada %{name}
+    block_email: Blokiraj naslov
+    no_emails_to_release: Ni e-poštnih sporočil, ki čakajo na objavo
+    release_rules: Pravila za sprostitev
+    confirm_block: Želite blokirati ta e-poštni naslov?
+    confirm_block_body: To e-poštno sporočilo in vsa nadaljnja e-poštna sporočila %{sender} bodo prezrta.
+    confirm_delete: Želite izbrisati to e-pošto?
+    confirm_delete_body: Ta e-pošta bo izbrisana. To ne bo vplivalo na vsa prihodnja e-poštna sporočila %{sender}.
+    unreleased_emails: Neobjavljena e-poštna sporočila
+    start_a_thread_by_email: Začni nit po e-pošti
+    email_released: E-pošta je bila sproščena in vzdevek ustvarjen
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Vaš e-poštni naslov za začetek niti v %{group}
   sign_up_form:
@@ -1973,7 +1993,7 @@ sl:
     user_name_updated: Uporabniško ime posodobljeno
     set_user_name: Nastavite uporabniško ime
   user_page:
-    contact_user: Kontaktno ime}
+    contact_user: Kontaktno %{name}
     location_field: 'Lokacija: %{value}'
     locale_field: 'Jezik: %{value}'
     online_field: 'Na spletu: %{value}'
@@ -2477,7 +2497,7 @@ sl:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author} je</a> zaprl nit"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je ponovno odprl nit"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je ustvaril fork te niti: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{avtor}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je delil rezultat"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je ponovno odprl %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> je zaprl %{polltype}"

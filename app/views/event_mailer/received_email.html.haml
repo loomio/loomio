@@ -1,0 +1,10 @@
+- group = @event.eventable.group
+- url = group_emails_url(@event.eventable.group.key)
+= render "event_mailer/group/cover_and_logo", group: group
+= render 'event_mailer/common/notification', with_title: true, url: url, event: @event, message: @event.eventable.title
+.text-center
+  = render 'base_mailer/button', url: url, text: t(:"email_to_group.review_email")
+
+= raw t 'event_mailer.received_email.explaination_html', group: group.full_name
+
+= render 'event_mailer/common/footer', event: @event

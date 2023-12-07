@@ -1,5 +1,9 @@
 class ReceivedEmail < ApplicationRecord
   has_many_attached :attachments
+  belongs_to :group
+
+  scope :unreleased, -> { where(released: false) }
+  scope :released, -> { where(released: true) }
 
   def header(name)
     headers.find { |key, value| key.downcase == name.to_s.downcase }&.last
@@ -34,7 +38,31 @@ class ReceivedEmail < ApplicationRecord
     end
   end
 
-  def body
+  def from
+    header('from').strip
+  end
+
+  def sender_name_and_email
+    if sender_name
+      "\"#{sender_name}\" <#{sender_email}>"
+    else
+      sender_email
+    end
+  end
+
+  def body_format
+    if body_html.present?
+      'html'
+    else
+      'md'
+    end
+  end
+
+  def full_body
+    self.body_html.presence || self.body_text
+  end
+
+  def reply_body
     text = if body_html.present?
       Premailer.new(body_html, line_length: 10000, with_html_string: true).to_plain_text
     else
@@ -46,6 +74,10 @@ class ReceivedEmail < ApplicationRecord
 
   def subject
     String(header('subject')).gsub(/^( *(re|fwd?)(:| ) *)+/i, '')
+  end
+
+  def title
+    sender_name_and_email
   end
 
   def is_addressed_to_loomio?

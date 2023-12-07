@@ -1,3 +1,4 @@
+---
 zh_TW:
   explore:
     header: 探索公開群組
@@ -7,7 +8,7 @@ zh_TW:
         blank: 不能留白
         invalid: 不是有效的值
   errors:
-    clear_cache: "偵測到載入問題。按住 shift 並按下重新整理，或是清除您的瀏覽器快取。"
+    clear_cache: 偵測到載入問題。按住 shift 並按下重新整理，或是清除您的瀏覽器快取。
     400:
       title: 錯誤的請求
       body: 抱歉，我們無法理解該請求
@@ -25,8 +26,9 @@ zh_TW:
       body: 此頁面已不存在
     417:
       title: 瀏覽器不相容
-      body: |
-          請<a href="https://browser-update.org/update.html?force_outdated=true">升級您的瀏覽器</a>以使用 Loomio
+      body: '請<a href="https://browser-update.org/update.html?force_outdated=true">升級您的瀏覽器</a>以使用 Loomio
+
+        '
     422:
       title: 無法處理的實體
       body: 您想要的變更已被拒絕。也許您在試圖更改您無法存取的東西。
@@ -37,8 +39,9 @@ zh_TW:
       title: 內部伺服器錯誤
       body: 我們很抱歉，但似乎出了點問題。我們已收到有關此問題的通知，且很快就會對其進行研究。
     noscript: Loomio 需要 JavaScript！請在您的瀏覽器中啟用 JavaScript 以繼續
-    upgrade_browser: |
-        喔喔！您的網路瀏覽器太舊了，Loomio 可能無法正常運作。請<a href="https://browser-update.org/update.html">升級您的瀏覽器。</a>
+    upgrade_browser: '喔喔！您的網路瀏覽器太舊了，Loomio 可能無法正常運作。請<a href="https://browser-update.org/update.html">升級您的瀏覽器。</a>
+
+      '
     return_home: 回到首頁
     not_found: 404 檔案找不到。
     messages:
@@ -46,8 +49,8 @@ zh_TW:
       spoofed_media_type: 檔案內容不符合其檔案名稱
   group:
     error:
-      handle_must_begin_with_parent_handle: "必須以 %{parent_handle} 開始。"
-      no_public_trials: "請從試用版升級以變更群組隱私設定"
+      handle_must_begin_with_parent_handle: 必須以 %{parent_handle} 開始。
+      no_public_trials: 請從試用版升級以變更群組隱私設定
     stats:
       group_stats: 群組統計
       org_stats: 組織統計（包含子群組）
@@ -68,15 +71,15 @@ zh_TW:
         rank: 排名
         time: 時間投票
   user:
-    deleted_user: "已刪除的使用者"
-    placeholder_name: "已邀請的使用者 (%{hostname})"
+    deleted_user: 已刪除的使用者
+    placeholder_name: 已邀請的使用者 (%{hostname})
     error:
       sign_in_required_html: |
-          您必須登入以繼續。
-          請<a href="/dashboard" target="_blank">登入</a>然後重新整理此頁面以繼續。
-      recaptcha: "我們無法確認您是不是機器人。請再試一次！"
-      bad_login: "抱歉，這個密碼與我們的檔案上的不一樣"
-      username_must_be_alphanumeric: "使用者名稱只能為小寫字母與數字"
+        您必須登入以繼續。
+        請<a href="/dashboard" target="_blank">登入</a>然後重新整理此頁面以繼續。
+      recaptcha: 我們無法確認您是不是機器人。請再試一次！
+      bad_login: 抱歉，這個密碼與我們的檔案上的不一樣
+      username_must_be_alphanumeric: 使用者名稱只能為小寫字母與數字
   poll:
     error:
       cannot_add_options: 無法新增選項到此投票
@@ -108,7 +111,7 @@ zh_TW:
       participant: 參與者
       also_available: 也提供於
       total: 總共
-    waiting_for_votes_from: "等待投票來自"
+    waiting_for_votes_from: 等待投票來自
   stance:
     error:
       too_short: 請選擇
@@ -119,44 +122,45 @@ zh_TW:
     active: 活躍
     inactive: 不活躍
   base_mailer:
-    via_loomio: '%{name}（透過 %{site_name}）'
+    via_loomio: "%{name}（透過 %{site_name}）"
   user_mailer:
     group_export_ready:
       subject: 匯出「%{group_name}」的群組資料
-      body_html: |
-          <a href="%{url}">在此</a>下載您群組的資料。請注意，此連結將會在一週後過期。
+      body_html: '<a href="%{url}">在此</a>下載您群組的資料。請注意，此連結將會在一週後過期。
+
+        '
     deactivated:
-      subject: "您的 %{site_name} 使用者帳號已被停用。"
+      subject: 您的 %{site_name} 使用者帳號已被停用。
       body_html: |
-          <p>您或某個可以存取您帳號的人已停用您的 Loomio 使用者帳號。</p>
-          <p>所有個人資料都已從系統移除。</p>
-          <p>如果您想要復原您的使用者帳號與相關的留言與投票，請聯絡客服並參考： %{recovery_code}</p>
+        <p>您或某個可以存取您帳號的人已停用您的 Loomio 使用者帳號。</p>
+        <p>所有個人資料都已從系統移除。</p>
+        <p>如果您想要復原您的使用者帳號與相關的留言與投票，請聯絡客服並參考： %{recovery_code}</p>
     accounts_merged:
-      subject: "您的 %{site_name} 使用者帳號已經合併。"
+      subject: 您的 %{site_name} 使用者帳號已經合併。
       body_html: |
-          %{name} 您好，
-          您的兩個 Loomio 帳號已經合併為一個。
-          從現在開始，要存取 Loomio，請使用 <strong>%{email}</strong> 登入。
+        %{name} 您好，
+        您的兩個 Loomio 帳號已經合併為一個。
+        從現在開始，要存取 Loomio，請使用 <strong>%{email}</strong> 登入。
     merge_verification:
-      subject: "驗證您的 %{site_name} 電子郵件地址以進行合併"
+      subject: 驗證您的 %{site_name} 電子郵件地址以進行合併
       body_html: |
-          <p>您好 %{name}，</p>
-          <p>有一個將您的 <strong>%{source_email}</strong> 使用者帳號合併到屬於 <strong>%{target_email}</strong> 帳號的請求。</p>
-          <p>在這個程序完成後，您將無法再使用 <strong>%{source_email}</strong> 登入，僅能使用 <strong>%{target_email}</strong>。</p>
-          <p>請確定這是您想要執行的動作。</p>
+        <p>您好 %{name}，</p>
+        <p>有一個將您的 <strong>%{source_email}</strong> 使用者帳號合併到屬於 <strong>%{target_email}</strong> 帳號的請求。</p>
+        <p>在這個程序完成後，您將無法再使用 <strong>%{source_email}</strong> 登入，僅能使用 <strong>%{target_email}</strong>。</p>
+        <p>請確定這是您想要執行的動作。</p>
       verify: 驗證電子郵件並繼續
       confirm_page:
         confirm: 確認合併
         body_html: |
-            <p>請確認您想要將 <strong>%{source_email}</strong> 的帳號合併到 <strong>%{target_email}</strong>。</p>
-            <p>您的 <strong>%{source_email}</strong> 將會被刪除，您將只能透過 <strong>%{target_email}</strong> 登入。</p>
-            <p>此變動是不可逆的。</p>
+          <p>請確認您想要將 <strong>%{source_email}</strong> 的帳號合併到 <strong>%{target_email}</strong>。</p>
+          <p>您的 <strong>%{source_email}</strong> 將會被刪除，您將只能透過 <strong>%{target_email}</strong> 登入。</p>
+          <p>此變動是不可逆的。</p>
         merge: 合併帳號
       complete_page:
         title: 合併成功！
         body_html: |
-            <p>您的使用者帳號合併成功。您很快就會在 <strong>%{target_email}</strong> 收到確認信。</p>
-            <p>如果您還有其他問題的話，請<a href="/contact" target="_blank">聯絡我們</a>。</p>
+          <p>您的使用者帳號合併成功。您很快就會在 <strong>%{target_email}</strong> 收到確認信。</p>
+          <p>如果您還有其他問題的話，請<a href="/contact" target="_blank">聯絡我們</a>。</p>
   email:
     common:
       or_enter_code: 或是在下方輸入代碼
@@ -173,35 +177,36 @@ zh_TW:
     contact_request:
       subject: "%{name} 想要與您在 %{site_name} 上連線！"
       intro: "%{name} (%{email}) 已經傳送給您一個連線的請求。"
-      footer: "您可以透過回覆此封電子郵件來直接回應到 %{name}。"
+      footer: 您可以透過回覆此封電子郵件來直接回應到 %{name}。
     reset_password:
       greeting: |
-          嗨，%{name}
-          這是您用來重設您 Loomio 帳號之密碼的連結：
+        嗨，%{name}
+        這是您用來重設您 Loomio 帳號之密碼的連結：
       link_text: 重設您的密碼
       signoff: |
-          因為您的電子郵件在 %{hostname} 上被輸入到「忘記密碼」表單中，所以收到這份訊息。
-          然而，您的密碼在您完成上面這個連結的表單前都不會被變更。
-          若您還有登入上的問題，回覆這封電子郵件以連絡客服人員。
-    by_who: '%{person}'
+        因為您的電子郵件在 %{hostname} 上被輸入到「忘記密碼」表單中，所以收到這份訊息。
+        然而，您的密碼在您完成上面這個連結的表單前都不會被變更。
+        若您還有登入上的問題，回覆這封電子郵件以連絡客服人員。
+    by_who: "%{person}"
     reply_to_this_discussion: 回應此討論串
     loomio_app_description: "%{site_name} 是協作組織的決策工具"
     view_group: 檢視群組
     to_join_group:
       subject: "%{member} 已邀請您加入在 %{site_name} 上的 %{group_name}"
       invitation_text: "%{member} 邀請您加入他們的 %{group_name} 群組。"
-      invitation_text_html: "已經邀請您加入他們的群組"
-      link_help: "點選下面的連結以接受邀請："
-      accept_invitation: "接受邀請"
-      stop_emails: "停止從 %{site_name} 收到電子郵件"
+      invitation_text_html: 已經邀請您加入他們的群組
+      link_help: 點選下面的連結以接受邀請：
+      accept_invitation: 接受邀請
+      stop_emails: 停止從 %{site_name} 收到電子郵件
+      accepting_is_important: 接受您的邀請非常重要，這樣您就不會錯過涉及您的決策的通知。
     resend_to_join_group:
       subject: "%{member} 正等待您加入在 %{site_name} 上的 %{group_name}"
     user_added_to_group:
       subject: "%{who} 將您加入至在 %{site_name} 上的 %{which_group}"
       content: "%{who} 將您加入至 %{which_group}。"
       content_html: "<strong>%{who}</strong> 將您加入到了 <strong>%{which_group}</strong>。"
-      link_help: "點選以下的連結以前往該群組："
-    unsubscribe: '取消訂閱或者變更您的電子郵件偏好設定：'
+      link_help: 點選以下的連結以前往該群組：
+    unsubscribe: 取消訂閱或者變更您的電子郵件偏好設定：
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>取消訂閱或者變更您的電子郵件偏好設定。"
     catch_up:
       daily_subject: 昨日 %{site_name}
@@ -213,11 +218,11 @@ zh_TW:
       marked_as_read_success: 電子郵件所列的討論串現在設為已讀了
       click_here: 點這邊
     group_membership_approved:
-      intro: "您加入「%{group_name}」群組的申請已獲批准。"
-      intro_html: "您加入 <strong>%{group_name}</strong> 群組的申請已獲批准。"
-      link_help: "點選以下的連結以加入 %{group_name} 並開始："
-      subject: "您加入 %{group_name} 群組的申請已獲批准。"
-      join_group: "加入群組"
+      intro: 您加入「%{group_name}」群組的申請已獲批准。
+      intro_html: 您加入 <strong>%{group_name}</strong> 群組的申請已獲批准。
+      link_help: 點選以下的連結以加入 %{group_name} 並開始：
+      subject: 您加入 %{group_name} 群組的申請已獲批准。
+      join_group: 加入群組
     membership_request:
       intro_html: 申請加入您的其中一個群組。
       subject: "%{who} 申請加入 %{which_group}"
@@ -227,13 +232,17 @@ zh_TW:
   email_actions:
     unfollowed_discussion: 您已經關閉了討論串的電子郵件。
   discussion_mailer:
-    reply_or_view_online_html: "直接回覆這封電子郵件或<a href='%{url}'>在 %{hostname} 上檢視它</a>。"
-    turn_off_notifications_html: "在這個討論<a href='%{url}'>關閉電子郵件</a>。"
-    change_email_preferences_html: "變更您的<a href='%{email_preferences_url}'>電子郵件偏好設定</a>。"
+    reply_or_view_online_html: 直接回覆這封電子郵件或<a href='%{url}'>在 %{hostname} 上檢視它</a>。
+    turn_off_notifications_html: 在這個討論<a href='%{url}'>關閉電子郵件</a>。
+    change_email_preferences_html: 變更您的<a href='%{email_preferences_url}'>電子郵件偏好設定</a>。
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>取消訂閱</a>此討論串中的未來公告。"
     unsubscribe_from_new_comment_html: "<a href='%{url}'>取消訂閱</a>此討論串中的留言。"
-    unsubscribe_from_comment_replied_to_html: "這是回覆通知。"
-    unsubscribe_from_user_mentioned_html: "這是提及通知。"
+    unsubscribe_from_comment_replied_to_html: 這是回覆通知。
+    unsubscribe_from_user_mentioned_html: 這是提及通知。
+    discussion_edited:
+      inline: "%{actor} 編輯了線程上下文"
+    discussion_closed:
+      inline: "%{actor} 關閉了線程"
   footer:
     about: 關於
     blog: 部落格
@@ -250,82 +259,172 @@ zh_TW:
     confirm_new_password: 確認密碼
     new_password: 新密碼
     email_guidelines_html: |
-        <p>輸入您的電子郵件，然後您將會收到密碼重設連結。</p>
-        <p>若您透過 Facebook 或 Googld 登入，請輸入與帳號相關聯的電子郵件。</p>
+      <p>輸入您的電子郵件，然後您將會收到密碼重設連結。</p>
+      <p>若您透過 Facebook 或 Googld 登入，請輸入與帳號相關聯的電子郵件。</p>
     reset_email_timeframe: 這將會花費 5 分鐘的時間將電子郵件寄到。如果沒有出現，請務必檢查您的垃圾信資料夾。
     length_restriction: 密碼應至少 8 個字元長。
     forbidden_passwords: 常見的密碼，像是「password」將會被拒絕以保護您的帳號安全。
   introduction_thread:
     title: 歡迎！請自我介紹
     description: |
-        花一點時間讓群組知道您是誰。在下面貼出評論。
+      花一點時間讓群組知道您是誰。在下面貼出評論。
 
-        您在此群組中的角色是什麼？夥伴應該知道您從哪裡來嗎？
+      您在此群組中的角色是什麼？夥伴應該知道您從哪裡來嗎？
   how_it_works_thread:
     title: 如何使用 Loomio
     description: |
-        歡迎來到 Loomio，一個線上討論與共同決策的空間。
+      歡迎來到 Loomio，一個線上討論與共同決策的空間。
 
-        這是一個範例**討論串**。您可以在下面新增評論。討論串是用來討論特定主題的地方。這個討論串討論的是關於 Loomio 如何運作，所以在這裡裡貼出關於這個的問題吧。
+      這是一個範例**討論串**。您可以在下面新增評論。討論串是用來討論特定主題的地方。這個討論串討論的是關於 Loomio 如何運作，所以在這裡裡貼出關於這個的問題吧。
 
-        您目前正在閱讀討論串**內容**，這是提供背景資訊的空間。您可以隨時更新以協助夥伴了解關鍵資訊與問題。
+      您目前正在閱讀討論串**內容**，這是提供背景資訊的空間。您可以隨時更新以協助夥伴了解關鍵資訊與問題。
 
-        要入門 Loomio：
-        <ul>
-        <li>在既有的討論串中留言，或是這個。</li>
-        </ul>
-        在 Loomio 上貼文的秘訣：
-        <ul>
-        <li>要通知特定的人，在他們的名字前輸入 @</li>
-        <li>拖曳圖片與附件或點擊迴紋針圖示</li>
-        <li>看看<a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">使用討論串的五種方法</a>以獲得一些靈感與祕訣</li>
-        </ul>
+      要入門 Loomio：
+      <ul>
+      <li>在既有的討論串中留言，或是這個。</li>
+      </ul>
+      在 Loomio 上貼文的秘訣：
+      <ul>
+      <li>要通知特定的人，在他們的名字前輸入 @</li>
+      <li>拖曳圖片與附件或點擊迴紋針圖示</li>
+      <li>看看<a href="https://help.loomio.org/en/guides/5_ways_to_use_threads/" target="_blank">使用討論串的五種方法</a>以獲得一些靈感與祕訣</li>
+      </ul>
 
-        若您有任何問題，請見[Loomio 說明手冊](http://help.loomio.org)。
+      若您有任何問題，請見[Loomio 說明手冊](http://help.loomio.org)。
   first_proposal:
     name: 有任何關於使用 Loomio 的問題嗎？
     description: |
-        _如果是的話，請分享您的問題。如果沒有的話，您已經準備好在您的群組討論串中留言了！_
+      _如果是的話，請分享您的問題。如果沒有的話，您已經準備好在您的群組討論串中留言了！_
 
-        這個 **勾選投票** 就是用來問您或任何在這裡的人有沒有任何使用 Loomio 的問題。
+      這個 **勾選投票** 就是用來問您或任何在這裡的人有沒有任何使用 Loomio 的問題。
 
-        <ul><li>繼續試著使用下面的按鈕與文字欄位。</li></ul>
+      <ul><li>繼續試著使用下面的按鈕與文字欄位。</li></ul>
 
-        與任何決策或簡化工具一樣，您必須在其關閉前做出回應。
+      與任何決策或簡化工具一樣，您必須在其關閉前做出回應。
 
-        您可以在其仍開放時變更您的立場（也許是回應新資訊）。
+      您可以在其仍開放時變更您的立場（也許是回應新資訊）。
 
-        **試著參與！點擊其中一個按鈕。**
+      **試著參與！點擊其中一個按鈕。**
   task_mailer:
     task_due_reminder:
-      subject: "工作提醒：%{name}"
-      greeting: "嗨 %{name}，以下的工作於 %{due} 到期："
-      view_task: "在 %{site_name} 上檢視"
-      update_or_comment: "如果您已完成此工作，請勾選它。若其不完整，請分享進度更新。"
-      due_today: '今天'
-      due_in_count_days: '%{count} 天內'
+      subject: 工作提醒：%{name}
+      greeting: 嗨 %{name}，以下的工作於 %{due} 到期：
+      view_task: 在 %{site_name} 上檢視
+      update_or_comment: 如果您已完成此工作，請勾選它。若其不完整，請分享進度更新。
+      due_today: 今天
+      due_in_count_days: "%{count} 天內"
   group_mailer:
-    resend: '提醒：%{member} 正等候您加入 %{group_name}'
+    resend: 提醒：%{member} 正等候您加入 %{group_name}
     destroy_warning:
       subject: 您的 Loomio 群組已安排刪除。
       body: |
-          您的 Loomio 群組：「%{group}」已被 %{deletor} 安排刪除。
-          若您不希望您的群組被刪除，請回覆此電子郵件。
-          若您確定您想要刪除群組，您就不需要任何做任何事。
-          感謝您。
+        您的 Loomio 群組：「%{group}」已被 %{deletor} 安排刪除。
+        若您不希望您的群組被刪除，請回覆此電子郵件。
+        若您確定您想要刪除群組，您就不需要任何做任何事。
+        感謝您。
   poll_mailer:
     common:
       why_send_this: 因為 %{reason}，您收到了這封電子郵件
       view_on_loomio: 在 %{site_name} 上檢視
       create_outcome: 分享成果
-      your_response: "您投票給："
-      you_voted: "您已投票！"
-      not_invited: "未邀請"
+      your_response: 您投票給：
+      you_voted: 您已投票！
+      not_invited: 未邀請
       please_respond: 請回應
-      time_zone: （在 %{zone} 顯示的時間）
+      time_zone: "（在 %{zone} 顯示的時間）"
       undecided_members: 未決定的成員（%{count}）
       undecided_visitors: 未決定的來賓 (%{count})
       more_undecided: "%{count} 更多……"
       vote_now: 現在投票
       you_have_until: 您到 %{when} 前都可以參與。
       people_have_voted: "%{dnom} 中的 %{nom} 個人已投票 (%{pct}%)"
+  discussion_templates:
+    blank:
+      process_name: 空白模板
+      process_subtitle: 出於任何目的啟動一個新線程
+    discuss_a_topic:
+      title_placeholder: 您想討論的主題是什麼？
+      process_name: 討論一個話題
+      process_subtitle: 與您的小組開始討論
+      process_introduction: "<p>您是否想向您的團隊提出問題、問題或機會？</p><p>介紹主題、連結到任何背景資訊並尋求評論、想法和幫助。</p><p>邀請人們透過貢獻他們的想法和相關資訊來參與。使用@mention 來引起特定人員的注意。</p><p>隨著討論的進展更新線程上下文，以促進討論取得結果。</p><p>不要等到掌握所有資訊才開始話題。而是使用該線程邀請人們幫助您探索該主題並找出解決方案。</p>"
+      description: <h3 id="introduce-and-describe-the-topic">介紹並描述主題</h3><p></p><h3 id="why-is-this-important">為什麼這很重要？</h3><p></p><h3 id="how-would-you-like-people-to-respond">您希望人們如何回應？</h3><p></p>
+    onboarding_to_loomio:
+      title: 在我們的小組中使用 Loomio
+      process_name: 加入 Loomio
+      process_subtitle: 一個幫助 Loomio 新手練習撰寫評論和投票的帖子。
+      process_introduction: "<p>使用此範本向人們介紹 Loomio。</p><p>體驗 Loomio 的一個好方法是在 Loomio 中展開討論並做出決定！</p><p>按照下面的文字提示開始討論或插入您自己的話。</p><p>執行 Sense 檢查，以便您的小組可以投票並查看結果。</p><p>讓人們參與第一個決策，釋放 Loomio 的價值。</p>"
+      description: <h3 id="why-are-you-interested-in-using-loomio">為什麼您對使用 Loomio 感興趣？</h3><p>我們有興趣使用 Loomio 讓人們參與有關我們組織的決策。</p><h3 id="what-are-you-asking-people-to-do">你要求人們做什麼？</h3><p>我很想聽聽你的想法！在下面發表評論並對提案進行投票。</p><p>您可以透過點擊評論右下角的回應圖示來回覆某人的評論。</p><p>使用@mention 來通知人們。</p>
+      onboarding: 入職
+    consent_process:
+      title_placeholder: 制定我們的健康與安全政策
+      process_name: 同意程序
+      process_subtitle: 做出「可以安全嘗試」且沒有異議的決定。
+      process_introduction: <p>在您的提案沒有任何有意義的反對意見的情況下，就您需要做出的決定尋求同意，這樣您就可以立即做出“可以安全嘗試”的快速決定。</p><p>典型角色：</p><ul><li><p>提議者：提出需要做出決定的主題的人。</p></li><li><p>協調員：能夠幫助提案者有效完成工作的人。</p></li></ul><p>常見流程步驟：</p><p>步驟 1. 透過 Loomio 話題提出提案。</p><p>步驟 2： 透過 Sense 檢查促進一輪問題、反應和任何評論，以改善提案。</p><p>步驟 3. 修改提案並提出建議和意見。</p><p>步驟 4：詢問是否有人對修訂後的提案有明確的反對意見並提出同意提案。</p><p>步驟 5：整合有效的反對意見，創建每個人都同意「可以安全嘗試」的提案修訂版本，並在完成後說明決策結果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">了解更多：同意流程。</a></p>
+      description: <h3 id="what-is-the-decision-you-need-to-make">您需要做什麼決定？</h3><h3 id=""></h3><h3 id="why-is-this-important-and-what-impact-does-it-have">為什麼這很重要以及它有什麼影響？</h3><p></p><h3 id="what-information-do-people-need-for-context">人們需要什麼資訊來了解背景？</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">誰是這個過程的推動者？</h3><p></p>
+      consent: 同意
+    advice_process:
+      title_placeholder: 尋求購買新電腦的建議
+      process_name: 諮詢流程
+      process_subtitle: 就您需要做出的決定尋求建議。
+      process_introduction: <p>根據受影響人員或具有專業知識的人員的建議做出決策，以便您可以為您的組織做出更好的決策。</p><p>典型角色：</p><ul><li><p>協助者：做出決定的人，或請某人協助的人。</p></li><li><p>顧問：受到您邀請的受影響人員或具有專業知識的人員。</p></li></ul><p>常見流程步驟：</p><p>第 1 步：在提出行動建議之前尋求意見以試探觀點。</p><p>步驟 2. 提出建議並尋求建議 - 執行建議提案。</p><p>步驟 3：考慮收到的建議，做出決定並通知提供建議的人 - 陳述結果。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html">了解更多：建議流程。</a></p>
+      description: <h3 id="what-is-the-decision-you-need-to-make">您需要做什麼決定？</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">為什麼這很重要以及它有什麼影響？</h3><p></p><h3 id="what-advice-are-you-asking-to-help-you-make-a-good-decision">您需要什麼建議來幫助您做出正確的決定？</h3><p></p><h3 id="who-is-the-facilitator-for-this-process">誰是這個過程的推動者？</h3><p></p>
+      advice: 建議
+    pass_a_resolution:
+      title_placeholder: 批准戰略的決議
+      process_name: 通過決議
+      process_subtitle: 介紹決議的背景、背景訊息，回答問題並提出通過決議的提案。
+      process_introduction: <p>羅伯特規則是一個由一系列準則和道德規則組成的框架，可幫助團體舉行有序的會議，讓多數人進行統治，同時允許少數人的聲音被聽到。 <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/">https://www.boardeffect.com/blog/roberts-rules-of-order-cheat-sheet/</a>成員提出一項動議，透過說「我搬到…」來提議一項行動或做出決定。另一位成員必須透過說「我支持該動議」來附議該動議。一旦有人附議該動議，小組就會對該動議進行投票。根據章程中的規則，它以多數票或法定人數通過。</p>
+      description: "<p><strong>陳述擬通過的決議</strong></p><p></p><p><strong>概述上下文和背景訊息</strong></p><p></p><p><strong>邀請成員提出問題、發表評論並貢獻任何資訊以建立共識</strong></p><p></p>"
+      resolution: 解決
+    decision_by_consensus:
+      title_placeholder: 修改我們的組織章程
+      process_name: 協商一致決定
+      process_subtitle: 與所有相關人員達成集體協議。
+      process_introduction: <p>就需要共同做出的決定達成共識，達成滿足所有參與者的需求和關切的協議。</p><p>典型角色：</p><ul><li><p>指定一名協調員。 （在董事會會議上，這通常是主席。）</p></li><li><p>根據組織章程的規定，參與的法定人數或絕對多數成員。</p></li></ul><p>常見流程步驟：</p><p>步驟 1. 創造一個開放的空間來討論問題或提議的決策。</p><p>步驟 2. 測試共識並透過 Sense 檢查提案揭露異議。</p><p>步驟 3. 澄清任何要點，邀請建設性修改並修改提案。</p><p>步驟 4. 測試共識提案的一致性和任何剩餘的反對意見。</p><p>步驟 5. 將決定及其結果記錄在組織的正式會議記錄中。</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">了解更多：共識過程。</a></p>
+      description: <h3 id="what-is-the-decision-you-need-to-make">您需要做什麼決定？</h3><p></p><h3 id="why-is-this-important-and-what-impact-does-it-have">為什麼這很重要以及它有什麼影響？</h3><p></p><h3 id="what-information-do-people-need-for-context">人們需要什麼資訊來了解背景？</h3><p></p><h3 id="who-is-the-facilitator">誰是協調者？</h3><p></p><h3 id="what-conditions-need-to-be-met-for-a-decision">需要滿足什麼條件才能做決定？</h3><h3 id=""></h3>
+      consensus: 共識
+    share_links_and_info:
+      title_placeholder: 分享連結和訊息
+      process_name: 分享連結和訊息
+      process_subtitle: 發布資訊、連結和報告以分享以供評論和討論。
+      process_introduction: "<p>使用線程作為您的小組的“牆”或“公告板”，以發布您想與彼此分享的資訊、新聞項目和想法。</p><p>邀請人們使用<strong>插入連結</strong>和<strong>嵌入影片</strong>格式化工具來幫助小組從 Loomio 中存取資訊。使用評論<strong>標題</strong>將評論固定到線程時間線，以便可以輕鬆找到它。</p><p>將線<strong>釘住</strong>，使其粘在周圍，並鼓勵<strong>反應</strong>以使其保持活力，讓人們知道您看到了他們的物品。</p><p>該線程的預設顯示是<strong>最新的</strong>，因此最新的評論位於線程的頂部。</p>"
+      description: <p>使用此貼文發布資訊、通知和您想要分享的內容 - 您可以在其中查看正在發生的事情並參與其中。</p><p data-text-align="start">分享活動、報告、播客和其他有趣的線上資訊。</p><p data-text-align="start">使用<strong>插入連結</strong>和<strong>嵌入影片</strong>格式工具幫助人們存取 Loomio 中的資訊。</p>
+      information: 資訊
+    prepare_for_a_meeting:
+      title_placeholder: 為我們的下一次會議做準備
+      process_name: 準備會議
+      process_subtitle: 制定議程、發布董事會文件並組織行政事務，以便每個人都了解最新情況、了解情況並做好準備。
+      description: <p><strong>會議焦點</strong></p><p></p><p data-text-align="start"><strong>議程大綱</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>上次會議的行動</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>與會者該如何準備會議？</strong></p><p data-text-align="start"></p><p data-text-align="start"><strong>會議文件清單</strong></p><p data-text-align="start"></p>
+      process_introduction: <p>從一開始就讓人們參與進來，圍繞最重要的主題規劃一次有效的會議，並更好地利用你們在一起的寶貴時間。</p><p>使用主題作為會議的容器，確定會議焦點、設定議程、找到合適的日期、發布關鍵文件和報告、開始討論議程項目、跟進行動和會議記錄。</p><p>這可以幫助每個人透過閱讀材料並思考討論的主題和要做出的決定來為會議做好準備。這樣，成員們更有可能到達現場並為會議做好準備。</p><p>請閱讀《Loomio 良好治理指南》中有關<a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/board_processes/meeting.html"><u>準備會議的</u></a>更多資訊。</p>
+      meeting: 會議
+    build_a_policy:
+      title_placeholder: 修改我們的招募政策
+      process_name: 制定政策
+      process_subtitle: 與您的團隊合作制定並商定政策或程序文件。
+      process_introduction: "<p><span>貼文是討論政策的容器，您可以在其中同意要求和原則，並發布文件草稿以徵求意見。</span></p><p><span>使用此範本與一小群人一起制定政策，或使其對整個組織透明，邀請對文件的漸進版本發表評論。</span></p><p><span>使用 Sense 檢查提案通知小組成員文件草稿已準備好供審核，並邀請人們閱讀該文件並回覆任何意見或問題。</span></p><p><span>當「最終」草案準備好時，提出同意書或共識提案以批准該文件。</span></p>"
+      description: "<p><strong><span>您需要製定什麼政策或文件？</span></strong></p><p></p><p><strong><span>為什麼這很重要？</span></strong></p><p></p><p><strong><span>你要求人們做什麼？</span></strong></p><p></p>"
+      policy: 政策
+    elect_a_governance_position:
+      title_placeholder: 理事會提名及選舉
+      process_name: 選擇治理職位
+      process_subtitle: 提名並選舉某人在理事會、委員會或董事會中擔任治理角色。
+      process_introduction: "<p>介紹該職位的治理角色和標準，以幫助成員評估候選人。</p><p>透過選擇參與投票來徵集提名。邀請被提名者張貼候選人的照片以及他們的履歷和推薦信。嵌入候選人的視訊訊息，以便成員可以直接看到和聽到候選人的消息。</p><p>如果您準備好選舉候選人，請使用同意提案。</p><p>如果某個職位有多名候選人，請使用排名選擇提案，選民可以按偏好順序對候選人進行排名。</p>"
+      description: <h3 id="what-position-do-you-need-to-fill">您需要填補什麼職位？</h3><p></p><h3 id="why-is-this-important">為什麼這很重要？</h3><p></p><h3 id="what-qualifications-skills-and-experiences-make-a-good-cand">什麼樣的資格、技能和經驗才能成為優秀的候選人？</h3><p></p><h3 id="what-is-the-election-process">選舉過程是怎麼樣的？</h3><p>第一階段：提名－我們邀請合適候選人提名。</p><p>第 2 階段：介紹候選人 - 包含每位候選人的照片、簡短的履歷和參考資料。</p><p>第 3 階段：選舉 - 投票任命一位候選人擔任該職位。</p>
+      election: 選舉
+    funding_decision:
+      title_placeholder: 機器人路演資金申請
+      process_name: 資助決定
+      process_subtitle: 處理贈款、貸款或投資申請並做出資助決定。
+      process_introduction: "<p>提出資助申請，附上文件和其他支援資料。</p><p>總結一下線程上下文中的應用。</p><p>邀請授權人員審查申請並提出問題。留出足夠的時間進行討論。</p><p>提出共識提案以批准資金。</p><p>如果有人不同意，請詢問原因 - 例如，可能需要更多資訊。邀請不同意的人在滿意後更改投票。</p><p>當您對資助申請有明確的決定時，請說明結果以記錄該決定。</p>"
+      description: <h3 id="introduce-and-summarize-the-funding-application">資助申請介紹及總結</h3><p></p><h3 id="how-does-this-application-fit-with-funding-criteria">該申請如何符合資助標準？</h3><p></p><h3 id="who-is-authorized-to-approve-this-funding-decision">誰有權批准這項資助決定？</h3><p></p><h3 id="invite-questions-from-decision-makers-to-process-the-applica">邀請決策者提問以處理申請</h3><p></p>
+      funding: 資金
+    approve_a_document:
+      title_placeholder: 制定我們的品牌策略
+      process_name: 批准文件
+      process_subtitle: 介紹、討論和製定重要文件、政策或協議。
+      process_introduction: "<p>介紹該文件以及任何背景資訊。說明該文件的目的以幫助保持專注。</p><p>邀請人們貢獻資訊和他們的專業知識，並用它來建立文件。承認並考慮人們的回饋和貢獻。</p><p>將貢獻整合到文件的初稿和後續草案中，直到準備好獲得批准。</p><p>使用 Sense 檢查民意調查來調查意見並澄清草稿中的任何問題。</p><p>一旦回饋被考慮並納入文件中，就可以繼續批准或同意同意書或共識提案。</p><p>該線程成為文件創建進度和所做決策的清晰記錄。</p>"
+      description: <h3 id="what-is-the-purpose-of-the-document">該文件的目的是什麼？</h3><p></p><h3 id="why-is-this-important">為什麼這很重要？</h3><p></p><h3 id="what-are-you-asking-people-to-do">你要求人們做什麼？</h3><p></p>
+      document: 文件
+  event_mailer:
+    received_email:
+      explaination_html: "<p>您收到這封電子郵件是因為您是 Loomio 群組的管理員：%{group}。</p><p>該小組收到了一封來自無法識別的電子郵件地址的電子郵件。</p><p>如果郵件來自群組成員，請查看電子郵件並選擇該成員。</p><p>如果您不需要該郵件，您可以封鎖來自該位址的任何其他電子郵件。</p>"

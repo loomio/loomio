@@ -291,6 +291,7 @@ hu:
       discard: Eldobni
       restore: visszaállítás
       align: Igazítsa
+      confirm: megerősít
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
@@ -313,6 +314,7 @@ hu:
     visit_loomio_help: Látogassa meg a Loomio súgóját
     admin_menu: Admin menü
     api_docs: API-dokumentumok
+    value: "%{value}"
   merge_accounts:
     modal:
       submit: Ellenőrzés
@@ -624,6 +626,7 @@ hu:
       stance_created_option: "%{actor} %{option} szavazatot adott itt: %{title}"
       user_added_to_group: "%{actor} felvett a következő csoportba: %{title}"
       membership_resent: "%{actor} meghívott, hogy csatlakozz a %{title} csoporthoz a %{site_name} oldalon"
+      unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
     without_title:
       poll_expired: "%{poll_type} lezárult"
       discussion_announced: "%{actor} meghívott egy témaszálba"
@@ -659,6 +662,7 @@ hu:
       user_mentioned: "%{actor} megemlített téged"
       user_reminded: "%{actor} emlékeztet arra, hogy szavazzon"
       membership_resent: "%{actor} meghívott egy csoportba"
+      unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
     hints:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
@@ -779,7 +783,7 @@ hu:
       added_singular: 1 személy kerül hozzáadásra.
       added_none: Senki nem lesz hozzáadva.
       group_title: "%{name} (%{count} ember)"
-      visible_to_group: A(z) %{csoport} tagja láthatja ezt a szálat.
+      visible_to_group: A(z) %{group} tagja láthatja ezt a szálat.
       visible_to_guests: Csak a meghívott személyek láthatják ezt a szálat.
       click_group_to_see_individuals: Kattintson a csoportra az egyének megtekintéséhez
       invite_people_to_evaluate_loomio: Hívjon meg néhány embert a Loomio csoportjába, hogy közösen döntsenek
@@ -1739,7 +1743,7 @@ hu:
     no_results: Nem találhatók tagok
     show_users_in_subgroups: Alcsoportokban is jelenítse meg a felhasználókat
     guest: Vendég
-    last_seen: 'Utoljára látott: %{dátum}'
+    last_seen: 'Utoljára látott: %{date}'
     invited_by_name: 'Meghívta: %{name}'
     bot: Bot
     all: Minden
@@ -2113,7 +2117,7 @@ hu:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> lezárta a szálat"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> újra megnyitotta a szálat"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> létrehozta a szál elágazását: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{szerző}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> megosztott egy eredményt"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> újra megnyitotta a(z) %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> lezárta a %{polltype}"
@@ -2295,8 +2299,6 @@ hu:
     email_to_group_address: E-mail cím a csoporthoz
     start_threads_via_email: Témák indítása e-mailben
     your_address_for_this_group: E-mail címe ehhez a csoporthoz
-    send_email_to_start_thread: Küldjön e-mailt erre a címre, ha szálat szeretne indítani a csoportjában.
-    subject_body_attachments: A szál az e-mail tárgyát, törzsét és csatolt fájljait fogja használni.
     address_starts_threads_as_you: Ne ossza meg ezt a címet – bárki, aki rendelkezik vele, Önként indíthat szálakat.
     generate_new_address: Új cím létrehozása
     copy_address: Cím másolása
@@ -2306,6 +2308,24 @@ hu:
     new_address_generated: Új e-mail-cím generálva a csoporthoz
     generate_new_address_question: Új e-mail-címet generál a csoporthoz?
     generate_new_address_warning: Az összes meglévő e-mail-címe nem fog működni. Nincs visszavonás. Menj tovább?
+    not_available_to_trial_or_demo: Ez a funkció nem érhető el próba- vagy demócsoportok esetén
+    review_email: E-mail áttekintése
+    add_alias: Adjon hozzá aliast
+    who_is_the_owner_of_email: Ki a %{email} tulajdonosa?
+    is_name_the_owner_of_email: "%{name} a %{email} tulajdonosa?"
+    all_email_will_belong_to_name: A(z) %{email} összes üzenete a(z) %{name} címhez lesz rendelve
+    email_aliases: Álnevek és figyelmen kívül hagyott címek
+    belongs_to_name: "%{name}"
+    block_email: Cím letiltása
+    no_emails_to_release: Nincsenek kiadásra váró e-mailek
+    release_rules: Kiadási szabályok
+    confirm_block: Letiltja ezt az e-mail címet?
+    confirm_block_body: Ezt az e-mailt és a %{sender} további e-mailjeit figyelmen kívül hagyjuk.
+    confirm_delete: Törli ezt az e-mailt?
+    confirm_delete_body: Ez az e-mail törlésre kerül. A %{sender} jövőbeli e-mailjeit ez nem érinti.
+    unreleased_emails: Kiadatlan e-mailek
+    start_a_thread_by_email: Indíts el egy szálat e-mailben
+    email_released: Az e-mail feladva és az alias létrehozva
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Az Ön e-mail címe a szálak indításához a %{group}
   delete_group_modal:

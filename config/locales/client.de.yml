@@ -304,6 +304,7 @@ de:
       align: Ausrichten
       hide: Verstecken
       unhide: Einblenden
+      confirm: Bestätigen
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
@@ -317,6 +318,7 @@ de:
     visit_loomio_help: Besuchen Sie die Loomio-Hilfe
     admin_menu: Admin-Menü
     api_docs: API-Dokumente
+    value: "%{value}"
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -632,6 +634,7 @@ de:
       stance_created_option: "%{actor} hat für %{option} in %{title} abgestimmt"
       user_added_to_group: "%{actor} hat Sie zur Gruppe hinzugefügt: %{title}"
       membership_resent: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten"
+      unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
     without_title:
       discussion_closed: "%{actor}den Thread geschlossen"
       poll_expired: "%{poll_type} wurde abgeschlossen"
@@ -667,6 +670,7 @@ de:
       user_mentioned: "%{actor} hat Sie erwähnt"
       user_reminded: "%{actor} erinnert Sie daran, abzustimmen"
       membership_resent: "%{actor} hat Sie eingeladen, einer Gruppe beizutreten"
+      unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, Ihre Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchten Sie die Menschen an die Abstimmung erinnern oder die Frist verlängern.
@@ -768,7 +772,7 @@ de:
 
         '
       no_invitations_remaining: |
-        <p>Diese Gruppe ist auf %{maxMitglieder} Einladungen begrenzt. </p>
+        <p>Diese Gruppe ist auf %{maxMembers} Einladungen begrenzt. </p>
         <p>Als nächster Schritt<a href="%{upgradeUrl}" target="_blank">wähle einen Tarif</a>um weiter mit Loomio zu arbeiten. </p>
       who_to_invite: Wen möchtest du einladen?
       invitation_message_placeholder: Eine Nachricht, die in der Einladungs-E-Mail enthalten sein soll. (optional)
@@ -986,7 +990,7 @@ de:
     original_text: Original
     current_revision: Letzte
     closing_at_changed: 'Schliesst: %{time}'
-    private_changed: Sichtbarkeit auf %{privat} festgelegt
+    private_changed: Sichtbarkeit auf %{private} festgelegt
     group_id_changed: in %{name} verschoben
     stance_header: Abstimmungsänderungen
   reactions_input:
@@ -1472,7 +1476,7 @@ de:
     invite_only: Invite-only
     private_thread: Private Diskussion
     max_threads_reached: |
-      Diese Gruppe ist auf %{maxDiskussionen}] Diskussionen begrenzt.<p>
+      Diese Gruppe ist auf %{maxThreads}] Diskussionen begrenzt.<p>
       <p>Nächster Schritt<a href="%{upgradeUrl}" target="_blank">wähle einen Tarif </a>um weiter mit Loomio zu arbeiten. </p>
     subscription_canceled: |
       <p>Deine Einschreibung ist nicht aktiv.</p>
@@ -1598,7 +1602,7 @@ de:
       Wenn du mit uns Kontakt aufnimmst, stimmst du zu, dass unsere Mitarbeiter bei Bedarf auf dein Konto zugreifen dürfen.
       Bitte beachte auch, dass unser Support-Team vorwiegend Englisch spricht und deine Nachricht  bei Bedarf mit Google Translate übersetzt.
       Wir bemühen uns, alle Nachrichten innerhalb von 24 Stunden zu beantworten.
-    success: Danke für Ihre Nachricht. Wir werden uns mit Ihnen in Verbindung setzen.
+    success: Danke für Ihre Nachricht. %{name}. Wir werden uns mit Ihnen in Verbindung setzen.
     alt_title: Kontaktieren Sie den Loomio-Support
     this_is_for: Dies ist ein großartiger Ort für Verkaufs-, Schulungs- oder Abonnementanfragen oder um Unterstützung bei der Verwendung von Loomio anzufordern.
     read_the_manual: Wussten Sie, dass unser <a href="%{link}" target="_blank">Hilfehandbuch</a> häufig gestellte Fragen sowie detaillierte Anleitungen zur Erleichterung von Diskussionen und Entscheidungen zu Loomio enthält?
@@ -1692,7 +1696,7 @@ de:
     custom_poll: Benutzerdefinierte Umfrage
     delete_poll: Umfrage löschen
     select_count_options: Wählen Sie %{count} Optionen aus
-    select_minimum_to_maximum_options: Wählen Sie die Optionen %{Minimum} bis %{Maximum} aus
+    select_minimum_to_maximum_options: Wählen Sie die Optionen %{minimum} bis %{maximum} aus
     custom_poll_types: Benutzerdefinierte Umfragetypen
     example_polls_from_thread_template: Beispiele aus Thread-Vorlage
     hidden_poll_templates: Versteckte Umfragevorlagen
@@ -1934,7 +1938,7 @@ de:
     authored_by: Von %{name}
   poll_common_delete_modal:
     question: Wirklich löschen?
-    title: "%{poll_type} entfernen"
+    title: "%{pollType} entfernen"
     success: Erfolgreich gelöscht
   poll_common_form:
     voting_methods:
@@ -2366,8 +2370,6 @@ de:
     email_to_group_address: E-Mail-Adresse an die Gruppe
     start_threads_via_email: Starten Sie Threads per E-Mail
     your_address_for_this_group: Ihre E-Mail-Adresse für diese Gruppe
-    send_email_to_start_thread: Senden Sie eine E-Mail an diese Adresse, um einen Thread in Ihrer Gruppe zu starten.
-    subject_body_attachments: Der Thread verwendet den Betreff, den Text und die angehängten Dateien der E-Mail.
     address_starts_threads_as_you: Geben Sie diese Adresse nicht weiter – jeder, der sie hat, kann als Sie Threads starten.
     generate_new_address: Neue Adresse generieren
     copy_address: Adresse kopieren
@@ -2377,6 +2379,24 @@ de:
     new_address_generated: Neue E-Mail-an-Gruppen-Adresse generiert
     generate_new_address_question: Neue E-Mail-an-Gruppen-Adresse generieren?
     generate_new_address_warning: Alle Ihre vorhandenen E-Mail-zu-loomio-Adressen funktionieren nicht mehr. Es gibt kein Rückgängigmachen. Fortfahren?
+    not_available_to_trial_or_demo: Diese Funktion ist für Test- oder Demogruppen nicht verfügbar
+    review_email: Überprüfen Sie die E-Mail
+    add_alias: Alias hinzufügen
+    who_is_the_owner_of_email: Wer ist der Eigentümer von %{email}?
+    is_name_the_owner_of_email: Ist %{name} der Besitzer von %{email}?
+    all_email_will_belong_to_name: Alle Nachrichten von %{email} werden %{name} zugeordnet
+    email_aliases: Aliase und ignorierte Adressen
+    belongs_to_name: Gehört zu %{name}
+    block_email: Adresse sperren
+    no_emails_to_release: Keine E-Mails warten auf Veröffentlichung
+    release_rules: Freigaberegeln
+    confirm_block: Diese E-Mail-Adresse blockieren?
+    confirm_block_body: Diese E-Mail und alle weiteren E-Mails von %{sender} werden ignoriert.
+    confirm_delete: Diese E-Mail löschen?
+    confirm_delete_body: Diese E-Mail wird gelöscht. Alle zukünftigen E-Mails von %{sender} bleiben davon unberührt.
+    unreleased_emails: Unveröffentlichte E-Mails
+    start_a_thread_by_email: Starten Sie einen Thread per E-Mail
+    email_released: E-Mail freigegeben und Alias erstellt
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Ihre E-Mail-Adresse zum Starten von Threads in %{group}
   thread_preview:
