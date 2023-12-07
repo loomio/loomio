@@ -2389,8 +2389,6 @@ uk:
     email_to_group_address: Адреса електронної пошти для групи
     start_threads_via_email: Почати ланцюжки по електронній пошті
     your_address_for_this_group: Ваша електронна адреса для цієї групи
-    send_email_to_start_thread: Надішліть електронний лист на цю адресу, щоб створити ланцюжок у своїй групі.
-    subject_body_attachments: Потік використовуватиме тему електронного листа, тіло та вкладені файли.
     address_starts_threads_as_you: Не повідомляйте цю адресу – будь-хто, хто має її, може розпочинати ланцюжки від вашого імені.
     generate_new_address: Згенерувати нову адресу
     copy_address: Скопіюйте адресу
@@ -2417,7 +2415,7 @@ uk:
     confirm_delete_body: Цей електронний лист буде видалено. Це не вплине на будь-які майбутні електронні листи від %{sender}.
     unreleased_emails: Неопубліковані електронні листи
     start_a_thread_by_email: Почніть ланцюжок електронною поштою
-    forward_email_to_move_conversation: 'Порада: перемістіть наявну бесіду електронною поштою до Loomio, переславши її на цю адресу.'
+    email_released: Електронну адресу звільнено та створено псевдонім
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Ваша адреса електронної пошти для створення тем у %{group}
   thread_preview:

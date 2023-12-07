@@ -2299,8 +2299,6 @@ hu:
     email_to_group_address: E-mail cím a csoporthoz
     start_threads_via_email: Témák indítása e-mailben
     your_address_for_this_group: E-mail címe ehhez a csoporthoz
-    send_email_to_start_thread: Küldjön e-mailt erre a címre, ha szálat szeretne indítani a csoportjában.
-    subject_body_attachments: A szál az e-mail tárgyát, törzsét és csatolt fájljait fogja használni.
     address_starts_threads_as_you: Ne ossza meg ezt a címet – bárki, aki rendelkezik vele, Önként indíthat szálakat.
     generate_new_address: Új cím létrehozása
     copy_address: Cím másolása
@@ -2327,7 +2325,7 @@ hu:
     confirm_delete_body: Ez az e-mail törlésre kerül. A %{sender} jövőbeli e-mailjeit ez nem érinti.
     unreleased_emails: Kiadatlan e-mailek
     start_a_thread_by_email: Indíts el egy szálat e-mailben
-    forward_email_to_move_conversation: 'Tipp: Helyezzen át egy meglévő e-mail beszélgetést a Loomióba úgy, hogy továbbítsa erre a címre.'
+    email_released: Az e-mail feladva és az alias létrehozva
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Az Ön e-mail címe a szálak indításához a %{group}
   delete_group_modal:

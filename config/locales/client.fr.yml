@@ -373,8 +373,6 @@ fr:
     email_to_group_address: Adresse e-mail au groupe
     start_threads_via_email: Démarrer les discussions par e-mail
     your_address_for_this_group: Votre adresse e-mail pour ce groupe
-    send_email_to_start_thread: Envoyez un e-mail à cette adresse pour démarrer un fil de discussion dans votre groupe.
-    subject_body_attachments: Le fil de discussion utilisera l’objet de l’e-mail, le corps et les fichiers joints.
     address_starts_threads_as_you: Ne partagez pas cette adresse - toute personne qui l’a peut démarrer des discussions pendant que vous.
     generate_new_address: Générer une nouvelle adresse
     copy_address: Copier l’adresse
@@ -401,7 +399,7 @@ fr:
     confirm_delete_body: Cet e-mail sera supprimé. Les futurs e-mails de %{sender} ne seront pas affectés.
     unreleased_emails: E-mails inédits
     start_a_thread_by_email: Démarrer un fil de discussion par e-mail
-    forward_email_to_move_conversation: 'Astuce : déplacez une conversation par e-mail existante vers Loomio en la transférant à cette adresse.'
+    email_released: E-mail publié et alias créé
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Votre adresse e-mail pour démarrer les threads dans %{group}
   volume_levels:

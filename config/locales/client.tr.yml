@@ -1846,8 +1846,6 @@ tr:
     email_to_group_address: Gruba e-posta adresi
     start_threads_via_email: Konuları e-postayla başlat
     your_address_for_this_group: Bu grup için e-posta adresiniz
-    send_email_to_start_thread: Grubunuzda bir konu başlatmak için bu adrese e-posta gönderin.
-    subject_body_attachments: Konuda e-postanın konusu, gövdesi ve ekli dosyalar kullanılacaktır.
     address_starts_threads_as_you: Bu adresi paylaşmayın; bu adrese sahip olan herkes sizin adınıza konu başlatabilir.
     generate_new_address: Yeni adres oluştur
     copy_address: Adresi kopyala
@@ -1874,7 +1872,7 @@ tr:
     confirm_delete_body: Bu e-posta silinecek. %{sender}'dan gelecek e-postalar etkilenmeyecektir.
     unreleased_emails: Yayınlanmamış e-postalar
     start_a_thread_by_email: E-postayla konu başlat
-    forward_email_to_move_conversation: 'İpucu: Mevcut bir e-posta görüşmesini bu adrese ileterek Loomio''ya taşıyın.'
+    email_released: E-posta yayınlandı ve takma ad oluşturuldu
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: "%{group} grubunda konu başlatmak için e-posta adresiniz"
   close_explanation_modal:

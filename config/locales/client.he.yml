@@ -2231,8 +2231,6 @@ he:
     email_to_group_address: כתובת אימייל לקבוצה
     start_threads_via_email: התחל שרשורים באמצעות דואר אלקטרוני
     your_address_for_this_group: כתובת האימייל שלך לקבוצה זו
-    send_email_to_start_thread: שלח דוא"ל לכתובת זו כדי לפתוח שרשור בקבוצה שלך.
-    subject_body_attachments: השרשור ישתמש בנושא האימייל, בגוף ובקבצים המצורפים.
     address_starts_threads_as_you: אל תשתף את הכתובת הזו - כל מי שיש לו אותה יכול לפתוח שרשורים כמוך.
     generate_new_address: צור כתובת חדשה
     copy_address: העתק כתובת
@@ -2259,7 +2257,7 @@ he:
     confirm_delete_body: מייל זה יימחק. אימיילים עתידיים מ-%{sender} לא יושפעו.
     unreleased_emails: מיילים שלא פורסמו
     start_a_thread_by_email: התחל שרשור במייל
-    forward_email_to_move_conversation: 'טיפ: העבר שיחת דוא"ל קיימת ל-Loomio על ידי העברתה לכתובת זו.'
+    email_released: דוא"ל שוחרר והכינוי נוצר
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: כתובת הדוא"ל שלך לפתיחת שרשורים ב-%{group}
   search_modal:

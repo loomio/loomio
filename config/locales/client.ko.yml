@@ -2073,8 +2073,6 @@ ko:
     email_to_group_address: 이메일-그룹 주소
     start_threads_via_email: 이메일을 통해 스레드 시작
     your_address_for_this_group: 이 그룹의 이메일 주소
-    send_email_to_start_thread: 그룹에서 스레드를 시작하려면 이 주소로 이메일을 보내세요.
-    subject_body_attachments: 스레드는 이메일 제목, 본문, 첨부 파일을 사용합니다.
     address_starts_threads_as_you: 이 주소를 공유하지 마십시오. 이 주소를 가지고 있는 사람은 누구나 귀하처럼 스레드를 시작할 수 있습니다.
     generate_new_address: 새 주소 생성
     copy_address: 주소 복사
@@ -2101,7 +2099,7 @@ ko:
     confirm_delete_body: 이 이메일은 삭제됩니다. 향후 %{sender}님이 보내는 모든 이메일은 영향을 받지 않습니다.
     unreleased_emails: 공개되지 않은 이메일
     start_a_thread_by_email: 이메일로 스레드 시작
-    forward_email_to_move_conversation: '팁: 기존 이메일 대화를 이 주소로 전달하여 Loomio로 이동하세요.'
+    email_released: 이메일이 공개되고 별칭이 생성되었습니다.
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: "%{group}에서 스레드를 시작하기 위한 이메일 주소"
   search_modal:

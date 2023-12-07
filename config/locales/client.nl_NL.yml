@@ -2367,8 +2367,6 @@ nl_NL:
     email_to_group_address: E-mail-naar-groepsadres
     start_threads_via_email: Discussies starten via e-mail
     your_address_for_this_group: Uw e-mailadres voor deze groep
-    send_email_to_start_thread: Stuur een e-mail naar dit adres om een thread in je groep te starten.
-    subject_body_attachments: De thread gebruikt het e-mailonderwerp, de hoofdtekst en de bijgevoegde bestanden.
     address_starts_threads_as_you: Deel dit adres niet - iedereen die het heeft kan discussies starten zoals jij.
     generate_new_address: Nieuw adres genereren
     copy_address: Adres kopiëren
@@ -2395,7 +2393,7 @@ nl_NL:
     confirm_delete_body: Deze e-mail wordt verwijderd. Eventuele toekomstige e-mails van %{sender} blijven onaangetast.
     unreleased_emails: Niet-vrijgegeven e-mails
     start_a_thread_by_email: Start een draad per e-mail
-    forward_email_to_move_conversation: 'Tip: Verplaats een bestaand e-mailgesprek naar Loomio door het door te sturen naar dit adres.'
+    email_released: E-mail vrijgegeven en alias gemaakt
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Uw e-mailadres om threads te starten in %{group}
   thread_preview:

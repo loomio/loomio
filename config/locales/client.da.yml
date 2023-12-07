@@ -2018,8 +2018,6 @@ da:
     email_to_group_address: E-mail-til-gruppe-adresse
     start_threads_via_email: Start tråde via e-mail
     your_address_for_this_group: Din e-mailadresse for denne gruppe
-    send_email_to_start_thread: Send e-mail til denne adresse for at starte en tråd i din gruppe.
-    subject_body_attachments: Tråden vil bruge e-mailens emne, brødtekst og vedhæftede filer.
     address_starts_threads_as_you: Del ikke denne adresse - alle, der har den, kan starte tråde som dig.
     generate_new_address: Generer ny adresse
     copy_address: Kopiér adresse
@@ -2046,7 +2044,7 @@ da:
     confirm_delete_body: Denne e-mail vil blive slettet. Eventuelle fremtidige e-mails fra %{sender} vil ikke blive påvirket.
     unreleased_emails: Ikke-udgivne e-mails
     start_a_thread_by_email: Start en tråd via e-mail
-    forward_email_to_move_conversation: 'Tip: Flyt en eksisterende e-mail-samtale til Loomio ved at videresende den til denne adresse.'
+    email_released: E-mail frigivet og alias oprettet
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Din e-mailadresse til at starte tråde i %{group}
   close_explanation_modal:

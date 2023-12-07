@@ -1770,8 +1770,6 @@ sv:
     email_to_group_address: E-post-till-grupp-adress
     start_threads_via_email: Starta trådar via e-post
     your_address_for_this_group: Din e-postadress för denna grupp
-    send_email_to_start_thread: Skicka e-post till den här adressen för att starta en tråd i din grupp.
-    subject_body_attachments: Tråden kommer att använda e-postämnet, brödtexten och bifogade filer.
     address_starts_threads_as_you: Dela inte den här adressen - alla som har den kan starta trådar som du.
     generate_new_address: Skapa ny adress
     copy_address: Kopiera adress
@@ -1798,7 +1796,7 @@ sv:
     confirm_delete_body: Detta e-postmeddelande kommer att raderas. Eventuella framtida e-postmeddelanden från %{sender} kommer inte att påverkas.
     unreleased_emails: E-postmeddelanden som inte har släppts
     start_a_thread_by_email: Starta en tråd via e-post
-    forward_email_to_move_conversation: 'Tips: Flytta en befintlig e-postkonversation till Loomio genom att vidarebefordra den till den här adressen.'
+    email_released: E-post släppt och alias skapat
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Din e-postadress för att starta trådar i %{group}
   thread_nav:

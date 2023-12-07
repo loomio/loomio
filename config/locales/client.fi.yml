@@ -997,8 +997,6 @@ fi:
     email_to_group_address: Sähköpostiosoite ryhmälle
     start_threads_via_email: Aloita ketjut sähköpostitse
     your_address_for_this_group: Sähköpostiosoitteesi tälle ryhmälle
-    send_email_to_start_thread: Lähetä viesti tähän osoitteeseen aloittaaksesi ketjun ryhmässäsi.
-    subject_body_attachments: Säie käyttää sähköpostin aihetta, tekstiä ja liitetiedostoja.
     address_starts_threads_as_you: Älä jaa tätä osoitetta – kuka tahansa, jolla on se, voi aloittaa viestiketjut sinun nimelläsi.
     generate_new_address: Luo uusi osoite
     copy_address: Kopioi osoite
@@ -1025,7 +1023,7 @@ fi:
     confirm_delete_body: Tämä sähköposti poistetaan. Tämä ei vaikuta tuleviin sähköpostiviesteihin %{sender}lta.
     unreleased_emails: Julkaisemattomat sähköpostit
     start_a_thread_by_email: Aloita viestiketju sähköpostitse
-    forward_email_to_move_conversation: 'Vinkki: Siirrä olemassa oleva sähköpostikeskustelu Loomioon lähettämällä se edelleen tähän osoitteeseen.'
+    email_released: Sähköposti vapautettu ja alias luotu
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Sähköpostiosoitteesi ketjujen aloittamiseksi %{group}
   pin_event_form:

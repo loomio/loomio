@@ -1793,8 +1793,6 @@ el:
     email_to_group_address: Διεύθυνση ηλεκτρονικού ταχυδρομείου σε ομάδα
     start_threads_via_email: Έναρξη νημάτων μέσω email
     your_address_for_this_group: Η διεύθυνση email σας για αυτήν την ομάδα
-    send_email_to_start_thread: Στείλτε email σε αυτή τη διεύθυνση για να ξεκινήσετε ένα νήμα στην ομάδα σας.
-    subject_body_attachments: Το νήμα θα χρησιμοποιεί το θέμα του email, το σώμα και τα συνημμένα αρχεία.
     address_starts_threads_as_you: Μην κοινοποιείτε αυτήν τη διεύθυνση - οποιοσδήποτε την έχει μπορεί να ξεκινήσει νήματα όπως εσείς.
     generate_new_address: Δημιουργία νέας διεύθυνσης
     copy_address: Αντιγραφή διεύθυνσης
@@ -1821,7 +1819,7 @@ el:
     confirm_delete_body: Αυτό το email θα διαγραφεί. Τυχόν μελλοντικά μηνύματα ηλεκτρονικού ταχυδρομείου από %{sender} δεν θα επηρεαστούν.
     unreleased_emails: Ακυκλοφόρητα email
     start_a_thread_by_email: Ξεκινήστε ένα νήμα μέσω email
-    forward_email_to_move_conversation: 'Συμβουλή: Μετακινήστε μια υπάρχουσα συνομιλία ηλεκτρονικού ταχυδρομείου στο Loomio προωθώντας την σε αυτήν τη διεύθυνση.'
+    email_released: Το email κυκλοφόρησε και το ψευδώνυμο δημιουργήθηκε
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Η διεύθυνση email σας για να ξεκινήσετε νήματα στο %{group}
   close_explanation_modal:

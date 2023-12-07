@@ -1827,8 +1827,6 @@ sl:
     email_to_group_address: E-poštni naslov skupine
     start_threads_via_email: Začnite niti prek e-pošte
     your_address_for_this_group: Vaš e-poštni naslov za to skupino
-    send_email_to_start_thread: Pošljite e-pošto na ta naslov, da začnete nit v svoji skupini.
-    subject_body_attachments: Nit bo uporabila zadevo e-pošte, telo in priložene datoteke.
     address_starts_threads_as_you: Ne delite tega naslova – kdor ga ima, lahko začne teme kot vi.
     generate_new_address: Ustvari nov naslov
     copy_address: Kopiraj naslov
@@ -1855,7 +1853,7 @@ sl:
     confirm_delete_body: Ta e-pošta bo izbrisana. To ne bo vplivalo na vsa prihodnja e-poštna sporočila %{sender}.
     unreleased_emails: Neobjavljena e-poštna sporočila
     start_a_thread_by_email: Začni nit po e-pošti
-    forward_email_to_move_conversation: 'Nasvet: premaknite obstoječi e-poštni pogovor v Loomio tako, da ga posredujete na ta naslov.'
+    email_released: E-pošta je bila sproščena in vzdevek ustvarjen
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Vaš e-poštni naslov za začetek niti v %{group}
   sign_up_form:

@@ -153,10 +153,8 @@ v-main
     router-view
 </template>
 
-<style lang="sass">
-.group-page-tabs
-	.v-tab
-		&:not(.v-tab--active)
-			color: hsla(0,0%,100%,.85) !important
-
+<style lang="css">
+.action-dock__button--email_group {
+  text-transform: none;
+}
 </style>

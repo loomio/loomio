@@ -1512,8 +1512,6 @@ ja:
     email_to_group_address: グループ宛メールアドレス
     start_threads_via_email: 電子メールでスレッドを開始する
     your_address_for_this_group: このグループのメールアドレス
-    send_email_to_start_thread: このアドレスに電子メールを送信して、グループ内のスレッドを開始します。
-    subject_body_attachments: スレッドでは電子メールの件名、本文、添付ファイルが使用されます。
     address_starts_threads_as_you: このアドレスを共有しないでください。このアドレスを持っている人は誰でもあなたと同じようにスレッドを開始できます。
     generate_new_address: 新しいアドレスを生成する
     copy_address: アドレスをコピーする
@@ -1540,7 +1538,7 @@ ja:
     confirm_delete_body: このメールは削除されます。 %{sender} からの今後のメールは影響を受けません。
     unreleased_emails: 未公開メール
     start_a_thread_by_email: 電子メールでスレッドを開始する
-    forward_email_to_move_conversation: 'ヒント: 既存のメール会話をこのアドレスに転送して、Loomio に移動します。'
+    email_released: 電子メールが解放され、エイリアスが作成されました
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: "%{group} でスレッドを開始するためのメール アドレス"
   volume_levels:

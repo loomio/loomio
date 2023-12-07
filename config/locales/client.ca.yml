@@ -2331,8 +2331,6 @@ ca:
     email_to_group_address: Adreça de correu electrònic al grup
     start_threads_via_email: Inicieu fils per correu electrònic
     your_address_for_this_group: La teva adreça de correu electrònic per a aquest grup
-    send_email_to_start_thread: Envieu un correu electrònic a aquesta adreça per iniciar un fil al vostre grup.
-    subject_body_attachments: El fil utilitzarà l'assumpte del correu electrònic, el cos i els fitxers adjunts.
     address_starts_threads_as_you: 'No comparteixis aquesta adreça: qualsevol persona que la tingui pot iniciar fils com tu.'
     generate_new_address: Genera una nova adreça
     copy_address: Copia l'adreça
@@ -2359,7 +2357,7 @@ ca:
     confirm_delete_body: Aquest correu electrònic se suprimirà. Els futurs correus electrònics de %{sender} no es veuran afectats.
     unreleased_emails: Correus electrònics no publicats
     start_a_thread_by_email: Inicieu un fil per correu electrònic
-    forward_email_to_move_conversation: 'Consell: moveu una conversa de correu electrònic existent a Loomio reenviant-la a aquesta adreça.'
+    email_released: Correu electrònic publicat i àlies creat
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: La teva adreça de correu electrònic per iniciar fils a %{group}
   search_modal:

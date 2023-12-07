@@ -1889,8 +1889,6 @@ ru:
     email_to_group_address: Адрес электронной почты для группы
     start_threads_via_email: Начать обсуждение по электронной почте
     your_address_for_this_group: Ваш адрес электронной почты для этой группы
-    send_email_to_start_thread: Отправьте электронное письмо на этот адрес, чтобы начать обсуждение в своей группе.
-    subject_body_attachments: В цепочке будут использоваться тема, тело письма и прикрепленные файлы.
     address_starts_threads_as_you: 'Не делитесь этим адресом: любой, у кого он есть, может создавать темы, как и вы.'
     generate_new_address: Создать новый адрес
     copy_address: Копировать адрес
@@ -1917,7 +1915,7 @@ ru:
     confirm_delete_body: Это письмо будет удалено. Все будущие электронные письма от %{sender} останутся без изменений.
     unreleased_emails: Неизданные электронные письма
     start_a_thread_by_email: Начать обсуждение по электронной почте
-    forward_email_to_move_conversation: 'Совет: Переместите существующую беседу по электронной почте в Loomio, переслав ее на этот адрес.'
+    email_released: Электронная почта опубликована, псевдоним создан.
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Ваш адрес электронной почты для создания тем в %{group}
   strand_nav:

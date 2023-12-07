@@ -371,8 +371,6 @@ es:
     email_to_group_address: Dirección de correo electrónico a grupo
     start_threads_via_email: Iniciar hilos por correo electrónico
     your_address_for_this_group: Su dirección de correo electrónico para este grupo
-    send_email_to_start_thread: Envía un correo electrónico a esta dirección para iniciar un hilo en tu grupo.
-    subject_body_attachments: El hilo utilizará el asunto del correo electrónico, el cuerpo y los archivos adjuntos.
     address_starts_threads_as_you: No comparta esta dirección, cualquiera que la tenga puede iniciar hilos como usted.
     generate_new_address: Generar nueva dirección
     copy_address: Copiar dirección
@@ -399,7 +397,7 @@ es:
     confirm_delete_body: Este correo electrónico será eliminado. Cualquier correo electrónico futuro de %{sender} no se verá afectado.
     unreleased_emails: Correos electrónicos inéditos
     start_a_thread_by_email: Iniciar un hilo por correo electrónico
-    forward_email_to_move_conversation: 'Consejo: Mueva una conversación de correo electrónico existente a Loomio reenviándola a esta dirección.'
+    email_released: Correo electrónico liberado y alias creado
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Tu dirección de correo electrónico para iniciar hilos en %{group}
   volume_levels:

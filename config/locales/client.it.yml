@@ -2383,8 +2383,6 @@ it:
     email_to_group_address: Indirizzo e-mail al gruppo
     start_threads_via_email: Avvia discussioni tramite e-mail
     your_address_for_this_group: Il tuo indirizzo email per questo gruppo
-    send_email_to_start_thread: Invia un'e-mail a questo indirizzo per avviare una discussione nel tuo gruppo.
-    subject_body_attachments: Il thread utilizzerà l'oggetto dell'e-mail, il corpo e i file allegati.
     address_starts_threads_as_you: 'Non condividere questo indirizzo: chiunque lo abbia può avviare thread come te.'
     generate_new_address: Genera nuovo indirizzo
     copy_address: Copia indirizzo
@@ -2411,7 +2409,7 @@ it:
     confirm_delete_body: Questa email verrà eliminata. Eventuali email future provenienti da %{sender} non saranno interessate.
     unreleased_emails: E-mail inedite
     start_a_thread_by_email: Avvia una discussione tramite email
-    forward_email_to_move_conversation: 'Suggerimento: sposta una conversazione email esistente su Loomio inoltrandola a questo indirizzo.'
+    email_released: E-mail rilasciata e alias creato
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Il tuo indirizzo email per avviare discussioni in %{group}
   global:
