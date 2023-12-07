@@ -339,6 +339,13 @@ img.emoji
   thead td
     font-weight: bold
 
+  table table
+    margin: 0
+    border: 0
+
+  td td
+    padding: 0
+
   table
     p
       margin-bottom: 0
