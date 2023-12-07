@@ -1,4 +1,31 @@
 namespace :loomio do
+  class Hash
+    def bury *args
+      if args.count < 2
+        raise ArgumentError.new("2 or more arguments required")
+      elsif args.count == 2
+        self[args[0]] = args[1]
+      else
+        arg = args.shift
+        self[arg] = {} unless self[arg]
+        self[arg].bury(*args) unless args.empty?
+      end
+      self
+    end
+  end
+
+  def list_paths(hash, prefixes)
+    paths = []
+    hash.keys.each do |key|
+      if hash[key].is_a? Hash
+        paths.concat list_paths(hash[key], prefixes + Array(key))
+      else
+        paths.push (prefixes + Array(key)).join('.')
+      end
+    end
+    paths
+  end
+
   task generate_test_error: :environment do
     raise "this is a generated test error"
   end
@@ -11,96 +38,54 @@ namespace :loomio do
     UpdateBlockedDomainsWorker.perform_async
   end
 
-  task :delete_translations do
-    raise "edit this directly to be sure you want to use it"
+  task check_translations: :environment do
     %w[server client].each do |source_name|
-      {
-        'fr' => 'fr',
-        'de' => 'de',
-        'es' => 'es',
-        'uk' => 'uk',
-        'it' => 'it',
-        'nl_NL' => 'nl',
-        'pt_BR' => 'pt_BR',
-        'pl' => 'pl',
-        'ar' => 'ar',
-        'hu' => 'hu'
-      }.each_pair do |file_locale, google_locale|
-        foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
-        if foreign.has_key? 'poll_common_form'
-          %w[process_name
-            process_name_hint
-            process_subtitle
-            process_subtitle_hint
-            process_introduction
-            process_introduction_hint
-            example_details_placeholder].each do |key|
-            foreign['poll_common_form'].delete(key)
+      source = YAML.load_file("config/locales/#{source_name}.en.yml")['en']
+      source_paths = list_paths(source, [])
+
+      AppConfig.locales['supported'].each do |locale|
+        foreign = YAML.load_file("config/locales/#{source_name}.#{locale}.yml")[locale]
+        foreign_paths = list_paths(foreign, [])
+
+        source_paths.each do |path|
+          # puts "#{locale}: #{path}, #{source.dig(*path.split('.'))}"
+          source_string = (source.dig(*path.split('.')) || "").strip
+          foreign_string = (foreign.dig(*path.split('.')) || "").strip
+          next if foreign_string.blank?
+          source_string.scan(/\%\{\w+\}/).each do |name|
+            unless foreign_string.include?(name)
+              puts "#{source_name}.#{locale}.yml #{path} missing #{name} in #{foreign_string}"
+            end
           end
         end
-        File.write("config/locales/#{source_name}.#{file_locale}.yml", {file_locale => foreign}.to_yaml(line_width: 2000)) 
       end
     end
   end
 
-  task :translate_strings do
-    class Hash
-      def bury *args
-        if args.count < 2
-          raise ArgumentError.new("2 or more arguments required")
-        elsif args.count == 2
-          self[args[0]] = args[1]
-        else
-          arg = args.shift
-          self[arg] = {} unless self[arg]
-          self[arg].bury(*args) unless args.empty?
+  task delete_translations: :environment do
+    # I edit this each time I want to use it.. rake task arguments are terrible
+    %w[server client].each do |source_name|
+      AppConfig.locales['supported'].each do |locale|
+        foreign = YAML.load_file("config/locales/#{source_name}.#{locale}.yml")[locale]
+        if foreign.has_key? 'email_to_group'
+          %w[send_email_to_start_thread
+            subject_body_attachments
+            forward_email_to_move_conversation].each do |key|
+            foreign['email_to_group'].delete(key)
+          end
         end
-        self
+        File.write("config/locales/#{source_name}.#{locale}.yml", {locale => foreign}.to_yaml(line_width: 2000)) 
       end
     end
+  end
 
-    def list_paths(hash, prefixes)
-      paths = []
-      hash.keys.each do |key|
-        if hash[key].is_a? Hash
-          paths.concat list_paths(hash[key], prefixes + Array(key))
-        else
-          paths.push (prefixes + Array(key)).join('.')
-        end
-      end
-      paths
-    end
-
+  task translate_strings: :environment do
     %w[server client].each do |source_name|
       source = YAML.load_file("config/locales/#{source_name}.en.yml")['en']
       source_paths = list_paths(source, [])
       google = Google::Cloud::Translate.translation_v2_service
 
-      {
-        'fr' => 'fr',
-        'de' => 'de',
-        'es' => 'es',
-        'uk' => 'uk',
-        'it' => 'it',
-        'nl_NL' => 'nl',
-        'pt_BR' => 'pt_BR',
-        'pl' => 'pl',
-        'ar' => 'ar',
-        'hu' => 'hu',
-        'ca' => 'ca',
-        'ja' => 'ja',
-        'sv' => 'sv',
-        'ru' => 'ru',
-        'da' => 'da',
-        'tr' => 'tr',
-        'he' => 'he',
-        'el' => 'el',
-        'ko' => 'ko',
-        'hr' => 'hr',
-        'fi' => 'fi',
-        'sl' => 'sl',
-        'ro' => 'ro'
-      }.each_pair do |file_locale, google_locale|
+      AppConfig.locales['supported'].each do |file_locale|
         foreign = YAML.load_file("config/locales/#{source_name}.#{file_locale}.yml")[file_locale]
         foreign_paths = list_paths(foreign, [])
 
@@ -110,8 +95,12 @@ namespace :loomio do
           source_string = (source.dig(*path.split('.')) || "").strip
           next if source_string.blank?
           write_file = true
+
+          google_locale = file_locale
+          google_locale = 'nl' if file_locale == 'nl_NL'
+
           translated_string = CGI.unescapeHTML(google.translate(source_string, to: google_locale))
-          foreign.bury(*path.split('.'), translated_string) 
+          foreign.bury(*path.split('.'), translated_string)
         end
 
         if write_file

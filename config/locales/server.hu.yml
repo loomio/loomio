@@ -100,7 +100,7 @@ hu:
         '
     accounts_merged:
       subject: A %{site_name} felhasználói fiókjaid egyesítve lettek.
-      body_html: 'Szia%{név}! A két Loomio fiókod egyesítve lett. A Loomio eléréséhez most használd ezt <strong>%{email} </strong> amikor bejelentkezel.
+      body_html: 'Szia %{name}! A két Loomio fiókod egyesítve lett. A Loomio eléréséhez most használd ezt <strong>%{email} </strong> amikor bejelentkezel.
 
         '
     deactivated:

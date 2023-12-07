@@ -323,7 +323,7 @@ ro:
       undecided_visitors: Oaspeți nehotărâți (%{count})
       more_undecided: Încă %{count}...
       vote_now: Voteaza acum
-      you_have_until: Ai timp până la %{când} pentru a participa.
+      you_have_until: Ai timp până la %{when} pentru a participa.
       people_have_voted: "%{nom} din %{dnom} persoane au participat (%{pct}%)"
   event_mailer:
     received_email:

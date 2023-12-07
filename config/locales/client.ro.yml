@@ -29,7 +29,7 @@ ro:
     generating_demo: Ok, așteaptă chiar acolo! Generarea unei demonstrații durează aproximativ 20 de secunde.
     start_a_x_day_free_trial: Începeți o perioadă de încercare gratuită de %{day} zile
     ready_to_trial: Ești gata să încerci Loomio cu organizația ta?
-    start_a_no_obligation_x_day_trial: Începeți un grup Loomio pentru organizația dvs. cu o perioadă de încercare gratuită de %{zi} zile.
+    start_a_no_obligation_x_day_trial: Începeți un grup Loomio pentru organizația dvs. cu o perioadă de încercare gratuită de %{day} zile.
     you_can_test_it_out: Puteți invita alte persoane să se alăture, să îl integrați cu celelalte instrumente și să încercați să luați unele decizii.
     demo_created: Grup demonstrativ creat, doar pentru tine!
     start_demo: Începeți demonstrația
@@ -343,7 +343,7 @@ ro:
       apply_to_all: Aplica aceste setari pentru toate grupurile mele
       title: Notificări pentru %{title}
       quiet_description: Nu veți primi e-mailuri despre activitatea din acest grup.
-      apply_to_organization: Aplicați la toate grupurile din %{organizație}
+      apply_to_organization: Aplicați la toate grupurile din %{organization}
       messages:
         loud: Veți primi prin e-mail toată activitatea din acest grup.
         normal: Veți primi doar anunțuri prin e-mail din acest grup.
@@ -465,7 +465,7 @@ ro:
     toggle_sidebar: Comutați bara laterală
     open_sidebar: Deschideți bara laterală
     close_sidebar: Închideți bara laterală
-    group_and_subgroups: "%{grup} și subgrupuri"
+    group_and_subgroups: "%{group} și subgrupuri"
   user_dropdown:
     edit_profile: Editare profil
     help: Ajutor
@@ -526,7 +526,7 @@ ro:
       poll_reopened: "%{actor} a redeschis %{poll_type}: %{title}"
       poll_reminder: "%{actor} vă reamintește să votați pentru %{title}"
       poll_reminder_wip: "%{actor} vă reamintește să oferiți feedback: %{title}"
-      reaction_created: "%{actor} a reacționat %{reaction} la %{modelul dvs. din %{title}"
+      reaction_created: "%{actor} a reacționat %{reaction} la %{model} dvs. din %{title}"
       stance_created: "%{actor} a votat în: %{title}"
       stance_updated: "%{actor} a votat în: %{title}"
       stance_created_option: "%{actor} a votat %{option} în %{title}"
@@ -563,7 +563,7 @@ ro:
       poll_reopened: "%{actor} a redeschis %{poll_type}"
       poll_reminder: "%{actor} vă reamintește să votați"
       poll_reminder_wip: "%{actor} vă reamintește să oferiți feedback"
-      reaction_created: "%{actor} a reacționat %{reaction} la %{modelul tău"
+      reaction_created: "%{actor} a reacționat %{reaction} la %{model} tău"
       stance_created: "%{actor} a votat"
       stance_updated: "%{actor} a votat"
       stance_created_option: "%{actor} a votat %{option}"
@@ -711,7 +711,7 @@ ro:
     poll_closing_soon: 'Mementoul de închidere a sondajului lui %{name} a notificat %{length} persoane:'
     poll_reminder: "%{name} a reamintit %{length} persoane să voteze:"
     audiences:
-      group: "%{Nume}"
+      group: "%{name}"
       everyone_in_the_group: Toți cei din grup
       discussion_group: Toată lumea din fir
       voters: Toți sunt invitați la vot
@@ -861,7 +861,7 @@ ro:
     aria_label: Formular de cerere de membru
     submit_button: Cereți să vă alăturați
     messages:
-      membership_requested: Ați solicitat să vă alăturați %{grup}
+      membership_requested: Ați solicitat să vă alăturați %{group}
   revision_history_modal:
     aria_label: Istoric revizii
     started_by: Inceput de <strong>%{name}</strong>
@@ -873,7 +873,7 @@ ro:
     poll_header: Editări ale sondajului
     outcome_header: Editări ale rezultatelor
     stance_header: Votează modificările
-    edit_by: Editați după %{name} · %{data}
+    edit_by: Editați după %{name} · %{date}
     field: Camp
     before: Inainte de
     after: După
@@ -1095,7 +1095,7 @@ ro:
     custom_message: Mesaj personalizat
     custom_message_placeholder: Introduceți un mesaj personal pe care să îl includeți în invitație.
     add_members: Adăugați membri
-    from_parent_group: de la %{nume}.
+    from_parent_group: de la %{name}.
     messages:
       invitation_sent: Invitatie trimisa.
       invitations_sent: "%{count} invitații trimise."
@@ -1240,7 +1240,7 @@ ro:
       instructions: Pentru a dezactiva sunetul unui fir, plasați cursorul peste el și dați clic pe pictograma dezactivare sunet.
       see_muted_html: Pentru a vedea firele dvs. dezactivate, faceți clic pe <strong>„Dezactivat”</strong> . Puteți activa sunetul trecând cu mouse-ul și făcând clic pe aceeași pictogramă.
     thread_preview:
-      you_voted: Ai votat %{poziție}
+      you_voted: Ai votat %{position}
       undecided: Esti indecis
   inbox_page:
     no_threads: Woohoo! Ai citit toate discutiile din inbox.
@@ -2023,7 +2023,7 @@ ro:
     user_name_updated: Numele de utilizator a fost actualizat
     set_user_name: Setați numele de utilizator
   user_page:
-    contact_user: Nume de contact}
+    contact_user: Nume de %{name}
     location_field: 'Locație: %{value}'
     locale_field: 'Limbă: %{value}'
     online_field: 'Online: %{value}'
@@ -2142,7 +2142,7 @@ ro:
     draft_mode: Votul este dezactivat. Acesta nu este încă deschis pentru vot.
     voting_disabled_poll_is_template: Votul este dezactivat. Acesta este un șablon.
   poll_common_collapsed:
-    by_who: dupa nume}
+    by_who: dupa %{name}
   poll_common_calendar_invite:
     calendar_invite: Includeți o invitație în calendar cu acest rezultat
     poll_option_id: Ora întâlnirii
@@ -2267,7 +2267,7 @@ ro:
     you_will_be_notified: Veți fi anunțat la data revizuirii.
     submit: Împărtășiți rezultatul
   poll_common_outcome_panel:
-    authored_by: Dupa nume}
+    authored_by: Dupa %{name}
   poll_common_delete_modal:
     question: Sigur doriți să ștergeți acest lucru?
     title: Ștergeți %{pollType}
@@ -2337,7 +2337,7 @@ ro:
     agree_target_label: Numărul țintă
   poll_common_percent_voted:
     sentence: "%{numerator} din %{denominator} persoane au participat (%{percent}%)"
-    target_progress: "%{percent}% din obiectiv atins. (%{num} / %{țintă})"
+    target_progress: "%{percent}% din obiectiv atins. (%{num} / %{target})"
   poll_poll_vote_form:
     stance_created: Vot creat
     stance_updated: Vot actualizat
@@ -2345,7 +2345,7 @@ ro:
     stance_created: Vot creat
     stance_updated: Vot actualizat
   poll_meeting_vote_form:
-    local_time_zone: Ora locală - %{zonă}
+    local_time_zone: Ora locală - %{zone}
     can_attend: Poate participa
     unable: Imposibil
     if_need_be: Dacă este nevoie

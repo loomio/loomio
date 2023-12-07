@@ -931,7 +931,7 @@ ca:
     submit_button: Sol·licita unir-te al grup
     introduction_over_limit: La resposta és massa llarga
     messages:
-      membership_requested: Has sol·licitat unir-te a %{grup}
+      membership_requested: Has sol·licitat unir-te a %{group}
   revision_history_modal:
     aria_label: Historial de revisions
     discussion_header: Edicions de la discussió
@@ -1432,7 +1432,7 @@ ca:
     invite_only: Accés amb invitació
     private_thread: Fil privat
     max_threads_reached: |
-      <p>Heu utilitzat totes les %{maxMembers} invitacions disponibles per aquest grup</p>
+      <p>Heu utilitzat totes les %{maxThreads} invitacions disponibles per aquest grup</p>
       <p>Si voleu continuar <a href="%{upgradeUrl}" target="_blank">escolliu un pla</a> per seguir col·laborant a Loomio.</p>
     subscription_canceled: |
       <p>La subscripció no està activa.</p>
@@ -1650,7 +1650,7 @@ ca:
     custom_poll: Enquesta personalitzada
     delete_poll: Suprimeix l'enquesta
     select_count_options: Seleccioneu %{count} opcions
-    select_minimum_to_maximum_options: Seleccioneu %{mínim} a %{màxim} opcions
+    select_minimum_to_maximum_options: Seleccioneu %{minimum} a %{maximum} opcions
     custom_poll_types: Tipus d'enquesta personalitzats
     hidden_poll_templates: Plantilles d'enquesta ocultes
     poll_template: Plantilla d'enquesta
@@ -1705,7 +1705,7 @@ ca:
     closed: Tancat
     include_subgroups_mine: "%{name} i els meus subgrups"
     include_subgroups_all: "%{name} i tots els subgrups"
-    no_results_found: No s'ha trobat resultats per "%{name}"
+    no_results_found: No s'ha trobat resultats per "%{search}"
     unread: No llegit (%{count})
     welcome_to_your_new_group: Benvingut al teu nou grup de Loomio!
     lets_start_a_thread: Comencem un fil. Feu clic a "Nou fil" per continuar.
@@ -1732,7 +1732,7 @@ ca:
     admin: Admin
     guest: Visita
     sharable_link: Enllaç per compartir
-    last_seen: Vist per darrer cop %{time}
+    last_seen: Vist per darrer cop %{date}
     invited_by_name: Convidat per %{name}
     accepted: Membres
     bot: Bot

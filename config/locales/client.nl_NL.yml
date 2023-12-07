@@ -2165,7 +2165,7 @@ nl_NL:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de draad gesloten"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de draad opnieuw geopend"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft een fork van deze thread gemaakt: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{auteur}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft een uitkomst gedeeld"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de %{polltype} heropend"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> heeft de %{polltype} gesloten"
@@ -2383,7 +2383,7 @@ nl_NL:
     is_name_the_owner_of_email: Is %{name} de eigenaar van %{email}?
     all_email_will_belong_to_name: Alle berichten van %{email} worden toegeschreven aan %{name}
     email_aliases: Aliassen en genegeerde adressen
-    belongs_to_name: Behoort tot %{naam}
+    belongs_to_name: Behoort tot %{name}
     block_email: Blokkeer adres
     no_emails_to_release: Geen e-mails die wachten op vrijgave
     release_rules: Regels vrijgeven

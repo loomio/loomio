@@ -967,7 +967,7 @@ pl:
     submit_button: Poproś o dołączenie
     introduction_over_limit: Odpowiedź zbyt długa
     messages:
-      membership_requested: Prosiłeś o dołączenie do %{grupy}
+      membership_requested: Prosiłeś o dołączenie do %{group}
   revision_history_modal:
     aria_label: Historia poprawek
     discussion_header: Edycje dyskusji
@@ -1598,7 +1598,7 @@ pl:
     alt_title: Skontaktuj się z pomocą techniczną Loomio
     this_is_for: To świetne miejsce na zapytania dotyczące sprzedaży, szkoleń, subskrypcji lub prośby o wsparcie przy użyciu Loomio.
     read_the_manual: Czy wiesz, że nasz <a href="%{link}" target="_blank">Podręcznik pomocy</a> zawiera najczęściej zadawane pytania, a także szczegółowe przewodniki ułatwiające dyskusje i podejmowanie decyzji w Loomio?
-    success_via_email: Dziękujemy za wiadomość, %{imię}. Odpowiemy e-mailem w ciągu 24 godzin.
+    success_via_email: Dziękujemy za wiadomość, %{name}. Odpowiemy e-mailem w ciągu 24 godzin.
     need_message: Wpisz wiadomość, abyśmy mogli Ci pomóc :-)
     respond_asap: Wyślij wiadomość do zespołu Loomio, a my odpowiemy tak szybko, jak to możliwe.
     happy_to_help_with: Chętnie pomożemy w przypadku zapytań sprzedażowych, próśb o wsparcie, próśb o funkcje, zgłaszania błędów lub problemów, których doświadczasz.
@@ -1687,7 +1687,7 @@ pl:
     custom_process: Proces niestandardowy
     custom_poll: Ankieta niestandardowa
     delete_poll: Usuń ankietę
-    select_count_options: Wybierz %{liczba} opcji
+    select_count_options: Wybierz %{count} opcji
     select_minimum_to_maximum_options: Wybierz opcje od %{minimum} do %{maximum}
     custom_poll_types: Niestandardowe typy ankiet
     example_polls_from_thread_template: Przykłady z szablonu wątku
@@ -2135,7 +2135,7 @@ pl:
     decline_prompt: Czy jest coś, co chciałbyś powiedzieć?
   poll_common_percent_voted:
     sentence: "%{numerator} z %{denominator} ludzi zagłosowało (%{percent}%)"
-    target_progress: Osiągnięto %{percent}% celu. (%{num} / %{cel})
+    target_progress: Osiągnięto %{percent}% celu. (%{num} / %{target})
   poll_meeting_chart_panel:
     total: W sumie
   poll_remove_vote:

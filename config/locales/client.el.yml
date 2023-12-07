@@ -665,7 +665,7 @@ el:
     poll_closing_soon: 'Η υπενθύμιση κλεισίματος της δημοσκόπησης του %{name} ειδοποίησε %{length} άτομα:'
     poll_reminder: 'Ο χρήστης %{name} υπενθύμισε σε %{length} άτομα να ψηφίσουν:'
     audiences:
-      group: "%{όνομα}"
+      group: "%{name}"
       everyone_in_the_group: Όλοι στην ομάδα
       discussion_group: Όλοι στο νήμα
       voters: Όλοι καλούνται να ψηφίσουν
@@ -833,7 +833,7 @@ el:
     after: Μετά
     original_text: Πρωτότυπο
     closing_at_changed: η ώρα κλεισίματος ορίστηκε σε %{time}
-    private_changed: το απόρρητο ορίστηκε σε %{ιδιωτικό}
+    private_changed: το απόρρητο ορίστηκε σε %{private}
     group_id_changed: μεταφέρθηκε στο %{name}
   group_page:
     threads: Θέματα
@@ -985,15 +985,15 @@ el:
     subgroup_privacy_is_open_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι δημόσια.
     subgroup_privacy_is_closed_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Όλα τα νήματα είναι ιδιωτικά.
     subgroup_privacy_is_closed_public_threads_description: Οποιοσδήποτε μπορεί να βρει αυτήν την υποομάδα και να ζητήσει να συμμετάσχει. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα. Τα νήματα μπορεί να είναι δημόσια ή ιδιωτικά.
-    subgroup_privacy_is_closed_secret_parent_description: Τα μέλη του %{γονέα} μπορούν να βρουν αυτήν την υποομάδα και να ζητήσουν να γίνουν μέλη. Όλα τα νήματα είναι ιδιωτικά. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα.
+    subgroup_privacy_is_closed_secret_parent_description: Τα μέλη του %{parent} μπορούν να βρουν αυτήν την υποομάδα και να ζητήσουν να γίνουν μέλη. Όλα τα νήματα είναι ιδιωτικά. Μόνο τα μέλη μπορούν να δουν ποιος είναι στην ομάδα.
     subgroup_privacy_is_secret_description: Μόνο τα προσκεκλημένα μέλη μπορούν να βρουν αυτήν την υποομάδα, να δουν ποιος είναι σε αυτήν και να δουν νήματα.
     advanced_settings: Προηγμένες ρυθμίσεις
     how_do_people_join: Πώς εντάσσονται οι άνθρωποι;
     membership_granted_upon_request: Οποιοσδήποτε μπορεί να συμμετάσχει στην ομάδα.
     membership_granted_upon_approval: Οποιοσδήποτε μπορεί να ζητήσει να συμμετάσχει, αλλά πρέπει να εγκριθεί.
     membership_granted_upon_invitation: Μόνο πρόσκληση.
-    membership_granted_upon_approval_secret_parent: "<strong>Κατόπιν αιτήματος,</strong> οποιοσδήποτε από το %{γονέας} μπορεί να ζητήσει να συμμετάσχει στην ομάδα."
-    parent_members_can_see_discussions: Τα μέλη του %{γονέα} μπορούν να δουν ιδιωτικά νήματα
+    membership_granted_upon_approval_secret_parent: "<strong>Κατόπιν αιτήματος,</strong> οποιοσδήποτε από το %{parent} μπορεί να ζητήσει να συμμετάσχει στην ομάδα."
+    parent_members_can_see_discussions: Τα μέλη του %{parent} μπορούν να δουν ιδιωτικά νήματα
     parent_members_can_see_discussions_help: Να επιτρέπεται στα μέλη της γονικής ομάδας να βλέπουν, αλλά όχι να συμμετέχουν, νήματα και δημοσκοπήσεις σε αυτήν την ομάδα
     members_can_announce: Τα μέλη μπορούν να ειδοποιήσουν όλους στην ομάδα
     members_can_announce_help: Επιτρέψτε στα μέλη να ειδοποιούν όλους στην ομάδα για ένα νήμα ή μια δημοσκόπηση
@@ -1059,7 +1059,7 @@ el:
     custom_message: Προσαρμοσμένο μήνυμα
     custom_message_placeholder: Εισαγάγετε ένα προσωπικό μήνυμα που θα συμπεριλάβετε στην πρόσκληση.
     add_members: Προσθήκη μελών
-    from_parent_group: από όνομα}.
+    from_parent_group: από %{name}.
     send: Στείλετε
     messages:
       invitation_sent: Η πρόσκληση στάλθηκε.
@@ -1416,7 +1416,7 @@ el:
     unread: Μη αναγνωσμένο (%{count})
     include_subgroups_mine: "%{name} και οι υποομάδες μου"
     include_subgroups_all: "%{name} και όλες οι υποομάδες"
-    no_results_found: Δεν υπάρχουν αποτελέσματα για "%{αναζήτηση}"
+    no_results_found: Δεν υπάρχουν αποτελέσματα για "%{search}"
     welcome_to_your_new_group: Καλώς ήρθατε στη νέα σας ομάδα Loomio!
     lets_start_a_thread: Ας ξεκινήσουμε ένα νήμα. Κάντε κλικ στο "Νέο νήμα" για να συνεχίσετε.
   members_panel:
@@ -1446,7 +1446,7 @@ el:
     admin: διαχειριστής
     guest: Επισκέπτης
     sharable_link: Σύνδεσμος με δυνατότητα κοινής χρήσης
-    last_seen: Τελευταία επίσκεψη %{ημερομηνία}
+    last_seen: Τελευταία επίσκεψη %{date}
     invited_by_name: Προσκλήθηκε από %{name}
   polls_panel:
     all: Όλα
@@ -1964,7 +1964,7 @@ el:
     user_name_updated: Το όνομα χρήστη ενημερώθηκε
     set_user_name: Ορισμός ονόματος χρήστη
   user_page:
-    contact_user: Ονομα επαφής}
+    contact_user: Ονομα %{name}
     location_field: 'Τοποθεσία: %{value}'
     locale_field: 'Γλώσσα: %{value}'
     online_field: 'Διαδικτυακό: %{value}'
@@ -2105,7 +2105,7 @@ el:
     draft_mode: Η ψηφοφορία απενεργοποιήθηκε. Αυτό δεν είναι ακόμη ανοιχτό για ψηφοφορία.
     voting_disabled_poll_is_template: Η ψηφοφορία απενεργοποιήθηκε. Αυτό είναι ένα πρότυπο.
   poll_common_collapsed:
-    by_who: από όνομα}
+    by_who: από %{name}
   poll_common_calendar_invite:
     calendar_invite: Συμπεριλάβετε μια πρόσκληση ημερολογίου με αυτό το αποτέλεσμα
     poll_option_id: Ωρα συνάντησης
@@ -2230,7 +2230,7 @@ el:
     you_will_be_notified: Θα ενημερωθείτε κατά την ημερομηνία ελέγχου.
     submit: Μοιραστείτε το αποτέλεσμα
   poll_common_outcome_panel:
-    authored_by: Από όνομα}
+    authored_by: Από %{name}
   poll_common_delete_modal:
     question: Είστε βέβαιοι ότι θέλετε να το διαγράψετε;
     title: Διαγραφή %{pollType}
@@ -2315,7 +2315,7 @@ el:
     agree_target_label: Αριθμός στόχος
   poll_common_percent_voted:
     sentence: "%{numerator} από %{denominator} άτομα έχουν συμμετάσχει (%{percent}%)"
-    target_progress: "%{percent}% του στόχου επιτεύχθηκε. (%{num} / %{στόχος})"
+    target_progress: "%{percent}% του στόχου επιτεύχθηκε. (%{num} / %{target})"
   poll_meeting_chart_panel:
     total: Σύνολο
   poll_remove_vote:
@@ -2497,7 +2497,7 @@ el:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> έκλεισε το νήμα"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> άνοιξε ξανά το νήμα"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> δημιούργησε ένα fork αυτού του νήματος: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{συγγραφέας}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> μοιράστηκε ένα αποτέλεσμα"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> άνοιξε ξανά το %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>Ο χρήστης %{author}</a> έκλεισε το %{polltype}"

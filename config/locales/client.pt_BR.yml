@@ -115,7 +115,7 @@ pt_BR:
     free_trial: Teste gratuíto. Restam %{days} dias.
     trial_expired: Seu período de teste terminou. Assine um pacote para continuar utilizando o Loomio.
     tooltip: Nossos preços são fantásticos! Assine um pacote hoje para aproveitar o que o Loomio poder oferecer para o seu grupo.
-    was_gift_trial: 'Seu grupo utiliza o Loomio de graça desde %{createDate}. Não é possível continuar oferecendo um serviço gratuito. Por favor assine para continuar utilizando o Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Leia mais.</a>'
+    was_gift_trial: 'Seu grupo utiliza o Loomio de graça desde %{createdDate}. Não é possível continuar oferecendo um serviço gratuito. Por favor assine para continuar utilizando o Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Leia mais.</a>'
     was_gift_remaining: Faltam %{days} dias.
     was_gift_expired: Seu plano gratis acaba de expirar.
   subscription_status:
@@ -2467,7 +2467,7 @@ pt_BR:
     is_name_the_owner_of_email: "%{name} é o proprietário de %{email}?"
     all_email_will_belong_to_name: Todas as mensagens de %{email} serão atribuídas a %{name}
     email_aliases: Aliases e endereços ignorados
-    belongs_to_name: Pertence a %{nome}
+    belongs_to_name: Pertence a %{name}
     block_email: Bloquear endereço
     no_emails_to_release: Nenhum e-mail aguardando liberação
     release_rules: Regras de lançamento

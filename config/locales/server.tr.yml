@@ -105,9 +105,9 @@ tr:
       accepting_is_important: Sizi ilgilendiren kararlarla ilgili bildirimleri kaçırmamanız için davetinizi kabul etmeniz önemlidir.
     user_added_to_group:
       link_help: 'Gruba gitmek için aşağıdaki bağlantıyı tıklayın:'
-      subject: "%{who} sizi %{site_name} sitesindeki %{hangi_group} grubuna ekledi"
-      content: "%{who} sizi %{what_group} grubuna ekledi."
-      content_html: "<strong>%{who}</strong> sizi <strong>%{hangi_group}</strong> grubuna ekledi."
+      subject: "%{who} sizi %{site_name} sitesindeki %{which_group} grubuna ekledi"
+      content: "%{who} sizi %{which_group} grubuna ekledi."
+      content_html: "<strong>%{who}</strong> sizi <strong>%{which_group}</strong> grubuna ekledi."
     unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
     catch_up:
@@ -276,7 +276,7 @@ tr:
         invalid: geçerli bir değer değil
   user:
     deleted_user: Silinmiş kullanıcı
-    placeholder_name: Davet edilen kullanıcı (%{ana bilgisayar adı})
+    placeholder_name: Davet edilen kullanıcı (%{hostname})
     error:
       sign_in_required_html: Devam etmek için oturum açmalısınız. Lütfen <a href="/dashboard" target="_blank">oturum açın</a> ve devam etmek için bu sayfayı yeniden yükleyin.
       recaptcha: Robot olmadığınızı doğrulayamadık. Lütfen tekrar deneyin!

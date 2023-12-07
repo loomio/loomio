@@ -195,7 +195,7 @@ fi:
       normal_description: Saat sähköpostin aina, kun tässä ryhmässä on toimintaa.
       quiet_description: Sinulle ei lähetetä sähköpostia tämän ryhmän toiminnasta.
       apply_to_all: Käytä näitä asetuksia kaikissa ryhmissäni.
-      apply_to_organization: Käytä kaikkiin ryhmiin organisaatiossa %{organisation}
+      apply_to_organization: Käytä kaikkiin ryhmiin organisaatiossa %{organization}
       messages:
         loud: Saat sähköpostiisi kaikesta tämän ryhmän toiminnasta.
         normal: Saat vain tämän ryhmän ilmoituksia sähköpostitse.
@@ -275,7 +275,7 @@ fi:
     open_sidebar: Avaa sivupalkki
     close_sidebar: Sulje sivupalkki
     logo_title: Kotisivu
-    group_and_subgroups: "%{ryhmä} ja alaryhmät"
+    group_and_subgroups: "%{group} ja alaryhmät"
   notifications:
     header: Ilmoitukset
     no_notifications: Sinulla ei ole ilmoituksia
@@ -308,7 +308,7 @@ fi:
       poll_reopened: "%{actor} avasi uudelleen %{poll_type}: %{title}"
       poll_reminder: "%{actor} muistuttaa sinua äänestämään %{title}"
       poll_reminder_wip: "%{actor} muistuttaa sinua antamasta palautetta: %{title}"
-      reaction_created: "%{actor} reagoi %{reaction} sinun %{malliisi %{title}"
+      reaction_created: "%{actor} reagoi %{reaction} sinun %{model} %{title}"
       stance_created: "%{actor} äänesti: %{title}"
       stance_updated: "%{actor} äänesti: %{title}"
       stance_created_option: "%{actor} äänesti %{option} %{title}"
@@ -345,7 +345,7 @@ fi:
       poll_reopened: "%{actor} avasi uudelleen %{poll_type}"
       poll_reminder: "%{actor} muistuttaa sinua äänestämään"
       poll_reminder_wip: "%{actor} muistuttaa sinua antamasta palautetta"
-      reaction_created: "%{actor} reagoi %{reaction} sinun %{malliisi}"
+      reaction_created: "%{actor} reagoi %{reaction} sinun %{model}"
       stance_created: "%{actor} äänesti"
       stance_updated: "%{actor} äänesti"
       stance_created_option: "%{actor} äänesti %{option}"
@@ -453,7 +453,7 @@ fi:
     membership_granted_upon_request: Kuka tahansa voi liittyä ryhmään.
     membership_granted_upon_approval: Kuka tahansa voi pyytää liittymistä, mutta se on hyväksyttävä.
     membership_granted_upon_invitation: Vain kutsu.
-    membership_granted_upon_approval_secret_parent: "<strong>Pyynnöstä</strong> kuka tahansa %{vanhempi} voi pyytää lupaa liittyä ryhmään."
+    membership_granted_upon_approval_secret_parent: "<strong>Pyynnöstä</strong> kuka tahansa %{parent} voi pyytää lupaa liittyä ryhmään."
     permissions: Käyttöoikeudet
     thread_privacy: Viestiketjun yksityisyys
     public_threads: Vain julkiset viestiketjut
@@ -516,7 +516,7 @@ fi:
     custom_message: Mukautettu viesti
     custom_message_placeholder: Kirjoita henkilökohtainen viesti, joka liitetään kutsuun.
     add_members: Lisää jäseniä
-    from_parent_group: nimestä}.
+    from_parent_group: "%{name}"
     send: Lähettää
     done: Tehty
     messages:
@@ -630,7 +630,7 @@ fi:
     custom_poll: Mukautettu kysely
     delete_poll: Poista kysely
     select_count_options: Valitse %{count} vaihtoehtoa
-    select_minimum_to_maximum_options: Valitse %{minimi} - %{maximum} vaihtoehtoa
+    select_minimum_to_maximum_options: Valitse %{minimum} - %{maximum} vaihtoehtoa
     custom_poll_types: Mukautetut kyselytyypit
     hidden_poll_templates: Piilotetut kyselymallit
     poll_template: Kyselymalli
@@ -705,7 +705,7 @@ fi:
     all: Kaikki
     unread: Lukemattomat (%{count})
     include_subgroups_mine: "%{name} ja alaryhmäni"
-    include_subgroups_all: "%{nimi} ja kaikki alaryhmät"
+    include_subgroups_all: "%{name} ja kaikki alaryhmät"
     no_results_found: Ei tuloksia haulle "%{search}"
     welcome_to_your_new_group: Tervetuloa uuteen Loomio-ryhmääsi!
     lets_start_a_thread: Aloitetaan lanka. Napsauta "Uusi säiettä" jatkaaksesi.
@@ -1165,7 +1165,7 @@ fi:
   announcement:
     send_discussion: Lähetä lanka
     send_group: Kutsu ihmisiä %{name}
-    send_poll: Lähetä %{tyyppi}
+    send_poll: Lähetä %{type}
     send_outcome: Lähetä tulos
     cannot_reveal_when_anonymous: Valitettavasti emme voi paljastaa, kuka on äänestänyt tai ei ole äänestänyt nimettömässä kyselyssä.
     discussion_notification_history: Viestiketjun ilmoitushistoria
@@ -1203,7 +1203,7 @@ fi:
     poll_closing_soon: 'Käyttäjän %{name} kyselyn sulkemismuistutus ilmoitti %{length} henkilölle:'
     poll_reminder: "%{name} muistutti %{length} henkilöä äänestämään:"
     audiences:
-      group: "%{nimi}"
+      group: "%{name}"
       everyone_in_the_group: Kaikki ryhmässä
       discussion_group: Kaikki ketjussa
       voters: Kaikki kutsuttiin äänestämään
@@ -1265,7 +1265,7 @@ fi:
       added_singular: 1 henkilö lisätään.
       added_none: Ketään ei lisätä.
       group_title: "%{name} (%{count} henkilöä)"
-      visible_to_group: Kuka tahansa ryhmästä %{ryhmä} näkee tämän viestiketjun.
+      visible_to_group: Kuka tahansa ryhmästä %{group} näkee tämän viestiketjun.
       visible_to_guests: Vain kutsutut ihmiset voivat nähdä tämän ketjun.
       click_group_to_see_individuals: Napsauta ryhmää nähdäksesi yksilöt
     members_list:
@@ -1411,7 +1411,7 @@ fi:
     submit_button: Pyydä liittymistä
     introduction_over_limit: Vastaus liian pitkä
     messages:
-      membership_requested: Olet pyytänyt liittymistä %{ryhmään}
+      membership_requested: Olet pyytänyt liittymistä %{group}
   revision_history_modal:
     aria_label: Versiohistoria
     discussion_header: Keskustelun muokkaukset
@@ -1520,7 +1520,7 @@ fi:
       private: 'Yksityisyys: Tämä ryhmä näkyy vain jäsenille'
       parent_members: 'Yksityisyys: Tämä ryhmä näkyy ryhmän %{parentGroupName} ja ryhmän %{groupName} jäsenille'
       public: 'Yksityisyys: Tämä ryhmä näkyy verkossa'
-      aria_label: 'Ryhmän tietosuoja: %{tietosuoja}'
+      aria_label: 'Ryhmän tietosuoja: %{privacy}'
   export_data_modal:
     title: Miten haluat käyttää tietojasi?
     as_csv: Avaa se laskentataulukossa
@@ -1590,10 +1590,10 @@ fi:
     set_user_name: Aseta käyttäjänimi
   user_page:
     contact_user: Ota yhteyttä %{name}
-    location_field: 'Sijainti: %{arvo}'
-    locale_field: 'Kieli: %{arvo}'
+    location_field: 'Sijainti: %{value}'
+    locale_field: 'Kieli: %{value}'
     online_field: 'Online: %{value}'
-    invited: Kutsuttu %{arvo}
+    invited: Kutsuttu %{value}
     message_user: Viesti %{name}
   contact_request_form:
     modal_title: Sähköposti %{name}
@@ -1898,7 +1898,7 @@ fi:
     admin: Admin
     guest: Vieras
     sharable_link: Jaettava linkki
-    last_seen: Viimeksi nähty %{päivämäärä}
+    last_seen: Viimeksi nähty %{date}
     invited_by_name: 'Kutsuja: %{name}'
     accepted: Jäsenet
   group_files_panel:
@@ -1927,7 +1927,7 @@ fi:
     draft_mode: Äänestys estetty. Tämä ei ole vielä avoinna äänestettäväksi.
     voting_disabled_poll_is_template: Äänestys estetty. Tämä on malli.
   poll_common_collapsed:
-    by_who: nimeltä}
+    by_who: "%{name}"
   poll_common_calendar_invite:
     calendar_invite: Liitä tähän tulokseen kalenterikutsu
     poll_option_id: Tapaamisaika
@@ -2052,7 +2052,7 @@ fi:
     you_will_be_notified: Sinulle ilmoitetaan tarkastelupäivänä.
     submit: Jaa tulos
   poll_common_outcome_panel:
-    authored_by: Nimeltä}
+    authored_by: "%{name}"
   poll_common_delete_modal:
     question: Haluatko varmasti poistaa tämän?
     title: Poista %{pollType}
@@ -2335,7 +2335,7 @@ fi:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> sulki ketjun"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> avasi ketjun uudelleen"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> loi tämän ketjun haaran: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{tekijä}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> jakoi tuloksen"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> avasi uudelleen %{polltype}"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> sulki %{polltype}"

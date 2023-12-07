@@ -112,7 +112,7 @@ it:
     is_old_plan: Loomio ha delle nuove semplici formule di abbonamento
     change_plan: Cambia di piano
     view_plans: Vedi piani
-    free_trial: Prova gratuita. %{days]} giorni restanti.
+    free_trial: Prova gratuita. %{days} giorni restanti.
     trial_expired: La tua prova è scaduta. Aggiorna per continuare usando Loomio.
     tooltip: 'Nostri prezzi sono fantastichi! Aggiorna oggi e godi quello  che Loomio può offrire al tuo grupo. '
     was_gift_trial: 'Il tuo gruppo utilizza Loomio gratuitamente da %{createdDate}. Non siamo in grado di continuare a fornire un servizio gratuito. Esegui l''aggiornamento per continuare a utilizzare Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Per saperne di più</a>'
@@ -365,7 +365,7 @@ it:
   verify_email_notice:
     please_verify: Grazie della partecipazione! Cerca nella tua email un link e cliccaci per verificare il tuo voto.
   previous_polls_page:
-    heading: Attività in %{nome}
+    heading: Attività in %{name}
     polls_count: Mostra %{loaded} su un totale di %{total} decisioni
     search_activities: Cerca decisioni
   volume_levels:
@@ -984,7 +984,7 @@ it:
     outcome_header: Modifiche ai risultati
     started_by: Iniziato da <strong>%{name}</strong>
     edited_by: Modificato da <strong>%{name}</strong>
-    edit_by: Modifica in base a %{name} · %{data}
+    edit_by: Modifica in base a %{name} · %{date}
     posted: Pubblicato
     field: Campo
     before: Prima
@@ -2617,6 +2617,6 @@ it:
     no_camera: Impossibile trovare una fotocamera
     listen_to_audio: Ascolta l'audio
     watch_video: Guarda un video
-    audio_transcript: 'Trascrizione audio: %{testo}'
+    audio_transcript: 'Trascrizione audio: %{text}'
     why_type_when_you_can_talk: Perché scrivere quando puoi parlare? Invia una registrazione vocale
     transcript_included: Una trascrizione della registrazione verrà allegata al tuo messaggio

@@ -107,9 +107,9 @@ ja:
     resend_to_join_group:
       subject: "%{member} は、%{site_name} の %{group_name} にあなたが参加するのを待っています"
     user_added_to_group:
-      subject: "%{who} があなたを %{site_name} の %{that_group} に追加しました"
-      content: "%{who} があなたを %{that_group} に追加しました。"
-      content_html: "<strong>%{who}</strong>があなたを<strong>%{that_group}</strong>に追加しました。"
+      subject: "%{who} があなたを %{site_name} の %{which_group} に追加しました"
+      content: "%{who} があなたを %{which_group} に追加しました。"
+      content_html: "<strong>%{who}</strong>があなたを<strong>%{which_group}</strong>に追加しました。"
       link_help: 以下のリンクをクリックしてグループに移動します。
     group_membership_approved:
       intro: グループ %{group_name} へのアクセス要求が承認されました。
@@ -261,7 +261,7 @@ ja:
       body_html: こんにちは %{name} さん、あなたの 2 つの loomio アカウントが 1 つのアカウントに統合されました。今後 loomio にアクセスするには、サインイン時に<strong>%{email}</strong>を使用してください。
     merge_verification:
       subject: 結合するために %{site_name} のメール アドレスを確認してください
-      body_html: "<p>こんにちは、%{名前} さん</p><p>アドレス<strong>%{source_email}</strong>のユーザー アカウントを、このアドレス<strong>%{target_email}</strong>に属するアカウントと結合するリクエストが行われました。</p><p>このプロセスが完了すると、 <strong>%{source_email}</strong>でログインできなくなり、 <strong>%{target_email}</strong>でのみログインできるようになります。</p><p>これがあなたがやりたいことであることを確認してください。</p>"
+      body_html: "<p>こんにちは、%{name} さん</p><p>アドレス<strong>%{source_email}</strong>のユーザー アカウントを、このアドレス<strong>%{target_email}</strong>に属するアカウントと結合するリクエストが行われました。</p><p>このプロセスが完了すると、 <strong>%{source_email}</strong>でログインできなくなり、 <strong>%{target_email}</strong>でのみログインできるようになります。</p><p>これがあなたがやりたいことであることを確認してください。</p>"
       verify: メールを確認して次に進みます
       confirm_page:
         confirm: マージの確認

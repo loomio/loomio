@@ -323,7 +323,7 @@ sv:
       undecided_visitors: Obestämda gäster (%{count})
       more_undecided: "%{count} till..."
       vote_now: Rösta nu
-      you_have_until: Du har fram till %{när} på dig att delta.
+      you_have_until: Du har fram till %{when} på dig att delta.
       people_have_voted: "%{nom} av %{dnom} personer har deltagit (%{pct}%)"
   event_mailer:
     received_email:

@@ -50,7 +50,7 @@ zh_TW:
     template_gallery: 範本庫
     title_template: "%{title} 模板"
     title_templates: "%{title} 模板"
-    title_copy: "%{標題} 複製"
+    title_copy: "%{title} 複製"
     copy_of_title: "%{title} 的副本"
     loomio_default_templates: Loomio 預設模板
     which_templates_would_you_like_to_use: 您想使用哪些模板？
@@ -1308,7 +1308,7 @@ zh_TW:
     invited: 已邀請 %{value}
     message_user: 訊息 %{name}
   contact_request_form:
-    modal_title: 電子郵件 %{value}
+    modal_title: 電子郵件 %{name}
     message_placeholder: 自我介紹並分享為什麼您想要加入聯絡人。
     helptext: "%{name} 將會寄送包含您的名字、電子郵件地址與訊息的電子郵件"
     email_sent: 電子郵件傳送給 %{name}
@@ -1480,10 +1480,9 @@ zh_TW:
   discussion:
     invite_only: 僅邀請
     private_thread: 私人討論串
-    max_threads_reached: |+
-      <p>您已經使用了此群組可用的全部 %{maxMembers} 個邀請。</p>
+    max_threads_reached: |
+      <p>您已經使用了此群組可用的全部 %{maxThreads} 個邀請。</p>
       <p>下一步，<a href="%{upgradeUrl}" target="_blank">選擇一個計畫</a>以繼續在 Loomio 上協作。</p>
-
     subscription_canceled: |
       <p>抱歉！您的訂閱並未啟用。</p>
       <p>請<a href="%{upgradeUrl}" target="_blank">升級</a>以繼續使用 Loomio。</p>
@@ -1857,7 +1856,7 @@ zh_TW:
       title: 任何有連結的人都可以參與
       helptext_on: 當選取時，任何有投票連結的人都可以參與。
     notify_on_closing_soon:
-      closes_too_soon: 因為此 %{poll_type} 會在24小時內關閉，因此不會傳送即將關閉的提醒。
+      closes_too_soon: 因為此 %{pollType} 會在24小時內關閉，因此不會傳送即將關閉的提醒。
       title: "%{pollType} 關閉前24小時，傳送提醒給"
       nobody: 沒有人
       author: 作者（我）
@@ -2143,7 +2142,7 @@ zh_TW:
     reason_placeholder: 如果您想要的話可以留下訊息
   poll_common_percent_voted:
     sentence: "%{denominator} 中的 %{numerator} 個夥伴已投票 (%{percent}%)"
-    target_progress: 已達到目標的%{percent}%。 (%{數字} / %{目標})
+    target_progress: 已達到目標的%{percent}%。 (%{num} / %{target})
   poll_meeting_chart_panel:
     total: 全部
   poll_remove_vote:
@@ -2187,7 +2186,6 @@ zh_TW:
     discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已從 <strong>%{title}</strong> 移動討論串"
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已關閉討論串"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已重新開啟討論串"
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 建立了此討論串的分支：<strong></a>%{title}</a></strong>"
     new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已分享結果"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已重新開啟 %{polltype}"

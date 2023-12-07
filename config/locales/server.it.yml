@@ -71,7 +71,7 @@ it:
         time: Sondaggio per incontro
   user:
     deleted_user: Utente eliminato
-    placeholder_name: Utente invitato
+    placeholder_name: Utente invitato %{hostname}
     error:
       sign_in_required_html: |
         È necessario avere effettuato l'accesso per procedere.

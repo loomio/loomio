@@ -24,10 +24,10 @@ ko:
     generating_demo: 잠시만 기다려주세요! 데모를 만드는데 20초 정도 필요합니다!
     start_a_x_day_free_trial: "%{day} 일 무료 체험을 시작합니다.<br>"
     template_gallery: 템플릿 갤러리
-    title_template: "%{제목} 템플릿"
-    title_templates: "%{제목} 템플릿"
-    title_copy: "%{제목} 사본"
-    copy_of_title: "%{제목} 사본"
+    title_template: "%{title} 템플릿"
+    title_templates: "%{title} 템플릿"
+    title_copy: "%{title} 사본"
+    copy_of_title: "%{title} 사본"
     loomio_default_templates: Loomio 기본 템플릿
     which_templates_would_you_like_to_use: 어떤 템플릿을 사용하시겠습니까?
     login_to_start_demo: 이것은 Loomio의 실제 데모입니다. 주변을 둘러보시면 좋습니다.
@@ -138,7 +138,7 @@ ko:
     helptext: 태그는 당신이 토론들을 분류할 수 있게해주고 쉽게 찾을 수 있게 해줍니다.
     tag_created: 태그 저장됨
     tag_destroyed: 태그 삭제됨
-    tags_marked: 스레드는 %{GroupName}에 '%{name}'으로 표기되어있습니다.
+    tags_marked: 스레드는 %{groupName}에 '%{name}'으로 표기되어있습니다.
     no_tags_in_group: 이 그룹은 카테고리나 태그가 아직 설정되지 않았습니다.
     only_admins_can_edit_tags: 앗! %{group}의 관리자에게 태그 생성, 수정, 삭제 권한이 있습니다.
     card_title: 카테고리 태그
@@ -222,7 +222,7 @@ ko:
     reset: 초기화
     copy_text: 텍스트 복사
     copied: 복사됨
-    points_abbrev: 투표당 %{sore} 점
+    points_abbrev: 투표당 %{score} 점
     total: 총
     action:
       print: 인쇄
@@ -737,7 +737,7 @@ ko:
       decided_voters: 투표 완료자 전원
       undecided_voters: 결정하지 않은 투표자들
       non_voters: "%{name}에 아직 초대받지 못한 멤버들"
-      group: "%{이름}"
+      group: "%{name}"
       everyone_in_the_group: 그룹의 모든 사람
     form:
       too_many_invitations: '초대 한도를 초과했습니다. <a href="%{upgradeUrl}" target="_blank">업그레이드</a>
@@ -1569,7 +1569,7 @@ ko:
     header: 그룹 탐색
     search_placeholder: 공개 그룹 검색
     single_search_result: "<strong>%{searchTerm}과 일치하는 공개 그룹 1개:</strong>"
-    multiple_search_results: "{ <strong>{searchTerm}과(와) 일치하는 공개 그룹 %{resultCount}개:</strong>"
+    multiple_search_results: "{ <strong>%{searchTerm}과(와) 일치하는 공개 그룹 %{resultCount}개:</strong>"
     no_results_found: "<strong>원하는 그룹을 찾을 수 없나요?</strong> 그룹의 개인정보 보호가 '비밀'로 설정된 경우 여기에 표시되지 않습니다."
     newest_first: 최신순
     biggest_first: 가장 큰 것부터
@@ -1600,7 +1600,7 @@ ko:
     custom_poll: 맞춤 설문조사
     delete_poll: 설문조사 삭제
     select_count_options: "%{count}개의 옵션을 선택하세요"
-    select_minimum_to_maximum_options: "%{최소}~%{최대} 옵션을 선택하세요."
+    select_minimum_to_maximum_options: "%{minimum}~%{maximum} 옵션을 선택하세요."
     custom_poll_types: 맞춤 설문조사 유형
     hidden_poll_templates: 숨겨진 설문조사 템플릿
     poll_template: 설문조사 템플릿
@@ -1675,7 +1675,7 @@ ko:
     unread: 읽지 않음(%{count})
     include_subgroups_mine: "%{name} 및 내 하위 그룹"
     include_subgroups_all: "%{name} 및 모든 하위 그룹"
-    no_results_found: '"%{검색}"에 대한 검색결과가 없습니다.'
+    no_results_found: '"%{search}"에 대한 검색결과가 없습니다.'
     welcome_to_your_new_group: 새로운 Loomio 그룹에 오신 것을 환영합니다!
     lets_start_a_thread: 스레드를 시작해보자. 계속하려면 '새 스레드'를 클릭하세요.
   members_panel:
@@ -1695,7 +1695,7 @@ ko:
     show_users_in_subgroups: 하위 그룹의 사용자도 표시
     order_by_created_desc: 최신
     order_by_admin_desc: 관리자
-    loaded_of_total: "%{총}개 중 %{로드됨}개"
+    loaded_of_total: "%{loaded}개 중 %{total}개"
     view_requests: 요청 보기
     header_role: 역할
     header_invited_by: 초대자
@@ -2227,8 +2227,6 @@ ko:
     unable_to_vote: 귀하는 이 %{poll_type} 투표에 초대되지 않았습니다.
     draft_mode: 투표가 비활성화되었습니다. 아직 투표가 진행되지 않습니다.
     voting_disabled_poll_is_template: 투표가 비활성화되었습니다. 이것은 템플릿입니다.
-  poll_common_collapsed:
-    by_who: 이름으로}
   poll_common_close_form:
     title: 지금 %{poll_type}을(를) 종료하시겠습니까?
     helptext: "%{poll_type}을(를) 조기에 종료하고 결과를 공유하시겠습니까?"
@@ -2284,8 +2282,6 @@ ko:
   poll_common_set_outcome_panel:
     enter_outcome: 결과 입력
     poll_type: 이 %{poll_type}이(가) 종료되었습니다. 시간을 내어 결과를 고려한 다음 결과를 공유하여 사람들이 다음에 무슨 일이 일어날지 알 수 있도록 하세요.
-  poll_common_outcome_panel:
-    authored_by: 이름으로}
   poll_common_delete_modal:
     question: 정말로 삭제하시겠습니까?
     title: "%{pollType} 삭제"
@@ -2355,7 +2351,7 @@ ko:
     agree_target_label: 대상수
   poll_common_percent_voted:
     sentence: "%{denominator}명 중 %{numerator}명이 참여했습니다(%{percent}%)."
-    target_progress: 목표의 %{percent}%에 도달했습니다. (%{num} / %{대상})
+    target_progress: 목표의 %{percent}%에 도달했습니다. (%{num} / %{target})
   poll_remove_vote:
     title: 투표를 삭제하시겠습니까?
     helptext: 투표를 삭제하시겠습니까? 미정으로 표시되며 원할 경우 나중에 다시 투표할 수 있습니다.
@@ -2535,7 +2531,7 @@ ko:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> 스레드를 닫았습니다."
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}님</a> 이 스레드를 다시 열었습니다."
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> 이 스레드의 포크를 만들었습니다: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{작가}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}님</a> 이 결과를 공유했습니다"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> %{polltype}을(를) 다시 열었습니다."
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}님이</a> %{polltype}을(를) 마감했습니다."

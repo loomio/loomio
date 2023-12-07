@@ -216,7 +216,7 @@ ja:
     check_for_errors_and_try_again: フォームにエラーがないか確認して、もう一度お試しください
     please_try_again: もう一度試してください
     closing_in: 閉店時間}
-    closed_ago: 閉店 %{時間}
+    closed_ago: 閉店 %{time}
     volume: 音量
     notification_volume: 通知量
     threads: スレッド
@@ -295,7 +295,7 @@ ja:
       normal_description: このグループでアクティビティがあるたびにメールが届きます。
       quiet_description: このグループのアクティビティに関する電子メールは送信されません。
       apply_to_all: これらの設定をすべてのグループに適用します。
-      apply_to_organization: "%{組織} 内のすべてのグループに適用"
+      apply_to_organization: "%{organization} 内のすべてのグループに適用"
       messages:
         loud: このグループ内のすべてのアクティビティが電子メールで送信されます。
         normal: このグループのお知らせは電子メールでのみ送信されます。
@@ -397,7 +397,7 @@ ja:
     open_sidebar: サイドバーを開く
     close_sidebar: サイドバーを閉じる
     logo_title: ホームページ
-    group_and_subgroups: "%{グループ} とサブグループ"
+    group_and_subgroups: "%{group} とサブグループ"
   notifications:
     header: 通知
     no_notifications: 通知はありません
@@ -615,7 +615,7 @@ ja:
     poll_closing_soon: "%{name} の投票終了リマインダーは、%{length} 人に通知しました:"
     poll_reminder: "%{name} さんが %{length} 人に投票するようリマインドしました:"
     audiences:
-      group: "%{名前}"
+      group: "%{name}"
       everyone_in_the_group: グループの全員が
       discussion_group: スレッド内の全員
       voters: 投票に招待された全員
@@ -641,7 +641,7 @@ ja:
     membership_requested: メンバーリクエストが送られました
     not_a_member: あなたは現在このグループのメンバーではありません。
     messages:
-      joined_group: あなたは現在、%{グループ}のメンバーです
+      joined_group: あなたは現在、%{group}のメンバーです
   membership_request_form:
     heading: グループへの参加依頼
     name_label: 氏名
@@ -651,7 +651,7 @@ ja:
     submit_button: 参加を依頼する
     introduction_over_limit: 応答が長すぎます
     messages:
-      membership_requested: "%{グループ}への参加をリクエストしました"
+      membership_requested: "%{group}への参加をリクエストしました"
   group_page:
     threads: ディスカッション
     members: メンバー
@@ -722,7 +722,7 @@ ja:
       private: 'プライバシー: このグループはメンバーのみに表示されます'
       parent_members: 'プライバシー: このグループは、%{parentGroupName} のメンバーと %{groupName} のメンバーに表示されます'
       public: 'プライバシー: このグループはウェブ上に表示されます'
-      aria_label: 'グループのプライバシー: %{プライバシー}'
+      aria_label: 'グループのプライバシー: %{privacy}'
   group_form:
     new_group: 新しいグループ
     group_name: グループ名
@@ -1112,7 +1112,7 @@ ja:
     unread: 未読 (%{count})
     include_subgroups_mine: "%{name} と私のサブグループ"
     include_subgroups_all: "%{name} とすべてのサブグループ"
-    no_results_found: "「%{検索}」の結果はありません"
+    no_results_found: "「%{provider}」の結果はありません"
     welcome_to_your_new_group: 新しい Loomio グループへようこそ!
     lets_start_a_thread: スレッドを始めましょう。 「新しいスレッド」をクリックして続行します。
   members_panel:
@@ -1129,7 +1129,7 @@ ja:
     show_users_in_subgroups: サブグループ内のユーザーも表示
     order_by_created_desc: 最新
     order_by_admin_desc: 管理者
-    loaded_of_total: "%{total}中%{読み込み済み}"
+    loaded_of_total: "%{total}中%{loaded}"
     view_requests: リクエストの表示
     header_username: ユーザー名
     header_role: 役割
@@ -1275,7 +1275,7 @@ ja:
     create_account: アカウントを作成する
     sign_up_as: "%{email} としてアカウントを作成"
     sign_in_as: "%{name}としてサインインします"
-    continue_with_provider: "%{プロバイダー} を続行します"
+    continue_with_provider: "%{provider} を続行します"
     continue_with_email: メールで続行
     or_enter_your_email: または、メールアドレスを入力してください
     enter_your_name: あなたの名前を入力してください
@@ -1307,7 +1307,7 @@ ja:
     sign_in_via_email: 電子メールでサインインする
     set_password: パスワードを設定してください
     set_password_helptext: 次回からパスワードを使用しますか?
-    hello: こんにちは、%{名前}！
+    hello: こんにちは、%{name}！
     new_to_loomio: "%{site_name} を初めてご利用ですか?"
     already_a_user: すでにアカウントをお持ちですか？
     email_address_of_existing_account: 既存のアカウントのメールアドレスを入力してください
@@ -1867,13 +1867,13 @@ ja:
     set_user_name: ユーザー名を設定する
   user_page:
     contact_user: 連絡先}
-    location_field: '場所: %{値}'
-    locale_field: '言語: %{値}'
-    online_field: 'オンライン: %{値}'
+    location_field: '場所: %{value}'
+    locale_field: '言語: %{value}'
+    online_field: 'オンライン: %{value}'
     invited: "%{value} を招待しました"
-    message_user: メッセージ %{名前}
+    message_user: メッセージ %{name}
   contact_request_form:
-    modal_title: メールアドレス %{名前}
+    modal_title: メールアドレス %{name}
     message_placeholder: 自己紹介をして、連絡を取りたい理由を共有してください。
     helptext: "%{name} にあなたの名前、メールアドレス、メッセージがメールで送信されます"
     email_sent: メールは %{name} に送信されました
@@ -1890,7 +1890,7 @@ ja:
     use_gravatar: グラバターを使用する
     use_uploaded: 新しい写真をアップロードする
     existing_upload: 既存のアップロード
-    use_provider: "%{プロバイダー} の写真を使用してください"
+    use_provider: "%{provider} の写真を使用してください"
   change_password_form:
     set_password_title: パスワードを作る
     set_password_helptext: パスワードを入力してください - 8文字以上
@@ -2028,7 +2028,7 @@ ja:
     header: グループを探索する
     search_placeholder: 公開グループを検索する
     single_search_result: "<strong>%{searchTerm} に一致する公開グループ 1 件:</strong>"
-    multiple_search_results: "{ <strong>{searchTerm} に一致する %{resultCount} 個の公開グループ:</strong>"
+    multiple_search_results: "{ <strong>%{searchTerm} に一致する %{resultCount} 個の公開グループ:</strong>"
     no_results_found: "<strong>探しているグループが見つかりませんか?</strong>グループのプライバシーが「秘密」に設定されている場合、ここには表示されません。"
     newest_first: 新しい順
     biggest_first: 一番大きいものから
@@ -2334,7 +2334,7 @@ ja:
     stance_created: 投票が作成されました
     stance_updated: 投票が更新されました
   poll_meeting_vote_form:
-    local_time_zone: 現地時間 - %{ゾーン}
+    local_time_zone: 現地時間 - %{zone}
     can_attend: 参加可能
     unable: 不可能
     if_need_be: 必要なら
@@ -2501,7 +2501,7 @@ ja:
     discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを閉じました"
     discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>スレッドを再開しました"
     discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>このスレッドのフォークを作成しました: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{著者}</a>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
     outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>結果を共有しました"
     poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author} が</a>%{polltype} を再開しました"
     poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author} は</a>%{polltype} を終了しました"

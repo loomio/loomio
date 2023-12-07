@@ -165,7 +165,7 @@ hr:
     time:
       am: am
       pm: popodne
-    closing_in: Vrijeme zatvaranja}
+    closing_in: Vrijeme %{time}
     closed_ago: Zatvoreno %{time}
     volume: Volumen
     notification_volume: Glasnoća obavijesti
@@ -1099,7 +1099,7 @@ hr:
     poll_closing_soon: 'Podsjetnik za zatvaranje ankete korisnika %{name} obavijestio je %{length} osoba:'
     poll_reminder: "%{name} je podsjetio %{length} ljudi da glasaju:"
     audiences:
-      group: "%{Ime}"
+      group: "%{name}"
       everyone_in_the_group: Svi u grupi
       discussion_group: Svi u temi
       voters: Svi pozvani da glasaju
@@ -1308,7 +1308,7 @@ hr:
     after: Nakon
     original_text: Izvornik
     current_revision: Najnoviji
-    closing_at_changed: vrijeme zatvaranja postavljeno na %{vrijeme}
+    closing_at_changed: vrijeme zatvaranja postavljeno na %{time}
     private_changed: privatnost postavljena na %{private}
     group_id_changed: preselio u %{name}
   reactions_input:
@@ -1387,7 +1387,7 @@ hr:
     user_name_updated: Korisničko ime ažurirano
     set_user_name: Postavite korisničko ime
   user_page:
-    contact_user: Ime kontakta}
+    contact_user: "kontakta %{name}"
     location_field: 'Lokacija: %{value}'
     locale_field: 'Jezik: %{value}'
     online_field: 'Online: %{value}'
@@ -1838,7 +1838,7 @@ hr:
     draft_mode: Glasanje onemogućeno. Ovo još nije otvoreno za glasovanje.
     voting_disabled_poll_is_template: Glasanje onemogućeno. Ovo je predložak.
   poll_common_collapsed:
-    by_who: imenom}
+    by_who: "%{name}"
   poll_common_calendar_invite:
     calendar_invite: Uz ovaj ishod uključite pozivnicu za kalendar
     poll_option_id: Vrijeme sastanka
@@ -1963,7 +1963,7 @@ hr:
     you_will_be_notified: O datumu pregleda bit ćete obaviješteni.
     submit: Podijelite ishod
   poll_common_outcome_panel:
-    authored_by: Imenom}
+    authored_by: "%{name}"
   poll_common_delete_modal:
     question: Jeste li sigurni da želite ovo izbrisati?
     title: Izbriši %{pollType}
