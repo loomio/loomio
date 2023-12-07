@@ -29,7 +29,8 @@ export default
 
   computed: {
     address() {
-      return `${this.group.fullName} <${this.group.handle}@${AppConfig.theme['reply_hostname']}>`;
+      // return `${this.group.fullName} <${this.group.handle}@${AppConfig.theme['reply_hostname']}>`;
+      return `${this.group.handle}@${AppConfig.theme['reply_hostname']}`;
     }
   },
 
@@ -68,7 +69,7 @@ v-card.email-to-group-settings
       .text--secondary
         p
           span(v-t="'email_to_group.send_email_to_start_thread'")
-          space
+        p
           span(v-t="'email_to_group.subject_body_attachments'")
         p
           span(v-t="'email_to_group.forward_email_to_move_conversation'")
