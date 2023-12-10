@@ -4,8 +4,6 @@ import Records       from '@/shared/services/records';
 import EventBus      from '@/shared/services/event_bus';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 
-import {compact, isEmpty}  from 'lodash-es';
-
 export default {
   data() {
     return {poll: null};

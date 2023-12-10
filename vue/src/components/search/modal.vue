@@ -5,6 +5,7 @@ import EventBus        from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import Vue from 'vue';
 import I18n from '@/i18n';
+import { mdiMagnify, mdiClose } from '@mdi/js';
 
 export default {
   props: {
@@ -38,6 +39,8 @@ export default {
 
   data() {
     return {
+      mdiMagnify,
+      mdiClose,
       loading: false,
       query: this.initialQuery,
       results: [],
@@ -179,8 +182,8 @@ v-card.search-modal
       filled
       rounded
       single-line
-      append-icon="mdi-magnify"
-      append-outer-icon="mdi-close"
+      :append-icon="mdiMagnify"
+      :append-outer-icon="mdiClose"
       @click:append-outer="closeModal"
       @click:append="fetch"
       v-model="query"

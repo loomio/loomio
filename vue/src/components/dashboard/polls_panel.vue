@@ -5,7 +5,7 @@ import Records from '@/shared/services/records';
 import RecordLoader from '@/shared/services/record_loader';
 import EventBus       from '@/shared/services/event_bus';
 import Session       from '@/shared/services/session';
-import { debounce, some, every, compact, omit, values, keys, intersection, uniq, escapeRegExp, reject, filter} from 'lodash-es';
+import { escapeRegExp, reject, filter } from 'lodash-es';
 import { subDays } from 'date-fns';
 
 export default
@@ -66,7 +66,7 @@ export default
   v-card.mb-2
     v-list(two-line avatar)
       template
-        v-card-title(v-t="'dashboard_page.polls_to_vote_on'")
+        v-subheader(v-t="'dashboard_page.polls_to_vote_on'")
         poll-common-preview(
           v-if="votePolls.length",
           :poll="poll",
@@ -78,9 +78,9 @@ export default
           v-t="'dashboard_page.no_polls_to_vote_on'"
         )
       template(v-if="otherPolls.length")
-        v-card-title(v-t="'dashboard_page.recent_polls'")
+        v-subheader(v-t="'dashboard_page.recent_polls'")
         poll-common-preview(:poll='poll' v-for='poll in otherPolls' :key='poll.id')
       template(v-if='!votePolls.length && !otherPolls.length && loader.loading')
-        v-card-title(v-t="'group_page.polls'")
+        v-subheader(v-t="'group_page.polls'")
         loading-content(:lineCount='2' v-for='(item, index) in [1]' :key='index' )
 </template>

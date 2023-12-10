@@ -1,6 +1,6 @@
 <script lang="js">
 import { emojisByCategory, srcForEmoji } from '@/shared/helpers/emojis';
-import { each, keys, pick } from 'lodash-es';
+import { pick } from 'lodash-es';
 
 export default {
   props: {

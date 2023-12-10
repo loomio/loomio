@@ -80,7 +80,7 @@ module HasRichText
     sanitizer = Rails::Html::FullSanitizer.new
     self.link_previews.each do |preview|
       preview.keys.each do |key|
-        preview[key] = sanitizer.sanitize preview[key]
+        preview[key] = String(sanitizer.sanitize preview[key]).truncate(480)
       end
     end
   end

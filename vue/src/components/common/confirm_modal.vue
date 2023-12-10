@@ -51,7 +51,7 @@ export default {
 v-card.confirm-modal
   submit-overlay(:value='isDisabled')
   v-card-title
-    h1.headline(
+    h1.text-h5(
       v-if="confirm.text.raw_title || confirm.text.title"
       v-html="confirm.text.raw_title || $t(confirm.text.title, confirm.textArgs)"
       tabindex="-1")

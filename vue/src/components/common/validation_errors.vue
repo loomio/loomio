@@ -9,7 +9,7 @@ export default {
 
 <template lang="pug">
 .lmo-validation-error
-  .lmo-validation-error__message.error--text.caption(v-if="subject.errors[field]" for="field + '-error'")
+  .lmo-validation-error__message.error--text.text-caption(v-if="subject.errors[field]" for="field + '-error'")
     span(role="status" aria-live="polite") {{subject.errors[field].join(', ')}}
 </template>
 <style lang="sass">

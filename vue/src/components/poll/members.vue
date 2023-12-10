@@ -5,7 +5,7 @@ import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import StanceService from '@/shared/services/stance_service';
-import {map, debounce, without, filter, uniq, uniqBy, some, find, compact} from 'lodash-es';
+import { map, debounce, uniq, compact } from 'lodash-es';
 
 export default {
   components: {
@@ -161,9 +161,9 @@ export default {
   .px-4.pt-4
     .d-flex.justify-space-between
       //- template(v-if="poll.notifyRecipients")
-      h1.headline(v-t="'announcement.form.'+wipOrEmpty+'poll_announced.title'")
-      //- h1.headline(v-if="!poll.closingAt" v-t="'announcement.form.wip_poll_announced.title'")
-      //- h1.headline(v-else v-t="'poll_common_form.add_voters'")
+      h1.text-h5(v-t="'announcement.form.'+wipOrEmpty+'poll_announced.title'")
+      //- h1.text-h5(v-if="!poll.closingAt" v-t="'announcement.form.wip_poll_announced.title'")
+      //- h1.text-h5(v-else v-t="'poll_common_form.add_voters'")
       dismiss-modal-button
     recipients-autocomplete(
       :label="poll.notifyRecipients ? $t('announcement.form.'+wipOrEmpty+'poll_announced.helptext') : $t('poll_common_form.who_may_vote', {poll_type: poll.translatedPollType()})"
@@ -204,7 +204,7 @@ export default {
         v-menu(offset-y)
           template(v-slot:activator="{on, attrs}")
             v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
-              v-icon mdi-dots-vertical
+              common-icon(name="mdi-dots-vertical")
           v-list
             v-list-item(v-for="action in actionNames" v-if="canPerform(action, poll, user)" @click="perform(action, poll, user)" :key="action")
               v-list-item-title(v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }")

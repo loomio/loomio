@@ -4,14 +4,16 @@ import AbilityService from '@/shared/services/ability_service';
 import RecordLoader   from '@/shared/services/record_loader';
 import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
-import {includes, some, compact, intersection, orderBy, slice, debounce, min, escapeRegExp, map} from 'lodash-es';
+import { intersection, debounce, map } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
+import { mdiMagnify } from '@mdi/js';
 
 export default
 {
   data() {
     return {
+      mdiMagnify,
       loader: null,
       group: null,
       per: 25,
@@ -198,7 +200,7 @@ export default
             span(v-if="$route.query.filter == 'pending'" v-t="'members_panel.invitations'")
             span(v-if="$route.query.filter == 'accepted'" v-t="'members_panel.accepted'")
             span(v-if="!$route.query.filter" v-t="'members_panel.all'")
-            v-icon mdi-menu-down
+            common-icon(name="mdi-menu-down")
         v-list
           v-list-item.members-panel__filters-everyone(:to="mergeQuery({filter: null})")
             v-list-item-title(v-t="'members_panel.all'")
@@ -208,7 +210,7 @@ export default
             v-list-item-title(v-t="'members_panel.order_by_admin_desc'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
             v-list-item-title(v-t="'members_panel.invitations'")
-      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" append-icon="mdi-magnify")
+      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" :append-icon="mdiMagnify")
       v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
       shareable-link-modal(v-if='canAddMembers' :group="group")
       v-btn.group-page__requests-tab(
@@ -237,20 +239,20 @@ export default
                   span(v-if="membership.acceptedAt && membership.userEmail") <{{membership.userEmail}}>
                   span(v-else) {{membership.userEmail}}
                 space
-                span.caption(v-if="$route.query.subgroups") {{membership.group().name}}
+                span.text-caption(v-if="$route.query.subgroups") {{membership.group().name}}
                 space
-                span.title.caption {{membership.user().title(group)}}
+                span.text-caption {{membership.user().title(group)}}
                 space
                 v-chip(v-if="membership.user().bot" x-small outlined label v-t="'members_panel.bot'")
                 span(v-if="membership.groupId == group.id && membership.admin")
                   space
                   v-chip(x-small outlined label v-t="'members_panel.admin'")
                   space
-                span.caption.text--secondary(v-if="membership.acceptedAt")
+                span.text-caption.text--secondary(v-if="membership.acceptedAt")
                   span(v-t="'common.action.joined'")
                   space
                   time-ago(:date="membership.acceptedAt")
-                span.caption.text--secondary(v-if="!membership.acceptedAt")
+                span.text-caption.text--secondary(v-if="!membership.acceptedAt")
                   template(v-if="membership.inviterId")
                     span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
                     space

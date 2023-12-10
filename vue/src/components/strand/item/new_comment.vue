@@ -1,7 +1,7 @@
 <script lang="js">
 import AbilityService from '@/shared/services/ability_service';
 
-import { pick, pickBy, assign, compact } from 'lodash-es';
+import { pick, pickBy, assign } from 'lodash-es';
 import CommentService from '@/shared/services/comment_service';
 import EventService from '@/shared/services/event_service';
 import Session from '@/shared/services/session';

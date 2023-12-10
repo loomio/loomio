@@ -339,8 +339,8 @@ div.recipients-autocomplete
     template(v-slot:no-data)
       v-list-item
         v-list-item-icon
-          v-icon(v-if="!query") mdi-account-search
-          v-icon(v-if="query") mdi-information-outline
+          common-icon(v-if="!query" name="mdi-account-search")
+          common-icon(v-if="query" name="mdi-information-outline")
         v-list-item-content
           v-list-item-title
             span(v-if="query" v-t="'common.no_results_found'")
@@ -363,7 +363,7 @@ div.recipients-autocomplete
         @click:close='remove(data.item)'
         @click='expand(data.item)')
         span
-          v-icon.mr-1(small) {{data.item.icon}}
+          common-icon.mr-1(small name="data.item.icon")
         span {{ data.item.name }}
       v-chip.chip--select-multi(
         v-else
@@ -377,7 +377,7 @@ div.recipients-autocomplete
             v-if="data.item.type == 'user'"
             :user="data.item.user"
             :size="24" no-link)
-          v-icon.mr-1(v-else small) {{data.item.icon}}
+          common-icon.mr-1(v-else small name="data.item.icon")
         span {{ data.item.name }}
         span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
           space
@@ -385,7 +385,7 @@ div.recipients-autocomplete
     template(v-slot:item='data')
       v-list-item-avatar
         user-avatar(v-if="data.item.type == 'user'", :user="data.item.user", :size="24" no-link)
-        v-icon.mr-1(v-else small) {{data.item.icon}}
+        common-icon.mr-1(v-else small name="data.item.icon")
       v-list-item-content.announcement-chip__content
         v-list-item-title
           span {{data.item.name}}

@@ -5,7 +5,7 @@ import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import DiscussionReaderService from '@/shared/services/discussion_reader_service';
-import {map, debounce, without, filter, uniq, uniqBy, some, pick} from 'lodash-es';
+import {map, debounce} from 'lodash-es';
 
 export default {
   components: {
@@ -150,7 +150,7 @@ export default {
 .strand-members-list
   .px-4.pt-4
     .d-flex.justify-space-between
-      h1.headline(v-t="'announcement.form.discussion_announced.title'")
+      h1.text-h5(v-t="'announcement.form.discussion_announced.title'")
       dismiss-modal-button
 
     recipients-autocomplete(
@@ -202,7 +202,7 @@ export default {
         v-menu(offset-y)
           template(v-slot:activator="{on, attrs}")
             v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
-              v-icon mdi-dots-vertical
+              common-icon(name="mdi-dots-vertical")
           v-list
             v-list-item(v-for="action in actionNames" v-if="service[action].canPerform(reader)" @click="service[action].perform(reader)" :key="action")
               v-list-item-title(v-t="service[action].name")

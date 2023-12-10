@@ -2,7 +2,7 @@
 import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import ThreadService from '@/shared/services/thread_service';
-import { map, sortBy, filter, debounce, without, uniq, find, compact } from 'lodash-es';
+import { compact } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
@@ -167,9 +167,9 @@ export default {
       aria-hidden='true'
       :to="urlFor(discussion)"
     )
-      v-icon mdi-close
+      common-icon(name="mdi-close")
     v-btn.back-button(v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
 
 
   .pa-4

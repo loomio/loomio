@@ -7,7 +7,7 @@ import EventBus         from '@/shared/services/event_bus';
 import I18n             from '@/i18n';
 import NullGroupModel   from '@/shared/models/null_group_model';
 import { addDays, startOfHour, differenceInHours, addHours } from 'date-fns';
-import { snakeCase, camelCase, compact, head, orderBy, sortBy, map, includes, difference, invokeMap, each, max, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
+import { snakeCase, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
 
 export default class PollModel extends BaseModel {
   static singular = 'poll';
@@ -163,7 +163,7 @@ export default class PollModel extends BaseModel {
 
   pieSlices() {
     let slices = [];
-    if (this.pollType === 'count') {
+    if ((this.pollType === 'count') && this.results.find(r => r.icon === 'agree')) {
       const agree = this.results.find(r => r.icon === 'agree');
       if (agree.score < this.agreeTarget) {
         const pct = (parseFloat(agree.score) / parseFloat(this.agreeTarget)) * 100;

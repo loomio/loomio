@@ -323,5 +323,8 @@ ro:
       undecided_visitors: Oaspeți nehotărâți (%{count})
       more_undecided: Încă %{count}...
       vote_now: Voteaza acum
-      you_have_until: Ai timp până la %{când} pentru a participa.
+      you_have_until: Ai timp până la %{when} pentru a participa.
       people_have_voted: "%{nom} din %{dnom} persoane au participat (%{pct}%)"
+  event_mailer:
+    received_email:
+      explaination_html: "<p>Primiți acest e-mail deoarece sunteți administrator pentru grupul Loomio: %{group}.</p><p> Grupul a primit un e-mail de la o adresă de e-mail nerecunoscută.</p><p> Dacă mesajul este de la un membru al grupului, consultați e-mailul și selectați membrul.</p><p> Dacă mesajul este nedorit, puteți bloca orice e-mail suplimentar de la acea adresă.</p>"

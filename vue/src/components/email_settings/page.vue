@@ -6,7 +6,7 @@ import AbilityService from '@/shared/services/ability_service';
 import AppConfig      from '@/shared/services/app_config';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal';
-import { uniq, compact, concat, sortBy, map, pick } from 'lodash-es';
+import { sortBy, pick } from 'lodash-es';
 import UserService from '@/shared/services/user_service';
 import Flash from '@/shared/services/flash';
 
@@ -95,13 +95,13 @@ v-main
 
     v-card.mb-4(v-if="user.deactivatedAt")
       //- v-card-title
-      //-   h1.headline(tabindex="-1" v-t="'email_settings_page.header'")
+      //-   h1.text-h5(tabindex="-1" v-t="'email_settings_page.header'")
       v-card-text
         p(v-t="'email_settings_page.account_deactivated'")
 
     v-card.mb-4(v-if="!user.deactivatedAt")
       //- v-card-title
-      //-   h1.headline(tabindex="-1" v-t="'email_settings_page.header'")
+      //-   h1.text-h5(tabindex="-1" v-t="'email_settings_page.header'")
       v-card-text
         .email-settings-page__email-settings
           .email-settings-page__global-settings
@@ -137,12 +137,12 @@ v-main
 
     v-card
       v-card-title
-        h1.headline(tabindex="-1" v-t="'email_settings_page.deactivate_header'")
+        h1.text-h5(tabindex="-1" v-t="'email_settings_page.deactivate_header'")
       v-card-text
         p(v-t="'email_settings_page.deactivate_description'")
         v-list
           v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()")
             v-list-item-icon
-              v-icon {{action.icon}}
+              common-icon(:name="action.icon")
             v-list-item-title(v-t="action.name")
 </template>

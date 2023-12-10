@@ -38,8 +38,8 @@ v-alert(outlined color="secondary" dense v-if="isAdmin && isOldPlan && !isHidden
       span(v-t="'current_plan_button.is_old_plan'")
     v-spacer
     v-btn.mr-2(color="primary" :href="'/upgrade/'+group.id" target="_blank" :title="$t('current_plan_button.tooltip')")
-      v-icon mdi-rocket
+      common-icon(name="mdi-rocket")
       span(v-if="isOldPlan" v-t="'current_plan_button.view_plans'")
     v-btn(icon @click="hideBanner" :title="$t('common.action.close')")
-      v-icon mdi-close
+      common-icon(name="mdi-close")
 </template>

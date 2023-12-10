@@ -6,7 +6,8 @@ import AbilityService    from '@/shared/services/ability_service';
 import Session           from '@/shared/services/session';
 import AttachmentService from '@/shared/services/attachment_service';
 
-import { isEmpty, intersection, debounce, filter, some, orderBy, uniq } from 'lodash-es';
+import { mdiMagnify } from '@mdi/js';
+import { intersection, debounce, orderBy, uniq } from 'lodash-es';
 
 export default
 {
@@ -20,7 +21,8 @@ export default
       subgroups: 'mine',
       attachmentIds: [],
       per: 25,
-      from: 0
+      from: 0,
+      mdiMagnify
     };
   },
 
@@ -125,7 +127,7 @@ export default
 <template lang="pug">
 div
   v-layout.py-2(align-center wrap)
-    v-text-field(clearable hide-details solo @input="onQueryInput" :placeholder="$t('navbar.search_files', {name: group.name})" append-icon="mdi-magnify")
+    v-text-field(clearable hide-details solo @input="onQueryInput" :placeholder="$t('navbar.search_files', {name: group.name})" :append-icon="mdiMagnify")
   v-card.group-files-panel(outlined)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
@@ -142,7 +144,7 @@ div
           tr(v-for="item in items" :key="item.id")
             td
               v-layout(align-center)
-                v-icon mdi-{{item.icon}}
+                common-icon(:name="'mdi-'+ item.icon")
                 a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
             td
               user-avatar(:user="item.author()")

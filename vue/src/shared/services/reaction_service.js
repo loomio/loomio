@@ -1,4 +1,4 @@
-import { debounce, forEach, compact } from 'lodash-es';
+import { debounce, forEach } from 'lodash-es';
 import Records from '@/shared/services/records';
 
 let ids = {};

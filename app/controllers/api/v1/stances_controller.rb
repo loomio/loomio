@@ -92,10 +92,22 @@ class API::V1::StancesController < API::V1::RestfulController
     @stance.poll.update_counts!
 
     @stances = @stance.poll.stances.where(participant_id: params[:participant_id])
+    live_update_outdated_stances(@stance.poll)
     respond_with_collection
   end
 
   private
+
+  def live_update_outdated_stances(poll)
+    return if poll.discussion.nil?
+    # want to find stances with comments
+    stance_ids = poll.discussion.items.where(
+      eventable_type: 'Stance',
+      eventable_id: poll.stances.with_reason.where(latest: false).pluck(:id)
+    ).where("child_count > 0").pluck('eventable_id')
+    stances = Stance.where(id: stance_ids).order('id desc').limit(50)
+    MessageChannelService.publish_models(stances, group_id: poll.group_id, user_id: current_user.id)
+  end
 
   def respond_with_recent_stances
     @event = nil

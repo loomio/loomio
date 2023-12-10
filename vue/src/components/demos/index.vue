@@ -7,8 +7,6 @@ import EventBus           from '@/shared/services/event_bus';
 import Flash              from '@/shared/services/flash';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
-import { capitalize, take, keys, every, orderBy, debounce } from 'lodash-es';
-import { subDays, addDays, subWeeks, subMonths } from 'date-fns';
 import PlausibleService from '@/shared/services/plausible_service';
 
 export default 
@@ -67,7 +65,7 @@ export default
 <template lang="pug">
 v-main
   v-container.templates-page.max-width-1024.px-0.px-sm-3
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
+    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'templates.try_loomio'")
     //- p(v-t="'templates.look_and_feel'")
     .d-flex.justify-center
       <iframe class="mx-auto" width="560" height="315" src="https://www.youtube-nocookie.com/embed/oIEKA9WTIDc" title="Loomio demo group introduction" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>

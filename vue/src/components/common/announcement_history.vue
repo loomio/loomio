@@ -5,9 +5,8 @@ import utils          from '@/shared/record_store/utils';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import AbilityService from '@/shared/services/ability_service';
 import Session from '@/shared/services/session';
-import AppConfig      from '@/shared/services/app_config';
+import AppConfig from '@/shared/services/app_config';
 import Flash   from '@/shared/services/flash';
-import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash-es';
 import { encodeParams } from '@/shared/helpers/encode_params';
 
 export default {
@@ -57,7 +56,7 @@ export default {
 <template lang="pug">
 v-card
   v-card-title
-    h1.headline(tabindex="-1" v-t="'announcement.' + modelKind + '_notification_history'")
+    h1.text-h5(tabindex="-1" v-t="'announcement.' + modelKind + '_notification_history'")
     v-spacer
     dismiss-modal-button
   v-layout(justify-center)

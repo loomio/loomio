@@ -71,7 +71,7 @@ it:
         time: Sondaggio per incontro
   user:
     deleted_user: Utente eliminato
-    placeholder_name: Utente invitato
+    placeholder_name: Utente invitato %{hostname}
     error:
       sign_in_required_html: |
         È necessario avere effettuato l'accesso per procedere.
@@ -377,3 +377,6 @@ it:
     blank:
       process_name: Modello vuoto
       process_subtitle: Inizia una nuova discussione per qualsiasi scopo
+  event_mailer:
+    received_email:
+      explaination_html: "<p>Hai ricevuto questa email perché sei un amministratore del gruppo Loomio: %{group}.</p><p> Il gruppo ha ricevuto un'e-mail da un indirizzo e-mail non riconosciuto.</p><p> Se il messaggio proviene da un membro del gruppo, controlla l'e-mail e seleziona il membro.</p><p> Se il messaggio è indesiderato, puoi bloccare qualsiasi ulteriore email proveniente da quell'indirizzo.</p>"

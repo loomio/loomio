@@ -70,7 +70,7 @@ export default {
 <template lang="pug">
 v-card.chatbot-matrix-form
   v-card-title
-    h1.headline(tabindex="-1")
+    h1.text-h5(tabindex="-1")
       span Webhook
       space
       span(v-t="'chatbot.chatbot'")

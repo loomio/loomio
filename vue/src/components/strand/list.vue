@@ -13,7 +13,7 @@ import OtherKind from '@/components/strand/item/other_kind.vue';
 import ReplyForm from '@/components/strand/reply_form.vue';
 import RangeSet from '@/shared/services/range_set';
 import EventBus from '@/shared/services/event_bus';
-import { camelCase, first, last, some, sortedUniq, sortBy, without } from 'lodash-es';
+import { camelCase } from 'lodash-es';
 
 export default {
   name: 'strand-list',
@@ -127,7 +127,7 @@ export default {
           template(v-else)
             user-avatar(
               :user="obj.event.actor()"
-              :size="(obj.event.depth > 1) ? 28 : 36"
+              :size="(obj.event.depth > 1) ? 28 : 32"
               no-link
             )
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
@@ -149,7 +149,7 @@ export default {
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")
       .d-flex.align-center
         .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
-          v-icon mdi-unfold-more-horizontal
+          common-icon(name="mdi-unfold-more-horizontal")
         strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.eventable" collapsed)
 
     .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
@@ -176,8 +176,8 @@ export default {
     // margin-right: 4px
 
   .strand-item__stem
-    margin-left: 12px
-    margin-right: 12px
+    margin-left: 14px
+    margin-right: 14px
 
   .strand-item__circle
     // margin: 4px 0
@@ -203,7 +203,7 @@ export default {
 .strand-item__gutter
   display: flex
   flex-direction: column
-  width: 36px
+  width: 32px
   // margin-right: 8px
 
 .strand-item__gutter:hover
@@ -217,7 +217,7 @@ export default {
   max-width: 100%
 
 .strand-item__stem-wrapper
-  width: 36px
+  width: 32px
   height: 100%
   padding-top: 4px
   padding-bottom: 4px
@@ -227,7 +227,7 @@ export default {
   height: 100%
   padding: 0 0.5px
   background-color: #dadada
-  margin: 0px 18px
+  margin: 0px 16px
 
 .strand-item__stem--broken
   background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%)
@@ -246,8 +246,8 @@ export default {
   display: flex
   align-items: center
   justify-content: center
-  width: 36px
-  height: 36px
+  width: 32px
+  height: 32px
   border: 1px solid #dadada
   border-radius: 100%
   margin: 4px 0

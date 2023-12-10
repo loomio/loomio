@@ -1,6 +1,5 @@
 <script lang="js">
 import Records from '@/shared/services/records';
-import { max, values, orderBy, compact } from 'lodash-es';
 import BarIcon from '@/components/poll/common/icon/bar.vue';
 import PieIcon from '@/components/poll/common/icon/pie.vue';
 import GridIcon from '@/components/poll/common/icon/grid.vue';
@@ -57,7 +56,7 @@ export default {
     thead
       tr
         template(v-for="col in poll.resultColumns")
-          th.text-left(v-if="col == 'chart'")
+          th.text-left(v-if="col == 'chart'" v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
           th.text-left(v-if="col == 'name'" v-t='"common.option"')
           th.text-right(v-if="col == 'target_percent'" v-t='"poll_count_form.pct_of_target"')
           th.text-right(v-if="col == 'score_percent'" v-t='"poll_ranked_choice_form.pct_of_points"')

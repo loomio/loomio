@@ -427,3 +427,6 @@ pt_BR:
     blank:
       process_name: Modelo em branco
       process_subtitle: Inicie um novo tópico para qualquer finalidade
+  event_mailer:
+    received_email:
+      explaination_html: "<p>Você está recebendo este e-mail porque é administrador do grupo Loomio: %{group}.</p><p> O grupo recebeu um email de um endereço de email não reconhecido.</p><p> Se a mensagem for de um membro do grupo, revise o e-mail e selecione o membro.</p><p> Se a mensagem for indesejada, você poderá bloquear qualquer outro e-mail desse endereço.</p>"

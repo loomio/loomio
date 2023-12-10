@@ -31,7 +31,7 @@ export default {
 
 <template lang="pug">
 .poll-common-stance-choices.pb-2.pt-2(v-if="poll.pollType != 'question' && !poll.hasOptionIcon()")
-  span.caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
+  span.text-caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
   template(v-else)
     template(v-if="!datesAsOptions")
       .poll-common-stance-choice.text-truncate(
@@ -39,7 +39,7 @@ export default {
         v-if="choice.score > 0 || pollType == 'score'"
         :key="choice.id"
         :class="'poll-common-stance-choice--' + pollType")
-        v-icon(small :color="choice.pollOption.color" v-if="!variableScore") mdi-check-circle
+        common-icon(small :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
         span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
         span.ml-2.text--secondary
           | {{ choice.pollOption.optionName() }}

@@ -186,12 +186,12 @@ img.emoji
     margin-top: 0
 
   h1
-    font-size: 2.125rem
+    font-size: 1.75rem
     font-weight: 400
     letter-spacing: 0.015625rem
 
   h2
-    font-size: 1.5rem
+    font-size: 1.25rem
     font-weight: 400
     letter-spacing: normal
 
@@ -213,10 +213,8 @@ img.emoji
   word-break: break-word
 
   img
-    aspect-ratio: attr(width) / attr(height)
     max-width: 100%
     max-height: 600px
-    width: auto
     height: auto
 
   ol, ul
@@ -338,6 +336,16 @@ img.emoji
 
   thead td
     font-weight: bold
+
+  table table
+    margin: 0 !important
+    border: 0 !important
+
+  td td
+    padding: 0 !important
+
+  td td td
+    border: 0 !important
 
   table
     p

@@ -97,7 +97,7 @@ export default {
 <template lang="pug">
 v-card.tags-modal
   v-card-title
-    h1.headline(tabindex="-1" v-t="'loomio_tags.card_title'")
+    h1.text-h5(tabindex="-1" v-t="'loomio_tags.card_title'")
     v-spacer
     dismiss-modal-button(:close="close")
 
@@ -113,11 +113,11 @@ v-card.tags-modal
       sortable-item(v-for="(tag, index) in allTags", :index="index", :key="tag.id")
         v-list-item
           .handle(v-handle)
-            v-icon mdi-drag-vertical
+            common-icon(name="mdi-drag-vertical")
           v-chip(:color="tag.color" v-handle outlined) {{tag.name}}
           v-spacer
           v-btn(icon @click="openEditTagModal(tag)")
-            v-icon.text--secondary mdi-pencil
+            common-icon.text--secondary(name="mdi-pencil")
 
     v-card-actions
       v-spacer

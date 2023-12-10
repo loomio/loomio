@@ -1,6 +1,5 @@
 import BaseRecordsInterface from '@/shared/record_store/base_records_interface';
 import PollModel            from '@/shared/models/poll_model';
-import {merge} from 'lodash-es';
 
 export default class PollRecordsInterface extends BaseRecordsInterface {
   constructor(recordStore) {

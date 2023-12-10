@@ -104,7 +104,7 @@ export default {
           .d-flex
             v-breadcrumbs.px-0.pt-0(:items="breadcrumbs")
               template(v-slot:divider)
-                v-icon mdi-chevron-right
+                common-icon(name="mdi-chevron-right")
         v-card.poll-common-modal(v-if="isLoggedIn")
           v-card-title
             h1.text-h5(v-t="'poll_common.decision_templates'")

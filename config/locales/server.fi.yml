@@ -323,3 +323,6 @@ fi:
       vote_now: Äänestä nyt
       you_have_until: Sinulla on %{when} asti aikaa osallistua.
       people_have_voted: "%{nom} %{dnom} ihmisestä on osallistunut (%{pct}%)"
+  event_mailer:
+    received_email:
+      explaination_html: "<p>Sait tämän sähköpostin, koska olet järjestelmänvalvoja Loomio-ryhmässä: %{group}.</p><p> Ryhmä on saanut sähköpostin tuntemattomasta sähköpostiosoitteesta.</p><p> Jos viesti on ryhmän jäseneltä, tarkista sähköposti ja valitse jäsen.</p><p> Jos viesti on ei-toivottu, voit estää kaikki muut sähköpostit kyseisestä osoitteesta.</p>"

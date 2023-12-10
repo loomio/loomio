@@ -1,6 +1,5 @@
 <script lang="js">
 import ThreadService  from '@/shared/services/thread_service';
-import { map, compact, pick } from 'lodash-es';
 import EventBus from '@/shared/services/event_bus';
 import openModal      from '@/shared/helpers/open_modal';
 

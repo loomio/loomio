@@ -6,14 +6,15 @@ import EventBus      from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
 import utils         from '@/shared/record_store/utils';
-import { compact } from 'lodash-es';
 import VuetifyColors  from 'vuetify/lib/util/colors';
+import { mdiMagnify } from '@mdi/js';
 
 const colors = Object.keys(VuetifyColors).filter(name => name !== 'shades').map(name => VuetifyColors[name]['base']);
 
 export default {
   data() {
     return {
+      mdiMagnify,
       results: [],
       query: this.$route.query.query,
       loading: false,
@@ -52,10 +53,10 @@ export default {
     v-container.max-width-800.px-0.px-sm-3
       v-card
         v-card-title.d-flex.pr-3
-          h1.headline(tabindex="-1" v-t="'templates.template_gallery'")
+          h1.text-h5(tabindex="-1" v-t="'templates.template_gallery'")
           v-spacer
           v-btn.back-button(v-if="$route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-            v-icon mdi-close
+            common-icon(name="mdi-close")
 
 
         v-alert.mx-4(type="info" text outlined v-t="'thread_template.these_are_public_templates'") 
@@ -69,7 +70,7 @@ export default {
             hide-selected
             clearable
             @change="changed"
-            append-icon="mdi-magnify"
+            :append-icon="mdiMagnify"
             @click:append="fetch"
             v-model="query"
             :placeholder="$t('common.action.search')"
@@ -114,6 +115,6 @@ export default {
                 :to="'/thread_templates/new?template_id='+result.id+'&group_id='+$route.query.group_id"
                 title="Make a copy of this template and edit it"
               )
-                v-icon mdi-pencil
+                common-icon(name="mdi-pencil")
 
 </template>

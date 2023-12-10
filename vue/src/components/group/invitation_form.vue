@@ -9,6 +9,7 @@ import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
 import { uniq, debounce } from 'lodash-es';
 import I18n from '@/i18n';
+import { mdiAccountMultiplePlus } from '@mdi/js';
 
 export default
 {
@@ -22,6 +23,7 @@ export default
 
   data() {
     return {
+      mdiAccountMultiplePlus,
       query: '',
       recipients: [],
       reset: false,
@@ -135,7 +137,7 @@ export default
 .group-invitation-form
   .px-4.pt-4
     .d-flex.justify-space-between
-      h1.headline(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
+      h1.text-h5(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
       dismiss-modal-button
 
     div.py-4(v-if="cannotInvite")
@@ -143,7 +145,7 @@ export default
         p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
         p(v-if="!subscription.active" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
     div(v-else)
-      v-alert.my-2(v-if="group.membershipsCount < 2" type="info" outlined text icon="mdi-account-multiple-plus") 
+      v-alert.my-2(v-if="group.membershipsCount < 2" type="info" outlined text :icon="mdiAccountMultiplePlus") 
         span(v-t="'announcement.form.invite_people_to_evaluate_loomio'") 
       recipients-autocomplete(
         :label="$t('announcement.form.who_to_invite')"
@@ -154,8 +156,8 @@ export default
         @new-query="newQuery"
         @new-recipients="newRecipients")
       div(v-if="subscription.max_members")
-        p.caption(v-if="!tooManyInvitations" v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
-        p.caption(v-if="tooManyInvitations" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
+        p.text-caption(v-if="!tooManyInvitations" v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
+        p.text-caption(v-if="tooManyInvitations" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
       div.mb-4(v-if="invitableGroups.length > 1")
         label.lmo-label(v-t="'announcement.select_groups'")
         //- v-label Select groups

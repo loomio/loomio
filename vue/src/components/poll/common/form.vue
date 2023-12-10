@@ -6,11 +6,9 @@ import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
-import { addHours, isAfter } from 'date-fns';
+import { addMinutes, intervalToDuration, formatDuration, addHours, isAfter, startOfHour, setHours } from 'date-fns';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
-import { isSameYear, startOfHour, setHours }  from 'date-fns';
 import I18n from '@/i18n';
 
 export default {
@@ -277,9 +275,9 @@ export default {
     v-spacer
 
     v-btn(v-if="poll.id" icon :to="urlFor(poll)" aria-hidden='true')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
     v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
 
   poll-template-info-panel(v-if="pollTemplate" :poll-template="pollTemplate")
 
@@ -347,11 +345,11 @@ export default {
                 @click="removeOption(option)"
                 :title="$t('common.action.delete')"
               )
-                v-icon.text--secondary mdi-delete
+                common-icon.text--secondary(name="mdi-delete")
             v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
               v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                v-icon.text--secondary mdi-pencil
-            v-icon.text--secondary(style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
+                common-icon.text--secondary(name="mdi-pencil")
+            common-icon.text--secondary(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
 
     template(v-if="optionFormat == 'i18n'")
       p This poll cannot have new options added. (contact support if you see this message)
@@ -461,7 +459,7 @@ export default {
     v-radio.poll-common-settings__specified-voters-only(
       :value="true"
       :label="$t('poll_common_settings.specified_voters_only_true')")
-  .caption.mt-n4.text--secondary.text-caption(
+  .text-caption.mt-n4.text--secondary.text-caption(
     v-if="poll.specifiedVotersOnly"
     v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
 

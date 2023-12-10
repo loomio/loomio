@@ -59,7 +59,7 @@ export default {
 
   comment-form(
     :comment="newComment"
-    avatar-size="36"
+    avatar-size="32"
     @comment-submitted="show= false"
     @cancel-reply="show = false"
     autofocus)

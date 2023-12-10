@@ -45,6 +45,7 @@ module PrettyUrlHelper
     when Comment                       then comment_url(model.discussion, model, opts)
     when Membership                    then membership_url(model, opts)
     when Reaction                      then polymorphic_url(model.reactable, opts)
+    when ReceivedEmail                 then group_emails_url(model.group.key)
     else super
     end
   end

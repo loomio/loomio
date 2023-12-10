@@ -60,8 +60,7 @@ export default {
             }
           }
         }
-      }
-      );
+      });
     }
   },
 
@@ -84,7 +83,7 @@ export default {
 
 <template lang="pug">
 section.document-list(v-if="couldHaveDocuments")
-  p.caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
+  p.text-caption(v-if='!model.hasDocuments() && placeholder', v-t='placeholder')
   .document-list__documents
     .attachment-list__item(:class="{'document-list__document--image': document.isAnImage() && !hidePreview}", v-for='document in documents', :key='document.id')
       a.attachment-list__preview(v-if='document.isAnImage() && !hidePreview' :href='document.url' target='_blank')
@@ -92,7 +91,7 @@ section.document-list(v-if="couldHaveDocuments")
       .attachment-list__item-details
         a.document-list__title(:href='document.url' target='_blank') {{ document.title }}
         v-btn.ml-2(v-if="canDelete" icon :aria-label="$t('common.action.delete')" @click='deleteDocument(document)')
-          v-icon(size="medium") mdi-delete
+          common-icon(size="medium" name="mdi-delete")
 </template>
 <style lang="sass">
 .document-list

@@ -3,7 +3,6 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
-import {compact, map, toPairs, fromPairs, some, sortBy, isEqual} from 'lodash-es';
 
 export default {
   props: {
@@ -122,7 +121,7 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
         :style="buttonStyleFor(choice, i)"
         icon
       )
-        v-avatar(:size="36")
+        v-avatar(:size="32")
           img.poll-common-form__icon(:src="imgForScore(i)")
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')

@@ -5,7 +5,6 @@ import Records from '@/shared/services/records';
 import FilesList from './files_list.vue';
 import SuggestionList from './suggestion_list';
 import Attaching from './attaching';
-import {escapeRegExp} from 'lodash-es';
 
 export default
 {
@@ -145,7 +144,7 @@ div(style="position: relative")
 
   v-layout.menubar(align-center :aria-label="$t('formatting.formatting_tools')")
     v-btn(icon @click='$refs.filesField.click()' :title="$t('formatting.attach')")
-      v-icon mdi-paperclip
+      common-icon(name="mdi-paperclip")
     v-btn(text x-small @click="convertToHtml(model, field)" v-t="'formatting.wysiwyg'")
     v-spacer
     v-btn.mr-4(text x-small @click="preview = !preview" v-t="previewAction")
@@ -156,5 +155,5 @@ div(style="position: relative")
   files-list(:files="files" v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")
-    input(ref="filesField" type="file" name="files" multiple=true)
+    input.d-none(ref="filesField" type="file" name="files" multiple=true)
 </template>

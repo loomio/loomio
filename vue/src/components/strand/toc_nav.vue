@@ -2,7 +2,6 @@
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 // import marked from '@/shared/helpers/marked';
-import { each, debounce, truncate, first, last, some, drop, min, compact, without, sortedUniq } from 'lodash-es';
 
 export default {
   props: {

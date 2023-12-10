@@ -12,24 +12,4 @@ const i18n = new VueI18n({
   silentTranslationWarn: true
 });
 
-Vue.prototype.$lt = function(value) {
-  if (typeof value === 'string') {
-    return this.$t(value);
-  } else {
-    const {
-      path
-    } = value;
-    const {
-      locale
-    } = value;
-    const {
-      args
-    } = value;
-    const {
-      choice
-    } = value;
-    return this.$t(path, args);
-  }
-};
-
 export default i18n;

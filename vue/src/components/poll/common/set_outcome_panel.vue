@@ -4,10 +4,15 @@ import AbilityService from '@/shared/services/ability_service';
 import Session        from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import PollService from '@/shared/services/poll_service';
+import { mdiFlagCheckered } from '@mdi/js';
 
 export default {
   props: {
     poll: Object
+  },
+
+  data() {
+    return { mdiFlagCheckered };
   },
 
   methods: {
@@ -25,7 +30,7 @@ export default {
 
 <template lang="pug">
 v-alert.my-4.poll-common-set-outcome-panel(
-  icon="mdi-flag-checkered"
+  :icon="mdiFlagCheckered"
   prominent
   outlined
   v-if="showPanel()"

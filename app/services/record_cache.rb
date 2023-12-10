@@ -297,7 +297,7 @@ class RecordCache
 
   def add_eventables(collection)
     collection.each do |eventable|
-      @user_ids.push eventable.user_id if eventable.user_id
+      @user_ids.push eventable.user_id if eventable.respond_to?(:user_id)
       scope["#{eventable.class.to_s.underscore.pluralize}_by_id"] ||= {}
       scope["#{eventable.class.to_s.underscore.pluralize}_by_id"][eventable.id] = eventable
     end

@@ -120,7 +120,7 @@ export default {
 .revision-history-content
   .mb-3(v-if="titleChanges")
     v-label(v-t="'discussion_form.title_label'")
-    html-diff.headline(:before="titleChanges[0]" :after="titleChanges[1]")
+    html-diff.text-h5(:before="titleChanges[0]" :after="titleChanges[1]")
 
   .mb-3(v-if="!stanceChoices && otherFields.length")
     v-simple-table(dense)

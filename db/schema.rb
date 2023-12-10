@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_30_021314) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_28_215840) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -369,6 +369,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_021314) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "forward_email_rules", force: :cascade do |t|
+    t.citext "handle", null: false
+    t.string "email"
+  end
+
   create_table "group_identities", id: :serial, force: :cascade do |t|
     t.integer "group_id", null: false
     t.integer "identity_id", null: false
@@ -490,6 +495,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_021314) do
     t.integer "code", null: false
     t.boolean "is_reactivation", default: false, null: false
     t.index ["token"], name: "index_login_tokens_on_token"
+  end
+
+  create_table "member_email_aliases", force: :cascade do |t|
+    t.citext "email", null: false
+    t.boolean "require_dkim", default: true, null: false
+    t.boolean "require_spf", default: true, null: false
+    t.integer "user_id"
+    t.integer "group_id", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email", "group_id"], name: "index_member_email_aliases_on_email_and_group_id", unique: true
   end
 
   create_table "membership_requests", id: :serial, force: :cascade do |t|

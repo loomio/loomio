@@ -2,7 +2,7 @@
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import Records   from '@/shared/services/records';
-import { compact, sortBy, without, isEqual, map } from 'lodash-es';
+import { compact } from 'lodash-es';
 
 export default {
   props: {
@@ -153,10 +153,10 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
             v-avatar(size="48")
               img( aria-hidden="true", :src="'/img/' + option.icon + '.svg'")
           template(v-else)
-            v-icon(v-if="singleChoice && !isSelected(option)", :color="option.color") mdi-radiobox-blank
-            v-icon(v-if="singleChoice && isSelected(option)", :color="option.color") mdi-radiobox-marked
-            v-icon(v-if="!singleChoice && !isSelected(option)", :color="option.color") mdi-checkbox-blank-outline
-            v-icon(v-if="!singleChoice && isSelected(option)", :color="option.color") mdi-checkbox-marked
+            common-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)" :color="option.color")
+            common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="option.color")
+            common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="option.color")
+            common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="option.color")
         v-list-item-content
           v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
           v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
