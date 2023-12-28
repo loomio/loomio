@@ -181,7 +181,7 @@ export default {
         v-t="'common.action.invite'")
 
   v-list(two-line)
-    v-subheader
+    v-list-subheader
       span(v-t="'membership_card.discussion_members'")
       space
       span ({{discussion.membersCount}})

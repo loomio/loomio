@@ -103,7 +103,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" :persistent="persistent" :fullscreen="$vuetify.breakpoint.xs")
+v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" :persistent="persistent" :fullscreen="$vuetify.display.xs")
   v-card(v-if="isOpen")
     component(:is="componentName" :key="componentKey" v-bind="componentProps" :close="closeModal")
 </template>

@@ -187,7 +187,7 @@ export default {
       span(v-t="'poll_common_form.no_notifications_warning'")
     v-textarea(v-if="poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
   v-list.poll-members-form__list
-    v-subheader
+    v-list-subheader
       span(v-t="'membership_card.voters'")
       space
       span ({{users.length}} / {{poll.votersCount}})

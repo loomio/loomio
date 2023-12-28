@@ -207,7 +207,7 @@ v-card.group-form
 
       p.group-form__privacy-statement.text-caption.text--secondary {{privacyStatement}}
       .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
-        v-subheader(v-t="'group_form.how_do_people_join'")
+        v-list-subheader(v-t="'group_form.how_do_people_join'")
         v-radio-group(v-model='group.membershipGrantedUpon')
           v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
             template(slot='label')

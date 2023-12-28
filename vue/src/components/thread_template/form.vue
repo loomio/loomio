@@ -151,7 +151,7 @@ export default {
 
   v-divider.my-4
 
-  v-subheader.ml-n4(v-t="'thread_template.decision_templates'")
+  v-list-subheader.ml-n4(v-t="'thread_template.decision_templates'")
   p.text-caption(v-t="'thread_template.decision_templates_help'")
   .decision-tools-card__poll-types
     sortable-list(v-model="pollTemplates" :useDragHandle="true" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
@@ -176,7 +176,7 @@ export default {
   )
   v-divider.my-4
 
-  v-subheader.ml-n4(v-t="'thread_arrangement_form.sorting'")
+  v-list-subheader.ml-n4(v-t="'thread_arrangement_form.sorting'")
   v-radio-group(v-model="discussionTemplate.newestFirst")
     v-radio(:value="false")
       template(v-slot:label)
@@ -194,7 +194,7 @@ export default {
         space
         span(v-t="'thread_arrangement_form.latest_description'")
 
-  v-subheader.ml-n4(v-t="'thread_arrangement_form.replies'")
+  v-list-subheader.ml-n4(v-t="'thread_arrangement_form.replies'")
   v-radio-group(v-model="discussionTemplate.maxDepth")
     v-radio(:value="1")
       template(v-slot:label)

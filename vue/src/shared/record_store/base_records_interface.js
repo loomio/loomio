@@ -1,6 +1,6 @@
 import RestfulClient from './restful_client';
 import {each, keys, isNumber, isString, isArray, debounce, difference, uniq} from 'lodash-es';
-import Vue           from 'vue';
+import { reactive } from 'vue';
 
 export default class BaseRecordsInterface {
   constructor(recordStore) {
@@ -66,7 +66,7 @@ export default class BaseRecordsInterface {
   build(attributes) {
     if (attributes == null) { attributes = {}; }
     const record = new this.model(this, attributes);
-    return Vue.observable(record);
+    return reactive(record);
   }
 
   create(attributes) {

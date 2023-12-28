@@ -18,21 +18,22 @@ export default {
   created() {
     if (this.$route.query.locale) { Session.updateLocale(this.$route.query.locale); }
 
-    if (Session.user().experiences.darkMode != null) {
-      this.$vuetify.theme.dark = Session.user().experiences['darkMode'];
-    } else {
-      this.$vuetify.theme.dark = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    }
+    // if (Session.user().experiences.darkMode != null) {
+    //   this.$vuetify.theme.dark = Session.user().experiences['darkMode'];
+    // } else {
+    //   this.$vuetify.theme.dark = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    // }
 
-    return each(AppConfig.theme.vuetify, (value, key) => {
-      if (value) { this.$vuetify.theme.themes.light[key] = value; }
-      if (value) { this.$vuetify.theme.themes.dark[key] = value; }
-      return true;
-    });
+    // console.log(AppConfig);
+    // return each(AppConfig.theme.vuetify, (value, key) => {
+    //   if (value) { this.$vuetify.theme.themes.light[key] = value; }
+    //   if (value) { this.$vuetify.theme.themes.dark[key] = value; }
+    //   return true;
+    // });
   },
 
   mounted() {
-    initLiveUpdate();
+    // initLiveUpdate();
     if (!Session.isSignedIn() && this.shouldForceSignIn()) { this.openAuthModal(true); }
     EventBus.$on('currentComponent',     this.setCurrentComponent);
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
@@ -72,12 +73,12 @@ export default {
 
       switch (this.$route.path) {
         case '/email_preferences': return (Session.user().restricted == null);
-        case '/dashboard':      
-             case '/inbox':          
-             case '/profile':        
-             case '/polls':          
-             case '/p/new':      
-             case '/g/new': return true;
+        case '/dashboard':
+        case '/inbox':
+        case '/profile':
+        case '/polls':
+        case '/p/new':
+        case '/g/new': return true;
       }
     }
   }

@@ -1,6 +1,6 @@
 import Records from '@/shared/services/records';
 import { some, last, cloneDeep, max, uniq, compact, orderBy } from 'lodash-es';
-import Vue from 'vue';
+import { reactive } from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
@@ -12,14 +12,14 @@ export default class ThreadLoader {
   }
 
   reset() {
-    this.collection = Vue.observable([]);
+    this.collection = reactive([]);
     this.rules = [];
     this.ruleStrings = [];
     this.fetchedRules = [];
     this.readRanges = cloneDeep(this.discussion.readRanges);
     this.focusAttrs = {};
     this.visibleKeys = {};
-    this.collapsed = Vue.observable({});
+    this.collapsed = reactive({});
     this.loading = false;
     this.firstLoad = false
     this.padding = 50;
@@ -40,7 +40,7 @@ export default class ThreadLoader {
     Object.keys(this.visibleKeys).forEach(key => {
       if (key.startsWith(event.positionKey)) { return this.visibleKeys[key] = false; }
     });
-    return Vue.set(this.collapsed, event.id, true);
+    return this.collapsed[event.id] = true;
   }
 
   isUnread(event) {
@@ -60,7 +60,7 @@ export default class ThreadLoader {
   }
 
   expand(event) {
-    return Vue.set(this.collapsed, event.id, false);
+    return this.collapsed[event.id] = false;
   }
 
   jumpToEarliest() {

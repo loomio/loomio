@@ -7,11 +7,11 @@ import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
-import { HandleDirective } from 'vue-slicksort';
+// import { HandleDirective } from 'vue-slicksort';
 import { isSameYear, startOfHour, setHours }  from 'date-fns';
 
 export default {
-  directives: { handle: HandleDirective },
+  // directives: { handle: HandleDirective },
 
   props: {
     isModal: {
@@ -276,7 +276,7 @@ export default {
   
   template(v-if="hasOptions")
     .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
-    v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
+    v-list-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
     sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
       sortable-item(
         v-for="(option, priority) in pollOptions"

@@ -4,8 +4,11 @@ import Session from '@/shared/services/session';
 import ReactionService from '@/shared/services/reaction_service';
 import {merge, capitalize, difference, keys, startsWith, each, compact} from 'lodash-es';
 import { colonToUnicode, stripColons, imgForEmoji, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
+  
   props: {
     model: Object,
     small: Boolean

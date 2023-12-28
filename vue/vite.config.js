@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite';
 import path from 'path';
-import vue from '@vitejs/plugin-vue2'
+import vue from '@vitejs/plugin-vue'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import envCompatible from 'vite-plugin-env-compatible';
-// import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
-import ViteYaml from '@modyfi/vite-plugin-yaml';
-import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
+import yaml from '@originjs/vite-plugin-content';
 import Components from 'unplugin-vue-components/vite';
 import { splitVendorChunkPlugin } from 'vite'
 
@@ -80,16 +79,19 @@ export default defineConfig({
   plugins: [
     splitVendorChunkPlugin(),
     vue(),
+    vuetify({
+      autoImport: true
+    }),
     Components({
       directoryAsNamespace: true,
       resolvers: [
         LoomioVueResolver(),
-        VuetifyResolver(),
+        // VuetifyResolver(),
       ],
     }),
     // viteCommonjs(),
     envCompatible(),
-    ViteYaml(),
+    yaml(),
   ],
   build: {
     sourcemap: true,

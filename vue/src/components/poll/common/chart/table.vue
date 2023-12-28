@@ -3,7 +3,6 @@ import Records from '@/shared/services/records';
 import BarIcon from '@/components/poll/common/icon/bar.vue';
 import PieIcon from '@/components/poll/common/icon/pie.vue';
 import GridIcon from '@/components/poll/common/icon/grid.vue';
-import Vue from 'vue';
 
 export default {
   components: {BarIcon, PieIcon, GridIcon},
@@ -37,7 +36,7 @@ export default {
           option.voter_ids.forEach(id => {
             let user;
             if ((user = Records.users.find(id))) {
-              Vue.set(this.users, id, user);
+              this.users[id] = user
             } else {
               Records.users.addMissing(id);
             }

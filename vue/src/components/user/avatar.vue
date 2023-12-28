@@ -2,8 +2,10 @@
 import Records from '@/shared/services/records';
 import AppConfig from '@/shared/services/app_config';
 import { pick } from 'lodash-es';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
   props: {
     user: {
       type: Object,

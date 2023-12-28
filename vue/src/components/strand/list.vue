@@ -99,7 +99,7 @@ export default {
           .strand-item__stem.strand-item__stem--broken
       //- | top !newestFirst && obj.missingEarlierCount
       strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
+        v-intersect.once="{handler: (isVisible) => isVisible && loader.autoLoadBefore(obj)}"
         :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
         @click="loader.loadBefore(obj.event)"
         :loading="loader.loading == 'before'+obj.event.id")
@@ -110,7 +110,7 @@ export default {
           .strand-item__stem.strand-item__stem--broken
       //- | top newestFirst && obj.missingAfterCount
       strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
+        v-intersect.once="{handler: (isVisible) => isVisible && loader.autoLoadAfter(obj)}"
         :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
         @click="loader.loadAfter(obj.event)"
         :loading="loader.loading == 'after'+obj.event.id")
@@ -122,7 +122,7 @@ export default {
             v-if="loader.discussion.forkedEventIds.length"
             @change="obj.event.toggleForking()"
             :disabled="obj.event.forkingDisabled()"
-            v-model="obj.event.isForking()"
+            fixme-v-model="obj.event.isForking()"
           )
           template(v-else)
             user-avatar(
@@ -134,13 +134,13 @@ export default {
           .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
       .strand-item__main(style="overflow: hidden")
         //- div {{obj.event.kind}} {{obj.event.positionKey}} {{obj.event.sequenceId}} {{isFocused(obj.event)}} childCount{{obj.event.childCount}} chdrn {{obj.children.length}}
-        div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
+        div(:class="classes(obj.event)" v-intersect="{handler: (isVisible) => loader.setVisible(isVisible, obj.event)}")
           strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
           component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
         .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
           strand-load-more(
             v-if="obj.children.length == 0"
-            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}"
+            v-intersect.once="{handler: (isVisible) => isVisible && loader.loadAfter(obj.event)}"
             :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
             @click="loader.loadAfter(obj.event)"
             :loading="loader.loading == 'children'+obj.event.id")
@@ -155,7 +155,7 @@ export default {
     .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
       //- | bottom newestFirst && obj.missingEarlierCount
       strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
+        v-intersect.once="{handler: (isVisible) => isVisible && loader.autoLoadBefore(obj)}"
         :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
         @click="loader.loadBefore(obj.event)"
         :loading="loader.loading == 'before'+obj.event.id")
@@ -163,7 +163,7 @@ export default {
     .strand-item__row(v-if="!newestFirst && obj.missingAfterCount" )
       //- | bottom !newestFirst && obj.missingAfterCount
       strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
+        v-intersect.once="{handler: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
         :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
         @click="loader.loadAfter(obj.event)"
         :loading="loader.loading == 'after'+obj.event.id")

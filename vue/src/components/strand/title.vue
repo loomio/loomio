@@ -2,8 +2,10 @@
 import ThreadService  from '@/shared/services/thread_service';
 import EventBus from '@/shared/services/event_bus';
 import openModal      from '@/shared/helpers/open_modal';
+import FormatDate from '@/mixins/format_date';
 
 export default {
+  mixins: [FormatDate],
   props: {
     discussion: Object
   },
@@ -19,7 +21,7 @@ export default {
 
 <template lang="pug">
 .thread-title
-  h1.text-h4.context-panel__heading#sequence-0.pt-2.mb-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
+  h1.text-h4.context-panel__heading#sequence-0.pt-2.mb-4(tabindex="-1" v-intersect="{handler: titleVisible}")
     span(v-if='!discussion.translation.title') {{discussion.title}}
     span(v-if='discussion.translation.title')
       translation(:model='discussion', field='title')

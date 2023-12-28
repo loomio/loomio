@@ -7,8 +7,10 @@ import NullGroupModel   from '@/shared/models/null_group_model';
 import PollTemplateService     from '@/shared/services/poll_template_service';
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
 import I18n from '@/i18n';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   components: {PollCommonChooseTemplate},
 
   props: {

@@ -7,9 +7,11 @@ import PageLoader         from '@/shared/services/page_loader';
 import { debounce, orderBy, intersection, concat, uniq } from 'lodash-es';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
+import WatchRecords from '@/mixins/watch_records';
 
 export default 
 {
+  mixins: [WatchRecords],
   created() {
     this.onQueryInput = debounce(val => {
       this.$router.replace(this.mergeQuery({q: val}));
@@ -245,8 +247,8 @@ export default
 div.discussions-panel(v-if="group")
   v-layout.py-3(align-center wrap)
     v-menu
-      template(v-slot:activator="{ on, attrs }")
-        v-btn.mr-2.text-lowercase.discussions-panel__filters(v-on="on" v-bind="attrs" text)
+      template(v-slot:activator="{ props }")
+        v-btn.mr-2.text-lowercase.discussions-panel__filters(v-bind="props" text)
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           common-icon(name="mdi-menu-down")
       v-list
@@ -260,8 +262,8 @@ div.discussions-panel(v-if="group")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
 
     v-menu(offset-y)
-      template(v-slot:activator="{ on, attrs }")
-        v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
+      template(v-slot:activator="{ props }")
+        v-btn.mr-2.text-lowercase(v-bind="props" text)
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.tags'")
           common-icon(name="mdi-menu-down")

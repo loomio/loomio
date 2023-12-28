@@ -1,5 +1,4 @@
 import utils from './utils';
-import Vue from 'vue';
 import { isEqual } from 'date-fns';
 import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
 
@@ -57,9 +56,12 @@ export default class BaseModel {
     this.saveFailed = false;
     this.beforeSaves = [];
     this.setErrors();
-    Object.defineProperty(this, 'recordsInterface', {value: recordsInterface, enumerable: false});
-    Object.defineProperty(this, 'recordStore', {value: recordsInterface.recordStore, enumerable: false});
-    Object.defineProperty(this, 'remote', {value: recordsInterface.remote, enumerable: false});
+    this.recordStore = recordsInterface.recordStore
+    this.recordsInterface = recordsInterface
+    this.remote = recordsInterface.remote
+    // Object.defineProperty(this, 'recordsInterface', {value: recordsInterface, enumerable: false});
+    // Object.defineProperty(this, 'recordStore', {value: recordsInterface.recordStore, enumerable: false});
+    // Object.defineProperty(this, 'remote', {value: recordsInterface.remote, enumerable: false});
     if (this.relationships != null) { this.buildRelationships(); }
     this.update(this.defaultValues());
     this.update(attributes);
@@ -104,7 +106,7 @@ export default class BaseModel {
     this.attributeNames = union(this.attributeNames, keys(attributes));
     each(attributes, (value, key) => {
       this.unmodified[key] = value;
-      Vue.set(this, key, value);
+      this[key] = value
       return true;
     });
 
@@ -323,16 +325,17 @@ export default class BaseModel {
   }
 
   discardChanges() {
-    return this.attributeNames.forEach(key => {
-      return Vue.set(this, key, this.unmodified[key]);
+    this.attributeNames.forEach(key => {
+      this[key] = this.unmodified[key];
     });
   }
 
   setErrors(errorList) {
     if (errorList == null) { errorList = []; }
-    Vue.set(this, 'errors', {});
-    return each(errorList, (errors, key) => {
-      return Vue.set(this.errors, camelCase(key), errors);
+    this['errors'] = {};
+    each(errorList, (errors, key) => {
+      this.errors[camelCase(key)] = errors
+      return true
     });
   }
 

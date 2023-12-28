@@ -4,9 +4,11 @@ import Records         from '@/shared/services/records';
 import EventBus        from '@/shared/services/event_bus';
 import AbilityService  from '@/shared/services/ability_service';
 import Flash           from '@/shared/services/flash';
+import WatchRecords    from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [WatchRecords],
   props: {
     group: {
       required: true,

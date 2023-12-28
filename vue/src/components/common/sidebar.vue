@@ -8,10 +8,13 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import InboxService   from '@/shared/services/inbox_service';
 import PlausibleService from '@/shared/services/plausible_service';
 import Flash from '@/shared/services/flash';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 import { map, sum, compact } from 'lodash-es';
 
 export default {
+  mixins: [WatchRecords, UrlFor],
   data() {
     return {
       organization: null,
@@ -79,15 +82,15 @@ export default {
     },
 
     openIfPinned() {
-      this.open = !!Session.isSignedIn() && !!Session.user().experiences['sidebar'] && this.$vuetify.breakpoint.lgAndUp;
+      this.open = !!Session.isSignedIn() && !!Session.user().experiences['sidebar'] && this.$vuetify.display.lgAndUp;
     },
 
     fetchData() {
       Records.users.findOrFetchGroups().then(() => {
-        if ((this.$router.history.current.path === "/dashboard") && (Session.user().groups().length === 1)) {
+        if ((this.$router.path === "/dashboard") && (Session.user().groups().length === 1)) {
           this.$router.replace(`/g/${Session.user().groups()[0].key}`);
         }
-        if ((this.$router.history.current.path === "/dashboard") && (Session.user().groups().length === 0)) {
+        if ((this.$router.path === "/dashboard") && (Session.user().groups().length === 0)) {
           this.$router.replace("/g/new");
         }
       });
@@ -99,6 +102,12 @@ export default {
     },
 
     updateGroups() {
+      // console.log('AppConfig.currentUserId', AppConfig.currentUserId);
+      // console.log('AppConfig', AppConfig);
+      // console.log('session user id', Session.user().id);
+      // console.log('session user', Session.user())
+      // console.log('Records user', Records.users.find(1))
+      // console.log('this.$vuetify.display', this.$vuetify.display.xs)
       this.organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
       this.openCounts = {};
       this.closedCounts = {};
@@ -168,20 +177,19 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 
   v-list-group.sidebar__user-dropdown
     template(v-slot:activator)
-      v-list-item-icon.mr-2
-        user-avatar(:user="user")
-      v-list-item-content
+      v-list-item
+        template(v-slot:prepend)
+          user-avatar(:user="user")
         v-list-item-title {{user.name}}
         v-list-item-subtitle {{user.email}}
     user-dropdown
   template(v-if="needProfilePicture")
     v-divider
     v-list-item.sidebar__list-item-button--recent(@click="setProfilePicture" color="warning")
-      v-list-item-icon
+      template(v-slot:prepend)
         common-icon(name="mdi-emoticon-outline")
-      v-list-item-content
-        v-list-item-title(v-t="'profile_page.incomplete_profile'")
-        v-list-item-subtitle(v-t="'profile_page.set_your_profile_picture'")
+      v-list-item-title(v-t="'profile_page.incomplete_profile'")
+      v-list-item-subtitle(v-t="'profile_page.set_your_profile_picture'")
   v-divider
 
   v-list-item.sidebar__list-item-button--recent(dense to="/dashboard")
@@ -196,76 +204,70 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         span ({{unreadDirectThreadsCount}})
   v-list-item.sidebar__list-item-button--start-thread(dense to="/d/new")
     v-list-item-title(v-t="'sidebar.start_thread'")
-    v-list-item-icon
+    template(v-slot:append)
       common-icon(name="mdi-plus")
   v-list-item(dense to="/tasks" :disabled="organizations.length == 0")
     v-list-item-title(v-t="'tasks.tasks'")
   v-divider
 
-  v-list.sidebar__groups(dense)
+  v-list.sidebar__groups(density="compact")
     template(v-for="parentGroup in organizations")
       template(v-if="memberGroups(parentGroup).length")
         v-list-group(v-model="openGroups[parentGroup.id]" @click="goToGroup(parentGroup)")
           template(v-slot:activator)
-            v-list-item-avatar(aria-hidden="true")
-              group-avatar(:group="parentGroup")
-            v-list-item-content
+            v-list-item
+              template(v-slot:prepend)
+                group-avatar(:group="parentGroup")
               v-list-item-title
                 span {{parentGroup.name}}
                 template(v-if="closedCounts[parentGroup.id]")
                   | &nbsp;
                   span ({{closedCounts[parentGroup.id]}})
           v-list-item(:to="urlFor(parentGroup)+'?subgroups=none'")
-            v-list-item-content
-              v-list-item-title
-                span {{parentGroup.name}}
-                template(v-if='openCounts[parentGroup.id]')
-                  | &nbsp;
-                  span ({{openCounts[parentGroup.id]}})
-          v-list-item(v-for="group in memberGroups(parentGroup)", :key="group.id", :to="urlFor(group)")
-            v-list-item-content
-              v-list-item-title
-                span {{group.name}}
-                template(v-if='openCounts[group.id]')
-                  | &nbsp;
-                  span ({{openCounts[group.id]}})
-      template(v-else)
-        v-list-item(:to="urlFor(parentGroup)")
-          v-list-item-avatar
-            group-avatar(:group="parentGroup")
-          v-list-item-content
             v-list-item-title
               span {{parentGroup.name}}
               template(v-if='openCounts[parentGroup.id]')
                 | &nbsp;
                 span ({{openCounts[parentGroup.id]}})
+          v-list-item(v-for="group in memberGroups(parentGroup)", :key="group.id", :to="urlFor(group)")
+            v-list-item-title
+              span {{group.name}}
+              template(v-if='openCounts[group.id]')
+                | &nbsp;
+                span ({{openCounts[group.id]}})
+      template(v-else)
+        v-list-item(:to="urlFor(parentGroup)")
+          template(v-slot:prepend)
+            group-avatar(:group="parentGroup")
+          v-list-item-title
+            span {{parentGroup.name}}
+            template(v-if='openCounts[parentGroup.id]')
+              | &nbsp;
+              span ({{openCounts[parentGroup.id]}})
 
     v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroups" to="/g/new")
-      v-list-item-avatar
+      template(v-slot:prepend)
         common-icon(tile name="mdi-plus")
       v-list-item-title(v-t="'group_form.new_group'")
   v-divider
   v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" @click="startOrFindDemo" two-line dense)
-    v-list-item-content
-      v-list-item-title(v-t="'templates.start_a_demo'")
-      v-list-item-subtitle(v-t="'templates.play_with_an_example_group'")
-    v-list-item-icon
+    v-list-item-title(v-t="'templates.start_a_demo'")
+    v-list-item-subtitle(v-t="'templates.play_with_an_example_group'")
+    template(v-slot:append)
       common-icon(name="mdi-car-convertible")
   v-list-item(v-if="showHelp", :href="helpURL" target="_blank" dense two-line)
-    v-list-item-content
-      v-list-item-title(v-t="'sidebar.help_docs'")
-      v-list-item-subtitle(v-t="'sidebar.a_detailed_guide_to_loomio'")
-    v-list-item-icon
+    v-list-item-title(v-t="'sidebar.help_docs'")
+    v-list-item-subtitle(v-t="'sidebar.a_detailed_guide_to_loomio'")
+    template(v-slot:append)
       common-icon(name="mdi-book-open-page-variant")
   v-list-item(dense to="/explore" v-if="showExploreGroups")
     v-list-item-title(v-t="'sidebar.explore_groups'")
-    v-list-item-icon
+    template(v-slot:append)
       common-icon(name="mdi-map-search")
   v-list-item(v-if="showContact" @click="$router.replace('/contact')" dense two-line)
-    v-list-item-content
-      v-list-item-title(v-t="'user_dropdown.contact_support'")
-      v-list-item-subtitle(v-t="'sidebar.talk_to_the_loomio_team'")
-    v-list-item-icon
+    v-list-item-title(v-t="'user_dropdown.contact_support'")
+    v-list-item-subtitle(v-t="'sidebar.talk_to_the_loomio_team'")
+    template(v-slot:append)
       common-icon(name="mdi-face-agent")
 </template>
 <style lang="sass">

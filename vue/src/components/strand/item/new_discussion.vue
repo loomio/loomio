@@ -5,8 +5,10 @@ import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
 import StrandActionsPanel from '@/components/strand/actions_panel';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
   components: {
     StrandActionsPanel
   },
@@ -87,7 +89,7 @@ export default {
 </script>
 
 <template lang="pug">
-.strand-new-discussion.context-panel#context(v-observe-visibility="{callback: viewed, once: true}")
+.strand-new-discussion.context-panel#context(v-intersect.once="{handler: viewed}")
   v-layout.ml-n2(align-center wrap)
     v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
       template(v-slot:divider)

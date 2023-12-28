@@ -2,13 +2,13 @@
 import Session  from '@/shared/services/session';
 import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
-import Gravatar from 'vue-gravatar';
+// import Gravatar from 'vue-gravatar';
 import { capitalize } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Flash   from '@/shared/services/flash';
 
 export default {
-  components: { Gravatar },
+  // components: { Gravatar },
   data() {
     return {
       user: Session.user().clone(),

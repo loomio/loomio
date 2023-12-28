@@ -1,12 +1,7 @@
 {
-  "name": "vue",
+  "name": "loomio",
   "version": "0.1.0",
   "private": true,
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
   "scripts": {
     "serve": "vite",
     "build": "vite build",
@@ -52,7 +47,7 @@
     "@tiptap/extension-underline": "^2.1.13",
     "@tiptap/pm": "^2.1.13",
     "@tiptap/suggestion": "^2.1.13",
-    "@tiptap/vue-2": "^2.1.13",
+    "@tiptap/vue-3": "^2.1.13",
     "activestorage": "^5.2.8",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.0",
@@ -70,27 +65,23 @@
     "textarea-caret": "^3.1.0",
     "turndown": "^7.1.2",
     "turndown-plugin-gfm": "^1.0.2",
-    "vue": "^2.7.0",
-    "vue-gravatar": "^1.4.1",
-    "vue-i18n": "8.28.2",
-    "vue-observe-visibility": "^1.0.0",
-    "vue-recaptcha": "^1.2.0",
-    "vue-router": "^3.6.5",
-    "vue-slicksort": "^1.2.0",
-    "vue2-touch-events": "^3.2.3",
+    "vue": "^3.3.13",
+    "vue-slicksort": "latest",
+    "vue-i18n": "latest",
+    "vue-router": "latest",
     "@mdi/js": "^6.9.96",
-    "vuetify": "2.6.15"
+    "vuetify": "latest",
+    "tiny-emitter": "latest"
   },
   "devDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "latest",
-    "@modyfi/vite-plugin-yaml": "latest",
-    "@originjs/vite-plugin-commonjs": "latest",
+    "@originjs/vite-plugin-content": "latest",
     "nightwatch": "^3.3.3",
     "pug": "latest",
     "sass": "latest",
-    "unplugin-vue-components": "latest",
     "vite": "^5.0.6",
+    "unplugin-vue-components": "latest",
     "vite-plugin-env-compatible": "latest",
-    "@vitejs/plugin-vue2": "latest"
+    "@vitejs/plugin-vue": "latest",
+    "vite-plugin-vuetify": "^1.0.0"
   }
 }

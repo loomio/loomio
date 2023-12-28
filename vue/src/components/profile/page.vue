@@ -119,7 +119,7 @@ v-main
         v-card-text
           v-layout
             v-flex.profile-page__details
-              v-layout(:column="$vuetify.breakpoint.xs")
+              v-layout(:column="$vuetify.display.xs")
                 v-flex
                   v-text-field.profile-page__name-input(:label="$t('profile_page.name_label')" required v-model="user.name")
                   validation-errors(:subject='user', field='name')

@@ -219,7 +219,7 @@ v-card.group-form
           validation-errors(:subject="group" field="groupPrivacy")
         p.group-form__privacy-statement.text--secondary {{privacyStatement}}
         .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
-          v-subheader(v-t="'group_form.how_do_people_join'")
+          v-list-subheader(v-t="'group_form.how_do_people_join'")
           v-radio-group(v-model='group.membershipGrantedUpon')
             v-radio(
               v-for="granted in ['request', 'approval', 'invitation']"
@@ -234,19 +234,19 @@ v-card.group-form
       .mt-8.px-4.group-form__section.group-form__permissions
         p.group-form__privacy-statement.text--secondary(v-t="'group_form.permissions_explaination'")
         //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='group.privacyIsClosed() && !group.isSubgroupOfSecretParent()')
-        v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group["parentMembersCanSeeDiscussions"]' v-if='group.parentId && group.privacyIsClosed()')
+        v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group.parentMembersCanSeeDiscussions' v-if='group.parentId && group.privacyIsClosed()')
           template(v-slot:label)
             div
               span(v-t="{path: 'group_form.parent_members_can_see_discussions', args: {parent: group.parent().name}}")
               br
               span.text-caption(v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: group.parent().name}}")
-        v-checkbox.group-form__members-can-add-members(hide-details v-model='group["membersCanAddMembers"]')
+        v-checkbox.group-form__members-can-add-members(hide-details v-model='group.membersCanAddMembers')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_add_members'")
               br
               span.text-caption(v-t="'group_form.members_can_add_members_help'")
-        v-checkbox.group-form__members-can-add-guests(hide-details v-model='group["membersCanAddGuests"]')
+        v-checkbox.group-form__members-can-add-guests(hide-details v-model='group.membersCanAddGuests')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_add_guests'")
@@ -254,7 +254,7 @@ v-card.group-form
               span.text-caption(v-t="'group_form.members_can_add_guests_help'")
         v-checkbox.group-form__members-can-announce(
           :label="$t('group_form.members_can_announce')"
-          v-model='group["membersCanAnnounce"]'
+          v-model='group.membersCanAnnounce'
           hide-details
         )
           template(v-slot:label)
@@ -262,43 +262,43 @@ v-card.group-form
               span(v-t="'group_form.members_can_announce'")
               br
               span.text-caption(v-t="'group_form.members_can_announce_help'")
-        v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='group["membersCanCreateSubgroups"]' v-if='group.isParent()')
+        v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='group.membersCanCreateSubgroups' v-if='group.isParent()')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_create_subgroups'")
               br
               span.text-caption(v-t="'group_form.members_can_create_subgroups_help'")
-        v-checkbox.group-form__members-can-start-discussions(hide-details v-model='group["membersCanStartDiscussions"]')
+        v-checkbox.group-form__members-can-start-discussions(hide-details v-model='group.membersCanStartDiscussions')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_start_discussions'")
               br
               span.text-caption(v-t="'group_form.members_can_start_discussions_help'")
-        v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='group["membersCanEditDiscussions"]')
+        v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='group.membersCanEditDiscussions')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_edit_discussions'")
               br
               span.text-caption(v-t="'group_form.members_can_edit_discussions_help'")
-        v-checkbox.group-form__members-can-edit-comments(hide-details v-model='group["membersCanEditComments"]')
+        v-checkbox.group-form__members-can-edit-comments(hide-details v-model='group.membersCanEditComments')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_edit_comments'")
               br
               span.text-caption(v-t="'group_form.members_can_edit_comments_help'")
-        v-checkbox.group-form__members-can-delete-comments(hide-details v-model='group["membersCanDeleteComments"]')
+        v-checkbox.group-form__members-can-delete-comments(hide-details v-model='group.membersCanDeleteComments')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_delete_comments'")
               br
               span.text-caption(v-t="'group_form.members_can_delete_comments_help'")
-        v-checkbox.group-form__members-can-raise-motions(hide-details v-model='group["membersCanRaiseMotions"]')
+        v-checkbox.group-form__members-can-raise-motions(hide-details v-model='group.membersCanRaiseMotions')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_raise_motions'")
               br
               span.text-caption(v-t="'group_form.members_can_raise_motions_help'")
-        v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='group["adminsCanEditUserContent"]')
+        v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='group.adminsCanEditUserContent')
           template(v-slot:label)
             div
               span(v-t="'group_form.admins_can_edit_user_content'")

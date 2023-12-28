@@ -44,7 +44,7 @@ import {Video} from './extension_image';
 import {Audio} from './extension_image';
 import {Iframe} from './extension_iframe';
 
-import { Editor, EditorContent, VueRenderer } from '@tiptap/vue-2';
+import { Editor, EditorContent } from '@tiptap/vue-3';
 
 import {getEmbedLink} from '@/shared/helpers/embed_link';
 

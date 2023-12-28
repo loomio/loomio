@@ -1,5 +1,5 @@
 <script lang="js">
-import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-2';
+import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-3';
 // import { isArray } from 'lodash-es';
 export default
 {

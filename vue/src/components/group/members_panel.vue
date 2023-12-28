@@ -236,7 +236,7 @@ export default
                 span
                 span.text--secondary
                   space
-                  span(v-if="membership.acceptedAt && membership.userEmail") <{{membership.userEmail}}>
+                  span(v-if="membership.acceptedAt && membership.userEmail") &lt;{{membership.userEmail}}&gt;
                   span(v-else) {{membership.userEmail}}
                 space
                 span.text-caption(v-if="$route.query.subgroups") {{membership.group().name}}

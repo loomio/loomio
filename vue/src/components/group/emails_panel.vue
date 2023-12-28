@@ -105,7 +105,7 @@ export default
       v-list-item(v-for="email in emails" :key="email.id")
         v-list-item-content
           v-list-item-title
-            span {{email.senderName}} <{{email.senderEmail}}>
+            span {{email.senderName}} &lt;{{email.senderEmail}}&gt;
           v-list-item-subtitle {{email.subject}}
 
         v-list-item-action

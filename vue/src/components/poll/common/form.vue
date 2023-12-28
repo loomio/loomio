@@ -8,12 +8,12 @@ import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import { addMinutes, intervalToDuration, formatDuration, addHours, isAfter, startOfHour, setHours } from 'date-fns';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
-import { HandleDirective } from 'vue-slicksort';
+// import { HandleDirective } from 'vue-slicksort';
 import I18n from '@/i18n';
 
 export default {
   components: { PollTemplateInfoPanel },
-  directives: { handle: HandleDirective },
+  // directives: { handle: HandleDirective },
 
   props: {
     poll: Object,
@@ -310,7 +310,7 @@ export default {
 
   template(v-if="hasOptions")
     .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
-    v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
+    v-list-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
     sortable-list(
       v-model="pollOptions" 
       append-to=".app-is-booted" 

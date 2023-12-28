@@ -36,8 +36,8 @@ export default {
 
 <template lang="pug">
 v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
-  template(v-slot:activator="{on, attrs}")
-    v-btn.emoji-picker__toggle.action-button(icon :small="small" v-on="on" v-bind="attrs" )
+  template(v-slot:activator="{ props }")
+    v-btn.emoji-picker__toggle.action-button(icon :small="small" v-bind="props" )
       common-icon(:small="small" name="mdi-emoticon-outline")
   emoji-picker(:insert="insert" :is-poll="model.isA('poll') || model.isA('stance') || model.isA('outcome')")
 </template>

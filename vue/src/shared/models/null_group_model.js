@@ -1,5 +1,4 @@
 import {each} from 'lodash-es';
-import Vue from 'vue';
 import I18n from '@/i18n';
 
 export default class NullGroupModel {
@@ -37,7 +36,7 @@ export default class NullGroupModel {
     };
 
     each(defaults, (value, key) => {
-      Vue.set(this, key, value);
+      this[key] = value;
       return true;
     });
   }

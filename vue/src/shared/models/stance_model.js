@@ -2,7 +2,7 @@ import BaseModel       from '@/shared/record_store/base_model';
 import AppConfig       from '@/shared/services/app_config';
 import HasTranslations from '@/shared/mixins/has_translations';
 import AnonymousUserModel   from '@/shared/models/anonymous_user_model';
-import i18n from '@/i18n';
+import I18n from '@/i18n';
 import { sumBy, map, head, compact, flatten, includes, sortBy } from 'lodash-es';
 
 const stancesBecameUpdatable = new Date("2020-08-11");

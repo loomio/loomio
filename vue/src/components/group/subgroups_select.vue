@@ -39,7 +39,7 @@ v-menu
   v-list
     v-list-item(v-for="link in parentLinks" :to="link.path" v-t="{path: link.name, args: {name: parentName}}")
     v-divider
-    v-subheader(v-t="'group_page.subgroups'")
+    v-list-subheader(v-t="'group_page.subgroups'")
     v-list-item(v-for="link in subgroupLinks" :to="link.path" v-t="link.name")
 
 </template>

@@ -104,7 +104,7 @@ export default {
 
         v-list.append-sort-here(two-line)
           .d-flex
-            v-subheader(v-if="!showSettings" v-t="'templates.templates'")
+            v-list-subheader(v-if="!showSettings" v-t="'templates.templates'")
             v-spacer
             div.mr-3(v-if="userIsAdmin")
               v-menu(v-if="!showSettings" offset-y)

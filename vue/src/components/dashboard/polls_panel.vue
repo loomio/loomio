@@ -7,9 +7,11 @@ import EventBus       from '@/shared/services/event_bus';
 import Session       from '@/shared/services/session';
 import { escapeRegExp, reject, filter } from 'lodash-es';
 import { subDays } from 'date-fns';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [WatchRecords],
   data() {
     return {
       votePolls: [],
@@ -66,7 +68,7 @@ export default
   v-card.mb-2
     v-list(two-line avatar)
       template
-        v-subheader(v-t="'dashboard_page.polls_to_vote_on'")
+        v-list-subheader(v-t="'dashboard_page.polls_to_vote_on'")
         poll-common-preview(
           v-if="votePolls.length",
           :poll="poll",
@@ -78,9 +80,9 @@ export default
           v-t="'dashboard_page.no_polls_to_vote_on'"
         )
       template(v-if="otherPolls.length")
-        v-subheader(v-t="'dashboard_page.recent_polls'")
+        v-list-subheader(v-t="'dashboard_page.recent_polls'")
         poll-common-preview(:poll='poll' v-for='poll in otherPolls' :key='poll.id')
       template(v-if='!votePolls.length && !otherPolls.length && loader.loading')
-        v-subheader(v-t="'group_page.polls'")
+        v-list-subheader(v-t="'group_page.polls'")
         loading-content(:lineCount='2' v-for='(item, index) in [1]' :key='index' )
 </template>

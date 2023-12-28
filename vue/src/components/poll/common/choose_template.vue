@@ -188,7 +188,7 @@ export default {
           v-list-item-subtitle(v-t="'poll_common.create_a_custom_process'")
 
       v-checkbox.pl-4(v-model="singleList" :label="$t('poll_common.show_all_templates_in_one_list')")
-      v-subheader(v-if="pollTemplates.length" v-t="'poll_common.hidden_poll_templates'")
+      v-list-subheader(v-if="pollTemplates.length" v-t="'poll_common.hidden_poll_templates'")
 
     template(v-if="isSorting")
       sortable-list(v-model="pollTemplates"  @sort-end="sortEnded" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
