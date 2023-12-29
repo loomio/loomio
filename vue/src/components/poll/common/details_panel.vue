@@ -1,11 +1,10 @@
 <script lang="js">
 
-export default
-  ({
-    props: {
-      poll: Object
-    }
-  });
+export default {
+  props: {
+    poll: Object
+  }
+};
 </script>
 
 <template lang="pug">

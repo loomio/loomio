@@ -65,7 +65,7 @@
     "textarea-caret": "^3.1.0",
     "turndown": "^7.1.2",
     "turndown-plugin-gfm": "^1.0.2",
-    "vue": "^3.3.13",
+    "vue": "^3.4.0",
     "vue-slicksort": "latest",
     "vue-i18n": "latest",
     "vue-router": "latest",
@@ -78,10 +78,10 @@
     "nightwatch": "^3.3.3",
     "pug": "latest",
     "sass": "latest",
-    "vite": "^5.0.6",
+    "vite": "^5.0.10",
     "unplugin-vue-components": "latest",
     "vite-plugin-env-compatible": "latest",
-    "@vitejs/plugin-vue": "latest",
-    "vite-plugin-vuetify": "^1.0.0"
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vite-plugin-vuetify": "latest"
   }
 }

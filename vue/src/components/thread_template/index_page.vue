@@ -6,8 +6,12 @@ import EventBus      from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import DiscussionTemplateService from '@/shared/services/discussion_template_service';
 import { compact } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [WatchRecords, UrlFor],
+
   data() {
     return {
       templates: [],
@@ -108,8 +112,8 @@ export default {
             v-spacer
             div.mr-3(v-if="userIsAdmin")
               v-menu(v-if="!showSettings" offset-y)
-                template(v-slot:activator="{on, attrs}")
-                  v-btn(icon v-bind="attrs" v-on="on" :title="$t('common.admin_menu')")
+                template(v-slot:activator="{props}")
+                  v-btn(icon v-bind="props" :title="$t('common.admin_menu')")
                     common-icon(name="mdi-cog")
                 v-list
                   v-list-item(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
@@ -121,11 +125,11 @@ export default {
             sortable-list(v-model="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")
               sortable-item(v-for="(template, index) in templates" :index="index" :key="template.id || template.key")
                 v-list-item(:key="template.id")
-                  v-list-item-content
-                    v-list-item-title {{template.processName || template.title}}
-                    v-list-item-subtitle {{template.processSubtitle}}
-                  v-list-item-action.handle(style="cursor: grab")
-                    common-icon(name="mdi-drag-vertical")
+                  v-list-item-title {{template.processName || template.title}}
+                  v-list-item-subtitle {{template.processSubtitle}}
+                  template(v-slot:append)
+                    div.handle(style="cursor: grab")
+                      common-icon(name="mdi-drag-vertical")
 
           template(v-if="!isSorting")
             v-list-item.thread-templates--template(
@@ -133,11 +137,10 @@ export default {
               :key="template.id"
               :to="'/d/new?' + (template.id ? 'template_id='+template.id : 'template_key='+template.key)+ '&group_id='+ $route.query.group_id + '&return_to='+returnTo"
             )
-              v-list-item-content
-                v-list-item-title {{template.processName || template.title}}
-                v-list-item-subtitle {{template.processSubtitle}}
-              v-list-item-action
-                action-menu(:actions='actions[i]' small icon :name="$t('action_dock.more_actions')")
+              v-list-item-title {{template.processName || template.title}}
+              v-list-item-subtitle {{template.processSubtitle}}
+              template(v-slot:append)
+                action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
 
       .d-flex.justify-center.my-2(v-if="!showSettings && userIsAdmin")
         v-btn(:to="'/thread_templates/browse?group_id=' + $route.query.group_id + '&return_to='+returnTo")

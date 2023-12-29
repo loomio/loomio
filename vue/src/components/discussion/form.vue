@@ -10,8 +10,11 @@ import Flash   from '@/shared/services/flash';
 import I18n from '@/i18n';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
+import FormatDate from '@/mixins/format_date';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords, FormatDate],
   components: {RecipientsAutocomplete, ThreadTemplateHelpPanel},
 
   props: {
@@ -109,9 +112,9 @@ export default {
   computed: {
     titlePlaceholder() {
       if (this.discussionTemplate && this.discussionTemplate.titlePlaceholder) {
-        return I18n.t('common.prefix_eg', {val: this.discussionTemplate.titlePlaceholder});
+        return I18n.global.t('common.prefix_eg', {val: this.discussionTemplate.titlePlaceholder});
       } else {
-        return I18n.t('discussion_form.title_placeholder');
+        return I18n.global.t('discussion_form.title_placeholder');
       }
     },
 
@@ -150,7 +153,7 @@ export default {
 .discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='discussion.processing')
   v-card-title
-    h1.text-h4(v-observe-visibility="{callback: titleVisible}")
+    h1.text-h4(v-intersect="{handler: titleVisible}")
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
         //- span(v-if="discussionTemplate && !discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: discussionTemplate.processName}}")

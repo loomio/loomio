@@ -33,7 +33,8 @@ export default {
 <template lang="pug">
 div
   label.text-caption.v-label.v-label--active(style="color: var(--text-secondary)" aria-hidden="true") {{label}}
-  .lmo-textarea.pb-1
+  p textarea
+  //- .lmo-textarea.pb-1
     collab-editor(
       v-if="format == 'html'"
       :focus-id="focusId"

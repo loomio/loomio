@@ -5,7 +5,6 @@ import EventBus from '@/shared/services/event_bus';
 import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 
-import Vue     from 'vue';
 import { map, sortBy, head } from 'lodash-es';
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns';
 import { exact} from '@/shared/helpers/format_time';
@@ -53,7 +52,7 @@ export default {
       this.bestOption = head(sortBy(this.options, option => -1 * option.attendees)
       ); // sort descending, so the best option is first
 
-      Vue.set(this.outcome, 'calendarInvite', true);
+      this.outcome['calendarInvite'] = true;
 
       this.outcome.pollOptionId = this.outcome.pollOptionId || this.bestOption.id;
       this.outcome.eventSummary = this.outcome.eventSummary || this.outcome.poll().title;
