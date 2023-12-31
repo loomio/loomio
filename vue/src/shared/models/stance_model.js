@@ -112,7 +112,7 @@ export default class StanceModel extends BaseModel {
 
   sortedChoices() {
     const optionsById = {};
-    this.pollOptions().forEach(o => optionsById[o.id] = o);
+    this.poll().pollOptions().forEach(o => optionsById[o.id] = o);
     const poll = this.poll();
 
     let choices = map(this.optionScores, (score, pollOptionId) => {
@@ -122,7 +122,7 @@ export default class StanceModel extends BaseModel {
         show: (score > 0) || (poll.pollType === "score"),
         pollOption: optionsById[pollOptionId]
       };
-  });
+    });
 
     choices = choices.filter(c => c.pollOption);
 

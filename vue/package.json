@@ -8,9 +8,9 @@
     "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {
-    "@sentry/browser": "^7.86.0",
-    "@sentry/tracing": "^7.86.0",
-    "@sentry/vue": "^7.86.0",
+    "@sentry/browser": "^7.91.0",
+    "@sentry/tracing": "^7.91.0",
+    "@sentry/vue": "^7.91.0",
     "@tiptap/core": "^2.1.13",
     "@tiptap/extension-blockquote": "^2.1.13",
     "@tiptap/extension-bold": "^2.1.13",
@@ -68,18 +68,21 @@
     "vue": "^3.4.0",
     "vue-slicksort": "latest",
     "vue-i18n": "latest",
-    "vue-router": "latest",
+    "vue-router": "^4.2.5",
     "@mdi/js": "^6.9.96",
     "vuetify": "latest",
     "tiny-emitter": "latest"
   },
   "devDependencies": {
     "@originjs/vite-plugin-content": "latest",
-    "nightwatch": "^3.3.3",
+    "@rollup/rollup-linux-x64-gnu": "latest",
+    "@originjs/vite-plugin-commonjs": "latest",
+    "nightwatch": "^3.3.7",
     "pug": "latest",
     "sass": "latest",
     "vite": "^5.0.10",
     "unplugin-vue-components": "latest",
+    "vite": "^5.0.10",
     "vite-plugin-env-compatible": "latest",
     "@vitejs/plugin-vue": "^5.0.0",
     "vite-plugin-vuetify": "latest"
