@@ -53,8 +53,6 @@ export default {
       this.bestOption = head(sortBy(this.options, option => -1 * option.attendees)
       ); // sort descending, so the best option is first
 
-      Vue.set(this.outcome, 'calendarInvite', true);
-
       this.outcome.pollOptionId = this.outcome.pollOptionId || this.bestOption.id;
       this.outcome.eventSummary = this.outcome.eventSummary || this.outcome.poll().title;
     }
@@ -68,7 +66,7 @@ export default {
     submit() {
       let actionName;
       if (this.poll.datesAsOptions()) { this.outcome.eventDescription = this.outcome.statement; }
-      if (this.outcome.calendarInvite) { this.outcome.includeActor = 1; }
+      if (this.poll.pollType == 'meeting') { this.outcome.includeActor = 1; }
 
       if (this.outcome.isNew()) {
         actionName = "created";
@@ -84,7 +82,7 @@ export default {
 
     newRecipients(val) {
       this.recipients = val;
-      this.outcome.recipientAudience = (val.find(i => i.type==='audience') || {}).id;
+      this.outcome.recipientAudience = (val.find(i => i.type === 'audience') || {}).id;
       this.outcome.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
       this.outcome.recipientEmails = map(filter(val, o => o.type === 'email'), 'name');
     }
@@ -107,7 +105,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
-      :include-actor="outcome.calendarInvite"
+      :include-actor="outcome.poll().pollType == 'meeting'"
       :model="outcome")
 
     .poll-common-calendar-invite(v-if='poll.datesAsOptions()')
