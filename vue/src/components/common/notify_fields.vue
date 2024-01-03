@@ -9,7 +9,7 @@ export default {
 
   props: {
     model: Object,
-
+    includeActor: Boolean,
     initialRecipients: {
       type: Array,
       default() { return []; }

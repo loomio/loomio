@@ -526,7 +526,7 @@ export default {
         :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
       )
 
-  common-notify-fields(v-if="poll.id" :model="poll")
+  common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 
   v-card-actions.poll-common-form-actions
     help-link(path='en/user_manual/polls/intro_to_decisions')
