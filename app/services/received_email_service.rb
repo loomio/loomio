@@ -75,8 +75,7 @@ class ReceivedEmailService
   end
 
   def self.delete_old_emails
-    ReceivedEmail.released.where("created_at < ?", 7.days.ago).destroy_all
-    ReceivedEmail.unreleased.where("created_at < ?", 60.days.ago).destroy_all
+    ReceivedEmail.where("created_at < ?", 60.days.ago).destroy_all
   end
 
   private
