@@ -134,7 +134,7 @@ div
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
       p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
-      v-simple-table(v-else :items="items" hide-default-footer)
+      v-table(v-else :items="items" hide-default-footer)
         thead
           tr
             th(v-t="'group_files_panel.filename'")

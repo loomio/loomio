@@ -53,7 +53,7 @@ export default {
 
 <template lang="pug">
 .poll-common-chart-table
-  v-simple-table(dense)
+  v-table(dense)
     thead
       tr
         template(v-for="col in poll.resultColumns")
