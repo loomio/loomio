@@ -1,4 +1,4 @@
-FROM ruby:3.2.2-slim as base
+FROM ruby:3.3.0-slim as base
 
 ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 ENV MALLOC_ARENA_MAX=2
