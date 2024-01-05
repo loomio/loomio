@@ -8,6 +8,7 @@ ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT=development
 ENV NODE_OPTIONS=--openssl-legacy-provider
 ENV NODE_MAJOR=20
+ENV RUBY_YJIT_ENABLE=1
 
 WORKDIR /loomio
 
