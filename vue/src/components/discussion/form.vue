@@ -12,9 +12,10 @@ import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
 import FormatDate from '@/mixins/format_date';
 import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default {
-  mixins: [WatchRecords, FormatDate],
+  mixins: [WatchRecords, FormatDate, UrlFor],
   components: {RecipientsAutocomplete, ThreadTemplateHelpPanel},
 
   props: {
@@ -152,7 +153,7 @@ export default {
 <template lang="pug">
 .discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='discussion.processing')
-  v-card-title
+  v-card-title.d-flex
     h1.text-h4(v-intersect="{handler: titleVisible}")
       span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
       template(v-else)
@@ -167,6 +168,7 @@ export default {
     v-btn(
       v-if="isPage && discussion.id"
       icon
+      variant="text"
       aria-hidden='true'
       :to="urlFor(discussion)"
     )

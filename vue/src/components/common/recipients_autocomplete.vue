@@ -339,22 +339,21 @@ div.recipients-autocomplete
     )
     template(v-slot:no-data)
       v-list-item
-        v-list-item-icon
+        template(v-slot:prepend)
           common-icon(v-if="!query" name="mdi-account-search")
           common-icon(v-if="query" name="mdi-information-outline")
-        v-list-item-content
-          v-list-item-title
-            span(v-if="query" v-t="'common.no_results_found'")
-            span(v-else)
-              span(v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'")
-              span(v-if="!canAddGuests" v-t="'announcement.search_by_name'")
-          v-list-item-subtitle
-            span(v-if="!canAddGuests && !canNotifyGroup"
-                 v-t="'announcement.only_admins_can_announce_or_invite'")
-            span(v-if="!canAddGuests && canNotifyGroup"
-                 v-t="'announcement.only_admins_can_invite'")
-            span(v-if="canAddGuests && !canNotifyGroup"
-                 v-t="'announcement.only_admins_can_announce'")
+        v-list-item-title
+          span(v-if="query" v-t="'common.no_results_found'")
+          span(v-else)
+            span(v-if="canAddGuests" v-t="'announcement.search_by_name_or_email'")
+            span(v-if="!canAddGuests" v-t="'announcement.search_by_name'")
+        v-list-item-subtitle
+          span(v-if="!canAddGuests && !canNotifyGroup"
+               v-t="'announcement.only_admins_can_announce_or_invite'")
+          span(v-if="!canAddGuests && canNotifyGroup"
+               v-t="'announcement.only_admins_can_invite'")
+          span(v-if="canAddGuests && !canNotifyGroup"
+               v-t="'announcement.only_admins_can_announce'")
     template(v-slot:selection='data')
       v-chip.chip--select-multi(
         v-if="data.item.type =='audience'"
@@ -384,11 +383,11 @@ div.recipients-autocomplete
           space
           span ({{ $t('common.you') }})
     template(v-slot:item='data')
-      v-list-item-avatar
-        user-avatar(v-if="data.item.type == 'user'", :user="data.item.user", :size="24" no-link)
-        common-icon.mr-1(v-else small name="data.item.icon")
-      v-list-item-content.announcement-chip__content
-        v-list-item-title
+      v-list-item
+        template(v-slot:prepend)
+          user-avatar(v-if="data.item.type == 'user'", :user="data.item.user", :size="24" no-link)
+          common-icon.mr-1(v-else small name="data.item.icon")
+        v-list-item-title.announcement-chip__content
           span {{data.item.name}}
           span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
             space
