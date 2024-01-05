@@ -5,8 +5,10 @@ import EventBus     from '@/shared/services/event_bus';
 import { parseISO } from 'date-fns';
 import { debounce } from 'lodash-es';
 import I18n from '@/i18n';
+import FormatDate from '@/mixins/format_date';
 
 export default {
+  mixins: [FormatDate],
   props: {
     poll: Object
   },

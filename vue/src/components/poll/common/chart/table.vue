@@ -84,8 +84,8 @@ export default {
           td(v-if="col == 'name' " :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
             template(v-if="option.id && optionMeaning(option.id)")
               v-tooltip(right)
-                template(v-slot:activator="{ on, attrs }")
-                  span(v-bind="attrs" v-on="on")
+                template(v-slot:activator="{ props }")
+                  span(v-bind="props")
                     span(v-if="option.name_format == 'plain'") {{option.name}}
                     span(v-if="option.name_format == 'i18n'" v-t="option.name")
                 span {{optionMeaning(option.id)}}

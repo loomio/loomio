@@ -6,9 +6,12 @@ import PollCommonDirective from '@/components/poll/common/directive';
 import PollTemplateBanner from '@/components/poll/template_banner';
 import PollService from '@/shared/services/poll_service';
 import { pickBy } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
+import FormatDate from '@/mixins/format_date';
 
 export default
 {
+  mixins: [WatchRecords, FormatDate],
   components: { PollCommonDirective, PollTemplateBanner},
 
   props: {
@@ -65,7 +68,7 @@ v-sheet
       .text--secondary(v-t="'poll_common_card.deleted'")
   div.px-2.pb-4.px-sm-4(v-else)
     poll-template-banner(:poll="poll")
-    h1.poll-common-card__title.text-h4.py-2(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
+    h1.poll-common-card__title.text-h4.py-2(tabindex="-1" v-intersect="{handler: titleVisible}")
       poll-common-type-icon.mr-2(:poll="poll")
       span(v-if='!poll.translation.title') {{poll.title}}
       translation(:model='poll' field='title' v-if="poll.translation.title")
