@@ -8,6 +8,7 @@ import { intersection, debounce, map } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
 import { mdiMagnify } from '@mdi/js';
+import I18n from '@/i18n';
 
 export default
 {
@@ -19,10 +20,10 @@ export default
       per: 25,
       order: 'created_at desc',
       orders: [
-        {text: this.$t('members_panel.order_by_name'),  value:'users.name' },
-        {text: this.$t('members_panel.order_by_created'), value:'memberships.created_at' },
-        {text: this.$t('members_panel.order_by_created_desc'), value:'memberships.created_at desc' },
-        {text: this.$t('members_panel.order_by_admin_desc'), value:'admin desc' }
+        {text: I18n.global.t('members_panel.order_by_name'),  value:'users.name' },
+        {text: I18n.global.t('members_panel.order_by_created'), value:'memberships.created_at' },
+        {text: I18n.global.t('members_panel.order_by_created_desc'), value:'memberships.created_at desc' },
+        {text: I18n.global.t('members_panel.order_by_admin_desc'), value:'admin desc' }
       ],
       memberships: []
     };
@@ -42,7 +43,7 @@ export default
         title: this.group.name,
         group: this.group,
         search: {
-          placeholder: this.$t('navbar.search_members', {name: this.group.parentOrSelf().name})
+          placeholder: I18n.global.t('navbar.search_members', {name: this.group.parentOrSelf().name})
         }
       }
       );

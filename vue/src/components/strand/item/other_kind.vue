@@ -1,6 +1,7 @@
 <script lang="js">
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
 import Records        from '@/shared/services/records';
+import I18n from '@/i18n';
 
 export default {
   props: {
@@ -11,12 +12,12 @@ export default {
   computed: {
     headline() {
       const actor = this.event.actor();
-      return this.$t(eventHeadline(this.event, true ), { // useNesting
+      return I18n.global.t(eventHeadline(this.event, true ), { // useNesting
         author:   actor.nameWithTitle(this.eventable.group()),
         username: actor.username,
         key:      this.event.model().key,
         title:    eventTitle(this.event),
-        polltype: this.$t(eventPollType(this.event)).toLowerCase()
+        polltype: I18n.global.t(eventPollType(this.event)).toLowerCase()
       });
     }
   }

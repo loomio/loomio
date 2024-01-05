@@ -7,6 +7,7 @@ import EventBus   from '@/shared/services/event_bus';
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
 import { isEmpty, debounce } from 'lodash-es';
+import I18n from '@/i18n';
 
 export default
 {
@@ -80,7 +81,7 @@ export default
     },
 
     privacyStringFor(privacy) {
-      return this.$t(groupPrivacy(this.group, privacy),
+      return I18n.global.t(groupPrivacy(this.group, privacy),
         {parent: this.group.parentName()});
     },
 
@@ -133,7 +134,7 @@ export default
     },
 
     privacyStatement() {
-      return this.$t(groupPrivacyStatement(this.group),
+      return I18n.global.t(groupPrivacyStatement(this.group),
         {parent: this.group.parentName()});
     },
 

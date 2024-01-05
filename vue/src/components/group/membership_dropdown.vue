@@ -5,6 +5,7 @@ import AbilityService from '@/shared/services/ability_service';
 import FlashService   from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { snakeCase } from 'lodash-es';
+import I18n from '@/i18n';
 
 export default
 {
@@ -64,12 +65,12 @@ export default
       const namespace = this.membership.acceptedAt ? 'membership' : 'invitation';
 
       const messages = [];
-      messages.push(this.$t(`membership_remove_modal.${namespace}.message`, { name: this.membership.user().name }));
+      messages.push(I18n.global.t(`membership_remove_modal.${namespace}.message`, { name: this.membership.user().name }));
 
       if (this.membership.group().parentId) {
-        messages.push(this.$t("membership_remove_modal.membership.impact_for_subgroup"));
+        messages.push(I18n.global.t("membership_remove_modal.membership.impact_for_subgroup"));
       } else {
-        messages.push(this.$t("membership_remove_modal.membership.impact_for_group"));
+        messages.push(I18n.global.t("membership_remove_modal.membership.impact_for_group"));
       }
 
       EventBus.$emit('openModal', {
@@ -99,7 +100,7 @@ export default
 
     toggleAdmin(membership) {
       const method = this.membership.admin ? 'removeAdmin' : 'makeAdmin';
-      if (this.membership.admin && (this.membership.user() === Session.user()) && !confirm(this.$t('memberships_page.remove_admin_from_self.question'))) { return; }
+      if (this.membership.admin && (this.membership.user() === Session.user()) && !confirm(I18n.global.t('memberships_page.remove_admin_from_self.question'))) { return; }
       Records.memberships[method](this.membership).then(() => {
         FlashService.success(`memberships_page.messages.${snakeCase(method)}_success`, {name: (this.membership.userName() || this.membership.userEmail)});
       });

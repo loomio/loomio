@@ -1,5 +1,6 @@
 <script lang="js">
 import { groupPrivacy } from '@/shared/helpers/helptext';
+import I18n from '@/i18n';
 
 export default
 {
@@ -7,7 +8,7 @@ export default
     group: Object
   },
   computed: {
-    privacyDescription() { return this.$t(groupPrivacy(this.group)); },
+    privacyDescription() { return I18n.global.t(groupPrivacy(this.group)); },
     iconClass() {
       switch (this.group.groupPrivacy) {
         case 'open':   return 'mdi-earth';

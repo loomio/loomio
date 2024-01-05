@@ -6,6 +6,7 @@ import UrlFor    from '@/mixins/url_for';
 import {truncate, map} from 'lodash-es';
 import {marked}    from 'marked';
 import {mdiMagnify} from '@mdi/js';
+import I18n from '@/i18n';
 
 import { debounce, camelCase, orderBy } from 'lodash-es';
 
@@ -22,8 +23,8 @@ export default {
       searching: true,
       order: null,
       orderOptions: [
-        {name: this.$t('explore_page.newest_first'), val: "created_at"},
-        {name: this.$t('explore_page.biggest_first'), val: "memberships_count"}
+        {name: I18n.global.t('explore_page.newest_first'), val: "created_at"},
+        {name: I18n.global.t('explore_page.biggest_first'), val: "memberships_count"}
       ]
     };
   },

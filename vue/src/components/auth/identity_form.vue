@@ -2,6 +2,7 @@
 import EventBus    from '@/shared/services/event_bus';
 import AuthService from '@/shared/services/auth_service';
 import AppConfig from '@/shared/services/app_config';
+import I18n from '@/i18n';
 
 export default {
   props: {
@@ -21,7 +22,7 @@ export default {
       this.loading = true;
       this.user.email = this.email;
       AuthService.sendLoginLink(this.user).then((() => {}), () => {
-        return this.user.errors = {email: [this.$t('auth_form.email_not_found')]};
+        return this.user.errors = {email: [I18n.global.t('auth_form.email_not_found')]};
       })
       .finally(() => {
         this.loading = false;

@@ -3,6 +3,7 @@ import Session from '@/shared/services/session';
 import ChangeVolumeModalMixin from '@/mixins/change_volume_modal';
 import GroupService from '@/shared/services/group_service';
 import Flash from '@/shared/services/flash';
+import I18n from '@/i18n';
 
 export default {
   mixins: [ChangeVolumeModalMixin],
@@ -61,7 +62,7 @@ export default {
     },
 
     labelFor(volume) {
-      return this.$t(`change_volume_form.simple.${volume}_explain`) + ' ('+this.$t(`change_volume_form.simple.${volume}`)+')';
+      return I18n.global.t(`change_volume_form.simple.${volume}_explain`) + ' ('+I18n.global.t(`change_volume_form.simple.${volume}`)+')';
     },
 
     translateKey(key) {

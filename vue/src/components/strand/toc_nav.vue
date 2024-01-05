@@ -3,6 +3,7 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
+import I18n from '@/i18n';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -113,7 +114,7 @@ export default {
       const createdEvent = this.discussion.createdEvent();
       this.items.unshift({
         key: createdEvent.positionKey,
-        title: this.$t('activity_card.context'),
+        title: I18n.global.t('activity_card.context'),
         headings: [],
         sequenceId: 0,
         visible: this.visibleKeys.includes(createdEvent.positionKey),
@@ -169,7 +170,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.display.mdAndUp" width="230px" app fixed right clipped color="background" floating)
+v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion" v-model="open" :permanent="$vuetify.display.mdAndUp"  app fixed location="right" clipped color="background" floating)
   div.mt-12
   div.strand-nav__toc
     //- | {{items}}

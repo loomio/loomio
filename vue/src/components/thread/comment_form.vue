@@ -4,6 +4,7 @@ import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import Flash  from '@/shared/services/flash';
+import I18n from '@/i18n';
 
 export default {
   props: {
@@ -22,9 +23,9 @@ export default {
   computed: {
     placeholder() {
       if (this.comment.parentId) {
-        return this.$t('comment_form.in_reply_to', {name: this.comment.parent().author().nameOrUsername()});
+        return I18n.global.t('comment_form.in_reply_to', {name: this.comment.parent().author().nameOrUsername()});
       } else {
-        return this.$t('comment_form.aria_label');
+        return I18n.global.t('comment_form.aria_label');
       }
     }
   },

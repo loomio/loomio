@@ -7,6 +7,7 @@ import { reject, map, parseInt } from 'lodash-es';
 import {marked} from 'marked';
 import {customRenderer, options} from '@/shared/helpers/marked';
 marked.setOptions(Object.assign({renderer: customRenderer()}, options));
+import I18n from '@/i18n';
 
 export default {
   props: {
@@ -71,7 +72,7 @@ export default {
           if (v) {
             return (key.match(/_at$/) && exact(parseISO(v))) || v;
           } else {
-            return this.$t('common.empty');
+            return I18n.global.t('common.empty');
           }
         });
         return {key, was: vals[0], now: vals[1]};

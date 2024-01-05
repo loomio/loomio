@@ -3,6 +3,7 @@ import EventBus from '@/shared/services/event_bus';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import Flash  from '@/shared/services/flash';
+import I18n from '@/i18n';
 
 export default {
   props: {
@@ -14,10 +15,10 @@ export default {
       kinds: AppConfig.webhookEventKinds,
       testing: false,
       formats: [
-        {text: this.$t('webhook.formats.markdown'), value: "markdown"},
-        {text: this.$t('webhook.formats.microsoft'), value: "microsoft"},
-        {text: this.$t('webhook.formats.slack'), value: "slack"},
-        {text: this.$t('webhook.formats.discord'), value: "discord"}
+        {text: I18n.global.t('webhook.formats.markdown'), value: "markdown"},
+        {text: I18n.global.t('webhook.formats.microsoft'), value: "microsoft"},
+        {text: I18n.global.t('webhook.formats.slack'), value: "slack"},
+        {text: I18n.global.t('webhook.formats.discord'), value: "discord"}
         ]
     };
   },
