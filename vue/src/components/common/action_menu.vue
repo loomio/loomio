@@ -3,7 +3,10 @@ import { some } from 'lodash-es';
 export default {
   props: {
     actions: Object,
-    small: Boolean,
+    size: {
+      type: String,
+      default: 'default'
+    },
     icon: Boolean,
     name: String,
     menuIcon: { 
@@ -24,8 +27,8 @@ export default {
 .action-menu.lmo-no-print(v-if='canPerformAny')
   v-menu(offset-y)
     template(v-slot:activator="{ props }" )
-      v-btn.action-menu--btn(:title="name" :icon="icon" :small="small" v-bind="props" @click.prevent)
-        common-icon(v-if="icon" :small="small" :name="menuIcon")
+      v-btn.action-menu--btn(:title="name" :icon="icon" :size="size" variant="text" v-bind="props" @click.prevent)
+        common-icon(v-if="icon" :size="size" :name="menuIcon")
         span(v-if="!icon") {{name}}
 
     v-list

@@ -11,12 +11,15 @@ export default {
   
   props: {
     model: Object,
-    small: Boolean
+    size: {
+      type: String,
+      default: 'default'
+    }
   },
 
   data() {
     return {
-      diameter: (this.small && 20) || 24,
+      diameter: (this.size == 'x-small' && 20) || 24,
       maxNamesCount: 10,
       reactionHash: {all: []},
       emojiSupported
@@ -111,7 +114,7 @@ export default {
       v-tooltip(bottom)
         template(v-slot:activator="{ attrs }")
           .reactions-display__group(v-bind="attrs")
-            span(:class="(small &&'small') || undefined" v-if="emojiSupported") {{colonToUnicode(reaction)}}
+            span(:class="(size == 'x-small' && 'small') || undefined" v-if="emojiSupported") {{colonToUnicode(reaction)}}
             img.emoji(v-else :src="srcForEmoji(colonToUnicode(reaction))")
             user-avatar.reactions-display__author(no-link v-for="user in reactionHash[reaction]" :key="user.id" :user="user" :size="diameter")
         .reactions-display__name(v-for="user in reactionHash[reaction]" :key="user.id")
