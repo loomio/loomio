@@ -66,7 +66,7 @@ export default class BaseRecordsInterface {
   build(attributes) {
     if (attributes == null) { attributes = {}; }
     const record = new this.model(attributes);
-    return record;
+    return reactive(record);
   }
 
   create(attributes) {
