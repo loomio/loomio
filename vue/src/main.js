@@ -31,6 +31,7 @@ const useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-sche
 
 import boot from '@/shared/helpers/boot';
 import Session from '@/shared/services/session';
+import { plugin as Slicksort } from 'vue-slicksort';
 
 boot(function(data) {
   Session.apply(data);
@@ -41,7 +42,7 @@ boot(function(data) {
   // if (AppConfig.sentry_dsn) {
   //   Sentry.configureScope(scope => scope.setUser(pick(Session.user(), ['id', 'name', 'email', 'username'])));
   // }
-  app.use(i18n).use(vuetify).use(router)
+  app.use(i18n).use(vuetify).use(router).use(Slicksort)
   app.directive('marked', markedDirective)
   app.mount("#app")
 

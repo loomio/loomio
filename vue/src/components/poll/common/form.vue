@@ -8,14 +8,15 @@ import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import { addMinutes, intervalToDuration, formatDuration, addHours, isAfter, startOfHour, setHours } from 'date-fns';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
-// import { HandleDirective } from 'vue-slicksort';
+import { HandleDirective } from 'vue-slicksort';
 import I18n from '@/i18n';
 import UrlFor from '@/mixins/url_for';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
-  mixins: [UrlFor],
+  mixins: [UrlFor, WatchRecords],
   components: { PollTemplateInfoPanel },
-  // directives: { handle: HandleDirective },
+  directives: { handle: HandleDirective },
 
   props: {
     poll: Object,
@@ -272,13 +273,13 @@ export default {
 <template lang="pug">
 .poll-common-form
   submit-overlay(:value="poll.processing")
-  v-card-title.px-0
+  v-card-title.px-0.d-flex
     h1.text-h4(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
     v-spacer
 
-    v-btn(v-if="poll.id" icon :to="urlFor(poll)" aria-hidden='true')
+    v-btn(v-if="poll.id" icon variant="text" :to="urlFor(poll)" aria-hidden='true')
       common-icon(name="mdi-close")
-    v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
+    v-btn(v-if="!poll.id" icon variant="text" @click="$emit('setPoll', null)" aria-hidden='true')
       common-icon(name="mdi-close")
 
   poll-template-info-panel(v-if="pollTemplate" :poll-template="pollTemplate")
@@ -314,7 +315,7 @@ export default {
     .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
     v-list-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
     sortable-list(
-      v-model="pollOptions" 
+      v-model:list="pollOptions" 
       append-to=".app-is-booted" 
       use-drag-handle 
       lock-axis="y"
@@ -324,8 +325,6 @@ export default {
         v-for="(option, priority) in visiblePollOptions"
         :index="priority"
         :key="option.name"
-        :item="option"
-        v-if="!option._destroy"
       )
         v-sheet.mb-2.rounded(outlined)
           v-list-item(style="user-select: none")
@@ -343,14 +342,15 @@ export default {
             template(v-slot:append)
               v-btn(
                 icon
+                variant="text"
                 @click="removeOption(option)"
                 :title="$t('common.action.delete')"
               )
                 common-icon.text--secondary(name="mdi-delete")
               div.ml-0(v-if="poll.pollType != 'meeting'")
-                v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
+                v-btn(icon variant="text" @click="editOption(option)", :title="$t('common.action.edit')")
                   common-icon.text--secondary(name="mdi-pencil")
-            common-icon.text--secondary(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
+              common-icon.text--secondary(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
 
     template(v-if="optionFormat == 'i18n'")
       p This poll cannot have new options added. (contact support if you see this message)
