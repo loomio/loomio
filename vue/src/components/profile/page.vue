@@ -171,8 +171,8 @@ v-main
                 span {{user.timeZone}}
                 space
                 v-tooltip(top)
-                  template(v-slot:activator="{on, attrs}")
-                    common-icon(v-bind="attrs" v-on="on" small name="mdi-information-outline")
+                  template(v-slot:activator="{attrs}")
+                    common-icon(v-bind="attrs" small name="mdi-information-outline")
                   span(v-t="'profile_page.updated_on_sign_in'")
               v-checkbox(v-model="user.bot" :label="$t('profile_page.account_is_bot')")
               v-alert(v-if="user.bot" type="warning")

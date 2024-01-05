@@ -202,8 +202,8 @@ export default {
 
       v-list-item-action
         v-menu(offset-y)
-          template(v-slot:activator="{on, attrs}")
-            v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
+          template(v-slot:activator="{attrs}")
+            v-btn.membership-dropdown__button(icon v-bind="attrs")
               common-icon(name="mdi-dots-vertical")
           v-list
             v-list-item(v-for="action in actionNames" v-if="canPerform(action, poll, user)" @click="perform(action, poll, user)" :key="action")

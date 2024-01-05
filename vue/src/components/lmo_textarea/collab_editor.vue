@@ -337,8 +337,8 @@ div
         .d-flex.py-2.justify-space-between.flex-wrap.align-center(align-center)
           section.d-flex.flex-wrap.formatting-tools(:aria-label="$t('formatting.formatting_tools')")
             v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-              template(v-slot:activator="{on, attrs}")
-                v-btn.emoji-picker__toggle(:small="expanded" v-on="on" v-bind="attrs" icon :title="$t('formatting.insert_emoji')")
+              template(v-slot:activator="{attrs}")
+                v-btn.emoji-picker__toggle(:small="expanded" v-bind="attrs" icon :title="$t('formatting.insert_emoji')")
                   common-icon(small name="mdi-emoticon-outline")
               emoji-picker(:insert="emojiPicked")
 
@@ -356,12 +356,12 @@ div
 
             //- link
             v-menu(:close-on-content-click="!selectedText()", v-model="linkDialogIsOpen", min-width="320px")
-              template(v-slot:activator="{on, attrs}")
+              template(v-slot:activator="{attrs}")
                 template(v-if="editor.isActive('link')")
                   v-btn(:small="expanded" icon @click="editor.chain().toggleLink().focus().run()", outlined :title="$t('formatting.link')")
                     common-icon(small name="mdi-link-variant")
                 template(v-else)
-                  v-btn(:small="expanded" icon v-on="on" v-bind="attrs", :title="$t('formatting.link')")
+                  v-btn(:small="expanded" icon v-bind="attrs", :title="$t('formatting.link')")
                     common-icon(small name="mdi-link-variant")
               v-card
                 template(v-if="selectedText()")

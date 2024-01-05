@@ -65,7 +65,7 @@ export default {
 <template lang="pug">
 v-layout.date-time-picker
   v-menu(ref='dateTimePicker' v-model='dateMenu' offset-y min-width='290px')
-    template(v-slot:activator='{ on, attrs }')
+    template(v-slot:activator='{ attrs }')
       v-text-field.date-time-picker__date-field(
         v-model='dateStr'
         v-on='on'

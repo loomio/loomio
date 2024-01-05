@@ -34,7 +34,7 @@ export default
 
 <template lang="pug">
 v-menu
-  template(v-slot:activator="{ on, attrs }")
+  template(v-slot:activator="{ attrs }")
     div.rounded-lg.color-picker-btn
       v-btn.drop-down-button(
         small icon

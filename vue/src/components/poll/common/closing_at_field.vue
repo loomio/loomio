@@ -76,7 +76,7 @@ div
             offset-y
             min-width="290px"
           )
-            template(v-slot:activator='{ on, attrs }')
+            template(v-slot:activator='{ attrs }')
               v-text-field(
                 :disabled="!poll.closingAt"
                 v-model='closingDate'

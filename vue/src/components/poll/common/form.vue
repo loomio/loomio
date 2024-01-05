@@ -10,8 +10,10 @@ import { addMinutes, intervalToDuration, formatDuration, addHours, isAfter, star
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 // import { HandleDirective } from 'vue-slicksort';
 import I18n from '@/i18n';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
   components: { PollTemplateInfoPanel },
   // directives: { handle: HandleDirective },
 
@@ -327,28 +329,27 @@ export default {
       )
         v-sheet.mb-2.rounded(outlined)
           v-list-item(style="user-select: none")
-            v-list-item-icon(v-if="hasOptionIcon" v-handle)
+            template(v-slot:prepend v-if="hasOptionIcon" v-handle)
               v-avatar(size="48")
                 img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
          
-            v-list-item-content(v-handle)
-              v-list-item-title
-                span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
-                span(v-if="optionFormat == 'plain'") {{option.name}}
-                span(v-if="optionFormat == 'iso8601'")
-                  poll-meeting-time(:name="option.name")
-              v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+            v-list-item-title(v-handle)
+              span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
+              span(v-if="optionFormat == 'plain'") {{option.name}}
+              span(v-if="optionFormat == 'iso8601'")
+                poll-meeting-time(:name="option.name")
+            v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
 
-            v-list-item-action
+            template(v-slot:append)
               v-btn(
                 icon
                 @click="removeOption(option)"
                 :title="$t('common.action.delete')"
               )
                 common-icon.text--secondary(name="mdi-delete")
-            v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
-              v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                common-icon.text--secondary(name="mdi-pencil")
+              div.ml-0(v-if="poll.pollType != 'meeting'")
+                v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
+                  common-icon.text--secondary(name="mdi-pencil")
             common-icon.text--secondary(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
 
     template(v-if="optionFormat == 'i18n'")

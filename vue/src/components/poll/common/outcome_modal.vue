@@ -133,7 +133,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
 
     .outcome-review-on(v-if="outcome.poll().pollType == 'proposal'")
       v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")
-        template(v-slot:activator='{ on, attrs }')
+        template(v-slot:activator='{ attrs }')
           v-text-field(
             clearable
             v-model='outcome.reviewOn'

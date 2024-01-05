@@ -6,8 +6,10 @@ import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import DiscussionReaderService from '@/shared/services/discussion_reader_service';
 import {map, debounce} from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   components: {
     RecipientsAutocomplete
   },
@@ -200,8 +202,8 @@ export default {
           //- time-ago(:date="reader.lastReadAt")
       v-list-item-action
         v-menu(offset-y)
-          template(v-slot:activator="{on, attrs}")
-            v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
+          template(v-slot:activator="{attrs}")
+            v-btn.membership-dropdown__button(icon v-bind="attrs")
               common-icon(name="mdi-dots-vertical")
           v-list
             v-list-item(v-for="action in actionNames" v-if="service[action].canPerform(reader)" @click="service[action].perform(reader)" :key="action")
