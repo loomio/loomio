@@ -3,8 +3,10 @@ import Records from '@/shared/services/records';
 import BarIcon from '@/components/poll/common/icon/bar.vue';
 import PieIcon from '@/components/poll/common/icon/pie.vue';
 import GridIcon from '@/components/poll/common/icon/grid.vue';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   components: {BarIcon, PieIcon, GridIcon},
   props: {
     poll: Object

@@ -12,7 +12,7 @@ export default class ThreadLoader {
   }
 
   reset() {
-    this.collection = reactive([]);
+    this.collection = [];
     this.rules = [];
     this.ruleStrings = [];
     this.fetchedRules = [];

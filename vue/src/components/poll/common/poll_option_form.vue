@@ -13,7 +13,7 @@ export default {
 
   data() {
     return {
-      nameRules: [v => (v.length <= 60) || I18n.t("poll_option_form.option_name_validation")],
+      nameRules: [v => (v.length <= 60) || I18n.global.t("poll_option_form.option_name_validation")],
       icons: [
         {text: 'Thumbs up', value: 'agree'},
         {text: 'Thumbs down', value: 'disagree'},

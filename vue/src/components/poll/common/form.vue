@@ -106,7 +106,7 @@ export default {
 
     removeOption(option) {
       if (this.optionHasVotes(option)) {
-        if (!confirm(I18n.t("poll_common_form.option_has_votes_confirm_delete"))) { return; }
+        if (!confirm(I18n.global.t("poll_common_form.option_has_votes_confirm_delete"))) { return; }
       }
 
       this.newOption = null;
@@ -198,9 +198,9 @@ export default {
   computed: {
     titlePlaceholder() {
       if (this.pollTemplate && this.pollTemplate.titlePlaceholder) {
-        return I18n.t('common.prefix_eg', {val: this.pollTemplate.titlePlaceholder});
+        return I18n.global.t('common.prefix_eg', {val: this.pollTemplate.titlePlaceholder});
       } else {
-        return I18n.t('poll_proposal_form.title_placeholder');
+        return I18n.global.t('poll_proposal_form.title_placeholder');
       }
     },
 

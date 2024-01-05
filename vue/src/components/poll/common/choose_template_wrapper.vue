@@ -33,7 +33,7 @@ export default {
     fillGroups() {
       const defaultsGroup = new NullGroupModel();
       defaultsGroup.isNullGroup = false;
-      defaultsGroup.name = I18n.t('templates.loomio_default_templates');
+      defaultsGroup.name = I18n.global.t('templates.loomio_default_templates');
       const groups = [defaultsGroup];
       const groupIds = Session.user().groupIds();
       Records.groups.collection.chain().

@@ -1,3 +1,2 @@
-import { reactive } from 'vue'
-window.Loomio = reactive({});
+window.Loomio = {}
 export default window.Loomio;

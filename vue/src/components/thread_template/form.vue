@@ -24,7 +24,7 @@ export default {
       pollTemplateItems: [],
       selectedPollTemplate: null,
       pollTemplates: [],
-      recipientAudienceItems: [{text: 'None', value: null}, {text: I18n.t('announcement.audiences.everyone_in_the_group'), value: 'group'}]
+      recipientAudienceItems: [{text: 'None', value: null}, {text: I18n.global.t('announcement.audiences.everyone_in_the_group'), value: 'group'}]
     };
   },
 
@@ -52,7 +52,7 @@ export default {
 
   methods: {
     updatePollTemplateItems() {
-      this.pollTemplateItems = [{text: I18n.t('thread_template.add_proposal_or_poll_template'), value: null}].concat(
+      this.pollTemplateItems = [{text: I18n.global.t('thread_template.add_proposal_or_poll_template'), value: null}].concat(
         Records.pollTemplates.find({groupId: this.discussionTemplate.group().id}).filter( pt => {
           return !this.pollTemplates.includes(pt);
         }).map(pt => ({

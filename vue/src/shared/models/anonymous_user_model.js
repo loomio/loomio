@@ -5,7 +5,7 @@ export default class AnonymousUser {
   static plural = 'groups';
 
   constructor() {
-    this.name = I18n.t('common.anonymous');
+    this.name = I18n.global.t('common.anonymous');
     this.username = null;
   }
 

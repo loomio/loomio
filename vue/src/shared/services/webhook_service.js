@@ -62,7 +62,7 @@ export default new class WebhookService {
                 submit: webhook.destroy,
                 text: {
                   title: 'webhook.remove',
-                  raw_helptext: I18n.t('webhook.confirm_remove', {name: webhook.name}),
+                  raw_helptext: I18n.global.t('webhook.confirm_remove', {name: webhook.name}),
                   flash: 'webhook.removed'
                 }
               }

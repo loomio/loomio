@@ -1,6 +1,7 @@
 import BaseModel from '@/shared/record_store/base_model';
 import I18n from '@/i18n';
 import {invokeMap, without} from 'lodash-es';
+import Records from '@/shared/services/records';
 
 export default class EventModel extends BaseModel {
   static singular = 'event';
@@ -45,7 +46,7 @@ export default class EventModel extends BaseModel {
   surfaceOrSelf() { if (this.isNested()) { return this.parent(); } else { return this; } }
 
   children() {
-    return this.recordStore.events.find({parentId: this.id});
+    return Records.events.find({parentId: this.id});
   }
 
   delete() {
@@ -65,7 +66,7 @@ export default class EventModel extends BaseModel {
   }
 
   model() {
-    return this.recordStore[BaseModel.eventTypeMap[this.eventableType]].find(this.eventableId);
+    return Records[BaseModel.eventTypeMap[this.eventableType]].find(this.eventableId);
   }
 
   isUnread() {
@@ -81,11 +82,11 @@ export default class EventModel extends BaseModel {
   }
 
   removeFromThread() {
-    return this.remote.patchMember(this.id, 'remove_from_thread').then(() => this.remove());
+    return Records.events.remote.patchMember(this.id, 'remove_from_thread').then(() => this.remove());
   }
 
   pin(title) {
-    return this.remote.patchMember(this.id, 'pin', {pinned_title: title});
+    return Records.events.remote.patchMember(this.id, 'pin', {pinned_title: title});
   }
 
   fillPinnedTitle() {
@@ -110,7 +111,7 @@ export default class EventModel extends BaseModel {
     }
   }
 
-  unpin() { return this.remote.patchMember(this.id, 'unpin'); }
+  unpin() { return Records.events.remote.patchMember(this.id, 'unpin'); }
 
   isForking() {
     return this.discussion() && (this.discussion().forkedEventIds.includes(this.id) || this.parentIsForking());
@@ -133,10 +134,10 @@ export default class EventModel extends BaseModel {
   }
 
   next() {
-    return this.recordStore.events.find({parentId: this.parentId, position: this.position + 1})[0];
+    return Records.events.find({parentId: this.parentId, position: this.position + 1})[0];
   }
 
   previous() {
-    return this.recordStore.events.find({parentId: this.parentId, position: this.position - 1})[0];
+    return Records.events.find({parentId: this.parentId, position: this.position - 1})[0];
   }
 };

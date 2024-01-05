@@ -8,8 +8,10 @@ import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
 import PollCommonChartTable from '@/components/poll/common/chart/table';
 import PollCommonPercentVoted from '@/components/poll/common/percent_voted';
 import PollCommonTargetProgress from '@/components/poll/common/target_progress';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   components: {
     PollCommonChartTable,
     PollCommonChartMeeting,

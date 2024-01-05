@@ -27,9 +27,9 @@ export var eventTitle = function(event) {
     case 'Discussion':
       if (event.kind === 'discussion_moved') {
         if (event.sourceGroupId) {
-          return (Records.groups.find(event.sourceGroupId) || {fullName: I18n.t('thread_item.deleted_group')}).fullName;
+          return (Records.groups.find(event.sourceGroupId) || {fullName: I18n.global.t('thread_item.deleted_group')}).fullName;
         } else {
-          return I18n.t('thread_item.invite_only_thread');
+          return I18n.global.t('thread_item.invite_only_thread');
         }
       } else {
         return event.model().title;

@@ -4,6 +4,7 @@ import Session          from '@/shared/services/session';
 import { pick }            from 'lodash-es';
 import I18n             from '@/i18n';
 import { startOfHour, addDays } from 'date-fns';
+import Records from '@/shared/services/records';
 
 export default class PollTemplateModel extends BaseModel {
   static singular = 'pollTemplate';
@@ -64,7 +65,7 @@ export default class PollTemplateModel extends BaseModel {
   }
 
   buildPoll() {
-    const poll = this.recordStore.polls.build();
+    const poll = Records.polls.build();
 
     const attrs = pick(this, Object.keys(this.defaultValues()));
     attrs.pollTemplateId = this.id;

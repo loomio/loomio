@@ -1,4 +1,5 @@
 import BaseModel from '@/shared/record_store/base_model';
+import Records from '@/shared/services/records';
 
 export default class TaskModel extends BaseModel {
   static singular = 'task';
@@ -11,9 +12,9 @@ export default class TaskModel extends BaseModel {
 
   toggleDone() {
     if (this.done) {
-      return this.remote.postMember(this.id, 'mark_as_not_done');
+      return Records.tasks.remote.postMember(this.id, 'mark_as_not_done');
     } else {
-      return this.remote.postMember(this.id, 'mark_as_done');
+      return Records.tasks.remote.postMember(this.id, 'mark_as_done');
     }
   }
 };

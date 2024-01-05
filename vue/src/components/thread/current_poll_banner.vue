@@ -26,11 +26,11 @@ export default {
 
   computed: {
     styles() {
-      const { bar, top } = this.$vuetify.application;
+      // const { bar, top } = this.$vuetify.application;
       return{
         display: 'flex',
         position: 'sticky',
-        top: `${bar + top}px`,
+        top: `64px`,
         zIndex: 1
       };
     },

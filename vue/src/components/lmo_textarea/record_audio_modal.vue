@@ -90,7 +90,7 @@ export default {
 
   methods: {
     handleError(e) {
-      this.error = I18n.t("record_modal.no_mic")
+      this.error = I18n.global.t("record_modal.no_mic")
     },
 
     dismiss() {

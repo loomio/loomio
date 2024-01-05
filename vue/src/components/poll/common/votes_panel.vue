@@ -16,7 +16,7 @@ export default {
       stances: [],
       per: 25,
       loader: null,
-      pollOptionItems: [{text: I18n.t('discussions_panel.all'), value: null}].concat(this.poll.pollOptions().map((o, i) => { 
+      pollOptionItems: [{text: I18n.global.t('discussions_panel.all'), value: null}].concat(this.poll.pollOptions().map((o, i) => { 
         return {text: o.optionName(), value: o.id};
       })),
       page: parseInt(this.$route.query.page) || 1, 

@@ -4,8 +4,11 @@ import AbilityService from '@/shared/services/ability_service';
 import EventBus       from '@/shared/services/event_bus';
 import EventService from '@/shared/services/event_service';
 import { pickBy, assign } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [WatchRecords, UrlFor],
   props: {
     event: Object,
     collapsed: Boolean,

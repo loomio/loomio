@@ -38,7 +38,7 @@ export default new class RescueUnsavedEditsService {
       const as = uniq((this.models.map(m => intersection(attrs, m.modifiedAttributes()))).flat().flat());
 
       // if confirm("#{ms.join(' ') } #{as.join(' ')} #{models[0][as[0]]}")
-      if (confirm(I18n.t('common.confirm_discard_changes'))) {
+      if (confirm(I18n.global.t('common.confirm_discard_changes'))) {
         return (model && model.discardChanges()) || true;
       } else {
         return false;

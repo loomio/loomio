@@ -38,7 +38,7 @@ export default
   },
 
   mounted() {
-    this.message = I18n.t('announcement.form.invitation_message_default');
+    this.message = I18n.global.t('announcement.form.invitation_message_default');
 
     this.updateSuggestions();
     this.watchRecords({

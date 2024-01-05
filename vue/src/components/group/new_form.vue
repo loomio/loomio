@@ -111,7 +111,7 @@ export default
     categoryItems() {
       // ['board', 'community', 'coop', 'membership', 'nonprofit', 'party', 'professional', 'self_managing', 'union', 'other'].map (category) ->
       return ['board', 'membership', 'self_managing', 'other'].map(category => ({
-        text: I18n.t('group_survey.categories.'+category),
+        text: I18n.global.t('group_survey.categories.'+category),
         value: category
       }));
     }, 

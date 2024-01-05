@@ -233,7 +233,7 @@ export default
     },
 
     convertToMd() {
-      if (confirm(I18n.t('formatting.markdown_confirm'))) {
+      if (confirm(I18n.global.t('formatting.markdown_confirm'))) {
         this.updateModel();
         convertToMd(this.model, this.field);
         Records.users.saveExperience('html-editor.uses-markdown');

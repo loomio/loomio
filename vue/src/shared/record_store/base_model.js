@@ -2,6 +2,8 @@ import utils from './utils';
 import { isEqual } from 'date-fns';
 import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
 
+import Records from '@/shared/services/records';
+
 export default class BaseModel {
   static singular = 'undefinedSingular';
   static plural = 'undefinedPlural';
@@ -35,7 +37,7 @@ export default class BaseModel {
   // what is the key to use when serializing the record?
   static serializationRoot = null;
 
-  constructor(recordsInterface, attributes) {
+  constructor(attributes) {
     this.inCollection = this.inCollection.bind(this);
     this.remove = this.remove.bind(this);
     this.destroy = this.destroy.bind(this);
@@ -56,12 +58,6 @@ export default class BaseModel {
     this.saveFailed = false;
     this.beforeSaves = [];
     this.setErrors();
-    this.recordStore = recordsInterface.recordStore
-    this.recordsInterface = recordsInterface
-    this.remote = recordsInterface.remote
-    // Object.defineProperty(this, 'recordsInterface', {value: recordsInterface, enumerable: false});
-    // Object.defineProperty(this, 'recordStore', {value: recordsInterface.recordStore, enumerable: false});
-    // Object.defineProperty(this, 'remote', {value: recordsInterface.remote, enumerable: false});
     if (this.relationships != null) { this.buildRelationships(); }
     this.update(this.defaultValues());
     this.update(attributes);
@@ -86,7 +82,7 @@ export default class BaseModel {
       }
       return true;
     });
-    return new this.constructor(this.recordsInterface, cloneAttributes);
+    return new this.constructor(cloneAttributes);
   }
 
   inCollection() {
@@ -110,7 +106,7 @@ export default class BaseModel {
       return true;
     });
 
-    if (this.inCollection()) { this.recordsInterface.collection.update(this); }
+    if (this.inCollection()) { Records[this.constructor.plural].collection.update(this); }
 
     return this.afterUpdateFns.forEach(fn => fn(this));
   }
@@ -191,9 +187,9 @@ export default class BaseModel {
     return this[name] = () => {
       const find = Object.assign({}, {[args.with]: this[args.of]},  args.find);
       if (userArgs.orderBy) {
-        return orderBy(this.recordStore[args.from].find(find), userArgs.orderBy);
+        return orderBy(Records[args.from].find(find), userArgs.orderBy);
       } else {
-        return this.recordStore[args.from].find(find);
+        return Records[args.from].find(find);
       }
     };
   }
@@ -209,16 +205,16 @@ export default class BaseModel {
     this[name] = () => {
       if (this[args.by]) {
         let obj;
-        if (obj = this.recordStore[args.from].find(this[args.by])) { return obj; }
+        if (obj = Records[args.from].find(this[args.by])) { return obj; }
         if (this.constructor.lazyLoad) {
-          obj = this.recordStore[args.from].create({id: this[args.by]});
-          this.recordStore[args.from].addMissing(this[args.by]);
+          obj = Records[args.from].create({id: this[args.by]});
+          Records[args.from].addMissing(this[args.by]);
           return obj;
         }
       }
-      return this.recordStore[args.from].nullModel();
+      return Records[args.from].nullModel();
     };
-    this[name+'Is'] = obj => this.recordStore[args.from].find(this[args.by]) === obj;
+    this[name+'Is'] = obj => Records[args.from].find(this[args.by]) === obj;
   }
 
   belongsToPolymorphic(name) {
@@ -227,7 +223,7 @@ export default class BaseModel {
       const typeColumn = `${name}Type`;
       const idColumn = `${name}Id`;
 
-      return this.recordStore[BaseModel.eventTypeMap[this[typeColumn]]].find(this[idColumn]);
+      return Records[BaseModel.eventTypeMap[this[typeColumn]]].find(this[idColumn]);
     };
   }
 
@@ -260,7 +256,7 @@ export default class BaseModel {
   remove() {
     this.beforeRemove();
     if (this.inCollection()) {
-      return this.recordsInterface.collection.remove(this);
+      return Records[this.constructor.plural].collection.remove(this);
     }
   }
 
@@ -268,7 +264,7 @@ export default class BaseModel {
     this.processing = true;
     this.beforeDestroy();
     this.remove();
-    return this.remote.destroy(this.keyOrId())
+    return Records[this.constructor.plural].remote.destroy(this.keyOrId())
     .finally(() => {
       return this.processing = false;
     });
@@ -280,7 +276,7 @@ export default class BaseModel {
 
   discard() {
     this.processing = true;
-    return this.remote.discard(this.keyOrId())
+    return Records[this.constructor.plural].remote.discard(this.keyOrId())
     .finally(() => {
       return this.processing = false;
     });
@@ -288,7 +284,7 @@ export default class BaseModel {
 
   undiscard() {
     this.processing = true;
-    return this.remote.undiscard(this.keyOrId())
+    return Records[this.constructor.plural].remote.undiscard(this.keyOrId())
     .finally(() => {
       return this.processing = false;
     });
@@ -302,11 +298,11 @@ export default class BaseModel {
     this.beforeSaves.forEach(f => f());
   
     if (this.isNew()) {
-      return this.remote.create(this.serialize())
+      return Records[this.constructor.plural].remote.create(this.serialize())
       .then(this.saveSuccess, this.saveError)
       .finally(() => { return this.processing = false; });
     } else {
-      return this.remote.update(this.keyOrId(), this.serialize())
+      return Records[this.constructor.plural].remote.update(this.keyOrId(), this.serialize())
       .then(this.saveSuccess, this.saveError)
       .finally(() => { return this.processing = false; });
     }

@@ -34,7 +34,7 @@ export default {
 
   methods: {
     handleError(e) {
-      this.error = I18n.t("record_modal.no_camera")
+      this.error = I18n.global.t("record_modal.no_camera")
     },
 
     mediaFilename() {

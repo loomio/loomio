@@ -48,7 +48,7 @@ export default {
               type: 'audience',
               id: 'group',
               icon: 'mdi-account-group',
-              name: I18n.t('announcement.audiences.group', {name: this.discussion.group().name}),
+              name: I18n.global.t('announcement.audiences.group', {name: this.discussion.group().name}),
               size: this.discussion.group().acceptedMembershipsCount
             }];
           }

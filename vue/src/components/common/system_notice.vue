@@ -34,7 +34,7 @@ export default {
   methods: {
     eatData(data) {
       this.reload = data.reload;
-      this.notice = data.notice || (AppConfig.features.app.trials && this.$route.path.startsWith('/d/') && !Session.isSignedIn() && I18n.t("powered_by.this_is_loomio_md"));
+      this.notice = data.notice || (AppConfig.features.app.trials && this.$route.path.startsWith('/d/') && !Session.isSignedIn() && I18n.global.t("powered_by.this_is_loomio_md"));
       this.showNotice = this.reload || (this.notice && !Session.user().hasExperienced(md5(this.notice)));
       this.showDismiss = data.reload || data.notice;
     },

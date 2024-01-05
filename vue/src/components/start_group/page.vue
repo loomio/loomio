@@ -9,7 +9,7 @@ import I18n           from '@/i18n';
 export default {
   mixins: [AuthModalMixin],
   data() {
-    return {group: Records.groups.build({description: I18n.t('group_form.new_description_html')})};
+    return {group: Records.groups.build({description: I18n.global.t('group_form.new_description_html')})};
   },
   mounted() {
     if (!Session.isSignedIn()) { this.openAuthModal(); }

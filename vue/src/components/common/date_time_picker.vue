@@ -56,7 +56,7 @@ export default {
         return format(d, timeFormat());
       } catch (error) {
         FlashService.error("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')});
-        return I18n.t("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')});
+        return I18n.global.t("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')});
       }
     }
   }

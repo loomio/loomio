@@ -45,7 +45,7 @@ export default {
 
       this.options.unshift({
         id: null,
-        value: I18n.t('common.none'),
+        value: I18n.global.t('common.none'),
         attendees: 0
       });
 
