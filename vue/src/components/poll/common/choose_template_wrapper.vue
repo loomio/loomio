@@ -60,12 +60,11 @@ div
     p(v-t="'templates.which_templates_would_you_like_to_use'")
     v-list
       v-list-item(v-for="group in groups" :key="group.id" @click="selectGroup(group)")
-        v-list-item-avatar(aria-hidden="true")
+        template(v-slot:prepend)
           group-avatar(:group="group" v-if="!group.parentId")
-        v-list-item-content
-          v-list-item-title {{group.name}}
+        v-list-item-title {{group.name}}
   poll-common-choose-template(
-    v-else 
+    v-else
     @setPoll="setPoll"
     :discussion="discussion"
     :group="selectedGroup")
