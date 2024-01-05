@@ -9,9 +9,11 @@ import AttachmentService from '@/shared/services/attachment_service';
 import { mdiMagnify } from '@mdi/js';
 import { intersection, debounce, orderBy, uniq } from 'lodash-es';
 import I18n from '@/i18n';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [WatchRecords],
   data() {
     return {
       group: null,

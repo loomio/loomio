@@ -5,14 +5,17 @@ import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import { debounce, some } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [WatchRecords],
   data() {
     return {
       mdiMagnify,
       group: null,
-      loading: true
+      loading: true,
+      subgroups: []
     };
   },
 
@@ -101,15 +104,15 @@ div(v-if="group")
     p.text-center.pa-4(v-if="!loading && !subgroups.length" v-t="'common.no_results_found'")
     v-list(v-else avatar three-line)
       v-list-item.subgroups-card__list-item(v-if="group.subgroups().length > 0" :to="urlFor(group)+'?subgroups=none'")
-        v-list-item-avatar.subgroups-card__list-item-logo
+        //- v-list-item-avatar.subgroups-card__list-item-logo
+        template(v-slot:prepend)
           group-avatar(:group="group" :size="28")
-        v-list-item-content
-          v-list-item-title(v-t="{path: 'subgroups_panel.group_without_subgroups', args: {name: group.name}}")
-          v-list-item-subtitle {{ stripDescription(group.description) }}
+        v-list-item-title(v-t="{path: 'subgroups_panel.group_without_subgroups', args: {name: group.name}}")
+        v-list-item-subtitle {{ stripDescription(group.description) }}
       v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
-        v-list-item-avatar.subgroups-card__list-item-logo
+        //- v-list-item-avatar.subgroups-card__list-item-logo
+        template(v-slot:prepend)
           group-avatar(:group="group" :size="28")
-        v-list-item-content
-          v-list-item-title {{ group.name }}
-          v-list-item-subtitle {{ stripDescription(group.description) }}
+        v-list-item-title {{ group.name }}
+        v-list-item-subtitle {{ stripDescription(group.description) }}
 </template>

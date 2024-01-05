@@ -9,9 +9,12 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
 import { mdiMagnify } from '@mdi/js';
 import I18n from '@/i18n';
+import UrlFor from '@/mixins/url_for';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [UrlFor, WatchRecords],
   data() {
     return {
       mdiMagnify,
@@ -159,7 +162,7 @@ export default
     membershipRequestsPath() { return LmoUrlService.membershipRequest(this.group); },
     showLoadMore() { return !this.loader.exhausted; },
     totalRecords() {
-      if (this.pending) {
+      if (this.$route.query.filter == 'pending') {
         return this.group.pendingMembershipsCount;
       } else {
         return this.group.membershipsCount - this.group.pendingMembershipsCount;
@@ -167,7 +170,7 @@ export default
     },
 
     canAddMembers() {
-      return AbilityService.canAddMembersToGroup(this.group) && !this.pending;
+      return AbilityService.canAddMembersToGroup(this.group) && !this.$route.query.filter == 'pending';
     },
 
     showAdminWarning() {
@@ -228,43 +231,42 @@ export default
         p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
         v-list(v-else two-line)
           v-list-item(v-for="membership in memberships" :key="membership.id")
-            v-list-item-avatar(size='48')
+            template(v-slot:prepend)
               router-link(:to="urlFor(membership.user())")
                 user-avatar(:user='membership.user()' :size='48')
-            v-list-item-content
-              v-list-item-title
-                router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
-                span
-                span.text--secondary
-                  space
-                  span(v-if="membership.acceptedAt && membership.userEmail") &lt;{{membership.userEmail}}&gt;
-                  span(v-else) {{membership.userEmail}}
+            v-list-item-title
+              router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
+              span
+              span.text--secondary
                 space
-                span.text-caption(v-if="$route.query.subgroups") {{membership.group().name}}
+                span(v-if="membership.acceptedAt && membership.userEmail") &lt;{{membership.userEmail}}&gt;
+                span(v-else) {{membership.userEmail}}
+              space
+              span.text-caption(v-if="$route.query.subgroups") {{membership.group().name}}
+              space
+              span.text-caption {{membership.user().title(group)}}
+              space
+              v-chip(v-if="membership.user().bot" x-small outlined label v-t="'members_panel.bot'")
+              span(v-if="membership.groupId == group.id && membership.admin")
                 space
-                span.text-caption {{membership.user().title(group)}}
+                v-chip(x-small outlined label v-t="'members_panel.admin'")
                 space
-                v-chip(v-if="membership.user().bot" x-small outlined label v-t="'members_panel.bot'")
-                span(v-if="membership.groupId == group.id && membership.admin")
+              span.text-caption.text--secondary(v-if="membership.acceptedAt")
+                span(v-t="'common.action.joined'")
+                space
+                time-ago(:date="membership.acceptedAt")
+              span.text-caption.text--secondary(v-if="!membership.acceptedAt")
+                template(v-if="membership.inviterId")
+                  span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
                   space
-                  v-chip(x-small outlined label v-t="'members_panel.admin'")
+                  time-ago(:date="membership.createdAt")
+                template(v-if="!membership.inviterId")
+                  span(v-t="'members_panel.header_invited'")
                   space
-                span.text-caption.text--secondary(v-if="membership.acceptedAt")
-                  span(v-t="'common.action.joined'")
-                  space
-                  time-ago(:date="membership.acceptedAt")
-                span.text-caption.text--secondary(v-if="!membership.acceptedAt")
-                  template(v-if="membership.inviterId")
-                    span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
-                    space
-                    time-ago(:date="membership.createdAt")
-                  template(v-if="!membership.inviterId")
-                    span(v-t="'members_panel.header_invited'")
-                    space
-                    time-ago(:date="membership.createdAt")
-              v-list-item-subtitle
-                span(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
-            v-list-item-action
+                  time-ago(:date="membership.createdAt")
+            v-list-item-subtitle
+              span(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
+            template(v-slot:append)
               membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
 
         .d-flex.justify-center

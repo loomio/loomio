@@ -22,23 +22,22 @@ export default {
 
 <template lang="pug">
 v-list-item.poll-common-preview(:to='link')
-  v-list-item-avatar
+  template(v-slot:prepend)
     poll-common-icon-panel(:poll='poll' show-my-stance)
-  v-list-item-content
-    v-list-item-title
-      span {{poll.title}}
-      tags-display.ml-1(:tags="poll.tags" :group="poll.group()" smaller)
-    v-list-item-subtitle
-      span(v-t="{ path: 'poll_common_collapsed.by_who', args: { name: poll.authorName() } }")
+  v-list-item-title
+    span {{poll.title}}
+    tags-display.ml-1(:tags="poll.tags" :group="poll.group()" smaller)
+  v-list-item-subtitle
+    span(v-t="{ path: 'poll_common_collapsed.by_who', args: { name: poll.authorName() } }")
+    space
+    span ·
+    space
+    span(v-if='displayGroupName && poll.groupId')
+      span {{ poll.group().name }}
       space
       span ·
       space
-      span(v-if='displayGroupName && poll.groupId')
-        span {{ poll.group().name }}
-        space
-        span ·
-        space
-      poll-common-closing-at(:poll='poll' approximate)
+    poll-common-closing-at(:poll='poll' approximate)
 </template>
 <style lang="sass">
 .poll-common-preview .v-avatar
