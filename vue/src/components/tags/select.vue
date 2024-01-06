@@ -4,9 +4,12 @@ import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import AppConfig      from '@/shared/services/app_config';
+import WatchRecords from '@/mixins/watch_records';
 import { ContainerMixin, HandleDirective } from 'vue-slicksort';
 
 export default {
+  mixins: [WatchRecords],
+
   props: {
     group: {
       type: Object,
@@ -95,10 +98,8 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.tags-modal
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'loomio_tags.card_title'")
-    v-spacer
+v-card.tags-modal(:title="$t('loomio_tags.card_title')")
+  template(v-slot:append)
     dismiss-modal-button(:close="close")
 
   .px-4.pb-2
@@ -109,17 +110,25 @@ v-card.tags-modal
   div(v-if="canAdminTags")
     .pa-4(v-if="allTags.length == 0")
       p.text--secondary(v-t="'loomio_tags.no_tags_in_group'")
-    sortable-list(v-model="allTags", :useDragHandle="true", @sort-end="sortEnded" append-to=".app-is-booted"  lock-axis="y" axis="y")
-      sortable-item(v-for="(tag, index) in allTags", :index="index", :key="tag.id")
+    sortable-list(
+      v-model:list="allTags"
+      useDragHandle
+      @sort-end="sortEnded"
+      append-to=".app-is-booted"
+      lock-axis="y"
+      axis="y"
+    )
+      sortable-item(v-for="(tag, index) in allTags" :index="index" :key="tag.id")
         v-list-item
-          .handle(v-handle)
-            common-icon(name="mdi-drag-vertical")
+          template(v-slot:prepend)
+            .handle(v-handle)
+              common-icon(name="mdi-drag-vertical")
           v-chip(:color="tag.color" v-handle outlined) {{tag.name}}
-          v-spacer
-          v-btn(icon @click="openEditTagModal(tag)")
-            common-icon.text--secondary(name="mdi-pencil")
+          template(v-slot:append)
+            v-btn(icon variant="text" @click="openEditTagModal(tag)")
+              common-icon.text--secondary(name="mdi-pencil")
 
-    v-card-actions
-      v-spacer
-      v-btn.tag-form__new-tag(color="primary" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
+  v-card-actions(v-if="canAdminTags")
+    v-spacer
+    v-btn.tag-form__new-tag(color="primary" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
 </template>

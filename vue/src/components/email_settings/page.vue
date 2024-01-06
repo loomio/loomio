@@ -59,11 +59,17 @@ export default {
     },
 
     changeDefaultMembershipVolume() {
-      this.openChangeVolumeModal(Session.user());
+      EventBus.$emit('openModal', {
+        component: 'ChangeVolumeForm',
+        props: { model: Session.user() }
+      });
     },
 
     editSpecificGroupVolume(group) {
-      this.openChangeVolumeModal(Session.user());
+      EventBus.$emit('openModal', {
+        component: 'ChangeVolumeForm',
+        props: { model: Session.user() }
+      });
     }
   },
   computed: {

@@ -8,11 +8,12 @@ import { debounce, orderBy, intersection, concat, uniq } from 'lodash-es';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
 import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 import I18n from '@/i18n';
 
 export default 
 {
-  mixins: [WatchRecords],
+  mixins: [WatchRecords, UrlFor],
   created() {
     this.onQueryInput = debounce(val => {
       this.$router.replace(this.mergeQuery({q: val}));

@@ -6,10 +6,11 @@ import AbilityService from '@/shared/services/ability_service';
 import { debounce, some } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
 import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
-  mixins: [WatchRecords],
+  mixins: [WatchRecords, url_for],
   data() {
     return {
       mdiMagnify,

@@ -55,10 +55,8 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.chatbot-matrix-form
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'chatbot.chatbot'")
-    v-spacer
+v-card.chatbot-matrix-form(:title="$t('chatbot.chatbot')")
+  template(v-slot:append)
     dismiss-modal-button
   v-card-text
     v-text-field(:label="$t('chatbot.name')" v-model="chatbot.name" hint="The name of your chatroom")
@@ -89,9 +87,9 @@ v-card.chatbot-matrix-form
       :label="$t('webhook.event_kinds.' + kind)" 
       :value="kind")
 
-    v-card-actions
-      v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")
-      v-spacer
-      //- v-btn(:disabled="!chatbot.accessToken" @click='testConnection' v-t="'chatbot.test_connection'" :loading="testing")
-      v-btn(color='primary' @click='submit' v-t="'common.action.save'")
+  v-card-actions
+    v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")
+    v-spacer
+    //- v-btn(:disabled="!chatbot.accessToken" @click='testConnection' v-t="'chatbot.test_connection'" :loading="testing")
+    v-btn(color='primary' @click='submit' v-t="'common.action.save'")
 </template>

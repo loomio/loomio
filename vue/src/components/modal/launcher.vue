@@ -59,7 +59,8 @@ export default
       componentProps: {},
       componentKey: 'defaultKey',
       maxWidth: null,
-      persistent: true
+      persistent: true,
+      scrollable: false
     };
   },
 
@@ -78,6 +79,7 @@ export default
       if (opts.hasOwnProperty('persistent')) {
         this.persistent = opts.persistent; 
       }
+      this.scrollable = opts.scrollable || false;
       this.maxWidth = opts.maxWidth || 720;
       this.componentName = opts.component;
       this.componentProps = opts.props;
@@ -104,7 +106,12 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog.modal-launcher(ref="modalLauncher" v-model="isOpen" :max-width="maxWidth" :persistent="persistent" :fullscreen="$vuetify.display.xs")
-  v-card(v-if="isOpen")
-    component(:is="componentName" :key="componentKey" v-bind="componentProps" :close="closeModal")
+v-dialog.modal-launcher(
+  ref="modalLauncher"
+  v-model="isOpen"
+  :scrollable="scrollable"
+  :max-width="maxWidth"
+  :persistent="persistent"
+  :fullscreen="$vuetify.display.xs")
+  component(:is="componentName" :key="componentKey" v-bind="componentProps" :close="closeModal")
 </template>

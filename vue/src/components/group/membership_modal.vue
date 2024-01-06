@@ -1,5 +1,6 @@
 <script lang="js">
 import Flash from '@/shared/services/flash';
+import EventBus from '@/shared/services/event_bus';
 
 export default
 {
@@ -13,7 +14,7 @@ export default
     submit() {
       this.membership.save().then(() => {
         Flash.success("membership_form.updated");
-        this.closeModal();
+        EventBus.$emit('closeModal');
       });
     }
   }
@@ -21,11 +22,9 @@ export default
 
 </script>
 <template lang="pug">
-v-card.membership-modal
+v-card.membership-modal(:title="$t('membership_form.modal_title.group')")
   submit-overlay(:value='membership.processing')
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'membership_form.modal_title.group'")
-    v-spacer
+  template(v-slot:append)
     dismiss-modal-button
   v-card-text.membership-form
     p.text--secondary.membership-form__helptext(v-t="{ path: 'membership_form.title_helptext.group', args: { name: membership.user().name } }")

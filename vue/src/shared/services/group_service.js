@@ -26,6 +26,7 @@ export default new class GroupService {
           EventBus.$emit('openModal', {
             component: 'EmailToGroupSettings',
             persistent: false,
+            scrollable: true,
             props: {
               group: group
             }
@@ -241,7 +242,7 @@ export default new class GroupService {
                 text: {
                   title:    (group.isParent() && 'delete_group_modal.title') || 'delete_group_modal.subgroup_title',
                   helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body', 
-                  raw_confirm_text_placeholder: i18n.t('delete_group_modal.confirm', {name: confirmText}),
+                  raw_confirm_text_placeholder: I18n.global.t('delete_group_modal.confirm', {name: confirmText}),
                   confirm_text: confirmText,
                   flash:    'delete_group_modal.success',
                   submit:   'delete_group_modal.title'

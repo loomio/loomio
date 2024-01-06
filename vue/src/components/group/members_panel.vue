@@ -198,8 +198,8 @@ export default
 
     v-layout.py-2(align-center wrap)
       v-menu
-        template(v-slot:activator="{ attrs }")
-          v-btn.members-panel__filters.mr-2.text-lowercase(v-bind="attrs" text)
+        template(v-slot:activator="{ props }")
+          v-btn.members-panel__filters.mr-2.text-lowercase(v-bind="props" text)
             span(v-if="$route.query.filter == 'admin'" v-t="'members_panel.order_by_admin_desc'")
             span(v-if="$route.query.filter == 'pending'" v-t="'members_panel.invitations'")
             span(v-if="$route.query.filter == 'accepted'" v-t="'members_panel.accepted'")

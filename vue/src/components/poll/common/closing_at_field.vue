@@ -74,13 +74,13 @@ div
         offset-y
         min-width="290px"
       )
-        template(v-slot:activator='{ attrs }')
+        template(v-slot:activator='{ props }')
           v-text-field(
+            v-bind="props"
             :disabled="!poll.closingAt"
             v-model='closingDate'
             :rules="[validDate]"
             placeholder="2000-12-30"
-            v-bind="attrs"
             :prepend-icon="mdiCalendar"
           )
             template(v-slot:label)

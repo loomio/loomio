@@ -17,6 +17,7 @@ export default
 
   data() {
     return {
+      tab: 'profile',
       isDisabled: false,
       rules: {
         required(value) {
@@ -113,6 +114,10 @@ export default
   },
 
   computed: {
+    cardTitle() {
+      return this.group.parentId ? 'group_form.subgroup_settings' : 'group_form.group_settings'
+    },
+
     actionName() {
       if (this.group.isNew()) { return 'created'; } else { return 'updated'; }
     },
@@ -158,23 +163,22 @@ export default
 </script>
 
 <template lang="pug">
-v-card.group-form
+v-card.group-form(:title="$t(cardTitle)")
+  template(v-slot:append)
+    dismiss-modal-button(:model="group")
+
   v-overlay(:value="uploading")
     v-progress-circular(size="64", :value="progress")
-  submit-overlay(:value='group.processing')
-  v-card-title
-    v-layout(justify-space-between style="align-items: center")
-      .group-form__group-title
-        h1.text-h5(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
-        h1.text-h5(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
-      dismiss-modal-button(:model="group")
-  //- v-card-text
-  v-tabs(fixed-tabs)
-    v-tab(v-t="'group_form.profile'")
-    v-tab.group-form__privacy-tab(v-t="'group_form.privacy'")
-    v-tab.group-form__permissions-tab(v-t="'group_form.permissions'")
 
-    v-tab-item
+  submit-overlay(:value='group.processing')
+
+  v-tabs(v-model="tab")
+    v-tab(value="profile" v-t="'group_form.profile'")
+    v-tab.group-form__privacy-tab(value="privacy" v-t="'group_form.privacy'")
+    v-tab.group-form__permissions-tab(value="permissions" v-t="'group_form.permissions'")
+
+  v-window(v-model="tab")
+    v-window-item(value="profile")
       .mt-8.px-4
         v-img.group_form__file-select.rounded(:aspect-ratio="4/1", :src="realGroup.coverUrl" @click="selectCoverPhoto()")
         group-avatar.group_form__file-select.group_form__logo(:group="realGroup", :size="64" @click="selectLogo()")
@@ -191,7 +195,12 @@ v-card.group-form
             | (256x256 px)
         v-text-field.group-form__name#group-name.mt-4(v-model='group.name', :placeholder="$t(groupNamePlaceholder)", :rules='[rules.required]' maxlength='255', :label="$t(groupNameLabel)")
         div(v-if="!group.parentId || (group.parentId && group.parent().handle)")
-          v-text-field.group-form__handle#group-handle(v-model='group.handle', :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength='100', :label="$t('group_form.handle')")
+          v-text-field.group-form__handle#group-handle(
+            v-model='group.handle'
+            :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})"
+            maxlength='100'
+            :label="$t('group_form.handle')"
+          )
           validation-errors(:subject="group" field="handle")
         v-spacer
 
@@ -201,7 +210,7 @@ v-card.group-form
         lmo-textarea.group-form__group-description(:model='group' field="description", :placeholder="$t('group_form.description_placeholder')", :label="$t('group_form.description')")
         validation-errors(:subject="group" field="name")
 
-    v-tab-item
+    v-window-item(value="privacy")
       .mt-8.px-4
         .group-form__section.group-form__privacy
           v-radio-group(v-model='group.groupPrivacy')
@@ -212,7 +221,7 @@ v-card.group-form
               :value='privacy'
               :aria-label='privacy'
             )
-              template(slot='label')
+              template(v-slot:label)
                 .group-form__privacy-title
                   strong(v-t="'common.privacy.' + privacy")
                   mid-dot
@@ -228,10 +237,10 @@ v-card.group-form
               :class="'group-form__membership-granted-upon-' + granted"
               :value='granted'
             )
-              template(slot='label')
+              template(v-slot:label)
                 span(v-t="'group_form.membership_granted_upon_' + granted")
 
-    v-tab-item
+    v-window-item(value="permissions")
       .mt-8.px-4.group-form__section.group-form__permissions
         p.group-form__privacy-statement.text--secondary(v-t="'group_form.permissions_explaination'")
         //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='group.privacyIsClosed() && !group.isSubgroupOfSecretParent()')
@@ -306,7 +315,7 @@ v-card.group-form
               br
               span.text-caption(v-t="'group_form.admins_can_edit_user_content_help'")
 
-  v-card-actions.ml-2.mr-2.mt-4
+  v-card-actions
     help-link(path="en/user_manual/groups/settings")
     v-spacer
     v-btn.group-form__submit-button(color="primary" @click='submit()')
@@ -314,6 +323,7 @@ v-card.group-form
       span(v-if='group.isNew() && !group.isParent()' v-t="'group_form.submit_start_subgroup'")
       span(v-if='!group.isNew()' v-t="'common.action.update_settings'")
 </template>
+
 <style lang="sass">
 .lmo-font-12px
   font-size: 12px
