@@ -62,7 +62,7 @@ export default {
     groups() {
       return this.discussion.group().parentsAndSelf().map(group => {
         return {
-          text: group.name,
+          title: group.name,
           disabled: false,
           to: this.urlFor(group)
         };

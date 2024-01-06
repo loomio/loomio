@@ -42,7 +42,7 @@ export default {
     breadcrumbs() {
       return compact([this.discussionTemplate.group().parentId && this.discussionTemplate.group().parent(), this.discussionTemplate.group()]).map(g => {
         return {
-          text: g.name,
+          title: g.name,
           disabled: false,
           to: this.urlFor(g)
         };

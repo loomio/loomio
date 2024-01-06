@@ -149,7 +149,7 @@ export default {
     breadcrumbs() {
       return compact([this.pollTemplate.group().parentId && this.pollTemplate.group().parent(), this.pollTemplate.group()]).map(g => {
         return {
-          text: g.name,
+          title: g.name,
           disabled: false,
           to: this.urlFor(g)
         };

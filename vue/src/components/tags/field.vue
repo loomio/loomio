@@ -23,7 +23,7 @@ export default {
 
     colorFor(name) {
       return (
-        this.model.group().tags().find(t => t.name === name) || 
+        this.model.group().tags().find(t => t.name === name) ||
         this.model.group().parentOrSelf().tags().find(t => t.name === name) ||
         {}
       ).color;
@@ -50,7 +50,6 @@ export default {
 <template lang="pug">
 v-combobox.tags-field__input(
   multiple
-  hide-selected
   v-model='model.tags'
   :label="$t('loomio_tags.tags')"
   :items='items'
@@ -58,14 +57,10 @@ v-combobox.tags-field__input(
   template(v-slot:selection='data')
     v-chip.chip--select-multi(
       :key="JSON.stringify(data.item)"
-      :value='data.item'
-      close
-      outlined
+      v-bind="data.attrs"
+      :model-value="data.selected"
+      :disabled="data.disabled"
       :color='colorFor(data.item)'
-      @click:close='remove(data)')
-      span {{ data.item }}
-  template(v-slot:item='data')
-    v-chip.chip--select-multi(outlined :color='colorFor(data.item)' )
-      span {{ data.item }}
+      @click:close='remove(data)') {{ data.item.title }}
 
 </template>

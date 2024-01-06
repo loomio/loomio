@@ -15,13 +15,13 @@ export default
       return map(compact([(this.poll.groupId && this.poll.group()), (this.poll.discussionId && this.poll.discussion())]), model => {
         if (model.isA('discussion')) {
           return {
-            text: model.name || model.title,
+            title: model.name || model.title,
             disabled: false,
             to: this.urlFor(model)+'/'+this.poll.createdEvent().sequenceId
           };
         } else {
           return {
-            text: model.name || model.title,
+            title: model.name || model.title,
             disabled: false,
             to: this.urlFor(model)
           };
