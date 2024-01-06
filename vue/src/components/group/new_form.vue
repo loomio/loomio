@@ -10,9 +10,12 @@ import Flash   from '@/shared/services/flash';
 import { isEmpty, debounce } from 'lodash-es';
 import openModal from '@/shared/helpers/open_modal';
 import I18n from '@/i18n';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  mixins: [WatchRecords, UrlFor],
   props: {
     group: Object
   },

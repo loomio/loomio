@@ -34,13 +34,12 @@ export default
 
 <template lang="pug">
 v-menu
-  template(v-slot:activator="{ attrs }")
-    div.rounded-lg
-      v-btn.drop-down-button(size="x-small" variant="text" icon :outlined="showOutline" :title="$t('formatting.alignment')")
-        common-icon(small :name="'mdi-format-align-'+current")
-  v-list(dense)
+  template(v-slot:activator="{ props }")
+    v-btn.drop-down-button(v-bind="props" size="x-small" variant="text" icon :outlined="showOutline" :title="$t('formatting.alignment')")
+      common-icon(small :name="'mdi-format-align-'+current")
+  v-list(density="compact")
     v-list-item(v-for="(item, index) in alignments" :key="index" :class="{ 'v-list-item--active': editor.isActive({ textAlign: item.value }) }" @click="editor.chain().focus().setTextAlign(item.value).run()")
-      v-list-item-icon
+      template(v-slot:prepend)
         common-icon(small :name="'mdi-format-align-'+item.value")
       v-list-item-title(v-t="item.label")
 </template>

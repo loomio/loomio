@@ -191,7 +191,7 @@ v-main
       v-card.profile-page-card.mt-4
         v-list
           v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()" :class="'user-page__' + key")
-            v-list-item-icon
+            template(v-slot:prepend)
               common-icon(:name="action.icon")
             v-list-item-title(v-t="action.name")
 

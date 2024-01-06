@@ -103,15 +103,12 @@ export default
     v-alert.text-center.text--secondary(v-if="emails.length == 0" v-t="'email_to_group.no_emails_to_release'")
     v-list(v-else two-line)
       v-list-item(v-for="email in emails" :key="email.id")
-        v-list-item-content
-          v-list-item-title
-            span {{email.senderName}} &lt;{{email.senderEmail}}&gt;
-          v-list-item-subtitle {{email.subject}}
-
-        v-list-item-action
+        v-list-item-title
+          span {{email.senderName}} &lt;{{email.senderEmail}}&gt;
+        v-list-item-subtitle {{email.subject}}
+        template(v-slot:append)
           v-btn.group-emails-panel__approve(text icon @click='allow(email)' :title="$t('membership_requests_page.approve')")
             common-icon(name="mdi-check")
-        v-list-item-action
           v-btn.group-emails-panel__delete(text icon @click='block(email)' :title="$t('membership_requests_page.ignore')")
             common-icon(name="mdi-cancel")
 
@@ -120,16 +117,14 @@ export default
     v-card.mt-4(outlined)
       v-list(two-line)
         v-list-item(v-for="alias in aliases" :key="alias.id")
-          v-list-item-content
-            v-list-item-title
-              span {{alias.email}}
-            v-list-item-subtitle
-              span(v-if="alias.user_id" v-t="{path: 'email_to_group.belongs_to_name', args: {name: userById(alias.user_id).name}}")
-              span(v-if="!alias.user_id" v-t="'membership_requests_page.ignore'")
-              mid-dot
-              time-ago(:date='alias.created_at')
-
-          v-list-item-action
+          v-list-item-title
+            span {{alias.email}}
+          v-list-item-subtitle
+            span(v-if="alias.user_id" v-t="{path: 'email_to_group.belongs_to_name', args: {name: userById(alias.user_id).name}}")
+            span(v-if="!alias.user_id" v-t="'membership_requests_page.ignore'")
+            mid-dot
+            time-ago(:date='alias.created_at')
+          template(v-slot:append)
             v-btn.group-emails-panel__delete(text icon @click='destroyAlias(alias)' title="destroy")
               common-icon(name="mdi-delete")
 </template>

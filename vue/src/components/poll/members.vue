@@ -192,15 +192,14 @@ export default {
       space
       span ({{users.length}} / {{poll.votersCount}})
     v-list-item(v-for="user in users" :key="user.id")
-      v-list-item-avatar
+      template(v-slot:append)
         user-avatar(:user="user" :size="24")
-      v-list-item-content
-        v-list-item-title
-          span.mr-2 {{user.nameWithTitle(poll.group())}}
-          v-chip.mr-1(v-if="!isMember[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
+      v-list-item-title
+        span.mr-2 {{user.nameWithTitle(poll.group())}}
+        v-chip.mr-1(v-if="!isMember[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+        v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
 
-      v-list-item-action
+      template(v-slot:append)
         v-menu(offset-y)
           template(v-slot:activator="{attrs}")
             v-btn.membership-dropdown__button(icon v-bind="attrs")

@@ -4,8 +4,11 @@ import StanceService        from '@/shared/services/stance_service';
 import AbilityService from '@/shared/services/ability_service';
 import openModal from '@/shared/helpers/open_modal';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
+
   props: {
     event: Object,
     eventable: Object,
@@ -55,7 +58,7 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
       formatted-text.poll-common-stance-created__reason(:model="eventable", column="reason")
       link-previews(:model="eventable")
       attachment-list(:attachments="eventable.attachments")
-    action-dock(:model='eventable', :actions='actions' small left)
+    action-dock(:model='eventable', :actions='actions' size="small" left)
   template(v-if="!eventable.castAt && !eventable.revokedAt")
     .d-flex
       component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
@@ -64,7 +67,7 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
       mid-dot.text--secondary
       router-link.text--secondary(:to='link')
         time-ago(:date='eventable.updatedAt')
-    action-dock(:model='eventable', :actions='actions' small)
+    action-dock(:model='eventable', :actions='actions' size="small")
   template(v-if="eventable.revokedAt")
     .d-flex
       component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
@@ -73,5 +76,5 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
       mid-dot.text--secondary
       router-link.text--secondary(:to='link')
         time-ago(:date='eventable.updatedAt')
-    action-dock(:model='eventable', :actions='actions' small)
+    action-dock(:model='eventable' :actions='actions' size="small")
 </template>
