@@ -1813,6 +1813,10 @@ en:
     gradients_of_agreement_title: Gradients of agreement
 
   poll_option_form:
+    thumb_up: Thumb up
+    thumb_down: Thumb down
+    thumb_sideways: Thumb sideways
+    hand_up: Hand up
     edit_option: Edit option
     option_name: Option name
     option_name_hint: A short name for this option

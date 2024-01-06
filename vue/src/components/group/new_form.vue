@@ -34,12 +34,12 @@ export default
     this.watchRecords({
       collections: ['groups', 'memberships'],
       query: records => {
-        this.parentGroups = [{value: null, text: I18n.global.t('common.none')}];
+        this.parentGroups = [{value: null, title: I18n.global.t('common.none')}];
         this.parentGroups = this.parentGroups.concat(Session.user().parentGroups().
           filter(g => AbilityService.canCreateSubgroups(g)).
           map(g => ({
           value: g.id,
-          text: g.name
+          title: g.name
         }))
         );
       }
@@ -111,7 +111,7 @@ export default
     categoryItems() {
       // ['board', 'community', 'coop', 'membership', 'nonprofit', 'party', 'professional', 'self_managing', 'union', 'other'].map (category) ->
       return ['board', 'membership', 'self_managing', 'other'].map(category => ({
-        text: I18n.global.t('group_survey.categories.'+category),
+        title: I18n.global.t('group_survey.categories.'+category),
         value: category
       }));
     }, 

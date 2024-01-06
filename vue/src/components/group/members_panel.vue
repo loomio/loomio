@@ -23,10 +23,10 @@ export default
       per: 25,
       order: 'created_at desc',
       orders: [
-        {text: I18n.global.t('members_panel.order_by_name'),  value:'users.name' },
-        {text: I18n.global.t('members_panel.order_by_created'), value:'memberships.created_at' },
-        {text: I18n.global.t('members_panel.order_by_created_desc'), value:'memberships.created_at desc' },
-        {text: I18n.global.t('members_panel.order_by_admin_desc'), value:'admin desc' }
+        {title: I18n.global.t('members_panel.order_by_name'),  value:'users.name' },
+        {title: I18n.global.t('members_panel.order_by_created'), value:'memberships.created_at' },
+        {title: I18n.global.t('members_panel.order_by_created_desc'), value:'memberships.created_at desc' },
+        {title: I18n.global.t('members_panel.order_by_admin_desc'), value:'admin desc' }
       ],
       memberships: []
     };

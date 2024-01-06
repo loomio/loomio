@@ -99,8 +99,8 @@ export default {
     },
 
     updateGroupItems() {
-      this.groupItems = [{text: I18n.global.t('discussion_form.none_invite_only_thread'), value: null}].concat(Session.user().groups().map(g => ({
-        text: g.fullName,
+      this.groupItems = [{title: I18n.global.t('discussion_form.none_invite_only_thread'), value: null}].concat(Session.user().groups().map(g => ({
+        title: g.fullName,
         value: g.id
       })));
     },

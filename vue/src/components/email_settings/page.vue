@@ -69,16 +69,16 @@ export default {
   computed: {
     emailDays() {
       return [
-        {value: null, text: I18n.global.t('email_settings_page.never')},
-        {value: 7, text: I18n.global.t('email_settings_page.every_day')},
-        {value: 8, text: I18n.global.t('email_settings_page.every_second_day')},
-        {value: 1, text: I18n.global.t('email_settings_page.monday')},
-        {value: 2, text: I18n.global.t('email_settings_page.tuesday')},
-        {value: 3, text: I18n.global.t('email_settings_page.wednesday')},
-        {value: 4, text: I18n.global.t('email_settings_page.thursday')},
-        {value: 5, text: I18n.global.t('email_settings_page.friday')},
-        {value: 6, text: I18n.global.t('email_settings_page.saturday')},
-        {value: 0, text: I18n.global.t('email_settings_page.sunday')}
+        {value: null, title: I18n.global.t('email_settings_page.never')},
+        {value: 7, title: I18n.global.t('email_settings_page.every_day')},
+        {value: 8, title: I18n.global.t('email_settings_page.every_second_day')},
+        {value: 1, title: I18n.global.t('email_settings_page.monday')},
+        {value: 2, title: I18n.global.t('email_settings_page.tuesday')},
+        {value: 3, title: I18n.global.t('email_settings_page.wednesday')},
+        {value: 4, title: I18n.global.t('email_settings_page.thursday')},
+        {value: 5, title: I18n.global.t('email_settings_page.friday')},
+        {value: 6, title: I18n.global.t('email_settings_page.saturday')},
+        {value: 0, title: I18n.global.t('email_settings_page.sunday')}
       ];
     },
     actions() { return pick(UserService.actions(Session.user(), this), ['reactivate_user', 'deactivate_user']); },

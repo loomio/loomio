@@ -65,9 +65,9 @@ export default {
 
       currentHideResults: this.pollTemplate.hideResults,
       hideResultsItems: [
-        { text: I18n.global.t('common.off'), value: 'off' },
-        { text: I18n.global.t('poll_common_card.until_you_vote'), value: 'until_vote' },
-        { text: I18n.global.t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
+        { title: I18n.global.t('common.off'), value: 'off' },
+        { title: I18n.global.t('poll_common_card.until_you_vote'), value: 'until_vote' },
+        { title: I18n.global.t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
       ]
     };
   },
@@ -158,7 +158,7 @@ export default {
 
     votingMethodsItems() {
       return without(Object.keys(this.votingMethodsI18n), 'count').map(key => {
-        return {text: I18n.global.t(this.votingMethodsI18n[key].title), value: key};
+        return {title: I18n.global.t(this.votingMethodsI18n[key].title), value: key};
       });
     },
 
@@ -169,9 +169,9 @@ export default {
     allowAnonymous() { return !this.pollTemplate.config().prevent_anonymous; },
     stanceReasonRequiredItems() {
       return [
-        {text: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
-        {text: I18n.global.t('poll_common_form.stance_reason_optional'), value: 'optional'},
-        {text: I18n.global.t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
+        {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
+        {title: I18n.global.t('poll_common_form.stance_reason_optional'), value: 'optional'},
+        {title: I18n.global.t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
       ];
     },
 
@@ -185,7 +185,7 @@ export default {
 
     closingSoonItems() {
       return 'nobody author undecided_voters voters'.split(' ').map(name => {
-        return {text: I18n.global.t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
+        return {title: I18n.global.t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
       });
     },
 
@@ -195,7 +195,7 @@ export default {
       return compact('agree abstain disagree consent objection block yes no'.split(' ').map(name => {
         if (this.pollTemplate.pollOptionNames.includes(name)) { return null; }
         return {
-          text: I18n.global.t('poll_proposal_options.'+name),
+          title: I18n.global.t('poll_proposal_options.'+name),
           value: name
         };
       }));

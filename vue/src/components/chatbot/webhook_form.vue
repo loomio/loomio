@@ -15,10 +15,10 @@ export default {
       kinds: AppConfig.webhookEventKinds,
       testing: false,
       formats: [
-        {text: I18n.global.t('webhook.formats.markdown'), value: "markdown"},
-        {text: I18n.global.t('webhook.formats.microsoft'), value: "microsoft"},
-        {text: I18n.global.t('webhook.formats.slack'), value: "slack"},
-        {text: I18n.global.t('webhook.formats.discord'), value: "discord"}
+        {title: I18n.global.t('webhook.formats.markdown'), value: "markdown"},
+        {title: I18n.global.t('webhook.formats.microsoft'), value: "microsoft"},
+        {title: I18n.global.t('webhook.formats.slack'), value: "slack"},
+        {title: I18n.global.t('webhook.formats.discord'), value: "discord"}
         ]
     };
   },

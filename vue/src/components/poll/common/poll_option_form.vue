@@ -15,10 +15,10 @@ export default {
     return {
       nameRules: [v => (v.length <= 60) || I18n.global.t("poll_option_form.option_name_validation")],
       icons: [
-        {text: 'Thumbs up', value: 'agree'},
-        {text: 'Thumbs down', value: 'disagree'},
-        {text: 'Thumbs sideways', value: 'abstain'},
-        {text: 'Hand up', value: 'block'}
+        {title: I18n.global.t('poll_option_form.thumb_up'), value: 'agree'},
+        {title: I18n.global.t('poll_option_form.thumb_down'), value: 'disagree'},
+        {title: I18n.global.t('poll_option_form.thumb_sideways'), value: 'abstain'},
+        {title: I18n.global.t('poll_option_form.hand_up'), value: 'block'}
       ]
     };
   },
@@ -26,7 +26,8 @@ export default {
   computed: {
     hasOptionIcon() { return this.poll.config().has_option_icon; },
     hasOptionPrompt() { return this.poll.config().per_option_reason_prompt; },
-    hasOptionMeaning() { return this.poll.config().options_have_meaning; }
+    hasOptionMeaning() { return this.poll.config().options_have_meaning; },
+    cardTitle() { return this.edit ? 'poll_option_form.edit_option' : 'poll_poll_form.add_option_placeholder' }
   },
 
   methods: {
@@ -39,11 +40,8 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.poll-common-option-form
-  v-card-title
-    h1.text-h5(v-if="edit" v-t="$t('poll_option_form.edit_option')")
-    h1.text-h5(v-else v-t="$t('poll_poll_form.add_option_placeholder')")
-    v-spacer
+v-card.poll-common-option-form(:title="$t(cardTitle)")
+  template(v-slot:append)
     dismiss-modal-button
   v-card-text
     v-text-field.poll-option-form__name(
@@ -54,7 +52,7 @@ v-card.poll-common-option-form
       counter
       :rules="nameRules"
     )
-    v-select(v-if="hasOptionIcon", :label="$t('poll_option_form.icon')" v-model="pollOption.icon", :items="icons")
+    v-select(v-if="hasOptionIcon" :label="$t('poll_option_form.icon')" v-model="pollOption.icon" :items="icons")
     v-textarea(
       v-if="hasOptionMeaning"
       :label="$t('poll_option_form.meaning')"

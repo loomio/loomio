@@ -46,18 +46,18 @@ export default {
       users: {},
       type: null,
       typeItems: [
-        {text: I18n.global.t('search_modal.all_content'), value: null},
-        {text: I18n.global.t('group_page.threads'), value: 'Discussion'},
-        {text: I18n.global.t('navbar.search.comments'), value: 'Comment'},
-        {text: I18n.global.t('group_page.decisions'), value: 'Poll'},
-        {text: I18n.global.t('poll_common.votes'), value: 'Stance'},
-        {text: I18n.global.t('poll_common.outcomes'), value: 'Outcome'},
+        {title: I18n.global.t('search_modal.all_content'), value: null},
+        {title: I18n.global.t('group_page.threads'), value: 'Discussion'},
+        {title: I18n.global.t('navbar.search.comments'), value: 'Comment'},
+        {title: I18n.global.t('group_page.decisions'), value: 'Poll'},
+        {title: I18n.global.t('poll_common.votes'), value: 'Stance'},
+        {title: I18n.global.t('poll_common.outcomes'), value: 'Outcome'},
       ],
       orgItems: [
-        {text: I18n.global.t('sidebar.all_groups'), value: null},
-        {text: I18n.global.t('sidebar.invite_only_threads'), value: 0}
+        {title: I18n.global.t('sidebar.all_groups'), value: null},
+        {title: I18n.global.t('sidebar.invite_only_threads'), value: 0}
       ].concat(Session.user().parentGroups().map(g => ({
-        text: g.name,
+        title: g.name,
         value: g.id
       }))),
       orgId: null,
@@ -65,9 +65,9 @@ export default {
       groupId: null,
       order: null,
       orderItems: [
-        {text: I18n.global.t('search_modal.best_match'), value: null},
-        {text: I18n.global.t('strand_nav.newest'), value: "authored_at_desc"},
-        {text: I18n.global.t('strand_nav.oldest'), value: "authored_at_asc"},
+        {title: I18n.global.t('search_modal.best_match'), value: null},
+        {title: I18n.global.t('strand_nav.newest'), value: "authored_at_desc"},
+        {title: I18n.global.t('strand_nav.oldest'), value: "authored_at_asc"},
       ],
       tag: null,
       tagItems: [],
@@ -129,8 +129,8 @@ export default {
     },
 
     updateTagItems(group) {
-      this.tagItems = [{text: I18n.global.t('search_modal.any_tag'), value: null}].concat(group.tagsByName().map(t => ({
-        text: t.name,
+      this.tagItems = [{title: I18n.global.t('search_modal.any_tag'), value: null}].concat(group.tagsByName().map(t => ({
+        title: t.name,
         value: t.name
       })));
     }
@@ -141,12 +141,12 @@ export default {
       if (this.orgId) {
         this.group = Records.groups.find(this.orgId);
         const base = [
-          {text: I18n.global.t('search_modal.all_subgroups'), value: null},
-          {text: I18n.global.t('search_modal.parent_only'), value: this.orgId},
+          {title: I18n.global.t('search_modal.all_subgroups'), value: null},
+          {title: I18n.global.t('search_modal.parent_only'), value: this.orgId},
         ];
         this.updateTagItems(this.group);
         this.groupItems = base.concat(this.group.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user())).map(g => ({
-          text: g.name,
+          title: g.name,
           value: g.id
         })));
       } else {

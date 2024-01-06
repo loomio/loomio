@@ -22,7 +22,7 @@ export default {
   mounted() {
     this.groups = Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => {
       return {
-        text: g.fullName,
+        title: g.fullName,
         value: g.id,
         disabled: (g.id === this.poll.groupId)
       };

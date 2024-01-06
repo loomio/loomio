@@ -41,7 +41,7 @@ export default {
     dateTimeFormats() {
       const observeLocale = this.user.selectedLocale; // tell vue this matters
       return 'iso day_iso abbr day_abbr'.split(' ').map(pref => {
-        return {value: pref, text: exact(this.currentTime, this.user.timeZone, pref)};
+        return {value: pref, title: exact(this.currentTime, this.user.timeZone, pref)};
       });
     },
     actions() { return UserService.actions(Session.user(), this); },

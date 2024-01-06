@@ -35,9 +35,9 @@ export default {
       collections: ['groups', 'memberships'],
       query: () => {
         return this.groupItems = [
-          {text: I18n.global.t('discussion_form.none_invite_only_thread'), value: null}
+          {title: I18n.global.t('discussion_form.none_invite_only_thread'), value: null}
         ].concat(Session.user().groups().filter( g => AbilityService.canStartPoll(g)).map(g => ({
-          text: g.fullName,
+          title: g.fullName,
           value: g.id
         })));
     }});
@@ -78,17 +78,17 @@ export default {
         }
       },
 
-      chartTypeItems: [
-        {text: 'bar', value: 'bar'},
-        {text: 'pie', value: 'pie'},
-        {text: 'grid', value: 'grid'}
-      ],
+      // chartTypeItems: [
+      //   {text: 'bar', value: 'bar'},
+      //   {text: 'pie', value: 'pie'},
+      //   {text: 'grid', value: 'grid'}
+      // ],
 
       currentHideResults: this.poll.hideResults,
       hideResultsItems: [
-        { text: I18n.global.t('common.off'), value: 'off' },
-        { text: I18n.global.t('poll_common_card.until_you_vote'), value: 'until_vote' },
-        { text: I18n.global.t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
+        { title: I18n.global.t('common.off'), value: 'off' },
+        { title: I18n.global.t('poll_common_card.until_you_vote'), value: 'until_vote' },
+        { title: I18n.global.t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
       ],
       newDateOption: startOfHour(setHours(new Date(), 12)),
       minDate: new Date(),
@@ -209,7 +209,7 @@ export default {
 
     votingMethodsItems() {
       return Object.keys(this.votingMethodsI18n).map(key => {
-        return {text: I18n.global.t(this.votingMethodsI18n[key].title), value: key};
+        return {title: I18n.global.t(this.votingMethodsI18n[key].title), value: key};
     });
     },
 
@@ -231,9 +231,9 @@ export default {
     allowAnonymous() { return !this.poll.config().prevent_anonymous; },
     stanceReasonRequiredItems() {
       return [
-        {text: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
-        {text: I18n.global.t('poll_common_form.stance_reason_optional'), value: 'optional'},
-        {text: I18n.global.t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
+        {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
+        {title: I18n.global.t('poll_common_form.stance_reason_optional'), value: 'optional'},
+        {title: I18n.global.t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
       ];
     },
 
@@ -251,22 +251,22 @@ export default {
 
     closingSoonItems() {
       return 'nobody author undecided_voters voters'.split(' ').map(name => {
-        return {text: I18n.global.t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
+        return {title: I18n.global.t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
     });
     },
 
     optionFormat() { return this.poll.pollOptionNameFormat; },
-    hasOptionIcon() { return this.poll.config().has_option_icon; },
-    i18nItems() { 
-      return compact('agree abstain disagree consent objection block yes no'.split(' ').map(name => {
-        if (this.poll.pollOptionNames.includes(name)) { return null; }
-        return {
-          text: I18n.global.t('poll_proposal_options.'+name),
-          value: name
-        };
-      })
-      );
-    }
+    hasOptionIcon() { return this.poll.config().has_option_icon; }
+    // i18nItems() {
+    //   return compact('agree abstain disagree consent objection block yes no'.split(' ').map(name => {
+    //     if (this.poll.pollOptionNames.includes(name)) { return null; }
+    //     return {
+    //       title: I18n.global.t('poll_proposal_options.'+name),
+    //       value: name
+    //     };
+    //   })
+    //   );
+    // }
   }
 };
 </script>

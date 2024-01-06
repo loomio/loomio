@@ -15,12 +15,12 @@ export default
       remind: 0,
       checked: this.node.attrs.checked,
       reminders: [
-        {text: I18n.global.t('tasks.no_reminder'), value: null},
-        {text: I18n.global.t('tasks.on_due_date'), value: 0},
-        {text: I18n.global.t('tasks.1_day_before'), value: 1},
-        {text: I18n.global.t('tasks.2_day_before'), value: 2},
-        {text: I18n.global.t('tasks.3_day_before'), value: 3},
-        {text: I18n.global.t('tasks.7_day_before'), value: 7}
+        {title: I18n.global.t('tasks.no_reminder'), value: null},
+        {title: I18n.global.t('tasks.on_due_date'), value: 0},
+        {title: I18n.global.t('tasks.1_day_before'), value: 1},
+        {title: I18n.global.t('tasks.2_day_before'), value: 2},
+        {title: I18n.global.t('tasks.3_day_before'), value: 3},
+        {title: I18n.global.t('tasks.7_day_before'), value: 7}
       ],
       mentioned: []
     };
