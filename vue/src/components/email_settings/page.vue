@@ -5,7 +5,6 @@ import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import AppConfig      from '@/shared/services/app_config';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
-import ChangeVolumeModalMixin from '@/mixins/change_volume_modal';
 import { sortBy, pick } from 'lodash-es';
 import UserService from '@/shared/services/user_service';
 import Flash from '@/shared/services/flash';
