@@ -45,8 +45,9 @@ div
       :autofocus="autofocus"
       :shouldReset="shouldReset"
     )
-      template(v-for="(_, name) in $scopedSlots", :slot="name" slot-scope="slotData")
-        slot(:name="name", v-bind="slotData")
+      template(v-for="(_, name) in $slots" v-slot:[name]="slotProps")
+        slot(v-if="slotProps" :name="name" v-bind="slotProps")
+        slot(v-else :name="name")
     md-editor(
       v-if="format == 'md'"
       :focus-id="focusId"
@@ -57,7 +58,8 @@ div
       :autofocus="autofocus"
       :shouldReset="shouldReset"
     )
-      template(v-for="(_, name) in $scopedSlots", :slot="name", slot-scope="slotData")
-        slot(:name="name" v-bind="slotData")
+      template(v-for="(_, name) in $slots" v-slot:[name]="slotProps")
+        slot(v-if="slotProps" :name="name" v-bind="slotProps")
+        slot(v-else :name="name")
 
 </template>

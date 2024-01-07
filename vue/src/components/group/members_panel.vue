@@ -170,7 +170,7 @@ export default
     },
 
     canAddMembers() {
-      return AbilityService.canAddMembersToGroup(this.group) && !this.$route.query.filter == 'pending';
+      return AbilityService.canAddMembersToGroup(this.group);
     },
 
     showAdminWarning() {
