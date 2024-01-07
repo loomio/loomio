@@ -316,22 +316,22 @@ div
     editor-content.html-editor__textarea(ref="editor", :editor='editor').lmo-markdown-wrapper
     v-sheet.menubar
       div
-        v-layout(align-center v-if="editor.isActive('table')")
-          v-btn(icon size="x-small" variant="text" @click="editor.chain().deleteTable().focus().run()", :title="$t('formatting.remove_table')")
+        .d-flex.align-center(v-if="editor.isActive('table')")
+          v-btn(icon size="x-small" variant="text" @click="editor.chain().deleteTable().focus().run()" :title="$t('formatting.remove_table')")
             common-icon(size="x-small" name="mdi-table-remove")
-          v-btn(size="x-small" icon variant="text" @click="editor.chain().addColumnBefore().focus().run()", :title="$t('formatting.add_column_before')")
+          v-btn(icon size="x-small" variant="text" @click="editor.chain().addColumnBefore().focus().run()" :title="$t('formatting.add_column_before')")
             common-icon(size="x-small" name="mdi-table-column-plus-before")
-          v-btn(icon variant="text" @click="editor.chain().addColumnAfter().focus().run()", :title="$t('formatting.add_column_after')")
+          v-btn(icon size="x-small" variant="text" @click="editor.chain().addColumnAfter().focus().run()" :title="$t('formatting.add_column_after')")
             common-icon(size="x-small" name="mdi-table-column-plus-after")
-          v-btn(icon variant="text" @click="editor.chain().deleteColumn().focus().run()", :title="$t('formatting.remove_column')")
+          v-btn(icon size="x-small" variant="text" @click="editor.chain().deleteColumn().focus().run()" :title="$t('formatting.remove_column')")
             common-icon(size="x-small" name="mdi-table-column-remove")
-          v-btn(icon variant="text" @click="editor.chain().addRowBefore().focus().run()", :title="$t('formatting.add_row_before')")
+          v-btn(icon size="x-small" variant="text" @click="editor.chain().addRowBefore().focus().run()" :title="$t('formatting.add_row_before')")
             common-icon(size="x-small" name="mdi-table-row-plus-before")
-          v-btn(icon variant="text" @click="editor.chain().addRowAfter().focus().run()", :title="$t('formatting.add_row_after')")
+          v-btn(icon size="x-small" variant="text" @click="editor.chain().addRowAfter().focus().run()" :title="$t('formatting.add_row_after')")
             common-icon(size="x-small" name="mdi-table-row-plus-after")
-          v-btn(icon variant="text" @click="editor.chain().deleteRow().focus().run()", :title="$t('formatting.remove_row')")
+          v-btn(icon size="x-small" variant="text" @click="editor.chain().deleteRow().focus().run()" :title="$t('formatting.remove_row')")
             common-icon(size="x-small" name="mdi-table-row-remove")
-          v-btn(icon variant="text" @click="editor.chain().mergeOrSplit().focus().run()", :title="$t('formatting.merge_selected')")
+          v-btn(icon size="x-small" variant="text" @click="editor.chain().mergeOrSplit().focus().run()" :title="$t('formatting.merge_selected')")
             common-icon(size="x-small" name="mdi-table-merge-cells")
 
         .d-flex.py-2.justify-space-between.flex-wrap.align-center(align-center)
@@ -412,16 +412,16 @@ div
             template(v-if="expanded")
               //- strikethrough
               v-menu(size="x-small" :close-on-content-click="false" v-model="iframeDialogIsOpen" min-width="320px")
-                template(v-slot:activator="{on}")
-                  v-btn(size="x-small" icon variant="text" v-on="on", :title="$t('formatting.embed')")
+                template(v-slot:activator="{ props }")
+                  v-btn(size="x-small" icon variant="text" v-bind="props", :title="$t('formatting.embed')")
                     common-icon(size="x-small" name="mdi-youtube")
-                v-card
-                  v-card-title.title(v-t="'text_editor.insert_embedded_url'")
+                v-card(style="min-width: 365px")
+                  v-card-title(v-t="'text_editor.insert_embedded_url'")
                   v-card-text
                     v-text-field(type="url" label="e.g. https://www.youtube.com/watch?v=Zlzuqsunpxc" v-model="iframeUrl" ref="focus" autofocus v-on:keyup.enter="setIframeUrl()")
                   v-card-actions
                     v-spacer
-                    v-btn(size="x-small" color="primary" @click="setIframeUrl()" v-t="'common.action.apply'")
+                    v-btn(color="primary" @click="setIframeUrl()" v-t="'common.action.apply'")
               //- blockquote
               v-btn(size="x-small" icon variant="text" @click='editor.chain().toggleBlockquote().focus().run()', :outlined="editor.isActive('blockquote')", :title="$t('formatting.blockquote')")
                 common-icon(size="x-small" name="mdi-format-quote-close")

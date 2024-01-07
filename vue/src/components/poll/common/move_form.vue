@@ -42,12 +42,13 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.poll-common-move-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
-  submit-overlay(:value="poll.processing")
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="{path: 'poll_common_move_form.title', args: {poll_type: poll.translatedPollType() }}")
-    v-spacer
+v-card.poll-common-move-form(
+  :title="$t('poll_common_move_form.title', {poll_type: poll.translatedPollType()})"
+  @keyup.ctrl.enter="submit()"
+  @keydown.meta.enter.stop.capture="submit()")
+  template(v-slot:append)
     dismiss-modal-button
+  submit-overlay(:value="poll.processing")
   v-card-text
     loading(v-if="!groups.length")
     v-select(v-if="groups.length" v-model="groupId" :items="groups" :label="$t('move_thread_form.body')")

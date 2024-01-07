@@ -6,7 +6,7 @@ import AbilityService from '@/shared/services/ability_service';
 import StanceService from '@/shared/services/stance_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
-import i18n          from '@/i18n';
+import I18n          from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 import { startOfHour, addDays, format } from 'date-fns';
@@ -154,12 +154,13 @@ export default new class PollService {
                   openSetOutcomeModal(poll);
                 },
                 text: {
-                  title: 'poll_common_close_form.title',
+                  title: 'poll_common.close_poll_type',
                   helptext: 'poll_common_close_form.helptext',
                   flash: 'poll_common_close_form.poll_type_closed'
                 },
                 textArgs: {
-                  poll_type: poll.translatedPollType()
+                  poll_type: poll.translatedPollType(),
+                  pollType: poll.translatedPollType()
                 }
               }
             }
@@ -291,7 +292,7 @@ export default new class PollService {
               confirm: {
                 submit() { return poll.discard(); },
                 text: {
-                  raw_title: i18n.t('poll_common_delete_modal.title', {pollType: i18n.t(poll.pollTypeKey())}),
+                  raw_title: I18n.global.t('poll_common_delete_modal.title', {pollType: I18n.global.t(poll.pollTypeKey())}),
                   helptext: 'poll_common_delete_modal.question',
                   flash: 'poll_common_delete_modal.success'
                 }
