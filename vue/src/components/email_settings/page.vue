@@ -5,13 +5,15 @@ import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import AppConfig      from '@/shared/services/app_config';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
-import { sortBy, pick } from 'lodash-es';
+import { sortBy, pick, filter } from 'lodash-es';
 import UserService from '@/shared/services/user_service';
 import Flash from '@/shared/services/flash';
 import I18n from '@/i18n';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
-  mixins: [ChangeVolumeModalMixin],
+  mixins: [WatchRecords],
+
   data() {
     return {
       newsletterEnabled: AppConfig.newsletterEnabled,
@@ -86,7 +88,7 @@ export default {
         {value: 0, title: I18n.global.t('email_settings_page.sunday')}
       ];
     },
-    actions() { return pick(UserService.actions(Session.user(), this), ['reactivate_user', 'deactivate_user']); },
+    actions() { return filter(pick(UserService.actions(Session.user(), this), ['reactivate_user', 'deactivate_user']), action => action.canPerform()); },
 
     defaultSettingsDescription() {
       return `email_settings_page.default_settings.${Session.user().defaultMembershipVolume}_description`;
@@ -109,31 +111,31 @@ v-main
       //- v-card-title
       //-   h1.text-h5(tabindex="-1" v-t="'email_settings_page.header'")
       v-card-text
-        .email-settings-page__email-settings
-          .email-settings-page__global-settings
-            form
-              .email-settings-page__global-settings
-                v-checkbox#mentioned-email.md-checkbox--with-summary.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
-                  div(slot="label")
-                    strong(v-t="'email_settings_page.mentioned_label'")
-                    .email-settings-page__input-description(v-t="'email_settings_page.mentioned_description'")
-                v-checkbox#on-participation-email.md-checkbox--with-summary.email-settings-page__on-participation(v-model='user.emailOnParticipation')
-                  div(slot="label")
-                    strong(v-t="'email_settings_page.on_participation_label'")
-                    .email-settings-page__input-description(v-t="'email_settings_page.on_participation_description'")
-                .text-subtitle-1
-                  strong(v-t="'email_settings_page.email_catch_up_day'")
-                p(v-t="'email_settings_page.daily_summary_description'")
-                v-select#email-catch-up-day(
-                  solo
-                  max-width="100px"
-                  :items="emailDays"
-                  :label="$t('email_settings_page.email_catch_up_day')"
-                  v-model="user.emailCatchUpDay")
-                //- v-checkbox#daily-summary-email.md-checkbox--with-summary.email-settings-page__daily-summary(v-model='user.emailCatchUp')
-                //-   div(slot="label")
-                //-     strong(v-t="'email_settings_page.daily_summary_label'")
-                //-     .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
+        v-checkbox#mentioned-email.md-checkbox--with-summary.email-settings-page__mentioned(v-model='user.emailWhenMentioned')
+          template(v-slot:label)
+            div
+              span(v-t="'email_settings_page.mentioned_label'")
+              br
+              span.text--secondary.text-caption(v-t="'email_settings_page.mentioned_description'")
+        v-checkbox#on-participation-email.md-checkbox--with-summary.email-settings-page__on-participation(v-model='user.emailOnParticipation')
+          template(v-slot:label)
+            div
+              span(v-t="'email_settings_page.on_participation_label'")
+              br
+              span.text--secondary.text-caption(v-t="'email_settings_page.on_participation_description'")
+        .text-subtitle-1
+          strong(v-t="'email_settings_page.email_catch_up_day'")
+        p(v-t="'email_settings_page.daily_summary_description'")
+        v-select#email-catch-up-day(
+          solo
+          max-width="100px"
+          :items="emailDays"
+          :label="$t('email_settings_page.email_catch_up_day')"
+          v-model="user.emailCatchUpDay")
+        //- v-checkbox#daily-summary-email.md-checkbox--with-summary.email-settings-page__daily-summary(v-model='user.emailCatchUp')
+        //-   div(slot="label")
+        //-     strong(v-t="'email_settings_page.daily_summary_label'")
+        //-     .email-settings-page__input-description(v-t="'email_settings_page.daily_summary_description'")
       v-card-actions
         help-link(path="en/user_manual/users/email_settings/#user-email-settings")
         v-spacer
@@ -147,7 +149,7 @@ v-main
       v-card-text
         p(v-t="'email_settings_page.deactivate_description'")
         v-list
-          v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()")
+          v-list-item(v-for="(action, key) in actions" :key="key" @click="action.perform()")
             template(v-slot:prepend)
               common-icon(:name="action.icon")
             v-list-item-title(v-t="action.name")
