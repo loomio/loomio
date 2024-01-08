@@ -8,7 +8,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import UserService    from '@/shared/services/user_service';
 import Flash   from '@/shared/services/flash';
-import { includes, uniq, debounce } from 'lodash-es';
+import { includes, uniq, debounce, filter } from 'lodash-es';
 import {exact} from '@/shared/helpers/format_time';
 import I18n from '@/i18n';
 
@@ -37,14 +37,14 @@ export default {
 
   computed: {
     showHelpTranslate() { return AppConfig.features.app.help_link; },
-    availableLocales() { return AppConfig.locales; },
+    availableLocales() { return AppConfig.locales.map(h => { return {title: h.name, value: h.key} }) ; },
     dateTimeFormats() {
       const observeLocale = this.user.selectedLocale; // tell vue this matters
       return 'iso day_iso abbr day_abbr'.split(' ').map(pref => {
         return {value: pref, title: exact(this.currentTime, this.user.timeZone, pref)};
       });
     },
-    actions() { return UserService.actions(Session.user(), this); },
+    actions() { return filter(UserService.actions(Session.user(), this), action => action.canPerform()) },
     emailExists() { return includes(this.existingEmails, this.user.email); }
   },
 
@@ -118,65 +118,63 @@ v-main
         //- v-card-title
         //-   h1.text-h5(tabindex="-1" v-t="'profile_page.edit_profile'")
         v-card-text
-          v-layout
-            v-flex.profile-page__details
-              v-layout(:column="$vuetify.display.xs")
-                v-flex
-                  v-text-field.profile-page__name-input(:label="$t('profile_page.name_label')" required v-model="user.name")
-                  validation-errors(:subject='user', field='name')
+          .profile-page__details
+            .d-sm-flex
+              .flex-fill
+                v-text-field.profile-page__name-input(:label="$t('profile_page.name_label')" required v-model="user.name")
+                validation-errors(:subject='user', field='name')
 
-                  v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username")
-                  validation-errors(:subject='user', field='username')
+                v-text-field#user-username-field.profile-page__username-input(:label="$t('profile_page.username_label')" required v-model="user.username")
+                validation-errors(:subject='user', field='username')
 
-                  //- span existingEmails: {{ existingEmails }}
-                  v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' @keyup="checkEmailExistence")
-                  validation-errors(:subject='user', field='email')
-                  .profile-page__email-taken(v-if="emailExists")
-                    span.email-taken-message(v-t="'merge_accounts.email_taken'")
-                    space
-                    a.email-taken-find-out-more(@click="openSendVerificationModal" v-t="'merge_accounts.find_out_more'")
+                //- span existingEmails: {{ existingEmails }}
+                v-text-field#user-email-field.profile-page__email-input(:label="$t('profile_page.email_label')" required v-model='user.email' @keyup="checkEmailExistence")
+                validation-errors(:subject='user', field='email')
+                .profile-page__email-taken(v-if="emailExists")
+                  span.email-taken-message(v-t="'merge_accounts.email_taken'")
+                  space
+                  a.email-taken-find-out-more(@click="openSendVerificationModal" v-t="'merge_accounts.find_out_more'")
 
-                .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
-                  user-avatar.mb-4(:user='originalUser', :size='192', :no-link="true")
-                  v-btn(color="accent" @click="changePicture" v-t="'profile_page.change_picture_link'")
+              .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
+                user-avatar.mb-4(:user='originalUser', :size='192', :no-link="true")
+                v-btn(color="accent" @click="changePicture" v-t="'profile_page.change_picture_link'")
 
-              lmo-textarea(
-                :model='user'
-                field="shortBio"
-                :label="$t('profile_page.short_bio_label')"
-                :placeholder="$t('profile_page.short_bio_placeholder')")
-              validation-errors(:subject='user', field='shortBio')
+            lmo-textarea(
+              :model='user'
+              field="shortBio"
+              :label="$t('profile_page.short_bio_label')"
+              :placeholder="$t('profile_page.short_bio_placeholder')")
+            validation-errors(:subject='user', field='shortBio')
 
-              v-text-field#user-location-field.profile-page__location-input(
-                v-model='user.location'
-                :label="$t('profile_page.location_label')"
-                :placeholder="$t('profile_page.location_placeholder')")
+            v-text-field#user-location-field.profile-page__location-input(
+              v-model='user.location'
+              :label="$t('profile_page.location_label')"
+              :placeholder="$t('profile_page.location_placeholder')")
 
-              v-select#user-date-time-format-field(
-                :label="$t('profile_page.date_time_pref_label')"
-                :items="dateTimeFormats"
-                v-model="user.dateTimePref")
-              validation-errors(:subject='user', field='dateTimeFormat')
+            v-select#user-date-time-format-field(
+              :label="$t('profile_page.date_time_pref_label')"
+              :items="dateTimeFormats"
+              v-model="user.dateTimePref")
+            validation-errors(:subject='user', field='dateTimeFormat')
 
-              v-select#user-locale-field(
-                :label="$t('profile_page.locale_label')"
-                :items="availableLocales"
-                v-model="user.selectedLocale"
-                item-text="name"
-                item-value="key")
-              validation-errors(:subject='user', field='selectedLocale')
-              p
-                span(v-t="'common.time_zone'")
-                space
-                span {{user.timeZone}}
-                space
-                v-tooltip(top)
-                  template(v-slot:activator="{attrs}")
-                    common-icon(v-bind="attrs" small name="mdi-information-outline")
-                  span(v-t="'profile_page.updated_on_sign_in'")
-              v-checkbox(v-model="user.bot" :label="$t('profile_page.account_is_bot')")
-              v-alert(v-if="user.bot" type="warning")
-                span(v-t="'profile_page.bot_account_warning'")
+            v-select#user-locale-field(
+              :label="$t('profile_page.locale_label')"
+              :items="availableLocales"
+              v-model="user.selectedLocale")
+
+            validation-errors(:subject='user', field='selectedLocale')
+            p
+              span(v-t="'common.time_zone'")
+              space
+              span {{user.timeZone}}
+              space
+              v-tooltip(top)
+                template(v-slot:activator="{attrs}")
+                  common-icon(v-bind="attrs" small name="mdi-information-outline")
+                span(v-t="'profile_page.updated_on_sign_in'")
+            v-checkbox(v-model="user.bot" :label="$t('profile_page.account_is_bot')")
+            v-alert(v-if="user.bot" type="warning")
+              span(v-t="'profile_page.bot_account_warning'")
         v-card-actions.profile-page__update-account
           help-link(path="en/user_manual/users/user_profile")
           v-spacer
@@ -190,7 +188,7 @@ v-main
 
       v-card.profile-page-card.mt-4
         v-list
-          v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()" :class="'user-page__' + key")
+          v-list-item(v-for="(action, key) in actions" :key="key"  @click="action.perform()" :class="'user-page__' + key")
             template(v-slot:prepend)
               common-icon(:name="action.icon")
             v-list-item-title(v-t="action.name")
