@@ -54,7 +54,7 @@
     "@tiptap/suggestion": "^2.1.13",
     "@tiptap/vue-2": "^2.1.13",
     "activestorage": "^5.2.8",
-    "date-fns": "2.30.0",
+    "date-fns": "3.1.0",
     "date-fns-tz": "2.0.0",
     "deepmerge": "^4.3.1",
     "emoji-unicode": "^2.0.1",
