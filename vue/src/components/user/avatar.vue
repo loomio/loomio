@@ -61,16 +61,13 @@ export default {
 <template lang="pug">
 component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)" :style="{ 'width': size + 'px', margin: '0' }")
   v-avatar(v-if="imageUrl" :title='user.name' :size='size')
-    img(:alt='user.avatarInitials' :src='imageUrl')
+    v-img(:alt='user.avatarInitials' :src='imageUrl' cover)
   v-avatar(v-else :title='user.name' :size='size' :color="color")
     span.user-avatar--initials(v-if="user.avatarKind == 'initials'" :style="{'font-size': fontSize, width: size+'px', height: size+'px'}") {{user.avatarInitials}}
     common-icon(v-else :name="user.avatarKind")
 </template>
 
 <style lang="sass">
-.v-avatar
-  img
-    object-fit: cover
 .user-avatar--initials
   color: rgba(0,0,0,.88)
   font-size: 15px
