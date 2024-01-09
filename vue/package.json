@@ -29,7 +29,7 @@
     "@tiptap/extension-hard-break": "^2.1.13",
     "@tiptap/extension-heading": "^2.1.13",
     "@tiptap/extension-history": "^2.1.13",
-    "@tiptap/extension-horizontal-rule": "^2.1.13",
+    "@tiptap/extension-horizontal-rule": "^2.1.15",
     "@tiptap/extension-image": "^2.1.13",
     "@tiptap/extension-italic": "^2.1.13",
     "@tiptap/extension-link": "^2.1.13",
