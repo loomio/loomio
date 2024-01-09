@@ -10,6 +10,8 @@ import openModal from '@/shared/helpers/open_modal';
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
 import I18n from '@/i18n';
 
+import { useTheme } from 'vuetify';
+
 export default {
   mixins: [AuthModalMixin],
   data() {
@@ -18,19 +20,13 @@ export default {
 
   created() {
     if (this.$route.query.locale) { Session.updateLocale(this.$route.query.locale); }
+    const theme = useTheme();
 
-    // if (Session.user().experiences.darkMode != null) {
-    //   this.$vuetify.theme.dark = Session.user().experiences['darkMode'];
-    // } else {
-    //   this.$vuetify.theme.dark = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    // }
-
-    // console.log(AppConfig);
-    // return each(AppConfig.theme.vuetify, (value, key) => {
-    //   if (value) { this.$vuetify.theme.themes.light[key] = value; }
-    //   if (value) { this.$vuetify.theme.themes.dark[key] = value; }
-    //   return true;
-    // });
+    if (Session.user().experiences.darkMode != null) {
+      theme.global.name.value = Session.user().experiences['darkMode'] ? 'dark' : 'light';
+    } else {
+      theme.global.name.value = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
   },
 
   mounted() {
@@ -58,6 +54,7 @@ export default {
 
   methods: {
     setCurrentComponent(options) {
+
       this.pageError = null;
       const title = truncate(options.title || I18n.global.t(options.titleKey), {length: 300});
       document.querySelector('title').text = compact([title, AppConfig.theme.site_name]).join(' | ');
