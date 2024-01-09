@@ -30,19 +30,18 @@ export default {
 </script>
 
 <template lang="pug">
-.poll-common-stance-choices.pb-2.pt-2(v-if="poll.pollType != 'question' && !poll.hasOptionIcon()")
+.poll-common-stance-choices.pb-2.pt-2(v-if="!datesAsOptions && poll.pollType != 'question' && !poll.hasOptionIcon()")
   span.text-caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
   template(v-else)
-    template(v-if="!datesAsOptions")
-      .poll-common-stance-choice.text-truncate(
-        v-for="choice in choices"
-        v-if="choice.score > 0 || pollType == 'score'"
-        :key="choice.id"
-        :class="'poll-common-stance-choice--' + pollType")
-        common-icon(small :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
-        span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
-        span.ml-2.text--secondary
-          | {{ choice.pollOption.optionName() }}
+    .poll-common-stance-choice.text-truncate(
+      v-for="choice in choices"
+      v-if="choice.score > 0 || pollType == 'score'"
+      :key="choice.id"
+      :class="'poll-common-stance-choice--' + pollType")
+      common-icon(small :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
+      span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
+      span.ml-2.text--secondary
+        | {{ choice.pollOption.optionName() }}
 </template>
 <style lang="sass">
 .poll-common-stance-choices

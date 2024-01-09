@@ -3,6 +3,7 @@ import StrandList from '@/components/strand/list.vue';
 import NewComment from '@/components/strand/item/new_comment.vue';
 import NewDiscussion from '@/components/strand/item/new_discussion.vue';
 import DiscussionEdited from '@/components/strand/item/discussion_edited.vue';
+import PollEdited from '@/components/strand/item/poll_edited.vue';
 import PollCreated from '@/components/strand/item/poll_created.vue';
 import StanceCreated from '@/components/strand/item/stance_created.vue';
 import StanceUpdated from '@/components/strand/item/stance_updated.vue';
@@ -36,6 +37,7 @@ export default {
     OtherKind,
     StrandLoadMore,
     DiscussionEdited,
+    PollEdited,
     StrandItemRemoved,
     ReplyForm
   },
@@ -67,7 +69,7 @@ export default {
     },
 
     componentForKind(kind) {
-      return camelCase(['stance_created', 'stance_updated', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind) ?
+      return camelCase(['stance_created', 'stance_updated', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'poll_edited', 'new_discussion'].includes(kind) ?
         kind
       :
         'other_kind'
