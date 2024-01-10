@@ -4,7 +4,6 @@ import LmoUrlService from '@/shared/services/lmo_url_service';
 import RestfulClient from '@/shared/record_store/restful_client';
 import EventBus      from '@/shared/services/event_bus';
 import { hardReload } from '@/shared/helpers/window';
-// import * as Sentry from "@sentry/browser";
 import { compact } from 'lodash-es';
 import { I18n, loadLocaleMessages } from '@/i18n';
 

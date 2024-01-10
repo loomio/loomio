@@ -4,9 +4,9 @@ import { createApp } from 'vue';
 import markedDirective from '@/marked_directive';
 import './removeServiceWorker';
 import { pick, each } from 'lodash-es';
-// import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/browser';
 // import Vue2TouchEvents from 'vue2-touch-events';
-// import PlausibleService from '@/shared/services/plausible_service';
+import PlausibleService from '@/shared/services/plausible_service';
 
 
 
@@ -33,12 +33,12 @@ boot(function(data) {
   const app = createApp(App);
 
 
-  // PlausibleService.boot();
-  // PlausibleService.trackPageview();
+  PlausibleService.boot();
+  PlausibleService.trackPageview();
 
-  // if (AppConfig.sentry_dsn) {
-  //   Sentry.configureScope(scope => scope.setUser(pick(Session.user(), ['id', 'name', 'email', 'username'])));
-  // }
+  if (AppConfig.sentry_dsn) {
+    Sentry.configureScope(scope => scope.setUser(pick(Session.user(), ['id', 'name', 'email', 'username'])));
+  }
   app.use(I18n).use(vuetify).use(router).use(Slicksort)
   app.directive('marked', markedDirective)
   app.mount("#app")

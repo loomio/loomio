@@ -1,7 +1,7 @@
 import RestfulClient from '@/shared/record_store/restful_client';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
-// import * as Sentry from '@sentry/vue';
+import * as Sentry from '@sentry/vue';
 import { forEach, snakeCase } from 'lodash-es';
 import { reactive } from 'vue';
 import { merge } from 'lodash-es';
@@ -18,44 +18,44 @@ export default function(callback) {
     // console.log(window.Loomio)
     appConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    // if (AppConfig.sentry_dsn) {
-    //   Sentry.init({
-    //     Vue,
-    //     ignoreErrors: [
-    //       "Avoided redundant navigation to current location",
-    //       "NotFoundError: Node.removeChild",
-    //       "NotFoundError: Failed to execute 'removeChild' on 'Node'",
-    //       "NotFoundError: The object can not be found here",
-    //       "NotFoundError: Node was not found",
-    //       "null is not an object (evaluating 'r.addEventListener')",
-    //       "Cannot read property 'addEventListener' of null",
-    //       "evaluating 't.addEventListener'",
-    //       "ResizeObserver loop limit exceeded",
-    //       "MetaMask detected another web3",
-    //       "AbortError: The operation was aborted",
-    //       "ResizeObserver loop completed with undelivered notifications",
-    //       "TypeError: cancelled",
-    //       "UnhandledRejection: Non-Error promise rejection captured with value",
-    //       "ChunkLoadError: Loading chunk chunk-",
-    //       "TypeError: annulé",
-    //       "Permission denied to access property \"dispatchEvent\" on cross-origin object",
-    //       "TypeError: Failed to fetch",
-    //       "Object captured as promise rejection with keys: error, ok, status, statusText",
-    //       "Object captured as promise rejection with keys: exception, ok, status, statusText",
-    //       "Non-Error promise rejection captured with keys: exception, ok, status, statusText"
-    //     ],
-    //     dsn: AppConfig.sentry_dsn,
-    //     tunnel: '/bug_tunnel',
-    //     // integrations: [
-    //     //   new Sentry.BrowserTracing({
-    //     //     routingInstrumentation: Sentry.vueRouterInstrumentation(router)
-    //     //   }),
-    //     // ],
-    //     tracesSampleRate: AppConfig.features.app.sentry_sample_rate,
-    //     tracePropagationTargets: ["localhost", AppConfig.baseUrl, /^\//],
-    //   });
-    //   Sentry.configureScope(scope => scope.setTag("loomio_version", AppConfig.version));
-    // }
+    if (AppConfig.sentry_dsn) {
+      Sentry.init({
+        Vue,
+        ignoreErrors: [
+          "Avoided redundant navigation to current location",
+          "NotFoundError: Node.removeChild",
+          "NotFoundError: Failed to execute 'removeChild' on 'Node'",
+          "NotFoundError: The object can not be found here",
+          "NotFoundError: Node was not found",
+          "null is not an object (evaluating 'r.addEventListener')",
+          "Cannot read property 'addEventListener' of null",
+          "evaluating 't.addEventListener'",
+          "ResizeObserver loop limit exceeded",
+          "MetaMask detected another web3",
+          "AbortError: The operation was aborted",
+          "ResizeObserver loop completed with undelivered notifications",
+          "TypeError: cancelled",
+          "UnhandledRejection: Non-Error promise rejection captured with value",
+          "ChunkLoadError: Loading chunk chunk-",
+          "TypeError: annulé",
+          "Permission denied to access property \"dispatchEvent\" on cross-origin object",
+          "TypeError: Failed to fetch",
+          "Object captured as promise rejection with keys: error, ok, status, statusText",
+          "Object captured as promise rejection with keys: exception, ok, status, statusText",
+          "Non-Error promise rejection captured with keys: exception, ok, status, statusText"
+        ],
+        dsn: AppConfig.sentry_dsn,
+        tunnel: '/bug_tunnel',
+        // integrations: [
+        //   new Sentry.BrowserTracing({
+        //     routingInstrumentation: Sentry.vueRouterInstrumentation(router)
+        //   }),
+        // ],
+        tracesSampleRate: AppConfig.features.app.sentry_sample_rate,
+        tracePropagationTargets: ["localhost", AppConfig.baseUrl, /^\//],
+      });
+      Sentry.configureScope(scope => scope.setTag("loomio_version", AppConfig.version));
+    }
 
     ['shortcut icon'].forEach(function(name) {
       const link = document.createElement('link');
