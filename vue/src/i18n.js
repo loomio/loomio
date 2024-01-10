@@ -4,9 +4,11 @@ import enData from '@/../../config/locales/client.en.yml';
 
 const clientLocales = import.meta.glob('/../config/locales/client.*.yml')
 const dateLocales = import.meta.glob('/node_modules/date-fns/locale/*/index.js')
+import defaultLocale from 'date-fns/locale/en-US';
 
 const en = enData.en
 const loadedLocales = ['en'];
+export var dateLocale = defaultLocale
 
 const fixCase = function(locale) {
   const splits = locale.replace('-', '_').split('_');
@@ -54,13 +56,13 @@ export async function loadLocaleMessages(i18n, locale) {
       return false
     }
 
-    // const dateMessages = await dateLocales[dateLocaleKey]()
-    const appMessages = await clientLocales[clientLocaleKey]()
-    console.log('appMessages', appMessages);
+    const dateMessages = await dateLocales[dateLocaleKey]()
+    const appMessages = await clientLocales[clientLocaleKey]();
+    dateLocale = dateMessages.default;
     i18n.global.setLocaleMessage(locale, appMessages.default[locale])
   }
 
-  // I18n.dateLocale = dateLocale.default
+  I18n.dateLocale = dateLocale.default
 
   setI18nLanguage(i18n, locale);
 

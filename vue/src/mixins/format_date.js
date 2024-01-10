@@ -21,9 +21,7 @@ export default {
         if (document.querySelector(selector)) {
           fn();
         } else {
-          // console.log 'waiting for ', selector
-          setTimeout(() => waitFor(selector, fn)
-          , 500);
+          setTimeout(() => waitFor(selector, fn) , 500);
         }
       };
 
