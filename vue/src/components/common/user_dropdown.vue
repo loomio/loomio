@@ -66,7 +66,7 @@ v-list-item(@click="signOut()" density="compact")
   v-list-item-title(v-t="'user_dropdown.sign_out'")
   template(v-slot:append)
     common-icon(name="mdi-exit-to-app")
-v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" density="compact" :title="release")
+v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" density="compact")
   v-list-item-title.text--secondary
     span(v-t="'common.version'")
     space

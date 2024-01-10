@@ -12,7 +12,7 @@ export default {
     }
   },
   computed: {
-    text() { return I18n.global.t((this.action.name || ('action_dock.'+this.name)), (this.nameArgs || {})); },
+    text() { return this.$t((this.action.name || ('action_dock.'+this.name)), (this.nameArgs || {})); },
     cssClass() { return `action-dock__button--${this.name}`; }
   }
 };

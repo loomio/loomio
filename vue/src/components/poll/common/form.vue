@@ -35,7 +35,7 @@ export default {
       collections: ['groups', 'memberships'],
       query: () => {
         return this.groupItems = [
-          {title: I18n.global.t('discussion_form.none_invite_only_thread'), value: null}
+          {title: this.$t('discussion_form.none_invite_only_thread'), value: null}
         ].concat(Session.user().groups().filter( g => AbilityService.canStartPoll(g)).map(g => ({
           title: g.fullName,
           value: g.id
@@ -86,9 +86,9 @@ export default {
 
       currentHideResults: this.poll.hideResults,
       hideResultsItems: [
-        { title: I18n.global.t('common.off'), value: 'off' },
-        { title: I18n.global.t('poll_common_card.until_you_vote'), value: 'until_vote' },
-        { title: I18n.global.t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
+        { title: this.$t('common.off'), value: 'off' },
+        { title: this.$t('poll_common_card.until_you_vote'), value: 'until_vote' },
+        { title: this.$t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
       ],
       newDateOption: startOfHour(setHours(new Date(), 12)),
       minDate: new Date(),
@@ -109,7 +109,7 @@ export default {
 
     removeOption(option) {
       if (this.optionHasVotes(option)) {
-        if (!confirm(I18n.global.t("poll_common_form.option_has_votes_confirm_delete"))) { return; }
+        if (!confirm(this.$t("poll_common_form.option_has_votes_confirm_delete"))) { return; }
       }
 
       this.newOption = null;
@@ -201,15 +201,15 @@ export default {
   computed: {
     titlePlaceholder() {
       if (this.pollTemplate && this.pollTemplate.titlePlaceholder) {
-        return I18n.global.t('common.prefix_eg', {val: this.pollTemplate.titlePlaceholder});
+        return this.$t('common.prefix_eg', {val: this.pollTemplate.titlePlaceholder});
       } else {
-        return I18n.global.t('poll_proposal_form.title_placeholder');
+        return this.$t('poll_proposal_form.title_placeholder');
       }
     },
 
     votingMethodsItems() {
       return Object.keys(this.votingMethodsI18n).map(key => {
-        return {title: I18n.global.t(this.votingMethodsI18n[key].title), value: key};
+        return {title: this.$t(this.votingMethodsI18n[key].title), value: key};
     });
     },
 
@@ -231,9 +231,9 @@ export default {
     allowAnonymous() { return !this.poll.config().prevent_anonymous; },
     stanceReasonRequiredItems() {
       return [
-        {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
-        {title: I18n.global.t('poll_common_form.stance_reason_optional'), value: 'optional'},
-        {title: I18n.global.t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
+        {title: this.$t('poll_common_form.stance_reason_required'), value: 'required'},
+        {title: this.$t('poll_common_form.stance_reason_optional'), value: 'optional'},
+        {title: this.$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
       ];
     },
 
@@ -251,7 +251,7 @@ export default {
 
     closingSoonItems() {
       return 'nobody author undecided_voters voters'.split(' ').map(name => {
-        return {title: I18n.global.t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
+        return {title: this.$t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
     });
     },
 
@@ -261,7 +261,7 @@ export default {
     //   return compact('agree abstain disagree consent objection block yes no'.split(' ').map(name => {
     //     if (this.poll.pollOptionNames.includes(name)) { return null; }
     //     return {
-    //       title: I18n.global.t('poll_proposal_options.'+name),
+    //       title: this.$t('poll_proposal_options.'+name),
     //       value: name
     //     };
     //   })
