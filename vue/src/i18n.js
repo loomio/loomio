@@ -37,7 +37,6 @@ export function setupI18n(options = {
 export const I18n = setupI18n();
 
 export async function loadLocaleMessages(i18n, locale) {
-  console.log('loadLocaleMessages', locale);
   if (i18n.global.locale.value == locale) {
     return nextTick();
   }
@@ -62,19 +61,12 @@ export async function loadLocaleMessages(i18n, locale) {
     i18n.global.setLocaleMessage(locale, appMessages.default[locale])
   }
 
-  I18n.dateLocale = dateLocale.default
-
   setI18nLanguage(i18n, locale);
 
   return nextTick()
 }
 
 export function setI18nLanguage(i18n, locale) {
-  console.log("i18n.mode", i18n.mode)
-  if (i18n.mode === 'legacy') {
-    i18n.global.locale = locale
-  } else {
-    i18n.global.locale.value = locale
-  }
+  i18n.global.locale.value = locale
   document.querySelector('html').setAttribute('lang', locale)
 }
