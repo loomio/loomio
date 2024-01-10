@@ -10,7 +10,7 @@ import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter,
 import { exact} from '@/shared/helpers/format_time';
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import { mdiCalendar } from '@mdi/js';
 
 export default {

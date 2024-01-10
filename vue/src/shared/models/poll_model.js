@@ -4,7 +4,7 @@ import Session          from '@/shared/services/session';
 import HasDocuments     from '@/shared/mixins/has_documents';
 import HasTranslations  from '@/shared/mixins/has_translations';
 import EventBus         from '@/shared/services/event_bus';
-import I18n             from '@/i18n';
+import { I18n }             from '@/i18n';
 import NullGroupModel   from '@/shared/models/null_group_model';
 import { addDays, startOfHour, differenceInHours, addHours } from 'date-fns';
 import { snakeCase, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';

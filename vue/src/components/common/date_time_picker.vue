@@ -4,7 +4,7 @@ import FlashService   from '@/shared/services/flash';
 import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time';
 import { format, parse, isValid } from 'date-fns';
 import { mdiCalendar, mdiClockOutline } from '@mdi/js';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {

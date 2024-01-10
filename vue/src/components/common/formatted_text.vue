@@ -5,7 +5,7 @@ import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import AbilityService from '@/shared/services/ability_service';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {

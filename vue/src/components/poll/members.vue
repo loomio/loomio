@@ -192,7 +192,7 @@ export default {
       space
       span ({{users.length}} / {{poll.votersCount}})
     v-list-item(v-for="user in users" :key="user.id")
-      template(v-slot:append)
+      template(v-slot:prepend)
         user-avatar(:user="user" :size="24")
       v-list-item-title
         span.mr-2 {{user.nameWithTitle(poll.group())}}

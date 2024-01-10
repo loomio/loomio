@@ -1,5 +1,5 @@
 import BaseModel from '@/shared/record_store/base_model';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import {invokeMap, without} from 'lodash-es';
 import Records from '@/shared/services/records';
 

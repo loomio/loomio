@@ -1,6 +1,6 @@
 <script lang="js">
 import { groupPrivacy } from '@/shared/helpers/helptext';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default
 {

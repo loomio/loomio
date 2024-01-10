@@ -1,6 +1,6 @@
 let RescueUnsavedEditsService;
 import {some, intersection, pick, uniq} from 'lodash-es';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default new class RescueUnsavedEditsService {
   constructor() {

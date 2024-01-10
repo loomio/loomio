@@ -1,6 +1,6 @@
 import Records from '@/shared/services/records';
 import {includes} from 'lodash-es';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 
 // a series of helpers related to getting a translation string to translate, such

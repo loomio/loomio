@@ -9,7 +9,7 @@ import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default 
 {

@@ -3,7 +3,7 @@ import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { sum, map, without } from 'lodash-es';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {

@@ -2,7 +2,7 @@
 import Flash  from '@/shared/services/flash';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus from '@/shared/services/event_bus';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {

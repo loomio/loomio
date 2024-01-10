@@ -6,7 +6,7 @@ import UrlFor    from '@/mixins/url_for';
 import {truncate, map} from 'lodash-es';
 import {marked}    from 'marked';
 import {mdiMagnify} from '@mdi/js';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 import { debounce, camelCase, orderBy } from 'lodash-es';
 

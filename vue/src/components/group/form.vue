@@ -7,7 +7,7 @@ import EventBus   from '@/shared/services/event_bus';
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
 import { isEmpty, debounce } from 'lodash-es';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default
 {

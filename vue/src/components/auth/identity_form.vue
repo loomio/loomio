@@ -2,7 +2,7 @@
 import EventBus    from '@/shared/services/event_bus';
 import AuthService from '@/shared/services/auth_service';
 import AppConfig from '@/shared/services/app_config';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {

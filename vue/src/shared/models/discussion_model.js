@@ -7,7 +7,7 @@ import HasTranslations  from '@/shared/mixins/has_translations';
 import { isAfter } from 'date-fns';
 import dateIsEqual from 'date-fns/isEqual';
 import { map, compact, flatten, isEqual, isEmpty, filter, some, head, last, sortBy, isArray, throttle } from 'lodash-es';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import Records from '@/shared/services/records';
 
 export default class DiscussionModel extends BaseModel {

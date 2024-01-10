@@ -2,7 +2,7 @@ import BaseModel  from  '@/shared/record_store/base_model';
 import Records  from  '@/shared/services/records';
 import { exact } from '@/shared/helpers/format_time';
 import { parseISO } from 'date-fns';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default class PollOptionModel extends BaseModel {
   static singular = 'pollOption';

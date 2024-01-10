@@ -1,6 +1,6 @@
 <script lang="js">
 import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-3';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 // import { isArray } from 'lodash-es';
 export default
 {

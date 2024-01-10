@@ -3,7 +3,7 @@ import Records   from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import {head, pickBy, camelCase, mapKeys, pick, keys} from 'lodash-es';
 
 export default new class AuthService {

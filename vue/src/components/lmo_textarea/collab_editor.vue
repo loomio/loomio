@@ -5,7 +5,7 @@ import AppConfig from '@/shared/services/app_config';
 import FileUploader from '@/shared/services/file_uploader';
 import FilesList from './files_list.vue';
 import EventBus from '@/shared/services/event_bus';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import { convertToMd } from '@/shared/services/format_converter';
 
 import Blockquote from '@tiptap/extension-blockquote';

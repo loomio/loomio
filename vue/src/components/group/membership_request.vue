@@ -27,7 +27,7 @@ export default
 <template lang="pug">
 div
   v-list-item.membership-requests
-    template(v-slot:append)
+    template(v-slot:prepend)
       user-avatar(:user='request.actor()' :size='40')
     v-list-item-title.membership-request__name
       span {{request.actor().name}} &lt;{{request.requestorEmail}}&gt;

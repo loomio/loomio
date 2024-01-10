@@ -5,7 +5,7 @@ import AbilityService from '@/shared/services/ability_service';
 import FlashService   from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { snakeCase } from 'lodash-es';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default
 {

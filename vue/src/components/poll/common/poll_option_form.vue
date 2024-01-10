@@ -1,7 +1,7 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {

@@ -9,7 +9,7 @@ import AbilityService from '@/shared/services/ability_service';
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
 // import { HandleDirective } from 'vue-slicksort';
 import { isSameYear, startOfHour, setHours }  from 'date-fns';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   // directives: { handle: HandleDirective },

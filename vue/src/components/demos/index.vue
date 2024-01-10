@@ -8,7 +8,7 @@ import Flash              from '@/shared/services/flash';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
 import PlausibleService from '@/shared/services/plausible_service';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import FormatDate from '@/mixins/format_date';
 
 export default 

@@ -1,5 +1,5 @@
 import {each} from 'lodash-es';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import NullGroupModel from '@/shared/models/null_group_model';
 
 export default class NullDiscussionModel {

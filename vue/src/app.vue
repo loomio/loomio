@@ -8,7 +8,7 @@ import Flash from '@/shared/services/flash';
 import { each, compact, truncate } from 'lodash-es';
 import openModal from '@/shared/helpers/open_modal';
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 import { useTheme } from 'vuetify';
 
@@ -19,7 +19,6 @@ export default {
   },
 
   created() {
-    if (this.$route.query.locale) { Session.updateLocale(this.$route.query.locale); }
     const theme = useTheme();
 
     if (Session.user().experiences.darkMode != null) {

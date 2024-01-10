@@ -5,7 +5,7 @@ import Session            from '@/shared/services/session';
 import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   data() {

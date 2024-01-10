@@ -1,7 +1,7 @@
 <script lang="js">
 import AuthService from '@/shared/services/auth_service';
 import EventBus    from '@/shared/services/event_bus';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {

@@ -10,7 +10,7 @@ import UserService    from '@/shared/services/user_service';
 import Flash   from '@/shared/services/flash';
 import { includes, uniq, debounce, filter } from 'lodash-es';
 import {exact} from '@/shared/helpers/format_time';
-import I18n from '@/i18n';
+import { I18n, loadLocaleMessages } from '@/i18n';
 
 export default {
   data() {
@@ -53,7 +53,7 @@ export default {
       if (!Session.isSignedIn()) { return; }
       this.originalUser = Session.user();
       this.user = this.originalUser.clone();
-      Session.updateLocale(this.user.locale);
+      loadLocaleMessages(I18n, this.user.locale);
     },
 
     changePicture() {

@@ -2,7 +2,7 @@
 import Session from '@/shared/services/session';
 import GroupService from '@/shared/services/group_service';
 import Flash from '@/shared/services/flash';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import EventBus from '@/shared/services/event_bus';
 
 export default {

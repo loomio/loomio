@@ -8,7 +8,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import { sortBy, pick, filter } from 'lodash-es';
 import UserService from '@/shared/services/user_service';
 import Flash from '@/shared/services/flash';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import WatchRecords from '@/mixins/watch_records';
 
 export default {

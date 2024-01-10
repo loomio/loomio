@@ -7,7 +7,7 @@ import { reject, map, parseInt } from 'lodash-es';
 import {marked} from 'marked';
 import {customRenderer, options} from '@/shared/helpers/marked';
 marked.setOptions(Object.assign({renderer: customRenderer()}, options));
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {

@@ -4,7 +4,7 @@ import EventBus       from '@/shared/services/event_bus';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import AuthModalMixin from '@/mixins/auth_modal';
 import Session        from '@/shared/services/session';
-import I18n           from '@/i18n';
+import { I18n }           from '@/i18n';
 
 export default {
   mixins: [AuthModalMixin],

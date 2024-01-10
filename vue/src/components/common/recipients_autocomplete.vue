@@ -7,7 +7,7 @@ import AnnouncementService from '@/shared/services/announcement_service';
 import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash-es';
 import AbilityService from '@/shared/services/ability_service';
 import NotificationsCount from './notifications_count';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   components: {

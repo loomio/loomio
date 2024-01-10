@@ -10,7 +10,7 @@ import { pick, each } from 'lodash-es';
 
 
 
-import i18n from './i18n'
+import { I18n } from './i18n'
 import vuetify from './plugins/vuetify'
 import router from './routes'
 
@@ -39,7 +39,7 @@ boot(function(data) {
   // if (AppConfig.sentry_dsn) {
   //   Sentry.configureScope(scope => scope.setUser(pick(Session.user(), ['id', 'name', 'email', 'username'])));
   // }
-  app.use(i18n).use(vuetify).use(router).use(Slicksort)
+  app.use(I18n).use(vuetify).use(router).use(Slicksort)
   app.directive('marked', markedDirective)
   app.mount("#app")
 });

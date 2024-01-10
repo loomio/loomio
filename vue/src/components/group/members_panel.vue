@@ -8,7 +8,7 @@ import { intersection, debounce, map } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
 import { mdiMagnify } from '@mdi/js';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 

@@ -3,7 +3,7 @@ import { format, utcToZonedTime } from 'date-fns-tz';
 import defaultLocale from 'date-fns/locale/en-US';
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 I18n.dateLocale = defaultLocale;
 

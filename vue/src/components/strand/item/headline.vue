@@ -2,7 +2,7 @@
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import Records from '@/shared/services/records';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {
