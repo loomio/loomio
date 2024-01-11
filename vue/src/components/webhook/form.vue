@@ -46,7 +46,7 @@ v-card.webhook-form
       validation-errors(:subject='webhook' field='name')
       a(v-if="webhook.id" :href="docsUrl(webhook.token)" v-t="'webhook.show_docs'" target="_blank")
       p(v-if="!webhook.id"  v-t="'webhook.save_to_show_docs'")
-      p.pt-4.text--secondary(v-t="'webhook.permissions_explaination'")
+      p.pt-4.text-medium-emphasis(v-t="'webhook.permissions_explaination'")
       v-checkbox.webhook-form__permission(hide-details v-for='permission in permissions' v-model='webhook.permissions' :key="permission" :label="$t('webhook.permissions.' + permission)" :value="permission")
 
     v-card-actions

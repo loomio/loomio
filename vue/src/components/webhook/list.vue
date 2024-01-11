@@ -47,7 +47,7 @@ v-card.webhook-list
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
-    p.text--secondary(v-t="'webhook.subtitle'")
+    p.text-medium-emphasis(v-t="'webhook.subtitle'")
     v-alert(type="warning" v-t="'webhook.deprecated'")
     loading(v-if="loading")
     v-list(v-if="!loading")

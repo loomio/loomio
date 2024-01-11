@@ -40,7 +40,7 @@ export default {
       :class="'poll-common-stance-choice--' + pollType")
       common-icon(small :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
       span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
-      span.ml-2.text--secondary
+      span.ml-2.text-medium-emphasis
         | {{ choice.pollOption.optionName() }}
 </template>
 <style lang="sass">

@@ -91,7 +91,7 @@ v-card.chatbot-matrix-form(:title="'Webhook ' + $t('chatbot.chatbot')")
       v-model="chatbot.notificationOnly", 
       :label="$t('chatbot.notification_only_label')" 
       hide-details)
-    p.mt-4.text--secondary(v-t="'chatbot.event_kind_helptext'")
+    p.mt-4.text-medium-emphasis(v-t="'chatbot.event_kind_helptext'")
 
     v-checkbox.webhook-form__event-kind(
       hide-details 

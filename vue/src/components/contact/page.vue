@@ -80,7 +80,7 @@ v-main
         span(v-t="'contact_message_form.need_message'")
       validation-errors(:subject='message', field='message')
 
-      p.text--secondary(v-html="$t('contact_message_form.contact_us_email', { email: contactEmail })")
+      p.text-medium-emphasis(v-html="$t('contact_message_form.contact_us_email', { email: contactEmail })")
       v-card-actions
         v-spacer
         v-btn(color="primary" @click='submit' v-t="'contact_message_form.send_message'")

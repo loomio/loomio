@@ -110,7 +110,7 @@ export default {
                   span {{result.groupName}}
 
             v-list-item-action
-              v-btn.text--secondary(
+              v-btn.text-medium-emphasis(
                 icon
                 :to="'/thread_templates/new?template_id='+result.id+'&group_id='+$route.query.group_id"
                 title="Make a copy of this template and edit it"

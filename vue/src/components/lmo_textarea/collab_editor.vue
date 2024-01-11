@@ -447,7 +447,7 @@ div
           //- save button?
           v-spacer
           slot(v-if="!expanded" name="actions")
-          .text-right(dense v-if="maxLength", :class="{'red--text': reasonTooLong, 'text--secondary': !reasonTooLong}")
+          .text-right(dense v-if="maxLength", :class="{'red--text': reasonTooLong, 'text-medium-emphasis': !reasonTooLong}")
             span(:style="reasonTooLong ? 'font-weight: 700' : ''")
               | {{editor.getCharacterCount()}} / {{maxLength}}
 

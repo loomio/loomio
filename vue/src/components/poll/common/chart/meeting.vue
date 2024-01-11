@@ -62,8 +62,8 @@ export default {
   table.poll-meeting-chart-table
     thead
       tr
-        td.text--secondary.text-body-2(v-if="datesAsOptions") {{currentUserTimeZone}}
-        td.pr-2.total.text--secondary.text-body-2(v-t="'poll_common.votes'")
+        td.text-medium-emphasis.text-body-2(v-if="datesAsOptions") {{currentUserTimeZone}}
+        td.pr-2.total.text-medium-emphasis.text-body-2(v-t="'poll_common.votes'")
         td(v-for="user in decidedVoters" :key="user.id")
           user-avatar(:user="user" :size="24")
     tbody

@@ -100,7 +100,7 @@ export default
   h2.ma-4.headline(v-t="'email_to_group.unreleased_emails'")
   loading(v-if="!group")
   v-card.mt-4(outlined v-if="group")
-    v-alert.text-center.text--secondary(v-if="emails.length == 0" v-t="'email_to_group.no_emails_to_release'")
+    v-alert.text-center.text-medium-emphasis(v-if="emails.length == 0" v-t="'email_to_group.no_emails_to_release'")
     v-list(v-else two-line)
       v-list-item(v-for="email in emails" :key="email.id")
         v-list-item-title

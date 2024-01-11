@@ -227,7 +227,7 @@ v-card.group-form(:title="$t(cardTitle)")
                   mid-dot
                   span {{ privacyStringFor(privacy) }}
           validation-errors(:subject="group" field="groupPrivacy")
-        p.group-form__privacy-statement.text--secondary {{privacyStatement}}
+        p.group-form__privacy-statement.text-medium-emphasis {{privacyStatement}}
         .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
           v-list-subheader(v-t="'group_form.how_do_people_join'")
           v-radio-group(v-model='group.membershipGrantedUpon')
@@ -242,7 +242,7 @@ v-card.group-form(:title="$t(cardTitle)")
 
     v-window-item(value="permissions")
       .mt-8.px-4.group-form__section.group-form__permissions
-        p.group-form__privacy-statement.text--secondary(v-t="'group_form.permissions_explaination'")
+        p.group-form__privacy-statement.text-medium-emphasis(v-t="'group_form.permissions_explaination'")
         //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='group.privacyIsClosed() && !group.isSubgroupOfSecretParent()')
         v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group.parentMembersCanSeeDiscussions' v-if='group.parentId && group.privacyIsClosed()')
           template(v-slot:label)

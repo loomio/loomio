@@ -57,7 +57,7 @@ export default {
 
 <template lang='pug'>
 .poll-ranked-choice-vote-form.lmo-relative
-  p.text--secondary(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
+  p.text-medium-emphasis(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
   sortable-list(v-model="pollOptions" lock-axis="y" axis="y" append-to=".app-is-booted")
     sortable-item(
       v-for="(option, index) in pollOptions"

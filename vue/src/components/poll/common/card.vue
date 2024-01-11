@@ -65,7 +65,7 @@ v-sheet
   poll-common-card-header(:poll='poll')
   div(v-if="poll.discardedAt")
     v-card-text
-      .text--secondary(v-t="'poll_common_card.deleted'")
+      .text-medium-emphasis(v-t="'poll_common_card.deleted'")
   div.px-2.pb-4.px-sm-4(v-else)
     poll-template-banner(:poll="poll")
     h1.poll-common-card__title.text-h4.py-2(tabindex="-1" v-intersect="{handler: titleVisible}")

@@ -92,13 +92,13 @@ div
         div.d-sm-flex
           .link-preview__image.ml-sm-4(v-if="preview.image" style="min-width: 128px" :style="{'background-image': 'url('+imageUrl+')', 'background-size': (preview.fit || 'contain'), 'background-position': (preview.align || 'center')}")
           div
-            v-card-title.text--secondary
+            v-card-title.text-medium-emphasis
               common-icon.mr-1(name="mdi-open-in-new")
               span(v-html="preview.title")
             v-card-subtitle
               span(v-if="doctype.name != 'other'" v-t="'doctypes.'+doctype.name")
               span.link-preview__hostname(v-else v-html="truncate(preview.hostname, {length: 240})")
-            v-card-text.text--secondary(v-if="preview.description" v-html="truncate(preview.description, {length: 240})")
+            v-card-text.text-medium-emphasis(v-if="preview.description" v-html="truncate(preview.description, {length: 240})")
 </template>
 
 <style lang="sass">

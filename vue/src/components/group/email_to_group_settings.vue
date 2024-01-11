@@ -66,7 +66,7 @@ v-card.email-to-group-settings
         :append-icon="mdiContentCopy"
         @click:append="copyText"
       )
-      .text--secondary
+      .text-medium-emphasis
         p
           span(v-t="'email_to_group.send_email_to_start_thread'")
         p

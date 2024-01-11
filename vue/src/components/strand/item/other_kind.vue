@@ -27,8 +27,8 @@ export default {
 <template lang="pug">
 .strand-other-kind.text-body-2
   //- | hi {{event.model().poll().title}}
-  span.text--secondary(v-html='headline')
-  mid-dot.text--secondary
-  time-ago.text--secondary(:date='event.createdAt')
+  span.text-medium-emphasis(v-html='headline')
+  mid-dot.text-medium-emphasis
+  time-ago.text-medium-emphasis(:date='event.createdAt')
   formatted-text.thread-item__body(:model="eventable" column="statement")
 </template>

@@ -115,9 +115,9 @@ export default {
 
   .mb-4.text-body-2
     user-avatar.mr-2(:user='author')
-    router-link.text--secondary(:to="urlFor(author)") {{authorName}}
+    router-link.text-medium-emphasis(:to="urlFor(author)") {{authorName}}
     mid-dot
-    router-link.text--secondary(:to='urlFor(discussion)')
+    router-link.text-medium-emphasis(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
     span(v-show='discussion.seenByCount > 0')
       mid-dot

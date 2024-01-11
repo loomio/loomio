@@ -98,7 +98,7 @@ export default
             )
           .d-flex.justify-center
             .d-flex.flex-column.align-center
-              .text--secondary {{discussions.length}} / {{discussionsLoader.total}}
+              .text-medium-emphasis {{discussions.length}} / {{discussionsLoader.total}}
               v-btn.my-2.discussions-panel__show-more(
                 outlined
                 color='accent'
@@ -128,7 +128,7 @@ export default
           )
         .d-flex.justify-center
           .d-flex.flex-column.align-center
-            .text--secondary
+            .text-medium-emphasis
               | {{polls.length}} / {{pollsLoader.total}}
             v-btn.my-2.polls-panel__show-more(
               v-if="polls.length < pollsLoader.total && !pollsLoader.exhausted"

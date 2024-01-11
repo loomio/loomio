@@ -98,7 +98,7 @@ export default {
 
 <template lang='pug'>
 form.poll-meeting-vote-form(@submit.prevent='submit()')
-  p.text--secondary(
+  p.text-medium-emphasis(
     v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}"
   )
   .poll-common-vote-form__options

@@ -152,7 +152,7 @@ export default {
       .d-flex.align-center
         .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
           common-icon(name="mdi-unfold-more-horizontal")
-        strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.eventable" collapsed)
+        strand-item-headline.text-medium-emphasis(:event="obj.event" :eventable="obj.eventable" collapsed)
 
     .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
       //- | bottom newestFirst && obj.missingEarlierCount

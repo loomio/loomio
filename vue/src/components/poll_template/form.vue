@@ -306,11 +306,11 @@ export default {
                 @click="removeOption(option)"
                 :title="$t('common.action.delete')"
               )
-                common-icon.text--secondary(name="mdi-delete")
+                common-icon.text-medium-emphasis(name="mdi-delete")
             v-list-item-action.ml-0
               v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                common-icon.text--secondary(name="mdi-pencil")
-            common-icon.text--secondary(v-handle :title="$t('common.action.move')" name="mdi-drag-vertical")
+                common-icon.text-medium-emphasis(name="mdi-pencil")
+            common-icon.text-medium-emphasis(v-handle :title="$t('common.action.move')" name="mdi-drag-vertical")
 
     .d-flex.justify-center
       v-btn.poll-template-form__add-option-btn.my-2(@click="addOption" v-t="'poll_common_add_option.modal.title'")
@@ -329,7 +329,7 @@ export default {
         :label="$t('poll_common.max_score')")
 
     template(v-if="pollTemplate.pollType == 'poll'")
-      p.text--secondary(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
+      p.text-medium-emphasis(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
       .d-flex
         v-text-field.poll-common-form__minimum-stance-choices(
           v-model="pollTemplate.minimumStanceChoices"
@@ -384,7 +384,7 @@ export default {
 
   template(v-if="allowAnonymous")
     //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.anonymous_voting'")
-    //- p.text--secondary(v-t="'poll_common_form.anonymous_voting_description'")
+    //- p.text-medium-emphasis(v-t="'poll_common_form.anonymous_voting_description'")
     v-checkbox.poll-common-checkbox-option.poll-settings-anonymous(
       v-model="pollTemplate.anonymous"
       :label="$t('poll_common_form.votes_are_anonymous')")
@@ -392,13 +392,13 @@ export default {
 
   template(v-if="pollTemplate.config().can_shuffle_options")
     //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_settings.shuffle_options.shuffle_options'")
-    //- p.text--secondary(v-t="'poll_common_settings.shuffle_options.helptext'")
+    //- p.text-medium-emphasis(v-t="'poll_common_settings.shuffle_options.helptext'")
     v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options.mt-4.pt-2(
       v-model="pollTemplate.shuffleOptions"
       :label="$t('poll_common_settings.shuffle_options.title')")
 
   //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.vote_reason'")
-  //- p.text--secondary(v-t="'poll_common_form.vote_reason_description'")
+  //- p.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
   v-select(
     :label="$t('poll_common_form.stance_reason_required_label')"
     :items="stanceReasonRequiredItems"
@@ -413,7 +413,7 @@ export default {
     :placeholder="$t('poll_common.reason_placeholder')")
 
   template(v-if="pollTemplate.stanceReasonRequired != 'disabled'")
-    //- p.text--secondary(v-t="'poll_common_settings.short_reason_can_be_helpful'")
+    //- p.text-medium-emphasis(v-t="'poll_common_settings.short_reason_can_be_helpful'")
     v-checkbox.poll-common-checkbox-option(
       v-model="pollTemplate.limitReasonLength"
       :label="$t('poll_common_form.limit_reason_length')"
@@ -421,7 +421,7 @@ export default {
 
   template(v-if="allowAnonymous")
     //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_card.hide_results'")
-    //- p.text--secondary(v-t="'poll_common_form.hide_results_description'")
+    //- p.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
     v-select.poll-common-settings__hide-results.mt-6.pt-2(
       :label="$t('poll_common_card.hide_results')"
       :items="hideResultsItems"

@@ -82,8 +82,8 @@ v-card.auth-form
     p.text-center.text-caption(v-if="isInvitedNewUser" v-t="{path: 'auth_form.existing_account_can_sign_in', args: { site_name: siteName } }")
     auth-provider-form(:user='user')
     auth-email-form(:user='user' v-if='emailLogin')
-    .d-flex.text-caption.mt-4.justify-space-between.pa-4.text--secondary
-      a.text--secondary(v-if='privacyUrl' target="_blank" v-t="'powered_by.privacy_policy'" :href="privacyUrl")
+    .d-flex.text-caption.mt-4.justify-space-between.pa-4.text-medium-emphasis
+      a.text-medium-emphasis(v-if='privacyUrl' target="_blank" v-t="'powered_by.privacy_policy'" :href="privacyUrl")
       space
-      a.auth-form__sign-in-help.text--secondary(href="https://help.loomio.org/en/user_manual/users/sign_in/" target="_blank" v-t="'auth_form.sign_in_help'")
+      a.auth-form__sign-in-help.text-medium-emphasis(href="https://help.loomio.org/en/user_manual/users/sign_in/" target="_blank" v-t="'auth_form.sign_in_help'")
 </template>

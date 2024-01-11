@@ -208,7 +208,7 @@ v-card.search-modal
           span.text-truncate {{ result.poll_title || result.discussion_title }}
           tags-display.ml-1(:tags="result.tags" :group="groupById(result.group_id)" smaller)
           v-spacer
-          time-ago.text--secondary(style="font-size: 0.875rem;" :date="result.authored_at")
+          time-ago.text-medium-emphasis(style="font-size: 0.875rem;" :date="result.authored_at")
         v-list-item-subtitle.text--primary(v-html="result.highlight")
         v-list-item-subtitle
           span

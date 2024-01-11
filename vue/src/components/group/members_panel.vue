@@ -237,7 +237,7 @@ export default
             v-list-item-title
               router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
               span
-              span.text--secondary
+              span.text-medium-emphasis
                 space
                 span(v-if="membership.acceptedAt && membership.userEmail") &lt;{{membership.userEmail}}&gt;
                 span(v-else) {{membership.userEmail}}
@@ -251,11 +251,11 @@ export default
                 space
                 v-chip(x-small outlined label v-t="'members_panel.admin'")
                 space
-              span.text-caption.text--secondary(v-if="membership.acceptedAt")
+              span.text-caption.text-medium-emphasis(v-if="membership.acceptedAt")
                 span(v-t="'common.action.joined'")
                 space
                 time-ago(:date="membership.acceptedAt")
-              span.text-caption.text--secondary(v-if="!membership.acceptedAt")
+              span.text-caption.text-medium-emphasis(v-if="!membership.acceptedAt")
                 template(v-if="membership.inviterId")
                   span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
                   space
@@ -271,9 +271,9 @@ export default
 
         .d-flex.justify-center
           .d-flex.flex-column.align-center
-            .text--secondary(v-if='$route.query.subgroups == "all"')
+            .text-medium-emphasis(v-if='$route.query.subgroups == "all"')
               | {{memberships.length}} / {{group.orgMembersCount}}
-            .text--secondary(v-else)
+            .text-medium-emphasis(v-else)
               | {{memberships.length}} / {{loader.total}}
             v-btn.my-2.members-panel__show-more(outlined color='primary' v-if="memberships.length < loader.total && !loader.exhausted" :loading="loader.loading" @click="loader.fetchRecords({per: 50})")
               span(v-t="'common.action.load_more'")

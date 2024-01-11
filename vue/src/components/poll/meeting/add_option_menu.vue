@@ -33,7 +33,7 @@ export default {
 </script>
 <template lang="pug">
 .poll-meeting-add-option-menu
-  p.text-caption.text--secondary
+  p.text-caption.text-medium-emphasis
     span(v-t="{path: 'poll_common_form.your_in_zone', args: {zone: currentTimeZone}}")
     br
     span(v-t="'poll_meeting_form.participants_see_local_times'")

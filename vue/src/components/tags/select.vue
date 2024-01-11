@@ -103,13 +103,13 @@ v-card.tags-modal(:title="$t('loomio_tags.card_title')")
     dismiss-modal-button(:close="close")
 
   .px-4.pb-2
-    p.text--secondary
+    p.text-medium-emphasis
       span(v-if="canAdminTags" v-t="'loomio_tags.helptext'")
       span(v-else v-t="{path: 'loomio_tags.only_admins_can_edit_tags', args: {group: group.parentOrSelf().name}}")
 
   div(v-if="canAdminTags")
     .pa-4(v-if="allTags.length == 0")
-      p.text--secondary(v-t="'loomio_tags.no_tags_in_group'")
+      p.text-medium-emphasis(v-t="'loomio_tags.no_tags_in_group'")
     sortable-list(
       v-model:list="allTags"
       useDragHandle
@@ -126,7 +126,7 @@ v-card.tags-modal(:title="$t('loomio_tags.card_title')")
           v-chip(:color="tag.color" v-handle outlined) {{tag.name}}
           template(v-slot:append)
             v-btn(icon variant="text" @click="openEditTagModal(tag)")
-              common-icon.text--secondary(name="mdi-pencil")
+              common-icon.text-medium-emphasis(name="mdi-pencil")
 
   v-card-actions(v-if="canAdminTags")
     v-spacer
