@@ -80,12 +80,17 @@ class API::V1::DiscussionsController < API::V1::RestfulController
 
   def history
     load_and_authorize(:discussion)
-    res = DiscussionReader.joins(:user).where(discussion: @discussion).where.not(last_read_at: nil).map do |reader|
-      {reader_id: reader.id,
-       last_read_at: reader.last_read_at,
-       user_name: reader.user.name_or_username }
+
+    if @discussion.polls.kept.where(anonymous:true).any?
+      render root: false, json: {message: "Viewer history is disabled because discussion has anonymous polls"}, status: 403
+    else
+      res = DiscussionReader.joins(:user).where(discussion: @discussion).where.not(last_read_at: nil).map do |reader|
+        {reader_id: reader.id,
+         last_read_at: reader.last_read_at,
+         user_name: reader.user.name_or_username }
+      end
+      render root: false, json: res
     end
-    render root: false, json: res
   end
 
   def mark_as_seen
