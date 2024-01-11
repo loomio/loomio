@@ -1886,6 +1886,9 @@ ro:
     unreleased_emails: E-mailuri neeliberate
     start_a_thread_by_email: Începeți o discuție prin e-mail
     email_released: E-mail lansat și alias creat
+    send_email_to_start_thread: Trimiteți un e-mail la această adresă pentru a începe o discuție în grupul dvs.
+    subject_body_attachments: Subiectul e-mailului devine titlul firului de discuție, corpul e-mailului devine descrierea și orice fișiere atașate vor fi atașate la fir.
+    forward_email_to_move_conversation: 'Sfat: redirecționați o conversație prin e-mail către Loomio atunci când trebuie să luați o decizie sau să păstrați o evidență.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Adresa ta de e-mail pentru a începe firele în %{group}
   close_explanation_modal:
@@ -2060,6 +2063,7 @@ ro:
   discussion_last_seen_by:
     title: Văzut de
     no_one: Nimeni nu a văzut asta încă
+    disabled_anonymous_polls: Istoricul spectatorilor este dezactivat deoarece firul conține sondaje anonime
   thread_arrangement_form:
     edit: Editați aspectul
     title: Dispunerea firului

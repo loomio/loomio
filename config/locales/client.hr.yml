@@ -887,6 +887,9 @@ hr:
     unreleased_emails: Neobjavljene e-poruke
     start_a_thread_by_email: Započnite nit e-poštom
     email_released: Otpuštena e-pošta i stvoren alias
+    send_email_to_start_thread: Pošaljite e-poruku na ovu adresu da pokrenete nit u svojoj grupi.
+    subject_body_attachments: Predmet e-pošte postaje naslov niti, tijelo e-pošte postaje opis, a sve priložene datoteke bit će priložene niti.
+    forward_email_to_move_conversation: 'Savjet: Proslijedite razgovor e-poštom na Loomio kada trebate donijeti odluku ili voditi evidenciju.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Vaša adresa e-pošte za pokretanje niti u %{group}
   volume_levels:
@@ -1387,7 +1390,7 @@ hr:
     user_name_updated: Korisničko ime ažurirano
     set_user_name: Postavite korisničko ime
   user_page:
-    contact_user: "kontakta %{name}"
+    contact_user: kontakta %{name}
     location_field: 'Lokacija: %{value}'
     locale_field: 'Jezik: %{value}'
     online_field: 'Online: %{value}'
@@ -1545,6 +1548,7 @@ hr:
   discussion_last_seen_by:
     title: vidio od
     no_one: Ovo još nitko nije vidio
+    disabled_anonymous_polls: Povijest gledatelja je onemogućena jer nit sadrži anonimne ankete
   activity_card:
     count_responses: "%{count} odgovora"
     event_pinned: Prikvačeno na vremensku traku

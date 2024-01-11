@@ -1873,6 +1873,9 @@ tr:
     unreleased_emails: Yayınlanmamış e-postalar
     start_a_thread_by_email: E-postayla konu başlat
     email_released: E-posta yayınlandı ve takma ad oluşturuldu
+    send_email_to_start_thread: Grubunuzda bir konu başlatmak için bu adrese bir e-posta gönderin.
+    subject_body_attachments: E-posta konusu konu başlığı olur, e-postanın gövdesi açıklama olur ve ekli dosyalar konuya eklenir.
+    forward_email_to_move_conversation: 'İpucu: Bir karar vermeniz veya kayıt tutmanız gerektiğinde, bir e-posta görüşmesini Loomio''ya iletin.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: "%{group} grubunda konu başlatmak için e-posta adresiniz"
   close_explanation_modal:
@@ -2041,6 +2044,7 @@ tr:
   discussion_last_seen_by:
     title: Tarafından görüldü
     no_one: Bunu henüz kimse görmedi
+    disabled_anonymous_polls: Konu başlığı anonim anketler içerdiğinden görüntüleme geçmişi devre dışı bırakıldı
   pin_thread_modal:
     title: Konuyu sabitle
     helptext: Sabitlenen konular her zaman kendi gruplarının konu listesinin en üstünde görünür. Üyeleri önemli duyurular hakkında bilgilendirmek veya davranış kuralları veya topluluk kuralları gibi ortak materyalleri tanıtmak için kullanılabilirler.

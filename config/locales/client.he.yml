@@ -2258,6 +2258,9 @@ he:
     unreleased_emails: מיילים שלא פורסמו
     start_a_thread_by_email: התחל שרשור במייל
     email_released: דוא"ל שוחרר והכינוי נוצר
+    send_email_to_start_thread: שלח אימייל לכתובת זו כדי לפתוח שרשור בקבוצה שלך.
+    subject_body_attachments: נושא האימייל הופך לכותרת השרשור, גוף האימייל הופך לתיאור, וכל הקבצים המצורפים יצורפו לשרשור.
+    forward_email_to_move_conversation: 'טיפ: העבר שיחת דוא"ל ל-Loomio כאשר אתה צריך לקבל החלטה או לשמור תיעוד.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: כתובת הדוא"ל שלך לפתיחת שרשורים ב-%{group}
   search_modal:
@@ -2314,6 +2317,7 @@ he:
   discussion_last_seen_by:
     title: נראה ע"י
     no_one: אף אחד לא ראה את זה עדיין
+    disabled_anonymous_polls: היסטוריית הצופים מושבתת מכיוון שהשרשור מכיל סקרים אנונימיים
   thread_arrangement_form:
     edit: ערוך פריסה
     title: פריסת חוט

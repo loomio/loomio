@@ -1458,6 +1458,7 @@ hu:
   discussion_last_seen_by:
     title: Látta
     no_one: Még senki sem látta
+    disabled_anonymous_polls: A megtekintési előzmények le vannak tiltva, mert a szál névtelen szavazásokat tartalmaz
   activity_card:
     event_pinned: Idővonalhoz rögzítve
     event_unpinned: Nem szerepel az idővonalon
@@ -2326,6 +2327,9 @@ hu:
     unreleased_emails: Kiadatlan e-mailek
     start_a_thread_by_email: Indíts el egy szálat e-mailben
     email_released: Az e-mail feladva és az alias létrehozva
+    send_email_to_start_thread: Küldjön egy e-mailt erre a címre, ha szálat szeretne indítani a csoportjában.
+    subject_body_attachments: Az e-mail tárgya lesz a szál címe, az e-mail törzse a leírás, és minden csatolt fájl a szálhoz csatolódik.
+    forward_email_to_move_conversation: 'Tipp: Továbbítson egy e-mailes beszélgetést a Loomiónak, ha döntést kell hoznia vagy nyilvántartást kell vezetnie.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Az Ön e-mail címe a szálak indításához a %{group}
   delete_group_modal:

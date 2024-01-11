@@ -1024,6 +1024,9 @@ fi:
     unreleased_emails: Julkaisemattomat sähköpostit
     start_a_thread_by_email: Aloita viestiketju sähköpostitse
     email_released: Sähköposti vapautettu ja alias luotu
+    send_email_to_start_thread: Lähetä viesti tähän osoitteeseen aloittaaksesi ketjun ryhmässäsi.
+    subject_body_attachments: Sähköpostin aiheesta tulee ketjun otsikko, sähköpostin tekstiosasta tulee kuvaus, ja kaikki liitetiedostot liitetään ketjuun.
+    forward_email_to_move_conversation: 'Vinkki: Lähetä sähköpostikeskustelu Loomiolle, kun sinun on tehtävä päätös tai pidettävä kirjaa.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Sähköpostiosoitteesi ketjujen aloittamiseksi %{group}
   pin_event_form:
@@ -1730,6 +1733,7 @@ fi:
   discussion_last_seen_by:
     title: Nähnyt
     no_one: Kukaan ei ole vielä nähnyt tätä
+    disabled_anonymous_polls: Katsojahistoria on poistettu käytöstä, koska viestiketju sisältää anonyymejä kyselyjä
   activity_card:
     count_responses: "%{count} vastausta"
     event_pinned: Kiinnitetty aikajanalle

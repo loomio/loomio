@@ -1489,6 +1489,7 @@ pl:
   discussion_last_seen_by:
     title: Wyświetlone przez
     no_one: Nikt jeszcze tego nie widział
+    disabled_anonymous_polls: Historia przeglądania jest wyłączona, ponieważ wątek zawiera anonimowe ankiety
   activity_card:
     event_pinned: Przypięto do osi czasu
     event_unpinned: Odepięto od osi czasu
@@ -2394,6 +2395,9 @@ pl:
     unreleased_emails: Niepublikowane e-maile
     start_a_thread_by_email: Rozpocznij wątek przez e-mail
     email_released: E-mail zwolniony i utworzony alias
+    send_email_to_start_thread: Wyślij e-mail na ten adres, aby rozpocząć wątek w swojej grupie.
+    subject_body_attachments: Temat wiadomości e-mail stanie się tytułem wątku, treść wiadomości e-mail stanie się opisem, a wszelkie załączone pliki zostaną dołączone do wątku.
+    forward_email_to_move_conversation: 'Wskazówka: przekaż rozmowę e-mailową do Loomio, jeśli chcesz podjąć decyzję lub zachować zapis.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Twój adres e-mail do rozpoczynania wątków w %{group}
   thread_preview:
