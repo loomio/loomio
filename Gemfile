@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '3.3.0'
+ruby '3.2.2'
 gem 'rails', '7.0.7.2'
 gem 'rack', '2.2.8'
 gem 'uri', '0.13.0'
