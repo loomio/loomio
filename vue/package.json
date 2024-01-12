@@ -16,7 +16,7 @@
     "@sentry/browser": "^7.92.0",
     "@sentry/tracing": "^7.92.0",
     "@sentry/vue": "^7.92.0",
-    "@tiptap/core": "^2.1.15",
+    "@tiptap/core": "^2.1.16",
     "@tiptap/extension-blockquote": "^2.1.15",
     "@tiptap/extension-bold": "^2.1.15",
     "@tiptap/extension-bullet-list": "^2.1.15",
