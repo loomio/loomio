@@ -1494,6 +1494,7 @@ uk:
   discussion_last_seen_by:
     title: Переглянуто
     no_one: Ще ніхто не переглянув
+    disabled_anonymous_polls: Історія перегляду вимкнена, оскільки ланцюжок містить анонімні опитування
   activity_card:
     event_pinned: Закріплено на часовій шкалі
     event_unpinned: Відкріплено з часової шкали
@@ -2416,6 +2417,9 @@ uk:
     unreleased_emails: Неопубліковані електронні листи
     start_a_thread_by_email: Почніть ланцюжок електронною поштою
     email_released: Електронну адресу звільнено та створено псевдонім
+    send_email_to_start_thread: Надішліть електронний лист на цю адресу, щоб створити ланцюжок у своїй групі.
+    subject_body_attachments: Тема електронного листа стає заголовком ланцюжка, текст електронного листа стає описом, а всі вкладені файли будуть вкладені в ланцюжок.
+    forward_email_to_move_conversation: 'Порада: пересилайте розмову електронною поштою до Loomio, коли вам потрібно прийняти рішення або зберегти запис.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Ваша адреса електронної пошти для створення тем у %{group}
   thread_preview:

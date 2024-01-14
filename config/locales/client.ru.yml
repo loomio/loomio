@@ -1916,6 +1916,9 @@ ru:
     unreleased_emails: Неизданные электронные письма
     start_a_thread_by_email: Начать обсуждение по электронной почте
     email_released: Электронная почта опубликована, псевдоним создан.
+    send_email_to_start_thread: Отправьте электронное письмо на этот адрес, чтобы создать тему в своей группе.
+    subject_body_attachments: Тема электронного письма становится заголовком цепочки, тело письма становится описанием, а все вложенные файлы будут прикреплены к цепочке.
+    forward_email_to_move_conversation: 'Совет: пересылайте разговор по электронной почте в Loomio, когда вам нужно принять решение или вести запись.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Ваш адрес электронной почты для создания тем в %{group}
   strand_nav:
@@ -2067,6 +2070,7 @@ ru:
   discussion_last_seen_by:
     title: Виденный
     no_one: Этого еще никто не видел
+    disabled_anonymous_polls: История просмотров отключена, поскольку ветка содержит анонимные опросы.
   thread_arrangement_form:
     edit: Изменить макет
     title: Расположение резьбы

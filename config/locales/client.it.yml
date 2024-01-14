@@ -1502,6 +1502,7 @@ it:
   discussion_last_seen_by:
     title: Visto da
     no_one: Nessuno l'ha ancora visto
+    disabled_anonymous_polls: La cronologia dei visualizzatori è disabilitata perché il thread contiene sondaggi anonimi
   activity_card:
     count_responses: "%{count} risultati"
     event_pinned: Appuntato sulla sequenza temporale
@@ -2410,6 +2411,9 @@ it:
     unreleased_emails: E-mail inedite
     start_a_thread_by_email: Avvia una discussione tramite email
     email_released: E-mail rilasciata e alias creato
+    send_email_to_start_thread: Invia un'e-mail a questo indirizzo per avviare una discussione nel tuo gruppo.
+    subject_body_attachments: L'oggetto dell'e-mail diventa il titolo del thread, il corpo dell'e-mail diventa la descrizione e tutti i file allegati verranno allegati al thread.
+    forward_email_to_move_conversation: 'Suggerimento: inoltra una conversazione email a Loomio quando devi prendere una decisione o tenere un registro.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Il tuo indirizzo email per avviare discussioni in %{group}
   global:

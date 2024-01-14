@@ -398,6 +398,9 @@ es:
     unreleased_emails: Correos electrónicos inéditos
     start_a_thread_by_email: Iniciar un hilo por correo electrónico
     email_released: Correo electrónico liberado y alias creado
+    send_email_to_start_thread: Envíe un correo electrónico a esta dirección para iniciar un hilo en su grupo.
+    subject_body_attachments: El asunto del correo electrónico se convierte en el título del hilo, el cuerpo del correo electrónico se convierte en la descripción y todos los archivos adjuntos se adjuntarán al hilo.
+    forward_email_to_move_conversation: 'Consejo: reenvía una conversación por correo electrónico a Loomio cuando necesites tomar una decisión o mantener un registro.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Tu dirección de correo electrónico para iniciar hilos en %{group}
   volume_levels:
@@ -1545,6 +1548,7 @@ es:
   discussion_last_seen_by:
     title: Visto por
     no_one: Nadie ha visto esto todavía
+    disabled_anonymous_polls: El historial de visualización está deshabilitado porque el hilo contiene encuestas anónimas
   activity_card:
     count_responses: "%{count} respuestas"
     event_pinned: Anclado para cronograma

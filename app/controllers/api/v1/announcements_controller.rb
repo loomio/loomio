@@ -81,10 +81,24 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
 
     events = Event.where(kind: notification_kinds, id: target_event_ids).order('id desc').limit(1000)
 
+    allow_viewed = true
+
+    if target_model.respond_to?(:discussion) &&
+       target_model.discussion.present? &&
+       target_model.discussion.polls.kept.where(anonymous: true).any?
+      allow_viewed = false
+    end
+
+    if target_model.respond_to?(:poll) &&
+       target_model.poll.present? &&
+       target_model.poll.anonymous?
+      allow_viewed = false
+    end
+
     Notification.includes(:user).where(event_id: events.pluck(:id)).order('users.name, users.email').each do |notification|
       next unless notification.user
       notifications[notification.event_id] = [] unless notifications.has_key?(notification.event_id)
-      notifications[notification.event_id] << {id: notification.id, to: (notification.user.name || notification.user.email), viewed: notification.viewed}
+      notifications[notification.event_id] << {id: notification.id, to: (notification.user.name || notification.user.email), viewed: allow_viewed && notification.viewed }
     end
 
     res = events.map do |event|
@@ -95,7 +109,7 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
        notifications: notifications[event.id] || [] }
     end.filter {|e| e[:notifications].size > 0}
 
-    render root: false, json: res
+    render root: false, json: {allow_viewed: allow_viewed, data: res}
   end
 
   private

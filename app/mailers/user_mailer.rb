@@ -54,7 +54,7 @@ class UserMailer < BaseMailer
     @subject_key = "email.catch_up.#{frequency}_subject"
     @subject_params = { site_name: AppConfig.theme[:site_name] }
 
-    unless @discussions.empty? or @user.groups.empty?
+    unless @discussions.empty?
       @discussions_by_group_id = @discussions.group_by(&:group_id)
       send_single_mail to: @user.email,
                        subject_key: @subject_key,

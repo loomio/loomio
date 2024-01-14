@@ -15,7 +15,6 @@ export default class OutcomeModel extends BaseModel {
     return {
       statement: '',
       statementFormat: 'html',
-      calendarInvite: false,
       eventSummary: null,
       eventDescription: null,
       includeActor: false,

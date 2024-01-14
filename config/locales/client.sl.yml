@@ -1854,6 +1854,9 @@ sl:
     unreleased_emails: Neobjavljena e-poštna sporočila
     start_a_thread_by_email: Začni nit po e-pošti
     email_released: E-pošta je bila sproščena in vzdevek ustvarjen
+    send_email_to_start_thread: Pošljite e-pošto na ta naslov, da začnete nit v svoji skupini.
+    subject_body_attachments: Zadeva e-pošte postane naslov niti, telo e-pošte postane opis, vse priložene datoteke pa bodo priložene niti.
+    forward_email_to_move_conversation: 'Nasvet: Posredujte e-poštni pogovor v Loomio, ko se morate odločiti ali voditi evidenco.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Vaš e-poštni naslov za začetek niti v %{group}
   sign_up_form:
@@ -2030,6 +2033,7 @@ sl:
   discussion_last_seen_by:
     title: Videno od
     no_one: Tega še nihče ni videl
+    disabled_anonymous_polls: Zgodovina gledalcev je onemogočena, ker nit vsebuje anonimne ankete
   thread_arrangement_form:
     edit: Uredi postavitev
     title: Postavitev niti

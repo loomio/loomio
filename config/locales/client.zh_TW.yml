@@ -1502,6 +1502,7 @@ zh_TW:
   discussion_last_seen_by:
     title: 被這些人看過：
     no_one: 還沒有人看過這個
+    disabled_anonymous_polls: 由於線程包含匿名民意調查，查看者歷史記錄被禁用
   activity_card:
     count_responses: "%{count} 個回應"
     event_pinned: 已釘選至時間軸
@@ -2197,6 +2198,7 @@ zh_TW:
     stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 已投票：<strong>%{title}</strong>"
     stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> 更新了他們的投票於：<strong>%{title}</strong>"
     event_removed: 從討論串中移除
+    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>建立了此執行緒的分支： <strong><a href='d/%{key}'>%{title}</a></strong>"
   add_poll_to_thread_modal:
     success: 成功，%{pollType} 已新增至討論串！
   auth_form:
@@ -2390,6 +2392,9 @@ zh_TW:
     copy_address: 複製地址
     email_me_this_address: 透過電子郵件給我這個地址
     email_address_copied_to_clipboard: 電子郵件地址已複製到剪貼簿
+    send_email_to_start_thread: 發送電子郵件至此地址以在您的群組中發起話題。
+    subject_body_attachments: 電子郵件主題將成為主題標題，電子郵件正文將成為描述，所有附加文件將附加到主題中。
+    forward_email_to_move_conversation: 提示：當您需要做出決定或保留記錄時，將電子郵件對話轉發給 Loomio。
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: 用於在 %{group} 中啟動主題的電子郵件地址
   search_modal:
@@ -2518,6 +2523,9 @@ zh_TW:
       concerned: 擔心的
       concerned_meaning: 有關此內容的某些內容可能需要更改才能獲得我的同意或同意
       concerned_prompt: 您擔心什麼？如何解決？
+      not_sure: 沒有把握
+      not_sure_meaning: 我有疑問或需要更多時間
+      not_sure_prompt: 哪些部分是您不清楚的？怎麼解決這個問題呢？
     gradients_of_agreement:
       process_subtitle: 表示支持某項提案（滿分 8 分）
       process_introduction: "<p>同意提案的梯度使小組成員能夠在一定程度上表達對提案的支持，提供比「同意」和「不同意」更多的表達支持的方式。</p><p>使用協議梯度作為初步回合，在達成正式協議之前測試對提案的支持。</p><p>同意梯度讓人們知道提案正在形成並鼓勵他們參與。這是一個傾聽人們的聲音、感受他們的感受並做出適當反應的機會——開啟整合他們的貢獻以做出更好決策的潛力。</p>"

@@ -1797,6 +1797,9 @@ sv:
     unreleased_emails: E-postmeddelanden som inte har släppts
     start_a_thread_by_email: Starta en tråd via e-post
     email_released: E-post släppt och alias skapat
+    send_email_to_start_thread: Skicka ett e-postmeddelande till den här adressen för att starta en tråd i din grupp.
+    subject_body_attachments: E-postämnet blir trådens titel, e-postmeddelandets brödtext blir beskrivningen och alla bifogade filer kommer att bifogas till tråden.
+    forward_email_to_move_conversation: 'Tips: Vidarebefordra en e-postkonversation till Loomio när du behöver fatta ett beslut eller föra protokoll.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Din e-postadress för att starta trådar i %{group}
   thread_nav:
@@ -1953,7 +1956,7 @@ sv:
     user_name_updated: Användarnamnet har uppdaterats
     set_user_name: Ange användarnamn
   user_page:
-    contact_user: 'Kontakt %{name}'
+    contact_user: Kontakt %{name}
     location_field: 'Plats: %{value}'
     locale_field: 'Språk: %{value}'
     online_field: 'Online: %{value}'
@@ -2008,6 +2011,7 @@ sv:
   discussion_last_seen_by:
     title: Ses av
     no_one: Ingen har sett detta än
+    disabled_anonymous_polls: Tittarhistoriken är inaktiverad eftersom tråden innehåller anonyma omröstningar
   pin_thread_modal:
     title: Pintråd
     helptext: Fästa trådar visas alltid högst upp i gruppens lista med trådar. De kan användas för att informera medlemmar om viktiga meddelanden eller för att marknadsföra vanligt material som en uppförandekod eller riktlinjer för gemenskapen.

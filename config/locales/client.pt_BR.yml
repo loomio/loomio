@@ -1515,6 +1515,7 @@ pt_BR:
   discussion_last_seen_by:
     title: Visto por
     no_one: Ninguém viu isso ainda
+    disabled_anonymous_polls: O histórico do visualizador está desativado porque a conversa contém enquetes anônimas
   activity_card:
     count_responses: "%{count} respostas"
     event_pinned: Fixado na timeline
@@ -2478,6 +2479,9 @@ pt_BR:
     unreleased_emails: E-mails não lançados
     start_a_thread_by_email: Iniciar um tópico por e-mail
     email_released: E-mail liberado e alias criado
+    send_email_to_start_thread: Envie um e-mail para este endereço para iniciar um tópico em seu grupo.
+    subject_body_attachments: O assunto do email se torna o título do tópico, o corpo do email se torna a descrição e todos os arquivos anexados serão anexados ao tópico.
+    forward_email_to_move_conversation: 'Dica: Encaminhe uma conversa por e-mail para o Loomio quando precisar tomar uma decisão ou manter um registro.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Seu endereço de e-mail para iniciar tópicos em %{group}
   poll_templates:

@@ -400,6 +400,9 @@ fr:
     unreleased_emails: E-mails inédits
     start_a_thread_by_email: Démarrer un fil de discussion par e-mail
     email_released: E-mail publié et alias créé
+    send_email_to_start_thread: Envoyez un e-mail à cette adresse pour démarrer un fil de discussion dans votre groupe.
+    subject_body_attachments: Le sujet de l'e-mail devient le titre du fil de discussion, le corps de l'e-mail devient la description et tous les fichiers joints seront joints au fil de discussion.
+    forward_email_to_move_conversation: 'Astuce : transférez une conversation par e-mail à Loomio lorsque vous devez prendre une décision ou conserver une trace.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Votre adresse e-mail pour démarrer les threads dans %{group}
   volume_levels:
@@ -1530,7 +1533,7 @@ fr:
     max_threads_reached: |
       <p>Vous avez épuisé toutes les %{maxThreads} invitations disponible pour ce groupe.</p>
       <p>Étape suivante, <a href="%{upgradeUrl}" target="_blank">choisissez un abonnement</a> pour continuer à utiliser Loomio.</p>
-    subscription_canceled: 'Votre abonnement n''est pas actif. Veuillez passer en version premium pour continuer à utiliser Loomio. %{upgradeUrl}'
+    subscription_canceled: Votre abonnement n'est pas actif. Veuillez passer en version premium pour continuer à utiliser Loomio. %{upgradeUrl}
     activity: Activité
     activity_placeholder: Aucune activité pour l’instant !
     load_previous: Afficher les activités précédentes
@@ -1547,6 +1550,7 @@ fr:
   discussion_last_seen_by:
     title: Vu par
     no_one: Personne n'a encore vu cela pour l'instant
+    disabled_anonymous_polls: L'historique des spectateurs est désactivé, car le fil de discussion contient des sondages anonymes.
   activity_card:
     count_responses: "%{count} réponses"
     event_pinned: Epinglé à la timeline

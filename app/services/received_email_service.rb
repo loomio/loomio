@@ -75,8 +75,7 @@ class ReceivedEmailService
   end
 
   def self.delete_old_emails
-    ReceivedEmail.released.where("created_at < ?", 7.days.ago).destroy_all
-    ReceivedEmail.unreleased.where("created_at < ?", 60.days.ago).destroy_all
+    ReceivedEmail.where("created_at < ?", 60.days.ago).destroy_all
   end
 
   private
@@ -140,8 +139,10 @@ class ReceivedEmailService
 
   def self.discussion_params(email)
     params = parse_route_params(email.route_path)
+    group = Group.find_by!(handle: (params['handle'] || email.route_path))
     {
-      group_id: Group.find_by!(handle: (params['handle'] || email.route_path)).id,
+      group_id: group.id,
+      private: group.discussion_private_default,
       title: email.subject,
       body: email.full_body,
       body_format: email.body_format,
