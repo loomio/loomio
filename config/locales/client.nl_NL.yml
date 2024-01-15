@@ -1472,6 +1472,7 @@ nl_NL:
   discussion_last_seen_by:
     title: Gezien door
     no_one: Nog niemand heeft dit gezien
+    disabled_anonymous_polls: Kijkgeschiedenis is uitgeschakeld omdat thread anonieme opiniepeilingen bevat
   activity_card:
     event_pinned: Vastgeprikt op de tijdslijn
     event_unpinned: Loggeprikt van de tijdslijn
@@ -2394,6 +2395,9 @@ nl_NL:
     unreleased_emails: Niet-vrijgegeven e-mails
     start_a_thread_by_email: Start een draad per e-mail
     email_released: E-mail vrijgegeven en alias gemaakt
+    send_email_to_start_thread: Stuur een e-mail naar dit adres om een gesprek in uw groep te starten.
+    subject_body_attachments: Het e-mailonderwerp wordt de titel van de thread, de hoofdtekst van de e-mail wordt de beschrijving en eventuele bijgevoegde bestanden worden aan de thread toegevoegd.
+    forward_email_to_move_conversation: 'Tip: Stuur een e-mailgesprek door naar Loomio als u een beslissing moet nemen of iets moet bijhouden.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Uw e-mailadres om threads te starten in %{group}
   thread_preview:

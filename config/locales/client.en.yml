@@ -1658,6 +1658,7 @@ en:
   discussion_last_seen_by:
     title: Seen by
     no_one: No one has seen this yet
+    disabled_anonymous_polls: Viewer history is disabled because thread contains anonymous polls
 
   activity_card:
     count_responses: "%{count} responses"

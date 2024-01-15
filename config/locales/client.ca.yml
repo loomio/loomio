@@ -1453,6 +1453,7 @@ ca:
   discussion_last_seen_by:
     title: Vist per
     no_one: Encara no ho ha vist ningú
+    disabled_anonymous_polls: L'historial del visor està desactivat perquè el fil conté enquestes anònimes
   activity_card:
     event_pinned: Fixat a la línia de temps
     event_unpinned: S'ha anul·lat la fixació a la línia de temps
@@ -2358,6 +2359,9 @@ ca:
     unreleased_emails: Correus electrònics no publicats
     start_a_thread_by_email: Inicieu un fil per correu electrònic
     email_released: Correu electrònic publicat i àlies creat
+    send_email_to_start_thread: Envieu un correu electrònic a aquesta adreça per iniciar un fil al vostre grup.
+    subject_body_attachments: L'assumpte del correu electrònic es converteix en el títol del fil, el cos del correu electrònic es converteix en la descripció i qualsevol fitxer adjunt s'adjuntarà al fil.
+    forward_email_to_move_conversation: 'Consell: reenvieu una conversa per correu electrònic a Loomio quan necessiteu prendre una decisió o mantenir un registre.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: La teva adreça de correu electrònic per iniciar fils a %{group}
   search_modal:

@@ -2045,6 +2045,9 @@ da:
     unreleased_emails: Ikke-udgivne e-mails
     start_a_thread_by_email: Start en tråd via e-mail
     email_released: E-mail frigivet og alias oprettet
+    send_email_to_start_thread: Send en e-mail til denne adresse for at starte en tråd i din gruppe.
+    subject_body_attachments: E-mail-emnet bliver trådens titel, e-mailens brødtekst bliver beskrivelsen, og eventuelle vedhæftede filer vil blive vedhæftet tråden.
+    forward_email_to_move_conversation: 'Tip: Videresend en e-mail-samtale til Loomio, når du skal træffe en beslutning eller føre en registrering.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Din e-mailadresse til at starte tråde i %{group}
   close_explanation_modal:
@@ -2189,6 +2192,7 @@ da:
   discussion_last_seen_by:
     title: Set af
     no_one: Ingen har set dette endnu
+    disabled_anonymous_polls: Seerhistorik er deaktiveret, fordi tråden indeholder anonyme afstemninger
   pin_thread_modal:
     title: Pintråd
     helptext: Fastgjorte tråde vises altid øverst på deres gruppes liste over tråde. De kan bruges til at informere medlemmer om vigtige meddelelser eller til at promovere almindeligt materiale som en adfærdskodeks eller retningslinjer for fællesskabet.

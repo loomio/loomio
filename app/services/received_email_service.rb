@@ -139,8 +139,10 @@ class ReceivedEmailService
 
   def self.discussion_params(email)
     params = parse_route_params(email.route_path)
+    group = Group.find_by!(handle: (params['handle'] || email.route_path))
     {
-      group_id: Group.find_by!(handle: (params['handle'] || email.route_path)).id,
+      group_id: group.id,
+      private: group.discussion_private_default,
       title: email.subject,
       body: email.full_body,
       body_format: email.body_format,

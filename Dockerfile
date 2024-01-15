@@ -1,14 +1,11 @@
-FROM ruby:3.3.0-slim as base
+FROM ruby:3.2.2-slim as base
 
-ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
 ENV MALLOC_ARENA_MAX=2
 ENV RAILS_LOG_TO_STDOUT=1
 ENV RAILS_SERVE_STATIC_FILES=1
 ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT=development
-ENV NODE_OPTIONS=--openssl-legacy-provider
 ENV NODE_MAJOR=20
-ENV RUBY_YJIT_ENABLE=1
 
 WORKDIR /loomio
 

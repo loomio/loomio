@@ -28,8 +28,10 @@ class API::V1::StancesController < API::V1::RestfulController
                  first: "#{name}%", last: "% #{name}%")
       end
 
-      if poll_option_id = params[:poll_option_id].presence
-        collection = collection.joins(:poll_options).where("poll_options.id" => poll_option_id)
+      if @poll.show_results?(voted: true)
+        if poll_option_id = params[:poll_option_id].presence
+          collection = collection.joins(:poll_options).where("poll_options.id" => poll_option_id)
+        end
       end
 
       collection.order('cast_at DESC NULLS LAST, created_at DESC')
