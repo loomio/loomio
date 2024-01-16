@@ -4,7 +4,6 @@ import EventBus       from '@/shared/services/event_bus';
 import utils          from '@/shared/record_store/utils';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import AbilityService from '@/shared/services/ability_service';
-import { I18n } from '@/i18n';
 
 import Flash   from '@/shared/services/flash';
 
@@ -40,7 +39,7 @@ export default
       if (this.group.token) {
         return LmoUrlService.shareableLink(this.group);
       } else {
-        return I18n.global.t('common.action.loading');
+        return this.$t('common.action.loading');
       }
     },
 

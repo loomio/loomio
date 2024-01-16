@@ -8,7 +8,6 @@ import Flash              from '@/shared/services/flash';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
 import PlausibleService from '@/shared/services/plausible_service';
-import { I18n } from '@/i18n';
 import FormatDate from '@/mixins/format_date';
 
 export default 
@@ -29,7 +28,7 @@ export default
       titleKey: 'templates.try_loomio',
       page: 'threadsPage',
       search: {
-        placeholder: I18n.global.t('navbar.search_all_threads')
+        placeholder: this.$t('navbar.search_all_threads')
       }
     }
     );

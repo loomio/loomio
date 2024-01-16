@@ -9,7 +9,6 @@ import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
-import { I18n } from '@/i18n';
 
 export default 
 {
@@ -57,7 +56,7 @@ export default
           title: this.group.name,
           group: this.group,
           search: {
-            placeholder: I18n.global.t('navbar.search_threads', {name: this.group.parentOrSelf().name})
+            placeholder: this.$t('navbar.search_threads', {name: this.group.parentOrSelf().name})
           }
         }
         );

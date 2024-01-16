@@ -8,7 +8,6 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import { sortBy, pick, filter } from 'lodash-es';
 import UserService from '@/shared/services/user_service';
 import Flash from '@/shared/services/flash';
-import { I18n } from '@/i18n';
 import WatchRecords from '@/mixins/watch_records';
 
 export default {
@@ -76,16 +75,16 @@ export default {
   computed: {
     emailDays() {
       return [
-        {value: null, title: I18n.global.t('email_settings_page.never')},
-        {value: 7, title: I18n.global.t('email_settings_page.every_day')},
-        {value: 8, title: I18n.global.t('email_settings_page.every_second_day')},
-        {value: 1, title: I18n.global.t('email_settings_page.monday')},
-        {value: 2, title: I18n.global.t('email_settings_page.tuesday')},
-        {value: 3, title: I18n.global.t('email_settings_page.wednesday')},
-        {value: 4, title: I18n.global.t('email_settings_page.thursday')},
-        {value: 5, title: I18n.global.t('email_settings_page.friday')},
-        {value: 6, title: I18n.global.t('email_settings_page.saturday')},
-        {value: 0, title: I18n.global.t('email_settings_page.sunday')}
+        {value: null, title: this.$t('email_settings_page.never')},
+        {value: 7, title: this.$t('email_settings_page.every_day')},
+        {value: 8, title: this.$t('email_settings_page.every_second_day')},
+        {value: 1, title: this.$t('email_settings_page.monday')},
+        {value: 2, title: this.$t('email_settings_page.tuesday')},
+        {value: 3, title: this.$t('email_settings_page.wednesday')},
+        {value: 4, title: this.$t('email_settings_page.thursday')},
+        {value: 5, title: this.$t('email_settings_page.friday')},
+        {value: 6, title: this.$t('email_settings_page.saturday')},
+        {value: 0, title: this.$t('email_settings_page.sunday')}
       ];
     },
     actions() { return filter(pick(UserService.actions(Session.user(), this), ['reactivate_user', 'deactivate_user']), action => action.canPerform()); },

@@ -1,7 +1,5 @@
 <script lang="js">
 import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-3';
-import { I18n } from '@/i18n';
-// import { isArray } from 'lodash-es';
 export default
 {
   components: { NodeViewWrapper, NodeViewContent },
@@ -15,12 +13,12 @@ export default
       remind: 0,
       checked: this.node.attrs.checked,
       reminders: [
-        {title: I18n.global.t('tasks.no_reminder'), value: null},
-        {title: I18n.global.t('tasks.on_due_date'), value: 0},
-        {title: I18n.global.t('tasks.1_day_before'), value: 1},
-        {title: I18n.global.t('tasks.2_day_before'), value: 2},
-        {title: I18n.global.t('tasks.3_day_before'), value: 3},
-        {title: I18n.global.t('tasks.7_day_before'), value: 7}
+        {title: this.$t('tasks.no_reminder'), value: null},
+        {title: this.$t('tasks.on_due_date'), value: 0},
+        {title: this.$t('tasks.1_day_before'), value: 1},
+        {title: this.$t('tasks.2_day_before'), value: 2},
+        {title: this.$t('tasks.3_day_before'), value: 3},
+        {title: this.$t('tasks.7_day_before'), value: 7}
       ],
       mentioned: []
     };

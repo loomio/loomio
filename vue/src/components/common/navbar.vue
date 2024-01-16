@@ -5,7 +5,6 @@ import AbilityService      from '@/shared/services/ability_service';
 import AuthModalMixin      from '@/mixins/auth_modal';
 import Session             from '@/shared/services/session';
 import { last }            from 'lodash-es';
-import { I18n } from '@/i18n';
 
 export default {
   mixins: [ AuthModalMixin ],
@@ -60,7 +59,7 @@ export default {
       if (data.title != null) {
         this.title = data.title;
       } else if (data.titleKey != null) {
-        this.title = I18n.global.t(data.titleKey);
+        this.title = this.$t(data.titleKey);
       }
 
       this.group = data.group;

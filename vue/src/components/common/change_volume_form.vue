@@ -2,7 +2,6 @@
 import Session from '@/shared/services/session';
 import GroupService from '@/shared/services/group_service';
 import Flash from '@/shared/services/flash';
-import { I18n } from '@/i18n';
 import EventBus from '@/shared/services/event_bus';
 
 export default {
@@ -61,7 +60,7 @@ export default {
     },
 
     labelFor(volume) {
-      return I18n.global.t(`change_volume_form.simple.${volume}_explain`) + ' ('+I18n.global.t(`change_volume_form.simple.${volume}`)+')';
+      return this.$t(`change_volume_form.simple.${volume}_explain`) + ' ('+this.$t(`change_volume_form.simple.${volume}`)+')';
     },
 
     translateKey(key) {

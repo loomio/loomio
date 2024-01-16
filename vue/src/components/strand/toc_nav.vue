@@ -3,7 +3,6 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
-import { I18n } from '@/i18n';
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -114,7 +113,7 @@ export default {
       const createdEvent = this.discussion.createdEvent();
       this.items.unshift({
         key: createdEvent.positionKey,
-        title: I18n.global.t('activity_card.context'),
+        title: this.$t('activity_card.context'),
         headings: [],
         sequenceId: 0,
         visible: this.visibleKeys.includes(createdEvent.positionKey),

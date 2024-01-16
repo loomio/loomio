@@ -1,7 +1,6 @@
 <script lang="js">
 import AuthService from '@/shared/services/auth_service';
 import EventBus    from '@/shared/services/event_bus';
-import { I18n } from '@/i18n';
 
 export default {
   props: {
@@ -28,9 +27,9 @@ export default {
     validateEmail() {
       this.user.errors = {};
       if (!this.email) {
-        this.user.errors.email = [I18n.global.t('auth_form.email_not_present')];
+        this.user.errors.email = [this.$t('auth_form.email_not_present')];
       } else if (!this.email.match(/[^\s,;<>]+?@[^\s,;<>]+\.[^\s,;<>]+/g)) {
-        this.user.errors.email = [I18n.global.t('auth_form.invalid_email')];
+        this.user.errors.email = [this.$t('auth_form.invalid_email')];
       }
       return (this.user.errors.email == null);
     }

@@ -5,7 +5,6 @@ import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import AbilityService from '@/shared/services/ability_service';
-import { I18n } from '@/i18n';
 
 export default {
   props: {
@@ -44,7 +43,7 @@ export default {
             e.target.classList.remove('task-item-busy');
           });
         } else {
-          alert(I18n.global.t('tasks.permission_denied'));
+          alert(this.$t('tasks.permission_denied'));
         }
       }
     }

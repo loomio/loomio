@@ -2,7 +2,6 @@
 import { eventHeadline, eventTitle, eventPollType } from '@/shared/helpers/helptext';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import Records from '@/shared/services/records';
-import { I18n } from '@/i18n';
 
 export default {
   props: {
@@ -17,14 +16,14 @@ export default {
     headline() {
       const actor = this.event.actor();
       if ((this.event.kind === 'new_comment') && this.collapsed && (this.event.descendantCount > 0)) {
-        return I18n.global.t('reactions_display.name_and_count_more', {name: actor.nameWithTitle(this.eventable.group()), count: this.event.descendantCount});
+        return this.$t('reactions_display.name_and_count_more', {name: actor.nameWithTitle(this.eventable.group()), count: this.event.descendantCount});
       } else {
-        return I18n.global.t(eventHeadline(this.event, true ), { // useNesting
+        return this.$t(eventHeadline(this.event, true ), { // useNesting
           author:   actor.nameWithTitle(this.eventable.group()),
           username: actor.username,
           key:      this.event.model().key,
           title:    eventTitle(this.event),
-          polltype: I18n.global.t(eventPollType(this.event)).toLowerCase()
+          polltype: this.$t(eventPollType(this.event)).toLowerCase()
         }
         );
       }

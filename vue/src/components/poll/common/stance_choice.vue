@@ -1,6 +1,5 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
-import { I18n } from '@/i18n';
 
 export default
 {
@@ -34,7 +33,7 @@ export default
 
     optionName() {
       if (AppConfig.pollTypes[this.poll.pollType].poll_option_name_format === 'i18n') {
-        return I18n.global.t('poll_' + this.pollType + '_options.' + this.stanceChoice.pollOption.name);
+        return this.$t('poll_' + this.pollType + '_options.' + this.stanceChoice.pollOption.name);
       } else {
         return this.stanceChoice.pollOption.name;
       }

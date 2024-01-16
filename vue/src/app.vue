@@ -8,7 +8,6 @@ import Flash from '@/shared/services/flash';
 import { each, compact, truncate } from 'lodash-es';
 import openModal from '@/shared/helpers/open_modal';
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
-import { I18n } from '@/i18n';
 
 import { useTheme } from 'vuetify';
 
@@ -55,7 +54,7 @@ export default {
     setCurrentComponent(options) {
 
       this.pageError = null;
-      const title = truncate(options.title || I18n.global.t(options.titleKey), {length: 300});
+      const title = truncate(options.title || this.$t(options.titleKey), {length: 300});
       document.querySelector('title').text = compact([title, AppConfig.theme.site_name]).join(' | ');
 
       AppConfig.currentGroup      = options.group;

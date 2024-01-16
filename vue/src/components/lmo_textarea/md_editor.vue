@@ -98,7 +98,7 @@ export default
         },
 
         onFailure: () => {
-          updatePlaceholder(`![${name}](${I18n.global.t('formatting.upload_failed')}`);
+          updatePlaceholder(`![${name}](${this.$t('formatting.upload_failed')}`);
         }
       });
     },

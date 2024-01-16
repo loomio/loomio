@@ -7,7 +7,6 @@ import AnnouncementService from '@/shared/services/announcement_service';
 import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash-es';
 import AbilityService from '@/shared/services/ability_service';
 import NotificationsCount from './notifications_count';
-import { I18n } from '@/i18n';
 
 export default {
   components: {
@@ -242,7 +241,7 @@ export default {
             case 'group':
               ret.push({
                 id: 'group',
-                name: I18n.global.t('announcement.audiences.group', {name: this.model.group().name}),
+                name: this.$t('announcement.audiences.group', {name: this.model.group().name}),
                 size: this.model.group().membershipsCount,
                 icon: 'mdi-account-group'
               });
@@ -250,7 +249,7 @@ export default {
             case 'discussion_group':
               ret.push({
                 id: 'discussion_group',
-                name: I18n.global.t('announcement.audiences.discussion_group'),
+                name: this.$t('announcement.audiences.discussion_group'),
                 size: this.model.discussion().membersCount,
                 icon: 'mdi-forum'
               });
@@ -258,7 +257,7 @@ export default {
             case 'voters':
               ret.push({
                 id: 'voters',
-                name: I18n.global.t('announcement.audiences.voters', {pollType: this.model.poll().translatedPollType()}),
+                name: this.$t('announcement.audiences.voters', {pollType: this.model.poll().translatedPollType()}),
                 size: this.model.poll().votersCount,
                 icon: 'mdi-forum'
               });
@@ -266,7 +265,7 @@ export default {
             case 'decided_voters':
               ret.push({
                 id: 'decided_voters',
-                name: I18n.global.t('announcement.audiences.decided_voters'),
+                name: this.$t('announcement.audiences.decided_voters'),
                 size: this.model.poll().decidedVotersCount,
                 icon: 'mdi-forum'
               });
@@ -274,7 +273,7 @@ export default {
             case 'undecided_voters':
               ret.push({
                 id: 'undecided_voters',
-                name: I18n.global.t('announcement.audiences.undecided_voters'),
+                name: this.$t('announcement.audiences.undecided_voters'),
                 size: this.model.poll().undecidedVotersCount,
                 icon: 'mdi-forum'
               });
@@ -300,7 +299,7 @@ export default {
             if (group.membershipsCount) {
               ret.push({
                 id: `group-${group.id}`,
-                name: I18n.global.t('announcement.audiences.group', {name: group.name}),
+                name: this.$t('announcement.audiences.group', {name: group.name}),
                 size: group.membershipsCount,
                 icon: 'mdi-forum'
               });

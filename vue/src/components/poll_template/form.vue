@@ -9,7 +9,6 @@ import AbilityService from '@/shared/services/ability_service';
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
 // import { HandleDirective } from 'vue-slicksort';
 import { isSameYear, startOfHour, setHours }  from 'date-fns';
-import { I18n } from '@/i18n';
 
 export default {
   // directives: { handle: HandleDirective },
@@ -65,9 +64,9 @@ export default {
 
       currentHideResults: this.pollTemplate.hideResults,
       hideResultsItems: [
-        { title: I18n.global.t('common.off'), value: 'off' },
-        { title: I18n.global.t('poll_common_card.until_you_vote'), value: 'until_vote' },
-        { title: I18n.global.t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
+        { title: this.$t('common.off'), value: 'off' },
+        { title: this.$t('poll_common_card.until_you_vote'), value: 'until_vote' },
+        { title: this.$t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
       ]
     };
   },
@@ -158,7 +157,7 @@ export default {
 
     votingMethodsItems() {
       return without(Object.keys(this.votingMethodsI18n), 'count').map(key => {
-        return {title: I18n.global.t(this.votingMethodsI18n[key].title), value: key};
+        return {title: this.$t(this.votingMethodsI18n[key].title), value: key};
       });
     },
 
@@ -169,9 +168,9 @@ export default {
     allowAnonymous() { return !this.pollTemplate.config().prevent_anonymous; },
     stanceReasonRequiredItems() {
       return [
-        {title: I18n.global.t('poll_common_form.stance_reason_required'), value: 'required'},
-        {title: I18n.global.t('poll_common_form.stance_reason_optional'), value: 'optional'},
-        {title: I18n.global.t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
+        {title: this.$t('poll_common_form.stance_reason_required'), value: 'required'},
+        {title: this.$t('poll_common_form.stance_reason_optional'), value: 'optional'},
+        {title: this.$t('poll_common_form.stance_reason_disabled'), value: 'disabled'}
       ];
     },
 
@@ -185,17 +184,17 @@ export default {
 
     closingSoonItems() {
       return 'nobody author undecided_voters voters'.split(' ').map(name => {
-        return {title: I18n.global.t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
+        return {title: this.$t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
       });
     },
 
     optionFormat() { return this.pollTemplate.pollOptionNameFormat; },
     hasOptionIcon() { return this.pollTemplate.config().has_option_icon; },
-    i18nItems() { 
+    i18nItems() {
       return compact('agree abstain disagree consent objection block yes no'.split(' ').map(name => {
         if (this.pollTemplate.pollOptionNames.includes(name)) { return null; }
         return {
-          title: I18n.global.t('poll_proposal_options.'+name),
+          title: this.$t('poll_proposal_options.'+name),
           value: name
         };
       }));

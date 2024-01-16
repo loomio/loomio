@@ -9,7 +9,6 @@ import AbilityService from '@/shared/services/ability_service';
 import { addMinutes, intervalToDuration, formatDuration, addHours, isAfter, startOfHour, setHours } from 'date-fns';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
-import { I18n } from '@/i18n';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
 
@@ -210,7 +209,7 @@ export default {
     votingMethodsItems() {
       return Object.keys(this.votingMethodsI18n).map(key => {
         return {title: this.$t(this.votingMethodsI18n[key].title), value: key};
-    });
+      });
     },
 
     knownOptions() {
@@ -252,21 +251,11 @@ export default {
     closingSoonItems() {
       return 'nobody author undecided_voters voters'.split(' ').map(name => {
         return {title: this.$t(`poll_common_settings.notify_on_closing_soon.${name}`), value: name};
-    });
+      });
     },
 
     optionFormat() { return this.poll.pollOptionNameFormat; },
     hasOptionIcon() { return this.poll.config().has_option_icon; }
-    // i18nItems() {
-    //   return compact('agree abstain disagree consent objection block yes no'.split(' ').map(name => {
-    //     if (this.poll.pollOptionNames.includes(name)) { return null; }
-    //     return {
-    //       title: this.$t('poll_proposal_options.'+name),
-    //       value: name
-    //     };
-    //   })
-    //   );
-    // }
   }
 };
 </script>

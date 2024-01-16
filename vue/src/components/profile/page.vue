@@ -80,7 +80,7 @@ export default {
             submit: () => Records.users.sendMergeVerificationEmail(this.user.email),
             text: {
               title:    'merge_accounts.modal.title',
-              raw_helptext: I18n.global.t('merge_accounts.modal.helptext', {sourceEmail: this.originalUser.email, targetEmail: this.user.email}),
+              raw_helptext: this.$t('merge_accounts.modal.helptext', {sourceEmail: this.originalUser.email, targetEmail: this.user.email}),
               submit:   'merge_accounts.modal.submit',
               flash:    'merge_accounts.modal.flash'
             }

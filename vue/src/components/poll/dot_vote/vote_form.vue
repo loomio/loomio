@@ -3,7 +3,6 @@ import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { sum, map, without } from 'lodash-es';
-import { I18n } from '@/i18n';
 
 export default {
   props: {
@@ -52,7 +51,7 @@ export default {
     },
 
     rulesForChoice(choice) {
-      return [v => (v <= this.maxForChoice(choice)) || I18n.global.t('poll_dot_vote_vote_form.too_many_dots')];
+      return [v => (v <= this.maxForChoice(choice)) || this.$t('poll_dot_vote_vote_form.too_many_dots')];
     },
 
     percentageFor(choice) {

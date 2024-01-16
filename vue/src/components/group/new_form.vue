@@ -37,7 +37,7 @@ export default
     this.watchRecords({
       collections: ['groups', 'memberships'],
       query: records => {
-        this.parentGroups = [{value: null, title: I18n.global.t('common.none')}];
+        this.parentGroups = [{value: null, title: this.$t('common.none')}];
         this.parentGroups = this.parentGroups.concat(Session.user().parentGroups().
           filter(g => AbilityService.canCreateSubgroups(g)).
           map(g => ({
@@ -105,7 +105,7 @@ export default
     },
 
     privacyStringFor(privacy) {
-      return I18n.global.t(groupPrivacy(this.group, privacy),
+      return this.$t(groupPrivacy(this.group, privacy),
         {parent: this.group.parentName()});
     }
   },
@@ -139,7 +139,7 @@ export default
     },
 
     privacyStatement() {
-      return I18n.global.t(groupPrivacyStatement(this.group),
+      return this.$t(groupPrivacyStatement(this.group),
         {parent: this.group.parentName()});
     },
 
