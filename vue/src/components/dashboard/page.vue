@@ -72,7 +72,7 @@ export default
     query() {
       const groupIds = Records.memberships.collection.find({userId: Session.user().id}).map(m => m.groupId);
       let chain = Records.discussions.collection.chain();
-      chain = chain.find({$or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null}]});
+      chain = chain.find({$or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null, inviterId: {$ne: null}}]});
       chain = chain.find({discardedAt: null});
       chain = chain.find({closedAt: null});
       chain = chain.find({lastActivityAt: { $gt: subMonths(new Date(), 6) }});
