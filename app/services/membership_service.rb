@@ -114,7 +114,7 @@ class MembershipService
     actor.ability.authorize! :remove_admin, membership
     membership.update admin: false
   end
-
+  
   def self.join_group(group:, actor:)
     actor.ability.authorize! :join, group
     membership = group.add_member!(actor)
@@ -137,11 +137,25 @@ class MembershipService
       'discussions.group_id': membership.group.id_and_subgroup_ids,
                      user_id: membership.user_id).
       where("inviter_id IS NOT NULL").
+      where("revoked_at IS NULL").
       update_all(revoked_at: now, revoker_id: actor.id)
 
+    # remove them from active polls
     membership.group.id_and_subgroup_ids.each do |group_id|
       PollService.group_members_removed(group_id, membership.user_id, actor.id)
     end
+
+    # mark any past votes as revoked..
+    # don't want to hide past votes, cast before removal
+    # so need to check for revoked_at < closed_at...
+    # so need a test that stances cast before removal still count, stances cast afterwards do not
+    Stance.joins(:poll).
+    where("polls.closed_at is not null").
+    where('polls.group_id': membership.group.id_and_subgroup_ids,
+           participant_id: membership.user_id).
+    where("inviter_id IS NOT NULL").
+    where("revoked_at IS NULL").
+    update_all(revoked_at: now, revoker_id: actor.id)
 
     Membership.where(user_id: membership.user_id, group_id: membership.group.id_and_subgroup_ids).destroy_all
 

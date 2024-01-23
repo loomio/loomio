@@ -15,8 +15,7 @@ class DiscussionReader < ApplicationRecord
 
   scope :active, -> { where("discussion_readers.revoked_at IS NULL") }
 
-  scope :guests, -> { where("discussion_readers.inviter_id IS NOT NULL
-                              AND discussion_readers.revoked_at IS NULL") }
+  scope :guests, -> { where("discussion_readers.inviter_id IS NOT NULL AND discussion_readers.revoked_at IS NULL") }
   scope :admins, -> { guests.where('discussion_readers.admin': true) }
 
   scope :redeemable, -> { where('discussion_readers.inviter_id IS NOT NULL

@@ -103,7 +103,10 @@ class User < ApplicationRecord
   has_many :group_polls, through: :groups, source: :polls
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :guest_discussions, -> { DiscussionReader.guests}, through: :discussion_readers, source: :discussion
+  has_many :guest_discussion_readers, -> { where("discussion_readers.inviter_id is not null and discussion_readers.revoked_at is null") }, class_name: 'DiscussionReader', dependent: :destroy
+  has_many :guest_discussions, through: :guest_discussion_readers, source: :discussion
+  has_many :guest_stances, -> { where("stances.inviter_id is not null and stances.revoked_at is null") }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
+  has_many :guest_polls, through: :guest_stances, source: :poll
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :documents, foreign_key: :author_id, dependent: :destroy
