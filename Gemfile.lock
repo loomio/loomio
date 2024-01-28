@@ -133,7 +133,7 @@ GEM
     chartkick (5.0.5)
     cld (0.13.0)
       ffi
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crack (0.4.5)
       rexml
@@ -354,7 +354,7 @@ GEM
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    minitest (5.20.0)
+    minitest (5.21.2)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -499,7 +499,7 @@ GEM
     rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-rails (6.1.0)
+    rspec-rails (6.1.1)
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       railties (>= 6.1)
@@ -657,7 +657,7 @@ DEPENDENCIES
   rspec-activemodel-mocks
   rspec-collection_matchers
   rspec-its
-  rspec-rails (~> 6.1.0)
+  rspec-rails (~> 6.1.1)
   ruby-openai
   ruby-saml
   ruby-vips
