@@ -226,12 +226,13 @@ class PollService
   end
 
   def self.group_members_added(group_id)
-    member_ids = Group.find(group_id).member_ids
+    member_ids = Group.find(group_id).members.humans.pluck(:id)
     Poll.active.where(group_id: group_id, specified_voters_only: false).each do |poll|
+      revoked_user_ids = poll.stances.where("revoked_at is not null").pluck(:participant_id).uniq
       PollService.create_stances(
         poll: poll,
         actor: poll.author,
-        user_ids: member_ids - poll.voter_ids
+        user_ids: (member_ids - poll.voter_ids) - revoked_user_ids
       )
       poll.update_counts!
     end
