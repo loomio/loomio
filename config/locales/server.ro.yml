@@ -173,6 +173,7 @@ ro:
     blank:
       process_name: Șablon gol
       process_subtitle: Începeți un thread nou pentru orice scop
+      process_introduction: "<p>Începeți un subiect în grupul dvs. despre orice subiect care vă place.</p><p> În mod implicit, toată lumea din grup va fi anunțată când începeți firul. Puteți modifica acest lucru modificând câmpul „invitație” de mai jos.</p>"
     discuss_a_topic:
       title_placeholder: Care este subiectul pe care doriți să îl discutați?
       process_name: Discutați un subiect

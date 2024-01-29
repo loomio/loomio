@@ -426,6 +426,7 @@ es:
     blank:
       process_name: Plantilla en blanco
       process_subtitle: Iniciar un nuevo hilo para cualquier propósito.
+      process_introduction: "<p>Inicia un hilo en tu grupo sobre cualquier tema que te guste.</p><p> De forma predeterminada, todos los miembros del grupo recibirán una notificación cuando inicie el hilo. Puedes cambiar esto editando el campo 'invitar' a continuación.</p>"
   event_mailer:
     received_email:
       explaination_html: "<p>Estás recibiendo este correo electrónico porque eres administrador del grupo Loomio: %{group}.</p><p> El grupo ha recibido un correo electrónico de una dirección de correo electrónico no reconocida.</p><p> Si el mensaje es de un miembro del grupo, revise el correo electrónico y seleccione el miembro.</p><p> Si el mensaje no es deseado, puede bloquear cualquier correo electrónico adicional de esa dirección.</p>"

@@ -99,6 +99,7 @@ fi:
     blank:
       process_name: Tyhjä malli
       process_subtitle: Aloita uusi ketju mihin tahansa tarkoitukseen
+      process_introduction: "<p>Aloita ryhmässäsi viestiketju mistä tahansa aiheesta, josta pidät.</p><p> Oletuksena kaikki ryhmän jäsenet saavat ilmoituksen, kun aloitat ketjun. Voit muuttaa tätä muokkaamalla alla olevaa kutsu-kenttää.</p>"
     discuss_a_topic:
       title_placeholder: Mikä on aihe, josta haluat keskustella?
       process_name: Keskustele aiheesta

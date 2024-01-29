@@ -37,6 +37,7 @@ hr:
     blank:
       process_name: Prazan predložak
       process_subtitle: Pokrenite novu temu za bilo koju svrhu
+      process_introduction: "<p>Pokrenite nit u svojoj grupi o bilo kojoj temi koja vam se sviđa.</p><p> Prema zadanim postavkama svi u grupi bit će obaviješteni kada pokrenete nit. To možete promijeniti uređivanjem polja 'poziv' u nastavku.</p>"
     discuss_a_topic:
       title_placeholder: Koja je tema o kojoj želite razgovarati?
       process_name: Razgovarajte o temi

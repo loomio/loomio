@@ -377,6 +377,7 @@ it:
     blank:
       process_name: Modello vuoto
       process_subtitle: Inizia una nuova discussione per qualsiasi scopo
+      process_introduction: <p>Avvia una discussione nel tuo gruppo su qualsiasi argomento che ti piace.</p><p> Per impostazione predefinita, tutti i membri del gruppo riceveranno una notifica quando avvii il thread. Puoi cambiare questa impostazione modificando il campo "Invito" qui sotto.</p>
   event_mailer:
     received_email:
       explaination_html: "<p>Hai ricevuto questa email perché sei un amministratore del gruppo Loomio: %{group}.</p><p> Il gruppo ha ricevuto un'e-mail da un indirizzo e-mail non riconosciuto.</p><p> Se il messaggio proviene da un membro del gruppo, controlla l'e-mail e seleziona il membro.</p><p> Se il messaggio è indesiderato, puoi bloccare qualsiasi ulteriore email proveniente da quell'indirizzo.</p>"
