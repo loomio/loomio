@@ -426,6 +426,7 @@ fr:
     blank:
       process_name: Modèle vierge
       process_subtitle: Démarrer un nouveau fil de discussion pour n'importe quel but
+      process_introduction: "<p>Démarrez un fil de discussion dans votre groupe sur n’importe quel sujet que vous aimez.</p><p> Par défaut, tous les membres du groupe seront avertis lorsque vous démarrerez le fil de discussion. Vous pouvez modifier cela en modifiant le champ « inviter » ci-dessous.</p>"
   event_mailer:
     received_email:
       explaination_html: "<p>Vous recevez cet e-mail car vous êtes administrateur du groupe Loomio : %{group}.</p><p> Le groupe a reçu un e-mail provenant d'une adresse e-mail non reconnue.</p><p> Si le message provient d'un membre du groupe, veuillez consulter l'e-mail et sélectionner le membre.</p><p> Si le message n'est pas désiré, vous pouvez bloquer tout autre e-mail provenant de cette adresse.</p>"

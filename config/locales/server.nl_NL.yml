@@ -420,6 +420,7 @@ nl_NL:
     blank:
       process_name: Lege sjabloon
       process_subtitle: Start voor welk doel dan ook een nieuw draadje
+      process_introduction: "<p>Start een gesprek in je groep over elk onderwerp dat je leuk vindt.</p><p> Standaard krijgt iedereen in de groep een melding wanneer u de thread start. Je kunt dit wijzigen door het veld 'uitnodigen' hieronder te bewerken.</p>"
   event_mailer:
     received_email:
       explaination_html: "<p>Je ontvangt deze e-mail omdat je beheerder bent van de Loomio-groep: %{group}.</p><p> De groep heeft een e-mail ontvangen van een onbekend e-mailadres.</p><p> Als het bericht afkomstig is van een lid van de groep, bekijk dan de e-mail en selecteer het lid.</p><p> Als het bericht ongewenst is, kunt u verdere e-mail van dat adres blokkeren.</p>"

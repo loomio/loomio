@@ -198,6 +198,7 @@ ca:
     blank:
       process_name: Plantilla en blanc
       process_subtitle: Inicieu un fil nou per a qualsevol propòsit
+      process_introduction: <p>Inicieu un fil al vostre grup sobre qualsevol tema que us agradi.</p><p> Per defecte, tots els membres del grup rebran una notificació quan inicieu el fil. Podeu canviar-ho editant el camp "convida" a continuació.</p>
     discuss_a_topic:
       title_placeholder: Quin és el tema que voleu tractar?
       process_name: Debat sobre un tema
