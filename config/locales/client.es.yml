@@ -2117,6 +2117,7 @@ es:
     process_introduction_hint: Unos párrafos que explican cómo utilizar la plantilla. Incluya enlaces a recursos que podrían ser útiles.
     option_has_votes_confirm_delete: Algunas personas han votado por esta opción, ¿estás seguro de que quieres eliminarla?
     notify_everyone_when_poll_starts: Notificar a todos cuando comience %{poll_type}
+    poll_type_updated: "%{poll_type} actualizado"
   poll_proposal_form:
     tool_tip_collapsed: Toma de decisión conjunta
     vote_method_hint: Los votantes están de acuerdo o en desacuerdo con una declaración

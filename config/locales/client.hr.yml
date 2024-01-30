@@ -2061,6 +2061,7 @@ hr:
     hide_results_description: Ako želite da ljudi glasaju, a da ne znaju kako su drugi glasovali, možete sakriti rezultate ankete.
     process_helptext: Imenujte i opišite proces koji se koristi za pokretanje ove ankete.
     reminder_helptext: Pošaljite obavijest 'Uskoro se zatvara' prije zatvaranja ankete. Ovo može biti prilika da ljudi vide kako su drugi glasovali i preispitaju svoj glas ili samo način da povećaju sudjelovanje u anketi.
+    poll_type_updated: "%{poll_type} ažuriran"
   poll_proposal_form:
     start_header: Započni prijedlog
     edit_header: Uredi prijedlog

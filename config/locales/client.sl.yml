@@ -1542,6 +1542,7 @@ sl:
     hide_results_description: Če želite, da ljudje glasujejo, ne da bi vedeli, kako so glasovali drugi, lahko skrijete rezultate ankete.
     process_helptext: Poimenujte in opišite postopek, ki se uporablja za izvajanje te ankete.
     reminder_helptext: Pošljite obvestilo 'Kmalu se zapre', preden se glasovanje zapre. To je lahko priložnost za ljudi, da vidijo, kako so glasovali drugi, in ponovno pretehtajo svoj glas, ali pa le način za povečanje udeležbe v anketi.
+    poll_type_updated: "%{poll_type} posodobljen"
   poll_poll_form:
     edit_header: Urejanje ankete
     multiple_choice_subtitle: Preprost način za oceno priljubljenosti možnosti

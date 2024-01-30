@@ -179,8 +179,14 @@ export default {
         const poll = Records.polls.find(data.polls[0].id);
         if (this.redirectOnSave) { this.$router.replace(this.urlFor(poll)); }
         this.$emit('saveSuccess', poll);
-        Flash.success("poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()});
-        if ((actionName === 'created') && poll.specifiedVotersOnly) {
+
+        if (actionName == 'created') {
+          Flash.success("poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()});
+        } else {
+          Flash.success("poll_common_form.poll_type_updated", {poll_type: poll.translatedPollTypeCaps()});
+        }
+
+        if ((actionName == 'created') && poll.specifiedVotersOnly) {
           EventBus.$emit('openModal', {
             component: 'PollMembers',
             props: {

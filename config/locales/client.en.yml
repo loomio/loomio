@@ -2242,6 +2242,7 @@ en:
     count_voters_added: '%{count} voters added'
     poll_type_created: '%{poll_type} created'
     poll_type_started: '%{poll_type} started'
+    poll_type_updated: '%{poll_type} updated'
     reason_prompt: Reason prompt
     anonymous_voting: Anonymous voting
     anonymous_voting_description: If enabled, the identity of voters will not be associated to their votes. This cannot be undone.
