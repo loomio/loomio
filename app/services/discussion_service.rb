@@ -15,7 +15,7 @@ class DiscussionService
     discussion.save!
 
     DiscussionReader.for(user: actor, discussion: discussion)
-                    .update(admin: true, inviter_id: actor.id)
+                    .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)
 
     users = add_users(user_ids: params[:recipient_user_ids],
                       emails: params[:recipient_emails],
