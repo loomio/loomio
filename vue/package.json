@@ -24,7 +24,7 @@
     "@tiptap/extension-code": "^2.1.16",
     "@tiptap/extension-code-block": "^2.1.16",
     "@tiptap/extension-document": "^2.1.16",
-    "@tiptap/extension-dropcursor": "^2.1.16",
+    "@tiptap/extension-dropcursor": "^2.2.0",
     "@tiptap/extension-gapcursor": "^2.1.16",
     "@tiptap/extension-hard-break": "^2.1.16",
     "@tiptap/extension-heading": "^2.1.16",
