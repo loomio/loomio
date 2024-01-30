@@ -85,7 +85,7 @@
     "@rollup/rollup-linux-x64-gnu": "latest",
     "@modyfi/vite-plugin-yaml": "latest",
     "@originjs/vite-plugin-commonjs": "latest",
-    "nightwatch": "^3.3.8",
+    "nightwatch": "^3.4.0",
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
