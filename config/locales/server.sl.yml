@@ -167,6 +167,7 @@ sl:
     blank:
       process_name: Prazna predloga
       process_subtitle: Začnite novo nit za kateri koli namen
+      process_introduction: "<p>Začnite nit v svoji skupini o kateri koli temi, ki vam je všeč.</p><p> Privzeto bodo vsi v skupini obveščeni, ko začnete nit. To lahko spremenite tako, da uredite spodnje polje 'povabi'.</p>"
     discuss_a_topic:
       title_placeholder: O kateri temi želite razpravljati?
       process_name: Razpravljajte o temi

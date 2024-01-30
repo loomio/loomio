@@ -184,6 +184,7 @@ tr:
     blank:
       process_name: Boş şablon
       process_subtitle: Herhangi bir amaç için yeni bir konu başlatın
+      process_introduction: "<p>Grubunuzda istediğiniz herhangi bir konu hakkında bir konu başlatın.</p><p> Varsayılan olarak gruptaki herkes konuyu başlattığınızda bilgilendirilecektir. Aşağıdaki 'davet' alanını düzenleyerek bunu değiştirebilirsiniz.</p>"
     discuss_a_topic:
       title_placeholder: Tartışmak istediğiniz konu nedir?
       process_name: Bir konuyu tartışın

@@ -147,7 +147,7 @@ class User < ApplicationRecord
     end
 
     if model.poll_id
-      ids += Stance.active.guests.where(poll_id: model.poll_id).pluck(:participant_id)
+      ids += Stance.latest.guests.where(poll_id: model.poll_id).pluck(:participant_id)
     end
 
     if model.respond_to?(:poll_ids) and model.poll_ids.any?

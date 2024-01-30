@@ -193,6 +193,7 @@ da:
     blank:
       process_name: Tom skabelon
       process_subtitle: Start en ny tråd til ethvert formål
+      process_introduction: "<p>Start en tråd i din gruppe om ethvert emne, du kan lide.</p><p> Som standard vil alle i gruppen blive underrettet, når du starter tråden. Du kan ændre dette ved at redigere feltet 'inviter' nedenfor.</p>"
     discuss_a_topic:
       title_placeholder: Hvad er det emne, du vil diskutere?
       process_name: Diskuter et emne

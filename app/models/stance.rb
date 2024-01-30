@@ -87,6 +87,7 @@ class Stance < ApplicationRecord
   scope :decided,        -> { where("stances.cast_at IS NOT NULL") }
   scope :undecided,      -> { where("stances.cast_at IS NULL") }
   scope :revoked,  -> { where("revoked_at IS NOT NULL") }
+  scope :guests, -> { where("inviter_id is not null") }
 
   scope :redeemable, -> { latest.guests.undecided.where('stances.accepted_at IS NULL') }
   scope :redeemable_by,  -> (user_id) {
