@@ -30,6 +30,7 @@ gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.48", require: false
 gem 'image_processing', '~> 1.12'
 gem "ruby-vips"
+gem "stackprof"
 gem "sentry-ruby"
 gem "sentry-rails"
 gem "sentry-sidekiq"
