@@ -140,6 +140,7 @@ class PollService
     ).where.not(id: existing_voter_ids)
 
     volumes = {}
+    group_member_ids = (poll.group || NullGroup.new).member_ids
 
     # if the user has chosen to mute the thread or group then mute the poll too, but dont subsribe
     if poll.discussion_id
@@ -173,6 +174,7 @@ class PollService
         participant: user,
         poll: poll,
         inviter: actor,
+        guest: !group_member_ids.include?(user.id),
         volume: volumes[user.id] || DiscussionReader.volumes[:normal],
         latest: true,
         reason_format: user.default_format,
