@@ -145,7 +145,7 @@ class Discussion < ApplicationRecord
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-             (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.guest = TRUE)')
+             (dr.id IS NOT NULL AND dr.guest = TRUE AND dr.revoked_at IS NULL)')
   end
 
   def admins
@@ -153,7 +153,7 @@ class Discussion < ApplicationRecord
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       where('(m.admin = TRUE AND m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-             (dr.admin = TRUE AND dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.guest = TRUE)')
+             (dr.admin = TRUE AND dr.id IS NOT NULL AND dr.revoked_at IS NULL)')
   end
 
   def guests
