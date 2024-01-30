@@ -133,10 +133,9 @@ class MembershipService
     actor.ability.authorize! :destroy, membership
     now = Time.zone.now
 
-    DiscussionReader.joins(:discussion).where(
+    DiscussionReader.joins(:discussion).guests.where(
       'discussions.group_id': membership.group.id_and_subgroup_ids,
                      user_id: membership.user_id).
-      where("inviter_id IS NOT NULL").
       where("revoked_at IS NULL").
       update_all(revoked_at: now, revoker_id: actor.id)
 
@@ -149,11 +148,10 @@ class MembershipService
     # don't want to hide past votes, cast before removal
     # so need to check for revoked_at < closed_at...
     # so need a test that stances cast before removal still count, stances cast afterwards do not
-    Stance.joins(:poll).
+    Stance.joins(:poll).guests.
     where("polls.closed_at is not null").
     where('polls.group_id': membership.group.id_and_subgroup_ids,
            participant_id: membership.user_id).
-    where("inviter_id IS NOT NULL").
     where("revoked_at IS NULL").
     update_all(revoked_at: now, revoker_id: actor.id)
 

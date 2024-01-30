@@ -75,7 +75,8 @@ class Stance < ApplicationRecord
 
   scope :dangling,       -> { joins('left join polls on polls.id = poll_id').where('polls.id is null') }
   scope :latest,         -> { where(latest: true, revoked_at: nil) }
-  scope :admin,         ->  { where(admin: true) }
+  scope :guests,         ->  { where(guest: true) }
+  scope :admins,         ->  { where(admin: true) }
   scope :newest_first,   -> { order("cast_at DESC NULLS LAST") }
   scope :undecided_first, -> { order("cast_at DESC NULLS FIRST") }
   scope :oldest_first,   -> { order(created_at: :asc) }
@@ -87,11 +88,8 @@ class Stance < ApplicationRecord
   scope :undecided,      -> { where("stances.cast_at IS NULL") }
   scope :revoked,  -> { where("revoked_at IS NOT NULL") }
 
-  scope :redeemable, -> { where('stances.inviter_id IS NOT NULL
-                             AND stances.cast_at IS NULL
-                             AND stances.accepted_at IS NULL
-                             AND stances.revoked_at IS NULL') }
-  scope :redeemable_by,  -> (user_id) { 
+  scope :redeemable, -> { latest.guests.undecided.where('stances.accepted_at IS NULL') }
+  scope :redeemable_by,  -> (user_id) {
     redeemable.joins(:participant).where("stances.participant_id = ? or users.email_verified = false", user_id)
   }
 

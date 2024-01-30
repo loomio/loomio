@@ -5,7 +5,7 @@ class PollOption < ApplicationRecord
   validates :name, presence: true
 
   has_many :stance_choices, dependent: :destroy
-  has_many :stances, -> where("stances.revoked_at IS NULL OR stances.revoked_at < ?", poll.closed_at), through: :stance_choices
+  has_many :stances, -> (poll_option) { includes(:poll).where("stances.revoked_at IS NULL OR stances.revoked_at < ?", poll_option.poll.closed_at) }, through: :stance_choices
 
   is_translatable on: [:name, :meaning]
 

@@ -19,7 +19,7 @@ describe StanceService do
   let(:disagree_choice) { build(:stance_choice, poll_option: disagree) }
   let(:poll_created_event) { PollService.create(poll: poll, actor: user) }
 
-  let(:guest_stance) { create :stance, poll: poll, participant: guest_user, reason: "Old one", inviter: poll.author }
+  let(:guest_stance) { create :stance, poll: poll, participant: guest_user, guest: true, reason: "Old one", inviter: poll.author }
   let(:guest_user) { create :user, email_verified: false }
 
   before do

@@ -103,9 +103,9 @@ class User < ApplicationRecord
   has_many :group_polls, through: :groups, source: :polls
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :guest_discussion_readers, -> { where("discussion_readers.inviter_id is not null and discussion_readers.revoked_at is null") }, class_name: 'DiscussionReader', dependent: :destroy
+  has_many :guest_discussion_readers, -> { DiscussionReader.active.guests }, class_name: 'DiscussionReader', dependent: :destroy
   has_many :guest_discussions, through: :guest_discussion_readers, source: :discussion
-  has_many :guest_stances, -> { where("stances.inviter_id is not null and stances.revoked_at is null") }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
+  has_many :guest_stances, -> { Stance.latest.guests }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
   has_many :guest_polls, through: :guest_stances, source: :poll
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -139,8 +139,7 @@ class User < ApplicationRecord
     active.search_for(query).
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{model.group_id || 0}").
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id || 0}").
-      where("(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-             (dr.id IS NOT NULL AND dr.inviter_id IS NOT NULL AND dr.revoked_at IS NULL)")
+      where("(m.id IS NOT NULL AND m.revoked_at IS NULL) OR (dr.id IS NOT NULL AND dr.guest IS TRUE AND dr.revoked_at IS NULL)")
   end
 
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }

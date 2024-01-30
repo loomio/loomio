@@ -38,7 +38,7 @@ class DiscussionQuery
                          AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
                  .where("#{'(discussions.private = false) OR ' if or_public}
                          (discussions.group_id in (:user_group_ids)) OR
-                         (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)
+                         (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE)
                          #{'OR (groups.parent_members_can_see_discussions = TRUE AND groups.parent_id IN (:user_group_ids))' if or_subgroups}", user_group_ids: user.group_ids)
 
     chain = chain.where("discussions.group_id IN (?)", group_ids) if Array(group_ids).any?

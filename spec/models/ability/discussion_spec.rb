@@ -12,14 +12,14 @@ describe "discussion abilities" do
     let(:discussion) { create(:discussion, group: nil) }
 
     context "as discussion admin" do
-      before { discussion.discussion_readers.create!(user_id: actor.id, admin: true, inviter_id: actor.id) }
+      before { discussion.discussion_readers.create!(user_id: actor.id, admin: true, guest: true, inviter_id: actor.id) }
       it {should be_able_to(:announce, discussion)}
       it {should be_able_to(:add_guests, discussion)}
       it {should be_able_to(:update, discussion)}
     end
 
     context "as discussion member" do
-      before { discussion.discussion_readers.create!(user_id: actor.id, admin: false, inviter_id: actor.id) }
+      before { discussion.discussion_readers.create!(user_id: actor.id, admin: false, guest: true, inviter_id: actor.id) }
       it {should_not be_able_to(:announce, discussion)}
       it {should_not be_able_to(:add_guests, discussion)}
       it {should     be_able_to(:update, discussion)}
