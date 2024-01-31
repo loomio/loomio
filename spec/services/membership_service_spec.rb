@@ -26,7 +26,7 @@ describe MembershipService do
       expect(reader.inviter_id).to eq discussion.author_id
       expect(stance.revoked_at).to eq nil
       expect(reader.revoked_at).to eq nil
-      MembershipService.destroy(membership: membership, actor: user)
+      MembershipService.revoke(membership: membership, actor: user)
       expect(subgroup.members).to_not include user
       expect(subgroup_discussion.members).to_not include user
       expect(discussion.members).to_not include user

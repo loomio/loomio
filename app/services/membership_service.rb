@@ -114,7 +114,7 @@ class MembershipService
     actor.ability.authorize! :remove_admin, membership
     membership.update admin: false
   end
-  
+
   def self.join_group(group:, actor:)
     actor.ability.authorize! :join, group
     membership = group.add_member!(actor)
@@ -129,8 +129,8 @@ class MembershipService
     end
   end
 
-  def self.destroy(membership:, actor:)
-    actor.ability.authorize! :destroy, membership
+  def self.revoke(membership:, actor:)
+    actor.ability.authorize! :revoke, membership
     now = Time.zone.now
 
     DiscussionReader.joins(:discussion).guests.where(
@@ -155,7 +155,8 @@ class MembershipService
     where("revoked_at IS NULL").
     update_all(revoked_at: now, revoker_id: actor.id)
 
-    Membership.where(user_id: membership.user_id, group_id: membership.group.id_and_subgroup_ids).destroy_all
+    Membership.active.where(user_id: membership.user_id, group_id: membership.group.id_and_subgroup_ids).
+               update_all(revoked_at: now, revoker_id: actor.id)
 
     EventBus.broadcast('membership_destroy', membership, actor)
   end

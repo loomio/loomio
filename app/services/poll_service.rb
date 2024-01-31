@@ -144,7 +144,7 @@ class PollService
 
     # if the user has chosen to mute the thread or group then mute the poll too, but dont subsribe
     if poll.discussion_id
-      DiscussionReader.where(
+      DiscussionReader.active.where(
         discussion_id: poll.discussion_id,
         user_id: users.pluck(:id),
         volume: 1
@@ -154,7 +154,7 @@ class PollService
     end
 
     if poll.group_id
-      Membership.where(
+      Membership.active.where(
         group_id: poll.group_id,
         user_id: users.pluck(:id),
         volume: 1
@@ -166,7 +166,7 @@ class PollService
     reinvited_user_ids = Stance.revoked.where(poll_id: poll.id).pluck(:participant_id) & users.pluck(:id)
 
     Stance.where(poll_id: poll.id, participant_id: reinvited_user_ids).each do |stance|
-      stance.update(revoked_at: nil, revoker_id: nil, inviter_id: actor.id)
+      stance.update(revoked_at: nil, revoker_id: nil, inviter_id: actor.id, admin: false)
     end
 
     new_stances = users.where.not(id: reinvited_user_ids).map do |user|

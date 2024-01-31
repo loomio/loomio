@@ -63,7 +63,7 @@ describe PollService do
       stance = Stance.where(poll: poll, participant: member.id).first
       membership = Membership.where(group: poll.group, user: member).first
       expect(stance.reload.revoked_at).to be nil
-      MembershipService.destroy(membership: membership, actor: poll.group.admins.first)
+      MembershipService.revoke(membership: membership, actor: poll.group.admins.first)
       expect(stance.reload.revoked_at).to be_present
       poll.group.add_member!(member)
       PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])

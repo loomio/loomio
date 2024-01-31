@@ -37,11 +37,14 @@ module GroupService
     )
 
     groups.each do |g|
-      memberships = users.map do |user|
+      revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
+      revoked_memberships.update_all(accepted_at: nil, revoked_at: nil, revoker_id: nil, admin: nil, volume: 2)
+
+      new_memberships = users.map do |user|
         Membership.new(inviter: actor, user: user, group: g, volume: 2)
       end
 
-      Membership.import(memberships, on_duplicate_key_ignore: true)
+      Membership.import(new_memberships, on_duplicate_key_ignore: true)
 
       # mark as accepted all invitiations to people who are already part of the org.
       if g.parent
@@ -59,9 +62,9 @@ module GroupService
       group: group,
       actor: actor,
       recipient_user_ids: users.pluck(:id),
-      recipient_message: params[:recipient_message])
+      recipient_message: params[:recipient_message]
+    )
 
-    # EventBus.broadcast('group_invite', group, actor, all_memberships.size)
     Membership.active.where(group_id: group.id, user_id: users.pluck(:id))
   end
 
