@@ -133,30 +133,26 @@ class MembershipService
     actor.ability.authorize! :revoke, membership
     now = Time.zone.now
 
-    DiscussionReader.joins(:discussion).guests.where(
-      'discussions.group_id': membership.group.id_and_subgroup_ids,
-                     user_id: membership.user_id).
-      where("revoked_at IS NULL").
-      update_all(revoked_at: now, revoker_id: actor.id)
+    # revoke guest access. in case they were a guest before they were a member
+    DiscussionReader.joins(:discussion).guests.
+    where('discussions.group_id': membership.group.id_and_subgroup_ids,
+           user_id: membership.user_id).
+    update_all(guest: false)
+
+    Stance.joins(:poll).guests.
+    where('polls.group_id': membership.group.id_and_subgroup_ids,
+           participant_id: membership.user_id).
+    update_all(guest: false)
 
     # remove them from active polls
     membership.group.id_and_subgroup_ids.each do |group_id|
       PollService.group_members_removed(group_id, membership.user_id, actor.id)
     end
 
-    # mark any past votes as revoked..
-    # don't want to hide past votes, cast before removal
-    # so need to check for revoked_at < closed_at...
-    # so need a test that stances cast before removal still count, stances cast afterwards do not
-    Stance.joins(:poll).guests.
-    where("polls.closed_at is not null").
-    where('polls.group_id': membership.group.id_and_subgroup_ids,
-           participant_id: membership.user_id).
-    where("revoked_at IS NULL").
+    Membership.active.
+    where(user_id: membership.user_id,
+          group_id: membership.group.id_and_subgroup_ids).
     update_all(revoked_at: now, revoker_id: actor.id)
-
-    Membership.active.where(user_id: membership.user_id, group_id: membership.group.id_and_subgroup_ids).
-               update_all(revoked_at: now, revoker_id: actor.id)
 
     EventBus.broadcast('membership_destroy', membership, actor)
   end
