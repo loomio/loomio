@@ -13,7 +13,9 @@ class MembershipService
     group_ids = membership.group.parent_or_self.id_and_subgroup_ids
 
     # ensure actor has accepted any existing pending memberships to this group
-    Membership.pending.where(user_id: actor.id, group_id: group_ids).update_all(accepted_at: DateTime.now)
+    Membership.pending
+    .where(user_id: actor.id, group_id: group_ids)
+    .update_all(accepted_at: DateTime.now)
 
     # cant accept pending memberships to groups I already belong to
     existing_group_ids = Membership.pending.where(user_id: membership.user_id,
@@ -21,8 +23,8 @@ class MembershipService
 
     Membership.pending.where(
       user_id: membership.user_id,
-      group_id: (group_ids - existing_group_ids)).
-    update_all(
+      group_id: (group_ids - existing_group_ids))
+    .update_all(
       user_id: actor.id,
       accepted_at: DateTime.now)
 
@@ -33,21 +35,21 @@ class MembershipService
     end
 
     # remove any existing guest access in these groups
-    DiscussionReader.joins(:discussion).guests.
-    where(user_id: actor.id, 'discussions.group_id': member_group_ids).
-    update_all(guest: false, revoked_at: nil, revoker_id: nil)
+    DiscussionReader.joins(:discussion)
+    .where(user_id: actor.id, 'discussions.group_id': member_group_ids, guest: true)
+    .update_all(guest: false, revoked_at: nil, revoker_id: nil)
 
-    Stance.joins(:poll).
-    where(participant_id: actor.id, 'polls.group_id': member_group_ids).
-    update_all(guest: false)
+    Stance.joins(:poll)
+    .where(participant_id: actor.id, 'polls.group_id': member_group_ids)
+    .update_all(guest: false)
 
     # unrevoke any votes on active polls
-    Stance.joins(:poll).
-    where(participant_id: actor.id).
-    where('polls.group_id': member_group_ids).
-    where('stances.revoked_at is not null').
-    where('polls.closed_at is null').
-    update_all(revoked_at: nil, revoker_id: nil)
+    Stance.joins(:poll)
+    .where(participant_id: actor.id)
+    .where('polls.group_id': member_group_ids)
+    .where('stances.revoked_at is not null')
+    .where('polls.closed_at is null')
+    .update_all(revoked_at: nil, revoker_id: nil)
 
     membership.reload
     Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
