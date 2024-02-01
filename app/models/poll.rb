@@ -395,12 +395,13 @@ class Poll < ApplicationRecord
       joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
       joins("LEFT OUTER JOIN polls p ON p.author_id = users.id AND p.id = #{self.id || 0}").
       where("(wh.id IS NOT NULL AND 'create_poll' = ANY(wh.permissions)) OR
-             (p.author_id = users.id AND p.group_id IS NOT NULL AND m.id IS NOT NULL) OR
-             (p.author_id = users.id AND p.group_id IS NULL) OR
-             (p.author_id = users.id AND dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
-             (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.admin = TRUE) OR
-             (m.id  IS NOT NULL AND m.revoked_at IS NULL AND m.admin = TRUE) OR /* group admin */
-             (s.id  IS NOT NULL AND m.id IS NOT NULL AND s.revoked_at IS NULL AND latest = TRUE AND s.admin = TRUE) OR /* poll admin, group member */
+             (m.id  IS NOT NULL AND m.revoked_at IS NULL AND m.admin = TRUE) OR                                             /* group admin */
+             (p.author_id = users.id AND p.group_id IS NOT NULL AND m.id IS NOT NULL) OR                                    /* poll author and group member */
+             (p.author_id = users.id AND p.group_id IS NULL) OR                                                             /* poll author and no group */
+             (p.author_id = users.id AND dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR                /* poll author and discussion guest */
+             (dr.id IS NOT NULL AND m.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.admin = TRUE) OR                      /* discussion admin, group member */
+             (dr.id IS NOT NULL AND m.id IS NULL     AND dr.revoked_at IS NULL AND dr.admin = TRUE AND dr.guest = TRUE) OR  /* discussion guest admin, not group member */
+             (s.id  IS NOT NULL AND m.id IS NOT NULL AND s.revoked_at IS NULL AND latest = TRUE AND s.admin = TRUE) OR      /* poll admin, group member */
              (s.id  IS NOT NULL AND m.id IS NULL     AND s.revoked_at IS NULL AND latest = TRUE AND s.admin = TRUE AND s.guest = TRUE /* poll admin guest */)")
   end
 
