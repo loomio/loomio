@@ -20,7 +20,7 @@ export default {
     return {
       users: [],
       userIds: [],
-      isMember: {},
+      isGuest: {},
       isMemberAdmin: {},
       isStanceAdmin: {},
       reset: false,
@@ -126,7 +126,7 @@ export default {
           poll_id: this.poll.id,
           query: this.query
       }}).then(data => {
-        this.isMember = this.toHash(data['meta']['member_ids']);
+        this.isGuest = this.toHash(data['meta']['guest_ids']);
         this.isMemberAdmin = this.toHash(data['meta']['member_admin_ids']);
         this.isStanceAdmin = this.toHash(data['meta']['stance_admin_ids']);
         this.userIds = uniq(compact(this.userIds.concat(map(data['users'], 'id'))));
@@ -197,7 +197,7 @@ export default {
       v-list-item-content
         v-list-item-title
           span.mr-2 {{user.nameWithTitle(poll.group())}}
-          v-chip.mr-1(v-if="!isMember[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+          v-chip.mr-1(v-if="isGuest[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
           v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
 
       v-list-item-action
