@@ -23,7 +23,7 @@ class Identities::Base < ApplicationRecord
   def assign_logo!
     return unless user && logo
     user.uploaded_avatar.attach(
-      io: open(URI.parse(logo)),
+      io: URI.open(URI.parse(logo)),
       filename: File.basename(logo)
     )
     user.update(avatar_kind: :uploaded)

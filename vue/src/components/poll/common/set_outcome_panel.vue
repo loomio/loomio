@@ -1,32 +1,36 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import AbilityService from '@/shared/services/ability_service'
-import Session        from '@/shared/services/session'
-import EventBus from '@/shared/services/event_bus'
+<script lang="js">
+import Records        from '@/shared/services/records';
+import AbilityService from '@/shared/services/ability_service';
+import Session        from '@/shared/services/session';
+import EventBus from '@/shared/services/event_bus';
+import PollService from '@/shared/services/poll_service';
+import { mdiFlagCheckered } from '@mdi/js';
 
-export default
-  props:
+export default {
+  props: {
     poll: Object
+  },
 
-  methods:
-    showPanel: ->
-      AbilityService.canSetPollOutcome(@poll)
+  data() {
+    return { mdiFlagCheckered };
+  },
 
-    openOutcomeForm: ->
-      outcome = Records.outcomes.build
-        pollId: @poll.id
-        groupId: @poll.groupId
-        statementFormat: Session.defaultFormat()
-      EventBus.$emit 'openModal',
-        component: 'PollCommonOutcomeModal'
-        props:
-          outcome: outcome
+  methods: {
+    showPanel() {
+      return AbilityService.canSetPollOutcome(this.poll);
+    },
+
+    openOutcomeForm() {
+      PollService.openSetOutcomeModal(this.poll);
+    }
+  }
+};
 
 </script>
 
 <template lang="pug">
 v-alert.my-4.poll-common-set-outcome-panel(
-  icon="mdi-flag-checkered"
+  :icon="mdiFlagCheckered"
   prominent
   outlined
   v-if="showPanel()"

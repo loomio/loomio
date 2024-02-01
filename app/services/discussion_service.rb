@@ -15,7 +15,7 @@ class DiscussionService
     discussion.save!
 
     DiscussionReader.for(user: actor, discussion: discussion)
-                    .update(admin: true, inviter_id: actor.id)
+                    .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)
 
     users = add_users(user_ids: params[:recipient_user_ids],
                       emails: params[:recipient_emails],
@@ -106,18 +106,14 @@ class DiscussionService
 
   def self.close(discussion:, actor:)
     actor.ability.authorize! :update, discussion
-    discussion.update(closed_at: Time.now)
-
-    EventBus.broadcast('discussion_close', discussion, actor)
-    Events::DiscussionClosed.publish!(discussion, actor)
+    discussion.update(closed_at: Time.now, closer_id: actor.id)
+    MessageChannelService.publish_models([discussion], group_id: discussion.group_id, user_id: actor.id)
   end
 
   def self.reopen(discussion:, actor:)
     actor.ability.authorize! :update, discussion
-    discussion.update(closed_at: nil)
-
-    EventBus.broadcast('discussion_reopen', discussion, actor)
-    Events::DiscussionReopened.publish!(discussion, actor)
+    discussion.update(closed_at: nil, closer_id: nil)
+    MessageChannelService.publish_models([discussion], group_id: discussion.group_id, user_id: actor.id)
   end
 
   def self.move(discussion:, params:, actor:)
@@ -240,7 +236,8 @@ class DiscussionService
     new_discussion_readers = users.map do |user|
       DiscussionReader.new(user: user,
                            discussion: discussion,
-                           inviter: if volumes[user.id] then nil else actor end,
+                           inviter: actor,
+                           guest: !volumes.has_key?(user.id),
                            admin: !discussion.group_id,
                            volume: volumes[user.id] || DiscussionReader.volumes[:normal])
     end
@@ -251,4 +248,13 @@ class DiscussionService
     users
   end
 
+  def self.extract_link_preview_urls(discussion)
+    urls = discussion.link_previews.map { |lp| lp['url'] }
+    discussion.items.each do |event|
+      if event.eventable.present? && event.eventable.respond_to?(:link_previews)
+        urls.concat(event.eventable.link_previews.map {|lp| lp['url']})
+      end
+    end
+    urls.compact.uniq
+  end
 end

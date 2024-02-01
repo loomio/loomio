@@ -1,12 +1,15 @@
-<script lang="coffee">
-import htmlDiff from "@/shared/helpers/html_diff"
+<script lang="js">
+import htmlDiff from "@/shared/helpers/html_diff";
 
-export default
-  props:
-    before: String
+export default {
+  props: {
+    before: String,
     after: String
-  methods:
-    diff: -> htmlDiff(@before or '', @after)
+  },
+  methods: {
+    diff() { return htmlDiff(this.before || '', this.after); }
+  }
+}
 
 </script>
 <template lang="pug">

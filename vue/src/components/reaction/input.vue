@@ -1,28 +1,36 @@
-<script lang="coffee">
-import { capitalize } from 'lodash'
-import Session from '@/shared/services/session'
-import Records from '@/shared/services/records'
+<script lang="js">
+import { capitalize } from 'lodash-es';
+import Session from '@/shared/services/session';
+import Records from '@/shared/services/records';
 
-export default
-  props:
-    model: Object
+export default {
+  props: {
+    model: Object,
     small: Boolean
+  },
 
-  data: ->
-    search: null
-    closeEmojiMenu: false
+  data() {
+    return {
+      search: null,
+      closeEmojiMenu: false
+    };
+  },
 
-  methods:
-    insert: (emoji) ->
-      params =
-        reactableType: capitalize(@model.constructor.singular)
-        reactableId: @model.id
+  methods: {
+    insert(emoji) {
+      const params = {
+        reactableType: capitalize(this.model.constructor.singular),
+        reactableId: this.model.id,
         userId: Session.user().id
+      };
 
-      reaction = Records.reactions.find(params)[0] || Records.reactions.build(params)
-      reaction.reaction = ":#{emoji}:"
-      reaction.save()
-      @closeEmojiMenu = true
+      const reaction = Records.reactions.find(params)[0] || Records.reactions.build(params);
+      reaction.reaction = `:${emoji}:`;
+      reaction.save();
+      this.closeEmojiMenu = true;
+    }
+  }
+};
 
 </script>
 
@@ -30,7 +38,7 @@ export default
 v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
   template(v-slot:activator="{on, attrs}")
     v-btn.emoji-picker__toggle.action-button(icon :small="small" v-on="on" v-bind="attrs" )
-      v-icon(:small="small") mdi-emoticon-outline
+      common-icon(:small="small" name="mdi-emoticon-outline")
   emoji-picker(:insert="insert" :is-poll="model.isA('poll') || model.isA('stance') || model.isA('outcome')")
 </template>
 

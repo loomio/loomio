@@ -1,15 +1,19 @@
-<script lang="coffee">
-export default
-  props:
-    stance: Object
-    poll: Object
-    size:
-      type: Number
+<script lang="js">
+export default {
+  props: {
+    stance: Object,
+    poll: Object,
+    size: {
+      type: Number,
       default: 20
+    }
+  },
 
-  computed:
-    hasOptionIcon: -> @poll.config().has_option_icon
-    pollOption: -> @stance.pollOption()
+  computed: {
+    hasOptionIcon() { return this.poll.config().has_option_icon; },
+    pollOption() { return this.stance.pollOption(); }
+  }
+};
 
 </script>
 
@@ -22,10 +26,10 @@ export default
     )
     template(v-if="!hasOptionIcon")
       .poll-common-chart-preview__stance
-        v-icon(v-if="poll.pollType != 'meeting'" small :color="pollOption.color") mdi-check
-        v-icon(v-else small) mdi-check
+        common-icon(v-if="poll.pollType != 'meeting'" small :color="pollOption.color" name="mdi-check")
+        common-icon(v-else small name="mdi-check")
   .poll-common-chart-preview__stance.poll-proposal-chart-preview__stance--undecided(v-else)
-    v-icon(:size="size - (size/4)" color="primary") mdi-help
+    common-icon(:size="size - (size/4)" color="primary" name="mdi-help")
 </template>
 
 <style lang="sass">

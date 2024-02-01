@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_11_042650) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_30_011619) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -232,7 +232,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_042650) do
     t.boolean "admin", default: false, null: false
     t.datetime "accepted_at", precision: nil
     t.integer "revoker_id"
+    t.boolean "guest", default: false, null: false
     t.index ["discussion_id"], name: "index_discussion_readers_discussion_id"
+    t.index ["guest"], name: "discussion_readers_guests", where: "(guest = true)"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true
@@ -307,6 +309,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_042650) do
     t.string "tags", default: [], array: true
     t.integer "discussion_template_id"
     t.string "discussion_template_key"
+    t.integer "closer_id"
     t.index ["author_id"], name: "index_discussions_on_author_id"
     t.index ["created_at"], name: "index_discussions_on_created_at"
     t.index ["discarded_at"], name: "index_discussions_on_discarded_at", where: "(discarded_at IS NULL)"
@@ -366,6 +369,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_042650) do
     t.index ["parent_id"], name: "index_events_on_parent_id"
     t.index ["position_key"], name: "index_events_on_position_key"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "forward_email_rules", force: :cascade do |t|
+    t.citext "handle", null: false
+    t.string "email"
   end
 
   create_table "group_identities", id: :serial, force: :cascade do |t|
@@ -489,6 +497,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_042650) do
     t.integer "code", null: false
     t.boolean "is_reactivation", default: false, null: false
     t.index ["token"], name: "index_login_tokens_on_token"
+  end
+
+  create_table "member_email_aliases", force: :cascade do |t|
+    t.citext "email", null: false
+    t.boolean "require_dkim", default: true, null: false
+    t.boolean "require_spf", default: true, null: false
+    t.integer "user_id"
+    t.integer "group_id", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email", "group_id"], name: "index_member_email_aliases_on_email_and_group_id", unique: true
   end
 
   create_table "membership_requests", id: :serial, force: :cascade do |t|
@@ -711,6 +731,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_042650) do
     t.string "process_introduction"
     t.string "process_introduction_format", default: "md", null: false
     t.string "title_placeholder"
+    t.string "outcome_statement"
+    t.string "outcome_statement_format", default: "html", null: false
+    t.integer "outcome_review_due_in_days"
+    t.boolean "public", default: false, null: false
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
   end
 
@@ -839,6 +863,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_042650) do
     t.jsonb "link_previews", default: [], null: false
     t.jsonb "option_scores", default: {}, null: false
     t.integer "revoker_id"
+    t.boolean "guest", default: false, null: false
+    t.index ["guest"], name: "stances_guests", where: "(guest = true)"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
     t.index ["poll_id", "participant_id", "latest"], name: "index_stances_on_poll_id_and_participant_id_and_latest", unique: true, where: "(latest = true)"

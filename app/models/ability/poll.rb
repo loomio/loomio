@@ -20,12 +20,19 @@ module Ability::Poll
     end
 
     can [:create], ::Poll do |poll|
-      # cannot use poll.admins for create, because it assumes poll exists in database
-      (poll.group_id && poll.group.admins.exists?(user.id)) || # user is admin
-      (poll.group_id && poll.group.members_can_raise_motions && poll.group.members.exists?(user.id)) || # user is member
-      (poll.group_id && poll.group.members_can_raise_motions && poll.discussion.present? && poll.discussion.guests.exists?(user.id)) || # user is guest of thread
-      (poll.group_id.nil? && poll.discussion_id && poll.discussion.members.exists?(user.id)) ||
-      (poll.group_id.nil? && poll.discussion_id.nil? && user.is_logged_in? && user.email_verified?)
+      (poll.poll_template_id.nil? || poll.poll_template.public? || user.group_ids.include?(poll.poll_template.group_id)) &&
+      (poll.discussion_id.nil? || !poll.discussion.closed_at) &&
+      (
+        (poll.group_id &&
+          (
+           (poll.group.admins.exists?(user.id) || # user is admin
+           (poll.group.members_can_raise_motions && poll.group.members.exists?(user.id)) || # user is member
+           (poll.group.members_can_raise_motions && poll.discussion.present? && poll.discussion.guests.exists?(user.id)))
+          )
+        ) ||
+        (poll.group_id.nil? && poll.discussion_id && poll.discussion.members.exists?(user.id)) ||
+        (poll.group_id.nil? && poll.discussion_id.nil? && user.is_logged_in? && user.email_verified?)
+      )
     end
 
     can [:announce, :remind], ::Poll do |poll|
@@ -53,19 +60,24 @@ module Ability::Poll
     end
 
     can [:update], ::Poll do |poll|
+      (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
       poll.admins.exists?(user.id)
     end
 
     can [:destroy], ::Poll do |poll|
+      (poll.discussion_id.blank? || !poll.discussion.closed_at) &&
       poll.admins.exists?(user.id)
     end
 
     can :close, ::Poll do |poll|
-      poll.active? && poll.admins.exists?(user.id)
+      poll.active? &&
+      poll.admins.exists?(user.id)
     end
 
     can :reopen, ::Poll do |poll|
-      poll.closed? && can?(:update, poll) && !poll.anonymous
+      poll.closed? &&
+      !poll.anonymous &&
+      can?(:update, poll)
     end
   end
 end

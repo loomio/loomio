@@ -10,10 +10,7 @@ module LinkPreviewService
              doc.css('title').first&.text,
              doc.css('h1').first&.text].reject(&:blank?).first
 
-    bad_titles = [
-      'Google Docs: Sign-in',
-      'Google Drive: Sign-in'
-    ]
+    bad_titles = [/Google \w+: Sign-in/]
 
     return nil if title.blank?
     return nil if bad_titles.any? {|bt| bt.match?(title) }
@@ -26,8 +23,8 @@ module LinkPreviewService
              doc.css('img[itemprop="image"]').attr('src')&.text,
              doc.css('link[rel="image_src"]').attr('href')&.text].reject(&:blank?).first
 
-    {title: title,
-     description: description,
+    {title: String(title).truncate(240),
+     description: String(description).truncate(240),
      image: image,
      url: url,
      fit: 'contain',
@@ -38,7 +35,7 @@ module LinkPreviewService
   def self.fetch_urls(urls)
     previews = []
     threads = []
-    urls.reject {|u| BlockedDomain.where(name: URI(u).host).exists? }.each do |u|
+    Array(urls).compact.reject {|u| BlockedDomain.where(name: URI(u).host).exists? }.each do |u|
       # spawn a new thread for each url
       threads << Thread.new do
         previews.push fetch(u)

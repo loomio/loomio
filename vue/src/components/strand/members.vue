@@ -1,32 +1,42 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
-import Records from '@/shared/services/records'
-import {map} from 'lodash'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
+import Records from '@/shared/services/records';
 
-export default
-  props:
+export default {
+  props: {
     discussion: Object
+  },
 
-  data: ->
-    readers: []
+  data() {
+    return {readers: []};
+  },
 
-  mounted: ->
-    Records.discussionReaders.fetch
-      path: ''
-      params:
-        discussion_id: @discussion.id
+  mounted() {
+    Records.discussionReaders.fetch({
+      path: '',
+      params: {
+        discussion_id: this.discussion.id
+      }
+    });
 
-    @watchRecords
-      collections: ['discussionReaders']
-      query: (records) =>
-        @readers = Records.discussionReaders.collection.chain().
-          find(discussionId: @discussion.id).simplesort('lastReadAt', true).limit(20).data()
+    this.watchRecords({
+      collections: ['discussionReaders'],
+      query: records => {
+        this.readers = Records.discussionReaders.collection.chain().
+          find({discussionId: this.discussion.id}).simplesort('lastReadAt', true).limit(20).data();
+      }
+    });
+  },
 
-  methods:
-    openInviteModal: ->
-      EventBus.$emit 'openModal',
+  methods: {
+    openInviteModal() {
+      EventBus.$emit('openModal', {
         component: 'StrandMembersList',
-        props: { discussion: @discussion }
+        props: { discussion: this.discussion }
+      });
+    }
+  }
+};
 
 </script>
 
@@ -38,7 +48,7 @@ export default
 
   user-avatar(v-for="reader in readers" :user="reader.user()" :size="28" :key="reader.id")
   v-btn(small icon @click="openInviteModal" :title="$t('invitation_form.invite_people')")
-    v-icon mdi-plus
+    common-icon(name="mdi-plus")
 </template>
 
 <style lang="sass">

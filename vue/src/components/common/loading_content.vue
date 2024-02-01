@@ -1,11 +1,14 @@
-<script lang="coffee">
-export default
-  props:
-    blockCount: Number
+<script lang="js">
+export default {
+  props: {
+    blockCount: Number,
     lineCount: Number
-  computed:
-    blocks: -> new Array(@blockCount or 1)
-    lines: -> new Array(@lineCount or 3)
+  },
+  computed: {
+    blocks() { return new Array(this.blockCount || 1); },
+    lines() { return new Array(this.lineCount || 3); }
+  }
+};
 </script>
 <template lang="pug">
 .loading-content

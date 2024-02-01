@@ -1,55 +1,71 @@
-<script lang="coffee">
-import AuthService  from '@/shared/services/auth_service'
-import Session from '@/shared/services/session'
-import AuthModalMixin from '@/mixins/auth_modal'
-import AppConfig from '@/shared/services/app_config'
-import Flash from '@/shared/services/flash'
-import EventBus from '@/shared/services/event_bus'
+<script lang="js">
+import AuthService  from '@/shared/services/auth_service';
+import Session from '@/shared/services/session';
+import AuthModalMixin from '@/mixins/auth_modal';
+import AppConfig from '@/shared/services/app_config';
+import Flash from '@/shared/services/flash';
+import EventBus from '@/shared/services/event_bus';
 
-export default
-  mixins: [AuthModalMixin]
-  props:
+export default {
+  mixins: [AuthModalMixin],
+  props: {
     user: Object
+  },
 
-  data: ->
-    siteName: AppConfig.theme.site_name
-    vars: {}
-    loading: false
+  data() {
+    return {
+      siteName: AppConfig.theme.site_name,
+      vars: {},
+      loading: false
+    };
+  },
 
-  methods:
-    signIn: ->
-      @user.name = @vars.name if @vars.name?
-      @loading = true
-      AuthService.signIn(@user).finally =>
-        @loading = false
+  methods: {
+    signIn() {
+      if (this.vars.name != null) { this.user.name = this.vars.name; }
+      this.loading = true;
+      AuthService.signIn(this.user).finally(() => {
+        this.loading = false;
+      });
+    },
 
-    signInAndSetPassword: ->
-      @loading = true
-      @signIn().then =>
-        @loading = false
-        EventBus.$emit 'openModal',
-          component: 'ChangePasswordForm'
-          props:
+    signInAndSetPassword() {
+      this.loading = true;
+      this.signIn().then(() => {
+        this.loading = false;
+        EventBus.$emit('openModal', {
+          component: 'ChangePasswordForm',
+          props: {
             user: Session.user()
+          }
+        });
+      });
+    },
 
-    sendLoginLink: ->
-      @loading = true
-      AuthService.sendLoginLink(@user).finally =>
-        @loading = false
+    sendLoginLink() {
+      this.loading = true;
+      AuthService.sendLoginLink(this.user).finally(() => {
+        this.loading = false;
+      });
+    },
 
-    submit: ->
-      if @user.hasPassword or @user.hasToken
-        @signIn()
-      else
-        @sendLoginLink()
+    submit() {
+      if (this.user.hasPassword || this.user.hasToken) {
+        this.signIn();
+      } else {
+        this.sendLoginLink();
+      }
+    }
+  }
+};
 </script>
 <template lang="pug">
 v-card.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-card-title
-    h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome_back', args: { name: user.name } }")
+    h1.text-h5(tabindex="-1" role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome_back', args: { name: user.name } }")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
 
   v-sheet.mx-4.pb-4
     submit-overlay(:value='loading')

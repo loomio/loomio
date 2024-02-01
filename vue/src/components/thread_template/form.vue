@@ -1,66 +1,89 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import Session from '@/shared/services/session'
-import Flash  from '@/shared/services/flash'
-import I18n from '@/i18n'
-import { compact } from 'lodash'
-import { ContainerMixin, HandleDirective } from 'vue-slicksort'
+<script lang="js">
+import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
+import Flash  from '@/shared/services/flash';
+import I18n from '@/i18n';
+import { compact } from 'lodash-es';
+import { ContainerMixin, HandleDirective } from 'vue-slicksort';
 
-export default
-  directives:
+export default {
+  directives: {
     handle: HandleDirective
+  },
 
-  props:
-    discussionTemplate: 
-      type: Object
+  props: {
+    discussionTemplate: {
+      type: Object,
       required: true
+    }
+  },
 
-  data: ->
-    pollTemplateItems: []
-    selectedPollTemplate: null
-    pollTemplates: []
-    recipientAudienceItems: [{text: 'None', value: null}, {text: 'Everyone in group', value: 'group'}]
+  data() {
+    return {
+      pollTemplateItems: [],
+      selectedPollTemplate: null,
+      pollTemplates: [],
+      recipientAudienceItems: [{text: 'None', value: null}, {text: I18n.t('announcement.audiences.everyone_in_the_group'), value: 'group'}]
+    };
+  },
 
-  created: ->
-    @pollTemplates = @discussionTemplate.pollTemplates()
-    Records.pollTemplates.fetchByGroupId(@discussionTemplate.groupId)
+  created() {
+    this.pollTemplates = this.discussionTemplate.pollTemplates();
+    Records.pollTemplates.fetchByGroupId(this.discussionTemplate.groupId);
 
-    @watchRecords
-      collections: ["pollTemplates"]
-      query: (records) => @updatePollTemplateItems()
+    this.watchRecords({
+      collections: ["pollTemplates"],
+      query: records => this.updatePollTemplateItems()
+    });
+  },
 
-  computed:
-    breadcrumbs: ->
-      compact([@discussionTemplate.group().parentId && @discussionTemplate.group().parent(), @discussionTemplate.group()]).map (g) =>
-        text: g.name
-        disabled: false
-        to: @urlFor(g)
+  computed: {
+    breadcrumbs() {
+      return compact([this.discussionTemplate.group().parentId && this.discussionTemplate.group().parent(), this.discussionTemplate.group()]).map(g => {
+        return {
+          text: g.name,
+          disabled: false,
+          to: this.urlFor(g)
+        };
+      });
+    }
+  },
 
-  methods:
-    updatePollTemplateItems: ->
-      @pollTemplateItems = [{text: I18n.t('thread_template.add_proposal_or_poll_template'), value: null}].concat(
-        Records.pollTemplates.find(groupId: @discussionTemplate.group().id).filter( (pt) =>
-          !@pollTemplates.includes(pt)
-        ).map (pt) ->
-          {text: pt.processName, value: pt.id || pt.key}
-      )
+  methods: {
+    updatePollTemplateItems() {
+      this.pollTemplateItems = [{text: I18n.t('thread_template.add_proposal_or_poll_template'), value: null}].concat(
+        Records.pollTemplates.find({groupId: this.discussionTemplate.group().id}).filter( pt => {
+          return !this.pollTemplates.includes(pt);
+        }).map(pt => ({
+          text: pt.processName,
+          value: pt.id || pt.key
+        }))
+      );
+    },
 
-    submit: ->
-      @discussionTemplate.pollTemplateKeysOrIds = @pollTemplates.map (pt) -> pt.keyOrId()
-      @discussionTemplate.save().then (data) =>
-        Flash.success "thread_template.thread_template_saved"
-        @$router.push @$route.query.return_to || '/thread_templates/?group_id='+@discussionTemplate.groupId
+    submit() {
+      this.discussionTemplate.pollTemplateKeysOrIds = this.pollTemplates.map(pt => pt.keyOrId());
+      this.discussionTemplate.save().then(data => {
+        Flash.success("thread_template.thread_template_saved");
+        this.$router.push(this.$route.query.return_to || ('/thread_templates/?group_id='+this.discussionTemplate.groupId));
+      });
+    },
 
-    pollTemplateSelected: (keyOrId) ->
-      @pollTemplates.push(Records.pollTemplates.find(keyOrId))
-      setTimeout =>
-        @selectedPollTemplate = null
-        @updatePollTemplateItems()
+    pollTemplateSelected(keyOrId) {
+      this.pollTemplates.push(Records.pollTemplates.find(keyOrId));
+      setTimeout(() => {
+        this.selectedPollTemplate = null;
+        this.updatePollTemplateItems();
+      });
+    },
 
-    removePollTemplate: (pollTemplate) ->
-      @pollTemplates.splice(@pollTemplates.indexOf(pollTemplate), 1)
-      @updatePollTemplateItems()
+    removePollTemplate(pollTemplate) {
+      this.pollTemplates.splice(this.pollTemplates.indexOf(pollTemplate), 1);
+      this.updatePollTemplateItems();
+    }
+  }
+};
 
 </script>
 <template lang="pug">
@@ -69,10 +92,10 @@ export default
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
       template(v-slot:divider)
-        v-icon mdi-chevron-right
+        common-icon(name="mdi-chevron-right")
     v-spacer
     v-btn.back-button(v-if="$route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
 
   v-card-title.px-0
     h1.text-h4(v-if="discussionTemplate.id" tabindex="-1" v-t="'discussion_form.edit_thread_template'")
@@ -142,10 +165,10 @@ export default
                 span {{ template.processName }}
               v-list-item-subtitle {{ template.processSubtitle }}
             v-list-item-action.handle(v-handle style="cursor: grab")
-                v-icon mdi-drag-vertical
+                common-icon(name="mdi-drag-vertical")
             v-list-item-action
               v-btn(icon @click="removePollTemplate(template)")
-                v-icon mdi-close
+                common-icon(name="mdi-close")
   v-select(
     v-model="selectedPollTemplate"
     :items="pollTemplateItems"

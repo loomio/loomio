@@ -24,8 +24,8 @@ class PollQuery
                  .where("#{'d.private = false OR ' if show_public}
                          polls.author_id = :user_id OR
                          (m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                         (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-                         (s.id IS NOT NULL AND s.revoked_at IS NULL)", user_id: user.id)
+                         (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
+                         (s.id IS NOT NULL AND s.revoked_at IS NULL AND s.guest = TRUE)", user_id: user.id)
     chain
   end
 
@@ -44,6 +44,11 @@ class PollQuery
 
     if (tags = (params[:tags] || '').split('|')).any?
       chain = chain.where.contains(tags: tags)
+    end
+
+    if params[:status] == 'vote'
+      voted_poll_ids = Stance.where(latest: true).where.not(cast_at: nil).pluck(:poll_id)
+      chain = chain.where.not(id: voted_poll_ids)
     end
 
     chain = chain.where(template: true) if params[:template]

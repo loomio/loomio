@@ -1,7 +1,3 @@
-.body-1 {
-  letter-spacing: normal !important;
-}
-
 .lmo-disabled-form {
   position: absolute;
   top: 0;
@@ -10,13 +6,12 @@
   bottom: 0;
   background-color: white;
   border-radius: 6px;
-  z-index: $z-medium;
   opacity: 0.5;
 }
 
 img.emoji {
-  width: 1.4em
-  vertical-align: top:
+  width: 1.4em;
+  vertical-align: top;
 }
 
 .sr-only {

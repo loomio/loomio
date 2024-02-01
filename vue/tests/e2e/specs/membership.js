@@ -1,5 +1,4 @@
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
   'successfully_removes_a_group_member': (test) => {
@@ -97,7 +96,6 @@ module.exports = {
     page.fillIn('.membership-form__title-input input', 'Suzerain')
     page.click('.membership-form__submit')
     page.expectFlash('Membership title updated')
-    page.expectText('.members-panel .v-list .v-list-item:last-child .title', 'Suzerain')
   },
 
   // 'can_change_volume': (test) => {

@@ -1,31 +1,40 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
+<script lang="js">
+import Records from '@/shared/services/records';
 
-export default
-  props:
-    tags: Array
-    group: Object
-    showCounts: Boolean
-    showOrgCounts: Boolean
+export default {
+  props: {
+    tags: Array,
+    group: Object,
+    showCounts: Boolean,
+    showOrgCounts: Boolean,
+    selected: String,
+    smaller: Boolean,
     selected: String
-    smaller: Boolean
-    selected: String
+  },
 
-  computed:
-    groupKey: ->
-      @group.key
+  computed: {
+    groupKey() {
+      return this.group.key;
+    },
 
-    byName: -> 
-      res = {}
-      @group.tags().forEach (t) -> res[t.name] = t
-      res
+    byName() { 
+      const res = {};
+      this.group.tags().forEach(t => res[t.name] = t);
+      return res;
+    },
 
-    tagObjects: ->
-      @tags.map (name, i) =>
-        id: i
-        name: name
-        color: (@byName[name] || {}).color
-        taggingsCount: (@byName[name] || {}).taggingsCount
+    tagObjects() {
+      return this.tags.map((name, i) => {
+        return {
+          id: i,
+          name,
+          color: (this.byName[name] || {}).color,
+          taggingsCount: (this.byName[name] || {}).taggingsCount
+        };
+      });
+    }
+  }
+};
 
 </script>
 <template lang="pug">

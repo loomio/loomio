@@ -1,50 +1,62 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import AbilityService from '@/shared/services/ability_service'
-import Records from '@/shared/services/records'
-import RecordLoader from '@/shared/services/record_loader'
-import EventBus       from '@/shared/services/event_bus'
-import Session       from '@/shared/services/session'
-import { debounce, some, every, compact, omit, values, keys, intersection, uniq, escapeRegExp, reject, filter} from 'lodash'
-import { subDays } from 'date-fns'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import AbilityService from '@/shared/services/ability_service';
+import Records from '@/shared/services/records';
+import RecordLoader from '@/shared/services/record_loader';
+import EventBus       from '@/shared/services/event_bus';
+import Session       from '@/shared/services/session';
+import { escapeRegExp, reject, filter } from 'lodash-es';
+import { subDays } from 'date-fns';
 
 export default
-  data: ->
-    votePolls: []
-    otherPolls: []
-    loader: null
+{
+  data() {
+    return {
+      votePolls: [],
+      otherPolls: [],
+      loader: null
+    };
+  },
 
-  created: ->
-    @loader = new RecordLoader
-      collection: 'polls'
-      params:
-        exclude_types: 'group'
+  created() {
+    this.loader = new RecordLoader({
+      collection: 'polls',
+      params: {
+        exclude_types: 'group',
         status: 'recent'
+      }
+    });
 
-    @loader.fetchRecords()
+    this.loader.fetchRecords();
 
-    @watchRecords
-      collections: ['polls', 'groups', 'memberships', 'stances']
-      query: => @findRecords()
+    this.watchRecords({
+      collections: ['polls', 'groups', 'memberships', 'stances'],
+      query: () => this.findRecords()
+    });
+  },
 
-  methods:
-    findRecords: ->
-      groupIds = Session.user().groupIds()
-      pollIds = Records.stances.find(myStance: true).map((stance) -> stance.pollId)
+  methods: {
+    findRecords() {
+      const groupIds = Session.user().groupIds();
+      const pollIds = Records.stances.find({myStance: true}).map(stance => stance.pollId);
 
-      chain = Records.polls.collection.chain()
-      chain = chain.find(discardedAt: null, closingAt: {$ne: null})
-      chain = chain.find($or: [{groupId: {$in: groupIds}}, {id: {$in: pollIds}}, {authorId: Session.user().id}])
-      chain = chain.find($or: [{closedAt: null}, {closedAt: {$gt: subDays(new Date, 3)}}])
+      let chain = Records.polls.collection.chain();
+      chain = chain.find({discardedAt: null, closingAt: {$ne: null}});
+      chain = chain.find({$or: [{groupId: {$in: groupIds}}, {id: {$in: pollIds}}, {authorId: Session.user().id}]});
+      chain = chain.find({$or: [{closedAt: null}, {closedAt: {$gt: subDays(new Date, 3)}}]});
 
-      if @$route.query.q
-        rx = new RegExp(escapeRegExp(@$route.query.q), 'i');
-        chain = chain.find($or: [{'title': {'$regex': rx}},
-                                 {'description': {'$regex': rx}}]);
+      if (this.$route.query.q) {
+        const rx = new RegExp(escapeRegExp(this.$route.query.q), 'i');
+        chain = chain.find({$or: [{'title': {'$regex': rx}},
+                                 {'description': {'$regex': rx}}]});
+      }
 
-      votable = (p) => p.iCanVote() && !p.iHaveVoted()
-      @votePolls = filter chain.simplesort('closingAt', true).data(), votable
-      @otherPolls = reject chain.simplesort('closingAt', true).data(), votable
+      const votable = p => p.iCanVote() && !p.iHaveVoted();
+      this.votePolls = filter(chain.simplesort('closingAt', true).data(), votable);
+      this.otherPolls = reject(chain.simplesort('closingAt', true).data(), votable);
+    }
+  }
+};
 
 
 </script>
@@ -54,7 +66,7 @@ export default
   v-card.mb-2
     v-list(two-line avatar)
       template
-        v-card-title(v-t="'dashboard_page.polls_to_vote_on'")
+        v-subheader(v-t="'dashboard_page.polls_to_vote_on'")
         poll-common-preview(
           v-if="votePolls.length",
           :poll="poll",
@@ -66,9 +78,9 @@ export default
           v-t="'dashboard_page.no_polls_to_vote_on'"
         )
       template(v-if="otherPolls.length")
-        v-card-title(v-t="'dashboard_page.recent_polls'")
+        v-subheader(v-t="'dashboard_page.recent_polls'")
         poll-common-preview(:poll='poll' v-for='poll in otherPolls' :key='poll.id')
       template(v-if='!votePolls.length && !otherPolls.length && loader.loading')
-        v-card-title(v-t="'group_page.polls'")
+        v-subheader(v-t="'group_page.polls'")
         loading-content(:lineCount='2' v-for='(item, index) in [1]' :key='index' )
 </template>

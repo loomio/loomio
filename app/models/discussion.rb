@@ -70,11 +70,12 @@ class Discussion < ApplicationRecord
   is_mentionable  on: :description
   is_translatable on: [:title, :description], load_via: :find_by_key!, id_field: :key
   is_rich_text    on: :description
-  has_paper_trail only: [:title, :description, :description_format, :private, :group_id, :author_id, :tags]
+  has_paper_trail only: [:title, :description, :description_format, :private, :group_id, :author_id, :tags, :closed_at, :closer_id]
 
   belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User'
   belongs_to :user, foreign_key: 'author_id'
+  belongs_to :closer, foreign_key: 'closer_id', class_name: "User"
   has_many :polls, dependent: :destroy
   has_many :active_polls, -> { where(closed_at: nil) }, class_name: "Poll"
 
@@ -144,7 +145,7 @@ class Discussion < ApplicationRecord
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-             (dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
+             (dr.id IS NOT NULL AND dr.guest = TRUE AND dr.revoked_at IS NULL)')
   end
 
   def admins
@@ -152,7 +153,7 @@ class Discussion < ApplicationRecord
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       where('(m.admin = TRUE AND m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-             (dr.admin = TRUE AND dr.id IS NOT NULL and dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL)')
+             (dr.admin = TRUE AND dr.id IS NOT NULL AND dr.revoked_at IS NULL)')
   end
 
   def guests
@@ -161,9 +162,9 @@ class Discussion < ApplicationRecord
 
   def add_guest!(user, inviter)
     if dr = discussion_readers.find_by(user: user)
-      dr.update(inviter: inviter)
+      dr.update(guest: true, inviter: inviter)
     else
-      discussion_readers.create!(user: user, inviter: inviter, volume: DiscussionReader.volumes[:normal])
+      discussion_readers.create!(user: user, inviter: inviter, guest: true, volume: DiscussionReader.volumes[:normal])
     end
   end
 

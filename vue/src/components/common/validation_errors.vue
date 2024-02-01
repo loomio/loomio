@@ -1,13 +1,15 @@
-<script lang="coffee">
-export default
-  props:
-    subject: Object
+<script lang="js">
+export default {
+  props: {
+    subject: Object,
     field: String
+  }
+};
 </script>
 
 <template lang="pug">
 .lmo-validation-error
-  .lmo-validation-error__message.error--text.caption(v-if="subject.errors[field]" for="field + '-error'")
+  .lmo-validation-error__message.error--text.text-caption(v-if="subject.errors[field]" for="field + '-error'")
     span(role="status" aria-live="polite") {{subject.errors[field].join(', ')}}
 </template>
 <style lang="sass">

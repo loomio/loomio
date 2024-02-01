@@ -1,39 +1,50 @@
-<script lang="coffee">
-import Records       from '@/shared/services/records'
-import Session       from '@/shared/services/session'
-import LmoUrlService from '@/shared/services/lmo_url_service'
-import EventBus      from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import DiscussionTemplateService from '@/shared/services/discussion_template_service'
-import utils         from '@/shared/record_store/utils'
-import { compact } from 'lodash'
-import VuetifyColors  from 'vuetify/lib/util/colors'
+<script lang="js">
+import Records       from '@/shared/services/records';
+import Session       from '@/shared/services/session';
+import LmoUrlService from '@/shared/services/lmo_url_service';
+import EventBus      from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import DiscussionTemplateService from '@/shared/services/discussion_template_service';
+import utils         from '@/shared/record_store/utils';
+import VuetifyColors  from 'vuetify/lib/util/colors';
+import { mdiMagnify } from '@mdi/js';
 
-colors = Object.keys(VuetifyColors).filter((name) -> name != 'shades').map (name) -> VuetifyColors[name]['base']
+const colors = Object.keys(VuetifyColors).filter(name => name !== 'shades').map(name => VuetifyColors[name]['base']);
 
-export default
-  data: ->
-    results: []
-    query: @$route.query.query
-    loading: false
-    tags: []
+export default {
+  data() {
+    return {
+      mdiMagnify,
+      results: [],
+      query: this.$route.query.query,
+      loading: false,
+      tags: []
+    };
+  },
 
-  mounted: ->
-    @fetch()
-    Records.remote.get('discussion_templates/browse_tags').then (data) =>
-      @tags = data
+  mounted() {
+    this.fetch();
+    Records.remote.get('discussion_templates/browse_tags').then(data => {
+      this.tags = data;
+    });
+  },
 
-  methods:
-    changed: -> @fetch()
-    fetch: ->
-      @loading = true
-      @results = []
-      Records.remote.get('discussion_templates/browse', {query: @query}).then (data) =>
-        @results = data.results.map(utils.parseJSON)
-        @loading = false
+  methods: {
+    changed() { return this.fetch(); },
+    fetch() {
+      this.loading = true;
+      this.results = [];
+      Records.remote.get('discussion_templates/browse', {query: this.query}).then(data => {
+        this.results = data.results.map(utils.parseJSON);
+        this.loading = false;
+      });
+    },
 
-    tagColor: (tag)->
-      colors[@tags.indexOf(tag) % colors.length]
+    tagColor(tag){
+      return colors[this.tags.indexOf(tag) % colors.length];
+    }
+  }
+};
 
 </script>
 <template lang="pug">
@@ -42,10 +53,10 @@ export default
     v-container.max-width-800.px-0.px-sm-3
       v-card
         v-card-title.d-flex.pr-3
-          h1.headline(tabindex="-1" v-t="'templates.template_gallery'")
+          h1.text-h5(tabindex="-1" v-t="'templates.template_gallery'")
           v-spacer
           v-btn.back-button(v-if="$route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-            v-icon mdi-close
+            common-icon(name="mdi-close")
 
 
         v-alert.mx-4(type="info" text outlined v-t="'thread_template.these_are_public_templates'") 
@@ -59,7 +70,7 @@ export default
             hide-selected
             clearable
             @change="changed"
-            append-icon="mdi-magnify"
+            :append-icon="mdiMagnify"
             @click:append="fetch"
             v-model="query"
             :placeholder="$t('common.action.search')"
@@ -104,6 +115,6 @@ export default
                 :to="'/thread_templates/new?template_id='+result.id+'&group_id='+$route.query.group_id"
                 title="Make a copy of this template and edit it"
               )
-                v-icon mdi-pencil
+                common-icon(name="mdi-pencil")
 
 </template>

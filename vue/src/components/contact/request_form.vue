@@ -1,25 +1,31 @@
-<script lang="coffee">
-import Records  from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import Flash  from '@/shared/services/flash'
+<script lang="js">
+import Records  from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import Flash  from '@/shared/services/flash';
 
 export default
-  props:
+{
+  props: {
     user: Object
-  data: ->
-    contactRequest: Records.contactRequests.build(recipientId: @user.id)
-  methods:
-    submit: ->
-      @contactRequest.save()
-      .then =>
-        Flash.success "contact_request_form.email_sent", {name: @user.name}
-        @close()
+  },
+  data() {
+    return {contactRequest: Records.contactRequests.build({recipientId: this.user.id})};
+  },
+  methods: {
+    submit() {
+      this.contactRequest.save().then(() => {
+        Flash.success("contact_request_form.email_sent", {name: this.user.name});
+        EventBus.$emit('closeModal')
+      });
+    }
+  }
+};
 
 </script>
 <template lang="pug">
 v-card.contact-user-modal
   v-card-title
-    h1.headline(tabindex="-1" v-t="{ path: 'contact_request_form.modal_title', args: { name: user.name }}")
+    h1.text-h5(tabindex="-1" v-t="{ path: 'contact_request_form.modal_title', args: { name: user.name }}")
     v-spacer
     dismiss-modal-button
   v-card-text.contact-user-form

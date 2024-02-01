@@ -16,8 +16,6 @@ describe UserQuery do
   let!(:poll_guest) { create(:user, name: 'poll_guest') }
   let!(:actor) { create(:user, name: 'actor') }
   let!(:unrelated) { create(:user, name: 'unrelated') }
-  let!(:invited) { create(:user, name: 'invited') }
-  let!(:inviter) { create(:user, name: 'inviter') }
 
   before do
     group.add_member! actor
@@ -26,13 +24,12 @@ describe UserQuery do
     subgroup.add_member! subgroup_member
     other_group.add_member! actor
     other_group.add_member! other_member
-    discussion.discussion_readers.create!(user_id: actor.id, inviter_id: inviter.id)
-    discussion.discussion_readers.create!(user_id: thread_guest.id, inviter_id: inviter.id)
-    other_discussion.discussion_readers.create!(user_id: actor.id, inviter_id: inviter.id)
-    other_discussion.discussion_readers.create!(user_id: other_guest.id, inviter_id: inviter.id)
-    other_discussion.discussion_readers.create!(user_id: invited.id, inviter_id: actor.id)
+    discussion.discussion_readers.create!(user_id: actor.id, inviter_id: actor.id)
+    discussion.discussion_readers.create!(user_id: thread_guest.id, guest: true, inviter_id: actor.id)
+    other_discussion.discussion_readers.create!(user_id: actor.id, inviter_id: actor.id)
+    other_discussion.discussion_readers.create!(user_id: other_guest.id, guest: true, inviter_id: actor.id)
     poll.stances.create!(participant_id: actor.id, inviter_id: actor.id)
-    poll.stances.create!(participant_id: poll_guest.id, inviter_id: inviter.id)
+    poll.add_guest!(poll_guest, actor)
   end
 
   context "invitable_search" do
@@ -41,12 +38,8 @@ describe UserQuery do
     end
 
     context "nil model" do
-      it "returns members of actors groups, actors inviter and invited" do
-        expect(subject).to include *[member, subgroup_member, other_member, invited, inviter].map(&:name)
-      end
-
-      it 'does not include guests from other models' do
-        expect(subject).not_to include *[poll_guest, thread_guest].map(&:name)
+      it "returns members of actors groups, actors guests" do
+        expect(subject).to include *[member, subgroup_member, other_member, poll_guest, thread_guest].map(&:name)
       end
     end
 
@@ -62,16 +55,20 @@ describe UserQuery do
       context "without group" do
         context "as admin" do
           before do
-            DiscussionReader.where(discussion_id: discussion.id, user_id: actor.id).update_all(admin: true)
+            DiscussionReader.where(discussion_id: discussion.id, user_id: actor.id).update_all(admin: true, guest: true)
           end
 
-          it 'returns actors group members, inviters and invited' do
-            expect(subject).to include *[member, subgroup_member, other_member, thread_guest, poll_guest, inviter, invited].map(&:name)
+          it 'returns actors group members, previous guests' do
+            expect(subject).to include *[member, subgroup_member, other_member, thread_guest, poll_guest].map(&:name)
             expect(subject).not_to include unrelated.name
           end
         end
 
         context "as member" do
+          before do
+            DiscussionReader.where(discussion_id: discussion.id, user_id: actor.id).update_all(guest: true)
+          end
+
           it 'returns thread_guest, poll_guest' do
             expect(subject).to include *[thread_guest, poll_guest, actor].map(&:name)
             expect(subject.count).to eq 3
@@ -88,7 +85,7 @@ describe UserQuery do
           before { Membership.where(user: actor, group: group).update(admin: true) }
 
           it 'returns group, subgroup members, thread guests, poll_guests' do
-            expect(subject).to include *[member, subgroup_member, thread_guest, poll_guest, inviter, invited].map(&:name)
+            expect(subject).to include *[member, subgroup_member, thread_guest, poll_guest].map(&:name)
           end
 
           it 'excludes other org members, unrelated users' do
@@ -103,7 +100,7 @@ describe UserQuery do
             before { group.update(members_can_add_guests: true) }
 
             it 'returns group & subgroup members, thread guests' do
-              expect(subject).to include *[member, subgroup_member, thread_guest, poll_guest, inviter, invited].map(&:name)
+              expect(subject).to include *[member, subgroup_member, thread_guest, poll_guest].map(&:name)
             end
 
             it 'does not return another organizations members, unrelated users' do
@@ -121,7 +118,7 @@ describe UserQuery do
             end
 
             it 'excludes subgroup members, other org members, unrelated' do
-              expect(subject).not_to include *[subgroup_member, other_member, unrelated, inviter, invited].map(&:name)
+              expect(subject).not_to include *[subgroup_member, other_member, unrelated].map(&:name)
             end
           end
         end
@@ -137,12 +134,12 @@ describe UserQuery do
         context "as admin" do
           before { poll.stances.where(participant_id: actor.id).update_all(admin: true, inviter_id: actor.id) }
 
-          it "returns members of actors groups, actors inviter and invited" do
-            expect(subject).to include *[member, subgroup_member, other_member, invited, inviter, poll_guest].map(&:name)
+          it "returns members of actors groups, actors guests" do
+            expect(subject).to include *[member, subgroup_member, other_member, poll_guest].map(&:name)
           end
 
-          it 'does not include guests from other models, unrelated' do
-            expect(subject).not_to include *[thread_guest, unrelated].map(&:name)
+          it 'does not include unrelated' do
+            expect(subject).not_to include *[unrelated].map(&:name)
           end
         end
 
@@ -157,10 +154,10 @@ describe UserQuery do
         before { poll.update(discussion_id: discussion.id, group_id: nil) }
 
         context "as discussion admin" do
-          before { discussion.discussion_readers.where(user_id: actor.id).update_all(admin: true) }
+          before { discussion.discussion_readers.where(user_id: actor.id).update_all(admin: true, guest: true) }
 
-          it "returns members of actors groups, actors inviter and invited, poll_guest, thread_guest" do
-            expect(subject).to include *[member, subgroup_member, other_member, invited, inviter, poll_guest, thread_guest].map(&:name)
+          it "returns members of actors groups, actors guests" do
+            expect(subject).to include *[member, subgroup_member, other_member, poll_guest, thread_guest].map(&:name)
           end
 
           it 'does not include unrelated' do
@@ -185,11 +182,11 @@ describe UserQuery do
           before { Membership.where(user: actor, group: group).update(admin: true) }
 
           it 'returns group, subgroup members, poll guests, inviters and invited' do
-            expect(subject).to include *[member, subgroup_member, poll_guest, inviter, invited].map(&:name)
+            expect(subject).to include *[member, subgroup_member, poll_guest].map(&:name)
           end
 
           it 'does not return another organizations members, unrelated' do
-            expect(subject).not_to include *[other_member, thread_guest, unrelated].map(&:name)
+            expect(subject).not_to include *[other_member, unrelated].map(&:name)
           end
         end
 
@@ -203,11 +200,11 @@ describe UserQuery do
               before { group.update(members_can_add_guests: true) }
 
               it 'returns group, subgroup members, poll_guests' do
-                expect(subject).to include *[member, subgroup_member, poll_guest, invited, inviter].map(&:name)
+                expect(subject).to include *[member, subgroup_member, poll_guest].map(&:name)
               end
 
               it 'does not return another organizations members' do
-                expect(subject).to_not include *[other_member, thread_guest, unrelated].map(&:name)
+                expect(subject).to_not include *[other_member, unrelated].map(&:name)
               end
             end
 
@@ -220,7 +217,7 @@ describe UserQuery do
               end
 
               it 'does not return subgroup members, other members, unlreated guests' do
-                expect(subject).to_not include *[other_member, thread_guest, unrelated, invited, inviter].map(&:name)
+                expect(subject).to_not include *[other_member, thread_guest, unrelated].map(&:name)
               end
             end
           end

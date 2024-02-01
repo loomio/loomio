@@ -1,46 +1,64 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import EventBus       from '@/shared/services/event_bus'
-import utils          from '@/shared/record_store/utils'
-import LmoUrlService  from '@/shared/services/lmo_url_service'
-import AbilityService from '@/shared/services/ability_service'
-import Session from '@/shared/services/session'
-import AppConfig      from '@/shared/services/app_config'
-import Flash   from '@/shared/services/flash'
-import {each , sortBy, includes, map, pull, uniq, throttle, debounce, merge} from 'lodash'
-import { encodeParams } from '@/shared/helpers/encode_params'
+<script lang="js">
+import Records        from '@/shared/services/records';
+import EventBus       from '@/shared/services/event_bus';
+import utils          from '@/shared/record_store/utils';
+import LmoUrlService  from '@/shared/services/lmo_url_service';
+import AbilityService from '@/shared/services/ability_service';
+import Session from '@/shared/services/session';
+import AppConfig from '@/shared/services/app_config';
+import Flash   from '@/shared/services/flash';
+import { encodeParams } from '@/shared/helpers/encode_params';
 
-export default
-  props:
-    close: Function
-    model:
-      type: Object
+export default {
+  props: {
+    close: Function,
+    model: {
+      type: Object,
       required: true
-  data: ->
-    historyData: []
-    historyLoading: false
-    historyError: false
-  created: ->
-    @historyLoading = true
-    Records.fetch
-      path: 'announcements/history'
-      params: @model.namedId()
-    .then (data) =>
-      @historyLoading = false
-      @historyData = data || []
-    , (err) =>
-      @historyLoading = false
-      @historyError = true
-  computed:
-    modelKind: -> @model.constructor.singular
-    pollType: -> @model.pollType
-    translatedPollType: -> @model.poll().translatedPollType() if @model.isA('poll') or @model.isA('outcome')
+    }
+  },
+
+  data() {
+    return {
+      historyData: [],
+      historyLoading: false,
+      historyError: false,
+      allowViewed: false
+    };
+  },
+
+  created() {
+    this.historyLoading = true;
+    Records.fetch({
+      path: 'announcements/history',
+      params: this.model.namedId()}).
+    then(data => {
+      this.historyLoading = false;
+      this.historyData = data.data || [];
+      this.allowViewed = data.allow_viewed;
+    }
+    , err => {
+      this.historyLoading = false;
+      this.historyError = true;
+    });
+  },
+
+  computed: {
+    modelKind() { return this.model.constructor.singular; },
+    pollType() { return this.model.pollType; },
+    translatedPollType() {
+      if (this.model.isA('poll') || this.model.isA('outcome')) {
+        return this.model.poll().translatedPollType(); 
+      }
+    }
+  }
+};
 </script>
 
 <template lang="pug">
 v-card
   v-card-title
-    h1.headline(tabindex="-1" v-t="'announcement.' + modelKind + '_notification_history'")
+    h1.text-h5(tabindex="-1" v-t="'announcement.' + modelKind + '_notification_history'")
     v-spacer
     dismiss-modal-button
   v-layout(justify-center)
@@ -48,7 +66,7 @@ v-card
   v-card-text(v-if="!historyLoading")
     p(v-if="historyError && historyData.length == 0" v-t="'announcement.history_error'")
     p(v-if="!historyError && historyData.length == 0" v-t="'announcement.no_notifications_sent'")
-    p(v-if="historyData.length" v-t="'announcement.notification_history_explanation'")
+    p(v-if="historyData.length && allowViewed" v-t="'announcement.notification_history_explanation'")
     div(v-for="event in historyData" :key="event.id")
       h4.mt-4.mb-2
         time-ago(:date="event.created_at")

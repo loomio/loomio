@@ -13,7 +13,7 @@ class ContactMessageService
         }.compact
       ).deliver_later
     else
-      raise "failed to send a contact message. name: #{contact_message.name}, #{contact_message.email}, #{contact_message.subject}"
+      raise "failed to send a contact message. name: #{contact_message.name}, #{contact_message.email}, #{contact_message.subject}, #{contact_message.errors.to_s}"
     end
   end
 end

@@ -1,41 +1,48 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import { pick } from 'lodash'
-import I18n from '@/i18n'
+<script lang="js">
+import Records from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import I18n from '@/i18n';
 
-export default
-  props:
-    pollOption: Object
-    poll: Object
-    submitFn: Function
+export default {
+  props: {
+    pollOption: Object,
+    poll: Object,
+    submitFn: Function,
     edit: Boolean
+  },
 
-  data: ->
-    nameRules: [(v) => v.length <= 60 || I18n.t("poll_option_form.option_name_validation")],
-    icons: [
-      {text: 'Thumbs up', value: 'agree'},
-      {text: 'Thumbs down', value: 'disagree'},
-      {text: 'Thumbs sideways', value: 'abstain'},
-      {text: 'Hand up', value: 'block'}
-    ],
+  data() {
+    return {
+      nameRules: [v => (v.length <= 60) || I18n.t("poll_option_form.option_name_validation")],
+      icons: [
+        {text: 'Thumbs up', value: 'agree'},
+        {text: 'Thumbs down', value: 'disagree'},
+        {text: 'Thumbs sideways', value: 'abstain'},
+        {text: 'Hand up', value: 'block'}
+      ]
+    };
+  },
 
-  computed:
-    hasOptionIcon: -> @poll.config().has_option_icon
-    hasOptionPrompt: -> @poll.config().per_option_reason_prompt
-    hasOptionMeaning: -> @poll.config().options_have_meaning
+  computed: {
+    hasOptionIcon() { return this.poll.config().has_option_icon; },
+    hasOptionPrompt() { return this.poll.config().per_option_reason_prompt; },
+    hasOptionMeaning() { return this.poll.config().options_have_meaning; }
+  },
 
-  methods:
-    submit: ->
-      @submitFn(@pollOption)
-      EventBus.$emit('closeModal')
+  methods: {
+    submit() {
+      this.submitFn(this.pollOption);
+      EventBus.$emit('closeModal');
+    }
+  }
+};
 
 </script>
 <template lang="pug">
 v-card.poll-common-option-form
   v-card-title
-    h1.headline(v-if="edit" v-t="$t('poll_option_form.edit_option')")
-    h1.headline(v-else v-t="$t('poll_poll_form.add_option_placeholder')")
+    h1.text-h5(v-if="edit" v-t="$t('poll_option_form.edit_option')")
+    h1.text-h5(v-else v-t="$t('poll_poll_form.add_option_placeholder')")
     v-spacer
     dismiss-modal-button
   v-card-text

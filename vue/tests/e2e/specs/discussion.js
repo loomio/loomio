@@ -1,5 +1,4 @@
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
   // 'presents_new_discussion_form_for_a_group_from_params': (test) => {
@@ -211,7 +210,7 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.click('.html-editor__expand')
     // page.click('i.mdi-chevron-right')
-    page.click('i.mdi-language-markdown-outline')
+    page.click('.e2e-markdown-btn')
     page.acceptConfirm()
     page.fillIn('.comment-form .lmo-textarea textarea', '@jennifer')
     page.expectText('.suggestion-list', 'Jennifer Grey')

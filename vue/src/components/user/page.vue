@@ -1,46 +1,59 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
+<script lang="js">
+import Records        from '@/shared/services/records';
+import EventBus       from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
 
-import { isEmpty }     from 'lodash'
-import { approximate } from '@/shared/helpers/format_time'
+import { isEmpty }     from 'lodash-es';
+import { approximate } from '@/shared/helpers/format_time';
 
-export default
-  data: ->
-    user: {}
-    isMembershipsFetchingDone: false
-    groups: []
-    canContactUser: false
-    loadingGroupsForExecuting: false
+export default {
+  data() {
+    return {
+      user: {},
+      isMembershipsFetchingDone: false,
+      groups: [],
+      canContactUser: false,
+      loadingGroupsForExecuting: false
+    };
+  },
 
-  created: ->
-    @init()
-    EventBus.$emit 'currentComponent', {page: 'userPage'}
-    Records.users.findOrFetchById(@$route.params.key).then @init, (error) ->
-      EventBus.$emit 'pageError', error
+  created() {
+    this.init();
+    EventBus.$emit('currentComponent', {page: 'userPage'});
+    Records.users.findOrFetchById(this.$route.params.key).then(this.init, error => EventBus.$emit('pageError', error));
+  },
 
-  methods:
-    approximate: approximate
-    init: ->
-      if @user = (Records.users.find(@$route.params.key) or Records.users.find(username: @$route.params.key))[0]
-        Records.remote.get('profile/contactable', user_id: @user.id).then =>
-          @canContactUser = true
-        EventBus.$emit 'currentComponent', {title: @user.name, page: 'userPage'}
-        @loadGroupsFor(@user)
-        @watchRecords
-          key: @user.id
-          collections: ['groups', 'memberships']
-          query: (store) =>
-            @groups = @user.groups()
+  methods: {
+    approximate,
+    init() {
+      if (this.user = (Records.users.find(this.$route.params.key) || Records.users.find({username: this.$route.params.key}))[0]) {
+        Records.remote.get('profile/contactable', {user_id: this.user.id}).then(() => {
+          this.canContactUser = true;
+        });
+        EventBus.$emit('currentComponent', {title: this.user.name, page: 'userPage'});
+        this.loadGroupsFor(this.user);
+        this.watchRecords({
+          key: this.user.id,
+          collections: ['groups', 'memberships'],
+          query: store => {
+            this.groups = this.user.groups();
+          }
+        });
+      }
+    },
 
-    loadGroupsFor: (user) ->
-      @loadingGroupsForExecuting = true
-      Records.memberships.fetchByUser(user).then =>
-        @loadingGroupsForExecuting = false
+    loadGroupsFor(user) {
+      this.loadingGroupsForExecuting = true;
+      Records.memberships.fetchByUser(user).then(() => {
+        this.loadingGroupsForExecuting = false;
+      });
+    }
+  },
 
-  computed:
-    isEmptyUser: -> isEmpty @user
+  computed: {
+    isEmptyUser() { return isEmpty(this.user); }
+  }
+};
 
 </script>
 
@@ -52,7 +65,7 @@ v-main.user-page__profile
       v-card
         v-card-title
           v-layout.align-center.justify-center
-            h1.headline {{user.name}}
+            h1.text-h5 {{user.name}}
         v-card-text
           v-layout.user-page__info.mb-5.align-center.justify-center(column)
             user-avatar.mb-5(:user='user' :size='192' :no-link="true")

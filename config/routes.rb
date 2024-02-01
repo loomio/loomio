@@ -145,7 +145,6 @@ Rails.application.routes.draw do
           get  :contactable
           get  :avatar_uploaded
           get  :email_api_key
-          post :send_email_to_group_address
           post :reset_email_api_key
           post :update_profile
           post :set_volume
@@ -213,6 +212,18 @@ Rails.application.routes.draw do
           post :make_admin
           post :resend
           post :revoke
+        end
+      end
+
+      resources :received_emails, only: [:index] do
+        collection do
+          get :aliases
+          delete :destroy_alias
+        end
+        
+        member do
+          post :allow
+          post :block
         end
       end
 
@@ -352,7 +363,7 @@ Rails.application.routes.draw do
 
   get '/start_group', to: redirect('/try')
 
-  get 'try'                                => 'application#index'
+  get 'try'                                => redirect("/g/new")
   get 'dashboard'                          => 'application#index', as: :dashboard
   get 'dashboard/:filter'                  => 'application#index'
   get 'inbox'                              => 'application#index', as: :inbox
@@ -366,6 +377,7 @@ Rails.application.routes.draw do
   get 'apps/authorized'                    => 'application#index'
   get 'apps/registered/:id'                => 'application#index'
   get 'apps/registered/:id/:slug'          => 'application#index'
+  get 'g/:key/emails'                      => 'application#index', as: :group_emails
   get 'g/:key/membership_requests'         => 'application#index', as: :group_membership_requests
   get 'g/:key/members/requests'            => 'application#index', as: :group_members_requests
   get 'g/:key/memberships'                 => 'application#index', as: :group_memberships

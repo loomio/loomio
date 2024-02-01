@@ -13,8 +13,8 @@ be_BY:
     time:
       am: am
       pm: pm
-    closing_in: 'Закрываецца {{time}}'
-    closed_ago: 'Закрыта {{time}}'
+    closing_in: 'Закрываецца %{time}'
+    closed_ago: 'Закрыта %{time}'
     volume: 'Гучнасць'
     notification_volume: 'Гучнасць апавяшчэнняў'
     group: 'Група'

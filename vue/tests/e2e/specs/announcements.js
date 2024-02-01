@@ -1,10 +1,15 @@
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+pageHelper = require('../helpers/pageHelper')
 
 // GK: a couple of these are dependent on the poll page which we haven't done yet
 
 module.exports = {
-  // group invitation form
+  'a_warmup': (test) => {
+    // give the server time to warm up for the tests
+    page = pageHelper(test)
+    page.loadPath('setup_group')
+    page.pause(10000)
+  },
+
   'invite_to_group': (test) => {
     page = pageHelper(test)
     page.loadPath('setup_group')
@@ -13,7 +18,7 @@ module.exports = {
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
-    page.expectElement('.headline')
+    page.expectElement('.text-h5')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
   },
@@ -50,7 +55,7 @@ module.exports = {
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.escape()
-    page.expectElement('.headline')
+    page.expectElement('.text-h5')
     page.click('.strand-members-list__submit')
     page.expectText('.strand-members-list', 'test@example.com')
     page.expectFlash('1 notifications sent')
@@ -75,7 +80,7 @@ module.exports = {
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.escape()
-    page.expectElement('.headline')
+    page.expectElement('.text-h5')
     page.click('.poll-members-form__submit')
     page.expectFlash('1 notifications sent')
   },

@@ -1,124 +1,159 @@
-<script lang="coffee">
-import AppConfig      from '@/shared/services/app_config'
-import AbilityService from '@/shared/services/ability_service'
-import Records  from '@/shared/services/records'
-import Flash   from '@/shared/services/flash'
-import EventBus   from '@/shared/services/event_bus'
-import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext'
-import { groupPrivacyConfirm } from '@/shared/helpers/helptext'
-import { isEmpty, some, debounce } from 'lodash'
+<script lang="js">
+import AppConfig      from '@/shared/services/app_config';
+import AbilityService from '@/shared/services/ability_service';
+import Records  from '@/shared/services/records';
+import Flash   from '@/shared/services/flash';
+import EventBus   from '@/shared/services/event_bus';
+import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
+import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
+import { isEmpty, debounce } from 'lodash-es';
 
 export default
-  props:
+{
+  props: {
     group: Object
+  },
 
-  data: ->
-    isDisabled: false
-    rules: {
-      required: (value) ->
-        !!value || 'Required.'
+  data() {
+    return {
+      isDisabled: false,
+      rules: {
+        required(value) {
+          return !!value || 'Required.';
+        }
+      },
+      uploading: false,
+      progress: 0,
+      hostname: AppConfig.theme.canonical_host,
+      realGroup: Records.groups.find(this.group.id)
+    };
+  },
+
+  mounted() {
+    this.suggestHandle();
+  },
+
+  created() {
+    this.suggestHandle = debounce(function() {
+      // if group is new, suggest handle whenever name changes
+      // if group is old, suggest handle only if handle is empty
+      if (this.group.isNew() || isEmpty(this.group.handle)) {
+        const parentHandle = this.group.parentId ?
+          this.group.parent().handle
+        :
+          null;
+        return Records.groups.getHandle({name: this.group.name, parentHandle}).then(data => {
+          return this.group.handle = data.handle;
+        });
+      }
     }
-    uploading: false
-    progress: 0
-    hostname: AppConfig.theme.canonical_host
-    realGroup: Records.groups.find(@group.id)
+    , 500);
+  },
 
-  mounted: ->
-    @suggestHandle()
+  methods: {
+    submit() {
+      const allowPublic = this.group.allowPublicThreads;
+      this.group.discussionPrivacyOptions = (() => { switch (this.group.groupPrivacy) {
+        case 'open':   return 'public_only';
+        case 'closed': if (allowPublic) { return 'public_or_private'; } else { return 'private_only'; }
+        case 'secret': return 'private_only';
+      } })();
 
-  created: ->
-    @suggestHandle = debounce ->
-      # if group is new, suggest handle whenever name changes
-      # if group is old, suggest handle only if handle is empty
-      if @group.isNew() or isEmpty(@group.handle)
-        parentHandle = if @group.parentId
-          @group.parent().handle
-        else
-          null
-        Records.groups.getHandle(name: @group.name, parentHandle: parentHandle).then (data) =>
-          @group.handle = data.handle
-    , 500
+      this.group.parentMembersCanSeeDiscussions = (() => { switch (this.group.groupPrivacy) {
+        case 'open':   return true;
+        case 'closed': return this.group.parentMembersCanSeeDiscussions;
+        case 'secret': return false;
+      } })();
 
-  methods:
-    submit: ->
-      allowPublic = @group.allowPublicThreads
-      @group.discussionPrivacyOptions = switch @group.groupPrivacy
-        when 'open'   then 'public_only'
-        when 'closed' then (if allowPublic then 'public_or_private' else 'private_only')
-        when 'secret' then 'private_only'
-
-      @group.parentMembersCanSeeDiscussions = switch @group.groupPrivacy
-        when 'open'   then true
-        when 'closed' then @group.parentMembersCanSeeDiscussions
-        when 'secret' then false
-
-      @group.save().then (data) =>
-        @isExpanded = false
-        groupKey = data.groups[0].key
-        Flash.success("group_form.messages.group_#{@actionName}")
-        EventBus.$emit 'closeModal'
-        @$router.push("/g/#{groupKey}")
-      .catch (error) => true
+      this.group.save().then(data => {
+        this.isExpanded = false;
+        const groupKey = data.groups[0].key;
+        Flash.success(`group_form.messages.group_${this.actionName}`);
+        EventBus.$emit('closeModal');
+        this.$router.push(`/g/${groupKey}`);
+    }).catch(error => true);
+    },
 
 
-    expandForm: ->
-      @isExpanded = true
+    expandForm() {
+      this.isExpanded = true;
+    },
 
-    privacyStringFor: (privacy) ->
-      @$t groupPrivacy(@group, privacy),
-        parent: @group.parentName()
+    privacyStringFor(privacy) {
+      return this.$t(groupPrivacy(this.group, privacy),
+        {parent: this.group.parentName()});
+    },
 
-    selectCoverPhoto: ->
-      @$refs.coverPhotoInput.click()
+    selectCoverPhoto() {
+      return this.$refs.coverPhotoInput.click();
+    },
 
-    selectLogo: ->
-      @$refs.logoInput.click()
+    selectLogo() {
+      return this.$refs.logoInput.click();
+    },
 
-    uploadCoverPhoto: ->
-      @uploading = true
-      Records.groups.remote.onUploadSuccess = (response) =>
-        Records.importJSON response
-        @uploading = false
-      Records.groups.remote.upload("#{@group.id}/upload_photo/cover_photo", @$refs.coverPhotoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
+    uploadCoverPhoto() {
+      this.uploading = true;
+      Records.groups.remote.onUploadSuccess = response => {
+        Records.importJSON(response);
+        this.uploading = false;
+      };
+      Records.groups.remote.upload(`${this.group.id}/upload_photo/cover_photo`, this.$refs.coverPhotoInput.files[0], {}, args => { return this.progress = (args.loaded / args.total) * 100; });
+    },
 
-    uploadLogo: ->
-      @uploading = true
-      Records.groups.remote.onUploadSuccess = (response) =>
-        Records.importJSON response
-        @uploading = false
-      Records.groups.remote.upload("#{@group.id}/upload_photo/logo", @$refs.logoInput.files[0], {}, (args) => @progress = args.loaded / args.total * 100)
+    uploadLogo() {
+      this.uploading = true;
+      Records.groups.remote.onUploadSuccess = response => {
+        Records.importJSON(response);
+        this.uploading = false;
+      };
+      Records.groups.remote.upload(`${this.group.id}/upload_photo/logo`, this.$refs.logoInput.files[0], {}, args => { return this.progress = (args.loaded / args.total) * 100; });
+    }
+  },
 
-  computed:
-    actionName: ->
-      if @group.isNew() then 'created' else 'updated'
+  computed: {
+    actionName() {
+      if (this.group.isNew()) { return 'created'; } else { return 'updated'; }
+    },
 
-    titleLabel: ->
-      if @group.isParent()
-        "group_form.group_name"
-      else
-        "group_form.subgroup_name"
+    titleLabel() {
+      if (this.group.isParent()) {
+        return "group_form.group_name";
+      } else {
+        return "group_form.subgroup_name";
+      }
+    },
 
-    privacyOptions: ->
-      if @group.parentId && @group.parent().groupPrivacy == 'secret'
-        ['closed', 'secret']
-      else
-        ['open', 'closed', 'secret']
+    privacyOptions() {
+      if (this.group.parentId && (this.group.parent().groupPrivacy === 'secret')) {
+        return ['closed', 'secret'];
+      } else {
+        return ['open', 'closed', 'secret'];
+      }
+    },
 
-    privacyStatement: ->
-      @$t groupPrivacyStatement(@group),
-        parent: @group.parentName()
+    privacyStatement() {
+      return this.$t(groupPrivacyStatement(this.group),
+        {parent: this.group.parentName()});
+    },
 
-    groupNamePlaceholder: ->
-      if @group.parentId
-        'group_form.group_name_placeholder'
-      else
-        'group_form.organization_name_placeholder'
+    groupNamePlaceholder() {
+      if (this.group.parentId) {
+        return 'group_form.group_name_placeholder';
+      } else {
+        return 'group_form.organization_name_placeholder';
+      }
+    },
 
-    groupNameLabel: ->
-      if @group.parentId
-        'group_form.group_name'
-      else
-        'group_form.organization_name'
+    groupNameLabel() {
+      if (this.group.parentId) {
+        return 'group_form.group_name';
+      } else {
+        return 'group_form.organization_name';
+      }
+    }
+  }
+};
 </script>
 
 <template lang="pug">
@@ -129,8 +164,8 @@ v-card.group-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
-        h1.headline(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
+        h1.text-h5(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
+        h1.text-h5(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
       dismiss-modal-button(:model="group")
   //- v-card-text
   v-tabs(fixed-tabs)
@@ -159,8 +194,8 @@ v-card.group-form
           validation-errors(:subject="group" field="handle")
         v-spacer
 
-        input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto' accept="image/png, image/jpeg, image/webp")
-        input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo' accept="image/png, image/jpeg, image/webp")
+        input.d-none.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto' accept="image/png, image/jpeg, image/webp")
+        input.d-none.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo' accept="image/png, image/jpeg, image/webp")
 
         lmo-textarea.group-form__group-description(:model='group' field="description", :placeholder="$t('group_form.description_placeholder')", :label="$t('group_form.description')")
         validation-errors(:subject="group" field="name")
@@ -204,19 +239,19 @@ v-card.group-form
             div
               span(v-t="{path: 'group_form.parent_members_can_see_discussions', args: {parent: group.parent().name}}")
               br
-              span.caption(v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: group.parent().name}}")
+              span.text-caption(v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: group.parent().name}}")
         v-checkbox.group-form__members-can-add-members(hide-details v-model='group["membersCanAddMembers"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_add_members'")
               br
-              span.caption(v-t="'group_form.members_can_add_members_help'")
+              span.text-caption(v-t="'group_form.members_can_add_members_help'")
         v-checkbox.group-form__members-can-add-guests(hide-details v-model='group["membersCanAddGuests"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_add_guests'")
               br
-              span.caption(v-t="'group_form.members_can_add_guests_help'")
+              span.text-caption(v-t="'group_form.members_can_add_guests_help'")
         v-checkbox.group-form__members-can-announce(
           :label="$t('group_form.members_can_announce')"
           v-model='group["membersCanAnnounce"]'
@@ -226,49 +261,49 @@ v-card.group-form
             div
               span(v-t="'group_form.members_can_announce'")
               br
-              span.caption(v-t="'group_form.members_can_announce_help'")
+              span.text-caption(v-t="'group_form.members_can_announce_help'")
         v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='group["membersCanCreateSubgroups"]' v-if='group.isParent()')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_create_subgroups'")
               br
-              span.caption(v-t="'group_form.members_can_create_subgroups_help'")
+              span.text-caption(v-t="'group_form.members_can_create_subgroups_help'")
         v-checkbox.group-form__members-can-start-discussions(hide-details v-model='group["membersCanStartDiscussions"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_start_discussions'")
               br
-              span.caption(v-t="'group_form.members_can_start_discussions_help'")
+              span.text-caption(v-t="'group_form.members_can_start_discussions_help'")
         v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='group["membersCanEditDiscussions"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_edit_discussions'")
               br
-              span.caption(v-t="'group_form.members_can_edit_discussions_help'")
+              span.text-caption(v-t="'group_form.members_can_edit_discussions_help'")
         v-checkbox.group-form__members-can-edit-comments(hide-details v-model='group["membersCanEditComments"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_edit_comments'")
               br
-              span.caption(v-t="'group_form.members_can_edit_comments_help'")
+              span.text-caption(v-t="'group_form.members_can_edit_comments_help'")
         v-checkbox.group-form__members-can-delete-comments(hide-details v-model='group["membersCanDeleteComments"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_delete_comments'")
               br
-              span.caption(v-t="'group_form.members_can_delete_comments_help'")
+              span.text-caption(v-t="'group_form.members_can_delete_comments_help'")
         v-checkbox.group-form__members-can-raise-motions(hide-details v-model='group["membersCanRaiseMotions"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_raise_motions'")
               br
-              span.caption(v-t="'group_form.members_can_raise_motions_help'")
+              span.text-caption(v-t="'group_form.members_can_raise_motions_help'")
         v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='group["adminsCanEditUserContent"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.admins_can_edit_user_content'")
               br
-              span.caption(v-t="'group_form.admins_can_edit_user_content_help'")
+              span.text-caption(v-t="'group_form.admins_can_edit_user_content_help'")
 
   v-card-actions.ml-2.mr-2.mt-4
     help-link(path="en/user_manual/groups/settings")

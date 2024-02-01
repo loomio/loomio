@@ -1,7 +1,9 @@
-<script lang="coffee">
-export default
-  props:
+<script lang="js">
+export default {
+  props: {
     stance: Object
+  }
+};
 </script>
 
 <template lang="pug">

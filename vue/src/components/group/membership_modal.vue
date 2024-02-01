@@ -1,24 +1,30 @@
-<script lang="coffee">
-import Flash from '@/shared/services/flash'
+<script lang="js">
+import Flash from '@/shared/services/flash';
 
 export default
-  props:
+{
+  props: {
     membership: Object
-  data: ->
-    isDisabled: false
-  methods:
-    submit: ->
-      @membership.save()
-      .then =>
-        Flash.success "membership_form.updated"
-        @closeModal()
+  },
+  data() {
+    return {isDisabled: false};
+  },
+  methods: {
+    submit() {
+      this.membership.save().then(() => {
+        Flash.success("membership_form.updated");
+        this.closeModal();
+      });
+    }
+  }
+}
 
 </script>
 <template lang="pug">
 v-card.membership-modal
   submit-overlay(:value='membership.processing')
   v-card-title
-    h1.headline(tabindex="-1" v-t="'membership_form.modal_title.group'")
+    h1.text-h5(tabindex="-1" v-t="'membership_form.modal_title.group'")
     v-spacer
     dismiss-modal-button
   v-card-text.membership-form

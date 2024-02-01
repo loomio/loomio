@@ -1,7 +1,7 @@
 class API::V1::NotificationsController < API::V1::RestfulController
   def index
-    instantiate_collection do |collection|
-      collection.limit(30)
+    self.collection = accessible_records.limit(50).select do |notification|
+      current_user.can? :show, notification.event.eventable
     end
     respond_with_collection
   end
@@ -12,6 +12,6 @@ class API::V1::NotificationsController < API::V1::RestfulController
   end
 
   def accessible_records
-    current_user.notifications.includes(:actor, :event).order(id: :desc)
+    current_user.notifications.includes(:actor, event: :eventable).order(id: :desc)
   end
 end

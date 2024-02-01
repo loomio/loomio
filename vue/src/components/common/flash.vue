@@ -1,22 +1,27 @@
-<script lang="coffee">
-import EventBus from '@/shared/services/event_bus'
+<script lang="js">
+import EventBus from '@/shared/services/event_bus';
 
-export default
-  data: ->
-    flash: {}
-    isOpen: false
-    message: ''
-    seconds: 0
-    timer: null
-  created: ->
-    EventBus.$on 'flashMessage', (flash) =>
-      @flash = flash
-      @isOpen = true
-      @timer = window.setInterval =>
-        @seconds += 3
-      , 1000
-  destroyed: ->
-    clearInterval(timer)
+export default {
+  data() {
+    return {
+      flash: {},
+      isOpen: false,
+      message: '',
+      seconds: 0,
+      timer: null
+    };
+  },
+  created() {
+    EventBus.$on('flashMessage', flash => {
+      this.flash = flash;
+      this.isOpen = true;
+      this.timer = window.setInterval(() => { this.seconds += 3; } , 1000);
+    });
+  },
+  destroyed() {
+    clearInterval(timer);
+  }
+};
 
 </script>
 

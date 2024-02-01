@@ -1,36 +1,52 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import { max, values, orderBy, compact } from 'lodash'
-import BarIcon from '@/components/poll/common/icon/bar.vue'
-import PieIcon from '@/components/poll/common/icon/pie.vue'
-import GridIcon from '@/components/poll/common/icon/grid.vue'
-import Vue from 'vue'
+<script lang="js">
+import Records from '@/shared/services/records';
+import BarIcon from '@/components/poll/common/icon/bar.vue';
+import PieIcon from '@/components/poll/common/icon/pie.vue';
+import GridIcon from '@/components/poll/common/icon/grid.vue';
+import Vue from 'vue';
 
-export default
-  components: {BarIcon, PieIcon, GridIcon}
-  props:
+export default {
+  components: {BarIcon, PieIcon, GridIcon},
+  props: {
     poll: Object
+  },
 
-  data: ->
-    users: {}
-    slices: []
+  data() {
+    return {
+      users: {},
+      slices: []
+    };
+  },
 
-  watch:
-    'poll.stanceCounts': -> @slices = @poll.pieSlices()
-    
-  methods:
-    clampPercent: (num) -> Math.max(0, Math.min(num, 100))
+  watch: {
+    'poll.stanceCounts'() { this.slices = this.poll.pieSlices(); }
+  },
+  
+  methods: {
+    optionMeaning(id) {
+      return Records.pollOptions.find(id).meaning
+    },
+    clampPercent(num) { return Math.max(0, Math.min(num, 100)); }
+  },
 
-  created: ->
-    @watchRecords
-      collections: ['users', 'stances']
-      query: =>
-        @poll.results.forEach (option) =>
-          option.voter_ids.forEach (id) =>
-            if user = Records.users.find(id)
-              Vue.set @users, id, user
-            else
-              Records.users.addMissing(id)
+  created() {
+    this.watchRecords({
+      collections: ['users', 'stances'],
+      query: () => {
+        this.poll.results.forEach(option => {
+          option.voter_ids.forEach(id => {
+            let user;
+            if ((user = Records.users.find(id))) {
+              Vue.set(this.users, id, user);
+            } else {
+              Records.users.addMissing(id);
+            }
+          });
+        });
+      }
+    });
+  }
+};
 
 </script>
 
@@ -40,7 +56,7 @@ export default
     thead
       tr
         template(v-for="col in poll.resultColumns")
-          th.text-left(v-if="col == 'chart'")
+          th.text-left(v-if="col == 'chart'" v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
           th.text-left(v-if="col == 'name'" v-t='"common.option"')
           th.text-right(v-if="col == 'target_percent'" v-t='"poll_count_form.pct_of_target"')
           th.text-right(v-if="col == 'score_percent'" v-t='"poll_ranked_choice_form.pct_of_points"')
@@ -64,9 +80,17 @@ export default
             style="width: 128px; min-width: 128px; padding: 0 8px 0 0"
           )
             div.rounded(:style="{width: clampPercent(option[poll.chartColumn])+'%', height: '24px', 'background-color': option.color}")
-          td(v-if="col == 'name' ", :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
-            span(v-if="option.name_format == 'plain'") {{option.name}}
-            span(v-if="option.name_format == 'i18n'" v-t="option.name")
+          td(v-if="col == 'name' " :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
+            template(v-if="option.id && optionMeaning(option.id)")
+              v-tooltip(right)
+                template(v-slot:activator="{ on, attrs }")
+                  span(v-bind="attrs" v-on="on")
+                    span(v-if="option.name_format == 'plain'") {{option.name}}
+                    span(v-if="option.name_format == 'i18n'" v-t="option.name")
+                span {{optionMeaning(option.id)}}
+            template(v-else)
+              span(v-if="option.name_format == 'plain'") {{option.name}}
+              span(v-if="option.name_format == 'i18n'" v-t="option.name")
             // poll-meeting-time(:name='option.name')
           td.text-right(v-if="col == 'target_percent' && option.icon == 'agree'") {{option.target_percent.toFixed(0)}}%
           td.text-right(v-if="col == 'target_percent' && option.icon != 'agree'")

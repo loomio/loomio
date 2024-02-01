@@ -1,39 +1,50 @@
-<script lang="coffee">
-import EventBus    from '@/shared/services/event_bus'
-import AuthService from '@/shared/services/auth_service'
-import AppConfig from '@/shared/services/app_config'
+<script lang="js">
+import EventBus    from '@/shared/services/event_bus';
+import AuthService from '@/shared/services/auth_service';
+import AppConfig from '@/shared/services/app_config';
 
-export default
-  props:
-    user: Object
+export default {
+  props: {
+    user: Object,
     identity: Object
+  },
 
-  data: ->
-    loading: false
-    email: ''
+  data() {
+    return {
+      loading: false,
+      email: ''
+    };
+  },
 
-  methods:
-    submit: ->
-      @loading = true
-      @user.email = @email
-      AuthService.sendLoginLink(@user).then (=>), =>
-        @user.errors = {email: [@$t('auth_form.email_not_found')]}
-      .finally =>
-        @loading = false
-    createAccount: ->
-      @user.createAccount = true
-      @user.authForm = 'signUp'
-  computed:
-    siteName: -> AppConfig.theme.site_name
+  methods: {
+    submit() {
+      this.loading = true;
+      this.user.email = this.email;
+      AuthService.sendLoginLink(this.user).then((() => {}), () => {
+        return this.user.errors = {email: [this.$t('auth_form.email_not_found')]};
+      })
+      .finally(() => {
+        this.loading = false;
+      });
+    },
+    createAccount() {
+      this.user.createAccount = true;
+      this.user.authForm = 'signUp';
+    }
+  },
+  computed: {
+    siteName() { return AppConfig.theme.site_name; }
+  }
+}
 
 </script>
 <template lang="pug">
 v-card.auth-identity-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-card-title
-    h1.headline(tabindex="-1" role="status" aria-live="polite"  v-t="{ path: 'auth_form.hello', args: { name: user.name || user.email } }")
+    h1.text-h5(tabindex="-1" role="status" aria-live="polite"  v-t="{ path: 'auth_form.hello', args: { name: user.name || user.email } }")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
   v-sheet.mx-4.pb-4
     .mb-4.text-center
       v-layout(justify-center)

@@ -1,43 +1,56 @@
-<script lang="coffee">
-import Records       from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import Flash from '@/shared/services/flash'
-import AuthModalMixin from '@/mixins/auth_modal'
-import openModal      from '@/shared/helpers/open_modal'
-import AuthService from '@/shared/services/auth_service'
-import EventBus from '@/shared/services/event_bus'
+<script lang="js">
+import Records       from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import Flash from '@/shared/services/flash';
+import AuthModalMixin from '@/mixins/auth_modal';
+import openModal      from '@/shared/helpers/open_modal';
+import AuthService from '@/shared/services/auth_service';
+import EventBus from '@/shared/services/event_bus';
 
-export default
-  mixins: [AuthModalMixin]
-  props:
+export default {
+  mixins: [AuthModalMixin],
+  props: {
     user: Object
-  data: ->
-    attempts: 0
-    loading: false
-  methods:
-    submitAndSetPassword: ->
-      @loading = true
-      AuthService.signIn(@user).then =>
-        EventBus.$emit 'openModal',
-          component: 'ChangePasswordForm'
-          props:
+  },
+  data() {
+    return {
+      attempts: 0,
+      loading: false
+    };
+  },
+  methods: {
+    submitAndSetPassword() {
+      this.loading = true;
+      AuthService.signIn(this.user).then(() => {
+        EventBus.$emit('openModal', {
+          component: 'ChangePasswordForm',
+          props: {
             user: Session.user()
-      .finally =>
-        @attempts += 1
-        @loading = false
-    submit: ->
-      @loading = true
-      AuthService.signIn(@user).finally =>
-        @attempts += 1
-        @loading = false
+          }
+        }
+        );
+      }).finally(() => {
+        this.attempts += 1;
+        this.loading = false;
+      });
+    },
+    submit() {
+      this.loading = true;
+      AuthService.signIn(this.user).finally(() => {
+        this.attempts += 1;
+        this.loading = false;
+      });
+    }
+  }
+};
 </script>
 <template lang="pug">
 v-card.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
   v-card-title
-    h1.headline(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.check_your_email'")
+    h1.text-h5(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.check_your_email'")
     v-spacer
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
   v-sheet.mx-4
     submit-overlay(:value='loading')
     p.mb-4(v-if='user.sentLoginLink')
@@ -48,7 +61,7 @@ v-card.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     p.mb-4(v-if='user.sentPasswordLink', v-t="{ path: 'auth_form.password_link_sent', args: { email: user.email }}")
     .auth-complete__code-input.mb-4(v-if='user.sentLoginLink && attempts < 3')
       .auth-complete__code.mx-auto(style="max-width: 256px")
-        v-text-field.headline.lmo-primary-form-input(
+        v-text-field.text-h5.lmo-primary-form-input(
           outlined
           label="Code"
           :placeholder="$t('auth_form.code')"

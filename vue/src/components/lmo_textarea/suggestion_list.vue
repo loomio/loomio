@@ -1,16 +1,20 @@
-<script lang="coffee">
-import Session from '@/shared/services/session'
+<script lang="js">
+import Session from '@/shared/services/session';
 
 export default
-  props:
-    query: String
-    loading: Boolean
-    mentionable: Array
-    positionStyles: Object
-    navigatedUserIndex: Number
-    showUsername:
-      type: Boolean
+{
+  props: {
+    query: String,
+    loading: Boolean,
+    mentionable: Array,
+    positionStyles: Object,
+    navigatedUserIndex: Number,
+    showUsername: {
+      type: Boolean,
       default: false
+    }
+  }
+};
 </script>
 
 <template lang="pug">

@@ -1,7 +1,9 @@
-<script lang="coffee">
-export default
-  props:
+<script lang="js">
+export default {
+  props: {
     value: Boolean
+  }
+};
 </script>
 
 <template lang="pug">

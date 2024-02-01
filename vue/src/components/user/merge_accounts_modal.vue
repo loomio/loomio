@@ -1,41 +1,54 @@
-<script lang="coffee">
-import Session        from '@/shared/services/session'
-import Records from '@/shared/services/records'
-import Flash from '@/shared/services/flash'
+<script lang="js">
+import Session        from '@/shared/services/session';
+import Records from '@/shared/services/records';
+import Flash from '@/shared/services/flash';
+import EventBus from '@/shared/services/event_bus';
 
-export default
-  data: ->
-    targetEmail: null
-    emailChecked: false
-    emailExists: false
+export default {
+  data() {
+    return {
+      targetEmail: null,
+      emailChecked: false,
+      emailExists: false
+    };
+  },
 
-  computed:
-    isCurrentEmail: ->
-      Session.user().email == @targetEmail
+  computed: {
+    isCurrentEmail() {
+      return Session.user().email === this.targetEmail;
+    }
+  },
 
-  methods:
-    reset: ->
-      @targetEmail = null
-      @emailChecked = false
-      @emailExists = false
+  methods: {
+    reset() {
+      this.targetEmail = null;
+      this.emailChecked = false;
+      this.emailExists = false;
+    },
 
-    sendVerification: ->
-      Records.users.sendMergeVerificationEmail(@targetEmail).then =>
-        Flash.success 'merge_accounts.modal.flash'
-        @close()
+    sendVerification() {
+      Records.users.sendMergeVerificationEmail(this.targetEmail).then(() => {
+        Flash.success('merge_accounts.modal.flash');
+        EventBus.$emit('closeModal');
+      });
+    },
 
-    checkEmailExistence: ->
-      return if @isCurrentEmail
-      Records.users.checkEmailExistence(@targetEmail).then (res) =>
-        @emailChecked = true
-        @emailExists = res.exists
+    checkEmailExistence() {
+      if (this.isCurrentEmail) { return; }
+      Records.users.checkEmailExistence(this.targetEmail).then(res => {
+        this.emailChecked = true;
+        this.emailExists = res.exists;
+      });
+    }
+  }
+};
 
 </script>
 
 <template lang="pug">
 v-card
   v-card-title
-    h1.headline Merge accounts
+    h1.text-h5 Merge accounts
     v-spacer
     dismiss-modal-button
   v-card-text

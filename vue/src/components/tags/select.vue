@@ -1,75 +1,103 @@
-<script lang="coffee">
-import Records        from '@/shared/services/records'
-import Session        from '@/shared/services/session'
-import EventBus       from '@/shared/services/event_bus'
-import AbilityService from '@/shared/services/ability_service'
-import AppConfig      from '@/shared/services/app_config'
-import { ContainerMixin, HandleDirective } from 'vue-slicksort'
+<script lang="js">
+import Records        from '@/shared/services/records';
+import Session        from '@/shared/services/session';
+import EventBus       from '@/shared/services/event_bus';
+import AbilityService from '@/shared/services/ability_service';
+import AppConfig      from '@/shared/services/app_config';
+import { ContainerMixin, HandleDirective } from 'vue-slicksort';
 
-export default
-  props:
-    group:
-      type: Object
+export default {
+  props: {
+    group: {
+      type: Object,
       required: true
+    },
     close: Function
+  },
 
-  directives:
+  directives: {
     handle: HandleDirective
+  },
 
-  data: ->
-    allTags: @group.tags()
+  data() {
+    return {allTags: this.group.tags()};
+  },
 
-  mounted: ->
-    @watchRecords
-      key: 'tags'+@group.id
-      collections: ['tags']
-      query: =>
-        @allTags = @group.tags()
+  mounted() {
+    this.watchRecords({
+      key: 'tags'+this.group.id,
+      collections: ['tags'],
+      query: () => {
+        return this.allTags = this.group.tags();
+      }
+    });
+  },
 
-  computed:
-    canAdminTags: ->
-      @group.adminsInclude(Session.user())
+  computed: {
+    canAdminTags() {
+      return this.group.adminsInclude(Session.user());
+    }
+  },
 
-  methods:
-    query: ->
-      @allTags = @group.tags()
+  methods: {
+    query() {
+      this.allTags = this.group.tags();
+    },
 
-    openNewTagModal: ->
-      EventBus.$emit 'openModal',
+    openNewTagModal() {
+      EventBus.$emit('openModal', {
         component: 'TagsModal',
-        props:
-          tag: Records.tags.build(groupId: @group.id)
-          close: =>
-            EventBus.$emit 'openModal',
+        props: {
+          tag: Records.tags.build({groupId: this.group.id}),
+          close: () => {
+            EventBus.$emit('openModal', {
               component: 'TagsSelect',
-              props:
-                group: @group
+              props: {
+                group: this.group
+              }
+            });
+          }
+        }
+      });
+    },
 
-    openEditTagModal: (tag) ->
-      EventBus.$emit 'openModal',
+    openEditTagModal(tag) {
+      EventBus.$emit('openModal', {
         component: 'TagsModal',
-        props:
-          tag: tag.clone()
-          close: =>
-            EventBus.$emit 'openModal',
+        props: {
+          tag: tag.clone(),
+          close: () => {
+            EventBus.$emit('openModal', {
               component: 'TagsSelect',
-              props:
-                group: @group
+              props: {
+                group: this.group
+              }
+            });
+          }
+        }
+      });
+    },
 
-    submit: ->
-      EventBus.$emit 'closeModal'
+    submit() {
+      EventBus.$emit('closeModal');
+    },
 
-    sortEnded: ->
-      setTimeout =>
-        Records.remote.post 'tags/priority',
-          group_id: @group.id
-          ids: @allTags.map (t) -> t.id
+    sortEnded() {
+      setTimeout(() => {
+        Records.remote.post('tags/priority', {
+          group_id: this.group.id,
+          ids: this.allTags.map(t => t.id)
+        });
+      });
+    }
+  }
+};
 
 </script>
 <template lang="pug">
 v-card.tags-modal
   v-card-title
-    h1.headline(tabindex="-1" v-t="'loomio_tags.card_title'")
+    h1.text-h5(tabindex="-1" v-t="'loomio_tags.card_title'")
     v-spacer
     dismiss-modal-button(:close="close")
 
@@ -85,13 +113,13 @@ v-card.tags-modal
       sortable-item(v-for="(tag, index) in allTags", :index="index", :key="tag.id")
         v-list-item
           .handle(v-handle)
-            v-icon mdi-drag-vertical
+            common-icon(name="mdi-drag-vertical")
           v-chip(:color="tag.color" v-handle outlined) {{tag.name}}
           v-spacer
           v-btn(icon @click="openEditTagModal(tag)")
-            v-icon.text--secondary mdi-pencil
+            common-icon.text--secondary(name="mdi-pencil")
 
     v-card-actions
       v-spacer
-      v-btn.tag-form_new-tag(color="primary" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
+      v-btn.tag-form__new-tag(color="primary" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
 </template>

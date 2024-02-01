@@ -32,8 +32,9 @@ class StanceService
     new_stance = stance.build_replacement
     new_stance.assign_attributes_and_files(params)
 
-    if is_update && stance.option_scores != new_stance.build_option_scores
-      # they've changed their position! create a new stance, so that discussion threads make sense
+    event = Event.where(eventable: stance, discussion_id: stance.poll.discussion_id).order('id desc').first
+    if is_update && stance.option_scores != new_stance.build_option_scores && event && event.child_count > 0
+      # they've changed their position and there were replies! create a new stance, so that discussion threads make sense
 
       new_stance.cast_at = Time.zone.now
 

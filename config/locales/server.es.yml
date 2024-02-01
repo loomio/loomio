@@ -423,3 +423,10 @@ es:
       process_introduction: "<p>Presente el documento junto con cualquier información previa. Indique el propósito del documento para ayudar a mantenerse enfocado.</p><p> Invite a las personas a contribuir con información y su experiencia, y utilícela para enmarcar el documento. Reconocer y considerar los comentarios y contribuciones de las personas.</p><p> Integrar las aportaciones en un primer borrador del documento y borradores sucesivos hasta que esté listo para ser aprobado.</p><p> Utilice una encuesta de verificación de sentido para sondear opiniones y aclarar cualquier problema con el borrador.</p><p> Una vez que los comentarios sean considerados e incorporados al documento, se procederá a la aprobación o acuerdo con un Consentimiento o propuesta de Consenso.</p><p> El hilo se convierte en un registro claro del progreso de la creación de documentos y de las decisiones tomadas.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">¿Cuál es el propósito del documento?</h3><p></p><h3 id="why-is-this-important"> ¿Porque es esto importante?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> ¿Qué le pides a la gente que haga?</h3><p></p>
       document: Documento
+    blank:
+      process_name: Plantilla en blanco
+      process_subtitle: Iniciar un nuevo hilo para cualquier propósito.
+      process_introduction: "<p>Inicia un hilo en tu grupo sobre cualquier tema que te guste.</p><p> De forma predeterminada, todos los miembros del grupo recibirán una notificación cuando inicie el hilo. Puedes cambiar esto editando el campo 'invitar' a continuación.</p>"
+  event_mailer:
+    received_email:
+      explaination_html: "<p>Estás recibiendo este correo electrónico porque eres administrador del grupo Loomio: %{group}.</p><p> El grupo ha recibido un correo electrónico de una dirección de correo electrónico no reconocida.</p><p> Si el mensaje es de un miembro del grupo, revise el correo electrónico y seleccione el miembro.</p><p> Si el mensaje no es deseado, puede bloquear cualquier correo electrónico adicional de esa dirección.</p>"

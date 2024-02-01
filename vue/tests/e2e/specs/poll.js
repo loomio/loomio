@@ -1,6 +1,5 @@
 format = require('date-fns/format')
-require('coffeescript/register')
-pageHelper = require('../helpers/pageHelper.coffee')
+pageHelper = require('../helpers/pageHelper')
 
 module.exports = {
   'can_start_a_proposal_in_a_group': (test) => {
@@ -385,7 +384,7 @@ module.exports = {
     page.expectText('.announcement-chip__content', 'test@example.com')
     page.click('.announcement-chip__content')
     page.escape()
-    page.expectElement('.headline')
+    page.expectElement('.text-h5')
     page.click('.poll-members-form__submit')
     page.expectText('.poll-members-form__list', 'test@example.com')
     page.click('.dismiss-modal-button')

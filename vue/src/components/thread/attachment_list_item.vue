@@ -1,40 +1,50 @@
-<script lang="coffee">
-import prettyBytes from 'pretty-bytes'
-export default
-  props:
+<script lang="js">
+import prettyBytes from 'pretty-bytes';
+export default {
+  props: {
     attachment: Object
+  },
 
-  data: ->
-    backgroundSize: 'contain'
-    backgroundPosition: 'center'
+  data() {
+    return {
+      backgroundSize: 'contain',
+      backgroundPosition: 'center'
+    };
+  },
 
-  mounted: ->
-    # @setBackgroundSize()
+  mounted() {},
+    // @setBackgroundSize()
 
-  methods:
-    prettifyBytes: (s) -> prettyBytes(s)
-    setBackgroundSize: ->
-      return unless @attachment.preview_url
-      url = @attachment.preview_url
-      img = new Image();
-      that = @
-      img.onload = ->
-        if (Math.abs(@width - @height) < @width/3)
-          that.backgroundSize = 'contain'
-          that.backgroundPosition = 'center'
-        else
-          that.backgroundSize = 'cover'
-          that.backgroundPosition = '0 5%'
-      img.src = @attachment.preview_url
+  methods: {
+    prettifyBytes(s) { return prettyBytes(s); },
+    setBackgroundSize() {
+      if (!this.attachment.preview_url) { return; }
+      const url = this.attachment.preview_url;
+      const img = new Image();
+      const that = this;
+      img.onload = function() {
+        if (Math.abs(this.width - this.height) < (this.width/3)) {
+          that.backgroundSize = 'contain';
+          return that.backgroundPosition = 'center';
+        } else {
+          that.backgroundSize = 'cover';
+          return that.backgroundPosition = '0 5%';
+        }
+      };
+      img.src = this.attachment.preview_url;
+    }
+  },
 
-  watch:
+  watch: {
     'attachment.preview_url': 'setBackgroundSize'
+  }
+};
 </script>
 <template lang="pug">
 v-card.mt-3(outlined).attachment-list-item-link
   a(:href="attachment.download_url" target="_blank")
     v-card-title
-      v-icon.mr-2(small) mdi-{{attachment.icon}}
+      common-icon.mr-2(small :name="'mdi-' + attachment.icon")
       span.text--secondary
         |{{ attachment.filename }}
         space

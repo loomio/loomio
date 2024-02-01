@@ -131,10 +131,6 @@ class Comment < ApplicationRecord
     edited_at.present?
   end
 
-  def can_be_edited?
-    group.members_can_edit_comments or is_most_recent?
-  end
-
   private
 
   def has_body_or_attachment

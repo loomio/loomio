@@ -1,39 +1,48 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import AbilityService from '@/shared/services/ability_service'
-import { find } from 'lodash'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import AbilityService from '@/shared/services/ability_service';
+import { find } from 'lodash-es';
 
-export default
-  props:
+export default {
+  props: {
     discussion: Object
+  },
 
-  data: ->
-    poll: null
+  data() {
+    return {poll: null};
+  },
 
-  created: ->
-    @watchRecords
-      collections: ['polls', 'stances']
-      query: (store) =>
-        @poll = find @discussion.activePolls().filter((poll) -> poll.pollOptionNames.length), (poll) ->
-          poll.closingAt && AbilityService.canParticipateInPoll(poll) && !poll.iHaveVoted()
+  created() {
+    this.watchRecords({
+      collections: ['polls', 'stances'],
+      query: store => {
+        this.poll = find(this.discussion.activePolls().filter(poll => poll.pollOptionNames.length), poll => poll.closingAt && AbilityService.canParticipateInPoll(poll) && !poll.iHaveVoted());
+      }
+    });
+  },
 
-  computed:
-    styles: ->
-      { bar, top } = @$vuetify.application
-      return
-        display: 'flex'
-        position: 'sticky'
-        top: "#{bar + top}px"
+  computed: {
+    styles() {
+      const { bar, top } = this.$vuetify.application;
+      return{
+        display: 'flex',
+        position: 'sticky',
+        top: `${bar + top}px`,
         zIndex: 1
-    event: ->
-      @poll && @poll.createdEvent()
+      };
+    },
+    event() {
+      return this.poll && this.poll.createdEvent();
+    }
+  }
+};
 
 
 </script>
 <template lang="pug">
 v-card.current-poll-banner.mb-4.py-2.px-4.lmo-no-print(:style="styles" v-if="event && $route.params.sequence_id != event.sequenceId" :elevation="3" :aria-label="$t('thread_context.current_poll_type_banner', {pollType: poll.translatedPollType()})")
-  v-avatar.mr-4(:size="36" tile)
-    poll-common-icon-panel(:poll='poll' :size="36")
+  v-avatar.mr-4(:size="32" tile)
+    poll-common-icon-panel(:poll='poll' :size="32")
   .current-poll-banner__title.mr-4
     span {{poll.title}}
   v-spacer

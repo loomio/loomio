@@ -1,56 +1,69 @@
-<script lang="coffee">
-import { emojiReplaceText } from '@/shared/helpers/emojis.coffee'
-import { merge } from 'lodash'
-import Records from '@/shared/services/records'
-import Session from '@/shared/services/session'
-import Flash from '@/shared/services/flash'
-import AbilityService from '@/shared/services/ability_service'
+<script lang="js">
+import { emojiReplaceText } from '@/shared/helpers/emojis';
+import { merge } from 'lodash-es';
+import Records from '@/shared/services/records';
+import Session from '@/shared/services/session';
+import Flash from '@/shared/services/flash';
+import AbilityService from '@/shared/services/ability_service';
 
-export default
-  props:
-    model:
-      type: Object
+export default {
+  props: {
+    model: {
+      type: Object,
       required: true
-    column:
-      type: String
+    },
+    column: {
+      type: String,
       required: true
+    }
+  },
 
-  mounted: ->
-    @$el.addEventListener 'click', @onClick
+  mounted() {
+    this.$el.addEventListener('click', this.onClick);
+  },
 
-  destroyed: ->
-    @$el.removeEventListener 'click', @onClick
+  destroyed() {
+    this.$el.removeEventListener('click', this.onClick);
+  },
 
-  methods:
-    onClick: (e) ->
-      if e.target.getAttribute('data-type') == 'taskItem' && (e.offsetX < e.target.offsetLeft) && !e.target.classList.contains('task-item-busy')
-        if (@canEdit || e.target.querySelectorAll('span[data-mention-id="'+Session.user().username+'"]').length)
-          e.target.classList.add('task-item-busy')
-          uid = e.target.getAttribute('data-uid')
-          checked = e.target.getAttribute('data-checked') == 'true'
-          params = merge(@model.namedId(), {uid: uid, done: ((!checked && 'true') || 'false') })
-          Records.remote.post('tasks/update_done', params).finally =>
-            if !checked
-              Flash.success 'tasks.task_updated_done'
-            else
-              Flash.success 'tasks.task_updated_not_done'
-            e.target.classList.remove('task-item-busy')
-        else
-          alert(@$t('tasks.permission_denied'))
+  methods: {
+    onClick(e) {
+      if ((e.target.getAttribute('data-type') === 'taskItem') && (e.offsetX < e.target.offsetLeft) && !e.target.classList.contains('task-item-busy')) {
+        if (this.canEdit || e.target.querySelectorAll('span[data-mention-id="'+Session.user().username+'"]').length) {
+          e.target.classList.add('task-item-busy');
+          const uid = e.target.getAttribute('data-uid');
+          const checked = e.target.getAttribute('data-checked') === 'true';
+          const params = merge(this.model.namedId(), {uid, done: ((!checked && 'true') || 'false') });
+          Records.remote.post('tasks/update_done', params).finally(() => {
+            if (!checked) {
+              Flash.success('tasks.task_updated_done');
+            } else {
+              Flash.success('tasks.task_updated_not_done');
+            }
+            e.target.classList.remove('task-item-busy');
+          });
+        } else {
+          alert(this.$t('tasks.permission_denied'));
+        }
+      }
+    }
+  },
 
-  computed:
-    canEdit: -> AbilityService.canEdit(@model)
-    isMd: -> @format == 'md'
-    isHtml: -> @format == 'html'
-    format: -> @model[@column+"Format"]
-    text: -> emojiReplaceText(@model[@column])
-    hasTranslation: -> @model.translation[@column] if @model.translation
-    cookedText: ->
-      return @model[@column] unless @model.mentionedUsernames
-      cooked = @model[@column]
-      @model.mentionedUsernames.forEach (username) ->
-        cooked = cooked.replace(///@#{username}///g, "[@#{username}](/u/#{username})")
-      cooked
+  computed: {
+    canEdit() { return AbilityService.canEdit(this.model); },
+    isMd() { return this.format === 'md'; },
+    isHtml() { return this.format === 'html'; },
+    format() { return this.model[this.column+"Format"]; },
+    text() { return emojiReplaceText(this.model[this.column]); },
+    hasTranslation() { if (this.model.translation) { return this.model.translation[this.column]; } },
+    cookedText() {
+      if (!this.model.mentionedUsernames) { return this.model[this.column]; }
+      let cooked = this.model[this.column];
+      this.model.mentionedUsernames.forEach(username => cooked = cooked.replace(new RegExp(`@${username}`, 'g'), `[@${username}](/u/${username})`));
+      return cooked;
+    }
+  }
+};
 </script>
 
 <template lang="pug">
@@ -173,12 +186,12 @@ img.emoji
     margin-top: 0
 
   h1
-    font-size: 2.125rem
+    font-size: 1.75rem
     font-weight: 400
     letter-spacing: 0.015625rem
 
   h2
-    font-size: 1.5rem
+    font-size: 1.25rem
     font-weight: 400
     letter-spacing: normal
 
@@ -200,11 +213,10 @@ img.emoji
   word-break: break-word
 
   img
-    aspect-ratio: attr(width) / attr(height)
     max-width: 100%
     max-height: 600px
-    width: auto
     height: auto
+    width: auto
 
   ol, ul
     padding-left: 24px
@@ -325,6 +337,16 @@ img.emoji
 
   thead td
     font-weight: bold
+
+  table table
+    margin: 0 !important
+    border: 0 !important
+
+  td td
+    padding: 0 !important
+
+  td td td
+    border: 0 !important
 
   table
     p

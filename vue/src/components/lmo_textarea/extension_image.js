@@ -2,7 +2,6 @@ import Image from '@tiptap/extension-image'
 import { Plugin, PluginKey } from '@tiptap/pm/state'
 import {Decoration, DecorationSet} from '@tiptap/pm/view'
 import {
-  Command,
   Node,
   nodeInputRule,
   mergeAttributes,

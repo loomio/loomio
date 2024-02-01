@@ -1,78 +1,93 @@
-<script lang="coffee">
-import Records from '@/shared/services/records'
-import Flash from '@/shared/services/flash'
-import EventBus from '@/shared/services/event_bus'
-import Session        from '@/shared/services/session'
-import AbilityService from '@/shared/services/ability_service'
+<script lang="js">
+import Records from '@/shared/services/records';
+import Flash from '@/shared/services/flash';
+import EventBus from '@/shared/services/event_bus';
+import Session        from '@/shared/services/session';
+import AbilityService from '@/shared/services/ability_service';
 
-import Vue     from 'vue'
-import { uniq, map, sortBy, head, find, filter, sum } from 'lodash'
-import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns'
-import { exact} from '@/shared/helpers/format_time'
+import Vue     from 'vue';
+import { map, sortBy, head } from 'lodash-es';
+import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns';
+import { exact} from '@/shared/helpers/format_time';
 
-import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import I18n from '@/i18n'
+import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
+import I18n from '@/i18n';
+import { mdiCalendar } from '@mdi/js';
 
-export default
-  components:
-    RecipientsAutocomplete: RecipientsAutocomplete
+export default {
+  components: {
+    RecipientsAutocomplete
+  },
 
-  props:
-    outcome: Object
+  props: {
+    outcome: Object,
     close: Function
+  },
 
-  data: ->
-    options: []
-    bestOption: null
-    isDisabled: false
-    review: false
-    isShowingDatePicker: false
-    dateToday: format(new Date, 'yyyy-MM-dd')
+  data() {
+    return {
+      mdiCalendar,
+      options: [],
+      bestOption: null,
+      isDisabled: false,
+      review: false,
+      isShowingDatePicker: false,
+      dateToday: format(new Date, 'yyyy-MM-dd')
+    };
+  },
 
-  created: ->
-    if @poll.datesAsOptions()
-      @options = map @outcome.poll().pollOptions(), (option) ->
-        id:        option.id
-        value:     exact(parseISO(option.name))
+  created() {
+    if (this.poll.datesAsOptions()) {
+      this.options = map(this.outcome.poll().pollOptions(), option => ({
+        id:        option.id,
+        value:     exact(parseISO(option.name)),
         attendees: option.stances().length
+      }));
 
-      @options.unshift
-        id: null
-        value: I18n.t('common.none')
+      this.options.unshift({
+        id: null,
+        value: I18n.t('common.none'),
         attendees: 0
+      });
 
-      @bestOption = head sortBy @options, (option) ->
-        -1 * option.attendees # sort descending, so the best option is first
+      this.bestOption = head(sortBy(this.options, option => -1 * option.attendees)
+      ); // sort descending, so the best option is first
 
-      Vue.set(@outcome, 'calendarInvite', true)
+      this.outcome.pollOptionId = this.outcome.pollOptionId || this.bestOption.id;
+      this.outcome.eventSummary = this.outcome.eventSummary || this.outcome.poll().title;
+    }
+  },
+    
+  computed: {
+    poll() { return this.outcome.poll(); }
+  },
 
-      @outcome.pollOptionId = @outcome.pollOptionId or @bestOption.id
-      @outcome.eventSummary = @outcome.eventSummary or @outcome.poll().title
-      
-  computed:
-    poll: -> @outcome.poll()
+  methods: {
+    submit() {
+      let actionName;
+      if (this.poll.datesAsOptions()) { this.outcome.eventDescription = this.outcome.statement; }
+      if (this.poll.pollType == 'meeting') { this.outcome.includeActor = 1; }
 
-  methods:
-    submit: ->
-      @outcome.eventDescription = @outcome.statement if @poll.datesAsOptions()
-      @outcome.includeActor = 1 if @outcome.calendarInvite
+      if (this.outcome.isNew()) {
+        actionName = "created";
+      } else {
+        actionName = "updated";
+      }
 
-      if @outcome.isNew()
-        actionName = "created"
-      else
-        actionName = "updated"
+      this.outcome.save().then(data => {
+        Flash.success(`poll_common_outcome_form.outcome_${actionName}`);
+        return this.closeModal();
+      }).catch(error => true);
+    },
 
-      @outcome.save()
-      .then (data) =>
-        Flash.success("poll_common_outcome_form.outcome_#{actionName}")
-        @closeModal()
-      .catch (error) => true
-
-    newRecipients: (val) ->
-      @recipients = val
-      @outcome.recipientAudience = (val.find((i) -> i.type=='audience') || {}).id
-      @outcome.recipientUserIds = map filter(val, (o) -> o.type == 'user'), 'id'
-      @outcome.recipientEmails = map filter(val, (o) -> o.type == 'email'), 'name'
+    newRecipients(val) {
+      this.recipients = val;
+      this.outcome.recipientAudience = (val.find(i => i.type === 'audience') || {}).id;
+      this.outcome.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
+      this.outcome.recipientEmails = map(filter(val, o => o.type === 'email'), 'name');
+    }
+  }
+};
 
 </script>
 
@@ -80,7 +95,7 @@ export default
 v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='outcome.processing')
   v-card-title
-    h1.headline
+    h1.text-h5
       span(v-if='outcome.isNew()' v-t="'poll_common_outcome_form.new_title'")
       span(v-if='!outcome.isNew()' v-t="'poll_common_outcome_form.update_title'")
     v-spacer
@@ -90,7 +105,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
-      :include-actor="outcome.calendarInvite"
+      :include-actor="outcome.poll().pollType == 'meeting'"
       :model="outcome")
 
     .poll-common-calendar-invite(v-if='poll.datesAsOptions()')
@@ -126,7 +141,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
             :hint="$t('poll_common_outcome_form.review_date_hint')"
             v-on='on'
             v-bind="attrs"
-            prepend-icon="mdi-calendar")
+            :prepend-icon="mdiCalendar")
 
         v-date-picker.outcome-review-on__datepicker(v-model='outcome.reviewOn' :min='dateToday' no-title @input="isShowingDatePicker = false")
       p(v-if="outcome.reviewOn" v-t="$t('poll_common_outcome_form.you_will_be_notified')")

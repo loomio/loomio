@@ -1,13 +1,4 @@
 class UserMailer < BaseMailer
-  def email_to_group_address(group_id, user_id)
-    @user = User.find(user_id)
-    @group = @user.groups.find(group_id)
-    send_single_mail to: @user.email,
-                     subject_key: "email_to_group_mailer.your_email_address_to_start_threads_in_group",
-                     subject_params: { group:@group.full_name, site_name: AppConfig.theme[:site_name] },
-                     locale: @user.locale
-  end
-
   def deactivated(email, recovery_code, locale)
     @recovery_code = recovery_code
     send_single_mail to: email,
@@ -63,7 +54,7 @@ class UserMailer < BaseMailer
     @subject_key = "email.catch_up.#{frequency}_subject"
     @subject_params = { site_name: AppConfig.theme[:site_name] }
 
-    unless @discussions.empty? or @user.groups.empty?
+    unless @discussions.empty?
       @discussions_by_group_id = @discussions.group_by(&:group_id)
       send_single_mail to: @user.email,
                        subject_key: @subject_key,

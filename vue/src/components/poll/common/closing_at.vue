@@ -1,45 +1,59 @@
-<script lang="coffee">
-import { differenceInHours } from 'date-fns'
-import { exact, approximate } from '@/shared/helpers/format_time'
+<script lang="js">
+import { differenceInHours } from 'date-fns';
+import { exact, approximate } from '@/shared/helpers/format_time';
 
-export default
-  props:
-    poll: Object
+export default {
+  props: {
+    poll: Object,
     approximate: Boolean
+  },
 
-  methods:
-    exact: exact
-    timeMethod: ->
-      if @approximate
-        approximate(@time)
-      else
-        exact(@time)
+  methods: {
+    exact,
+    timeMethod() {
+      if (this.approximate) {
+        return approximate(this.time);
+      } else {
+        return exact(this.time);
+      }
+    }
+  },
 
-  computed:
-    time: ->
-      key = if @poll.isVotable() then 'closingAt' else 'closedAt'
-      @poll[key]
+  computed: {
+    time() {
+      const key = this.poll.isVotable() ? 'closingAt' : 'closedAt';
+      return this.poll[key];
+    },
 
-    translationKey: ->
-      if @poll.isVotable()
-        'common.closing_in'
-      else
-        'common.closed_ago'
+    translationKey() {
+      if (this.poll.isVotable()) {
+        return 'common.closing_in';
+      } else {
+        return 'common.closed_ago';
+      }
+    },
 
-    color: ->
-      if @poll.isVotable()
-        if differenceInHours(@poll.closingAt, new Date) < 48
-          'warning'
-        else
-          ''
-      else
-        'error'
+    color() {
+      if (this.poll.isVotable()) {
+        if (differenceInHours(this.poll.closingAt, new Date) < 48) {
+          return 'warning';
+        } else {
+          return '';
+        }
+      } else {
+        return 'error';
+      }
+    },
 
-    styles: ->
-      if @color
-        {color: 'var(--v-'+@color+'-base)'}
-      else
-        {}
+    styles() {
+      if (this.color) {
+        return {color: 'var(--v-'+this.color+'-base)'};
+      } else {
+        return {};
+      }
+    }
+  }
+};
 
 </script>
 

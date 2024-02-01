@@ -1,18 +1,21 @@
-<script lang="coffee">
-import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
-import Session        from '@/shared/services/session'
-import {map, filter, find} from 'lodash'
+<script lang="js">
+import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
+import Session        from '@/shared/services/session';
 
-export default
-  components:
-    RecipientsAutocomplete: RecipientsAutocomplete
+export default {
+  components: {
+    RecipientsAutocomplete
+  },
 
-  props:
-    model: Object
-
-    initialRecipients:
-      type: Array
-      default: -> []
+  props: {
+    model: Object,
+    includeActor: Boolean,
+    initialRecipients: {
+      type: Array,
+      default() { return []; }
+    }
+  }
+};
 
 </script>
 
@@ -29,5 +32,6 @@ export default
     :label="$t(model.id ? 'action_dock.notify' : 'common.action.invite')"
     :placeholder="$t('announcement.form.'+model.constructor.singular+'_'+ (model.id ? 'edited' : 'announced')+ '.helptext')"
     :initial-recipients="initialRecipients"
+    :include-actor="includeActor"
     :model="model")
 </template>

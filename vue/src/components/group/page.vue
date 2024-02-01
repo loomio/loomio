@@ -1,74 +1,90 @@
-<script lang="coffee">
-
-import AppConfig         from '@/shared/services/app_config'
-import Session           from '@/shared/services/session'
-import Records           from '@/shared/services/records'
-import EventBus          from '@/shared/services/event_bus'
-import AbilityService    from '@/shared/services/ability_service'
-import GroupService    from '@/shared/services/group_service'
-import LmoUrlService     from '@/shared/services/lmo_url_service'
-import {compact, head, includes, filter, pickBy} from 'lodash'
-import OldPlanBanner from '@/components/group/old_plan_banner'
-import DemoBanner from '@/components/group/demo_banner'
+<script lang="js">
+import AppConfig         from '@/shared/services/app_config';
+import Session           from '@/shared/services/session';
+import Records           from '@/shared/services/records';
+import EventBus          from '@/shared/services/event_bus';
+import AbilityService    from '@/shared/services/ability_service';
+import GroupService    from '@/shared/services/group_service';
+import LmoUrlService     from '@/shared/services/lmo_url_service';
+import { pickBy } from 'lodash-es';
+import OldPlanBanner from '@/components/group/old_plan_banner';
 
 export default
-  components: { OldPlanBanner, DemoBanner }
+{
+  components: { OldPlanBanner },
 
-  data: ->
-    group: null
-    activeTab: ''
-    groupFetchError: null
+  data() {
+    return {
+      group: null,
+      activeTab: '',
+      groupFetchError: null
+    };
+  },
 
-  created: ->
-    @init()
-    EventBus.$on 'signedIn', @init
+  created() {
+    this.init();
+    EventBus.$on('signedIn', this.init);
+  },
 
-  beforeDestroy: ->
-    EventBus.$off 'signedIn', @init
+  beforeDestroy() {
+    EventBus.$off('signedIn', this.init);
+  },
 
-  watch:
+  watch: {
     '$route.params.key': 'init'
+  },
 
-  computed:
-    dockActions: ->
-      pickBy GroupService.actions(@group), (v) -> v.dock
+  computed: {
+    dockActions() {
+      return pickBy(GroupService.actions(this.group), v => v.dock);
+    },
 
-    menuActions: ->
-      pickBy GroupService.actions(@group), (v) -> v.menu
+    menuActions() {
+      return pickBy(GroupService.actions(this.group), v => v.menu);
+    },
 
-    canEditGroup: ->
-      AbilityService.canEditGroup(@group)
+    canEditGroup() {
+      return AbilityService.canEditGroup(this.group);
+    },
 
-    tabs: ->
-      return unless @group
-      query = ''
-      query = '?subgroups='+@$route.query.subgroups if @$route.query.subgroups
+    tabs() {
+      if (!this.group) { return; }
+      let query = '';
+      if (this.$route.query.subgroups) { query = '?subgroups='+this.$route.query.subgroups; }
 
-      [
-        {id: 0, name: 'threads',   route: @urlFor(@group, null)+query}
-        {id: 1, name: 'decisions', route: @urlFor(@group, 'polls')+query},
-        {id: 2, name: 'members',   route: @urlFor(@group, 'members')+query},
-        {id: 4, name: 'files',     route: @urlFor(@group, 'files')+query}
-        {id: 5, name: 'subgroups',  route: @urlFor(@group, 'subgroups')+query}
-        # {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
-      ].filter (obj) => !(obj.name == "subgroups" && @group.parentId)
+      return [
+        {id: 0, name: 'threads',   route: this.urlFor(this.group, null)+query},
+        {id: 1, name: 'decisions', route: this.urlFor(this.group, 'polls')+query},
+        {id: 2, name: 'members',   route: this.urlFor(this.group, 'members')+query},
+        {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query},
+        {id: 5, name: 'subgroups',  route: this.urlFor(this.group, 'subgroups')+query}
+        // {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
+      ].filter(obj => !((obj.name === "subgroups") && this.group.parentId));
+    }
+  },
 
-  methods:
-    init: ->
-      Records.groups.findOrFetch(@$route.params.key)
-      .then (group) =>
-        @group = group
-        window.location.host = @group.newHost if @group.newHost
-      .catch (error) =>
-        EventBus.$emit 'pageError', error
-        EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
+  methods: {
+    init() {
+      Records.groups.findOrFetch(this.$route.params.key).then(group => {
+        this.group = group;
+        if (this.group.newHost) { window.location.host = this.group.newHost; }
+      }).catch(error => {
+        EventBus.$emit('pageError', error);
+        if ((error.status === 403) && !Session.isSignedIn()) { EventBus.$emit('openAuthModal'); }
+      });
+    },
 
-    openGroupSettingsModal: ->
-      return null unless @canEditGroup
-      EventBus.$emit 'openModal',
-        component: 'GroupForm'
-        props:
-          group: @group
+    openGroupSettingsModal() {
+      if (!this.canEditGroup) { return null; }
+      EventBus.$emit('openModal', {
+        component: 'GroupForm',
+        props: {
+          group: this.group
+        }
+      });
+    }
+  }
+};
 
 </script>
 
@@ -76,7 +92,6 @@ export default
 v-main
   loading(v-if="!group")
   v-container.group-page.max-width-1024.px-2.px-sm-4(v-if="group")
-    demo-banner(:group="group")
     div(style="position: relative")
       v-img(
         :src="group.coverUrl"
@@ -98,7 +113,7 @@ v-main
         height="48"
         width="48" 
         eager)
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
+    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
         space
@@ -133,15 +148,13 @@ v-main
         :to="tab.route"
         :class="'group-page-' + tab.name + '-tab' "
       )
-        //- v-icon mdi-comment-multiple
+        //- common-icon(name="mdi-comment-multiple")
         span(v-t="'group_page.'+tab.name")
     router-view
 </template>
 
-<style lang="sass">
-.group-page-tabs
-	.v-tab
-		&:not(.v-tab--active)
-			color: hsla(0,0%,100%,.85) !important
-
+<style lang="css">
+.action-dock__button--email_group {
+  text-transform: none !important;
+}
 </style>

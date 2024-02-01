@@ -41,11 +41,6 @@ class API::V1::ProfileController < API::V1::RestfulController
     respond_with_resource serializer: UserSerializer
   end
 
-  def send_email_to_group_address
-    UserMailer.email_to_group_address(params[:group_id], current_user.id).deliver_later
-    head :ok
-  end
-
   def email_api_key
     render json: {email_api_key: current_user.email_api_key}
   end

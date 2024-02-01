@@ -1,46 +1,63 @@
-<script lang="coffee">
-import AppConfig from '@/shared/services/app_config'
-import { capitalize } from 'lodash'
+<script lang="js">
+import AppConfig from '@/shared/services/app_config';
+import { capitalize } from 'lodash-es';
 
-export default
-  props:
+export default {
+  props: {
     user: Object
+  },
 
-  methods:
-    capitalize: capitalize
+  methods: {
+    capitalize,
 
-    select: (provider) ->
-      # EventBus.emit $scope, 'processing'
-      window.location = "#{provider.href}?back_to=#{window.location.href}"
+    select(provider) {
+      window.location = `${provider.href}?back_to=${window.location.href}`;
+    },
 
-    iconClass: (provider) ->
-      "mdi-" + if (provider == 'saml') then 'key-variant' else provider
+    iconClass(provider) {
+      return "mdi-" + ((['saml', 'oauth'].includes(provider)) ? 'key-variant' : provider);
+    },
 
-    providerColor: (provider) ->
-      switch provider
-        when 'facebook' then '#3b5998'
-        when 'google' then '#dd4b39'
-        when 'slack' then '#e9a820'
-        when 'saml' then @$vuetify.theme.themes.light.primary
+    providerColor(provider) {
+      switch (provider) {
+      case 'facebook': return '#3b5998';
+      case 'google': return '#dd4b39';
+      case 'slack': return '#e9a820';
+      case 'saml': return this.$vuetify.theme.themes.light.primary;
+      case 'oauth': return this.$vuetify.theme.themes.light.primary;
+      }
+    },
+    providerName(name) {
+      if (AppConfig.theme.saml_login_provider_name && name == 'saml'){
+        return AppConfig.theme.saml_login_provider_name;
+      } else if (AppConfig.theme.oauth_login_provider_name && name == 'oauth'){
+        return AppConfig.theme.oauth_login_provider_name;
+      } else {
+        return capitalize(name);
+      }
+    }
+  },
 
-  computed:
-    emailLogin: -> AppConfig.features.app.email_login
-    providers: -> AppConfig.identityProviders.filter (provider) -> provider.name != 'slack'
+  computed: {
+    emailLogin() { return AppConfig.features.app.email_login; },
+    providers() { return AppConfig.identityProviders.filter(provider => provider.name !== 'slack'); }
+  }
+}
 </script>
 
 <template lang="pug">
 .auth-provider-form(v-if='providers.length')
   v-layout.auth-provider-form__providers(column)
     v-btn.auth-provider-form__provider.my-2(v-for='provider in providers' :key="provider.id" outlined :color="providerColor(provider.name)" @click='select(provider)')
-      v-icon {{ iconClass(provider.name) }}
+      common-icon(:name="iconClass(provider.name)")
       space
-      span(v-t="{ path: 'auth_form.continue_with_provider', args: { provider: capitalize(provider.name) } }")
+      span(v-t="{ path: 'auth_form.continue_with_provider', args: { provider: providerName(provider.name) } }")
     p.my-2.text-center.auth-email-form__or-enter-email(v-if='emailLogin', v-t="'auth_form.or_enter_your_email'")
 </template>
 
 <style lang="sass">
 .auth-provider-form__providers
-  max-width: 256px
+  max-width: 400px
   margin: 0 auto
 
 </style>

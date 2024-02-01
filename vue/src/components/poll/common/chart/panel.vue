@@ -1,41 +1,46 @@
-<script lang="coffee">
-import Session  from '@/shared/services/session'
-import Records  from '@/shared/services/records'
-import EventBus from '@/shared/services/event_bus'
-import PollCommonDirective from '@/components/poll/common/directive'
-import PollService from '@/shared/services/poll_service'
-import { pick } from 'lodash'
+<script lang="js">
+import Session  from '@/shared/services/session';
+import Records  from '@/shared/services/records';
+import EventBus from '@/shared/services/event_bus';
+import PollCommonDirective from '@/components/poll/common/directive';
+import PollService from '@/shared/services/poll_service';
+import PollCommonChartMeeting from '@/components/poll/common/chart/meeting';
+import PollCommonChartTable from '@/components/poll/common/chart/table';
+import PollCommonPercentVoted from '@/components/poll/common/percent_voted';
+import PollCommonTargetProgress from '@/components/poll/common/target_progress';
 
-import PollCommonChartMeeting from '@/components/poll/common/chart/meeting'
-import PollCommonChartTable from '@/components/poll/common/chart/table'
-import PollCommonPercentVoted from '@/components/poll/common/percent_voted'
-import PollCommonTargetProgress from '@/components/poll/common/target_progress'
-
-export default
+export default {
   components: {
     PollCommonChartTable,
     PollCommonChartMeeting,
     PollCommonPercentVoted,
     PollCommonTargetProgress
-  }
+  },
 
-  props:
+  props: {
     poll: Object
+  },
 
-  data: ->
-    votersByOptionId: {}
+  data() {
+    return {votersByOptionId: {}};
+  },
 
-  created: ->
-    @watchRecords
-      collections: ['polls']
-      query: =>
-        if Session.isSignedIn()
-          Records.users.fetchAnyMissingById(@poll.decidedVoterIds())
+  created() {
+    this.watchRecords({
+      collections: ['polls'],
+      query: () => {
+        if (Session.isSignedIn()) {
+          Records.users.fetchAnyMissingById(this.poll.decidedVoterIds());
+        }
+      }
+    });
+  }
+};
 
 </script>
 
 <template lang="pug">
-.poll-common-chart-panel
+.poll-common-chart-panel.mt-8
   template(v-if="!poll.showResults()")
     v-alert.poll-common-action-panel__results-hidden-until-closed.my-2(
       v-if='!!poll.closingAt && poll.hideResults == "until_closed"'
@@ -49,9 +54,7 @@ export default
       span(v-t="'poll_common_action_panel.results_hidden_until_vote'")
   template(v-else)
     template(v-if="poll.config().has_options")
-      v-subheader.ml-n4
-        span(v-t="poll.closedAt ? 'poll_common.results' : 'poll_common.current_results'")
       poll-common-chart-table(v-if="poll.chartType != 'grid'" :poll="poll")
       poll-common-chart-meeting(v-else :poll="poll")
-  poll-common-percent-voted(v-if="poll.pollType != 'count'", :poll="poll")
+  poll-common-percent-voted.text-body-2.pl-2(v-if="poll.pollType != 'count'", :poll="poll")
 </template>

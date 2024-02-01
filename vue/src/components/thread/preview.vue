@@ -1,39 +1,47 @@
-<script lang="coffee">
-import ThreadService from '@/shared/services/thread_service'
-import AbilityService from '@/shared/services/ability_service'
-import { pick, some } from 'lodash'
+<script lang="js">
+import ThreadService from '@/shared/services/thread_service';
+import AbilityService from '@/shared/services/ability_service';
+import { pick, some } from 'lodash-es';
 
-export default
-  props:
-    thread: Object
+export default {
+  props: {
+    thread: Object,
 
-    groupPage:
-      type: Boolean
+    groupPage: {
+      type: Boolean,
       default: false
+    },
 
-    showGroupName:
-      type: Boolean
+    showGroupName: {
+      type: Boolean,
       default: true
+    }
+  },
 
-  computed:
-    dockActions: ->
-      pick(ThreadService.actions(@thread, @), ['dismiss_thread'])
+  computed: {
+    dockActions() {
+      return pick(ThreadService.actions(this.thread, this), ['dismiss_thread']);
+    },
 
-    menuActions: ->
-      actions = if @groupPage
-        if @$vuetify.breakpoint.smAndDown
+    menuActions() {
+      const actions = this.groupPage ?
+        this.$vuetify.breakpoint.smAndDown ?
           ['dismiss_thread','pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
-        else
+        :
           ['pin_thread', 'unpin_thread', 'edit_thread', 'move_thread', 'close_thread', 'reopen_thread', 'discard_thread']
-      else
-        if @$vuetify.breakpoint.smAndDown
+      :
+        this.$vuetify.breakpoint.smAndDown ?
           ['dismiss_thread', 'close_thread', 'reopen_thread']
-        else
-          ['close_thread', 'reopen_thread']
-      pick(ThreadService.actions(@thread, @), actions)
+        :
+          ['close_thread', 'reopen_thread'];
+      return pick(ThreadService.actions(this.thread, this), actions);
+    },
 
-    canPerformAny: ->
-      some @menuActions, (action) -> action.canPerform()
+    canPerformAny() {
+      return some(this.menuActions, action => action.canPerform());
+    }
+  }
+};
 
 </script>
 
@@ -47,7 +55,7 @@ v-list-item.thread-preview.thread-preview__link(
   v-list-item-content
     v-list-item-title(style="align-items: center")
       span(v-if='thread.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
-        v-icon(small) mdi-pin-outline
+        common-icon(small name="mdi-pin-outline")
       span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
       v-chip.ml-1(x-small label outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
       tags-display.ml-1(:tags="thread.tags" :group="thread.group()" smaller)

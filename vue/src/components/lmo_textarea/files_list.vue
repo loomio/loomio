@@ -1,22 +1,27 @@
-<script lang="coffee">
+<script lang="js">
 export default
-  props:
+{
+  props: {
     files: Array
-  methods:
-    progressStyle: (width) ->
-      {'background-color': @$vuetify.theme.accent, 'width': width+'%'}
+  },
+  methods: {
+    progressStyle(width) {
+      return {'background-color': this.$vuetify.theme.accent, 'width': width+'%'};
+    }
+  }
+};
 </script>
 
 <template lang="pug">
 .files-list(v-if="files.length")
   v-card.mt-3(outlined v-for="wrapper in files" :key="wrapper.key")
     v-card-title.files-list__item.text--secondary
-      v-icon.mr-2.files-list__icon mdi-image
+      common-icon.mr-2.files-list__icon(name="mdi-image")
       a.files-list__file-name(v-if="wrapper.blob" :href="wrapper.blob.download_url" target="_blank") {{wrapper.file.name}}
       span.files-list__file-name(v-if="!wrapper.blob") {{wrapper.file.name}}
       progress(v-if="!wrapper.blob" max="100" :value="wrapper.percentComplete")
       v-btn.files-list__remove(icon @click="$emit('removeFile', wrapper.file.name)")
-        v-icon mdi-close
+        common-icon(name="mdi-close")
     p(v-if="wrapper.blob && wrapper.blob.preview_url")
       img(:src="wrapper.blob.preview_url")
 </template>

@@ -1,27 +1,34 @@
-<script lang="coffee">
-import BarIcon from '@/components/poll/common/icon/bar.vue'
-import PieIcon from '@/components/poll/common/icon/pie.vue'
-import GridIcon from '@/components/poll/common/icon/grid.vue'
+<script lang="js">
+import BarIcon from '@/components/poll/common/icon/bar.vue';
+import PieIcon from '@/components/poll/common/icon/pie.vue';
+import GridIcon from '@/components/poll/common/icon/grid.vue';
 
 export default
-  components: {BarIcon, PieIcon, GridIcon}
-  props:
-    poll: Object
-    showMyStance: Boolean
-    stanceSize: Number
-      default: 20
-    size:
-      type: Number
-      default: 40
-  data: ->
-    slices: @poll.pieSlices()
+  ({
+    components: {BarIcon, PieIcon, GridIcon},
+    props: {
+      poll: Object,
+      showMyStance: Boolean,
+      stanceSize: Number({
+        default: 20}),
+      size: {
+        type: Number,
+        default: 40
+      }
+    },
+    data() {
+      return {slices: this.poll.pieSlices()};
+    },
 
-  watch:
-    'poll.stanceCounts': -> @slices = @poll.pieSlices()
+    watch: {
+      'poll.stanceCounts'() { this.slices = this.poll.pieSlices(); }
+    },
 
-  computed:
-    myStance: -> @poll.myStance()
-    showPosition: -> 'proposal count'.split(' ').includes(@poll.pollType)
+    computed: {
+      myStance() { return this.poll.myStance(); },
+      showPosition() { return 'proposal count'.split(' ').includes(this.poll.pollType); }
+    }
+  });
 </script>
 
 <template lang="pug">

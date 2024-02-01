@@ -1,10 +1,13 @@
-<script lang="coffee">
-export default
-  props:
-    score: Number
-    size:
-      type: Number
+<script lang="js">
+export default {
+  props: {
+    score: Number,
+    size: {
+      type: Number,
       default: 30
+    }
+  }
+};
 </script>
 
 <template lang="pug">

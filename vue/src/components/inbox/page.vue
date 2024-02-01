@@ -1,64 +1,82 @@
-<script lang="coffee">
-import AppConfig     from '@/shared/services/app_config'
-import Session       from '@/shared/services/session'
-import Records       from '@/shared/services/records'
-import EventBus      from '@/shared/services/event_bus'
-import ThreadFilter from '@/shared/services/thread_filter'
-import ThreadPreviewCollection from '@/components/thread/preview_collection'
-import {each, keys, sum, values, sortBy} from 'lodash'
+<script lang="js">
+import AppConfig     from '@/shared/services/app_config';
+import Session       from '@/shared/services/session';
+import Records       from '@/shared/services/records';
+import EventBus      from '@/shared/services/event_bus';
+import ThreadFilter from '@/shared/services/thread_filter';
+import ThreadPreviewCollection from '@/components/thread/preview_collection';
+import {sum, values, sortBy} from 'lodash-es';
 
 export default
-  components:
-    ThreadPreviewCollection: ThreadPreviewCollection
+{
+  components: {
+    ThreadPreviewCollection
+  },
 
-  data: ->
-    threadLimit: 50
-    views: {}
-    groups: []
-    loading: false
-    unreadCount: 0
-    filters: [
-      'only_threads_in_my_groups',
-      'show_unread',
-      'show_recent',
-      'hide_muted',
-      'hide_dismissed'
-    ]
+  data() {
+    return {
+      threadLimit: 50,
+      views: {},
+      groups: [],
+      loading: false,
+      unreadCount: 0,
+      filters: [
+        'only_threads_in_my_groups',
+        'show_unread',
+        'show_recent',
+        'hide_muted',
+        'hide_dismissed'
+      ]
+    };
+  },
 
-  created: ->
-    @init()
-    EventBus.$on 'signedIn', => @init()
+  created() {
+    this.init();
+    EventBus.$on('signedIn', () => this.init());
+  },
 
-  methods:
-    startGroup: ->
-      EventBus.$emit 'openModal',
+  methods: {
+    startGroup() {
+      EventBus.$emit('openModal', {
         component: 'GroupNewForm',
         props: { group: Records.groups.build() }
+      });
+    },
 
-    init: (options = {}) ->
-      if Session.isSignedIn()
-        @loading = true
-        Records.discussions.fetchInbox(options).then => @loading = false
+    init(options) {
+      if (options == null) { options = {}; }
+      if (Session.isSignedIn()) {
+        this.loading = true;
+        Records.discussions.fetchInbox(options).then(() => { return this.loading = false; });
+      }
 
-      EventBus.$emit 'currentComponent',
-        titleKey: 'inbox_page.unread_threads'
+      EventBus.$emit('currentComponent', {
+        titleKey: 'inbox_page.unread_threads',
         page: 'inboxPage'
+      }
+      );
 
-      @watchRecords
-        collections: ['discussions', 'groups']
-        query: (store) =>
-          @groups = sortBy Session.user().inboxGroups(), 'name'
-          @views = {}
-          each @groups, (group) =>
-            @views[group.key] = ThreadFilter(filters: @filters, group: group)
-          @unreadCount = sum values(@views), (v) -> v.length
+      this.watchRecords({
+        collections: ['discussions', 'groups'],
+        query: store => {
+          this.groups = sortBy(Session.user().inboxGroups(), 'name');
+          this.views = {};
+          this.groups.forEach(group => {
+            this.views[group.key] = ThreadFilter({filters: this.filters, group});
+          });
+          this.unreadCount = sum(values(this.views), v => v.length);
+        }
+      });
+    }
+  }
+};
 
 </script>
 
 <template lang="pug">
 v-main
   v-container.inbox-page.thread-preview-collection__container.max-width-1024.px-0.px-sm-3(grid-list-lg)
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'inbox_page.unread_threads'")
+    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'inbox_page.unread_threads'")
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
       .thread-previews-container
         loading-content.thread-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')

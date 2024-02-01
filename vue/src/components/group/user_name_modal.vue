@@ -1,28 +1,34 @@
-<script lang="coffee">
-import Flash from '@/shared/services/flash'
-import Records from '@/shared/services/records'
+<script lang="js">
+import Flash from '@/shared/services/flash';
+import Records from '@/shared/services/records';
 
 export default
-  props:
+{
+  props: {
     user: Object
-  methods:
-    submit: ->
-      Records.remote.post 'memberships/user_name',
-        id: @user.id
-        name: @user.name
-        username: @user.username
-      .then =>
-        Flash.success "user_name_modal.user_name_updated"
-        @closeModal()
-      .catch (data) =>
-        @user.saveError(data)
+  },
+  methods: {
+    submit() {
+      Records.remote.post('memberships/user_name', {
+        id: this.user.id,
+        name: this.user.name,
+        username: this.user.username
+      }).then(() => {
+        Flash.success("user_name_modal.user_name_updated");
+        this.closeModal();
+      }).catch(data => {
+        this.user.saveError(data);
+      });
+    }
+  }
+};
 
 </script>
 <template lang="pug">
 v-card.user-name-modal
   submit-overlay(:value='user.processing')
   v-card-title
-    h1.headline(tabindex="-1" v-t="'membership_dropdown.set_name_and_username'")
+    h1.text-h5(tabindex="-1" v-t="'membership_dropdown.set_name_and_username'")
     v-spacer
     dismiss-modal-button
   v-card-text

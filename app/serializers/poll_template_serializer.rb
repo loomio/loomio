@@ -39,5 +39,8 @@ class PollTemplateSerializer < ActiveModel::Serializer
              :agree_target,
              :created_at,
              :updated_at,
-             :discarded_at
+             :discarded_at,
+             :outcome_statement,
+             :outcome_statement_format,
+             :outcome_review_due_in_days
 end
