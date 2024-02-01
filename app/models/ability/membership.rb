@@ -2,6 +2,10 @@ module Ability::Membership
   def initialize(user)
     super(user)
 
+    can :show, ::Membership do |membership|
+      membership.user_id == user.id || membership.group.admins.exists?(user.id) || membership.inviter_id == user.id
+    end
+    
     can [:update], ::Membership do |membership|
       membership.user_id == user.id || membership.group.admins.exists?(user.id)
     end
