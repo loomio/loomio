@@ -132,7 +132,7 @@ describe UserQuery do
 
       context "without group or discussion" do
         context "as admin" do
-          before { poll.stances.where(participant_id: actor.id).update_all(admin: true, inviter_id: actor.id) }
+          before { poll.stances.where(participant_id: actor.id).update_all(guest: true, admin: true, inviter_id: actor.id) }
 
           it "returns members of actors groups, actors guests" do
             expect(subject).to include *[member, subgroup_member, other_member, poll_guest].map(&:name)
