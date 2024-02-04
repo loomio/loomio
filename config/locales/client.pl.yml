@@ -2029,6 +2029,7 @@ pl:
     process_introduction_hint: Kilka akapitów, które wyjaśniają, jak korzystać z szablonu. Dołącz linki do zasobów, które mogą być pomocne.
     option_has_votes_confirm_delete: Niektóre osoby głosowały za tą opcją, czy na pewno chcesz ją usunąć?
     notify_everyone_when_poll_starts: Powiadom wszystkich, gdy rozpocznie się %{poll_type}
+    poll_type_updated: Zaktualizowano %{poll_type}
   poll_proposal_form:
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję

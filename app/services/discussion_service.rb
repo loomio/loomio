@@ -15,7 +15,7 @@ class DiscussionService
     discussion.save!
 
     DiscussionReader.for(user: actor, discussion: discussion)
-                    .update(admin: true, inviter_id: actor.id)
+                    .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)
 
     users = add_users(user_ids: params[:recipient_user_ids],
                       emails: params[:recipient_emails],
@@ -236,7 +236,8 @@ class DiscussionService
     new_discussion_readers = users.map do |user|
       DiscussionReader.new(user: user,
                            discussion: discussion,
-                           inviter: if volumes[user.id] then nil else actor end,
+                           inviter: actor,
+                           guest: !volumes.has_key?(user.id),
                            admin: !discussion.group_id,
                            volume: volumes[user.id] || DiscussionReader.volumes[:normal])
     end

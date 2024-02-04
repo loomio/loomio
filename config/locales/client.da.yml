@@ -1697,6 +1697,7 @@ da:
     hide_results_description: Hvis du vil have folk til at stemme uden at vide, hvordan andre har stemt, kan du skjule resultaterne af afstemningen.
     process_helptext: Navngiv og beskriv den proces, der bliver brugt til at køre denne afstemning.
     reminder_helptext: Send en 'Lukker snart'-meddelelse, før afstemningen lukker. Dette kan være en mulighed for folk til at se, hvordan andre har stemt og genoverveje deres egen stemme, eller blot en måde at øge deltagelsen i afstemningen på.
+    poll_type_updated: "%{poll_type} opdateret"
   poll_proposal_form:
     start_header: Opret forslag
     edit_header: Rediger forslag

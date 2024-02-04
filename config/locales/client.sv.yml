@@ -1541,6 +1541,7 @@ sv:
     hide_results_description: Om du vill att folk ska rösta utan att veta hur andra har röstat kan du dölja resultatet av omröstningen.
     process_helptext: Namnge och beskriv processen som används för att köra denna omröstning.
     reminder_helptext: Skicka ett meddelande "Stänger snart" innan omröstningen stänger. Detta kan vara en möjlighet för människor att se hur andra har röstat och ompröva sin egen röst, eller bara ett sätt att öka deltagandet i omröstningen.
+    poll_type_updated: "%{poll_type} uppdaterad"
   poll_proposal_options:
     'yes': Ja
     'no': Nej

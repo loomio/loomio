@@ -13,7 +13,6 @@ class NotificationSerializer < ApplicationSerializer
              :model
 
   has_one :actor, serializer: AuthorSerializer, root: :users
-  has_one :event, serializer: Notification::EventSerializer, root: :events
 
   def name
     tv :name

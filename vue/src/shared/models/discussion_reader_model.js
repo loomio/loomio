@@ -10,7 +10,8 @@ export default class DiscussionReaderModel extends BaseModel {
   defaultValues() {
     return {
       discussionId: null,
-      userId: null
+      userId: null,
+      guest: false
     };
   }
 

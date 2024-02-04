@@ -1980,6 +1980,7 @@ ca:
     hide_results_description: Si voleu que la gent voti sense saber com han votat els altres, podeu amagar els resultats de l'enquesta.
     process_helptext: Anomena i descriu el procés que s'utilitza per executar aquesta enquesta.
     reminder_helptext: Envieu una notificació "Tanquem aviat" abans que es tanqui l'enquesta. Aquesta pot ser una oportunitat perquè la gent vegi com han votat els altres i reconsideri el seu propi vot, o només una manera d'augmentar la participació a l'enquesta.
+    poll_type_updated: "%{poll_type} actualitzat"
   poll_proposal_form:
     start_header: Crea una proposta
     edit_header: Edita una proposta

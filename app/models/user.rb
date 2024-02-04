@@ -64,16 +64,11 @@ class User < ApplicationRecord
   validates :password, nontrivial_password: true, allow_nil: true
 
   has_many :admin_memberships,
-           -> { where('memberships.admin = ?', true) },
+           -> { where('memberships.admin': true, revoked_at: nil) },
            class_name: 'Membership'
 
   has_many :memberships, -> { active }, dependent: :destroy
   has_many :all_memberships, dependent: :destroy, class_name: "Membership"
-
-  has_many :groups,
-           through: :memberships,
-           class_name: 'Group',
-           source: :group
 
   has_many :adminable_groups,
            -> { where(archived_at: nil) },
@@ -103,7 +98,10 @@ class User < ApplicationRecord
   has_many :group_polls, through: :groups, source: :polls
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :guest_discussions, -> { DiscussionReader.guests}, through: :discussion_readers, source: :discussion
+  has_many :guest_discussion_readers, -> { DiscussionReader.active.guests }, class_name: 'DiscussionReader', dependent: :destroy
+  has_many :guest_discussions, through: :guest_discussion_readers, source: :discussion
+  has_many :guest_stances, -> { Stance.latest.guests }, class_name: 'Stance', dependent: :destroy, foreign_key: :participant_id
+  has_many :guest_polls, through: :guest_stances, source: :poll
   has_many :notifications, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :documents, foreign_key: :author_id, dependent: :destroy

@@ -2037,6 +2037,7 @@ de:
     process_introduction_hint: Ein paar Absätze, die erklären, wie die Vorlage verwendet wird. Fügen Sie Links zu Ressourcen hinzu, die hilfreich sein könnten.
     option_has_votes_confirm_delete: Einige Leute haben für diese Option gestimmt. Sind Sie sicher, dass Sie sie löschen möchten?
     notify_everyone_when_poll_starts: Benachrichtigen Sie alle, wenn %{poll_type} startet
+    poll_type_updated: "%{poll_type} aktualisiert"
   poll_proposal_form:
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten

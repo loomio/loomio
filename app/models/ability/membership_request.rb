@@ -9,8 +9,7 @@ module Ability::MembershipRequest
 
     can :cancel, ::MembershipRequest, requestor_id: user.id
 
-    can [:approve,
-         :ignore], ::MembershipRequest do |membership_request|
+    can [:show, :approve, :ignore], ::MembershipRequest do |membership_request|
       group = membership_request.group
 
       user_is_admin_of?(group.id) or

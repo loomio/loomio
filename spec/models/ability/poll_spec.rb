@@ -12,7 +12,7 @@ describe "poll abilities" do
   context "a poll without group" do
     let(:poll) { create(:poll, specified_voters_only: true) }
     context "as poll admin" do
-      before { poll.stances.create!(participant_id: actor.id, admin: true, latest: true) }
+      before { poll.stances.create!(participant_id: actor.id, admin: true, guest: true, latest: true) }
       it {should be_able_to(:vote_in, poll)}
       it {should be_able_to(:add_voters, poll)}
       it {should be_able_to(:announce, poll)}
@@ -20,7 +20,7 @@ describe "poll abilities" do
     end
 
     context "as poll voter" do
-      before { poll.stances.create!(participant_id: actor.id, admin: false, latest: true) }
+      before { poll.stances.create!(participant_id: actor.id, admin: false, guest: true, latest: true) }
       it {should     be_able_to(:vote_in, poll)}
       it {should_not be_able_to(:add_voters, poll)}
       it {should_not be_able_to(:announce, poll)}

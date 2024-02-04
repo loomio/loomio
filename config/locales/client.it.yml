@@ -2046,6 +2046,7 @@ it:
     process_introduction_hint: Alcuni paragrafi che spiegano come utilizzare il modello. Includere collegamenti a risorse che potrebbero essere utili.
     option_has_votes_confirm_delete: Alcune persone hanno votato per questa opzione, sei sicuro di volerla eliminare?
     notify_everyone_when_poll_starts: Avvisa tutti quando inizia %{poll_type}
+    poll_type_updated: "%{poll_type} aggiornato"
   poll_proposal_form:
     start_header: Lancia proposta
     edit_header: Aggiorna proposta

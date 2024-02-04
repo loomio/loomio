@@ -2050,6 +2050,7 @@ zh_TW:
     hide_results_description: 如果您希望人們在不知道其他人如何投票的情況下投票，您可以隱藏投票結果。
     process_helptext: 命名並描述用於執行此輪詢的進程。
     reminder_helptext: 在投票結束前發送「即將結束」通知。這可以讓人們有機會了解其他人如何投票並重新考慮自己的投票，或者只是增加投票參與度的一種方式。
+    poll_type_updated: "%{poll_type} 已更新"
   poll_proposal_form:
     start_header: 啟動提案
     edit_header: 編輯提案
