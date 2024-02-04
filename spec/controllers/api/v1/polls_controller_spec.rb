@@ -46,7 +46,7 @@ describe API::V1::PollsController do
     before { poll; another_poll; closed_poll; public_poll }
 
     let(:participated_poll) { create :poll }
-    let!(:my_stance) { create :stance, poll: participated_poll, participant: user, poll_options: [participated_poll.poll_options.first] }
+    let!(:my_stance) { create :stance, poll: participated_poll, participant: user, guest: true, poll_options: [participated_poll.poll_options.first] }
     let!(:authored_poll) { create :poll, author: user }
     let!(:group_poll) { create :poll, discussion: discussion }
     let!(:another_poll) { create :poll }

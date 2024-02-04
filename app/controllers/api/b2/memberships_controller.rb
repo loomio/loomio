@@ -20,7 +20,7 @@ class API::B2::MembershipsController < API::B2::BaseController
         user_id: User.where(email: remove_emails).pluck(:id)
       ).each do |membership|
         removed_user_ids << membership.user_id
-        MembershipService.destroy(
+        MembershipService.revoke(
           membership: membership,
           actor: current_user
         )

@@ -2012,6 +2012,7 @@ nl_NL:
     process_introduction_hint: Een paar alinea's waarin wordt uitgelegd hoe u de sjabloon gebruikt. Voeg links toe naar bronnen die nuttig kunnen zijn.
     option_has_votes_confirm_delete: Sommige mensen hebben op deze optie gestemd, weet je zeker dat je deze wilt verwijderen?
     notify_everyone_when_poll_starts: Breng iedereen op de hoogte wanneer %{poll_type} start
+    poll_type_updated: "%{poll_type} bijgewerkt"
   poll_proposal_form:
     start_header: "'Voorstel' starten"
     edit_header: Voorstel bewerken

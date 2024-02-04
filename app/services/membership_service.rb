@@ -13,7 +13,9 @@ class MembershipService
     group_ids = membership.group.parent_or_self.id_and_subgroup_ids
 
     # ensure actor has accepted any existing pending memberships to this group
-    Membership.pending.where(user_id: actor.id, group_id: group_ids).update_all(accepted_at: DateTime.now)
+    Membership.pending
+    .where(user_id: actor.id, group_id: group_ids)
+    .update_all(accepted_at: DateTime.now)
 
     # cant accept pending memberships to groups I already belong to
     existing_group_ids = Membership.pending.where(user_id: membership.user_id,
@@ -21,8 +23,8 @@ class MembershipService
 
     Membership.pending.where(
       user_id: membership.user_id,
-      group_id: (group_ids - existing_group_ids)).
-    update_all(
+      group_id: (group_ids - existing_group_ids))
+    .update_all(
       user_id: actor.id,
       accepted_at: DateTime.now)
 
@@ -32,24 +34,56 @@ class MembershipService
       GenericWorker.perform_async('PollService', 'group_members_added', group_id)
     end
 
-    # make sure they're not banned from anything
-    DiscussionReader.joins(:discussion).
-      where(user_id: actor.id).
-      where('discussions.group_id': member_group_ids).
-      where('revoked_at is not null').
-      update_all(revoked_at: nil, revoker_id: nil)
+    # remove any existing guest access in these groups
+    DiscussionReader.joins(:discussion)
+    .where(user_id: actor.id, 'discussions.group_id': member_group_ids, guest: true)
+    .update_all(guest: false, revoked_at: nil, revoker_id: nil)
 
-    # give them any votes they were previously granted (if they're still useful)
-    Stance.joins(:poll).
-      where(participant_id: actor.id).
-      where('polls.group_id': member_group_ids).
-      where('revoked_at is not null').
-      where('polls.closed_at is null').
-      update_all(revoked_at: nil, revoker_id: nil)
+    Stance.joins(:poll)
+    .where(participant_id: actor.id, 'polls.group_id': member_group_ids)
+    .update_all(guest: false)
+
+    # unrevoke any votes on active polls
+    Stance.joins(:poll)
+    .where(participant_id: actor.id)
+    .where('polls.group_id': member_group_ids)
+    .where('stances.revoked_at is not null')
+    .where('polls.closed_at is null')
+    .update_all(revoked_at: nil, revoker_id: nil)
 
     membership.reload
     Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
   end
+
+  def self.revoke(membership:, actor:)
+    actor.ability.authorize! :revoke, membership
+    now = Time.zone.now
+
+    # revoke guest access in case they were a guest before they were a member and it was not already cleaned up by redeem
+    DiscussionReader.joins(:discussion).guests.
+    where('discussions.group_id': membership.group.id_and_subgroup_ids,
+           user_id: membership.user_id).
+    update_all(guest: false)
+
+    Stance.joins(:poll).guests.
+    where('polls.group_id': membership.group.id_and_subgroup_ids,
+           participant_id: membership.user_id).
+    update_all(guest: false)
+
+    # remove them from active polls
+    membership.group.id_and_subgroup_ids.each do |group_id|
+      PollService.group_members_removed(group_id, membership.user_id, actor.id)
+    end
+
+    # revoke the membership
+    Membership.active.
+    where(user_id: membership.user_id,
+          group_id: membership.group.id_and_subgroup_ids).
+    update_all(revoked_at: now, revoker_id: actor.id)
+
+    EventBus.broadcast('membership_destroy', membership, actor)
+  end
+
 
   def self.update(membership:, params:, actor:)
     actor.ability.authorize! :update, membership
@@ -127,25 +161,6 @@ class MembershipService
     group.add_members!(users, inviter: inviter).tap do |memberships|
       Events::UserAddedToGroup.bulk_publish!(memberships, user: inviter)
     end
-  end
-
-  def self.destroy(membership:, actor:)
-    actor.ability.authorize! :destroy, membership
-    now = Time.zone.now
-
-    DiscussionReader.joins(:discussion).where(
-      'discussions.group_id': membership.group.id_and_subgroup_ids,
-                     user_id: membership.user_id).
-      where("inviter_id IS NOT NULL").
-      update_all(revoked_at: now, revoker_id: actor.id)
-
-    membership.group.id_and_subgroup_ids.each do |group_id|
-      PollService.group_members_removed(group_id, membership.user_id, actor.id)
-    end
-
-    Membership.where(user_id: membership.user_id, group_id: membership.group.id_and_subgroup_ids).destroy_all
-
-    EventBus.broadcast('membership_destroy', membership, actor)
   end
 
   def self.save_experience(membership:, actor:, params:)

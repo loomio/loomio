@@ -241,10 +241,16 @@ class Group < ApplicationRecord
 
   def add_member!(user, inviter: nil)
     save! unless persisted?
-    membership = self.memberships.find_or_create_by!(user: user) do |m|
-      m.inviter     = inviter
-      m.accepted_at = DateTime.now
+    user.save! unless user.persisted?
+
+    if membership = Membership.find_by(user_id: user.id, group_id: id)
+      if membership.revoked_at
+        membership.update(admin: false, revoked_at: nil, revoker_id: nil, accepted_at: DateTime.now, inviter: inviter)
+      end
+    else
+      membership = Membership.create!(user_id: user.id, group_id: id, inviter: inviter, accepted_at: DateTime.now)
     end
+
     GenericWorker.perform_async('PollService', 'group_members_added', self.id)
     membership
   rescue ActiveRecord::RecordNotUnique

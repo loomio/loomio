@@ -24,15 +24,15 @@ describe MembershipService do
       stance = poll.add_guest!(user, discussion.author)
       expect(stance.inviter_id).to eq discussion.author_id
       expect(reader.inviter_id).to eq discussion.author_id
-      expect(stance.revoked_at).to eq nil
-      expect(reader.revoked_at).to eq nil
-      MembershipService.destroy(membership: membership, actor: user)
+      expect(stance.guest).to eq true
+      expect(reader.guest).to eq true
+      MembershipService.revoke(membership: membership, actor: user)
       expect(subgroup.members).to_not include user
       expect(subgroup_discussion.members).to_not include user
       expect(discussion.members).to_not include user
       expect(poll.members).to_not include user
-      expect(reader.reload.revoked_at).to_not eq nil
-      expect(stance.reload.revoked_at).to_not eq nil
+      expect(reader.reload.guest).to eq false
+      expect(stance.reload.guest).to eq false
     end
   end
 
@@ -53,7 +53,11 @@ describe MembershipService do
       stance.update(revoked_at: DateTime.now)
       expect(stance.revoked_at).to_not eq nil
       expect(reader.revoked_at).to_not eq nil
+      expect(stance.guest).to eq true
+      expect(reader.guest).to eq true
       MembershipService.redeem(membership: membership, actor: user)
+      expect(stance.reload.guest).to eq false
+      expect(reader.reload.guest).to eq false
       expect(stance.reload.revoked_at).to eq nil
       expect(reader.reload.revoked_at).to eq nil
     end
@@ -62,7 +66,6 @@ describe MembershipService do
       MembershipService.redeem(membership: membership, actor: user)
       expect(Event.last.kind).to eq 'invitation_accepted'
     end
-
   end
 
   describe 'with alien group' do

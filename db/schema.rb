@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_17_044938) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_04_194803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -232,7 +232,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_17_044938) do
     t.boolean "admin", default: false, null: false
     t.datetime "accepted_at", precision: nil
     t.integer "revoker_id"
+    t.boolean "guest", default: false, null: false
     t.index ["discussion_id"], name: "index_discussion_readers_discussion_id"
+    t.index ["guest"], name: "discussion_readers_guests", where: "(guest = true)"
     t.index ["inviter_id"], name: "inviter_id_not_null", where: "(inviter_id IS NOT NULL)"
     t.index ["token"], name: "index_discussion_readers_on_token", unique: true
     t.index ["user_id", "discussion_id"], name: "index_discussion_readers_on_user_id_and_discussion_id", unique: true
@@ -861,6 +863,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_17_044938) do
     t.jsonb "link_previews", default: [], null: false
     t.jsonb "option_scores", default: {}, null: false
     t.integer "revoker_id"
+    t.boolean "guest", default: false, null: false
+    t.index ["guest"], name: "stances_guests", where: "(guest = true)"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"
     t.index ["poll_id", "participant_id", "latest"], name: "index_stances_on_poll_id_and_participant_id_and_latest", unique: true, where: "(latest = true)"

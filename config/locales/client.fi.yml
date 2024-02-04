@@ -807,6 +807,7 @@ fi:
     hide_results_description: Jos haluat ihmisten äänestävän tietämättä kuinka muut ovat äänestäneet, voit piilottaa kyselyn tulokset.
     process_helptext: Nimeä ja kuvaile prosessi, jota käytetään tämän kyselyn suorittamiseen.
     reminder_helptext: Lähetä "Suljetaan pian" -ilmoitus ennen äänestyksen sulkeutumista. Tämä voi olla ihmisille mahdollisuus nähdä, miten muut ovat äänestäneet, ja harkita omaa ääntään, tai vain tapa lisätä osallistumista kyselyyn.
+    poll_type_updated: "%{poll_type} päivitetty"
   tasks:
     tasks: Tehtävät
     your_tasks: Sinun tehtäväsi

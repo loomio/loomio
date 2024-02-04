@@ -1968,6 +1968,7 @@ hu:
     process_introduction_hint: Néhány bekezdés, amely elmagyarázza a sablon használatát. Adjon meg hivatkozásokat olyan forrásokhoz, amelyek hasznosak lehetnek.
     option_has_votes_confirm_delete: Néhányan erre a lehetőségre szavaztak. Biztosan törli?
     notify_everyone_when_poll_starts: Értesítsen mindenkit, amikor a %{poll_type} elindul
+    poll_type_updated: "%{poll_type} frissítve"
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése

@@ -1629,6 +1629,7 @@ tr:
     hide_results_description: İnsanların, başkalarının nasıl oy verdiğini bilmeden oy vermesini istiyorsanız anket sonuçlarını gizleyebilirsiniz.
     process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.
     reminder_helptext: Anket kapanmadan önce 'Yakında kapatılacak' bildirimi gönderin. Bu, insanların başkalarının nasıl oy verdiğini görmeleri ve kendi oylarını yeniden değerlendirmeleri için bir fırsat olabileceği gibi, yalnızca ankete katılımı artırmanın bir yolu da olabilir.
+    poll_type_updated: "%{poll_type} güncellendi"
   poll_proposal_options:
     'yes': Evet
     'no': Hayır

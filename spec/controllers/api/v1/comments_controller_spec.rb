@@ -100,11 +100,11 @@ describe API::V1::CommentsController do
 
         it 'allows guests to comment' do
           discussion.group.memberships.find_by(user: user).destroy
+          discussion.add_guest!(user, discussion.author)
 
           post :create, params: { comment: comment_params }
           expect(response.status).to eq 200
-          expect(Comment.where(body: comment_params[:body],
-                               user_id: user.id)).to exist
+          expect(Comment.where(body: comment_params[:body], user_id: user.id)).to exist
         end
 
         it 'disallows aliens to comment' do

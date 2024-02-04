@@ -1603,6 +1603,7 @@ ro:
     hide_results_description: Dacă doriți ca oamenii să voteze fără să știe cum au votat alții, puteți ascunde rezultatele sondajului.
     process_helptext: Denumiți și descrieți procesul care este utilizat pentru a rula acest sondaj.
     reminder_helptext: Trimiteți o notificare „Închidere în curând” înainte de închiderea sondajului. Aceasta poate fi o oportunitate pentru oameni de a vedea cum au votat alții și de a-și reconsidera propriul vot, sau doar o modalitate de a crește participarea la sondaj.
+    poll_type_updated: "%{poll_type} a fost actualizat"
   poll_poll_form:
     edit_header: Editare sondaj
     multiple_choice_subtitle: O modalitate simplă de a evalua popularitatea opțiunilor

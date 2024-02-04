@@ -9,7 +9,7 @@ describe PollQuery do
   let!(:closing_soon)     { create :poll, closed_at: nil,         closing_at: 1.day.from_now,   author: user }
   let!(:closing_far_away) { create :poll, closed_at: nil,         closing_at: 1.month.from_now, author: user }
   let(:authored) { create :poll, author: user }
-  let(:stance) { create :stance, participant: user }
+  let(:stance) { create :stance, participant: user, guest: true }
   let(:participated) { create :poll, stances: [stance] }
   let(:in_a_discussion) { create :poll, discussion: discussion }
   let(:in_a_group) { create :poll, group: group }

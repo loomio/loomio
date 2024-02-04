@@ -14,9 +14,7 @@ describe API::V1::GroupsController do
 
   before do
     group.add_admin! user
-    DiscussionReader.create!(discussion_id: guest_discussion.id,
-                             user_id: user.id,
-                             inviter_id: guest_discussion.author_id)
+    guest_discussion.add_guest!(user, guest_discussion.author)
   end
 
   describe 'index' do

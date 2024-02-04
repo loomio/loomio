@@ -2051,6 +2051,7 @@ uk:
     process_introduction_hint: Кілька абзаців, які пояснюють, як використовувати шаблон. Додайте посилання на ресурси, які можуть бути корисними.
     option_has_votes_confirm_delete: Деякі люди проголосували за цей варіант, ви впевнені, що хочете його видалити?
     notify_everyone_when_poll_starts: Повідомити всіх, коли %{poll_type} почнеться
+    poll_type_updated: "%{poll_type} оновлено"
   poll_proposal_form:
     start_header: Внести пропозицію
     edit_header: Редагувати пропозицію

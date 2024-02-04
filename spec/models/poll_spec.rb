@@ -67,7 +67,7 @@ describe Poll do
 
     it 'includes guests' do
       expect {
-        Stance.create(poll: poll, participant: user)
+        Stance.create(poll: poll, participant: user, guest: true)
       }.to change { poll.members.count }.by(1)
     end
 

@@ -2086,6 +2086,7 @@ pt_BR:
     process_introduction_hint: Alguns parágrafos que explicam como usar o modelo. Inclua links para recursos que possam ser úteis.
     option_has_votes_confirm_delete: Algumas pessoas votaram nesta opção, tem certeza de que deseja excluí-la?
     notify_everyone_when_poll_starts: Notificar todos quando %{poll_type} começar
+    poll_type_updated: "%{poll_type} atualizado"
   poll_proposal_form:
     tool_tip_collapsed: Tome uma decisão juntos
     vote_method_hint: Os eleitores concordam ou discordam de uma declaração
