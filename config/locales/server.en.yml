@@ -4,6 +4,8 @@ en:
     blank:
       process_name: Blank template
       process_subtitle: Start a new thread for any purpose
+      process_introduction: "<p>Start a thread in your group about any topic you like.</p>
+        <p>By default everyone in the group will be notified when you start the thread. You can change this by editing the 'invite' field below.</p>"
 
     discuss_a_topic:
       title_placeholder: What is the topic you want to discuss?

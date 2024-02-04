@@ -342,6 +342,7 @@ zh_TW:
     blank:
       process_name: 空白模板
       process_subtitle: 出於任何目的啟動一個新線程
+      process_introduction: "<p>在您的群組中啟動一個關於您喜歡的任何主題的話題。</p><p>預設情況下，當您啟動執行緒時，群組中的每個人都會收到通知。您可以透過編輯下面的「邀請」欄位來變更此設定。</p>"
     discuss_a_topic:
       title_placeholder: 您想討論的主題是什麼？
       process_name: 討論一個話題

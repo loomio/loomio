@@ -142,6 +142,7 @@ sv:
     blank:
       process_name: Tom mall
       process_subtitle: Starta en ny tråd för alla ändamål
+      process_introduction: <p>Starta en tråd i din grupp om vilket ämne du gillar.</p><p> Som standard kommer alla i gruppen att meddelas när du startar tråden. Du kan ändra detta genom att redigera "inbjudan"-fältet nedan.</p>
     discuss_a_topic:
       title_placeholder: Vilket ämne vill du diskutera?
       process_name: Diskutera ett ämne

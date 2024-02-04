@@ -133,11 +133,25 @@ class User < ApplicationRecord
 
   scope :mention_search, -> (user, model, query) do
     return self.none unless model.present?
-    active.search_for(query).
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{model.group_id || 0}").
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.user_id = users.id AND dr.discussion_id = #{model.discussion_id || 0}").
-      where("(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-             (dr.id IS NOT NULL AND dr.inviter_id IS NOT NULL AND dr.revoked_at IS NULL)")
+    ids = []
+
+    if model.group_id
+      ids += Membership.active.where(group_id: model.group_id).pluck(:user_id) if model.group_id
+    end
+
+    if model.discussion_id
+      ids += DiscussionReader.active.guests.where(discussion_id: model.discussion_id).pluck(:user_id) 
+    end
+
+    if model.poll_id
+      ids += Stance.latest.guests.where(poll_id: model.poll_id).pluck(:participant_id)
+    end
+
+    if model.respond_to?(:poll_ids) and model.poll_ids.any?
+      ids += Stance.latest.guests.where(poll_id: model.poll_ids).pluck(:participant_id)
+    end
+
+    active.search_for(query).where(id: ids)
   end
 
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
