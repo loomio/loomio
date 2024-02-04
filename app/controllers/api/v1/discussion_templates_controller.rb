@@ -13,7 +13,10 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
       DiscussionTemplateService.create_public_templates
     end
 
-    templates = DiscussionTemplate.where(public: true)
+    templates = DiscussionTemplate
+                .joins(group: :subscription)
+                .where("discussion_templates.public": true)
+                .where("groups.handle = ? OR subscriptions.plan != ?", 'templates', 'trial')
 
     if params[:query].present?
       templates = templates.where("process_name ILIKE :q OR process_subtitle ILIKE :q OR tags @> ARRAY[:a]::varchar[]", q: "%#{params[:query]}%", a: Array(params[:query]))
