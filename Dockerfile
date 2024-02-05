@@ -33,7 +33,7 @@ COPY . .
 RUN bundle install && bundle exec bootsnap precompile --gemfile app/ lib/
 
 WORKDIR /loomio/vue
-RUN npm install --force
+RUN npm install
 RUN npm run build
 WORKDIR /loomio
 

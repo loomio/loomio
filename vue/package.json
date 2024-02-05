@@ -75,7 +75,6 @@
   },
   "devDependencies": {
     "@originjs/vite-plugin-content": "latest",
-    "@rollup/rollup-linux-x64-gnu": "latest",
     "@originjs/vite-plugin-commonjs": "latest",
     "nightwatch": "^3.4.0",
     "pug": "latest",
