@@ -60,7 +60,7 @@ export default {
       if (!this.model.mentionedUsernames) { return this.model[this.column]; }
       let cooked = this.model[this.column];
       this.model.mentionedUsernames.forEach(username => cooked = cooked.replace(new RegExp(`@${username}`, 'g'), `[@${username}](/u/${username})`));
-      return cooked;
+      return cooked.replace(/^&gt; /, '> ').replace(/\n&gt; /, '\n> '); // fix for when > is encoded as &gt; by server
     }
   }
 };
