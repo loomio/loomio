@@ -101,7 +101,7 @@ v-main
     dashboard-polls-panel
 
     v-card.mb-3(v-if='!dashboardLoaded')
-      v-list(two-line)
+      v-list(lines="two")
         v-list-subheader(v-t="'dashboard_page.recent_threads'")
         loading-content(
           :lineCount='2'
@@ -120,7 +120,7 @@ v-main
               span(v-t="'dashboard_page.view_recent'")
         .dashboard-page__collections(v-if='discussions.length')
           v-card.mb-3.thread-preview-collection__container.thread-previews-container
-            v-list.thread-previews(two-line)
+            v-list.thread-previews(lines="two")
               v-list-subheader(v-t="'dashboard_page.recent_threads'")
               thread-preview(
                 v-for="thread in discussions"

@@ -23,10 +23,10 @@ export default {
 <template lang="pug">
 v-list-item.poll-common-preview(:to='link')
   template(v-slot:prepend)
-    poll-common-icon-panel(:poll='poll' show-my-stance)
+    poll-common-icon-panel.mr-2(:poll='poll' show-my-stance)
   v-list-item-title
     span {{poll.title}}
-    tags-display.ml-1(:tags="poll.tags" :group="poll.group()" smaller)
+    tags-display.ml-1(:tags="poll.tags" :group="poll.group()" size="x-small")
   v-list-item-subtitle
     span(v-t="{ path: 'poll_common_collapsed.by_who', args: { name: poll.authorName() } }")
     space

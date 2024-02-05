@@ -9,7 +9,7 @@ import Flash from '@/shared/services/flash';
 import openModal      from '@/shared/helpers/open_modal';
 
 export default {
-  components: { VueRecaptcha },
+  // components: { VueRecaptcha },
   mixins: [AuthModalMixin],
 
   props: {

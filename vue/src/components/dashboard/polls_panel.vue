@@ -66,7 +66,7 @@ export default
 <template lang="pug">
 .polls-panel(v-if='otherPolls.length || votePolls.length || loader.loading')
   v-card.mb-2
-    v-list(two-line avatar)
+    v-list(lines="two")
       template
         v-list-subheader(v-t="'dashboard_page.polls_to_vote_on'")
         poll-common-preview(

@@ -180,7 +180,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       template(v-slot:activator="{ props }")
         v-list-item(v-bind="props")
           template(v-slot:prepend)
-            user-avatar(:user="user")
+            user-avatar.mr-2(:user="user")
           v-list-item-title {{user.name}}
           v-list-item-subtitle {{user.email}}
       v-list(density="compact" nav)
@@ -252,7 +252,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       v-list-item-title(v-t="'group_form.new_group'")
 
     v-divider
-    v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" @click="startOrFindDemo" two-line dense)
+    v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" @click="startOrFindDemo" lines="two")
       v-list-item-title(v-t="'templates.start_a_demo'")
       v-list-item-subtitle(v-t="'templates.play_with_an_example_group'")
       template(v-slot:append)
