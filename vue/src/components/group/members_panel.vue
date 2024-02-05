@@ -228,7 +228,7 @@ export default
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
         p.pa-4.text-center(v-if="!memberships.length" v-t="'common.no_results_found'")
-        v-list(v-else two-line)
+        v-list(v-else lines="two")
           v-list-item(v-for="membership in memberships" :key="membership.id")
             template(v-slot:prepend)
               router-link(:to="urlFor(membership.user())")

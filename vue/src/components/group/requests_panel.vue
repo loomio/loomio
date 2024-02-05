@@ -50,7 +50,7 @@ export default
   loading(v-if="!group")
   v-card.mt-4(outlined v-else="group")
     p.text-center.pa-4(v-if="!requests.length" v-t="'common.no_results_found'")
-    v-list(two-line)
+    v-list(lines="two")
       membership-request(v-for="request in unapprovedRequestsByOldestFirst" :request="request" :key="request.id")
       membership-request(v-for="request in approvedRequestsByNewestFirst" :request="request" :key="request.id")
 </template>

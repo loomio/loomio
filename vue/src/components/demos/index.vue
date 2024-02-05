@@ -72,7 +72,7 @@ v-main
       <iframe class="mx-auto" width="560" height="315" src="https://www.youtube-nocookie.com/embed/oIEKA9WTIDc" title="Loomio demo group introduction" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
     //- h2.text-title.my-4(v-t="'templates.start_a_demo'")
     //- v-card.mb-3(v-if='!loaded' aria-hidden='true')
-    //-   v-list(two-line)
+    //-   v-list(lines="two")
     //-     loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]', :key='index' )
 
     v-overlay(:value="processing")

@@ -79,35 +79,34 @@ export default {
             :items="tags"
             )
 
-        v-list.append-sort-here(three-line)
+        v-list.append-sort-here(lines="three")
           v-list-item(
             v-for="result in results" 
             :key="result.id"
             :to="'/d/new?' + (result.id ? 'template_id='+result.id : 'template_key='+result.key)+ '&group_id='+ $route.query.group_id"
             title="Use this template to start a new thread"
           )
-            v-list-item-avatar
-              v-avatar(:size="38" tile)
+            template(v-slot:prepend)
+              v-avatar(:size="38" tile).mr-2
                 img(:alt="result.groupName || result.authorName" :src="result.avatarUrl")
 
-            v-list-item-content
-              v-list-item-title.d-flex
-                span {{result.processName || result.title}}
-                v-spacer
-                v-chip.ml-1(
-                  v-for="tag in result.tags"
-                  :key="tag"
-                  outlined
-                  xSmall
-                  :color="tagColor(tag)"
-                ) {{tag}}
+            v-list-item-title.d-flex
+              span {{result.processName || result.title}}
+              v-spacer
+              v-chip.ml-1(
+                v-for="tag in result.tags"
+                :key="tag"
+                outlined
+                xSmall
+                :color="tagColor(tag)"
+              ) {{tag}}
 
-              v-list-item-subtitle.text--primary {{result.processSubtitle}}
-              v-list-item-subtitle 
-                span
-                  span {{result.authorName}}
-                  mid-dot
-                  span {{result.groupName}}
+            v-list-item-subtitle.text--primary {{result.processSubtitle}}
+            v-list-item-subtitle 
+              span
+                span {{result.authorName}}
+                mid-dot
+                span {{result.groupName}}
 
             v-list-item-action
               v-btn.text-medium-emphasis(

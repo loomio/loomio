@@ -196,7 +196,7 @@ v-card.search-modal
     v-select.mr-2(v-if="tagItems.length" v-model="tag" :items="tagItems")
     v-select.mr-2(v-model="type" :items="typeItems")
     v-select(v-model="order" :items="orderItems")
-  v-list(two-line)
+  v-list(lines="two")
     v-list-item.poll-common-preview(v-if="!loading && resultsQuery && results.length == 0")
       v-list-item-title(v-t="{path: 'discussions_panel.no_results_found', args: {search: resultsQuery}}")
     v-list-item.poll-common-preview(v-for="result in results" :key="result.id" :to="urlForResult(result)")

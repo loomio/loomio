@@ -207,7 +207,7 @@ export default
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
-        v-list(two-line avatar v-if='polls.length && loader.pageWindow[page]')
+        v-list(lines="two" v-if='polls.length && loader.pageWindow[page]')
           poll-common-preview(
             :poll='poll'
             v-for='poll in polls'

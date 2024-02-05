@@ -89,7 +89,7 @@ export default
         .discussions-panel__list.thread-preview-collection__container(
           v-if="discussions.length"
         )
-          v-list.thread-previews(two-line)
+          v-list.thread-previews(lines="two")
             thread-preview(
               v-for="thread in discussions"
               :key="thread.id"
@@ -119,7 +119,7 @@ export default
         p.pa-4.text-center(v-t="'error_page.forbidden'")
 
       div(v-if='polls.length')
-        v-list(two-line avatar )
+        v-list(lines="two")
           poll-common-preview(
             :poll='poll'
             v-for='poll in polls'

@@ -178,7 +178,7 @@ export default {
       v-chip(@click="filter = 'admin'" :outlined="filter != 'admin'")
         common-icon(small name="mdi-cog").mr-2
         span.poll-type-chip-name(v-t="filterLabels['admin']")
-  v-list.decision-tools-card__poll-types(two-line dense)
+  v-list.decision-tools-card__poll-types(lines="two" density="dense")
     template(v-if="filter == 'admin'")
       v-list-item.decision-tools-card__new-template(
         :to="'/poll_templates/new?group_id='+group.id+'&return_to='+returnTo"

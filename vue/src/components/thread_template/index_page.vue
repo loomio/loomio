@@ -106,7 +106,7 @@ export default {
 
         v-alert.mx-4(v-if="!showSettings && group && group.discussionsCount < 2" type="info" text outlined v-t="'thread_template.these_are_templates'") 
 
-        v-list.append-sort-here(two-line)
+        v-list.append-sort-here(lines="two")
           .d-flex
             v-list-subheader(v-if="!showSettings" v-t="'templates.templates'")
             v-spacer

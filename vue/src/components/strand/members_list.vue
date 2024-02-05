@@ -145,7 +145,7 @@ export default {
 </script>
 
 <template lang="pug">
-.strand-members-list
+v-card.strand-members-list
   .px-4.pt-4
     .d-flex.justify-space-between
       h1.text-h5(v-t="'announcement.form.discussion_announced.title'")
@@ -178,25 +178,24 @@ export default {
         @click="inviteRecipients"
         v-t="'common.action.invite'")
 
-  v-list(two-line)
+  v-list(lines="two")
     v-list-subheader
       span(v-t="'membership_card.discussion_members'")
       space
       span ({{discussion.membersCount}})
     v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")
-      v-list-item-avatar
-        user-avatar(:user="reader.user()" :size="24")
-      v-list-item-content
-        v-list-item-title
-          span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
-          v-chip.mr-1(v-if="discussion.groupId && reader.guest" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip.mr-1(v-if="reader.admin" outlined x-small label v-t="'announcement.members_list.thread_admin'")
-          v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined x-small label v-t="'announcement.members_list.group_admin'")
-        v-list-item-subtitle
-          span(v-if="reader.lastReadAt" v-t="{ path: 'announcement.members_list.last_read_at', args: { time: approximateDate(reader.lastReadAt) } }")
-          span(v-else v-t="'announcement.members_list.has_not_read_thread'")
-          //- time-ago(:date="reader.lastReadAt")
-      v-list-item-action
+      template(v-slot:prepend)
+        user-avatar.mr-2(:user="reader.user()" :size="24")
+      v-list-item-title
+        span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
+        v-chip.mr-1(v-if="discussion.groupId && reader.guest" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+        v-chip.mr-1(v-if="reader.admin" outlined x-small label v-t="'announcement.members_list.thread_admin'")
+        v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined x-small label v-t="'announcement.members_list.group_admin'")
+      v-list-item-subtitle
+        span(v-if="reader.lastReadAt" v-t="{ path: 'announcement.members_list.last_read_at', args: { time: approximateDate(reader.lastReadAt) } }")
+        span(v-else v-t="'announcement.members_list.has_not_read_thread'")
+        //- time-ago(:date="reader.lastReadAt")
+      template(v-slot:append)
         v-menu(offset-y)
           template(v-slot:activator="{attrs}")
             v-btn.membership-dropdown__button(icon v-bind="attrs")

@@ -40,7 +40,7 @@ export default
 
 <template lang="pug">
 v-card.membership-requests-card(v-if='canManageMembershipRequests() && membershipRequests.length')
-  v-list(two-line avatar)
+  v-list(lines="two")
     v-list-subheader(v-t="'membership_requests_card.heading'")
     v-list-item.membership-requests-card__request(v-for='request in orderedPendingMembershipRequests()', :key='request.id' :to="urlFor(group, 'membership_requests')")
       template(v-slot:prepend)

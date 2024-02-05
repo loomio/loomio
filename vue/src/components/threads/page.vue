@@ -70,7 +70,7 @@ v-main
       //- v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
 
     v-card.mb-3.dashboard-page__loading(v-if='loader.loading && threads.length == 0' aria-hidden='true')
-      v-list(two-line)
+      v-list(lines="two")
         loading-content(:lineCount='2' v-for='(item, index) in [1,2,3]' :key='index' )
     div(v-else)
       section.threads-page__loaded
@@ -78,7 +78,7 @@ v-main
           p(v-t="'threads_page.no_invite_only_threads'")
         .threads-page__collections(v-else)
           v-card.mb-3.thread-preview-collection__container
-            v-list.thread-previews(two-line)
+            v-list.thread-previews(lines="two")
               thread-preview(v-for="thread in threads", :key="thread.id", :thread="thread")
 
       .d-flex.align-center.justify-center
