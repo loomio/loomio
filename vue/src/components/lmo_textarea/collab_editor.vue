@@ -493,7 +493,7 @@ div
   pointer-events: none
   height: 0
 
-.theme--dark
+.v-theme--dark
   .ProseMirror p.is-editor-empty:first-child::before
     color: rgba(255,255,255,0.333)
 
@@ -501,7 +501,7 @@ div
   outline: none
   min-height: 64px
 
-.theme--dark
+.v-theme--dark
   progress
     background-color: #333
     border-color: #444

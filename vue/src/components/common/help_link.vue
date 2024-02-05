@@ -17,7 +17,7 @@ v-btn.help-link.text-medium-emphasis(elevation="0" :href="'https://help.loomio.c
   a
     color: rgba(0, 0, 0, 0.6)
 
-.theme--dark .help-link
+.v-theme--dark .help-link
   a
     color: rgba(255, 255, 255, 0.7)
 </style>

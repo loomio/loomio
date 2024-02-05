@@ -542,7 +542,7 @@ export default {
 .lmo-form-label {
   font-size: 14px;
 }
-.theme--dark .lmo-form-label{
+.v-theme--dark .lmo-form-label{
 }
 .theme--light .lmo-form-label{
   color: rgba(0, 0, 0, 0.6);
