@@ -33,22 +33,23 @@ export default {
 
     v-list
       template(v-for="(action, name) in actions")
-        v-list-item(
-          dense
-          v-if='!action.to'
-          :key="name"
-          @click="action.perform()"
-          :class="'action-dock__button--' + name")
-          template(v-slot:prepend)
-            common-icon(:name="action.icon")
-          v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: (action.nameArgs && action.nameArgs()) }")
-        v-list-item(
-          dense
-          v-if='action.to'
-          :key="name"
-          :to="action.to()"
-          :class="'action-dock__button--' + name")
-          template(v-slot:prepend)
-            common-icon(:name="action.icon")
-          v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: (action.nameArgs && action.nameArgs()) }")
+        template(v-if="action.canPerform()")
+          v-list-item(
+            dense
+            v-if='!action.to'
+            :key="name"
+            @click="action.perform()"
+            :class="'action-dock__button--' + name")
+            template(v-slot:prepend)
+              common-icon(:name="action.icon")
+            v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: (action.nameArgs && action.nameArgs()) }")
+          v-list-item(
+            dense
+            v-if='action.to'
+            :key="name"
+            :to="action.to()"
+            :class="'action-dock__button--' + name")
+            template(v-slot:prepend)
+              common-icon(:name="action.icon")
+            v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: (action.nameArgs && action.nameArgs()) }")
 </template>

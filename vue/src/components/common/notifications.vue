@@ -52,10 +52,10 @@ v-menu.notifications(v-model="open" offset-y bottom)
       common-icon(v-else name="mdi-bell")
 
   v-sheet.notifications__dropdown
-    v-list(v-if="notifications.length > 0" dense)
+    v-list(v-if="notifications.length > 0" lines="one" density="compact")
       v-list-item.notification(:class="{'v-list-item--active': unreadIds.includes(n.id)}" v-for="n in notifications" :key="n.id" :to="n.href()")
         template(v-slot:prepend)
-          user-avatar(v-if="n.actor()" :user="n.actor()")
+          user-avatar.mr-2(v-if="n.actor()" :user="n.actor()")
         v-list-item-title.notification__content
           span(v-t="{path: 'notifications.with_title.'+n.kind, args: n.args()}")
           space

@@ -161,7 +161,7 @@ export default {
 
 <template lang="pug">
 .poll-common-templates-list
-  thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
+  thread-template-help-panel.mb-4(v-if="discussionTemplate" :discussion-template="discussionTemplate")
   .d-flex(:class="{'px-4': !discussion}")
     v-chip.mr-1(
       v-for="icon, name in filters"
@@ -197,6 +197,7 @@ export default {
           v-list-item.decision-tools-card__poll-type(
             :class="'decision-tools-card__poll-type--' + template.pollType"
             :key='template.id || template.key'
+            lines="two"
           )
             v-list-item-title
               span {{ template.processName }}
@@ -212,6 +213,7 @@ export default {
         @click="cloneTemplate(template)"
         :class="'decision-tools-card__poll-type--' + template.pollType"
         :key="template.id || template.key"
+        lines="two"
       )
         v-list-item-title
           span {{ template.processName }}
