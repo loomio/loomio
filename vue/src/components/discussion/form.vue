@@ -2,7 +2,7 @@
 import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 import ThreadService from '@/shared/services/thread_service';
-import { map, sortBy, filter, debounce, without, uniq, find, compact } from 'lodash';
+import { compact } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
@@ -35,27 +35,26 @@ export default {
   },
 
   mounted() {
-    Records.users.fetchGroups();
-
-    if (this.discussion.discussionTemplateId) {
-      Records.discussionTemplates.findOrFetchById(this.discussion.discussionTemplateId).then(template => {
-        this.discussionTemplate = template;
-        if ((template.recipientAudience === 'group') && this.discussion.groupId) {
-          return this.initialRecipients = [
-          { 
-            type: 'audience',
-            id: 'group',
-            icon: 'mdi-account-group',
-            name: I18n.t('announcement.audiences.group', {name: this.discussion.group().name}),
-            size: this.discussion.group().acceptedMembershipsCount
+    Records.users.findOrFetchGroups().then(() => {
+      if (this.discussion.discussionTemplateId) {
+        Records.discussionTemplates.findOrFetchById(this.discussion.discussionTemplateId).then(template => {
+          this.discussionTemplate = template;
+          console.log('template.recipientAudience',template.recipientAudience);
+          if ((template.recipientAudience === 'group') && this.discussion.groupId) {
+            return this.initialRecipients = [{
+              type: 'audience',
+              id: 'group',
+              icon: 'mdi-account-group',
+              name: I18n.t('announcement.audiences.group', {name: this.discussion.group().name}),
+              size: this.discussion.group().acceptedMembershipsCount
+            }];
           }
-          ];
-        }
-      })
-      .finally(() => { this.loaded = true; });
-    } else {
-      this.loaded = true;
-    }
+        })
+        .finally(() => { this.loaded = true; });
+      } else {
+        this.loaded = true;
+      }
+    });
 
     this.watchRecords({
       collections: ['groups', 'memberships'],
@@ -168,9 +167,9 @@ export default {
       aria-hidden='true'
       :to="urlFor(discussion)"
     )
-      v-icon mdi-close
+      common-icon(name="mdi-close")
     v-btn.back-button(v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
 
 
   .pa-4
@@ -199,16 +198,6 @@ export default {
 
       tags-field(:model="discussion")
         
-      //- recipients-autocomplete(
-      //-   v-if="!discussion.id"
-      //-   :label="$t(discussion.groupId ? 'action_dock.notify' : 'common.action.invite')"
-      //-   :placeholder="$t('announcement.form.discussion_announced.'+ (discussion.groupId ? 'notify_helptext' : 'helptext'))"
-      //-   :initial-recipients="initialRecipients"
-      //-   :hint="$t('announcement.form.placeholder')"
-      //-   :model="discussion"
-      //-   :reset="reset"
-      //- )
-
       lmo-textarea(
         :model='discussion'
         field="description"

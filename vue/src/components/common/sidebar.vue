@@ -6,9 +6,10 @@ import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import InboxService   from '@/shared/services/inbox_service';
+import PlausibleService from '@/shared/services/plausible_service';
+import Flash from '@/shared/services/flash';
 
-import { isUndefined, sortBy, filter, find, head, each, uniq, map, sum, compact,
-concat, intersection, difference, orderBy } from 'lodash';
+import { map, sum, compact } from 'lodash-es';
 
 export default {
   data() {
@@ -24,7 +25,7 @@ export default {
       unreadCounts: {},
       expandedGroupIds: [],
       openGroups: [],
-      unreadDirectThreadsCount: 0
+      unreadDirectThreadsCount: 0,
     };
   },
 
@@ -82,7 +83,7 @@ export default {
     },
 
     fetchData() {
-      Records.users.fetchGroups().then(() => {
+      Records.users.findOrFetchGroups().then(() => {
         if ((this.$router.history.current.path === "/dashboard") && (Session.user().groups().length === 1)) {
           this.$router.replace(`/g/${Session.user().groups()[0].key}`);
         }
@@ -103,7 +104,7 @@ export default {
       this.closedCounts = {};
       this.openGroups = [];
       Session.user().groups().forEach(group => {
-        this.openCounts[group.id] = filter(group.discussions(), discussion => discussion.isUnread()).length;
+        this.openCounts[group.id] = group.discussions().filter(discussion => discussion.isUnread()).length;
       });
       Session.user().parentGroups().forEach(group => {
         if (this.organization && (this.organization.id === group.parentOrSelf().id)) {
@@ -118,7 +119,22 @@ export default {
     },
 
     canViewPublicGroups() { return AbilityService.canViewPublicGroups(); },
-    setProfilePicture() { EventBus.$emit('openModal', {component: 'ChangePictureForm'}); }
+    setProfilePicture() { EventBus.$emit('openModal', {component: 'ChangePictureForm'}); },
+    startOrFindDemo() {
+      let group;
+      if (group = Session.user().parentGroups().find(g => g.subscription.plan == 'demo')) {
+        Flash.success('templates.login_to_start_demo');
+        let url = this.urlFor(group);
+        if (this.$route.path != url) { this.$router.replace(url); }
+      } else {
+        PlausibleService.trackEvent('start_demo');
+        Flash.wait('templates.generating_demo');
+        Records.post({path: 'demos/clone'}).then(data => {
+          Flash.success('templates.demo_created');
+          this.$router.push(this.urlFor(Records.groups.find(data.groups[0].id)));
+        })
+      }
+    }
   },
 
   computed: {
@@ -162,7 +178,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-divider
     v-list-item.sidebar__list-item-button--recent(@click="setProfilePicture" color="warning")
       v-list-item-icon
-        v-icon mdi-emoticon-outline
+        common-icon(name="mdi-emoticon-outline")
       v-list-item-content
         v-list-item-title(v-t="'profile_page.incomplete_profile'")
         v-list-item-subtitle(v-t="'profile_page.set_your_profile_picture'")
@@ -181,7 +197,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-list-item.sidebar__list-item-button--start-thread(dense to="/d/new")
     v-list-item-title(v-t="'sidebar.start_thread'")
     v-list-item-icon
-      v-icon mdi-plus
+      common-icon(name="mdi-plus")
   v-list-item(dense to="/tasks" :disabled="organizations.length == 0")
     v-list-item-title(v-t="'tasks.tasks'")
   v-divider
@@ -226,29 +242,31 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 
     v-list-item.sidebar__list-item-button--start-group(v-if="canStartGroups" to="/g/new")
       v-list-item-avatar
-        v-icon(tile) mdi-plus
+        common-icon(tile name="mdi-plus")
       v-list-item-title(v-t="'group_form.new_group'")
   v-divider
-  v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" to="/try" dense)
-    v-list-item-title(v-t="'templates.demo_group'")
+  v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" @click="startOrFindDemo" two-line dense)
+    v-list-item-content
+      v-list-item-title(v-t="'templates.start_a_demo'")
+      v-list-item-subtitle(v-t="'templates.play_with_an_example_group'")
     v-list-item-icon
-      v-icon mdi-car-convertible
-  v-list-item(v-if="showHelp", :href="helpURL" target="_blank" dense)
-    v-list-item-title(v-t="'common.help_and_guides'")
+      common-icon(name="mdi-car-convertible")
+  v-list-item(v-if="showHelp", :href="helpURL" target="_blank" dense two-line)
+    v-list-item-content
+      v-list-item-title(v-t="'sidebar.help_docs'")
+      v-list-item-subtitle(v-t="'sidebar.a_detailed_guide_to_loomio'")
     v-list-item-icon
-      v-icon mdi-book-open-page-variant
-  v-list-item.sidebar__list-item-button--example-templates(v-if="showTemplateGallery" to="/templates" dense)
-    v-list-item-title(v-t="'sidebar.examples_and_templates'")
-    v-list-item-icon
-      v-icon mdi-lightbulb-on
+      common-icon(name="mdi-book-open-page-variant")
   v-list-item(dense to="/explore" v-if="showExploreGroups")
     v-list-item-title(v-t="'sidebar.explore_groups'")
     v-list-item-icon
-      v-icon mdi-map-search
-  v-list-item(v-if="showContact" to="/contact" dense)
-    v-list-item-title(v-t="'user_dropdown.contact_support'")
+      common-icon(name="mdi-map-search")
+  v-list-item(v-if="showContact" @click="$router.replace('/contact')" dense two-line)
+    v-list-item-content
+      v-list-item-title(v-t="'user_dropdown.contact_support'")
+      v-list-item-subtitle(v-t="'sidebar.talk_to_the_loomio_team'")
     v-list-item-icon
-      v-icon mdi-face-agent
+      common-icon(name="mdi-face-agent")
 </template>
 <style lang="sass">
 .sidenav-left

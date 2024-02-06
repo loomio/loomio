@@ -1,7 +1,6 @@
 <script lang="js">
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import Session        from '@/shared/services/session';
-import {map, filter, find} from 'lodash';
 
 export default {
   components: {
@@ -10,7 +9,7 @@ export default {
 
   props: {
     model: Object,
-
+    includeActor: Boolean,
     initialRecipients: {
       type: Array,
       default() { return []; }
@@ -33,5 +32,6 @@ export default {
     :label="$t(model.id ? 'action_dock.notify' : 'common.action.invite')"
     :placeholder="$t('announcement.form.'+model.constructor.singular+'_'+ (model.id ? 'edited' : 'announced')+ '.helptext')"
     :initial-recipients="initialRecipients"
+    :include-actor="includeActor"
     :model="model")
 </template>

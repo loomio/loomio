@@ -4,10 +4,11 @@ import AbilityService     from '@/shared/services/ability_service';
 import EventBus           from '@/shared/services/event_bus';
 import RecordLoader       from '@/shared/services/record_loader';
 import PageLoader         from '@/shared/services/page_loader';
-import { map, debounce, orderBy, intersection, compact, omit, filter, concat, uniq} from 'lodash';
+import { debounce, orderBy, intersection, concat, uniq } from 'lodash-es';
 import Session from '@/shared/services/session';
+import { mdiMagnify } from '@mdi/js';
 
-export default 
+export default
 {
   created() {
     this.onQueryInput = debounce(val => {
@@ -29,7 +30,8 @@ export default
       loader: null,
       groupIds: [],
       per: 25,
-      dummyQuery: null
+      dummyQuery: null,
+      mdiMagnify
     };
   },
 
@@ -227,8 +229,12 @@ export default
       return Session.isSignedIn();
     },
 
+    isMember() {
+      return this.group && Session.user().membershipFor(this.group);
+    },
+
     unreadCount() {
-      return filter(this.discussions, discussion => discussion.isUnread()).length;
+      return this.discussions.filter(discussion => discussion.isUnread()).length;
     },
 
     suggestClosedThreads() {
@@ -246,7 +252,7 @@ div.discussions-panel(v-if="group")
       template(v-slot:activator="{ on, attrs }")
         v-btn.mr-2.text-lowercase.discussions-panel__filters(v-on="on" v-bind="attrs" text)
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
-          v-icon mdi-menu-down
+          common-icon(name="mdi-menu-down")
       v-list
         v-list-item.discussions-panel__filters-open(@click="routeQuery({t: null})")
           v-list-item-title(v-t="'discussions_panel.open'")
@@ -262,7 +268,7 @@ div.discussions-panel(v-if="group")
         v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.tags'")
-          v-icon mdi-menu-down
+          common-icon(name="mdi-menu-down")
       v-sheet.pa-1
         tags-display(:tags="group.tagNames()" :group="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId")
     v-text-field.mr-2.flex-grow-1(
@@ -273,14 +279,14 @@ div.discussions-panel(v-if="group")
       @keyup.enter="openSearchModal"
       @click:append="openSearchModal"
       :placeholder="$t('navbar.search_threads', {name: group.name})"
-      append-icon="mdi-magnify")
+      :append-icon="mdiMagnify")
     v-btn.discussions-panel__new-thread-button(
       v-if='canStartThread'
       v-t="'navbar.start_thread'"
       :to="'/thread_templates/?group_id='+group.id"
       color='primary')
 
-  v-alert(color="info" text outlined v-if="noThreads")
+  v-alert(color="info" text outlined v-if="isMember && noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
     p.px-4(v-t="'discussions_panel.lets_start_a_thread'")
 
@@ -289,9 +295,9 @@ div.discussions-panel(v-if="group")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
       .discussions-panel__content
-        //- .discussions-panel__list--empty.pa-4(v-if='noThreads')
-        //-   p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
-        //-   p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
+        .discussions-panel__list--empty.pa-4(v-if='noThreads')
+          p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
+          p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(two-line)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions", :key="thread.id", :thread="thread" group-page)

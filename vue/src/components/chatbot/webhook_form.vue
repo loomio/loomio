@@ -1,9 +1,4 @@
 <script lang="js">
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import EventBus from '@/shared/services/event_bus';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
@@ -75,7 +70,7 @@ export default {
 <template lang="pug">
 v-card.chatbot-matrix-form
   v-card-title
-    h1.headline(tabindex="-1")
+    h1.text-h5(tabindex="-1")
       span Webhook
       space
       span(v-t="'chatbot.chatbot'")

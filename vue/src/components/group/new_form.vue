@@ -7,7 +7,7 @@ import Session  from '@/shared/services/session';
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
 import Flash   from '@/shared/services/flash';
-import { isEmpty, compact, debounce } from 'lodash';
+import { isEmpty, debounce } from 'lodash-es';
 import openModal from '@/shared/helpers/open_modal';
 import I18n from '@/i18n';
 
@@ -167,8 +167,8 @@ v-card.group-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(tabindex="-1" v-if='group.parentId' v-t="'group_form.new_subgroup'")
-        h1.headline(tabindex="-1" v-if='!group.parentId' v-t="'group_form.new_group'")
+        h1.text-h5(tabindex="-1" v-if='group.parentId' v-t="'group_form.new_subgroup'")
+        h1.text-h5(tabindex="-1" v-if='!group.parentId' v-t="'group_form.new_group'")
       dismiss-modal-button(v-if="group.parentId" :model="group")
   .px-4
     p.text--secondary(v-if='!group.parentId' v-t="'group_form.new_group_explainer'")
@@ -215,7 +215,7 @@ v-card.group-form
 
     div.pt-2(v-if="!group.parentId")
       span.text--secondary
-        //- v-icon mdi-lock-outline
+        //- common-icon(name="mdi-lock-outline")
         span(v-t="'common.privacy.privacy'")
         span :
         space

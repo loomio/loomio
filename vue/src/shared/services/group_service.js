@@ -1,9 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let GroupService;
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
@@ -15,22 +9,30 @@ import AppConfig      from '@/shared/services/app_config';
 import i18n from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 
-export default new (GroupService = class GroupService {
+export default new class GroupService {
   actions(group) {
     const membership = group.membershipFor(Session.user());
     
-    // email_to_group:
-    //   name: 'email_to_group.email_to_group_address'
-    //   icon: 'mdi-send'
-    //   menu: true
-    //   canPerform: -> AbilityService.canStartThread(group)
-    //   perform: ->
-    //     openModal
-    //       component: 'EmailToGroupSettings'
-    //       props:
-    //         group: group
-
     return {
+      email_group: {
+        name: 'common.value',
+        nameArgs: () => { return {value: group.handle+"@"+AppConfig.theme.reply_hostname} },
+        icon: 'mdi-email',
+        dock: 2,
+        canPerform() {
+          return group.handle && AbilityService.canStartThread(group);
+        },
+        perform() {
+          EventBus.$emit('openModal', {
+            component: 'EmailToGroupSettings',
+            persistent: false,
+            props: {
+              group: group
+            }
+          });
+        }
+      },
+
       translate_group: {
         name: 'common.action.translate',
         icon: 'mdi-translate',
@@ -83,7 +85,7 @@ export default new (GroupService = class GroupService {
         menu: true,
         canPerform() { return AbilityService.canAdminister(group); },
         perform() {
-          return EventBus.$emit('openModal', {
+          EventBus.$emit('openModal', {
             component: 'TagsSelect',
             props: {
               group
@@ -252,4 +254,4 @@ export default new (GroupService = class GroupService {
       }
     };
   }
-});
+};

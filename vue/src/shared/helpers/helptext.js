@@ -1,5 +1,5 @@
 import Records from '@/shared/services/records';
-import {includes} from 'lodash';
+import {includes} from 'lodash-es';
 import I18n from '@/i18n';
 
 

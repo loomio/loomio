@@ -3,7 +3,7 @@ import AppConfig from '@/shared/services/app_config';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
-import marked from 'marked';
+// import marked from '@/marked';
 import md5 from 'md5';
 import I18n from '@/i18n';
 

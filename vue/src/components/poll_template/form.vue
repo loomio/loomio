@@ -1,7 +1,7 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
-import { compact, without, some, pick } from 'lodash';
+import { compact, without, some, pick } from 'lodash-es';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
@@ -209,11 +209,11 @@ export default {
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
       template(v-slot:divider)
-        v-icon mdi-chevron-right
+        common-icon(name="mdi-chevron-right")
     v-spacer
     dismiss-modal-button(v-if="isModal" :model='pollTemplate')
     v-btn.back-button(v-if="!isModal && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
   v-card-title.px-0
     h1.text-h4(tabindex="-1" v-t="titlePath")
 
@@ -305,11 +305,11 @@ export default {
                 @click="removeOption(option)"
                 :title="$t('common.action.delete')"
               )
-                v-icon.text--secondary mdi-delete
+                common-icon.text--secondary(name="mdi-delete")
             v-list-item-action.ml-0
               v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                v-icon.text--secondary mdi-pencil
-            v-icon.text--secondary(v-handle, :title="$t('common.action.move')") mdi-drag-vertical
+                common-icon.text--secondary(name="mdi-pencil")
+            common-icon.text--secondary(v-handle :title="$t('common.action.move')" name="mdi-drag-vertical")
 
     .d-flex.justify-center
       v-btn.poll-template-form__add-option-btn.my-2(@click="addOption" v-t="'poll_common_add_option.modal.title'")
@@ -426,6 +426,21 @@ export default {
       :items="hideResultsItems"
       v-model="pollTemplate.hideResults"
     )
+
+  lmo-textarea(
+    :model='pollTemplate'
+    field="outcomeStatement"
+    :placeholder="$t('poll_common_outcome_form.statement_template_placeholder')"
+    :label="$t('poll_common_outcome_form.outcome_statement_template')"
+  )
+
+  v-text-field(
+    :label="$t('poll_common_outcome_form.review_due_in_days')"
+    :hint="$t('poll_common_outcome_form.review_due_in_days_hint')"
+    type="number"
+    min="1"
+    v-model="pollTemplate.outcomeReviewDueInDays")
+  validation-errors(:subject="pollTemplate" field="outcomeReviewDueInDays")
 
   .d-flex.justify-space-between.my-4.mt-4.poll-common-form-actions
     v-spacer

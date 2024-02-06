@@ -2,6 +2,7 @@
 import AppConfig from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
 import I18n from '@/i18n'
+import { mdiMicrophone } from '@mdi/js';
 let mediaRecorder;
 let chunks = [];
 let blob;
@@ -77,6 +78,7 @@ export default {
       url: null,
       stopStreams: function() {},
       transcriptionAvailable: AppConfig.features.app.transcription, 
+      mdiMicrophone
     }
   },
 
@@ -166,12 +168,12 @@ export default {
 .recording-modal
   .pa-4
     .d-flex.justify-space-between
-      h1.headline(v-t="'record_modal.record_audio'")
+      h1.text-h5(v-t="'record_modal.record_audio'")
       v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='dismiss')
-        v-icon mdi-close
+        common-icon(name="mdi-close")
     v-alert(v-if="error" type="error") {{error}}
     div(v-else)
-      v-alert(type="info" v-if="!url && !onAir" icon="mdi-microphone")
+      v-alert(type="info" v-if="!url && !onAir" :icon="mdiMicrophone")
         span(v-t="'record_modal.why_type_when_you_can_talk'")
         template(v-if="transcriptionAvailable")
           br

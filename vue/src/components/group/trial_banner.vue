@@ -51,6 +51,6 @@ v-alert(outlined color="primary" dense v-if="isTrialing")
       target="_blank"
       :title="$t('current_plan_button.tooltip')"
     )
-      v-icon mdi-rocket
+      common-icon(name="mdi-rocket")
       span(v-t="'current_plan_button.view_plans'")
 </template>

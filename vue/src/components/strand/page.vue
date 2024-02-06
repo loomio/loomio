@@ -4,10 +4,8 @@ import Session           from '@/shared/services/session';
 import EventBus          from '@/shared/services/event_bus';
 import AbilityService    from '@/shared/services/ability_service';
 import ThreadLoader      from '@/shared/loaders/thread_loader';
-import DemoBanner from '@/components/group/demo_banner';
 
 export default {
-  components: {DemoBanner},
   data() {
     return {
       discussion: null,
@@ -197,7 +195,6 @@ export default {
 .strand-page
   v-main
     v-container.max-width-800.px-0.px-sm-3(v-if="discussion")
-      demo-banner(:group="discussion.group()" v-if="discussion.groupId")
       //- p(v-if="$route.query.debug" v-for="rule in loader.rules") {{rule}}
       //- p loader: {{loader.focusAttrs}}
       //- p ranges: {{discussion.ranges}}
@@ -207,6 +204,6 @@ export default {
       thread-current-poll-banner(:discussion="discussion")
       discussion-fork-actions(:discussion='discussion', :key="'fork-actions'+ discussion.id")
 
-      strand-card(v-if="loader", :loader="loader")
+      strand-card(v-if="loader && loader.firstLoad", :loader="loader")
   strand-toc-nav(v-if="loader", :discussion="discussion", :loader="loader", :key="discussion.id")
 </template>

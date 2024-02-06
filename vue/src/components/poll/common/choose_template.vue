@@ -4,7 +4,7 @@ import Session      from '@/shared/services/session';
 import Records      from '@/shared/services/records';
 import EventBus     from '@/shared/services/event_bus';
 import PollTemplateService     from '@/shared/services/poll_template_service';
-import {map, without, compact, pickBy} from 'lodash';
+import { pickBy } from 'lodash-es';
 import { ContainerMixin, HandleDirective } from 'vue-slicksort';
 import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
 
@@ -169,12 +169,12 @@ export default {
       @click="filter = name"
       :class="'poll-common-choose-template__'+name"
     )
-      v-icon(small).mr-2 {{icon}}
+      common-icon.mr-2(small :name="icon")
       span.poll-type-chip-name(v-t="filterLabels[name]")
     template(v-if="userIsAdmin")
       v-spacer
       v-chip(@click="filter = 'admin'" :outlined="filter != 'admin'")
-        v-icon(small).mr-2 mdi-cog
+        common-icon(small name="mdi-cog").mr-2
         span.poll-type-chip-name(v-t="filterLabels['admin']")
   v-list.decision-tools-card__poll-types(two-line dense)
     template(v-if="filter == 'admin'")
@@ -204,7 +204,7 @@ export default {
                 v-chip.ml-2(x-small outlined v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
               v-list-item-subtitle {{ template.processSubtitle }}
             v-list-item-action.handle(v-handle style="cursor: grab")
-              v-icon mdi-drag-vertical
+              common-icon(name="mdi-drag-vertical")
     template(v-else)
       v-list-item.decision-tools-card__poll-type(
         v-for='(template, i) in pollTemplates'

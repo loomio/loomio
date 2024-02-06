@@ -1,10 +1,4 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let ReactionService;
-import { debounce, forEach, compact } from 'lodash';
+import { debounce, forEach } from 'lodash-es';
 import Records from '@/shared/services/records';
 
 let ids = {};
@@ -34,7 +28,7 @@ const fetch = debounce(function() {
 }
 , 500);
 
-export default new (ReactionService = class ReactionService {
+export default new class ReactionService {
   enqueueFetch(model) {
     if (typeof model.isA === 'function' ? model.isA('stance') : undefined) { ids['stance_ids'].push(model.id); }
     if (typeof model.isA === 'function' ? model.isA('comment') : undefined) { ids['comment_ids'].push(model.id); }
@@ -43,4 +37,4 @@ export default new (ReactionService = class ReactionService {
     if (typeof model.isA === 'function' ? model.isA('outcome') : undefined) { ids['outcome_ids'].push(model.id); }
     return fetch();
   }
-});
+};

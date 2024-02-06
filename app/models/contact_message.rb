@@ -6,5 +6,5 @@ class ContactMessage
   attr_accessor :name, :email, :user_id, :subject, :message
 
   validates :email, presence: true, email: true
-  validates :message, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
+  # validates :message, presence: true, length: { maximum: Rails.application.secrets.max_message_length }
 end

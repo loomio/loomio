@@ -1,10 +1,5 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import Records from '@/shared/services/records';
-import { some, last, cloneDeep, max, isNumber, uniq, compact, orderBy, camelCase, forEach, isObject, sortedUniq, sortBy, without, map } from 'lodash';
+import { some, last, cloneDeep, max, uniq, compact, orderBy } from 'lodash-es';
 import Vue from 'vue';
 import RangeSet         from '@/shared/services/range_set';
 import EventBus         from '@/shared/services/event_bus';
@@ -26,8 +21,9 @@ export default class ThreadLoader {
     this.visibleKeys = {};
     this.collapsed = Vue.observable({});
     this.loading = false;
+    this.firstLoad = false
     this.padding = 50;
-    return this.maxAutoLoadMore = 50;
+    this.maxAutoLoadMore = 500;
   }
 
   firstUnreadSequenceId() {
@@ -140,7 +136,7 @@ export default class ThreadLoader {
             $jgt: event.positionKey
           }
         },
-        simplesort: 'positionKey',
+        sortByPositionKey: true,
         limit: this.padding
       },
       remote: {
@@ -162,8 +158,7 @@ export default class ThreadLoader {
             $jlt: event.positionKey
           }
         },
-        simplesort: 'positionKey',
-        simplesortDesc: true,
+        sortByPositionKeyDesc: true,
         limit: this.padding
       },
       remote: {
@@ -184,8 +179,7 @@ export default class ThreadLoader {
           discussionId: this.discussion.id,
           parentId: event.id
         },
-        simplesort: 'positionKey',
-        simplesortDesc: true,
+        sortByPositionKeyDesc: true,
         limit: this.padding
       },
       remote: {
@@ -225,7 +219,7 @@ export default class ThreadLoader {
           depth: 1,
           position: {$gte: position}
         },
-        simplesort: 'positionKey',
+        sortByPositionKey: true,
         limit: this.padding
       },
       remote: {
@@ -245,7 +239,7 @@ export default class ThreadLoader {
           discussionId: this.discussion.id,
           positionKey: {$jgte: positionKey}
         },
-        simplesort: 'positionKey',
+        sortByPositionKey: true,
         limit: parseInt(this.padding/2)
       },
       remote: {
@@ -263,8 +257,7 @@ export default class ThreadLoader {
           discussionId: this.discussion.id,
           positionKey: {$jlt: positionKey}
         },
-        simplesort: 'positionKey',
-        simplesortDesc: true,
+        sortByPositionKeyDesc: true,
         limit: parseInt(this.padding/2)
       },
       remote: {
@@ -285,7 +278,7 @@ export default class ThreadLoader {
       local: {
         find: {
           discussionId: this.discussion.id,
-          sequenceId: {'$jgte': id}
+          sequenceId: {'$gte': id}
         },
         simplesort: 'sequenceId',
         limit: this.padding
@@ -365,7 +358,7 @@ export default class ThreadLoader {
       local: {
         find: {
           discussionId: this.discussion.id,
-          sequenceId: {$jgte: id}
+          sequenceId: {$gte: id}
         },
         limit: this.padding,
         order: 'sequenceId'
@@ -381,7 +374,6 @@ export default class ThreadLoader {
 
   addRule(rule) {
     const ruleString = JSON.stringify(rule);
-
     if (!this.ruleStrings.includes(ruleString)) {
       this.rules.push(rule);
       this.ruleStrings.push(ruleString);
@@ -410,6 +402,7 @@ export default class ThreadLoader {
 
     return Promise.all(promises).finally(() => {
       this.fetchedRules = uniq(this.fetchedRules.concat(newRules));
+      this.firstLoad = true
       return this.loading = false;
     });
   }
@@ -422,6 +415,18 @@ export default class ThreadLoader {
 
       if (rule.local.simplesort) {
         chain = chain.simplesort(rule.local.simplesort, rule.local.simplesortDesc);
+      } else if (rule.local.sortByPositionKey) {
+        chain = chain.sort((a,b) => {
+          if (a.positionKey == b.positionKey) { return 0 }
+          if (a.positionKey > b.positionKey) { return 1 }
+          if (a.positionKey < b.positionKey) { return -1 }
+        })
+      } else if (rule.local.sortByPositionKeyDesc) {
+        chain = chain.sort((a,b) => {
+          if (a.positionKey == b.positionKey) { return 0 }
+          if (a.positionKey > b.positionKey) { return -1 }
+          if (a.positionKey < b.positionKey) { return 1 }
+        })
       }
 
       if (rule.local.limit) {
@@ -468,7 +473,7 @@ export default class ThreadLoader {
     const lastPosition = (parentExists && (collection[0].event.parent().childCount)) || 0;
 
 
-    return collection.forEach(obj => {
+    collection.forEach(obj => {
       obj.isUnread = this.isUnread(obj.event);
       const isFirstInRange = some(ranges, range => range[0] === obj.event.position);
       const isLastInLastRange = last(ranges)[1] === obj.event.position;
@@ -490,7 +495,7 @@ export default class ThreadLoader {
       obj.missingAfterCount = (missingAfter && (lastPosition - last(ranges)[1])) || 0;
       obj.missingChildCount = obj.event.childCount - obj.children.length;
 
-      if (obj.children.length) { return this.addMetaData(obj.children); }
+      if (obj.children.length) { this.addMetaData(obj.children); }
     });
   }
 }

@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 ruby '3.2.2'
 gem 'rails', '7.0.7.2'
 gem 'rack', '2.2.8'
-gem 'uri', '0.12.2'
+gem 'uri', '0.13.0'
 gem 'rake'
 gem 'pg'
 gem 'active_record_extended'
@@ -15,21 +15,22 @@ gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
 gem 'cancancan'
 gem 'gravtastic'
-gem 'activeadmin', '~> 3.1.0'
-gem 'ransack', '4.1.0'
+gem 'activeadmin', '~> 3.2.0'
+gem 'ransack', '4.1.1'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.0'
 gem 'paper_trail', '~> 15.1.0'
 gem 'sidekiq', '~> 6.5.12'
-gem 'friendly_id', '~> 5.5.0'
+gem 'friendly_id', '~> 5.5.1'
 gem 'httparty', '~> 0.21.0'
 gem 'browser', '~> 5.3.1'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
-gem "google-cloud-storage", "~> 1.11", require: false
+gem "google-cloud-storage", "~> 1.48", require: false
 gem 'image_processing', '~> 1.12'
 gem "ruby-vips"
+gem "stackprof"
 gem "sentry-ruby"
 gem "sentry-rails"
 gem "sentry-sidekiq"
@@ -43,7 +44,7 @@ gem 'oj'
 gem "cld"
 gem 'custom_counter_cache'
 gem 'premailer-rails'
-gem 'activerecord-import', '1.5.0'
+gem 'activerecord-import', '1.5.1'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'
@@ -82,7 +83,7 @@ end
 group :test do
   gem 'webmock'
   gem 'rack_session_access'
-  gem 'rspec-rails', '~> 6.0.3'
+  gem 'rspec-rails', '~> 6.1.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'rspec-activemodel-mocks'

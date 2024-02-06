@@ -4,7 +4,6 @@ import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import Flash  from '@/shared/services/flash';
-import { last } from 'lodash';
 
 export default {
   props: {
@@ -60,7 +59,7 @@ v-layout.comment-form
   .thread-item__avatar.mr-3
     user-avatar(
       :user='comment.author() || actor'
-      :size='comment.parentId ? 28 : 36'
+      :size='comment.parentId ? 28 : 32'
     )
   form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
     submit-overlay(:value='comment.processing')

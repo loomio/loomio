@@ -42,6 +42,7 @@ ActiveAdmin.register User do
     column :email_verified
     column :locale
     column :time_zone
+    column :bot
     actions
   end
 
@@ -51,6 +52,7 @@ ActiveAdmin.register User do
       f.input :email, as: :string
       f.input :username, as: :string
       f.input :is_admin
+      f.input :bot, label: 'Bot account (do not add to polls)'
     end
     f.actions
   end
@@ -61,6 +63,7 @@ ActiveAdmin.register User do
     user.email = params[:user][:email]
     user.username = params[:user][:username]
     user.is_admin = params[:user][:is_admin]
+    user.bot = params[:user][:bot]
     user.save
     redirect_to admin_users_path, :notice => "User updated"
   end
@@ -78,7 +81,7 @@ ActiveAdmin.register User do
   end
 
   member_action :deactivate, method: :put do
-    DeactivateUserWorker.perform_async(params[:id])
+    DeactivateUserWorker.perform_async(params[:id], current_user.id)
     redirect_to admin_users_path, :notice => "User scheduled for deactivation immediately"
   end
 
@@ -122,7 +125,7 @@ ActiveAdmin.register User do
     end
 
     panel("Memberships") do
-      table_for user.memberships.includes(:group, :user, :revoker).order(:id).each do |m|
+      table_for user.all_memberships.includes(:group, :user).order(:id).each do |m|
         column :id
         column :group_name do |g|
           group = g.group
@@ -132,9 +135,6 @@ ActiveAdmin.register User do
         column :admin
         column :accepted_at
         column :revoked_at
-        column :revoker do |m|
-          m.revoker.present? ? m.revoker.name : ''
-        end
       end
     end
 

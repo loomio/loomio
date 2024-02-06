@@ -1,6 +1,6 @@
 <script lang="js">
 import { emojiReplaceText } from '@/shared/helpers/emojis';
-import { merge } from 'lodash';
+import { merge } from 'lodash-es';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
@@ -60,7 +60,7 @@ export default {
       if (!this.model.mentionedUsernames) { return this.model[this.column]; }
       let cooked = this.model[this.column];
       this.model.mentionedUsernames.forEach(username => cooked = cooked.replace(new RegExp(`@${username}`, 'g'), `[@${username}](/u/${username})`));
-      return cooked;
+      return cooked.replace(/^&gt; /, '> ').replace(/\n&gt; /, '\n> '); // fix for when > is encoded as &gt; by server
     }
   }
 };
@@ -186,12 +186,12 @@ img.emoji
     margin-top: 0
 
   h1
-    font-size: 2.125rem
+    font-size: 1.75rem
     font-weight: 400
     letter-spacing: 0.015625rem
 
   h2
-    font-size: 1.5rem
+    font-size: 1.25rem
     font-weight: 400
     letter-spacing: normal
 
@@ -213,11 +213,10 @@ img.emoji
   word-break: break-word
 
   img
-    aspect-ratio: attr(width) / attr(height)
     max-width: 100%
     max-height: 600px
-    width: auto
     height: auto
+    width: auto
 
   ol, ul
     padding-left: 24px
@@ -338,6 +337,16 @@ img.emoji
 
   thead td
     font-weight: bold
+
+  table table
+    margin: 0 !important
+    border: 0 !important
+
+  td td
+    padding: 0 !important
+
+  td td td
+    border: 0 !important
 
   table
     p

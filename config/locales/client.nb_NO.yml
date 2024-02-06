@@ -2,7 +2,7 @@ nb_NO:
   loomio_tags:
     name_label: Navn
   timezones:
-    local: Lokal tid ({{value}})
+    local: Lokal tid (%{value})
   common:
     you: Du
     expand: Utvid
@@ -16,8 +16,8 @@ nb_NO:
     time:
       am: AM
       pm: PM
-    closing_in: 'Stenger {{time}}'
-    closed_ago: 'Stengt {{time}}'
+    closing_in: 'Stenger %{time}'
+    closed_ago: 'Stengt %{time}'
     volume: 'Volum'
     notification_volume: 'Varslingsvolum'
     group: 'Gruppe'
@@ -45,7 +45,7 @@ nb_NO:
     copy: 'Kopier'
     copy_text: 'Kopier tekst'
     copied: 'Kopiert til utklippstavle'
-    points_abbrev: Hver stemme er verdt {{score}} poeng
+    points_abbrev: Hver stemme er verdt %{score} poeng
     total: Totalt
     action:
       search: 'Søk'
@@ -120,8 +120,8 @@ nb_NO:
   verify_email_notice:
     please_verify: Takk for din deltakelse. Vær grei å sjekk e-posten din for å verifisere din stemme.
   previous_polls_page:
-    heading: Aktivitet i {{name}}
-    polls_count: Viser {{loaded}} av {{total}} beslutninger
+    heading: Aktivitet i %{name}
+    polls_count: Viser %{loaded} av %{total} beslutninger
     search_activities: Søk i beslutninger
   volume_levels:
     loud: 'Høyt'
@@ -197,7 +197,7 @@ nb_NO:
       remove_attachment: 'Fjern vedlegg'
     messages:
       created: 'Kommentar lagt til'
-      replied: '{{name}} varslet om svar'
+      replied: '%{name} varslet om svar'
       updated: 'Kommentar oppdatert'
       destroyed: 'Kommentar slettet'
     say_something: Si noe...
@@ -206,11 +206,11 @@ nb_NO:
     cancel_reply: 'Avslutt svar'
     confirm_delete_message: 'Er du sikker på at du vil slette denne kommentaren?'
     confirm_delete: 'Slett kommentar'
-    in_reply_to: "Svar til {{name}}"
+    in_reply_to: "Svar til %{name}"
     write_a_comment: "Skriv en kommentar..."
     submit_button:
       label: 'Post'
-    private_privacy_notice: 'Kommentaren din vil være synlig for medlemmer av {{groupName}}.'
+    private_privacy_notice: 'Kommentaren din vil være synlig for medlemmer av %{groupName}.'
     public_privacy_notice: 'Kommentaren din vil være synlig for alle på nettet.'
     sign_in: "Logg inn for å bli med i samtalen"
   sidebar:
@@ -247,12 +247,12 @@ nb_NO:
     button_label: 'Brukermeny'
     edit_profile: 'Rediger brukerprofil'
     help: 'Hjelp'
-    contact_site_name: 'Kontakt {{site_name}}'
+    contact_site_name: 'Kontakt %{site_name}'
     sign_out: 'Logg ut'
   membership_card:
     group_members: "Gruppemedlemmer"
     discussion_members: "Trådmedlemmer"
-    poll_members: "{{pollType}} medlemmer"
+    poll_members: "%{pollType} medlemmer"
     invite_to_group: "Inviter til gruppe"
     invite_to_discussion: "Inviter til tråd"
     invite_to_poll: "Inviter til å stemme"
@@ -264,7 +264,7 @@ nb_NO:
     remove_from:
       discussion: "Fjern fra tråd"
       group: "Fjern fra gruppe"
-      poll: 'Fjern fra  {{pollType}}'
+      poll: 'Fjern fra  %{pollType}'
     cancel_invitation: Avslutt invitasjon
   notification_models:
     discussion: 'tråd:'
@@ -289,11 +289,11 @@ nb_NO:
     context_label: 'Kontekst'
     privacy_label: 'Personvern'
     privacy_public: 'Alle kan se denne tråden. Bare medlemmer kan delta i tråden.'
-    privacy_private: 'Denne tråden er bare synlig for medlemmer i {{group}}.'
-    privacy_organisation: 'Denne tråden vil være synlig for medlemmer i {{parent}} og medlemmer i gruppen: {{group}}.'
+    privacy_private: 'Denne tråden er bare synlig for medlemmer i %{group}.'
+    privacy_organisation: 'Denne tråden vil være synlig for medlemmer i %{parent} og medlemmer i gruppen: %{group}.'
   announcement:
     audiences:
-      group: Medlemmer av {{name}}
+      group: Medlemmer av %{name}
     form:
       group_announced:
         title: Inviter til gruppe
@@ -361,7 +361,7 @@ nb_NO:
   join_group_button:
     join_group: Bli med i gruppe
     messages:
-      joined_group: 'Du er nå medlem av gruppen: {{group}}'
+      joined_group: 'Du er nå medlem av gruppen: %{group}'
   membership_request_form:
     aria_label: Forespørslel om medlemskap
     heading: Spør om å få bli med i gruppen
@@ -372,19 +372,19 @@ nb_NO:
     introduction_over_limit: Svaret er for langt
   revision_history_modal:
     aria_label: Revisjonshistorikk
-    started_by: 'Startet av <strong>{{name}}</strong>'
-    edited_by: 'Redigert av <strong>{{name}}</strong>'
+    started_by: 'Startet av <strong>%{name}</strong>'
+    edited_by: 'Redigert av <strong>%{name}</strong>'
     posted: Postet
     original_text: Original
     current_revision: Siste
-    closing_at_changed: "stengetid satt til {{time}}"
-    private_changed: "personvern satt til {{private}}"
-    group_id_changed: "flyttet til {{name}}"
+    closing_at_changed: "stengetid satt til %{time}"
+    private_changed: "personvern satt til %{private}"
+    group_id_changed: "flyttet til %{name}"
   reactions_input:
     add_your_reaction: Legg til din reaksjon
   reactions_display:
     you: "Du"
-    you_and_name: "Du og {{name}}"
+    you_and_name: "Du og %{name}"
   context_panel:
     thread_status:
       pinned: "Denne tråden er festet. Den vil forbli på toppen av gruppelista for alle brukere."
@@ -431,7 +431,7 @@ nb_NO:
     no_groups:
       start: Start
   discussion:
-    started_by: 'Startet av <strong>{{name}}</strong>'
+    started_by: 'Startet av <strong>%{name}</strong>'
   activity_card:
     latest: Siste
     context: Kontekst

@@ -5,7 +5,7 @@ import Records       from '@/shared/services/records';
 import EventBus      from '@/shared/services/event_bus';
 import ThreadFilter from '@/shared/services/thread_filter';
 import ThreadPreviewCollection from '@/components/thread/preview_collection';
-import {each, keys, sum, values, sortBy} from 'lodash';
+import {sum, values, sortBy} from 'lodash-es';
 
 export default
 {
@@ -61,7 +61,7 @@ export default
         query: store => {
           this.groups = sortBy(Session.user().inboxGroups(), 'name');
           this.views = {};
-          each(this.groups, group => {
+          this.groups.forEach(group => {
             this.views[group.key] = ThreadFilter({filters: this.filters, group});
           });
           this.unreadCount = sum(values(this.views), v => v.length);
@@ -76,7 +76,7 @@ export default
 <template lang="pug">
 v-main
   v-container.inbox-page.thread-preview-collection__container.max-width-1024.px-0.px-sm-3(grid-list-lg)
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'inbox_page.unread_threads'")
+    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'inbox_page.unread_threads'")
     section.dashboard-page__loading(v-if='unreadCount == 0 && loading' aria-hidden='true')
       .thread-previews-container
         loading-content.thread-preview(:lineCount='2' v-for='(item, index) in [1,2,3,4,5,6,7,8,9,10]' :key='index')

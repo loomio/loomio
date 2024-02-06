@@ -1,9 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let PollTemplateService;
 import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import Flash          from '@/shared/services/flash';
@@ -16,7 +10,7 @@ import i18n           from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
-export default new (PollTemplateService = class PollTemplateService {
+export default new class PollTemplateService {
   actions(discussionTemplate, group) {
     return {
       edit_default_template: {
@@ -116,4 +110,4 @@ export default new (PollTemplateService = class PollTemplateService {
       }
     };
   }
-});
+};

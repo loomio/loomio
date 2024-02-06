@@ -11,7 +11,7 @@ export default {
   computed: {
     headline() {
       const actor = this.event.actor();
-      this.$t(eventHeadline(this.event, true ), { // useNesting
+      return this.$t(eventHeadline(this.event, true ), { // useNesting
         author:   actor.nameWithTitle(this.eventable.group()),
         username: actor.username,
         key:      this.event.model().key,
@@ -24,7 +24,8 @@ export default {
 </script>
 
 <template lang="pug">
-.strand-other-kind
+.strand-other-kind.text-body-2
+  //- | hi {{event.model().poll().title}}
   span.text--secondary(v-html='headline')
   mid-dot.text--secondary
   time-ago.text--secondary(:date='event.createdAt')

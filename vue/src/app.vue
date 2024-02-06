@@ -5,13 +5,11 @@ import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
-import { each, compact, truncate } from 'lodash';
+import { each, compact, truncate } from 'lodash-es';
 import openModal from '@/shared/helpers/open_modal';
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
-import CustomCss from '@/components/custom_css';
 
 export default {
-  components: {CustomCss},
   mixins: [AuthModalMixin],
   data() {
     return {pageError: null};
@@ -101,17 +99,20 @@ v-app.app-is-booted
 </template>
 
 <style lang="sass">
+@import '@/css/utilities.scss'
+@import '@/css/roboto.css'
+@import '@/css/thumbicons.css'
+@import '@/css/print.scss'
 
-// .strand-page [id]::before
-//   content: ''
-//   display: block
-//   height:      72px
-//   margin-top: -72px
-//   visibility: hidden
-
-.v-application .text-body-2
-  font-size: 15px !important
+.v-application .text-body-3
+  font-size: 0.9375rem !important
   letter-spacing: normal !important
+  font-weight: 400
+
+.v-application .text-body-4
+  font-size: 1rem !important
+  letter-spacing: normal !important
+  font-weight: 400
 
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
@@ -123,13 +124,13 @@ a
 
 .text-almost-black
   color: rgba(0, 0, 0, 0.87)
-
+  
 .max-width-640
-  max-width: 640px
+  max-width: 640px !important
 .max-width-800
-  max-width: 800px
+  max-width: 800px !important
 .max-width-1024
-  max-width: 1024px
+  max-width: 1024px !important
 
 @media (prefers-color-scheme: dark)
   body

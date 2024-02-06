@@ -3,14 +3,12 @@ import Session  from '@/shared/services/session';
 import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Gravatar from 'vue-gravatar';
-import { capitalize } from 'lodash';
+import { capitalize } from 'lodash-es';
 import AppConfig from '@/shared/services/app_config';
 import Flash   from '@/shared/services/flash';
 
 export default {
-  components: {
-    'v-gravatar': Gravatar
-  },
+  components: { Gravatar },
   data() {
     return {
       user: Session.user().clone(),
@@ -79,7 +77,7 @@ v-card.change-picture-form
   v-overlay(:value="uploading")
     v-progress-circular(size="64" :value="progress")
   v-card-title
-    h1.headline(tabindex="-1" v-t="'change_picture_form.title'")
+    h1.text-h5(tabindex="-1" v-t="'change_picture_form.title'")
     v-spacer
     dismiss-modal-button
   v-card-text
@@ -87,7 +85,7 @@ v-card.change-picture-form
     v-list.change-picture-form__options-list
       v-list-item.change-picture-form__option(@click='selectFile()')
         v-list-item-avatar
-          v-icon mdi-camera
+          common-icon(name="mdi-camera")
         v-list-item-title(v-t="'change_picture_form.use_uploaded'")
           input.hidden.change-picture-form__file-input(type="file" ref="fileInput" @change='uploadFile' accept="image/png, image/jpeg, image/webp, image/jpg")
       v-list-item.change-picture-form__option(v-if="previous_uploaded_avatar" @click="submit('uploaded')")
@@ -96,11 +94,11 @@ v-card.change-picture-form
         v-list-item-title(v-t="'change_picture_form.existing_upload'")
       v-list-item(v-for="provider in providers" :key="provider.id" @click="selectProvider(provider)")
         v-list-item-avatar
-          v-icon {{ iconClass(provider.name) }}
+          common-icon(:name=" iconClass(provider.name) ")
         v-list-item-title(v-t="{ path: 'change_picture_form.use_provider', args: { provider: capitalize(provider.name) } }")
       v-list-item.change-picture-form__option(@click="submit('gravatar')")
         v-list-item-avatar
-          v-gravatar(:email='user.email' :alt='user.name' :size='128')
+          gravatar(:email='user.email' :alt='user.name' :size='128')
         v-list-item-title(v-t="'change_picture_form.use_gravatar'")
       v-list-item.change-picture-form__option(@click="submit('initials')")
         v-list-item-avatar.user-avatar

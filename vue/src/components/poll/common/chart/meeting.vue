@@ -1,68 +1,60 @@
 <script lang="js">
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import EventBus from '@/shared/services/event_bus';
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
 
-import {sum, map, sortBy, find, compact, uniq} from 'lodash';
+export default {
+  props: {
+    poll: Object,
+    zone: Object
+  },
 
-export default
-  ({
-    props: {
-      poll: Object,
-      zone: Object
-    },
+  data() {
+    return {decidedVoters: []};
+  },
 
-    data() {
-      return {decidedVoters: []};
-    },
+  created() {
+    return this.watchRecords({
+      collections: ['users'],
+      query: store => {
+        this.decidedVoters = this.poll.decidedVoters();
+      }
+    });
+  },
 
-    created() {
-      return this.watchRecords({
-        collections: ['users'],
-        query: store => {
-          this.decidedVoters = this.poll.decidedVoters();
-        }
-      });
-    },
-
-    methods: {
-      scoreColor(score) {
-        switch (score) {
-          case 2: return AppConfig.pollColors.proposal[0];
-          case 1: return AppConfig.pollColors.proposal[1];
-          case 0: return AppConfig.pollColors.proposal[2];
-        }
-      },
-
-      bgColor(score) {
-        switch (score) {
-          case 2: return "rgba(0, 209, 119, 0.5)";
-          case 1: return "rgba(246, 168, 43, 0.5)";
-        }
-      },
-
-      classForScore(score) {
-        switch (score) {
-          case 2: return 'poll-meeting-chart__cell--yes';
-          case 1: return 'poll-meeting-chart__cell--maybe';
-          default:
-            return 'poll-meeting-chart__cell--no';
-        }
+  methods: {
+    scoreColor(score) {
+      switch (score) {
+        case 2: return AppConfig.pollColors.proposal[0];
+        case 1: return AppConfig.pollColors.proposal[1];
+        case 0: return AppConfig.pollColors.proposal[2];
       }
     },
 
-    computed: {
-      datesAsOptions() { return this.poll.datesAsOptions(); },
-      currentUserTimeZone() {
-        return Session.user().timeZone;
+    bgColor(score) {
+      switch (score) {
+        case 2: return "rgba(0, 209, 119, 0.5)";
+        case 1: return "rgba(246, 168, 43, 0.5)";
+      }
+    },
+
+    classForScore(score) {
+      switch (score) {
+        case 2: return 'poll-meeting-chart__cell--yes';
+        case 1: return 'poll-meeting-chart__cell--maybe';
+        default:
+          return 'poll-meeting-chart__cell--no';
       }
     }
-  });
+  },
+
+  computed: {
+    datesAsOptions() { return this.poll.datesAsOptions(); },
+    currentUserTimeZone() {
+      return Session.user().timeZone;
+    }
+  }
+};
 </script>
 
 <template lang="pug">
@@ -70,8 +62,8 @@ export default
   table.poll-meeting-chart-table
     thead
       tr
-        td.text--secondary(v-if="datesAsOptions") {{currentUserTimeZone}}
-        td.pr-2.total.text--secondary(v-t="'poll_common.votes'")
+        td.text--secondary.text-body-2(v-if="datesAsOptions") {{currentUserTimeZone}}
+        td.pr-2.total.text--secondary.text-body-2(v-t="'poll_common.votes'")
         td(v-for="user in decidedVoters" :key="user.id")
           user-avatar(:user="user" :size="24")
     tbody
@@ -80,7 +72,7 @@ export default
           poll-meeting-time(v-if="datesAsOptions" :name='option.name' :zone='zone')
           span(v-if="option.name_format == 'i18n'" v-t="option.name")
           span(v-if="option.name_format == 'none'") {{option.name}} 
-        td.total.text-right.pr-2
+        td.total.text-right.pr-2.text-body-2
           span(v-if="poll.canRespondMaybe") {{option.score/2}}
           span(v-else="poll.canRespondMaybe") {{option.score}}
         td(v-for="user in decidedVoters" :key="user.id")

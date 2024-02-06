@@ -1,7 +1,8 @@
 <script lang="js">
 import ThreadService  from '@/shared/services/thread_service';
-import { map, compact, pick, pickBy, omit } from 'lodash';
+import { omit, pickBy } from 'lodash-es';
 import EventBus from '@/shared/services/event_bus';
+import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
 import StrandActionsPanel from '@/components/strand/actions_panel';
 
@@ -69,7 +70,7 @@ export default {
 
   methods: {
     viewed(viewed) {
-      if (viewed) { this.discussion.markAsSeen(); }
+      if (viewed && Session.isSignedIn()) { this.discussion.markAsSeen(); }
     },
 
     openSeenByModal() {
@@ -90,7 +91,7 @@ export default {
   v-layout.ml-n2(align-center wrap)
     v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
       template(v-slot:divider)
-        v-icon mdi-chevron-right
+        common-icon(name="mdi-chevron-right")
     v-spacer
     tags-display(:tags="discussion.tags" :group="discussion.group()")
     v-chip(
@@ -110,8 +111,8 @@ export default {
 
   strand-title(:discussion="discussion")
 
-  .mb-4
-    user-avatar.mr-2(:user='author', :size='36')
+  .mb-4.text-body-2
+    user-avatar.mr-2(:user='author')
     router-link.text--secondary(:to="urlFor(author)") {{authorName}}
     mid-dot
     router-link.text--secondary(:to='urlFor(discussion)')
@@ -131,7 +132,6 @@ export default {
   strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
 </template>
 <style lang="sass">
-@import '@/css/variables'
 .context-panel__heading-pin
   margin-left: 4px
 
@@ -144,10 +144,6 @@ export default {
   position: relative
   font-size: 14px
   top: 2px
-
-.context-panel__details
-  color: $grey-on-white
-  align-items: center
 
 .context-panel__description
   > p:last-of-type

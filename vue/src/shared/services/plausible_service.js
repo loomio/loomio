@@ -1,15 +1,9 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let PlausibleService;
 import Plausible from 'plausible-tracker';
 import AppConfig from '@/shared/services/app_config';
 
 let plausible = null;
 
-export default new (PlausibleService = class PlausibleService {
+export default new class PlausibleService {
   boot() {
     if (AppConfig.plausible_site) {
       const u = new URL(AppConfig.plausible_src);
@@ -32,4 +26,4 @@ export default new (PlausibleService = class PlausibleService {
       return plausible.trackEvent(name);
     }
   }
-});
+};

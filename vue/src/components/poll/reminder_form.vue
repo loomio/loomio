@@ -5,7 +5,6 @@ import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import StanceService from '@/shared/services/stance_service';
-import {map, debounce, without, filter, uniq, uniqBy, some, find, compact} from 'lodash';
 
 export default {
   components: {
@@ -71,7 +70,7 @@ export default {
 .poll-remind
   .pa-4
     .d-flex.justify-space-between
-      h1.headline(v-t="'announcement.form.'+wipOrEmpty+'poll_reminder.title'")
+      h1.text-h5(v-t="'announcement.form.'+wipOrEmpty+'poll_reminder.title'")
       dismiss-modal-button
     recipients-autocomplete(
       existingOnly

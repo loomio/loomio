@@ -5,7 +5,7 @@ import EventBus from '@/shared/services/event_bus';
 import PollCommonDirective from '@/components/poll/common/directive';
 import PollTemplateBanner from '@/components/poll/template_banner';
 import PollService from '@/shared/services/poll_service';
-import { pickBy } from 'lodash';
+import { pickBy } from 'lodash-es';
 
 export default
 {
@@ -78,7 +78,7 @@ v-sheet
       :menu-actions="menuActions"
       :actions="dockActions")
     .poll-common-card__results-shown.mt-4
-      poll-common-votes-panel(:poll='poll')
+      poll-common-votes-panel(:key="poll.id" :poll='poll')
 </template>
 <style lang="sass">
 .v-card__title .poll-common-card__title

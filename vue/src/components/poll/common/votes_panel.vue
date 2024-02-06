@@ -3,7 +3,7 @@ import PageLoader         from '@/shared/services/page_loader';
 import Records from '@/shared/services/records';
 import EventBus     from '@/shared/services/event_bus';
 import { parseISO } from 'date-fns';
-import { debounce } from 'lodash';
+import { debounce } from 'lodash-es';
 import I18n from '@/i18n';
 
 export default {
@@ -12,13 +12,19 @@ export default {
   },
 
   data() {
+    let pollOptionItems = [{text: I18n.t('discussions_panel.all'), value: null}].concat(this.poll.pollOptions().map((o, i) => {
+      return {text: o.optionName(), value: o.id};
+    }))
+
+    if (!this.poll.showResults()) {
+      pollOptionItems = [{text: I18n.t('discussions_panel.all'), value: null}]
+    }
+
     return {
       stances: [],
       per: 25,
       loader: null,
-      pollOptionItems: [{text: I18n.t('discussions_panel.all'), value: null}].concat(this.poll.pollOptions().map((o, i) => { 
-        return {text: o.optionName(), value: o.id};
-      })),
+      pollOptionItems,
       page: parseInt(this.$route.query.page) || 1, 
       pollOptionId: parseInt(this.$route.query.poll_option_id) || null,
       name: this.$route.query.name
@@ -116,6 +122,7 @@ export default {
               space
               span(v-t="'poll_common_votes_panel.undecided'" )
             span(v-if="stance.castAt")
+              space
               mid-dot(v-if="!poll.hasOptionIcon()")
               time-ago.text--secondary(:date="stance.castAt")
         .poll-common-stance(v-if="poll.showResults() && stance.castAt")

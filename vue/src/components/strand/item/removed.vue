@@ -1,6 +1,6 @@
 <script lang="js">
 import CommentService from '@/shared/services/comment_service';
-import { pick } from 'lodash';
+import { pick } from 'lodash-es';
 export default {
   props: {
     event: Object,

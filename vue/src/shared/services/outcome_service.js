@@ -1,15 +1,9 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let OutcomeService;
 import openModal from '@/shared/helpers/open_modal';
 import AbilityService from '@/shared/services/ability_service';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 
-export default new (OutcomeService = class OutcomeService {
+export default new class OutcomeService {
   actions(outcome) {
     const poll = outcome.poll();
     const user = Session.user();
@@ -78,4 +72,4 @@ export default new (OutcomeService = class OutcomeService {
       }
     };
   }
-});
+};

@@ -32,7 +32,7 @@ export default {
 v-card.poll-common-reopen-modal
   submit-overlay(:value='poll.processing')
   v-card-title
-    h1.headline(tabindex="-1" v-t="{path: 'poll_common_reopen_form.title', args: {poll_type: poll.translatedPollType()}}")
+    h1.text-h5(tabindex="-1" v-t="{path: 'poll_common_reopen_form.title', args: {poll_type: poll.translatedPollType()}}")
     v-spacer
     dismiss-modal-button
   v-card-text.poll-common-reopen-form

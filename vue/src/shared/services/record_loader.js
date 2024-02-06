@@ -1,11 +1,5 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import Records from '@/shared/services/records';
-import {merge, camelCase, defaults, max } from 'lodash';
+import {merge, camelCase, defaults } from 'lodash-es';
 
 export default class RecordLoader {
   constructor(opts) {

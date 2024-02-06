@@ -292,6 +292,18 @@ module.exports = {
     page.expectFlash('Notification settings updated')
   },
 
+  'create_tag': (test) => {
+    page = pageHelper(test)
+
+    page.loadPath('setup_group')
+    page.click('.action-menu')
+    page.click('.action-dock__button--edit_tags')
+    page.click('.tag-form__new-tag')
+    page.fillIn('.tags-modal__tag-name input', "important")
+    page.click('.tag-form__submit')
+    page.expectText('.tags-modal .v-chip__content', 'important' )
+  },
+
   'delete_group': (test) => {
     page = pageHelper(test)
 

@@ -6,12 +6,13 @@ import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 
 import Vue     from 'vue';
-import { uniq, map, sortBy, head, find, filter, sum } from 'lodash';
+import { map, sortBy, head } from 'lodash-es';
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns';
 import { exact} from '@/shared/helpers/format_time';
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import I18n from '@/i18n';
+import { mdiCalendar } from '@mdi/js';
 
 export default {
   components: {
@@ -25,6 +26,7 @@ export default {
 
   data() {
     return {
+      mdiCalendar,
       options: [],
       bestOption: null,
       isDisabled: false,
@@ -51,8 +53,6 @@ export default {
       this.bestOption = head(sortBy(this.options, option => -1 * option.attendees)
       ); // sort descending, so the best option is first
 
-      Vue.set(this.outcome, 'calendarInvite', true);
-
       this.outcome.pollOptionId = this.outcome.pollOptionId || this.bestOption.id;
       this.outcome.eventSummary = this.outcome.eventSummary || this.outcome.poll().title;
     }
@@ -66,7 +66,7 @@ export default {
     submit() {
       let actionName;
       if (this.poll.datesAsOptions()) { this.outcome.eventDescription = this.outcome.statement; }
-      if (this.outcome.calendarInvite) { this.outcome.includeActor = 1; }
+      if (this.poll.pollType == 'meeting') { this.outcome.includeActor = 1; }
 
       if (this.outcome.isNew()) {
         actionName = "created";
@@ -82,7 +82,7 @@ export default {
 
     newRecipients(val) {
       this.recipients = val;
-      this.outcome.recipientAudience = (val.find(i => i.type==='audience') || {}).id;
+      this.outcome.recipientAudience = (val.find(i => i.type === 'audience') || {}).id;
       this.outcome.recipientUserIds = map(filter(val, o => o.type === 'user'), 'id');
       this.outcome.recipientEmails = map(filter(val, o => o.type === 'email'), 'name');
     }
@@ -95,7 +95,7 @@ export default {
 v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value='outcome.processing')
   v-card-title
-    h1.headline
+    h1.text-h5
       span(v-if='outcome.isNew()' v-t="'poll_common_outcome_form.new_title'")
       span(v-if='!outcome.isNew()' v-t="'poll_common_outcome_form.update_title'")
     v-spacer
@@ -105,7 +105,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
-      :include-actor="outcome.calendarInvite"
+      :include-actor="outcome.poll().pollType == 'meeting'"
       :model="outcome")
 
     .poll-common-calendar-invite(v-if='poll.datesAsOptions()')
@@ -141,7 +141,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
             :hint="$t('poll_common_outcome_form.review_date_hint')"
             v-on='on'
             v-bind="attrs"
-            prepend-icon="mdi-calendar")
+            :prepend-icon="mdiCalendar")
 
         v-date-picker.outcome-review-on__datepicker(v-model='outcome.reviewOn' :min='dateToday' no-title @input="isShowingDatePicker = false")
       p(v-if="outcome.reviewOn" v-t="$t('poll_common_outcome_form.you_will_be_notified')")

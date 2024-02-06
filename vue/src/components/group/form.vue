@@ -6,7 +6,7 @@ import Flash   from '@/shared/services/flash';
 import EventBus   from '@/shared/services/event_bus';
 import { groupPrivacy, groupPrivacyStatement } from '@/shared/helpers/helptext';
 import { groupPrivacyConfirm } from '@/shared/helpers/helptext';
-import { isEmpty, some, debounce } from 'lodash';
+import { isEmpty, debounce } from 'lodash-es';
 
 export default
 {
@@ -164,8 +164,8 @@ v-card.group-form
   v-card-title
     v-layout(justify-space-between style="align-items: center")
       .group-form__group-title
-        h1.headline(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
-        h1.headline(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
+        h1.text-h5(tabindex="-1" v-if='group.parentId', v-t="'group_form.subgroup_settings'")
+        h1.text-h5(tabindex="-1" v-if='!group.parentId', v-t="'group_form.group_settings'")
       dismiss-modal-button(:model="group")
   //- v-card-text
   v-tabs(fixed-tabs)
@@ -194,8 +194,8 @@ v-card.group-form
           validation-errors(:subject="group" field="handle")
         v-spacer
 
-        input.hidden.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto' accept="image/png, image/jpeg, image/webp")
-        input.hidden.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo' accept="image/png, image/jpeg, image/webp")
+        input.d-none.change-picture-form__file-input(type="file" ref="coverPhotoInput" @change='uploadCoverPhoto' accept="image/png, image/jpeg, image/webp")
+        input.d-none.change-picture-form__file-input(type="file" ref="logoInput" @change='uploadLogo' accept="image/png, image/jpeg, image/webp")
 
         lmo-textarea.group-form__group-description(:model='group' field="description", :placeholder="$t('group_form.description_placeholder')", :label="$t('group_form.description')")
         validation-errors(:subject="group" field="name")
@@ -239,19 +239,19 @@ v-card.group-form
             div
               span(v-t="{path: 'group_form.parent_members_can_see_discussions', args: {parent: group.parent().name}}")
               br
-              span.caption(v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: group.parent().name}}")
+              span.text-caption(v-t="{path: 'group_form.parent_members_can_see_discussions_help', args: {parent: group.parent().name}}")
         v-checkbox.group-form__members-can-add-members(hide-details v-model='group["membersCanAddMembers"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_add_members'")
               br
-              span.caption(v-t="'group_form.members_can_add_members_help'")
+              span.text-caption(v-t="'group_form.members_can_add_members_help'")
         v-checkbox.group-form__members-can-add-guests(hide-details v-model='group["membersCanAddGuests"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_add_guests'")
               br
-              span.caption(v-t="'group_form.members_can_add_guests_help'")
+              span.text-caption(v-t="'group_form.members_can_add_guests_help'")
         v-checkbox.group-form__members-can-announce(
           :label="$t('group_form.members_can_announce')"
           v-model='group["membersCanAnnounce"]'
@@ -261,49 +261,49 @@ v-card.group-form
             div
               span(v-t="'group_form.members_can_announce'")
               br
-              span.caption(v-t="'group_form.members_can_announce_help'")
+              span.text-caption(v-t="'group_form.members_can_announce_help'")
         v-checkbox.group-form__members-can-create-subgroups(hide-details v-model='group["membersCanCreateSubgroups"]' v-if='group.isParent()')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_create_subgroups'")
               br
-              span.caption(v-t="'group_form.members_can_create_subgroups_help'")
+              span.text-caption(v-t="'group_form.members_can_create_subgroups_help'")
         v-checkbox.group-form__members-can-start-discussions(hide-details v-model='group["membersCanStartDiscussions"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_start_discussions'")
               br
-              span.caption(v-t="'group_form.members_can_start_discussions_help'")
+              span.text-caption(v-t="'group_form.members_can_start_discussions_help'")
         v-checkbox.group-form__members-can-edit-discussions(hide-details v-model='group["membersCanEditDiscussions"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_edit_discussions'")
               br
-              span.caption(v-t="'group_form.members_can_edit_discussions_help'")
+              span.text-caption(v-t="'group_form.members_can_edit_discussions_help'")
         v-checkbox.group-form__members-can-edit-comments(hide-details v-model='group["membersCanEditComments"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_edit_comments'")
               br
-              span.caption(v-t="'group_form.members_can_edit_comments_help'")
+              span.text-caption(v-t="'group_form.members_can_edit_comments_help'")
         v-checkbox.group-form__members-can-delete-comments(hide-details v-model='group["membersCanDeleteComments"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_delete_comments'")
               br
-              span.caption(v-t="'group_form.members_can_delete_comments_help'")
+              span.text-caption(v-t="'group_form.members_can_delete_comments_help'")
         v-checkbox.group-form__members-can-raise-motions(hide-details v-model='group["membersCanRaiseMotions"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.members_can_raise_motions'")
               br
-              span.caption(v-t="'group_form.members_can_raise_motions_help'")
+              span.text-caption(v-t="'group_form.members_can_raise_motions_help'")
         v-checkbox.group-form__admins-can-edit-user-content(hide-details v-model='group["adminsCanEditUserContent"]')
           template(v-slot:label)
             div
               span(v-t="'group_form.admins_can_edit_user_content'")
               br
-              span.caption(v-t="'group_form.admins_can_edit_user_content_help'")
+              span.text-caption(v-t="'group_form.admins_can_edit_user_content_help'")
 
   v-card-actions.ml-2.mr-2.mt-4
     help-link(path="en/user_manual/groups/settings")

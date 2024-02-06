@@ -1,9 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let UserService;
 import Session       from '@/shared/services/session';
 import Records       from '@/shared/services/records';
 import Flash         from '@/shared/services/flash';
@@ -11,7 +5,7 @@ import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import { hardReload } from '@/shared/helpers/window';
 
-export default new (UserService = class UserService {
+export default new class UserService {
   actions(user, vm) {
     return {
       change_password: {
@@ -80,4 +74,4 @@ export default new (UserService = class UserService {
       }
     };
   }
-});
+};

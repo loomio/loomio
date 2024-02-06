@@ -12,8 +12,7 @@ class API::V1::StancesController < API::V1::RestfulController
   def uncast
     @stance = current_user.stances.latest.find(params[:id])
     StanceService.uncast(stance: @stance, actor: current_user)
-    @stance = @stance.poll.stances.latest.find_by(participant_id: current_user.id)
-    respond_with_resource
+    respond_with_recent_stances
   end
 
   def index
@@ -29,8 +28,10 @@ class API::V1::StancesController < API::V1::RestfulController
                  first: "#{name}%", last: "% #{name}%")
       end
 
-      if poll_option_id = params[:poll_option_id].presence
-        collection = collection.joins(:poll_options).where("poll_options.id" => poll_option_id)
+      if @poll.show_results?(voted: true)
+        if poll_option_id = params[:poll_option_id].presence
+          collection = collection.joins(:poll_options).where("poll_options.id" => poll_option_id)
+        end
       end
 
       collection.order('cast_at DESC NULLS LAST, created_at DESC')
@@ -51,7 +52,7 @@ class API::V1::StancesController < API::V1::RestfulController
       end
 
       user_ids = collection.pluck(:participant_id)
-      self.add_meta :member_ids, @poll.group.members.pluck(:user_id) & user_ids
+      self.add_meta :guest_ids, collection.where(guest: true).pluck(:participant_id) & user_ids
       self.add_meta :member_admin_ids, @poll.group.admins.pluck(:user_id) & user_ids
       self.add_meta :stance_admin_ids, collection.where(admin: true).pluck(:participant_id) & user_ids
       User.where(id: collection.pluck(:participant_id))
@@ -91,10 +92,30 @@ class API::V1::StancesController < API::V1::RestfulController
 
     @stance.reload
     @stance.poll.update_counts!
-    respond_with_resource
+
+    @stances = @stance.poll.stances.where(participant_id: params[:participant_id])
+    live_update_outdated_stances(@stance.poll)
+    respond_with_collection
   end
 
   private
+
+  def live_update_outdated_stances(poll)
+    return if poll.discussion.nil?
+    # want to find stances with comments
+    stance_ids = poll.discussion.items.where(
+      eventable_type: 'Stance',
+      eventable_id: poll.stances.with_reason.where(latest: false).pluck(:id)
+    ).where("child_count > 0").pluck('eventable_id')
+    stances = Stance.where(id: stance_ids).order('id desc').limit(50)
+    MessageChannelService.publish_models(stances, group_id: poll.group_id, user_id: current_user.id)
+  end
+
+  def respond_with_recent_stances
+    @event = nil
+    @stances = @stance.poll.stances.where(revoked_at: nil, participant_id: current_user.id).order('id desc').limit(10)
+    respond_with_collection
+  end
 
   def current_user_is_admin?
     stance = Stance.find_by(id: params[:id])

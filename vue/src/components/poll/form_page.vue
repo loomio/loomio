@@ -5,7 +5,7 @@ import Session from '@/shared/services/session';
 import Flash  from '@/shared/services/flash';
 import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplate from '@/components/poll/common/choose_template';
-import { compact } from 'lodash'; 
+import { compact } from 'lodash-es'; 
 
 export default {
   components: {PollCommonForm, PollCommonChooseTemplate},
@@ -16,7 +16,7 @@ export default {
       poll: null,
       group: null,
       discussion: null
-    };
+    }
   },
 
   created() {
@@ -79,6 +79,9 @@ export default {
   },
 
   computed: {
+    isLoggedIn() {
+      return Session.isSignedIn();
+    },
     breadcrumbs() {
       return compact([this.group.parentId && this.group.parent(), this.group]).map(g => {
         return {
@@ -101,8 +104,8 @@ export default {
           .d-flex
             v-breadcrumbs.px-0.pt-0(:items="breadcrumbs")
               template(v-slot:divider)
-                v-icon mdi-chevron-right
-        v-card.poll-common-modal
+                common-icon(name="mdi-chevron-right")
+        v-card.poll-common-modal(v-if="isLoggedIn")
           v-card-title
             h1.text-h5(v-t="'poll_common.decision_templates'")
 

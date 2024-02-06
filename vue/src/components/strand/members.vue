@@ -1,7 +1,6 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
-import {map} from 'lodash';
 
 export default {
   props: {
@@ -49,7 +48,7 @@ export default {
 
   user-avatar(v-for="reader in readers" :user="reader.user()" :size="28" :key="reader.id")
   v-btn(small icon @click="openInviteModal" :title="$t('invitation_form.invite_people')")
-    v-icon mdi-plus
+    common-icon(name="mdi-plus")
 </template>
 
 <style lang="sass">

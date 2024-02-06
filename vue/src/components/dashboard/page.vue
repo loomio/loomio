@@ -6,8 +6,7 @@ import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
 import ThreadFilter       from '@/shared/services/thread_filter';
-import { capitalize, take, keys, every, orderBy, debounce } from 'lodash';
-import { subDays, addDays, subWeeks, subMonths } from 'date-fns';
+import { subMonths } from 'date-fns';
 
 export default
 {
@@ -73,7 +72,7 @@ export default
     query() {
       const groupIds = Records.memberships.collection.find({userId: Session.user().id}).map(m => m.groupId);
       let chain = Records.discussions.collection.chain();
-      chain = chain.find({$or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null}]});
+      chain = chain.find({$or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null, inviterId: {$ne: null}}]});
       chain = chain.find({discardedAt: null});
       chain = chain.find({closedAt: null});
       chain = chain.find({lastActivityAt: { $gt: subMonths(new Date(), 6) }});
@@ -94,7 +93,7 @@ export default
 <template lang="pug">
 v-main
   v-container.dashboard-page.max-width-1024.px-0.px-sm-3
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'")
+    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'dashboard_page.aria_label'")
 
     dashboard-polls-panel
 

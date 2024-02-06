@@ -5,7 +5,7 @@ import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
 import EventBus          from '@/shared/services/event_bus';
 import I18n           from '@/i18n';
-import { sortBy, debounce } from 'lodash';
+import { sortBy, debounce } from 'lodash-es';
 
 export default {
   data() {
@@ -73,7 +73,7 @@ export default {
 v-card
   submit-overlay(:value='poll.processing')
   v-card-title
-    h1.headline(tabindex="-1" v-t="'action_dock.add_poll_to_thread'")
+    h1.text-h5(tabindex="-1" v-t="'action_dock.add_poll_to_thread'")
     v-spacer
     dismiss-modal-button(aria-hidden='true')
   v-card-text

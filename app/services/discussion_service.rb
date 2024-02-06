@@ -15,7 +15,7 @@ class DiscussionService
     discussion.save!
 
     DiscussionReader.for(user: actor, discussion: discussion)
-                    .update(admin: true, inviter_id: actor.id)
+                    .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)
 
     users = add_users(user_ids: params[:recipient_user_ids],
                       emails: params[:recipient_emails],
@@ -236,7 +236,8 @@ class DiscussionService
     new_discussion_readers = users.map do |user|
       DiscussionReader.new(user: user,
                            discussion: discussion,
-                           inviter: if volumes[user.id] then nil else actor end,
+                           inviter: actor,
+                           guest: !volumes.has_key?(user.id),
                            admin: !discussion.group_id,
                            volume: volumes[user.id] || DiscussionReader.volumes[:normal])
     end
@@ -247,4 +248,13 @@ class DiscussionService
     users
   end
 
+  def self.extract_link_preview_urls(discussion)
+    urls = discussion.link_previews.map { |lp| lp['url'] }
+    discussion.items.each do |event|
+      if event.eventable.present? && event.eventable.respond_to?(:link_previews)
+        urls.concat(event.eventable.link_previews.map {|lp| lp['url']})
+      end
+    end
+    urls.compact.uniq
+  end
 end

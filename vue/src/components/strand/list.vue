@@ -3,6 +3,7 @@ import StrandList from '@/components/strand/list.vue';
 import NewComment from '@/components/strand/item/new_comment.vue';
 import NewDiscussion from '@/components/strand/item/new_discussion.vue';
 import DiscussionEdited from '@/components/strand/item/discussion_edited.vue';
+import PollEdited from '@/components/strand/item/poll_edited.vue';
 import PollCreated from '@/components/strand/item/poll_created.vue';
 import StanceCreated from '@/components/strand/item/stance_created.vue';
 import StanceUpdated from '@/components/strand/item/stance_updated.vue';
@@ -13,7 +14,7 @@ import OtherKind from '@/components/strand/item/other_kind.vue';
 import ReplyForm from '@/components/strand/reply_form.vue';
 import RangeSet from '@/shared/services/range_set';
 import EventBus from '@/shared/services/event_bus';
-import { camelCase, first, last, some, sortedUniq, sortBy, without } from 'lodash';
+import { camelCase } from 'lodash-es';
 
 export default {
   name: 'strand-list',
@@ -27,7 +28,6 @@ export default {
   },
 
   components: {
-    StrandList,
     NewDiscussion,
     NewComment,
     PollCreated,
@@ -37,6 +37,7 @@ export default {
     OtherKind,
     StrandLoadMore,
     DiscussionEdited,
+    PollEdited,
     StrandItemRemoved,
     ReplyForm
   },
@@ -68,7 +69,7 @@ export default {
     },
 
     componentForKind(kind) {
-      return camelCase(['stance_created', 'stance_updated', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'new_discussion'].includes(kind) ?
+      return camelCase(['stance_created', 'stance_updated', 'discussion_edited', 'new_comment', 'outcome_created', 'poll_created', 'poll_edited', 'new_discussion'].includes(kind) ?
         kind
       :
         'other_kind'
@@ -128,7 +129,7 @@ export default {
           template(v-else)
             user-avatar(
               :user="obj.event.actor()"
-              :size="(obj.event.depth > 1) ? 28 : 36"
+              :size="(obj.event.depth > 1) ? 28 : 32"
               no-link
             )
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
@@ -138,19 +139,19 @@ export default {
         div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
           strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
           component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
-        .strand-list__children(v-if="obj.event.childCount")
+        .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
           strand-load-more(
             v-if="obj.children.length == 0"
-            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadChildren(obj.event)}"
+            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}"
             :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
-            @click="loader.loadChildren(obj.event)"
+            @click="loader.loadAfter(obj.event)"
             :loading="loader.loading == 'children'+obj.event.id")
           strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
         reply-form(:eventId="obj.event.id")
     .strand-item__row(v-if="loader.collapsed[obj.event.id]")
       .d-flex.align-center
         .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
-          v-icon mdi-unfold-more-horizontal
+          common-icon(name="mdi-unfold-more-horizontal")
         strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.eventable" collapsed)
 
     .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
@@ -177,8 +178,8 @@ export default {
     // margin-right: 4px
 
   .strand-item__stem
-    margin-left: 12px
-    margin-right: 12px
+    margin-left: 14px
+    margin-right: 14px
 
   .strand-item__circle
     // margin: 4px 0
@@ -204,7 +205,7 @@ export default {
 .strand-item__gutter
   display: flex
   flex-direction: column
-  width: 36px
+  width: 32px
   // margin-right: 8px
 
 .strand-item__gutter:hover
@@ -218,7 +219,7 @@ export default {
   max-width: 100%
 
 .strand-item__stem-wrapper
-  width: 36px
+  width: 32px
   height: 100%
   padding-top: 4px
   padding-bottom: 4px
@@ -228,7 +229,7 @@ export default {
   height: 100%
   padding: 0 0.5px
   background-color: #dadada
-  margin: 0px 18px
+  margin: 0px 16px
 
 .strand-item__stem--broken
   background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%)
@@ -247,8 +248,8 @@ export default {
   display: flex
   align-items: center
   justify-content: center
-  width: 36px
-  height: 36px
+  width: 32px
+  height: 32px
   border: 1px solid #dadada
   border-radius: 100%
   margin: 4px 0

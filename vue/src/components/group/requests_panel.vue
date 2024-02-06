@@ -3,7 +3,7 @@ import Records        from '@/shared/services/records';
 import AbilityService from '@/shared/services/ability_service';
 import RecordLoader   from '@/shared/services/record_loader';
 import Session        from '@/shared/services/session';
-import {includes, some, compact, intersection, orderBy, slice, filter, isEmpty} from 'lodash';
+import { orderBy } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
 
@@ -33,12 +33,12 @@ export default
 
   computed: {
     unapprovedRequestsByOldestFirst() {
-      const unapproved = filter(this.requests, request => !request.respondedAt);
+      const unapproved = this.requests.filter(request => !request.respondedAt);
       return orderBy(unapproved, ['createdAt'], ['asc']);
     },
 
     approvedRequestsByNewestFirst() {
-      const approved = filter(this.requests, request => request.respondedAt);
+      const approved = this.requests.filter(request => request.respondedAt);
       return orderBy(approved, ['respondedAt'], ['desc']);
     }
   }
@@ -46,7 +46,7 @@ export default
 </script>
 <template lang="pug">
 .requests-panel
-  h2.ma-4.headline(v-t="'membership_requests_card.heading'")
+  h2.ma-4.text-h5(v-t="'membership_requests_card.heading'")
   loading(v-if="!group")
   v-card.mt-4(outlined v-else="group")
     p.text-center.pa-4(v-if="!requests.length" v-t="'common.no_results_found'")

@@ -1,16 +1,14 @@
 <script lang="js">
 import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
-import { compact, without, some, pick } from 'lodash';
+import { compact, without, some, pick } from 'lodash-es';
 import Flash from '@/shared/services/flash';
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
-import { addHours, isAfter } from 'date-fns';
+import { addMinutes, intervalToDuration, formatDuration, addHours, isAfter, startOfHour, setHours } from 'date-fns';
 import PollTemplateInfoPanel  from '@/components/poll_template/info_panel';
 import { HandleDirective } from 'vue-slicksort';
-import { isSameYear, startOfHour, setHours }  from 'date-fns';
 import I18n from '@/i18n';
 
 export default {
@@ -24,7 +22,7 @@ export default {
   },
 
   mounted() {
-    Records.users.fetchGroups();
+    Records.users.findOrFetchGroups();
 
     Records.pollTemplates.findOrFetchByKeyOrId(this.poll.pollTemplateKeyOrId()).then(template => {
       this.pollTemplate = template;
@@ -181,8 +179,14 @@ export default {
         const poll = Records.polls.find(data.polls[0].id);
         if (this.redirectOnSave) { this.$router.replace(this.urlFor(poll)); }
         this.$emit('saveSuccess', poll);
-        Flash.success("poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()});
-        if ((actionName === 'created') && poll.specifiedVotersOnly) {
+
+        if (actionName == 'created') {
+          Flash.success("poll_common_form.poll_type_started", {poll_type: poll.translatedPollTypeCaps()});
+        } else {
+          Flash.success("poll_common_form.poll_type_updated", {poll_type: poll.translatedPollTypeCaps()});
+        }
+
+        if ((actionName == 'created') && poll.specifiedVotersOnly) {
           EventBus.$emit('openModal', {
             component: 'PollMembers',
             props: {
@@ -277,9 +281,9 @@ export default {
     v-spacer
 
     v-btn(v-if="poll.id" icon :to="urlFor(poll)" aria-hidden='true')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
     v-btn(v-if="!poll.id" icon @click="$emit('setPoll', null)" aria-hidden='true')
-      v-icon mdi-close
+      common-icon(name="mdi-close")
 
   poll-template-info-panel(v-if="pollTemplate" :poll-template="pollTemplate")
 
@@ -347,11 +351,11 @@ export default {
                 @click="removeOption(option)"
                 :title="$t('common.action.delete')"
               )
-                v-icon.text--secondary mdi-delete
+                common-icon.text--secondary(name="mdi-delete")
             v-list-item-action.ml-0(v-if="poll.pollType != 'meeting'")
               v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                v-icon.text--secondary mdi-pencil
-            v-icon.text--secondary(style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") mdi-drag-vertical
+                common-icon.text--secondary(name="mdi-pencil")
+            common-icon.text--secondary(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
 
     template(v-if="optionFormat == 'i18n'")
       p This poll cannot have new options added. (contact support if you see this message)
@@ -461,11 +465,11 @@ export default {
     v-radio.poll-common-settings__specified-voters-only(
       :value="true"
       :label="$t('poll_common_settings.specified_voters_only_true')")
-  .caption.mt-n4.text--secondary.text-caption(
+  .text-caption.mt-n4.text--secondary.text-caption(
     v-if="poll.specifiedVotersOnly"
     v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
 
-  v-checkbox.mt-0(v-if="!poll.specifiedVotersOnly" :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})" v-model="poll.notifyRecipients")
+  v-checkbox.mt-0(v-if="!poll.id && !poll.specifiedVotersOnly" :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})" v-model="poll.notifyRecipients")
 
   .d-flex.justify-center
     v-btn.my-4.poll-common-form__advanced-btn(@click="showAdvanced = !showAdvanced")
@@ -528,7 +532,7 @@ export default {
         :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
       )
 
-  common-notify-fields(:model="poll")
+  common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 
   v-card-actions.poll-common-form-actions
     help-link(path='en/user_manual/polls/intro_to_decisions')

@@ -1,11 +1,5 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import AppConfig from '@/shared/services/app_config';
-import {keys, map} from 'lodash';
+import {keys, map} from 'lodash-es';
 
 export default class LmoUrlService {
   static shareableLink(model) {

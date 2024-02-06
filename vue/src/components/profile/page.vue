@@ -8,7 +8,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import UserService    from '@/shared/services/user_service';
 import Flash   from '@/shared/services/flash';
-import { includes, uniq, debounce } from 'lodash';
+import { includes, uniq, debounce } from 'lodash-es';
 import {exact} from '@/shared/helpers/format_time';
 
 export default {
@@ -115,7 +115,7 @@ v-main
       v-card
         submit-overlay(:value='user.processing')
         //- v-card-title
-        //-   h1.headline(tabindex="-1" v-t="'profile_page.edit_profile'")
+        //-   h1.text-h5(tabindex="-1" v-t="'profile_page.edit_profile'")
         v-card-text
           v-layout
             v-flex.profile-page__details
@@ -164,8 +164,6 @@ v-main
                 item-text="name"
                 item-value="key")
               validation-errors(:subject='user', field='selectedLocale')
-              p(v-if='showHelpTranslate')
-                a(v-t="'profile_page.help_translate'" href='https://help.loomio.com/en/user_manual/users/translation/#help-translate-loomio' target='_blank')
               p
                 span(v-t="'common.time_zone'")
                 space
@@ -173,7 +171,7 @@ v-main
                 space
                 v-tooltip(top)
                   template(v-slot:activator="{on, attrs}")
-                    v-icon(v-bind="attrs" v-on="on" small) mdi-information-outline
+                    common-icon(v-bind="attrs" v-on="on" small name="mdi-information-outline")
                   span(v-t="'profile_page.updated_on_sign_in'")
               v-checkbox(v-model="user.bot" :label="$t('profile_page.account_is_bot')")
               v-alert(v-if="user.bot" type="warning")
@@ -193,7 +191,7 @@ v-main
         v-list
           v-list-item(v-for="(action, key) in actions" :key="key" v-if="action.canPerform()" @click="action.perform()" :class="'user-page__' + key")
             v-list-item-icon
-              v-icon {{action.icon}}
+              common-icon(:name="action.icon")
             v-list-item-title(v-t="action.name")
 
 </template>

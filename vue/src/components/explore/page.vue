@@ -3,16 +3,17 @@ import AppConfig from '@/shared/services/app_config';
 import Records   from '@/shared/services/records';
 import EventBus  from '@/shared/services/event_bus';
 import UrlFor    from '@/mixins/url_for';
-import _truncate from 'lodash/truncate';
-import _map      from 'lodash/map';
+import {truncate, map} from 'lodash-es';
 import {marked}    from 'marked';
+import {mdiMagnify} from '@mdi/js';
 
-import { debounce, camelCase, orderBy } from 'lodash';
+import { debounce, camelCase, orderBy } from 'lodash-es';
 
 export default {
   mixins: [UrlFor],
   data() {
     return {
+      mdiMagnify,
       groupIds: [],
       resultsCount: 0,
       perPage: 50,
@@ -47,7 +48,7 @@ export default {
       Records.groups.getExploreResultsCount(this.query).then(data => {
         return this.resultsCount = data.count;
       });
-      this.groupIds = this.groupIds.concat(_map(response.groups, 'id'));
+      this.groupIds = this.groupIds.concat(map(response.groups, 'id'));
       this.canLoadMoreGroups = (response.groups || []).length === this.perPage;
       this.searching = false;
     },
@@ -74,7 +75,7 @@ export default {
       }
       const parser = new DOMParser();
       const doc = parser.parseFromString(description, 'text/html');
-      return _truncate(doc.body.textContent, {length: 100});
+      return truncate(doc.body.textContent, {length: 100});
     },
 
     handleOrderChange(val) {
@@ -122,8 +123,8 @@ export default {
 <template lang='pug'>
 v-main
   v-container.explore-page.max-width-1024.px-0.px-sm-3
-    //- h1.headline(tabindex="-1" v-t="'explore_page.header'")
-    v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" append-icon="mdi-magnify")
+    //- h1.text-h5(tabindex="-1" v-t="'explore_page.header'")
+    v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" :append-icon="mdiMagnify")
     v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="order")
     loading(:until="!searching")
     .explore-page__no-results-found(v-show='noResultsFound' v-html="$t('explore_page.no_results_found')")
@@ -136,11 +137,11 @@ v-main
           v-card-text
             .explore-page__group-description {{groupDescription(group)}}
             v-layout.explore-page__group-stats(justify-start align-center)
-              v-icon.mr-2 mdi-account-multiple
+              common-icon.mr-2(name="mdi-account-multiple")
               span.mr-4 {{group.membershipsCount}}
-              v-icon.mr-2 mdi-comment-text-outline
+              common-icon.mr-2(name="mdi-comment-text-outline")
               span.mr-4 {{group.discussionsCount}}
-              v-icon.mr-2 mdi-thumbs-up-down
+              common-icon.mr-2(name="mdi-thumbs-up-down")
               span.mr-4 {{group.pollsCount}}
       .lmo-show-more(v-show='canLoadMoreGroups')
         v-btn(v-show="!searching" @click="loadMore()" v-t="'common.action.show_more'" class="explore-page__show-more")

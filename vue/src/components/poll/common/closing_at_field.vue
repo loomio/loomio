@@ -2,6 +2,7 @@
 import AppConfig from '@/shared/services/app_config';
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter } from 'date-fns';
 import { hoursOfDay, exact, timeFormat} from '@/shared/helpers/format_time';
+import { mdiClockOutline, mdiCalendar } from '@mdi/js'
 
 export default {
   props: {
@@ -10,6 +11,8 @@ export default {
 
   data() {
     return {
+      mdiCalendar,
+      mdiClockOutline,
       closingHour: format(this.poll.closingAt || startOfHour(new Date()), 'HH:mm'),
       closingDate: format(this.poll.closingAt || new Date(), 'yyyy-MM-dd'),
       dateToday: format(new Date, 'yyyy-MM-dd'),
@@ -81,7 +84,7 @@ div
                 placeholder="2000-12-30"
                 v-on='on'
                 v-bind="attrs"
-                prepend-icon="mdi-calendar"
+                :prepend-icon="mdiCalendar"
               )
                 template(v-slot:label)
                   span(v-if="poll.closingAt" v-t="{ path: 'common.closing_in', args: { time: label } }", :title="exact(poll.closingAt)")
@@ -95,7 +98,7 @@ div
         v-spacer
         v-select.poll-common-closing-at-field__timepicker(
           :disabled="!poll.closingAt"
-          prepend-icon="mdi-clock-outline"
+          :prepend-icon="mdiClockOutline"
           v-model='closingHour'
           :label="$t('poll_meeting_time_field.closing_hour')"
           :items="times"

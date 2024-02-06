@@ -6,7 +6,7 @@ import Flash              from '@/shared/services/flash';
 import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 
-import {groupBy} from 'lodash';
+import {groupBy} from 'lodash-es';
 
 export default {
   data() {
@@ -59,7 +59,7 @@ export default {
 <template lang="pug">
 v-main
   v-container.dashboard-page.max-width-1024.px-0.px-sm-3
-    h1.display-1.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'tasks.your_tasks'")
+    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'tasks.your_tasks'")
     loading(v-if="loading")
     template(v-for="(tasks, recordKey) in tasksByRecordKey")
       v-card.mb-3
@@ -69,13 +69,13 @@ v-main
           v-list-item(v-for="task in tasks" :key="task.id")
             v-list-item-action
               v-btn(color="accent" icon @click="toggleDone(task)")
-                v-icon(v-if="task.done") mdi-checkbox-marked
-                v-icon(v-else) mdi-checkbox-blank-outline
+                common-icon(v-if="task.done" name="mdi-checkbox-marked")
+                common-icon(v-else name="mdi-checkbox-blank-outline")
             v-list-item-title {{task.name}}
     p(v-if="!loading && Object.keys(records).length == 0" v-t="'tasks.no_tasks_assigned'")
     .d-flex.justify-center
       v-chip(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
-        v-icon.mr-2 mdi-help-circle-outline
+        common-icon.mr-2(name="mdi-help-circle-outline")
         span(v-t="'common.help'")
         span :
         space

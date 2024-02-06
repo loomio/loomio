@@ -1,6 +1,6 @@
 import RecordStore from '@/shared/record_store/record_store';
 import AppConfig   from '@/shared/services/app_config';
-import loki        from '@/shared/record_store/loki';
+import loki from 'lokijs'
 
 import CommentRecordsInterface from '@/shared/interfaces/comment_records_interface';
 import ChatbotRecordsInterface from '@/shared/interfaces/chatbot_records_interface';
@@ -31,15 +31,14 @@ import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_
 import MessageChannelRecordsInterface from '@/shared/interfaces/message_channel_records_interface';
 import TagRecordsInterface from '@/shared/interfaces/tag_records_interface';
 import TaskRecordsInterface from '@/shared/interfaces/task_records_interface';
-import DemoRecordsInterface from '@/shared/interfaces/demo_records_interface';
 import WebhookRecordsInterface from '@/shared/interfaces/webhook_records_interface';
+import ReceivedEmailRecordsInterface from '@/shared/interfaces/received_email_records_interface';
 
 const db      = new loki('default.db');
 const records = new RecordStore(db);
 
 records.addRecordsInterface(CommentRecordsInterface);
 records.addRecordsInterface(ChatbotRecordsInterface);
-records.addRecordsInterface(DemoRecordsInterface);
 records.addRecordsInterface(DiscussionRecordsInterface);
 records.addRecordsInterface(DiscussionTemplateRecordsInterface);
 records.addRecordsInterface(DiscussionReaderRecordsInterface);
@@ -68,6 +67,7 @@ records.addRecordsInterface(MessageChannelRecordsInterface);
 records.addRecordsInterface(TagRecordsInterface);
 records.addRecordsInterface(TaskRecordsInterface);
 records.addRecordsInterface(WebhookRecordsInterface);
+records.addRecordsInterface(ReceivedEmailRecordsInterface);
 
 AppConfig.records = records;
 export default records;

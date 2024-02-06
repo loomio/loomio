@@ -1,10 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
-let Session;
 import AppConfig     from '@/shared/services/app_config';
 import Records       from '@/shared/services/records';
 import LmoUrlService from '@/shared/services/lmo_url_service';
@@ -13,9 +6,12 @@ import EventBus      from '@/shared/services/event_bus';
 import i18n          from '@/i18n';
 import Vue from 'vue';
 import { hardReload } from '@/shared/helpers/window';
-import { pickBy, identity, compact } from 'lodash';
+import * as Sentry from "@sentry/browser";
+import { compact } from 'lodash-es';
 
 const loadedLocales = ['en'];
+const clientLocales = import.meta.glob('/../config/locales/client.*.yml')
+const dateLocales = import.meta.glob('/node_modules/date-fns/locale/*/index.js')
 
 const setI18nLanguage = function(locale) {
   i18n.locale = locale;
@@ -39,9 +35,22 @@ const loadLocale = function(locale) {
     if (loadedLocales.includes(locale)) {
       return setI18nLanguage(locale);
     } else {
-      import(`date-fns/locale/${dateFnsLocale(locale)}/index.js`).then(dateLocale => i18n.dateLocale = dateLocale);
-      return import(`@/../../config/locales/client.${loomioLocale(locale)}.yml`).then(function(data) {
-        data = data[locale];
+      const dateLocaleKey = `/node_modules/date-fns/locale/${dateFnsLocale(locale)}/index.js`
+      const clientLocaleKey = `../config/locales/client.${loomioLocale(locale)}.yml`
+
+      if (!dateLocales[dateLocaleKey]){
+        Sentry.captureMessage(`missing dateLocale: ${dateLocaleKey}`)
+        return false
+      }
+
+      if (!clientLocales[clientLocaleKey]){
+        Sentry.captureMessage(`missing clientLocale: ${clientLocaleKey}`)
+        return false
+      }
+
+      dateLocales[dateLocaleKey]().then(dateLocale => i18n.dateLocale = dateLocale.default);
+      clientLocales[clientLocaleKey]().then(function(mod) {
+        const data = mod.default[locale]
         loadedLocales.push(locale);
         i18n.setLocaleMessage(locale, data);
         setI18nLanguage(locale);
@@ -51,7 +60,7 @@ const loadLocale = function(locale) {
   }
 };
 
-export default new (Session = class Session {
+export default new class Session {
   returnTo() {
     const h = new URL(window.location.href);
     return h.pathname + h.search;
@@ -110,4 +119,4 @@ export default new (Session = class Session {
     const validProviders = AppConfig.identityProviders.map(p => p.name);
     if (validProviders.includes(AppConfig.pendingIdentity.identity_type)) { return AppConfig.pendingIdentity; }
   }
-});
+};

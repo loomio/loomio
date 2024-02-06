@@ -36,7 +36,7 @@ export default {
 section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id", :event="event")
   template(v-if="eventable.castAt && !eventable.revokedAt")
     template(v-if="eventable.hasOptionIcon()")
-      .d-flex
+      .d-flex.text-body-2
         component.text--secondary(:is="componentType", :to="actor && urlFor(actor)") {{actorName}}
         space
         space
@@ -47,7 +47,7 @@ section.strand-item__stance-created.stance-created(id="'comment-'+ eventable.id"
           time-ago(:date='eventable.updatedAt || eventable.castAt')
         template(v-if="!eventable.latest")
           mid-dot.text--secondary
-          span.text--secondary(v-t="'poll_common.superseded'")
+          span.text--secondary(v-t="'poll_common.outdated'")
     .poll-common-stance(v-if="poll.showResults() && !collapsed")
       v-layout(v-if="!eventable.hasOptionIcon()" wrap align-center)
         strand-item-headline.text--secondary(:event="event" :eventable="eventable" :dateTime="eventable.updatedAt || eventable.castAt")

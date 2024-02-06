@@ -5,7 +5,7 @@ import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import StanceService from '@/shared/services/stance_service';
-import {map, debounce, without, filter, uniq, uniqBy, some, find, compact} from 'lodash';
+import { map, debounce, uniq, compact } from 'lodash-es';
 
 export default {
   components: {
@@ -20,7 +20,7 @@ export default {
     return {
       users: [],
       userIds: [],
-      isMember: {},
+      isGuest: {},
       isMemberAdmin: {},
       isStanceAdmin: {},
       reset: false,
@@ -126,7 +126,7 @@ export default {
           poll_id: this.poll.id,
           query: this.query
       }}).then(data => {
-        this.isMember = this.toHash(data['meta']['member_ids']);
+        this.isGuest = this.toHash(data['meta']['guest_ids']);
         this.isMemberAdmin = this.toHash(data['meta']['member_admin_ids']);
         this.isStanceAdmin = this.toHash(data['meta']['stance_admin_ids']);
         this.userIds = uniq(compact(this.userIds.concat(map(data['users'], 'id'))));
@@ -161,9 +161,9 @@ export default {
   .px-4.pt-4
     .d-flex.justify-space-between
       //- template(v-if="poll.notifyRecipients")
-      h1.headline(v-t="'announcement.form.'+wipOrEmpty+'poll_announced.title'")
-      //- h1.headline(v-if="!poll.closingAt" v-t="'announcement.form.wip_poll_announced.title'")
-      //- h1.headline(v-else v-t="'poll_common_form.add_voters'")
+      h1.text-h5(v-t="'announcement.form.'+wipOrEmpty+'poll_announced.title'")
+      //- h1.text-h5(v-if="!poll.closingAt" v-t="'announcement.form.wip_poll_announced.title'")
+      //- h1.text-h5(v-else v-t="'poll_common_form.add_voters'")
       dismiss-modal-button
     recipients-autocomplete(
       :label="poll.notifyRecipients ? $t('announcement.form.'+wipOrEmpty+'poll_announced.helptext') : $t('poll_common_form.who_may_vote', {poll_type: poll.translatedPollType()})"
@@ -197,14 +197,14 @@ export default {
       v-list-item-content
         v-list-item-title
           span.mr-2 {{user.nameWithTitle(poll.group())}}
-          v-chip.mr-1(v-if="!isMember[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+          v-chip.mr-1(v-if="isGuest[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
           v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
 
       v-list-item-action
         v-menu(offset-y)
           template(v-slot:activator="{on, attrs}")
             v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
-              v-icon mdi-dots-vertical
+              common-icon(name="mdi-dots-vertical")
           v-list
             v-list-item(v-for="action in actionNames" v-if="canPerform(action, poll, user)" @click="perform(action, poll, user)" :key="action")
               v-list-item-title(v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }")

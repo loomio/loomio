@@ -2,6 +2,10 @@ module Ability::Membership
   def initialize(user)
     super(user)
 
+    can :show, ::Membership do |membership|
+      membership.user_id == user.id || membership.group.admins.exists?(user.id) || membership.inviter_id == user.id
+    end
+    
     can [:update], ::Membership do |membership|
       membership.user_id == user.id || membership.group.admins.exists?(user.id)
     end
@@ -16,7 +20,7 @@ module Ability::Membership
       !membership.accepted_at? && user_is_admin_of?(membership.group_id)
     end
 
-    can [:remove_admin, :destroy], ::Membership do |membership|
+    can [:remove_admin, :revoke, :destroy], ::Membership do |membership|
       Webhook.where(group_id: membership.group_id, actor_id: user.id).
         where.any(permissions: 'manage_memberships').exists? ||
       (membership.user == user ||

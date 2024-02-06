@@ -15,7 +15,7 @@ export default
     submit() {
       this.contactRequest.save().then(() => {
         Flash.success("contact_request_form.email_sent", {name: this.user.name});
-        this.close();
+        EventBus.$emit('closeModal')
       });
     }
   }
@@ -25,7 +25,7 @@ export default
 <template lang="pug">
 v-card.contact-user-modal
   v-card-title
-    h1.headline(tabindex="-1" v-t="{ path: 'contact_request_form.modal_title', args: { name: user.name }}")
+    h1.text-h5(tabindex="-1" v-t="{ path: 'contact_request_form.modal_title', args: { name: user.name }}")
     v-spacer
     dismiss-modal-button
   v-card-text.contact-user-form

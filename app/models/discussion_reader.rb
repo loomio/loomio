@@ -15,13 +15,10 @@ class DiscussionReader < ApplicationRecord
 
   scope :active, -> { where("discussion_readers.revoked_at IS NULL") }
 
-  scope :guests, -> { where("discussion_readers.inviter_id IS NOT NULL
-                              AND discussion_readers.revoked_at IS NULL") }
-  scope :admins, -> { guests.where('discussion_readers.admin': true) }
+  scope :guests, -> { active.where('discussion_readers.guest': true) }
+  scope :admins, -> { active.where('discussion_readers.admin': true) }
 
-  scope :redeemable, -> { where('discussion_readers.inviter_id IS NOT NULL
-                            AND discussion_readers.accepted_at IS NULL
-                            AND discussion_readers.revoked_at IS NULL') }
+  scope :redeemable, -> { guests.where('discussion_readers.accepted_at IS NULL') }
 
   scope :redeemable_by, -> (user_id) { redeemable.joins(:user).where("user_id = ? OR users.email_verified = false", user_id) }
 

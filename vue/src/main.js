@@ -1,18 +1,13 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 import Vue from 'vue';
 import AppConfig from '@/shared/services/app_config';
 import vuetify from '@/vuetify';
 import router from '@/routes';
 import i18n from '@/i18n';
 import app from '@/app.vue';
-import marked from '@/marked';
+import markedDirective from '@/marked_directive';
 import '@/observe_visibility';
 import './removeServiceWorker';
-import { pick } from 'lodash';
+import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/browser';
 import WatchRecords from '@/mixins/watch_records';
 import CloseModal from '@/mixins/close_modal';

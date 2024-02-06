@@ -78,6 +78,10 @@ class API::V1::MembershipsController < API::V1::RestfulController
   end
 
   private
+  def destroy_action
+    service.revoke(**{resource_symbol => resource, actor: current_user})
+  end
+  
   def valid_orders
     ['memberships.created_at', 'memberships.created_at desc', 'users.name', 'admin desc', 'accepted_at desc', 'accepted_at']
   end
