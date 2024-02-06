@@ -105,7 +105,7 @@ jobs:
         echo $PWD
         git clone https://github.com/loomio/loomio_channel_server.git
         cd loomio_channel_server
-        npm install --force
+        npm install
         npm run start > ../log/channel_server.log &
     - name: create db
       run: |
@@ -125,7 +125,7 @@ jobs:
       run: |
         cd vue
         rm -rf node_modules
-        npm install --force
+        npm install
         npm run build
     - name: run e2es
       env:
