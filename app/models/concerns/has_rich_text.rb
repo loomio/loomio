@@ -14,13 +14,17 @@ module HasRichText
       define_singleton_method :rich_text_fields, -> { Array on }
       rich_text_fields.each do |field|
         define_method "sanitize_#{field}!" do
+          # return if self.send("#{field}_format") == 'md'
           tags = %w[strong em b i p s code pre big div small hr br span mark h1 h2 h3 ul ol li abbr a img video audio blockquote table thead th tr td iframe u]
           attributes = %w[href src alt title data-type data-iframe-container data-done data-mention-id poster controls data-author-id data-uid data-checked data-due-on data-color data-remind width height target colspan rowspan data-text-align]
+          
           self[field] = Rails::Html::WhiteListSanitizer.new.sanitize(self[field], tags: tags, attributes: attributes)
           self[field] = HasRichText::strip_empty_paragraphs(self[field])
           self[field] = add_required_link_attributes(self[field])
           self[field] = HasRichText::add_heading_ids(self[field])
           self[field] = TaskService.rewrite_uids(self[field])
+          # preserve markdown quotes after html sanitizer
+          self[field] = self[field].gsub(/^&gt\; /, '> ') if self.send("#{field}_format") == 'md'
         end
 
         define_method "#{field}_visible_text" do
