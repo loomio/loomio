@@ -84,5 +84,8 @@
     "vite-plugin-env-compatible": "latest",
     "@vitejs/plugin-vue": "^5.0.0",
     "vite-plugin-vuetify": "latest"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "latest"
   }
 }
