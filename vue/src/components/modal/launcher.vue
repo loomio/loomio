@@ -31,8 +31,6 @@ export default
     RevisionHistoryModal: () => import('@/components/revision_history/modal'),
     TagsSelect: () => import('@/components/tags/select'),
     TagsModal: () => import('@/components/tags/modal'),
-    WebhookForm: () => import('@/components/webhook/form'),
-    WebhookList: () => import('@/components/webhook/list'),
     ChangePictureForm: () => import('@/components/profile/change_picture_form'),
     GroupNewForm: () => import('@/components/group/new_form'),
     PinEventForm: () => import('@/components/thread/pin_event_form'),
