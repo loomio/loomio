@@ -135,7 +135,8 @@ GEM
       ffi
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
-    crack (0.4.5)
+    crack (0.4.6)
+      bigdecimal
       rexml
     crass (1.0.6)
     css_parser (1.16.0)
@@ -293,7 +294,7 @@ GEM
     has_scope (0.8.2)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
-    hashdiff (1.0.1)
+    hashdiff (1.1.0)
     hiredis (0.6.3)
     htmlentities (4.3.4)
     http_accept_language (2.1.1)
@@ -584,7 +585,7 @@ GEM
       oga (~> 3.4)
     warden (1.2.9)
       rack (>= 2.0.9)
-    webmock (3.19.1)
+    webmock (3.20.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
