@@ -49,7 +49,7 @@
     "@tiptap/extension-text-align": "^2.2.1",
     "@tiptap/extension-text-style": "^2.2.1",
     "@tiptap/extension-typography": "^2.2.1",
-    "@tiptap/extension-underline": "^2.2.1",
+    "@tiptap/extension-underline": "^2.2.2",
     "@tiptap/pm": "^2.2.1",
     "@tiptap/suggestion": "^2.2.1",
     "@tiptap/vue-2": "^2.2.1",
