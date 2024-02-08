@@ -51,7 +51,7 @@
     "@tiptap/extension-typography": "^2.2.1",
     "@tiptap/extension-underline": "^2.2.1",
     "@tiptap/pm": "^2.2.1",
-    "@tiptap/suggestion": "^2.2.1",
+    "@tiptap/suggestion": "^2.2.2",
     "@tiptap/vue-2": "^2.2.1",
     "activestorage": "^5.2.8",
     "date-fns": "2.30.0",
