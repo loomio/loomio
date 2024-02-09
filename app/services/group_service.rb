@@ -38,7 +38,7 @@ module GroupService
 
     groups.each do |g|
       revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
-      revoked_memberships.update_all(accepted_at: nil, revoked_at: nil, revoker_id: nil, admin: nil, volume: 2)
+      revoked_memberships.update_all(accepted_at: nil, revoked_at: nil, revoker_id: nil, admin: false, volume: 2)
 
       new_memberships = users.map do |user|
         Membership.new(inviter: actor, user: user, group: g, volume: 2)
