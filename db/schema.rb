@@ -487,6 +487,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_04_194803) do
     t.index ["token"], name: "index_groups_on_token", unique: true
   end
 
+  create_table "heya_campaign_memberships", force: :cascade do |t|
+    t.string "user_type", null: false
+    t.bigint "user_id", null: false
+    t.string "campaign_gid", null: false
+    t.string "step_gid", null: false
+    t.boolean "concurrent", default: false, null: false
+    t.datetime "last_sent_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_type", "user_id", "campaign_gid"], name: "user_campaign_idx", unique: true
+  end
+
+  create_table "heya_campaign_receipts", force: :cascade do |t|
+    t.string "user_type", null: false
+    t.bigint "user_id", null: false
+    t.string "step_gid", null: false
+    t.datetime "sent_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_type", "user_id", "step_gid"], name: "user_step_idx", unique: true
+  end
+
   create_table "login_tokens", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.string "token"

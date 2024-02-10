@@ -64,6 +64,7 @@ gem 'blazer'
 gem 'terminal-table'
 gem 'tzinfo-data'
 gem 'pg_search'
+gem "heya", github: "honeybadger-io/heya"
 
 group :development, :test do
   gem 'listen'
@@ -97,3 +98,5 @@ end
 if Dir.exist?('engines/loomio_subs')
   gem 'loomio_subs', path: 'engines/loomio_subs'
 end
+
+gem "maildown", "~> 3.3"

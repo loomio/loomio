@@ -87,7 +87,7 @@ v-card.change-picture-form
         v-list-item-avatar
           common-icon(name="mdi-camera")
         v-list-item-title(v-t="'change_picture_form.use_uploaded'")
-          input.hidden.change-picture-form__file-input(type="file" ref="fileInput" @change='uploadFile' accept="image/png, image/jpeg, image/webp")
+          input.hidden.change-picture-form__file-input(type="file" ref="fileInput" @change='uploadFile' accept="image/png, image/jpeg, image/webp, image/jpg")
       v-list-item.change-picture-form__option(v-if="previous_uploaded_avatar" @click="submit('uploaded')")
         v-list-item-avatar
           img(:src="previous_uploaded_avatar")

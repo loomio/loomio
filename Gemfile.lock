@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/honeybadger-io/heya.git
+  revision: 02ef0c639ba37089f6989ed316ec43941ddb615e
+  specs:
+    heya (0.9.0)
+      rails (>= 5.2.3)
+
+GIT
   remote: https://github.com/loomio/twitter-text.git
   revision: 0931cb3782bf32023e7ff05282a46023718f42fe
   specs:
@@ -333,6 +340,10 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    kramdown (2.4.0)
+      rexml
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -349,6 +360,9 @@ GEM
       net-imap
       net-pop
       net-smtp
+    maildown (3.3.1)
+      actionmailer (>= 4.0.0)
+      kramdown-parser-gfm
     marcel (1.0.2)
     maxminddb (0.1.22)
     method_source (1.0.0)
@@ -627,6 +641,7 @@ DEPENDENCIES
   google-cloud-translate
   gravtastic
   haml-rails (~> 2.1.0)
+  heya!
   hiredis
   http_accept_language
   httparty (~> 0.21.0)
@@ -634,6 +649,7 @@ DEPENDENCIES
   image_processing (~> 1.12)
   listen
   lograge
+  maildown (~> 3.3)
   maxminddb
   nokogiri
   oj
