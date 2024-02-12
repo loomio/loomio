@@ -208,7 +208,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-list-item.sidebar__list-item-button--start-thread(dense @click="explainNewThreadRemoved")
     v-list-item-title(v-t="'sidebar.start_thread'")
     v-list-item-icon
-      common-icon(name="mdi-help" small)
+      common-icon(name="mdi-help")
   v-list-item(dense to="/tasks" :disabled="organizations.length == 0")
     v-list-item-title(v-t="'tasks.tasks'")
 
