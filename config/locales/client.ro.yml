@@ -439,6 +439,8 @@ ro:
     help_docs: Ajutor documente
     a_detailed_guide_to_loomio: Un ghid detaliat pentru Loomio
     talk_to_the_loomio_team: Vorbește cu echipa Loomio
+    new_thread_removed: Firul nou a fost eliminat
+    new_thread_removed_body: Noul buton de fir este eliminat din bara laterală. Pentru a începe un fir nou, mai întâi navigați la grupul dvs., apoi faceți clic pe „Fir nou”. Ne pare rău pentru modificare, dar este necesară deoarece trebuie să selectați un șablon atunci când începeți o discuție.
   navbar:
     recent_title: Mergi la tablou de bord
     unread_title: Vezi activitatea necitita

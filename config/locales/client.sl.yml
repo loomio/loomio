@@ -390,6 +390,8 @@ sl:
     help_docs: Dokumenti za pomoč
     a_detailed_guide_to_loomio: Podroben vodnik po Loomio
     talk_to_the_loomio_team: Pogovorite se z ekipo Loomio
+    new_thread_removed: Nova nit odstranjena
+    new_thread_removed_body: Gumb za novo nit bo odstranjen iz stranske vrstice. Če želite začeti novo nit, se najprej pomaknite do svoje skupine in kliknite »Nova nit«. Oprostite za spremembo, vendar je potrebna, ker morate izbrati predlogo, ko začnete nit.
   navbar:
     search_threads: Iskanje tem v %{name}
     search_polls: Iskanje anket v %{name}

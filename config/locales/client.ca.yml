@@ -472,6 +472,8 @@ ca:
     help_docs: Ajuda documents
     a_detailed_guide_to_loomio: Una guia detallada de Loomio
     talk_to_the_loomio_team: Parla amb l'equip de Loomio
+    new_thread_removed: S'ha eliminat el fil nou
+    new_thread_removed_body: El botó del fil nou s'està eliminant de la barra lateral. Per iniciar un fil nou, primer aneu al vostre grup i, a continuació, feu clic a "Nou fil". Disculpeu el canvi, però és obligatori perquè heu de seleccionar una plantilla quan inicieu un fil.
   strand_nav:
     newest: Més recent
     oldest: Més antic

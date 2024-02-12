@@ -516,6 +516,8 @@ pt_BR:
     help_docs: Documentos de ajuda
     a_detailed_guide_to_loomio: Um guia detalhado do Loomio
     talk_to_the_loomio_team: Fale com a equipe Loomio
+    new_thread_removed: Novo tópico removido
+    new_thread_removed_body: O botão do novo tópico está sendo removido da barra lateral. Para iniciar um novo tópico, primeiro navegue até o seu grupo e clique em "Novo tópico". Desculpe pela mudança, mas ela é obrigatória porque você precisa selecionar um modelo ao iniciar um tópico.
   strand_nav:
     newest: Mais recente
     oldest: Mais antigo

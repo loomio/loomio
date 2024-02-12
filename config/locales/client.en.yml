@@ -527,6 +527,8 @@ en:
     participants: Participants
 
   sidebar:
+    new_thread_removed: New thread removed
+    new_thread_removed_body: The new thread button is being removed from the sidebar. To start a new thread, first navigate to your group, then click "New thread". Sorry for the change, but it is required because you need to select a template when starting a thread.
     threads: 'Threads'
     my_groups: 'My groups'
     other_groups: 'Other groups'

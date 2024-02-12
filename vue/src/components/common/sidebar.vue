@@ -74,6 +74,17 @@ export default {
   },
 
   methods: {
+    explainNewThreadRemoved() {
+      EventBus.$emit('openModal', {
+        component: 'InfoModal',
+        persistent: false,
+        maxWidth: 900,
+        props: {
+          bodyPath: 'sidebar.new_thread_removed_body',
+          titlePath: 'sidebar.new_thread_removed'
+        }
+      })
+    },
     memberGroups(group) {
       return group.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user()));
     },
@@ -194,12 +205,13 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       span(v-if="unreadDirectThreadsCount > 0")
         space
         span ({{unreadDirectThreadsCount}})
-  v-list-item.sidebar__list-item-button--start-thread(dense to="/d/new")
+  v-list-item.sidebar__list-item-button--start-thread(dense @click="explainNewThreadRemoved")
     v-list-item-title(v-t="'sidebar.start_thread'")
     v-list-item-icon
-      common-icon(name="mdi-plus")
+      common-icon(name="mdi-help" small)
   v-list-item(dense to="/tasks" :disabled="organizations.length == 0")
     v-list-item-title(v-t="'tasks.tasks'")
+
   v-divider
 
   v-list.sidebar__groups(dense)

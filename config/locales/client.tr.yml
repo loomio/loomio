@@ -455,6 +455,8 @@ tr:
     help_docs: Yardım dokümanları
     a_detailed_guide_to_loomio: Loomio için ayrıntılı bir rehber
     talk_to_the_loomio_team: Loomio ekibiyle konuşun
+    new_thread_removed: Yeni konu kaldırıldı
+    new_thread_removed_body: Yeni konu düğmesi kenar çubuğundan kaldırılıyor. Yeni bir konu başlatmak için önce grubunuza gidin, ardından "Yeni konu"ya tıklayın. Değişiklik için özür dileriz, ancak konu başlatırken bir şablon seçmeniz gerektiğinden bu gereklidir.
   navbar:
     recent_title: Kontrol paneline git
     unread_title: Okunmamış etkinlikleri görüntüle

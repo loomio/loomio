@@ -516,6 +516,8 @@ it:
     help_docs: Aiuto documenti
     a_detailed_guide_to_loomio: Una guida dettagliata a Loomio
     talk_to_the_loomio_team: Parla con il team di Loomio
+    new_thread_removed: Nuovo thread rimosso
+    new_thread_removed_body: Il pulsante del nuovo thread verrà rimosso dalla barra laterale. Per iniziare una nuova discussione, accedi prima al tuo gruppo, quindi fai clic su "Nuova discussione". Ci scusiamo per la modifica, ma è necessaria perché è necessario selezionare un modello quando si avvia una discussione.
   strand_nav:
     newest: Più recente
     oldest: Maggiore

@@ -1078,6 +1078,8 @@ fi:
       threads_list: Säikeitä toimia
       groups_list: Ryhmät
       user_list: Käyttäjän toimet
+    new_thread_removed: Uusi lanka poistettu
+    new_thread_removed_body: Uusi lankapainike poistetaan sivupalkista. Aloita uusi viestiketju siirtymällä ensin ryhmään ja napsauttamalla sitten "Uusi säiettä". Anteeksi muutos, mutta se on pakollinen, koska sinun on valittava malli aloittaessasi säiettä.
   strand_nav:
     newest: Uusin
     oldest: Vanhin
