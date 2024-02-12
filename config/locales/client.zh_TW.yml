@@ -514,6 +514,8 @@ zh_TW:
     help_docs: 幫助文檔
     a_detailed_guide_to_loomio: Loomio 詳細指南
     talk_to_the_loomio_team: 與 Loomio 團隊交談
+    new_thread_removed: 新線程已刪除
+    new_thread_removed_body: 新的線程按鈕將從側邊欄中刪除。要開始新主題，請先導覽到您的群組，然後按一下「新主題」。抱歉進行更改，但這是必需的，因為您需要在啟動線程時選擇模板。
   strand_nav:
     newest: 最新
     oldest: 最舊

@@ -514,6 +514,8 @@ de:
     help_docs: Hilfedokumente
     a_detailed_guide_to_loomio: Eine ausführliche Anleitung zu Loomio
     talk_to_the_loomio_team: Sprechen Sie mit dem Loomio-Team
+    new_thread_removed: Neuer Thread entfernt
+    new_thread_removed_body: Die neue Thread-Schaltfläche wird aus der Seitenleiste entfernt. Um einen neuen Thread zu starten, navigieren Sie zunächst zu Ihrer Gruppe und klicken Sie dann auf „Neuer Thread“. Entschuldigung für die Änderung, aber sie ist erforderlich, da Sie beim Starten eines Threads eine Vorlage auswählen müssen.
   strand_nav:
     newest: Neueste
     oldest: 'Älteste '

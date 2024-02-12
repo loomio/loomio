@@ -553,6 +553,8 @@ fr:
     help_docs: Documents d'aide
     a_detailed_guide_to_loomio: Un guide détaillé de Loomio
     talk_to_the_loomio_team: Parlez à l'équipe Loomio
+    new_thread_removed: Nouveau fil supprimé
+    new_thread_removed_body: Le nouveau bouton de fil de discussion est supprimé de la barre latérale. Pour créer un nouveau fil de discussion, accédez d'abord à votre groupe, puis cliquez sur « Nouveau fil de discussion ». Désolé pour le changement, mais il est obligatoire car vous devez sélectionner un modèle lors du démarrage d'un fil de discussion.
   strand_nav:
     newest: Les plus récents
     oldest: Les plus anciens

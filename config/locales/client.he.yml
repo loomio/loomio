@@ -439,6 +439,8 @@ he:
     help_docs: מסמכי עזרה
     a_detailed_guide_to_loomio: מדריך מפורט ל-Loomio
     talk_to_the_loomio_team: דבר עם צוות Loomio
+    new_thread_removed: שרשור חדש הוסר
+    new_thread_removed_body: כפתור השרשור החדש מוסר מהסרגל הצדדי. כדי להתחיל שרשור חדש, נווט תחילה לקבוצה שלך ולאחר מכן לחץ על "שרשור חדש". סליחה על השינוי, אבל הוא נדרש כי אתה צריך לבחור תבנית בעת פתיחת שרשור.
   strand_nav:
     newest_first: הכי חדש קודם
     oldest_first: הכי ישן קודם

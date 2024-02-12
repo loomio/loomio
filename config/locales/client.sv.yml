@@ -441,6 +441,8 @@ sv:
     help_docs: Hjälpdokument
     a_detailed_guide_to_loomio: En detaljerad guide till Loomio
     talk_to_the_loomio_team: Prata med Loomio-teamet
+    new_thread_removed: Ny tråd borttagen
+    new_thread_removed_body: Den nya trådknappen tas bort från sidofältet. För att starta en ny tråd, navigera först till din grupp och klicka sedan på "Ny tråd". Ursäkta ändringen, men den är obligatorisk eftersom du måste välja en mall när du startar en tråd.
   navbar:
     recent_title: Gå till instrumentbrädan
     start_thread: Ny tråd
