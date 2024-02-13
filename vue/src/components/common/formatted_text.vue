@@ -210,6 +210,7 @@ img.emoji
   overflow-wrap: break-word
   word-wrap: break-word
   word-break: break-word
+  overflow: auto
 
   img
     max-width: 100%

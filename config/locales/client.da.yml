@@ -401,6 +401,8 @@ da:
     help_docs: Hjælpedokumenter
     a_detailed_guide_to_loomio: En detaljeret guide til Loomio
     talk_to_the_loomio_team: Tal med Loomio-teamet
+    new_thread_removed: Ny tråd fjernet
+    new_thread_removed_body: Den nye trådknap fjernes fra sidebjælken. For at starte en ny tråd skal du først navigere til din gruppe og derefter klikke på "Ny tråd". Beklager ændringen, men den er påkrævet, fordi du skal vælge en skabelon, når du starter en tråd.
   strand_nav:
     newest_first: Nyeste først
     oldest_first: Ældste først

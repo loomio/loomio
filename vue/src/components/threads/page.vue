@@ -67,6 +67,8 @@ v-main
   v-container.threads-page.max-width-1024.px-0.px-sm-3
     h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'sidebar.invite_only_threads'")
     v-layout.mb-3
+      v-spacer
+      v-btn.threads-page__new-thread-button(color="primary" to="/d/new" v-t="'sidebar.start_thread'")
       //- v-text-field(clearable solo hide-details :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_all_threads')" append-icon="mdi-magnify")
 
     v-card.mb-3.dashboard-page__loading(v-if='loader.loading && threads.length == 0' aria-hidden='true')

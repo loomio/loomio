@@ -51,8 +51,6 @@ module.exports = {
   GroupPrivacyButton: 'group/privacy_button',
   GroupStart: 'group/start',
   HelpLink: 'common/help_link',
-  WebhookForm: 'webhook/form',
-  WebhookList: 'webhook/list',
   JoinGroupButton: 'group/join_button',
   LmoTextarea: 'lmo_textarea/lmo_textarea',
   Loading: 'common/loading',

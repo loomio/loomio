@@ -1,6 +1,6 @@
 class MembershipQuery
   def self.start
-    Membership.includes(:group, :user, :inviter).joins(:group).joins(:user)
+    Membership.includes(:group, :user, :inviter).joins(:group).joins(:user).active
   end
 
   def self.visible_to(user: , chain: start)

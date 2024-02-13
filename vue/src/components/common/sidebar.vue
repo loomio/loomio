@@ -204,10 +204,6 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         span(v-if="unreadDirectThreadsCount > 0")
           space
           span ({{unreadDirectThreadsCount}})
-    v-list-item.sidebar__list-item-button--start-thread(dense to="/d/new")
-      v-list-item-title(v-t="'sidebar.start_thread'")
-      template(v-slot:append)
-        common-icon(name="mdi-plus")
     v-list-item(dense to="/tasks" :disabled="organizations.length == 0")
       v-list-item-title(v-t="'tasks.tasks'")
     v-divider

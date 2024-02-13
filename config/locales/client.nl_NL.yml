@@ -491,6 +491,8 @@ nl_NL:
     help_docs: Help-documenten
     a_detailed_guide_to_loomio: Een gedetailleerde gids voor Loomio
     talk_to_the_loomio_team: Praat met het Loomio-team
+    new_thread_removed: Nieuw draadje verwijderd
+    new_thread_removed_body: De nieuwe discussieknop wordt uit de zijbalk verwijderd. Om een nieuw gesprek te starten, navigeert u eerst naar uw groep en klikt u vervolgens op 'Nieuw gesprek'. Excuses voor de wijziging, maar deze is vereist omdat u een sjabloon moet selecteren wanneer u een thread start.
   strand_nav:
     newest: Nieuwste
     oldest: Oudste

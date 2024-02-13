@@ -551,6 +551,8 @@ es:
     help_docs: Documentos de ayuda
     a_detailed_guide_to_loomio: Una guía detallada de Loomio
     talk_to_the_loomio_team: Habla con el equipo de Loomio
+    new_thread_removed: Nuevo hilo eliminado
+    new_thread_removed_body: El botón de nuevo hilo se eliminará de la barra lateral. Para iniciar un nuevo hilo, primero navegue hasta su grupo, luego haga clic en "Nuevo hilo". Perdón por el cambio, pero es obligatorio porque debes seleccionar una plantilla al iniciar un hilo.
   strand_nav:
     newest: El más nuevo
     oldest: El más viejo

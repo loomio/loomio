@@ -946,6 +946,8 @@ hr:
       threads_list: Akcije niti
       groups_list: grupe
       user_list: Radnje korisnika
+    new_thread_removed: Nova nit uklonjena
+    new_thread_removed_body: Gumb nove niti uklanja se s bočne trake. Da biste započeli novu nit, prvo idite do svoje grupe, zatim kliknite "Nova nit". Ispričavamo se na promjeni, ali obavezna je jer trebate odabrati predložak prilikom pokretanja niti.
   strand_nav:
     newest: Najnoviji
     oldest: Najstariji

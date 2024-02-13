@@ -508,6 +508,8 @@ pl:
     help_docs: Dokumenty pomocy
     a_detailed_guide_to_loomio: Szczegółowy przewodnik po Loomio
     talk_to_the_loomio_team: Porozmawiaj z zespołem Loomio
+    new_thread_removed: Nowy wątek usunięty
+    new_thread_removed_body: Przycisk nowego wątku zostanie usunięty z paska bocznego. Aby rozpocząć nowy wątek, najpierw przejdź do swojej grupy, a następnie kliknij „Nowy wątek”. Przepraszamy za zmianę, ale jest ona wymagana, ponieważ przy zakładaniu wątku trzeba wybrać szablon.
   strand_nav:
     newest: Najnowsze
     oldest: 'Od najstarszych '

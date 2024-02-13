@@ -21,8 +21,6 @@ module Ability::Membership
     end
 
     can [:remove_admin, :revoke, :destroy], ::Membership do |membership|
-      Webhook.where(group_id: membership.group_id, actor_id: user.id).
-        where.any(permissions: 'manage_memberships').exists? ||
       (membership.user == user ||
        user_is_admin_of?(membership.group_id) ||
        (membership.inviter == user && !membership.accepted_at?))
