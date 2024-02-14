@@ -50,17 +50,18 @@ module.exports = function(test, browser) {
     },
 
     click(selector, pause) {
-      test.click(selector);
+      // test.click(selector);
       // this.waitFor(selector);
       // // test.moveToElement(selector, -10, -10)
       // this.scrollTo(selector, () => {
       //   test.click(selector);
       //   if (pause) { test.pause(pause); }
       // })
+      test.getLocationInView(selector).moveToElement(selector, -100, -10).assert.visible(selector).click(selector)
     },
 
     scrollTo(selector, callback, wait) {
-      this.waitFor(selector, wait);
+      // this.waitFor(selector, wait);
       return test.getLocationInView(selector, callback);
     },
 

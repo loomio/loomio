@@ -88,14 +88,17 @@ const router = createRouter({
     {
       path: '/d/:key',
       component: StrandPage,
-      children: [
-        {path: 'comment/:comment_id'},
-        {path: ':stub?/:sequence_id?'},
-        {path: ''}
-      ]
     },
     {
-      path: '/d/:key/:stub?',
+      path: '/d/:key/comment/:comment_id',
+      component: StrandPage,
+    },
+    {
+      path: '/d/:key/:stub',
+      component: StrandPage,
+    },
+    {
+      path: '/d/:key/:stub/:sequence_id',
       component: StrandPage,
     },
     {path: '/g/new', component: StartGroupPage},

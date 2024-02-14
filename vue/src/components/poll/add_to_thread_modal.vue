@@ -75,8 +75,8 @@ v-card(:title="$t('action_dock.add_poll_to_thread')")
     dismiss-modal-button(aria-hidden='true')
   submit-overlay(:value='poll.processing')
   v-card-text
-    v-select(v-model="groupId" :items="groups" item-text="fullName" item-value="id")
-    v-autocomplete.add-to-thread-modal__search(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-text="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
+    v-select(v-model="groupId" :items="groups" item-title="fullName" item-value="id")
+    v-autocomplete.add-to-thread-modal__search(hide-no-data return-object v-model="selectedDiscussion" :search-input.sync="searchFragment" :items="searchResults" item-title="title" :placeholder="$t('discussion_fork_actions.search_placeholder')" :label="$t('discussion_fork_actions.move_to_existing_thread')" :loading="loading")
   v-card-actions
     v-spacer
     v-btn.add-to-thread-modal__submit(color="primary" @click="submit()" :disabled="!selectedDiscussion" :loading="poll.processing")

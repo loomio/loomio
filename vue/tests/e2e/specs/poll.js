@@ -73,7 +73,7 @@ module.exports = {
 
     page.click('.poll-common-form__submit')
     // page.expectElement('.poll-members-form__submit')
-    // page.pause(500)
+    page.pause(1000)
     // page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -104,7 +104,7 @@ module.exports = {
 
     page.click('.poll-common-form__submit')
     // page.expectElement('.poll-members-form__submit')
-    // page.pause(500)
+    page.pause(500)
     // page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
@@ -138,7 +138,7 @@ module.exports = {
     page.click('.poll-common-form__submit')
     // page.expectElement('.poll-members-form__submit')
     // page.expectElement('.dismiss-modal-button')
-    // page.pause(500)
+    page.pause(500)
     // page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')

@@ -14,12 +14,12 @@ export default {
   },
 
   data() {
-    let pollOptionItems = [{text: I18n.global.t('discussions_panel.all'), value: null}].concat(this.poll.pollOptions().map((o, i) => {
-      return {text: o.optionName(), value: o.id};
+    let pollOptionItems = [{title: I18n.global.t('discussions_panel.all'), value: null}].concat(this.poll.pollOptions().map((o, i) => {
+      return {title: o.optionName(), value: o.id};
     }))
 
     if (!this.poll.showResults()) {
-      pollOptionItems = [{text: I18n.global.t('discussions_panel.all'), value: null}]
+      pollOptionItems = [{title: I18n.global.t('discussions_panel.all'), value: null}]
     }
 
     return {
@@ -117,7 +117,7 @@ export default {
             span.text-medium-emphasis {{ stance.participantName() }}
             span(v-if="poll.showResults() && stance.castAt && poll.hasOptionIcon()")
               poll-common-stance-choice.pl-2.pr-1(
-                :poll="poll", 
+                :poll="poll"
                 :stance-choice="stance.stanceChoice()")
               space
             span(v-if='!stance.castAt' )
