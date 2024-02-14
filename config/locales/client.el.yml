@@ -1568,7 +1568,7 @@ el:
     'no': Όχι
     accept: Αποδέχομαι
   auth_form:
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     name_placeholder: Το όνομα σας
     code: '000000'
     youre_invited: Έχετε προσκληθεί να συμμετάσχετε στο %{group_name}.

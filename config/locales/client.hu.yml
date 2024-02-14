@@ -2148,7 +2148,7 @@ hu:
     account_locked: Túl sok sikertelen bejelentkezési kísérlet után zárolódott a fiókod. Ellenőrizze e-mail címét, hogy nincs-e kinyitási link
     email_not_found: Sajnos nem találtunk ilyen e-mail címmel rendelkező fiókot
     email_taken: Ez az email fiók már regisztrálva van
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     login_with_token: Minden készen állsz A folytatáshoz kattintson az alábbi linkre.
     login_link_helptext: Kattintson az alábbi gombra, és küldünk egy linket a bejelentkezéshez.
     enter_your_password: Add meg a jelszavad a folytatáshoz

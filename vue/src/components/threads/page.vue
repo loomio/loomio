@@ -5,8 +5,10 @@ import Session            from '@/shared/services/session';
 import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
-
+import FormatDate from '@/mixins/format_date';
+import WatchRecords from '@/mixins/watch_records';
 export default {
+  mixins: [FormatDate, WatchRecords],
   data() {
     return {
       threads: [],
@@ -24,18 +26,18 @@ export default {
 
   mounted() {
     EventBus.$emit('content-title-visible', false);
-    EventBus.$emit('currentComponent', {
-      titleKey: this.titleKey,
-      page: 'threadsPage',
-      search: {
-        placeholder: this.$t('navbar.search_all_threads')
-      }
-    });
+    // EventBus.$emit('currentComponent', {
+    //   titleKey: this.titleKey,
+    //   page: 'threadsPage',
+    //   // search: {
+    //   //   placeholder: this.$t('navbar.search_all_threads')
+    //   // }
+    // });
     this.init();
   },
 
   watch: {
-    '$route.query': 'refresh'
+    '$route.query': 'init'
   },
 
   methods: {
@@ -65,7 +67,7 @@ export default {
 <template lang="pug">
 v-main
   v-container.threads-page.max-width-1024.px-0.px-sm-3
-    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'sidebar.invite_only_threads'")
+    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}" v-t="'sidebar.invite_only_threads'")
     v-layout.mb-3
       v-spacer
       v-btn.threads-page__new-thread-button(color="primary" to="/d/new" v-t="'sidebar.start_thread'")

@@ -2220,7 +2220,7 @@ pl:
     account_locked: Twoje konto zostało zablokowane po zbyt wielu nieudanych próbach logowania. Sprawdź swój adres e-mail, aby uzyskać link do odblokowania.
     email_not_found: Przepraszamy, nie mogliśmy znaleźć konta powiązanego z tym adresem e-mail.
     email_taken: Ten adres e-mailowy jest już zarejestrowany
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     login_with_token: Wszystko gotowe! Kliknij poniższy link, aby kontynuować.
     login_link_helptext: Kliknij poniższy przycisk, a my wyślemy Ci link do logowania.
     enter_your_password: Wprowadź hasło, aby kontynuować

@@ -2205,7 +2205,7 @@ nl_NL:
     account_locked: Je account is gedeactiveerd door te veel mislukte aanmeld pogingen. Kijk in je e-mail voor een activatie-link
     email_not_found: Helaas konden we geen account vinden met dat e-mailadres
     email_taken: E-mailadres is al geregistreerd
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     login_with_token: Helemaal klaar! Klik op onderstaande link om verder te gaan.
     login_link_helptext: Klik op de knop hieronder en we sturen je een aanmeld-link.
     enter_your_password: Voer je wachtwoord in om door te gaan

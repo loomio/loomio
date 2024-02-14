@@ -2025,7 +2025,7 @@ he:
     invalid_token: סליחה, אנחנו לא מסוגלים להשתמש בטוקן הזה כדי להכניס אותך. לחץ למטה לשלוח עוד אחד.
     account_locked: חשבונך ננעל אחרי נסיונות כושלים רבים מידי. בדוק במייל שלך לינק לביטול הנעילה
     email_not_found: סליחה, לא מצאנו חשבון עם כתובת המייל הזו
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     login_with_token: 'אתה מוכן ומזומן! לחץ על הלינק למטה להמשיך. '
     login_link_helptext: לחץ על הכפתור למטה ואנחנו נשלח לך לינק להתחברות.
     check_spam_folder: אם המייל לא מגיע אליך בקרוב, בדוק בתיקיית הספאם.

@@ -1198,7 +1198,7 @@ zh_TW:
       group_updated: 群組已更新
     upload_logo: 上傳圖示
     upload_cover_photo: 上傳封面圖片
-    group_handle_placeholder: 您的群組 URL 和電子郵件：%{host}/%{handle}、%{handle}@%{host}
+    group_handle_placeholder: 您的群組 URL 和電子郵件：%{host}/%{handle}、%{handle}{'@'}%{host}
     new_description_placeholder: 為什麼要試試 Loomio？你們需要共同做出哪些決定？
     new_description_html: <h3 id="how-do-you-intend-to-use-loomio">您打算如何使用 Loomio？</h3><p></p><h3 id="why-is-this-important-for-your-group">為什麼這對您的團隊很重要？</h3><p></p><h3 id="what-decisions-do-you-need-to-make">您需要做出哪些決定？</h3><p></p>
     group_privacy_is_open_description: 公開上市。所有線程都是公共的。
@@ -2230,7 +2230,7 @@ zh_TW:
     account_locked: 您的帳號因為太多次失敗的登入嘗試而被鎖定。請檢查您的電子郵件以取得解鎖連結
     email_not_found: 抱歉，我們找不到與此電子郵件地址相關的帳號
     email_taken: 電子郵件位置已被註冊
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     login_with_token: 您已經設定好了！點選下方的連結以繼續。
     login_link_helptext: 點選下方的按鈕，然後我們就會傳送連結給您以供登入。
     enter_your_password: 輸入您的密碼以繼續

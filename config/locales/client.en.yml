@@ -1252,7 +1252,7 @@ en:
     subgroup_name: Subgroup name
     organization_name: Organization name
     handle: Handle
-    group_handle_placeholder: "For your group URL and email: %{host}/%{handle}, %{handle}@%{host}"
+    group_handle_placeholder: "For your group URL and email: %{host}/%{handle}, %{handle}{'@'}%{host}"
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What is the name of your group?'
@@ -2791,7 +2791,7 @@ en:
     account_locked: "Your account has been locked after too many failed login attempts. Check your email for an unlock link"
     email_not_found: "Sorry, we couldn't find an account with that email address"
     email_taken: Email address is already registered
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     login_with_token: You're all set! Click the link below to continue.
     login_link_helptext: Click the button below and we'll send you a link to sign in.
     enter_your_password: "Enter your password to continue"

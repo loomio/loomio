@@ -15,6 +15,5 @@ export default {
 <style lang="sass">
 .lmo-validation-error__message
 	position: relative
-	margin-top: -16px
 
 </style>

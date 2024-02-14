@@ -1681,7 +1681,7 @@ ru:
   auth_form:
     enter_your_name: Введите свое имя
     invalid_password: Извините, этот пароль не совпадает с тем, который у нас есть в файле
-    email_placeholder: You@example.com
+    email_placeholder: you{'@'}example.com
     name_placeholder: Ваше имя
     name: Название
     code: '000000'

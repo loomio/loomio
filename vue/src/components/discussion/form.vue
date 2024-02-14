@@ -34,7 +34,13 @@ export default {
       groupItems: [],
       initialRecipients: [],
       discussionTemplate: null,
-      loaded: false
+      loaded: false,
+      titleRules: [
+        value => {
+          if (value) return true
+          return this.$t('common.required')
+        }
+      ]
     };
   },
 
@@ -177,15 +183,15 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
         common-icon(name="mdi-close")
 
   v-card-item
-    thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
+    thread-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
     v-select.pb-4(
       :disabled="!!discussion.id"
       v-model="discussion.groupId"
       :items="groupItems"
       :label="$t('common.group')"
-      :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')"
       persistent-hint
     )
+    //- :hint="discussion.groupId ? $t('announcement.form.visible_to_group', {group: discussion.group().name}) : $t('announcement.form.visible_to_guests')"
 
     div(v-if="showUpgradeMessage")
       p(v-if="maxThreadsReached" v-html="$t('discussion.max_threads_reached', {upgradeUrl: upgradeUrl, maxThreads: maxThreads})")
@@ -195,9 +201,10 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
       v-text-field#discussion-title.discussion-form__title-input(
         :label="$t('discussion_form.title_label')"
         :placeholder="titlePlaceholder"
+        :rules="titleRules"
         v-model='discussion.title' maxlength='255' required
       )
-      validation-errors(:subject='discussion', field='title')
+      validation-errors(:subject='discussion' field='title')
 
       tags-field(:model="discussion")
         

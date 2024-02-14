@@ -50,12 +50,13 @@ module.exports = function(test, browser) {
     },
 
     click(selector, pause) {
-      this.waitFor(selector);
-      // test.moveToElement(selector, -10, -10)
-      this.scrollTo(selector, () => {
-        test.click(selector);
-        if (pause) { test.pause(pause); }
-      })
+      test.click(selector);
+      // this.waitFor(selector);
+      // // test.moveToElement(selector, -10, -10)
+      // this.scrollTo(selector, () => {
+      //   test.click(selector);
+      //   if (pause) { test.pause(pause); }
+      // })
     },
 
     scrollTo(selector, callback, wait) {
@@ -105,8 +106,8 @@ module.exports = function(test, browser) {
     },
 
     fillIn(selector, value, wait) {
-      this.pause(200);
-      this.waitFor(selector, wait);
+      // this.pause(200);
+      // this.waitFor(selector, wait);
       // test.clearValue(selector)
       return test.setValue(selector, value);
     },
@@ -212,7 +213,7 @@ module.exports = function(test, browser) {
       const page = pageHelper(test);
       page.click('.auth-email-form__submit');
       page.fillIn('.auth-signup-form__name input', name);
-      page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input');
+      page.click('.auth-signup-form__legal-accepted input');
       return page.click('.auth-signup-form__submit');
     },
 

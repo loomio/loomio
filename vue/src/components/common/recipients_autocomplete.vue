@@ -43,7 +43,8 @@ export default {
       suggestedUserIds: [],
       suggestions: [],
       recipients: [],
-      loading: false
+      loading: false,
+      currentUserId: Session.user().id
     };
   },
 
@@ -73,13 +74,13 @@ export default {
       this.updateSuggestions();
     },
 
-    query(q) {
-      this.$emit('new-query', q);
-      this.fetchAndUpdateSuggestions();
-    }
   },
 
   methods: {
+    updateQuery(q) {
+      this.query = q
+      this.fetchAndUpdateSuggestions();
+    },
     fetchChatbots() {
       if (!this.model.groupId) { return; }
       Records.fetch({
@@ -144,6 +145,7 @@ export default {
     },
 
     expand(item) {
+      console.log('expand item', item)
       const excludeMembers = (this.excludeMembers && {exclude_members: 1}) || {};
       if (this.model.anonymous && ['decided_voters', 'undecided_voters'].includes(item.id)) {
         Flash.warning('announcement.cannot_reveal_when_anonymous');
@@ -320,17 +322,16 @@ export default {
 
 <template lang="pug">
 div.recipients-autocomplete
-  //- chips attribute is messing with e2es; no behaviour change noticed
   v-autocomplete.announcement-form__input(
     multiple
     return-object
-    auto-select-first
     hide-selected
+    auto-select-first
+    clear-on-select
     v-model='recipients'
-    @change="query = null"
-    :search-input.sync="query"
-    item-text='name'
-    hide-no-data
+    @update:search="updateQuery"
+    item-title='name'
+    item-value='id'
     :loading="loading"
     :label="label"
     :placeholder="placeholder"
@@ -353,44 +354,46 @@ div.recipients-autocomplete
                v-t="'announcement.only_admins_can_invite'")
           span(v-if="canAddGuests && !canNotifyGroup"
                v-t="'announcement.only_admins_can_announce'")
-    template(v-slot:selection='data')
+    template(v-slot:chip='{ props, item }')
       v-chip.chip--select-multi(
-        v-if="data.item.type =='audience'"
-        :value='data.selected'
+        v-if="item.raw.type =='audience'"
+        v-bind="props"
+        :value='item.selected'
         close
         color='primary'
-        @click:close='remove(data.item)'
-        @click='expand(data.item)')
+        @click:close='remove(item.raw)'
+        @click='expand(item.raw)')
         span
-          common-icon.mr-1(small name="data.item.icon")
-        span {{ data.item.name }}
+          common-icon.mr-1(small :name="item.raw.icon")
+        span {{ item.title }}
       v-chip.chip--select-multi(
         v-else
-        :value='data.selected'
+        v-bind="props"
+        :value='item.selected'
         close
         outlined
         color='primary'
-        @click:close='remove(data.item)')
+        @click:close='remove(item.raw)')
         span
-          user-avatar.mr-1(
-            v-if="data.item.type == 'user'"
-            :user="data.item.user"
+          user-avatar.mr-2(
+            v-if="item.raw.type == 'user'"
+            :user="item.raw.user"
             :size="24" no-link)
-          common-icon.mr-1(v-else small name="data.item.icon")
-        span {{ data.item.name }}
-        span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
+          common-icon.mr-2(v-else small :name="item.raw.icon")
+        span {{ item.title }}
+        span(v-if="item.raw.type == 'user' && currentUserId == item.value")
           space
           span ({{ $t('common.you') }})
-    template(v-slot:item='data')
-      v-list-item
+    template(v-slot:item='{props, item}')
+      v-list-item(v-bind="props")
         template(v-slot:prepend)
-          user-avatar(v-if="data.item.type == 'user'", :user="data.item.user", :size="24" no-link)
-          common-icon.mr-1(v-else small name="data.item.icon")
-        v-list-item-title.announcement-chip__content
-          span {{data.item.name}}
-          span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
-            space
-            span ({{ $t('common.you') }})
+          user-avatar.mr-1(v-if="item.raw.type == 'user'", :user="item.raw.user", :size="24" no-link)
+          common-icon.mr-1(v-else small :name="item.raw.icon")
+        //- v-list-item-title.announcement-chip__content
+        //-   span {{item.title}}
+        //-   span(v-if="item.raw.type == 'user' && currentUserId == item.raw.id")
+        //-     space
+        //-     span ({{ $t('common.you') }})
   notifications-count(
     v-show="recipients.length"
     :model='model'
