@@ -254,13 +254,13 @@ img.emoji
       color: #fff
       content: " 📅 " attr(data-due-on) ""
       border-radius: 8px
-      background-color: var(--v-primary-base)
+      background-color: rgb(var(--v-theme-primary))
       margin-left: 8px
       padding: 2px 8px
       height: 16px
       display: flex
       align-items: center
-      // border: 1px solid var(--v-primary-base)
+      // border: 1px solid rgb(var(--v-theme-primary))
 
     li::before
       content: ""
@@ -284,8 +284,8 @@ img.emoji
       color: white
       text-align: center
       vertical-align: middle
-      background-color: var(--v-primary-base)
-      border-color: var(--v-primary-base)
+      background-color: rgb(var(--v-theme-primary))
+      border-color: rgb(var(--v-theme-primary))
 
     li:hover:before
       cursor: pointer

@@ -560,7 +560,7 @@ progress::-moz-progress-bar
   overflow: visible
 
 .html-editor__textarea .ProseMirror:focus
-  border-bottom: 1px solid var(--v-primary-base)
+  border-bottom: 1px solid rgb(var(--v-theme-primary))
 
 
 // .lmo-textarea p.is-empty:first-child::before
@@ -592,7 +592,7 @@ li[data-type="todo_item"]
   border-radius: 0.2em
   background-color: transparent
   &:hover
-    border: 1px solid var(--v-primary-base)
+    border: 1px solid rgb(var(--v-theme-primary))
     // background: #eee
 
 .lmo-textarea .todo-checkbox

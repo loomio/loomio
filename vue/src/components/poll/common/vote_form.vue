@@ -196,7 +196,9 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     height: 0
 
 .poll-common-vote-form__button.voting-enabled
+  border: 1px solid rgba(0,0,0,0)
+.poll-common-vote-form__button.voting-enabled
   &:hover
-    border: 1px solid var(--v-primary-base)
+    border: 1px solid rgb(var(--v-theme-primary))
 
 </style>
