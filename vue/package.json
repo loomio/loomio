@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vite",
     "build": "vite build",
-    "test": "nightwatch --retries 3 --headless",
+    "test": "nightwatch --retries 1 --headless",
     "test-discussion": "nightwatch --headless --test tests/e2e/specs/discussion.js"
   },
   "dependencies": {
