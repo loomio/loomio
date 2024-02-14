@@ -40,9 +40,9 @@ export default new class AuthService {
     }
     , function(err) {
       const errors = user.hasToken ?
-        { token: [i18n.t('auth_form.invalid_token')] }
+        { token: [I18n.global.t('auth_form.invalid_token')] }
       :
-        { password: [i18n.t('auth_form.invalid_password')]};
+        { password: [I18n.global.t('auth_form.invalid_password')]};
       return user.update({errors});
     });
   }
@@ -75,11 +75,11 @@ export default new class AuthService {
     user.errors = {};
 
     if (!vars.name) {
-      user.errors.name = [i18n.t('auth_form.name_required')];
+      user.errors.name = [I18n.global.t('auth_form.name_required')];
     }
 
     if (AppConfig.theme.terms_url && !vars.legalAccepted) {
-      user.errors.legalAccepted = [i18n.t('auth_form.terms_required')];
+      user.errors.legalAccepted = [I18n.global.t('auth_form.terms_required')];
     }
 
     if (keys(user.errors)) {

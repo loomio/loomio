@@ -53,7 +53,7 @@ export default class StanceModel extends BaseModel {
     if (this.participant()) {
       return this.participant().nameWithTitle(this.poll().group());
     } else {
-      return i18n.t('common.anonymous');
+      return I18n.global.t('common.anonymous');
     }
   }
 

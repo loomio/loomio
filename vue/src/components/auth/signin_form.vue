@@ -60,16 +60,18 @@ export default {
 };
 </script>
 <template lang="pug">
-v-card.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
-  v-card-title
-    h1.text-h5(tabindex="-1" role="status" aria-live="assertive" v-t="{ path: 'auth_form.welcome_back', args: { name: user.name } }")
-    v-spacer
+v-card.auth-signin-form(
+  :title="$t('auth_form.welcome_back', { name: user.name })"
+  @keyup.ctrl.enter="submit()"
+  @keydown.meta.enter.stop.capture="submit()"
+  @keydown.enter="submit()")
+  template(v-slot:append)
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")
 
   v-sheet.mx-4.pb-4
     submit-overlay(:value='loading')
-    v-layout(justify-center)
+    .d-flex.justify-center
       user-avatar(:user='user' :size='128')
     .auth-signin-form__token.text-center(v-if='user.hasToken')
       validation-errors(:subject='user', field='token')
@@ -84,7 +86,7 @@ v-card.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
       .auth-signin-form__password(v-if='user.hasPassword')
         p.text-center.my-2(v-t="'auth_form.enter_your_password'")
         v-text-field#password(:label="$t('auth_form.password')" name='password' type='password' outlined autofocus required v-model='user.password' autocomplete="current-password")
-        validation-errors(:subject='user', field='password')
+        validation-errors(:subject='user' field='password')
 
         v-card-actions
           v-spacer
@@ -93,7 +95,7 @@ v-card.auth-signin-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
 
       .auth-signin-form__no-password(v-if='!user.hasPassword')
         v-card-actions.justify-space-around
-          v-btn.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-t="'auth_form.sign_in_via_email'" :loading="loading")
+          v-btn.auth-signin-form__submit(variant="elevated" color="primary" @click='sendLoginLink()' v-t="'auth_form.sign_in_via_email'" :loading="loading")
 </template>
 
 <style lang="sass">

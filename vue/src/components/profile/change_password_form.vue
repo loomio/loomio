@@ -29,10 +29,12 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.change-password-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'change_password_form.set_password_title'")
-    v-spacer
+v-card.change-password-form(
+  :title="$t('change_password_form.set_password_title')"
+  @keyup.ctrl.enter="submit()"
+  @keydown.meta.enter.stop.capture="submit()"
+  @keydown.enter="submit()")
+  template(v-slot:append)
     dismiss-modal-button(:close="close")
   v-card-text
     p.text-medium-emphasis(v-t="'change_password_form.set_password_helptext'")

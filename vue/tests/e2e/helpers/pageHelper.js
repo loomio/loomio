@@ -202,7 +202,7 @@ module.exports = function(test, browser) {
       page.fillIn('.auth-email-form__email input', email);
       page.click('.auth-email-form__submit');
       page.fillIn('.auth-signup-form input', 'New Account');
-      page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input');
+      page.click('.auth-signup-form__legal-accepted input');
       page.click('.auth-signup-form__submit');
       page.expectElement('.auth-complete');
       page.loadPath('use_last_login_token');

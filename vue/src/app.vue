@@ -29,7 +29,6 @@ export default {
 
   mounted() {
     // initLiveUpdate();
-    if (!Session.isSignedIn() && this.shouldForceSignIn()) { this.openAuthModal(true); }
     EventBus.$on('currentComponent',     this.setCurrentComponent);
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
@@ -46,13 +45,13 @@ export default {
 
   watch: {
     '$route'() {
-      return this.pageError = null;
+      if (!Session.isSignedIn() && this.shouldForceSignIn()) { this.openAuthModal(true); }
+      this.pageError = null;
     }
   },
 
   methods: {
     setCurrentComponent(options) {
-
       this.pageError = null;
       const title = truncate(options.title || this.$t(options.titleKey), {length: 300});
       document.querySelector('title').text = compact([title, AppConfig.theme.site_name]).join(' | ');
@@ -69,7 +68,7 @@ export default {
 
       switch (this.$route.path) {
         case '/email_preferences': return (Session.user().restricted == null);
-        case '/dashboard':
+        case '/dashboard': return true;
         case '/inbox':
         case '/profile':
         case '/polls':
