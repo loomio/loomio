@@ -385,11 +385,11 @@ div.recipients-autocomplete
           space
           span ({{ $t('common.you') }})
     template(v-slot:item='{props, item}')
-      v-list-item(v-bind="props")
+      v-list-item.recipients-autocomplete-suggestion(v-bind="props")
         template(v-slot:prepend)
           user-avatar.mr-1(v-if="item.raw.type == 'user'", :user="item.raw.user", :size="24" no-link)
           common-icon.mr-1(v-else small :name="item.raw.icon")
-        //- v-list-item-title.announcement-chip__content
+        //- v-list-item-title.recipients-autocomplete-suggestion
         //-   span {{item.title}}
         //-   span(v-if="item.raw.type == 'user' && currentUserId == item.raw.id")
         //-     space

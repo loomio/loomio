@@ -381,8 +381,8 @@ module.exports = {
 
     page.expectElement('.poll-members-form')
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
-    page.expectText('.announcement-chip__content', 'test@example.com')
-    page.click('.announcement-chip__content')
+    page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
+    page.click('.recipients-autocomplete-suggestion')
     page.escape()
     page.expectElement('.text-h5')
     page.click('.poll-members-form__submit')

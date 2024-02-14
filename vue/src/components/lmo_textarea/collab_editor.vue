@@ -455,8 +455,14 @@ div
       v-spacer
       slot(name="actions")
 
-  link-previews(:model="model", :remove="removeLinkPreview")
-  suggestion-list(:query="query", :loading="fetchingMentions", :mentionable="mentionable", :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex", @select-user="selectUser")
+  link-previews(:model="model" :remove="removeLinkPreview")
+  suggestion-list(
+    :query="query"
+    :loading="fetchingMentions"
+    :mentionable="mentionable"
+    :positionStyles="suggestionListStyles"
+    :navigatedUserIndex="navigatedUserIndex"
+    @select-user="selectUser")
   files-list(:files="files", v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")
