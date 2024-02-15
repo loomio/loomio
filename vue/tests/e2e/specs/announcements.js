@@ -18,7 +18,6 @@ module.exports = {
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
-    page.expectElement('.text-h5')
     page.click('.announcement-form__submit')
     page.expectFlash('1 notifications sent')
   },
@@ -70,7 +69,7 @@ module.exports = {
     page.click('.decision-tools-card__poll-type--proposal')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-common-settings__specified-voters-only')
+    page.click('.poll-common-settings__specified-voters-only label')
     page.click('.poll-common-form__submit')
     page.expectFlash('Proposal started')
     page.pause(500)

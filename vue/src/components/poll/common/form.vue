@@ -457,7 +457,7 @@ export default {
       :label="$t('poll_common_settings.specified_voters_only_true')")
   .text-caption.mt-n4.text--secondary.text-caption(
     v-if="poll.specifiedVotersOnly"
-    v-t="$t('poll_common_settings.invite_people_next', {poll_type: poll.translatedPollType()})")
+    v-t="{path: 'poll_common_settings.invite_people_next', poll_type: poll.translatedPollType()}")
 
   v-checkbox.mt-0(v-if="!poll.id && !poll.specifiedVotersOnly" :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})" v-model="poll.notifyRecipients")
 
@@ -532,6 +532,7 @@ export default {
       @click='submit()'
       :loading="poll.processing"
       :disabled="!poll.title || (hasOptions && pollOptions.length < minOptions)"
+      variant="elevated"
     )
       span(v-if='poll.id' v-t="'common.action.save_changes'")
       span(v-if='!poll.id && poll.closingAt' v-t="{path: 'poll_common_form.start_poll_type', args: {poll_type: poll.translatedPollType()}}")

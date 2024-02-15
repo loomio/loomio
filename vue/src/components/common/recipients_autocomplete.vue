@@ -326,6 +326,7 @@ div.recipients-autocomplete
     multiple
     return-object
     hide-selected
+    :hide-no-data="recipients.length > 0"
     auto-select-first
     clear-on-select
     v-model='recipients'

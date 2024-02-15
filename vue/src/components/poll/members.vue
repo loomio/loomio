@@ -6,8 +6,10 @@ import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import StanceService from '@/shared/services/stance_service';
 import { map, debounce, uniq, compact } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   components: {
     RecipientsAutocomplete
   },
@@ -98,6 +100,7 @@ export default {
         } else {
           Flash.success('poll_common_form.count_voters_added', { count });
         }
+        this.fetchStances()
 
         this.reset = !this.reset;
       }).finally(() => {
@@ -157,7 +160,7 @@ export default {
 </script>
 
 <template lang="pug">
-.poll-members-form
+v-card.poll-members-form
   .px-4.pt-4
     .d-flex.justify-space-between
       //- template(v-if="poll.notifyRecipients")

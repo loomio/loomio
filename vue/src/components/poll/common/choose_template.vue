@@ -161,7 +161,7 @@ export default {
 
 <template lang="pug">
 .poll-common-templates-list
-  thread-template-help-panel.mb-4(v-if="discussionTemplate" :discussion-template="discussionTemplate")
+  thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
   .d-flex(:class="{'px-4': !discussion}")
     v-chip.mr-1(
       v-for="icon, name in filters"
@@ -178,7 +178,7 @@ export default {
       v-chip(@click="filter = 'admin'" :outlined="filter != 'admin'")
         common-icon(small name="mdi-cog").mr-2
         span.poll-type-chip-name(v-t="filterLabels['admin']")
-  v-list.decision-tools-card__poll-types(lines="two" density="dense")
+  v-list.decision-tools-card__poll-types(lines="two" density="comfortable")
     template(v-if="filter == 'admin'")
       v-list-item.decision-tools-card__new-template(
         :to="'/poll_templates/new?group_id='+group.id+'&return_to='+returnTo"
