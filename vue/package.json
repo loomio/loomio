@@ -27,7 +27,7 @@
     "@tiptap/extension-dropcursor": "^2.2.2",
     "@tiptap/extension-gapcursor": "^2.2.2",
     "@tiptap/extension-hard-break": "^2.2.2",
-    "@tiptap/extension-heading": "^2.2.2",
+    "@tiptap/extension-heading": "^2.2.3",
     "@tiptap/extension-history": "^2.2.2",
     "@tiptap/extension-horizontal-rule": "^2.2.2",
     "@tiptap/extension-image": "^2.2.2",
