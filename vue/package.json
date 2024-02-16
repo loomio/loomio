@@ -19,7 +19,7 @@
     "@tiptap/core": "^2.2.2",
     "@tiptap/extension-blockquote": "^2.2.2",
     "@tiptap/extension-bold": "^2.2.2",
-    "@tiptap/extension-bullet-list": "^2.2.2",
+    "@tiptap/extension-bullet-list": "^2.2.3",
     "@tiptap/extension-character-count": "^2.2.2",
     "@tiptap/extension-code": "^2.2.2",
     "@tiptap/extension-code-block": "^2.2.2",
