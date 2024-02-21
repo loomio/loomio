@@ -10,27 +10,28 @@ class MembershipService
     # and we dont want any surprises if they already have some memberships.
     # they may be accepting memberships send to a different email (unverified_user)
 
-    group_ids = membership.group.parent_or_self.id_and_subgroup_ids
+    existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
+    invited_group_ids = Membership.where(user_id: membership.user_id, group_id: membership.group.parent_or_self.id_and_subgroup_ids).pluck(:group_id)
+
+    # unrevoke any memberships the actor was just invited to
+    Membership.revoked.where(user_id: actor.id, group_id: invited_group_ids)
+    .update(revoked_at: nil, revoker_id: nil, inviter_id: membership.inviter_id, accepted_at: DateTime.now)
 
     # ensure actor has accepted any existing pending memberships to this group
     Membership.pending
-    .where(user_id: actor.id, group_id: group_ids)
-    .update_all(accepted_at: DateTime.now)
-
-    # cant accept pending memberships to groups I already belong to
-    existing_group_ids = Membership.pending.where(user_id: membership.user_id,
-                                                  group_id: actor.memberships.accepted.pluck(:group_id)).pluck(:group_id)
+    .where(user_id: actor.id, group_id: invited_group_ids)
+    .update(accepted_at: DateTime.now)
 
     Membership.pending.where(
       user_id: membership.user_id,
-      group_id: (group_ids - existing_group_ids))
-    .update_all(
+      group_id: (invited_group_ids - existing_group_ids))
+    .update(
       user_id: actor.id,
       accepted_at: DateTime.now)
 
     member_group_ids = actor.group_ids & membership.group.parent_or_self.id_and_subgroup_ids
 
-    group_ids.each do |group_id|
+    invited_group_ids.each do |group_id|
       GenericWorker.perform_async('PollService', 'group_members_added', group_id)
     end
 
