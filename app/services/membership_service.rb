@@ -29,6 +29,10 @@ class MembershipService
     .where(user_id: membership.user_id, group_id: (invited_group_ids - existing_group_ids))
     .update(user_id: actor.id, accepted_at: DateTime.now)
 
+    if (membership.user_id != actor.id)
+      Membership.where(user_id: membership.user_id, group_id: invited_group_ids).destroy_all
+    end
+
     invited_group_ids.each do |group_id|
       GenericWorker.perform_async('PollService', 'group_members_added', group_id)
     end
@@ -49,10 +53,6 @@ class MembershipService
     .where('stances.revoked_at is not null')
     .where('polls.closed_at is null')
     .update_all(revoked_at: nil, revoker_id: nil)
-
-    if (membership.user_id != actor.id)
-      Membership.where(user_id: membership.user_id, group_id: invited_group_ids).destroy_all
-    end
 
     return if existing_accepted_group_ids.include?(invited_group_id)
     membership = Membership.find_by!(group_id: invited_group_id, user_id: actor.id)
