@@ -12,6 +12,7 @@ class MembershipService
 
     invited_group_id = membership.group_id
     existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
+    existing_accepted_group_ids = Membership.active.accepted.where(user_id: actor.id).pluck(:group_id)
     invited_group_ids = Membership.pending.where(user_id: membership.user_id, group_id: membership.group.parent_or_self.id_and_subgroup_ids).pluck(:group_id)
 
     # unrevoke any memberships the actor was just invited to
@@ -53,6 +54,7 @@ class MembershipService
       Membership.where(user_id: membership.user_id, group_id: invited_group_ids).destroy_all
     end
 
+    return if existing_accepted_group_ids.include?(invited_group_id)
     membership = Membership.find_by!(group_id: invited_group_id, user_id: actor.id)
     Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
   end
