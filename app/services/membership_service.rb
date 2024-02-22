@@ -12,7 +12,7 @@ class MembershipService
 
     invited_group_id = membership.group_id
     existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
-    invited_group_ids = Membership.where(user_id: membership.user_id, group_id: membership.group.parent_or_self.id_and_subgroup_ids).pluck(:group_id)
+    invited_group_ids = Membership.pending.where(user_id: membership.user_id, group_id: membership.group.parent_or_self.id_and_subgroup_ids).pluck(:group_id)
 
     # unrevoke any memberships the actor was just invited to
     Membership.revoked
