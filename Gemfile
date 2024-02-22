@@ -27,7 +27,7 @@ gem 'httparty', '~> 0.21.0'
 gem 'browser', '~> 5.3.1'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
-gem "google-cloud-storage", "~> 1.48", require: false
+gem "google-cloud-storage", "~> 1.49", require: false
 gem 'image_processing', '~> 1.12'
 gem "ruby-vips"
 gem "stackprof"
