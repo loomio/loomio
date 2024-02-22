@@ -52,7 +52,16 @@ describe MembershipService do
 
     it 'sets accepted_at' do
       MembershipService.redeem(membership: membership, actor: user)
-      membership.accepted_at.should be_present
+      membership.reload.accepted_at.should be_present
+    end
+
+    it "handles simple case" do
+      new_membership = Membership.create!(user_id: user.id, group_id: group.id, inviter_id: first_inviter.id)
+      MembershipService.redeem(membership: new_membership, actor: user)
+      expect(new_membership.reload.user_id).to eq user.id
+      expect(new_membership.reload.accepted_at).to be_present
+      expect(new_membership.reload.inviter_id).to eq first_inviter.id
+      expect(new_membership.reload.revoked_at).to_not be_present
     end
 
     it "handles existing memberships" do

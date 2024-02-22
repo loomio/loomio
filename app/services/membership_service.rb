@@ -10,11 +10,13 @@ class MembershipService
     # and we dont want any surprises if they already have some memberships.
     # they may be accepting memberships send to a different email (unverified_user)
 
+    invited_group_id = membership.group_id
     existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
     invited_group_ids = Membership.where(user_id: membership.user_id, group_id: membership.group.parent_or_self.id_and_subgroup_ids).pluck(:group_id)
 
     # unrevoke any memberships the actor was just invited to
-    Membership.revoked.where(user_id: actor.id, group_id: invited_group_ids)
+    Membership.revoked
+    .where(user_id: actor.id, group_id: invited_group_ids)
     .update(revoked_at: nil, revoker_id: nil, inviter_id: membership.inviter_id, accepted_at: DateTime.now)
 
     # ensure actor has accepted any existing pending memberships to this group
@@ -22,14 +24,9 @@ class MembershipService
     .where(user_id: actor.id, group_id: invited_group_ids)
     .update(accepted_at: DateTime.now)
 
-    Membership.pending.where(
-      user_id: membership.user_id,
-      group_id: (invited_group_ids - existing_group_ids))
-    .update(
-      user_id: actor.id,
-      accepted_at: DateTime.now)
-
-    member_group_ids = actor.group_ids & membership.group.parent_or_self.id_and_subgroup_ids
+    Membership.pending
+    .where(user_id: membership.user_id, group_id: (invited_group_ids - existing_group_ids))
+    .update(user_id: actor.id, accepted_at: DateTime.now)
 
     invited_group_ids.each do |group_id|
       GenericWorker.perform_async('PollService', 'group_members_added', group_id)
@@ -37,22 +34,26 @@ class MembershipService
 
     # remove any existing guest access in these groups
     DiscussionReader.joins(:discussion)
-    .where(user_id: actor.id, 'discussions.group_id': member_group_ids, guest: true)
+    .where(user_id: actor.id, 'discussions.group_id': invited_group_ids, guest: true)
     .update_all(guest: false, revoked_at: nil, revoker_id: nil)
 
     Stance.joins(:poll)
-    .where(participant_id: actor.id, 'polls.group_id': member_group_ids)
+    .where(participant_id: actor.id, 'polls.group_id': invited_group_ids)
     .update_all(guest: false)
 
     # unrevoke any votes on active polls
     Stance.joins(:poll)
     .where(participant_id: actor.id)
-    .where('polls.group_id': member_group_ids)
+    .where('polls.group_id': invited_group_ids)
     .where('stances.revoked_at is not null')
     .where('polls.closed_at is null')
     .update_all(revoked_at: nil, revoker_id: nil)
 
-    membership.reload
+    if (membership.user_id != actor.id)
+      Membership.where(user_id: membership.user_id, group_id: invited_group_ids).destroy_all
+    end
+
+    membership = Membership.find_by!(group_id: invited_group_id, user_id: actor.id)
     Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
   end
 
