@@ -208,7 +208,7 @@ export default new class ThreadService {
       close_thread: {
         menu: true,
         icon: 'mdi-archive-outline',
-        canPerform() { return !discussion.closedAt; },
+        canPerform() { return AbilityService.canCloseThread(discussion); },
         perform: () => this.close(discussion)
       },
 
