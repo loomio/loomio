@@ -40,10 +40,49 @@ describe MembershipService do
     let!(:another_subgroup) { create :group, parent: group }
     let!(:discussion) { create :discussion, group: group, private: false }
     let!(:poll) { create :poll, group: group }
+    let(:first_inviter) { create :user }
+    let(:second_inviter) { create :user }
+    let(:yesterday) { 1.day.ago }
+    let(:today) { DateTime.now }
+
+    before do
+      group.add_admin! first_inviter
+      group.add_admin! second_inviter
+    end
 
     it 'sets accepted_at' do
       MembershipService.redeem(membership: membership, actor: user)
-      membership.accepted_at.should be_present
+      membership.reload.accepted_at.should be_present
+    end
+
+    it "handles simple case" do
+      new_membership = Membership.create!(user_id: user.id, group_id: group.id, inviter_id: first_inviter.id)
+      MembershipService.redeem(membership: new_membership, actor: user)
+      expect(new_membership.reload.user_id).to eq user.id
+      expect(new_membership.reload.accepted_at).to be_present
+      expect(new_membership.reload.inviter_id).to eq first_inviter.id
+      expect(new_membership.reload.revoked_at).to_not be_present
+    end
+
+    it "handles existing memberships" do
+      existing_membership = Membership.create!(user_id: user.id, group_id: group.id, accepted_at: yesterday, inviter_id: first_inviter.id)
+      new_membership = Membership.create!(user_id: unverified_user.id, group_id: group.id, inviter_id: second_inviter.id)
+      MembershipService.redeem(membership: new_membership, actor: user)
+      expect(existing_membership.reload.user_id).to eq user.id
+      expect(existing_membership.reload.accepted_at).to_not be yesterday
+      expect(existing_membership.reload.accepted_at).to be_present
+      expect(existing_membership.reload.inviter_id).to eq first_inviter.id
+      expect(existing_membership.reload.revoked_at).to_not be_present
+    end
+
+    it "handles revoked memberships" do
+      existing_membership = Membership.create!(user_id: user.id, group_id: group.id, accepted_at: DateTime.now, revoked_at: DateTime.now, inviter_id: first_inviter.id, revoker_id: first_inviter.id)
+      new_membership = Membership.create!(user_id: unverified_user.id, group_id: group.id, inviter_id: second_inviter.id)
+      MembershipService.redeem(membership: new_membership, actor: user)
+      expect(existing_membership.reload.user_id).to eq user.id
+      expect(existing_membership.reload.inviter_id).to eq second_inviter.id
+      expect(existing_membership.reload.accepted_at).to be_present
+      expect(existing_membership.reload.revoked_at).to_not be_present
     end
 
     it 'unrevokes discussion readers and stances' do
