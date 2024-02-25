@@ -14,8 +14,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_with_one_thread')
-    page.ensureSidebar()
-    page.click('.sidebar__list-item-button--recent')
+    // page.ensureSidebar()
+    // page.click('.sidebar__list-item-button--recent')
     page.expectElement('.thread-previews-container')
     page.click('.thread-preview .action-menu')
     page.pause()

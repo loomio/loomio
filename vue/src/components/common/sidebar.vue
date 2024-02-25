@@ -210,7 +210,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 
     template(v-for="parentGroup in organizations")
       template(v-if="memberGroups(parentGroup).length")
-        v-list-group(v-model="openGroups[parentGroup.id]" @click="goToGroup(parentGroup)")
+        v-list-group.sidebar__groups(v-model="openGroups[parentGroup.id]" @click="goToGroup(parentGroup)")
           template(v-slot:activator)
             v-list-item
               template(v-slot:prepend)
