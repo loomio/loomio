@@ -305,6 +305,9 @@ GEM
     httpclient (2.8.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    i18n-timezones (1.4.8)
+      i18n (>= 0.9.3)
+      rails (>= 5.1.6.2)
     icalendar (2.10.1)
       ice_cube (~> 0.16)
     ice_cube (0.16.4)
@@ -633,6 +636,7 @@ DEPENDENCIES
   hiredis
   http_accept_language
   httparty (~> 0.21.0)
+  i18n-timezones
   icalendar
   image_processing (~> 1.12)
   listen

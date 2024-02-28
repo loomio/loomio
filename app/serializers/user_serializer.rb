@@ -4,6 +4,7 @@ class UserSerializer < AuthorSerializer
              :content_locale,
              :location,
              :has_password,
+             :autodetect_time_zone,
              :avatar_url,
              :attachments,
              :date_time_pref

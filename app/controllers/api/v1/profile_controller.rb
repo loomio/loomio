@@ -28,6 +28,16 @@ class API::V1::ProfileController < API::V1::RestfulController
     render json: time_zones, root: false
   end
 
+  def all_time_zones
+    zones = ActiveSupport::TimeZone.all.map do |tz|
+      {
+        title: I18n.t("timezones.#{tz.name}", default: tz.name, locale: params[:selected_locale]),
+        value: tz.tzinfo.name
+      }
+    end
+    render json: zones, root: false
+  end
+
   def mentionable_users
     instantiate_collection do |collection|
       collection.distinct.mention_search(current_user, model, String(params[:q]).strip.delete("\u0000"))
