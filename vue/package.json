@@ -5,8 +5,7 @@
   "scripts": {
     "serve": "vite",
     "build": "vite build",
-    "test": "nightwatch --retries 1 --headless",
-    "test-discussion": "nightwatch --headless --test tests/e2e/specs/discussion.js"
+    "test": "nightwatch --retries 2 --headless"
   },
   "dependencies": {
     "@sentry/browser": "^7.102.0",
