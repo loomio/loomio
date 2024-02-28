@@ -64,27 +64,27 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('polls/test_discussion')
-    page.scrollClick('.activity-panel__add-poll')
-    page.scrollClick(".poll-common-choose-template__poll")
-    page.scrollClick('.decision-tools-card__poll-type--dot_vote')
+    page.click('.activity-panel__add-poll')
+    page.click(".poll-common-choose-template__poll")
+    page.click('.decision-tools-card__poll-type--dot_vote')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
 
-    page.scrollClick('.poll-common-form__add-option-btn')
+    page.click('.poll-common-form__add-option-btn')
     page.fillIn('.poll-option-form__name input', 'An option')
-    page.scrollClick('.poll-option-form__done-btn')
+    page.click('.poll-option-form__done-btn')
 
-    page.scrollClick('.poll-common-form__submit')
+    page.click('.poll-common-form__submit')
     // page.expectElement('.poll-members-form__submit')
     page.pause(500)
-    // page.scrollClick('.dismiss-modal-button')
+    // page.click('.dismiss-modal-button')
 
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
-    page.scrollClick('.poll-dot-vote-vote-form__option .v-slider')
+    page.click('.poll-dot-vote-vote-form__option .v-slider')
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
-    page.scrollClick('.poll-common-vote-form__submit', 1000)
+    page.click('.poll-common-vote-form__submit', 1000)
 
     page.scrollTo('.poll-common-stance-choice', () => {
       page.expectText('.poll-common-stance-choice--dot_vote', 'An option')
