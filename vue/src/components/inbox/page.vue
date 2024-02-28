@@ -7,10 +7,11 @@ import ThreadFilter from '@/shared/services/thread_filter';
 import ThreadPreviewCollection from '@/components/thread/preview_collection';
 import {sum, values, sortBy} from 'lodash-es';
 import FormatDate from '@/mixins/format_date';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
-  mixins: [FormatDate],
+  mixins: [FormatDate, WatchRecords],
   components: {
     ThreadPreviewCollection
   },
