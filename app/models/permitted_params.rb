@@ -19,7 +19,7 @@ class PermittedParams < Struct.new(:params)
   def user_attributes
     [:name, :avatar_kind, :email, :password, :password_confirmation, :current_password,
      :remember_me, :uploaded_avatar, :username, :short_bio, :short_bio_format, :location,
-     :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
+     :autodetect_time_zone, :time_zone, :selected_locale, :email_when_mentioned, :default_membership_volume,
      :email_catch_up_day, :has_password, :has_token, :email_status,
      :email_when_proposal_closing_soon, :email_new_discussions_and_proposals, :email_on_participation, :email_newsletter,
      :date_time_pref, :bot,
