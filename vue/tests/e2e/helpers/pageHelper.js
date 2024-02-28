@@ -58,7 +58,7 @@ module.exports = function(test, browser) {
     },
 
     scrollTo(selector, callback, wait) {
-      // this.waitFor(selector, wait);
+      this.waitFor(selector, wait);
       return test.getLocationInView(selector, callback);
     },
 
