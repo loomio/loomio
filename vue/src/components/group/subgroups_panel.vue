@@ -10,7 +10,7 @@ import UrlFor from '@/mixins/url_for';
 
 export default
 {
-  mixins: [WatchRecords, url_for],
+  mixins: [WatchRecords, UrlFor],
   data() {
     return {
       mdiMagnify,

@@ -192,8 +192,7 @@ export default
   loading(v-if="!group")
   div(v-if="group")
     v-alert.my-2(v-if="showAdminWarning" color="primary" type="warning")
-      template(slot="default")
-        span(v-t="'memberships_page.only_one_admin'")
+      span(v-t="'memberships_page.only_one_admin'")
 
     v-layout.py-2(align-center wrap)
       v-menu

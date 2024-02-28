@@ -163,16 +163,11 @@ export default
 </script>
 
 <template lang="pug">
-v-card.group-form
+v-card.group-form(:title="group.parentId ? $t('group_form.new_subgroup') : $t('group_form.new_group')")
+  template(v-slot:append)
+    dismiss-modal-button(v-if="group.parentId" :model="group")
   v-overlay(:value="uploading")
     v-progress-circular(size="64" :value="progress")
-  //- submit-overlay(:value='group.processing')
-  v-card-title
-    v-layout(justify-space-between style="align-items: center")
-      .group-form__group-title
-        h1.text-h5(tabindex="-1" v-if='group.parentId' v-t="'group_form.new_subgroup'")
-        h1.text-h5(tabindex="-1" v-if='!group.parentId' v-t="'group_form.new_group'")
-      dismiss-modal-button(v-if="group.parentId" :model="group")
   .px-4
     p.text-medium-emphasis(v-if='!group.parentId' v-t="'group_form.new_group_explainer'")
     p.text-medium-emphasis(v-if='group.parentId' v-t="'group_form.new_subgroup_explainer'")
@@ -202,7 +197,7 @@ v-card.group-form
       .group-form__section.group-form__privacy
         v-radio-group(v-model='group.groupPrivacy' :label="$t('common.privacy.privacy')")
           v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
-            template(slot='label')
+            template(v-slot:label)
               .group-form__privacy-title
                 strong(v-t="'common.privacy.' + privacy")
                 mid-dot
@@ -213,7 +208,7 @@ v-card.group-form
         v-list-subheader(v-t="'group_form.how_do_people_join'")
         v-radio-group(v-model='group.membershipGrantedUpon')
           v-radio(v-for="granted in ['request', 'approval']" :key="granted" :class="'group-form__membership-granted-upon-' + granted" :value='granted')
-            template(slot='label')
+            template(v-slot:label)
               span(v-t="'group_form.membership_granted_upon_' + granted")
 
     div.pt-2(v-if="!group.parentId")
