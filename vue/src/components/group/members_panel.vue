@@ -231,7 +231,7 @@ export default
           v-list-item(v-for="membership in memberships" :key="membership.id")
             template(v-slot:prepend)
               router-link(:to="urlFor(membership.user())")
-                user-avatar(:user='membership.user()' :size='48')
+                user-avatar.mr-2(:user='membership.user()' :size='48')
             v-list-item-title
               router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
               span
