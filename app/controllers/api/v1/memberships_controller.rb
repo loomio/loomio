@@ -21,7 +21,7 @@ class API::V1::MembershipsController < API::V1::RestfulController
   def for_user
     load_and_authorize :user
     same_group_ids   = current_user.group_ids & @user.group_ids
-    public_group_ids = @user.groups.visible_to_public.pluck(:id)
+    public_group_ids = @user.groups.where(listed_in_explore: true).pluck(:id)
     instantiate_collection do |collection|
       Membership.joins(:group).where(group_id: same_group_ids + public_group_ids, user_id: @user.id).active.order('groups.full_name')
     end
