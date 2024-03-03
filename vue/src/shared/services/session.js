@@ -30,7 +30,7 @@ export default new class Session {
     loadLocaleMessages(I18n, user.locale);
 
     if (this.isSignedIn()) {
-      if (user.timeZone !== AppConfig.timeZone) {
+      if (user.autodetectTimeZone && user.timeZone !== AppConfig.timeZone) {
         user.timeZone = AppConfig.timeZone;
         Records.users.updateProfile(user);
       }

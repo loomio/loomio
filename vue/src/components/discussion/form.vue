@@ -49,8 +49,7 @@ export default {
       if (this.discussion.discussionTemplateId) {
         Records.discussionTemplates.findOrFetchById(this.discussion.discussionTemplateId).then(template => {
           this.discussionTemplate = template;
-          console.log('template.recipientAudience',template.recipientAudience);
-          if ((template.recipientAudience === 'group') && this.discussion.groupId) {
+          if (this.discussion.isNew() && (template.recipientAudience === 'group') && this.discussion.groupId) {
             return this.initialRecipients = [{
               type: 'audience',
               id: 'group',

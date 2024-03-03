@@ -64,6 +64,7 @@ gem 'blazer'
 gem 'terminal-table'
 gem 'tzinfo-data'
 gem 'pg_search'
+gem 'i18n-timezones'
 
 group :development, :test do
   gem 'listen'

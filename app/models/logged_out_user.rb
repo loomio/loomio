@@ -1,7 +1,7 @@
 class LoggedOutUser
   include Null::User
   include AvatarInitials
-  attr_accessor :name, :email, :token, :avatar_initials, :locale, :legal_accepted, :recaptcha, :time_zone, :date_time_pref
+  attr_accessor :name, :email, :token, :avatar_initials, :locale, :legal_accepted, :recaptcha, :time_zone, :date_time_pref, :autodetect_time_zone
 
   alias :read_attribute_for_serialization :send
 
@@ -16,11 +16,13 @@ class LoggedOutUser
     @locale = locale
     @date_time_pref = date_time_pref
     @time_zone = time_zone
+    @autodetect_time_zone = true
     @params = params
     @session = session
     apply_null_methods!
     set_avatar_initials if (@name || @email)
   end
+
 
   def name_or_username
     @name || @username

@@ -214,10 +214,16 @@ class GroupExportService
     file.puts({table: table, record: record.as_json(JSON_PARAMS[table])}.to_json)
   end
 
-  def self.import(filename, reset_keys: false)
+  def self.import(filename_or_url, reset_keys: false)
     group_ids = []
     migrate_ids = {}
-    datas = URI.open(filename, 'r').map { |line| JSON.parse(line) }
+
+    if URI.parse(filename_or_url).class == URI::Generic
+      datas = File.open(filename_or_url).read.split("\n").map { |line| JSON.parse(line) }
+    else
+      datas = URI.parse(filename_or_url).read.split("\n").map { |line| JSON.parse(line) }
+    end
+
     tables = datas.map{ |data| data['table'] }.uniq
 
     ActiveRecord::Base.transaction do

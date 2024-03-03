@@ -16,6 +16,7 @@ export default class UserModel extends BaseModel {
 
   defaultValues() {
     return {
+      autodetectTimeZone: false,
       shortBio: '',
       shortBioFormat: 'html',
       files: [],
