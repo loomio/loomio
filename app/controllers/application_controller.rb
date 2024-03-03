@@ -57,6 +57,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def my_ip
+    render json: {
+      'request.ip': request.ip,
+      'request.remote_ip': request.remote_ip,
+      'request.client_ip': request.client_ip,
+      'request.x_forwarded_host': request.x_forwarded_host,
+      'request.headers["X-Forwarded-For"]': request.headers["X-Forwarded-For"],
+      'request.headers["CF-Connecting-IP"]': request.headers["CF-Connecting-IP"],
+      # "ENV['action_dispatch.remote_ip']":  request.env['action_dispatch.remote_ip'],
+      # "env['HTTP_CF_CONNECTING_IP']": request.env['HTTP_CF_CONNECTING_IP'],
+      # "env['HTTP_X_FORWARDED_FOR']": request.env['HTTP_X_FORWARDED_FOR']
+     }
+  end
+
   def response_format
     params[:format] == 'json' ? :json : :html
   end
