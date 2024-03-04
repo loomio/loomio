@@ -42,6 +42,8 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
     actionpack-action_caching (1.2.2)
       actionpack (>= 4.0.0)
+    actionpack-cloudflare (1.1.0)
+      actionpack (>= 3.2)
     actionpack-page_caching (1.2.4)
       actionpack (>= 4.0.0)
     actiontext (7.0.7.2)
@@ -605,6 +607,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack-action_caching
+  actionpack-cloudflare
   actionpack-page_caching
   active_model_serializers (~> 0.8.1)
   active_record_extended
