@@ -64,14 +64,8 @@ export default {
       if (!Session.isSignedIn()) { return; }
       this.originalUser = Session.user();
       this.user = this.originalUser.clone();
-<<<<<<< HEAD
-      loadLocaleMessages(I18n, this.user.locale);
-||||||| 4d3dbe7fd5
-      Session.updateLocale(this.user.locale);
-=======
       this.fetchTimeZones();
-      Session.updateLocale(this.user.locale);
->>>>>>> master
+      loadLocaleMessages(I18n, this.user.locale);
     },
 
     fetchTimeZones() {
@@ -182,61 +176,20 @@ v-main
               v-model="user.dateTimePref")
             validation-errors(:subject='user', field='dateTimeFormat')
 
-<<<<<<< HEAD
             v-select#user-locale-field(
               :label="$t('profile_page.locale_label')"
               :items="availableLocales"
-              v-model="user.selectedLocale")
-
+              v-model="user.selectedLocale"
+              item-text="name"
+              item-value="key")
             validation-errors(:subject='user', field='selectedLocale')
-            p
-              span(v-t="'common.time_zone'")
-              space
-              span {{user.timeZone}}
-              space
-              v-tooltip(top)
-                template(v-slot:activator="{attrs}")
-                  common-icon(v-bind="attrs" small name="mdi-information-outline")
-                span(v-t="'profile_page.updated_on_sign_in'")
+
+            v-checkbox(v-model="user.autodetectTimeZone" :label="$t('profile_page.autodetect_time_zone')")
+            v-select(v-model="user.timeZone" :items="timeZones" :label="$t('common.time_zone')"  item-text="title" item-value="value" :disabled="user.autodetectTimeZone")
+
             v-checkbox(v-model="user.bot" :label="$t('profile_page.account_is_bot')")
             v-alert(v-if="user.bot" type="warning")
               span(v-t="'profile_page.bot_account_warning'")
-||||||| 4d3dbe7fd5
-              v-select#user-locale-field(
-                :label="$t('profile_page.locale_label')"
-                :items="availableLocales"
-                v-model="user.selectedLocale"
-                item-text="name"
-                item-value="key")
-              validation-errors(:subject='user', field='selectedLocale')
-              p
-                span(v-t="'common.time_zone'")
-                space
-                span {{user.timeZone}}
-                space
-                v-tooltip(top)
-                  template(v-slot:activator="{on, attrs}")
-                    common-icon(v-bind="attrs" v-on="on" small name="mdi-information-outline")
-                  span(v-t="'profile_page.updated_on_sign_in'")
-              v-checkbox(v-model="user.bot" :label="$t('profile_page.account_is_bot')")
-              v-alert(v-if="user.bot" type="warning")
-                span(v-t="'profile_page.bot_account_warning'")
-=======
-              v-select#user-locale-field(
-                :label="$t('profile_page.locale_label')"
-                :items="availableLocales"
-                v-model="user.selectedLocale"
-                item-text="name"
-                item-value="key")
-              validation-errors(:subject='user', field='selectedLocale')
-
-              v-checkbox(v-model="user.autodetectTimeZone" :label="$t('profile_page.autodetect_time_zone')")
-              v-select(v-model="user.timeZone" :items="timeZones" :label="$t('common.time_zone')"  item-text="title" item-value="value" :disabled="user.autodetectTimeZone")
-
-              v-checkbox(v-model="user.bot" :label="$t('profile_page.account_is_bot')")
-              v-alert(v-if="user.bot" type="warning")
-                span(v-t="'profile_page.bot_account_warning'")
->>>>>>> master
         v-card-actions.profile-page__update-account
           help-link(path="en/user_manual/users/user_profile")
           v-spacer
