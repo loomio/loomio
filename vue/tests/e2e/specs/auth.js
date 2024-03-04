@@ -106,6 +106,7 @@ module.exports = {
 
     page.loadPath('setup_dashboard_as_visitor')
     page.signInViaEmail('jennifer_grey@example.com')
+    page.pause(1000)
     page.expectElement('.group-page')
   },
 
