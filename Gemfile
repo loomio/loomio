@@ -65,6 +65,7 @@ gem 'terminal-table'
 gem 'tzinfo-data'
 gem 'pg_search'
 gem 'i18n-timezones'
+gem 'actionpack-cloudflare'
 
 group :development, :test do
   gem 'listen'
