@@ -8,7 +8,7 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import UserService    from '@/shared/services/user_service';
 import Flash   from '@/shared/services/flash';
-import { includes, uniq, debounce, filter } from 'lodash-es';
+import { includes, uniq, debounce, pickBy } from 'lodash-es';
 import {exact} from '@/shared/helpers/format_time';
 import { I18n, loadLocaleMessages } from '@/i18n';
 
@@ -45,7 +45,7 @@ export default {
         return {value: pref, title: exact(this.currentTime, this.user.timeZone, pref)};
       });
     },
-    actions() { return filter(UserService.actions(Session.user(), this), action => action.canPerform()) },
+    actions() { return pickBy(UserService.actions(Session.user(), this), action => action.canPerform()) },
     emailExists() { return includes(this.existingEmails, this.user.email); }
   },
 

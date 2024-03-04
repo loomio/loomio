@@ -6,9 +6,12 @@ import Session        from '@/shared/services/session';
 import { orderBy } from 'lodash-es';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import { exact, approximate } from '@/shared/helpers/format_time';
+import UrlFor from '@/mixins/url_for';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [UrlFor, WatchRecords],
   data() {
     return {
       requests: [],
