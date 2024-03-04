@@ -179,13 +179,11 @@ v-main
             v-select#user-locale-field(
               :label="$t('profile_page.locale_label')"
               :items="availableLocales"
-              v-model="user.selectedLocale"
-              item-text="name"
-              item-value="key")
+              v-model="user.selectedLocale")
             validation-errors(:subject='user', field='selectedLocale')
 
             v-checkbox(v-model="user.autodetectTimeZone" :label="$t('profile_page.autodetect_time_zone')")
-            v-select(v-model="user.timeZone" :items="timeZones" :label="$t('common.time_zone')"  item-text="title" item-value="value" :disabled="user.autodetectTimeZone")
+            v-select(v-model="user.timeZone" :items="timeZones" :label="$t('common.time_zone')"  item-title="title" item-value="value" :disabled="user.autodetectTimeZone")
 
             v-checkbox(v-model="user.bot" :label="$t('profile_page.account_is_bot')")
             v-alert(v-if="user.bot" type="warning")

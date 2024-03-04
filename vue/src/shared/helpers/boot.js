@@ -5,18 +5,13 @@ import * as Sentry from '@sentry/vue';
 import { forEach, snakeCase } from 'lodash-es';
 import { reactive } from 'vue';
 import { merge } from 'lodash-es';
-// import router from '@/routes';
 
 export default function(callback) {
   const client = new RestfulClient('boot');
   client.get('site').then(function(appConfig) {
     merge(AppConfig, appConfig)
 
-    // window.Loomio = ref(appConfig);
-    // console.log(appConfig)
-    // console.log('appconfig', AppConfig)
-    // console.log(window.Loomio)
-    appConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    AppConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     if (AppConfig.sentry_dsn) {
       Sentry.init({
