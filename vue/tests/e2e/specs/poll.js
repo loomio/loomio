@@ -53,11 +53,9 @@ module.exports = {
     page.scrollClick('.poll-common-vote-form__button-text')
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.scrollClick('.poll-common-vote-form__submit')
-
-    page.scrollTo('.stance-created', () => {
-      page.expectText('.poll-common-stance-choice', 'An option')
-      page.expectText('.poll-common-stance-created__reason', 'A reason')
-    })
+    page.pause(1000)
+    page.expectText('.poll-common-stance-choice', 'An option')
+    page.expectText('.poll-common-stance-created__reason', 'A reason')
   },
 
   'can_start_a_dot_vote_in_a_group': (test) => {
