@@ -29,7 +29,6 @@ Rails.application.routes.draw do
       get '/:action', to: 'nightwatch#:action'
     end
   end
-  get '/my_ip', to: 'application#my_ip'
 
   get '/discussions/:id', to: 'redirect#discussion'
   get '/groups/:id',      to: 'redirect#group'
