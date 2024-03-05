@@ -57,7 +57,7 @@ describe API::B2::MembershipsController do
         emails: ['hey@there.com'],
         api_key: admin.api_key 
       }
-      expect(response.status).to eq 403
+      expect(response.status).to eq 404
     end
 
     it 'missing api_key' do
