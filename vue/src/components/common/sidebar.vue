@@ -87,11 +87,13 @@ export default {
 
     fetchData() {
       Records.users.findOrFetchGroups().then(() => {
-        if ((this.$router.path === "/dashboard") && (Session.user().groups().length === 1)) {
-          this.$router.replace(`/g/${Session.user().groups()[0].key}`);
-        }
-        if ((this.$router.path === "/dashboard") && (Session.user().groups().length === 0)) {
-          this.$router.replace("/g/new");
+        if (this.$route.path == "/dashboard") {
+          if (Session.user().groups().length == 0) {
+            this.$router.replace("/g/new");
+          }
+          if (Session.user().groups().length == 1) {
+              this.$router.replace(`/g/${Session.user().groups()[0].key}`);
+          }
         }
       });
       InboxService.load();
