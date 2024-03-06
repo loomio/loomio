@@ -173,6 +173,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
       :disabled='!optionCountValid || !poll.isVotable()'
       :loading="stance.processing"
       color="primary"
+      variant="elevated"
       block
     )
       span(v-t="submitText")

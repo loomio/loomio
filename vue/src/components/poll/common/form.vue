@@ -352,7 +352,7 @@ export default {
 
     template(v-if="optionFormat == 'plain'")
       .d-flex.justify-center
-        v-btn.poll-common-form__add-option-btn.my-2(@click="addOption" v-t="'poll_common_add_option.modal.title'")
+        v-btn.poll-common-form__add-option-btn.my-2(@click="addOption" variant="outlined" color="primary" v-t="'poll_common_add_option.modal.title'")
 
     template(v-if="optionFormat == 'iso8601'")
       .v-label.v-label--active.px-0.text-caption.pt-2(v-t="'poll_poll_form.new_option'")

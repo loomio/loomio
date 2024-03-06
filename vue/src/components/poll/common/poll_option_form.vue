@@ -67,5 +67,5 @@ v-card.poll-common-option-form(:title="$t(cardTitle)")
       v-model="pollOption.prompt")
   v-card-actions
     v-spacer
-    v-btn.poll-option-form__done-btn(@click="submit" v-t="'common.action.done'") 
+    v-btn.poll-option-form__done-btn(color="primary" variant="elevated" @click="submit" v-t="'common.action.done'") 
 </template>
