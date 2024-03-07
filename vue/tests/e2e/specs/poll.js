@@ -58,6 +58,7 @@ module.exports = {
 
     page.loadPath('polls/test_discussion')
     page.click('.activity-panel__add-poll')
+    page.pause(500)
     page.click(".poll-common-choose-template__poll")
     page.click('.decision-tools-card__poll-type--dot_vote')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
@@ -88,6 +89,7 @@ module.exports = {
 
     page.loadPath('polls/test_discussion')
     page.click('.activity-panel__add-poll')
+    page.pause(500)
     page.click(".poll-common-choose-template__poll")
     page.click('.decision-tools-card__poll-type--score')
     // page.click(".poll-common-tool-tip__collapse")
@@ -120,6 +122,7 @@ module.exports = {
 
     page.loadPath('polls/test_discussion')
     page.click('.activity-panel__add-poll')
+    page.pause(500)
     page.click(".poll-common-choose-template__meeting")
     page.click('.decision-tools-card__poll-type--meeting')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
@@ -146,6 +149,7 @@ module.exports = {
 
     page.loadPath('polls/test_discussion')
     page.click('.activity-panel__add-poll')
+    page.pause(500)
     page.click(".poll-common-choose-template__poll")
     page.click('.decision-tools-card__poll-type--ranked_choice')
     // page.click('.poll-common-tool-tip__collapse')

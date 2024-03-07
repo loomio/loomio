@@ -401,7 +401,7 @@ export default {
       :label="$t('poll_common.max_score')")
 
   template(v-if="poll.pollType == 'poll'")
-    p.text--secondary(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
+    p.text-medium-emphasis.mt-4.text-body-2.mb-2(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
     .d-flex
       v-text-field.poll-common-form__minimum-stance-choices(
         v-model="poll.minimumStanceChoices"

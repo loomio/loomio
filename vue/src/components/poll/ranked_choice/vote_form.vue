@@ -2,8 +2,10 @@
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { sortBy, take, map } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     stance: Object
   },

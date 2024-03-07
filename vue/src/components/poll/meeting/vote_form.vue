@@ -3,8 +3,10 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     stance: Object
   },

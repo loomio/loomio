@@ -2184,7 +2184,7 @@ en:
     option_added_please_add_details: Option added! Please add some details so people know what it means.
     default_duration_in_days: Default duration in days
     default_duration_in_days_hint: How many days should be given for people to vote?
-    how_many_options_can_a_voter_choose: How many of these options may a voter choose?
+    how_many_options_can_a_voter_choose: How many options may a voter choose?
     minimum_choices: Minimum choices
     maximum_choices: Maximum choices
     content: Content
