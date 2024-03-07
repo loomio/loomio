@@ -76,5 +76,30 @@ describe API::B2::MembershipsController do
       }
       expect(response.status).to eq 403
     end
+
+    it 'user is global admin and not in the group' do
+      new_admin = create(:user)
+      new_admin.update(is_admin: true)
+      post :create, params: {
+        group_id: group.id,
+        emails: ['hi@there.com'],
+        api_key: new_admin.api_key
+      }
+      expect(response.status).to eq 200
+      json = JSON.parse response.body
+      expect(json['added_emails']).to eq ['hi@there.com']
+      expect(json['removed_emails']).to eq []
+    end
+
+    it 'user is not global admin and not in the group' do
+      new_user = create(:user)
+      new_user.update(is_admin: false)
+      post :create, params: {
+        group_id: group.id,
+        emails: ['hi@there.com'],
+        api_key: new_user.api_key
+      }
+      expect(response.status).to eq 403
+    end
   end
 end
