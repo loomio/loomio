@@ -84,8 +84,8 @@ export default {
 <template lang="pug">
 v-app.app-is-booted
   system-notice
-  navbar
   sidebar
+  navbar
   router-view(v-if="!pageError")
   common-error(v-if="pageError" :error="pageError")
   v-spacer
