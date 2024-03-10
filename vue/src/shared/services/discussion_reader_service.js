@@ -43,7 +43,7 @@ export default new class DiscussionReaderService {
     this.revoke = {
       name: 'membership_dropdown.remove_from.discussion',
       canPerform(dr) {
-        return dr.discussion().adminsInclude(Session.user());
+        return dr.guest && dr.discussion().adminsInclude(Session.user());
       },
       perform(dr) {
         return Records.discussionReaders.remote.postMember(dr.id, 'revoke')

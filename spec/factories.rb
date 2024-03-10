@@ -222,6 +222,18 @@ FactoryBot.define do
     notify_on_closing_soon { "voters" }
   end
 
+  factory :discussion_template do
+    process_name { "Process name"}
+    process_subtitle { "This is a proces subtitle"}
+    process_introduction { "This is a proces introduction"}
+    process_introduction_format { "html"}
+    title { "This is a poll" }
+    description { "with a description" }
+    association :author, factory: :user
+    association :group
+    created_at { 2.days.ago }
+  end
+
   factory :poll_proposal, class: Poll do
     poll_type { "proposal" }
     title { "This is a proposal" }

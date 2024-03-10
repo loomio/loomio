@@ -3,7 +3,7 @@ require 'rails_helper'
 describe DiscussionReaderService do
   let(:group) { create :group }
   let(:discussion) { create :discussion, group: group }
-  let(:guest_discussion_reader) { create :discussion_reader, discussion: discussion, user: guest, inviter: discussion.author }
+  let(:guest_discussion_reader) { create :discussion_reader, discussion: discussion, user: guest, guest: true, inviter: discussion.author }
   let(:member_discussion_reader) { create :discussion_reader, discussion: discussion, user: member, inviter: discussion.author }
   let(:user) { create :user }
   let(:member) { create :user }

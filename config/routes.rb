@@ -136,6 +136,7 @@ Rails.application.routes.draw do
       resources :profile, only: [:show, :index] do
         collection do
           get  :time_zones
+          get  :all_time_zones
           get  :mentionable_users
           get  :me
           get  :groups

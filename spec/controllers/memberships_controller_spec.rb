@@ -44,9 +44,7 @@ describe MembershipsController do
       expect(membership.accepted_at).to eq nil
       expect {get :consume}.to_not change { Event.count }
       expect(response.status).to eq 200
-      membership.reload
-      expect(membership.accepted_at).to eq nil
-      expect(membership.user_id).to_not eq user.id
+      expect(Membership.where(id: membership.id).exists?).to be false
     end
 
     it "does not redeem accepted membership" do

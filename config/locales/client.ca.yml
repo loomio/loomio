@@ -472,6 +472,8 @@ ca:
     help_docs: Ajuda documents
     a_detailed_guide_to_loomio: Una guia detallada de Loomio
     talk_to_the_loomio_team: Parla amb l'equip de Loomio
+    new_thread_removed: S'ha eliminat el fil nou
+    new_thread_removed_body: El botó del fil nou s'està eliminant de la barra lateral. Per iniciar un fil nou, primer aneu al vostre grup i, a continuació, feu clic a "Nou fil". Disculpeu el canvi, però és obligatori perquè heu de seleccionar una plantilla quan inicieu un fil.
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -1980,6 +1982,7 @@ ca:
     hide_results_description: Si voleu que la gent voti sense saber com han votat els altres, podeu amagar els resultats de l'enquesta.
     process_helptext: Anomena i descriu el procés que s'utilitza per executar aquesta enquesta.
     reminder_helptext: Envieu una notificació "Tanquem aviat" abans que es tanqui l'enquesta. Aquesta pot ser una oportunitat perquè la gent vegi com han votat els altres i reconsideri el seu propi vot, o només una manera d'augmentar la participació a l'enquesta.
+    poll_type_updated: "%{poll_type} actualitzat"
   poll_proposal_form:
     start_header: Crea una proposta
     edit_header: Edita una proposta

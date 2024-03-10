@@ -252,6 +252,7 @@ he:
     blank:
       process_name: תבנית ריקה
       process_subtitle: פתח שרשור חדש לכל מטרה
+      process_introduction: <p style=";text-align:right;direction:rtl">התחל שרשור בקבוצה שלך על כל נושא שאתה אוהב.</p><p style=";text-align:right;direction:rtl"> כברירת מחדל, כולם בקבוצה יקבלו הודעה כאשר תתחיל את השרשור. אתה יכול לשנות זאת על ידי עריכת השדה 'הזמנה' למטה.</p>
     discuss_a_topic:
       title_placeholder: מהו הנושא שאתה רוצה לדון בו?
       process_name: לדון בנושא

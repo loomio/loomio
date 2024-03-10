@@ -20,7 +20,7 @@ class API::B2::MembershipsController < API::B2::BaseController
         user_id: User.where(email: remove_emails).pluck(:id)
       ).each do |membership|
         removed_user_ids << membership.user_id
-        MembershipService.destroy(
+        MembershipService.revoke(
           membership: membership,
           actor: current_user
         )
@@ -43,8 +43,12 @@ class API::B2::MembershipsController < API::B2::BaseController
   end
 
   def group
-    group = current_user.adminable_groups.find_by(id: params[:group_id])
-    raise CanCan::AccessDenied unless group
+    group = Group.find(params[:group_id])
+    raise ActiveRecord::RecordNotFound, "Group not found" unless group
+
+    unless current_user.is_admin? || current_user.adminable_groups.include?(group)
+      raise CanCan::AccessDenied, "User is not an admin"
+    end
     group
   end
 

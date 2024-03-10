@@ -79,10 +79,6 @@ class UserInviter
   private
 
   def self.safe_emails(emails)
-    if ENV['SPAM_REGEX']
-      emails.uniq.reject {|email| Regexp.new(ENV['SPAM_REGEX']).match(email) }
-    else
-      emails.uniq
-    end
+    emails.uniq.reject {|email| NoSpam::SPAM_REGEX.match?(email) }
   end
 end

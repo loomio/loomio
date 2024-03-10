@@ -58,7 +58,7 @@ export default {
   },
 
   watch: {
-    selectedOptionId() { 
+    selectedOptionId() {
       // if reason is not disabled, focus on the reson for this poll
       EventBus.$emit('focusEditor', 'poll-'+this.poll.id);
     }

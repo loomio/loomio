@@ -36,6 +36,10 @@ class Subscription < ApplicationRecord
     (self.info || {})['chargify_management_link']
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["groups", "owner", "versions"]
+  end
+  
   def self.ransackable_attributes(auth_object = nil)
     ["activated_at",
      "canceled_at",

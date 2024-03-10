@@ -506,6 +506,8 @@ hu:
     help_docs: Súgó dokumentumok
     a_detailed_guide_to_loomio: A Loomio részletes útmutatója
     talk_to_the_loomio_team: Beszélj a Loomio csapatával
+    new_thread_removed: Új szál eltávolítva
+    new_thread_removed_body: Az új szál gomb eltávolításra kerül az oldalsávról. Új szál indításához először navigáljon a csoportjához, majd kattintson az "Új szál" gombra. Elnézést a változtatásért, de kötelező, mert a szál indításakor ki kell választani egy sablont.
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -1968,6 +1970,7 @@ hu:
     process_introduction_hint: Néhány bekezdés, amely elmagyarázza a sablon használatát. Adjon meg hivatkozásokat olyan forrásokhoz, amelyek hasznosak lehetnek.
     option_has_votes_confirm_delete: Néhányan erre a lehetőségre szavaztak. Biztosan törli?
     notify_everyone_when_poll_starts: Értesítsen mindenkit, amikor a %{poll_type} elindul
+    poll_type_updated: "%{poll_type} frissítve"
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése

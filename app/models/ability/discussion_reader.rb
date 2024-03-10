@@ -10,8 +10,12 @@ module Ability::DiscussionReader
       DiscussionReader.redeemable.exists?(discussion_reader.id)
     end
 
-    can [:make_admin, :remove_admin, :resend, :remove], ::DiscussionReader do |discussion_reader|
+    can [:make_admin, :remove_admin, :resend], ::DiscussionReader do |discussion_reader|
       discussion_reader.discussion.admins.exists?(user.id)
+    end
+
+    can [:remove], ::DiscussionReader do |discussion_reader|
+      discussion_reader.guest && discussion_reader.discussion.admins.exists?(user.id)
     end
   end
 end

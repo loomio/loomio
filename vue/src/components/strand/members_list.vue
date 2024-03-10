@@ -63,10 +63,6 @@ export default {
       this.membershipsByUserId[reader.userId].admin;
     },
 
-    isGuest(reader) {
-      return !this.membershipsByUserId[reader.userId];
-    },
-
     inviteRecipients() {
       const count = this.recipients.length;
       this.saving = true;
@@ -191,7 +187,7 @@ export default {
       v-list-item-content
         v-list-item-title
           span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
-          v-chip.mr-1(v-if="discussion.groupId && isGuest(reader)" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+          v-chip.mr-1(v-if="discussion.groupId && reader.guest" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
           v-chip.mr-1(v-if="reader.admin" outlined x-small label v-t="'announcement.members_list.thread_admin'")
           v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined x-small label v-t="'announcement.members_list.group_admin'")
         v-list-item-subtitle

@@ -24,8 +24,8 @@ class PollQuery
                  .where("#{'d.private = false OR ' if show_public}
                          polls.author_id = :user_id OR
                          (m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-                         (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.inviter_id IS NOT NULL) OR
-                         (s.id IS NOT NULL AND s.revoked_at IS NULL)", user_id: user.id)
+                         (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
+                         (s.id IS NOT NULL AND s.revoked_at IS NULL AND s.guest = TRUE)", user_id: user.id)
     chain
   end
 

@@ -29,7 +29,8 @@ export default class StanceModel extends BaseModel {
       participantId: null,
       pollId: null,
       optionScores: {},
-      castAt: null
+      castAt: null,
+      guest: false
     };
   }
 
@@ -95,7 +96,7 @@ export default class StanceModel extends BaseModel {
   }
 
   pollOptionIds() {
-    return map(Object.keys(this.optionScores), parseInt);
+    return Object.keys(this.optionScores).map(k => parseInt(k))
   }
 
   pollOptions() {

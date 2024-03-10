@@ -455,6 +455,8 @@ tr:
     help_docs: Yardım dokümanları
     a_detailed_guide_to_loomio: Loomio için ayrıntılı bir rehber
     talk_to_the_loomio_team: Loomio ekibiyle konuşun
+    new_thread_removed: Yeni konu kaldırıldı
+    new_thread_removed_body: Yeni konu düğmesi kenar çubuğundan kaldırılıyor. Yeni bir konu başlatmak için önce grubunuza gidin, ardından "Yeni konu"ya tıklayın. Değişiklik için özür dileriz, ancak konu başlatırken bir şablon seçmeniz gerektiğinden bu gereklidir.
   navbar:
     recent_title: Kontrol paneline git
     unread_title: Okunmamış etkinlikleri görüntüle
@@ -1629,6 +1631,7 @@ tr:
     hide_results_description: İnsanların, başkalarının nasıl oy verdiğini bilmeden oy vermesini istiyorsanız anket sonuçlarını gizleyebilirsiniz.
     process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.
     reminder_helptext: Anket kapanmadan önce 'Yakında kapatılacak' bildirimi gönderin. Bu, insanların başkalarının nasıl oy verdiğini görmeleri ve kendi oylarını yeniden değerlendirmeleri için bir fırsat olabileceği gibi, yalnızca ankete katılımı artırmanın bir yolu da olabilir.
+    poll_type_updated: "%{poll_type} güncellendi"
   poll_proposal_options:
     'yes': Evet
     'no': Hayır

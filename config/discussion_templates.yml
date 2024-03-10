@@ -1,8 +1,10 @@
 blank:
   process_name_i18n: discussion_templates.blank.process_name
   process_subtitle_i18n: discussion_templates.blank.process_subtitle
+  process_introduction_i18n: discussion_templates.blank.process_introduction
   process_introduction_format: html
   description_format: html
+  recipient_audience: group
   newest_first: false
   max_depth: 3
   position: 0

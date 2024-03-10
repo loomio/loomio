@@ -421,6 +421,7 @@ pl:
     blank:
       process_name: Pusty szablon
       process_subtitle: Załóż nowy wątek w dowolnym celu
+      process_introduction: "<p>Rozpocznij wątek w swojej grupie na dowolny temat, który Ci się podoba.</p><p> Domyślnie wszyscy w grupie zostaną powiadomieni o rozpoczęciu wątku. Możesz to zmienić, edytując poniższe pole „zaproszenie”.</p>"
   event_mailer:
     received_email:
       explaination_html: "<p>Otrzymujesz tego e-maila, ponieważ jesteś administratorem grupy Loomio: %{group}.</p><p> Grupa otrzymała wiadomość e-mail z nieznanego adresu e-mail.</p><p> Jeśli wiadomość pochodzi od członka grupy, przejrzyj wiadomość e-mail i wybierz członka.</p><p> Jeśli wiadomość jest niechciana, możesz zablokować dalsze wiadomości e-mail wysyłane z tego adresu.</p>"

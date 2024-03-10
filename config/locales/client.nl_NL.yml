@@ -491,6 +491,8 @@ nl_NL:
     help_docs: Help-documenten
     a_detailed_guide_to_loomio: Een gedetailleerde gids voor Loomio
     talk_to_the_loomio_team: Praat met het Loomio-team
+    new_thread_removed: Nieuw draadje verwijderd
+    new_thread_removed_body: De nieuwe discussieknop wordt uit de zijbalk verwijderd. Om een nieuw gesprek te starten, navigeert u eerst naar uw groep en klikt u vervolgens op 'Nieuw gesprek'. Excuses voor de wijziging, maar deze is vereist omdat u een sjabloon moet selecteren wanneer u een thread start.
   strand_nav:
     newest: Nieuwste
     oldest: Oudste
@@ -2012,6 +2014,7 @@ nl_NL:
     process_introduction_hint: Een paar alinea's waarin wordt uitgelegd hoe u de sjabloon gebruikt. Voeg links toe naar bronnen die nuttig kunnen zijn.
     option_has_votes_confirm_delete: Sommige mensen hebben op deze optie gestemd, weet je zeker dat je deze wilt verwijderen?
     notify_everyone_when_poll_starts: Breng iedereen op de hoogte wanneer %{poll_type} start
+    poll_type_updated: "%{poll_type} bijgewerkt"
   poll_proposal_form:
     start_header: "'Voorstel' starten"
     edit_header: Voorstel bewerken

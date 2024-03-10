@@ -54,11 +54,17 @@ export default new class AbilityService {
   }
 
   canCloseThread(thread) {
-    return !thread.closedAt && this.canEditThread(thread);
+    return !thread.closedAt && (
+      thread.adminsInclude(Session.user()) ||
+      (thread.membersInclude(Session.user()) && (thread.group().membersCanEditDiscussions || (thread.author() === Session.user())))
+    );
   }
 
   canReopenThread(thread) {
-    return thread.closedAt && this.canEditThread(thread);
+    return thread.closedAt && (
+      thread.adminsInclude(Session.user()) ||
+      (thread.membersInclude(Session.user()) && (thread.group().membersCanEditDiscussions || (thread.author() === Session.user())))
+    );
   }
 
   canPinThread(thread) {
@@ -86,7 +92,12 @@ export default new class AbilityService {
     event.pinned && this.canEditThread(event.discussion());
   }
 
-  canMoveThread(thread) { return this.canEditThread(thread); }
+  canMoveThread(thread) { 
+    return thread.adminsInclude(Session.user()) || (
+      thread.membersInclude(Session.user()) &&
+      (thread.group().membersCanEditDiscussions || (thread.author() === Session.user()))
+    )
+  }
 
   canDeleteThread(thread) {
     return thread.adminsInclude(Session.user()) || (thread.author() === Session.user());
