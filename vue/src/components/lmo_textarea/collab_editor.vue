@@ -139,6 +139,7 @@ export default
         Document,
         Dropcursor,
         GapCursor,
+        HardBreak,
         Heading,
         Highlight.configure({ multicolor: true }),
         History,
