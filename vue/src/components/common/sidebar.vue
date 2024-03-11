@@ -163,6 +163,7 @@ export default {
     canStartDemo() { return AppConfig.features.app.demos; },
     showTemplateGallery() { return AppConfig.features.app.template_gallery; },
     showExploreGroups() { return AppConfig.features.app.explore_public_groups; },
+    showNewThreadButton() { return AppConfig.features.app.new_thread_button; },
     needProfilePicture() {
       return Session.isSignedIn() && this.user && !this.user.avatarUrl && !this.user.hasExperienced('changePicture');
     }
@@ -205,10 +206,10 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       span(v-if="unreadDirectThreadsCount > 0")
         space
         span ({{unreadDirectThreadsCount}})
-  v-list-item.sidebar__list-item-button--start-thread(dense @click="explainNewThreadRemoved")
+  v-list-item.sidebar__list-item-button--start-thread(v-if="showNewThreadButton" dense to="/d/new")
     v-list-item-title(v-t="'sidebar.start_thread'")
     v-list-item-icon
-      common-icon(name="mdi-help")
+      common-icon(name="mdi-plus")
   v-list-item(dense to="/tasks" :disabled="organizations.length == 0")
     v-list-item-title(v-t="'tasks.tasks'")
 
