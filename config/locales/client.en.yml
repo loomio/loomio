@@ -1636,6 +1636,7 @@ en:
       join_group: <a href="/explore">join</a> a group to see threads.
 
   discussion:
+    direct_thread: "Direct thread"
     invite_only: "Invite-only"
     private_thread: Private thread
     max_threads_reached: |
