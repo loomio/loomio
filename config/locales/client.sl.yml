@@ -1097,6 +1097,7 @@ sl:
     deactivate_account: Deaktivirajte uporabniški račun
     help_translate: Nam lahko pomagate prevesti Loomio?
     updated_on_sign_in: Zagotavlja vaš brskalnik in se posodobi, ko se prijavite
+    autodetect_time_zone: Samodejno zaznaj časovni pas
   change_picture_form:
     use_gravatar: Uporabi Gravatarja
     aria_label: Obrazec za profilno fotografijo
@@ -1218,6 +1219,7 @@ sl:
     closed:
       reopened: Tema ponovno odprta
       closed: Tema zaprta
+    direct_thread: Neposredna nit
   activity_card:
     context: Opis
     count_responses: "%{count} odgovorov"
@@ -2085,6 +2087,7 @@ sl:
     meaning_hint: Stavek ali dva, ki pojasnjujeta, kaj pomeni izbira te možnosti. Neobvezno
     prompt: Poziv za razlog
     prompt_hint: Vprašanje, ki spodbudi volivce, da delijo svoje razloge ali ponovno razmislijo o svojem stališču. Neobvezno
+    please_select_an_icon: Izberite ikono
   poll_common_add_option:
     button:
       add_option: Dodajte drugo možnost

@@ -129,11 +129,11 @@ export default {
     },
 
     addOption() {
-      const option = { 
+      const option = {
         name: '',
         meaning: '',
         prompt: '',
-        icon: 'agree'
+        icon: null
       };
 
       EventBus.$emit('openModal', {

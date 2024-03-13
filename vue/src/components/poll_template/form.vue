@@ -87,7 +87,7 @@ export default {
         name: '',
         meaning: '',
         prompt: '',
-        icon: 'agree'
+        icon: null,
       };
 
       EventBus.$emit('openModal', {
@@ -204,7 +204,7 @@ export default {
 
 </script>
 <template lang="pug">
-.poll-template-form(:class="isModal ? 'pa-4' : ''") 
+.poll-template-form(:class="isModal ? 'pa-4' : ''")
   submit-overlay(:value="pollTemplate.processing")
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
@@ -448,7 +448,6 @@ export default {
       color="primary"
       @click='submit()'
       :loading="pollTemplate.processing"
-      :disabled="!pollTemplate.processName || !pollTemplate.processSubtitle"
     )
       span(v-t="'common.action.save'")
 

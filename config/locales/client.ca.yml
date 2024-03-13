@@ -1304,6 +1304,7 @@ ca:
     date_time_pref_label: Format de data i hora
     help_translate: Ens pots ajudar a traduir Loomio?
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
+    autodetect_time_zone: Autodetecció de zona horària
   text_editor:
     insert_link: Insereix enllaç
     insert_embedded_url: Incrusta un vídeo
@@ -1452,6 +1453,7 @@ ca:
     closed:
       reopened: Fil reobert
       closed: Fil tancat
+    direct_thread: Fil directe
   discussion_last_seen_by:
     title: Vist per
     no_one: Encara no ho ha vist ningú
@@ -2410,6 +2412,7 @@ ca:
     meaning_hint: Una o dues frases que expliquen què significa triar aquesta opció. Opcional
     prompt: Indicació de motiu
     prompt_hint: Una pregunta per incitar als votants a compartir el seu raonament o reconsiderar la seva posició. Opcional
+    please_select_an_icon: Seleccioneu una icona
   poll_common_close_form:
     title: Tancar %{poll_type} ara?
     helptext: Esteu segur que voleu tancar aquest %{poll_type} abans i compartir un resultat?

@@ -1394,6 +1394,7 @@ es:
     deactivated_user: Usuario desactivado
     account_is_bot: Esta es una cuenta de bot
     bot_account_warning: Las cuentas de bot no serán invitadas a votar en encuestas ni a participar en debates.
+    autodetect_time_zone: Detectar automáticamente zona horaria
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractéres"
     select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo
@@ -1547,6 +1548,7 @@ es:
     closed:
       reopened: Hilo reabierto
       closed: 'Hilo cerrado '
+    direct_thread: Hilo directo
   discussion_last_seen_by:
     title: Visto por
     no_one: Nadie ha visto esto todavía
@@ -1707,6 +1709,7 @@ es:
     prompt: Mensaje de motivo
     prompt_hint: Una pregunta para incitar a los votantes a proporcionar su razonamiento o reconsiderar su posición.
     option_name_validation: Es mejor mantener el nombre breve y poner detalles en el campo "Significado".
+    please_select_an_icon: Por favor seleccione un icono
   poll_common:
     delete_poll: Eliminar sondeo
     select_count_options: Seleccione las opciones de %{count}
