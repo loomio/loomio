@@ -87,7 +87,7 @@ export default {
         name: '',
         meaning: '',
         prompt: '',
-        icon: 'agree'
+        icon: null,
       };
 
       EventBus.$emit('openModal', {
