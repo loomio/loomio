@@ -113,6 +113,12 @@ export default class BaseModel {
     return this.afterUpdateFns.forEach(fn => fn(this));
   }
 
+  attributeIsBlank(attributeName) {
+    const doc = new DOMParser().parseFromString(this[attributeName], 'text/html');
+    const o = (doc.body.textContent || "").trim();
+    return ['null', 'undefined', ''].includes(o);
+  }
+
   attributeIsModified(attributeName) {
     const strip = function(val) {
       const doc = new DOMParser().parseFromString(val, 'text/html');
