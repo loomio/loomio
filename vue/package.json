@@ -55,7 +55,7 @@
     "@tiptap/vue-2": "^2.2.4",
     "activestorage": "^5.2.8",
     "date-fns": "2.30.0",
-    "date-fns-tz": "2.0.0",
+    "date-fns-tz": "2.0.1",
     "deepmerge": "^4.3.1",
     "emoji-unicode": "^2.0.1",
     "jstimezonedetect": "~1.0.7",
