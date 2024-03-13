@@ -1352,6 +1352,7 @@ it:
     deactivated_user: Utente disattivato
     account_is_bot: Questo è un account bot
     bot_account_warning: Gli account bot non saranno invitati a votare nei sondaggi o a partecipare alle discussioni
+    autodetect_time_zone: Rilevamento automatico del fuso orario
   text_editor:
     x_of_y_characters: "%{x} / %{y} caratteri"
     insert_link: Inserisci collegamento
@@ -1501,6 +1502,7 @@ it:
       reopened: Discussione riaperta
       closed: Discussione chiusa
     max_threads_reached: <p>Hai utilizzato tutti i %{maxThreads} thread disponibili per questo gruppo.</p><p> Passaggio successivo, <a href="%{upgradeUrl}" target="_blank">scegli un piano</a> per continuare a collaborare su Loomio.</p>
+    direct_thread: Filo diretto
   discussion_last_seen_by:
     title: Visto da
     no_one: Nessuno l'ha ancora visto
@@ -2433,6 +2435,7 @@ it:
     prompt: Richiesta di motivazione
     prompt_hint: Una domanda per sollecitare gli elettori a fornire le loro ragioni o riconsiderare la loro posizione.
     option_name_validation: È meglio mantenere il nome breve e inserire i dettagli nel campo "Significato".
+    please_select_an_icon: Seleziona un'icona
   poll_check_options:
     check_subtitle: Chiedi feedback, domande e dubbi
     check_introduction: "<p>La proposta di controllo del senso è un buon modo per ottenere feedback, invitare domande e scoprire preoccupazioni. Aiuta a chiarire e migliorare una proposta prima di passare a una decisione.</p><p> Il controllo del senso consente alle persone di sapere che si sta formando una proposta e le incoraggia a impegnarsi. È un'opportunità per ascoltare le persone, percepire come si sentono e rispondere in modo appropriato, aprendo la possibilità di incorporare i loro contributi per prendere una decisione migliore.</p><p> Utilizzare la proposta di verifica del senso nel processo di consenso per invitare reazioni e commenti per migliorare la proposta e in un processo di consenso per testare il consenso.</p><p> Leggi di più sulla proposta di controllo del senso.</p>"

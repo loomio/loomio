@@ -1186,6 +1186,7 @@ ru:
     deactivate_account: Деактивировать учетную запись пользователя
     help_translate: Можете ли вы помочь нам перевести Лумио?
     updated_on_sign_in: Предоставляется вашим браузером и обновляется при входе в систему.
+    autodetect_time_zone: Автоопределение часового пояса
   email_settings_page:
     monday: Понедельник
     tuesday: Вторник
@@ -1298,6 +1299,7 @@ ru:
     volume:
       mute_message: Звук темы отключен
       unmute_message: Звук темы включен
+    direct_thread: Прямая резьба
   activity_card:
     latest: Последний
     context: Описание
@@ -2122,6 +2124,7 @@ ru:
     meaning_hint: Пару предложений, объясняющих, что означает выбор этого варианта. Необязательный
     prompt: Причина подсказки
     prompt_hint: Вопрос, призванный побудить избирателей поделиться своими доводами или пересмотреть свою позицию. Необязательный
+    please_select_an_icon: Пожалуйста, выберите значок
   poll_common_attachment_form:
     label: Вложения
   poll_common_add_option:

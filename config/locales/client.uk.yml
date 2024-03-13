@@ -1343,6 +1343,7 @@ uk:
     deactivated_user: Деактивований користувач
     account_is_bot: Це обліковий запис бота
     bot_account_warning: Облікові записи ботів не будуть запрошені голосувати в опитуваннях або брати участь в обговореннях
+    autodetect_time_zone: Автоматичне визначення часового поясу
   text_editor:
     select_text_to_link: Виберіть текст для посилання та повторіть спробу
     insert_link: Додайте посилання
@@ -1493,6 +1494,7 @@ uk:
     closed:
       reopened: Тему відновлено
       closed: Тему закрито
+    direct_thread: Пряма нитка
   discussion_last_seen_by:
     title: Переглянуто
     no_one: Ще ніхто не переглянув
@@ -2438,6 +2440,7 @@ uk:
     prompt: Підказка причини
     prompt_hint: Питання, яке спонукає виборців аргументувати чи переглянути свою позицію.
     option_name_validation: Найкраще, щоб назва була короткою, а деталі вказували в полі «Значення».
+    please_select_an_icon: Виберіть піктограму
   poll_score_form:
     tool_tip_collapsed: Виміряйте ступінь підтримки кожного варіанту
   poll_check_options:

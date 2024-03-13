@@ -1640,6 +1640,7 @@ fi:
     deactivate_account: Poista käyttäjätili käytöstä
     help_translate: Voitko auttaa meitä kääntämään Loomio?
     updated_on_sign_in: Selaimesi tarjoaa ja päivitetään, kun kirjaudut sisään
+    autodetect_time_zone: Tunnista aikavyöhyke automaattisesti
   text_editor:
     x_of_y_characters: "%{x} / %{y} merkkiä"
     select_text_to_link: Valitse linkitettävä teksti ja yritä uudelleen
@@ -1733,6 +1734,7 @@ fi:
     closed:
       reopened: Viesti avattu uudelleen
       closed: Ketju suljettu
+    direct_thread: Suora lanka
   discussion_last_seen_by:
     title: Nähnyt
     no_one: Kukaan ei ole vielä nähnyt tätä
@@ -1861,6 +1863,7 @@ fi:
     meaning_hint: Pari lausetta, joissa selitetään, mitä tämän vaihtoehdon valitseminen tarkoittaa. Valinnainen
     prompt: Syykehote
     prompt_hint: Kysymys, joka kannustaa äänestäjiä jakamaan perustelunsa tai harkitsemaan uudelleen kantaansa. Valinnainen
+    please_select_an_icon: Valitse kuvake
   poll_common_attachment_form:
     label: Liitteet
   poll_common_add_option:

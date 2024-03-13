@@ -1150,6 +1150,7 @@ ro:
     deactivate_account: Dezactivați contul de utilizator
     help_translate: Ne puteți ajuta să traducem Loomio?
     updated_on_sign_in: Furnizat de browserul dvs. și actualizat atunci când vă conectați
+    autodetect_time_zone: Autodetectare fus orar
   change_picture_form:
     use_gravatar: Foloseste Gravatar
     aria_label: Formular foto de profil
@@ -1271,6 +1272,7 @@ ro:
     closed:
       reopened: Subiectul a fost redeschis
       closed: Firul închis
+    direct_thread: Fir direct
   activity_card:
     latest: Cel mai nou
     context: Context
@@ -2107,6 +2109,7 @@ ro:
     meaning_hint: O propoziție sau două care explică ce înseamnă alegerea acestei opțiuni. Opțional
     prompt: Motivul prompt
     prompt_hint: O întrebare pentru a determina alegătorii să-și împărtășească raționamentul sau să își reconsidere poziția. Opțional
+    please_select_an_icon: Vă rugăm să selectați o pictogramă
   poll_common_add_option:
     button:
       add_option: Adăugați o altă opțiune

@@ -1348,6 +1348,7 @@ zh_TW:
     account_is_bot: 這是一個機器人帳戶
     bot_account_warning: 機器人帳號不會被邀請投票或參與討論
     deactivated_user: 已停用的用戶
+    autodetect_time_zone: 自動偵測時區
   text_editor:
     x_of_y_characters: "%{x} / %{y} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次
@@ -1501,6 +1502,7 @@ zh_TW:
     closed:
       reopened: 討論串已重新開啟
       closed: 討論串已關閉
+    direct_thread: 直接螺紋
   discussion_last_seen_by:
     title: 被這些人看過：
     no_one: 還沒有人看過這個
@@ -2440,6 +2442,7 @@ zh_TW:
     meaning_hint: 用一兩句話解釋選擇此選項的含義。選修的
     prompt: 原因提示
     prompt_hint: 促使選民分享他們的推理或重新考慮他們的立場的問題。選修的
+    please_select_an_icon: 請選擇一個圖標
   record_modal:
     record_video: 錄影影片
     record_audio: 錄製音訊

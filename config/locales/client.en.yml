@@ -1824,6 +1824,7 @@ en:
     option_name_validation: It's best to keep the name short and put detail in the 'Meaning' field
     icon: Icon
     meaning: Meaning
+    please_select_an_icon: Please select an icon
     meaning_hint: A sentence or two explaining what choosing this option means. Optional
     prompt: Reason prompt
     prompt_hint: A question to prompt voters to share their reasoning or reconsider their position. Optional

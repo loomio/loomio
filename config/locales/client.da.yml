@@ -1137,6 +1137,7 @@ da:
     deactivate_account: Deaktiver brugerkonto
     help_translate: Kan du hjælpe os med at oversætte Loomio?
     updated_on_sign_in: Leveres af din browser og opdateres, når du logger ind
+    autodetect_time_zone: Automatisk registrering af tidszone
   change_picture_form:
     helptext: Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.
     use_initials: Benyt initialer
@@ -1268,6 +1269,7 @@ da:
     closed:
       reopened: Tråd åbnet igen
       closed: Tråd lukket
+    direct_thread: Direkte tråd
   activity_card:
     latest: Seneste
     context: Beskrivelse
@@ -2228,6 +2230,7 @@ da:
     meaning_hint: En sætning eller to, der forklarer, hvad det betyder at vælge denne mulighed. Valgfri
     prompt: Årsagsprompt
     prompt_hint: Et spørgsmål, der skal få vælgerne til at dele deres ræsonnement eller genoverveje deres holdning. Valgfri
+    please_select_an_icon: Vælg venligst et ikon
   poll_common_add_option:
     button:
       add_option: Tilføj en anden mulighed
