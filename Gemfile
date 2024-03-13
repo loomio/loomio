@@ -68,7 +68,6 @@ gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 
 group :development, :test do
-  gem 'listen'
   gem 'byebug'
   gem 'factory_bot_rails'
   gem 'faker'
