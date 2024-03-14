@@ -57,7 +57,7 @@ v-card.poll-common-option-form
     div(v-if="hasOptionIcon")
       span.v-label(v-t="'poll_option_form.icon'")
       .d-flex.mb-4.space-between
-        label.poll-option-form__icon.mr-4.d-flex.flex-column.rounded.v-sheet.v-sheet--outlined.theme--dark.voting-enabled(
+        label.poll-option-form__icon.mr-4.d-flex.flex-column.rounded.v-sheet.v-sheet--outlined.voting-enabled(
           v-for="icon in icons"
           :key="icon.value"
           :class="{'poll-option-form__icon-selected': pollOption.icon == icon.value, 'poll-option-form__icon-not-selected': pollOption.icon != icon.value}"
