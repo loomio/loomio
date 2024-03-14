@@ -39,9 +39,11 @@ class ChatbotService
           poll = event.eventable.poll
         end
 
-        recipient = LoggedOutUser.new(locale: chatbot.author.locale,
-                                      time_zone: chatbot.author.time_zone,
-                                      date_time_pref: chatbot.author.date_time_pref)
+        example_user = chatbot.author || chatbot.group.creator
+
+        recipient = LoggedOutUser.new(locale: example_user.locale,
+                                      time_zone: example_user.time_zone,
+                                      date_time_pref: example_user.date_time_pref)
 
         I18n.with_locale(recipient.locale) do
           if chatbot.kind == "webhook"
