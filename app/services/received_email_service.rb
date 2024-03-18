@@ -19,7 +19,6 @@ class ReceivedEmailService
     return nil if email.released
     return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
     return nil if email.sender_hostname.downcase == ENV['SMTP_DOMAIN'].downcase
-    
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
@@ -60,6 +59,8 @@ class ReceivedEmailService
         end
       end
     end
+  rescue CanCan::AccessDenied, ActiveRecord::RecordNotFound
+    # TODO handle when user is not allowed to comment or create discussion
   end
 
   def self.extract_reply_body(text, author_name = nil)
