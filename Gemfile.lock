@@ -120,7 +120,7 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
     bcrypt (3.1.19)
-    bigdecimal (3.1.6)
+    bigdecimal (3.1.7)
     blazer (3.0.3)
       activerecord (>= 6.1)
       chartkick (>= 5)
@@ -537,7 +537,7 @@ GEM
     sentry-rails (5.17.0)
       railties (>= 5.0)
       sentry-ruby (~> 5.17.0)
-    sentry-ruby (5.17.0)
+    sentry-ruby (5.17.1)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
     sentry-sidekiq (5.17.0)
