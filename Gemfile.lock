@@ -375,9 +375,9 @@ GEM
       net-protocol
     net_http_timeout_errors (1.0.0)
     nio4r (2.7.0)
-    nokogiri (1.16.2-x86_64-darwin)
+    nokogiri (1.16.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-linux)
+    nokogiri (1.16.3-x86_64-linux)
       racc (~> 1.4)
     oga (3.4)
       ast
