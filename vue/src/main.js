@@ -1,35 +1,37 @@
-import Vue from 'vue';
 import AppConfig from '@/shared/services/app_config';
-import vuetify from '@/vuetify';
-import router from '@/routes';
-import i18n from '@/i18n';
-import app from '@/app.vue';
+import App from '@/app.vue';
+import { createApp } from 'vue';
 import markedDirective from '@/marked_directive';
-import '@/observe_visibility';
 import './removeServiceWorker';
-import { pick } from 'lodash-es';
+import { pick, each } from 'lodash-es';
 import * as Sentry from '@sentry/browser';
-import WatchRecords from '@/mixins/watch_records';
-import CloseModal from '@/mixins/close_modal';
-import UrlFor from '@/mixins/url_for';
-import FormatDate from '@/mixins/format_date';
-import Vue2TouchEvents from 'vue2-touch-events';
+// import Vue2TouchEvents from 'vue2-touch-events';
 import PlausibleService from '@/shared/services/plausible_service';
 
 
-Vue.use(Vue2TouchEvents);
-Vue.mixin(CloseModal);
-Vue.mixin(WatchRecords);
-Vue.mixin(UrlFor);
-Vue.mixin(FormatDate);
 
-Vue.config.productionTip = false;
+import { I18n } from './i18n'
+import vuetify from './plugins/vuetify'
+import router from './routes'
+
+const useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
 import boot from '@/shared/helpers/boot';
 import Session from '@/shared/services/session';
+import { plugin as Slicksort } from 'vue-slicksort';
+
 
 boot(function(data) {
   Session.apply(data);
+
+  each(AppConfig.theme.vuetify, (value, key) => {
+    if (value) { vuetify.theme.themes.value.light.colors[key] = value; }
+    if (value) { vuetify.theme.themes.value.dark.colors[key] = value; }
+    return true;
+  });
+
+  const app = createApp(App);
+
 
   PlausibleService.boot();
   PlausibleService.trackPageview();
@@ -37,11 +39,7 @@ boot(function(data) {
   if (AppConfig.sentry_dsn) {
     Sentry.configureScope(scope => scope.setUser(pick(Session.user(), ['id', 'name', 'email', 'username'])));
   }
-
-  return new Vue({
-    render(h) { return h(app); },
-    router,
-    vuetify,
-    i18n
-  }).$mount('#app');
+  app.use(I18n).use(vuetify).use(router).use(Slicksort)
+  app.directive('marked', markedDirective)
+  app.mount("#app")
 });

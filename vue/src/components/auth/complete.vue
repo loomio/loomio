@@ -45,13 +45,15 @@ export default {
 };
 </script>
 <template lang="pug">
-v-card.auth-complete.text-center(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
-  v-card-title
-    h1.text-h5(tabindex="-1" role="status" aria-live="assertive" v-t="'auth_form.check_your_email'")
-    v-spacer
+v-card.auth-complete(
+  :title="$t('auth_form.check_your_email')"
+  @keyup.ctrl.enter="submit()"
+  @keydown.meta.enter.stop.capture="submit()"
+  @keydown.enter="submit()")
+  template(vslot:append)
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")
-  v-sheet.mx-4
+  v-sheet.mx-4.text-center
     submit-overlay(:value='loading')
     p.mb-4(v-if='user.sentLoginLink')
       span(v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")

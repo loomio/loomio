@@ -1937,7 +1937,7 @@ ko:
     account_locked: 로그인 시도가 너무 많이 실패하여 귀하의 계정이 잠겼습니다. 이메일에서 잠금 해제 링크를 확인하세요
     email_not_found: 죄송합니다. 해당 이메일 주소를 사용하는 계정을 찾을 수 없습니다.
     email_taken: 이메일 주소가 이미 등록되어 있습니다
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     login_with_token: 모든 준비가 완료되었습니다. 계속하려면 아래 링크를 클릭하세요.
     login_link_helptext: 아래 버튼을 클릭하시면 로그인 링크를 보내드립니다.
     enter_your_password: 계속하려면 비밀번호를 입력하세요

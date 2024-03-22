@@ -50,7 +50,7 @@ v-card.thread-arrangement-form
           space
           span(v-t="'thread_arrangement_form.latest_description'")
 
-    v-subheader(v-t="'thread_arrangement_form.replies'")
+    v-list-subheader(v-t="'thread_arrangement_form.replies'")
     v-radio-group(v-model="clone.maxDepth")
       v-radio(:value="1")
         template(v-slot:label)

@@ -27,10 +27,8 @@ export default {
 };
 </script>
 <template lang="pug">
-v-card
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'discussion_last_seen_by.title'")
-    v-spacer
+v-card(:title="$t('discussion_last_seen_by.title')")
+  template(v-slot:append)
     dismiss-modal-button
   .d-flex.justify-center.pa-8(v-if="historyLoading")
     v-progress-circular(color="primary"  indeterminate)

@@ -5,13 +5,12 @@ import EventBus from '@/shared/services/event_bus';
 import Session        from '@/shared/services/session';
 import AbilityService from '@/shared/services/ability_service';
 
-import Vue     from 'vue';
 import { map, sortBy, head } from 'lodash-es';
 import { format, formatDistance, parse, startOfHour, isValid, addHours, isAfter, parseISO } from 'date-fns';
 import { exact} from '@/shared/helpers/format_time';
 
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import { mdiCalendar } from '@mdi/js';
 
 export default {
@@ -46,7 +45,7 @@ export default {
 
       this.options.unshift({
         id: null,
-        value: I18n.t('common.none'),
+        value: I18n.global.t('common.none'),
         attendees: 0
       });
 
@@ -92,16 +91,15 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+v-card.poll-common-outcome-modal(
+  @keyup.ctrl.enter="submit()"
+  @keydown.meta.enter.stop.capture="submit()"
+  :title="outcome.isNew() ? $t('poll_common_outcome_form.new_title') : $t('poll_common_outcome_form.update_title')")
   submit-overlay(:value='outcome.processing')
-  v-card-title
-    h1.text-h5
-      span(v-if='outcome.isNew()' v-t="'poll_common_outcome_form.new_title'")
-      span(v-if='!outcome.isNew()' v-t="'poll_common_outcome_form.update_title'")
-    v-spacer
+  template(v-slot:append)
     dismiss-modal-button(:model="outcome")
   .poll-common-outcome-form.px-4
-    p.text--secondary(v-t="'announcement.form.outcome_announced.helptext'")
+    p.text-medium-emphasis(v-t="'announcement.form.outcome_announced.helptext'")
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
@@ -115,7 +113,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
             v-model='outcome.pollOptionId'
             :items="options"
             item-value="id"
-            item-text="value"
+            item-title="value"
             :label="$t('poll_common_calendar_invite.poll_option_id')")
         .poll-common-calendar-invite--pad-top(v-if='outcome.pollOptionId')
           v-text-field.poll-common-calendar-invite__summary(
@@ -132,7 +130,7 @@ v-card.poll-common-outcome-modal(@keyup.ctrl.enter="submit()" @keydown.meta.ente
 
     .outcome-review-on(v-if="outcome.poll().pollType == 'proposal'")
       v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")
-        template(v-slot:activator='{ on, attrs }')
+        template(v-slot:activator='{ attrs }')
           v-text-field(
             clearable
             v-model='outcome.reviewOn'

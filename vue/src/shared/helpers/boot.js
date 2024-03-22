@@ -1,17 +1,17 @@
-import Vue from 'vue';
 import RestfulClient from '@/shared/record_store/restful_client';
 import AppConfig from '@/shared/services/app_config';
 import Records from '@/shared/services/records';
-import i18n from '@/i18n';
 import * as Sentry from '@sentry/vue';
 import { forEach, snakeCase } from 'lodash-es';
-import router from '@/routes';
+import { reactive } from 'vue';
+import { merge } from 'lodash-es';
 
 export default function(callback) {
   const client = new RestfulClient('boot');
   client.get('site').then(function(appConfig) {
-    appConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    forEach(appConfig, (v, k) => Vue.set(AppConfig, k, v));
+    merge(AppConfig, appConfig)
+
+    AppConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     if (AppConfig.sentry_dsn) {
       Sentry.init({
@@ -41,11 +41,11 @@ export default function(callback) {
         ],
         dsn: AppConfig.sentry_dsn,
         tunnel: '/bug_tunnel',
-        integrations: [
-          new Sentry.BrowserTracing({
-            routingInstrumentation: Sentry.vueRouterInstrumentation(router)
-          }),
-        ],
+        // integrations: [
+        //   new Sentry.BrowserTracing({
+        //     routingInstrumentation: Sentry.vueRouterInstrumentation(router)
+        //   }),
+        // ],
         tracesSampleRate: AppConfig.features.app.sentry_sample_rate,
         tracePropagationTargets: ["localhost", AppConfig.baseUrl, /^\//],
       });
@@ -55,14 +55,14 @@ export default function(callback) {
     ['shortcut icon'].forEach(function(name) {
       const link = document.createElement('link');
       link.rel = name;
-      link.href = AppConfig.theme.icon_src;
+      link.href = appConfig.theme.icon_src;
       return document.getElementsByTagName('head')[0].appendChild(link);
     });
 
     forEach(Records, function(recordInterface, k) {
       const model = recordInterface.model
-      if (model && AppConfig.permittedParams[snakeCase(model.singular)]) {
-        model.serializableAttributes = AppConfig.permittedParams[snakeCase(model.singular)];
+      if (model && appConfig.permittedParams[snakeCase(model.singular)]) {
+        model.serializableAttributes = appConfig.permittedParams[snakeCase(model.singular)];
       }
     });
 

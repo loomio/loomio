@@ -3,8 +3,10 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -98,7 +100,7 @@ export default {
 
 <template lang='pug'>
 form.poll-meeting-vote-form(@submit.prevent='submit()')
-  p.text--secondary(
+  p.text-medium-emphasis(
     v-t="{path: 'poll_meeting_vote_form.local_time_zone', args: {zone: currentUserTimeZone}}"
   )
   .poll-common-vote-form__options

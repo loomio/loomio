@@ -5,8 +5,10 @@ import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import openModal      from '@/shared/helpers/open_modal';
 import StrandActionsPanel from '@/components/strand/actions_panel';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [UrlFor],
   components: {
     StrandActionsPanel
   },
@@ -60,7 +62,7 @@ export default {
     groups() {
       return this.discussion.group().parentsAndSelf().map(group => {
         return {
-          text: group.name,
+          title: group.name,
           disabled: false,
           to: group.id ? this.urlFor(group) : '/threads/direct'
         };
@@ -87,7 +89,7 @@ export default {
 </script>
 
 <template lang="pug">
-.strand-new-discussion.context-panel#context(v-observe-visibility="{callback: viewed, once: true}")
+.strand-new-discussion.context-panel#context(v-intersect.once="{handler: viewed}")
   v-layout.ml-n2(align-center wrap)
     v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
       template(v-slot:divider)
@@ -113,9 +115,9 @@ export default {
 
   .mb-4.text-body-2
     user-avatar.mr-2(:user='author')
-    router-link.text--secondary(:to="urlFor(author)") {{authorName}}
+    router-link.text-medium-emphasis(:to="urlFor(author)") {{authorName}}
     mid-dot
-    router-link.text--secondary(:to='urlFor(discussion)')
+    router-link.text-medium-emphasis(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
     span(v-show='discussion.seenByCount > 0')
       mid-dot

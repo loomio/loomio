@@ -9,6 +9,8 @@ import { each, compact, truncate } from 'lodash-es';
 import openModal from '@/shared/helpers/open_modal';
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
 
+import { useTheme } from 'vuetify';
+
 export default {
   mixins: [AuthModalMixin],
   data() {
@@ -16,24 +18,17 @@ export default {
   },
 
   created() {
-    if (this.$route.query.locale) { Session.updateLocale(this.$route.query.locale); }
+    const theme = useTheme();
 
     if (Session.user().experiences.darkMode != null) {
-      this.$vuetify.theme.dark = Session.user().experiences['darkMode'];
+      theme.global.name.value = Session.user().experiences['darkMode'] ? 'dark' : 'light';
     } else {
-      this.$vuetify.theme.dark = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      theme.global.name.value = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
     }
-
-    return each(AppConfig.theme.vuetify, (value, key) => {
-      if (value) { this.$vuetify.theme.themes.light[key] = value; }
-      if (value) { this.$vuetify.theme.themes.dark[key] = value; }
-      return true;
-    });
   },
 
   mounted() {
-    initLiveUpdate();
-    if (!Session.isSignedIn() && this.shouldForceSignIn()) { this.openAuthModal(true); }
+    // initLiveUpdate();
     EventBus.$on('currentComponent',     this.setCurrentComponent);
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
@@ -50,7 +45,8 @@ export default {
 
   watch: {
     '$route'() {
-      return this.pageError = null;
+      if (!Session.isSignedIn() && this.shouldForceSignIn()) { this.openAuthModal(true); }
+      this.pageError = null;
     }
   },
 
@@ -72,12 +68,12 @@ export default {
 
       switch (this.$route.path) {
         case '/email_preferences': return (Session.user().restricted == null);
-        case '/dashboard':      
-             case '/inbox':          
-             case '/profile':        
-             case '/polls':          
-             case '/p/new':      
-             case '/g/new': return true;
+        case '/dashboard': return true;
+        case '/inbox':
+        case '/profile':
+        case '/polls':
+        case '/p/new':
+        case '/g/new': return true;
       }
     }
   }
@@ -88,8 +84,8 @@ export default {
 <template lang="pug">
 v-app.app-is-booted
   system-notice
-  navbar
   sidebar
+  navbar
   router-view(v-if="!pageError")
   common-error(v-if="pageError" :error="pageError")
   v-spacer

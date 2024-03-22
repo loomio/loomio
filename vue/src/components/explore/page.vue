@@ -125,7 +125,7 @@ v-main
   v-container.explore-page.max-width-1024.px-0.px-sm-3
     //- h1.text-h5(tabindex="-1" v-t="'explore_page.header'")
     v-text-field(v-model="query" :placeholder="$t('explore_page.search_placeholder')" id="search-field" :append-icon="mdiMagnify")
-    v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-text="name" :placeholder="$t('explore_page.order_by')" :value="order")
+    v-select(@change="handleOrderChange" :items="orderOptions" item-value="val" item-title="name" :placeholder="$t('explore_page.order_by')" :value="order")
     loading(:until="!searching")
     .explore-page__no-results-found(v-show='noResultsFound' v-html="$t('explore_page.no_results_found')")
     .explore-page__search-results(v-show='showMessage' v-html="$t(searchResultsMessage, {resultCount: resultsCount, searchTerm: query})")

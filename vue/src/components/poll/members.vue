@@ -6,8 +6,10 @@ import Flash from '@/shared/services/flash';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import StanceService from '@/shared/services/stance_service';
 import { map, debounce, uniq, compact } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   components: {
     RecipientsAutocomplete
   },
@@ -98,6 +100,7 @@ export default {
         } else {
           Flash.success('poll_common_form.count_voters_added', { count });
         }
+        this.fetchStances()
 
         this.reset = !this.reset;
       }).finally(() => {
@@ -157,7 +160,7 @@ export default {
 </script>
 
 <template lang="pug">
-.poll-members-form
+v-card.poll-members-form
   .px-4.pt-4
     .d-flex.justify-space-between
       //- template(v-if="poll.notifyRecipients")
@@ -187,23 +190,22 @@ export default {
       span(v-t="'poll_common_form.no_notifications_warning'")
     v-textarea(v-if="poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
   v-list.poll-members-form__list
-    v-subheader
+    v-list-subheader
       span(v-t="'membership_card.voters'")
       space
       span ({{users.length}} / {{poll.votersCount}})
     v-list-item(v-for="user in users" :key="user.id")
-      v-list-item-avatar
+      template(v-slot:prepend)
         user-avatar(:user="user" :size="24")
-      v-list-item-content
-        v-list-item-title
-          span.mr-2 {{user.nameWithTitle(poll.group())}}
-          v-chip.mr-1(v-if="isGuest[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-          v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
+      v-list-item-title
+        span.mr-2 {{user.nameWithTitle(poll.group())}}
+        v-chip.mr-1(v-if="isGuest[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+        v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
 
-      v-list-item-action
+      template(v-slot:append)
         v-menu(offset-y)
-          template(v-slot:activator="{on, attrs}")
-            v-btn.membership-dropdown__button(icon v-on="on" v-bind="attrs")
+          template(v-slot:activator="{attrs}")
+            v-btn.membership-dropdown__button(icon v-bind="attrs")
               common-icon(name="mdi-dots-vertical")
           v-list
             v-list-item(v-for="action in actionNames" v-if="canPerform(action, poll, user)" @click="perform(action, poll, user)" :key="action")

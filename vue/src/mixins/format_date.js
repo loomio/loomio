@@ -21,14 +21,13 @@ export default {
         if (document.querySelector(selector)) {
           fn();
         } else {
-          // console.log 'waiting for ', selector
-          setTimeout(() => waitFor(selector, fn)
-          , 500);
+          setTimeout(() => waitFor(selector, fn) , 500);
         }
       };
 
       waitFor(selector, () => {
-        this.$vuetify.goTo(selector, {duration: 0, offset: 32});
+        document.querySelector(selector).scrollIntoView()
+        // this.$vuetify.goTo(selector, {duration: 0, offset: 32});
         each([1,2,3], n => {
           const headingSelector = selector+` h${n}[tabindex=\"-1\"]`;
           if (document.querySelector(headingSelector)) {

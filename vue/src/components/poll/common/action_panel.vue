@@ -5,9 +5,11 @@ import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
+import WatchRecords   from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [WatchRecords],
   props: {
     poll: Object
   },

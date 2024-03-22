@@ -28,15 +28,11 @@ const UserPage = () => import('./components/user/page');
 const ThreadsPage = () => import('./components/threads/page');
 const DemosPage = () => import('./components/demos/index.vue');
 
-import './config/catch_navigation_duplicated.js';
-import Vue from 'vue';
-import Router from 'vue-router';
-
-import Session from '@/shared/services/session';
+// import './config/catch_navigation_duplicated.js';
 
 import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
-Vue.use(Router);
+import { createRouter, createWebHistory } from 'vue-router'
 
 const groupPageChildren = [
   {path: 'tags/:tag?', component: GroupTagsPanel, meta: {noScroll: true} },
@@ -50,18 +46,18 @@ const groupPageChildren = [
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
 ];
 
-const router = new Router({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
 
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else if (to.meta.noScroll && from.meta.noScroll) {
-      return window.scrollHeight;
-    } else {
-      return { x: 0, y: 0 };
-    }
-  },
+  //   scrollBehavior(to, from, savedPosition) {
+  //     if (savedPosition) {
+  //       return savedPosition;
+  //     } else if (to.meta.noScroll && from.meta.noScroll) {
+  //       return window.scrollHeight;
+  //     } else {
+  //       return { x: 0, y: 0 };
+  //     }
+  //   },
 
   routes: [
     {path: '/demo', component: DemosPage},
@@ -92,11 +88,18 @@ const router = new Router({
     {
       path: '/d/:key',
       component: StrandPage,
-      children: [
-        {path: 'comment/:comment_id'},
-        {path: ':stub?/:sequence_id?'},
-        {path: ''}
-      ]
+    },
+    {
+      path: '/d/:key/comment/:comment_id',
+      component: StrandPage,
+    },
+    {
+      path: '/d/:key/:stub',
+      component: StrandPage,
+    },
+    {
+      path: '/d/:key/:stub/:sequence_id',
+      component: StrandPage,
     },
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren, name: 'groupKey'},

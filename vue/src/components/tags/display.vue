@@ -8,7 +8,10 @@ export default {
     showCounts: Boolean,
     showOrgCounts: Boolean,
     selected: String,
-    smaller: Boolean,
+    size: {
+      type: String,
+      default: 'small'
+    },
     selected: String
   },
 
@@ -43,8 +46,7 @@ span.tags-display
     v-for="tag in tagObjects"
     :key="tag.id"
     :outlined="tag.name != selected"
-    :small="!smaller"
-    :xSmall="smaller"
+    :size="size"
     :color="tag.color"
     :to="'/g/'+groupKey+'/tags/'+tag.name"
     :class="{'mb-1': showCounts}"

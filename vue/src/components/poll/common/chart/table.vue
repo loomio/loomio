@@ -3,9 +3,10 @@ import Records from '@/shared/services/records';
 import BarIcon from '@/components/poll/common/icon/bar.vue';
 import PieIcon from '@/components/poll/common/icon/pie.vue';
 import GridIcon from '@/components/poll/common/icon/grid.vue';
-import Vue from 'vue';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   components: {BarIcon, PieIcon, GridIcon},
   props: {
     poll: Object
@@ -37,7 +38,7 @@ export default {
           option.voter_ids.forEach(id => {
             let user;
             if ((user = Records.users.find(id))) {
-              Vue.set(this.users, id, user);
+              this.users[id] = user
             } else {
               Records.users.addMissing(id);
             }
@@ -52,7 +53,7 @@ export default {
 
 <template lang="pug">
 .poll-common-chart-table
-  v-simple-table(dense)
+  v-table(density="comfortable")
     thead
       tr
         template(v-for="col in poll.resultColumns")
@@ -83,8 +84,8 @@ export default {
           td(v-if="col == 'name' " :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
             template(v-if="option.id && optionMeaning(option.id)")
               v-tooltip(right)
-                template(v-slot:activator="{ on, attrs }")
-                  span(v-bind="attrs" v-on="on")
+                template(v-slot:activator="{ props }")
+                  span(v-bind="props")
                     span(v-if="option.name_format == 'plain'") {{option.name}}
                     span(v-if="option.name_format == 'i18n'" v-t="option.name")
                 span {{optionMeaning(option.id)}}

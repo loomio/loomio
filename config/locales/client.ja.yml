@@ -1288,7 +1288,7 @@ ja:
     account_locked: ログイン試行が何度も失敗したため、アカウントはロックされました。メールでロック解除リンクを確認してください
     email_not_found: 申し訳ありませんが、そのメール アドレスを持つアカウントが見つかりませんでした
     email_taken: メールアドレスはすでに登録されています
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     login_with_token: 準備は完了です!続行するには、下のリンクをクリックしてください。
     login_link_helptext: 下のボタンをクリックすると、サインインするためのリンクが送信されます。
     enter_your_password: 続行するにはパスワードを入力してください

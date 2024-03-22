@@ -1,18 +1,17 @@
 <script lang="js">
-export default
-  ({
-    props: {
-      elevation: {
-        type: Number,
-        default: 0
-      },
-      group: Object,
-      size: {
-        type: Number,
-        default: 28
-      }
+export default{
+  props: {
+    elevation: {
+      type: Number,
+      default: 0
+    },
+    group: Object,
+    size: {
+      type: Number,
+      default: 28
     }
-  });
+  }
+};
 </script>
 
 <template lang="pug">

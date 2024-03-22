@@ -34,13 +34,12 @@ export default
 
 <template lang="pug">
 v-menu
-  template(v-slot:activator="{ on, attrs }")
+  template(v-slot:activator="{ props }")
     div.rounded-lg.color-picker-btn
       v-btn.drop-down-button(
-        small icon
+        size="x-small" icon variant="text"
         :style="{'background-color': buttonBgColor, color: buttonFgColor}" 
-        v-on="on"
-        v-bind="attrs"
+        v-bind="props"
         :title="$t('formatting.colors')"
       )
         common-icon(small name="mdi-palette")

@@ -3,7 +3,7 @@ import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import Flash  from '@/shared/services/flash';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import { compact } from 'lodash-es';
 import { ContainerMixin, HandleDirective } from 'vue-slicksort';
 
@@ -24,7 +24,7 @@ export default {
       pollTemplateItems: [],
       selectedPollTemplate: null,
       pollTemplates: [],
-      recipientAudienceItems: [{text: 'None', value: null}, {text: I18n.t('announcement.audiences.everyone_in_the_group'), value: 'group'}]
+      recipientAudienceItems: [{title: 'None', value: null}, {title: I18n.global.t('announcement.audiences.everyone_in_the_group'), value: 'group'}]
     };
   },
 
@@ -42,7 +42,7 @@ export default {
     breadcrumbs() {
       return compact([this.discussionTemplate.group().parentId && this.discussionTemplate.group().parent(), this.discussionTemplate.group()]).map(g => {
         return {
-          text: g.name,
+          title: g.name,
           disabled: false,
           to: this.urlFor(g)
         };
@@ -52,11 +52,11 @@ export default {
 
   methods: {
     updatePollTemplateItems() {
-      this.pollTemplateItems = [{text: I18n.t('thread_template.add_proposal_or_poll_template'), value: null}].concat(
+      this.pollTemplateItems = [{title: I18n.global.t('thread_template.add_proposal_or_poll_template'), value: null}].concat(
         Records.pollTemplates.find({groupId: this.discussionTemplate.group().id}).filter( pt => {
           return !this.pollTemplates.includes(pt);
         }).map(pt => ({
-          text: pt.processName,
+          title: pt.processName,
           value: pt.id || pt.key
         }))
       );
@@ -151,7 +151,7 @@ export default {
 
   v-divider.my-4
 
-  v-subheader.ml-n4(v-t="'thread_template.decision_templates'")
+  v-list-subheader.ml-n4(v-t="'thread_template.decision_templates'")
   p.text-caption(v-t="'thread_template.decision_templates_help'")
   .decision-tools-card__poll-types
     sortable-list(v-model="pollTemplates" :useDragHandle="true" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
@@ -176,7 +176,7 @@ export default {
   )
   v-divider.my-4
 
-  v-subheader.ml-n4(v-t="'thread_arrangement_form.sorting'")
+  v-list-subheader.ml-n4(v-t="'thread_arrangement_form.sorting'")
   v-radio-group(v-model="discussionTemplate.newestFirst")
     v-radio(:value="false")
       template(v-slot:label)
@@ -194,7 +194,7 @@ export default {
         space
         span(v-t="'thread_arrangement_form.latest_description'")
 
-  v-subheader.ml-n4(v-t="'thread_arrangement_form.replies'")
+  v-list-subheader.ml-n4(v-t="'thread_arrangement_form.replies'")
   v-radio-group(v-model="discussionTemplate.maxDepth")
     v-radio(:value="1")
       template(v-slot:label)

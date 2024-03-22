@@ -67,11 +67,10 @@ export default {
 </script>
 
 <template lang="pug">
-.poll-remind
-  .pa-4
-    .d-flex.justify-space-between
-      h1.text-h5(v-t="'announcement.form.'+wipOrEmpty+'poll_reminder.title'")
-      dismiss-modal-button
+v-card.poll-remind(:title="$t('announcement.form.'+wipOrEmpty+'poll_reminder.title')")
+  template(v-slot:append)
+    dismiss-modal-button
+  v-card-item
     recipients-autocomplete(
       existingOnly
       :label="$t('announcement.form.'+wipOrEmpty+'poll_reminder.helptext')"
@@ -87,8 +86,8 @@ export default {
       :placeholder="$t('announcement.form.poll_reminder.message_placeholder')"
       v-model="poll.recipientMessage")
 
-    .d-flex
-      v-spacer
-      v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="submit" )
-        span(v-t="'common.action.remind'")
+  v-card-actions
+    v-spacer
+    v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="submit" )
+      span(v-t="'common.action.remind'")
 </template>

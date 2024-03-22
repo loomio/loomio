@@ -74,9 +74,8 @@ div.lmo-markdown-wrapper
 </template>
 
 <style lang="sass">
-@import '~vuetify/src/styles/settings/_colors'
 
-.theme--dark
+.v-theme--dark
   .lmo-markdown-wrapper
     hr
       border-bottom: 2px solid rgba(255, 255, 255, 0.5)
@@ -147,24 +146,24 @@ img.emoji
     color: #000
     padding: 0.2em 0.3em
 
-  mark[data-color="red"]
-    background-color: map-get($red, lighten-1)
-  mark[data-color="pink"]
-    background-color: map-get($pink, lighten-3)
-  mark[data-color="purple"]
-    background-color: map-get($purple, lighten-3)
-  mark[data-color="blue"]
-    background-color: map-get($blue, lighten-3)
-  mark[data-color="green"]
-    background-color: map-get($green, lighten-3)
-  mark[data-color="yellow"]
-    background-color: map-get($yellow, lighten-3)
-  mark[data-color="orange"]
-    background-color: map-get($orange, lighten-3)
-  mark[data-color="brown"]
-    background-color: map-get($brown, lighten-3)
-  mark[data-color="grey"]
-    background-color: map-get($grey, lighten-2)
+  // mark[data-color="red"]
+    // background-color: map-get($red, lighten-1)
+  // mark[data-color="pink"]
+    // background-color: map-get($pink, lighten-3)
+  // mark[data-color="purple"]
+    // background-color: map-get($purple, lighten-3)
+  // mark[data-color="blue"]
+    // background-color: map-get($blue, lighten-3)
+  // mark[data-color="green"]
+    // background-color: map-get($green, lighten-3)
+  // mark[data-color="yellow"]
+    // background-color: map-get($yellow, lighten-3)
+  // mark[data-color="orange"]
+    // background-color: map-get($orange, lighten-3)
+  // mark[data-color="brown"]
+    // background-color: map-get($brown, lighten-3)
+  // mark[data-color="grey"]
+    // background-color: map-get($grey, lighten-2)
 
   .cursor
     font-size: 0.8rem
@@ -255,13 +254,13 @@ img.emoji
       color: #fff
       content: " 📅 " attr(data-due-on) ""
       border-radius: 8px
-      background-color: var(--v-primary-base)
+      background-color: rgb(var(--v-theme-primary))
       margin-left: 8px
       padding: 2px 8px
       height: 16px
       display: flex
       align-items: center
-      // border: 1px solid var(--v-primary-base)
+      // border: 1px solid rgb(var(--v-theme-primary))
 
     li::before
       content: ""
@@ -285,8 +284,8 @@ img.emoji
       color: white
       text-align: center
       vertical-align: middle
-      background-color: var(--v-primary-base)
-      border-color: var(--v-primary-base)
+      background-color: rgb(var(--v-theme-primary))
+      border-color: rgb(var(--v-theme-primary))
 
     li:hover:before
       cursor: pointer

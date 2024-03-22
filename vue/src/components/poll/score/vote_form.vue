@@ -3,8 +3,10 @@ import Records  from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { map } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -57,27 +59,27 @@ export default {
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
   .poll-score-vote-form__options
-    v-list-item.poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.option.id')
-      v-list-item-content
-        v-list-item-title {{ choice.option.name }}
-        v-list-item-subtitle(style="white-space: inherit") {{ choice.option.meaning }}
-        v-slider.poll-score-vote-form__score-slider.mt-4(
-          :disabled="!poll.isVotable()"
-          v-model='choice.score'
-          :color="choice.option.color"
-          :height="4"
-          :min="poll.minScore"
-          :max="poll.maxScore"
-        )
-      v-list-item-action(style="max-width: 128px")
-        v-text-field.text-right(
-          type="number"
-          max-width="20px"
-          filled
-          rounded
-          dense
+    v-list-item.poll-dot-vote-vote-form__option(
+      :title="choice.option.name"
+      :subtitle="choice.option.meaning"
+      v-for='choice in stanceChoices'
+      :key='choice.option.id')
+      template(v-slot:append)
+        v-text-field.number-input.ml-2(
           v-model="choice.score"
+          type="number"
+          density="compact"
+          variant="outlined"
         )
+      v-slider.poll-score-vote-form__score-slider.mb-6.px-3(
+        :disabled="!poll.isVotable()"
+        v-model='choice.score'
+        :color="choice.option.color"
+        :height="4"
+        :min="poll.minScore"
+        :max="poll.maxScore"
+        :step="1"
+      )
 
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
@@ -86,8 +88,19 @@ form.poll-score-vote-form(@submit.prevent='submit()')
       block
       :disabled="!poll.isVotable()"
       :loading="stance.processing"
+      variant="elevated"
       color="primary"
       type='submit'
     )
       span(v-t="'poll_common.submit_vote'")
 </template>
+<style>
+.poll-dot-vote-vote-form__option {
+  padding-left: 0;
+  padding-right: 0;
+}
+.v-text-field.number-input input {
+  width: 80px;
+  text-align: right;
+}
+</style>

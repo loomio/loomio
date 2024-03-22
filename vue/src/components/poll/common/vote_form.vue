@@ -3,8 +3,10 @@ import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import Records   from '@/shared/services/records';
 import { compact } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -148,7 +150,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
         name="name"
       )
       v-list-item
-        v-list-item-icon
+        template(v-slot:prepend)
           template(v-if="hasOptionIcon")
             v-avatar(size="48")
               img( aria-hidden="true", :src="'/img/' + option.icon + '.svg'")
@@ -157,9 +159,8 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
             common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="option.color")
             common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="option.color")
             common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="option.color")
-        v-list-item-content
-          v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
-          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+        v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
+        v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
 
   poll-common-stance-reason(
     :stance='stance'
@@ -172,6 +173,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
       :disabled='!optionCountValid || !poll.isVotable()'
       :loading="stance.processing"
       color="primary"
+      variant="elevated"
       block
     )
       span(v-t="submitText")
@@ -195,7 +197,9 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     height: 0
 
 .poll-common-vote-form__button.voting-enabled
+  border: 1px solid rgba(0,0,0,0)
+.poll-common-vote-form__button.voting-enabled
   &:hover
-    border: 1px solid var(--v-primary-base)
+    border: 1px solid rgb(var(--v-theme-primary))
 
 </style>

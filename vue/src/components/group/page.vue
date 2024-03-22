@@ -8,9 +8,12 @@ import GroupService    from '@/shared/services/group_service';
 import LmoUrlService     from '@/shared/services/lmo_url_service';
 import { pickBy } from 'lodash-es';
 import OldPlanBanner from '@/components/group/old_plan_banner';
+import UrlFor from '@/mixins/url_for';
+import FormatDate from '@/mixins/format_date';
 
 export default
 {
+  mixins: [UrlFor, FormatDate],
   components: { OldPlanBanner },
 
   data() {
@@ -113,11 +116,11 @@ v-main
         height="48"
         width="48" 
         eager)
-    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
+    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
         space
-        span.text--secondary.text--lighten-1 &gt;
+        span.text-medium-emphasis.text--lighten-1 &gt;
         space
       span.group-page__name.mr-4 {{group.name}}
     old-plan-banner(:group="group")

@@ -1,6 +1,5 @@
 <script lang="js">
-import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-2';
-// import { isArray } from 'lodash-es';
+import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-3';
 export default
 {
   components: { NodeViewWrapper, NodeViewContent },
@@ -14,12 +13,12 @@ export default
       remind: 0,
       checked: this.node.attrs.checked,
       reminders: [
-        {text: this.$t('tasks.no_reminder'), value: null},
-        {text: this.$t('tasks.on_due_date'), value: 0},
-        {text: this.$t('tasks.1_day_before'), value: 1},
-        {text: this.$t('tasks.2_day_before'), value: 2},
-        {text: this.$t('tasks.3_day_before'), value: 3},
-        {text: this.$t('tasks.7_day_before'), value: 7}
+        {title: this.$t('tasks.no_reminder'), value: null},
+        {title: this.$t('tasks.on_due_date'), value: 0},
+        {title: this.$t('tasks.1_day_before'), value: 1},
+        {title: this.$t('tasks.2_day_before'), value: 2},
+        {title: this.$t('tasks.3_day_before'), value: 3},
+        {title: this.$t('tasks.7_day_before'), value: 7}
       ],
       mentioned: []
     };
@@ -102,7 +101,7 @@ node-view-wrapper(as="li")
   pointer-events: none
   height: 0
 
-.theme--dark
+.v-theme--dark
   .task-item-text.task-item-is-empty::before
     color: rgba(255, 255, 255, 0.2)
 

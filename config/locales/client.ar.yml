@@ -2178,7 +2178,7 @@ ar:
     account_locked: تم قفل حسابك بعد عدة محاولات تسجيل دخول فاشلة. تحقق من بريدك الإلكتروني للحصول على رابط إلغاء القفل
     email_not_found: عذرًا ، لم نتمكن من العثور على حساب بعنوان البريد الإلكتروني هذا
     email_taken: هذا البريد مسجل من قبل
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     login_with_token: أنت جاهز تمامًا! اضغط على الرابط أدناه للمتابعة.
     login_link_helptext: انقر فوق الزر أدناه وسنرسل لك ارتباطًا لتسجيل الدخول.
     enter_your_password: أدخل كلمة المرور الخاصة بك للمتابعة

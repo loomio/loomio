@@ -1,7 +1,7 @@
 <script>
 import AppConfig from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
-import I18n from '@/i18n'
+import { I18n } from '@/i18n'
 import { mdiMicrophone } from '@mdi/js';
 let mediaRecorder;
 let chunks = [];
@@ -90,7 +90,7 @@ export default {
 
   methods: {
     handleError(e) {
-      this.error = I18n.t("record_modal.no_mic")
+      this.error = I18n.global.t("record_modal.no_mic")
     },
 
     dismiss() {

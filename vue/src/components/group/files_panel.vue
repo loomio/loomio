@@ -8,9 +8,11 @@ import AttachmentService from '@/shared/services/attachment_service';
 
 import { mdiMagnify } from '@mdi/js';
 import { intersection, debounce, orderBy, uniq } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [WatchRecords],
   data() {
     return {
       group: null,
@@ -133,7 +135,7 @@ div
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
       p.text-center.pa-4(v-if="!loading && !items.length" v-t="'common.no_results_found'")
-      v-simple-table(v-else :items="items" hide-default-footer)
+      v-table(v-else :items="items" hide-default-footer)
         thead
           tr
             th(v-t="'group_files_panel.filename'")

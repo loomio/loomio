@@ -89,7 +89,7 @@ export default
         .discussions-panel__list.thread-preview-collection__container(
           v-if="discussions.length"
         )
-          v-list.thread-previews(two-line)
+          v-list.thread-previews(lines="two")
             thread-preview(
               v-for="thread in discussions"
               :key="thread.id"
@@ -98,7 +98,7 @@ export default
             )
           .d-flex.justify-center
             .d-flex.flex-column.align-center
-              .text--secondary {{discussions.length}} / {{discussionsLoader.total}}
+              .text-medium-emphasis {{discussions.length}} / {{discussionsLoader.total}}
               v-btn.my-2.discussions-panel__show-more(
                 outlined
                 color='accent'
@@ -119,7 +119,7 @@ export default
         p.pa-4.text-center(v-t="'error_page.forbidden'")
 
       div(v-if='polls.length')
-        v-list(two-line avatar )
+        v-list(lines="two")
           poll-common-preview(
             :poll='poll'
             v-for='poll in polls'
@@ -128,7 +128,7 @@ export default
           )
         .d-flex.justify-center
           .d-flex.flex-column.align-center
-            .text--secondary
+            .text-medium-emphasis
               | {{polls.length}} / {{pollsLoader.total}}
             v-btn.my-2.polls-panel__show-more(
               v-if="polls.length < pollsLoader.total && !pollsLoader.exhausted"
