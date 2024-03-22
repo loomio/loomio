@@ -106,7 +106,7 @@ export default new class PollService {
         dock: 2,
         canPerform() {
           if (poll.discardedAt || poll.closedAt) { return false; }
-          return AbilityService.canAnnouncePoll(poll);
+          return AbilityService.canAddMembersPoll(poll);
         },
         perform() {
           return openModal({
