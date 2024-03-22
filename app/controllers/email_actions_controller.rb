@@ -25,6 +25,13 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
     respond_with_pixel
   end
 
+  def mark_notification_as_read
+    Notification.find_by!(id: params[:id], user_id: user.id).update(viewed: true)
+    respond_with_pixel
+  rescue ActiveRecord::RecordNotFound
+    respond_with_pixel
+  end
+
   def mark_summary_email_as_read
     GenericWorker.perform_async('DiscussionService', 'mark_summary_email_as_read', user.id, params[:time_start].to_i, params[:time_finish].to_i)
 
