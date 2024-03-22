@@ -175,7 +175,7 @@ export default new class AbilityService {
   }
 
   canAddMembersPoll(poll) {
-    return poll.adminsInclude(user());
+    return poll.adminsInclude(Session.user());
   }
 
   canAddGuestsPoll(poll) {
