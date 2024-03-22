@@ -5,6 +5,8 @@ class EventMailer < BaseMailer
   def event(recipient_id, event_id)
     @current_user = @recipient = User.find_by!(id: recipient_id)
     @event = Event.find_by!(id: event_id)
+    @notification = Notification.find_by(user_id: recipient_id, event_id: event_id)
+    
     return if @event.eventable.nil?
     return if @event.eventable.respond_to?(:discarded?) && @event.eventable.discarded?
 

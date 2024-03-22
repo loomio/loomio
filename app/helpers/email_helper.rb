@@ -65,6 +65,14 @@ module EmailHelper
     )
   end
 
+  def mark_notification_as_read_pixel_src(notification_id)
+    email_actions_mark_notification_as_read_url(
+      id: notification_id,
+      unsubscribe_token: @recipient.unsubscribe_token,
+      format: 'gif'
+    )
+  end
+
   def can_unfollow?(discussion, recipient)
     DiscussionReader.for(discussion: discussion, user: recipient).volume_is_loud?
   end
