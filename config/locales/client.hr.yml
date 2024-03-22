@@ -691,6 +691,7 @@ hr:
     deactivate_account: Deaktivirajte korisnički račun
     help_translate: Možete li nam pomoći prevesti Loomio?
     updated_on_sign_in: Dostavlja vaš preglednik i ažurira se kada se prijavite
+    autodetect_time_zone: Automatsko otkrivanje vremenske zone
   thread_group:
     aria_label: Ime grupe
   delete_comment_dialog:
@@ -1547,6 +1548,7 @@ hr:
     closed:
       reopened: Tema ponovno otvorena
       closed: Tema zatvorena
+    direct_thread: Izravna nit
   discussion_last_seen_by:
     title: vidio od
     no_one: Ovo još nitko nije vidio
@@ -1693,6 +1695,7 @@ hr:
     meaning_hint: Rečenica ili dvije koje objašnjavaju što znači odabir ove opcije. Neobavezno
     prompt: Upit za razlog
     prompt_hint: Pitanje koje će potaknuti birače da podijele svoje obrazloženje ili preispitaju svoje stajalište. Neobavezno
+    please_select_an_icon: Odaberite ikonu
   poll_common:
     superseded: Zamijenjeno
     need_help_with_templates: Trebate li pomoć u izradi vlastitih predložaka odluka?

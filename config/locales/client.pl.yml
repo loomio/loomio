@@ -1340,6 +1340,7 @@ pl:
     deactivated_user: Dezaktywowany użytkownik
     account_is_bot: To jest konto bota
     bot_account_warning: Konta botów nie będą zapraszane do głosowania w ankietach ani do udziału w dyskusjach
+    autodetect_time_zone: Automatycznie wykrywa strefę czasową
   text_editor:
     insert_link: Wstaw link
     insert_embedded_url: Wstaw wideo
@@ -1488,6 +1489,7 @@ pl:
     closed:
       reopened: Wątek ponownie otwarty
       closed: Wątek zamknięty
+    direct_thread: Bezpośredni wątek
   discussion_last_seen_by:
     title: Wyświetlone przez
     no_one: Nikt jeszcze tego nie widział
@@ -2416,6 +2418,7 @@ pl:
     prompt: Monit o przyczynę
     prompt_hint: Pytanie mające na celu zachęcenie wyborców do przedstawienia uzasadnienia lub ponownego rozważenia swojego stanowiska.
     option_name_validation: Najlepiej, aby nazwa była krótka i podała szczegółowe informacje w polu „Znaczenie”.
+    please_select_an_icon: Wybierz ikonę
   poll_common_close_form:
     title: Zamknąć %{poll_type} teraz?
     helptext: Czy na pewno chcesz wcześniej zamknąć %{poll_type} i podzielić się wynikami?

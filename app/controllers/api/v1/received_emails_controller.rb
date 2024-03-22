@@ -24,7 +24,7 @@ class API::V1::ReceivedEmailsController < API::V1::RestfulController
       respond_with_error(403, "trial groups cannot add aliases")
     else
       user = @received_email.group.members.find(params[:user_id])
-      MemberEmailAlias.create!(
+      MemberEmailAlias.create(
         email: @received_email.sender_email,
         user: user,
         group_id: @received_email.group_id,

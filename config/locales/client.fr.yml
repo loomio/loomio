@@ -1398,6 +1398,7 @@ fr:
     deactivated_user: Utilisateur désactivé
     account_is_bot: Ceci est un compte de robot
     bot_account_warning: Les comptes de robots ne seront pas invités à voter dans les sondages ou à participer aux discussions
+    autodetect_time_zone: Détection automatique du fuseau horaire
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractères"
     select_text_to_link: Sélectionnez le texte à lier et réessayez
@@ -1549,6 +1550,7 @@ fr:
     closed:
       reopened: Discussion relancée
       closed: Discussion close
+    direct_thread: Fil direct
   discussion_last_seen_by:
     title: Vu par
     no_one: Personne n'a encore vu cela pour l'instant
@@ -1709,6 +1711,7 @@ fr:
     prompt: Invite de raison
     prompt_hint: Une question pour inciter les électeurs à donner leur raisonnement ou à reconsidérer leur position.
     option_name_validation: Il est préférable de garder le nom court et de mettre des détails dans le champ « Signification »
+    please_select_an_icon: Veuillez sélectionner une icône
   poll_common:
     delete_poll: Supprimer le sondage
     select_count_options: Sélectionnez les options %{count}

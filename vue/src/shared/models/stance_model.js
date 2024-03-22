@@ -97,7 +97,7 @@ export default class StanceModel extends BaseModel {
   }
 
   pollOptionIds() {
-    return map(Object.keys(this.optionScores), parseInt);
+    return Object.keys(this.optionScores).map(k => parseInt(k))
   }
 
   pollOptions() {

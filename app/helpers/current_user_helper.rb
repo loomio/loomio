@@ -15,7 +15,7 @@ module CurrentUserHelper
   end
 
   def deny_spam_users
-    if ENV['SPAM_REGEX'] && Regexp.new(ENV['SPAM_REGEX']).match?(current_user.email)
+    if NoSpam::SPAM_REGEX.match?(current_user.email)
       raise SpamUserDeniedError.new(current_user.email)
     end
   end

@@ -1316,6 +1316,7 @@ hu:
     deactivated_user: Deaktivált felhasználó
     account_is_bot: Ez egy bot fiók
     bot_account_warning: A robotfiókokat nem hívják meg szavazásra vagy vitákban való részvételre
+    autodetect_time_zone: Időzóna automatikus felismerése
   text_editor:
     insert_link: Illessz be egy hivatkozást
     insert_embedded_url: Videó beágyazása
@@ -1457,6 +1458,7 @@ hu:
     private_thread: Privát szál
     max_threads_reached: <p>Felhasználta a csoport számára elérhető összes %{maxThreads} szálat.</p><p> Következő lépésként <a href="%{upgradeUrl}" target="_blank">válasszon tervet</a> a Loomio-val való együttműködés folytatásához.</p>
     subscription_canceled: <p>Az előfizetésed nem aktív.</p><p> Kérjük <a href="%{upgradeUrl}" target="_blank">, frissítsen</a> a Loomio használatának folytatásához.</p>
+    direct_thread: Közvetlen szál
   discussion_last_seen_by:
     title: Látta
     no_one: Még senki sem látta
@@ -2363,6 +2365,7 @@ hu:
     prompt: Indoklás
     prompt_hint: Olyan kérdés, amely arra készteti a választókat, hogy mondják el érvelésüket vagy gondolják át álláspontjukat.
     option_name_validation: A legjobb, ha a név rövid marad, és a „Jelentés” mezőbe írja be a részleteket
+    please_select_an_icon: Kérjük, válasszon egy ikont
   subgroups_panel:
     search_subgroups_of_name: Keresés a(z) %{name} alcsoportjaiban
     group_without_subgroups: "%{name} alcsoportok nélkül"

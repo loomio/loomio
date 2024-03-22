@@ -51,10 +51,13 @@ module Ability::Group
          :invite_people,
          :announce,
          :manage_membership_requests], ::Group do |group|
-      Subscription.for(group).is_active? && 
-      !group.has_max_members &&
+      user.is_admin ||
       (
-        ((group.members_can_add_members? && group.members.exists?(user.id)) || group.admins.exists?(user.id))
+        Subscription.for(group).is_active? &&
+        !group.has_max_members &&
+        (
+          ((group.members_can_add_members? && group.members.exists?(user.id)) || group.admins.exists?(user.id))
+        )
       )
     end
 

@@ -1128,6 +1128,7 @@ sv:
     deactivate_account: Inaktivera användarkonto
     help_translate: Kan du hjälpa oss att översätta Loomio?
     updated_on_sign_in: Tillhandahålls av din webbläsare och uppdateras när du loggar in
+    autodetect_time_zone: Autoupptäck tidszon
   change_picture_form:
     use_gravatar: Använd Gravatar
     aria_label: Profilfotoformulär
@@ -2011,6 +2012,7 @@ sv:
     closed:
       reopened: Tråden öppnad igen
       closed: Tråd stängd
+    direct_thread: Direkt tråd
   discussion_last_seen_by:
     title: Ses av
     no_one: Ingen har sett detta än
@@ -2075,6 +2077,7 @@ sv:
     meaning_hint: En mening eller två som förklarar vad det betyder att välja detta alternativ. Frivillig
     prompt: Orsaksuppmaning
     prompt_hint: En fråga för att få väljarna att dela med sig av sina resonemang eller ompröva sin ståndpunkt. Frivillig
+    please_select_an_icon: Välj en ikon
   poll_common_attachment_form:
     label: Bilagor
   poll_common_add_option:

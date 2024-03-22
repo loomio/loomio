@@ -1348,6 +1348,7 @@ de:
     deactivated_user: Deaktivierter Benutzer
     account_is_bot: Dies ist ein Bot-Konto
     bot_account_warning: Bot-Konten werden nicht eingeladen, an Umfragen teilzunehmen oder an Diskussionen teilzunehmen
+    autodetect_time_zone: Zeitzone automatisch erkennen
   text_editor:
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
@@ -1496,6 +1497,7 @@ de:
     closed:
       reopened: Diskussion wieder geöffnet
       closed: Diskussion geschlossen
+    direct_thread: Direkter Thread
   discussion_last_seen_by:
     title: Angesehen von
     no_one: Bisher hat niemand dieses gesehen
@@ -2419,6 +2421,7 @@ de:
     prompt: Grundaufforderung
     prompt_hint: Eine Frage, die die Wähler dazu anregen soll, ihre Argumente darzulegen oder ihre Position zu überdenken.
     option_name_validation: Halten Sie den Namen am besten kurz und geben Sie Einzelheiten in das Feld „Bedeutung“ ein
+    please_select_an_icon: Bitte wählen Sie ein Symbol aus
   poll_common_close_form:
     title: "%{poll_type} jetzt schließen?"
     helptext: Sind Sie sicher, dass Sie diese %{poll_type} vorzeitig schließen und ein Ergebnis mitteilen möchten?

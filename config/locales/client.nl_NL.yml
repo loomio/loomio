@@ -1323,6 +1323,7 @@ nl_NL:
     deactivated_user: Gedeactiveerde gebruiker
     account_is_bot: Dit is een botaccount
     bot_account_warning: Botaccounts worden niet uitgenodigd om te stemmen in opiniepeilingen of deel te nemen aan discussies
+    autodetect_time_zone: Tijdzone automatisch detecteren
   text_editor:
     insert_link: Link invoegen
     insert_embedded_url: Video integreren
@@ -1471,6 +1472,7 @@ nl_NL:
     closed:
       reopened: Bord heropend
       closed: Bord gesloten
+    direct_thread: Directe draad
   discussion_last_seen_by:
     title: Gezien door
     no_one: Nog niemand heeft dit gezien
@@ -2416,6 +2418,7 @@ nl_NL:
     prompt: Reden prompt
     prompt_hint: Een vraag om kiezers ertoe aan te zetten hun redenering te geven of hun standpunt te heroverwegen.
     option_name_validation: Het is het beste om de naam kort te houden en details in het veld 'Betekenis' te vermelden
+    please_select_an_icon: Selecteer een pictogram
   poll_common_close_form:
     title: "%{poll_type} nu sluiten?"
     helptext: Weet u zeker dat u %{poll_type} eerder wilt afsluiten en een resultaat wilt delen?

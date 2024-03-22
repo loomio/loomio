@@ -37,7 +37,7 @@ class BaseMailer < ActionMailer::Base
   end
 
   def send_single_mail(locale: , to:, subject_key:, subject_params: {}, subject_prefix: '', subject_is_title: false, **options)
-    return if ENV['SPAM_REGEX'] && Regexp.new(ENV['SPAM_REGEX']).match(to)
+    return if NoSpam::SPAM_REGEX.match?(to)
     return if User::BOT_EMAILS.values.include?(to)
     return if (to.end_with?("@example.com")) && (Rails.env.production?)
 

@@ -1177,6 +1177,7 @@ tr:
     deactivate_account: Kullanıcı hesabını devre dışı bırak
     help_translate: Loomio'yu tercüme etmemize yardım edebilir misiniz?
     updated_on_sign_in: Tarayıcınız tarafından sağlanır ve oturum açtığınızda güncellenir
+    autodetect_time_zone: Saat dilimini otomatik olarak algıla
   change_picture_form:
     use_gravatar: Gravatar kullan
     aria_label: Profil fotoğrafı formu
@@ -1298,6 +1299,7 @@ tr:
     closed:
       reopened: Konu yeniden açıldı
       closed: Konu kapatıldı
+    direct_thread: Doğrudan iplik
   activity_card:
     latest: En yeniler
     context: İçerik
@@ -2089,6 +2091,7 @@ tr:
     meaning_hint: Bu seçeneği seçmenin ne anlama geldiğini açıklayan bir veya iki cümle. İsteğe bağlı
     prompt: Neden istemi
     prompt_hint: Seçmenleri gerekçelerini paylaşmaya veya konumlarını yeniden düşünmeye sevk edecek bir soru. İsteğe bağlı
+    please_select_an_icon: Lütfen bir simge seçin
   poll_common_add_option:
     button:
       add_option: Başka bir seçenek ekle

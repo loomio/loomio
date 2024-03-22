@@ -64,7 +64,7 @@ export default {
         return {
           title: group.name,
           disabled: false,
-          to: this.urlFor(group)
+          to: group.id ? this.urlFor(group) : '/threads/direct'
         };
       });
     }

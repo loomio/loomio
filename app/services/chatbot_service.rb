@@ -36,14 +36,15 @@ class ChatbotService
         template_name = 'notification' if chatbot.notification_only
 
         if %w[Poll Stance Outcome].include? event.eventable_type
-          poll = event.eventable.poll 
+          poll = event.eventable.poll
         end
 
-        example_user = event.actor || chatbot.group.creator
+        example_user = chatbot.author || chatbot.group.creator
 
         recipient = LoggedOutUser.new(locale: example_user.locale,
                                       time_zone: example_user.time_zone,
                                       date_time_pref: example_user.date_time_pref)
+
         I18n.with_locale(recipient.locale) do
           if chatbot.kind == "webhook"
             serializer = "Webhook::#{chatbot.webhook_kind.classify}::EventSerializer".constantize

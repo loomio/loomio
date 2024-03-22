@@ -1256,6 +1256,7 @@ he:
     deactivate_account: השבת את חשבון המשתמש
     help_translate: האם תוכל לעזור לנו לתרגם את Loomio?
     updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
+    autodetect_time_zone: זיהוי אוטומטי של אזור זמן
   text_editor:
     insert_link: הכנס לינק
     x_of_y_characters: "%{x} / %{y} תווים"
@@ -1399,6 +1400,7 @@ he:
     invite_only: מוזמנים בלבד
     private_thread: שרשור פרטי
     subscription_canceled: <p style=";text-align:right;direction:rtl">המנוי שלך אינו פעיל.</p><p style=";text-align:right;direction:rtl"> אנא <a href="%{upgradeUrl}" target="_blank">שדרג</a> כדי להמשיך להשתמש ב-Loomio.</p>
+    direct_thread: חוט ישיר
   activity_card:
     beginning: התחלה
     latest: אחרונים
@@ -2348,6 +2350,7 @@ he:
     meaning_hint: משפט או שניים המסבירים מה המשמעות של בחירה באפשרות זו. אופציונאלי
     prompt: הנחיית סיבה
     prompt_hint: שאלה כדי לעורר את המצביעים לשתף בנימוקיהם או לשקול מחדש את עמדתם. אופציונאלי
+    please_select_an_icon: אנא בחר סמל
   group_files_panel:
     no_files: לא נמצאו קבצים
     filename: שם קובץ

@@ -1115,6 +1115,7 @@ el:
     deactivate_account: Απενεργοποίηση λογαριασμού χρήστη
     help_translate: Μπορείτε να μας βοηθήσετε να μεταφράσουμε το Loomio;
     updated_on_sign_in: Παρέχεται από το πρόγραμμα περιήγησής σας και ενημερώνεται όταν συνδέεστε
+    autodetect_time_zone: Αυτόματος εντοπισμός ζώνης ώρας
   change_picture_form:
     use_gravatar: Χρησιμοποιήστε Gravatar
     aria_label: Φόρμα φωτογραφίας προφίλ
@@ -1236,6 +1237,7 @@ el:
     closed:
       reopened: Το νήμα άνοιξε ξανά
       closed: Το νήμα έκλεισε
+    direct_thread: Απευθείας κλωστή
   activity_card:
     latest: Τελευταία
     context: Περιεχόμενο
@@ -2068,6 +2070,7 @@ el:
     meaning_hint: Μια ή δύο προτάσεις που εξηγούν τι σημαίνει η επιλογή αυτής της επιλογής. Προαιρετικός
     prompt: Προτροπή λόγων
     prompt_hint: Μια ερώτηση που θα παρακινήσει τους ψηφοφόρους να μοιραστούν το σκεπτικό τους ή να επανεξετάσουν τη θέση τους. Προαιρετικός
+    please_select_an_icon: Επιλέξτε ένα εικονίδιο
   poll_common_attachment_form:
     label: Συνημμένα
   poll_common_add_option:
