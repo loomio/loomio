@@ -38,8 +38,6 @@ export default {
             let user;
             if ((user = Records.users.find(id))) {
               Vue.set(this.users, id, user);
-            } else {
-              Records.users.addMissing(id);
             }
           });
         });

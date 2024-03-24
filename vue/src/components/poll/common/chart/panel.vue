@@ -26,14 +26,9 @@ export default {
   },
 
   created() {
-    this.watchRecords({
-      collections: ['polls'],
-      query: () => {
-        if (Session.isSignedIn()) {
-          Records.users.fetchAnyMissingById(this.poll.decidedVoterIds());
-        }
-      }
-    });
+    if (Session.isSignedIn()) {
+      Records.fetch({path: "polls/"+this.poll.id+"/voters"})
+    }
   }
 };
 
