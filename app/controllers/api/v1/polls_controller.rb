@@ -40,7 +40,7 @@ class API::V1::PollsController < API::V1::RestfulController
 
   def voters
     load_and_authorize(:poll)
-    if !@poll.anonymous && @poll.show_results?(voted: true)
+    if !@poll.anonymous
       self.collection = User.where(id: @poll.voter_ids)
     else
       self.collection = User.none
