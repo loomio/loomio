@@ -5,7 +5,6 @@ import { find, filter, flatten, uniq, head, compact, map, truncate  } from 'loda
 export default class UserModel extends BaseModel {
   static singular = 'user';
   static plural = 'users';
-  static lazyLoad = true;
   static uniqueIndices = ['id'];
 
   relationships() {
