@@ -11,6 +11,7 @@ tr:
     messages:
       email: geçerli olmayan e-posta adresi
       spoofed_media_type: Bu dosyanın içeriği dosya adıyla eşleşmiyor
+      pwned_password: Bu şifre daha önce bir veri ihlalinde ortaya çıkmıştır ve asla kullanılmamalıdır
   group:
     stats:
       members: Üyeler

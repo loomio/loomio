@@ -47,6 +47,7 @@ de:
     messages:
       email: das ist keine gültige E-Mail-Adresse
       spoofed_media_type: Der Inhalt der Datei stimmt nicht mit dem Dateinamen überein
+      pwned_password: Dieses Passwort ist bereits bei einem Datenverstoß aufgetaucht und sollte niemals verwendet werden
   group:
     error:
       handle_must_begin_with_parent_handle: Muss beginnen mit %{parent_handle}-

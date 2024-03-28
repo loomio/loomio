@@ -16,6 +16,7 @@ he:
     messages:
       email: כתובת המייל אינו תקין
       spoofed_media_type: תוכנו של הקובץ אינו תואם לשמו
+      pwned_password: סיסמה זו הופיעה בעבר בהפרת נתונים ולעולם אין להשתמש בה
     clear_cache: זוהתה בעיית טעינה. החזק את Shift ולחץ על טען מחדש, או נקה את מטמון הדפדפן שלך.
     upgrade_browser: או - או! דפדפן האינטרנט שלך ישן מדי וייתכן ש-Loomio לא יפעל כראוי. אנא <a href="https://browser-update.org/update.html">שדרג את הדפדפן שלך.</a>
   group:

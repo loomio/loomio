@@ -137,6 +137,7 @@ hr:
     messages:
       email: nije važeća adresa e-pošte
       spoofed_media_type: Sadržaj te datoteke ne odgovara njenom nazivu
+      pwned_password: Ova se zaporka već pojavila u povredi podataka i nikada se ne smije koristiti
   user:
     deleted_user: Izbrisani korisnik
     placeholder_name: Pozvani korisnik (%{hostname})

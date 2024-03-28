@@ -47,6 +47,7 @@ pt_BR:
     messages:
       email: Não é um endereço de e-mail válido
       spoofed_media_type: 'O conteúdo daquele arquivo não corresponde ao nome do arquivo '
+      pwned_password: Esta senha já apareceu em uma violação de dados e nunca deve ser usada
   group:
     error:
       handle_must_begin_with_parent_handle: Deve começar com %{parent_handle}-

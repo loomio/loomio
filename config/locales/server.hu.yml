@@ -16,6 +16,7 @@ hu:
     messages:
       email: Nem érvényes e-mail cím
       spoofed_media_type: A fájl tartalma nem egyezik a fájlnévvel
+      pwned_password: Ez a jelszó korábban adatvédelmi incidens során jelent meg, ezért soha nem szabad használni
     clear_cache: Betöltési probléma észlelve. Tartsa lenyomva a Shift gombot, és nyomja meg a Reload gombot, vagy törölje a böngésző gyorsítótárát.
     upgrade_browser: UH Oh! A webböngésző túl régi, és előfordulhat, hogy a Loomio nem működik megfelelően. Kérjük, <a href="https://browser-update.org/update.html">frissítse böngészőjét.</a>
   group:

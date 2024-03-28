@@ -47,6 +47,7 @@ zh_TW:
     messages:
       email: 您輸入的不是有效的電子郵件地址
       spoofed_media_type: 檔案內容不符合其檔案名稱
+      pwned_password: 該密碼之前曾出現在資料外洩事件中，切勿使用
   group:
     error:
       handle_must_begin_with_parent_handle: 必須以 %{parent_handle} 開始。

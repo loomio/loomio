@@ -11,6 +11,7 @@ sv:
     messages:
       email: inte en giltig e-postadress
       spoofed_media_type: Innehållet i den filen matchar inte dess filnamn
+      pwned_password: Detta lösenord har tidigare förekommit i ett dataintrång och bör aldrig användas
   group:
     stats:
       members: Medlemmar

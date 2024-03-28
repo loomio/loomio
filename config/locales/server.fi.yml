@@ -199,6 +199,7 @@ fi:
     messages:
       email: ei ole kelvollinen sähköpostiosoite
       spoofed_media_type: Tiedoston sisältö ei vastaa sen tiedostonimeä
+      pwned_password: Tämä salasana on aiemmin esiintynyt tietomurron yhteydessä, eikä sitä tule koskaan käyttää
   user:
     deleted_user: Poistettu käyttäjä
     placeholder_name: Kutsuttu käyttäjä (%{hostname})

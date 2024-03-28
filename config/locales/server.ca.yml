@@ -11,6 +11,7 @@ ca:
     messages:
       email: no és una adreça de correu electrònic vàlida
       spoofed_media_type: El contingut d'aquest fitxer no coincideix amb el seu nom
+      pwned_password: Aquesta contrasenya ha aparegut anteriorment en una violació de dades i no s'ha d'utilitzar mai
   group:
     stats:
       group_stats: Estadístiques del grup

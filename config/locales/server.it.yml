@@ -46,6 +46,7 @@ it:
     messages:
       email: indirizzo mail non valido
       spoofed_media_type: I contenuti di questo file non corrispondono al suo nome file
+      pwned_password: Questa password è già apparsa in una violazione dei dati e non dovrebbe mai essere utilizzata
   group:
     error:
       handle_must_begin_with_parent_handle: Deve iniziare con%{parent_handle}-

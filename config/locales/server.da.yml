@@ -11,6 +11,7 @@ da:
     messages:
       email: ikke en gyldig e-mailadresse
       spoofed_media_type: Indholdet af denne fil stemmer ikke overens med dens filnavn
+      pwned_password: Denne adgangskode har tidligere vist sig i et databrud og bør aldrig bruges
   group:
     stats:
       members: Medlemmer

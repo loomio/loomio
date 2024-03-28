@@ -13,6 +13,7 @@ ro:
     messages:
       spoofed_media_type: Continutul acelui fisier nu corespunde cu numele lui
       email: nu este o adresă de e-mail validă
+      pwned_password: Această parolă a apărut anterior într-o încălcare a datelor și nu ar trebui niciodată utilizată
     clear_cache: Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului.
     noscript: Loomio necesită javascript pentru a funcționa! Vă rugăm să activați javascript în browser pentru a continua
     upgrade_browser: Uh oh! Browserul dvs. web este prea vechi și este posibil ca Loomio să nu funcționeze corect. Vă rugăm <a href="https://browser-update.org/update.html">să actualizați browserul.</a>

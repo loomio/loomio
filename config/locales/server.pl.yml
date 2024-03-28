@@ -46,6 +46,7 @@ pl:
     messages:
       email: nieprawidłowy adres e-mail
       spoofed_media_type: Zawartość tego pliku nie pasuje do jego nazwy
+      pwned_password: To hasło pojawiło się już w przypadku naruszenia bezpieczeństwa danych i nigdy nie powinno być używane
   group:
     error:
       handle_must_begin_with_parent_handle: Musi zaczynać się od %{parent_handle}-

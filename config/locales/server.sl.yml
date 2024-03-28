@@ -14,6 +14,7 @@ sl:
     messages:
       email: ni veljaven email naslov
       spoofed_media_type: Vsebina te datoteke se ne ujema z imenom
+      pwned_password: To geslo se je že pojavilo pri vdoru podatkov in se ga ne sme nikoli uporabiti
     clear_cache: Zaznana težava pri nalaganju. Držite shift in pritisnite Reload ali počistite predpomnilnik brskalnika.
     upgrade_browser: Ojoj! Vaš spletni brskalnik je prestar in Loomio morda ne bo deloval pravilno. Prosimo, <a href="https://browser-update.org/update.html">nadgradite svoj brskalnik.</a>
   group:
