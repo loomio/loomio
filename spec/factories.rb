@@ -1,9 +1,5 @@
 FactoryBot.define do
 
-  factory :blacklisted_password do
-    string { "MyString" }
-  end
-
   factory :membership do |m|
     m.user { |u| u.association(:user)}
     m.group { |g| g.association(:group)}

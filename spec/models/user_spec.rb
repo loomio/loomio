@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 describe User do
-  before(:all) {
-    BlacklistedPassword.create(string: 'qwerty12')
-    BlacklistedPassword.create(string: 'qwerty123')
-  }
-
   let(:user) { create(:user) }
   let(:group) { create(:group) }
   let(:restrictive_group) { create(:group, members_can_start_discussions: false) }
@@ -34,16 +29,6 @@ describe User do
     user = User.find_by_id(user_id)
     user.save!
     user.should have(0).errors_on(:password)
-  end
-
-  it "should require the password to be non-trivial" do
-    user.password = 'qwerty123'
-    user.should have(1).errors_on(:password)
-  end
-
-  it "should require the password to be non-trivial regardless of the case" do
-    user.password = 'QwerTy12'
-    user.should have(1).errors_on(:password)
   end
 
   it "should otherwise accept any password" do

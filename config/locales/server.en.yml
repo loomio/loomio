@@ -283,6 +283,7 @@ en:
     messages:
       email: not a valid email address
       spoofed_media_type: The contents of that file don't match its filename
+      pwned_password: "This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it immediately!"
 
   group:
     error:
@@ -313,8 +314,8 @@ en:
     placeholder_name: "Invited user (%{hostname})"
     error:
       sign_in_required_html: |
-       You must be signed in to proceed.
-       Please <a href="/dashboard" target="_blank">sign in</a> then reload this page to continue.
+        You must be signed in to proceed.
+        Please <a href="/dashboard" target="_blank">sign in</a> then reload this page to continue.
       recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
       bad_login: "Sorry, that password doesn't match the one we have on file"
       username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
@@ -365,7 +366,7 @@ en:
     inactive: Inactive
 
   base_mailer:
-    via_loomio: '%{name} (via %{site_name})'
+    via_loomio: "%{name} (via %{site_name})"
 
   event_mailer:
     received_email:
@@ -374,7 +375,6 @@ en:
         <p>The group has received an email from an unrecognised email address.</p>
         <p>If the message is from a member of the group, please review the email and select the member.</p>
         <p>If the message is unwanted, you can block any further email from that address.</p>
-
 
   user_mailer:
     group_export_ready:
@@ -434,9 +434,9 @@ en:
       login: Reactivate %{name}
 
     contact_request:
-       subject: "%{name} would like to connect with you on %{site_name}!"
-       intro: "%{name} (%{email}) has sent you a request to connect."
-       footer: "You may respond to %{name} directly by replying to this email."
+      subject: "%{name} would like to connect with you on %{site_name}!"
+      intro: "%{name} (%{email}) has sent you a request to connect."
+      footer: "You may respond to %{name} directly by replying to this email."
 
     reset_password:
       greeting: |
@@ -468,7 +468,7 @@ en:
       content: "%{who} has added you to %{which_group}."
       content_html: "<strong>%{who}</strong> has added you to <strong>%{which_group}</strong>."
       link_help: "Click the link below to go to the group:"
-    unsubscribe: 'Unsubscribe or change your email preferences:'
+    unsubscribe: "Unsubscribe or change your email preferences:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> to unsubscribe or change your email preferences."
     catch_up:
       daily_subject: Yesterday on %{site_name}
@@ -540,11 +540,11 @@ en:
       greeting: "Hi %{name}, the following task is due %{due}:"
       view_task: "View on %{site_name}"
       update_or_comment: "If you have already completed this task, please tick it off. If it is not complete, please share a progress update."
-      due_today: 'today'
-      due_in_count_days: 'in %{count} days'
+      due_today: "today"
+      due_in_count_days: "in %{count} days"
 
   group_mailer:
-    resend: 'REMINDER: %{member} is waiting for you to join %{group_name}'
+    resend: "REMINDER: %{member} is waiting for you to join %{group_name}"
     destroy_warning:
       subject: Your Loomio group is scheduled for deletion.
       body: |
@@ -569,5 +569,3 @@ en:
       vote_now: Vote now
       you_have_until: You have until %{when} to participate.
       people_have_voted: "%{nom} of %{dnom} people have participated (%{pct}%)"
-
-
