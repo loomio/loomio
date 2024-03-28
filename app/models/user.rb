@@ -61,7 +61,7 @@ class User < ApplicationRecord
   validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
   validates_confirmation_of :password, if: :password_required?
 
-  validates_length_of :password, minimum: 10, allow_nil: true
+  validates_length_of :password, minimum: 8, allow_nil: true
 
   has_many :admin_memberships,
            -> { where('memberships.admin': true, revoked_at: nil) },
@@ -138,7 +138,7 @@ class User < ApplicationRecord
     end
 
     if model.discussion_id
-      ids += DiscussionReader.active.guests.where(discussion_id: model.discussion_id).pluck(:user_id) 
+      ids += DiscussionReader.active.guests.where(discussion_id: model.discussion_id).pluck(:user_id)
     end
 
     if model.poll_id
@@ -171,7 +171,7 @@ class User < ApplicationRecord
   def date_time_pref
     self[:date_time_pref] || 'day_abbr'
   end
-  
+
   def author
     self
   end
@@ -195,7 +195,7 @@ class User < ApplicationRecord
 
   def browseable_group_ids
     Group.where(
-      "id in (:group_ids) OR 
+      "id in (:group_ids) OR
       (parent_id in (:group_ids) AND is_visible_to_parent_members = TRUE)",
       group_ids: self.group_ids).pluck(:id)
   end
