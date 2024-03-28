@@ -27,6 +27,7 @@ class User < ApplicationRecord
   }.freeze
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
+  devise :pwned_password unless Rails.env.test?
   attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
@@ -60,8 +61,7 @@ class User < ApplicationRecord
   validates_format_of :username, with: /\A[a-z0-9]*\z/, message: I18n.t(:'user.error.username_must_be_alphanumeric')
   validates_confirmation_of :password, if: :password_required?
 
-  validates_length_of :password, minimum: 8, allow_nil: true
-  validates :password, nontrivial_password: true, allow_nil: true
+  validates_length_of :password, minimum: 10, allow_nil: true
 
   has_many :admin_memberships,
            -> { where('memberships.admin': true, revoked_at: nil) },

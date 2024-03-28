@@ -164,6 +164,9 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.12.0)
       devise (>= 4.9.0)
+    devise-pwned_password (0.1.11)
+      devise (~> 4)
+      pwned (~> 2.4)
     diff-lcs (1.5.1)
     digest-crc (0.6.5)
       rake (>= 12.0.0, < 14.0.0)
@@ -404,6 +407,7 @@ GEM
     public_suffix (5.0.4)
     puma (6.4.2)
       nio4r (~> 2.0)
+    pwned (2.4.1)
     racc (1.7.3)
     rack (2.2.9)
     rack-attack (6.7.0)
@@ -621,6 +625,7 @@ DEPENDENCIES
   database_cleaner-redis
   devise (~> 4.9.3)
   devise-i18n
+  devise-pwned_password
   discard (~> 1.3)
   discriminator (~> 0.1.1)
   dotenv-rails

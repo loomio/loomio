@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_28_001650) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -79,13 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
     t.boolean "migrated_to_document", default: false, null: false
     t.index ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type"
     t.index ["comment_id"], name: "index_attachments_on_comment_id"
-  end
-
-  create_table "blacklisted_passwords", id: :serial, force: :cascade do |t|
-    t.string "string", limit: 255
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.index ["string"], name: "index_blacklisted_passwords_on_string", using: :hash
   end
 
   create_table "blazer_audits", force: :cascade do |t|
