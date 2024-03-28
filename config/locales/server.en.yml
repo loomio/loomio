@@ -283,7 +283,7 @@ en:
     messages:
       email: not a valid email address
       spoofed_media_type: The contents of that file don't match its filename
-      pwned_password: "This password has previously appeared in a data breach and should never be used. If you've ever used it anywhere before, change it immediately!"
+      pwned_password: This password has previously appeared in a data breach and should never be used.
 
   group:
     error:
