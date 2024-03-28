@@ -14,7 +14,7 @@ class API::B2::MembershipsController < API::B2::BaseController
     PollService.group_members_added(group.id)
 
     removed_user_ids = []
-    if params[:remove_absent]
+    if params[:remove_absent].to_i == 1
       Membership.where(
         group_id: group.id,
         user_id: User.where(email: remove_emails).pluck(:id)
