@@ -1187,6 +1187,7 @@ ru:
     help_translate: Можете ли вы помочь нам перевести Лумио?
     updated_on_sign_in: Предоставляется вашим браузером и обновляется при входе в систему.
     autodetect_time_zone: Автоопределение часового пояса
+    deleted_account: Удалена учетная запись
   email_settings_page:
     monday: Понедельник
     tuesday: Вторник

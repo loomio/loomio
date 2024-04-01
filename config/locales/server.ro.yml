@@ -295,6 +295,9 @@ ro:
       complete_page:
         title: Îmbinare reușită!
         body_html: <p>Fuzionarea conturilor dvs. de utilizator a avut succes. Veți primi în curând un e-mail de confirmare la <strong>%{target_email}</strong> .</p><p> Vă rugăm <a href="/contact" target="_blank">să ne contactați</a> dacă aveți întrebări suplimentare.</p>
+    redacted:
+      subject: Contul dvs. de utilizator %{site_name} a fost șters
+      body_html: "<p>Contul dvs. de utilizator %{site_name} a fost șters.</p><p> Toate datele de identificare personală au fost eliminate.</p><p> Dacă nu ați solicitat acest lucru, vă rugăm să contactați %{support_email}</p>"
   announcement_count_emails: "%{count} e-mailuri"
   email_actions:
     unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.

@@ -1641,6 +1641,7 @@ fi:
     help_translate: Voitko auttaa meitä kääntämään Loomio?
     updated_on_sign_in: Selaimesi tarjoaa ja päivitetään, kun kirjaudut sisään
     autodetect_time_zone: Tunnista aikavyöhyke automaattisesti
+    deleted_account: Tili poistettu
   text_editor:
     x_of_y_characters: "%{x} / %{y} merkkiä"
     select_text_to_link: Valitse linkitettävä teksti ja yritä uudelleen

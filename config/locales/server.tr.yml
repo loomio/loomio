@@ -88,6 +88,9 @@ tr:
     accounts_merged:
       subject: "%{site_name} kullanıcı hesaplarınız birleştirildi."
       body_html: Merhaba %{name}, İki loomio hesabınız tek hesapta birleştirildi. Artık Loomio'ya erişmek için lütfen oturum açarken <strong>%{email} adresini</strong> kullanın.
+    redacted:
+      subject: "%{site_name} kullanıcı hesabınız silindi"
+      body_html: "<p>%{site_name} kullanıcı hesabınız silindi.</p><p> Kişisel olarak tanımlayıcı tüm veriler kaldırıldı.</p><p> Bunu siz talep etmediyseniz lütfen %{support_email} ile iletişime geçin.</p>"
   email:
     reset_password:
       link_text: Parolanızı sıfırlayın

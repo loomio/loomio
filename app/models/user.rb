@@ -305,8 +305,8 @@ class User < ApplicationRecord
   end
 
   def name
-    if deactivated_at && AppConfig.app_features[:scrub_user_deactivate]
-      I18n.t('profile_page.deactivated_user')
+    if deactivated_at && self[:name].empty?
+      I18n.t('profile_page.deleted_account')
     else
       self[:name]
     end

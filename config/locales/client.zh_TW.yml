@@ -1349,6 +1349,7 @@ zh_TW:
     bot_account_warning: 機器人帳號不會被邀請投票或參與討論
     deactivated_user: 已停用的用戶
     autodetect_time_zone: 自動偵測時區
+    deleted_account: 已刪除帳戶
   text_editor:
     x_of_y_characters: "%{x} / %{y} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次

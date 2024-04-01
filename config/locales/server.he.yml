@@ -117,6 +117,9 @@ he:
       complete_page:
         title: מיזוג מוצלח!
         body_html: <p style=";text-align:right;direction:rtl">מיזוג חשבונות המשתמש שלך הצליח. בקרוב תקבל דוא"ל אישור ב <strong>-%{target_email}</strong> .</p><p style=";text-align:right;direction:rtl"> אנא <a href="/contact" target="_blank">צור איתנו קשר</a> אם יש לך שאלות נוספות.</p>
+    redacted:
+      subject: חשבון המשתמש שלך %{site_name} נמחק
+      body_html: <p style=";text-align:right;direction:rtl">חשבון המשתמש שלך %{site_name} נמחק.</p><p style=";text-align:right;direction:rtl"> כל הנתונים המזהים האישיים הוסרו.</p><p style=";text-align:right;direction:rtl"> אם לא ביקשת זאת, צור קשר עם %{support_email}</p>
   email:
     common:
       or_enter_code: או, הזן את הקוד למטה

@@ -162,6 +162,9 @@ zh_TW:
         body_html: |
           <p>您的使用者帳號合併成功。您很快就會在 <strong>%{target_email}</strong> 收到確認信。</p>
           <p>如果您還有其他問題的話，請<a href="/contact" target="_blank">聯絡我們</a>。</p>
+    redacted:
+      subject: 您的 %{site_name} 使用者帳號已被刪除
+      body_html: "<p>您的 %{site_name} 使用者帳號已被刪除。</p><p>所有個人識別資料已被刪除。</p><p>如果您沒有提出此要求，請聯絡%{support_email}</p>"
   email:
     common:
       or_enter_code: 或是在下方輸入代碼

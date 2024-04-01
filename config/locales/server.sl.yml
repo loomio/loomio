@@ -284,6 +284,9 @@ sl:
       complete_page:
         title: Združevanje uspešno!
         body_html: <p>Združitev vaših uporabniških računov je bila uspešna. Kmalu boste prejeli potrditveno e-poštno sporočilo na <strong>%{target_email}</strong> .</p><p> Prosimo, <a href="/contact" target="_blank">kontaktirajte nas</a> , če imate dodatna vprašanja.</p>
+    redacted:
+      subject: Vaš uporabniški račun %{site_name} je bil izbrisan
+      body_html: "<p>Vaš uporabniški račun %{site_name} je bil izbrisan.</p><p> Vsi osebni podatki so bili odstranjeni.</p><p> Če tega niste zahtevali, se obrnite na %{support_email}</p>"
   announcement_count_emails: "%{count} e-poštnih sporočil"
   email_actions:
     unfollowed_discussion: Izklopili ste e-pošto za nit.

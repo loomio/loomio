@@ -1349,6 +1349,7 @@ de:
     account_is_bot: Dies ist ein Bot-Konto
     bot_account_warning: Bot-Konten werden nicht eingeladen, an Umfragen teilzunehmen oder an Diskussionen teilzunehmen
     autodetect_time_zone: Zeitzone automatisch erkennen
+    deleted_account: Gelöschtes Konto
   text_editor:
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen

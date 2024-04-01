@@ -96,6 +96,9 @@ ca:
     accounts_merged:
       subject: Els vostres comptes d'usuari %{site_name} s'han combinat.
       body_html: Hola %{name}, Els vostres dos comptes de loomio s'han fusionat en un sol compte. Per accedir a loomio a partir d'ara, utilitzeu <strong>%{email}</strong> quan inicieu la sessió.
+    redacted:
+      subject: S'ha suprimit el vostre compte d'usuari %{site_name}
+      body_html: "<p>S'ha suprimit el vostre compte d'usuari %{site_name}.</p><p> S'han eliminat totes les dades d'identificació personal.</p><p> Si no ho heu sol·licitat, poseu-vos en contacte amb %{support_email}</p>"
   email:
     reset_password:
       greeting: |

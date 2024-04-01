@@ -1257,6 +1257,7 @@ he:
     help_translate: האם תוכל לעזור לנו לתרגם את Loomio?
     updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
     autodetect_time_zone: זיהוי אוטומטי של אזור זמן
+    deleted_account: חשבון נמחק
   text_editor:
     insert_link: הכנס לינק
     x_of_y_characters: "%{x} / %{y} תווים"

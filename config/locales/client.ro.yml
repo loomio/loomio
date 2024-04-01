@@ -1151,6 +1151,7 @@ ro:
     help_translate: Ne puteți ajuta să traducem Loomio?
     updated_on_sign_in: Furnizat de browserul dvs. și actualizat atunci când vă conectați
     autodetect_time_zone: Autodetectare fus orar
+    deleted_account: Cont șters
   change_picture_form:
     use_gravatar: Foloseste Gravatar
     aria_label: Formular foto de profil

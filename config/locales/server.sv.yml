@@ -274,6 +274,9 @@ sv:
       complete_page:
         title: Sammanfogningen lyckades!
         body_html: <p>Sammanfogningen av dina användarkonton lyckades. Du kommer att få en bekräftelse via e-post till <strong>%{target_email}</strong> inom kort.</p><p> <a href="/contact" target="_blank">Kontakta oss</a> om du har ytterligare frågor.</p>
+    redacted:
+      subject: Ditt %{site_name} användarkonto har tagits bort
+      body_html: "<p>Ditt %{site_name} användarkonto har tagits bort.</p><p> All personligt identifierande data har tagits bort.</p><p> Om du inte begärde detta, kontakta %{support_email}</p>"
   announcement_count_emails: "%{count} e-postmeddelanden"
   email_actions:
     unfollowed_discussion: Du har stängt av e-post för tråden.

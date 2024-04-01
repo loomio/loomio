@@ -1305,6 +1305,7 @@ ca:
     help_translate: Ens pots ajudar a traduir Loomio?
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
     autodetect_time_zone: Autodetecció de zona horària
+    deleted_account: Compte suprimit
   text_editor:
     insert_link: Insereix enllaç
     insert_embedded_url: Incrusta un vídeo

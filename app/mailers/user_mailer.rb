@@ -1,10 +1,9 @@
 class UserMailer < BaseMailer
-  def deactivated(email, recovery_code, locale)
-    @recovery_code = recovery_code
+  def redacted(email, locale)
     send_single_mail to: email,
-                     subject_key: "user_mailer.deactivated.subject",
-                     subject_params: { site_name: AppConfig.theme[:site_name] },
-                     locale: locale
+                      subject_key: "user_mailer.redacted.subject",
+                      subject_params: { site_name: AppConfig.theme[:site_name] },
+                      locale: locale
   end
 
   def accounts_merged(user_id)
@@ -38,7 +37,7 @@ class UserMailer < BaseMailer
     else
       @time_start = time_since || 1.week.ago
     end
-    
+
     @time_finish = Time.zone.now
     @time_frame = @time_start...@time_finish
 

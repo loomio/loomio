@@ -1116,6 +1116,7 @@ el:
     help_translate: Μπορείτε να μας βοηθήσετε να μεταφράσουμε το Loomio;
     updated_on_sign_in: Παρέχεται από το πρόγραμμα περιήγησής σας και ενημερώνεται όταν συνδέεστε
     autodetect_time_zone: Αυτόματος εντοπισμός ζώνης ώρας
+    deleted_account: Διαγραμμένος λογαριασμός
   change_picture_form:
     use_gravatar: Χρησιμοποιήστε Gravatar
     aria_label: Φόρμα φωτογραφίας προφίλ

@@ -1395,6 +1395,7 @@ es:
     account_is_bot: Esta es una cuenta de bot
     bot_account_warning: Las cuentas de bot no serán invitadas a votar en encuestas ni a participar en debates.
     autodetect_time_zone: Detectar automáticamente zona horaria
+    deleted_account: cuenta eliminada
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractéres"
     select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo
