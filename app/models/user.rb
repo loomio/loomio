@@ -118,7 +118,7 @@ class User < ApplicationRecord
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
   scope :active, -> { where(deactivated_at: nil) }
-  scope :inactive, -> { where("deactivated_at IS NOT NULL") }
+  scope :deactivated, -> { where("deactivated_at IS NOT NULL") }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }

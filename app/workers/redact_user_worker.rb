@@ -11,9 +11,9 @@ class RedactUserWorker
 
     User.transaction do
       # set an email_sha256 so we can identify redacted accounts if someone provides an email
-      user.update(
+      User.where(id: user_id).update_all(
         name: nil,
-        email: "deleted-user-#{SecureRandom.uuid}@example.com",
+        email: nil,
         short_bio: '',
         username: nil,
         avatar_kind: "initials",
@@ -32,7 +32,7 @@ class RedactUserWorker
         unsubscribe_token: nil,
         detected_locale: nil,
         email_verified: false,
-        legal_accepted_at: false,
+        legal_accepted_at: nil,
         email_sha256: Digest::SHA256.hexdigest(email),
         deactivated_at: deactivated_at,
         deactivator_id: actor_id
@@ -44,7 +44,7 @@ class RedactUserWorker
     end
 
     Group.where(id: group_ids).map(&:update_memberships_count)
-    UserMailer.deleted(email, user.email, locale).deliver_later
+    UserMailer.redacted(email, locale).deliver_later
     SearchService.reindex_by_author_id(user.id)
   end
 end
