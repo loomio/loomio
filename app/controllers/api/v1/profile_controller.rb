@@ -85,7 +85,7 @@ class API::V1::ProfileController < API::V1::RestfulController
   end
 
   def destroy
-    service.deactivate(user: current_user, actor: current_user)
+    service.redact(user: current_user, actor: current_user)
     respond_with_resource
   end
 

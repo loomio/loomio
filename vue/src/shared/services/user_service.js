@@ -43,7 +43,7 @@ export default new class UserService {
         }
       },
 
-      deactivate_user: {
+      redact_user: {
         icon: 'mdi-exit-run',
         name: 'profile_page.delete_user_link',
         canPerform() { return !user.deactivatedAt; },

@@ -97,7 +97,7 @@ ActiveAdmin.register User do
 
   member_action :delete_spam, method: :delete do
     DestroyUserWorker.perform_async(params[:id])
-    redirect_to admin_users_path, :notice => "User scheduled for deletion immediately"
+    redirect_to admin_users_path, :notice => "User scheduled for spam deletion immediately"
   end
 
   member_action :delete_identity, method: :post do
@@ -124,7 +124,7 @@ ActiveAdmin.register User do
       end
     end
 
-    if !user.email.starts_with?('deleted-user-')
+    if !user.email.nil?
       panel("Deactivate and Redact (delete personally identifying information)") do
         button_to 'Redact user', redact_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to redact this user? (this is permanent, the user will be notified by email)'}
       end

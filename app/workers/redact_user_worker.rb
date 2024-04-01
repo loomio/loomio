@@ -12,10 +12,14 @@ class RedactUserWorker
     User.transaction do
       # set an email_sha256 so we can identify redacted accounts if someone provides an email
       User.where(id: user_id).update_all(
+        is_admin: false,
+        api_key: nil,
+        secret_token: nil,
         name: nil,
         email: nil,
         short_bio: '',
         username: nil,
+        experiences: {},
         avatar_kind: "initials",
         avatar_initials: nil,
         country: nil,
