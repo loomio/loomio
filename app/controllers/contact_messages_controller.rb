@@ -5,7 +5,7 @@ class ContactMessagesController < ApplicationController
 
   def create
     response.set_header("X-FRAME-OPTIONS", "ALLOWALL")
-    BaseMailer.contact_message(
+    ContactMailer.contact_message(
       params[:name],
       params[:email],
       params[:subject],
