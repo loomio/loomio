@@ -3,14 +3,17 @@ class RedactUserWorker
 
   # we deactivate and redact the user
   def perform(user_id, actor_id, send_email = true)
-    user = User.find(user_id)
+    user = User.find_by!(id:user_id)
     email = user.email
     locale = user.locale
     deactivated_at = user.deactivated_at || DateTime.now
     group_ids = Membership.where(user_id: user_id).pluck(:group_id)
 
+    user.uploaded_avatar.purge_later
+    
     User.transaction do
       # set an email_sha256 so we can identify redacted accounts if someone provides an email
+
       User.where(id: user_id).update_all(
         is_admin: false,
         api_key: nil,
