@@ -8,7 +8,7 @@ class UserInviter
     audience_ids = AnnouncementService.audience_users(
       model, audience, actor, exclude_members, include_actor).pluck(:id)
     email_count = emails.count - User.where(email: emails).count
-    users = User.where('email in (:emails) or id in (:user_ids) or username IN (:usernames)',
+    users = User.active.where('email in (:emails) or id in (:user_ids) or username IN (:usernames)',
                         emails: emails,
                         usernames: usernames,
                         user_ids: user_ids.concat(audience_ids))
