@@ -1,7 +1,7 @@
 class ContactMessageService
   def self.create(contact_message:, actor:)
     if contact_message.valid?
-      BaseMailer.contact_message(
+      ContactMailer.contact_message(
         contact_message.name,
         contact_message.email,
         contact_message.subject,
