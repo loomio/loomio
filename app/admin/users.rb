@@ -81,22 +81,22 @@ ActiveAdmin.register User do
   end
 
   member_action :redact, method: :put do
-    RedactUserWorker.perform_async(params[:id], current_user.id)
+    RedactUserWorker.perform_async(params[:id].to_i, current_user.id)
     redirect_to admin_users_path, :notice => "User scheduled for deletion immediately"
   end
 
   member_action :deactivate, method: :put do
-    DeactivateUserWorker.perform_async(params[:id], current_user.id)
+    DeactivateUserWorker.perform_async(params[:id].to_i, current_user.id)
     redirect_to admin_users_path, :notice => "User scheduled for deactivation immediately"
   end
 
   member_action :reactivate, method: :put do
-    GenericWorker.perform_async('UserService', 'reactivate', params[:id])
+    GenericWorker.perform_async('UserService', 'reactivate', params[:id].to_i)
     redirect_to admin_users_path, :notice => "User scheduled for reactivation immediately"
   end
 
   member_action :delete_spam, method: :delete do
-    DestroyUserWorker.perform_async(params[:id])
+    DestroyUserWorker.perform_async(params[:id].to_i)
     redirect_to admin_users_path, :notice => "User scheduled for spam deletion immediately"
   end
 
@@ -114,26 +114,26 @@ ActiveAdmin.register User do
 
     if !user.deactivated_at
       panel("Deactivate") do
-        button_to 'Deactivate User', deactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to deactivate this user? (this is reversable, user is not notified)'}
+        button_to 'Deactivate User', deactivate_admin_user_path(user.id), method: :put, data: {confirm: 'Are you sure you want to deactivate this user? (this is reversable, user is not notified)'}
       end
     end
 
     if user.deactivated_at && user.name.present?
       panel("Reactivate") do
-        button_to 'Reactivate User', reactivate_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to reactivate this user? (user is not notified)'}
+        button_to 'Reactivate User', reactivate_admin_user_path(user.id), method: :put, data: {confirm: 'Are you sure you want to reactivate this user? (user is not notified)'}
       end
     end
 
     if !user.email.nil?
       panel("Deactivate and Redact (delete personally identifying information)") do
-        button_to 'Redact user', redact_admin_user_path(user), method: :put, data: {confirm: 'Are you sure you want to redact this user? (this is permanent, the user will be notified by email)'}
+        button_to 'Redact user', redact_admin_user_path(user.id), method: :put, data: {confirm: 'Are you sure you want to redact this user? (this is permanent, the user will be notified by email)'}
       end
     end
 
     panel("Delete spam account") do
       [
       p("Delete the user and any groups, threads, comments, votes they created. It will not groups or threads they are simply a member of."),
-      button_to('Destroy User', delete_spam_admin_user_path(user), method: :delete, data: {confirm: 'Are you sure you want to destroy this user and content they authored?'})
+      button_to('Destroy User', delete_spam_admin_user_path(user.id), method: :delete, data: {confirm: 'Are you sure you want to destroy this user and content they authored?'})
       ].join.html_safe
     end
 
