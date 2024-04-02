@@ -163,6 +163,9 @@ pt_BR:
         body_html: |
           <p>A mesclagem de suas contas de usuário foi bem-sucedida. Você receberá um e-mail de confirmação em <strong>%{target_email}</strong> Em breve.</p>
           <p>Por favor <a href="/contact" target="_blank">Contate-nos</a> se você tiver quaisquer outras questões. </p>
+    redacted:
+      subject: Sua conta de usuário %{site_name} foi excluída
+      body_html: "<p>Sua conta de usuário %{site_name} foi excluída.</p><p> Todos os dados de identificação pessoal foram removidos.</p><p> Se você não solicitou isso, entre em contato com %{support_email}</p>"
   email:
     common:
       or_enter_code: Ou insira o código abaixo

@@ -21,7 +21,7 @@ class AnnouncementService
 
     users = users.where.not(id: (model.poll || NullPoll.new).voter_ids) if exclude_members
 
-    include_actor ? users.humans : users.humans.where('users.id != ?', actor.id)
+    include_actor ? users.active.humans : users.active.humans.where('users.id != ?', actor.id)
   end
 
   def self.resend_pending_invitations(since: 25.hours.ago, till: 24.hours.ago)

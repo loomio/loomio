@@ -210,6 +210,9 @@ hr:
       complete_page:
         title: Spajanje uspješno!
         body_html: <p>Spajanje vaših korisničkih računa je uspješno. Uskoro ćete primiti potvrdnu e-poruku na <strong>%{target_email}</strong> .</p><p> <a href="/contact" target="_blank">Kontaktirajte nas</a> ako imate dodatnih pitanja.</p>
+    redacted:
+      subject: Vaš %{site_name} korisnički račun je izbrisan
+      body_html: "<p>Vaš %{site_name} korisnički račun je izbrisan.</p><p> Uklonjeni su svi osobni podaci.</p><p> Ako to niste zatražili, kontaktirajte %{support_email}</p>"
   email:
     common:
       or_enter_code: Ili unesite kod ispod

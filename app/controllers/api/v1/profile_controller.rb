@@ -85,7 +85,7 @@ class API::V1::ProfileController < API::V1::RestfulController
   end
 
   def destroy
-    service.deactivate(user: current_user, actor: current_user)
+    service.redact(user: current_user, actor: current_user)
     respond_with_resource
   end
 
@@ -140,7 +140,7 @@ class API::V1::ProfileController < API::V1::RestfulController
   end
 
   def deactivated_user
-    resource_class.inactive.find_by(email: params[:user][:email])
+    resource_class.deactivated.find_by(email: params[:user][:email])
   end
 
   def current_user_params

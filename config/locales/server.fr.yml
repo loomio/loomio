@@ -162,6 +162,9 @@ fr:
         body_html: |
           <p>La fusion de vos comptes d'utilisateur a été un succès. Vous recevrez un courriel de confirmation à l'adresse <strong>%{target_email}</strong>très bientôt.</p>
           <p>Veuillez <a href="/contact" target="_blank">nous contacter</a>si vous avez d'autres questions.</p>
+    redacted:
+      subject: Votre compte utilisateur %{site_name} a été supprimé
+      body_html: "<p>Votre compte utilisateur %{site_name} a été supprimé.</p><p> Toutes les données d'identification personnelle ont été supprimées.</p><p> Si vous ne l'avez pas demandé, veuillez contacter %{support_email}</p>"
   email:
     common:
       or_enter_code: Ou saisissez votre code ci-dessous

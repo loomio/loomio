@@ -1138,6 +1138,7 @@ da:
     help_translate: Kan du hjælpe os med at oversætte Loomio?
     updated_on_sign_in: Leveres af din browser og opdateres, når du logger ind
     autodetect_time_zone: Automatisk registrering af tidszone
+    deleted_account: Slettet konto
   change_picture_form:
     helptext: Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.
     use_initials: Benyt initialer

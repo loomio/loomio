@@ -118,6 +118,9 @@ hu:
       complete_page:
         title: Sikeres összevonás!
         body_html: <p>A felhasználói fiókok egyesítése sikeres volt. Hamarosan kap egy megerősítő e-mailt a <strong>%{target_email}</strong> címre.</p><p> Kérjük <a href="/contact" target="_blank">, forduljon hozzánk</a> , ha további kérdése van.</p>
+    redacted:
+      subject: "%{site_name} felhasználói fiókod törölve lett"
+      body_html: "<p>%{site_name} felhasználói fiókod törölve lett.</p><p> Minden személyazonosításra alkalmas adatot eltávolítottunk.</p><p> Ha nem ezt kérted, fordulj a %{support_email}</p>"
   email:
     common:
       or_enter_code: Vagy írja be az alábbi kódot

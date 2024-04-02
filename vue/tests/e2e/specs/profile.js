@@ -111,7 +111,7 @@ module.exports = {
 
     page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
-    page.click('.user-page__deactivate_user')
+    page.click('.user-page__redact_user')
     page.click('.confirm-modal__submit')
     page.expectText('.auth-modal', 'Create account or sign in to Loomio')
   },

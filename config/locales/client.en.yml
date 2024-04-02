@@ -37,7 +37,7 @@ en:
       Try voting in a proposal to get a sense of how Loomio works.
     delete_will_be_deleted_in_x_days:
       This demo will be deleted in %{x} days.
-    to_use_loomio_with_your_org_start_trial: 
+    to_use_loomio_with_your_org_start_trial:
       When you're ready to try Loomio with your organization, start a free trial.
     templates: Templates
     make_a_copy: "Make a copy"
@@ -1472,6 +1472,7 @@ en:
       password_changed: 'Password updated'
       deactivated: 'Account deactivated'
     deactivated_user: Deactivated user
+    deleted_account: Deleted account
     date_time_pref_label: 'Date and time format'
     merge_accounts: Merge accounts
     change_picture_link: 'Change picture'
@@ -2259,7 +2260,7 @@ en:
       Name and describe the process that is being used to run this poll.
     reminder_helptext: |
       Send a 'Closing soon' notification before the poll closes.
-      This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll. 
+      This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll.
 
   poll_proposal_form:
     start_header: Start proposal
@@ -2468,7 +2469,7 @@ en:
         for your organization that is 'safe to try'.</p><ul><li><p>Aim for a ‘good enough’
         decision</p></li><li><p>Involve many voices to develop a workable proposal</p></li><li><p>Ask
         if anyone has a valid objection</p></li><li><p>Amend the proposal to resolve objections</p></li></ul>
-        <p><a target="_blank" 
+        <p><a target="_blank"
         href="https://help.loomio.com/en/guides/consent_process/index.html">Read more
         about the Consent process</a>.</p>
       title: Hire Chloe for design role
@@ -2707,7 +2708,7 @@ en:
         with the best time and any instructions for the meeting.</p><p><span>Loomio
         will include a calendar invitation with the outcome notification email, so participants
         can add to their calendar.</span></p>
-        <p><a target="_blank"  
+        <p><a target="_blank"
             href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Read more about Time poll</a>.</p>
       title: Let's find a date for our next meeting
       details: "<p><strong>What is the meeting or event?</strong></p><p></p><p><strong>Why
@@ -2724,7 +2725,7 @@ en:
         two voting options: Accept or Decline.&nbsp;</p><p>You
         can define a target number of people you are looking for, say 3 people to join
         your working group.</p>
-        <p><a target="_blank"  
+        <p><a target="_blank"
             href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Read more about Opt-in</a>.</p> '
       title: Working group to draft our new sustainability policy
       details: "<p><strong>What is the team, working group or event you are inviting people

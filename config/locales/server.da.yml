@@ -325,6 +325,9 @@ da:
       complete_page:
         title: Sammenlægningen lykkedes!
         body_html: <p>Sammenlægningen af dine brugerkonti lykkedes. Du vil snart modtage en bekræftelses-e-mail på <strong>%{target_email}</strong> .</p><p> <a href="/contact" target="_blank">Kontakt os</a> venligst, hvis du har yderligere spørgsmål.</p>
+    redacted:
+      subject: Din %{site_name} brugerkonto er blevet slettet
+      body_html: "<p>Din %{site_name} brugerkonto er blevet slettet.</p><p> Alle personligt identificerende data er blevet fjernet.</p><p> Hvis du ikke har anmodet om dette, bedes du kontakte %{support_email}</p>"
   announcement_count_emails: "%{count} e-mails"
   email_actions:
     unfollowed_discussion: Du har slået e-mails fra for tråden.

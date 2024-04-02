@@ -162,6 +162,9 @@ es:
         body_html: |
           <p>La fusión de su cuenta de usuario fue satisfactoria. En breves recibirás un email de confirmación a<strong>%{target_email}</strong>.</p>
           <p>Por favor <a href="/contact" target="_blank">contacta con nosotros</a>si tienes más preguntas.</p>
+    redacted:
+      subject: Su cuenta de usuario %{site_name} ha sido eliminada
+      body_html: "<p>Su cuenta de usuario %{site_name} ha sido eliminada.</p><p> Se han eliminado todos los datos de identificación personal.</p><p> Si no solicitó esto, comuníquese con %{support_email}</p>"
   email:
     common:
       or_enter_code: O, ingresa el código debajo

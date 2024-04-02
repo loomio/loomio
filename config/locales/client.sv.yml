@@ -1129,6 +1129,7 @@ sv:
     help_translate: Kan du hjälpa oss att översätta Loomio?
     updated_on_sign_in: Tillhandahålls av din webbläsare och uppdateras när du loggar in
     autodetect_time_zone: Autoupptäck tidszon
+    deleted_account: Raderat konto
   change_picture_form:
     use_gravatar: Använd Gravatar
     aria_label: Profilfotoformulär

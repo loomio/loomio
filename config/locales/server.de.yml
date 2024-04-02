@@ -164,6 +164,9 @@ de:
           <p>Bitte <a href="/contact" target="_blank">kontaktiere uns </a> wenn du weitere Fragen hast.</p>
 
 
+    redacted:
+      subject: Ihr %{site_name}-Benutzerkonto wurde gelöscht
+      body_html: "<p>Ihr %{site_name}-Benutzerkonto wurde gelöscht.</p><p> Alle personenbezogenen Daten wurden entfernt.</p><p> Wenn Sie dies nicht angefordert haben, wenden Sie sich bitte an %{support_email}</p>"
   email:
     common:
       or_enter_code: oder gib den Code unten ein

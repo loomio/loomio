@@ -22,19 +22,14 @@ class UserService
     User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
   end
 
-  # UserService#deactivate
-  # When someone no longer wants to be on the system, this is the way to remove them.
-  #
-  # It nulls any personally identifying user record columns
-  # it deletes any login_tokens, identities, etc
-  # it deactivates membership records
-  # it preserves authored discussions, comments, polls, stances, reactions, files
-  #
-  # it should, ideally, also send an undo link to the email address on file,
-  # which is the only way for someone to claim this user account again
   def self.deactivate(user:, actor:)
     actor.ability.authorize! :deactivate, user
     DeactivateUserWorker.perform_async(user.id, actor.id)
+  end
+
+  def self.redact(user:, actor:)
+    actor.ability.authorize! :redact, user
+    RedactUserWorker.perform_async(user.id, actor.id)
   end
 
   # this is for user accounts deactivated with the older method

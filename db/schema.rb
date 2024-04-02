@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_28_001650) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_02_015741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1021,6 +1021,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_001650) do
     t.string "api_key"
     t.integer "deactivator_id"
     t.boolean "autodetect_time_zone", default: true, null: false
+    t.string "email_sha256"
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"

@@ -1324,6 +1324,7 @@ nl_NL:
     account_is_bot: Dit is een botaccount
     bot_account_warning: Botaccounts worden niet uitgenodigd om te stemmen in opiniepeilingen of deel te nemen aan discussies
     autodetect_time_zone: Tijdzone automatisch detecteren
+    deleted_account: Account verwijderd
   text_editor:
     insert_link: Link invoegen
     insert_embedded_url: Video integreren

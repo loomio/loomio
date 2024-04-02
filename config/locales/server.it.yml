@@ -152,6 +152,9 @@ it:
       complete_page:
         title: Unione riuscita!
         body_html: <p>L'unione dei tuoi account utente è andata a buon fine. A breve riceverai un'email di conferma all'indirizzo <strong>%{target_email}</strong> .</p><p> Vi preghiamo <a href="/contact" target="_blank">di contattarci</a> se avete ulteriori domande.</p>
+    redacted:
+      subject: Il tuo account utente %{site_name} è stato eliminato
+      body_html: "<p>Il tuo account utente %{site_name} è stato eliminato.</p><p> Tutti i dati di identificazione personale sono stati rimossi.</p><p> Se non hai richiesto questo, contatta %{support_email}</p>"
   email:
     common:
       or_enter_code: Oppure inserisci il codice qui sotto

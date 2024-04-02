@@ -1341,6 +1341,7 @@ pl:
     account_is_bot: To jest konto bota
     bot_account_warning: Konta botów nie będą zapraszane do głosowania w ankietach ani do udziału w dyskusjach
     autodetect_time_zone: Automatycznie wykrywa strefę czasową
+    deleted_account: Usunięte konto
   text_editor:
     insert_link: Wstaw link
     insert_embedded_url: Wstaw wideo

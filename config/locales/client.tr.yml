@@ -1178,6 +1178,7 @@ tr:
     help_translate: Loomio'yu tercüme etmemize yardım edebilir misiniz?
     updated_on_sign_in: Tarayıcınız tarafından sağlanır ve oturum açtığınızda güncellenir
     autodetect_time_zone: Saat dilimini otomatik olarak algıla
+    deleted_account: Silinen hesap
   change_picture_form:
     use_gravatar: Gravatar kullan
     aria_label: Profil fotoğrafı formu

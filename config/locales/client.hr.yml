@@ -692,6 +692,7 @@ hr:
     help_translate: Možete li nam pomoći prevesti Loomio?
     updated_on_sign_in: Dostavlja vaš preglednik i ažurira se kada se prijavite
     autodetect_time_zone: Automatsko otkrivanje vremenske zone
+    deleted_account: Izbrisan račun
   thread_group:
     aria_label: Ime grupe
   delete_comment_dialog:

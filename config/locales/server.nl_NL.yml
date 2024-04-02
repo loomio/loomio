@@ -161,6 +161,9 @@ nl_NL:
         body_html: |
           <p>Het samenvoegen van jouw accounts is gelukt. Je krijgt een bevestigingse-mail op <strong>%{target_email}</strong> .</p>
           <p>Neem aub <a href="/contact" target="_blank">contact op</a> als je nog vragen hebt.</p>
+    redacted:
+      subject: Uw %{site_name} gebruikersaccount is verwijderd
+      body_html: "<p>Uw %{site_name} gebruikersaccount is verwijderd.</p><p> Alle persoonlijk identificeerbare gegevens zijn verwijderd.</p><p> Als u dit niet heeft aangevraagd, neem dan contact op met %{support_email}</p>"
   email:
     common:
       or_enter_code: Of, voer de code hieronder in

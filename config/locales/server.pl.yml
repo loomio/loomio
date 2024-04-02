@@ -159,6 +159,9 @@ pl:
         body_html: |
           <p>Łączenie kont użytkowników zakończyło się powodzeniem. Wkrótce otrzymasz wiadomość e-mail na <strong>%{target_email}</strong>z potwierdzeniem.
           <p><a href="/contact" target="_blank">Skontaktuj się z nami</a>, jeśli masz dodatkowe pytania.</p>
+    redacted:
+      subject: Twoje konto użytkownika %{site_name} zostało usunięte
+      body_html: "<p>Twoje konto użytkownika %{site_name} zostało usunięte.</p><p> Wszystkie dane osobowe zostały usunięte.</p><p> Jeśli nie prosiłeś o to, skontaktuj się z %{support_email}</p>"
   email:
     common:
       or_enter_code: Lub wprowadź kod poniżej

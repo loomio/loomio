@@ -272,6 +272,9 @@ fi:
       complete_page:
         title: Yhdistäminen onnistui!
         body_html: <p>Käyttäjätilien yhdistäminen onnistui. Saat pian vahvistussähköpostin osoitteeseen <strong>%{target_email}</strong> .</p><p> Ota <a href="/contact" target="_blank">meihin yhteyttä,</a> jos sinulla on kysyttävää.</p>
+    redacted:
+      subject: Käyttäjätilisi %{site_name} on poistettu
+      body_html: "<p>Käyttäjätilisi %{site_name} on poistettu.</p><p> Kaikki henkilötiedot on poistettu.</p><p> Jos et pyytänyt tätä, ota yhteyttä %{support_email}</p>"
   announcement_count_emails: "%{count} sähköpostia"
   email_actions:
     unfollowed_discussion: Olet poistanut sähköpostit käytöstä ketjussa.
