@@ -2,7 +2,7 @@ class RedactUserWorker
   include Sidekiq::Worker
 
   # we deactivate and redact the user
-  def perform(user_id, actor_id)
+  def perform(user_id, actor_id, send_email = true)
     user = User.find(user_id)
     email = user.email
     locale = user.locale
@@ -48,7 +48,7 @@ class RedactUserWorker
     end
 
     Group.where(id: group_ids).map(&:update_memberships_count)
-    UserMailer.redacted(email, locale).deliver_later
+    UserMailer.redacted(email, locale).deliver_later if send_email
     SearchService.reindex_by_author_id(user.id)
   end
 end
