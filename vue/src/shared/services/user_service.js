@@ -65,7 +65,7 @@ export default new class UserService {
                   submit: 'deactivation_modal.submit_delete'
                 },
                 submit() { return Records.users.destroy(); },
-                successCallback: hardReload
+                successCallback: () => hardReload("/dashboard")
               }
             }
           }
