@@ -55,21 +55,6 @@ describe UserMailer do
     end
   end
 
-  describe 'contact request' do
-    let(:user) { create :user }
-    let(:sender) { create :user }
-    let(:group) { create :group }
-    let(:request) { ContactRequest.new(sender: sender, recipient_id: user.id, message: "Here's a message") }
-    subject { UserMailer.contact_request(contact_request: request).deliver_now }
-
-    it 'sends a contact request' do
-      expect { subject }.to change { ActionMailer::Base.deliveries.count }.by(1)
-      last_email = ActionMailer::Base.deliveries.last
-      expect(last_email.to).to include user.email
-      expect(last_email.reply_to).to include sender.email
-    end
-  end
-
   describe 'catch_up' do
     let(:user) { create :user, email_catch_up_day: 7 }
     subject { UserMailer.catch_up(user.id).deliver_now }
