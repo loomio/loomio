@@ -21,9 +21,6 @@ class User < ApplicationRecord
   has_paper_trail only: [:name, :username, :email, :email_newsletter, :deactivated_at, :deactivator_id]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
-  BOT_EMAILS = {
-    helper_bot: ENV['HELPER_BOT_EMAIL'] || ENV['SUPPORT_EMAIL'],
-  }.freeze
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
   devise :pwned_password unless Rails.env.test?
@@ -287,11 +284,12 @@ class User < ApplicationRecord
   end
 
   def self.helper_bot
-    verified.find_by(email: BOT_EMAILS[:helper_bot]) ||
-    create!(email: BOT_EMAILS[:helper_bot],
+    verified.find_by(email: BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS) ||
+    create!(email: BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS,
             name: 'Loomio Helper Bot',
             password: SecureRandom.hex(20),
             email_verified: true,
+            bot: true,
             avatar_kind: :gravatar)
   end
 
