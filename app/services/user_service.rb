@@ -12,6 +12,11 @@ class UserService
     user.require_valid_signup = true
     user.require_recaptcha = true
     user.save
+
+    if user.valid? && user.email_newsletter?
+      GenericWorker.perform_async('NewsletterService', 'subscribe', user.name, user.email)
+    end
+
     user
   rescue ActiveRecord::RecordNotUnique
     retry
