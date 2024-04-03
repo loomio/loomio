@@ -48,6 +48,7 @@ class RedactUserWorker
       PaperTrail::Version.where(item_type: 'User', item_id: user_id).delete_all
       Identities::Base.where(user_id: user_id).delete_all
       MembershipRequest.where(requestor_id: user_id, responded_at: nil).delete_all
+      NewsletterService.unsubscribe(email)
     end
 
     Group.where(id: group_ids).map(&:update_memberships_count)
