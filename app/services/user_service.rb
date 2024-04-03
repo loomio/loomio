@@ -13,10 +13,6 @@ class UserService
     user.require_recaptcha = true
     user.save
 
-    if user.valid? && user.email_newsletter?
-      GenericWorker.perform_async('NewsletterService', 'subscribe', user.name, user.email)
-    end
-
     user
   rescue ActiveRecord::RecordNotUnique
     retry
@@ -24,7 +20,14 @@ class UserService
 
   def self.verify(user: )
     return user if user.email_verified?
-    User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
+    
+    user = User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
+
+    if user.email_newsletter?
+      GenericWorker.perform_async('NewsletterService', 'subscribe', user.name, user.email)
+    end
+
+    user
   end
 
   def self.deactivate(user:, actor:)
