@@ -31,10 +31,21 @@ class NewsletterService
   def self.unsubscribe(email)
     return unless enabled?
 
-    HTTParty.post(
-      "#{LISTMONK_URL}/api/subscribers/query/delete",
+    response = HTTParty.get(
+      "#{LISTMONK_URL}/api/subscribers",
       basic_auth: auth,
-      body: "query=subscribers.email = '#{parse_email(email)}'",
+      query: {
+        query: "subscribers.email LIKE '#{parse_email(email)}'"
+      }
+    )
+
+    subscriber_id = response.dig('data', 'results', 0, 'id')
+
+    return unless subscriber_id.present?
+
+    HTTParty.delete(
+      "#{LISTMONK_URL}/api/subscribers/#{subscriber_id}",
+      basic_auth: auth
     )
   end
 
