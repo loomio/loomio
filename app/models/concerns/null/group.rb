@@ -124,6 +124,10 @@ module Null::Group
     }
   end
 
+  def discussion_templates=(arg)
+    nil
+  end
+  
   def group_privacy
     'private_only'
   end
