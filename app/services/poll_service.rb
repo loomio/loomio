@@ -240,13 +240,13 @@ class PollService
     end
   end
 
-  def self.group_members_removed(group_id, removed_user_ids, actor_id)
+  def self.group_members_removed(group_id, removed_user_ids, actor_id, revoked_at)
     Poll.active.where(group_id: group_id).each do |poll|
       Stance.where(
         poll_id: poll.id,
         revoked_at: nil,
         participant_id: Array(removed_user_ids),
-      ).update_all(revoked_at: Time.zone.now, revoker_id: actor_id)
+      ).update_all(revoked_at: revoked_at, revoker_id: actor_id)
       poll.update_counts!
     end
   end

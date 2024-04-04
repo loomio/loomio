@@ -43,8 +43,39 @@ export default new class UserService {
         }
       },
 
+      deactivate: {
+        icon: 'mdi-pause-circle',
+        name: 'profile_page.deactivate_account',
+        subtitle: 'profile_page.deactivate_account_subtitle',
+        canPerform() { return !user.deactivatedAt; },
+        perform() {
+          return EventBus.$emit('openModal', {
+            component: 'ConfirmModal',
+            props: {
+              confirm: {
+                text: {
+                  title: 'profile_page.deactivate_account',
+                  raw_helptext: `\
+                    <p>${vm.$t('deactivation_modal.deactivate_introduction')}</p> \
+                    <ul> \
+                    <li>${vm.$t('deactivation_modal.you_will_be_deactivated')}</li> \
+                    <li>${vm.$t('deactivation_modal.name_not_removed')}</li> \
+                    <li>${vm.$t('deactivation_modal.no_longer_group_member')}</li> \
+                    <li>${vm.$t('deactivation_modal.no_emails')}</li> \
+                    </ul>`,
+                  submit: 'deactivation_modal.submit_deactivate'
+                },
+                submit:() => Records.remote.post('/profile/deactivate'),
+                successCallback: () => hardReload("/dashboard")
+              }
+            }
+          }
+          );
+        }
+      },
+
       redact_user: {
-        icon: 'mdi-exit-run',
+        icon: 'mdi-delete-circle',
         name: 'profile_page.delete_user_link',
         canPerform() { return !user.deactivatedAt; },
         perform() {
@@ -55,13 +86,13 @@ export default new class UserService {
                 text: {
                   title: 'profile_page.delete_account',
                   raw_helptext: `\
-<p>${vm.$t('deactivation_modal.introduction')}</p> \
-<ul> \
-<li>${vm.$t('deactivation_modal.you_will_be_deleted')}</li> \
-<li>${vm.$t('deactivation_modal.name_removed')}</li> \
-<li>${vm.$t('deactivation_modal.no_longer_group_member')}</li> \
-<li>${vm.$t('deactivation_modal.no_emails')}</li> \
-</ul>`,
+                    <p>${vm.$t('deactivation_modal.introduction')}</p> \
+                    <ul> \
+                    <li>${vm.$t('deactivation_modal.you_will_be_deleted')}</li> \
+                    <li>${vm.$t('deactivation_modal.name_removed')}</li> \
+                    <li>${vm.$t('deactivation_modal.no_longer_group_member')}</li> \
+                    <li>${vm.$t('deactivation_modal.no_emails')}</li> \
+                    </ul>`,
                   submit: 'deactivation_modal.submit_delete'
                 },
                 submit() { return Records.users.destroy(); },

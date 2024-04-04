@@ -152,6 +152,7 @@ Rails.application.routes.draw do
           post :upload_avatar
           post :save_experience
           delete :destroy
+          post :deactivate
         end
         post :remind, on: :member
       end
