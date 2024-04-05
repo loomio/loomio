@@ -40,32 +40,15 @@ class UserService
     RedactUserWorker.perform_async(user.id, actor.id)
   end
 
-  # this is for user accounts deactivated with the older method
   def self.reactivate(user_id)
     user = User.find(user_id)
     deactivated_at = user.deactivated_at
-    Membership.where(user_id: user.id, revoked_at: deactivated_at).update_all(revoked_at: nil)
+    Membership.where(user_id: user.id, revoked_at: deactivated_at).update_all(revoked_at: nil, revoker_id: nil)
     group_ids = Membership.where(user_id: user.id).pluck(:group_id)
     Group.where(id: group_ids).map(&:update_memberships_count)
     user.update(deactivated_at: nil)
     GenericWorker.perform_async('SearchService', 'reindex_by_author_id', user.id)
   end
-
-  # # UserService#destroy
-  # # Only intended to be used in a case where a script has created trash records and you
-  # # want to make it as if it never happened. We almost never want to destroy a user.
-  # # it will destroy
-  # # - all groups they created
-  # # - all discussions they authored
-  # # - all polls they authored
-  # # - all comments they created
-  # # - all stances they created
-  # # - all memberships they have
-  # # # all discussion_readers they have
-  # # you get the point.
-  # def self.destroy(user:)
-  #   DestroyUserWorker.perform_async(user.id)
-  # end
 
   def self.set_volume(user:, actor:, params:)
     actor.ability.authorize! :update, user

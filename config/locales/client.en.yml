@@ -1493,7 +1493,9 @@ en:
     location_label: 'Location'
     location_placeholder: 'Where are you based?'
     update_profile: 'Update profile'
-    deactivate_account: 'Deactivate user account'
+    deactivate_account: 'Deactivate account'
+    deactivate_account_subtitle: 'Stop all emails and cancel group memberships. Keep your name and profile so past discussions and decisions are not affected.'
+    delete_account_subtitle: 'Stop all emails and cancel group memberships. Delete your profile and remove your name from past discussions and decisions.'
     updated_on_sign_in: Provided by your browser and updated when you sign in
 
   text_editor:
@@ -1520,11 +1522,15 @@ en:
 
   deactivation_modal:
     introduction: 'When you delete your account:'
-    you_will_be_deleted: "Your user account including your name, email address and other personally identifying data will be deleted from our systems."
-    name_removed: 'Comments, proposals and discussions you’ve made will remain but your name will be removed from them'
-    no_longer_group_member: 'You will no longer be listed as a member of any groups'
-    no_emails: 'You will no longer receive notification emails'
+    deactivate_introduction: 'When you deactivate your account:'
+    you_will_be_deactivated: "Your user account will marked as deactivated. Your email address and personally identifying data will remain. You can reactivate your account later if you wish."
+    name_not_removed: 'Comments, votes, proposals and discussions you posted will remain so that historical records are not altered.'
+    you_will_be_deleted: "Your user account including your name, email address, profile photo and other personally identifying data will be deleted from our systems."
+    name_removed: 'Comments, votes, proposals and discussions you posted will remain, but your name and profile will be removed from them.'
+    no_longer_group_member: 'You will no longer be listed as a member of any groups.'
+    no_emails: 'You will no longer receive notification emails.'
     submit_delete: 'Delete my account now'
+    submit_deactivate: 'Deactivate my account now'
 
   email_settings_page:
     monday: Monday
