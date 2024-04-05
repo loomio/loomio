@@ -11,12 +11,7 @@ class RedactUserWorker
     user.uploaded_avatar.purge_later
     
     User.transaction do
-      MembershipService.revoke_by_id(
-        group_ids: group_ids,
-        user_id: user_id,
-        actor_id: actor_id,
-        revoked_at: deactivated_at,
-      )
+      MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at)
 
       User.where(id: user_id).update_all(
         is_admin: false,

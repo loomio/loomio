@@ -8,12 +8,7 @@ class DeactivateUserWorker
 
     User.transaction do
 
-      MembershipService.revoke_by_id(
-        group_ids: group_ids,
-        user_id: user_id,
-        actor_id: actor_id,
-        revoked_at: deactivated_at,
-      )
+      MembershipService.revoke_by_id(group_ids, user_id, actor_id, deactivated_at)
       
       user.update(deactivated_at: deactivated_at, deactivator_id: actor_id)
       MembershipRequest.where(requestor_id: user_id, responded_at: nil).destroy_all

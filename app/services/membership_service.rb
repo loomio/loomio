@@ -65,16 +65,16 @@ class MembershipService
 
     # revoke guest access in case they were a guest before they were a member and it was not already cleaned up by redeem
     revoke_by_id(
-      group_ids: membership.group.id_and_subgroup_ids,
-      user_id: membership.user_id,
-      actor_id: actor.id,
-      revoked_at: revoked_at,
+      membership.group.id_and_subgroup_ids,
+      membership.user_id,
+      actor.id,
+      revoked_at,
     )
 
     EventBus.broadcast('membership_destroy', membership, actor)
   end
 
-  def self.revoke_by_id(group_ids:, user_id:, actor_id:, revoked_at: DateTime.now)
+  def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now)
     DiscussionReader
     .joins(:discussion).guests
     .where('discussions.group_id': group_ids, user_id: user_id)
