@@ -77,6 +77,7 @@ export default new class UserService {
       redact_user: {
         icon: 'mdi-delete-circle',
         name: 'profile_page.delete_user_link',
+        subtitle: 'profile_page.delete_account_subtitle',
         canPerform() { return !user.deactivatedAt; },
         perform() {
           return EventBus.$emit('openModal', {

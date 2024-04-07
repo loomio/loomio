@@ -1306,6 +1306,8 @@ ca:
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
     autodetect_time_zone: Autodetecció de zona horària
     deleted_account: Compte suprimit
+    deactivate_account_subtitle: Atura els correus electrònics i cancel·la les subscripcions. Mantingueu el vostre perfil perquè les discussions i decisions anteriors no es vegin afectades.
+    delete_account_subtitle: Suprimeix completament el teu compte i elimina el teu nom de discussions i decisions anteriors.
   text_editor:
     insert_link: Insereix enllaç
     insert_embedded_url: Incrusta un vídeo
@@ -1332,6 +1334,10 @@ ca:
     no_emails: No rebreu més correus electrònics relacionats amb Loomio.
     submit_delete: Elimina el meu compte ara
     introduction: 'Quan suprimiu el vostre compte:'
+    deactivate_introduction: 'Quan desactiveu el vostre compte:'
+    you_will_be_deactivated: El vostre compte d'usuari es marcarà com a desactivat. La vostra adreça de correu electrònic i les dades d'identificació personal es mantindran. Podeu reactivar el vostre compte més tard si ho voleu.
+    name_not_removed: Els comentaris, les votacions, les propostes i les discussions que heu publicat es mantindran perquè els registres històrics no s'alterin.
+    submit_deactivate: Desactiva el meu compte ara
   email_settings_page:
     monday: Dilluns
     tuesday: Dimarts

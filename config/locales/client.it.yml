@@ -1354,6 +1354,8 @@ it:
     bot_account_warning: Gli account bot non saranno invitati a votare nei sondaggi o a partecipare alle discussioni
     autodetect_time_zone: Rilevamento automatico del fuso orario
     deleted_account: Conto eliminato
+    deactivate_account_subtitle: Interrompi le e-mail e annulla gli abbonamenti. Mantieni il tuo profilo in modo che le discussioni e le decisioni passate non vengano influenzate.
+    delete_account_subtitle: Elimina completamente il tuo account e rimuovi il tuo nome dalle discussioni e decisioni passate.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caratteri"
     insert_link: Inserisci collegamento
@@ -1380,6 +1382,10 @@ it:
     no_longer_group_member: Non sarai più listato/a come membro di alcun gruppo.
     no_emails: Non riceverai più email di notifica
     submit_delete: Elimina subito l'account personale
+    deactivate_introduction: 'Quando disattivi il tuo account:'
+    you_will_be_deactivated: Il tuo account utente verrà contrassegnato come disattivato. Il tuo indirizzo email e i dati di identificazione personale rimarranno. Se lo desideri, puoi riattivare il tuo account in un secondo momento.
+    name_not_removed: I commenti, i voti, le proposte e le discussioni che hai pubblicato rimarranno in modo che i documenti storici non vengano alterati.
+    submit_deactivate: Disattiva il mio account adesso
   email_settings_page:
     monday: Lunedì
     tuesday: Martedì

@@ -1152,6 +1152,8 @@ ro:
     updated_on_sign_in: Furnizat de browserul dvs. și actualizat atunci când vă conectați
     autodetect_time_zone: Autodetectare fus orar
     deleted_account: Cont șters
+    deactivate_account_subtitle: Opriți e-mailurile și anulați abonamentele. Păstrează-ți profilul pentru ca discuțiile și deciziile anterioare să nu fie afectate.
+    delete_account_subtitle: Ștergeți-vă complet contul și eliminați-vă numele din discuțiile și deciziile anterioare.
   change_picture_form:
     use_gravatar: Foloseste Gravatar
     aria_label: Formular foto de profil
@@ -2060,6 +2062,10 @@ ro:
     no_longer_group_member: Nu veți mai fi listat ca membru al niciunui grup
     no_emails: Nu veți mai primi e-mailuri de notificare
     submit_delete: Ștergeți contul meu acum
+    deactivate_introduction: 'Când vă dezactivați contul:'
+    you_will_be_deactivated: Contul dvs. de utilizator va fi marcat ca dezactivat. Adresa dvs. de e-mail și datele de identificare personală vor rămâne. Vă puteți reactiva contul mai târziu, dacă doriți.
+    name_not_removed: Comentariile, voturile, propunerile și discuțiile pe care le-ați postat vor rămâne astfel încât înregistrările istorice să nu fie modificate.
+    submit_deactivate: Dezactivează-mi contul acum
   thread_preview:
     replies_count: "%{count} răspunsuri"
     unread_count: "%{count} necitite"

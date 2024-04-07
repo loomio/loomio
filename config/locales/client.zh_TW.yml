@@ -1350,6 +1350,8 @@ zh_TW:
     deactivated_user: 已停用的用戶
     autodetect_time_zone: 自動偵測時區
     deleted_account: 已刪除帳戶
+    deactivate_account_subtitle: 停止發送電子郵件並取消會員資格。保留您的個人資料，以免過去的討論和決定受到影響。
+    delete_account_subtitle: 徹底刪除您的帳戶，並從過去的討論和決定中刪除您的名字。
   text_editor:
     x_of_y_characters: "%{x} / %{y} 個字元"
     select_text_to_link: 選取要連結的文字並再試一次
@@ -1376,6 +1378,10 @@ zh_TW:
     no_longer_group_member: 您將不會再被任何群組列為成員
     no_emails: 您將不會再收到電子郵件通知
     submit_delete: 現在刪除我的帳號
+    deactivate_introduction: 當您停用您的帳戶時：
+    you_will_be_deactivated: 您的用戶帳戶將被標記為已停用。您的電子郵件地址和個人識別資料將保留。如果您願意，您可以稍後重新啟動您的帳戶。
+    name_not_removed: 您發布的評論、投票、提案和討論將保留，以便歷史記錄不會更改。
+    submit_deactivate: 立即停用我的帳戶
   email_settings_page:
     monday: 星期一
     tuesday: 星期二

@@ -1318,6 +1318,8 @@ hu:
     bot_account_warning: A robotfiókokat nem hívják meg szavazásra vagy vitákban való részvételre
     autodetect_time_zone: Időzóna automatikus felismerése
     deleted_account: Fiók törölve
+    deactivate_account_subtitle: Az e-mailek leállítása és a tagság megszüntetése. Tartsa meg profilját, hogy a korábbi megbeszéléseket és döntéseket ne befolyásolja.
+    delete_account_subtitle: Teljesen törölje fiókját, és távolítsa el a nevét a korábbi megbeszélésekből és döntésekből.
   text_editor:
     insert_link: Illessz be egy hivatkozást
     insert_embedded_url: Videó beágyazása
@@ -1344,6 +1346,10 @@ hu:
     no_emails: Többé nem kap értesítési e-maileket
     introduction: 'Amikor törli fiókját:'
     submit_delete: Törölje a fiókomat most
+    deactivate_introduction: 'Amikor deaktiválja fiókját:'
+    you_will_be_deactivated: Felhasználói fiókja deaktiváltként lesz megjelölve. E-mail címe és személyazonosításra alkalmas adatai megmaradnak. Fiókját később újraaktiválhatja, ha kívánja.
+    name_not_removed: Az Ön által közzétett megjegyzések, szavazatok, javaslatok és viták megmaradnak, így a történelmi feljegyzések nem módosulnak.
+    submit_deactivate: Inaktiválja a fiókomat most
   email_settings_page:
     monday: Hétfő
     tuesday: Kedd

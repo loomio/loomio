@@ -1350,6 +1350,8 @@ de:
     bot_account_warning: Bot-Konten werden nicht eingeladen, an Umfragen teilzunehmen oder an Diskussionen teilzunehmen
     autodetect_time_zone: Zeitzone automatisch erkennen
     deleted_account: Gelöschtes Konto
+    deactivate_account_subtitle: Stoppen Sie E-Mails und kündigen Sie Mitgliedschaften. Behalten Sie Ihr Profil bei, damit vergangene Diskussionen und Entscheidungen nicht beeinträchtigt werden.
+    delete_account_subtitle: Löschen Sie Ihr Konto vollständig und entfernen Sie Ihren Namen aus früheren Diskussionen und Entscheidungen.
   text_editor:
     insert_link: Link einfügen
     insert_embedded_url: Video einfügen
@@ -1376,6 +1378,10 @@ de:
     no_emails: Du wirst keine Benachrichtigungs-E-Mails mehr erhalten.
     submit_delete: Lösche meinen Account jetzt
     introduction: 'Wenn Sie Ihr Konto löschen:'
+    deactivate_introduction: 'Wenn Sie Ihr Konto deaktivieren:'
+    you_will_be_deactivated: Ihr Benutzerkonto wird als deaktiviert markiert. Ihre E-Mail-Adresse und Ihre personenbezogenen Daten bleiben erhalten. Sie können Ihr Konto später wieder aktivieren, wenn Sie dies wünschen.
+    name_not_removed: Von Ihnen gepostete Kommentare, Stimmen, Vorschläge und Diskussionen bleiben erhalten, sodass historische Aufzeichnungen nicht verändert werden.
+    submit_deactivate: Mein Konto jetzt deaktivieren
   email_settings_page:
     monday: Montag
     tuesday: Dienstag

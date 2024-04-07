@@ -1130,6 +1130,8 @@ sv:
     updated_on_sign_in: Tillhandahålls av din webbläsare och uppdateras när du loggar in
     autodetect_time_zone: Autoupptäck tidszon
     deleted_account: Raderat konto
+    deactivate_account_subtitle: Stoppa e-postmeddelanden och avsluta medlemskap. Behåll din profil så att tidigare diskussioner och beslut inte påverkas.
+    delete_account_subtitle: Ta bort ditt konto helt och hållet och ta bort ditt namn från tidigare diskussioner och beslut.
   change_picture_form:
     use_gravatar: Använd Gravatar
     aria_label: Profilfotoformulär
@@ -1989,6 +1991,10 @@ sv:
     no_longer_group_member: Du kommer inte längre att listas som medlem i någon grupp
     no_emails: Du kommer inte längre att få e-postmeddelanden
     submit_delete: Ta bort mitt konto nu
+    deactivate_introduction: 'När du inaktiverar ditt konto:'
+    you_will_be_deactivated: Ditt användarkonto kommer att markeras som avaktiverat. Din e-postadress och personligt identifierande data kommer att finnas kvar. Du kan återaktivera ditt konto senare om du vill.
+    name_not_removed: Kommentarer, röster, förslag och diskussioner som du lagt upp kommer att finnas kvar så att historiska register inte ändras.
+    submit_deactivate: Inaktivera mitt konto nu
   thread_preview:
     replies_count: "%{count} svar"
     unread_count: "%{count} olästa"

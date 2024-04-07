@@ -1642,6 +1642,8 @@ fi:
     updated_on_sign_in: Selaimesi tarjoaa ja päivitetään, kun kirjaudut sisään
     autodetect_time_zone: Tunnista aikavyöhyke automaattisesti
     deleted_account: Tili poistettu
+    deactivate_account_subtitle: Lopeta sähköpostit ja peruuta jäsenyydet. Säilytä profiilisi, jotta aiemmat keskustelut ja päätökset eivät vaikuta.
+    delete_account_subtitle: Poista tilisi kokonaan ja poista nimesi aiemmista keskusteluista ja päätöksistä.
   text_editor:
     x_of_y_characters: "%{x} / %{y} merkkiä"
     select_text_to_link: Valitse linkitettävä teksti ja yritä uudelleen
@@ -1668,6 +1670,10 @@ fi:
     no_longer_group_member: Sinua ei enää merkitä minkään ryhmän jäseneksi
     no_emails: Et enää saa ilmoitussähköpostiviestejä
     submit_delete: Poista tilini nyt
+    deactivate_introduction: 'Kun poistat tilisi käytöstä:'
+    you_will_be_deactivated: Käyttäjätilisi merkitään deaktivoiduksi. Sähköpostiosoitteesi ja henkilötietosi säilyvät. Voit aktivoida tilisi myöhemmin uudelleen, jos haluat.
+    name_not_removed: Lähettämäsi kommentit, äänet, ehdotukset ja keskustelut säilyvät, jotta historiallisia tietoja ei muuteta.
+    submit_deactivate: Poista tilini käytöstä nyt
   email_settings_page:
     monday: maanantai
     tuesday: tiistai

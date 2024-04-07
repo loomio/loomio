@@ -1099,6 +1099,8 @@ sl:
     updated_on_sign_in: Zagotavlja vaš brskalnik in se posodobi, ko se prijavite
     autodetect_time_zone: Samodejno zaznaj časovni pas
     deleted_account: Izbrisan račun
+    deactivate_account_subtitle: Ustavite e-pošto in prekličite članstva. Ohranite svoj profil, da to ne vpliva na pretekle razprave in odločitve.
+    delete_account_subtitle: Popolnoma izbrišite svoj račun in odstranite svoje ime iz preteklih razprav in odločitev.
   change_picture_form:
     use_gravatar: Uporabi Gravatarja
     aria_label: Obrazec za profilno fotografijo
@@ -2030,6 +2032,10 @@ sl:
     no_longer_group_member: Ne boste več navedeni kot član nobene skupine
     no_emails: Ne boste več prejemali obvestil po e-pošti
     submit_delete: Izbriši moj račun zdaj
+    deactivate_introduction: 'Ko deaktivirate svoj račun:'
+    you_will_be_deactivated: Vaš uporabniški račun bo označen kot deaktiviran. Vaš e-poštni naslov in podatki za osebno identifikacijo bodo ostali. Če želite, lahko svoj račun znova aktivirate pozneje.
+    name_not_removed: Komentarji, glasovanja, predlogi in razprave, ki ste jih objavili, bodo ostali, tako da se zgodovinski zapisi ne bodo spremenili.
+    submit_deactivate: Deaktiviraj moj račun zdaj
   thread_preview:
     replies_count: "%{count} odgovorov"
     unread_count: "%{count} neprebranih"

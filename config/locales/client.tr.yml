@@ -1179,6 +1179,8 @@ tr:
     updated_on_sign_in: Tarayıcınız tarafından sağlanır ve oturum açtığınızda güncellenir
     autodetect_time_zone: Saat dilimini otomatik olarak algıla
     deleted_account: Silinen hesap
+    deactivate_account_subtitle: E-postaları durdurun ve üyelikleri iptal edin. Geçmişteki tartışmaların ve kararların etkilenmemesi için profilinizi koruyun.
+    delete_account_subtitle: Hesabınızı tamamen silin ve adınızı geçmiş tartışmalardan ve kararlardan çıkarın.
   change_picture_form:
     use_gravatar: Gravatar kullan
     aria_label: Profil fotoğrafı formu
@@ -2041,6 +2043,10 @@ tr:
     no_longer_group_member: Artık hiçbir grubun üyesi olarak listelenmeyeceksiniz
     no_emails: Artık bildirim e-postaları almayacaksınız
     submit_delete: Hesabımı hemen sil
+    deactivate_introduction: 'Hesabınızı devre dışı bıraktığınızda:'
+    you_will_be_deactivated: Kullanıcı hesabınız devre dışı bırakılmış olarak işaretlenecektir. E-posta adresiniz ve kişisel olarak tanımlayıcı verileriniz kalacaktır. İsterseniz hesabınızı daha sonra yeniden etkinleştirebilirsiniz.
+    name_not_removed: Tarihsel kayıtların değiştirilmemesi için yayınladığınız yorumlar, oylar, öneriler ve tartışmalar aynı kalacaktır.
+    submit_deactivate: Hesabımı şimdi devre dışı bırak
   thread_preview:
     replies_count: "%{count} yanıt"
     unread_count: "%{count} okunmamış"

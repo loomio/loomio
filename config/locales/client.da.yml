@@ -1139,6 +1139,8 @@ da:
     updated_on_sign_in: Leveres af din browser og opdateres, når du logger ind
     autodetect_time_zone: Automatisk registrering af tidszone
     deleted_account: Slettet konto
+    deactivate_account_subtitle: Stop e-mails og annuller medlemskaber. Bevar din profil, så tidligere diskussioner og beslutninger ikke påvirkes.
+    delete_account_subtitle: Slet din konto fuldstændigt og fjern dit navn fra tidligere diskussioner og beslutninger.
   change_picture_form:
     helptext: Du kan oploade dit eget profil billede, eller hvis du har en <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> konto, så kan den bruges.
     use_initials: Benyt initialer
@@ -1155,6 +1157,10 @@ da:
     you_will_be_deleted: Din brugerkonto inklusive dit navn, e-mailadresse og andre personligt identificerende data vil blive slettet fra vores systemer.
     no_emails: Du vil ikke længere modtage notifikations-e-mails
     submit_delete: Slet min konto nu
+    deactivate_introduction: 'Når du deaktiverer din konto:'
+    you_will_be_deactivated: Din brugerkonto bliver markeret som deaktiveret. Din e-mailadresse og personligt identificerende data forbliver. Du kan genaktivere din konto senere, hvis du ønsker det.
+    name_not_removed: Kommentarer, afstemninger, forslag og diskussioner, du har lagt op, forbliver, så historiske optegnelser ikke ændres.
+    submit_deactivate: Deaktiver min konto nu
   email_settings_page:
     monday: Mandag
     tuesday: Tirsdag

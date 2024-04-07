@@ -693,6 +693,8 @@ hr:
     updated_on_sign_in: Dostavlja vaš preglednik i ažurira se kada se prijavite
     autodetect_time_zone: Automatsko otkrivanje vremenske zone
     deleted_account: Izbrisan račun
+    deactivate_account_subtitle: Zaustavite e-poštu i otkažite članstva. Zadržite svoj profil kako ne bi utjecali na prethodne rasprave i odluke.
+    delete_account_subtitle: Potpuno izbrišite svoj račun i uklonite svoje ime iz prošlih rasprava i odluka.
   thread_group:
     aria_label: Ime grupe
   delete_comment_dialog:
@@ -1431,6 +1433,10 @@ hr:
     no_longer_group_member: Više nećete biti navedeni kao član niti jedne grupe
     no_emails: Više nećete primati obavijesti putem e-pošte
     submit_delete: Izbriši moj račun sada
+    deactivate_introduction: 'Kada deaktivirate svoj račun:'
+    you_will_be_deactivated: Vaš korisnički račun bit će označen kao deaktiviran. Vaša adresa e-pošte i osobni podaci će ostati. Možete kasnije ponovno aktivirati svoj račun ako želite.
+    name_not_removed: Komentari, glasovi, prijedlozi i rasprave koje ste objavili ostat će tako da se povijesni zapisi ne mijenjaju.
+    submit_deactivate: Sada deaktiviraj moj račun
   email_settings_page:
     monday: ponedjeljak
     tuesday: utorak

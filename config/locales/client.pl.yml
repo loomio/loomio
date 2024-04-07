@@ -1342,6 +1342,8 @@ pl:
     bot_account_warning: Konta botów nie będą zapraszane do głosowania w ankietach ani do udziału w dyskusjach
     autodetect_time_zone: Automatycznie wykrywa strefę czasową
     deleted_account: Usunięte konto
+    deactivate_account_subtitle: Zatrzymaj e-maile i anuluj członkostwo. Zachowaj swój profil, aby nie miało to wpływu na wcześniejsze dyskusje i decyzje.
+    delete_account_subtitle: Całkowicie usuń swoje konto i usuń swoje imię i nazwisko z poprzednich dyskusji i decyzji.
   text_editor:
     insert_link: Wstaw link
     insert_embedded_url: Wstaw wideo
@@ -1368,6 +1370,10 @@ pl:
     no_emails: Nie będziesz już otrzymywać powiadomień e-mail
     submit_delete: 'Usuń moje konto '
     introduction: 'Gdy usuniesz swoje konto:'
+    deactivate_introduction: 'Kiedy dezaktywujesz swoje konto:'
+    you_will_be_deactivated: Twoje konto użytkownika zostanie oznaczone jako dezaktywowane. Twój adres e-mail i dane osobowe pozostaną. Jeśli chcesz, możesz później ponownie aktywować swoje konto.
+    name_not_removed: Opublikowane przez Ciebie komentarze, głosy, propozycje i dyskusje pozostaną, tak aby zapisy historyczne nie uległy zmianie.
+    submit_deactivate: Dezaktywuj moje konto teraz
   email_settings_page:
     header: Ustawienia powiadomień
     account_deactivated: Twoje konto zostało dezaktywowane. Już nie będziesz otrzymywać żadnych wiadomości e-mail.

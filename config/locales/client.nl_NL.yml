@@ -1325,6 +1325,8 @@ nl_NL:
     bot_account_warning: Botaccounts worden niet uitgenodigd om te stemmen in opiniepeilingen of deel te nemen aan discussies
     autodetect_time_zone: Tijdzone automatisch detecteren
     deleted_account: Account verwijderd
+    deactivate_account_subtitle: Stop e-mails en zeg lidmaatschappen op. Bewaar uw profiel zodat eerdere discussies en beslissingen niet worden beïnvloed.
+    delete_account_subtitle: Verwijder uw account volledig en verwijder uw naam uit eerdere discussies en beslissingen.
   text_editor:
     insert_link: Link invoegen
     insert_embedded_url: Video integreren
@@ -1351,6 +1353,10 @@ nl_NL:
     no_emails: Je zal niet langer meldings e-mails ontvangen
     submit_delete: Verwijder mijn account nu
     introduction: 'Wanneer u uw account verwijdert:'
+    deactivate_introduction: 'Wanneer u uw account deactiveert:'
+    you_will_be_deactivated: Uw gebruikersaccount wordt gemarkeerd als gedeactiveerd. Uw e-mailadres en persoonlijk identificeerbare gegevens blijven behouden. Indien gewenst kunt u uw account later opnieuw activeren.
+    name_not_removed: Opmerkingen, stemmen, voorstellen en discussies die u hebt geplaatst, blijven behouden, zodat historische gegevens niet worden gewijzigd.
+    submit_deactivate: Deactiveer nu mijn account
   email_settings_page:
     monday: maandag
     tuesday: dinsdag

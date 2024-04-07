@@ -1258,6 +1258,8 @@ he:
     updated_on_sign_in: מסופק על ידי הדפדפן שלך ומעודכן בעת הכניסה
     autodetect_time_zone: זיהוי אוטומטי של אזור זמן
     deleted_account: חשבון נמחק
+    deactivate_account_subtitle: עצור הודעות אימייל ובטל חברות. שמור על הפרופיל שלך כדי שדיונים והחלטות בעבר לא יושפעו.
+    delete_account_subtitle: מחק לחלוטין את חשבונך והסר את שמך מדיונים והחלטות בעבר.
   text_editor:
     insert_link: הכנס לינק
     x_of_y_characters: "%{x} / %{y} תווים"
@@ -1284,6 +1286,10 @@ he:
     no_emails: לא תקבל/י יותר עדכונים במייל.
     introduction: 'כאשר אתה מוחק את החשבון שלך:'
     submit_delete: מחק את החשבון שלי עכשיו
+    deactivate_introduction: 'כאשר אתה משבית את חשבונך:'
+    you_will_be_deactivated: חשבון המשתמש שלך יסומן כמושבת. כתובת הדוא"ל והנתונים המזהים שלך יישארו. תוכל להפעיל מחדש את חשבונך מאוחר יותר אם תרצה.
+    name_not_removed: הערות, הצבעות, הצעות ודיונים שפרסמת יישארו כך שהרשומות ההיסטוריות לא ישתנו.
+    submit_deactivate: השבת את החשבון שלי עכשיו
   email_settings_page:
     monday: יום שני
     tuesday: יום שלישי
