@@ -38,12 +38,12 @@ export default
   },
 
   mounted() {
+    Records.groups.findOrFetchById(this.group.id);
     this.message = I18n.t('announcement.form.invitation_message_default');
-
     this.updateSuggestions();
     this.watchRecords({
       collections: ['memberships', 'groups'],
-      query: records => { 
+      query: records => {
         this.updateSuggestions();
         this.subscription = this.group.parentOrSelf().subscription;
         return this.cannotInvite = !this.subscription.active || (this.subscription.max_members && (this.invitationsRemaining < 1));
@@ -75,6 +75,7 @@ export default
         recipient_user_ids: this.recipients.filter(r => r.type === 'user').map(r => r.id),
         recipient_message: this.message
       }).then(data => {
+        Records.groups.findOrFetchById(this.group.id);
         Flash.success('announcement.flash.success', { count: data.memberships.length });
         EventBus.$emit('closeModal');
       }).finally(() => {
@@ -94,29 +95,6 @@ export default
       this.excludedUserIds = this.group.memberIds();
     }
   },
-
-    // findUsers: ->
-    //   userIdsInGroup = Records.memberships.collection.
-    //     chain().find(groupId: @group.id).
-    //     data().map (m) -> m.userId
-    //   membershipsChain = Records.memberships.collection.chain()
-    //   membershipsChain = membershipsChain.find(groupId: { $in: @group.parentOrSelf().organisationIds() })
-    //   membershipsChain = membershipsChain.find(userId: { $nin: userIdsInGroup })
-    //
-    //   userIdsNotInGroup = uniq membershipsChain.data().map((m) -> m.userId)
-    //
-    //   chain = Records.users.collection.chain()
-    //   chain = chain.find(id: {$in: userIdsNotInGroup})
-    //
-    //
-    //   if @query
-    //     chain = chain.find
-    //       $or: [
-    //         {name: {'$regex': ["^#{@query}", "i"]}}
-    //         {username: {'$regex': ["^#{@query}", "i"]}}
-    //         {name: {'$regex': [" #{@query}", "i"]}}
-    //       ]
-    //   chain.data()
 
   computed: {
     invitableGroups() {
@@ -140,19 +118,20 @@ export default
       h1.text-h5(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
       dismiss-modal-button
 
-    div.py-4(v-if="cannotInvite")
+    div.py-4(v-if="!subscription.active")
       .announcement-form__invite
-        p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
-        p(v-if="!subscription.active" v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
+        //- p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
+        p(v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
     div(v-else)
-      v-alert.my-2(v-if="group.membershipsCount < 2" type="info" outlined text :icon="mdiAccountMultiplePlus") 
-        span(v-t="'announcement.form.invite_people_to_evaluate_loomio'") 
+      v-alert.my-2(v-if="group.membershipsCount < 2" type="info" outlined text :icon="mdiAccountMultiplePlus")
+        span(v-t="'announcement.form.invite_people_to_evaluate_loomio'")
       recipients-autocomplete(
         :label="$t('announcement.form.who_to_invite')"
         :placeholder="$t('announcement.form.type_or_paste_email_addresses_to_invite')"
         :excluded-user-ids="excludedUserIds"
         :reset="reset"
         :model="group"
+        :hide-count="tooManyInvitations"
         @new-query="newQuery"
         @new-recipients="newRecipients")
       div(v-if="subscription.max_members")
@@ -160,13 +139,12 @@ export default
         p.text-caption(v-if="tooManyInvitations" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
       div.mb-4(v-if="invitableGroups.length > 1")
         label.lmo-label(v-t="'announcement.select_groups'")
-        //- v-label Select groups
         div(v-for="group in invitableGroups", :key="group.id")
           v-checkbox.invitation-form__select-groups(
             :class="{'ml-4': !group.isParent()}"
             v-model="groupIds"
             :label="group.name"
-            :value="group.id" 
+            :value="group.id"
             hide-details)
 
       v-textarea(

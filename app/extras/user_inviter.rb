@@ -16,6 +16,40 @@ class UserInviter
     email_count + users.count + chatbot_ids.length
   end
 
+  def self.authorize_add_members!(parent_group:, group_ids:, emails:, user_ids:, actor: )
+    subscription = Subscription.for(parent_group)
+
+    raise Subscription::NotActive unless subscription.is_active?
+
+    # authorize ability to add members to selected groups
+    Group.where(id: group_ids).each do |g|
+      actor.ability.authorize!(:add_members, g)
+    end
+    
+    return if subscription.max_members.nil?
+
+    # check if org_memberships_count + new_member_count will exceed subscription.max_members
+    new_emails_count =
+      emails.uniq.count -
+      Membership.active.where(
+        group_id: group_ids,
+        user_id: User.where(email: emails).pluck(:id),
+      ).count
+
+    new_user_ids_count =
+      user_ids.uniq.count -
+      Membership.active.where(
+        group_id: group_ids,
+        user_id: user_ids,
+      ).count
+
+    new_user_count = new_emails_count + new_user_ids_count
+
+    if (parent_group.org_memberships_count + new_user_count) > parent_group.subscription.max_members.to_i
+      raise Subscription::MaxMembersExceeded
+    end
+  end
+
   def self.authorize!(emails: , user_ids:, audience:, model:, actor:)
     # check inviter can notify group if that's happening
     # check inviter can invite guests (from the org, or external) if that's happening

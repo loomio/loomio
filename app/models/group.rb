@@ -301,12 +301,6 @@ class Group < ApplicationRecord
     Group.where(id: id_and_subgroup_ids).sum(:polls_count)
   end
 
-  def has_max_members
-    parent_group = parent_or_self
-    subscription = Subscription.for(parent_group)
-    subscription.max_members && parent_group.org_memberships_count >= subscription.max_members
-  end
-
   def is_trial_or_demo?
     parent_group = parent_or_self
     subscription = Subscription.for(parent_group)
