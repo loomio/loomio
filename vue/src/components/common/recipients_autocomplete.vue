@@ -23,6 +23,7 @@ export default {
     existingOnly: Boolean,
     includeActor: Boolean,
     excludeMembers: Boolean,
+    hideCount: Boolean,
     excludedAudiences: {
       type: Array,
       default() { return []; }
@@ -393,7 +394,7 @@ div.recipients-autocomplete
             space
             span ({{ $t('common.you') }})
   notifications-count(
-    v-show="recipients.length"
+    v-show="!hideCount && recipients.length"
     :model='model'
     :exclude-members="excludeMembers"
     :include-actor="includeActor")

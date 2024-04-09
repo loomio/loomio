@@ -22,12 +22,22 @@ module GroupService
 
   def self.invite(group:, params:, actor:)
     group_ids = if params[:invited_group_ids]
-      Array(params[:invited_group_ids])
+      Array(params[:invited_group_ids]).map(&:to_i)
     else
       Array(group.id)
     end
 
-    groups = Group.where(id: group_ids).each { |g| actor.ability.authorize!(:add_members, g) }
+    # restrict group_ids to a single organization
+    parent_group = Group.where(id: group_ids).first.parent_or_self
+    group_ids = parent_group.id_and_subgroup_ids & group_ids
+
+    UserInviter.authorize_add_members!(
+      parent_group: parent_group,
+      group_ids: group_ids,
+      emails: Array(params[:recipient_emails]),
+      user_ids: Array(params[:recipient_user_ids]),
+      actor: actor,
+    )
 
     users = UserInviter.where_or_create!(
       actor: actor,
@@ -36,7 +46,7 @@ module GroupService
       user_ids: params[:recipient_user_ids]
     )
 
-    groups.each do |g|
+    Group.where(id: group_ids).each do |g|
       revoked_memberships = Membership.revoked.where(group_id: g.id, user_id: users.map(&:id))
       revoked_memberships.update_all(
         inviter_id: actor.id,

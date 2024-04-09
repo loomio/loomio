@@ -32,6 +32,12 @@ module Dev::Scenarios::Group
     redirect_to group_emails_url(create_group)
   end
 
+  def setup_group_with_max_members
+    sign_in patrick
+    create_group.subscription.update(max_members: 4)
+    redirect_to group_memberships_url(create_group)
+  end
+
   def setup_trial_group_with_received_email
     sign_in patrick
     create_group.subscription.update(plan: 'trial')

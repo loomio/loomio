@@ -1,4 +1,6 @@
 class Subscription < ApplicationRecord
+  class MaxMembersExceeded < StandardError; end
+  class NotActive < StandardError; end
   include SubscriptionConcern if Object.const_defined?('SubscriptionConcern')
 
   PAYMENT_METHODS = ["chargify", "manual", "barter", "paypal"]
@@ -17,6 +19,12 @@ class Subscription < ApplicationRecord
       parent.save
       parent.subscription
     end
+  end
+
+  def can_invite()
+    parent_group = parent_or_self
+    subscription = Subscription.for(parent_group)
+    subscription.max_members && parent_group.org_memberships_count >= subscription.max_members
   end
 
   def level

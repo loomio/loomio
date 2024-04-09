@@ -1,5 +1,6 @@
 class API::V1::SnorlaxBase < ActionController::Base
   rescue_from(CanCan::AccessDenied)                    { |e| respond_with_standard_error e, 403 }
+  rescue_from(Subscription::MaxMembersExceeded)        { |e| respond_with_standard_error e, 403 }
   rescue_from(ActionController::UnpermittedParameters) { |e| respond_with_standard_error e, 400 }
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }
   rescue_from(ActiveRecord::RecordNotFound)            { |e| respond_with_standard_error e, 404 }
