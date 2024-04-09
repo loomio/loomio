@@ -30,6 +30,7 @@ export default {
       this.message.name = Session.user().name;
       this.message.email = Session.user().email;
       this.message.userId = Session.user().id;
+      this.message.subject = this.$route.query.subject
     }
   },
 
