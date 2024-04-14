@@ -2009,6 +2009,12 @@ en:
   subgroups_panel:
     search_subgroups_of_name: 'Search subgroups of %{name}'
     group_without_subgroups: '%{name} without subgroups'
+    need_a_space_for_your_team: Need a break-out space for your team?
+    explainer: |
+      Subgroups are private places where teams within your organization can have discussions and make decisions.
+      Content in subgroups is private from the rest of the organization. Examples of subgroups: Board, Hiring decisions or Project team
+    upgrade: |
+      To start a subgroup, you'll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a>
 
   poll_common_action_panel:
     from_the_thread: From the thread template

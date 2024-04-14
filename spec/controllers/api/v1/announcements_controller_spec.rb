@@ -571,7 +571,6 @@ describe API::V1::AnnouncementsController do
       end
 
       it 'does not allow announcement if max members is reached' do
-        AppConfig.app_features[:subscription] = true
         Subscription.for(group).update(max_members: 0)
         post :create, params: {group_id: group.id, recipient_emails: ['jim@example.com']}
         expect(response.status).to eq 403

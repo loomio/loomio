@@ -7,19 +7,10 @@
   text-decoration: none;
   text-align: center;
   background: transparent;
-  // white-space: nowrap;
-  // line-height: 3;
 }
 
 .btn {
   @extend %btn--base;
-
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: rgba(0,0,0,0.05);
-    color: darken($font-color, 20%);
-  }
 }
 
 .btn--blue {
@@ -47,8 +38,7 @@
   &:hover,
   &:focus,
   &:active {
-    color: $white;
-    background-color: lighten($primary-color, 5%);
+    opacity: 0.9;
   }
 }
 

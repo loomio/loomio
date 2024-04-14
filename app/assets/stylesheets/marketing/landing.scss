@@ -1,3 +1,49 @@
+.ribbon-parent {
+  overflow: hidden; /* required */
+  position: relative; /* required  for demo*/
+}
+
+.ribbon {
+  margin: 0;
+  padding: 0;
+  background: #DCA034;
+  color:white;
+  padding:0.6em 0;
+  position: absolute;
+  top:0;
+  right:0;
+  transform: translateX(30%) translateY(0%) rotate(45deg);
+  transform-origin: top left;
+}
+
+.ribbon-grey {
+  background: rgb(41, 60, 74) !important;
+}
+
+.ribbon-grey:before,
+.ribbon-grey:after {
+  background: rgb(41, 60, 74) !important;
+}
+
+.ribbon:before,
+.ribbon:after {
+  content: '';
+  position: absolute;
+  top:0;
+  margin: 0 -1px; /* tweak */
+  width: 100%;
+  height: 100%;
+  background: #DCA034;
+}
+
+.ribbon:before {
+  right:100%;
+}
+
+.ribbon:after {
+  left:100%;
+}
+
 .main--landing {
   section {
     margin-left: auto;
@@ -28,13 +74,24 @@
   @extend .btn--primary;
 
   border-radius: 6px;
-  text-transform: uppercase;
-  padding: 15px 20px;
   font-size: 16px;
   font-weight: normal;
-  letter-spacing: .75px;
   display: inline-block;
 
+}
+
+.btn--ink {
+  @extend .btn--base--landing;
+  border-color: transparent;
+  background-color: #293c4a;
+  color: #fff;
+}
+
+.btn--gold {
+  @extend .btn--base--landing;
+  border-color: transparent;
+  background-color: #dca034;
+  color: #fff;
 }
 
 .btn--primary--landing {
@@ -58,30 +115,31 @@
   }
 }
 
+.nonprofit-warning {
+  border: 2px solid #293c4a;
+  border-radius: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .price-box {
-  background-color: rgba($accent-color, 0.15);
+  border: 2px solid #293c4a;
+  border-radius: 1.5rem;
   margin: 0 20px 20px;
   padding-bottom: 20px;
-  border-radius: 6px;
-  width: 300px;
+  width: 325px;
+  padding: 24px;
 
   h2 {
     margin: 0;
-    background-color: $accent-color;
-    border-radius: 6px 6px 0 0;
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color: #000;
+    font-weight: 400
   }
 
   &.primary {
-    background-color: rgba($primary-color, 0.15);
-
-    h2 {
-      background-color: $primary-color;
-    }
+    border-color: #dca034;
   }
 
   .invitation {

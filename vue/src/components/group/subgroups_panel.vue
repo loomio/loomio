@@ -3,6 +3,7 @@ import Records        from '@/shared/services/records';
 import Session        from '@/shared/services/session';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
+import AppConfig from '@/shared/services/app_config';
 import { debounce, some } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
 
@@ -12,7 +13,8 @@ export default
     return {
       mdiMagnify,
       group: null,
-      loading: true
+      loading: true,
+      upgradeUrl: AppConfig.baseUrl + 'upgrade'
     };
   },
 
@@ -49,6 +51,9 @@ export default
   computed: {
     canCreateSubgroups() {
       return AbilityService.canCreateSubgroups(this.group);
+    },
+    upgradeRequired() {
+      return !this.group.subscription.allow_subgroups;
     }
   },
 
@@ -97,9 +102,13 @@ div(v-if="group")
     v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" :append-icon="mdiMagnify")
     v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
 
-  v-card.group-subgroups-panel(outlined)
-    p.text-center.pa-4(v-if="!loading && !subgroups.length" v-t="'common.no_results_found'")
-    v-list(v-else avatar three-line)
+  v-alert(v-if="subgroups.length == 0" outlined color="primary")
+    p(v-t="'subgroups_panel.need_a_space_for_your_team'")
+    p(v-t="'subgroups_panel.explainer'")
+    p(v-if="upgradeRequired" v-html="$t('subgroups_panel.upgrade', {url: upgradeUrl})")
+
+  v-card.group-subgroups-panel(outlined v-if="subgroups.length")
+    v-list(avatar three-line)
       v-list-item.subgroups-card__list-item(v-if="group.subgroups().length > 0" :to="urlFor(group)+'?subgroups=none'")
         v-list-item-avatar.subgroups-card__list-item-logo
           group-avatar(:group="group" :size="28")
@@ -112,4 +121,5 @@ div(v-if="group")
         v-list-item-content
           v-list-item-title {{ group.name }}
           v-list-item-subtitle {{ stripDescription(group.description) }}
+
 </template>
