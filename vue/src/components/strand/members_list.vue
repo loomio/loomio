@@ -79,6 +79,8 @@ export default {
       Records.remote.post('announcements', params).then(() => {
         this.reset = !this.reset;
         Flash.success('announcement.flash.success', { count });
+      }).catch(error => {
+        Flash.custom(error.error, 'error', 5000);
       }).finally(() => {
         this.saving = false;
       });

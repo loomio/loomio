@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_14_211059) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_14_225428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -884,6 +884,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_211059) do
     t.datetime "renews_at", precision: nil
     t.datetime "renewed_at", precision: nil
     t.boolean "allow_subgroups", default: true, null: false
+    t.boolean "allow_guests", default: true, null: false
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
     t.index ["plan"], name: "index_subscriptions_on_plan"
   end

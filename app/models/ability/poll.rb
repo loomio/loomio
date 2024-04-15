@@ -51,8 +51,8 @@ module Ability::Poll
 
     can [:add_guests], ::Poll do |poll|
       if poll.group_id
-        poll.group.admins.exists?(user.id) ||
-        (poll.group.members_can_add_guests && poll.admins.exists?(user.id))
+        Subscription.for(poll.group).allow_guests &&
+        (poll.group.admins.exists?(user.id) || (poll.group.members_can_add_guests && poll.admins.exists?(user.id)))
       else
         poll.admins.exists?(user.id)
       end

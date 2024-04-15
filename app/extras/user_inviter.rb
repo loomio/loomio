@@ -24,6 +24,9 @@ class UserInviter
 
     # members belong to group
     member_ids = model.members.where(id: user_ids).pluck(:id)
+    member_ids += model.members.where(email: emails).pluck(:id)
+
+    emails -= User.where(email: emails, id: member_ids).pluck(:email)
 
     # guests are outside of the group, but allowed to be referenced by user query
     guest_ids = UserQuery.invitable_user_ids(model: model, actor: actor, user_ids: user_ids - member_ids)

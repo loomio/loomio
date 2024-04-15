@@ -247,6 +247,8 @@ en:
   unauthorized:
     manage:
       all: "Not authorized to %{action} %{subject}."
+    add_guests:
+      all: "You must upgrade your Loomio subscription to add guests to your %{subject}. Alternatively, you can invite them to be members of your group."
   errors:
     clear_cache: "Loading problem detected. Hold shift and press reload, or clear your browser cache."
     400:
