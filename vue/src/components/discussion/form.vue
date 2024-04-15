@@ -90,7 +90,9 @@ export default {
           Flash.success(`discussion_form.messages.${actionName}`);
           this.$router.push(this.urlFor(discussion));
         });
-      }).catch(error => true);
+      }).catch( error => {
+        Flash.custom(error.error, 'error', 5000);
+      });
     },
 
     updateGroupItems() {

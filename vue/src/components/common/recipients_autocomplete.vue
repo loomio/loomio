@@ -131,7 +131,6 @@ export default {
       let chain = Records.users.collection.chain();
 
       chain = chain.find({id: {$in: difference(this.suggestedUserIds, this.excludedUserIds)}});
-      chain = chain.find({emailVerified: true});
 
       chain = chain.find({
         $or: [

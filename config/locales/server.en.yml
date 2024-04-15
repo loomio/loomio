@@ -244,6 +244,9 @@ en:
         blank: can't be blank
         invalid: is not a valid value
 
+  unauthorized:
+    manage:
+      all: "Not authorized to %{action} %{subject}."
   errors:
     clear_cache: "Loading problem detected. Hold shift and press reload, or clear your browser cache."
     400:

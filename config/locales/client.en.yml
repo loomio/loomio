@@ -935,6 +935,8 @@ en:
       thread_admin: "Thread admin"
       last_read_at: "Last viewed %{time}"
       has_not_read_thread: "Has not viewed thread"
+      has_not_joined_yet: "Has not joined yet"
+      has_not_joined_yet_hint: "This user has not accepted their invitation to join Loomio and will not receive further notifications until they do"
     group_form:
       search_placeholder: Search for people...
       modal_title: Select group members
