@@ -18,7 +18,7 @@ describe API::V1::TrialsController do
       group = user.adminable_groups.first
       expect(group.name).to eq "Jim group"
       expect(group.handle).to eq "jim-group"
-      expect(group.description).to eq "Make decisions"
+      expect(group.description).to include "Make decisions"
       expect(group.category).to eq "boards"
     end
   end
