@@ -835,6 +835,8 @@ uk:
       thread_admin: Адміністратор теми
       last_read_at: Останній перегляд %{time}
       has_not_read_thread: Не переглянув тему
+      has_not_joined_yet: Ще не приєднався
+      has_not_joined_yet_hint: Цей користувач не прийняв запрошення приєднатися до Loomio і не отримуватиме подальших сповіщень, доки не прийме
     group_form:
       search_placeholder: Шукати людину...
       modal_title: Вибрати учасників групи
@@ -1819,6 +1821,9 @@ uk:
   subgroups_panel:
     search_subgroups_of_name: Шукати підгрупи у %{name}
     group_without_subgroups: "%{name} без підгруп"
+    need_a_space_for_your_team: Потрібен простір для відпочинку для вашої команди?
+    explainer: 'Підгрупи – це приватні місця, де команди у вашій організації можуть обговорювати та приймати рішення. Вміст у підгрупах є приватним для решти організації. Приклади підгруп: Правління, Рішення про прийом на роботу або Команда проекту'
+    upgrade: Щоб створити підгрупу, вам потрібно <a class="text-decoration-underline" href="%{url}" target="_blank">оновити підписку на Loomio.</a>
   poll_common_action_panel:
     anonymous: Анонімне голосування
     unable_to_vote: Вас не запросили голосувати в %{poll_type}.
@@ -2647,3 +2652,21 @@ uk:
     audio_transcript: 'Стенограма аудіо: %{text}'
     why_type_when_you_can_talk: Навіщо друкувати, коли можна говорити? Надіслати голосовий запис
     transcript_included: Стенограму запису буде додано до вашого повідомлення
+  start_trial:
+    title: Почніть безкоштовну пробну версію Loomio
+    intro: Дякуємо за інтерес до Loomio. Ми раді запропонувати вам %{day}-денну безкоштовну пробну версію, щоб ви могли перевірити, чи Loomio добре підходить для вашої організації.
+    lets_get_started: Давайте розпочнемо!
+    your_name: Твоє ім'я
+    your_email: Ваша електронна адреса
+    how_would_you_like_to_use_loomio: Як би ви хотіли використовувати Loomio у своїй організації?
+    newsletter_intro: Бажаєте підписатися на нашу розсилку?
+    newsletter_description: Будьте в курсі нових функцій і надихаючих історій про те, як Loomio використовують організації по всьому світу
+    subscribe_to_newsletter: Підпишіться на розсилку новин Loomio
+    form_incomplete: Щоб продовжити, заповніть усі поля у формі
+    success: Успіх!
+    taken_first_step: Ви зробили перший крок до спільного прийняття рішень із Loomio.
+    account_created_for_you: Ми створили обліковий запис користувача для %{email} і групу на Loomio.
+    please_sign_in_to_continue: Увійдіть, щоб продовжити.
+    please_complete_this_field: Будь ласка, заповніть це поле
+    please_enter_a_valid_email_address: Будь ласка, введіть дійсну адресу електронної пошти
+    please_accept_the_terms: Будь ласка, прийміть умови

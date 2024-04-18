@@ -814,6 +814,8 @@ pl:
       thread_admin: Administrator wątku
       last_read_at: Ostatnio wyświetlono %{time}
       has_not_read_thread: Jeszcze nie zobaczył/a wątku
+      has_not_joined_yet: Jeszcze nie dołączył
+      has_not_joined_yet_hint: Ten użytkownik nie zaakceptował zaproszenia do dołączenia do Loomio i nie będzie otrzymywać dalszych powiadomień, dopóki tego nie zrobi
     group_form:
       search_placeholder: Szukaj ludzi...
       modal_title: Wybierz osoby do tej grupy
@@ -1812,6 +1814,9 @@ pl:
   subgroups_panel:
     search_subgroups_of_name: Szukaj podgrup w %{name}
     group_without_subgroups: "%{name} bez podgrup"
+    need_a_space_for_your_team: Potrzebujesz miejsca do odpoczynku dla swojego zespołu?
+    explainer: 'Podgrupy to prywatne miejsca, w których zespoły w organizacji mogą prowadzić dyskusje i podejmować decyzje. Treść w podgrupach jest prywatna i niedostępna dla reszty organizacji. Przykłady podgrup: Zarząd, Decyzje o zatrudnieniu lub Zespół projektowy'
+    upgrade: Aby założyć podgrupę, musisz <a class="text-decoration-underline" href="%{url}" target="_blank">zaktualizować swoją subskrypcję Loomio.</a>
   poll_common_action_panel:
     anonymous: Głosy są anonimowe
     unable_to_vote: Nie zostałeś zaproszony do głosowania w %{poll_type}
@@ -2640,3 +2645,21 @@ pl:
     audio_transcript: 'Transkrypcja audio: %{text}'
     why_type_when_you_can_talk: Po co pisać, skoro można rozmawiać? Wyślij nagranie głosowe
     transcript_included: Transkrypcja nagrania zostanie dołączona do Twojej wiadomości
+  start_trial:
+    title: Rozpocznij bezpłatny okres próbny Loomio
+    intro: Dziękujemy za zainteresowanie Loomio. Z przyjemnością oferujemy Ci %{day}-dniowy bezpłatny okres próbny, dzięki któremu możesz sprawdzić, czy Loomio jest dobrym rozwiązaniem dla Twojej organizacji.
+    lets_get_started: Zacznijmy!
+    your_name: Twoje imię
+    your_email: Twój email
+    how_would_you_like_to_use_loomio: Jak chciałbyś używać Loomio w swojej organizacji?
+    newsletter_intro: Chcesz zapisać się do naszego newslettera?
+    newsletter_description: Bądź na bieżąco z nowymi funkcjami i inspirującymi historiami o tym, jak Loomio jest wykorzystywane przez organizacje na całym świecie
+    subscribe_to_newsletter: Zapisz się do newslettera Loomio
+    form_incomplete: Aby kontynuować, wypełnij wszystkie pola formularza
+    success: Powodzenie!
+    taken_first_step: Zrobiłeś pierwszy krok w kierunku wspólnego podejmowania decyzji z Loomio.
+    account_created_for_you: Stworzyliśmy konto użytkownika dla %{email} i grupę na Loomio.
+    please_sign_in_to_continue: Zaloguj się, aby kontynuować.
+    please_complete_this_field: Proszę wypełnić to pole
+    please_enter_a_valid_email_address: Proszę wpisać aktualny adres e-mail
+    please_accept_the_terms: Proszę zaakceptować warunki

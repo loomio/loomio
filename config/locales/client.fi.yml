@@ -1283,6 +1283,8 @@ fi:
       thread_admin: Viestiketjun ylläpitäjä
       last_read_at: Viimeksi katsottu %{time}
       has_not_read_thread: Ei ole katsonut lankaa
+      has_not_joined_yet: Ei ole vielä liittynyt
+      has_not_joined_yet_hint: Tämä käyttäjä ei ole hyväksynyt hänen kutsuaan liittyä Loomioon, eikä hän saa muita ilmoituksia ennen kuin hyväksyy
     group_form:
       search_placeholder: Etsi ihmisiä...
       modal_title: Valitse ryhmän jäsenet
@@ -1927,6 +1929,9 @@ fi:
   subgroups_panel:
     search_subgroups_of_name: Hae alaryhmiä %{name}
     group_without_subgroups: "%{name} ilman alaryhmiä"
+    need_a_space_for_your_team: Tarvitsetko purkutilaa tiimillesi?
+    explainer: 'Alaryhmät ovat yksityisiä paikkoja, joissa organisaatiosi tiimit voivat keskustella ja tehdä päätöksiä. Alaryhmien sisältö on yksityistä muulta organisaatiolta. Esimerkkejä alaryhmistä: hallitus, palkkauspäätökset tai projektitiimi'
+    upgrade: Jos haluat perustaa alaryhmän, sinun on <a class="text-decoration-underline" href="%{url}" target="_blank">päivitettävä Loomio-tilauksesi.</a>
   poll_common_action_panel:
     from_the_thread: Lankamallista
     from_the_group: Ryhmästä
@@ -2535,3 +2540,21 @@ fi:
       community: yhteisön ryhmä
       government: Hallitus/paikallinen hallinto
       other: Muut
+  start_trial:
+    title: Aloita ilmainen Loomio-kokeilu
+    intro: Kiitos mielenkiinnostasi Loomiota kohtaan. Meillä on ilo tarjota sinulle %{day} päivän ilmainen kokeilu, jotta voit nähdä, sopiiko Loomio organisaatiollesi.
+    lets_get_started: Aloitetaan!
+    your_name: Sinun nimesi
+    your_email: Sähköpostisi
+    how_would_you_like_to_use_loomio: Miten haluaisit käyttää Loomiota organisaatiossasi?
+    newsletter_intro: Haluatko tilata uutiskirjeemme?
+    newsletter_description: Pysy ajan tasalla uusista ominaisuuksista ja inspiroivista tarinoista siitä, kuinka organisaatiot ympäri maailmaa käyttävät Loomiota
+    subscribe_to_newsletter: Tilaa Loomio-uutiskirje
+    form_incomplete: Täytä kaikki lomakkeen kentät jatkaaksesi
+    success: Menestys!
+    taken_first_step: Olet ottanut ensimmäisen askeleen kohti yhteistä päätöksentekoa Loomion kanssa.
+    account_created_for_you: Olemme luoneet käyttäjätilin %{email} ja ryhmän Loomioon.
+    please_sign_in_to_continue: Kirjaudu sisään jatkaaksesi.
+    please_complete_this_field: Täytä tämä kenttä
+    please_enter_a_valid_email_address: Ole hyvä ja syötä toimiva sähköpostiosoite
+    please_accept_the_terms: Hyväksy ehdot

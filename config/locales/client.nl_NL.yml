@@ -802,6 +802,8 @@ nl_NL:
       thread_admin: Bord administrator
       last_read_at: Laatst gezien %{time}
       has_not_read_thread: Hebben bord niet gezien
+      has_not_joined_yet: Is nog niet lid
+      has_not_joined_yet_hint: Deze gebruiker heeft de uitnodiging om lid te worden van Loomio niet geaccepteerd en ontvangt geen verdere meldingen totdat hij dit wel doet
     group_form:
       search_placeholder: Zoek naar mensen...
       modal_title: Selecteer groepsleden
@@ -1795,6 +1797,9 @@ nl_NL:
   subgroups_panel:
     search_subgroups_of_name: Doorzoek subgroepen van %{name}
     group_without_subgroups: "%{name} zonder subgroepen"
+    need_a_space_for_your_team: Heeft u een break-outruimte nodig voor uw team?
+    explainer: 'Subgroepen zijn besloten plekken waar teams binnen uw organisatie discussies kunnen voeren en beslissingen kunnen nemen. Inhoud in subgroepen is privé voor de rest van de organisatie. Voorbeelden van subgroepen: Bestuur, Aanwervingsbesluiten of Projectteam'
+    upgrade: Om een subgroep te starten, moet je <a class="text-decoration-underline" href="%{url}" target="_blank">je Loomio-abonnement upgraden.</a>
   poll_common_action_panel:
     anonymous: Stemmen zijn anoniem
     unable_to_vote: Je bent niet uitgenodigd om in te stemmen in deze %{poll_type}.
@@ -2640,3 +2645,21 @@ nl_NL:
     audio_transcript: 'Audiotranscript: %{text}'
     why_type_when_you_can_talk: Waarom typen als je kunt praten? Stuur een spraakopname
     transcript_included: Een transcriptie van de opname wordt aan uw bericht toegevoegd
+  start_trial:
+    title: Start een gratis proefperiode van Loomio
+    intro: Bedankt voor uw interesse in Loomio. We bieden u graag een gratis proefperiode van %{day} dagen aan, zodat u kunt zien of Loomio goed bij uw organisatie past.
+    lets_get_started: Laten we beginnen!
+    your_name: Uw naam
+    your_email: Jouw email
+    how_would_you_like_to_use_loomio: Hoe zou jij Loomio willen inzetten in jouw organisatie?
+    newsletter_intro: Wilt u zich abonneren op onze nieuwsbrief?
+    newsletter_description: Blijf op de hoogte van nieuwe functies en inspirerende verhalen over hoe Loomio door organisaties over de hele wereld wordt gebruikt
+    subscribe_to_newsletter: Abonneer u op de Loomio-nieuwsbrief
+    form_incomplete: Vul alle velden van het formulier in om door te gaan
+    success: Succes!
+    taken_first_step: U heeft de eerste stap gezet naar gezamenlijke besluitvorming met Loomio.
+    account_created_for_you: We hebben een gebruikersaccount aangemaakt voor %{email} en een groep op Loomio.
+    please_sign_in_to_continue: Log alstublieft in om verder te gaan.
+    please_complete_this_field: Vul dit veld in
+    please_enter_a_valid_email_address: Gelieve een geldig e-mailadres in te geven
+    please_accept_the_terms: Accepteer alstublieft de voorwaarden

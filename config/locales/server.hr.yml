@@ -331,3 +331,8 @@ hr:
   event_mailer:
     received_email:
       explaination_html: "<p>Primili ste ovu e-poruku jer ste administrator za Loomio grupu: %{group}.</p><p> Grupa je primila e-poruku s neprepoznate adrese e-pošte.</p><p> Ako je poruka od člana grupe, pregledajte e-poštu i odaberite člana.</p><p> Ako je poruka neželjena, možete blokirati daljnju e-poštu s te adrese.</p>"
+  unauthorized:
+    manage:
+      all: Nije ovlašten za %{action} %{subject}.
+    add_guests:
+      all: Morate nadograditi svoju pretplatu na Loomio da biste dodali goste u svoj %{subject}. Alternativno, možete ih pozvati da budu članovi vaše grupe.

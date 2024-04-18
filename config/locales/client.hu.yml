@@ -801,6 +801,8 @@ hu:
       thread_admin: Téma adminisztrátora
       last_read_at: 'Utoljára megtekintve: %{time}'
       has_not_read_thread: Nem nézte meg a szálat
+      has_not_joined_yet: Még nem csatlakozott
+      has_not_joined_yet_hint: Ez a felhasználó nem fogadta el a meghívását, hogy csatlakozzon a Loomióhoz, és addig nem kap további értesítéseket, amíg el nem fogadja
     group_form:
       search_placeholder: Emberek keresése ...
       modal_title: Válassza ki a csoporttagokat
@@ -2376,6 +2378,9 @@ hu:
   subgroups_panel:
     search_subgroups_of_name: Keresés a(z) %{name} alcsoportjaiban
     group_without_subgroups: "%{name} alcsoportok nélkül"
+    need_a_space_for_your_team: Kitörési helyre van szüksége csapatának?
+    explainer: 'Az alcsoportok olyan privát helyek, ahol a szervezeten belüli csapatok megbeszélést folytathatnak és döntéseket hozhatnak. Az alcsoportok tartalma privát a szervezet többi részétől. Példák alcsoportokra: Igazgatóság, Felvételi döntések vagy Projektcsapat'
+    upgrade: Alcsoport létrehozásához <a class="text-decoration-underline" href="%{url}" target="_blank">frissítenie kell Loomio-előfizetését.</a>
   poll_common_action_panel:
     from_the_thread: A fonalasablonból
     from_the_group: A csoportból
@@ -2618,3 +2623,21 @@ hu:
     audio_transcript: 'Hang átirata: %{text}'
     why_type_when_you_can_talk: Miért írj, ha tudsz beszélni? Hangfelvétel küldése
     transcript_included: Az üzenethez csatoljuk a felvétel átiratát
+  start_trial:
+    title: Kezdje el a Loomio ingyenes próbaverzióját
+    intro: Köszönjük érdeklődését Loomio iránt. Örömmel kínálunk Önnek egy %{day} napos ingyenes próbaverziót, hogy megbizonyosodjon arról, hogy a Loomio megfelelő-e az Ön szervezete számára.
+    lets_get_started: Kezdjük el!
+    your_name: A neved
+    your_email: Az email címed
+    how_would_you_like_to_use_loomio: Hogyan szeretné használni a Loomiót a szervezetében?
+    newsletter_intro: Szeretne feliratkozni hírlevelünkre?
+    newsletter_description: Legyen naprakész az új funkciókkal és inspiráló történetekkel kapcsolatban arról, hogy a Loomiot hogyan használják a szervezetek szerte a világon
+    subscribe_to_newsletter: Iratkozzon fel a Loomio hírlevélre
+    form_incomplete: A folytatáshoz töltse ki az űrlap összes mezőjét
+    success: Siker!
+    taken_first_step: Ön megtette az első lépést az együttműködésen alapuló döntéshozatal felé a Loomióval.
+    account_created_for_you: Létrehoztunk egy felhasználói fiókot a %{email} számára és egy csoportot a Loomio-n.
+    please_sign_in_to_continue: Kérjük, jelentkezzen be a folytatáshoz.
+    please_complete_this_field: Kérjük, töltse ki ezt a mezőt
+    please_enter_a_valid_email_address: Kérjük valós e-mail címet adjon meg
+    please_accept_the_terms: Kérjük, fogadja el a feltételeket

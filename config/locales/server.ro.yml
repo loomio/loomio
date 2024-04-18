@@ -333,3 +333,8 @@ ro:
   event_mailer:
     received_email:
       explaination_html: "<p>Primiți acest e-mail deoarece sunteți administrator pentru grupul Loomio: %{group}.</p><p> Grupul a primit un e-mail de la o adresă de e-mail nerecunoscută.</p><p> Dacă mesajul este de la un membru al grupului, consultați e-mailul și selectați membrul.</p><p> Dacă mesajul este nedorit, puteți bloca orice e-mail suplimentar de la acea adresă.</p>"
+  unauthorized:
+    manage:
+      all: Neautorizat pentru %{action} %{subject}.
+    add_guests:
+      all: Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați la %{subject}. Alternativ, îi puteți invita să fie membri ai grupului dvs.

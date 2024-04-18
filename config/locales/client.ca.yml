@@ -778,6 +778,8 @@ ca:
       thread_admin: Admin del fil
       last_read_at: Darrera visualització %{time}
       has_not_read_thread: No ha visualitzat el fil
+      has_not_joined_yet: Encara no s'ha unit
+      has_not_joined_yet_hint: Aquest usuari no ha acceptat la seva invitació per unir-se a Loomio i no rebrà més notificacions fins que ho faci
     group_form:
       search_placeholder: Busca gent...
       modal_title: Selecciona membres del grup
@@ -1770,6 +1772,9 @@ ca:
   subgroups_panel:
     search_subgroups_of_name: Buscar subgrups dins de %{name}
     group_without_subgroups: "%{name} sense subgrups"
+    need_a_space_for_your_team: Necessites un espai de descans per al teu equip?
+    explainer: 'Els subgrups són llocs privats on els equips de la vostra organització poden discutir i prendre decisions. El contingut dels subgrups és privat de la resta de l''organització. Exemples de subgrups: Junta, decisions de contractació o equip de projecte'
+    upgrade: Per iniciar un subgrup, haureu d' <a class="text-decoration-underline" href="%{url}" target="_blank">actualitzar la vostra subscripció a Loomio.</a>
   poll_common_action_panel:
     anonymous: Els vots són anònims
     unable_to_vote: No heu estat convidat a votar en aquesta %{poll_type}.
@@ -2592,3 +2597,21 @@ ca:
       accept_prompt: Per què ets voluntari per això?
       decline_meaning: No puc participar
       decline_prompt: Hi ha alguna cosa que t'agradaria dir?
+  start_trial:
+    title: Inicieu una prova gratuïta de Loomio
+    intro: Gràcies pel teu interès en Loomio. Estem encantats d'oferir-vos una prova gratuïta de %{day} dies perquè pugueu veure si Loomio s'adapta bé a la vostra organització.
+    lets_get_started: Comencem!
+    your_name: El teu nom
+    your_email: El teu email
+    how_would_you_like_to_use_loomio: Com t'agradaria utilitzar Loomio a la teva organització?
+    newsletter_intro: T'agradaria subscriure't al nostre butlletí?
+    newsletter_description: Manteniu-vos al dia sobre noves funcions i històries inspiradores sobre com utilitzen Loomio les organitzacions d'arreu del món
+    subscribe_to_newsletter: Subscriu-te al butlletí de Loomio
+    form_incomplete: Si us plau, omple tots els camps del formulari per continuar
+    success: Èxit!
+    taken_first_step: Heu fet el primer pas cap a la presa de decisions col·laborativa amb Loomio.
+    account_created_for_you: Hem creat un compte d'usuari per a %{email} i un grup a Loomio.
+    please_sign_in_to_continue: Si us plau, inicieu la sessió per continuar.
+    please_complete_this_field: Si us plau, omple aquest camp
+    please_enter_a_valid_email_address: siusplau, introdueixi una adreça de correu electrònic vàlida
+    please_accept_the_terms: Accepteu els termes

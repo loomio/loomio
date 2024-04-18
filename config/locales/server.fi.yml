@@ -331,3 +331,8 @@ fi:
   event_mailer:
     received_email:
       explaination_html: "<p>Sait tämän sähköpostin, koska olet järjestelmänvalvoja Loomio-ryhmässä: %{group}.</p><p> Ryhmä on saanut sähköpostin tuntemattomasta sähköpostiosoitteesta.</p><p> Jos viesti on ryhmän jäseneltä, tarkista sähköposti ja valitse jäsen.</p><p> Jos viesti on ei-toivottu, voit estää kaikki muut sähköpostit kyseisestä osoitteesta.</p>"
+  unauthorized:
+    manage:
+      all: Ei valtuutusta %{action} %{subject}.
+    add_guests:
+      all: Sinun on päivitettävä Loomio-tilauksesi, jotta voit lisätä vieraita %{subject}. Vaihtoehtoisesti voit kutsua heidät ryhmäsi jäseniksi.

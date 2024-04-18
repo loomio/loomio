@@ -331,3 +331,8 @@ sl:
   event_mailer:
     received_email:
       explaination_html: "<p>To e-pošto ste prejeli, ker ste skrbnik skupine Loomio: %{group}.</p><p> Skupina je prejela e-poštno sporočilo z neprepoznanega e-poštnega naslova.</p><p> Če je sporočilo poslal član skupine, preglejte e-pošto in izberite člana.</p><p> Če je sporočilo neželeno, lahko blokirate vsa nadaljnja e-poštna sporočila s tega naslova.</p>"
+  unauthorized:
+    manage:
+      all: Ni pooblaščen za %{action} %{subject}.
+    add_guests:
+      all: Morate nadgraditi svojo naročnino na Loomio, da dodate goste v svoj %{subject}. Lahko pa jih povabite, da postanejo člani vaše skupine.

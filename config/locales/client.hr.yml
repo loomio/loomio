@@ -1182,6 +1182,8 @@ hr:
       thread_admin: Administrator teme
       last_read_at: Zadnji put pogledano %{time}
       has_not_read_thread: Nije pogledao nit
+      has_not_joined_yet: Još se nije pridružio
+      has_not_joined_yet_hint: Ovaj korisnik nije prihvatio njihov poziv da se pridruži Loomiju i neće primati daljnje obavijesti dok to ne prihvati
     group_form:
       search_placeholder: Traži ljude...
       modal_title: Odaberite članove grupe
@@ -1837,6 +1839,9 @@ hr:
   subgroups_panel:
     search_subgroups_of_name: Traži podgrupe %{name}
     group_without_subgroups: "%{name} bez podgrupa"
+    need_a_space_for_your_team: Trebate prostor za odmor za svoj tim?
+    explainer: 'Podgrupe su privatna mjesta gdje timovi unutar vaše organizacije mogu raspravljati i donositi odluke. Sadržaj u podgrupama privatan je od ostatka organizacije. Primjeri podskupina: odbor, odluke o zapošljavanju ili projektni tim'
+    upgrade: Da biste pokrenuli podgrupu, morat ćete <a class="text-decoration-underline" href="%{url}" target="_blank">nadograditi svoju pretplatu na Loomio.</a>
   poll_common_action_panel:
     from_the_thread: Iz predloška niti
     from_the_group: Iz grupe
@@ -2535,3 +2540,21 @@ hr:
       community: Grupa zajednice
       government: Vlada/Lokalna uprava
       other: ostalo
+  start_trial:
+    title: Započnite besplatnu probnu verziju Loomija
+    intro: Hvala vam na interesu za Loomio. Drago nam je što vam možemo ponuditi %{day}-dnevno besplatno probno razdoblje kako biste mogli vidjeti odgovara li Loomio vašoj organizaciji.
+    lets_get_started: Započnimo!
+    your_name: Tvoje ime
+    your_email: Tvoj email
+    how_would_you_like_to_use_loomio: Kako biste željeli koristiti Loomio u svojoj organizaciji?
+    newsletter_intro: Želite li se pretplatiti na naš newsletter?
+    newsletter_description: Budite u tijeku s novim značajkama i inspirativnim pričama o tome kako Loomio koriste organizacije diljem svijeta
+    subscribe_to_newsletter: Pretplatite se na Loomio newsletter
+    form_incomplete: Ispunite sva polja na obrascu za nastavak
+    success: Uspjeh!
+    taken_first_step: Poduzeli ste prvi korak prema donošenju odluka u suradnji s Loomiom.
+    account_created_for_you: Napravili smo korisnički račun za %{email} i grupu na Loomio.
+    please_sign_in_to_continue: Prijavite se za nastavak.
+    please_complete_this_field: Molimo ispunite ovo polje
+    please_enter_a_valid_email_address: Unesite važeću adresu e-pošte
+    please_accept_the_terms: Molimo prihvatite uvjete

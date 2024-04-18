@@ -433,3 +433,8 @@ zh_TW:
   event_mailer:
     received_email:
       explaination_html: "<p>您收到這封電子郵件是因為您是 Loomio 群組的管理員：%{group}。</p><p>該小組收到了一封來自無法識別的電子郵件地址的電子郵件。</p><p>如果郵件來自群組成員，請查看電子郵件並選擇該成員。</p><p>如果您不需要該郵件，您可以封鎖來自該位址的任何其他電子郵件。</p>"
+  unauthorized:
+    manage:
+      all: 未獲得 %{action} %{subject} 的授權。
+    add_guests:
+      all: 您必須升級您的 Loomio 訂閱才能將訪客新增至您的 %{subject}。或者，您可以邀請他們成為您小組的成員。

@@ -757,6 +757,8 @@ ru:
       thread_admin: Администратор темы
       last_read_at: 'Последний просмотр: %{time}'
       has_not_read_thread: Не просматривал тему
+      has_not_joined_yet: Еще не присоединился
+      has_not_joined_yet_hint: Этот пользователь не принял приглашение присоединиться к Loomio и не будет получать дальнейших уведомлений, пока не примет это.
     group_form:
       search_placeholder: Ищите людей...
       modal_title: Выберите участников группы
@@ -2159,6 +2161,9 @@ ru:
   subgroups_panel:
     search_subgroups_of_name: Поиск в подгруппах %{name}
     group_without_subgroups: "%{name} без подгрупп"
+    need_a_space_for_your_team: Вам нужно место для отдыха для вашей команды?
+    explainer: 'Подгруппы — это частные места, где команды внутри вашей организации могут обсуждать и принимать решения. Содержимое в подгруппах является конфиденциальным для остальной части организации. Примеры подгрупп: Совет директоров, Решения о найме или Команда проекта.'
+    upgrade: Чтобы создать подгруппу, вам необходимо <a class="text-decoration-underline" href="%{url}" target="_blank">обновить подписку Loomio.</a>
   poll_common_action_panel:
     from_the_thread: Из шаблона темы
     from_the_group: Из группы
@@ -2547,3 +2552,21 @@ ru:
     event_removed: Удалено из темы
   add_poll_to_thread_modal:
     success: Успех, %{pollType} добавлен в тему!
+  start_trial:
+    title: Начать бесплатную пробную версию Loomio
+    intro: Благодарим вас за интерес к Лумио. Мы рады предложить вам бесплатную пробную версию на %{day} дня, чтобы вы могли убедиться, подходит ли Loomio для вашей организации.
+    lets_get_started: Давайте начнем!
+    your_name: Ваше имя
+    your_email: Ваш адрес электронной почты
+    how_would_you_like_to_use_loomio: Как бы вы хотели использовать Loomio в своей организации?
+    newsletter_intro: Хотите подписаться на нашу рассылку?
+    newsletter_description: Будьте в курсе новых функций и вдохновляющих историй о том, как Loomio используется организациями по всему миру.
+    subscribe_to_newsletter: Подпишитесь на рассылку новостей Loomio
+    form_incomplete: Пожалуйста, заполните все поля формы, чтобы продолжить
+    success: Успех!
+    taken_first_step: Вы сделали первый шаг к совместному принятию решений с Loomio.
+    account_created_for_you: Мы создали учетную запись пользователя для %{email} и группу в Loomio.
+    please_sign_in_to_continue: Пожалуйста, войдите, чтобы продолжить.
+    please_complete_this_field: Пожалуйста, заполните это поле
+    please_enter_a_valid_email_address: Пожалуйста, введите действительный адрес электронной почты
+    please_accept_the_terms: Пожалуйста, примите условия

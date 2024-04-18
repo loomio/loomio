@@ -333,3 +333,8 @@ sv:
   event_mailer:
     received_email:
       explaination_html: "<p>Du får det här e-postmeddelandet eftersom du är administratör för Loomio-gruppen: %{group}.</p><p> Gruppen har fått ett e-postmeddelande från en okänd e-postadress.</p><p> Om meddelandet kommer från en medlem i gruppen, vänligen granska e-postmeddelandet och välj medlem.</p><p> Om meddelandet är oönskat kan du blockera ytterligare e-postmeddelanden från den adressen.</p>"
+  unauthorized:
+    manage:
+      all: Inte behörig till %{action} %{subject}.
+    add_guests:
+      all: Du måste uppgradera din Loomio-prenumeration för att lägga till gäster till din %{subject}. Alternativt kan du bjuda in dem att bli medlemmar i din grupp.

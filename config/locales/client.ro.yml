@@ -729,6 +729,8 @@ ro:
       thread_admin: Admin subiect
       last_read_at: Ultima vizualizare la %{time}
       has_not_read_thread: Nu a văzut firul
+      has_not_joined_yet: Nu s-a alăturat încă
+      has_not_joined_yet_hint: Acest utilizator nu și-a acceptat invitația de a se alătura Loomio și nu va mai primi notificări până nu o va face
     group_form:
       search_placeholder: Cauta oameni...
       modal_title: Selectați membrii grupului
@@ -2142,6 +2144,9 @@ ro:
   subgroups_panel:
     search_subgroups_of_name: Căutați subgrupuri de %{name}
     group_without_subgroups: "%{name} fără subgrupuri"
+    need_a_space_for_your_team: Ai nevoie de un spațiu de relaxare pentru echipa ta?
+    explainer: 'Subgrupurile sunt locuri private în care echipele din cadrul organizației dvs. pot avea discuții și pot lua decizii. Conținutul din subgrupuri este privat de restul organizației. Exemple de subgrupuri: Consiliu, decizii de angajare sau echipa de proiect'
+    upgrade: Pentru a începe un subgrup, va trebui să <a class="text-decoration-underline" href="%{url}" target="_blank">vă actualizați abonamentul Loomio.</a>
   poll_common_action_panel:
     from_the_thread: Din șablonul firului
     from_the_group: Din grup
@@ -2552,3 +2557,21 @@ ro:
     privacy_policy: Politica de confidențialitate
     terms_of_service: Termenii serviciului
     front_page: Prima pagina
+  start_trial:
+    title: Începeți o încercare gratuită a Loomio
+    intro: Vă mulțumim pentru interesul manifestat față de Loomio. Suntem încântați să vă oferim o perioadă de încercare gratuită de %{day} zile, astfel încât să puteți vedea dacă Loomio este potrivit pentru organizația dvs.
+    lets_get_started: Să începem!
+    your_name: Numele dumneavoastră
+    your_email: Email-ul tau
+    how_would_you_like_to_use_loomio: Cum ați dori să utilizați Loomio în organizația dvs.?
+    newsletter_intro: Doriți să vă abonați la newsletter-ul nostru?
+    newsletter_description: Rămâneți la curent cu noile funcții și poveștile inspiratoare despre modul în care Loomio este folosit de organizații din întreaga lume
+    subscribe_to_newsletter: Abonați-vă la newsletter-ul Loomio
+    form_incomplete: Vă rugăm să completați toate câmpurile din formular pentru a continua
+    success: Succes!
+    taken_first_step: Ai făcut primul pas către luarea deciziilor în colaborare cu Loomio.
+    account_created_for_you: Am creat un cont de utilizator pentru %{email} și un grup pe Loomio.
+    please_sign_in_to_continue: Vă rugăm să vă conectați pentru a continua.
+    please_complete_this_field: Vă rugăm să completați acest câmp
+    please_enter_a_valid_email_address: Vă rugăm să introduceți o adresă de email validă
+    please_accept_the_terms: Vă rugăm să acceptați termenii

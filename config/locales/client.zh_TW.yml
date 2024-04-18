@@ -840,6 +840,8 @@ zh_TW:
       thread_admin: 討論串管理員
       last_read_at: 最後檢視 %{time}
       has_not_read_thread: 尚未檢視討論串
+      has_not_joined_yet: 尚未加入
+      has_not_joined_yet_hint: 該用戶尚未接受加入 Loomio 的邀請，並且在接受之前不會收到進一步的通知
     group_form:
       search_placeholder: 搜尋夥伴……
       modal_title: 選取群組成員
@@ -1825,6 +1827,9 @@ zh_TW:
   subgroups_panel:
     search_subgroups_of_name: 搜尋 %{name} 的子群組
     group_without_subgroups: "%{name} 無子群組"
+    need_a_space_for_your_team: 您的團隊需要一個休息空間嗎？
+    explainer: 子組是組織內的團隊可以進行討論和決策的私人場所。子組中的內容對於組織的其他部分來說是私有的。子群組範例：董事會、招募決策或專案團隊
+    upgrade: 要建立子組，您需要<a class="text-decoration-underline" href="%{url}" target="_blank">升級您的 Loomio 訂閱。</a>
   poll_common_action_panel:
     anonymous: 匿名投票
     results_hidden_until_closed: 投票結束後將顯示結果
@@ -2602,3 +2607,21 @@ zh_TW:
       accept_prompt: 為什麼自願參加這個活動？
       decline_meaning: 我無法參加
       decline_prompt: 有什麼想說的嗎？
+  start_trial:
+    title: 開始免費試用 Loomio
+    intro: 感謝您對 Loomio 的興趣。我們很高興為您提供 %{day} 天的免費試用，以便您了解 Loomio 是否適合您的組織。
+    lets_get_started: 讓我們開始吧！
+    your_name: 你的名字
+    your_email: 你的郵件
+    how_would_you_like_to_use_loomio: 您希望如何在您的組織中使用 Loomio？
+    newsletter_intro: 您想訂閱我們的電子報嗎？
+    newsletter_description: 隨時了解世界各地的組織如何使用 Loomio 的新功能和鼓舞人心的故事
+    subscribe_to_newsletter: 訂閱 Loomio 時事通訊
+    form_incomplete: 請填寫表格上的所有欄位以繼續
+    success: 成功！
+    taken_first_step: 您已經踏出了與 Loomio 協作決策的第一步。
+    account_created_for_you: 我們已為 %{email} 建立了一個使用者帳戶，並在 Loomio 上建立了一個群組。
+    please_sign_in_to_continue: 請登入以繼續。
+    please_complete_this_field: 請填寫此字段
+    please_enter_a_valid_email_address: 請輸入有效的電子郵件地址
+    please_accept_the_terms: 請接受條款
