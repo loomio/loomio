@@ -1,4 +1,22 @@
 en:
+  start_trial:
+    title: Start a free trial of Loomio
+    intro: Thank you for your interest in Loomio. We're delighted to offer you a %{day}-day free trial so you can see if Loomio is a good fit for you organization.
+    lets_get_started: Let's get started!
+    your_name: Your name
+    your_email: Your email
+    how_would_you_like_to_use_loomio: How would you like to use Loomio in your organization?
+    newsletter_intro: Would you like to subscribe to our newsletter?
+    newsletter_description: Stay updated about new features and inspiring stories of how Loomio is being used by organizations around the world
+    subscribe_to_newsletter: Subscribe to Loomio newsletter
+    form_incomplete: Please complete all fields on the form to continue
+    success: Success!
+    taken_first_step: You've taken the first step towards collaborative decision-making with Loomio.
+    account_created_for_you: We have created a user account for %{email} and a group on Loomio.
+    please_sign_in_to_continue: Please sign in to continue.
+    please_complete_this_field: Please complete this field
+    please_enter_a_valid_email_address: Please enter a valid email address
+    please_accept_the_terms: Please accept the terms
   tasks:
     tasks: Tasks
     your_tasks: Your tasks
@@ -2938,7 +2956,7 @@ en:
     front_page: Front page
 
   group_survey:
-    describe_other: Select the category that best describes your group
+    describe_other: Which category best describes your organization
     categories:
       party: Political party
       coop: Cooperative

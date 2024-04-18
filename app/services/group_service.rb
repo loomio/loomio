@@ -75,8 +75,8 @@ module GroupService
     Membership.active.where(group_id: group.id, user_id: users.pluck(:id))
   end
 
-  def self.create(group:, actor: )
-    actor.ability.authorize! :create, group
+  def self.create(group:, actor: , skip_authorize: false)
+    actor.ability.authorize!(:create, group) unless skip_authorize
 
     return false unless group.valid?
 

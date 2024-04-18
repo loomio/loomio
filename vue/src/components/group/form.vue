@@ -71,7 +71,9 @@ export default
         Flash.success(`group_form.messages.group_${this.actionName}`);
         EventBus.$emit('closeModal');
         this.$router.push(`/g/${groupKey}`);
-    }).catch(error => true);
+      }).catch(error => {
+        Flash.custom(error.error, 'error', 5000);
+      })
     },
 
 

@@ -26,7 +26,7 @@ const ThreadTemplateIndexPage = () => import('./components/thread_template/index
 const ThreadTemplateBrowsePage = () => import('./components/thread_template/browse_page');
 const UserPage = () => import('./components/user/page');
 const ThreadsPage = () => import('./components/threads/page');
-const DemosPage = () => import('./components/demos/index.vue');
+const StartTrialPage = () => import('./components/start_trial/page.vue');
 
 import './config/catch_navigation_duplicated.js';
 import Vue from 'vue';
@@ -64,8 +64,8 @@ const router = new Router({
   },
 
   routes: [
-    {path: '/demo', component: DemosPage},
-    {path: '/try', redirect: '/g/new'},
+    {path: '/demo', redirect: '/try'},
+    {path: '/try', component: StartTrialPage},
     {path: '/users/sign_in', redirect: '/dashboard' },
     {path: '/users/sign_up', redirect: '/dashboard' },
     {path: '/tasks', component: TasksPage},
