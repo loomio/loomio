@@ -585,6 +585,7 @@ GEM
     unicode-display_width (2.5.0)
     uri (0.13.0)
     uuidtools (2.2.0)
+    victor (0.3.4)
     video_info (4.2.0)
       iso8601 (~> 0.13.0)
       net_http_timeout_errors (~> 1.0.0)
@@ -685,6 +686,7 @@ DEPENDENCIES
   tzinfo-data
   uri (= 0.13.0)
   uuidtools
+  victor
   video_info
   webmock
 
