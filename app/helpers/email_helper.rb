@@ -115,7 +115,7 @@ module EmailHelper
   end
 
   def google_pie_chart_url(poll)
-    "https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=256x256&chd=t:#{proposal_sparkline(poll)}&chco=#{proposal_colors(poll)}"
+    pie_chart_url(scores: proposal_sparkline(poll), colors: proposal_colors(poll))
   end
 
   def proposal_sparkline(poll)
@@ -123,7 +123,7 @@ module EmailHelper
   end
 
   def proposal_colors(poll)
-    poll.results.map{|h|h[:color]}.map{|c| c.gsub('#', '')}.join('|')
+    poll.results.map{|h|h[:color]}.map{|c| c.gsub('#', '')}.join(',')
   end
 
   def dot_vote_stance_choice_percentage_for(stance, stance_choice)
