@@ -9,7 +9,7 @@ class ReceivedEmailService
   end
 
   def self.route_all
-    ReceivedEmail.unreleased.where(group_id: nil).each do |email|
+    ReceivedEmail.unreleased.each do |email|
       route(email)
     end
   end
