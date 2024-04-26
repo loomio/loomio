@@ -244,7 +244,7 @@ GEM
     google-cloud-env (2.1.1)
       faraday (>= 1.0, < 3.a)
     google-cloud-errors (1.4.0)
-    google-cloud-storage (1.50.0)
+    google-cloud-storage (1.51.0)
       addressable (~> 2.8)
       digest-crc (~> 0.4)
       google-apis-core (~> 0.13)
@@ -633,7 +633,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   friendly_id (~> 5.5.1)
-  google-cloud-storage (~> 1.50)
+  google-cloud-storage (~> 1.51)
   google-cloud-translate
   gravtastic
   haml-rails (~> 2.1.0)
