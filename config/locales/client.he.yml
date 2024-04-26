@@ -727,6 +727,8 @@ he:
       thread_admin: מנהל שרשור
       last_read_at: נצפה לאחרונה %{time}
       has_not_read_thread: לא צפה בשרשור
+      has_not_joined_yet: עדיין לא הצטרף
+      has_not_joined_yet_hint: משתמש זה לא קיבל את הזמנתו להצטרף ל-Loomio ולא יקבל הודעות נוספות עד שיקבל
     group_form:
       search_placeholder: חפש אנשים...
       modal_title: בחר את חברי הקבוצה
@@ -2367,6 +2369,9 @@ he:
   subgroups_panel:
     search_subgroups_of_name: חפש בקבוצות משנה של %{name}
     group_without_subgroups: "%{name} ללא תת-קבוצות"
+    need_a_space_for_your_team: זקוק למרחב פריצה לצוות שלך?
+    explainer: 'תת-קבוצות הן מקומות פרטיים שבהם צוותים בתוך הארגון שלך יכולים לנהל דיונים ולקבל החלטות. התוכן בתתי קבוצות הוא פרטי משאר הארגון. דוגמאות לתתי קבוצות: דירקטוריון, החלטות גיוס או צוות פרויקטים'
+    upgrade: כדי לפתוח תת-קבוצה, תצטרך <a class="text-decoration-underline" href="%{url}" target="_blank">לשדרג את מנוי ה-Loomio שלך.</a>
   poll_common_action_panel:
     from_the_thread: מתוך תבנית השרשור
     from_the_group: מתוך הקבוצה
@@ -2573,3 +2578,21 @@ he:
       decline_prompt: יש משהו שהיית רוצה להגיד?
   add_poll_to_thread_modal:
     success: הצלחה, %{pollType} נוסף לשרשור!
+  start_trial:
+    title: התחל ניסיון חינם של Loomio
+    intro: תודה על התעניינותך ב-Loomio. אנו שמחים להציע לך ניסיון חינם של %{day} ימים כדי שתוכל לראות אם Loomio מתאים לארגון שלך.
+    lets_get_started: בואו נתחיל!
+    your_name: השם שלך
+    your_email: האימייל שלך
+    how_would_you_like_to_use_loomio: כיצד תרצה להשתמש ב-Loomio בארגון שלך?
+    newsletter_intro: האם תרצה להירשם לניוזלטר שלנו?
+    newsletter_description: הישאר מעודכן לגבי תכונות חדשות וסיפורים מעוררי השראה על האופן שבו משתמשים ב-Loomio על ידי ארגונים ברחבי העולם
+    subscribe_to_newsletter: הירשם לניוזלטר של Loomio
+    form_incomplete: אנא מלא את כל השדות בטופס כדי להמשיך
+    success: הַצלָחָה!
+    taken_first_step: עשית את הצעד הראשון לקראת קבלת החלטות בשיתוף פעולה עם Loomio.
+    account_created_for_you: יצרנו חשבון משתמש עבור %{email} וקבוצה ב-Loomio.
+    please_sign_in_to_continue: אנא היכנס כדי להמשיך.
+    please_complete_this_field: נא למלא שדה זה
+    please_enter_a_valid_email_address: אנא הזן כתובת דוא"ל תקנית
+    please_accept_the_terms: אנא קבל את התנאים

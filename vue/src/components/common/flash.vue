@@ -39,7 +39,7 @@ v-snackbar.flash-root(
   span.flash-root__message(
     v-if="flash.text"
     role="status"
-    aria-live="assertive")
+    aria-live="assertive") {{flash.text}}
   v-progress-linear.mt-2(v-if="flash.level == 'wait'" :value="seconds")
   .flash-root__action(v-if="flash.actionFn")
     a(@click="flash.actionFn()", v-t="flash.action")

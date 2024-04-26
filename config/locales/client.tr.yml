@@ -736,6 +736,8 @@ tr:
       thread_admin: Konu yöneticisi
       last_read_at: Son görüntülenen %{time}
       has_not_read_thread: Konuyu görüntülemedi
+      has_not_joined_yet: Henüz katılmadı
+      has_not_joined_yet_hint: Bu kullanıcı, Loomio'ya katılma davetini kabul etmemiştir ve kabul edene kadar başka bildirim almayacaktır.
     group_form:
       search_placeholder: İnsanları arayın...
       modal_title: Grup üyelerini seçin
@@ -2124,6 +2126,9 @@ tr:
   subgroups_panel:
     search_subgroups_of_name: "%{name} alt gruplarını ara"
     group_without_subgroups: Alt grupları olmayan %{name}
+    need_a_space_for_your_team: Ekibiniz için bir mola alanına mı ihtiyacınız var?
+    explainer: 'Alt gruplar, kuruluşunuzdaki ekiplerin tartışabileceği ve kararlar alabileceği özel yerlerdir. Alt gruplardaki içerik kuruluşun geri kalanından özeldir. Alt gruplara örnekler: Yönetim Kurulu, İşe alma kararları veya Proje ekibi'
+    upgrade: Bir alt grup başlatmak için <a class="text-decoration-underline" href="%{url}" target="_blank">Loomio aboneliğinizi yükseltmeniz gerekir.</a>
   poll_common_action_panel:
     from_the_thread: Konu şablonundan
     from_the_group: Gruptan
@@ -2554,3 +2559,21 @@ tr:
     privacy_policy: Gizlilik Politikası
     terms_of_service: Kullanım Şartları
     front_page: Ön Sayfa
+  start_trial:
+    title: Loomio'nun ücretsiz deneme sürümünü başlatın
+    intro: Loomio'ya gösterdiğiniz ilgi için teşekkür ederiz. Loomio'nun kuruluşunuza uygun olup olmadığını görebilmeniz için size %{day} günlük ücretsiz deneme olanağı sunmaktan mutluluk duyuyoruz.
+    lets_get_started: Başlayalım!
+    your_name: Adınız
+    your_email: E-posta adresiniz
+    how_would_you_like_to_use_loomio: Kuruluşunuzda Loomio'yu nasıl kullanmak istersiniz?
+    newsletter_intro: Bizim bültenimize kaydolmak ister miydiniz?
+    newsletter_description: Loomio'nun dünya çapındaki kuruluşlar tarafından nasıl kullanıldığına dair yeni özellikler ve ilham verici hikayeler hakkında güncel kalın
+    subscribe_to_newsletter: Loomio bültenine abone olun
+    form_incomplete: Devam etmek için lütfen formdaki tüm alanları doldurun
+    success: Başarı!
+    taken_first_step: Loomio ile işbirliğine dayalı karar alma yolunda ilk adımı attınız.
+    account_created_for_you: "%{email} için bir kullanıcı hesabı ve Loomio'da bir grup oluşturduk."
+    please_sign_in_to_continue: Devam etmek için giriş yapın.
+    please_complete_this_field: Lütfen bu alanı doldurun
+    please_enter_a_valid_email_address: Geçerli bir e
+    please_accept_the_terms: Lütfen şartları kabul edin

@@ -41,8 +41,8 @@ module Ability::Discussion
 
     can [:add_guests], ::Discussion do |discussion|
       if discussion.group_id
-        discussion.group.admins.exists?(user.id) ||
-        (discussion.group.members_can_add_guests && discussion.members.exists?(user.id))
+        Subscription.for(discussion.group).allow_guests &&
+        (discussion.group.admins.exists?(user.id) || (discussion.group.members_can_add_guests && discussion.members.exists?(user.id)))
       else
         !discussion.id || discussion.admins.exists?(user.id)
       end

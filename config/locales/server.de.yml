@@ -436,3 +436,8 @@ de:
   event_mailer:
     received_email:
       explaination_html: "<p>Sie erhalten diese E-Mail, weil Sie Administrator der Loomio-Gruppe sind: %{group}.</p><p> Die Gruppe hat eine E-Mail von einer unbekannten E-Mail-Adresse erhalten.</p><p> Wenn die Nachricht von einem Mitglied der Gruppe stammt, überprüfen Sie bitte die E-Mail und wählen Sie das Mitglied aus.</p><p> Wenn die Nachricht unerwünscht ist, können Sie alle weiteren E-Mails von dieser Adresse blockieren.</p>"
+  unauthorized:
+    manage:
+      all: Nicht autorisiert zum %{action} %{subject}.
+    add_guests:
+      all: Sie müssen Ihr Loomio-Abonnement aktualisieren, um Gäste zu Ihrem %{subject} hinzuzufügen. Alternativ können Sie sie einladen, Mitglieder Ihrer Gruppe zu werden.

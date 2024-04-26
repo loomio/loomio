@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
+      resources :trials, only: [:create]
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
       resources :chatbots, only: [:create, :destroy, :index, :update] do
@@ -367,7 +368,7 @@ Rails.application.routes.draw do
 
   get '/start_group', to: redirect('/try')
 
-  get 'try'                                => redirect("/g/new")
+  get 'try'                                => 'application#index', as: :start_trial
   get 'dashboard'                          => 'application#index', as: :dashboard
   get 'dashboard/:filter'                  => 'application#index'
   get 'inbox'                              => 'application#index', as: :inbox

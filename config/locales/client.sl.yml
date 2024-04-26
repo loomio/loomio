@@ -693,6 +693,8 @@ sl:
       thread_admin: Skrbnik teme
       last_read_at: Zadnji ogled %{time}
       has_not_read_thread: Ni si ogledal niti
+      has_not_joined_yet: Se še ni pridružil
+      has_not_joined_yet_hint: Ta uporabnik ni sprejel njihovega povabila, da se pridruži Loomio, in ne bo prejel nadaljnjih obvestil, dokler tega ne stori
     flash:
       success: "%{count} poslanih obvestil"
   action_dock:
@@ -2120,6 +2122,9 @@ sl:
   subgroups_panel:
     search_subgroups_of_name: Išči podskupine %{name}
     group_without_subgroups: "%{name} brez podskupin"
+    need_a_space_for_your_team: Potrebujete prostor za oddih za svojo ekipo?
+    explainer: 'Podskupine so zasebna mesta, kjer lahko ekipe v vaši organizaciji razpravljajo in sprejemajo odločitve. Vsebina v podskupinah je zasebna za preostalo organizacijo. Primeri podskupin: odbor, odločitve o zaposlovanju ali projektna skupina'
+    upgrade: Če želite ustanoviti podskupino, boste morali <a class="text-decoration-underline" href="%{url}" target="_blank">nadgraditi svojo naročnino na Loomio.</a>
   poll_common_action_panel:
     from_the_thread: Iz predloge niti
     from_the_group: Iz skupine
@@ -2537,3 +2542,21 @@ sl:
     privacy_policy: Politika zasebnosti
     terms_of_service: Pogoji storitve
     front_page: Prednja stran
+  start_trial:
+    title: Začnite brezplačno preskusno različico Loomio
+    intro: Hvala za vaše zanimanje za Loomio. Z veseljem vam ponujamo %{day}-dnevno brezplačno preskusno različico, da boste lahko videli, ali je Loomio primeren za vašo organizacijo.
+    lets_get_started: Začnimo!
+    your_name: Tvoje ime
+    your_email: Vaš e-poštni naslov
+    how_would_you_like_to_use_loomio: Kako želite uporabljati Loomio v vaši organizaciji?
+    newsletter_intro: Bi se želeli naročiti na naše novice?
+    newsletter_description: Bodite na tekočem z novimi funkcijami in navdihujočimi zgodbami o tem, kako organizacije po vsem svetu uporabljajo Loomio
+    subscribe_to_newsletter: Naročite se na glasilo Loomio
+    form_incomplete: Za nadaljevanje izpolnite vsa polja na obrazcu
+    success: uspeh!
+    taken_first_step: Z Loomio ste naredili prvi korak k skupnemu odločanju.
+    account_created_for_you: Ustvarili smo uporabniški račun za %{email} in skupino na Loomio.
+    please_sign_in_to_continue: Za nadaljevanje se prijavite.
+    please_complete_this_field: Izpolnite to polje
+    please_enter_a_valid_email_address: Vnesite veljaven elektronski naslov
+    please_accept_the_terms: Sprejmite pogoje

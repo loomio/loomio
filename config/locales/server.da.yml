@@ -347,3 +347,8 @@ da:
   event_mailer:
     received_email:
       explaination_html: "<p>Du modtager denne e-mail, fordi du er administrator for Loomio-gruppen: %{group}.</p><p> Gruppen har modtaget en e-mail fra en ikke-genkendt e-mailadresse.</p><p> Hvis beskeden er fra et medlem af gruppen, skal du gennemgå e-mailen og vælge medlemmet.</p><p> Hvis beskeden er uønsket, kan du blokere yderligere e-mails fra den adresse.</p>"
+  unauthorized:
+    manage:
+      all: Ikke autoriseret til %{action} %{subject}.
+    add_guests:
+      all: Du skal opgradere dit Loomio-abonnement for at tilføje gæster til dit %{subject}. Alternativt kan du invitere dem til at være medlemmer af din gruppe.

@@ -715,6 +715,8 @@ sv:
       thread_admin: Trådadmin
       last_read_at: Senast visade %{time}
       has_not_read_thread: Har inte sett tråden
+      has_not_joined_yet: Har inte gått med ännu
+      has_not_joined_yet_hint: Den här användaren har inte accepterat sin inbjudan att gå med i Loomio och kommer inte att få ytterligare meddelanden förrän de gör det
     group_form:
       search_placeholder: Sök efter personer...
       modal_title: Välj gruppmedlemmar
@@ -2112,6 +2114,9 @@ sv:
   subgroups_panel:
     search_subgroups_of_name: Sök i undergrupper av %{name}
     group_without_subgroups: "%{name} utan undergrupper"
+    need_a_space_for_your_team: Behöver du ett break-out-utrymme för ditt team?
+    explainer: 'Undergrupper är privata platser där team inom din organisation kan föra diskussioner och fatta beslut. Innehåll i undergrupper är privat från resten av organisationen. Exempel på undergrupper: Styrelse, Anställningsbeslut eller Projektteam'
+    upgrade: För att starta en undergrupp måste du <a class="text-decoration-underline" href="%{url}" target="_blank">uppgradera din Loomio-prenumeration.</a>
   poll_common_action_panel:
     from_the_thread: Från trådmallen
     from_the_group: Från gruppen
@@ -2537,3 +2542,21 @@ sv:
     privacy_policy: Integritetspolicy
     terms_of_service: Användarvillkor
     front_page: Framsida
+  start_trial:
+    title: Starta en gratis provperiod av Loomio
+    intro: Tack för ditt intresse för Loomio. Vi är glada över att kunna erbjuda dig en %{day}-dagars kostnadsfri provperiod så att du kan se om Loomio passar din organisation.
+    lets_get_started: Låt oss börja!
+    your_name: Ditt namn
+    your_email: Din email
+    how_would_you_like_to_use_loomio: Hur skulle du vilja använda Loomio i din organisation?
+    newsletter_intro: Vill du prenumerera på vårt nyhetsbrev?
+    newsletter_description: Håll dig uppdaterad om nya funktioner och inspirerande berättelser om hur Loomio används av organisationer runt om i världen
+    subscribe_to_newsletter: Prenumerera på Loomios nyhetsbrev
+    form_incomplete: Fyll i alla fält på formuläret för att fortsätta
+    success: Framgång!
+    taken_first_step: Du har tagit det första steget mot beslutsfattande i samarbete med Loomio.
+    account_created_for_you: Vi har skapat ett användarkonto för %{email} och en grupp på Loomio.
+    please_sign_in_to_continue: Logga in för att fortsätta.
+    please_complete_this_field: Fyll i detta fält
+    please_enter_a_valid_email_address: Ange en giltig e-postadress
+    please_accept_the_terms: Vänligen acceptera villkoren

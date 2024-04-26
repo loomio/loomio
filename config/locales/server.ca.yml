@@ -335,3 +335,8 @@ ca:
   event_mailer:
     received_email:
       explaination_html: "<p>Heu rebut aquest correu electrònic perquè sou administrador del grup Loomio: %{group}.</p><p> El grup ha rebut un correu electrònic d'una adreça electrònica no reconeguda.</p><p> Si el missatge és d'un membre del grup, reviseu el correu electrònic i seleccioneu el membre.</p><p> Si el missatge no és desitjat, podeu bloquejar qualsevol altre correu electrònic des d'aquesta adreça.</p>"
+  unauthorized:
+    manage:
+      all: No està autoritzat a %{action} %{subject}.
+    add_guests:
+      all: Heu d'actualitzar la vostra subscripció a Loomio per afegir convidats al vostre %{subject}. Alternativament, podeu convidar-los a ser membres del vostre grup.
