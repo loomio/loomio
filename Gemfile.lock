@@ -164,7 +164,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.12.0)
       devise (>= 4.9.0)
-    devise-pwned_password (0.1.11)
+    devise-pwned_password (0.1.12)
       devise (~> 4)
       pwned (~> 2.4)
     diff-lcs (1.5.1)
@@ -359,7 +359,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     maxminddb (0.1.22)
-    method_source (1.0.0)
+    method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
