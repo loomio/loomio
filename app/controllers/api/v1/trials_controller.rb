@@ -27,7 +27,9 @@ class API::V1::TrialsController < API::V1::RestfulController
     GroupService.create(group: group, actor: user, skip_authorize: true)
 
     raise "start trial failed" unless group.valid?
+    
+    group_path = group.handle ? group_handle_path(group.handle) : group_path(group)
 
-    render json: {success: :ok, group_path: group_handle_path(group.handle)}
+    render json: {success: :ok, group_path: group_path}
   end
 end
