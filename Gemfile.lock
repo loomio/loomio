@@ -64,8 +64,9 @@ GEM
     active_record_extended (3.2.1)
       activerecord (>= 5.2, < 7.2.0)
       pg (< 3.0)
-    activeadmin (3.2.0)
+    activeadmin (3.2.1)
       arbre (~> 1.2, >= 1.2.1)
+      csv
       formtastic (>= 3.1)
       formtastic_i18n (>= 0.4)
       inherited_resources (~> 1.7)
@@ -359,7 +360,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     maxminddb (0.1.22)
-    method_source (1.0.0)
+    method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
@@ -611,7 +612,7 @@ DEPENDENCIES
   actionpack-page_caching
   active_model_serializers (~> 0.8.1)
   active_record_extended
-  activeadmin (~> 3.2.0)
+  activeadmin (~> 3.2.1)
   activerecord-import (= 1.6.0)
   aws-sdk-s3
   blazer
