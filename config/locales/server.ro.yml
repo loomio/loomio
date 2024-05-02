@@ -1,175 +1,4 @@
----
 ro:
-  explore:
-    header: Explreaza grupuri publice
-  activerecord:
-    errors:
-      messages:
-        blank: nu poate fi necompletat
-        invalid: nu este o valoare valida
-  errors:
-    404:
-      title: Nu am găsit
-    messages:
-      spoofed_media_type: Continutul acelui fisier nu corespunde cu numele lui
-      email: nu este o adresă de e-mail validă
-      pwned_password: Această parolă a apărut anterior într-o încălcare a datelor și nu ar trebui niciodată utilizată
-    clear_cache: Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului.
-    noscript: Loomio necesită javascript pentru a funcționa! Vă rugăm să activați javascript în browser pentru a continua
-    upgrade_browser: Uh oh! Browserul dvs. web este prea vechi și este posibil ca Loomio să nu funcționeze corect. Vă rugăm <a href="https://browser-update.org/update.html">să actualizați browserul.</a>
-    return_home: Intoarce-te acasa
-    not_found: Fișierul 404 nu a fost găsit.
-  group:
-    stats:
-      members: Membri
-      threads: Subiecte
-      comments: Comentarii
-      poll_types:
-        proposal: Propunere
-        count: Numara
-        choose: Alege
-        allocate: Aloca
-        score: Scor
-        rank: Rang
-        time: Sondaj de timp
-      group_stats: Statistici de grup
-      org_stats: Statistici ale organizației (inclusiv subgrupuri)
-      visits: Vizite
-      subgroups: Subgrupuri
-      polls: Sondaje
-      votes: Voturi
-      general: General
-    error:
-      handle_must_begin_with_parent_handle: Trebuie să înceapă cu %{parent_handle}-
-      no_public_trials: Vă rugăm să faceți upgrade de la versiunea de încercare pentru a modifica setarea de confidențialitate a grupului
-  poll:
-    error:
-      cannot_add_options: Nu poti adauga optiuni la sondajul acesta
-      cannot_remove_options: Nu poti sterge optiuni din acest sondaj
-      must_have_options: Intr-un sondaj trebuie sa existe macar o optiune
-      must_be_in_the_future: Trebuie să fie în viitor
-      templates_cannot_close: Șabloanele nu se pot închide
-    export:
-      title: Titlu
-      author: Autor
-      email: Email
-      engagement: Implicat
-      details: Detalii
-      group_name: Numele Grupului
-      total: Total
-      percent_voted: "%{num}/%{denom} (%{percent}) membri și-au declarat poziția"
-      user_id: ID-ul de utilizator
-      created_at: Creat la
-      closing_at: Închidere la
-      closed_at: Închis la
-      is_latest: Este cel mai recent
-      stances: Posturi
-      participants: Participanții
-      discussion_title: Titlul subiectului
-      outcome_author: Autor de rezultat
-      outcome_created_at: Rezultat creat la
-      outcome_statement: Declarație de rezultat
-      poll_url: Adresa URL a sondajului
-      reason: Motiv
-      participant: Participant
-      also_available: Disponibil și în
-    waiting_for_votes_from: Astept voturile de la
-  stance:
-    error:
-      too_short: Te rog selecteaza o optiune
-  email:
-    login:
-      login: Intra in contul %{name}
-      subject: Conectați-vă la %{site_name}
-      intro: Acesta este linkul dvs. pentru a vă conecta la %{site_name}
-      intro_code: Acesta este codul dvs. pentru a vă conecta la %{site_name}
-    contact_request:
-      footer: Poti sa raspunzi direct %{name} prin raspuns la acest email
-      subject: "%{name} ar dori să se conecteze cu tine pe %{site_name}!"
-      intro: "%{name} (%{email}) v-a trimis o solicitare de conectare."
-    reset_password:
-      link_text: Reseteaza-ti parola
-      greeting: 'Bună %{name} Iată un link pe care îl puteți folosi pentru a reseta parola din contul dvs. Loomio:'
-      signoff: Ați primit acest lucru deoarece e-mailul dvs. a fost introdus în formularul „Am uitat parola” de pe %{hostname}. Cu toate acestea, parola dvs. nu va fi schimbată până când veți urma linkul de mai sus și completați formularul. Dacă întâmpinați în continuare probleme la conectare, răspundeți la acest e-mail pentru a contacta o persoană de asistență.
-    by_who: de catre %{person}
-    reply_to_this_discussion: Raspunde acestei discutii
-    view_group: Vizualizeaza grupul
-    to_join_group:
-      subject: "%{member} te-a invitat sa intri in %{group_name} pe %{site_name}"
-      invitation_text: "%{member} te-a invitat sa te alaturi grupului lor %{group_name}."
-      invitation_text_html: te-a invitat sa te alaturi grupului lor
-      link_help: 'Apasa pe linkul de mai jos pentru a accepta invitatia:'
-      accept_invitation: Accepta invitatia
-      stop_emails: Nu mai primiți e-mailuri de la %{site_name}
-      accepting_is_important: Este important să vă acceptați invitația, pentru a nu rata notificări despre deciziile care vă implică.
-    user_added_to_group:
-      link_help: 'Apasa pe linkul de mai jos pentru a intra in grup:'
-      subject: "%{who} te-a adăugat la %{which_group} pe %{site_name}"
-      content: "%{who} te-a adăugat la %{which_group}."
-      content_html: "<strong>%{who}</strong> te-a adăugat la <strong>%{which_group}</strong> ."
-    unsubscribe: 'Dezabonare sau schimbarea preferintelor de email:'
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
-    catch_up:
-      daily_subject: Ieri pe %{site_name}
-      do_not_reply: Te rugam nu raspunde acestui email.
-      mark_as_read: Marcheaza ca citit
-      thanks_for_reading: Multumesc pentru lectura, o zi buna!
-      marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
-      click_here: Apasa aici
-      weekly_subject: Săptămâna trecută pe %{site_name}
-      other_subject: Recent pe %{site_name}
-    group_membership_approved:
-      subject: Cererea ta de a te alatura grupului %{group_name} a fost acceptata
-      join_group: Alatura-te grupului
-      intro: Solicitarea dvs. de acces la grupul %{group_name} a fost aprobată.
-      intro_html: Solicitarea dvs. de acces la grupul <strong>%{group_name}</strong> a fost aprobată.
-      link_help: 'Faceți clic pe linkul de mai jos pentru a vă alătura %{group_name} și a începe:'
-    membership_request:
-      subject: "%{who} a cerut sa intre in %{which_group}"
-      view_group: Aici poti aproba sau nu cererea
-      button_text: Vizualizeaza cerere
-      intro_html: a solicitat acces la unul dintre grupurile dvs.
-    common:
-      or_enter_code: Sau introduceți codul de mai jos
-      resend: Acesta va expira în 24 de ore și poate fi folosit o singură dată
-    reactivate:
-      subject: Reactivați-vă contul %{site_name}
-      intro: Bună %{name}, iată un link pentru a vă reactiva contul %{site_name}
-      login: Reactivați %{name}
-    loomio_app_description: Un loc sigur și ușor de utilizat pentru ca organizațiile să ia decizii împreună.
-    resend_to_join_group:
-      subject: "%{member} vă așteaptă să vă alăturați %{group_name} pe %{site_name}"
-  discussion_mailer:
-    reply_or_view_online_html: Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>.
-    turn_off_notifications_html: "<a href='%{url}'>Nu mai trimite email</a> pentru aceasta discutie."
-    change_email_preferences_html: Modifica-ti <a href='%{email_preferences_url}'> preferintele de email</a>.
-    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Dezabonați-vă</a> de la anunțuri ulterioare din acest thread."
-    unsubscribe_from_new_comment_html: "<a href='%{url}'>Dezabonați-vă</a> de la comentariile din acest thread."
-    unsubscribe_from_comment_replied_to_html: Aceasta este o notificare de răspuns.
-    unsubscribe_from_user_mentioned_html: Aceasta este o notificare de mențiune.
-    discussion_edited:
-      inline: "%{actor} a editat contextul firului de discuție"
-    discussion_closed:
-      inline: "%{actor} a închis firul"
-  footer:
-    about: Despre
-    blog: Blog
-    contact: Contact
-    help: Ajutor
-    privacy: Confidentialitate
-    pricing: Tarif
-    public_groups: Grupuri publice
-    terms: Termeni
-    independent_install_html: '%{hostname} gazduieste o copie Loomio independenta: <a href="http://github.com/loomio/loomio">vezi mai mult</a>.'
-  password_reset:
-    reset_email_timeframe: In aproximativ 5 minute vei primi un email. Daca nu apare verifica si recipientul spam.
-    length_restriction: Parola trebuie sa contina cel putin 8 caractere.
-    forbidden_passwords: Parole comune cum ar fi “parola” nu sunt permise, in vederea sigurantei contului tau.
-    change_your_password: Schimbați-vă parola
-    change_my_password: Schimbaţi parola
-    confirm_new_password: Confirmă parola
-    new_password: Parolă Nouă
-    email_guidelines_html: "<p>Introdu adresa ta de e-mail și vi se va trimite un link de resetare a parolei.</p><p> Dacă vă conectați în mod normal prin Facebook sau Google, introduceți adresa de e-mail asociată contului respectiv.</p>"
   discussion_templates:
     blank:
       process_name: Șablon gol
@@ -258,14 +87,98 @@ ro:
       process_introduction: "<p>Introduceți documentul împreună cu orice informații de fundal. Precizați scopul documentului pentru a vă ajuta să vă concentrați.</p><p> Invitați oamenii să contribuie cu informații și cu expertiza lor și folosiți-o pentru a încadra documentul. Recunoașteți și luați în considerare feedback-ul și contribuțiile oamenilor.</p><p> Integrați contribuțiile într-o primă schiță a documentului și proiectele succesive până când acesta este gata de aprobare.</p><p> Utilizați un sondaj de verificare Sense pentru a analiza opiniile și a clarifica orice probleme legate de proiect.</p><p> Odată ce feedback-ul este luat în considerare și încorporat în document, treceți la aprobare sau acord cu o propunere de consimțământ sau consens.</p><p> Firul devine o înregistrare clară a progresului creării documentelor și a deciziilor luate.</p>"
       description: <h3 id="what-is-the-purpose-of-the-document">Care este scopul documentului?</h3><p></p><h3 id="why-is-this-important"> De ce este acest lucru important?</h3><p></p><h3 id="what-are-you-asking-people-to-do"> Ce le ceri oamenilor să facă?</h3><p></p>
       document: Document
-  user:
-    deleted_user: Utilizator șters
-    placeholder_name: Utilizator invitat (%{hostname})
+  explore:
+    header: Explreaza grupuri publice
+  activerecord:
+    errors:
+      messages:
+        blank: nu poate fi necompletat
+        invalid: nu este o valoare valida
+  unauthorized:
+    manage:
+      all: "Neautorizat pentru %{action} %{subject}."
+    add_guests:
+      all: "Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați la %{subject}. Alternativ, îi puteți invita să fie membri ai grupului dvs."
+  errors:
+    clear_cache: "Problemă la încărcare detectată. Țineți apăsat Shift și apăsați pe Reîncărcare sau ștergeți memoria cache a browserului."
+    404:
+      title: Nu am găsit
+    noscript: Loomio necesită javascript pentru a funcționa! Vă rugăm să activați javascript în browser pentru a continua
+    upgrade_browser: |-
+        Uh oh! Browserul dvs. web este prea vechi și este posibil ca Loomio să nu funcționeze corect. Vă rugăm <a href="https://browser-update.org/update.html">să actualizați browserul.</a>
+    return_home: Intoarce-te acasa
+    not_found: Fișierul 404 nu a fost găsit.
+    messages:
+      email: nu este o adresă de e-mail validă
+      spoofed_media_type: Continutul acelui fisier nu corespunde cu numele lui
+      pwned_password: Această parolă a apărut anterior într-o încălcare a datelor și nu ar trebui niciodată utilizată
+  group:
     error:
-      sign_in_required_html: Trebuie să fiți conectat pentru a continua. <a href="/dashboard" target="_blank">Conectați-vă</a> , apoi reîncărcați această pagină pentru a continua.
-      recaptcha: Nu am putut verifica dacă nu ești un robot. Vă rugăm să încercați din nou!
-      bad_login: Ne pare rău, acea parolă nu se potrivește cu cea pe care o avem în dosar
-      username_must_be_alphanumeric: Numele de utilizator trebuie să fie doar cu litere mici și cifre
+      handle_must_begin_with_parent_handle: "Trebuie să înceapă cu %{parent_handle}-"
+      no_public_trials: "Vă rugăm să faceți upgrade de la versiunea de încercare pentru a modifica setarea de confidențialitate a grupului"
+    stats:
+      group_stats: Statistici de grup
+      org_stats: Statistici ale organizației (inclusiv subgrupuri)
+      visits: Vizite
+      members: Membri
+      subgroups: Subgrupuri
+      threads: Subiecte
+      polls: Sondaje
+      votes: Voturi
+      comments: Comentarii
+      general: General
+      poll_types:
+        proposal: Propunere
+        count: Numara
+        choose: Alege
+        allocate: Aloca
+        score: Scor
+        rank: Rang
+        time: Sondaj de timp
+  user:
+    deleted_user: "Utilizator șters"
+    placeholder_name: "Utilizator invitat (%{hostname})"
+    error:
+      sign_in_required_html: |-
+          Trebuie să fiți conectat pentru a continua. <a href="/dashboard" target="_blank">Conectați-vă</a> , apoi reîncărcați această pagină pentru a continua.
+      recaptcha: "Nu am putut verifica dacă nu ești un robot. Vă rugăm să încercați din nou!"
+      bad_login: "Ne pare rău, acea parolă nu se potrivește cu cea pe care o avem în dosar"
+      username_must_be_alphanumeric: "Numele de utilizator trebuie să fie doar cu litere mici și cifre"
+  poll:
+    error:
+      cannot_add_options: Nu poti adauga optiuni la sondajul acesta
+      cannot_remove_options: Nu poti sterge optiuni din acest sondaj
+      must_have_options: Intr-un sondaj trebuie sa existe macar o optiune
+      must_be_in_the_future: Trebuie să fie în viitor
+      templates_cannot_close: Șabloanele nu se pot închide
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent}) membri și-au declarat poziția"
+      title: Titlu
+      author: Autor
+      email: Email
+      user_id: ID-ul de utilizator
+      created_at: Creat la
+      closing_at: Închidere la
+      closed_at: Închis la
+      is_latest: Este cel mai recent
+      engagement: Implicat
+      stances: Posturi
+      participants: Participanții
+      details: Detalii
+      group_name: Numele Grupului
+      discussion_title: Titlul subiectului
+      outcome_author: Autor de rezultat
+      outcome_created_at: Rezultat creat la
+      outcome_statement: Declarație de rezultat
+      poll_url: Adresa URL a sondajului
+      reason: Motiv
+      participant: Participant
+      also_available: Disponibil și în
+      total: Total
+    waiting_for_votes_from: "Astept voturile de la"
+  stance:
+    error:
+      too_short: Te rog selecteaza o optiune
   invitation:
     invitation_cancelled: Ne pare rău, această invitație a fost revocată de coordonatorul grupului. Vă rugăm să solicitați o altă invitație de la grupul dvs.
     invitation_already_used: Această invitație a fost deja folosită. Vă rugăm să vă conectați direct la loomio pentru a continua în grupul dvs.
@@ -274,67 +187,163 @@ ro:
     inactive: Inactiv
   base_mailer:
     via_loomio: "%{name} (prin %{site_name})"
+  event_mailer:
+    received_email:
+      explaination_html: |-
+          <p>Primiți acest e-mail deoarece sunteți administrator pentru grupul Loomio: %{group}.</p><p> Grupul a primit un e-mail de la o adresă de e-mail nerecunoscută.</p><p> Dacă mesajul este de la un membru al grupului, consultați e-mailul și selectați membrul.</p><p> Dacă mesajul este nedorit, puteți bloca orice e-mail suplimentar de la acea adresă.</p>
   user_mailer:
     group_export_ready:
       subject: Export de date de grup pentru %{group_name}
-      body_html: Descărcați datele grupului dvs. <a href="%{url}">aici</a> . Vă rugăm să rețineți că acest link va expira peste o săptămână.
-    deactivated:
-      subject: Contul dvs. de utilizator %{site_name} a fost dezactivat.
-      body_html: "<p>Dvs. sau cineva cu acces la contul dvs. v-ați dezactivat contul de utilizator Loomio.</p><p> Toate datele personale au fost eliminate din sistem.</p><p> Dacă doriți să recuperați acest cont de utilizator și comentariile și voturile asociate, vă rugăm să contactați asistența și referința: %{recovery_code}</p>"
+      body_html: |-
+          Descărcați datele grupului dvs. <a href="%{url}">aici</a> . Vă rugăm să rețineți că acest link va expira peste o săptămână.
+    redacted:
+      subject: "Contul dvs. de utilizator %{site_name} a fost șters"
+      body_html: |-
+          <p>Contul dvs. de utilizator %{site_name} a fost șters.</p><p> Toate datele de identificare personală au fost eliminate.</p><p> Dacă nu ați solicitat acest lucru, vă rugăm să contactați %{support_email}</p>
     accounts_merged:
-      subject: Conturile dvs. de utilizator %{site_name} au fost îmbinate.
-      body_html: Bună %{name}, Cele două conturi loomio au fost îmbinate într-un singur cont. Pentru a accesa loomio de acum înainte, utilizați <strong>%{email}</strong> când vă conectați.
+      subject: "Conturile dvs. de utilizator %{site_name} au fost îmbinate."
+      body_html: |-
+          Bună %{name}, Cele două conturi loomio au fost îmbinate într-un singur cont. Pentru a accesa loomio de acum înainte, utilizați <strong>%{email}</strong> când vă conectați.
     merge_verification:
-      subject: Verificați adresa dvs. de e-mail %{site_name} pentru îmbinare
-      body_html: "<p>Bună %{name},</p><p> A fost făcută o solicitare de îmbinare a contului dvs. de utilizator sub adresa <strong>%{source_email}</strong> cu contul care aparține acestei adrese, <strong>%{target_email}</strong> .</p><p> După finalizarea acestui proces, nu vă veți mai putea autentifica cu <strong>%{source_email}</strong> și numai cu <strong>%{target_email}</strong> .</p><p> Vă rugăm să confirmați că aceasta este ceea ce doriți să faceți.</p>"
+      subject: "Verificați adresa dvs. de e-mail %{site_name} pentru îmbinare"
+      body_html: |-
+          <p>Bună %{name},</p><p> A fost făcută o solicitare de îmbinare a contului dvs. de utilizator sub adresa <strong>%{source_email}</strong> cu contul care aparține acestei adrese, <strong>%{target_email}</strong> .</p><p> După finalizarea acestui proces, nu vă veți mai putea autentifica cu <strong>%{source_email}</strong> și numai cu <strong>%{target_email}</strong> .</p><p> Vă rugăm să confirmați că aceasta este ceea ce doriți să faceți.</p>
       verify: Verificați e-mailul și continuați
       confirm_page:
         confirm: Confirmați îmbinarea
-        body_html: "<p>Vă rugăm să confirmați că doriți să îmbinați contul de sub <strong>%{source_email}</strong> în contul de sub <strong>%{target_email}</strong> .</p><p> Contul dvs. de sub <strong>%{source_email}</strong> va fi șters și, ulterior, vă veți putea conecta numai prin <strong>%{target_email}</strong> .</p><p> Această schimbare este ireversibilă.</p>"
+        body_html: |-
+            <p>Vă rugăm să confirmați că doriți să îmbinați contul de sub <strong>%{source_email}</strong> în contul de sub <strong>%{target_email}</strong> .</p><p> Contul dvs. de sub <strong>%{source_email}</strong> va fi șters și, ulterior, vă veți putea conecta numai prin <strong>%{target_email}</strong> .</p><p> Această schimbare este ireversibilă.</p>
         merge: Îmbinați conturile
       complete_page:
         title: Îmbinare reușită!
-        body_html: <p>Fuzionarea conturilor dvs. de utilizator a avut succes. Veți primi în curând un e-mail de confirmare la <strong>%{target_email}</strong> .</p><p> Vă rugăm <a href="/contact" target="_blank">să ne contactați</a> dacă aveți întrebări suplimentare.</p>
-    redacted:
-      subject: Contul dvs. de utilizator %{site_name} a fost șters
-      body_html: "<p>Contul dvs. de utilizator %{site_name} a fost șters.</p><p> Toate datele de identificare personală au fost eliminate.</p><p> Dacă nu ați solicitat acest lucru, vă rugăm să contactați %{support_email}</p>"
+        body_html: |-
+            <p>Fuzionarea conturilor dvs. de utilizator a avut succes. Veți primi în curând un e-mail de confirmare la <strong>%{target_email}</strong> .</p><p> Vă rugăm <a href="/contact" target="_blank">să ne contactați</a> dacă aveți întrebări suplimentare.</p>
+  email:
+    common:
+      or_enter_code: Sau introduceți codul de mai jos
+      resend: Acesta va expira în 24 de ore și poate fi folosit o singură dată
+    login:
+      subject: Conectați-vă la %{site_name}
+      intro: Acesta este linkul dvs. pentru a vă conecta la %{site_name}
+      intro_code: Acesta este codul dvs. pentru a vă conecta la %{site_name}
+      login: Intra in contul %{name}
+    reactivate:
+      subject: Reactivați-vă contul %{site_name}
+      intro: Bună %{name}, iată un link pentru a vă reactiva contul %{site_name}
+      login: Reactivați %{name}
+    contact_request:
+      subject: "%{name} ar dori să se conecteze cu tine pe %{site_name}!"
+      intro: "%{name} (%{email}) v-a trimis o solicitare de conectare."
+      footer: "Poti sa raspunzi direct %{name} prin raspuns la acest email"
+    reset_password:
+      greeting: |-
+          Bună %{name} Iată un link pe care îl puteți folosi pentru a reseta parola din contul dvs. Loomio:
+      link_text: Reseteaza-ti parola
+      signoff: |-
+          Ați primit acest lucru deoarece e-mailul dvs. a fost introdus în formularul „Am uitat parola” de pe %{hostname}. Cu toate acestea, parola dvs. nu va fi schimbată până când veți urma linkul de mai sus și completați formularul. Dacă întâmpinați în continuare probleme la conectare, răspundeți la acest e-mail pentru a contacta o persoană de asistență.
+    by_who: de catre %{person}
+    reply_to_this_discussion: Raspunde acestei discutii
+    loomio_app_description: "Un loc sigur și ușor de utilizat pentru ca organizațiile să ia decizii împreună."
+    view_group: Vizualizeaza grupul
+    to_join_group:
+      subject: "%{member} te-a invitat sa intri in %{group_name} pe %{site_name}"
+      invitation_text: "%{member} te-a invitat sa te alaturi grupului lor %{group_name}."
+      invitation_text_html: "te-a invitat sa te alaturi grupului lor"
+      link_help: "Apasa pe linkul de mai jos pentru a accepta invitatia:"
+      accept_invitation: "Accepta invitatia"
+      stop_emails: "Nu mai primiți e-mailuri de la %{site_name}"
+      accepting_is_important: Este important să vă acceptați invitația, pentru a nu rata notificări despre deciziile care vă implică.
+    resend_to_join_group:
+      subject: "%{member} vă așteaptă să vă alăturați %{group_name} pe %{site_name}"
+    user_added_to_group:
+      subject: "%{who} te-a adăugat la %{which_group} pe %{site_name}"
+      content: "%{who} te-a adăugat la %{which_group}."
+      content_html: "<strong>%{who}</strong> te-a adăugat la <strong>%{which_group}</strong> ."
+      link_help: "Apasa pe linkul de mai jos pentru a intra in grup:"
+    unsubscribe: "Dezabonare sau schimbarea preferintelor de email:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> pentru dezabonare sau schimbarea preferintelor de email."
+    catch_up:
+      daily_subject: Ieri pe %{site_name}
+      weekly_subject: Săptămâna trecută pe %{site_name}
+      other_subject: Recent pe %{site_name}
+      do_not_reply: Te rugam nu raspunde acestui email.
+      mark_as_read: Marcheaza ca citit
+      thanks_for_reading: Multumesc pentru lectura, o zi buna!
+      marked_as_read_success: Tot continutul acestui email a fost marcat ca fiind citit
+      click_here: Apasa aici
+    group_membership_approved:
+      intro: "Solicitarea dvs. de acces la grupul %{group_name} a fost aprobată."
+      intro_html: "Solicitarea dvs. de acces la grupul <strong>%{group_name}</strong> a fost aprobată."
+      link_help: "Faceți clic pe linkul de mai jos pentru a vă alătura %{group_name} și a începe:"
+      subject: "Cererea ta de a te alatura grupului %{group_name} a fost acceptata"
+      join_group: "Alatura-te grupului"
+    membership_request:
+      intro_html: a solicitat acces la unul dintre grupurile dvs.
+      subject: "%{who} a cerut sa intre in %{which_group}"
+      view_group: Aici poti aproba sau nu cererea
+      button_text: Vizualizeaza cerere
   announcement_count_emails: "%{count} e-mailuri"
   email_actions:
     unfollowed_discussion: Ați dezactivat e-mailurile pentru fir.
+  discussion_mailer:
+    reply_or_view_online_html: "Raspunde acestui email direct sau <a href='%{url}'>vezi pe %{hostname}</a>."
+    turn_off_notifications_html: "<a href='%{url}'>Nu mai trimite email</a> pentru aceasta discutie."
+    change_email_preferences_html: "Modifica-ti <a href='%{email_preferences_url}'> preferintele de email</a>."
+    unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Dezabonați-vă</a> de la anunțuri ulterioare din acest thread."
+    unsubscribe_from_new_comment_html: "<a href='%{url}'>Dezabonați-vă</a> de la comentariile din acest thread."
+    unsubscribe_from_comment_replied_to_html: "Aceasta este o notificare de răspuns."
+    unsubscribe_from_user_mentioned_html: "Aceasta este o notificare de mențiune."
+    discussion_edited:
+      inline: "%{actor} a editat contextul firului de discuție"
+    discussion_closed:
+      inline: "%{actor} a închis firul"
+  footer:
+    about: Despre
+    blog: Blog
+    contact: Contact
+    help: Ajutor
+    privacy: Confidentialitate
+    pricing: Tarif
+    public_groups: Grupuri publice
+    terms: Termeni
+    independent_install_html: '%{hostname} gazduieste o copie Loomio independenta: <a href="http://github.com/loomio/loomio">vezi mai mult</a>.'
+  password_reset:
+    change_your_password: Schimbați-vă parola
+    change_my_password: Schimbaţi parola
+    confirm_new_password: Confirmă parola
+    new_password: Parolă Nouă
+    email_guidelines_html: |-
+        <p>Introdu adresa ta de e-mail și vi se va trimite un link de resetare a parolei.</p><p> Dacă vă conectați în mod normal prin Facebook sau Google, introduceți adresa de e-mail asociată contului respectiv.</p>
+    reset_email_timeframe: In aproximativ 5 minute vei primi un email. Daca nu apare verifica si recipientul spam.
+    length_restriction: Parola trebuie sa contina cel putin 8 caractere.
+    forbidden_passwords: Parole comune cum ar fi “parola” nu sunt permise, in vederea sigurantei contului tau.
   task_mailer:
     task_due_reminder:
-      subject: 'Memento de sarcină: %{name}'
-      greeting: 'Bună %{name}, următoarea sarcină urmează %{due}:'
-      view_task: Vizualizați pe %{site_name}
-      update_or_comment: Dacă ați finalizat deja această sarcină, vă rugăm să o bifați. Dacă nu este complet, vă rugăm să distribuiți o actualizare a progresului.
-      due_today: astăzi
-      due_in_count_days: în %{count} zile
+      subject: "Memento de sarcină: %{name}"
+      greeting: "Bună %{name}, următoarea sarcină urmează %{due}:"
+      view_task: "Vizualizați pe %{site_name}"
+      update_or_comment: "Dacă ați finalizat deja această sarcină, vă rugăm să o bifați. Dacă nu este complet, vă rugăm să distribuiți o actualizare a progresului."
+      due_today: "astăzi"
+      due_in_count_days: "în %{count} zile"
   group_mailer:
-    resend: 'METOARE: %{member} vă așteaptă să vă alăturați %{group_name}'
+    resend: "METOARE: %{member} vă așteaptă să vă alăturați %{group_name}"
     destroy_warning:
       subject: Grupul dvs. Loomio este programat pentru ștergere.
-      body: 'Grupul dvs. Loomio: „%{group}” a fost programat pentru ștergere de către %{deletor}. Dacă nu doriți ca grupul dvs. să fie șters, vă rugăm să răspundeți la acest e-mail. Dacă sunteți sigur că doriți să ștergeți grupul, nu trebuie să faceți nimic. Mulțumesc.'
+      body: |-
+          Grupul dvs. Loomio: „%{group}” a fost programat pentru ștergere de către %{deletor}. Dacă nu doriți ca grupul dvs. să fie șters, vă rugăm să răspundeți la acest e-mail. Dacă sunteți sigur că doriți să ștergeți grupul, nu trebuie să faceți nimic. Mulțumesc.
   poll_mailer:
     common:
       why_send_this: Primiți acest e-mail deoarece %{reason}
       view_on_loomio: Vizualizați-l pe %{site_name}
       create_outcome: Împărtășiți rezultatul
-      your_response: 'Ai votat:'
-      you_voted: Ai votat!
-      not_invited: Nu sunt invitate
+      your_response: "Ai votat:"
+      you_voted: "Ai votat!"
+      not_invited: "Nu sunt invitate"
       please_respond: Vă rugăm să răspundeți
-      time_zone: "(Ore afișate în %{zone})"
+      time_zone: (Ore afișate în %{zone})
       undecided_members: Membri nehotărâți (%{count})
       undecided_visitors: Oaspeți nehotărâți (%{count})
-      more_undecided: Încă %{count}...
+      more_undecided: "Încă %{count}..."
       vote_now: Voteaza acum
       you_have_until: Ai timp până la %{when} pentru a participa.
       people_have_voted: "%{nom} din %{dnom} persoane au participat (%{pct}%)"
-  event_mailer:
-    received_email:
-      explaination_html: "<p>Primiți acest e-mail deoarece sunteți administrator pentru grupul Loomio: %{group}.</p><p> Grupul a primit un e-mail de la o adresă de e-mail nerecunoscută.</p><p> Dacă mesajul este de la un membru al grupului, consultați e-mailul și selectați membrul.</p><p> Dacă mesajul este nedorit, puteți bloca orice e-mail suplimentar de la acea adresă.</p>"
-  unauthorized:
-    manage:
-      all: Neautorizat pentru %{action} %{subject}.
-    add_guests:
-      all: Trebuie să vă actualizați abonamentul Loomio pentru a adăuga invitați la %{subject}. Alternativ, îi puteți invita să fie membri ai grupului dvs.

@@ -1,4 +1,8 @@
 ga_IE:
+  start_trial:
+    your_name: D'ainm
+    your_email: Do sheoladh ríomhphoist
+    success: D'éirigh leis!
   templates:
     try_loomio: Bain triail as Loomio
   plan_names:
@@ -24,6 +28,7 @@ ga_IE:
   timezones:
     local: An t-am áitiúil (%{luach})
   common:
+    are_you_sure: An bhfuil tú cinnte?
     please_wait: Fan le do thoil
     version: Leagan
     no_results_found: Níor aimsíodh aon rud
@@ -269,12 +274,14 @@ ga_IE:
     email_label: Seoladh ríomhphoist
     introduction_label: Cén fáth is mian leat bheith mar chuid de?
   revision_history_modal:
+    started_by: 'Tosaithe ag <strong>%{name}</strong> '
     posted: Foilsithe
     current_revision: Is déanaí
   reactions_display:
     you: "Tusa"
   group_page:
     threads: Snáitheanna
+    decisions: Cinntí
     members: Comhaltaí
     settings: Socruithe
     subgroups: Fobhaiclí
@@ -396,8 +403,11 @@ ga_IE:
     locale_placeholder: Roghnaigh an teanga is mian leat
     location_label: 'Suíomh'
     update_profile: 'Nuashonraigh an bheathaisnéisín'
+    deactivate_account: 'Díghníomhachtaigh an cuntas'
   change_picture_form:
     use_gravatar: 'Bain feidhm as Gravatar'
+  deactivation_modal:
+    deactivate_introduction: 'Nuair a dhíghníomhachtaíonn tú do chuntas:'
   email_settings_page:
     monday: Dé Luain
     tuesday: Dé Máirt
@@ -497,6 +507,7 @@ ga_IE:
     proposal_title: Togra
     poll_title: Vótáil
   poll_common:
+    proposal: Togra
     have_your_say: Abair leat
     message: Teachtaireacht
     details: Mionsonraí
@@ -508,6 +519,7 @@ ga_IE:
     all: Uile
     closed: Dúnta
   members_panel:
+    all: Uile
     order_by_name: 'Ainm'
     header_name: 'Ainm'
     header_username: 'Ainm úsáideora'
@@ -542,10 +554,23 @@ ga_IE:
   poll_count_options:
     decline: Diúltaigh dó
     'no': 'Ná cealaigh é'
-  poll_count_vote_form:
-    reason_label: Teachtaireacht
   poll_meeting_chart_panel:
     total: Iomlán
+  poll_templates:
+    proposal:
+      agree: Aontaigh
+      abstain: Staon
+      disagree: Easaontaigh
+    advice:
+      agree: Aontaigh
+      abstain: Staon
+    consensus:
+      agree: Aontaigh
+      abstain: Staon
+      disagree: Easaontaigh
+      block: Cros
+    sense_check:
+      abstain: Staon
   auth_form:
     code: '000000'
     continue: Lean ar aghaidh

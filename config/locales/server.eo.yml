@@ -30,7 +30,7 @@ eo:
     view_group: Vidi grupon
     to_join_group:
       accept_invitation: "Akcepti inviton"
-    unsubscribe: 'Malaboni aŭ ŝanĝi viajn retpoŝtpreferojn:'
+    unsubscribe: "Malaboni aŭ ŝanĝi viajn retpoŝtpreferojn:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> por malaboni aŭ ŝanĝi viajn retpoŝtpreferojn."
     catch_up:
       daily_subject: Hieraŭ en %{site_name}
@@ -58,8 +58,6 @@ eo:
     change_my_password: Ŝanĝi pasvorton
     confirm_new_password: Konfirmi vian pasvorton
     new_password: Nova pasvorto
-  how_it_works_thread:
-    title: Kiel uzi Loomio-n
   poll_mailer:
     common:
       view_on_loomio: Vidi ĝin en %{site_name}

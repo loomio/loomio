@@ -1,208 +1,9 @@
----
 ca:
-  errors:
-    404:
-      title: No s'ha trobat
-    clear_cache: S'ha detectat un problema de càrrega. Manteniu premuda la majúscula i premeu Recarrega o esborra la memòria cau del navegador.
-    noscript: Loomio requereix javascript per funcionar! Si us plau, activeu javascript al vostre navegador per continuar
-    upgrade_browser: UH oh! El vostre navegador web és massa antic i és possible que Loomio no funcioni correctament. Si us plau <a href="https://browser-update.org/update.html">, actualitzeu el vostre navegador.</a>
-    return_home: Tornar a casa
-    not_found: No s'ha trobat el fitxer 404.
-    messages:
-      email: no és una adreça de correu electrònic vàlida
-      spoofed_media_type: El contingut d'aquest fitxer no coincideix amb el seu nom
-      pwned_password: Aquesta contrasenya ha aparegut anteriorment en una violació de dades i no s'ha d'utilitzar mai
-  group:
-    stats:
-      group_stats: Estadístiques del grup
-      members: Membres
-      subgroups: Subgrups
-      threads: Fils
-      polls: Enquestes
-      votes: Vots
-      comments: Comentaris
-      poll_types:
-        proposal: Proposta
-        rank: Ordena
-        time: enquesta de temps
-        count: Compte
-        choose: Tria
-        allocate: Assignar
-        score: Puntuació
-      org_stats: Estadístiques de l'organització (inclosos subgrups)
-      visits: Visites
-      general: General
-    error:
-      handle_must_begin_with_parent_handle: Ha de començar per %{parent_handle}-
-      no_public_trials: Si us plau, actualitzeu la versió de prova per canviar la configuració de privadesa del grup
-  user:
-    error:
-      bad_login: Les contrasenyes no concorden
-      sign_in_required_html: Heu d'iniciar la sessió per continuar. <a href="/dashboard" target="_blank">Inicieu la sessió</a> i torneu a carregar aquesta pàgina per continuar.
-      recaptcha: No hem pogut verificar que no sou un robot. Siusplau torna-ho a provar!
-      username_must_be_alphanumeric: Els noms d'usuari només han de ser minúscules i números
-    deleted_user: Usuari suprimit
-    placeholder_name: Usuari convidat (%{hostname})
-  poll:
-    export:
-      title: Títol
-      author: Autor
-      email: Correu electrònic
-      participants: Participants
-      details: Detalls
-      group_name: Nom del grup
-      reason: Motiu
-      total: Total
-      percent_voted: "%{num}/%{denom} (%{percent}) membres han manifestat la seva posició"
-      user_id: ID d'usuari
-      created_at: Creat a
-      closing_at: Tancament a les
-      closed_at: Tancat a les
-      is_latest: És l'últim
-      engagement: Compromís
-      stances: Postures
-      discussion_title: Títol del fil
-      outcome_author: Autor del resultat
-      outcome_created_at: Resultat creat a
-      outcome_statement: Declaració de resultats
-      poll_url: URL de l'enquesta
-      participant: Participant
-      also_available: També disponible a
-    error:
-      cannot_add_options: No es poden afegir opcions a aquesta enquesta
-      cannot_remove_options: No es poden eliminar opcions d'aquesta enquesta
-      must_have_options: Ha de tenir almenys una opció d'enquesta
-      must_be_in_the_future: Ha de ser en el futur
-      templates_cannot_close: Les plantilles no es poden tancar
-    waiting_for_votes_from: Esperant els vots de
-  user_mailer:
-    merge_verification:
-      confirm_page:
-        merge: Fusiona comptes
-        confirm: Confirmeu la fusió
-        body_html: "<p>Confirmeu que voleu combinar el compte de <strong>%{source_email}</strong> amb el compte de <strong>%{target_email}</strong> .</p><p> El vostre compte a <strong>%{source_email}</strong> se suprimirà i, després, només podreu iniciar la sessió mitjançant <strong>%{target_email}</strong> .</p><p> Aquest canvi és irreversible.</p>"
-      subject: Verifiqueu la vostra adreça de correu electrònic %{site_name} per combinar
-      body_html: "<p>Hola %{name},</p><p> S'ha fet una sol·licitud per combinar el vostre compte d'usuari a l'adreça <strong>%{source_email}</strong> amb el compte que pertany a aquesta adreça, <strong>%{target_email}</strong> .</p><p> Un cop finalitzat aquest procés, ja no podreu iniciar sessió amb <strong>%{source_email}</strong> i només amb <strong>%{target_email}</strong> .</p><p> Confirmeu que això és el que voleu fer.</p>"
-      verify: Verifiqueu el correu electrònic i continueu
-      complete_page:
-        title: Combinació correcta!
-        body_html: <p>La combinació dels vostres comptes d'usuari ha estat correcta. En breu rebràs un correu electrònic de confirmació a <strong>%{target_email}</strong> .</p><p> Si us plau, <a href="/contact" target="_blank">poseu-vos en contacte amb nosaltres</a> si teniu més preguntes.</p>
-    group_export_ready:
-      subject: Exportació de dades de grup per a %{group_name}
-      body_html: Descarrega les dades del teu grup <a href="%{url}">aquí</a> . Tingueu en compte que aquest enllaç caducarà d'aquí a una setmana.
-    deactivated:
-      subject: El vostre compte d'usuari %{site_name} s'ha desactivat.
-      body_html: "<p>Tu, o algú amb accés al teu compte, has desactivat el teu compte d'usuari de Loomio.</p><p> Totes les dades personals s'han eliminat del sistema.</p><p> Si voleu recuperar aquest compte d'usuari i els comentaris i vots associats, contacteu amb el servei d'assistència i referència: %{recovery_code}</p>"
-    accounts_merged:
-      subject: Els vostres comptes d'usuari %{site_name} s'han combinat.
-      body_html: Hola %{name}, Els vostres dos comptes de loomio s'han fusionat en un sol compte. Per accedir a loomio a partir d'ara, utilitzeu <strong>%{email}</strong> quan inicieu la sessió.
-    redacted:
-      subject: S'ha suprimit el vostre compte d'usuari %{site_name}
-      body_html: "<p>S'ha suprimit el vostre compte d'usuari %{site_name}.</p><p> S'han eliminat totes les dades d'identificació personal.</p><p> Si no ho heu sol·licitat, poseu-vos en contacte amb %{support_email}</p>"
-  email:
-    reset_password:
-      greeting: |
-        Hola %{name}
-        Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de Loomio:
-      link_text: Reinicieu la contrasenya
-      signoff: Heu rebut això perquè el vostre correu electrònic s'ha introduït al formulari "He oblidat la contrasenya" a %{hostname}. Tanmateix, la vostra contrasenya no es canviarà fins que seguiu l'enllaç anterior i ompliu el formulari. Si continueu tenint problemes per iniciar la sessió, responeu a aquest correu electrònic per contactar amb una persona d'assistència.
-    by_who: per %{person}
-    reply_to_this_discussion: Responeu a aquesta discussió
-    view_group: Mostra el grup
-    to_join_group:
-      invitation_text: "%{member} us ha convidat a unir-vos al seu grup %{group_name}"
-      invitation_text_html: us ha convidat a unir-vos al seu grup
-      link_help: 'Cliqueu a l''enllaç de sota per acceptar la invitació:'
-      accept_invitation: Accepta la invitació
-      subject: "%{member} t'ha convidat a unir-te a %{group_name} a %{site_name}"
-      stop_emails: Deixa de rebre correus electrònics de %{site_name}
-      accepting_is_important: És important acceptar la vostra invitació, perquè no us perdeu notificacions sobre decisions que us impliquen.
-    user_added_to_group:
-      content: "%{who} us ha afegit a %{which_group}"
-      content_html: "<strong>%{who}</strong> us ha afegit a <strong>%{which_group}</strong>."
-      link_help: 'Cliqueu a l''enllaç de sota per a anar al grup:'
-      subject: "%{who} t'ha afegit a %{which_group} a %{site_name}"
-    unsubscribe: 'Doneu-vos de baixa o canvieu les preferències de correu:'
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
-    catch_up:
-      mark_as_read: Marca com a llegit
-      click_here: Fes click aquí
-      daily_subject: Ahir a %{site_name}
-      weekly_subject: La setmana passada a %{site_name}
-      other_subject: Recentment a %{site_name}
-      do_not_reply: Si us plau, no respongueu a aquest correu electrònic.
-      thanks_for_reading: Gràcies per llegir, que passeu un bon dia!
-      marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
-    membership_request:
-      subject: "%{who} ha demanat unir-se a %{which_group}"
-      view_group: Pots aprovar o denegar la sol·licitud aquí
-      intro_html: ha sol·licitat accés a un dels vostres grups.
-      button_text: Veure sol·licitud
-    common:
-      or_enter_code: O bé, introduïu el codi a continuació
-      resend: Aquest caducarà en 24 hores i només es pot utilitzar una vegada
-    login:
-      subject: Inicieu la sessió a %{site_name}
-      intro: Aquest és el vostre enllaç per iniciar la sessió a %{site_name}
-      intro_code: Aquest és el vostre codi per iniciar la sessió a %{site_name}
-      login: Inicia la sessió com a %{name}
-    reactivate:
-      subject: Reactiva el teu compte %{site_name}
-      intro: Hola %{name}, aquí teniu un enllaç per reactivar el vostre compte %{site_name}
-      login: Reactiva %{name}
-    contact_request:
-      subject: "%{name} vol connectar amb tu a %{site_name}!"
-      intro: "%{name} (%{email}) t'ha enviat una sol·licitud per connectar-te."
-      footer: Podeu respondre a %{name} directament responent a aquest correu electrònic.
-    loomio_app_description: Un lloc segur i fàcil d'utilitzar perquè les organitzacions prenguin decisions juntes.
-    resend_to_join_group:
-      subject: "%{member} està esperant que t'uneixis a %{group_name} a %{site_name}"
-    group_membership_approved:
-      intro: La vostra sol·licitud d'accés al grup %{group_name} s'ha aprovat.
-      intro_html: La vostra sol·licitud d'accés al grup <strong>%{group_name}</strong> s'ha aprovat.
-      link_help: 'Feu clic a l''enllaç següent per unir-vos a %{group_name} i començar:'
-      subject: La teva sol·licitud per unir-te a %{group_name} s'ha aprovat
-      join_group: Unir-se al grup
-  footer:
-    about: Quant a
-    blog: Bloc
-    contact: Contacte
-    help: Ajuda
-    privacy: Privacitat
-    pricing: Preus
-    public_groups: Grups públics
-    terms: Condicions
-    independent_install_html: '%{hostname} està executant una còpia independent de Loomio: <a href="http://github.com/loomio/loomio">més informació</a> .'
-  password_reset:
-    forbidden_passwords: Les contrasenyes com "password" estan prohibides per raons de seguretat.
-    change_your_password: Canvia la teva contrasenya
-    change_my_password: Canvia la contrasenya
-    confirm_new_password: Confirma la contrassenya
-    new_password: Nova contrasenya
-    email_guidelines_html: "<p>Introduïu la vostra adreça de correu electrònic i se us enviarà un enllaç de restabliment de la contrasenya.</p><p> Si normalment inicieu sessió a través de Facebook o Google, introduïu l'adreça de correu electrònic associada amb aquest compte.</p>"
-    reset_email_timeframe: El correu electrònic pot trigar fins a 5 minuts a arribar. Si no apareix, assegureu-vos de comprovar la vostra carpeta de correu brossa.
-    length_restriction: Les contrasenyes han de tenir almenys 8 caràcters.
-  poll_mailer:
-    common:
-      create_outcome: Comparteix el resultat
-      vote_now: Votar ara
-      why_send_this: Esteu rebent aquest correu electrònic perquè %{reason}
-      view_on_loomio: Veure-ho a %{site_name}
-      your_response: 'Has votat:'
-      you_voted: Has votat!
-      not_invited: No convidat
-      please_respond: Si us plau, respon
-      time_zone: "(Les hores es mostren a %{zone})"
-      undecided_members: Membres indecisos (%{count})
-      undecided_visitors: Convidats indecisos (%{count})
-      more_undecided: "%{count} més..."
-      you_have_until: Tens fins a %{when} per participar.
-      people_have_voted: "%{nom} de %{dnom} persones han participat (%{pct}%)"
   discussion_templates:
     blank:
       process_name: Plantilla en blanc
       process_subtitle: Inicieu un fil nou per a qualsevol propòsit
-      process_introduction: <p>Inicieu un fil al vostre grup sobre qualsevol tema que us agradi.</p><p> Per defecte, tots els membres del grup rebran una notificació quan inicieu el fil. Podeu canviar-ho editant el camp "convida" a continuació.</p>
+      process_introduction: "<p>Inicieu un fil al vostre grup sobre qualsevol tema que us agradi.</p><p> Per defecte, tots els membres del grup rebran una notificació quan inicieu el fil. Podeu canviar-ho editant el camp \"convida\" a continuació.</p>"
     discuss_a_topic:
       title_placeholder: Quin és el tema que voleu tractar?
       process_name: Debat sobre un tema
@@ -248,7 +49,7 @@ ca:
       title_placeholder: Comparteix enllaços i informació
       process_name: Comparteix enllaços i informació
       process_subtitle: Publica informació, enllaços i informes per compartir-los per comentar i debatre.
-      process_introduction: <p>Utilitzeu un fil com a "mur" o "tauler d'anuncis" perquè el vostre grup publiqui informació, notícies i idees que us agradaria compartir entre ells.</p><p> Convida la gent a utilitzar les <strong>eines Insereix l'enllaç</strong> i <strong>Incrusta les eines de format de vídeo</strong> per ajudar el grup a accedir a la informació des de Loomio. Utilitzeu un <strong>encapçalament</strong> als comentaris per fixar el comentari a la línia de temps del fil, de manera que es pugui trobar fàcilment.</p><p> <strong>Fixeu</strong> el fil perquè s'enganxi i animeu <strong>Reactions</strong> a mantenir-lo amb energia, fent saber a la gent que heu vist el seu article.</p><p> La visualització per defecte d'aquest fil és <strong>Més recent</strong> , de manera que els comentaris més recents es troben a la part superior del fil.</p>
+      process_introduction: "<p>Utilitzeu un fil com a \"mur\" o \"tauler d'anuncis\" perquè el vostre grup publiqui informació, notícies i idees que us agradaria compartir entre ells.</p><p> Convida la gent a utilitzar les <strong>eines Insereix l'enllaç</strong> i <strong>Incrusta les eines de format de vídeo</strong> per ajudar el grup a accedir a la informació des de Loomio. Utilitzeu un <strong>encapçalament</strong> als comentaris per fixar el comentari a la línia de temps del fil, de manera que es pugui trobar fàcilment.</p><p> <strong>Fixeu</strong> el fil perquè s'enganxi i animeu <strong>Reactions</strong> a mantenir-lo amb energia, fent saber a la gent que heu vist el seu article.</p><p> La visualització per defecte d'aquest fil és <strong>Més recent</strong> , de manera que els comentaris més recents es troben a la part superior del fil.</p>"
       description: <p>Fes servir aquest fil per publicar informació, avisos i coses que t'agradaria compartir, un lloc on pots veure què està passant i participar.</p><p data-text-align="start"> Comparteix esdeveniments, informes, podcasts i altra informació interessant en línia.</p><p data-text-align="start"> Utilitzeu les <strong>eines Insereix l'enllaç</strong> i <strong>Insereix les eines de format de vídeo</strong> per ajudar les persones a accedir a la informació a Loomio.</p>
       information: Informació
     prepare_for_a_meeting:
@@ -262,7 +63,7 @@ ca:
       title_placeholder: Revisió de la nostra política de contractació
       process_name: Construir una política
       process_subtitle: Treballeu amb el vostre equip per crear i acordar una política o un document de procediment.
-      process_introduction: <p><span>El fil és el contenidor de discussió sobre la política, on podeu acordar requisits i principis, i publicar esborranys de documents per fer comentaris.</span></p><p> <span>Utilitzeu la plantilla per desenvolupar una política amb un grup reduït de persones o fer-la transparent per a tota l'organització, convidant a fer comentaris sobre les versions progressives del document.</span></p><p> <span>Utilitzeu una proposta de comprovació Sense per notificar als membres del grup que un esborrany de document està preparat per a la seva revisió i convidar la gent a llegir el document i respondre amb qualsevol comentari o pregunta.</span></p><p> <span>Quan un esborrany "final" estigui preparat, planteja una proposta de consentiment o consens per aprovar el document.</span></p>
+      process_introduction: "<p><span>El fil és el contenidor de discussió sobre la política, on podeu acordar requisits i principis, i publicar esborranys de documents per fer comentaris.</span></p><p> <span>Utilitzeu la plantilla per desenvolupar una política amb un grup reduït de persones o fer-la transparent per a tota l'organització, convidant a fer comentaris sobre les versions progressives del document.</span></p><p> <span>Utilitzeu una proposta de comprovació Sense per notificar als membres del grup que un esborrany de document està preparat per a la seva revisió i convidar la gent a llegir el document i respondre amb qualsevol comentari o pregunta.</span></p><p> <span>Quan un esborrany \"final\" estigui preparat, planteja una proposta de consentiment o consens per aprovar el document.</span></p>"
       description: "<p><strong><span>Quina és la política o el document que necessiteu per crear?</span></strong></p><p></p><p> <strong><span>Per què és important això?</span></strong></p><p></p><p> <strong><span>Què estàs demanant a la gent que faci?</span></strong></p><p></p>"
       policy: Política
     elect_a_governance_position:
@@ -293,6 +94,88 @@ ca:
       messages:
         blank: no pot estar en blanc
         invalid: no és un valor vàlid
+  unauthorized:
+    manage:
+      all: "No està autoritzat a %{action} %{subject}."
+    add_guests:
+      all: "Heu d'actualitzar la vostra subscripció a Loomio per afegir convidats al vostre %{subject}. Alternativament, podeu convidar-los a ser membres del vostre grup."
+  errors:
+    clear_cache: "S'ha detectat un problema de càrrega. Manteniu premuda la majúscula i premeu Recarrega o esborra la memòria cau del navegador."
+    404:
+      title: No s'ha trobat
+    noscript: Loomio requereix javascript per funcionar! Si us plau, activeu javascript al vostre navegador per continuar
+    upgrade_browser: |-
+        UH oh! El vostre navegador web és massa antic i és possible que Loomio no funcioni correctament. Si us plau <a href="https://browser-update.org/update.html">, actualitzeu el vostre navegador.</a>
+    return_home: Tornar a casa
+    not_found: No s'ha trobat el fitxer 404.
+    messages:
+      email: no és una adreça de correu electrònic vàlida
+      spoofed_media_type: El contingut d'aquest fitxer no coincideix amb el seu nom
+      pwned_password: Aquesta contrasenya ha aparegut anteriorment en una violació de dades i no s'ha d'utilitzar mai
+  group:
+    error:
+      handle_must_begin_with_parent_handle: "Ha de començar per %{parent_handle}-"
+      no_public_trials: "Si us plau, actualitzeu la versió de prova per canviar la configuració de privadesa del grup"
+    stats:
+      group_stats: Estadístiques del grup
+      org_stats: Estadístiques de l'organització (inclosos subgrups)
+      visits: Visites
+      members: Membres
+      subgroups: Subgrups
+      threads: Fils
+      polls: Enquestes
+      votes: Vots
+      comments: Comentaris
+      general: General
+      poll_types:
+        proposal: Proposta
+        count: Compte
+        choose: Tria
+        allocate: Assignar
+        score: Puntuació
+        rank: Ordena
+        time: enquesta de temps
+  user:
+    deleted_user: "Usuari suprimit"
+    placeholder_name: "Usuari convidat (%{hostname})"
+    error:
+      sign_in_required_html: |-
+          Heu d'iniciar la sessió per continuar. <a href="/dashboard" target="_blank">Inicieu la sessió</a> i torneu a carregar aquesta pàgina per continuar.
+      recaptcha: "No hem pogut verificar que no sou un robot. Siusplau torna-ho a provar!"
+      bad_login: "Les contrasenyes no concorden"
+      username_must_be_alphanumeric: "Els noms d'usuari només han de ser minúscules i números"
+  poll:
+    error:
+      cannot_add_options: No es poden afegir opcions a aquesta enquesta
+      cannot_remove_options: No es poden eliminar opcions d'aquesta enquesta
+      must_have_options: Ha de tenir almenys una opció d'enquesta
+      must_be_in_the_future: Ha de ser en el futur
+      templates_cannot_close: Les plantilles no es poden tancar
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent}) membres han manifestat la seva posició"
+      title: Títol
+      author: Autor
+      email: Correu electrònic
+      user_id: ID d'usuari
+      created_at: Creat a
+      closing_at: Tancament a les
+      closed_at: Tancat a les
+      is_latest: És l'últim
+      engagement: Compromís
+      stances: Postures
+      participants: Participants
+      details: Detalls
+      group_name: Nom del grup
+      discussion_title: Títol del fil
+      outcome_author: Autor del resultat
+      outcome_created_at: Resultat creat a
+      outcome_statement: Declaració de resultats
+      poll_url: URL de l'enquesta
+      reason: Motiu
+      participant: Participant
+      also_available: També disponible a
+      total: Total
+    waiting_for_votes_from: "Esperant els vots de"
   stance:
     error:
       too_short: Si us plau, feu una selecció
@@ -304,39 +187,164 @@ ca:
     inactive: Inactiu
   base_mailer:
     via_loomio: "%{name} (a través de %{site_name})"
+  event_mailer:
+    received_email:
+      explaination_html: |-
+          <p>Heu rebut aquest correu electrònic perquè sou administrador del grup Loomio: %{group}.</p><p> El grup ha rebut un correu electrònic d'una adreça electrònica no reconeguda.</p><p> Si el missatge és d'un membre del grup, reviseu el correu electrònic i seleccioneu el membre.</p><p> Si el missatge no és desitjat, podeu bloquejar qualsevol altre correu electrònic des d'aquesta adreça.</p>
+  user_mailer:
+    group_export_ready:
+      subject: Exportació de dades de grup per a %{group_name}
+      body_html: |-
+          Descarrega les dades del teu grup <a href="%{url}">aquí</a> . Tingueu en compte que aquest enllaç caducarà d'aquí a una setmana.
+    redacted:
+      subject: "S'ha suprimit el vostre compte d'usuari %{site_name}"
+      body_html: |-
+          <p>S'ha suprimit el vostre compte d'usuari %{site_name}.</p><p> S'han eliminat totes les dades d'identificació personal.</p><p> Si no ho heu sol·licitat, poseu-vos en contacte amb %{support_email}</p>
+    accounts_merged:
+      subject: "Els vostres comptes d'usuari %{site_name} s'han combinat."
+      body_html: |-
+          Hola %{name}, Els vostres dos comptes de loomio s'han fusionat en un sol compte. Per accedir a loomio a partir d'ara, utilitzeu <strong>%{email}</strong> quan inicieu la sessió.
+    merge_verification:
+      subject: "Verifiqueu la vostra adreça de correu electrònic %{site_name} per combinar"
+      body_html: |-
+          <p>Hola %{name},</p><p> S'ha fet una sol·licitud per combinar el vostre compte d'usuari a l'adreça <strong>%{source_email}</strong> amb el compte que pertany a aquesta adreça, <strong>%{target_email}</strong> .</p><p> Un cop finalitzat aquest procés, ja no podreu iniciar sessió amb <strong>%{source_email}</strong> i només amb <strong>%{target_email}</strong> .</p><p> Confirmeu que això és el que voleu fer.</p>
+      verify: Verifiqueu el correu electrònic i continueu
+      confirm_page:
+        confirm: Confirmeu la fusió
+        body_html: |-
+            <p>Confirmeu que voleu combinar el compte de <strong>%{source_email}</strong> amb el compte de <strong>%{target_email}</strong> .</p><p> El vostre compte a <strong>%{source_email}</strong> se suprimirà i, després, només podreu iniciar la sessió mitjançant <strong>%{target_email}</strong> .</p><p> Aquest canvi és irreversible.</p>
+        merge: Fusiona comptes
+      complete_page:
+        title: Combinació correcta!
+        body_html: |-
+            <p>La combinació dels vostres comptes d'usuari ha estat correcta. En breu rebràs un correu electrònic de confirmació a <strong>%{target_email}</strong> .</p><p> Si us plau, <a href="/contact" target="_blank">poseu-vos en contacte amb nosaltres</a> si teniu més preguntes.</p>
+  email:
+    common:
+      or_enter_code: O bé, introduïu el codi a continuació
+      resend: Aquest caducarà en 24 hores i només es pot utilitzar una vegada
+    login:
+      subject: Inicieu la sessió a %{site_name}
+      intro: Aquest és el vostre enllaç per iniciar la sessió a %{site_name}
+      intro_code: Aquest és el vostre codi per iniciar la sessió a %{site_name}
+      login: Inicia la sessió com a %{name}
+    reactivate:
+      subject: Reactiva el teu compte %{site_name}
+      intro: Hola %{name}, aquí teniu un enllaç per reactivar el vostre compte %{site_name}
+      login: Reactiva %{name}
+    contact_request:
+      subject: "%{name} vol connectar amb tu a %{site_name}!"
+      intro: "%{name} (%{email}) t'ha enviat una sol·licitud per connectar-te."
+      footer: "Podeu respondre a %{name} directament responent a aquest correu electrònic."
+    reset_password:
+      greeting: |
+          Hola %{name}
+          Aquí teniu un enllaç per reiniciar la contrasenya del vostre compte de Loomio:
+      link_text: Reinicieu la contrasenya
+      signoff: |-
+          Heu rebut això perquè el vostre correu electrònic s'ha introduït al formulari "He oblidat la contrasenya" a %{hostname}. Tanmateix, la vostra contrasenya no es canviarà fins que seguiu l'enllaç anterior i ompliu el formulari. Si continueu tenint problemes per iniciar la sessió, responeu a aquest correu electrònic per contactar amb una persona d'assistència.
+    by_who: per %{person}
+    reply_to_this_discussion: Responeu a aquesta discussió
+    loomio_app_description: "Un lloc segur i fàcil d'utilitzar perquè les organitzacions prenguin decisions juntes."
+    view_group: Mostra el grup
+    to_join_group:
+      subject: "%{member} t'ha convidat a unir-te a %{group_name} a %{site_name}"
+      invitation_text: "%{member} us ha convidat a unir-vos al seu grup %{group_name}"
+      invitation_text_html: "us ha convidat a unir-vos al seu grup"
+      link_help: "Cliqueu a l'enllaç de sota per acceptar la invitació:"
+      accept_invitation: "Accepta la invitació"
+      stop_emails: "Deixa de rebre correus electrònics de %{site_name}"
+      accepting_is_important: És important acceptar la vostra invitació, perquè no us perdeu notificacions sobre decisions que us impliquen.
+    resend_to_join_group:
+      subject: "%{member} està esperant que t'uneixis a %{group_name} a %{site_name}"
+    user_added_to_group:
+      subject: "%{who} t'ha afegit a %{which_group} a %{site_name}"
+      content: "%{who} us ha afegit a %{which_group}"
+      content_html: "<strong>%{who}</strong> us ha afegit a <strong>%{which_group}</strong>."
+      link_help: "Cliqueu a l'enllaç de sota per a anar al grup:"
+    unsubscribe: "Doneu-vos de baixa o canvieu les preferències de correu:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> per donar-vos de baixa o canviar les preferències de correu."
+    catch_up:
+      daily_subject: Ahir a %{site_name}
+      weekly_subject: La setmana passada a %{site_name}
+      other_subject: Recentment a %{site_name}
+      do_not_reply: Si us plau, no respongueu a aquest correu electrònic.
+      mark_as_read: Marca com a llegit
+      thanks_for_reading: Gràcies per llegir, que passeu un bon dia!
+      marked_as_read_success: Tot el que apareix al correu electrònic s'ha marcat com a llegit
+      click_here: Fes click aquí
+    group_membership_approved:
+      intro: "La vostra sol·licitud d'accés al grup %{group_name} s'ha aprovat."
+      intro_html: "La vostra sol·licitud d'accés al grup <strong>%{group_name}</strong> s'ha aprovat."
+      link_help: "Feu clic a l'enllaç següent per unir-vos a %{group_name} i començar:"
+      subject: "La teva sol·licitud per unir-te a %{group_name} s'ha aprovat"
+      join_group: "Unir-se al grup"
+    membership_request:
+      intro_html: ha sol·licitat accés a un dels vostres grups.
+      subject: "%{who} ha demanat unir-se a %{which_group}"
+      view_group: Pots aprovar o denegar la sol·licitud aquí
+      button_text: Veure sol·licitud
   announcement_count_emails: "%{count} correus electrònics"
   email_actions:
     unfollowed_discussion: Heu desactivat els correus electrònics per al fil.
   discussion_mailer:
-    reply_or_view_online_html: Respon a aquest correu electrònic directament o <a href='%{url}'>visualitza'l a %{hostname}</a> .
+    reply_or_view_online_html: "Respon a aquest correu electrònic directament o <a href='%{url}'>visualitza'l a %{hostname}</a> ."
     turn_off_notifications_html: "<a href='%{url}'>Desactiva els correus electrònics</a> per a aquesta discussió."
-    change_email_preferences_html: Canvieu les vostres <a href='%{email_preferences_url}'>preferències de correu electrònic</a> .
+    change_email_preferences_html: "Canvieu les vostres <a href='%{email_preferences_url}'>preferències de correu electrònic</a> ."
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Cancel·la la subscripció</a> a més anuncis en aquest fil."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Cancel·la la subscripció</a> als comentaris d'aquest fil."
-    unsubscribe_from_comment_replied_to_html: Aquesta és una notificació de resposta.
-    unsubscribe_from_user_mentioned_html: Aquesta és una notificació de menció.
+    unsubscribe_from_comment_replied_to_html: "Aquesta és una notificació de resposta."
+    unsubscribe_from_user_mentioned_html: "Aquesta és una notificació de menció."
     discussion_edited:
       inline: "%{actor} ha editat el context del fil"
     discussion_closed:
       inline: "%{actor} ha tancat el fil"
+  footer:
+    about: Quant a
+    blog: Bloc
+    contact: Contacte
+    help: Ajuda
+    privacy: Privacitat
+    pricing: Preus
+    public_groups: Grups públics
+    terms: Condicions
+    independent_install_html: '%{hostname} està executant una còpia independent de Loomio: <a href="http://github.com/loomio/loomio">més informació</a> .'
+  password_reset:
+    change_your_password: Canvia la teva contrasenya
+    change_my_password: Canvia la contrasenya
+    confirm_new_password: Confirma la contrassenya
+    new_password: Nova contrasenya
+    email_guidelines_html: |-
+        <p>Introduïu la vostra adreça de correu electrònic i se us enviarà un enllaç de restabliment de la contrasenya.</p><p> Si normalment inicieu sessió a través de Facebook o Google, introduïu l'adreça de correu electrònic associada amb aquest compte.</p>
+    reset_email_timeframe: El correu electrònic pot trigar fins a 5 minuts a arribar. Si no apareix, assegureu-vos de comprovar la vostra carpeta de correu brossa.
+    length_restriction: Les contrasenyes han de tenir almenys 8 caràcters.
+    forbidden_passwords: Les contrasenyes com "password" estan prohibides per raons de seguretat.
   task_mailer:
     task_due_reminder:
-      subject: 'Recordatori de la tasca: %{name}'
-      greeting: 'Hola %{name}, la tasca següent és %{due}:'
-      view_task: Mostra a %{site_name}
-      update_or_comment: Si ja heu completat aquesta tasca, marqueu-la. Si no està completa, comparteix una actualització del progrés.
-      due_today: avui
-      due_in_count_days: en %{count} dies
+      subject: "Recordatori de la tasca: %{name}"
+      greeting: "Hola %{name}, la tasca següent és %{due}:"
+      view_task: "Mostra a %{site_name}"
+      update_or_comment: "Si ja heu completat aquesta tasca, marqueu-la. Si no està completa, comparteix una actualització del progrés."
+      due_today: "avui"
+      due_in_count_days: "en %{count} dies"
   group_mailer:
-    resend: 'RECORDATOR: %{member} està esperant que t''uneixis a %{group_name}'
+    resend: "RECORDATOR: %{member} està esperant que t'uneixis a %{group_name}"
     destroy_warning:
       subject: El vostre grup Loomio està programat per suprimir-se.
-      body: '%{deletor} ha programat la supressió del vostre grup Loomio: "%{group}". Si no voleu que el vostre grup s''elimini, responeu a aquest correu electrònic. Si esteu segur que voleu suprimir el grup, no cal que feu res. Gràcies.'
-  event_mailer:
-    received_email:
-      explaination_html: "<p>Heu rebut aquest correu electrònic perquè sou administrador del grup Loomio: %{group}.</p><p> El grup ha rebut un correu electrònic d'una adreça electrònica no reconeguda.</p><p> Si el missatge és d'un membre del grup, reviseu el correu electrònic i seleccioneu el membre.</p><p> Si el missatge no és desitjat, podeu bloquejar qualsevol altre correu electrònic des d'aquesta adreça.</p>"
-  unauthorized:
-    manage:
-      all: No està autoritzat a %{action} %{subject}.
-    add_guests:
-      all: Heu d'actualitzar la vostra subscripció a Loomio per afegir convidats al vostre %{subject}. Alternativament, podeu convidar-los a ser membres del vostre grup.
+      body: |-
+          %{deletor} ha programat la supressió del vostre grup Loomio: "%{group}". Si no voleu que el vostre grup s'elimini, responeu a aquest correu electrònic. Si esteu segur que voleu suprimir el grup, no cal que feu res. Gràcies.
+  poll_mailer:
+    common:
+      why_send_this: Esteu rebent aquest correu electrònic perquè %{reason}
+      view_on_loomio: Veure-ho a %{site_name}
+      create_outcome: Comparteix el resultat
+      your_response: "Has votat:"
+      you_voted: "Has votat!"
+      not_invited: "No convidat"
+      please_respond: Si us plau, respon
+      time_zone: (Les hores es mostren a %{zone})
+      undecided_members: Membres indecisos (%{count})
+      undecided_visitors: Convidats indecisos (%{count})
+      more_undecided: "%{count} més..."
+      vote_now: Votar ara
+      you_have_until: Tens fins a %{when} per participar.
+      people_have_voted: "%{nom} de %{dnom} persones han participat (%{pct}%)"

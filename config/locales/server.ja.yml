@@ -1,132 +1,4 @@
----
 ja:
-  group:
-    stats:
-      members: メンバー
-      threads: ディスカッション
-      poll_types:
-        proposal: 提案
-        count: カウント
-        choose: 選ぶ
-        allocate: 割り当てる
-        score: スコア
-        rank: ランク
-        time: タイムポーリング
-      group_stats: グループ統計
-      org_stats: 組織統計 (サブグループを含む)
-      visits: 訪問
-      subgroups: サブグループ
-      polls: 投票
-      votes: 投票
-      comments: コメント
-      general: 一般的な
-    error:
-      handle_must_begin_with_parent_handle: "%{parent_handle} で始める必要があります -"
-      no_public_trials: グループのプライバシー設定を変更するには、試用版からアップグレードしてください
-  poll:
-    export:
-      title: タイトル
-      author: 作成者
-      email: Eメール
-      details: 詳細
-      percent_voted: "%{num}/%{denom} (%{percent}) 人のメンバーが自分の立場を表明しました"
-      user_id: ユーザーID
-      created_at: 作成日
-      closing_at: 終了時間
-      closed_at: 閉店時間
-      is_latest: 最新です
-      engagement: 婚約
-      stances: スタンス
-      participants: 参加者
-      group_name: グループ名
-      discussion_title: スレッドタイトル
-      outcome_author: 結果の著者
-      outcome_created_at: 結果の作成場所
-      outcome_statement: 成果報告書
-      poll_url: 投票URL
-      reason: 理由
-      participant: 参加者
-      also_available: 以下でも利用可能
-      total: 合計
-    error:
-      cannot_add_options: この投票にオプションを追加できません
-      cannot_remove_options: この投票からオプションを削除できません
-      must_have_options: 少なくとも 1 つの投票オプションが必要です
-      must_be_in_the_future: きっと未来にあるはず
-      templates_cannot_close: テンプレートを閉じることができません
-    waiting_for_votes_from: からの投票を待っています
-  email:
-    unsubscribe: 購読をやめる、またはEメール設定を変更する：
-    unsubscribe_html: 購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>
-    catch_up:
-      click_here: ここをクリック
-      daily_subject: 昨日の %{site_name}
-      weekly_subject: 先週の %{site_name}
-      other_subject: 最近 %{site_name} で
-      do_not_reply: このメールには返信しないでください。
-      mark_as_read: 既読にする
-      thanks_for_reading: 読んでいただきありがとうございます、良い一日をお過ごしください!
-      marked_as_read_success: メールのすべてが既読としてマークされています
-    membership_request:
-      subject: " %{who}  が %{which_group} に参加するようにお願いしています"
-      view_group: ここでリクエストを承認または拒否できます
-      intro_html: があなたのグループの 1 つへのアクセスをリクエストしました。
-      button_text: リクエストの表示
-    common:
-      or_enter_code: または、以下のコードを入力してください
-      resend: これは 24 時間で期限切れになり、1 回のみ使用できます
-    login:
-      subject: "%{site_name} にサインインします"
-      intro: これは %{site_name} にサインインするためのリンクです
-      intro_code: これは %{site_name} にサインインするためのコードです
-      login: "%{name} としてサインインします"
-    reactivate:
-      subject: "%{site_name} アカウントを再アクティブ化します"
-      intro: こんにちは %{name}。%{site_name} アカウントを再アクティブ化するためのリンクがあります
-      login: "%{name} を再アクティブ化します"
-    contact_request:
-      subject: "%{name} は %{site_name} であなたとつながりたいと考えています!"
-      intro: "%{name} (%{email}) が接続リクエストを送信しました。"
-      footer: このメールに返信することで、%{name} に直接返信できます。
-    reset_password:
-      greeting: 'こんにちは %{name} こちらは、Loomio アカウントのパスワードをリセットするために使用できるリンクです:'
-      link_text: あなたのパスワードをリセット
-      signoff: "%{hostname} の「パスワードを忘れた場合」フォームに電子メールが入力されたため、このメッセージを受信しました。ただし、上記のリンクをクリックしてフォームに記入するまで、パスワードは変更されません。引き続きログインの問題が発生する場合は、このメールに返信してサポート担当者に連絡してください。"
-    by_who: "%{人} 著"
-    reply_to_this_discussion: このディスカッションに返信する
-    loomio_app_description: 組織が一緒に意思決定を行うための使いやすく安全な場所。
-    view_group: グループを表示する
-    to_join_group:
-      subject: "%{member} が %{site_name} の %{group_name} に参加するよう招待しています"
-      invitation_text: "%{member} があなたをグループ %{group_name} に招待しました。"
-      invitation_text_html: あなたをグループに招待しました
-      link_help: 招待を受け入れるには、以下のリンクをクリックしてください。
-      accept_invitation: 招待を受ける
-      stop_emails: "%{site_name} からのメールの受信を停止する"
-      accepting_is_important: 自分に関係する決定に関する通知を見逃さないように、招待を受け入れることが重要です。
-    resend_to_join_group:
-      subject: "%{member} は、%{site_name} の %{group_name} にあなたが参加するのを待っています"
-    user_added_to_group:
-      subject: "%{who} があなたを %{site_name} の %{which_group} に追加しました"
-      content: "%{who} があなたを %{which_group} に追加しました。"
-      content_html: "<strong>%{who}</strong>があなたを<strong>%{which_group}</strong>に追加しました。"
-      link_help: 以下のリンクをクリックしてグループに移動します。
-    group_membership_approved:
-      intro: グループ %{group_name} へのアクセス要求が承認されました。
-      intro_html: グループ<strong>%{group_name}</strong>へのアクセス要求が承認されました。
-      link_help: '以下のリンクをクリックして %{group_name} に参加し、開始してください:'
-      subject: "%{group_name} への参加リクエストが承認されました"
-      join_group: グループに参加
-  footer:
-    about: 会社情報
-    blog: ブログ
-    contact: お問い合わせ
-    help: ヘルプ
-    privacy: プライバシー
-    pricing: 価格設定
-    public_groups: 公開グループ
-    terms: 使用条件
-    independent_install_html: '%{hostname} は Loomio の独立したコピーを実行しています:<a href="http://github.com/loomio/loomio">詳細を確認してください</a>。'
   discussion_templates:
     blank:
       process_name: 空のテンプレート
@@ -222,22 +94,81 @@ ja:
         blank: 空白にすることはできません
         invalid: は有効な値ではありません
   errors:
-    clear_cache: 読み込みの問題が検出されました。 Shift キーを押しながらリロードを押すか、ブラウザのキャッシュをクリアします。
+    clear_cache: "読み込みの問題が検出されました。 Shift キーを押しながらリロードを押すか、ブラウザのキャッシュをクリアします。"
+    404:
+      title: 見つかりません
     noscript: Loomio を機能させるには JavaScript が必要です。続行するにはブラウザで JavaScript を有効にしてください
-    upgrade_browser: ええとああ！ Webブラウザが古すぎるため、Loomioが正しく動作しない可能性があります。<a href="https://browser-update.org/update.html">ブラウザをアップグレードしてください。</a>
+    upgrade_browser: |-
+        ええとああ！ Webブラウザが古すぎるため、Loomioが正しく動作しない可能性があります。<a href="https://browser-update.org/update.html">ブラウザをアップグレードしてください。</a>
     return_home: 帰宅
     not_found: 404 ファイルが見つかりません。
     messages:
       email: 有効な電子メールアドレスではありません
       spoofed_media_type: そのファイルの内容がファイル名と一致しません
-  user:
-    deleted_user: 削除されたユーザー
-    placeholder_name: 招待されたユーザー (%{hostname})
+  group:
     error:
-      sign_in_required_html: 続行するにはサインインする必要があります。続行するには<a href="/dashboard" target="_blank">、サインインし</a>てこのページをリロードしてください。
-      recaptcha: あなたがロボットではないことを確認できませんでした。もう一度試してください。
-      bad_login: 申し訳ありませんが、そのパスワードはファイルにあるパスワードと一致しません
-      username_must_be_alphanumeric: ユーザー名は小文字と数字のみである必要があります
+      handle_must_begin_with_parent_handle: "%{parent_handle} で始める必要があります -"
+      no_public_trials: "グループのプライバシー設定を変更するには、試用版からアップグレードしてください"
+    stats:
+      group_stats: グループ統計
+      org_stats: 組織統計 (サブグループを含む)
+      visits: 訪問
+      members: メンバー
+      subgroups: サブグループ
+      threads: ディスカッション
+      polls: 投票
+      votes: 投票
+      comments: コメント
+      general: 一般的な
+      poll_types:
+        proposal: 提案
+        count: カウント
+        choose: 選ぶ
+        allocate: 割り当てる
+        score: スコア
+        rank: ランク
+        time: タイムポーリング
+  user:
+    deleted_user: "削除されたユーザー"
+    placeholder_name: "招待されたユーザー (%{hostname})"
+    error:
+      sign_in_required_html: |-
+          続行するにはサインインする必要があります。続行するには<a href="/dashboard" target="_blank">、サインインし</a>てこのページをリロードしてください。
+      recaptcha: "あなたがロボットではないことを確認できませんでした。もう一度試してください。"
+      bad_login: "申し訳ありませんが、そのパスワードはファイルにあるパスワードと一致しません"
+      username_must_be_alphanumeric: "ユーザー名は小文字と数字のみである必要があります"
+  poll:
+    error:
+      cannot_add_options: この投票にオプションを追加できません
+      cannot_remove_options: この投票からオプションを削除できません
+      must_have_options: 少なくとも 1 つの投票オプションが必要です
+      must_be_in_the_future: きっと未来にあるはず
+      templates_cannot_close: テンプレートを閉じることができません
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent}) 人のメンバーが自分の立場を表明しました"
+      title: タイトル
+      author: 作成者
+      email: Eメール
+      user_id: ユーザーID
+      created_at: 作成日
+      closing_at: 終了時間
+      closed_at: 閉店時間
+      is_latest: 最新です
+      engagement: 婚約
+      stances: スタンス
+      participants: 参加者
+      details: 詳細
+      group_name: グループ名
+      discussion_title: スレッドタイトル
+      outcome_author: 結果の著者
+      outcome_created_at: 結果の作成場所
+      outcome_statement: 成果報告書
+      poll_url: 投票URL
+      reason: 理由
+      participant: 参加者
+      also_available: 以下でも利用可能
+      total: 合計
+    waiting_for_votes_from: "からの投票を待っています"
   stance:
     error:
       too_short: 選択してください
@@ -249,80 +180,159 @@ ja:
     inactive: 非活性
   base_mailer:
     via_loomio: "%{name} (%{site_name} 経由)"
+  event_mailer:
+    received_email:
+      explaination_html: |-
+          <p>あなたは Loomio グループ %{group} の管理者であるため、このメールを受信しています。</p><p>グループは、認識できない電子メール アドレスから電子メールを受信しました。</p><p>メッセージがグループのメンバーからのものである場合は、メールを確認してメンバーを選択してください。</p><p>メッセージが不要な場合は、そのアドレスからの今後のメールをブロックできます。</p>
   user_mailer:
     group_export_ready:
-      subject: "%{group_name} のグループ データのエクスポート"
-      body_html: <a href="%{url}">ここから</a>グループデータをダウンロードしてください。このリンクは 1 週間後に期限切れになりますのでご注意ください。
-    deactivated:
-      subject: "%{site_name} ユーザー アカウントは無効化されました。"
-      body_html: "<p>あなた、またはあなたのアカウントにアクセスできる誰かが、あなたの Loomio ユーザー アカウントを無効にしました。</p><p>すべての個人データはシステムから削除されました。</p><p>このユーザー アカウントおよび関連するコメントと投票を復元したい場合は、サポートおよび参照先: %{recovery_code} に連絡してください。</p>"
+      subject: '%{group_name} のグループ データのエクスポート'
+      body_html: |-
+          <a href="%{url}">ここから</a>グループデータをダウンロードしてください。このリンクは 1 週間後に期限切れになりますのでご注意ください。
     accounts_merged:
       subject: "%{site_name} ユーザー アカウントが統合されました。"
-      body_html: こんにちは %{name} さん、あなたの 2 つの loomio アカウントが 1 つのアカウントに統合されました。今後 loomio にアクセスするには、サインイン時に<strong>%{email}</strong>を使用してください。
+      body_html: |-
+          こんにちは %{name} さん、あなたの 2 つの loomio アカウントが 1 つのアカウントに統合されました。今後 loomio にアクセスするには、サインイン時に<strong>%{email}</strong>を使用してください。
     merge_verification:
-      subject: 結合するために %{site_name} のメール アドレスを確認してください
-      body_html: "<p>こんにちは、%{name} さん</p><p>アドレス<strong>%{source_email}</strong>のユーザー アカウントを、このアドレス<strong>%{target_email}</strong>に属するアカウントと結合するリクエストが行われました。</p><p>このプロセスが完了すると、 <strong>%{source_email}</strong>でログインできなくなり、 <strong>%{target_email}</strong>でのみログインできるようになります。</p><p>これがあなたがやりたいことであることを確認してください。</p>"
+      subject: "結合するために %{site_name} のメール アドレスを確認してください"
+      body_html: |-
+          <p>こんにちは、%{name} さん</p><p>アドレス<strong>%{source_email}</strong>のユーザー アカウントを、このアドレス<strong>%{target_email}</strong>に属するアカウントと結合するリクエストが行われました。</p><p>このプロセスが完了すると、 <strong>%{source_email}</strong>でログインできなくなり、 <strong>%{target_email}</strong>でのみログインできるようになります。</p><p>これがあなたがやりたいことであることを確認してください。</p>
       verify: メールを確認して次に進みます
       confirm_page:
         confirm: マージの確認
-        body_html: "<p><strong>%{source_email}</strong>のアカウントを<strong>%{target_email}</strong>のアカウントに統合することを確認してください。</p><p> <strong>%{source_email}</strong>の下のアカウントは削除され、その後は<strong>%{target_email}</strong>経由でのみサインインできるようになります。</p><p>この変化は元に戻せません。</p>"
+        body_html: |-
+            <p><strong>%{source_email}</strong>のアカウントを<strong>%{target_email}</strong>のアカウントに統合することを確認してください。</p><p> <strong>%{source_email}</strong>の下のアカウントは削除され、その後は<strong>%{target_email}</strong>経由でのみサインインできるようになります。</p><p>この変化は元に戻せません。</p>
         merge: アカウントを統合する
       complete_page:
         title: マージが成功しました!
-        body_html: <p>ユーザー アカウントの結合は成功しました。すぐに<strong>%{target_email}</strong>に確認メールが届きます。</p><p>さらにご不明な点がございましたら、<a href="/contact" target="_blank">お問い合わせください</a>。</p>
+        body_html: |-
+            <p>ユーザー アカウントの結合は成功しました。すぐに<strong>%{target_email}</strong>に確認メールが届きます。</p><p>さらにご不明な点がございましたら、<a href="/contact" target="_blank">お問い合わせください</a>。</p>
+  email:
+    common:
+      or_enter_code: または、以下のコードを入力してください
+      resend: これは 24 時間で期限切れになり、1 回のみ使用できます
+    login:
+      subject: '%{site_name} にサインインします'
+      intro: これは %{site_name} にサインインするためのリンクです
+      intro_code: これは %{site_name} にサインインするためのコードです
+      login: '%{name} としてサインインします'
+    reactivate:
+      subject: '%{site_name} アカウントを再アクティブ化します'
+      intro: こんにちは %{name}。%{site_name} アカウントを再アクティブ化するためのリンクがあります
+      login: '%{name} を再アクティブ化します'
+    contact_request:
+      subject: "%{name} は %{site_name} であなたとつながりたいと考えています!"
+      intro: "%{name} (%{email}) が接続リクエストを送信しました。"
+      footer: "このメールに返信することで、%{name} に直接返信できます。"
+    reset_password:
+      greeting: |-
+          こんにちは %{name} こちらは、Loomio アカウントのパスワードをリセットするために使用できるリンクです:
+      link_text: あなたのパスワードをリセット
+      signoff: |-
+          %{hostname} の「パスワードを忘れた場合」フォームに電子メールが入力されたため、このメッセージを受信しました。ただし、上記のリンクをクリックしてフォームに記入するまで、パスワードは変更されません。引き続きログインの問題が発生する場合は、このメールに返信してサポート担当者に連絡してください。
+    by_who: '%{人} 著'
+    reply_to_this_discussion: このディスカッションに返信する
+    loomio_app_description: "組織が一緒に意思決定を行うための使いやすく安全な場所。"
+    view_group: グループを表示する
+    to_join_group:
+      subject: "%{member} が %{site_name} の %{group_name} に参加するよう招待しています"
+      invitation_text: "%{member} があなたをグループ %{group_name} に招待しました。"
+      invitation_text_html: "あなたをグループに招待しました"
+      link_help: "招待を受け入れるには、以下のリンクをクリックしてください。"
+      accept_invitation: "招待を受ける"
+      stop_emails: "%{site_name} からのメールの受信を停止する"
+      accepting_is_important: 自分に関係する決定に関する通知を見逃さないように、招待を受け入れることが重要です。
+    resend_to_join_group:
+      subject: "%{member} は、%{site_name} の %{group_name} にあなたが参加するのを待っています"
+    user_added_to_group:
+      subject: "%{who} があなたを %{site_name} の %{which_group} に追加しました"
+      content: "%{who} があなたを %{which_group} に追加しました。"
+      content_html: "<strong>%{who}</strong>があなたを<strong>%{which_group}</strong>に追加しました。"
+      link_help: "以下のリンクをクリックしてグループに移動します。"
+    unsubscribe: "購読をやめる、またはEメール設定を変更する："
+    unsubscribe_html: "購読を取り消す、またはメールの設定を変更するためには<a href='%{link_path}'>%{link_text}</a>"
+    catch_up:
+      daily_subject: 昨日の %{site_name}
+      weekly_subject: 先週の %{site_name}
+      other_subject: 最近 %{site_name} で
+      do_not_reply: このメールには返信しないでください。
+      mark_as_read: 既読にする
+      thanks_for_reading: 読んでいただきありがとうございます、良い一日をお過ごしください!
+      marked_as_read_success: メールのすべてが既読としてマークされています
+      click_here: ここをクリック
+    group_membership_approved:
+      intro: "グループ %{group_name} へのアクセス要求が承認されました。"
+      intro_html: "グループ<strong>%{group_name}</strong>へのアクセス要求が承認されました。"
+      link_help: "以下のリンクをクリックして %{group_name} に参加し、開始してください:"
+      subject: "%{group_name} への参加リクエストが承認されました"
+      join_group: "グループに参加"
+    membership_request:
+      intro_html: があなたのグループの 1 つへのアクセスをリクエストしました。
+      subject: " %{who}  が %{which_group} に参加するようにお願いしています"
+      view_group: ここでリクエストを承認または拒否できます
+      button_text: リクエストの表示
   announcement_count_emails: "%{count} 件のメール"
   email_actions:
     unfollowed_discussion: スレッドの電子メールをオフにしました。
   discussion_mailer:
-    reply_or_view_online_html: このメールに直接返信するか、 <a href='%{url}'>%{hostname} で表示してください</a>。
-    turn_off_notifications_html: このディスカッションでは<a href='%{url}'>電子メールをオフにしてください</a>。
+    reply_or_view_online_html: "このメールに直接返信するか、 <a href='%{url}'>%{hostname} で表示してください</a>。"
+    turn_off_notifications_html: "このディスカッションでは<a href='%{url}'>電子メールをオフにしてください</a>。"
     change_email_preferences_html: "<a href='%{email_preferences_url}'>電子メール設定</a>を変更します。"
-    unsubscribe_from_discussion_announced_html: このスレッドでのさらなるお知らせの<a href='%{url}'>購読を解除してください</a>。
-    unsubscribe_from_new_comment_html: このスレッドのコメントの<a href='%{url}'>購読を解除します</a>。
-    unsubscribe_from_comment_replied_to_html: 返信通知です。
-    unsubscribe_from_user_mentioned_html: メンション通知です。
+    unsubscribe_from_discussion_announced_html: "このスレッドでのさらなるお知らせの<a href='%{url}'>購読を解除してください</a>。"
+    unsubscribe_from_new_comment_html: "このスレッドのコメントの<a href='%{url}'>購読を解除します</a>。"
+    unsubscribe_from_comment_replied_to_html: "返信通知です。"
+    unsubscribe_from_user_mentioned_html: "メンション通知です。"
     discussion_edited:
       inline: "%{actor} がスレッド コンテキストを編集しました"
     discussion_closed:
       inline: "%{actor} がスレッドを閉じました"
+  footer:
+    about: 会社情報
+    blog: ブログ
+    contact: お問い合わせ
+    help: ヘルプ
+    privacy: プライバシー
+    pricing: 価格設定
+    public_groups: 公開グループ
+    terms: 使用条件
+    independent_install_html: '%{hostname} は Loomio の独立したコピーを実行しています:<a href="http://github.com/loomio/loomio">詳細を確認してください</a>。'
   password_reset:
     change_your_password: パスワードを変更してください
     change_my_password: パスワードを変更する
     confirm_new_password: パスワードを認証する
     new_password: 新しいパスワード
-    email_guidelines_html: "<p>メールアドレスを入力すると、パスワードリセットリンクが送信されます。</p><p>通常 Facebook または Google 経由でサインインする場合は、そのアカウントに関連付けられている電子メール アドレスを入力します。</p>"
+    email_guidelines_html: |-
+        <p>メールアドレスを入力すると、パスワードリセットリンクが送信されます。</p><p>通常 Facebook または Google 経由でサインインする場合は、そのアカウントに関連付けられている電子メール アドレスを入力します。</p>
     reset_email_timeframe: メールが届くまでに最大 5 分ほどかかる場合があります。表示されない場合は、必ず迷惑メールフォルダーを確認してください。
     length_restriction: パスワードは 8 文字以上である必要があります。
     forbidden_passwords: アカウントを安全に保つために、「password」などの一般的なパスワードは禁止されています。
   task_mailer:
     task_due_reminder:
-      subject: 'タスクリマインダー: %{name}'
-      greeting: 'こんにちは %{name}。次のタスクの期限は %{due} です:'
+      subject: "タスクリマインダー: %{name}"
+      greeting: "こんにちは %{name}。次のタスクの期限は %{due} です:"
       view_task: "%{site_name} で表示"
-      update_or_comment: このタスクをすでに完了している場合は、チェックを入れてください。完了していない場合は、進捗状況を共有してください。
-      due_today: 今日
+      update_or_comment: "このタスクをすでに完了している場合は、チェックを入れてください。完了していない場合は、進捗状況を共有してください。"
+      due_today: "今日"
       due_in_count_days: "%{count} 日後"
   group_mailer:
-    resend: 'リマインダー: %{member} はあなたが %{group_name} に参加するのを待っています'
+    resend: "リマインダー: %{member} はあなたが %{group_name} に参加するのを待っています"
     destroy_warning:
       subject: Loomio グループは削除される予定です。
-      body: 'あなたの Loomio グループ: "%{group}" は %{deletor} によって削除されるようにスケジュールされています。グループの削除を希望されない場合は、このメールにご返信ください。グループを削除してもよい場合は、何もする必要はありません。ありがとう。'
+      body: |-
+          あなたの Loomio グループ: "%{group}" は %{deletor} によって削除されるようにスケジュールされています。グループの削除を希望されない場合は、このメールにご返信ください。グループを削除してもよい場合は、何もする必要はありません。ありがとう。
   poll_mailer:
     common:
       why_send_this: このメールを受け取った理由は %{reason}
-      view_on_loomio: "%{site_name} で見る"
+      view_on_loomio: '%{site_name} で見る'
       create_outcome: 結果を共有する
-      your_response: あなたは投票しました：
-      you_voted: あなたは投票しました！
-      not_invited: 招待されていません
+      your_response: "あなたは投票しました："
+      you_voted: "あなたは投票しました！"
+      not_invited: "招待されていません"
       please_respond: 答えてください
-      time_zone: "(時間は%{zone}に表示されます)"
+      time_zone: (時間は%{zone}に表示されます)
       undecided_members: 未決定のメンバー (%{count})
       undecided_visitors: 未決定のゲスト (%{count})
-      more_undecided: あと %{count} 件...
+      more_undecided: "あと %{count} 件..."
       vote_now: 今すぐ投票してください
-      you_have_until: "%{when} までに参加してください。"
+      you_have_until: '%{when} までに参加してください。'
       people_have_voted: "%{dnom} 人中 %{nom} 人が参加しました (%{pct}%)"
-  event_mailer:
-    received_email:
-      explaination_html: "<p>あなたは Loomio グループ %{group} の管理者であるため、このメールを受信しています。</p><p>グループは、認識できない電子メール アドレスから電子メールを受信しました。</p><p>メッセージがグループのメンバーからのものである場合は、メールを確認してメンバーを選択してください。</p><p>メッセージが不要な場合は、そのアドレスからの今後のメールをブロックできます。</p>"
