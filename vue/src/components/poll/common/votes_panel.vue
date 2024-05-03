@@ -128,6 +128,8 @@ export default {
         .poll-common-stance(v-if="poll.showResults() && stance.castAt")
           poll-common-stance-choices(:stance='stance')
           formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
+          link-previews(:model="stance")
+          attachment-list(:attachments="stance.attachments")
     loading(v-if="loader.loading")
     v-pagination(v-model="page", :length="totalPages", :disabled="totalPages == 1")
 </template>
