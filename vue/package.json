@@ -18,7 +18,7 @@
     "@sentry/vue": "^7.110.1",
     "@tiptap/core": "^2.2.4",
     "@tiptap/extension-blockquote": "^2.2.4",
-    "@tiptap/extension-bold": "^2.2.4",
+    "@tiptap/extension-bold": "^2.3.2",
     "@tiptap/extension-bullet-list": "^2.2.4",
     "@tiptap/extension-character-count": "^2.2.4",
     "@tiptap/extension-code": "^2.2.4",
