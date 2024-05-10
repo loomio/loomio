@@ -147,8 +147,14 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
   end
 
   def default_scope
+    if target_model && target_model.respond_to?(:group_id)
+      is_admin = target_model.group_id ? target_model.group.admins.exists?(current_user.id) : target_model.admins.exists?(current_user.id)
+    else
+      is_admin = false
+    end
+
     super.merge(
-      include_email: (target_model && target_model.admins.exists?(current_user.id))
+      include_email: (is_admin)
     )
   end
 

@@ -392,6 +392,8 @@ div.recipients-autocomplete
           span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
             space
             span ({{ $t('common.you') }})
+        v-list-item-subtitle(v-if="data.item.user && data.item.user.email")
+          span {{data.item.user.email}}
   notifications-count(
     v-show="!hideCount && recipients.length"
     :model='model'
