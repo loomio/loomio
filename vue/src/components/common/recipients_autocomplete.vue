@@ -387,7 +387,7 @@ div.recipients-autocomplete
         user-avatar(v-if="data.item.type == 'user'", :user="data.item.user", :size="24" no-link)
         common-icon.mr-1(v-else small name="data.item.icon")
       v-list-item-content.announcement-chip__content
-        v-list-item-title.align-center
+        v-list-item-title
           span {{data.item.name}}
           span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
             space
