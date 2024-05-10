@@ -387,11 +387,13 @@ div.recipients-autocomplete
         user-avatar(v-if="data.item.type == 'user'", :user="data.item.user", :size="24" no-link)
         common-icon.mr-1(v-else small name="data.item.icon")
       v-list-item-content.announcement-chip__content
-        v-list-item-title
+        v-list-item-title.align-center
           span {{data.item.name}}
           span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
             space
             span ({{ $t('common.you') }})
+        v-list-item-subtitle(v-if="data.item.user && data.item.user.email")
+          span {{data.item.user.email}}
   notifications-count(
     v-show="!hideCount && recipients.length"
     :model='model'
