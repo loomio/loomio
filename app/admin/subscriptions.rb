@@ -46,6 +46,8 @@ ActiveAdmin.register Subscription do
       row :max_threads
       row :max_members
       row :max_orgs
+      row :allow_guests
+      row :allow_subgroups
       row :info
     end
 
@@ -70,6 +72,8 @@ ActiveAdmin.register Subscription do
       input :max_threads
       input :max_members
       input :max_orgs
+      input :allow_guests
+      input :allow_subgroups
       input :chargify_subscription_id, label: "Chargify Subscription Id"
       input :owner_id, label: "Owner Id"
     end
