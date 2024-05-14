@@ -1,15 +1,9 @@
 eo:
+  start_trial:
+    your_name: Via nomo
+    success: Sukceso!
   templates:
     try_loomio: Provu uzi Loomio-n
-  loomio_onboarding:
-    group_progress_card:
-      activities:
-        set_description: Grupa priskribo
-        start_thread: Komenci fadedon por diskuti
-        make_decision: Komenci decidon
-      learn_more: 'Pli da informoj pri la funkciado de Loomio '
-      celebration_message: Bone farite!  Via grupo nun estas preta! 🎉
-      dismiss_this_card: Ignori tiun ĉi karton
   plan_names:
     free: Senpaga
     trial: Provo
@@ -56,17 +50,10 @@ eo:
     meeting: tempa enketo
     ranked_choice: ordigo laŭ prefero
     score: poenta enketo
-  new_poll_types:
-    proposal: propono
-    count: kiomo
-    poll: elekti
-    score: poentaro
-    ranked_choice: ordo
-    dot_vote: asigni
-    meeting: tempa enketo
   timezones:
     local: Loka tempo (%{value})
   common:
+    are_you_sure: Ĉu vi certas?
     please_wait: Bonvolu atendi
     version: Versio
     no_results_found: Neniu rezulto trovita
@@ -284,7 +271,7 @@ eo:
     privacy_organisation: 'Kaj membroj de %{parent}, kaj membroj de %{group} povos vidi ĉi tiun fadenon'
   announcement:
     audiences:
-      group: Membroj de %{name}
+      group: "Membroj de %{name}"
     form:
       invitation_message_label: Mesaĝo
       poll_announced:
@@ -325,6 +312,7 @@ eo:
     you_and_name: "Vi kaj %{name}"
   group_page:
     threads: Fadenoj
+    decisions: Decidoj
     members: Membroj
     settings: Agordoj
     subgroups: Subgrupoj
@@ -379,6 +367,7 @@ eo:
     locale_label: 'Lingvo'
     location_placeholder: 'Kie vi estas bazita?'
     update_profile: 'Ĝisdatigi profilon'
+    deactivate_account: 'Malaktivigi konton'
   change_picture_form:
     use_gravatar: 'Uzi Gravataron'
   email_settings_page:
@@ -454,6 +443,7 @@ eo:
     proposal_title: Propozicio
     poll_title: Enketo
   poll_common:
+    proposal: Propozicio
     vote_now: Voĉdonu nun
     have_your_say: Donu vian opinion
     your_response: Via respondo
@@ -478,6 +468,7 @@ eo:
   members_panel:
     no_results: 'Ne troviĝis membroj'
     everyone: 'Ĉiuj'
+    all: Ĉiuj
     order_by_name: 'Nomo'
     header_name: 'Nomo'
     header_username: 'Uzantnomo'
@@ -523,8 +514,6 @@ eo:
   poll_count_options:
     'yes': 'Jes'
     'no': 'Ne'
-  poll_count_vote_form:
-    reason_label: Mesaĝo
   poll_meeting_chart_panel:
     total: Entute
   poll_poll_vote_form:
@@ -540,7 +529,17 @@ eo:
   poll_dot_vote_vote_form:
     stance_created: Voĉdono kreis
     stance_updated: Voĉdono ĝisdatigita
+  poll_templates:
+    proposal:
+      agree: Konsenti
+      disagree: Malkonsenti
+    advice:
+      agree: Konsenti
+    consensus:
+      agree: Konsenti
+      disagree: Malkonsenti
   auth_form:
+    sign_in_to_loomio: Ensaluti al %{site_name}.
     sign_in: Registriĝi
     create_account: Krei konton
     sign_in_as: Registriĝi kiel %{name}

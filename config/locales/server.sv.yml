@@ -1,149 +1,9 @@
----
 sv:
-  errors:
-    404:
-      title: Inte hittad
-    clear_cache: Lastningsproblem upptäcktes. Håll ned shift och tryck på ladda om, eller rensa webbläsarens cacheminne.
-    noscript: Loomio kräver javascript för att fungera! Vänligen aktivera javascript i din webbläsare för att fortsätta
-    upgrade_browser: Hoppsan! Din webbläsare är för gammal och Loomio kanske inte fungerar korrekt. Vänligen <a href="https://browser-update.org/update.html">uppgradera din webbläsare.</a>
-    return_home: Återvända hem
-    not_found: 404-filen hittades inte.
-    messages:
-      email: inte en giltig e-postadress
-      spoofed_media_type: Innehållet i den filen matchar inte dess filnamn
-      pwned_password: Detta lösenord har tidigare förekommit i ett dataintrång och bör aldrig användas
-  group:
-    stats:
-      members: Medlemmar
-      threads: Trådar
-      poll_types:
-        proposal: Förslag
-        time: Tidsröstning
-        count: Räkna
-        choose: Välja
-        allocate: Fördela
-        score: Göra
-        rank: Rang
-      group_stats: Gruppstatistik
-      org_stats: Organisationsstatistik (inklusive undergrupper)
-      visits: Besök
-      subgroups: Undergrupper
-      polls: Omröstningar
-      votes: Röster
-      comments: Kommentarer
-      general: Allmän
-    error:
-      handle_must_begin_with_parent_handle: Måste börja med %{parent_handle}-
-      no_public_trials: Vänligen uppgradera från testversion för att ändra gruppens sekretessinställning
-  poll:
-    export:
-      title: Titel
-      author: Författare
-      email: Email
-      details: Detaljer
-      total: Totalt
-      percent_voted: "%{num}/%{denom} (%{percent}) medlemmar har angett sin position"
-      user_id: användar ID
-      created_at: Skapad vid
-      closing_at: Stänger kl
-      closed_at: Stängt kl
-      is_latest: Är Senaste
-      engagement: Engagemang
-      stances: Ställningar
-      participants: Deltagare
-      group_name: Grupp namn
-      discussion_title: Trådens titel
-      outcome_author: Resultatförfattare
-      outcome_created_at: Resultat skapat kl
-      outcome_statement: Utfallsförklaring
-      poll_url: Enkätens URL
-      reason: Anledning
-      participant: Deltagare
-      also_available: Finns även i
-    error:
-      cannot_add_options: Det går inte att lägga till alternativ i denna omröstning
-      cannot_remove_options: Det går inte att ta bort alternativ från denna omröstning
-      must_have_options: Måste ha minst ett omröstningsalternativ
-      must_be_in_the_future: Måste vara i framtiden
-      templates_cannot_close: Mallar kan inte stängas
-    waiting_for_votes_from: Väntar på röster från
-  email:
-    reset_password:
-      link_text: Återställ ditt lösenord
-      greeting: 'Hej %{name} Här är en länk som du kan använda för att återställa lösenordet på ditt Loomio-konto:'
-      signoff: Du fick detta eftersom din e-postadress skrevs in i formuläret "Glömt lösenord" på %{hostname}. Ditt lösenord kommer dock inte att ändras förrän du följer länken ovan och fyller i formuläret. Om du fortsätter att ha problem med att logga in, svara på det här e-postmeddelandet för att kontakta en supportperson.
-    by_who: av %{person}
-    reply_to_this_discussion: Svara på denna diskussion
-    unsubscribe: 'Avregistrera dig eller ändra dina e-postinställningar:'
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
-    catch_up:
-      mark_as_read: Markera som läst
-      thanks_for_reading: Tack för läsning, ha en bra dag!
-      marked_as_read_success: Allt från mail har markerats som läst
-      click_here: Klicka här
-      daily_subject: Igår på %{site_name}
-      weekly_subject: Förra veckan på %{site_name}
-      other_subject: Nyligen på %{site_name}
-      do_not_reply: Var god och svara ej på detta mail.
-    membership_request:
-      subject: "%{who} har begärt att få gå med %{which_group}"
-      view_group: Du kan godkänna eller avslå begäran här
-      intro_html: har begärt åtkomst till en av dina grupper.
-      button_text: Visa begäran
-    common:
-      or_enter_code: Eller ange koden nedan
-      resend: Detta upphör att gälla om 24 timmar och kan endast användas en gång
-    login:
-      subject: Logga in på %{site_name}
-      intro: Det här är din länk för att logga in på %{site_name}
-      intro_code: Det här är din kod för att logga in på %{site_name}
-      login: Logga in som %{name}
-    reactivate:
-      subject: Återaktivera ditt %{site_name}-konto
-      intro: Hej %{name}, här är en länk för att återaktivera ditt %{site_name}-konto
-      login: Återaktivera %{name}
-    contact_request:
-      subject: "%{name} vill komma i kontakt med dig på %{site_name}!"
-      intro: "%{name} (%{email}) har skickat en begäran om anslutning till dig."
-      footer: Du kan svara %{name} direkt genom att svara på det här e-postmeddelandet.
-    loomio_app_description: En lättanvänd, säker plats för organisationer att fatta beslut tillsammans.
-    view_group: Visa grupp
-    to_join_group:
-      subject: "%{member} har bjudit in dig att gå med i %{group_name} på %{site_name}"
-      invitation_text: "%{member} har bjudit in dig att gå med i deras grupp %{group_name}."
-      invitation_text_html: har bjudit in dig att gå med i deras grupp
-      link_help: 'Klicka på länken nedan för att acceptera inbjudan:'
-      accept_invitation: Acceptera inbjudan
-      stop_emails: Sluta ta emot e-postmeddelanden från %{site_name}
-      accepting_is_important: Det är viktigt att acceptera din inbjudan, så att du inte missar meddelanden om beslut som involverar dig.
-    resend_to_join_group:
-      subject: "%{member} väntar på att du ska gå med i %{group_name} på %{site_name}"
-    user_added_to_group:
-      subject: "%{who} har lagt till dig i %{which_group} på %{site_name}"
-      content: "%{who} har lagt till dig i %{which_group}."
-      content_html: "<strong>%{who}</strong> har lagt till dig i <strong>%{which_group}</strong> ."
-      link_help: 'Klicka på länken nedan för att gå till gruppen:'
-    group_membership_approved:
-      intro: Din begäran om åtkomst till gruppen %{group_name} har godkänts.
-      intro_html: Din begäran om åtkomst till gruppen <strong>%{group_name}</strong> har godkänts.
-      link_help: 'Klicka på länken nedan för att gå med i %{group_name} och komma igång:'
-      subject: Din begäran om att gå med i %{group_name} har godkänts
-      join_group: Gå med i grupp
-  footer:
-    about: Om
-    blog: Blogg
-    contact: Kontakt
-    help: Hjälp
-    privacy: Sekretesspolicy
-    pricing: Prissättning
-    public_groups: Öppna grupper
-    terms: Villkor
-    independent_install_html: '%{hostname} kör en oberoende kopia av Loomio: <a href="http://github.com/loomio/loomio">läs mer</a> .'
   discussion_templates:
     blank:
       process_name: Tom mall
       process_subtitle: Starta en ny tråd för alla ändamål
-      process_introduction: <p>Starta en tråd i din grupp om vilket ämne du gillar.</p><p> Som standard kommer alla i gruppen att meddelas när du startar tråden. Du kan ändra detta genom att redigera "inbjudan"-fältet nedan.</p>
+      process_introduction: "<p>Starta en tråd i din grupp om vilket ämne du gillar.</p><p> Som standard kommer alla i gruppen att meddelas när du startar tråden. Du kan ändra detta genom att redigera \"inbjudan\"-fältet nedan.</p>"
     discuss_a_topic:
       title_placeholder: Vilket ämne vill du diskutera?
       process_name: Diskutera ett ämne
@@ -189,7 +49,7 @@ sv:
       title_placeholder: Dela länkar och information
       process_name: Dela länkar och information
       process_subtitle: Lägg upp information, länkar och rapporter att dela för kommentarer och diskussion.
-      process_introduction: <p>Använd en tråd som en "vägg" eller "anslagstavla" för din grupp för att lägga upp information, nyheter och idéer som du vill dela med varandra.</p><p> Bjud in personer att använda verktygen <strong>Infoga länk</strong> och <strong>Bädda in videoformatering</strong> för att hjälpa gruppen att få tillgång till information från Loomio. Använd en <strong>rubrik</strong> på kommentarer för att fästa kommentaren till trådens tidslinje, så att den lätt kan hittas.</p><p> <strong>Nåla fast</strong> tråden så att den fastnar och uppmuntra <strong>Reaktioner</strong> att hålla den pigga, så att folk vet att du såg deras föremål.</p><p> Standardvisningen för denna tråd är <strong>Nyast</strong> så de senaste kommentarerna finns överst i tråden.</p>
+      process_introduction: "<p>Använd en tråd som en \"vägg\" eller \"anslagstavla\" för din grupp för att lägga upp information, nyheter och idéer som du vill dela med varandra.</p><p> Bjud in personer att använda verktygen <strong>Infoga länk</strong> och <strong>Bädda in videoformatering</strong> för att hjälpa gruppen att få tillgång till information från Loomio. Använd en <strong>rubrik</strong> på kommentarer för att fästa kommentaren till trådens tidslinje, så att den lätt kan hittas.</p><p> <strong>Nåla fast</strong> tråden så att den fastnar och uppmuntra <strong>Reaktioner</strong> att hålla den pigga, så att folk vet att du såg deras föremål.</p><p> Standardvisningen för denna tråd är <strong>Nyast</strong> så de senaste kommentarerna finns överst i tråden.</p>"
       description: <p>Använd den här tråden för att lägga upp information, meddelanden och saker du vill dela - en plats där du kan se vad som händer och engagera dig.</p><p data-text-align="start"> Dela evenemang, rapporter, podcasts och annan intressant onlineinformation.</p><p data-text-align="start"> Använd <strong>länken Infoga</strong> och <strong>Bädda in videoformateringsverktyg</strong> för att hjälpa människor att få tillgång till information inom Loomio.</p>
       information: Information
     prepare_for_a_meeting:
@@ -203,7 +63,7 @@ sv:
       title_placeholder: Reviderar vår anställningspolicy
       process_name: Bygg en policy
       process_subtitle: Arbeta med ditt team för att skapa och komma överens om ett policy- eller procedurdokument.
-      process_introduction: <p><span>Tråden är behållaren för diskussion om policyn, där du kan komma överens om krav och principer och lägga upp dokumentutkast för kommentarer.</span></p><p> <span>Använd mallen för att utveckla policyer med en liten grupp människor, eller göra den transparent för hela organisationen och bjuda in kommentarer om progressiva versioner av dokumentet.</span></p><p> <span>Använd ett Sense-kontrollförslag för att meddela gruppmedlemmarna att ett utkast till dokument är redo för granskning, och bjud in personer att läsa dokumentet och svara med eventuella kommentarer eller frågor.</span></p><p> <span>När ett "slutligt" utkast är klart, ta fram ett samtycke eller konsensusförslag för att godkänna dokumentet.</span></p>
+      process_introduction: "<p><span>Tråden är behållaren för diskussion om policyn, där du kan komma överens om krav och principer och lägga upp dokumentutkast för kommentarer.</span></p><p> <span>Använd mallen för att utveckla policyer med en liten grupp människor, eller göra den transparent för hela organisationen och bjuda in kommentarer om progressiva versioner av dokumentet.</span></p><p> <span>Använd ett Sense-kontrollförslag för att meddela gruppmedlemmarna att ett utkast till dokument är redo för granskning, och bjud in personer att läsa dokumentet och svara med eventuella kommentarer eller frågor.</span></p><p> <span>När ett \"slutligt\" utkast är klart, ta fram ett samtycke eller konsensusförslag för att godkänna dokumentet.</span></p>"
       description: "<p><strong><span>Vilken policy eller dokument behöver du bygga?</span></strong></p><p></p><p> <strong><span>Varför är detta viktigt?</span></strong></p><p></p><p> <strong><span>Vad ber du folk att göra?</span></strong></p><p></p>"
       policy: Politik
     elect_a_governance_position:
@@ -234,14 +94,88 @@ sv:
       messages:
         blank: kan inte vara tom
         invalid: är inte ett giltigt värde
-  user:
-    deleted_user: Ta bort användare
-    placeholder_name: Inbjuden användare (%{hostname})
+  unauthorized:
+    manage:
+      all: "Inte behörig till %{action} %{subject}."
+    add_guests:
+      all: "Du måste uppgradera din Loomio-prenumeration för att lägga till gäster till din %{subject}. Alternativt kan du bjuda in dem att bli medlemmar i din grupp."
+  errors:
+    clear_cache: "Lastningsproblem upptäcktes. Håll ned shift och tryck på ladda om, eller rensa webbläsarens cacheminne."
+    404:
+      title: Inte hittad
+    noscript: Loomio kräver javascript för att fungera! Vänligen aktivera javascript i din webbläsare för att fortsätta
+    upgrade_browser: |-
+        Hoppsan! Din webbläsare är för gammal och Loomio kanske inte fungerar korrekt. Vänligen <a href="https://browser-update.org/update.html">uppgradera din webbläsare.</a>
+    return_home: Återvända hem
+    not_found: 404-filen hittades inte.
+    messages:
+      email: inte en giltig e-postadress
+      spoofed_media_type: Innehållet i den filen matchar inte dess filnamn
+      pwned_password: Detta lösenord har tidigare förekommit i ett dataintrång och bör aldrig användas
+  group:
     error:
-      sign_in_required_html: Du måste vara inloggad för att fortsätta. <a href="/dashboard" target="_blank">Logga in</a> och ladda sedan om sidan för att fortsätta.
-      recaptcha: Vi kunde inte verifiera att du inte är en robot. Var god försök igen!
-      bad_login: Tyvärr, det lösenordet stämmer inte överens med det vi har registrerat
-      username_must_be_alphanumeric: Användarnamn får endast vara små bokstäver och siffror
+      handle_must_begin_with_parent_handle: "Måste börja med %{parent_handle}-"
+      no_public_trials: "Vänligen uppgradera från testversion för att ändra gruppens sekretessinställning"
+    stats:
+      group_stats: Gruppstatistik
+      org_stats: Organisationsstatistik (inklusive undergrupper)
+      visits: Besök
+      members: Medlemmar
+      subgroups: Undergrupper
+      threads: Trådar
+      polls: Omröstningar
+      votes: Röster
+      comments: Kommentarer
+      general: Allmän
+      poll_types:
+        proposal: Förslag
+        count: Räkna
+        choose: Välja
+        allocate: Fördela
+        score: Göra
+        rank: Rang
+        time: Tidsröstning
+  user:
+    deleted_user: "Ta bort användare"
+    placeholder_name: "Inbjuden användare (%{hostname})"
+    error:
+      sign_in_required_html: |-
+          Du måste vara inloggad för att fortsätta. <a href="/dashboard" target="_blank">Logga in</a> och ladda sedan om sidan för att fortsätta.
+      recaptcha: "Vi kunde inte verifiera att du inte är en robot. Var god försök igen!"
+      bad_login: "Tyvärr, det lösenordet stämmer inte överens med det vi har registrerat"
+      username_must_be_alphanumeric: "Användarnamn får endast vara små bokstäver och siffror"
+  poll:
+    error:
+      cannot_add_options: Det går inte att lägga till alternativ i denna omröstning
+      cannot_remove_options: Det går inte att ta bort alternativ från denna omröstning
+      must_have_options: Måste ha minst ett omröstningsalternativ
+      must_be_in_the_future: Måste vara i framtiden
+      templates_cannot_close: Mallar kan inte stängas
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent}) medlemmar har angett sin position"
+      title: Titel
+      author: Författare
+      email: Email
+      user_id: användar ID
+      created_at: Skapad vid
+      closing_at: Stänger kl
+      closed_at: Stängt kl
+      is_latest: Är Senaste
+      engagement: Engagemang
+      stances: Ställningar
+      participants: Deltagare
+      details: Detaljer
+      group_name: Grupp namn
+      discussion_title: Trådens titel
+      outcome_author: Resultatförfattare
+      outcome_created_at: Resultat skapat kl
+      outcome_statement: Utfallsförklaring
+      poll_url: Enkätens URL
+      reason: Anledning
+      participant: Deltagare
+      also_available: Finns även i
+      total: Totalt
+    waiting_for_votes_from: "Väntar på röster från"
   stance:
     error:
       too_short: Vänligen gör ett urval
@@ -253,88 +187,163 @@ sv:
     inactive: Inaktiv
   base_mailer:
     via_loomio: "%{name} (via %{site_name})"
+  event_mailer:
+    received_email:
+      explaination_html: |-
+          <p>Du får det här e-postmeddelandet eftersom du är administratör för Loomio-gruppen: %{group}.</p><p> Gruppen har fått ett e-postmeddelande från en okänd e-postadress.</p><p> Om meddelandet kommer från en medlem i gruppen, vänligen granska e-postmeddelandet och välj medlem.</p><p> Om meddelandet är oönskat kan du blockera ytterligare e-postmeddelanden från den adressen.</p>
   user_mailer:
     group_export_ready:
       subject: Gruppdataexport för %{group_name}
-      body_html: Ladda ner din gruppdata <a href="%{url}">här</a> . Observera att denna länk kommer att upphöra att gälla om en vecka.
-    deactivated:
-      subject: Ditt %{site_name} användarkonto har inaktiverats.
-      body_html: "<p>Du, eller någon med åtkomst till ditt konto, har inaktiverat ditt Loomio-användarkonto.</p><p> Alla personuppgifter har tagits bort från systemet.</p><p> Om du vill återställa det här användarkontot och tillhörande kommentarer och röster, vänligen kontakta supporten och referera: %{recovery_code}</p>"
+      body_html: |-
+          Ladda ner din gruppdata <a href="%{url}">här</a> . Observera att denna länk kommer att upphöra att gälla om en vecka.
+    redacted:
+      subject: "Ditt %{site_name} användarkonto har tagits bort"
+      body_html: |-
+          <p>Ditt %{site_name} användarkonto har tagits bort.</p><p> All personligt identifierande data har tagits bort.</p><p> Om du inte begärde detta, kontakta %{support_email}</p>
     accounts_merged:
-      subject: Dina %{site_name} användarkonton har slagits samman.
-      body_html: Hej %{name}, Dina två loomio-konton har slagits samman till ett konto. För att komma åt loomio från och med nu, använd <strong>%{email}</strong> när du loggar in.
+      subject: "Dina %{site_name} användarkonton har slagits samman."
+      body_html: |-
+          Hej %{name}, Dina två loomio-konton har slagits samman till ett konto. För att komma åt loomio från och med nu, använd <strong>%{email}</strong> när du loggar in.
     merge_verification:
-      subject: Verifiera din %{site_name} e-postadress för sammanslagning
-      body_html: "<p>Hej %{name},</p><p> En begäran gjordes om att slå samman ditt användarkonto under adressen <strong>%{source_email}</strong> med kontot som tillhör denna adress, <strong>%{target_email}</strong> .</p><p> När den här processen är klar kommer du inte längre att kunna logga in med <strong>%{source_email}</strong> och endast med <strong>%{target_email}</strong> .</p><p> Vänligen bekräfta att detta är vad du vill göra.</p>"
+      subject: "Verifiera din %{site_name} e-postadress för sammanslagning"
+      body_html: |-
+          <p>Hej %{name},</p><p> En begäran gjordes om att slå samman ditt användarkonto under adressen <strong>%{source_email}</strong> med kontot som tillhör denna adress, <strong>%{target_email}</strong> .</p><p> När den här processen är klar kommer du inte längre att kunna logga in med <strong>%{source_email}</strong> och endast med <strong>%{target_email}</strong> .</p><p> Vänligen bekräfta att detta är vad du vill göra.</p>
       verify: Verifiera e-postmeddelandet och fortsätt
       confirm_page:
         confirm: Bekräfta sammanslagning
-        body_html: "<p>Bekräfta att du vill slå samman kontot under <strong>%{source_email}</strong> med kontot under <strong>%{target_email}</strong> .</p><p> Ditt konto under <strong>%{source_email}</strong> kommer att raderas, och du kommer därefter endast att kunna logga in via <strong>%{target_email}</strong> .</p><p> Denna förändring är oåterkallelig.</p>"
+        body_html: |-
+            <p>Bekräfta att du vill slå samman kontot under <strong>%{source_email}</strong> med kontot under <strong>%{target_email}</strong> .</p><p> Ditt konto under <strong>%{source_email}</strong> kommer att raderas, och du kommer därefter endast att kunna logga in via <strong>%{target_email}</strong> .</p><p> Denna förändring är oåterkallelig.</p>
         merge: Slå samman konton
       complete_page:
         title: Sammanfogningen lyckades!
-        body_html: <p>Sammanfogningen av dina användarkonton lyckades. Du kommer att få en bekräftelse via e-post till <strong>%{target_email}</strong> inom kort.</p><p> <a href="/contact" target="_blank">Kontakta oss</a> om du har ytterligare frågor.</p>
-    redacted:
-      subject: Ditt %{site_name} användarkonto har tagits bort
-      body_html: "<p>Ditt %{site_name} användarkonto har tagits bort.</p><p> All personligt identifierande data har tagits bort.</p><p> Om du inte begärde detta, kontakta %{support_email}</p>"
+        body_html: |-
+            <p>Sammanfogningen av dina användarkonton lyckades. Du kommer att få en bekräftelse via e-post till <strong>%{target_email}</strong> inom kort.</p><p> <a href="/contact" target="_blank">Kontakta oss</a> om du har ytterligare frågor.</p>
+  email:
+    common:
+      or_enter_code: Eller ange koden nedan
+      resend: Detta upphör att gälla om 24 timmar och kan endast användas en gång
+    login:
+      subject: Logga in på %{site_name}
+      intro: Det här är din länk för att logga in på %{site_name}
+      intro_code: Det här är din kod för att logga in på %{site_name}
+      login: Logga in som %{name}
+    reactivate:
+      subject: Återaktivera ditt %{site_name}-konto
+      intro: Hej %{name}, här är en länk för att återaktivera ditt %{site_name}-konto
+      login: Återaktivera %{name}
+    contact_request:
+      subject: "%{name} vill komma i kontakt med dig på %{site_name}!"
+      intro: "%{name} (%{email}) har skickat en begäran om anslutning till dig."
+      footer: "Du kan svara %{name} direkt genom att svara på det här e-postmeddelandet."
+    reset_password:
+      greeting: |-
+          Hej %{name} Här är en länk som du kan använda för att återställa lösenordet på ditt Loomio-konto:
+      link_text: Återställ ditt lösenord
+      signoff: |-
+          Du fick detta eftersom din e-postadress skrevs in i formuläret "Glömt lösenord" på %{hostname}. Ditt lösenord kommer dock inte att ändras förrän du följer länken ovan och fyller i formuläret. Om du fortsätter att ha problem med att logga in, svara på det här e-postmeddelandet för att kontakta en supportperson.
+    by_who: av %{person}
+    reply_to_this_discussion: Svara på denna diskussion
+    loomio_app_description: "En lättanvänd, säker plats för organisationer att fatta beslut tillsammans."
+    view_group: Visa grupp
+    to_join_group:
+      subject: "%{member} har bjudit in dig att gå med i %{group_name} på %{site_name}"
+      invitation_text: "%{member} har bjudit in dig att gå med i deras grupp %{group_name}."
+      invitation_text_html: "har bjudit in dig att gå med i deras grupp"
+      link_help: "Klicka på länken nedan för att acceptera inbjudan:"
+      accept_invitation: "Acceptera inbjudan"
+      stop_emails: "Sluta ta emot e-postmeddelanden från %{site_name}"
+      accepting_is_important: Det är viktigt att acceptera din inbjudan, så att du inte missar meddelanden om beslut som involverar dig.
+    resend_to_join_group:
+      subject: "%{member} väntar på att du ska gå med i %{group_name} på %{site_name}"
+    user_added_to_group:
+      subject: "%{who} har lagt till dig i %{which_group} på %{site_name}"
+      content: "%{who} har lagt till dig i %{which_group}."
+      content_html: "<strong>%{who}</strong> har lagt till dig i <strong>%{which_group}</strong> ."
+      link_help: "Klicka på länken nedan för att gå till gruppen:"
+    unsubscribe: "Avregistrera dig eller ändra dina e-postinställningar:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> för att avregistrera eller ändra dina emailinställnignar."
+    catch_up:
+      daily_subject: Igår på %{site_name}
+      weekly_subject: Förra veckan på %{site_name}
+      other_subject: Nyligen på %{site_name}
+      do_not_reply: Var god och svara ej på detta mail.
+      mark_as_read: Markera som läst
+      thanks_for_reading: Tack för läsning, ha en bra dag!
+      marked_as_read_success: Allt från mail har markerats som läst
+      click_here: Klicka här
+    group_membership_approved:
+      intro: "Din begäran om åtkomst till gruppen %{group_name} har godkänts."
+      intro_html: "Din begäran om åtkomst till gruppen <strong>%{group_name}</strong> har godkänts."
+      link_help: "Klicka på länken nedan för att gå med i %{group_name} och komma igång:"
+      subject: "Din begäran om att gå med i %{group_name} har godkänts"
+      join_group: "Gå med i grupp"
+    membership_request:
+      intro_html: har begärt åtkomst till en av dina grupper.
+      subject: "%{who} har begärt att få gå med %{which_group}"
+      view_group: Du kan godkänna eller avslå begäran här
+      button_text: Visa begäran
   announcement_count_emails: "%{count} e-postmeddelanden"
   email_actions:
     unfollowed_discussion: Du har stängt av e-post för tråden.
   discussion_mailer:
-    reply_or_view_online_html: Svara direkt på det här e-postmeddelandet eller <a href='%{url}'>se det på %{hostname}</a> .
+    reply_or_view_online_html: "Svara direkt på det här e-postmeddelandet eller <a href='%{url}'>se det på %{hostname}</a> ."
     turn_off_notifications_html: "<a href='%{url}'>Stäng av e-postmeddelanden</a> för den här diskussionen."
-    change_email_preferences_html: Ändra dina <a href='%{email_preferences_url}'>e-postinställningar</a> .
+    change_email_preferences_html: "Ändra dina <a href='%{email_preferences_url}'>e-postinställningar</a> ."
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Avsluta prenumerationen</a> på ytterligare meddelanden i denna tråd."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Avsluta prenumerationen</a> på kommentarer i denna tråd."
-    unsubscribe_from_comment_replied_to_html: Detta är ett svarsmeddelande.
-    unsubscribe_from_user_mentioned_html: Detta är ett omnämnande.
+    unsubscribe_from_comment_replied_to_html: "Detta är ett svarsmeddelande."
+    unsubscribe_from_user_mentioned_html: "Detta är ett omnämnande."
     discussion_edited:
       inline: "%{actor} redigerade trådkontexten"
     discussion_closed:
       inline: "%{actor} stängde tråden"
+  footer:
+    about: Om
+    blog: Blogg
+    contact: Kontakt
+    help: Hjälp
+    privacy: Sekretesspolicy
+    pricing: Prissättning
+    public_groups: Öppna grupper
+    terms: Villkor
+    independent_install_html: '%{hostname} kör en oberoende kopia av Loomio: <a href="http://github.com/loomio/loomio">läs mer</a> .'
   password_reset:
     change_your_password: Ändra ditt lösenord
     change_my_password: ändra lösenord
     confirm_new_password: Bekräfta lösenord
     new_password: Nytt lösenord
-    email_guidelines_html: "<p>Ange din e-postadress så får du en länk för återställning av lösenord.</p><p> Om du normalt loggar in via Facebook eller Google anger du den e-postadress som är kopplad till det kontot.</p>"
+    email_guidelines_html: |-
+        <p>Ange din e-postadress så får du en länk för återställning av lösenord.</p><p> Om du normalt loggar in via Facebook eller Google anger du den e-postadress som är kopplad till det kontot.</p>
     reset_email_timeframe: Det kan ta upp till 5 minuter innan mejlet kommer fram. Om det inte dyker upp, var noga med att kontrollera din skräppostmapp.
     length_restriction: Lösenord måste vara minst 8 tecken långa.
     forbidden_passwords: Vanliga lösenord som "lösenord" är förbjudna för att skydda ditt konto.
   task_mailer:
     task_due_reminder:
-      subject: 'Uppgiftspåminnelse: %{name}'
-      greeting: 'Hej %{name}, följande uppgift ska betalas %{due}:'
-      view_task: Visa på %{site_name}
-      update_or_comment: Om du redan har slutfört den här uppgiften, markera den. Om det inte är komplett, vänligen dela en förloppsuppdatering.
-      due_today: i dag
-      due_in_count_days: om %{count} dagar
+      subject: "Uppgiftspåminnelse: %{name}"
+      greeting: "Hej %{name}, följande uppgift ska betalas %{due}:"
+      view_task: "Visa på %{site_name}"
+      update_or_comment: "Om du redan har slutfört den här uppgiften, markera den. Om det inte är komplett, vänligen dela en förloppsuppdatering."
+      due_today: "i dag"
+      due_in_count_days: "om %{count} dagar"
   group_mailer:
-    resend: 'PÅMINNELSE: %{member} väntar på att du ska gå med i %{group_name}'
+    resend: "PÅMINNELSE: %{member} väntar på att du ska gå med i %{group_name}"
     destroy_warning:
       subject: Din Loomio-grupp är schemalagd för radering.
-      body: 'Din Loomio-grupp: "%{group}" har schemalagts för radering av %{deletor}. Om du inte vill att din grupp ska tas bort, vänligen svara på det här e-postmeddelandet. Om du är säker på att du vill ta bort gruppen behöver du inte göra någonting. Tack.'
+      body: |-
+          Din Loomio-grupp: "%{group}" har schemalagts för radering av %{deletor}. Om du inte vill att din grupp ska tas bort, vänligen svara på det här e-postmeddelandet. Om du är säker på att du vill ta bort gruppen behöver du inte göra någonting. Tack.
   poll_mailer:
     common:
       why_send_this: Du får det här e-postmeddelandet eftersom %{reason}
       view_on_loomio: Se den på %{site_name}
       create_outcome: Dela resultatet
-      your_response: 'Du röstade:'
-      you_voted: Du röstade!
-      not_invited: Inte inbjuden
+      your_response: "Du röstade:"
+      you_voted: "Du röstade!"
+      not_invited: "Inte inbjuden"
       please_respond: Vänligen svara
-      time_zone: "(Tiderna visas i %{zone})"
+      time_zone: (Tiderna visas i %{zone})
       undecided_members: Obestämda medlemmar (%{count})
       undecided_visitors: Obestämda gäster (%{count})
       more_undecided: "%{count} till..."
       vote_now: Rösta nu
       you_have_until: Du har fram till %{when} på dig att delta.
       people_have_voted: "%{nom} av %{dnom} personer har deltagit (%{pct}%)"
-  event_mailer:
-    received_email:
-      explaination_html: "<p>Du får det här e-postmeddelandet eftersom du är administratör för Loomio-gruppen: %{group}.</p><p> Gruppen har fått ett e-postmeddelande från en okänd e-postadress.</p><p> Om meddelandet kommer från en medlem i gruppen, vänligen granska e-postmeddelandet och välj medlem.</p><p> Om meddelandet är oönskat kan du blockera ytterligare e-postmeddelanden från den adressen.</p>"
-  unauthorized:
-    manage:
-      all: Inte behörig till %{action} %{subject}.
-    add_guests:
-      all: Du måste uppgradera din Loomio-prenumeration för att lägga till gäster till din %{subject}. Alternativt kan du bjuda in dem att bli medlemmar i din grupp.

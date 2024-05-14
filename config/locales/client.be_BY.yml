@@ -1,4 +1,7 @@
 be_BY:
+  start_trial:
+    your_name: Ваша імя
+    your_email: Ваш email
   templates:
     try_loomio: Паспрабаваць Loomio
   subscription_status:
@@ -6,6 +9,7 @@ be_BY:
   loomio_tags:
     name_label: Імя
   common:
+    are_you_sure: Вы ўпэнены?
     please_wait: Пачакайце, калі ласка
     version: Версія
     or: альбо
@@ -97,6 +101,7 @@ be_BY:
     email_label: Email
   group_page:
     threads: Абмеркаванні
+    decisions: Рашэнні
     members: Удзельнікі
     settings: Налады
     options_label: 'Опцыі'
@@ -135,6 +140,7 @@ be_BY:
     username_label: 'Імя карыстальніка'
     email_label: 'Email'
     locale_label: 'Мова'
+    deactivate_account: 'Адключыць акаунт'
   change_picture_form:
     use_gravatar: 'Выкарыстоўваць Gravatar'
   email_settings_page:
@@ -171,12 +177,14 @@ be_BY:
     email_label: 'Ваш email адрас '
     message_label: 'Ваша паведамленне'
   poll_common:
+    proposal: Прапанова
     have_your_say: Скажыце сваё слова
     save_changes: Захаваць
   discussions_panel:
     all: Усе
     closed: Закрыта
   members_panel:
+    all: Усе
     order_by_name: 'Імя'
     header_name: 'Імя'
     header_username: 'Імя карыстальніка'

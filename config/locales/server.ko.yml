@@ -1,180 +1,4 @@
----
 ko:
-  errors:
-    404:
-      title: 찾을 수 없습니다.
-    clear_cache: 로딩 문제가 감지되었습니다. Shift 키를 누른 상태에서 새로고침을 누르거나 브라우저 캐시를 삭제하세요.
-    noscript: Loomio가 작동하려면 자바스크립트가 필요합니다! 계속하려면 브라우저에서 자바스크립트를 활성화하세요.
-    upgrade_browser: 어 오! 귀하의 웹 브라우저가 너무 오래되어 Loomio가 제대로 작동하지 않을 수 있습니다. <a href="https://browser-update.org/update.html">브라우저를 업그레이드하세요.</a>
-    return_home: 귀국
-    not_found: 404 파일을 찾을 수 없습니다.
-    messages:
-      email: 유효한 이메일 주소가 아닙니다
-      spoofed_media_type: 해당 파일의 내용이 파일 이름과 일치하지 않습니다.
-  group:
-    stats:
-      group_stats: 그룹 상태
-      members: 멤버
-      subgroups: 소그룹
-      threads: 토론 주제
-      polls: 투표
-      comments: 댓글
-      poll_types:
-        proposal: 제안
-        count: 세다
-        choose: 선택하다
-        allocate: 할당하다
-        score: 점수
-        rank: 계급
-        time: 시간 투표
-      org_stats: 조직 통계(하위 그룹 포함)
-      visits: 방문
-      votes: 투표
-      general: 일반적인
-    error:
-      handle_must_begin_with_parent_handle: "%{parent_handle}-로 시작해야 합니다."
-      no_public_trials: 그룹 개인정보 보호 설정을 변경하려면 평가판에서 업그레이드하세요.
-  poll:
-    export:
-      title: 제목
-      author: 글쓴이
-      email: 이메일
-      participants: 참여자
-      details: 세부사항
-      group_name: 그룹명
-      total: 총
-      percent_voted: "%{num}/%{denom} (%{percent})명의 회원이 자신의 입장을 밝혔습니다."
-      user_id: 사용자 ID
-      created_at: 생성 날짜
-      closing_at: 마감 시간
-      closed_at: 마감 시간
-      is_latest: 최신인가요?
-      engagement: 약혼
-      stances: 자세
-      discussion_title: 스레드 제목
-      outcome_author: 결과 작성자
-      outcome_created_at: 생성된 결과
-      outcome_statement: 결과 명세서
-      poll_url: 설문 조사 URL
-      reason: 이유
-      participant: 참가자
-      also_available: 다음 국가에서도 사용 가능
-    error:
-      cannot_add_options: 이 설문조사에 옵션을 추가할 수 없습니다.
-      cannot_remove_options: 이 설문조사에서 옵션을 제거할 수 없습니다.
-      must_have_options: 설문조사 옵션이 하나 이상 있어야 합니다.
-      must_be_in_the_future: 미래에도 있어야지
-      templates_cannot_close: 템플릿을 닫을 수 없습니다.
-    waiting_for_votes_from: 여러분의 투표를 기다리고 있습니다
-  user_mailer:
-    merge_verification:
-      confirm_page:
-        merge: 연결계정
-        confirm: 병합 확인
-        body_html: "<p><strong>%{source_email}</strong> 아래의 계정을 <strong>%{target_email}</strong> 아래의 계정에 병합할 것인지 확인하세요.</p><p> <strong>%{source_email}</strong> 의 계정이 삭제되며 이후에는 <strong>%{target_email}을</strong> 통해서만 로그인할 수 있습니다.</p><p> 이 변경 사항은 되돌릴 수 없습니다.</p>"
-      subject: 병합을 위해 %{site_name} 이메일 주소를 확인하세요
-      body_html: "<p>안녕하세요 %{name}님,</p><p> <strong>%{source_email}</strong> 주소의 사용자 계정을 이 주소 <strong>%{target_email}</strong> 에 속한 계정과 병합하라는 요청이 접수되었습니다.</p><p> 이 프로세스가 완료되면 더 이상 <strong>%{source_email}</strong> 로 로그인할 수 없으며 <strong>%{target_email}</strong> 로만 로그인할 수 있습니다.</p><p> 원하는 작업이 맞는지 확인해 주세요.</p>"
-      verify: 이메일을 확인하고 진행하세요
-      complete_page:
-        title: 병합에 성공했습니다!
-        body_html: <p>사용자 계정이 성공적으로 병합되었습니다. 곧 <strong>%{target_email}</strong> 로 확인 이메일을 받게 됩니다.</p><p> 추가 질문이 있는 경우 <a href="/contact" target="_blank">당사에 문의해</a> 주세요.</p>
-    group_export_ready:
-      subject: "%{group_name}에 대한 그룹 데이터 내보내기"
-      body_html: <a href="%{url}">여기에서</a> 그룹 데이터를 다운로드하세요. 이 링크는 일주일 후에 만료됩니다.
-    deactivated:
-      subject: 귀하의 %{site_name} 사용자 계정이 비활성화되었습니다.
-      body_html: "<p>귀하 또는 귀하의 계정에 접근할 수 있는 누군가가 귀하의 Loomio 사용자 계정을 비활성화했습니다.</p><p> 모든 개인 데이터가 시스템에서 제거되었습니다.</p><p> 이 사용자 계정과 관련 댓글 및 투표를 복구하려면 지원 및 참조처에 문의하세요: %{recovery_code}</p>"
-    accounts_merged:
-      subject: 귀하의 %{site_name} 사용자 계정이 병합되었습니다.
-      body_html: "%{name} 님, 안녕하세요. 두 개의 loomio 계정이 하나의 계정으로 통합되었습니다. 앞으로 loomio에 접속하시려면 로그인 시 <strong>%{email}을</strong> 이용해주세요."
-  email:
-    unsubscribe: 구독중지 혹은 이메일 설정을 변경하세요.
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
-    catch_up:
-      mark_as_read: 읽음으로 표시
-      click_here: 여기를 클릭하세요.
-      daily_subject: 어제 %{site_name}
-      weekly_subject: 지난주 %{site_name}
-      other_subject: 최근 %{site_name}에서
-      do_not_reply: 이 메일에 답장하지 마십시오.
-      thanks_for_reading: 읽어주셔서 감사합니다. 좋은 하루 보내세요!
-      marked_as_read_success: 이메일의 모든 내용이 읽음으로 표시되었습니다.
-    membership_request:
-      subject: "%{who}님이  %{which_group}에 가입을 요청했습니다. "
-      view_group: 이 요청에 대해서 승인하거나 거절할 수 있습니다.
-      intro_html: 님이 귀하의 그룹 중 하나에 대한 액세스를 요청했습니다.
-      button_text: 요청 보기
-    common:
-      or_enter_code: 또는 아래 코드를 입력하세요.
-      resend: 24시간 후에 만료되며 한 번만 사용할 수 있습니다.
-    login:
-      subject: "%{site_name}에 로그인"
-      intro: 이것은 %{site_name}에 로그인하기 위한 링크입니다.
-      intro_code: "%{site_name}에 로그인하기 위한 코드입니다."
-      login: "%{name}(으)로 로그인"
-    reactivate:
-      subject: "%{site_name} 계정을 재활성화하세요"
-      intro: "%{name} 님, 안녕하세요. %{site_name} 계정을 재활성화할 수 있는 링크가 있습니다."
-      login: "%{name} 재활성화"
-    contact_request:
-      subject: "%{name}님이 %{site_name}에서 귀하와 연결되기를 원합니다!"
-      intro: "%{name}(%{email})님이 귀하에게 연결 요청을 보냈습니다."
-      footer: 이 이메일에 답장하여 %{name}에게 직접 응답하실 수 있습니다.
-    reset_password:
-      greeting: '안녕하세요 %{name}님, Loomio 계정의 비밀번호를 재설정하는 데 사용할 수 있는 링크는 다음과 같습니다:'
-      link_text: 비밀번호를 재설정
-      signoff: 귀하의 이메일이 %{hostname}의 "비밀번호 찾기" 양식에 입력되었기 때문에 이 메일이 전송되었습니다. 그러나 위의 링크를 따라 양식을 작성하기 전까지는 비밀번호가 변경되지 않습니다. 로그인하는 데 계속 문제가 있는 경우 이 이메일에 답장하여 지원 담당자에게 문의하세요.
-    by_who: '작성자: %{person}'
-    reply_to_this_discussion: 이 토론에 응답
-    loomio_app_description: 조직이 함께 결정을 내릴 수 있는 사용하기 쉽고 안전한 장소입니다.
-    view_group: 그룹 보기
-    to_join_group:
-      subject: "%{member}님이 %{site_name}의 %{group_name}에 가입하도록 귀하를 초대했습니다."
-      invitation_text: "%{member}님이 %{group_name} 그룹에 가입하도록 귀하를 초대했습니다."
-      invitation_text_html: 님이 귀하를 자신의 그룹에 가입하도록 초대했습니다.
-      link_help: 초대를 수락하려면 아래 링크를 클릭하세요.
-      accept_invitation: 초대를 수락
-      stop_emails: "%{site_name}에서 이메일 수신 중지"
-      accepting_is_important: 귀하와 관련된 결정에 대한 알림을 놓치지 않도록 초대를 수락하는 것이 중요합니다.
-    resend_to_join_group:
-      subject: "%{member}이(가) %{site_name}에서 %{group_name}에 가입하기를 기다리고 있습니다."
-    user_added_to_group:
-      subject: "%{who}님이 %{site_name}의 %{which_group}에 귀하를 추가했습니다."
-      content: "%{who}님이 귀하를 %{which_group}에 추가했습니다."
-      content_html: "<strong>%{who}</strong> 님이 귀하를 <strong>%{which_group}</strong> 에 추가했습니다."
-      link_help: 그룹으로 이동하려면 아래 링크를 클릭하세요.
-    group_membership_approved:
-      intro: "%{group_name} 그룹에 대한 액세스 요청이 승인되었습니다."
-      intro_html: "<strong>%{group_name}</strong> 그룹에 대한 액세스 요청이 승인되었습니다."
-      link_help: "%{group_name}에 가입하고 시작하려면 아래 링크를 클릭하세요."
-      subject: "%{group_name} 가입 요청이 승인되었습니다."
-      join_group: 그룹에 가입
-  footer:
-    about: 소개
-    blog: 블로그
-    contact: 연락하기
-    help: 도움말
-    privacy: 개인정보
-    pricing: 가격표
-    public_groups: 공개 그룹
-    terms: 정책
-    independent_install_html: '%{hostname}은(는) Loomio의 독립 복사본을 실행하고 있습니다. <a href="http://github.com/loomio/loomio">자세한 내용을 알아보세요</a> .'
-  poll_mailer:
-    common:
-      create_outcome: 결과 공유
-      why_send_this: "%{reason} 때문에 이 이메일을 받으셨습니다."
-      view_on_loomio: "%{site_name}에서 보기"
-      your_response: '귀하가 투표한 항목:'
-      you_voted: 투표하셨습니다!
-      not_invited: 초대받지 않음
-      please_respond: 응답해주세요
-      time_zone: "(%{zone}에 표시되는 시간)"
-      undecided_members: 미결정 회원(%{count})
-      undecided_visitors: 미정 손님(%{count})
-      more_undecided: "%{count}개 더..."
-      vote_now: 지금 투표하세요
-      you_have_until: "%{when}까지 참여하실 수 있습니다."
-      people_have_voted: "%{dnom}명 중 %{nom}명이 참여했습니다(%{pct}%)."
   discussion_templates:
     blank:
       process_name: 빈 템플릿
@@ -269,14 +93,82 @@ ko:
       messages:
         blank: 비워 둘 수 없습니다
         invalid: 유효한 값이 아닙니다.
-  user:
-    deleted_user: 삭제 된 사용자
-    placeholder_name: 초대된 사용자 (%{hostname})
+  errors:
+    clear_cache: "로딩 문제가 감지되었습니다. Shift 키를 누른 상태에서 새로고침을 누르거나 브라우저 캐시를 삭제하세요."
+    404:
+      title: 찾을 수 없습니다.
+    noscript: Loomio가 작동하려면 자바스크립트가 필요합니다! 계속하려면 브라우저에서 자바스크립트를 활성화하세요.
+    upgrade_browser: |-
+        어 오! 귀하의 웹 브라우저가 너무 오래되어 Loomio가 제대로 작동하지 않을 수 있습니다. <a href="https://browser-update.org/update.html">브라우저를 업그레이드하세요.</a>
+    return_home: 귀국
+    not_found: 404 파일을 찾을 수 없습니다.
+    messages:
+      email: 유효한 이메일 주소가 아닙니다
+      spoofed_media_type: 해당 파일의 내용이 파일 이름과 일치하지 않습니다.
+  group:
     error:
-      sign_in_required_html: 계속하려면 로그인해야 합니다. 계속하려면 <a href="/dashboard" target="_blank">로그인한</a> 후 이 페이지를 새로고침하세요.
-      recaptcha: 로봇이 아닌지 확인할 수 없습니다. 다시 시도해 주세요!
-      bad_login: 죄송합니다. 해당 비밀번호는 등록된 비밀번호와 일치하지 않습니다.
-      username_must_be_alphanumeric: 사용자 이름은 소문자와 숫자로만 이루어져야 합니다.
+      handle_must_begin_with_parent_handle: "%{parent_handle}-로 시작해야 합니다."
+      no_public_trials: "그룹 개인정보 보호 설정을 변경하려면 평가판에서 업그레이드하세요."
+    stats:
+      group_stats: 그룹 상태
+      org_stats: 조직 통계(하위 그룹 포함)
+      visits: 방문
+      members: 멤버
+      subgroups: 소그룹
+      threads: 토론 주제
+      polls: 투표
+      votes: 투표
+      comments: 댓글
+      general: 일반적인
+      poll_types:
+        proposal: 제안
+        count: 세다
+        choose: 선택하다
+        allocate: 할당하다
+        score: 점수
+        rank: 계급
+        time: 시간 투표
+  user:
+    deleted_user: "삭제 된 사용자"
+    placeholder_name: "초대된 사용자 (%{hostname})"
+    error:
+      sign_in_required_html: |-
+          계속하려면 로그인해야 합니다. 계속하려면 <a href="/dashboard" target="_blank">로그인한</a> 후 이 페이지를 새로고침하세요.
+      recaptcha: "로봇이 아닌지 확인할 수 없습니다. 다시 시도해 주세요!"
+      bad_login: "죄송합니다. 해당 비밀번호는 등록된 비밀번호와 일치하지 않습니다."
+      username_must_be_alphanumeric: "사용자 이름은 소문자와 숫자로만 이루어져야 합니다."
+  poll:
+    error:
+      cannot_add_options: 이 설문조사에 옵션을 추가할 수 없습니다.
+      cannot_remove_options: 이 설문조사에서 옵션을 제거할 수 없습니다.
+      must_have_options: 설문조사 옵션이 하나 이상 있어야 합니다.
+      must_be_in_the_future: 미래에도 있어야지
+      templates_cannot_close: 템플릿을 닫을 수 없습니다.
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent})명의 회원이 자신의 입장을 밝혔습니다."
+      title: 제목
+      author: 글쓴이
+      email: 이메일
+      user_id: 사용자 ID
+      created_at: 생성 날짜
+      closing_at: 마감 시간
+      closed_at: 마감 시간
+      is_latest: 최신인가요?
+      engagement: 약혼
+      stances: 자세
+      participants: 참여자
+      details: 세부사항
+      group_name: 그룹명
+      discussion_title: 스레드 제목
+      outcome_author: 결과 작성자
+      outcome_created_at: 생성된 결과
+      outcome_statement: 결과 명세서
+      poll_url: 설문 조사 URL
+      reason: 이유
+      participant: 참가자
+      also_available: 다음 국가에서도 사용 가능
+      total: 총
+    waiting_for_votes_from: "여러분의 투표를 기다리고 있습니다"
   stance:
     error:
       too_short: 선택하세요.
@@ -288,43 +180,159 @@ ko:
     inactive: 비활성
   base_mailer:
     via_loomio: "%{name}(%{site_name}을 통해)"
+  event_mailer:
+    received_email:
+      explaination_html: |-
+          <p>귀하는 Loomio 그룹 %{group}의 관리자이기 때문에 이 이메일을 받았습니다.</p><p> 그룹이 인식할 수 없는 이메일 주소로부터 이메일을 받았습니다.</p><p> 메시지가 그룹 회원에게서 온 것이라면 이메일을 검토한 후 해당 회원을 선택하세요.</p><p> 메시지가 원치 않는 경우 해당 주소에서 오는 모든 이메일을 차단할 수 있습니다.</p>
+  user_mailer:
+    group_export_ready:
+      subject: '%{group_name}에 대한 그룹 데이터 내보내기'
+      body_html: |-
+          <a href="%{url}">여기에서</a> 그룹 데이터를 다운로드하세요. 이 링크는 일주일 후에 만료됩니다.
+    accounts_merged:
+      subject: "귀하의 %{site_name} 사용자 계정이 병합되었습니다."
+      body_html: |-
+          %{name} 님, 안녕하세요. 두 개의 loomio 계정이 하나의 계정으로 통합되었습니다. 앞으로 loomio에 접속하시려면 로그인 시 <strong>%{email}을</strong> 이용해주세요.
+    merge_verification:
+      subject: "병합을 위해 %{site_name} 이메일 주소를 확인하세요"
+      body_html: |-
+          <p>안녕하세요 %{name}님,</p><p> <strong>%{source_email}</strong> 주소의 사용자 계정을 이 주소 <strong>%{target_email}</strong> 에 속한 계정과 병합하라는 요청이 접수되었습니다.</p><p> 이 프로세스가 완료되면 더 이상 <strong>%{source_email}</strong> 로 로그인할 수 없으며 <strong>%{target_email}</strong> 로만 로그인할 수 있습니다.</p><p> 원하는 작업이 맞는지 확인해 주세요.</p>
+      verify: 이메일을 확인하고 진행하세요
+      confirm_page:
+        confirm: 병합 확인
+        body_html: |-
+            <p><strong>%{source_email}</strong> 아래의 계정을 <strong>%{target_email}</strong> 아래의 계정에 병합할 것인지 확인하세요.</p><p> <strong>%{source_email}</strong> 의 계정이 삭제되며 이후에는 <strong>%{target_email}을</strong> 통해서만 로그인할 수 있습니다.</p><p> 이 변경 사항은 되돌릴 수 없습니다.</p>
+        merge: 연결계정
+      complete_page:
+        title: 병합에 성공했습니다!
+        body_html: |-
+            <p>사용자 계정이 성공적으로 병합되었습니다. 곧 <strong>%{target_email}</strong> 로 확인 이메일을 받게 됩니다.</p><p> 추가 질문이 있는 경우 <a href="/contact" target="_blank">당사에 문의해</a> 주세요.</p>
+  email:
+    common:
+      or_enter_code: 또는 아래 코드를 입력하세요.
+      resend: 24시간 후에 만료되며 한 번만 사용할 수 있습니다.
+    login:
+      subject: '%{site_name}에 로그인'
+      intro: 이것은 %{site_name}에 로그인하기 위한 링크입니다.
+      intro_code: '%{site_name}에 로그인하기 위한 코드입니다.'
+      login: '%{name}(으)로 로그인'
+    reactivate:
+      subject: '%{site_name} 계정을 재활성화하세요'
+      intro: '%{name} 님, 안녕하세요. %{site_name} 계정을 재활성화할 수 있는 링크가 있습니다.'
+      login: '%{name} 재활성화'
+    contact_request:
+      subject: "%{name}님이 %{site_name}에서 귀하와 연결되기를 원합니다!"
+      intro: "%{name}(%{email})님이 귀하에게 연결 요청을 보냈습니다."
+      footer: "이 이메일에 답장하여 %{name}에게 직접 응답하실 수 있습니다."
+    reset_password:
+      greeting: |-
+          안녕하세요 %{name}님, Loomio 계정의 비밀번호를 재설정하는 데 사용할 수 있는 링크는 다음과 같습니다:
+      link_text: 비밀번호를 재설정
+      signoff: |-
+          귀하의 이메일이 %{hostname}의 "비밀번호 찾기" 양식에 입력되었기 때문에 이 메일이 전송되었습니다. 그러나 위의 링크를 따라 양식을 작성하기 전까지는 비밀번호가 변경되지 않습니다. 로그인하는 데 계속 문제가 있는 경우 이 이메일에 답장하여 지원 담당자에게 문의하세요.
+    by_who: '작성자: %{person}'
+    reply_to_this_discussion: 이 토론에 응답
+    loomio_app_description: "조직이 함께 결정을 내릴 수 있는 사용하기 쉽고 안전한 장소입니다."
+    view_group: 그룹 보기
+    to_join_group:
+      subject: "%{member}님이 %{site_name}의 %{group_name}에 가입하도록 귀하를 초대했습니다."
+      invitation_text: "%{member}님이 %{group_name} 그룹에 가입하도록 귀하를 초대했습니다."
+      invitation_text_html: "님이 귀하를 자신의 그룹에 가입하도록 초대했습니다."
+      link_help: "초대를 수락하려면 아래 링크를 클릭하세요."
+      accept_invitation: "초대를 수락"
+      stop_emails: "%{site_name}에서 이메일 수신 중지"
+      accepting_is_important: 귀하와 관련된 결정에 대한 알림을 놓치지 않도록 초대를 수락하는 것이 중요합니다.
+    resend_to_join_group:
+      subject: "%{member}이(가) %{site_name}에서 %{group_name}에 가입하기를 기다리고 있습니다."
+    user_added_to_group:
+      subject: "%{who}님이 %{site_name}의 %{which_group}에 귀하를 추가했습니다."
+      content: "%{who}님이 귀하를 %{which_group}에 추가했습니다."
+      content_html: "<strong>%{who}</strong> 님이 귀하를 <strong>%{which_group}</strong> 에 추가했습니다."
+      link_help: "그룹으로 이동하려면 아래 링크를 클릭하세요."
+    unsubscribe: "구독중지 혹은 이메일 설정을 변경하세요."
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>구독중지 혹은 이메일 설정 변경하기"
+    catch_up:
+      daily_subject: 어제 %{site_name}
+      weekly_subject: 지난주 %{site_name}
+      other_subject: 최근 %{site_name}에서
+      do_not_reply: 이 메일에 답장하지 마십시오.
+      mark_as_read: 읽음으로 표시
+      thanks_for_reading: 읽어주셔서 감사합니다. 좋은 하루 보내세요!
+      marked_as_read_success: 이메일의 모든 내용이 읽음으로 표시되었습니다.
+      click_here: 여기를 클릭하세요.
+    group_membership_approved:
+      intro: "%{group_name} 그룹에 대한 액세스 요청이 승인되었습니다."
+      intro_html: "<strong>%{group_name}</strong> 그룹에 대한 액세스 요청이 승인되었습니다."
+      link_help: "%{group_name}에 가입하고 시작하려면 아래 링크를 클릭하세요."
+      subject: "%{group_name} 가입 요청이 승인되었습니다."
+      join_group: "그룹에 가입"
+    membership_request:
+      intro_html: 님이 귀하의 그룹 중 하나에 대한 액세스를 요청했습니다.
+      subject: "%{who}님이  %{which_group}에 가입을 요청했습니다. "
+      view_group: 이 요청에 대해서 승인하거나 거절할 수 있습니다.
+      button_text: 요청 보기
   announcement_count_emails: "%{count}개의 이메일"
   email_actions:
     unfollowed_discussion: 스레드에 대한 이메일을 사용 중지했습니다.
   discussion_mailer:
-    reply_or_view_online_html: 이 이메일에 직접 답장하거나 <a href='%{url}'>%{hostname} 에서 확인하세요</a> .
-    turn_off_notifications_html: 이 토론에 대한 <a href='%{url}'>이메일을 끄십시오</a> .
+    reply_or_view_online_html: "이 이메일에 직접 답장하거나 <a href='%{url}'>%{hostname} 에서 확인하세요</a> ."
+    turn_off_notifications_html: "이 토론에 대한 <a href='%{url}'>이메일을 끄십시오</a> ."
     change_email_preferences_html: "<a href='%{email_preferences_url}'>이메일 환경설정을</a> 변경하세요."
-    unsubscribe_from_discussion_announced_html: 이 스레드의 추가 공지를 <a href='%{url}'>구독 취소하세요</a> .
-    unsubscribe_from_new_comment_html: 이 스레드의 댓글 구독을 <a href='%{url}'>취소하세요</a> .
-    unsubscribe_from_comment_replied_to_html: 답변 알림입니다.
-    unsubscribe_from_user_mentioned_html: 멘션 알림입니다.
+    unsubscribe_from_discussion_announced_html: "이 스레드의 추가 공지를 <a href='%{url}'>구독 취소하세요</a> ."
+    unsubscribe_from_new_comment_html: "이 스레드의 댓글 구독을 <a href='%{url}'>취소하세요</a> ."
+    unsubscribe_from_comment_replied_to_html: "답변 알림입니다."
+    unsubscribe_from_user_mentioned_html: "멘션 알림입니다."
     discussion_edited:
       inline: "%{actor}님이 스레드 컨텍스트를 편집했습니다."
     discussion_closed:
       inline: "%{actor}님이 스레드를 닫았습니다."
+  footer:
+    about: 소개
+    blog: 블로그
+    contact: 연락하기
+    help: 도움말
+    privacy: 개인정보
+    pricing: 가격표
+    public_groups: 공개 그룹
+    terms: 정책
+    independent_install_html: '%{hostname}은(는) Loomio의 독립 복사본을 실행하고 있습니다. <a href="http://github.com/loomio/loomio">자세한 내용을 알아보세요</a> .'
   password_reset:
     change_your_password: 비밀번호 변경
     change_my_password: 비밀번호 변경
     confirm_new_password: 비밀번호 확인
     new_password: 새 비밀번호
-    email_guidelines_html: "<p>이메일 주소를 입력하시면 비밀번호 재설정 링크가 전송됩니다.</p><p> 일반적으로 Facebook이나 Google을 통해 로그인하는 경우 해당 계정과 연결된 이메일 주소를 입력하세요.</p>"
+    email_guidelines_html: |-
+        <p>이메일 주소를 입력하시면 비밀번호 재설정 링크가 전송됩니다.</p><p> 일반적으로 Facebook이나 Google을 통해 로그인하는 경우 해당 계정과 연결된 이메일 주소를 입력하세요.</p>
     reset_email_timeframe: 이메일이 도착하는 데 최대 5분 정도 걸릴 수 있습니다. 만약 나타나지 않는다면 스팸메일함을 꼭 확인해 보세요.
     length_restriction: 비밀번호는 8자 이상이어야 합니다.
     forbidden_passwords: 귀하의 계정을 안전하게 보호하기 위해 “password”와 같은 일반적인 비밀번호는 금지되어 있습니다.
   task_mailer:
     task_due_reminder:
-      subject: '작업 알림: %{name}'
-      greeting: '안녕하세요 %{name}님, 다음 작업 마감 시간은 %{due}입니다:'
+      subject: "작업 알림: %{name}"
+      greeting: "안녕하세요 %{name}님, 다음 작업 마감 시간은 %{due}입니다:"
       view_task: "%{site_name}에서 보기"
-      update_or_comment: 이 작업을 이미 완료했다면 체크 표시를 해주세요. 완료되지 않은 경우 진행 상황 업데이트를 공유해 주세요.
-      due_today: 오늘
+      update_or_comment: "이 작업을 이미 완료했다면 체크 표시를 해주세요. 완료되지 않은 경우 진행 상황 업데이트를 공유해 주세요."
+      due_today: "오늘"
       due_in_count_days: "%{count}일 후"
   group_mailer:
-    resend: '알림: %{member}이(가) 귀하의 %{group_name} 가입을 기다리고 있습니다.'
+    resend: "알림: %{member}이(가) 귀하의 %{group_name} 가입을 기다리고 있습니다."
     destroy_warning:
       subject: 귀하의 Loomio 그룹이 삭제될 예정입니다.
-      body: '귀하의 Loomio 그룹: "%{group}"은(는) %{deletor}에 의해 삭제될 예정입니다. 그룹 삭제를 원하지 않으시면 이 이메일에 회신해 주시기 바랍니다. 그룹을 삭제하려는 경우에는 아무 작업도 수행할 필요가 없습니다. 감사합니다.'
-  event_mailer:
-    received_email:
-      explaination_html: "<p>귀하는 Loomio 그룹 %{group}의 관리자이기 때문에 이 이메일을 받았습니다.</p><p> 그룹이 인식할 수 없는 이메일 주소로부터 이메일을 받았습니다.</p><p> 메시지가 그룹 회원에게서 온 것이라면 이메일을 검토한 후 해당 회원을 선택하세요.</p><p> 메시지가 원치 않는 경우 해당 주소에서 오는 모든 이메일을 차단할 수 있습니다.</p>"
+      body: |-
+          귀하의 Loomio 그룹: "%{group}"은(는) %{deletor}에 의해 삭제될 예정입니다. 그룹 삭제를 원하지 않으시면 이 이메일에 회신해 주시기 바랍니다. 그룹을 삭제하려는 경우에는 아무 작업도 수행할 필요가 없습니다. 감사합니다.
+  poll_mailer:
+    common:
+      why_send_this: '%{reason} 때문에 이 이메일을 받으셨습니다.'
+      view_on_loomio: '%{site_name}에서 보기'
+      create_outcome: 결과 공유
+      your_response: "귀하가 투표한 항목:"
+      you_voted: "투표하셨습니다!"
+      not_invited: "초대받지 않음"
+      please_respond: 응답해주세요
+      time_zone: (%{zone}에 표시되는 시간)
+      undecided_members: 미결정 회원(%{count})
+      undecided_visitors: 미정 손님(%{count})
+      more_undecided: "%{count}개 더..."
+      vote_now: 지금 투표하세요
+      you_have_until: '%{when}까지 참여하실 수 있습니다.'
+      people_have_voted: "%{dnom}명 중 %{nom}명이 참여했습니다(%{pct}%)."

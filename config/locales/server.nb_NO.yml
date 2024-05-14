@@ -1,4 +1,7 @@
 nb_NO:
+  discussion_templates:
+    discuss_a_topic:
+      title_placeholder: Hvilket tema vil du diskutere?
   errors:
     404:
       title: Ikke funnet

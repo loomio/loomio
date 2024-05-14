@@ -1,4 +1,6 @@
 cmn:
+  start_trial:
+    success: 成功！
   plan_names:
     free: 免费
     trial: 试用
@@ -29,17 +31,10 @@ cmn:
     meeting: 时间投票
     ranked_choice: 排序选择
     score: 分投法
-  new_poll_types:
-    proposal: 提议
-    count: 计数
-    poll: 选择
-    score: 得分
-    ranked_choice: 排序
-    dot_vote: 分配
-    meeting: 时间投票
   timezones:
     local: 当地时间 (%{value})
   common:
+    are_you_sure: 您确定吗？
     version: 版本
     view: 查看
     or: 或者
@@ -379,7 +374,7 @@ cmn:
     no_notifications_sent: 还没有发送通知
     history_error: 发生了一点问题！无法载入历史。
     audiences:
-      group: '%{name} 的成员'
+      group: "%{name} 的成员"
     form:
       too_many_invitations: |
           已超过邀请限制。<a href="%{upgradeUrl}" target="_blank">升级</a>
@@ -471,6 +466,7 @@ cmn:
       closed: "这个话题已经关闭。它将不会再出现在仪表板上，并将会在群组页面中列在“已关闭”下。"
   group_page:
     threads: 话题
+    decisions: 决策
     members: 成员 (%{count})
     settings: 设置
     no_threads_here: 这里没有话题可以查看！
@@ -655,6 +651,7 @@ cmn:
     locale_label: '语言'
     short_bio_placeholder: '请自我介绍，包含专业领域、有兴趣的主题与其他附属机构'
     locale_placeholder: 选取您偏好的语言
+    deactivate_account: '冻结帐号'
   text_editor:
     insert_link: 插入链接
     insert_embedded_url: 嵌入影片
@@ -663,10 +660,6 @@ cmn:
     set_password_helptext: 请输入密码，最少需要 8 个字符
     set_password: 设置密码
     password_changed: 您的密码已更新
-  deactivation_modal:
-    you_will_be_deleted: "您的使用者帐号，包含您的名字、电子邮件地址与其他可识别个人的资料，都将会从我们的系统中删除。"
-    name_removed: '您在群组中作出的意见、提案与话题会留下，但您的名字将会从中移除。'
-    no_longer_group_member: '您将不会再被任何群组列为成员'
   email_settings_page:
     account_deactivated: 您的帐号已被停用。您将不会再收到任何电子邮件。
     deactivate_header: 永远停止所有电子邮件
@@ -805,6 +798,7 @@ cmn:
   decision_tools_card:
     proposal_title: 提案
   poll_common:
+    proposal: 提案
     have_your_say: 拥有发言权
     load_more: 载入更多
     details: 详细内容
@@ -878,7 +872,6 @@ cmn:
     remove_option: 移除选项
     poll_created: 投票已创建
   poll_meeting_form:
-    tool_tip_collapsed: 找到人们可以会面的时间
     no_options: 输入您目前时区 (%{zone}) 的时间。参与者可以看到翻译成他们本地时区的时间。
   poll_proposal_vote_form:
     default_reason_placeholder: 请解释您的理由
@@ -891,14 +884,23 @@ cmn:
     disagree: 反对
     objection: 反对
     block: 阻挡
-  poll_count_form:
-    title_placeholder: 例如：谁想要加入工作小组？
-    details_placeholder: '解释为什么要参与，或是详细说明要如何参与。 '
   poll_count_options:
     'yes': '是'
     'no': '否'
   poll_meeting_chart_panel:
     total: 总共
+  poll_templates:
+    proposal:
+      agree_prompt: 您对提案的感觉如何，以及其如何对群组产生助益？
+      disagree: 反对
+    consent:
+      objection: 反对
+    consensus:
+      disagree: 反对
+      block: 阻挡
+      block_prompt: 解释您对此提案的反对意见，以及为什么它不应该再继续下去
+    time_poll:
+      process_subtitle: 找到人们可以会面的时间
   auth_form:
     invalid_email: "抱歉，这看起来不是有效的电子邮件地址"
     account_locked: "您的帐号因为太多次失败的登入尝试而被锁定。请检查您的电子邮件以取得解锁连结"
