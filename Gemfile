@@ -24,7 +24,7 @@ gem 'redcarpet', '~> 3.6.0'
 gem 'paper_trail', '~> 15.1.0'
 gem 'sidekiq', '~> 6.5.12'
 gem 'friendly_id', '~> 5.5.1'
-gem 'httparty', '~> 0.21.0'
+gem 'httparty', '~> 0.22.0'
 gem 'browser', '~> 6.0.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
