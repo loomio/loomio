@@ -56,7 +56,7 @@ export default {
       switch (this.model.constructor.singular) {
       case 'discussion': return this.model.volume();
       case 'membership': return this.model.volume;
-      case 'user':       return this.model.defaultMembershipVolume;
+      case 'user':       return null;
       }
     },
 
