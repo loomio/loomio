@@ -187,6 +187,12 @@ export default {
 
     updateSuggestions() {
       if (this.query && this.canAddGuests) {
+        // seems like a problem with vuteify when query begins with a space
+        if (this.query.trimStart().length < this.query.length){
+          this.query = this.query.trimStart();
+          return;
+        }
+
         const emails = uniq(this.query.match(/[^\s:,;"`<>]+?@[^\s:,;"`<>]+\.[^\s:,;"`<>]+/g) || []);
 
         // catch paste of multiple email addresses, or failure to press enter after an email address
