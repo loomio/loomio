@@ -54,11 +54,10 @@ module GroupService
         revoked_at: nil,
         revoker_id: nil,
         admin: false,
-        volume: 2
       )
 
       new_memberships = users.map do |user|
-        Membership.new(inviter: actor, user: user, group: g, volume: 2)
+        Membership.new(inviter: actor, user: user, group: g, volume: user.default_membership_volume)
       end
 
       Membership.import(new_memberships, on_duplicate_key_ignore: true)
