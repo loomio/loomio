@@ -4,6 +4,7 @@ class RedactUserWorker
   # we deactivate and redact the user
   def perform(user_id, actor_id, send_email = true)
     user = User.find_by!(id:user_id)
+    return if user.email.nil?
     email = user.email
     locale = user.locale
     deactivated_at = user.deactivated_at || DateTime.now
@@ -48,9 +49,9 @@ class RedactUserWorker
       PaperTrail::Version.where(item_type: 'User', item_id: user_id).delete_all
       Identities::Base.where(user_id: user_id).delete_all
       MembershipRequest.where(requestor_id: user_id, responded_at: nil).delete_all
-      NewsletterService.unsubscribe(email)
     end
 
+    NewsletterService.unsubscribe(email)
     UserMailer.redacted(email, locale).deliver_later if send_email
     SearchService.reindex_by_author_id(user.id)
   end
