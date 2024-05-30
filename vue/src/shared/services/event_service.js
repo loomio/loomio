@@ -1,4 +1,5 @@
 import AbilityService from '@/shared/services/ability_service';
+import Session     from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import openModal from '@/shared/helpers/open_modal';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
@@ -15,7 +16,8 @@ export default new class EventService {
           return event.discussion().forkedEventIds.push(event.id);
         },
         canPerform() {
-          return !event.model().discardedAt &&
+          return Session.isSignedIn() &&
+          !event.model().discardedAt &&
           !event.discussion().closedAt &&
           AbilityService.canMoveThread(event.discussion());
         }
@@ -26,7 +28,11 @@ export default new class EventService {
         icon: 'mdi-pin-outline',
         menu: true,
         kinds: ['new_comment', 'poll_created'],
-        canPerform() { return !event.model().discardedAt && AbilityService.canPinEvent(event); },
+        canPerform() { 
+          return Session.isSignedIn() &&
+          !event.model().discardedAt &&
+          AbilityService.canPinEvent(event);
+        },
         perform() {
           return openModal({
             component: 'PinEventForm',
@@ -39,8 +45,14 @@ export default new class EventService {
         icon: 'mdi-pin-off',
         menu: true,
         kinds: ['new_comment', 'poll_created'],
-        canPerform() { return !event.model().discardedAt && AbilityService.canUnpinEvent(event); },
-        perform() { return event.unpin().then(() => Flash.success('activity_card.event_unpinned')); }
+        canPerform() {
+          return Session.isSignedIn() &&
+            !event.model().discardedAt &&
+            AbilityService.canUnpinEvent(event);
+        },
+        perform() {
+          return event.unpin().then(() => Flash.success('activity_card.event_unpinned'));
+        }
       },
 
       copy_url: {
