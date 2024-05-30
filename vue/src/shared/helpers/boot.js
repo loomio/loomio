@@ -17,6 +17,7 @@ export default function(callback) {
       Sentry.init({
         Vue,
         ignoreErrors: [
+          "chrome-extension",
           "Avoided redundant navigation to current location",
           "NotFoundError: Node.removeChild",
           "NotFoundError: Failed to execute 'removeChild' on 'Node'",

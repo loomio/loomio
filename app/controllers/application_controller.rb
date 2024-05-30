@@ -22,7 +22,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_version
   helper_method :bundle_asset_path
   helper_method :supported_locales
-  helper_method :is_old_browser?
 
   skip_before_action :verify_authenticity_token, only: :bug_tunnel
   caches_page :sitemap
@@ -176,9 +175,5 @@ class ApplicationController < ActionController::Base
     else
       super
     end
-  end
-
-  def is_old_browser?
-    browser.ie? || (browser.safari? && browser.version.to_i < 12)
   end
 end
