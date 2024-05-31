@@ -24,7 +24,7 @@ class Subscription < ApplicationRecord
   def can_invite()
     parent_group = parent_or_self
     subscription = Subscription.for(parent_group)
-    subscription.max_members && parent_group.org_memberships_count >= subscription.max_members
+    subscription.max_members && parent_group.org_members_count >= subscription.max_members
   end
 
   def level

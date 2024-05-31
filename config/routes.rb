@@ -303,6 +303,7 @@ Rails.application.routes.draw do
         collection do
           get :audience
           get :count
+          get :new_member_count
           get :search
           get :history
           get :users_notified_count

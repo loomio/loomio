@@ -18,6 +18,18 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
     respond_with_collection
   end
 
+  def new_member_count
+    current_user.ability.authorize! :show, target_model
+
+    count = UserInviter.new_members_count(
+      parent_group: target_model.parent_or_self,
+      user_ids: String(params[:recipient_user_xids]).split('x').map(&:to_i),
+      emails: String(params[:recipient_emails_cmr]).split(',')
+    )
+    render json: {count: count}
+  end
+
+  # count for number of notifications that will be send
   def count
     count = UserInviter.count(
       actor: current_user,

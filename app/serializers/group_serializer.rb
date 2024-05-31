@@ -46,7 +46,6 @@ class GroupSerializer < ApplicationSerializer
              :is_visible_to_public,
              :is_visible_to_parent_members,
              :parent_members_can_see_discussions,
-             :org_memberships_count,
              :org_discussions_count,
              :org_members_count,
              :subscription,
@@ -114,10 +113,6 @@ class GroupSerializer < ApplicationSerializer
   end
 
   private
-  def include_org_memberships_count?
-    object.is_parent?
-  end
-
   def include_org_members_count?
     object.is_parent?
   end

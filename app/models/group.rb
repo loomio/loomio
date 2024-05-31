@@ -285,11 +285,11 @@ class Group < ApplicationRecord
     reload
   end
 
-  def org_memberships_count
+  def org_members_count
     Membership.active.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
-  def org_members_count
+  def org_accepted_members_count
     Membership.active.accepted.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 

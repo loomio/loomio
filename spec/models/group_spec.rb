@@ -142,12 +142,12 @@ describe Group do
     end
   end
 
-  describe "org membership count" do
+  describe "org members count" do
     let!(:group) { create(:group) }
     let!(:subgroup) { create(:group, parent: group) }
     it 'returns total number of memberships in the org' do
       expect(group.memberships.count + subgroup.memberships.count).to eq 3
-      expect(group.org_memberships_count).to eq 2
+      expect(group.org_members_count).to eq 2
     end
   end
 end
