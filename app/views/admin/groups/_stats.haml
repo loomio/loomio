@@ -6,9 +6,9 @@
         -# %td
         -#   %h2{ style: "text-align: center"}= Queries::AdminGroupPage.visits_count(group)
         %td
-          %h2{ style: "text-align: center"}= group.org_memberships_count
-        %td
           %h2{ style: "text-align: center"}= group.org_members_count
+        %td
+          %h2{ style: "text-align: center"}= group.org_accepted_members_count
         %td
           %h2{ style: "text-align: center"}= group.subgroups.count
         %td

@@ -28,26 +28,30 @@ class UserInviter
     
     return if subscription.max_members.nil?
 
-    # check if org_memberships_count + new_member_count will exceed subscription.max_members
+    new_count = new_members_count(parent_group: parent_group, user_ids: user_ids, emails: emails)
+
+    if (parent_group.org_members_count + new_count) > parent_group.subscription.max_members.to_i
+      raise Subscription::MaxMembersExceeded
+    end
+  end
+
+  # how many totally new members are being added right now?
+  def self.new_members_count(parent_group:, user_ids:, emails:)
     new_emails_count =
       emails.uniq.count -
       Membership.active.where(
-        group_id: group_ids,
+        group_id: parent_group.id_and_subgroup_ids,
         user_id: User.where(email: emails).pluck(:id),
       ).count
 
     new_user_ids_count =
       user_ids.uniq.count -
       Membership.active.where(
-        group_id: group_ids,
+        group_id: parent_group.id_and_subgroup_ids,
         user_id: user_ids,
       ).count
 
-    new_user_count = new_emails_count + new_user_ids_count
-
-    if (parent_group.org_memberships_count + new_user_count) > parent_group.subscription.max_members.to_i
-      raise Subscription::MaxMembersExceeded
-    end
+    new_emails_count + new_user_ids_count
   end
 
   def self.authorize!(emails: , user_ids:, audience:, model:, actor:)
