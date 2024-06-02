@@ -4,6 +4,7 @@ import Records  from '@/shared/services/records';
 import Session  from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
 import I18n from '@/i18n';
+import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 // import EventBus   from '@/shared/services/event_bus';
 
 const emailRegex = /[^:,;'"`<>]+?@[^:,;'"`<>]+\.[^:,;'"`<>]+/
@@ -14,9 +15,8 @@ export default
     return {
       userName: Session.user().name || '',
       userEmail: Session.user().email || '',
-      groupName: '',
-      groupIntention: '',
-      groupDecisions: '',
+      group: Records.groups.build({description: I18n.t('group_form.new_description_html')}),
+      howDidYouHearAboutLoomio: '',
       validate: false,
       newsletter: false,
       acceptTerms: false,
@@ -33,14 +33,15 @@ export default
     submit() {
       this.validate = true;
       if (this.$refs.form.validate()){
+        RescueUnsavedEditsService.models = [];
+        this.group.beforeSaves.forEach(f => f());
         this.loading = true
         Records.remote.post('trials', {
           user_name: this.userName,
           user_email: this.userEmail,
           newsletter: this.newsletter,
-          group_name: this.groupName,
-          group_intention: this.groupIntention,
-          group_decisions: this.groupDecisions,
+          group: this.group.serialize().group,
+          how_did_you_hear_about_loomio: this.howDidYouHearAboutLoomio,
           group_category: this.groupCategory,
         }).then((data) => {
           this.trialStarted = true
@@ -97,13 +98,12 @@ v-main
         v-card-text
           p(v-t="{path: 'start_trial.intro', args: {day: trialDays}}")
           p(v-t="'start_trial.lets_get_started'")
-          p(v-t="'start_trial.we_use_this_to_help'")
           v-text-field(v-if="!isSignedIn" v-model='userName' :label="$t('start_trial.your_name')" :rules="nameRules" required)
           v-text-field(v-if="!isSignedIn" v-model='userEmail' :label="$t('start_trial.your_email')" type="email" :rules="emailRules" required)
-          v-text-field(v-model='groupName' :label="$t('group_form.organization_name')" :rules="nameRules" required)
+          v-text-field(v-model='group.name' :label="$t('group_form.organization_name')" :rules="nameRules" required)
           v-select(v-model="groupCategory" :items="categoryItems" :label="$t('group_survey.describe_other')" :rules="nameRules" required)
-          v-textarea(v-model='groupIntention' :label="$t('start_trial.how_do_you_intend_to_use_loomio')" :rules="nameRules")
-          v-textarea(v-model='groupDecisions' :label="$t('start_trial.what_decisions_do_you_need_to_make')" :rules="nameRules")
+          lmo-textarea.group-form__group-description(:model='group' field="description", :placeholder="$t('group_form.description_placeholder')", :label="$t('group_form.description')")
+          v-textarea(v-model='howDidYouHearAboutLoomio' :label="$t('start_trial.how_did_you_hear_about_loomio')" :rules="nameRules")
           v-checkbox(v-model='newsletter' :label="$t('start_trial.subscribe_to_newsletter')" :hint="$t('start_trial.newsletter_description')" persistent-hint)
           v-checkbox.auth-signup-form__legal-accepted(v-model='acceptTerms' required :rules="checkRules")
             template(v-slot:label)
