@@ -98,7 +98,6 @@ v-main
         v-card-text
           p(v-t="{path: 'start_trial.intro', args: {day: trialDays}}")
           p(v-t="'start_trial.lets_get_started'")
-          p(v-t="'start_trial.we_use_this_to_help'")
           v-text-field(v-if="!isSignedIn" v-model='userName' :label="$t('start_trial.your_name')" :rules="nameRules" required)
           v-text-field(v-if="!isSignedIn" v-model='userEmail' :label="$t('start_trial.your_email')" type="email" :rules="emailRules" required)
           v-text-field(v-model='group.name' :label="$t('group_form.organization_name')" :rules="nameRules" required)
