@@ -6,9 +6,9 @@ describe API::V1::TrialsController do
       post :create, params: {
         user_name: "Jimmy",
         user_email: "jimmy@example.com",
-        group_name: "Jim group",
-        group_intention: "Make decisions",
+        group: {name: "Jim group", description: "Make decisions" },
         group_category: "boards",
+        how_did_you_hear_about_loomio: "I work there",
         newsletter: true,
       }
       expect(response.status).to eq 200
@@ -20,6 +20,7 @@ describe API::V1::TrialsController do
       expect(group.handle).to eq "jim-group"
       expect(group.description).to include "Make decisions"
       expect(group.category).to eq "boards"
+      expect(group.info['how_did_you_hear_about_loomio']).to eq "I work there"
     end
   end
 
