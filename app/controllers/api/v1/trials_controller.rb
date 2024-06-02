@@ -16,13 +16,12 @@ class API::V1::TrialsController < API::V1::RestfulController
 
     raise "you said I'd have a user by now" unless user && user.valid?
 
-    group = Group.new(
-      name: params[:group_name].strip,
-      description: MarkdownService.render_html(String(params[:group_intention]).strip + "\n\n" + String(params[:group_decisions]).strip),
-      description_format: 'html',
-      group_privacy: "secret",
-      category: params[:group_category],
-    )
+    group = Group.new
+    group.assign_attributes_and_files(params.require(:group).permit(permitted_params.group_attributes))
+    group.group_privacy = "secret"
+    group.category = params[:group_category]
+    group.info['how_did_you_hear_about_loomio'] = params[:how_did_you_hear_about_loomio]
+
     group.handle = GroupService.suggest_handle(name: group.name, parent_handle: nil)
     GroupService.create(group: group, actor: user, skip_authorize: true)
 
