@@ -65,19 +65,21 @@ form.poll-score-vote-form(@submit.prevent='submit()')
           :disabled="!poll.isVotable()"
           v-model='choice.score'
           :color="choice.option.color"
+          thumb-color="primary"
+          thumb-label="always"
           :height="4"
           :min="poll.minScore"
           :max="poll.maxScore"
         )
-      v-list-item-action(style="max-width: 128px")
-        v-text-field.text-right(
-          type="number"
-          max-width="20px"
-          filled
-          rounded
-          dense
-          v-model="choice.score"
-        )
+      //- v-list-item-action(style="max-width: 128px")
+      //-   v-text-field.text-right(
+      //-     type="number"
+      //-     max-width="20px"
+      //-     filled
+      //-     rounded
+      //-     dense
+      //-     v-model="choice.score"
+      //-   )
 
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
