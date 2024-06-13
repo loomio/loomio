@@ -41,15 +41,11 @@ export default function(callback) {
         ],
         dsn: AppConfig.sentry_dsn,
         tunnel: '/bug_tunnel',
-        integrations: [
-          new Sentry.BrowserTracing({
-            routingInstrumentation: Sentry.vueRouterInstrumentation(router)
-          }),
-        ],
+        integrations: [Sentry.browserTracingIntegration({ router })],
         tracesSampleRate: AppConfig.features.app.sentry_sample_rate,
         tracePropagationTargets: ["localhost", AppConfig.baseUrl, /^\//],
       });
-      Sentry.configureScope(scope => scope.setTag("loomio_version", AppConfig.version));
+      Sentry.setTag("loomio_version", AppConfig.version);
     }
 
     ['shortcut icon'].forEach(function(name) {
