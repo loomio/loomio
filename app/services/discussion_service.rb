@@ -168,6 +168,12 @@ class DiscussionService
     EventBus.broadcast('discussion_mark_as_seen', reader, actor)
   end
 
+  def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
+    discussion = Discussion.find(discussion_id)
+    actor = User.find(actor_id)
+    mark_as_read(discussion: discussion, params: {ranges: ranges}, actor: actor)
+  end
+
   def self.mark_as_read(discussion:, params:, actor:)
     actor.ability.authorize! :mark_as_read, discussion
     RetryOnError.with_limit(2) do
