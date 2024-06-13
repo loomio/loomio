@@ -117,12 +117,14 @@ div
             v-model='choice.score'
             :color="choice.option.color"
             track-color="grey"
-            thumb-color="primary"
-            thumb-label="always"
+            :thumb-color="choice.option.color"
             :height="4"
             :min="0"
             :max="dotsPerPerson"
             :readonly="false")
+        v-list-item-action
+          v-avatar(:color="choice.option.color")
+            span(style="color: #000") {{choice.score}}
         //- v-list-item-action(style="max-width: 128px")
         //-   v-text-field(
         //-     type="number"
