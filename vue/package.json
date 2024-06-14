@@ -88,7 +88,7 @@
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
-    "vite": "^5.2.13",
+    "vite": "^5.3.0",
     "vite-plugin-env-compatible": "latest",
     "@vitejs/plugin-vue2": "latest"
   }
