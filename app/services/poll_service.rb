@@ -142,12 +142,10 @@ class PollService
     volumes = {}
     group_member_ids = (poll.group || NullGroup.new).member_ids
 
-    # if the user has chosen to mute the thread or group then mute the poll too, but dont subsribe
     if poll.discussion_id
       DiscussionReader.active.where(
         discussion_id: poll.discussion_id,
         user_id: users.pluck(:id),
-        volume: 1
       ).find_each do |dr|
         volumes[dr.user_id] = dr.volume
       end
@@ -157,7 +155,6 @@ class PollService
       Membership.active.where(
         group_id: poll.group_id,
         user_id: users.pluck(:id),
-        volume: 1
       ).find_each do |m|
         volumes[m.user_id] = m.volume unless volumes.has_key? m.user_id
       end
@@ -175,7 +172,7 @@ class PollService
         poll: poll,
         inviter: actor,
         guest: !group_member_ids.include?(user.id),
-        volume: volumes[user.id] || DiscussionReader.volumes[:normal],
+        volume: volumes[user.id] || user.default_membership_volume,
         latest: true,
         reason_format: user.default_format,
         created_at: Time.zone.now
