@@ -239,7 +239,7 @@ class DiscussionService
                            inviter: actor,
                            guest: !volumes.has_key?(user.id),
                            admin: !discussion.group_id,
-                           volume: volumes[user.id] || DiscussionReader.volumes[:normal])
+                           volume: volumes[user.id] || user.default_membership_volume)
     end
 
     DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)

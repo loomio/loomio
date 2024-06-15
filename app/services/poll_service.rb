@@ -172,7 +172,7 @@ class PollService
         poll: poll,
         inviter: actor,
         guest: !group_member_ids.include?(user.id),
-        volume: volumes[user.id] || DiscussionReader.volumes[:normal],
+        volume: volumes[user.id] || user.default_membership_volume,
         latest: true,
         reason_format: user.default_format,
         created_at: Time.zone.now
