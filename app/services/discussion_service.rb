@@ -175,7 +175,7 @@ class DiscussionService
   end
 
   def self.mark_as_read(discussion:, params:, actor:)
-    actor.ability.authorize! :mark_as_read, discussion
+    return unless actor.ability.can?(:mark_as_read, discussion)
     RetryOnError.with_limit(2) do
       sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
       NotificationService.viewed_events(actor_id: actor.id, discussion_id: discussion.id, sequence_ids: sequence_ids)
