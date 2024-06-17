@@ -91,7 +91,8 @@ export default {
           this.$router.push(this.urlFor(discussion));
         });
       }).catch( error => {
-        Flash.custom(error.error, 'error', 5000);
+        Flash.warning('poll_common_form.please_review_the_form');
+        console.error(error);
       });
     },
 
