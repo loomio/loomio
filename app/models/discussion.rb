@@ -11,7 +11,6 @@ class Discussion < ApplicationRecord
   include HasCreatedEvent
   include HasRichText
   include HasTags
-  extend  NoSpam
   include Discard::Model
 
   include Searchable
@@ -47,8 +46,6 @@ class Discussion < ApplicationRecord
         #{author_id ? " AND discussions.author_id = #{author_id.to_i}" : ""}
     SQL
   end
-
-  no_spam_for :title, :description
 
   scope :dangling, -> { joins('left join groups g on discussions.group_id = g.id').where('group_id is not null and g.id is null') }
   scope :in_organisation, -> (group) { includes(:author).where(group_id: group.id_and_subgroup_ids) }
