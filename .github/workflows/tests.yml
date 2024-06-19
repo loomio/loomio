@@ -3,6 +3,9 @@ name: tests
 on:
   push:
 
+permissions:
+  contents: read
+
 jobs:
   rspec:
     runs-on: ubuntu-latest
