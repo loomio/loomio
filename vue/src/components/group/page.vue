@@ -7,12 +7,9 @@ import AbilityService    from '@/shared/services/ability_service';
 import GroupService    from '@/shared/services/group_service';
 import LmoUrlService     from '@/shared/services/lmo_url_service';
 import { pickBy } from 'lodash-es';
-import OldPlanBanner from '@/components/group/old_plan_banner';
 
 export default
 {
-  components: { OldPlanBanner },
-
   data() {
     return {
       group: null,
@@ -120,7 +117,6 @@ v-main
         span.text--secondary.text--lighten-1 &gt;
         space
       span.group-page__name.mr-4 {{group.name}}
-    old-plan-banner(:group="group")
     trial-banner(:group="group")
     formatted-text.group-page__description(
       v-if="group"

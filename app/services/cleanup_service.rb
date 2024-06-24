@@ -3,6 +3,7 @@ module CleanupService
     [Membership,
      MembershipRequest,
      Discussion,
+     Subscription,
      DiscussionReader,
      Comment,
      Poll,
@@ -17,6 +18,8 @@ module CleanupService
     end
 
     PaperTrail::Version.where(item_type: 'Motion').delete_all
+    ActiveStorage::Blob.unattached.where("active_storage_blobs.created_at < ?", 1.day.ago).find_each(&:purge_later)
+    
     # ["Comment", "Discussion", "Group", "Membership", "Outcome", "Poll", "Stance", "User"].each do |model|
     #   table = model.pluralize.downcase
     #   # puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").to_sql

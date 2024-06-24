@@ -67,29 +67,18 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def subscription
-    sub = cache_fetch(:subscriptions_by_group_id, object.id) { Subscription.new }
-
-    if (current_user_membership)
-      {
-        max_members:     sub.max_members,
-        max_threads:     sub.max_threads,
-        allow_subgroups: sub.allow_subgroups,
-        plan:            sub.plan,
-        active:          sub.is_active?,
-        renews_at:       sub.renews_at,
-        expires_at:      sub.expires_at,
-        members_count:   sub.members_count
-      }
-    else
-      {
-        max_members:     sub.max_members,
-        max_threads:     sub.max_threads,
-        allow_subgroups: sub.allow_subgroups,
-        plan:            sub.plan,
-        active:          sub.is_active?,
-        members_count:   sub.members_count
-      }
-    end
+    sub = cache_fetch(:subscriptions_by_group_id, object.id) { object.subscription || Subscription.new }
+    {
+      max_members:     sub.max_members,
+      max_threads:     sub.max_threads,
+      allow_subgroups: sub.allow_subgroups,
+      plan:            sub.plan,
+      state:           sub.state,
+      active:          sub.is_active?,
+      renews_at:       sub.renews_at,
+      expires_at:      sub.expires_at,
+      members_count:   sub.members_count
+    }
   end
 
   def include_secret_token?
