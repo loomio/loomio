@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_paper_trail only: [:name, :username, :email, :email_newsletter, :deactivated_at, :deactivator_id]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
+  COLLECTIONS = %w[group thread].freeze
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
   devise :pwned_password if Rails.env.production?
@@ -40,11 +41,12 @@ class User < ApplicationRecord
 
   before_save :set_legal_accepted_at, if: :legal_accepted
 
-  validates :email, presence: true, email: true, length: {maximum: 200}, if: -> { !bot }
+  validates :email, presence: true, email: true, length: {maximum: 200}, if: -> { !(bot || collection) }
 
   validates :name,               presence: true, if: :require_valid_signup
   validates :legal_accepted,     presence: true, if: :require_legal_accepted
   validate  :validate_recaptcha,                 if: :require_recaptcha
+  validate :forbidden_name_user_name, if: -> { !collection }
 
   has_one_attached :uploaded_avatar
 
@@ -122,7 +124,7 @@ class User < ApplicationRecord
   scope :unverified, -> { where(email_verified: false) }
   scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
-  scope :humans, -> { where(bot: false) }
+  scope :humans, -> { where("bot = ? AND collection = ?", false, false) }
   scope :bots, -> { where(bot: true) }
 
   scope :mention_search, -> (user, model, query) do
@@ -374,6 +376,18 @@ class User < ApplicationRecord
     "username"]
   end
 
+  COLLECTIONS.each do |name|
+    define_singleton_method("collection_#{name}") do
+      verified.find_by(email: "#{name}@loomio") ||
+        create!(email: "#{name}@loomio",
+                name: name,
+                password: SecureRandom.hex(20),
+                email_verified: true,
+                collection: true,
+                avatar_kind: :gravatar)
+    end
+  end
+
   protected
 
   def password_required?
@@ -387,5 +401,10 @@ class User < ApplicationRecord
     return if Clients::Recaptcha.instance.validate(self.recaptcha)
     # Sentry.capture_message("recaptcha failed", extra: {email: email})
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
+  end
+
+  def forbidden_name_user_name
+    errors.add(:username, 'Forbidden username') if COLLECTIONS.include? username&.downcase&.strip
+    errors.add(:name, 'Forbidden name') if COLLECTIONS.include? name&.downcase&.strip
   end
 end

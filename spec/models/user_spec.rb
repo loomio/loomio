@@ -162,6 +162,11 @@ describe User do
       expect{ @user2.generate_username }.to_not change{@user2.username}
     end
 
+    it "should not accept reserved usernames" do
+      @user1.username = "    #{User::COLLECTIONS.sample.titleize} "
+      expect(@user1.valid?).to eq false
+    end
+
     it "ensures usernames are stripped from email addr names" do
       user = User.new
       user.name = "james@example.com"
@@ -191,5 +196,10 @@ describe User do
       user.generate_username
       expect(user.username.length).to eq 18
     end
+  end
+
+  it "should not accept reserved names" do
+    user.name = "    #{User::COLLECTIONS.sample.titleize} "
+    expect(user.valid?).to eq false
   end
 end
