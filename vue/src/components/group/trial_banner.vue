@@ -36,7 +36,7 @@ v-alert(outlined color="primary" dense v-if="hasSubscription && isLoggedIn && is
       span(v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")
       span(v-if="isExpired" v-t="'current_plan_button.trial_expired'")
     div.pr-1(v-if="isFree")
-      span(v-html="$t('current_plan_button.was_gift_expired')")
+      span(v-html="$t('current_plan_button.was_gift_expired_or_mistake')")
     v-spacer
     v-btn(
       color="primary"
