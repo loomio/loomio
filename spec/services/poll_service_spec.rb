@@ -281,6 +281,7 @@ describe PollService do
   describe "group_members_added" do
     let(:member) { create :user, name: 'member' }
     let(:bot_member) { create :user, name: 'bot member', bot: true }
+    let(:collection_member){ create :user, name: 'collection member', collection: true }
 
     before do
       new_poll.specified_voters_only = false
@@ -302,6 +303,16 @@ describe PollService do
       count = new_poll.voters.count
 
       group.add_member!(bot_member)
+      PollService.group_members_added(group.id)
+      expect(new_poll.voters.count).to eq count
+    end
+
+    it "does not add collection users to the poll" do
+      new_poll.save!
+      PollService.group_members_added(group.id)
+      count = new_poll.voters.count
+
+      group.add_member!(collection_member)
       PollService.group_members_added(group.id)
       expect(new_poll.voters.count).to eq count
     end
