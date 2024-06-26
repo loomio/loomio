@@ -13,6 +13,15 @@ describe Group do
       group.destroy
       expect { membership.reload }.to raise_error ActiveRecord::RecordNotFound
     end
+
+    it "should increment memberships_count" do
+      expect { group.add_member! user }.to change { group.reload.memberships_count.to_i }
+    end
+
+    it "should not increment memberships_count if user with collection: true added to the group" do
+      user_collection = create(:user, collection: true)
+      expect { group.add_member! user_collection }.to_not change { group.reload.memberships_count.to_i }
+    end
   end
 
   context "subgroup" do

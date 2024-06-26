@@ -108,7 +108,7 @@ class Discussion < ApplicationRecord
   define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
   define_counter_cache(:versions_count)             { |d| d.versions.count }
   define_counter_cache(:seen_by_count)              { |d| d.discussion_readers.where("last_read_at is not null").count }
-  define_counter_cache(:members_count)              { |d| d.discussion_readers.where("revoked_at is null").count }
+  define_counter_cache(:members_count)              { |d| d.discussion_readers.humans.where("revoked_at is null").count }
   define_counter_cache(:anonymous_polls_count)      { |d| d.polls.where(anonymous: true).count }
 
   update_counter_cache :group, :discussions_count
@@ -120,7 +120,7 @@ class Discussion < ApplicationRecord
   def poll
     nil
   end
-  
+
   def group
     super || NullGroup.new
   end
