@@ -118,6 +118,7 @@ ro:
     was_gift_remaining: Au mai rămas %{days} zile.
     was_gift_expired: Planul tău gratuit a expirat acum.
     was_gift_expired_or_mistake: 'Planul dvs. gratuit a expirat acum. Dacă credeți că a fost o greșeală, <a style=''text-decoration: underline'' href=''/contact''>contactați-ne</a> .'
+    subscription_ended: Abonamentul dvs. Loomio s-a încheiat. Pentru a continua să utilizați Loomio, faceți upgrade
   subscription_status:
     plan: Plan
     state: stare

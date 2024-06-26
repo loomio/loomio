@@ -124,6 +124,7 @@ zh_TW:
     was_gift_remaining: 剩 %{days} 天
     was_gift_expired: 您的免費方案已過期。
     was_gift_expired_or_mistake: '您的免費方案現已過期。如果您認為其中有誤，<a style=''text-decoration: underline'' href=''/contact''>請與我們聯絡</a>。'
+    subscription_ended: 您的 Loomio 訂閱已結束。若要繼續使用 Loomio，請升級
   subscription_status:
     plan: 方案
     state: 狀態

@@ -118,6 +118,7 @@ ca:
     was_gift_remaining: Queden %{days} dies.
     was_gift_expired: El vostre pla gratuït a vençut.
     was_gift_expired_or_mistake: 'El vostre pla gratuït ara ha caducat. Si creieu que hi ha hagut un error, <a style=''text-decoration: underline'' href=''/contact''>poseu-vos en contacte amb nosaltres</a> .'
+    subscription_ended: La teva subscripció a Loomio ha finalitzat. Per continuar utilitzant Loomio, actualitzeu-lo
   subscription_status:
     plan: Pla
     state: Estat

@@ -118,6 +118,7 @@ el:
     was_gift_remaining: Απομένουν %{days} ημέρες.
     was_gift_expired: Το δωρεάν πρόγραμμά σας έχει πλέον λήξει.
     was_gift_expired_or_mistake: 'Το δωρεάν πρόγραμμά σας έχει πλέον λήξει. Εάν πιστεύετε ότι έχει γίνει κάποιο λάθος, <a style=''text-decoration: underline'' href=''/contact''>επικοινωνήστε μαζί μας</a> .'
+    subscription_ended: Η συνδρομή σας στο Loomio έληξε. Για να συνεχίσετε να χρησιμοποιείτε το Loomio, αναβαθμίστε
   subscription_status:
     plan: Σχέδιο
     state: Κατάσταση

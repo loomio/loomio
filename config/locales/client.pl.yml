@@ -118,6 +118,7 @@ pl:
     was_gift_remaining: Pozostało %{days} dni.
     was_gift_expired: Twój bezpłatny plan wygasł.
     was_gift_expired_or_mistake: 'Twój bezpłatny plan wygasł. Jeśli uważasz, że zaszła pomyłka, <a style=''text-decoration: underline'' href=''/contact''>skontaktuj się z nami</a> .'
+    subscription_ended: Twoja subskrypcja Loomio dobiegła końca. Aby nadal korzystać z Loomio, dokonaj aktualizacji
   subscription_status:
     plan: Plan
     state: Status

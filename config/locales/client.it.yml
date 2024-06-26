@@ -126,6 +126,7 @@ it:
     was_gift_remaining: "%{days} giorni restanti."
     was_gift_expired: Il vostro piano gratuito è già scaduto
     was_gift_expired_or_mistake: 'Il tuo piano gratuito è scaduto. Se ritieni che ci sia stato un errore, <a style=''text-decoration: underline'' href=''/contact''>contattaci</a> .'
+    subscription_ended: Il tuo abbonamento a Loomio è terminato. Per continuare a utilizzare Loomio, esegui l'aggiornamento
   subscription_status:
     plan: piano
     state: Condizione

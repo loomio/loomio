@@ -124,6 +124,7 @@ de:
     was_gift_remaining: "%{days} Tage verbleiben."
     was_gift_expired: Dein kostenfreier Test ist abgelaufen.
     was_gift_expired_or_mistake: 'Ihr kostenloser Plan ist jetzt abgelaufen. Wenn Sie glauben, dass ein Fehler aufgetreten ist, <a style=''text-decoration: underline'' href=''/contact''>kontaktieren Sie uns</a> .'
+    subscription_ended: Ihr Loomio-Abonnement ist abgelaufen. Um Loomio weiterhin nutzen zu können, aktualisieren Sie bitte
   subscription_status:
     plan: Plan
     state: Status

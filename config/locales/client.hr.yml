@@ -118,6 +118,7 @@ hr:
     was_gift_remaining: Još %{days} dana.
     was_gift_expired: Vaš besplatni plan sada je istekao.
     was_gift_expired_or_mistake: 'Vaš besplatni plan sada je istekao. Ako mislite da je došlo do pogreške, <a style=''text-decoration: underline'' href=''/contact''>kontaktirajte nas</a> .'
+    subscription_ended: Vaša pretplata na Loomio je istekla. Da biste nastavili koristiti Loomio, nadogradite ga
   subscription_status:
     plan: Plan
     state: Status

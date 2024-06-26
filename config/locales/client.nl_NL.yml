@@ -118,6 +118,7 @@ nl_NL:
     was_gift_remaining: "%{days} dagen resterend."
     was_gift_expired: Het gratis abonnement is nu verlopen.
     was_gift_expired_or_mistake: 'Uw gratis abonnement is nu verlopen. Als u denkt dat er een fout is gemaakt, <a style=''text-decoration: underline'' href=''/contact''>neem dan contact met ons op</a> .'
+    subscription_ended: Uw Loomio-abonnement is beëindigd. Om Loomio te blijven gebruiken, moet u upgraden
   subscription_status:
     plan: Abonnement
     state: Status

@@ -118,6 +118,7 @@ fi:
     was_gift_remaining: "%{days} päivää jäljellä."
     was_gift_expired: Ilmainen suunnitelmasi on nyt vanhentunut.
     was_gift_expired_or_mistake: 'Ilmainen suunnitelmasi on nyt vanhentunut. Jos uskot, että kyseessä on virhe, <a style=''text-decoration: underline'' href=''/contact''>ota meihin yhteyttä</a> .'
+    subscription_ended: Loomio-tilauksesi on päättynyt. Jos haluat jatkaa Loomion käyttöä, päivitä
   subscription_status:
     plan: Suunnitelma
     state: Tila

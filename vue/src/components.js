@@ -139,7 +139,7 @@ module.exports = {
   PinEventForm: 'thread/pin_event_form',
   TimeAgo: 'common/time_ago',
   Translation: 'common/translation',
-  TrialBanner: 'group/trial_banner',
+  PlanBanner: 'group/plan_banner',
   UserAvatar: 'user/avatar',
   UserAvatarBody: 'user/avatar_body',
   UserDropdown: 'common/user_dropdown',

@@ -118,6 +118,7 @@ he:
     was_gift_remaining: נותרו %{days} ימים.
     was_gift_expired: פג תוקף התוכנית החינמית שלך.
     was_gift_expired_or_mistake: 'פג תוקף התוכנית החינמית שלך. אם אתה חושב שנפלה טעות, <a style=''text-decoration: underline'' href=''/contact''>צור איתנו קשר</a> .'
+    subscription_ended: המנוי שלך ל-Loomio הסתיים. כדי להמשיך להשתמש ב-Loomio, אנא שדרג
   subscription_status:
     plan: לְתַכְנֵן
     state: סטָטוּס

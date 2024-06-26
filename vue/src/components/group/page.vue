@@ -117,7 +117,7 @@ v-main
         span.text--secondary.text--lighten-1 &gt;
         space
       span.group-page__name.mr-4 {{group.name}}
-    trial-banner(:group="group")
+    plan-banner(:group="group")
     formatted-text.group-page__description(
       v-if="group"
       :model="group"

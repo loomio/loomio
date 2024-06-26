@@ -126,6 +126,7 @@ en:
     tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
     was_gift_remaining: "%{days} days remaining."
     was_gift_expired: "Your free plan has now expired."
+    subscription_ended: "Your Loomio subscription has ended. To continue using Loomio, please upgrade"
     was_gift_expired_or_mistake: "Your free plan has now expired. If you think there has been a mistake, <a style='text-decoration: underline' href='/contact'>contact us</a>."
 
   subscription_status:

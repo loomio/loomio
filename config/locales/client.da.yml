@@ -118,6 +118,7 @@ da:
     was_gift_remaining: "%{days} dage tilbage."
     was_gift_expired: Din gratis plan er nu udløbet.
     was_gift_expired_or_mistake: 'Din gratis plan er nu udløbet. Hvis du mener, der er sket en fejl, <a style=''text-decoration: underline'' href=''/contact''>så kontakt os</a> .'
+    subscription_ended: Dit Loomio-abonnement er afsluttet. Opgrader venligst for at fortsætte med at bruge Loomio
   subscription_status:
     plan: Plan
     state: Status

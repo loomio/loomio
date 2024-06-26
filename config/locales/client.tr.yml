@@ -118,6 +118,7 @@ tr:
     was_gift_remaining: "%{days} gün kaldı."
     was_gift_expired: Ücretsiz planınızın süresi doldu.
     was_gift_expired_or_mistake: 'Ücretsiz planınızın süresi artık doldu. Bir hata olduğunu düşünüyorsanız <a style=''text-decoration: underline'' href=''/contact''>bizimle iletişime geçin</a> .'
+    subscription_ended: Loomio aboneliğiniz sona erdi. Loomio'yu kullanmaya devam etmek için lütfen yükseltin
   subscription_status:
     plan: Plan
     state: Statü

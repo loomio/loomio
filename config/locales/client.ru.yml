@@ -118,6 +118,7 @@ ru:
     was_gift_remaining: Осталось %{days} дней.
     was_gift_expired: Срок действия вашего бесплатного плана истек.
     was_gift_expired_or_mistake: 'Срок действия вашего бесплатного плана истек. Если вы считаете, что произошла ошибка, <a style=''text-decoration: underline'' href=''/contact''>свяжитесь с нами</a> .'
+    subscription_ended: Ваша подписка на Loomio закончилась. Чтобы продолжить использование Loomio, обновите
   subscription_status:
     plan: План
     state: Положение дел

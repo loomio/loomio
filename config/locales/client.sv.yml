@@ -118,6 +118,7 @@ sv:
     was_gift_remaining: "%{days} dagar kvar."
     was_gift_expired: Din gratisplan har nu löpt ut.
     was_gift_expired_or_mistake: 'Din gratisplan har nu löpt ut. Om du tror att det har skett ett misstag, <a style=''text-decoration: underline'' href=''/contact''>kontakta oss</a> .'
+    subscription_ended: Din Loomio-prenumeration har upphört. Uppgradera för att fortsätta använda Loomio
   subscription_status:
     plan: Planen
     state: Status

@@ -118,6 +118,7 @@ uk:
     was_gift_remaining: "%{days} днів залишилось."
     was_gift_expired: Ваш безкоштовний план закінчився.
     was_gift_expired_or_mistake: 'Термін дії вашого безкоштовного плану закінчився. Якщо ви вважаєте, що сталася помилка, <a style=''text-decoration: underline'' href=''/contact''>зв’яжіться з нами</a> .'
+    subscription_ended: Ваша підписка на Loomio закінчилася. Щоб продовжити використовувати Loomio, оновіть програму
   subscription_status:
     plan: План
     state: Статус

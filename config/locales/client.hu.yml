@@ -120,6 +120,7 @@ hu:
     was_gift_remaining: "%{days} nap van hátra."
     was_gift_expired: Ingyenes csomagja lejárt.
     was_gift_expired_or_mistake: 'Ingyenes csomagja lejárt. Ha úgy gondolja, hogy hiba történt, <a style=''text-decoration: underline'' href=''/contact''>lépjen kapcsolatba velünk</a> .'
+    subscription_ended: A Loomio-előfizetése lejárt. A Loomio használatának folytatásához frissítsen
   subscription_status:
     plan: Terv
     state: Állapot

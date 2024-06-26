@@ -118,6 +118,7 @@ sl:
     was_gift_remaining: Še %{days} dni.
     was_gift_expired: Vaš brezplačni načrt je zdaj potekel.
     was_gift_expired_or_mistake: 'Vaš brezplačni načrt je zdaj potekel. Če menite, da je prišlo do napake, <a style=''text-decoration: underline'' href=''/contact''>nas kontaktirajte</a> .'
+    subscription_ended: Vaša naročnina na Loomio je potekla. Če želite še naprej uporabljati Loomio, nadgradite
   subscription_status:
     plan: Načrtujte
     state: Stanje

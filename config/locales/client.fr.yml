@@ -126,6 +126,7 @@ fr:
     was_gift_remaining: "%{days} jours restants."
     was_gift_expired: Votre forfait gratuit a maintenant expiré.
     was_gift_expired_or_mistake: 'Votre forfait gratuit a maintenant expiré. Si vous pensez qu''il y a eu une erreur, <a style=''text-decoration: underline'' href=''/contact''>contactez-nous</a> .'
+    subscription_ended: Votre abonnement Loomio est terminé. Pour continuer à utiliser Loomio, veuillez mettre à niveau
   subscription_status:
     plan: Abonnement
     state: Statut

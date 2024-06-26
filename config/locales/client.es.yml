@@ -124,6 +124,7 @@ es:
     was_gift_remaining: Quedan %{days} días
     was_gift_expired: Vuestro plan gratuito ha caducado
     was_gift_expired_or_mistake: 'Su plan gratuito ya ha caducado. Si crees que ha habido un error, <a style=''text-decoration: underline'' href=''/contact''>contacta con nosotros</a> .'
+    subscription_ended: Tu suscripción a Loomio ha finalizado. Para continuar usando Loomio, actualice
   subscription_status:
     plan: Proyecto
     state: Posición
