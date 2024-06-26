@@ -13,6 +13,7 @@ class DiscussionService
     return false unless discussion.valid?
 
     discussion.save!
+    discussion.add_guest!(User.collection_thread, nil)
 
     DiscussionReader.for(user: actor, discussion: discussion)
                     .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)
@@ -234,7 +235,7 @@ class DiscussionService
                      user_id: users.pluck(:id)).find_each do |m|
       volumes[m.user_id] = m.volume
     end
-    
+
     DiscussionReader.
       where(discussion_id: discussion.id, user_id: users.map(&:id)).
       where("revoked_at is not null").update_all(revoked_at: nil, revoker_id: nil)

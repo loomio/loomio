@@ -65,6 +65,11 @@ describe 'DiscussionService' do
         expect(DiscussionService.create(discussion: discussion,
                                  actor: user)).to be_a Event
       end
+
+      it 'adds collection-user(thread) to the discussion by default' do
+        DiscussionService.create(discussion:, actor: user)
+        expect(discussion.guests).to include User.collection_thread
+      end
     end
   end
 
