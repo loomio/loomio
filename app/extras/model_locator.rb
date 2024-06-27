@@ -31,7 +31,7 @@ ModelLocator = Struct.new(:model, :params) do
   end
 
   def key_or_id
-    (params[:"#{model}_id"] || params[:"#{model}_key"] ||  params[:key] || params[:id]).to_s.split('-')[0]
+    (params[:"#{model}_id"] || params[:"#{model}_key"] ||  params[:key] || params[:id]).to_s
   end
 
   def resource_class
