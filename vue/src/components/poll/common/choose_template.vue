@@ -159,7 +159,7 @@ export default {
 
 <template lang="pug">
 .poll-common-templates-list
-  thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
+  //- thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
   .d-flex(:class="{'px-4': !discussion}")
     v-chip.mr-1(
       v-for="icon, name in filters"
