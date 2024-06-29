@@ -13,7 +13,6 @@ class DiscussionService
     return false unless discussion.valid?
 
     discussion.save!
-    discussion.add_guest!(User.collection_thread, nil)
 
     DiscussionReader.for(user: actor, discussion: discussion)
                     .update(admin: true, guest: !discussion.group.present?, inviter_id: actor.id)

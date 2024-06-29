@@ -42,9 +42,10 @@ describe 'GroupService' do
       expect(group.reload.creator).to eq user
     end
 
-    it 'adds collection-user(group) to the group by default' do
+    it 'adds collection-users group and thread to the group by default' do
       GroupService.create(group:, actor: user)
       expect(group.members).to include User.collection_group
+      expect(group.members).to include User.collection_thread
     end
   end
 
