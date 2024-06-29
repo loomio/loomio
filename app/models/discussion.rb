@@ -108,7 +108,7 @@ class Discussion < ApplicationRecord
   define_counter_cache(:closed_polls_count)         { |d| d.polls.closed.count }
   define_counter_cache(:versions_count)             { |d| d.versions.count }
   define_counter_cache(:seen_by_count)              { |d| d.discussion_readers.where("last_read_at is not null").count }
-  define_counter_cache(:members_count)              { |d| d.discussion_readers.humans.where("revoked_at is null").count }
+  define_counter_cache(:members_count)              { |d| d.discussion_readers.where("revoked_at is null").count }
   define_counter_cache(:anonymous_polls_count)      { |d| d.polls.where(anonymous: true).count }
 
   update_counter_cache :group, :discussions_count
@@ -138,7 +138,7 @@ class Discussion < ApplicationRecord
   end
 
   def members
-    User.active.
+    User.humans.active.
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR

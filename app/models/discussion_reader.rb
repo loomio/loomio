@@ -17,7 +17,6 @@ class DiscussionReader < ApplicationRecord
 
   scope :guests, -> { active.where('discussion_readers.guest': true) }
   scope :admins, -> { active.where('discussion_readers.admin': true) }
-  scope :humans, -> { active.joins(:user).where('users.collection': false) }
 
   scope :redeemable, -> { guests.where('discussion_readers.accepted_at IS NULL') }
 

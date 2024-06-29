@@ -43,19 +43,6 @@ describe Discussion do
     end
   end
 
-  context "discussion reader" do
-    describe "adding discussion reader" do
-      it "should increment members_count" do
-        expect { discussion.add_guest!(user, nil) }.to change { discussion.members_count.to_i }.by(1)
-      end
-
-      it "should not increment members_count if user with collection: true added as member" do
-        collection_user = create(:user, { collection: true })
-        expect { discussion.add_guest!(collection_user, nil) }.to_not change { discussion.members_count.to_i }
-      end
-    end
-  end
-
   describe "creating and destroying thread items" do
     let(:discussion) { create :discussion }
 
