@@ -28,7 +28,15 @@ module HasMentions
   end
 
   def mentioned_users
-    members.where("users.username in (:usernames) or users.id in (:ids)", usernames: mentioned_usernames, ids: mentioned_user_ids)
+    mentioned_usernames_result = mentioned_usernames
+    mentioned_collections = mentioned_usernames_result & %w[group thread]
+
+    members.where("users.username in (:usernames) or
+                   users.id in (:ids)
+                   #{ 'or m.id IS NOT NULL' if mentioned_collections.include? 'group' }
+                   #{ 'or dr.id IS NOT NULL' if mentioned_collections.include? 'thread' }",
+                  usernames: mentioned_usernames_result,
+                  ids: mentioned_user_ids)
   end
 
   # users mentioned in the text, but not yet sent notifications

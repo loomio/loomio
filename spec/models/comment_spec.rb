@@ -4,10 +4,7 @@ describe Comment do
   let(:user) { create(:user) }
   let(:discussion) { create :discussion }
   let(:comment) { create(:comment, discussion: discussion) }
-
-  before do
-    discussion.group.add_member!(user)
-  end
+  let(:group) { create(:group) }
 
   describe "html sanitization" do
     it "removes script tags" do
@@ -18,6 +15,10 @@ describe Comment do
   end
 
   describe "#is_most_recent?" do
+    before do
+      discussion.group.add_member!(user)
+    end
+
     subject { comment.is_most_recent? }
     context "comment is the last one added to discussion" do
       it { should be true }
@@ -32,6 +33,10 @@ describe Comment do
   end
 
   describe "#destroy" do
+    before do
+      discussion.group.add_member!(user)
+    end
+
     let(:reaction) { build :reaction, reactable: comment }
     it "destroys comment votes" do
       ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: user)
@@ -80,6 +85,43 @@ describe Comment do
         non_member = create :user
         comment.mentioned_users.should_not include(non_member)
       end
+    end
+  end
+
+  describe "#mentioned collection" do
+    let(:discussion) { create :discussion, group: group }
+
+    before do
+      4.times { group.add_member!(create :user) }
+      group_members = group.all_members.humans
+      thread_members = group_members[..(group_members.size/2)]
+      thread_members.each { |m| discussion.add_guest!(m, nil) }
+
+      group.add_member! User.collection_group
+      group.add_member! User.collection_thread
+    end
+
+    it "mentioning group should returns all users of the group" do
+      comment = create :comment, discussion: discussion, body: "@group"
+      group_members = group.all_members.humans
+
+      expect(comment.mentioned_users.pluck(:id) - group_members.pluck(:id)).to eq([])
+    end
+
+    it "mentioning thread should returns all users of the discussion" do
+      comment = create :comment, discussion:, body: "@thread"
+      thread_members = discussion.discussion_readers
+
+      expect(comment.mentioned_users.pluck(:id) - thread_members.pluck(:user_id)).to eq([])
+    end
+
+    it "mentioning thread and non-thread user should return all thread users and mentioned user" do
+      thread_members = User.joins(:discussion_readers).where("discussion_readers.discussion_id = ?", discussion.id)
+      non_thread_users = group.all_members.humans - thread_members
+      mentioned_users = thread_members.to_a << non_thread_users.first
+      comment = create :comment, discussion:, body: "@thread @#{mentioned_users.last.name}"
+
+      expect(comment.mentioned_users.pluck(:id) - mentioned_users.pluck(:id)).to eq([])
     end
   end
 end
