@@ -378,13 +378,19 @@ class User < ApplicationRecord
 
   COLLECTIONS.each do |name|
     define_singleton_method("collection_#{name}") do
-      verified.find_by(email: "#{name}@loomio") ||
-        create!(email: "#{name}@loomio",
-                name: name,
-                password: SecureRandom.hex(20),
-                email_verified: true,
-                collection: true,
-                avatar_kind: :gravatar)
+      cached_record = Rails.cache.read("collection_#{name}")
+      return cached_record if cached_record
+
+      record = verified.find_by(email: "#{name}@loomio") ||
+               create!(email: "#{name}@loomio",
+                       name: name,
+                       password: SecureRandom.hex(20),
+                       email_verified: true,
+                       collection: true,
+                       avatar_kind: :gravatar)
+
+      Rails.cache.write("collection_#{name}", record)
+      record
     end
   end
 
