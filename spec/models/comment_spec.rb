@@ -91,9 +91,21 @@ describe Comment do
   describe "#mentioned collection" do
     let(:discussion) { create :discussion, group: group }
 
+    def group_members
+      group.all_members.humans
+    end
+
+    def thread_members
+      User.joins(:discussion_readers).where("discussion_readers.discussion_id = ?", discussion.id)
+    end
+
+    def mentioned_members(comment)
+      mentioned = comment.mentioned_users.pluck(:id)
+      mentioned.sort
+    end
+
     before do
       4.times { group.add_member!(create :user) }
-      group_members = group.all_members.humans
       thread_members = group_members[..(group_members.size/2)]
       thread_members.each { |m| discussion.add_guest!(m, nil) }
 
@@ -103,25 +115,22 @@ describe Comment do
 
     it "mentioning group should returns all users of the group" do
       comment = create :comment, discussion: discussion, body: "@group"
-      group_members = group.all_members.humans
 
-      expect(comment.mentioned_users.pluck(:id) - group_members.pluck(:id)).to eq([])
+      expect(mentioned_members(comment)).to eq(group_members.pluck(:id))
     end
 
     it "mentioning thread should returns all users of the discussion" do
       comment = create :comment, discussion:, body: "@thread"
-      thread_members = discussion.discussion_readers
 
-      expect(comment.mentioned_users.pluck(:id) - thread_members.pluck(:user_id)).to eq([])
+      expect(mentioned_members(comment)).to eq(thread_members.pluck(:id))
     end
 
     it "mentioning thread and non-thread user should return all thread users and mentioned user" do
-      thread_members = User.joins(:discussion_readers).where("discussion_readers.discussion_id = ?", discussion.id)
-      non_thread_users = group.all_members.humans - thread_members
+      non_thread_users = group_members - thread_members
       mentioned_users = thread_members.to_a << non_thread_users.first
-      comment = create :comment, discussion:, body: "@thread @#{mentioned_users.last.name}"
+      comment = create :comment, discussion:, body: "@thread @#{mentioned_users.last.username}"
 
-      expect(comment.mentioned_users.pluck(:id) - mentioned_users.pluck(:id)).to eq([])
+      expect(mentioned_members(comment)).to eq(mentioned_users.pluck(:id))
     end
   end
 end
