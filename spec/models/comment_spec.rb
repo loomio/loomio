@@ -104,11 +104,6 @@ describe Comment do
       mentioned = comment.mentioned_users.pluck(:id)
     end
 
-    before(:all) do
-      User.collection_group
-      User.collection_thread
-    end
-
     before do
       4.times { group.add_member!(create :user) }
       thread_members = group_members[..(group_members.size/2)]
