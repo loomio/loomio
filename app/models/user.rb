@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_paper_trail only: [:name, :username, :email, :email_newsletter, :deactivated_at, :deactivator_id]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
-  COLLECTIONS = %w[group thread].freeze
+  MENTIONABLE_COLLECTIONS = %w[group thread].freeze
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
   devise :pwned_password if Rails.env.production?
@@ -46,7 +46,7 @@ class User < ApplicationRecord
   validates :name,               presence: true, if: :require_valid_signup
   validates :legal_accepted,     presence: true, if: :require_legal_accepted
   validate  :validate_recaptcha,                 if: :require_recaptcha
-  validate :forbidden_name_user_name, if: -> { !collection }
+  validate :forbidden_name, if: -> { !collection }
 
   has_one_attached :uploaded_avatar
 
@@ -126,10 +126,11 @@ class User < ApplicationRecord
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :humans, -> { where("bot = ? AND collection = ?", false, false) }
   scope :bots, -> { where(bot: true) }
+  scope :mentionable_collections, -> { where(collection: true) }
 
   scope :mention_search, -> (user, model, query) do
     return self.none unless model.present?
-    ids = []
+    ids = User.mentionable_collections.pluck(:id)
 
     if model.group_id
       ids += Membership.active.where(group_id: model.group_id).pluck(:user_id) if model.group_id
@@ -376,21 +377,15 @@ class User < ApplicationRecord
     "username"]
   end
 
-  COLLECTIONS.each do |name|
+  MENTIONABLE_COLLECTIONS.each do |name|
     define_singleton_method("collection_#{name}") do
-      cached_record = Rails.cache.read("collection_#{name}")
-      return cached_record if cached_record
-
-      record = verified.find_by(email: "#{name}@loomio") ||
+      verified.find_by(email: "#{name}@loomio") ||
                create!(email: "#{name}@loomio",
                        name: name,
                        password: SecureRandom.hex(20),
                        email_verified: true,
                        collection: true,
                        avatar_kind: :gravatar)
-
-      Rails.cache.write("collection_#{name}", record)
-      record
     end
   end
 
@@ -409,8 +404,7 @@ class User < ApplicationRecord
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
 
-  def forbidden_name_user_name
-    errors.add(:username, 'Forbidden username') if COLLECTIONS.include? username&.downcase&.strip
-    errors.add(:name, 'Forbidden name') if COLLECTIONS.include? name&.downcase&.strip
+  def forbidden_name
+    errors.add(:name, 'Forbidden name') if MENTIONABLE_COLLECTIONS.include? name&.downcase&.strip
   end
 end

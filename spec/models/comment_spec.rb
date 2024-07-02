@@ -96,41 +96,43 @@ describe Comment do
     end
 
     def thread_members
-      User.joins(:discussion_readers).where("discussion_readers.discussion_id = ?", discussion.id)
+      User.joins(:discussion_readers)
+          .where("discussion_readers.discussion_id = ?", discussion.id)
     end
 
-    def mentioned_members(comment)
+    def mentioned_members_ids(comment)
       mentioned = comment.mentioned_users.pluck(:id)
-      mentioned.sort
     end
 
-    # before do
-    #   4.times { group.add_member!(create :user) }
-    #   thread_members = group_members[..(group_members.size/2)]
-    #   thread_members.each { |m| discussion.add_guest!(m, nil) }
+    before(:all) do
+      User.collection_group
+      User.collection_thread
+    end
 
-    #   group.add_member! User.collection_group
-    #   group.add_member! User.collection_thread
-    # end
+    before do
+      4.times { group.add_member!(create :user) }
+      thread_members = group_members[..(group_members.size/2)]
+      thread_members.each { |m| discussion.add_guest!(m, nil) }
+    end
 
-    # it "mentioning group should returns all users of the group" do
-    #   comment = create :comment, discussion: discussion, body: "@group"
+    it "mentioning group should returns all users of the group" do
+      comment = create :comment, discussion:, body: "@group"
 
-    #   expect(mentioned_members(comment)).to eq(group_members.pluck(:id))
-    # end
+      expect(mentioned_members_ids(comment) - group_members.pluck(:id)).to eq([])
+    end
 
-    # it "mentioning thread should returns all users of the discussion" do
-    #   comment = create :comment, discussion:, body: "@thread"
+    it "mentioning thread should returns all users of the discussion" do
+      comment = create :comment, discussion:, body: "@thread"
 
-    #   expect(mentioned_members(comment)).to eq(thread_members.pluck(:id))
-    # end
+      expect(mentioned_members_ids(comment) - thread_members.pluck(:id)).to eq([])
+    end
 
-    # it "mentioning thread and non-thread user should return all thread users and mentioned user" do
-    #   non_thread_users = group_members - thread_members
-    #   mentioned_users = thread_members.to_a << non_thread_users.first
-    #   comment = create :comment, discussion:, body: "@thread @#{mentioned_users.last.username}"
+    it "mentioning thread and non-thread user should return all thread users and mentioned user" do
+      non_thread_users = group_members - thread_members
+      mentioned_users = thread_members.to_a << non_thread_users.first
+      comment = create :comment, discussion:, body: "@thread @#{mentioned_users.last.username}"
 
-    #   expect(mentioned_members(comment)).to eq(mentioned_users.pluck(:id))
-    # end
+      expect(mentioned_members_ids(comment) - mentioned_users.pluck(:id)).to eq([])
+    end
   end
 end
