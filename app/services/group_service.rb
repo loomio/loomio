@@ -100,8 +100,6 @@ module GroupService
 
     group.save!
     group.add_admin!(actor)
-    group.add_member!(User.collection_group)
-    group.add_member!(User.collection_thread)
 
     EventBus.broadcast('group_create', group, actor)
   end

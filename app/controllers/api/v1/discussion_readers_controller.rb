@@ -54,7 +54,6 @@ class API::V1::DiscussionReadersController < API::V1::RestfulController
   end
 
   def accessible_records
-    DiscussionReader.includes(:user, :discussion)
-      .where(discussion_id: @discussion.id, users: { collection: false })
+    DiscussionReader.includes(:user, :discussion).where(discussion_id: @discussion.id)
   end
 end

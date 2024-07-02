@@ -41,12 +41,6 @@ describe 'GroupService' do
       expect { GroupService.create(group: group, actor: user) }.to change { Group.count }.by(1)
       expect(group.reload.creator).to eq user
     end
-
-    it 'adds collection-users group and thread to the group by default' do
-      GroupService.create(group:, actor: user)
-      expect(group.members).to include User.collection_group
-      expect(group.members).to include User.collection_thread
-    end
   end
 
   describe' move' do

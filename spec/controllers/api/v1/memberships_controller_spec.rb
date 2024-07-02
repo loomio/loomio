@@ -178,7 +178,6 @@ describe API::V1::MembershipsController do
     let(:jim_robinson) { create :user, name: 'jim robinson' }
     let(:jim_emrob) { create :user, name: 'jim emrob' }
     let(:rob_othergroup) { create :user, name: 'rob othergroup' }
-    let(:user_collection) { create :user, name: 'jim - collection member', collection: true }
 
     context 'success' do
       before do
@@ -186,12 +185,10 @@ describe API::V1::MembershipsController do
         rob_jones
         jim_robinson
         jim_emrob
-        user_collection
         group.add_member!(emrob_jones)
         group.add_member!(rob_jones)
         group.add_member!(jim_robinson)
         group.add_member!(jim_emrob)
-        group.add_member!(user_collection)
         another_group.add_member!(rob_othergroup)
       end
       it 'returns users filtered by query' do
@@ -204,14 +201,6 @@ describe API::V1::MembershipsController do
         expect(user_ids).to include jim_robinson.id
         expect(user_ids).to_not include jim_emrob.id
         expect(user_ids).to_not include rob_othergroup.id
-      end
-
-      it 'should not list users representing a collection of users' do
-        get :index, params: { group_id: group.id, q: 'jim' }, format: :json
-
-        user_ids = JSON.parse(response.body)['users'].map{|c| c['id']}
-
-        expect(user_ids).to_not include user_collection.id
       end
     end
 
