@@ -377,18 +377,6 @@ class User < ApplicationRecord
     "username"]
   end
 
-  MENTIONABLE_COLLECTIONS.each do |name|
-    define_singleton_method("collection_#{name}") do
-      verified.find_by(email: "#{name}@loomio") ||
-               create!(email: "#{name}@loomio",
-                       name: name,
-                       password: SecureRandom.hex(20),
-                       email_verified: true,
-                       collection: true,
-                       avatar_kind: :gravatar)
-    end
-  end
-
   protected
 
   def password_required?
