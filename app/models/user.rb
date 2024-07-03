@@ -393,6 +393,8 @@ class User < ApplicationRecord
   end
 
   def forbidden_name
-    errors.add(:name, 'Forbidden name') if MENTIONABLE_COLLECTIONS.include? name&.downcase&.strip
+    return unless MENTIONABLE_COLLECTIONS.include? name&.downcase&.strip
+
+    errors.add(:name, I18n.t(:"user.error.forbidden_name"))
   end
 end
