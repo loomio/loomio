@@ -364,7 +364,7 @@ GEM
     method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    minitest (5.24.0)
+    minitest (5.24.1)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
@@ -542,14 +542,14 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (5.17.3)
+    sentry-rails (5.18.1)
       railties (>= 5.0)
-      sentry-ruby (~> 5.17.3)
-    sentry-ruby (5.17.3)
+      sentry-ruby (~> 5.18.1)
+    sentry-ruby (5.18.1)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (5.17.3)
-      sentry-ruby (~> 5.17.3)
+    sentry-sidekiq (5.18.1)
+      sentry-ruby (~> 5.18.1)
       sidekiq (>= 3.0)
     sidekiq (6.5.12)
       connection_pool (>= 2.2.5, < 3)
