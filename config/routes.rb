@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
+      resources :reports, only: [:index]
       resources :trials, only: [:create]
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
@@ -327,6 +328,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/htmlreport', to: 'reports#show'
   get '/pie_chart', to: 'pie_chart#show'
   post '/direct_uploads', to: 'direct_uploads#create'
 
@@ -375,6 +377,7 @@ Rails.application.routes.draw do
   get 'inbox'                              => 'application#index', as: :inbox
   get 'groups'                             => 'application#index', as: :groups
   get 'polls'                              => 'application#index', as: :polls
+  get 'report'                             => 'application#index', as: :report
   get 'explore'                            => 'groups#index',      as: :explore
   get 'profile'                            => 'application#index', as: :profile
   get 'contact'                            => 'application#index', as: :contact

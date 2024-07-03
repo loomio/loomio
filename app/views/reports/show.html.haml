@@ -1,0 +1,128 @@
+%div
+  %canvas#myChart
+
+%script(src="https://cdn.jsdelivr.net/npm/chart.js")
+
+:javascript
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: #{@intervals.to_json},
+      datasets: [
+        {label: 'Threads', data: #{@discussions_per_interval.to_json} },
+        {label: 'Comments', data: #{@comments_per_interval.to_json} },
+        {label: 'Polls', data: #{@polls_per_interval.to_json} },
+        {label: 'Votes', data: #{@votes_per_interval.to_json} },
+        {label: 'Outcomes', data: #{@outcomes_per_interval.to_json} },
+      ]
+    },
+  });
+
+%table
+  %thead
+    %th
+    %td total
+    - @intervals.each do |day|
+      %th= day
+  %tbody
+    %tr
+      %td Threads
+      %td= @discussions_per_interval.values.sum
+      - @intervals.each do |day|
+        %td= @discussions_per_interval.fetch(day.iso8601, 0)
+    %tr
+      %td Comments
+      %td= @comments_per_interval.values.sum
+      - @intervals.each do |day|
+        %td= @comments_per_interval.fetch(day.iso8601, 0)
+    %tr
+      %td Polls
+      %td= @polls_per_interval.values.sum
+      - @intervals.each do |day|
+        %td= @polls_per_interval.fetch(day.iso8601, 0)
+    %tr
+      %td Votes
+      %td= @stances_per_interval.values.sum
+      - @intervals.each do |day|
+        %td= @stances_per_interval.fetch(day.iso8601, 0)
+    %tr
+      %td Outcomes
+      %td= @outcomes_per_interval.values.sum
+      - @intervals.each do |day|
+        %td= @outcomes_per_interval.fetch(day.iso8601, 0)
+
+%p Threads #{@discussions_count}
+%p Polls #{@polls_count}
+%p Threads with polls #{@discussions_with_polls_count}
+%p Polls with outcomes #{@polls_with_outcomes_count}
+
+%table
+  %thead
+    %th Tag
+    %th total_count
+    %th threads_count
+    %th polls_count
+  %tbody
+    - @tag_names.each do |tag|
+      %tr
+        %td= tag
+        %td= @tag_counts.fetch(tag, 0)
+        %td= @discussion_tag_counts.fetch(tag, 0)
+        %td= @poll_tag_counts.fetch(tag, 0)
+
+Participation by user
+%table
+  %thead
+    %th User
+    %th Threads
+    %th Comments
+    %th Polls
+    %th Votes
+    %th Outcomes
+    %th Reactions
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.name
+        %td= @discussions_per_user.fetch(user.id, 0)
+        %td= @comments_per_user.fetch(user.id, 0)
+        %td= @polls_per_user.fetch(user.id, 0)
+        %td= @stances_per_user.fetch(user.id, 0)
+        %td= @outcomes_per_user.fetch(user.id, 0)
+        %td= @reactions_per_user.fetch(user.id, 0)
+
+Users per country
+%table
+  %thead
+    %th Country
+    %th Users
+    %th pct
+  %tbody
+    - @countries.each do |country|
+      %tr
+        %td= country
+        %td= @users_per_country.fetch(country, 0)
+        %td= (@users_per_country.fetch(country, 0) / @total_users * 100).round(1)
+
+Participation by country
+%table
+  %thead
+    %th Country
+    %th Threads
+    %th Comments
+    %th Polls
+    %th Votes
+    %th Outcomes
+    %th Reactions
+  %tbody
+    - @countries.each do |country|
+      %tr
+        %td= country
+        %td= @discussions_per_country.fetch(country, 0)
+        %td= @comments_per_country.fetch(country, 0)
+        %td= @polls_per_country.fetch(country, 0)
+        %td= @stances_per_country.fetch(country, 0)
+        %td= @outcomes_per_country.fetch(country, 0)
+        %td= @reactions_per_country.fetch(country, 0)
