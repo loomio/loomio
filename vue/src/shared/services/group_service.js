@@ -153,15 +153,13 @@ export default new class GroupService {
       },
 
       group_stats: {
-        name: 'group_page.stats',
+        name: 'group_page.participation_report',
         icon: 'mdi-chart-bar',
         menu: true,
         canPerform() {
-          return AbilityService.canAdminister(group);
+          return membership && group.membersInclude(Session.user());
         },
-        perform() {
-          return window.open(`${AppConfig.baseUrl}g/${group.key}/stats?export=1`, "_blank");
-        }
+        to() { return `/report/?group_ids=${group.selfAndSubgroupIds().join(',')}`; }
       },
 
       export_data: {

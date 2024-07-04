@@ -4,7 +4,7 @@ class API::V1::ReportsController < API::V1::RestfulController
     end_at = Date.parse(params.fetch(:end_month, Date.today.iso8601[0..-4]) + "-01") + 1.month
     interval = params.fetch(:interval, 'month')
 
-    group_ids = [18, 390, 606, 894, 902, 48, 336, 886, 972, 24, 291, 942, 279, 734, 164, 729, 983]
+    group_ids = params.fetch(:group_ids).split(',').map(&:to_i)
 
     @report = ReportService.new(interval: interval, group_ids: group_ids, start_at: start_at, end_at: end_at)
     render json: {

@@ -1156,6 +1156,7 @@ en:
 
   group_page:
     stats: Group stats
+    participation_report: Participation report
     threads: Threads
     polls: Polls
     decisions: Decisions

@@ -4,11 +4,20 @@ import Records            from '@/shared/services/records';
 import Session            from '@/shared/services/session';
 import {subMonths, startOfMonth } from 'date-fns';
 
+import BarChart from '@/components/report/bar_chart';
+
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
 
+
 export default {
+  components: {BarChart},
   data() {
     return {
+      chartData: {
+        labels: [],
+        datasets: []
+      },
+      group_ids: this.$route.query['group_ids'].split(',').map(id => parseInt(id)),
       start_menu: false,
       end_menu: false,
       start_month: (new Date(2019,1,1)).toISOString().slice(0,7),
@@ -80,7 +89,7 @@ export default {
   },
   methods: {
     fetch() {
-      const query = new URLSearchParams({interval: this.interval, start_month: this.start_month, end_month: this.end_month}).toString()
+      const query = new URLSearchParams({interval: this.interval, start_month: this.start_month, end_month: this.end_month, group_ids: this.group_ids.join(',')}).toString()
       fetch('/api/v1/reports?'+query).then(response => {
         response.json().then(data => {
           this.total_users = data.total_users;
@@ -88,6 +97,38 @@ export default {
           this.polls_count = data.polls_count;
           this.discussions_with_polls_count = data.discussions_with_polls_count;
           this.polls_with_outcomes_count = data.polls_with_outcomes_count;
+
+          this.chartData = {
+            labels: data.intervals,
+            datasets: [
+              {
+                label: 'Threads',
+                backgroundColor: '#2196F3',
+                data: data.intervals.map(interval => (data.discussions_per_interval[interval] || 0) )
+              },
+              {
+                label: 'Comments',
+                backgroundColor: '#009688',
+                data: data.intervals.map(interval => (data.comments_per_interval[interval] || 0) )
+              },
+              {
+                label: 'Polls',
+                backgroundColor: '#4CAF50',
+                data: data.intervals.map(interval => (data.polls_per_interval[interval] || 0) )
+              },
+              {
+                label: 'Votes',
+                backgroundColor: '#E91E63',
+                data: data.intervals.map(interval => (data.stances_per_interval[interval] || 0) )
+              },
+              {
+                label: 'Outcomes',
+                backgroundColor: '#FF9800',
+                data: data.intervals.map(interval => (data.outcomes_per_interval[interval] || 0) )
+              },
+            ]
+          },
+
           this.models_per_interval = data.intervals.map(interval => {
             return {
               date: interval,
@@ -98,6 +139,7 @@ export default {
               outcomes: data.outcomes_per_interval[interval] || 0,
             }
           });
+
           this.models_per_interval.push({
             date: 'total',
             threads: sumValues(data.discussions_per_interval),
@@ -156,8 +198,10 @@ export default {
 
 <template lang="pug">
 v-main
-  v-container.report-page
-    h1.text-h4 Participation Report
+  v-container.report-page.max-width-900
+    h1.text-h4(v-t="'group_page.participation_report'")
+
+    p group ids {{group_ids}}
 
     .d-flex
       v-menu(
@@ -226,6 +270,7 @@ v-main
     p Threads with polls {{discussions_with_polls_count}}
     p Polls with outcomes {{polls_with_outcomes_count}}
 
+    bar-chart(:chart-data="chartData")
     p Records per {{interval}}
     v-data-table(
       dense
