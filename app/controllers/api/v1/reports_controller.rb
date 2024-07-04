@@ -1,7 +1,7 @@
 class API::V1::ReportsController < API::V1::RestfulController
   def index
-    start_at = 9.months.ago
-    end_at = 1.week.ago
+    start_at = Date.parse(params.fetch(:start_month, 12.months.ago.to_date.iso8601[0..-4]) + "-01")
+    end_at = Date.parse(params.fetch(:end_month, Date.today.iso8601[0..-4]) + "-01") + 1.month
     interval = params.fetch(:interval, 'month')
 
     group_ids = [18, 390, 606, 894, 902, 48, 336, 886, 972, 24, 291, 942, 279, 734, 164, 729, 983]

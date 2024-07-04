@@ -2,12 +2,17 @@
 import AppConfig          from '@/shared/services/app_config';
 import Records            from '@/shared/services/records';
 import Session            from '@/shared/services/session';
+import {subMonths, startOfMonth } from 'date-fns';
 
 const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
 
 export default {
   data() {
     return {
+      start_menu: false,
+      end_menu: false,
+      start_month: (new Date(2019,1,1)).toISOString().slice(0,7),
+      end_month: (new Date()).toISOString().slice(0,7),
       interval: 'month',
       total_users: 0,
       discussions_count: 0,
@@ -63,13 +68,19 @@ export default {
   },
 
   watch: {
+    start_month(val) {
+      this.fetch();
+    },
+    end_month(val) {
+      this.fetch();
+    },
     interval(val) {
       this.fetch();
     }
   },
   methods: {
     fetch() {
-      const query = new URLSearchParams({interval: this.interval}).toString()
+      const query = new URLSearchParams({interval: this.interval, start_month: this.start_month, end_month: this.end_month}).toString()
       fetch('/api/v1/reports?'+query).then(response => {
         response.json().then(data => {
           this.total_users = data.total_users;
@@ -148,10 +159,67 @@ v-main
   v-container.report-page
     h1.text-h4 Participation Report
 
-    v-select(
-      v-model="interval"
-      :items=['day', 'week', 'month']
-    )
+    .d-flex
+      v-menu(
+        ref="start_menu"
+        v-model="start_menu"
+        :close-on-content-click="false"
+        transition="scale-transition"
+        offset-y
+        max-width="290px"
+        min-width="auto"
+      )
+        template(v-slot:activator="{ on, attrs }")
+          v-text-field(
+            v-model="start_month"
+            label="Start on"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          )
+        v-sheet
+          v-date-picker(
+            v-model="start_month"
+            type="month"
+            no-title
+            scrollable
+            @input="start_menu = false"
+            :max="(new Date()).toISOString()"
+          )
+      v-menu(
+        ref="end_menu"
+        v-model="end_menu"
+        :close-on-content-click="false"
+        transition="scale-transition"
+        offset-y
+        max-width="290px"
+        min-width="auto"
+      )
+        template(v-slot:activator="{ on, attrs }")
+          v-text-field(
+            v-model="end_month"
+            label="End on"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+          )
+        v-sheet
+          v-date-picker(
+            v-model="end_month"
+            type="month"
+            no-title
+            scrollable
+            @input="end_menu = false"
+            :max="(new Date()).toISOString()"
+          )
+
+      v-select.ml-8(
+        label="Interval"
+        v-model="interval"
+        :items=['day', 'week', 'month']
+      )
 
     p Threads {{discussions_count}}
     p Polls {{polls_count}}
@@ -161,22 +229,26 @@ v-main
     p Records per {{interval}}
     v-data-table(
       dense
+      disable-pagination
+      hide-default-footer
       :headers="models_per_interval_headers"
       :items="models_per_interval"
-      :items-per-page="30"
     )
 
     p Tags
     v-data-table(
       dense
+      disable-pagination
+      hide-default-footer
       :headers="tags_headers"
       :items="tags_rows"
-      :items-per-page="50"
     )
 
     p Participation by user
     v-data-table(
       dense
+      disable-pagination
+      hide-default-footer
       :headers="per_user_headers"
       :items="per_user_rows"
       :items-per-page="50"
@@ -185,18 +257,20 @@ v-main
     p Users per country
     v-data-table(
       dense
+      disable-pagination
+      hide-default-footer
       :headers="users_per_country_headers"
       :items="users_per_country_rows"
-      :items-per-page="50"
     )
     p Total users {{total_users}}
 
     p Participation by country
     v-data-table(
       dense
+      disable-pagination
+      hide-default-footer
       :headers="per_country_headers"
       :items="per_country_rows"
-      :items-per-page="50"
     )
 
 </template>

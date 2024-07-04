@@ -17,9 +17,9 @@ class ReportService
       next_val = @start_at.to_date
     end
 
-    while next_val <= @end_at
-      next_val = (next_val + 1.send(@interval)).to_date
+    while next_val < @end_at
       vals.push(next_val)
+      next_val = (next_val + 1.send(@interval)).to_date
     end
     vals
   end
@@ -304,7 +304,7 @@ class ReportService
 
   def users_per_country
     query = <<~SQL
-      SELECT count(users.id) count, country
+      SELECT count(DISTINCT users.id) count, country
       FROM users
       JOIN memberships ON memberships.user_id = users.id
       WHERE email_verified = true
