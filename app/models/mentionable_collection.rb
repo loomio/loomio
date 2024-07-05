@@ -3,7 +3,7 @@ class MentionableCollection
 
   attr_reader :name, :collection
 
-  COLLECTIONS = User::COLLECTIONS
+  COLLECTIONS = %w[group thread].freeze
   @@instance = {}
 
   def initialize(collection)
@@ -38,7 +38,10 @@ class MentionableCollection
       end
 
       random_num = SecureRandom.random_number(9000) + 1000
-      user.update!(name: "#{user.name}#{random_num}")
+      user.name = "#{user.name}#{random_num}" if user.name == translated_name
+      user.username = "#{user.username}#{random_num}" if user.username == translated_name
+
+      user.save!
     end
 
     @collection = User.find_by(name: translated_name) ||

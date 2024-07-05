@@ -21,7 +21,6 @@ class User < ApplicationRecord
   has_paper_trail only: [:name, :username, :email, :email_newsletter, :deactivated_at, :deactivator_id]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
-  COLLECTIONS = %w[group thread].freeze
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
   devise :pwned_password if Rails.env.production?

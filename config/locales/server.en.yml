@@ -325,7 +325,7 @@ en:
         You must be signed in to proceed.
         Please <a href="/dashboard" target="_blank">sign in</a> then reload this page to continue.
       recaptcha: "We weren't able to verify that you're not a robot. Please try again!"
-      forbidden_name: "Forbidden Name, please choose another name"
+      forbidden_name: "Forbidden name, please choose another name"
       bad_login: "Sorry, that password doesn't match the one we have on file"
       username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
 
