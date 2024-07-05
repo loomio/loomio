@@ -3,12 +3,18 @@ class API::V1::ReportsController < API::V1::RestfulController
     start_at = Date.parse(params.fetch(:start_month, 12.months.ago.to_date.iso8601[0..-4]) + "-01")
     end_at = Date.parse(params.fetch(:end_month, Date.today.iso8601[0..-4]) + "-01") + 1.month
     interval = params.fetch(:interval, 'month')
+    user_group_ids = current_user.group_ids
+    user_group_ids.unshift(0) if current_user.is_admin?
 
     group_ids = params.fetch(:group_ids).split(',').map(&:to_i) & current_user.group_ids
 
     all_group_ids = Group.where("id IN (:group_ids) OR parent_id IN (:group_ids)", group_ids: Group.where(id: group_ids).pluck(:id, :parent_id).flatten.uniq).pluck(:id).uniq & current_user.group_ids
 
     all_groups = Group.where(id: all_group_ids).order("parent_id NULLS FIRST, name asc").pluck(:id, :name).map {|pair| {id: pair[0], name: pair[1] } }
+
+    if current_user.is_admin?
+      all_groups.unshift({id: 0, name: 'Direct threads'})
+    end
 
     @report = ReportService.new(interval: interval, group_ids: group_ids, start_at: start_at, end_at: end_at)
     render json: {

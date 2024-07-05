@@ -328,7 +328,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/htmlreport', to: 'reports#show'
   get '/pie_chart', to: 'pie_chart#show'
   post '/direct_uploads', to: 'direct_uploads#create'
 
