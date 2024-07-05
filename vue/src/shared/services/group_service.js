@@ -79,6 +79,16 @@ export default new class GroupService {
         }
       },
 
+      group_stats: {
+        name: 'group_page.participation_report',
+        icon: 'mdi-chart-bar',
+        menu: true,
+        canPerform() {
+          return membership && group.membersInclude(Session.user());
+        },
+        to() { return `/report/?group_ids=${group.selfAndSubgroupIds().join(',')}&start_on=${group.createdAt.toISOString().slice(0,7)}`; }
+      },
+
       edit_tags: { 
         icon: 'mdi-tag-outline',
         name: 'loomio_tags.card_title',
@@ -150,16 +160,6 @@ export default new class GroupService {
         perform() { 
           return hardReload(`/help/api2/?group_id=${group.id}`);
         }
-      },
-
-      group_stats: {
-        name: 'group_page.participation_report',
-        icon: 'mdi-chart-bar',
-        menu: true,
-        canPerform() {
-          return membership && group.membersInclude(Session.user());
-        },
-        to() { return `/report/?group_ids=${group.selfAndSubgroupIds().join(',')}`; }
       },
 
       export_data: {

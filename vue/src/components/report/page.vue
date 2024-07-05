@@ -3,6 +3,7 @@ import AppConfig          from '@/shared/services/app_config';
 import Records            from '@/shared/services/records';
 import Session            from '@/shared/services/session';
 import {subMonths, startOfMonth } from 'date-fns';
+import { mdiCalendar } from '@mdi/js';
 
 import BarChart from '@/components/report/bar_chart';
 
@@ -13,14 +14,17 @@ export default {
   components: {BarChart},
   data() {
     return {
+      mdiCalendar: mdiCalendar,
+      loading: false,
       chartData: {
         labels: [],
         datasets: []
       },
+      all_groups: [],
       group_ids: this.$route.query['group_ids'].split(',').map(id => parseInt(id)),
       start_menu: false,
       end_menu: false,
-      start_month: (new Date(2019,1,1)).toISOString().slice(0,7),
+      start_month: (this.$route.query['start_on'] || (new Date(2019,1,1)).toISOString().slice(0,7)),
       end_month: (new Date()).toISOString().slice(0,7),
       interval: 'month',
       total_users: 0,
@@ -31,42 +35,42 @@ export default {
       models_per_interval: [],
       models_per_interval_headers: [
         {text: "Date", value: "date"},
-        {text: "Threads", value: "threads"},
-        {text: "Comments", value: "comments"},
-        {text: "Polls", value: "polls"},
-        {text: "Votes", value: "votes"},
-        {text: "Outcomes", value: "outcomes"},
+        {text: this.$t('common.threads'), value: "threads"},
+        {text: this.$t('navbar.search.comments'), value: "comments"},
+        {text: this.$t('group_page.polls'), value: "polls"},
+        {text: this.$t('poll_common.votes'), value: "votes"},
+        {text: this.$t('poll_common.outcomes'), value: "outcomes"},
       ],
       tags_headers: [
         {text: "Tag", value: "tag"},
-        {text: "Total count", value: "total_count"},
-        {text: "Threads count", value: "threads_count"},
-        {text: "Polls count", value: "polls_count"},
+        {text: this.$t('poll_meeting_chart_panel.total'), value: "total_count"},
+        {text: this.$t('common.threads'), value: "threads_count"},
+        {text: this.$t('group_page.polls'), value: "polls_count"},
       ],
       tags_rows: [],
       per_user_headers: [
         {text: "User", value: "user"},
-        {text: "Threads", value: "threads"},
-        {text: "Comments", value: "comments"},
-        {text: "Polls", value: "polls"},
-        {text: "Votes", value: "votes"},
-        {text: "Outcomes", value: "outcomes"},
+        {text: this.$t('common.threads'), value: "threads"},
+        {text: this.$t('navbar.search.comments'), value: "comments"},
+        {text: this.$t('group_page.polls'), value: "polls"},
+        {text: this.$t('poll_common.votes'), value: "votes"},
+        {text: this.$t('poll_common.outcomes'), value: "outcomes"},
         {text: "Reactions", value: "reactions"},
       ],
       per_user_rows: [],
       users_per_country_rows: [],
       users_per_country_headers: [
-        {text: 'Country', value: 'country'},
-        {text: 'Users', value: 'users'},
+        {text: this.$t('report.country'), value: 'country'},
+        {text: this.$t('report.users'), value: 'users'},
       ],
       per_country_rows: [],
       per_country_headers: [
         {text: 'Country', value: 'country' },
-        {text: "Threads", value: "threads"},
-        {text: "Comments", value: "comments"},
-        {text: "Polls", value: "polls"},
-        {text: "Votes", value: "votes"},
-        {text: "Outcomes", value: "outcomes"},
+        {text: this.$t('common.threads'), value: "threads"},
+        {text: this.$t('navbar.search.comments'), value: "comments"},
+        {text: this.$t('group_page.polls'), value: "polls"},
+        {text: this.$t('poll_common.votes'), value: "votes"},
+        {text: this.$t('poll_common.outcomes'), value: "outcomes"},
         {text: "Reactions", value: "reactions"},
       ]
     };
@@ -89,9 +93,12 @@ export default {
   },
   methods: {
     fetch() {
+      this.loading = true
       const query = new URLSearchParams({interval: this.interval, start_month: this.start_month, end_month: this.end_month, group_ids: this.group_ids.join(',')}).toString()
       fetch('/api/v1/reports?'+query).then(response => {
         response.json().then(data => {
+          this.loading = false;
+          this.all_groups = data.all_groups,
           this.total_users = data.total_users;
           this.discussions_count = data.discussions_count;
           this.polls_count = data.polls_count;
@@ -102,27 +109,27 @@ export default {
             labels: data.intervals,
             datasets: [
               {
-                label: 'Threads',
+                label: this.$t('common.threads'),
                 backgroundColor: '#2196F3',
                 data: data.intervals.map(interval => (data.discussions_per_interval[interval] || 0) )
               },
               {
-                label: 'Comments',
+                label: this.$t('navbar.search.comments'),
                 backgroundColor: '#009688',
                 data: data.intervals.map(interval => (data.comments_per_interval[interval] || 0) )
               },
               {
-                label: 'Polls',
+                label: this.$t('group_page.polls'),
                 backgroundColor: '#4CAF50',
                 data: data.intervals.map(interval => (data.polls_per_interval[interval] || 0) )
               },
               {
-                label: 'Votes',
+                label: this.$t('poll_common.votes'),
                 backgroundColor: '#E91E63',
                 data: data.intervals.map(interval => (data.stances_per_interval[interval] || 0) )
               },
               {
-                label: 'Outcomes',
+                label: this.$t('poll_common.outcomes'),
                 backgroundColor: '#FF9800',
                 data: data.intervals.map(interval => (data.outcomes_per_interval[interval] || 0) )
               },
@@ -199,9 +206,18 @@ export default {
 <template lang="pug">
 v-main
   v-container.report-page.max-width-900
-    h1.text-h4(v-t="'group_page.participation_report'")
+    h1.text-h4.mb-8(v-t="'group_page.participation_report'")
 
-    p group ids {{group_ids}}
+    v-select(
+      :label="$t('common.groups')"
+      v-model="group_ids"
+      :items="all_groups"
+      item-text="name"
+      item-value="id"
+      multiple
+      small-chips
+      @blur="fetch()"
+    )
 
     .d-flex
       v-menu(
@@ -216,9 +232,9 @@ v-main
         template(v-slot:activator="{ on, attrs }")
           v-text-field(
             v-model="start_month"
-            label="Start on"
-            prepend-icon="mdi-calendar"
+            :label="$t('report.start_on')"
             readonly
+            :prepend-icon="mdiCalendar"
             v-bind="attrs"
             v-on="on"
           )
@@ -243,8 +259,8 @@ v-main
         template(v-slot:activator="{ on, attrs }")
           v-text-field(
             v-model="end_month"
-            label="End on"
-            prepend-icon="mdi-calendar"
+            :label="$t('report.end_on')"
+            :prepend-icon="mdiCalendar"
             readonly
             v-bind="attrs"
             v-on="on"
@@ -260,62 +276,83 @@ v-main
           )
 
       v-select.ml-8(
-        label="Interval"
+        :label="$t('report.interval')"
         v-model="interval"
         :items=['day', 'week', 'month']
       )
 
-    p Threads {{discussions_count}}
-    p Polls {{polls_count}}
-    p Threads with polls {{discussions_with_polls_count}}
-    p Polls with outcomes {{polls_with_outcomes_count}}
 
-    bar-chart(:chart-data="chartData")
-    p Records per {{interval}}
-    v-data-table(
-      dense
-      disable-pagination
-      hide-default-footer
-      :headers="models_per_interval_headers"
-      :items="models_per_interval"
-    )
+    .d-flex.justify-center
+      v-progress-circular(indeterminate color="primary" v-if="loading")
 
-    p Tags
-    v-data-table(
-      dense
-      disable-pagination
-      hide-default-footer
-      :headers="tags_headers"
-      :items="tags_rows"
-    )
+    div(v-if="!loading")
 
-    p Participation by user
-    v-data-table(
-      dense
-      disable-pagination
-      hide-default-footer
-      :headers="per_user_headers"
-      :items="per_user_rows"
-      :items-per-page="50"
-    )
+      v-simple-table.mt-8
+        thead
+          th.pt-4(v-t="'report.total_users'")
+          th.pt-4(v-t="'report.total_threads'")
+          th.pt-4(v-t="'report.total_polls'")
+          th.pt-4(v-t="'report.threads_with_polls'")
+          th.pt-4(v-t="'report.polls_with_outcomes'")
+        tbody
+          tr
+            td.text-center {{total_users}}
+            td.text-center {{discussions_count}}
+            td.text-center {{polls_count}}
+            td.text-center {{discussions_with_polls_count}}
+            td.text-center {{polls_with_outcomes_count}}
 
-    p Users per country
-    v-data-table(
-      dense
-      disable-pagination
-      hide-default-footer
-      :headers="users_per_country_headers"
-      :items="users_per_country_rows"
-    )
-    p Total users {{total_users}}
+      bar-chart.mt-8(:chart-data="chartData")
 
-    p Participation by country
-    v-data-table(
-      dense
-      disable-pagination
-      hide-default-footer
-      :headers="per_country_headers"
-      :items="per_country_rows"
-    )
+      v-card.mt-8
+        v-card-title(v-t="{path: 'report.actions_per_interval', args: {interval: interval}}")
+        v-data-table(
+          dense
+          disable-pagination
+          hide-default-footer
+          :headers="models_per_interval_headers"
+          :items="models_per_interval"
+        )
+
+      v-card.mt-8
+        v-card-title(v-t="'loomio_tags.tags'")
+        v-data-table(
+          dense
+          disable-pagination
+          hide-default-footer
+          :headers="tags_headers"
+          :items="tags_rows"
+        )
+
+      v-card.mt-8
+        v-card-title(v-t="'report.actions_per_user'")
+        v-data-table(
+          dense
+          disable-pagination
+          hide-default-footer
+          :headers="per_user_headers"
+          :items="per_user_rows"
+          :items-per-page="50"
+        )
+
+      v-card.mt-8
+        v-card-title(v-t="'report.users_per_country'")
+        v-data-table(
+          dense
+          disable-pagination
+          hide-default-footer
+          :headers="users_per_country_headers"
+          :items="users_per_country_rows"
+        )
+
+      v-card.mt-8
+        v-card-title(v-t="'report.actions_per_country'")
+        v-data-table(
+          dense
+          disable-pagination
+          hide-default-footer
+          :headers="per_country_headers"
+          :items="per_country_rows"
+        )
 
 </template>
