@@ -1,7 +1,7 @@
 class GeoLocationWorker
   include Sidekiq::Worker
 
-  def perform()
+  def perform
     max_loops = User.where(country: nil).where("current_sign_in_ip is not null").count / 100
     loops = 0
     while(loops < max_loops + 1)

@@ -1,5 +1,5 @@
 class ReportService
-  def initialize(interval: 'month', group_ids: nil, start_at: 6.months.ago, end_at: 1.minute.ago, direct_threads: false)
+  def initialize(interval: 'month', group_ids: nil, start_at: 6.months.ago, end_at: 1.minute.ago)
     @interval = interval
     @group_ids = group_ids
     @start_at = start_at
