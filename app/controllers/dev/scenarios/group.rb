@@ -138,15 +138,6 @@ module Dev::Scenarios::Group
   end
 
   def setup_open_group
-    User::MENTIONABLE_COLLECTIONS.each do |collection_name|
-      User.find_by(email: "#{collection_name}@loomio") ||
-      User.create!(email: "#{collection_name}@loomio",
-                  name: collection_name,
-                  password: SecureRandom.hex(20),
-                  email_verified: true,
-                  collection: true,
-                  avatar_kind: :gravatar)
-    end
     @group = Group.create!(name: 'Open Dirty Dancing Shoes',
                                 group_privacy: 'open')
     @group.add_admin!  patrick

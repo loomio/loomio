@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_paper_trail only: [:name, :username, :email, :email_newsletter, :deactivated_at, :deactivator_id]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
-  MENTIONABLE_COLLECTIONS = %w[group thread].freeze
+  COLLECTIONS = %w[group thread].freeze
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
   devise :pwned_password if Rails.env.production?
@@ -130,7 +130,7 @@ class User < ApplicationRecord
 
   scope :mention_search, -> (user, model, query) do
     return self.none unless model.present?
-    ids = User.mentionable_collections.pluck(:id)
+    ids = MentionableCollection.pluck(:id)
 
     if model.group_id
       ids += Membership.active.where(group_id: model.group_id).pluck(:user_id) if model.group_id
@@ -393,7 +393,8 @@ class User < ApplicationRecord
   end
 
   def forbidden_name
-    return unless MENTIONABLE_COLLECTIONS.include? name&.downcase&.strip
+    translated_collection_names = MentionableCollection.pluck(:name)
+    return unless translated_collection_names.include? name&.downcase&.strip
 
     errors.add(:name, I18n.t(:"user.error.forbidden_name"))
   end

@@ -85,15 +85,6 @@ module Dev::NintiesMoviesHelper
 
   def create_group
     unless @group
-      User::MENTIONABLE_COLLECTIONS.each do |collection_name|
-        User.find_by(email: "#{collection_name}@loomio") ||
-        User.create!(email: "#{collection_name}@loomio",
-                    name: collection_name,
-                    password: SecureRandom.hex(20),
-                    email_verified: true,
-                    collection: true,
-                    avatar_kind: :gravatar)
-      end
       @group = Group.new(name: 'Dirty Dancing Shoes',
                         description: 'The best place for dancing shoes. _every_ shoe is **dirty**!',
                         group_privacy: 'closed',

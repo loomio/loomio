@@ -194,7 +194,7 @@ describe User do
   end
 
   it "should not accept reserved names" do
-    user.name = "    #{User::MENTIONABLE_COLLECTIONS.sample.titleize} "
+    user.name = "    #{MentionableCollection.pluck(:name).sample.titleize} "
     expect(user.valid?).to eq false
   end
 end

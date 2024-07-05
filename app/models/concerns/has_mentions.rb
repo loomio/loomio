@@ -29,12 +29,14 @@ module HasMentions
 
   def mentioned_users
     mentioned_usernames_result = mentioned_usernames
-    mentioned_collections = mentioned_usernames_result & %w[group thread]
+    translated_group = MentionableCollection.group.translate
+    translated_thread = MentionableCollection.thread.translate
+    mentioned_collections = mentioned_usernames_result & [translated_group, translated_thread]
 
     members.where("users.username in (:usernames) or
                    users.id in (:ids)
-                   #{ 'or m.id IS NOT NULL AND users.id <> :author' if mentioned_collections.include? 'group' }
-                   #{ 'or dr.id IS NOT NULL AND users.id <> :author' if mentioned_collections.include? 'thread'}",
+                   #{ 'or m.id IS NOT NULL AND users.id <> :author' if mentioned_collections.include? translated_group }
+                   #{ 'or dr.id IS NOT NULL AND users.id <> :author' if mentioned_collections.include? translated_thread }",
                   usernames: mentioned_usernames_result,
                   ids: mentioned_user_ids,
                   author: self.author&.id)
