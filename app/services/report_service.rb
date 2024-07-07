@@ -14,8 +14,10 @@ class ReportService
       next_val = @start_at.to_date.at_beginning_of_week
     when 'month'
       next_val = @start_at.to_date.at_beginning_of_month
-    else
+    when 'day'
       next_val = @start_at.to_date
+    else
+      raise "invalid interval value: #{@interval}"
     end
 
     while next_val < @end_at
