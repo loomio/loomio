@@ -1169,6 +1169,10 @@ en:
     actions_per_country: Actions per country
     country: Country
     users: Users
+    day: Day
+    week: Week
+    month: Month
+    year: Year
 
   group_page:
     stats: Group stats

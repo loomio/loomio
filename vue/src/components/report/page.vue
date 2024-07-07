@@ -27,6 +27,12 @@ export default {
       start_month: (this.$route.query['start_on'] || (new Date(2019,1,1)).toISOString().slice(0,7)),
       end_month: (new Date()).toISOString().slice(0,7),
       interval: 'month',
+      intervalItems: [
+        {text: this.$t('report.day'), value: 'day'},
+        {text: this.$t('report.week'), value: 'week'},
+        {text: this.$t('report.month'), value: 'month'},
+        {text: this.$t('report.year'), value: 'year'}
+      ],
       total_users: 0,
       discussions_count: 0,
       polls_count: 0,
@@ -278,7 +284,7 @@ v-main
       v-select.ml-8(
         :label="$t('report.interval')"
         v-model="interval"
-        :items=['day', 'week', 'month']
+        :items="intervalItems"
       )
 
 

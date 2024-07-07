@@ -10,10 +10,12 @@ class ReportService
   def intervals
     vals = []
     case @interval
-    when 'week'
-      next_val = @start_at.to_date.at_beginning_of_week
+    when 'year'
+      next_val = @start_at.to_date.at_beginning_of_year
     when 'month'
       next_val = @start_at.to_date.at_beginning_of_month
+    when 'week'
+      next_val = @start_at.to_date.at_beginning_of_week
     when 'day'
       next_val = @start_at.to_date
     else
