@@ -2,18 +2,20 @@ class GeoLocationWorker
   include Sidekiq::Worker
 
   def perform
-    max_loops = User.where(country: nil).where("current_sign_in_ip is not null").count / 100
-    loops = 0
-    while(loops < max_loops + 1)
-      loops += 1
-      id_ip = User.where(country: nil).where("current_sign_in_ip is not null")
-            .limit(100).pluck(:id, :current_sign_in_ip)
-            .map {|pair| [pair[0], pair[1].to_s] }.filter {|pair| pair[1].length > 12 }.to_h
-      res = HTTParty.post("http://ip-api.com/batch?fields=country,city", {body: id_ip.values.to_json})
-      return if res.headers['x-rl'].to_i < 2
-      id_ip.each_with_index do |pair, index|
-        User.find(pair[0]).update_columns(country: res[index]["country"], city: res[index]["city"])
-      end
+    db_filename = Rails.root.join('public', 'GeoLite2-Country.mmdb').to_s
+
+    unless File.exist? db_filename
+      # from https://github.com/P3TERX/GeoLite.mmdb
+      download = URI.parse("https://git.io/GeoLite2-Country.mmdb").open
+      IO.copy_stream(download, db_filename)
+      puts "downloaded maxmind db"
+    end
+
+    db = MaxMindDB.new(db_filename)
+    User.where(country: nil).where("current_sign_in_ip is not null").find_each do |user|
+      record = db.lookup(user.current_sign_in_ip.to_s)
+      next unless record.found?
+      user.update_columns(country: record.country.name)
     end
   end
 end
