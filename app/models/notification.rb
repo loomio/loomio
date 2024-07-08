@@ -12,4 +12,5 @@ class Notification < ApplicationRecord
 
   scope :dangling, -> { joins('left join events e on notifications.event_id = e.id left join users u on u.id = notifications.user_id').where('e.id is null or u.id is null') }
   scope :user_mentions, -> { joins(:event).where("events.kind": :user_mentioned) }
+  scope :audience_mentions, -> { joins(:event).where("events.kind": :audience_mentioned) }
 end

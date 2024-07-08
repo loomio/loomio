@@ -88,20 +88,20 @@ describe Comment do
     end
   end
 
-  describe "#mentioned collection" do
+  describe "#mentioned audiences" do
     let(:discussion) { create :discussion, group: group }
 
     def group_members
       group.all_members.humans
     end
 
-    def thread_members
+    def discussion_members
       User.joins(:discussion_readers)
           .where("discussion_readers.discussion_id = ?", discussion.id)
     end
 
-    def mentioned_members_ids(comment)
-      mentioned = comment.mentioned_users.pluck(:id)
+    def mentioned_audiences(comment)
+      mentioned = comment.mentioned_audiences
     end
 
     def difference(a, b)
@@ -110,29 +110,28 @@ describe Comment do
 
     before do
       4.times { group.add_member!(create :user) }
-      thread_members = group_members[..(group_members.size/2)]
-      thread_members.each { |m| discussion.add_guest!(m, nil) }
+      discussion_members = group_members[..(group_members.size/2)]
+      discussion_members.each { |m| discussion.add_guest!(m, nil) }
     end
 
-    it "mentioning @group should return all users except the author of the group" do
-      comment = create :comment, discussion:, body: "@group"
-      group_members_ids = group_members.where.not('users.id': comment.author.id).pluck(:id)
+    it "mentioning @group should return audience group" do
+      comment1 = create :comment, discussion:, body: "@group"
+      comment2 = create :comment, discussion:,
+                        body: "<p><span class=\"mention\" data-mention-id=\"group\" label=\"groupe\">@group</span></p>",
+                        body_format: "html"
 
-      expect(difference(group_members_ids, mentioned_members_ids(comment))).to eq([])
+      expect(mentioned_audiences(comment1)).to eq(['group'])
+      expect(mentioned_audiences(comment2)).to eq(['group'])
     end
 
-    it "Mentioning @thread should return all users except the author of the discussion" do
-      comment = create :comment, discussion:, body: "@thread"
+    it "Mentioning @discussion should return audience discussion" do
+      comment1 = create :comment, discussion:, body: "@discussion"
+      comment2 = create :comment, discussion:,
+                        body: "<p><span class=\"mention\" data-mention-id=\"discussion\" label=\"discussion\">@discussion</span></p>",
+                        body_format: "html"
 
-      expect(difference(thread_members.pluck(:id), mentioned_members_ids(comment))).to eq([])
-    end
-
-    it "mentioning @thread and non-thread user should return all thread users except the author and the mentioned user" do
-      non_thread_users = group_members - thread_members
-      mentioned_users = thread_members.to_a << non_thread_users.first
-      comment = create :comment, discussion:, body: "@thread @#{mentioned_users.last.username}"
-
-      expect(difference(mentioned_users.pluck(:id), mentioned_members_ids(comment))).to eq([])
+      expect(mentioned_audiences(comment1)).to eq(['discussion'])
+      expect(mentioned_audiences(comment2)).to eq(['discussion'])
     end
   end
 end

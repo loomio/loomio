@@ -34,12 +34,9 @@ module HasMentions
     mentioned_collections = mentioned_usernames_result & [translated_group, translated_thread]
 
     members.where("users.username in (:usernames) or
-                   users.id in (:ids)
-                   #{ 'or m.id IS NOT NULL AND users.id <> :author' if mentioned_collections.include? translated_group }
-                   #{ 'or dr.id IS NOT NULL AND users.id <> :author' if mentioned_collections.include? translated_thread }",
+                   users.id in (:ids)",
                   usernames: mentioned_usernames_result,
-                  ids: mentioned_user_ids,
-                  author: self.author&.id)
+                  ids: mentioned_user_ids)
   end
 
   # users mentioned in the text, but not yet sent notifications
