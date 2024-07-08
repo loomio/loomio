@@ -1154,8 +1154,29 @@ en:
     confirm: "Type '%{name}' to confirm you want to delete this group."
     success: This group has been archived and is scheduled for permanent deletion in 2 weeks.
 
+  report:
+    start_on: Start on
+    end_on: End on
+    interval: Interval
+    total_users: Total users
+    total_threads: Total threads
+    total_polls: Total polls
+    threads_with_polls: Threads with polls
+    polls_with_outcomes: Polls with outcomes
+    actions_per_interval: Actions per %{interval}
+    actions_per_user: Actions per user
+    users_per_country: Users per country
+    actions_per_country: Actions per country
+    country: Country
+    users: Users
+    day: Day
+    week: Week
+    month: Month
+    year: Year
+
   group_page:
     stats: Group stats
+    participation_report: Participation report
     threads: Threads
     polls: Polls
     decisions: Decisions
