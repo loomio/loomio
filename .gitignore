@@ -15,6 +15,7 @@ public/pricing/
 public/the-loomio-process/
 public/why-collaborative-decision-making/
 public/wp-content/
+public/GeoLite2-Country.mmdb
 
 # rails stuff
 .irb_history

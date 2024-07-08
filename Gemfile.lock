@@ -122,6 +122,7 @@ GEM
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.8)
+    bindex (0.8.1)
     blazer (3.0.3)
       activerecord (>= 6.1)
       chartkick (>= 5)
@@ -597,6 +598,11 @@ GEM
       oga (~> 3.4)
     warden (1.2.9)
       rack (>= 2.0.9)
+    web-console (4.2.1)
+      actionview (>= 6.0.0)
+      activemodel (>= 6.0.0)
+      bindex (>= 0.4.0)
+      railties (>= 6.0.0)
     webmock (3.23.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -693,6 +699,7 @@ DEPENDENCIES
   uuidtools
   victor
   video_info
+  web-console
   webmock
 
 RUBY VERSION
