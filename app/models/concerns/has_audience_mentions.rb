@@ -10,15 +10,14 @@ module HasAudienceMentions
   end
 
   def mentioned_audiences
-    audiences = MentionableCollection.pluck(:name)
-
-    if text_format == "md"
-      extract_mentioned_screen_names(mentionable_text).uniq - [self.author&.username]
-    else
-      Nokogiri::HTML::fragment(mentionable_text).search("span[data-mention-id]").map do |el|
-        el['data-mention-id']
-      end.filter { |audience| %w[group discussion].include? audience }
-    end
+    audiences = if text_format == "md"
+                  extract_mentioned_screen_names(mentionable_text).uniq
+                else
+                  Nokogiri::HTML::fragment(mentionable_text).search("span[data-mention-id]").map do |el|
+                    el['data-mention-id']
+                  end
+                end.filter { |audience| Audience.all_translated.include? audience }.uniq
+    audiences.map{ |audience| Audience.back_translate(audience) }
   end
 
   # audience mentioned in the text, but not yet sent notifications
@@ -29,14 +28,6 @@ module HasAudienceMentions
   # audience mentioned on a previous edit of this model
   def already_mentioned_audiences
     self.notifications.user_mentions.pluck(:audience)
-  end
-
-  # TODO: use this or similar method for translated audience
-  def translated_audiences
-    audiences = {
-      I18n.t(:"user.mentionable_collection.#{'group'}", default: 'group' ) => 'group',
-      I18n.t(:"user.mentionable_collection.#{'thread'}", default: 'discussion' ) => 'discussion_group'
-    }
   end
 
   private

@@ -40,12 +40,11 @@ class User < ApplicationRecord
 
   before_save :set_legal_accepted_at, if: :legal_accepted
 
-  validates :email, presence: true, email: true, length: {maximum: 200}, if: -> { !(bot || collection) }
+  validates :email, presence: true, email: true, length: {maximum: 200}, if: -> { !bot }
 
   validates :name,               presence: true, if: :require_valid_signup
   validates :legal_accepted,     presence: true, if: :require_legal_accepted
   validate  :validate_recaptcha,                 if: :require_recaptcha
-  validate :forbidden_name, if: -> { !collection }
 
   has_one_attached :uploaded_avatar
 
@@ -59,6 +58,7 @@ class User < ApplicationRecord
   validates_confirmation_of :password, if: :password_required?
 
   validates_length_of :password, minimum: 8, allow_nil: true
+  validate :forbidden_name
 
   has_many :admin_memberships,
            -> { where('memberships.admin': true, revoked_at: nil) },
@@ -123,13 +123,12 @@ class User < ApplicationRecord
   scope :unverified, -> { where(email_verified: false) }
   scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
   scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
-  scope :humans, -> { where("bot = ? AND collection = ?", false, false) }
+  scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
-  scope :mentionable_collections, -> { where(collection: true) }
 
   scope :mention_search, -> (user, model, query) do
     return self.none unless model.present?
-    ids = MentionableCollection.pluck(:id)
+    ids = []
 
     if model.group_id
       ids += Membership.active.where(group_id: model.group_id).pluck(:user_id) if model.group_id
@@ -392,7 +391,7 @@ class User < ApplicationRecord
   end
 
   def forbidden_name
-    translated_collection_names = MentionableCollection.pluck(:name)
+    translated_collection_names = Audience.all_translated
     return unless translated_collection_names.include? name&.downcase&.strip
 
     errors.add(:name, I18n.t(:"user.error.forbidden_name"))

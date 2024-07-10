@@ -118,8 +118,11 @@ describe Event do
   end
 
   describe 'audience_mentioned' do
-    it 'notifies the mentioned audience - @group' do
-      comment = create :comment, parent: parent_comment, discussion: discussion, body: 'hey @group'
+    let(:discussion_translation){ Audience.discussion.translate }
+    let(:group_translation){ Audience.group.translate }
+
+    it 'notifies group audience' do
+      comment = create :comment, parent: parent_comment, discussion: discussion, body: "hey @#{group_translation} good day"
       group_members = AnnouncementService.audience_users(comment, 'group', comment.author, false, false)
 
       Events::NewComment.publish!(parent_comment)
@@ -135,8 +138,8 @@ describe Event do
       expect(audience_notification_recievers).to_not include comment.author
     end
 
-    it 'notifies the mentioned audience - @discussion' do
-      comment = create :comment, parent: parent_comment, discussion: discussion, body: 'hey @discussion'
+    it 'notifies discussion mentioned audiences' do
+      comment = create :comment, parent: parent_comment, discussion: discussion, body: "hey @#{discussion_translation}"
       group_members = AnnouncementService.audience_users(comment, 'discussion_group', comment.author, false, false)
 
       Events::NewComment.publish!(parent_comment)
@@ -152,9 +155,9 @@ describe Event do
       expect(audience_notification_recievers).to_not include comment.author
     end
 
-    it 'notifies the mentioned audience - @group html content' do
+    it 'notifies group audiences - html content' do
       comment = create :comment, parent: parent_comment, discussion: discussion,
-                       body: "<p>Hey <span class=\"mention\" data-mention-id=\"group\" label=\"groupe\">@group</span></p>",
+                       body: "<p>Hey <span class=\"mention\" data-mention-id=\"#{group_translation}\" label=\"#{discussion_translation}\">@#{discussion_translation}</span></p>",
                        body_format: "html"
       group_members = AnnouncementService.audience_users(comment, 'group', comment.author, false, false)
 
@@ -171,9 +174,9 @@ describe Event do
       expect(audience_notification_recievers).to_not include comment.author
     end
 
-    it 'notifies the mentioned audience - @discussion with html content' do
+    it 'notifies discussion audiences - html content' do
       comment = create :comment, parent: parent_comment, discussion: discussion,
-                       body: "<p>Hey <span class=\"mention\" data-mention-id=\"discussion\" label=\"groupe\">@discussion</span></p>",
+                       body: "<p>Hey <span class=\"mention\" data-mention-id=\"#{discussion_translation}\" label=\"discussion\">@#{discussion_translation}</span></p>",
                        body_format: "html"
       discussion_members = AnnouncementService.audience_users(comment, 'discussion_group', comment.author, false, false)
 
@@ -190,9 +193,9 @@ describe Event do
       expect(audience_notification_recievers).to_not include comment.author
     end
 
-    it 'notifies the mentioned audience - @discussion with html content' do
-      mentioned_group = "<span class=\"mention\" data-mention-id=\"group\" label=\"groupe\">@group</span>"
-      mentioned_discussion = "<span class=\"mention\" data-mention-id=\"discussion\" label=\"groupe\">@discussion</span>"
+    it 'notifies discussion and group audiences' do
+      mentioned_group = "<span class=\"mention\" data-mention-id=\"#{group_translation}\" label=\"groupe\">@#{discussion_translation}</span>"
+      mentioned_discussion = "<span class=\"mention\" data-mention-id=\"#{discussion_translation}\" label=\"groupe\">@#{discussion_translation}</span>"
       comment = create :comment, parent: parent_comment, discussion: discussion,
                        body: "<p>Hey #{mentioned_group}#{mentioned_discussion}</p>",
                        body_format: "html"

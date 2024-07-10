@@ -1037,7 +1037,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_08_133850) do
     t.integer "deactivator_id"
     t.boolean "autodetect_time_zone", default: true, null: false
     t.string "email_sha256"
-    t.boolean "collection", default: false, null: false
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"

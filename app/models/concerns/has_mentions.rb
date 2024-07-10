@@ -28,15 +28,7 @@ module HasMentions
   end
 
   def mentioned_users
-    mentioned_usernames_result = mentioned_usernames
-    translated_group = MentionableCollection.group.translate
-    translated_thread = MentionableCollection.thread.translate
-    mentioned_collections = mentioned_usernames_result & [translated_group, translated_thread]
-
-    members.where("users.username in (:usernames) or
-                   users.id in (:ids)",
-                  usernames: mentioned_usernames_result,
-                  ids: mentioned_user_ids)
+    members.where("users.username in (:usernames) or users.id in (:ids)", usernames: mentioned_usernames, ids: mentioned_user_ids)
   end
 
   # users mentioned in the text, but not yet sent notifications

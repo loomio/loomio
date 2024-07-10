@@ -89,49 +89,24 @@ describe Comment do
   end
 
   describe "#mentioned audiences" do
-    let(:discussion) { create :discussion, group: group }
-
-    def group_members
-      group.all_members.humans
-    end
-
-    def discussion_members
-      User.joins(:discussion_readers)
-          .where("discussion_readers.discussion_id = ?", discussion.id)
-    end
-
-    def mentioned_audiences(comment)
-      mentioned = comment.mentioned_audiences
-    end
-
-    def difference(a, b)
-      a.size > b.size ? a - b : b - a
-    end
-
-    before do
-      4.times { group.add_member!(create :user) }
-      discussion_members = group_members[..(group_members.size/2)]
-      discussion_members.each { |m| discussion.add_guest!(m, nil) }
-    end
-
-    it "mentioning @group should return audience group" do
-      comment1 = create :comment, discussion:, body: "@group"
-      comment2 = create :comment, discussion:,
-                        body: "<p><span class=\"mention\" data-mention-id=\"group\" label=\"groupe\">@group</span></p>",
+    it "mentioning @group should return audience 'group'" do
+      comment1 = create :comment, body: "@group"
+      comment2 = create :comment,
+                        body: "<p><span class=\"mention\" data-mention-id=\"group\" label=\"group\">@group</span></p>",
                         body_format: "html"
 
-      expect(mentioned_audiences(comment1)).to eq(['group'])
-      expect(mentioned_audiences(comment2)).to eq(['group'])
+      expect(comment1.mentioned_audiences).to eq(['group'])
+      expect(comment2.mentioned_audiences).to eq(['group'])
     end
 
-    it "Mentioning @discussion should return audience discussion" do
-      comment1 = create :comment, discussion:, body: "@discussion"
-      comment2 = create :comment, discussion:,
+    it "Mentioning @discussion should return audience 'discussion'" do
+      comment1 = create :comment, body: "@discussion"
+      comment2 = create :comment,
                         body: "<p><span class=\"mention\" data-mention-id=\"discussion\" label=\"discussion\">@discussion</span></p>",
                         body_format: "html"
 
-      expect(mentioned_audiences(comment1)).to eq(['discussion'])
-      expect(mentioned_audiences(comment2)).to eq(['discussion'])
+      expect(comment1.mentioned_audiences).to eq(['discussion'])
+      expect(comment2.mentioned_audiences).to eq(['discussion'])
     end
   end
 end
