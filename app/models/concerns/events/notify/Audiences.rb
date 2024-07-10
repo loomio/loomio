@@ -32,6 +32,6 @@ module Events::Notify::Audiences
                                                     false)
     end
 
-    users
+    users.uniq
   end
 end
