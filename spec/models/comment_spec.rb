@@ -89,24 +89,27 @@ describe Comment do
   end
 
   describe "#mentioned audiences" do
+    let(:group_audience) { Audience.group }
+    let(:discussion_audience) { Audience.discussion}
+
     it "mentioning @group should return audience 'group'" do
-      comment1 = create :comment, body: "@group"
+      comment1 = create :comment, body: "@#{group_audience}"
       comment2 = create :comment,
-                        body: "<p><span class=\"mention\" data-mention-id=\"group\" label=\"group\">@group</span></p>",
+                        body: "<p><span class=\"mention\" data-mention-id=\"#{group_audience}\" label=\"#{group_audience}\">@#{group_audience}</span></p>",
                         body_format: "html"
 
-      expect(comment1.mentioned_audiences).to eq(['group'])
-      expect(comment2.mentioned_audiences).to eq(['group'])
+      expect(comment1.mentioned_audiences).to eq([group_audience])
+      expect(comment2.mentioned_audiences).to eq([group_audience])
     end
 
     it "Mentioning @discussion should return audience 'discussion'" do
-      comment1 = create :comment, body: "@discussion"
+      comment1 = create :comment, body: "@#{discussion_audience}"
       comment2 = create :comment,
-                        body: "<p><span class=\"mention\" data-mention-id=\"discussion\" label=\"discussion\">@discussion</span></p>",
+                        body: "<p><span class=\"mention\" data-mention-id=\"#{discussion_audience}\" label=\"#{discussion_audience}\">@#{discussion_audience}</span></p>",
                         body_format: "html"
 
-      expect(comment1.mentioned_audiences).to eq(['discussion'])
-      expect(comment2.mentioned_audiences).to eq(['discussion'])
+      expect(comment1.mentioned_audiences).to eq([discussion_audience])
+      expect(comment2.mentioned_audiences).to eq([discussion_audience])
     end
   end
 end
