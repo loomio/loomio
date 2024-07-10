@@ -9,25 +9,13 @@ class Audience
     @name = audience_type
   end
 
-  def translate
-    I18n.t(:"user.audience.#{name}", default: name )
-  end
-
   AUDIENCES.each do |audience|
     define_singleton_method(audience) do
-      new(audience)
+      new(audience).name
     end
   end
 
-  def self.dictionary
-    AUDIENCES.each_with_object({}) { |audience, hash| hash[send(audience).translate] = audience }
-  end
-
-  def self.all_translated
-    dictionary.keys
-  end
-
-  def self.back_translate(word)
-    dictionary[word]
+  def self.all
+    AUDIENCES
   end
 end

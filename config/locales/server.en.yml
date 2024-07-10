@@ -317,9 +317,6 @@ en:
   user:
     deleted_user: "Deleted User"
     placeholder_name: "Invited user (%{hostname})"
-    audience:
-      group: group
-      discussion: discussion
     error:
       sign_in_required_html: |
         You must be signed in to proceed.

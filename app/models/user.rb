@@ -391,7 +391,7 @@ class User < ApplicationRecord
   end
 
   def forbidden_name
-    translated_collection_names = Audience.all_translated
+    translated_collection_names = Audience.all
     return unless translated_collection_names.include? name&.downcase&.strip
 
     errors.add(:name, I18n.t(:"user.error.forbidden_name"))
