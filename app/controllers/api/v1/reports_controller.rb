@@ -11,7 +11,7 @@ class API::V1::ReportsController < API::V1::RestfulController
     if current_user.is_admin?
       all_groups.unshift({id: 0, name: 'Direct threads'})
     else
-      group_ids = group_id & current_user.group_ids
+      group_ids = group_ids & current_user.group_ids
       all_group_ids = all_group_ids & current_user.group_ids
     end
 
