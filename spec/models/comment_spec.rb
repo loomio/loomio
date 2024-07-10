@@ -93,9 +93,9 @@ describe Comment do
     let(:discussion_audience) { Audience.discussion}
 
     it "mentioning @group should return audience 'group'" do
-      comment1 = create :comment, body: "@#{group_audience}"
+      comment1 = create :comment, body: "Hey, @#{group_audience}"
       comment2 = create :comment,
-                        body: "<p><span class=\"mention\" data-mention-id=\"#{group_audience}\" label=\"#{group_audience}\">@#{group_audience}</span></p>",
+                        body: "<p>Hey, <span class=\"mention\" data-mention-id=\"#{group_audience}\" label=\"#{group_audience}\">@#{group_audience}</span></p>",
                         body_format: "html"
 
       expect(comment1.mentioned_audiences).to eq([group_audience])
@@ -103,9 +103,9 @@ describe Comment do
     end
 
     it "Mentioning @discussion should return audience 'discussion'" do
-      comment1 = create :comment, body: "@#{discussion_audience}"
+      comment1 = create :comment, body: "Hey, @#{discussion_audience}"
       comment2 = create :comment,
-                        body: "<p><span class=\"mention\" data-mention-id=\"#{discussion_audience}\" label=\"#{discussion_audience}\">@#{discussion_audience}</span></p>",
+                        body: "<p>Hey, <span class=\"mention\" data-mention-id=\"#{discussion_audience}\" label=\"#{discussion_audience}\">@#{discussion_audience}</span></p>",
                         body_format: "html"
 
       expect(comment1.mentioned_audiences).to eq([discussion_audience])

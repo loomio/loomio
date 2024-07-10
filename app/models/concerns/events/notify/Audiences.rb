@@ -22,7 +22,7 @@ module Events::Notify::Audiences
 
   def audience_users
     users = []
-    audiences = Hash.new('group').merge('discussion' => 'discussion_group')
+    audiences = { 'group' => 'group', 'discussion' => 'discussion_group' }
 
     eventable.newly_mentioned_audiences.each do |audience|
       users += AnnouncementService.audience_users(eventable,
