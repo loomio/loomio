@@ -1128,6 +1128,7 @@ da:
       parent_members: 'Privatinstillinger: Denne gruppe er synlig for medlemmer af %{parentGroupName} og medlemmer af %{groupName}'
       public: 'Privatinstillinger: Denne gruppe er synlig for alle på internettet'
       aria_label: 'Privatinstillinger: %{privacy}'
+    participation_report: Deltagelsesrapport
   export_data_modal:
     title: Hvordan vil du bruge dine data?
     as_csv: Åbn det i et regneark
@@ -2557,3 +2558,23 @@ da:
       community: Lokalgruppe
       government: Regering/Lokalforvaltning
       other: Andre
+  report:
+    start_on: Start på
+    end_on: Slut på
+    interval: Interval
+    total_users: Samlede brugere
+    total_threads: Samlede tråde
+    total_polls: Samlede meningsmålinger
+    threads_with_polls: Tråde med afstemninger
+    polls_with_outcomes: Afstemninger med resultater
+    actions_per_interval: Handlinger pr. %{interval}
+    actions_per_user: Handlinger pr. bruger
+    users_per_country: Brugere pr. land
+    actions_per_country: Handlinger pr. land
+    country: Land
+    users: Brugere
+    day: Dag
+    week: Uge
+    month: Måned
+    year: År
+    country_disclaimer: Land er baseret på brugerens IP-adresse og er ikke særlig nøjagtigt. Betragt kun dette som en grov guide.

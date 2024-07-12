@@ -1136,6 +1136,7 @@ pl:
       parent_members: 'Prywatność: ta grupa jest widoczna dla osób z %{parentGroupName} i osób z %{groupName}'
       public: 'Prywatność: ta grupa jest widoczna w Internecie'
       aria_label: 'Prywatność grupy: %{privacy}'
+    participation_report: Sprawozdanie z udziału
   export_data_modal:
     title: Jak chcesz wykorzystać swoje dane?
     as_csv: Otwórz w arkuszu kalkulacyjnym
@@ -2586,3 +2587,23 @@ pl:
       community: Grupa społecznościowa
       government: Rząd/Samorząd lokalny
       other: Inne
+  report:
+    start_on: Zaczynaj na
+    end_on: Podłużnie
+    interval: Interwał
+    total_users: Całkowita liczba użytkowników
+    total_threads: Całkowita liczba wątków
+    total_polls: Razem ankiety
+    threads_with_polls: Wątki z ankietami
+    polls_with_outcomes: Ankiety z wynikami
+    actions_per_interval: Działania na %{interval}
+    actions_per_user: Działania na użytkownika
+    users_per_country: Użytkownicy według kraju
+    actions_per_country: Działania według kraju
+    country: Kraj
+    users: Użytkownicy
+    day: Dzień
+    week: Tydzień
+    month: Miesiąc
+    year: Rok
+    country_disclaimer: Kraj jest ustalany na podstawie adresu IP użytkownika i nie jest zbyt dokładny. Potraktuj to jedynie jako przybliżony przewodnik.

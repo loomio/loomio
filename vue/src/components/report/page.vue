@@ -345,6 +345,7 @@ v-main
 
       v-card.mt-8
         v-card-title(v-t="'report.users_per_country'")
+        p.px-4.text-caption(v-t="'report.country_disclaimer'")
         v-data-table(
           dense
           disable-pagination

@@ -1142,6 +1142,7 @@ de:
       parent_members: 'Sichtbarkeit: Diese Gruppe ist nur für Mitglieder von %{parentGroupName} und %{groupName} sichtbar.'
       public: 'Sichtbarkeit: Diese Gruppe ist im Web sichtbar'
       aria_label: 'Sichtbarkeit der Gruppe: %{privacy}'
+    participation_report: Teilnahmebericht
   export_data_modal:
     title: Wie willst du deine Daten benutzen?
     as_csv: In einer Tabellenkalkulation öffnen
@@ -2594,3 +2595,23 @@ de:
       community: Community-Gruppe
       government: Regierung/Örtliche Regierung
       other: Andere
+  report:
+    start_on: Beginnen am
+    end_on: Endet am
+    interval: Intervall
+    total_users: Benutzer insgesamt
+    total_threads: Threads gesamt
+    total_polls: Umfragen insgesamt
+    threads_with_polls: Threads mit Umfragen
+    polls_with_outcomes: Umfragen mit Ergebnissen
+    actions_per_interval: Aktionen pro %{interval}
+    actions_per_user: Aktionen pro Benutzer
+    users_per_country: Benutzer pro Land
+    actions_per_country: Aktionen pro Land
+    country: Land
+    users: Benutzer
+    day: Tag
+    week: Woche
+    month: Monat
+    year: Jahr
+    country_disclaimer: Das Land basiert auf der IP-Adresse des Benutzers und ist nicht sehr genau. Betrachten Sie dies nur als grobe Richtlinie.
