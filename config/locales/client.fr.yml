@@ -1155,6 +1155,7 @@ fr:
       parent_members: 'Confidentialité: Ce groupe est visible pour les membres de %{parentGroupName} et les membres de %{groupName}'
       public: 'Confidentialité: Ce groupe est visible par tous sur internet'
       aria_label: 'Groupe privé : %{privacy}'
+    participation_report: Rapport de participation
   export_data_modal:
     title: Comment souhaitez-vous utiliser vos données ?
     as_csv: Ouvrir dans une feuille de calcul
@@ -2611,3 +2612,23 @@ fr:
       community: Groupe communautaire
       government: Gouvernement ou collectivités locales
       other: Autre
+  report:
+    start_on: Démarrer
+    end_on: Terminer le
+    interval: Intervalle
+    total_users: Nombre total d'utilisateurs
+    total_threads: Nombre total de discussions
+    total_polls: Total des sondages
+    threads_with_polls: Discussions avec des sondages
+    polls_with_outcomes: Sondages avec résultats
+    actions_per_interval: Actions par %{intervalle}
+    actions_per_user: Actions par utilisateur
+    users_per_country: Utilisateurs par pays
+    actions_per_country: Actions par pays
+    country: Pays
+    users: Utilisateurs
+    day: Jour
+    week: Semaine
+    month: Mois
+    year: Année
+    country_disclaimer: Le pays est basé sur l'adresse IP de l'utilisateur et n'est pas très précis. Considérez ceci comme un guide approximatif uniquement.

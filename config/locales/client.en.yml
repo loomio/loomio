@@ -1173,6 +1173,7 @@ en:
     week: Week
     month: Month
     year: Year
+    country_disclaimer: Country is based on the user's IP address and is not very accurate. Consider this a rough guide only.
 
   group_page:
     stats: Group stats

@@ -1137,6 +1137,7 @@ uk:
       parent_members: 'Конфіденційність: Ця група відображається для учасників %{parentGroupName} та учасників %{groupName}'
       public: 'Конфіденційність: Ця група відображається для всіх у мережі'
       aria_label: 'Конфіденційність групи: %{privacy}'
+    participation_report: Звіт про участь
   export_data_modal:
     title: Як ви бажаєте використовувати ващі дані?
     as_csv: Відкрити в електронній таблиці
@@ -2591,3 +2592,23 @@ uk:
       community: Громадська група
       government: Уряд / Місцеве самоврядування
       other: Інше
+  report:
+    start_on: Почніть далі
+    end_on: Кінець на
+    interval: Інтервал
+    total_users: Всього користувачів
+    total_threads: Всього потоків
+    total_polls: Всього опитувань
+    threads_with_polls: Теми з опитуваннями
+    polls_with_outcomes: Опитування з результатами
+    actions_per_interval: Дій за %{interval}
+    actions_per_user: Дії на користувача
+    users_per_country: Користувачі на країну
+    actions_per_country: Дії на країну
+    country: Країна
+    users: Користувачі
+    day: День
+    week: тиждень
+    month: місяць
+    year: рік
+    country_disclaimer: Країна заснована на IP-адресі користувача і є не дуже точною. Вважайте це лише приблизним керівництвом.

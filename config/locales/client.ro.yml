@@ -1128,6 +1128,7 @@ ro:
       parent_members: 'Confidențialitate: acest grup este vizibil pentru membrii %{parentGroupName} și membrii %{groupName}'
       public: 'Confidențialitate: acest grup este vizibil pe web'
       aria_label: 'Confidențialitate a grupului: %{privacy}'
+    participation_report: Raport de participare
   export_data_modal:
     title: Cum doriți să vă folosiți datele?
     as_csv: Deschideți-l într-o foaie de calcul
@@ -2554,3 +2555,23 @@ ro:
       community: Comunitate
       government: Guvern/Administrație locală
       other: Altele
+  report:
+    start_on: Începe
+    end_on: Termină la
+    interval: Interval
+    total_users: Total utilizatori
+    total_threads: Total fire
+    total_polls: Total sondaje
+    threads_with_polls: Fire cu sondaje
+    polls_with_outcomes: Sondaje cu rezultate
+    actions_per_interval: Acțiuni pe %{interval}
+    actions_per_user: Acțiuni per utilizator
+    users_per_country: Utilizatori pe țară
+    actions_per_country: Acțiuni pe țară
+    country: Țară
+    users: Utilizatori
+    day: Zi
+    week: Săptămână
+    month: Lună
+    year: An
+    country_disclaimer: Țara se bazează pe adresa IP a utilizatorului și nu este foarte precisă. Luați în considerare acest lucru doar un ghid brut.
