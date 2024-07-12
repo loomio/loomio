@@ -35,7 +35,7 @@ class API::V1::ReportsController < API::V1::RestfulController
       discussion_tag_counts: @report.discussion_tag_counts,
       poll_tag_counts: @report.poll_tag_counts,
       tag_counts: @report.tag_counts,
-      users: @report.users.map {|u| {id: u.id, name: u.name} },
+      users: @report.users.map {|u| {id: u.id, name: u.name, country: u.country} },
       discussions_per_user: @report.discussions_per_user,
       comments_per_user: @report.comments_per_user,
       polls_per_user: @report.polls_per_user,
