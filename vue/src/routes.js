@@ -35,8 +35,6 @@ import Router from 'vue-router';
 
 import Session from '@/shared/services/session';
 
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
-
 Vue.use(Router);
 
 const groupPageChildren = [
@@ -105,15 +103,5 @@ const router = new Router({
     {path: '/:key', component: GroupPage, children: groupPageChildren},
     {path: '/', redirect: '/dashboard' }
   ]});
-
-router.beforeEach(function(to, from, next) {
-  if (RescueUnsavedEditsService.okToLeave()) {
-    return next();
-  } else {
-    return next(false);
-  }
-});
-
-router.afterEach(() => RescueUnsavedEditsService.clear());
 
 export default router;

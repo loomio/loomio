@@ -29,6 +29,10 @@ export default class DiscussionTemplateModel extends BaseModel {
     };
   }
   
+  collabKeyParams(){
+    return [this.groupId];
+  }
+  
   relationships() {
     this.belongsTo('author', {from: 'users'});
     return this.belongsTo('group');

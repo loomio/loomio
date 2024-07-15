@@ -1,7 +1,7 @@
 import utils from './utils';
 import Vue from 'vue';
 import { isEqual } from 'date-fns';
-import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
+import { camelCase, compact, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
 
 export default class BaseModel {
   static singular = 'undefinedSingular';
@@ -64,6 +64,18 @@ export default class BaseModel {
     this.update(this.defaultValues());
     this.update(attributes);
     this.afterConstruction();
+  }
+
+  collabKeyParams() {
+    return [];
+  }
+
+  collabKey(userSecret) {
+    return compact((this.isNew() ?
+      [this.constructor.singular, 'new', this.collabKeyParams(), userSecret]
+    :
+      [this.constructor.singular, this.id]
+    ).flat()).join("-");
   }
 
   bumpVersion() {

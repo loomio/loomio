@@ -58,6 +58,10 @@ export default class PollTemplateModel extends BaseModel {
     };
   }
 
+  collabKeyParams(){
+    return [this.groupId];
+  }
+
   relationships() {
     this.belongsTo('author', {from: 'users'});
     return this.belongsTo('group');

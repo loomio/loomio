@@ -18,7 +18,6 @@ import Dropcursor from '@tiptap/extension-dropcursor';
 import GapCursor from '@tiptap/extension-gapcursor';
 import HardBreak from '@tiptap/extension-hard-break';
 import Heading from '@tiptap/extension-heading';
-import History from '@tiptap/extension-history';
 import HorizontalRule from '@tiptap/extension-horizontal-rule';
 import Italic from '@tiptap/extension-italic';
 import Link from '@tiptap/extension-link';
@@ -56,6 +55,11 @@ import TextHighlightBtn from './text_highlight_btn';
 import TextAlignBtn from './text_align_btn';
 import { TextAlign } from './extension_text_align';
 import { Highlight } from './extension_highlight';
+
+import Collaboration from '@tiptap/extension-collaboration';
+import CollaborationCursor from '@tiptap/extension-collaboration-cursor'
+import { HocuspocusProvider } from '@hocuspocus/provider';
+import { IndexeddbPersistence } from 'y-indexeddb';
 
 const isValidHttpUrl = function(string) {
   let url = undefined;
@@ -105,23 +109,26 @@ export default
     };
   },
 
-  computed: {
-    format() {
-      return this.model[`${this.field}Format`];
-    },
-
-    reasonTooLong() { 
-      return this.editor.getCharacterCount() >= this.maxLength;
-    }
-  },
-
   mounted() {
-    EventBus.$on('focusEditor', focusId => { 
-      if (this.focusId === focusId) { return this.editor.commands.focus(); }
+    const docname = this.model.collabKey(Session.user().secretToken);
+
+    const provider = new HocuspocusProvider({
+      url: 'ws://127.0.0.1:1234',
+      name: docname,
+      onSynced: function() {
+        console.log("on synced", this.editor);
+        if (!provider.document.getMap('config').get('initialContentLoaded') && this.editor) {
+          provider.document.getMap('config').set('initialContentLoaded', true)
+          this.editor.commands.setContent(this.model[this.field])
+        }
+      }.bind(this),
     });
+
+    new IndexeddbPersistence(docname, provider.document);
 
     this.expanded = Session.user().experiences['html-editor.expanded'];
     this.model.beforeSaves.push( () => this.updateModel() );
+
     this.editor = new Editor({
       editorProps: {
         scrollThreshold: 100,
@@ -134,6 +141,16 @@ export default
         BulletList,
         CodeBlock,
         CustomImage.configure({attachFile: this.attachFile, attachImageFile: this.attachImageFile}),
+        Collaboration.configure({
+          document: provider.document,
+        }),
+        CollaborationCursor.configure({
+          provider: provider,
+          user: {
+            name: Session.user().name,
+            color: '#f783ac',
+          },
+        }),
         Video,
         Audio,
         Document,
@@ -142,7 +159,6 @@ export default
         HardBreak,
         Heading,
         Highlight.configure({ multicolor: true }),
-        History,
         HorizontalRule,
         Italic,
         Iframe,
@@ -164,7 +180,6 @@ export default
         TextAlign.configure({ types: ['heading', 'paragraph'] }),
         Underline
       ],
-      content: this.model[this.field],
       onUpdate: () => {
         if (this.maxLength) { this.checkLength(); }
         if (this.model.isNew()) { this.scrapeLinkPreviews(); }
@@ -173,6 +188,20 @@ export default
         if (this.model.isNew() && (this.editor.getCharacterCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
       }
     });
+
+    EventBus.$on('focusEditor', focusId => {
+      if (this.focusId === focusId) { return this.editor.commands.focus(); }
+    });
+  },
+
+  computed: {
+    format() {
+      return this.model[`${this.field}Format`];
+    },
+
+    reasonTooLong() { 
+      return this.editor.getCharacterCount() >= this.maxLength;
+    }
   },
 
   watch: {
@@ -206,14 +235,6 @@ export default
 
     setCount(count) {
       this.count = count;
-    },
-
-    tiptapAddress() {
-      if (this.model.isNew()) {
-        return compact([AppConfig.theme.channels_uri, 'tiptap', this.model.constructor.singular, 'new', this.model.groupId, this.model.discussionId, this.model.parentId, Session.user().secretToken]).join('/');
-      } else {
-        return [AppConfig.theme.channels_uri, 'tiptap', this.model.constructor.singular, this.model.id, (this.model.secretToken || Session.user().secretToken)].join('/');
-      }
     },
 
     selectedText() {
@@ -285,11 +306,7 @@ export default
       const parser = new DOMParser();
       const doc = parser.parseFromString(this.editor.getHTML(), 'text/html');
       this.fetchLinkPreviews(difference((Array.from(doc.querySelectorAll('a')).map(el => el.href)), this.fetchedUrls));
-    }
-    ,
-      500
-    ,
-      {leading: false}),
+    } , 500 , {leading: false}),
 
     fetchLinkPreviews(urls) {
       if (urls.length) {
@@ -305,14 +322,11 @@ export default
     if (this.editor) { this.editor.destroy(); }
   }
 };
-  // @socket.close() if @socket
 
 </script>
 
 <template lang="pug">
 div
-  //- template(v-if="!editor || loading")
-  //-   | Connecting to socket server …
   .editor(v-if="editor")
     editor-content.html-editor__textarea(ref="editor", :editor='editor').lmo-markdown-wrapper
     v-sheet.menubar
@@ -377,8 +391,6 @@ div
 
 
             template(v-if="expanded")
-              //- v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
-              //-   common-icon(small name="mdi-format-pilcrow")
               template(v-for="i in [1,2,3]")
                 v-btn(small icon @click='editor.chain().focus().toggleHeading({ level: i }).run()', :outlined="editor.isActive('heading', { level: i })", :title="$t('formatting.heading'+i)")
                   common-icon(small :name="'mdi-format-header-'+i")
@@ -467,6 +479,29 @@ div
     input.d-none(ref="imagesField", type="file", name="files", multiple=true)
 </template>
 <style lang="sass">
+
+.collaboration-cursor__caret
+  border-left: 1px solid #0d0d0d
+  border-right: 1px solid #0d0d0d
+  margin-left: -1px
+  margin-right: -1px
+  pointer-events: none
+  position: relative
+  word-break: normal
+
+.collaboration-cursor__label
+  border-radius: 3px 3px 3px 0
+  color: #0d0d0d
+  font-size: 12px
+  font-style: normal
+  font-weight: 600
+  left: -1px
+  line-height: normal
+  padding: 0.1rem 0.3rem
+  position: absolute
+  top: -1.4em
+  user-select: none
+  white-space: nowrap
 
 .ProseMirror-widget
   position: absolute
