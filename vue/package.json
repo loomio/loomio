@@ -40,7 +40,7 @@
     "@tiptap/extension-placeholder": "^2.2.4",
     "@tiptap/extension-strike": "^2.2.4",
     "@tiptap/extension-table": "^2.2.4",
-    "@tiptap/extension-table-cell": "^2.2.4",
+    "@tiptap/extension-table-cell": "^2.5.1",
     "@tiptap/extension-table-header": "^2.2.4",
     "@tiptap/extension-table-row": "^2.2.4",
     "@tiptap/extension-task-item": "^2.2.4",
