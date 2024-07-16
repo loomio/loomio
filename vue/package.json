@@ -86,7 +86,7 @@
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "latest",
     "@originjs/vite-plugin-commonjs": "latest",
-    "nightwatch": "^3.6.0",
+    "nightwatch": "^3.6.4",
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
