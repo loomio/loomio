@@ -25,7 +25,7 @@
     "@tiptap/extension-code-block": "^2.2.4",
     "@tiptap/extension-document": "^2.2.4",
     "@tiptap/extension-dropcursor": "^2.2.4",
-    "@tiptap/extension-gapcursor": "^2.2.4",
+    "@tiptap/extension-gapcursor": "^2.5.1",
     "@tiptap/extension-hard-break": "^2.2.4",
     "@tiptap/extension-heading": "^2.2.4",
     "@tiptap/extension-history": "^2.2.4",
