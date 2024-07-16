@@ -36,7 +36,7 @@
     "@tiptap/extension-list-item": "^2.2.4",
     "@tiptap/extension-mention": "^2.2.4",
     "@tiptap/extension-ordered-list": "^2.2.4",
-    "@tiptap/extension-paragraph": "^2.2.4",
+    "@tiptap/extension-paragraph": "^2.5.1",
     "@tiptap/extension-placeholder": "^2.2.4",
     "@tiptap/extension-strike": "^2.2.4",
     "@tiptap/extension-table": "^2.2.4",
