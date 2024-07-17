@@ -70,11 +70,11 @@ export default class BaseModel {
     return [];
   }
 
-  collabKey(userSecret) {
+  collabKey(field, userSecret) {
     return compact((this.isNew() ?
-      [this.constructor.singular, 'new', this.collabKeyParams(), userSecret]
+      [this.constructor.singular, 'new', this.collabKeyParams(), field, userSecret]
     :
-      [this.constructor.singular, this.id]
+      [this.constructor.singular, this.id, field]
     ).flat()).join("-");
   }
 

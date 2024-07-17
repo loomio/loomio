@@ -62,8 +62,6 @@ describe 'RecordCloner' do
       expect(clone.discussion_privacy_options).to eq 'private_only'
       expect(clone.membership_granted_upon).to eq 'approval'
       expect(clone.listed_in_explore).to be false
-      expect(clone.secret_token.present?).to be true
-      expect(clone.secret_token).not_to eq group.secret_token
       expect(clone.created_at).to be > DateTime.now
 
       # check that the group has copied the tags

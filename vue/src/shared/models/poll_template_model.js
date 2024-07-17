@@ -59,7 +59,7 @@ export default class PollTemplateModel extends BaseModel {
   }
 
   collabKeyParams(){
-    return [this.groupId];
+    return [this.groupId, this.key];
   }
 
   relationships() {

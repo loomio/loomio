@@ -110,13 +110,13 @@ export default
   },
 
   mounted() {
-    const docname = this.model.collabKey(Session.user().secretToken);
+    const docname = this.model.collabKey(this.field, Session.user().secretToken);
 
     const provider = new HocuspocusProvider({
-      url: 'ws://127.0.0.1:1234',
+      url: 'ws://127.0.0.1:7700',
       name: docname,
+      token: Session.user().id + "," + Session.user().secretToken,
       onSynced: function() {
-        console.log("on synced", this.editor);
         if (!provider.document.getMap('config').get('initialContentLoaded') && this.editor) {
           provider.document.getMap('config').set('initialContentLoaded', true)
           this.editor.commands.setContent(this.model[this.field])
@@ -488,6 +488,7 @@ div
   pointer-events: none
   position: relative
   word-break: normal
+  z-index: 100
 
 .collaboration-cursor__label
   border-radius: 3px 3px 3px 0

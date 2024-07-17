@@ -51,7 +51,6 @@ class GroupSerializer < ApplicationSerializer
              :subscription,
              :subgroups_count,
              :new_host,
-             :secret_token,
              :categorize_poll_templates
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
@@ -79,10 +78,6 @@ class GroupSerializer < ApplicationSerializer
       expires_at:      sub.expires_at,
       members_count:   sub.members_count
     }
-  end
-
-  def include_secret_token?
-    current_user_membership && current_user_membership.admin
   end
 
   def logo_url

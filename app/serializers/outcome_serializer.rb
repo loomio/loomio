@@ -16,7 +16,6 @@ class OutcomeSerializer < ApplicationSerializer
              :poll_option_id,
              :group_id,
              :author_id,
-             :secret_token,
              :versions_count
 
   has_one :author, serializer: AuthorSerializer, root: :users

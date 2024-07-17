@@ -30,7 +30,7 @@ export default class DiscussionTemplateModel extends BaseModel {
   }
   
   collabKeyParams(){
-    return [this.groupId];
+    return [this.groupId, this.key];
   }
   
   relationships() {
