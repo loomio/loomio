@@ -1142,7 +1142,6 @@ zh_TW:
       parent_members: 隱私權：討論串只會被 %{parentGroupName} 群組的成員以及 %{groupName} 群組的成員看到。
       public: 隱私權：此群組現在能在網路上被看到
       aria_label: 群組隱私：%{privacy}
-    participation_report: 參與報告
   export_data_modal:
     title: 您想要如何使用您的資料？
     as_csv: 在試算表中開啟它
@@ -2597,23 +2596,3 @@ zh_TW:
       community: 社群團體
       government: 政府／地方政府
       other: 其他
-  report:
-    start_on: 開始
-    end_on: 結束於
-    interval: 間隔
-    total_users: 用戶總數
-    total_threads: 線程總數
-    total_polls: 總投票數
-    threads_with_polls: 帶有民調的話題
-    polls_with_outcomes: 民意調查結果
-    actions_per_interval: 每 %{interval} 的操作次數
-    actions_per_user: 每個使用者的操作
-    users_per_country: 每個國家的用戶
-    actions_per_country: 每個國家的行動
-    country: 國家
-    users: 使用者
-    day: 天
-    week: 星期
-    month: 月
-    year: 年
-    country_disclaimer: 國家是基於使用者的 IP 位址，並不十分準確。這只是一個粗略的指南。

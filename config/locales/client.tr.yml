@@ -1128,7 +1128,6 @@ tr:
       parent_members: 'Gizlilik: Bu grup sadece %{parentGroupName} ve %{groupName} gruplarının üyelerine görünür.'
       public: 'Gizlilik: Bu grup web üzerinde görülebilir'
       aria_label: 'Grup gizliliği: %{privacy}'
-    participation_report: Katılım raporu
   export_data_modal:
     title: Verilerinizi nasıl kullanmak istiyorsunuz?
     as_csv: Bir e-tabloda açın
@@ -2555,23 +2554,3 @@ tr:
       community: Topluluk grubu
       government: Hükümet/Yerel Yönetim
       other: Diğer
-  report:
-    start_on: Başla
-    end_on: Bitiş tarihi
-    interval: Aralık
-    total_users: Toplam kullanıcı
-    total_threads: Toplam konu sayısı
-    total_polls: Toplam anketler
-    threads_with_polls: Anket içeren konular
-    polls_with_outcomes: Sonuçları olan anketler
-    actions_per_interval: "%{interval} başına işlemler"
-    actions_per_user: Kullanıcı başına işlemler
-    users_per_country: Ülke başına kullanıcılar
-    actions_per_country: Ülke başına eylemler
-    country: Ülke
-    users: Kullanıcılar
-    day: Gün
-    week: Hafta
-    month: Ay
-    year: Yıl
-    country_disclaimer: Ülke kullanıcının IP adresine dayanmaktadır ve çok doğru değildir. Bunu yalnızca kaba bir kılavuz olarak düşünün.

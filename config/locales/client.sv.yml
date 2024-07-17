@@ -1128,7 +1128,6 @@ sv:
       parent_members: 'Sekretess: Den här gruppen är synlig för medlemmar i %{parentGroupName} och medlemmar av %{groupName}'
       public: 'Sekretess: Den här gruppen är synlig på webben'
       aria_label: 'Gruppsekretess: %{privacy}'
-    participation_report: Deltagande rapport
   export_data_modal:
     title: Hur vill du använda din data?
     as_csv: Öppna den i ett kalkylblad
@@ -2555,23 +2554,3 @@ sv:
       community: Gemenskap grupp
       government: Regering/Lokalförvaltning
       other: Andra
-  report:
-    start_on: Börja på
-    end_on: Sluta på
-    interval: Intervall
-    total_users: Totalt antal användare
-    total_threads: Totala trådar
-    total_polls: Totalt omröstningar
-    threads_with_polls: Trådar med omröstningar
-    polls_with_outcomes: Omröstningar med resultat
-    actions_per_interval: Åtgärder per %{interval}
-    actions_per_user: Åtgärder per användare
-    users_per_country: Användare per land
-    actions_per_country: Åtgärder per land
-    country: Land
-    users: Användare
-    day: Dag
-    week: Vecka
-    month: Månad
-    year: År
-    country_disclaimer: Land baseras på användarens IP-adress och är inte särskilt exakt. Se endast detta som en grov guide.

@@ -1132,7 +1132,6 @@ hu:
       parent_members: 'Adatvédelem: Ez a csoport a(z) %{parentGroupName} és a %{groupName} tagjai számára látható.'
       public: 'Adatvédelem: Ez a csoport látható az interneten'
       aria_label: 'Csoportos adatvédelem: %{privacy}'
-    participation_report: Részvételi jelentés
   export_data_modal:
     title: Hogyan szeretné használni az adatait?
     as_csv: Nyissa meg egy táblázatban
@@ -2565,23 +2564,3 @@ hu:
       community: Közösségi csoport
       government: Önkormányzat / Helyi önkormányzat
       other: Egyéb
-  report:
-    start_on: Kezdje el
-    end_on: Vége tovább
-    interval: Intervallum
-    total_users: Összes felhasználó
-    total_threads: Összes szál
-    total_polls: Összes szavazás
-    threads_with_polls: Szálak szavazással
-    polls_with_outcomes: Szavazások eredményekkel
-    actions_per_interval: Műveletek per %{interval}
-    actions_per_user: Felhasználónkénti műveletek
-    users_per_country: Felhasználók országonként
-    actions_per_country: Műveletek országonként
-    country: Ország
-    users: Felhasználók
-    day: Nap
-    week: Hét
-    month: Hónap
-    year: Év
-    country_disclaimer: Az ország a felhasználó IP-címén alapul, és nem túl pontos. Tekintse ezt csak hozzávetőleges útmutatónak.

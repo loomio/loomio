@@ -1155,7 +1155,6 @@ pt_BR:
       parent_members: 'Privacidade: Este grupo é visível para os membros de %{parentGroupName} e os membros de %{groupName}'
       public: 'Privacidade: Este grupo é visível na web'
       aria_label: 'Privacidade do grupo: %{privacy}'
-    participation_report: Relatório de participação
   export_data_modal:
     title: Como você quer usar seus dados?
     as_csv: Abrir em uma planilha
@@ -2614,23 +2613,3 @@ pt_BR:
       community: Grupo comunitário
       government: Governo/Governo local
       other: Outro
-  report:
-    start_on: Começar
-    end_on: Fim
-    interval: Intervalo
-    total_users: Total de usuários
-    total_threads: Total de tópicos
-    total_polls: Total de pesquisas
-    threads_with_polls: Tópicos com enquetes
-    polls_with_outcomes: Enquetes com resultados
-    actions_per_interval: Ações por %{interval}
-    actions_per_user: Ações por usuário
-    users_per_country: Usuários por país
-    actions_per_country: Ações por país
-    country: País
-    users: Usuários
-    day: Dia
-    week: Semana
-    month: Mês
-    year: Ano
-    country_disclaimer: O país é baseado no endereço IP do usuário e não é muito preciso. Considere isto apenas um guia aproximado.

@@ -1132,7 +1132,6 @@ he:
       parent_members: 'פרטיות: קבוצה זו זמינה לצפייה רק לחברי %{parentGroupName} ולחברי %{groupName}'
       public: 'פרטיות: קבוצה זו ציבורית ופתוחה לצפייה ברשת'
       aria_label: 'פרטיות הקבוצה: %{privacy}'
-    participation_report: דוח השתתפות
   export_data_modal:
     title: איך אתה רוצה להשתמש בנתונים שלך?
     as_csv: פתח אותו בגיליון אלקטרוני
@@ -2577,23 +2576,3 @@ he:
       community: קבוצה קהילתית
       government: ממשלה/שלטון מקומי
       other: אחר
-  report:
-    start_on: התחל על
-    end_on: להסתיים ב
-    interval: הַפסָקָה
-    total_users: סך כל המשתמשים
-    total_threads: סה"כ חוטים
-    total_polls: סך הכל סקרים
-    threads_with_polls: שרשורים עם סקרים
-    polls_with_outcomes: סקרים עם תוצאות
-    actions_per_interval: פעולות לכל %{interval}
-    actions_per_user: פעולות לכל משתמש
-    users_per_country: משתמשים לכל מדינה
-    actions_per_country: פעולות לכל מדינה
-    country: מדינה
-    users: משתמשים
-    day: יְוֹם
-    week: שָׁבוּעַ
-    month: חוֹדֶשׁ
-    year: שָׁנָה
-    country_disclaimer: המדינה מבוססת על כתובת ה-IP של המשתמש ואינה מדויקת במיוחד. ראה זאת כמדריך גס בלבד.

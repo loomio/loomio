@@ -1128,7 +1128,6 @@ el:
       parent_members: 'Απόρρητο: Αυτή η ομάδα είναι ορατή στα μέλη του %{parentGroupName} και στα μέλη του %{groupName}'
       public: 'Απόρρητο: Αυτή η ομάδα είναι ορατή στον ιστό'
       aria_label: 'Απόρρητο ομάδας: %{privacy}'
-    participation_report: Έκθεση συμμετοχής
   export_data_modal:
     title: Πώς θέλετε να χρησιμοποιήσετε τα δεδομένα σας;
     as_csv: Ανοίξτε το σε υπολογιστικό φύλλο
@@ -2555,23 +2554,3 @@ el:
       community: Ομάδα Κοινότητας
       government: Κυβέρνηση/Τοπική Αυτοδιοίκηση
       other: Άλλο
-  report:
-    start_on: Ξεκινήστε
-    end_on: Τέλος σε
-    interval: Διάστημα
-    total_users: Σύνολο χρηστών
-    total_threads: Σύνολο νημάτων
-    total_polls: Σύνολο δημοσκοπήσεων
-    threads_with_polls: Νήματα με δημοσκοπήσεις
-    polls_with_outcomes: Δημοσκοπήσεις με αποτελέσματα
-    actions_per_interval: Ενέργειες ανά %{interval}
-    actions_per_user: Ενέργειες ανά χρήστη
-    users_per_country: Χρήστες ανά χώρα
-    actions_per_country: Δράσεις ανά χώρα
-    country: Χώρα
-    users: Χρήστες
-    day: Ημέρα
-    week: Εβδομάδα
-    month: Μήνας
-    year: Ετος
-    country_disclaimer: Η χώρα βασίζεται στη διεύθυνση IP του χρήστη και δεν είναι πολύ ακριβής. Θεωρήστε αυτόν μόνο έναν πρόχειρο οδηγό.
