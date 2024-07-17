@@ -121,7 +121,7 @@ describe Event do
     let(:discussion_audience){ Audience.discussion.name }
     let(:group_audience){ Audience.group.name }
 
-    it 'notifies group audience' do
+    it 'notifies group members' do
       comment = create :comment, parent: parent_comment, discussion: discussion, body: "hey @#{group_audience} good day"
       group_members = AnnouncementService.audience_users(comment, 'group', comment.author, false, false)
 
@@ -138,24 +138,24 @@ describe Event do
       expect(audience_notification_recievers).to_not include comment.author
     end
 
-    it 'notifies discussion mentioned audiences' do
+    it 'notifies discussion members' do
       comment = create :comment, parent: parent_comment, discussion: discussion, body: "hey @#{discussion_audience}"
-      group_members = AnnouncementService.audience_users(comment, 'discussion_group', comment.author, false, false)
+      discussion_members = AnnouncementService.audience_users(comment, 'discussion_group', comment.author, false, false)
 
       Events::NewComment.publish!(parent_comment)
       CommentService.create(comment: comment, actor: comment.author)
       event = Events::CommentAnnounced.where(kind: :comment_announced).last
       expect(event.eventable).to eq comment
       audience_email_recievers = event.send(:email_recipients)
-      expect(audience_email_recievers.length).to eq group_members.size
+      expect(audience_email_recievers.length).to eq discussion_members.size
       expect(audience_email_recievers).to_not include comment.author
 
       audience_notification_recievers = event.send(:notification_recipients)
-      expect(audience_notification_recievers.length).to eq group_members.length
+      expect(audience_notification_recievers.length).to eq discussion_members.length
       expect(audience_notification_recievers).to_not include comment.author
     end
 
-    it 'notifies group audiences - html content' do
+    it 'notifies group members - html content' do
       comment = create :comment, parent: parent_comment, discussion: discussion,
                        body: "<p>Hey <span class=\"mention\" data-mention-id=\"#{group_audience}\" label=\"#{discussion_audience}\">@#{discussion_audience}</span></p>",
                        body_format: "html"
@@ -174,7 +174,7 @@ describe Event do
       expect(audience_notification_recievers).to_not include comment.author
     end
 
-    it 'notifies discussion audiences - html content' do
+    it 'notifies discussion members - html content' do
       comment = create :comment, parent: parent_comment, discussion: discussion,
                        body: "<p>Hey <span class=\"mention\" data-mention-id=\"#{discussion_audience}\" label=\"discussion\">@#{discussion_audience}</span></p>",
                        body_format: "html"
@@ -193,7 +193,7 @@ describe Event do
       expect(audience_notification_recievers).to_not include comment.author
     end
 
-    it 'notifies discussion and group audiences' do
+    it 'notifies discussion and group members' do
       mentioned_group = "<span class=\"mention\" data-mention-id=\"#{group_audience}\" label=\"groupe\">@#{group_audience}</span>"
       mentioned_discussion = "<span class=\"mention\" data-mention-id=\"#{discussion_audience}\" label=\"discussion\">@#{discussion_audience}</span>"
       comment = create :comment, parent: parent_comment, discussion: discussion,
