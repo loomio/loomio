@@ -56,7 +56,6 @@ export default {
       tags_rows: [],
       per_user_headers: [
         {text: "User", value: "user"},
-        {text: this.$t('report.country'), value: "country"},
         {text: this.$t('common.threads'), value: "threads"},
         {text: this.$t('navbar.search.comments'), value: "comments"},
         {text: this.$t('group_page.polls'), value: "polls"},
@@ -175,7 +174,6 @@ export default {
           this.per_user_rows = data.users.map(user => {
             return {
               user: user.name,
-              country: user.country,
               threads: data.discussions_per_user[user.id] || 0,
               comments: data.comments_per_user[user.id] || 0,
               polls: data.polls_per_user[user.id] || 0,
@@ -364,11 +362,3 @@ v-main
         )
 
 </template>
-
-
-<style lang="sass">
-.report-page .v-data-table
-  max-height: 100vh
-  overflow-y: auto
-
-</style>
