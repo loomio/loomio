@@ -72,10 +72,7 @@ export default new class PollTemplateService {
             props: {
               confirm: {
                 submit() {
-                  return discussionTemplate.destroy().then(() => {
-                    EventBus.$emit('closeModal');
-                    EventBus.$emit('reloadThreadTemplates');
-                  });
+                  return discussionTemplate.destroy().then(() => EventBus.$emit('closeModal'));
                 },
                 text: {
                   title: 'common.are_you_sure',

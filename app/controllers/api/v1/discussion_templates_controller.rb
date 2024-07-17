@@ -14,7 +14,7 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
     end
 
     templates = DiscussionTemplate
-                .joins("LEFT JOIN groups ON groups.id = discussion_templates.group_id LEFT JOIN subscriptions ON groups.subscription_id = subscriptions.id")
+                .joins(group: :subscription)
                 .where("discussion_templates.public": true)
                 .where("groups.handle = ? OR subscriptions.plan != ?", 'templates', 'trial')
 
@@ -47,7 +47,7 @@ class API::V1::DiscussionTemplatesController < API::V1::RestfulController
   def index
     group = current_user.groups.find_by(id: params[:group_id]) || NullGroup.new
 
-    if group.discussion_templates.kept.count == 0
+    if group.discussion_templates_count == 0
       group.discussion_templates = DiscussionTemplateService.initial_templates(group.category)
     end
 
