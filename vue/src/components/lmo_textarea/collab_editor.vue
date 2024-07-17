@@ -110,7 +110,7 @@ export default
   },
 
   mounted() {
-    const docname = this.model.collabKey(this.field, Session.user().secretToken);
+    const docname = this.model.collabKey(this.field, Session.user().id);
 
     const provider = new HocuspocusProvider({
       url: AppConfig.theme.hocuspocus_url,

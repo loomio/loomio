@@ -70,9 +70,9 @@ export default class BaseModel {
     return [];
   }
 
-  collabKey(field, userSecret) {
+  collabKey(field, userId) {
     return compact((this.isNew() ?
-      [this.constructor.singular, 'new', this.collabKeyParams(), field, userSecret]
+      [this.constructor.singular, 'new', userId, this.collabKeyParams(), field]
     :
       [this.constructor.singular, this.id, field]
     ).flat()).join("-");
