@@ -365,7 +365,7 @@ GEM
     method_source (1.1.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    minitest (5.24.1)
+    minitest (5.24.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
@@ -455,7 +455,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.2.1)
-    ransack (4.2.0)
+    ransack (4.1.1)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
@@ -670,7 +670,7 @@ DEPENDENCIES
   rails (= 7.0.8.1)
   rails-controller-testing
   rake
-  ransack (= 4.2.0)
+  ransack (= 4.1.1)
   redcarpet (~> 3.6.0)
   redis-objects
   redis-rails
