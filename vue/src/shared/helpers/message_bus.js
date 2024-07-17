@@ -14,7 +14,7 @@ const roomScores = {};
 let recordsSocket = null;
 
 export var initLiveUpdate = function() {
-  const recordsAddress = [AppConfig.theme.channels_uri, 'records'].join('/');
+  const recordsAddress = [AppConfig.theme.channels_url, 'records'].join('/');
   recordsSocket = io(recordsAddress, {query: { channel_token: AppConfig.channel_token}});
 
   recordsSocket.on('update', data => {

@@ -113,7 +113,7 @@ export default
     const docname = this.model.collabKey(this.field, Session.user().secretToken);
 
     const provider = new HocuspocusProvider({
-      url: 'ws://127.0.0.1:7700',
+      url: AppConfig.theme.hocuspocus_url,
       name: docname,
       token: Session.user().id + "," + Session.user().secretToken,
       onSynced: function() {

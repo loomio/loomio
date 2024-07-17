@@ -46,13 +46,16 @@ class AppConfig
 
     # here are some useful variations on these colours
     # https://maketintsandshades.com/#DCA034,293C4A,7F9EA0,E4C2B9,658AE7,C77C3B
+    default_channels_url = Rails.env.production? ? "wss://channels.#{ENV['CANONICAL_HOST']}" : "ws://localhost:5000"
+    default_hocuspocus_url = Rails.env.production? ? "wss://hocuspocus.#{ENV['CANONICAL_HOST']}" : "ws://localhost:7700"
 
     logo_color = :gold
 
     {
       brand_colors:                      brand_colors,
       site_name:                         ENV.fetch('SITE_NAME',                     'Loomio'),
-      channels_uri:                      ENV.fetch('CHANNELS_URI',                  'ws://localhost:5000'),
+      channels_url:                      ENV.fetch('CHANNELS_URL', ENV.fetch('CHANNELS_URI', default_channels_url)),
+      hocuspocus_url:                    ENV.fetch('HOCUSPOCUS_URL',                default_hocuspocus_url),
       terms_url:                         ENV['TERMS_URL'],
       privacy_url:                       ENV['PRIVACY_URL'],
       canonical_host:                    ENV['CANONICAL_HOST'],
