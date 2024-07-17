@@ -13,7 +13,7 @@
     "test": "nightwatch --retries 3 --headless"
   },
   "dependencies": {
-    "@sentry/browser": "^8.17.0",
+    "@sentry/browser": "^8.18.0",
     "@sentry/tracing": "^7.110.1",
     "@sentry/vue": "^8.17.0",
     "@tiptap/core": "^2.2.4",
