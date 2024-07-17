@@ -79,9 +79,7 @@
     "vue-slicksort": "^1.2.0",
     "vue2-touch-events": "^3.2.3",
     "@mdi/js": "^6.9.96",
-    "vuetify": "2.6.15",
-    "chart.js": "^3.9.1",
-    "vue-chartjs": "^4.1.2"
+    "vuetify": "2.6.15"
   },
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "latest",
