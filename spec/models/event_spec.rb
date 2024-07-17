@@ -118,8 +118,8 @@ describe Event do
   end
 
   describe 'audience_mentioned' do
-    let(:discussion_audience){ Audience.discussion }
-    let(:group_audience){ Audience.group }
+    let(:discussion_audience){ Audience.discussion.name }
+    let(:group_audience){ Audience.group.name }
 
     it 'notifies group audience' do
       comment = create :comment, parent: parent_comment, discussion: discussion, body: "hey @#{group_audience} good day"
@@ -194,10 +194,10 @@ describe Event do
     end
 
     it 'notifies discussion and group audiences' do
-      mentioned_group = "<span class=\"mention\" data-mention-id=\"#{group_audience}\" label=\"groupe\">@#{discussion_audience}</span>"
-      mentioned_discussion = "<span class=\"mention\" data-mention-id=\"#{discussion_audience}\" label=\"groupe\">@#{discussion_audience}</span>"
+      mentioned_group = "<span class=\"mention\" data-mention-id=\"#{group_audience}\" label=\"groupe\">@#{group_audience}</span>"
+      mentioned_discussion = "<span class=\"mention\" data-mention-id=\"#{discussion_audience}\" label=\"discussion\">@#{discussion_audience}</span>"
       comment = create :comment, parent: parent_comment, discussion: discussion,
-                       body: "<p>Hey #{mentioned_group}#{mentioned_discussion}</p>",
+                       body: "<p>Hey #{mentioned_group} #{mentioned_discussion}</p>",
                        body_format: "html"
       group_members = AnnouncementService.audience_users(comment, 'group', comment.author, false, false)
       discussion_members = AnnouncementService.audience_users(comment, 'discussion_group', comment.author, false, false)

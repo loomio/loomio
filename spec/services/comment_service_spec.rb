@@ -108,7 +108,7 @@ describe 'CommentService' do
 
         expect(notifications.count).to eq 0
 
-        # reply_comment = 
+        # reply_comment =
         # comment.body = "A mention for @#{another_user.username}!"
 
         # expect { CommentService.create(comment: comment, actor: user) }.to change { Event.where(kind: 'user_mentioned').count }
@@ -148,6 +148,19 @@ describe 'CommentService' do
       expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to change { another_user.notifications.count }.by(1)
       comment_params[:body] = "Hello again @#{another_user.username}"
       expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to_not change  { another_user.notifications.count }
+    end
+
+    it 'does not renotify old mentioned audiences' do
+      comment_params[:body] = "A mention for @#{ Audience.group.name }!"
+      group_member = comment.group.members.where.not(id: comment.author.id).first
+      expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to change { group_member.notifications.count }.by(1)
+      comment_params[:body] = "Hello again @#{ Audience.group.name }"
+      expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to_not change  { group_member.notifications.count }
+    end
+
+    it 'notifies mentioned users only once if user belong to mentioned audience' do
+      comment_params[:body] = "A mention for @#{Audience.group.name} and @#{another_user.username}!"
+      expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to change { another_user.notifications.count }.by(1)
     end
 
     it 'does not update an invalid comment' do

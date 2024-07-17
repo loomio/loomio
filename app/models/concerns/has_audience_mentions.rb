@@ -26,7 +26,7 @@ module HasAudienceMentions
 
   # audience mentioned on a previous edit of this model
   def already_mentioned_audiences
-    self.notifications.user_mentions.pluck(:audience)
+    self.events.reduce([]) { |result, event| result |= (event.custom_fields['audiences'] || []) }
   end
 
   private

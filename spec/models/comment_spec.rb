@@ -89,8 +89,8 @@ describe Comment do
   end
 
   describe "#mentioned audiences" do
-    let(:group_audience) { Audience.group }
-    let(:discussion_audience) { Audience.discussion}
+    let(:group_audience) { Audience.group.name  }
+    let(:discussion_audience) { Audience.discussion.name }
 
     it "mentioning @group should return audience 'group'" do
       comment1 = create :comment, body: "Hey, @#{group_audience}"
@@ -100,6 +100,16 @@ describe Comment do
 
       expect(comment1.mentioned_audiences).to eq([group_audience])
       expect(comment2.mentioned_audiences).to eq([group_audience])
+    end
+
+    it "Mentioning @discussion should return audience 'discussion'" do
+      comment1 = create :comment, body: "Hey, @#{discussion_audience}"
+      comment2 = create :comment,
+                        body: "<p>Hey, <span class=\"mention\" data-mention-id=\"#{discussion_audience}\" label=\"#{discussion_audience}\">@#{discussion_audience}</span></p>",
+                        body_format: "html"
+
+      expect(comment1.mentioned_audiences).to eq([discussion_audience])
+      expect(comment2.mentioned_audiences).to eq([discussion_audience])
     end
 
     it "Mentioning @discussion should return audience 'discussion'" do
