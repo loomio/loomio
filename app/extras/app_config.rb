@@ -47,7 +47,7 @@ class AppConfig
     # here are some useful variations on these colours
     # https://maketintsandshades.com/#DCA034,293C4A,7F9EA0,E4C2B9,658AE7,C77C3B
     default_channels_url = Rails.env.production? ? "wss://channels.#{ENV['CANONICAL_HOST']}" : "ws://localhost:5000"
-    default_hocuspocus_url = Rails.env.production? ? "wss://hocuspocus.#{ENV['CANONICAL_HOST']}" : "ws://localhost:7700"
+    default_hocuspocus_url = Rails.env.production? ? "wss://hocuspocus.#{ENV['CANONICAL_HOST']}" : "ws://localhost:4444"
 
     logo_color = :gold
 
