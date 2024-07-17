@@ -150,23 +150,32 @@ describe 'CommentService' do
       expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to_not change  { another_user.notifications.count }
     end
 
-    it 'does not renotify old mentioned audiences' do
-      comment_params[:body] = "A mention for @#{ Audience.group.name }!"
-      group_member = comment.group.members.where.not(id: comment.author.id).first
-      expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to change { group_member.notifications.count }.by(1)
-      comment_params[:body] = "Hello again @#{ Audience.group.name }"
-      expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to_not change  { group_member.notifications.count }
-    end
-
-    it 'notifies mentioned users only once if user belong to mentioned audience' do
-      comment_params[:body] = "A mention for @#{Audience.group.name} and @#{another_user.username}!"
-      expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to change { another_user.notifications.count }.by(1)
-    end
-
     it 'does not update an invalid comment' do
       comment_params[:body] = ''
       CommentService.update(comment: comment, params: comment_params, actor: user)
       expect(comment.reload.body).to_not eq comment_params[:body]
+    end
+
+    context 'when mentioning an audience' do
+      it 'does not renotify old mentions if the user belongs to the mentioned audience' do
+        comment_params[:body] = "A mention for @#{another_user.username}!"
+        expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to change { another_user.notifications.count }.by(1)
+        comment_params[:body] = "Hello again @#{Audience.group.name}"
+        expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to_not change  { another_user.notifications.count }
+      end
+
+      it 'does not renotify old mentioned audiences' do
+        comment_params[:body] = "A mention for @#{ Audience.group.name }!"
+        group_member = comment.group.members.where.not(id: comment.author.id).first
+        expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to change { group_member.notifications.count }.by(1)
+        comment_params[:body] = "Hello again @#{ Audience.group.name }"
+        expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to_not change  { group_member.notifications.count }
+      end
+
+      it 'notifies the mentioned user only once if both the user and the audience they belong to are mentioned' do
+        comment_params[:body] = "A mention for @#{Audience.group.name} and @#{another_user.username}!"
+        expect { CommentService.update(comment: comment, params: comment_params, actor: user) }.to change { another_user.notifications.count }.by(1)
+      end
     end
   end
 end
