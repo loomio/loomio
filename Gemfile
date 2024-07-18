@@ -68,7 +68,6 @@ gem 'pg_search'
 gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
-gem 'maxminddb'
 
 group :development, :test do
   gem 'byebug'
