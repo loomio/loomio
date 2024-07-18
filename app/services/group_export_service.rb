@@ -19,15 +19,11 @@ class GroupExportService
   ]
 
   JSON_PARAMS = {
-    groups:      {except: [:token, :secret_token], methods: []},
-    comments:    {except: [:secret_token]},
-    discussions: {except: [:secret_token]},
-    polls:       {except: [:secret_token]},
-    outcomes:    {except: [:secret_token]},
+    groups:      {except: [:token], methods: []},
     users:       {except: [:encrypted_password,
                            :reset_password_token,
                            :email_api_key,
-                           :reset_password_token, 
+                           :reset_password_token,
                            :secret_token,
                            :unsubscribe_token] }
   }.with_indifferent_access.freeze

@@ -4,7 +4,6 @@ import Records  from '@/shared/services/records';
 import Session  from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
 import I18n from '@/i18n';
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 // import EventBus   from '@/shared/services/event_bus';
 
 const emailRegex = /[^:,;'"`<>]+?@[^:,;'"`<>]+\.[^:,;'"`<>]+/
@@ -33,8 +32,6 @@ export default
     submit() {
       this.validate = true;
       if (this.$refs.form.validate()){
-        RescueUnsavedEditsService.models = [];
-        this.group.beforeSaves.forEach(f => f());
         this.loading = true
         Records.remote.post('trials', {
           user_name: this.userName,

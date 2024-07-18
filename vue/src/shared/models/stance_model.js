@@ -17,6 +17,10 @@ export default class StanceModel extends BaseModel {
     return HasTranslations.apply(this);
   }
 
+  collabKeyParams() {
+    return [this.pollId];
+  }
+
   defaultValues() {
     return {
       reason: '',

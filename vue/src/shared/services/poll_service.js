@@ -8,7 +8,6 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import i18n          from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 import { startOfHour, addDays, format } from 'date-fns';
 
 function openSetOutcomeModal(poll) {

@@ -1,6 +1,4 @@
 <script lang="js">
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
-
 export default {
   props: {
     focusId: String,
@@ -16,10 +14,6 @@ export default {
   components: {
     'md-editor': () => import('@/components/lmo_textarea/md_editor.vue'),
     'collab-editor': () => import('@/components/lmo_textarea/collab_editor.vue')
-  },
-
-  mounted() {
-    RescueUnsavedEditsService.add(this.model);
   },
 
   computed: {

@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, defaults: {format: :json} do
+    post 'hocuspocus', to: 'hocuspocus#create'
+
     namespace :b1 do
       resources :discussions, only: [:create, :show]
       resources :polls, only: [:create, :show]

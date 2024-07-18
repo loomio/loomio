@@ -24,8 +24,4 @@ class CommentSerializer < ApplicationSerializer
   def include_mentioned_usernames?
     body_format == "md"
   end
-
-  def include_secret_token?
-    object.user_id == scope[:current_user_id]
-  end
 end
