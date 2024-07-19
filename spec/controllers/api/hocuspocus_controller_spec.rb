@@ -9,6 +9,16 @@ describe API::HocuspocusController do
     user.reload
   end
 
+  describe 'logged out user' do
+    it 'valid secret_token returns 200' do
+      post :create, params: {
+        user_secret: "0,anything at all",
+        document_name: "comment-new-#{user.id}-1-1-1"
+      }
+      expect(response.status).to eq 200
+    end
+  end
+
   describe 'new comment' do
     it 'valid secret_token returns 200' do
       post :create, params: {

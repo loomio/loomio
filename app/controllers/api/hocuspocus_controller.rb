@@ -5,6 +5,12 @@ class API::HocuspocusController < ActionController::Base
 
   def create
     user_id, secret_token = params[:user_secret].split(',')
+
+    if user_id == '0'
+      head :ok
+      return
+    end
+
     user = User.active.find_by!(id: user_id, secret_token: secret_token)
 
     record_type, record_id, user_id_if_new = params[:document_name].split('-')

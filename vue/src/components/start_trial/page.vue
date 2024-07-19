@@ -32,6 +32,7 @@ export default
     submit() {
       this.validate = true;
       if (this.$refs.form.validate()){
+        this.group.beforeSaves.forEach(f => f());
         this.loading = true
         Records.remote.post('trials', {
           user_name: this.userName,

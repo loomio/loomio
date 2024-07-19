@@ -110,12 +110,11 @@ export default
   },
 
   mounted() {
-    const docname = this.model.collabKey(this.field, Session.user().id);
-
+    const docname = this.model.collabKey(this.field, (Session.user().id || AppConfig.channel_token));
     const provider = new HocuspocusProvider({
       url: AppConfig.theme.hocuspocus_url,
       name: docname,
-      token: Session.user().id + "," + Session.user().secretToken,
+      token: (Session.user().id || 0) + "," + (Session.user().secretToken || AppConfig.channel_token),
       onSynced: function() {
         if (!provider.document.getMap('config').get('initialContentLoaded') && this.editor) {
           provider.document.getMap('config').set('initialContentLoaded', true)
