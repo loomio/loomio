@@ -1020,6 +1020,8 @@ en:
     count_voters: "%{count} voters"
 
   formatting:
+    confirm_discard: Are you sure you want to discard your changes?
+    discard_draft: Discard draft
     formatting_tools: Text formatting tools
     colors: Colors
     highlight: Highlight

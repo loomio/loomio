@@ -191,6 +191,14 @@ export default
     EventBus.$on('focusEditor', focusId => {
       if (this.focusId === focusId) { return this.editor.commands.focus(); }
     });
+
+    EventBus.$on('resetDraft', (type, id, field, content) => {
+      if (type == this.model.constructor.singular &&
+          id == this.model.id &&
+          field == this.field) {
+        this.resetDraft(content);
+      }
+    });
   },
 
   computed: {
@@ -208,6 +216,10 @@ export default
   },
 
   methods: {
+    resetDraft(content) {
+      this.editor.commands.setContent(content); 
+    },
+
     openRecordVideoModal() {
       EventBus.$emit('openModal', {
         component: 'RecordVideoModal',

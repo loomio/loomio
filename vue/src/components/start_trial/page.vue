@@ -4,7 +4,7 @@ import Records  from '@/shared/services/records';
 import Session  from '@/shared/services/session';
 import Flash   from '@/shared/services/flash';
 import I18n from '@/i18n';
-// import EventBus   from '@/shared/services/event_bus';
+import EventBus   from '@/shared/services/event_bus';
 
 const emailRegex = /[^:,;'"`<>]+?@[^:,;'"`<>]+\.[^:,;'"`<>]+/
 export default
@@ -33,6 +33,7 @@ export default
       this.validate = true;
       if (this.$refs.form.validate()){
         this.group.beforeSaves.forEach(f => f());
+        EventBus.$emit('resetDraft', 'group', null, 'description', I18n.t('group_form.new_description_html'));
         this.loading = true
         Records.remote.post('trials', {
           user_name: this.userName,
