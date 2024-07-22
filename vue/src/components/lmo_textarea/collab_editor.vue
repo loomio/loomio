@@ -148,7 +148,33 @@ export default
           user: {
             name: Session.user().name,
             color: '#f783ac',
+            thumbUrl: Session.user().thumbUrl,
           },
+          render: user => {
+            const cursor = document.createElement('span')
+
+            cursor.classList.add('collaboration-cursor__caret')
+
+            const label = document.createElement('div')
+            label.classList.add('collaboration-cursor__label')
+
+
+            if (user.thumbUrl) {
+              label.classList.add('collaboration-cursor__label-with-avatar')
+              const avatarDiv = document.createElement('div')
+              avatarDiv.classList.add('collaboration-cursor__avatar-div')
+              const avatar = document.createElement('img')
+              avatar.setAttribute('src', user.thumbUrl)
+              avatar.classList.add('collaboration-cursor__avatar')
+              avatarDiv.insertBefore(avatar, null)
+              label.insertBefore(avatarDiv, null)
+            }
+
+            label.insertBefore(document.createTextNode(user.name), null)
+            cursor.insertBefore(label, null)
+
+            return cursor
+          }
         }),
         Video,
         Audio,
@@ -491,29 +517,56 @@ div
 </template>
 <style lang="sass">
 
+.collaboration-cursor__avatar-div
+  width: 18px
+  height: 18px
+  margin-right: 4px
+
+img.collaboration-cursor__avatar
+  height: 100%
+  width: 100%
+  object-fit: cover
+  border-radius: 100%
+
 .collaboration-cursor__caret
-  border-left: 1px solid #0d0d0d
-  border-right: 1px solid #0d0d0d
+  border-left: 1px solid #333
   margin-left: -1px
   margin-right: -1px
   pointer-events: none
-  position: relative
+  position: relative !important
   word-break: normal
   z-index: 100
 
+.theme--dark
+  .collaboration-cursor__caret
+    border-left: 1px solid #ddd
+
+  .collaboration-cursor__label
+    color: #fff
+    background-color: #3338
+    border-color: #eee
+
 .collaboration-cursor__label
-  border-radius: 3px 3px 3px 0
-  color: #0d0d0d
+  opacity: 0.75
+  display: flex
+  align-items: center
+  border-radius: 16px
+  border: 0px solid #333
+  background-color: #ddd5
+  color: #000
   font-size: 12px
   font-style: normal
-  font-weight: 600
+  font-weight: 400
   left: -1px
   line-height: normal
-  padding: 0.1rem 0.3rem
+  padding: 2px 6px
   position: absolute
   top: -1.4em
   user-select: none
   white-space: nowrap
+
+.collaboration-cursor__label-with-avatar
+  padding: 0 4px 0 0 !important
 
 .ProseMirror-widget
   position: absolute
