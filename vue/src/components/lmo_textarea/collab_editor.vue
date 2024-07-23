@@ -552,7 +552,7 @@ img.collaboration-cursor__avatar
   align-items: center
   border-radius: 16px
   border: 0px solid #333
-  background-color: #ddd5
+  background-color: #ddd8
   color: #000
   font-size: 12px
   font-style: normal
