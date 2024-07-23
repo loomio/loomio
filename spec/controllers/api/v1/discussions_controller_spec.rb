@@ -674,7 +674,7 @@ describe API::V1::DiscussionsController do
       it 'allows admins to unpin a thread' do
         sign_in user
         discussion.group.add_admin! user
-        discussion.update(pinned: true)
+        discussion.update(pinned_at: Time.now)
         post :unpin, params: { id: discussion.id }
         expect(discussion.reload.pinned_at).to be nil
       end
