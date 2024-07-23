@@ -70,12 +70,13 @@ export default new class StanceService {
         name: 'common.action.reply',
         icon: 'mdi-reply',
         dock: 1,
-        canPerform() { 
+        canPerform() {
           return stance.castAt &&
           !stance.discardedAt &&
           !stance.revokedAt &&
           !stance.poll().anonymous &&
           stance.poll().showResults() &&
+          stance.poll().discussionId &&
           AbilityService.canAddComment(stance.poll().discussion());
         },
         perform() {
