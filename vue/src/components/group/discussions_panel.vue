@@ -98,21 +98,21 @@ export default
         default: return [this.group.id];
       } })();
 
-      let chain = Records.discussions.collection.chain().find({
-        discardedAt: null,
-        groupId: {$in: this.groupIds},
-        pinnedAt: null
-      }).simplesort('lastActivityAt', true);
-
-      if (this.page === 1 && !this.$route.query.t && !this.$route.query.tag) {
+      if (!this.$route.query.t && !this.$route.query.tag) {
         this.pinnedDiscussions = Records.discussions.collection.chain().find({
           discardedAt: null,
-          groupId: {$in: this.groupIds},
+          groupId: this.group.id,
           pinnedAt: {$ne: null}
         }).simplesort('pinnedAt', true).data();
       } else {
         this.pinnedDiscussions = []
       }
+
+      let chain = Records.discussions.collection.chain().find({
+        discardedAt: null,
+        groupId: {$in: this.groupIds},
+        id: {$nin: this.pinnedDiscussions.map(d => d.id)}
+      }).simplesort('lastActivityAt', true);
 
       switch (this.$route.query.t) {
         case 'unread':
