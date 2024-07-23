@@ -25,7 +25,7 @@
     "@tiptap/extension-code": "^2.4.0",
     "@tiptap/extension-code-block": "^2.4.0",
     "@tiptap/extension-collaboration": "^2.4.0",
-    "@tiptap/extension-collaboration-cursor": "^2.4.0",
+    "@tiptap/extension-collaboration-cursor": "^2.5.5",
     "@tiptap/extension-document": "^2.4.0",
     "@tiptap/extension-dropcursor": "^2.4.0",
     "@tiptap/extension-gapcursor": "^2.4.0",
