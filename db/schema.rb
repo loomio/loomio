@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_16_025329) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_22_071312) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -280,7 +280,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_16_025329) do
     t.integer "first_sequence_id", default: 0, null: false
     t.integer "versions_count", default: 0
     t.integer "closed_polls_count", default: 0, null: false
-    t.boolean "pinned", default: false, null: false
     t.integer "importance", default: 0, null: false
     t.integer "seen_by_count", default: 0, null: false
     t.string "ranges_string"
