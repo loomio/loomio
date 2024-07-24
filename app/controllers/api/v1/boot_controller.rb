@@ -23,7 +23,7 @@ class API::V1::BootController < API::V1::RestfulController
   end
 
   def set_channel_token
-    token = session[:session_id] || SecureRandom.hex
+    token = current_user.secret_token || SecureRandom.hex
     CACHE_REDIS_POOL.with do |client|
       client.set("/current_users/#{token}",
         {name: current_user.name,
