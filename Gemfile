@@ -29,7 +29,7 @@ gem 'browser', '~> 6.0.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.52", require: false
-gem 'image_processing', '~> 1.12'
+gem 'image_processing', '~> 1.13'
 gem "ruby-vips"
 gem "stackprof"
 gem "sentry-ruby"

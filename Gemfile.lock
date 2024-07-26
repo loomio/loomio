@@ -320,7 +320,7 @@ GEM
     icalendar (2.10.2)
       ice_cube (~> 0.16)
     ice_cube (0.17.0)
-    image_processing (1.12.2)
+    image_processing (1.13.0)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     inherited_resources (1.14.0)
@@ -365,7 +365,7 @@ GEM
     marcel (1.0.4)
     maxminddb (0.1.22)
     method_source (1.1.0)
-    mini_magick (4.12.0)
+    mini_magick (4.13.2)
     mini_mime (1.1.5)
     minitest (5.24.1)
     msgpack (1.7.2)
@@ -656,7 +656,7 @@ DEPENDENCIES
   httparty (~> 0.22.0)
   i18n-timezones
   icalendar
-  image_processing (~> 1.12)
+  image_processing (~> 1.13)
   lograge
   maxminddb
   nokogiri
