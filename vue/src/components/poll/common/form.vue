@@ -282,7 +282,7 @@ export default {
     v-btn(v-if="!poll.id" icon variant="text" @click="$emit('setPoll', null)" aria-hidden='true')
       common-icon(name="mdi-close")
 
-  poll-template-info-panel(v-if="pollTemplate" :poll-template="pollTemplate")
+  poll-template-info-panel.mb-4(v-if="pollTemplate" :poll-template="pollTemplate")
 
   v-select(
     v-if="!poll.id && !poll.discussionId"
