@@ -21,7 +21,21 @@ class Audience
     }[name.to_sym] || name
   end
 
+  def translate
+    I18n.t("mentioning.#{name}", default: name)
+  end
+
+  def self.back_translate(word)
+    return '' unless word.present?
+
+    AUDIENCES.each { |audience| break audience if Audience.send(audience).translate == word }
+  end
+
   def self.all
     AUDIENCES
+  end
+
+  def self.all_translated
+    all.map { |audience| send(audience).translate }
   end
 end

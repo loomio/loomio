@@ -326,6 +326,10 @@ en:
       bad_login: "Sorry, that password doesn't match the one we have on file"
       username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
 
+  mentioning:
+    group: "group"
+    discussion: "discussion"
+
   poll:
     error:
       cannot_add_options: Cannot add options to this poll

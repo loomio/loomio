@@ -89,11 +89,21 @@ describe Comment do
   end
 
   describe "#mentioned audiences" do
+    around(:each) do |example|
+      I18n.with_locale(['de', 'fe', 'en'].sample) do
+        example.run
+      end
+    end
+
     it "mentioning an audience should return corresponding audience" do
       audience = Audience.all.sample
-      comment1 = create :comment, body: "Hey, @#{audience}"
+      audience_translated = Audience.send(audience).translate
+
+      comment1 = create :comment, body: "Hey, @#{audience_translated}"
       comment2 = create :comment,
-                        body: "<p>Hey, <span class=\"mention\" data-mention-id=\"#{audience}\" label=\"#{audience}\">@#{audience}</span></p>",
+                        body: "<p>Hey, <span class=\"mention\"
+                          data-mention-id=\"#{audience_translated}\"
+                          label=\"#{audience_translated}\">@#{audience_translated}</span></p>",
                         body_format: "html"
 
       expect(comment1.mentioned_audiences).to eq([audience])

@@ -194,7 +194,9 @@ describe User do
   end
 
   it "should not accept reserved names" do
-    user.name = "    #{Audience.all.sample.titleize} "
-    expect(user.valid?).to eq false
+    I18n.with_locale(['de', 'fe', 'en'].sample) do
+      user.name = "    #{Audience.all_translated.sample.titleize} "
+      expect(user.valid?).to eq false
+    end
   end
 end

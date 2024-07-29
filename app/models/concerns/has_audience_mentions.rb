@@ -10,13 +10,15 @@ module HasAudienceMentions
   end
 
   def mentioned_audiences
-    if text_format == "md"
-      extract_mentioned_screen_names(mentionable_text).uniq
-    else
-      Nokogiri::HTML::fragment(mentionable_text).search("span[data-mention-id]").map do |el|
-        el['data-mention-id']
-      end
-    end.filter { |audience| Audience.all.include? audience }.uniq
+    mentioned = if text_format == "md"
+                  extract_mentioned_screen_names(mentionable_text).uniq
+                else
+                  Nokogiri::HTML::fragment(mentionable_text).search("span[data-mention-id]").map do |el|
+                    el['data-mention-id']
+                  end
+                end.filter { |audience| Audience.all_translated.include? audience }.uniq
+
+    mentioned.map { |audience| Audience.back_translate(audience) }
   end
 
   # audience mentioned in the text, but not yet sent notifications

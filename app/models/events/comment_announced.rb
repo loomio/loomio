@@ -18,9 +18,7 @@ class Events::CommentAnnounced < Event
     recipients_ids = custom_fields['audiences'].inject([]) do |ids, audience|
                       ids |= AnnouncementService.audience_users(eventable,
                                                                 Audience.send(audience).alias,
-                                                                eventable.author,
-                                                                false,
-                                                                false).pluck(:id)
+                                                                eventable.author).pluck(:id)
     end
 
     User.where(id: recipients_ids)

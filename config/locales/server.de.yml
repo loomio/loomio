@@ -171,6 +171,11 @@ de:
       recaptcha: "Wir konnten leider nicht bestätigen, dass du kein Computer bist. Bitte versuche es erneut."
       bad_login: "Sorry, das Passwort passt nicht zu dem in unserer Datei."
       username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
+
+  mentioning:
+    group: "gruppe"
+    discussion: "diskussion"
+
   poll:
     error:
       cannot_add_options: Es können keine Optionen zu dieser Umfrage hinzugefügt werden.

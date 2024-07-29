@@ -391,7 +391,7 @@ class User < ApplicationRecord
   end
 
   def restricted_name
-    return unless Audience.all.include? name&.downcase&.strip
+    return unless Audience.all_translated.include? name&.downcase&.strip
 
     errors.add(:name, I18n.t(:"user.error.restricted_name"))
   end
