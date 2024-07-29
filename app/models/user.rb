@@ -58,7 +58,7 @@ class User < ApplicationRecord
   validates_confirmation_of :password, if: :password_required?
 
   validates_length_of :password, minimum: 8, allow_nil: true
-  validate :forbidden_name
+  validate :restricted_name
 
   has_many :admin_memberships,
            -> { where('memberships.admin': true, revoked_at: nil) },
@@ -390,9 +390,9 @@ class User < ApplicationRecord
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
 
-  def forbidden_name
+  def restricted_name
     return unless Audience.all.include? name&.downcase&.strip
 
-    errors.add(:name, I18n.t(:"user.error.forbidden_name"))
+    errors.add(:name, I18n.t(:"user.error.restricted_name"))
   end
 end
