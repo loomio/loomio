@@ -65,7 +65,7 @@ class UserQuery
 
   def self.invitable_search(model:, actor:, q: nil, limit: 50)
     ids = relations(model: model, actor: actor).map do |rel|
-      rel.active.verified.search_for(q).limit(limit).pluck(:id)
+      rel.active.search_for(q).limit(limit).pluck(:id)
     end.flatten.uniq.compact
     User.where(id: ids).order(:memberships_count).limit(50)
   end

@@ -53,11 +53,8 @@ module Ability::Group
          :manage_membership_requests], ::Group do |group|
       user.is_admin ||
       (
-        Subscription.for(group).is_active? &&
-        !group.has_max_members &&
-        (
-          ((group.members_can_add_members? && group.members.exists?(user.id)) || group.admins.exists?(user.id))
-        )
+        ((group.members_can_add_members? && group.members.exists?(user.id)) ||
+         group.admins.exists?(user.id))
       )
     end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -79,13 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
     t.boolean "migrated_to_document", default: false, null: false
     t.index ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type"
     t.index ["comment_id"], name: "index_attachments_on_comment_id"
-  end
-
-  create_table "blacklisted_passwords", id: :serial, force: :cascade do |t|
-    t.string "string", limit: 255
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.index ["string"], name: "index_blacklisted_passwords_on_string", using: :hash
   end
 
   create_table "blazer_audits", force: :cascade do |t|
@@ -185,7 +178,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
     t.jsonb "attachments", default: [], null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
     t.string "parent_type", null: false
@@ -288,7 +280,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
     t.integer "first_sequence_id", default: 0, null: false
     t.integer "versions_count", default: 0
     t.integer "closed_polls_count", default: 0, null: false
-    t.boolean "pinned", default: false, null: false
     t.integer "importance", default: 0, null: false
     t.integer "seen_by_count", default: 0, null: false
     t.string "ranges_string"
@@ -298,7 +289,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
     t.integer "max_depth", default: 2, null: false
     t.boolean "newest_first", default: false, null: false
     t.datetime "discarded_at", precision: nil
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.integer "members_count"
     t.integer "anonymous_polls_count", default: 0, null: false
     t.string "content_locale"
@@ -469,7 +459,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
     t.boolean "new_threads_newest_first", default: false, null: false
     t.boolean "admins_can_edit_user_content", default: true, null: false
     t.boolean "listed_in_explore", default: false, null: false
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.string "content_locale"
     t.boolean "members_can_add_guests", default: true, null: false
     t.boolean "members_can_delete_comments", default: true, null: false
@@ -772,7 +761,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
     t.jsonb "attachments", default: [], null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.boolean "specified_voters_only", default: false, null: false
     t.integer "notify_on_closing_soon", default: 0, null: false
     t.string "content_locale"
@@ -859,7 +847,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
     t.integer "volume", default: 2, null: false
     t.datetime "accepted_at", precision: nil
     t.string "content_locale"
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.jsonb "link_previews", default: [], null: false
     t.jsonb "option_scores", default: {}, null: false
     t.integer "revoker_id"
@@ -890,6 +877,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
     t.datetime "activated_at", precision: nil
     t.datetime "renews_at", precision: nil
     t.datetime "renewed_at", precision: nil
+    t.boolean "allow_subgroups", default: true, null: false
+    t.boolean "allow_guests", default: true, null: false
     t.index ["owner_id"], name: "index_subscriptions_on_owner_id"
     t.index ["plan"], name: "index_subscriptions_on_plan"
   end
@@ -1028,6 +1017,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_27_225748) do
     t.string "api_key"
     t.integer "deactivator_id"
     t.boolean "autodetect_time_zone", default: true, null: false
+    t.string "email_sha256"
     t.index ["api_key"], name: "index_users_on_api_key"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["email_verified"], name: "index_users_on_email_verified"

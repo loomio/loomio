@@ -69,6 +69,26 @@ describe EmailActionsController do
     end
   end
 
+  describe "mark_notification_as_read" do
+    before do
+      @user = FactoryBot.create(:user)
+      @author = FactoryBot.create(:user)
+      @group = FactoryBot.create(:group)
+      @group.add_member!(@user)
+      @group.add_member!(@author)
+
+      @discussion = FactoryBot.build(:discussion, group: @group)
+      @event = DiscussionService.create(discussion: @discussion, actor: @author)
+      @notification = Notification.create!(event_id: @event.id, user_id: @user.id, viewed: false)
+    end
+
+    it 'marks the discussion as read at event created_at' do
+      expect {
+        get :mark_notification_as_read, params: { id: @notification.id, unsubscribe_token: @user.unsubscribe_token }
+      }.to change { Notification.find(@notification.id).viewed }.from(false).to(true)
+    end
+  end
+
   # TODO: this function works but we need to revise the test and/or the mark_as_read method itself, to be based on discussion and sequence ids instead of time
   describe 'mark_summary_email_as_read' do
     it 'marks content as read' do

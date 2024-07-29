@@ -81,6 +81,8 @@ export default {
       Records.remote.post('announcements', params).then(() => {
         this.reset = !this.reset;
         Flash.success('announcement.flash.success', { count });
+      }).catch(error => {
+        Flash.custom(error.error, 'error', 5000);
       }).finally(() => {
         this.saving = false;
       });
@@ -185,12 +187,13 @@ v-card.strand-members-list
       span ({{discussion.membersCount}})
     v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")
       template(v-slot:prepend)
-        user-avatar.mr-2(:user="reader.user()" :size="24")
+        user-avatar(:user="reader.user()" :size="24")
       v-list-item-title
         span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
         v-chip.mr-1(v-if="discussion.groupId && reader.guest" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
         v-chip.mr-1(v-if="reader.admin" outlined x-small label v-t="'announcement.members_list.thread_admin'")
         v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined x-small label v-t="'announcement.members_list.group_admin'")
+        v-chip.mr-1(v-if="!reader.user().emailVerified" outlined x-small label v-t="'announcement.members_list.has_not_joined_yet'" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
       v-list-item-subtitle
         span(v-if="reader.lastReadAt" v-t="{ path: 'announcement.members_list.last_read_at', args: { time: approximateDate(reader.lastReadAt) } }")
         span(v-else v-t="'announcement.members_list.has_not_read_thread'")

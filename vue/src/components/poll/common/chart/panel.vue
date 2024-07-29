@@ -28,14 +28,9 @@ export default {
   },
 
   created() {
-    this.watchRecords({
-      collections: ['polls'],
-      query: () => {
-        if (Session.isSignedIn()) {
-          Records.users.fetchAnyMissingById(this.poll.decidedVoterIds());
-        }
-      }
-    });
+    if (Session.isSignedIn()) {
+      Records.fetch({path: "polls/"+this.poll.id+"/voters"})
+    }
   }
 };
 
@@ -46,17 +41,21 @@ export default {
   template(v-if="!poll.showResults()")
     v-alert.poll-common-action-panel__results-hidden-until-closed.my-2(
       v-if='!!poll.closingAt && poll.hideResults == "until_closed"'
-      dense outlined type="info"
+      density="dense"
+      variant="tonal"
+      type="info"
     )
       span(v-t="{path: 'poll_common_action_panel.results_hidden_until_closed', args: {poll_type: poll.pollType}}" )
     v-alert.poll-common-action-panel__results-hidden-until-vote.my-2(
       v-if='!!poll.closingAt && !poll.iHaveVoted() && poll.hideResults == "until_vote"'
-      dense outlined type="info"
+      density="dense"
+      variant="tonal"
+      type="info"
     )
       span(v-t="'poll_common_action_panel.results_hidden_until_vote'")
   template(v-else)
     template(v-if="poll.config().has_options")
       poll-common-chart-table(v-if="poll.chartType != 'grid'" :poll="poll")
       poll-common-chart-meeting(v-else :poll="poll")
-  poll-common-percent-voted.text-body-2.pl-2(v-if="poll.pollType != 'count'", :poll="poll")
+  poll-common-percent-voted.text-body-2.pl-2(v-if="poll.pollType != 'count'" :poll="poll")
 </template>

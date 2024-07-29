@@ -23,6 +23,7 @@ export default {
     existingOnly: Boolean,
     includeActor: Boolean,
     excludeMembers: Boolean,
+    hideCount: Boolean,
     excludedAudiences: {
       type: Array,
       default() { return []; }
@@ -132,7 +133,6 @@ export default {
       let chain = Records.users.collection.chain();
 
       chain = chain.find({id: {$in: difference(this.suggestedUserIds, this.excludedUserIds)}});
-      chain = chain.find({emailVerified: true});
 
       chain = chain.find({
         $or: [
@@ -189,6 +189,12 @@ export default {
 
     updateSuggestions() {
       if (this.query && this.canAddGuests) {
+        // seems like a problem with vuteify when query begins with a space
+        if (this.query.trimStart().length < this.query.length){
+          this.query = this.query.trimStart();
+          return;
+        }
+
         const emails = uniq(this.query.match(/[^\s:,;"`<>]+?@[^\s:,;"`<>]+\.[^\s:,;"`<>]+/g) || []);
 
         // catch paste of multiple email addresses, or failure to press enter after an email address
@@ -365,7 +371,7 @@ div.recipients-autocomplete
         @click:close='remove(item.raw)'
         @click='expand(item.raw)')
         span
-          common-icon.mr-1(small :name="item.raw.icon")
+          common-icon.mr-1(size="small" :name="item.raw.icon")
         span {{ item.title }}
       v-chip.chip--select-multi(
         v-else
@@ -380,7 +386,7 @@ div.recipients-autocomplete
             v-if="item.raw.type == 'user'"
             :user="item.raw.user"
             :size="24" no-link)
-          common-icon.mr-2(v-else small :name="item.raw.icon")
+          common-icon.mr-2(v-else size="small" :name="item.raw.icon")
         span {{ item.title }}
         span(v-if="item.raw.type == 'user' && currentUserId == item.value")
           space
@@ -388,15 +394,17 @@ div.recipients-autocomplete
     template(v-slot:item='{props, item}')
       v-list-item.recipients-autocomplete-suggestion(v-bind="props")
         template(v-slot:prepend)
-          user-avatar.mr-1(v-if="item.raw.type == 'user'", :user="item.raw.user", :size="24" no-link)
-          common-icon.mr-1(v-else small :name="item.raw.icon")
-        //- v-list-item-title.recipients-autocomplete-suggestion
-        //-   span {{item.title}}
-        //-   span(v-if="item.raw.type == 'user' && currentUserId == item.raw.id")
-        //-     space
-        //-     span ({{ $t('common.you') }})
+          user-avatar.mr-1(v-if="item.raw.type == 'user'" :user="item.raw.user" :size="24" no-link)
+          common-icon.mr-1(v-else size="small" :name="item.raw.icon")
+        v-list-item-title
+          span {{item.raw.name}}
+          span(v-if="item.raw.type == 'user' && currentUserId == item.raw.id")
+            space
+            span ({{ $t('common.you') }})
+        v-list-item-subtitle(v-if="item.raw.user && item.raw.user.email")
+          span {item.raw.user.email}}
   notifications-count(
-    v-show="recipients.length"
+    v-show="!hideCount && recipients.length"
     :model='model'
     :exclude-members="excludeMembers"
     :include-actor="includeActor")

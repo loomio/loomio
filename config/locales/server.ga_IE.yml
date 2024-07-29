@@ -1,4 +1,7 @@
 ga_IE:
+  discussion_templates:
+    discuss_a_topic:
+      title_placeholder: Cad é an t-ábhar is mian leat a phlé?
   errors:
     404:
       title: Níor aimsíodh é

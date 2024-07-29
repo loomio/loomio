@@ -16,6 +16,10 @@ export default class CommentModel extends BaseModel {
     HasTranslations.apply(this);
   }
 
+  collabKeyParams() {
+    return [this.parentType, this.parentId];
+  }
+
   defaultValues() {
     return {
       discussionId: null,

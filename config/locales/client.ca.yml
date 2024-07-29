@@ -1,7 +1,44 @@
 ---
 ca:
+  start_trial:
+    title: Inicieu una prova gratuïta de Loomio
+    intro: Gràcies pel teu interès en Loomio. Estem encantats d'oferir-vos una prova gratuïta de %{day} dies perquè pugueu veure si Loomio s'adapta bé a la vostra organització.
+    lets_get_started: Comencem!
+    your_name: El teu nom
+    your_email: El teu email
+    we_use_this_to_help: Aquesta informació següent s'utilitza per configurar el vostre grup Loomio i per ajudar-nos a entendre una mica la vostra organització perquè puguem donar-vos millor suport.
+    how_do_you_intend_to_use_loomio: Com penseu utilitzar Loomio?
+    what_decisions_do_you_need_to_make: Quines decisions has de prendre?
+    newsletter_intro: T'agradaria subscriure't al nostre butlletí?
+    newsletter_description: Manteniu-vos al dia sobre noves funcions i històries inspiradores sobre com utilitzen Loomio les organitzacions d'arreu del món
+    subscribe_to_newsletter: Subscriu-te al butlletí de Loomio
+    form_incomplete: Si us plau, omple tots els camps del formulari per continuar
+    success: Èxit!
+    taken_first_step: Heu fet el primer pas cap a la presa de decisions col·laborativa amb Loomio.
+    account_created_for_you: Hem creat un compte d'usuari per a %{email} i un grup a Loomio.
+    please_sign_in_to_continue: Si us plau, inicieu la sessió per continuar.
+    please_complete_this_field: Si us plau, omple aquest camp
+    please_enter_a_valid_email_address: siusplau, introdueixi una adreça de correu electrònic vàlida
+    please_accept_the_terms: Accepteu els termes
+    how_did_you_hear_about_loomio: Com vas saber parlar de Loomio?
+  tasks:
+    tasks: Tasques
+    your_tasks: Les teves tasques
+    permission_denied: No teniu permís per actualitzar aquesta tasca
+    due_date: Data de venciment
+    send_reminder: Envia un recordatori (si no s'ha fet)
+    no_reminder: Cap recordatori
+    on_due_date: En data de venciment
+    1_day_before: 1 dia abans
+    2_day_before: 2 dies abans
+    3_day_before: 3 dies abans
+    7_day_before: 7 dies abans
+    task_placeholder: Introduïu una tasca i @mencioneu algú per assignar-la
+    add_due_date: Afegeix una data de venciment
+    task_updated_done: Tasca marcada com a feta!
+    task_updated_not_done: Tasca marcada com a no feta
+    no_tasks_assigned: No hi ha cap tasca assignada
   templates:
-    try_loomio: Prova Loomio
     template_gallery: Galeria de plantilles
     title_template: Plantilla %{title}
     title_templates: "%{title} Plantilles"
@@ -20,6 +57,7 @@ ca:
     make_a_copy: Fes una còpia
     this_thread_is_a_template: Aquest fil és una plantilla. Feu-ne una còpia si la voleu utilitzar.
     this_is_a_poll_template: Aquesta és una plantilla d'enquesta. Fes una còpia si vols començar a votar.
+    try_loomio: Prova Loomio
     start_a_demo_group: Inicieu un grup de demostració
     start_a_demo: Inicieu una demostració
     demo_group: Grup de demostració
@@ -40,40 +78,47 @@ ca:
     trial_needs_user: Benvingut! Inicieu la sessió per iniciar la vostra prova gratuïta
     this_is_a_template_for_new_threads: Aquesta és una plantilla per a nous fils
     share_a_custom_configuration: Comparteix una configuració personalitzada amb altres persones del teu grup
-  loomio_onboarding:
-    group_progress_card:
-      activities:
-        set_description: Configureu la descripció del grup
-        set_cover_photo: Carregueu una foto de portada i un logotip per al grup
-        start_thread: Obriu un fil de discussió
-        make_decision: Inicieu una decisió
-      learn_more: Més informació a l'ajuda de Loomio
-      celebration_message: Molt bé! El vostre grup ja està a punt!
-      dismiss_this_card: Descarteu aquesta fitxa
+  doctypes:
+    youtube_video: Vídeo de YouTube
+    image: Imatge
+    pdf: PDF
+    excel: Full de càlcul Excel
+    document: Document
+    csv: Fitxer CSV
+    video: Vídeo
+    text: Fitxer de text
+    google_doc: Google Doc
+    google_sheet: Full de càlcul de Google
+    google_drive: Google Drive
+    pull_request: Sol·licitud d'extracció
+    trello_board: Junta de Trello
+    trello_card: Targeta Trello
   plan_names:
     free: Gratuït
+    starter: Arrancador
     trial: Prova
+    pro: Pro
+    pro_nonprofit: Per a sense ànim de lucre
+    community: Comunitat
     small: Petit
     medium: Mitjà
     large: Gran
     monthly: Mensual
     yearly: Anual
-    starter: Arrancador
-    pro: Pro
-    pro_nonprofit: Per a sense ànim de lucre
-    community: Comunitat
   current_plan_button:
     upgrade: Actualitza
+    buy_now: Compra ara
+    is_old_plan: Loomio té nous plans de preus senzills
+    change_plan: Canvia de pla
+    view_plans: Veure plànols
     free_trial: Prova gratuïta. Queden %{days} dies.
     trial_expired: El període de prova gratuït ha vençut. Actualitzeu per continuar utilitzant Loomio.
     tooltip: Tenim molt bons preus! Actualitzeu avui i gaudiu del que Loomio pot oferir al vostre grup.
     was_gift_trial: 'El vostre grup utilitza la versió gratuïta de Loomio des de %{createdDate}. No podem continuar proporcionant el servei gratuït. Actualitzeu per seguir utilitzant Loomio. <a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Read more.</a>'
     was_gift_remaining: Queden %{days} dies.
     was_gift_expired: El vostre pla gratuït a vençut.
-    buy_now: Compra ara
-    is_old_plan: Loomio té nous plans de preus senzills
-    change_plan: Canvia de pla
-    view_plans: Veure plànols
+    was_gift_expired_or_mistake: 'El vostre pla gratuït ara ha caducat. Si creieu que hi ha hagut un error, <a style=''text-decoration: underline'' href=''/contact''>poseu-vos en contacte amb nosaltres</a> .'
+    subscription_ended: La teva subscripció a Loomio ha finalitzat. Per continuar utilitzant Loomio, actualitzeu-lo
   subscription_status:
     plan: Pla
     state: Estat
@@ -83,57 +128,59 @@ ca:
     max_members: Màxim de membres
     expires_at: Venç
     renews_at: Es renova
+    referral_code: Codi de Referència
     chargify_link: Portal de facturació
     referral_code_help: Oferiu un descompte a amics i obtingueu saldo
     manage_payment_details: Gestioneu els mètodes de pagament
-    referral_code: Codi de Referència
     manage_subscription: Gestiona la subscripció
     amount: Import
   loomio_tags:
     all_tags: Totes les etiquetes
     tags: Etiquetes
     apply_tags: Aplica etiquetes
+    new_tag: Nova etiqueta
     name_label: Nom
     color_label: Color
+    card_title: Etiquetes de categoria
     modal_title: Crea una nova etiqueta
     modal_edit_title: Edita l'etiqueta
     modal_destroy_title: Elimina l'etiqueta
-    helptext: Les etiquetes et permeten categoritzar converses i trobar-les fàcilment després.
-    tag_created: Etiqueta desada
-    tags_marked: Discussions marcades '%{name}' a %{groupName}
-    new_tag: Nova etiqueta
-    card_title: Etiquetes de categoria
     destroy_tag: Suprimeix l'etiqueta
     destroy_helptext: Això suprimirà aquesta etiqueta i l'eliminarà de tots els fils del grup. Estàs segur?
+    helptext: Les etiquetes et permeten categoritzar converses i trobar-les fàcilment després.
     discussions_count_singular: "(%{count} fil)"
     discussions_count_plural: "(%{count} fils)"
+    tag_created: Etiqueta desada
     tag_destroyed: S'ha suprimit l'etiqueta
+    tags_marked: Discussions marcades '%{name}' a %{groupName}
     no_tags_present: No s'han trobat cap fil amb aquesta etiqueta! Proveu de seleccionar-ne un altre
     no_tags_in_group: Aquest grup encara no té etiquetes de categoria
     only_admins_can_edit_tags: Ho sentim, només els administradors de %{group} poden crear, canviar el nom o suprimir etiquetes
   poll_types:
     proposal: proposta
+    count: optar a
+    check: control de sentit
     poll: enquesta
     dot_vote: vot limitat
     meeting: enquesta de temps
     ranked_choice: vot preferencial
     score: vot amb puntuació
-    count: optar a
-    check: control de sentit
     question: ronda de preguntes
-  new_poll_types:
-    proposal: proposta
-    count: comptar
-    poll: triar
-    score: puntuar
-    ranked_choice: ordenar
-    dot_vote: assignar
-    meeting: enquesta de temps
   timezones:
     local: Hora local (%{value})
   common:
+    value: "%{value}"
+    admin_menu: Menú d'administració
+    api_docs: Documents de l'API
+    prefix_eg: p. ex. %{val}
+    are_you_sure: Estàs segur?
+    loomio_help: Ajuda Loomio
+    visit_loomio_help: Visiteu l'ajuda de Loomio
+    help_and_guides: Ajuda i guies
     please_wait: Espera siusplau
+    optional: "(Opcional)"
     version: Versió
+    none: Cap
     empty: Buit
     no_results_found: No s'ha trobat cap resultat
     view: Visualitza
@@ -150,8 +197,13 @@ ca:
     time_zone: Zona horària
     local_time: Hora local
     attachments: Adjunts
+    template: Plantilla
+    links: Enllaços
     active_time_ago: Darrera activitat %{time_ago}
     confirm_discard_changes: Voleu descartar els canvis?
+    something_went_wrong: UH oh! Alguna cosa ha anat malament
+    check_for_errors_and_try_again: Si us plau, comproveu si hi ha errors al formulari i torneu-ho a provar
+    please_try_again: Siusplau torna-ho a provar
     time:
       am: AM
       pm: PM
@@ -170,6 +222,7 @@ ca:
     anonymous: Anònim
     required: Obligatori
     email_address: Adreça de correu electrònic
+    minutes: Minuts
     privacy:
       privacy: Privacitat
       public: Públic
@@ -178,6 +231,8 @@ ca:
       private: Privat
       secret: Secret
     selected: Seleccionat
+    today: avui
+    in_x_days: en %{x} dies
     date_range:
       today: Avui
       yesterday: Ahir
@@ -214,8 +269,15 @@ ca:
       unlike: No m'agrada
       update: Actualitza
       cancel: Cancel·la
+      confirm: Confirmeu
+      hide: Amaga
+      unhide: Mostra
       show_more: Mostra'n més
       show_fewer: Mostra'n menys
+      view_count_more: Mostra %{count} més
+      view_count_responses: Mostra %{count} respostes
+      count_more: "%{count} més"
+      count_responses: "%{count} respostes"
       view_all: Mostra-ho tot
       new_thread: Nou fil de discussió
       add_subgroup: Nou subgrup
@@ -231,6 +293,8 @@ ca:
       done: Fet
       start: Comença
       delete: Elimina
+      discard: Descartar
+      restore: Restaurar
       unsubscribe: Cancel·la la subscripció
       subscribe: Subscriu-me
       unignore: Deixa d'ignorar
@@ -245,38 +309,11 @@ ca:
       fork: Bifurcació
       apply: Aplica
       add_people: Afegeix persones
-      hide: Amaga
-      unhide: Mostra
-      view_count_more: Mostra %{count} més
-      view_count_responses: Mostra %{count} respostes
-      count_more: "%{count} més"
-      count_responses: "%{count} respostes"
-      discard: Descartar
-      restore: Restaurar
       zoom: Zoom
       align: Alinear
-      confirm: Confirmeu
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
-    admin_menu: Menú d'administració
-    api_docs: Documents de l'API
-    are_you_sure: Estàs segur?
-    loomio_help: Ajuda Loomio
-    visit_loomio_help: Visiteu l'ajuda de Loomio
-    help_and_guides: Ajuda i guies
-    optional: "(Opcional)"
-    none: Cap
-    template: Plantilla
-    links: Enllaços
-    something_went_wrong: UH oh! Alguna cosa ha anat malament
-    check_for_errors_and_try_again: Si us plau, comproveu si hi ha errors al formulari i torneu-ho a provar
-    please_try_again: Siusplau torna-ho a provar
-    minutes: Minuts
-    today: avui
-    in_x_days: en %{x} dies
-    prefix_eg: p. ex. %{val}
-    value: "%{value}"
   merge_accounts:
     modal:
       title: Combina comptes
@@ -315,15 +352,42 @@ ca:
       inactive: Hi ha un compte desactivat associat a aquesta adreça de correu. Si voleu reactivar el compte, contacteu amb nosaltres.
   error_page:
     forbidden: No teniu permís per realitzar aquesta acció.
+    forbidden_view: No teniu permís per veure això.
     page_not_found: No ho hem pogut trobar. Pot ser que hagi estat suprimit o mogut.
     internal_server_error: Alguna cosa ha anat malament. Torneu-ho a provar.
-    forbidden_view: No teniu permís per veure això.
   verify_email_notice:
     please_verify: 'Gràcies per participar! Comproveu el vostre correu electrònic: hi trobareu un enllaç per a verificar el vostre vot.'
   previous_polls_page:
     heading: Activitats dins de %{name}
     polls_count: Es mostren %{loaded} de %{total} decisions
     search_activities: Busca decisions
+  email_to_group:
+    email_released: Correu electrònic publicat i àlies creat
+    not_available_to_trial_or_demo: Aquesta funció no està disponible per a grups de prova o de demostració
+    review_email: Revisa el correu electrònic
+    add_alias: Afegeix un àlies
+    who_is_the_owner_of_email: Qui és el propietari de %{email}?
+    is_name_the_owner_of_email: "%{name} és el propietari de %{email}?"
+    all_email_will_belong_to_name: Tots els missatges de %{email} s'atribuiran a %{name}
+    email_aliases: Àlies i adreces ignorades
+    belongs_to_name: Pertany a %{name}
+    block_email: Bloquejar l'adreça
+    no_emails_to_release: No hi ha correus electrònics esperant el llançament
+    release_rules: Normes d'alliberament
+    confirm_block: Bloquejar aquesta adreça electrònica?
+    confirm_block_body: Aquest correu electrònic i qualsevol altre correu electrònic de %{sender} s'ignorarà.
+    confirm_delete: Vols suprimir aquest correu electrònic?
+    confirm_delete_body: Aquest correu electrònic se suprimirà. Els futurs correus electrònics de %{sender} no es veuran afectats.
+    unreleased_emails: Correus electrònics no publicats
+    start_a_thread_by_email: Inicieu un fil per correu electrònic
+    send_email_to_start_thread: Envieu un correu electrònic a aquesta adreça per iniciar un fil al vostre grup.
+    subject_body_attachments: L'assumpte del correu electrònic es converteix en el títol del fil, el cos del correu electrònic es converteix en la descripció i qualsevol fitxer adjunt s'adjuntarà al fil.
+    copy_address: Copia l'adreça
+    email_me_this_address: Envieu-me aquesta adreça per correu electrònic
+    email_address_copied_to_clipboard: S'ha copiat l'adreça de correu electrònic al porta-retalls
+    forward_email_to_move_conversation: 'Consell: reenvieu una conversa per correu electrònic a Loomio quan necessiteu prendre una decisió o mantenir un registre.'
+  email_to_group_mailer:
+    your_email_address_to_start_threads_in_group: La teva adreça de correu electrònic per iniciar fils a %{group}
   volume_levels:
     loud: Fort
     normal: Normal
@@ -335,6 +399,9 @@ ca:
     title_label: Títol
     hint: 'Pista per la propera vegada: Subratlleu part del text abans de clicar "fixa".'
   change_volume_form:
+    explain_scope:
+      thread: Això canvia quan rebeu una notificació sobre aquest fil
+      group: Això canvia quan se us notificarà sobre tots els fils del grup
     simple:
       label: Notificacions
       loud: Esteu subscrit
@@ -344,6 +411,7 @@ ca:
       loud_explain: Quan hi hagi alguna activitat
       normal_explain: Quan algú demani la teva atenció
       quiet_explain: No hi ha notificacions
+    aria_label: Canvia el formulari de configuració del correu electrònic
     loud_label: Tota l'activitat
     normal_label: Avisos
     quiet_label: No hi ha correus electrònics
@@ -392,10 +460,6 @@ ca:
         loud: Rebreu correus electrònics sobre tota l'activitat de grups nous.
         normal: Rebreu correus electrònics sobre l'activitat de grups nous.
         quiet: No rebreu cap correu electrònic sobre els grups nous.
-    explain_scope:
-      thread: Això canvia quan rebeu una notificació sobre aquest fil
-      group: Això canvia quan se us notificarà sobre tots els fils del grup
-    aria_label: Canvia el formulari de configuració del correu electrònic
   close_explanation_modal:
     aria_label: Tanca el fil de discussió
     close_thread: Tanca el fil de discussió
@@ -446,6 +510,8 @@ ca:
   thread_nav:
     participants: Participants
   sidebar:
+    new_thread_removed: S'ha eliminat el fil nou
+    new_thread_removed_body: El botó del fil nou s'està eliminant de la barra lateral. Per iniciar un fil nou, primer aneu al vostre grup i, a continuació, feu clic a "Nou fil". Disculpeu el canvi, però és obligatori perquè heu de seleccionar una plantilla quan inicieu un fil.
     threads: Fils
     my_groups: Els meus grups
     other_groups: Altres grups
@@ -453,6 +519,7 @@ ca:
     recent_threads: Fils recents
     invite_only_threads: Fils amb accés per invitació
     direct_threads: Fils directes
+    unread_threads: Fils no llegits (%{count})
     muted_threads: Fils silenciats
     start_group: Nova organització
     start_subgroup: Nou subgrup
@@ -461,19 +528,16 @@ ca:
     start_thread: Nou fil de discussió
     start_decision: Nova decisió
     more_groups: Més grups
-    aria_labels:
-      heading: Barra lateral
-      threads_list: Accions dels fils de discussió
-      groups_list: Grups
-      user_list: Accions dels usuaris
-    unread_threads: Fils no llegits (%{count})
     template_gallery: Galeria de plantilles
     examples_and_templates: Exemples i plantilles
     help_docs: Ajuda documents
     a_detailed_guide_to_loomio: Una guia detallada de Loomio
     talk_to_the_loomio_team: Parla amb l'equip de Loomio
-    new_thread_removed: S'ha eliminat el fil nou
-    new_thread_removed_body: El botó del fil nou s'està eliminant de la barra lateral. Per iniciar un fil nou, primer aneu al vostre grup i, a continuació, feu clic a "Nou fil". Disculpeu el canvi, però és obligatori perquè heu de seleccionar una plantilla quan inicieu un fil.
+    aria_labels:
+      heading: Barra lateral
+      threads_list: Accions dels fils de discussió
+      groups_list: Grups
+      user_list: Accions dels usuaris
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -484,6 +548,12 @@ ca:
     from_comment: Des de l'url d'un comentari
     from_sequence_id: Des de l'url d'un element del fil
     unread: Nou
+  search_modal:
+    all_content: Tot el contingut
+    best_match: Millor coincidència
+    any_tag: Qualsevol etiqueta
+    all_subgroups: Tots els subgrups
+    parent_only: Només pares
   navbar:
     search_all_threads: Busca entre tots els fils
     search_threads: Busca fils dins de %{name}
@@ -516,15 +586,15 @@ ca:
     unpin_sidebar: Deixa de fixar la barra lateral
     enable_beta_features: Hablilta les funcions beta
     disable_beta_features: Inhabilita les funcions beta
+    enable_dark_mode: Activa el mode fosc
+    disable_dark_mode: Desactiva el mode fosc
     button_label: Menú d'usuari
     edit_profile: Edita el perfil
     email_settings: Preferències de notificacions
     help: Ajuda
     contact_site_name: Contacta %{site_name}
-    sign_out: Tanca la sessió
-    enable_dark_mode: Activa el mode fosc
-    disable_dark_mode: Desactiva el mode fosc
     contact_support: Contacte de suport
+    sign_out: Tanca la sessió
     beta_collab: "\U0001F9EA Funcions beta activades!"
     outcomes: Resultats
   membership_card:
@@ -535,9 +605,10 @@ ca:
     invite_to_group: Convida al grup
     invite_to_discussion: Convida al fil
     invite_to_poll: Convida a la votació
-    invitations: Invitacions
     invite_to_wip_poll: Convida a donar comentaris
+    invitations: Invitacions
   membership_dropdown:
+    set_name_and_username: Estableix nom i nom d'usuari
     set_title: Estableix un títol
     resend: Reenvia la invitació
     invitation_resent: S'ha convidat de nou
@@ -548,17 +619,17 @@ ca:
       group: Eliminar del grup
       poll: Eliminar del %{pollType}
     cancel_invitation: Cancel·la la invitació
-    set_name_and_username: Estableix nom i nom d'usuari
   notification_models:
     discussion: 'fil:'
     comment: Comenta a
-    outcome: 'resultat:'
     poll: 'enquesta:'
+    outcome: 'resultat:'
     stance: 'votar:'
   notifications:
     header: Notificacions
     no_notifications: No teniu cap notificació
     with_title:
+      unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       comment_replied_to: "%{actor} t'ha respost a: %{title}"
       discussion_announced: "%{actor} t'ha convidat al fil: %{title}"
       discussion_edited: "%{actor} ha editat el context del fil: %{title}"
@@ -594,8 +665,8 @@ ca:
       user_added_to_group: "%{actor} t'ha afegit al grup: %{title}"
       user_mentioned: "%{actor} t'ha mencionat a: %{title}"
       user_reminded: "%{actor} us recorda que voteu a: %{title}"
-      unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
     without_title:
+      unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       discussion_announced: "%{actor} t'ha convidat a un fil"
       discussion_edited: "%{actor} ha editat el context del fil"
       discussion_closed: "%{actor} ha tancat el fil"
@@ -630,7 +701,6 @@ ca:
       stance_created_option: "%{actor} ha votat %{option}"
       user_mentioned: "%{actor} t'ha mencionat"
       user_reminded: "%{actor} us recorda que heu de votar"
-      unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
     hints:
       poll_closing_soon: Ara és un bon moment per votar, canviar d'opinió o animar els altres a participar.
       poll_closing_soon_author: És possible que vulgueu recordar a la gent que voten o allargar el termini.
@@ -642,11 +712,41 @@ ca:
     moved: S'estan movent els comentaris, aquesta acció podria tardar uns minuts
     move_to_existing_thread: Mou a un fil ja existent
     start_new_thread: O crea un nou fil
+  thread_template:
+    browse_public_templates: Exploreu la galeria de plantilles
+    thread_template_settings: Configuració de la plantilla de fil
+    start_a_new_thread: Inicieu un fil nou
+    thread_template_saved: S'ha desat la plantilla del fil
+    these_are_public_templates: Aquestes plantilles estan disponibles perquè les copieu o modifiqueu per adaptar-les al vostre grup
+    these_are_templates: Aquestes són les plantilles de fil del vostre grup. Les plantilles us guien a través dels processos comuns de presa de decisions.
+    default_title_label: Títol per defecte
+    default_title_hint: Ompliu prèviament el camp del títol amb text editable. Això és opcional; deixeu-lo en blanc si no esteu segurs.
+    title_placeholder_label: Exemple de títol
+    title_placeholder_hint: Un exemple per mostrar al fons del camp del títol
+    title_placeholder_placeholder: Per exemple, aquest és el que sembla el text de fons
+    example_description_label: Exemple de descripció
+    example_description_placeholder: Proporcioneu una plantilla que la gent pugui utilitzar per iniciar un fil
+    hidden_templates: Plantilles amagades
+    confirm_delete: Esteu segur que voleu suprimir permanentment aquesta plantilla de fil? No se suprimirà cap fil com a resultat d'això.
+    add_proposal_or_poll_template: Afegeix una proposta o una plantilla d'enquesta
+    recommended_proposal_or_poll_templates: Plantilles de proposta o enquesta recomanades
+    decision_templates: Plantilles de decisió
+    decision_templates_help: Seleccioneu qualsevol proposta o plantilla d'enquesta que ajudin a completar aquest procés.
+    share_in_template_gallery: Comparteix aquesta plantilla a la galeria de plantilles pública
   discussion_form:
+    thread_templates: Plantilles de fil
+    new_thread_template: Nova plantilla de fil
+    edit_thread_template: Edita la plantilla del fil
+    blank: En blanc
+    blank_subtitle: Inicia una discussió i mira on et porta
+    new_template: Nova plantilla
+    new_template_subtitle: Crea un exemple que altres puguin copiar
+    to: A
     direct_thread: Fil directe
     invite_only_thread: Fil amb accés per invitació
     none_direct_thread: Fil directe (sense grup)
     none_invite_only_thread: Fil amb accés per invitació (sense grup)
+    change_log_placeholder: Opcionalment, descriu els vostres canvis. Aquest missatge s'afegirà al fil.
     change_log_label: Què ha canviat?
     invite: Convida
     aria_label: Formulari del fil de discussió
@@ -656,6 +756,7 @@ ca:
       updated: Fil actualitzat
       forked: S'ha creat la bifurcació del fil
     new_discussion_title: Obriu un fil de discussió nou
+    new_thread_from_template: 'Fil nou: %{process_name}'
     moving_items_title: Mou els elements a un fil nou
     edit_discussion_title: Edita el fil
     group_label: Grup
@@ -663,28 +764,19 @@ ca:
     title_label: Títol
     title_placeholder: Quin és el tema que voleu discutir?
     context_label: Context
-    privacy_label: Privacitat
-    privacy_organisation: El fil serà visible pels membres de %{parent} i pels membres de %{group}.
-    notify_group: Notifica al grup
-    thread_templates: Plantilles de fil
-    new_thread_template: Nova plantilla de fil
-    edit_thread_template: Edita la plantilla del fil
-    blank: En blanc
-    blank_subtitle: Inicia una discussió i mira on et porta
-    new_template: Nova plantilla
-    new_template_subtitle: Crea un exemple que altres puguin copiar
-    to: A
-    change_log_placeholder: Opcionalment, descriu els vostres canvis. Aquest missatge s'afegirà al fil.
-    new_thread_from_template: 'Fil nou: %{process_name}'
     context_placeholder: Proporcioneu una mica de context per a aquesta discussió, perquè la gent sàpiga com participar
+    privacy_label: Privacitat
     privacy_public: Qualsevol persona pot veure aquest fil si té l'enllaç
     privacy_private: Només els membres del grup poden veure aquest fil
+    privacy_organisation: El fil serà visible pels membres de %{parent} i pels membres de %{group}.
     fork_notice: Es crearà un fil nou amb %{count} elements de %{title}
+    notify_group: Notifica al grup
   announcement:
     send_discussion: Envia fil
     send_group: Convida gent a %{name}
     send_poll: Envia %{type}
     send_outcome: Envia resultat
+    cannot_reveal_when_anonymous: Ho sentim, no podem revelar qui ha votat o no en una enquesta anònima.
     discussion_notification_history: Historial de notificacions del fil
     group_notification_history: Historial d'invitacions del grup
     poll_notification_history: Historial de notificacions de les enquestes
@@ -699,89 +791,6 @@ ca:
     history_error: Alguna cosa ha anat malament! No es pot carregar l'historial
     inviting_guests_to_thread: Els visitants no pertanyen al vostre grup i només tenen accés a aquest fil
     select_groups: Selecciona grups
-    audiences:
-      discussion_group: Tothom que sigui part del fil
-      voters: Tothom que estigui convidat a la votació
-      decided_voters: Tothom que ja hagi votat
-      undecided_voters: Votants indecisos
-      non_voters: 'Encara no s''ha convidat als membres de %{name} '
-      group: "%{name}"
-      everyone_in_the_group: Tothom del grup
-    form:
-      too_many_invitations: 'S''ha excedit el nombre d''invitacions <a href="%{upgradeUrl}" target="_blank">Millora </a>
-
-        '
-      no_invitations_remaining: |
-        <p>Heu utilitzat totes les %{maxMembers} invitacions disponibles per aquest grup</p>
-        <p>Si voleu continuar <a href="%{upgradeUrl}" target="_blank">escolliu un pla</a> per seguir col·laborant a Loomio.</p>
-      who_to_invite: A qui voleu convidar?
-      invitation_message_placeholder: Missatge que s'inclourà al correu electrònic d'invitació. (opcional)
-      invitation_message_label: Missatge
-      group_announced:
-        title: Convida al grup
-        helptext: A qui voleu convidar al grup?
-      discussion_announced:
-        title: Convida al fil
-        helptext: A qui voleu convidar al fil?
-        notify_helptext: A qui voleu notificar sobre aquest fil?
-      discussion_edited:
-        title: Notifica les edicions
-        helptext: A qui voleu notificar aquesta actualització? (opcional)
-      poll_announced:
-        title: Convida a la votació
-        helptext: A qui voleu convidar a la votació?
-      poll_reminder:
-        message_label: Missatge
-        title: Recorda votar
-        helptext: A qui li agradaria recordar per votar?
-        message_placeholder: Missatge opcional per dir a la gent per què han de votar
-      wip_poll_reminder:
-        message_label: Missatge
-        title: Recorda per donar comentaris
-        helptext: A qui us agradaria recordar per donar comentaris?
-        message_placeholder: Missatge opcional per incloure al correu electrònic de notificació
-      poll_edited:
-        title: Notifica les edicions
-        helptext: A qui voleu notificar aquesta actualització?
-      outcome_announced:
-        title: Comparteix el resultat
-        helptext: Resumiu els resultats del procés, incloent acords als que s'ha arribat o qüestions que hagin sortit a la llum.
-      anyone_can_participate: Tothom que tingui l'enllaç pot participar
-      placeholder: Podeu introduir noms o adreces de correu
-      notified_empty: Encara no heu seleccionat ningú
-      notified: Es notificarà a %{notified} .
-      notified_singular: Es notificarà 1 persona.
-      notified_none: No es notificarà a ningú.
-      visible_to_group: Tothom dins de %{group} podrà veure aquest fil.
-      visible_to_guests: Només usuaris convidats podran veure aquest fil
-      group_has_no_members_yet: Sou l'únic membre del vostre grup. És possible que vulgueu convidar algunes persones al vostre grup abans d'iniciar un fil o una decisió.
-      invite_people_to_evaluate_loomio: Convida algunes persones al teu grup de Loomio per prendre una decisió junts
-      invitations_remaining: Queden %{count} invitacions. <a href="%{upgradeUrl}" target="_blank">Actualitza</a>
-      invitation_message_default: He creat aquest grup de Loomio per ajudar-nos a prendre decisions junts. Si us plau, accepteu la meva invitació. Només triga un minut a unir-se. Gràcies.
-      wip_poll_announced:
-        title: Convida a donar comentaris
-        helptext: A qui us agradaria convidar a fer comentaris?
-      type_or_paste_email_addresses_to_invite: Escriviu o enganxeu les adreces de correu electrònic per convidar
-      single_notification: S'enviarà 1 notificació.
-      multiple_notifications: S'enviaran %{notified} notificacions.
-      added: S'afegiran %{count} persones.
-      added_singular: S'afegirà 1 persona.
-      added_none: No s'afegirà ningú.
-      group_title: "%{name} (%{count} persones)"
-      click_group_to_see_individuals: Feu clic al grup per veure les persones
-    members_list:
-      title: Compartit amb
-      last_notified: Notificat
-      not_notified: Encara no s'ha notificat
-      no_members: Encara no ho heu compartit amb ningú.
-      group_admin: Admin del grup
-      thread_admin: Admin del fil
-      last_read_at: Darrera visualització %{time}
-      has_not_read_thread: No ha visualitzat el fil
-    group_form:
-      search_placeholder: Busca gent...
-      modal_title: Selecciona membres del grup
-    cannot_reveal_when_anonymous: Ho sentim, no podem revelar qui ha votat o no en una enquesta anònima.
     search_by_name_or_email: Cerqueu per nom o introduïu correus electrònics per convidar
     search_by_name: Cerca persones pel nom
     only_admins_can_announce: Només els administradors poden notificar a tot el grup
@@ -802,6 +811,90 @@ ca:
     outcome_updated: "%{name} ha editat un resultat i ha notificat a %{length} persones:"
     poll_closing_soon: 'El recordatori de tancament de l''enquesta de %{name} va notificar a %{length} persones:'
     poll_reminder: "%{name} va recordar a %{length} persones que votessin:"
+    audiences:
+      group: "%{name}"
+      everyone_in_the_group: Tothom del grup
+      discussion_group: Tothom que sigui part del fil
+      voters: Tothom que estigui convidat a la votació
+      decided_voters: Tothom que ja hagi votat
+      undecided_voters: Votants indecisos
+      non_voters: 'Encara no s''ha convidat als membres de %{name} '
+    form:
+      group_has_no_members_yet: Sou l'únic membre del vostre grup. És possible que vulgueu convidar algunes persones al vostre grup abans d'iniciar un fil o una decisió.
+      invite_people_to_evaluate_loomio: Convida algunes persones al teu grup de Loomio per prendre una decisió junts
+      too_many_invitations: 'S''ha excedit el nombre d''invitacions <a href="%{upgradeUrl}" target="_blank">Millora </a>
+
+        '
+      no_invitations_remaining: |
+        <p>Heu utilitzat totes les %{maxMembers} invitacions disponibles per aquest grup</p>
+        <p>Si voleu continuar <a href="%{upgradeUrl}" target="_blank">escolliu un pla</a> per seguir col·laborant a Loomio.</p>
+      invitations_remaining: Queden %{count} invitacions. <a href="%{upgradeUrl}" target="_blank">Actualitza</a>
+      who_to_invite: A qui voleu convidar?
+      invitation_message_placeholder: Missatge que s'inclourà al correu electrònic d'invitació. (opcional)
+      invitation_message_label: Missatge
+      invitation_message_default: He creat aquest grup de Loomio per ajudar-nos a prendre decisions junts. Si us plau, accepteu la meva invitació. Només triga un minut a unir-se. Gràcies.
+      group_announced:
+        title: Convida al grup
+        helptext: A qui voleu convidar al grup?
+      discussion_announced:
+        title: Convida al fil
+        helptext: A qui voleu convidar al fil?
+        notify_helptext: A qui voleu notificar sobre aquest fil?
+      discussion_edited:
+        title: Notifica les edicions
+        helptext: A qui voleu notificar aquesta actualització? (opcional)
+      poll_announced:
+        title: Convida a la votació
+        helptext: A qui voleu convidar a la votació?
+      wip_poll_announced:
+        title: Convida a donar comentaris
+        helptext: A qui us agradaria convidar a fer comentaris?
+      poll_reminder:
+        title: Recorda votar
+        helptext: A qui li agradaria recordar per votar?
+        message_label: Missatge
+        message_placeholder: Missatge opcional per dir a la gent per què han de votar
+      wip_poll_reminder:
+        title: Recorda per donar comentaris
+        helptext: A qui us agradaria recordar per donar comentaris?
+        message_label: Missatge
+        message_placeholder: Missatge opcional per incloure al correu electrònic de notificació
+      poll_edited:
+        title: Notifica les edicions
+        helptext: A qui voleu notificar aquesta actualització?
+      outcome_announced:
+        title: Comparteix el resultat
+        helptext: Resumiu els resultats del procés, incloent acords als que s'ha arribat o qüestions que hagin sortit a la llum.
+      anyone_can_participate: Tothom que tingui l'enllaç pot participar
+      placeholder: Podeu introduir noms o adreces de correu
+      type_or_paste_email_addresses_to_invite: Escriviu o enganxeu les adreces de correu electrònic per convidar
+      notified_empty: Encara no heu seleccionat ningú
+      single_notification: S'enviarà 1 notificació.
+      multiple_notifications: S'enviaran %{notified} notificacions.
+      notified: Es notificarà a %{notified} .
+      notified_singular: Es notificarà 1 persona.
+      notified_none: No es notificarà a ningú.
+      added: S'afegiran %{count} persones.
+      added_singular: S'afegirà 1 persona.
+      added_none: No s'afegirà ningú.
+      group_title: "%{name} (%{count} persones)"
+      visible_to_group: Tothom dins de %{group} podrà veure aquest fil.
+      visible_to_guests: Només usuaris convidats podran veure aquest fil
+      click_group_to_see_individuals: Feu clic al grup per veure les persones
+    members_list:
+      title: Compartit amb
+      last_notified: Notificat
+      not_notified: Encara no s'ha notificat
+      no_members: Encara no ho heu compartit amb ningú.
+      group_admin: Admin del grup
+      thread_admin: Admin del fil
+      last_read_at: Darrera visualització %{time}
+      has_not_read_thread: No ha visualitzat el fil
+      has_not_joined_yet: Encara no s'ha unit
+      has_not_joined_yet_hint: Aquest usuari no ha acceptat la seva invitació per unir-se a Loomio i no rebrà més notificacions fins que ho faci
+    group_form:
+      search_placeholder: Busca gent...
+      modal_title: Selecciona membres del grup
     flash:
       success: "%{count} notificacions enviades"
   action_dock:
@@ -819,6 +912,7 @@ ca:
     translate_thread: Tradueix el context
     edit_poll: Edita l'enquesta
     edit_poll_type: Edita %{pollType}
+    new_poll_type: Nou %{pollType}
     move_items: Mou elements
     announce_poll: Convida gent a la votació
     announce_poll_active: "(Encara no s'ha convidat a ningú)"
@@ -840,7 +934,9 @@ ca:
     show_notifications: Mostra les notificacions
     history: Historial
     pin_thread: Fixa el fil
+    unpin_thread: Desconnecteu el fil
     pin_event: Fixa a la línia de temps
+    unpin_event: Desenganxa de la línia de temps
     comment_copied: S'ha copiat l'URL del comentari al porta-retalls
     move_thread: Mou al grup
     poll_copied: S'ha copiat l'URL de la decisió al porta-retalls
@@ -853,13 +949,14 @@ ca:
     notification_history: Historial de notificacions
     move_item: Mou l'element
     add_poll_to_thread: Afegeix al fil
-    new_poll_type: Nou %{pollType}
-    unpin_thread: Desconnecteu el fil
-    unpin_event: Desenganxa de la línia de temps
     count_members: "%{count} membres"
     count_voters: "%{count} votants"
   formatting:
     formatting_tools: Eines de formatació de text
+    colors: Colors
+    highlight: Ressaltar
+    alignment: Alineació
+    lists: Llistes
     expand: Mostra més eines de formatació
     collapse: Mostra menys eines de formatació
     bold: Negreta
@@ -884,6 +981,7 @@ ca:
     bullet_list: Llista
     number_list: Llista numerada
     check_list: Llista de verificació
+    task_list: Llista de tasques
     reset: Reinicia
     text_color: Color de la lletra
     background_color: Color del fons
@@ -903,11 +1001,6 @@ ca:
     edit_markdown: Edita Markdown
     markdown_confirm: Part de la formatació podria perdre's en el moment de convertir contingut en "wysiwyg" a "markdown".
     upload_failed: No s'ha pogut pujar
-    colors: Colors
-    highlight: Ressaltar
-    alignment: Alineació
-    lists: Llistes
-    task_list: Llista de tasques
   cover_photo_form:
     heading: Nova foto de portada
     upload_link: Penja una foto de portada nova
@@ -940,6 +1033,7 @@ ca:
     comment_header: Edicions dels comentaris
     poll_header: Edicions de les enquestes
     outcome_header: Edicions dels resultats
+    stance_header: Vota edicions
     started_by: Iniciat per <strong>%{name}</strong>
     edited_by: Editat per <strong>%{name}</strong>
     edit_by: Editat per %{name} · %{date}
@@ -952,13 +1046,12 @@ ca:
     closing_at_changed: Es tancarà a %{time}
     private_changed: Privacitat establerta en %{private}
     group_id_changed: S'ha mogut a %{name}
-    stance_header: Vota edicions
   reactions_input:
     add_your_reaction: Afegiu la vostra reacció
   reactions_display:
+    more_reactions: "%{count} més"
     you: Tu
     you_and_name: Tu i %{name}
-    more_reactions: "%{count} més"
     you_and_name_and_count_more: Tu, %{name} i %{count} més
     name_and_count_more: "%{name} i %{count} més"
   context_panel:
@@ -967,19 +1060,22 @@ ca:
       closed: S'ha tancat aquest fil. Ja no apareixerà a la consola i es catalogarà com a "tancat" a la pàgina del grup
   delete_group_modal:
     title: Elimina el grup
-    confirm: Escriviu '%{name}' per confirmar que voleu eliminar aquest grup
-    success: S'ha arxivat aquest grup, s'eliminarà de forma permanent en dues setmanes.
     subgroup_title: Esborra el subgrup
     parent_body: "<h2>Aquest és el vostre grup pare, no un subgrup!</h2><br> Si suprimiu això, tots els subgrups també se suprimiran permanentment. La teva subscripció a Loomio també es cancel·larà. És molt recomanable exportar les dades del vostre grup i descarregar manualment els fitxers importants abans de fer-ho. Esteu segur que voleu continuar?"
     body: Esteu segur que voleu suprimir aquest subgrup? Tots els fils, enquestes, fitxers i altres continguts del grup se suprimiran permanentment. Es recomana exportar les dades del grup i descarregar manualment els fitxers importants abans de continuar.
+    confirm: Escriviu '%{name}' per confirmar que voleu eliminar aquest grup
+    success: S'ha arxivat aquest grup, s'eliminarà de forma permanent en dues setmanes.
   group_page:
     stats: Estadístiques del grup
     threads: Fils
     polls: Enquestes
+    decisions: Decisions
     members: Membres
     files: FItxers
     settings: Configuració
     subgroups: Subgrups
+    show_opened: "%{count} obert"
+    show_closed: "%{count} Tancat"
     no_threads_here: Aquí no hi ha cap fil per visualitzar
     search_threads: Busca fils...
     private_threads: Heu de ser membre per visualitzar els fils privats d'aquest grup
@@ -1001,6 +1097,8 @@ ca:
     discussions_placeholder: Un fil de discussió és el lloc on tothom pot discutir un tema i prendre decisions junts.
     members_placeholder: 'Esteu sol: convideu usuaris a unir-se.'
     member_options: Opcions de membres
+    see_all_members: Mostra tots els membres de %{count}
+    pending_invitations: "+ %{count} pendents"
     subgroups_placeholder: Els sub-grups ofereixen un espai propi per als equips, i són una forma de notificar només als usuaris que calgui.
     invite_people: Convida
     visibility_label: Visibilitat
@@ -1038,11 +1136,7 @@ ca:
       parent_members: 'Privacitat: Aquest grup és visible pels membres de %{parentGroupName} i els membres de %{groupName}'
       public: 'Privacitat: Aquest grup és visible a internet'
       aria_label: 'Privacitat del grup: %{privacy}'
-    decisions: Decisions
-    show_opened: "%{count} obert"
-    show_closed: "%{count} Tancat"
-    see_all_members: Mostra tots els membres de %{count}
-    pending_invitations: "+ %{count} pendents"
+    participation_report: Informe de participació
   export_data_modal:
     title: Com voleu utilitzar les vostres dades?
     as_csv: Obre en un full de càlcul
@@ -1065,27 +1159,44 @@ ca:
     submit: Sí, desactiva aquest grup
   group_form:
     thread_defaults_help: Configuració predeterminada per fils nous
+    click_to_change_image: Feu clic per canviar la imatge de portada (4x1) o el logotip (1x1)
+    change_cover_image: canviar la imatge de la portada
+    change_logo: canviar el logotip
+    permissions_explaination: 'Hi ha dos nivells de pertinença que una persona pot tenir a un grup: administrador i membre. Els administradors poden editar la configuració del grup, convertir altres persones en administradors i realitzar totes les accions que s''indiquen a continuació.'
     aria_label: Formulari de grup
+    parent_group: Grup de pares
     new_organisation: Nova organització
     new_group: Nou grup
     new_subgroup: Nou subgrup
+    new_group_explainer: Crea un grup de Loomio nou per a la teva organització
+    new_subgroup_explainer: 'Inicieu un subgrup dins d''un grup existent: un espai privat per a un equip de persones de l''organització'
     start_group_heading: Crea un grup
     start_subgroup_heading: Crea un subgrup
     edit_group_heading: Edita la configuració del grup
     edit_subgroup_heading: Edita la configuració del subgrup
+    group_settings: Configuració del grup
+    subgroup_settings: Configuració del subgrup
     group_name: Nom del grup
+    subgroup_name: Nom del subgrup
+    organization_name: Nom de l'organització
     handle: Gestionar
+    group_handle_placeholder: 'S''utilitza a l''URL del vostre grup: %{host}/%{handle}'
     start_organization_heading: Nova organització
     edit_organization_heading: Edita la configuració de l'organització
     group_name_placeholder: Quin és el nom del vostre grup?
+    subgroup_name_placeholder: Com es diu el vostre subgrup?
     organization_name_placeholder: Quin és el nom de la vostra organització?
     description: Descripció
     description_placeholder: Descriviu el propòsit del grup per tal de que els membres el puguin conèixer.
+    new_description_placeholder: Per què estàs provant Loomio? Quines decisions heu de prendre junts?
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Com penseu utilitzar Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Per què és important per al vostre grup?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Quines decisions has de prendre?</h3><p></p>
+    secret_by_default: Només podran accedir al vostre grup aquells que estiguin convidats a unir-se. Podeu canviar-ho més endavant.
     privacy_statement:
       public_on_web: Nom, descripció i adjunts al context del grup seran visibles al públic.
       private_to_group: El nom i la descripció només seran visible pels membres.
       private_to_parent_members: El nom i la descripció només seran visibles pels membres de %{parent}
     privacy: Privacitat
+    group_privacy_is_open_description: Cotitzat públicament. Tots els fils són públics.
     group_privacy_is_closed_description: Privat. Tothom que tingui l'enllaç pot demanar unir-s'hi. Tots els fils són privats
     group_privacy_is_closed_public_threads_description: Privat. Tothom que tingui l'enllaç pot demanar unir-s'hi. Els fils poden ser públics o privats.
     group_privacy_is_secret_description: Només usuaris convidats poden trobar el grup. Tots els fils són privats
@@ -1103,6 +1214,7 @@ ca:
     how_do_people_join: Com s'uneix la gent?
     membership_granted_upon_request: Tothom es pot unir al grup.
     membership_granted_upon_approval: Tothom pot sol·licitar unir-se però és necessària l'aprovació.
+    membership_granted_upon_invitation: Només amb invitació.
     membership_granted_upon_approval_secret_parent: 'Tothom de  %{parent}  pot demanar d''unir-se al grup<strong>enviant una sol·licitud</strong>  '
     permissions: Permisos
     thread_privacy: Privacitat dels fils
@@ -1111,32 +1223,6 @@ ca:
     public_or_private_threads: Permet fils públics i privats
     private_threads: Només els membres poden veure els fils
     allow_public_threads: Permet els fils públics en aquest grup.
-    submit_start_group: Crea el grup
-    submit_start_subgroup: Crea el subgrup
-    submit_update: Actualitza la configuració
-    messages:
-      group_created: Grup creat
-      group_updated: Grup actualitzat
-    upload_logo: Penja un logo
-    upload_cover_photo: Penja una foto de portada
-    click_to_change_image: Feu clic per canviar la imatge de portada (4x1) o el logotip (1x1)
-    change_cover_image: canviar la imatge de la portada
-    change_logo: canviar el logotip
-    permissions_explaination: 'Hi ha dos nivells de pertinença que una persona pot tenir a un grup: administrador i membre. Els administradors poden editar la configuració del grup, convertir altres persones en administradors i realitzar totes les accions que s''indiquen a continuació.'
-    parent_group: Grup de pares
-    new_group_explainer: Crea un grup de Loomio nou per a la teva organització
-    new_subgroup_explainer: 'Inicieu un subgrup dins d''un grup existent: un espai privat per a un equip de persones de l''organització'
-    group_settings: Configuració del grup
-    subgroup_settings: Configuració del subgrup
-    subgroup_name: Nom del subgrup
-    organization_name: Nom de l'organització
-    group_handle_placeholder: 'S''utilitza a l''URL del vostre grup: %{host}/%{handle}'
-    subgroup_name_placeholder: Com es diu el vostre subgrup?
-    new_description_placeholder: Per què estàs provant Loomio? Quines decisions heu de prendre junts?
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">Com penseu utilitzar Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> Per què és important per al vostre grup?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> Quines decisions has de prendre?</h3><p></p>
-    secret_by_default: Només podran accedir al vostre grup aquells que estiguin convidats a unir-se. Podeu canviar-ho més endavant.
-    group_privacy_is_open_description: Cotitzat públicament. Tots els fils són públics.
-    membership_granted_upon_invitation: Només amb invitació.
     parent_members_can_see_discussions: Els membres de %{parent} poden veure els fils privats
     parent_members_can_see_discussions_help: Permet als membres del grup principal veure, però no participar-hi, fils i enquestes dins d'aquest grup
     members_can_announce: Els membres poden notificar a tots els membres del grup
@@ -1159,6 +1245,14 @@ ca:
     members_can_raise_motions_help: Permet als membres iniciar enquestes i propostes dins de les discussions o del grup
     admins_can_edit_user_content: Els administradors poden editar els comentaris dels membres
     admins_can_edit_user_content_help: Permet als administradors editar contingut escrit pels membres
+    submit_start_group: Crea el grup
+    submit_start_subgroup: Crea el subgrup
+    submit_update: Actualitza la configuració
+    messages:
+      group_created: Grup creat
+      group_updated: Grup actualitzat
+    upload_logo: Penja un logo
+    upload_cover_photo: Penja una foto de portada
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -1218,9 +1312,9 @@ ca:
     done: Fet
     messages:
       invitation_sent: Invitació enviada.
+      invitations_sent: "%{count} invitacions enviades."
       no_invitations: Verifiqueu que l'adreça de correu és correcta i torneu-ho a provar.
       max_invitations: Si voleu enviar més de 100 invitacions, utilitzeu un enllaç d'equip.
-      invitations_sent: "%{count} invitacions enviades."
   memberships_page:
     members: Membres
     name_label: Nom
@@ -1243,10 +1337,10 @@ ca:
     membership:
       title: Elimina un membre
       message: Esteu segur que voleu eliminar a %{name}?
-      flash: Membre eliminat.
-      submit: Elimina un membre
       impact_for_subgroup: Això eliminarà el seu accés al subgrup (inclosos fils i enquestes), però continuaran sent membres del grup principal.
       impact_for_group: Això eliminarà el seu accés al grup (inclosos fils i enquestes) i qualsevol subgrup.
+      flash: Membre eliminat.
+      submit: Elimina un membre
   memberships_panel:
     add_coordinator: Converteix en admin
     remove_coordinator: Degradar admin
@@ -1258,6 +1352,9 @@ ca:
     title_label: Títol
     title_placeholder: 'Per exemple: "coordinador" o "moderador"'
     updated: S'ha actualitzat el títol de membre
+  user_name_modal:
+    user_name_updated: Nom d'usuari actualitzat
+    set_user_name: Estableix el nom d'usuari
   user_page:
     contact_user: Contacta %{name}
     location_field: 'Ubicació:  %{value}'
@@ -1271,11 +1368,19 @@ ca:
     helptext: "%{name} rebrà el vostre nom, adreça de correu i missatge"
     email_sent: 'S''ha enviat el correu a %{name} '
   profile_page:
+    autodetect_time_zone: Autodetecció de zona horària
+    account_is_bot: Aquest és un compte de bot
+    bot_account_warning: Els comptes de bot no seran convidats a votar a les enquestes ni a participar en debats
+    incomplete_profile: Perfil incomplet!
+    set_your_profile_picture: Estableix la teva foto de perfil
     messages:
       updated: Perfil actualitzat
       picture_changed: Fotografia del perfil actualitzada
       password_changed: Contrasenya actualitzada
       deactivated: Compte desactivat
+    deactivated_user: Usuari desactivat
+    deleted_account: Compte suprimit
+    date_time_pref_label: Format de data i hora
     merge_accounts: Fusiona comptes
     change_picture_link: Canvia la fotografia
     change_password_link: Reinicia la contrasenya
@@ -1296,20 +1401,14 @@ ca:
     location_placeholder: D'on sou?
     update_profile: Actualitza el perfil
     deactivate_account: Desactiva el compte d'usuari
-    account_is_bot: Aquest és un compte de bot
-    bot_account_warning: Els comptes de bot no seran convidats a votar a les enquestes ni a participar en debats
-    incomplete_profile: Perfil incomplet!
-    set_your_profile_picture: Estableix la teva foto de perfil
-    deactivated_user: Usuari desactivat
-    date_time_pref_label: Format de data i hora
-    help_translate: Ens pots ajudar a traduir Loomio?
+    deactivate_account_subtitle: Atura els correus electrònics i cancel·la les subscripcions. Mantingueu el vostre perfil perquè les discussions i decisions anteriors no es vegin afectades.
+    delete_account_subtitle: Suprimeix completament el teu compte i elimina el teu nom de discussions i decisions anteriors.
     updated_on_sign_in: Proporcionat pel vostre navegador i actualitzat quan inicieu la sessió
-    autodetect_time_zone: Autodetecció de zona horària
   text_editor:
-    insert_link: Insereix enllaç
-    insert_embedded_url: Incrusta un vídeo
     x_of_y_characters: "%{x} / %{y} caràcters"
     select_text_to_link: Seleccioneu el text per enllaçar i torneu-ho a provar
+    insert_link: Insereix enllaç
+    insert_embedded_url: Incrusta un vídeo
   change_picture_form:
     aria_label: Forma de la foto de perfil
     title: Estableix la foto de perfil
@@ -1317,20 +1416,24 @@ ca:
     use_initials: Utilitza les inicials
     use_gravatar: Utilitza el gravatar
     use_uploaded: Penja una foto nova
-    use_provider: Utilitza una foto de %{provider}
     existing_upload: Pujada existent
+    use_provider: Utilitza una foto de %{provider}
   change_password_form:
     set_password_title: Estableix la contrasenya
     set_password_helptext: Introduïu una contrasenya amb un mínim de 8 caràcters.
     set_password: Estableix la contrasenya
     password_changed: S'ha actualitzar la contrasenya
   deactivation_modal:
+    introduction: 'Quan suprimiu el vostre compte:'
+    deactivate_introduction: 'Quan desactiveu el vostre compte:'
+    you_will_be_deactivated: El vostre compte d'usuari es marcarà com a desactivat. La vostra adreça de correu electrònic i les dades d'identificació personal es mantindran. Podeu reactivar el vostre compte més tard si ho voleu.
+    name_not_removed: Els comentaris, les votacions, les propostes i les discussions que heu publicat es mantindran perquè els registres històrics no s'alterin.
     you_will_be_deleted: El vostre compte d'usuari, inclosos el nom, adreça de correu electrònic i dades personals s'eliminaran del nostre sistema.
     name_removed: Els comentaris, les propostes i les discussions que hàgiu fet romandran, però el vostre nom en serà eliminat.
     no_longer_group_member: Ja no apareixereu entre els membres de cap grup
     no_emails: No rebreu més correus electrònics relacionats amb Loomio.
     submit_delete: Elimina el meu compte ara
-    introduction: 'Quan suprimiu el vostre compte:'
+    submit_deactivate: Desactiva el meu compte ara
   email_settings_page:
     monday: Dilluns
     tuesday: Dimarts
@@ -1339,17 +1442,22 @@ ca:
     friday: Divendres
     saturday: Dissabte
     sunday: Diumenge
+    every_day: Cada dia
+    every_second_day: Cada segon dia
     header: Preferències de notificacions
     account_deactivated: S'ha desactivat el vostre compte. Mai més rebreu cap correu de Loomio.
     deactivate_header: No tornar a rebre cap correu
     deactivate_description: Si no voleu tornar a rebre correus de Loomio, podeu desactivar el vostre compte d'usuari.
     email_newsletter: Butlletí de Loomio
     email_newsletter_description: Rebeu actualitzacions sobre noves característiques, formació, esdeveniments a la vostra ciutat i el futur de Loomio. Normalment 2 o 3 correus electrònics a l'any.
+    email_catch_up_day: Correu electrònic de resum de posada al dia
+    daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de recuperació. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera d'estar al dia si no sou un usuari habitual.
     on_participation_label: Subscriure sota participació
     on_participation_description: Quan participeu en un fil, se us començaran a enviar correus electrònics sobre la seva activitat.
     announcement_label: Avisos
     announcement_description: Rebreu un correu sobre tot el contingut que s'ha anunciat per usuaris en els vostres grups
     mentioned_label: Mencions i respostes
+    mentioned_description: Quan algú us @mencioni en un comentari o us respongui, rebràs un correu electrònic de notificació
     update_settings: Desa els canvis
     specific_groups: Configuració per grups específics
     default_settings:
@@ -1360,13 +1468,15 @@ ca:
     messages:
       updated: Configuració del correu electrònic actualitzada
     learn_more: Més informació sobre la configuració del correu electrònic...
-    every_day: Cada dia
-    every_second_day: Cada segon dia
-    email_catch_up_day: Correu electrònic de resum de posada al dia
-    daily_summary_description: Trieu quan voleu rebre el correu electrònic de resum de recuperació. Aquest correu electrònic conté qualsevol activitat nova que no hàgiu vist. Una bona manera d'estar al dia si no sou un usuari habitual.
-    mentioned_description: Quan algú us @mencioni en un comentari o us respongui, rebràs un correu electrònic de notificació
+  thread_preview:
+    replies_count: "%{count} respostes"
+    unread_count: "%{count} sense llegir"
   dashboard_page:
     aria_label: Tauler
+    polls_to_vote_on: Enquestes per votar
+    no_polls_to_vote_on: No hi ha enquestes que calgui votar
+    recent_polls: Enquestes recents
+    current_polls: Enquestes actuals
     recent_threads: Fils recents
     no_groups:
       show_all: Benvingut! Encara no sou membre de cap grup. <a href="/explore">Busqueu grups públics</a> o <a href="/g/new">Creeu un grup </a>.
@@ -1415,10 +1525,6 @@ ca:
       thisweek: Aquesta setmana
       thismonth: Aquest mes
       older: Fa més d'un mes
-    polls_to_vote_on: Enquestes per votar
-    no_polls_to_vote_on: No hi ha enquestes que calgui votar
-    recent_polls: Enquestes recents
-    current_polls: Enquestes actuals
   threads_page:
     no_direct_threads: No teniu fils directes
     no_invite_only_threads: No teniu fils amb accés per invitació
@@ -1432,6 +1538,7 @@ ca:
       or: o
       join_group: <a href="/explore">uniu-vos</a> a un grup per veure els fils
   discussion:
+    direct_thread: Fil directe
     invite_only: Accés amb invitació
     private_thread: Fil privat
     max_threads_reached: |
@@ -1453,16 +1560,17 @@ ca:
     closed:
       reopened: Fil reobert
       closed: Fil tancat
-    direct_thread: Fil directe
   discussion_last_seen_by:
     title: Vist per
     no_one: Encara no ho ha vist ningú
     disabled_anonymous_polls: L'historial del visor està desactivat perquè el fil conté enquestes anònimes
   activity_card:
+    count_responses: "%{count} respostes"
     event_pinned: Fixat a la línia de temps
     event_unpinned: S'ha anul·lat la fixació a la línia de temps
     beginning: Inici
     end: Final
+    unread: No llegit (%{count})
     latest: Últim
     context: Context
     chronological: Cronològic
@@ -1470,15 +1578,13 @@ ca:
     attachment_display:
       aria_label: 'Fitxer adjunt:'
       image_alt: Imatge adjunta
+    n_previous: Carrega %{count} respostes anteriors
+    n_more: Carrega %{count} respostes
     add_comment: Afegeix comentari
     add_poll: Afegeix enquesta
     add_outcome: Afegeix resultat
     comment: Comentari
     facilitate: Organitza
-    count_responses: "%{count} respostes"
-    unread: No llegit (%{count})
-    n_previous: Carrega %{count} respostes anteriors
-    n_more: Carrega %{count} respostes
     start_decision: Començar la decisió
     start_vote: Comença la votació
   thread_group:
@@ -1500,31 +1606,31 @@ ca:
     print_thread: Imprimeix
     delete_thread: Elimina
     add_comment: Comentari
-    forked_from: Bifurcat des de
     seen_by_count: Vist per %{count}
     count_notified: "%{count} notificat"
+    forked_from: Bifurcat des de
   pin_thread_modal:
     title: Fixa el fil
     helptext: Els fils fixats sempre es mostren al capdamunt de la llista de fils del grup. S'utilitzen per informar als membres d'anuncis importants o per promoure material comú com ara un codi de conducta o les normes de la comunitat.
     helptext_two: Podeu eliminar els elements fixats en qualsevol moment, seleccionant "desfixa" del menú desplegable del fil.
     pin_thread: Fixa el fil
   thread_arrangement_form:
+    edit: Edita el disseny
     title: Format del fil
     for_everyone: Això modifica el format per tothom, no només per tu.
     sorting: Més antic o més recent primer?
     latest: Més recent
+    latest_description: Llegiu primer els articles més nous
     earliest: Més antic
+    earliest_description: Posa't al dia dels comentaris més antics abans de veure'n de nous
     replies: Com es mostren les respostes?
     linear: Llista plana
     linear_description: Els elements es mostren tal com han tingut lloc, un després de l'altre.
-    nested_once_description: Mostra les respostes amb sagnat sota el comentari original
-    changing_nesting_is_slow: Els canvis en l'imbricat podrien tardar alguns minuts en ser processats.
-    edit: Edita el disseny
-    latest_description: Llegiu primer els articles més nous
-    earliest_description: Posa't al dia dels comentaris més antics abans de veure'n de nous
     nested_once: 'Respostes del niu: només la primera resposta'
+    nested_once_description: Mostra les respostes amb sagnat sota el comentari original
     nested_twice: Dos nivells de respostes imbricades
     nested_twice_description: Sagna les respostes com a màxim dues vegades.
+    changing_nesting_is_slow: Els canvis en l'imbricat podrien tardar alguns minuts en ser processats.
   delete_thread_form:
     aria_label: Elimina el fil
     title: Elimina el fil
@@ -1544,12 +1650,17 @@ ca:
     title: Elimina el comentari
     question: Això suprimirà permanentment aquest comentari. Si continueu, no es pot restaurar.
   contact_message_form:
+    alt_title: Contacta amb l'assistència de Loomio
+    need_message: Si us plau, introdueix un missatge perquè puguem ajudar-te :-)
+    respond_asap: Envia un missatge a l'equip de Loomio i et respondrem tan aviat com puguem.
+    happy_to_help_with: Estem encantats d'ajudar-vos amb consultes de vendes, sol·licituds d'assistència, sol·licituds de funcions, informar d'errors o problemes que esteu experimentant.
     title: Com et podem ajudar?
     contact_us_email: 'També ens podeu escriure un correu electrònic: <a href="mailto:%{email}">%{email}</a>'
     contact_us: Contacteu amb nosaltres
     name_label: El vostre nom
     name_placeholder: Introduïu el nom...
     subject_label: Tema
+    subject_placeholder: 'Per exemple: problemes per iniciar la sessió o suggeriment de funcions'
     email_label: Adreça de correu
     email_placeholder: Introduïu l'adreça de correu...
     message_label: El vostre missatge
@@ -1561,11 +1672,6 @@ ca:
       El nostre personal parla anglès i traduirà el vostre missatge amb Google Translate si és necessari. <br />
       El nostre objectiu és respondre tots els missatges en un període de 24 hores.
     success: Gràcies pel missatge, %{name}. Rebreu una resposta aviat.
-    alt_title: Contacta amb l'assistència de Loomio
-    need_message: Si us plau, introdueix un missatge perquè puguem ajudar-te :-)
-    respond_asap: Envia un missatge a l'equip de Loomio i et respondrem tan aviat com puguem.
-    happy_to_help_with: Estem encantats d'ajudar-vos amb consultes de vendes, sol·licituds d'assistència, sol·licituds de funcions, informar d'errors o problemes que esteu experimentant.
-    subject_placeholder: 'Per exemple: problemes per iniciar la sessió o suggeriment de funcions'
     success_via_email: Gràcies pel teu missatge, %{name}. Et respondrem per correu electrònic en un termini de 24 hores.
   explore_page:
     header: Explora grups
@@ -1578,67 +1684,40 @@ ca:
     order_by: Endreça els grups per
   global:
     messages:
-      reload: Recarrega
       app_update: S'ha llançat una nova versió de Loomio. Deseu la vostra feina i torneu a carregar.
+      reload: Recarrega
   decision_tools_card:
     choose_type: Escull el tipus d'enquesta
     title: Organitzar
-    proposal_title: Proposta
-    poll_title: Enquesta
-    score_title: Enquesta per puntuació
-    meeting_title: enquesta de temps
-    ranked_choice_title: vot preferencial
     recommended: Recomanat
     question_title: Ronda de preguntes
     advice_title: Consell
     consent_title: Consentiment
     consensus_title: Consens
+    proposal_title: Proposta
     count_title: Optar a
     check_title: Comprovació de sentit
+    poll_title: Enquesta
     meeting: Reunió
+    score_title: Enquesta per puntuació
     dot_vote_title: Punt votar
+    meeting_title: enquesta de temps
+    ranked_choice_title: vot preferencial
     gradients_of_agreement_title: Gradients d'acord
+  poll_option_form:
+    edit_option: Opció d'edició
+    option_name: Nom de l'opció
+    option_name_hint: Un nom curt per a aquesta opció
+    option_name_validation: El millor és mantenir el nom curt i posar detall al camp "Significat".
+    icon: Icona
+    meaning: Significat
+    please_select_an_icon: Seleccioneu una icona
+    meaning_hint: Una o dues frases que expliquen què significa triar aquesta opció. Opcional
+    prompt: Indicació de motiu
+    prompt_hint: Una pregunta per incitar als votants a compartir el seu raonament o reconsiderar la seva posició. Opcional
   poll_common:
-    vote_now: Vota ara
-    review_due: Revisió programada
-    have_your_say: Digues la teva
-    your_response: La vostra resposta
-    change_your_response: Edita la resposta
-    reason: Motiu
-    reason_placeholder: Expliqueu breument per què heu votat aquesta opció i cliqueu "Envia el vot".
-    message: Missatge
-    results: Resultats
-    responses: Respostes
-    close_poll_type: Tanca %{pollType}
-    totals: Totals
-    participate: Participeu
-    vote: Vota
-    votes: Vots
-    update_outcome: Actualitza el resultat
-    outcome: Resultat
-    statement: Declaració
-    change_your_stance: Edita la resposta
-    load_more: Carrega'n més
-    details: Detalls
-    participant_name: El vostre nom
-    participant_email: Adreça de correu electrònic
-    submit_vote: Envia el vot
-    update_vote: Actualitza el vot
-    share_poll: Comparteix l'enquesta
-    share_proposal: Comparteix la proposta
-    share_count: Comparteix la verificació
-    start_poll: Comença una decissió
-    publish_poll: Comparteix l'enquesta
-    share_outcome: Comparteix el resultat
-    view_all: Visualitza-ho tot
-    save_changes: Desa
-    change_vote: Canvia el teu vot
-    max_score: Puntuació màxima
-    min_score: Puntuació mínima
-    too_long: És massa llarg
-    edit_warning: Només es recomana editar en cas d'haver de fer petits canvis o corregir errors tipogràfics. Per canvis més significatius, tanqueu aquesta %{pollType} i obriu-ne una de nova.
-    no_voting: Només per debatre, la votació està desactivada
     superseded: Substituït
+    outdated: Antiquat
     need_help_with_templates: Necessites ajuda per crear les teves pròpies plantilles de decisió?
     categorize_poll_templates: Classifica les plantilles d'enquesta
     show_all_templates_in_one_list: Mostra totes les plantilles en una llista
@@ -1677,15 +1756,53 @@ ca:
     decision_templates: Plantilles de decisió
     remove_your_vote: Elimina el teu vot
     remove_your_response: Elimina la teva resposta
+    vote_now: Vota ara
+    review_due: Revisió programada
+    have_your_say: Digues la teva
+    your_response: La vostra resposta
+    change_your_response: Edita la resposta
     please_vote: Si us plau, voteu
+    reason: Motiu
     response: Resposta
+    reason_placeholder: Expliqueu breument per què heu votat aquesta opció i cliqueu "Envia el vot".
+    message: Missatge
+    results: Resultats
     current_results: Resultats actuals
+    responses: Respostes
+    close_poll_type: Tanca %{pollType}
     close_early: Tancar aviat
+    totals: Totals
+    participate: Participeu
+    vote: Vota
+    votes: Vots
+    update_outcome: Actualitza el resultat
+    outcome: Resultat
     outcomes: Resultats
+    statement: Declaració
+    change_your_stance: Edita la resposta
+    load_more: Carrega'n més
+    details: Detalls
+    participant_name: El vostre nom
+    participant_email: Adreça de correu electrònic
+    submit_vote: Envia el vot
     submit_response: Envieu resposta
+    update_vote: Actualitza el vot
     update_response: Actualitza la resposta
+    share_poll: Comparteix l'enquesta
+    share_proposal: Comparteix la proposta
+    share_count: Comparteix la verificació
+    start_poll: Comença una decissió
+    publish_poll: Comparteix l'enquesta
+    share_outcome: Comparteix el resultat
+    view_all: Visualitza-ho tot
+    save_changes: Desa
+    change_vote: Canvia el teu vot
     change_response: Canvia la teva resposta
-    outdated: Antiquat
+    max_score: Puntuació màxima
+    min_score: Puntuació mínima
+    too_long: És massa llarg
+    edit_warning: Només es recomana editar en cas d'haver de fer petits canvis o corregir errors tipogràfics. Per canvis més significatius, tanqueu aquesta %{pollType} i obriu-ne una de nova.
+    no_voting: Només per debatre, la votació està desactivada
   poll_common_attachment_form:
     label: Adjunts
   poll_common_add_option:
@@ -1699,28 +1816,31 @@ ca:
   poll_common_card:
     show_results: Mostra els resultats
     hide_results: Amaga els resultats
-    deleted: Aquesta enquesta s'ha eliminat
     until_vote: Fins que s'emet el vot
     until_you_vote: Fins que voteu
     until_poll_type_closed: Fins que es tanqui %{pollType}
     until_voting_is_closed: Fins que es tanqui la votació
+    deleted: Aquesta enquesta s'ha eliminat
   discussions_panel:
     open: Obret
     all: Tot
+    unread: No llegit (%{count})
     closed: Tancat
     include_subgroups_mine: "%{name} i els meus subgrups"
     include_subgroups_all: "%{name} i tots els subgrups"
     no_results_found: No s'ha trobat resultats per "%{search}"
-    unread: No llegit (%{count})
     welcome_to_your_new_group: Benvingut al teu nou grup de Loomio!
     lets_start_a_thread: Comencem un fil. Feu clic a "Nou fil" per continuar.
   members_panel:
+    bot: Bot
     no_results: No s'ha trobat membres per %{name} 
     everyone: Tothom
+    all: Tots
     sort: Classifica
     order_label: Ordena
     order_by_name: Nom
     order_by_created: Més antic
+    show_users_in_subgroups: Mostra els usuaris també en subgrups
     order_by_created_desc: Més recent
     order_by_admin_desc: Admins
     loaded_of_total: "%{loaded} de %{total}"
@@ -1740,9 +1860,6 @@ ca:
     last_seen: Vist per darrer cop %{date}
     invited_by_name: Convidat per %{name}
     accepted: Membres
-    bot: Bot
-    all: Tots
-    show_users_in_subgroups: Mostra els usuaris també en subgrups
   polls_panel:
     new_poll: Nova enquesta
     any_type: Tots els tipus
@@ -1750,8 +1867,8 @@ ca:
     all: Tot
     open: Obert
     closed: Tancat
-    no_polls: No s'ha trobat cap enquesta
     need_vote: Cal Votar
+    no_polls: No s'ha trobat cap enquesta
   group_files_panel:
     no_files: No s'ha trobat cap fitxer
     filename: Nom del fitxer
@@ -1763,9 +1880,10 @@ ca:
   subgroups_panel:
     search_subgroups_of_name: Buscar subgrups dins de %{name}
     group_without_subgroups: "%{name} sense subgrups"
+    need_a_space_for_your_team: Necessites un espai de descans per al teu equip?
+    explainer: 'Els subgrups són llocs privats on els equips de la vostra organització poden discutir i prendre decisions. El contingut dels subgrups és privat de la resta de l''organització. Exemples de subgrups: Junta, decisions de contractació o equip de projecte'
+    upgrade: Per iniciar un subgrup, haureu d' <a class="text-decoration-underline" href="%{url}" target="_blank">actualitzar la vostra subscripció a Loomio.</a>
   poll_common_action_panel:
-    anonymous: Els vots són anònims
-    unable_to_vote: No heu estat convidat a votar en aquesta %{poll_type}.
     from_the_thread: De la plantilla del fil
     from_the_group: Del grup
     default_templates: Plantilles per defecte
@@ -1775,8 +1893,10 @@ ca:
     suggested_templates: Plantilles suggerides
     group_templates: Plantilles de grup
     basic_templates: Plantilles bàsiques
+    anonymous: Els vots són anònims
     results_hidden_until_closed: Els resultats es mostraran un cop finalitzada la votació
     results_hidden_until_vote: Els resultats es mostraran després de votar
+    unable_to_vote: No heu estat convidat a votar en aquesta %{poll_type}.
     draft_mode: Votació desactivada. Això encara no està obert a la votació.
     voting_disabled_poll_is_template: Votació desactivada. Aquesta és una plantilla.
   poll_common_collapsed:
@@ -1795,10 +1915,15 @@ ca:
     location_placeholder: On tindrà lloc aquesta reunió?
   poll_common_settings:
     who_can_vote: Qui pot votar?
+    short_reason_can_be_helpful: Mantenir breus els motius del vot els fa més fàcils d'entendre. Una col·lecció de raons concises és un gran recurs per prendre una decisió.
     specified_voters_only_true: Només usuaris convidats
     specified_voters_only_false_group: Qualsevol usuari del grup
     specified_voters_only_false_discussion: Qualsevol usuari en aquest fil
     invite_people_next: Podeu escollir qui està convidat a votar un cop comenceu la %{poll_type}
+    shuffle_options:
+      shuffle_options: Barreja opcions
+      title: Mostra les opcions en ordre aleatori
+      helptext: Una opció que és la primera a la llista pot donar-li un biaix. Utilitzeu aquesta configuració per contrarestar aquest efecte.
     multiple_choice:
       title: Opció múltiple
       helptext_on: En seleccionar aquesta opció, els participants podran escollir múltiples opcions
@@ -1806,34 +1931,34 @@ ca:
       title: Tothom que tingui l'enllaç pot participar
       helptext_on: En seleccionar aquesta opció, tothom que tingui un enllaç de l'enquesta podrà participar-hi.
     notify_on_closing_soon:
+      voting_closes_too_soon: Com que la votació es tanca en 24 hores, no s'enviaran recordatoris de tancament aviat.
       closes_too_soon: Com que aquesta %{pollType} es tanca en 24 hores, no s'enviaran recordatoris de "tanca aviat".
       title: '24 hores abans de que %{pollType} es tanqui, envia un recordatori a '
+      voting_title: 24 hores abans del tancament de la votació, envieu un recordatori a
       nobody: Ningú
       author: L'autor (jo)
       undecided_voters: Votants indecisos
       voters: Tots els votants
-      voting_closes_too_soon: Com que la votació es tanca en 24 hores, no s'enviaran recordatoris de tancament aviat.
-      voting_title: 24 hores abans del tancament de la votació, envieu un recordatori a
     notify_on_participate:
       title: Notifica'm quan participin usuaris
       helptext_on: En seleccionar aquesta opció, rebreu notificacions cada vegada que algú participi.
     anonymous:
       title: Votants anònims
       helptext_on: En seleccionar aquesta opció, la informació del participant no es mostrarà quan respongui.
+    voter_can_add_options:
+      title: Els votants poden afegir opcions alternatives
     can_respond_maybe:
       title: Els votants poden respondre amb "si és necessari"
+    allow_long_reason:
+      title: Permet que el "motiu" del vot tingui més de 500 caràcters
     hide_results_until_closed:
       title: Amaga els resultats fins al tancament
       helptext_on: No mostris què han votat els usuaris fins que l'enquesta estigui tancada
-    short_reason_can_be_helpful: Mantenir breus els motius del vot els fa més fàcils d'entendre. Una col·lecció de raons concises és un gran recurs per prendre una decisió.
-    shuffle_options:
-      shuffle_options: Barreja opcions
-      title: Mostra les opcions en ordre aleatori
-      helptext: Una opció que és la primera a la llista pot donar-li un biaix. Utilitzeu aquesta configuració per contrarestar aquest efecte.
-    voter_can_add_options:
-      title: Els votants poden afegir opcions alternatives
-    allow_long_reason:
-      title: Permet que el "motiu" del vot tingui més de 500 caràcters
+  poll_common_close_form:
+    title: Tancar %{poll_type} ara?
+    helptext: Esteu segur que voleu tancar aquest %{poll_type} abans i compartir un resultat?
+    close_poll_type: Tanca %{poll_type}
+    poll_type_closed: "%{poll_type} tancat"
   poll_common_reopen_form:
     title: Reobre %{poll_type}
     helptext: Reobre %{poll_type} si els usuaris necessiten més temps per participar-hi
@@ -1841,6 +1966,16 @@ ca:
   poll_common_move_form:
     title: Mou %{poll_type}
     success: S'ha mogut %{poll_type} a %{group}
+  poll_common_wip_field:
+    voting_enabled: S'ha activat la votació
+    enable_voting: Activa la votació
+    title: Desactiva la votació
+    past_tense: Votació desactivada
+    draft_mode: Mode d'esborrany
+    disable_voting_during_development: Aquest %{poll_type} no està preparat per ser votat
+    helptext: Aquest %{poll_type} és un treball en curs. Podeu activar la votació més tard.
+    voting_open: Votació oberta
+    this_is_ready_for_voting: aquest %{poll_type} està llest per votar
   poll_common_closing_at_field:
     closing: S'està tancant
     no_closing_date: No hi ha data de tancament
@@ -1848,9 +1983,10 @@ ca:
     closing_hour: Hora de tancament
     invalid_date: La data no és vàlida
   poll_card:
-    started_by: Iniciat per %{name}
     poll_type_by_name: "%{poll_type} per %{name}"
+    started_by: Iniciat per %{name}
   poll_common_votes_panel:
+    vote_removed: S'ha eliminat el vot
     undecided: Indecís
     newest_first: El més recent primer
     oldest_first: El més antic primer
@@ -1860,13 +1996,12 @@ ca:
     no_votes_yet: Encara no s'ha votat
     change_results_order: Canvia l'ordre dels resultats
     none_of_the_above: "(Cap dels anteriors)"
-    vote_removed: S'ha eliminat el vot
     name_or_username: Nom o nom d'usuari
   poll_common_undecided_panel:
-    show_invitations: Mostra les invitacions pendents
-    invitation_count_singular: S'ha convidat 1 usuari més participar a per correu electrònic
     show_undecided: Mostra %{count} indecisos
+    show_invitations: Mostra les invitacions pendents
     undecided_users: Indecis (%{count})
+    invitation_count_singular: S'ha convidat 1 usuari més participar a per correu electrònic
     invitation_count_plural: "%{count} persones addicionals han estat convidades a participar-hi per correu electrònic"
   poll_common_undecided_user:
     reminded: Recordatori enviat!
@@ -1875,20 +2010,20 @@ ca:
     enter_outcome: Introduir resultat
     poll_type: Aquest %{poll_type} s'ha tancat. Preneu-vos el temps per considerar els resultats i compartir-ne un perquè la gent sàpiga què passarà després.
   poll_common_outcome_form:
-    new_title: Introdueix un resultat
-    update_title: Actualitza el resultat
-    outcome_created: Resultat creat
-    outcome_updated: Resultat actualitzat
-    statement_placeholder: Resumiu les respostes i expliqueu què passarà després
-    you_will_be_notified: Se't notificarà el dia de la revisió.
-    submit: Comparteix el resultat
     review_due_in_days: Revisar la decisió al cap de quants dies?
     review_due_in_days_hint: Un període de temps (en dies) per esperar abans de revisar la decisió. (opcional)
     review_date: Data de revisió
     review_date_hint: Estableix una data per revisar la decisió (opcional)
     who_to_notify: A qui voleu notificar aquest resultat? (opcional)
     outcome_statement_template: Plantilla de declaració de resultats
+    new_title: Introdueix un resultat
+    update_title: Actualitza el resultat
+    outcome_created: Resultat creat
+    outcome_updated: Resultat actualitzat
+    statement_placeholder: Resumiu les respostes i expliqueu què passarà després
     statement_template_placeholder: Proporcioneu una plantilla per escriure un resultat de la decisió. (opcional)
+    you_will_be_notified: Se't notificarà el dia de la revisió.
+    submit: Comparteix el resultat
   poll_common_outcome_panel:
     authored_by: De %{name}
   poll_common_delete_modal:
@@ -1896,36 +2031,6 @@ ca:
     title: Elimina %{pollType}
     success: Eliminat amb èxit
   poll_common_form:
-    voting_methods:
-      ranked_choice: vot preferencial
-      time_poll: enquesta de temps
-      question: Ronda de preguntes
-      question_hint: Convida preguntes i comentaris sobre la teva proposta
-      show_thumbs: Mostra de polzes
-      show_thumbs_hint: Els votants trien el polze cap amunt, cap avall, de costat o amb la mà cap amunt
-      choose: Tria
-      simple_poll: Enquesta senzilla
-      choose_hint: Els votants trien la millor opció (o opcions)
-      score: Puntuació
-      score_hint: Els votants assignen una puntuació a cada opció
-      allocate: Assignar
-      allocate_hint: Els votants assignen un pressupost de punts entre les opcions
-      ranked_choice_hint: Els votants organitzen les opcions per ordre de més a menys preferit
-      time_poll_hint: Els electors indiquen quan estan disponibles per reunir-se
-    title: Títol
-    details: Detalls
-    options: Opcions
-    options_placeholder: Enumera les opcions disponibles
-    no_options: Encara no heu afegit cap opció.
-    closing: S'està tancant
-    closed: Tancat
-    start: Comença
-    start_poll: Crea una enquesta
-    stance_reason_required: Obligatori
-    start_poll_type: Inicia %{poll_type}
-    share_poll_type: Comparteix %{poll_type}
-    update: Actualitza
-    votes_are_anonymous: Els vots són anònims
     notify_everyone_when_poll_starts: Notifica a tothom quan comenci %{poll_type}
     option_has_votes_confirm_delete: Algunes persones han votat per aquesta opció, esteu segur que voleu suprimir-la?
     example_title: Exemple de títol
@@ -1950,6 +2055,22 @@ ca:
     hide_other_zones: Amaga altres zones horàries
     this_is_a_template_for_new_polls: Aquesta és una plantilla per a noves enquestes
     voting_method: Mètode de votació
+    voting_methods:
+      question: Ronda de preguntes
+      question_hint: Convida preguntes i comentaris sobre la teva proposta
+      show_thumbs: Mostra de polzes
+      show_thumbs_hint: Els votants trien el polze cap amunt, cap avall, de costat o amb la mà cap amunt
+      choose: Tria
+      simple_poll: Enquesta senzilla
+      choose_hint: Els votants trien la millor opció (o opcions)
+      score: Puntuació
+      score_hint: Els votants assignen una puntuació a cada opció
+      allocate: Assignar
+      allocate_hint: Els votants assignen un pressupost de punts entre les opcions
+      ranked_choice: vot preferencial
+      ranked_choice_hint: Els votants organitzen les opcions per ordre de més a menys preferit
+      time_poll: enquesta de temps
+      time_poll_hint: Els electors indiquen quan estan disponibles per reunir-se
     process: Procés
     process_name: Títol de la plantilla
     process_name_hint: Com en dius aquesta plantilla? Per exemple, assessorament sobre rols, control de temperatura, aprovació d'actes
@@ -1959,59 +2080,84 @@ ca:
     process_introduction_hint: Uns quants paràgrafs que expliquen com utilitzar la plantilla. Incloeu enllaços a recursos que us poden ser útils.
     you_can_set_a_prompt_per_option: Editeu la sol·licitud per a cada opció des de la pestanya de detalls
     chart_type: Tipus de gràfic
+    title: Títol
     title_hint: Quina és la decisió que has de prendre?
     no_options_add_some: Aquesta enquesta no té opcions, afegiu-ne algunes a continuació.
+    details: Detalls
     example_details: Detalls d'exemple
     details_placeholder: Aquesta és la teva oportunitat per explicar què està votant la gent
+    options: Opcions
+    options_placeholder: Enumera les opcions disponibles
+    no_options: Encara no heu afegit cap opció.
+    closing: S'està tancant
+    closed: Tancat
+    start: Comença
+    start_poll: Crea una enquesta
     stance_reason_required_label: Proporcionar un motiu a l'hora de votar és...
+    stance_reason_required: Obligatori
     stance_reason_optional: Opcional
     stance_reason_disabled: Inhabilitat
     stance_reason_is_required: Si us plau, proporcioneu un motiu amb el vostre vot
     limit_reason_length: Limiteu el motiu a un màxim de 500 caràcters
     save_poll: Desa l'enquesta
+    start_poll_type: Inicia %{poll_type}
+    share_poll_type: Comparteix %{poll_type}
     who_may_vote: Qui pot votar en aquest %{poll_type}?
+    update: Actualitza
     add_voters: Afegeix votants
     notify_invitees: Enviar notificacions
     no_notifications_warning: Els votants no seran avisats. Això és útil si feu moltes enquestes i teniu previst notificar a tothom més endavant.
     count_voters_added: "%{count} votants afegits"
     poll_type_created: "%{poll_type} creat"
     poll_type_started: "%{poll_type} ha començat"
+    poll_type_updated: "%{poll_type} actualitzat"
     reason_prompt: Indicació de motiu
     anonymous_voting: Votació anònima
     anonymous_voting_description: Si està activat, la identitat dels votants no s'associarà als seus vots. Això no es pot desfer.
+    votes_are_anonymous: Els vots són anònims
     vote_reason: Raó del vot
     vote_reason_description: Pot ser útil entendre per què la gent va votar com ho va fer. Amb aquesta configuració, podeu demanar als usuaris que comparteixin els seus pensaments quan voten.
     hide_results_description: Si voleu que la gent voti sense saber com han votat els altres, podeu amagar els resultats de l'enquesta.
     process_helptext: Anomena i descriu el procés que s'utilitza per executar aquesta enquesta.
     reminder_helptext: Envieu una notificació "Tanquem aviat" abans que es tanqui l'enquesta. Aquesta pot ser una oportunitat perquè la gent vegi com han votat els altres i reconsideri el seu propi vot, o només una manera d'augmentar la participació a l'enquesta.
-    poll_type_updated: "%{poll_type} actualitzat"
   poll_proposal_form:
     start_header: Crea una proposta
     edit_header: Edita una proposta
     title_placeholder: 'Per exemple: anem a la lluna!'
+    details_placeholder: Quins són els detalls de la teva proposta?
     proposal_created: Proposta iniciada
     proposal_updated: Proposta actualitzada
-    details_placeholder: Quins són els detalls de la teva proposta?
+  record_modal:
+    record_video: Grava vídeo
+    record_audio: Gravar àudio
+    record: Registre
+    stop: Atura
+    no_mic: No s'ha pogut trobar un micròfon
+    no_camera: No s'ha pogut trobar una càmera
+    listen_to_audio: Escolta l'àudio
+    watch_video: Mira el vídeo
+    audio_transcript: 'Transcripció d''àudio: %{text}'
+    why_type_when_you_can_talk: Per què escriure quan pots parlar? Envia una gravació de veu
+    transcript_included: S'adjuntarà una transcripció de la gravació al vostre missatge
   poll_poll_form:
+    multiple_choice_subtitle: Una manera senzilla d'avaluar la popularitat de les opcions
     start_header: Crea una enquesta
     edit_header: Edita l'enquesta
     tip: Ofereix una elecció entre opcions
     title_placeholder: 'Per exemple: On voleu anar de vacances?'
     details_placeholder: 'Oferiu els detalls que els usuaris puguin necessitar per respondre la pregunta. '
     add_option_placeholder: Afegeix una opció
+    new_option: Nova opció
+    add_option_hint: Introduïu un nom curt per a l'opció
     remove_option: Elimina una opció
     poll_created: Enquesta creada
     poll_updated: Enquesta actualitzada
-    multiple_choice_subtitle: Una manera senzilla d'avaluar la popularitat de les opcions
-    new_option: Nova opció
-    add_option_hint: Introduïu un nom curt per a l'opció
     option_added: S'ha afegit l'opció
     option_already_added: L'opció ja s'ha afegit a l'enquesta
   poll_dot_vote_form:
     dots_per_person: Punts per usuari
     dots_per_person_helptext: El nombre total de punts que cada usuari té per repartir
   poll_meeting_form:
-    tool_tip_collapsed: Esbrineu en quin moment poden fer una reunió els usuaris
     timeslots: Franges horàries
     no_options: Introduïu les hores de la vostra zona horària (%{zone}). Els participants veuran les hores convertides a la seva zona horària.
     meeting_duration: Durada de la reunió
@@ -2024,12 +2170,12 @@ ca:
     no_options: Encara no heu afegit cap opció.
     add_option_placeholder: Afegeix una nova opció
     minimum_stance_choices: Opcions per ordenar
+    minimum_stance_choices_helptext: Quantes opcions té el votant?
+    minimum_stance_choices_hint: és a dir, classifica els teus 3 millors sabors de gelat
     ranked_choice_created: S'ha creat el vot preferencial
     ranked_choice_updated: S'ha actualitzat el vot preferencial
     rank: Ordena
     points: Puntuació
-    minimum_stance_choices_helptext: Quantes opcions té el votant?
-    minimum_stance_choices_hint: és a dir, classifica els teus 3 millors sabors de gelat
     average: Mitjana
     mean: Significar
     pct_of_points: "% de punts"
@@ -2049,38 +2195,37 @@ ca:
     stance_updated: S'ha actualitzat el vot
     vote: Vota
   poll_proposal_options:
+    select_an_option: Seleccioneu una opció
     'yes': Sí
     'no': 'No'
     agree: D'acord
     consent: Consentiment
     abstain: Abstenció
+    unsure: Insegur
     disagree: En desacord
     objection: Objecció
-    block: Bloqueja
-    agree_meaning: La proposta és prou bona perquè el grup l'aprovi
-    select_an_option: Seleccioneu una opció
-    unsure: Insegur
     object: Objecte
+    block: Bloqueja
     no_voting: Sense votació
   poll_count_form:
-    title_placeholder: 'Per exemple: Qui vol unir-se al grup de treball?'
-    details_placeholder: Explica quins compromisos comporta, o dóna detalls de com participar.
     pct_of_target: "% de l'objectiu"
     agree_target_helptext: Quin és el nombre objectiu de voluntaris que t'agradaria tenir?
     agree_target_label: Número objectiu
   poll_count_options:
-    'yes': Sí
-    'no': 'No'
     accept: Acceptar
     decline: Declinar
-  poll_count_vote_form:
-    reason_label: Missatge
-    reason_placeholder: Deixeu un missatge si ho considereu oportú
+    'yes': Sí
+    'no': 'No'
   poll_common_percent_voted:
     sentence: "%{numerator} usuaris de %{denominator} ja han votat (%{percent}%)"
     target_progress: "%{percent}% de l'objectiu assolit. (%{num}/%{target})"
   poll_meeting_chart_panel:
     total: Total
+  poll_remove_vote:
+    title: Eliminar el teu vot?
+    helptext: Esteu segur que voleu eliminar el vostre vot? Apareixeràs com a indecís i podràs tornar a votar més tard si ho desitja.
+    confirm: Elimina el vot
+    success: S'ha eliminat el vot
   poll_poll_vote_form:
     stance_created: S'ha creat el vot
     stance_updated: S'ha actualitzat el vot
@@ -2097,354 +2242,14 @@ ca:
     stance_updated: S'ha actualitzat la disponibilitat
     reason_placeholder: Expliqueu quan esteu disponible (o ocupat), en cas que l'autor vulgui afegir opcions.
   poll_dot_vote_vote_form:
+    dots_remaining: Queden %{count} punts
     too_many_dots: Heu utilitzat massa punts
     stance_created: S'ha creat el vot
     stance_updated: S'ha actualitzat el vot
-    dots_remaining: Queden %{count} punts
   poll_ranked_choice_vote_form:
+    helptext: Arrossegueu i deixeu anar les opcions per ordre de preferència (1 és la vostra opció preferida). Les teves %{count} opcions principals es registraran.
     stance_created: S'ha enregistrat l'elecció
     stance_updated: S'ha actualitzar l'elecció
-    helptext: Arrossegueu i deixeu anar les opcions per ordre de preferència (1 és la vostra opció preferida). Les teves %{count} opcions principals es registraran.
-  thread_item:
-    removed: Element eliminat
-    deleted_group: Grup eliminat
-    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha respost a <strong>%{title}</strong>"
-    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha editat el títol del fil "
-    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha editat el context del fil "
-    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha modificat la privacitat del fil"
-    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha editat el fil "
-    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha mogut el fil des de  <strong>%{title}</strong>"
-    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha tancat el fil"
-    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha reobert el fil "
-    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha creat una bifurcació d'aquest fil : <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha compartit un resultat"
-    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha reobert %{polltype}"
-    poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha tancat %{polltype}"
-    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha obert una %{polltype}"
-    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha editat %{polltype}"
-    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha afegit opcions a %{polltype}"
-    poll_expired: "%{polltype} tancada"
-    stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha votat a: <strong>%{title}</strong>"
-    event_removed: S'ha eliminat del fil
-    invite_only_thread: Convida només un fil
-    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha actualitzat el seu vot a: <strong>%{title}</strong>"
-  add_poll_to_thread_modal:
-    success: S'ha afegit %{pollType} al fil!
-  auth_form:
-    youre_invited: Us han convidat a unir-vos a %{group_name}.
-    youre_invited_discussion: Us han convidat a unir-vos a la discussió.
-    youre_invited_poll: Us han convidat a votar
-    existing_account_can_sign_in: Si ja sou usuari de %{site_name}, inicieu la sessió amb el vostre compte
-    sign_in_to_loomio: Inicia la sessió a %{site_name}
-    sign_in_help: Teniu problemes per iniciar la sessió?
-    sign_in: Inicia la sessió
-    continue: Continua
-    create_account: Crea un compte
-    sign_in_as: Inicia la sessió com %{name}
-    continue_with_email: Continua amb el correu electrònic
-    or_enter_your_email: 'O introduïu la vostra adreça de correu electrònic '
-    enter_your_name: Introduïu el vostre nom
-    more_providers: Més
-    email_not_present: És necessari introduir una adreça de correu electrònic
-    invalid_email: L'adreça de correu electrònic no és vàlida
-    invalid_password: Les contrasenyes no concorden
-    invalid_token: No s'ha pogut iniciar la sessió amb aquest identificador. Clica més avall per rebre'n un altre.
-    account_locked: El vostre compte s'ha bloquejat per massa intents fallits d'iniciar sessió.Comproveu el vostre correu electrònic per obtenir un enllaç de desbloqueig.
-    email_not_found: No s'ha trobat un compte amb aquesta adreça de correu
-    email_taken: Aquesta adreça de correu ja està registrada
-    email_placeholder: tu@exemple.com
-    login_with_token: Ja està tot llest! Cliqueu l'enllaç de sota per continuar.
-    login_link_helptext: Cliqueu el botó de sota i us enviarem un enllaç per iniciar la sessió.
-    enter_your_password: Introduïu la contrasenya per continuar
-    check_spam_folder: Si no rebeu el correu aviat, comproveu la carpeta del correu brossa
-    sign_up_helptext: Completeu aquest formulari per crear un compte d'usuari
-    name_placeholder: El teu nom
-    name_required: 'Introduïu un nom '
-    terms_required: Heu d'acceptar els termes de servei
-    account_inactive: Sembla que s'ha desactivat el compte amb el correu %{email}!
-    privacy_notice: Mai vendrem la teva informació. <br><a href='%{privacyUrl}' target='_blank'>Política de privacitat</a>
-    welcome: Nou a %{siteName}?
-    welcome_back: Benvingut de nou, %{name}!
-    forgot_password: He oblidat la meva contrasenya
-    login_link: Envia un correu per iniciar la sessió
-    sign_in_via_email: Inicia la sessió a través de correu electrònic
-    set_password: Estableix la contrasenya
-    set_password_helptext: Voleu utilitzar una contrasenya la propera vegada?
-    hello: Hola, %{name}!
-    new_to_loomio: És la vostra primera visita a %{site_name}?
-    already_a_user: Ja teniu un compte?
-    email_address_of_existing_account: Introduïu l'adreça de correu electrònic del compte ja existent
-    link_accounts: Vincula comptes
-    check_your_email: Comprova el teu correu electrònic!
-    login_link_sent: Hem enviat un correu a %{email}.
-    instructions: Cliqueu per iniciar sessió, o introduïu el codi de més avall.
-    invalid_code: El codi no coincideix. Comproveu el correu i proveu-ho de nou.
-    password_link_sent: Hem enviat un correu a %{email} amb instruccions per establir la vostra contrasenya.
-    reactivate_link_sent: Hem enviat un correu amb instruccions per reactivar el vostre compte.
-    signed_in: S'ha iniciat la sessió correctament.
-    email_verified: S'ha verificat el correu electrònic correctament.
-    name: Nom
-    email: Correu electrònic
-    password: Contrasenya
-    reactivate: Reactiva el compte
-    code: '000000'
-    sign_up_or_log_in: Creeu un compte o inicieu la sessió a %{site_name}
-    sign_up_as: Crea un compte com a %{email}
-    invitation_required: Necessites una invitació per crear un compte. Seguiu l'enllaç del correu electrònic d'invitació per continuar.
-    i_accept_all: Accepto els %{termsLink} i %{privacyLink}
-    newsletter_label: Vull rebre el %{link}
-    instructions_code: 'Introduïu el codi d''aquest correu electrònic:'
-    too_many_attempts: Massa intents; prova de fer clic a l'enllaç del correu electrònic per iniciar la sessió.
-    continue_with_provider: Continua amb %{provider}
-  chatbot:
-    webhook_url: URL del webhook
-    username: Nom d'usuari
-    password: Contrasenya
-    slack: Slack
-    microsoft_teams: Microsoft Teams
-    configure_chatbot: Configura el chatbot
-    test_connection: Prova de connexió
-    test_connection_ok: Té bona pinta! Hauríeu de veure un missatge al canal
-    test_connection_bad: Alguna cosa no funciona amb la configuració
-    name: Nom del chatbot
-    connection_test_successful: La prova de connexió del bot de Loomio ha estat correcta!
-    chatbot: Chatbot
-    chatbots: Chatbots
-    saved: Chatbot guardat!
-    homeserver_url: URL del servidor domèstic
-    channel: Canal
-    access_token: Fitxa d'accés
-    add_chatbot: Afegeix un chatbot
-    matrix: Matriu
-    discord: Discòrdia
-    mattermost: El més important
-    event_kind_helptext: Seleccioneu els esdeveniments dels quals el bot sempre rebrà una notificació. Si no n'esteu segur, deixeu-los tots apagats.
-    notification_only_label: Envia només el títol de la notificació
-    check_for_test_message: Comproveu la vostra sala de xat si hi ha un missatge del bot!
-  webhook:
-    integrations: Integracions
-    webhooks: Webhooks
-    format: Format
-    formats:
-      markdown: Markdown (per Mattermost, Zapier i altres)
-      microsoft: Microsoft Teams
-      slack: Slack
-      discord: Discòrdia
-    we_have_guides: 'Vegeu les nostres <a href="%{url}" target="_blank">guies de configuració de webhook</a> per trobar ajuda per connectar el vostre servei.
-
-      '
-    add_webhook: Afegeix webhook
-    url_label: URL del webhook
-    url_placeholder: https://hooks.exemple.com/...
-    name_label: Nom
-    event_kinds:
-      new_discussion: S'ha obert un fil
-      discussion_edited: S'ha editat un fil
-      poll_edited: S'ha editat una enquesta
-      new_comment: S'ha deixat un comentari
-      poll_created: S'ha obert una enquesta
-      stance_created: S'ha emès un vot
-      poll_expired: Una enquesta finalitza
-      poll_closed_by_user: S'ha tancat manualment una enquesta
-      poll_reopened: S'ha reobert la votació d'una enquesta
-      outcome_created: S'ha compartit un resultat
-      stance_updated: Es canvia un vot
-      poll_closing_soon: Una enquesta es tancarà aviat
-      outcome_updated: S'actualitza un resultat
-      outcome_review_due: S'ha de fer una revisió dels resultats
-    include_body_label: Inclou cos del missatge amb notificació
-    api_keys: Claus API
-    webhook: Webhook
-    add_api_key: Afegeix una clau API
-    edit_api_key: Edita la clau de l'API
-    api: API
-    subtitle: Connecteu-vos a Loomio amb la resta de les vostres eines amb la nostra API
-    deprecated: Aquesta API està obsoleta. Passeu a APIv2 (vegeu els documents de l'API al menú de configuració del vostre grup)
-    show_docs: Consulteu l'ús de l'API
-    save_to_show_docs: Després de desar, torna aquí per trobar la teva clau d'API
-    edit_integration: Edita la integració
-    add_integration: Afegeix integració
-    success: Integració afegit!
-    remove: Elimina la integració
-    confirm_remove: 'Esteu segur que voleu eliminar la integració: %{name}?'
-    removed: S'ha eliminat la integració
-    name_placeholder: Doneu un nom a aquesta integració perquè la pugueu identificar
-    event_kind_helptext: De quins esdeveniments voleu que es notifiqui el webhook?
-    permissions_explaination: Seleccioneu quines accions es poden dur a terme mitjançant aquesta integració
-    permissions:
-      show_discussion: mostrar la discussió
-      create_discussion: crear discussió
-      create_poll: crear una enquesta
-      show_poll: mostrar l'enquesta
-      read_memberships: llegir membres
-      manage_memberships: gestionar les pertinences (afegir o eliminar membres del grup)
-  powered_by:
-    slogan: Prenem millors decisions junts
-    powered_by_loomio: Impulsat per Loomio
-    privacy_policy: Política de privacitat
-    terms_of_service: Termes del servei
-    front_page: Portada
-    this_is_loomio_md: Loomio és una aplicació per prendre decisions junts. [Prova gratis](https://www.loomio.com)
-  group_survey:
-    categories:
-      community: Comunitat
-      government: Govern/Govern local
-      other: Altres
-      party: Partit polític
-      coop: Cooperativa
-      union: Unió
-      board: Govern i juntes
-      nonprofit: Sense ànim de lucre
-      membership: Organització de membres
-      professional: Empresa de serveis professionals
-      self_managing: Organització autogestionada
-    describe_other: Seleccioneu la categoria que millor descrigui el vostre grup
-  tasks:
-    tasks: Tasques
-    your_tasks: Les teves tasques
-    permission_denied: No teniu permís per actualitzar aquesta tasca
-    due_date: Data de venciment
-    send_reminder: Envia un recordatori (si no s'ha fet)
-    no_reminder: Cap recordatori
-    on_due_date: En data de venciment
-    1_day_before: 1 dia abans
-    2_day_before: 2 dies abans
-    3_day_before: 3 dies abans
-    7_day_before: 7 dies abans
-    task_placeholder: Introduïu una tasca i @mencioneu algú per assignar-la
-    add_due_date: Afegeix una data de venciment
-    task_updated_done: Tasca marcada com a feta!
-    task_updated_not_done: Tasca marcada com a no feta
-    no_tasks_assigned: No hi ha cap tasca assignada
-  doctypes:
-    youtube_video: Vídeo de YouTube
-    image: Imatge
-    pdf: PDF
-    excel: Full de càlcul Excel
-    document: Document
-    csv: Fitxer CSV
-    video: Vídeo
-    text: Fitxer de text
-    google_doc: Google Doc
-    google_sheet: Full de càlcul de Google
-    google_drive: Google Drive
-    pull_request: Sol·licitud d'extracció
-    trello_board: Junta de Trello
-    trello_card: Targeta Trello
-  email_to_group:
-    email_to_group_settings: Configuració de correu electrònic a grup
-    email_to_group_address: Adreça de correu electrònic al grup
-    start_threads_via_email: Inicieu fils per correu electrònic
-    your_address_for_this_group: La teva adreça de correu electrònic per a aquest grup
-    address_starts_threads_as_you: 'No comparteixis aquesta adreça: qualsevol persona que la tingui pot iniciar fils com tu.'
-    generate_new_address: Genera una nova adreça
-    copy_address: Copia l'adreça
-    email_me_this_address: Envieu-me aquesta adreça per correu electrònic
-    email_address_sent_to_you: Adreça de correu electrònic enviada a vostè
-    email_address_copied_to_clipboard: S'ha copiat l'adreça de correu electrònic al porta-retalls
-    new_address_generated: S'ha generat una nova adreça de correu electrònic al grup
-    generate_new_address_question: Voleu generar una nova adreça de correu electrònic al grup?
-    generate_new_address_warning: Totes les vostres adreces de correu electrònic a loomio existents deixaran de funcionar. No hi ha cap desfer. Endavant?
-    not_available_to_trial_or_demo: Aquesta funció no està disponible per a grups de prova o de demostració
-    review_email: Revisa el correu electrònic
-    add_alias: Afegeix un àlies
-    who_is_the_owner_of_email: Qui és el propietari de %{email}?
-    is_name_the_owner_of_email: "%{name} és el propietari de %{email}?"
-    all_email_will_belong_to_name: Tots els missatges de %{email} s'atribuiran a %{name}
-    email_aliases: Àlies i adreces ignorades
-    belongs_to_name: Pertany a %{name}
-    block_email: Bloquejar l'adreça
-    no_emails_to_release: No hi ha correus electrònics esperant el llançament
-    release_rules: Normes d'alliberament
-    confirm_block: Bloquejar aquesta adreça electrònica?
-    confirm_block_body: Aquest correu electrònic i qualsevol altre correu electrònic de %{sender} s'ignorarà.
-    confirm_delete: Vols suprimir aquest correu electrònic?
-    confirm_delete_body: Aquest correu electrònic se suprimirà. Els futurs correus electrònics de %{sender} no es veuran afectats.
-    unreleased_emails: Correus electrònics no publicats
-    start_a_thread_by_email: Inicieu un fil per correu electrònic
-    email_released: Correu electrònic publicat i àlies creat
-    send_email_to_start_thread: Envieu un correu electrònic a aquesta adreça per iniciar un fil al vostre grup.
-    subject_body_attachments: L'assumpte del correu electrònic es converteix en el títol del fil, el cos del correu electrònic es converteix en la descripció i qualsevol fitxer adjunt s'adjuntarà al fil.
-    forward_email_to_move_conversation: 'Consell: reenvieu una conversa per correu electrònic a Loomio quan necessiteu prendre una decisió o mantenir un registre.'
-  email_to_group_mailer:
-    your_email_address_to_start_threads_in_group: La teva adreça de correu electrònic per iniciar fils a %{group}
-  search_modal:
-    all_content: Tot el contingut
-    best_match: Millor coincidència
-    any_tag: Qualsevol etiqueta
-    all_subgroups: Tots els subgrups
-    parent_only: Només pares
-  thread_template:
-    browse_public_templates: Exploreu la galeria de plantilles
-    thread_template_settings: Configuració de la plantilla de fil
-    start_a_new_thread: Inicieu un fil nou
-    thread_template_saved: S'ha desat la plantilla del fil
-    these_are_public_templates: Aquestes plantilles estan disponibles perquè les copieu o modifiqueu per adaptar-les al vostre grup
-    these_are_templates: Aquestes són les plantilles de fil del vostre grup. Les plantilles us guien a través dels processos comuns de presa de decisions.
-    default_title_label: Títol per defecte
-    default_title_hint: Ompliu prèviament el camp del títol amb text editable. Això és opcional; deixeu-lo en blanc si no esteu segurs.
-    title_placeholder_label: Exemple de títol
-    title_placeholder_hint: Un exemple per mostrar al fons del camp del títol
-    title_placeholder_placeholder: Per exemple, aquest és el que sembla el text de fons
-    example_description_label: Exemple de descripció
-    example_description_placeholder: Proporcioneu una plantilla que la gent pugui utilitzar per iniciar un fil
-    hidden_templates: Plantilles amagades
-    confirm_delete: Esteu segur que voleu suprimir permanentment aquesta plantilla de fil? No se suprimirà cap fil com a resultat d'això.
-    add_proposal_or_poll_template: Afegeix una proposta o una plantilla d'enquesta
-    recommended_proposal_or_poll_templates: Plantilles de proposta o enquesta recomanades
-    decision_templates: Plantilles de decisió
-    decision_templates_help: Seleccioneu qualsevol proposta o plantilla d'enquesta que ajudin a completar aquest procés.
-    share_in_template_gallery: Comparteix aquesta plantilla a la galeria de plantilles pública
-  user_name_modal:
-    user_name_updated: Nom d'usuari actualitzat
-    set_user_name: Estableix el nom d'usuari
-  thread_preview:
-    replies_count: "%{count} respostes"
-    unread_count: "%{count} sense llegir"
-  poll_option_form:
-    edit_option: Opció d'edició
-    option_name: Nom de l'opció
-    option_name_hint: Un nom curt per a aquesta opció
-    option_name_validation: El millor és mantenir el nom curt i posar detall al camp "Significat".
-    icon: Icona
-    meaning: Significat
-    meaning_hint: Una o dues frases que expliquen què significa triar aquesta opció. Opcional
-    prompt: Indicació de motiu
-    prompt_hint: Una pregunta per incitar als votants a compartir el seu raonament o reconsiderar la seva posició. Opcional
-    please_select_an_icon: Seleccioneu una icona
-  poll_common_close_form:
-    title: Tancar %{poll_type} ara?
-    helptext: Esteu segur que voleu tancar aquest %{poll_type} abans i compartir un resultat?
-    close_poll_type: Tanca %{poll_type}
-    poll_type_closed: "%{poll_type} tancat"
-  poll_common_wip_field:
-    voting_enabled: S'ha activat la votació
-    enable_voting: Activa la votació
-    title: Desactiva la votació
-    past_tense: Votació desactivada
-    draft_mode: Mode d'esborrany
-    disable_voting_during_development: Aquest %{poll_type} no està preparat per ser votat
-    helptext: Aquest %{poll_type} és un treball en curs. Podeu activar la votació més tard.
-    voting_open: Votació oberta
-    this_is_ready_for_voting: aquest %{poll_type} està llest per votar
-  record_modal:
-    record_video: Grava vídeo
-    record_audio: Gravar àudio
-    record: Registre
-    stop: Atura
-    no_mic: No s'ha pogut trobar un micròfon
-    no_camera: No s'ha pogut trobar una càmera
-    listen_to_audio: Escolta l'àudio
-    watch_video: Mira el vídeo
-    audio_transcript: 'Transcripció d''àudio: %{text}'
-    why_type_when_you_can_talk: Per què escriure quan pots parlar? Envia una gravació de veu
-    transcript_included: S'adjuntarà una transcripció de la gravació al vostre missatge
-  poll_remove_vote:
-    title: Eliminar el teu vot?
-    helptext: Esteu segur que voleu eliminar el vostre vot? Apareixeràs com a indecís i podràs tornar a votar més tard si ho desitja.
-    confirm: Elimina el vot
-    success: S'ha eliminat el vot
   poll_templates:
     proposal:
       process_subtitle: Plantejar una proposta per prendre una decisió
@@ -2510,6 +2315,9 @@ ca:
       process_introduction: <p>La proposta de comprovació Sense és una bona manera d'obtenir comentaris, convidar preguntes i descobrir inquietuds. Ajuda a aclarir i millorar una proposta abans de passar a una decisió.</p><p> Sense control permet a la gent saber que s'està formant una proposta i els anima a participar. És una oportunitat per escoltar a la gent, sentir com se senten i respondre adequadament, obrint el potencial per incorporar les seves contribucions per prendre una millor decisió.</p><p> Utilitzeu la proposta de comprovació Sense al procés de consentiment per convidar a reaccions i comentaris per millorar la proposta, i en un procés de consens per provar el consens.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Obteniu més informació sobre com utilitzar Sense check al procés de decisió simple</u></a> <span>.</span></p>
       title: Com et veus els nous conceptes de marca?
       details: <h3 id="what-are-you-proposing"><strong>Què estàs proposant?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>Per què és important això?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>Què estàs demanant a la gent que faci?</strong></h3><p></p><p> Com us sembla la proposta? Deixa un comentari o fes un suggeriment de millora.</p><p> Aquesta comprovació Sense és una oportunitat per a la vostra aportació i contribució, per ajudar-nos a prendre una millor decisió.</p>
+      not_sure: No n'estic segur
+      not_sure_meaning: Tinc una pregunta o necessito més temps
+      not_sure_prompt: Quines parts no teniu clares? Com es podria solucionar això?
       looks_good: Té bona pinta
       looks_good_meaning: Estic content d'on va això
       looks_good_prompt: Tens algun comentari o suggeriment per millorar la proposta?
@@ -2519,9 +2327,6 @@ ca:
       concerned: Preocupat
       concerned_meaning: Pot ser que alguna cosa hagi de canviar per donar-me el meu consentiment o acceptar-ho
       concerned_prompt: Quina és la teva preocupació i com es podria abordar?
-      not_sure: No n'estic segur
-      not_sure_meaning: Tinc una pregunta o necessito més temps
-      not_sure_prompt: Quines parts no teniu clares? Com es podria solucionar això?
     gradients_of_agreement:
       process_subtitle: Expressar suport a una proposta en una escala de 8 punts
       process_introduction: <p>La proposta de Gradients d'acord permet als membres d'un grup expressar el seu suport a una proposta en graus a escala, oferint més maneres d'expressar suport que en termes d'"acord" i "en desacord".</p><p> Utilitzeu Gradients d'acord com a ronda preliminar, per provar el suport a una proposta abans de passar a un acord formal.</p><p> Els gradients d'acord permeten a la gent saber que s'està formant una proposta i els anima a participar. És una oportunitat per escoltar a la gent, sentir com se senten i respondre adequadament, obrint el potencial per incorporar les seves contribucions per prendre una millor decisió.</p>
@@ -2585,3 +2390,218 @@ ca:
       accept_prompt: Per què ets voluntari per això?
       decline_meaning: No puc participar
       decline_prompt: Hi ha alguna cosa que t'agradaria dir?
+  thread_item:
+    removed: Element eliminat
+    deleted_group: Grup eliminat
+    invite_only_thread: Convida només un fil
+    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha respost a <strong>%{title}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha editat el títol del fil "
+    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha editat el context del fil "
+    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha modificat la privacitat del fil"
+    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha editat el fil "
+    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha mogut el fil des de  <strong>%{title}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha tancat el fil"
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha reobert el fil "
+    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha creat una bifurcació d'aquest fil : <strong><a href='d/%{key}'>%{title}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha compartit un resultat"
+    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha reobert %{polltype}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha tancat %{polltype}"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha obert una %{polltype}"
+    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha editat %{polltype}"
+    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a>ha afegit opcions a %{polltype}"
+    poll_expired: "%{polltype} tancada"
+    stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha votat a: <strong>%{title}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> ha actualitzat el seu vot a: <strong>%{title}</strong>"
+    event_removed: S'ha eliminat del fil
+  add_poll_to_thread_modal:
+    success: S'ha afegit %{pollType} al fil!
+  auth_form:
+    code: '000000'
+    youre_invited: Us han convidat a unir-vos a %{group_name}.
+    youre_invited_discussion: Us han convidat a unir-vos a la discussió.
+    youre_invited_poll: Us han convidat a votar
+    existing_account_can_sign_in: Si ja sou usuari de %{site_name}, inicieu la sessió amb el vostre compte
+    sign_up_or_log_in: Creeu un compte o inicieu la sessió a %{site_name}
+    sign_in_to_loomio: Inicia la sessió a %{site_name}
+    sign_in_help: Teniu problemes per iniciar la sessió?
+    sign_in: Inicia la sessió
+    continue: Continua
+    create_account: Crea un compte
+    sign_up_as: Crea un compte com a %{email}
+    sign_in_as: Inicia la sessió com %{name}
+    continue_with_provider: Continua amb %{provider}
+    continue_with_email: Continua amb el correu electrònic
+    or_enter_your_email: 'O introduïu la vostra adreça de correu electrònic '
+    enter_your_name: Introduïu el vostre nom
+    invitation_required: Necessites una invitació per crear un compte. Seguiu l'enllaç del correu electrònic d'invitació per continuar.
+    more_providers: Més
+    email_not_present: És necessari introduir una adreça de correu electrònic
+    invalid_email: L'adreça de correu electrònic no és vàlida
+    invalid_password: Les contrasenyes no concorden
+    invalid_token: No s'ha pogut iniciar la sessió amb aquest identificador. Clica més avall per rebre'n un altre.
+    account_locked: El vostre compte s'ha bloquejat per massa intents fallits d'iniciar sessió.Comproveu el vostre correu electrònic per obtenir un enllaç de desbloqueig.
+    email_not_found: No s'ha trobat un compte amb aquesta adreça de correu
+    email_taken: Aquesta adreça de correu ja està registrada
+    email_placeholder: tu@exemple.com
+    login_with_token: Ja està tot llest! Cliqueu l'enllaç de sota per continuar.
+    login_link_helptext: Cliqueu el botó de sota i us enviarem un enllaç per iniciar la sessió.
+    enter_your_password: Introduïu la contrasenya per continuar
+    check_spam_folder: Si no rebeu el correu aviat, comproveu la carpeta del correu brossa
+    sign_up_helptext: Completeu aquest formulari per crear un compte d'usuari
+    i_accept_all: Accepto els %{termsLink} i %{privacyLink}
+    newsletter_label: Vull rebre el %{link}
+    name_placeholder: El teu nom
+    name_required: 'Introduïu un nom '
+    terms_required: Heu d'acceptar els termes de servei
+    account_inactive: Sembla que s'ha desactivat el compte amb el correu %{email}!
+    privacy_notice: Mai vendrem la teva informació. <br><a href='%{privacyUrl}' target='_blank'>Política de privacitat</a>
+    welcome: Nou a %{siteName}?
+    welcome_back: Benvingut de nou, %{name}!
+    forgot_password: He oblidat la meva contrasenya
+    login_link: Envia un correu per iniciar la sessió
+    sign_in_via_email: Inicia la sessió a través de correu electrònic
+    set_password: Estableix la contrasenya
+    set_password_helptext: Voleu utilitzar una contrasenya la propera vegada?
+    hello: Hola, %{name}!
+    new_to_loomio: És la vostra primera visita a %{site_name}?
+    already_a_user: Ja teniu un compte?
+    email_address_of_existing_account: Introduïu l'adreça de correu electrònic del compte ja existent
+    link_accounts: Vincula comptes
+    check_your_email: Comprova el teu correu electrònic!
+    login_link_sent: Hem enviat un correu a %{email}.
+    instructions: Cliqueu per iniciar sessió, o introduïu el codi de més avall.
+    instructions_code: 'Introduïu el codi d''aquest correu electrònic:'
+    too_many_attempts: Massa intents; prova de fer clic a l'enllaç del correu electrònic per iniciar la sessió.
+    invalid_code: El codi no coincideix. Comproveu el correu i proveu-ho de nou.
+    password_link_sent: Hem enviat un correu a %{email} amb instruccions per establir la vostra contrasenya.
+    reactivate_link_sent: Hem enviat un correu amb instruccions per reactivar el vostre compte.
+    signed_in: S'ha iniciat la sessió correctament.
+    email_verified: S'ha verificat el correu electrònic correctament.
+    name: Nom
+    email: Correu electrònic
+    password: Contrasenya
+    reactivate: Reactiva el compte
+  chatbot:
+    configure_chatbot: Configura el chatbot
+    test_connection: Prova de connexió
+    test_connection_ok: Té bona pinta! Hauríeu de veure un missatge al canal
+    test_connection_bad: Alguna cosa no funciona amb la configuració
+    name: Nom del chatbot
+    connection_test_successful: La prova de connexió del bot de Loomio ha estat correcta!
+    chatbot: Chatbot
+    chatbots: Chatbots
+    saved: Chatbot guardat!
+    webhook_url: URL del webhook
+    homeserver_url: URL del servidor domèstic
+    channel: Canal
+    username: Nom d'usuari
+    password: Contrasenya
+    access_token: Fitxa d'accés
+    add_chatbot: Afegeix un chatbot
+    matrix: Matriu
+    slack: Slack
+    discord: Discòrdia
+    mattermost: El més important
+    microsoft_teams: Microsoft Teams
+    event_kind_helptext: Seleccioneu els esdeveniments dels quals el bot sempre rebrà una notificació. Si no n'esteu segur, deixeu-los tots apagats.
+    notification_only_label: Envia només el títol de la notificació
+    check_for_test_message: Comproveu la vostra sala de xat si hi ha un missatge del bot!
+  webhook:
+    integrations: Integracions
+    api_keys: Claus API
+    webhooks: Webhooks
+    webhook: Webhook
+    add_api_key: Afegeix una clau API
+    edit_api_key: Edita la clau de l'API
+    api: API
+    format: Format
+    formats:
+      markdown: Markdown (per Mattermost, Zapier i altres)
+      microsoft: Microsoft Teams
+      slack: Slack
+      discord: Discòrdia
+    subtitle: Connecteu-vos a Loomio amb la resta de les vostres eines amb la nostra API
+    deprecated: Aquesta API està obsoleta. Passeu a APIv2 (vegeu els documents de l'API al menú de configuració del vostre grup)
+    we_have_guides: 'Vegeu les nostres <a href="%{url}" target="_blank">guies de configuració de webhook</a> per trobar ajuda per connectar el vostre servei.
+
+      '
+    add_webhook: Afegeix webhook
+    show_docs: Consulteu l'ús de l'API
+    save_to_show_docs: Després de desar, torna aquí per trobar la teva clau d'API
+    edit_integration: Edita la integració
+    add_integration: Afegeix integració
+    success: Integració afegit!
+    remove: Elimina la integració
+    confirm_remove: 'Esteu segur que voleu eliminar la integració: %{name}?'
+    removed: S'ha eliminat la integració
+    url_label: URL del webhook
+    url_placeholder: https://hooks.exemple.com/...
+    name_label: Nom
+    name_placeholder: Doneu un nom a aquesta integració perquè la pugueu identificar
+    event_kind_helptext: De quins esdeveniments voleu que es notifiqui el webhook?
+    event_kinds:
+      new_discussion: S'ha obert un fil
+      discussion_edited: S'ha editat un fil
+      poll_edited: S'ha editat una enquesta
+      new_comment: S'ha deixat un comentari
+      poll_created: S'ha obert una enquesta
+      stance_created: S'ha emès un vot
+      stance_updated: Es canvia un vot
+      poll_closing_soon: Una enquesta es tancarà aviat
+      poll_expired: Una enquesta finalitza
+      poll_closed_by_user: S'ha tancat manualment una enquesta
+      poll_reopened: S'ha reobert la votació d'una enquesta
+      outcome_created: S'ha compartit un resultat
+      outcome_updated: S'actualitza un resultat
+      outcome_review_due: S'ha de fer una revisió dels resultats
+    permissions_explaination: Seleccioneu quines accions es poden dur a terme mitjançant aquesta integració
+    permissions:
+      show_discussion: mostrar la discussió
+      create_discussion: crear discussió
+      create_poll: crear una enquesta
+      show_poll: mostrar l'enquesta
+      read_memberships: llegir membres
+      manage_memberships: gestionar les pertinences (afegir o eliminar membres del grup)
+    include_body_label: Inclou cos del missatge amb notificació
+  powered_by:
+    this_is_loomio_md: Loomio és una aplicació per prendre decisions junts. [Prova gratis](https://www.loomio.com)
+    slogan: Prenem millors decisions junts
+    powered_by_loomio: Impulsat per Loomio
+    privacy_policy: Política de privacitat
+    terms_of_service: Termes del servei
+    front_page: Portada
+  group_survey:
+    describe_other: Seleccioneu la categoria que millor descrigui el vostre grup
+    categories:
+      party: Partit polític
+      coop: Cooperativa
+      union: Unió
+      board: Govern i juntes
+      nonprofit: Sense ànim de lucre
+      membership: Organització de membres
+      professional: Empresa de serveis professionals
+      self_managing: Organització autogestionada
+      community: Comunitat
+      government: Govern/Govern local
+      other: Altres
+  report:
+    start_on: Comença
+    end_on: Acaba
+    interval: Interval
+    total_users: Total d'usuaris
+    total_threads: Fils totals
+    total_polls: Enquestes totals
+    threads_with_polls: Fils amb enquestes
+    polls_with_outcomes: Enquestes amb resultats
+    actions_per_interval: Accions per %{interval}
+    actions_per_user: Accions per usuari
+    users_per_country: Usuaris per país
+    actions_per_country: Accions per país
+    country: País
+    users: Usuaris
+    day: Dia
+    week: Setmana
+    month: Mes
+    year: Curs
+    country_disclaimer: El país es basa en l'adreça IP de l'usuari i no és molt precís. Considereu-ho només com una guia aproximada.

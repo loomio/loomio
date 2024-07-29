@@ -46,13 +46,11 @@ class GroupSerializer < ApplicationSerializer
              :is_visible_to_public,
              :is_visible_to_parent_members,
              :parent_members_can_see_discussions,
-             :org_memberships_count,
              :org_discussions_count,
              :org_members_count,
              :subscription,
              :subgroups_count,
              :new_host,
-             :secret_token,
              :categorize_poll_templates
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
@@ -68,31 +66,18 @@ class GroupSerializer < ApplicationSerializer
   end
 
   def subscription
-    sub = cache_fetch(:subscriptions_by_group_id, object.id) { Subscription.new }
-
-    if (current_user_membership)
-      {
-        max_members:     sub.max_members,
-        max_threads:     sub.max_threads,
-        plan:            sub.plan,
-        active:          sub.is_active?,
-        renews_at:       sub.renews_at,
-        expires_at:      sub.expires_at,
-        members_count:   sub.members_count
-      }
-    else
-      {
-        max_members:     sub.max_members,
-        max_threads:     sub.max_threads,
-        plan:            sub.plan,
-        active:          sub.is_active?,
-        members_count:   sub.members_count
-      }
-    end
-  end
-
-  def include_secret_token?
-    current_user_membership && current_user_membership.admin
+    sub = cache_fetch(:subscriptions_by_group_id, object.id) { object.subscription || Subscription.new }
+    {
+      max_members:     sub.max_members,
+      max_threads:     sub.max_threads,
+      allow_subgroups: sub.allow_subgroups,
+      plan:            sub.plan,
+      state:           sub.state,
+      active:          sub.is_active?,
+      renews_at:       sub.renews_at,
+      expires_at:      sub.expires_at,
+      members_count:   sub.members_count
+    }
   end
 
   def logo_url
@@ -112,10 +97,6 @@ class GroupSerializer < ApplicationSerializer
   end
 
   private
-  def include_org_memberships_count?
-    object.is_parent?
-  end
-
   def include_org_members_count?
     object.is_parent?
   end

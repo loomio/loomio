@@ -285,12 +285,12 @@ class Group < ApplicationRecord
     reload
   end
 
-  def org_memberships_count
+  def org_members_count
     Membership.active.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
-  def org_members_count
-    Membership.active.where(group_id: id_and_subgroup_ids).count('distinct user_id')
+  def org_accepted_members_count
+    Membership.active.accepted.where(group_id: id_and_subgroup_ids).count('distinct user_id')
   end
 
   def org_discussions_count
@@ -299,12 +299,6 @@ class Group < ApplicationRecord
 
   def org_polls_count
     Group.where(id: id_and_subgroup_ids).sum(:polls_count)
-  end
-
-  def has_max_members
-    parent_group = parent_or_self
-    subscription = Subscription.for(parent_group)
-    subscription.max_members && parent_group.org_memberships_count >= subscription.max_members
   end
 
   def is_trial_or_demo?

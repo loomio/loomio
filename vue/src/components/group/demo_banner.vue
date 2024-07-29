@@ -51,7 +51,7 @@ export default
 <template lang="pug">
 div
   v-overlay(:value="loading")
-  v-alert(outlined color="primary" dense v-if="isDemo")
+  v-alert(variant="tonal" color="primary" density="compact" v-if="isDemo")
     template(v-if="!isLoggedIn")
       .text-center
         span(v-t="'templates.login_to_start_demo'")

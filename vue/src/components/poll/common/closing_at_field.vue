@@ -13,7 +13,7 @@ export default {
     return {
       mdiCalendar,
       mdiClockOutline,
-      closingHour: format(this.poll.closingAt || startOfHour(new Date()), 'HH:mm'),
+      closingHour: format(startOfHour(this.poll.closingAt) || startOfHour(new Date()), 'HH:mm'),
       closingDate: format(this.poll.closingAt || new Date(), 'yyyy-MM-dd'),
       dateToday: format(new Date, 'yyyy-MM-dd'),
       times: hoursOfDay(),
@@ -26,7 +26,7 @@ export default {
   methods: {
     exact,
     updateClosingAt() {
-      const date = parse(`${this.closingDate} ${this.closingHour}`, "yyyy-MM-dd HH:mm", new Date());
+      const date = startOfHour(parse(`${this.closingDate} ${this.closingHour}`, "yyyy-MM-dd HH:mm", new Date()));
       if (isValid(date)) {
         this.poll.closingAt = date;
       }
@@ -37,7 +37,7 @@ export default {
     twelvehour() { return timeFormat() !== 'HH:mm'; },
 
     closingAtHint() {
-      return format(this.poll.closingAt, timeFormat());
+      return format(startOfHour(this.poll.closingAt), timeFormat());
     },
 
     label() {

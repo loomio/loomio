@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, defaults: {format: :json} do
+    post 'hocuspocus', to: 'hocuspocus#create'
+
     namespace :b1 do
       resources :discussions, only: [:create, :show]
       resources :polls, only: [:create, :show]
@@ -60,6 +62,8 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
+      resources :reports, only: [:index]
+      resources :trials, only: [:create]
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
       resources :chatbots, only: [:create, :destroy, :index, :update] do
@@ -152,6 +156,7 @@ Rails.application.routes.draw do
           post :upload_avatar
           post :save_experience
           delete :destroy
+          post :deactivate
         end
         post :remind, on: :member
       end
@@ -243,6 +248,7 @@ Rails.application.routes.draw do
           post :close
           post :reopen
           patch :add_to_thread
+          get :voters
         end
         get  :closed, on: :collection
       end
@@ -300,6 +306,7 @@ Rails.application.routes.draw do
         collection do
           get :audience
           get :count
+          get :new_member_count
           get :search
           get :history
           get :users_notified_count
@@ -307,7 +314,6 @@ Rails.application.routes.draw do
       end
 
       resources :contact_messages, only: :create
-      resources :contact_requests, only: :create
 
       resources :versions, only: [] do
         get :show, on: :collection
@@ -324,6 +330,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/pie_chart', to: 'pie_chart#show'
   post '/direct_uploads', to: 'direct_uploads#create'
 
   get '/users/sign_in', to: redirect('/dashboard')
@@ -352,6 +359,7 @@ Rails.application.routes.draw do
     get 'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
     get 'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
+    get 'mark_notification_as_read/:id/:unsubscribe_token', action: 'mark_notification_as_read', as: :mark_notification_as_read
   end
 
   post '/bug_tunnel' => 'application#bug_tunnel'
@@ -364,12 +372,13 @@ Rails.application.routes.draw do
 
   get '/start_group', to: redirect('/try')
 
-  get 'try'                                => redirect("/g/new")
+  get 'try'                                => 'application#index', as: :start_trial
   get 'dashboard'                          => 'application#index', as: :dashboard
   get 'dashboard/:filter'                  => 'application#index'
   get 'inbox'                              => 'application#index', as: :inbox
   get 'groups'                             => 'application#index', as: :groups
   get 'polls'                              => 'application#index', as: :polls
+  get 'report'                             => 'application#index', as: :report
   get 'explore'                            => 'groups#index',      as: :explore
   get 'profile'                            => 'application#index', as: :profile
   get 'contact'                            => 'application#index', as: :contact
@@ -399,7 +408,6 @@ Rails.application.routes.draw do
   get 'thread_templates/:id'               => 'application#index'
   get 'thread_templates/:id/edit'          => 'application#index'
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
-  get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
   get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group

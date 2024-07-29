@@ -9,7 +9,7 @@ export default {
 <template lang="pug">
 v-btn.help-link.text-medium-emphasis(elevation="0" :href="'https://help.loomio.com/'+path" target="_blank")
   span(v-t="'common.help'")
-  common-icon.ml-1(small name="mdi-open-in-new")
+  common-icon.ml-1(size="small" name="mdi-open-in-new")
 </template>
 
 <style lang="sass">

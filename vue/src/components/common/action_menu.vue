@@ -35,7 +35,7 @@ export default {
       template(v-for="(action, name) in actions")
         template(v-if="action.canPerform()")
           v-list-item(
-            dense
+            density="compact"
             v-if='!action.to'
             :key="name"
             @click="action.perform()"
@@ -44,7 +44,7 @@ export default {
               common-icon(:name="action.icon")
             v-list-item-title(v-t="{path: (action.name || 'action_dock.'+name), args: (action.nameArgs && action.nameArgs()) }")
           v-list-item(
-            dense
+            density="compact"
             v-if='action.to'
             :key="name"
             :to="action.to()"

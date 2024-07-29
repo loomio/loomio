@@ -46,6 +46,8 @@ ActiveAdmin.register Subscription do
       row :max_threads
       row :max_members
       row :max_orgs
+      row :allow_guests
+      row :allow_subgroups
       row :info
     end
 
@@ -65,11 +67,13 @@ ActiveAdmin.register Subscription do
     inputs 'Subscription' do
       input :plan, as: :select, collection: SubscriptionService::PLANS.keys
       input :payment_method, as: :select, collection: Subscription::PAYMENT_METHODS
-      input :state, as: :select, collection: ['active', 'canceled', 'trialing']
+      input :state, as: :select, collection: ['active', 'on_hold', 'pending', 'past_due', 'canceled']
       input :expires_at
       input :max_threads
       input :max_members
       input :max_orgs
+      input :allow_guests
+      input :allow_subgroups
       input :chargify_subscription_id, label: "Chargify Subscription Id"
       input :owner_id, label: "Owner Id"
     end

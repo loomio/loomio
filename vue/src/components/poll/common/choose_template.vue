@@ -161,7 +161,7 @@ export default {
 
 <template lang="pug">
 .poll-common-templates-list
-  thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
+  //- thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
   .d-flex(:class="{'px-4': !discussion}")
     v-chip.mr-1(
       v-for="icon, name in filters"
@@ -171,12 +171,12 @@ export default {
       @click="filter = name"
       :class="'poll-common-choose-template__'+name"
     )
-      common-icon.mr-2(small :name="icon")
+      common-icon.mr-2(size="small" :name="icon")
       span.poll-type-chip-name(v-t="filterLabels[name]")
     template(v-if="userIsAdmin")
       v-spacer
       v-chip(@click="filter = 'admin'" :outlined="filter != 'admin'")
-        common-icon(small name="mdi-cog").mr-2
+        common-icon(size="small" name="mdi-cog").mr-2
         span.poll-type-chip-name(v-t="filterLabels['admin']")
   v-list.decision-tools-card__poll-types(lines="two" density="comfortable")
     template(v-if="filter == 'admin'")
@@ -201,8 +201,8 @@ export default {
           )
             v-list-item-title
               span {{ template.processName }}
-              v-chip.ml-2(x-small outlined v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
-              v-chip.ml-2(x-small outlined v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
+              v-chip.ml-2(size="x-small" v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
+              v-chip.ml-2(size="x-small" v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
             v-list-item-subtitle {{ template.processSubtitle }}
             //- v-list-item-action.handle(v-handle style="cursor: grab")
           template(v-slot:append)

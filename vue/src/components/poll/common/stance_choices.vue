@@ -37,7 +37,7 @@ export default {
       v-for="choice in choices"
       :key="choice.id"
       :class="'poll-common-stance-choice--' + pollType")
-      common-icon(small :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
+      common-icon(size="small" :color="choice.pollOption.color" v-if="!variableScore" name="mdi-check-circle")
       span(:style="{color: choice.pollOption.color}" v-if="variableScore") {{choice.rank || choice.score}}
       span.ml-2.text-medium-emphasis
         | {{ choice.pollOption.optionName() }}

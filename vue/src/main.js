@@ -37,7 +37,7 @@ boot(function(data) {
   PlausibleService.trackPageview();
 
   if (AppConfig.sentry_dsn) {
-    Sentry.configureScope(scope => scope.setUser(pick(Session.user(), ['id', 'name', 'email', 'username'])));
+    Sentry.setUser(pick(Session.user(), ['id', 'name', 'email', 'username']));
   }
   app.use(I18n).use(vuetify).use(router).use(Slicksort)
   app.directive('marked', markedDirective)

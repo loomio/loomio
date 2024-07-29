@@ -1,8 +1,10 @@
 module CleanupService
   def self.delete_orphan_records
-    [Membership,
+    [Group,
+     Membership,
      MembershipRequest,
      Discussion,
+     Subscription,
      DiscussionReader,
      Comment,
      Poll,
@@ -17,6 +19,8 @@ module CleanupService
     end
 
     PaperTrail::Version.where(item_type: 'Motion').delete_all
+    ActiveStorage::Blob.unattached.where("active_storage_blobs.created_at < ?", 7.days.ago).find_each(&:purge_later)
+    
     # ["Comment", "Discussion", "Group", "Membership", "Outcome", "Poll", "Stance", "User"].each do |model|
     #   table = model.pluralize.downcase
     #   # puts PaperTrail::Version.joins("left join #{table} on #{table}.id = item_id and item_type = '#{model}'").where("#{table}.id is null").to_sql

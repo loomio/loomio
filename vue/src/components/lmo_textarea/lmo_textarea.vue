@@ -1,5 +1,4 @@
 <script lang="js">
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 import { defineAsyncComponent } from 'vue'
 
 export default {
@@ -17,10 +16,6 @@ export default {
   components: {
     'md-editor': defineAsyncComponent(() => import('@/components/lmo_textarea/md_editor.vue')),
     'collab-editor': defineAsyncComponent(() => import('@/components/lmo_textarea/collab_editor.vue'))
-  },
-
-  mounted() {
-    RescueUnsavedEditsService.add(this.model);
   },
 
   computed: {

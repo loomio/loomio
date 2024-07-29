@@ -4,8 +4,6 @@ class Notification < ApplicationRecord
   belongs_to :event
 
   validates_presence_of :user, :event
-  validates_presence_of :url, unless: :persisted?
-  validates_uniqueness_of :user_id, scope: :event_id
 
   delegate :eventable, to: :event, allow_nil: true
   delegate :kind, to: :event, allow_nil: true

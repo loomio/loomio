@@ -389,13 +389,11 @@ class Poll < ApplicationRecord
   def admins
     raise "poll.admins only makes sense for persisted polls" if self.new_record?
     User.active.
-      joins("LEFT OUTER JOIN webhooks wh ON wh.group_id = #{self.group_id || 0} AND wh.actor_id = users.id").
       joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.discussion_id || 0} AND dr.user_id = users.id").
       joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
       joins("LEFT OUTER JOIN stances s ON s.participant_id = users.id AND s.poll_id = #{self.id || 0}").
       joins("LEFT OUTER JOIN polls p ON p.author_id = users.id AND p.id = #{self.id || 0}").
-      where("(wh.id IS NOT NULL AND 'create_poll' = ANY(wh.permissions)) OR
-             (m.id  IS NOT NULL AND m.revoked_at IS NULL AND m.admin = TRUE) OR                                             /* group admin */
+      where("(m.id  IS NOT NULL AND m.revoked_at IS NULL AND m.admin = TRUE) OR                                             /* group admin */
              (p.author_id = users.id AND p.group_id IS NOT NULL AND m.id IS NOT NULL) OR                                    /* poll author and group member */
              (p.author_id = users.id AND p.group_id IS NULL) OR                                                             /* poll author and no group */
              (p.author_id = users.id AND dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR                /* poll author and discussion guest */

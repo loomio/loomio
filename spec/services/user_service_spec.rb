@@ -1,6 +1,6 @@
 require 'rails_helper'
-describe UserService do
 
+describe UserService do
   describe 'deactivate' do
     before do
       @user = FactoryBot.create :user
@@ -14,19 +14,66 @@ describe UserService do
       expect(@user.reload.deactivated_at).to be_present
     end
 
-    it "changes their email address" do
-      ENV['SCRUB_USER_DEACTIVATE'] = '1'
-      UserService.deactivate(user: @user, actor: @user)
-      @user.reload
-      expect(@user.email).to match /deactivated-user-.+@example.com/
-    end
-
-    it "changes their email address" do
-      ENV['SCRUB_USER_DEACTIVATE'] = nil
+    it "does not change their email address" do
       email = @user.email
       UserService.deactivate(user: @user, actor: @user)
       @user.reload
       expect(@user.email).to eq email
+    end
+  end
+
+  describe 'redact' do
+    before do
+      @user = FactoryBot.create :user
+      @group = FactoryBot.create :group
+      @membership = @group.add_member! @user
+      @discussion = FactoryBot.create :discussion, author: @user, group: @group
+    end
+
+    it "deactivates the user" do
+      zombie = UserService.redact(user: @user, actor: @user)
+      expect(@user.reload.deactivated_at).to be_present
+    end
+
+    it "removes all personally identifying information" do
+      user_id = @user.id
+      UserService.redact(user: @user, actor: @user)
+      @user.reload
+
+      # expect nil
+      expect(@user.email).to be nil
+      expect(@user[:name]).to be nil
+      expect(@user.username).to be nil
+      expect(@user.avatar_initials).to be nil
+      expect(@user.country).to be nil
+      expect(@user.region).to be nil
+      expect(@user.city).to be nil
+      expect(@user.unlock_token).to be nil
+      expect(@user.current_sign_in_ip).to be nil
+      expect(@user.last_sign_in_ip).to be nil
+      expect(@user.encrypted_password).to be nil
+      expect(@user.reset_password_token).to be nil
+      expect(@user.reset_password_sent_at).to be nil
+      expect(@user.detected_locale).to be nil
+      expect(@user.legal_accepted_at).to be nil
+
+      # expect empty string
+      expect(@user.short_bio).to eq ''
+      expect(@user.location).to eq ''
+
+      # expect false
+      expect(@user.email_newsletter).to be false
+      expect(@user.email_verified).to be false
+
+      expect(PaperTrail::Version.where(item_type: 'User', item_id: user_id).count).to be 0
+
+    end
+
+    it 'sets email_sha256' do
+      email = @user.email
+      UserService.redact(user: @user, actor: @user)
+      @user.reload
+      expect(@user.email_sha256).to eq Digest::SHA256.hexdigest(email)
     end
   end
 

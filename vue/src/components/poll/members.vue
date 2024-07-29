@@ -103,6 +103,8 @@ export default {
         this.fetchStances()
 
         this.reset = !this.reset;
+      }).catch(error => {
+        Flash.custom(error.error, 'error', 5000);
       }).finally(() => {
         this.saving = false;
       });
@@ -186,7 +188,7 @@ v-card.poll-members-form
       v-btn.poll-members-form__submit(color="primary" :disabled="!someRecipients" :loading="saving" @click="inviteRecipients" )
         span(v-t="'common.action.invite'" v-if="poll.notifyRecipients")
         span(v-t="'poll_common_form.add_voters'" v-else)
-    v-alert(dense type="warning" text v-if="someRecipients && !poll.notifyRecipients")
+    v-alert(density="dense" type="warning" text v-if="someRecipients && !poll.notifyRecipients")
       span(v-t="'poll_common_form.no_notifications_warning'")
     v-textarea(v-if="poll.notifyRecipients && someRecipients" filled rows="3" v-model="message" :label="$t('announcement.form.invitation_message_label')" :placeholder="$t('announcement.form.invitation_message_placeholder')")
   v-list.poll-members-form__list
@@ -201,7 +203,7 @@ v-card.poll-members-form
         span.mr-2 {{user.nameWithTitle(poll.group())}}
         v-chip.mr-1(v-if="isGuest[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
         v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
-
+        v-chip.mr-1(v-if="!user.emailVerified" outlined x-small label v-t="'announcement.members_list.has_not_joined_yet'" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
       template(v-slot:append)
         v-menu(offset-y)
           template(v-slot:activator="{attrs}")

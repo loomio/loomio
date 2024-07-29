@@ -22,16 +22,31 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.suggestion-list(outlined :elevation=8 v-show='query' ref='suggestions' :style="positionStyles")
-  v-list(v-if="mentionable.length" dense)
-    v-list-item(v-for='(user, index) in mentionable' :key='user.id' :class="{ 'v-list-item--active': navigatedUserIndex === index }" @click='$emit("select-user", user)')
+v-card.suggestion-list(
+  outlined
+  :elevation=8
+  v-show='query'
+  ref='suggestions'
+  :style="positionStyles")
+  v-list(v-if="mentionable.length" density="dense")
+    v-list-item(
+      v-for='(user, index) in mentionable'
+      :key='user.id'
+      :class="{ 'v-list-item--active': navigatedUserIndex === index }"
+      @click='$emit("select-user", user)'
+    )
       v-list-item-title
         | {{ user.name }}
         span.text-medium-emphasis(v-if="user.id == currentUser.id") &nbsp; ({{ $t('common.you') }})
         span.text-medium-emphasis(v-if="showUsername") &nbsp; {{ "@" + user.username }}
-  v-list(v-else dense)
+  v-list(v-else density="dense")
     v-list-item
-      v-progress-circular(v-if="loading" indeterminate color='primary' size='24' width="2")
+      v-progress-circular(
+        v-if="loading"
+        indeterminate
+        color='primary'
+        size='24'
+        width="2")
       span(v-else v-t="'common.no_results_found'")
   .d-flex.justify-center
 </template>

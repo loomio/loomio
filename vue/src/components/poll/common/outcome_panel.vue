@@ -30,7 +30,7 @@ export default {
 v-alert.my-4.poll-common-outcome-panel(
   v-if="outcome"
   color="primary"
-  outlined)
+  variant="tonal")
   h2.text-h6(v-t="'poll_common.outcome'")
   div.my-2.text-body-2
     user-avatar(:user="outcome.author()", :size="24").mr-2

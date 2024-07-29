@@ -183,10 +183,8 @@ describe "poll abilities" do
 
         context "anyone in group can vote" do
           before do
-            poll.update(specified_voters_only: false)
-            guest_poll.update(specified_voters_only: false) 
+            guest_poll.update(specified_voters_only: false)
           end
-          it {should be_able_to(:announce, poll) }
           it {should be_able_to(:announce, guest_poll) }
         end
       end

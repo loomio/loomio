@@ -1,13 +1,42 @@
 require 'rails_helper'
 
 describe 'GroupService' do
-  let(:user) { create(:user) }
-  let(:group) { build(:group) }
-  let(:guest_group) { build(:guest_group) }
-  let(:parent) { create(:group) }
-  let(:subgroup) { build(:group, parent: parent) }
+
+  describe 'invite' do
+    let(:user) { create(:user) }
+    let(:group) { create(:group, name: 'test invite') }
+    let(:subscription) { Subscription.create(max_members: nil) }
+
+    before do
+      group.subscription = subscription
+      group.save!
+    end
+
+    it 'invites a user by email' do
+      expect(group.memberships.count).to eq 1
+      GroupService.invite(group: group, actor: group.creator, params: {recipient_emails: ['test@example.com']})
+      expect(group.memberships.count).to eq 2
+    end
+
+    it 'restricts group to subscription.max_members (single)' do
+      expect(group.memberships.count).to eq 1
+      subscription.update(max_members: 1)
+      expect { GroupService.invite(group: group, actor: group.creator, params: {recipient_emails: ['test@example.com']}) }.to raise_error Subscription::MaxMembersExceeded
+      expect(group.memberships.count).to eq 1
+    end
+
+    it 'restricts group to subscription.max_members (multiple)' do
+      expect(group.memberships.count).to eq 1
+      subscription.update(max_members: 2)
+      expect { GroupService.invite(group: group, actor: group.creator, params: {recipient_emails: ['test@example.com', 'test2@example.com']}) }.to raise_error Subscription::MaxMembersExceeded
+      expect(group.memberships.count).to eq 1
+    end
+  end
 
   describe 'create' do
+    let(:user) { create(:user) }
+    let(:group) { build(:group) }
+
     it 'creates a new group' do
       expect { GroupService.create(group: group, actor: user) }.to change { Group.count }.by(1)
       expect(group.reload.creator).to eq user

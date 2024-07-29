@@ -94,21 +94,23 @@ export default {
     v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
-    v-spacer
     tags-display(:tags="discussion.tags" :group="discussion.group()")
+    v-spacer
     v-chip(
       v-if="discussion.private"
-      small outlined
+      size="small"
+      variant="tonal"
       :title="$t('discussion_form.privacy_private')"
-      )
-      i.mdi.mdi-lock-outline.mr-1
+    )
+      common-icon.mr-1(name="mdi-lock-outline")
       span(v-t="'common.privacy.private'")
     v-chip(
       v-if="!discussion.private"
-      small outlined
+      size="small"
+      variant="tonal"
       :title="$t('discussion_form.privacy_public')"
-      )
-      i.mdi.mdi-earth.mr-1
+    )
+      common-icon.mr-1(name="mdi-earth")
       span(v-t="'common.privacy.public'")
 
   strand-title(:discussion="discussion")

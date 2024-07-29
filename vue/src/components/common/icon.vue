@@ -48,6 +48,7 @@ import {
   mdiDatabaseArrowRightOutline,
   mdiDatabaseExport,
   mdiDelete,
+  mdiDeleteCircle,
   mdiDeleteOutline,
   mdiDeleteRestore,
   mdiDotsHorizontal,
@@ -107,6 +108,7 @@ import {
   mdiOpenInNew,
   mdiPalette,
   mdiPaperclip,
+  mdiPauseCircle,
   mdiPencil,
   mdiPin,
   mdiPinOff,
@@ -151,9 +153,9 @@ export default {
       type: String,
       default: undefined
     },
-    dense:  {
-      type: Boolean,
-      default: false
+    density:  {
+      type: String,
+      default: undefined
     },
     disabled:  {
       type: Boolean,
@@ -227,6 +229,7 @@ export default {
       mdiDatabaseExport,
       mdiDiscord,
       mdiDelete,
+      mdiDeleteCircle,
       mdiDeleteOutline,
       mdiDeleteRestore,
       mdiDotsHorizontal,
@@ -286,6 +289,7 @@ export default {
       mdiOpenInNew,
       mdiPalette,
       mdiPaperclip,
+      mdiPauseCircle,
       mdiPencil,
       mdiPin,
       mdiPinOff,
@@ -340,7 +344,7 @@ export default {
 <template lang="pug">
 v-icon(
   color="color"
-  :dense="dense"
+  :density="density"
   :left="left"
   :light="light"
   :right="right"

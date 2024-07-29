@@ -23,8 +23,4 @@ class GroupsController < ApplicationController
       format.html
     end
   end
-
-  def stats
-    @group = load_and_authorize(:group, :export)
-  end
 end

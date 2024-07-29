@@ -42,7 +42,7 @@ v-menu
         v-bind="props"
         :title="$t('formatting.colors')"
       )
-        common-icon(small name="mdi-palette")
+        common-icon(size="small" name="mdi-palette")
   v-card.color-picker.pa-2
     .swatch.swatch-color(v-for="(value, key) in colors"
                          :class="{'swatch--selected': key == activeColorKey }"

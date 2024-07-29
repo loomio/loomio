@@ -6,7 +6,6 @@ import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
 export default new class StanceService {
   makeAdmin = {
@@ -71,12 +70,13 @@ export default new class StanceService {
         name: 'common.action.reply',
         icon: 'mdi-reply',
         dock: 1,
-        canPerform() { 
+        canPerform() {
           return stance.castAt &&
           !stance.discardedAt &&
           !stance.revokedAt &&
           !stance.poll().anonymous &&
           stance.poll().showResults() &&
+          stance.poll().discussionId &&
           AbilityService.canAddComment(stance.poll().discussion());
         },
         perform() {

@@ -2,8 +2,8 @@ import BaseModel    from '@/shared/record_store/base_model';
 import AppConfig    from '@/shared/services/app_config';
 import HasDocuments from '@/shared/mixins/has_documents';
 import HasTranslations  from '@/shared/mixins/has_translations';
-import {filter, some, map, each, compact} from 'lodash-es';
 import Records from '@/shared/services/records';
+import {filter, some, map, each, compact, sortBy} from 'lodash-es';
 
 export default class GroupModel extends BaseModel {
   static singular = 'group';
@@ -157,7 +157,7 @@ export default class GroupModel extends BaseModel {
   }
 
   selfAndSubgroupIds() {
-    return [this.id].concat(Records.groups.find({parentId: this.id}).map(g => g.id));
+    return [this.id].concat(sortBy(Records.groups.find({parentId: this.id}), 'name').map(g => g.id));
   }
 
   membershipFor(user) {

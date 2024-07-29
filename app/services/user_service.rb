@@ -12,6 +12,7 @@ class UserService
     user.require_valid_signup = true
     user.require_recaptcha = true
     user.save
+
     user
   rescue ActiveRecord::RecordNotUnique
     retry
@@ -19,50 +20,35 @@ class UserService
 
   def self.verify(user: )
     return user if user.email_verified?
-    User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
+    
+    user = User.verified.find_by(email: user.email) || user.tap{ |u| u.update(email_verified: true) }
+
+    if user.email_newsletter?
+      GenericWorker.perform_async('NewsletterService', 'subscribe', user.name, user.email)
+    end
+
+    user
   end
 
-  # UserService#deactivate
-  # When someone no longer wants to be on the system, this is the way to remove them.
-  #
-  # It nulls any personally identifying user record columns
-  # it deletes any login_tokens, identities, etc
-  # it deactivates membership records
-  # it preserves authored discussions, comments, polls, stances, reactions, files
-  #
-  # it should, ideally, also send an undo link to the email address on file,
-  # which is the only way for someone to claim this user account again
   def self.deactivate(user:, actor:)
     actor.ability.authorize! :deactivate, user
     DeactivateUserWorker.perform_async(user.id, actor.id)
   end
 
-  # this is for user accounts deactivated with the older method
+  def self.redact(user:, actor:)
+    actor.ability.authorize! :redact, user
+    RedactUserWorker.perform_async(user.id, actor.id)
+  end
+
   def self.reactivate(user_id)
     user = User.find(user_id)
     deactivated_at = user.deactivated_at
-    Membership.where(user_id: user.id, revoked_at: deactivated_at).update_all(revoked_at: nil)
+    Membership.where(user_id: user.id, revoked_at: deactivated_at).update_all(revoked_at: nil, revoker_id: nil)
     group_ids = Membership.where(user_id: user.id).pluck(:group_id)
     Group.where(id: group_ids).map(&:update_memberships_count)
     user.update(deactivated_at: nil)
     GenericWorker.perform_async('SearchService', 'reindex_by_author_id', user.id)
   end
-
-  # # UserService#destroy
-  # # Only intended to be used in a case where a script has created trash records and you
-  # # want to make it as if it never happened. We almost never want to destroy a user.
-  # # it will destroy
-  # # - all groups they created
-  # # - all discussions they authored
-  # # - all polls they authored
-  # # - all comments they created
-  # # - all stances they created
-  # # - all memberships they have
-  # # # all discussion_readers they have
-  # # you get the point.
-  # def self.destroy(user:)
-  #   DestroyUserWorker.perform_async(user.id)
-  # end
 
   def self.set_volume(user:, actor:, params:)
     actor.ability.authorize! :update, user

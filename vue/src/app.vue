@@ -125,6 +125,8 @@ a
   max-width: 640px !important
 .max-width-800
   max-width: 800px !important
+.max-width-900
+  max-width: 900px !important
 .max-width-1024
   max-width: 1024px !important
 

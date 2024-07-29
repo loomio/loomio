@@ -26,11 +26,10 @@ const ThreadTemplateIndexPage = () => import('./components/thread_template/index
 const ThreadTemplateBrowsePage = () => import('./components/thread_template/browse_page');
 const UserPage = () => import('./components/user/page');
 const ThreadsPage = () => import('./components/threads/page');
-const DemosPage = () => import('./components/demos/index.vue');
+const StartTrialPage = () => import('./components/start_trial/page.vue');
+const ReportPage = () => import('./components/report/page.vue');
 
 // import './config/catch_navigation_duplicated.js';
-
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -60,11 +59,12 @@ const router = createRouter({
   //   },
 
   routes: [
-    {path: '/demo', component: DemosPage},
-    {path: '/try', redirect: '/g/new'},
+    {path: '/demo', redirect: '/try'},
+    {path: '/try', component: StartTrialPage},
     {path: '/users/sign_in', redirect: '/dashboard' },
     {path: '/users/sign_up', redirect: '/dashboard' },
     {path: '/tasks', component: TasksPage},
+    {path: '/report', component: ReportPage},
     {path: '/dashboard', component: DashboardPage},
     {path: '/dashboard/:filter', component: DashboardPage},
     {path: '/threads/direct', component: ThreadsPage},
@@ -106,15 +106,5 @@ const router = createRouter({
     {path: '/:key', component: GroupPage, children: groupPageChildren},
     {path: '/', redirect: '/dashboard' }
   ]});
-
-router.beforeEach(function(to, from, next) {
-  if (RescueUnsavedEditsService.okToLeave()) {
-    return next();
-  } else {
-    return next(false);
-  }
-});
-
-router.afterEach(() => RescueUnsavedEditsService.clear());
 
 export default router;

@@ -15,14 +15,10 @@ export default {
   data() {
     return {
       users: {},
-      slices: []
+      slices: this.poll.pieSlices(),
     };
   },
 
-  watch: {
-    'poll.stanceCounts'() { this.slices = this.poll.pieSlices(); }
-  },
-  
   methods: {
     optionMeaning(id) {
       return Records.pollOptions.find(id).meaning
@@ -32,15 +28,14 @@ export default {
 
   created() {
     this.watchRecords({
-      collections: ['users', 'stances'],
+      collections: ['users', 'stances', 'polls'],
       query: () => {
+        this.slices = this.poll.pieSlices();
         this.poll.results.forEach(option => {
           option.voter_ids.forEach(id => {
             let user;
             if ((user = Records.users.find(id))) {
               this.users[id] = user
-            } else {
-              Records.users.addMissing(id);
             }
           });
         });

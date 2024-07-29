@@ -9,6 +9,7 @@ class MembershipService
     # so we want to accept all the pending invitations this person has been sent within this org
     # and we dont want any surprises if they already have some memberships.
     # they may be accepting memberships send to a different email (unverified_user)
+    accepted_at = DateTime.now
 
     invited_group_id = membership.group_id
     existing_group_ids = Membership.where(user_id: actor.id).pluck(:group_id)
@@ -18,16 +19,16 @@ class MembershipService
     # unrevoke any memberships the actor was just invited to
     Membership.revoked
     .where(user_id: actor.id, group_id: invited_group_ids)
-    .update(revoked_at: nil, revoker_id: nil, inviter_id: membership.inviter_id, accepted_at: DateTime.now)
+    .update(revoked_at: nil, revoker_id: nil, inviter_id: membership.inviter_id, accepted_at: accepted_at)
 
     # ensure actor has accepted any existing pending memberships to this group
     Membership.pending
     .where(user_id: actor.id, group_id: invited_group_ids)
-    .update(accepted_at: DateTime.now)
+    .update(accepted_at: accepted_at)
 
     Membership.pending
     .where(user_id: membership.user_id, group_id: (invited_group_ids - existing_group_ids))
-    .update(user_id: actor.id, accepted_at: DateTime.now)
+    .update(user_id: actor.id, accepted_at: accepted_at)
 
     if (membership.user_id != actor.id)
       Membership.where(user_id: membership.user_id, group_id: invited_group_ids).destroy_all
@@ -59,33 +60,41 @@ class MembershipService
     Events::InvitationAccepted.publish!(membership) if notify && membership.accepted_at
   end
 
-  def self.revoke(membership:, actor:)
+  def self.revoke(membership:, actor:, revoked_at: DateTime.now)
     actor.ability.authorize! :revoke, membership
-    now = Time.zone.now
 
     # revoke guest access in case they were a guest before they were a member and it was not already cleaned up by redeem
-    DiscussionReader.joins(:discussion).guests.
-    where('discussions.group_id': membership.group.id_and_subgroup_ids,
-           user_id: membership.user_id).
-    update_all(guest: false)
+    revoke_by_id(
+      membership.group.id_and_subgroup_ids,
+      membership.user_id,
+      actor.id,
+      revoked_at,
+    )
 
-    Stance.joins(:poll).guests.
-    where('polls.group_id': membership.group.id_and_subgroup_ids,
-           participant_id: membership.user_id).
-    update_all(guest: false)
+    EventBus.broadcast('membership_destroy', membership, actor)
+  end
+
+  def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now)
+    DiscussionReader
+    .joins(:discussion).guests
+    .where('discussions.group_id': group_ids, user_id: user_id)
+    .update_all(guest: false)
+
+    Stance.joins(:poll).guests
+    .where('polls.group_id': group_ids, participant_id: user_id)
+    .update_all(guest: false)
 
     # remove them from active polls
-    membership.group.id_and_subgroup_ids.each do |group_id|
-      PollService.group_members_removed(group_id, membership.user_id, actor.id)
+    group_ids.each do |group_id|
+      PollService.group_members_removed(group_id, user_id, actor_id, revoked_at)
     end
 
     # revoke the membership
-    Membership.active.
-    where(user_id: membership.user_id,
-          group_id: membership.group.id_and_subgroup_ids).
-    update_all(revoked_at: now, revoker_id: actor.id)
+    Membership.active
+    .where(user_id: user_id, group_id: group_ids)
+    .update_all(revoked_at: revoked_at, revoker_id: actor_id)
 
-    EventBus.broadcast('membership_destroy', membership, actor)
+    Group.where(id: group_ids).map(&:update_memberships_count)
   end
 
 

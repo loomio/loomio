@@ -7,7 +7,6 @@ import Records from '@/shared/services/records';
 export default class UserModel extends BaseModel {
   static singular = 'user';
   static plural = 'users';
-  static lazyLoad = true;
   static uniqueIndices = ['id'];
 
   relationships() {

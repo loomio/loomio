@@ -46,13 +46,16 @@ class AppConfig
 
     # here are some useful variations on these colours
     # https://maketintsandshades.com/#DCA034,293C4A,7F9EA0,E4C2B9,658AE7,C77C3B
+    default_channels_url = Rails.env.production? ? "wss://channels.#{ENV['CANONICAL_HOST']}" : "ws://localhost:5000"
+    default_hocuspocus_url = Rails.env.production? ? "wss://hocuspocus.#{ENV['CANONICAL_HOST']}" : "ws://localhost:4444"
 
     logo_color = :gold
 
     {
       brand_colors:                      brand_colors,
       site_name:                         ENV.fetch('SITE_NAME',                     'Loomio'),
-      channels_uri:                      ENV.fetch('CHANNELS_URI',                  'ws://localhost:5000'),
+      channels_url:                      ENV.fetch('CHANNELS_URL', ENV.fetch('CHANNELS_URI', default_channels_url)),
+      hocuspocus_url:                    ENV.fetch('HOCUSPOCUS_URL',                default_hocuspocus_url),
       terms_url:                         ENV['TERMS_URL'],
       privacy_url:                       ENV['PRIVACY_URL'],
       canonical_host:                    ENV['CANONICAL_HOST'],
@@ -91,6 +94,7 @@ class AppConfig
       subscriptions:              !!ENV.fetch('CHARGIFY_API_KEY', false),
       demos:                      ENV.fetch('FEATURES_DEMO_GROUPS', false),
       trials:                     ENV.fetch('FEATURES_TRIALS', false),
+      trial_days:                 ENV.fetch('TRIAL_DAYS', nil),
       new_thread_button:          !!ENV.fetch('FEATURES_NEW_THREAD_BUTTON', false),
       email_login:                !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],
@@ -104,7 +108,6 @@ class AppConfig
       show_contact_consent:       ENV.fetch('FEATURES_SHOW_CONTACT_CONSENT', false),
       sentry_sample_rate:         ENV.fetch('SENTRY_SAMPLE_RATE', 0.1).to_f,
       hidden_poll_templates:      %w[proposal question],
-      scrub_user_deactivate:      !!ENV.fetch('SCRUB_USER_DEACTIVATE', false),
       transcription:              TranscriptionService.available?
     }
   end

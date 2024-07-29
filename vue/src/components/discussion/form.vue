@@ -91,6 +91,12 @@ export default {
   },
 
   methods: {
+    discardDraft() {
+      if (confirm(I18n.t('formatting.confirm_discard'))) {
+        EventBus.$emit('resetDraft', 'discussion', this.discussion.id, 'description', this.discussion.description);
+      }
+    },
+    
     submit() {
       const actionName = this.discussion.id ? 'updated' : 'created';
       this.discussion.save().then(data => {
@@ -100,7 +106,10 @@ export default {
           Flash.success(`discussion_form.messages.${actionName}`);
           this.$router.push(this.urlFor(discussion));
         });
-      }).catch(error => true);
+      }).catch( error => {
+        Flash.warning('poll_common_form.please_review_the_form');
+        console.error(error);
+      });
     },
 
     updateGroupItems() {
@@ -180,7 +189,6 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
         common-icon(name="mdi-close")
       v-btn.back-button(variant="text" v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
         common-icon(name="mdi-close")
-
   v-card-item
     thread-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
     v-select.pb-4(
@@ -215,13 +223,12 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
       )
 
       common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
-      //- p.discussion-form__visibility
-
   v-card-actions
     help-link(path='en/user_manual/threads/starting_threads')
     v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
       span(v-t="'thread_arrangement_form.edit'")
     v-spacer
+    v-btn(@click="discardDraft" v-t="'formatting.discard_draft'")
     v-btn.discussion-form__submit(
       color="primary"
       @click="submit()"

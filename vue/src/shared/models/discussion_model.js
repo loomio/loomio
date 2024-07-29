@@ -15,6 +15,7 @@ export default class DiscussionModel extends BaseModel {
   static plural = 'discussions';
   static uniqueIndices = ['id', 'key'];
   static indices = ['groupId', 'authorId'];
+
   constructor(...args) {
     super(...args);
     this.privateDefaultValue = this.privateDefaultValue.bind(this);
@@ -35,6 +36,10 @@ export default class DiscussionModel extends BaseModel {
     if (this.isNew()) { this.private = this.privateDefaultValue(); }
     HasDocuments.apply(this, {showTitle: true});
     return HasTranslations.apply(this);
+  }
+
+  collabKeyParams(){
+    return [this.groupId, this.discussionTemplateId]
   }
 
   defaultValues() {

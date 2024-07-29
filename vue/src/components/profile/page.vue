@@ -204,7 +204,9 @@ v-main
           v-list-item(v-for="(action, key) in actions" :key="key"  @click="action.perform()" :class="'user-page__' + key")
             template(v-slot:prepend)
               common-icon(:name="action.icon")
-            v-list-item-title(v-t="action.name")
+            v-list-item-content
+              v-list-item-title(v-t="action.name")
+              v-list-item-subtitle(v-t="action.subtitle")
 
 </template>
 

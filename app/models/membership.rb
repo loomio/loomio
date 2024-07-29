@@ -27,7 +27,6 @@ class Membership < ApplicationRecord
   has_many :events, as: :eventable, dependent: :destroy
 
   scope :dangling,      -> { joins('left join groups g on memberships.group_id = g.id').where('group_id is not null and g.id is null')  }
-  scope :user_active,   -> { joins(:user).where("users.deactivated_at is null") }
   scope :active,        -> { where(revoked_at: nil) }
   scope :pending,       -> { active.where(accepted_at: nil) }
   scope :accepted,      -> { where('accepted_at IS NOT NULL') }

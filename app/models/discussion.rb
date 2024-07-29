@@ -11,7 +11,6 @@ class Discussion < ApplicationRecord
   include HasCreatedEvent
   include HasRichText
   include HasTags
-  extend  NoSpam
   include Discard::Model
 
   include Searchable
@@ -48,12 +47,11 @@ class Discussion < ApplicationRecord
     SQL
   end
 
-  no_spam_for :title, :description
-
   scope :dangling, -> { joins('left join groups g on discussions.group_id = g.id').where('group_id is not null and g.id is null') }
   scope :in_organisation, -> (group) { includes(:author).where(group_id: group.id_and_subgroup_ids) }
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order(last_activity_at: :desc) }
+  scope :order_by_pinned_then_latest_activity, -> { order("pinned_at, last_activity_at DESC") }
   scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
 
   scope :visible_to_public, -> { kept.where(private: false) }

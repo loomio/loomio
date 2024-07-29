@@ -21,12 +21,9 @@ class User < ApplicationRecord
   has_paper_trail only: [:name, :username, :email, :email_newsletter, :deactivated_at, :deactivator_id]
 
   MAX_AVATAR_IMAGE_SIZE_CONST = 100.megabytes
-  BOT_EMAILS = {
-    helper_bot: ENV['HELPER_BOT_EMAIL'] || 'contact@loomio.org',
-    demo_bot:   ENV['DEMO_BOT_EMAIL'] || 'contact+demo@loomio.org'
-  }.freeze
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
+  devise :pwned_password if Rails.env.production?
   attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
@@ -61,7 +58,6 @@ class User < ApplicationRecord
   validates_confirmation_of :password, if: :password_required?
 
   validates_length_of :password, minimum: 8, allow_nil: true
-  validates :password, nontrivial_password: true, allow_nil: true
 
   has_many :admin_memberships,
            -> { where('memberships.admin': true, revoked_at: nil) },
@@ -118,7 +114,7 @@ class User < ApplicationRecord
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
   scope :active, -> { where(deactivated_at: nil) }
-  scope :inactive, -> { where("deactivated_at IS NOT NULL") }
+  scope :deactivated, -> { where("deactivated_at IS NOT NULL") }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
@@ -138,7 +134,7 @@ class User < ApplicationRecord
     end
 
     if model.discussion_id
-      ids += DiscussionReader.active.guests.where(discussion_id: model.discussion_id).pluck(:user_id) 
+      ids += DiscussionReader.active.guests.where(discussion_id: model.discussion_id).pluck(:user_id)
     end
 
     if model.poll_id
@@ -171,7 +167,7 @@ class User < ApplicationRecord
   def date_time_pref
     self[:date_time_pref] || 'day_abbr'
   end
-  
+
   def author
     self
   end
@@ -195,7 +191,7 @@ class User < ApplicationRecord
 
   def browseable_group_ids
     Group.where(
-      "id in (:group_ids) OR 
+      "id in (:group_ids) OR
       (parent_id in (:group_ids) AND is_visible_to_parent_members = TRUE)",
       group_ids: self.group_ids).pluck(:id)
   end
@@ -288,25 +284,18 @@ class User < ApplicationRecord
   end
 
   def self.helper_bot
-    verified.find_by(email: BOT_EMAILS[:helper_bot]) ||
-    create!(email: BOT_EMAILS[:helper_bot],
+    verified.find_by(email: BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS) ||
+    create!(email: BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS,
             name: 'Loomio Helper Bot',
             password: SecureRandom.hex(20),
             email_verified: true,
-            avatar_kind: :gravatar)
-  end
-
-  def self.demo_bot
-    verified.find_by(email: BOT_EMAILS[:helper_bot]) ||
-    create!(email: BOT_EMAILS[:demo_bot],
-            name: 'Loomio Demo bot',
-            email_verified: true,
+            bot: true,
             avatar_kind: :gravatar)
   end
 
   def name
-    if deactivated_at && AppConfig.app_features[:scrub_user_deactivate]
-      I18n.t('profile_page.deactivated_user')
+    if deactivated_at && self[:name].nil?
+      I18n.t('profile_page.deleted_account')
     else
       self[:name]
     end

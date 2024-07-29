@@ -55,7 +55,7 @@ export default {
       switch (this.model.constructor.singular) {
       case 'discussion': return this.model.volume();
       case 'membership': return this.model.volume;
-      case 'user':       return this.model.defaultMembershipVolume;
+      case 'user':       return null;
       }
     },
 
@@ -96,15 +96,15 @@ v-card.change-volume-form(:title="$t(translateKey() + '.title', { title: title }
   template(v-slot:append)
     dismiss-modal-button(v-if="showClose")
   v-card-text
-    p(v-t="'change_volume_form.simple.question'")
+    v-alert(v-if="model.isA('discussion')" density="compact" variant="tonal" type="info")
+      span(v-t="'change_volume_form.explain_scope.thread'")
+    v-alert(v-if="model.isA('membership')" density="compact" variant="tonal" type="info" v-t="'change_volume_form.explain_scope.group'")
+    p.mt-2(v-t="'change_volume_form.simple.question'")
     v-radio-group.text-lowercase.mb-4(hide-details v-model='volume')
       v-radio.volume-loud(value='loud' :label="labelFor('loud')")
       v-radio.volume-normal(value='normal' :label="labelFor('normal')")
       v-radio.volume-quiet(value='quiet' :label="labelFor('quiet')")
 
-    v-alert(v-if="model.isA('discussion')" dense text type="info")
-      span(v-t="'change_volume_form.explain_scope.thread'")
-    v-alert(v-if="model.isA('membership')" dense text type="info" v-t="'change_volume_form.explain_scope.group'")
     div(v-if="model.isA('membership') && model.group().parentOrSelf().hasSubgroups()")
       v-checkbox#apply-to-all.mb-4(v-if="model.isA('membership')" v-model='applyToAll', :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })" hide-details)
 

@@ -1,6 +1,6 @@
 import utils from './utils';
 import { isEqual } from 'date-fns';
-import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
+import { camelCase, compact, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
 
 import Records from '@/shared/services/records';
 
@@ -62,6 +62,18 @@ export default class BaseModel {
     this.update(this.defaultValues());
     this.update(attributes);
     this.afterConstruction();
+  }
+
+  collabKeyParams() {
+    return [];
+  }
+
+  collabKey(field, userId) {
+    return compact((this.isNew() ?
+      [this.constructor.singular, 'new', userId, this.collabKeyParams(), field]
+    :
+      [this.constructor.singular, this.id, field]
+    ).flat()).join("-");
   }
 
   bumpVersion() {

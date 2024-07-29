@@ -76,7 +76,9 @@ export default {
       this.outcome.save().then(data => {
         Flash.success(`poll_common_outcome_form.outcome_${actionName}`);
         return this.closeModal();
-      }).catch(error => true);
+      }).catch(error => {
+        Flash.custom(error.error, 'error', 5000);
+      })
     },
 
     newRecipients(val) {

@@ -84,8 +84,13 @@ class API::V1::ProfileController < API::V1::RestfulController
     render json: {avatar_uploaded: current_user.uploaded_avatar_url}
   end
 
-  def destroy
+  def deactivate
     service.deactivate(user: current_user, actor: current_user)
+    respond_with_resource
+  end
+
+  def destroy
+    service.redact(user: current_user, actor: current_user)
     respond_with_resource
   end
 
@@ -140,7 +145,7 @@ class API::V1::ProfileController < API::V1::RestfulController
   end
 
   def deactivated_user
-    resource_class.inactive.find_by(email: params[:user][:email])
+    resource_class.deactivated.find_by(email: params[:user][:email])
   end
 
   def current_user_params

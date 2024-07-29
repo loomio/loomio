@@ -49,7 +49,7 @@ export default class BaseRecordsInterface {
 
   addMissing(id) {
     this.missingIds.push(id);
-    return this.fetchMissing();
+    this.fetchMissing();
   }
 
   fetchAnyMissingById(allIds) {

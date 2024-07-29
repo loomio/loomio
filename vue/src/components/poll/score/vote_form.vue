@@ -59,27 +59,21 @@ export default {
 <template lang='pug'>
 form.poll-score-vote-form(@submit.prevent='submit()')
   .poll-score-vote-form__options
-    v-list-item.poll-dot-vote-vote-form__option(
-      :title="choice.option.name"
-      :subtitle="choice.option.meaning"
-      v-for='choice in stanceChoices'
-      :key='choice.option.id')
-      template(v-slot:append)
-        v-text-field.number-input.ml-2(
-          v-model="choice.score"
-          type="number"
-          density="compact"
-          variant="outlined"
-        )
-      v-slider.poll-score-vote-form__score-slider.mb-6.px-3(
+    v-list-item.poll-dot-vote-vote-form__option(v-for='choice in stanceChoices', :key='choice.option.id')
+      v-list-item-title {{ choice.option.name }}
+      v-list-item-subtitle(style="white-space: inherit") {{ choice.option.meaning }}
+      v-slider.poll-score-vote-form__score-slider.mt-4(
         :disabled="!poll.isVotable()"
         v-model='choice.score'
         :color="choice.option.color"
+        :thumb-color="choice.option.color"
         :height="4"
         :min="poll.minScore"
         :max="poll.maxScore"
-        :step="1"
       )
+      template(v-slot:append)
+        v-avatar(:color="choice.option.color")
+          span(style="color: #000") {{choice.score}}
 
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')

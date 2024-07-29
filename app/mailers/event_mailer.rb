@@ -3,13 +3,15 @@ class EventMailer < BaseMailer
 
   # TODO this should be NotificationMailer, and take a notification id
   def event(recipient_id, event_id)
-    @current_user = @recipient = User.find_by!(id: recipient_id)
+    @current_user = @recipient = User.active.find_by!(id: recipient_id)
     @event = Event.find_by!(id: event_id)
+    @notification = Notification.find_by(user_id: recipient_id, event_id: event_id)
+    
     return if @event.eventable.nil?
     return if @event.eventable.respond_to?(:discarded?) && @event.eventable.discarded?
 
     if %w[Poll Stance Outcome].include? @event.eventable_type
-      @poll = @event.eventable.poll 
+      @poll = @event.eventable.poll
     end
 
     if @event.eventable.respond_to? :discussion
@@ -26,7 +28,6 @@ class EventMailer < BaseMailer
       # if someone does not respond to the invitation, don't send them more emails
       return if @membership &&
                 !@recipient.email_verified &&
-                !@membership.accepted_at &&
                 !["membership_created", "membership_resent"].include?(@event.kind)
     end
 

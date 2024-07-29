@@ -1,4 +1,7 @@
 sr:
+  discussion_templates:
+    discuss_a_topic:
+      title_placeholder: Koja je tema o kojoj želiš diskutovati?
   group:
     stats:
       members: Članovi
@@ -37,7 +40,7 @@ sr:
       content: "%{who} Vas je dodao/la u %{which_group}."
       content_html: "<strong>%{who}</strong> Vas je dodao/la u <strong>%{which_group}</strong>."
       link_help: "Škljocnite na adresu ispod da odete do grupe:"
-    unsubscribe: 'Odjavite se ili promenite podešavanja ePošte'
+    unsubscribe: "Odjavite se ili promenite podešavanja ePošte"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavu sa liste za obaveštenja ili promenu podešavanja Vaše ePošte."
     catch_up:
       mark_as_read: Označi kao pročitano

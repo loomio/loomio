@@ -81,10 +81,10 @@ describe PollService do
       expect(Stance.where(participant_id: member.id).first.volume).to eq 'quiet'
     end
 
-    it 'uses normal volume if discussion reader loud' do
+    it 'uses load volume if discussion reader loud' do
       DiscussionReader.create(user_id: member.id, discussion_id: discussion.id, volume: 'loud')
       PollService.create_stances(poll: poll, actor: actor, user_ids: [member.id])
-      expect(Stance.where(participant_id: member.id).first.volume).to eq 'normal'
+      expect(Stance.where(participant_id: member.id).first.volume).to eq 'loud'
     end
 
     it 'uses membership volume if quiet' do

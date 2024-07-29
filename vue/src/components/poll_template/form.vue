@@ -9,7 +9,7 @@ import AbilityService from '@/shared/services/ability_service';
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
 // import { HandleDirective } from 'vue-slicksort';
 import { isSameYear, startOfHour, setHours }  from 'date-fns';
-
+import { I18n } from '@/i18n';
 export default {
   // directives: { handle: HandleDirective },
 
@@ -72,6 +72,12 @@ export default {
   },
 
   methods: {
+    discardDraft() {
+      if (confirm(I18n.t('formatting.confirm_discard'))) {
+        EventBus.$emit('resetDraft', 'pollTemplate', this.pollTemplate.id, 'details', this.pollTemplate.details);
+        EventBus.$emit('resetDraft', 'pollTemplate', this.pollTemplate.id, 'processIntroduction', this.pollTemplate.processIntroduction);
+      }
+    },
     setPollOptionPriority() {
       let i = 0;
       this.pollOptions.forEach(o => o.priority = i++);
@@ -444,6 +450,10 @@ export default {
 
   .d-flex.justify-space-between.my-4.mt-4.poll-common-form-actions
     v-spacer
+    v-btn.mr-2(
+      @click="discardDraft"
+      v-t="'formatting.discard_draft'"
+    )
     v-btn.poll-common-form__submit(
       color="primary"
       @click='submit()'

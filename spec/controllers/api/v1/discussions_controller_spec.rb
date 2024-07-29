@@ -591,12 +591,13 @@ describe API::V1::DiscussionsController do
       let!(:event) { create :event, sequence_id: 2, discussion: discussion, user: another_user }
       let!(:another_event) { create :event, sequence_id: 3 }
 
-      context 'signed out' do
-        it 'does not attempt to mark discussions as read while logged out' do
-          patch :mark_as_read, params: { id: discussion.id, ranges: "2-2" }
-          expect(response.status).to eq 403
-        end
-      end
+      # we don't error here, silent ignore
+      # context 'signed out' do
+      #   it 'does not attempt to mark discussions as read while logged out' do
+      #     patch :mark_as_read, params: { id: discussion.id, ranges: "2-2" }
+      #     expect(response.status).to eq 403
+      #   end
+      # end
 
       context 'signed in' do
         before do
@@ -673,7 +674,7 @@ describe API::V1::DiscussionsController do
       it 'allows admins to unpin a thread' do
         sign_in user
         discussion.group.add_admin! user
-        discussion.update(pinned: true)
+        discussion.update(pinned_at: Time.now)
         post :unpin, params: { id: discussion.id }
         expect(discussion.reload.pinned_at).to be nil
       end

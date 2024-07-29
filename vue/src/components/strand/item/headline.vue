@@ -24,8 +24,7 @@ export default {
           key:      this.event.model().key,
           title:    eventTitle(this.event),
           polltype: this.$t(eventPollType(this.event)).toLowerCase()
-        }
-        );
+        });
       }
     },
 

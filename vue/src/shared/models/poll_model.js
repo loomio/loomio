@@ -25,6 +25,10 @@ export default class PollModel extends BaseModel {
     this.poll = this.poll.bind(this);
   }
 
+  collabKeyParams() {
+    return [this.groupId, this.pollTemplateId, this.pollTemplateKey];
+  }
+
   afterConstruction() {
     HasDocuments.apply(this, {showTitle: true});
     return HasTranslations.apply(this);

@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   rescue_from(Membership::InvitationAlreadyUsed) do |exception|
     session.delete(:pending_membership_token)
     if current_user.ability.can?(:show, exception.membership.group)
-      redirect_to polymorphic_url(exception.membership.group) || dashboard_url
+      redirect_to polymorphic_path(exception.membership.group) || dashboard_path
     else
       respond_with_error message: :"invitation.invitation_already_used"
     end

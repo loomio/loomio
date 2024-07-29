@@ -117,13 +117,8 @@ div
         :subtitle="choice.option.meaning"
       )
         template(v-slot:append)
-          v-text-field.number-input.ml-2(
-            v-model="choice.score"
-            type="number"
-            max-width="20px"
-            density="compact"
-            variant="outlined"
-          )
+          v-avatar(:color="choice.option.color")
+            span(style="color: #000") {{choice.score}}
         v-slider.poll-dot-vote-vote-form__slider.mb-6.px-3(
           :disabled="!poll.isVotable()"
           v-model='choice.score'

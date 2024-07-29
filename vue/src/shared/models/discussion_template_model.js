@@ -25,8 +25,13 @@ export default class DiscussionTemplateModel extends BaseModel {
       maxDepth: 3,
       newestFirst: false,
       pollTemplateKeysOrIds: [],
-      recipientAudience: null
+      recipientAudience: null,
+      discardedAt: null
     };
+  }
+  
+  collabKeyParams(){
+    return [this.groupId, this.key];
   }
   
   relationships() {

@@ -100,8 +100,6 @@ export default {
 
 <template lang="pug">
 .poll-common-votes-panel
-  //- v-layout.poll-common-votes-panel__header
-    //- v-select(style="max-width: 200px" dense solo v-model='order' :items="sortOptions" @change='refresh()' aria-label="$t('poll_common_votes_panel.change_results_order')")
   h2.text-h5.my-2#votes(v-t="'poll_common.votes'")
   .d-flex
     v-select.mr-2(:items="pollOptionItems" :label="$t('common.option')" v-model="pollOptionId")
@@ -130,6 +128,7 @@ export default {
         .poll-common-stance(v-if="poll.showResults() && stance.castAt")
           poll-common-stance-choices(:stance='stance')
           formatted-text.poll-common-stance-created__reason(:model="stance" column="reason")
+          attachment-list(:attachments="stance.attachments")
     loading(v-if="loader.loading")
     v-pagination(v-model="page", :length="totalPages", :disabled="totalPages == 1")
 </template>

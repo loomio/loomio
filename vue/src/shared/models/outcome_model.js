@@ -38,6 +38,10 @@ export default class OutcomeModel extends BaseModel {
     return HasTranslations.apply(this);
   }
 
+  collabKeyParams() {
+    return [this.pollId];
+  }
+  
   relationships() {
     this.belongsTo('author', {from: 'users'});
     this.belongsTo('poll');
