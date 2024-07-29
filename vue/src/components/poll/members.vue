@@ -60,6 +60,9 @@ export default {
   },
 
   methods: {
+    performableActions(poll, user) {
+      return this.actionNames.filter(name => this.canPerform(name, poll, user))
+    },
     canPerform(action, poll, user) {
       switch (action) {
         case 'makeAdmin':
@@ -198,19 +201,22 @@ v-card.poll-members-form
       span ({{users.length}} / {{poll.votersCount}})
     v-list-item(v-for="user in users" :key="user.id")
       template(v-slot:prepend)
-        user-avatar(:user="user" :size="24")
+        user-avatar.mr-2(:user="user" :size="24")
       v-list-item-title
         span.mr-2 {{user.nameWithTitle(poll.group())}}
-        v-chip.mr-1(v-if="isGuest[user.id]" outlined size="x-small" label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-        v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined size="x-small" label v-t="'members_panel.admin'")
-        v-chip.mr-1(v-if="!user.emailVerified" outlined size="x-small" label v-t="'announcement.members_list.has_not_joined_yet'" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
+        v-chip.mr-1(v-if="isGuest[user.id]" variant="outlined" size="x-small" label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+        v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" variant="outlined" size="x-small" label v-t="'members_panel.admin'")
+        v-chip.mr-1(v-if="!user.emailVerified" variant="outlined" size="x-small" label v-t="'announcement.members_list.has_not_joined_yet'" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
       template(v-slot:append)
         v-menu(offset-y)
-          template(v-slot:activator="{attrs}")
-            v-btn.membership-dropdown__button(icon v-bind="attrs")
+          template(v-slot:activator="{ props }")
+            v-btn.membership-dropdown__button(variant="flat" icon size="small" v-bind="props")
               common-icon(name="mdi-dots-vertical")
           v-list
-            v-list-item(v-for="action in actionNames" v-if="canPerform(action, poll, user)" @click="perform(action, poll, user)" :key="action")
+            v-list-item(
+              v-for="action in performableActions(poll, user)"
+              @click="perform(action, poll, user)"
+              :key="action")
               v-list-item-title(v-t="{ path: service[action].name, args: { pollType: poll.translatedPollType() } }")
 
     v-list-item(v-if="query && users.length == 0")
