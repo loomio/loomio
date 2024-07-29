@@ -118,15 +118,16 @@ export default {
 form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
 
-  v-alert(v-if="poll.config().has_options && !poll.singleChoice()", :color="optionCountAlertColor")
+  v-alert(v-if="poll.config().has_options && !poll.singleChoice()" :color="optionCountAlertColor")
     span(
       v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
       v-t="{path: 'poll_common.select_count_options', args: {count: poll.minimumStanceChoices}}")
     span(
       v-else 
       v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.minimumStanceChoices, maximum: poll.maximumStanceChoices}}")
-  v-sheet.poll-common-vote-form__button.mb-2.rounded(
-    outlined
+
+  v-card.poll-common-vote-form__button.mb-2.rounded(
+    variant="tonal"
     :style="(isSelected(option) && {'border-color': option.color}) || {}"
     v-for='option in options'
     :key='option.id'
@@ -149,7 +150,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
         type="checkbox"
         name="name"
       )
-      v-list-item
+      v-list-item(lines="two")
         template(v-slot:prepend)
           template(v-if="hasOptionIcon")
             v-avatar(size="48")
