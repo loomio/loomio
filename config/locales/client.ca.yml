@@ -1136,6 +1136,7 @@ ca:
       parent_members: 'Privacitat: Aquest grup és visible pels membres de %{parentGroupName} i els membres de %{groupName}'
       public: 'Privacitat: Aquest grup és visible a internet'
       aria_label: 'Privacitat del grup: %{privacy}'
+    participation_report: Informe de participació
   export_data_modal:
     title: Com voleu utilitzar les vostres dades?
     as_csv: Obre en un full de càlcul
@@ -2584,3 +2585,23 @@ ca:
       community: Comunitat
       government: Govern/Govern local
       other: Altres
+  report:
+    start_on: Comença
+    end_on: Acaba
+    interval: Interval
+    total_users: Total d'usuaris
+    total_threads: Fils totals
+    total_polls: Enquestes totals
+    threads_with_polls: Fils amb enquestes
+    polls_with_outcomes: Enquestes amb resultats
+    actions_per_interval: Accions per %{interval}
+    actions_per_user: Accions per usuari
+    users_per_country: Usuaris per país
+    actions_per_country: Accions per país
+    country: País
+    users: Usuaris
+    day: Dia
+    week: Setmana
+    month: Mes
+    year: Curs
+    country_disclaimer: El país es basa en l'adreça IP de l'usuari i no és molt precís. Considereu-ho només com una guia aproximada.

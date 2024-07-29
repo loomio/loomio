@@ -160,6 +160,7 @@ namespace :loomio do
     GenericWorker.perform_async('PollService', 'publish_closing_soon')
     GenericWorker.perform_async('TaskService', 'send_task_reminders')
     GenericWorker.perform_async('ReceivedEmailService', 'route_all')
+    GeoLocationWorker.perform_async
 
     SendDailyCatchUpEmailWorker.perform_async
 

@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api, defaults: {format: :json} do
+    post 'hocuspocus', to: 'hocuspocus#create'
+
     namespace :b1 do
       resources :discussions, only: [:create, :show]
       resources :polls, only: [:create, :show]
@@ -60,6 +62,7 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
+      resources :reports, only: [:index]
       resources :trials, only: [:create]
       resources :attachments, only: [:index, :destroy]
       resources :webhooks, only: [:create, :destroy, :index, :update]
@@ -375,6 +378,7 @@ Rails.application.routes.draw do
   get 'inbox'                              => 'application#index', as: :inbox
   get 'groups'                             => 'application#index', as: :groups
   get 'polls'                              => 'application#index', as: :polls
+  get 'report'                             => 'application#index', as: :report
   get 'explore'                            => 'groups#index',      as: :explore
   get 'profile'                            => 'application#index', as: :profile
   get 'contact'                            => 'application#index', as: :contact
@@ -404,7 +408,6 @@ Rails.application.routes.draw do
   get 'thread_templates/:id'               => 'application#index'
   get 'thread_templates/:id/edit'          => 'application#index'
   get 'g/:key/export'                      => 'groups#export',               as: :group_export
-  get 'g/:key/stats'                       => 'groups#stats',                as: :group_stats
   get 'p/:key/export'                      => 'polls#export',                as: :poll_export
   get 'd/:key/export'                      => 'discussions#export',          as: :discussion_export
   get 'g/:key(/:slug)'                     => 'groups#show',                 as: :group

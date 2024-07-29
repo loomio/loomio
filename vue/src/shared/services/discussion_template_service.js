@@ -8,7 +8,6 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import i18n           from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
 export default new class PollTemplateService {
   actions(discussionTemplate, group) {
@@ -72,7 +71,10 @@ export default new class PollTemplateService {
             props: {
               confirm: {
                 submit() {
-                  return discussionTemplate.destroy().then(() => EventBus.$emit('closeModal'));
+                  return discussionTemplate.destroy().then(() => {
+                    EventBus.$emit('closeModal');
+                    EventBus.$emit('reloadThreadTemplates');
+                  });
                 },
                 text: {
                   title: 'common.are_you_sure',

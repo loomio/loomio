@@ -46,7 +46,7 @@ span.tags-display
     :small="!smaller"
     :xSmall="smaller"
     :color="tag.color"
-    :to="'/g/'+groupKey+'/tags/'+tag.name"
+    :to="'/g/'+groupKey+'/tags/'+encodeURIComponent(tag.name)"
     :class="{'mb-1': showCounts}"
   )
     span {{ tag.name }}

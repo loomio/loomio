@@ -1136,6 +1136,7 @@ nl_NL:
       parent_members: 'Privacy: Deze groep is zichtbaar voor leden van %{parentGroupName} en leden van %{groupName}'
       public: 'Privacy: Deze groep is zichtbaar op het web'
       aria_label: 'Groepsprivacy: %{privacy}'
+    participation_report: Deelname verslag
   export_data_modal:
     title: Hoe wil je je data gebruiken?
     as_csv: Openen in een spreadsheet
@@ -2586,3 +2587,23 @@ nl_NL:
       community: Community groep
       government: Overheid/lokale overheid
       other: Andere
+  report:
+    start_on: Begin op
+    end_on: Eindigt op
+    interval: Interval
+    total_users: Totaal aantal gebruikers
+    total_threads: Totaal aantal threads
+    total_polls: Totaal aantal peilingen
+    threads_with_polls: Discussies met opiniepeilingen
+    polls_with_outcomes: Peilingen met uitkomsten
+    actions_per_interval: Acties per %{interval}
+    actions_per_user: Acties per gebruiker
+    users_per_country: Gebruikers per land
+    actions_per_country: Acties per land
+    country: Land
+    users: Gebruikers
+    day: Dag
+    week: Week
+    month: Maand
+    year: Jaar
+    country_disclaimer: Land is gebaseerd op het IP-adres van de gebruiker en is niet erg nauwkeurig. Beschouw dit slechts als een ruwe handleiding.

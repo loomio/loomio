@@ -81,6 +81,12 @@ export default {
   },
 
   methods: {
+    discardDraft() {
+      if (confirm(I18n.t('formatting.confirm_discard'))) {
+        EventBus.$emit('resetDraft', 'discussion', this.discussion.id, 'description', this.discussion.description);
+      }
+    },
+    
     submit() {
       const actionName = this.discussion.id ? 'updated' : 'created';
       this.discussion.save().then(data => {
@@ -215,6 +221,10 @@ export default {
         v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
           span(v-t="'thread_arrangement_form.edit'")
         v-spacer
+        v-btn(
+          @click="discardDraft"
+          v-t="'formatting.discard_draft'"
+        )
         v-btn.discussion-form__submit(
           color="primary"
           @click="submit()"

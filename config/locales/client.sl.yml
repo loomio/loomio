@@ -1128,6 +1128,7 @@ sl:
       parent_members: 'Zasebnost: Ta skupina je vidna članom %{parentGroupName} in članom %{groupName}'
       public: 'Zasebnost: Ta skupina je vidna v spletu'
       aria_label: 'Zasebnost skupine: %{privacy}'
+    participation_report: Poročilo o udeležbi
   export_data_modal:
     title: Kako želite uporabljati svoje podatke?
     as_csv: Odprite ga v preglednici
@@ -2554,3 +2555,23 @@ sl:
       community: Skupina za skupnost
       government: Vlada/lokalna uprava
       other: Drugo
+  report:
+    start_on: Začni naprej
+    end_on: Konec na
+    interval: Interval
+    total_users: Skupno število uporabnikov
+    total_threads: Skupaj niti
+    total_polls: Skupaj ankete
+    threads_with_polls: Teme z anketami
+    polls_with_outcomes: Ankete z rezultati
+    actions_per_interval: Dejanja na %{interval}
+    actions_per_user: Dejanja na uporabnika
+    users_per_country: Uporabniki na državo
+    actions_per_country: Dejanja na državo
+    country: Država
+    users: Uporabniki
+    day: Dan
+    week: teden
+    month: mesec
+    year: leto
+    country_disclaimer: Država temelji na naslovu IP uporabnika in ni zelo točna. To je samo približen vodnik.

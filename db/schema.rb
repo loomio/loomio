@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_20_003858) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -178,7 +178,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_20_003858) do
     t.jsonb "attachments", default: [], null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.string "content_locale"
     t.jsonb "link_previews", default: [], null: false
     t.string "parent_type", null: false
@@ -281,7 +280,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_20_003858) do
     t.integer "first_sequence_id", default: 0, null: false
     t.integer "versions_count", default: 0
     t.integer "closed_polls_count", default: 0, null: false
-    t.boolean "pinned", default: false, null: false
     t.integer "importance", default: 0, null: false
     t.integer "seen_by_count", default: 0, null: false
     t.string "ranges_string"
@@ -291,7 +289,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_20_003858) do
     t.integer "max_depth", default: 2, null: false
     t.boolean "newest_first", default: false, null: false
     t.datetime "discarded_at", precision: nil
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.integer "members_count"
     t.integer "anonymous_polls_count", default: 0, null: false
     t.string "content_locale"
@@ -462,7 +459,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_20_003858) do
     t.boolean "new_threads_newest_first", default: false, null: false
     t.boolean "admins_can_edit_user_content", default: true, null: false
     t.boolean "listed_in_explore", default: false, null: false
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.string "content_locale"
     t.boolean "members_can_add_guests", default: true, null: false
     t.boolean "members_can_delete_comments", default: true, null: false
@@ -777,7 +773,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_20_003858) do
     t.jsonb "attachments", default: [], null: false
     t.datetime "discarded_at", precision: nil
     t.integer "discarded_by"
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.boolean "specified_voters_only", default: false, null: false
     t.integer "notify_on_closing_soon", default: 0, null: false
     t.string "content_locale"
@@ -864,7 +859,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_20_003858) do
     t.integer "volume", default: 2, null: false
     t.datetime "accepted_at", precision: nil
     t.string "content_locale"
-    t.string "secret_token", default: -> { "public.gen_random_uuid()" }
     t.jsonb "link_previews", default: [], null: false
     t.jsonb "option_scores", default: {}, null: false
     t.integer "revoker_id"

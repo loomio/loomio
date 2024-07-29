@@ -1128,6 +1128,7 @@ fi:
       parent_members: 'Yksityisyys: Tämä ryhmä näkyy ryhmän %{parentGroupName} ja ryhmän %{groupName} jäsenille'
       public: 'Yksityisyys: Tämä ryhmä näkyy verkossa'
       aria_label: 'Ryhmän tietosuoja: %{privacy}'
+    participation_report: Osallistumisraportti
   export_data_modal:
     title: Miten haluat käyttää tietojasi?
     as_csv: Avaa se laskentataulukossa
@@ -2554,3 +2555,23 @@ fi:
       community: yhteisön ryhmä
       government: Hallitus/paikallinen hallinto
       other: Muut
+  report:
+    start_on: Aloittaa
+    end_on: Lopeta
+    interval: Intervalli
+    total_users: Käyttäjiä yhteensä
+    total_threads: Säikeitä yhteensä
+    total_polls: Äänestykset yhteensä
+    threads_with_polls: Viestit gallupilla
+    polls_with_outcomes: Äänestykset tuloksineen
+    actions_per_interval: Toimet per %{interval}
+    actions_per_user: Toiminnot käyttäjää kohti
+    users_per_country: Käyttäjiä maittain
+    actions_per_country: Toimet maittain
+    country: Maa
+    users: Käyttäjät
+    day: Päivä
+    week: Viikko
+    month: Kuukausi
+    year: vuosi
+    country_disclaimer: Maa perustuu käyttäjän IP-osoitteeseen, eikä se ole kovin tarkka. Pidä tätä vain karkeana ohjeena.

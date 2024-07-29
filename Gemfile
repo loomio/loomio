@@ -17,7 +17,7 @@ gem 'actionpack-page_caching'
 gem 'cancancan'
 gem 'gravtastic'
 gem 'activeadmin', '~> 3.2.2'
-gem 'ransack', '4.1.1'
+gem 'ransack', '4.2.0'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.0'
@@ -29,7 +29,7 @@ gem 'browser', '~> 6.0.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.52", require: false
-gem 'image_processing', '~> 1.12'
+gem 'image_processing', '~> 1.13'
 gem "ruby-vips"
 gem "stackprof"
 gem "sentry-ruby"
@@ -78,6 +78,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'web-console'
   gem 'spring'
   gem "spring-commands-rspec"
 end

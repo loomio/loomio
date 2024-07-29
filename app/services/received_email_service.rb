@@ -149,7 +149,8 @@ class ReceivedEmailService
       title: email.subject,
       body: email.full_body,
       body_format: email.body_format,
-      files: email.attachments.map {|a| a.blob }
+      files: email.attachments.map {|a| a.blob },
+      max_depth: 3
     }.compact
   end
 

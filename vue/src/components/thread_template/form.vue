@@ -51,6 +51,12 @@ export default {
   },
 
   methods: {
+    discardDraft() {
+      if (confirm(I18n.t('formatting.confirm_discard'))) {
+        EventBus.$emit('resetDraft', 'discussionTemplate', this.discussionTemplate.id, 'description', this.discussionTemplate.description);
+        EventBus.$emit('resetDraft', 'discussionTemplate', this.discussionTemplate.id, 'processIntroduction', this.discussionTemplate.processIntroduction);
+      }
+    },
     updatePollTemplateItems() {
       this.pollTemplateItems = [{text: I18n.t('thread_template.add_proposal_or_poll_template'), value: null}].concat(
         Records.pollTemplates.find({groupId: this.discussionTemplate.group().id}).filter( pt => {
@@ -222,6 +228,10 @@ export default {
  
   .d-flex.justify-space-between.my-4.mt-4.thread-template-form-actions
     v-spacer
+    v-btn.mr-2(
+      @click="discardDraft"
+      v-t="'formatting.discard_draft'"
+    )
     v-btn.thread-template-form__submit(
       color="primary"
       @click='submit()'

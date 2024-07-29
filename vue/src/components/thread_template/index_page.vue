@@ -34,6 +34,7 @@ export default {
     });
 
     EventBus.$on('sortThreadTemplates', () => { return this.isSorting = true; });
+    EventBus.$on('reloadThreadTemplates', () => { return this.query(); });
   },
 
   methods: {
@@ -129,7 +130,7 @@ export default {
 
           template(v-if="!isSorting")
             v-list-item.thread-templates--template(
-              v-for="(template, i) in templates" 
+              v-for="(template, i) in templates"
               :key="template.id"
               :to="'/d/new?' + (template.id ? 'template_id='+template.id : 'template_key='+template.key)+ '&group_id='+ $route.query.group_id + '&return_to='+returnTo"
             )

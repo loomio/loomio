@@ -4,7 +4,6 @@ import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
 import openModal from '@/shared/helpers/open_modal';
 import Flash from '@/shared/services/flash';
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
 export default new class CommentService {
   actions(comment, vm, event) {

@@ -61,8 +61,8 @@ GEM
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
     active_model_serializers (0.8.4)
       activemodel (>= 3.0)
-    active_record_extended (3.2.1)
-      activerecord (>= 5.2, < 7.2.0)
+    active_record_extended (3.3.0)
+      activerecord (>= 5.2, < 8.0.0)
       pg (< 3.0)
     activeadmin (3.2.2)
       arbre (~> 1.2, >= 1.2.1)
@@ -104,24 +104,25 @@ GEM
       ruby2_keywords (>= 0.0.2)
     ast (2.4.2)
     aws-eventstream (1.3.0)
-    aws-partitions (1.947.0)
-    aws-sdk-core (3.199.0)
+    aws-partitions (1.950.0)
+    aws-sdk-core (3.201.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.8)
       jmespath (~> 1, >= 1.6.1)
-    aws-sdk-kms (1.87.0)
-      aws-sdk-core (~> 3, >= 3.199.0)
-      aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.154.0)
-      aws-sdk-core (~> 3, >= 3.199.0)
+    aws-sdk-kms (1.88.0)
+      aws-sdk-core (~> 3, >= 3.201.0)
+      aws-sigv4 (~> 1.5)
+    aws-sdk-s3 (1.156.0)
+      aws-sdk-core (~> 3, >= 3.201.0)
       aws-sdk-kms (~> 1)
-      aws-sigv4 (~> 1.8)
+      aws-sigv4 (~> 1.5)
     aws-sigv4 (1.8.0)
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.8)
+    bindex (0.8.1)
     blazer (3.0.3)
       activerecord (>= 6.1)
       chartkick (>= 5)
@@ -148,7 +149,7 @@ GEM
     csv (3.3.0)
     custom_counter_cache (0.2.8)
       rails (>= 4.0)
-    database_cleaner-active_record (2.1.0)
+    database_cleaner-active_record (2.2.0)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
@@ -186,7 +187,7 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
-    faker (3.4.1)
+    faker (3.4.2)
       i18n (>= 1.8.11, < 2)
     faraday (1.10.3)
       faraday-em_http (~> 1.0)
@@ -211,7 +212,8 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
-    ffi (1.16.3)
+    ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
@@ -315,10 +317,10 @@ GEM
     i18n-timezones (1.4.8)
       i18n (>= 0.9.3)
       rails (>= 5.1.6.2)
-    icalendar (2.10.1)
+    icalendar (2.10.2)
       ice_cube (~> 0.16)
-    ice_cube (0.16.4)
-    image_processing (1.12.2)
+    ice_cube (0.17.0)
+    image_processing (1.13.0)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     inherited_resources (1.14.0)
@@ -346,6 +348,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    logger (1.6.0)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -362,9 +365,9 @@ GEM
     marcel (1.0.4)
     maxminddb (0.1.22)
     method_source (1.1.0)
-    mini_magick (4.12.0)
+    mini_magick (4.13.2)
     mini_mime (1.1.5)
-    minitest (5.24.0)
+    minitest (5.24.1)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
@@ -381,9 +384,9 @@ GEM
       net-protocol
     net_http_timeout_errors (1.0.0)
     nio4r (2.7.0)
-    nokogiri (1.16.6-x86_64-darwin)
+    nokogiri (1.16.7-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.6-x86_64-linux)
+    nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     oga (3.4)
       ast
@@ -395,7 +398,7 @@ GEM
     paper_trail (15.1.0)
       activerecord (>= 6.1)
       request_store (~> 1.4)
-    pg (1.5.6)
+    pg (1.5.7)
     pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
@@ -454,7 +457,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.2.1)
-    ransack (4.1.1)
+    ransack (4.2.0)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
@@ -528,8 +531,9 @@ GEM
     ruby-saml (1.16.0)
       nokogiri (>= 1.13.10)
       rexml
-    ruby-vips (2.2.1)
+    ruby-vips (2.2.2)
       ffi (~> 1.12)
+      logger
     ruby2_keywords (0.0.5)
     safely_block (0.4.0)
     sass-rails (6.0.0)
@@ -542,14 +546,14 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (5.17.3)
+    sentry-rails (5.18.2)
       railties (>= 5.0)
-      sentry-ruby (~> 5.17.3)
-    sentry-ruby (5.17.3)
+      sentry-ruby (~> 5.18.2)
+    sentry-ruby (5.18.2)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (5.17.3)
-      sentry-ruby (~> 5.17.3)
+    sentry-sidekiq (5.18.2)
+      sentry-ruby (~> 5.18.2)
       sidekiq (>= 3.0)
     sidekiq (6.5.12)
       connection_pool (>= 2.2.5, < 3)
@@ -597,6 +601,11 @@ GEM
       oga (~> 3.4)
     warden (1.2.9)
       rack (>= 2.0.9)
+    web-console (4.2.1)
+      actionview (>= 6.0.0)
+      activemodel (>= 6.0.0)
+      bindex (>= 0.4.0)
+      railties (>= 6.0.0)
     webmock (3.23.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -647,7 +656,7 @@ DEPENDENCIES
   httparty (~> 0.22.0)
   i18n-timezones
   icalendar
-  image_processing (~> 1.12)
+  image_processing (~> 1.13)
   lograge
   maxminddb
   nokogiri
@@ -664,7 +673,7 @@ DEPENDENCIES
   rails (= 7.0.8.1)
   rails-controller-testing
   rake
-  ransack (= 4.1.1)
+  ransack (= 4.2.0)
   redcarpet (~> 3.6.0)
   redis-objects
   redis-rails
@@ -693,6 +702,7 @@ DEPENDENCIES
   uuidtools
   victor
   video_info
+  web-console
   webmock
 
 RUBY VERSION
