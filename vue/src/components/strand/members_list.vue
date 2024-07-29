@@ -190,10 +190,10 @@ v-card.strand-members-list
         user-avatar(:user="reader.user()" :size="24")
       v-list-item-title
         span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
-        v-chip.mr-1(v-if="discussion.groupId && reader.guest" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-        v-chip.mr-1(v-if="reader.admin" outlined x-small label v-t="'announcement.members_list.thread_admin'")
-        v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined x-small label v-t="'announcement.members_list.group_admin'")
-        v-chip.mr-1(v-if="!reader.user().emailVerified" outlined x-small label v-t="'announcement.members_list.has_not_joined_yet'" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
+        v-chip.mr-1(v-if="discussion.groupId && reader.guest" outlined size="x-small" label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+        v-chip.mr-1(v-if="reader.admin" outlined size="x-small" label v-t="'announcement.members_list.thread_admin'")
+        v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined size="x-small" label v-t="'announcement.members_list.group_admin'")
+        v-chip.mr-1(v-if="!reader.user().emailVerified" outlined size="x-small" label v-t="'announcement.members_list.has_not_joined_yet'" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
       v-list-item-subtitle
         span(v-if="reader.lastReadAt" v-t="{ path: 'announcement.members_list.last_read_at', args: { time: approximateDate(reader.lastReadAt) } }")
         span(v-else v-t="'announcement.members_list.has_not_read_thread'")

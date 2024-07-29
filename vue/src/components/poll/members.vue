@@ -201,9 +201,9 @@ v-card.poll-members-form
         user-avatar(:user="user" :size="24")
       v-list-item-title
         span.mr-2 {{user.nameWithTitle(poll.group())}}
-        v-chip.mr-1(v-if="isGuest[user.id]" outlined x-small label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-        v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined x-small label v-t="'members_panel.admin'")
-        v-chip.mr-1(v-if="!user.emailVerified" outlined x-small label v-t="'announcement.members_list.has_not_joined_yet'" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
+        v-chip.mr-1(v-if="isGuest[user.id]" outlined size="x-small" label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
+        v-chip.mr-1(v-if="isMemberAdmin[user.id] || isStanceAdmin[user.id]" outlined size="x-small" label v-t="'members_panel.admin'")
+        v-chip.mr-1(v-if="!user.emailVerified" outlined size="x-small" label v-t="'announcement.members_list.has_not_joined_yet'" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
       template(v-slot:append)
         v-menu(offset-y)
           template(v-slot:activator="{attrs}")

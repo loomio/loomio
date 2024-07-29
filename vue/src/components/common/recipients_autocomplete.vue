@@ -343,7 +343,7 @@ div.recipients-autocomplete
     :label="label"
     :placeholder="placeholder"
     :items='suggestions'
-    )
+  )
     template(v-slot:no-data)
       v-list-item
         template(v-slot:prepend)
@@ -366,20 +366,18 @@ div.recipients-autocomplete
         v-if="item.raw.type =='audience'"
         v-bind="props"
         :value='item.selected'
-        close
+        closable
         color='primary'
         @click:close='remove(item.raw)'
         @click='expand(item.raw)')
         span
-          common-icon.mr-1(size="small" :name="item.raw.icon")
+          common-icon.mr-1(:name="item.raw.icon")
         span {{ item.title }}
       v-chip.chip--select-multi(
         v-else
         v-bind="props"
         :value='item.selected'
-        close
-        outlined
-        color='primary'
+        closable
         @click:close='remove(item.raw)')
         span
           user-avatar.mr-2(

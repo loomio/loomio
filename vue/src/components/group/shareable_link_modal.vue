@@ -64,7 +64,7 @@ v-dialog(v-model='dialog' max-width="600px")
     v-card-title
       h1.text-h5(tabindex="-1" v-t="'invitation_form.share_group'")
       v-spacer
-      v-btn.dismiss-modal-button(icon small @click='dialog = false')
+      v-btn.dismiss-modal-button(icon size="small" @click='dialog = false')
         common-icon(name="mdi-window-close")
     v-card-text
       template(v-if="group.groupPrivacy != 'secret'")

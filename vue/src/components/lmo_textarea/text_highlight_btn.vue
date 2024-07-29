@@ -48,7 +48,7 @@ v-menu
                          :class="{'swatch--selected': key == activeColorKey }"
                          :style="{'background-color': value.lighten1}"
                          @click="editor.chain().setHighlight({color: key}).focus().run()") &nbsp;
-    v-btn.mt-2(block x-small outlined @click="editor.chain().unsetHighlight().focus().run()" v-t="'formatting.reset'")
+    v-btn.mt-2(block size="x-small" outlined @click="editor.chain().unsetHighlight().focus().run()" v-t="'formatting.reset'")
 </template>
 
 <style lang="sass">

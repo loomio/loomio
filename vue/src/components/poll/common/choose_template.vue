@@ -217,11 +217,11 @@ export default {
       )
         v-list-item-title
           span {{ template.processName }}
-          v-chip.ml-2(x-small outlined v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
-          v-chip.ml-2(x-small outlined v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
+          v-chip.ml-2(size="x-small" outlined v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
+          v-chip.ml-2(size="x-small" outlined v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
         v-list-item-subtitle {{ template.processSubtitle }}
         template(v-slot:append)
-          action-menu(:actions='actions[i]', small, icon, :name="$t('action_dock.more_actions')")
+          action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")
 
 </template>
 <style>

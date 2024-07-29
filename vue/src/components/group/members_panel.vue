@@ -244,10 +244,10 @@ export default
               space
               span.text-caption {{membership.user().title(group)}}
               space
-              v-chip(v-if="membership.user().bot" x-small outlined label v-t="'members_panel.bot'")
+              v-chip(v-if="membership.user().bot" size="x-small" outlined label v-t="'members_panel.bot'")
               span(v-if="membership.groupId == group.id && membership.admin")
                 space
-                v-chip(x-small outlined label v-t="'members_panel.admin'")
+                v-chip(size="x-small" outlined label v-t="'members_panel.admin'")
                 space
               span.text-caption.text-medium-emphasis(v-if="membership.acceptedAt")
                 span(v-t="'common.action.joined'")

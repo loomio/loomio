@@ -57,7 +57,13 @@ v-system-bar.system-notice(v-if="showNotice" app color="primary" height="40")
     .system-notice__message.text-subtitle-1
       span(v-if="notice" v-marked="notice")
       span(v-else="notice" v-t="'global.messages.app_update'")
-    v-btn.system-notice__hide(v-if="showDismiss" small outlined @click="accept" v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'")
+    v-btn.system-notice__hide(
+      v-if="showDismiss"
+      size="small"
+      variant="tonal"
+      @click="accept"
+      v-t="(reload && 'global.messages.reload') || 'dashboard_page.dismiss'"
+    )
 </template>
 
 <style lang="sass">

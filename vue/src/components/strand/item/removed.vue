@@ -25,5 +25,5 @@ section.strand-item__removed
     span(v-t="'thread_item.removed'")
     mid-dot
     time-ago(:date='eventable.discardedAt')
-  action-dock(:model='eventable' :menu-actions='menuActions' small)
+  action-dock(:model='eventable' :menu-actions='menuActions' size="small")
 </template>
