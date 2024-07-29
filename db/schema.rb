@@ -541,18 +541,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
     t.index ["volume"], name: "index_memberships_on_volume"
   end
 
-  create_table "motions", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "group_id"
-    t.integer "author_id"
-    t.integer "facilitator_id"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "phase", default: "proposal", null: false
-    t.string "discussion_url", default: "", null: false
-  end
-
   create_table "notifications", id: :serial, force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", precision: nil
@@ -1049,17 +1037,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
     t.datetime "created_at", precision: nil
     t.jsonb "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
-  end
-
-  create_table "votes", id: :serial, force: :cascade do |t|
-    t.integer "motion_id"
-    t.integer "user_id"
-    t.string "position"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.string "statement"
-    t.index ["motion_id"], name: "index_votes_on_motion_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
   create_table "webhooks", force: :cascade do |t|
