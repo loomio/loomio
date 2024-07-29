@@ -17,7 +17,7 @@ export default class CommentModel extends BaseModel {
   }
 
   collabKeyParams() {
-    return [this.parentType, this.parentId];
+    return [this.discussionId, this.parentType, this.parentId];
   }
 
   defaultValues() {
