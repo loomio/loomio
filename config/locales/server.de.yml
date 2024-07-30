@@ -169,6 +169,7 @@ de:
           Du musst angemeldet sein, um fortfahren zu können.
           Bitte <a href="/dashboard" target="_blank">melde dich an</a>, dann lade diese Seite neu, um fortzufahren.
       recaptcha: "Wir konnten leider nicht bestätigen, dass du kein Computer bist. Bitte versuche es erneut."
+      restricted_name: "Der von Ihnen angegebene Name ist ein reserviertes Schlüsselwort in Loomio"
       bad_login: "Sorry, das Passwort passt nicht zu dem in unserer Datei."
       username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
 
