@@ -127,7 +127,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
       v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.minimumStanceChoices, maximum: poll.maximumStanceChoices}}")
 
   v-card.poll-common-vote-form__button.mb-2.rounded(
-    variant="tonal"
+    variant="outlined"
     :style="(isSelected(option) && {'border-color': option.color}) || {}"
     v-for='option in options'
     :key='option.id'
@@ -198,7 +198,12 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     height: 0
 
 .poll-common-vote-form__button.voting-enabled
-  border: 1px solid rgba(0,0,0,0)
+  border: 1px solid rgba(0,0,0,0.1)
+
+.v-theme--dark
+  .poll-common-vote-form__button.voting-enabled
+    border: 1px solid rgba(255,255,255, 0.2)
+
 .poll-common-vote-form__button.voting-enabled
   &:hover
     border: 1px solid rgb(var(--v-theme-primary))

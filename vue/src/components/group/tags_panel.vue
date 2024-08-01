@@ -5,9 +5,11 @@ import Records from '@/shared/services/records';
 import RecordLoader from '@/shared/services/record_loader';
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [WatchRecords],
   data() {
     return {
       group: null,

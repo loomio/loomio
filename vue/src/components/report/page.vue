@@ -28,10 +28,10 @@ export default {
       end_month: (new Date()).toISOString().slice(0,7),
       interval: 'month',
       intervalItems: [
-        {text: this.$t('report.day'), value: 'day'},
-        {text: this.$t('report.week'), value: 'week'},
-        {text: this.$t('report.month'), value: 'month'},
-        {text: this.$t('report.year'), value: 'year'}
+        {title: this.$t('report.day'), key: 'day'},
+        {title: this.$t('report.week'), key: 'week'},
+        {title: this.$t('report.month'), key: 'month'},
+        {title: this.$t('report.year'), key: 'year'}
       ],
       total_users: 0,
       discussions_count: 0,
@@ -40,45 +40,45 @@ export default {
       polls_with_outcomes_count: 0,
       models_per_interval: [],
       models_per_interval_headers: [
-        {text: "Date", value: "date"},
-        {text: this.$t('common.threads'), value: "threads"},
-        {text: this.$t('navbar.search.comments'), value: "comments"},
-        {text: this.$t('group_page.polls'), value: "polls"},
-        {text: this.$t('poll_common.votes'), value: "votes"},
-        {text: this.$t('poll_common.outcomes'), value: "outcomes"},
+        {title: "Date", key: "date"},
+        {title: this.$t('common.threads'), key: "threads"},
+        {title: this.$t('navbar.search.comments'), key: "comments"},
+        {title: this.$t('group_page.polls'), key: "polls"},
+        {title: this.$t('poll_common.votes'), key: "votes"},
+        {title: this.$t('poll_common.outcomes'), key: "outcomes"},
       ],
       tags_headers: [
-        {text: "Tag", value: "tag"},
-        {text: this.$t('poll_meeting_chart_panel.total'), value: "total_count"},
-        {text: this.$t('common.threads'), value: "threads_count"},
-        {text: this.$t('group_page.polls'), value: "polls_count"},
+        {title: "Tag", key: "tag"},
+        {title: this.$t('poll_meeting_chart_panel.total'), key: "total_count"},
+        {title: this.$t('common.threads'), key: "threads_count"},
+        {title: this.$t('group_page.polls'), key: "polls_count"},
       ],
       tags_rows: [],
       per_user_headers: [
-        {text: "User", value: "user"},
-        {text: this.$t('report.country'), value: "country"},
-        {text: this.$t('common.threads'), value: "threads"},
-        {text: this.$t('navbar.search.comments'), value: "comments"},
-        {text: this.$t('group_page.polls'), value: "polls"},
-        {text: this.$t('poll_common.votes'), value: "votes"},
-        {text: this.$t('poll_common.outcomes'), value: "outcomes"},
-        {text: "Reactions", value: "reactions"},
+        {title: "User", key: "user"},
+        {title: this.$t('report.country'), key: "country"},
+        {title: this.$t('common.threads'), key: "threads"},
+        {title: this.$t('navbar.search.comments'), key: "comments"},
+        {title: this.$t('group_page.polls'), key: "polls"},
+        {title: this.$t('poll_common.votes'), key: "votes"},
+        {title: this.$t('poll_common.outcomes'), key: "outcomes"},
+        {title: "Reactions", key: "reactions"},
       ],
       per_user_rows: [],
       users_per_country_rows: [],
       users_per_country_headers: [
-        {text: this.$t('report.country'), value: 'country'},
-        {text: this.$t('report.users'), value: 'users'},
+        {title: this.$t('report.country'), key: 'country'},
+        {title: this.$t('report.users'), key: 'users'},
       ],
       per_country_rows: [],
       per_country_headers: [
-        {text: 'Country', value: 'country' },
-        {text: this.$t('common.threads'), value: "threads"},
-        {text: this.$t('navbar.search.comments'), value: "comments"},
-        {text: this.$t('group_page.polls'), value: "polls"},
-        {text: this.$t('poll_common.votes'), value: "votes"},
-        {text: this.$t('poll_common.outcomes'), value: "outcomes"},
-        {text: "Reactions", value: "reactions"},
+        {title: 'Country', key: 'country' },
+        {title: this.$t('common.threads'), key: "threads"},
+        {title: this.$t('navbar.search.comments'), key: "comments"},
+        {title: this.$t('group_page.polls'), key: "polls"},
+        {title: this.$t('poll_common.votes'), key: "votes"},
+        {title: this.$t('poll_common.outcomes'), key: "outcomes"},
+        {title: "Reactions", key: "reactions"},
       ]
     };
   },
@@ -220,7 +220,7 @@ v-main
       :label="$t('common.groups')"
       v-model="group_ids"
       :items="all_groups"
-      item-text="name"
+      item-title="name"
       item-value="id"
       multiple
       small-chips
@@ -295,7 +295,7 @@ v-main
 
     div(v-if="!loading")
 
-      v-simple-table.mt-8
+      v-table.mt-8
         thead
           th.pt-4(v-t="'report.total_users'")
           th.pt-4(v-t="'report.total_threads'")
@@ -315,7 +315,7 @@ v-main
       v-card.mt-8
         v-card-title(v-t="{path: 'report.actions_per_interval', args: {interval: interval}}")
         v-data-table(
-          density="dense"
+          density="compact"
           disable-pagination
           hide-default-footer
           :headers="models_per_interval_headers"
@@ -325,7 +325,7 @@ v-main
       v-card.mt-8
         v-card-title(v-t="'loomio_tags.tags'")
         v-data-table(
-          density="dense"
+          density="compact"
           disable-pagination
           hide-default-footer
           :headers="tags_headers"
@@ -335,7 +335,7 @@ v-main
       v-card.mt-8
         v-card-title(v-t="'report.actions_per_user'")
         v-data-table(
-          density="dense"
+          density="compact"
           disable-pagination
           hide-default-footer
           :headers="per_user_headers"
@@ -347,7 +347,7 @@ v-main
         v-card-title(v-t="'report.users_per_country'")
         p.px-4.text-caption(v-t="'report.country_disclaimer'")
         v-data-table(
-          density="dense"
+          density="compact"
           disable-pagination
           hide-default-footer
           :headers="users_per_country_headers"
@@ -357,7 +357,7 @@ v-main
       v-card.mt-8
         v-card-title(v-t="'report.actions_per_country'")
         v-data-table(
-          density="dense"
+          density="compact"
           disable-pagination
           hide-default-footer
           :headers="per_country_headers"
