@@ -13,10 +13,24 @@ const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
 export default {
   components: {BarChart},
   computed: {
-    selectableMonths() {
+    startMonths() {
       let months = [];
       let next = null;
       for (let year = this.firstYear; year <= new Date().getFullYear(); year++) {
+        for (let month = 1; month <= 12; month++) {
+          next = year+"-"+String(month).padStart(2, '0');
+          months.push(next);
+          if (next > new Date().toISOString().slice(0,7)) {
+            return months;
+          }
+        }
+      }
+    },
+    endMonths() {
+      let months = [];
+      let next = null;
+      let firstYear = new Date(this.start_month + "-01").getFullYear();
+      for (let year = firstYear; year <= new Date().getFullYear(); year++) {
         for (let month = 1; month <= 12; month++) {
           next = year+"-"+String(month).padStart(2, '0');
           months.push(next);
@@ -253,14 +267,14 @@ v-main
         :label="$t('report.start_on')"
         :prepend-icon="mdiCalendar"
         v-model="start_month"
-        :items="selectableMonths"
+        :items="startMonths"
       )
 
       v-select(
         :label="$t('report.end_on')"
         :prepend-icon="mdiCalendar"
         v-model="end_month"
-        :items="selectableMonths"
+        :items="endMonths"
       )
 
       v-select.ml-8(
