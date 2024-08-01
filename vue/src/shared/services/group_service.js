@@ -6,7 +6,7 @@ import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import AppConfig      from '@/shared/services/app_config';
-import i18n from '@/i18n';
+import { I18n } from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
 
 export default new class GroupService {
@@ -26,6 +26,7 @@ export default new class GroupService {
           EventBus.$emit('openModal', {
             component: 'EmailToGroupSettings',
             persistent: false,
+            scrollable: true,
             props: {
               group: group
             }
@@ -239,7 +240,7 @@ export default new class GroupService {
                 text: {
                   title:    (group.isParent() && 'delete_group_modal.title') || 'delete_group_modal.subgroup_title',
                   helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body', 
-                  raw_confirm_text_placeholder: i18n.t('delete_group_modal.confirm', {name: confirmText}),
+                  raw_confirm_text_placeholder: I18n.global.t('delete_group_modal.confirm', {name: confirmText}),
                   confirm_text: confirmText,
                   flash:    'delete_group_modal.success',
                   submit:   'delete_group_modal.title'

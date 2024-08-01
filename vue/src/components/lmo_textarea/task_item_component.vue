@@ -1,6 +1,5 @@
 <script lang="js">
-import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-2';
-// import { isArray } from 'lodash-es';
+import { NodeViewWrapper, nodeViewProps, NodeViewContent } from '@tiptap/vue-3';
 export default
 {
   components: { NodeViewWrapper, NodeViewContent },
@@ -14,12 +13,12 @@ export default
       remind: 0,
       checked: this.node.attrs.checked,
       reminders: [
-        {text: this.$t('tasks.no_reminder'), value: null},
-        {text: this.$t('tasks.on_due_date'), value: 0},
-        {text: this.$t('tasks.1_day_before'), value: 1},
-        {text: this.$t('tasks.2_day_before'), value: 2},
-        {text: this.$t('tasks.3_day_before'), value: 3},
-        {text: this.$t('tasks.7_day_before'), value: 7}
+        {title: this.$t('tasks.no_reminder'), value: null},
+        {title: this.$t('tasks.on_due_date'), value: 0},
+        {title: this.$t('tasks.1_day_before'), value: 1},
+        {title: this.$t('tasks.2_day_before'), value: 2},
+        {title: this.$t('tasks.3_day_before'), value: 3},
+        {title: this.$t('tasks.7_day_before'), value: 7}
       ],
       mentioned: []
     };
@@ -74,7 +73,7 @@ node-view-wrapper(as="li")
   //- input.flex-shrink-0(style="z-index: 2300" type="checkbox" :checked="node.attrs.checked" @change="onCheckboxChange")
   v-simple-checkbox(contenteditable="false" color="accent" :ripple="false" type="checkbox" :value="checked" @click="onCheckboxChange")
   node-view-content(as="span" :class="{'task-item-text': true, 'task-item-is-empty': isEmpty}" :data-placeholder="$t('tasks.task_placeholder')")
-  v-chip.ml-2(v-if="hasMention" contenteditable="false" color="primary" x-small @click="openModal")
+  v-chip.ml-2(v-if="hasMention" contenteditable="false" color="primary" size="x-small" @click="openModal")
     | 📅
     span.ml-1(v-if="node.attrs.dueOn") {{node.attrs.dueOn}}
     span.ml-1(v-else v-t="'tasks.add_due_date'")
@@ -102,7 +101,7 @@ node-view-wrapper(as="li")
   pointer-events: none
   height: 0
 
-.theme--dark
+.v-theme--dark
   .task-item-text.task-item-is-empty::before
     color: rgba(255, 255, 255, 0.2)
 

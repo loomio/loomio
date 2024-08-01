@@ -1,7 +1,6 @@
 import Records from '@/shared/services/records';
 import utils         from '@/shared/record_store/utils';
 import RestfulClient from '@/shared/record_store/restful_client';
-import Vue from 'vue';
 import {merge, orderBy, uniq, map } from 'lodash-es';
 
 export default class PageLoader {
@@ -32,8 +31,8 @@ export default class PageLoader {
       this.total = data.meta.total;
       const firstId = data[data.meta.root][0][this.order];
       const lastId = data[data.meta.root][(data[data.meta.root].length - 1)][this.order];
-      Vue.set(this.pageWindow, page, [lastId,firstId]);
-      Vue.set(this.pageIds, page, map(data[data.meta.root], 'id'));
+      this.pageWindow[page] = [lastId,firstId];
+      this.pageIds[page] = map(data[data.meta.root], 'id');
       // console.log 'page', page, 'discussions.length', data.discussions.length, 'first', firstId, 'last', lastId, 'groupIds!', orderBy uniq(map(data['discussions'], 'groupId'))
       return Records.importREADY(data);
     }).catch(err => {

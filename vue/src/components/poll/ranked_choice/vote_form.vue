@@ -2,8 +2,10 @@
 import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import { sortBy, take, map } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -57,7 +59,7 @@ export default {
 
 <template lang='pug'>
 .poll-ranked-choice-vote-form.lmo-relative
-  p.text--secondary(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
+  p.text-medium-emphasis(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
   sortable-list(v-model="pollOptions" lock-axis="y" axis="y" append-to=".app-is-booted")
     sortable-item(
       v-for="(option, index) in pollOptions"
@@ -67,12 +69,11 @@ export default {
     )
       v-sheet.mb-2.rounded.poll-ranked-choice-vote-form__option(outlined :style="{'border-color': option.color}")
         v-list-item
-          v-list-item-icon
+          template(v-slot:prepend)
             common-icon(style="cursor: pointer", :color="option.color" name="mdi-drag")
-          v-list-item-content
-            v-list-item-title {{option.name}}
-            v-list-item-subtitle {{option.meaning}}
-          v-list-item-action
+          v-list-item-title {{option.name}}
+          v-list-item-subtitle {{option.meaning}}
+          template(v-slot:append)
             span(style="font-size: 1.4rem" v-if="index+1 <= numChoices") # {{index+1}}
 
   validation-errors(:subject='stance' field='stanceChoices')

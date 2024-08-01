@@ -1299,7 +1299,7 @@ en:
     subgroup_name: Subgroup name
     organization_name: Organization name
     handle: Handle
-    group_handle_placeholder: "For your group URL and email: %{host}/%{handle}, %{handle}@%{host}"
+    group_handle_placeholder: "For your group URL and email: %{host}/%{handle}, %{handle}{'@'}%{host}"
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What is the name of your group?'
@@ -1604,7 +1604,7 @@ en:
     announcement_label: Announcements
     announcement_description: "You will receive an email about all content that has been announced by people in your groups"
     mentioned_label: Mentions & Replies
-    mentioned_description: "When someone @mentions you in a comment or replies to you, you'll get a notification email"
+    mentioned_description: "When someone mentions you in a comment or replies to you, you'll get a notification email"
     update_settings: Save changes
     specific_groups: Settings for specific groups
     default_settings:
@@ -1872,6 +1872,10 @@ en:
     gradients_of_agreement_title: Gradients of agreement
 
   poll_option_form:
+    thumb_up: Thumb up
+    thumb_down: Thumb down
+    thumb_sideways: Thumb sideways
+    hand_up: Hand up
     edit_option: Edit option
     option_name: Option name
     option_name_hint: A short name for this option
@@ -2242,7 +2246,7 @@ en:
     option_added_please_add_details: Option added! Please add some details so people know what it means.
     default_duration_in_days: Default duration in days
     default_duration_in_days_hint: How many days should be given for people to vote?
-    how_many_options_can_a_voter_choose: How many of these options may a voter choose?
+    how_many_options_can_a_voter_choose: How many options may a voter choose?
     minimum_choices: Minimum choices
     maximum_choices: Maximum choices
     content: Content
@@ -2850,7 +2854,7 @@ en:
     account_locked: "Your account has been locked after too many failed login attempts. Check your email for an unlock link"
     email_not_found: "Sorry, we couldn't find an account with that email address"
     email_taken: Email address is already registered
-    email_placeholder: you@example.com
+    email_placeholder: you{'@'}example.com
     login_with_token: You're all set! Click the link below to continue.
     login_link_helptext: Click the button below and we'll send you a link to sign in.
     enter_your_password: "Enter your password to continue"

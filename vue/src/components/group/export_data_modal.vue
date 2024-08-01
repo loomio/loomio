@@ -50,10 +50,8 @@ export default
 
 </script>
 <template lang="pug">
-v-card
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'export_data_modal.title'")
-    v-spacer
+v-card(:title="$t('export_data_modal.title')")
+  template(v-slot:append)
     dismiss-modal-button
   v-card-text
     help-link(path="en/user_manual/groups/data_export")
@@ -63,5 +61,4 @@ v-card
     v-btn(:href="baseUrl + 'g/' + group.key + '/export.html?export=1'" target="_blank" v-t="'group_page.options.export_data_as_html'")
     h4.my-4(v-t="'export_data_modal.as_json'")
     v-btn(@click="openConfirmModalForJson" v-t="'group_page.options.export_data_as_json'")
-
 </template>

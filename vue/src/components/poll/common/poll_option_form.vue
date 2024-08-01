@@ -1,7 +1,7 @@
 <script lang="js">
 import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {
@@ -13,12 +13,12 @@ export default {
 
   data() {
     return {
-      nameRules: [v => (v.length <= 60) || I18n.t("poll_option_form.option_name_validation")],
+      nameRules: [v => (v.length <= 60) || I18n.global.t("poll_option_form.option_name_validation")],
       icons: [
-        {text: this.$t('poll_proposal_options.agree'), value: 'agree'},
-        {text: this.$t('poll_proposal_options.disagree'), value: 'disagree'},
-        {text: this.$t('poll_proposal_options.abstain'), value: 'abstain'},
-        {text: this.$t('poll_proposal_options.block'), value: 'block'}
+        {title: I18n.global.t('poll_proposal_options.agree'), value: 'agree'},
+        {title: I18n.global.t('poll_proposal_options.disagree'), value: 'disagree'},
+        {title: I18n.global.t('poll_proposal_options.abstain'), value: 'abstain'},
+        {title: I18n.global.t('poll_proposal_options.block'), value: 'block'}
       ]
     };
   },
@@ -26,7 +26,8 @@ export default {
   computed: {
     hasOptionIcon() { return this.poll.config().has_option_icon; },
     hasOptionPrompt() { return this.poll.config().per_option_reason_prompt; },
-    hasOptionMeaning() { return this.poll.config().options_have_meaning; }
+    hasOptionMeaning() { return this.poll.config().options_have_meaning; },
+    cardTitle() { return this.edit ? 'poll_option_form.edit_option' : 'poll_poll_form.add_option_placeholder' }
   },
 
   methods: {
@@ -47,11 +48,8 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.poll-common-option-form
-  v-card-title
-    h1.text-h5(v-if="edit" v-t="$t('poll_option_form.edit_option')")
-    h1.text-h5(v-else v-t="$t('poll_poll_form.add_option_placeholder')")
-    v-spacer
+v-card.poll-common-option-form(:title="$t(cardTitle)")
+  template(v-slot:append)
     dismiss-modal-button
   v-card-text
     div(v-if="hasOptionIcon")
@@ -77,7 +75,6 @@ v-card.poll-common-option-form
       counter
       :rules="nameRules"
     )
-
     v-textarea(
       v-if="hasOptionMeaning"
       :label="$t('poll_option_form.meaning')"
@@ -92,7 +89,13 @@ v-card.poll-common-option-form
       v-model="pollOption.prompt")
   v-card-actions
     v-spacer
-    v-btn.poll-option-form__done-btn(@click="submit" v-t="'common.action.done'" :disabled="(hasOptionIcon && !pollOption.icon) || !pollOption.name") 
+    v-btn.poll-option-form__done-btn(
+      color="primary"
+      variant="elevated"
+      @click="submit"
+      v-t="'common.action.done'"
+      :disabled="(hasOptionIcon && !pollOption.icon) || !pollOption.name"
+    )
 </template>
 
 <style lang="sass">

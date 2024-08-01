@@ -105,7 +105,10 @@ export default new class ThreadService {
         dockDisplay: 'icon',
         dock: 1,
         canPerform() { return AbilityService.canAddComment(discussion); },
-        perform() { return vm.$vuetify.goTo('#add-comment'); }
+        perform() {
+          document.querySelector('#add-comment').scrollIntoView();
+          document.querySelector('#add-comment').focus();
+        }
       },
 
       edit_thread: {

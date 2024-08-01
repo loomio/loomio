@@ -4,7 +4,7 @@ import FlashService   from '@/shared/services/flash';
 import { hoursOfDay, timeFormat } from '@/shared/helpers/format_time';
 import { format, parse, isValid } from 'date-fns';
 import { mdiCalendar, mdiClockOutline } from '@mdi/js';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default {
   props: {
@@ -56,7 +56,7 @@ export default {
         return format(d, timeFormat());
       } catch (error) {
         FlashService.error("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')});
-        return I18n.t("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')});
+        return I18n.global.t("poll_meeting_form.use_24_hour_format", {time: format(new Date, 'HH:mm')});
       }
     }
   }
@@ -65,7 +65,7 @@ export default {
 <template lang="pug">
 v-layout.date-time-picker
   v-menu(ref='dateTimePicker' v-model='dateMenu' offset-y min-width='290px')
-    template(v-slot:activator='{ on, attrs }')
+    template(v-slot:activator='{ attrs }')
       v-text-field.date-time-picker__date-field(
         v-model='dateStr'
         v-on='on'

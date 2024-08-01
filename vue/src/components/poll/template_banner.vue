@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template lang='pug'>
-v-alert(v-if="poll.template && poll.id" color="info" outlined)
+v-alert(v-if="poll.template && poll.id" color="info" variant="tonal")
   .d-flex.align-center
     div(v-t="'templates.this_is_a_poll_template'")
     v-spacer

@@ -69,7 +69,7 @@ v-main.user-page__profile
         v-card-text
           v-layout.user-page__info.mb-5.align-center.justify-center(column)
             user-avatar.mb-5(:user='user' :size='192' :no-link="true")
-            .text--secondary @{{user.username}}
+            .text-medium-emphasis @{{user.username}}
             formatted-text(v-if="user" :model="user" column="shortBio")
             div(v-t="{ path: 'user_page.locale_field', args: { value: user.localeName() } }", v-if='user.localeName()')
             span
@@ -81,7 +81,7 @@ v-main.user-page__profile
       v-card.mt-4.user-page__groups
         v-card-text
           h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
-          v-list(dense)
+          v-list(density="dense")
             v-list-item.user-page__group(v-for='group in groups' :key='group.id' :to='urlFor(group)')
               v-list-item-avatar
                 v-avatar.mr-2(tile size="48")

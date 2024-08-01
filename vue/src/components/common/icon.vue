@@ -64,6 +64,7 @@ import {
   mdiEye,
   mdiEyeOff,
   mdiFaceAgent,
+  mdiFile,
   mdiFlagCheckered,
   mdiFolderSwapOutline,
   mdiFormatAlignCenter,
@@ -152,15 +153,11 @@ export default {
       type: String,
       default: undefined
     },
-    dense:  {
-      type: Boolean,
-      default: false
+    density:  {
+      type: String,
+      default: undefined
     },
     disabled:  {
-      type: Boolean,
-      default: false
-    },
-    large:  {
       type: Boolean,
       default: false
     },
@@ -178,21 +175,9 @@ export default {
     },
     size: {
       type: [Number, String],
-      default: undefined
-    },
-    small: {
-      type: Boolean,
-      default: false
+      default: 'default'
     },
     tag: String,
-    XLarge:  {
-      type: Boolean,
-      default: false
-    },
-    XSmall: {
-      type: Boolean,
-      default: false
-    },
     name: String
   },
 
@@ -260,6 +245,7 @@ export default {
       mdiEye,
       mdiEyeOff,
       mdiFaceAgent,
+      mdiFile,
       mdiFlagCheckered,
       mdiFolderSwapOutline,
       mdiFormatAlignCenter,
@@ -344,7 +330,13 @@ export default {
   },
 
   methods: {
-    iconSVG() { return this[camelCase(this.name)] }
+    iconSVG() {
+      if (this.name) {
+        return this[camelCase(this.name)]
+      } else {
+        return undefined
+      }
+    }
   }
 };
 </script>
@@ -352,15 +344,11 @@ export default {
 <template lang="pug">
 v-icon(
   color="color"
-  :dense="dense"
-  :large="large"
+  :density="density"
   :left="left"
   :light="light"
   :right="right"
-  :small="small"
   :tag="tag"
-  :x-large="XLarge"
-  :x-small="XSmall"
   :size="size"
 ) {{ iconSVG() }}
 </template>

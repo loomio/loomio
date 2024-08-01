@@ -8,11 +8,13 @@ import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
 import { uniq, debounce } from 'lodash-es';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import { mdiAccountMultiplePlus } from '@mdi/js';
+import WatchRecords from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [WatchRecords],
   components: {
     RecipientsAutocomplete
   },
@@ -39,8 +41,7 @@ export default
   },
 
   mounted() {
-    Records.groups.findOrFetchById(this.group.id);
-    this.message = I18n.t('announcement.form.invitation_message_default');
+    this.message = I18n.global.t('announcement.form.invitation_message_default');
     this.updateSuggestions();
     this.watchRecords({
       collections: ['memberships', 'groups'],
@@ -124,12 +125,9 @@ export default
 
 </script>
 <template lang="pug">
-.group-invitation-form
-  .px-4.pt-4
-    .d-flex.justify-space-between
-      h1.text-h5(tabindex="-1" v-t="{path: 'announcement.send_group', args: {name: group.name} }")
-      dismiss-modal-button
-
+v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group.name})")
+  template(v-slot:append)
+    dismiss-modal-button
     div.py-8(v-if="!subscription.active")
       .announcement-form__invite
         //- p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")

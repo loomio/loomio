@@ -14,10 +14,10 @@ export default {
       kinds: AppConfig.webhookEventKinds,
       testing: false,
       formats: [
-        {text: this.$t('webhook.formats.markdown'), value: "markdown"},
-        {text: this.$t('webhook.formats.microsoft'), value: "microsoft"},
-        {text: this.$t('webhook.formats.slack'), value: "slack"},
-        {text: this.$t('webhook.formats.discord'), value: "discord"}
+        {title: this.$t('webhook.formats.markdown'), value: "markdown"},
+        {title: this.$t('webhook.formats.microsoft'), value: "microsoft"},
+        {title: this.$t('webhook.formats.slack'), value: "slack"},
+        {title: this.$t('webhook.formats.discord'), value: "discord"}
         ]
     };
   },
@@ -68,13 +68,8 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.chatbot-matrix-form
-  v-card-title
-    h1.text-h5(tabindex="-1")
-      span Webhook
-      space
-      span(v-t="'chatbot.chatbot'")
-    v-spacer
+v-card.chatbot-matrix-form(:title="'Webhook ' + $t('chatbot.chatbot')")
+  template(v-slot:append)
     dismiss-modal-button
   v-card-text
     v-text-field(
@@ -95,7 +90,7 @@ v-card.chatbot-matrix-form
       v-model="chatbot.notificationOnly", 
       :label="$t('chatbot.notification_only_label')" 
       hide-details)
-    p.mt-4.text--secondary(v-t="'chatbot.event_kind_helptext'")
+    p.mt-4.text-medium-emphasis(v-t="'chatbot.event_kind_helptext'")
 
     v-checkbox.webhook-form__event-kind(
       hide-details 
@@ -105,9 +100,9 @@ v-card.chatbot-matrix-form
       :label="$t('webhook.event_kinds.' + kind)" 
       :value="kind")
 
-    v-card-actions
-      v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")
-      v-spacer
-      v-btn(@click='testConnection', v-t="'chatbot.test_connection'", :loading="testing")
-      v-btn(color='primary' @click='submit' v-t="'common.action.save'")
+  v-card-actions
+    v-btn(v-if="chatbot.id" @click='destroy' v-t="'common.action.delete'")
+    v-spacer
+    v-btn(@click='testConnection', v-t="'chatbot.test_connection'", :loading="testing")
+    v-btn(color='primary' @click='submit' v-t="'common.action.save'")
 </template>

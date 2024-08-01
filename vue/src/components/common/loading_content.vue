@@ -34,7 +34,7 @@ export default {
   &:nth-child(3n+2)
     margin-right: 30px
 
-.theme--dark
+.v-theme--dark
   .loading-content__background
     background: linear-gradient(to right, #222 8%, #333 18%, #222 33%)
 

@@ -3,8 +3,10 @@ import EventBus from '@/shared/services/event_bus';
 import Flash   from '@/shared/services/flash';
 import Records   from '@/shared/services/records';
 import { compact } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     stance: Object
   },
@@ -116,15 +118,16 @@ export default {
 form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
   submit-overlay(:value="stance.processing")
 
-  v-alert(v-if="poll.config().has_options && !poll.singleChoice()", :color="optionCountAlertColor")
+  v-alert(v-if="poll.config().has_options && !poll.singleChoice()" :color="optionCountAlertColor")
     span(
       v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
       v-t="{path: 'poll_common.select_count_options', args: {count: poll.minimumStanceChoices}}")
     span(
       v-else 
       v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.minimumStanceChoices, maximum: poll.maximumStanceChoices}}")
-  v-sheet.poll-common-vote-form__button.mb-2.rounded(
-    outlined
+
+  v-card.poll-common-vote-form__button.mb-2.rounded(
+    variant="outlined"
     :style="(isSelected(option) && {'border-color': option.color}) || {}"
     v-for='option in options'
     :key='option.id'
@@ -147,8 +150,8 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
         type="checkbox"
         name="name"
       )
-      v-list-item
-        v-list-item-icon
+      v-list-item(lines="two")
+        template(v-slot:prepend)
           template(v-if="hasOptionIcon")
             v-avatar(size="48")
               img( aria-hidden="true", :src="'/img/' + option.icon + '.svg'")
@@ -157,9 +160,8 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
             common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="option.color")
             common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="option.color")
             common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="option.color")
-        v-list-item-content
-          v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
-          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+        v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
+        v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
 
   poll-common-stance-reason(
     :stance='stance'
@@ -172,6 +174,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
       :disabled='!optionCountValid || !poll.isVotable()'
       :loading="stance.processing"
       color="primary"
+      variant="elevated"
       block
     )
       span(v-t="submitText")
@@ -195,7 +198,14 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     height: 0
 
 .poll-common-vote-form__button.voting-enabled
+  border: 1px solid rgba(0,0,0,0.1)
+
+.v-theme--dark
+  .poll-common-vote-form__button.voting-enabled
+    border: 1px solid rgba(255,255,255, 0.2)
+
+.poll-common-vote-form__button.voting-enabled
   &:hover
-    border: 1px solid var(--v-primary-base)
+    border: 1px solid rgb(var(--v-theme-primary))
 
 </style>

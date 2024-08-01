@@ -2,8 +2,11 @@
 import AppConfig from '@/shared/services/app_config';
 import AbilityService from '@/shared/services/ability_service';
 import { find } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [WatchRecords, UrlFor],
   props: {
     discussion: Object
   },
@@ -23,11 +26,11 @@ export default {
 
   computed: {
     styles() {
-      const { bar, top } = this.$vuetify.application;
+      // const { bar, top } = this.$vuetify.application;
       return{
         display: 'flex',
         position: 'sticky',
-        top: `${bar + top}px`,
+        top: `64px`,
         zIndex: 1
       };
     },

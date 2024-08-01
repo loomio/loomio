@@ -31,7 +31,7 @@ v-card.thread-arrangement-form
     v-spacer
     dismiss-modal-button(aria-hidden='true', :close='close')
   .px-4
-    v-alert(dense text type="info" v-t="'thread_arrangement_form.for_everyone'")
+    v-alert(density="dense" variant="tonal" type="info" v-t="'thread_arrangement_form.for_everyone'")
     v-card-subtitle(v-t="'thread_arrangement_form.sorting'")
     v-radio-group(v-model="clone.newestFirst")
       v-radio(:value="false")
@@ -50,7 +50,7 @@ v-card.thread-arrangement-form
           space
           span(v-t="'thread_arrangement_form.latest_description'")
 
-    v-subheader(v-t="'thread_arrangement_form.replies'")
+    v-list-subheader(v-t="'thread_arrangement_form.replies'")
     v-radio-group(v-model="clone.maxDepth")
       v-radio(:value="1")
         template(v-slot:label)

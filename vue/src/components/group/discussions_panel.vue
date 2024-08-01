@@ -7,9 +7,12 @@ import PageLoader         from '@/shared/services/page_loader';
 import { debounce, orderBy, intersection, concat, uniq } from 'lodash-es';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  mixins: [WatchRecords, UrlFor],
   created() {
     this.onQueryInput = debounce(val => {
       this.$router.replace(this.mergeQuery({q: val}));
@@ -253,8 +256,8 @@ export default
 div.discussions-panel(v-if="group")
   v-layout.py-3(align-center wrap)
     v-menu
-      template(v-slot:activator="{ on, attrs }")
-        v-btn.mr-2.text-lowercase.discussions-panel__filters(v-on="on" v-bind="attrs" text)
+      template(v-slot:activator="{ props }")
+        v-btn.mr-2.text-lowercase.discussions-panel__filters(v-bind="props" text)
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           common-icon(name="mdi-menu-down")
       v-list
@@ -268,8 +271,8 @@ div.discussions-panel(v-if="group")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
 
     v-menu(offset-y)
-      template(v-slot:activator="{ on, attrs }")
-        v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
+      template(v-slot:activator="{ props }")
+        v-btn.mr-2.text-lowercase(v-bind="props" text)
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.tags'")
           common-icon(name="mdi-menu-down")
@@ -277,7 +280,9 @@ div.discussions-panel(v-if="group")
         tags-display(:tags="group.tagNames()" :group="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId")
     v-text-field.mr-2.flex-grow-1(
       v-model="dummyQuery"
-      clearable solo hide-details
+      clearable hide-details
+      density="compact"
+      variant="solo"
       @click="openSearchModal"
       @change="openSearchModal"
       @keyup.enter="openSearchModal"
@@ -303,7 +308,7 @@ div.discussions-panel(v-if="group")
           p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
           p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
-          v-list.thread-previews(two-line)
+          v-list.thread-previews(lines="two")
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions", :key="thread.id", :thread="thread" group-page)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions", :key="thread.id", :thread="thread" group-page)
 

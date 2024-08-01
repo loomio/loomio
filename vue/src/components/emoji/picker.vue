@@ -42,8 +42,8 @@ v-sheet.emoji-picker.pa-2
     div.emoji-picker__emojis
       span(v-for='(emoji, emojiName) in emojiGroup' :key='emojiName' @click='insert(emojiName, emoji)' :title='emojiName') {{ emoji }}
   .d-flex.justify-center.pb-2
-    v-btn(v-if="!showMore" x-small @click.stop="showMore = true" v-t="'common.action.show_more'")
-    v-btn(v-if="showMore" x-small @click.stop="showMore = false" v-t="'common.action.show_fewer'")
+    v-btn(v-if="!showMore" size="x-small" @click.stop="showMore = true" v-t="'common.action.show_more'")
+    v-btn(v-if="showMore" size="x-small" @click.stop="showMore = false" v-t="'common.action.show_fewer'")
 </template>
 
 <style lang="sass">

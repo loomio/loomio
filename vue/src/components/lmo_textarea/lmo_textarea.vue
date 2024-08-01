@@ -1,4 +1,6 @@
 <script lang="js">
+import { defineAsyncComponent } from 'vue'
+
 export default {
   props: {
     focusId: String,
@@ -12,8 +14,8 @@ export default {
   },
 
   components: {
-    'md-editor': () => import('@/components/lmo_textarea/md_editor.vue'),
-    'collab-editor': () => import('@/components/lmo_textarea/collab_editor.vue')
+    'md-editor': defineAsyncComponent(() => import('@/components/lmo_textarea/md_editor.vue')),
+    'collab-editor': defineAsyncComponent(() => import('@/components/lmo_textarea/collab_editor.vue'))
   },
 
   computed: {
@@ -26,7 +28,7 @@ export default {
 
 <template lang="pug">
 div
-  label.text-caption.v-label.v-label--active(style="color: var(--text-secondary)" aria-hidden="true") {{label}}
+  label.text-caption.v-label.v-label--active(v-if="label" style="color: var(--text-secondary)" aria-hidden="true") {{label}}
   .lmo-textarea.pb-1
     collab-editor(
       v-if="format == 'html'"
@@ -38,8 +40,9 @@ div
       :autofocus="autofocus"
       :shouldReset="shouldReset"
     )
-      template(v-for="(_, name) in $scopedSlots", :slot="name" slot-scope="slotData")
-        slot(:name="name", v-bind="slotData")
+      template(v-for="(_, name) in $slots" v-slot:[name]="slotProps")
+        slot(v-if="slotProps" :name="name" v-bind="slotProps")
+        slot(v-else :name="name")
     md-editor(
       v-if="format == 'md'"
       :focus-id="focusId"
@@ -50,7 +53,8 @@ div
       :autofocus="autofocus"
       :shouldReset="shouldReset"
     )
-      template(v-for="(_, name) in $scopedSlots", :slot="name", slot-scope="slotData")
-        slot(:name="name" v-bind="slotData")
+      template(v-for="(_, name) in $slots" v-slot:[name]="slotProps")
+        slot(v-if="slotProps" :name="name" v-bind="slotProps")
+        slot(v-else :name="name")
 
 </template>

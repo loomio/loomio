@@ -4,8 +4,11 @@ import AbilityService from '@/shared/services/ability_service';
 import EventBus       from '@/shared/services/event_bus';
 import EventService from '@/shared/services/event_service';
 import { pickBy, assign } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [WatchRecords, UrlFor],
   props: {
     event: Object,
     collapsed: Boolean,
@@ -64,7 +67,7 @@ section.strand-item.poll-created
   div(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')
-    .poll-common-details-panel__started-by.text--secondary.text-body-2.mb-4
+    .poll-common-details-panel__started-by.text-medium-emphasis.text-body-2.mb-4
       span(v-t="{ path: 'poll_card.poll_type_by_name', args: { name: poll.authorName(), poll_type: poll.translatedPollTypeCaps() } }")
       mid-dot
       poll-common-closing-at.ml-1(:poll='poll')

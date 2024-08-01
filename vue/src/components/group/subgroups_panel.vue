@@ -6,14 +6,18 @@ import AbilityService from '@/shared/services/ability_service';
 import AppConfig from '@/shared/services/app_config';
 import { debounce, some } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  mixins: [WatchRecords, UrlFor],
   data() {
     return {
       mdiMagnify,
       group: null,
       loading: true,
+      subgroups: [],
       upgradeUrl: AppConfig.baseUrl + 'upgrade'
     };
   },
@@ -110,16 +114,15 @@ div(v-if="group")
   v-card.group-subgroups-panel(outlined v-if="subgroups.length")
     v-list(avatar three-line)
       v-list-item.subgroups-card__list-item(v-if="group.subgroups().length > 0" :to="urlFor(group)+'?subgroups=none'")
-        v-list-item-avatar.subgroups-card__list-item-logo
+        //- v-list-item-avatar.subgroups-card__list-item-logo
+        template(v-slot:prepend)
           group-avatar(:group="group" :size="28")
-        v-list-item-content
-          v-list-item-title(v-t="{path: 'subgroups_panel.group_without_subgroups', args: {name: group.name}}")
-          v-list-item-subtitle {{ stripDescription(group.description) }}
+        v-list-item-title(v-t="{path: 'subgroups_panel.group_without_subgroups', args: {name: group.name}}")
+        v-list-item-subtitle {{ stripDescription(group.description) }}
       v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
-        v-list-item-avatar.subgroups-card__list-item-logo
+        //- v-list-item-avatar.subgroups-card__list-item-logo
+        template(v-slot:prepend)
           group-avatar(:group="group" :size="28")
-        v-list-item-content
-          v-list-item-title {{ group.name }}
-          v-list-item-subtitle {{ stripDescription(group.description) }}
-
+        v-list-item-title {{ group.name }}
+        v-list-item-subtitle {{ stripDescription(group.description) }}
 </template>

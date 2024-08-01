@@ -30,7 +30,12 @@ export default
 };
 </script>
 <template lang="pug">
-v-alert(outlined color="primary" dense v-if="hasSubscription && isLoggedIn && isMember && (isTrial || isExpired)")
+v-alert(
+  variant="tonal"
+  color="primary"
+  density="dense"
+  v-if="hasSubscription && isLoggedIn && isMember && (isTrial || isExpired)"
+)
   .d-flex.align-center
     div.pr-1(v-if="isTrial")
       span(v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")

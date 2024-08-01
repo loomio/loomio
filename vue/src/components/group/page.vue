@@ -7,9 +7,12 @@ import AbilityService    from '@/shared/services/ability_service';
 import GroupService    from '@/shared/services/group_service';
 import LmoUrlService     from '@/shared/services/lmo_url_service';
 import { pickBy } from 'lodash-es';
+import UrlFor from '@/mixins/url_for';
+import FormatDate from '@/mixins/format_date';
 
 export default
 {
+  mixins: [UrlFor, FormatDate],
   data() {
     return {
       group: null,
@@ -94,6 +97,7 @@ v-main
         :src="group.coverUrl"
         style="border-radius: 8px"
         max-height="256"
+        cover
         eager)
 
       v-img.ma-2.d-none.d-sm-block.rounded(
@@ -108,13 +112,13 @@ v-main
         :src="group.logoUrl"
         style="border-radius: 8px; position: absolute; bottom: 0"
         height="48"
-        width="48" 
+        width="48"
         eager)
-    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
+    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
         space
-        span.text--secondary.text--lighten-1 &gt;
+        span.text-medium-emphasis.text--lighten-1 &gt;
         space
       span.group-page__name.mr-4 {{group.name}}
     plan-banner(:group="group")

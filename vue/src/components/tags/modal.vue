@@ -20,6 +20,11 @@ export default {
     };
   },
 
+  computed: {
+    title() {
+      return this.tag.id ? 'loomio_tags.modal_edit_title' : 'loomio_tags.modal_title'
+    }
+  },
   methods: {
     deleteTag() {
       const tag = Records.tags.find(this.tag.id);
@@ -52,11 +57,8 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.tags-modal
-  v-card-title
-    h1.text-h5(v-if="tag.id" tabindex="-1" v-t="'loomio_tags.modal_edit_title'")
-    h1.text-h5(v-if="!tag.id" tabindex="-1" v-t="'loomio_tags.modal_title'")
-    v-spacer
+v-card.tags-modal(:title="$t(title)")
+  template(v-slot:append)
     dismiss-modal-button(:close="close")
   v-card-text
     v-text-field.tags-modal__tag-name(v-model="tag.name" :label="$t('loomio_tags.name_label')" autofocus)
