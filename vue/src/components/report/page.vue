@@ -12,8 +12,24 @@ const sumValues = obj => Object.values(obj).reduce((a, b) => a + b, 0);
 
 export default {
   components: {BarChart},
+  computed: {
+    selectableMonths() {
+      let months = [];
+      let next = null;
+      for (let year = this.firstYear; year <= new Date().getFullYear(); year++) {
+        for (let month = 1; month <= 12; month++) {
+          next = year+"-"+String(month).padStart(2, '0');
+          months.push(next);
+          if (next > new Date().toISOString().slice(0,7)) {
+            return months;
+          }
+        }
+      }
+    }
+  },
   data() {
     return {
+      firstYear: 2011,
       mdiCalendar: mdiCalendar,
       loading: false,
       chartData: {
@@ -28,10 +44,10 @@ export default {
       end_month: (new Date()).toISOString().slice(0,7),
       interval: 'month',
       intervalItems: [
-        {title: this.$t('report.day'), key: 'day'},
-        {title: this.$t('report.week'), key: 'week'},
-        {title: this.$t('report.month'), key: 'month'},
-        {title: this.$t('report.year'), key: 'year'}
+        {title: this.$t('report.day'), value: 'day'},
+        {title: this.$t('report.week'), value: 'week'},
+        {title: this.$t('report.month'), value: 'month'},
+        {title: this.$t('report.year'), value: 'year'}
       ],
       total_users: 0,
       discussions_count: 0,
@@ -101,9 +117,14 @@ export default {
   methods: {
     fetch() {
       this.loading = true
-      const query = new URLSearchParams({interval: this.interval, start_month: this.start_month, end_month: this.end_month, group_ids: this.group_ids.join(',')}).toString()
+      const query = new URLSearchParams({
+        interval: this.interval,
+        start_month: this.start_month,
+        end_month: this.end_month,
+        group_ids: this.group_ids.join(',')}).toString()
       fetch('/api/v1/reports?'+query).then(response => {
         response.json().then(data => {
+          this.firstYear = data.first_year;
           this.loading = false;
           this.all_groups = data.all_groups,
           this.total_users = data.total_users;
@@ -228,60 +249,19 @@ v-main
     )
 
     .d-flex
-      v-menu(
-        ref="start_menu"
-        v-model="start_menu"
-        :close-on-content-click="false"
-        transition="scale-transition"
-        offset-y
-        max-width="290px"
-        min-width="auto"
+      v-select(
+        :label="$t('report.start_on')"
+        :prepend-icon="mdiCalendar"
+        v-model="start_month"
+        :items="selectableMonths"
       )
-        template(v-slot:activator="{ on, attrs }")
-          v-text-field(
-            v-model="start_month"
-            :label="$t('report.start_on')"
-            readonly
-            :prepend-icon="mdiCalendar"
-            v-bind="attrs"
-            v-on="on"
-          )
-        v-sheet
-          v-date-picker(
-            v-model="start_month"
-            type="month"
-            no-title
-            scrollable
-            @input="start_menu = false"
-            :max="(new Date()).toISOString()"
-          )
-      v-menu(
-        ref="end_menu"
-        v-model="end_menu"
-        :close-on-content-click="false"
-        transition="scale-transition"
-        offset-y
-        max-width="290px"
-        min-width="auto"
+
+      v-select(
+        :label="$t('report.end_on')"
+        :prepend-icon="mdiCalendar"
+        v-model="end_month"
+        :items="selectableMonths"
       )
-        template(v-slot:activator="{ on, attrs }")
-          v-text-field(
-            v-model="end_month"
-            :label="$t('report.end_on')"
-            :prepend-icon="mdiCalendar"
-            readonly
-            v-bind="attrs"
-            v-on="on"
-          )
-        v-sheet
-          v-date-picker(
-            v-model="end_month"
-            type="month"
-            no-title
-            scrollable
-            @input="end_menu = false"
-            :max="(new Date()).toISOString()"
-          )
 
       v-select.ml-8(
         :label="$t('report.interval')"
