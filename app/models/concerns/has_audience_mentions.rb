@@ -11,12 +11,14 @@ module HasAudienceMentions
 
   def mentioned_audiences
     mentioned = if text_format == "md"
-                  extract_mentioned_screen_names(mentionable_text).uniq
+                  extract_mentioned_screen_names(mentionable_text)
                 else
                   Nokogiri::HTML::fragment(mentionable_text).search("span[data-mention-id]").map do |el|
                     el['data-mention-id']
                   end
-                end.filter { |audience| Audience.all_translated.include? audience }.uniq
+                end.uniq.filter { |audience| Audience.all.include? audience }
+
+    return mentioned unless text_format == "md"
 
     mentioned.map { |audience| Audience.back_translate(audience) }
   end

@@ -102,8 +102,8 @@ describe Comment do
       comment1 = create :comment, body: "Hey, @#{audience_translated}"
       comment2 = create :comment,
                         body: "<p>Hey, <span class=\"mention\"
-                          data-mention-id=\"#{audience_translated}\"
-                          label=\"#{audience_translated}\">@#{audience_translated}</span></p>",
+                          data-mention-id=\"#{audience}\"
+                          label=\"#{audience}\">@#{audience_translated}</span></p>",
                         body_format: "html"
 
       expect(comment1.mentioned_audiences).to eq([audience])
