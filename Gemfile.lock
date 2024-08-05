@@ -64,7 +64,7 @@ GEM
     active_record_extended (3.3.0)
       activerecord (>= 5.2, < 8.0.0)
       pg (< 3.0)
-    activeadmin (3.2.2)
+    activeadmin (3.2.3)
       arbre (~> 1.2, >= 1.2.1)
       csv
       formtastic (>= 3.1)
@@ -414,7 +414,7 @@ GEM
     puma (6.4.2)
       nio4r (~> 2.0)
     pwned (2.4.1)
-    racc (1.8.0)
+    racc (1.8.1)
     rack (2.2.9)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
@@ -613,7 +613,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.16)
+    zeitwerk (2.6.17)
 
 PLATFORMS
   x86_64-darwin-21
@@ -625,7 +625,7 @@ DEPENDENCIES
   actionpack-page_caching
   active_model_serializers (~> 0.8.1)
   active_record_extended
-  activeadmin (~> 3.2.2)
+  activeadmin (~> 3.2.3)
   activerecord-import (= 1.7.0)
   aws-sdk-s3
   blazer
