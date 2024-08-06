@@ -129,7 +129,7 @@ GEM
       csv
       railties (>= 6.1)
       safely_block (>= 0.4)
-    bootsnap (1.18.3)
+    bootsnap (1.18.4)
       msgpack (~> 1.2)
     browser (6.0.0)
     builder (3.3.0)
