@@ -1001,6 +1001,8 @@ ca:
     edit_markdown: Edita Markdown
     markdown_confirm: Part de la formatació podria perdre's en el moment de convertir contingut en "wysiwyg" a "markdown".
     upload_failed: No s'ha pogut pujar
+    confirm_discard: Esteu segur que voleu descartar els vostres canvis?
+    discard_draft: Descartar l'esborrany
   cover_photo_form:
     heading: Nova foto de portada
     upload_link: Penja una foto de portada nova

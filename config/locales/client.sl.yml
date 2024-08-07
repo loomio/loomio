@@ -993,6 +993,8 @@ sl:
     edit_markdown: Uredi Markdown
     markdown_confirm: Pri pretvarjanju vsebine wysiwyg v markdown se lahko izgubi nekaj oblikovanja.
     upload_failed: Nalaganje ni uspelo
+    confirm_discard: Ali ste prepričani, da želite zavreči svoje spremembe?
+    discard_draft: Zavrzi osnutek
   cover_photo_form:
     heading: Nova naslovna fotografija
     upload_link: Naloži novo naslovno fotografijo

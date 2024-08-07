@@ -993,6 +993,8 @@ tr:
     edit_markdown: İşaretlemeyi Düzenle
     markdown_confirm: Wysiwyg içeriği markdown'a dönüştürülürken bazı biçimlendirmeler kaybolabilir.
     upload_failed: Yükleme başarısız
+    confirm_discard: Değişikliklerinizi silmek istediğinizden emin misiniz?
+    discard_draft: Taslağı sil
   cover_photo_form:
     heading: Yeni kapak fotoğrafı
     upload_link: Yeni kapak fotoğrafı yükle

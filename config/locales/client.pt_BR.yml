@@ -1009,6 +1009,8 @@ pt_BR:
     edit_markdown: Editar Markdown
     markdown_confirm: Uma parte da formatação pode se perder na conversão entre a visualização para markdown.
     upload_failed: Envio falhou
+    confirm_discard: Tem certeza de que deseja descartar suas alterações?
+    discard_draft: Descartar rascunho
   cover_photo_form:
     heading: Nova foto da capa
     upload_link: Carregar nova foto da capa

@@ -1007,6 +1007,8 @@ es:
     edit_markdown: Editar el descuento
     markdown_confirm: Puede que se pierdan algunos formatos cuando se convierta de contenido wysiwyg a la reducción.
     upload_failed: Carga fallida
+    confirm_discard: "¿Está seguro de que desea descartar los cambios?"
+    discard_draft: Descartar borrador
   cover_photo_form:
     heading: Nueva foto de portada
     upload_link: Cargar una nueva foto de portada

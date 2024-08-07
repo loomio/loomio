@@ -993,6 +993,8 @@ fi:
     edit_markdown: Muokkaa merkintää
     markdown_confirm: Jotkut muotoilut saattavat kadota, kun wysiwyg-sisältö muunnetaan markdowniksi.
     upload_failed: Lataus epäonnistui
+    confirm_discard: Haluatko varmasti hylätä tekemäsi muutokset?
+    discard_draft: Hylkää luonnos
   cover_photo_form:
     heading: Uusi kansikuva
     upload_link: Lataa uusi kansikuva

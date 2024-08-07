@@ -993,6 +993,8 @@ hr:
     edit_markdown: Uredi Markdown
     markdown_confirm: Dio oblikovanja može se izgubiti pretvaranjem wysiwyg sadržaja u markdown.
     upload_failed: Prijenos nije uspio
+    confirm_discard: Jeste li sigurni da želite odbaciti svoje promjene?
+    discard_draft: Odbaci nacrt
   cover_photo_form:
     heading: Nova naslovna fotografija
     upload_link: Prenesi novu naslovnu fotografiju

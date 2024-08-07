@@ -1007,6 +1007,8 @@ de:
     edit_markdown: Markdown bearbeiten
     markdown_confirm: Einige Formatierungen können verloren gehen wenn wysiwyg Inhalte zu markdown konvertiert werden.
     upload_failed: Hochladen fehlgeschlagen
+    confirm_discard: Möchten Sie Ihre Änderungen wirklich verwerfen?
+    discard_draft: Entwurf verwerfen
   cover_photo_form:
     heading: Neues Titelfoto
     upload_link: Neues Titelfoto hochladen

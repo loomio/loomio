@@ -997,6 +997,8 @@ hu:
     edit_markdown: Markdown szerkesztése
     markdown_confirm: Előfordulhat, hogy bizonyos formázások elvesznek a wysiwyg-tartalom leértékelésre konvertálásakor.
     upload_failed: Feltöltés sikertelen
+    confirm_discard: Biztosan elveti a módosításokat?
+    discard_draft: Piszkozat elvetése
   cover_photo_form:
     heading: Új borítókép
     upload_link: Tölts fel új borítófotót

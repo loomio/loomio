@@ -993,6 +993,8 @@ sv:
     edit_markdown: Redigera Markdown
     markdown_confirm: Viss formatering kan gå förlorad vid konvertering av wysiwyg-innehåll till markdown.
     upload_failed: Uppladdningen misslyckades
+    confirm_discard: Är du säker på att du vill ignorera dina ändringar?
+    discard_draft: Släng utkast
   cover_photo_form:
     heading: Nytt omslagsfoto
     upload_link: Ladda upp nytt omslagsfoto
