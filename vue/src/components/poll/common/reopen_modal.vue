@@ -29,14 +29,12 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.poll-common-reopen-modal
-  submit-overlay(:value='poll.processing')
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="{path: 'poll_common_reopen_form.title', args: {poll_type: poll.translatedPollType()}}")
-    v-spacer
+v-card.poll-common-reopen-modal(:title="$t('poll_common_reopen_form.title', {poll_type: poll.translatedPollType()})")
+  template(v-slot:append)
     dismiss-modal-button
+  submit-overlay(:value='poll.processing')
   v-card-text.poll-common-reopen-form
-    span.text-medium-emphasis(v-t="{path: 'poll_common_reopen_form.helptext', args: {poll_type: poll.translatedPollType()}}")
+    p.text-medium-emphasis(v-t="{path: 'poll_common_reopen_form.helptext', args: {poll_type: poll.translatedPollType()}}")
     poll-common-closing-at-field(:poll='poll')
   v-card-actions
     v-spacer

@@ -92,7 +92,6 @@ div
           :min='dateToday'
           no-title
           @input="isShowingDatePicker = false")
-      v-spacer
       v-select.poll-common-closing-at-field__timepicker(
         :disabled="!poll.closingAt"
         :prepend-icon="mdiClockOutline"
