@@ -98,5 +98,8 @@
     "unplugin-vue-components": "latest",
     "vite": "^5.4.0",
     "vite-plugin-env-compatible": "latest"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "latest"
   }
 }
