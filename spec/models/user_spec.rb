@@ -192,4 +192,12 @@ describe User do
       expect(user.username.length).to eq 18
     end
   end
+
+  it "should not accept reserved names" do
+    I18n.with_locale(['de', 'fe', 'en'].sample) do
+      user.name = "    #{Audience.all_translated.sample.titleize} "
+      user.save
+      expect(user.errors[:name]).to include I18n.t(:"user.error.restricted_name")
+    end
+  end
 end

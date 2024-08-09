@@ -121,7 +121,7 @@ class Discussion < ApplicationRecord
   def poll
     nil
   end
-  
+
   def group
     super || NullGroup.new
   end

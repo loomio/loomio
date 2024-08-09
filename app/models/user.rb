@@ -58,6 +58,7 @@ class User < ApplicationRecord
   validates_confirmation_of :password, if: :password_required?
 
   validates_length_of :password, minimum: 8, allow_nil: true
+  validate :restricted_name
 
   has_many :admin_memberships,
            -> { where('memberships.admin': true, revoked_at: nil) },
@@ -387,5 +388,11 @@ class User < ApplicationRecord
     return if Clients::Recaptcha.instance.validate(self.recaptcha)
     # Sentry.capture_message("recaptcha failed", extra: {email: email})
     self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
+  end
+
+  def restricted_name
+    return unless Audience.all_translated.include? name&.downcase&.strip
+
+    errors.add(:name, I18n.t(:"user.error.restricted_name"))
   end
 end
