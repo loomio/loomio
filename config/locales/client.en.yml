@@ -491,6 +491,10 @@ en:
         normal: "You will be emailed about announcements in new groups."
         quiet: "You won't be emailed about new groups."
 
+  mentioning:
+    group: group
+    discussion: discussion
+
   close_explanation_modal:
     aria_label: Close thread
     close_thread: Close thread

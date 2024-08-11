@@ -16,11 +16,10 @@ module HasAudienceMentions
                   Nokogiri::HTML::fragment(mentionable_text).search("span[data-mention-id]").map do |el|
                     el['data-mention-id']
                   end
-                end.uniq.filter { |audience| Audience.all.include? audience }
-
-    return mentioned unless text_format == "md"
-
-    mentioned.map { |audience| Audience.back_translate(audience) }
+                end
+    mentioned.uniq
+             .filter { |audience| Audience.all_translated.include? audience }
+             .map { |audience| Audience.back_translate(audience) }
   end
 
   # audience mentioned in the text, but not yet sent notifications
