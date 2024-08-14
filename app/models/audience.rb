@@ -22,7 +22,7 @@ class Audience
   end
 
   def translate
-    I18n.t("mentioning.#{name}", default: name)
+    I18n.t!("mentioning.#{name}")
   end
 
   def self.back_translate(word)

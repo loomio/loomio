@@ -174,8 +174,8 @@ de:
       username_must_be_alphanumeric: "Nutzernamen dürfen nur aus Kleinbuchstaben und Nummern bestehen"
 
   mentioning:
-    group: "gruppe"
-    discussion: "diskussion"
+    group: gruppe
+    discussion: diskussion
 
   poll:
     error:

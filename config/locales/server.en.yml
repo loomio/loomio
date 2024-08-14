@@ -327,8 +327,8 @@ en:
       username_must_be_alphanumeric: "Usernames must be lower case letters and numbers only"
 
   mentioning:
-    group: "group"
-    discussion: "discussion"
+    group: group
+    discussion: discussion
 
   poll:
     error:

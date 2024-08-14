@@ -119,7 +119,7 @@ describe Event do
 
   describe 'audience_mentioned' do
     around(:each) do |example|
-      I18n.with_locale(['de', 'fe', 'en'].sample) do
+      I18n.with_locale(['de', 'fr', 'en'].sample) do
         example.run
       end
     end
