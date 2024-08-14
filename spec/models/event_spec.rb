@@ -163,7 +163,7 @@ describe Event do
     it 'notifies group members - html content' do
       group_audience = Audience.group.translate
       comment = create :comment, parent: parent_comment, discussion: discussion,
-                       body: "<p>Hey <span class=\"mention\" data-mention-id=\"group\" label=\"group\">@#{group_audience}</span></p>",
+                       body: "<p>Hey <span class=\"mention\" data-mention-id=\"#{group_audience}\" label=\"group\">@#{group_audience}</span></p>",
                        body_format: "html"
       group_members = AnnouncementService.audience_users(comment, 'group', comment.author, false, false)
 
@@ -183,7 +183,7 @@ describe Event do
     it 'notifies discussion members - html content' do
       discussion_audience = Audience.discussion.translate
       comment = create :comment, parent: parent_comment, discussion: discussion,
-                       body: "<p>Hey <span class=\"mention\" data-mention-id=\"discussion\" label=\"discussion\">@#{discussion_audience}</span></p>",
+                       body: "<p>Hey <span class=\"mention\" data-mention-id=\"#{discussion_audience}\" label=\"discussion\">@#{discussion_audience}</span></p>",
                        body_format: "html"
       discussion_members = AnnouncementService.audience_users(comment, 'discussion_group', comment.author, false, false)
 
@@ -203,8 +203,8 @@ describe Event do
     it 'notifies discussion and group members' do
       group_audience = Audience.group.translate
       discussion_audience = Audience.discussion.translate
-      mentioned_group = "<span class=\"mention\" data-mention-id=\"group\" label=\"group\">@#{group_audience}</span>"
-      mentioned_discussion = "<span class=\"mention\" data-mention-id=\"discussion\" label=\"discussion\">@#{discussion_audience}</span>"
+      mentioned_group = "<span class=\"mention\" data-mention-id=\"#{group_audience}\" label=\"group\">@#{group_audience}</span>"
+      mentioned_discussion = "<span class=\"mention\" data-mention-id=\"#{discussion_audience}\" label=\"discussion\">@#{discussion_audience}</span>"
       comment = create :comment, parent: parent_comment, discussion: discussion,
                        body: "<p>Hey #{mentioned_group} #{mentioned_discussion}</p>",
                        body_format: "html"
