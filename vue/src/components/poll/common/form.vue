@@ -125,12 +125,14 @@ export default {
     },
 
     addDateOption() {
-      const optionName = this.newDateOption.toJSON();
-      if (some(this.pollOptions, o => o.name === optionName)) {
-        Flash.error('poll_poll_form.option_already_added');
-      } else {
-        this.pollOptions.push({name: optionName});
-      }
+      setTimeout(() => {
+        const optionName = this.newDateOption.toJSON();
+        if (some(this.pollOptions, o => o.name === optionName)) {
+          Flash.error('poll_poll_form.option_already_added');
+        } else {
+          this.pollOptions.push({name: optionName});
+        }
+      });
     },
 
     addOption() {
