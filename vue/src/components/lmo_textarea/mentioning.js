@@ -30,9 +30,10 @@ export var CommonMentioning = {
 
   methods: {
     findMentionable() {
-      const audiences = [{ id: 'discussion', name: this.$t('mentioning.discussion'), username: this.$t('mentioning.discussion'), audience: true },
-                         { id: 'group', name: this.$t('mentioning.group'), username: this.$t('mentioning.group'), audience: true }
-                        ].filter(audience => audience.name.startsWith(this.query))
+      const audiences = [
+                          { id: 'discussion', translation: this.$t('mentioning.discussion'), audience: true },
+                          { id: 'group', translation: this.$t('mentioning.group'), audience: true }
+                        ].filter(audience => audience.translation.startsWith(this.query))
       this.mentionableUserIds = uniq(this.mentionableUserIds.concat(this.model.participantIds()));
       const unsorted = filter(Records.users.collection.chain().find({id: {$in: this.mentionableUserIds}}).data(), u => {
         return ((u.name || '').toLowerCase().startsWith(this.query) ||
@@ -139,8 +140,8 @@ export var HtmlMentioning = {
       // range: @suggestionRange
       // attrs:
       this.insertMention({
-        id: mention.username,
-        label: mention.name
+        id: mention.audience ? mention.id : mention.username,
+        label: mention.audience ? mention.translation : mention.name
       });
       this.editor.chain().focus();
     },
