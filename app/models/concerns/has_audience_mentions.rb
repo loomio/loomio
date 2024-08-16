@@ -13,7 +13,8 @@ module HasAudienceMentions
     mentioned = extract_mentions.uniq
 
     if text_format == "md"
-      mentioned.map! { |audience| Audience.back_translate(audience) }
+      mentioned = mentioned.map { |audience| Audience.back_translate(audience) }
+                           .compact
     end
 
     mentioned.filter { |audience| Audience.all.include? audience }

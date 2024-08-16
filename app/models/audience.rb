@@ -28,7 +28,7 @@ class Audience
   def self.back_translate(word)
     return '' unless word.present?
 
-    AUDIENCES.each { |audience| break audience if Audience.send(audience).translate == word }
+    AUDIENCES.find { |audience| Audience.send(audience).translate == word }
   end
 
   def self.all(translate: false)
