@@ -102,7 +102,7 @@ describe Comment do
       comment1 = create :comment, body: "Hey, @#{audience_translated}"
       comment2 = create :comment,
                         body: "<p>Hey, <span class=\"mention\"
-                          data-mention-id=\"#{audience_translated}\"
+                          data-mention-id=\"#{audience}\"
                           label=\"#{audience}\">@#{audience_translated}</span></p>",
                         body_format: "html"
 
