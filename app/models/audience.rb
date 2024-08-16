@@ -31,11 +31,11 @@ class Audience
     AUDIENCES.each { |audience| break audience if Audience.send(audience).translate == word }
   end
 
-  def self.all
-    AUDIENCES
-  end
+  def self.all(translate: false)
+    if translate
+      return AUDIENCES.map { |audience| send(audience).translate }
+    end
 
-  def self.all_translated
-    all.map { |audience| send(audience).translate }
+    AUDIENCES
   end
 end

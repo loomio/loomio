@@ -195,7 +195,7 @@ describe User do
 
   it "should not accept reserved names" do
     I18n.with_locale(['de', 'fr', 'en'].sample) do
-      user.name = "    #{Audience.all_translated.sample.titleize} "
+      user.name = "    #{Audience.all(translate: true).sample.titleize} "
       user.save
       expect(user.errors[:name]).to include I18n.t(:"user.error.restricted_name")
     end
