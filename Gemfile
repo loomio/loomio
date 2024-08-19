@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
 ruby '3.2.4'
-gem 'rails', '7.0.8.1'
-gem 'rack', '2.2.9'
+gem 'rails', '7.2.0'
+gem 'rack', '3.1.7'
 gem 'uri', '0.13.0'
 gem 'rake'
 gem 'pg'
@@ -22,7 +22,7 @@ gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
 gem 'redcarpet', '~> 3.6.0'
 gem 'paper_trail', '~> 15.1.0'
-gem 'sidekiq', '~> 6.5.12'
+gem 'sidekiq', '~> 7.3.1'
 gem 'friendly_id', '~> 5.5.1'
 gem 'httparty', '~> 0.22.0'
 gem 'browser', '~> 6.0.0'
@@ -36,7 +36,7 @@ gem "sentry-ruby"
 gem "sentry-rails"
 gem "sentry-sidekiq"
 gem 'http_accept_language'
-gem 'sprockets', '3.7.2'
+gem 'sprockets', '4.2.1'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'sass-rails'
 gem 'uuidtools'
