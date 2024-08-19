@@ -459,7 +459,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.2.1)
-    ransack (4.2.0)
+    ransack (4.2.1)
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
@@ -675,7 +675,7 @@ DEPENDENCIES
   rails (= 7.0.8.1)
   rails-controller-testing
   rake
-  ransack (= 4.2.0)
+  ransack (= 4.2.1)
   redcarpet (~> 3.6.0)
   redis-objects
   redis-rails
