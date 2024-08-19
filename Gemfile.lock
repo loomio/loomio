@@ -487,8 +487,8 @@ GEM
     retriable (3.1.2)
     reverse_markdown (2.1.1)
       nokogiri
-    rexml (3.2.8)
-      strscan (>= 3.0.9)
+    rexml (3.3.3)
+      strscan
     rspec-activemodel-mocks (1.2.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
