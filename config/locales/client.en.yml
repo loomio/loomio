@@ -718,6 +718,7 @@ en:
       user_added_to_group: "%{actor} added you to the group: %{title}"
       user_mentioned: "%{actor} mentioned you in: %{title}"
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
+      comment_announced: "%{actor} mentioned you in: %{title}"
 
     without_title:
       unknown_sender: "Please review email from unrecognised sender"
