@@ -64,7 +64,7 @@ GEM
     active_record_extended (3.3.0)
       activerecord (>= 5.2, < 8.0.0)
       pg (< 3.0)
-    activeadmin (3.2.4)
+    activeadmin (3.2.5)
       arbre (~> 1.2, >= 1.2.1)
       csv
       formtastic (>= 3.1)
@@ -619,7 +619,7 @@ DEPENDENCIES
   actionpack-page_caching
   active_model_serializers (~> 0.8.1)
   active_record_extended
-  activeadmin (~> 3.2.4)
+  activeadmin (~> 3.2.5)
   activerecord-import (= 1.8.1)
   aws-sdk-s3
   blazer
