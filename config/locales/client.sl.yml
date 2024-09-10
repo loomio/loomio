@@ -2456,6 +2456,7 @@ sl:
     email: E-naslov
     password: Geslo
     reactivate: Ponovno aktivirajte račun
+    want_to_set_password: Se želite naslednjič prijaviti z geslom?
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava

@@ -2496,6 +2496,7 @@ zh_TW:
     email: 電子郵件
     password: 密碼
     reactivate: 重新啟用帳號
+    want_to_set_password: 下次想使用密碼登入嗎？
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線

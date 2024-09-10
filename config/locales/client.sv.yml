@@ -2456,6 +2456,7 @@ sv:
     email: E-post
     password: Lösenord
     reactivate: Återaktivera kontot
+    want_to_set_password: Vill du logga in med ett lösenord nästa gång?
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen

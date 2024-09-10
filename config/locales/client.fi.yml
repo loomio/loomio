@@ -2456,6 +2456,7 @@ fi:
     email: Sähköposti
     password: Salasana
     reactivate: Aktivoi tili uudelleen
+    want_to_set_password: Haluatko kirjautua sisään salasanalla seuraavan kerran?
   chatbot:
     configure_chatbot: Määritä chatbot
     test_connection: Testaa yhteys

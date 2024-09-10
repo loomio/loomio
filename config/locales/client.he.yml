@@ -2478,6 +2478,7 @@ he:
     email: דואר אלקטרוני
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
+    want_to_set_password: רוצה להיכנס עם סיסמה בפעם הבאה?
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור

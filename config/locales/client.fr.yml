@@ -2511,6 +2511,7 @@ fr:
     email: Adresse e-mail
     password: Mot de passe
     reactivate: Réactiver le compte
+    want_to_set_password: Vous souhaitez vous connecter avec un mot de passe la prochaine fois ?
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion

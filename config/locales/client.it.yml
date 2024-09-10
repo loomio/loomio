@@ -2489,6 +2489,7 @@ it:
     email: Email
     password: Password
     reactivate: Riattiva account
+    want_to_set_password: Vuoi effettuare l'accesso con una password la prossima volta?
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection

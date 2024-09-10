@@ -2486,6 +2486,7 @@ nl_NL:
     email: E-mail
     password: Wachtwoord
     reactivate: Heractiveer account
+    want_to_set_password: Wilt u de volgende keer inloggen met een wachtwoord?
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding

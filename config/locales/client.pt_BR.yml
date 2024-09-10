@@ -2513,6 +2513,7 @@ pt_BR:
     email: E-mail
     password: Senha
     reactivate: Reativar a conta
+    want_to_set_password: Quer fazer login com uma senha na próxima vez?
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste

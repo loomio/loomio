@@ -2466,6 +2466,7 @@ hu:
     email: E-mail
     password: Jelszó
     reactivate: A fiók újraaktiválása
+    want_to_set_password: Legközelebb jelszóval szeretne bejelentkezni?
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése

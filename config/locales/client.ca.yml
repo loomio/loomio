@@ -2484,6 +2484,7 @@ ca:
     email: Correu electrònic
     password: Contrasenya
     reactivate: Reactiva el compte
+    want_to_set_password: Voleu iniciar la sessió amb una contrasenya la propera vegada?
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió

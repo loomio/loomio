@@ -2456,6 +2456,7 @@ ro:
     email: E-mail
     password: Parola
     reactivate: Reactivați contul
+    want_to_set_password: Doriți să vă conectați cu o parolă data viitoare?
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune

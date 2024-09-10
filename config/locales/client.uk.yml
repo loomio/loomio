@@ -2491,6 +2491,7 @@ uk:
     email: Електронна адреса
     password: Пароль
     reactivate: Відновити обліковий запис
+    want_to_set_password: Бажаєте наступного разу ввійти за допомогою пароля?
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення

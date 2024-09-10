@@ -2494,6 +2494,7 @@ de:
     email: E-Mail
     password: Passwort
     reactivate: Account wieder aktivieren
+    want_to_set_password: Möchten Sie sich das nächste Mal mit einem Passwort anmelden?
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung

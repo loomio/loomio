@@ -2455,6 +2455,7 @@ ja:
     email: Eメール
     password: パスワード
     reactivate: アカウントを再開する
+    want_to_set_password: 次回はパスワードを使ってサインインしますか?
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続

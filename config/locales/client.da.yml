@@ -2459,6 +2459,7 @@ da:
     email: Email
     password: Adgangskode
     reactivate: Genaktiver konto
+    want_to_set_password: Vil du logge ind med en adgangskode næste gang?
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse

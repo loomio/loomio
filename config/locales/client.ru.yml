@@ -2456,6 +2456,7 @@ ru:
     email: Электронная почта
     password: Пароль
     reactivate: Повторно активировать учетную запись
+    want_to_set_password: Хотите в следующий раз войти с паролем?
   chatbot:
     configure_chatbot: Настройка чат-бота
     test_connection: Тестовое соединение
