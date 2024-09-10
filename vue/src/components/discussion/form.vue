@@ -226,7 +226,7 @@ export default {
         v-spacer
         v-btn(
           @click="discardDraft"
-          v-t="'formatting.discard_draft'"
+          v-t="'common.reset'"
         )
         v-btn.discussion-form__submit(
           color="primary"
