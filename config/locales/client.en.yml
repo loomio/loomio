@@ -493,7 +493,7 @@ en:
 
   mentioning:
     group: group
-    discussion: discussion
+    discussion: thread
 
   close_explanation_modal:
     aria_label: Close thread
@@ -718,7 +718,8 @@ en:
       user_added_to_group: "%{actor} added you to the group: %{title}"
       user_mentioned: "%{actor} mentioned you in: %{title}"
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
-      comment_announced: "%{actor} mentioned you in: %{title}"
+      comment_announced_to_group: "%{actor} notified everyone in the group"
+      comment_announced_to_discussion: "%{actor} notified everyone in the thread"
 
     without_title:
       unknown_sender: "Please review email from unrecognised sender"
