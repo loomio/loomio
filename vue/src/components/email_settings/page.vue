@@ -80,7 +80,7 @@ export default {
         {value: 0, text: this.$t('email_settings_page.sunday')}
       ];
     },
-    actions() { return pick(UserService.actions(Session.user(), this), ['reactivate_user', 'deactivate_user']); },
+    actions() { return pick(UserService.actions(Session.user(), this), ['deactivate_user', 'redact_user']); },
 
     defaultSettingsDescription() {
       return `email_settings_page.default_settings.${Session.user().defaultMembershipVolume}_description`;
