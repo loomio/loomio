@@ -993,6 +993,8 @@ tr:
     edit_markdown: İşaretlemeyi Düzenle
     markdown_confirm: Wysiwyg içeriği markdown'a dönüştürülürken bazı biçimlendirmeler kaybolabilir.
     upload_failed: Yükleme başarısız
+    confirm_discard: Değişikliklerinizi silmek istediğinizden emin misiniz?
+    discard_draft: Taslağı sil
   cover_photo_form:
     heading: Yeni kapak fotoğrafı
     upload_link: Yeni kapak fotoğrafı yükle
@@ -2454,6 +2456,7 @@ tr:
     email: E-posta
     password: Şifre
     reactivate: Hesabı yeniden aktif et
+    want_to_set_password: Bir dahaki sefere şifreyle mi giriş yapmak istiyorsunuz?
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı

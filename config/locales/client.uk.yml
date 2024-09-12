@@ -1002,6 +1002,8 @@ uk:
     edit_markdown: Редагувати Markdown
     markdown_confirm: Деяке форматування може бути втрачено під час перетворення вмісту wysiwyg у markdown.
     upload_failed: Помилка завантаження
+    confirm_discard: Ви впевнені, що бажаєте скасувати зміни?
+    discard_draft: Відкинути чернетку
   cover_photo_form:
     heading: Нове фото обкладинки
     upload_link: Завантажити нове фото обкладинки
@@ -2489,6 +2491,7 @@ uk:
     email: Електронна адреса
     password: Пароль
     reactivate: Відновити обліковий запис
+    want_to_set_password: Бажаєте наступного разу ввійти за допомогою пароля?
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення

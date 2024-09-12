@@ -1001,6 +1001,8 @@ pl:
     edit_markdown: Edytuj Markdown
     markdown_confirm: Niektóre elementy formatowania mogą zostać utracone podczas konwersji zawartości wysiwyg na markdown.
     upload_failed: Przesyłanie nie powiodło się
+    confirm_discard: Czy na pewno chcesz odrzucić zmiany?
+    discard_draft: Odrzuć wersję roboczą
   cover_photo_form:
     heading: Nowe zdjęcie w tle
     upload_link: Prześlij nowe zdjęcie w tle
@@ -2484,6 +2486,7 @@ pl:
     email: E-mail
     password: Hasło
     reactivate: Reaktywuj konto
+    want_to_set_password: Czy następnym razem chcesz zalogować się za pomocą hasła?
   chatbot:
     configure_chatbot: Skonfiguruj chatbota
     test_connection: Połączenie testowe

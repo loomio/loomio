@@ -87,7 +87,7 @@ export default {
         {value: 0, title: this.$t('email_settings_page.sunday')}
       ];
     },
-    actions() { return filter(pick(UserService.actions(Session.user(), this), ['reactivate_user', 'deactivate_user']), action => action.canPerform()); },
+    actions() { return filter(pick(UserService.actions(Session.user(), this), ['deactivate_user']), action => action.canPerform()); },
 
     defaultSettingsDescription() {
       return `email_settings_page.default_settings.${Session.user().defaultMembershipVolume}_description`;

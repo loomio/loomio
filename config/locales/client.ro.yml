@@ -993,6 +993,8 @@ ro:
     edit_markdown: Editați Markdown
     markdown_confirm: Este posibil ca unele formatări să se piardă conversia conținutului wysiwyg în markdown.
     upload_failed: Încărcare eșuată
+    confirm_discard: Sigur doriți să renunțați la modificările dvs.?
+    discard_draft: Aruncați schița
   cover_photo_form:
     heading: Poza noua de fundal
     upload_link: Uploadeaza o noua poza de fundal
@@ -2454,6 +2456,7 @@ ro:
     email: E-mail
     password: Parola
     reactivate: Reactivați contul
+    want_to_set_password: Doriți să vă conectați cu o parolă data viitoare?
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune

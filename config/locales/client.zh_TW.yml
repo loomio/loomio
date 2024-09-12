@@ -1007,6 +1007,8 @@ zh_TW:
     edit_markdown: 編輯 Markdown
     markdown_confirm: 將所見即所得內容轉換為 Markdown 可能會遺失某些格式。
     upload_failed: 上傳失敗
+    confirm_discard: 您確定要放棄更改嗎？
+    discard_draft: 丟棄草稿
   cover_photo_form:
     heading: 新的封面圖片
     upload_link: 上傳新的封面圖片
@@ -2494,6 +2496,7 @@ zh_TW:
     email: 電子郵件
     password: 密碼
     reactivate: 重新啟用帳號
+    want_to_set_password: 下次想使用密碼登入嗎？
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線

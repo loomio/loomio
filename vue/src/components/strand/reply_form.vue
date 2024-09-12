@@ -26,7 +26,7 @@ export default {
           const op = eventable.author();
           if (op.id !== Session.user().id) {
             if (Session.defaultFormat() === 'html') {
-              body = `<p><span class=\"mention\" data-mention-id=\"${op.username}\" label=\"${op.name}\">@${op.nameOrUsername()}</span></p>`;
+              body = `<p><span class=\"mention\" data-mention-id=\"${op.username}\" label=\"${op.name}\">@${op.nameOrUsername()}</span>&thinsp;</p>`;
             } else {
               body = `@${op.username} `;
             }

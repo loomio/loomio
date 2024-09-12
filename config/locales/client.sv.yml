@@ -993,6 +993,8 @@ sv:
     edit_markdown: Redigera Markdown
     markdown_confirm: Viss formatering kan gå förlorad vid konvertering av wysiwyg-innehåll till markdown.
     upload_failed: Uppladdningen misslyckades
+    confirm_discard: Är du säker på att du vill ignorera dina ändringar?
+    discard_draft: Släng utkast
   cover_photo_form:
     heading: Nytt omslagsfoto
     upload_link: Ladda upp nytt omslagsfoto
@@ -2454,6 +2456,7 @@ sv:
     email: E-post
     password: Lösenord
     reactivate: Återaktivera kontot
+    want_to_set_password: Vill du logga in med ett lösenord nästa gång?
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen

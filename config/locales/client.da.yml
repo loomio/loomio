@@ -993,6 +993,8 @@ da:
     edit_markdown: Rediger Markdown
     markdown_confirm: Noget formatering kan gå tabt ved at konvertere wysiwyg-indhold til markdown.
     upload_failed: Upload fejlede
+    confirm_discard: Er du sikker på, at du vil kassere dine ændringer?
+    discard_draft: Kassér kladde
   cover_photo_form:
     heading: Nyt forsidefoto
     upload_link: Upload er nyt forsidefoto
@@ -2457,6 +2459,7 @@ da:
     email: Email
     password: Adgangskode
     reactivate: Genaktiver konto
+    want_to_set_password: Vil du logge ind med en adgangskode næste gang?
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse

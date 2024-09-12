@@ -19,7 +19,7 @@ module CleanupService
     end
 
     PaperTrail::Version.where(item_type: 'Motion').delete_all
-    ActiveStorage::Blob.unattached.where("active_storage_blobs.created_at < ?", 7.days.ago).find_each(&:purge_later)
+    # ActiveStorage::Blob.unattached.where("active_storage_blobs.created_at < ?", 7.days.ago).find_each(&:purge_later)
     
     # ["Comment", "Discussion", "Group", "Membership", "Outcome", "Poll", "Stance", "User"].each do |model|
     #   table = model.pluralize.downcase

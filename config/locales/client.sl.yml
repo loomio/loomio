@@ -993,6 +993,8 @@ sl:
     edit_markdown: Uredi Markdown
     markdown_confirm: Pri pretvarjanju vsebine wysiwyg v markdown se lahko izgubi nekaj oblikovanja.
     upload_failed: Nalaganje ni uspelo
+    confirm_discard: Ali ste prepričani, da želite zavreči svoje spremembe?
+    discard_draft: Zavrzi osnutek
   cover_photo_form:
     heading: Nova naslovna fotografija
     upload_link: Naloži novo naslovno fotografijo
@@ -2454,6 +2456,7 @@ sl:
     email: E-naslov
     password: Geslo
     reactivate: Ponovno aktivirajte račun
+    want_to_set_password: Se želite naslednjič prijaviti z geslom?
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava

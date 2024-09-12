@@ -1001,6 +1001,8 @@ ca:
     edit_markdown: Edita Markdown
     markdown_confirm: Part de la formatació podria perdre's en el moment de convertir contingut en "wysiwyg" a "markdown".
     upload_failed: No s'ha pogut pujar
+    confirm_discard: Esteu segur que voleu descartar els vostres canvis?
+    discard_draft: Descartar l'esborrany
   cover_photo_form:
     heading: Nova foto de portada
     upload_link: Penja una foto de portada nova
@@ -2482,6 +2484,7 @@ ca:
     email: Correu electrònic
     password: Contrasenya
     reactivate: Reactiva el compte
+    want_to_set_password: Voleu iniciar la sessió amb una contrasenya la propera vegada?
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió

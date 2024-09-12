@@ -1001,6 +1001,8 @@ nl_NL:
     edit_markdown: Markdown bewerken
     markdown_confirm: Bepaalde opmaak kan verloren gaan bij het converteren van wysiwg-inhoud naar Markdown.
     upload_failed: Upload gefaald
+    confirm_discard: Weet u zeker dat u uw wijzigingen wilt verwijderen?
+    discard_draft: Gooi de tocht weg
   cover_photo_form:
     heading: Nieuwe groepsfoto
     upload_link: Nieuwe groepsfoto uploaden
@@ -2484,6 +2486,7 @@ nl_NL:
     email: E-mail
     password: Wachtwoord
     reactivate: Heractiveer account
+    want_to_set_password: Wilt u de volgende keer inloggen met een wachtwoord?
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding

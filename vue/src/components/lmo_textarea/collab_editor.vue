@@ -71,6 +71,8 @@ const isValidHttpUrl = function(string) {
   return (url.protocol === 'http:') || (url.protocol === 'https:');
 };
 
+var provider = null;
+
 export default
 {
   mixins: [CommonMentioning, HtmlMentioning, Attaching],
@@ -111,7 +113,7 @@ export default
 
   mounted() {
     const docname = this.model.collabKey(this.field, (Session.user().id || AppConfig.channel_token));
-    const provider = new HocuspocusProvider({
+    provider = new HocuspocusProvider({
       url: AppConfig.theme.hocuspocus_url,
       name: docname,
       token: (Session.user().id || 0) + "," + (Session.user().secretToken || AppConfig.channel_token),
@@ -287,6 +289,7 @@ export default
 
     reset() {
       this.editor.chain().clearContent().run();
+      provider.document.getMap('config').set('initialContentLoaded', false);
       this.resetFiles();
       this.model.beforeSave = () => this.updateModel();
     },

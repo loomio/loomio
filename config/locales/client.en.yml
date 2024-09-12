@@ -2858,6 +2858,7 @@ en:
     login_with_token: You're all set! Click the link below to continue.
     login_link_helptext: Click the button below and we'll send you a link to sign in.
     enter_your_password: "Enter your password to continue"
+    want_to_set_password: Want to sign in with a password next time?
     check_spam_folder: If the email does not arrive soon, check your spam folder.
     sign_up_helptext: Please complete this form to create a user account
     # i_accept: "I accept the <a href='%{termsUrl}' target='_blank' @click.stop>Terms of service</a> and <a href='%{privacyUrl}' target='_blank'>Privacy policy</a>": "Loomio newsletter"

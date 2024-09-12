@@ -993,6 +993,8 @@ el:
     edit_markdown: Επεξεργασία Markdown
     markdown_confirm: Κάποια μορφοποίηση μπορεί να χαθεί μετατρέποντας το περιεχόμενο wysiwyg σε markdown.
     upload_failed: Η μεταφόρτωση απέτυχε
+    confirm_discard: Είστε βέβαιοι ότι θέλετε να απορρίψετε τις αλλαγές σας;
+    discard_draft: Απορρίψτε το σχέδιο
   cover_photo_form:
     heading: Νέα φωτογραφία εξωφύλλου
     upload_link: Ανεβάστε νέα φωτογραφία εξωφύλλου
@@ -2454,6 +2456,7 @@ el:
     email: ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ
     password: Κωδικός πρόσβασης
     reactivate: Επανενεργοποίηση λογαριασμού
+    want_to_set_password: Θέλετε να συνδεθείτε με κωδικό πρόσβασης την επόμενη φορά;
   chatbot:
     configure_chatbot: Διαμόρφωση chatbot
     test_connection: ΔΟΚΙΜΗ ΣΥΝΔΕΣΗΣ

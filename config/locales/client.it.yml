@@ -1009,6 +1009,8 @@ it:
     edit_markdown: Modifica riduzione
     markdown_confirm: Alcune formattazione potrebbero andare perse convertendo il contenuto wysiwyg in riduzione.
     upload_failed: Caricamento non riuscito
+    confirm_discard: Sei sicuro di voler annullare le modifiche?
+    discard_draft: Elimina bozza
   cover_photo_form:
     heading: Nuova immagine di copertina
     upload_link: Carica nuova immagine di copertina
@@ -2487,6 +2489,7 @@ it:
     email: Email
     password: Password
     reactivate: Riattiva account
+    want_to_set_password: Vuoi effettuare l'accesso con una password la prossima volta?
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection

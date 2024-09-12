@@ -1009,6 +1009,8 @@ fr:
     edit_markdown: Editer Markdown
     markdown_confirm: Certains formats peuvent être perdus lors du passage du mode WYSIWIG (tel écran, tel écrit) au mode Markdown
     upload_failed: Echec du téléversement
+    confirm_discard: Êtes-vous sûr de vouloir annuler vos modifications ?
+    discard_draft: Supprimer le brouillon
   cover_photo_form:
     heading: Nouvelle photo de couverture
     upload_link: Charger une nouvelle photo de couverture
@@ -2509,6 +2511,7 @@ fr:
     email: Adresse e-mail
     password: Mot de passe
     reactivate: Réactiver le compte
+    want_to_set_password: Vous souhaitez vous connecter avec un mot de passe la prochaine fois ?
   chatbot:
     configure_chatbot: Configurer le chatbot
     test_connection: Tester la connexion

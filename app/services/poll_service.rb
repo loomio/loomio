@@ -45,6 +45,8 @@ class PollService
     poll.update_counts!
     GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
 
+    GenericWorker.perform_async('PollService', 'group_members_added', poll.group_id)
+
     users = UserInviter.where_or_create!(
       actor: actor,
       user_ids: params[:recipient_user_ids],
@@ -225,6 +227,7 @@ class PollService
   end
 
   def self.group_members_added(group_id)
+    return if group_id.nil?
     member_ids = Group.find(group_id).members.humans.pluck(:id)
     Poll.active.where(group_id: group_id, specified_voters_only: false).each do |poll|
       revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq

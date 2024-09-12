@@ -117,8 +117,11 @@ div
         :subtitle="choice.option.meaning"
       )
         template(v-slot:append)
-          v-avatar(:color="choice.option.color")
-            span(style="color: #000") {{choice.score}}
+          input.vote-form-number-input(
+            :style="{'background-color': choice.option.color}"
+            type="text"
+            inputmode="numeric"
+            v-model="choice.score")
         v-slider.poll-dot-vote-vote-form__slider.mb-6.px-3(
           :disabled="!poll.isVotable()"
           v-model='choice.score'

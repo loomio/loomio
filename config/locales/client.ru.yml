@@ -993,6 +993,8 @@ ru:
     edit_markdown: Редактировать уценку
     markdown_confirm: Некоторое форматирование может быть потеряно при преобразовании содержимого WYSIWYG в уценку.
     upload_failed: Загрузка не удалась
+    confirm_discard: Вы уверены, что хотите отменить изменения?
+    discard_draft: Отменить черновик
   cover_photo_form:
     heading: Новое фото обложки
     upload_link: Загрузить новое фото обложки
@@ -2454,6 +2456,7 @@ ru:
     email: Электронная почта
     password: Пароль
     reactivate: Повторно активировать учетную запись
+    want_to_set_password: Хотите в следующий раз войти с паролем?
   chatbot:
     configure_chatbot: Настройка чат-бота
     test_connection: Тестовое соединение

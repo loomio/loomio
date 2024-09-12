@@ -997,6 +997,8 @@ he:
     edit_markdown: ערוך Markdown
     markdown_confirm: ייתכן שחלק מהפורמטים יאבדו בהמרת תוכן wysiwyg ל-markdown.
     upload_failed: העלאה נכשלה
+    confirm_discard: האם אתה בטוח שברצונך למחוק את השינויים שלך?
+    discard_draft: בטל את הטיוטה
   cover_photo_form:
     heading: תמונת קאבר חדשה
     upload_link: העלה תמונת קאבר חדשה
@@ -2476,6 +2478,7 @@ he:
     email: דואר אלקטרוני
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
+    want_to_set_password: רוצה להיכנס עם סיסמה בפעם הבאה?
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור
