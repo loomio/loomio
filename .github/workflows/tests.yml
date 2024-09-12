@@ -135,8 +135,8 @@ jobs:
         cd vue
         npm run test
     - name: upload e2e failure screenshots
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       if: ${{ always() }}
       with:
-        name: e2ereport
+        name: e2e-report-${{ matrix.runs-on }}
         path: vue/tests/screenshots
