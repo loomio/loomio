@@ -1,11 +1,11 @@
 class API::V1::AnnouncementsController < API::V1::RestfulController
   def audience
     current_user.ability.authorize! :show, target_model
-    
-    if target_model.respond_to?(:anonymous) && 
+
+    if target_model.respond_to?(:anonymous) &&
        target_model.anonymous &&
        ['decided_voters', 'undecided_voters'].include?(params[:recipient_audience])
-      raise CanCan::AccessDenied 
+      raise CanCan::AccessDenied
     end
 
     self.collection = AnnouncementService.audience_users(
@@ -117,7 +117,7 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
       {event_id: event.id,
        created_at: event.created_at,
        author_name: event.user.name,
-       kind: event.kind,
+       kind: event.kind_with_custom_fields,
        notifications: notifications[event.id] || [] }
     end.filter {|e| e[:notifications].size > 0}
 
@@ -155,6 +155,7 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
       new_discussion
       discussion_edited
       comment_replied_to
+      comment_announced
       poll_closing_soon]
   end
 

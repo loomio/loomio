@@ -878,6 +878,9 @@ en:
     outcome_updated: '%{name} edited an outcome, notifying %{length} people:'
     poll_closing_soon: "%{name}'s poll closing reminder notified %{length} people:"
     poll_reminder: '%{name} reminded %{length} people to vote:'
+    comment_announced_to_group: "%{name} notified everyone in the group"
+    comment_announced_to_discussion: "%{name} notified everyone in the thread"
+
 
     audiences:
       group: "%{name}"
