@@ -3,7 +3,7 @@ import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 import Flash  from '@/shared/services/flash';
 
 export default {
@@ -32,7 +32,7 @@ export default {
 
   methods: {
     discardDraft() {
-      if (confirm(I18n.t('formatting.confirm_discard'))) {
+      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'comment', this.comment.id, 'body', this.comment.body);
       }
     },

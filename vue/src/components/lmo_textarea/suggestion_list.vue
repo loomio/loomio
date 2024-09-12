@@ -28,7 +28,7 @@ v-card.suggestion-list(
   v-show='query'
   ref='suggestions'
   :style="positionStyles")
-  v-list(v-if="mentionable.length" density="dense")
+  v-list(v-if="mentionable.length" density="compact")
     v-list-item(
       v-for='(user, index) in mentionable'
       :key='user.id'
@@ -39,7 +39,7 @@ v-card.suggestion-list(
         | {{ user.name }}
         span.text-medium-emphasis(v-if="user.id == currentUser.id") &nbsp; ({{ $t('common.you') }})
         span.text-medium-emphasis(v-if="showUsername") &nbsp; {{ "@" + user.username }}
-  v-list(v-else density="dense")
+  v-list(v-else density="compact")
     v-list-item
       v-progress-circular(
         v-if="loading"

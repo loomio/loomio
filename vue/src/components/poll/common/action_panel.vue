@@ -83,7 +83,7 @@ export default
 <template lang="pug">
 .poll-common-action-panel(v-if="!poll.closedAt" style="position: relative")
   v-alert.poll-common-action-panel__anonymous-message.mt-6(
-    density="dense"
+    density="compact"
     variant="tonal"
     type="info"
     v-if='poll.anonymous'
@@ -92,7 +92,7 @@ export default
       
   v-overlay.rounded.elevation-1(absolute v-if="!poll.closingAt" :opacity="0.33" :z-index="2")
     v-alert.poll-common-action-panel__results-hidden-until-vote.my-2.elevation-5(
-       density="dense" type="info"
+       density="compact" type="info"
     )
       span(v-t="{path: 'poll_common_action_panel.draft_mode', args: {poll_type: poll.translatedPollType()}}")
       
@@ -106,7 +106,7 @@ export default
     v-alert.my-4(
       type="warning"
       variant="tonal"
-      density="dense"
+      density="compact"
       v-t="{path: 'poll_common_action_panel.unable_to_vote', args: {poll_type: poll.translatedPollType()}}"
     )
         

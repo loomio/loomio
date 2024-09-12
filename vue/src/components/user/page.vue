@@ -81,7 +81,7 @@ v-main.user-page__profile
       v-card.mt-4.user-page__groups
         v-card-text
           h3.lmo-h3.user-page__groups-title(v-t="'common.groups'")
-          v-list(density="dense")
+          v-list(density="compact")
             v-list-item.user-page__group(v-for='group in groups' :key='group.id' :to='urlFor(group)')
               v-list-item-avatar
                 v-avatar.mr-2(tile size="48")

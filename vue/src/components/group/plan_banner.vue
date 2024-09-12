@@ -33,7 +33,7 @@ export default
 v-alert(
   variant="tonal"
   color="primary"
-  density="dense"
+  density="compact"
   v-if="hasSubscription && isLoggedIn && isMember && (isTrial || isExpired)"
 )
   .d-flex.align-center

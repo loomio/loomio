@@ -500,7 +500,7 @@ div
           v-spacer
           slot(v-if="!expanded" name="actions")
           v-alert.text-right(
-            density="dense"
+            density="compact"
             variant="tonal"
             v-if="maxLength"
             :class="{'red--text': reasonTooLong, 'text-medium-emphasis': !reasonTooLong}"
