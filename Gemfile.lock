@@ -389,7 +389,7 @@ GEM
     orm_adapter (0.5.0)
     os (1.1.4)
     ostruct (0.6.0)
-    paper_trail (15.1.0)
+    paper_trail (15.2.0)
       activerecord (>= 6.1)
       request_store (~> 1.4)
     pg (1.5.8)
@@ -479,7 +479,7 @@ GEM
       declarative (< 0.1.0)
       trailblazer-option (>= 0.1.1, < 0.2.0)
       uber (< 0.2.0)
-    request_store (1.5.1)
+    request_store (1.7.0)
       rack (>= 1.4)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -653,7 +653,7 @@ DEPENDENCIES
   maxminddb
   nokogiri
   oj
-  paper_trail (~> 15.1.0)
+  paper_trail (~> 15.2.0)
   pg
   pg_search
   premailer-rails
