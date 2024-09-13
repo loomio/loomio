@@ -11,7 +11,7 @@
     "@hocuspocus/provider": "^2.13.5",
     "@mdi/js": "^6.9.96",
     "@sentry/browser": "^8.28.0",
-    "@sentry/vue": "^8.28.0",
+    "@sentry/vue": "^8.30.0",
     "@tiptap/core": "^2.6.6",
     "@tiptap/extension-blockquote": "^2.6.6",
     "@tiptap/extension-bold": "^2.6.6",
@@ -50,7 +50,7 @@
     "@tiptap/extension-underline": "^2.6.6",
     "@tiptap/pm": "^2.6.6",
     "@tiptap/suggestion": "^2.6.6",
-    "@tiptap/vue-3": "^2.6.6",
+    "@tiptap/vue-3": "latest",
     "activestorage": "^5.2.8",
     "chart.js": "^3.9.1",
     "date-fns": "2.30.0",
@@ -78,7 +78,7 @@
     "vue-chartjs": "^4.1.2",
     "y-indexeddb": "^9.0.12",
     "y-prosemirror": "^1.2.12",
-    "yjs": "^13.6.18"
+    "yjs": "^13.6.19"
   },
   "devDependencies": {
     "@originjs/vite-plugin-content": "latest",
@@ -89,7 +89,7 @@
     "unplugin-vue-components": "latest",
     "@vitejs/plugin-vue": "^5.0.0",
     "vite-plugin-vuetify": "latest",
-    "vite": "^5.4.3",
+    "vite": "^5.4.4",
     "vite-plugin-env-compatible": "latest"
   },
   "optionalDependencies": {
