@@ -121,10 +121,10 @@ export default {
     mid-dot
     router-link.text-medium-emphasis(:to='urlFor(discussion)')
       time-ago(:date='discussion.createdAt')
-    span(v-show='discussion.seenByCount > 0')
+    span.text-medium-emphasis(v-show='discussion.seenByCount > 0')
       mid-dot
       a.context-panel__seen_by_count(v-t="{ path: 'thread_context.seen_by_count', args: { count: discussion.seenByCount } }"  @click="openSeenByModal()")
-    span(v-show='discussion.usersNotifiedCount != null')
+    span.text-medium-emphasis(v-show='discussion.usersNotifiedCount != null')
       mid-dot
       a.context-panel__users_notified_count(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
   template(v-if="!collapsed")
@@ -136,6 +136,11 @@ export default {
   strand-actions-panel(v-if="discussion.newestFirst" :discussion="discussion")
 </template>
 <style lang="sass">
+abbr[title]
+  text-decoration: none
+a
+  cursor: pointer
+
 .context-panel__heading-pin
   margin-left: 4px
 

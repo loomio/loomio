@@ -84,12 +84,12 @@ export default defineConfig({
   build: {
     sourcemap: true,
     emptyOutDir: true,
-    outDir: '../public/blient'
+    outDir: '../public/client3'
   },
   experimental: {
     renderBuiltUrl(filename, { hostId, hostType, type } ) {
       // { hostId: string, hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }
-      return '/blient/' + filename;
+      return '/client3/' + filename;
     }
   }
 })
