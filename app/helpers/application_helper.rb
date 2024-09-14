@@ -5,7 +5,11 @@ module ApplicationHelper
   end
 
   def vue_js_includes
-    vue_index = File.read(Rails.root.join('public/blient/index.html'))
+    if params[:beta]
+      vue_index = File.read(Rails.root.join('public/client3/index.html'))
+    else
+      vue_index = File.read(Rails.root.join('public/blient/index.html'))
+    end
     Nokogiri::HTML(vue_index).css('head link[as=script], script').to_s
   end
 
