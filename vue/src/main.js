@@ -8,6 +8,11 @@ import * as Sentry from '@sentry/browser';
 // import Vue2TouchEvents from 'vue2-touch-events';
 import PlausibleService from '@/shared/services/plausible_service';
 
+try {
+  document.querySelectorAll("link[rel=stylesheet][href*=themeauto]")[0].remove();
+} catch {
+  
+}
 
 
 import { I18n } from './i18n'
