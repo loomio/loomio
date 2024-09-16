@@ -129,7 +129,14 @@ export default
 <template lang="pug">
 div
   .py-2
-    v-text-field(clearable hide-details solo @input="onQueryInput" :placeholder="$t('navbar.search_files', {name: group.name})" :append-icon="mdiMagnify")
+    v-text-field(
+      clearable
+      hide-details
+      variant="solo"
+      density="compact"
+      @input="onQueryInput"
+      :placeholder="$t('navbar.search_files', {name: group.name})"
+      :prepend-inner-icon="mdiMagnify")
   v-card.group-files-panel(outlined)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")

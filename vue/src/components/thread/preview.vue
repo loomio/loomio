@@ -88,7 +88,7 @@ v-list-item.thread-preview.thread-preview__link(
   font-size: 20px
   text-align: center
 .thread-preview--unread
-  font-weight: 600
+  font-weight: 500
 // .thread-preview__position-icon-container
 //   width: 23px
 //   height: 23px

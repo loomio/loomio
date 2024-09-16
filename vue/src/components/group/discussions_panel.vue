@@ -257,7 +257,7 @@ div.discussions-panel(v-if="group")
   .d-flex.align-center.flex-wrap.py-3
     v-menu
       template(v-slot:activator="{ props }")
-        v-btn.mr-2.text-lowercase.discussions-panel__filters(v-bind="props" text)
+        v-btn.mr-2.text-lowercase.discussions-panel__filters(v-bind="props" variant="text")
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           common-icon(name="mdi-menu-down")
       v-list
@@ -272,7 +272,7 @@ div.discussions-panel(v-if="group")
 
     v-menu(offset-y)
       template(v-slot:activator="{ props }")
-        v-btn.mr-2.text-lowercase(v-bind="props" text)
+        v-btn.mr-2.text-lowercase(v-bind="props" variant="text")
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.tags'")
           common-icon(name="mdi-menu-down")
@@ -288,7 +288,7 @@ div.discussions-panel(v-if="group")
       @keyup.enter="openSearchModal"
       @click:append="openSearchModal"
       :placeholder="$t('navbar.search_threads', {name: group.name})"
-      :append-icon="mdiMagnify")
+      :prepend-inner-icon="mdiMagnify")
     v-btn.discussions-panel__new-thread-button(
       v-if='canStartThread'
       v-t="'navbar.start_thread'"
