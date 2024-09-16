@@ -390,17 +390,18 @@ div.recipients-autocomplete
           space
           span ({{ $t('common.you') }})
     template(v-slot:item='{props, item}')
-      v-list-item.recipients-autocomplete-suggestion(v-bind="props")
+      v-list-item.recipients-autocomplete-suggestion(v-bind="props" lines="two")
         template(v-slot:prepend)
-          user-avatar.mr-1(v-if="item.raw.type == 'user'" :user="item.raw.user" :size="24" no-link)
-          common-icon.mr-1(v-else size="small" :name="item.raw.icon")
-        v-list-item-title
-          span {{item.raw.name}}
-          span(v-if="item.raw.type == 'user' && currentUserId == item.raw.id")
-            space
-            span ({{ $t('common.you') }})
-        v-list-item-subtitle(v-if="item.raw.user && item.raw.user.email")
-          span {item.raw.user.email}}
+          user-avatar.mr-2(v-if="item.raw.type == 'user'" :user="item.raw.user" no-link)
+          common-icon.mr-2(v-else size="small" :name="item.raw.icon")
+        //- v-list-item-title
+        //-   span {{props}}
+        //-   span {{item.raw.name}}
+        //-   span(v-if="item.raw.type == 'user' && currentUserId == item.raw.id")
+        //-     space
+        //-     span ({{ $t('common.you') }})
+        v-list-item-subtitle(v-if="item.raw.user && item.raw.user.email && (item.raw.user.email != item.raw.user.name)")
+          span {{item.raw.user.email}}
   notifications-count(
     v-show="!hideCount && recipients.length"
     :model='model'
