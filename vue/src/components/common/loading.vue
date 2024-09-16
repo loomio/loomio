@@ -12,7 +12,7 @@ export default {
 
 <template lang="pug">
 div
-  v-layout.my-4.page-loading(justify-center v-if="!until")
+  .d-flex.justify-center.my-4.page-loading(v-if="!until")
     v-progress-circular(indeterminate color='primary')
   slot(v-if="until")
 </template>
