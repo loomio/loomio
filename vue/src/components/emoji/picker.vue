@@ -48,7 +48,7 @@ v-sheet.emoji-picker.pa-2
 
 <style lang="sass">
 .emoji-picker
-  max-width: 240px
+  max-width: 330px
   max-height: 400px
   overflow-y: auto
   h5

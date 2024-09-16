@@ -15,7 +15,6 @@ export default {
   data() {
     return {
       search: null,
-      closeEmojiMenu: false
     };
   },
 
@@ -30,7 +29,6 @@ export default {
       const reaction = Records.reactions.find(params)[0] || Records.reactions.build(params);
       reaction.reaction = `:${emoji}:`;
       reaction.save();
-      this.closeEmojiMenu = true;
     }
   }
 };
@@ -38,7 +36,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-menu.reactions-input(:close-on-content-click="true" v-model="closeEmojiMenu")
+v-menu.reactions-input(:close-on-content-click="true")
   template(v-slot:activator="{ props }")
     v-btn.emoji-picker__toggle.action-button(icon :size="size" variant="text" v-bind="props" )
       common-icon(:size="size" name="mdi-emoticon-outline")

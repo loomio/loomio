@@ -102,7 +102,6 @@ export default
       count: 0,
       editor: null,
       expanded: false,
-      closeEmojiMenu: false,
       linkUrl: "",
       iframeUrl: "",
       linkDialogIsOpen: false,
@@ -329,7 +328,6 @@ export default
           .insertContent(unicode)
           .focus()
           .run();
-      this.closeEmojiMenu = false;
     },
 
     updateModel() {
@@ -391,9 +389,9 @@ div
 
         .d-flex.py-2.justify-space-between.flex-wrap.align-center(align-center)
           section.d-flex.flex-wrap.formatting-tools(:aria-label="$t('formatting.formatting_tools')")
-            v-menu(:close-on-content-click="false" v-model="closeEmojiMenu")
-              template(v-slot:activator="{attrs}")
-                v-btn.emoji-picker__toggle(size="x-small" v-bind="attrs" icon variant="text" :title="$t('formatting.insert_emoji')")
+            v-menu
+              template(v-slot:activator="{ props }")
+                v-btn.emoji-picker__toggle(size="x-small" v-bind="props" icon variant="text" :title="$t('formatting.insert_emoji')")
                   common-icon(size="x-small" name="mdi-emoticon-outline")
               emoji-picker(:insert="emojiPicked")
 
