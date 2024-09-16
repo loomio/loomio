@@ -188,6 +188,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
           v-list-item-subtitle {{user.email}}
       v-list(density="compact" nav)
         user-dropdown
+        v-divider
     template(v-if="needProfilePicture")
       v-divider
       v-list-item.sidebar__list-item-button--recent(@click="setProfilePicture" color="warning")
@@ -195,24 +196,19 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
           common-icon(name="mdi-emoticon-outline")
         v-list-item-title(v-t="'profile_page.incomplete_profile'")
         v-list-item-subtitle(v-t="'profile_page.set_your_profile_picture'")
-    v-divider
 
-    v-list-item.sidebar__list-item-button--recent(density="compact" to="/dashboard")
-      v-list-item-title(v-t="'dashboard_page.aria_label'")
-    v-list-item(density="compact" to="/inbox")
-      v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
+    v-list-item.sidebar__list-item-button--recent(density="compact" to="/dashboard" :title="$t('dashboard_page.aria_label')")
+    v-list-item(density="compact" to="/inbox" :title="$t('sidebar.unread_threads', { count: unreadThreadCount() })")
     v-list-item.sidebar__list-item-button--private(density="compact" to="/threads/direct")
       v-list-item-title
         span(v-t="'sidebar.invite_only_threads'")
         span(v-if="unreadDirectThreadsCount > 0")
           space
           span ({{unreadDirectThreadsCount}})
-    v-list-item.sidebar__list-item-button--start-thread(v-if="showNewThreadButton" density="compact" to="/d/new")
+    v-list-item.sidebar__list-item-button--start-thread(v-if="showNewThreadButton" density="compact" to="/d/new" :title="$t('sidebar.start_thread')")
       template(v-slot:append)
         common-icon(name="mdi-plus")
-      v-list-item-title(v-t="'sidebar.start_thread'")
-    v-list-item(density="compact" to="/tasks" :disabled="organizations.length == 0")
-      v-list-item-title(v-t="'tasks.tasks'")
+    v-list-item(density="compact" to="/tasks" :disabled="organizations.length == 0" :title="$t('tasks.tasks')")
     v-divider
 
     template(v-for="parentGroup in organizations")
