@@ -90,7 +90,7 @@ export default {
 
 <template lang="pug">
 .strand-new-discussion.context-panel#context(v-intersect.once="{handler: viewed}")
-  v-layout.ml-n2(align-center wrap)
+  .d-flex.ml-n3.text-body-2
     v-breadcrumbs.context-panel__breadcrumbs(:items="groups")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
