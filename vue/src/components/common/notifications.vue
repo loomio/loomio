@@ -54,7 +54,7 @@ v-menu.notifications(offset-y bottom)
   v-list.notifications__dropdown(v-if="notifications.length > 0" lines="two")
     v-list-item.notification(:class="{'v-list-item--active': unreadIds.includes(n.id)}" v-for="n in notifications" :key="n.id" :to="n.href()")
       template(v-slot:prepend)
-        user-avatar.mr-2(v-if="n.actor()" :user="n.actor()")
+        user-avatar.mr-3(v-if="n.actor()" :user="n.actor()")
       v-list-item-title.notification__content
         span(v-t="{path: 'notifications.with_title.'+n.kind, args: n.args()}")
         space

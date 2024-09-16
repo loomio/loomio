@@ -36,7 +36,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-sheet.strand-card.thread-card.mb-8
+v-sheet.strand-card.thread-card.mb-8.pb-4
   //- p(v-for="rule in loader.rules") {{rule.name}}
   strand-list.pt-3.pr-1.pr-sm-3.px-sm-2(:loader="loader" :collection="loader.collection")
   strand-actions-panel(v-if="!discussion.newestFirst" :discussion="discussion")

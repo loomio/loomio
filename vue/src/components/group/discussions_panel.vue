@@ -254,7 +254,7 @@ export default
 
 <template lang="pug">
 div.discussions-panel(v-if="group")
-  v-layout.py-3(align-center wrap)
+  .d-flex.align-center.flex-wrap.py-3
     v-menu
       template(v-slot:activator="{ props }")
         v-btn.mr-2.text-lowercase.discussions-panel__filters(v-bind="props" text)

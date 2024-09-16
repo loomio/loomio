@@ -53,7 +53,7 @@ v-list-item.thread-preview.thread-preview__link(
   :to='urlFor(thread)'
 )
   template(v-slot:prepend)
-    user-avatar.mr-2(:user='thread.author()', :size='40' no-link)
+    user-avatar.mr-3(:user='thread.author()' :size='36' no-link)
   v-list-item-title(style="align-items: center")
     span(v-if='thread.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
       common-icon(size="x-small" name="mdi-pin-outline")
@@ -88,11 +88,7 @@ v-list-item.thread-preview.thread-preview__link(
   font-size: 20px
   text-align: center
 .thread-preview--unread
-  font-weight: 500
-.thread-preview
-  border-left: 2px solid transparent
-.thread-preview--unread-border
-  border-color: var(--v-accent-lighten1)
+  font-weight: 600
 // .thread-preview__position-icon-container
 //   width: 23px
 //   height: 23px

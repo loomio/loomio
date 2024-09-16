@@ -6,7 +6,7 @@ export default {
     nameArgs: Object,
     size: {
       type: String,
-      default: 'default'
+      default: undefined
     }
   },
   computed: {
