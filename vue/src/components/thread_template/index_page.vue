@@ -8,12 +8,14 @@ import DiscussionTemplateService from '@/shared/services/discussion_template_ser
 import { compact } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
+import { mdiCog } from '@mdi/js';
 
 export default {
   mixins: [WatchRecords, UrlFor],
 
   data() {
     return {
+      mdiCog,
       templates: [],
       actions: {},
       group: null,
@@ -96,11 +98,8 @@ export default {
         v-breadcrumbs.px-4(:items="breadcrumbs")
           template(v-slot:divider)
             common-icon(name="mdi-chevron-right")
-      v-card
-        v-card-title.d-flex.pr-3
-          h1.text-h5(v-if="!showSettings" tabindex="-1" v-t="'thread_template.start_a_new_thread'")
-          h1.text-h5(v-if="showSettings" tabindex="-1" v-t="'thread_template.hidden_templates'")
-          v-spacer
+      v-card(:title="$t(showSettings ? 'thread_template.hidden_templates' : 'thread_template.start_a_new_thread')")
+        template(v-slot:append)
           v-btn(v-if="showSettings" icon @click="showSettings = false")
             common-icon(name="mdi-close")
 
@@ -114,8 +113,7 @@ export default {
             div.mr-3(v-if="userIsAdmin")
               v-menu(v-if="!showSettings" offset-y)
                 template(v-slot:activator="{props}")
-                  v-btn(icon v-bind="props" :title="$t('common.admin_menu')")
-                    common-icon(name="mdi-cog")
+                  v-btn(:icon="mdiCog" variant="flat" v-bind="props" :title="$t('common.admin_menu')")
                 v-list
                   v-list-item(:to="'/thread_templates/new?group_id='+$route.query.group_id+'&return_to='+returnTo")
                     v-list-item-title(v-t="'discussion_form.new_template'")
