@@ -44,26 +44,25 @@ export default {
 
 </script>
 <template lang="pug">
-v-menu.notifications(v-model="open" offset-y bottom)
-  template(v-slot:activator="{attrs}")
-    v-btn.notifications__button(icon v-bind="attrs" :title="$t('navbar.notifications')" @click="clicked")
+v-menu.notifications(offset-y bottom)
+  template(v-slot:activator="{ props }")
+    v-btn.notifications__button(icon v-bind="props" :title="$t('navbar.notifications')")
       v-badge(color="primary" :content="unread.length" v-if="unread.length")
         common-icon(name="mdi-bell")
       common-icon(v-else name="mdi-bell")
 
-  v-sheet.notifications__dropdown
-    v-list(v-if="notifications.length > 0" lines="one" density="compact")
-      v-list-item.notification(:class="{'v-list-item--active': unreadIds.includes(n.id)}" v-for="n in notifications" :key="n.id" :to="n.href()")
-        template(v-slot:prepend)
-          user-avatar.mr-2(v-if="n.actor()" :user="n.actor()")
-        v-list-item-title.notification__content
-          span(v-t="{path: 'notifications.with_title.'+n.kind, args: n.args()}")
-          space
-          mid-dot
-          space
-          time-ago(:date="n.createdAt")
-    template(v-if="notifications.length == 0")
-      v-list-item.notification(v-t="'notifications.no_notifications'")
+  v-list.notifications__dropdown(v-if="notifications.length > 0" lines="two")
+    v-list-item.notification(:class="{'v-list-item--active': unreadIds.includes(n.id)}" v-for="n in notifications" :key="n.id" :to="n.href()")
+      template(v-slot:prepend)
+        user-avatar.mr-2(v-if="n.actor()" :user="n.actor()")
+      v-list-item-title.notification__content
+        span(v-t="{path: 'notifications.with_title.'+n.kind, args: n.args()}")
+        space
+        mid-dot
+        space
+        time-ago(:date="n.createdAt")
+  v-sheet.notifications__dropdown(v-else)
+    v-list-item.notification(v-t="'notifications.no_notifications'")
 </template>
 
 <style lang="sass">
