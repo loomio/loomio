@@ -231,8 +231,10 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
     v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
       span(v-t="'thread_arrangement_form.edit'")
     v-spacer
-    v-btn(@click="discardDraft" v-t="'common.reset'" )
+    v-btn(@click="discardDraft")
+      span(v-t="'common.reset'")
     v-btn.discussion-form__submit(
+      variant="elevated"
       color="primary"
       @click="submit()"
       :disabled="submitIsDisabled"
