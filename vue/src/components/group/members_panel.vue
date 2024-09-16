@@ -194,7 +194,7 @@ export default
     v-alert.my-2(v-if="showAdminWarning" color="primary" type="warning")
       span(v-t="'memberships_page.only_one_admin'")
 
-    v-layout.py-2(align-center wrap)
+    .d-flex.align-center.flex-wrap.py-2
       v-menu
         template(v-slot:activator="{ props }")
           v-btn.members-panel__filters.mr-2.text-lowercase(v-bind="props" text)

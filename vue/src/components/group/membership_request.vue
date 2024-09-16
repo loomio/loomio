@@ -25,10 +25,10 @@ export default
 </script>
 
 <template lang="pug">
-div
-  v-list-item.membership-requests
+v-list.membership-requests(lines="two" density="compact")
+  v-list-item
     template(v-slot:prepend)
-      user-avatar(:user='request.actor()' :size='40')
+      user-avatar.mr-2(:user='request.actor()' :size='40')
     v-list-item-title.membership-request__name
       span {{request.actor().name}} &lt;{{request.requestorEmail}}&gt;
       span.text-caption.text-medium-emphasis(v-if="!request.respondedAt")
@@ -42,7 +42,7 @@ div
         time-ago(:date='request.respondedAt')
     v-list-item-subtitle.membership-request__introduction {{request.introduction}}
     template(v-slot:append)
-      v-btn.membership-requests-page__approve( v-if="!request.respondedAt" text icon @click='approve(request)')
+      v-btn.membership-requests-page__approve(v-if="!request.respondedAt" text icon @click='approve(request)')
         common-icon(name="mdi-check")
       v-btn.membership-requests-page__ignore(v-if="!request.respondedAt" text icon @click='ignore(request)')
         common-icon(name="mdi-close")

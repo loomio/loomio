@@ -102,7 +102,7 @@ export default
 </script>
 <template lang="pug">
 div(v-if="group")
-  v-layout.my-2(align-center wrap)
+  .d-flex.align-center.my-2.flex-wrap
     v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" :append-icon="mdiMagnify")
     v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
 
@@ -112,7 +112,7 @@ div(v-if="group")
     p(v-if="upgradeRequired" v-html="$t('subgroups_panel.upgrade', {url: upgradeUrl})")
 
   v-card.group-subgroups-panel(outlined v-if="subgroups.length")
-    v-list(avatar three-line)
+    v-list(avatar lines="three")
       v-list-item.subgroups-card__list-item(v-if="group.subgroups().length > 0" :to="urlFor(group)+'?subgroups=none'")
         //- v-list-item-avatar.subgroups-card__list-item-logo
         template(v-slot:prepend)
