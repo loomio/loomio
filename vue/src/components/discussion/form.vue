@@ -127,6 +127,17 @@ export default {
   },
 
   computed: {
+    cardTitle() {
+      if (this.isMovingItems) {
+        return I18n.global.t('discussion_form.moving_items_title')
+      } else {
+        if (this.discussion.id) {
+          return I18n.global.t('discussion_form.edit_discussion_title')
+        } else {
+          return I18n.global.t('discussion_form.new_discussion_title')
+        }
+      }
+    },
     titlePlaceholder() {
       if (this.discussionTemplate && this.discussionTemplate.titlePlaceholder) {
         return I18n.global.t('common.prefix_eg', {val: this.discussionTemplate.titlePlaceholder});
@@ -167,30 +178,25 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
+v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" :title="cardTitle")
+  template(v-slot:append)
+    dismiss-modal-button(
+      v-if="!isPage"
+      aria-hidden='true'
+      :model="discussion")
+    v-btn(
+      v-if="isPage && discussion.id"
+      icon
+      variant="text"
+      aria-hidden='true'
+      :to="urlFor(discussion)"
+    )
+      common-icon(name="mdi-close")
+    v-btn.back-button(variant="text" v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
+      common-icon(name="mdi-close")
+
   submit-overlay(:value='discussion.processing')
-  v-card-item
-    v-card-title.d-flex
-      span(v-if="isMovingItems" v-t="'discussion_form.moving_items_title'")
-      template(v-else)
-        //- span(v-if="discussionTemplate && !discussion.id" v-t="{path: 'discussion_form.new_thread_from_template', args: {process_name: discussionTemplate.processName}}")
-        span(v-if="!discussion.id" v-t="'discussion_form.new_discussion_title'")
-        span(v-if="discussion.id" v-t="'discussion_form.edit_discussion_title'")
-      v-spacer
-      dismiss-modal-button(
-        v-if="!isPage"
-        aria-hidden='true'
-        :model="discussion")
-      v-btn(
-        v-if="isPage && discussion.id"
-        icon
-        variant="text"
-        aria-hidden='true'
-        :to="urlFor(discussion)"
-      )
-        common-icon(name="mdi-close")
-      v-btn.back-button(variant="text" v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
-        common-icon(name="mdi-close")
+
   v-card-item
     thread-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
     v-select.pb-4(
