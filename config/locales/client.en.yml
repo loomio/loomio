@@ -654,6 +654,7 @@ en:
     invitations: "Invitations"
 
   membership_dropdown:
+    view_profile: View profile
     set_name_and_username: "Set name and username"
     set_title: "Set title"
     resend: "Resend invitation"

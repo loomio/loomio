@@ -5,16 +5,19 @@ import AbilityService from '@/shared/services/ability_service';
 import FlashService   from '@/shared/services/flash';
 import EventBus from '@/shared/services/event_bus';
 import { snakeCase } from 'lodash-es';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  mixins: [UrlFor],
   props: {
     membership: Object
   },
 
   methods: {
     canPerformAction() {
-      return this.canSetTitle()        ||
+      return true ||
+            this.canSetTitle()        ||
             this.canSetName()          ||
             this.canRemoveMembership() ||
             this.canResendMembership() ||
@@ -116,6 +119,8 @@ export default
         //- span(v-t="'membership_dropdown.membership_options'")
         common-icon(name="mdi-dots-vertical")
     v-list.group-actions-dropdown__menu-content
+      v-list-item.membership-dropdown__view-profile(:to="urlFor(membership.user())")
+        v-list-item-title(v-t="'membership_dropdown.view_profile'")
       v-list-item.membership-dropdown__set-title(v-if='canSetName()' @click='setName()')
         v-list-item-title(v-t="'membership_dropdown.set_name_and_username'")
       v-list-item.membership-dropdown__set-title(v-if='canSetTitle()' @click='setTitle()')

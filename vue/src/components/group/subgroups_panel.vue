@@ -103,7 +103,7 @@ export default
 <template lang="pug">
 div(v-if="group")
   .d-flex.align-center.my-2.flex-wrap
-    v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" :append-icon="mdiMagnify")
+    v-text-field.mr-2(clearable hide-details variant="solo" density="compact" :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" :prepend-inner-icon="mdiMagnify")
     v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
 
   v-alert(v-if="subgroups.length == 0" outlined color="primary")

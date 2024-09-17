@@ -47,8 +47,7 @@ export default
         search: {
           placeholder: this.$t('navbar.search_members', {name: this.group.parentOrSelf().name})
         }
-      }
-      );
+      });
 
       this.loader = new RecordLoader({
         collection: 'memberships',
@@ -197,7 +196,7 @@ export default
     .d-flex.align-center.flex-wrap.py-2
       v-menu
         template(v-slot:activator="{ props }")
-          v-btn.members-panel__filters.mr-2.text-lowercase(v-bind="props" text)
+          v-btn.members-panel__filters.mr-2.text-capitalize(v-bind="props" variant="text")
             span(v-if="$route.query.filter == 'admin'" v-t="'members_panel.order_by_admin_desc'")
             span(v-if="$route.query.filter == 'pending'" v-t="'members_panel.invitations'")
             span(v-if="$route.query.filter == 'accepted'" v-t="'members_panel.accepted'")
@@ -212,7 +211,14 @@ export default
             v-list-item-title(v-t="'members_panel.order_by_admin_desc'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
             v-list-item-title(v-t="'members_panel.invitations'")
-      v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_members', {name: group.name})" :append-icon="mdiMagnify")
+      v-text-field.mr-2(
+        clearable
+        hide-details
+        variant="solo"
+        density="compact"
+        @update:model-value="onQueryInput"
+        :placeholder="$t('navbar.search_members', {name: group.name})"
+        :prepend-inner-icon="mdiMagnify")
       v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
       shareable-link-modal(v-if='canAddMembers' :group="group")
       v-btn.group-page__requests-tab(
@@ -230,17 +236,16 @@ export default
         v-list(v-else lines="two")
           v-list-item(v-for="membership in memberships" :key="membership.id")
             template(v-slot:prepend)
-              router-link(:to="urlFor(membership.user())")
-                user-avatar.mr-2(:user='membership.user()' :size='48')
+              user-avatar.mr-2(:user='membership.user()' :size='36')
             v-list-item-title
-              router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
-              span
+              span {{ membership.user().name }}
               span.text-medium-emphasis
                 space
                 span(v-if="membership.acceptedAt && membership.userEmail") &lt;{{membership.userEmail}}&gt;
                 span(v-else) {{membership.userEmail}}
-              space
-              span.text-caption(v-if="$route.query.subgroups") {{membership.group().name}}
+              span.text-caption(v-if="$route.query.subgroups")
+                space
+                span {{membership.group().name}}
               space
               span.text-caption {{membership.user().title(group)}}
               space

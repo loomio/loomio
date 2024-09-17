@@ -11,8 +11,11 @@ import Flash   from '@/shared/services/flash';
 import { includes, uniq, debounce, pickBy } from 'lodash-es';
 import {exact} from '@/shared/helpers/format_time';
 import { I18n, loadLocaleMessages } from '@/i18n';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [WatchRecords, UrlFor],
   data() {
     return {
       user: null,

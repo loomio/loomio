@@ -134,7 +134,7 @@ div
       hide-details
       variant="solo"
       density="compact"
-      @input="onQueryInput"
+      @update:model-value="onQueryInput"
       :placeholder="$t('navbar.search_files', {name: group.name})"
       :prepend-inner-icon="mdiMagnify")
   v-card.group-files-panel(outlined)
