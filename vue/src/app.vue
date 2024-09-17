@@ -109,6 +109,9 @@ v-app.app-is-booted
   letter-spacing: normal !important
   font-weight: 400
 
+.text-transform-none
+  text-transform: none
+  
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
 a
