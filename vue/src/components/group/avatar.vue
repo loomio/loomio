@@ -8,7 +8,7 @@ export default{
     group: Object,
     size: {
       type: Number,
-      default: 28
+      default: 24
     }
   }
 };
@@ -16,6 +16,6 @@ export default{
 
 <template lang="pug">
 v-avatar(:size="size" tile @click="$emit('click')")
-  v-img(:alt="group.name" v-if="group.logoUrl" :src="group.logoUrl")
+  v-img(:alt="group.name" cover v-if="group.logoUrl" :src="group.logoUrl")
   common-icon(v-if="!group.logoUrl" name="mdi-account-group")
 </template>
