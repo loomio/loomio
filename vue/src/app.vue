@@ -114,8 +114,10 @@ v-app.app-is-booted
   
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
+
 a
   text-decoration: none
+  color: rgb(var(--v-theme-anchor))
 
 .lmo-relative
   position: relative
