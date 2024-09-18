@@ -57,7 +57,7 @@ export default class EventModel extends BaseModel {
     if (this.actor()) {
       return this.actor().nameWithTitle(this.discussion().group());
     } else {
-      return i18n.t('common.anonymous');
+      return I18n.global.t('common.anonymous');
     }
   }
 

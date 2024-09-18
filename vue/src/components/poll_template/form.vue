@@ -73,7 +73,7 @@ export default {
 
   methods: {
     discardDraft() {
-      if (confirm(I18n.t('formatting.confirm_discard'))) {
+      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'pollTemplate', this.pollTemplate.id, 'details', this.pollTemplate.details);
         EventBus.$emit('resetDraft', 'pollTemplate', this.pollTemplate.id, 'processIntroduction', this.pollTemplate.processIntroduction);
       }

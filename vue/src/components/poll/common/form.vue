@@ -97,7 +97,7 @@ export default {
 
   methods: {
     discardDraft() {
-      if (confirm(I18n.t('formatting.confirm_discard'))) {
+      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'poll', this.poll.id, 'details', this.poll.details);
       }
     },
@@ -447,6 +447,7 @@ export default {
     v-t="{path: 'poll_common_settings.notify_on_closing_soon.voting_closes_too_soon', args: {pollType: poll.translatedPollType()}}")
 
   v-radio-group(
+    color="primary"
     v-model="poll.specifiedVotersOnly"
     :disabled="!poll.closingAt"
     :label="$t('poll_common_settings.who_can_vote')"
@@ -466,7 +467,11 @@ export default {
     v-if="poll.specifiedVotersOnly"
     v-t="{path: 'poll_common_settings.invite_people_next', poll_type: poll.translatedPollType()}")
 
-  v-checkbox.mt-0(v-if="!poll.id && !poll.specifiedVotersOnly" :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})" v-model="poll.notifyRecipients")
+  v-checkbox.mt-0(
+    color="primary"
+    v-if="!poll.id && !poll.specifiedVotersOnly"
+    :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})"
+    v-model="poll.notifyRecipients")
 
   .d-flex.justify-center
     v-btn.my-4.poll-common-form__advanced-btn(@click="showAdvanced = !showAdvanced")

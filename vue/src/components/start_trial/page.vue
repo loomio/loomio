@@ -14,7 +14,7 @@ export default
     return {
       userName: Session.user().name || '',
       userEmail: Session.user().email || '',
-      group: Records.groups.build({description: I18n.t('group_form.new_description_html')}),
+      group: Records.groups.build({description: I18n.global.t('group_form.new_description_html')}),
       howDidYouHearAboutLoomio: '',
       validate: false,
       newsletter: false,
@@ -33,7 +33,7 @@ export default
       this.validate = true;
       if (this.$refs.form.validate()){
         this.group.beforeSaves.forEach(f => f());
-        EventBus.$emit('resetDraft', 'group', null, 'description', I18n.t('group_form.new_description_html'));
+        EventBus.$emit('resetDraft', 'group', null, 'description', I18n.global.t('group_form.new_description_html'));
         this.loading = true
         Records.remote.post('trials', {
           user_name: this.userName,
@@ -63,7 +63,7 @@ export default
     categoryItems() {
       // ['board', 'community', 'coop', 'membership', 'nonprofit', 'party', 'professional', 'self_managing', 'union', 'other'].map (category) ->
       return ['board', 'membership', 'self_managing', 'other'].map(category => ({
-        text: I18n.t('group_survey.categories.'+category),
+        text: I18n.global.t('group_survey.categories.'+category),
         value: category
       }));
     }, 

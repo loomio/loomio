@@ -52,7 +52,7 @@ export default {
 
   methods: {
     discardDraft() {
-      if (confirm(I18n.t('formatting.confirm_discard'))) {
+      if (confirm(I18n.global.t('formatting.confirm_discard'))) {
         EventBus.$emit('resetDraft', 'discussionTemplate', this.discussionTemplate.id, 'description', this.discussionTemplate.description);
         EventBus.$emit('resetDraft', 'discussionTemplate', this.discussionTemplate.id, 'processIntroduction', this.discussionTemplate.processIntroduction);
       }
