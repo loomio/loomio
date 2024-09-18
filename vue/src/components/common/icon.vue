@@ -343,12 +343,22 @@ export default {
         return undefined
       }
     }
+  },
+
+  computed: {
+    styleColor() {
+      if (this.color && this.color.startsWith("#")) {
+        return {color: this.color};
+      }
+    }
   }
 };
 </script>
 
 <template lang="pug">
-v-icon.text-medium-emphasis(
+v-icon(
+  :style="styleColor",
+  :class="{'text-medium-emphasis': color == undefined}"
   color="color"
   :density="density"
   :left="left"
