@@ -203,7 +203,7 @@ v-card.search-modal
         user-avatar.mr-2(v-else :user="userById(result.author_id)")
       v-list-item-title.d-flex
         span.text-truncate {{ result.poll_title || result.discussion_title }}
-        tags-display.ml-1(:tags="result.tags" :group="groupById(result.group_id)")
+        tags-display.ml-1(:tags="result.tags" size="x-small" :group="groupById(result.group_id)")
         v-spacer
         time-ago.text-medium-emphasis(style="font-size: 0.875rem;" :date="result.authored_at")
       v-list-item-subtitle.text--primary(v-html="result.highlight")
