@@ -154,7 +154,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     density:  {
       type: String,
@@ -348,7 +348,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-icon(
+v-icon.text-medium-emphasis(
   color="color"
   :density="density"
   :left="left"
