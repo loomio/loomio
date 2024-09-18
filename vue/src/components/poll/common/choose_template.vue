@@ -164,14 +164,15 @@ export default {
   //- thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
   .d-flex(:class="{'px-4': !discussion}")
     v-chip.mr-1(
+      :color="filter == name ? 'primary' : null"
       v-for="icon, name in filters"
       label
       :key="name"
-      :outlined="filter != name"
       @click="filter = name"
       :class="'poll-common-choose-template__'+name"
     )
-      common-icon.mr-2(size="small" :name="icon")
+      common-icon.mr-2(size="small" :name="icon" :color="filter == name ? 'primary' : null")
+      
       span.poll-type-chip-name(v-t="filterLabels[name]")
     template(v-if="userIsAdmin")
       v-spacer
