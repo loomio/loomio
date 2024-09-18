@@ -16,7 +16,8 @@ export default {
     return {
       actor: Session.user(),
       canSubmit: true,
-      shouldReset: false
+      shouldReset: false,
+      processing: false
     };
   },
 
@@ -42,6 +43,7 @@ export default {
     },
 
     submit() {
+      this.processing = true;
       this.comment.save().then(() => {
         this.$emit('comment-submitted');
         this.shouldReset = !this.shouldReset;
@@ -54,7 +56,7 @@ export default {
         Flash.success(flashMessage, {name: this.comment.isReply() ? this.comment.parent().author().nameOrUsername() : undefined});
       }).catch(err => {
         Flash.error('common.something_went_wrong');
-      });
+      }).finally(() => this.processing = false);
     }
   }
 };
@@ -84,10 +86,12 @@ v-layout.comment-form
           v-t="'common.reset'"
         )
         v-btn.comment-form__submit-button(
+          :loading="processing"
           :disabled="!canSubmit"
           color="primary"
           type='submit'
-          v-t="comment.isNew() ? 'comment_form.post_comment' : 'common.action.save' ")
+        )
+          span(v-t="comment.isNew() ? 'comment_form.post_comment' : 'common.action.save' ")
     v-alert(color="error" v-if="comment.saveFailed")
       span(v-t="'common.something_went_wrong'")
       space
