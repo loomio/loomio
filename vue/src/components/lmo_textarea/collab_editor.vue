@@ -658,6 +658,7 @@ progress::-moz-progress-bar
       font-size: 16px
 
 .html-editor__textarea .ProseMirror
+  cursor: text
   border-bottom: 1px solid #999
   padding: 4px 0px
   margin: 4px 0px
