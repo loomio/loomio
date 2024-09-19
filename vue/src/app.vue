@@ -119,6 +119,14 @@ a
   text-decoration: none
   color: rgb(var(--v-theme-anchor))
 
+.lmo-form-label
+  font-size: 14px
+
+.v-theme--dark .lmo-form-label
+  
+.theme--light .lmo-form-label
+  color: rgba(0, 0, 0, 0.6)
+
 .lmo-relative
   position: relative
 

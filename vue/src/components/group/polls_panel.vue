@@ -200,10 +200,12 @@ export default
         :placeholder="$t('navbar.search_polls', {name: group.name})"
         :prepend-inner-icon="mdiMagnify")
       v-btn.polls-panel__new-poll-button(
-        :to="'/p/new?group_id='+group.id"
         color='primary'
+        variant="tonal"
+        :to="'/p/new?group_id='+group.id"
         v-if='canStartPoll'
-        v-t="'sidebar.start_decision'")
+      )
+        span(v-t="'sidebar.start_decision'")
     v-card(outlined)
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")

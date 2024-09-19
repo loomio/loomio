@@ -357,9 +357,8 @@ export default {
 
 <template lang="pug">
 v-icon(
-  :style="styleColor",
   :class="{'text-medium-emphasis': color == undefined}"
-  color="color"
+  :color="color"
   :density="density"
   :left="left"
   :light="light"

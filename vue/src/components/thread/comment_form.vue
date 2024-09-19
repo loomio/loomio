@@ -86,6 +86,7 @@ v-layout.comment-form
           v-t="'common.reset'"
         )
         v-btn.comment-form__submit-button(
+          variant="elevated"
           :loading="processing"
           :disabled="!canSubmit"
           color="primary"

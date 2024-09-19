@@ -47,10 +47,11 @@ v-alert(
     v-spacer
     v-btn(
       color="primary"
+      variant="tonal"
       :href="'/upgrade/'+group.id"
       target="_blank"
       :title="$t('current_plan_button.tooltip')"
     )
-      common-icon(name="mdi-rocket")
-      span(v-t="'current_plan_button.view_plans'")
+      common-icon.mr-1(name="mdi-rocket" color="currentColor")
+      span(v-t="'current_plan_button.upgrade'")
 </template>

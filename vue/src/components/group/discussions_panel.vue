@@ -290,10 +290,12 @@ div.discussions-panel(v-if="group")
       :placeholder="$t('navbar.search_threads', {name: group.name})"
       :prepend-inner-icon="mdiMagnify")
     v-btn.discussions-panel__new-thread-button(
+      variant="tonal"
       v-if='canStartThread'
-      v-t="'navbar.start_thread'"
       :to="'/thread_templates/?group_id='+group.id"
-      color='primary')
+      color='primary'
+    )
+      span(v-t="'navbar.start_thread'")
 
   v-alert(color="info" text outlined v-if="isMember && noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")

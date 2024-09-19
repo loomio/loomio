@@ -219,7 +219,13 @@ export default
         @update:model-value="onQueryInput"
         :placeholder="$t('navbar.search_members', {name: group.name})"
         :prepend-inner-icon="mdiMagnify")
-      v-btn.membership-card__invite.mr-2(color="primary" v-if='canAddMembers' @click="invite()" v-t="'common.action.invite'")
+      v-btn.membership-card__invite.mr-2(
+        color="primary"
+        variant="tonal"
+        v-if='canAddMembers'
+        @click="invite()"
+      )
+        span(v-t="'common.action.invite'")
       shareable-link-modal(v-if='canAddMembers' :group="group")
       v-btn.group-page__requests-tab(
         v-if='group.isVisibleToPublic && canAddMembers'

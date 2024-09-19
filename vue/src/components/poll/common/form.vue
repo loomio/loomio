@@ -359,18 +359,21 @@ export default {
 
     template(v-if="optionFormat == 'plain'")
       .d-flex.justify-center
-        v-btn.poll-common-form__add-option-btn.my-2(@click="addOption" variant="outlined" color="primary" v-t="'poll_common_add_option.modal.title'")
+        v-btn.poll-common-form__add-option-btn.my-2(
+          color="primary" variant="tonal"
+          @click="addOption"
+        )
+          span(v-t="'poll_common_add_option.modal.title'")
 
     template(v-if="optionFormat == 'iso8601'")
       .v-label.v-label--active.px-0.text-caption.pt-2(v-t="'poll_poll_form.new_option'")
       .d-flex.align-center
         date-time-picker(:min="minDate" v-model="newDateOption")
         v-btn.poll-meeting-form__option-button.ml-4(
-          :title="$t('poll_meeting_time_field.add_time_slot')"
-          outlined color="primary"
+          color="primary" variant="tonal"
           @click='addDateOption()'
-          v-t="'poll_poll_form.add_option_placeholder'"
         )
+          span(v-t="'poll_poll_form.add_option_placeholder'")
       poll-meeting-add-option-menu(:poll="poll" :value="newDateOption")
 
   template(v-if="optionFormat == 'iso8601'")
@@ -447,7 +450,6 @@ export default {
     v-t="{path: 'poll_common_settings.notify_on_closing_soon.voting_closes_too_soon', args: {pollType: poll.translatedPollType()}}")
 
   v-radio-group(
-    color="primary"
     v-model="poll.specifiedVotersOnly"
     :disabled="!poll.closingAt"
     :label="$t('poll_common_settings.who_can_vote')"
@@ -463,76 +465,72 @@ export default {
     v-radio.poll-common-settings__specified-voters-only(
       :value="true"
       :label="$t('poll_common_settings.specified_voters_only_true')")
-  .text-caption.mt-n4.text--secondary.text-caption(
+
+  .ml-4.mt-n4.mb-8.text-medium-emphasis.font-italic(
     v-if="poll.specifiedVotersOnly"
-    v-t="{path: 'poll_common_settings.invite_people_next', poll_type: poll.translatedPollType()}")
+    v-t="{path: 'poll_common_settings.invite_people_next', args: {poll_type: poll.translatedPollType()}}")
 
   v-checkbox.mt-0(
-    color="primary"
     v-if="!poll.id && !poll.specifiedVotersOnly"
     :label="$t('poll_common_form.notify_everyone_when_poll_starts', {poll_type: poll.translatedPollType()})"
     v-model="poll.notifyRecipients")
 
-  .d-flex.justify-center
-    v-btn.my-4.poll-common-form__advanced-btn(@click="showAdvanced = !showAdvanced")
-      span(v-if='showAdvanced' v-t="'poll_common_form.hide_advanced_settings'")
-      span(v-else v-t="'poll_common_form.show_advanced_settings'")
+  v-select(
+    :disabled="!poll.closingAt"
+    :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"
+    v-model="poll.notifyOnClosingSoon"
+    :items="closingSoonItems")
 
-  div(v-show="showAdvanced")
+  template(v-if="allowAnonymous")
+    //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.anonymous_voting'")
+    //- p.text--secondary(v-t="'poll_common_form.anonymous_voting_description'")
+    v-checkbox.poll-common-checkbox-option.poll-settings-anonymous(
+      :disabled="!poll.isNew()"
+      v-model="poll.anonymous"
+      :label="$t('poll_common_form.votes_are_anonymous')")
+
+
+  template(v-if="poll.config().can_shuffle_options")
+    //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_settings.shuffle_options.shuffle_options'")
+    //- p.text--secondary(v-t="'poll_common_settings.shuffle_options.helptext'")
+    v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options.mt-4.pt-2(
+      color="primary"
+      v-model="poll.shuffleOptions"
+      :label="$t('poll_common_settings.shuffle_options.title')")
+
+  //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.vote_reason'")
+  //- p.text--secondary(v-t="'poll_common_form.vote_reason_description'")
+  template(v-if="!poll.config().hide_reason_required")
     v-select(
-      :disabled="!poll.closingAt"
-      :label="$t('poll_common_settings.notify_on_closing_soon.voting_title')"
-      v-model="poll.notifyOnClosingSoon"
-      :items="closingSoonItems")
+      :label="$t('poll_common_form.stance_reason_required_label')"
+      :items="stanceReasonRequiredItems"
+      v-model="poll.stanceReasonRequired"
+    )
 
-    template(v-if="allowAnonymous")
-      //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.anonymous_voting'")
-      //- p.text--secondary(v-t="'poll_common_form.anonymous_voting_description'")
-      v-checkbox.poll-common-checkbox-option.poll-settings-anonymous(
-        :disabled="!poll.isNew()"
-        v-model="poll.anonymous"
-        :label="$t('poll_common_form.votes_are_anonymous')")
+  v-text-field(
+    v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
+    v-model="poll.reasonPrompt"
+    :label="$t('poll_common_form.reason_prompt')"
+    :hint="$t('poll_option_form.prompt_hint')"
+    :placeholder="$t('poll_common.reason_placeholder')")
 
+  template(v-if="poll.stanceReasonRequired != 'disabled'")
+    //- p.text--secondary(v-t="'poll_common_settings.short_reason_can_be_helpful'")
+    v-checkbox.poll-common-checkbox-option(
+      hide-details
+      v-model="poll.limitReasonLength"
+      :label="$t('poll_common_form.limit_reason_length')"
+    )
 
-    template(v-if="poll.config().can_shuffle_options")
-      //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_settings.shuffle_options.shuffle_options'")
-      //- p.text--secondary(v-t="'poll_common_settings.shuffle_options.helptext'")
-      v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options.mt-4.pt-2(
-        v-model="poll.shuffleOptions"
-        :label="$t('poll_common_settings.shuffle_options.title')")
-
-    //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.vote_reason'")
-    //- p.text--secondary(v-t="'poll_common_form.vote_reason_description'")
-    template(v-if="!poll.config().hide_reason_required")
-      v-select(
-        :label="$t('poll_common_form.stance_reason_required_label')"
-        :items="stanceReasonRequiredItems"
-        v-model="poll.stanceReasonRequired"
-      )
-
-    v-text-field(
-      v-if="poll.stanceReasonRequired != 'disabled' && (!poll.config().per_option_reason_prompt)"
-      v-model="poll.reasonPrompt"
-      :label="$t('poll_common_form.reason_prompt')"
-      :hint="$t('poll_option_form.prompt_hint')"
-      :placeholder="$t('poll_common.reason_placeholder')")
-
-    template(v-if="poll.stanceReasonRequired != 'disabled'")
-      //- p.text--secondary(v-t="'poll_common_settings.short_reason_can_be_helpful'")
-      v-checkbox.poll-common-checkbox-option(
-        v-model="poll.limitReasonLength"
-        :label="$t('poll_common_form.limit_reason_length')"
-      )
-
-    template(v-if="allowAnonymous")
-      //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_card.hide_results'")
-      //- p.text--secondary(v-t="'poll_common_form.hide_results_description'")
-      v-select.poll-common-settings__hide-results.mt-6.pt-2(
-        :label="$t('poll_common_card.hide_results')"
-        :items="hideResultsItems"
-        v-model="poll.hideResults"
-        :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
-      )
+  template(v-if="allowAnonymous")
+    //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_card.hide_results'")
+    //- p.text--secondary(v-t="'poll_common_form.hide_results_description'")
+    v-select.poll-common-settings__hide-results.mt-6.pt-2(
+      :label="$t('poll_common_card.hide_results')"
+      :items="hideResultsItems"
+      v-model="poll.hideResults"
+      :disabled="!poll.isNew() && currentHideResults == 'until_closed'"
+    )
 
   common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 
@@ -540,9 +538,11 @@ export default {
     help-link(path='en/user_manual/polls/intro_to_decisions')
     v-spacer
     v-btn(
+      variant="text"
       @click="discardDraft"
-      v-t="'common.reset'"
     )
+     span(v-t="'common.reset'")
+      
     v-btn.poll-common-form__submit(
       color="primary"
       @click='submit()'
@@ -555,13 +555,3 @@ export default {
       span(v-if='!poll.id && !poll.closingAt' v-t="'poll_common_form.save_poll'")
 
 </template>
-<style>
-.lmo-form-label {
-  font-size: 14px;
-}
-.v-theme--dark .lmo-form-label{
-}
-.theme--light .lmo-form-label{
-  color: rgba(0, 0, 0, 0.6);
-}
-</style>

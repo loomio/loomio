@@ -6,6 +6,18 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 
 const useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
+const colors = {
+  gold: "#DCA034",
+  goldDarker: "#C6902F",
+  ink: "#293C4A",
+  wellington: "#7F9EA0",
+  sunset: "#E4C2B9",
+  sky: "#658AE7",
+  skyDarker: "#5B7CD0",
+  rock: "#C77C3B",
+  white: "#FFFFFF"
+}
+
 export default createVuetify({
   icons: {
     defaultSet: 'mdi',
@@ -15,28 +27,30 @@ export default createVuetify({
   theme: {
     defaultTheme: 'light',
     themes: {
-      dark: {
-        dark: true,
-        colors: {
-          primary: '#6200EE',
-          secondary: '#03DAC6',
-          error: '#B00020',
-          info: '#2196F3',
-          success: '#4CAF50',
-          warning: '#FB8C00',
-        },
-      },
       light: {
         dark: false,
         colors: {
-          background: '#FFFFFF',
-          surface: '#FFFFFF',
-          primary: '#6200EE',
-          secondary: '#03DAC6',
-          error: '#B00020',
-          info: '#2196F3',
-          success: '#4CAF50',
-          warning: '#FB8C00',
+          primary:  colors.skyDarker,
+          secondary:  colors.skyDarker,
+          accent:  colors.skyDarker,
+          // error: ENV.fetch('THEME_COLOR_ERROR', nil),
+          // warning: ENV.fetch('THEME_COLOR_WARNING', nil),
+          info:  colors.skyDarker,
+          // success: ENV.fetch('THEME_COLOR_SUCCESS', nil),
+          anchor:  colors.skyDarker,
+        },
+      },
+      dark: {
+        dark: true,
+        colors: {
+          primary: colors.gold,
+          secondary: colors.skyDarker,
+          accent: colors.skyDarker,
+          // error: ENV.fetch('THEME_COLOR_ERROR', nil),
+          // warning: ENV.fetch('THEME_COLOR_WARNING', nil),
+          info: colors.gold,
+          // success: ENV.fetch('THEME_COLOR_SUCCESS', nil),
+          anchor: colors.gold
         },
       },
     },

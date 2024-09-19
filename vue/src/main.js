@@ -14,7 +14,6 @@ try {
   
 }
 
-
 import { I18n } from './i18n'
 import vuetify from './plugins/vuetify'
 import router from './routes'
@@ -29,11 +28,14 @@ import { plugin as Slicksort } from 'vue-slicksort';
 boot(function(data) {
   Session.apply(data);
 
-  each(AppConfig.theme.vuetify, (value, key) => {
-    if (value) { vuetify.theme.themes.value.light.colors[key] = value; }
-    if (value) { vuetify.theme.themes.value.dark.colors[key] = value; }
-    return true;
-  });
+  // each(AppConfig.theme.vuetify.dark, (value, key) => {
+  //   if (value) { vuetify.theme.themes.value.dark.colors[key] = value; }
+  //   return true;
+  // });
+  // each(AppConfig.theme.vuetify.light, (value, key) => {
+  //   if (value) { vuetify.theme.themes.value.light.colors[key] = value; }
+  //   return true;
+  // });
 
   const app = createApp(App);
 

@@ -81,8 +81,8 @@ div
             v-model='closingDate'
             :rules="[validDate]"
             placeholder="2000-12-30"
-            :prepend-icon="mdiCalendar"
-          )
+            :prepend-inner-icon="mdiCalendar"
+          ).mr-4
             template(v-slot:label)
               span(v-if="poll.closingAt" v-t="{ path: 'common.closing_in', args: { time: label } }", :title="exact(poll.closingAt)")
               span(v-if="!poll.closingAt" v-t="'poll_common_closing_at_field.no_closing_date'")
@@ -94,7 +94,7 @@ div
           @input="isShowingDatePicker = false")
       v-select.poll-common-closing-at-field__timepicker(
         :disabled="!poll.closingAt"
-        :prepend-icon="mdiClockOutline"
+        :prepend-inner-icon="mdiClockOutline"
         v-model='closingHour'
         :label="$t('poll_meeting_time_field.closing_hour')"
         :items="times"

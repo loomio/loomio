@@ -87,15 +87,15 @@ v-card.poll-common-option-form(:title="$t(cardTitle)")
       :hint="$t('poll_option_form.prompt_hint')"
       :placeholder="$t('poll_common.reason_placeholder')"
       v-model="pollOption.prompt")
+  v-divider
   v-card-actions
-    v-spacer
     v-btn.poll-option-form__done-btn(
-      color="primary"
-      variant="elevated"
+      block
+      color="primary" variant="text"
       @click="submit"
-      v-t="'common.action.done'"
       :disabled="(hasOptionIcon && !pollOption.icon) || !pollOption.name"
     )
+      span(v-t="'common.action.done'")
 </template>
 
 <style lang="sass">
