@@ -231,8 +231,9 @@ export default
         v-if='group.isVisibleToPublic && canAddMembers'
         :to="urlFor(group, 'members/requests')"
         color="primary"
-        outlined
-        v-t="'members_panel.requests'")
+        variant="tonal"
+      )
+        span(v-t="'members_panel.requests'")
 
     v-card(outlined)
       div(v-if="loader.status == 403")

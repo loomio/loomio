@@ -3,6 +3,7 @@ import 'vuetify/styles'
 // Composables
 import { createVuetify } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
+import { VDateInput } from 'vuetify/labs/VDateInput'
 
 const useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
@@ -19,6 +20,9 @@ const colors = {
 }
 
 export default createVuetify({
+  components: {
+    VDateInput,
+  },
   icons: {
     defaultSet: 'mdi',
     aliases,
@@ -48,7 +52,7 @@ export default createVuetify({
           accent: colors.skyDarker,
           // error: ENV.fetch('THEME_COLOR_ERROR', nil),
           // warning: ENV.fetch('THEME_COLOR_WARNING', nil),
-          info: colors.gold,
+          info: colors.skyDarker,
           // success: ENV.fetch('THEME_COLOR_SUCCESS', nil),
           anchor: colors.gold
         },
