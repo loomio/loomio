@@ -128,14 +128,14 @@ export default
 
 <template lang="pug">
 div
-  .py-2
+  .pt-4.pb-2
     v-text-field(
       clearable
       hide-details
       variant="solo"
       density="compact"
       @update:model-value="onQueryInput"
-      :placeholder="$t('navbar.search_files', {name: group.name})"
+      :placeholder="$t('navbar.search_files_short')"
       :prepend-inner-icon="mdiMagnify")
   v-card.group-files-panel(outlined)
     div(v-if="loader.status == 403")
@@ -154,7 +154,7 @@ div
             td
               v-layout(align-center)
                 common-icon.mr-2(:name="'mdi-'+ item.icon")
-                a(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
+                a.text-on-surface(:href="item.downloadUrl || item.url") {{item.filename || item.title }}
             td
               user-avatar(:user="item.author()")
             td

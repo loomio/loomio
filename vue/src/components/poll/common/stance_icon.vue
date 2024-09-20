@@ -35,17 +35,10 @@ export default {
 <style lang="sass">
 .poll-common-stance-icon
   position: relative
-
-.poll-common-stance-icon
   border-radius: 100%
+  background-color: #fff
 
-.v-theme--dark
+.v-theme--dark, .v-theme--darkGold
   .poll-common-stance-icon
     background-color: #000
-
-.theme--light
-  .poll-common-stance-icon
-    background-color: #fff
-
-
 </style>

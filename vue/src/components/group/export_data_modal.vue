@@ -64,8 +64,8 @@ v-card(:title="$t('export_data_modal.title')")
     v-btn(@click="openConfirmModalForJson" variant="tonal")
       span(v-t="'group_page.options.export_data_as_json'")
     v-divider.my-6
-    v-alert
-      a(target="_blank" href="https://help.loomio.com/en/user_manual/groups/data_export") Read more
+    v-alert(variant="tonal")
+      a.text-decoration-underline(target="_blank" href="https://help.loomio.com/en/user_manual/groups/data_export") Read more
       space
       span about exporting your data on help.loomio.com
 </template>

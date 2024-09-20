@@ -254,10 +254,10 @@ export default
 
 <template lang="pug">
 div.discussions-panel(v-if="group")
-  .d-flex.align-center.flex-wrap.py-3
+  .d-flex.align-center.flex-wrap.pt-4.pb-2
     v-menu
       template(v-slot:activator="{ props }")
-        v-btn.mr-2.text-transform-none.discussions-panel__filters(v-bind="props" variant="text")
+        v-btn.discussions-panel__filters.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           common-icon(name="mdi-menu-down")
       v-list
@@ -272,23 +272,19 @@ div.discussions-panel(v-if="group")
 
     v-menu(offset-y)
       template(v-slot:activator="{ props }")
-        v-btn.mr-2.text-transform-none(v-bind="props" variant="text")
+        v-btn.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.tags'")
           common-icon(name="mdi-menu-down")
-      v-sheet.pa-1
+      v-sheet.pa-1.max-width-800
         tags-display(:tags="group.tagNames()" :group="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId")
-    v-text-field.mr-2.flex-grow-1(
-      v-model="dummyQuery"
-      clearable hide-details
-      density="compact"
-      variant="solo"
+    v-btn.text-transform-none.text-medium-emphasis(
+      variant="tonal"
       @click="openSearchModal"
-      @change="openSearchModal"
-      @keyup.enter="openSearchModal"
-      @click:append="openSearchModal"
-      :placeholder="$t('navbar.search_threads', {name: group.name})"
-      :prepend-inner-icon="mdiMagnify")
+    )
+      common-icon.mr-1(name="mdiMagnify")
+      span Search
+    v-spacer
     v-btn.discussions-panel__new-thread-button(
       variant="tonal"
       v-if='canStartThread'
@@ -297,11 +293,24 @@ div.discussions-panel(v-if="group")
     )
       span(v-t="'navbar.start_thread'")
 
+    //- v-text-field.mr-2.flex-grow-1(
+      v-model="dummyQuery"
+      clearable hide-details
+      density="compact"
+      elevation="0"
+      variant="solo-filled"
+      @click="openSearchModal"
+      @change="openSearchModal"
+      @keyup.enter="openSearchModal"
+      @click:append="openSearchModal"
+      :placeholder="$t('navbar.search_threads', {name: group.name})"
+      :prepend-inner-icon="mdiMagnify")
+
   v-alert(color="info" text outlined v-if="isMember && noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
     p.px-4(v-t="'discussions_panel.lets_start_a_thread'")
 
-  v-card.discussions-panel(v-else outlined)
+  v-card.discussions-panel(v-else outlined elevation=1)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)

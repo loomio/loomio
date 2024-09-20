@@ -30,9 +30,9 @@ export default
 };
 </script>
 <template lang="pug">
-v-alert(
+v-alert.my-4(
   variant="tonal"
-  color="primary"
+  color="info"
   density="compact"
   v-if="hasSubscription && isLoggedIn && isMember && (isTrial || isExpired)"
 )
@@ -46,8 +46,8 @@ v-alert(
       span(v-html="$t('current_plan_button.subscription_ended')")
     v-spacer
     v-btn(
-      color="primary"
-      variant="tonal"
+      color="info"
+      variant="elevated"
       :href="'/upgrade/'+group.id"
       target="_blank"
       :title="$t('current_plan_button.tooltip')"

@@ -365,9 +365,17 @@ export default
 
 <template lang="pug">
 div
-  .editor(v-if="editor")
-    editor-content.html-editor__textarea(ref="editor", :editor='editor').lmo-markdown-wrapper
-    v-sheet.menubar
+  .v-input.v-input--density-default.editor(v-if="editor")
+    .v-input-control
+      .v-field.v-field--active.v-field--variant-filled
+        .v-field__overlay
+
+        .v-field__field(style="display: block")
+          label.v-label.v-field-label.v-field-label--floating(v-if="label" aria-hidden="true")
+            span {{label}}
+          editor-content.html-editor__textarea.mx-4(:class="{'mt-6': label, 'mt-2': !label}" ref="editor" :editor='editor').lmo-markdown-wrapper
+        .v-field__outline
+    .menubar
       div
         .d-flex.align-center(v-if="editor.isActive('table')")
           v-btn(icon size="x-small" variant="text" @click="editor.chain().deleteTable().focus().run()" :title="$t('formatting.remove_table')")
@@ -548,7 +556,7 @@ img.collaboration-cursor__avatar
   word-break: normal
   z-index: 100
 
-.theme--dark
+.v-theme--dark, .v-theme--darkGold
   .collaboration-cursor__caret
     border-left: 1px solid #ddd
 
@@ -605,7 +613,7 @@ img.collaboration-cursor__avatar
   pointer-events: none
   height: 0
 
-.v-theme--dark
+.v-theme--dark, .v-theme--darkGold
   .ProseMirror p.is-editor-empty:first-child::before
     color: rgba(255,255,255,0.333)
 
@@ -613,7 +621,7 @@ img.collaboration-cursor__avatar
   outline: none
   min-height: 64px
 
-.v-theme--dark
+.v-theme--dark, .v-theme--darkGold
   progress
     background-color: #333
     border-color: #444
@@ -659,16 +667,11 @@ progress::-moz-progress-bar
 
 .html-editor__textarea .ProseMirror
   cursor: text
-  border-bottom: 1px solid #999
   padding: 4px 0px
   margin: 4px 0px
   outline: none
   overflow-y: scroll
   overflow: visible
-
-.html-editor__textarea .ProseMirror:focus
-  border-bottom: 1px solid rgb(var(--v-theme-primary))
-
 
 // .lmo-textarea p.is-empty:first-child::before
 //   content: attr(data-empty-text)

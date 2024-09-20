@@ -91,7 +91,7 @@ export default {
 <template lang="pug">
 .strand-new-discussion.context-panel#context(v-intersect.once="{handler: viewed}")
   .d-flex.ml-n3.text-body-2
-    v-breadcrumbs.context-panel__breadcrumbs(color="primary" :items="groups")
+    v-breadcrumbs.context-panel__breadcrumbs(color="anchor" :items="groups")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
     tags-display(:tags="discussion.tags" :group="discussion.group()")

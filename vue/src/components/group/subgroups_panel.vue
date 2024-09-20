@@ -102,8 +102,8 @@ export default
 </script>
 <template lang="pug">
 div(v-if="group")
-  .d-flex.align-center.my-2.flex-wrap
-    v-text-field.mr-2(clearable hide-details variant="solo" density="compact" :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" :prepend-inner-icon="mdiMagnify")
+  .d-flex.align-center.py-4.flex-wrap
+    v-text-field.mr-2(clearable hide-details variant="solo" density="compact" :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_subgroups_short', {name: group.name})" :prepend-inner-icon="mdiMagnify")
     v-btn.subgroups-card__start(
       color="primary"
       variant="tonal"
@@ -118,13 +118,7 @@ div(v-if="group")
     p(v-if="upgradeRequired" v-html="$t('subgroups_panel.upgrade', {url: upgradeUrl})")
 
   v-card.group-subgroups-panel(outlined v-if="subgroups.length")
-    v-list(avatar lines="three")
-      v-list-item.subgroups-card__list-item(v-if="group.subgroups().length > 0" :to="urlFor(group)+'?subgroups=none'")
-        //- v-list-item-avatar.subgroups-card__list-item-logo
-        template(v-slot:prepend)
-          group-avatar(:group="group" :size="28")
-        v-list-item-title(v-t="{path: 'subgroups_panel.group_without_subgroups', args: {name: group.name}}")
-        v-list-item-subtitle {{ stripDescription(group.description) }}
+    v-list(avatar lines="two")
       v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
         //- v-list-item-avatar.subgroups-card__list-item-logo
         template(v-slot:prepend)

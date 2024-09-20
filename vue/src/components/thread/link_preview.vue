@@ -72,7 +72,7 @@ div
         v-textarea(filled v-model="preview.description")
 
   template(v-else)
-    v-card.link-preview.link-preview-link.mt-3(outlined style="position: relative")
+    v-card.link-preview.link-preview-link.mt-3(elevation=0 style="position: relative")
       template(v-if="remove")
         div(style="position: relative; float: right")
           v-btn.link-preview__btn.mr-1(style="position: relative" color="primary"

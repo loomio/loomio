@@ -319,7 +319,7 @@ v-card.group-form(:title="$t(cardTitle)")
   v-card-actions
     help-link(path="en/user_manual/groups/settings")
     v-spacer
-    v-btn.group-form__submit-button(color="primary" @click='submit()')
+    v-btn.group-form__submit-button(color="primary" variant="tonal" @click='submit()')
       span(v-if='group.isNew() && group.isParent()' v-t="'group_form.submit_start_group'")
       span(v-if='group.isNew() && !group.isParent()' v-t="'group_form.submit_start_subgroup'")
       span(v-if='!group.isNew()' v-t="'common.action.update_settings'")

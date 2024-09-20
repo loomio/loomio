@@ -20,10 +20,11 @@ export default {
   created() {
     const theme = useTheme();
 
-    if (Session.user().experiences.darkMode != null) {
-      theme.global.name.value = Session.user().experiences['darkMode'] ? 'dark' : 'light';
+
+    if (Session.user().experiences.theme != null) {
+      theme.global.name.value = Session.user().experiences['theme']
     } else {
-      theme.global.name.value = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      theme.global.name.value = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'lightGold';
     }
   },
 
@@ -99,6 +100,9 @@ v-app.app-is-booted
 @import '@/css/thumbicons.css'
 @import '@/css/print.scss'
 
+.text-on-surface
+  color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity))
+
 .v-application .text-body-3
   font-size: 0.9375rem !important
   letter-spacing: normal !important
@@ -118,12 +122,6 @@ h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
 a
   text-decoration: none
   color: rgb(var(--v-theme-anchor))
-
-.lmo-form-label
-  font-size: 14px
-
-.theme--light .lmo-form-label
-  color: rgba(0, 0, 0, 0.6)
 
 .lmo-relative
   position: relative

@@ -190,13 +190,13 @@ export default
 .members-panel
   loading(v-if="!group")
   div(v-if="group")
-    v-alert.my-2(v-if="showAdminWarning" color="primary" type="warning")
+    v-alert.my-4(v-if="showAdminWarning" color="info" type="info" variant="tonal")
       span(v-t="'memberships_page.only_one_admin'")
 
-    .d-flex.align-center.flex-wrap.py-2
+    .d-flex.align-center.flex-wrap.pt-4.pb-2
       v-menu
         template(v-slot:activator="{ props }")
-          v-btn.members-panel__filters.mr-2.text-capitalize(v-bind="props" variant="text")
+          v-btn.members-panel__filters.mr-2.text-capitalize.text-medium-emphasis(v-bind="props" variant="tonal")
             span(v-if="$route.query.filter == 'admin'" v-t="'members_panel.order_by_admin_desc'")
             span(v-if="$route.query.filter == 'pending'" v-t="'members_panel.invitations'")
             span(v-if="$route.query.filter == 'accepted'" v-t="'members_panel.accepted'")
@@ -217,7 +217,7 @@ export default
         variant="solo"
         density="compact"
         @update:model-value="onQueryInput"
-        :placeholder="$t('navbar.search_members', {name: group.name})"
+        :placeholder="$t('navbar.search_members_short')"
         :prepend-inner-icon="mdiMagnify")
       v-btn.membership-card__invite.mr-2(
         color="primary"
@@ -227,11 +227,10 @@ export default
       )
         span(v-t="'common.action.invite'")
       shareable-link-modal(v-if='canAddMembers' :group="group")
-      v-btn.group-page__requests-tab(
+      v-btn.group-page__requests-tab.text-medium-emphasis(
         v-if='group.isVisibleToPublic && canAddMembers'
         :to="urlFor(group, 'members/requests')"
-        color="primary"
-        variant="tonal"
+        variant="text"
       )
         span(v-t="'members_panel.requests'")
 

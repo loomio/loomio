@@ -126,13 +126,13 @@ v-main
       v-if="group"
       :model="group"
       column="description")
+    link-previews(:model="group")
     action-dock(
       :model='group'
       :actions='dockActions'
       menu-icon='mdi-cog'
       :menu-actions='menuActions')
     join-group-button(:group='group')
-    link-previews(:model="group")
     document-list(:model='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4

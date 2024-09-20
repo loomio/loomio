@@ -158,10 +158,10 @@ export default
 .polls-panel
   loading(v-if="!group")
   div(v-if="group")
-    .d-flex.align-center.flex-wrap.py-2
+    .d-flex.align-center.flex-wrap.pt-4.pb-2
       v-menu
         template(v-slot:activator="{ props }")
-          v-btn.mr-2.text-transform-none(v-bind="props" variant="text")
+          v-btn.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
             span(v-if="$route.query.status == 'active'" v-t="'polls_panel.open'")
             span(v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'")
             span(v-if="$route.query.status == 'vote'" v-t="'polls_panel.need_vote'")
@@ -174,7 +174,7 @@ export default
           v-list-item(:to="mergeQuery({status: 'vote'})" v-t="'polls_panel.need_vote'")
       v-menu
         template(v-slot:activator="{ props }")
-          v-btn.mr-2.text-transform-none(v-bind="props" variant="text")
+          v-btn.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
             span(v-if="$route.query.poll_type" v-t="'poll_types.'+$route.query.poll_type")
             span(v-if="!$route.query.poll_type" v-t="'polls_panel.any_type'")
             common-icon(name="mdi-menu-down")
@@ -187,18 +187,13 @@ export default
             :to="mergeQuery({poll_type: pollType})"
           )
             v-list-item-title(v-t="'poll_types.'+pollType")
-      v-text-field.mr-2(
-        clearable
-        hide-details
-        variant="solo"
-        density="compact"
-        v-model="dummyQuery"
+      v-btn.text-transform-none.text-medium-emphasis(
+        variant="tonal"
         @click="openSearchModal"
-        @change="openSearchModal"
-        @keyup.enter="openSearchModal"
-        @click:append="openSearchModal"
-        :placeholder="$t('navbar.search_polls', {name: group.name})"
-        :prepend-inner-icon="mdiMagnify")
+      )
+        common-icon.mr-1(name="mdiMagnify")
+        span Search
+      v-spacer
       v-btn.polls-panel__new-poll-button(
         color='primary'
         variant="tonal"

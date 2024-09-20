@@ -11,14 +11,12 @@ import PlausibleService from '@/shared/services/plausible_service';
 try {
   document.querySelectorAll("link[rel=stylesheet][href*=themeauto]")[0].remove();
 } catch {
-  
+  // noop
 }
 
 import { I18n } from './i18n'
 import vuetify from './plugins/vuetify'
 import router from './routes'
-
-const useDarkMode = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
 
 import boot from '@/shared/helpers/boot';
 import Session from '@/shared/services/session';

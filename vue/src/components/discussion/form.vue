@@ -240,7 +240,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
     v-btn(@click="discardDraft")
       span(v-t="'common.reset'")
     v-btn.discussion-form__submit(
-      variant="elevated"
+      variant="tonal"
       color="primary"
       @click="submit()"
       :disabled="submitIsDisabled"

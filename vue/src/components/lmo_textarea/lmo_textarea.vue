@@ -28,13 +28,13 @@ export default {
 
 <template lang="pug">
 div
-  label.text-caption.v-label.v-label--active(v-if="label" style="color: var(--text-secondary)" aria-hidden="true") {{label}}
-  .lmo-textarea.pb-1
+  .lmo-textarea
     collab-editor(
       v-if="format == 'html'"
       :focus-id="focusId"
       :model='model'
       :field='field'
+      :label='label'
       :placeholder="placeholder"
       :maxLength="maxLength"
       :autofocus="autofocus"
@@ -48,6 +48,7 @@ div
       :focus-id="focusId"
       :model='model'
       :field='field'
+      :label='label'
       :placeholder="placeholder"
       :maxLength="maxLength"
       :autofocus="autofocus"

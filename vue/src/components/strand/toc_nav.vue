@@ -214,14 +214,14 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 .strand-nav__entry:hover
   border-color: var(--v-primary-darken1)!important
 
-.v-theme--dark
+.strand-nav__entry:hover, .strand-nav__entry--visible
+  background-color: #f8f8f8
+  
+.v-theme--dark, .v-theme--darkGold
   .strand-nav__entry
     border-left: 2px solid #999
   .strand-nav__entry:hover, .strand-nav__entry--visible
     background-color: #222
 
-.theme--light
-  .strand-nav__entry:hover, .strand-nav__entry--visible
-    background-color: #f8f8f8
 
 </style>
