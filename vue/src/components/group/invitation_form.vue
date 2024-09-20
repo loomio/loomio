@@ -144,11 +144,11 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       :hide-count="tooManyInvitations"
       @new-query="newQuery"
       @new-recipients="newRecipients")
-    div.text--secondary(v-if="subscription.max_members")
+    div.text-medium-emphasis(v-if="subscription.max_members")
       p.text-caption(v-if="!tooManyInvitations" v-html="$t('announcement.form.invitations_remaining', {count: invitationsRemaining, upgradeUrl: upgradeUrl })")
       p.text-caption(v-if="tooManyInvitations" v-html="$t('announcement.form.too_many_invitations', {upgradeUrl: upgradeUrl})")
     div.mb-4(v-if="invitableGroups.length > 1")
-      label.text--secondary.text-body-2(v-t="'announcement.select_groups'")
+      label.text-medium-emphasis.text-body-2(v-t="'announcement.select_groups'")
       div(v-for="group in invitableGroups", :key="group.id")
         v-checkbox.invitation-form__select-groups(
           :class="{'ml-4': !group.isParent()}"

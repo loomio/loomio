@@ -348,11 +348,11 @@ export default {
                 @click="removeOption(option)"
                 :title="$t('common.action.delete')"
               )
-                common-icon.text--secondary(name="mdi-delete")
+                common-icon(name="mdi-delete")
               div.ml-0(v-if="poll.pollType != 'meeting'")
                 v-btn(icon variant="text" @click="editOption(option)", :title="$t('common.action.edit')")
-                  common-icon.text--secondary(name="mdi-pencil")
-              common-icon.text--secondary(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
+                  common-icon(name="mdi-pencil")
+              common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
 
     template(v-if="optionFormat == 'i18n'")
       p This poll cannot have new options added. (contact support if you see this message)
@@ -384,11 +384,11 @@ export default {
         v-model="poll.meetingDuration"
         type="number"
       )
-      span.pl-2.text--secondary(v-t="'common.minutes'")
-      span.pl-1.text--secondary(v-if="formattedDuration") ({{formattedDuration}})
+      span.pl-2.text-medium-emphasis(v-t="'common.minutes'")
+      span.pl-1.text-medium-emphasis(v-if="formattedDuration") ({{formattedDuration}})
 
   template(v-if="poll.pollType == 'count'")
-    p.text--secondary(v-t="'poll_count_form.agree_target_helptext'")
+    p.text-medium-emphasis(v-t="'poll_count_form.agree_target_helptext'")
     .d-flex
       v-text-field.poll-common-form__agree-target(
         v-model="poll.agreeTarget"
@@ -445,7 +445,7 @@ export default {
 
   poll-common-closing-at-field(:poll="poll")
   //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.reminder'")
-  //- p.text--secondary(v-t="'poll_common_form.reminder_helptext'")
+  //- p.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
   p(v-if="poll.closingAt && closesSoon" 
     v-t="{path: 'poll_common_settings.notify_on_closing_soon.voting_closes_too_soon', args: {pollType: poll.translatedPollType()}}")
 
@@ -483,7 +483,7 @@ export default {
 
   template(v-if="allowAnonymous")
     //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.anonymous_voting'")
-    //- p.text--secondary(v-t="'poll_common_form.anonymous_voting_description'")
+    //- p.text-medium-emphasis(v-t="'poll_common_form.anonymous_voting_description'")
     v-checkbox.poll-common-checkbox-option.poll-settings-anonymous(
       :disabled="!poll.isNew()"
       v-model="poll.anonymous"
@@ -492,14 +492,14 @@ export default {
 
   template(v-if="poll.config().can_shuffle_options")
     //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_settings.shuffle_options.shuffle_options'")
-    //- p.text--secondary(v-t="'poll_common_settings.shuffle_options.helptext'")
+    //- p.text-medium-emphasis(v-t="'poll_common_settings.shuffle_options.helptext'")
     v-checkbox.poll-common-checkbox-option.poll-settings-shuffle-options.mt-4.pt-2(
       color="primary"
       v-model="poll.shuffleOptions"
       :label="$t('poll_common_settings.shuffle_options.title')")
 
   //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.vote_reason'")
-  //- p.text--secondary(v-t="'poll_common_form.vote_reason_description'")
+  //- p.text-medium-emphasis(v-t="'poll_common_form.vote_reason_description'")
   template(v-if="!poll.config().hide_reason_required")
     v-select(
       :label="$t('poll_common_form.stance_reason_required_label')"
@@ -515,7 +515,7 @@ export default {
     :placeholder="$t('poll_common.reason_placeholder')")
 
   template(v-if="poll.stanceReasonRequired != 'disabled'")
-    //- p.text--secondary(v-t="'poll_common_settings.short_reason_can_be_helpful'")
+    //- p.text-medium-emphasis(v-t="'poll_common_settings.short_reason_can_be_helpful'")
     v-checkbox.poll-common-checkbox-option(
       hide-details
       v-model="poll.limitReasonLength"
@@ -524,7 +524,7 @@ export default {
 
   template(v-if="allowAnonymous")
     //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_card.hide_results'")
-    //- p.text--secondary(v-t="'poll_common_form.hide_results_description'")
+    //- p.text-medium-emphasis(v-t="'poll_common_form.hide_results_description'")
     v-select.poll-common-settings__hide-results.mt-6.pt-2(
       :label="$t('poll_common_card.hide_results')"
       :items="hideResultsItems"
