@@ -537,7 +537,7 @@ export default {
   v-card-actions.poll-common-form-actions
     help-link(path='en/user_manual/polls/intro_to_decisions')
     v-spacer
-    v-btn(
+    v-btn.text-medium-emphasis(
       variant="text"
       @click="discardDraft"
     )

@@ -82,7 +82,7 @@ export default {
 <template lang="pug">
 section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm-4': !discussion.newestFirst}")
   template(v-if="discussion.closedAt")
-    v-alert(type="info" text outlined)
+    v-alert(type="info" variant="tonal")
       span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: discussion.closer().name} }")
       mid-dot
       time-ago(:date='discussion.closedAt')
