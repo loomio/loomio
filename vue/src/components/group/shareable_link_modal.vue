@@ -57,7 +57,7 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model='dialog' max-width="600px")
+v-dialog( max-width="600px")
   template(v-slot:activator="{ attrs }")
     v-btn.mr-2(v-bind="attrs" color="primary" variant="tonal")
       span(v-t="'members_panel.sharable_link'")
