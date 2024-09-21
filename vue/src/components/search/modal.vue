@@ -156,7 +156,7 @@ export default {
       this.fetch();
     },
 
-    groupId(groupId) { 
+    groupId(groupId) {
       if (groupId) {
         const group = Records.groups.find(groupId);
         this.updateTagItems(group);
@@ -173,46 +173,47 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.search-modal
-  .d-flex.px-4.pt-4.align-center
-    v-text-field(
-      variant="solo-filled"
-      :loading="loading"
-      autofocus
-      :append-icon="mdiMagnify"
-      :append-outer-icon="mdiClose"
-      @click:append-outer="closeModal"
-      @click:append="fetch"
-      v-model="query"
-      :placeholder="$t('common.action.search')"
-      @keydown.enter.prevent="fetch"
-      hide-details
-      )
-  .d-flex.px-4.align-center.pt-4
-    v-select.mr-2(variant="solo-filled" density="compact" v-model="orgId" :items="orgItems")
-    v-select.mr-2(variant="solo-filled" density="compact" v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId")
-    v-select.mr-2(variant="solo-filled" density="compact" v-if="tagItems.length" v-model="tag" :items="tagItems")
-    v-select.mr-2(variant="solo-filled" density="compact" v-model="type" :items="typeItems")
-    v-select(variant="solo-filled" density="compact" v-model="order" :items="orderItems")
-  v-list(lines="two")
-    v-list-item.poll-common-preview(v-if="!loading && resultsQuery && results.length == 0")
-      v-list-item-title(v-t="{path: 'discussions_panel.no_results_found', args: {search: resultsQuery}}")
-    v-list-item.poll-common-preview(v-for="result in results" :key="result.id" :to="urlForResult(result)")
-      template(v-slot:prepend)
-        poll-common-icon-panel.mr-2(v-if="['Outcome', 'Poll'].includes(result.searchable_type)" :poll='pollById(result.poll_id)' show-my-stance)
-        user-avatar.mr-2(v-else :user="userById(result.author_id)")
-      v-list-item-title.d-flex
-        span.text-truncate {{ result.poll_title || result.discussion_title }}
-        tags-display.ml-1(:tags="result.tags" size="x-small" :group="groupById(result.group_id)")
-        v-spacer
-        time-ago.text-medium-emphasis(style="font-size: 0.875rem;" :date="result.authored_at")
-      v-list-item-subtitle.text--primary(v-html="result.highlight")
-      v-list-item-subtitle
-        span
-          span {{result.searchable_type}}
-          mid-dot
-          span {{result.author_name}}
-          mid-dot
-          span {{result.group_name || $t('discussion.direct_thread')}}
+v-card.search-modal(:title="$t('common.action.search')")
+  template(v-slot:append)
+    dismiss-modal-button
+  v-card-text
+    .d-flex.align-center
+      v-text-field(
+        :prepend-inner-icon="mdiMagnify"
+        color="info"
+        variant="solo-filled"
+        :loading="loading"
+        autofocus
+        v-model="query"
+        @keydown.enter.prevent="fetch"
+        hide-details
+        )
+
+    .d-flex.align-center.pt-4
+      v-select.mr-2(variant="solo-filled" density="compact" v-model="orgId" :items="orgItems")
+      v-select.mr-2(variant="solo-filled" density="compact" v-if="groupItems.length > 2" v-model="groupId" :items="groupItems" :disabled="!orgId")
+      v-select.mr-2(variant="solo-filled" density="compact" v-if="tagItems.length" v-model="tag" :items="tagItems")
+      v-select.mr-2(variant="solo-filled" density="compact" v-model="type" :items="typeItems")
+      v-select(variant="solo-filled" density="compact" v-model="order" :items="orderItems")
+    v-list(lines="two")
+      v-list-item.poll-common-preview(v-if="!loading && resultsQuery && results.length == 0")
+        v-list-item-title(v-t="{path: 'discussions_panel.no_results_found', args: {search: resultsQuery}}")
+      v-list-item.poll-common-preview(v-for="result in results" :key="result.id" :to="urlForResult(result)")
+        template(v-slot:prepend)
+          poll-common-icon-panel.mr-2(v-if="['Outcome', 'Poll'].includes(result.searchable_type)" :poll='pollById(result.poll_id)' show-my-stance)
+          user-avatar.mr-2(v-else :user="userById(result.author_id)")
+        v-list-item-title.d-flex
+          span.text-truncate {{ result.poll_title || result.discussion_title }}
+          tags-display.ml-1(:tags="result.tags" size="x-small" :group="groupById(result.group_id)")
+          v-spacer
+          time-ago.text-medium-emphasis(style="font-size: 0.875rem;" :date="result.authored_at")
+        v-list-item-subtitle.text--primary(v-html="result.highlight")
+        v-list-item-subtitle
+          span
+            span {{result.searchable_type}}
+            mid-dot
+            span {{result.author_name}}
+            mid-dot
+            span {{result.group_name || $t('discussion.direct_thread')}}
 
 </template>
