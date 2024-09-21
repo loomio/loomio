@@ -350,7 +350,7 @@ export default {
               )
                 common-icon(name="mdi-delete")
               div.ml-0(v-if="poll.pollType != 'meeting'")
-                v-btn(icon variant="text" @click="editOption(option)", :title="$t('common.action.edit')")
+                v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
                   common-icon(name="mdi-pencil")
               common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
 
