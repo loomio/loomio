@@ -208,9 +208,6 @@ export default {
   width: 32px
   // margin-right: 8px
 
-.strand-item__gutter:hover
-  .strand-item__stem
-    background-color: #999
 
 .strand-item__main
   flex-grow: 1
@@ -228,8 +225,21 @@ export default {
   width: 0
   height: 100%
   padding: 0 0.5px
-  background-color: #dadada
+  background-color: #dedede
   margin: 0px 16px
+
+.strand-item__gutter:hover
+  .strand-item__stem
+    background-color: #aaa
+
+.v-theme--dark, .v-theme--darkGold
+  .strand-item__stem
+    background-color: #444
+
+  .strand-item__gutter:hover
+    .strand-item__stem
+      background-color: #777
+
 
 .strand-item__stem--broken
   background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%)
