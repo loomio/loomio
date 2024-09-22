@@ -61,7 +61,7 @@ export default
 </script>
 
 <template lang="pug">
-v-sheet
+v-sheet(elevation=1)
   poll-common-card-header(:poll='poll')
   div(v-if="poll.discardedAt")
     v-card-text
@@ -69,7 +69,6 @@ v-sheet
   div.px-2.pb-4.px-sm-4(v-else)
     poll-template-banner(:poll="poll")
     h1.poll-common-card__title.text-h4.py-2(tabindex="-1" v-intersect="{handler: titleVisible}")
-      poll-common-type-icon.mr-2(:poll="poll")
       span(v-if='!poll.translation.title') {{poll.title}}
       translation(:model='poll' field='title' v-if="poll.translation.title")
     poll-common-set-outcome-panel(:poll='poll' v-if="!outcome")
