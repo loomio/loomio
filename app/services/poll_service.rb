@@ -45,7 +45,7 @@ class PollService
     poll.update_counts!
     GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
 
-    GenericWorker.perform_async('PollService', 'group_members_added', poll.group_id)
+    GenericWorker.perform_async('PollService', 'group_members_added', poll.group_id) if poll.group_id
 
     users = UserInviter.where_or_create!(
       actor: actor,
