@@ -96,6 +96,8 @@ class Stance < ApplicationRecord
 
   validate :valid_minimum_stance_choices
   validate :valid_maximum_stance_choices
+  validate :valid_max_score
+  validate :valid_min_score
   validate :valid_dots_per_person
   validate :valid_reason_length
   validate :valid_reason_required
