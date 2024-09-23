@@ -13,6 +13,7 @@ export default {
 
   data() {
     return {
+      loading: false,
       pollOptions: [],
       stanceChoices: []
     };
@@ -36,6 +37,7 @@ export default {
   },
   methods: {
     submit() {
+      this.loading = true
       this.stance.stanceChoicesAttributes = map(this.stanceChoices, choice => {
         return {
           poll_option_id: choice.option.id,
@@ -46,7 +48,11 @@ export default {
       this.stance.save().then(() => {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
         EventBus.$emit("closeModal");
-      }).catch(() => true);
+      }).catch((err) => {
+        Flash.error('poll_common_form.please_review_the_form');
+        console.log(err);
+
+      }).finally(() => this.loading = false);
     }
   },
 
@@ -70,13 +76,15 @@ form.poll-score-vote-form(@submit.prevent='submit()')
         :height="4"
         :min="poll.minScore"
         :max="poll.maxScore"
+        :step="1"
       )
       template(v-slot:append)
         input.vote-form-number-input(
           :style="{'background-color': choice.option.color}"
           type="number"
+          :min="poll.minScore"
+          :max="poll.maxScore"
           v-model="choice.score")
-
 
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
@@ -84,7 +92,7 @@ form.poll-score-vote-form(@submit.prevent='submit()')
     v-btn.poll-common-vote-form__submit(
       block
       :disabled="!poll.isVotable()"
-      :loading="stance.processing"
+      :loading="loading"
       variant="elevated"
       color="primary"
       type='submit'

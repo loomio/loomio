@@ -15,6 +15,7 @@ export default {
     return {
       selectedOptionIds: compact((this.stance.pollOptionIds().length && this.stance.pollOptionIds()) || [parseInt(this.$route.query.poll_option_id)]),
       selectedOptionId: this.stance.pollOptionIds()[0] || parseInt(this.$route.query.poll_option_id),
+      loading: false,
       options: []
     };
   },
@@ -68,6 +69,7 @@ export default {
 
   methods: {
     submit() {
+      this.loading = true;
       if (this.singleChoice) {
         this.stance.stanceChoicesAttributes = [{poll_option_id: this.selectedOptionId}];
       } else {
@@ -79,7 +81,11 @@ export default {
       this.stance.save().then(() => {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
         EventBus.$emit('closeModal');
-      }).catch(() => true);
+      }).catch((err) => {
+        Flash.error('poll_common_form.please_review_the_form');
+        console.log(err);
+
+      }).finally(() => this.loading = false);
     },
 
     isSelected(option) {
@@ -172,7 +178,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     v-btn.poll-common-vote-form__submit(
       @click='submit()'
       :disabled='!optionCountValid || !poll.isVotable()'
-      :loading="stance.processing"
+      :loading="loading"
       color="primary"
       variant="elevated"
       block

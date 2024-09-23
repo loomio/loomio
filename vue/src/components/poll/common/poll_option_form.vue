@@ -90,8 +90,7 @@ v-card.poll-common-option-form(:title="$t(cardTitle)")
   v-divider
   v-card-actions
     v-btn.poll-option-form__done-btn(
-      block
-      color="primary" variant="text"
+      color="primary" variant="elevated"
       @click="submit"
       :disabled="(hasOptionIcon && !pollOption.icon) || !pollOption.name"
     )

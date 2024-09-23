@@ -44,6 +44,7 @@ export default {
 
   data() {
     return {
+      loading: false,
       newOption: null,
       lastPollType: this.poll.pollType,
       pollOptions: this.poll.pollOptionsAttributes || this.poll.clonePollOptions(),
@@ -180,6 +181,7 @@ export default {
     },
 
     submit() {
+      this.loading = true;
       const actionName = this.poll.isNew() ? 'created' : 'updated';
       this.poll.setErrors({});
       this.setPollOptionPriority();
@@ -203,10 +205,10 @@ export default {
             }
           });
         }
-      }).catch(error => {
+      }).catch(err=> {
         Flash.warning('poll_common_form.please_review_the_form');
-        console.error(error);
-      });
+        console.error(err);
+      }).finally(() => this.loading = false);
     }
   },
 
@@ -546,7 +548,7 @@ export default {
     v-btn.poll-common-form__submit(
       color="primary"
       @click='submit()'
-      :loading="poll.processing"
+      :loading="loading"
       :disabled="!poll.title || (hasOptions && pollOptions.length < minOptions)"
       variant="elevated"
     )

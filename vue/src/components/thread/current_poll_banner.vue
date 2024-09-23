@@ -49,7 +49,8 @@ v-card.current-poll-banner.mb-4.py-2.px-4.lmo-no-print(:style="styles" v-if="eve
   .current-poll-banner__title.mr-4
     span {{poll.title}}
   v-spacer
-  v-btn(color="primary" :to="urlFor(event)" v-t="'common.view'")
+  v-btn(variant="tonal" :to="urlFor(event)")
+    span(v-t="'common.view'")
 </template>
 
 <style lang="sass">

@@ -14,7 +14,8 @@ export default {
   data() {
     return {
       pollOptions: [],
-      stanceChoices: []
+      stanceChoices: [],
+      loading: false
     };
   },
 
@@ -37,6 +38,7 @@ export default {
 
   methods: {
     submit() {
+      this.loading = true;
       if (sum(map(this.stanceChoices, 'score')) > 0) {
         this.stance.stanceChoicesAttributes = map(this.stanceChoices, choice => {
           return {
@@ -49,7 +51,11 @@ export default {
       this.stance.save().then(() => {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
         EventBus.$emit("closeModal");
-      }).catch(() => true);
+      }).catch((err) => {
+        Flash.error('poll_common_form.please_review_the_form');
+        console.log(err);
+
+      }).finally(() => this.loading = false);
     },
 
     rulesForChoice(choice) {
@@ -126,7 +132,7 @@ div
           :disabled="!poll.isVotable()"
           v-model='choice.score'
           :color="choice.option.color"
-          step="1"
+          :step="1"
           track-color="grey"
           :height="4"
           :min="0"
@@ -140,7 +146,7 @@ div
         variant="elevated"
         @click="submit()"
         :disabled="(dotsRemaining < 0) || !poll.isVotable()"
-        :loading="stance.processing"
+        :loading="loading"
         color="primary"
       )
         span(v-t="stance.castAt? 'poll_common.update_vote' : 'poll_common.submit_vote'")
