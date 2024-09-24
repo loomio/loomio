@@ -38,6 +38,6 @@ v-card.poll-common-reopen-modal(:title="$t('poll_common_reopen_form.title', {pol
     poll-common-closing-at-field(:poll='poll')
   v-card-actions
     v-spacer
-    v-btn.poll-common-reopen-form__submit(color="primary" @click='submit' :loading="poll.processing")
+    v-btn.poll-common-reopen-form__submit(variant="elevated" color="primary" @click='submit' :loading="poll.processing")
       span(v-t="'common.action.reopen'")
 </template>

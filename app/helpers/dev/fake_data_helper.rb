@@ -204,7 +204,7 @@ module Dev::FakeDataHelper
       options[:minimum_stance_choices] = 3
     when 'score'
       options[:max_score] = 9
-      options[:min_score] = -9
+      options[:min_score] = 0
     end
 
     Poll.new(options)

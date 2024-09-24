@@ -109,7 +109,8 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
 
-    page.click('.poll-score-vote-form__score-slider .v-slider')
+    // page.click('.poll-score-vote-form__score-slider .v-slider')
+    page.fillIn('.vote-form-number-input', 1)
     page.fillIn('.poll-common-vote-form__reason .lmo-textarea div[contenteditable=true]', 'A reason')
     page.click('.poll-common-vote-form__submit', 1000)
 
@@ -232,8 +233,8 @@ module.exports = {
     page.click('.decision-tools-card__poll-type--proposal')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-common-form__advanced-btn')
-    page.click('.poll-settings-anonymous')
+    // page.click('.poll-common-form__advanced-btn')
+    page.click('.poll-settings-anonymous input')
 
     page.click('.poll-common-form__submit')
     // page.expectElement('.poll-members-form__submit')
@@ -256,8 +257,8 @@ module.exports = {
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
     // page.click('.poll-settings-hide-results-until-closed')
 
-    page.click('.poll-common-form__advanced-btn')
-    page.click('.poll-common-settings__hide-results')
+    // page.click('.poll-common-form__advanced-btn')
+    page.click('.poll-common-settings__hide-results input')
     page.click('.v-select-list .v-list-item:last-child')
 
     // change dropdown here
@@ -335,7 +336,7 @@ module.exports = {
     page.click('.decision-tools-card__poll-type--proposal')
     page.fillIn('.poll-common-form-fields__title input', 'A new proposal')
     page.fillIn('.poll-common-form-fields__details .lmo-textarea div[contenteditable=true]', 'Some details')
-    page.click('.poll-common-settings__specified-voters-only')
+    page.click('.poll-common-settings__specified-voters-only input')
     page.click('.poll-common-form__submit')
 
     page.expectElement('.poll-members-form')

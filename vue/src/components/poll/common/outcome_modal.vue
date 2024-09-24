@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       mdiCalendar,
+      loading: false,
       options: [],
       bestOption: null,
       isDisabled: false,
@@ -64,6 +65,7 @@ export default {
   methods: {
     submit() {
       let actionName;
+      this.loading = true;
       if (this.poll.datesAsOptions()) { this.outcome.eventDescription = this.outcome.statement; }
       if (this.poll.pollType == 'meeting') { this.outcome.includeActor = 1; }
 
@@ -75,10 +77,12 @@ export default {
 
       this.outcome.save().then(data => {
         Flash.success(`poll_common_outcome_form.outcome_${actionName}`);
-        return this.closeModal();
-      }).catch(error => {
-        Flash.custom(error.error, 'error', 5000);
-      })
+        EventBus.$emit('closeModal');
+      }).catch((err) => {
+        Flash.error('poll_common_form.please_review_the_form');
+        console.log(err);
+
+      }).finally(() => this.loading = false);
     },
 
     newRecipients(val) {
@@ -100,8 +104,8 @@ v-card.poll-common-outcome-modal(
   submit-overlay(:value='outcome.processing')
   template(v-slot:append)
     dismiss-modal-button(:model="outcome")
-  .poll-common-outcome-form.px-4
-    p.text-medium-emphasis(v-t="'announcement.form.outcome_announced.helptext'")
+  v-card-text.poll-common-outcome-form
+    p.pb-4.text-medium-emphasis(v-t="'announcement.form.outcome_announced.helptext'")
     recipients-autocomplete(
       :label="$t('action_dock.notify')"
       :placeholder="$t('poll_common_outcome_form.who_to_notify')"
@@ -148,7 +152,7 @@ v-card.poll-common-outcome-modal(
 
     lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       template(v-slot:actions)
-        v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' :loading="outcome.processing")
+        v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' :loading="loading")
           span(v-t="'common.action.save'")
     validation-errors(:subject="outcome" field="statement")
 </template>

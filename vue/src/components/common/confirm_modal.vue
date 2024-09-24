@@ -68,8 +68,10 @@ v-card.confirm-modal(:title)
     v-btn(text v-if="!confirm.forceSubmit" @click="close()" v-t="'common.action.cancel'")
     v-spacer
     v-btn.confirm-modal__submit(
+      variant="elevated"
       :disabled="!canProceed"
       color="primary"
       @click="(confirm.submit && submit()) || close()"
-      v-t="{path: (confirm.text.submit || 'common.action.ok'), args: confirm.textArgs}")
+    )
+      span(v-t="{path: (confirm.text.submit || 'common.action.ok'), args: confirm.textArgs}")
 </template>

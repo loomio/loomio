@@ -2,7 +2,10 @@
 import OutcomeService from '@/shared/services/outcome_service';
 import parseISO from 'date-fns/parseISO';
 import { pickBy } from 'lodash-es';
+import FormatDate from '@/mixins/format_date';
+
 export default {
+  mixins: [FormatDate],
   props: {
     outcome: Object
   },

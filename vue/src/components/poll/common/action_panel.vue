@@ -83,10 +83,10 @@ export default
 <template lang="pug">
 .poll-common-action-panel(v-if="!poll.closedAt" style="position: relative")
   v-alert.poll-common-action-panel__anonymous-message.mt-6(
+    v-if='poll.anonymous'
     density="compact"
     variant="tonal"
     type="info"
-    v-if='poll.anonymous'
   )
     span(v-t="'poll_common_action_panel.anonymous'")
       

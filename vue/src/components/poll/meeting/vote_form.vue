@@ -16,7 +16,8 @@ export default {
       stanceChoices: [],
       pollOptions: [],
       zone: null,
-      stanceValues: []
+      stanceValues: [],
+      loading: false
     };
   },
 
@@ -50,6 +51,7 @@ export default {
     },
 
     submit() {
+      this.loading = true
       this.stance.stanceChoicesAttributes = this.stanceChoices.map(choice => ({
         poll_option_id: choice.poll_option_id,
         score: choice.score
@@ -59,7 +61,10 @@ export default {
       this.stance.save().then(() => {
         EventBus.$emit("closeModal");
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
-      }).catch(() => true);
+      }).catch((err) => {
+        Flash.error('poll_common_form.please_review_the_form');
+        console.log(err);
+      }).finally(() => this.loading = false);
     },
 
     buttonStyleFor(choice, score) {
@@ -121,6 +126,7 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
         :key='i'
         @click='choice.score = i'
         :style="buttonStyleFor(choice, i)"
+        variant="flat"
         icon
       )
         v-avatar(:size="32")
@@ -130,8 +136,9 @@ form.poll-meeting-vote-form(@submit.prevent='submit()')
   v-card-actions.poll-common-form-actions
     v-btn.poll-common-vote-form__submit(
       block
+      variant="elevated"
       :disabled="!poll.isVotable()"
-      :loading="stance.processing"
+      :loading="loading"
       color="primary"
       type='submit'
     )

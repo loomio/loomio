@@ -23,7 +23,7 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome',
         chromeOptions: {
-          args: ['headless', 'window-size=1280,6400']
+          args: ['window-size=1280,6400']
         }
       },
       
