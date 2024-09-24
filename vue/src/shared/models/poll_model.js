@@ -80,6 +80,7 @@ export default class PollModel extends BaseModel {
       linkPreviews: [],
       notifyOnClosingSoon: 'undecided_voters',
       results: [],
+      meetingDuration: null,
       pollTemplateId: null,
       pollTempalteKey: null,
       pollOptionIds: [],

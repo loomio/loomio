@@ -10,8 +10,11 @@ import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fn
 // import { HandleDirective } from 'vue-slicksort';
 import { isSameYear, startOfHour, setHours }  from 'date-fns';
 import { I18n } from '@/i18n';
+import UrlFor from '@/mixins/url_for';
+import WatchRecords from '@/mixins/watch_records';
 export default {
   // directives: { handle: HandleDirective },
+  mixins: [WatchRecords, UrlFor],
 
   props: {
     isModal: {

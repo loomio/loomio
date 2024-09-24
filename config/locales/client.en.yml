@@ -2373,7 +2373,7 @@ en:
   poll_meeting_form:
     timeslots: Time slots
     no_options: Enter times in your current time zone (%{zone}). Participants see times translated to their local time zone.
-    meeting_duration: Meeting duration
+    meeting_duration: Meeting duration in minutes
     add_option_placeholder: Add new time
     time_slot_added: Time slot added
     time_slot_already_added: Time slot already added

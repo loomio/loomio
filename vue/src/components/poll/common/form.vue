@@ -213,6 +213,7 @@ export default {
   },
 
   computed: {
+    currentTimeZone() { return Session.user().timeZone; },
     titlePlaceholder() {
       if (this.pollTemplate && this.pollTemplate.titlePlaceholder) {
         return this.$t('common.prefix_eg', {val: this.pollTemplate.titlePlaceholder});
@@ -330,31 +331,30 @@ export default {
         :index="priority"
         :key="option.name"
       )
-        v-sheet.mb-2.rounded(outlined)
-          v-list-item(style="user-select: none")
-            template(v-slot:prepend v-if="hasOptionIcon" v-handle)
-              v-avatar(size="48")
-                img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
-         
-            v-list-item-title(v-handle)
-              span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
-              span(v-if="optionFormat == 'plain'") {{option.name}}
-              span(v-if="optionFormat == 'iso8601'")
-                poll-meeting-time(:name="option.name")
-            v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+        v-list-item.mb-2(style="user-select: none")
+          template(v-slot:prepend v-if="hasOptionIcon" v-handle)
+            v-avatar(size="48")
+              img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
+       
+          v-list-item-title(v-handle)
+            span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
+            span(v-if="optionFormat == 'plain'") {{option.name}}
+            span(v-if="optionFormat == 'iso8601'")
+              poll-meeting-time(:name="option.name")
+          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
 
-            template(v-slot:append)
-              v-btn(
-                icon
-                variant="text"
-                @click="removeOption(option)"
-                :title="$t('common.action.delete')"
-              )
-                common-icon(name="mdi-delete")
-              div.ml-0(v-if="poll.pollType != 'meeting'")
-                v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
-                  common-icon(name="mdi-pencil")
-              common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
+          template(v-slot:append)
+            v-btn(
+              icon
+              variant="text"
+              @click="removeOption(option)"
+              :title="$t('common.action.delete')"
+            )
+              common-icon(name="mdi-delete")
+            div.ml-0(v-if="poll.pollType != 'meeting'")
+              v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
+                common-icon(name="mdi-pencil")
+            common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
 
     template(v-if="optionFormat == 'i18n'")
       p This poll cannot have new options added. (contact support if you see this message)
@@ -376,18 +376,19 @@ export default {
           @click='addDateOption()'
         )
           span(v-t="'poll_poll_form.add_option_placeholder'")
-      poll-meeting-add-option-menu(:poll="poll" :value="newDateOption")
+      .poll-meeting-add-option-menu
+        p.text-caption.text-medium-emphasis
+          span(v-t="{path: 'poll_common_form.your_in_zone', args: {zone: currentTimeZone}}")
+          br
+          span(v-t="'poll_meeting_form.participants_see_local_times'")
 
-  template(v-if="optionFormat == 'iso8601'")
-    .d-flex.align-center
-      v-text-field.text-right(
-        style="max-width: 120px; text-align: right"
-        :label="$t('poll_meeting_form.meeting_duration')"
-        v-model="poll.meetingDuration"
-        type="number"
-      )
-      span.pl-2.text-medium-emphasis(v-t="'common.minutes'")
-      span.pl-1.text-medium-emphasis(v-if="formattedDuration") ({{formattedDuration}})
+      .d-flex.align-center.mt-4
+        v-text-field.flex-grow-1(
+          :label="$t('poll_meeting_form.meeting_duration')"
+          v-model="poll.meetingDuration"
+          :hint="formattedDuration ? formattedDuration : null"
+          type="number"
+        )
 
   template(v-if="poll.pollType == 'count'")
     p.text-medium-emphasis(v-t="'poll_count_form.agree_target_helptext'")
