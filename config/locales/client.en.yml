@@ -152,6 +152,7 @@ en:
     new_tag: New tag
     name_label: Name
     color_label: Color
+    pick_a_color: Pick a color
     card_title: Category tags
     modal_title: Create a new tag
     modal_edit_title: Edit tag

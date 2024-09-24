@@ -130,5 +130,6 @@ v-card.tags-modal(:title="$t('loomio_tags.card_title')")
 
   v-card-actions(v-if="canAdminTags")
     v-spacer
-    v-btn.tag-form__new-tag(color="primary" @click="openNewTagModal" v-t="'loomio_tags.new_tag'")
+    v-btn.tag-form__new-tag(variant="elevated" color="primary" @click="openNewTagModal")
+      span(v-t="'loomio_tags.new_tag'")
 </template>
