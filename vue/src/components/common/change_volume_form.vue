@@ -96,9 +96,14 @@ v-card.change-volume-form(:title="$t(translateKey() + '.title', { title: title }
   template(v-slot:append)
     dismiss-modal-button(v-if="showClose")
   v-card-text
-    v-alert(v-if="model.isA('discussion')" density="compact" variant="tonal" type="info")
+    v-alert(v-if="model.isA('discussion')" variant="tonal" type="info")
       span(v-t="'change_volume_form.explain_scope.thread'")
-    v-alert(v-if="model.isA('membership')" density="compact" variant="tonal" type="info" v-t="'change_volume_form.explain_scope.group'")
+      br
+      a(@click="openGroupVolumeModal()" v-t="'change_volume_form.discussion.group'")
+    v-alert(v-if="model.isA('membership')" variant="tonal" type="info")
+      span(v-t="'change_volume_form.explain_scope.group'")
+      br
+      a(@click="openUserPreferences()" v-t="'change_volume_form.discussion.user'")
     p.mt-2(v-t="'change_volume_form.simple.question'")
     v-radio-group.text-lowercase.mb-4(hide-details v-model='volume')
       v-radio.volume-loud(value='loud' :label="labelFor('loud')")
@@ -109,11 +114,10 @@ v-card.change-volume-form(:title="$t(translateKey() + '.title', { title: title }
       v-checkbox#apply-to-all.mb-4(v-if="model.isA('membership')" v-model='applyToAll', :label="$t('change_volume_form.membership.apply_to_organization', { organization: model.group().parentOrSelf().name })" hide-details)
 
     p.mt-4(v-if="model.isA('discussion')")
-      a(@click="openGroupVolumeModal()" v-t="'change_volume_form.discussion.group'")
     p.mt-4(v-if="model.isA('membership')")
-      a(@click="openUserPreferences()" v-t="'change_volume_form.discussion.user'")
   v-card-actions(align-center)
     help-link(path="en/user_manual/users/email_settings/#group-email-notification-settings")
     v-spacer
-    v-btn.change-volume-form__submit(type='button', :disabled='!formChanged', v-t="'common.action.update'" @click='submit()' color="primary")
+    v-btn.change-volume-form__submit(variant="elevated" type='button' :disabled='!formChanged' @click='submit()' color="primary")
+      span( v-t="'common.action.update'" )
 </template>

@@ -112,10 +112,11 @@ div(v-if="group")
     )
       span(v-t="'common.action.add_subgroup'")
 
-  v-alert(v-if="subgroups.length == 0" outlined color="primary")
-    p(v-t="'subgroups_panel.need_a_space_for_your_team'")
-    p(v-t="'subgroups_panel.explainer'")
-    p(v-if="upgradeRequired" v-html="$t('subgroups_panel.upgrade', {url: upgradeUrl})")
+  v-alert(v-if="subgroups.length == 0" variant="tonal" color="info")
+    v-card-title(v-t="'subgroups_panel.need_a_space_for_your_team'")
+    v-card-text
+      p(v-t="'subgroups_panel.explainer'")
+      p(v-if="upgradeRequired" v-html="$t('subgroups_panel.upgrade', {url: upgradeUrl})")
 
   v-card.group-subgroups-panel(outlined v-if="subgroups.length")
     v-list(avatar lines="two")

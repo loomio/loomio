@@ -57,8 +57,7 @@ v-card.email-to-group-settings(:title="$t('email_to_group.start_a_thread_by_emai
     p.text-medium-emphasis.pb-2(v-t="'email_to_group.send_email_to_start_thread'")
     v-text-field(
       readonly
-      outlined
-      filled
+      variant="solo-filled"
       v-model="address"
       :append-icon="mdiContentCopy"
       @click:append="copyText"

@@ -44,7 +44,7 @@ export default {
 
 </script>
 <template lang="pug">
-v-menu.notifications(offset-y bottom)
+v-menu.notifications(location="bottom")
   template(v-slot:activator="{ props }")
     v-btn.notifications__button(icon v-bind="props" :title="$t('navbar.notifications')")
       v-badge(color="primary" :content="unread.length" v-if="unread.length")

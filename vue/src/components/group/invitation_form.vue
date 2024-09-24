@@ -132,8 +132,8 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
     .announcement-form__invite
       //- p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
       p(v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
-  div.pa-4(v-else)
-    v-alert.mb-6.mt-4(v-if="!group.parentId && group.membershipsCount < 2" type="info" outlined text :icon="mdiAccountMultiplePlus")
+  v-card-text(v-else)
+    v-alert.mb-6(v-if="!group.parentId && group.membershipsCount < 2" type="info" variant="tonal" :icon="mdiAccountMultiplePlus")
       span(v-t="'announcement.form.invite_people_to_evaluate_loomio'")
     recipients-autocomplete(
       :label="$t('announcement.form.who_to_invite')"
@@ -164,17 +164,17 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       :label="$t('announcement.form.invitation_message_label')"
       :placeholder="$t('announcement.form.invitation_message_placeholder')")
 
-    v-card-actions
-      help-link(path="en/user_manual/groups/membership")
-      v-spacer
-      v-btn.announcement-form__submit(
-        variant="elevated"
-        color="primary"
-        :disabled="!recipients.length || tooManyInvitations || groupIds.length == 0"
-        @click="inviteRecipients"
-        :loading="saving"
-      )
-        span(v-t="'common.action.invite'")
+  v-card-actions
+    help-link(path="en/user_manual/groups/membership")
+    v-spacer
+    v-btn.announcement-form__submit(
+      variant="elevated"
+      color="primary"
+      :disabled="!recipients.length || tooManyInvitations || groupIds.length == 0"
+      @click="inviteRecipients"
+      :loading="saving"
+    )
+      span(v-t="'common.action.invite'")
 
 </template>
 <style lang="css">

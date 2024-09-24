@@ -64,8 +64,8 @@ v-card.auth-signup-form(
   @keyup.ctrl.enter="submit()"
   @keydown.meta.enter.stop.capture="submit()"
   @keydown.enter="submit()")
-  template(vslot:append)
-    v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
+  template(v-slot:append)
+    v-btn.back-button(icon variant="text" :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")
   v-sheet.mx-4(v-if="allow")
     submit-overlay(:value='loading')
@@ -94,6 +94,12 @@ v-card.auth-signup-form(
 
     v-card-actions.mt-8
       v-spacer
-      v-btn.auth-signup-form__submit(color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)' v-t="'auth_form.create_account'" @click='submit()')
+      v-btn.auth-signup-form__submit(variant="elevated" color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)')
+        span(v-t="'auth_form.create_account'" @click='submit()')
     //- vue-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
 </template>
+<style>
+.auth-signup-form .v-label {
+  opacity: var(--v-high-emphasis-opacity);
+}
+</style>

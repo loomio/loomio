@@ -66,12 +66,12 @@ v-card.auth-signin-form(
   @keydown.meta.enter.stop.capture="submit()"
   @keydown.enter="submit()")
   template(v-slot:append)
-    v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
+    v-btn.back-button(icon variant="text" :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")
 
   v-sheet.mx-4.pb-4
     submit-overlay(:value='loading')
-    .d-flex.justify-center
+    .d-flex.justify-center.mb-4
       user-avatar(:user='user' :size='128')
     .auth-signin-form__token.text-center(v-if='user.hasToken')
       validation-errors(:subject='user', field='token')

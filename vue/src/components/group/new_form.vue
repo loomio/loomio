@@ -169,8 +169,8 @@ v-card.group-form(:title="group.parentId ? $t('group_form.new_subgroup') : $t('g
   v-overlay(:value="uploading")
     v-progress-circular(size="64" :value="progress")
   .px-4
-    p.text-medium-emphasis(v-if='!group.parentId' v-t="'group_form.new_group_explainer'")
-    p.text-medium-emphasis(v-if='group.parentId' v-t="'group_form.new_subgroup_explainer'")
+    p.text-medium-emphasis.pb-8(v-if='!group.parentId' v-t="'group_form.new_group_explainer'")
+    p.text-medium-emphasis.pb-9(v-if='group.parentId' v-t="'group_form.new_subgroup_explainer'")
     v-select.group-form__parent-group(v-if="parentGroups.length > 1" v-model='group.parentId' :items="parentGroups" :label="$t('group_form.parent_group')")
     v-text-field.group-form__name#group-name(
       v-model='group.name'
@@ -225,7 +225,7 @@ v-card.group-form(:title="group.parentId ? $t('group_form.new_subgroup') : $t('g
   v-card-actions.ma-2
     help-link(path="en/user_manual/groups/starting_a_group")
     v-spacer
-    v-btn.group-form__submit-button(:loading="group.processing" color="primary" @click='submit()')
+    v-btn.group-form__submit-button(:loading="group.processing" color="primary" @click='submit()' variant="elevated")
       span(v-if='group.isParent()' v-t="'group_form.submit_start_group'")
       span(v-if='!group.isParent()' v-t="'group_form.submit_start_subgroup'")
 </template>

@@ -55,7 +55,7 @@ v-card.auth-complete(
       common-icon(name="mdi-close")
   v-sheet.mx-4.text-center
     submit-overlay(:value='loading')
-    p.mb-4(v-if='user.sentLoginLink')
+    p.my-6(v-if='user.sentLoginLink')
       span(v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")
       br
       span(v-t="'auth_form.instructions_code'", v-if='attempts < 3')
@@ -64,7 +64,7 @@ v-card.auth-complete(
     .auth-complete__code-input.mb-4(v-if='user.sentLoginLink && attempts < 3')
       .auth-complete__code.mx-auto(style="max-width: 256px")
         v-text-field.text-h5.lmo-primary-form-input(
-          outlined
+          variant="outlined"
           label="Code"
           :placeholder="$t('auth_form.code')"
           type='integer'
@@ -85,10 +85,12 @@ v-card.auth-complete(
   v-card-actions
     v-spacer
     v-btn(
+      variant="elevated"
       color="primary"
       :loading="loading"
       @click='submit()'
-      :disabled='!user.code || loading' v-t="'auth_form.sign_in'")
+      :disabled='!user.code || loading')
+      span(v-t="'auth_form.sign_in'")
 </template>
 <style lang="sass">
 .auth-complete__code input

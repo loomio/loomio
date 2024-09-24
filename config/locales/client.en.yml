@@ -2886,7 +2886,7 @@ en:
     email_address_of_existing_account: Enter email address of your existing account
     link_accounts: Link accounts
     check_your_email: Check your email!
-    login_link_sent: "We've sent an email to %{email}."
+    login_link_sent: "We've sent an email to %{email}"
     instructions: "Click the link to sign in, or enter the code below:"
     instructions_code: "Enter the code from that email:"
     too_many_attempts: "Too many attempts; try clicking the link in the email to sign in."

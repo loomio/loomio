@@ -306,9 +306,10 @@ div.discussions-panel(v-if="group")
       :placeholder="$t('navbar.search_threads', {name: group.name})"
       :prepend-inner-icon="mdiMagnify")
 
-  v-alert(color="info" text outlined v-if="isMember && noThreads")
+  v-alert(color="info" variant="tonal" v-if="isMember && noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
-    p.px-4(v-t="'discussions_panel.lets_start_a_thread'")
+    v-card-text
+      p(v-t="'discussions_panel.lets_start_a_thread'")
 
   v-card.discussions-panel(v-else outlined elevation=1)
     div(v-if="loader.status == 403")
