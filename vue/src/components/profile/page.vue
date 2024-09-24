@@ -157,9 +157,10 @@ v-main
                   space
                   a.email-taken-find-out-more(@click="openSendVerificationModal" v-t="'merge_accounts.find_out_more'")
 
-              .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12(@click="changePicture()")
+              .profile-page__avatar.d-flex.flex-column.justify-center.align-center.mx-12.mb-4(@click="changePicture()")
                 user-avatar.mb-4(:user='originalUser' :size='192' :no-link="true")
-                v-btn(color="accent" @click="changePicture" v-t="'profile_page.change_picture_link'")
+                v-btn(color="primary" variant="tonal" @click="changePicture")
+                  span(v-t="'profile_page.change_picture_link'")
 
             lmo-textarea(
               :model='user'
@@ -196,6 +197,7 @@ v-main
           v-spacer
           v-btn.profile-page__update-button(
             color="primary"
+            variant="elevated"
             @click='submit()'
             :disabled='emailExists'
             :loading="user.processing"
