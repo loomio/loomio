@@ -228,7 +228,7 @@ class Stance < ApplicationRecord
   def valid_max_score
     return if !cast_at
     return unless poll.validate_max_score
-    return if (stance_choices.map(&:score).max) <= poll.max_score
+    return if (stance_choices.map(&:score).max || 0) <= poll.max_score
     errors.add(:stance_choices, "max_score validation failure")
   end
 
