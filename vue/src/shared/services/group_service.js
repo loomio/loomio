@@ -136,23 +136,6 @@ export default new class GroupService {
         }
       },
 
-      webhooks: {
-        name: 'webhook.api_keys',
-        icon: 'mdi-key-variant',
-        menu: true,
-        canPerform() {
-          return group.adminsInclude(Session.user());
-        },
-        perform() {
-          return openModal({
-            component: 'WebhookList',
-            props: {
-              group
-            }
-          });
-        }
-      },
-
       api_docs: {
         name: 'common.api_docs',
         icon: 'mdi-webhook',
