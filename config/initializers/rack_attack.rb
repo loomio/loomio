@@ -28,7 +28,6 @@ class Rack::Attack
     '/api/v1/outcomes' => 100,
     '/api/v1/stances' => 100,
     '/api/v1/profile' => 100,
-    '/api/v1/webhooks' => 10,
     '/api/v1/comments' => 100,
     '/api/v1/reactions' => 100,
     '/api/v1/link_previews' => 100,
