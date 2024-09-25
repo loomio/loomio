@@ -3,6 +3,7 @@ import { isEqual } from 'date-fns';
 import { camelCase, compact, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
 
 import Records from '@/shared/services/records';
+import { reactive } from 'vue';
 
 export default class BaseModel {
   static singular = 'undefinedSingular';
@@ -48,6 +49,7 @@ export default class BaseModel {
     this.save = this.save.bind(this);
     this.saveSuccess = this.saveSuccess.bind(this);
     this.saveError = this.saveError.bind(this);
+    this.setErrors = this.setErrors.bind(this);
     if (attributes == null) { attributes = {}; }
     this.processing = false; // not returning/throwing on already processing rn
     this._version = 0;
@@ -57,6 +59,7 @@ export default class BaseModel {
     this.saveDisabled = false;
     this.saveFailed = false;
     this.beforeSaves = [];
+    this.errors = [];
     this.setErrors();
     if (this.relationships != null) { this.buildRelationships(); }
     this.update(this.defaultValues());
@@ -114,7 +117,7 @@ export default class BaseModel {
     this.attributeNames = union(this.attributeNames, keys(attributes));
     each(attributes, (value, key) => {
       this.unmodified[key] = value;
-      this[key] = value
+      reactive(this)[key] = value
       return true;
     });
 
@@ -279,12 +282,12 @@ export default class BaseModel {
   }
 
   destroy() {
-    this.processing = true;
+    reactive(this).processing = true;
     this.beforeDestroy();
     this.remove();
     return Records[this.constructor.plural].remote.destroy(this.keyOrId())
     .finally(() => {
-      return this.processing = false;
+      reactive(this).processing = false;
     });
   }
 
@@ -293,62 +296,63 @@ export default class BaseModel {
   beforeRemove() {}
 
   discard() {
-    this.processing = true;
+    reactive(this).processing = true;
     return Records[this.constructor.plural].remote.discard(this.keyOrId())
     .finally(() => {
-      return this.processing = false;
+      reactive(this).processing = false;
     });
   }
 
   undiscard() {
-    this.processing = true;
+    reactive(this).processing = true;
     return Records[this.constructor.plural].remote.undiscard(this.keyOrId())
     .finally(() => {
-      return this.processing = false;
+      reactive(this).processing = false;
     });
   }
 
   beforeSave() { return true; }
 
   save() {
-    this.processing = true;
+    reactive(this).processing = true;
     this.beforeSave();
     this.beforeSaves.forEach(f => f());
   
     if (this.isNew()) {
       return Records[this.constructor.plural].remote.create(this.serialize())
       .then(this.saveSuccess, this.saveError)
-      .finally(() => { return this.processing = false; });
+      .finally(() => { reactive(this).processing = false; });
     } else {
       return Records[this.constructor.plural].remote.update(this.keyOrId(), this.serialize())
       .then(this.saveSuccess, this.saveError)
-      .finally(() => { return this.processing = false; });
+      .finally(() => { reactive(this).processing = false; });
     }
   }
 
   saveSuccess(data) {
-    this.saveFailed = false;
+    reactive(this).saveFailed = false;
     this.unmodified = pick(this, this.attributeNames);
     return data;
   }
 
   saveError(data) {
-    this.saveFailed = true;
+    reactive(this).saveFailed = true;
     this.setErrors(data.errors);
     throw data;
   }
 
   discardChanges() {
-    this.attributeNames.forEach(key => {
-      this[key] = this.unmodified[key];
+    reactive(this).attributeNames.forEach(key => {
+      reactive(this)[key] = this.unmodified[key];
     });
   }
 
   setErrors(errorList) {
     if (errorList == null) { errorList = []; }
-    this['errors'] = {};
+    reactive(this).errors = {}
+
     each(errorList, (errors, key) => {
-      this.errors[camelCase(key)] = errors
+      reactive(this).errors[camelCase(key)] = errors
       return true
     });
   }
