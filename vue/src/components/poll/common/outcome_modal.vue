@@ -150,7 +150,7 @@ v-card.poll-common-outcome-modal(
         v-date-picker.outcome-review-on__datepicker(v-model='outcome.reviewOn' :min='dateToday' no-title @input="isShowingDatePicker = false")
       p(v-if="outcome.reviewOn" v-t="$t('poll_common_outcome_form.you_will_be_notified')")
 
-    lmo-textarea.poll-common-outcome-form__statement.lmo-primary-form-input(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
+    lmo-textarea.poll-common-outcome-form__statement(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       template(v-slot:actions)
         v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' :loading="loading")
           span(v-t="'common.action.save'")

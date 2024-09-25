@@ -63,9 +63,9 @@ v-card.auth-form(:title="$t('auth_form.sign_up_or_log_in', { site_name: siteName
   template(v-slot:append)
     dismiss-modal-button(v-if='!preventClose')
   v-sheet
-    p.text-h5.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
-    p.text-h5.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
-    p.text-h5.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
+    //- p.text-h5.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
+    //- p.text-h5.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
+    //- p.text-h5.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")
     p.text-center.text-caption(v-if="isInvitedNewUser" v-t="{path: 'auth_form.existing_account_can_sign_in', args: { site_name: siteName } }")
     auth-provider-form(:user='user')
     auth-email-form.mt-4(:user='user' v-if='emailLogin')

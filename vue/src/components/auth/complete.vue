@@ -63,7 +63,7 @@ v-card.auth-complete(
     p.mb-4(v-if='user.sentPasswordLink', v-t="{ path: 'auth_form.password_link_sent', args: { email: user.email }}")
     .auth-complete__code-input.mb-4(v-if='user.sentLoginLink && attempts < 3')
       .auth-complete__code.mx-auto(style="max-width: 256px")
-        v-text-field.text-h5.lmo-primary-form-input(
+        v-text-field.text-h5(
           variant="outlined"
           label="Code"
           :placeholder="$t('auth_form.code')"

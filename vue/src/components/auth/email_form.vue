@@ -41,7 +41,7 @@ export default {
   @keyup.ctrl.enter="submit()"
   @keydown.meta.enter.stop.capture="submit()"
   @keydown.enter="submit()")
-    v-text-field#email.lmo-primary-form-input(
+    v-text-field.auth-email-form__email#email(
       variant="outlined"
       name='email'
       type='email'
