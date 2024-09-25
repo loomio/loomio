@@ -49,7 +49,10 @@ v-card.membership-request-form(:title="$t('membership_request_form.heading')")
     .membership-request-form__reason
       v-textarea.membership-request-form__introduction(v-model='membershipRequest.introduction' :required='false' maxlength='250' :label="$t('membership_request_form.introduction_label')")
   v-card-actions
-    v-btn.membership-request-form__cancel-btn(@click='close()' v-t="'common.action.cancel'")
-    v-spacer
-    v-btn.membership-request-form__submit-btn(color="primary" @click='submit()' v-t="'membership_request_form.submit_button'")
+    v-btn.membership-request-form__submit-btn(
+      variant="elevated"
+      color="primary"
+      @click='submit'
+    )
+      span(v-t="'membership_request_form.submit_button'")
 </template>

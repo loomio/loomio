@@ -69,8 +69,8 @@ v-card.auth-signin-form(
     v-btn.back-button(icon variant="text" :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")
 
-  v-sheet.mx-4.pb-4
-    submit-overlay(:value='loading')
+  submit-overlay(:value='loading')
+  .max-width-400.mx-auto
     .d-flex.justify-center.mb-4
       user-avatar(:user='user' :size='128')
     .auth-signin-form__token.text-center(v-if='user.hasToken')
@@ -85,21 +85,42 @@ v-card.auth-signin-form(
     .auth-signin-form__no-token(v-if='!user.hasToken')
       .auth-signin-form__password(v-if='user.hasPassword')
         p.text-center.my-2(v-t="'auth_form.enter_your_password'")
-        v-text-field#password(:label="$t('auth_form.password')" name='password' type='password' outlined autofocus required v-model='user.password' autocomplete="current-password")
+        v-text-field#password(
+          :label="$t('auth_form.password')"
+          name='password'
+          type='password'
+          variant="outlined"
+          autofocus
+          required
+          v-model='user.password'
+          autocomplete="current-password")
         validation-errors(:subject='user' field='password')
 
-        v-card-actions
-          v-spacer
-          v-btn.auth-signin-form__login-link(:color="user.hasPassword ? '' : 'primary'" v-t="user.hasPassword ? 'auth_form.forgot_password' : 'auth_form.login_link'" @click='sendLoginLink()' :loading="!user.password && loading")
-          v-btn.auth-signin-form__submit(:color="user.hasPassword ? 'primary' : ''" v-t="'auth_form.sign_in'" @click='submit()' :disabled='!user.password' v-if='user.hasPassword' :loading="user.password && loading")
+  v-card-actions(v-if='!user.hasToken')
+    v-btn.auth-signin-form__login-link(
+      v-if='user.hasPassword'
+      variant="tonal"
+      :color="user.hasPassword ? '' : 'primary'"
+      @click='sendLoginLink()'
+      :loading="!user.password && loading"
+    )
+      span(v-t="user.hasPassword ? 'auth_form.forgot_password' : 'auth_form.login_link'")
+    v-spacer
+    v-btn.auth-signin-form__submit(
+      v-if='user.hasPassword'
+      @click='submit()'
+      variant="elevated"
+      :color="user.hasPassword ? 'primary' : ''"
+      :disabled='!user.password'
+      :loading="user.password && loading")
+      span(v-t="'auth_form.sign_in'")
 
-      .auth-signin-form__no-password(v-if='!user.hasPassword')
-        v-card-actions.justify-space-around
-          v-btn.auth-signin-form__submit(variant="elevated" color="primary" @click='sendLoginLink()' v-t="'auth_form.sign_in_via_email'" :loading="loading")
+    v-btn.auth-signin-form__submit(
+      v-if='!user.hasPassword'
+      variant="elevated"
+      color="primary"
+      @click='sendLoginLink()'
+      :loading="loading"
+    )
+      span(v-t="'auth_form.login_link'")
 </template>
-
-<style lang="sass">
-.auth-signin-form__no-password .auth-signin-form__submit
-  display: block
-
-</style>

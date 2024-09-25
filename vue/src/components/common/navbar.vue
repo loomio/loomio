@@ -9,8 +9,7 @@ import FormatDate from '@/mixins/format_date';
 import { last }            from 'lodash-es';
 
 export default {
-  mixins: [ AuthModalMixin ],
-  mixins: [FormatDate],
+  mixins: [ AuthModalMixin, FormatDate ],
   data() {
     return {
       title: AppConfig.theme.site_name,

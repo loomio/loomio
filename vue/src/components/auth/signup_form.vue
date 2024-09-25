@@ -72,7 +72,13 @@ v-card.auth-signup-form(
     .auth-signup-form__welcome.text-center.my-2
       p(v-t="{path: 'auth_form.sign_up_as', args: {email: user.email}}")
     .auth-signup-form__name
-      v-text-field(type='text' :label="$t('auth_form.name_placeholder')" :placeholder="$t('auth_form.enter_your_name')" outlined v-model='vars.name' required='true')
+      v-text-field(
+        type='text'
+        :label="$t('auth_form.name_placeholder')"
+        :placeholder="$t('auth_form.enter_your_name')"
+        variant="outlined"
+        v-model='vars.name'
+        required='true')
       validation-errors(:subject='user' field='legalAccepted')
       validation-errors(:subject='user' field='email')
       validation-errors(:subject='user' field='recaptcha')
@@ -92,11 +98,11 @@ v-card.auth-signup-form(
               //- a(href='https://help.loomio.org/en/newsletter/' target='_blank' @click.stop v-t="'email_settings_page.email_newsletter'")
               span(v-t="'email_settings_page.email_newsletter'")
 
-    v-card-actions.mt-8
-      v-spacer
-      v-btn.auth-signup-form__submit(variant="elevated" color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)')
-        span(v-t="'auth_form.create_account'" @click='submit()')
-    //- vue-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
+  v-card-actions.mt-8(v-if="allow")
+    v-spacer
+    v-btn.auth-signup-form__submit(variant="elevated" color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)')
+      span(v-t="'auth_form.create_account'" @click='submit()')
+  //- vue-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
 </template>
 <style>
 .auth-signup-form .v-label {

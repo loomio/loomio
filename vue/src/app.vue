@@ -129,6 +129,10 @@ a
 .text-almost-black
   color: rgba(0, 0, 0, 0.87)
   
+.max-width-320
+  max-width: 320px !important
+.max-width-400
+  max-width: 400px !important
 .max-width-640
   max-width: 640px !important
 .max-width-800

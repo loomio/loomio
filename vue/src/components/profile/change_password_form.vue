@@ -37,7 +37,7 @@ v-card.change-password-form(
   template(v-slot:append)
     dismiss-modal-button(:close="close")
   v-card-text
-    p.text-medium-emphasis(v-t="'change_password_form.set_password_helptext'")
+    p.pb-4.text-medium-emphasis(v-t="'change_password_form.set_password_helptext'")
     .change-password-form__password-container
       v-text-field.change-password-form__password(:label="$t('sign_up_form.password_label')" required type='password' v-model='user.password')
       validation-errors(:subject='user', field='password')
@@ -46,5 +46,11 @@ v-card.change-password-form(
       validation-errors(:subject='user', field='passwordConfirmation')
   v-card-actions
     v-spacer
-    v-btn.change-password-form__submit(:loading="processing" color="primary" @click='submit()' v-t="'change_password_form.set_password'")
+    v-btn.change-password-form__submit(
+      variant="elevated"
+      :loading="processing"
+      color="primary"
+      @click='submit()'
+    )
+      span(v-t="'change_password_form.set_password'")
 </template>
