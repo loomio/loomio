@@ -196,7 +196,7 @@ export default
       v-spacer
       v-btn.polls-panel__new-poll-button(
         color='primary'
-        variant="tonal"
+        variant="elevated"
         :to="'/p/new?group_id='+group.id"
         v-if='canStartPoll'
       )

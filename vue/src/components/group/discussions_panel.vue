@@ -286,7 +286,7 @@ div.discussions-panel(v-if="group")
       span(v-t="'common.action.search'")
     v-spacer
     v-btn.discussions-panel__new-thread-button(
-      variant="tonal"
+      variant="elevated"
       v-if='canStartThread'
       :to="'/thread_templates/?group_id='+group.id"
       color='primary'

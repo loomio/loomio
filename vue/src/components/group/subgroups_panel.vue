@@ -106,7 +106,7 @@ div(v-if="group")
     v-text-field.mr-2(clearable hide-details variant="solo" density="compact" :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_subgroups_short', {name: group.name})" :prepend-inner-icon="mdiMagnify")
     v-btn.subgroups-card__start(
       color="primary"
-      variant="tonal"
+      variant="elevated"
       @click='startSubgroup()'
       v-if='canCreateSubgroups'
     )

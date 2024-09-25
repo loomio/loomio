@@ -221,7 +221,7 @@ export default
         :prepend-inner-icon="mdiMagnify")
       v-btn.membership-card__invite.mr-2(
         color="primary"
-        variant="tonal"
+        variant="elevated"
         v-if='canAddMembers'
         @click="invite()"
       )
