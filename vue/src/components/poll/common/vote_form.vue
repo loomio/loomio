@@ -206,7 +206,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
 .poll-common-vote-form__button.voting-enabled
   border: 1px solid rgba(0,0,0,0.1)
 
-.v-theme--dark, .v-theme--darkGold
+.v-theme--dark, .v-theme--darkBlue
   .poll-common-vote-form__button.voting-enabled
     border: 1px solid rgba(255,255,255, 0.2)
 

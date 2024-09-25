@@ -283,7 +283,7 @@ div.discussions-panel(v-if="group")
       @click="openSearchModal"
     )
       common-icon.mr-1(name="mdiMagnify")
-      span Search
+      span(v-t="'common.action.search'")
     v-spacer
     v-btn.discussions-panel__new-thread-button(
       variant="tonal"

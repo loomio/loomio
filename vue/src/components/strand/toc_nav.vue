@@ -217,7 +217,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 .strand-nav__entry:hover, .strand-nav__entry--visible
   background-color: #f8f8f8
   
-.v-theme--dark, .v-theme--darkGold
+.v-theme--dark, .v-theme--darkBlue
   .strand-nav__entry
     border-left: 2px solid #999
   .strand-nav__entry:hover, .strand-nav__entry--visible

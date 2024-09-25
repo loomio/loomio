@@ -556,7 +556,7 @@ img.collaboration-cursor__avatar
   word-break: normal
   z-index: 100
 
-.v-theme--dark, .v-theme--darkGold
+.v-theme--dark, .v-theme--darkBlue
   .collaboration-cursor__caret
     border-left: 1px solid #ddd
 
@@ -613,7 +613,7 @@ img.collaboration-cursor__avatar
   pointer-events: none
   height: 0
 
-.v-theme--dark, .v-theme--darkGold
+.v-theme--dark, .v-theme--darkBlue
   .ProseMirror p.is-editor-empty:first-child::before
     color: rgba(255,255,255,0.333)
 
@@ -621,7 +621,7 @@ img.collaboration-cursor__avatar
   outline: none
   min-height: 64px
 
-.v-theme--dark, .v-theme--darkGold
+.v-theme--dark, .v-theme--darkBlue
   progress
     background-color: #333
     border-color: #444

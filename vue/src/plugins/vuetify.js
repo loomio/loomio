@@ -31,28 +31,9 @@ export default createVuetify({
     sets: { mdi },
   },
   theme: {
-    defaultTheme: 'lightGold',
+    defaultTheme: 'light',
     themes: {
       light: {
-        dark: false,
-        colors: {
-          background: "#f0f0f0",
-          primary:  colors.skyDark1,
-          info:  colors.skyDark2,
-          anchor:  colors.skyDark2,
-        },
-      },
-
-      dark: {
-        dark: true,
-        colors: {
-          primary: colors.sky,
-          info: colors.skyDark1,
-          anchor: colors.sky
-        },
-      },
-
-      lightGold: {
         dark: false,
         colors: {
           background: "#fcf6eb",
@@ -62,13 +43,32 @@ export default createVuetify({
         },
       },
 
-      darkGold: {
+      dark: {
         dark: true,
         colors: {
           primary: colors.gold,
           info: colors.skyDark1,
           // success: ENV.fetch('THEME_COLOR_SUCCESS', nil),
           anchor: colors.gold
+        },
+      },
+
+      lightBlue: {
+        dark: false,
+        colors: {
+          background: "#f0f0f0",
+          primary:  colors.skyDark1,
+          info:  colors.skyDark2,
+          anchor:  colors.skyDark2,
+        },
+      },
+
+      darkBlue: {
+        dark: true,
+        colors: {
+          primary: colors.sky,
+          info: colors.skyDark1,
+          anchor: colors.sky
         },
       },
 

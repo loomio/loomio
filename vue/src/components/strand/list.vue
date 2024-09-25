@@ -232,7 +232,7 @@ export default {
   .strand-item__stem
     background-color: #aaa
 
-.v-theme--dark, .v-theme--darkGold
+.v-theme--dark, .v-theme--darkBlue
   .strand-item__stem
     background-color: #444
 

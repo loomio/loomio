@@ -101,7 +101,7 @@ node-view-wrapper(as="li")
   pointer-events: none
   height: 0
 
-.v-theme--dark, .v-theme--darkGold
+.v-theme--dark, .v-theme--darkBlue
   .task-item-text.task-item-is-empty::before
     color: rgba(255, 255, 255, 0.2)
 

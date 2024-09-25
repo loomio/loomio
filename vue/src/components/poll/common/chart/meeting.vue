@@ -93,7 +93,7 @@ export default {
 .poll-meeting-chart-table tbody tr:hover
   background-color: #EEE
 
-.v-theme--dark, .v-theme--darkGold
+.v-theme--dark, .v-theme--darkBlue
   .poll-meeting-chart-table tbody tr:hover
     background-color: #333
 

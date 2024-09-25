@@ -37,7 +37,7 @@ export default {
 .loading-content__background
   background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%)
 
-.v-theme--dark, .v-theme--darkGold
+.v-theme--dark, .v-theme--darkBlue
   .loading-content__background
     background: linear-gradient(to right, #222 8%, #333 18%, #222 33%)
 

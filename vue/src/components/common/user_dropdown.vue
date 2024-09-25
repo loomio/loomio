@@ -58,25 +58,26 @@ v-list-item(@click="signOut()")
 v-divider
 v-list-subheader Theme
 
-v-list-item(@click="setTheme('light')" density="compact")
-  v-list-item-title Light blue
-  template(v-slot:append)
-      common-icon(name="mdi-white-balance-sunny" color="#658AE7")
 
-v-list-item(@click="setTheme('lightGold')" density="compact")
+v-list-item(@click="setTheme('light')" density="compact")
   v-list-item-title Light gold
   template(v-slot:append)
       common-icon(name="mdi-white-balance-sunny" color="#DCA034")
 
-v-list-item(@click="setTheme('dark')" density="compact")
-  v-list-item-title Dark blue
+v-list-item(@click="setTheme('lightBlue')" density="compact")
+  v-list-item-title Light blue
   template(v-slot:append)
-    common-icon(name="mdi-weather-night" color="#658AE7")
+      common-icon(name="mdi-white-balance-sunny" color="#658AE7")
       
-v-list-item(@click="setTheme('darkGold')" density="compact")
+v-list-item(@click="setTheme('dark')" density="compact")
   v-list-item-title Dark gold
   template(v-slot:append)
     common-icon(name="mdi-weather-night" color="#DCA034")
+
+v-list-item(@click="setTheme('darkBlue')" density="compact")
+  v-list-item-title Dark blue
+  template(v-slot:append)
+    common-icon(name="mdi-weather-night" color="#658AE7")
 
 
 
