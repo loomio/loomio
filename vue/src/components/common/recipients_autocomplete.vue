@@ -367,11 +367,10 @@ div.recipients-autocomplete
         v-bind="props"
         :value='item.selected'
         closable
-        color='primary'
         @click:close='remove(item.raw)'
         @click='expand(item.raw)')
         span
-          common-icon.mr-1(:name="item.raw.icon")
+          common-icon.mr-1(color="info" :name="item.raw.icon")
         span {{ item.title }}
       v-chip.chip--select-multi(
         v-else
