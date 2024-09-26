@@ -258,8 +258,8 @@ module.exports = {
     // page.click('.poll-settings-hide-results-until-closed')
 
     // page.click('.poll-common-form__advanced-btn')
-    page.click('.poll-common-settings__hide-results input')
-    page.click('.v-select-list .v-list-item:last-child')
+    page.click('.poll-common-settings__hide-results .v-field')
+    page.click('.v-select__content .v-list .v-list-item:nth-child(4)')
 
     // change dropdown here
 
@@ -273,6 +273,7 @@ module.exports = {
     page.expectText('.poll-common-card__title', 'A new proposal')
     page.expectText('.poll-common-details-panel__details p', 'Some details')
     page.expectElement('.poll-common-action-panel__results-hidden-until-closed')
+    // poll-common-action-panel__results-hidden-until-closed
   },
 
   'can_remove_own_vote': (test) => {
