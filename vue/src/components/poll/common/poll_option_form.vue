@@ -48,53 +48,54 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.poll-common-option-form(:title="$t(cardTitle)")
-  template(v-slot:append)
-    dismiss-modal-button
-  v-card-text
-    div(v-if="hasOptionIcon")
-      span.v-label(v-t="'poll_option_form.icon'")
-      .d-flex.mb-4.space-between
-        label.poll-option-form__icon.mr-4.d-flex.flex-column.rounded.v-sheet.v-sheet--outlined.voting-enabled(
-          v-for="icon in icons"
-          :key="icon.value"
-          :class="{'poll-option-form__icon-selected': pollOption.icon == icon.value, 'poll-option-form__icon-not-selected': pollOption.icon != icon.value}"
-        )
-          input(type="radio" :value="icon.value" v-model="pollOption.icon")
-          v-avatar(size="48")
-            img(:src="'/img/' + icon.value + '.svg'" :alt="icon.text" draggable="false")
+form(v-on:submit.prevent='submit()')
+  v-card.poll-common-option-form(:title="$t(cardTitle)")
+    template(v-slot:append)
+      dismiss-modal-button
+    v-card-text
+      div(v-if="hasOptionIcon")
+        span.v-label(v-t="'poll_option_form.icon'")
+        .d-flex.mb-4.space-between
+          label.poll-option-form__icon.mr-4.d-flex.flex-column.rounded.v-sheet.v-sheet--outlined.voting-enabled(
+            v-for="icon in icons"
+            :key="icon.value"
+            :class="{'poll-option-form__icon-selected': pollOption.icon == icon.value, 'poll-option-form__icon-not-selected': pollOption.icon != icon.value}"
+          )
+            input(type="radio" :value="icon.value" v-model="pollOption.icon")
+            v-avatar(size="48")
+              img(:src="'/img/' + icon.value + '.svg'" :alt="icon.text" draggable="false")
 
-      .lmo-validation-error(v-show="pollOption.name && !pollOption.icon")
-        span.text-caption.lmo-validation-error__message(v-t="'poll_option_form.please_select_an_icon'")
+        .lmo-validation-error(v-show="pollOption.name && !pollOption.icon")
+          span.text-caption.lmo-validation-error__message(v-t="'poll_option_form.please_select_an_icon'")
 
-    v-text-field.poll-option-form__name(
-      autofocus
-      :label="$t('poll_option_form.option_name')"
-      v-model="pollOption.name"
-      :hint="$t('poll_option_form.option_name_hint')"
-      counter
-      :rules="nameRules"
-    )
-    v-textarea(
-      v-if="hasOptionMeaning"
-      :label="$t('poll_option_form.meaning')"
-      :hint="$t('poll_option_form.meaning_hint')"
-      v-model="pollOption.meaning"
-      counter="280")
-    v-text-field(
-      v-if="hasOptionPrompt"
-      :label="$t('poll_option_form.prompt')"
-      :hint="$t('poll_option_form.prompt_hint')"
-      :placeholder="$t('poll_common.reason_placeholder')"
-      v-model="pollOption.prompt")
-  v-divider
-  v-card-actions
-    v-btn.poll-option-form__done-btn(
-      color="primary" variant="elevated"
-      @click="submit"
-      :disabled="(hasOptionIcon && !pollOption.icon) || !pollOption.name"
-    )
-      span(v-t="'common.action.done'")
+      v-text-field.poll-option-form__name(
+        autofocus
+        :label="$t('poll_option_form.option_name')"
+        v-model="pollOption.name"
+        :hint="$t('poll_option_form.option_name_hint')"
+        counter
+        :rules="nameRules"
+      )
+      v-textarea(
+        v-if="hasOptionMeaning"
+        :label="$t('poll_option_form.meaning')"
+        :hint="$t('poll_option_form.meaning_hint')"
+        v-model="pollOption.meaning"
+        counter="280")
+      v-text-field(
+        v-if="hasOptionPrompt"
+        :label="$t('poll_option_form.prompt')"
+        :hint="$t('poll_option_form.prompt_hint')"
+        :placeholder="$t('poll_common.reason_placeholder')"
+        v-model="pollOption.prompt")
+    v-divider
+    v-card-actions
+      v-btn.poll-option-form__done-btn(
+        color="primary" variant="elevated"
+        @click="submit"
+        :disabled="(hasOptionIcon && !pollOption.icon) || !pollOption.name"
+      )
+        span(v-t="'common.action.done'")
 </template>
 
 <style lang="sass">

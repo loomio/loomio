@@ -2240,12 +2240,15 @@ en:
     success: Successfully deleted
 
   poll_common_form:
+    deadline: Deadline
+    how_much_time_to_vote: How much time will you allow for people to vote?
     notify_everyone_when_poll_starts: Notify everyone when %{poll_type} starts
     option_has_votes_confirm_delete: Some people have voted for this option, are you sure you want to delete it?
     example_title: Example title
     example_title_hint: Give an example of a good proposal title
     example_details_placeholder: Provide a starting point for a proposal or poll. Questions can be useful prompts to get people writing. Include any rules or reminders that participants will need to know.
     confirm_delete: Are you sure you want to delete this poll template? This cannot be undone.
+    advanced_settings: Advanced settings
     show_advanced_settings: Show advanced settings
     hide_advanced_settings: Hide advanced settings
     choose_at_least: Choose at least
