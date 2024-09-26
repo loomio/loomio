@@ -135,10 +135,10 @@ v-main
   v-container.profile-page.max-width-1024.px-0.px-sm-3
     loading(v-if='!user')
     div(v-if='user')
-      v-card
+      v-card(:title="$t('profile_page.edit_profile')")
         submit-overlay(:value='user.processing')
         //- v-card-title
-        //-   h1.text-h5(tabindex="-1" v-t="'profile_page.edit_profile'")
+        //-   h1.text-h5(tabindex="-1" v-t="")
         v-card-text
           .profile-page__details
             .d-sm-flex
@@ -205,13 +205,12 @@ v-main
             span(v-t="'profile_page.update_profile'")
 
       v-card.profile-page-card.mt-4
-        v-list
+        v-list(lines="two")
           v-list-item(v-for="(action, key) in actions" :key="key"  @click="action.perform()" :class="'user-page__' + key")
             template(v-slot:prepend)
               common-icon(:name="action.icon")
-            v-list-item-content
-              v-list-item-title(v-t="action.name")
-              v-list-item-subtitle(v-t="action.subtitle")
+            v-list-item-title(v-t="action.name")
+            v-list-item-subtitle(v-if="action.subtitle" v-t="action.subtitle")
 
 </template>
 

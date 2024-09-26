@@ -277,7 +277,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         common-icon(tile name="mdi-plus")
       v-list-item-title(v-t="'group_form.new_group'")
 
-    v-divider
+    v-divider.my-2
     v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" @click="startOrFindDemo" lines="two")
       v-list-item-title(v-t="'templates.start_a_demo'")
       v-list-item-subtitle(v-t="'templates.play_with_an_example_group'")

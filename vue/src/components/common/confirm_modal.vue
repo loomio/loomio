@@ -56,8 +56,8 @@ v-card.confirm-modal(:title)
   template(v-slot:append)
     dismiss-modal-button(v-if="!confirm.forceSubmit")
   submit-overlay(:value='isDisabled')
-  v-card-text
-    p(
+  v-card-text.text-medium-emphasis.text-body-2.formatted-text
+    div(
       v-if="confirm.text.raw_helptext || confirm.text.helptext"
       v-html="confirm.text.raw_helptext || $t(confirm.text.helptext, confirm.textArgs)")
     div(v-if="confirm.text.confirm_text")
@@ -65,7 +65,8 @@ v-card.confirm-modal(:title)
       v-text-field.confirm-text-field(v-model="confirmText" v-on:keyup.enter="canProceed && submit()")
 
   v-card-actions
-    v-btn(text v-if="!confirm.forceSubmit" @click="close()" v-t="'common.action.cancel'")
+    v-btn(text v-if="!confirm.forceSubmit" @click="close()")
+      span(v-t="'common.action.cancel'")
     v-spacer
     v-btn.confirm-modal__submit(
       variant="elevated"
