@@ -123,11 +123,10 @@ v-main
               br
               span.text-medium-emphasis.text-caption(v-t="'email_settings_page.on_participation_description'")
         .text-subtitle-1
-          strong(v-t="'email_settings_page.email_catch_up_day'")
-        p(v-t="'email_settings_page.daily_summary_description'")
+          span(v-t="'email_settings_page.email_catch_up_day'")
+        p.text-medium-emphasis.pb-4(v-t="'email_settings_page.daily_summary_description'")
         v-select#email-catch-up-day(
           solo
-          max-width="100px"
           :items="emailDays"
           :label="$t('email_settings_page.email_catch_up_day')"
           v-model="user.emailCatchUpDay")
@@ -138,13 +137,12 @@ v-main
       v-card-actions
         help-link(path="en/user_manual/users/email_settings/#user-email-settings")
         v-spacer
-        v-btn.email-settings-page__update-button(color="primary" @click="submit()" v-t="'email_settings_page.update_settings'")
+        v-btn.email-settings-page__update-button(color="primary" @click="submit()")
+          span(v-t="'email_settings_page.update_settings'")
 
     change-volume-form.mb-4(:model="user" :show-close="false")
 
-    v-card
-      v-card-title
-        h1.text-h5(tabindex="-1" v-t="'email_settings_page.deactivate_header'")
+    v-card(:title="$t('email_settings_page.deactivate_header')")
       v-card-text
         p(v-t="'email_settings_page.deactivate_description'")
         v-list

@@ -118,6 +118,6 @@ v-card.change-volume-form(:title="$t(translateKey() + '.title', { title: title }
   v-card-actions(align-center)
     help-link(path="en/user_manual/users/email_settings/#group-email-notification-settings")
     v-spacer
-    v-btn.change-volume-form__submit(variant="elevated" type='button' :disabled='!formChanged' @click='submit()' color="primary")
+    v-btn.change-volume-form__submit(:disabled='!formChanged' @click='submit()' color="primary")
       span( v-t="'common.action.update'" )
 </template>
