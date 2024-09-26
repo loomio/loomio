@@ -634,6 +634,9 @@ en:
     unpin_sidebar: "Unpin sidebar"
     enable_beta_features: "Enable beta features"
     disable_beta_features: "Disable beta features"
+    theme: Theme
+    light: Light
+    dark: Dark
     enable_dark_mode: "Enable dark mode"
     disable_dark_mode: "Disable dark mode"
     button_label: 'User menu'
