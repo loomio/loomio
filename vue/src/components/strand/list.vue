@@ -249,10 +249,10 @@ export default {
   background-repeat: repeat-y
 
 .strand-item__stem--unread
-  background-color: var(--v-accent-lighten1)!important
+  background-color: rgb(var(--v-theme-primary)) !important
 
 .strand-item__stem--focused
-  background-color: var(--v-primary-darken1)!important
+  background-color: rgb(var(--v-theme-primary-darken-1))!important
 
 .strand-item__circle
   display: flex
