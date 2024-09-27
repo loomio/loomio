@@ -165,12 +165,11 @@ export default {
 </script>
 
 <template lang="pug">
-.recording-modal
-  .pa-4
-    .d-flex.justify-space-between
-      h1.text-h5(v-t="'record_modal.record_audio'")
-      v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='dismiss')
-        common-icon(name="mdi-close")
+v-card.recording-modal(:title="$t('record_modal.record_audio')")
+  template(v-slot:append)
+    v-btn.dismiss-modal-button(icon variant="flat" :aria-label="$t('common.action.cancel')" @click='dismiss')
+      common-icon(name="mdi-close")
+  v-card-text
     v-alert(v-if="error" type="error") {{error}}
     div(v-else)
       v-alert(type="info" v-if="!url && !onAir" :icon="mdiMicrophone")
