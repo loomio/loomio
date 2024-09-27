@@ -146,24 +146,24 @@ img.emoji
     color: #000
     padding: 0.2em 0.3em
 
-  // mark[data-color="red"]
-    // background-color: map-get($red, lighten-1)
-  // mark[data-color="pink"]
-    // background-color: map-get($pink, lighten-3)
-  // mark[data-color="purple"]
-    // background-color: map-get($purple, lighten-3)
-  // mark[data-color="blue"]
-    // background-color: map-get($blue, lighten-3)
-  // mark[data-color="green"]
-    // background-color: map-get($green, lighten-3)
-  // mark[data-color="yellow"]
-    // background-color: map-get($yellow, lighten-3)
-  // mark[data-color="orange"]
-    // background-color: map-get($orange, lighten-3)
-  // mark[data-color="brown"]
-    // background-color: map-get($brown, lighten-3)
-  // mark[data-color="grey"]
-    // background-color: map-get($grey, lighten-2)
+  mark[data-color="red"]
+    background-color: #ef5350
+  mark[data-color="pink"]
+    background-color: #f48fb1
+  mark[data-color="purple"]
+    background-color: #ce93d8
+  mark[data-color="blue"]
+    background-color: #90caf9
+  mark[data-color="green"]
+    background-color: #a5d6a7
+  mark[data-color="yellow"]
+    background-color: #fff59d
+  mark[data-color="orange"]
+    background-color: #ffcc80
+  mark[data-color="brown"]
+    background-color: #bcaaa4
+  mark[data-color="grey"]
+    background-color: #e0e0e0
 
   .cursor
     font-size: 0.8rem
@@ -172,7 +172,7 @@ img.emoji
     letter-spacing: normal
 
   span[data-mention-id]
-    color: var(--v-anchor-base)
+    color: rgb(var(--v-theme-anchor))
 
   blockquote, pre
     margin: 0.5rem 0
