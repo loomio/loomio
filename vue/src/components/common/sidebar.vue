@@ -228,7 +228,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       :title="$t('sidebar.start_thread')")
       template(v-slot:append)
         common-icon(name="mdi-plus")
-    v-list-item(
+    //- v-list-item(
        nav slim 
       to="/tasks"
       :disabled="organizations.length == 0" :title="$t('tasks.tasks')")
