@@ -28,7 +28,8 @@ export function setupI18n(options = {
   fallbackLocale: 'en',
   messages: {en},
   silentTranslationWarn: true,
-  warnHtmlInMessage: 'off'
+  warnHtmlInMessage: 'off',
+  warnHtmlMessage: false
 }){
   const i18n = createI18n(options)
   setI18nLanguage(i18n, options.locale)

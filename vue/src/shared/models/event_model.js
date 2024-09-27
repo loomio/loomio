@@ -69,6 +69,10 @@ export default class EventModel extends BaseModel {
     return Records[BaseModel.eventTypeMap[this.eventableType]].find(this.eventableId);
   }
 
+  isPollEvent() {
+    ['Poll', 'Outcome', 'Stance'].includes(this.eventableType)
+  }
+
   isUnread() {
     return !this.discussion().hasRead(this.sequenceId);
   }

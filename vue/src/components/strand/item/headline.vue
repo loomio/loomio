@@ -23,7 +23,7 @@ export default {
           username: actor.username,
           key:      this.event.model().key,
           title:    eventTitle(this.event),
-          polltype: this.$t(eventPollType(this.event)).toLowerCase()
+          polltype: this.event.isPollEvent() ? this.$t(eventPollType(this.event)).toLowerCase() : null
         });
       }
     },
