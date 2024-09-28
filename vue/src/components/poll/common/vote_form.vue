@@ -111,7 +111,7 @@ export default {
           return ['poll-common-vote-form__button--not-selected', votingStatus];
         }
       } else {
-        return [votingStatus];
+        return ['poll-common-vote-form__button--none-selected', votingStatus];
       }
     }
   }
@@ -133,13 +133,13 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
       v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.minimumStanceChoices, maximum: poll.maximumStanceChoices}}")
 
   v-card.poll-common-vote-form__button.mb-2.rounded(
-    variant="outlined"
-    :style="(isSelected(option) && {'border-color': option.color}) || {}"
+    variant="tonal"
+    :color="(isSelected(option) && option.color) || {}"
     v-for='option in options'
     :key='option.id'
     :class="classes(option)"
   )
-    label
+    label.text-on-surface
       input(
         v-if="singleChoice"
         v-model="selectedOptionId"
@@ -190,8 +190,17 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
 .poll-common-vote-form__allow-wrap
   white-space: normal
 
+.poll-common-vote-form__button--none-selected
+  opacity: 0.80 !important
+
+.poll-common-vote-form__button--none-selected:hover
+  opacity: 1 !important
+
 .poll-common-vote-form__button--not-selected
   opacity: 0.33 !important
+
+.poll-common-vote-form__button--not-selected:hover
+  opacity: 0.66 !important
 
 .poll-common-vote-form__button.voting-enabled label
   cursor: pointer
@@ -203,15 +212,5 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     width: 0
     height: 0
 
-.poll-common-vote-form__button.voting-enabled
-  border: 1px solid rgba(0,0,0,0.1)
-
-.v-theme--dark, .v-theme--darkBlue
-  .poll-common-vote-form__button.voting-enabled
-    border: 1px solid rgba(255,255,255, 0.2)
-
-.poll-common-vote-form__button.voting-enabled
-  &:hover
-    border: 1px solid rgb(var(--v-theme-primary))
 
 </style>
