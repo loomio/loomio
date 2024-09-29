@@ -15,6 +15,7 @@ class CommentService
       comment.update(discarded_at: Time.now, discarded_by: actor.id)
       comment.created_event.update(user_id: nil, pinned: false)
     end
+    comment.discussion.update_sequence_info!
     comment.created_event
   end
 
