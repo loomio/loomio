@@ -206,7 +206,7 @@ export default {
               v-chip.ml-2(size="x-small" v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
             v-list-item-subtitle {{ template.processSubtitle }}
             //- v-list-item-action.handle(v-handle style="cursor: grab")
-          template(v-slot:append)
+            template(v-slot:append)
               common-icon(name="mdi-drag-vertical")
     template(v-else)
       v-list-item.decision-tools-card__poll-type(
@@ -226,6 +226,10 @@ export default {
 
 </template>
 <style>
+.sortable-list-item {
+  cursor: grab;
+}
+
 .decision-tools-card__poll-type {
   user-select: none;
 }
