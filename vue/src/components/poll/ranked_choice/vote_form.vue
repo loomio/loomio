@@ -59,16 +59,16 @@ export default {
 
 <template lang='pug'>
 .poll-ranked-choice-vote-form.lmo-relative
-  p.text-medium-emphasis(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
-  sortable-list(v-model="pollOptions" lock-axis="y" axis="y" append-to=".app-is-booted")
+  p.text-medium-emphasis.py-4(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
+  sortable-list.pb-2(v-model:list="pollOptions" lock-axis="y" axis="y" append-to=".app-is-booted")
     sortable-item(
       v-for="(option, index) in pollOptions"
       :index="index"
       :key="option.id"
       :item="option"
     )
-      v-sheet.mb-2.rounded.poll-ranked-choice-vote-form__option(outlined :style="{'border-color': option.color}")
-        v-list-item
+      .mb-2.poll-ranked-choice-vote-form__option
+        v-list-item.rounded(variant="tonal")
           template(v-slot:prepend)
             common-icon(style="cursor: pointer", :color="option.color" name="mdi-drag")
           v-list-item-title {{option.name}}
@@ -81,6 +81,7 @@ export default {
   v-card-actions.poll-common-form-actions
     v-btn.poll-common-vote-form__submit(
       block
+      variant="elevated"
       :disabled="!poll.isVotable()"
       @click='submit()'
       :loading="stance.processing"

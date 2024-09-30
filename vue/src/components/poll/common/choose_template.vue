@@ -6,12 +6,10 @@ import EventBus     from '@/shared/services/event_bus';
 import PollTemplateService     from '@/shared/services/poll_template_service';
 import { pickBy } from 'lodash-es';
 import { ContainerMixin, HandleDirective } from 'vue-slicksort';
-import ThreadTemplateHelpPanel from '@/components/thread_template/help_panel';
 import WatchRecords from '@/mixins/watch_records';
 
 export default {
   mixins: [WatchRecords],
-  components: {ThreadTemplateHelpPanel},
   directives: {
     handle: HandleDirective
   },
@@ -161,7 +159,6 @@ export default {
 
 <template lang="pug">
 .poll-common-templates-list
-  //- thread-template-help-panel(v-if="discussionTemplate" :discussion-template="discussionTemplate")
   .d-flex(:class="{'px-4': !discussion}")
     v-chip.mr-1(
       :color="filter == name ? 'primary' : null"
@@ -193,7 +190,7 @@ export default {
       v-list-subheader(v-if="pollTemplates.length" v-t="'poll_common.hidden_poll_templates'")
 
     template(v-if="isSorting")
-      sortable-list(v-model="pollTemplates"  @sort-end="sortEnded" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
+      sortable-list(v-model:list="pollTemplates"  @sort-end="sortEnded" append-to=".decision-tools-card__poll-types"  lock-axis="y" axis="y")
         sortable-item(v-for="(template, index) in pollTemplates" :index="index" :key="template.id || template.key")
           v-list-item.decision-tools-card__poll-type(
             :class="'decision-tools-card__poll-type--' + template.pollType"

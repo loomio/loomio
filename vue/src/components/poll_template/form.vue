@@ -286,7 +286,7 @@ export default {
   template(v-if="hasOptions")
     .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
     v-list-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
-    sortable-list(v-model="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
+    sortable-list(v-model:list="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
       sortable-item(
         v-for="(option, priority) in pollOptions"
         :index="priority"

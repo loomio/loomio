@@ -121,7 +121,7 @@ export default {
                     v-list-item-title(v-t="'thread_template.hidden_templates'")
 
           template(v-if="isSorting")
-            sortable-list(v-model="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")
+            sortable-list(v-model:list="templates"  @sort-end="sortEnded" append-to=".append-sort-here"  lock-axis="y" axis="y")
               sortable-item(v-for="(template, index) in templates" :index="index" :key="template.id || template.key")
                 v-list-item(:key="template.id")
                   v-list-item-title {{template.processName || template.title}}
