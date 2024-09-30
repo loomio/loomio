@@ -208,7 +208,7 @@ export default
       ],
       onUpdate: () => {
         if (this.maxLength) { this.checkLength(); }
-        if (this.model.isNew()) { this.scrapeLinkPreviews(); }
+        // if (this.model.isNew()) { this.scrapeLinkPreviews(); }
       },
       onCreate: () => {
         if (this.model.isNew() && (this.editor.getCharacterCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
