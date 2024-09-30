@@ -64,7 +64,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-layout.comment-form
+.d-flex.comment-form
   .thread-item__avatar.mr-3
     user-avatar(
       :user='comment.author() || actor'

@@ -100,6 +100,9 @@ v-app.app-is-booted
 @import '@/css/thumbicons.css'
 @import '@/css/print.scss'
 
+.v-card, .v-card-item__content
+  overflow: visible!important
+
 .text-on-surface
   color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity))
 
