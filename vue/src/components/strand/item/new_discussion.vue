@@ -95,24 +95,8 @@ export default {
     v-breadcrumbs.context-panel__breadcrumbs(color="anchor" :items="groups")
       template(v-slot:divider)
         common-icon(name="mdi-chevron-right")
-    tags-display(:tags="discussion.tags" :group="discussion.group()")
     v-spacer
-    v-chip(
-      v-if="discussion.private"
-      size="small"
-      variant="tonal"
-      :title="$t('discussion_form.privacy_private')"
-    )
-      common-icon.mr-1(name="mdi-lock-outline")
-      span(v-t="'common.privacy.private'")
-    v-chip(
-      v-if="!discussion.private"
-      size="small"
-      variant="tonal"
-      :title="$t('discussion_form.privacy_public')"
-    )
-      common-icon.mr-1(name="mdi-earth")
-      span(v-t="'common.privacy.public'")
+    tags-display(:tags="discussion.tags" :group="discussion.group()")
 
   strand-title(:discussion="discussion")
 
@@ -128,6 +112,7 @@ export default {
     span.text-medium-emphasis(v-show='discussion.usersNotifiedCount != null')
       mid-dot
       a.context-panel__users_notified_count(v-t="{ path: 'thread_context.count_notified', args: { count: discussion.usersNotifiedCount} }"  @click="actions.notification_history.perform")
+
   template(v-if="!collapsed")
     formatted-text.context-panel__description(:model="discussion" column="description")
     link-previews(:model="discussion")
