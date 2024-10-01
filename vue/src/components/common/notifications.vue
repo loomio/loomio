@@ -18,10 +18,17 @@ export default {
   methods: {
     clicked() {
       this.open = !this.open;
-      if (this.open) {
+
+    }
+  },
+
+  watch: {
+    open(val) {
+      if (val) {
         this.unread = Records.notifications.find({viewed: { $ne: true }});
         this.unreadIds = this.unread.map(n => n.id);
         Records.notifications.viewed();
+        Records.notifications.fetchNotifications();
       } else {
         this.unreadIds = [];
         this.unreadCount = 0;
@@ -44,7 +51,7 @@ export default {
 
 </script>
 <template lang="pug">
-v-menu.notifications(location="bottom")
+v-menu.notifications(location="bottom" v-model="open")
   template(v-slot:activator="{ props }")
     v-btn.notifications__button(icon v-bind="props" :title="$t('navbar.notifications')")
       v-badge(color="primary" :content="unread.length" v-if="unread.length")
