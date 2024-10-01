@@ -59,7 +59,7 @@
     "activestorage": "^5.2.8",
     "chart.js": "^3.9.1",
     "date-fns": "2.30.0",
-    "date-fns-tz": "2.0.1",
+    "date-fns-tz": "3.2.0",
     "deepmerge": "^4.3.1",
     "emoji-unicode": "^2.0.1",
     "jstimezonedetect": "~1.0.7",
