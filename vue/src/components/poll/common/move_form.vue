@@ -48,7 +48,6 @@ v-card.poll-common-move-form(
   @keydown.meta.enter.stop.capture="submit()")
   template(v-slot:append)
     dismiss-modal-button
-  submit-overlay(:value="poll.processing")
   v-card-text
     loading(v-if="!groups.length")
     v-select(v-if="groups.length" v-model="groupId" :items="groups" :label="$t('move_thread_form.body')")

@@ -23,7 +23,6 @@ export default
 </script>
 <template lang="pug">
 v-card.membership-modal(:title="$t('membership_form.modal_title.group')")
-  submit-overlay(:value='membership.processing')
   template(v-slot:append)
     dismiss-modal-button
   v-card-text.membership-form

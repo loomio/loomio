@@ -277,7 +277,6 @@ export default {
 </script>
 <template lang="pug">
 .poll-common-form
-  submit-overlay(:value="poll.processing")
   v-card-title.px-0.d-flex
     h1.text-h4(tabindex="-1" v-t="{path: titlePath, args: titleArgs}")
     v-spacer

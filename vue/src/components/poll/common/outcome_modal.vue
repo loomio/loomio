@@ -100,10 +100,10 @@ export default {
 v-card.poll-common-outcome-modal(
   @keyup.ctrl.enter="submit()"
   @keydown.meta.enter.stop.capture="submit()"
-  :title="outcome.isNew() ? $t('poll_common_outcome_form.new_title') : $t('poll_common_outcome_form.update_title')")
-  submit-overlay(:value='outcome.processing')
+  :title="outcome.isNew() ? $t('poll_common_outcome_form.new_title') : $t('poll_common_outcome_form.update_title')"
+)
   template(v-slot:append)
-    dismiss-modal-button(:model="outcome")
+    dismiss-modal-button
   v-card-text.poll-common-outcome-form
     p.pb-4.text-medium-emphasis(v-t="'announcement.form.outcome_announced.helptext'")
     recipients-autocomplete(

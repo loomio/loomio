@@ -122,8 +122,6 @@ export default {
 
 <template lang="pug">
 form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.stop.capture="submit()")
-  submit-overlay(:value="stance.processing")
-
   v-alert(v-if="poll.config().has_options && !poll.singleChoice()" :color="optionCountAlertColor")
     span(
       v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"

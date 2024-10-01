@@ -195,8 +195,6 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
     v-btn.back-button(variant="text" v-if="isPage && $route.query.return_to" icon :aria-label="$t('common.action.cancel')" :to='$route.query.return_to')
       common-icon(name="mdi-close")
 
-  submit-overlay(:value='discussion.processing')
-
   v-card-item
     thread-template-help-panel.mb-8(v-if="discussionTemplate" :discussion-template="discussionTemplate")
     v-select.pb-4(

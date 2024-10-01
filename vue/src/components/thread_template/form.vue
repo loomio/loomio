@@ -94,7 +94,6 @@ export default {
 </script>
 <template lang="pug">
 .thread-template-form
-  submit-overlay(:value="discussionTemplate.processing")
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
       template(v-slot:divider)

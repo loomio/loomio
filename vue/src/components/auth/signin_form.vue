@@ -69,7 +69,6 @@ v-card.auth-signin-form(
     v-btn.back-button(icon variant="text" :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")
 
-  submit-overlay(:value='loading')
   .max-width-400.mx-auto
     .d-flex.justify-center.mb-4
       user-avatar(:user='user' :size='128')

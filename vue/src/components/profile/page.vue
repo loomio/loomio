@@ -136,9 +136,6 @@ v-main
     loading(v-if='!user')
     div(v-if='user')
       v-card(:title="$t('profile_page.edit_profile')")
-        submit-overlay(:value='user.processing')
-        //- v-card-title
-        //-   h1.text-h5(tabindex="-1" v-t="")
         v-card-text
           .profile-page__details
             .d-sm-flex

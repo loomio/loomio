@@ -214,7 +214,6 @@ export default {
 </script>
 <template lang="pug">
 .poll-template-form(:class="isModal ? 'pa-4' : ''")
-  submit-overlay(:value="pollTemplate.processing")
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
       template(v-slot:divider)

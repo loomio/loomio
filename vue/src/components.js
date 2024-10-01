@@ -116,7 +116,6 @@ module.exports = {
   ShareableLinkModal: 'group/shareable_link_modal',
   Sidebar: 'common/sidebar',
   Space: 'common/space',
-  SubmitOverlay: 'common/submit_overlay',
   SubgroupsCard: 'group/subgroups_card',
   SubgroupsSelect: 'group/subgroups_select',
   TagsDisplay: 'tags/display',

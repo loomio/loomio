@@ -40,7 +40,6 @@ export default
 v-card.membership-request-form(:title="$t('membership_request_form.heading')")
   template(v-slot:append)
     dismiss-modal-button(:close="close")
-  submit-overlay(:value='membershipRequest.processing')
   v-card-text
     .membership-request-form__visitor(v-if='!isSignedIn')
       v-text-field.membership-request-form__name(v-model='membershipRequest.name' :required='true' :label="$t('membership_request_form.name_label')")

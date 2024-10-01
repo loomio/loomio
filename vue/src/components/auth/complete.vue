@@ -54,7 +54,6 @@ v-card.auth-complete(
     v-btn.back-button(icon :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")
   v-sheet.mx-4.text-center
-    submit-overlay(:value='loading')
     p.my-6(v-if='user.sentLoginLink')
       span(v-t="{ path: 'auth_form.login_link_sent', args: { email: user.email }}")
       br

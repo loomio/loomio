@@ -33,8 +33,6 @@ v-card.poll-common-edit-vote-modal(:title="$t(title)")
   template(v-slot:append)
     dismiss-modal-button(:model="stance")
       
-  submit-overlay(:value="stance.processing")
-
   v-sheet.pa-4
     poll-common-directive(name="vote-form" :stance="stance")
 </template>

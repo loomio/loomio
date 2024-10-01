@@ -32,7 +32,6 @@ export default {
 v-card.poll-common-reopen-modal(:title="$t('poll_common_reopen_form.title', {poll_type: poll.translatedPollType()})")
   template(v-slot:append)
     dismiss-modal-button
-  submit-overlay(:value='poll.processing')
   v-card-text.poll-common-reopen-form
     p.text-medium-emphasis(v-t="{path: 'poll_common_reopen_form.helptext', args: {poll_type: poll.translatedPollType()}}")
     poll-common-closing-at-field(:poll='poll')

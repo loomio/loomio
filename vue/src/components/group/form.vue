@@ -171,8 +171,6 @@ v-card.group-form(:title="$t(cardTitle)")
   v-overlay(:value="uploading")
     v-progress-circular(size="64", :value="progress")
 
-  submit-overlay(:value='group.processing')
-
   v-tabs(v-model="tab")
     v-tab(value="profile" v-t="'group_form.profile'")
     v-tab.group-form__privacy-tab(value="privacy" v-t="'group_form.privacy'")

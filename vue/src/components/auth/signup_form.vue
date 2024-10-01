@@ -68,7 +68,6 @@ v-card.auth-signup-form(
     v-btn.back-button(icon variant="text" :title="$t('common.action.back')" @click='user.authForm = null')
       common-icon(name="mdi-close")
   v-sheet.mx-4(v-if="allow")
-    submit-overlay(:value='loading')
     .auth-signup-form__welcome.text-center.my-2
       p(v-t="{path: 'auth_form.sign_up_as', args: {email: user.email}}")
     .auth-signup-form__name

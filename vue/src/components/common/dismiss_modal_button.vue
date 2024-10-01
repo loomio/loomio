@@ -4,7 +4,6 @@ import EventBus from '@/shared/services/event_bus';
 export default {
   props: {
     close: Function,
-    model: Object
   },
   methods: {
     closeModal() {

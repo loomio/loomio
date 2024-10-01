@@ -25,7 +25,6 @@ export default {
 
 <template lang="pug">
 v-card.thread-arrangement-form
-  submit-overlay(:value='discussion.processing')
   v-card-title
     span(v-t="'thread_arrangement_form.title'")
     v-spacer

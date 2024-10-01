@@ -55,7 +55,6 @@ export default {
 v-card.confirm-modal(:title)
   template(v-slot:append)
     dismiss-modal-button(v-if="!confirm.forceSubmit")
-  submit-overlay(:value='isDisabled')
   v-card-text.text-medium-emphasis.text-body-2.formatted-text
     div(
       v-if="confirm.text.raw_helptext || confirm.text.helptext"

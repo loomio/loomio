@@ -59,7 +59,6 @@ export default {
 v-main
   v-container.contact-page
     v-card.contact-form(v-show='!submitted' :title="$t('contact_message_form.title')").max-width-800
-      submit-overlay(:value='message.processing')
       v-card-item.text-body-2
         p(v-t="'contact_message_form.respond_asap'")
         p(v-t="'contact_message_form.happy_to_help_with'")

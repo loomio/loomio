@@ -58,7 +58,6 @@ export default {
 </script>
 <template lang="pug">
 v-card.move-thread-form(:title="$t('move_thread_form.title')")
-  submit-overlay(:value='discussion.processing')
   template(v-slot:append)
     dismiss-modal-button
   v-card-text

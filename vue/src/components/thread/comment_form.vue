@@ -71,7 +71,6 @@ export default {
       :size='comment.parentId ? 28 : 32'
     )
   form.thread-item__body.comment-form__body(v-on:submit.prevent='submit()' @keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
-    submit-overlay(:value='comment.processing')
     lmo-textarea.ml-n1(
       :model='comment'
       @is-uploading="handleIsUploading"
