@@ -77,7 +77,7 @@ export default {
       if (!this.group) { return []; }
       return compact([this.group.parentId && this.group.parent(), this.group]).map(g => {
         return {
-          text: g.name,
+          title: g.name,
           disabled: false,
           to: this.urlFor(g)
         };
@@ -95,7 +95,7 @@ export default {
   v-main
     v-container.max-width-800.px-0.px-sm-3
       .d-flex
-        v-breadcrumbs.px-4(:items="breadcrumbs")
+        v-breadcrumbs(color="anchor" :items="breadcrumbs")
           template(v-slot:divider)
             common-icon(name="mdi-chevron-right")
       v-card(:title="$t(showSettings ? 'thread_template.hidden_templates' : 'thread_template.start_a_new_thread')")
