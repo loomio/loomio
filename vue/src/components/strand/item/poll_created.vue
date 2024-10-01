@@ -60,7 +60,7 @@ export default {
 
 <template lang="pug">
 section.strand-item.poll-created
-  v-layout(justify-space-between)
+  .d-flex.justify-space-between
     .poll-common-card__title.text-h6.pb-1(tabindex="-1")
       router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
       translation(v-if="poll.translation.title", :model='poll', field='title')

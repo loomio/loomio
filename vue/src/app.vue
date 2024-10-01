@@ -100,7 +100,15 @@ v-app.app-is-booted
 @import '@/css/thumbicons.css'
 @import '@/css/print.scss'
 
-.v-card, .v-card-item__content
+.v-card.group-form > .v-card__content
+  overflow: visible!important
+
+.v-card.discussion-form,
+.v-card.discussion-form .v-card-item__content,
+.v-card.group-form,
+.v-card.group-form .v-card-item__content,
+.v-card.poll-common-modal,
+.v-card.poll-common-modal .v-card-item__content
   overflow: visible!important
 
 .text-on-surface
