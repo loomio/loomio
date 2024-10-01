@@ -79,7 +79,8 @@ export default {
       openModal({
         component: 'SeenByModal',
         props: {
-          discussion: this.discussion
+          discussion: this.discussion,
+          persistent: false
         }
       });
     }

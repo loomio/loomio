@@ -148,7 +148,8 @@ export default new class ThreadService {
           return openModal({
             component: 'AnnouncementHistory',
             props: {
-              model: discussion
+              model: discussion,
+              persistent: false
             }
           });
         },
