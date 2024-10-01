@@ -69,7 +69,7 @@ describe Discussion do
 
       it "increments corrently" do
         expect(discussion.items_count).to be 1
-        expect(discussion.last_activity_at).to eq @event.created_at
+        expect(discussion.last_activity_at).to eq @event.eventable.created_at
         expect(discussion.first_sequence_id).to be @event.sequence_id
         expect(discussion.last_sequence_id).to be @event.sequence_id
       end
@@ -83,6 +83,7 @@ describe Discussion do
         discussion.reload
         @comment.reload
         @comment.destroy
+        discussion.update_sequence_info!
         discussion.reload
       end
 
@@ -115,7 +116,7 @@ describe Discussion do
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 1
-        expect(discussion.last_activity_at).to eq @event2.created_at
+        expect(discussion.last_activity_at).to eq @event2.eventable.created_at
         expect(discussion.first_sequence_id).to be @event2.sequence_id
         expect(discussion.last_sequence_id).to be @event2.sequence_id
       end
@@ -136,12 +137,13 @@ describe Discussion do
         @comment2.reload
 
         @comment2.destroy
+        discussion.update_sequence_info!
         discussion.reload
       end
 
       it "decrements correctly" do
         expect(discussion.items_count).to be 1
-        expect(discussion.last_activity_at).to eq @event1.created_at
+        expect(discussion.last_activity_at).to eq @event1.eventable.created_at
         expect(discussion.first_sequence_id).to be @event1.sequence_id
         expect(discussion.last_sequence_id).to be @event1.sequence_id
       end

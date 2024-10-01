@@ -112,16 +112,23 @@ export default
 
   mounted() {
     const docname = this.model.collabKey(this.field, (Session.user().id || AppConfig.channel_token));
+
+    const onSync = function(provider) {
+      if (this.editor) {
+        if (!provider.document.getMap('config').get('initialContentLoaded')) {
+          provider.document.getMap('config').set('initialContentLoaded', true)
+          this.editor.commands.setContent(this.model[this.field]);
+        }
+      } else {
+        setTimeout( () => onSync(provider) , 250);
+      }
+    }.bind(this);
+
     provider = new HocuspocusProvider({
       url: AppConfig.theme.hocuspocus_url,
       name: docname,
       token: (Session.user().id || 0) + "," + (Session.user().secretToken || AppConfig.channel_token),
-      onSynced: function() {
-        if (!provider.document.getMap('config').get('initialContentLoaded') && this.editor) {
-          provider.document.getMap('config').set('initialContentLoaded', true)
-          this.editor.commands.setContent(this.model[this.field])
-        }
-      }.bind(this),
+      onSynced: function() { onSync(provider); }.bind(this),
     });
 
     new IndexeddbPersistence(docname, provider.document);

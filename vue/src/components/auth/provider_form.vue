@@ -48,7 +48,13 @@ export default {
 <template lang="pug">
 .auth-provider-form(v-if='providers.length')
   .d-flex.flex-column.auth-provider-form__providers
-    v-btn.auth-provider-form__provider.my-2(v-for='provider in providers' :key="provider.id" variant="tonal" :color="providerColor(provider.name)" @click='select(provider)')
+    v-btn.auth-provider-form__provider.my-2(
+      v-for='provider in providers'
+      :key="provider.id"
+      variant="tonal"
+      :color="providerColor(provider.name)"
+      @click='select(provider)'
+    )
       common-icon(:color="providerColor(provider.name)" :name="iconClass(provider.name)")
       space
       span(v-t="{ path: 'auth_form.continue_with_provider', args: { provider: providerName(provider.name) } }")

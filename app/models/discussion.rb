@@ -182,10 +182,20 @@ class Discussion < ApplicationRecord
     :new_discussion
   end
 
+  def find_last_activity_at
+    [
+      self.comments.kept.order("created_at desc"),
+      self.polls.kept.order("created_at desc"),
+      Outcome.where(poll_id: poll_ids).order("created_at desc"),
+      Stance.latest.where(poll_id: poll_ids).order("updated_at, created_at desc"),
+      Discussion.where(id: self.id)
+    ].map { |rel| rel.first&.created_at }.compact.max
+  end
+
   def update_sequence_info!
     sequence_ids = discussion.items.order(:sequence_id).pluck(:sequence_id).compact
     discussion.ranges_string = RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list sequence_ids
-    discussion.last_activity_at = discussion.items.unreadable.order(:sequence_id).last&.created_at || created_at
+    discussion.last_activity_at = find_last_activity_at
     update_columns(
       items_count: sequence_ids.count,
       ranges_string: discussion.ranges_string,

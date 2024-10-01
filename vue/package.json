@@ -8,10 +8,10 @@
     "test": "nightwatch --retries 2 --headless"
   },
   "dependencies": {
-    "@hocuspocus/provider": "^2.13.5",
+    "@hocuspocus/provider": "^2.13.6",
     "@mdi/js": "^6.9.96",
     "@sentry/browser": "^8.28.0",
-    "@sentry/vue": "^8.30.0",
+    "@sentry/vue": "^8.32.0",
     "@tiptap/core": "^2.6.6",
     "@tiptap/extension-blockquote": "^2.6.6",
     "@tiptap/extension-bold": "^2.6.6",
@@ -84,11 +84,11 @@
     "@originjs/vite-plugin-commonjs": "latest",
     "@originjs/vite-plugin-content": "latest",
     "@vitejs/plugin-vue": "^5.0.0",
-    "nightwatch": "^3.6.0",
+    "nightwatch": "^3.8.0",
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
-    "vite": "^5.4.4",
+    "vite": "^5.4.8",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest"
   },

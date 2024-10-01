@@ -99,9 +99,22 @@ v-card.auth-signup-form(
 
   v-card-actions.mt-8(v-if="allow")
     v-spacer
-    v-btn.auth-signup-form__submit(variant="elevated" color="primary" :loading="loading" :disabled='!vars.name || (termsUrl && !vars.legalAccepted)')
+    v-btn.auth-signup-form__submit(
+      variant="elevated"
+      color="primary"
+      :loading="loading"
+      :disabled='!vars.name || (termsUrl && !vars.legalAccepted)'
+    )
       span(v-t="'auth_form.create_account'" @click='submit()')
-  //- vue-recaptcha(v-if='useRecaptcha' ref="invisibleRecaptcha" :sitekey="recaptchaKey" :loadRecaptchaScript="true" size="invisible" @verify="submitForm")
+        
+  //- vue-recaptcha(
+  //-   v-if='useRecaptcha'
+  //-   ref="invisibleRecaptcha"
+  //-   :sitekey="recaptchaKey"
+  //-   :loadRecaptchaScript="true"
+  //-   size="invisible"
+  //-   @verify="submitForm"
+  //- )
 </template>
 <style>
 .auth-signup-form .v-label {
