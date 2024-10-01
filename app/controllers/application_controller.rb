@@ -85,6 +85,7 @@ class ApplicationController < ActionController::Base
   def show
     resource = ModelLocator.new(resource_name, params).locate!
     @recipient = current_user
+    save_beta_setting!
     if current_user.can? :show, resource
       assign_resource
       @pagination = pagination_params
@@ -163,20 +164,9 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
+    save_beta_setting!
 
-    if current_user.present?
-      if params[:beta] == "1"
-        current_user.experiences['vue3'] = true
-        current_user.save
-      end
-
-      if params[:beta] == "0"
-        current_user.experiences['vue3'] = false
-        current_user.save
-      end
-    end
-
-    if params[:beta] == "1" || (current_user.present? && current_user.experiences['vue3'])
+    if use_beta_client?
       render file: Rails.root.join('public/client3/index.html'), layout: false, status: status
     else
       render file: Rails.root.join('public/blient/index.html'), layout: false, status: status

@@ -1,6 +1,24 @@
 module ApplicationHelper
+  def save_beta_setting!
+    if current_user.present?
+      if params[:beta] == "1"
+        current_user.experiences['vue3'] = true
+        current_user.save
+      end
+
+      if params[:beta] == "0"
+        current_user.experiences['vue3'] = false
+        current_user.save
+      end
+    end
+  end
+
+  def use_beta_client?
+    params[:beta] == "1" || (current_user.present? && current_user.experiences['vue3'])
+  end
+
   def vue_index
-    if params[:beta]
+    if use_beta_client?
       File.read(Rails.root.join('public/client3/index.html'))
     else
       File.read(Rails.root.join('public/blient/index.html'))
