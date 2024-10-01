@@ -42,7 +42,7 @@ export default {
 </script>
 <template lang="pug">
 span.tags-display
-  v-chip.mr-1.mb-1(
+  v-chip.mr-1(
     v-for="tag in tagObjects"
     :key="tag.id"
     :outlined="tag.name != selected"
@@ -51,7 +51,7 @@ span.tags-display
     :to="'/g/'+groupKey+'/tags/'+encodeURIComponent(tag.name)"
     :class="{'mb-1': showCounts}"
   )
-    span {{ tag.name }}
+    span.text-on-surface {{ tag.name }}
     span(v-if="showCounts")
       space
       span {{tag.taggingsCount}}
