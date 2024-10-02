@@ -13,8 +13,6 @@ export default function(callback) {
 
     AppConfig.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-
-
     ['shortcut icon'].forEach(function(name) {
       const link = document.createElement('link');
       link.rel = name;

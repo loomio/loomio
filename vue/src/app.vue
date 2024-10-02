@@ -29,7 +29,7 @@ export default {
   },
 
   mounted() {
-    // initLiveUpdate();
+    initLiveUpdate();
     EventBus.$on('currentComponent',     this.setCurrentComponent);
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
@@ -41,7 +41,7 @@ export default {
   },
 
   destroyed() {
-    return closeLiveUpdate();
+    closeLiveUpdate();
   },
 
   watch: {
