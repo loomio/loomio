@@ -79,24 +79,21 @@ export default
 <template lang="pug">
 v-main
   v-container.group-page.max-width-800
-    v-card.trial-started(v-if="trialStarted")
-      v-card-text
-        p.text-h4(v-t="'start_trial.success'")
-        p(v-t="'start_trial.taken_first_step'")
-        p(v-t="{path: 'start_trial.account_created_for_you', args: {email: userEmail}}")
-        p(v-t="'start_trial.please_sign_in_to_continue'")
-      v-card-actions
-        v-spacer
-        v-btn(color="primary" :href="'/dashboard?user_email='+userEmail" v-t="'auth_form.sign_in'")
-        v-spacer
-    v-card.start-trial-form(v-else)
-      v-form(ref="form" @submit.prevent="submit")
-        v-card-title
-          h1.text-h5(v-t="'start_trial.title'")
-
+    v-form(ref="form" @submit.prevent="submit")
+      v-card.trial-started(v-if="trialStarted")
         v-card-text
-          p(v-t="{path: 'start_trial.intro', args: {day: trialDays}}")
-          p(v-t="'start_trial.lets_get_started'")
+          p.text-h4(v-t="'start_trial.success'")
+          p(v-t="'start_trial.taken_first_step'")
+          p(v-t="{path: 'start_trial.account_created_for_you', args: {email: userEmail}}")
+          p(v-t="'start_trial.please_sign_in_to_continue'")
+        v-card-actions
+          v-spacer
+          v-btn(color="primary" :href="'/dashboard?user_email='+userEmail" v-t="'auth_form.sign_in'")
+          v-spacer
+      v-card.start-trial-form(v-else :title="$t('start_trial.title')" )
+        v-card-text
+          p.pb-4(v-t="{path: 'start_trial.intro', args: {day: trialDays}}")
+          p.pb-4(v-t="'start_trial.lets_get_started'")
           v-text-field(v-if="!isSignedIn" v-model='userName' :label="$t('start_trial.your_name')" :rules="nameRules" required)
           v-text-field(v-if="!isSignedIn" v-model='userEmail' :label="$t('start_trial.your_email')" type="email" :rules="emailRules" required)
           v-text-field(v-model='group.name' :label="$t('group_form.organization_name')" :rules="nameRules" required)
@@ -106,7 +103,7 @@ v-main
           v-checkbox(v-model='newsletter' :label="$t('start_trial.subscribe_to_newsletter')" :hint="$t('start_trial.newsletter_description')" persistent-hint)
           v-checkbox.auth-signup-form__legal-accepted(v-model='acceptTerms' required :rules="checkRules")
             template(v-slot:label)
-              i18n(path="auth_form.i_accept_all" tag="span")
+              i18n-t(keypath="auth_form.i_accept_all" tag="span")
                 template(v-slot:termsLink)
                   a(:href='termsUrl' target='_blank' @click.stop v-t="'powered_by.terms_of_service'")
                 template(v-slot:privacyLink)
@@ -114,5 +111,6 @@ v-main
 
         v-card-actions
           v-spacer
-          v-btn(:loading="loading" color="primary" type="submit" v-t="'templates.start_free_trial'")
+          v-btn(variant="elevated" :loading="loading" color="primary" type="submit")
+            span(v-t="'templates.start_free_trial'")
 </template>
