@@ -402,29 +402,28 @@ export default {
         :label="$t('poll_count_form.agree_target_label')"
       )
 
-  .d-flex(v-if="poll.pollType == 'score'")
-    v-text-field.poll-score-form__min(
-      v-model="poll.minScore"
-      type="number"
-      :step="1"
-      :label="$t('poll_common.min_score')")
-    v-spacer
-    v-text-field.poll-score-form__max(
-      v-model="poll.maxScore"
-      type="number"
-      :step="1"
-      :label="$t('poll_common.max_score')")
+  template(v-if="poll.pollType == 'score'")
+    .d-flex
+      v-text-field.poll-score-form__min.mr-2(
+        v-model="poll.minScore"
+        type="number"
+        :step="1"
+        :label="$t('poll_common.min_score')")
+      v-text-field.poll-score-form__max(
+        v-model="poll.maxScore"
+        type="number"
+        :step="1"
+        :label="$t('poll_common.max_score')")
 
   template(v-if="poll.pollType == 'poll'")
     p.text-medium-emphasis.mt-4.text-subtitle-1.mb-2(v-t="'poll_common_form.how_many_options_can_a_voter_choose'")
     .d-flex
-      v-text-field.poll-common-form__minimum-stance-choices(
+      v-text-field.poll-common-form__minimum-stance-choices.mr-2(
         v-model="poll.minimumStanceChoices"
         type="number"
         :step="1"
         :hint="$t('poll_common_form.choose_at_least')"
         :label="$t('poll_common_form.minimum_choices')")
-      v-spacer
       v-text-field.poll-common-form__maximum-stance-choices(
         v-model="poll.maximumStanceChoices"
         type="number"
