@@ -23,7 +23,7 @@ export default {
 <template lang="pug">
 v-list-item.poll-common-preview(:to='link')
   template(v-slot:prepend)
-    poll-common-icon-panel.mr-2(:poll='poll' show-my-stance size="36")
+    poll-common-icon-panel.mr-2(:poll='poll' show-my-stance :size="36")
   v-list-item-title
     span {{poll.title}}
     tags-display.ml-1(:tags="poll.tags" :group="poll.group()" size="x-small")
