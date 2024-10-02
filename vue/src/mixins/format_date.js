@@ -26,17 +26,15 @@ export default {
       };
 
       waitFor(selector, () => {
-        document.querySelector(selector).scrollIntoView()
-        // this.$vuetify.goTo(selector, {duration: 0, offset: 32});
-        each([1,2,3], n => {
-          const headingSelector = selector+` h${n}[tabindex=\"-1\"]`;
-          if (document.querySelector(headingSelector)) {
-            document.querySelector(headingSelector).focus();
-            return false;
-          } else {
-            return true;
-          }
-        });
+        const offset = 128;
+        window.scrollTo({
+          behavior: 'smooth',
+          top:
+            document.querySelector(selector).getBoundingClientRect().top -
+            document.body.getBoundingClientRect().top -
+            offset,
+        })
+
         if (callback) { callback(); }
       });
     },

@@ -80,7 +80,7 @@ export default {
       if (!event) { return []; }
       return ["lmo-action-dock-wrapper",
        `positionKey-${event.positionKey}`,
-       `sequenceId-${event.sequenceId}`,
+       `sequenceId-${event.sequenceId || 0}`,
        `position-${event.position}`];
     }
   }
@@ -135,7 +135,7 @@ export default {
         .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
           .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
       .strand-item__main
-        //- div {{obj.event.kind}} {{obj.event.positionKey}} {{obj.event.sequenceId}} {{isFocused(obj.event)}} childCount{{obj.event.childCount}} chdrn {{obj.children.length}}
+        //- div {{obj.event.kind}} {{obj.event.positionKey}} sid: {{obj.event.sequenceId}} focused: {{isFocused(obj.event)}} childCount{{obj.event.childCount}} chdrn {{obj.children.length}}
         div(:class="classes(obj.event)" v-intersect="{handler: (isVisible) => loader.setVisible(isVisible, obj.event)}")
           strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
           component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")

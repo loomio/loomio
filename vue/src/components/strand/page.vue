@@ -88,6 +88,10 @@ export default {
         return `#comment-${this.loader.focusAttrs.commentId}`;
       }
 
+      if (this.loader.focusAttrs.sequenceId == 0) {
+        return '#context';
+      }
+
       if (this.loader.focusAttrs.sequenceId) {
         return `.sequenceId-${this.loader.focusAttrs.sequenceId}`;
       }
