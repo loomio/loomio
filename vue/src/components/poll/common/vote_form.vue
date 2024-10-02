@@ -132,7 +132,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
 
   v-card.poll-common-vote-form__button.mb-2.rounded(
     variant="tonal"
-    :color="(isSelected(option) && option.color) || {}"
+    :color="(isSelected(option) && option.color) || null"
     v-for='option in options'
     :key='option.id'
     :class="classes(option)"

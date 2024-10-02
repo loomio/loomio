@@ -7,7 +7,7 @@ import FilesList from './files_list.vue';
 import EventBus from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
 import { convertToMd } from '@/shared/services/format_converter';
-
+import CharacterCount from '@tiptap/extension-character-count';
 import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
 import BulletList from '@tiptap/extension-bullet-list';
@@ -147,6 +147,7 @@ export default
         Bold,
         BulletList,
         CodeBlock,
+        CharacterCount.configure({limit: this.maxLength}),
         CustomImage.configure({attachFile: this.attachFile, attachImageFile: this.attachImageFile}),
         Collaboration.configure({
           document: provider.document,
@@ -218,7 +219,7 @@ export default
         // if (this.model.isNew()) { this.scrapeLinkPreviews(); }
       },
       onCreate: () => {
-        if (this.model.isNew() && (this.editor.getCharacterCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
+        if (this.model.isNew() && (this.charCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
       }
     });
 
@@ -240,9 +241,6 @@ export default
       return this.model[`${this.field}Format`];
     },
 
-    reasonTooLong() { 
-      return this.editor.getCharacterCount() >= this.maxLength;
-    }
   },
 
   watch: {
@@ -250,6 +248,14 @@ export default
   },
 
   methods: {
+    reasonTooLong() {
+      return this.charCount() >= this.maxLength;
+    },
+
+    charCount() {
+      return this.editor.storage.characterCount.characters()
+    },
+
     resetDraft(content) {
       this.editor.commands.setContent(content); 
     },
@@ -275,7 +281,7 @@ export default
     },
 
     checkLength() {
-      this.model.saveDisabled = this.editor.getCharacterCount() > this.maxLength;
+      this.model.saveDisabled = this.charCount() > this.maxLength;
     },
 
     setCount(count) {
@@ -511,14 +517,13 @@ div
 
         v-spacer
         slot(v-if="!expanded" name="actions")
-        v-alert.text-right(
+        v-chip.text-right(
+          :color="reasonTooLong() ? 'error' : null"
           density="compact"
           variant="tonal"
           v-if="maxLength"
-          :class="{'red--text': reasonTooLong, 'text-medium-emphasis': !reasonTooLong}"
         )
-          span(:style="reasonTooLong ? 'font-weight: 700' : ''")
-            | {{editor.getCharacterCount()}} / {{maxLength}}
+          | {{charCount()}} / {{maxLength}}
 
     div.d-flex(v-if="expanded", name="actions")
       v-spacer
