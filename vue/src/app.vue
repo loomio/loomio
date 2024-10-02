@@ -105,8 +105,6 @@ v-app.app-is-booted
 
 .v-card.discussion-form,
 .v-card.discussion-form .v-card-item__content,
-.v-card.group-form,
-.v-card.group-form .v-card-item__content,
 .v-card.poll-common-modal,
 .v-card.poll-common-modal .v-card-item__content
   overflow: visible!important
