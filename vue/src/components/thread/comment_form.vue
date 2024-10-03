@@ -80,10 +80,11 @@ export default {
       :shouldReset="shouldReset")
       template(v-slot:actions)
         v-btn.mr-2(
+          variant="text"
           v-if="comment.id"
           @click="discardDraft"
-          v-t="'common.reset'"
         )
+          span(v-t="'common.reset'")
         v-btn.comment-form__submit-button(
           variant="elevated"
           :loading="processing"
