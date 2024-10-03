@@ -93,7 +93,7 @@ export default {
     poll() { return this.stance.poll(); },
   
     dotsRemaining() {
-      return this.dotsPerPerson - sum(map(this.stanceChoices, 'score'));
+      return this.dotsPerPerson - sum(map(this.stanceChoices, (c) => parseInt(c.score) || 0));
     },
 
     dotsPerPerson() {
@@ -113,7 +113,7 @@ export default {
 <template lang="pug">
 div
   v-form.poll-dot-vote-vote-form(ref="form")
-    v-alert.poll-dot-vote-vote-form__dots-remaining.mb-4(density="compact" variant="outlined" :color="alertColor" )
+    v-alert.poll-dot-vote-vote-form__dots-remaining.mb-4(density="compact" variant="tonal" :color="alertColor" )
       span(v-t="{ path: 'poll_dot_vote_vote_form.dots_remaining', args: { count: dotsRemaining } }")
     .poll-dot-vote-vote-form__options
       v-list-item.poll-dot-vote-vote-form__option(
