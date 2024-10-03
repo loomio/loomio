@@ -45,7 +45,6 @@ export default {
     submit() {
       this.processing = true;
       this.comment.save().then(() => {
-        this.$emit('comment-submitted');
         this.shouldReset = !this.shouldReset;
         const flashMessage = !this.comment.isNew() ?
                         'comment_form.messages.updated'
@@ -54,6 +53,7 @@ export default {
                       :
                         'comment_form.messages.created';
         Flash.success(flashMessage, {name: this.comment.isReply() ? this.comment.parent().author().nameOrUsername() : undefined});
+        setTimeout(() => {this.$emit('comment-submitted')});
       }).catch(err => {
         Flash.error('common.something_went_wrong');
       }).finally(() => this.processing = false);
