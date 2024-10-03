@@ -129,14 +129,6 @@ export default class EventModel extends BaseModel {
     return this.parentIsForking() || (this.parent() && (this.parent().kind === 'poll_created'));
   }
 
-  toggleForking() {
-    if (this.isForking()) {
-      return this.discussion().update({forkedEventIds: without(this.discussion().forkedEventIds, this.id)});
-    } else {
-      return this.discussion().forkedEventIds.push(this.id);
-    }
-  }
-
   next() {
     return Records.events.find({parentId: this.parentId, position: this.position + 1})[0];
   }

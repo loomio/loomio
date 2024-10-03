@@ -122,9 +122,9 @@ export default {
         .d-flex.justify-center
           v-checkbox.thread-item__is-forking(
             v-if="loader.discussion.forkedEventIds.length"
-            @change="obj.event.toggleForking()"
             :disabled="obj.event.forkingDisabled()"
-            fixme-v-model="obj.event.isForking()"
+            v-model="loader.discussion.forkedEventIds"
+            :value="obj.event.id"
           )
           template(v-else)
             user-avatar(
