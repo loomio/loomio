@@ -104,6 +104,8 @@ v-app.app-is-booted
   overflow: visible!important
 
 .v-card.discussion-form,
+.v-card.thread-template-form,
+.v-card.thread-template-form .v-card-item__content,
 .v-card.discussion-form .v-card-item__content,
 .v-card.poll-common-modal,
 .v-card.poll-common-modal .v-card-item__content
