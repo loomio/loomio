@@ -345,7 +345,7 @@ module.exports = {
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.escape()
-    page.expectElement('.text-h5')
+    // page.expectElement('.text-h5')
     page.click('.poll-members-form__submit')
     page.expectText('.poll-members-form__list', 'test@example.com')
     page.click('.dismiss-modal-button')

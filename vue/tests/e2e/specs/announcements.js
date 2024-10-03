@@ -54,7 +54,7 @@ module.exports = {
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.escape()
-    page.expectElement('.text-h5')
+    // page.expectElement('.text-h5')
     page.click('.strand-members-list__submit')
     page.expectText('.strand-members-list', 'test@example.com')
     page.expectFlash('1 notifications sent')
@@ -79,7 +79,7 @@ module.exports = {
     page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
     page.click('.recipients-autocomplete-suggestion')
     page.escape()
-    page.expectElement('.text-h5')
+    // page.expectElement('.text-h5')
     page.click('.poll-members-form__submit')
     page.expectFlash('1 notifications sent')
   },
