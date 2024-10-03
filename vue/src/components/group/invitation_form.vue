@@ -151,6 +151,7 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       label.text-medium-emphasis.text-body-2(v-t="'announcement.select_groups'")
       div(v-for="group in invitableGroups", :key="group.id")
         v-checkbox.invitation-form__select-groups(
+          density="compact"
           :class="{'ml-4': !group.isParent()}"
           v-model="groupIds"
           :label="group.name"
