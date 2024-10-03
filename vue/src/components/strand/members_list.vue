@@ -7,9 +7,10 @@ import RecipientsAutocomplete from '@/components/common/recipients_autocomplete'
 import DiscussionReaderService from '@/shared/services/discussion_reader_service';
 import {map, debounce} from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
+import FormatDate from '@/mixins/format_date';
 
 export default {
-  mixins: [WatchRecords],
+  mixins: [WatchRecords, FormatDate],
   components: {
     RecipientsAutocomplete
   },
@@ -37,6 +38,7 @@ export default {
   mounted() {
     this.actionNames = ['makeAdmin', 'removeAdmin', 'revoke']; // 'resend'
 
+    this.fetchReaders();
     this.watchRecords({
       collections: ['discussionReaders', 'memberships'],
       query: records => this.updateReaders()
@@ -59,6 +61,10 @@ export default {
   },
 
   methods: {
+    performableActions(reader) {
+      return this.actionNames.filter((action) => this.service[action].canPerform(reader))
+    },
+
     isGroupAdmin(reader) {
       return this.discussion.groupId && 
       this.membershipsByUserId[reader.userId] &&
@@ -147,12 +153,11 @@ export default {
 </script>
 
 <template lang="pug">
-v-card.strand-members-list
-  .px-4.pt-4
-    .d-flex.justify-space-between
-      h1.text-h5(v-t="'announcement.form.discussion_announced.title'")
-      dismiss-modal-button
+v-card.strand-members-list(:title="$t('announcement.form.discussion_announced.title')")
+  template(v-slot:append)
+    dismiss-modal-button
 
+  v-card-text
     recipients-autocomplete(
       :label="$t('announcement.form.discussion_announced.helptext')"
       :placeholder="$t('announcement.form.placeholder')"
@@ -180,31 +185,37 @@ v-card.strand-members-list
         @click="inviteRecipients"
         v-t="'common.action.invite'")
 
-  v-list(lines="two")
+  v-list.px-2(lines="two")
     v-list-subheader
       span(v-t="'membership_card.discussion_members'")
       space
       span ({{discussion.membersCount}})
     v-list-item(v-for="reader in readers" :user="reader.user()" :key="reader.id")
       template(v-slot:prepend)
-        user-avatar(:user="reader.user()" :size="24")
+        user-avatar.mr-2(:user="reader.user()" :size="32")
       v-list-item-title
         span.mr-2 {{reader.user().nameWithTitle(discussion.group())}}
-        v-chip.mr-1(v-if="discussion.groupId && reader.guest" outlined size="x-small" label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
-        v-chip.mr-1(v-if="reader.admin" outlined size="x-small" label v-t="'announcement.members_list.thread_admin'")
-        v-chip.mr-1(v-if="isGroupAdmin(reader)" outlined size="x-small" label v-t="'announcement.members_list.group_admin'")
-        v-chip.mr-1(v-if="!reader.user().emailVerified" outlined size="x-small" label v-t="'announcement.members_list.has_not_joined_yet'" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
+        v-chip.mr-1(v-if="discussion.groupId && reader.guest" variant="tonal" size="x-small" :title="$t('announcement.inviting_guests_to_thread')")
+          span(v-t="'members_panel.guest'")
+        v-chip.mr-1(v-if="reader.admin" variant="tonal" size="x-small")
+          span(v-t="'announcement.members_list.thread_admin'")
+        v-chip.mr-1(v-if="isGroupAdmin(reader)" variant="tonal" size="x-small")
+          span(v-t="'announcement.members_list.group_admin'")
+        v-chip.mr-1(v-if="!reader.user().emailVerified" variant="tonal" size="x-small" :title="$t('announcement.members_list.has_not_joined_yet_hint')")
+          span(v-t="'announcement.members_list.has_not_joined_yet'")
       v-list-item-subtitle
         span(v-if="reader.lastReadAt" v-t="{ path: 'announcement.members_list.last_read_at', args: { time: approximateDate(reader.lastReadAt) } }")
         span(v-else v-t="'announcement.members_list.has_not_read_thread'")
-        //- time-ago(:date="reader.lastReadAt")
       template(v-slot:append)
-        v-menu(offset-y)
-          template(v-slot:activator="{attrs}")
-            v-btn.membership-dropdown__button(icon v-bind="attrs")
+        v-menu(
+          v-if="performableActions(reader).length > 0"
+          offset-y
+        )
+          template(v-slot:activator="{props}")
+            v-btn.membership-dropdown__button(variant="flat" icon v-bind="props")
               common-icon(name="mdi-dots-vertical")
           v-list
-            v-list-item(v-for="action in actionNames" v-if="service[action].canPerform(reader)" @click="service[action].perform(reader)" :key="action")
+            v-list-item(v-for="action in performableActions(reader)" @click="service[action].perform(reader)" :key="action")
               v-list-item-title(v-t="service[action].name")
     v-list-item(v-if="query && readers.length == 0")
       v-list-item-title(v-t="{ path: 'discussions_panel.no_results_found', args: { search: query }}")

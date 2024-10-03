@@ -201,7 +201,7 @@ v-card.poll-members-form
       span ({{users.length}} / {{poll.votersCount}})
     v-list-item(v-for="user in users" :key="user.id")
       template(v-slot:prepend)
-        user-avatar.mr-2(:user="user" :size="24")
+        user-avatar.mr-2(:user="user" :size="32")
       v-list-item-title
         span.mr-2 {{user.nameWithTitle(poll.group())}}
         v-chip.mr-1(v-if="isGuest[user.id]" variant="outlined" size="x-small" label v-t="'members_panel.guest'" :title="$t('announcement.inviting_guests_to_thread')")
