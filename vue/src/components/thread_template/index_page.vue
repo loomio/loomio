@@ -104,7 +104,8 @@ export default {
             common-icon(name="mdi-close")
 
 
-        v-alert.mx-4(v-if="!showSettings && group && group.discussionsCount < 2" type="info" text outlined v-t="'thread_template.these_are_templates'") 
+        v-alert.mx-4(v-if="!showSettings && group && group.discussionsCount < 2" type="info" variant="tonal")
+          span(v-t="'thread_template.these_are_templates'")
 
         v-list.append-sort-here(lines="two")
           .d-flex
