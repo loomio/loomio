@@ -15,7 +15,7 @@ export default class StanceModel extends BaseModel {
   static uniqueIndices = ['id'];
 
   afterConstruction() {
-    return HasTranslations.apply(this);
+    HasTranslations.apply(this);
   }
 
   collabKeyParams() {

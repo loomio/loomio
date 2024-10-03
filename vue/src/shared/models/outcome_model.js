@@ -35,7 +35,7 @@ export default class OutcomeModel extends BaseModel {
 
   afterConstruction() {
     HasDocuments.apply(this);
-    return HasTranslations.apply(this);
+    HasTranslations.apply(this);
   }
 
   collabKeyParams() {

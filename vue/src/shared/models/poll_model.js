@@ -31,7 +31,7 @@ export default class PollModel extends BaseModel {
 
   afterConstruction() {
     HasDocuments.apply(this, {showTitle: true});
-    return HasTranslations.apply(this);
+    HasTranslations.apply(this);
   }
 
   config() {

@@ -35,7 +35,7 @@ export default class DiscussionModel extends BaseModel {
   afterConstruction() {
     if (this.isNew()) { this.private = this.privateDefaultValue(); }
     HasDocuments.apply(this, {showTitle: true});
-    return HasTranslations.apply(this);
+    HasTranslations.apply(this);
   }
 
   collabKeyParams(){
