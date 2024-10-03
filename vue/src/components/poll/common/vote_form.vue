@@ -189,13 +189,13 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
   white-space: normal
 
 .poll-common-vote-form__button--none-selected
-  opacity: 0.80 !important
+  opacity: 0.88 !important
 
 .poll-common-vote-form__button--none-selected:hover
   opacity: 1 !important
 
 .poll-common-vote-form__button--not-selected
-  opacity: 0.33 !important
+  opacity: 0.44 !important
 
 .poll-common-vote-form__button--not-selected:hover
   opacity: 0.66 !important
