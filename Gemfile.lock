@@ -489,10 +489,6 @@ GEM
     reverse_markdown (2.1.1)
       nokogiri
     rexml (3.3.7)
-    rspec-activemodel-mocks (1.2.0)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      rspec-mocks (>= 2.99, < 4.0)
     rspec-collection_matchers (1.2.1)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.13.1)
@@ -671,7 +667,6 @@ DEPENDENCIES
   redis-objects
   redis-rails
   reverse_markdown
-  rspec-activemodel-mocks
   rspec-collection_matchers
   rspec-its
   rspec-rails (~> 7.0.1)
