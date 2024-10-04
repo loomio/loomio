@@ -16,7 +16,7 @@
     "@hocuspocus/provider": "^2.13.6",
     "@mdi/js": "^6.9.96",
     "@sentry/browser": "^8.33.1",
-    "@sentry/vue": "^8.32.0",
+    "@sentry/vue": "^8.33.1",
     "@tiptap/core": "^2.6.6",
     "@tiptap/extension-blockquote": "^2.6.6",
     "@tiptap/extension-bold": "^2.6.6",
