@@ -32,7 +32,7 @@ export default {
       isDisabled: false,
       review: false,
       isShowingDatePicker: false,
-      dateToday: format(new Date, 'yyyy-MM-dd')
+      dateToday: new Date(),
     };
   },
 
@@ -135,20 +135,18 @@ v-card.poll-common-outcome-modal(
             :label="$t('poll_common_calendar_invite.location')")
 
     .outcome-review-on(v-if="outcome.poll().pollType == 'proposal'")
-      v-menu(ref='menu' v-model='isShowingDatePicker' :close-on-content-click='false' offset-y min-width="290px")
-        template(v-slot:activator='{ attrs }')
-          v-text-field(
-            clearable
-            v-model='outcome.reviewOn'
-            placeholder="2050-12-31"
-            :label="$t('poll_common_outcome_form.review_date')"
-            :hint="$t('poll_common_outcome_form.review_date_hint')"
-            v-on='on'
-            v-bind="attrs"
-            :prepend-icon="mdiCalendar")
-
-        v-date-picker.outcome-review-on__datepicker(v-model='outcome.reviewOn' :min='dateToday' no-title @input="isShowingDatePicker = false")
-      p(v-if="outcome.reviewOn" v-t="$t('poll_common_outcome_form.you_will_be_notified')")
+      v-date-input(
+        clearable
+        :label="$t('poll_common_outcome_form.review_date')"
+        :hint="$t('poll_common_outcome_form.review_date_hint')"
+        v-model='outcome.reviewOn'
+        :prepend-inner-icon="mdiCalendar"
+        :prepend-icon="null"
+        :min="dateToday"
+        @click:clear="outcome.reviewOn = null"
+        hide-actions
+      )
+      p.pb-4(v-if="outcome.reviewOn" v-t="'poll_common_outcome_form.you_will_be_notified'")
 
     lmo-textarea.poll-common-outcome-form__statement(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       template(v-slot:actions)
