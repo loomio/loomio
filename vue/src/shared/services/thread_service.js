@@ -331,14 +331,14 @@ export default new class ThreadService {
       }));
     } else {
       return thread.close().then(() => {
-        return Flash.success("discussion.closed.closed", {}, 'undo', () => this.reopen(thread));
+        return Flash.success("discussion.closed.closed");
       });
     }
   }
 
   reopen(thread) {
     return thread.reopen().then(() => {
-      return Flash.success("discussion.closed.reopened", {}, 'undo', () => this.close(thread));
+      return Flash.success("discussion.closed.reopened");
     });
   }
 
