@@ -62,11 +62,9 @@ export default {
 </script>
 <template lang="pug">
 .d-flex.date-time-picker.flex-grow-1
-  v-date-input.mr-2(
-    hide-actions
+  lmo-date-input.mr-2(
     v-model='dateVal'
     :prepend-inner-icon="mdiCalendar"
-    :prepend-icon="null"
     :min="dateToday"
     persistent-hint
   )

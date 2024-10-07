@@ -59,15 +59,12 @@ export default {
 div
   .poll-common-closing-at-field.mt-4.mb-8
     .poll-common-closing-at-field__inputs.d-flex
-      v-date-input.mr-2(
-        :label="$t('poll_common_closing_at_field.closing_date')" 
-        hide-actions
+      lmo-date-input.mr-2(
         v-model='closingDate'
         :prepend-inner-icon="mdiCalendar"
-        :prepend-icon="null"
+        :label="$t('poll_common_closing_at_field.closing_date')" 
         :hint="$t('common.closing_in', { time: label })"
         :min="dateToday"
-        persistent-hint
       )
       v-select.poll-common-closing-at-field__timepicker(
         :prepend-inner-icon="mdiClockOutline"

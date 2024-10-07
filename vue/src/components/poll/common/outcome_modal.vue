@@ -135,14 +135,13 @@ v-card.poll-common-outcome-modal(
             :label="$t('poll_common_calendar_invite.location')")
 
     .outcome-review-on(v-if="outcome.poll().pollType == 'proposal'")
-      v-date-input(
-        clearable
+      lmo-date-input(
         :label="$t('poll_common_outcome_form.review_date')"
         :hint="$t('poll_common_outcome_form.review_date_hint')"
         v-model='outcome.reviewOn'
         :prepend-inner-icon="mdiCalendar"
-        :prepend-icon="null"
         :min="dateToday"
+        clearable
         @click:clear="outcome.reviewOn = null"
         hide-actions
       )
