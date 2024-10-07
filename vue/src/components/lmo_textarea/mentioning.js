@@ -30,13 +30,17 @@ export var CommonMentioning = {
 
   methods: {
     findMentionable() {
+      const audiences = [
+                          { id: 'discussion', translation: this.$t('mentioning.discussion'), audience: true },
+                          { id: 'group', translation: this.$t('mentioning.group'), audience: true }
+                        ].filter(audience => audience.translation.startsWith(this.query))
       this.mentionableUserIds = uniq(this.mentionableUserIds.concat(this.model.participantIds()));
       const unsorted = filter(Records.users.collection.chain().find({id: {$in: this.mentionableUserIds}}).data(), u => {
         return ((u.name || '').toLowerCase().startsWith(this.query) ||
         (u.username || '').toLowerCase().startsWith(this.query) ||
         (u.name || '').toLowerCase().includes(` ${this.query}`));
       });
-      this.mentionable = sortBy(unsorted, u => 0 - Records.events.find({actorId: u.id}).length);
+      this.mentionable = audiences.concat(sortBy(unsorted, u => 0 - Records.events.find({actorId: u.id}).length));
     }
   }
 };
@@ -80,19 +84,19 @@ export var MdMentioning = {
       if ([13,9].includes(event.keyCode)) {
         let user;
         if (user = this.mentionable[this.navigatedUserIndex]) {
-          this.selectUser(user);
+          this.selectMentionable(user);
           this.query = '';
           event.preventDefault();
         }
       }
     },
 
-    selectUser(user) {
+    selectMentionable(mention) {
       const text = this.textarea().value;
       const beforeText = this.textarea().value.slice(0, this.textarea().selectionStart - this.query.length);
       const afterText = this.textarea().value.slice(this.textarea().selectionStart);
-      this.model[this.field] = beforeText + user.username + ' ' + afterText;
-      this.textarea().selectionEnd = (beforeText + user.username).length + 1;
+      this.model[this.field] = beforeText + mention.username + ' ' + afterText;
+      this.textarea().selectionEnd = (beforeText + mention.username).length + 1;
       this.textarea().focus;
       this.query = '';
     },
@@ -129,15 +133,15 @@ export var HtmlMentioning = {
 
     enterHandler() {
       const user = this.mentionable[this.navigatedUserIndex];
-      if (user) { this.selectUser(user); }
+      if (user) { this.selectMentionable(user); }
     },
 
-    selectUser(user) {
+    selectMentionable(mention) {
       // range: @suggestionRange
       // attrs:
       this.insertMention({
-        id: user.username,
-        label: user.name
+        id: mention.audience ? mention.id : mention.username,
+        label: mention.audience ? mention.translation : mention.name
       });
       this.editor.chain().focus();
     },

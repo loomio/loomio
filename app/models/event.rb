@@ -111,6 +111,16 @@ class Event < ApplicationRecord
     self.depth = parent ? parent.depth + 1 : 0
   end
 
+  def kind_with_custom_fields
+    return kind unless %w[comment_announced].include? kind
+
+    if custom_fields['audiences'].include? Audience.group.name
+      'comment_announced_to_group'
+    elsif custom_fields['audiences'].include? Audience.discussion.name
+      'comment_announced_to_discussion'
+    end
+  end
+
   def set_parent_and_depth!
     set_parent_and_depth
     update_columns(parent_id: parent_id, depth: depth)

@@ -117,6 +117,112 @@ describe Event do
     end
   end
 
+  describe 'audience_mentioned' do
+    around(:each) do |example|
+      I18n.with_locale(['de', 'fr', 'en'].sample) do
+        example.run
+      end
+    end
+
+    it 'notifies group members' do
+      group_audience = Audience.group.translate
+      comment = create :comment, parent: parent_comment, discussion: discussion, body: "hey @#{group_audience} good day"
+      group_members = AnnouncementService.audience_users(comment, 'group', comment.author)
+
+      Events::NewComment.publish!(parent_comment)
+      CommentService.create(comment: comment, actor: comment.author)
+      event = Events::CommentAnnounced.where(kind: :comment_announced).last
+      expect(event.eventable).to eq comment
+      audience_email_recievers = event.send(:email_recipients)
+      expect(audience_email_recievers.length).to eq group_members.size
+      expect(audience_email_recievers).to_not include comment.author
+
+      audience_notification_recievers = event.send(:notification_recipients)
+      expect(audience_notification_recievers.length).to eq group_members.length
+      expect(audience_notification_recievers).to_not include comment.author
+    end
+
+    it 'notifies discussion members' do
+      discussion_audience = Audience.discussion.translate
+      comment = create :comment, parent: parent_comment, discussion: discussion, body: "hey @#{discussion_audience}"
+      discussion_members = AnnouncementService.audience_users(comment, 'discussion_group', comment.author, false, false)
+
+      Events::NewComment.publish!(parent_comment)
+      CommentService.create(comment: comment, actor: comment.author)
+      event = Events::CommentAnnounced.where(kind: :comment_announced).last
+      expect(event.eventable).to eq comment
+      audience_email_recievers = event.send(:email_recipients)
+      expect(audience_email_recievers.length).to eq discussion_members.size
+      expect(audience_email_recievers).to_not include comment.author
+
+      audience_notification_recievers = event.send(:notification_recipients)
+      expect(audience_notification_recievers.length).to eq discussion_members.length
+      expect(audience_notification_recievers).to_not include comment.author
+    end
+
+    it 'notifies group members - html content' do
+      group_audience = Audience.group.translate
+      comment = create :comment, parent: parent_comment, discussion: discussion,
+                       body: "<p>Hey <span class=\"mention\" data-mention-id=\"group\" label=\"group\">@#{group_audience}</span></p>",
+                       body_format: "html"
+      group_members = AnnouncementService.audience_users(comment, 'group', comment.author, false, false)
+
+      Events::NewComment.publish!(parent_comment)
+      CommentService.create(comment: comment, actor: comment.author)
+      event = Events::CommentAnnounced.where(kind: :comment_announced).last
+      expect(event.eventable).to eq comment
+      audience_email_recievers = event.send(:email_recipients)
+      expect(audience_email_recievers.length).to eq group_members.size
+      expect(audience_email_recievers).to_not include comment.author
+
+      audience_notification_recievers = event.send(:notification_recipients)
+      expect(audience_notification_recievers.length).to eq group_members.length
+      expect(audience_notification_recievers).to_not include comment.author
+    end
+
+    it 'notifies discussion members - html content' do
+      discussion_audience = Audience.discussion.translate
+      comment = create :comment, parent: parent_comment, discussion: discussion,
+                       body: "<p>Hey <span class=\"mention\" data-mention-id=\"discussion\" label=\"discussion\">@#{discussion_audience}</span></p>",
+                       body_format: "html"
+      discussion_members = AnnouncementService.audience_users(comment, 'discussion_group', comment.author, false, false)
+
+      Events::NewComment.publish!(parent_comment)
+      CommentService.create(comment: comment, actor: comment.author)
+      event = Events::CommentAnnounced.where(kind: :comment_announced).last
+      expect(event.eventable).to eq comment
+      audience_email_recievers = event.send(:email_recipients)
+      expect(audience_email_recievers.length).to eq discussion_members.size
+      expect(audience_email_recievers).to_not include comment.author
+
+      audience_notification_recievers = event.send(:notification_recipients)
+      expect(audience_notification_recievers.length).to eq discussion_members.length
+      expect(audience_notification_recievers).to_not include comment.author
+    end
+
+    it 'notifies discussion and group members' do
+      group_audience = Audience.group.translate
+      discussion_audience = Audience.discussion.translate
+      mentioned_group = "<span class=\"mention\" data-mention-id=\"group\" label=\"group\">@#{group_audience}</span>"
+      mentioned_discussion = "<span class=\"mention\" data-mention-id=\"discussion\" label=\"discussion\">@#{discussion_audience}</span>"
+      comment = create :comment, parent: parent_comment, discussion: discussion,
+                       body: "<p>Hey #{mentioned_group} #{mentioned_discussion}</p>",
+                       body_format: "html"
+      group_members = AnnouncementService.audience_users(comment, 'group', comment.author, false, false)
+      discussion_members = AnnouncementService.audience_users(comment, 'discussion_group', comment.author, false, false)
+
+      Events::NewComment.publish!(parent_comment)
+      CommentService.create(comment: comment, actor: comment.author)
+      event = Events::CommentAnnounced.where(kind: :comment_announced).last
+      expect(event.eventable).to eq comment
+      audience_email_recievers = event.send(:email_recipients)
+      expect(audience_email_recievers.length).to eq (group_members + discussion_members).uniq.length
+
+      audience_notification_recievers = event.send(:notification_recipients)
+      expect(audience_notification_recievers.length).to eq (group_members + discussion_members).uniq.length
+    end
+  end
+
   describe 'new_discussion' do
     it 'notifies mentioned users' do
       expect { Events::NewDiscussion.publish!(discussion: discussion) }.to change { emails_sent }.by(1) # (the mentioned user)
@@ -327,7 +433,7 @@ describe Event do
       poll.create_missing_created_event!
       poll_meeting.create_missing_created_event!
     end
-    
+
     def stance_for(user)
       Stance.create(participant: user, poll: poll)
     end
