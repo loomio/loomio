@@ -26,15 +26,11 @@ export default {
     }
   },
   computed: {
-    zone() {
-      return AppConfig.timeZone
-    },
-
     formattedValue() {
       if (!this.date) { return null }
       const pattern = Session.user().dateTimePref.includes('iso') ? 'yyyy-MM-dd' : "d LLL yyyy"
-      const zonedDate = utcToZonedTime(this.date, this.zone)
-      return format(zonedDate, pattern, {timeZone: this.zone, locale: dateLocale});
+      const zonedDate = utcToZonedTime(this.date, AppConfig.timeZone)
+      return format(zonedDate, pattern, {timeZone: AppConfig.timeZone, locale: dateLocale});
     }
   }
 
