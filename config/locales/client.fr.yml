@@ -164,6 +164,7 @@ fr:
     no_tags_present: Aucune discussion n’a été trouvée avec ce tag ! Essayez avec un autre.
     no_tags_in_group: Le groupe n'a pas encore de tags de catégories
     only_admins_can_edit_tags: Excusez-moi, juste les admins du %{group} peuvent créer, renommer ou supprimer des tags
+    pick_a_color: Choisissez une couleur
   poll_types:
     proposal: Proposition
     count: opt-in
@@ -589,6 +590,9 @@ fr:
     close_sidebar: Fermer la barre latérale
     logo_title: Accueil
     group_and_subgroups: "%{group} & sous-groupes"
+    search_members_short: Rechercher des membres
+    search_files_short: Rechercher des fichiers
+    search_subgroups_short: Rechercher des sous-groupes
   user_dropdown:
     pin_sidebar: Épingler la barre latérale
     unpin_sidebar: Dés-épingler la barre latérale
@@ -605,6 +609,9 @@ fr:
     sign_out: Se déconnecter
     beta_collab: Fonctionnalités bêta activées!
     outcomes: Résultats
+    theme: Thème
+    light: Lumière
+    dark: Sombre
   membership_card:
     group_members: Membres du groupe
     discussion_members: Membres de la discussion
@@ -627,6 +634,7 @@ fr:
       group: Retirer du groupe
       poll: Retirer de %{pollType}
     cancel_invitation: Annuler l’invitation
+    view_profile: Voir le profil
   notification_models:
     discussion: 'discussion :'
     comment: commentaire dans
@@ -1740,6 +1748,10 @@ fr:
     meaning_hint: Une phrase qui explique ce que signifie le choix de cette option
     prompt: Invite de raison
     prompt_hint: Une question pour inciter les électeurs à donner leur raisonnement ou à reconsidérer leur position.
+    thumb_up: Pouce levé
+    thumb_down: Pouce vers le bas
+    thumb_sideways: Pouce sur le côté
+    hand_up: Levez la main
   poll_common:
     superseded: Remplacé
     outdated: Dépassé
@@ -2149,6 +2161,9 @@ fr:
     reminder_helptext: |
       Envoyez une notification de « Clôture bientôt » avant la fermeture du scrutin.
       Cela peut être une occasion pour les gens de voir comment les autres ont voté et de reconsidérer leur propre vote, ou simplement un moyen d’augmenter la participation au sondage.
+    deadline: Date limite
+    how_much_time_to_vote: Combien de temps allez-vous accorder aux gens pour voter ?
+    advanced_settings: Paramètres avancés
   poll_proposal_form:
     start_header: Faire une proposition
     edit_header: Modifier la proposition

@@ -164,6 +164,7 @@ pt_BR:
     no_tags_present: Nenhum tópico foi encontrado com essa tag! Tente selecionar outro
     no_tags_in_group: Este grupo ainda não tem tags de categoria
     only_admins_can_edit_tags: Desculpe, apenas os administradores do %{group} podem criar, renomear ou excluir tags
+    pick_a_color: Escolha uma cor
   poll_types:
     proposal: proposta
     count: opt-in
@@ -589,6 +590,9 @@ pt_BR:
     close_sidebar: Fechar barra lateral
     logo_title: Início
     group_and_subgroups: "%{group} & subgrupos"
+    search_members_short: Pesquisar membros
+    search_files_short: Pesquisar arquivos
+    search_subgroups_short: Pesquisar subgrupos
   user_dropdown:
     pin_sidebar: Fixar a barra lateral
     unpin_sidebar: Desafixar a barra lateral
@@ -605,6 +609,9 @@ pt_BR:
     sign_out: Sair
     beta_collab: " \U0001F9EA Recursos beta ativados!"
     outcomes: Resultados
+    theme: Tema
+    light: Luz
+    dark: Escuro
   membership_card:
     group_members: Membros do Grupo
     discussion_members: Membros da conversa
@@ -627,6 +634,7 @@ pt_BR:
       group: Eliminar do grupo
       poll: Eliminar de %{pollType}
     cancel_invitation: Cancelar convite
+    view_profile: Ver perfil
   notification_models:
     discussion: 'conversa:'
     comment: comentar em
@@ -1742,6 +1750,10 @@ pt_BR:
     meaning_hint: Uma frase que explica o que significa escolher esta opção
     prompt: Incitar razão
     prompt_hint: Uma pergunta para levar os eleitores a fornecer seu raciocínio ou reconsiderar sua posição.
+    thumb_up: Polegar para cima
+    thumb_down: Polegar para baixo
+    thumb_sideways: Polegar para o lado
+    hand_up: Mão para cima
   poll_common:
     superseded: Suplantada
     outdated: Desatualizado
@@ -2151,6 +2163,9 @@ pt_BR:
     reminder_helptext: |
       Envie uma notificação de 'Fechamento em breve' antes do encerramento da enquete.
       Esta pode ser uma oportunidade para as pessoas verem como os outros votaram e reconsiderarem seu próprio voto, ou apenas uma forma de aumentar a participação na enquete.
+    deadline: Prazo final
+    how_much_time_to_vote: Quanto tempo você dará para as pessoas votarem?
+    advanced_settings: Configurações avançadas
   poll_proposal_form:
     start_header: Iniciar proposta
     edit_header: Editar proposta

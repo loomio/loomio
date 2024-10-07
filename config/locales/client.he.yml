@@ -156,6 +156,7 @@ he:
     no_tags_present: לא נמצאו שרשורים עם התג הזה! נסה לבחור אחד אחר
     no_tags_in_group: לקבוצה הזו אין עדיין תגי קטגוריה
     only_admins_can_edit_tags: מצטערים, רק מנהלי מערכת של %{group} יכולים ליצור, לשנות שם או למחוק תגים
+    pick_a_color: בחר צבע
   poll_types:
     proposal: הצעה
     count: לבחור ב
@@ -577,6 +578,9 @@ he:
     close_sidebar: סגור את סרגל הצד
     logo_title: דף הבית
     group_and_subgroups: "%{group} ותתי קבוצות"
+    search_members_short: חפש חברים
+    search_files_short: חפש קבצים
+    search_subgroups_short: חפש תת קבוצות
   user_dropdown:
     pin_sidebar: הצמד סרגל צד
     unpin_sidebar: בטל את ההצמדה של סרגל הצד
@@ -593,6 +597,9 @@ he:
     sign_out: יציאה מהמערכת
     beta_collab: "\U0001F9EA תכונות בטא מופעלות!"
     outcomes: תוצאות
+    theme: נוֹשֵׂא
+    light: אוֹר
+    dark: כֵּהֶה
   membership_card:
     group_members: חברי הקבוצה
     discussion_members: חברים בשיחה
@@ -615,6 +622,7 @@ he:
       group: הסר מהקבוצה
       poll: הסר מה%{pollType}
     cancel_invitation: בטל הזמנה
+    view_profile: צפה בפרופיל
   notification_models:
     discussion: 'שיחה:'
     comment: הערה ב
@@ -1713,6 +1721,10 @@ he:
     meaning_hint: משפט או שניים המסבירים מה המשמעות של בחירה באפשרות זו. אופציונאלי
     prompt: הנחיית סיבה
     prompt_hint: שאלה כדי לעורר את המצביעים לשתף בנימוקיהם או לשקול מחדש את עמדתם. אופציונאלי
+    thumb_up: אגודל למעלה
+    thumb_down: אגודל למטה
+    thumb_sideways: אגודל הצידה
+    hand_up: יד למעלה
   poll_common:
     superseded: הוחלף
     outdated: מְיוּשָׁן
@@ -2116,6 +2128,9 @@ he:
     hide_results_description: אם אתה רוצה שאנשים יצביעו בלי לדעת איך אחרים הצביעו, אתה יכול להסתיר את תוצאות הסקר.
     process_helptext: תן שם ותאר את התהליך המשמש להפעלת סקר זה.
     reminder_helptext: שלח הודעת 'נסגר בקרוב' לפני סגירת הסקר. זו יכולה להיות הזדמנות לאנשים לראות כיצד אחרים הצביעו ולשקול מחדש את ההצבעה שלהם, או סתם דרך להגביר את ההשתתפות בסקר.
+    deadline: מוֹעֵד אַחֲרוֹן
+    how_much_time_to_vote: כמה זמן תאפשר לאנשים להצביע?
+    advanced_settings: הגדרות מתקדמות
   poll_proposal_form:
     start_header: התחל הצעה
     edit_header: ערוך הצעה

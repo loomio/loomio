@@ -156,6 +156,7 @@ uk:
     no_tags_present: Не знайдено жодної теми з цією міткою! Спробуйте вибрати іншу
     no_tags_in_group: У цій групі ще немає міток категорій
     only_admins_can_edit_tags: На жаль, лише адміністратори %{group} можуть створювати, перейменовувати або видаляти мітки
+    pick_a_color: Виберіть колір
   poll_types:
     proposal: пропозиція
     count: вибрати в
@@ -582,6 +583,9 @@ uk:
     close_sidebar: Закрити бічну панель
     logo_title: На головну
     group_and_subgroups: "%{group} & підгрупи"
+    search_members_short: Пошук учасників
+    search_files_short: Пошук файлів
+    search_subgroups_short: Пошук підгруп
   user_dropdown:
     pin_sidebar: Закріпити на бічній панелі
     unpin_sidebar: Відкріпити з бічної панелі
@@ -598,6 +602,9 @@ uk:
     sign_out: Вийти
     beta_collab: "\U0001F9EA Функції бета-версії ввімкнено!"
     outcomes: Результати
+    theme: Тема
+    light: світло
+    dark: Темний
   membership_card:
     group_members: Учасники групи
     discussion_members: Учасники теми
@@ -620,6 +627,7 @@ uk:
       group: Видалити з групи
       poll: Видалити з %{pollType}
     cancel_invitation: Скасувати запрошення
+    view_profile: Переглянути профіль
   notification_models:
     discussion: 'тема:'
     comment: прокоментувати в
@@ -1724,6 +1732,10 @@ uk:
     meaning_hint: Речення, яке пояснює, що означає вибір цієї опції
     prompt: Підказка причини
     prompt_hint: Питання, яке спонукає виборців аргументувати чи переглянути свою позицію.
+    thumb_up: Великий палець вгору
+    thumb_down: Великий палець вниз
+    thumb_sideways: Великий палець вбік
+    hand_up: Рука вгору
   poll_common:
     superseded: Замінено
     outdated: Застаріла
@@ -2129,6 +2141,9 @@ uk:
     hide_results_description: Якщо ви хочете, щоб люди голосували, не знаючи, як проголосували інші, ви можете приховати результати опитування.
     process_helptext: Назвіть і опишіть процес, який використовується для проведення цього опитування.
     reminder_helptext: Надішліть сповіщення «Скоро закривається» перед закриттям опитування. Це може бути можливість для людей побачити, як проголосували інші, і переглянути свій власний голос, або просто спосіб збільшити участь в опитуванні.
+    deadline: Дедлайн
+    how_much_time_to_vote: Скільки часу ви дасте людям для голосування?
+    advanced_settings: Розширені налаштування
   poll_proposal_form:
     start_header: Внести пропозицію
     edit_header: Редагувати пропозицію

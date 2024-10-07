@@ -156,6 +156,7 @@ tr:
     no_tags_present: Bu etikete sahip konu bulunamadı! Başka bir tane seçmeyi deneyin
     no_tags_in_group: Bu grupta henüz kategori etiketi yok
     only_admins_can_edit_tags: Üzgünüz, yalnızca %{group} grubunun yöneticileri etiketleri oluşturabilir, yeniden adlandırabilir veya silebilir
+    pick_a_color: Bir renk seçin
   poll_types:
     proposal: öneri
     count: katılım
@@ -577,6 +578,9 @@ tr:
     close_sidebar: Kenar çubuğunu kapat
     logo_title: Ana sayfa
     group_and_subgroups: "%{group} ve alt gruplar"
+    search_members_short: Üyeleri ara
+    search_files_short: Dosyaları ara
+    search_subgroups_short: Alt grupları ara
   user_dropdown:
     pin_sidebar: Kenar çubuğunu sabitle
     unpin_sidebar: Kenar çubuğunun sabitlemesini kaldır
@@ -593,6 +597,9 @@ tr:
     sign_out: oturumu Kapat
     beta_collab: "\U0001F9EA Beta özellikleri etkinleştirildi!"
     outcomes: Sonuçlar
+    theme: Tema
+    light: Işık
+    dark: Karanlık
   membership_card:
     group_members: Grup üyeleri
     discussion_members: Konu üyeleri
@@ -615,6 +622,7 @@ tr:
       group: Gruptan kaldır
       poll: "%{pollType}'dan kaldır"
     cancel_invitation: Davetiyeyi iptal et
+    view_profile: Profili görüntüle
   notification_models:
     discussion: 'iplik:'
     comment: yorum yapın
@@ -1691,6 +1699,10 @@ tr:
     meaning_hint: Bu seçeneği seçmenin ne anlama geldiğini açıklayan bir veya iki cümle. İsteğe bağlı
     prompt: Neden istemi
     prompt_hint: Seçmenleri gerekçelerini paylaşmaya veya konumlarını yeniden düşünmeye sevk edecek bir soru. İsteğe bağlı
+    thumb_up: Baş parmak yukarı
+    thumb_down: Başparmak aşağı
+    thumb_sideways: Başparmak yanlara doğru
+    hand_up: El yukarı
   poll_common:
     superseded: Değiştirildi
     outdated: Modası geçmiş
@@ -2094,6 +2106,9 @@ tr:
     hide_results_description: İnsanların, başkalarının nasıl oy verdiğini bilmeden oy vermesini istiyorsanız anket sonuçlarını gizleyebilirsiniz.
     process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.
     reminder_helptext: Anket kapanmadan önce 'Yakında kapatılacak' bildirimi gönderin. Bu, insanların başkalarının nasıl oy verdiğini görmeleri ve kendi oylarını yeniden değerlendirmeleri için bir fırsat olabileceği gibi, yalnızca ankete katılımı artırmanın bir yolu da olabilir.
+    deadline: Son teslim tarihi
+    how_much_time_to_vote: İnsanlara oy vermeleri için ne kadar zaman tanıyacaksınız?
+    advanced_settings: Gelişmiş ayarlar
   poll_proposal_form:
     start_header: Teklifi başlat
     edit_header: Teklifi düzenle

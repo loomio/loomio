@@ -162,6 +162,7 @@ de:
     no_tags_present: Keine Diskussionen konnten mit diesem Schlagwort gefunden werden. Versuche ein anderes.
     no_tags_in_group: Diese Gruppe hat bis jetzt noch keine Schlagwörter
     only_admins_can_edit_tags: Leider können nur Administratoren von %{group} Schlagwörter erstellen, umbenennen oder löschen
+    pick_a_color: Wählen Sie eine Farbe
   poll_types:
     proposal: Vorschlag
     count: Opt-in
@@ -587,6 +588,9 @@ de:
     close_sidebar: Seitenleiste schliessen
     logo_title: Startseite
     group_and_subgroups: "%{group}  & Untergruppen"
+    search_members_short: Mitglieder suchen
+    search_files_short: Suche nach Dateien
+    search_subgroups_short: Untergruppen durchsuchen
   user_dropdown:
     pin_sidebar: Seitenleiste verankern
     unpin_sidebar: Seitenleiste lösen
@@ -603,6 +607,9 @@ de:
     sign_out: Abmelden
     beta_collab: "\U0001F9EA Beta-Funktionen aktiviert!"
     outcomes: Ergebnisse
+    theme: Thema
+    light: Licht
+    dark: Dunkel
   membership_card:
     group_members: Mitglieder der Gruppe
     discussion_members: Diskussionsteilnehmer
@@ -625,6 +632,7 @@ de:
       group: Aus der Gruppe entfernen
       poll: von %{pollType} entfernen
     cancel_invitation: Einladung abbrechen
+    view_profile: Profil ansehen
   notification_models:
     discussion: 'Diskussion:'
     comment: kommentieren in
@@ -1727,6 +1735,10 @@ de:
     meaning_hint: Ein Satz, der erklärt, was die Auswahl dieser Option bedeutet
     prompt: Grundaufforderung
     prompt_hint: Eine Frage, die die Wähler dazu anregen soll, ihre Argumente darzulegen oder ihre Position zu überdenken.
+    thumb_up: Daumen hoch
+    thumb_down: Daumen runter
+    thumb_sideways: Daumen seitlich
+    hand_up: Hand hoch
   poll_common:
     superseded: Abgelöst
     outdated: Veraltet
@@ -2132,6 +2144,9 @@ de:
     hide_results_description: Wenn Sie möchten, dass die Leute abstimmen, ohne zu wissen, wie andere abgestimmt haben, können Sie die Ergebnisse der Umfrage ausblenden.
     process_helptext: Benennen und beschreiben Sie den Prozess, der zum Ausführen dieser Umfrage verwendet wird.
     reminder_helptext: Senden Sie eine Benachrichtigung „Bald schließt“, bevor die Umfrage endet. Dies kann eine Gelegenheit für die Menschen sein, zu sehen, wie andere abgestimmt haben, und ihre eigene Stimme zu überdenken, oder einfach eine Möglichkeit, die Beteiligung an der Umfrage zu erhöhen.
+    deadline: Frist
+    how_much_time_to_vote: Wie viel Zeit geben Sie den Leuten zum Abstimmen?
+    advanced_settings: Erweiterte Einstellungen
   poll_proposal_form:
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten
