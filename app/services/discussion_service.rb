@@ -127,6 +127,7 @@ class DiscussionService
     discussion.polls.each { |poll| poll.update(group: destination.presence) }
     ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
 
+    GenericWorker.perform_async('PollService', 'group_members_added', discussion.group_id) if discussion.group_id
     GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
     EventBus.broadcast('discussion_move', discussion, params, actor)
     Events::DiscussionMoved.publish!(discussion, actor, source)
@@ -168,8 +169,14 @@ class DiscussionService
     EventBus.broadcast('discussion_mark_as_seen', reader, actor)
   end
 
+  def self.mark_as_read_simple_params(discussion_id, ranges, actor_id)
+    discussion = Discussion.find(discussion_id)
+    actor = User.find(actor_id)
+    mark_as_read(discussion: discussion, params: {ranges: ranges}, actor: actor)
+  end
+
   def self.mark_as_read(discussion:, params:, actor:)
-    actor.ability.authorize! :mark_as_read, discussion
+    return unless actor.ability.can?(:mark_as_read, discussion)
     RetryOnError.with_limit(2) do
       sequence_ids = RangeSet.ranges_to_list(RangeSet.to_ranges(params[:ranges]))
       NotificationService.viewed_events(actor_id: actor.id, discussion_id: discussion.id, sequence_ids: sequence_ids)
@@ -239,7 +246,7 @@ class DiscussionService
                            inviter: actor,
                            guest: !volumes.has_key?(user.id),
                            admin: !discussion.group_id,
-                           volume: volumes[user.id] || DiscussionReader.volumes[:normal])
+                           volume: volumes[user.id] || user.default_membership_volume)
     end
 
     DiscussionReader.import(new_discussion_readers, on_duplicate_key_ignore: true)

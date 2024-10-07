@@ -27,6 +27,7 @@ export default
     return {
       group: null,
       discussions: [],
+      pinnedDiscussions: [],
       loader: null,
       groupIds: [],
       per: 25,
@@ -55,8 +56,7 @@ export default
           search: {
             placeholder: this.$t('navbar.search_threads', {name: this.group.parentOrSelf().name})
           }
-        }
-        );
+        });
 
         EventBus.$on('joinedGroup', group => this.fetch());
 
@@ -98,9 +98,21 @@ export default
         default: return [this.group.id];
       } })();
 
-      let chain = Records.discussions.collection.chain();
-      chain = chain.find({discardedAt: null});
-      chain = chain.find({groupId: {$in: this.groupIds}});
+      if (!this.$route.query.t && !this.$route.query.tag) {
+        this.pinnedDiscussions = Records.discussions.collection.chain().find({
+          discardedAt: null,
+          groupId: this.group.id,
+          pinnedAt: {$ne: null}
+        }).simplesort('pinnedAt', true).data();
+      } else {
+        this.pinnedDiscussions = []
+      }
+
+      let chain = Records.discussions.collection.chain().find({
+        discardedAt: null,
+        groupId: {$in: this.groupIds},
+        id: {$nin: this.pinnedDiscussions.map(d => d.id)}
+      }).simplesort('lastActivityAt', true);
 
       switch (this.$route.query.t) {
         case 'unread':
@@ -130,9 +142,9 @@ export default
         } else {
           chain = chain.find({lastActivityAt: {$jbetween: this.loader.pageWindow[this.page]}});
         }
-        return this.discussions = chain.simplesort('lastActivityAt', true).data();
+        this.discussions = chain.data();
       } else {
-        return this.discussions = [];
+        this.discussions = [];
       }
     },
 
@@ -195,14 +207,6 @@ export default
 
     totalPages() {
       return Math.ceil(parseFloat(this.loader.total) / parseFloat(this.per));
-    },
-
-    pinnedDiscussions() {
-      return orderBy(this.discussions.filter(discussion => discussion.pinnedAt), ['pinnedAt'], ['desc']);
-    },
-
-    regularDiscussions() {
-      return orderBy(this.discussions.filter(discussion => !discussion.pinnedAt), ['lastActivityAt'], ['desc']);
     },
 
     groupTags() {
@@ -301,7 +305,7 @@ div.discussions-panel(v-if="group")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(two-line)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions", :key="thread.id", :thread="thread" group-page)
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in regularDiscussions", :key="thread.id", :thread="thread" group-page)
+            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions", :key="thread.id", :thread="thread" group-page)
 
         loading(v-if="loading && discussions.length == 0")
 

@@ -142,25 +142,12 @@ describe Group do
     end
   end
 
-  describe "org membership count" do
+  describe "org members count" do
     let!(:group) { create(:group) }
     let!(:subgroup) { create(:group, parent: group) }
     it 'returns total number of memberships in the org' do
       expect(group.memberships.count + subgroup.memberships.count).to eq 3
-      expect(group.org_memberships_count).to eq 2
-    end
-  end
-
-  describe "has_max_members" do
-    let!(:group) { create(:group) }
-    it 'is true when subscription max members is eq to org_memberships_count' do
-      Subscription.for(group).update(max_members: group.org_memberships_count)
-      expect(group.has_max_members).to eq true
-    end
-
-    it 'is false when org_memberships_count is less that max_members' do
-      Subscription.for(group).update(max_members: group.org_memberships_count + 1)
-      expect(group.has_max_members).to eq false
+      expect(group.org_members_count).to eq 2
     end
   end
 end

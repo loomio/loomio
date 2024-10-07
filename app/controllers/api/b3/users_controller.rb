@@ -15,7 +15,7 @@ class API::B3::UsersController < API::V1::SnorlaxBase
   end
 
   def reactivate
-    User.inactive.find(params[:id]) # throws 404 if not present
+    User.deactivated.find(params[:id]) # throws 404 if not present
     UserService.reactivate(params[:id])
     render json: {success: :ok}
   end

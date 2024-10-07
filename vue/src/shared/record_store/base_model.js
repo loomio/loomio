@@ -1,7 +1,7 @@
 import utils from './utils';
 import Vue from 'vue';
 import { isEqual } from 'date-fns';
-import { camelCase, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
+import { camelCase, compact, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
 
 export default class BaseModel {
   static singular = 'undefinedSingular';
@@ -66,6 +66,18 @@ export default class BaseModel {
     this.afterConstruction();
   }
 
+  collabKeyParams() {
+    return [];
+  }
+
+  collabKey(field, userId) {
+    return compact((this.isNew() ?
+      [this.constructor.singular, 'new', userId, this.collabKeyParams(), field]
+    :
+      [this.constructor.singular, this.id, field]
+    ).flat()).join("-");
+  }
+
   bumpVersion() {
     return this._version = this._version + 1;
   }
@@ -111,6 +123,12 @@ export default class BaseModel {
     if (this.inCollection()) { this.recordsInterface.collection.update(this); }
 
     return this.afterUpdateFns.forEach(fn => fn(this));
+  }
+
+  attributeIsBlank(attributeName) {
+    const doc = new DOMParser().parseFromString(this[attributeName], 'text/html');
+    const o = (doc.body.textContent || "").trim();
+    return ['null', 'undefined', ''].includes(o);
   }
 
   attributeIsModified(attributeName) {

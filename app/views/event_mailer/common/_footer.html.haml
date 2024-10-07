@@ -1,4 +1,6 @@
 .thread-mailer__footer
+  - if @notification
+    %img.thread-mailer__footer-image{src: mark_notification_as_read_pixel_src(@notification), alt: '', width: 1, height: 1}
   - if @recipient.is_logged_in?
     - if @discussion
       %img.thread-mailer__footer-image{src: pixel_src(@event), alt: '', width: 1, height: 1}

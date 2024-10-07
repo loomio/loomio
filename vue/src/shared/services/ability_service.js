@@ -167,8 +167,7 @@ export default new class AbilityService {
     if (poll.discardedAt) { return false; }
     if (poll.groupId) {
       return poll.group().adminsInclude(user) ||
-      (poll.group().membersCanAnnounce && poll.adminsInclude(user)) ||
-      (poll.group().membersCanAnnounce && !poll.specifiedVotersOnly && poll.membersInclude(user));
+      (poll.group().membersCanAnnounce && poll.adminsInclude(user))
     } else {
       return poll.adminsInclude(user) ||
       (!poll.specifiedVotersOnly && poll.membersInclude(user));
@@ -176,13 +175,13 @@ export default new class AbilityService {
   }
 
   canAddMembersPoll(poll) {
-    return poll.adminsInclude(user());
+    return poll.adminsInclude(Session.user());
   }
 
   canAddGuestsPoll(poll) {
     if (poll.groupId) {
       return poll.group().adminsInclude(Session.user()) ||
-      (poll.group().membersCanAddGuests && poll.group(Session.user()));
+      (poll.group().membersCanAddGuests && poll.adminsInclude(Session.user()));
     } else {
       return poll.adminsInclude(Session.user());
     }
@@ -194,7 +193,7 @@ export default new class AbilityService {
   }
 
   canCreateSubgroups(group) {
-    return group.isParent() &&
+    return group.isParent() && group.subscription.allow_subgroups &&
     (group.adminsInclude(Session.user()) ||
     (group.membersInclude(Session.user()) && group.membersCanCreateSubgroups));
   }

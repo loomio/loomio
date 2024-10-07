@@ -7,7 +7,7 @@ module ProtectedFromForgery
   protected
 
   def verified_request?
-    super || cookies['csrftoken'] == request.headers['X-CSRF-TOKEN']
+    super || Rails.env.development? || cookies['csrftoken'] == request.headers['X-CSRF-TOKEN']
   end
 
   private

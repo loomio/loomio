@@ -6,7 +6,7 @@
 
   %hr
   - if @discussions_by_group_id.has_key? nil
-    %h1= link_to t(:'sidebar.invite_only_threads'), groupless_threads_url
+    %h1= link_to t(:'sidebar.direct_threads'), groupless_threads_url
     - @discussions_by_group_id[nil].each do |discussion|
       = render 'user_mailer/catch_up/discussion', discussion: discussion
 

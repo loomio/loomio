@@ -14,7 +14,7 @@ module.exports = {
     page.click('.profile-page__update-button')
 
     page.ensureSidebar()
-    page.expectText('.sidebar__user-dropdown .v-list-item__title', 'Patrick SwayzeFerris Bueller')
+    page.expectText('.sidebar__user-dropdown .v-list-item__title', 'Ferris Bueller')
   },
 
   'displays_a_user_and_their_non-secret_groups': (test) => {
@@ -111,7 +111,7 @@ module.exports = {
 
     page.click('.sidebar__user-dropdown')
     page.click('.user-dropdown__list-item-button--profile')
-    page.click('.user-page__deactivate_user')
+    page.click('.user-page__redact_user')
     page.click('.confirm-modal__submit')
     page.expectText('.auth-modal', 'Create account or sign in to Loomio')
   },

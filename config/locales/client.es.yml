@@ -1,5 +1,26 @@
 ---
 es:
+  start_trial:
+    title: Iniciar una prueba gratuita de Loomio
+    intro: Gracias por tu interés en Loomio. Estamos encantados de ofrecerle una prueba gratuita de %{day} días para que pueda ver si Loomio es una buena opción para su organización.
+    lets_get_started: "¡Empecemos!"
+    your_name: Su nombre
+    your_email: Tu correo electrónico
+    we_use_this_to_help: La siguiente información se utiliza para configurar su grupo Loomio y para ayudarnos a comprender un poco sobre su organización para que podamos brindarle un mejor soporte.
+    how_do_you_intend_to_use_loomio: "¿Cómo piensas utilizar Loomio?"
+    what_decisions_do_you_need_to_make: "¿Qué decisiones necesitas tomar?"
+    newsletter_intro: "¿Le gustaría suscribirse a nuestro boletín informativo?"
+    newsletter_description: Manténgase actualizado sobre nuevas funciones e historias inspiradoras sobre cómo organizaciones de todo el mundo utilizan Loomio.
+    subscribe_to_newsletter: Suscríbete al boletín de Loomio
+    form_incomplete: Por favor complete todos los campos del formulario para continuar
+    success: "¡Éxito!"
+    taken_first_step: Ha dado el primer paso hacia la toma de decisiones colaborativa con Loomio.
+    account_created_for_you: Hemos creado una cuenta de usuario para %{email} y un grupo en Loomio.
+    please_sign_in_to_continue: Por favor inicie sesión para continuar.
+    please_complete_this_field: Por favor complete este campo
+    please_enter_a_valid_email_address: Por favor, introduce una dirección de correo electrónico válida
+    please_accept_the_terms: Por favor acepta los términos
+    how_did_you_hear_about_loomio: "¿Cómo se enteró de Loomio?"
   tasks:
     tasks: Tareas
     your_tasks: Tus tareas
@@ -18,10 +39,13 @@ es:
     task_updated_not_done: "¡Tarea señalada como no hecha!"
     no_tasks_assigned: No hay tareas asignadas a ti
   templates:
+    template_gallery: Galería de plantillas
     title_template: "%{title} Plantilla"
     title_templates: "%{title} Plantillas"
     title_copy: "%{title} Copia"
     copy_of_title: Copia de %{title}
+    loomio_default_templates: Plantillas predeterminadas de Loomio
+    which_templates_would_you_like_to_use: "¿Qué plantillas te gustaría usar?"
     login_to_start_demo: 'Esta es una demostración de Loomio en acción. Le invitamos a echar un vistazo.
 
       '
@@ -41,6 +65,7 @@ es:
     start_a_demo_group: Empezar un grupo de demostración
     start_a_demo: Iniciar demo
     demo_group: Grupo de demostración
+    play_with_an_example_group: Juega con un grupo de ejemplo
     look_and_feel: Vea cómo se ve Loomio para una organización pequeña. Aprende la aplicación probándola.
     watch_then_start: Por favor, vea el video, luego haga clic en "Iniciar demostración" para probar Loomio
     generating_demo: Vale, ¡espera allí mismo! Generar una demostración toma alrededor de 20 segundos.
@@ -56,13 +81,9 @@ es:
     start_trial: Comenzar prueba
     start_free_trial: Comenzar prueba gratis
     demo_needs_user: Para iniciar una demostración, debe registrarse (o iniciar sesión) como usuario de Loomio. Esto es gratis y solo toma un minuto.
+    trial_needs_user: Para iniciar su prueba gratuita de Loomio, inicie sesión.
     this_is_a_template_for_new_threads: Esta es una plantilla para nuevos hilos
     share_a_custom_configuration: Compartir una configuración personalizada con otros miembros de tu grupo
-    loomio_default_templates: Plantillas predeterminadas de Loomio
-    which_templates_would_you_like_to_use: "¿Qué plantillas te gustaría usar?"
-    template_gallery: Galería de plantillas
-    trial_needs_user: Para iniciar su prueba gratuita de Loomio, inicie sesión.
-    play_with_an_example_group: Juega con un grupo de ejemplo
   doctypes:
     youtube_video: Video Youtube
     image: Imagen
@@ -78,20 +99,6 @@ es:
     pull_request: Solicitud de sondeo
     trello_board: Tablero Trello
     trello_card: Tarjeta Trello
-  loomio_onboarding:
-    group_progress_card:
-      title: Primeros pasos
-      activities:
-        set_description: Configura la descripción de tu grupo
-        set_cover_photo: Sube una foto de portada y logo para vuestro grupo
-        customize_group: Editar descripción del grupo
-        setup_chatbot: Añade un bot de Loomio a tu sala de chat (por ejemplo, Slack, Discord, Teams u otro)
-        invite_people_in: Invite a las personas por correo electrónico o con un enlace para unirse.
-        start_thread: Comience un hilo de discusión
-        make_decision: 'Iniciar una decisión '
-      learn_more: Conoce más en Ayuda Loomio
-      celebration_message: Genial! Vuestro grupo está listo para actuar!
-      dismiss_this_card: Descartar este cartel
   plan_names:
     free: 'Gratis '
     starter: Arranque
@@ -116,6 +123,8 @@ es:
     was_gift_trial: 'Vuestro grupo ha estado usando Loomio de forma gratuita desde %{createdDate}. Ya no podemos seguir ofreciendo un servicio gratuito. Por favor actualiza a otro superior para continuar usando Loomio.<a href=''https://help.loomio.org/en/plan-changes/'' target=''_blank'' style=''text-decoration: underline;''>Leer más.</a>'
     was_gift_remaining: Quedan %{days} días
     was_gift_expired: Vuestro plan gratuito ha caducado
+    was_gift_expired_or_mistake: 'Su plan gratuito ya ha caducado. Si crees que ha habido un error, <a style=''text-decoration: underline'' href=''/contact''>contacta con nosotros</a> .'
+    subscription_ended: Tu suscripción a Loomio ha finalizado. Para continuar usando Loomio, actualice
   subscription_status:
     plan: Proyecto
     state: Posición
@@ -163,18 +172,16 @@ es:
     ranked_choice: elección clasificada
     score: Encuesta de puntuación
     question: ronda de preguntas
-  new_poll_types:
-    proposal: propuesta
-    count: Conteo
-    poll: Elegir
-    score: Puntuación
-    ranked_choice: rango
-    dot_vote: asignar
-    meeting: Coordinación de horario
   timezones:
     local: Hora local (%{value})
   common:
+    value: "%{value}"
+    admin_menu: Menú de administración
+    api_docs: Documentos API
+    prefix_eg: por ejemplo, %{val}
+    are_you_sure: "¿Está seguro?"
     loomio_help: Ayuda de Loomio
+    visit_loomio_help: Visita la ayuda de Loomio
     help_and_guides: Ayuda y guías
     please_wait: Por favor espera
     optional: "(opcional)"
@@ -268,6 +275,9 @@ es:
       unlike: Ya no me gusta
       update: 'Actualizar '
       cancel: Cancelar
+      confirm: Confirmar
+      hide: Esconder
+      unhide: Mostrar
       show_more: Mostrar más
       show_fewer: Mostrar menos
       view_count_more: Ver %{count} más
@@ -307,18 +317,9 @@ es:
       add_people: Añadir gente
       zoom: Zoom
       align: Alinear
-      hide: Esconder
-      unhide: Mostrar
-      confirm: Confirmar
     formatting_help:
       label: 'Formato '
       title: Aprenda a usar Markdown para dar formato a su texto
-    prefix_eg: por ejemplo, %{val}
-    are_you_sure: "¿Está seguro?"
-    visit_loomio_help: Visita la ayuda de Loomio
-    admin_menu: Menú de administración
-    api_docs: Documentos API
-    value: "%{value}"
   merge_accounts:
     modal:
       title: Fusionar cuentas
@@ -367,19 +368,7 @@ es:
     polls_count: Mostrando %{loaded} de %{total} decisiones
     search_activities: 'Buscar decisiones '
   email_to_group:
-    email_to_group_settings: Configuración de correo electrónico a grupo
-    email_to_group_address: Dirección de correo electrónico a grupo
-    start_threads_via_email: Iniciar hilos por correo electrónico
-    your_address_for_this_group: Su dirección de correo electrónico para este grupo
-    address_starts_threads_as_you: No comparta esta dirección, cualquiera que la tenga puede iniciar hilos como usted.
-    generate_new_address: Generar nueva dirección
-    copy_address: Copiar dirección
-    email_me_this_address: Enviarme esta dirección por correo electrónico
-    email_address_sent_to_you: Dirección de correo electrónico que se le ha enviado
-    email_address_copied_to_clipboard: Dirección de correo electrónico copiada en el portapapeles
-    new_address_generated: Nueva dirección de correo electrónico a grupo generada
-    generate_new_address_question: "¿Generar una nueva dirección de correo electrónico a grupo?"
-    generate_new_address_warning: Todas sus direcciones de correo electrónico existentes a loomio dejarán de funcionar. No hay deshacer. ¿Adelante?
+    email_released: Correo electrónico liberado y alias creado
     not_available_to_trial_or_demo: Esta función no está disponible para grupos de prueba o demostración.
     review_email: Revisar correo electrónico
     add_alias: Agregar alias
@@ -397,9 +386,11 @@ es:
     confirm_delete_body: Este correo electrónico será eliminado. Cualquier correo electrónico futuro de %{sender} no se verá afectado.
     unreleased_emails: Correos electrónicos inéditos
     start_a_thread_by_email: Iniciar un hilo por correo electrónico
-    email_released: Correo electrónico liberado y alias creado
     send_email_to_start_thread: Envíe un correo electrónico a esta dirección para iniciar un hilo en su grupo.
     subject_body_attachments: El asunto del correo electrónico se convierte en el título del hilo, el cuerpo del correo electrónico se convierte en la descripción y todos los archivos adjuntos se adjuntarán al hilo.
+    copy_address: Copiar dirección
+    email_me_this_address: Enviarme esta dirección por correo electrónico
+    email_address_copied_to_clipboard: Dirección de correo electrónico copiada en el portapapeles
     forward_email_to_move_conversation: 'Consejo: reenvía una conversación por correo electrónico a Loomio cuando necesites tomar una decisión o mantener un registro.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Tu dirección de correo electrónico para iniciar hilos en %{group}
@@ -525,6 +516,8 @@ es:
   thread_nav:
     participants: Participantes
   sidebar:
+    new_thread_removed: Nuevo hilo eliminado
+    new_thread_removed_body: El botón de nuevo hilo se eliminará de la barra lateral. Para iniciar un nuevo hilo, primero navegue hasta su grupo, luego haga clic en "Nuevo hilo". Perdón por el cambio, pero es obligatorio porque debes seleccionar una plantilla al iniciar un hilo.
     threads: Hilos
     my_groups: Mis grupos
     other_groups: Otros grupos
@@ -543,16 +536,14 @@ es:
     more_groups: Más grupos
     template_gallery: Galería de plantillas
     examples_and_templates: Ejemplos y plantillas
+    help_docs: Documentos de ayuda
+    a_detailed_guide_to_loomio: Una guía detallada de Loomio
+    talk_to_the_loomio_team: Habla con el equipo de Loomio
     aria_labels:
       heading: 'Barra Lateral '
       threads_list: Acciones del hilo
       groups_list: Grupos
       user_list: Acciones de usuario
-    help_docs: Documentos de ayuda
-    a_detailed_guide_to_loomio: Una guía detallada de Loomio
-    talk_to_the_loomio_team: Habla con el equipo de Loomio
-    new_thread_removed: Nuevo hilo eliminado
-    new_thread_removed_body: El botón de nuevo hilo se eliminará de la barra lateral. Para iniciar un nuevo hilo, primero navegue hasta su grupo, luego haga clic en "Nuevo hilo". Perdón por el cambio, pero es obligatorio porque debes seleccionar una plantilla al iniciar un hilo.
   strand_nav:
     newest: El más nuevo
     oldest: El más viejo
@@ -563,6 +554,12 @@ es:
     from_comment: Desde un comentario url
     from_sequence_id: Desde un elemento hilo url
     unread: Nuevo para ti
+  search_modal:
+    all_content: Todo el contenido
+    best_match: Mejor partido
+    any_tag: cualquier etiqueta
+    all_subgroups: Todos los subgrupos
+    parent_only: Sólo padres
   navbar:
     search_all_threads: Busca todos los hilos
     search_threads: Busca todos los hilos %{name}
@@ -617,6 +614,7 @@ es:
     invite_to_wip_poll: Invitar para hacer comentarios
     invitations: Invitaciones
   membership_dropdown:
+    set_name_and_username: Establecer nombre y nombre de usuario
     set_title: Añada un título
     resend: Reenviar la invitación
     invitation_resent: Invitación reenviada
@@ -627,7 +625,6 @@ es:
       group: Eliminar del grupo
       poll: Eliminar de %{pollType}
     cancel_invitation: Cancelar la invitación
-    set_name_and_username: Establecer nombre y nombre de usuario
   notification_models:
     discussion: 'Hilo:'
     comment: comentar en
@@ -638,12 +635,14 @@ es:
     header: Notificaciones
     no_notifications: No tienes notificaciones
     with_title:
+      unknown_sender: Revise el correo electrónico del remitente no reconocido
       comment_replied_to: "%{actor} te respondió en: %{title}"
       discussion_announced: "%{actor} te invitó al hilo: %{title}"
       discussion_edited: "%{actor} editó el contenido del hilo: %{title}"
       discussion_closed: "%{actor} cerró el hilo: %{title}"
       invitation_accepted: "%{actor} aceptó tu invitación a unirte a %{title}"
       membership_created: "%{actor} te ha invitado a unirte a %{title} en %{site_name}"
+      membership_resent: "%{actor} te invitó a unirte a %{title} en %{site_name}"
       membership_requested: "%{actor} solicitó unirse a %{title} "
       membership_request_approved: "%{actor} aprobó tu solicitud a unirte a %{title}"
       new_comment: "%{actor} comentó en: %{title}"
@@ -672,9 +671,8 @@ es:
       user_added_to_group: "%{actor} te añadió en el grupo: %{title}"
       user_mentioned: "%{actor} te mencionó en: %{title}"
       user_reminded: "%{actor} te está recordando que votes en %{title}"
-      membership_resent: "%{actor} te invitó a unirte a %{title} en %{site_name}"
-      unknown_sender: Revise el correo electrónico del remitente no reconocido
     without_title:
+      unknown_sender: Revise el correo electrónico del remitente no reconocido
       discussion_announced: "%{actor} te invitó al hilo"
       discussion_edited: "%{actor} editó el contenido del hilo"
       discussion_closed: "%{actor} cerró el hilo"
@@ -683,6 +681,7 @@ es:
       new_discussion: "%{actor} inicio un hilo"
       new_comment: "%{actor} comentado en un hilo"
       membership_created: "%{actor} te invitó a unirte al grupo"
+      membership_resent: "%{actor} te invitó a unirte a un grupo"
       membership_requested: "%{actor} solicitó unirse a "
       membership_request_approved: "%{actor} aprobó tu solicitud a unirte a %{title}"
       outcome_announced: "%{actor} compartió %{poll_type} un resultado"
@@ -708,8 +707,6 @@ es:
       stance_created_option: "%{actor} votó %{option}"
       user_mentioned: "%{actor} te mencionó"
       user_reminded: "%{actor} te está recordando que votes"
-      membership_resent: "%{actor} te invitó a unirte a un grupo"
-      unknown_sender: Revise el correo electrónico del remitente no reconocido
     hints:
       poll_closing_soon: Ahora es un buen momento para votar, cambiar de opinión o animar a otros a participar.
       poll_closing_soon_author: Es posible que desee recordar a las personas que voten o extiendan la fecha límite.
@@ -721,6 +718,27 @@ es:
     moved: Moviendo comentarios, esto podría llevar un tiempo
     move_to_existing_thread: 'Mover a un hilo existente '
     start_new_thread: O empieza un nuevo hilo
+  thread_template:
+    browse_public_templates: Explorar la galería de plantillas
+    thread_template_settings: Configuración de la plantilla de hilo
+    start_a_new_thread: Iniciar un nuevo hilo
+    thread_template_saved: Plantilla de hilo guardada
+    these_are_public_templates: Estas plantillas están disponibles para que las copie o modifique para adaptarlas a su grupo.
+    these_are_templates: Estas son las plantillas de hilos de tu grupo. Las plantillas lo guían a través de procesos comunes de toma de decisiones.
+    default_title_label: Título predeterminado
+    default_title_hint: Complete previamente el campo de título con texto editable. Esto es opcional; déjelo en blanco si no está seguro.
+    title_placeholder_label: Título de ejemplo
+    title_placeholder_hint: Un ejemplo para mostrar en el fondo del campo de título
+    title_placeholder_placeholder: Por ejemplo, así es como se ve el texto de fondo.
+    example_description_label: Descripción de ejemplo
+    example_description_placeholder: Proporcionar una plantilla que las personas puedan utilizar para iniciar un hilo.
+    hidden_templates: Plantillas ocultas
+    confirm_delete: "¿Estás seguro de que deseas eliminar permanentemente esta plantilla de hilo? Ningún hilo será eliminado como resultado de esto."
+    add_proposal_or_poll_template: Agregar propuesta o plantilla de encuesta
+    recommended_proposal_or_poll_templates: Plantillas de encuesta o propuesta recomendadas
+    decision_templates: Plantillas de decisión
+    decision_templates_help: Seleccione cualquier propuesta o plantilla de encuesta que ayude a completar este proceso.
+    share_in_template_gallery: Comparte esta plantilla en la galería de plantillas públicas.
   discussion_form:
     thread_templates: Plantillas de hilo
     new_thread_template: Nueva plantilla de hilo
@@ -744,6 +762,7 @@ es:
       updated: Hilo actualizado
       forked: Bifurcación del hilo creado
     new_discussion_title: Inicia un nuevo hilo
+    new_thread_from_template: 'Nuevo hilo: %{process_name}'
     moving_items_title: Mover puntos a un nuevo hilo
     edit_discussion_title: Editar hilo
     group_label: Grupo
@@ -758,7 +777,6 @@ es:
     privacy_organisation: Los hilos serán visibles para integrantes de %{parent} e integrantes de %{group}.
     fork_notice: Un nuevo hilo será creado con %{count} elementos de %{title}
     notify_group: Grupo de notificación
-    new_thread_from_template: 'Nuevo hilo: %{process_name}'
   announcement:
     send_discussion: Manda hilo
     send_group: Invita a gente a %{name}
@@ -801,13 +819,15 @@ es:
     poll_reminder: "%{name} recordó %{length} gente a votar:"
     audiences:
       group: 'Integrantes de %{name} '
+      everyone_in_the_group: Todos en el grupo
       discussion_group: Todos en el hilo
       voters: Todos invitados a votar
       decided_voters: Todos los que votaron
       undecided_voters: Votantes indecisos
       non_voters: Miembros de %{name} todavía no han sido invitados
-      everyone_in_the_group: Todos en el grupo
     form:
+      group_has_no_members_yet: Eres el único miembro de tu grupo. Es posible que desees invitar a algunas personas a tu grupo antes de iniciar un hilo o una decisión.
+      invite_people_to_evaluate_loomio: Invita a algunas personas a tu grupo de Loomio para tomar una decisión juntos
       too_many_invitations: 'Límite de invitaciones excedido. <a href="%{upgradeUrl}" target="_blank">Mejore su abono</a>
 
         '
@@ -818,6 +838,7 @@ es:
       who_to_invite: "¿A quién te gustaría invitar?"
       invitation_message_placeholder: Un mensaje a incluir en el email de invitación. (opcional)
       invitation_message_label: Mensaje
+      invitation_message_default: He creado este grupo de Loomio para ayudarnos a tomar decisiones juntos. Por favor acepte mi invitación. Sólo te llevará un minuto unirte. Gracias.
       group_announced:
         title: Invitar al grupo
         helptext: "¿A quién le gustaría invitar al grupo?"
@@ -852,6 +873,7 @@ es:
         helptext: Resumir los resultados del proceso, incluyendo cualquier entendimiento encontrado o problemas sacados a la luz.
       anyone_can_participate: Cualquiera con el enlace puede paticipar
       placeholder: Puedes introducir nombres o direcciones de correo electrónico
+      type_or_paste_email_addresses_to_invite: Escriba o pegue direcciones de correo electrónico para invitar
       notified_empty: No se ha seleccionado a nadie todavía
       single_notification: Se enviará una notificación.
       multiple_notifications: "%{notified} notificaciones se enviarán."
@@ -865,10 +887,6 @@ es:
       visible_to_group: Cualquiera en %{group} será capaz de ver este hilo.
       visible_to_guests: Solamente la gente invitada puede ver este hilo.
       click_group_to_see_individuals: Clica grupo para ver individual
-      invite_people_to_evaluate_loomio: Invita a algunas personas a tu grupo de Loomio para tomar una decisión juntos
-      invitation_message_default: He creado este grupo de Loomio para ayudarnos a tomar decisiones juntos. Por favor acepte mi invitación. Sólo te llevará un minuto unirte. Gracias.
-      type_or_paste_email_addresses_to_invite: Escriba o pegue direcciones de correo electrónico para invitar
-      group_has_no_members_yet: Eres el único miembro de tu grupo. Es posible que desees invitar a algunas personas a tu grupo antes de iniciar un hilo o una decisión.
     members_list:
       title: Compartido con
       last_notified: Notificado
@@ -878,6 +896,8 @@ es:
       thread_admin: Hilo de administración
       last_read_at: El último visto %{time}
       has_not_read_thread: Tiene un hilo no visto
+      has_not_joined_yet: Aún no se ha unido
+      has_not_joined_yet_hint: Este usuario no ha aceptado su invitación para unirse a Loomio y no recibirá más notificaciones hasta que lo haga.
     group_form:
       search_placeholder: Buscar personas...
       modal_title: Selecciona integrantes del grupo
@@ -987,6 +1007,8 @@ es:
     edit_markdown: Editar el descuento
     markdown_confirm: Puede que se pierdan algunos formatos cuando se convierta de contenido wysiwyg a la reducción.
     upload_failed: Carga fallida
+    confirm_discard: "¿Está seguro de que desea descartar los cambios?"
+    discard_draft: Descartar borrador
   cover_photo_form:
     heading: Nueva foto de portada
     upload_link: Cargar una nueva foto de portada
@@ -1064,6 +1086,7 @@ es:
     stats: Estadísticas de grupo
     threads: Hilos
     polls: Sondeos
+    decisions: Decisiones
     members: Integrantes
     files: Archivos
     settings: 'Configuración '
@@ -1130,7 +1153,7 @@ es:
       parent_members: 'Privacidad: Este grupo es visible para los integrantes de %{parentGroupName} y integrantes de %{groupName} '
       public: 'Privacidad: Este grupo es visible en la red '
       aria_label: 'Privacidad del grupo: %{privacy}'
-    decisions: Decisiones
+    participation_report: Informe de participación
   export_data_modal:
     title: "¿Cómo quieres utilizar tus datos?"
     as_csv: Abrir en una hoja de cálculo
@@ -1176,6 +1199,7 @@ es:
     subgroup_name: 'Nombre del sub-grupo '
     organization_name: Nombre de la organización
     handle: Gestionar
+    group_handle_placeholder: 'Usado en la URL de tu grupo: %{host}/%{handle}'
     start_organization_heading: Nueva organización
     edit_organization_heading: Editar los ajustes de la organización
     group_name_placeholder: "¿Cuál es el nombre de tu grupo?"
@@ -1183,6 +1207,8 @@ es:
     organization_name_placeholder: "¿Cuál es el nombre de la organización?"
     description: 'Descripción '
     description_placeholder: Describa el propósito del grupo para que los integrantes sepan porque están aquí.
+    new_description_placeholder: "¿Por qué estás probando Loomio? ¿Qué decisiones necesitan tomar juntos?"
+    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">¿Cómo piensas utilizar Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> ¿Por qué es esto importante para su grupo?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> ¿Qué decisiones necesitas tomar?</h3><p></p>
     secret_by_default: Su grupo solo será accesible para aquellos que estén invitados a unirse.
     privacy_statement:
       public_on_web: 'Nombre, descripción y archivos adjuntos al contexto del grupo, serán visibles al públicos '
@@ -1246,9 +1272,6 @@ es:
       group_updated: Grupo actualizado
     upload_logo: Cargar el logo
     upload_cover_photo: Cargar la foto de portada
-    group_handle_placeholder: 'Usado en la URL de tu grupo: %{host}/%{handle}'
-    new_description_placeholder: "¿Por qué estás probando Loomio? ¿Qué decisiones necesitan tomar juntos?"
-    new_description_html: <h3 id="how-do-you-intend-to-use-loomio">¿Cómo piensas utilizar Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group"> ¿Por qué es esto importante para su grupo?</h3><p></p><h3 id="what-decisions-do-you-need-to-make"> ¿Qué decisiones necesitas tomar?</h3><p></p>
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -1348,6 +1371,9 @@ es:
     title_label: Título
     title_placeholder: ej. ´Coordinadora´o ´Facilitadora´
     updated: Título del integrante actualizado
+  user_name_modal:
+    user_name_updated: Nombre de usuario actualizado
+    set_user_name: Establecer nombre de usuario
   user_page:
     contact_user: Contactar %{name}
     location_field: 'Ubicación: %{value}'
@@ -1361,6 +1387,9 @@ es:
     helptext: A %{name} se le enviará su nombre, dirección de correo electrónico y mensaje.
     email_sent: Correo electrónico enviado a %{name}
   profile_page:
+    autodetect_time_zone: Detectar automáticamente zona horaria
+    account_is_bot: Esta es una cuenta de bot
+    bot_account_warning: Las cuentas de bot no serán invitadas a votar en encuestas ni a participar en debates.
     incomplete_profile: "¡Perfil incompleto!"
     set_your_profile_picture: Establecer tu foto de perfil
     messages:
@@ -1368,6 +1397,8 @@ es:
       picture_changed: Imagen de perfil actualizada
       password_changed: Contraseña actualizada
       deactivated: Cuanta desactivada
+    deactivated_user: Usuario desactivado
+    deleted_account: cuenta eliminada
     date_time_pref_label: Formato de fecha y hora
     merge_accounts: Fusionar cuentas
     change_picture_link: Cambiar imagen
@@ -1389,11 +1420,9 @@ es:
     location_placeholder: "¿Dónde estas basado?"
     update_profile: Actualizar perfil
     deactivate_account: Desactivar la cuenta de usuario
-    help_translate: "¿Puedes ayudarnos a traducir Loomio?"
+    deactivate_account_subtitle: Detenga los correos electrónicos y cancele membresías. Mantenga su perfil para que las discusiones y decisiones pasadas no se vean afectadas.
+    delete_account_subtitle: Elimine completamente su cuenta y elimine su nombre de discusiones y decisiones pasadas.
     updated_on_sign_in: Proporcionado por su navegador y actualizado al iniciar sesión
-    deactivated_user: Usuario desactivado
-    account_is_bot: Esta es una cuenta de bot
-    bot_account_warning: Las cuentas de bot no serán invitadas a votar en encuestas ni a participar en debates.
   text_editor:
     x_of_y_characters: "%{x} / %{y} caractéres"
     select_text_to_link: Selecciona el texto del enlace e inténtalo de nuevo
@@ -1415,11 +1444,15 @@ es:
     password_changed: Su contraseña ha sido actualizada.
   deactivation_modal:
     introduction: 'Cuando borras tu cuenta:'
+    deactivate_introduction: 'Cuando desactivas tu cuenta:'
+    you_will_be_deactivated: Su cuenta de usuario quedará marcada como desactivada. Su dirección de correo electrónico y sus datos de identificación personal permanecerán. Puede reactivar su cuenta más tarde si lo desea.
+    name_not_removed: Los comentarios, votos, propuestas y discusiones que usted haya publicado permanecerán para que los registros históricos no sean alterados.
     you_will_be_deleted: Su cuenta de usuario, incluyendo nombre, correo electrónico y otros datos personales serán eliminados del sistema.
     name_removed: Los comentarios, propuestas e hilos que ha realizado permanecerán, pero su nombre será retirado de los mismos
     no_longer_group_member: Ya no serás listado como miembro en ningún grupo
     no_emails: Ya no recibirás notificaciones por correo electrónico
     submit_delete: Borrar mi cuenta ahora
+    submit_deactivate: Desactivar mi cuenta ahora
   email_settings_page:
     monday: Lunes
     tuesday: Martes
@@ -1526,6 +1559,7 @@ es:
       or: 'o '
       join_group: '<a href="/explore">únete</a> a un grupo para ver hilos.   '
   discussion:
+    direct_thread: Hilo directo
     invite_only: Sólo con invitación
     private_thread: Hilo privado
     max_threads_reached: |
@@ -1638,11 +1672,10 @@ es:
     question: Esto eliminará permanentemente este comentario. Si continúa, no se puede restaurar.
   contact_message_form:
     alt_title: Contacta soporte al usuario
+    need_message: Por favor escribe un mensaje para que podamos ayudarte :-)
+    respond_asap: Envía un mensaje al equipo de Loomio y te responderemos lo antes posible.
+    happy_to_help_with: Estaremos encantados de ayudarle con consultas de ventas, solicitudes de soporte, solicitudes de funciones, informes de errores o problemas que esté experimentando.
     title: "¡Hola! ¿Cómo podemos ayudarle?"
-    this_is_for: Este es un sitio estupendo para ventas, formación o preguntas de subscripciones o para pedir ayuda usando Loomio
-    read_the_manual: '¿Sabías que nuestro <a href="%{link}" target="_blank">Manual de Ayuda</a>contiene FAQ así como guías detalladas para facilitar debates y decisiones en Loomio?
-
-      '
     contact_us_email: 'También puedes enviarnos un email: <a href="mailto:%{email}">%{email}</a>'
     contact_us: Contáctanos
     name_label: Su nombre
@@ -1663,9 +1696,6 @@ es:
       Esperamos responder todos nuestros mensajes en el espacio de 24 horas.
     success: Gracias por tu mensaje, %{name}. Nos pondremos en contacto contigo.
     success_via_email: Gracias por tu mensaje, %{name}. Responderemos por email en el plazo de 24 horas.
-    need_message: Por favor escribe un mensaje para que podamos ayudarte :-)
-    respond_asap: Envía un mensaje al equipo de Loomio y te responderemos lo antes posible.
-    happy_to_help_with: Estaremos encantados de ayudarle con consultas de ventas, solicitudes de soporte, solicitudes de funciones, informes de errores o problemas que esté experimentando.
   explore_page:
     header: Explorar grupos
     search_placeholder: Buscar grupos públicos
@@ -1682,88 +1712,36 @@ es:
   decision_tools_card:
     choose_type: Elegir tipo de sondeo
     title: Facilitar
+    recommended: Recomendado
+    question_title: ronda de preguntas
+    advice_title: Consejo
+    consent_title: Consentir
+    consensus_title: Consenso
     proposal_title: Propuesta
     count_title: Apuntarse
     check_title: Comprobación de sentido
     poll_title: 'Encuesta '
+    meeting: Reunión
     score_title: Encuesta de puntuación
     dot_vote_title: Voto de puntos
     meeting_title: Coordinar horario
     ranked_choice_title: Opción priorizada
-    advice_title: Consejo
-    consent_title: Consentir
-    consensus_title: Consenso
-    meeting: Reunión
     gradients_of_agreement_title: Gradientes de concordancia
-    question_title: ronda de preguntas
-    recommended: Recomendado
   poll_option_form:
     edit_option: Opción editar
     option_name: Nombre de la opción
     option_name_hint: Un nombre corto para esta opción
+    option_name_validation: Es mejor mantener el nombre breve y poner detalles en el campo "Significado".
     icon: Icono
     meaning: Significado
+    please_select_an_icon: Por favor seleccione un icono
     meaning_hint: Una frase que explique lo que significa elegir esta opción
     prompt: Mensaje de motivo
     prompt_hint: Una pregunta para incitar a los votantes a proporcionar su razonamiento o reconsiderar su posición.
-    option_name_validation: Es mejor mantener el nombre breve y poner detalles en el campo "Significado".
   poll_common:
-    delete_poll: Eliminar sondeo
-    select_count_options: Seleccione las opciones de %{count}
-    select_minimum_to_maximum_options: Seleccione las opciones %{minimum} a %{maximum}
-    custom_poll_types: Tipos de sondeo personalizados
-    example_polls_from_thread_template: Tipos de sondeo personalizados
-    poll_template: Plantilla de encuesta
-    poll_templates: Plantillas de encuesta
-    poll_types: Tipos de encuesta
-    new_poll_type: Nuevo tipo de encuesta
-    edit_poll_type: Edita tipo de encuesta
-    create_a_custom_poll_type: Crear un nuevo tipo de sondeo con terminología y configuración personalizadas
-    decision: Decisión
-    decision_templates: Plantillas de decisión
-    remove_your_vote: Elimina tu voto
-    vote_now: Votar ahora
-    review_due: Revisión pendiente
-    have_your_say: Denos su opinión
-    your_response: Su respuesta
-    change_your_response: Editar respuesta
-    please_vote: Por favor vota
-    reason: Razón
-    reason_placeholder: Explica brevemente porque votaste de esta manera y luego haz clic en "presentar voto".
-    message: Mensaje
-    results: Resultados
-    current_results: Resultados actuales
-    responses: Respuestas
-    close_poll_type: Cerrar %{pollType}
-    close_early: Cierre temprano
-    totals: Total
-    participate: 'Participar '
-    vote: Votar
-    votes: Votos
-    update_outcome: Actualizar el resultado
-    outcome: Resultado
-    statement: Declaración
-    change_your_stance: Editar respuesta
-    load_more: Carga más
-    details: Detalles
-    participant_name: Su nombre
-    participant_email: Dirección de correo electrónico
-    submit_vote: Presentar el voto
-    update_vote: Actualizar el voto
-    share_poll: Compartir encuesta
-    share_proposal: Compartir propuesta
-    share_count: 'Compartir Comprobación '
-    start_poll: 'Iniciar una decisión '
-    publish_poll: Compartir encuesta
-    share_outcome: Compartr resultado
-    view_all: Ver todo
-    save_changes: Guardar
-    change_vote: Cambiar tu voto
-    max_score: Máximo marcador
-    min_score: Mínimo Marcador
-    too_long: Demasiado largo
-    edit_warning: Solamente se recomienda editar para cambios menores o arreglar errores ortográficos. Para cambios significantes, cierra este %{pollType} y empieza uno nuevo.
-    no_voting: 'Para discusión solamente, el voto deshabilitado '
+    superseded: Reemplazado
+    outdated: Anticuado
+    need_help_with_templates: "¿Necesita ayuda para crear sus propias plantillas de proceso?"
     categorize_poll_templates: Categorizar plantillas de encuestas
     show_all_templates_in_one_list: Mostrar todas las plantillas en una lista
     advice_process: Proceso de asesoramiento
@@ -1777,26 +1755,77 @@ es:
     custom: Costumbre
     custom_process: Proceso personalizado
     custom_poll: Encuesta personalizada
+    delete_poll: Eliminar sondeo
+    select_count_options: Seleccione las opciones de %{count}
+    select_minimum_to_maximum_options: Seleccione las opciones %{minimum} a %{maximum}
+    custom_poll_types: Tipos de sondeo personalizados
     hidden_poll_templates: Plantillas de encuestas ocultas
+    poll_template: Plantilla de encuesta
     poll_template_saved: Plantilla de encuesta guardada
-    new_poll_template: Nueva plantilla de encuesta
-    edit_poll_template: Editar plantilla de encuesta
-    new_custom_poll: Nueva encuesta personalizada
-    edit_custom_poll: Editar encuesta personalizada
-    create_a_custom_process: Cree un nuevo proceso con su propia terminología y opciones
-    create_a_custom_poll: Cree una encuesta con terminología y configuraciones personalizadas
-    remove_your_response: Elimina tu respuesta
-    response: Respuesta
-    submit_response: Enviar respuesta
-    update_response: Actualizar respuesta
-    change_response: Cambia tu respuesta
-    need_help_with_templates: "¿Necesita ayuda para crear sus propias plantillas de proceso?"
-    new_templates_are_here: Las nuevas plantillas de propuestas de Loomio pueden ayudar con los procesos de toma de decisiones.
-    superseded: Reemplazado
+    poll_templates: Plantillas de encuesta
+    poll_types: Tipos de encuesta
     new_proposal_template: Nueva plantilla de propuesta
     edit_proposal_template: Editar plantilla de propuesta
+    new_poll_template: Nueva plantilla de encuesta
+    edit_poll_template: Editar plantilla de encuesta
+    new_poll_type: Nuevo tipo de encuesta
+    edit_poll_type: Edita tipo de encuesta
+    new_custom_poll: Nueva encuesta personalizada
+    edit_custom_poll: Editar encuesta personalizada
+    create_a_custom_poll_type: Crear un nuevo tipo de sondeo con terminología y configuración personalizadas
+    create_a_custom_process: Cree un nuevo proceso con su propia terminología y opciones
+    create_a_custom_poll: Cree una encuesta con terminología y configuraciones personalizadas
+    decision: Decisión
+    decision_templates: Plantillas de decisión
+    remove_your_vote: Elimina tu voto
+    remove_your_response: Elimina tu respuesta
+    vote_now: Votar ahora
+    review_due: Revisión pendiente
+    have_your_say: Denos su opinión
+    your_response: Su respuesta
+    change_your_response: Editar respuesta
+    please_vote: Por favor vota
+    reason: Razón
+    response: Respuesta
+    reason_placeholder: Explica brevemente porque votaste de esta manera y luego haz clic en "presentar voto".
+    message: Mensaje
+    results: Resultados
+    current_results: Resultados actuales
+    responses: Respuestas
+    close_poll_type: Cerrar %{pollType}
+    close_early: Cierre temprano
+    totals: Total
+    participate: 'Participar '
+    vote: Votar
+    votes: Votos
+    update_outcome: Actualizar el resultado
+    outcome: Resultado
     outcomes: Resultados
-    outdated: Anticuado
+    statement: Declaración
+    change_your_stance: Editar respuesta
+    load_more: Carga más
+    details: Detalles
+    participant_name: Su nombre
+    participant_email: Dirección de correo electrónico
+    submit_vote: Presentar el voto
+    submit_response: Enviar respuesta
+    update_vote: Actualizar el voto
+    update_response: Actualizar respuesta
+    share_poll: Compartir encuesta
+    share_proposal: Compartir propuesta
+    share_count: 'Compartir Comprobación '
+    start_poll: 'Iniciar una decisión '
+    publish_poll: Compartir encuesta
+    share_outcome: Compartr resultado
+    view_all: Ver todo
+    save_changes: Guardar
+    change_vote: Cambiar tu voto
+    change_response: Cambia tu respuesta
+    max_score: Máximo marcador
+    min_score: Mínimo Marcador
+    too_long: Demasiado largo
+    edit_warning: Solamente se recomienda editar para cambios menores o arreglar errores ortográficos. Para cambios significantes, cierra este %{pollType} y empieza uno nuevo.
+    no_voting: 'Para discusión solamente, el voto deshabilitado '
   poll_common_attachment_form:
     label: Adjuntos
   poll_common_add_option:
@@ -1811,10 +1840,10 @@ es:
     show_results: Mostrar resultados
     hide_results: Ocultar resultados
     until_vote: Hasta que se emita el voto
-    until_poll_type_closed: Hasta que se cierre %{pollType}
-    deleted: Este sondeo ha sido eliminado
     until_you_vote: hasta que vote
+    until_poll_type_closed: Hasta que se cierre %{pollType}
     until_voting_is_closed: Hasta que se cierre la votacion
+    deleted: Este sondeo ha sido eliminado
   discussions_panel:
     open: Abierto
     all: Todos/as
@@ -1826,8 +1855,10 @@ es:
     welcome_to_your_new_group: "¡Bienvenido a tu nuevo grupo de Loomio!"
     lets_start_a_thread: Empecemos un hilo. Haga clic en "Nuevo hilo" para continuar.
   members_panel:
+    bot: Bot
     no_results: No se han encontrado miembros
     everyone: Todos
+    all: Todo
     sort: Orden
     order_label: Orden
     order_by_name: Nombre
@@ -1852,8 +1883,6 @@ es:
     last_seen: Último visto %{date}
     invited_by_name: Invitado por %{name}
     accepted: Integrantes
-    bot: Bot
-    all: Todo
   polls_panel:
     new_poll: Nuevo sondeo
     any_type: Todos los tipos
@@ -1872,10 +1901,15 @@ es:
   subgroups_panel:
     search_subgroups_of_name: Subgrupos de búsqueda de %{name}
     group_without_subgroups: "%{name} sin subgrupos"
+    need_a_space_for_your_team: "¿Necesita un espacio de descanso para su equipo?"
+    explainer: 'Los subgrupos son lugares privados donde los equipos de su organización pueden debatir y tomar decisiones. El contenido de los subgrupos es privado del resto de la organización. Ejemplos de subgrupos: Junta Directiva, Decisiones de contratación o Equipo de proyecto'
+    upgrade: Para iniciar un subgrupo, deberá <a class="text-decoration-underline" href="%{url}" target="_blank">actualizar su suscripción a Loomio.</a>
   poll_common_action_panel:
     from_the_thread: Desde la plantilla de subproceso
     from_the_group: Del grupo
     default_templates: Plantillas predeterminadas
+    default_template: Plantilla predeterminada
+    custom_template: Plantilla personalizada
     default_poll_types: Tipos de sondeo predeterminados
     suggested_templates: Plantillas sugeridas
     group_templates: Plantillas de grupo
@@ -1886,8 +1920,6 @@ es:
     unable_to_vote: No has sido invitado a votar en este %{poll_type}.
     draft_mode: Votante discapacitado. Esto aún no está abierto a votación.
     voting_disabled_poll_is_template: Votante discapacitado. Esta es una plantilla.
-    default_template: Plantilla predeterminada
-    custom_template: Plantilla personalizada
   poll_common_collapsed:
     by_who: por %{name}
   poll_common_calendar_invite:
@@ -1920,14 +1952,14 @@ es:
       title: Cualquiera con el enlace puede paticipar
       helptext_on: Si es seleccionado, cualquiera con el enlace a la encuesta podrá participar
     notify_on_closing_soon:
+      voting_closes_too_soon: Debido a que la votación cierra dentro de las 24 horas, no se enviarán recordatorios de cierre pronto.
       closes_too_soon: Porque este %{pollType} cierra en 24 horas no se enviarán recordatorios de que cerrará pronto.
       title: 24 horas antes %{pollType} cierre, enviar un recordatorio a
+      voting_title: 24 horas antes del cierre de la votación, envíe un recordatorio a
       nobody: Nadie
       author: Autor (yo)
       undecided_voters: Votantes indecisos
       voters: Todos los votantes
-      voting_closes_too_soon: Debido a que la votación cierra dentro de las 24 horas, no se enviarán recordatorios de cierre pronto.
-      voting_title: 24 horas antes del cierre de la votación, envíe un recordatorio a
     notify_on_participate:
       title: Notificarme cuando participe gente
       helptext_on: Si es seleccionado, se te notificará cuando alguien participe
@@ -1975,6 +2007,7 @@ es:
     poll_type_by_name: "%{poll_type} por %{name}"
     started_by: Iniciado por %{name}
   poll_common_votes_panel:
+    vote_removed: Voto eliminado
     undecided: No resuelto
     newest_first: El más reciente primero
     oldest_first: Los más viejos primero
@@ -1984,7 +2017,6 @@ es:
     no_votes_yet: Todavía no se han realizado votos.
     change_results_order: Cambiar orden de resultados
     none_of_the_above: "(Ninguno de los mencionados) "
-    vote_removed: Voto eliminado
     name_or_username: Nombre o nombre de usuario
   poll_common_undecided_panel:
     show_undecided: Mostrar %{count} indecisos
@@ -1999,20 +2031,20 @@ es:
     enter_outcome: Poner el resultado
     poll_type: Este %{poll_type} ha cerrado. Tómese el tiempo para considerar los resultados y luego comparta un resultado para que las personas sepan lo que sucederá a continuación.
   poll_common_outcome_form:
+    review_due_in_days: "¿Revisar la decisión después de cuántos días?"
+    review_due_in_days_hint: Un período de tiempo (en días) para esperar antes de revisar la decisión. (opcional)
     review_date: Revisar fecha
     review_date_hint: Establecer fecha de recordatorio para revisar el resultado (opcional)
     who_to_notify: "¿A quién quieres notificar sobre este resultado? (opcional)"
+    outcome_statement_template: Plantilla de declaración de resultados
     new_title: Introducir un resultado
     update_title: Actualizar el resultado
     outcome_created: Resultado creado
     outcome_updated: Resultado actualizado
     statement_placeholder: Resuma las respuestas y explique lo que ocurrirá a continuación.
+    statement_template_placeholder: Proporcione una plantilla para escribir el resultado de la decisión. (opcional)
     you_will_be_notified: Se te notificará en la fecha de revisión
     submit: Compartr resultado
-    review_due_in_days: "¿Revisar la decisión después de cuántos días?"
-    review_due_in_days_hint: Un período de tiempo (en días) para esperar antes de revisar la decisión. (opcional)
-    outcome_statement_template: Plantilla de declaración de resultados
-    statement_template_placeholder: Proporcione una plantilla para escribir el resultado de la decisión. (opcional)
   poll_common_outcome_panel:
     authored_by: Por %{name}
   poll_common_delete_modal:
@@ -2020,7 +2052,14 @@ es:
     title: Eliminar %{pollType}
     success: Eliminada con éxito.
   poll_common_form:
-    new_poll_type_helptext: Crea un nuevo tipo de encuesta para tu grupo. Personalice la terminología y la configuración para que sea fácil para otras personas de su grupo ejecutar un proceso de toma de decisiones específico.
+    notify_everyone_when_poll_starts: Notificar a todos cuando comience %{poll_type}
+    option_has_votes_confirm_delete: Algunas personas han votado por esta opción, ¿estás seguro de que quieres eliminarla?
+    example_title: Título de ejemplo
+    example_title_hint: Dé un ejemplo de un buen título de propuesta
+    example_details_placeholder: Proporcione un punto de partida para una propuesta o encuesta. Las preguntas pueden ser indicaciones útiles para que la gente escriba. Incluya cualquier regla o recordatorio que los participantes necesiten saber.
+    confirm_delete: "¿Está seguro de que desea eliminar esta plantilla de encuesta? Esto no se puede deshacer."
+    show_advanced_settings: Mostrar configuración avanzada
+    hide_advanced_settings: Ocultar configuraciones avanzadas
     choose_at_least: Elija al menos
     choose_at_most: Elige como máximo
     please_review_the_form: Por favor, revise el formulario
@@ -2038,6 +2077,8 @@ es:
     this_is_a_template_for_new_polls: Esta es una plantilla para nuevas encuestas
     voting_method: Método de votación
     voting_methods:
+      question: ronda de preguntas
+      question_hint: Invitar a preguntas y comentarios sobre su propuesta
       show_thumbs: Presentación de pulgares
       show_thumbs_hint: Los votantes eligen pulgar hacia arriba, hacia abajo, hacia los lados o manos arriba
       choose: Elegir
@@ -2051,17 +2092,16 @@ es:
       ranked_choice_hint: Los votantes organizan las opciones en orden de más a menos preferidos
       time_poll: Coordinar horario
       time_poll_hint: Los votantes indican cuándo están disponibles para reunirse
-      question: ronda de preguntas
-      question_hint: Invitar a preguntas y comentarios sobre su propuesta
     process: Proceso
-    poll_type_name: Nombre del tipo de encuesta
-    poll_type_name_hint: "¿Cómo llamas a este tipo de encuesta? Por ejemplo, propuesta, control de temperatura, aprobación de actas"
-    poll_type_description: Descripción del tipo de sondeo
-    poll_type_description_hint: Una línea que describe el caso de uso de este tipo de sondeo. Por ejemplo, aprobar las actas de la reunión anterior
+    process_name: Título de la plantilla
+    process_name_hint: "¿Cómo llamas a esta plantilla? Por ejemplo, asesoramiento sobre funciones, control de temperatura, aprobación de actas"
+    process_subtitle: Subtítulo de plantilla
+    process_subtitle_hint: Una descripción de una línea de cuándo o por qué usar esta plantilla
+    process_introduction: Ayuda de plantilla
+    process_introduction_hint: Unos párrafos que explican cómo utilizar la plantilla. Incluya enlaces a recursos que podrían ser útiles.
     you_can_set_a_prompt_per_option: Edite el mensaje para cada opción desde la pestaña de detalles
     chart_type: Tipo de gráfico
     title: Título
-    example_title: Título de ejemplo
     title_hint: Una breve declaración o pregunta
     no_options_add_some: Esta encuesta no tiene opciones, agregue algunas a continuación.
     details: Detalles
@@ -2091,6 +2131,7 @@ es:
     count_voters_added: "%{count} votantes añadidos"
     poll_type_created: "%{poll_type} creado"
     poll_type_started: "%{poll_type}comenzó"
+    poll_type_updated: "%{poll_type} actualizado"
     reason_prompt: Mensaje de motivo
     anonymous_voting: Voto anónimo
     anonymous_voting_description: Si se habilita, la identidad de los votantes no se asociará a sus votos. Esto no se puede deshacer.
@@ -2104,39 +2145,27 @@ es:
     reminder_helptext: |
       Envíe una notificación de "Cierre pronto" antes de que se cierre la encuesta.
       Esta puede ser una oportunidad para que las personas vean cómo otros han votado y reconsideren su propio voto, o simplemente una forma de aumentar la participación en la encuesta.
-    example_title_hint: Dé un ejemplo de un buen título de propuesta
-    confirm_delete: "¿Está seguro de que desea eliminar esta plantilla de encuesta? Esto no se puede deshacer."
-    show_advanced_settings: Mostrar configuración avanzada
-    hide_advanced_settings: Ocultar configuraciones avanzadas
-    process_url: URL del proceso
-    process_url_hint: Enlace a una página web que explica este proceso
-    example_details_placeholder: Proporcione un punto de partida para una propuesta o encuesta. Las preguntas pueden ser indicaciones útiles para que la gente escriba. Incluya cualquier regla o recordatorio que los participantes necesiten saber.
-    process_name: Título de la plantilla
-    process_name_hint: "¿Cómo llamas a esta plantilla? Por ejemplo, asesoramiento sobre funciones, control de temperatura, aprobación de actas"
-    process_subtitle: Subtítulo de plantilla
-    process_subtitle_hint: Una descripción de una línea de cuándo o por qué usar esta plantilla
-    process_introduction: Ayuda de plantilla
-    process_introduction_hint: Unos párrafos que explican cómo utilizar la plantilla. Incluya enlaces a recursos que podrían ser útiles.
-    option_has_votes_confirm_delete: Algunas personas han votado por esta opción, ¿estás seguro de que quieres eliminarla?
-    notify_everyone_when_poll_starts: Notificar a todos cuando comience %{poll_type}
-    poll_type_updated: "%{poll_type} actualizado"
   poll_proposal_form:
-    tool_tip_collapsed: Toma de decisión conjunta
-    vote_method_hint: Los votantes están de acuerdo o en desacuerdo con una declaración
     start_header: Inicia una propuesta
     edit_header: Edita una propuesta
     title_placeholder: P.ej. ¡Vamos a la luna!
     details_placeholder: "¿Cuáles son los detalles de su propuesta?"
     proposal_created: Propuesta iniciada
     proposal_updated: Propuesta actualizada
-    advice_subtitle: Busque asesoramiento sobre una decisión que debe tomar
-    advice_introduction: '<p>Busque asesoramiento sobre una decisión que debe tomar, con el asesoramiento de personas afectadas o que tengan experiencia, para que pueda tomar una mejor decisión para su organización.</p><p> La propuesta de Asesoramiento es una etapa clave en el proceso de Asesoramiento:</p><ol><li><p> Notas un problema u oportunidad y tomas la iniciativa.</p></li><li><p> Busque información para sondear las perspectivas antes de proponer una acción: inicie un hilo de Loomio.</p></li><li><p> Haga una propuesta y busque asesoramiento: ejecute una <strong>propuesta de asesoramiento</strong> .</p></li><li><p> Tomando en cuenta los consejos recibidos, usted toma una decisión e informa a las personas que le han dado el consejo: establezca un resultado.</p></li></ol><p> Ejecute una <strong>propuesta de asesoramiento</strong> e invite a las personas a responder dentro de un marco de tiempo establecido.</p><p> Beneficios:</p><ul><li><p> Los consejos le ayudan a tomar una mejor decisión para su organización.</p></li><li><p> Fomentar las relaciones, las oportunidades de aprendizaje y los aportes diversos.</p></li><li><p> Estimular la iniciativa y la creatividad, y hacer más agradable el trabajo.</p></li></ul><p> <a target="_blank" href="https://help.loomio.com/en/guides/advice_process/index.html" rel="nofollow ugc noreferrer noopener">Lea más sobre el proceso de asesoramiento</a> .</p>'
-    consent_subtitle: Asegúrese de que no haya objeciones a su propuesta
-    consensus_subtitle: Llegar a un acuerdo colectivo con todos los involucrados
-    consensus_introduction: "<p>Cree consenso para una decisión que necesita tomar, para llegar a un acuerdo que satisfaga las necesidades e inquietudes de todos los participantes.</p><p> Discutir y desarrollar una propuesta juntos</p><p> Incluya y respete a todos los involucrados</p><p> Buscar el acuerdo de la mayoría de las personas.</p><p> Lea más sobre la propuesta de Consenso.</p>"
+  record_modal:
+    record_video: Grabar video
+    record_audio: Grabar audio
+    record: Registro
+    stop: Detener
+    no_mic: No se pudo encontrar un micrófono
+    no_camera: No se pudo encontrar una cámara
+    listen_to_audio: escuchar audio
+    watch_video: Ver video
+    audio_transcript: 'Transcripción de audio: %{text}'
+    why_type_when_you_can_talk: "¿Por qué escribir cuando puedes hablar? Enviar una grabación de voz"
+    transcript_included: Se adjuntará una transcripción de la grabación a su mensaje.
   poll_poll_form:
     multiple_choice_subtitle: Una forma sencilla de evaluar la popularidad de las opciones
-    tool_tip_collapsed: Encuentra la opción más popular
     start_header: Iniciar encuesta
     edit_header: Editar encuesta
     tip: Ofrecer una elección entre las opciones
@@ -2151,13 +2180,9 @@ es:
     option_added: Opción añadida
     option_already_added: Opción ya agregada a la encuesta
   poll_dot_vote_form:
-    tool_tip_collapsed: Asignar un presupuesto de puntos para revelar prioridades
     dots_per_person: Puntos por persona
     dots_per_person_helptext: El número total de puntos que a cada persona se le pide asignar
-  poll_score_form:
-    tool_tip_collapsed: Medir el grado de apoyo para cada opción
   poll_meeting_form:
-    tool_tip_collapsed: Descubre cuando la gente está disponibles para reunirse
     timeslots: Horarios
     no_options: Introduzca los horarios en su zona horaria actual (%{zone}). Los integrantes verán los horarios adaptados a su zona horaria local.
     meeting_duration: Duración de reunión
@@ -2167,7 +2192,6 @@ es:
     participants_see_local_times: Los participantes verán los horarios localizados en su zona horaria
     use_24_hour_format: "¡Error! Utilice el formato de 24 horas, por ejemplo, %{time}"
   poll_ranked_choice_form:
-    tool_tip_collapsed: Comprender la preferencia ordenada de las opciones
     no_options: No has añadido ninguna opción aún
     add_option_placeholder: Ingresa una nueva opción
     minimum_stance_choices: Opciones para priorizar
@@ -2207,51 +2231,16 @@ es:
     objection: Objeción
     object: Objeto
     block: Bloquear
-    agree_meaning: Esta propuesta es suficientemente buena para ser adoptada por el grupo
-    agree_prompt: "¿Por qué te gusta la propuesta? ¿Hay algo que se pueda mejorar?"
-    consent_meaning: Esta propuesta es segura de probar
-    consent_prompt: "¿Por qué consientes? ¿Hay algo que te gustaría cambiar?"
-    objection_meaning: Esta propuesta no es segura de probar
-    objection_prompt: "¿Qué problema grave ha identificado en esta propuesta que significa que no es seguro intentarlo?"
-    abstain_meaning: Eligiendo no hacerlo, o no poder votar en esta decisión.
-    abstain_prompt: "¿Por qué opta por no participar o no puede votar en esta decisión?"
-    disagree_meaning: Algo de esta propuesta debe cambiarse antes de que pueda apoyarla.
-    block_meaning: Se requiere la atención urgente del grupo
     no_voting: No votar
   poll_count_form:
     pct_of_target: "% del objetivo"
     agree_target_helptext: "¿Cuál es el número objetivo de voluntarios que te gustaría tener?"
-    tool_tip_collapsed: Encontrar voluntarios o participantes
-    title_placeholder: P.ej. ¿Quién quiere unirse al grupo de trabajo?
-    details_placeholder: Explica lo que implica participar o brinda detalles sobre cómo participar.
     agree_target_label: Número objetivo
-  poll_check_options:
-    check_subtitle: Solicite comentarios, preguntas e inquietudes
-    looks_good: Tiene buena pinta
-    looks_good_meaning: Estoy contento con hacia dónde va esto
-    looks_good_prompt: "¿Tienes algún otro comentario para compartir?"
-    not_sure: Aún no estoy seguro
-    not_sure_meaning: Tengo una pregunta o necesito más tiempo
-    not_sure_prompt: "¿Qué partes no están claras para usted? ¿Cómo podría resolverse esto?"
-    concerned: Preocupado
-    concerned_meaning: Algo sobre esto puede necesitar cambiar
-    concerned_prompt: "¿Cuál es su preocupación y cómo podría abordarse?"
-    check_introduction: "<p>La propuesta de verificación de Sense es una buena manera de obtener comentarios, invitar a hacer preguntas y descubrir inquietudes. Ayuda a aclarar y mejorar una propuesta antes de pasar a una decisión.</p><p> Sense check les permite a las personas saber que se está formando una propuesta y los alienta a participar. Es una oportunidad para escuchar a las personas, sentir cómo se sienten y responder adecuadamente, abriendo el potencial para incorporar sus contribuciones para tomar una mejor decisión.</p><p> Utilice la propuesta de verificación de Sentido en el proceso de Consentimiento para invitar a reacciones y comentarios para mejorar la propuesta, y en un proceso de Consenso para probar el consenso.</p><p> Lea más sobre la propuesta de verificación de Sense.</p>"
-    question: Tengo una pregunta
-    question_meaning: Haz una pregunta sobre la propuesta.
-    question_prompt: "¿Que le gustaría preguntar?"
   poll_count_options:
     accept: Aceptar
     decline: 'Rechazar '
     'yes': Si
     'no': 'No'
-  poll_count_vote_form:
-    accept_meaning: Estoy dispuesto a participar
-    accept_prompt: "¿Por qué te ofreces como voluntario para esto?"
-    decline_meaning: No puedo participar
-    decline_prompt: "¿Hay algo que te gustaría decir?"
-    reason_label: Mensaje
-    reason_placeholder: 'Deja un mensaje si quieres '
   poll_common_percent_voted:
     sentence: "%{numerator} de %{denominator} gente ha votado (%{percent}%))"
     target_progress: "%{percent}% del objetivo alcanzado. (%{num} / %{target})"
@@ -2286,6 +2275,146 @@ es:
     helptext: Arrastre y suelte las opciones en orden de preferencia (1 la opción preferida). Sus %{count} opciones preferidas serán registradas.
     stance_created: 'Opción registrada '
     stance_updated: Opción actualizada
+  poll_templates:
+    proposal:
+      process_subtitle: Plantear una propuesta para tomar una decisión
+      process_introduction: <p>La propuesta clásica de Loomio te ayuda a tomar una decisión, convirtiendo una discusión en un desenlace claro.</p><p> Sugiera un curso de acción e invite a las personas a responder votando de acuerdo, abstención o desacuerdo.</p><p> A medida que la gente vota, puede dar una razón por la que votó de esta manera. Puede ver cuál es la posición de todos los demás sobre el asunto y por qué.</p><p> De esta manera, puede usar una propuesta para incitar a las personas a responder, descubrir nueva información y generar un entendimiento compartido, para ayudar a su grupo a tomar una decisión mejor y más informada.</p><p> Una propuesta y la discusión asociada crean su propio registro de cómo se tomó la decisión.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lea más sobre el uso de la propuesta clásica de Loomio en el proceso de decisión Simple</u></a> .</p>
+      title: Aprobar el nuevo concepto de Marca
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Para que esta propuesta sea aprobada, necesitamos que la mayoría de los miembros voten De acuerdo.</p><p> Si no está de acuerdo, diga por qué y qué debe cambiar para que esté de acuerdo. \U0001F642</p>
+      agree: Aceptar
+      agree_meaning: apoyo la propuesta
+      agree_prompt: "¿Qué le gusta de la propuesta y cómo beneficiará al grupo?"
+      abstain: Abstenerse
+      abstain_meaning: Elegir no votar o no poder votar en esta decisión.
+      abstain_prompt: "¿Por qué se abstiene o no se siente capaz de votar en esta decisión?"
+      disagree: Discrepar
+      disagree_meaning: Es necesario cambiar algo en esta propuesta antes de que pueda apoyarla.
+      disagree_prompt: "¿Cómo podría mejorarse esta propuesta para que usted pueda apoyarla?"
+    advice:
+      process_subtitle: Busque asesoramiento sobre una decisión que debe tomar
+      process_introduction: <p>Busque asesoramiento sobre una decisión que debe tomar, con el asesoramiento de personas afectadas o que tengan experiencia, para que pueda tomar una mejor decisión para su organización.</p><ul><li><p> Los consejos le ayudan a tomar una mejor decisión para su organización.</p></li><li><p> Fomentar las relaciones, las oportunidades de aprendizaje y los aportes diversos.</p></li><li><p> Estimular la iniciativa y la creatividad, y hacer más agradable el trabajo.</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Lea más sobre el proceso de asesoramiento</u></a> .</p>
+      title: Ayuda a Takashi a comprar una computadora nueva
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>¿Qué consejo pides a la gente para ayudarte a tomar una buena decisión?</strong></h3><p></p><p> Estoy buscando su opinión para ayudarme a tomar una buena decisión para nuestra organización.</p>
+      agree: Aceptar
+      agree_meaning: He ofrecido mi consejo sobre esta decisión.
+      agree_prompt: Resuma su consejo o haga un comentario útil
+      abstain: Abstenerse
+      abstain_meaning: No tengo ningún consejo que ofrecer.
+      abstain_prompt: "¿Tiene algún comentario que pueda ser útil?"
+    consent:
+      process_subtitle: Tome una decisión que sea 'segura para probar', sin objeciones
+      process_introduction: <p>Busque el consentimiento sobre una decisión que necesita tomar, donde no haya objeciones significativas a su propuesta, para que pueda tomar una decisión rápida para su organización que sea 'segura para probar'.</p><ul><li><p> Apunta a una decisión 'suficientemente buena'</p></li><li><p> Involucrar muchas voces para desarrollar una propuesta viable</p></li><li><p> Pregunte si alguien tiene una objeción válida</p></li><li><p> Modificar la propuesta para resolver objeciones</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Obtenga más información sobre el proceso de consentimiento</a> .</p>
+      title: Contrata a Chloe para el puesto de diseño
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>¿Qué le estás pidiendo a la gente en esta propuesta?</strong></h3><p></p><p> Si tiene una objeción, diga por qué y proponga un cambio en la propuesta que la haga segura.</p><p> Recuerde que buscamos el consentimiento para una decisión 'suficientemente buena' que sea 'segura de probar', para que podamos tomar una buena decisión para nuestra organización.</p>
+      consent: Consentir
+      consent_meaning: La propuesta es segura de probar.
+      consent_prompt: "¿Qué le gusta de la propuesta y cómo beneficiará a la organización?"
+      objection: Objeción
+      objection_meaning: Tengo una objeción válida y creo que la propuesta causará daño.
+      objection_prompt: "¿Qué cambio se necesita en esta propuesta para que sea 'seguro de probar', para que pueda apoyarla?"
+    consensus:
+      process_subtitle: Llegar a un acuerdo colectivo con todos los involucrados
+      process_introduction: <p>Cree consenso para una decisión que necesita tomar, para llegar a un acuerdo que satisfaga las necesidades e inquietudes de todos los participantes.</p><ul><li><p> Discutir y desarrollar una propuesta juntos</p></li><li><p> Incluya y respete a todos los involucrados</p></li><li><p> Buscar el acuerdo de la mayoría de las personas.</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Lea más sobre el proceso de Consenso</a> .</p>
+      title: Aprobar el nuevo concepto de Marca
+      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Para que esta propuesta sea aprobada, necesitamos que la mayoría de los miembros voten De acuerdo.</p><p> Si no está de acuerdo, diga por qué y qué debe cambiar para que esté de acuerdo.</p>
+      agree: Aceptar
+      agree_meaning: apoyo la propuesta
+      agree_prompt: "¿Qué le gusta de la propuesta y cómo beneficiará a la organización?"
+      abstain: Abstenerse
+      abstain_meaning: Esta decisión no me afecta y estoy contento con lo que decida el grupo.
+      abstain_prompt: "¿Por qué se abstiene o no se siente capaz de votar en esta decisión?"
+      disagree: Discrepar
+      disagree_meaning: Es necesario cambiar algo en esta propuesta antes de que pueda apoyarla.
+      disagree_prompt: "¿Cómo podría mejorarse esta propuesta para que usted pueda apoyarla?"
+      block: Bloquear
+      block_meaning: Bloqueo esta propuesta y creo que no debe proceder
+      block_prompt: Explique su objeción a esta propuesta y por qué no debería seguir adelante
+    question_round:
+      process_subtitle: Invitar a preguntas aclaratorias para ayudar a las personas a comprender una propuesta
+      process_introduction: <p>Una ronda de preguntas es una oportunidad para que las personas hagan preguntas aclaratorias sobre la propuesta, para que todos entiendan la propuesta antes de decir lo que piensan al respecto.</p><p> La ronda de preguntas de Loomio es una propuesta especial sin opciones de votación. Permite a los participantes hacer preguntas dentro de la duración que establezca para la ronda.</p><p> Una ronda de preguntas se usa comúnmente como un paso en el proceso de consentimiento.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Obtenga más información sobre el proceso de consentimiento</a> .</p>
+      title: "¿Qué preguntas tienes sobre la política de Salud y Seguridad?"
+      details: <h3 id="what-are-you-proposing"><strong>¿Qué estás proponiendo?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Esta es una ronda de preguntas, donde se le invita a hacer preguntas aclaratorias.</p><p> ¿Qué necesitas saber para entender la propuesta?</p><p> Responda antes de que cierre la ronda de preguntas.</p>
+      reason_prompt: "¿Qué necesitas saber para entender la propuesta?"
+    sense_check:
+      process_subtitle: Pida comentarios, preguntas e inquietudes
+      process_introduction: <p>La propuesta de verificación de Sense es una buena manera de obtener comentarios, invitar a hacer preguntas y descubrir inquietudes. Ayuda a aclarar y mejorar una propuesta antes de pasar a una decisión.</p><p> Sense check les permite a las personas saber que se está formando una propuesta y los alienta a participar. Es una oportunidad para escuchar a las personas, sentir cómo se sienten y responder adecuadamente, abriendo el potencial para incorporar sus contribuciones para tomar una mejor decisión.</p><p> Utilice la propuesta de verificación de Sentido en el proceso de Consentimiento para invitar a reacciones y comentarios para mejorar la propuesta, y en un proceso de Consenso para probar el consenso.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Obtenga más información sobre el uso de la comprobación de sentido en el proceso de decisión simple</u></a> <span>.</span></p>
+      title: "¿Cómo te sientes acerca de los nuevos conceptos de marca?"
+      details: <h3 id="what-are-you-proposing"><strong>¿Qué estás proponiendo?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> ¿Cómo te sientes con la propuesta? Deja un comentario o haz una sugerencia de mejora.</p><p> Esta verificación de Sense es una oportunidad para su aporte y contribución, para ayudarnos a tomar una mejor decisión.</p>
+      not_sure: No estoy seguro
+      not_sure_meaning: Tengo una pregunta o necesito más tiempo.
+      not_sure_prompt: "¿Qué partes no te quedan claras? ¿Cómo podría solucionarse esto?"
+      looks_good: Se ve bien
+      looks_good_meaning: Estoy contento con el lugar al que va esto.
+      looks_good_prompt: "¿Tiene algún comentario o sugerencia para mejorar la propuesta?"
+      abstain: Abstenerse
+      abstain_meaning: No tengo nada que agregar, ni ninguna objeción a este trabajo.
+      abstain_prompt: La abstención implica el consentimiento con la dirección de esta propuesta. ¿Hay alguna razón por la que está votando para abstenerse?
+      concerned: Preocupado
+      concerned_meaning: Es posible que deba cambiar algo sobre esto para que yo dé mi consentimiento o esté de acuerdo.
+      concerned_prompt: "¿Cuál es su preocupación y cómo podría abordarse?"
+    gradients_of_agreement:
+      process_subtitle: Expresar apoyo a una propuesta en una escala de 8 puntos
+      process_introduction: "<p>La propuesta Gradientes de acuerdo permite a los miembros de un grupo expresar su apoyo a una propuesta en grados en una escala, ofreciendo más formas de expresar apoyo que en términos de “de acuerdo” y “en desacuerdo”.</p><p> Use Gradientes de acuerdo como una ronda preliminar para probar el apoyo a una propuesta antes de pasar a un acuerdo formal.</p><p> Los gradientes de acuerdo les permiten a las personas saber que se está formando una propuesta y los alienta a participar. Es una oportunidad para escuchar a las personas, sentir cómo se sienten y responder adecuadamente, abriendo el potencial para incorporar sus contribuciones para tomar una mejor decisión.</p>"
+      title: "¿Qué le parece la nueva declaración de valores?"
+      details: <h3 id="what-are-you-proposing"><strong>¿Qué estás proponiendo?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> ¿Qué te parece la propuesta? Exprese su apoyo en la escala a continuación y deje un comentario o sugerencia de mejora.</p><p> Esta propuesta de Gradientes de acuerdo es para probar el apoyo a la propuesta y una oportunidad para su aporte antes de pasar a un acuerdo formal.</p>
+      whole_hearted_endorsement: Respaldo de todo corazón
+      whole_hearted_endorsement_meaning: "¡Me gusta mucho!"
+      whole_hearted_endorsement_prompt: "¿Qué te gusta de ello?"
+      agreement_with_minor_contention: Acuerdo con disputa menor
+      agreement_with_minor_contention_meaning: No es perfecto, pero es lo suficientemente bueno
+      agreement_with_minor_contention_prompt: "¿Cuál es tu preocupación?"
+      support_with_reservations: Soporte con reservas
+      support_with_reservations_meaning: Puedo vivir con eso
+      support_with_reservations_prompt: "¿Cuáles son sus reservas?"
+      abstain_meaning: este tema no me afecta
+      abstain_prompt: "¿Tienes algo que te gustaría agregar?"
+      more_discussion_needed: Se necesita más discusión
+      more_discussion_needed_meaning: Todavía no entiendo los problemas lo suficientemente bien
+      more_discussion_needed_prompt: "¿Qué no entiendes?"
+      don_t_like_but_will_support: No me gusta pero apoyaré
+      don_t_like_but_will_support_meaning: No es genial, pero no quiero demorar al grupo.
+      don_t_like_but_will_support_prompt: "¿Qué te gustaría ver mejorado?"
+      serious_disagreement: Desacuerdo serio
+      serious_disagreement_meaning: No estoy de acuerdo con esto, no cuentes conmigo.
+      serious_disagreement_prompt: "¿Con qué no estás de acuerdo?"
+      veto: Veto
+      veto_meaning: Bloqueo esta propuesta
+      veto_prompt: "¿Por qué bloquea la propuesta? ¿Qué necesita cambiar para que usted lo apoye?"
+    simple_poll:
+      process_subtitle: Encuentra la opción más popular
+      process_introduction: <p>Antes de tomar una decisión, averigüe qué opciones les interesan más a las personas.</p><p> La encuesta simple lo ayuda a encontrar la opción u opciones más populares con opción única o múltiple.</p><p> Escriba cualquier detalle sobre las opciones en el campo de detalles, luego ingrese el nombre de la opción y haga clic en + para agregar.</p><p> Establezca las <strong>opciones mínimas</strong> y <strong>las opciones máximas</strong> que un votante puede elegir. Deje la opción máxima como 1 para una encuesta de opción única.</p><p> Puede usar el ícono de lápiz junto a cada opción para agregar un <strong>significado</strong> de la opción, una mayor elaboración de la opción para ayudar a las personas cuando votan.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Leer más sobre Encuesta simple</a> .</p>
+      title: "¿Dónde debería estar el foco de nuestra dirección estratégica?"
+      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Elige la(s) opción(es) que prefieras.</p>
+    score_poll:
+      process_subtitle: Medir el grado de apoyo a cada opción
+      process_introduction: <p>Utilice la encuesta de puntuación cuando desee encuestar a las personas sobre su deseo, preferencia o interés en cada opción.</p><p> <span>Se pide a los participantes que evalúen cada opción y asignen una puntuación moviendo un control deslizante a lo largo de una escala.</span></p><p> <span>Los resultados se muestran gráficamente junto con una tabla para cada opción que muestra el total de puntos, la media de puntos y el número de votantes.</span></p><p> Las configuraciones avanzadas incluyen 'Los votos son anónimos' y 'Mostrar opciones en orden aleatorio', comúnmente utilizados para la encuesta de puntuación para reducir cualquier sesgo de votación.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Obtenga más información sobre la encuesta de puntuación</a> .</p>
+      title: Evaluar cómo se toman las decisiones en nuestra organización
+      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Elija la(s) opción(es) que prefiera.</p>
+    dot_vote:
+      process_subtitle: Asignar un presupuesto de puntos para revelar prioridades
+      process_introduction: <p>El voto por puntos es útil para los grupos que intentan asignar un recurso limitado a varias opciones. Va más allá de una simple encuesta al ayudar a los participantes a apreciar que existe una restricción al seleccionar opciones.</p><p> Cada participante recibe un número determinado de puntos. Tú decides cuántos.</p><p> Colocan puntos junto a las opciones presentadas que les gustan. Los participantes pueden colocar todos sus puntos en una sola opción o repartirse entre múltiples opciones.</p><p> A medida que los participantes asignan puntos, es posible que excedan el límite de presupuesto de puntos y, por lo tanto, se les anima a considerar cómo gastan sus puntos con cuidado.</p><p> Las opciones con más puntos “ganan”. La tabla de resultados proporciona datos adicionales para ayudarlo a analizar los resultados.</p><ul><li><p> % de puntos</p></li><li><p> Puntos</p></li><li><p> Significar</p></li><li><p> Votantes</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Lea más sobre el voto de Dot</a> .</p>
+      title: Elegir temas para nuestra conferencia
+      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> En esta encuesta tienes un presupuesto de 8 puntos para destinar a las opciones que prefieras. Puede colocar todos los puntos en una opción o distribuirlos.</p>
+    ranked_choice:
+      process_subtitle: Comprender la preferencia ordenada de las opciones.
+      process_introduction: '<p>La elección clasificada es útil cuando tiene una gran cantidad de opciones o está celebrando una elección.</p><p> Esta plantilla de encuesta ofrece una serie de opciones para que las personas voten en el orden que prefieran.</p><p> Puede establecer el número de opciones que obtiene el votante.</p><p> <span>Los votantes arrastran y sueltan las opciones en orden de preferencia (la #1 es su opción preferida).</span></p><p> <span>Las configuraciones avanzadas incluyen ''Los votos son anónimos'' y ''Mostrar opciones en orden aleatorio'', comúnmente utilizadas para la</span> elección clasificada para reducir cualquier sesgo de votación.</p><p> Los resultados se muestran en orden de clasificación. La tabla de resultados proporciona datos adicionales para ayudarlo a analizar los resultados.</p><ul><li><p> Rango</p></li><li><p> % de puntos</p></li><li><p> Puntos</p></li><li><p> Significar</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Obtenga más información sobre la elección clasificada</a> .</p>'
+      title: Elegir directores para la junta de gobierno
+      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Vota clasificando las opciones en el orden de tu preferencia. La opción que ocupa el primer lugar en los resultados gana.</p>
+    time_poll:
+      process_subtitle: Encuentra cuándo hay personas disponibles para reunirse
+      process_introduction: <p><span>Ahorre tiempo organizando una fecha para su reunión o evento.</span></p><p> La encuesta de tiempo facilita ver la disponibilidad de todos y encontrar el mejor momento.</p><p> Dale a tu encuesta de Time un título y detalles. Ingrese una lista de opciones de fecha y hora en su zona horaria.</p><p> Al establecer intervalos de tiempo, tenga en cuenta a las personas en diferentes zonas horarias. Los participantes verán los horarios localizados en su zona horaria.</p><p> Establecer una duración de la reunión.</p><p> Cuando se cierre la encuesta de tiempo, establezca un resultado con el mejor tiempo y las instrucciones para la reunión.</p><p> <span>Loomio incluirá una invitación de calendario con el correo electrónico de notificación del resultado, para que los participantes puedan agregarlo a su calendario.</span></p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Leer más sobre Encuesta de tiempo</a> .</p>
+      title: Busquemos una fecha para nuestra próxima reunión.
+      details: <p><strong>¿Qué es la reunión o evento?</strong></p><p></p><p> <strong>¿Porque es esto importante?</strong></p><p></p><p> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></p><p></p><p> <span>Marque los intervalos de tiempo en los que está disponible con el ícono verde de "Me gusta" o deje el "Me gusta" rojo en su lugar cuando no esté disponible.</span></p><p> <span>Use el ícono de 'pulgares hacia los lados' para decir que está disponible 'si es necesario'.</span></p>
+      reason_prompt: "¿Hay algo que pueda decir para ayudar al organizador a encontrar un momento adecuado?"
+    opt_in:
+      process_subtitle: Encuentre voluntarios o pregunte por participantes
+      process_introduction: '<p>Utilice Opt-in para invitar a personas a unirse a un equipo, comité o grupo de trabajo, o para participar en un evento.</p><p> ''Opt-in'' tiene dos opciones de votación: Aceptar o Rechazar.</p><p> Puede definir un número objetivo de personas que está buscando, digamos 3 personas para unirse a su grupo de trabajo.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Obtenga más información sobre la suscripción</a> .</p>'
+      title: Grupo de trabajo para redactar nuestra nueva política de sostenibilidad
+      details: "<p><strong>¿Cuál es el equipo, grupo de trabajo o evento al que está invitando a la gente?</strong></p><p></p><p> <strong>¿Porque es esto importante?</strong></p><p></p><p> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></p><p></p><p> ¡Selecciona 'Aceptar' para participar!</p>"
+      accept_meaning: estoy dispuesto a participar
+      accept_prompt: "¿Por qué te ofreces como voluntario para esto?"
+      decline_meaning: no puedo participar
+      decline_prompt: "¿Hay algo que quieras decir?"
   thread_item:
     removed: Elemento eliminado
     deleted_group: Grupo eliminado
@@ -2378,6 +2507,7 @@ es:
     email: Correo Electrónico
     password: Contraseña
     reactivate: 'Reactiva la cuenta '
+    want_to_set_password: "¿Quieres iniciar sesión con una contraseña la próxima vez?"
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexión de prueba
@@ -2418,6 +2548,7 @@ es:
       slack: Aflojar
       discord: Discrepancia
     subtitle: 'Conectar Loomio con el resto de tus herramientas con nuestro API '
+    deprecated: Esta API está en desuso. Pase a APIv2 (consulte los documentos de API en el menú de configuración de su grupo)
     we_have_guides: 'Ver nuestros <a href="%{url}" target="_blank">webhook guías de configuración</a>para ayudar tu servicio.
 
       '
@@ -2459,7 +2590,6 @@ es:
       read_memberships: leer membresías
       manage_memberships: administrar pertenencias (agregar o quitar miembros del grupo)
     include_body_label: Incluye el cuerpo del mensaje con notificación
-    deprecated: Esta API está en desuso. Pase a APIv2 (consulte los documentos de API en el menú de configuración de su grupo)
   powered_by:
     this_is_loomio_md: Loomio es una aplicación para tomar decisiones juntos. [Pruébalo gratis] (https://www.loomio.com)
     slogan: Mejor decisiones juntos
@@ -2475,191 +2605,29 @@ es:
       union: Unión
       board: Junta o comité
       nonprofit: Sin fines de lucro o ONG
+      membership: organización de membresía
       professional: Empresa de servicios profesionales
+      self_managing: Organización autogestionaria
       community: Comunidad
       government: Gobierno/Gobierno local
       other: Otro
-      membership: organización de membresía
-      self_managing: Organización autogestionaria
-  poll_templates:
-    proposal:
-      process_subtitle: Plantear una propuesta para tomar una decisión
-      process_introduction: <p>La propuesta clásica de Loomio te ayuda a tomar una decisión, convirtiendo una discusión en un desenlace claro.</p><p> Sugiera un curso de acción e invite a las personas a responder votando de acuerdo, abstención o desacuerdo.</p><p> A medida que la gente vota, puede dar una razón por la que votó de esta manera. Puede ver cuál es la posición de todos los demás sobre el asunto y por qué.</p><p> De esta manera, puede usar una propuesta para incitar a las personas a responder, descubrir nueva información y generar un entendimiento compartido, para ayudar a su grupo a tomar una decisión mejor y más informada.</p><p> Una propuesta y la discusión asociada crean su propio registro de cómo se tomó la decisión.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Lea más sobre el uso de la propuesta clásica de Loomio en el proceso de decisión Simple</u></a> .</p>
-      title: Aprobar el nuevo concepto de Marca
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Para que esta propuesta sea aprobada, necesitamos que la mayoría de los miembros voten De acuerdo.</p><p> Si no está de acuerdo, diga por qué y qué debe cambiar para que esté de acuerdo. \U0001F642</p>
-      agree: Aceptar
-      agree_meaning: apoyo la propuesta
-      agree_prompt: "¿Qué le gusta de la propuesta y cómo beneficiará al grupo?"
-      abstain: Abstenerse
-      abstain_meaning: Elegir no votar o no poder votar en esta decisión.
-      abstain_prompt: "¿Por qué se abstiene o no se siente capaz de votar en esta decisión?"
-      disagree: Discrepar
-      disagree_meaning: Es necesario cambiar algo en esta propuesta antes de que pueda apoyarla.
-      disagree_prompt: "¿Cómo podría mejorarse esta propuesta para que usted pueda apoyarla?"
-    advice:
-      process_subtitle: Busque asesoramiento sobre una decisión que debe tomar
-      process_introduction: <p>Busque asesoramiento sobre una decisión que debe tomar, con el asesoramiento de personas afectadas o que tengan experiencia, para que pueda tomar una mejor decisión para su organización.</p><ul><li><p> Los consejos le ayudan a tomar una mejor decisión para su organización.</p></li><li><p> Fomentar las relaciones, las oportunidades de aprendizaje y los aportes diversos.</p></li><li><p> Estimular la iniciativa y la creatividad, y hacer más agradable el trabajo.</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/advice_process/index.html"><u>Lea más sobre el proceso de asesoramiento</u></a> .</p>
-      title: Ayuda a Takashi a comprar una computadora nueva
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-advice-are-you-asking-from-people-to-help-you-make-a-go"> <strong>¿Qué consejo pides a la gente para ayudarte a tomar una buena decisión?</strong></h3><p></p><p> Estoy buscando su opinión para ayudarme a tomar una buena decisión para nuestra organización.</p>
-      agree: Aceptar
-      agree_meaning: He ofrecido mi consejo sobre esta decisión.
-      agree_prompt: Resuma su consejo o haga un comentario útil
-      abstain: Abstenerse
-      abstain_meaning: No tengo ningún consejo que ofrecer.
-      abstain_prompt: "¿Tiene algún comentario que pueda ser útil?"
-    consent:
-      process_subtitle: Tome una decisión que sea 'segura para probar', sin objeciones
-      process_introduction: <p>Busque el consentimiento sobre una decisión que necesita tomar, donde no haya objeciones significativas a su propuesta, para que pueda tomar una decisión rápida para su organización que sea 'segura para probar'.</p><ul><li><p> Apunta a una decisión 'suficientemente buena'</p></li><li><p> Involucrar muchas voces para desarrollar una propuesta viable</p></li><li><p> Pregunte si alguien tiene una objeción válida</p></li><li><p> Modificar la propuesta para resolver objeciones</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Obtenga más información sobre el proceso de consentimiento</a> .</p>
-      title: Contrata a Chloe para el puesto de diseño
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-of-people-in-this-proposal"> <strong>¿Qué le estás pidiendo a la gente en esta propuesta?</strong></h3><p></p><p> Si tiene una objeción, diga por qué y proponga un cambio en la propuesta que la haga segura.</p><p> Recuerde que buscamos el consentimiento para una decisión 'suficientemente buena' que sea 'segura de probar', para que podamos tomar una buena decisión para nuestra organización.</p>
-      consent: Consentir
-      consent_meaning: La propuesta es segura de probar.
-      consent_prompt: "¿Qué le gusta de la propuesta y cómo beneficiará a la organización?"
-      objection: Objeción
-      objection_meaning: Tengo una objeción válida y creo que la propuesta causará daño.
-      objection_prompt: "¿Qué cambio se necesita en esta propuesta para que sea 'seguro de probar', para que pueda apoyarla?"
-    consensus:
-      process_subtitle: Llegar a un acuerdo colectivo con todos los involucrados
-      process_introduction: <p>Cree consenso para una decisión que necesita tomar, para llegar a un acuerdo que satisfaga las necesidades e inquietudes de todos los participantes.</p><ul><li><p> Discutir y desarrollar una propuesta juntos</p></li><li><p> Incluya y respete a todos los involucrados</p></li><li><p> Buscar el acuerdo de la mayoría de las personas.</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consensus_process/index.html">Lea más sobre el proceso de Consenso</a> .</p>
-      title: Aprobar el nuevo concepto de Marca
-      details: <h3 id="what-is-the-decision-you-need-to-make"><strong>¿Cuál es la decisión que debes tomar?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Para que esta propuesta sea aprobada, necesitamos que la mayoría de los miembros voten De acuerdo.</p><p> Si no está de acuerdo, diga por qué y qué debe cambiar para que esté de acuerdo.</p>
-      agree: Aceptar
-      agree_meaning: apoyo la propuesta
-      agree_prompt: "¿Qué le gusta de la propuesta y cómo beneficiará a la organización?"
-      abstain: Abstenerse
-      abstain_meaning: Esta decisión no me afecta y estoy contento con lo que decida el grupo.
-      abstain_prompt: "¿Por qué se abstiene o no se siente capaz de votar en esta decisión?"
-      disagree: Discrepar
-      disagree_meaning: Es necesario cambiar algo en esta propuesta antes de que pueda apoyarla.
-      disagree_prompt: "¿Cómo podría mejorarse esta propuesta para que usted pueda apoyarla?"
-      block: Bloquear
-      block_meaning: Bloqueo esta propuesta y creo que no debe proceder
-      block_prompt: Explique su objeción a esta propuesta y por qué no debería seguir adelante
-    question_round:
-      process_subtitle: Invitar a preguntas aclaratorias para ayudar a las personas a comprender una propuesta
-      process_introduction: <p>Una ronda de preguntas es una oportunidad para que las personas hagan preguntas aclaratorias sobre la propuesta, para que todos entiendan la propuesta antes de decir lo que piensan al respecto.</p><p> La ronda de preguntas de Loomio es una propuesta especial sin opciones de votación. Permite a los participantes hacer preguntas dentro de la duración que establezca para la ronda.</p><p> Una ronda de preguntas se usa comúnmente como un paso en el proceso de consentimiento.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/guides/consent_process/index.html">Obtenga más información sobre el proceso de consentimiento</a> .</p>
-      title: "¿Qué preguntas tienes sobre la política de Salud y Seguridad?"
-      details: <h3 id="what-are-you-proposing"><strong>¿Qué estás proponiendo?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Esta es una ronda de preguntas, donde se le invita a hacer preguntas aclaratorias.</p><p> ¿Qué necesitas saber para entender la propuesta?</p><p> Responda antes de que cierre la ronda de preguntas.</p>
-      reason_prompt: "¿Qué necesitas saber para entender la propuesta?"
-    sense_check:
-      process_subtitle: Pida comentarios, preguntas e inquietudes
-      process_introduction: <p>La propuesta de verificación de Sense es una buena manera de obtener comentarios, invitar a hacer preguntas y descubrir inquietudes. Ayuda a aclarar y mejorar una propuesta antes de pasar a una decisión.</p><p> Sense check les permite a las personas saber que se está formando una propuesta y los alienta a participar. Es una oportunidad para escuchar a las personas, sentir cómo se sienten y responder adecuadamente, abriendo el potencial para incorporar sus contribuciones para tomar una mejor decisión.</p><p> Utilice la propuesta de verificación de Sentido en el proceso de Consentimiento para invitar a reacciones y comentarios para mejorar la propuesta, y en un proceso de Consenso para probar el consenso.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/decisions/index.html"><u>Obtenga más información sobre el uso de la comprobación de sentido en el proceso de decisión simple</u></a> <span>.</span></p>
-      title: "¿Cómo te sientes acerca de los nuevos conceptos de marca?"
-      details: <h3 id="what-are-you-proposing"><strong>¿Qué estás proponiendo?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> ¿Cómo te sientes con la propuesta? Deja un comentario o haz una sugerencia de mejora.</p><p> Esta verificación de Sense es una oportunidad para su aporte y contribución, para ayudarnos a tomar una mejor decisión.</p>
-      looks_good: Se ve bien
-      looks_good_meaning: Estoy contento con el lugar al que va esto.
-      looks_good_prompt: "¿Tiene algún comentario o sugerencia para mejorar la propuesta?"
-      abstain: Abstenerse
-      abstain_meaning: No tengo nada que agregar, ni ninguna objeción a este trabajo.
-      abstain_prompt: La abstención implica el consentimiento con la dirección de esta propuesta. ¿Hay alguna razón por la que está votando para abstenerse?
-      concerned: Preocupado
-      concerned_meaning: Es posible que deba cambiar algo sobre esto para que yo dé mi consentimiento o esté de acuerdo.
-      concerned_prompt: "¿Cuál es su preocupación y cómo podría abordarse?"
-      not_sure: No estoy seguro
-      not_sure_meaning: Tengo una pregunta o necesito más tiempo.
-      not_sure_prompt: "¿Qué partes no te quedan claras? ¿Cómo podría solucionarse esto?"
-    gradients_of_agreement:
-      process_subtitle: Expresar apoyo a una propuesta en una escala de 8 puntos
-      process_introduction: "<p>La propuesta Gradientes de acuerdo permite a los miembros de un grupo expresar su apoyo a una propuesta en grados en una escala, ofreciendo más formas de expresar apoyo que en términos de “de acuerdo” y “en desacuerdo”.</p><p> Use Gradientes de acuerdo como una ronda preliminar para probar el apoyo a una propuesta antes de pasar a un acuerdo formal.</p><p> Los gradientes de acuerdo les permiten a las personas saber que se está formando una propuesta y los alienta a participar. Es una oportunidad para escuchar a las personas, sentir cómo se sienten y responder adecuadamente, abriendo el potencial para incorporar sus contribuciones para tomar una mejor decisión.</p>"
-      title: "¿Qué le parece la nueva declaración de valores?"
-      details: <h3 id="what-are-you-proposing"><strong>¿Qué estás proponiendo?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> ¿Qué te parece la propuesta? Exprese su apoyo en la escala a continuación y deje un comentario o sugerencia de mejora.</p><p> Esta propuesta de Gradientes de acuerdo es para probar el apoyo a la propuesta y una oportunidad para su aporte antes de pasar a un acuerdo formal.</p>
-      whole_hearted_endorsement: Respaldo de todo corazón
-      whole_hearted_endorsement_meaning: "¡Me gusta mucho!"
-      whole_hearted_endorsement_prompt: "¿Qué te gusta de ello?"
-      agreement_with_minor_contention: Acuerdo con disputa menor
-      agreement_with_minor_contention_meaning: No es perfecto, pero es lo suficientemente bueno
-      agreement_with_minor_contention_prompt: "¿Cuál es tu preocupación?"
-      support_with_reservations: Soporte con reservas
-      support_with_reservations_meaning: Puedo vivir con eso
-      support_with_reservations_prompt: "¿Cuáles son sus reservas?"
-      abstain_meaning: este tema no me afecta
-      abstain_prompt: "¿Tienes algo que te gustaría agregar?"
-      more_discussion_needed: Se necesita más discusión
-      more_discussion_needed_meaning: Todavía no entiendo los problemas lo suficientemente bien
-      more_discussion_needed_prompt: "¿Qué no entiendes?"
-      don_t_like_but_will_support: No me gusta pero apoyaré
-      don_t_like_but_will_support_meaning: No es genial, pero no quiero demorar al grupo.
-      don_t_like_but_will_support_prompt: "¿Qué te gustaría ver mejorado?"
-      serious_disagreement: Desacuerdo serio
-      serious_disagreement_meaning: No estoy de acuerdo con esto, no cuentes conmigo.
-      serious_disagreement_prompt: "¿Con qué no estás de acuerdo?"
-      veto: Veto
-      veto_meaning: Bloqueo esta propuesta
-      veto_prompt: "¿Por qué bloquea la propuesta? ¿Qué necesita cambiar para que usted lo apoye?"
-    simple_poll:
-      process_subtitle: Encuentra la opción más popular
-      process_introduction: <p>Antes de tomar una decisión, averigüe qué opciones les interesan más a las personas.</p><p> La encuesta simple lo ayuda a encontrar la opción u opciones más populares con opción única o múltiple.</p><p> Escriba cualquier detalle sobre las opciones en el campo de detalles, luego ingrese el nombre de la opción y haga clic en + para agregar.</p><p> Establezca las <strong>opciones mínimas</strong> y <strong>las opciones máximas</strong> que un votante puede elegir. Deje la opción máxima como 1 para una encuesta de opción única.</p><p> Puede usar el ícono de lápiz junto a cada opción para agregar un <strong>significado</strong> de la opción, una mayor elaboración de la opción para ayudar a las personas cuando votan.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#simple-poll">Leer más sobre Encuesta simple</a> .</p>
-      title: "¿Dónde debería estar el foco de nuestra dirección estratégica?"
-      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Elige la(s) opción(es) que prefieras.</p>
-    score_poll:
-      process_subtitle: Medir el grado de apoyo a cada opción
-      process_introduction: <p>Utilice la encuesta de puntuación cuando desee encuestar a las personas sobre su deseo, preferencia o interés en cada opción.</p><p> <span>Se pide a los participantes que evalúen cada opción y asignen una puntuación moviendo un control deslizante a lo largo de una escala.</span></p><p> <span>Los resultados se muestran gráficamente junto con una tabla para cada opción que muestra el total de puntos, la media de puntos y el número de votantes.</span></p><p> Las configuraciones avanzadas incluyen 'Los votos son anónimos' y 'Mostrar opciones en orden aleatorio', comúnmente utilizados para la encuesta de puntuación para reducir cualquier sesgo de votación.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#score-poll">Obtenga más información sobre la encuesta de puntuación</a> .</p>
-      title: Evaluar cómo se toman las decisiones en nuestra organización
-      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Elija la(s) opción(es) que prefiera.</p>
-    dot_vote:
-      process_subtitle: Asignar un presupuesto de puntos para revelar prioridades
-      process_introduction: <p>El voto por puntos es útil para los grupos que intentan asignar un recurso limitado a varias opciones. Va más allá de una simple encuesta al ayudar a los participantes a apreciar que existe una restricción al seleccionar opciones.</p><p> Cada participante recibe un número determinado de puntos. Tú decides cuántos.</p><p> Colocan puntos junto a las opciones presentadas que les gustan. Los participantes pueden colocar todos sus puntos en una sola opción o repartirse entre múltiples opciones.</p><p> A medida que los participantes asignan puntos, es posible que excedan el límite de presupuesto de puntos y, por lo tanto, se les anima a considerar cómo gastan sus puntos con cuidado.</p><p> Las opciones con más puntos “ganan”. La tabla de resultados proporciona datos adicionales para ayudarlo a analizar los resultados.</p><ul><li><p> % de puntos</p></li><li><p> Puntos</p></li><li><p> Significar</p></li><li><p> Votantes</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#dot-vote">Lea más sobre el voto de Dot</a> .</p>
-      title: Elegir temas para nuestra conferencia
-      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> En esta encuesta tienes un presupuesto de 8 puntos para destinar a las opciones que prefieras. Puede colocar todos los puntos en una opción o distribuirlos.</p>
-    ranked_choice:
-      process_subtitle: Comprender la preferencia ordenada de las opciones.
-      process_introduction: '<p>La elección clasificada es útil cuando tiene una gran cantidad de opciones o está celebrando una elección.</p><p> Esta plantilla de encuesta ofrece una serie de opciones para que las personas voten en el orden que prefieran.</p><p> Puede establecer el número de opciones que obtiene el votante.</p><p> <span>Los votantes arrastran y sueltan las opciones en orden de preferencia (la #1 es su opción preferida).</span></p><p> <span>Las configuraciones avanzadas incluyen ''Los votos son anónimos'' y ''Mostrar opciones en orden aleatorio'', comúnmente utilizadas para la</span> elección clasificada para reducir cualquier sesgo de votación.</p><p> Los resultados se muestran en orden de clasificación. La tabla de resultados proporciona datos adicionales para ayudarlo a analizar los resultados.</p><ul><li><p> Rango</p></li><li><p> % de puntos</p></li><li><p> Puntos</p></li><li><p> Significar</p></li></ul><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/proposal_types/index.html#ranked-choice">Obtenga más información sobre la elección clasificada</a> .</p>'
-      title: Elegir directores para la junta de gobierno
-      details: <h3 id="what-is-this-poll-about"><strong>¿De qué se trata esta encuesta?</strong></h3><p></p><h3 id="why-is-this-important"> <strong>¿Porque es esto importante?</strong></h3><p></p><h3 id="what-are-you-asking-people-to-do"> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></h3><p></p><p> Vota clasificando las opciones en el orden de tu preferencia. La opción que ocupa el primer lugar en los resultados gana.</p>
-    time_poll:
-      process_subtitle: Encuentra cuándo hay personas disponibles para reunirse
-      process_introduction: <p><span>Ahorre tiempo organizando una fecha para su reunión o evento.</span></p><p> La encuesta de tiempo facilita ver la disponibilidad de todos y encontrar el mejor momento.</p><p> Dale a tu encuesta de Time un título y detalles. Ingrese una lista de opciones de fecha y hora en su zona horaria.</p><p> Al establecer intervalos de tiempo, tenga en cuenta a las personas en diferentes zonas horarias. Los participantes verán los horarios localizados en su zona horaria.</p><p> Establecer una duración de la reunión.</p><p> Cuando se cierre la encuesta de tiempo, establezca un resultado con el mejor tiempo y las instrucciones para la reunión.</p><p> <span>Loomio incluirá una invitación de calendario con el correo electrónico de notificación del resultado, para que los participantes puedan agregarlo a su calendario.</span></p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#time-poll">Leer más sobre Encuesta de tiempo</a> .</p>
-      title: Busquemos una fecha para nuestra próxima reunión.
-      details: <p><strong>¿Qué es la reunión o evento?</strong></p><p></p><p> <strong>¿Porque es esto importante?</strong></p><p></p><p> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></p><p></p><p> <span>Marque los intervalos de tiempo en los que está disponible con el ícono verde de "Me gusta" o deje el "Me gusta" rojo en su lugar cuando no esté disponible.</span></p><p> <span>Use el ícono de 'pulgares hacia los lados' para decir que está disponible 'si es necesario'.</span></p>
-      reason_prompt: "¿Hay algo que pueda decir para ayudar al organizador a encontrar un momento adecuado?"
-    opt_in:
-      process_subtitle: Encuentre voluntarios o pregunte por participantes
-      process_introduction: '<p>Utilice Opt-in para invitar a personas a unirse a un equipo, comité o grupo de trabajo, o para participar en un evento.</p><p> ''Opt-in'' tiene dos opciones de votación: Aceptar o Rechazar.</p><p> Puede definir un número objetivo de personas que está buscando, digamos 3 personas para unirse a su grupo de trabajo.</p><p> <a target="_blank" rel="noopener noreferrer nofollow" href="https://help.loomio.com/en/user_manual/polls/meeting_polls/index.html#opt-in">Obtenga más información sobre la suscripción</a> .</p>'
-      title: Grupo de trabajo para redactar nuestra nueva política de sostenibilidad
-      details: "<p><strong>¿Cuál es el equipo, grupo de trabajo o evento al que está invitando a la gente?</strong></p><p></p><p> <strong>¿Porque es esto importante?</strong></p><p></p><p> <strong>¿Qué le estás pidiendo a la gente que haga?</strong></p><p></p><p> ¡Selecciona 'Aceptar' para participar!</p>"
-      accept_meaning: estoy dispuesto a participar
-      accept_prompt: "¿Por qué te ofreces como voluntario para esto?"
-      decline_meaning: no puedo participar
-      decline_prompt: "¿Hay algo que quieras decir?"
-  search_modal:
-    all_content: Todo el contenido
-    best_match: Mejor partido
-    any_tag: cualquier etiqueta
-    all_subgroups: Todos los subgrupos
-    parent_only: Sólo padres
-  user_name_modal:
-    user_name_updated: Nombre de usuario actualizado
-    set_user_name: Establecer nombre de usuario
-  thread_template:
-    browse_public_templates: Explorar la galería de plantillas
-    thread_template_settings: Configuración de la plantilla de hilo
-    start_a_new_thread: Iniciar un nuevo hilo
-    thread_template_saved: Plantilla de hilo guardada
-    these_are_public_templates: Estas plantillas están disponibles para que las copie o modifique para adaptarlas a su grupo.
-    these_are_templates: Estas son las plantillas de hilos de tu grupo. Las plantillas lo guían a través de procesos comunes de toma de decisiones.
-    default_title_label: Título predeterminado
-    default_title_hint: Complete previamente el campo de título con texto editable. Esto es opcional; déjelo en blanco si no está seguro.
-    title_placeholder_label: Título de ejemplo
-    title_placeholder_hint: Un ejemplo para mostrar en el fondo del campo de título
-    title_placeholder_placeholder: Por ejemplo, así es como se ve el texto de fondo.
-    example_description_label: Descripción de ejemplo
-    example_description_placeholder: Proporcionar una plantilla que las personas puedan utilizar para iniciar un hilo.
-    hidden_templates: Plantillas ocultas
-    confirm_delete: "¿Estás seguro de que deseas eliminar permanentemente esta plantilla de hilo? Ningún hilo será eliminado como resultado de esto."
-    add_proposal_or_poll_template: Agregar propuesta o plantilla de encuesta
-    recommended_proposal_or_poll_templates: Plantillas de encuesta o propuesta recomendadas
-    decision_templates: Plantillas de decisión
-    decision_templates_help: Seleccione cualquier propuesta o plantilla de encuesta que ayude a completar este proceso.
-    share_in_template_gallery: Comparte esta plantilla en la galería de plantillas públicas.
-  record_modal:
-    record_video: Grabar video
-    record_audio: Grabar audio
-    record: Registro
-    stop: Detener
-    no_mic: No se pudo encontrar un micrófono
-    no_camera: No se pudo encontrar una cámara
-    listen_to_audio: escuchar audio
-    watch_video: Ver video
-    audio_transcript: 'Transcripción de audio: %{text}'
-    why_type_when_you_can_talk: "¿Por qué escribir cuando puedes hablar? Enviar una grabación de voz"
-    transcript_included: Se adjuntará una transcripción de la grabación a su mensaje.
+  report:
+    start_on: Comienza en
+    end_on: Finalizará el
+    interval: Intervalo
+    total_users: Usuarios totales
+    total_threads: Hilos totales
+    total_polls: Encuestas totales
+    threads_with_polls: Hilos con encuestas
+    polls_with_outcomes: Encuestas con resultados
+    actions_per_interval: Acciones por %{interval}
+    actions_per_user: Acciones por usuario
+    users_per_country: Usuarios por país
+    actions_per_country: Acciones por país
+    country: País
+    users: Usuarios
+    day: Día
+    week: Semana
+    month: Mes
+    year: Año
+    country_disclaimer: El país se basa en la dirección IP del usuario y no es muy preciso. Considere esto sólo como una guía aproximada.

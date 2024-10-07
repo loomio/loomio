@@ -9,7 +9,7 @@ import AbilityService from '@/shared/services/ability_service';
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
 import { HandleDirective } from 'vue-slicksort';
 import { isSameYear, startOfHour, setHours }  from 'date-fns';
-
+import I18n from '@/i18n';
 export default {
   directives: { handle: HandleDirective },
 
@@ -72,6 +72,12 @@ export default {
   },
 
   methods: {
+    discardDraft() {
+      if (confirm(I18n.t('formatting.confirm_discard'))) {
+        EventBus.$emit('resetDraft', 'pollTemplate', this.pollTemplate.id, 'details', this.pollTemplate.details);
+        EventBus.$emit('resetDraft', 'pollTemplate', this.pollTemplate.id, 'processIntroduction', this.pollTemplate.processIntroduction);
+      }
+    },
     setPollOptionPriority() {
       let i = 0;
       this.pollOptions.forEach(o => o.priority = i++);
@@ -87,7 +93,7 @@ export default {
         name: '',
         meaning: '',
         prompt: '',
-        icon: 'agree'
+        icon: null,
       };
 
       EventBus.$emit('openModal', {
@@ -204,7 +210,7 @@ export default {
 
 </script>
 <template lang="pug">
-.poll-template-form(:class="isModal ? 'pa-4' : ''") 
+.poll-template-form(:class="isModal ? 'pa-4' : ''")
   submit-overlay(:value="pollTemplate.processing")
   .d-flex
     v-breadcrumbs.px-0.py-0(:items="breadcrumbs")
@@ -444,11 +450,14 @@ export default {
 
   .d-flex.justify-space-between.my-4.mt-4.poll-common-form-actions
     v-spacer
+    v-btn.mr-2(
+      @click="discardDraft"
+      v-t="'common.reset'"
+    )
     v-btn.poll-common-form__submit(
       color="primary"
       @click='submit()'
       :loading="pollTemplate.processing"
-      :disabled="!pollTemplate.processName || !pollTemplate.processSubtitle"
     )
       span(v-t="'common.action.save'")
 

@@ -9,7 +9,7 @@ class ReceivedEmailService
   end
 
   def self.route_all
-    ReceivedEmail.unreleased.where(group_id: nil).each do |email|
+    ReceivedEmail.unreleased.each do |email|
       route(email)
     end
   end
@@ -19,7 +19,6 @@ class ReceivedEmailService
     return nil if email.released
     return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
     return nil if email.sender_hostname.downcase == ENV['SMTP_DOMAIN'].downcase
-    
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
@@ -60,6 +59,8 @@ class ReceivedEmailService
         end
       end
     end
+  rescue CanCan::AccessDenied, ActiveRecord::RecordNotFound
+    # TODO handle when user is not allowed to comment or create discussion
   end
 
   def self.extract_reply_body(text, author_name = nil)
@@ -95,7 +96,9 @@ class ReceivedEmailService
       /^[[:space:]]*\d{4}[-\/]\d{1,2}[-\/]\d{1,2}[[:space:]].*[[:space:]]<.*>?$/i,
       /(_)*\n[[:space:]]*De :.*\n[[:space:]]*Envoyé :.*\n[[:space:]]*À :.*\n[[:space:]]*Objet :.*\n$/i, # French Outlook
       /^[[:space:]]*\>?[[:space:]]*Le.*<\n?.*>.*\n?a[[:space:]]?\n?écrit :$/, # French
-      /^[[:space:]]*\>?[[:space:]]*El.*<\n?.*>.*\n?escribió:$/
+      /^[[:space:]]*\>?[[:space:]]*El.*<\n?.*>.*\n?escribió:$/,
+      /^[[:space:]]*\>?[[:space:]]*El.*<\n?.*>.*\n?escribiÃ:$/,
+      /^[[:space:]]*\>?[[:space:]]*El.*<\n?.*>.*\n?escribiÃ³:$/
     ].compact
   end
 
@@ -146,7 +149,8 @@ class ReceivedEmailService
       title: email.subject,
       body: email.full_body,
       body_format: email.body_format,
-      files: email.attachments.map {|a| a.blob }
+      files: email.attachments.map {|a| a.blob },
+      max_depth: 3
     }.compact
   end
 

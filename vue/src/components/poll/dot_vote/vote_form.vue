@@ -117,19 +117,17 @@ div
             v-model='choice.score'
             :color="choice.option.color"
             track-color="grey"
+            :thumb-color="choice.option.color"
             :height="4"
             :min="0"
             :max="dotsPerPerson"
             :readonly="false")
-        v-list-item-action(style="max-width: 128px")
-          v-text-field(
-            type="number"
-            max-width="20px"
-            filled
-            rounded
-            dense
-            v-model="choice.score"
-          )
+        v-list-item-action
+          input.vote-form-number-input(
+            :style="{'background-color': choice.option.color}"
+            type="text"
+            inputmode="numeric"
+            v-model="choice.score")
       validation-errors(:subject='stance' field='stanceChoices')
     poll-common-stance-reason(:stance='stance', :poll='poll')
     v-card-actions.poll-common-form-actions

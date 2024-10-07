@@ -15,8 +15,9 @@ class Rack::Attack
   #   req.remote_ip
   # end
   IP_POST_LIMITS = {
+    '/api/v1/trials' => 10,
     '/api/v1/announcements' => 100,
-    '/api/v1/groups' => 30,
+    '/api/v1/groups' => 20,
     '/api/v1/templates' => 10,
     '/api/v1/login_tokens' => 10,
     '/api/v1/membership_requests' => 100,
@@ -27,7 +28,6 @@ class Rack::Attack
     '/api/v1/outcomes' => 100,
     '/api/v1/stances' => 100,
     '/api/v1/profile' => 100,
-    '/api/v1/webhooks' => 10,
     '/api/v1/comments' => 100,
     '/api/v1/reactions' => 100,
     '/api/v1/link_previews' => 100,

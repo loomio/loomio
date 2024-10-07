@@ -31,7 +31,7 @@ export default class ThreadLoader {
   }
 
   setVisible(isVisible, event) {
-    if (isVisible) { event.markAsRead(); }
+    if (isVisible && Session.isSignedIn()) { event.markAsRead(); }
     this.visibleKeys[event.positionKey] = isVisible;
     return EventBus.$emit('visibleKeys', Object.keys(this.visibleKeys).filter(key => this.visibleKeys[key]).sort());
   }

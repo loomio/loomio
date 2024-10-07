@@ -79,6 +79,16 @@ export default new class GroupService {
         }
       },
 
+      group_stats: {
+        name: 'group_page.participation_report',
+        icon: 'mdi-chart-bar',
+        menu: true,
+        canPerform() {
+          return membership && group.membersInclude(Session.user());
+        },
+        to() { return `/report/?group_ids=${group.selfAndSubgroupIds().join(',')}&start_on=${group.createdAt.toISOString().slice(0,7)}`; }
+      },
+
       edit_tags: { 
         icon: 'mdi-tag-outline',
         name: 'loomio_tags.card_title',
@@ -125,23 +135,6 @@ export default new class GroupService {
         }
       },
 
-      webhooks: {
-        name: 'webhook.api_keys',
-        icon: 'mdi-key-variant',
-        menu: true,
-        canPerform() {
-          return group.adminsInclude(Session.user());
-        },
-        perform() {
-          return openModal({
-            component: 'WebhookList',
-            props: {
-              group
-            }
-          });
-        }
-      },
-
       api_docs: {
         name: 'common.api_docs',
         icon: 'mdi-webhook',
@@ -149,18 +142,6 @@ export default new class GroupService {
         canPerform() { return group.adminsInclude(Session.user()); },
         perform() { 
           return hardReload(`/help/api2/?group_id=${group.id}`);
-        }
-      },
-
-      group_stats: {
-        name: 'group_page.stats',
-        icon: 'mdi-chart-bar',
-        menu: true,
-        canPerform() {
-          return AbilityService.canAdminister(group);
-        },
-        perform() {
-          return window.open(`${AppConfig.baseUrl}g/${group.key}/stats?export=1`, "_blank");
         }
       },
 

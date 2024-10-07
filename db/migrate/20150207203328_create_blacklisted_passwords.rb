@@ -7,9 +7,10 @@ class CreateBlacklistedPasswords < ActiveRecord::Migration
     end
     add_index :blacklisted_passwords, :string, using: :hash
 
-    passwords = File.readlines(File.join(__dir__, '../password_blacklist.txt'))
-      .map { |string| { string: string.chomp } }
-    BlacklistedPassword.create(passwords)
+    # we don't do this anymore
+    # passwords = File.readlines(File.join(__dir__, '../password_blacklist.txt'))
+    #   .map { |string| { string: string.chomp } }
+    # BlacklistedPassword.create(passwords)
   end
 
   def down

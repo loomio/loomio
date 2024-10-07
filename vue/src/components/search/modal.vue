@@ -56,7 +56,7 @@ export default {
       ],
       orgItems: [
         {text: I18n.t('sidebar.all_groups'), value: null},
-        {text: I18n.t('sidebar.invite_only_threads'), value: 0}
+        {text: I18n.t('sidebar.direct_threads'), value: 0}
       ].concat(Session.user().parentGroups().map(g => ({
         text: g.name,
         value: g.id
@@ -217,6 +217,6 @@ v-card.search-modal
             mid-dot
             span {{result.author_name}}
             mid-dot
-            span {{result.group_name || $t('discussion.invite_only')}}
+            span {{result.group_name || $t('discussion.direct_thread')}}
 
 </template>

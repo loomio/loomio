@@ -94,6 +94,11 @@ export default {
   },
 
   methods: {
+    discardDraft() {
+      if (confirm(I18n.t('formatting.confirm_discard'))) {
+        EventBus.$emit('resetDraft', 'poll', this.poll.id, 'details', this.poll.details);
+      }
+    },
     optionHasVotes(option) {
       return (this.poll.results.find(o => o.id === option.id) || {voter_count: 0}).voter_count > 0;
     },
@@ -120,20 +125,22 @@ export default {
     },
 
     addDateOption() {
-      const optionName = this.newDateOption.toJSON();
-      if (some(this.pollOptions, o => o.name === optionName)) {
-        Flash.error('poll_poll_form.option_already_added');
-      } else {
-        this.pollOptions.push({name: optionName});
-      }
+      setTimeout(() => {
+        const optionName = this.newDateOption.toJSON();
+        if (some(this.pollOptions, o => o.name === optionName)) {
+          Flash.error('poll_poll_form.option_already_added');
+        } else {
+          this.pollOptions.push({name: optionName});
+        }
+      });
     },
 
     addOption() {
-      const option = { 
+      const option = {
         name: '',
         meaning: '',
         prompt: '',
-        icon: 'agree'
+        icon: null
       };
 
       EventBus.$emit('openModal', {
@@ -537,6 +544,10 @@ export default {
   v-card-actions.poll-common-form-actions
     help-link(path='en/user_manual/polls/intro_to_decisions')
     v-spacer
+    v-btn(
+      @click="discardDraft"
+      v-t="'common.reset'"
+    )
     v-btn.poll-common-form__submit(
       color="primary"
       @click='submit()'

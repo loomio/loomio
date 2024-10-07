@@ -50,7 +50,7 @@ export default defineConfig({
         target: 'http://localhost:3000',
         changeOrigin: false,
       },
-      '^/(saml|dev|brand|login_tokens|theme|fonts|img|join|invitations|system|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|bug_tunnel|contact_messages|css)/': {
+      '^/(pie_chart|saml|dev|brand|login_tokens|theme|fonts|img|join|invitations|system|rails|slack|oauth|facebook|google|beta|admin|assets|upgrade|pricing|special_pricing|community_applications|417|saml_providers|merge_users|intro|bcorp|bhoy|sidekiq|message-bus|email_actions|help|bug_tunnel|contact_messages|css)': {
         target: 'http://localhost:3000',
         changeOrigin: true,
       },

@@ -1,5 +1,6 @@
 class API::V1::SnorlaxBase < ActionController::Base
   rescue_from(CanCan::AccessDenied)                    { |e| respond_with_standard_error e, 403 }
+  rescue_from(Subscription::MaxMembersExceeded)        { |e| respond_with_standard_error e, 403 }
   rescue_from(ActionController::UnpermittedParameters) { |e| respond_with_standard_error e, 400 }
   rescue_from(ActionController::ParameterMissing)      { |e| respond_with_standard_error e, 400 }
   rescue_from(ActiveRecord::RecordNotFound)            { |e| respond_with_standard_error e, 404 }
@@ -275,7 +276,7 @@ class API::V1::SnorlaxBase < ActionController::Base
   end
 
   def respond_with_standard_error(error, status)
-    render json: {exception: "#{error.class} #{error.to_s}"}, root: false, status: status
+    render json: {exception: error.class, error: error.to_s}, root: false, status: status
   end
 
   def respond_with_error(status, message = "error")

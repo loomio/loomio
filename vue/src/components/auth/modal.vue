@@ -21,7 +21,7 @@ export default {
     return {
       siteName: AppConfig.theme.site_name,
       titleKey: 'auth_form.sign_in_to_loomio',
-      user: Records.users.build({createAccount: false}),
+      user: Records.users.build({createAccount: false, email: this.$route.query['user_email']}),
       isDisabled: false,
       pendingProviderIdentity: Session.providerIdentity()
     };

@@ -1,4 +1,7 @@
 cs:
+  discussion_templates:
+    discuss_a_topic:
+      title_placeholder: O jakém tématu chcete diskutovat?
   explore:
     header: Prozkoumejte veřejné skupiny
   activerecord:
@@ -53,7 +56,7 @@ cs:
       content: "%{who} vás přidal do %{which_group}."
       content_html: "<strong>%{who}</strong> vás přidal do <strong>%{which_group}</strong>."
       link_help: "Kliknutím na odkaz níže přejdete do skupiny:"
-    unsubscribe: 'Odhlašte se nebo si změňte nastavení emailu:'
+    unsubscribe: "Odhlašte se nebo si změňte nastavení emailu:"
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a>, abyste se odhlásil(a) nebo změnil(a) nastavení emailu."
     catch_up:
       do_not_reply: Prosím neodpovídejte na tento email.
@@ -83,10 +86,6 @@ cs:
     reset_email_timeframe: K přijetí e-mailu může dojít až za 5 minut. Pokud se nezobrazí, nezapomeňte zkontrolovat složku spamu.
     length_restriction: Hesla musí být alespoň 8 znaků dlouhé.
     forbidden_passwords: Běžná hesla, jako je "heslo, password, ...", jsou zakázána, aby váš účet byl bezpečný.
-  introduction_thread:
-    title: Vítejte! Prosím, představte se
-  how_it_works_thread:
-    title: Jak používat Loomio
   poll_mailer:
     common:
       why_send_this: Tento e-mail jste obdrželi, protože %{reason}

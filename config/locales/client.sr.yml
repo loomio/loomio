@@ -1,4 +1,7 @@
 sr:
+  start_trial:
+    your_name: Tvoje ime
+    your_email: Tvoja ePošta
   templates:
     try_loomio: Probaj Lumio
   subscription_status:
@@ -6,6 +9,7 @@ sr:
   loomio_tags:
     name_label: Ime
   common:
+    are_you_sure: Da li ste sigurni?
     please_wait: Molim sačekajte
     version: Verzija
     no_results_found: Nisu pronađeni rezultati
@@ -216,6 +220,7 @@ sr:
     current_revision: Poslednje
   group_page:
     threads: Niti
+    decisions: Odluke
     members: Članovi
     settings: Podešavanja
     subgroups: Podgrupe
@@ -358,6 +363,7 @@ sr:
     email_label: 'ePošta'
     locale_label: 'Jezik'
     update_profile: 'Promena profila'
+    deactivate_account: 'Deaktiviraj nalog'
   change_picture_form:
     use_gravatar: 'Koristi Gravatar'
   email_settings_page:
@@ -470,6 +476,7 @@ sr:
     messages:
       reload: 'Osveži'
   poll_common:
+    proposal: Predlog
     have_your_say: Recite šta imate
     save_changes: Snimi
   discussions_panel:
@@ -477,6 +484,7 @@ sr:
     all: Sve
     closed: Zatvoreno
   members_panel:
+    all: Sve
     order_by_name: 'Ime'
     header_name: 'Ime'
     header_username: 'Korisničko Ime'
@@ -494,6 +502,21 @@ sr:
     decline: Odbij
     'yes': 'Da'
     'no': 'Ne'
+  poll_templates:
+    proposal:
+      agree: Saglasnost
+      abstain: Uzdražanost
+      disagree: Nesaglasnost
+    advice:
+      agree: Saglasnost
+      abstain: Uzdražanost
+    consensus:
+      agree: Saglasnost
+      abstain: Uzdražanost
+      disagree: Nesaglasnost
+      block: Blokiranje
+    sense_check:
+      abstain: Uzdražanost
   auth_form:
     name_placeholder: Tvoje ime
   chatbot:

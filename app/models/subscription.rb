@@ -1,7 +1,15 @@
 class Subscription < ApplicationRecord
+  class MaxMembersExceeded < StandardError; end
+  class NotActive < StandardError; end
   include SubscriptionConcern if Object.const_defined?('SubscriptionConcern')
 
   PAYMENT_METHODS = ["chargify", "manual", "barter", "paypal"]
+  ACTIVE_STATES = %w[active on_hold pending]
+
+  scope :dangling, -> { joins('LEFT JOIN groups ON subscriptions.id = groups.subscription_id').where('groups.id IS NULL') }
+  scope :active, -> { where(state: ACTIVE_STATES).where("expires_at is null OR expires_at > ?", Time.current) }
+  scope :expired, -> { where(state: ACTIVE_STATES).where("expires_at < ?", Time.current) }
+  scope :canceled, -> { where(state: :canceled) }
 
   has_many :groups
   belongs_to :owner, class_name: 'User'
@@ -19,6 +27,12 @@ class Subscription < ApplicationRecord
     end
   end
 
+  def can_invite()
+    parent_group = parent_or_self
+    subscription = Subscription.for(parent_group)
+    subscription.max_members && parent_group.org_members_count >= subscription.max_members
+  end
+
   def level
     SubscriptionService::PLANS[self.plan][:level]
   end
@@ -28,8 +42,7 @@ class Subscription < ApplicationRecord
   end
 
   def is_active?
-    # allow groups in dunning or on hold to continue using the app
-    self.state == 'active' or self.state == 'past_due' or self.state == 'on_hold' or (self.state == 'trialing' && self.expires_at > Time.current)
+    ACTIVE_STATES.include?(state) && (self.expires_at.nil? || self.expires_at > Time.current)
   end
 
   def management_link

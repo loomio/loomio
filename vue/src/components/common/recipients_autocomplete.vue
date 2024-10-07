@@ -23,6 +23,7 @@ export default {
     existingOnly: Boolean,
     includeActor: Boolean,
     excludeMembers: Boolean,
+    hideCount: Boolean,
     excludedAudiences: {
       type: Array,
       default() { return []; }
@@ -131,7 +132,6 @@ export default {
       let chain = Records.users.collection.chain();
 
       chain = chain.find({id: {$in: difference(this.suggestedUserIds, this.excludedUserIds)}});
-      chain = chain.find({emailVerified: true});
 
       chain = chain.find({
         $or: [
@@ -187,6 +187,12 @@ export default {
 
     updateSuggestions() {
       if (this.query && this.canAddGuests) {
+        // seems like a problem with vuteify when query begins with a space
+        if (this.query.trimStart().length < this.query.length){
+          this.query = this.query.trimStart();
+          return;
+        }
+
         const emails = uniq(this.query.match(/[^\s:,;"`<>]+?@[^\s:,;"`<>]+\.[^\s:,;"`<>]+/g) || []);
 
         // catch paste of multiple email addresses, or failure to press enter after an email address
@@ -392,8 +398,10 @@ div.recipients-autocomplete
           span(v-if="data.item.type == 'user' && currentUserId == data.item.id")
             space
             span ({{ $t('common.you') }})
+        v-list-item-subtitle(v-if="data.item.user && data.item.user.email")
+          span {{data.item.user.email}}
   notifications-count(
-    v-show="recipients.length"
+    v-show="!hideCount && recipients.length"
     :model='model'
     :exclude-members="excludeMembers"
     :include-actor="includeActor")

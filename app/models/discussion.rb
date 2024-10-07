@@ -11,7 +11,6 @@ class Discussion < ApplicationRecord
   include HasCreatedEvent
   include HasRichText
   include HasTags
-  extend  NoSpam
   include Discard::Model
 
   include Searchable
@@ -48,12 +47,11 @@ class Discussion < ApplicationRecord
     SQL
   end
 
-  no_spam_for :title, :description
-
   scope :dangling, -> { joins('left join groups g on discussions.group_id = g.id').where('group_id is not null and g.id is null') }
   scope :in_organisation, -> (group) { includes(:author).where(group_id: group.id_and_subgroup_ids) }
   scope :last_activity_after, -> (time) { where('last_activity_at > ?', time) }
   scope :order_by_latest_activity, -> { order(last_activity_at: :desc) }
+  scope :order_by_pinned_then_latest_activity, -> { order("pinned_at, last_activity_at DESC") }
   scope :recent, -> { where('last_activity_at > ?', 6.weeks.ago) }
 
   scope :visible_to_public, -> { kept.where(private: false) }
@@ -184,10 +182,20 @@ class Discussion < ApplicationRecord
     :new_discussion
   end
 
+  def find_last_activity_at
+    [
+      self.comments.kept.order("created_at desc"),
+      self.polls.kept.order("created_at desc"),
+      Outcome.where(poll_id: poll_ids).order("created_at desc"),
+      Stance.latest.where(poll_id: poll_ids).order("updated_at, created_at desc"),
+      Discussion.where(id: self.id)
+    ].map { |rel| rel.first&.created_at }.compact.max
+  end
+
   def update_sequence_info!
     sequence_ids = discussion.items.order(:sequence_id).pluck(:sequence_id).compact
     discussion.ranges_string = RangeSet.serialize RangeSet.reduce RangeSet.ranges_from_list sequence_ids
-    discussion.last_activity_at = discussion.items.unreadable.order(:sequence_id).last&.created_at || created_at
+    discussion.last_activity_at = find_last_activity_at
     update_columns(
       items_count: sequence_ids.count,
       ranges_string: discussion.ranges_string,

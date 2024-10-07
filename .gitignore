@@ -15,6 +15,7 @@ public/pricing/
 public/the-loomio-process/
 public/why-collaborative-decision-making/
 public/wp-content/
+public/GeoLite2-Country.mmdb
 
 # rails stuff
 .irb_history
@@ -47,6 +48,7 @@ logfile
 /client
 public/client
 public/blient
+public/client3
 public/assets
 public/system
 public/uploads

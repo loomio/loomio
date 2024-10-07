@@ -1,185 +1,4 @@
----
 tr:
-  errors:
-    404:
-      title: Bulunamadı
-    clear_cache: Yükleme sorunu algılandı. Shift tuşunu basılı tutun ve yeniden yükle tuşuna basın veya tarayıcınızın önbelleğini temizleyin.
-    noscript: Loomio'nun çalışması için javascript gerekiyor! Devam etmek için lütfen tarayıcınızda javascript'i etkinleştirin
-    upgrade_browser: Ah ah! Web tarayıcınız çok eski ve Loomio düzgün çalışmayabilir. Lütfen <a href="https://browser-update.org/update.html">tarayıcınızı yükseltin.</a>
-    return_home: Eve dön
-    not_found: 404 dosyası bulunamadı.
-    messages:
-      email: geçerli olmayan e-posta adresi
-      spoofed_media_type: Bu dosyanın içeriği dosya adıyla eşleşmiyor
-  group:
-    stats:
-      members: Üyeler
-      subgroups: Alt gruplar
-      threads: Müzakereler
-      comments: Yorumlar
-      poll_types:
-        proposal: Öneri
-        count: Saymak
-        choose: Seçmek
-        allocate: Tahsis Et
-        score: Gol
-        rank: Rütbe
-        time: Zaman anketi
-      group_stats: Grup istatistikleri
-      org_stats: Organizasyon istatistikleri (alt gruplar dahil)
-      visits: Ziyaretler
-      polls: Anketler
-      votes: Oylar
-      general: Genel
-    error:
-      handle_must_begin_with_parent_handle: "%{parent_handle}- ile başlamalıdır"
-      no_public_trials: Grup gizlilik ayarını değiştirmek için lütfen deneme sürümünden yükseltme yapın
-  poll:
-    export:
-      title: Başlık
-      author: Yazar
-      email: E-posta
-      details: Detaylar
-      group_name: Grup adı
-      total: Toplam
-      percent_voted: "%{num}/%{denom} (%{percent}) üye konumlarını belirtti"
-      user_id: Kullanıcı kimliği
-      created_at: Oluşturulma Tarihi
-      closing_at: Kapanış Saati
-      closed_at: Kapanış Tarihi
-      is_latest: En Son
-      engagement: Nişanlanmak
-      stances: Duruşlar
-      participants: Katılımcılar
-      discussion_title: Konu Başlığı
-      outcome_author: Sonuç Yazarı
-      outcome_created_at: Sonuç Oluşturulma Tarihi
-      outcome_statement: Sonuç Beyanı
-      poll_url: Anket URL'si
-      reason: Sebep
-      participant: Katılımcı
-      also_available: Ayrıca mevcut
-    error:
-      cannot_add_options: Bu ankete seçenekler eklenemiyor
-      cannot_remove_options: Bu anketteki seçenekler kaldırılamıyor
-      must_have_options: En az bir anket seçeneği olmalıdır
-      must_be_in_the_future: Gelecekte olmalı
-      templates_cannot_close: Şablonlar kapatılamıyor
-    waiting_for_votes_from: Taraflardan oy bekliyorum
-  user_mailer:
-    merge_verification:
-      confirm_page:
-        merge: Hesapları birleştir
-        confirm: Birleştirmeyi onayla
-        body_html: "<p>Lütfen <strong>%{source_email}</strong> altındaki hesabı <strong>%{target_email}</strong> altındaki hesapla birleştirmek istediğinizi onaylayın.</p><p> <strong>%{source_email}</strong> altındaki hesabınız silinecek ve bundan sonra yalnızca <strong>%{target_email}</strong> üzerinden oturum açabileceksiniz.</p><p> Bu değişiklik geri döndürülemez.</p>"
-      subject: Birleştirme için %{site_name} e-posta adresinizi doğrulayın
-      body_html: "<p>Merhaba %{name},</p><p> <strong>%{source_email}</strong> adresi altındaki kullanıcı hesabınızın, <strong>%{target_email}</strong> adresine ait hesapla birleştirilmesi için bir istekte bulunuldu.</p><p> Bu işlem tamamlandıktan sonra artık <strong>%{source_email}</strong> ile değil, yalnızca <strong>%{target_email}</strong> ile oturum açabileceksiniz.</p><p> Lütfen yapmak istediğiniz şeyin bu olduğunu onaylayın.</p>"
-      verify: E-postayı doğrulayın ve devam edin
-      complete_page:
-        title: Birleştirme başarılı!
-        body_html: <p>Kullanıcı hesaplarınızın birleştirilmesi başarılı oldu. Kısa süre içinde <strong>%{target_email}</strong> adresine bir onay e-postası alacaksınız.</p><p> Başka sorularınız varsa lütfen <a href="/contact" target="_blank">bizimle iletişime geçin</a> .</p>
-    group_export_ready:
-      subject: "%{group_name} için grup verilerini dışa aktarma"
-      body_html: Grup verilerinizi <a href="%{url}">buradan</a> indirin. Bu bağlantının süresinin bir hafta içinde dolacağını lütfen unutmayın.
-    deactivated:
-      subject: "%{site_name} kullanıcı hesabınız devre dışı bırakıldı."
-      body_html: "<p>Siz veya hesabınıza erişimi olan biri, Loomio kullanıcı hesabınızı devre dışı bıraktınız.</p><p> Tüm kişisel veriler sistemden kaldırılmıştır.</p><p> Bu kullanıcı hesabını ve ilgili yorumları ve oyları kurtarmak istiyorsanız lütfen destek ekibiyle iletişime geçin ve şu adresi referans alın: %{recovery_code}</p>"
-    accounts_merged:
-      subject: "%{site_name} kullanıcı hesaplarınız birleştirildi."
-      body_html: Merhaba %{name}, İki loomio hesabınız tek hesapta birleştirildi. Artık Loomio'ya erişmek için lütfen oturum açarken <strong>%{email} adresini</strong> kullanın.
-  email:
-    reset_password:
-      link_text: Parolanızı sıfırlayın
-      greeting: 'Merhaba %{name} Burada Loomio hesabınızın şifresini sıfırlamak için kullanabileceğiniz bir bağlantı bulunmaktadır:'
-      signoff: Bunu, e-postanız %{hostname} üzerindeki "Şifremi unuttum" formuna girildiği için aldınız. Ancak yukarıdaki bağlantıyı takip edip formu doldurana kadar şifreniz değişmeyecektir. Giriş yapmakta sorun yaşamaya devam ederseniz, bir destek yetkilisiyle iletişime geçmek için bu e-postayı yanıtlayın.
-    by_who: "%{person} tarafından"
-    reply_to_this_discussion: Bu müzakereyi yanıtla
-    view_group: Grubu gör
-    to_join_group:
-      invitation_text: "%{member} sizi %{group_name} grubuna davet etti."
-      invitation_text_html: sizi gruba davet etti
-      link_help: 'Davetiyeyi kabul etmek için aşağıdaki bağlantıyı tıklayın:'
-      accept_invitation: Daveti onayla
-      subject: "%{member} sizi %{site_name} sitesinde %{group_name} grubuna katılmaya davet etti"
-      stop_emails: "%{site_name} adresinden e-posta almayı durdurun"
-      accepting_is_important: Sizi ilgilendiren kararlarla ilgili bildirimleri kaçırmamanız için davetinizi kabul etmeniz önemlidir.
-    user_added_to_group:
-      link_help: 'Gruba gitmek için aşağıdaki bağlantıyı tıklayın:'
-      subject: "%{who} sizi %{site_name} sitesindeki %{which_group} grubuna ekledi"
-      content: "%{who} sizi %{which_group} grubuna ekledi."
-      content_html: "<strong>%{who}</strong> sizi <strong>%{which_group}</strong> grubuna ekledi."
-    unsubscribe: 'Aboneliğini iptal et ya da e-posta tercihlerini değiştir:'
-    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
-    catch_up:
-      mark_as_read: Okundu olarak işaretle
-      thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
-      marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
-      click_here: Buraya tıkla
-      daily_subject: Dün %{site_name}'de
-      weekly_subject: Geçen hafta %{site_name}'de
-      other_subject: Son zamanlarda %{site_name}'de
-      do_not_reply: lütfen bu emaile cevap vermeyiniz.
-    membership_request:
-      subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
-      view_group: Burada isteği onaylayabilir ya da reddedebilirsin
-      intro_html: gruplarınızdan birine erişim istedi.
-      button_text: İsteği görüntüle
-    common:
-      or_enter_code: Veya aşağıdaki kodu girin
-      resend: Bu süre 24 saat içinde sona erecek ve yalnızca bir kez kullanılabilir
-    login:
-      subject: "%{site_name}'de oturum açın"
-      intro: Bu, %{site_name} sitesinde oturum açma bağlantınızdır
-      intro_code: Bu, %{site_name} sitesinde oturum açmak için kullanacağınız koddur
-      login: "%{name} olarak oturum açın"
-    reactivate:
-      subject: "%{site_name} hesabınızı yeniden etkinleştirin"
-      intro: Merhaba %{name}, burada %{site_name} hesabınızı yeniden etkinleştirmeniz için bir bağlantı var
-      login: "%{name}'yi yeniden etkinleştir"
-    contact_request:
-      subject: "%{name} sizinle %{site_name} üzerinden bağlantı kurmak istiyor!"
-      intro: "%{name} (%{email}) size bağlanma isteği gönderdi."
-      footer: Bu e-postayı yanıtlayarak %{name} adlı kişiye doğrudan yanıt verebilirsiniz.
-    loomio_app_description: Kuruluşların birlikte karar verebileceği, kullanımı kolay, güvenli bir yer.
-    resend_to_join_group:
-      subject: "%{member}, %{site_name} sitesinde %{group_name} grubuna katılmanızı bekliyor"
-    group_membership_approved:
-      intro: "%{group_name} grubuna erişim talebiniz onaylandı."
-      intro_html: "<strong>%{group_name}</strong> grubuna erişim talebiniz onaylandı."
-      link_help: "%{group_name} grubuna katılmak ve başlamak için aşağıdaki bağlantıya tıklayın:"
-      subject: "%{group_name} grubuna katılma isteğiniz onaylandı"
-      join_group: Gruba katılmak
-  discussion_mailer:
-    reply_or_view_online_html: Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>.
-    turn_off_notifications_html: Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>.
-    change_email_preferences_html: "<a href='%{email_preferences_url}'>E-posta tercihlerinizi</a> değiştirin."
-    unsubscribe_from_discussion_announced_html: Bu başlıktaki diğer duyurulara olan <a href='%{url}'>aboneliğinizi iptal edin</a> .
-    unsubscribe_from_new_comment_html: Bu konudaki yorumların <a href='%{url}'>aboneliğini iptal edin</a> .
-    unsubscribe_from_comment_replied_to_html: Bu bir yanıt bildirimidir.
-    unsubscribe_from_user_mentioned_html: Bu bir bahsetme bildirimidir.
-    discussion_edited:
-      inline: "%{actor} konu içeriğini düzenledi"
-    discussion_closed:
-      inline: "%{actor} konuyu kapattı"
-  footer:
-    about: Hakkında
-    blog: Blog
-    contact: İletişim
-    help: Yardım
-    privacy: Gizlilik
-    pricing: Fiyatlandırma
-    public_groups: Genel gruplar
-    terms: Şartlar
-    independent_install_html: '%{hostname} Loomio''nun bağımsız bir kopyasını çalışıtırıyor: <a href="http://github.com/loomio/loomio">daha fazla bilgi</a>.'
-  password_reset:
-    reset_email_timeframe: E-postanın ulaşması 5 dakikaya kadar sürebilir. Eğer e-posta ulaşmazsa, spam klasörünüzü kontrol ettiğinizden emin olun.
-    length_restriction: Şifreler en az 8 karakter uzunluğunda olmalıdır.
-    forbidden_passwords: ' "12345" gibi yaygın şifreler hesabınızın güvenliği için yasaklanmıştır.'
-    change_your_password: Şifreni değiştir
-    change_my_password: Şifre değiştir
-    confirm_new_password: Şifreyi Onayla
-    new_password: Yeni Şifre
-    email_guidelines_html: "<p>E-posta adresinizi girin, size bir şifre sıfırlama bağlantısı gönderilecektir.</p><p> Normalde Facebook veya Google üzerinden oturum açıyorsanız söz konusu hesapla ilişkili e-posta adresini girin.</p>"
   discussion_templates:
     blank:
       process_name: Boş şablon
@@ -275,14 +94,88 @@ tr:
       messages:
         blank: boş olamaz
         invalid: geçerli bir değer değil
-  user:
-    deleted_user: Silinmiş kullanıcı
-    placeholder_name: Davet edilen kullanıcı (%{hostname})
+  unauthorized:
+    manage:
+      all: "%{action} %{subject} yapma yetkisi yok."
+    add_guests:
+      all: "%{subject}'inize misafir eklemek için Loomio aboneliğinizi yükseltmelisiniz. Alternatif olarak onları grubunuzun üyesi olmaya davet edebilirsiniz."
+  errors:
+    clear_cache: "Yükleme sorunu algılandı. Shift tuşunu basılı tutun ve yeniden yükle tuşuna basın veya tarayıcınızın önbelleğini temizleyin."
+    404:
+      title: Bulunamadı
+    noscript: Loomio'nun çalışması için javascript gerekiyor! Devam etmek için lütfen tarayıcınızda javascript'i etkinleştirin
+    upgrade_browser: |-
+        Ah ah! Web tarayıcınız çok eski ve Loomio düzgün çalışmayabilir. Lütfen <a href="https://browser-update.org/update.html">tarayıcınızı yükseltin.</a>
+    return_home: Eve dön
+    not_found: 404 dosyası bulunamadı.
+    messages:
+      email: geçerli olmayan e-posta adresi
+      spoofed_media_type: Bu dosyanın içeriği dosya adıyla eşleşmiyor
+      pwned_password: Bu şifre daha önce bir veri ihlalinde ortaya çıkmıştır ve asla kullanılmamalıdır
+  group:
     error:
-      sign_in_required_html: Devam etmek için oturum açmalısınız. Lütfen <a href="/dashboard" target="_blank">oturum açın</a> ve devam etmek için bu sayfayı yeniden yükleyin.
-      recaptcha: Robot olmadığınızı doğrulayamadık. Lütfen tekrar deneyin!
-      bad_login: Üzgünüz, bu şifre kayıtlı şifremizle eşleşmiyor
-      username_must_be_alphanumeric: Kullanıcı adları yalnızca küçük harf ve rakamlardan oluşmalıdır
+      handle_must_begin_with_parent_handle: "%{parent_handle}- ile başlamalıdır"
+      no_public_trials: "Grup gizlilik ayarını değiştirmek için lütfen deneme sürümünden yükseltme yapın"
+    stats:
+      group_stats: Grup istatistikleri
+      org_stats: Organizasyon istatistikleri (alt gruplar dahil)
+      visits: Ziyaretler
+      members: Üyeler
+      subgroups: Alt gruplar
+      threads: Müzakereler
+      polls: Anketler
+      votes: Oylar
+      comments: Yorumlar
+      general: Genel
+      poll_types:
+        proposal: Öneri
+        count: Saymak
+        choose: Seçmek
+        allocate: Tahsis Et
+        score: Gol
+        rank: Rütbe
+        time: Zaman anketi
+  user:
+    deleted_user: "Silinmiş kullanıcı"
+    placeholder_name: "Davet edilen kullanıcı (%{hostname})"
+    error:
+      sign_in_required_html: |-
+          Devam etmek için oturum açmalısınız. Lütfen <a href="/dashboard" target="_blank">oturum açın</a> ve devam etmek için bu sayfayı yeniden yükleyin.
+      recaptcha: "Robot olmadığınızı doğrulayamadık. Lütfen tekrar deneyin!"
+      bad_login: "Üzgünüz, bu şifre kayıtlı şifremizle eşleşmiyor"
+      username_must_be_alphanumeric: "Kullanıcı adları yalnızca küçük harf ve rakamlardan oluşmalıdır"
+  poll:
+    error:
+      cannot_add_options: Bu ankete seçenekler eklenemiyor
+      cannot_remove_options: Bu anketteki seçenekler kaldırılamıyor
+      must_have_options: En az bir anket seçeneği olmalıdır
+      must_be_in_the_future: Gelecekte olmalı
+      templates_cannot_close: Şablonlar kapatılamıyor
+    export:
+      percent_voted: "%{num}/%{denom} (%{percent}) üye konumlarını belirtti"
+      title: Başlık
+      author: Yazar
+      email: E-posta
+      user_id: Kullanıcı kimliği
+      created_at: Oluşturulma Tarihi
+      closing_at: Kapanış Saati
+      closed_at: Kapanış Tarihi
+      is_latest: En Son
+      engagement: Nişanlanmak
+      stances: Duruşlar
+      participants: Katılımcılar
+      details: Detaylar
+      group_name: Grup adı
+      discussion_title: Konu Başlığı
+      outcome_author: Sonuç Yazarı
+      outcome_created_at: Sonuç Oluşturulma Tarihi
+      outcome_statement: Sonuç Beyanı
+      poll_url: Anket URL'si
+      reason: Sebep
+      participant: Katılımcı
+      also_available: Ayrıca mevcut
+      total: Toplam
+    waiting_for_votes_from: "Taraflardan oy bekliyorum"
   stance:
     error:
       too_short: Lütfen bir seçim yapın
@@ -294,38 +187,163 @@ tr:
     inactive: Etkin değil
   base_mailer:
     via_loomio: "%{name} (%{site_name} aracılığıyla)"
+  event_mailer:
+    received_email:
+      explaination_html: |-
+          <p>Bu e-postayı Loomio grubunun yöneticisi olduğunuz için alıyorsunuz: %{group}.</p><p> Grup tanınmayan bir e-posta adresinden bir e-posta aldı.</p><p> Mesaj grubun bir üyesinden geliyorsa lütfen e-postayı inceleyin ve üyeyi seçin.</p><p> Mesaj istenmeyense, bu adresten gelecek diğer e-postaları engelleyebilirsiniz.</p>
+  user_mailer:
+    group_export_ready:
+      subject: '%{group_name} için grup verilerini dışa aktarma'
+      body_html: |-
+          Grup verilerinizi <a href="%{url}">buradan</a> indirin. Bu bağlantının süresinin bir hafta içinde dolacağını lütfen unutmayın.
+    redacted:
+      subject: "%{site_name} kullanıcı hesabınız silindi"
+      body_html: |-
+          <p>%{site_name} kullanıcı hesabınız silindi.</p><p> Kişisel olarak tanımlayıcı tüm veriler kaldırıldı.</p><p> Bunu siz talep etmediyseniz lütfen %{support_email} ile iletişime geçin.</p>
+    accounts_merged:
+      subject: "%{site_name} kullanıcı hesaplarınız birleştirildi."
+      body_html: |-
+          Merhaba %{name}, İki loomio hesabınız tek hesapta birleştirildi. Artık Loomio'ya erişmek için lütfen oturum açarken <strong>%{email} adresini</strong> kullanın.
+    merge_verification:
+      subject: "Birleştirme için %{site_name} e-posta adresinizi doğrulayın"
+      body_html: |-
+          <p>Merhaba %{name},</p><p> <strong>%{source_email}</strong> adresi altındaki kullanıcı hesabınızın, <strong>%{target_email}</strong> adresine ait hesapla birleştirilmesi için bir istekte bulunuldu.</p><p> Bu işlem tamamlandıktan sonra artık <strong>%{source_email}</strong> ile değil, yalnızca <strong>%{target_email}</strong> ile oturum açabileceksiniz.</p><p> Lütfen yapmak istediğiniz şeyin bu olduğunu onaylayın.</p>
+      verify: E-postayı doğrulayın ve devam edin
+      confirm_page:
+        confirm: Birleştirmeyi onayla
+        body_html: |-
+            <p>Lütfen <strong>%{source_email}</strong> altındaki hesabı <strong>%{target_email}</strong> altındaki hesapla birleştirmek istediğinizi onaylayın.</p><p> <strong>%{source_email}</strong> altındaki hesabınız silinecek ve bundan sonra yalnızca <strong>%{target_email}</strong> üzerinden oturum açabileceksiniz.</p><p> Bu değişiklik geri döndürülemez.</p>
+        merge: Hesapları birleştir
+      complete_page:
+        title: Birleştirme başarılı!
+        body_html: |-
+            <p>Kullanıcı hesaplarınızın birleştirilmesi başarılı oldu. Kısa süre içinde <strong>%{target_email}</strong> adresine bir onay e-postası alacaksınız.</p><p> Başka sorularınız varsa lütfen <a href="/contact" target="_blank">bizimle iletişime geçin</a> .</p>
+  email:
+    common:
+      or_enter_code: Veya aşağıdaki kodu girin
+      resend: Bu süre 24 saat içinde sona erecek ve yalnızca bir kez kullanılabilir
+    login:
+      subject: '%{site_name}''de oturum açın'
+      intro: Bu, %{site_name} sitesinde oturum açma bağlantınızdır
+      intro_code: Bu, %{site_name} sitesinde oturum açmak için kullanacağınız koddur
+      login: '%{name} olarak oturum açın'
+    reactivate:
+      subject: '%{site_name} hesabınızı yeniden etkinleştirin'
+      intro: Merhaba %{name}, burada %{site_name} hesabınızı yeniden etkinleştirmeniz için bir bağlantı var
+      login: '%{name}''yi yeniden etkinleştir'
+    contact_request:
+      subject: "%{name} sizinle %{site_name} üzerinden bağlantı kurmak istiyor!"
+      intro: "%{name} (%{email}) size bağlanma isteği gönderdi."
+      footer: "Bu e-postayı yanıtlayarak %{name} adlı kişiye doğrudan yanıt verebilirsiniz."
+    reset_password:
+      greeting: |-
+          Merhaba %{name} Burada Loomio hesabınızın şifresini sıfırlamak için kullanabileceğiniz bir bağlantı bulunmaktadır:
+      link_text: Parolanızı sıfırlayın
+      signoff: |-
+          Bunu, e-postanız %{hostname} üzerindeki "Şifremi unuttum" formuna girildiği için aldınız. Ancak yukarıdaki bağlantıyı takip edip formu doldurana kadar şifreniz değişmeyecektir. Giriş yapmakta sorun yaşamaya devam ederseniz, bir destek yetkilisiyle iletişime geçmek için bu e-postayı yanıtlayın.
+    by_who: '%{person} tarafından'
+    reply_to_this_discussion: Bu müzakereyi yanıtla
+    loomio_app_description: "Kuruluşların birlikte karar verebileceği, kullanımı kolay, güvenli bir yer."
+    view_group: Grubu gör
+    to_join_group:
+      subject: "%{member} sizi %{site_name} sitesinde %{group_name} grubuna katılmaya davet etti"
+      invitation_text: "%{member} sizi %{group_name} grubuna davet etti."
+      invitation_text_html: "sizi gruba davet etti"
+      link_help: "Davetiyeyi kabul etmek için aşağıdaki bağlantıyı tıklayın:"
+      accept_invitation: "Daveti onayla"
+      stop_emails: "%{site_name} adresinden e-posta almayı durdurun"
+      accepting_is_important: Sizi ilgilendiren kararlarla ilgili bildirimleri kaçırmamanız için davetinizi kabul etmeniz önemlidir.
+    resend_to_join_group:
+      subject: "%{member}, %{site_name} sitesinde %{group_name} grubuna katılmanızı bekliyor"
+    user_added_to_group:
+      subject: "%{who} sizi %{site_name} sitesindeki %{which_group} grubuna ekledi"
+      content: "%{who} sizi %{which_group} grubuna ekledi."
+      content_html: "<strong>%{who}</strong> sizi <strong>%{which_group}</strong> grubuna ekledi."
+      link_help: "Gruba gitmek için aşağıdaki bağlantıyı tıklayın:"
+    unsubscribe: "Aboneliğini iptal et ya da e-posta tercihlerini değiştir:"
+    unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> aboneliğini iptal etmek ya da e-posta tercihlerini değiştirmek için."
+    catch_up:
+      daily_subject: Dün %{site_name}'de
+      weekly_subject: Geçen hafta %{site_name}'de
+      other_subject: Son zamanlarda %{site_name}'de
+      do_not_reply: lütfen bu emaile cevap vermeyiniz.
+      mark_as_read: Okundu olarak işaretle
+      thanks_for_reading: Okuduğunuz için teşekkürler. Güzel günler dileriz!
+      marked_as_read_success: E-posta'daki herşey okundu olarak isaretlendi
+      click_here: Buraya tıkla
+    group_membership_approved:
+      intro: "%{group_name} grubuna erişim talebiniz onaylandı."
+      intro_html: "<strong>%{group_name}</strong> grubuna erişim talebiniz onaylandı."
+      link_help: "%{group_name} grubuna katılmak ve başlamak için aşağıdaki bağlantıya tıklayın:"
+      subject: "%{group_name} grubuna katılma isteğiniz onaylandı"
+      join_group: "Gruba katılmak"
+    membership_request:
+      intro_html: gruplarınızdan birine erişim istedi.
+      subject: "%{who} %{which_group} grubuna katılmak için talep gönderdi"
+      view_group: Burada isteği onaylayabilir ya da reddedebilirsin
+      button_text: İsteği görüntüle
   announcement_count_emails: "%{count} e-posta"
   email_actions:
     unfollowed_discussion: Konu başlığı için e-postaları kapattınız.
+  discussion_mailer:
+    reply_or_view_online_html: "Bu e-postayı doğrudan yanıtlayın veya <a href='%{url}'>%{hostname} üzerinde görüntüleyin</a>."
+    turn_off_notifications_html: "Bu müzakere için <a href='%{url}'>e-postaları devre dışı bırakın</a>."
+    change_email_preferences_html: "<a href='%{email_preferences_url}'>E-posta tercihlerinizi</a> değiştirin."
+    unsubscribe_from_discussion_announced_html: "Bu başlıktaki diğer duyurulara olan <a href='%{url}'>aboneliğinizi iptal edin</a> ."
+    unsubscribe_from_new_comment_html: "Bu konudaki yorumların <a href='%{url}'>aboneliğini iptal edin</a> ."
+    unsubscribe_from_comment_replied_to_html: "Bu bir yanıt bildirimidir."
+    unsubscribe_from_user_mentioned_html: "Bu bir bahsetme bildirimidir."
+    discussion_edited:
+      inline: "%{actor} konu içeriğini düzenledi"
+    discussion_closed:
+      inline: "%{actor} konuyu kapattı"
+  footer:
+    about: Hakkında
+    blog: Blog
+    contact: İletişim
+    help: Yardım
+    privacy: Gizlilik
+    pricing: Fiyatlandırma
+    public_groups: Genel gruplar
+    terms: Şartlar
+    independent_install_html: '%{hostname} Loomio''nun bağımsız bir kopyasını çalışıtırıyor: <a href="http://github.com/loomio/loomio">daha fazla bilgi</a>.'
+  password_reset:
+    change_your_password: Şifreni değiştir
+    change_my_password: Şifre değiştir
+    confirm_new_password: Şifreyi Onayla
+    new_password: Yeni Şifre
+    email_guidelines_html: |-
+        <p>E-posta adresinizi girin, size bir şifre sıfırlama bağlantısı gönderilecektir.</p><p> Normalde Facebook veya Google üzerinden oturum açıyorsanız söz konusu hesapla ilişkili e-posta adresini girin.</p>
+    reset_email_timeframe: E-postanın ulaşması 5 dakikaya kadar sürebilir. Eğer e-posta ulaşmazsa, spam klasörünüzü kontrol ettiğinizden emin olun.
+    length_restriction: Şifreler en az 8 karakter uzunluğunda olmalıdır.
+    forbidden_passwords: ' "12345" gibi yaygın şifreler hesabınızın güvenliği için yasaklanmıştır.'
   task_mailer:
     task_due_reminder:
-      subject: 'Görev hatırlatıcısı: %{name}'
-      greeting: 'Merhaba %{name}, aşağıdaki görevin teslim tarihi %{due}:'
+      subject: "Görev hatırlatıcısı: %{name}"
+      greeting: "Merhaba %{name}, aşağıdaki görevin teslim tarihi %{due}:"
       view_task: "%{site_name} sitesinde görüntüle"
-      update_or_comment: Bu görevi zaten tamamladıysanız lütfen işaretleyin. Tamamlanmadıysa lütfen bir ilerleme güncellemesi paylaşın.
-      due_today: Bugün
+      update_or_comment: "Bu görevi zaten tamamladıysanız lütfen işaretleyin. Tamamlanmadıysa lütfen bir ilerleme güncellemesi paylaşın."
+      due_today: "Bugün"
       due_in_count_days: "%{count} gün içinde"
   group_mailer:
-    resend: 'HATIRLATMA: %{member}, %{group_name} grubuna katılmanızı bekliyor'
+    resend: "HATIRLATMA: %{member}, %{group_name} grubuna katılmanızı bekliyor"
     destroy_warning:
       subject: Loomio grubunuzun silinmesi planlandı.
-      body: 'Loomio grubunuz: "%{group}", %{deletor} tarafından silinmek üzere planlandı. Grubunuzun silinmesini istemiyorsanız lütfen bu e-postayı yanıtlayın. Grubu silmek istediğinizden eminseniz herhangi bir işlem yapmanıza gerek yoktur. Teşekkür ederim.'
+      body: |-
+          Loomio grubunuz: "%{group}", %{deletor} tarafından silinmek üzere planlandı. Grubunuzun silinmesini istemiyorsanız lütfen bu e-postayı yanıtlayın. Grubu silmek istediğinizden eminseniz herhangi bir işlem yapmanıza gerek yoktur. Teşekkür ederim.
   poll_mailer:
     common:
       why_send_this: Bu e-postayı %{reason} nedeniyle alıyorsunuz
-      view_on_loomio: "%{site_name} sitesinde görüntüle"
+      view_on_loomio: '%{site_name} sitesinde görüntüle'
       create_outcome: Sonucu paylaş
-      your_response: 'Oy verdiniz:'
-      you_voted: Oy verdiniz!
-      not_invited: Davet edilmemiş
+      your_response: "Oy verdiniz:"
+      you_voted: "Oy verdiniz!"
+      not_invited: "Davet edilmemiş"
       please_respond: Lütfen cevap ver
-      time_zone: "(%{zone}'da görüntülenen zamanlar)"
+      time_zone: (%{zone}'da görüntülenen zamanlar)
       undecided_members: Kararsız Üyeler (%{count})
       undecided_visitors: Kararsız Misafirler (%{count})
       more_undecided: "%{count} tane daha..."
       vote_now: Şimdi oyla
       you_have_until: Katılmak için %{when} tarihine kadar vaktiniz var.
       people_have_voted: "%{dnom} kişinin %{nom}'u katıldı (%{pct}%)"
-  event_mailer:
-    received_email:
-      explaination_html: "<p>Bu e-postayı Loomio grubunun yöneticisi olduğunuz için alıyorsunuz: %{group}.</p><p> Grup tanınmayan bir e-posta adresinden bir e-posta aldı.</p><p> Mesaj grubun bir üyesinden geliyorsa lütfen e-postayı inceleyin ve üyeyi seçin.</p><p> Mesaj istenmeyense, bu adresten gelecek diğer e-postaları engelleyebilirsiniz.</p>"

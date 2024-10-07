@@ -16,6 +16,10 @@ module Ability::User
       (user == u || user.is_admin?) && u.deactivated_at.nil?
     end
 
+    can [:redact], ::User do |u|
+      (user == u || user.is_admin?) && !u.email.nil?
+    end
+
     can [:contact], ::User do |u|
       ContactableQuery.contactable(actor: user, user: u)
     end

@@ -251,8 +251,11 @@ li[data-type='taskItem'] div {
 }
 
 blockquote {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.1);
     border-left: 4px solid #000;
+    margin-left: 0;
+    padding: 4px;
+    padding-left: 8px;
 }
 
 .user-mailer__code {

@@ -65,19 +65,16 @@ form.poll-score-vote-form(@submit.prevent='submit()')
           :disabled="!poll.isVotable()"
           v-model='choice.score'
           :color="choice.option.color"
+          :thumb-color="choice.option.color"
           :height="4"
           :min="poll.minScore"
           :max="poll.maxScore"
         )
-      v-list-item-action(style="max-width: 128px")
-        v-text-field.text-right(
+      v-list-item-action
+        input.vote-form-number-input(
+          :style="{'background-color': choice.option.color}"
           type="number"
-          max-width="20px"
-          filled
-          rounded
-          dense
-          v-model="choice.score"
-        )
+          v-model="choice.score")
 
   validation-errors(:subject='stance', field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
@@ -91,3 +88,21 @@ form.poll-score-vote-form(@submit.prevent='submit()')
     )
       span(v-t="'poll_common.submit_vote'")
 </template>
+
+<style lang="css">
+input.vote-form-number-input[type='number']::-webkit-inner-spin-button,
+input.vote-form-number-input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input.vote-form-number-input[type=number] {
+    -moz-appearance:textfield;
+}
+.vote-form-number-input {
+  text-align: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  color: #000;
+}
+</style>

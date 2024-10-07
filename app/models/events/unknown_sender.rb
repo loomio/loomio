@@ -17,9 +17,8 @@ class Events::UnknownSender < Event
   end
 
   def email_recipients
-    Queries::UsersByVolumeQuery.
-      email_notifications(eventable.group).
-      where(id: notification_recipients.pluck(:id))
+    # we don't want to be sending email as a result of receiving email from an unknown address
+    User.none
   end
 
   def notification_actor

@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 describe User do
-  before(:all) {
-    BlacklistedPassword.create(string: 'qwerty12')
-    BlacklistedPassword.create(string: 'qwerty123')
-  }
-
   let(:user) { create(:user) }
   let(:group) { create(:group) }
   let(:restrictive_group) { create(:group, members_can_start_discussions: false) }
@@ -34,16 +29,6 @@ describe User do
     user = User.find_by_id(user_id)
     user.save!
     user.should have(0).errors_on(:password)
-  end
-
-  it "should require the password to be non-trivial" do
-    user.password = 'qwerty123'
-    user.should have(1).errors_on(:password)
-  end
-
-  it "should require the password to be non-trivial regardless of the case" do
-    user.password = 'QwerTy12'
-    user.should have(1).errors_on(:password)
   end
 
   it "should otherwise accept any password" do
@@ -130,20 +115,6 @@ describe User do
     discussion.author = user
     discussion.save!
     user.authored_discussions.should include(discussion)
-  end
-
-  describe "name" do
-    it "returns '[deactivated]' if deactivated_at is present" do
-      ENV['SCRUB_USER_DEACTIVATE'] = '1'
-      user.update_attribute(:deactivated_at, Time.now)
-      user.name.should include('Deactivated')
-    end
-
-    it "returns '[deactivated]' if deactivated_at is true (a date is present)" do
-      ENV['SCRUB_USER_DEACTIVATE'] = nil
-      user.update_attribute(:deactivated_at, Time.now)
-      user.name.should_not include('deactivated')
-    end
   end
 
   it "sets avatar initials on save" do

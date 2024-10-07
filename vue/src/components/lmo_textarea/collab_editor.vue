@@ -18,7 +18,6 @@ import Dropcursor from '@tiptap/extension-dropcursor';
 import GapCursor from '@tiptap/extension-gapcursor';
 import HardBreak from '@tiptap/extension-hard-break';
 import Heading from '@tiptap/extension-heading';
-import History from '@tiptap/extension-history';
 import HorizontalRule from '@tiptap/extension-horizontal-rule';
 import Italic from '@tiptap/extension-italic';
 import Link from '@tiptap/extension-link';
@@ -57,6 +56,11 @@ import TextAlignBtn from './text_align_btn';
 import { TextAlign } from './extension_text_align';
 import { Highlight } from './extension_highlight';
 
+import Collaboration from '@tiptap/extension-collaboration';
+import CollaborationCursor from '@tiptap/extension-collaboration-cursor'
+import { HocuspocusProvider } from '@hocuspocus/provider';
+import { IndexeddbPersistence } from 'y-indexeddb';
+
 const isValidHttpUrl = function(string) {
   let url = undefined;
   try {
@@ -66,6 +70,8 @@ const isValidHttpUrl = function(string) {
   }
   return (url.protocol === 'http:') || (url.protocol === 'https:');
 };
+
+var provider = null;
 
 export default
 {
@@ -105,23 +111,32 @@ export default
     };
   },
 
-  computed: {
-    format() {
-      return this.model[`${this.field}Format`];
-    },
-
-    reasonTooLong() { 
-      return this.editor.getCharacterCount() >= this.maxLength;
-    }
-  },
-
   mounted() {
-    EventBus.$on('focusEditor', focusId => { 
-      if (this.focusId === focusId) { return this.editor.commands.focus(); }
+    const docname = this.model.collabKey(this.field, (Session.user().id || AppConfig.channel_token));
+
+    const onSync = function(provider) {
+      if (this.editor) {
+        if (!provider.document.getMap('config').get('initialContentLoaded')) {
+          provider.document.getMap('config').set('initialContentLoaded', true)
+          this.editor.commands.setContent(this.model[this.field]);
+        }
+      } else {
+        setTimeout( () => onSync(provider) , 250);
+      }
+    }.bind(this);
+
+    provider = new HocuspocusProvider({
+      url: AppConfig.theme.hocuspocus_url,
+      name: docname,
+      token: (Session.user().id || 0) + "," + (Session.user().secretToken || AppConfig.channel_token),
+      onSynced: function() { onSync(provider); }.bind(this),
     });
+
+    new IndexeddbPersistence(docname, provider.document);
 
     this.expanded = Session.user().experiences['html-editor.expanded'];
     this.model.beforeSaves.push( () => this.updateModel() );
+
     this.editor = new Editor({
       editorProps: {
         scrollThreshold: 100,
@@ -134,14 +149,50 @@ export default
         BulletList,
         CodeBlock,
         CustomImage.configure({attachFile: this.attachFile, attachImageFile: this.attachImageFile}),
+        Collaboration.configure({
+          document: provider.document,
+        }),
+        CollaborationCursor.configure({
+          provider: provider,
+          user: {
+            name: Session.user().name,
+            color: '#f783ac',
+            thumbUrl: Session.user().thumbUrl,
+          },
+          render: user => {
+            const cursor = document.createElement('span')
+
+            cursor.classList.add('collaboration-cursor__caret')
+
+            const label = document.createElement('div')
+            label.classList.add('collaboration-cursor__label')
+
+
+            if (user.thumbUrl) {
+              label.classList.add('collaboration-cursor__label-with-avatar')
+              const avatarDiv = document.createElement('div')
+              avatarDiv.classList.add('collaboration-cursor__avatar-div')
+              const avatar = document.createElement('img')
+              avatar.setAttribute('src', user.thumbUrl)
+              avatar.classList.add('collaboration-cursor__avatar')
+              avatarDiv.insertBefore(avatar, null)
+              label.insertBefore(avatarDiv, null)
+            }
+
+            label.insertBefore(document.createTextNode(user.name), null)
+            cursor.insertBefore(label, null)
+
+            return cursor
+          }
+        }),
         Video,
         Audio,
         Document,
         Dropcursor,
         GapCursor,
+        HardBreak,
         Heading,
         Highlight.configure({ multicolor: true }),
-        History,
         HorizontalRule,
         Italic,
         Iframe,
@@ -163,7 +214,6 @@ export default
         TextAlign.configure({ types: ['heading', 'paragraph'] }),
         Underline
       ],
-      content: this.model[this.field],
       onUpdate: () => {
         if (this.maxLength) { this.checkLength(); }
         if (this.model.isNew()) { this.scrapeLinkPreviews(); }
@@ -172,6 +222,28 @@ export default
         if (this.model.isNew() && (this.editor.getCharacterCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
       }
     });
+
+    EventBus.$on('focusEditor', focusId => {
+      if (this.focusId === focusId) { return this.editor.commands.focus(); }
+    });
+
+    EventBus.$on('resetDraft', (type, id, field, content) => {
+      if (type == this.model.constructor.singular &&
+          id == this.model.id &&
+          field == this.field) {
+        this.resetDraft(content);
+      }
+    });
+  },
+
+  computed: {
+    format() {
+      return this.model[`${this.field}Format`];
+    },
+
+    reasonTooLong() { 
+      return this.editor.getCharacterCount() >= this.maxLength;
+    }
   },
 
   watch: {
@@ -179,6 +251,10 @@ export default
   },
 
   methods: {
+    resetDraft(content) {
+      this.editor.commands.setContent(content); 
+    },
+
     openRecordVideoModal() {
       EventBus.$emit('openModal', {
         component: 'RecordVideoModal',
@@ -207,14 +283,6 @@ export default
       this.count = count;
     },
 
-    tiptapAddress() {
-      if (this.model.isNew()) {
-        return compact([AppConfig.theme.channels_uri, 'tiptap', this.model.constructor.singular, 'new', this.model.groupId, this.model.discussionId, this.model.parentId, Session.user().secretToken]).join('/');
-      } else {
-        return [AppConfig.theme.channels_uri, 'tiptap', this.model.constructor.singular, this.model.id, (this.model.secretToken || Session.user().secretToken)].join('/');
-      }
-    },
-
     selectedText() {
       const {
         state
@@ -228,6 +296,7 @@ export default
 
     reset() {
       this.editor.chain().clearContent().run();
+      provider.document.getMap('config').set('initialContentLoaded', false);
       this.resetFiles();
       this.model.beforeSave = () => this.updateModel();
     },
@@ -284,11 +353,7 @@ export default
       const parser = new DOMParser();
       const doc = parser.parseFromString(this.editor.getHTML(), 'text/html');
       this.fetchLinkPreviews(difference((Array.from(doc.querySelectorAll('a')).map(el => el.href)), this.fetchedUrls));
-    }
-    ,
-      500
-    ,
-      {leading: false}),
+    } , 500 , {leading: false}),
 
     fetchLinkPreviews(urls) {
       if (urls.length) {
@@ -304,14 +369,11 @@ export default
     if (this.editor) { this.editor.destroy(); }
   }
 };
-  // @socket.close() if @socket
 
 </script>
 
 <template lang="pug">
 div
-  //- template(v-if="!editor || loading")
-  //-   | Connecting to socket server …
   .editor(v-if="editor")
     editor-content.html-editor__textarea(ref="editor", :editor='editor').lmo-markdown-wrapper
     v-sheet.menubar
@@ -376,8 +438,6 @@ div
 
 
             template(v-if="expanded")
-              //- v-btn(icon @click='editor.chain().focus().setParagraph().run()' :outlined="editor.isActive('paragraph')" :title="$t('formatting.paragraph')")
-              //-   common-icon(small name="mdi-format-pilcrow")
               template(v-for="i in [1,2,3]")
                 v-btn(small icon @click='editor.chain().focus().toggleHeading({ level: i }).run()', :outlined="editor.isActive('heading', { level: i })", :title="$t('formatting.heading'+i)")
                   common-icon(small :name="'mdi-format-header-'+i")
@@ -466,6 +526,57 @@ div
     input.d-none(ref="imagesField", type="file", name="files", multiple=true)
 </template>
 <style lang="sass">
+
+.collaboration-cursor__avatar-div
+  width: 18px
+  height: 18px
+  margin-right: 4px
+
+img.collaboration-cursor__avatar
+  height: 100%
+  width: 100%
+  object-fit: cover
+  border-radius: 100%
+
+.collaboration-cursor__caret
+  border-left: 1px solid #333
+  margin-left: -1px
+  margin-right: -1px
+  pointer-events: none
+  position: relative !important
+  word-break: normal
+  z-index: 100
+
+.theme--dark
+  .collaboration-cursor__caret
+    border-left: 1px solid #ddd
+
+  .collaboration-cursor__label
+    color: #fff
+    background-color: #3338
+    border-color: #eee
+
+.collaboration-cursor__label
+  opacity: 0.75
+  display: flex
+  align-items: center
+  border-radius: 16px
+  border: 0px solid #333
+  background-color: #ddd8
+  color: #000
+  font-size: 12px
+  font-style: normal
+  font-weight: 400
+  left: -1px
+  line-height: normal
+  padding: 2px 6px
+  position: absolute
+  top: -1.4em
+  user-select: none
+  white-space: nowrap
+
+.collaboration-cursor__label-with-avatar
+  padding: 0 4px 0 0 !important
 
 .ProseMirror-widget
   position: absolute

@@ -8,7 +8,6 @@ import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import i18n          from '@/i18n';
 import { hardReload } from '@/shared/helpers/window';
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 import { startOfHour, addDays, format } from 'date-fns';
 
 function openSetOutcomeModal(poll) {
@@ -106,7 +105,7 @@ export default new class PollService {
         dock: 2,
         canPerform() {
           if (poll.discardedAt || poll.closedAt) { return false; }
-          return AbilityService.canAnnouncePoll(poll);
+          return AbilityService.canAddMembersPoll(poll);
         },
         perform() {
           return openModal({

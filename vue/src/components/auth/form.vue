@@ -52,14 +52,6 @@ export default {
     pendingIdentity() {
       return (AppConfig.pending_identity || {});
     },
-
-    startDemo() {
-      return this.$route.path === '/try';
-    },
-
-    startTrial() {
-      return AppConfig.features.app.trials && this.$route.path == '/g/new'
-    }
   }
 }
 
@@ -74,8 +66,6 @@ v-card.auth-form
     v-spacer
     dismiss-modal-button(v-if='!preventClose')
   v-sheet
-    v-alert.ma-4(text outlined type="info" v-if="startDemo" v-t="'templates.demo_needs_user'")
-    v-alert.ma-4.mb-8(text outlined type="info" v-if="startTrial" v-t="'templates.trial_needs_user'")
     p.text-h5.text-center(v-if="pendingGroup" v-t="{path: 'auth_form.youre_invited', args: {group_name: pendingGroup.name}}")
     p.text-h5.text-center(v-if="pendingDiscussion" v-t="'auth_form.youre_invited_discussion'")
     p.text-h5.text-center(v-if="pendingPoll" v-t="'auth_form.youre_invited_poll'")

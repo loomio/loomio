@@ -1,6 +1,5 @@
 <script lang="js">
 import EventBus from '@/shared/services/event_bus';
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 
 export default {
   props: {
@@ -9,9 +8,7 @@ export default {
   },
   methods: {
     closeModal() {
-      if (!this.model || RescueUnsavedEditsService.okToLeave(this.model)) {
-        if (this.close) { return this.close(); } else { return EventBus.$emit('closeModal'); }
-      }
+      if (this.close) { return this.close(); } else { return EventBus.$emit('closeModal'); }
     }
   }
 };

@@ -35,7 +35,7 @@ boot(function(data) {
   PlausibleService.trackPageview();
 
   if (AppConfig.sentry_dsn) {
-    Sentry.configureScope(scope => scope.setUser(pick(Session.user(), ['id', 'name', 'email', 'username'])));
+    Sentry.setUser(pick(Session.user(), ['id', 'name', 'email', 'username']));
   }
 
   return new Vue({

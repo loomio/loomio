@@ -111,6 +111,11 @@ class Comment < ApplicationRecord
   end
 
   def parent_event
+    if parent.nil? && discussion.present?
+      self.parent = self.discussion
+      save!(validate: false)
+    end
+
     if parent.is_a? Stance
       # if stance, the could be updated event. sucks i know
       Event.where(eventable_type: parent_type, eventable_id: parent_id).where('discussion_id is not null').first

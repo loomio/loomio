@@ -30,7 +30,8 @@ export default {
       groupItems: [],
       initialRecipients: [],
       discussionTemplate: null,
-      loaded: false
+      loaded: false,
+      shouldReset: false,
     };
   },
 
@@ -81,16 +82,26 @@ export default {
   },
 
   methods: {
+    discardDraft() {
+      if (confirm(I18n.t('formatting.confirm_discard'))) {
+        EventBus.$emit('resetDraft', 'discussion', this.discussion.id, 'description', this.discussion.description);
+      }
+    },
+    
     submit() {
       const actionName = this.discussion.id ? 'updated' : 'created';
       this.discussion.save().then(data => {
         const discussionKey = data.discussions[0].key;
         EventBus.$emit('closeModal');
+        this.shouldReset = !this.shouldReset;
         Records.discussions.findOrFetchById(discussionKey, {}, true).then(discussion => {
           Flash.success(`discussion_form.messages.${actionName}`);
           this.$router.push(this.urlFor(discussion));
         });
-      }).catch(error => true);
+      }).catch( error => {
+        Flash.warning('poll_common_form.please_review_the_form');
+        console.error(error);
+      });
     },
 
     updateGroupItems() {
@@ -202,6 +213,7 @@ export default {
         field="description"
         :label="$t('discussion_form.context_label')"
         :placeholder="$t('discussion_form.context_placeholder')"
+        :shouldReset="shouldReset"
       )
 
       common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
@@ -212,6 +224,10 @@ export default {
         v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
           span(v-t="'thread_arrangement_form.edit'")
         v-spacer
+        v-btn(
+          @click="discardDraft"
+          v-t="'common.reset'"
+        )
         v-btn.discussion-form__submit(
           color="primary"
           @click="submit()"

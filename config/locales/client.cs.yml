@@ -1,13 +1,10 @@
 cs:
+  start_trial:
+    your_name: Vaše jméno
+    your_email: Váš email
+    success: Úspěch!
   templates:
     try_loomio: Vyzkoušejte Loomio
-  loomio_onboarding:
-    group_progress_card:
-      activities:
-        set_description: Nastavit popis skupiny
-        start_thread: Zahájit diskusní vlákno
-        make_decision: Spuštění rozhodování
-      dismiss_this_card: Tuto kartu zamítnout
   plan_names:
     free: Bezplatný
     pro: Profesionální
@@ -28,6 +25,7 @@ cs:
   timezones:
     local: Místní čas (%{value})
   common:
+    are_you_sure: Jste si jisti?
     please_wait: Prosím vyčkejte
     version: Verze
     no_results_found: Žádné výsledky nenalezeny
@@ -257,6 +255,7 @@ cs:
     invite_to_group: "Pozvat do skupiny"
     invite_to_poll: "Pozvat k hlasování"
   membership_dropdown:
+    set_title: "Nastavit název skupiny"
     invitation_resent: "Pozvánka přeposlána"
     remove_from:
       group: "Odstranit ze skupiny"
@@ -338,6 +337,7 @@ cs:
       membership_requested: 'Požádali jste o vstup do %{group}'
   revision_history_modal:
     aria_label: Historie revizí
+    started_by: 'Vytvořeno <strong>%{name}</strong>'
     edited_by: 'Upravil/a <strong>%{name}</strong>'
     current_revision: Nejnovější
   reactions_display:
@@ -348,6 +348,7 @@ cs:
       pinned: "Toto vlákno bylo připnuté. Zůstane v horní části seznamu témat pro všechny uživatele."
   group_page:
     threads: Vlákna
+    decisions: Rozhodnutí
     members: Členové
     settings: Nastavení
     subgroups: Podskupiny
@@ -496,6 +497,7 @@ cs:
     locale_label: 'Jazyk'
     locale_placeholder: Zvolte preferovaný jazyk
     update_profile: 'Aktualizovat profil'
+    deactivate_account: 'Deaktivovat účet'
   change_picture_form:
     use_gravatar: 'Použít Gravatar'
   change_password_form:
@@ -610,6 +612,7 @@ cs:
     poll_title: Hlasování
     meeting_title: Doba hlasování
   poll_common:
+    proposal: Návrh
     vote_now: Hlasovat nyní
     have_your_say: Vyjádřete svůj názor
     your_response: Vaše odpověď
@@ -636,6 +639,7 @@ cs:
     all: Vše
     closed: Zavřená
   members_panel:
+    all: Vše
     order_by_name: 'Název'
     header_name: 'Název'
     header_username: 'Uživatelské jméno'
@@ -648,6 +652,8 @@ cs:
   poll_common_settings:
     anyone_can_participate:
       title: Kdokoli s odkazem se může účastnit
+  poll_common_votes_panel:
+    vote_removed: Hlas odebrán
   poll_common_outcome_form:
     submit: Sdílet výsledek
   poll_common_form:
@@ -681,9 +687,25 @@ cs:
     total: Celkem
   poll_remove_vote:
     success: Hlas odebrán
+  poll_templates:
+    proposal:
+      agree: Souhlasit
+      abstain: Zdržet se
+      disagree: Nesouhlasit
+    advice:
+      agree: Souhlasit
+      abstain: Zdržet se
+    consensus:
+      agree: Souhlasit
+      abstain: Zdržet se
+      disagree: Nesouhlasit
+      block: Zamítnout
+    sense_check:
+      abstain: Zdržet se
   auth_form:
     sign_in: Přihlásit se
     create_account: Vytvořit účet
+    sign_in_as: Přihlášen jako %{name}
     enter_your_name: Zadejte své jméno
     more_providers: Více
     email_not_present: Je vyžadována e-mailová adresa

@@ -519,6 +519,9 @@ describe API::V1::AnnouncementsController do
 
         expect(response.status).to eq 200
         expect(group.members).to include(member)
+        expect(subgroup.members).to include(member)
+        expect(subgroup2.members).to include(member)
+
         expect(member.memberships.accepted.count).to eq 3
         expect(member.memberships.pending.count).to eq 0
       end
@@ -571,9 +574,9 @@ describe API::V1::AnnouncementsController do
       end
 
       it 'does not allow announcement if max members is reached' do
-        AppConfig.app_features[:subscription] = true
         Subscription.for(group).update(max_members: 0)
         post :create, params: {group_id: group.id, recipient_emails: ['jim@example.com']}
+        expect(response.body).to include "Subscription::MaxMembersExceeded"
         expect(response.status).to eq 403
       end
     end

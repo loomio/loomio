@@ -48,7 +48,9 @@ class API::V1::DiscussionReadersController < API::V1::RestfulController
   end
 
   def default_scope
-    super.merge({include_email: (@discussion_reader || @discussion).discussion.admins.exists?(current_user.id)})
+    discussion = (@discussion_reader || @discussion).discussion
+    is_admin = discussion.group_id ? discussion.group.admins.exists?(current_user.id) : discussion.admins.exists?(current_user.id)
+    super.merge({include_email: is_admin})
   end
 
   def accessible_records

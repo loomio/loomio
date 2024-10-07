@@ -18,6 +18,18 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
     respond_with_collection
   end
 
+  def new_member_count
+    current_user.ability.authorize! :show, target_model
+
+    count = UserInviter.new_members_count(
+      parent_group: target_model.parent_or_self,
+      user_ids: String(params[:recipient_user_xids]).split('x').map(&:to_i),
+      emails: String(params[:recipient_emails_cmr]).split(',')
+    )
+    render json: {count: count}
+  end
+
+  # count for number of notifications that will be send
   def count
     count = UserInviter.count(
       actor: current_user,
@@ -147,8 +159,14 @@ class API::V1::AnnouncementsController < API::V1::RestfulController
   end
 
   def default_scope
+    if target_model && target_model.respond_to?(:group_id)
+      is_admin = target_model.group_id ? target_model.group.admins.exists?(current_user.id) : target_model.admins.exists?(current_user.id)
+    else
+      is_admin = false
+    end
+
     super.merge(
-      include_email: (target_model && target_model.admins.exists?(current_user.id))
+      include_email: (is_admin)
     )
   end
 

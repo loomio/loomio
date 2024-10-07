@@ -2,7 +2,6 @@
 import EventBus from '@/shared/services/event_bus';
 import Session from '@/shared/services/session';
 import Records from '@/shared/services/records';
-import RescueUnsavedEditsService from '@/shared/services/rescue_unsaved_edits_service';
 import { startCase } from 'lodash-es';
 
 export default {
@@ -21,15 +20,13 @@ export default {
     EventBus.$on('toggle-reply', (eventable, eventId) => {
       if (eventId === this.eventId) {
         if (this.show) {
-          if (RescueUnsavedEditsService.okToLeave(this.newComment)) {
-            this.show = false;
-          }
+          this.show = false;
         } else {
           let body = ""; 
           const op = eventable.author();
           if (op.id !== Session.user().id) {
             if (Session.defaultFormat() === 'html') {
-              body = `<p><span class=\"mention\" data-mention-id=\"${op.username}\" label=\"${op.name}\">@${op.nameOrUsername()}</span></p>`;
+              body = `<p><span class=\"mention\" data-mention-id=\"${op.username}\" label=\"${op.name}\">@${op.nameOrUsername()}</span>&thinsp;</p>`;
             } else {
               body = `@${op.username} `;
             }

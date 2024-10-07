@@ -14,16 +14,12 @@ export default
   },
 
   computed: {
+    hasSubscription() { return this.group.subscription },
     isLoggedIn() { return Session.isSignedIn(); },
-    isWasGift() {
-      return this.group.subscription.plan === 'was-gift';
-    },
-    isTrialing() {
-      return this.group.membersInclude(Session.user()) && (this.group.subscription.plan === 'trial');
-    },
-    isExpired() {
-      return this.isTrialing && !this.group.subscription.active;
-    },
+    isMember() { return this.group.membersInclude(Session.user()) },
+    isFree() {return this.group.subscription.plan === 'free' },
+    isTrial() { return this.group.subscription.plan === 'trial' },
+    isExpired() { return !this.group.subscription.active },
     daysRemaining() {
       return differenceInDays(parseISO(this.group.subscription.expires_at), new Date) + 1;
     },
@@ -34,16 +30,15 @@ export default
 };
 </script>
 <template lang="pug">
-v-alert(outlined color="primary" dense v-if="isTrialing")
+v-alert(outlined color="primary" dense v-if="hasSubscription && isLoggedIn && isMember && (isTrial || isExpired)")
   .d-flex.align-center
-    div.pr-1(v-if="isWasGift")
-      span(v-if="isExpired" v-html="$t('current_plan_button.was_gift_expired')")
-      span(v-if="!isExpired" v-html="$t('current_plan_button.was_gift_remaining', { days: daysRemaining } )")
-      space
-      span(v-html="$t('current_plan_button.was_gift_trial', {createdDate: createdDate })")
-    div.pr-1(v-if="!isWasGift")
+    div.pr-1(v-if="isTrial")
       span(v-if="!isExpired" v-t="{ path: 'current_plan_button.free_trial', args: { days: daysRemaining }}")
       span(v-if="isExpired" v-t="'current_plan_button.trial_expired'")
+    div.pr-1(v-if="isFree")
+      span(v-html="$t('current_plan_button.was_gift_expired_or_mistake')")
+    div.pr-1(v-if="!isFree && !isTrial")
+      span(v-html="$t('current_plan_button.subscription_ended')")
     v-spacer
     v-btn(
       color="primary"
