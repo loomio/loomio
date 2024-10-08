@@ -3,7 +3,6 @@ import 'vuetify/styles'
 // Composables
 import { createVuetify } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
-import { VDateInput } from 'vuetify/labs/VDateInput'
 
 
 const colors = {
@@ -22,9 +21,6 @@ const colors = {
 }
 
 export default createVuetify({
-  components: {
-    VDateInput,
-  },
   icons: {
     defaultSet: 'mdi',
     aliases,
