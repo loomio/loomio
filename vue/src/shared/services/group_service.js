@@ -56,8 +56,9 @@ export default new class GroupService {
         perform() {
           return openModal({
             component: 'GroupForm',
+            scrollable: true,
             props: {
-              group: group.clone()
+              group: group.clone(),
             }
           });
         }
