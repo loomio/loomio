@@ -34,7 +34,7 @@ en:
     task_placeholder: Enter a task and @mention someone to assign it
     add_due_date: Add due date
     task_updated_done: 'Task marked as done!'
-    task_updated_not_done: 'Task marked as not done'
+    task_updated_not_done: 'Task marked as incomplete'
     no_tasks_assigned: There are no tasks assigned to you
 
   templates:
