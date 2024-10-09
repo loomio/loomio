@@ -70,7 +70,7 @@ export default class EventModel extends BaseModel {
   }
 
   isPollEvent() {
-    ['Poll', 'Outcome', 'Stance'].includes(this.eventableType)
+    return ['Poll', 'Outcome', 'Stance'].includes(this.eventableType);
   }
 
   isUnread() {

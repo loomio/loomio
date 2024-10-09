@@ -33,8 +33,6 @@ export default {
   methods: {
     updateNewValue() {
       const val = parse(`${format(this.dateVal, "yyyy-MM-dd")} ${this.timeStr}`, "yyyy-MM-dd HH:mm", new Date);
-      console.log(parse(`${format(this.dateVal, "yyyy-MM-dd")} ${this.timeStr}`, "yyyy-MM-dd HH:mm", new Date));
-      console.log(isValid(val));
       if (!isValid(val)) { return; }
       this.newValue = val;
       this.$emit('update:modelValue', this.newValue);

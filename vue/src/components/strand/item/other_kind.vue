@@ -25,7 +25,6 @@ export default {
 
 <template lang="pug">
 .strand-other-kind.text-body-2
-  //- | hi {{event.model().poll().title}}
   span.text-medium-emphasis(v-html='headline')
   mid-dot.text-medium-emphasis
   time-ago.text-medium-emphasis(:date='event.createdAt')
