@@ -50,7 +50,7 @@ export default
     },
 
     saveAndClose() {
-      this.updateAttributes({dueOn: this.date, remind: this.remind});
+      this.updateAttributes({dueOn: this.date.toISOString().substring(0,10), remind: this.remind});
       this.modalOpen = false;
     },
 
@@ -77,14 +77,13 @@ node-view-wrapper(as="li")
     | 📅
     span.ml-1(v-if="node.attrs.dueOn") {{node.attrs.dueOn}}
     span.ml-1(v-else v-t="'tasks.add_due_date'")
-  v-dialog(contenteditable="false" ref="dialog" v-model="modalOpen" persistent width="290px")
-    v-card
-      v-card-title
-        span(v-t="'tasks.due_date'")
-        v-spacer
-        v-btn(icon @click="modalOpen = false")
+  v-dialog(contenteditable="false" ref="dialog" v-model="modalOpen" persistent width="340px")
+    v-card(:title="$t('tasks.due_date')")
+      p {{modalOpen}}
+      template(v-slot:append)
+        v-btn(icon variant="flat" @click="modalOpen = false")
           common-icon(name="mdi-close")
-      v-date-picker(v-model="date" no-title scrollable :show-current="false" :min="(new Date()).toISOString().substring(0,10)")
+      v-date-picker(v-model="date" hide-header scrollable :show-current="false" :min="(new Date())")
       v-card-text
         v-select(v-model="remind" :label="$t('tasks.send_reminder')" :items="reminders")
       v-card-actions
