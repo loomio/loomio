@@ -155,6 +155,7 @@ ja:
     no_tags_present: そのタグのスレッドは見つかりませんでした。別のものを選択してみてください
     no_tags_in_group: このグループにはまだカテゴリ タグがありません
     only_admins_can_edit_tags: 申し訳ありませんが、タグを作成、名前変更、削除できるのは %{group} の管理者だけです
+    pick_a_color: 色を選ぶ
   poll_types:
     proposal: 提案
     count: オプトイン
@@ -576,6 +577,9 @@ ja:
     close_sidebar: サイドバーを閉じる
     logo_title: ホームページ
     group_and_subgroups: "%{group} とサブグループ"
+    search_members_short: メンバーを検索
+    search_files_short: ファイルを検索
+    search_subgroups_short: サブグループを検索
   user_dropdown:
     pin_sidebar: サイドバーをピン留めする
     unpin_sidebar: サイドバーの固定を解除する
@@ -592,6 +596,9 @@ ja:
     sign_out: サインアウト
     beta_collab: "\U0001F9EA ベータ版機能が有効になりました!"
     outcomes: 結果
+    theme: テーマ
+    light: ライト
+    dark: 暗い
   membership_card:
     group_members: グループの人（仲間）たち
     discussion_members: スレッドメンバー
@@ -614,6 +621,7 @@ ja:
       group: グループから削除
       poll: "%{pollType} から削除"
     cancel_invitation: 招待をキャンセルする
+    view_profile: プロフィールを見る
   notification_models:
     discussion: 糸：
     comment: コメントイン
@@ -1690,6 +1698,10 @@ ja:
     prompt: 理由のプロンプト
     prompt_hint: 有権者に自分の理由を共有したり、自分の立場を再考したりするよう促す質問。オプション
     please_select_an_icon: アイコンを選択してください
+    thumb_up: 親指を立てる
+    thumb_down: 親指を下に向ける
+    thumb_sideways: 親指を横向きにする
+    hand_up: 手を挙げて
   poll_common:
     superseded: 置き換えられました
     outdated: 時代遅れ
@@ -2093,6 +2105,9 @@ ja:
     process_helptext: この投票の実行に使用されているプロセスに名前を付けて説明します。
     poll_type_updated: "%{poll_type} が更新されました"
     reminder_helptext: 投票が終了する前に「まもなく終了」通知を送信します。これは、他の人の投票結果を確認して自分の投票を再考する機会になるだけでなく、投票への参加を増やす方法にもなります。
+    deadline: 締め切り
+    how_much_time_to_vote: 投票にどれくらいの時間を割く予定ですか?
+    advanced_settings: 詳細設定
   poll_proposal_form:
     start_header: 提案を開始する
     edit_header: 提案の編集

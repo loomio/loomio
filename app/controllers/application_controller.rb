@@ -85,7 +85,6 @@ class ApplicationController < ActionController::Base
   def show
     resource = ModelLocator.new(resource_name, params).locate!
     @recipient = current_user
-    save_beta_setting!
     if current_user.can? :show, resource
       assign_resource
       @pagination = pagination_params
@@ -164,19 +163,13 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    save_beta_setting!
-
-    if use_beta_client?
-      render file: Rails.root.join('public/client3/index.html'), layout: false, status: status
-    else
-      render file: Rails.root.join('public/blient/index.html'), layout: false, status: status
-    end
+    render file: Rails.root.join('public/client3/index.html'), layout: false, status: status
   end
 
   def redirect_to(url, opts = {})
     return super unless url.is_a? String # GK: for now this override only covers cases where a string has been passed in, so it does not cover cases of a Hash or a Record being passed in
     host = URI(url).host
-    if ENV['USE_VUE'] && Rails.env.development? && host == "localhost"
+    if Rails.env.development? && host == "localhost"
       path = URI(url).path
       query = URI(url).query ? "?#{URI(url).query}" : ""
       super "http://localhost:8080#{path}#{query}"

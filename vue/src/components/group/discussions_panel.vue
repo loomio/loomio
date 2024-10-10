@@ -7,9 +7,12 @@ import PageLoader         from '@/shared/services/page_loader';
 import { debounce, orderBy, intersection, concat, uniq } from 'lodash-es';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  mixins: [WatchRecords, UrlFor],
   created() {
     this.onQueryInput = debounce(val => {
       this.$router.replace(this.mergeQuery({q: val}));
@@ -251,10 +254,10 @@ export default
 
 <template lang="pug">
 div.discussions-panel(v-if="group")
-  v-layout.py-3(align-center wrap)
+  .d-flex.align-center.flex-wrap.pt-4.pb-2
     v-menu
-      template(v-slot:activator="{ on, attrs }")
-        v-btn.mr-2.text-lowercase.discussions-panel__filters(v-on="on" v-bind="attrs" text)
+      template(v-slot:activator="{ props }")
+        v-btn.discussions-panel__filters.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
           span(v-t="{path: filterName($route.query.t), args: {count: unreadCount}}")
           common-icon(name="mdi-menu-down")
       v-list
@@ -268,33 +271,47 @@ div.discussions-panel(v-if="group")
           v-list-item-title(v-t="{path: 'discussions_panel.unread', args: { count: unreadCount }}")
 
     v-menu(offset-y)
-      template(v-slot:activator="{ on, attrs }")
-        v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
+      template(v-slot:activator="{ props }")
+        v-btn.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
           span(v-if="$route.query.tag") {{$route.query.tag}}
           span(v-else v-t="'loomio_tags.tags'")
           common-icon(name="mdi-menu-down")
-      v-sheet.pa-1
+      v-sheet.pa-1.max-width-800
         tags-display(:tags="group.tagNames()" :group="group" :show-counts="!!group.parentId" :show-org-counts="!group.parentId")
-    v-text-field.mr-2.flex-grow-1(
+    v-btn.text-transform-none.text-medium-emphasis(
+      variant="tonal"
+      @click="openSearchModal"
+    )
+      common-icon.mr-1(name="mdiMagnify")
+      span(v-t="'common.action.search'")
+    v-spacer
+    v-btn.discussions-panel__new-thread-button(
+      variant="elevated"
+      v-if='canStartThread'
+      :to="'/thread_templates/?group_id='+group.id"
+      color='primary'
+    )
+      span(v-t="'navbar.start_thread'")
+
+    //- v-text-field.mr-2.flex-grow-1(
       v-model="dummyQuery"
-      clearable solo hide-details
+      clearable hide-details
+      density="compact"
+      elevation="0"
+      variant="solo-filled"
       @click="openSearchModal"
       @change="openSearchModal"
       @keyup.enter="openSearchModal"
       @click:append="openSearchModal"
       :placeholder="$t('navbar.search_threads', {name: group.name})"
-      :append-icon="mdiMagnify")
-    v-btn.discussions-panel__new-thread-button(
-      v-if='canStartThread'
-      v-t="'navbar.start_thread'"
-      :to="'/thread_templates/?group_id='+group.id"
-      color='primary')
+      :prepend-inner-icon="mdiMagnify")
 
-  v-alert(color="info" text outlined v-if="isMember && noThreads")
+  v-alert(color="info" variant="tonal" v-if="isMember && noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
-    p.px-4(v-t="'discussions_panel.lets_start_a_thread'")
+    v-card-text
+      p(v-t="'discussions_panel.lets_start_a_thread'")
 
-  v-card.discussions-panel(v-else outlined)
+  v-card.discussions-panel(v-else outlined elevation=1)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
@@ -303,7 +320,7 @@ div.discussions-panel(v-if="group")
           p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
           p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
-          v-list.thread-previews(two-line)
+          v-list.thread-previews(lines="two")
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions", :key="thread.id", :thread="thread" group-page)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions", :key="thread.id", :thread="thread" group-page)
 

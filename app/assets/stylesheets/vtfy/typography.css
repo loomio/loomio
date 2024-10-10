@@ -39,7 +39,7 @@ kbd{
 .theme--light.heading{
     color:rgba(0,0,0,.87)
 }
-.theme--dark.heading{
+.v-theme--dark.heading{
     color:#fff
 }
 ol,ul{

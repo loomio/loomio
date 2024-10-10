@@ -64,6 +64,10 @@ import {
   mdiEye,
   mdiEyeOff,
   mdiFaceAgent,
+  mdiFile,
+  mdiFilePdfBox,
+  mdiFileWordBox,
+  mdiFileVideo,
   mdiFlagCheckered,
   mdiFolderSwapOutline,
   mdiFormatAlignCenter,
@@ -134,6 +138,7 @@ import {
   mdiTableRowPlusAfter,
   mdiTableRowPlusBefore,
   mdiTableRowRemove,
+  mdiTag,
   mdiTagOutline,
   mdiThumbsUpDown,
   mdiTranslate,
@@ -150,17 +155,13 @@ export default {
   props: {
     color: {
       type: String,
+      default: undefined,
+    },
+    density:  {
+      type: String,
       default: undefined
     },
-    dense:  {
-      type: Boolean,
-      default: false
-    },
     disabled:  {
-      type: Boolean,
-      default: false
-    },
-    large:  {
       type: Boolean,
       default: false
     },
@@ -178,21 +179,9 @@ export default {
     },
     size: {
       type: [Number, String],
-      default: undefined
-    },
-    small: {
-      type: Boolean,
-      default: false
+      default: 'default'
     },
     tag: String,
-    XLarge:  {
-      type: Boolean,
-      default: false
-    },
-    XSmall: {
-      type: Boolean,
-      default: false
-    },
     name: String
   },
 
@@ -260,6 +249,10 @@ export default {
       mdiEye,
       mdiEyeOff,
       mdiFaceAgent,
+      mdiFile,
+      mdiFilePdfBox,
+      mdiFileWordBox,
+      mdiFileVideo,
       mdiFlagCheckered,
       mdiFolderSwapOutline,
       mdiFormatAlignCenter,
@@ -330,6 +323,7 @@ export default {
       mdiTableRowPlusAfter,
       mdiTableRowPlusBefore,
       mdiTableRowRemove,
+      mdiTag,
       mdiTagOutline,
       mdiThumbsUpDown,
       mdiTranslate,
@@ -344,23 +338,34 @@ export default {
   },
 
   methods: {
-    iconSVG() { return this[camelCase(this.name)] }
+    iconSVG() {
+      if (this.name) {
+        return this[camelCase(this.name)]
+      } else {
+        return undefined
+      }
+    }
+  },
+
+  computed: {
+    styleColor() {
+      if (this.color && this.color.startsWith("#")) {
+        return {color: this.color};
+      }
+    }
   }
 };
 </script>
 
 <template lang="pug">
 v-icon(
-  color="color"
-  :dense="dense"
-  :large="large"
+  :class="{'text-medium-emphasis': color == undefined}"
+  :color="color"
+  :density="density"
   :left="left"
   :light="light"
   :right="right"
-  :small="small"
   :tag="tag"
-  :x-large="XLarge"
-  :x-small="XSmall"
   :size="size"
 ) {{ iconSVG() }}
 </template>
