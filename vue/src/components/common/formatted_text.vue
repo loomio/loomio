@@ -229,24 +229,18 @@ img.emoji
     list-style: none
     padding: 0
 
-    // task item is
-    // li
-    //   label
-    //     input
-    //     span
-
     li
       display: flex
       align-items: center
+      justify-content: flex-start
+
+      .v-selection-control
+        flex-grow: 0
 
       input[type="checkbox"]
         margin-right: 8px
 
-      div
-        display: inline-block
       p
-        flex-shrink: 10000
-        display: inline-block
         margin: 0
 
     li[data-due-on]:not([data-due-on=""])::after

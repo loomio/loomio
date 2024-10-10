@@ -31,7 +31,7 @@ en:
     2_day_before: 2 days before
     3_day_before: 3 days before
     7_day_before: 7 days before
-    task_placeholder: Enter a task and @mention someone to assign it
+    task_placeholder: Enter a task and {'@'}mention someone to assign it
     add_due_date: Add due date
     task_updated_done: 'Task marked as done!'
     task_updated_not_done: 'Task marked as incomplete'
@@ -1249,7 +1249,7 @@ en:
       quiet: Don't email about this group. Activity will be displayed on the dashboard.
       quiet_aria_description: Your notification volume for this group is set to Quiet. You won't be emailed about activity in this group. Group activity will be displayed on your Dashboard.
       quiet_message: 'You won''t be emailed about activity in "%{name}".'
-      mute: Hide this group from the dashboard and do not notify unless @mentioned.
+      mute: Hide this group from the dashboard and do not notify unless {'@'}mentioned.
       mute_aria_description: Your notification volume for this group is set to Mute. You won't be emailed unless someone mentions you, and group activity will not be displayed on your Dashboard.
       mute_message: '"%{name}" has been removed from your dashboard.'
     privacy:
@@ -1653,7 +1653,7 @@ en:
       explanation_html: |
         Muting is a way to hide or silence threads you're not interested in.
         Muting means you won't see it in <strong>Recent</strong> or <strong>Unread</strong>, and you won't be notified about activity in that thread, like proposals.
-        You'll only be alerted if someone <strong>@mentions</strong> your name.
+        You'll only be alerted if someone <strong>{'@'}mentions</strong> your name.
       instructions: 'To mute a thread, hover over it and click the mute icon.'
       see_muted_html: 'To see your muted threads, click <strong>"Muted"</strong>. You can unmute by hovering and clicking the same icon.'
     filtering:

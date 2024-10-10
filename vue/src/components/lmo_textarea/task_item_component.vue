@@ -71,7 +71,7 @@ export default
 <template lang="pug">
 node-view-wrapper(as="li")
   //- input.flex-shrink-0(style="z-index: 2300" type="checkbox" :checked="node.attrs.checked" @change="onCheckboxChange")
-  v-simple-checkbox(contenteditable="false" color="accent" :ripple="false" type="checkbox" :value="checked" @click="onCheckboxChange")
+  v-checkbox-btn(contenteditable="false" color="accent" :ripple="false" type="checkbox" :value="checked" @click="onCheckboxChange")
   node-view-content(as="span" :class="{'task-item-text': true, 'task-item-is-empty': isEmpty}" :data-placeholder="$t('tasks.task_placeholder')")
   v-chip.ml-2(v-if="hasMention" contenteditable="false" color="primary" size="x-small" @click="openModal")
     | 📅

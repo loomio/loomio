@@ -473,7 +473,7 @@ div
             common-icon(size="x-small" name="mdi-format-list-bulleted")
           v-btn(size="x-small" icon variant="text" v-if="expanded" @click='editor.chain().toggleOrderedList().focus().run()', :outlined="editor.isActive('orderedList')",  :title="$t('formatting.number_list')")
             common-icon(size="x-small" name="mdi-format-list-numbered")
-          //- v-btn(size="x-small" icon variant="text" v-if="expanded" @click='editor.chain().toggleTaskList().focus().run()', :outlined="editor.isActive('taskList')",  :title="$t('formatting.task_list')")
+          v-btn(size="x-small" icon variant="text" v-if="expanded" @click='editor.chain().toggleTaskList().focus().run()', :outlined="editor.isActive('taskList')",  :title="$t('formatting.task_list')")
             common-icon(size="x-small" name="mdi-checkbox-marked-outline")
 
           text-highlight-btn(v-if="expanded", :editor="editor")
