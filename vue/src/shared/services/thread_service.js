@@ -105,7 +105,10 @@ export default new class ThreadService {
         dockDisplay: 'icon',
         dock: 1,
         canPerform() { return AbilityService.canAddComment(discussion); },
-        perform() { return vm.$vuetify.goTo('#add-comment'); }
+        perform() {
+          document.querySelector('#add-comment').scrollIntoView();
+          document.querySelector('#add-comment').focus();
+        }
       },
 
       edit_thread: {
@@ -145,7 +148,8 @@ export default new class ThreadService {
           return openModal({
             component: 'AnnouncementHistory',
             props: {
-              model: discussion
+              model: discussion,
+              persistent: false
             }
           });
         },
@@ -327,14 +331,14 @@ export default new class ThreadService {
       }));
     } else {
       return thread.close().then(() => {
-        return Flash.success("discussion.closed.closed", {}, 'undo', () => this.reopen(thread));
+        return Flash.success("discussion.closed.closed");
       });
     }
   }
 
   reopen(thread) {
     return thread.reopen().then(() => {
-      return Flash.success("discussion.closed.reopened", {}, 'undo', () => this.close(thread));
+      return Flash.success("discussion.closed.reopened");
     });
   }
 

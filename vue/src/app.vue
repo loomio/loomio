@@ -9,6 +9,8 @@ import { each, compact, truncate } from 'lodash-es';
 import openModal from '@/shared/helpers/open_modal';
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
 
+import { useTheme } from 'vuetify';
+
 export default {
   mixins: [AuthModalMixin],
   data() {
@@ -16,24 +18,18 @@ export default {
   },
 
   created() {
-    if (this.$route.query.locale) { Session.updateLocale(this.$route.query.locale); }
+    const theme = useTheme();
 
-    if (Session.user().experiences.darkMode != null) {
-      this.$vuetify.theme.dark = Session.user().experiences['darkMode'];
+
+    if (Session.user().experiences.theme != null) {
+      theme.global.name.value = Session.user().experiences['theme']
     } else {
-      this.$vuetify.theme.dark = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      theme.global.name.value = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
     }
-
-    return each(AppConfig.theme.vuetify, (value, key) => {
-      if (value) { this.$vuetify.theme.themes.light[key] = value; }
-      if (value) { this.$vuetify.theme.themes.dark[key] = value; }
-      return true;
-    });
   },
 
   mounted() {
     initLiveUpdate();
-    if (!Session.isSignedIn() && this.shouldForceSignIn()) { this.openAuthModal(true); }
     EventBus.$on('currentComponent',     this.setCurrentComponent);
     EventBus.$on('openAuthModal',     () => this.openAuthModal());
     EventBus.$on('pageError', error => { return this.pageError = error; });
@@ -45,12 +41,13 @@ export default {
   },
 
   destroyed() {
-    return closeLiveUpdate();
+    closeLiveUpdate();
   },
 
   watch: {
     '$route'() {
-      return this.pageError = null;
+      if (!Session.isSignedIn() && this.shouldForceSignIn()) { this.openAuthModal(true); }
+      this.pageError = null;
     }
   },
 
@@ -72,12 +69,12 @@ export default {
 
       switch (this.$route.path) {
         case '/email_preferences': return (Session.user().restricted == null);
-        case '/dashboard':      
-             case '/inbox':          
-             case '/profile':        
-             case '/polls':          
-             case '/p/new':      
-             case '/g/new': return true;
+        case '/dashboard': return true;
+        case '/inbox':
+        case '/profile':
+        case '/polls':
+        case '/p/new':
+        case '/g/new': return true;
       }
     }
   }
@@ -88,12 +85,11 @@ export default {
 <template lang="pug">
 v-app.app-is-booted
   system-notice
-  navbar
   sidebar
+  navbar
   router-view(v-if="!pageError")
   common-error(v-if="pageError" :error="pageError")
   v-spacer
-  common-footer
   modal-launcher
   common-flash
 </template>
@@ -103,6 +99,20 @@ v-app.app-is-booted
 @import '@/css/roboto.css'
 @import '@/css/thumbicons.css'
 @import '@/css/print.scss'
+
+.v-card.group-form > .v-card__content
+  overflow: visible!important
+
+.v-card.discussion-form,
+.v-card.thread-template-form,
+.v-card.thread-template-form .v-card-item__content,
+.v-card.discussion-form .v-card-item__content,
+.v-card.poll-common-modal,
+.v-card.poll-common-modal .v-card-item__content
+  overflow: visible!important
+
+.text-on-surface
+  color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity))
 
 .v-application .text-body-3
   font-size: 0.9375rem !important
@@ -114,10 +124,15 @@ v-app.app-is-booted
   letter-spacing: normal !important
   font-weight: 400
 
+.text-transform-none
+  text-transform: none
+  
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
+
 a
   text-decoration: none
+  color: rgb(var(--v-theme-anchor))
 
 .lmo-relative
   position: relative
@@ -125,6 +140,10 @@ a
 .text-almost-black
   color: rgba(0, 0, 0, 0.87)
   
+.max-width-320
+  max-width: 320px !important
+.max-width-400
+  max-width: 400px !important
 .max-width-640
   max-width: 640px !important
 .max-width-800

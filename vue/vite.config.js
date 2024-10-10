@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite';
 import path from 'path';
-import vue from '@vitejs/plugin-vue2'
+import vue from '@vitejs/plugin-vue'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import envCompatible from 'vite-plugin-env-compatible';
-// import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
-import ViteYaml from '@modyfi/vite-plugin-yaml';
-import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
+import yaml from '@originjs/vite-plugin-content';
 import Components from 'unplugin-vue-components/vite';
 import { splitVendorChunkPlugin } from 'vite'
+import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
 
 import LoomioComponents from './src/components.js';
 
@@ -21,19 +21,7 @@ function LoomioVueResolver() {
   };
 }
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  // css: {
-  //   preprocessorOptions: {
-  //     sass: {
-  //       additionalData: [
-  //         '@import "./src/css/variables"',
-  //         '@import "vuetify/src/styles/settings/_variables"',
-  //         '', // end with newline
-  //       ].join('\n'),
-  //     },
-  //   },
-  // },
   server: {
     warmup: {
       clientFiles: ['./src/app.vue'],
@@ -80,26 +68,28 @@ export default defineConfig({
   plugins: [
     splitVendorChunkPlugin(),
     vue(),
+    vuetify({
+      autoImport: true
+    }),
     Components({
       directoryAsNamespace: true,
       resolvers: [
         LoomioVueResolver(),
-        VuetifyResolver(),
       ],
     }),
-    // viteCommonjs(),
+    viteCommonjs(),
     envCompatible(),
-    ViteYaml(),
+    yaml(),
   ],
   build: {
     sourcemap: true,
     emptyOutDir: true,
-    outDir: '../public/blient',
+    outDir: '../public/client3'
   },
   experimental: {
     renderBuiltUrl(filename, { hostId, hostType, type } ) {
       // { hostId: string, hostType: 'js' | 'css' | 'html', type: 'public' | 'asset' }
-      return '/blient/' + filename;
+      return '/client3/' + filename;
     }
   }
 })

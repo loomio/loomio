@@ -89,7 +89,6 @@ group :test do
   gem 'rspec-rails', '~> 7.0.1'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
-  gem 'rspec-activemodel-mocks'
   gem 'database_cleaner-active_record'
   gem 'database_cleaner-redis'
 end

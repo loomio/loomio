@@ -156,6 +156,7 @@ sv:
     no_tags_present: Inga trådar hittades med den taggen! Försök att välja en annan
     no_tags_in_group: Den här gruppen har inga kategoritaggar ännu
     only_admins_can_edit_tags: Tyvärr, bara administratörer för %{group} kan skapa, byta namn på eller ta bort taggar
+    pick_a_color: Välj en färg
   poll_types:
     proposal: förslag
     count: opt-in
@@ -577,6 +578,9 @@ sv:
     close_sidebar: Stäng sidofältet
     logo_title: Hemsida
     group_and_subgroups: "%{group} och undergrupper"
+    search_members_short: Sök medlemmar
+    search_files_short: Sök filer
+    search_subgroups_short: Sök undergrupper
   user_dropdown:
     pin_sidebar: Fäst sidofältet
     unpin_sidebar: Lossa sidofältet
@@ -593,6 +597,9 @@ sv:
     sign_out: Logga ut
     beta_collab: "\U0001F9EA Betafunktioner aktiverade!"
     outcomes: Resultat
+    theme: Tema
+    light: Ljus
+    dark: Mörk
   membership_card:
     group_members: Gruppmedlemmar
     discussion_members: Trådmedlemmar
@@ -615,6 +622,7 @@ sv:
       group: Ta bort från grupp
       poll: Ta bort från %{pollType}
     cancel_invitation: Avbryt inbjudan
+    view_profile: Visa profil
   notification_models:
     discussion: 'tråd:'
     comment: kommentera in
@@ -1691,6 +1699,10 @@ sv:
     meaning_hint: En mening eller två som förklarar vad det betyder att välja detta alternativ. Frivillig
     prompt: Orsaksuppmaning
     prompt_hint: En fråga för att få väljarna att dela med sig av sina resonemang eller ompröva sin ståndpunkt. Frivillig
+    thumb_up: Tummen upp
+    thumb_down: Tummen ner
+    thumb_sideways: Tummen i sidled
+    hand_up: Handen upp
   poll_common:
     superseded: Ersatt
     outdated: Föråldrad
@@ -2094,6 +2106,9 @@ sv:
     hide_results_description: Om du vill att folk ska rösta utan att veta hur andra har röstat kan du dölja resultatet av omröstningen.
     process_helptext: Namnge och beskriv processen som används för att köra denna omröstning.
     reminder_helptext: Skicka ett meddelande "Stänger snart" innan omröstningen stänger. Detta kan vara en möjlighet för människor att se hur andra har röstat och ompröva sin egen röst, eller bara ett sätt att öka deltagandet i omröstningen.
+    deadline: Tidsfrist
+    how_much_time_to_vote: Hur mycket tid kommer du att ge folk att rösta?
+    advanced_settings: Avancerade inställningar
   poll_proposal_form:
     start_header: Starta förslag
     edit_header: Redigera förslag

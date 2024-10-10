@@ -156,6 +156,7 @@ pl:
     no_tags_present: Nie znaleziono wątków z tym tagiem! Spróbuj wybrać inny
     no_tags_in_group: Ta grupa nie ma jeszcze tagów kategorii
     only_admins_can_edit_tags: Przepraszamy, tylko administratorzy grupy %{group} mogą tworzyć, zmieniać nazwy i usuwać tagi
+    pick_a_color: Wybierz kolor
   poll_types:
     proposal: propozycja
     count: wyrazić zgodę
@@ -581,6 +582,9 @@ pl:
     close_sidebar: Zamknij panel boczny
     logo_title: Strona główna
     group_and_subgroups: "%{group} i podgrupy"
+    search_members_short: Szukaj członków
+    search_files_short: Szukaj plików
+    search_subgroups_short: Wyszukaj podgrupy
   user_dropdown:
     pin_sidebar: Przypnij pasek boczny
     unpin_sidebar: Odepnij pasek boczny
@@ -597,6 +601,9 @@ pl:
     sign_out: Wyloguj się
     beta_collab: "\U0001F9EA Funkcje beta włączone!"
     outcomes: Wyniki
+    theme: Temat
+    light: Światło
+    dark: Ciemny
   membership_card:
     group_members: Osoby w tej grupy
     discussion_members: Osoby w tym wątku
@@ -619,6 +626,7 @@ pl:
       group: Usuń z grupy
       poll: Usuń z %{pollType}
     cancel_invitation: Anuluj zaproszenie
+    view_profile: Wyświetl profil
   notification_models:
     discussion: 'wątek:'
     comment: skomentuj w
@@ -1719,6 +1727,10 @@ pl:
     meaning_hint: Zdanie wyjaśniające, co oznacza wybranie tej opcji
     prompt: Monit o przyczynę
     prompt_hint: Pytanie mające na celu zachęcenie wyborców do przedstawienia uzasadnienia lub ponownego rozważenia swojego stanowiska.
+    thumb_up: Kciuk w górę
+    thumb_down: Kciuk w dół
+    thumb_sideways: Kciuk na bok
+    hand_up: Ręka w górę
   poll_common:
     superseded: zastąpione
     outdated: Przestarzały
@@ -2124,6 +2136,9 @@ pl:
     hide_results_description: Jeśli chcesz, aby ludzie głosowali, nie wiedząc, jak głosowali inni, możesz ukryć wyniki ankiety.
     process_helptext: Nazwij i opisz proces, który jest używany do uruchomienia tej ankiety.
     reminder_helptext: Wyślij powiadomienie „Wkrótce zamknięcie” przed zamknięciem ankiety. Może to być okazja dla ludzi, aby zobaczyć, jak głosowali inni i przemyśleć swój głos, lub po prostu sposób na zwiększenie udziału w ankiecie.
+    deadline: Termin ostateczny
+    how_much_time_to_vote: Ile czasu dasz ludziom na zagłosowanie?
+    advanced_settings: Ustawienia zaawansowane
   poll_proposal_form:
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję
