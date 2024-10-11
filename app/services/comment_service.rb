@@ -2,6 +2,8 @@ class CommentService
 
   def self.create(comment:, actor:)
     actor.ability.authorize! :create, comment
+    actor.ability.authorize! :announce, comment.discussion if comment.mentioned_audiences.include? Audience.discussion.name
+    actor.ability.authorize! :notify, comment.group if comment.mentioned_audiences.include? Audience.group.name
     comment.author = actor
     return false unless comment.valid?
     comment.save!

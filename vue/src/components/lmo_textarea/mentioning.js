@@ -1,6 +1,7 @@
 import {sortBy, filter, uniq, map, debounce} from 'lodash-es';
 import Records from '@/shared/services/records';
 import getCaretCoordinates from 'textarea-caret';
+import AbilityService from '@/shared/services/ability_service';
 
 export var CommonMentioning = {
   data() {
@@ -30,10 +31,7 @@ export var CommonMentioning = {
 
   methods: {
     findMentionable() {
-      const audiences = [
-                          { id: 'discussion', translation: this.$t('mentioning.discussion'), audience: true },
-                          { id: 'group', translation: this.$t('mentioning.group'), audience: true }
-                        ].filter(audience => audience.translation.startsWith(this.query))
+      const audiences = this.audiences().filter(audience => audience.translation.startsWith(this.query))
       this.mentionableUserIds = uniq(this.mentionableUserIds.concat(this.model.participantIds()));
       const unsorted = filter(Records.users.collection.chain().find({id: {$in: this.mentionableUserIds}}).data(), u => {
         return ((u.name || '').toLowerCase().startsWith(this.query) ||
@@ -41,6 +39,18 @@ export var CommonMentioning = {
         (u.name || '').toLowerCase().includes(` ${this.query}`));
       });
       this.mentionable = audiences.concat(sortBy(unsorted, u => 0 - Records.events.find({actorId: u.id}).length));
+    },
+
+    audiences(){
+      let list = []
+
+      if( AbilityService.canAnnounceDiscussion(this.model.discussion()) )
+        list.push({ id: 'discussion', translation: this.$t('mentioning.discussion') })
+
+      if( AbilityService.canNotifyGroup(this.model.group()) )
+        list.push({ id: 'group', translation: this.$t('mentioning.group') })
+
+      return list.map((item) => ({ ...item, audience: true }));
     }
   }
 };
