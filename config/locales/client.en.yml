@@ -494,6 +494,8 @@ en:
   mentioning:
     group: group
     discussion: thread
+    group_message: Notify everyone in the group
+    discussion_message: Notify everyone in the thread
 
   close_explanation_modal:
     aria_label: Close thread

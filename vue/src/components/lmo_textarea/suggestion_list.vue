@@ -26,6 +26,9 @@ v-card.suggestion-list(outlined :elevation=8 v-show='query' ref='suggestions' :s
           | {{ mention.audience ? mention.translation : mention.name }}
           span.text--secondary(v-if="mention.id == currentUser.id") &nbsp; ({{ $t('common.you') }})
           span.text--secondary(v-if="showUsername") &nbsp; {{ "@" + (mention.audience ? mention.translation : mention.username) }}
+          span.text--secondary(v-if="mention.message")
+            br
+            em {{ mention.message }}
   v-card-subtitle(v-if='mentionable.length == 0' v-t="'common.no_results_found'")
   .d-flex.justify-center
     v-progress-circular(v-if="loading" indeterminate color='primary' size='24' width="2")

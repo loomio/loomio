@@ -45,10 +45,18 @@ export var CommonMentioning = {
       let list = []
 
       if( AbilityService.canAnnounceDiscussion(this.model.discussion()) )
-        list.push({ id: 'discussion', translation: this.$t('mentioning.discussion') })
+        list.push({
+                    id: 'discussion',
+                    translation: this.$t('mentioning.discussion'),
+                    message: this.$t('mentioning.discussion_message')
+                  })
 
       if( AbilityService.canNotifyGroup(this.model.group()) )
-        list.push({ id: 'group', translation: this.$t('mentioning.group') })
+        list.push({
+                    id: 'group',
+                    translation: this.$t('mentioning.group'),
+                    message: this.$t('mentioning.group_message')
+                  })
 
       return list.map((item) => ({ ...item, audience: true }));
     }
