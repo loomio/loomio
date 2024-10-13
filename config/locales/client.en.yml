@@ -2924,6 +2924,7 @@ en:
     password: Password
     access_token: Access Token
     add_chatbot: Add chatbot
+    webex: Webex
     matrix: Matrix
     slack: Slack
     discord: Discord

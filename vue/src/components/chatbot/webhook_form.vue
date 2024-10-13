@@ -17,7 +17,8 @@ export default {
         {title: this.$t('webhook.formats.markdown'), value: "markdown"},
         {title: this.$t('webhook.formats.microsoft'), value: "microsoft"},
         {title: this.$t('webhook.formats.slack'), value: "slack"},
-        {title: this.$t('webhook.formats.discord'), value: "discord"}
+        {title: this.$t('webhook.formats.discord'), value: "discord"},
+        {title: this.$t('webhook.formats.webex'), value: "webex"}
         ]
     };
   },
@@ -61,6 +62,7 @@ export default {
       case "discord": return "https://help.loomio.com/en/user_manual/groups/integrations/discord";
       case "microsoft": return "https://help.loomio.com/en/user_manual/groups/integrations/microsoft_teams";
       case "mattermost": return "https://help.loomio.com/en/user_manual/groups/integrations/mattermost";
+      case "webex": return "https://help.loomio.com/en/user_manual/groups/integrations/webex";
       }
     }
   }

@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       chatbots: [],
-      kinds: ['matrix', 'slack', 'discord', 'mattermost', 'teams'],
+      kinds: ['matrix', 'slack', 'discord', 'mattermost', 'teams', 'webex'],
       loading: true,
       addActions: {},
       icons: {
@@ -23,7 +23,8 @@ export default {
         slack: 'mdi-slack',
         discord: 'mdi-discord',
         mattermost: 'mdi-chat-processing',
-        teams: 'mdi-microsoft-teams'
+        teams: 'mdi-microsoft-teams',
+        webex: 'webex'
       }
     };
   },

@@ -99,7 +99,26 @@ export default new class ChatbotService {
             }
           });
         }
-      }
+      },
+
+      webex: {
+        name: 'chatbot.webex',
+        icon: 'webex',
+        menu: true,
+        canPerform() { return true; },
+        perform() {
+          return openModal({
+            component: 'ChatbotWebhookForm',
+            props: {
+              chatbot: Records.chatbots.build({
+                groupId: group.id,
+                kind: "webhook",
+                webhookKind: "webex"
+              })
+            }
+          });
+        }
+      },
     };
   }
 };
