@@ -86,7 +86,7 @@
     "vuetify": "2.6.15",
     "y-indexeddb": "^9.0.12",
     "y-prosemirror": "^1.2.12",
-    "yjs": "^13.6.19"
+    "yjs": "^13.6.20"
   },
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "latest",
