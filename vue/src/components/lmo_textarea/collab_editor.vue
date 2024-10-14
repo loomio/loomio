@@ -241,7 +241,7 @@ export default
       return this.model[`${this.field}Format`];
     },
 
-    reasonTooLong() { 
+    reasonTooLong() {
       return this.editor.getCharacterCount() >= this.maxLength;
     }
   },
@@ -252,7 +252,7 @@ export default
 
   methods: {
     resetDraft(content) {
-      this.editor.commands.setContent(content); 
+      this.editor.commands.setContent(content);
     },
 
     openRecordVideoModal() {
@@ -516,7 +516,7 @@ div
       slot(name="actions")
 
   link-previews(:model="model", :remove="removeLinkPreview")
-  suggestion-list(:query="query", :loading="fetchingMentions", :mentionable="mentionable", :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex", @select-user="selectUser")
+  suggestion-list(:query="query", :loading="fetchingMentions", :mentionable="mentionable", :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex", @select-mentionable="selectMentionable")
   files-list(:files="files", v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")
