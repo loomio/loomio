@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '3.2.4'
 gem 'rails', '7.0.8.1'
-gem 'rack', '2.2.9'
+gem 'rack', '2.2.10'
 gem 'uri', '0.13.1'
 gem 'rake'
 gem 'pg'
