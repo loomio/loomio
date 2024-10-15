@@ -186,6 +186,11 @@ export default new class GroupService {
           return AbilityService.canRemoveMembership(membership);
         },
         perform() {
+          let returnUrl = '/dashboard'
+          if (membership.group().parentId) {
+            returnUrl = LmoUrlService.group(membership.group().parent())
+          }
+
           return openModal({
             component: 'ConfirmModal',
             props: {
@@ -200,7 +205,7 @@ export default new class GroupService {
                   confirm:  'leave_group_form.submit',
                   flash:    'group_page.messages.leave_group_success'
                 },
-                redirect: '/dashboard'
+                redirect: returnUrl
               }
             }
           });
