@@ -221,6 +221,10 @@ export default new class GroupService {
         },
         perform() {
           const confirmText = group.handle || group.name.trim();
+          let returnUrl = '/dashboard'
+          if (membership.group().parentId) {
+            returnUrl = LmoUrlService.group(membership.group().parent())
+          }
           return openModal({
             component: 'ConfirmModal',
             props: {
@@ -234,7 +238,7 @@ export default new class GroupService {
                   flash:    'delete_group_modal.success',
                   submit:   'delete_group_modal.title'
                 },
-                redirect:   '/dashboard'
+                redirect:   returnUrl
               }
             }
           });
