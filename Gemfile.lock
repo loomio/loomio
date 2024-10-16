@@ -123,11 +123,11 @@ GEM
     bcrypt (3.1.20)
     bigdecimal (3.1.8)
     bindex (0.8.1)
-    blazer (3.0.4)
+    blazer (3.1.0)
       activerecord (>= 6.1)
       chartkick (>= 5)
       csv
-      railties (>= 6.1)
+      railties (>= 7)
       safely_block (>= 0.4)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
@@ -606,7 +606,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.0)
 
 PLATFORMS
   x86_64-darwin-21
