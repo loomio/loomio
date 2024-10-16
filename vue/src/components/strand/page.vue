@@ -68,7 +68,7 @@ export default {
         if (this.discussion.lastSequenceId()) {
           return `.sequenceId-${this.discussion.lastSequenceId()}`;
         } else {
-          return "#add-comment";
+          return '.context-panel';
         }
       }
 
