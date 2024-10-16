@@ -13,7 +13,6 @@ export default {
       mine: [],
       more: [],
       canStartSubgroup: false,
-      showMore: false,
     }
   },
 
@@ -24,7 +23,6 @@ export default {
         this.mine = this.organization.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user()));
         this.more = this.organization.subgroups().filter(g => AbilityService.canViewGroup(g) && !g.membershipFor(Session.user()));
         this.canStartSubgroup = AbilityService.canCreateSubgroups(this.organization);
-        this.showMore = !this.mine.length
       }
     });
   },
@@ -58,17 +56,11 @@ template(v-if="mine.length")
         span ({{openCounts[group.id]}})
 
 template(v-if="more.length")
-  v-list-item(nav slim @click="showMore = !showMore")
-    template(v-slot:append)
-      common-icon(v-if="showMore" name="mdi-chevron-up")
-      common-icon(v-else name="mdi-chevron-down")
-    v-list-item-title
-      v-list-subheader.mx-n2
-        span(v-if="mine.length" v-t="'group_page.more_subgroups'")
-        span(v-else v-t="'group_page.subgroups'")
+  v-list-subheader
+    span(v-if="mine.length" v-t="'group_page.more_subgroups'")
+    span(v-else v-t="'group_page.subgroups'")
 
-
-  v-list-item(v-if="showMore" v-for="group in more" nav slim :to="urlFor(group)")
+  v-list-item(v-for="group in more" nav slim :to="urlFor(group)")
     v-list-item-title
       span {{group.name}}
       template(v-if='openCounts[group.id]')
