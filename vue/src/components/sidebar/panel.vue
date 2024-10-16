@@ -10,12 +10,17 @@ import PlausibleService from '@/shared/services/plausible_service';
 import Flash from '@/shared/services/flash';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
+import FormatDate from '@/mixins/format_date';
 
 import { map, sum, compact } from 'lodash-es';
 import { useTheme } from 'vuetify';
+import SidebarOrganizations from '@/components/sidebar/organizations';
+import SidebarSubgroups from '@/components/sidebar/subgroups';
+import SidebarUserDropdown from '@/components/sidebar/user_dropdown';
 
 export default {
-  mixins: [WatchRecords, UrlFor],
+  components: {SidebarOrganizations, SidebarSubgroups, SidebarUserDropdown},
+  mixins: [WatchRecords, UrlFor, FormatDate],
   data() {
     return {
       organization: null,
@@ -27,8 +32,8 @@ export default {
       otherGroups: [],
       organizations: [],
       unreadCounts: {},
-      expandedGroupIds: [],
       openGroups: [],
+      openCounts: {},
       unreadDirectThreadsCount: 0,
     };
   },
@@ -40,7 +45,7 @@ export default {
       this.group = data.group;
       if (this.group) {
         this.organization = data.group.parentOrSelf();
-        this.expandedGroupIds = [this.organization.id];
+        this.waitForThenScrollTo('#current-organization');
       } else {
         this.organization = null;
       }
@@ -50,9 +55,9 @@ export default {
       collections: ['groups', 'memberships', 'discussions'],
       query: store => {
         this.unreadDirectThreadsCount =
-        Records.discussions.collection.chain().
-        find({groupId: null}).
-        where(thread => thread.isUnread()).data().length;
+          Records.discussions.collection.chain().
+          find({groupId: null}).
+          where(thread => thread.isUnread()).data().length;
         this.updateGroups();
       }
     });
@@ -78,10 +83,6 @@ export default {
   },
 
   methods: {
-    memberGroups(group) {
-      return group.subgroups().filter(g => !g.archivedAt && g.membershipFor(Session.user()));
-    },
-
     openIfPinned() {
       this.open = !!Session.isSignedIn() && !!Session.user().experiences['sidebar'] && this.$vuetify.display.lgAndUp;
     },
@@ -105,15 +106,8 @@ export default {
     },
 
     updateGroups() {
-      // console.log('AppConfig.currentUserId', AppConfig.currentUserId);
-      // console.log('AppConfig', AppConfig);
-      // console.log('session user id', Session.user().id);
-      // console.log('session user', Session.user())
-      // console.log('Records user', Records.users.find(1))
-      // console.log('this.$vuetify.display', this.$vuetify.display.xs)
       this.organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
       this.openCounts = {};
-      this.closedCounts = {};
       this.openGroups = [];
       Session.user().groups().forEach(group => {
         this.openCounts[group.id] = group.discussions().filter(discussion => discussion.isUnread()).length;
@@ -122,7 +116,6 @@ export default {
         if (this.organization && (this.organization.id === group.parentOrSelf().id)) {
           this.openGroups[group.id] = true;
         }
-        this.closedCounts[group.id] = this.openCounts[group.id] + sum(map(this.memberGroups(group), subgroup => this.openCounts[subgroup.id]));
       });
     },
 
@@ -158,7 +151,7 @@ export default {
         return "#DCA034";
       }
     },
-    helpURL() { 
+    helpURL() {
       const siteUrl = new URL(AppConfig.baseUrl);
       return `https://help.loomio.com/en/?utm_source=${siteUrl.host}`;
     },
@@ -168,7 +161,6 @@ export default {
     activeGroup() { if (this.group) { return [this.group.id]; } else { return []; } },
     logoUrl() { return AppConfig.theme.app_logo_src; },
     showContact() { return AppConfig.features.app.show_contact; },
-    canStartGroups() { return AbilityService.canStartGroups(); },
     canStartDemo() { return AppConfig.features.app.demos; },
     showTemplateGallery() { return AppConfig.features.app.template_gallery; },
     showExploreGroups() { return AppConfig.features.app.explore_public_groups; },
@@ -197,7 +189,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
           v-list-item-title {{user.name}}
           v-list-item-subtitle {{user.email}}
       v-list(density="compact" nav)
-        user-dropdown
+        sidebar-user-dropdown
         v-divider
     template(v-if="needProfilePicture")
       v-divider
@@ -233,49 +225,18 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       to="/tasks"
       :disabled="organizations.length == 0" :title="$t('tasks.tasks')")
     v-divider
-    v-list-subheader
-      span(v-t="'common.groups'")
 
-    template(v-for="parentGroup in organizations")
-      template(v-if="memberGroups(parentGroup).length")
-        v-list-group.sidebar__groups(v-model="openGroups[parentGroup.id]")
-          template(v-slot:activator="{props}")
-            v-list-item(nav slim v-bind="props")
-              template(v-slot:prepend)
-                group-avatar(:group="parentGroup").mr-4
-              v-list-item-title
-                span {{parentGroup.name}}
-                template(v-if="closedCounts[parentGroup.id]")
-                  | &nbsp;
-                  span ({{closedCounts[parentGroup.id]}})
-          v-list-item(nav slim :to="urlFor(parentGroup)")
-            v-list-item-title
-              span {{parentGroup.name}}
-              template(v-if='openCounts[parentGroup.id]')
-                | &nbsp;
-                span ({{openCounts[parentGroup.id]}})
-          v-list-item(
-            nav slim 
-            v-for="group in memberGroups(parentGroup)" :key="group.id" :to="urlFor(group)")
-            v-list-item-title
-              span {{group.name}}
-              template(v-if='openCounts[group.id]')
-                | &nbsp;
-                span ({{openCounts[group.id]}})
-      template(v-else)
-        v-list-item(nav slim :to="urlFor(parentGroup)")
-          template(v-slot:prepend)
-            group-avatar.mr-4(:group="parentGroup")
-          v-list-item-title
-            span {{parentGroup.name}}
-            template(v-if='openCounts[parentGroup.id]')
-              | &nbsp;
-              span ({{openCounts[parentGroup.id]}})
+    sidebar-organizations(
+      :organizations="organizations"
+      :open-counts="openCounts"
+    )
 
-    v-list-item.sidebar__list-item-button--start-group(nav slim v-if="canStartGroups" to="/g/new")
-      template(v-slot:prepend)
-        common-icon(tile name="mdi-plus")
-      v-list-item-title(v-t="'group_form.new_group'")
+    sidebar-subgroups(
+      v-if="organization"
+      :organization="organization"
+      :open-counts="openCounts"
+    )
+
 
     v-divider.my-2
     v-list-item.sidebar__list-item-button--start-group(v-if="canStartDemo" @click="startOrFindDemo" lines="two")
@@ -297,6 +258,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       v-list-item-subtitle(v-t="'sidebar.talk_to_the_loomio_team'")
       template(v-slot:append)
         common-icon(name="mdi-face-agent")
+    div(style="height: 900px")
 </template>
 <style lang="sass">
 

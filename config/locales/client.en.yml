@@ -1195,6 +1195,8 @@ en:
     files: Files
     settings: Settings
     subgroups: Subgroups
+    my_subgroups: My subgroups
+    more_subgroups: More subgroups
     show_opened: '%{count} Open'
     show_closed: '%{count} Closed'
     no_threads_here: No threads to see here!

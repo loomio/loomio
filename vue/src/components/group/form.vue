@@ -324,7 +324,7 @@ v-card.group-form(:title="$t(cardTitle)")
     v-btn.group-form__submit-button(color="primary" variant="tonal" @click='submit()')
       span(v-if='group.isNew() && group.isParent()' v-t="'group_form.submit_start_group'")
       span(v-if='group.isNew() && !group.isParent()' v-t="'group_form.submit_start_subgroup'")
-      span(v-if='!group.isNew()' v-t="'common.action.update_settings'")
+      span(v-if='!group.isNew()' v-t="'common.action.save_changes'")
 </template>
 
 <style lang="sass">

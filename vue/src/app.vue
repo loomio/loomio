@@ -11,7 +11,10 @@ import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
 
 import { useTheme } from 'vuetify';
 
+import SidebarPanel from '@/components/sidebar/panel';
+
 export default {
+  components: [SidebarPanel],
   mixins: [AuthModalMixin],
   data() {
     return {pageError: null};
@@ -85,7 +88,7 @@ export default {
 <template lang="pug">
 v-app.app-is-booted
   system-notice
-  sidebar
+  sidebar-panel
   navbar
   router-view(v-if="!pageError")
   common-error(v-if="pageError" :error="pageError")

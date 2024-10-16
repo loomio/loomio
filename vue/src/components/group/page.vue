@@ -50,14 +50,14 @@ export default
     tabs() {
       if (!this.group) { return; }
       let query = '';
-      if (this.$route.query.subgroups) { query = '?subgroups='+this.$route.query.subgroups; }
+      // if (this.$route.query.subgroups) { query = '?subgroups='+this.$route.query.subgroups; }
 
       return [
         {id: 0, name: 'threads',   route: this.urlFor(this.group, null)+query},
         {id: 1, name: 'decisions', route: this.urlFor(this.group, 'polls')+query},
         {id: 2, name: 'members',   route: this.urlFor(this.group, 'members')+query},
         {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query},
-        {id: 5, name: 'subgroups',  route: this.urlFor(this.group, 'subgroups')+query}
+        // {id: 5, name: 'subgroups',  route: this.urlFor(this.group, 'subgroups')+query}
         // {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
       ].filter(obj => !((obj.name === "subgroups") && this.group.parentId));
     }

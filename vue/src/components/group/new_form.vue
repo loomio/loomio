@@ -25,8 +25,6 @@ export default
       rules: {
         required(value) { return !!value || 'Required.'; }
       },
-      uploading: false,
-      progress: 0,
       hostname: AppConfig.theme.canonical_host,
       parentGroups: [],
       loadingHandle: false
@@ -96,7 +94,7 @@ export default
           this.$router.push(`/g/${groupKey}`);
           EventBus.$emit('openModal', {
             component: 'GroupInvitationForm',
-            props: { 
+            props: {
               group
             }
           });
@@ -164,10 +162,6 @@ export default
 
 <template lang="pug">
 v-card.group-form(:title="group.parentId ? $t('group_form.new_subgroup') : $t('group_form.new_group')")
-  template(v-slot:append)
-    dismiss-modal-button(v-if="group.parentId" :model="group")
-  v-overlay(:value="uploading")
-    v-progress-circular(size="64" :value="progress")
   .px-4
     p.text-medium-emphasis.pb-8(v-if='!group.parentId' v-t="'group_form.new_group_explainer'")
     p.text-medium-emphasis.pb-9(v-if='group.parentId' v-t="'group_form.new_subgroup_explainer'")
