@@ -124,11 +124,7 @@ export default
         case 'closed':
           chain = chain.find({closedAt: {$ne: null}});
           break;
-        case 'templates':
-          chain = chain.find({template: true});
-          break;
         case 'all':
-          true; // noop
           break;
         default:
           chain = chain.find({closedAt: null});
