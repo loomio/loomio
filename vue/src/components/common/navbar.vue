@@ -87,8 +87,6 @@ export default {
       if (!this.group) { return; }
       return this.group.parentOrSelf().name;
     },
-    groupPage() { return this.page === 'groupPage'; },
-    threadPage() { return this.page === 'threadPage'; },
     logo() {
       return AppConfig.theme.app_logo_src;
     },
