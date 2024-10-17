@@ -5,10 +5,9 @@ import Session            from '@/shared/services/session';
 import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 import RecordLoader       from '@/shared/services/record_loader';
-import ThreadFilter       from '@/shared/services/thread_filter';
+import ThreadService       from '@/shared/services/thread_service';
 import WatchRecords from '@/mixins/watch_records';
 import FormatDate from '@/mixins/format_date';
-import { subMonths } from 'date-fns';
 
 export default
 {
@@ -73,13 +72,7 @@ export default
     },
 
     query() {
-      const groupIds = Records.memberships.collection.find({userId: Session.user().id}).map(m => m.groupId);
-      let chain = Records.discussions.collection.chain();
-      chain = chain.find({$or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null, inviterId: {$ne: null}}]});
-      chain = chain.find({discardedAt: null});
-      chain = chain.find({closedAt: null});
-      chain = chain.find({lastActivityAt: { $gt: subMonths(new Date(), 6) }});
-      this.discussions = chain.simplesort('lastActivityAt', true).data();
+      this.discussions = ThreadService.dashboardQuery();
     }
   },
 

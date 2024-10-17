@@ -6,6 +6,7 @@ import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import { hardReload } from '@/shared/helpers/window';
+import { subMonths } from 'date-fns';
 
 export default new class ThreadService {
   actions(discussion, vm) {
@@ -275,6 +276,17 @@ export default new class ThreadService {
         }
       }
     };
+  }
+
+  dashboardQuery() {
+    const groupIds = Records.memberships.collection.find({userId: Session.user().id}).map(m => m.groupId);
+    let chain = Records.discussions.collection.chain();
+    chain = chain.find({$or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null, inviterId: {$ne: null}}]});
+    chain = chain.find({discardedAt: null});
+    chain = chain.find({closedAt: null});
+    chain = chain.find({lastActivityAt: { $gt: subMonths(new Date(), 6) }});
+    chain = chain.simplesort('lastActivityAt', true);
+    return chain.data();
   }
 
   mute(thread, override) {
