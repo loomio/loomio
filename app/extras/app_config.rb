@@ -63,8 +63,6 @@ class AppConfig
       help_url:                          ENV.fetch('HELP_URL',                      'https://help.loomio.com/'),
       icon_src:                          ENV.fetch('THEME_ICON_SRC',                "/brand/icon_#{logo_color}_150h.png"),
       app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            "/brand/logo_#{logo_color}.svg"),
-      apple_touch_src:                   ENV.fetch('APPLE_TOUCH_SRC',               "/brand/touch_icon_gold.png"),
-      default_group_cover_src:           ENV.fetch('THEME_DEFAULT_GROUP_COVER_SRC', '/theme/default_group_cover.png'),
       saml_login_provider_name:          ENV.fetch('SAML_LOGIN_PROVIDER_NAME', 'SAML'),
       oauth_login_provider_name:         ENV.fetch('OAUTH_LOGIN_PROVIDER_NAME', 'OAUTH'),
       # used in emails

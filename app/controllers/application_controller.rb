@@ -166,11 +166,12 @@ class ApplicationController < ActionController::Base
     prevent_caching
     save_beta_setting!
 
-    if use_beta_client?
-      render file: Rails.root.join('public/client3/index.html'), layout: false, status: status
-    else
-      render file: Rails.root.join('public/blient/index.html'), layout: false, status: status
-    end
+    render 'application/boot_app', layout: false, status: status
+    # if use_beta_client?
+    #   render file: Rails.root.join('public/client3/index.html'), layout: false, status: status
+    # else
+    #   render file: Rails.root.join('public/blient/index.html'), layout: false, status: status
+    # end
   end
 
   def redirect_to(url, opts = {})
