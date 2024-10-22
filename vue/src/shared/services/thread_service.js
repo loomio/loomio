@@ -289,6 +289,55 @@ export default new class ThreadService {
     return chain.data();
   }
 
+  groupDiscussionsQuery(group, groupIds, t, tag, page, loader) {
+    if (!group) { return; }
+
+
+    let pinnedDiscussions = []
+    if (page == 1 && !t && !tag) {
+      pinnedDiscussions = Records.discussions.collection.chain().find({
+        discardedAt: null,
+        groupId: group.id,
+        pinnedAt: {$ne: null}
+      }).simplesort('pinnedAt', true).data();
+    }
+
+    let chain = Records.discussions.collection.chain().find({
+      discardedAt: null,
+      groupId: {$in: groupIds},
+      id: {$nin: pinnedDiscussions.map(d => d.id)}
+    }).simplesort('lastActivityAt', true);
+
+    switch (t) {
+      case 'unread':
+        chain = chain.where(discussion => discussion.isUnread());
+        break;
+      case 'closed':
+        chain = chain.find({closedAt: {$ne: null}});
+        break;
+      case 'all':
+        break;
+      default:
+        chain = chain.find({closedAt: null});
+    }
+
+    if (tag) {
+      const tag = Records.tags.find({groupId: group.parentOrSelf().id, name: tag})[0];
+      chain = chain.find({tagIds: {'$contains': tag.id}});
+    }
+
+    let discussions = []
+    if (loader.pageWindow[page]) {
+      if (page === 1) {
+        chain = chain.find({lastActivityAt: {$gte: loader.pageWindow[page][0]}});
+      } else {
+        chain = chain.find({lastActivityAt: {$jbetween: loader.pageWindow[page]}});
+      }
+      discussions = chain.data();
+    }
+    return pinnedDiscussions.concat(discussions);
+  }
+
   mute(thread, override) {
     if (override == null) { override = false; }
     if (!Session.user().hasExperienced("mutingThread") && !override) {

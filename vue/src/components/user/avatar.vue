@@ -59,7 +59,7 @@ export default {
 </script>
 
 <template lang="pug">
-component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)" :style="{ 'width': size + 'px', margin: '0' }")
+component.user-avatar(aria-hidden="true" :is="componentType" :to="!noLink && user.id && urlFor(user)")
   v-avatar(v-if="imageUrl" :title='user.name' :image="imageUrl" :size='size')
   v-avatar(v-else :title='user.name' :size='size' :color="color")
     span.user-avatar--initials(v-if="user.avatarKind == 'initials'" :style="{'font-size': fontSize, width: size+'px', height: size+'px'}") {{user.avatarInitials}}

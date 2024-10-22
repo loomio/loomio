@@ -4,6 +4,7 @@ import AbilityService     from '@/shared/services/ability_service';
 import EventBus           from '@/shared/services/event_bus';
 import RecordLoader       from '@/shared/services/record_loader';
 import PageLoader         from '@/shared/services/page_loader';
+import ThreadService      from '@/shared/services/thread_service';
 import { debounce, orderBy, intersection, concat, uniq } from 'lodash-es';
 import Session from '@/shared/services/session';
 import { mdiMagnify } from '@mdi/js';
@@ -18,19 +19,27 @@ export default
       this.$router.replace(this.mergeQuery({q: val}));
     }
     , 1000);
-    this.init();
+
+    this.watchRecords({
+      key: this.$route.params.key,
+      collections: ['discussions', 'groups', 'memberships'],
+      query: this.query
+    });
+    
+    this.refresh();
     EventBus.$on('signedIn', this.init);
+    EventBus.$on('joinedGroup', this.fetch);
   },
 
   beforeDestroy() {
     EventBus.$off('signedIn', this.init);
+    EventBus.$off('joinedGroup', this.fetch);
   },
 
   data() {
     return {
       group: null,
       discussions: [],
-      pinnedDiscussions: [],
       loader: null,
       groupIds: [],
       per: 25,
@@ -48,107 +57,52 @@ export default
       EventBus.$off('joinedGroup');
     },
 
-    init() {
+    refresh() {
       Records.groups.findOrFetch(this.$route.params.key).then(group => {
         this.group = group;
 
-        EventBus.$emit('currentComponent', {
-          page: 'groupPage',
-          title: this.group.name,
-          group: this.group,
-          search: {
-            placeholder: this.$t('navbar.search_threads', {name: this.group.parentOrSelf().name})
+        this.loader = new PageLoader({
+          path: 'discussions',
+          order: 'lastActivityAt',
+          params: {
+            group_id: this.group.id,
+            exclude_types: 'group outcome poll',
+            filter: this.$route.query.t,
+            subgroups: this.$route.query.subgroups || 'mine',
+            tags: this.$route.query.tag,
+            per: this.per
           }
         });
 
-        EventBus.$on('joinedGroup', group => this.fetch());
-
-        this.refresh();
-
-        this.watchRecords({
-          key: this.group.id,
-          collections: ['discussions', 'groups', 'memberships'],
-          query: () => this.query()
-        });
+        this.fetch();
+        this.query();
       });
-    },
-
-    refresh() {
-      this.loader = new PageLoader({
-        path: 'discussions',
-        order: 'lastActivityAt',
-        params: {
-          group_id: this.group.id,
-          exclude_types: 'group outcome poll',
-          filter: this.$route.query.t,
-          subgroups: this.$route.query.subgroups || 'mine',
-          tags: this.$route.query.tag,
-          per: this.per
-        }
-      });
-
-      this.fetch();
-      this.query();
     },
 
     query() {
-      if (!this.group) { return; }
-      this.publicGroupIds = this.group.publicOrganisationIds();
-
+      // lol this must have been coffeescript to begin with.
+      if (!this.group) { return }
       this.groupIds = (() => { switch (this.$route.query.subgroups || 'mine') {
-        case 'mine': return uniq(concat(intersection(this.group.organisationIds(), Session.user().groupIds()), this.publicGroupIds, this.group.id));
+        case 'mine': return uniq(concat(intersection(this.group.organisationIds(), Session.user().groupIds()), this.group.publicOrganisationIds(), this.group.id));
         case 'all': return this.group.organisationIds();
         default: return [this.group.id];
       } })();
 
-      if (!this.$route.query.t && !this.$route.query.tag) {
-        this.pinnedDiscussions = Records.discussions.collection.chain().find({
-          discardedAt: null,
-          groupId: this.group.id,
-          pinnedAt: {$ne: null}
-        }).simplesort('pinnedAt', true).data();
-      } else {
-        this.pinnedDiscussions = []
-      }
-
-      let chain = Records.discussions.collection.chain().find({
-        discardedAt: null,
-        groupId: {$in: this.groupIds},
-        id: {$nin: this.pinnedDiscussions.map(d => d.id)}
-      }).simplesort('lastActivityAt', true);
-
-      switch (this.$route.query.t) {
-        case 'unread':
-          chain = chain.where(discussion => discussion.isUnread());
-          break;
-        case 'closed':
-          chain = chain.find({closedAt: {$ne: null}});
-          break;
-        case 'all':
-          break;
-        default:
-          chain = chain.find({closedAt: null});
-      }
-
-      if (this.$route.query.tag) {
-        const tag = Records.tags.find({groupId: this.group.parentOrSelf().id, name: this.$route.query.tag})[0];
-        chain = chain.find({tagIds: {'$contains': tag.id}});
-      }
-
-      if (this.loader.pageWindow[this.page]) {
-        if (this.page === 1) {
-          chain = chain.find({lastActivityAt: {$gte: this.loader.pageWindow[this.page][0]}});
-        } else {
-          chain = chain.find({lastActivityAt: {$jbetween: this.loader.pageWindow[this.page]}});
+      this.discussions = ThreadService.groupDiscussionsQuery(this.group, this.groupIds, this.$route.query.t, this.$route.query.tag, this.page, this.loader);
+      EventBus.$emit('currentComponent', {
+        page: 'groupPage',
+        title: this.group.name,
+        group: this.group,
+        discussions: this.discussions,
+        discussionsGroup: this.group,
+        search: {
+          placeholder: this.$t('navbar.search_threads', {name: this.group.parentOrSelf().name})
         }
-        this.discussions = chain.data();
-      } else {
-        this.discussions = [];
-      }
+      });
     },
 
     fetch() {
-      this.loader.fetch(this.page).then( () => this.query());
+      this.loader.fetch(this.page).then(this.query);
     },
 
     filterName(filter) {
@@ -188,7 +142,7 @@ export default
   },
 
   watch: {
-    '$route.params': 'init',
+    '$route.params': 'refresh',
     '$route.query': 'refresh',
     'page'() {
       this.fetch();
@@ -289,19 +243,6 @@ div.discussions-panel(v-if="group")
     )
       span(v-t="'navbar.start_thread'")
 
-    //- v-text-field.mr-2.flex-grow-1(
-      v-model="dummyQuery"
-      clearable hide-details
-      density="compact"
-      elevation="0"
-      variant="solo-filled"
-      @click="openSearchModal"
-      @change="openSearchModal"
-      @keyup.enter="openSearchModal"
-      @click:append="openSearchModal"
-      :placeholder="$t('navbar.search_threads', {name: group.name})"
-      :prepend-inner-icon="mdiMagnify")
-
   v-alert(color="info" variant="tonal" v-if="isMember && noThreads")
     v-card-title(v-t="'discussions_panel.welcome_to_your_new_group'")
     v-card-text
@@ -317,8 +258,13 @@ div.discussions-panel(v-if="group")
           p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
         .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
           v-list.thread-previews(lines="two")
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions", :key="thread.id", :thread="thread" group-page)
-            thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions", :key="thread.id", :thread="thread" group-page)
+            thread-preview(
+              :show-group-name="groupIds.length > 1"
+              v-for="thread in discussions"
+              :key="thread.id"
+              :thread="thread"
+              group-page
+            )
 
         loading(v-if="loading && discussions.length == 0")
 

@@ -34,7 +34,9 @@ export default
     EventBus.$emit('content-title-visible', false);
     EventBus.$emit('currentComponent', {
       titleKey: 'dashboard_page.aria_label',
-      page: 'dashboardPage'
+      page: 'dashboardPage',
+      discussions: this.discussions,
+      discussionsGroup: null,
     }
     );
   },

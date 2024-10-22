@@ -1298,7 +1298,7 @@ en:
     new_group: New group
     new_subgroup: New subgroup
     new_group_explainer: Start a new Loomio group for your organization
-    new_subgroup_explainer: Start a subgroup within an existing group - a private space for a team of people from the organization
+    new_subgroup_explainer: Start a subgroup - a private space for a team within the organization
     start_group_heading: Start a group
     start_subgroup_heading: Start a subgroup
     edit_group_heading: Edit group settings

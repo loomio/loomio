@@ -42,7 +42,7 @@ export default {
         this.respondToRoute();
         EventBus.$emit('currentComponent', {
           focusHeading: false,
-          page: 'threadPage',
+          page: 'discussionPage',
           discussion: this.discussion,
           group: this.discussion.group(),
           title: this.discussion.title
