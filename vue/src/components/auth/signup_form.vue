@@ -80,6 +80,7 @@ v-card.auth-signup-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.ca
         v-text-field(type='text' :label="$t('auth_form.name_placeholder')" :placeholder="$t('auth_form.enter_your_name')" outlined v-model='vars.name' required='true')
         validation-errors(:subject='user' field='legalAccepted')
         validation-errors(:subject='user' field='email')
+        validation-errors(:subject='user' field='name')
         validation-errors(:subject='user' field='recaptcha')
       .auth-signup-form__consent(v-if='termsUrl')
         v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)

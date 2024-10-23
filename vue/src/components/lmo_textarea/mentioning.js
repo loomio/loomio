@@ -1,6 +1,7 @@
 import {sortBy, filter, uniq, map, debounce} from 'lodash-es';
 import Records from '@/shared/services/records';
 import getCaretCoordinates from 'textarea-caret';
+import AbilityService from '@/shared/services/ability_service';
 
 export var CommonMentioning = {
   data() {
@@ -30,13 +31,34 @@ export var CommonMentioning = {
 
   methods: {
     findMentionable() {
+      const audiences = this.audiences().filter(audience => audience.translation.startsWith(this.query))
       this.mentionableUserIds = uniq(this.mentionableUserIds.concat(this.model.participantIds()));
       const unsorted = filter(Records.users.collection.chain().find({id: {$in: this.mentionableUserIds}}).data(), u => {
         return ((u.name || '').toLowerCase().startsWith(this.query) ||
         (u.username || '').toLowerCase().startsWith(this.query) ||
         (u.name || '').toLowerCase().includes(` ${this.query}`));
       });
-      this.mentionable = sortBy(unsorted, u => 0 - Records.events.find({actorId: u.id}).length);
+      this.mentionable = audiences.concat(sortBy(unsorted, u => 0 - Records.events.find({actorId: u.id}).length));
+    },
+
+    audiences(){
+      let list = []
+
+      if( AbilityService.canAnnounceDiscussion(this.model.discussion()) )
+        list.push({
+                    id: 'discussion',
+                    translation: this.$t('mentioning.discussion'),
+                    message: this.$t('mentioning.discussion_message')
+                  })
+
+      if( AbilityService.canNotifyGroup(this.model.group()) )
+        list.push({
+                    id: 'group',
+                    translation: this.$t('mentioning.group'),
+                    message: this.$t('mentioning.group_message')
+                  })
+
+      return list.map((item) => ({ ...item, audience: true }));
     }
   }
 };
@@ -80,19 +102,19 @@ export var MdMentioning = {
       if ([13,9].includes(event.keyCode)) {
         let user;
         if (user = this.mentionable[this.navigatedUserIndex]) {
-          this.selectUser(user);
+          this.selectMentionable(user);
           this.query = '';
           event.preventDefault();
         }
       }
     },
 
-    selectUser(user) {
+    selectMentionable(mention) {
       const text = this.textarea().value;
       const beforeText = this.textarea().value.slice(0, this.textarea().selectionStart - this.query.length);
       const afterText = this.textarea().value.slice(this.textarea().selectionStart);
-      this.model[this.field] = beforeText + user.username + ' ' + afterText;
-      this.textarea().selectionEnd = (beforeText + user.username).length + 1;
+      this.model[this.field] = beforeText + mention.username + ' ' + afterText;
+      this.textarea().selectionEnd = (beforeText + mention.username).length + 1;
       this.textarea().focus;
       this.query = '';
     },
@@ -129,15 +151,15 @@ export var HtmlMentioning = {
 
     enterHandler() {
       const user = this.mentionable[this.navigatedUserIndex];
-      if (user) { this.selectUser(user); }
+      if (user) { this.selectMentionable(user); }
     },
 
-    selectUser(user) {
+    selectMentionable(mention) {
       // range: @suggestionRange
       // attrs:
       this.insertMention({
-        id: user.username,
-        label: user.name
+        id: mention.audience ? mention.id : mention.username,
+        label: mention.audience ? mention.translation : mention.name
       });
       this.editor.chain().focus();
     },
