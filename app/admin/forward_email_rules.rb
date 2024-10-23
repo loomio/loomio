@@ -16,5 +16,15 @@ ActiveAdmin.register ForwardEmailRule do
     f.actions
   end
 
-  actions :index, :show, :new, :edit, :update, :create
+  actions :index, :show, :new, :edit, :update, :create, :destroy
+
+  member_action :destroy, :method => :delete do
+    ForwardEmailRule.find(params[:id]).destroy!
+    redirect_to admin_forward_email_rules_path
+  end
+
+  member_action :update, :method => :put do
+    ForwardEmailRule.find(params[:id]).update(permitted_params[:forward_email_rule])
+    redirect_to admin_forward_email_rule_path(params[:id])
+  end
 end
