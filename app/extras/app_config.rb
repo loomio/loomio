@@ -93,6 +93,7 @@ class AppConfig
       demos:                      ENV.fetch('FEATURES_DEMO_GROUPS', false),
       trials:                     ENV.fetch('FEATURES_TRIALS', false),
       trial_days:                 ENV.fetch('TRIAL_DAYS', nil),
+      gray_sidebar_logo_in_dark_mode: ENV.fetch('FEATURES_GRAY_SIDEBAR_LOGO_IN_DARK_MODE', false),
       new_thread_button:          !!ENV.fetch('FEATURES_NEW_THREAD_BUTTON', false),
       email_login:                !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],

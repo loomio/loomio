@@ -149,7 +149,10 @@ export default {
   },
 
   computed: {
-    helpURL() { 
+    greySidebarLogo() {
+      return AppConfig.features.app.gray_sidebar_logo_in_dark_mode && this.$vuetify.theme.dark 
+    },
+    helpURL() {
       const siteUrl = new URL(AppConfig.baseUrl);
       return `https://help.loomio.com/en/?utm_source=${siteUrl.host}`;
     },
@@ -175,7 +178,7 @@ export default {
 v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
-    v-layout.mx-10.my-2(column align-center style="max-height: 64px")
+    v-layout.mx-10.my-2(column align-center style="max-height: 64px" :class="{greySidebarLogo: greySidebarLogo}")
       v-img(:src="logoUrl")
 
   v-list-group.sidebar__user-dropdown
@@ -282,6 +285,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       common-icon(name="mdi-face-agent")
 </template>
 <style lang="sass">
+.greySidebarLogo
+  filter: saturate(99999%) grayscale(1)
+
 .sidenav-left
   .v-avatar.v-list-item__avatar
     margin-right: 8px
