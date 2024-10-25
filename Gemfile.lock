@@ -393,7 +393,7 @@ GEM
     paper_trail (15.2.0)
       activerecord (>= 6.1)
       request_store (~> 1.4)
-    pg (1.5.8)
+    pg (1.5.9)
     pg_search (2.3.7)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
