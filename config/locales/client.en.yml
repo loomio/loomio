@@ -542,7 +542,7 @@ en:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of %{groupName}.'
     public_privacy_notice: 'Your comment will be visible to anyone on the web.'
-    sign_in: "Log in to join the conversation"
+    sign_in: "Sign in to participate"
 
   thread_nav:
     participants: Participants
