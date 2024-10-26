@@ -24,7 +24,6 @@ import StanceRecordsInterface from '@/shared/interfaces/stance_records_interface
 import OutcomeRecordsInterface from '@/shared/interfaces/outcome_records_interface';
 import ContactMessageRecordsInterface from '@/shared/interfaces/contact_message_records_interface';
 import ReactionRecordsInterface from '@/shared/interfaces/reaction_records_interface';
-import ContactRequestRecordsInterface from '@/shared/interfaces/contact_request_records_interface';
 import DocumentRecordsInterface from '@/shared/interfaces/document_records_interface';
 import AttachmentRecordsInterface from '@/shared/interfaces/attachment_records_interface';
 import LoginTokenRecordsInterface from '@/shared/interfaces/login_token_records_interface';
@@ -59,7 +58,6 @@ records.addRecordsInterface(StanceRecordsInterface);
 records.addRecordsInterface(OutcomeRecordsInterface);
 records.addRecordsInterface(ContactMessageRecordsInterface);
 records.addRecordsInterface(ReactionRecordsInterface);
-records.addRecordsInterface(ContactRequestRecordsInterface);
 records.addRecordsInterface(DocumentRecordsInterface);
 records.addRecordsInterface(AttachmentRecordsInterface);
 records.addRecordsInterface(LoginTokenRecordsInterface);

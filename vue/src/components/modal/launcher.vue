@@ -13,7 +13,6 @@ export default
     ChangeVolumeForm: () => import('@/components/common/change_volume_form'),
     PollCommonModal: () => import('@/components/poll/common/modal'),
     PollCommonEditVoteModal: () => import('@/components/poll/common/edit_vote_modal'),
-    ContactRequestForm: () => import('@/components/contact/request_form'),
     AuthModal: () => import('@/components/auth/modal'),
     MembershipRequestForm: () => import('@/components/group/membership_request_form'),
     MembershipModal: () => import('@/components/group/membership_modal'),
