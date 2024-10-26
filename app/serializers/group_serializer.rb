@@ -51,7 +51,8 @@ class GroupSerializer < ApplicationSerializer
              :subscription,
              :subgroups_count,
              :new_host,
-             :categorize_poll_templates
+             :categorize_poll_templates,
+             :request_to_join_prompt
 
   has_one :parent, serializer: GroupSerializer, root: :parent_groups
   has_one :current_user_membership, serializer: MembershipSerializer, root: :memberships

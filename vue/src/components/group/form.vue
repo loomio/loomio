@@ -72,7 +72,8 @@ export default
         EventBus.$emit('closeModal');
         this.$router.push(`/g/${groupKey}`);
       }).catch(error => {
-        Flash.custom(error.error, 'error', 5000);
+        Flash.warning('poll_common_form.please_review_the_form');
+        console.error(error);
       })
     },
 
@@ -221,7 +222,7 @@ v-card.group-form
           validation-errors(:subject="group" field="groupPrivacy")
         p.group-form__privacy-statement.text--secondary {{privacyStatement}}
         .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
-          v-subheader(v-t="'group_form.how_do_people_join'")
+          p(v-t="'group_form.how_do_people_join'")
           v-radio-group(v-model='group.membershipGrantedUpon')
             v-radio(
               v-for="granted in ['request', 'approval', 'invitation']"
@@ -231,6 +232,14 @@ v-card.group-form
             )
               template(slot='label')
                 span(v-t="'group_form.membership_granted_upon_' + granted")
+        template(v-if="group.membershipGrantedUpon == 'approval'")
+          p(v-t="'group_form.request_to_join_prompt'")
+          v-textarea(
+            counter
+            v-model="group.requestToJoinPrompt"
+            :placeholder="$t('group_form.default_request_to_join_prompt')")
+          validation-errors(:subject='group' field='requestToJoinPrompt')
+
 
     v-tab-item
       .mt-8.px-4.group-form__section.group-form__permissions

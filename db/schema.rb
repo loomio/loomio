@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_26_021133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -465,6 +465,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_222910) do
     t.jsonb "link_previews", default: [], null: false
     t.integer "discussion_templates_count", default: 0, null: false
     t.integer "poll_templates_count", default: 0, null: false
+    t.string "request_to_join_prompt"
     t.index ["archived_at"], name: "index_groups_on_archived_at", where: "(archived_at IS NULL)"
     t.index ["created_at"], name: "index_groups_on_created_at"
     t.index ["full_name"], name: "index_groups_on_full_name"

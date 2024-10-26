@@ -1278,6 +1278,9 @@ en:
     submit: 'Yes, Deactivate this group'
 
   group_form:
+    request_to_join_prompt: Request to join prompt
+    default_request_to_join_prompt: |
+      Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
     change_cover_image: change cover image
