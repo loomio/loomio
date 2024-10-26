@@ -11,6 +11,12 @@ module ApplicationHelper
     Nokogiri::HTML(vue_index).css('head link[as=script], script').to_s
   end
 
+  def logo_svg
+    return nil unless AppConfig.theme[:app_logo_src].ends_with?('.svg')
+    path = Rails.root.join('public', AppConfig.theme[:app_logo_src].gsub(Regexp.new("^/"), ''))
+    File.read(path).html_safe
+  end
+
   def metadata
     @metadata ||= if should_have_metadata && current_user.can?(:show, resource)
       "Metadata::#{controller_name.singularize.camelize}Serializer".constantize.new(resource)

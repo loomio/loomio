@@ -69,11 +69,11 @@ export default
     },
 
     canJoinGroup() {
-      return this.group && AbilityService.canJoinGroup(this.group);
+      return this.group && !!AbilityService.canJoinGroup(this.group);
     },
 
     canRequestMembership() {
-      return AbilityService.canRequestMembership(this.group);
+      return !!AbilityService.canRequestMembership(this.group);
     }
   }
 };
@@ -81,9 +81,16 @@ export default
 </script>
 
 <template lang="pug">
-v-alert.my-4.text-center(variant="tonal" density="compact" color="primary" v-if="!membership")
+v-alert.my-4.text-center(
+  variant="tonal"
+  density="compact"
+  color="primary"
+  v-if="!membership && (canJoinGroup || canRequestMembership || hasRequestedMembership)"
+)
   p.pb-4(v-t="'join_group_button.not_a_member'")
   v-btn.join-group-button(
-    v-if="canJoinGroup || canRequestMembership || hasRequestedMembership"
-    color="primary" v-t="label" @click="join" :disabled="hasRequestedMembership")
+    color="primary"
+    v-t="label"
+    @click="join"
+    :disabled="hasRequestedMembership")
 </template>

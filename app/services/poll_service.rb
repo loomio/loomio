@@ -195,7 +195,7 @@ class PollService
     poll.update(discarded_at: Time.now, discarded_by: actor.id)
     Event.where(kind: ["stance_created", "stance_updated"], eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
     poll.created_event.update!(user_id: nil, child_count: 0, pinned: false)
-    discussion.update_sequence_info! if poll.discussion
+    poll.discussion.update_sequence_info! if poll.discussion
     MessageChannelService.publish_models([poll.created_event], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
     poll.created_event
   end

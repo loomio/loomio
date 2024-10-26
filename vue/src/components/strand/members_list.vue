@@ -66,7 +66,7 @@ export default {
     },
 
     isGroupAdmin(reader) {
-      return this.discussion.groupId && 
+      return this.discussion.groupId &&
       this.membershipsByUserId[reader.userId] &&
       this.membershipsByUserId[reader.userId].admin;
     },
@@ -142,8 +142,8 @@ export default {
       this.readerUserIds = map(Records.discussionReaders.collection.find({discussionId: this.discussion.id}), 'userId');
 
       this.membershipsByUserId = {};
-      Records.memberships.collection.find({userId: {$in: this.readerUserIds}},
-                                          {groupId: this.discussion.groupId}).forEach(m => {
+      Records.memberships.collection.find({userId: {$in: this.readerUserIds},
+                                           groupId: this.discussion.groupId}).forEach(m => {
         this.membershipsByUserId[m.userId] = m;
       });
     }

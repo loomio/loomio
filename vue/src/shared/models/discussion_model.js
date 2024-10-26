@@ -128,7 +128,7 @@ export default class DiscussionModel extends BaseModel {
   }
 
   membersInclude(user) {
-    return (this.inviterId && !this.revokedAt && (Session.user().id === user.id)) ||
+    return (this.guest && !this.revokedAt && (Session.user().id === user.id)) ||
     this.group().membersInclude(user);
   }
 

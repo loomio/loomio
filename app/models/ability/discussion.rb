@@ -20,9 +20,9 @@ module Ability::Discussion
     can :create, ::Discussion do |discussion|
       user.email_verified? &&
       (
-       discussion.group.blank? ||
-       discussion.group.admins.exists?(user.id) ||
-       (discussion.group.members_can_start_discussions && discussion.group.members.exists?(user.id))
+        (discussion.group.blank? && user.group_ids.any?) ||
+        discussion.group.admins.exists?(user.id) ||
+        (discussion.group.members_can_start_discussions && discussion.group.members.exists?(user.id))
       )
     end
 

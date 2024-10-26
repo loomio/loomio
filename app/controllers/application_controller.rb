@@ -163,7 +163,8 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    render file: Rails.root.join('public/client3/index.html'), layout: false, status: status
+
+    render 'application/boot_app', layout: false, status: status
   end
 
   def redirect_to(url, opts = {})

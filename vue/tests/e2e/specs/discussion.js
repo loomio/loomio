@@ -317,7 +317,7 @@ module.exports = {
 
   'private_thread': (test) => {
     page = pageHelper(test)
-    page.loadPath('setup_user_no_group')
+    page.loadPath('setup_discussion')
     page.ensureSidebar()
     page.click('.sidebar__list-item-button--private')
     page.click('.threads-page__new-thread-button')

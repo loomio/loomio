@@ -171,7 +171,7 @@ export default
     },
 
     noThreads() {
-      return !this.loading && (this.discussions.length === 0);
+      return !this.loading && this.discussions.length === 0
     },
 
     canViewPrivateContent() {
