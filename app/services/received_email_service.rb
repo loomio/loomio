@@ -16,6 +16,7 @@ class ReceivedEmailService
 
   def self.route(email)
     return nil unless email.route_address
+    return nil unless email.sender_email
     return nil if email.released
     return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
     return nil if email.sender_hostname.downcase == ENV['SMTP_DOMAIN'].downcase

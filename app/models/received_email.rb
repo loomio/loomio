@@ -25,7 +25,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def sender_hostname
-    sender_email.split('@')[1]
+    String(sender_email).split('@')[1]
   end
 
   def sender_email
