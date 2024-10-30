@@ -19,7 +19,7 @@ class ReceivedEmailService
     return nil unless email.sender_email
     return nil if email.released
     return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
-    return nil if email.sender_hostname.downcase == ENV['SMTP_DOMAIN'].downcase
+    return nil if email.sender_hostname.downcase == ENV['CANONICAL_HOST'].downcase
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com
