@@ -235,6 +235,7 @@ export default {
   },
 
   computed: {
+    canAnnounceDiscussion() { return AbilityService.canAnnounceDiscussion(this.model) },
     canAddGuests() { return AbilityService.canAddGuests(this.model); },
     canNotifyGroup() { return AbilityService.canAnnounce(this.model); },
     modelName() { return this.model.constructor.singular; },
@@ -328,6 +329,7 @@ export default {
 div.recipients-autocomplete
   //- chips attribute is messing with e2es; no behaviour change noticed
   v-autocomplete.announcement-form__input(
+    :disabled="model.isA('discussion') && !canAnnounceDiscussion"
     multiple
     return-object
     auto-select-first

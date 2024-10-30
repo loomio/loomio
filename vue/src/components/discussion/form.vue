@@ -40,8 +40,12 @@ export default {
       if (this.discussion.discussionTemplateId) {
         Records.discussionTemplates.findOrFetchById(this.discussion.discussionTemplateId).then(template => {
           this.discussionTemplate = template;
-          if (this.discussion.isNew() && (template.recipientAudience === 'group') && this.discussion.groupId) {
-            return this.initialRecipients = [{
+          if ( this.discussion.isNew() &&
+               (template.recipientAudience === 'group') &&
+               this.discussion.groupId &&
+               AbilityService.canAnnounceDiscussion(this.discussion) )
+          {
+            this.initialRecipients = [{
               type: 'audience',
               id: 'group',
               icon: 'mdi-account-group',
