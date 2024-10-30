@@ -1,6 +1,9 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  # Prepare the ingress controller used to receive mail
+  config.action_mailbox.ingress = :relay
+
   # previous settings
   config.lograge.enabled = true
   # config.action_dispatch.x_sendfile_header = nil

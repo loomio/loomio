@@ -1,6 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.action_mailbox.ingress = :relay
   # Log error messages when you accidentally call methods on nil.
   # config.whiny_nils = true
 
