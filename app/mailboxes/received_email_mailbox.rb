@@ -18,6 +18,8 @@ class ReceivedEmailMailbox < ApplicationMailbox
       headers: mail.header.fields.map {|f| [f.name, f.value] }.to_h,
       body_text: (mail.text_part&.decoded || mail.decoded),
       body_html: mail.html_part&.decoded,
+      dkim_valid: true, # TODO need to actually validate this, or know that haraka has done so
+      spf_valid: true
     )
 
     email.attachments = mail.attachments.each do |a|
