@@ -90,10 +90,8 @@ export default
 
     query() {
       if (!this.group) { return; }
-      this.publicGroupIds = this.group.publicOrganisationIds();
-
       this.groupIds = (() => { switch (this.$route.query.subgroups || 'mine') {
-        case 'mine': return uniq(concat(intersection(this.group.organisationIds(), Session.user().groupIds()), this.publicGroupIds, this.group.id));
+        case 'mine': return uniq(concat(intersection(this.group.organisationIds(), Session.user().groupIds()), this.group.id));
         case 'all': return this.group.organisationIds();
         default: return [this.group.id];
       } })();
