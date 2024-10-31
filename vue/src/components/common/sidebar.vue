@@ -23,8 +23,6 @@ export default {
       otherGroups: [],
       organizations: [],
       unreadCounts: {},
-      expandedGroupIds: [],
-      openGroups: [],
       unreadDirectThreadsCount: 0,
     };
   },
@@ -34,9 +32,11 @@ export default {
 
     EventBus.$on('currentComponent', data => {
       this.group = data.group;
+
       if (this.group) {
+        // console.log("groupId:", this.group.id);
+        // console.log("orgId:", this.group.parentOrSelf().id);
         this.organization = data.group.parentOrSelf();
-        this.expandedGroupIds = [this.organization.id];
       } else {
         this.organization = null;
       }
@@ -113,14 +113,10 @@ export default {
       this.organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
       this.openCounts = {};
       this.closedCounts = {};
-      this.openGroups = [];
       Session.user().groups().forEach(group => {
         this.openCounts[group.id] = group.discussions().filter(discussion => discussion.isUnread()).length;
       });
       Session.user().parentGroups().forEach(group => {
-        if (this.organization && (this.organization.id === group.parentOrSelf().id)) {
-          this.openGroups[group.id] = true;
-        }
         this.closedCounts[group.id] = this.openCounts[group.id] + sum(map(this.memberGroups(group), subgroup => this.openCounts[subgroup.id]));
       });
     },
@@ -221,7 +217,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-list.sidebar__groups(dense)
     template(v-for="parentGroup in organizations")
       template(v-if="memberGroups(parentGroup).length")
-        v-list-group(v-model="openGroups[parentGroup.id]" @click="goToGroup(parentGroup)")
+        v-list-group(:value="organization && organization.id == parentGroup.id" @click="goToGroup(parentGroup)")
           template(v-slot:activator)
             v-list-item-avatar(aria-hidden="true")
               group-avatar(:group="parentGroup")
