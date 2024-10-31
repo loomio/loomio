@@ -491,6 +491,12 @@ en:
         normal: "You will be emailed about announcements in new groups."
         quiet: "You won't be emailed about new groups."
 
+  mentioning:
+    group: group
+    discussion: thread
+    group_message: Notify everyone in the group
+    discussion_message: Notify everyone in the thread
+
   close_explanation_modal:
     aria_label: Close thread
     close_thread: Close thread
@@ -717,6 +723,8 @@ en:
       user_added_to_group: "%{actor} added you to the group: %{title}"
       user_mentioned: "%{actor} mentioned you in: %{title}"
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
+      comment_announced_to_group: "%{actor} notified everyone in the group"
+      comment_announced_to_discussion: "%{actor} notified everyone in the thread"
 
     without_title:
       unknown_sender: "Please review email from unrecognised sender"
@@ -875,6 +883,9 @@ en:
     outcome_updated: '%{name} edited an outcome, notifying %{length} people:'
     poll_closing_soon: "%{name}'s poll closing reminder notified %{length} people:"
     poll_reminder: '%{name} reminded %{length} people to vote:'
+    comment_announced_to_group: "%{name} notified everyone in the group"
+    comment_announced_to_discussion: "%{name} notified everyone in the thread"
+
 
     audiences:
       group: "%{name}"
