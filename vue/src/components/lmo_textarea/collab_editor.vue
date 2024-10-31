@@ -117,10 +117,14 @@ export default
     const onSync = function(provider) {
       if (this.editor) {
         if (!provider.document.getMap('config').get('initialContentLoaded')) {
+          console.log("onSync !initialContentLoaded");
           provider.document.getMap('config').set('initialContentLoaded', true)
           this.editor.commands.setContent(this.model[this.field]);
+        } else{
+          console.log("onSync initialContentLoaded");
         }
       } else {
+        console.log("onSync but no editor");
         setTimeout( () => onSync(provider) , 250);
       }
     }.bind(this);
