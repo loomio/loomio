@@ -13,6 +13,7 @@ import Bold from '@tiptap/extension-bold';
 import BulletList from '@tiptap/extension-bullet-list';
 import CodeBlock from '@tiptap/extension-code-block';
 import Code from '@tiptap/extension-code';
+import CharacterCount from '@tiptap/extension-character-count';
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
 import GapCursor from '@tiptap/extension-gapcursor';
@@ -117,14 +118,13 @@ export default
     const onSync = function(provider) {
       if (this.editor) {
         if (!provider.document.getMap('config').get('initialContentLoaded')) {
-          console.log("onSync !initialContentLoaded");
           provider.document.getMap('config').set('initialContentLoaded', true)
           this.editor.commands.setContent(this.model[this.field]);
-        } else{
-          console.log("onSync initialContentLoaded");
+        } else if (this.editor.storage.characterCount.characters() == 0 && !this.model.attributeIsBlank(this.field)) {
+          this.editor.commands.setContent(this.model[this.field]);
         }
       } else {
-        console.log("onSync but no editor");
+        console.error("onSync but no editor");
         setTimeout( () => onSync(provider) , 250);
       }
     }.bind(this);
@@ -152,6 +152,7 @@ export default
         Bold,
         BulletList,
         CodeBlock,
+        CharacterCount.configure({limit: this.maxLength}),
         CustomImage.configure({attachFile: this.attachFile, attachImageFile: this.attachImageFile}),
         Collaboration.configure({
           document: provider.document,
@@ -223,7 +224,7 @@ export default
         if (this.model.isNew()) { this.scrapeLinkPreviews(); }
       },
       onCreate: () => {
-        if (this.model.isNew() && (this.editor.getCharacterCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
+        if (this.model.isNew() && (this.charCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
       }
     });
 
@@ -244,10 +245,6 @@ export default
     format() {
       return this.model[`${this.field}Format`];
     },
-
-    reasonTooLong() { 
-      return this.editor.getCharacterCount() >= this.maxLength;
-    }
   },
 
   watch: {
@@ -255,6 +252,12 @@ export default
   },
 
   methods: {
+    reasonTooLong() {
+      return this.charCount() >= this.maxLength;
+    },
+    charCount() {
+      return this.editor.storage.characterCount.characters()
+    },
     resetDraft(content) {
       this.editor.commands.setContent(content); 
     },
@@ -280,7 +283,7 @@ export default
     },
 
     checkLength() {
-      this.model.saveDisabled = this.editor.getCharacterCount() > this.maxLength;
+      this.model.saveDisabled = this.charCount() > this.maxLength;
     },
 
     setCount(count) {
@@ -511,9 +514,9 @@ div
           //- save button?
           v-spacer
           slot(v-if="!expanded" name="actions")
-          .text-right(dense v-if="maxLength", :class="{'red--text': reasonTooLong, 'text--secondary': !reasonTooLong}")
-            span(:style="reasonTooLong ? 'font-weight: 700' : ''")
-              | {{editor.getCharacterCount()}} / {{maxLength}}
+          .text-right(dense v-if="maxLength", :class="{'red--text': reasonTooLong(), 'text--secondary': !reasonTooLong()}")
+            span(:style="reasonTooLong() ? 'font-weight: 700' : ''")
+              | {{charCount()}} / {{maxLength}}
 
     div.d-flex(v-if="expanded", name="actions")
       v-spacer
