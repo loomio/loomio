@@ -58,9 +58,6 @@ export default class GroupModel extends BaseModel {
   }
 
   afterConstruction() {
-    if (this.privacyIsClosed()) {
-      this.allowPublicThreads = this.discussionPrivacyOptions === 'public_or_private';
-    }
     HasDocuments.apply(this, {showTitle: true});
     return HasTranslations.apply(this);
   }
