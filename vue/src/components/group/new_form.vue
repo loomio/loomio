@@ -72,10 +72,9 @@ export default
 
   methods: {
     submit() {
-      const allowPublic = this.group.allowPublicThreads;
       this.group.discussionPrivacyOptions = (() => { switch (this.group.groupPrivacy) {
         case 'open':   return 'public_only';
-        case 'closed': if (allowPublic) { return 'public_or_private'; } else { return 'private_only'; }
+        case 'closed': return 'private_only';
         case 'secret': return 'private_only';
       } })();
 
