@@ -72,6 +72,7 @@ class AppConfig
       accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            brand_colors[:gold]),
       text_on_primary_color:             ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR',   '#ffffff'),
       text_on_accent_color:              ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR',    '#ffffff'),
+      default_invitation_message:        ENV['THEME_DEFAULT_INVITATION_MESSAGE'],
 
       vuetify: {
         primary: ENV.fetch('THEME_COLOR_PRIMARY', brand_colors[:sky]),
