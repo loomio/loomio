@@ -486,7 +486,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     retriable (3.1.2)
-    reverse_markdown (2.1.1)
+    reverse_markdown (3.0.0)
       nokogiri
     rexml (3.3.8)
     rspec-activemodel-mocks (1.2.0)
