@@ -118,6 +118,8 @@ class ReceivedEmail < ApplicationRecord
 
   def complainer_address
     return nil unless attachments.first
-    attachments.first.download.scan(AppConfig::EMAIL_REGEX).flatten.uniq.reject {|e| e.downcase == BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase }.first
+    @complainer_address ||= attachments.first.download.scan(AppConfig::EMAIL_REGEX).flatten.uniq.reject {|e| e.downcase == BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase }.first
+  rescue ActiveStorage::FileNotFoundError
+    nil
   end
 end

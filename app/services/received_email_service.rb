@@ -21,7 +21,7 @@ class ReceivedEmailService
     return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
     return nil if email.sender_hostname.downcase == ENV['CANONICAL_HOST'].downcase
 
-    if email.is_complaint?
+    if email.is_complaint? && email.complainer_address.present?
       User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
       email.update(released: true)
       return
