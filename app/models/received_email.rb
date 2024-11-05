@@ -111,4 +111,15 @@ class ReceivedEmail < ApplicationRecord
 
     prefixes.any? { |prefix| subject.downcase.starts_with?(prefix.downcase) }
   end
+
+  def is_complaint?
+    sender_email == ENV.fetch('COMPLAINTS_ADDRESS', "complaints@email-abuse.amazonses.com")
+  end
+
+  def complainer_address
+    return nil unless attachments.first
+    @complainer_address ||= attachments.first.download.scan(AppConfig::EMAIL_REGEX).flatten.uniq.reject {|e| e.downcase == BaseMailer::NOTIFICATIONS_EMAIL_ADDRESS.downcase }.first
+  rescue ActiveStorage::FileNotFoundError
+    nil
+  end
 end

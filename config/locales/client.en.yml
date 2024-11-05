@@ -2012,6 +2012,8 @@ en:
     lets_start_a_thread: Let's start a thread. Click "New thread" to continue.
 
   members_panel:
+    email_rejected: Email rejected
+    email_rejected_meaning: Email sent to this address has bounced or been marked as spam. No more email will be sent to this address.
     bot: Bot
     no_results: 'No members found'
     everyone: 'Everyone'

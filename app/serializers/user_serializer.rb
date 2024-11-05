@@ -7,9 +7,14 @@ class UserSerializer < AuthorSerializer
              :autodetect_time_zone,
              :avatar_url,
              :attachments,
-             :date_time_pref
+             :date_time_pref,
+             :complaints_count
 
   def include_has_password?
     scope[:include_password_status]
+  end
+
+  def include_complaints_count?
+    object.complaints_count > 0
   end
 end
