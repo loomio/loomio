@@ -166,7 +166,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         template(v-slot:prepend)
           user-avatar.mr-2(:user="user" :size="32")
         template(v-slot:append)
-          v-btn(variant="text" size="small" icon @click="showSettings = true" @click.prevent)
+          v-btn.sidebar__user-dropdown(variant="text" size="small" icon @click.prevent="showSettings = true")
             common-icon(name="mdi-cog")
         v-list-item-title {{ user.name }}
         v-list-item-subtitle 4 unread, 1 vote
