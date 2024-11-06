@@ -429,25 +429,25 @@ div
             common-icon(size="x-small" name="mdi-video")
 
           //- link
-          v-menu(:close-on-content-click="!selectedText()", v-model="linkDialogIsOpen", min-width="320px")
-            template(v-slot:activator="{attrs}")
+          v-menu(:close-on-content-click="!selectedText()" v-model="linkDialogIsOpen")
+            template(v-slot:activator="{ props }")
               template(v-if="editor.isActive('link')")
-                v-btn(size="x-small" icon variant="text" @click="editor.chain().toggleLink().focus().run()", outlined :title="$t('formatting.link')")
+                v-btn(size="x-small" icon variant="outlined" @click="editor.chain().toggleLink().focus().run()" :title="$t('formatting.link')")
                   common-icon(size="x-small" name="mdi-link-variant")
               template(v-else)
-                v-btn(size="x-small" icon variant="text" v-bind="attrs", :title="$t('formatting.link')")
+                v-btn(size="x-small" icon variant="text" v-bind="props" :title="$t('formatting.link')")
                   common-icon(size="x-small" name="mdi-link-variant")
-            v-card
+            div
               template(v-if="selectedText()")
-                v-card-title.title(v-t="'text_editor.insert_link'")
-                v-card-text
-                  v-text-field(type="url" label="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl()")
-                v-card-actions
-                  v-spacer
-                  v-btn(size="x-small" color="primary" @click="setLinkUrl()" v-t="'common.action.apply'")
+                v-card(:min-width="320" :title="$t('text_editor.insert_link')")
+                  v-card-text
+                    v-text-field(variant="solo-filled" hide-details type="url" placeholder="https://www.example.com" v-model="linkUrl" autofocus ref="focus" v-on:keyup.enter="setLinkUrl()")
+                  v-card-actions
+                    v-spacer
+                    v-btn(variant="tonal"  color="primary" @click="setLinkUrl()")
+                      span(v-t="'common.action.apply'")
               template(v-else)
-                v-card-title(v-t="'text_editor.select_text_to_link'")
-
+                v-card(:title="$t('text_editor.select_text_to_link')")
 
           template(v-if="expanded")
             template(v-for="i in [1,2,3]")
