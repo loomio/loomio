@@ -42,7 +42,7 @@ export default {
 v-list(nav density="compact")
   v-list-item(nav slim :to="urlFor(organization)")
     template(v-slot:prepend)
-      group-avatar.mr-2(size="24" :group="organization")
+      group-avatar.mr-2(:size="24" :group="organization")
     v-list-item-title {{organization.name}}
     v-list-item-subtitle(v-if='openCounts[organization.id]')
       | {{openCounts[organization.id]}} unread
