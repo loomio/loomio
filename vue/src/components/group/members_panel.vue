@@ -244,27 +244,43 @@ export default
             template(v-slot:prepend)
               user-avatar.mr-2(:user='membership.user()' :size='36')
             v-list-item-title
-              span {{ membership.user().name }}
-              span.text-medium-emphasis
-                space
-                span(v-if="membership.acceptedAt && membership.userEmail") &lt;{{membership.userEmail}}&gt;
-                span(v-else) {{membership.userEmail}}
+              template(v-if="membership.acceptedAt")
+                router-link(:to="urlFor(membership.user())") {{ membership.user().name }}
+                span.text-medium-emphasis(v-if="membership.acceptedAt && membership.userEmail")
+                  space
+                  span &lt;{{membership.userEmail}}&gt;
+              template(v-if="!membership.acceptedAt && membership.userEmail")
+                | {{membership.userEmail}}
+
               span.text-caption(v-if="$route.query.subgroups")
                 space
                 span {{membership.group().name}}
-              space
-              span.text-caption {{membership.user().title(group)}}
-              space
-              v-chip(v-if="membership.user().bot" size="x-small" outlined label v-t="'members_panel.bot'")
-              span(v-if="membership.groupId == group.id && membership.admin")
+
+              template(v-if="membership.user().title(group)")
                 space
-                v-chip(size="x-small" outlined label v-t="'members_panel.admin'")
+                span.text-caption {{membership.user().title(group)}}
+
+              template(v-if="membership.user().bot")
                 space
-              span.text-caption.text-medium-emphasis(v-if="membership.acceptedAt")
+                v-chip(v-if="membership.user().bot" size="x-small" label)
+                  span(v-t="'members_panel.bot'")
+
+              template(v-if="membership.user().complaintsCount")
+                space
+                v-chip(color="error" size="x-small" label :title="$t('members_panel.email_rejected_meaning')")
+                  span(v-t="'members_panel.email_rejected'")
+
+              template(v-if="membership.groupId == group.id && membership.admin")
+                space
+                v-chip(variant="tonal" size="x-small" label)
+                  span(v-t="'members_panel.admin'")
+
+            v-list-item-subtitle
+              span(v-if="membership.acceptedAt")
                 span(v-t="'common.action.joined'")
                 space
                 time-ago(:date="membership.acceptedAt")
-              span.text-caption.text-medium-emphasis(v-if="!membership.acceptedAt")
+              span(v-else)
                 template(v-if="membership.inviterId")
                   span(v-t="{path: 'members_panel.invited_by_name', args: {name: membership.inviter().name}}")
                   space
@@ -273,8 +289,7 @@ export default
                   span(v-t="'members_panel.header_invited'")
                   space
                   time-ago(:date="membership.createdAt")
-            v-list-item-subtitle
-              span(v-if="membership.acceptedAt") {{ (membership.user().shortBio || '').replace(/<\/?[^>]+(>|$)/g, "") }}
+
             template(v-slot:append)
               membership-dropdown(v-if="membership.groupId == group.id" :membership="membership")
 

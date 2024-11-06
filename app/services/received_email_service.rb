@@ -15,10 +15,18 @@ class ReceivedEmailService
   end
 
   def self.route(email)
-    return nil unless email.route_address
     return nil if email.released
+    return nil unless email.route_address
+    return nil unless email.sender_email
     return nil if email.sender_hostname.downcase == ENV['REPLY_HOSTNAME'].downcase
-    return nil if email.sender_hostname.downcase == ENV['SMTP_DOMAIN'].downcase
+    return nil if email.sender_hostname.downcase == ENV['CANONICAL_HOST'].downcase
+
+    if email.is_complaint? && email.complainer_address.present?
+      User.where(email: email.complainer_address).update_all("complaints_count = complaints_count + 1")
+      email.update(released: true)
+      return
+    end
+
     case email.route_path
     when /d=.+&u=.+&k=.+/
       # personal email-to-thread, eg. d=100&k=asdfghjkl&u=999@mail.loomio.com

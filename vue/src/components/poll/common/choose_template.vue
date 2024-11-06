@@ -199,8 +199,10 @@ export default {
           )
             v-list-item-title
               span {{ template.processName }}
-              v-chip.ml-2(size="x-small" v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
-              v-chip.ml-2(size="x-small" v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
+              v-chip.ml-2(size="x-small" v-if="filter == 'admin' && !template.id")
+                span(v-t="'poll_common_action_panel.default_template'")
+              v-chip.ml-2(size="x-small" v-if="filter == 'admin' && template.id")
+                span(v-t="'poll_common_action_panel.custom_template'")
             v-list-item-subtitle {{ template.processSubtitle }}
             //- v-list-item-action.handle(v-handle style="cursor: grab")
             template(v-slot:append)
@@ -215,8 +217,10 @@ export default {
       )
         v-list-item-title
           span {{ template.processName }}
-          v-chip.ml-2(size="x-small" outlined v-if="filter == 'admin' && !template.id" v-t="'poll_common_action_panel.default_template'")
-          v-chip.ml-2(size="x-small" outlined v-if="filter == 'admin' && template.id" v-t="'poll_common_action_panel.custom_template'")
+          v-chip.ml-2(size="x-small" outlined v-if="filter == 'admin' && !template.id")
+            span(v-t="'poll_common_action_panel.default_template'")
+          v-chip.ml-2(size="x-small" outlined v-if="filter == 'admin' && template.id")
+            span(v-t="'poll_common_action_panel.custom_template'")
         v-list-item-subtitle {{ template.processSubtitle }}
         template(v-slot:append)
           action-menu(:actions='actions[i]' size="small" icon :name="$t('action_dock.more_actions')")

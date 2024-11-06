@@ -14,7 +14,6 @@ export default
     ChangeVolumeForm: defineAsyncComponent(() => import('@/components/common/change_volume_form')),
     PollCommonModal: defineAsyncComponent(() => import('@/components/poll/common/modal')),
     PollCommonEditVoteModal: defineAsyncComponent(() => import('@/components/poll/common/edit_vote_modal')),
-    ContactRequestForm: defineAsyncComponent(() => import('@/components/contact/request_form')),
     AuthModal: defineAsyncComponent(() => import('@/components/auth/modal')),
     MembershipRequestForm: defineAsyncComponent(() => import('@/components/group/membership_request_form')),
     MembershipModal: defineAsyncComponent(() => import('@/components/group/membership_modal')),

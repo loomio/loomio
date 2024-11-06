@@ -237,6 +237,7 @@ export default {
   },
 
   computed: {
+    canAnnounceDiscussion() { return AbilityService.canAnnounceDiscussion(this.model) },
     canAddGuests() { return AbilityService.canAddGuests(this.model); },
     canNotifyGroup() { return AbilityService.canAnnounce(this.model); },
     modelName() { return this.model.constructor.singular; },
@@ -329,6 +330,7 @@ export default {
 <template lang="pug">
 div.recipients-autocomplete
   v-autocomplete.announcement-form__input(
+    :disabled="model.isA('discussion') && !canAnnounceDiscussion"
     multiple
     return-object
     hide-selected

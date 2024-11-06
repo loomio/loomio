@@ -131,7 +131,7 @@ module HasRichText
   def add_required_link_attributes(text)
     fragment = Nokogiri::HTML::DocumentFragment.parse(text)
     fragment.css('a').each do |node|
-      if URI(node['href'] || '').host == ENV['CANONICAL_HOST']
+      if String(node['href']).starts_with?("https://#{ENV['CANONICAL_HOST']}")
         node['rel'] = nil
         node['target'] = nil
       else

@@ -98,6 +98,7 @@ class Group < ApplicationRecord
 
   validates_presence_of :name
   validates :name, length: { maximum: 250 }
+  validates :request_to_join_prompt, length: { maximum: 280 }
 
   validate :limit_inheritance
   validates :subscription, absence: true, if: :is_subgroup?

@@ -41,7 +41,7 @@ export default
   },
 
   mounted() {
-    this.message = I18n.global.t('announcement.form.invitation_message_default');
+    this.message = AppConfig.theme.default_invitation_message || I18n.global.t('announcement.form.invitation_message_default');
     this.updateSuggestions();
     this.watchRecords({
       collections: ['memberships', 'groups'],

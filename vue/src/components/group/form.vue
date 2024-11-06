@@ -53,12 +53,11 @@ export default
 
   methods: {
     submit() {
-      const allowPublic = this.group.allowPublicThreads;
-      this.group.discussionPrivacyOptions = (() => { switch (this.group.groupPrivacy) {
-        case 'open':   return 'public_only';
-        case 'closed': if (allowPublic) { return 'public_or_private'; } else { return 'private_only'; }
-        case 'secret': return 'private_only';
-      } })();
+      if (this.group.groupPrivacy == 'open') {
+        this.group.discussionPrivacyOptions = 'public_only';
+      } else {
+        this.group.discussionPrivacyOptions = 'private_only';
+      }
 
       this.group.parentMembersCanSeeDiscussions = (() => { switch (this.group.groupPrivacy) {
         case 'open':   return true;
@@ -73,7 +72,8 @@ export default
         EventBus.$emit('closeModal');
         this.$router.push(`/g/${groupKey}`);
       }).catch(error => {
-        Flash.custom(error.error, 'error', 5000);
+        Flash.warning('poll_common_form.please_review_the_form');
+        console.error(error);
       })
     },
 
@@ -114,9 +114,25 @@ export default
     }
   },
 
+  watch: {
+    'group.groupPrivacy'(val) {
+      if (this.group.groupPrivacy != 'open' && this.group.membershipGrantedUpon == 'request') {
+        this.group.membershipGrantedUpon = 'approval';
+      }
+    }
+  },
+
   computed: {
     cardTitle() {
       return this.group.parentId ? 'group_form.subgroup_settings' : 'group_form.group_settings'
+    },
+
+    membershipGrantedUponOptions() {
+      if (this.group.groupPrivacy == 'open') {
+        return ['request', 'approval', 'invitation']
+      } else {
+        return ['approval', 'invitation']
+      }
     },
 
     actionName() {
@@ -230,23 +246,30 @@ v-card.group-form(:title="$t(cardTitle)")
                   mid-dot
                   span {{ privacyStringFor(privacy) }}
           validation-errors(:subject="group" field="groupPrivacy")
-        p.group-form__privacy-statement.text-medium-emphasis {{privacyStatement}}
-        .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
+        p.group-form__privacy-statement.text-medium-emphasis(v-if="group.groupPrivacy != 'secret'") {{privacyStatement}}
+        .group-form__section.group-form__joining.lmo-form-group(v-if='group.groupPrivacy != "secret"')
           v-list-subheader(v-t="'group_form.how_do_people_join'")
           v-radio-group(v-model='group.membershipGrantedUpon')
             v-radio(
-              v-for="granted in ['request', 'approval', 'invitation']"
+              v-for="granted in membershipGrantedUponOptions"
               :key="granted"
               :class="'group-form__membership-granted-upon-' + granted"
               :value='granted'
             )
               template(v-slot:label)
                 span(v-t="'group_form.membership_granted_upon_' + granted")
+        template(v-if="group.groupPrivacy != 'secret' && group.membershipGrantedUpon == 'approval'")
+          p(v-t="'group_form.request_to_join_prompt'")
+          v-textarea(
+            counter
+            v-model="group.requestToJoinPrompt"
+            :placeholder="$t('group_form.default_request_to_join_prompt')")
+          validation-errors(:subject='group' field='requestToJoinPrompt')
+
 
     v-tabs-window-item(value="permissions")
       .mt-8.px-4.group-form__section.group-form__permissions
         p.text-body-2.pb-4.group-form__privacy-statement.text-medium-emphasis(v-t="'group_form.permissions_explaination'")
-        //- v-checkbox.group-form__allow-public-threads(hide-details v-model='group["allowPublicThreads"]' :label="$t('group_form.allow_public_threads')" v-if='group.privacyIsClosed() && !group.isSubgroupOfSecretParent()')
         v-checkbox.group-form__parent-members-can-see-discussions(hide-details v-model='group.parentMembersCanSeeDiscussions' v-if='group.parentId && group.privacyIsClosed()')
           template(v-slot:label)
             div

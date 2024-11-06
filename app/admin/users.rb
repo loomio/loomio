@@ -6,6 +6,7 @@ ActiveAdmin.register User do
   filter :email, as: :string
   filter :email_newsletter
   filter :email_verified
+  filter :complaints_count
   filter :sign_in_count
   filter :detected_locale, as: :string
   filter :time_zone
@@ -40,6 +41,7 @@ ActiveAdmin.register User do
     column "No. of groups", :memberships_count
     column :deactivated_at
     column :email_verified
+    column :complaints_count
     column :locale
     column :time_zone
     column :bot
@@ -51,6 +53,7 @@ ActiveAdmin.register User do
       f.input :name
       f.input :email, as: :string
       f.input :username, as: :string
+      f.input :complaints_count
       f.input :is_admin
       f.input :bot, label: 'Bot account (do not add to polls)'
     end
@@ -61,6 +64,7 @@ ActiveAdmin.register User do
     user = User.friendly.find(params[:id])
     user.name = params[:user][:name]
     user.email = params[:user][:email]
+    user.complaints_count = params[:user][:complaints_count]
     user.username = params[:user][:username]
     user.is_admin = params[:user][:is_admin]
     user.bot = params[:user][:bot]

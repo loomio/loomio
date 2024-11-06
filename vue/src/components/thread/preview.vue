@@ -58,7 +58,8 @@ v-list-item.thread-preview.thread-preview__link(
     span(v-if='thread.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
       common-icon(size="x-small" name="mdi-pin-outline")
     span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
-    v-chip.ml-1(size="x-small" label outlined color="warning" v-if='thread.closedAt' v-t="'common.privacy.closed'")
+    v-chip.ml-1(size="x-small" label outlined color="warning" v-if='thread.closedAt')
+      span(v-t="'poll_common_action_panel.custom_template'")
     tags-display.ml-1(:tags="thread.tags" :group="thread.group()" size="x-small")
   v-list-item-subtitle
     span.thread-preview__group-name(v-if="showGroupName") {{ thread.group().name }}

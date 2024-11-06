@@ -22,8 +22,6 @@ module.exports = {
   ConfirmModal: 'common/confirm_modal',
   ContactForm: 'contact/form',
   CommonIcon: 'common/icon',
-  ContactRequestForm: 'contact/request_form',
-  ContactRequestModal: 'contact/request_modal',
   ContextPanel: 'thread/context_panel',
   DateTimePicker: 'common/date_time_picker',
   DecisionToolsCard: 'thread/decision_tools_card',

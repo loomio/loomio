@@ -118,6 +118,8 @@ export default
         if (!provider.document.getMap('config').get('initialContentLoaded')) {
           provider.document.getMap('config').set('initialContentLoaded', true)
           this.editor.commands.setContent(this.model[this.field]);
+        } else if (this.editor.storage.characterCount.characters() == 0 && !this.model.attributeIsBlank(this.field)) {
+          this.editor.commands.setContent(this.model[this.field]);
         }
       } else {
         setTimeout( () => onSync(provider) , 250);
@@ -240,7 +242,6 @@ export default
     format() {
       return this.model[`${this.field}Format`];
     },
-
   },
 
   watch: {
@@ -522,8 +523,7 @@ div
           density="compact"
           variant="tonal"
           v-if="maxLength"
-        )
-          | {{charCount()}} / {{maxLength}}
+        ) {{charCount()}} / {{maxLength}}
 
     div.d-flex(v-if="expanded", name="actions")
       v-spacer

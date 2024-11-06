@@ -51,12 +51,7 @@ export var groupPrivacy = function(group, privacy) {
     switch (privacy) {
       case 'open':   return 'group_form.group_privacy_is_open_description';
       case 'secret': return 'group_form.group_privacy_is_secret_description';
-      case 'closed':
-        if (group.allowPublicThreads) {
-          return 'group_form.group_privacy_is_closed_public_threads_description';
-        } else {
-          return 'group_form.group_privacy_is_closed_description';
-        }
+      case 'closed': return 'group_form.group_privacy_is_closed_description';
     }
   } else {
     switch (privacy) {
@@ -65,8 +60,6 @@ export var groupPrivacy = function(group, privacy) {
       case 'closed':
         if (group.isSubgroupOfSecretParent()) {
           return 'group_form.subgroup_privacy_is_closed_secret_parent_description';
-        } else if (group.allowPublicThreads) {
-          return 'group_form.subgroup_privacy_is_closed_public_threads_description';
         } else {
           return 'group_form.subgroup_privacy_is_closed_description';
         }

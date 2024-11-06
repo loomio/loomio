@@ -86,28 +86,19 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
       span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: discussion.closer().name} }")
       mid-dot
       time-ago(:date='discussion.closedAt')
-  template(v-else)
+  template(v-if="canAddComment")
     v-divider(aria-hidden="true")
     v-tabs.activity-panel__actions.mb-3(grow color="primary" v-model="currentAction")
       v-tab(value='add-comment')
         span(v-t="'thread_context.add_comment'")
       v-tab.activity-panel__add-poll(value='add-poll' v-if="canStartPoll")
-        //- span(v-t="'poll_common_form.start_poll'")
         span(v-t="'poll_common.decision'")
-        //- v-badge(v-if="showDecisionBadge" inline dot)
     v-window(v-model="currentAction")
       v-window-item(value="add-comment")
         .add-comment-panel
           comment-form(
-            v-if='canAddComment'
             :comment="newComment"
             @comment-submitted="resetComment")
-          .add-comment-panel__join-actions(v-if='!canAddComment')
-            join-group-button(
-              v-if='isLoggedIn()'
-              :group='discussion.group()'
-              :block='true')
-            v-btn.add-comment-panel__sign-in-btn(v-t="'comment_form.sign_in'" @click='signIn()' v-if='!isLoggedIn()')
       v-window-item(value="add-poll" v-if="canStartPoll")
         .poll-common-start-form
           poll-common-form(
@@ -120,6 +111,18 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
             @setPoll="setPoll"
             :discussion="discussion"
             :group="discussion.group()")
+  template(v-if="!discussion.closedAt && !canAddComment")
+    .add-comment-panel__join-actions
+      join-group-button(
+        v-if='isLoggedIn()'
+        :group='discussion.group()'
+      )
+      v-btn.add-comment-panel__sign-in-btn(
+        @click='signIn()'
+        v-if='!isLoggedIn()'
+      )
+        span(v-t="'comment_form.sign_in'")
+
 </template>
 
 <style lang="sass">

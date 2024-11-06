@@ -11,7 +11,7 @@
     "@hocuspocus/provider": "^2.13.7",
     "@mdi/js": "^6.9.96",
     "@sentry/browser": "^8.33.1",
-    "@sentry/vue": "^8.33.1",
+    "@sentry/vue": "^8.36.0",
     "@tiptap/core": "^2.9.0",
     "@tiptap/extension-blockquote": "^2.9.0",
     "@tiptap/extension-bold": "^2.9.0",
@@ -78,17 +78,17 @@
     "vuetify": "latest",
     "y-indexeddb": "^9.0.12",
     "y-prosemirror": "^1.2.12",
-    "yjs": "^13.6.19"
+    "yjs": "^13.6.20"
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "latest",
     "@originjs/vite-plugin-content": "latest",
     "@vitejs/plugin-vue": "^5.0.0",
-    "nightwatch": "^3.8.0",
+    "nightwatch": "^3.8.1",
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
-    "vite": "^5.4.8",
+    "vite": "^5.4.10",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest"
   },

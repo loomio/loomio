@@ -59,6 +59,10 @@ module Null::User
   def default_format
     "html"
   end
+
+  def complaints_count
+    0
+  end
   
   def short_bio_format
     "html"

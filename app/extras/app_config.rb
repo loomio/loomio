@@ -11,7 +11,7 @@ class AppConfig
     locales
   )
 
-  BANNED_CHARS = %(\\s:,;'"`<>)
+  BANNED_CHARS = %(\\s:,;\\[\\]'"`<>)
   EMAIL_REGEX  = /[^#{BANNED_CHARS}]+?@[^#{BANNED_CHARS}]+\.[^#{BANNED_CHARS}]+/
   URL_REGEX    = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/
 
@@ -72,6 +72,7 @@ class AppConfig
       accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            brand_colors[:gold]),
       text_on_primary_color:             ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR',   '#ffffff'),
       text_on_accent_color:              ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR',    '#ffffff'),
+      default_invitation_message:        ENV['THEME_DEFAULT_INVITATION_MESSAGE'],
 
       vuetify: {
         primary: ENV.fetch('THEME_COLOR_PRIMARY', brand_colors[:sky]),
