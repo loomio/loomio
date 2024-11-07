@@ -26,7 +26,7 @@ export default class PollModel extends BaseModel {
   }
 
   collabKeyParams() {
-    return [this.groupId, this.pollTemplateId, this.pollTemplateKey];
+    return [this.groupId, this.sourceTemplateId, this.pollTemplateId, this.pollTemplateKey];
   }
 
   afterConstruction() {
