@@ -1,4 +1,5 @@
 import {capitalize, uniq, union, filter, map, includes } from 'lodash-es';
+import Records from "@/shared/services/records";
 
 export default new class HasDocuments {
   apply(model, opts) {
@@ -6,12 +7,12 @@ export default new class HasDocuments {
     model.newDocumentIds     = model.newDocumentIds || [];
     model.removedDocumentIds = model.removedDocumentIds || [];
 
-    model.documents = () => model.recordStore.documents.find({
+    model.documents = () => Records.documents.find({
       modelId: model.id,
       modelType: capitalize(model.constructor.singular)
     });
 
-    model.newDocuments = () => model.recordStore.documents.find(model.newDocumentIds);
+    model.newDocuments = () => Records.documents.find(model.newDocumentIds);
 
     model.newAndPersistedDocuments = () => uniq(filter(union(model.documents(), model.newDocuments()), doc => !includes(model.removedDocumentIds, doc.id))
     );

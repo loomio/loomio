@@ -37,11 +37,8 @@ export default
 };
 </script>
 <template lang="pug">
-v-card.membership-request-form
-  submit-overlay(:value='membershipRequest.processing')
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'membership_request_form.heading'")
-    v-spacer
+v-card.membership-request-form(:title="$t('membership_request_form.heading')")
+  template(v-slot:append)
     dismiss-modal-button(:close="close")
   v-card-text
     p(v-if="!group.requestToJoinPrompt" v-t="'group_form.default_request_to_join_prompt'")
@@ -53,7 +50,10 @@ v-card.membership-request-form
     .membership-request-form__reason
       v-textarea.membership-request-form__introduction(v-model='membershipRequest.introduction' :required='false' maxlength='250' :label="$t('membership_request_form.introduction_label')")
   v-card-actions
-    v-btn.membership-request-form__cancel-btn(@click='close()' v-t="'common.action.cancel'")
-    v-spacer
-    v-btn.membership-request-form__submit-btn(color="primary" @click='submit()' v-t="'membership_request_form.submit_button'")
+    v-btn.membership-request-form__submit-btn(
+      variant="elevated"
+      color="primary"
+      @click='submit'
+    )
+      span(v-t="'membership_request_form.submit_button'")
 </template>

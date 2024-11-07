@@ -156,6 +156,7 @@ fi:
     no_tags_present: Tällä tunnisteella ei löytynyt lankoja! Yritä valita toinen
     no_tags_in_group: Tällä ryhmällä ei ole vielä luokkatunnisteita
     only_admins_can_edit_tags: Valitettavasti vain ryhmän %{group} ylläpitäjät voivat luoda, nimetä uudelleen tai poistaa tunnisteita
+    pick_a_color: Valitse väri
   poll_types:
     proposal: ehdotus
     count: opt-in
@@ -577,6 +578,9 @@ fi:
     close_sidebar: Sulje sivupalkki
     logo_title: Kotisivu
     group_and_subgroups: "%{group} ja alaryhmät"
+    search_members_short: Hae jäseniä
+    search_files_short: Etsi tiedostoja
+    search_subgroups_short: Hae alaryhmiä
   user_dropdown:
     pin_sidebar: Kiinnitä sivupalkki
     unpin_sidebar: Irrota sivupalkki
@@ -593,6 +597,9 @@ fi:
     sign_out: Kirjaudu ulos
     beta_collab: "\U0001F9EA Beta-ominaisuudet käytössä!"
     outcomes: Tulokset
+    theme: Teema
+    light: Kevyt
+    dark: Tumma
   membership_card:
     group_members: Ryhmän jäsenet
     discussion_members: Viestiketjun jäsenet
@@ -615,6 +622,7 @@ fi:
       group: Poista ryhmästä
       poll: Poista kohteesta %{pollType}
     cancel_invitation: Peruuta kutsu
+    view_profile: Näytä profiili
   notification_models:
     discussion: 'lanka:'
     comment: kommentoida sisään
@@ -1691,6 +1699,10 @@ fi:
     meaning_hint: Pari lausetta, joissa selitetään, mitä tämän vaihtoehdon valitseminen tarkoittaa. Valinnainen
     prompt: Syykehote
     prompt_hint: Kysymys, joka kannustaa äänestäjiä jakamaan perustelunsa tai harkitsemaan uudelleen kantaansa. Valinnainen
+    thumb_up: Peukalo ylös
+    thumb_down: Peukalo alas
+    thumb_sideways: Peukalo sivuttain
+    hand_up: Käsi ylös
   poll_common:
     superseded: Korvattu
     outdated: Vanhentunut
@@ -2094,6 +2106,9 @@ fi:
     hide_results_description: Jos haluat ihmisten äänestävän tietämättä kuinka muut ovat äänestäneet, voit piilottaa kyselyn tulokset.
     process_helptext: Nimeä ja kuvaile prosessi, jota käytetään tämän kyselyn suorittamiseen.
     reminder_helptext: Lähetä "Suljetaan pian" -ilmoitus ennen äänestyksen sulkeutumista. Tämä voi olla ihmisille mahdollisuus nähdä, miten muut ovat äänestäneet, ja harkita omaa ääntään, tai vain tapa lisätä osallistumista kyselyyn.
+    deadline: Määräaika
+    how_much_time_to_vote: Kuinka kauan annat ihmisille aikaa äänestää?
+    advanced_settings: Lisäasetukset
   poll_proposal_form:
     start_header: Aloita ehdotus
     edit_header: Muokkaa ehdotusta

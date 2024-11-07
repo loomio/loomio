@@ -156,6 +156,7 @@ ca:
     no_tags_present: No s'han trobat cap fil amb aquesta etiqueta! Proveu de seleccionar-ne un altre
     no_tags_in_group: Aquest grup encara no té etiquetes de categoria
     only_admins_can_edit_tags: Ho sentim, només els administradors de %{group} poden crear, canviar el nom o suprimir etiquetes
+    pick_a_color: Tria un color
   poll_types:
     proposal: proposta
     count: optar a
@@ -581,6 +582,9 @@ ca:
     close_sidebar: Tanca barra lateral
     logo_title: Pàgina d'inici
     group_and_subgroups: "%{group} i subgrups"
+    search_members_short: Cerca membres
+    search_files_short: Cerca fitxers
+    search_subgroups_short: Cerca subgrups
   user_dropdown:
     pin_sidebar: Fixa la barra lateral
     unpin_sidebar: Deixa de fixar la barra lateral
@@ -597,6 +601,9 @@ ca:
     sign_out: Tanca la sessió
     beta_collab: "\U0001F9EA Funcions beta activades!"
     outcomes: Resultats
+    theme: Tema
+    light: Llum
+    dark: Fosc
   membership_card:
     group_members: Membres del grup
     discussion_members: Membres del fil
@@ -619,6 +626,7 @@ ca:
       group: Eliminar del grup
       poll: Eliminar del %{pollType}
     cancel_invitation: Cancel·la la invitació
+    view_profile: Veure el perfil
   notification_models:
     discussion: 'fil:'
     comment: Comenta a
@@ -1717,6 +1725,10 @@ ca:
     meaning_hint: Una o dues frases que expliquen què significa triar aquesta opció. Opcional
     prompt: Indicació de motiu
     prompt_hint: Una pregunta per incitar als votants a compartir el seu raonament o reconsiderar la seva posició. Opcional
+    thumb_up: Polze cap amunt
+    thumb_down: Polze cap avall
+    thumb_sideways: Polze de costat
+    hand_up: Mà amunt
   poll_common:
     superseded: Substituït
     outdated: Antiquat
@@ -2122,6 +2134,9 @@ ca:
     hide_results_description: Si voleu que la gent voti sense saber com han votat els altres, podeu amagar els resultats de l'enquesta.
     process_helptext: Anomena i descriu el procés que s'utilitza per executar aquesta enquesta.
     reminder_helptext: Envieu una notificació "Tanquem aviat" abans que es tanqui l'enquesta. Aquesta pot ser una oportunitat perquè la gent vegi com han votat els altres i reconsideri el seu propi vot, o només una manera d'augmentar la participació a l'enquesta.
+    deadline: Data límit
+    how_much_time_to_vote: Quant de temps donareu perquè la gent voti?
+    advanced_settings: Configuració avançada
   poll_proposal_form:
     start_header: Crea una proposta
     edit_header: Edita una proposta

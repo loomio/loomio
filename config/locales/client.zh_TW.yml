@@ -162,6 +162,7 @@ zh_TW:
     no_tags_present: 找不到有該標籤的討論串！嘗試選取其他的
     no_tags_in_group: 此群組還沒有分類標籤
     only_admins_can_edit_tags: 抱歉，僅有 %{group} 的管理員可以建立、重新命名或刪除標籤
+    pick_a_color: 選擇一種顏色
   poll_types:
     proposal: 提議
     count: 選擇參加
@@ -587,6 +588,9 @@ zh_TW:
     close_sidebar: 關閉側邊欄
     logo_title: 首頁
     group_and_subgroups: "%{group} 與子群組"
+    search_members_short: 搜尋會員
+    search_files_short: 搜尋文件
+    search_subgroups_short: 搜尋子組
   user_dropdown:
     pin_sidebar: 釘選側邊欄
     unpin_sidebar: 取消釘選側邊欄
@@ -603,6 +607,9 @@ zh_TW:
     sign_out: 登出
     beta_collab: "\U0001F9EA 已啟用測試版功能！"
     outcomes: 結果
+    theme: 主題
+    light: 光
+    dark: 黑暗的
   membership_card:
     group_members: 群組成員
     discussion_members: 討論串成員
@@ -625,6 +632,7 @@ zh_TW:
       group: 自群組移除
       poll: 自 %{pollType} 移除
     cancel_invitation: 取消邀請函
+    view_profile: 查看個人資料
   notification_models:
     discussion: 討論串：
     comment: 評論於
@@ -1729,6 +1737,10 @@ zh_TW:
     meaning_hint: 用一兩句話解釋選擇此選項的含義。選修的
     prompt: 原因提示
     prompt_hint: 促使選民分享他們的推理或重新考慮他們的立場的問題。選修的
+    thumb_up: 豎起大拇指
+    thumb_down: 拇指向下
+    thumb_sideways: 大拇指側向
+    hand_up: 舉手
   poll_common:
     superseded: 取代
     outdated: 過時的
@@ -2134,6 +2146,9 @@ zh_TW:
     hide_results_description: 如果您希望人們在不知道其他人如何投票的情況下投票，您可以隱藏投票結果。
     process_helptext: 命名並描述用於執行此輪詢的進程。
     reminder_helptext: 在投票結束前發送「即將結束」通知。這可以讓人們有機會了解其他人如何投票並重新考慮自己的投票，或者只是增加投票參與度的一種方式。
+    deadline: 最後期限
+    how_much_time_to_vote: 您將允許人們投票多少時間？
+    advanced_settings: 進階設定
   poll_proposal_form:
     start_header: 啟動提案
     edit_header: 編輯提案

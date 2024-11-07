@@ -273,7 +273,7 @@ export default new class AbilityService {
   }
 
   canViewGroup(group) {
-    return !group.privacyIsSecret() || group.membersInclude(Session.user());
+    return !group.archivedAt && (!group.privacyIsSecret() || group.membersInclude(Session.user()));
   }
 
   canViewPrivateContent(group) {

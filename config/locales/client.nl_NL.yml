@@ -156,6 +156,7 @@ nl_NL:
     no_tags_present: Geen borden gevonden met dat label! Probeer een andere
     no_tags_in_group: Deze groep heeft nog geen categorielabel
     only_admins_can_edit_tags: Sorry, alleen admins van groep %{group} kunnen labels maken, hernoemen of verwijderen
+    pick_a_color: Kies een kleur
   poll_types:
     proposal: voorstel
     count: opt-in
@@ -581,6 +582,9 @@ nl_NL:
     close_sidebar: Sluit zijbalk
     logo_title: Homepage
     group_and_subgroups: "%{group} & subgroepen"
+    search_members_short: Zoek leden
+    search_files_short: Bestanden zoeken
+    search_subgroups_short: Zoek subgroepen
   user_dropdown:
     pin_sidebar: Zijbalk vastzetten
     unpin_sidebar: Zijbalk losmaken
@@ -597,6 +601,9 @@ nl_NL:
     sign_out: Uitloggen
     beta_collab: "\U0001F9EA Bètafuncties ingeschakeld!"
     outcomes: Resultaten
+    theme: Thema
+    light: Licht
+    dark: Donker
   membership_card:
     group_members: Groepsleden
     discussion_members: Bord leden
@@ -619,6 +626,7 @@ nl_NL:
       group: Van groep verwijderen
       poll: Verwijder van %{pollType}
     cancel_invitation: Annuleer uitnodiging
+    view_profile: Bekijk profiel
   notification_models:
     discussion: 'bord:'
     comment: reactie in
@@ -1719,6 +1727,10 @@ nl_NL:
     meaning_hint: Een zin die uitlegt wat het kiezen van deze optie betekent
     prompt: Reden prompt
     prompt_hint: Een vraag om kiezers ertoe aan te zetten hun redenering te geven of hun standpunt te heroverwegen.
+    thumb_up: Duim omhoog
+    thumb_down: Duim omlaag
+    thumb_sideways: Duim zijwaarts
+    hand_up: Hand omhoog
   poll_common:
     superseded: Vervangen
     outdated: Verouderd
@@ -2124,6 +2136,9 @@ nl_NL:
     hide_results_description: Als u wilt dat mensen stemmen zonder te weten hoe anderen hebben gestemd, kunt u de resultaten van de peiling verbergen.
     process_helptext: Noem en beschrijf het proces dat wordt gebruikt om deze peiling uit te voeren.
     reminder_helptext: Stuur een melding 'Sluit binnenkort' voordat de peiling sluit. Dit kan een kans zijn voor mensen om te zien hoe anderen hebben gestemd en hun eigen stem te heroverwegen, of gewoon een manier om deelname aan de peiling te vergroten.
+    deadline: Termijn
+    how_much_time_to_vote: Hoeveel tijd geeft u mensen om te stemmen?
+    advanced_settings: Geavanceerde instellingen
   poll_proposal_form:
     start_header: "'Voorstel' starten"
     edit_header: Voorstel bewerken

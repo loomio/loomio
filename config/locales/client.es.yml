@@ -162,6 +162,7 @@ es:
     no_tags_present: "¡No se ha encontrado ningún hilo con esta etiqueta! Inténtalo con otra."
     no_tags_in_group: Este grupo todavía no tiene etiquetas de categoría.
     only_admins_can_edit_tags: Lo sentimos, solo los administradores de %{group} pueden crear, cambiar el nombre o eliminar etiquetas
+    pick_a_color: Elige un color
   poll_types:
     proposal: propuesta
     count: Apuntarse
@@ -587,6 +588,9 @@ es:
     close_sidebar: Cerrar recuadro
     logo_title: Página principal
     group_and_subgroups: "%{group} y subgrupos"
+    search_members_short: Buscar miembros
+    search_files_short: Buscar archivos
+    search_subgroups_short: Buscar subgrupos
   user_dropdown:
     pin_sidebar: Anclar barra lateral
     unpin_sidebar: Desanclar barra lateral
@@ -603,6 +607,9 @@ es:
     sign_out: Salir
     beta_collab: Funciones Beta activadas
     outcomes: Resultados
+    theme: Tema
+    light: Luz
+    dark: Oscuro
   membership_card:
     group_members: Integrantes del grupo
     discussion_members: Integrantes del hilo
@@ -625,6 +632,7 @@ es:
       group: Eliminar del grupo
       poll: Eliminar de %{pollType}
     cancel_invitation: Cancelar la invitación
+    view_profile: Ver perfil
   notification_models:
     discussion: 'Hilo:'
     comment: comentar en
@@ -1738,6 +1746,10 @@ es:
     meaning_hint: Una frase que explique lo que significa elegir esta opción
     prompt: Mensaje de motivo
     prompt_hint: Una pregunta para incitar a los votantes a proporcionar su razonamiento o reconsiderar su posición.
+    thumb_up: Pulgar hacia arriba
+    thumb_down: Pulgar hacia abajo
+    thumb_sideways: Pulgar hacia un lado
+    hand_up: Mano arriba
   poll_common:
     superseded: Reemplazado
     outdated: Anticuado
@@ -2145,6 +2157,9 @@ es:
     reminder_helptext: |
       Envíe una notificación de "Cierre pronto" antes de que se cierre la encuesta.
       Esta puede ser una oportunidad para que las personas vean cómo otros han votado y reconsideren su propio voto, o simplemente una forma de aumentar la participación en la encuesta.
+    deadline: Fecha límite
+    how_much_time_to_vote: "¿Cuánto tiempo le dará a la gente para votar?"
+    advanced_settings: Configuración avanzada
   poll_proposal_form:
     start_header: Inicia una propuesta
     edit_header: Edita una propuesta
