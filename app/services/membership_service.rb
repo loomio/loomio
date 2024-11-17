@@ -76,7 +76,7 @@ class MembershipService
 
   def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now)
     DiscussionReader
-    .joins(:discussion).guests
+    .joins(:discussion)
     .where('discussions.group_id': group_ids, user_id: user_id)
     .update_all(guest: false, revoked_at: revoked_at, revoker_id: actor_id)
 
