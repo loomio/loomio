@@ -40,7 +40,7 @@ class MembershipService
 
     # remove any existing guest access in these groups
     DiscussionReader.joins(:discussion)
-    .where(user_id: actor.id, 'discussions.group_id': invited_group_ids, guest: true)
+    .where(user_id: actor.id, 'discussions.group_id': invited_group_ids)
     .update_all(guest: false, revoked_at: nil, revoker_id: nil)
 
     Stance.joins(:poll)
@@ -76,9 +76,9 @@ class MembershipService
 
   def self.revoke_by_id(group_ids, user_id, actor_id, revoked_at = DateTime.now)
     DiscussionReader
-    .joins(:discussion).guests
+    .joins(:discussion)
     .where('discussions.group_id': group_ids, user_id: user_id)
-    .update_all(guest: false)
+    .update_all(guest: false, revoked_at: revoked_at, revoker_id: actor_id)
 
     Stance.joins(:poll).guests
     .where('polls.group_id': group_ids, participant_id: user_id)
