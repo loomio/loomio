@@ -17,7 +17,7 @@ class ReactionQuery
     discussion_ids.uniq!
     poll_ids.uniq!
 
-    if (PollQuery.visible_to(user: user, show_public: true).where(id: poll_ids).count != poll_ids.length) ||
+    if (PollQuery.visible_to(user: user).where(id: poll_ids).count != poll_ids.length) ||
        (DiscussionQuery.visible_to(user: user).where(id: discussion_ids).count != discussion_ids.length)
       raise CanCan::AccessDenied.new
     end

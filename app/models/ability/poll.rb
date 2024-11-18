@@ -16,7 +16,7 @@ module Ability::Poll
     end
 
     can [:show], ::Poll do |poll|
-      PollQuery.visible_to(user: user, show_public: true).exists?(poll.id)
+      PollQuery.visible_to(user: user).exists?(poll.id)
     end
 
     can [:create], ::Poll do |poll|
