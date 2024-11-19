@@ -101,7 +101,7 @@ export default class DiscussionModel extends BaseModel {
   }
 
   privateDefaultValue() {
-    return this.group().discussionPrivacyOptions !== 'public_only';
+    return !this.group().contentIsPublic
   }
 
   relationships() {

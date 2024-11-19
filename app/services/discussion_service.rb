@@ -123,7 +123,7 @@ class DiscussionService
     actor.ability.authorize! :move, discussion
     # discussion.add_admin!(actor)
 
-    discussion.update group: destination.presence, private: moved_discussion_privacy_for(discussion, destination)
+    discussion.update group: destination.presence, private: !destination.content_is_public
     discussion.polls.each { |poll| poll.update(group: destination.presence) }
     ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
 
@@ -198,14 +198,6 @@ class DiscussionService
     reader = DiscussionReader.for(user: actor, discussion: discussion)
     reader.recall!
     EventBus.broadcast('discussion_recall', reader, actor)
-  end
-
-  def self.moved_discussion_privacy_for(discussion, destination)
-    case destination.discussion_privacy_options
-    when 'public_only'  then false
-    when 'private_only' then true
-    else                     discussion.private
-    end
   end
 
   def self.mark_summary_email_as_read(user_id, time_start_i, time_finish_i)

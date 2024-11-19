@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe DiscussionQuery do
   let(:user) { create :user }
-  let(:group) { create :group, discussion_privacy_options: 'public_or_private' }
+  let(:private_group) { create :group, is_visible_to_public: false, content_is_public: false }
+  let(:public_group) { create :group, is_visible_to_public: true, content_is_public: false }
   let(:author) { create :user }
   let(:discussion) { create :discussion, group: group, author: author, private: true }
 
@@ -11,9 +12,9 @@ describe DiscussionQuery do
   end
 
   describe 'logged out' do
-    let!(:public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
-    let!(:another_public_discussion) { create(:discussion, private: false, group: create(:group, is_visible_to_public: true)) }
-    let!(:private_discussion) { create(:discussion, group: create(:group, is_visible_to_public: false)) }
+    let!(:public_discussion) { create(:discussion, private: false, group: public_group) }
+    let!(:another_public_discussion) { create(:discussion, private: false, group: public_group) }
+    let!(:private_discussion) { create(:discussion, group: private_group) }
 
     it 'shows groups visible to public if no groups are specified' do
       query = DiscussionQuery.visible_to
@@ -61,7 +62,7 @@ describe DiscussionQuery do
     let(:group_user) { create :user }
     let(:parent_group_user) { create :user }
     let(:public_user) { create :user }
-    let(:parent_group) { create :group, discussion_privacy_options: 'public_or_private' }
+    let(:parent_group) { create :group, content_is_public: false }
 
     before do
       group.update(parent: parent_group)
@@ -90,6 +91,7 @@ describe DiscussionQuery do
     end
 
     it "public" do
+      discussion.group.group_privacy = 'open'
       discussion.update(private: false)
       expect(DiscussionQuery.visible_to(user: discussion_user).exists?(discussion.id)).to be true
       expect(DiscussionQuery.visible_to(user: group_user).exists?(discussion.id)).to be true
@@ -141,7 +143,7 @@ describe DiscussionQuery do
                          parent_members_can_see_discussions: true,
                          is_visible_to_public: false,
                          is_visible_to_parent_members: true,
-                         discussion_privacy_options: 'private_only' }
+                         content_is_public: false }
 
     before do
       discussion.update_attribute(:private, true)

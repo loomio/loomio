@@ -171,7 +171,7 @@ describe API::V1::GroupsController do
       expect(group.group_privacy).to eq 'open'
       expect(group.is_visible_to_public).to eq true
       expect(group.membership_granted_upon).to eq 'approval'
-      expect(group.discussion_privacy_options).to eq 'public_only'
+      expect(group.content_is_public).to eq true
     end
 
     it 'can update the group privacy to "open" join on request' do
@@ -182,7 +182,7 @@ describe API::V1::GroupsController do
       expect(group.group_privacy).to eq 'open'
       expect(group.is_visible_to_public).to eq true
       expect(group.membership_granted_upon).to eq 'request'
-      expect(group.discussion_privacy_options).to eq 'public_only'
+      expect(group.content_is_public).to eq true
     end
 
     it 'can update the group privacy to "closed"' do
@@ -201,7 +201,7 @@ describe API::V1::GroupsController do
       expect(group.group_privacy).to eq 'secret'
       expect(group.is_visible_to_public).to eq false
       expect(group.membership_granted_upon).to eq 'invitation'
-      expect(group.discussion_privacy_options).to eq 'private_only'
+      expect(group.content_is_public).to eq false
     end
   end
 

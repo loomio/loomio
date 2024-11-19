@@ -27,7 +27,7 @@ export default class GroupModel extends BaseModel {
       descriptionFormat: 'html',
       groupPrivacy: 'secret',
       handle: null,
-      discussionPrivacyOptions: 'private_only',
+      contentIsPublic: false,
       membershipGrantedUpon: 'approval',
       membersCanAnnounce: true,
       membersCanAddMembers: true,

@@ -59,7 +59,7 @@ describe 'RecordCloner' do
       expect(clone.creator_id).to eq actor.id
       expect(clone.is_visible_to_public).to be false
       expect(clone.is_visible_to_parent_members).to be false
-      expect(clone.discussion_privacy_options).to eq 'private_only'
+      expect(clone.content_is_public).to eq false
       expect(clone.membership_granted_upon).to eq 'approval'
       expect(clone.listed_in_explore).to be false
       expect(clone.created_at).to be > DateTime.now

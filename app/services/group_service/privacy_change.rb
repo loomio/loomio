@@ -9,7 +9,7 @@ class GroupService::PrivacyChange
     @changed.each do |attribute|
       case attribute
       when 'is_visible_to_public'
-        if group.is_hidden_from_public?
+        if !group.is_visible_to_public
           make_discussions_private_in(group)
           make_discussions_private_in(group.subgroups)
           group.subgroups.each do |subgroup|
@@ -17,10 +17,11 @@ class GroupService::PrivacyChange
             subgroup.save!
           end
         end
-      when 'discussion_privacy_options'
-        case group.discussion_privacy_options
-        when 'private_only' then make_discussions_private_in(group)
-        when 'public_only' then make_discussions_public_in(group)
+      when 'content_is_public'
+        if group.content_is_public
+          make_discussions_public_in(group)
+        else
+          make_discussions_private_in(group)
         end
       end
     end

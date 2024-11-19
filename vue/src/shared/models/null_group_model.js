@@ -15,7 +15,7 @@ export default class NullGroupModel {
       descriptionFormat: 'html',
       groupPrivacy: 'closed',
       handle: null,
-      discussionPrivacyOptions: 'public_or_private',
+      contentIsPublic: false,
       membershipGrantedUpon: 'approval',
       membersCanAnnounce: true,
       membersCanAddMembers: true,

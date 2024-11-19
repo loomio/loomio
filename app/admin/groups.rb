@@ -130,9 +130,9 @@ ActiveAdmin.register Group, as: 'Group' do
       row :payment_plan
 
       row "Group Privacy" do
-        if group.is_visible_to_public && group.discussion_privacy_options == 'public_only'
+        if group.is_visible_to_public && group.content_is_public
           "Open"
-        elsif group.is_visible_to_public && group.discussion_privacy_options != 'public_only'
+        elsif group.is_visible_to_public && !group.content_is_public
           "Closed"
         elsif group.is_visible_to_parent_members && !group.is_visible_to_public
           "Closed"
@@ -145,7 +145,7 @@ ActiveAdmin.register Group, as: 'Group' do
       end
 
       row :is_visible_to_public
-      row :discussion_privacy_options
+      row :content_is_public
       row :is_visible_to_parent_members
       row :parent_members_can_see_discussions
       row :members_can_add_members

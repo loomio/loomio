@@ -124,8 +124,8 @@ module Dev::Scenarios::Auth
   def view_closed_group_as_non_member
     sign_in patrick
     @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
-                                group_privacy: 'closed',
-                                discussion_privacy_options: 'public_or_private')
+                           group_privacy: 'closed',
+                           content_is_public: false)
     @group.add_admin! jennifer
     @discussion = Discussion.new(title: "I carried a watermelon", private: false, author: jennifer, group: @group)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
@@ -136,21 +136,20 @@ module Dev::Scenarios::Auth
     patrick.update(is_admin: false)
     sign_in patrick
     @group = Group.create!(name: 'Secret Dirty Dancing Shoes',
-                                group_privacy: 'secret')
+                           group_privacy: 'secret')
     redirect_to group_url(@group)
   end
 
   def view_closed_group_as_visitor
     @group = Group.create!(name: 'Closed Dirty Dancing Shoes',
-                                membership_granted_upon: 'approval',
-                                group_privacy: 'closed',
-                                discussion_privacy_options: 'public_or_private')
+                           membership_granted_upon: 'approval',
+                           group_privacy: 'closed')
     @group.add_member! patrick
     @group.add_admin! jennifer
     @discussion = @group.discussions.create!(title: 'This thread is private', private: true, author: jennifer)
     DiscussionService.create(discussion: @discussion, actor: @discussion.author)
-    @public_discussion = @group.discussions.create!(title: 'This thread is public', private: false, author: jennifer)
-    DiscussionService.create(discussion: @public_discussion, actor: @public_discussion.author)
+    # @public_discussion = @group.discussions.create!(title: 'This thread is public', private: false, author: jennifer)
+    # DiscussionService.create(discussion: @public_discussion, actor: @public_discussion.author)
     redirect_to group_url(@group)
   end
 

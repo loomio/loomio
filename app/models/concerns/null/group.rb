@@ -80,13 +80,10 @@ module Null::Group
     ]
   end
 
-  def discussion_privacy_options
-    'private_only'
-  end
-
   def false_methods
     %w(
-      public_discussions_only?
+      is_visible_to_public
+      content_is_public
       is_visible_to_parent_members
       members_can_add_members
       members_can_add_guests

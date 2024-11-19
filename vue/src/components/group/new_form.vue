@@ -72,11 +72,7 @@ export default
 
   methods: {
     submit() {
-      this.group.discussionPrivacyOptions = (() => { switch (this.group.groupPrivacy) {
-        case 'open':   return 'public_only';
-        case 'closed': return 'private_only';
-        case 'secret': return 'private_only';
-      } })();
+      this.group.contentIsPublic = (this.group.groupPrivacy == 'open')
 
       this.group.parentMembersCanSeeDiscussions = (() => { switch (this.group.groupPrivacy) {
         case 'open':   return true;

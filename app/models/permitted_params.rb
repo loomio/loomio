@@ -159,7 +159,7 @@ class PermittedParams < Struct.new(:params)
   end
 
   def group_attributes
-    [:parent_id, :name, :handle, :group_privacy, :is_visible_to_public, :discussion_privacy_options,
+    [:parent_id, :name, :handle, :group_privacy, :is_visible_to_public, :content_is_public,
      :members_can_add_members, :members_can_add_guests, :members_can_announce,
      :members_can_edit_discussions, :members_can_edit_comments, :members_can_delete_comments,
      :description, :description_format, :is_visible_to_parent_members, :parent_members_can_see_discussions,

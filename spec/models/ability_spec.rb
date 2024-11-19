@@ -344,9 +344,9 @@ describe "User abilities" do
   end
 
   context "non member of public group" do
-    let(:group) { create(:group, is_visible_to_public: true, discussion_privacy_options: 'public_or_private') }
-    let(:private_discussion) { create :discussion, group: group, private: true }
-    let(:comment_in_private_discussion) { Comment.new discussion: private_discussion, author: user, body: 'hi' }
+    let(:group) { create(:group, is_visible_to_public: true, content_is_public: true) }
+    # let(:private_discussion) { create :discussion, group: group, private: true }
+    # let(:comment_in_private_discussion) { Comment.new discussion: private_discussion, author: user, body: 'hi' }
     let(:public_discussion) { create :discussion, group: group, private: false }
     let(:comment_in_public_discussion) { Comment.new discussion: public_discussion, author: user, body: 'hi' }
     let(:new_discussion) { user.authored_discussions.new(

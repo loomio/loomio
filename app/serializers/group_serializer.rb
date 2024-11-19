@@ -31,7 +31,7 @@ class GroupSerializer < ApplicationSerializer
              :pending_memberships_count,
              :accepted_memberships_count,
              :membership_granted_upon,
-             :discussion_privacy_options,
+             :content_is_public,
              :admin_memberships_count,
              :archived_at,
              :attachments,

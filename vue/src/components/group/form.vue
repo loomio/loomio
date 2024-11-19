@@ -52,11 +52,7 @@ export default
 
   methods: {
     submit() {
-      if (this.group.groupPrivacy == 'open') {
-        this.group.discussionPrivacyOptions = 'public_only';
-      } else {
-        this.group.discussionPrivacyOptions = 'private_only';
-      }
+      this.group.contentIsPublic = (this.group.groupPrivacy == 'open')
 
       this.group.parentMembersCanSeeDiscussions = (() => { switch (this.group.groupPrivacy) {
         case 'open':   return true;

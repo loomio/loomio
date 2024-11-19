@@ -32,10 +32,10 @@ describe GroupService::PrivacyChange do
       end
     end
 
-    describe 'discussion_privacy_options changes to private_only' do
+    describe 'content_is_public changes to false' do
       before do
         group.group_privacy = 'closed'
-        group.discussion_privacy_options = 'private_only'
+        group.content_is_public = false
         privacy_change = GroupService::PrivacyChange.new(group)
         group.save!
         privacy_change.commit!

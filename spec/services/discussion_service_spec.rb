@@ -171,7 +171,7 @@ describe 'DiscussionService' do
     it 'updates the privacy for private discussion only groups' do
       group.add_member! user
       another_group.add_member! user
-      another_group.update_column :discussion_privacy_options, 'public_only'
+      another_group.update_column :content_is_public, true
       discussion.update private: true
       DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
       expect(discussion.reload.private).to eq false
@@ -180,7 +180,7 @@ describe 'DiscussionService' do
     it 'updates the privacy for public discussion only groups' do
       group.add_member! user
       another_group.add_member! user
-      another_group.update_column :discussion_privacy_options, 'private_only'
+      another_group.update_column :content_is_public, false
       discussion.update private: false
       DiscussionService.move(discussion: discussion, params: { group_id: another_group.id }, actor: user)
       expect(discussion.reload.private).to eq true

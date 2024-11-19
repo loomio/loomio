@@ -89,7 +89,7 @@ module Dev::NintiesMoviesHelper
                         description: 'The best place for dancing shoes. _every_ shoe is **dirty**!',
                         group_privacy: 'closed',
                         handle: 'shoes',
-                        discussion_privacy_options: 'public_or_private', creator: patrick)
+                        creator: patrick)
       file = open(Rails.root.join('public','brand','icon_sky_150h.png'))
       @group.logo.attach(io: file, filename: 'logo.png')
       GroupService.create(group: @group, actor: @group.creator)
@@ -104,7 +104,6 @@ module Dev::NintiesMoviesHelper
     unless @poll_group
       @poll_group = Group.new(name: 'Dirty Dancing Shoes',
                              group_privacy: 'closed',
-                             discussion_privacy_options: 'public_or_private',
                              creator: patrick)
       GroupService.create(group: @poll_group, actor: @poll_group.creator)
       @poll_group.add_admin!  patrick
@@ -119,7 +118,7 @@ module Dev::NintiesMoviesHelper
     10.times do
       group = Group.new(name: Faker::Name.name,
                         group_privacy: 'closed',
-                        discussion_privacy_options: 'public_or_private', creator: patrick)
+                        creator: patrick)
       group.add_admin! patrick
       GroupService.create(group: group, actor: group.creator)
       @groups << group
@@ -129,9 +128,10 @@ module Dev::NintiesMoviesHelper
 
   def muted_create_group
     unless @muted_group
-      @muted_group = Group.new(name: 'Muted Point Blank',
-                                        group_privacy: 'closed',
-                                        discussion_privacy_options: 'public_or_private', creator: patrick)
+      @muted_group = Group.new(
+        name: 'Muted Point Blank',
+        group_privacy: 'closed',
+        creator: patrick)
       GroupService.create(group: @muted_group, actor: @muted_group.creator)
       @muted_group.add_admin! patrick
       Membership.find_by(group: @muted_group, user: patrick).set_volume! :mute
@@ -141,10 +141,11 @@ module Dev::NintiesMoviesHelper
 
   def create_another_group
     unless @another_group
-      @another_group = Group.new(name: 'Point Break',
-                                          group_privacy: 'closed',
-                                          discussion_privacy_options: 'public_or_private',
-                                          description: 'An FBI agent goes undercover to catch a gang of bank robbers who may be surfers.', creator: patrick)
+      @another_group = Group.new(
+        name: 'Point Break',
+        group_privacy: 'closed',
+        description: 'An FBI agent goes undercover to catch a gang of bank robbers who may be surfers.', 
+        creator: patrick)
       GroupService.create(group: @another_group, actor: @another_group.creator)
       @another_group.add_admin! patrick
       @another_group.add_member! max
@@ -162,10 +163,11 @@ module Dev::NintiesMoviesHelper
 
   def create_another_discussion
     unless @another_discussion
-      @another_discussion = Discussion.create(title: 'Waking Up in Reno',
-                                       private: false,
-                                       group: create_group,
-                                       author: jennifer)
+      @another_discussion = Discussion.create(
+        title: 'Waking Up in Reno',
+        private: false,
+        group: create_group,
+        author: jennifer)
       DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
     end
     @another_discussion
@@ -173,11 +175,12 @@ module Dev::NintiesMoviesHelper
 
   def create_closed_discussion
     unless @closed_discussion
-      @closed_discussion = Discussion.create(title: 'This thread is old and closed',
-                                             private: false,
-                                             closed_at: Time.now,
-                                             group: create_group,
-                                             author: jennifer)
+      @closed_discussion = Discussion.create(
+        title: 'This thread is old and closed',
+        private: false,
+        closed_at: Time.now,
+        group: create_group,
+        author: jennifer)
       DiscussionService.create(discussion: @closed_discussion, actor: @closed_discussion.author)
     end
     @closed_discussion
@@ -185,10 +188,11 @@ module Dev::NintiesMoviesHelper
 
   def create_public_discussion
     unless @another_discussion
-      @another_discussion = Discussion.create!(title: "The name's Johnny Utah!",
-                                                    private: false,
-                                                    group: create_another_group,
-                                                    author: patrick)
+      @another_discussion = Discussion.create!(
+        title: "The name's Johnny Utah!",
+        private: false,
+        group: create_another_group,
+        author: patrick)
       DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
     end
     @another_discussion
@@ -196,10 +200,11 @@ module Dev::NintiesMoviesHelper
 
   def private_create_discussion
     unless @another_discussion
-      @another_discussion = Discussion.create!(title: 'But are you crazy enough?',
-                                                    private: true,
-                                                    group: create_another_group,
-                                                    author: patrick)
+      @another_discussion = Discussion.create!(
+        title: 'But are you crazy enough?',
+        private: true,
+        group: create_another_group,
+        author: patrick)
       DiscussionService.create(discussion: @another_discussion, actor: @another_discussion.author)
     end
     @another_discussion
@@ -207,10 +212,11 @@ module Dev::NintiesMoviesHelper
 
   def create_subgroup
     unless @subgroup
-      @subgroup = Group.new(name: 'Johnny Utah',
-                                     parent: create_another_group,
-                                     discussion_privacy_options: 'public_or_private',
-                                     group_privacy: 'closed', creator: patrick)
+      @subgroup = Group.new(
+        name: 'Johnny Utah',
+        parent: create_another_group,
+        group_privacy: 'closed',
+        creator: patrick)
       GroupService.create(group: @subgroup, actor: @subgroup.creator)
       discussion = FactoryBot.create :discussion, group: @subgroup, title: "Vaya con dios", private: false
       # discussion = @subgroup.discussions.create(title: "Vaya con dios", private: false, author: patrick)
@@ -222,11 +228,12 @@ module Dev::NintiesMoviesHelper
 
   def another_create_subgroup
     unless @another_subgroup
-      @another_subgroup = Group.new(name: 'Bodhi',
-                                             parent: create_another_group,
-                                             group_privacy: 'closed',
-                                             discussion_privacy_options: 'public_or_private',
-                                             is_visible_to_parent_members: true, creator: patrick)
+      @another_subgroup = Group.new(
+        name: 'Bodhi',
+        parent: create_another_group,
+        group_privacy: 'closed',
+        is_visible_to_parent_members: true,
+        creator: patrick)
       GroupService.create(group: @another_subgroup, actor: @another_subgroup.creator)
       discussion = FactoryBot.create :discussion, group: @another_subgroup, title: "Vaya con dios 2", private: false
       DiscussionService.create(discussion: discussion, actor: discussion.author)
@@ -236,8 +243,10 @@ module Dev::NintiesMoviesHelper
   end
 
   def pending_invitation
-    @pending_membership ||= Membership.create(user: User.new(email: 'judd@example.com'),
-                                              group: create_group, inviter: patrick)
+    @pending_membership ||= Membership.create(
+      user: User.new(email: 'judd@example.com'),
+      group: create_group,
+      inviter: patrick)
   end
 
   def create_comment

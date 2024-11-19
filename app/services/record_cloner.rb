@@ -13,7 +13,7 @@ class RecordCloner
     clone_group.members_can_add_members = false
     clone_group.members_can_add_guests = false
     clone_group.members_can_announce = true
-    clone_group.discussion_privacy_options = 'public_only'
+    clone_group.content_is_public = true
     clone_group.membership_granted_upon = 'request'
     clone_group.discussions.each {|d| d.private = false }
     clone_group.polls.each {|p| p.specified_voters_only = false }
@@ -138,7 +138,7 @@ class RecordCloner
       handle: nil,
       is_visible_to_public: false,
       is_visible_to_parent_members: false,
-      discussion_privacy_options: 'private_only',
+      content_is_public: false,
       membership_granted_upon: 'approval',
       listed_in_explore: false
     }

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe MembershipService do
-  let(:group) { create :group, discussion_privacy_options: :public_only, is_visible_to_public: true, membership_granted_upon: :request }
+  let(:group) { create :group, content_is_public: true, is_visible_to_public: true, membership_granted_upon: :request }
   let(:user)  { create :user }
   let(:admin) { create :user }
   let(:unverified_user) { create :user, email_verified: false }

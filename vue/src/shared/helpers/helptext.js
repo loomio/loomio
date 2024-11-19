@@ -96,8 +96,8 @@ export var groupPrivacyConfirm = function(group) {
     } else if (group.privacyIsOpen()) {
       return 'group_form.confirm_change_to_public';
     }
-  } else if (group.attributeIsModified('discussionPrivacyOptions')) {
-    if (group.discussionPrivacyOptions === 'private_only') {
+  } else if (group.attributeIsModified('contentIsPublic')) {
+    if (!group.contentIsPublic) {
       return 'group_form.confirm_change_to_private_discussions_only';
     }
   }

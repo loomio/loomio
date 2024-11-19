@@ -22,10 +22,10 @@ class PollQuery
                  .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = polls.discussion_id AND (dr.user_id = #{user.id || 0} #{or_discussion_reader_token})")
                  .joins("LEFT OUTER JOIN stances s ON s.poll_id = polls.id AND (s.participant_id = #{user.id || 0} #{or_stance_token})")
                  .where("polls.author_id = :user_id OR
-                         g.discussion_privacy_options = :public_only OR
+                         g.content_is_public = TRUE OR
                          (m.id IS NOT NULL AND m.revoked_at IS NULL) OR
                          (dr.id IS NOT NULL AND dr.revoked_at IS NULL AND dr.guest = TRUE) OR
-                         (s.id IS NOT NULL AND s.revoked_at IS NULL AND s.guest = TRUE)", public_only: :public_only, user_id: user.id)
+                         (s.id IS NOT NULL AND s.revoked_at IS NULL AND s.guest = TRUE)", user_id: user.id)
     chain
   end
 

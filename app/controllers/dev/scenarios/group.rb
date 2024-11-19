@@ -120,10 +120,9 @@ module Dev::Scenarios::Group
     @group.add_member! jennifer
     @group.add_member! patrick
     @subgroup = Group.create!(name: 'Johnny Utah',
-                                   parent: @group,
-                                   discussion_privacy_options: 'public_or_private',
-                                   parent_members_can_see_discussions: true,
-                                   group_privacy: 'closed', creator: jennifer)
+                              parent: @group,
+                              parent_members_can_see_discussions: true,
+                              group_privacy: 'closed', creator: jennifer)
     discussion = FactoryBot.create :discussion, group: @subgroup, title: "Vaya con dios", private: true, author: jennifer
     DiscussionService.create(discussion: discussion, actor: discussion.author)
     redirect_to group_url(@subgroup)

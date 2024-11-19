@@ -473,7 +473,7 @@ describe API::V1::DiscussionsController do
           end
 
           it 'can display content from a specified public group' do
-            public_group = create :group, discussion_privacy_options: :public_only, is_visible_to_public: true
+            public_group = create :group, content_is_public: true, is_visible_to_public: true
             can_see_me = create_discussion(group: public_group, private: false )
             get :index, params: { group_id: public_group.id }, format: :json
             json = JSON.parse(response.body)

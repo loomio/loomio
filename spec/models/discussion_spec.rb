@@ -32,7 +32,7 @@ describe Discussion do
 
     context "discussion is public when group is private only" do
       before do
-        group.discussion_privacy_options = 'private_only'
+        group.content_is_public = false
         discussion.group = group
         discussion.private = false
         discussion.valid?

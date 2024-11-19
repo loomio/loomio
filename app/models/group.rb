@@ -139,7 +139,7 @@ class Group < ApplicationRecord
                          :key,
                          :is_visible_to_public,
                          :is_visible_to_parent_members,
-                         :discussion_privacy_options,
+                         :content_is_public,
                          :members_can_add_members,
                          :membership_granted_upon,
                          :members_can_edit_discussions,
@@ -309,7 +309,7 @@ class Group < ApplicationRecord
   end
 
   def is_subgroup_of_hidden_parent?
-    is_subgroup? and parent.is_hidden_from_public?
+    is_subgroup? and !parent.is_visible_to_public
   end
 
   def is_parent?
@@ -408,7 +408,7 @@ class Group < ApplicationRecord
     "default_group_cover_id",
     "description",
     "description_format",
-    "discussion_privacy_options",
+    "content_is_public",
     "discussions_count",
     "full_name",
     "handle",

@@ -5,17 +5,14 @@ describe Group do
   describe "group_privacy" do
     it 'gets values for "open" correctly' do
       group.is_visible_to_public = true
-      group.discussion_privacy_options = 'public_only'
+      group.content_is_public = true
       expect(group.group_privacy).to eq 'open'
     end
 
     it 'gets values for "closed" correctly' do
       group.is_visible_to_public = true
-      group.discussion_privacy_options = 'public_or_private'
+      group.content_is_public = false
       expect(group.group_privacy).to eq 'closed'
-      group.discussion_privacy_options = 'private_only'
-      expect(group.group_privacy).to eq 'closed'
-
     end
 
     it 'gets values for "secret" correctly' do
@@ -29,13 +26,13 @@ describe Group do
       before do
         # set it to invalid options to confirm it sets correct ones
         group.is_visible_to_public = false
-        group.discussion_privacy_options = 'public_or_private'
+        group.content_is_public = false
         group.group_privacy = 'open'
       end
 
       it "is visible to public and public discussions only" do
         expect(group.is_visible_to_public).to eq true
-        expect(group.discussion_privacy_options).to eq 'public_only'
+        expect(group.content_is_public).to eq true
       end
 
       describe 'membership_granted_upon' do
@@ -65,32 +62,20 @@ describe Group do
         # set it to invalid options to confirm it sets correct ones
         group.membership_granted_upon = 'approval'
         group.is_visible_to_public = false
-        group.discussion_privacy_options = 'public_only'
+        group.content_is_public = true
         group.group_privacy = 'closed'
       end
 
       it "sets is visible to public to be true and private discussions only" do
         expect(group.is_visible_to_public).to eq true
-        expect(group.discussion_privacy_options).to eq 'private_only'
+        expect(group.content_is_public).to eq false
         expect(group.membership_granted_upon).to eq 'approval'
       end
 
-      describe 'discussion_privacy_options' do
-        it "allows public_or_private" do
-          group.discussion_privacy_options = 'public_or_private'
+      describe 'content_is_public' do
+        it "allows closed sets false" do
           group.group_privacy = 'closed'
-          expect(group.discussion_privacy_options).to eq 'public_or_private'
-        end
-        it "allows private_only" do
-          group.discussion_privacy_options = 'private_only'
-          group.group_privacy = 'closed'
-          expect(group.discussion_privacy_options).to eq 'private_only'
-        end
-
-        it "does not allow public_only" do
-          group.discussion_privacy_options = 'public_only'
-          group.group_privacy = 'closed'
-          expect(group.discussion_privacy_options).to eq 'private_only'
+          expect(group.content_is_public).to eq false
         end
       end
 
@@ -111,13 +96,13 @@ describe Group do
         group.membership_granted_upon = 'approval'
         group.is_visible_to_public = true
         group.is_visible_to_parent_members = true
-        group.discussion_privacy_options = 'public_only'
+        group.content_is_public = true
         group.group_privacy = 'secret'
       end
 
       it 'sets visible_to_public = false, membership by invitation, disussions private only' do
         expect(group.is_visible_to_public).to eq false
-        expect(group.discussion_privacy_options).to eq 'private_only'
+        expect(group.content_is_public).to eq false
         expect(group.membership_granted_upon).to eq 'invitation'
         expect(group.is_visible_to_parent_members).to eq false
       end
