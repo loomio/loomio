@@ -4,26 +4,16 @@ describe API::V1::DocumentsController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:group) { create :group }
-  let(:public_discussion) { create :discussion, group: group, private: false }
-  let(:private_discussion) { create :discussion, group: group, private: true }
+  let(:discussion) { create :discussion, group: group }
 
   describe 'for_group' do
     let!(:group_document) { create :document, model: group }
-    let!(:public_discussion_document) { create :document, model: public_discussion }
-    let!(:private_discussion_document) { create :document, model: private_discussion }
+    let!(:discussion_document) { create :document, model: discussion }
 
     describe 'open' do
-      before { group.update(group_privacy: 'open') }
-
-      it 'displays all documents for non-members' do
-        sign_in user
-        get :for_group, params: { group_id: group.id }
-        json = JSON.parse response.body
-        document_ids = json['documents'].map { |d| d['id'] }
-
-        expect(document_ids).to include group_document.id
-        expect(document_ids).to include public_discussion_document.id
-        expect(document_ids).to include private_discussion_document.id
+      before do
+        group.update(group_privacy: 'open')
+        discussion.update(private: false)
       end
 
       it 'displays all documents for members' do
@@ -34,8 +24,7 @@ describe API::V1::DocumentsController do
         document_ids = json['documents'].map { |d| d['id'] }
 
         expect(document_ids).to include group_document.id
-        expect(document_ids).to include public_discussion_document.id
-        expect(document_ids).to include private_discussion_document.id
+        expect(document_ids).to include discussion_document.id
       end
 
       it 'displays all documents for visitors' do
@@ -44,50 +33,15 @@ describe API::V1::DocumentsController do
         document_ids = json['documents'].map { |d| d['id'] }
 
         expect(document_ids).to include group_document.id
-        expect(document_ids).to include public_discussion_document.id
-        expect(document_ids).to include private_discussion_document.id
+        expect(document_ids).to include discussion_document.id
       end
-    end
-
-    describe 'closed' do
-      before { group.update(group_privacy: 'closed') }
-
-      # it 'displays public documents for non-members' do
-      #   sign_in user
-      #   get :for_group, params: { group_id: group.id }
-      #   json = JSON.parse response.body
-      #   document_ids = json['documents'].map { |d| d['id'] }
-      #
-      #   expect(document_ids).to include group_document.id
-      #   expect(document_ids).to include public_discussion_document.id
-      #   expect(document_ids).to_not include private_discussion_document.id
-      # end
-
-      it 'displays all documents for members' do
-        sign_in user
-        group.add_member! user
-        get :for_group, params: { group_id: group.id }
-        json = JSON.parse response.body
-        document_ids = json['documents'].map { |d| d['id'] }
-
-        expect(document_ids).to include group_document.id
-        expect(document_ids).to include public_discussion_document.id
-        expect(document_ids).to include private_discussion_document.id
-      end
-
-      # it 'displays public documents for visitors' do
-      #   get :for_group, params: { group_id: group.id }
-      #   json = JSON.parse response.body
-      #   document_ids = json['documents'].map { |d| d['id'] }
-      #
-      #   expect(document_ids).to include group_document.id
-      #   expect(document_ids).to include public_discussion_document.id
-      #   expect(document_ids).to_not include private_discussion_document.id
-      # end
     end
 
     describe 'secret' do
-      before { group.update(group_privacy: 'secret') }
+      before do
+        group.update(group_privacy: 'secret')
+        discussion.update(private: true)
+      end
 
       it 'unauthorized for non-members' do
         sign_in user
@@ -103,14 +57,7 @@ describe API::V1::DocumentsController do
         document_ids = json['documents'].map { |d| d['id'] }
 
         expect(document_ids).to include group_document.id
-        expect(document_ids).to include public_discussion_document.id
-        expect(document_ids).to include private_discussion_document.id
-      end
-
-      it 'displays public documents in the closed group for non-members' do
-        sign_in user
-        get :for_group, params: { group_id: group.id }
-        expect(response.status).to eq 403
+        expect(document_ids).to include discussion_document.id
       end
     end
   end

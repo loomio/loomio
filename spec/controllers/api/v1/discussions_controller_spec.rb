@@ -23,6 +23,9 @@ describe API::V1::DiscussionsController do
   def create_discussion(**args)
     discussion = build :discussion, **args
     discussion.group.add_member! discussion.author
+    discussion.group.is_visible_to_public = true
+    discussion.group.content_is_public = !discussion.private
+    discussion.group.save!
     DiscussionService.create(discussion: discussion, actor: discussion.author)
     discussion
   end

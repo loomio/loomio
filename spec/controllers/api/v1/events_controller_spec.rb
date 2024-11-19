@@ -4,7 +4,7 @@ describe API::V1::EventsController do
   let(:user) { create :user }
   let(:another_user) { create :user }
   let(:group) { create :group }
-  let(:discussion) { create :discussion, group: group, private: false }
+  let(:discussion) { create :discussion, group: group, private: true }
   let(:another_discussion) { create :discussion, group: group, private: true }
   let(:reader) { DiscussionReader.for(user: user, discussion: discussion) }
 
