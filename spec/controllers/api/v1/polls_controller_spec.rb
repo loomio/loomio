@@ -3,7 +3,7 @@ require 'rails_helper'
 describe API::V1::PollsController do
   let(:group) { create :group }
   let(:another_group) { create :group }
-  let(:public_group) { create :group, is_visible_to_public: true }
+  let(:public_group) { create :group, group_privacy: 'open' }
   let(:discussion) { create :discussion, group: group }
   let(:another_discussion) { create :discussion, group: group }
   let(:public_discussion) { create :discussion, group: public_group, private: false }

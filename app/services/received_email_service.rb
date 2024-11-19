@@ -153,7 +153,7 @@ class ReceivedEmailService
     group = Group.find_by!(handle: (params['handle'] || email.route_path))
     {
       group_id: group.id,
-      private: group.discussion_private_default,
+      private: !group.content_is_public,
       title: email.subject,
       body: email.full_body,
       body_format: email.body_format,

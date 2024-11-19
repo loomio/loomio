@@ -64,7 +64,6 @@ module Null::Group
       members_can_raise_motions
       members_can_edit_comments
       members_can_delete_comments
-      discussion_private_default
       members_can_announce
       members_can_edit_discussions
       members_can_add_guests

@@ -27,7 +27,7 @@ describe GroupService::PrivacyChange do
 
       it "makes all public subgroups closed, visible to parent members" do
         expect(group.subgroups.all?{|g| g.group_privacy == 'closed'}).to be true
-        expect(group.subgroups.all?{|g| g.is_hidden_from_public?}).to be true
+        expect(group.subgroups.all?{|g| !g.is_visible_to_public }).to be true
         expect(group.subgroups.all?{|g| g.is_visible_to_parent_members?}).to be true
       end
     end

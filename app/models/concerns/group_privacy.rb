@@ -94,7 +94,7 @@ module GroupPrivacy
       true
     else
       if is_visible_to_parent_members?
-        is_hidden_from_public? and is_subgroup?
+        !is_visible_to_public and is_subgroup?
       else
         true
       end
