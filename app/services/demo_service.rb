@@ -22,6 +22,7 @@ class DemoService
     group = Group.find(Redis::List.new('demo_group_ids').shift)
     group.creator = actor
     group.subscription = Subscription.new(plan: 'demo', owner: actor)
+    group.save!
     group.add_member! actor
     group.save!
 
