@@ -146,7 +146,7 @@ export default {
 
   computed: {
     greySidebarLogo() {
-      return AppConfig.features.app.gray_sidebar_logo_in_dark_mode && this.$vuetify.theme.dark 
+      return AppConfig.features.app.gray_sidebar_logo_in_dark_mode && this.$vuetify.theme.dark
     },
     helpURL() {
       const siteUrl = new URL(AppConfig.baseUrl);
@@ -174,8 +174,8 @@ export default {
 v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
-    v-layout.mx-10.my-2(column align-center style="max-height: 64px" :class="{greySidebarLogo: greySidebarLogo}")
-      v-img(:src="logoUrl")
+    v-layout.mx-10.my-2(column align-center :class="{greySidebarLogo: greySidebarLogo}")
+      v-img(contain max-height="24" :src="logoUrl")
 
   v-list-group.sidebar__user-dropdown
     template(v-slot:activator)
