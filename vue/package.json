@@ -57,7 +57,7 @@
     "@tiptap/suggestion": "^2.6.6",
     "@tiptap/vue-2": "^2.6.6",
     "activestorage": "^5.2.8",
-    "chart.js": "^3.9.1",
+    "chart.js": "^4.4.6",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.1",
     "deepmerge": "^4.3.1",
