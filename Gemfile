@@ -25,7 +25,7 @@ gem 'paper_trail', '~> 16.0.0'
 gem 'sidekiq', '~> 6.5.12'
 gem 'friendly_id', '~> 5.5.1'
 gem 'httparty', '~> 0.22.0'
-gem 'browser', '~> 6.1.0'
+gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
 gem "google-cloud-storage", "~> 1.53", require: false
