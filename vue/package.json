@@ -85,7 +85,7 @@
     "vue2-touch-events": "^3.2.3",
     "vuetify": "2.6.15",
     "y-indexeddb": "^9.0.12",
-    "y-prosemirror": "^1.2.12",
+    "y-prosemirror": "^1.2.15",
     "yjs": "^13.6.20"
   },
   "devDependencies": {
