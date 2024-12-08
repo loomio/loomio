@@ -8,6 +8,7 @@ ActiveAdmin.register User do
   filter :email_verified
   filter :complaints_count
   filter :sign_in_count
+  filter :deactivated_at_not_null, as: :select, collection: [true, false], label: "Deactivated"
   filter :detected_locale, as: :string
   filter :time_zone
   filter :created_at
