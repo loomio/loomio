@@ -582,6 +582,9 @@ uk:
     close_sidebar: Закрити бічну панель
     logo_title: На головну
     group_and_subgroups: "%{group} & підгрупи"
+    search_members_short: Пошук учасників
+    search_files_short: Пошук файлів
+    search_subgroups_short: Пошук підгруп
   user_dropdown:
     pin_sidebar: Закріпити на бічній панелі
     unpin_sidebar: Відкріпити з бічної панелі
@@ -1258,6 +1261,8 @@ uk:
       group_updated: Групу оновлено
     upload_logo: Завантажити логотип
     upload_cover_photo: Завантажити зображення для обкладинки
+    request_to_join_prompt: Запит на приєднання
+    default_request_to_join_prompt: Дякуємо за інтерес до нашої групи. Будь ласка, представтеся та поясніть, чому ви хочете приєднатися.
   group_export_modal:
     title: Експортувати дані групи
     body: |
@@ -1869,6 +1874,8 @@ uk:
     last_seen: Востанне переглянуто %{date}
     invited_by_name: Запрошено %{name}
     accepted: Учасники
+    email_rejected: Електронна пошта відхилена
+    email_rejected_meaning: Електронні листи, надіслані на цю адресу, були відхилені або позначені як спам. Більше на цю адресу електронні листи не надсилатимуться.
   polls_panel:
     new_poll: Нове опитування
     any_type: Усі типи
@@ -2492,6 +2499,7 @@ uk:
     password: Пароль
     reactivate: Відновити обліковий запис
     want_to_set_password: Бажаєте наступного разу ввійти за допомогою пароля?
+    change_your_password: Бажаєте встановити новий пароль?
   chatbot:
     configure_chatbot: Налаштувати чат-бота
     test_connection: Тестове підключення

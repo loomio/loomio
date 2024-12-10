@@ -587,6 +587,9 @@ zh_TW:
     close_sidebar: 關閉側邊欄
     logo_title: 首頁
     group_and_subgroups: "%{group} 與子群組"
+    search_members_short: 搜尋會員
+    search_files_short: 搜尋文件
+    search_subgroups_short: 搜尋子組
   user_dropdown:
     pin_sidebar: 釘選側邊欄
     unpin_sidebar: 取消釘選側邊欄
@@ -1263,6 +1266,8 @@ zh_TW:
       group_updated: 群組已更新
     upload_logo: 上傳圖示
     upload_cover_photo: 上傳封面圖片
+    request_to_join_prompt: 請求加入提示
+    default_request_to_join_prompt: 感謝您對我們小組的興趣。請自我介紹並解釋為什麼您要求加入。
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -1874,6 +1879,8 @@ zh_TW:
     last_seen: 最後檢視 %{date}
     invited_by_name: 被 %{name} 邀請
     accepted: 成員 (%{count})
+    email_rejected: 電子郵件被拒絕
+    email_rejected_meaning: 發送到此位址的電子郵件已被退回或標記為垃圾郵件。不會再有電子郵件傳送到該位址。
   polls_panel:
     new_poll: 新投票
     any_type: 所有類型
@@ -2497,6 +2504,7 @@ zh_TW:
     password: 密碼
     reactivate: 重新啟用帳號
     want_to_set_password: 下次想使用密碼登入嗎？
+    change_your_password: 您想設定新密碼嗎？
   chatbot:
     configure_chatbot: 設定聊天機器人
     test_connection: 測試連線

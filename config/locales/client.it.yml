@@ -589,6 +589,9 @@ it:
     close_sidebar: barra laterale chiusa
     logo_title: Home page
     group_and_subgroups: "%{group} & sottogruppi"
+    search_members_short: Cerca membri
+    search_files_short: Cerca file
+    search_subgroups_short: Cerca sottogruppi
   user_dropdown:
     pin_sidebar: Attiva la barra laterale
     unpin_sidebar: Rimuovi la barra laterale
@@ -1275,6 +1278,8 @@ it:
       group_updated: Gruppo aggiornato
     upload_logo: Carica nuovo logo
     upload_cover_photo: Carica nuova immagine di copertina
+    request_to_join_prompt: Richiesta di partecipazione immediata
+    default_request_to_join_prompt: Grazie per il tuo interesse nel nostro gruppo. Presentati e spiega perché stai chiedendo di unirti a noi.
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>
@@ -1869,6 +1874,8 @@ it:
     last_seen: Visto l'ultima volta %{date}
     invited_by_name: Invitato da %{name}
     accepted: Membri
+    email_rejected: Email rifiutata
+    email_rejected_meaning: L'email inviata a questo indirizzo è stata respinta o contrassegnata come spam. Non verranno inviate altre email a questo indirizzo.
   polls_panel:
     new_poll: Nuova votazione
     any_type: Tutti i tipi
@@ -2490,6 +2497,7 @@ it:
     password: Password
     reactivate: Riattiva account
     want_to_set_password: Vuoi effettuare l'accesso con una password la prossima volta?
+    change_your_password: Vuoi impostare una nuova password?
   chatbot:
     configure_chatbot: Configura chatbot
     test_connection: Test connection

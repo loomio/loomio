@@ -581,6 +581,9 @@ pl:
     close_sidebar: Zamknij panel boczny
     logo_title: Strona główna
     group_and_subgroups: "%{group} i podgrupy"
+    search_members_short: Szukaj członków
+    search_files_short: Szukaj plików
+    search_subgroups_short: Wyszukaj podgrupy
   user_dropdown:
     pin_sidebar: Przypnij pasek boczny
     unpin_sidebar: Odepnij pasek boczny
@@ -1255,6 +1258,8 @@ pl:
       group_updated: Grupa została zaktualizowana
     upload_logo: Prześlij logo
     upload_cover_photo: Prześlij zdjęcie w tle
+    request_to_join_prompt: Prośba o dołączenie
+    default_request_to_join_prompt: Dziękujemy za zainteresowanie naszą grupą. Przedstaw się i wyjaśnij, dlaczego chcesz dołączyć.
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -1864,6 +1869,8 @@ pl:
     last_seen: Ostatnio widziany/a %{date}
     invited_by_name: Zaproszony/a przez %{name}
     accepted: Osoby
+    email_rejected: E-mail odrzucony
+    email_rejected_meaning: E-mail wysłany na ten adres został odrzucony lub oznaczony jako spam. Nie będzie więcej wysyłany na ten adres.
   polls_panel:
     new_poll: Nowe głosowanie
     any_type: Wszystkie rodzaje
@@ -2487,6 +2494,7 @@ pl:
     password: Hasło
     reactivate: Reaktywuj konto
     want_to_set_password: Czy następnym razem chcesz zalogować się za pomocą hasła?
+    change_your_password: Czy chcesz ustawić nowe hasło?
   chatbot:
     configure_chatbot: Skonfiguruj chatbota
     test_connection: Połączenie testowe

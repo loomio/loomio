@@ -577,6 +577,9 @@ fi:
     close_sidebar: Sulje sivupalkki
     logo_title: Kotisivu
     group_and_subgroups: "%{group} ja alaryhmät"
+    search_members_short: Hae jäseniä
+    search_files_short: Etsi tiedostoja
+    search_subgroups_short: Hae alaryhmiä
   user_dropdown:
     pin_sidebar: Kiinnitä sivupalkki
     unpin_sidebar: Irrota sivupalkki
@@ -1247,6 +1250,8 @@ fi:
       group_updated: Ryhmä päivitetty
     upload_logo: Lataa logo
     upload_cover_photo: Lataa kansikuva
+    request_to_join_prompt: Pyydä liittymään
+    default_request_to_join_prompt: Kiitos mielenkiinnostasi ryhmäämme kohtaan. Esittele itsesi ja selitä, miksi pyydät liittymistä.
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -1836,6 +1841,8 @@ fi:
     last_seen: Viimeksi nähty %{date}
     invited_by_name: 'Kutsuja: %{name}'
     accepted: Jäsenet
+    email_rejected: Sähköposti hylätty
+    email_rejected_meaning: Tähän osoitteeseen lähetetty sähköposti on palautunut tai merkitty roskapostiksi. Tähän osoitteeseen ei lähetetä enempää sähköpostia.
   polls_panel:
     new_poll: Uusi kysely
     any_type: Kaikki tyypit
@@ -2457,6 +2464,7 @@ fi:
     password: Salasana
     reactivate: Aktivoi tili uudelleen
     want_to_set_password: Haluatko kirjautua sisään salasanalla seuraavan kerran?
+    change_your_password: Haluatko asettaa uuden salasanan?
   chatbot:
     configure_chatbot: Määritä chatbot
     test_connection: Testaa yhteys

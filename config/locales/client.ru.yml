@@ -577,6 +577,9 @@ ru:
     close_sidebar: Закрыть боковую панель
     logo_title: Домашняя страница
     group_and_subgroups: "%{group} и подгруппы"
+    search_members_short: Поиск участников
+    search_files_short: Поиск файлов
+    search_subgroups_short: Поиск подгрупп
   user_dropdown:
     pin_sidebar: Закрепить боковую панель
     unpin_sidebar: Открепить боковую панель
@@ -1247,6 +1250,8 @@ ru:
       group_updated: Группа обновлена
     upload_logo: Загрузить логотип
     upload_cover_photo: Загрузить обложку
+    request_to_join_prompt: Запрос на присоединение
+    default_request_to_join_prompt: Спасибо за ваш интерес к нашей группе. Представьтесь, пожалуйста, и объясните, почему вы хотите присоединиться.
   group_export_modal:
     title: Экспортировать данные группы
     body: <p>Вы можете загрузить копию данных вашей группы в любое время. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Узнать больше.</a></p><p> Это займет несколько минут, в зависимости от размера вашей группы. Когда он будет готов, вы получите электронное письмо со ссылкой для загрузки файла.</p>
@@ -1836,6 +1841,8 @@ ru:
     last_seen: Последний раз видели %{date}
     invited_by_name: Приглашен пользователем %{name}
     accepted: Участники
+    email_rejected: Электронное письмо отклонено
+    email_rejected_meaning: Письмо, отправленное на этот адрес, было отклонено или помечено как спам. Больше письма не будут отправляться на этот адрес.
   polls_panel:
     new_poll: Новый опрос
     any_type: Все типы
@@ -2457,6 +2464,7 @@ ru:
     password: Пароль
     reactivate: Повторно активировать учетную запись
     want_to_set_password: Хотите в следующий раз войти с паролем?
+    change_your_password: Хотите установить новый пароль?
   chatbot:
     configure_chatbot: Настройка чат-бота
     test_connection: Тестовое соединение

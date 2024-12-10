@@ -577,6 +577,9 @@ hr:
     close_sidebar: Zatvori bočnu traku
     logo_title: Početna stranica
     group_and_subgroups: "%{group} & podgrupe"
+    search_members_short: Traži članove
+    search_files_short: Traži datoteke
+    search_subgroups_short: Traži podgrupe
   user_dropdown:
     pin_sidebar: Prikvači bočnu traku
     unpin_sidebar: Otkvači bočnu traku
@@ -1247,6 +1250,8 @@ hr:
       group_updated: Grupa ažurirana
     upload_logo: Učitaj logotip
     upload_cover_photo: Prenesi naslovnu fotografiju
+    request_to_join_prompt: Zahtjev za pridruživanje
+    default_request_to_join_prompt: Hvala na interesu za našu grupu. Predstavite se i objasnite zašto tražite da se pridružite.
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -1836,6 +1841,8 @@ hr:
     last_seen: Zadnji put viđen %{date}
     invited_by_name: Pozvao %{name}
     accepted: Članovi
+    email_rejected: E-pošta odbijena
+    email_rejected_meaning: E-pošta poslana na ovu adresu odbijena je ili je označena kao neželjena pošta. Na ovu adresu više neće biti poslana e-pošta.
   polls_panel:
     new_poll: Nova anketa
     any_type: Svi tipovi
@@ -2457,6 +2464,7 @@ hr:
     password: Lozinka
     reactivate: Ponovno aktiviranje računa
     want_to_set_password: Želite li se sljedeći put prijaviti lozinkom?
+    change_your_password: Želite li postaviti novu lozinku?
   chatbot:
     configure_chatbot: Konfigurirajte chatbot
     test_connection: Testirajte vezu
