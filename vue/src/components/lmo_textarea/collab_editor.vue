@@ -12,7 +12,7 @@ import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
 import BulletList from '@tiptap/extension-bullet-list';
 import CodeBlock from '@tiptap/extension-code-block';
-import Code from '@tiptap/extension-code';
+import { Code } from './extension_code';
 import CharacterCount from '@tiptap/extension-character-count';
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
