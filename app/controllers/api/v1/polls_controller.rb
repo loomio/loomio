@@ -55,6 +55,6 @@ class API::V1::PollsController < API::V1::RestfulController
   end
 
   def accessible_records
-    PollQuery.visible_to(user: current_user, show_public: false)
+    PollQuery.visible_to(user: current_user)
   end
 end

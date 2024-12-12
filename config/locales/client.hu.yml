@@ -1259,6 +1259,8 @@ hu:
       group_updated: A csoport frissítve
     upload_logo: Tölts fel logót
     upload_cover_photo: Töltse fel a borítóképét
+    request_to_join_prompt: Csatlakozás kérése
+    default_request_to_join_prompt: Köszönjük érdeklődését csoportunk iránt. Kérlek, mutatkozz be, és indokold meg, miért jelentkezel.
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -1858,6 +1860,8 @@ hu:
     last_seen: 'Utoljára látott: %{date}'
     invited_by_name: 'Meghívta: %{name}'
     accepted: Tagok
+    email_rejected: E-mail elutasítva
+    email_rejected_meaning: Az erre a címre küldött e-mail visszapattant vagy spamként lett megjelölve. Erre a címre nem küldünk több e-mailt.
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus
@@ -2482,6 +2486,7 @@ hu:
     password: Jelszó
     reactivate: A fiók újraaktiválása
     want_to_set_password: Legközelebb jelszóval szeretne bejelentkezni?
+    change_your_password: Szeretne új jelszót beállítani?
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése

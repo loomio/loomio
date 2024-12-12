@@ -1271,6 +1271,8 @@ de:
       group_updated: Gruppe aktualisiert
     upload_logo: Logo hochladen
     upload_cover_photo: Neues Titel-Bild hochladen
+    request_to_join_prompt: Aufforderung zur Teilnahme
+    default_request_to_join_prompt: Vielen Dank für Ihr Interesse an unserer Gruppe. Bitte stellen Sie sich vor und erklären Sie, warum Sie Mitglied werden möchten.
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -1884,6 +1886,8 @@ de:
     last_seen: Zuletzt gesehen am %{date}
     invited_by_name: Eingeladen von %{name}
     accepted: Mitglieder
+    email_rejected: E-Mail abgelehnt
+    email_rejected_meaning: An diese Adresse gesendete E-Mails wurden zurückgewiesen oder als Spam markiert. An diese Adresse werden keine weiteren E-Mails gesendet.
   polls_panel:
     new_poll: Neue Umfrage
     any_type: Alle Typen
@@ -2510,6 +2514,7 @@ de:
     password: Passwort
     reactivate: Account wieder aktivieren
     want_to_set_password: Möchten Sie sich das nächste Mal mit einem Passwort anmelden?
+    change_your_password: Möchten Sie ein neues Passwort festlegen?
   chatbot:
     configure_chatbot: Chatbot konfigurieren
     test_connection: Testverbindung

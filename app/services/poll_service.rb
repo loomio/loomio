@@ -229,7 +229,7 @@ class PollService
 
   def self.group_members_added(group_id)
     return if group_id.nil?
-    member_ids = Group.find(group_id).members.humans.pluck(:id)
+    member_ids = Group.find(group_id).accepted_members.humans.pluck(:id)
     Poll.active.where(group_id: group_id, specified_voters_only: false).each do |poll|
       revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
       PollService.create_stances(

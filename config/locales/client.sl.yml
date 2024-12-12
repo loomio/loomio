@@ -1255,6 +1255,8 @@ sl:
       group_updated: Skupina posodobljena
     upload_logo: Naloži logotip
     upload_cover_photo: Naloži naslovno fotografijo
+    request_to_join_prompt: Zahteva za pridružitev
+    default_request_to_join_prompt: Hvala za vaše zanimanje za našo skupino. Predstavite se in razložite, zakaj se želite pridružiti.
   group_export_modal:
     title: Izvoz podatkov skupine
     body: <p>Kopijo podatkov svoje skupine lahko prenesete kadar koli. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Izvedi več.</a></p><p> Izpolnitev traja nekaj minut, odvisno od velikosti vaše skupine. Ko bo pripravljena, boste prejeli e-poštno sporočilo s povezavo za prenos datoteke.</p>
@@ -1848,6 +1850,8 @@ sl:
     last_seen: Nazadnje viden %{date}
     invited_by_name: Povabil %{name}
     accepted: Člani
+    email_rejected: E-pošta zavrnjena
+    email_rejected_meaning: E-pošta, poslana na ta naslov, je bila zavrnjena ali označena kot vsiljena pošta. Na ta naslov ne bo več poslana nobena e-pošta.
   polls_panel:
     new_poll: Nova anketa
     any_type: Vse vrste
@@ -2472,6 +2476,7 @@ sl:
     password: Geslo
     reactivate: Ponovno aktivirajte račun
     want_to_set_password: Se želite naslednjič prijaviti z geslom?
+    change_your_password: Ali želite nastaviti novo geslo?
   chatbot:
     configure_chatbot: Konfigurirajte chatbota
     test_connection: Testna povezava

@@ -114,7 +114,8 @@ class User < ApplicationRecord
   enum default_membership_volume: [:mute, :quiet, :normal, :loud]
 
   scope :active, -> { where(deactivated_at: nil) }
-  scope :no_complaints, -> { where(complaints_count: 0) }
+  scope :no_spam_complaints, -> { where(complaints_count: 0) }
+  scope :has_spam_complaints, -> { where("complaints_count > 0") }
   scope :deactivated, -> { where("deactivated_at IS NOT NULL") }
   scope :sorted_by_name, -> { order("lower(name)") }
   scope :admins, -> { where(is_admin: true) }

@@ -104,16 +104,16 @@ GEM
       ruby2_keywords (>= 0.0.2)
     ast (2.4.2)
     aws-eventstream (1.3.0)
-    aws-partitions (1.1001.0)
-    aws-sdk-core (3.211.0)
+    aws-partitions (1.1021.0)
+    aws-sdk-core (3.214.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       jmespath (~> 1, >= 1.6.1)
-    aws-sdk-kms (1.95.0)
+    aws-sdk-kms (1.96.0)
       aws-sdk-core (~> 3, >= 3.210.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.169.0)
+    aws-sdk-s3 (1.176.0)
       aws-sdk-core (~> 3, >= 3.210.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -131,7 +131,7 @@ GEM
       safely_block (>= 0.4)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
-    browser (6.0.0)
+    browser (6.2.0)
     builder (3.3.0)
     byebug (11.1.3)
     cancancan (3.6.1)
@@ -156,7 +156,7 @@ GEM
     database_cleaner-redis (2.0.0)
       database_cleaner-core (~> 2.0.0)
       redis
-    date (3.4.0)
+    date (3.4.1)
     declarative (0.0.20)
     devise (4.9.4)
       bcrypt (~> 3.0)
@@ -172,8 +172,8 @@ GEM
     diff-lcs (1.5.1)
     digest-crc (0.6.5)
       rake (>= 12.0.0, < 14.0.0)
-    discard (1.3.0)
-      activerecord (>= 4.2, < 8)
+    discard (1.4.0)
+      activerecord (>= 4.2, < 9.0)
     discriminator (0.1.1)
       activerecord (>= 4.0.2)
     dotenv (3.1.4)
@@ -189,31 +189,32 @@ GEM
       railties (>= 5.0.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    faraday (2.12.0)
-      faraday-net_http (>= 2.0, < 3.4)
+    faraday (2.12.2)
+      faraday-net_http (>= 2.0, < 3.5)
       json
       logger
     faraday-multipart (1.0.4)
       multipart-post (~> 2)
-    faraday-net_http (3.3.0)
-      net-http
+    faraday-net_http (3.4.0)
+      net-http (>= 0.5.0)
     faraday-retry (2.2.1)
       faraday (~> 2.0)
     ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
     friendly_id (5.5.1)
       activerecord (>= 4.0.0)
-    gapic-common (0.23.0)
+    gapic-common (0.24.0)
       faraday (>= 1.9, < 3.a)
       faraday-retry (>= 1.0, < 3.a)
+      google-cloud-env (~> 2.2)
+      google-logging-utils (~> 0.1)
       google-protobuf (>= 3.25, < 5.a)
       googleapis-common-protos (~> 1.6)
       googleapis-common-protos-types (~> 1.15)
-      googleauth (~> 1.11)
-      grpc (~> 1.65)
+      googleauth (~> 1.12)
+      grpc (~> 1.66)
     globalid (1.2.1)
       activesupport (>= 6.1)
     google-apis-core (0.15.1)
@@ -226,7 +227,7 @@ GEM
       retriable (>= 2.0, < 4.a)
     google-apis-iamcredentials_v1 (0.22.0)
       google-apis-core (>= 0.15.0, < 2.a)
-    google-apis-storage_v1 (0.47.0)
+    google-apis-storage_v1 (0.48.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-core (1.7.1)
       google-cloud-env (>= 1.0, < 3.a)
@@ -234,10 +235,10 @@ GEM
     google-cloud-env (2.2.1)
       faraday (>= 1.0, < 3.a)
     google-cloud-errors (1.4.0)
-    google-cloud-location (0.8.1)
-      gapic-common (>= 0.21.1, < 2.a)
+    google-cloud-location (0.9.0)
+      gapic-common (>= 0.24.0, < 2.a)
       google-cloud-errors (~> 1.0)
-    google-cloud-storage (1.52.0)
+    google-cloud-storage (1.54.0)
       addressable (~> 2.8)
       digest-crc (~> 0.4)
       google-apis-core (~> 0.13)
@@ -256,19 +257,17 @@ GEM
       googleapis-common-protos (>= 1.3.10, < 2.a)
       googleapis-common-protos-types (>= 1.0.5, < 2.a)
       googleauth (>= 0.16.2, < 2.a)
-    google-cloud-translate-v3 (1.1.1)
-      gapic-common (>= 0.21.1, < 2.a)
+    google-cloud-translate-v3 (1.3.0)
+      gapic-common (>= 0.24.0, < 2.a)
       google-cloud-errors (~> 1.0)
       google-cloud-location (>= 0.7, < 2.a)
       google-iam-v1 (>= 0.7, < 2.a)
-    google-iam-v1 (1.0.1)
-      gapic-common (>= 0.21.1, < 2.a)
+    google-iam-v1 (1.2.0)
+      gapic-common (>= 0.24.0, < 2.a)
       google-cloud-errors (~> 1.0)
       grpc-google-iam-v1 (~> 1.1)
-    google-protobuf (4.28.3-x86_64-darwin)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.28.3-x86_64-linux)
+    google-logging-utils (0.1.0)
+    google-protobuf (4.29.1-x86_64-darwin)
       bigdecimal
       rake (>= 13)
     googleapis-common-protos (1.6.0)
@@ -277,18 +276,16 @@ GEM
       grpc (~> 1.41)
     googleapis-common-protos-types (1.16.0)
       google-protobuf (>= 3.18, < 5.a)
-    googleauth (1.11.2)
+    googleauth (1.12.0)
       faraday (>= 1.0, < 3.a)
-      google-cloud-env (~> 2.1)
+      google-cloud-env (~> 2.2)
+      google-logging-utils (~> 0.1)
       jwt (>= 1.4, < 3.0)
       multi_json (~> 1.11)
       os (>= 0.9, < 2.0)
       signet (>= 0.16, < 2.a)
     gravtastic (3.2.6)
-    grpc (1.67.0-x86_64-darwin)
-      google-protobuf (>= 3.25, < 5.0)
-      googleapis-common-protos-types (~> 1.0)
-    grpc (1.67.0-x86_64-linux)
+    grpc (1.68.1-x86_64-darwin)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
     grpc-google-iam-v1 (1.8.0)
@@ -307,7 +304,7 @@ GEM
     has_scope (0.8.2)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
-    hashdiff (1.1.1)
+    hashdiff (1.1.2)
     hiredis (0.6.3)
     htmlentities (4.3.4)
     http_accept_language (2.1.1)
@@ -339,7 +336,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.7.6)
+    json (2.9.0)
     jwt (2.9.3)
       base64
     kaminari (1.2.2)
@@ -354,7 +351,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    logger (1.6.1)
+    logger (1.6.2)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -373,16 +370,16 @@ GEM
     method_source (1.1.0)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
-    minitest (5.25.1)
-    msgpack (1.7.3)
+    minitest (5.25.4)
+    msgpack (1.7.5)
     multi_json (1.15.0)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     multipart-post (2.4.1)
-    mutex_m (0.2.0)
-    net-http (0.4.1)
+    mutex_m (0.3.0)
+    net-http (0.6.0)
       uri
-    net-imap (0.5.0)
+    net-imap (0.5.1)
       date
       net-protocol
     net-pop (0.1.2)
@@ -393,9 +390,7 @@ GEM
       net-protocol
     net_http_timeout_errors (1.0.0)
     nio4r (2.7.4)
-    nokogiri (1.16.7-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.7-x86_64-linux)
+    nokogiri (1.17.1-x86_64-darwin)
       racc (~> 1.4)
     oga (3.4)
       ast
@@ -405,8 +400,8 @@ GEM
       ostruct (>= 0.2)
     orm_adapter (0.5.0)
     os (1.1.4)
-    ostruct (0.6.0)
-    paper_trail (15.2.0)
+    ostruct (0.6.1)
+    paper_trail (16.0.0)
       activerecord (>= 6.1)
       request_store (~> 1.4)
     pg (1.5.9)
@@ -422,7 +417,7 @@ GEM
       net-smtp
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (6.0.1)
-    puma (6.4.3)
+    puma (6.5.0)
       nio4r (~> 2.0)
     pwned (2.4.1)
     racc (1.8.1)
@@ -459,9 +454,9 @@ GEM
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.6.0)
+    rails-html-sanitizer (1.6.1)
       loofah (~> 2.21)
-      nokogiri (~> 1.14)
+      nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
     railties (7.0.8.1)
       actionpack (= 7.0.8.1)
       activesupport (= 7.0.8.1)
@@ -476,8 +471,8 @@ GEM
       i18n
     redcarpet (3.6.0)
     redis (4.8.1)
-    redis-actionpack (5.4.0)
-      actionpack (>= 5, < 8)
+    redis-actionpack (5.5.0)
+      actionpack (>= 5)
       redis-rack (>= 2.1.0, < 4)
       redis-store (>= 1.1.0, < 2)
     redis-activesupport (5.3.0)
@@ -520,7 +515,7 @@ GEM
     rspec-mocks (3.13.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-rails (7.0.1)
+    rspec-rails (7.1.0)
       actionpack (>= 7.0)
       activesupport (>= 7.0)
       railties (>= 7.0)
@@ -528,7 +523,7 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.1)
+    rspec-support (3.13.2)
     ruby-ll (2.1.3)
       ansi
       ast
@@ -554,14 +549,14 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (5.21.0)
+    sentry-rails (5.22.0)
       railties (>= 5.0)
-      sentry-ruby (~> 5.21.0)
-    sentry-ruby (5.21.0)
+      sentry-ruby (~> 5.22.0)
+    sentry-ruby (5.22.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (5.21.0)
-      sentry-ruby (~> 5.21.0)
+    sentry-sidekiq (5.22.0)
+      sentry-ruby (~> 5.22.0)
       sidekiq (>= 3.0)
     sidekiq (6.5.12)
       connection_pool (>= 2.2.5, < 3)
@@ -588,7 +583,7 @@ GEM
       unicode-display_width (>= 1.1.1, < 3)
     thor (1.3.2)
     tilt (2.4.0)
-    timeout (0.4.1)
+    timeout (0.4.2)
     trailblazer-option (0.1.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -599,7 +594,7 @@ GEM
       unf_ext
     unf_ext (0.0.9.1)
     unicode-display_width (2.6.0)
-    uri (0.13.1)
+    uri (1.0.2)
     uuidtools (2.2.0)
     victor (0.5.0)
     video_info (4.2.0)
@@ -624,7 +619,6 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
-  x86_64-linux
 
 DEPENDENCIES
   actionpack-action_caching
@@ -637,7 +631,7 @@ DEPENDENCIES
   aws-sdk-s3
   blazer
   bootsnap
-  browser (~> 6.0.0)
+  browser (~> 6.2.0)
   byebug
   cancancan
   cld
@@ -648,13 +642,13 @@ DEPENDENCIES
   devise (~> 4.9.4)
   devise-i18n
   devise-pwned_password
-  discard (~> 1.3)
+  discard (~> 1.4)
   discriminator (~> 0.1.1)
   dotenv-rails
   factory_bot_rails
   faker
   friendly_id (~> 5.5.1)
-  google-cloud-storage (~> 1.52)
+  google-cloud-storage (~> 1.54)
   google-cloud-translate
   gravtastic
   haml-rails (~> 2.1.0)
@@ -668,7 +662,7 @@ DEPENDENCIES
   maxminddb
   nokogiri
   oj
-  paper_trail (~> 15.2.0)
+  paper_trail (~> 16.0.0)
   pg
   pg_search
   premailer-rails
@@ -687,7 +681,7 @@ DEPENDENCIES
   reverse_markdown
   rspec-collection_matchers
   rspec-its
-  rspec-rails (~> 7.0.1)
+  rspec-rails (~> 7.1.0)
   ruby-openai
   ruby-saml
   ruby-vips
@@ -704,7 +698,7 @@ DEPENDENCIES
   terminal-table
   twitter-text!
   tzinfo-data
-  uri (= 0.13.1)
+  uri (= 1.0.2)
   uuidtools
   victor
   video_info

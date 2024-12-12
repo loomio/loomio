@@ -1254,6 +1254,8 @@ ja:
       group_updated: グループが更新されました
     upload_logo: ロゴをアップロードする
     upload_cover_photo: カバー写真をアップロードする
+    request_to_join_prompt: 参加リクエストプロンプト
+    default_request_to_join_prompt: 私たちのグループに興味を持っていただきありがとうございます。自己紹介と参加を希望する理由を説明してください。
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -1847,6 +1849,8 @@ ja:
     last_seen: 最後に見たのは %{日付}
     invited_by_name: "%{name} からの招待"
     accepted: メンバー
+    email_rejected: メールが拒否されました
+    email_rejected_meaning: このアドレスに送信されたメールは返送されたか、スパムとしてマークされました。このアドレスには今後メールは送信されません。
   polls_panel:
     new_poll: 新しい投票
     any_type: いろんなタイプ
@@ -2471,6 +2475,7 @@ ja:
     password: パスワード
     reactivate: アカウントを再開する
     want_to_set_password: 次回はパスワードを使ってサインインしますか?
+    change_your_password: 新しいパスワードを設定しますか?
   chatbot:
     configure_chatbot: チャットボットを構成する
     test_connection: テスト接続

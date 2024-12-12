@@ -74,13 +74,10 @@ v-card.auth-complete(
       p.text-caption
         | &nbsp;
         span(v-show="user.code")
-          span(v-t="'auth_form.want_to_set_password'")
+          span(v-show="!user.hasPassword" v-t="'auth_form.want_to_set_password'")
+          span(v-show="user.hasPassword" v-t="'auth_form.change_your_password'")
           space
-          a(
-            v-if="!user.hasPassword"
-            @click='submitAndSetPassword()'
-            v-t="'auth_form.set_password'"
-            )
+          a(@click='submitAndSetPassword()' v-t="'auth_form.set_password'")
   v-card-actions
     v-spacer
     v-btn(

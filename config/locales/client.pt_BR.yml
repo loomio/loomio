@@ -1284,6 +1284,8 @@ pt_BR:
       group_updated: Grupo atualizado
     upload_logo: Enviar logo
     upload_cover_photo: Enviar Image da Capa
+    request_to_join_prompt: Solicitação de adesão rápida
+    default_request_to_join_prompt: Obrigado pelo seu interesse em nosso grupo. Por favor, apresente-se e explique por que você está solicitando para participar.
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -1899,6 +1901,8 @@ pt_BR:
     last_seen: Visto por ultimo em %{date}
     invited_by_name: Convidado por %{name}
     accepted: Membros
+    email_rejected: E-mail rejeitado
+    email_rejected_meaning: O e-mail enviado para este endereço foi devolvido ou marcado como spam. Nenhum outro e-mail será enviado para este endereço.
   polls_panel:
     new_poll: Nova enquete
     any_type: Todos tipos
@@ -2529,6 +2533,7 @@ pt_BR:
     password: Senha
     reactivate: Reativar a conta
     want_to_set_password: Quer fazer login com uma senha na próxima vez?
+    change_your_password: Gostaria de definir uma nova senha?
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexão de teste

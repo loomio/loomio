@@ -1255,6 +1255,8 @@ tr:
       group_updated: Grup güncellendi
     upload_logo: Logoyu yükle
     upload_cover_photo: Kapak fotoğrafını yükle
+    request_to_join_prompt: Katılma isteği istemi
+    default_request_to_join_prompt: Grubumuza olan ilginiz için teşekkür ederiz. Lütfen kendinizi tanıtın ve katılma isteğinizin nedenini açıklayın.
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -1848,6 +1850,8 @@ tr:
     last_seen: Son görülme %{date}
     invited_by_name: "%{name} tarafından davet edildi"
     accepted: Üyeler
+    email_rejected: E-posta reddedildi
+    email_rejected_meaning: Bu adrese gönderilen e-posta geri döndü veya spam olarak işaretlendi. Bu adrese bir daha e-posta gönderilmeyecek.
   polls_panel:
     new_poll: Yeni anket
     any_type: Her türlü
@@ -2472,6 +2476,7 @@ tr:
     password: Şifre
     reactivate: Hesabı yeniden aktif et
     want_to_set_password: Bir dahaki sefere şifreyle mi giriş yapmak istiyorsunuz?
+    change_your_password: Yeni bir şifre belirlemek ister misiniz?
   chatbot:
     configure_chatbot: Chatbot'u yapılandır
     test_connection: Test bağlantısı

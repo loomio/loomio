@@ -1255,6 +1255,8 @@ ro:
       group_updated: Grupul a fost actualizat
     upload_logo: Încărcați sigla
     upload_cover_photo: Încărcați fotografia de copertă
+    request_to_join_prompt: Solicitare de înscriere
+    default_request_to_join_prompt: Vă mulțumim pentru interesul acordat grupului nostru. Vă rugăm să vă prezentați și să explicați de ce solicitați să vă înscrieți.
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -1848,6 +1850,8 @@ ro:
     last_seen: Văzut ultima dată %{date}
     invited_by_name: Invitat de %{name}
     accepted: Membri
+    email_rejected: E-mail respins
+    email_rejected_meaning: E-mailul trimis la această adresă a fost respins sau a fost marcat ca spam. Nu se va mai trimite e-mail la această adresă.
   polls_panel:
     new_poll: Sondaj nou
     any_type: Toate tipurile
@@ -2472,6 +2476,7 @@ ro:
     password: Parola
     reactivate: Reactivați contul
     want_to_set_password: Doriți să vă conectați cu o parolă data viitoare?
+    change_your_password: Doriți să setați o nouă parolă?
   chatbot:
     configure_chatbot: Configurați chatbot
     test_connection: Test de conexiune

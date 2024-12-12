@@ -8,12 +8,3 @@ support
 help
 info
 postmaster
-rob
-michael
-rahul
-matthew
-rich
-richard
-mary
-mj
-martin

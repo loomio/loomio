@@ -205,6 +205,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 
 </template>
 <style lang="sass">
+.greySidebarLogo
+  filter: saturate(99999%) grayscale(1)
+
 
 .sidenav-left
   .v-avatar.v-list-item__avatar

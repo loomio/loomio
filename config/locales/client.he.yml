@@ -1259,6 +1259,8 @@ he:
       group_updated: קבוצה עודכנה
     upload_logo: העלה לוגו
     upload_cover_photo: העלה תמונת שער
+    request_to_join_prompt: בקשת הצטרפות
+    default_request_to_join_prompt: תודה על ההתעניינות בקבוצה שלנו. אנא הצג את עצמך והסבר מדוע אתה מבקש להצטרף.
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -1870,6 +1872,8 @@ he:
     last_seen: נראה לאחרונה %{date}
     invited_by_name: הוזמן על ידי %{name}
     accepted: חברים
+    email_rejected: האימייל נדחה
+    email_rejected_meaning: אימייל שנשלח לכתובת זו הוקפץ או סומן כספאם. לא יישלח יותר אימייל לכתובת זו.
   polls_panel:
     new_poll: סקר חדש
     any_type: כל הסוגים
@@ -2494,6 +2498,7 @@ he:
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
     want_to_set_password: רוצה להיכנס עם סיסמה בפעם הבאה?
+    change_your_password: האם תרצה להגדיר סיסמה חדשה?
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור

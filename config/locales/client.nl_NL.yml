@@ -583,7 +583,7 @@ nl_NL:
     logo_title: Homepage
     group_and_subgroups: "%{group} & subgroepen"
     search_members_short: Zoek leden
-    search_files_short: Bestanden zoeken
+    search_files_short: Zoek bestanden
     search_subgroups_short: Zoek subgroepen
   user_dropdown:
     pin_sidebar: Zijbalk vastzetten
@@ -1263,6 +1263,8 @@ nl_NL:
       group_updated: Groep bijgewerkt
     upload_logo: Upload logo
     upload_cover_photo: Upload cover photo
+    request_to_join_prompt: Verzoek om deel te nemen prompt
+    default_request_to_join_prompt: Bedankt voor uw interesse in onze groep. Stel uzelf voor en leg uit waarom u lid wilt worden.
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -1876,6 +1878,8 @@ nl_NL:
     last_seen: Laats gezien %{date}
     invited_by_name: Uitgenodigd door %{name}
     accepted: Leden
+    email_rejected: E-mail afgewezen
+    email_rejected_meaning: E-mail die naar dit adres is verzonden, is teruggestuurd of gemarkeerd als spam. Er worden geen e-mails meer naar dit adres verzonden.
   polls_panel:
     new_poll: Nieuwe peiling
     any_type: Alle types
@@ -2502,6 +2506,7 @@ nl_NL:
     password: Wachtwoord
     reactivate: Heractiveer account
     want_to_set_password: Wilt u de volgende keer inloggen met een wachtwoord?
+    change_your_password: Wilt u een nieuw wachtwoord instellen?
   chatbot:
     configure_chatbot: Chatbot configureren
     test_connection: Test verbinding
