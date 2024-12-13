@@ -3,62 +3,9 @@ import Records       from '@/shared/services/records';
 import LmoUrlService from '@/shared/services/lmo_url_service';
 import RestfulClient from '@/shared/record_store/restful_client';
 import EventBus      from '@/shared/services/event_bus';
-import i18n          from '@/i18n';
-import Vue from 'vue';
 import { hardReload } from '@/shared/helpers/window';
-import * as Sentry from "@sentry/browser";
 import { compact } from 'lodash-es';
-
-const loadedLocales = ['en'];
-const clientLocales = import.meta.glob('/../config/locales/client.*.yml')
-const dateLocales = import.meta.glob('/node_modules/date-fns/locale/*/index.js')
-
-const setI18nLanguage = function(locale) {
-  i18n.locale = locale;
-  return document.querySelector('html').setAttribute('lang', locale);
-};
-
-const fixCase = function(locale) {
-  const splits = locale.replace('-', '_').split('_');
-  return compact([splits[0].toLowerCase(), splits[1] && splits[1].toUpperCase()]).join('_');
-};
-
-const loomioLocale = locale => locale.replace('-', '_');
-
-const dateFnsLocale = function(locale) {
-  if (locale.startsWith('nl')) { return 'nl'; }
-  return locale.replace('_','-');
-};
-
-const loadLocale = function(locale) {
-  if (i18n.locale !== locale) {
-    if (loadedLocales.includes(locale)) {
-      return setI18nLanguage(locale);
-    } else {
-      const dateLocaleKey = `/node_modules/date-fns/locale/${dateFnsLocale(locale)}/index.js`
-      const clientLocaleKey = `../config/locales/client.${loomioLocale(locale)}.yml`
-
-      if (!dateLocales[dateLocaleKey]){
-        Sentry.captureMessage(`missing dateLocale: ${dateLocaleKey}`)
-        return false
-      }
-
-      if (!clientLocales[clientLocaleKey]){
-        Sentry.captureMessage(`missing clientLocale: ${clientLocaleKey}`)
-        return false
-      }
-
-      dateLocales[dateLocaleKey]().then(dateLocale => i18n.dateLocale = dateLocale.default);
-      clientLocales[clientLocaleKey]().then(function(mod) {
-        const data = mod.default[locale]
-        loadedLocales.push(locale);
-        i18n.setLocaleMessage(locale, data);
-        setI18nLanguage(locale);
-        return EventBus.$emit('VueForceUpdate');
-      });
-    }
-  }
-};
+import { I18n, loadLocaleMessages } from '@/i18n';
 
 export default new class Session {
   returnTo() {
@@ -75,12 +22,12 @@ export default new class Session {
   }
 
   apply(data) {
-    Vue.set(AppConfig, 'currentUserId', data.current_user_id);
-    Vue.set(AppConfig, 'pendingIdentity', data.pending_identity);
+    AppConfig['currentUserId'] = data.current_user_id
+    AppConfig['pendingIdentity'] = data.pending_identity;
     Records.importJSON(data);
     this.userId = data.current_user_id;
     const user = this.user();
-    this.updateLocale(user.locale);
+    loadLocaleMessages(I18n, user.locale);
 
     if (this.isSignedIn()) {
       if (user.autodetectTimeZone && user.timeZone !== AppConfig.timeZone) {
@@ -108,10 +55,6 @@ export default new class Session {
 
   currentGroupId() {
     return (this.currentGroup != null) && this.currentGroup.id;
-  }
-
-  updateLocale(locale) {
-    return loadLocale(locale);
   }
 
   providerIdentity() {

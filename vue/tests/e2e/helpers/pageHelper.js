@@ -50,16 +50,15 @@ module.exports = function(test, browser) {
     },
 
     click(selector, pause) {
-      this.waitFor(selector);
-      // test.moveToElement(selector, -10, -10)
-      this.scrollTo(selector, () => {
-        test.click(selector);
-        if (pause) { test.pause(pause); }
-      })
+      test.click(selector);
+    },
+
+    scrollClick(selector, pause) {
+      test.getLocationInView(selector).moveToElement(selector, -100, -10).assert.visible(selector).click(selector)
     },
 
     scrollTo(selector, callback, wait) {
-      this.waitFor(selector, wait);
+      // this.waitFor(selector, wait);
       return test.getLocationInView(selector, callback);
     },
 
@@ -105,8 +104,8 @@ module.exports = function(test, browser) {
     },
 
     fillIn(selector, value, wait) {
-      this.pause(200);
-      this.waitFor(selector, wait);
+      // this.pause(200);
+      // this.waitFor(selector, wait);
       // test.clearValue(selector)
       return test.setValue(selector, value);
     },
@@ -201,7 +200,7 @@ module.exports = function(test, browser) {
       page.fillIn('.auth-email-form__email input', email);
       page.click('.auth-email-form__submit');
       page.fillIn('.auth-signup-form input', 'New Account');
-      page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input');
+      page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
       page.click('.auth-signup-form__submit');
       page.expectElement('.auth-complete');
       page.loadPath('use_last_login_token');
@@ -212,7 +211,7 @@ module.exports = function(test, browser) {
       const page = pageHelper(test);
       page.click('.auth-email-form__submit');
       page.fillIn('.auth-signup-form__name input', name);
-      page.click('.auth-signup-form__legal-accepted .v-input--selection-controls__input');
+      page.click('.auth-signup-form__legal-accepted .v-selection-control__wrapper');
       return page.click('.auth-signup-form__submit');
     },
 

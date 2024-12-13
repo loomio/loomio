@@ -6,14 +6,18 @@ import AbilityService from '@/shared/services/ability_service';
 import AppConfig from '@/shared/services/app_config';
 import { debounce, some } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  mixins: [WatchRecords, UrlFor],
   data() {
     return {
       mdiMagnify,
       group: null,
       loading: true,
+      subgroups: [],
       upgradeUrl: AppConfig.baseUrl + 'upgrade'
     };
   },
@@ -98,28 +102,28 @@ export default
 </script>
 <template lang="pug">
 div(v-if="group")
-  v-layout.my-2(align-center wrap)
-    v-text-field.mr-2(clearable hide-details solo :value="$route.query.q" @input="onQueryInput" :placeholder="$t('subgroups_panel.search_subgroups_of_name', {name: group.name})" :append-icon="mdiMagnify")
-    v-btn.subgroups-card__start(color="primary" @click='startSubgroup()' v-if='canCreateSubgroups' v-t="'common.action.add_subgroup'")
+  .d-flex.align-center.py-4.flex-wrap
+    v-text-field.mr-2(clearable hide-details variant="solo" density="compact" :value="$route.query.q" @input="onQueryInput" :placeholder="$t('navbar.search_subgroups_short', {name: group.name})" :prepend-inner-icon="mdiMagnify")
+    v-btn.subgroups-card__start(
+      color="primary"
+      variant="elevated"
+      @click='startSubgroup()'
+      v-if='canCreateSubgroups'
+    )
+      span(v-t="'common.action.add_subgroup'")
 
-  v-alert(v-if="subgroups.length == 0" outlined color="primary")
-    p(v-t="'subgroups_panel.need_a_space_for_your_team'")
-    p(v-t="'subgroups_panel.explainer'")
-    p(v-if="upgradeRequired" v-html="$t('subgroups_panel.upgrade', {url: upgradeUrl})")
+  v-alert(v-if="subgroups.length == 0" variant="tonal" color="info")
+    v-card-title(v-t="'subgroups_panel.need_a_space_for_your_team'")
+    v-card-text
+      p(v-t="'subgroups_panel.explainer'")
+      p(v-if="upgradeRequired" v-html="$t('subgroups_panel.upgrade', {url: upgradeUrl})")
 
   v-card.group-subgroups-panel(outlined v-if="subgroups.length")
-    v-list(avatar three-line)
-      v-list-item.subgroups-card__list-item(v-if="group.subgroups().length > 0" :to="urlFor(group)+'?subgroups=none'")
-        v-list-item-avatar.subgroups-card__list-item-logo
-          group-avatar(:group="group" :size="28")
-        v-list-item-content
-          v-list-item-title(v-t="{path: 'subgroups_panel.group_without_subgroups', args: {name: group.name}}")
-          v-list-item-subtitle {{ stripDescription(group.description) }}
+    v-list(avatar lines="two")
       v-list-item.subgroups-card__list-item(v-for='group in subgroups', :key='group.id' :to='urlFor(group)')
-        v-list-item-avatar.subgroups-card__list-item-logo
+        //- v-list-item-avatar.subgroups-card__list-item-logo
+        template(v-slot:prepend)
           group-avatar(:group="group" :size="28")
-        v-list-item-content
-          v-list-item-title {{ group.name }}
-          v-list-item-subtitle {{ stripDescription(group.description) }}
-
+        v-list-item-title {{ group.name }}
+        v-list-item-subtitle {{ stripDescription(group.description) }}
 </template>

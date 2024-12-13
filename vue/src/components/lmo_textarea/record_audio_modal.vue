@@ -1,7 +1,7 @@
 <script>
 import AppConfig from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
-import I18n from '@/i18n'
+import { I18n } from '@/i18n'
 import { mdiMicrophone } from '@mdi/js';
 let mediaRecorder;
 let chunks = [];
@@ -90,7 +90,7 @@ export default {
 
   methods: {
     handleError(e) {
-      this.error = I18n.t("record_modal.no_mic")
+      this.error = I18n.global.t("record_modal.no_mic")
     },
 
     dismiss() {
@@ -165,12 +165,11 @@ export default {
 </script>
 
 <template lang="pug">
-.recording-modal
-  .pa-4
-    .d-flex.justify-space-between
-      h1.text-h5(v-t="'record_modal.record_audio'")
-      v-btn.dismiss-modal-button(icon :aria-label="$t('common.action.cancel')" @click='dismiss')
-        common-icon(name="mdi-close")
+v-card.recording-modal(:title="$t('record_modal.record_audio')")
+  template(v-slot:append)
+    v-btn.dismiss-modal-button(icon variant="flat" :aria-label="$t('common.action.cancel')" @click='dismiss')
+      common-icon(name="mdi-close")
+  v-card-text
     v-alert(v-if="error" type="error") {{error}}
     div(v-else)
       v-alert(type="info" v-if="!url && !onAir" :icon="mdiMicrophone")

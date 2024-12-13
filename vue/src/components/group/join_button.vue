@@ -4,9 +4,11 @@ import Records         from '@/shared/services/records';
 import EventBus        from '@/shared/services/event_bus';
 import AbilityService  from '@/shared/services/ability_service';
 import Flash           from '@/shared/services/flash';
+import WatchRecords    from '@/mixins/watch_records';
 
 export default
 {
+  mixins: [WatchRecords],
   props: {
     group: {
       required: true,
@@ -79,9 +81,16 @@ export default
 </script>
 
 <template lang="pug">
-v-alert.my-4(outlined color="primary" dense v-if="!membership && (canJoinGroup || canRequestMembership || hasRequestedMembership)")
-  p.text-center(v-t="'join_group_button.not_a_member'")
+v-alert.my-4.text-center(
+  variant="tonal"
+  density="compact"
+  color="primary"
+  v-if="!membership && (canJoinGroup || canRequestMembership || hasRequestedMembership)"
+)
+  p.pb-4(v-t="'join_group_button.not_a_member'")
   v-btn.join-group-button(
-    v-if="canJoinGroup || canRequestMembership || hasRequestedMembership"
-    block color="primary" v-t="label" @click="join" :disabled="hasRequestedMembership")
+    color="primary"
+    v-t="label"
+    @click="join"
+    :disabled="hasRequestedMembership")
 </template>
