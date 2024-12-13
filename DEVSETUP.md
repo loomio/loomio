@@ -71,8 +71,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.1/install.sh | bash
 You'll need to restart your terminal, then run:
 
 ```
-nvm install 14
-nvm alias default 14
+nvm install 20
+nvm alias default 20
 ```
 
 ## Fork and clone the Loomio git repo
