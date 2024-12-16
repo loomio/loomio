@@ -5,6 +5,14 @@ import { camelCase, compact, union, each, isArray, keys, filter, snakeCase, defa
 import Records from '@/shared/services/records';
 import { reactive } from 'vue';
 
+function attributeIsDifferent(first, second, attributeName) {
+  if (utils.isTimeAttribute(attributeName)) {
+    return !((first === second) || isEqual(first, second));
+  } else {
+    return first !== second;
+  }
+}
+
 export default class BaseModel {
   static singular = 'undefinedSingular';
   static plural = 'undefinedPlural';
@@ -54,8 +62,8 @@ export default class BaseModel {
     this.processing = false; // not returning/throwing on already processing rn
     this._version = 0;
     this.attributeNames = [];
-    this.unmodified = {};
-    this.afterUpdateFns = [];
+    // this.unmodified = {};
+    // this.afterUpdateFns = [];
     this.saveDisabled = false;
     this.saveFailed = false;
     this.beforeSaves = [];
@@ -79,9 +87,9 @@ export default class BaseModel {
     ).flat()).join("-");
   }
 
-  bumpVersion() {
-    return this._version = this._version + 1;
-  }
+  // bumpVersion() {
+  //   return this._version = this._version + 1;
+  // }
 
   afterConstruction() {}
 
@@ -108,23 +116,26 @@ export default class BaseModel {
     return this.baseUpdate(attributes);
   }
 
-  afterUpdate(fn) {
-    return this.afterUpdateFns.push(fn);
-  }
+  // afterUpdate(fn) {
+  //   return this.afterUpdateFns.push(fn);
+  // }
 
   baseUpdate(attributes) {
-    this.bumpVersion();
+    // this.bumpVersion();
+
     this.attributeNames = union(this.attributeNames, keys(attributes));
     each(attributes, (value, key) => {
-      this.unmodified[key] = value;
-      reactive(this)[key] = value
+      // if (attributeIsDifferent(this[key], value, key)) {
+        reactive(this)[key] = value;
+      // }
       return true;
     });
 
     if (this.inCollection()) { Records[this.constructor.plural].collection.update(this); }
 
-    return this.afterUpdateFns.forEach(fn => fn(this));
+    // return this.afterUpdateFns.forEach(fn => fn(this));
   }
+
 
   attributeIsBlank(attributeName) {
     const doc = new DOMParser().parseFromString(this[attributeName], 'text/html');
@@ -132,37 +143,37 @@ export default class BaseModel {
     return ['null', 'undefined', ''].includes(o);
   }
 
-  attributeIsModified(attributeName) {
-    const strip = function(val) {
-      const doc = new DOMParser().parseFromString(val, 'text/html');
-      const o = (doc.body.textContent || "").trim();
-      if (['null', 'undefined'].includes(o)) {
-        return '';
-      } else {
-        return o;
-      }
-    };
+  // attributeIsModified(attributeName) {
+  //   const strip = function(val) {
+  //     const doc = new DOMParser().parseFromString(val, 'text/html');
+  //     const o = (doc.body.textContent || "").trim();
+  //     if (['null', 'undefined'].includes(o)) {
+  //       return '';
+  //     } else {
+  //       return o;
+  //     }
+  //   };
 
-    const original = this.unmodified[attributeName];
-    const current = this[attributeName];
-    if (utils.isTimeAttribute(attributeName)) {
-      return !((original === current) || isEqual(original, current));
-    } else {
-      if (strip(original) === strip(current)) { return false; }
-      // console.log("#{attributeName}: #{strip(original)}, #{strip(current)}")
-      return original !== current;
-    }
-  }
+  //   const original = this.unmodified[attributeName];
+  //   const current = this[attributeName];
+  //   if (utils.isTimeAttribute(attributeName)) {
+  //     return !((original === current) || isEqual(original, current));
+  //   } else {
+  //     if (strip(original) === strip(current)) { return false; }
+  //     // console.log("#{attributeName}: #{strip(original)}, #{strip(current)}")
+  //     return original !== current;
+  //   }
+  // }
 
-  modifiedAttributes() {
-    return filter(this.attributeNames, name => {
-      return this.attributeIsModified(name);
-    });
-  }
+  // modifiedAttributes() {
+  //   return filter(this.attributeNames, name => {
+  //     return this.attributeIsModified(name);
+  //   });
+  // }
 
-  isModified() {
-    return this.modifiedAttributes().length > 0;
-  }
+  // isModified() {
+  //   return this.modifiedAttributes().length > 0;
+  // }
 
   serialize() {
     return this.baseSerialize();
@@ -331,7 +342,7 @@ export default class BaseModel {
 
   saveSuccess(data) {
     reactive(this).saveFailed = false;
-    this.unmodified = pick(this, this.attributeNames);
+    // this.unmodified = pick(this, this.attributeNames);
     return data;
   }
 
@@ -341,11 +352,11 @@ export default class BaseModel {
     throw data;
   }
 
-  discardChanges() {
-    reactive(this).attributeNames.forEach(key => {
-      reactive(this)[key] = this.unmodified[key];
-    });
-  }
+  // discardChanges() {
+  //   reactive(this).attributeNames.forEach(key => {
+  //     reactive(this)[key] = this.unmodified[key];
+  //   });
+  // }
 
   setErrors(errorList) {
     if (errorList == null) { errorList = []; }
