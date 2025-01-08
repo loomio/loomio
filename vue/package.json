@@ -90,7 +90,7 @@
     "@modyfi/vite-plugin-yaml": "latest",
     "@originjs/vite-plugin-commonjs": "latest",
     "@vitejs/plugin-vue2": "latest",
-    "nightwatch": "^3.10.0",
+    "nightwatch": "^3.10.2",
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
