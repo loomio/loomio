@@ -551,8 +551,8 @@ GEM
     sentry-ruby (5.22.1)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (5.22.0)
-      sentry-ruby (~> 5.22.0)
+    sentry-sidekiq (5.22.1)
+      sentry-ruby (~> 5.22.1)
       sidekiq (>= 3.0)
     sidekiq (6.5.12)
       connection_pool (>= 2.2.5, < 3)
