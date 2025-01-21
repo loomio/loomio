@@ -94,7 +94,7 @@
     "pug": "latest",
     "sass": "latest",
     "unplugin-vue-components": "latest",
-    "vite": "^5.4.11",
+    "vite": "^5.4.13",
     "vite-plugin-env-compatible": "latest"
   },
   "optionalDependencies": {
