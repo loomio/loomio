@@ -53,10 +53,10 @@ When a new version of ruby is released, you can update ruby-build with
 cd "$(rbenv root)"/plugins/ruby-build && git pull
 ```
 
-At the time of writing 3.2.4 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
+At the time of writing 3.4.1 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
 
 ```
-rbenv install 3.2.4
+rbenv install 3.4.1
 gem install bundler
 ```
 
@@ -128,7 +128,7 @@ npm run serve
 
 You can view Loomio in your browser by visiting http://localhost:8080.
 
-To view Loomio's features and changes to your source code, visit any of the dev routes listed at http://localhost:8080/dev/ (be sure to include the trailing slash). A good place to is http://localhost:8080/dev/setup_group.  
+To view Loomio's features and changes to your source code, visit any of the dev routes listed at http://localhost:8080/dev/ (be sure to include the trailing slash). A good place to is http://localhost:8080/dev/setup_group.
 
 ## Other things to know
 Rails stuff

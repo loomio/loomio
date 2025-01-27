@@ -199,8 +199,7 @@ GEM
       net-http (>= 0.5.0)
     faraday-retry (2.2.1)
       faraday (~> 2.0)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.17.0)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
@@ -257,10 +256,7 @@ GEM
       gapic-common (>= 0.21.1, < 2.a)
       google-cloud-errors (~> 1.0)
     google-logging-utils (0.1.0)
-    google-protobuf (4.29.2-x86_64-darwin)
-      bigdecimal
-      rake (>= 13)
-    google-protobuf (4.29.2-x86_64-linux)
+    google-protobuf (4.29.2)
       bigdecimal
       rake (>= 13)
     googleapis-common-protos (1.6.0)
@@ -278,10 +274,7 @@ GEM
       os (>= 0.9, < 2.0)
       signet (>= 0.16, < 2.a)
     gravtastic (3.2.6)
-    grpc (1.68.1-x86_64-darwin)
-      google-protobuf (>= 3.25, < 5.0)
-      googleapis-common-protos-types (~> 1.0)
-    grpc (1.68.1-x86_64-linux)
+    grpc (1.68.1)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
     haml (6.2.0)
@@ -704,7 +697,7 @@ DEPENDENCIES
   webmock
 
 RUBY VERSION
-   ruby 3.2.4p170
+   ruby 3.4.1p0
 
 BUNDLED WITH
    2.4.12
