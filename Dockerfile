@@ -1,4 +1,4 @@
-FROM ruby:3.2.4-slim as base
+FROM ruby:3.4.1-slim as base
 
 ENV MALLOC_ARENA_MAX=2
 ENV RAILS_LOG_TO_STDOUT=1
@@ -30,7 +30,7 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists /usr/share/doc /usr/share/man
 
 COPY . .
- 
+
 RUN bundle install && bundle exec bootsnap precompile --gemfile app/ lib/
 
 WORKDIR /loomio/vue
@@ -41,4 +41,3 @@ WORKDIR /loomio
 EXPOSE 3000
 
 CMD /loomio/docker_start.sh
-
