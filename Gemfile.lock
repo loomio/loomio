@@ -180,6 +180,7 @@ GEM
     dotenv-rails (3.1.2)
       dotenv (= 3.1.2)
       railties (>= 6.1)
+    drb (2.2.1)
     erubi (1.13.1)
     event_stream_parser (1.0.0)
     factory_bot (6.5.0)
@@ -635,6 +636,7 @@ DEPENDENCIES
   discard (~> 1.4)
   discriminator (~> 0.1.1)
   dotenv-rails
+  drb
   factory_bot_rails
   faker
   friendly_id (~> 5.5.1)
