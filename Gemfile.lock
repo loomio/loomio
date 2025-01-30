@@ -138,7 +138,7 @@ GEM
     chartkick (5.1.2)
     cld (0.13.0)
       ffi
-    concurrent-ruby (1.3.4)
+    concurrent-ruby (1.3.5)
     connection_pool (2.5.0)
     crack (1.0.0)
       bigdecimal
@@ -542,11 +542,11 @@ GEM
     sentry-rails (5.22.1)
       railties (>= 5.0)
       sentry-ruby (~> 5.22.1)
-    sentry-ruby (5.22.1)
+    sentry-ruby (5.22.3)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (5.22.1)
-      sentry-ruby (~> 5.22.1)
+    sentry-sidekiq (5.22.3)
+      sentry-ruby (~> 5.22.3)
       sidekiq (>= 3.0)
     sidekiq (6.5.12)
       connection_pool (>= 2.2.5, < 3)
