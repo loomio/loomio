@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '3.2.4'
+ruby '3.4.1'
 gem 'rails', '7.0.8.1'
 gem 'rack', '2.2.10'
 gem 'uri', '1.0.2'
@@ -45,7 +45,7 @@ gem 'oj'
 gem "cld"
 gem 'custom_counter_cache'
 gem 'premailer-rails'
-gem 'activerecord-import', '1.8.1'
+gem 'activerecord-import', '2.0.0'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'
@@ -68,6 +68,7 @@ gem 'pg_search'
 gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
+gem 'concurrent-ruby', '1.3.4' # can remove in rails 7.1
 
 group :development, :test do
   gem 'byebug'
@@ -86,6 +87,7 @@ end
 group :test do
   gem 'webmock'
   gem 'rack_session_access'
+  gem 'drb'
   gem 'rspec-rails', '~> 7.1.0'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'

@@ -72,7 +72,7 @@ export default new class AbilityService {
   }
 
   canUnpinThread(thread) {
-    return !thread.closedAt && thread.pinnedAt && this.canEditThread(thread);
+    return thread.pinnedAt && this.canEditThread(thread);
   }
 
   canExportThread(thread) {
@@ -92,7 +92,7 @@ export default new class AbilityService {
     event.pinned && this.canEditThread(event.discussion());
   }
 
-  canMoveThread(thread) { 
+  canMoveThread(thread) {
     return thread.adminsInclude(Session.user()) || (
       thread.membersInclude(Session.user()) &&
       (thread.group().membersCanEditDiscussions || (thread.author() === Session.user()))
