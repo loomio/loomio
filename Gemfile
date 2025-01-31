@@ -68,6 +68,7 @@ gem 'pg_search'
 gem 'i18n-timezones'
 gem 'actionpack-cloudflare'
 gem 'victor', require: false
+gem 'concurrent-ruby', '1.3.4' # can remove in rails 7.1
 
 group :development, :test do
   gem 'byebug'
@@ -90,7 +91,6 @@ group :test do
   gem 'rspec-rails', '~> 7.1.0'
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
-  gem 'rspec-activemodel-mocks'
   gem 'database_cleaner-active_record'
   gem 'database_cleaner-redis'
 end

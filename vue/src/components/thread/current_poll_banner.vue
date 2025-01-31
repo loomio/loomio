@@ -2,8 +2,11 @@
 import AppConfig from '@/shared/services/app_config';
 import AbilityService from '@/shared/services/ability_service';
 import { find } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [WatchRecords, UrlFor],
   props: {
     discussion: Object
   },
@@ -23,11 +26,11 @@ export default {
 
   computed: {
     styles() {
-      const { bar, top } = this.$vuetify.application;
+      // const { bar, top } = this.$vuetify.application;
       return{
         display: 'flex',
         position: 'sticky',
-        top: `${bar + top}px`,
+        top: `64px`,
         zIndex: 1
       };
     },
@@ -46,7 +49,8 @@ v-card.current-poll-banner.mb-4.py-2.px-4.lmo-no-print(:style="styles" v-if="eve
   .current-poll-banner__title.mr-4
     span {{poll.title}}
   v-spacer
-  v-btn(color="primary" :to="urlFor(event)" v-t="'common.view'")
+  v-btn(variant="tonal" :to="urlFor(event)")
+    span(v-t="'common.view'")
 </template>
 
 <style lang="sass">

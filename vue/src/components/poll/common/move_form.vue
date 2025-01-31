@@ -22,7 +22,7 @@ export default {
   mounted() {
     this.groups = Session.user().groups().filter(g => AbilityService.canStartPoll(g)).map(g => {
       return {
-        text: g.fullName,
+        title: g.fullName,
         value: g.id,
         disabled: (g.id === this.poll.groupId)
       };
@@ -42,11 +42,11 @@ export default {
 
 </script>
 <template lang="pug">
-v-card.poll-common-move-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()")
-  submit-overlay(:value="poll.processing")
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="{path: 'poll_common_move_form.title', args: {poll_type: poll.translatedPollType() }}")
-    v-spacer
+v-card.poll-common-move-form(
+  :title="$t('poll_common_move_form.title', {poll_type: poll.translatedPollType()})"
+  @keyup.ctrl.enter="submit()"
+  @keydown.meta.enter.stop.capture="submit()")
+  template(v-slot:append)
     dismiss-modal-button
   v-card-text
     loading(v-if="!groups.length")

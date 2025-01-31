@@ -43,6 +43,17 @@ export default {
   },
 
   computed: {
+    indexes() {
+      var a = []
+      if (this.newestFirst) {
+        var i = this.collection.length;
+        while(i-- > 0) { a.push(i); }
+      } else {
+        var i = 0;
+        while(i++ < this.collection.length) { a.push(i-1); }
+      }
+      return a;
+    },
     directedCollection() {
       if (this.newestFirst) {
         return this.collection.reverse();
@@ -80,7 +91,7 @@ export default {
       if (!event) { return []; }
       return ["lmo-action-dock-wrapper",
        `positionKey-${event.positionKey}`,
-       `sequenceId-${event.sequenceId}`,
+       `sequenceId-${event.sequenceId || 0}`,
        `position-${event.position}`];
     }
   }
@@ -90,85 +101,82 @@ export default {
 
 <template lang="pug">
 .strand-list
-  .strand-item(
-    v-for="obj in directedCollection"
-    :key="obj.event.id"
-    :class="{'strand-item--deep': obj.event.depth > 1}"
-  )
-    .strand-item__row(v-if="!newestFirst && obj.missingEarlierCount")
-      .strand-item__gutter
-        .strand-item__stem-wrapper
-          .strand-item__stem.strand-item__stem--broken
-      //- | top !newestFirst && obj.missingEarlierCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
-        @click="loader.loadBefore(obj.event)"
-        :loading="loader.loading == 'before'+obj.event.id")
+  template(v-for="i in indexes" :key="i")
+    .strand-item(v-if="obj = collection[i]" :class="{'strand-item--deep': obj.event.depth > 1}")
+      .strand-item__row(v-if="!newestFirst && obj.missingEarlierCount")
+        .strand-item__gutter
+          .strand-item__stem-wrapper
+            .strand-item__stem.strand-item__stem--broken
+        //- | top !newestFirst && obj.missingEarlierCount
+        strand-load-more(
+          v-intersect.once="{handler: (isVisible) => isVisible && loader.autoLoadBefore(obj)}"
+          :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
+          @click="loader.loadBefore(obj.event)"
+          :loading="loader.loading == 'before'+obj.event.id")
 
-    .strand-item__row(v-if="newestFirst && obj.missingAfterCount")
-      .strand-item__gutter
-        .strand-item__stem-wrapper
-          .strand-item__stem.strand-item__stem--broken
-      //- | top newestFirst && obj.missingAfterCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
-        @click="loader.loadAfter(obj.event)"
-        :loading="loader.loading == 'after'+obj.event.id")
+      .strand-item__row(v-if="newestFirst && obj.missingAfterCount")
+        .strand-item__gutter
+          .strand-item__stem-wrapper
+            .strand-item__stem.strand-item__stem--broken
+        //- | top newestFirst && obj.missingAfterCount
+        strand-load-more(
+          v-intersect.once="{handler: (isVisible) => isVisible && loader.autoLoadAfter(obj)}"
+          :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
+          @click="loader.loadAfter(obj.event)"
+          :loading="loader.loading == 'after'+obj.event.id")
 
-    .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
-      .strand-item__gutter(v-if="obj.event.depth > 0")
-        .d-flex.justify-center
-          v-checkbox.thread-item__is-forking(
-            v-if="loader.discussion.forkedEventIds.length"
-            @change="obj.event.toggleForking()"
-            :disabled="obj.event.forkingDisabled()"
-            v-model="obj.event.isForking()"
-          )
-          template(v-else)
-            user-avatar(
-              :user="obj.event.actor()"
-              :size="(obj.event.depth > 1) ? 28 : 32"
-              no-link
+      .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
+        .strand-item__gutter(v-if="obj.event.depth > 0")
+          .d-flex.justify-center
+            v-checkbox.thread-item__is-forking(
+              v-if="loader.discussion.forkedEventIds.length"
+              :disabled="obj.event.forkingDisabled()"
+              v-model="loader.discussion.forkedEventIds"
+              :value="obj.event.id"
             )
-        .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
-          .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
-      .strand-item__main(style="overflow: hidden")
-        //- div {{obj.event.kind}} {{obj.event.positionKey}} {{obj.event.sequenceId}} {{isFocused(obj.event)}} childCount{{obj.event.childCount}} chdrn {{obj.children.length}}
-        div(:class="classes(obj.event)" v-observe-visibility="{callback: (isVisible, entry) => loader.setVisible(isVisible, obj.event)}")
-          strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
-          component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
-        .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
-          strand-load-more(
-            v-if="obj.children.length == 0"
-            v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.loadAfter(obj.event)}"
-            :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
-            @click="loader.loadAfter(obj.event)"
-            :loading="loader.loading == 'children'+obj.event.id")
-          strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
-        reply-form(:eventId="obj.event.id")
-    .strand-item__row(v-if="loader.collapsed[obj.event.id]")
-      .d-flex.align-center
-        .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
-          common-icon(name="mdi-unfold-more-horizontal")
-        strand-item-headline.text--secondary(:event="obj.event" :eventable="obj.eventable" collapsed)
+            template(v-else)
+              user-avatar(
+                :user="obj.event.actor()"
+                :size="(obj.event.depth > 1) ? 28 : 32"
+                no-link
+              )
+          .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)")
+            .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
+        .strand-item__main
+          //- div {{obj.event.kind}} {{obj.event.positionKey}} sid: {{obj.event.sequenceId}} focused: {{isFocused(obj.event)}} childCount{{obj.event.childCount}} chdrn {{obj.children.length}}
+          div(:class="classes(obj.event)" v-intersect="{handler: (isVisible) => loader.setVisible(isVisible, obj.event)}")
+            strand-item-removed(v-if="obj.eventable && obj.eventable.discardedAt" :event="obj.event" :eventable="obj.eventable")
+            component(v-else :is="componentForKind(obj.event.kind)" :event='obj.event' :eventable="obj.eventable")
+          .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
+            strand-load-more(
+              v-if="obj.children.length == 0"
+              v-intersect.once="{handler: (isVisible) => isVisible && loader.loadAfter(obj.event)}"
+              :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
+              @click="loader.loadAfter(obj.event)"
+              :loading="loader.loading == 'children'+obj.event.id")
+            strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
+          reply-form(:eventId="obj.event.id")
+      .strand-item__row(v-if="loader.collapsed[obj.event.id]")
+        .d-flex.align-center
+          .strand-item__circle.mr-2(v-if="loader.collapsed[obj.event.id]" @click.stop="loader.expand(obj.event)")
+            common-icon(name="mdi-unfold-more-horizontal")
+          strand-item-headline.text-medium-emphasis(:event="obj.event" :eventable="obj.eventable" collapsed)
 
-    .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
-      //- | bottom newestFirst && obj.missingEarlierCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadBefore(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
-        @click="loader.loadBefore(obj.event)"
-        :loading="loader.loading == 'before'+obj.event.id")
+      .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
+        //- | bottom newestFirst && obj.missingEarlierCount
+        strand-load-more(
+          v-intersect.once="{handler: (isVisible) => isVisible && loader.autoLoadBefore(obj)}"
+          :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
+          @click="loader.loadBefore(obj.event)"
+          :loading="loader.loading == 'before'+obj.event.id")
 
-    .strand-item__row(v-if="!newestFirst && obj.missingAfterCount" )
-      //- | bottom !newestFirst && obj.missingAfterCount
-      strand-load-more(
-        v-observe-visibility="{once: true, callback: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
-        :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
-        @click="loader.loadAfter(obj.event)"
-        :loading="loader.loading == 'after'+obj.event.id")
+      .strand-item__row(v-if="!newestFirst && obj.missingAfterCount" )
+        //- | bottom !newestFirst && obj.missingAfterCount
+        strand-load-more(
+          v-intersect.once="{handler: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
+          :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
+          @click="loader.loadAfter(obj.event)"
+          :loading="loader.loading == 'after'+obj.event.id")
 </template>
 
 <style lang="sass">
@@ -208,9 +216,6 @@ export default {
   width: 32px
   // margin-right: 8px
 
-.strand-item__gutter:hover
-  .strand-item__stem
-    background-color: #999
 
 .strand-item__main
   flex-grow: 1
@@ -228,8 +233,21 @@ export default {
   width: 0
   height: 100%
   padding: 0 0.5px
-  background-color: #dadada
+  background-color: #dedede
   margin: 0px 16px
+
+.strand-item__gutter:hover
+  .strand-item__stem
+    background-color: #aaa
+
+.v-theme--dark, .v-theme--darkBlue
+  .strand-item__stem
+    background-color: #444
+
+  .strand-item__gutter:hover
+    .strand-item__stem
+      background-color: #777
+
 
 .strand-item__stem--broken
   background-image: linear-gradient(0deg, #dadada 25%, #ffffff 25%, #ffffff 50%, #dadada 50%, #dadada 75%, #ffffff 75%, #ffffff 100%)
@@ -239,10 +257,10 @@ export default {
   background-repeat: repeat-y
 
 .strand-item__stem--unread
-  background-color: var(--v-accent-lighten1)!important
+  background-color: rgb(var(--v-theme-primary)) !important
 
 .strand-item__stem--focused
-  background-color: var(--v-primary-darken1)!important
+  background-color: rgb(var(--v-theme-primary-darken-1))!important
 
 .strand-item__circle
   display: flex
