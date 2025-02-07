@@ -200,7 +200,8 @@ GEM
       net-http (>= 0.5.0)
     faraday-retry (2.2.1)
       faraday (~> 2.0)
-    ffi (1.17.0)
+    ffi (1.17.1-x86_64-darwin)
+    ffi (1.17.1-x86_64-linux-gnu)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
@@ -542,7 +543,7 @@ GEM
     ruby-saml (1.17.0)
       nokogiri (>= 1.13.10)
       rexml
-    ruby-vips (2.2.2)
+    ruby-vips (2.2.3)
       ffi (~> 1.12)
       logger
     ruby2_keywords (0.0.5)
