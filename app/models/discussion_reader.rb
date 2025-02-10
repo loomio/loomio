@@ -11,16 +11,21 @@ class DiscussionReader < ApplicationRecord
 
   delegate :message_channel, to: :user
 
-  scope :dangling, -> { joins('left join discussions on discussions.id = discussion_id left join users on users.id = user_id').where('discussions.id is null or users.id is null') }
+  scope :dangling, lambda {
+    joins('left join discussions on discussions.id = discussion_id left join users on users.id = user_id')
+      .where('discussions.id is null or users.id is null')
+  }
 
-  scope :active, -> { where("discussion_readers.revoked_at IS NULL") }
+  scope :active, -> { where('discussion_readers.revoked_at IS NULL') }
 
   scope :guests, -> { active.where('discussion_readers.guest': true) }
   scope :admins, -> { active.where('discussion_readers.admin': true) }
 
   scope :redeemable, -> { guests.where('discussion_readers.accepted_at IS NULL') }
 
-  scope :redeemable_by, -> (user_id) { redeemable.joins(:user).where("user_id = ? OR users.email_verified = false", user_id) }
+  scope :redeemable_by, lambda { |user_id|
+    redeemable.joins(:user).where('user_id = ? OR users.email_verified = false', user_id)
+  }
 
   update_counter_cache :discussion, :seen_by_count
   update_counter_cache :discussion, :members_count
@@ -61,6 +66,7 @@ class DiscussionReader < ApplicationRecord
   def mark_as_read(ranges)
     ranges = RangeSet.to_ranges(ranges)
     return if ranges.empty?
+
     self.read_ranges = read_ranges.concat(ranges)
   end
 
@@ -87,11 +93,11 @@ class DiscussionReader < ApplicationRecord
   end
 
   def discussion_reader_user_id
-    self.user_id
+    user_id
   end
 
   def read_ranges
-    RangeSet.parse(self.read_ranges_string)
+    RangeSet.parse(read_ranges_string)
   end
 
   def read_ranges=(ranges)
@@ -109,13 +115,11 @@ class DiscussionReader < ApplicationRecord
   end
 
   def read_ranges_string
-    self[:read_ranges_string] ||= begin
-      if last_read_sequence_id == 0
-        ""
-      else
-        "#{[discussion.first_sequence_id, 1].max}-#{last_read_sequence_id}"
-      end
-    end
+    self[:read_ranges_string] ||= if last_read_sequence_id == 0
+                                    ''
+                                  else
+                                    "#{[discussion.first_sequence_id, 1].max}-#{last_read_sequence_id}"
+                                  end
   end
 
   def read_items_count
@@ -127,6 +131,7 @@ class DiscussionReader < ApplicationRecord
   end
 
   private
+
   def membership
     @membership ||= discussion.group.membership_for(user)
   end

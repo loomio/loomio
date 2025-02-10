@@ -78,7 +78,7 @@ v-card.auth-signin-form(
         span(v-t="{ path: 'auth_form.sign_in_as', args: {name: user.name}}")
       v-btn.my-4.auth-signin-form__submit(color="primary" @click='sendLoginLink()' v-if='user.errors.token' :loading="loading")
         span(v-t="'auth_form.login_link'")
-      p
+      p.mb-4.text-medium-emphasis
         span(v-t="'auth_form.set_password_helptext'").mr-1
         a.lmo-pointer(@click='signInAndSetPassword()' v-t="'auth_form.set_password'")
     .auth-signin-form__no-token(v-if='!user.hasToken')
