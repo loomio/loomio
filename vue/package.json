@@ -77,7 +77,7 @@
     "vue": "^2.7.0",
     "vue-chartjs": "^4.1.2",
     "vue-gravatar": "^1.4.1",
-    "vue-i18n": "8.28.2",
+    "vue-i18n": "11.1.1",
     "vue-observe-visibility": "^1.0.0",
     "vue-recaptcha": "^1.2.0",
     "vue-router": "^3.6.5",
