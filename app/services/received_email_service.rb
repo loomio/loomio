@@ -36,8 +36,10 @@ class ReceivedEmailService
 
     when /[^\s]+\+u=.+&k=.+/ 
       # personal email-to-group, eg. enspiral+u=99&k=adsfghjl@mail.loomio.com
-      if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
-        email.update_attribute(:released, true) if discussion.persisted?
+      if AppConfig.app_features[:thread_from_mail]
+        if discussion = DiscussionService.create(discussion: Discussion.new(discussion_params(email)), actor: actor_from_email(email))
+          email.update_attribute(:released, true) if discussion.persisted?
+        end
       end
     else
       if forward_email_rule = ForwardEmailRule.find_by(handle: email.route_path)
