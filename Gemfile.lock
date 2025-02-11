@@ -121,6 +121,7 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
+    benchmark (0.4.0)
     bigdecimal (3.1.9)
     bindex (0.8.1)
     blazer (3.1.0)
@@ -331,8 +332,8 @@ GEM
       ice_cube (~> 0.16)
       ostruct
     ice_cube (0.17.0)
-    image_processing (1.13.0)
-      mini_magick (>= 4.9.5, < 5)
+    image_processing (1.14.0)
+      mini_magick (>= 4.9.5, < 6)
       ruby-vips (>= 2.0.17, < 3)
     inherited_resources (1.14.0)
       actionpack (>= 6.0)
@@ -377,7 +378,9 @@ GEM
     marcel (1.0.4)
     maxminddb (0.1.22)
     method_source (1.1.0)
-    mini_magick (4.13.2)
+    mini_magick (5.1.2)
+      benchmark
+      logger
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.7.2)
@@ -678,7 +681,7 @@ DEPENDENCIES
   httparty (~> 0.22.0)
   i18n-timezones
   icalendar
-  image_processing (~> 1.13)
+  image_processing (~> 1.14)
   lograge
   maxminddb
   nokogiri
