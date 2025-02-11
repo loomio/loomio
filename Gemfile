@@ -46,7 +46,7 @@ gem 'oj'
 gem "cld"
 gem 'custom_counter_cache'
 gem 'premailer-rails'
-gem 'activerecord-import', '2.0.0'
+gem 'activerecord-import', '2.1.0'
 gem 'discriminator', '~> 0.1.1'
 gem 'icalendar'
 gem 'rack-attack'
