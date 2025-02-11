@@ -577,6 +577,9 @@ sv:
     close_sidebar: Stäng sidofältet
     logo_title: Hemsida
     group_and_subgroups: "%{group} och undergrupper"
+    search_members_short: Sök medlemmar
+    search_files_short: Sök efter filer
+    search_subgroups_short: Sök undergrupper
   user_dropdown:
     pin_sidebar: Fäst sidofältet
     unpin_sidebar: Lossa sidofältet
@@ -993,6 +996,8 @@ sv:
     edit_markdown: Redigera Markdown
     markdown_confirm: Viss formatering kan gå förlorad vid konvertering av wysiwyg-innehåll till markdown.
     upload_failed: Uppladdningen misslyckades
+    confirm_discard: Är du säker på att du vill ignorera dina ändringar?
+    discard_draft: Släng utkast
   cover_photo_form:
     heading: Nytt omslagsfoto
     upload_link: Ladda upp nytt omslagsfoto
@@ -1245,6 +1250,8 @@ sv:
       group_updated: Gruppen uppdaterad
     upload_logo: Ladda upp logotyp
     upload_cover_photo: Ladda upp omslagsfoto
+    request_to_join_prompt: Begäran om att gå med
+    default_request_to_join_prompt: Tack för ditt intresse för vår grupp. Presentera dig själv och förklara varför du vill vara med.
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -1834,6 +1841,8 @@ sv:
     last_seen: Sågs senast %{date}
     invited_by_name: Inbjuden av %{name}
     accepted: Medlemmar
+    email_rejected: E-post avvisad
+    email_rejected_meaning: E-post som skickats till den här adressen har studsat eller markerats som skräppost. Inget mer e-postmeddelande kommer att skickas till denna adress.
   polls_panel:
     new_poll: Ny omröstning
     any_type: Alla typer
@@ -2454,6 +2463,8 @@ sv:
     email: E-post
     password: Lösenord
     reactivate: Återaktivera kontot
+    want_to_set_password: Vill du logga in med ett lösenord nästa gång?
+    change_your_password: Vill du ställa in ett nytt lösenord?
   chatbot:
     configure_chatbot: Konfigurera chatbot
     test_connection: Testa anslutningen

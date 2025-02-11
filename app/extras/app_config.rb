@@ -11,7 +11,7 @@ class AppConfig
     locales
   )
 
-  BANNED_CHARS = %(\\s:,;'"`<>)
+  BANNED_CHARS = %(\\s:,;\\[\\]'"`<>)
   EMAIL_REGEX  = /[^#{BANNED_CHARS}]+?@[^#{BANNED_CHARS}]+\.[^#{BANNED_CHARS}]+/
   URL_REGEX    = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/
 
@@ -63,8 +63,6 @@ class AppConfig
       help_url:                          ENV.fetch('HELP_URL',                      'https://help.loomio.com/'),
       icon_src:                          ENV.fetch('THEME_ICON_SRC',                "/brand/icon_#{logo_color}_150h.png"),
       app_logo_src:                      ENV.fetch('THEME_APP_LOGO_SRC',            "/brand/logo_#{logo_color}.svg"),
-      apple_touch_src:                   ENV.fetch('APPLE_TOUCH_SRC',               "/brand/touch_icon_gold.png"),
-      default_group_cover_src:           ENV.fetch('THEME_DEFAULT_GROUP_COVER_SRC', '/theme/default_group_cover.png'),
       saml_login_provider_name:          ENV.fetch('SAML_LOGIN_PROVIDER_NAME', 'SAML'),
       oauth_login_provider_name:         ENV.fetch('OAUTH_LOGIN_PROVIDER_NAME', 'OAUTH'),
       # used in emails
@@ -74,6 +72,7 @@ class AppConfig
       accent_color:                      ENV.fetch('THEME_ACCENT_COLOR',            brand_colors[:gold]),
       text_on_primary_color:             ENV.fetch('THEME_TEXT_ON_PRIMARY_COLOR',   '#ffffff'),
       text_on_accent_color:              ENV.fetch('THEME_TEXT_ON_ACCENT_COLOR',    '#ffffff'),
+      default_invitation_message:        ENV['THEME_DEFAULT_INVITATION_MESSAGE'],
 
       vuetify: {
         primary: ENV.fetch('THEME_COLOR_PRIMARY', brand_colors[:sky]),
@@ -95,6 +94,7 @@ class AppConfig
       demos:                      ENV.fetch('FEATURES_DEMO_GROUPS', false),
       trials:                     ENV.fetch('FEATURES_TRIALS', false),
       trial_days:                 ENV.fetch('TRIAL_DAYS', nil),
+      gray_sidebar_logo_in_dark_mode: ENV.fetch('FEATURES_GRAY_SIDEBAR_LOGO_IN_DARK_MODE', false),
       new_thread_button:          !!ENV.fetch('FEATURES_NEW_THREAD_BUTTON', false),
       email_login:                !ENV['FEATURES_DISABLE_EMAIL_LOGIN'],
       create_user:                !ENV['FEATURES_DISABLE_CREATE_USER'],

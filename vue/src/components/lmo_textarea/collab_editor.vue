@@ -12,7 +12,8 @@ import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
 import BulletList from '@tiptap/extension-bullet-list';
 import CodeBlock from '@tiptap/extension-code-block';
-import Code from '@tiptap/extension-code';
+import { Code } from './extension_code';
+import CharacterCount from '@tiptap/extension-character-count';
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
 import GapCursor from '@tiptap/extension-gapcursor';
@@ -71,6 +72,8 @@ const isValidHttpUrl = function(string) {
   return (url.protocol === 'http:') || (url.protocol === 'https:');
 };
 
+var provider = null;
+
 export default
 {
   mixins: [CommonMentioning, HtmlMentioning, Attaching],
@@ -111,16 +114,26 @@ export default
 
   mounted() {
     const docname = this.model.collabKey(this.field, (Session.user().id || AppConfig.channel_token));
-    const provider = new HocuspocusProvider({
+
+    const onSync = function(provider) {
+      if (this.editor) {
+        if (!provider.document.getMap('config').get('initialContentLoaded')) {
+          provider.document.getMap('config').set('initialContentLoaded', true)
+          this.editor.commands.setContent(this.model[this.field]);
+        } else if (this.editor.storage.characterCount.characters() == 0 && !this.model.attributeIsBlank(this.field)) {
+          this.editor.commands.setContent(this.model[this.field]);
+        }
+      } else {
+        console.error("onSync but no editor");
+        setTimeout( () => onSync(provider) , 250);
+      }
+    }.bind(this);
+
+    provider = new HocuspocusProvider({
       url: AppConfig.theme.hocuspocus_url,
       name: docname,
       token: (Session.user().id || 0) + "," + (Session.user().secretToken || AppConfig.channel_token),
-      onSynced: function() {
-        if (!provider.document.getMap('config').get('initialContentLoaded') && this.editor) {
-          provider.document.getMap('config').set('initialContentLoaded', true)
-          this.editor.commands.setContent(this.model[this.field])
-        }
-      }.bind(this),
+      onSynced: function() { onSync(provider); }.bind(this),
     });
 
     new IndexeddbPersistence(docname, provider.document);
@@ -139,6 +152,7 @@ export default
         Bold,
         BulletList,
         CodeBlock,
+        CharacterCount.configure({limit: this.maxLength}),
         CustomImage.configure({attachFile: this.attachFile, attachImageFile: this.attachImageFile}),
         Collaboration.configure({
           document: provider.document,
@@ -210,7 +224,7 @@ export default
         if (this.model.isNew()) { this.scrapeLinkPreviews(); }
       },
       onCreate: () => {
-        if (this.model.isNew() && (this.editor.getCharacterCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
+        if (this.model.isNew() && (this.charCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
       }
     });
 
@@ -231,10 +245,6 @@ export default
     format() {
       return this.model[`${this.field}Format`];
     },
-
-    reasonTooLong() {
-      return this.editor.getCharacterCount() >= this.maxLength;
-    }
   },
 
   watch: {
@@ -242,6 +252,12 @@ export default
   },
 
   methods: {
+    reasonTooLong() {
+      return this.charCount() >= this.maxLength;
+    },
+    charCount() {
+      return this.editor.storage.characterCount.characters()
+    },
     resetDraft(content) {
       this.editor.commands.setContent(content);
     },
@@ -267,7 +283,7 @@ export default
     },
 
     checkLength() {
-      this.model.saveDisabled = this.editor.getCharacterCount() > this.maxLength;
+      this.model.saveDisabled = this.charCount() > this.maxLength;
     },
 
     setCount(count) {
@@ -287,6 +303,7 @@ export default
 
     reset() {
       this.editor.chain().clearContent().run();
+      provider.document.getMap('config').set('initialContentLoaded', false);
       this.resetFiles();
       this.model.beforeSave = () => this.updateModel();
     },
@@ -497,9 +514,9 @@ div
           //- save button?
           v-spacer
           slot(v-if="!expanded" name="actions")
-          .text-right(dense v-if="maxLength", :class="{'red--text': reasonTooLong, 'text--secondary': !reasonTooLong}")
-            span(:style="reasonTooLong ? 'font-weight: 700' : ''")
-              | {{editor.getCharacterCount()}} / {{maxLength}}
+          .text-right(dense v-if="maxLength", :class="{'red--text': reasonTooLong(), 'text--secondary': !reasonTooLong()}")
+            span(:style="reasonTooLong() ? 'font-weight: 700' : ''")
+              | {{charCount()}} / {{maxLength}}
 
     div.d-flex(v-if="expanded", name="actions")
       v-spacer

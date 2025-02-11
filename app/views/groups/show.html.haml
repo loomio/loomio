@@ -54,7 +54,7 @@
                 .discussions-panel__content
                   .discussions-panel__list.thread-preview-collection__container
                     .v-list.thread-previews.v-sheet.v-sheet--tile.theme--auto.v-list--two-line{:role => "list"}
-                      - @group.discussions.where(private: false).order('last_activity_at desc').limit(50).each do |discussion|
+                      - @group.discussions.kept.where(private: false).order('last_activity_at desc').limit(50).each do |discussion|
                         %a.thread-preview.thread-preview__link.v-list-item.v-list-item--link.theme--auto{:href => discussion_url(discussion), :role => "listitem", :tabindex => "0"}
                           .v-list-item__avatar
                             = render 'base_mailer/avatar', user: discussion.author
@@ -62,10 +62,9 @@
                             .v-list-item__title{:style => "align-items: center;"}
                               %span.thread-preview__title= discussion.title
                             .v-list-item__subtitle
-                              %span.thread-preview__items-count= t(:'thread_preview.replies_count').sub('{{count}}', discussion.items_count.to_s)
+                              %span.thread-preview__items-count= t(:'thread_preview.replies_count', count: discussion.items_count.to_i)
                               %span
                               /
                               %span
                                 %span{"aria-hidden" => "true"}  ·
-                              %span= t(:'common.active_time_ago').sub('{{time_ago}}', discussion.last_activity_at.to_formatted_s(:long_ordinal))
-                /
+                              %span= t(:'common.active_time_ago', time_ago: discussion.last_activity_at.to_formatted_s(:long_ordinal))

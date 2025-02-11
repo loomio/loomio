@@ -1,12 +1,42 @@
 module ApplicationHelper
+  def save_beta_setting!
+    if current_user.present?
+      if params[:beta] == "1"
+        current_user.experiences['vue3'] = true
+        current_user.save
+      end
+
+      if params[:beta] == "0"
+        current_user.experiences['vue3'] = false
+        current_user.save
+      end
+    end
+  end
+
+  def use_beta_client?
+    params[:beta] == "1" || (current_user.present? && current_user.experiences['vue3'])
+  end
+
+  def vue_index
+    if use_beta_client?
+      File.read(Rails.root.join('public/client3/index.html'))
+    else
+      File.read(Rails.root.join('public/blient/index.html'))
+    end
+  end
+
   def vue_css_includes
-    vue_index = File.read(Rails.root.join('public/blient/index.html'))
     Nokogiri::HTML(vue_index).css('head link[as=style], head link[rel=stylesheet]').to_s
   end
 
   def vue_js_includes
-    vue_index = File.read(Rails.root.join('public/blient/index.html'))
     Nokogiri::HTML(vue_index).css('head link[as=script], script').to_s
+  end
+
+  def logo_svg
+    return nil unless AppConfig.theme[:app_logo_src].ends_with?('.svg')
+    path = Rails.root.join('public', AppConfig.theme[:app_logo_src].gsub(Regexp.new("^/"), ''))
+    File.read(path).html_safe
   end
 
   def metadata

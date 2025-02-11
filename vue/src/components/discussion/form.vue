@@ -30,7 +30,8 @@ export default {
       groupItems: [],
       initialRecipients: [],
       discussionTemplate: null,
-      loaded: false
+      loaded: false,
+      shouldReset: false,
     };
   },
 
@@ -39,8 +40,12 @@ export default {
       if (this.discussion.discussionTemplateId) {
         Records.discussionTemplates.findOrFetchById(this.discussion.discussionTemplateId).then(template => {
           this.discussionTemplate = template;
-          if (this.discussion.isNew() && (template.recipientAudience === 'group') && this.discussion.groupId) {
-            return this.initialRecipients = [{
+          if ( this.discussion.isNew() &&
+               (template.recipientAudience === 'group') &&
+               this.discussion.groupId &&
+               AbilityService.canAnnounceDiscussion(this.discussion) )
+          {
+            this.initialRecipients = [{
               type: 'audience',
               id: 'group',
               icon: 'mdi-account-group',
@@ -92,6 +97,7 @@ export default {
       this.discussion.save().then(data => {
         const discussionKey = data.discussions[0].key;
         EventBus.$emit('closeModal');
+        this.shouldReset = !this.shouldReset;
         Records.discussions.findOrFetchById(discussionKey, {}, true).then(discussion => {
           Flash.success(`discussion_form.messages.${actionName}`);
           this.$router.push(this.urlFor(discussion));
@@ -211,6 +217,7 @@ export default {
         field="description"
         :label="$t('discussion_form.context_label')"
         :placeholder="$t('discussion_form.context_placeholder')"
+        :shouldReset="shouldReset"
       )
 
       common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
@@ -223,7 +230,7 @@ export default {
         v-spacer
         v-btn(
           @click="discardDraft"
-          v-t="'formatting.discard_draft'"
+          v-t="'common.reset'"
         )
         v-btn.discussion-form__submit(
           color="primary"

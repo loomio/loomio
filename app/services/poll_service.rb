@@ -45,6 +45,8 @@ class PollService
     poll.update_counts!
     GenericWorker.perform_async('SearchService', 'reindex_by_poll_id', poll.id)
 
+    GenericWorker.perform_async('PollService', 'group_members_added', poll.group_id) if poll.group_id
+
     users = UserInviter.where_or_create!(
       actor: actor,
       user_ids: params[:recipient_user_ids],
@@ -193,6 +195,7 @@ class PollService
     poll.update(discarded_at: Time.now, discarded_by: actor.id)
     Event.where(kind: ["stance_created", "stance_updated"], eventable_id: poll.stances.pluck(:id)).update_all(discussion_id: nil)
     poll.created_event.update!(user_id: nil, child_count: 0, pinned: false)
+    poll.discussion.update_sequence_info! if poll.discussion
     MessageChannelService.publish_models([poll.created_event], scope: {current_user: actor, current_user_id: actor.id}, group_id: poll.group_id)
     poll.created_event
   end
@@ -225,7 +228,8 @@ class PollService
   end
 
   def self.group_members_added(group_id)
-    member_ids = Group.find(group_id).members.humans.pluck(:id)
+    return if group_id.nil?
+    member_ids = Group.find(group_id).accepted_members.humans.pluck(:id)
     Poll.active.where(group_id: group_id, specified_voters_only: false).each do |poll|
       revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
       PollService.create_stances(

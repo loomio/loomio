@@ -230,7 +230,7 @@ export default {
     v-spacer
     v-btn.mr-2(
       @click="discardDraft"
-      v-t="'formatting.discard_draft'"
+      v-t="'common.reset'"
     )
     v-btn.thread-template-form__submit(
       color="primary"

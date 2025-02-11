@@ -46,7 +46,7 @@ export default {
 </script>
 
 <template lang="pug">
-.auth-provider-form(v-if='providers.length')
+.auth-provider-form.mt-4(v-if='providers.length')
   v-layout.auth-provider-form__providers(column)
     v-btn.auth-provider-form__provider.my-2(v-for='provider in providers' :key="provider.id" outlined :color="providerColor(provider.name)" @click='select(provider)')
       common-icon(:name="iconClass(provider.name)")

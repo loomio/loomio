@@ -23,8 +23,6 @@ export default {
       otherGroups: [],
       organizations: [],
       unreadCounts: {},
-      expandedGroupIds: [],
-      openGroups: [],
       unreadDirectThreadsCount: 0,
     };
   },
@@ -34,9 +32,11 @@ export default {
 
     EventBus.$on('currentComponent', data => {
       this.group = data.group;
+
       if (this.group) {
+        // console.log("groupId:", this.group.id);
+        // console.log("orgId:", this.group.parentOrSelf().id);
         this.organization = data.group.parentOrSelf();
-        this.expandedGroupIds = [this.organization.id];
       } else {
         this.organization = null;
       }
@@ -113,14 +113,10 @@ export default {
       this.organizations = compact(Session.user().parentGroups().concat(Session.user().orphanParents())) || [];
       this.openCounts = {};
       this.closedCounts = {};
-      this.openGroups = [];
       Session.user().groups().forEach(group => {
         this.openCounts[group.id] = group.discussions().filter(discussion => discussion.isUnread()).length;
       });
       Session.user().parentGroups().forEach(group => {
-        if (this.organization && (this.organization.id === group.parentOrSelf().id)) {
-          this.openGroups[group.id] = true;
-        }
         this.closedCounts[group.id] = this.openCounts[group.id] + sum(map(this.memberGroups(group), subgroup => this.openCounts[subgroup.id]));
       });
     },
@@ -149,7 +145,10 @@ export default {
   },
 
   computed: {
-    helpURL() { 
+    greySidebarLogo() {
+      return AppConfig.features.app.gray_sidebar_logo_in_dark_mode && this.$vuetify.theme.dark
+    },
+    helpURL() {
       const siteUrl = new URL(AppConfig.baseUrl);
       return `https://help.loomio.com/en/?utm_source=${siteUrl.host}`;
     },
@@ -175,8 +174,8 @@ export default {
 v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   template(v-slot:prepend)
   template(v-slot:append)
-    v-layout.mx-10.my-2(column align-center style="max-height: 64px")
-      v-img(:src="logoUrl")
+    v-layout.mx-10.my-2(column align-center :class="{greySidebarLogo: greySidebarLogo}")
+      v-img(contain max-height="24" :src="logoUrl")
 
   v-list-group.sidebar__user-dropdown
     template(v-slot:activator)
@@ -200,7 +199,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
     v-list-item-title(v-t="'dashboard_page.aria_label'")
   v-list-item(dense to="/inbox")
     v-list-item-title(v-t="{ path: 'sidebar.unread_threads', args: { count: unreadThreadCount() } }")
-  v-list-item.sidebar__list-item-button--private(dense to="/threads/direct")
+  v-list-item.sidebar__list-item-button--private(:disabled="organizations.length == 0" dense to="/threads/direct")
     v-list-item-title
       span(v-t="'sidebar.direct_threads'")
       span(v-if="unreadDirectThreadsCount > 0")
@@ -218,7 +217,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   v-list.sidebar__groups(dense)
     template(v-for="parentGroup in organizations")
       template(v-if="memberGroups(parentGroup).length")
-        v-list-group(v-model="openGroups[parentGroup.id]" @click="goToGroup(parentGroup)")
+        v-list-group(:value="organization && organization.id == parentGroup.id" @click="goToGroup(parentGroup)")
           template(v-slot:activator)
             v-list-item-avatar(aria-hidden="true")
               group-avatar(:group="parentGroup")
@@ -282,6 +281,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       common-icon(name="mdi-face-agent")
 </template>
 <style lang="sass">
+.greySidebarLogo
+  filter: saturate(99999%) grayscale(1)
+
 .sidenav-left
   .v-avatar.v-list-item__avatar
     margin-right: 8px

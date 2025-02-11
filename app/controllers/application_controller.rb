@@ -85,6 +85,7 @@ class ApplicationController < ActionController::Base
   def show
     resource = ModelLocator.new(resource_name, params).locate!
     @recipient = current_user
+    save_beta_setting!
     if current_user.can? :show, resource
       assign_resource
       @pagination = pagination_params
@@ -163,7 +164,14 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    render file: Rails.root.join('public/blient/index.html'), layout: false, status: status
+    save_beta_setting!
+
+    render 'application/boot_app', layout: false, status: status
+    # if use_beta_client?
+    #   render file: Rails.root.join('public/client3/index.html'), layout: false, status: status
+    # else
+    #   render file: Rails.root.join('public/blient/index.html'), layout: false, status: status
+    # end
   end
 
   def redirect_to(url, opts = {})

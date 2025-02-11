@@ -90,10 +90,8 @@ export default
 
     query() {
       if (!this.group) { return; }
-      this.publicGroupIds = this.group.publicOrganisationIds();
-
       this.groupIds = (() => { switch (this.$route.query.subgroups || 'mine') {
-        case 'mine': return uniq(concat(intersection(this.group.organisationIds(), Session.user().groupIds()), this.publicGroupIds, this.group.id));
+        case 'mine': return uniq(concat(intersection(this.group.organisationIds(), Session.user().groupIds()), this.group.id));
         case 'all': return this.group.organisationIds();
         default: return [this.group.id];
       } })();
@@ -218,7 +216,7 @@ export default
     },
 
     noThreads() {
-      return !this.loading && (this.discussions.length === 0);
+      return !this.loading && this.discussions.length === 0 && this.pinnedDiscussions.length == 0;
     },
 
     canViewPrivateContent() {
@@ -302,7 +300,7 @@ div.discussions-panel(v-if="group")
         .discussions-panel__list--empty.pa-4(v-if='noThreads')
           p.text-center(v-if='canViewPrivateContent' v-t="'group_page.no_threads_here'")
           p.text-center(v-if='!canViewPrivateContent' v-t="'group_page.private_threads'")
-        .discussions-panel__list.thread-preview-collection__container(v-if="discussions.length")
+        .discussions-panel__list.thread-preview-collection__container(v-else)
           v-list.thread-previews(two-line)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in pinnedDiscussions", :key="thread.id", :thread="thread" group-page)
             thread-preview(:show-group-name="groupIds.length > 1" v-for="thread in discussions", :key="thread.id", :thread="thread" group-page)

@@ -587,6 +587,9 @@ es:
     close_sidebar: Cerrar recuadro
     logo_title: Página principal
     group_and_subgroups: "%{group} y subgrupos"
+    search_members_short: Buscar miembros
+    search_files_short: Buscar archivos
+    search_subgroups_short: Buscar subgrupos
   user_dropdown:
     pin_sidebar: Anclar barra lateral
     unpin_sidebar: Desanclar barra lateral
@@ -1007,6 +1010,8 @@ es:
     edit_markdown: Editar el descuento
     markdown_confirm: Puede que se pierdan algunos formatos cuando se convierta de contenido wysiwyg a la reducción.
     upload_failed: Carga fallida
+    confirm_discard: "¿Está seguro de que desea descartar los cambios?"
+    discard_draft: Descartar borrador
   cover_photo_form:
     heading: Nueva foto de portada
     upload_link: Cargar una nueva foto de portada
@@ -1270,6 +1275,8 @@ es:
       group_updated: Grupo actualizado
     upload_logo: Cargar el logo
     upload_cover_photo: Cargar la foto de portada
+    request_to_join_prompt: Solicitud de adhesión inmediata
+    default_request_to_join_prompt: Gracias por su interés en nuestro grupo. Preséntese y explique por qué desea unirse.
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -1881,6 +1888,8 @@ es:
     last_seen: Último visto %{date}
     invited_by_name: Invitado por %{name}
     accepted: Integrantes
+    email_rejected: Correo electrónico rechazado
+    email_rejected_meaning: El correo electrónico enviado a esta dirección ha rebotado o ha sido marcado como spam. No se enviarán más correos electrónicos a esta dirección.
   polls_panel:
     new_poll: Nuevo sondeo
     any_type: Todos los tipos
@@ -2505,6 +2514,8 @@ es:
     email: Correo Electrónico
     password: Contraseña
     reactivate: 'Reactiva la cuenta '
+    want_to_set_password: "¿Quieres iniciar sesión con una contraseña la próxima vez?"
+    change_your_password: "¿Quieres establecer una nueva contraseña?"
   chatbot:
     configure_chatbot: Configurar chatbot
     test_connection: Conexión de prueba

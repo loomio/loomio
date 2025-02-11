@@ -127,6 +127,7 @@ class DiscussionService
     discussion.polls.each { |poll| poll.update(group: destination.presence) }
     ActiveStorage::Attachment.where(record: discussion.items.map(&:eventable).concat([discussion])).update_all(group_id: destination.id)
 
+    GenericWorker.perform_async('PollService', 'group_members_added', discussion.group_id) if discussion.group_id
     GenericWorker.perform_async('SearchService', 'reindex_by_discussion_id', discussion.id)
     EventBus.broadcast('discussion_move', discussion, params, actor)
     Events::DiscussionMoved.publish!(discussion, actor, source)

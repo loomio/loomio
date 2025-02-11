@@ -579,6 +579,9 @@ hu:
     close_sidebar: Oldalsáv bezárása
     logo_title: Főoldal
     group_and_subgroups: "%{group} & alcsoportok"
+    search_members_short: Tagok keresése
+    search_files_short: Fájlok keresése
+    search_subgroups_short: Alcsoportok keresése
   user_dropdown:
     pin_sidebar: Oldalsáv rögzítése
     unpin_sidebar: Oldalsáv rögzítésének feloldása
@@ -997,6 +1000,8 @@ hu:
     edit_markdown: Markdown szerkesztése
     markdown_confirm: Előfordulhat, hogy bizonyos formázások elvesznek a wysiwyg-tartalom leértékelésre konvertálásakor.
     upload_failed: Feltöltés sikertelen
+    confirm_discard: Biztosan elveti a módosításokat?
+    discard_draft: Piszkozat elvetése
   cover_photo_form:
     heading: Új borítókép
     upload_link: Tölts fel új borítófotót
@@ -1249,6 +1254,8 @@ hu:
       group_updated: A csoport frissítve
     upload_logo: Tölts fel logót
     upload_cover_photo: Töltse fel a borítóképét
+    request_to_join_prompt: Csatlakozás kérése
+    default_request_to_join_prompt: Köszönjük érdeklődését csoportunk iránt. Kérlek, mutatkozz be, és indokold meg, miért jelentkezel.
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -1844,6 +1851,8 @@ hu:
     last_seen: 'Utoljára látott: %{date}'
     invited_by_name: 'Meghívta: %{name}'
     accepted: Tagok
+    email_rejected: E-mail elutasítva
+    email_rejected_meaning: Az erre a címre küldött e-mail visszapattant vagy spamként lett megjelölve. Erre a címre nem küldünk több e-mailt.
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus
@@ -2464,6 +2473,8 @@ hu:
     email: E-mail
     password: Jelszó
     reactivate: A fiók újraaktiválása
+    want_to_set_password: Legközelebb jelszóval szeretne bejelentkezni?
+    change_your_password: Szeretne új jelszót beállítani?
   chatbot:
     configure_chatbot: A chatbot konfigurálása
     test_connection: Kapcsolat tesztelése

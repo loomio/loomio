@@ -577,6 +577,9 @@ he:
     close_sidebar: סגור את סרגל הצד
     logo_title: דף הבית
     group_and_subgroups: "%{group} ותתי קבוצות"
+    search_members_short: חפש חברים
+    search_files_short: חפש קבצים
+    search_subgroups_short: חפש תת קבוצות
   user_dropdown:
     pin_sidebar: הצמד סרגל צד
     unpin_sidebar: בטל את ההצמדה של סרגל הצד
@@ -997,6 +1000,8 @@ he:
     edit_markdown: ערוך Markdown
     markdown_confirm: ייתכן שחלק מהפורמטים יאבדו בהמרת תוכן wysiwyg ל-markdown.
     upload_failed: העלאה נכשלה
+    confirm_discard: האם אתה בטוח שברצונך למחוק את השינויים שלך?
+    discard_draft: בטל את הטיוטה
   cover_photo_form:
     heading: תמונת קאבר חדשה
     upload_link: העלה תמונת קאבר חדשה
@@ -1249,6 +1254,8 @@ he:
       group_updated: קבוצה עודכנה
     upload_logo: העלה לוגו
     upload_cover_photo: העלה תמונת שער
+    request_to_join_prompt: בקשת הצטרפות
+    default_request_to_join_prompt: תודה על ההתעניינות בקבוצה שלנו. אנא הצג את עצמך והסבר מדוע אתה מבקש להצטרף.
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -1856,6 +1863,8 @@ he:
     last_seen: נראה לאחרונה %{date}
     invited_by_name: הוזמן על ידי %{name}
     accepted: חברים
+    email_rejected: האימייל נדחה
+    email_rejected_meaning: אימייל שנשלח לכתובת זו הוקפץ או סומן כספאם. לא יישלח יותר אימייל לכתובת זו.
   polls_panel:
     new_poll: סקר חדש
     any_type: כל הסוגים
@@ -2476,6 +2485,8 @@ he:
     email: דואר אלקטרוני
     password: סיסמה
     reactivate: אקטב מחדש את החשבון
+    want_to_set_password: רוצה להיכנס עם סיסמה בפעם הבאה?
+    change_your_password: האם תרצה להגדיר סיסמה חדשה?
   chatbot:
     configure_chatbot: הגדר צ'אטבוט
     test_connection: בדיקת חיבור

@@ -581,6 +581,9 @@ ca:
     close_sidebar: Tanca barra lateral
     logo_title: Pàgina d'inici
     group_and_subgroups: "%{group} i subgrups"
+    search_members_short: Cerca membres
+    search_files_short: Cerca fitxers
+    search_subgroups_short: Cerca subgrups
   user_dropdown:
     pin_sidebar: Fixa la barra lateral
     unpin_sidebar: Deixa de fixar la barra lateral
@@ -1001,6 +1004,8 @@ ca:
     edit_markdown: Edita Markdown
     markdown_confirm: Part de la formatació podria perdre's en el moment de convertir contingut en "wysiwyg" a "markdown".
     upload_failed: No s'ha pogut pujar
+    confirm_discard: Esteu segur que voleu descartar els vostres canvis?
+    discard_draft: Descartar l'esborrany
   cover_photo_form:
     heading: Nova foto de portada
     upload_link: Penja una foto de portada nova
@@ -1253,6 +1258,8 @@ ca:
       group_updated: Grup actualitzat
     upload_logo: Penja un logo
     upload_cover_photo: Penja una foto de portada
+    request_to_join_prompt: Sol·licitud per unir-se
+    default_request_to_join_prompt: Gràcies pel vostre interès en el nostre grup. Si us plau, presenteu-vos i expliqueu per què demaneu unir-vos.
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -1860,6 +1867,8 @@ ca:
     last_seen: Vist per darrer cop %{date}
     invited_by_name: Convidat per %{name}
     accepted: Membres
+    email_rejected: Correu electrònic rebutjat
+    email_rejected_meaning: El correu electrònic enviat a aquesta adreça s'ha rebutjat o s'ha marcat com a correu brossa. No s'enviarà més correu electrònic a aquesta adreça.
   polls_panel:
     new_poll: Nova enquesta
     any_type: Tots els tipus
@@ -2482,6 +2491,8 @@ ca:
     email: Correu electrònic
     password: Contrasenya
     reactivate: Reactiva el compte
+    want_to_set_password: Voleu iniciar la sessió amb una contrasenya la propera vegada?
+    change_your_password: Voleu establir una contrasenya nova?
   chatbot:
     configure_chatbot: Configura el chatbot
     test_connection: Prova de connexió

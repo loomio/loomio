@@ -45,7 +45,7 @@ class UserMailer < BaseMailer
       user: user,
       only_unread: true,
       or_public: false,
-      or_subgroups: false).last_activity_after(@time_start)
+      or_subgroups: false).kept.last_activity_after(@time_start)
     @groups = @user.groups.order(full_name: :asc)
 
     @cache = RecordCache.for_collection(@discussions, user_id)

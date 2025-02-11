@@ -44,6 +44,8 @@ v-card.membership-request-form
     v-spacer
     dismiss-modal-button(:close="close")
   v-card-text
+    p(v-if="!group.requestToJoinPrompt" v-t="'group_form.default_request_to_join_prompt'")
+    p(v-else="!group.requestToJoinPrompt") {{group.requestToJoinPrompt}}
     .membership-request-form__visitor(v-if='!isSignedIn')
       v-text-field.membership-request-form__name(v-model='membershipRequest.name' :required='true' :label="$t('membership_request_form.name_label')")
       v-text-field.membership-request-form__email(v-model='membershipRequest.email' :required='true' :label="$t('membership_request_form.email_label')")

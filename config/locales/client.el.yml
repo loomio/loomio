@@ -577,6 +577,9 @@ el:
     close_sidebar: Κλείσιμο πλαϊνής γραμμής
     logo_title: Κεντρική σελίδα
     group_and_subgroups: "%{group} και υποομάδες"
+    search_members_short: Αναζήτηση μελών
+    search_files_short: Αναζήτηση αρχείων
+    search_subgroups_short: Αναζήτηση υποομάδων
   user_dropdown:
     pin_sidebar: Καρφιτσώστε την πλαϊνή γραμμή
     unpin_sidebar: Ξεκαρφιτσώστε την πλαϊνή γραμμή
@@ -993,6 +996,8 @@ el:
     edit_markdown: Επεξεργασία Markdown
     markdown_confirm: Κάποια μορφοποίηση μπορεί να χαθεί μετατρέποντας το περιεχόμενο wysiwyg σε markdown.
     upload_failed: Η μεταφόρτωση απέτυχε
+    confirm_discard: Είστε βέβαιοι ότι θέλετε να απορρίψετε τις αλλαγές σας;
+    discard_draft: Απορρίψτε το σχέδιο
   cover_photo_form:
     heading: Νέα φωτογραφία εξωφύλλου
     upload_link: Ανεβάστε νέα φωτογραφία εξωφύλλου
@@ -1245,6 +1250,8 @@ el:
       group_updated: Η ομάδα ενημερώθηκε
     upload_logo: Μεταφόρτωση λογότυπου
     upload_cover_photo: Ανεβάστε φωτογραφία εξωφύλλου
+    request_to_join_prompt: Αίτημα συμμετοχής
+    default_request_to_join_prompt: Ευχαριστούμε για το ενδιαφέρον σας για την ομάδα μας. Συστηθείτε και εξηγήστε γιατί ζητάτε να συμμετάσχετε.
   group_export_modal:
     title: Εξαγωγή δεδομένων ομάδας
     body: <p>Μπορείτε να κάνετε λήψη ενός αντιγράφου των δεδομένων της ομάδας σας ανά πάσα στιγμή. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Μάθετε περισσότερα.</a></p><p> Χρειάζονται λίγα λεπτά για να ολοκληρωθεί, ανάλογα με το μέγεθος της ομάδας σας. Όταν είναι έτοιμο, θα λάβετε ένα email με έναν σύνδεσμο για τη λήψη του αρχείου.</p>
@@ -1834,6 +1841,8 @@ el:
     last_seen: Τελευταία επίσκεψη %{date}
     invited_by_name: Προσκλήθηκε από %{name}
     accepted: Μέλη
+    email_rejected: Το email απορρίφθηκε
+    email_rejected_meaning: Το email που στάλθηκε σε αυτήν τη διεύθυνση έχει αναπηδήσει ή έχει επισημανθεί ως ανεπιθύμητο. Δεν θα σταλεί άλλο email σε αυτήν τη διεύθυνση.
   polls_panel:
     new_poll: Νέα δημοσκόπηση
     any_type: Ολοι οι τύποι
@@ -2454,6 +2463,8 @@ el:
     email: ΗΛΕΚΤΡΟΝΙΚΗ ΔΙΕΥΘΥΝΣΗ
     password: Κωδικός πρόσβασης
     reactivate: Επανενεργοποίηση λογαριασμού
+    want_to_set_password: Θέλετε να συνδεθείτε με κωδικό πρόσβασης την επόμενη φορά;
+    change_your_password: Θέλετε να ορίσετε νέο κωδικό πρόσβασης;
   chatbot:
     configure_chatbot: Διαμόρφωση chatbot
     test_connection: ΔΟΚΙΜΗ ΣΥΝΔΕΣΗΣ

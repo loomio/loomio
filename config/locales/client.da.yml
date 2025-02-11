@@ -577,6 +577,9 @@ da:
     close_sidebar: Luk sidebjælken
     logo_title: Hjem
     group_and_subgroups: "%{group} og undergrupper"
+    search_members_short: Søg medlemmer
+    search_files_short: Søg filer
+    search_subgroups_short: Søg undergrupper
   user_dropdown:
     pin_sidebar: Fastgør sidebjælken
     unpin_sidebar: Frigør sidebjælken
@@ -993,6 +996,8 @@ da:
     edit_markdown: Rediger Markdown
     markdown_confirm: Noget formatering kan gå tabt ved at konvertere wysiwyg-indhold til markdown.
     upload_failed: Upload fejlede
+    confirm_discard: Er du sikker på, at du vil kassere dine ændringer?
+    discard_draft: Kassér kladde
   cover_photo_form:
     heading: Nyt forsidefoto
     upload_link: Upload er nyt forsidefoto
@@ -1245,6 +1250,8 @@ da:
       group_updated: Gruppe gemt
     upload_logo: Upload logo
     upload_cover_photo: Upload forsidebillede
+    request_to_join_prompt: Anmodning om at deltage
+    default_request_to_join_prompt: Tak for din interesse i vores gruppe. Præsentér dig selv og forklar, hvorfor du anmoder om at deltage.
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -1837,6 +1844,8 @@ da:
     last_seen: Sidst set %{date}
     invited_by_name: Inviteret af %{name}
     accepted: Medlemmer
+    email_rejected: E-mail afvist
+    email_rejected_meaning: E-mail sendt til denne adresse er afvist eller blevet markeret som spam. Der vil ikke blive sendt flere e-mails til denne adresse.
   polls_panel:
     new_poll: Ny meningsmåling
     any_type: Alle typer
@@ -2457,6 +2466,8 @@ da:
     email: Email
     password: Adgangskode
     reactivate: Genaktiver konto
+    want_to_set_password: Vil du logge ind med en adgangskode næste gang?
+    change_your_password: Vil du indstille en ny adgangskode?
   chatbot:
     configure_chatbot: Konfigurer chatbot
     test_connection: Test forbindelse

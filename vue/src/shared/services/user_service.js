@@ -43,7 +43,7 @@ export default new class UserService {
         }
       },
 
-      deactivate: {
+      deactivate_user: {
         icon: 'mdi-pause-circle',
         name: 'profile_page.deactivate_account',
         subtitle: 'profile_page.deactivate_account_subtitle',

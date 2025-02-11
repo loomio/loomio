@@ -548,7 +548,7 @@ en:
       label: 'Post'
     private_privacy_notice: 'Your comment will only be visible to members of %{groupName}.'
     public_privacy_notice: 'Your comment will be visible to anyone on the web.'
-    sign_in: "Log in to join the conversation"
+    sign_in: "Sign in to participate"
 
   thread_nav:
     participants: Participants
@@ -609,6 +609,9 @@ en:
     search_polls: 'Search polls in %{name}'
     search_members: 'Search members in %{name}'
     search_subgroups: 'Search members in %{name}'
+    search_members_short: 'Search members'
+    search_files_short: 'Search files'
+    search_subgroups_short: 'Search subgroups'
     search_files: 'Search files in %{name}'
     recent_title: 'Go to dashboard'
     unread_title: 'View unread activity'
@@ -1286,6 +1289,9 @@ en:
     submit: 'Yes, Deactivate this group'
 
   group_form:
+    request_to_join_prompt: Request to join prompt
+    default_request_to_join_prompt: |
+      Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
     change_cover_image: change cover image
@@ -2017,6 +2023,8 @@ en:
     lets_start_a_thread: Let's start a thread. Click "New thread" to continue.
 
   members_panel:
+    email_rejected: Email rejected
+    email_rejected_meaning: Email sent to this address has bounced or been marked as spam. No more email will be sent to this address.
     bot: Bot
     no_results: 'No members found'
     everyone: 'Everyone'
@@ -2865,6 +2873,8 @@ en:
     login_with_token: You're all set! Click the link below to continue.
     login_link_helptext: Click the button below and we'll send you a link to sign in.
     enter_your_password: "Enter your password to continue"
+    want_to_set_password: Want to sign in with a password next time?
+    change_your_password: Would you like to set a new password?
     check_spam_folder: If the email does not arrive soon, check your spam folder.
     sign_up_helptext: Please complete this form to create a user account
     # i_accept: "I accept the <a href='%{termsUrl}' target='_blank' @click.stop>Terms of service</a> and <a href='%{privacyUrl}' target='_blank'>Privacy policy</a>": "Loomio newsletter"
