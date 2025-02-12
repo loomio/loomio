@@ -20,7 +20,7 @@ export default new class GroupService {
         icon: 'mdi-email',
         dock: 2,
         canPerform() {
-          return group.handle && AbilityService.canStartThread(group);
+          return group.handle && AbilityService.canStartThread(group) && AppConfig.features.app.thread_from_mail;
         },
         perform() {
           EventBus.$emit('openModal', {

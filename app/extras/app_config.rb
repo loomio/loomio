@@ -102,6 +102,7 @@ class AppConfig
       public_groups:              !ENV['FEATURES_DISABLE_PUBLIC_GROUPS'],
       help_link:                  !ENV['FEATURES_DISABLE_HELP_LINK'],
       example_content:            !ENV['FEATURES_DISABLE_EXAMPLE_CONTENT'],
+      thread_from_mail:           !ENV['FEATURES_DISABLE_THREAD_FROM_MAIL'],
       explore_public_groups:      ENV.fetch('FEATURES_EXPLORE_PUBLIC_GROUPS', false),
       template_gallery:           ENV.fetch('FEATURES_TEMPLATE_GALLERY', false),
       show_contact:               ENV.fetch('FEATURES_SHOW_CONTACT', false),
