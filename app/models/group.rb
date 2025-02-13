@@ -198,7 +198,7 @@ class Group < ApplicationRecord
   def author_id
     creator_id
   end
-  
+
   def user_id
     creator_id
   end
