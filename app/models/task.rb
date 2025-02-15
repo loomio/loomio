@@ -9,4 +9,7 @@ class Task < ApplicationRecord
 
   has_many :tasks_users
   has_many :users, through: :tasks_users
+
+  has_many :tasks_users_extensions
+  has_many :users, through: :tasks_users_extensions
 end
