@@ -7,8 +7,20 @@ class TaskSerializer < ApplicationSerializer
              :done_at,
              :due_on,
              :record_type,
-             :record_id
+             :record_id,
+             :archived
 
   has_one :record, polymorphic: true, key: 'record_obj'
   has_one :author, serializer: AuthorSerializer, root: :users
+  
+  def archived 
+    return nil unless scope[:current_user_id]
+
+    extension = TasksUsersExtension.where(task_id: self.object.id, user_id: scope[:current_user_id]).take()
+    if extension.nil?
+      return false 
+    else
+      return extension.read_attribute(:archived)
+    end
+  end
 end

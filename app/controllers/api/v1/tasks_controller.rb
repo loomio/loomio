@@ -2,8 +2,9 @@ class API::V1::TasksController < API::V1::RestfulController
   def index
     # return tasks
 
-    self.collection = Task.joins('left outer join tasks_users on tasks_users.task_id = tasks.id')
+    self.collection = Task.joins('left join tasks_users on tasks_users.task_id = tasks.id')
         .where("author_id = :user_id OR doer_id = :user_id OR tasks_users.user_id = :user_id", user_id: current_user.id)
+        .joins('left join tasks_users_extensions as ext on ext.task_id = tasks.id')
 
     respond_with_collection
   end
@@ -33,6 +34,24 @@ class API::V1::TasksController < API::V1::RestfulController
     current_user.ability.authorize!(:update, @task)
 
     TaskService.update_done(@task, current_user, false)
+
+    respond_with_resource
+  end
+
+  def mark_as_archived
+    @task = Task.find(params[:id])
+    current_user.ability.authorize!(:update, @task)
+
+    TaskService.update_archived(@task, current_user, true)
+
+    respond_with_resource
+  end
+
+  def mark_as_not_archived
+    @task = Task.find(params[:id])
+    current_user.ability.authorize!(:update, @task)
+
+    TaskService.update_archived(@task, current_user, false)
 
     respond_with_resource
   end

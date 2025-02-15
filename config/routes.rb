@@ -90,6 +90,8 @@ Rails.application.routes.draw do
         member do
           post :mark_as_done
           post :mark_as_not_done
+          post :mark_as_archived
+          post :mark_as_not_archived
         end
       end
 
