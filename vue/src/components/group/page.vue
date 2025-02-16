@@ -50,11 +50,11 @@ export default
       if (this.$route.query.subgroups) { query = '?subgroups='+this.$route.query.subgroups; }
 
       return [
-        {id: 0, name: 'threads',   route: this.urlFor(this.group, null)+query},
-        {id: 1, name: 'decisions', route: this.urlFor(this.group, 'polls')+query},
-        {id: 2, name: 'members',   route: this.urlFor(this.group, 'members')+query},
-        {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query},
-        {id: 5, name: 'subgroups',  route: this.urlFor(this.group, 'subgroups')+query}
+        {id: 0, name: 'threads',   route: this.urlFor(this.group, null)+query, msIcon: "mdi-forum"},
+        {id: 1, name: 'decisions', route: this.urlFor(this.group, 'polls')+query, msIcon: "mdi-poll"},
+        {id: 2, name: 'members',   route: this.urlFor(this.group, 'members')+query, msIcon: "mdi-account-multiple"},
+        {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query, msIcon: "mdi-paperclip"},
+        {id: 5, name: 'subgroups',  route: this.urlFor(this.group, 'subgroups')+query, msIcon: "mdi-account-group"}
         // {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
       ].filter(obj => !((obj.name === "subgroups") && this.group.parentId));
     }
@@ -132,19 +132,19 @@ v-main
     document-list(:model='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
-    v-tabs(
+    v-bottom-navigation(
       v-model="activeTab"
       background-color="transparent"
       center-active
-      grow
+      shift
     )
-      v-tab(
+      v-btn(
         v-for="tab of tabs"
         :key="tab.id"
         :to="tab.route"
         :class="'group-page-' + tab.name + '-tab' "
       )
-        //- common-icon(name="mdi-comment-multiple")
+        common-icon(:name="tab.msIcon")
         span(v-t="'group_page.'+tab.name")
     router-view
 </template>
