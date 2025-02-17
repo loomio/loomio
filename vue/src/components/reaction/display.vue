@@ -8,7 +8,8 @@ import { colonToUnicode, stripColons, imgForEmoji, srcForEmoji, emojiSupported }
 export default {
   props: {
     model: Object,
-    small: Boolean
+    small: Boolean,
+    canEdit: Boolean
   },
 
   data() {
@@ -76,7 +77,8 @@ export default {
     srcForEmoji,
     stripColons,
     colonToUnicode,
-    removeMine(reaction) {
+    removeMine(reaction, canEdit) {
+      if (!canEdit) { return; }
       const mine = Records.reactions.find(merge({}, this.reactionParams, {
         userId:   Session.user().id,
         reaction
@@ -104,7 +106,7 @@ export default {
 <template lang="pug">
 .reactions-display.mr-2(v-if="reactionTypes.length")
   .reactions-display__emojis
-    .reaction.lmo-pointer(@click="removeMine(reaction)" v-for="reaction in reactionTypes" :key="reaction")
+    .reaction.lmo-pointer(@click="removeMine(reaction, canEdit)" v-for="reaction in reactionTypes" :key="reaction")
       v-tooltip(bottom)
         template(v-slot:activator="{ on, attrs }")
           .reactions-display__group(v-on="on" v-bind="attrs")
