@@ -38,13 +38,6 @@ class API::V1::ProfileController < API::V1::RestfulController
     render json: zones, root: false
   end
 
-  def mentionable_users
-    instantiate_collection do |collection|
-      collection.distinct.mention_search(current_user, model, String(params[:q]).strip.delete("\u0000"))
-    end
-    respond_with_collection serializer: AuthorSerializer, root: :users
-  end
-
   def me
     raise CanCan::AccessDenied.new unless current_user.is_logged_in?
     self.resource = current_user

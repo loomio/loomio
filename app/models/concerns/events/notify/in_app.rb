@@ -3,7 +3,7 @@ module Events::Notify::InApp
 
   def trigger!
     super
-    self.notify_users!
+    notify_users!
   end
 
   # send event notifications

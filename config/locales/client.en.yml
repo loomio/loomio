@@ -716,6 +716,7 @@ en:
       stance_created_option: "%{actor} voted %{option} in %{title}"
       user_added_to_group: "%{actor} added you to the group: %{title}"
       user_mentioned: "%{actor} mentioned you in: %{title}"
+      group_mentioned: "%{actor} mentioned the group in: %{title}"
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
 
     without_title:
@@ -753,6 +754,7 @@ en:
       stance_updated: "%{actor} voted"
       stance_created_option: "%{actor} voted %{option}"
       user_mentioned: '%{actor} mentioned you'
+      group_mentioned: '%{actor} mentioned the group'
       user_reminded: '%{actor} is reminding you to vote'
 
     hints:
@@ -1606,7 +1608,7 @@ en:
     daily_summary_description: |
       Choose when to receive the catch-up summary email. This email contains any new activity that you have not seen. A good way to stay up-to-date if you're not a regular user.
     on_participation_label: Subscribe on participation
-    on_participation_description: "When you participate in a thread, all further activity will be emailed to you immediately."
+    on_participation_description: "When you participate in a thread, all further activity will be emailed to you as it happens."
     announcement_label: Announcements
     announcement_description: "You will receive an email about all content that has been announced by people in your groups"
     mentioned_label: Mentions & Replies
