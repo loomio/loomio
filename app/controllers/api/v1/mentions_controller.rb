@@ -4,13 +4,14 @@ class API::V1::MentionsController < ApplicationController
   def index
     mentionables = []
     if model&.group_id
-      Group.published
-           # .where(id: model.group.id_and_subgroup_ids & current_user.group_ids)
-           .where(id: model.group_id)
-           .where.not(handle: nil)
-           .mention_search(params_query)
-           .each do |g|
-        mentionables << group_mention(g)
+      Group
+        .published
+        .where(id: model.group_id)
+        .where.not(handle: nil)
+        .mention_search(params_query)
+        .order("parent_id nulls first, name").limit(10)
+        .each do |group|
+        mentionables << group_mention(group) if current_user.can?(:notify, group)
       end
     end
 
@@ -40,7 +41,7 @@ class API::V1::MentionsController < ApplicationController
   def group_mention(group)
     {
       handle: group.handle,
-      name: group.name
+      name: group.full_name
     }
   end
 

@@ -33,20 +33,20 @@ module HasMentions
                   usernames: mentioned_usernames, ids: mentioned_user_ids)
   end
 
+  def mentioned_group_users
+    User.active.verified.where(id: Membership.active.accepted.where(group_id: mentioned_groups.pluck(:id)).pluck(:user_id))
+  end
+
   def mentioned_groups
-    Group.published.where(id: group_id).where(handle: mentioned_usernames)
+    # for now, we only allow mentioning the current group, if the actor is permitted
+    group_ids = Group.published.where(id: group.id).where(handle: mentioned_usernames).filter { |group| author.can? :notify, group }.map(&:id)
+    Group.where(id: group_ids)
   end
 
   def newly_mentioned_groups
-    # we dont need to check for this specific group, because you can only mention the model's group anyway
-    if events.where(kind: 'group_mentioned').exists?
-      Group.none
-    else
-      mentioned_groups
-    end
+    mentioned_groups.where.not(id: already_mentioned_group_ids)
   end
 
-  # users mentioned in the text, but not yet sent notifications
   def newly_mentioned_users
     mentioned_users.where.not(id: already_mentioned_user_ids) # avoid re-mentioning users when editing
   end
@@ -54,6 +54,10 @@ module HasMentions
   # users mentioned on a previous edit of this model
   def already_mentioned_user_ids
     notifications.user_mentions.pluck(:user_id)
+  end
+
+  def already_mentioned_group_ids
+    events.where(kind: 'group_mentioned').map { |event| event.custom_fields['group_ids'] }.flatten.uniq
   end
 
   private

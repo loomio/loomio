@@ -1,6 +1,5 @@
 require 'rails_helper'
 describe API::V1::MentionsController do
-
   let(:user) { create :user, name: 'frank' }
   let(:author) { create :user, name: 'aaidan' }
   let(:other_user) { create :user, name: 'simon' }
@@ -36,6 +35,17 @@ describe API::V1::MentionsController do
       rows = JSON.parse(response.body)
       handles = rows.map { |row| row['handle'] }
       expect(handles).to include group.handle
+      expect(handles).not_to include subgroup.handle
+      expect(handles).not_to include other_subgroup.handle
+    end
+
+    it "returns no group if not allowed" do
+      discussion.group.update(members_can_announce: false)
+      get :index, params: { discussion_id: discussion.id }
+      expect(response.status).to eq 200
+      rows = JSON.parse(response.body)
+      handles = rows.map { |row| row['handle'] }
+      expect(handles).not_to include group.handle
       expect(handles).not_to include subgroup.handle
       expect(handles).not_to include other_subgroup.handle
     end

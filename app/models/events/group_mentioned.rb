@@ -8,11 +8,17 @@ class Events::GroupMentioned < Event
 
   private
 
+  def group_ids
+    Group.where(id: custom_fields['group_ids']).filter do |group|
+      actor.can? :notify, group
+    end.map(&:id)
+  end
+
   def scope
     Membership
       .active
       .accepted
-      .where(group_id: custom_fields['group_ids'])
+      .where(group_id: group_ids)
       .where.not(user_id: eventable.mentioned_users.pluck(:id))
   end
 
