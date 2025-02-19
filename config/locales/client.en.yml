@@ -863,6 +863,7 @@ en:
     only_admins_can_invite: Only admins can invite guests
     only_admins_can_announce_or_invite: Only admins can notify the whole group or invite guests
     user_mentioned: '%{name} mentioned %{length} people:'
+    group_mentioned: '%{name} mentioned the group with %{length} people:'
     comment_replied_to: '%{name} replied to %{length} people:'
     new_discussion: '%{name} invited %{length} people to the thread:'
     discussion_announced: '%{name} invited %{length} people to the thread:'

@@ -51,6 +51,7 @@ export var MdMentioning = {
     },
 
     onKeyUp(event) {
+      if ([38, 40, 13, 9].includes(event.keyCode)) { return }
       const res = this.textarea().value.slice(0, this.textarea().selectionStart).match(/@(\w+)$/);
       if (res) {
         this.query = res[1].toLowerCase();
@@ -94,8 +95,8 @@ export var MdMentioning = {
       const text = this.textarea().value;
       const beforeText = this.textarea().value.slice(0, this.textarea().selectionStart - this.query.length);
       const afterText = this.textarea().value.slice(this.textarea().selectionStart);
-      this.model[this.field] = beforeText + user.username + ' ' + afterText;
-      this.textarea().selectionEnd = (beforeText + user.username).length + 1;
+      this.model[this.field] = beforeText + user.handle + ' ' + afterText;
+      this.textarea().selectionEnd = (beforeText + user.handle).length + 1;
       this.textarea().focus;
       this.query = '';
     },
