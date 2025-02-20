@@ -1,6 +1,8 @@
 module Events::Notify::Mentions
   def trigger!
     super
+    return if user.blank?
+
     notify_mentioned_groups!
     notify_mentioned_users!
   end
