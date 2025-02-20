@@ -12,7 +12,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   get "/up", to: proc { [200, {}, ["ok"]] }, as: :rails_health_check
-  
+
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => '/admin/sidekiq'
     mount Blazer::Engine, at: "/admin/blazer"
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       resources :polls, only: [:create, :show]
       resources :memberships, only: [:index, :create]
     end
-    
+
     namespace :b2 do
       resources :discussions, only: [:create, :show]
       resources :polls, only: [:create, :show]
@@ -137,11 +137,12 @@ Rails.application.routes.draw do
         post :ignore, on: :member
       end
 
+      resources :mentions, only: :index
+
       resources :profile, only: [:show, :index] do
         collection do
           get  :time_zones
           get  :all_time_zones
-          get  :mentionable_users
           get  :me
           get  :groups
           get  :email_status
@@ -226,7 +227,7 @@ Rails.application.routes.draw do
           get :aliases
           delete :destroy_alias
         end
-        
+
         member do
           post :allow
           post :block
@@ -352,7 +353,7 @@ Rails.application.routes.draw do
       get :dump_i18n
     end
   end
-  
+
   post :email_processor, to: 'received_emails#create'
 
   namespace :email_actions do
