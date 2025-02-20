@@ -33,16 +33,18 @@ describe Events::GroupMentioned do
     expect(emails_sent_to(mentioned_member.email).size).to eq 1
   end
 
+  it "notifies normally" do
+    expect { Events::NewComment.publish!(comment) }.to(change { Event.where(kind: 'group_mentioned').count }.by(1))
+  end
   it "does not notify if members cannot notify group" do
-    # TODO also remove from mentions list
-    expect { Events::NewComment.publish!(comment) }.to(change {Event.where(kind: 'group_mentioned').count}.by(1))
-
     group.update(members_can_announce: false)
-    expect { Events::NewComment.publish!(comment) }.to_not(change {Event.where(kind: 'group_mentioned').count})
+    expect { Events::NewComment.publish!(comment) }.to_not(change { Event.where(kind: 'group_mentioned').count })
+  end
 
-    # but it does notify if they're an admin
+  it "notifies if members_cannot announce but user is an admin" do
+    group.update(members_can_announce: false)
     group.add_admin! actor
-    expect { Events::NewComment.publish!(comment) }.to(change {Event.where(kind: 'group_mentioned').count}.by(1))
+    expect { Events::NewComment.publish!(comment) }.to(change { Event.where(kind: 'group_mentioned').count }.by(1))
   end
 
   it "notifies group on edit, newly mentioned" do
@@ -51,7 +53,7 @@ describe Events::GroupMentioned do
     expect(Event.where(kind: 'group_mentioned').count).to eq 0
     comment.update(body: "edited to mention group @testgroup")
 
-    Events::CommentEdited.publish!(comment)
+    Events::CommentEdited.publish!(comment, comment.author)
     expect(Event.where(kind: 'group_mentioned').count).to eq 1
   end
 
@@ -60,7 +62,7 @@ describe Events::GroupMentioned do
     expect(Event.where(kind: 'group_mentioned').count).to eq 1
 
     comment.update(body: "edited to mention group @testgroup, although it was already mentioned")
-    Events::CommentEdited.publish!(comment)
+    Events::CommentEdited.publish!(comment, comment.author)
     expect(Event.where(kind: 'group_mentioned').count).to eq 1
   end
 end
