@@ -1,10 +1,14 @@
 module Events::Notify::Mentions
   def trigger!
     super
-    return if user.blank?
+    return if silence_mentions?
 
     notify_mentioned_groups!
     notify_mentioned_users!
+  end
+
+  def silence_mentions?
+    false
   end
 
   # send event notifications
