@@ -4,6 +4,7 @@ class Comment < ApplicationRecord
   include Translatable
   include Reactable
   include HasMentions
+  include HasAudienceMentions
   include HasCreatedEvent
   include HasEvents
   include HasRichText
@@ -37,8 +38,8 @@ class Comment < ApplicationRecord
         LEFT JOIN discussions ON discussions.id = comments.discussion_id
         LEFT JOIN users ON users.id = comments.user_id
         #{discussion_id ? "LEFT JOIN events ON events.eventable_type = 'Comment' AND events.eventable_id = comments.id" : ""}
-      WHERE comments.discarded_at IS NULL 
-        AND discussions.discarded_at IS NULL 
+      WHERE comments.discarded_at IS NULL
+        AND discussions.discarded_at IS NULL
         #{id ? " AND comments.id = #{id.to_i} LIMIT 1" : ""}
         #{author_id ? " AND comments.user_id = #{author_id.to_i}" : ""}
         #{discussion_id ? " AND events.discussion_id = #{discussion_id.to_i}" : ""}

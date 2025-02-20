@@ -4,10 +4,7 @@ describe Comment do
   let(:user) { create(:user) }
   let(:discussion) { create :discussion }
   let(:comment) { create(:comment, discussion: discussion) }
-
-  before do
-    discussion.group.add_member!(user)
-  end
+  let(:group) { create(:group) }
 
   describe "html sanitization" do
     it "removes script tags" do
@@ -18,6 +15,10 @@ describe Comment do
   end
 
   describe "#is_most_recent?" do
+    before do
+      discussion.group.add_member!(user)
+    end
+
     subject { comment.is_most_recent? }
     context "comment is the last one added to discussion" do
       it { should be true }
@@ -32,6 +33,10 @@ describe Comment do
   end
 
   describe "#destroy" do
+    before do
+      discussion.group.add_member!(user)
+    end
+
     let(:reaction) { build :reaction, reactable: comment }
     it "destroys comment votes" do
       ReactionService.update(reaction: reaction, params: {reaction: 'smiley'}, actor: user)
@@ -80,6 +85,29 @@ describe Comment do
         non_member = create :user
         comment.mentioned_users.should_not include(non_member)
       end
+    end
+  end
+
+  describe "#mentioned audiences" do
+    around(:each) do |example|
+      I18n.with_locale(['de', 'fr', 'en'].sample) do
+        example.run
+      end
+    end
+
+    it "mentioning an audience should return corresponding audience" do
+      audience = Audience.all.sample
+      audience_translated = Audience.send(audience).translate
+
+      comment1 = create :comment, body: "Hey, @#{audience_translated}"
+      comment2 = create :comment,
+                        body: "<p>Hey, <span class=\"mention\"
+                          data-mention-id=\"#{audience}\"
+                          label=\"#{audience}\">@#{audience_translated}</span></p>",
+                        body_format: "html"
+
+      expect(comment1.mentioned_audiences).to eq([audience])
+      expect(comment2.mentioned_audiences).to eq([audience])
     end
   end
 end

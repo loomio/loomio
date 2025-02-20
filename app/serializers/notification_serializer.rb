@@ -45,9 +45,9 @@ class NotificationSerializer < ApplicationSerializer
        event.eventable.respond_to?(:parent) &&
        event.eventable.parent.present? &&
        event.eventable.parent.author == object.user
-      "comment_replied_to" 
+      "comment_replied_to"
     else
-      event.kind
+      event.kind_with_custom_fields
     end
   end
 end
