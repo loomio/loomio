@@ -13,9 +13,8 @@ class Events::StanceCreated < Event
           discussion: stance.add_to_discussion? ? stance.poll.discussion : nil
   end
 
-  def notify_mentions!
-    return if eventable.poll.anonymous || eventable.poll.hide_results == 'until_closed'
-    super
+  def silence_mentions?
+    eventable.poll.anonymous || eventable.poll.hide_results == 'until_closed'
   end
 
   def real_user

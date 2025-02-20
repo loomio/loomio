@@ -203,7 +203,7 @@ describe Event do
           create(:stance, poll: poll, participant: user_thread_normal)
         ]
 
-        expect { Events::PollClosingSoon.publish!(poll) }.to change { emails_sent }
+        expect { Events::PollClosingSoon.publish!(poll) }.to(change { emails_sent })
 
         notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         notified_users.should_not include user_thread_loud
@@ -229,7 +229,7 @@ describe Event do
           create(:stance, poll: poll, participant: user_thread_normal)
         ]
 
-        expect { Events::PollClosingSoon.publish!(poll) }.to_not change { emails_sent }
+        expect { Events::PollClosingSoon.publish!(poll) }.to_not(change { emails_sent })
 
         notified_users = Events::PollClosingSoon.last.send(:notification_recipients)
         expect(notified_users.count).to eq 0
@@ -255,13 +255,13 @@ describe Event do
     it 'does not email the author when asked not to' do
       poll.author = user_thread_quiet
       poll.save
-      expect { Events::PollExpired.publish!(poll) }.to_not change { emails_sent }
+      expect { Events::PollExpired.publish!(poll) }.to_not(change { emails_sent })
     end
 
     it 'does email the author when asked to' do
       poll.author = user_thread_loud
       poll.save
-      expect { Events::PollExpired.publish!(poll) }.to change { emails_sent }
+      expect { Events::PollExpired.publish!(poll) }.to(change { emails_sent })
     end
   end
 
@@ -290,7 +290,7 @@ describe Event do
 
     it 'notifies the author if her volume is loud' do
       poll.stances.create(participant: poll.author, volume: 'loud')
-      expect { Events::StanceCreated.publish!(stance) }.to change { emails_sent }
+      expect { Events::StanceCreated.publish!(stance) }.to(change { emails_sent })
 
       email_users = Events::StanceCreated.last.send(:email_recipients)
       expect(email_users.length).to eq 3
@@ -301,7 +301,7 @@ describe Event do
 
     it 'does not notify the author her voume is normal' do
       stance = poll.stances.create(participant: poll.author, volume: 'normal')
-      expect { Events::StanceCreated.publish!(stance) }.to change { emails_sent }
+      expect { Events::StanceCreated.publish!(stance) }.to(change { emails_sent })
 
       email_users = Events::StanceCreated.last.send(:email_recipients)
       expect(email_users.length).to eq 2
@@ -312,7 +312,7 @@ describe Event do
     it 'does not notify deactivated users' do
       [user_thread_loud, user_membership_loud].each {|u| u.update(deactivated_at: Time.now) }
       stance = poll.stances.create(participant: poll.author, volume: 'normal')
-      expect { Events::StanceCreated.publish!(stance) }.to_not change { emails_sent }
+      expect { Events::StanceCreated.publish!(stance) }.to_not(change { emails_sent })
       email_users = Events::StanceCreated.last.send(:email_recipients)
       expect(email_users).to be_empty
     end
@@ -327,7 +327,7 @@ describe Event do
       poll.create_missing_created_event!
       poll_meeting.create_missing_created_event!
     end
-    
+
     def stance_for(user)
       Stance.create(participant: user, poll: poll)
     end
