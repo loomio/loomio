@@ -22,6 +22,10 @@ en:
   tasks:
     tasks: Tasks
     your_tasks: Your tasks
+    tasks_filters:
+      open: Open
+      closed: Closed
+      hidden: Hidden
     permission_denied: You don't have permission to update this task
     due_date: Due date
     send_reminder: Send reminder (if not done)

@@ -943,7 +943,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_15_143232) do
   create_table "tasks_users_extensions", force: :cascade do |t|
     t.bigint "task_id", null: false
     t.bigint "user_id", null: false
-    t.boolean "archived", default: false
+    t.boolean "hidden", default: false
     t.index ["task_id", "user_id"], name: "index_tasks_users_extensions_on_task_id_and_user_id", unique: true
   end
 

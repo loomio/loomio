@@ -12,23 +12,31 @@ export default {
   data() {
     return {
       records: {},
-      tasksByRecordKey: {},
-      loading: true
+      tasks: [],
+      loading: true,
+      filterTabs: [
+        {name: 'open', filter: task => !task.done && !task.hidden},
+        {name: 'closed', filter: task => task.done && !task.hidden},
+        {name: 'hidden', filter: task => task.hidden}
+      ],
+      activeFilter: 0,
     };
   },
 
   mounted() {
+    Records.tasks.collection.data = [];
     Records.tasks.remote.fetch('/').then(data => {
-      const ids = data['tasks'].map(t => t.id);
-      const tasks = Records.tasks.find(ids).filter(t => t.record() != null);
-      tasks.forEach(t => {
+
+      this.tasks = Records.tasks.all().filter(t => t.record() != null);
+
+      this.tasks.forEach(t => {
         const recordKey = t.recordType + t.recordId;
         if ((this.records[recordKey] == null)) {
           this.records[recordKey] = t.record();
         }
       });
-      this.tasksByRecordKey = groupBy(tasks, t => t.recordType + t.recordId);
-    }).finally(() => {
+
+    }).finally(()=> {
       this.loading = false;
     });
   },
@@ -50,8 +58,29 @@ export default {
           Flash.success('tasks.task_updated_not_done');
         }
       });
+    },
+
+    toggleHidden(task) {
+      return task.toggleHidden().then(function() {
+        if (task.hidden) {
+          Flash.success('tasks.task_updated_hidden');
+        } else {
+          Flash.success('tasks.task_updated_not_hidden');
+        }
+      });
+    },
+
+    setFilter(tabId) { this.activeFilter = tabId; },
+
+  },
+
+  computed: {
+    filteredTasks() {
+      return this.tasks.filter(this.filterTabs[this.activeFilter].filter);
     }
   }
+
+
 };
 
 </script>
@@ -60,19 +89,35 @@ export default {
 v-main
   v-container.dashboard-page.max-width-1024.px-0.px-sm-3
     h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'tasks.your_tasks'")
+    
+    v-divider.mt-4
+    v-tabs(
+      background-color="transparent"
+      center-active
+      grow
+    )
+      v-tab(
+        v-for="(filter, idx) of filterTabs" @click="setFilter(idx)"
+      )
+        span(v-t="'tasks.tasks_filters.'+filter.name")
+
+
     loading(v-if="loading")
-    template(v-for="(tasks, recordKey) in tasksByRecordKey")
-      v-card.mb-3
-        v-card-title
-          router-link(:to="taskUrlFor(records[recordKey])") {{records[recordKey].discussion().title}}
-        v-list(subheader)
-          v-list-item(v-for="task in tasks" :key="task.id")
-            v-list-item-action
-              v-btn(color="accent" icon @click="toggleDone(task)")
-                common-icon(v-if="task.done" name="mdi-checkbox-marked")
-                common-icon(v-else name="mdi-checkbox-blank-outline")
-            v-list-item-title {{task.name}}
-    p(v-if="!loading && Object.keys(records).length == 0" v-t="'tasks.no_tasks_assigned'")
+    template()
+      v-list()
+        v-list-item(v-for="task in filteredTasks" :key="task.id")
+          v-list-item-action
+            v-btn(color="accent" icon @click="toggleDone(task)")
+              common-icon(v-if="task.done" name="mdi-checkbox-marked")
+              common-icon(v-else name="mdi-checkbox-blank-outline")
+          v-list-item-title {{task.name}}
+          v-list-item-action
+            v-btn(icon @click='toggleHidden(task)')
+              common-icon(v-if="task.hidden === false" name="mdi-eye-off")
+              common-icon(v-else name="mdi-eye")
+
+
+    p(v-if="!loading && filteredTasks.length == 0" v-t="'tasks.no_tasks_assigned'")
     .d-flex.justify-center
       v-chip(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
         common-icon.mr-2(name="mdi-help-circle-outline")

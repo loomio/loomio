@@ -36,8 +36,8 @@ class TaskService
     end
   end
 
-  def self.update_archived(task, actor, archived)
-    TasksUsersExtension.where(task_id: task.id, user_id: actor.id).first_or_create.update(archived: archived)
+  def self.update_hidden(task, actor, hidden)
+    TasksUsersExtension.where(task_id: task.id, user_id: actor.id).first_or_create.update(hidden: hidden)
   end
 
   def self.rewrite_uids(text)

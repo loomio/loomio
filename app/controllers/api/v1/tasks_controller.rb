@@ -38,20 +38,20 @@ class API::V1::TasksController < API::V1::RestfulController
     respond_with_resource
   end
 
-  def mark_as_archived
+  def mark_as_hidden
     @task = Task.find(params[:id])
     current_user.ability.authorize!(:update, @task)
 
-    TaskService.update_archived(@task, current_user, true)
+    TaskService.update_hidden(@task, current_user, true)
 
     respond_with_resource
   end
 
-  def mark_as_not_archived
+  def mark_as_not_hidden
     @task = Task.find(params[:id])
     current_user.ability.authorize!(:update, @task)
 
-    TaskService.update_archived(@task, current_user, false)
+    TaskService.update_hidden(@task, current_user, false)
 
     respond_with_resource
   end
