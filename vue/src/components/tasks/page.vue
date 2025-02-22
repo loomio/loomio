@@ -115,6 +115,9 @@ v-main
             v-btn(icon @click='toggleHidden(task)')
               common-icon(v-if="task.hidden === false" name="mdi-eye-off")
               common-icon(v-else name="mdi-eye")
+          v-list-item-action
+            v-btn(icon :to="taskUrlFor(task.record())")
+                common-icon(name="mdi-arrow-right")
 
 
     p(v-if="!loading && filteredTasks.length == 0" v-t="'tasks.no_tasks_assigned'")
