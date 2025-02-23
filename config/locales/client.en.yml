@@ -29,7 +29,7 @@ en:
     toggle_hide_all_button: Toggle Hide All
     toggle_hide_all_confirm:
       title: You Are About to Modify All Tasks!
-      description: All tasks visible in the current tab will be hidden/revealed. Are you sure you want to do this?
+      description: All tasks displayed in this tab will be have their visibility toggled. Are you sure you want to do this?
       button: Edit All Tasks
     permission_denied: You don't have permission to update this task
     due_date: Due date

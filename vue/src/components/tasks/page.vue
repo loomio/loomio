@@ -117,12 +117,12 @@ v-main
             space
             span(v-t="'tasks.tasks'")
     template()
-      v-dialog(v-model="dialog")
-        v-card
-          v-card-title(v-t="'tasks.toggle_hide_all_confirm.title'")
+      v-dialog(v-model="dialog" :width="$vuetify.breakpoint.xs ? '90vw' : ' 40vw'")
+        v-card.text-center
+          v-card-title.justify-center(v-t="'tasks.toggle_hide_all_confirm.title'")
           v-card-text(v-t="'tasks.toggle_hide_all_confirm.description'")
-          v-card-actions
-            v-btn(@click="dialog = false; toggleHideVisible()" v-t="'tasks.toggle_hide_all_confirm.button'")
+          v-card-actions.justify-center
+            v-btn(@click="dialog = false; toggleHideVisible()" color="red" v-t="'tasks.toggle_hide_all_confirm.button'")
 
     v-divider.mt-4
     v-tabs(
