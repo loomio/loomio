@@ -108,7 +108,7 @@ v-main
         v-col(:align="'right'")
           v-chip.mb-2(outlined @click="dialog = true")
             common-icon.mr-2(name="mdi-eye-off")
-            span(v-t="'tasks.tasks_toggle_hide_all'")
+            span(v-t="'tasks.toggle_hide_all_button'")
 
           v-chip.mb-2.ml-3(outlined href="https://help.loomio.org/en/user_manual/threads/thread_admin/tasks.html" target="_blank")
             common-icon.mr-2(name="mdi-help-circle-outline")
@@ -119,10 +119,10 @@ v-main
     template()
       v-dialog(v-model="dialog")
         v-card
-          v-card-title(v-t="'tasks.tasks_toggle_hide_all_confirm.title'")
-          v-card-text(v-t="'tasks.tasks_toggle_hide_all_confirm.description'")
+          v-card-title(v-t="'tasks.toggle_hide_all_confirm.title'")
+          v-card-text(v-t="'tasks.toggle_hide_all_confirm.description'")
           v-card-actions
-            v-btn(@click="dialog = false; toggleHideVisible()" v-t="'tasks.tasks_toggle_hide_all_confirm.button'")
+            v-btn(@click="dialog = false; toggleHideVisible()" v-t="'tasks.toggle_hide_all_confirm.button'")
 
     v-divider.mt-4
     v-tabs(
@@ -152,8 +152,5 @@ v-main
           v-list-item-action
             v-btn(icon :to="taskUrlFor(task.record())")
                 common-icon(name="mdi-arrow-right")
-
-
-    p(style="margin: 2Opx" v-if="!loading && filteredTasks.length == 0" v-t="'tasks.no_tasks_assigned'")
-
+        p.ma-3(style="text-align: center" v-if="!loading && filteredTasks.length == 0" v-t="'tasks.no_tasks_to_display'")
 </template>
