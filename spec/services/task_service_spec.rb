@@ -106,4 +106,37 @@ describe TaskService do
     last_email = ActionMailer::Base.deliveries.last
     expect(last_email.to).to include member.email
   end
+
+  describe 'extension data' do
+    let(:task) { Task.create(author_id: member.id, uid: 123, name: 'task 1', done: false) }
+
+    before(:each) do
+      TaskService.update_hidden(task, member, false)
+    end
+
+    it 'creates extended task data' do
+      expect(TasksUsersExtension.count).to eq 1
+    end
+
+    it 'updates extended task data' do
+      expect(TasksUsersExtension.first.hidden).to eq false
+      TaskService.update_hidden(task, member, true)
+      expect(TasksUsersExtension.first.hidden).to eq true
+    end
+
+    it 'destroys extended task data along with task' do
+      expect(TasksUsersExtension.count).to eq 1
+      task.destroy
+      expect(TasksUsersExtension.count).to eq 0
+    end
+
+    it 'destroys extended task data with user' do
+      #this currently fails: I realized there seems no dependency between task and user right now and adding one between user and task extension without that seemed a little silly
+      #I would prefer adding the dependency between user and task, let's wait for review here
+      expect(TasksUsersExtension.count).to eq 1
+      member.destroy
+      expect(TasksUsersExtension.count).to eq 0
+    end
+  end
+
 end
