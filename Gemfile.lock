@@ -103,17 +103,18 @@ GEM
       activesupport (>= 3.0.0)
       ruby2_keywords (>= 0.0.2)
     ast (2.4.2)
-    aws-eventstream (1.3.0)
-    aws-partitions (1.1047.0)
-    aws-sdk-core (3.218.0)
+    aws-eventstream (1.3.1)
+    aws-partitions (1.1052.0)
+    aws-sdk-core (3.219.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
+      base64
       jmespath (~> 1, >= 1.6.1)
-    aws-sdk-kms (1.98.0)
+    aws-sdk-kms (1.99.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.180.0)
+    aws-sdk-s3 (1.182.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -124,7 +125,7 @@ GEM
     benchmark (0.4.0)
     bigdecimal (3.1.9)
     bindex (0.8.1)
-    blazer (3.1.0)
+    blazer (3.2.0)
       activerecord (>= 6.1)
       chartkick (>= 5)
       csv
@@ -136,7 +137,7 @@ GEM
     builder (3.3.0)
     byebug (11.1.3)
     cancancan (3.6.1)
-    chartkick (5.1.2)
+    chartkick (5.1.4)
     cld (0.13.0)
       ffi
     concurrent-ruby (1.3.4)
@@ -147,7 +148,7 @@ GEM
     crass (1.0.6)
     css_parser (1.16.0)
       addressable
-    csv (3.3.0)
+    csv (3.3.2)
     custom_counter_cache (0.2.8)
       rails (>= 4.0)
     database_cleaner-active_record (2.2.0)
@@ -171,7 +172,7 @@ GEM
       devise (~> 4)
       pwned (~> 2.4)
     diff-lcs (1.5.1)
-    digest-crc (0.6.5)
+    digest-crc (0.7.0)
       rake (>= 12.0.0, < 14.0.0)
     discard (1.4.0)
       activerecord (>= 4.2, < 9.0)
@@ -221,7 +222,7 @@ GEM
       grpc (~> 1.66)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-apis-core (0.15.1)
+    google-apis-core (0.16.0)
       addressable (~> 2.5, >= 2.5.1)
       googleauth (~> 1.9)
       httpclient (>= 2.8.3, < 3.a)
@@ -231,7 +232,7 @@ GEM
       retriable (>= 2.0, < 4.a)
     google-apis-iamcredentials_v1 (0.22.0)
       google-apis-core (>= 0.15.0, < 2.a)
-    google-apis-storage_v1 (0.48.0)
+    google-apis-storage_v1 (0.49.0)
       google-apis-core (>= 0.15.0, < 2.a)
     google-cloud-core (1.7.1)
       google-cloud-env (>= 1.0, < 3.a)
@@ -242,12 +243,12 @@ GEM
     google-cloud-location (0.10.0)
       gapic-common (>= 0.25.0, < 2.a)
       google-cloud-errors (~> 1.0)
-    google-cloud-storage (1.54.0)
+    google-cloud-storage (1.55.0)
       addressable (~> 2.8)
       digest-crc (~> 0.4)
       google-apis-core (~> 0.13)
       google-apis-iamcredentials_v1 (~> 0.18)
-      google-apis-storage_v1 (~> 0.38)
+      google-apis-storage_v1 (>= 0.42)
       google-cloud-core (~> 1.6)
       googleauth (~> 1.9)
       mini_mime (~> 1.0)
@@ -361,7 +362,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    logger (1.6.5)
+    logger (1.6.6)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -402,18 +403,15 @@ GEM
       net-protocol
     net_http_timeout_errors (1.0.0)
     nio4r (2.7.4)
-    nokogiri (1.18.2-arm64-darwin)
+    nokogiri (1.18.3-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.2-x86_64-darwin)
+    nokogiri (1.18.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.2-x86_64-linux-gnu)
+    nokogiri (1.18.3-x86_64-linux-gnu)
       racc (~> 1.4)
     oga (3.4)
       ast
       ruby-ll (~> 2.1)
-    oj (3.16.9)
-      bigdecimal (>= 3.0)
-      ostruct (>= 0.2)
     orm_adapter (0.5.0)
     os (1.1.4)
     ostruct (0.6.1)
@@ -483,7 +481,7 @@ GEM
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
-    redcarpet (3.6.0)
+    redcarpet (3.6.1)
     redis (4.8.1)
     redis-actionpack (5.3.0)
       actionpack (>= 5, < 8)
@@ -635,7 +633,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.7.1)
+    zeitwerk (2.7.2)
 
 PLATFORMS
   arm64-darwin-24
@@ -672,7 +670,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   friendly_id (~> 5.5.1)
-  google-cloud-storage (~> 1.54)
+  google-cloud-storage (~> 1.55)
   google-cloud-translate
   gravtastic
   haml-rails (~> 2.1.0)
@@ -685,7 +683,6 @@ DEPENDENCIES
   lograge
   maxminddb
   nokogiri
-  oj
   paper_trail (~> 16.0.0)
   pg
   pg_search
@@ -699,7 +696,7 @@ DEPENDENCIES
   rails-controller-testing
   rake
   ransack (= 4.3.0)
-  redcarpet (~> 3.6.0)
+  redcarpet (~> 3.6.1)
   redis-objects
   redis-rails
   reverse_markdown

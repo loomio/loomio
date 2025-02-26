@@ -21,7 +21,7 @@ gem 'activeadmin', '~> 3.2.5'
 gem 'ransack', '4.3.0'
 gem 'nokogiri'
 gem 'twitter-text', github: 'loomio/twitter-text'
-gem 'redcarpet', '~> 3.6.0'
+gem 'redcarpet', '~> 3.6.1'
 gem 'paper_trail', '~> 16.0.0'
 gem 'sidekiq', '~> 6.5.12'
 gem 'friendly_id', '~> 5.5.1'
@@ -29,7 +29,7 @@ gem 'httparty', '~> 0.22.0'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
-gem "google-cloud-storage", "~> 1.54", require: false
+gem "google-cloud-storage", "~> 1.55", require: false
 gem 'image_processing', '~> 1.14'
 gem "ruby-vips"
 gem "stackprof"
@@ -42,7 +42,6 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'sass-rails'
 gem 'uuidtools'
 gem 'maxminddb'
-gem 'oj'
 gem "cld"
 gem 'custom_counter_cache'
 gem 'premailer-rails'

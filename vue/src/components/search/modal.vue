@@ -56,7 +56,7 @@ export default {
       ],
       orgItems: [
         {text: I18n.t('sidebar.all_groups'), value: null},
-        {text: I18n.t('sidebar.direct_threads'), value: 0}
+        {text: I18n.t('sidebar.invite_only_threads'), value: 0}
       ].concat(Session.user().parentGroups().map(g => ({
         text: g.name,
         value: g.id
@@ -157,7 +157,7 @@ export default {
       this.fetch();
     },
 
-    groupId(groupId) { 
+    groupId(groupId) {
       if (groupId) {
         const group = Records.groups.find(groupId);
         this.updateTagItems(group);
@@ -201,7 +201,7 @@ v-card.search-modal
     v-list-item.poll-common-preview(v-if="!loading && resultsQuery && results.length == 0")
       v-list-item-title(v-t="{path: 'discussions_panel.no_results_found', args: {search: resultsQuery}}")
     v-list-item.poll-common-preview(v-for="result in results" :key="result.id" :to="urlForResult(result)")
-      v-list-item-avatar 
+      v-list-item-avatar
         poll-common-icon-panel(v-if="['Outcome', 'Poll'].includes(result.searchable_type)" :poll='pollById(result.poll_id)' show-my-stance)
         user-avatar(v-else :user="userById(result.author_id)")
       v-list-item-content
@@ -217,6 +217,6 @@ v-card.search-modal
             mid-dot
             span {{result.author_name}}
             mid-dot
-            span {{result.group_name || $t('discussion.direct_thread')}}
+            span {{result.group_name || $t('discussion.invite_only')}}
 
 </template>
