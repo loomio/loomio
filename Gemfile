@@ -42,7 +42,6 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'sass-rails'
 gem 'uuidtools'
 gem 'maxminddb'
-gem 'oj'
 gem "cld"
 gem 'custom_counter_cache'
 gem 'premailer-rails'
