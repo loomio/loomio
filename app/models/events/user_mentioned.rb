@@ -13,6 +13,6 @@ class Events::UserMentioned < Event
   end
 
   def notification_recipients
-    User.where(id: custom_fields['user_ids'])
+    User.active.verified.where(id: custom_fields['user_ids'])
   end
 end

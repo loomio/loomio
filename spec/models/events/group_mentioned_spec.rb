@@ -36,6 +36,7 @@ describe Events::GroupMentioned do
   it "notifies normally" do
     expect { Events::NewComment.publish!(comment) }.to(change { Event.where(kind: 'group_mentioned').count }.by(1))
   end
+
   it "does not notify if members cannot notify group" do
     group.update(members_can_announce: false)
     expect { Events::NewComment.publish!(comment) }.to_not(change { Event.where(kind: 'group_mentioned').count })
