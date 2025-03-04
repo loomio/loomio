@@ -10,8 +10,4 @@ module Events::Notify::ByEmail
       EventMailer.event(recipient_id, self.id).deliver_later
     end
   end
-
-  def wait_time
-    1.minute
-  end
 end

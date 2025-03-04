@@ -122,13 +122,20 @@ class User < ApplicationRecord
   scope :coordinators, -> { joins(:memberships).where('memberships.admin = ?', true).group('users.id') }
   scope :verified, -> { where(email_verified: true) }
   scope :unverified, -> { where(email_verified: false) }
-  scope :search_for, -> (q) { where("users.name ilike :first OR users.name ilike :other OR users.username ilike :first OR users.email ilike :first", first: "#{q}%", other:  "% #{q}%") }
-  scope :visible_by, -> (user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
+  scope :search_for, lambda { |q|
+    where("users.name ilike :first OR
+           users.name ilike :other OR
+           users.username ilike :first OR
+           users.email ilike :first",
+          first: "#{q}%", other: "% #{q}%")
+  }
+  scope :visible_by, ->(user) { distinct.active.verified.joins(:memberships).where("memberships.group_id": user.group_ids).where.not(id: user.id) }
   scope :humans, -> { where(bot: false) }
   scope :bots, -> { where(bot: true) }
 
-  scope :mention_search, -> (user, model, query) do
-    return self.none unless model.present?
+  scope :mention_search, lambda { |model, query|
+    return none unless model.present?
+
     ids = []
 
     if model.group_id
@@ -148,7 +155,7 @@ class User < ApplicationRecord
     end
 
     active.search_for(query).where(id: ids)
-  end
+  }
 
   scope :email_when_proposal_closing_soon, -> { active.where(email_when_proposal_closing_soon: true) }
 
