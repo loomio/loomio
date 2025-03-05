@@ -21,12 +21,12 @@ module Events::Notify::Mentions
   def notify_mentioned_groups!
     return if eventable.newly_mentioned_groups.empty?
 
-    Events::GroupMentioned.publish! eventable, user, eventable.newly_mentioned_groups.pluck(:id)
+    Events::GroupMentioned.publish! eventable, user, eventable.newly_mentioned_groups.pluck(:id), id
   end
 
   private
 
-  # remove newly_mentioned_users from those emailed by following
+  # remove newly_mentioned_users from notification receipients
   def email_recipients
     super.where.not(id: eventable.newly_mentioned_users)
   end

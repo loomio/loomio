@@ -4,6 +4,7 @@ class Events::StanceCreated < Event
   include Events::Notify::InApp
   include Events::Notify::Mentions
   include Events::Notify::Chatbots
+  include Events::Notify::Subscribers
 
   def self.publish!(stance)
     GenericWorker.perform_async('NotificationService', 'mark_as_read', "Poll", stance.poll_id, stance.participant_id)

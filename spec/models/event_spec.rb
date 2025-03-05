@@ -78,24 +78,24 @@ describe Event do
   it 'new_comment' do
     Events::NewComment.publish!(parent_comment)
     expect { Events::NewComment.publish!(comment) }.to change { emails_sent }
-    email_users = Events::NewComment.last.send(:email_recipients)
-    email_users.should     include user_thread_loud
-    email_users.should     include user_membership_loud
+    subscribed_users = Events::NewComment.last.send(:subscribed_recipients)
+    subscribed_users.should     include user_thread_loud
+    subscribed_users.should     include user_membership_loud
 
-    email_users.should_not include user_left_group
+    subscribed_users.should_not include user_left_group
 
-    email_users.should_not include user_membership_normal
-    email_users.should_not include user_thread_normal
+    subscribed_users.should_not include user_membership_normal
+    subscribed_users.should_not include user_thread_normal
 
-    email_users.should_not include user_membership_quiet
-    email_users.should_not include user_thread_quiet
+    subscribed_users.should_not include user_membership_quiet
+    subscribed_users.should_not include user_thread_quiet
 
-    email_users.should_not include user_membership_mute
-    email_users.should_not include user_thread_mute
+    subscribed_users.should_not include user_membership_mute
+    subscribed_users.should_not include user_thread_mute
 
-    email_users.should_not include comment.author
-    email_users.should_not include mentioned_user
-    email_users.should_not include comment.parent.author
+    subscribed_users.should_not include comment.author
+    subscribed_users.should_not include mentioned_user
+    subscribed_users.should_not include comment.parent.author
   end
 
   describe 'user_mentioned' do
@@ -119,7 +119,10 @@ describe Event do
 
   describe 'new_discussion' do
     it 'notifies mentioned users' do
-      expect { Events::NewDiscussion.publish!(discussion: discussion) }.to change { emails_sent }.by(1) # (the mentioned user)
+
+      expect { Events::NewDiscussion.publish!(discussion: discussion) }.to change { emails_sent }.by(3) # (the mentioned user)
+      expect(discussion.mentioned_users.length).to eq(1)
+      expect(Events::NewDiscussion.last.subscribed_recipients.length).to eq(2)
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
     end
 
@@ -149,7 +152,10 @@ describe Event do
 
   describe 'poll_created' do
     it 'notifies mentioned users' do
-      expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }.by(1) # (the mentioned user)
+      expect { Events::PollCreated.publish!(poll, poll.author) }.to change { emails_sent }.by(3) # (the mentioned user)
+      event = Events::PollCreated.last
+      expect(event.subscribed_recipients.length).to eq 2
+      expect(poll.mentioned_users.length).to eq 1
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
     end
 
@@ -277,11 +283,14 @@ describe Event do
 
     it 'notifies mentioned users and the author' do
       expect { Events::OutcomeCreated.publish!(outcome: outcome,
-                                               recipient_user_ids: [outcome.author.id]) }.to change { emails_sent }.by(2) # mentioned user and the author
+                                               recipient_user_ids: [outcome.author.id]) }.to change { emails_sent }.by(4) # mentioned user and the author
       expect(Events::UserMentioned.last.custom_fields['user_ids']).to include user_mentioned.id
+      expect(Events::OutcomeCreated.last.subscribed_recipients.length).to eq 2
       recipients = ActionMailer::Base.deliveries.map(&:to).flatten
       expect(recipients).to include user_mentioned.email
       expect(recipients).to include outcome.author.email
+      expect(recipients).to include user_membership_loud.email
+      expect(recipients).to include user_thread_loud.email
     end
   end
 
@@ -347,8 +356,8 @@ describe Event do
 
     it 'notifies the author if the eventable is an appropriate outcome' do
       expect {
-        Events::OutcomeCreated.publish!(outcome:outcome, recipient_user_ids: [poll.author.id, user_thread_normal.id])
-      }.to change { emails_sent }.by(2)
+        Events::OutcomeCreated.publish!(outcome: outcome, recipient_user_ids: [poll.author.id, user_thread_normal.id])
+      }.to change { emails_sent }.by(4)
     end
 
     it 'can send an ical attachment with an outcome' do

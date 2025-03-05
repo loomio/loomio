@@ -2,11 +2,15 @@ class Events::GroupMentioned < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
 
-  def self.publish!(model, actor, group_ids)
-    super model, user: actor, custom_fields: { group_ids: }
+  def self.publish!(model, actor, group_ids, parent_event_id)
+    super model, user: actor, parent_id: parent_event_id, custom_fields: { group_ids: }
   end
 
   private
+
+  def already_notified_user_ids
+    Event.find(parent_id).recipient_user_ids
+  end
 
   def group_ids
     Group.where(id: custom_fields['group_ids']).filter do |group|
@@ -19,7 +23,12 @@ class Events::GroupMentioned < Event
       .active
       .accepted
       .where(group_id: group_ids)
-      .where.not(user_id: eventable.mentioned_users.pluck(:id))
+      .where.not(user_id: already_mentioned_user_ids)
+      .where.not(user_id: already_notified_user_ids)
+  end
+
+  def already_mentioned_user_ids
+    eventable.mentioned_users.pluck(:id)
   end
 
   def notification_recipients
