@@ -4,6 +4,7 @@ class Events::PollCreated < Event
   include Events::Notify::Chatbots
   include Events::Notify::ByEmail
   include Events::Notify::InApp
+  include Events::Notify::Subscribers
 
   def self.publish!(poll, actor, recipient_user_ids: [])
     super poll,
