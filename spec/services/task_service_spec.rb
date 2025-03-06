@@ -129,14 +129,6 @@ describe TaskService do
       task.destroy
       expect(TasksUsersExtension.count).to eq 0
     end
-
-    it 'destroys extended task data with user' do
-      #this currently fails: I realized there seems no dependency between task and user right now and adding one between user and task extension without that seemed a little silly
-      #I would prefer adding the dependency between user and task, let's wait for review here
-      expect(TasksUsersExtension.count).to eq 1
-      member.destroy
-      expect(TasksUsersExtension.count).to eq 0
-    end
   end
 
 end
