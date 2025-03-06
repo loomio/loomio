@@ -38,8 +38,7 @@ export default {
     version() { return AppConfig.version; },
     release() { return AppConfig.release; },
     siteName() { return AppConfig.theme.site_name; },
-    user() { return Session.user(); },
-    isSignedIn() { return Session.isSignedIn(); }
+    user() { return Session.user(); }
   }
 };
 
@@ -47,25 +46,22 @@ export default {
 
 <template lang="pug">
 div.user-dropdown
-
-  template(v-if="isSignedIn")
-    v-list-item(v-if="!user.experiences['sidebar']" @click="togglePinned" dense)
-        v-list-item-title(v-t="'user_dropdown.pin_sidebar'")
-        v-list-item-icon
-          common-icon(name="mdi-pin")
-    v-list-item(v-if="user.experiences['sidebar']" @click="togglePinned" dense)
-        v-list-item-title(v-t="'user_dropdown.unpin_sidebar'")
-        v-list-item-icon
-          common-icon(name="mdi-pin-off")
-    v-list-item.user-dropdown__list-item-button--profile(to="/profile" dense)
-      v-list-item-title(v-t="'user_dropdown.edit_profile'")
+  v-list-item(v-if="!user.experiences['sidebar']" @click="togglePinned" dense)
+      v-list-item-title(v-t="'user_dropdown.pin_sidebar'")
       v-list-item-icon
-        common-icon(name="mdi-account")
-    v-list-item.user-dropdown__list-item-button--email-settings(to="/email_preferences" dense)
-      v-list-item-title(v-t="'user_dropdown.email_settings'")
+        common-icon(name="mdi-pin")
+  v-list-item(v-if="user.experiences['sidebar']" @click="togglePinned" dense)
+      v-list-item-title(v-t="'user_dropdown.unpin_sidebar'")
       v-list-item-icon
-        common-icon(name="mdi-cog-outline")
-
+        common-icon(name="mdi-pin-off")
+  v-list-item.user-dropdown__list-item-button--profile(to="/profile" dense)
+    v-list-item-title(v-t="'user_dropdown.edit_profile'")
+    v-list-item-icon
+      common-icon(name="mdi-account")
+  v-list-item.user-dropdown__list-item-button--email-settings(to="/email_preferences" dense)
+    v-list-item-title(v-t="'user_dropdown.email_settings'")
+    v-list-item-icon
+      common-icon(name="mdi-cog-outline")
   v-list-item(v-if="!isDark" @click="toggleDark" dense)
       v-list-item-title(v-t="'user_dropdown.enable_dark_mode'")
       v-list-item-icon
@@ -74,13 +70,10 @@ div.user-dropdown
       v-list-item-title(v-t="'user_dropdown.disable_dark_mode'")
       v-list-item-icon
         common-icon(name="mdi-white-balance-sunny")
-
-  template(v-if="isSignedIn")      
-    v-list-item(@click="signOut()" dense)
-      v-list-item-title(v-t="'user_dropdown.sign_out'")
-      v-list-item-icon
-        common-icon(name="mdi-exit-to-app")
-
+  v-list-item(@click="signOut()" dense)
+    v-list-item-title(v-t="'user_dropdown.sign_out'")
+    v-list-item-icon
+      common-icon(name="mdi-exit-to-app")
   v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" dense :title="release")
     v-list-item-title.text--secondary
       span(v-t="'common.version'")
