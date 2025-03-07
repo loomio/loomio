@@ -123,7 +123,7 @@ describe API::V1::TasksController, type: :controller do
     end
 
     it 'returns hidden state for task' do
-      get :index
+      get :index, params: { t: 'all'}
       expect(response.status).to eq 200
       expect(JSON.parse(response.body)['tasks'][0]['hidden']).to eq false
     end
