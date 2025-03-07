@@ -25,6 +25,10 @@ en:
       all: All Your Tasks
       authored: Tasks You Made
       assigned: Tasks to Do
+    expired: expired
+    expires_in: Expires in
+    day_singular: day
+    day_plural: days
     tasks_filters:
       open: Open
       closed: Closed

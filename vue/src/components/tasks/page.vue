@@ -36,7 +36,7 @@ export default {
       Records.tasks.remote.fetch({params: this.$route.query, path: '/'}).then(data => {
         const fetchedIds = data.tasks.map(t => t.id);
         const taskModelsForPath = Records.tasks.collection.chain().find({id: {$in: fetchedIds}}).data()
-        this.tasks = taskModelsForPath.filter(t => t.record() != null );
+        this.tasks = sortBy(taskModelsForPath.filter(t => t.record() != null ), t => t.dueOn);
 
         this.tasks.forEach(t => {
           const recordKey = t.recordType + t.recordId;
@@ -56,6 +56,16 @@ export default {
       } else {
         return this.urlFor(record);
       }
+    },
+
+    taskExpiryFor(task) {
+      if(task.dueOn === null) return -1;
+
+      const timeLeft =  Date.parse(task.dueOn) - Date.now();
+      if(timeLeft <= 0) return 0;
+
+      const daysLeft = Math.floor(timeLeft / (60*60*1000) / 24);
+      return daysLeft.toString();
     },
 
     toggleDone(task) {
@@ -174,20 +184,39 @@ v-main
 
 
     loading(v-if="loading")
-    template()
-      v-list()
-        v-list-item(v-for="task in filteredTasks" :key="task.id")
-          v-list-item-action
-            v-btn(color="accent" icon @click="toggleDone(task)")
-              common-icon(v-if="task.done" name="mdi-checkbox-marked")
-              common-icon(v-else name="mdi-checkbox-blank-outline")
-          v-list-item-title {{task.name}}
-          v-list-item-action
-            v-btn(icon @click='toggleHidden(task)')
-              common-icon(v-if="task.hidden === false" name="mdi-eye-off")
-              common-icon(v-else name="mdi-eye")
-          v-list-item-action
-            v-btn(icon :to="taskUrlFor(task.record())")
-                common-icon(name="mdi-arrow-right")
+    div.pa-3()
+      template()
+        v-card.ma-3(v-for="task in filteredTasks" :key="task.id" style="max-width: 90vw; max-height: 30vh;")
+          v-list-item(three-line)
+            v-list-item-content
+              v-card-text {{task.name}}
+              v-divider
+              v-container.ma-0.pa-0
+                v-row.ma-0.pa-0(:align="'center'")
+                  v-col.ma-0.pa-0
+                    v-btn.mr-3(color="accent" icon @click="toggleDone(task)")
+                      common-icon(v-if="task.done" name="mdi-checkbox-marked")
+                      common-icon(v-else name="mdi-checkbox-blank-outline")
+
+                    v-btn(icon @click='toggleHidden(task)')
+                      common-icon(v-if="task.hidden === false" name="mdi-eye-off")
+                      common-icon(v-else name="mdi-eye")
+
+                    v-btn(icon :to="taskUrlFor(task.record())")
+                      common-icon(name="mdi-arrow-right")
+
+                  v-col.ma-0.pa-0(:align="'right'" style="text-align: right")
+                    div.text-overline(outlined v-if="taskExpiryFor(task) >= 0")
+                      span(v-if="taskExpiryFor(task) === 0" v-t="'tasks.expired'")
+                      template(v-else)
+                        span(v-t="'tasks.expires_in' ")
+
+                        span.mx-1(v-t="taskExpiryFor(task)")
+
+                        span(v-if="taskExpiryFor(task) > 1" v-t="'tasks.day_plural' ")
+                        span(v-else v-t=" 'tasks.day_singular'")
+
+
+
         p.ma-3(style="text-align: center" v-if="!loading && filteredTasks.length == 0" v-t="'tasks.no_tasks_to_display'")
 </template>
