@@ -1,10 +1,20 @@
 class API::V1::TasksController < API::V1::RestfulController
   def index
     # return tasks
-
-    self.collection = Task.joins('left join tasks_users on tasks_users.task_id = tasks.id')
-        .where("author_id = :user_id OR doer_id = :user_id OR tasks_users.user_id = :user_id", user_id: current_user.id)
-        .joins('left join tasks_users_extensions as ext on ext.task_id = tasks.id')
+    case params[:t]
+    when 'all'
+      self.collection = Task.joins('left join tasks_users on tasks_users.task_id = tasks.id')
+                            .where("author_id = :user_id OR tasks_users.user_id = :user_id", user_id: current_user.id)
+                            .joins('left join tasks_users_extensions as ext on ext.task_id = tasks.id')
+    when 'authored'
+      self.collection = Task.joins('left join tasks_users on tasks_users.task_id = tasks.id')
+                            .where("author_id = :user_id", user_id: current_user.id)
+                            .joins('left join tasks_users_extensions as ext on ext.task_id = tasks.id')
+    else
+      self.collection = Task.joins('left join tasks_users on tasks_users.task_id = tasks.id')
+                            .where("tasks_users.user_id = :user_id", user_id: current_user.id)
+                            .joins('left join tasks_users_extensions as ext on ext.task_id = tasks.id')
+    end
 
     respond_with_collection
   end

@@ -21,7 +21,10 @@ en:
     please_accept_the_terms: Please accept the terms
   tasks:
     tasks: Tasks
-    your_tasks: Your tasks
+    dropdown:
+      all: All Your Tasks
+      authored: Tasks You Made
+      assigned: Tasks to Do
     tasks_filters:
       open: Open
       closed: Closed

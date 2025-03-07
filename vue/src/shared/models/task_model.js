@@ -24,4 +24,6 @@ export default class TaskModel extends BaseModel {
       return this.remote.postMember(this.id, 'mark_as_hidden');
     }
   }
+
+
 };

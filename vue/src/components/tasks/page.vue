@@ -7,7 +7,7 @@ import EventBus           from '@/shared/services/event_bus';
 import AbilityService     from '@/shared/services/ability_service';
 import confirm_modal from "@/components/common/confirm_modal.vue";
 
-import {groupBy} from 'lodash-es';
+import {filter, groupBy, sortBy, uniq} from 'lodash-es';
 
 export default {
   data() {
@@ -26,24 +26,30 @@ export default {
   },
 
   mounted() {
-    Records.tasks.collection.data = [];
-    Records.tasks.remote.fetch('/').then(data => {
-
-      this.tasks = Records.tasks.all().filter(t => t.record() != null);
-
-      this.tasks.forEach(t => {
-        const recordKey = t.recordType + t.recordId;
-        if ((this.records[recordKey] == null)) {
-          this.records[recordKey] = t.record();
-        }
-      });
-
-    }).finally(()=> {
-      this.loading = false;
-    });
+    this.refresh();
   },
 
   methods: {
+    refresh() {
+      this.loading = true
+
+      Records.tasks.remote.fetch({params: this.$route.query, path: '/'}).then(data => {
+        const fetchedIds = data.tasks.map(t => t.id);
+        const taskModelsForPath = Records.tasks.collection.chain().find({id: {$in: fetchedIds}}).data()
+        this.tasks = taskModelsForPath.filter(t => t.record() != null );
+
+        this.tasks.forEach(t => {
+          const recordKey = t.recordType + t.recordId;
+          if ((this.records[recordKey] == null)) {
+            this.records[recordKey] = t.record();
+          }
+        });
+
+      }).finally(()=> {
+        this.loading = false;
+      });
+    },
+
     taskUrlFor(record) {
       if (record.isA('discussion')) {
         return this.urlFor(record)+'/0';
@@ -84,11 +90,30 @@ export default {
 
     setFilter(tabId) { this.activeFilter = tabId; },
 
+    routeQuery(o) {
+      this.$router.replace(this.mergeQuery(o));
+    },
+
+    filterName(filter) {
+      switch (filter) {
+        case 'authored': return 'tasks.dropdown.authored';
+        case 'all': return 'tasks.dropdown.all';
+        default:
+          return 'tasks.dropdown.assigned';
+      }
+    },
+
   },
 
   computed: {
     filteredTasks() {
       return this.tasks.filter(this.filterTabs[this.activeFilter].filter);
+    }
+  },
+
+  watch: {
+    '$route.params'(){
+      this.refresh();
     }
   }
 
@@ -103,7 +128,19 @@ v-main
 
     v-container()
       v-row(:align="'center'")
-        h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="'tasks.your_tasks'")
+        v-menu
+          template(v-slot:activator="{ on, attrs }")
+            v-btn.text-none.mr-2(v-on="on" v-bind="attrs" text)
+              h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}" v-t="filterName($route.query.t)")
+              common-icon(name="mdi-menu-down")
+          v-list
+            v-list-item(@click="routeQuery({t: 'assigned'})")
+              v-list-item-title(v-t="'tasks.dropdown.assigned'")
+            v-list-item(@click="routeQuery({t: 'authored'})")
+              v-list-item-title(v-t="'tasks.dropdown.authored'")
+            v-list-item(@click="routeQuery({t: 'all'})")
+              v-list-item-title(v-t="'tasks.dropdown.all'")
+
         v-spacer
         v-col(:align="'right'")
           v-chip.mb-2(outlined @click="dialog = true")
