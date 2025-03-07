@@ -106,4 +106,29 @@ describe TaskService do
     last_email = ActionMailer::Base.deliveries.last
     expect(last_email.to).to include member.email
   end
+
+  describe 'extension data' do
+    let(:task) { Task.create(author_id: member.id, uid: 123, name: 'task 1', done: false) }
+
+    before(:each) do
+      TaskService.update_hidden(task, member, false)
+    end
+
+    it 'creates extended task data' do
+      expect(TasksUsersExtension.count).to eq 1
+    end
+
+    it 'updates extended task data' do
+      expect(TasksUsersExtension.first.hidden).to eq false
+      TaskService.update_hidden(task, member, true)
+      expect(TasksUsersExtension.first.hidden).to eq true
+    end
+
+    it 'destroys extended task data along with task' do
+      expect(TasksUsersExtension.count).to eq 1
+      task.destroy
+      expect(TasksUsersExtension.count).to eq 0
+    end
+  end
+
 end
