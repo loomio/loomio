@@ -95,7 +95,8 @@
     "sass": "latest",
     "unplugin-vue-components": "latest",
     "vite": "^5.4.14",
-    "vite-plugin-env-compatible": "latest"
+    "vite-plugin-env-compatible": "latest",
+    "vite-plugin-pwa": "latest"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "latest"

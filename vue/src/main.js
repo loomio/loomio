@@ -6,7 +6,6 @@ import i18n from '@/i18n';
 import app from '@/app.vue';
 import markedDirective from '@/marked_directive';
 import '@/observe_visibility';
-import './removeServiceWorker';
 import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/browser';
 import WatchRecords from '@/mixins/watch_records';
@@ -15,6 +14,7 @@ import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 import Vue2TouchEvents from 'vue2-touch-events';
 import PlausibleService from '@/shared/services/plausible_service';
+import * as dummy from '@/shared/services/dev_service_worker';
 
 
 Vue.use(Vue2TouchEvents);
@@ -27,6 +27,13 @@ Vue.config.productionTip = false;
 
 import boot from '@/shared/helpers/boot';
 import Session from '@/shared/services/session';
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register(
+      import.meta.env.MODE === 'production' ? '/sw.js' : '/src/shared/services/dev_service_worker.js',
+      { type: import.meta.env.MODE === 'production' ? 'classic' : 'module' }
+  )
+}
 
 boot(function(data) {
   Session.apply(data);
