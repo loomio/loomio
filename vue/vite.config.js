@@ -93,7 +93,10 @@ export default defineConfig({
     ViteYaml(),
     VitePWA({
       registerType: "autoUpdate",
-      injectRegister: null,
+      injectRegister: false,
+      srcDir: path.resolve(__dirname, 'src'),
+      filename: 'serviceWorker.js',
+      strategies: 'injectManifest',
       manifest: {
         // caches the assets/icons mentioned (assets/* includes all the assets present in your src/ directory)
         includeAssets: ["favicon.ico", "apple-touch-icon.png", "assets/*"],
@@ -128,7 +131,7 @@ export default defineConfig({
 
             options: {
 
-              cacheName: 'static-resources',
+              cacheName: 'static-webpushes',
 
               expiration: {
 

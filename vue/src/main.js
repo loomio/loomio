@@ -28,13 +28,6 @@ Vue.config.productionTip = false;
 import boot from '@/shared/helpers/boot';
 import Session from '@/shared/services/session';
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register(
-      import.meta.env.MODE === 'production' ? '/sw.js' : '/src/shared/services/dev_service_worker.js',
-      { type: import.meta.env.MODE === 'production' ? 'classic' : 'module' }
-  )
-}
-
 boot(function(data) {
   Session.apply(data);
 

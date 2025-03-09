@@ -69,6 +69,7 @@
     "md5": "2.3.0",
     "plausible-tracker": "^0.3.9",
     "pretty-bytes": "^6.1.1",
+    "register-service-worker": "^1.7.2",
     "socket.io-client": "^4.7.5",
     "svg.js": "^2.7.1",
     "textarea-caret": "^3.1.0",
@@ -84,6 +85,10 @@
     "vue-slicksort": "^1.2.0",
     "vue2-touch-events": "^3.2.3",
     "vuetify": "2.7.2",
+    "workbox-cacheable-response": "^7.3.0",
+    "workbox-expiration": "^7.3.0",
+    "workbox-routing": "^7.3.0",
+    "workbox-strategies": "^7.3.0",
     "y-indexeddb": "^9.0.12"
   },
   "devDependencies": {
