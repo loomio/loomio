@@ -1,6 +1,7 @@
 class Events::MembershipRequestApproved < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
+  include Events::Notify::WebPush
 
   def self.publish!(membership, approver)
     super membership, user: approver

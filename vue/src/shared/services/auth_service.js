@@ -5,6 +5,7 @@ import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
 import i18n from '@/i18n';
 import {head, pickBy, camelCase, mapKeys, pick, keys} from 'lodash-es';
+import registerServiceWorker from "@/registerServiceWorker";
 
 export default new class AuthService {
   emailStatus(user) {
@@ -27,6 +28,9 @@ export default new class AuthService {
   authSuccess(data) {
     const user = Session.apply(data);
     EventBus.$emit('closeModal');
+
+    registerServiceWorker();
+
     return Flash.success('auth_form.signed_in');
   }
 

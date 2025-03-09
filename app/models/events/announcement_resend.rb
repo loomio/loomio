@@ -1,5 +1,6 @@
 class Events::AnnouncementResend < Event
   include Events::Notify::ByEmail
+  include Events::Notify::WebPush
 
   def self.publish!(event)
     super event.eventable,

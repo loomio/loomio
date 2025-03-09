@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_16_031145) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_08_143733) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -1060,6 +1060,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_16_031145) do
     t.index ["group_id"], name: "index_webhooks_on_group_id"
   end
 
+  create_table "webpush_certs", force: :cascade do |t|
+    t.string "public_key", null: false
+    t.string "private_key", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "webpush_subscriptions", force: :cascade do |t|
+    t.string "endpoint", null: false
+    t.string "p256dh", null: false
+    t.string "auth", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_webpush_subscriptions_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "webpush_subscriptions", "users"
 end
