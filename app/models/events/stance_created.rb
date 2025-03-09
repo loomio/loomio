@@ -1,6 +1,7 @@
 class Events::StanceCreated < Event
   include Events::LiveUpdate
   include Events::Notify::ByEmail
+  include Events::Notify::WebPush
   include Events::Notify::InApp
   include Events::Notify::Mentions
   include Events::Notify::Chatbots

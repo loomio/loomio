@@ -2,6 +2,7 @@ class Events::OutcomeUpdated < Event
   include Events::Notify::Mentions
   include Events::Notify::InApp
   include Events::Notify::ByEmail
+  include Events::Notify::WebPush
   include Events::Notify::Chatbots
   include Events::LiveUpdate
 
