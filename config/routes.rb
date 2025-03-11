@@ -369,8 +369,7 @@ Rails.application.routes.draw do
   post '/bug_tunnel' => 'application#bug_tunnel'
 
   get '/robots'     => 'robots#show'
-  get '/manifest.json'   => 'service_worker#manifest', format: :json
-  get "/service-worker.js" => "service_worker#service_worker"
+  get '/manifest.json'   => 'manifest#show', format: :json
   get '/help/api'   => 'help#api'
   get '/help/api2'   => 'help#api2'
   get '/help/api3'   => 'help#api3'

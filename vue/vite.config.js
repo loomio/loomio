@@ -55,6 +55,12 @@ export default defineConfig({
         target: 'http://localhost:3000',
         changeOrigin: true,
       },
+
+      '/manifest.json':
+      {
+       target:  'http://localhost:3000',
+        changeOrigin: true
+      }
     },
   },
   resolve: {
@@ -91,82 +97,6 @@ export default defineConfig({
     // viteCommonjs(),
     envCompatible(),
     ViteYaml(),
-    VitePWA({
-      registerType: "autoUpdate",
-      injectRegister: false,
-      srcDir: path.resolve(__dirname, 'src'),
-      filename: 'serviceWorker.js',
-      strategies: 'injectManifest',
-      manifest: {
-        // caches the assets/icons mentioned (assets/* includes all the assets present in your src/ directory)
-        includeAssets: ["favicon.ico", "apple-touch-icon.png", "assets/*"],
-        name: 'Loomio',
-        short_name: 'Loomio',
-        start_url: '/',
-        background_color: '#ffffff',
-        theme_color: '#000000',
-        icons: [
-          {
-            src: 'brand/icon_gold_256h.png',
-            sizes: '256x256',
-            type: 'image/png'
-          }
-        ]
-      },
-      workbox: {
-        // defining cached files formats
-        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
-        globIgnores: ["manifest.webmanifest"],
-        runtimeCaching: [
-          {
-
-            urlPattern: ({
-                           request }) =>
-                request.destination === 'style' ||
-                request.destination === 'script' ||
-
-                request.destination === 'worker',
-
-            handler: 'StaleWhileRevalidate',
-
-            options: {
-
-              cacheName: 'static-webpushes',
-
-              expiration: {
-
-                maxEntries: 50,
-
-                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
-              },
-            },
-          },
-          {
-
-            urlPattern: ({
-                           request }) =>
-                request.destination === 'image',
-
-            handler: 'CacheFirst',
-
-            options: {
-
-              cacheName: 'images',
-
-              expiration: {
-
-                maxEntries: 100,
-
-                maxAgeSeconds: 60 * 24 * 60 * 60, // 60 days
-              },
-            },
-          },
-        ],
-      },
-      devOptions: {
-        enabled: true
-      }
-    }),
   ],
   build: {
     sourcemap: true,

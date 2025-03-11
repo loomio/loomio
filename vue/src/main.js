@@ -14,7 +14,6 @@ import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 import Vue2TouchEvents from 'vue2-touch-events';
 import PlausibleService from '@/shared/services/plausible_service';
-import * as dummy from '@/shared/services/dev_service_worker';
 
 
 Vue.use(Vue2TouchEvents);
