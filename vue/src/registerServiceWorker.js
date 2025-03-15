@@ -44,7 +44,7 @@ export default function registerServiceWorker() {
           });
         });
       });
-    },
+    },/*
     cached() {
       console.log('Content has been cached for offline use.')
     },
@@ -59,7 +59,7 @@ export default function registerServiceWorker() {
     },
     error(error) {
       console.error('Error during service worker registration:', error)
-    }
+    }*/
   })
 }
 

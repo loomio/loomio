@@ -21,14 +21,6 @@ class WebpushService
       private_key:  Rails.application.config.vapid_key[:private_key]
     }
 
-    thread_kinds = %w[
-      new_comment
-      new_discussion
-      discussion_edited
-      discussion_announced
-    ]
-
-    subject_prefix = group_name_prefix(@event)
     subject_params = {
       title: @event.eventable.title,
       group_name: @event.eventable.title, # cope for old translations
@@ -48,13 +40,15 @@ class WebpushService
     else
       @event.kind
     end
-
+    
     I18n.with_locale(WebpushService.first_supported_locale(@recipient.locale)) do
       message = {
-        title: thread_kinds.include?(@event.kind) ? subject_prefix.to_s + subject_params[:title].to_s
-                 : subject_prefix.to_s + I18n.t("notifications.with_title.#{@event_key}", **subject_params).to_s,
+        title: I18n.t("notifications.with_title.#{@event_key}", **subject_params).to_s,
+        body: Nokogiri::HTML(@event.eventable.body).text.squeeze(" \n"),
         openTo: @notification.url,
-        timestamp: Time.now.to_i
+        openToVerb: I18n.t("common.view"),
+        timestamp: Time.now.to_i,
+        iconUrl: AppConfig.theme[:icon_src],
       }
 
       begin

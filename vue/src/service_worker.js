@@ -46,24 +46,25 @@ registerRoute(
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', () => self.clients.claim());
 
-// Receive push notifications
+// On push notification from server
 self.addEventListener('push', function (e) {
     if (!(
         self.Notification &&
         self.Notification.permission === 'granted'
     )) {
-        //notifications aren't supported or permission not granted!
-        console.log('nononono')
+        console.log('Push notification unsupported or denied.')
         return;
     }
 
     if (e.data) {
         const message = e.data.json();
         const options = {
-            body: message.title,
+            title: message.title,
+            body: message.body,
+            icon: message.iconUrl,
             timestamp: message.timestamp,
             actions: [{
-                title: 'View',
+                title: message.openToVerb,
                 action: message.openTo
             }]
         }
@@ -76,6 +77,6 @@ self.addEventListener('push', function (e) {
 self.addEventListener('notificationclick', function(event) {
     event.notification.close();
     if(event.action) {
-        clients.openWindow(event.action); // Open link from action
+        clients.openWindow('/../' + event.action); // Open link from action
     }
 }, false);
