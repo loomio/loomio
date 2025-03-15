@@ -7,6 +7,7 @@ import ViteYaml from '@modyfi/vite-plugin-yaml';
 import { VuetifyResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import { splitVendorChunkPlugin } from 'vite'
+import { VitePWA } from 'vite-plugin-pwa'
 
 import LoomioComponents from './src/components.js';
 
@@ -54,6 +55,12 @@ export default defineConfig({
         target: 'http://localhost:3000',
         changeOrigin: true,
       },
+
+      '/manifest.json':
+      {
+       target:  'http://localhost:3000',
+        changeOrigin: true
+      }
     },
   },
   resolve: {

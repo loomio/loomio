@@ -1,28 +1,38 @@
 class ManifestController < ApplicationController
   respond_to :json
 
-  ICON_SIZES = %w(32 48 128 144 192 512).freeze
-
   def show
+    pwa_base_url = Rails.env.development? ? "http://localhost:8080" : "https://#{AppConfig.theme[:canonical_host]}"
+
     render json: {
       name:             AppConfig.theme[:site_name],
       short_name:       AppConfig.theme[:site_name],
+      description:      AppConfig.theme[:site_description],
       display:          'standalone',
       orientation:      'portrait',
-      start_url:        '/dashboard',
+      start_url:        ENV.fetch('FEATURES_DEFAULT_PATH', dashboard_path),
+      scope:            pwa_base_url,
+      id:               pwa_base_url,
       background_color: AppConfig.theme[:primary_color],
       theme_color:      AppConfig.theme[:text_on_primary_color],
-      icons:            ICON_SIZES.map { |size| icon_for(size) }
-    }
-  end
-
-  private
-
-  def icon_for(size)
-    {
-      src: [root_url.chomp('/'), AppConfig.theme[:"icon#{size}_src"]].join(''),
-      sizes: "#{size}x#{size}",
-      type: "image/png"
+      icons:            [{ src: AppConfig.theme[:icon_src], sizes: "150x150"}],
+      shortcuts: [
+        { name: 'Dashboard', url: '/dashboard' },
+        { name: 'Tasks', url: '/tasks' }
+      ],
+      #these 'screenshots' are used to force a more descriptive install prompt on chrome
+      screenshots: [
+        {
+        src: root_url.chomp('/') + '/brand/banner_gold_400h.png',
+        sizes: '858x400',
+        form_factor: 'wide'
+        },
+        {
+          src: root_url.chomp('/') + '/brand/banner_gold_400h.png',
+          sizes: '858x400',
+          form_factor: 'narrow'
+        }
+      ]
     }
   end
 end

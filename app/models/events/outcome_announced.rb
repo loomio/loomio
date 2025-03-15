@@ -1,6 +1,7 @@
 class Events::OutcomeAnnounced < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
+  include Events::Notify::WebPush
 
   def self.publish!(outcome, actor, user_ids, audience = nil)
     super outcome,

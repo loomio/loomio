@@ -1,6 +1,7 @@
 class Events::UserMentioned < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
+  include Events::Notify::WebPush
 
   def self.publish!(model, actor, users)
     super model,

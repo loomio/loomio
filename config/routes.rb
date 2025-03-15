@@ -62,6 +62,10 @@ Rails.application.routes.draw do
     end
 
     namespace :v1 do
+      get 'webpush' => 'webpushes#index'
+      post 'webpush' => 'webpushes#register_subscription'
+
+
       resources :reports, only: [:index]
       resources :trials, only: [:create]
       resources :attachments, only: [:index, :destroy]
@@ -365,7 +369,7 @@ Rails.application.routes.draw do
   post '/bug_tunnel' => 'application#bug_tunnel'
 
   get '/robots'     => 'robots#show'
-  get '/manifest'   => 'manifest#show', format: :json
+  get '/manifest.json'   => 'manifest#show', format: :json
   get '/help/api'   => 'help#api'
   get '/help/api2'   => 'help#api2'
   get '/help/api3'   => 'help#api3'

@@ -1,0 +1,2 @@
+class WebpushCert < ApplicationRecord
+end

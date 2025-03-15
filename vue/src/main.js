@@ -6,7 +6,6 @@ import i18n from '@/i18n';
 import app from '@/app.vue';
 import markedDirective from '@/marked_directive';
 import '@/observe_visibility';
-import './removeServiceWorker';
 import { pick } from 'lodash-es';
 import * as Sentry from '@sentry/browser';
 import WatchRecords from '@/mixins/watch_records';

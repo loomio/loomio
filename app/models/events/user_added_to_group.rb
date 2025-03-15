@@ -1,6 +1,7 @@
 class Events::UserAddedToGroup < Event
   include Events::Notify::InApp
   include Events::Notify::ByEmail
+  include Events::Notify::WebPush
 
   def self.publish!(membership, inviter)
     super membership, user: inviter
