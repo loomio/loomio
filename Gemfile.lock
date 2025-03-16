@@ -513,7 +513,7 @@ GEM
     retriable (3.1.2)
     reverse_markdown (3.0.0)
       nokogiri
-    rexml (3.4.0)
+    rexml (3.4.1)
     rspec-activemodel-mocks (1.2.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -547,7 +547,7 @@ GEM
       event_stream_parser (>= 0.3.0, < 2.0.0)
       faraday (>= 1)
       faraday-multipart (>= 1)
-    ruby-saml (1.17.0)
+    ruby-saml (1.18.0)
       nokogiri (>= 1.13.10)
       rexml
     ruby-vips (2.2.3)
