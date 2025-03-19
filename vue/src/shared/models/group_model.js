@@ -189,11 +189,11 @@ export default class GroupModel extends BaseModel {
   }
 
   membersInclude(user) {
-    return this.membershipFor(user) || false;
+    return !!this.membershipFor(user) || false;
   }
 
   adminsInclude(user) {
-    return this.recordStore.memberships.find({groupId: this.id, userId: user.id, admin: true})[0] || false;
+    return !!this.recordStore.memberships.find({groupId: this.id, userId: user.id, admin: true})[0] || false;
   }
 
   adminMemberships() {
