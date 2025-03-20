@@ -227,6 +227,7 @@ en:
     volume: 'Volume'
     notification_volume: 'Notification Volume'
     group: 'Group'
+    thread: 'Thread'
     groups: 'Groups'
     organization: "Organization"
     organizations: "Organizations"
@@ -427,6 +428,19 @@ en:
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
 
   change_volume_form:
+    change_your_email_settings: Change your email settings
+    when_would_you_like_to_be_emailed_thread: When would you like to be emailed about this thread?
+    when_would_you_like_to_be_emailed_group: When would you like to be emailed about this group?
+    changes_all_threads_in_group: This changes the setting for all threads in the group.
+    what_do_the_options_mean: What do the options mean?
+    loud_desc: Every time someone participates
+    normal_desc: When someone notifies me
+    quiet_desc: Never
+    quiet_explained: You will not be emailed, even when someone tries to notify you. You may miss important announcements or decisions. This may be suitable if a thread does not concern you, but is not recommended for the group setting unless you have other ways of staying up to date.
+    normal_explained: When someone enters your name in the "Notify" field of a thread or a poll, or they @mention the group.
+    normal_excludes_mentioning_html: There is a separate setting for when someone @mentions you (e.g. when a replying to you in a comment). <a href="%{url}">Click here to edit settings for @mentions</a>
+    loud_explained:  You will be emailed every time there is a new comment, someone votes, or starts a poll or thread.
+
     explain_scope:
       thread: This changes when you'll be notified about this thread
       group: This changes when you'll be notified about all threads in the group
@@ -1613,7 +1627,7 @@ en:
     announcement_label: Announcements
     announcement_description: "You will receive an email about all content that has been announced by people in your groups"
     mentioned_label: Mentions & Replies
-    mentioned_description: "When someone @mentions you in a comment or replies to you, you'll get a notification email"
+    mentioned_description: "When someone @mentions you in a comment, you'll get a notification email"
     update_settings: Save changes
     specific_groups: Settings for specific groups
     default_settings:

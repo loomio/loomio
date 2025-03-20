@@ -374,6 +374,13 @@ en:
     via_loomio: "%{name} (via %{site_name})"
 
   event_mailer:
+    notification_reason:
+      group_subscribed: "You received this because you are subscribed to all activity in the group."
+      thread_subscribed: "You received this because you are subscribed to the thread."
+      group_mentioned: "You received this because the group was @mentioned."
+      user_mentioned: "You received this because you were @mentioned."
+      notified: "You received this because the author notified you."
+
     received_email:
       explaination_html: |
         <p>You are receiving this email because you are an admin for the Loomio group: %{group}.</p>
@@ -504,13 +511,12 @@ en:
     unfollowed_discussion: You have turned off emails for the thread.
 
   discussion_mailer:
-    reply_or_view_online_html: "Reply to this email directly or <a href='%{url}'>view it on %{hostname}</a>."
+    reply_or_view_online_html: "Reply to this email or <a href='%{url}'>view it on %{hostname}</a>."
     turn_off_notifications_html: "<a href='%{url}'>Turn off emails</a> for this discussion."
     change_email_preferences_html: "Change your <a href='%{email_preferences_url}'>email preferences</a>."
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Unsubscribe</a> from further announcements in this thread."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Unsubscribe</a> from comments in this thread."
-    unsubscribe_from_comment_replied_to_html: "This is a reply notification."
-    unsubscribe_from_user_mentioned_html: "This is a mention notification."
+    unsubscribe_from_user_mentioned_html: "You received this email because you were @mentioned."
     discussion_edited:
       inline: "%{actor} edited the thread context"
     discussion_closed:

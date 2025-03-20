@@ -17,7 +17,7 @@ module Dev::NintiesMoviesHelper
                               date_time_pref: 'day_abbr',
                               avatar_kind: 'uploaded',
                               email_verified: true)
-    @patrick.uploaded_avatar.attach io: File.new("#{Rails.root}/spec/fixtures/images/patrick.png"), filename: 'patrick.jpg'
+    @patrick.uploaded_avatar.attach io: File.new(Rails.root.join("spec/fixtures/images/patrick.png")), filename: 'patrick.png'
     @patrick.update(avatar_kind: :uploaded)
     @patrick
   end
