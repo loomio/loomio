@@ -125,8 +125,8 @@ GEM
     benchmark (0.4.0)
     bigdecimal (3.1.9)
     bindex (0.8.1)
-    blazer (3.2.0)
-      activerecord (>= 6.1)
+    blazer (3.2.1)
+      activerecord (>= 7)
       chartkick (>= 5)
       csv
       railties (>= 7)
@@ -148,7 +148,7 @@ GEM
     crass (1.0.6)
     css_parser (1.16.0)
       addressable
-    csv (3.3.2)
+    csv (3.3.3)
     custom_counter_cache (0.2.8)
       rails (>= 4.0)
     database_cleaner-active_record (2.2.0)
@@ -384,7 +384,7 @@ GEM
       benchmark
       logger
     mini_mime (1.1.5)
-    minitest (5.25.4)
+    minitest (5.25.5)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
