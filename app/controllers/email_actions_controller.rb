@@ -27,7 +27,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   def unfollow_discussion
-    discussion_reader = DiscussionReader.for(discussion: discussion, user: user)
+    discussion_reader = DiscussionReader.for(discussion: discussion, user: current_user)
 
     if %w[normal quiet].include?(params[:new_volume])
       discussion_reader.set_volume!(params[:new_volume].to_sym)
@@ -46,23 +46,23 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
       'mark_as_read_simple_params',
       discussion.id,
       event.sequence_id || [],
-      user.id
+      current_user.id
     )
-    event.notifications.where(user: user).update_all(viewed: true)
+    event.notifications.where(user: current_user).update_all(viewed: true)
     respond_with_pixel
   rescue ActiveRecord::RecordNotFound
     respond_with_pixel
   end
 
   def mark_notification_as_read
-    Notification.find_by!(id: params[:id], user_id: user.id).update(viewed: true)
+    Notification.find_by!(id: params[:id], user_id: current_user.id).update(viewed: true)
     respond_with_pixel
   rescue ActiveRecord::RecordNotFound
     respond_with_pixel
   end
 
   def mark_summary_email_as_read
-    GenericWorker.perform_async('DiscussionService', 'mark_summary_email_as_read', user.id, params[:time_start].to_i,
+    GenericWorker.perform_async('DiscussionService', 'mark_summary_email_as_read', current_user.id, params[:time_start].to_i,
                                 params[:time_finish].to_i)
 
     respond_to do |format|
