@@ -89,7 +89,7 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   end
 
   def discussion
-    @discussion ||= user.discussions.find(params[:discussion_id])
+    @discussion ||= current_user.discussions.find(params[:discussion_id])
   end
 
   def event
