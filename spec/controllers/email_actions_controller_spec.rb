@@ -16,9 +16,8 @@ describe EmailActionsController do
       @membership.set_volume!(:loud)
       @discussion_reader.set_volume! :loud
 
-      get :set_group_volume, params: { group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
-      expect(response.status).to eq 200
-      expect(response.body).to include "Unsubscribed from #{@group.full_name}"
+      put :set_group_volume, params: { group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
+      expect(response.status).to eq 302
 
       @membership.reload
       @discussion_reader.reload
@@ -31,9 +30,8 @@ describe EmailActionsController do
       @membership.set_volume!(:loud)
       @discussion_reader.set_volume! :loud
 
-      get :set_group_volume, params: { group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, value: :quiet }
-      expect(response.status).to eq 200
-      expect(response.body).to include "Silenced notifications from #{@group.full_name}"
+      put :set_group_volume, params: { group_id: @group.id, unsubscribe_token: @user.unsubscribe_token, value: :quiet }
+      expect(response.status).to eq 302
 
       @membership.reload
       @discussion_reader.reload
@@ -46,9 +44,8 @@ describe EmailActionsController do
       @membership.set_volume! :normal
       @discussion_reader.set_volume! :loud
 
-      get :set_discussion_volume, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
-      expect(response.status).to eq 200
-      expect(response.body).to include "Unsubscribed from #{@discussion.title}"
+      put :set_discussion_volume, params: { discussion_id: @discussion.id, unsubscribe_token: @user.unsubscribe_token, value: :normal }
+      expect(response.status).to eq 302
 
       @membership.reload
       @discussion_reader.reload
