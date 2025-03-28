@@ -31,7 +31,7 @@ v-card.suggestion-list(
 )
   v-list(v-if="mentions.length" density="compact")
     v-list-item(
-      v-for='(user, index) in mentions'
+      v-for='(row, index) in mentions'
       :key='row.id'
       :class="{ 'v-list-item--active': navigatedUserIndex === index }"
       @click='$emit("select-row", row)'

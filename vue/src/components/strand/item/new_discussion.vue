@@ -78,9 +78,9 @@ export default {
     openSeenByModal() {
       openModal({
         component: 'SeenByModal',
+        persistent: false,
         props: {
           discussion: this.discussion,
-          persistent: false
         }
       });
     }
