@@ -168,6 +168,22 @@ module Dev::Scenarios::Discussion
     last_email
   end
 
+  def setup_discussion_mailer_new_comment_thread_subscribed_email
+      @group = Group.create!(name: 'Dirty Dancing Shoes')
+      @group.add_admin!(patrick).set_volume!(:normal)
+      @group.add_member! jennifer
+
+      @discussion = Discussion.new(title: 'What star sign are you?',
+                                   group: @group,
+                                   description: "Wow, what a __great__ day.",
+                                   author: jennifer)
+      DiscussionService.create(discussion: @discussion, actor: @discussion.author)
+      DiscussionReader.for(discussion: @discussion, user: @patrick).set_volume!(:loud)
+      @comment = Comment.new(author: jennifer, body: "hello _patrick_.", discussion: @discussion)
+      CommentService.create(comment: @comment, actor: jennifer)
+      last_email
+    end
+
   def setup_discussion_mailer_comment_replied_to_email
     @group = Group.create!(name: 'Dirty Dancing Shoes')
     @group.add_admin!(patrick)

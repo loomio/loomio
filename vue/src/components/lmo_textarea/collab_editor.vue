@@ -258,7 +258,7 @@ export default
     },
 
     resetDraft(content) {
-      this.editor.commands.setContent(content); 
+      this.editor.commands.setContent(content);
     },
 
     openRecordVideoModal() {
@@ -533,10 +533,10 @@ div
   suggestion-list(
     :query="query"
     :loading="fetchingMentions"
-    :mentionable="mentionable"
+    :mentions="mentions"
     :positionStyles="suggestionListStyles"
     :navigatedUserIndex="navigatedUserIndex"
-    @select-user="selectUser")
+    @select-row="selectRow")
   files-list(:files="files", v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")

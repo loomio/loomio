@@ -16,15 +16,15 @@ module Null::Group
   end
 
   def full_name
-    I18n.t('discussion.direct_thread')
+    I18n.t('discussion.invite_only')
   end
 
   def save
     true
   end
-  
+
   def name
-    I18n.t('discussion.direct_thread')
+    I18n.t('discussion.invite_only')
   end
 
   def nil_methods
@@ -127,7 +127,7 @@ module Null::Group
   def discussion_templates=(arg)
     nil
   end
-  
+
   def group_privacy
     'private_only'
   end
@@ -135,7 +135,7 @@ module Null::Group
   def parent_or_self
     self
   end
-  
+
   def self_or_parent_logo_url(size)
     nil
   end

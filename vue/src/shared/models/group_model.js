@@ -1,5 +1,4 @@
 import BaseModel    from '@/shared/record_store/base_model';
-import AppConfig    from '@/shared/services/app_config';
 import HasDocuments from '@/shared/mixins/has_documents';
 import HasTranslations  from '@/shared/mixins/has_translations';
 import Records from '@/shared/services/records';
@@ -190,11 +189,11 @@ export default class GroupModel extends BaseModel {
   }
 
   membersInclude(user) {
-    return this.membershipFor(user) || false;
+    return !!this.membershipFor(user) || false;
   }
 
   adminsInclude(user) {
-    return Records.memberships.find({groupId: this.id, userId: user.id, admin: true})[0] || false;
+    return !!Records.memberships.find({groupId: this.id, userId: user.id, admin: true})[0] || false;
   }
 
   adminMemberships() {

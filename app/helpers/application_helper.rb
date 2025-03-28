@@ -21,7 +21,11 @@ module ApplicationHelper
     @metadata ||= if should_have_metadata && current_user.can?(:show, resource)
       "Metadata::#{controller_name.singularize.camelize}Serializer".constantize.new(resource)
     else
-      {title: AppConfig.theme[:site_name], image_urls: []}
+      {
+        title: AppConfig.theme[:site_name],
+        description: AppConfig.theme[:description],
+        image_urls: []
+      }
     end.as_json
   end
 

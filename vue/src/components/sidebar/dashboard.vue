@@ -63,7 +63,7 @@ v-list.mb-0.pb-0(nav density="compact")
     to="/threads/direct"
   )
     v-list-item-title
-      span(v-t="'sidebar.direct_threads'")
+      span(v-t="'sidebar.invite_only_threads'")
       span(v-if="unreadDirectThreadsCount > 0")
         space
         span ({{unreadDirectThreadsCount}})

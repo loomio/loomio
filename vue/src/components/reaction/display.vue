@@ -2,15 +2,16 @@
 import Records from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import ReactionService from '@/shared/services/reaction_service';
-import {merge, capitalize, difference, keys, startsWith, each, compact} from 'lodash-es';
-import { colonToUnicode, stripColons, imgForEmoji, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis';
+import { merge, capitalize, difference, keys, startsWith, each, compact } from 'lodash-es';
+import { colonToUnicode, stripColons, srcForEmoji, emojiSupported } from '@/shared/helpers/emojis';
 import WatchRecords from '@/mixins/watch_records';
 
 export default {
   mixins: [WatchRecords],
-  
+
   props: {
     model: Object,
+    canEdit: Boolean,
     size: {
       type: String,
       default: 'default'
@@ -82,7 +83,8 @@ export default {
     srcForEmoji,
     stripColons,
     colonToUnicode,
-    removeMine(reaction) {
+    removeMine(reaction, canEdit) {
+      if (!canEdit) { return; }
       const mine = Records.reactions.find(merge({}, this.reactionParams, {
         userId:   Session.user().id,
         reaction
@@ -110,7 +112,7 @@ export default {
 <template lang="pug">
 .reactions-display.mr-2(v-if="reactionTypes.length")
   .reactions-display__emojis
-    .reaction.lmo-pointer(@click="removeMine(reaction)" v-for="reaction in reactionTypes" :key="reaction")
+    .reaction.lmo-pointer(@click="removeMine(reaction, canEdit)" v-for="reaction in reactionTypes" :key="reaction")
       v-tooltip(bottom)
         template(v-slot:activator="{ attrs }")
           .reactions-display__group(v-bind="attrs")

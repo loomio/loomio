@@ -3,8 +3,8 @@ class AuthenticateByUnsubscribeTokenController < ApplicationController
 
   private
 
-  def user
-    @restricted_user || current_user
+  def current_user
+    @restricted_user || super
   end
 
   def authenticate_user_by_unsubscribe_token_or_fallback
