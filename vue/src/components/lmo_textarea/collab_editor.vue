@@ -259,7 +259,7 @@ export default
       return this.editor.storage.characterCount.characters()
     },
     resetDraft(content) {
-      this.editor.commands.setContent(content); 
+      this.editor.commands.setContent(content);
     },
 
     openRecordVideoModal() {
@@ -523,7 +523,7 @@ div
       slot(name="actions")
 
   link-previews(:model="model", :remove="removeLinkPreview")
-  suggestion-list(:query="query", :loading="fetchingMentions", :mentionable="mentionable", :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex", @select-user="selectUser")
+  suggestion-list(:query="query", :loading="fetchingMentions", :mentions="mentions", :positionStyles="suggestionListStyles" :navigatedUserIndex="navigatedUserIndex", @select-row="selectRow")
   files-list(:files="files", v-on:removeFile="removeFile")
 
   form(style="display: block" @change="fileSelected")

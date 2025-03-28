@@ -88,6 +88,10 @@ def described_model_name
   described_class.model_name.singular
 end
 
+def emails_sent_to(address)
+  ActionMailer::Base.deliveries.filter { |email| Array(email.to).include?(address) }
+end
+
 def last_email
   ActionMailer::Base.deliveries.last
 end
