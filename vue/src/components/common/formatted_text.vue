@@ -119,9 +119,6 @@ img.emoji
   a
     text-decoration: underline
 
-  p
-    margin-bottom: 0.75rem
-
   p:empty:first-child
     height: 0rem
     margin-bottom: 0
@@ -294,7 +291,7 @@ img.emoji
     list-style: decimal
 
   li p
-    margin-bottom: 0
+    margin-bottom: 8px
 
   pre
     overflow-x: auto
