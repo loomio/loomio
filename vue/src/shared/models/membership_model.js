@@ -2,6 +2,7 @@ import BaseModel from '@/shared/record_store/base_model';
 import AppConfig from '@/shared/services/app_config';
 import compareAsc from 'date-fns/compareAsc';
 import {each, invokeMap} from 'lodash-es';
+import Records from '@/shared/services/records';
 
 export default class MembershipModel extends BaseModel {
   static singular = 'membership';
@@ -41,14 +42,14 @@ export default class MembershipModel extends BaseModel {
   saveVolume(volume, applyToAll) {
     if (applyToAll == null) { applyToAll = false; }
     this.processing = true;
-    return this.remote.patchMember(this.keyOrId(), 'set_volume', {
+    return Records.memberships.remote.patchMember(this.keyOrId(), 'set_volume', {
       volume,
       apply_to_all: applyToAll,
       unsubscribe_token: this.user().unsubscribeToken
     }
     ).then(() => {
       if (applyToAll) {
-        this.recordStore.discussions.collection.find({ groupId: { $in: this.group().organisationIds() } }).forEach(discussion => discussion.update({discussionReaderVolume: null}));
+        Records.discussions.collection.find({ groupId: { $in: this.group().organisationIds() } }).forEach(discussion => discussion.update({discussionReaderVolume: null}));
         return each(this.user().memberships(), membership => membership.update({volume}));
       } else {
         return each(this.group().discussions(), discussion => discussion.update({discussionReaderVolume: null}));
@@ -59,7 +60,7 @@ export default class MembershipModel extends BaseModel {
   }
 
   resend() {
-    return this.remote.postMember(this.keyOrId(), 'resend').then(() => {
+    return Records.memberships.remote.postMember(this.keyOrId(), 'resend').then(() => {
       return this.resent = true;
     });
   }
@@ -69,6 +70,6 @@ export default class MembershipModel extends BaseModel {
   }
 
   beforeRemove() {
-    return invokeMap(this.recordStore.events.find({'eventableType': 'membership', 'eventableId': this.id}), 'remove');
+    return invokeMap(Records.events.find({'eventableType': 'membership', 'eventableId': this.id}), 'remove');
   }
 };

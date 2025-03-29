@@ -56,14 +56,12 @@ export default {
 </script>
 
 <template lang="pug">
-v-card
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'announcement.' + modelKind + '_notification_history'")
-    v-spacer
+v-card(:title="$t('announcement.' + modelKind + '_notification_history')")
+  template(v-slot:append)
     dismiss-modal-button
-  v-layout(justify-center)
+  .d-flex.justify-center
     v-progress-circular(color="primary" v-if="historyLoading" indeterminate)
-  v-card-text(v-if="!historyLoading")
+  v-card-text.text-body-2(v-if="!historyLoading")
     p(v-if="historyError && historyData.length == 0" v-t="'announcement.history_error'")
     p(v-if="!historyError && historyData.length == 0" v-t="'announcement.no_notifications_sent'")
     p(v-if="historyData.length && allowViewed" v-t="'announcement.notification_history_explanation'")

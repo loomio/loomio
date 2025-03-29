@@ -6,9 +6,10 @@ module.exports = {
 
     page.loadPath('setup_group')
     page.click('.group-page-members-tab')
+    page.pause(1000);
     page.click('.members-panel .v-card .v-list .v-list-item:first-child .membership-dropdown')
     page.click('.membership-dropdown__remove')
-    page.expectText('.confirm-modal h1', 'Remove member')
+    page.expectText('.confirm-modal', 'Remove member')
     page.click('.confirm-modal__submit')
     page.expectFlash('Member removed')
     page.expectNoText('.members-panel', 'Emilio Estevez')

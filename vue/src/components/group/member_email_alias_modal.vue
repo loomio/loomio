@@ -66,7 +66,7 @@ v-card
       p(v-t="'email_to_group.not_available_to_trial_or_demo'")
   template(v-else)
     .pa-4(v-if="!selectedUser")
-      p.text--secondary(v-t="{path: 'email_to_group.who_is_the_owner_of_email', args:{email: receivedEmail.senderEmail}}")
+      p.text-medium-emphasis(v-t="{path: 'email_to_group.who_is_the_owner_of_email', args:{email: receivedEmail.senderEmail}}")
       v-text-field(
         v-model="q"
         autofocus
@@ -79,7 +79,7 @@ v-card
       v-list(v-for="user in users")
         v-list-item(@click="selectedUser = user") {{user.name}}
 
-    .pa-4.text--secondary(v-if="selectedUser")
+    .pa-4.text-medium-emphasis(v-if="selectedUser")
       p(v-t="{path: 'email_to_group.is_name_the_owner_of_email', args: {name: selectedUser.name, email: receivedEmail.senderEmail}}")
       p(v-t="{path: 'email_to_group.all_email_will_belong_to_name', args: {name: selectedUser.name, email: receivedEmail.senderEmail}}")
     v-card-actions(v-if="selectedUser")

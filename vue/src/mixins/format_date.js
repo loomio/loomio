@@ -4,6 +4,14 @@ import AppConfig from '@/shared/services/app_config';
 import Session from '@/shared/services/session';
 import {each} from 'lodash-es';
 
+var waitFor = function(selector, fn) {
+  if (document.querySelector(selector)) {
+    fn();
+  } else {
+    setTimeout(() => waitFor(selector, fn) , 200);
+  }
+};
+
 export default {
   computed: {
     $pollTypes() { return AppConfig.pollTypes; },
@@ -17,27 +25,28 @@ export default {
     },
 
     scrollTo(selector, callback) {
-      var waitFor = function(selector, fn) {
-        if (document.querySelector(selector)) {
-          fn();
-        } else {
-          // console.log 'waiting for ', selector
-          setTimeout(() => waitFor(selector, fn)
-          , 500);
-        }
-      };
+      this.elementScrollTo(window, selector, callback);
+    },
 
+    waitForThenScrollTo(selector) {
       waitFor(selector, () => {
-        this.$vuetify.goTo(selector, {duration: 0, offset: 32});
-        each([1,2,3], n => {
-          const headingSelector = selector+` h${n}[tabindex=\"-1\"]`;
-          if (document.querySelector(headingSelector)) {
-            document.querySelector(headingSelector).focus();
-            return false;
-          } else {
-            return true;
-          }
+        document.querySelector(selector).scrollIntoView({
+          behavior: 'instant'
         });
+      });
+    },
+
+    elementScrollTo(el, selector, callback) {
+      waitFor(selector, () => {
+        const offset = 128;
+        el.scrollTo({
+          behavior: 'smooth',
+          top:
+            document.querySelector(selector).getBoundingClientRect().top -
+            document.body.getBoundingClientRect().top -
+            offset,
+        })
+
         if (callback) { callback(); }
       });
     },

@@ -20,7 +20,7 @@ module.exports = {
     page.pause(500)
     page.click('.join-group-button', 500)
     page.ensureSidebar()
-    page.expectText('.sidebar__groups', 'Open Dirty Dancing Shoes')
+    page.expectText('.sidenav-left', 'Open Dirty Dancing Shoes')
   },
 
   'does_not_allow_mark_as_read_or_mute': (test) => {

@@ -102,15 +102,16 @@ GEM
     arbre (1.7.0)
       activesupport (>= 3.0.0)
       ruby2_keywords (>= 0.0.2)
-    ast (2.4.2)
-    aws-eventstream (1.3.1)
-    aws-partitions (1.1052.0)
-    aws-sdk-core (3.219.0)
+    ast (2.4.3)
+    aws-eventstream (1.3.2)
+    aws-partitions (1.1076.0)
+    aws-sdk-core (3.222.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       base64
       jmespath (~> 1, >= 1.6.1)
+      logger
     aws-sdk-kms (1.99.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sigv4 (~> 1.5)
@@ -146,7 +147,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    css_parser (1.16.0)
+    css_parser (1.21.1)
       addressable
     csv (3.3.3)
     custom_counter_cache (0.2.8)
@@ -158,7 +159,7 @@ GEM
     database_cleaner-redis (2.0.0)
       database_cleaner-core (~> 2.0.0)
       redis
-    date (3.3.3)
+    date (3.4.1)
     declarative (0.0.20)
     devise (4.9.4)
       bcrypt (~> 3.0)
@@ -172,22 +173,22 @@ GEM
     devise-pwned_password (0.1.12)
       devise (~> 4)
       pwned (~> 2.4)
-    diff-lcs (1.5.1)
+    diff-lcs (1.6.1)
     digest-crc (0.7.0)
       rake (>= 12.0.0, < 14.0.0)
     discard (1.4.0)
       activerecord (>= 4.2, < 9.0)
     discriminator (0.1.1)
       activerecord (>= 4.0.2)
-    dotenv (3.1.2)
-    dotenv-rails (3.1.2)
-      dotenv (= 3.1.2)
+    dotenv (3.1.7)
+    dotenv-rails (3.1.7)
+      dotenv (= 3.1.7)
       railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.1)
     event_stream_parser (1.0.0)
-    factory_bot (6.5.0)
-      activesupport (>= 5.0.0)
+    factory_bot (6.5.1)
+      activesupport (>= 6.1.0)
     factory_bot_rails (6.4.4)
       factory_bot (~> 6.5)
       railties (>= 5.0.0)
@@ -203,9 +204,14 @@ GEM
       net-http (>= 0.5.0)
     faraday-retry (2.2.1)
       faraday (~> 2.0)
+    ffi (1.17.1-aarch64-linux-gnu)
+    ffi (1.17.1-aarch64-linux-musl)
+    ffi (1.17.1-arm-linux-gnu)
+    ffi (1.17.1-arm-linux-musl)
     ffi (1.17.1-arm64-darwin)
     ffi (1.17.1-x86_64-darwin)
     ffi (1.17.1-x86_64-linux-gnu)
+    ffi (1.17.1-x86_64-linux-musl)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
@@ -233,14 +239,15 @@ GEM
       retriable (>= 2.0, < 4.a)
     google-apis-iamcredentials_v1 (0.22.0)
       google-apis-core (>= 0.15.0, < 2.a)
-    google-apis-storage_v1 (0.49.0)
+    google-apis-storage_v1 (0.50.0)
       google-apis-core (>= 0.15.0, < 2.a)
-    google-cloud-core (1.7.1)
+    google-cloud-core (1.8.0)
       google-cloud-env (>= 1.0, < 3.a)
       google-cloud-errors (~> 1.0)
-    google-cloud-env (2.2.1)
+    google-cloud-env (2.2.2)
+      base64 (~> 0.2)
       faraday (>= 1.0, < 3.a)
-    google-cloud-errors (1.4.0)
+    google-cloud-errors (1.5.0)
     google-cloud-location (0.10.0)
       gapic-common (>= 0.25.0, < 2.a)
       google-cloud-errors (~> 1.0)
@@ -257,7 +264,7 @@ GEM
       google-cloud-core (~> 1.6)
       google-cloud-translate-v2 (>= 0.0, < 2.a)
       google-cloud-translate-v3 (>= 0.11, < 2.a)
-    google-cloud-translate-v2 (1.0.1)
+    google-cloud-translate-v2 (1.1.0)
       faraday (>= 1.0, < 3.a)
       google-cloud-core (~> 1.6)
       googleapis-common-protos (>= 1.3.10, < 2.a)
@@ -273,22 +280,28 @@ GEM
       google-cloud-errors (~> 1.0)
       grpc-google-iam-v1 (~> 1.1)
     google-logging-utils (0.1.0)
-    google-protobuf (4.29.3-arm64-darwin)
+    google-protobuf (4.30.2)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.29.3-x86_64-darwin)
+    google-protobuf (4.30.2-aarch64-linux)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.29.3-x86_64-linux)
+    google-protobuf (4.30.2-arm64-darwin)
       bigdecimal
       rake (>= 13)
-    googleapis-common-protos (1.6.0)
+    google-protobuf (4.30.2-x86_64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.30.2-x86_64-linux)
+      bigdecimal
+      rake (>= 13)
+    googleapis-common-protos (1.7.0)
       google-protobuf (>= 3.18, < 5.a)
       googleapis-common-protos-types (~> 1.7)
       grpc (~> 1.41)
-    googleapis-common-protos-types (1.18.0)
+    googleapis-common-protos-types (1.19.0)
       google-protobuf (>= 3.18, < 5.a)
-    googleauth (1.13.1)
+    googleauth (1.14.0)
       faraday (>= 1.0, < 3.a)
       google-cloud-env (~> 2.2)
       google-logging-utils (~> 0.1)
@@ -297,14 +310,26 @@ GEM
       os (>= 0.9, < 2.0)
       signet (>= 0.16, < 2.a)
     gravtastic (3.2.6)
-    grpc (1.69.0)
+    grpc (1.71.0)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
-    grpc-google-iam-v1 (1.9.0)
+    grpc (1.71.0-aarch64-linux)
+      google-protobuf (>= 3.25, < 5.0)
+      googleapis-common-protos-types (~> 1.0)
+    grpc (1.71.0-arm64-darwin)
+      google-protobuf (>= 3.25, < 5.0)
+      googleapis-common-protos-types (~> 1.0)
+    grpc (1.71.0-x86_64-darwin)
+      google-protobuf (>= 3.25, < 5.0)
+      googleapis-common-protos-types (~> 1.0)
+    grpc (1.71.0-x86_64-linux)
+      google-protobuf (>= 3.25, < 5.0)
+      googleapis-common-protos-types (~> 1.0)
+    grpc-google-iam-v1 (1.10.0)
       google-protobuf (>= 3.18, < 5.a)
       googleapis-common-protos (~> 1.4)
       grpc (~> 1.41)
-    haml (6.2.0)
+    haml (6.3.0)
       temple (>= 0.8.2)
       thor
       tilt
@@ -324,7 +349,8 @@ GEM
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    httpclient (2.8.3)
+    httpclient (2.9.0)
+      mutex_m
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     i18n-timezones (1.4.8)
@@ -363,7 +389,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    logger (1.6.6)
+    logger (1.7.0)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -380,12 +406,12 @@ GEM
     marcel (1.0.4)
     maxminddb (0.1.22)
     method_source (1.1.0)
-    mini_magick (5.1.2)
+    mini_magick (5.2.0)
       benchmark
       logger
     mini_mime (1.1.5)
     minitest (5.25.5)
-    msgpack (1.7.2)
+    msgpack (1.8.0)
     multi_json (1.15.0)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
@@ -393,22 +419,32 @@ GEM
     mutex_m (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.3.7)
+    net-imap (0.5.6)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0)
+    net-smtp (0.5.1)
       net-protocol
     net_http_timeout_errors (1.0.0)
     nio4r (2.7.4)
+    nokogiri (1.18.6-aarch64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.6-aarch64-linux-musl)
+      racc (~> 1.4)
+    nokogiri (1.18.6-arm-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.6-arm-linux-musl)
+      racc (~> 1.4)
     nokogiri (1.18.6-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.6-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.6-x86_64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.6-x86_64-linux-musl)
       racc (~> 1.4)
     oga (3.4)
       ast
@@ -423,9 +459,9 @@ GEM
     pg_search (2.3.7)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
-    premailer (1.21.0)
+    premailer (1.27.0)
       addressable
-      css_parser (>= 1.12.0)
+      css_parser (>= 1.19.0)
       htmlentities (>= 4.0.0)
     premailer-rails (1.12.0)
       actionmailer (>= 3)
@@ -439,6 +475,8 @@ GEM
     rack (2.2.10)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
+    rack-session (1.0.2)
+      rack (< 3)
     rack-test (2.2.0)
       rack (>= 1.3)
     rack-timeout (0.7.0)
@@ -487,23 +525,23 @@ GEM
       i18n
     redcarpet (3.6.1)
     redis (4.8.1)
-    redis-actionpack (5.3.0)
-      actionpack (>= 5, < 8)
-      redis-rack (>= 2.1.0, < 3)
+    redis-actionpack (5.5.0)
+      actionpack (>= 5)
+      redis-rack (>= 2.1.0, < 4)
       redis-store (>= 1.1.0, < 2)
     redis-activesupport (5.3.0)
       activesupport (>= 3, < 8)
       redis-store (>= 1.3, < 2)
     redis-objects (1.7.0)
       redis
-    redis-rack (2.1.4)
-      rack (>= 2.0.8, < 3)
+    redis-rack (3.0.0)
+      rack-session (>= 0.2.0)
       redis-store (>= 1.2, < 2)
     redis-rails (5.0.2)
       redis-actionpack (>= 5.0, < 6)
       redis-activesupport (>= 5.0, < 6)
       redis-store (>= 1.2, < 2)
-    redis-store (1.10.0)
+    redis-store (1.11.0)
       redis (>= 4, < 6)
     representable (3.2.0)
       declarative (< 0.1.0)
@@ -518,10 +556,6 @@ GEM
     reverse_markdown (3.0.0)
       nokogiri
     rexml (3.4.1)
-    rspec-activemodel-mocks (1.2.0)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      rspec-mocks (>= 2.99, < 4.0)
     rspec-collection_matchers (1.2.1)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.13.3)
@@ -529,9 +563,9 @@ GEM
     rspec-expectations (3.13.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-its (1.3.0)
-      rspec-core (>= 3.0.0)
-      rspec-expectations (>= 3.0.0)
+    rspec-its (2.0.0)
+      rspec-core (>= 3.13.0)
+      rspec-expectations (>= 3.13.0)
     rspec-mocks (3.13.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
@@ -598,12 +632,12 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     stackprof (0.2.27)
-    temple (0.10.2)
+    temple (0.10.3)
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
     thor (1.3.2)
-    tilt (2.3.0)
-    timeout (0.4.0)
+    tilt (2.6.0)
+    timeout (0.4.3)
     trailblazer-option (0.1.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -612,7 +646,7 @@ GEM
     uber (0.1.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.8.2)
+    unf_ext (0.0.9.1)
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
@@ -634,15 +668,23 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    websocket-driver (0.7.6)
+    websocket-driver (0.7.7)
+      base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.7.2)
 
 PLATFORMS
-  arm64-darwin-24
-  x86_64-darwin-21
+  aarch64-linux
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm-linux-gnu
+  arm-linux-musl
+  arm64-darwin
+  x86_64-darwin
   x86_64-linux
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
   actionpack-action_caching
@@ -704,7 +746,6 @@ DEPENDENCIES
   redis-objects
   redis-rails
   reverse_markdown
-  rspec-activemodel-mocks
   rspec-collection_matchers
   rspec-its
   rspec-rails (~> 7.1.1)
@@ -735,4 +776,4 @@ RUBY VERSION
    ruby 3.4.1p0
 
 BUNDLED WITH
-   2.4.12
+   2.6.3
