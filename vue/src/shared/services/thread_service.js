@@ -148,9 +148,9 @@ export default new class ThreadService {
         perform() {
           return openModal({
             component: 'AnnouncementHistory',
+            persistent: false,
             props: {
               model: discussion,
-              persistent: false
             }
           });
         },
@@ -209,7 +209,7 @@ export default new class ThreadService {
           });
         }
       },
-            
+
       close_thread: {
         menu: true,
         icon: 'mdi-archive-outline',

@@ -3,6 +3,8 @@ import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
+import { sortBy } from 'lodash-es';
+
 
 export default {
   mixins: [WatchRecords, UrlFor],
@@ -87,7 +89,7 @@ export default {
         };
       });
 
-      const itemsArray = Object.values(itemsHash);
+      const itemsArray = sortBy(Object.values(itemsHash), i => i.key);
 
       if (this.discussion.newestFirst) {
         const newItems = [];
