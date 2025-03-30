@@ -302,7 +302,7 @@ de:
       discard: Verwefen
       restore: Wiederherstellen
       unsubscribe: Benachrichtigungen deaktivieren
-      subscribe: Beitreten
+      subscribe: Benachrichtigung aktivieren
       unignore: Wieder bemerken
       remind: Erinnern
       resend: Neu senden
@@ -312,7 +312,7 @@ de:
       invite: Einladen
       resent: Einladung erneut versendet
       export: Exportieren
-      fork: Abzweigung
+      fork: Abzweigen
       apply: Anwenden
       add_people: Leute hinzufügen
       zoom: Zoom
@@ -639,11 +639,11 @@ de:
     no_notifications: Es liegen keine Benachrichtigungen vor
     with_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
-      comment_replied_to: "%{actor}hat dir geantwortet in: %{title}"
+      comment_replied_to: "%{actor} hat dir geantwortet in: %{title}"
       discussion_announced: "%{actor} hat Sie zum Thread eingeladen: %{title}"
-      discussion_edited: "%{actor}hat den Threadkontext %{title} bearbeitet"
-      discussion_closed: "%{actor}hat den Thread %{title} geschlossen"
-      invitation_accepted: "%{actor}nahm deine Einladung zum Beitritt %{title} an"
+      discussion_edited: "%{actor} hat den Threadkontext %{title} bearbeitet"
+      discussion_closed: "%{actor} hat den Thread %{title} geschlossen"
+      invitation_accepted: "%{actor} nahm deine Einladung zum Beitritt %{title} an"
       membership_created: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten"
       membership_resent: "%{actor} hat Sie eingeladen, %{title} auf %{site_name} beizutreten"
       membership_requested: "%{actor} hat darum gebeten, %{title} beizutreten"
@@ -678,7 +678,7 @@ de:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       discussion_announced: "%{actor} hat Sie zu einem Thread eingeladen"
       discussion_edited: "%{actor} hat den Thread-Kontext bearbeitet"
-      discussion_closed: "%{actor}den Thread geschlossen"
+      discussion_closed: "%{actor} den Thread geschlossen"
       group_announced: "%{actor} hat Sie zu einer Gruppe eingeladen"
       comment_replied_to: "%{actor} hat Ihnen geantwortet"
       new_discussion: "%{actor} hat einen Thread gestartet"
