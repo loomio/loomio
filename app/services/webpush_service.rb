@@ -1,5 +1,21 @@
 class WebpushService
   extend LocalesHelper
+
+  def self.vapid_cert
+    if WebpushCert.count == 0
+      generated_cert = WebPush.generate_key
+      WebpushCert.create(public_key: generated_cert.public_key, private_key: generated_cert.private_key)
+    end
+
+    stored_cert = WebpushCert.first
+
+    return {
+      private_key: stored_cert.private_key,
+      public_key: stored_cert.public_key
+    }
+
+  end
+
   def self.push_event(recipient_id, event_id)
     @current_user = @recipient = User.active.find_by!(id: recipient_id)
     @subscriptions = WebpushSubscription.where(user_id: recipient_id)
@@ -15,11 +31,6 @@ class WebpushService
     if %w[Poll Stance Outcome].include? @event.eventable_type
       @poll = @event.eventable.poll
     end
-
-    vapid = {
-      public_key: Rails.application.config.vapid_key[:public_key],
-      private_key:  Rails.application.config.vapid_key[:private_key]
-    }
 
     subject_params = {
       title: @event.eventable.title,
@@ -59,7 +70,7 @@ class WebpushService
             endpoint: s.endpoint,
             p256dh: s.p256dh,
             auth: s.auth,
-            vapid: vapid,
+            vapid: WebpushService.vapid_cert,
             ssl_timeout: 5,
             open_timeout: 5,
             read_timeout: 5
