@@ -51,12 +51,15 @@ class WebpushService
     else
       @event.kind
     end
-    
+
     I18n.with_locale(WebpushService.first_supported_locale(@recipient.locale)) do
+      body = defined?(@event.eventable.body) ? Nokogiri::HTML(@event.eventable.body).text.squeeze(" \n") : ''
+      url = defined?(@notification.url) ? @notification.url : ENV.fetch('FEATURES_DEFAULT_PATH', 'dashboard')
+
       message = {
         title: I18n.t("notifications.with_title.#{@event_key}", **subject_params).to_s,
-        body: Nokogiri::HTML(@event.eventable.body).text.squeeze(" \n"),
-        openTo: @notification.url,
+        body: body,
+        openTo: url,
         openToVerb: I18n.t("common.view"),
         timestamp: Time.now.to_i,
         iconUrl: AppConfig.theme[:icon_src],
