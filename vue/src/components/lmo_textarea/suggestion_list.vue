@@ -23,7 +23,6 @@ export default {
 
 <template lang="pug">
 v-card.suggestion-list(
-  variant="outlined"
   :elevation=8
   v-show='query'
   ref='suggestions'

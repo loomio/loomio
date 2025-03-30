@@ -76,22 +76,13 @@ export default {
           .strand-item__stem-wrapper
             .strand-item__stem.strand-item__stem--broken
         //- | top !newestFirst && obj.missingEarlierCount
-        strand-load-more(
-          v-intersect.once="{handler: (isVisible) => isVisible && loader.autoLoadBefore(obj)}"
-          :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
-          @click="loader.loadBefore(obj.event)"
-          :loading="loader.loading == 'before'+obj.event.id")
-
+        strand-load-more(direction="before" :obj="obj" :loader="loader")
       .strand-item__row(v-if="newestFirst && obj.missingAfterCount")
         .strand-item__gutter
           .strand-item__stem-wrapper
             .strand-item__stem.strand-item__stem--broken
         //- | top newestFirst && obj.missingAfterCount
-        strand-load-more(
-          v-intersect.once="{handler: (isVisible) => isVisible && loader.autoLoadAfter(obj)}"
-          :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
-          @click="loader.loadAfter(obj.event)"
-          :loading="loader.loading == 'after'+obj.event.id")
+        strand-load-more(direction="after" :obj="obj" :loader="loader")
 
       .strand-item__row(v-if="!loader.collapsed[obj.event.id]")
         .strand-item__gutter(v-if="obj.event.depth > 0")
@@ -118,12 +109,7 @@ export default {
         .strand-item__main
           intersection-wrapper(:loader="loader" :obj="obj")
           .strand-list__children(v-if="obj.event.childCount && (!obj.eventable.isA('stance') || obj.eventable.poll().showResults())")
-            strand-load-more(
-              v-if="obj.children.length == 0"
-              v-intersect.once="{handler: (isVisible) => isVisible && loader.loadAfter(obj.event)}"
-              :label="{path: 'common.action.count_more', args: {count: obj.missingChildCount}}"
-              @click="loader.loadAfter(obj.event)"
-              :loading="loader.loading == 'children'+obj.event.id")
+            strand-load-more(v-if="obj.children.length == 0" direction="children" :obj="obj" :loader="loader")
             strand-list.flex-grow-1(:loader="loader" :collection="obj.children" :newest-first="obj.event.kind == 'new_discussion' && loader.discussion.newestFirst")
           reply-form(:eventId="obj.event.id")
       .strand-item__row(v-if="loader.collapsed[obj.event.id]")
@@ -133,20 +119,10 @@ export default {
           strand-item-headline.text-medium-emphasis(:event="obj.event" :eventable="obj.eventable" collapsed)
 
       .strand-item__row(v-if="newestFirst && obj.missingEarlierCount" )
-        //- | bottom newestFirst && obj.missingEarlierCount
-        strand-load-more(
-          v-intersect.once="{handler: (isVisible) => isVisible && loader.autoLoadBefore(obj)}"
-          :label="{path: 'common.action.count_more', args: {count: obj.missingEarlierCount}}"
-          @click="loader.loadBefore(obj.event)"
-          :loading="loader.loading == 'before'+obj.event.id")
+        strand-load-more(direction="before" :obj="obj" :loader="loader")
 
       .strand-item__row(v-if="!newestFirst && obj.missingAfterCount" )
-        //- | bottom !newestFirst && obj.missingAfterCount
-        strand-load-more(
-          v-intersect.once="{handler: (isVisible, entry) => isVisible && loader.autoLoadAfter(obj)}"
-          :label="{path: 'common.action.count_more', args: {count: obj.missingAfterCount}}"
-          @click="loader.loadAfter(obj.event)"
-          :loading="loader.loading == 'after'+obj.event.id")
+        strand-load-more(direction="after" :obj="obj" :loader="loader")
 </template>
 
 <style lang="sass">

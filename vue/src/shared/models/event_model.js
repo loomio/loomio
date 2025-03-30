@@ -1,6 +1,6 @@
 import BaseModel from '@/shared/record_store/base_model';
 import { I18n } from '@/i18n';
-import {invokeMap, without} from 'lodash-es';
+import {invokeMap, last} from 'lodash-es';
 import Records from '@/shared/services/records';
 
 export default class EventModel extends BaseModel {
@@ -15,8 +15,8 @@ export default class EventModel extends BaseModel {
   }
 
   relationships() {
-    this.belongsTo('parent', {from: 'events'});
-    this.belongsTo('actor', {from: 'users'});
+    this.belongsTo('parent', { from: 'events' });
+    this.belongsTo('actor', { from: 'users' });
     this.belongsTo('discussion');
     this.hasMany('notifications');
   }
@@ -46,7 +46,7 @@ export default class EventModel extends BaseModel {
   surfaceOrSelf() { if (this.isNested()) { return this.parent(); } else { return this; } }
 
   children() {
-    return Records.events.find({parentId: this.id});
+    return Records.events.find({ parentId: this.id });
   }
 
   delete() {
@@ -90,7 +90,7 @@ export default class EventModel extends BaseModel {
   }
 
   pin(title) {
-    return Records.events.remote.patchMember(this.id, 'pin', {pinned_title: title});
+    return Records.events.remote.patchMember(this.id, 'pin', { pinned_title: title });
   }
 
   fillPinnedTitle() {
@@ -130,10 +130,18 @@ export default class EventModel extends BaseModel {
   }
 
   next() {
-    return Records.events.find({parentId: this.parentId, position: this.position + 1})[0];
+    return Records.events.find({ parentId: this.parentId, position: this.position + 1 })[0];
   }
 
   previous() {
-    return Records.events.find({parentId: this.parentId, position: this.position - 1})[0];
+    return Records.events.find({ parentId: this.parentId, position: this.position - 1 })[0];
+  }
+
+  nextSiblingPositionKey() {
+    // skipping any child positions
+    let strs = this.positionKey.split("-")
+    let num = this.position + 1
+    strs[strs.length - 1] = "0".repeat(5 - String(num).length).concat(num)
+    return strs.join("-")
   }
 };

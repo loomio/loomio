@@ -11,6 +11,7 @@ import StrandItemRemoved from '@/components/strand/item/removed.vue';
 import OtherKind from '@/components/strand/item/other_kind.vue';
 
 import { camelCase } from 'lodash-es';
+
 export default {
   props: {
     loader: Object,
