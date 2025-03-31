@@ -260,14 +260,14 @@ de:
       or_enter_code: oder gib den Code unten ein
       resend: Diese läuft nach 24 Stunden ab und kann nur einmal verwendet werden
     login:
-      subject: Bei %{site_name}anmelden
+      subject: Bei %{site_name} anmelden
       intro: Dies ist Ihr Link, um sich bei %{site_name} anzumelden
       intro_code: Dies ist Ihr Code zum Anmelden bei %{site_name}
       login: Als %{name} einloggen
     reactivate:
       subject: Dein %{site_name} Konto wieder aktivieren
       intro: Hi %{name}, Hier ist ein Link, um deinen %{site_name}-Account zu reaktivieren
-      login: '%{name}reaktivieren'
+      login: '%{name} reaktivieren'
     contact_request:
       subject: "%{name} möchte sich mit dir auf %{site_name} verbinden!"
       intro: "%{name} (%{email})  hat dir eine Verbindungsanfrage gesendet."
@@ -361,7 +361,7 @@ de:
   task_mailer:
     task_due_reminder:
       subject: "Aufgabenerinnerung: %{name}"
-      greeting: "Hallo %{name}, die folgende Aufgabe %{due}ist fällig:"
+      greeting: "Hallo %{name}, die folgende Aufgabe %{due} ist fällig:"
       view_task: "Ansehen auf %{site_name}"
       update_or_comment: "Wenn du diese Aufgabe bereits erledigt hast, kreuze sie bitte an. Wenn es nicht vollständig ist, teile bitte ein Fortschritts-Update mit."
       due_today: "heute"
@@ -387,7 +387,7 @@ de:
       time_zone: (Zeitangaben in %{zone})
       undecided_members: Unentschlossene Mitglieder (%{count})
       undecided_visitors: Unentschlossene Gäste (%{count})
-      more_undecided: "Und %{count}mehr..."
+      more_undecided: "Und %{count} mehr..."
       vote_now: Jetzt Stimme abgeben
       you_have_until: Du kannst bis %{when} teilnehmen.
       people_have_voted: "%{nom} von %{dnom} Leuten haben gewählt (%{pct}%)"
