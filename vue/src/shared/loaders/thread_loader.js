@@ -445,7 +445,6 @@ export default class ThreadLoader {
         eventable: event.model()
       }));
     };
-      // orderBy r, 'positionKey'
 
     this.collection = nest(orphans);
 

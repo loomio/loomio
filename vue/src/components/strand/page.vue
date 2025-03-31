@@ -2,7 +2,6 @@
 import Records           from '@/shared/services/records';
 import Session           from '@/shared/services/session';
 import EventBus          from '@/shared/services/event_bus';
-import AbilityService    from '@/shared/services/ability_service';
 import ThreadLoader      from '@/shared/loaders/thread_loader';
 import FormatDate from '@/mixins/format_date';
 import WatchRecords from '@/mixins/watch_records';
@@ -58,10 +57,6 @@ export default {
         if ((error.status === 403) && !Session.isSignedIn()) { EventBus.$emit('openAuthModal'); }
       });
     },
-
-      // .catch (error) =>
-      //   EventBus.$emit 'pageError', error
-      //   EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
 
     focusSelector() {
       if (this.loader.focusAttrs.newest) {
