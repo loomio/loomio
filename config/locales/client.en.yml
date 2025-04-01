@@ -21,7 +21,23 @@ en:
     please_accept_the_terms: Please accept the terms
   tasks:
     tasks: Tasks
-    your_tasks: Your tasks
+    dropdown:
+      all: All Your Tasks
+      authored: Tasks You Made
+      assigned: Tasks to Do
+    expired: expired
+    expires_in: Expires in
+    day_singular: day
+    day_plural: days
+    tasks_filters:
+      open: Open
+      closed: Closed
+      hidden: Hidden
+    toggle_hide_all_button: Toggle Hide All
+    toggle_hide_all_confirm:
+      title: You Are About to Modify All Tasks!
+      description: All tasks displayed in this tab will be have their visibility toggled. Are you sure you want to do this?
+      button: Edit All Tasks
     permission_denied: You don't have permission to update this task
     due_date: Due date
     send_reminder: Send reminder (if not done)
@@ -35,7 +51,9 @@ en:
     add_due_date: Add due date
     task_updated_done: 'Task marked as done!'
     task_updated_not_done: 'Task marked as not done'
-    no_tasks_assigned: There are no tasks assigned to you
+    task_updated_hidden: Task hidden!
+    task_updated_not_hidden: Task revealed!
+    no_tasks_to_display: There are no tasks visible here... Great job! ✨
 
   templates:
     template_gallery: Template gallery
