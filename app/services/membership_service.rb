@@ -162,6 +162,17 @@ class MembershipService
     membership.update admin: false
   end
 
+  def self.make_delegate(membership:, actor:)
+    actor.ability.authorize! :make_delegate, membership
+    membership.update delegate: true
+    # Events::NewDelegate.publish!(membership, actor)
+  end
+
+  def self.remove_delegate(membership:, actor:)
+    actor.ability.authorize! :remove_delegate, membership
+    membership.update delegate: false
+  end
+
   def self.join_group(group:, actor:)
     actor.ability.authorize! :join, group
     membership = group.add_member!(actor)

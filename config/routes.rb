@@ -121,6 +121,8 @@ Rails.application.routes.draw do
         member do
           post :make_admin
           post :remove_admin
+          post :make_delegate
+          post :remove_delegate
           post :save_experience
           post :resend
           patch :set_volume

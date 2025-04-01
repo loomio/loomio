@@ -677,6 +677,9 @@ en:
     invitation_resent: "Invitation resent"
     make_coordinator: 'Make admin'
     demote_coordinator: 'Demote admin'
+    revoke_admin: 'Revoke admin'
+    make_delegate: 'Make delegate'
+    revoke_delegate: 'Revoke delegate'
     remove_from:
       discussion: "Remove from thread"
       group: "Remove from group"
@@ -895,6 +898,7 @@ en:
 
     audiences:
       group: "%{name}"
+      delegates_of_group: Delegates of %{name}
       everyone_in_the_group: Everyone in the group
       discussion_group: Everyone in the thread
       voters: Everyone invited to vote
@@ -2054,6 +2058,8 @@ en:
     invitations: 'Invitations'
     requests: 'Requests'
     admin: 'Admin'
+    delegate: 'Delegate'
+    delegate_popover: 'A delegate is a group member with voting rights'
     guest: 'Guest'
     sharable_link: 'Shareable Link'
     last_seen: 'Last seen %{date}'

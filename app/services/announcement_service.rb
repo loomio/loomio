@@ -8,6 +8,11 @@ class AnnouncementService
       group = model.group.parent_or_self.self_and_subgroups.find(id)
       raise CanCan::AccessDenied unless actor.can?(:notify, group)
       group.members
+    when /delegates-\d+/
+      id = kind.match(/delegates-(\d+)/)[1].to_i
+      group = model.group.parent_or_self.self_and_subgroups.find(id)
+      raise CanCan::AccessDenied unless actor.can?(:notify, group)
+      group.delegates
     when 'group'            then model.group.members
     when 'discussion_group' then (model.discussion || NullDiscussion.new).readers
     when 'voters'           then (model.poll || NullPoll.new).unmasked_voters
