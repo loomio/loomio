@@ -12,6 +12,11 @@ export default {
   },
 
   computed: {
+    isDelegate() {
+      const actor = this.event.actor();
+      const group = this.eventable.group();
+      return actor && group && actor.experiences.delegates && actor.experiences.delegates[group.id]
+    },
     datetime() { return this.dateTime || this.eventable.castAt || this.eventable.createdAt; },
     headline() {
       const actor = this.event.actor();
@@ -43,6 +48,8 @@ h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
     //- common-icon(v-if="event.pinned" name="mdi-pin")
     slot(name="headline")
       span.strand-item__headline.text--secondary(v-html='headline')
+    space(v-if="isDelegate")
+    v-chip(v-if="isDelegate" x-small outlined label v-t="'members_panel.delegate'" :title="$t('members_panel.delegate_popover')")
     mid-dot.text--secondary
     router-link.text--secondary.text-body-2(:to='link')
       time-ago(:date='datetime')
