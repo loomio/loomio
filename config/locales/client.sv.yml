@@ -314,6 +314,7 @@ sv:
     formatting_help:
       label: Utformning
       title: Lär dig hur du använder Märkspråk för att formatera din text
+    thread: Tråd
   merge_accounts:
     modal:
       title: Slå samman konton
@@ -458,6 +459,18 @@ sv:
         loud: Du kommer att mailas alla aktiviteter i nya grupper.
         normal: Du kommer bli mailad om meddelande i nya grupper.
         quiet: Du kommer inte bli mailad om nya grupper.
+    change_your_email_settings: Ändra dina e-postinställningar
+    when_would_you_like_to_be_emailed_thread: När vill du bli mailad om denna tråd?
+    when_would_you_like_to_be_emailed_group: När vill du bli mailad om den här gruppen?
+    changes_all_threads_in_group: Detta ändrar inställningen för alla trådar i gruppen.
+    what_do_the_options_mean: Vad betyder alternativen?
+    loud_desc: Varje gång någon deltar
+    normal_desc: När någon meddelar mig
+    quiet_desc: Aldrig
+    quiet_explained: Du kommer inte att bli mailad, även när någon försöker meddela dig. Du kan missa viktiga meddelanden eller beslut. Detta kan vara lämpligt om en tråd inte berör dig, men rekommenderas inte för gruppinställningen om du inte har andra sätt att hålla dig uppdaterad.
+    normal_explained: När någon anger ditt namn i fältet "Meddela" i en tråd eller en omröstning, eller de @nämner gruppen.
+    normal_excludes_mentioning_html: Det finns en separat inställning för när någon @nämner dig (t.ex. när ett svar till dig i en kommentar). <a href="%{url}">Klicka här för att redigera inställningar för @omnämnanden</a>
+    loud_explained: Du kommer att bli mailad varje gång det kommer en ny kommentar, någon röstar eller startar en omröstning eller tråd.
   close_explanation_modal:
     aria_label: Stäng tråd
     close_thread: Stäng tråd
@@ -664,6 +677,7 @@ sv:
       user_added_to_group: "%{actor} lade till dig i gruppen: %{title}"
       user_mentioned: "%{actor} nämnde dig i: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
+      group_mentioned: "%{actor} nämnde gruppen i: %{title}"
     without_title:
       unknown_sender: Granska e-post från okänd avsändare
       discussion_announced: "%{actor} bjöd in dig till en tråd"
@@ -700,6 +714,7 @@ sv:
       stance_created_option: "%{actor} röstade %{option}"
       user_mentioned: "%{actor} nämnde dig"
       user_reminded: "%{actor} påminner dig om att rösta"
+      group_mentioned: "%{actor} nämnde gruppen"
     hints:
       poll_closing_soon: Nu är det ett bra tillfälle att rösta, ändra uppfattning eller uppmuntra andra att delta.
       poll_closing_soon_author: Du kanske vill påminna folk om att rösta eller förlänga tidsfristen.
@@ -892,6 +907,7 @@ sv:
       modal_title: Välj gruppmedlemmar
     flash:
       success: "%{count} aviseringar har skickats"
+    group_mentioned: "%{name} nämnde gruppen med %{length} personer:"
   action_dock:
     actions_menu: Menyn Åtgärder
     more_actions: Fler åtgärder

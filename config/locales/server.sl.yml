@@ -1,3 +1,4 @@
+---
 sl:
   discussion_templates:
     blank:
@@ -96,16 +97,15 @@ sl:
         invalid: ni veljavna vrednost
   unauthorized:
     manage:
-      all: "Ni pooblaščen za %{action} %{subject}."
+      all: Ni pooblaščen za %{action} %{subject}.
     add_guests:
-      all: "Morate nadgraditi svojo naročnino na Loomio, da dodate goste v svoj %{subject}. Lahko pa jih povabite, da postanejo člani vaše skupine."
+      all: Morate nadgraditi svojo naročnino na Loomio, da dodate goste v svoj %{subject}. Lahko pa jih povabite, da postanejo člani vaše skupine.
   errors:
-    clear_cache: "Zaznana težava pri nalaganju. Držite shift in pritisnite Reload ali počistite predpomnilnik brskalnika."
+    clear_cache: Zaznana težava pri nalaganju. Držite shift in pritisnite Reload ali počistite predpomnilnik brskalnika.
     404:
       title: Ni najdeno
     noscript: Loomio za delovanje potrebuje javascript! Za nadaljevanje prosimo omogočite javascript v vašem brskalniku
-    upgrade_browser: |-
-        Ojoj! Vaš spletni brskalnik je prestar in Loomio morda ne bo deloval pravilno. Prosimo, <a href="https://browser-update.org/update.html">nadgradite svoj brskalnik.</a>
+    upgrade_browser: Ojoj! Vaš spletni brskalnik je prestar in Loomio morda ne bo deloval pravilno. Prosimo, <a href="https://browser-update.org/update.html">nadgradite svoj brskalnik.</a>
     return_home: Vrni se domov
     not_found: 404 datoteka ni bila najdena.
     messages:
@@ -114,8 +114,8 @@ sl:
       pwned_password: To geslo se je že pojavilo pri vdoru podatkov in se ga ne sme nikoli uporabiti
   group:
     error:
-      handle_must_begin_with_parent_handle: "Začeti se mora z %{parent_handle}-"
-      no_public_trials: "Če želite spremeniti nastavitev zasebnosti skupine, nadgradite preskusno različico"
+      handle_must_begin_with_parent_handle: Začeti se mora z %{parent_handle}-
+      no_public_trials: Če želite spremeniti nastavitev zasebnosti skupine, nadgradite preskusno različico
     stats:
       group_stats: Statistika skupine
       org_stats: Statistika organizacije (vključno s podskupinami)
@@ -136,14 +136,13 @@ sl:
         rank: Rank
         time: Časovna anketa
   user:
-    deleted_user: "Izbrisan uporabnik"
-    placeholder_name: "Povabljen uporabnik (%{hostname})"
+    deleted_user: Izbrisan uporabnik
+    placeholder_name: Povabljen uporabnik (%{hostname})
     error:
-      sign_in_required_html: |-
-          Za nadaljevanje morate biti prijavljeni. Za nadaljevanje <a href="/dashboard" target="_blank">se prijavite</a> in znova naložite to stran.
-      recaptcha: "Nismo mogli preveriti, da niste robot. Prosim poskusite ponovno!"
-      bad_login: "Žal se to geslo ne ujema s tistim, ki ga imamo v arhivu"
-      username_must_be_alphanumeric: "Uporabniška imena morajo biti sestavljena samo iz malih črk in številk"
+      sign_in_required_html: Za nadaljevanje morate biti prijavljeni. Za nadaljevanje <a href="/dashboard" target="_blank">se prijavite</a> in znova naložite to stran.
+      recaptcha: Nismo mogli preveriti, da niste robot. Prosim poskusite ponovno!
+      bad_login: Žal se to geslo ne ujema s tistim, ki ga imamo v arhivu
+      username_must_be_alphanumeric: Uporabniška imena morajo biti sestavljena samo iz malih črk in številk
   poll:
     error:
       cannot_add_options: V to anketo ni mogoče dodati možnosti
@@ -175,7 +174,7 @@ sl:
       participant: Udeleženec
       also_available: Na voljo tudi v
       total: Skupaj
-    waiting_for_votes_from: "Čakanje na glasove od"
+    waiting_for_votes_from: Čakanje na glasove od
   stance:
     error:
       too_short: Prosimo, izberite
@@ -189,35 +188,34 @@ sl:
     via_loomio: "%{name} (prek %{site_name})"
   event_mailer:
     received_email:
-      explaination_html: |-
-          <p>To e-pošto ste prejeli, ker ste skrbnik skupine Loomio: %{group}.</p><p> Skupina je prejela e-poštno sporočilo z neprepoznanega e-poštnega naslova.</p><p> Če je sporočilo poslal član skupine, preglejte e-pošto in izberite člana.</p><p> Če je sporočilo neželeno, lahko blokirate vsa nadaljnja e-poštna sporočila s tega naslova.</p>
+      explaination_html: "<p>To e-pošto ste prejeli, ker ste skrbnik skupine Loomio: %{group}.</p><p> Skupina je prejela e-poštno sporočilo z neprepoznanega e-poštnega naslova.</p><p> Če je sporočilo poslal član skupine, preglejte e-pošto in izberite člana.</p><p> Če je sporočilo neželeno, lahko blokirate vsa nadaljnja e-poštna sporočila s tega naslova.</p>"
+    notification_reason:
+      group_subscribed: To ste prejeli, ker ste naročeni na vse aktivnosti v skupini.
+      thread_subscribed: To ste prejeli, ker ste naročeni na nit.
+      group_mentioned: To ste prejeli, ker je bila skupina @omenjena.
+      user_mentioned: To ste prejeli, ker ste bili @omenjeni.
+      notified: To ste prejeli, ker vas je avtor obvestil.
   user_mailer:
     group_export_ready:
       subject: Izvoz podatkov skupine za %{group_name}
-      body_html: |-
-          <a href="%{url}">Tukaj</a> prenesite svoje podatke o skupini. Upoštevajte, da bo ta povezava potekla čez en teden.
+      body_html: <a href="%{url}">Tukaj</a> prenesite svoje podatke o skupini. Upoštevajte, da bo ta povezava potekla čez en teden.
     redacted:
-      subject: "Vaš uporabniški račun %{site_name} je bil izbrisan"
-      body_html: |-
-          <p>Vaš uporabniški račun %{site_name} je bil izbrisan.</p><p> Vsi osebni podatki so bili odstranjeni.</p><p> Če tega niste zahtevali, se obrnite na %{support_email}</p>
+      subject: Vaš uporabniški račun %{site_name} je bil izbrisan
+      body_html: "<p>Vaš uporabniški račun %{site_name} je bil izbrisan.</p><p> Vsi osebni podatki so bili odstranjeni.</p><p> Če tega niste zahtevali, se obrnite na %{support_email}</p>"
     accounts_merged:
-      subject: "Vaši uporabniški računi %{site_name} so bili združeni."
-      body_html: |-
-          Pozdravljeni, %{name}, vaša dva računa loomio sta bila združena v en račun. Za dostop do loomio od zdaj naprej uporabite <strong>%{email},</strong> ko se prijavite.
+      subject: Vaši uporabniški računi %{site_name} so bili združeni.
+      body_html: Pozdravljeni, %{name}, vaša dva računa loomio sta bila združena v en račun. Za dostop do loomio od zdaj naprej uporabite <strong>%{email},</strong> ko se prijavite.
     merge_verification:
-      subject: "Preverite svoj e-poštni naslov %{site_name} za združevanje"
-      body_html: |-
-          <p>Pozdravljeni %{name},</p><p> Podana je bila zahteva za združitev vašega uporabniškega računa pod naslovom <strong>%{source_email}</strong> z računom, ki pripada temu naslovu, <strong>%{target_email}</strong> .</p><p> Ko je ta postopek končan, se ne boste mogli več prijaviti z <strong>%{source_email}</strong> , ampak samo z <strong>%{target_email}</strong> .</p><p> Potrdite, da je to tisto, kar želite storiti.</p>
+      subject: Preverite svoj e-poštni naslov %{site_name} za združevanje
+      body_html: "<p>Pozdravljeni %{name},</p><p> Podana je bila zahteva za združitev vašega uporabniškega računa pod naslovom <strong>%{source_email}</strong> z računom, ki pripada temu naslovu, <strong>%{target_email}</strong> .</p><p> Ko je ta postopek končan, se ne boste mogli več prijaviti z <strong>%{source_email}</strong> , ampak samo z <strong>%{target_email}</strong> .</p><p> Potrdite, da je to tisto, kar želite storiti.</p>"
       verify: Preverite e-pošto in nadaljujte
       confirm_page:
         confirm: Potrdite združitev
-        body_html: |-
-            <p>Potrdite, da želite združiti račun pod <strong>%{source_email}</strong> z računom pod <strong>%{target_email}</strong> .</p><p> Vaš račun pod <strong>%{source_email}</strong> bo izbrisan, nato pa se boste lahko vpisali le prek <strong>%{target_email}</strong> .</p><p> Ta sprememba je nepovratna.</p>
+        body_html: "<p>Potrdite, da želite združiti račun pod <strong>%{source_email}</strong> z računom pod <strong>%{target_email}</strong> .</p><p> Vaš račun pod <strong>%{source_email}</strong> bo izbrisan, nato pa se boste lahko vpisali le prek <strong>%{target_email}</strong> .</p><p> Ta sprememba je nepovratna.</p>"
         merge: Združite račune
       complete_page:
         title: Združevanje uspešno!
-        body_html: |-
-            <p>Združitev vaših uporabniških računov je bila uspešna. Kmalu boste prejeli potrditveno e-poštno sporočilo na <strong>%{target_email}</strong> .</p><p> Prosimo, <a href="/contact" target="_blank">kontaktirajte nas</a> , če imate dodatna vprašanja.</p>
+        body_html: <p>Združitev vaših uporabniških računov je bila uspešna. Kmalu boste prejeli potrditveno e-poštno sporočilo na <strong>%{target_email}</strong> .</p><p> Prosimo, <a href="/contact" target="_blank">kontaktirajte nas</a> , če imate dodatna vprašanja.</p>
   email:
     common:
       or_enter_code: Ali pa vnesite spodnjo kodo
@@ -236,22 +234,20 @@ sl:
       intro: "%{name} (%{email}) vam je poslal zahtevo za povezavo."
       footer: "%{name} lahko odgovorite neposredno tako, da odgovorite na to e-pošto."
     reset_password:
-      greeting: |-
-          Živjo %{name} Tukaj je povezava, ki jo lahko uporabite za ponastavitev gesla v vašem računu Loomio:
+      greeting: 'Živjo %{name} Tukaj je povezava, ki jo lahko uporabite za ponastavitev gesla v vašem računu Loomio:'
       link_text: Ponastavi geslo
-      signoff: |-
-          To ste prejeli, ker je bil vaš e-poštni naslov vnesen v obrazec »Pozabljeno geslo« na %{hostname}. Vendar pa vaše geslo ne bo spremenjeno, dokler ne sledite zgornji povezavi in izpolnite obrazca. Če boste imeli še naprej težave pri prijavi, odgovorite na to e-poštno sporočilo in kontaktirajte osebo za podporo.
-    by_who: '%{person}'
+      signoff: To ste prejeli, ker je bil vaš e-poštni naslov vnesen v obrazec »Pozabljeno geslo« na %{hostname}. Vendar pa vaše geslo ne bo spremenjeno, dokler ne sledite zgornji povezavi in izpolnite obrazca. Če boste imeli še naprej težave pri prijavi, odgovorite na to e-poštno sporočilo in kontaktirajte osebo za podporo.
+    by_who: "%{person}"
     reply_to_this_discussion: Odgovori na to razpravo
-    loomio_app_description: "Preprosto za uporabo in varno mesto za organizacije, kjer lahko skupaj sprejemajo odločitve."
+    loomio_app_description: Preprosto za uporabo in varno mesto za organizacije, kjer lahko skupaj sprejemajo odločitve.
     view_group: Ogled skupine
     to_join_group:
       subject: "%{member} vas je povabil, da se pridružite %{group_name} na %{site_name}"
       invitation_text: "%{member} vas je povabil, da se pridružite njihovi skupini %{group_name}."
-      invitation_text_html: "vas je povabil, da se pridružite njihovi skupini"
-      link_help: "Kliknite spodnjo povezavo, da sprejmete povabilo:"
-      accept_invitation: "Sprejmi povabilo"
-      stop_emails: "Nehaj prejemati e-pošto od %{site_name}"
+      invitation_text_html: vas je povabil, da se pridružite njihovi skupini
+      link_help: 'Kliknite spodnjo povezavo, da sprejmete povabilo:'
+      accept_invitation: Sprejmi povabilo
+      stop_emails: Nehaj prejemati e-pošto od %{site_name}
       accepting_is_important: Pomembno je, da sprejmete vaše povabilo, da ne boste zamudili obvestil o odločitvah, ki vas zadevajo.
     resend_to_join_group:
       subject: "%{member} čaka, da se pridružiš %{group_name} na %{site_name}"
@@ -259,8 +255,8 @@ sl:
       subject: "%{who} vas je dodal v %{which_group} na %{site_name}"
       content: "%{who} vas je dodal v %{which_group}."
       content_html: "<strong>%{who}</strong> vas je dodal v <strong>%{which_group}</strong> ."
-      link_help: "Za obisk skupine kliknite spodnjo povezavo:"
-    unsubscribe: "Odjavi se ali spremeni svoje email nastavitve:"
+      link_help: 'Za obisk skupine kliknite spodnjo povezavo:'
+    unsubscribe: 'Odjavi se ali spremeni svoje email nastavitve:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> za odjavo ali spremembo svojih email nastavitev."
     catch_up:
       daily_subject: Včeraj na %{site_name}
@@ -272,11 +268,11 @@ sl:
       marked_as_read_success: Vse iz emaila je bilo označeno kot prebrano
       click_here: Klikni sem
     group_membership_approved:
-      intro: "Vaša zahteva za dostop do skupine %{group_name} je bila odobrena."
-      intro_html: "Vaša zahteva za dostop do skupine <strong>%{group_name}</strong> je bila odobrena."
-      link_help: "Kliknite spodnjo povezavo, da se pridružite %{group_name} in začnete:"
-      subject: "Vaša zahteva za pridružitev %{group_name} je bila odobrena"
-      join_group: "Pridruži se skupini"
+      intro: Vaša zahteva za dostop do skupine %{group_name} je bila odobrena.
+      intro_html: Vaša zahteva za dostop do skupine <strong>%{group_name}</strong> je bila odobrena.
+      link_help: 'Kliknite spodnjo povezavo, da se pridružite %{group_name} in začnete:'
+      subject: Vaša zahteva za pridružitev %{group_name} je bila odobrena
+      join_group: Pridruži se skupini
     membership_request:
       intro_html: je zahteval dostop do ene od vaših skupin.
       subject: "%{who} je zaprosil za vstop v %{which_group}"
@@ -286,13 +282,13 @@ sl:
   email_actions:
     unfollowed_discussion: Izklopili ste e-pošto za nit.
   discussion_mailer:
-    reply_or_view_online_html: "Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>."
+    reply_or_view_online_html: Odgovori na ta email, ali <a href='%{url}'>ga poglej na %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Izklopi emaile</a> za to razpravo."
-    change_email_preferences_html: "Spremenite svoje <a href='%{email_preferences_url}'>e-poštne nastavitve</a> ."
+    change_email_preferences_html: Spremenite svoje <a href='%{email_preferences_url}'>e-poštne nastavitve</a> .
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Odjavite se</a> od nadaljnjih objav v tej temi."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Odjavite se</a> od komentarjev v tej temi."
-    unsubscribe_from_comment_replied_to_html: "To je obvestilo o odgovoru."
-    unsubscribe_from_user_mentioned_html: "To je obvestilo o omembi."
+    unsubscribe_from_comment_replied_to_html: To je obvestilo o odgovoru.
+    unsubscribe_from_user_mentioned_html: To je obvestilo o omembi.
     discussion_edited:
       inline: "%{actor} je uredil kontekst niti"
     discussion_closed:
@@ -312,38 +308,36 @@ sl:
     change_my_password: Spremeni geslo
     confirm_new_password: Potrdi geslo
     new_password: Novo geslo
-    email_guidelines_html: |-
-        <p>Vnesite svoj e-poštni naslov in prejeli boste povezavo za ponastavitev gesla.</p><p> Če se običajno prijavljate prek Facebooka ali Googla, vnesite e-poštni naslov, povezan s tem računom.</p>
+    email_guidelines_html: "<p>Vnesite svoj e-poštni naslov in prejeli boste povezavo za ponastavitev gesla.</p><p> Če se običajno prijavljate prek Facebooka ali Googla, vnesite e-poštni naslov, povezan s tem računom.</p>"
     reset_email_timeframe: Lahko traja do 5 minut, da e-poštno sporočilo prispe. Če se ne prikaže, preverite mapo z vsiljeno pošto.
     length_restriction: Gesla morajo biti dolga vsaj 8 znakov.
     forbidden_passwords: Običajna gesla, kot je »geslo«, so zaradi varnosti vašega računa prepovedana.
   task_mailer:
     task_due_reminder:
-      subject: "Opomnik opravila: %{name}"
-      greeting: "Pozdravljeni %{name}, naslednja naloga je pred %{due}:"
-      view_task: "Ogled na %{site_name}"
-      update_or_comment: "Če ste to nalogo že opravili, jo odkljukajte. Če ni dokončan, delite posodobitev napredka."
-      due_today: "danes"
-      due_in_count_days: "čez %{count} dni"
+      subject: 'Opomnik opravila: %{name}'
+      greeting: 'Pozdravljeni %{name}, naslednja naloga je pred %{due}:'
+      view_task: Ogled na %{site_name}
+      update_or_comment: Če ste to nalogo že opravili, jo odkljukajte. Če ni dokončan, delite posodobitev napredka.
+      due_today: danes
+      due_in_count_days: čez %{count} dni
   group_mailer:
-    resend: "OPOMNIK: %{member} čaka, da se pridružiš %{group_name}"
+    resend: 'OPOMNIK: %{member} čaka, da se pridružiš %{group_name}'
     destroy_warning:
       subject: Vaša skupina Loomio je načrtovana za izbris.
-      body: |-
-          %{deletor} je načrtoval brisanje vaše skupine Loomio: "%{group}". Če ne želite, da se vaša skupina izbriše, odgovorite na to e-pošto. Če ste prepričani, da želite izbrisati skupino, vam ni treba storiti ničesar. Hvala vam.
+      body: '%{deletor} je načrtoval brisanje vaše skupine Loomio: "%{group}". Če ne želite, da se vaša skupina izbriše, odgovorite na to e-pošto. Če ste prepričani, da želite izbrisati skupino, vam ni treba storiti ničesar. Hvala vam.'
   poll_mailer:
     common:
       why_send_this: To e-pošto ste prejeli, ker %{reason}
       view_on_loomio: Oglejte si ga na %{site_name}
       create_outcome: Delite rezultat
-      your_response: "Glasovali ste:"
-      you_voted: "Glasovali ste!"
-      not_invited: "Ni povabljen"
+      your_response: 'Glasovali ste:'
+      you_voted: Glasovali ste!
+      not_invited: Ni povabljen
       please_respond: Prosim odgovori
-      time_zone: (Časi so prikazani v %{zone})
+      time_zone: "(Časi so prikazani v %{zone})"
       undecided_members: Neodločeni člani (%{count})
       undecided_visitors: Neodločeni gostje (%{count})
-      more_undecided: "še %{count} ..."
+      more_undecided: še %{count} ...
       vote_now: Glasujte zdaj
       you_have_until: Časa za sodelovanje imate do %{when}.
       people_have_voted: "%{nom} od %{dnom} oseb je sodelovalo (%{pct}%)"

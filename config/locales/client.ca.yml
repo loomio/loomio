@@ -314,6 +314,7 @@ ca:
     formatting_help:
       label: Formatació
       title: Aprèn a escriure el text en format Markdown
+    thread: Fil
   merge_accounts:
     modal:
       title: Combina comptes
@@ -460,6 +461,18 @@ ca:
         loud: Rebreu correus electrònics sobre tota l'activitat de grups nous.
         normal: Rebreu correus electrònics sobre l'activitat de grups nous.
         quiet: No rebreu cap correu electrònic sobre els grups nous.
+    change_your_email_settings: Canvieu la configuració del vostre correu electrònic
+    when_would_you_like_to_be_emailed_thread: Quan vols rebre un correu electrònic sobre aquest fil?
+    when_would_you_like_to_be_emailed_group: Quan vols rebre un correu electrònic sobre aquest grup?
+    changes_all_threads_in_group: Això canvia la configuració de tots els fils del grup.
+    what_do_the_options_mean: Què signifiquen les opcions?
+    loud_desc: Cada cop que hi participa algú
+    normal_desc: Quan algú m'avisa
+    quiet_desc: Mai
+    quiet_explained: No rebràs un correu electrònic, fins i tot quan algú intenta notificar-te. És possible que us perdeu anuncis o decisions importants. Això pot ser adequat si un fil no us interessa, però no es recomana per a la configuració del grup tret que tingueu altres maneres d'estar al dia.
+    normal_explained: Quan algú introdueix el teu nom al camp "Notificar" d'un fil o d'una enquesta, o quan @menciona el grup.
+    normal_excludes_mentioning_html: Hi ha una configuració separada per quan algú us @esmenta (per exemple, quan us respon en un comentari). <a href="%{url}">Feu clic aquí per editar la configuració de les @mencions</a>
+    loud_explained: Se us enviarà un correu electrònic cada vegada que hi hagi un comentari nou, algú voti o iniciï una enquesta o fil.
   close_explanation_modal:
     aria_label: Tanca el fil de discussió
     close_thread: Tanca el fil de discussió
@@ -668,6 +681,7 @@ ca:
       user_added_to_group: "%{actor} t'ha afegit al grup: %{title}"
       user_mentioned: "%{actor} t'ha mencionat a: %{title}"
       user_reminded: "%{actor} us recorda que voteu a: %{title}"
+      group_mentioned: "%{actor} ha mencionat el grup a: %{title}"
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       discussion_announced: "%{actor} t'ha convidat a un fil"
@@ -704,6 +718,7 @@ ca:
       stance_created_option: "%{actor} ha votat %{option}"
       user_mentioned: "%{actor} t'ha mencionat"
       user_reminded: "%{actor} us recorda que heu de votar"
+      group_mentioned: "%{actor} ha mencionat el grup"
     hints:
       poll_closing_soon: Ara és un bon moment per votar, canviar d'opinió o animar els altres a participar.
       poll_closing_soon_author: És possible que vulgueu recordar a la gent que voten o allargar el termini.
@@ -900,6 +915,7 @@ ca:
       modal_title: Selecciona membres del grup
     flash:
       success: "%{count} notificacions enviades"
+    group_mentioned: "%{name} ha mencionat el grup amb %{length} persones:"
   action_dock:
     actions_menu: Menú d'accions
     more_actions: Més accions

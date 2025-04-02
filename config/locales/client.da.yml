@@ -314,6 +314,7 @@ da:
     formatting_help:
       label: Formatering
       title: Lær, hvordan du bruger Markdown til at formatere din tekst
+    thread: Tråd
   merge_accounts:
     modal:
       title: Flet konti
@@ -458,6 +459,18 @@ da:
         loud: Du vil få emails ved enhver aktivitet i alle nye grupper du bliver medlem af.
         normal: Du vil få emails ved publiceringer i alle nye grupper du bliver medlem af.
         quiet: Du vil ikke få emails ved nogen aktivitet i nogen af de nye fupper du bliver medlem af.
+    change_your_email_settings: Skift dine e-mail-indstillinger
+    when_would_you_like_to_be_emailed_thread: Hvornår vil du gerne have en mail om denne tråd?
+    when_would_you_like_to_be_emailed_group: Hvornår vil du gerne have besked om denne gruppe?
+    changes_all_threads_in_group: Dette ændrer indstillingen for alle tråde i gruppen.
+    what_do_the_options_mean: Hvad betyder mulighederne?
+    loud_desc: Hver gang nogen deltager
+    normal_desc: Når nogen giver mig besked
+    quiet_desc: Aldrig
+    quiet_explained: Du vil ikke blive e-mailet, heller ikke når nogen forsøger at give dig besked. Du kan gå glip af vigtige meddelelser eller beslutninger. Dette kan være velegnet, hvis en tråd ikke vedrører dig, men anbefales ikke til gruppeindstillingen, medmindre du har andre måder at holde dig opdateret på.
+    normal_explained: Når nogen indtaster dit navn i feltet "Underret" i en tråd eller en afstemning, eller de @omtaler gruppen.
+    normal_excludes_mentioning_html: Der er en separat indstilling for, hvornår nogen @omtaler dig (f.eks. når man svarer dig i en kommentar). <a href="%{url}">Klik her for at redigere indstillinger for @omtaler</a>
+    loud_explained: Du vil blive mailet hver gang der er en ny kommentar, nogen stemmer eller starter en afstemning eller tråd.
   close_explanation_modal:
     aria_label: Luk tråden
     close_thread: Luk tråden
@@ -664,6 +677,7 @@ da:
       user_added_to_group: "%{actor} føjede dig til gruppen: %{title}"
       user_mentioned: "%{actor} nævnte dig i: %{title}"
       user_reminded: "%{actor} minder dig om at stemme i: %{title}"
+      group_mentioned: "%{actor} nævnte gruppen i: %{title}"
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       discussion_announced: "%{actor} inviterede dig til en tråd"
@@ -700,6 +714,7 @@ da:
       stance_created_option: "%{actor} stemte %{option}"
       user_mentioned: "%{actor} nævnte dig"
       user_reminded: "%{actor} minder dig om at stemme"
+      group_mentioned: "%{actor} nævnte gruppen"
     hints:
       poll_closing_soon: Nu er det et godt tidspunkt at stemme, ændre mening eller opfordre andre til at deltage.
       poll_closing_soon_author: Du vil måske gerne minde folk om at stemme eller forlænge fristen.
@@ -892,6 +907,7 @@ da:
       modal_title: Vælg gruppemedlemmer
     flash:
       success: "%{count} meddelelser sendt"
+    group_mentioned: "%{name} nævnte gruppen med %{length} personer:"
   action_dock:
     actions_menu: Handlingsmenu
     more_actions: flere handlinger

@@ -18,7 +18,8 @@ export var CommonMentioning = {
     this.fetchMentionable = debounce(function() {
       if (!this.query && this.mentionsCache.length > 0) { return; }
       this.fetchingMentions = true;
-      Records.remote.get('mentions', Object.assign(this.model.discussion().namedId(), { q: this.query })).then(rows => {
+      const namedId = (this.model.discussion && this.model.discussion() && this.model.discussion().namedId()) || this.model.namedId()
+      Records.remote.get('mentions', Object.assign(namedId, { q: this.query })).then(rows => {
         this.mentionsCache = uniqBy(this.mentionsCache.concat(rows), 'handle');
         this.updateMentions();
       }).finally(() => {

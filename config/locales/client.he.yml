@@ -314,6 +314,7 @@ he:
     formatting_help:
       label: פורמט
       title: למד איך להשתמש בMarkdown כדי לסגנן את הטקסט שלך
+    thread: פְּתִיל
   merge_accounts:
     modal:
       title: מיזוג חשבונות
@@ -458,6 +459,18 @@ he:
         loud: מייל יישלח אליך על כל פעולה בקבוצות חדשות.
         normal: מייל יישלח אליך על כל הכרזה בקבוצות חדשות
         quiet: לא יישלחו אליך מיילים על קבוצות חדשות
+    change_your_email_settings: שנה את הגדרות הדוא"ל שלך
+    when_would_you_like_to_be_emailed_thread: מתי תרצה לקבל אימייל לגבי השרשור הזה?
+    when_would_you_like_to_be_emailed_group: מתי תרצה לקבל אימייל לגבי הקבוצה הזו?
+    changes_all_threads_in_group: זה משנה את ההגדרה עבור כל השרשורים בקבוצה.
+    what_do_the_options_mean: מה המשמעות של האפשרויות?
+    loud_desc: בכל פעם שמישהו משתתף
+    normal_desc: כשמישהו מודיע לי
+    quiet_desc: לְעוֹלָם לֹא
+    quiet_explained: לא יישלח אליך אימייל, גם כאשר מישהו ינסה להודיע לך. אתה עלול להחמיץ הודעות או החלטות חשובות. זה עשוי להתאים אם שרשור אינו נוגע לך, אך אינו מומלץ להגדרת הקבוצה אלא אם יש לך דרכים אחרות להישאר מעודכן.
+    normal_explained: כאשר מישהו מזין את שמך בשדה "הודע" של שרשור או סקר, או שהוא @ מזכיר את הקבוצה.
+    normal_excludes_mentioning_html: יש הגדרה נפרדת כאשר מישהו @ מזכיר אותך (למשל כשמשיב לך בהערה). <a href="%{url}">לחץ כאן כדי לערוך הגדרות עבור @אזכורים</a>
+    loud_explained: תישלח אליך אימייל בכל פעם שתהיה תגובה חדשה, מישהו יצביע או יתחיל סקר או שרשור.
   close_explanation_modal:
     aria_label: סגור שיחה
     close_thread: סגור שיחה
@@ -664,6 +677,7 @@ he:
       user_added_to_group: "%{actor} הוסיף אותך לקבוצה: %{title}"
       user_mentioned: "%{actor} הזכיר אותך ב: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע ב:%{title}"
+      group_mentioned: "%{actor} הזכיר את הקבוצה ב: %{title}"
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       discussion_announced: "%{actor} הזמין אותך לשרשור"
@@ -700,6 +714,7 @@ he:
       stance_created_option: "%{actor} הצביע %{option}"
       user_mentioned: "%{actor} הזכיר אותך"
       user_reminded: "%{actor} מזכיר לך להצביע"
+      group_mentioned: "%{actor} הזכיר את הקבוצה"
     hints:
       poll_closing_soon: עכשיו זה זמן טוב להצביע, לשנות את דעתך או לעודד אחרים להשתתף.
       poll_closing_soon_author: אולי תרצה להזכיר לאנשים להצביע או להאריך את המועד.
@@ -896,6 +911,7 @@ he:
       modal_title: בחר את חברי הקבוצה
     flash:
       success: נשלחו %{count} התראות
+    group_mentioned: "%{name} הזכיר את הקבוצה עם %{length} אנשים:"
   action_dock:
     actions_menu: תפריט פעולות
     more_actions: יותר פעולות

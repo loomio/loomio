@@ -103,18 +103,19 @@ GEM
       activesupport (>= 3.0.0)
       ruby2_keywords (>= 0.0.2)
     ast (2.4.2)
-    aws-eventstream (1.3.1)
-    aws-partitions (1.1052.0)
-    aws-sdk-core (3.219.0)
+    aws-eventstream (1.3.2)
+    aws-partitions (1.1078.0)
+    aws-sdk-core (3.222.1)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       base64
       jmespath (~> 1, >= 1.6.1)
+      logger
     aws-sdk-kms (1.99.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.182.0)
+    aws-sdk-s3 (1.183.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
@@ -320,7 +321,7 @@ GEM
     hiredis (0.6.3)
     htmlentities (4.3.4)
     http_accept_language (2.1.1)
-    httparty (0.22.0)
+    httparty (0.23.1)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -363,7 +364,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    logger (1.6.6)
+    logger (1.7.0)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -404,11 +405,11 @@ GEM
       net-protocol
     net_http_timeout_errors (1.0.0)
     nio4r (2.7.4)
-    nokogiri (1.18.6-arm64-darwin)
+    nokogiri (1.18.7-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-darwin)
+    nokogiri (1.18.7-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.6-x86_64-linux-gnu)
+    nokogiri (1.18.7-x86_64-linux-gnu)
       racc (~> 1.4)
     oga (3.4)
       ast
@@ -547,7 +548,7 @@ GEM
     ruby-ll (2.1.3)
       ansi
       ast
-    ruby-openai (8.0.0)
+    ruby-openai (8.1.0)
       event_stream_parser (>= 0.3.0, < 2.0.0)
       faraday (>= 1)
       faraday-multipart (>= 1)
@@ -680,7 +681,7 @@ DEPENDENCIES
   haml-rails (~> 2.1.0)
   hiredis
   http_accept_language
-  httparty (~> 0.22.0)
+  httparty (~> 0.23.1)
   i18n-timezones
   icalendar
   image_processing (~> 1.14)
