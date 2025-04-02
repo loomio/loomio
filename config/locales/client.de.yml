@@ -320,6 +320,7 @@ de:
     formatting_help:
       label: Markdown-Formatierung
       title: Mehr über die Textformatierung mit Markdown lernen
+    thread: Faden
   merge_accounts:
     modal:
       title: Benutzerkonten zusammenführen
@@ -466,6 +467,18 @@ de:
         loud: Du wirst per E-Mail über alle Aktivitäten in neuen Gruppen benachrichtigt.
         normal: Du wirst per E-Mail über Ankündigungen in neuen Gruppen benachrichtigt.
         quiet: Du wirst keine E-Mail Nachrichten über neue Gruppen erhalten.
+    change_your_email_settings: Ändern Sie Ihre E-Mail-Einstellungen
+    when_would_you_like_to_be_emailed_thread: Wann möchten Sie eine E-Mail zu diesem Thread erhalten?
+    when_would_you_like_to_be_emailed_group: Wann möchten Sie E-Mails zu dieser Gruppe erhalten?
+    changes_all_threads_in_group: Dadurch werden die Einstellungen für alle Threads in der Gruppe geändert.
+    what_do_the_options_mean: Was bedeuten die Optionen?
+    loud_desc: Jedes Mal, wenn jemand teilnimmt
+    normal_desc: Wenn mich jemand benachrichtigt
+    quiet_desc: Niemals
+    quiet_explained: Sie erhalten keine E-Mails, auch wenn jemand versucht, Sie zu benachrichtigen. Sie könnten wichtige Ankündigungen oder Entscheidungen verpassen. Dies kann sinnvoll sein, wenn Sie ein Thema nicht betrifft, wird aber für die Gruppeneinstellung nicht empfohlen, es sei denn, Sie haben andere Möglichkeiten, auf dem Laufenden zu bleiben.
+    normal_explained: Wenn jemand Ihren Namen in das Feld „Benachrichtigen“ eines Threads oder einer Umfrage eingibt oder die Gruppe @erwähnt.
+    normal_excludes_mentioning_html: Es gibt eine separate Einstellung für @Erwähnungen (z. B. bei einer Antwort in einem Kommentar). <a href="%{url}">Klicken Sie hier, um die Einstellungen für @Erwähnungen zu bearbeiten.</a>
+    loud_explained: Sie erhalten jedes Mal eine E-Mail, wenn ein neuer Kommentar eingeht, jemand abstimmt oder eine Umfrage bzw. ein Thread startet.
   close_explanation_modal:
     aria_label: Diskussion schließen
     close_thread: Diskussion schließen
@@ -674,6 +687,7 @@ de:
       user_added_to_group: "%{actor} hat Sie zur Gruppe hinzugefügt: %{title}"
       user_mentioned: "%{actor} hat dich in %{title} erwähnt"
       user_reminded: "%{actor} erinnert dich deine Stimme in %{title} abzugeben"
+      group_mentioned: "%{actor} hat die Gruppe erwähnt in: %{title}"
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       discussion_announced: "%{actor} hat Sie zu einem Thread eingeladen"
@@ -710,6 +724,7 @@ de:
       stance_created_option: "%{actor} hat für %{option} abgestimmt"
       user_mentioned: "%{actor} hat Sie erwähnt"
       user_reminded: "%{actor} erinnert Sie daran, abzustimmen"
+      group_mentioned: "%{actor} hat die Gruppe erwähnt"
     hints:
       poll_closing_soon: Jetzt ist ein guter Zeitpunkt, um abzustimmen, Ihre Meinung zu ändern oder andere zur Teilnahme zu ermutigen.
       poll_closing_soon_author: Möglicherweise möchten Sie die Menschen an die Abstimmung erinnern oder die Frist verlängern.
@@ -906,6 +921,7 @@ de:
       modal_title: Gruppenmitglieder bestimmen
     flash:
       success: "%{count} Benachrichtigungen gesendet"
+    group_mentioned: "%{name} hat die Gruppe mit %{length} Personen erwähnt:"
   action_dock:
     actions_menu: Aktions-Menü
     more_actions: Weitere Aktionen

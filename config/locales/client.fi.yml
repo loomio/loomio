@@ -314,6 +314,7 @@ fi:
     formatting_help:
       label: Muotoilu
       title: Opi käyttämään Markdownia tekstin muotoiluun
+    thread: Kierre
   merge_accounts:
     modal:
       title: Yhdistä tilit
@@ -458,6 +459,18 @@ fi:
         loud: Saat sähköpostiisi kaikista uusien ryhmien toiminnoista.
         normal: Saat sähköpostiisi uusien ryhmien ilmoituksista.
         quiet: Sinulle ei lähetetä sähköpostia uusista ryhmistä.
+    change_your_email_settings: Muuta sähköpostiasetuksiasi
+    when_would_you_like_to_be_emailed_thread: Milloin haluaisit saada sähköpostia tästä ketjusta?
+    when_would_you_like_to_be_emailed_group: Milloin haluaisit saada sähköpostia tästä ryhmästä?
+    changes_all_threads_in_group: Tämä muuttaa asetusta kaikille ryhmän säikeille.
+    what_do_the_options_mean: Mitä vaihtoehdot tarkoittavat?
+    loud_desc: Joka kerta kun joku osallistuu
+    normal_desc: Kun joku ilmoittaa minulle
+    quiet_desc: Ei koskaan
+    quiet_explained: Sinulle ei lähetetä sähköpostia, vaikka joku yrittäisi ilmoittaa sinulle. Saatat unohtaa tärkeitä ilmoituksia tai päätöksiä. Tämä voi sopia, jos viestiketju ei koske sinua, mutta sitä ei suositella ryhmäasetukselle, ellei sinulla ole muita tapoja pysyä ajan tasalla.
+    normal_explained: Kun joku kirjoittaa nimesi viestiketjun tai kyselyn "Ilmoita"-kenttään tai @mainitsee ryhmän.
+    normal_excludes_mentioning_html: On erillinen asetus, kun joku @mainitsee sinut (esim. kun vastaat sinulle kommentissa). <a href="%{url}">Napsauta tätä muokataksesi @mainintojen asetuksia</a>
+    loud_explained: Saat sähköpostin aina, kun tulee uusi kommentti, joku äänestää tai aloittaa kyselyn tai viestiketjun.
   close_explanation_modal:
     aria_label: Sulje lanka
     close_thread: Sulje lanka
@@ -664,6 +677,7 @@ fi:
       user_added_to_group: "%{actor} lisäsi sinut ryhmään: %{title}"
       user_mentioned: "%{actor} mainitsi sinut: %{title}"
       user_reminded: "%{actor} muistuttaa sinua äänestämään: %{title}"
+      group_mentioned: "%{actor} mainitsi ryhmän: %{title}"
     without_title:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       discussion_announced: "%{actor} kutsui sinut viestiketjuun"
@@ -700,6 +714,7 @@ fi:
       stance_created_option: "%{actor} äänesti %{option}"
       user_mentioned: "%{actor} mainitsi sinut"
       user_reminded: "%{actor} muistuttaa sinua äänestämään"
+      group_mentioned: "%{actor} mainitsi ryhmän"
     hints:
       poll_closing_soon: Nyt on hyvä aika äänestää, muuttaa mieltäsi tai kannustaa muita osallistumaan.
       poll_closing_soon_author: Haluat ehkä muistuttaa ihmisiä äänestämään tai pidentää määräaikaa.
@@ -892,6 +907,7 @@ fi:
       modal_title: Valitse ryhmän jäsenet
     flash:
       success: "%{count} ilmoitusta lähetetty"
+    group_mentioned: "%{name} mainitsi ryhmän %{length} henkilön kanssa:"
   action_dock:
     actions_menu: Toiminnot-valikko
     more_actions: Lisää toimintaa

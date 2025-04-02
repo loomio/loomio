@@ -320,6 +320,7 @@ es:
     formatting_help:
       label: 'Formato '
       title: Aprenda a usar Markdown para dar formato a su texto
+    thread: Hilo
   merge_accounts:
     modal:
       title: Fusionar cuentas
@@ -466,6 +467,18 @@ es:
         loud: Recibirá correos electrónicos sobre toda la actividad en nuevos grupos.
         normal: Recibirás por correo electrónico los anuncios de grupos nuevos.
         quiet: No recibirás correo electrónico de los nuevos grupos.
+    change_your_email_settings: Cambiar la configuración de su correo electrónico
+    when_would_you_like_to_be_emailed_thread: "¿Cuándo le gustaría recibir un correo electrónico acerca de este hilo?"
+    when_would_you_like_to_be_emailed_group: "¿Cuándo le gustaría recibir un correo electrónico sobre este grupo?"
+    changes_all_threads_in_group: Esto cambia la configuración de todos los hilos del grupo.
+    what_do_the_options_mean: "¿Qué significan las opciones?"
+    loud_desc: Cada vez que alguien participa
+    normal_desc: Cuando alguien me avisa
+    quiet_desc: Nunca
+    quiet_explained: No recibirás correos electrónicos, ni siquiera cuando alguien intente notificarte. Podrías perderte anuncios o decisiones importantes. Esto puede ser útil si un hilo no te concierne, pero no se recomienda para grupos a menos que tengas otras formas de mantenerte al día.
+    normal_explained: Cuando alguien ingresa su nombre en el campo "Notificar" de un hilo o una encuesta, o @menciona al grupo.
+    normal_excludes_mentioning_html: Hay una configuración independiente para cuando alguien te @menciona (por ejemplo, al responderte en un comentario). <a href="%{url}">Haz clic aquí para editar la configuración de @menciones.</a>
+    loud_explained: Recibirás un correo electrónico cada vez que haya un nuevo comentario, alguien vote o inicie una encuesta o hilo.
   close_explanation_modal:
     aria_label: Cerrar hilo
     close_thread: 'Cerrar hilo '
@@ -674,6 +687,7 @@ es:
       user_added_to_group: "%{actor} te añadió en el grupo: %{title}"
       user_mentioned: "%{actor} te mencionó en: %{title}"
       user_reminded: "%{actor} te está recordando que votes en %{title}"
+      group_mentioned: "%{actor} mencionó al grupo en: %{title}"
     without_title:
       unknown_sender: Revise el correo electrónico del remitente no reconocido
       discussion_announced: "%{actor} te invitó al hilo"
@@ -710,6 +724,7 @@ es:
       stance_created_option: "%{actor} votó %{option}"
       user_mentioned: "%{actor} te mencionó"
       user_reminded: "%{actor} te está recordando que votes"
+      group_mentioned: "%{actor} mencionó el grupo"
     hints:
       poll_closing_soon: Ahora es un buen momento para votar, cambiar de opinión o animar a otros a participar.
       poll_closing_soon_author: Es posible que desee recordar a las personas que voten o extiendan la fecha límite.
@@ -906,6 +921,7 @@ es:
       modal_title: Selecciona integrantes del grupo
     flash:
       success: "%{count} notificaciones enviadas"
+    group_mentioned: "%{name} mencionó el grupo con %{length} personas:"
   action_dock:
     actions_menu: Menú de acciones
     more_actions: Más acciones

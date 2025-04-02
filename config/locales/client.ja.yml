@@ -313,6 +313,7 @@ ja:
     formatting_help:
       label: 書式設定
       title: Markdown を使用してテキストの書式を設定する方法を学びます
+    thread: 糸
   merge_accounts:
     modal:
       title: アカウントを統合する
@@ -457,6 +458,18 @@ ja:
         loud: 新しいグループのすべてのアクティビティが電子メールで送信されます。
         normal: 新しいグループのお知らせについてはメールでお知らせします。
         quiet: 新しいグループに関する電子メールは送信されません。
+    change_your_email_settings: メール設定を変更する
+    when_would_you_like_to_be_emailed_thread: このスレッドについていつメールを受け取りたいですか?
+    when_would_you_like_to_be_emailed_group: このグループに関するメールをいつ受け取りたいですか?
+    changes_all_threads_in_group: これにより、グループ内のすべてのスレッドの設定が変更されます。
+    what_do_the_options_mean: オプションは何を意味しますか?
+    loud_desc: 誰かが参加するたびに
+    normal_desc: 誰かが私に通知すると
+    quiet_desc: 一度もない
+    quiet_explained: 誰かがあなたに通知しようとしても、メールは届きません。重要なお知らせや決定を見逃す可能性があります。これは、スレッドがあなたに関係ない場合は適しているかもしれませんが、最新情報を入手する他の方法がない限り、グループ設定では推奨されません。
+    normal_explained: 誰かがスレッドまたはアンケートの「通知」フィールドにあなたの名前を入力したとき、またはグループを @mention したとき。
+    normal_excludes_mentioning_html: 誰かがあなたに@メンションしたとき（コメントであなたに返信したときなど）には別の設定があります。 <a href="%{url}">@メンションの設定を編集するにはここをクリックしてください</a>
+    loud_explained: 新しいコメントが追加されたり、誰かが投票したり、アンケートやスレッドが開始されたりするたびに、メールが届きます。
   close_explanation_modal:
     aria_label: スレッドを閉じる
     close_thread: スレッドを閉じる
@@ -663,6 +676,7 @@ ja:
       user_added_to_group: "%{actor} があなたをグループに追加しました: %{title}"
       user_mentioned: "%{actor} が次の記事であなたの名前を挙げました: %{title}"
       user_reminded: "%{actor} が投票するよう促しています: %{title}"
+      group_mentioned: "%{actor} が %{title} でこのグループについて言及しました"
     without_title:
       unknown_sender: 認識できない送信者からのメールを確認してください
       discussion_announced: "%{actor} があなたをスレッドに招待しました"
@@ -699,6 +713,7 @@ ja:
       stance_created_option: "%{actor} が %{option} に投票しました"
       user_mentioned: "%{actor} さんがあなたについて言及しました"
       user_reminded: "%{actor} が投票を促しています"
+      group_mentioned: "%{actor} がグループについて言及しました"
     hints:
       poll_closing_soon: 今こそ、投票したり、考えを変えたり、他の人に参加を奨励したりするのに良い時期です。
       poll_closing_soon_author: 投票するよう人々に思い出させたり、期限を延長したりすることもできます。
@@ -891,6 +906,7 @@ ja:
       modal_title: グループメンバーの選択
     flash:
       success: "%{count} 件の通知が送信されました"
+    group_mentioned: "%{name} は %{length} 人のグループについて言及しました:"
   action_dock:
     actions_menu: "「アクション」メニュー"
     more_actions: さらなるアクション

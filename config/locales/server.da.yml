@@ -1,3 +1,4 @@
+---
 da:
   discussion_templates:
     blank:
@@ -96,16 +97,15 @@ da:
         invalid: er ikke en gyldig værdi
   unauthorized:
     manage:
-      all: "Ikke autoriseret til %{action} %{subject}."
+      all: Ikke autoriseret til %{action} %{subject}.
     add_guests:
-      all: "Du skal opgradere dit Loomio-abonnement for at tilføje gæster til dit %{subject}. Alternativt kan du invitere dem til at være medlemmer af din gruppe."
+      all: Du skal opgradere dit Loomio-abonnement for at tilføje gæster til dit %{subject}. Alternativt kan du invitere dem til at være medlemmer af din gruppe.
   errors:
-    clear_cache: "Indlæsningsproblem fundet. Hold shift nede, og tryk på genindlæs, eller tøm din browsers cache."
+    clear_cache: Indlæsningsproblem fundet. Hold shift nede, og tryk på genindlæs, eller tøm din browsers cache.
     404:
       title: Ingen resultater fundet
     noscript: Loomio kræver javascript for at virke! Aktiver venligst javascript i din browser for at fortsætte
-    upgrade_browser: |-
-        Åh åh! Din webbrowser er for gammel, og Loomio fungerer muligvis ikke korrekt. <a href="https://browser-update.org/update.html">Opgrader venligst din browser.</a>
+    upgrade_browser: Åh åh! Din webbrowser er for gammel, og Loomio fungerer muligvis ikke korrekt. <a href="https://browser-update.org/update.html">Opgrader venligst din browser.</a>
     return_home: Vende hjem
     not_found: 404 fil ikke fundet.
     messages:
@@ -114,8 +114,8 @@ da:
       pwned_password: Denne adgangskode har tidligere vist sig i et databrud og bør aldrig bruges
   group:
     error:
-      handle_must_begin_with_parent_handle: "Skal begynde med %{parent_handle}-"
-      no_public_trials: "Opgrader venligst fra prøveversion for at ændre gruppebeskyttelsesindstillingen"
+      handle_must_begin_with_parent_handle: Skal begynde med %{parent_handle}-
+      no_public_trials: Opgrader venligst fra prøveversion for at ændre gruppebeskyttelsesindstillingen
     stats:
       group_stats: Gruppestatistik
       org_stats: Organisationsstatistik (inklusive undergrupper)
@@ -136,14 +136,13 @@ da:
         rank: Rang
         time: Find et tidspunkt
   user:
-    deleted_user: "Slettet bruger"
-    placeholder_name: "Inviteret bruger (%{hostname})"
+    deleted_user: Slettet bruger
+    placeholder_name: Inviteret bruger (%{hostname})
     error:
-      sign_in_required_html: |-
-          Du skal være logget ind for at fortsætte. <a href="/dashboard" target="_blank">Log ind</a> og genindlæs siden for at fortsætte.
-      recaptcha: "Vi var ikke i stand til at bekræfte, at du ikke er en robot. Prøv igen!"
-      bad_login: "Beklager, den adgangskode stemmer ikke overens med den, vi har registreret"
-      username_must_be_alphanumeric: "Brugernavne må kun være små bogstaver og tal"
+      sign_in_required_html: Du skal være logget ind for at fortsætte. <a href="/dashboard" target="_blank">Log ind</a> og genindlæs siden for at fortsætte.
+      recaptcha: Vi var ikke i stand til at bekræfte, at du ikke er en robot. Prøv igen!
+      bad_login: Beklager, den adgangskode stemmer ikke overens med den, vi har registreret
+      username_must_be_alphanumeric: Brugernavne må kun være små bogstaver og tal
   poll:
     error:
       cannot_add_options: Kan ikke tilføje valgmuligheder til denne afstemning
@@ -175,7 +174,7 @@ da:
       participant: Deltager
       also_available: Fås også i
       total: Total
-    waiting_for_votes_from: "Venter på stemmer fra"
+    waiting_for_votes_from: Venter på stemmer fra
   stance:
     error:
       too_short: Foretag venligst et valg
@@ -189,35 +188,34 @@ da:
     via_loomio: "%{name} (via %{site_name})"
   event_mailer:
     received_email:
-      explaination_html: |-
-          <p>Du modtager denne e-mail, fordi du er administrator for Loomio-gruppen: %{group}.</p><p> Gruppen har modtaget en e-mail fra en ikke-genkendt e-mailadresse.</p><p> Hvis beskeden er fra et medlem af gruppen, skal du gennemgå e-mailen og vælge medlemmet.</p><p> Hvis beskeden er uønsket, kan du blokere yderligere e-mails fra den adresse.</p>
+      explaination_html: "<p>Du modtager denne e-mail, fordi du er administrator for Loomio-gruppen: %{group}.</p><p> Gruppen har modtaget en e-mail fra en ikke-genkendt e-mailadresse.</p><p> Hvis beskeden er fra et medlem af gruppen, skal du gennemgå e-mailen og vælge medlemmet.</p><p> Hvis beskeden er uønsket, kan du blokere yderligere e-mails fra den adresse.</p>"
+    notification_reason:
+      group_subscribed: Du har modtaget dette, fordi du er tilmeldt al aktivitet i gruppen.
+      thread_subscribed: Du har modtaget dette, fordi du abonnerer på tråden.
+      group_mentioned: Du har modtaget dette, fordi gruppen blev @omtalt.
+      user_mentioned: Du har modtaget dette, fordi du blev @omtalt.
+      notified: Du har modtaget dette, fordi forfatteren har givet dig besked.
   user_mailer:
     group_export_ready:
       subject: Eksport af gruppedata for %{group_name}
-      body_html: |-
-          Download dine gruppedata <a href="%{url}">her</a> . Bemærk venligst, at dette link udløber om en uges tid.
+      body_html: Download dine gruppedata <a href="%{url}">her</a> . Bemærk venligst, at dette link udløber om en uges tid.
     redacted:
-      subject: "Din %{site_name} brugerkonto er blevet slettet"
-      body_html: |-
-          <p>Din %{site_name} brugerkonto er blevet slettet.</p><p> Alle personligt identificerende data er blevet fjernet.</p><p> Hvis du ikke har anmodet om dette, bedes du kontakte %{support_email}</p>
+      subject: Din %{site_name} brugerkonto er blevet slettet
+      body_html: "<p>Din %{site_name} brugerkonto er blevet slettet.</p><p> Alle personligt identificerende data er blevet fjernet.</p><p> Hvis du ikke har anmodet om dette, bedes du kontakte %{support_email}</p>"
     accounts_merged:
-      subject: "Dine %{site_name} brugerkonti er blevet flettet."
-      body_html: |-
-          Hej %{name}, Dine to loomio-konti er blevet slået sammen til én konto. For at få adgang til loomio fra nu af skal du bruge <strong>%{email},</strong> når du logger ind.
+      subject: Dine %{site_name} brugerkonti er blevet flettet.
+      body_html: Hej %{name}, Dine to loomio-konti er blevet slået sammen til én konto. For at få adgang til loomio fra nu af skal du bruge <strong>%{email},</strong> når du logger ind.
     merge_verification:
-      subject: "Bekræft din %{site_name}-e-mailadresse for at flette"
-      body_html: |-
-          <p>Hej %{name},</p><p> Der blev fremsat en anmodning om at flette din brugerkonto under adressen <strong>%{source_email}</strong> med den konto, der tilhører denne adresse, <strong>%{target_email}</strong> .</p><p> Når denne proces er fuldført, vil du ikke længere være i stand til at logge ind med <strong>%{source_email}</strong> og kun med <strong>%{target_email}</strong> .</p><p> Bekræft venligst, at det er det, du vil gøre.</p>
+      subject: Bekræft din %{site_name}-e-mailadresse for at flette
+      body_html: "<p>Hej %{name},</p><p> Der blev fremsat en anmodning om at flette din brugerkonto under adressen <strong>%{source_email}</strong> med den konto, der tilhører denne adresse, <strong>%{target_email}</strong> .</p><p> Når denne proces er fuldført, vil du ikke længere være i stand til at logge ind med <strong>%{source_email}</strong> og kun med <strong>%{target_email}</strong> .</p><p> Bekræft venligst, at det er det, du vil gøre.</p>"
       verify: Bekræft e-mail og fortsæt
       confirm_page:
         confirm: Bekræft fletning
-        body_html: |-
-            <p>Bekræft venligst, at du gerne vil flette kontoen under <strong>%{source_email}</strong> til kontoen under <strong>%{target_email}</strong> .</p><p> Din konto under <strong>%{source_email}</strong> vil blive slettet, og du vil derefter kun kunne logge ind via <strong>%{target_email}</strong> .</p><p> Denne ændring er irreversibel.</p>
+        body_html: "<p>Bekræft venligst, at du gerne vil flette kontoen under <strong>%{source_email}</strong> til kontoen under <strong>%{target_email}</strong> .</p><p> Din konto under <strong>%{source_email}</strong> vil blive slettet, og du vil derefter kun kunne logge ind via <strong>%{target_email}</strong> .</p><p> Denne ændring er irreversibel.</p>"
         merge: Flet konti
       complete_page:
         title: Sammenlægningen lykkedes!
-        body_html: |-
-            <p>Sammenlægningen af dine brugerkonti lykkedes. Du vil snart modtage en bekræftelses-e-mail på <strong>%{target_email}</strong> .</p><p> <a href="/contact" target="_blank">Kontakt os</a> venligst, hvis du har yderligere spørgsmål.</p>
+        body_html: <p>Sammenlægningen af dine brugerkonti lykkedes. Du vil snart modtage en bekræftelses-e-mail på <strong>%{target_email}</strong> .</p><p> <a href="/contact" target="_blank">Kontakt os</a> venligst, hvis du har yderligere spørgsmål.</p>
   email:
     common:
       or_enter_code: Eller indtast koden nedenfor
@@ -234,28 +232,28 @@ da:
     contact_request:
       subject: "%{name} vil gerne i forbindelse med dig på %{site_name}!"
       intro: "%{name} (%{email}) har sendt dig en anmodning om at oprette forbindelse."
-      footer: "Du kan svare %{name} direkte ved at svare på denne e-mail."
+      footer: Du kan svare %{name} direkte ved at svare på denne e-mail.
     reset_password:
       greeting: |+
-          Hej %{name}
-          Her er et link som du kan bruge til at nulstill din adgangskode for din Loomio konto:
+        Hej %{name}
+        Her er et link som du kan bruge til at nulstill din adgangskode for din Loomio konto:
 
       link_text: Nulstil din adgangskode
       signoff: |
-          Du modtager denne email fordi din email adresse blev indtastet i "Jeg har glemt min adgangskode"  formular on %{hostname}.
-          Din adgangkode vil først blive ændret når du klikker på linket herover og udfylder formularen.
-          Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
+        Du modtager denne email fordi din email adresse blev indtastet i "Jeg har glemt min adgangskode"  formular on %{hostname}.
+        Din adgangkode vil først blive ændret når du klikker på linket herover og udfylder formularen.
+        Hvis du stadig har problemer med at logge ind, besvar denne email for at kontakte support.
     by_who: af %{person}
     reply_to_this_discussion: Svar på denne diskussion
-    loomio_app_description: "Et let at bruge, sikkert sted for organisationer at træffe beslutninger sammen."
+    loomio_app_description: Et let at bruge, sikkert sted for organisationer at træffe beslutninger sammen.
     view_group: Vis gruppe
     to_join_group:
       subject: "%{member} har inviteret dig til at deltage i %{group_name} på %{site_name}"
       invitation_text: "%{member} har inviteret dig til at deltage i deres gruppe %{group_name}."
-      invitation_text_html: "har inviteret dig til at deltage i deres gruppe"
-      link_help: "Klik på linket herunder for at acceptere invitationen:"
-      accept_invitation: "Acceptér invitation"
-      stop_emails: "Stop med at modtage e-mails fra %{site_name}"
+      invitation_text_html: har inviteret dig til at deltage i deres gruppe
+      link_help: 'Klik på linket herunder for at acceptere invitationen:'
+      accept_invitation: Acceptér invitation
+      stop_emails: Stop med at modtage e-mails fra %{site_name}
       accepting_is_important: Det er vigtigt at acceptere din invitation, så du ikke går glip af meddelelser om beslutninger, der involverer dig.
     resend_to_join_group:
       subject: "%{member} venter på, at du slutter dig til %{group_name} på %{site_name}"
@@ -263,8 +261,8 @@ da:
       subject: "%{who} har føjet dig til %{which_group} på %{site_name}"
       content: "%{who} har tilføjet dig til %{which_group}."
       content_html: "<strong>%{who}</strong> har tilføjet dig til <strong>%{which_group}</strong>."
-      link_help: "Klik på linket herunder for at gå til gruppen:"
-    unsubscribe: "Afmeld abonnement eller rediger dine e-mail-indstillinger:"
+      link_help: 'Klik på linket herunder for at gå til gruppen:'
+    unsubscribe: 'Afmeld abonnement eller rediger dine e-mail-indstillinger:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> for at afmelde abonnement eller ændre dine e-mail-indstillinger."
     catch_up:
       daily_subject: I går på %{site_name}
@@ -276,11 +274,11 @@ da:
       marked_as_read_success: Alt fra e-mailen er blevet markeret som læst
       click_here: Klik her
     group_membership_approved:
-      intro: "Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt."
-      intro_html: "Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt."
-      link_help: "Klik på linket herunder for at blive medlem af %{group_name}:"
-      subject: "Din anmodning om at deltage i %{group_name} er blevet godkendt"
-      join_group: "Bliv medlem"
+      intro: Din anmodning om at deltage i gruppen %{group_name} er blevet godkendt.
+      intro_html: Din anmodning om at deltage i gruppen <strong>%{group_name}</strong> er blevet godkendt.
+      link_help: 'Klik på linket herunder for at blive medlem af %{group_name}:'
+      subject: Din anmodning om at deltage i %{group_name} er blevet godkendt
+      join_group: Bliv medlem
     membership_request:
       intro_html: har anmodet om adgang til en af dine Loomio-grupper.
       subject: "%{who} har anmodet om medlemskab af %{which_group}"
@@ -290,13 +288,13 @@ da:
   email_actions:
     unfollowed_discussion: Du har slået e-mails fra for tråden.
   discussion_mailer:
-    reply_or_view_online_html: "Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>."
+    reply_or_view_online_html: Svar på denne e-mail eller <a href='%{url}'>se det på %{hostname}</a>.
     turn_off_notifications_html: "<a href='%{url}'>Slå email notifikationer fra</a> for denne diskussion."
-    change_email_preferences_html: "Skift dine <a href='%{email_preferences_url}'>e-mail-præferencer</a> ."
+    change_email_preferences_html: Skift dine <a href='%{email_preferences_url}'>e-mail-præferencer</a> .
     unsubscribe_from_discussion_announced_html: "<a href='%{url}'>Afmeld</a> yderligere meddelelser i denne tråd."
     unsubscribe_from_new_comment_html: "<a href='%{url}'>Afmeld</a> kommentarer i denne tråd."
-    unsubscribe_from_comment_replied_to_html: "Dette er en svarmeddelelse."
-    unsubscribe_from_user_mentioned_html: "Dette er en omtalemeddelelse."
+    unsubscribe_from_comment_replied_to_html: Dette er en svarmeddelelse.
+    unsubscribe_from_user_mentioned_html: Dette er en omtalemeddelelse.
     discussion_edited:
       inline: "%{actor} redigerede trådkonteksten"
     discussion_closed:
@@ -316,35 +314,33 @@ da:
     change_my_password: Skift kodeord
     confirm_new_password: Bekræft kodeord
     new_password: Nyt kodeord
-    email_guidelines_html: |-
-        <p>Indtast din e-mailadresse, og du vil få tilsendt et link til nulstilling af adgangskode.</p><p> Hvis du normalt logger ind via Facebook eller Google, skal du indtaste den e-mailadresse, der er knyttet til den pågældende konto.</p>
+    email_guidelines_html: "<p>Indtast din e-mailadresse, og du vil få tilsendt et link til nulstilling af adgangskode.</p><p> Hvis du normalt logger ind via Facebook eller Google, skal du indtaste den e-mailadresse, der er knyttet til den pågældende konto.</p>"
     reset_email_timeframe: Vent venligst i op til 5 minutter på at emailen kommer. Hvis den ikke kommer, så kontroller din spam folder.
     length_restriction: Adgangskode skal være mindst 8 tegn.
     forbidden_passwords: Almindelige adgangskoder så som "password" er forbudt for at sikre dun konto.
   task_mailer:
     task_due_reminder:
-      subject: "Opgavepåmindelse: %{name}"
-      greeting: "Hej %{name}, følgende opgave skal betales %{due}:"
-      view_task: "Vis på %{site_name}"
-      update_or_comment: "Hvis du allerede har fuldført denne opgave, skal du sætte kryds ved den. Hvis det ikke er komplet, bedes du dele en statusopdatering."
-      due_today: "i dag"
-      due_in_count_days: "om %{count} dage"
+      subject: 'Opgavepåmindelse: %{name}'
+      greeting: 'Hej %{name}, følgende opgave skal betales %{due}:'
+      view_task: Vis på %{site_name}
+      update_or_comment: Hvis du allerede har fuldført denne opgave, skal du sætte kryds ved den. Hvis det ikke er komplet, bedes du dele en statusopdatering.
+      due_today: i dag
+      due_in_count_days: om %{count} dage
   group_mailer:
-    resend: "PÅMINDELSE: %{member} venter på, at du bliver medlem af %{group_name}"
+    resend: 'PÅMINDELSE: %{member} venter på, at du bliver medlem af %{group_name}'
     destroy_warning:
       subject: Din Loomio-gruppe er planlagt til sletning.
-      body: |-
-          Din Loomio-gruppe: "%{group}" er planlagt til sletning af %{deletor}. Hvis du ikke ønsker, at din gruppe skal slettes, bedes du besvare denne e-mail. Hvis du er sikker på, at du vil slette gruppen, behøver du ikke at gøre noget. Tak skal du have.
+      body: 'Din Loomio-gruppe: "%{group}" er planlagt til sletning af %{deletor}. Hvis du ikke ønsker, at din gruppe skal slettes, bedes du besvare denne e-mail. Hvis du er sikker på, at du vil slette gruppen, behøver du ikke at gøre noget. Tak skal du have.'
   poll_mailer:
     common:
       why_send_this: Du modtager denne email fordi %{reason}
       view_on_loomio: Se det på %{site_name}
       create_outcome: Del resultat
-      your_response: "Du stemte:"
-      you_voted: "Du stemte!"
-      not_invited: "Ikke inviteret"
+      your_response: 'Du stemte:'
+      you_voted: Du stemte!
+      not_invited: Ikke inviteret
       please_respond: Svar venligst
-      time_zone: (Tider er vist i %{zone})
+      time_zone: "(Tider er vist i %{zone})"
       undecided_members: Ubesluttede medlemmer (%{count})
       undecided_visitors: Ubeslutsomme gæster (%{count})
       more_undecided: "%{count} mere..."

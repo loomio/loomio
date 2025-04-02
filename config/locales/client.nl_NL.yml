@@ -314,6 +314,7 @@ nl_NL:
     formatting_help:
       label: Aan het formatteren
       title: Leer hoe je Markdown kan gebruiken om tekst op te maken
+    thread: Draad
   merge_accounts:
     modal:
       title: Accounts samenvoegen
@@ -460,6 +461,18 @@ nl_NL:
         loud: Je krijgt e-mails van alle activiteiten in nieuwe groepen.
         normal: Je zal e-mails krijgen over aankondigingen in nieuwe groepen.
         quiet: Je zal geen e-mails krijgen over nieuwe groepen.
+    change_your_email_settings: Wijzig uw e-mailinstellingen
+    when_would_you_like_to_be_emailed_thread: Wanneer wilt u een e-mail ontvangen over deze thread?
+    when_would_you_like_to_be_emailed_group: Wanneer wilt u een e-mail ontvangen over deze groep?
+    changes_all_threads_in_group: Hiermee wijzigt u de instellingen voor alle threads in de groep.
+    what_do_the_options_mean: Wat betekenen de opties?
+    loud_desc: Elke keer dat iemand meedoet
+    normal_desc: Wanneer iemand mij op de hoogte stelt
+    quiet_desc: Nooit
+    quiet_explained: U ontvangt geen e-mail, zelfs niet als iemand u probeert te informeren. U mist mogelijk belangrijke aankondigingen of beslissingen. Dit kan geschikt zijn als een thread u niet aangaat, maar wordt niet aanbevolen voor de groepsomgeving, tenzij u andere manieren hebt om op de hoogte te blijven.
+    normal_explained: Wanneer iemand jouw naam invoert in het veld 'Melden' van een thread of poll, of wanneer ze de groep @vermelden.
+    normal_excludes_mentioning_html: Er is een aparte instelling voor wanneer iemand jou @vermeldt (bijvoorbeeld wanneer iemand op jou reageert in een opmerking). <a href="%{url}">Klik hier om de instellingen voor @vermeldingen te bewerken</a>
+    loud_explained: U ontvangt een e-mail wanneer er een nieuwe reactie is, iemand stemt of een poll of thread start.
   close_explanation_modal:
     aria_label: Sluit bord
     close_thread: Sluit bord
@@ -668,6 +681,7 @@ nl_NL:
       user_added_to_group: "%{actor} heeft je toegevoegd aan de groep: %{title}"
       user_mentioned: "%{actor} noemde je in: %{title}"
       user_reminded: "%{actor} herinnert je er aan om te stemmen in : %{title}"
+      group_mentioned: "%{actor} noemde de groep in: %{title}"
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       discussion_announced: "%{actor} heeft je uitgenodigd voor een thread"
@@ -704,6 +718,7 @@ nl_NL:
       stance_created_option: "%{actor} stemde op %{option}"
       user_mentioned: "%{actor} heeft je genoemd"
       user_reminded: "%{actor} herinnert je eraan om te stemmen"
+      group_mentioned: "%{actor} noemde de groep"
     hints:
       poll_closing_soon: Dit is een goed moment om te stemmen, van gedachten te veranderen of anderen aan te moedigen om mee te doen.
       poll_closing_soon_author: Misschien wilt u mensen eraan herinneren om te stemmen of de deadline verlengen.
@@ -900,6 +915,7 @@ nl_NL:
       modal_title: Selecteer groepsleden
     flash:
       success: "%{count} meldingen verzonden"
+    group_mentioned: "%{name} noemde de groep met %{length} mensen:"
   action_dock:
     actions_menu: Actie menu
     more_actions: Meer acties

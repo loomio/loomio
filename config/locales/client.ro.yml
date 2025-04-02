@@ -314,6 +314,7 @@ ro:
     formatting_help:
       label: Formatare
       title: Invață să folosești Markdown pentru a formata textul
+    thread: Fir
   merge_accounts:
     modal:
       title: Îmbinați conturile
@@ -458,6 +459,18 @@ ro:
         loud: Veți primi prin e-mail toată activitatea în grupuri noi.
         normal: Veți primi un e-mail despre anunțurile din grupuri noi.
         quiet: Nu veți primi e-mailuri despre grupuri noi.
+    change_your_email_settings: Modificați setările de e-mail
+    when_would_you_like_to_be_emailed_thread: Când doriți să primiți un e-mail despre acest subiect?
+    when_would_you_like_to_be_emailed_group: Când doriți să primiți un e-mail despre acest grup?
+    changes_all_threads_in_group: Aceasta modifică setarea pentru toate firele din grup.
+    what_do_the_options_mean: Ce înseamnă opțiunile?
+    loud_desc: De fiecare dată când cineva participă
+    normal_desc: Când cineva mă anunță
+    quiet_desc: Nu
+    quiet_explained: Nu veți primi e-mail, chiar și atunci când cineva încearcă să vă anunțe. Este posibil să pierdeți anunțuri sau decizii importante. Acest lucru poate fi potrivit dacă o discuție nu vă privește, dar nu este recomandat pentru setarea de grup decât dacă aveți alte modalități de a rămâne la curent.
+    normal_explained: Când cineva vă introduce numele în câmpul „Notificați” al unui fir sau al unui sondaj, sau @menționează grupul.
+    normal_excludes_mentioning_html: Există o setare separată pentru când cineva @ te menționează (de exemplu, când îți răspunde într-un comentariu). <a href="%{url}">Faceți clic aici pentru a edita setările pentru @mențiuni</a>
+    loud_explained: Veți primi un e-mail de fiecare dată când există un comentariu nou, cineva votează sau începe un sondaj sau un thread.
   close_explanation_modal:
     aria_label: Închideți firul
     close_thread: Închideți firul
@@ -664,6 +677,7 @@ ro:
       user_added_to_group: "%{actor} te-a adăugat în grupul: %{title}"
       user_mentioned: "%{actor} te-a menționat în: %{title}"
       user_reminded: "%{actor} vă reamintește să votați în: %{title}"
+      group_mentioned: "%{actor} a menționat grupul în: %{title}"
     without_title:
       unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
       discussion_announced: "%{actor} te-a invitat la o discuție"
@@ -700,6 +714,7 @@ ro:
       stance_created_option: "%{actor} a votat %{option}"
       user_mentioned: "%{actor} te-a menționat"
       user_reminded: "%{actor} vă reamintește să votați"
+      group_mentioned: "%{actor} a menționat grupul"
     hints:
       poll_closing_soon: Acum este un moment bun să votezi, să te răzgândești sau să încurajezi pe alții să participe.
       poll_closing_soon_author: Poate doriți să reamintiți oamenilor să voteze sau să prelungiți termenul.
@@ -892,6 +907,7 @@ ro:
       modal_title: Selectați membrii grupului
     flash:
       success: "%{count} notificări trimise"
+    group_mentioned: "%{name} a menționat grupul cu %{length} persoane:"
   action_dock:
     actions_menu: Meniul Acțiuni
     more_actions: Mai multe actiuni
