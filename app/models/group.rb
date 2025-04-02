@@ -39,6 +39,9 @@ class Group < ApplicationRecord
   has_many :memberships, -> { active }
   has_many :members, through: :memberships, source: :user
 
+  has_many :delegate_memberships, -> { active.delegates }, class_name: "Membership"
+  has_many :delegates, through: :delegate_memberships, source: :user
+
   has_many :accepted_memberships, -> { active.accepted }, class_name: "Membership"
   has_many :accepted_members, through: :accepted_memberships, source: :user
 
@@ -119,6 +122,7 @@ class Group < ApplicationRecord
   define_counter_cache(:memberships_count)          { |g| g.memberships.count }
   define_counter_cache(:pending_memberships_count)  { |g| g.memberships.pending.count }
   define_counter_cache(:admin_memberships_count)    { |g| g.admin_memberships.count }
+  define_counter_cache(:delegates_count)            { |g| g.memberships.delegates.count }
   define_counter_cache(:public_discussions_count)   { |g| g.discussions.visible_to_public.count }
   define_counter_cache(:discussions_count)          { |g| g.discussions.kept.count }
   define_counter_cache(:open_discussions_count)     { |g| g.discussions.is_open.count }

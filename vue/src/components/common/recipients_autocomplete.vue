@@ -1,7 +1,5 @@
 <script lang="js">
-import EventBus from '@/shared/services/event_bus';
 import Records from '@/shared/services/records';
-import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
 import AnnouncementService from '@/shared/services/announcement_service';
 import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash-es';
@@ -147,7 +145,7 @@ export default {
       const excludeMembers = (this.excludeMembers && {exclude_members: 1}) || {};
       if (this.model.anonymous && ['decided_voters', 'undecided_voters'].includes(item.id)) {
         Flash.warning('announcement.cannot_reveal_when_anonymous');
-        return false; 
+        return false;
       }
       Records.fetch({
         path: 'announcements/audience',
@@ -308,6 +306,15 @@ export default {
                 id: `group-${group.id}`,
                 name: this.$t('announcement.audiences.group', {name: group.name}),
                 size: group.membershipsCount,
+                icon: 'mdi-forum'
+              });
+            }
+
+            if (group.delegatesCount) {
+              ret.push({
+                id: `delegates-${group.id}`,
+                name: this.$t('announcement.audiences.delegates_of_group', {name: group.name}),
+                size: group.delegatesCount,
                 icon: 'mdi-forum'
               });
             }

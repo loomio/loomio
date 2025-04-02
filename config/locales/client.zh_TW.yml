@@ -641,6 +641,9 @@ zh_TW:
       group: 自群組移除
       poll: 自 %{pollType} 移除
     cancel_invitation: 取消邀請函
+    revoke_admin: 撤銷管理員
+    make_delegate: 任命代表
+    revoke_delegate: 撤銷委託
   notification_models:
     discussion: 討論串：
     comment: 評論於
@@ -688,6 +691,7 @@ zh_TW:
       user_mentioned: "%{actor} 提到您在：%{title}"
       user_reminded: "%{actor} 正在提醒您要投票：%{title}"
       group_mentioned: "%{actor} 在 %{title} 中提及了該組合"
+      new_delegate: "%{actor} 讓你成為 %{title} 中擁有投票權的代表"
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       discussion_announced: "%{actor} 邀請您加入討論串"
@@ -843,6 +847,7 @@ zh_TW:
       decided_voters: 已經投票的每個人
       undecided_voters: 未決定的選民
       non_voters: "%{name} 的成員尚未被邀請"
+      delegates_of_group: "%{name} 的代表"
     form:
       group_has_no_members_yet: 您是小組中唯一的成員。在開始話題或做出決定之前，您可能會想邀請一些人加入您的小組。
       invite_people_to_evaluate_loomio: 邀請一些人加入您的 Loomio 小組，共同做出決定
@@ -1897,6 +1902,8 @@ zh_TW:
     accepted: 成員 (%{count})
     email_rejected: 電子郵件被拒絕
     email_rejected_meaning: 發送到此位址的電子郵件已被退回或標記為垃圾郵件。不會再有電子郵件傳送到該位址。
+    delegate: 代表
+    delegate_popover: 代表是具有投票權的團體成員
   polls_panel:
     new_poll: 新投票
     any_type: 所有類型

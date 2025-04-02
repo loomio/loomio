@@ -16,6 +16,10 @@ module Ability::Membership
       (user_is_admin_of?(membership.group.parent_id) && user == membership.user)
     end
 
+    can [:make_delegate, :remove_delegate], ::Membership do |membership|
+      membership.group.admins.exists?(user.id)
+    end
+
     can :resend, ::Membership do |membership|
       !membership.accepted_at? && user_is_admin_of?(membership.group_id)
     end

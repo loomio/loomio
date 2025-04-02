@@ -631,6 +631,9 @@ fi:
       group: Poista ryhmästä
       poll: Poista kohteesta %{pollType}
     cancel_invitation: Peruuta kutsu
+    revoke_admin: Peruuta järjestelmänvalvoja
+    make_delegate: Tee valtuutettu
+    revoke_delegate: Peruuta edustaja
   notification_models:
     discussion: 'lanka:'
     comment: kommentoida sisään
@@ -678,6 +681,7 @@ fi:
       user_mentioned: "%{actor} mainitsi sinut: %{title}"
       user_reminded: "%{actor} muistuttaa sinua äänestämään: %{title}"
       group_mentioned: "%{actor} mainitsi ryhmän: %{title}"
+      new_delegate: "%{actor} teki sinusta edustajan, jolla on äänioikeus kohteessa %{title}"
     without_title:
       unknown_sender: Tarkista tuntemattoman lähettäjän sähköposti
       discussion_announced: "%{actor} kutsui sinut viestiketjuun"
@@ -833,6 +837,7 @@ fi:
       decided_voters: Kaikki äänestäneet
       undecided_voters: Epävarmat äänestäjät
       non_voters: Ryhmän %{name} jäseniä ei ole vielä kutsuttu
+      delegates_of_group: "%{name}:n edustajat"
     form:
       group_has_no_members_yet: Olet ryhmäsi ainoa jäsen. Haluat ehkä kutsua ihmisiä ryhmääsi ennen kuin aloitat ketjun tai päätöksen.
       invite_people_to_evaluate_loomio: Kutsu ihmisiä Loomio-ryhmääsi tekemään päätös yhdessä
@@ -1859,6 +1864,8 @@ fi:
     accepted: Jäsenet
     email_rejected: Sähköposti hylätty
     email_rejected_meaning: Tähän osoitteeseen lähetetty sähköposti on palautunut tai merkitty roskapostiksi. Tähän osoitteeseen ei lähetetä enempää sähköpostia.
+    delegate: Delegoida
+    delegate_popover: Edustaja on ryhmän äänioikeutettu jäsen
   polls_panel:
     new_poll: Uusi kysely
     any_type: Kaikki tyypit

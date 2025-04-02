@@ -631,6 +631,9 @@ el:
       group: Αφαίρεση από την ομάδα
       poll: Κατάργηση από %{pollType}
     cancel_invitation: Ακύρωση πρόσκλησης
+    revoke_admin: Ανάκληση διαχειριστή
+    make_delegate: Κάντε ανάθεση
+    revoke_delegate: Ανάκληση εκπροσώπου
   notification_models:
     discussion: 'Νήμα:'
     comment: σχόλιο μέσα
@@ -678,6 +681,7 @@ el:
       user_mentioned: 'Ο %{actor} σας ανέφερε στο: %{title}'
       user_reminded: 'Ο %{actor} σας υπενθυμίζει να ψηφίσετε: %{title}'
       group_mentioned: 'Ο %{actor} ανέφερε την ομάδα στο: %{title}'
+      new_delegate: Ο %{actor} σάς έκανε εκπρόσωπο με δικαιώματα ψήφου στο %{title}
     without_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
       discussion_announced: Ο %{actor} σας προσκάλεσε σε ένα νήμα
@@ -833,6 +837,7 @@ el:
       decided_voters: Όλοι όσοι ψήφισαν
       undecided_voters: Αναποφάσιστοι ψηφοφόροι
       non_voters: Τα μέλη του %{name} δεν έχουν προσκληθεί ακόμη
+      delegates_of_group: Εκπρόσωποι του %{name}
     form:
       group_has_no_members_yet: Είστε το μόνο μέλος της ομάδας σας. Μπορεί να θέλετε να προσκαλέσετε κάποια άτομα στην ομάδα σας πριν ξεκινήσετε ένα νήμα ή μια απόφαση.
       invite_people_to_evaluate_loomio: Προσκαλέστε μερικά άτομα στην ομάδα σας Loomio για να λάβετε μαζί μια απόφαση
@@ -1859,6 +1864,8 @@ el:
     accepted: Μέλη
     email_rejected: Το email απορρίφθηκε
     email_rejected_meaning: Το email που στάλθηκε σε αυτήν τη διεύθυνση έχει αναπηδήσει ή έχει επισημανθεί ως ανεπιθύμητο. Δεν θα σταλεί άλλο email σε αυτήν τη διεύθυνση.
+    delegate: Αντιπρόσωπος
+    delegate_popover: Ένας εκπρόσωπος είναι ένα μέλος της ομάδας με δικαίωμα ψήφου
   polls_panel:
     new_poll: Νέα δημοσκόπηση
     any_type: Ολοι οι τύποι

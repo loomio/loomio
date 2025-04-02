@@ -631,6 +631,9 @@ tr:
       group: Gruptan kaldır
       poll: "%{pollType}'dan kaldır"
     cancel_invitation: Davetiyeyi iptal et
+    revoke_admin: Yöneticiyi iptal et
+    make_delegate: Delege et
+    revoke_delegate: Temsilciyi iptal et
   notification_models:
     discussion: 'iplik:'
     comment: yorum yapın
@@ -678,6 +681,7 @@ tr:
       user_mentioned: "%{actor} sizden şu konuda bahsetti: %{title}"
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor: %{title}"
       group_mentioned: "%{actor} şu gruptan bahsetti: %{title}"
+      new_delegate: "%{actor} sizi %{title}'da oy kullanma haklarına sahip bir delege yaptı"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       discussion_announced: "%{actor} sizi bir konuya davet etti"
@@ -833,6 +837,7 @@ tr:
       decided_voters: Oy veren herkes
       undecided_voters: Kararsız seçmen
       non_voters: "%{name} üyeleri henüz davet edilmedi"
+      delegates_of_group: "%{name} temsilcileri"
     form:
       group_has_no_members_yet: Grubunuzun tek üyesi sizsiniz. Bir konuya veya karara başlamadan önce bazı kişileri grubunuza davet etmek isteyebilirsiniz.
       invite_people_to_evaluate_loomio: Birlikte karar vermeleri için birkaç kişiyi Loomio grubunuza davet edin
@@ -1859,6 +1864,8 @@ tr:
     accepted: Üyeler
     email_rejected: E-posta reddedildi
     email_rejected_meaning: Bu adrese gönderilen e-posta geri döndü veya spam olarak işaretlendi. Bu adrese bir daha e-posta gönderilmeyecek.
+    delegate: Temsilci
+    delegate_popover: Bir delege, oy kullanma hakkına sahip bir grup üyesidir
   polls_panel:
     new_poll: Yeni anket
     any_type: Her türlü

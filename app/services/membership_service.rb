@@ -118,9 +118,14 @@ class MembershipService
 
     return unless user && group
 
-    titles = (user.experiences['titles'] || {})
+    titles = user.experiences.fetch('titles', {})
     titles[group.id] = membership.title
     user.experiences['titles'] = titles
+
+    delegates = user.experiences.fetch('delegates', {})
+    delegates[group.id] = membership.delegate
+    user.experiences['delegates'] = delegates
+
     user.save!
     MessageChannelService.publish_models([user], serializer: AuthorSerializer, group_id: group.id)
   end
@@ -160,6 +165,19 @@ class MembershipService
   def self.remove_admin(membership:, actor:)
     actor.ability.authorize! :remove_admin, membership
     membership.update admin: false
+  end
+
+  def self.make_delegate(membership:, actor:)
+    actor.ability.authorize! :make_delegate, membership
+    membership.update delegate: true
+    update_user_titles_and_broadcast(membership.id)
+    Events::NewDelegate.publish!(membership, actor)
+  end
+
+  def self.remove_delegate(membership:, actor:)
+    actor.ability.authorize! :remove_delegate, membership
+    update_user_titles_and_broadcast(membership.id)
+    membership.update delegate: false
   end
 
   def self.join_group(group:, actor:)

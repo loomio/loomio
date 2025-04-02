@@ -631,6 +631,9 @@ ro:
       group: Eliminați din grup
       poll: Eliminați din %{pollType}
     cancel_invitation: Anulează invitația
+    revoke_admin: Revocați admin
+    make_delegate: Faceți delegat
+    revoke_delegate: Revocați delegatul
   notification_models:
     discussion: 'fir:'
     comment: comenta in
@@ -678,6 +681,7 @@ ro:
       user_mentioned: "%{actor} te-a menționat în: %{title}"
       user_reminded: "%{actor} vă reamintește să votați în: %{title}"
       group_mentioned: "%{actor} a menționat grupul în: %{title}"
+      new_delegate: "%{actor} te-a făcut delegat cu drept de vot în %{title}"
     without_title:
       unknown_sender: Vă rugăm să examinați e-mailul de la expeditor nerecunoscut
       discussion_announced: "%{actor} te-a invitat la o discuție"
@@ -833,6 +837,7 @@ ro:
       decided_voters: Toți cei care au votat
       undecided_voters: Alegători nehotărâți
       non_voters: Membrii grupului %{name} nu au fost încă invitați
+      delegates_of_group: Delegații ai %{name}
     form:
       group_has_no_members_yet: Sunteți singurul membru al grupului dvs. Poate doriți să invitați câteva persoane în grupul dvs. înainte de a începe o discuție sau o decizie.
       invite_people_to_evaluate_loomio: Invitați câteva persoane în grupul dvs. Loomio pentru a lua o decizie împreună
@@ -1859,6 +1864,8 @@ ro:
     accepted: Membri
     email_rejected: E-mail respins
     email_rejected_meaning: E-mailul trimis la această adresă a fost respins sau a fost marcat ca spam. Nu se va mai trimite e-mail la această adresă.
+    delegate: Delega
+    delegate_popover: Un delegat este un membru al grupului cu drept de vot
   polls_panel:
     new_poll: Sondaj nou
     any_type: Toate tipurile

@@ -260,6 +260,10 @@ export default
                   space
                   v-chip(x-small outlined label v-t="'members_panel.admin'")
 
+                template(v-if="membership.groupId == group.id && membership.delegate")
+                  space
+                  v-chip(x-small outlined label v-t="'members_panel.delegate'" :title="$t('members_panel.delegate_popover')")
+
 
               v-list-item-subtitle
                 span(v-if="membership.acceptedAt")

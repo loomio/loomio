@@ -630,6 +630,9 @@ ja:
       group: グループから削除
       poll: "%{pollType} から削除"
     cancel_invitation: 招待をキャンセルする
+    revoke_admin: 管理者の取り消し
+    make_delegate: 委任する
+    revoke_delegate: 委任を取り消す
   notification_models:
     discussion: 糸：
     comment: コメントイン
@@ -677,6 +680,7 @@ ja:
       user_mentioned: "%{actor} が次の記事であなたの名前を挙げました: %{title}"
       user_reminded: "%{actor} が投票するよう促しています: %{title}"
       group_mentioned: "%{actor} が %{title} でこのグループについて言及しました"
+      new_delegate: "%{actor} があなたを %{title} の投票権を持つ代表者に任命しました"
     without_title:
       unknown_sender: 認識できない送信者からのメールを確認してください
       discussion_announced: "%{actor} があなたをスレッドに招待しました"
@@ -832,6 +836,7 @@ ja:
       decided_voters: 投票してくださった皆様
       undecided_voters: 未決定の有権者
       non_voters: "%{name} のメンバーはまだ招待されていません"
+      delegates_of_group: "%{name} の代表者"
     form:
       group_has_no_members_yet: あなたはあなたのグループの唯一のメンバーです。スレッドや決定を開始する前に、何人かをグループに招待したい場合があります。
       invite_people_to_evaluate_loomio: Loomio グループに何人かを招待して、一緒に意思決定をしましょう
@@ -1858,6 +1863,8 @@ ja:
     accepted: メンバー
     email_rejected: メールが拒否されました
     email_rejected_meaning: このアドレスに送信されたメールは返送されたか、スパムとしてマークされました。このアドレスには今後メールは送信されません。
+    delegate: 委任する
+    delegate_popover: 代表者は投票権を持つグループメンバーである
   polls_panel:
     new_poll: 新しい投票
     any_type: いろんなタイプ
