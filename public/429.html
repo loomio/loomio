@@ -5,23 +5,26 @@
 <head>
 <title>Loomio</title>
 <meta charset='utf-8'>
-<link href="/roboto.css" rel="stylesheet">
+<link href='/roboto.css' rel='stylesheet'>
 <link href='/brand/icon_gold_150h.png' rel='shortcut icon'>
-<link rel="stylesheet" media="screen" href="/assets/basic/all.self-7d9221d7d43f582f5ebbec9009dc2a422af5c6d4aef595f0767813ec601ae97d.css?body=1" />
-<link rel="stylesheet" media="screen" href="/assets/web.self-33d53f7a955ebc2ef84a8452442a09f550e724b23fee1627358ebd9a71c351f2.css?body=1" />
-<link rel="stylesheet" media="screen" href="/assets/marketing/all.self-98a7c5628b2948269eb91c2a1c1aed5e7b6775d8d2b9a429b22bc9bf275ba707.css?body=1" />
+<link rel="stylesheet" href="/assets/basic-5fb69fec9c9f5e791e0eefa6da9bfd4b277b0b4778465f6186c60168df766cd8.css" media="screen" />
 
 </head>
 <body>
 <header>
 <a href='/'>
-<img src='/brand/logo_gold.svg' style='max-width: 256px'>
+<img src='/brand/logo_gold.svg' style='max-width: 192px'>
 </a>
 </header>
+<main>
+<!-- - if local_assigns(:flash) && flash[:notice] -->
+<!-- .container -->
+<!-- %aside.flash-notice{role: 'alert'}= flash[:notice] -->
 <div class='container'>
 <h1>Too Many Requests</h1>
 <p>Sorry, you have exceeded the maximum allowed requests per minute for this action. Please wait a while and try again.</p>
 
 </div>
+</main>
 </body>
 </html>
