@@ -1,9 +1,15 @@
-- # for some reason we create memberhship_created events with a group. single event for all invites.
-- # other membership notifications use _membership.html.haml
-- group = @event.eventable
-- membership = group.all_memberships.find_by!(user_id: @recipient.id)
+- group = @event.eventable.group
+- membership = @event.eventable
 
-= render "event_mailer/common/notification", with_title: true, event: @event, url: membership_url(membership)
+- if membership.accepted_at
+  - url = group_url(membership.group)
+  - text = t(:'email.view_group')
+- else
+  - url = membership_url(membership)
+  - text = t(:"email.to_join_group.accept_invitation")
+
+
+= render "event_mailer/common/notification", with_title: true, event: @event, url: url, title: membership.group.full_name
 = render "event_mailer/group/cover_and_logo", group: group
 %h1.text-h5=group.full_name
 
@@ -11,8 +17,7 @@
 
 .px-2.py-1
   .text-center
-    = render 'base_mailer/button', url: membership_url(membership), text: t(:"email.to_join_group.accept_invitation")
-
+    = render 'base_mailer/button', url: url, text: text
 
 - if !@recipient.email_verified
   %p= t(:"email.to_join_group.accepting_is_important")

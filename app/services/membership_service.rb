@@ -165,7 +165,7 @@ class MembershipService
   def self.make_delegate(membership:, actor:)
     actor.ability.authorize! :make_delegate, membership
     membership.update delegate: true
-    # Events::NewDelegate.publish!(membership, actor)
+    Events::NewDelegate.publish!(membership, actor)
   end
 
   def self.remove_delegate(membership:, actor:)

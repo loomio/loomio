@@ -55,7 +55,6 @@ class EventMailer < BaseMailer
 
     template_name = @event.eventable_type.tableize.singularize
     template_name = 'poll' if @event.eventable_type == 'Outcome'
-    template_name = 'group' if @event.eventable_type == 'Membership'
 
     # this should be notification.i18n_key
     @event_key = if @event.kind == 'user_mentioned' &&
