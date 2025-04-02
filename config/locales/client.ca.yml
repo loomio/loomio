@@ -635,6 +635,9 @@ ca:
       group: Eliminar del grup
       poll: Eliminar del %{pollType}
     cancel_invitation: Cancel·la la invitació
+    revoke_admin: Revoca l'administrador
+    make_delegate: Fer delegat
+    revoke_delegate: Revocar delegat
   notification_models:
     discussion: 'fil:'
     comment: Comenta a
@@ -682,6 +685,7 @@ ca:
       user_mentioned: "%{actor} t'ha mencionat a: %{title}"
       user_reminded: "%{actor} us recorda que voteu a: %{title}"
       group_mentioned: "%{actor} ha mencionat el grup a: %{title}"
+      new_delegate: "%{actor} et va convertir en delegat amb dret de vot a %{title}"
     without_title:
       unknown_sender: Reviseu el correu electrònic d'un remitent no reconegut
       discussion_announced: "%{actor} t'ha convidat a un fil"
@@ -837,6 +841,7 @@ ca:
       decided_voters: Tothom que ja hagi votat
       undecided_voters: Votants indecisos
       non_voters: 'Encara no s''ha convidat als membres de %{name} '
+      delegates_of_group: Delegats de %{name}
     form:
       group_has_no_members_yet: Sou l'únic membre del vostre grup. És possible que vulgueu convidar algunes persones al vostre grup abans d'iniciar un fil o una decisió.
       invite_people_to_evaluate_loomio: Convida algunes persones al teu grup de Loomio per prendre una decisió junts
@@ -1885,6 +1890,8 @@ ca:
     accepted: Membres
     email_rejected: Correu electrònic rebutjat
     email_rejected_meaning: El correu electrònic enviat a aquesta adreça s'ha rebutjat o s'ha marcat com a correu brossa. No s'enviarà més correu electrònic a aquesta adreça.
+    delegate: Delegat
+    delegate_popover: Un delegat és un membre del grup amb dret de vot
   polls_panel:
     new_poll: Nova enquesta
     any_type: Tots els tipus

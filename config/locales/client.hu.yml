@@ -633,6 +633,9 @@ hu:
       group: Eltávolítás a csoportból
       poll: 'Eltávolítás innen: %{pollType}'
     cancel_invitation: Meghívás visszavonása
+    revoke_admin: Rendszergazda visszavonása
+    make_delegate: Legyen küldött
+    revoke_delegate: Meghatalmazott visszavonása
   notification_models:
     discussion: 'téma:'
     comment: hozzászólás itt
@@ -680,6 +683,7 @@ hu:
       user_mentioned: "%{actor} megemlített téged a következőben: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz: %{title}"
       group_mentioned: "%{actor} megemlítette a csoportot itt: %{title}"
+      new_delegate: "%{actor} szavazati joggal rendelkező képviselővé tett téged %{title}"
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       discussion_announced: "%{actor} meghívott egy témaszálba"
@@ -835,6 +839,7 @@ hu:
       decided_voters: Mindenki, aki szavazott
       undecided_voters: Mindenki, aki nem szavazott
       non_voters: A(z) %{name} tagjai még nincsenek meghívva
+      delegates_of_group: "%{name} küldöttei"
     form:
       group_has_no_members_yet: Ön a csoport egyetlen tagja. Érdemes lehet néhány embert meghívni a csoportjába, mielőtt szálat vagy döntést hozna létre.
       invite_people_to_evaluate_loomio: Hívjon meg néhány embert a Loomio csoportjába, hogy közösen döntsenek
@@ -1869,6 +1874,8 @@ hu:
     accepted: Tagok
     email_rejected: E-mail elutasítva
     email_rejected_meaning: Az erre a címre küldött e-mail visszapattant vagy spamként lett megjelölve. Erre a címre nem küldünk több e-mailt.
+    delegate: Delegált
+    delegate_popover: A delegált szavazati joggal rendelkező csoporttag
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus

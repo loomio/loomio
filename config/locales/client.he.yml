@@ -631,6 +631,9 @@ he:
       group: הסר מהקבוצה
       poll: הסר מה%{pollType}
     cancel_invitation: בטל הזמנה
+    revoke_admin: בטל את הניהול
+    make_delegate: לעשות נציג
+    revoke_delegate: בטל נציג
   notification_models:
     discussion: 'שיחה:'
     comment: הערה ב
@@ -678,6 +681,7 @@ he:
       user_mentioned: "%{actor} הזכיר אותך ב: %{title}"
       user_reminded: "%{actor} מזכיר לך להצביע ב:%{title}"
       group_mentioned: "%{actor} הזכיר את הקבוצה ב: %{title}"
+      new_delegate: "%{actor} הפך אותך לנציג עם זכויות הצבעה ב-%{title}"
     without_title:
       unknown_sender: אנא עיין באימייל משולח לא מזוהה
       discussion_announced: "%{actor} הזמין אותך לשרשור"
@@ -833,6 +837,7 @@ he:
       decided_voters: כל מי שהצביע
       undecided_voters: מצביעים מתלבטים
       non_voters: חברים ב-%{name} עדיין לא הוזמנו
+      delegates_of_group: נציגים של %{name}
     form:
       group_has_no_members_yet: אתה החבר היחיד בקבוצה שלך. ייתכן שתרצה להזמין כמה אנשים לקבוצה שלך לפני שתתחיל שרשור או החלטה.
       invite_people_to_evaluate_loomio: הזמן כמה אנשים לקבוצת Loomio שלך כדי לקבל החלטה ביחד
@@ -1881,6 +1886,8 @@ he:
     accepted: חברים
     email_rejected: האימייל נדחה
     email_rejected_meaning: אימייל שנשלח לכתובת זו הוקפץ או סומן כספאם. לא יישלח יותר אימייל לכתובת זו.
+    delegate: נָצִיג
+    delegate_popover: נציג הוא חבר קבוצה בעל זכות הצבעה
   polls_panel:
     new_poll: סקר חדש
     any_type: כל הסוגים

@@ -631,6 +631,9 @@ ru:
       group: Удалить из группы
       poll: Удалить из %{pollType}
     cancel_invitation: Отменить приглашение
+    revoke_admin: Отозвать администратора
+    make_delegate: Сделать делегатом
+    revoke_delegate: Отозвать делегата
   notification_models:
     discussion: 'нить:'
     comment: прокомментируйте в
@@ -678,6 +681,7 @@ ru:
       user_mentioned: "%{actor} упомянули вас в: %{title}"
       user_reminded: "%{actor} напоминает, чтобы вы проголосовали за: %{title}"
       group_mentioned: "%{actor} упомянул группу в: %{title}"
+      new_delegate: "%{actor} сделал вас делегатом с правом голоса в %{title}"
     without_title:
       unknown_sender: Пожалуйста, просмотрите письмо от неизвестного отправителя
       discussion_announced: "%{actor} пригласил вас в тред"
@@ -833,6 +837,7 @@ ru:
       decided_voters: Все, кто голосовал
       undecided_voters: Неопределившиеся избиратели
       non_voters: Участники %{name} еще не приглашены
+      delegates_of_group: Делегаты %{name}
     form:
       group_has_no_members_yet: Вы единственный участник своей группы. Возможно, вы захотите пригласить некоторых людей в свою группу, прежде чем начинать обсуждение или принимать решение.
       invite_people_to_evaluate_loomio: Пригласите несколько человек в свою группу Loomio, чтобы вместе принять решение.
@@ -1859,6 +1864,8 @@ ru:
     accepted: Участники
     email_rejected: Электронное письмо отклонено
     email_rejected_meaning: Письмо, отправленное на этот адрес, было отклонено или помечено как спам. Больше письма не будут отправляться на этот адрес.
+    delegate: Делегат
+    delegate_popover: Делегат — член группы с правом голоса.
   polls_panel:
     new_poll: Новый опрос
     any_type: Все типы

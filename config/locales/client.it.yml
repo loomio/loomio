@@ -643,6 +643,9 @@ it:
       group: Rimuovi dal gruppo
       poll: 'Rimuovi dal sondaggio %{pollType} '
     cancel_invitation: Revoca invito
+    revoke_admin: Revoca amministratore
+    make_delegate: Rendi delegato
+    revoke_delegate: Revoca delegato
   notification_models:
     discussion: discussione
     comment: 'commenta in '
@@ -690,6 +693,7 @@ it:
       user_mentioned: "%{actor} ti ha menzionato in: %{title}"
       user_reminded: "%{actor} ti sta ricordando di votare su: %{title}"
       group_mentioned: "%{actor} ha menzionato il gruppo in: %{title}"
+      new_delegate: "%{actor} ti ha nominato delegato con diritto di voto in %{title}"
     without_title:
       unknown_sender: Controlla l'e-mail proveniente da un mittente non riconosciuto
       discussion_announced: "%{actor} ti ha invitato a una discussione"
@@ -845,6 +849,7 @@ it:
       decided_voters: Tutti coloro che hanno votato
       undecided_voters: Elettore indecisi
       non_voters: Membri di %{name} non ancora invitati
+      delegates_of_group: Delegati di %{name}
     form:
       group_has_no_members_yet: Sei l'unico membro del tuo gruppo. Potresti voler invitare alcune persone al tuo gruppo prima di iniziare una discussione o una decisione.
       invite_people_to_evaluate_loomio: Invita alcune persone nel tuo gruppo Loomio per prendere una decisione insieme
@@ -1892,6 +1897,8 @@ it:
     accepted: Membri
     email_rejected: Email rifiutata
     email_rejected_meaning: L'email inviata a questo indirizzo è stata respinta o contrassegnata come spam. Non verranno inviate altre email a questo indirizzo.
+    delegate: Delegare
+    delegate_popover: Un delegato è un membro del gruppo con diritto di voto
   polls_panel:
     new_poll: Nuova votazione
     any_type: Tutti i tipi

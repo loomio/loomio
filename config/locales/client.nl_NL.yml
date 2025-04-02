@@ -635,6 +635,9 @@ nl_NL:
       group: Van groep verwijderen
       poll: Verwijder van %{pollType}
     cancel_invitation: Annuleer uitnodiging
+    revoke_admin: Herroep admin
+    make_delegate: Maak gedelegeerde
+    revoke_delegate: Afgevaardigde intrekken
   notification_models:
     discussion: 'bord:'
     comment: reactie in
@@ -682,6 +685,7 @@ nl_NL:
       user_mentioned: "%{actor} noemde je in: %{title}"
       user_reminded: "%{actor} herinnert je er aan om te stemmen in : %{title}"
       group_mentioned: "%{actor} noemde de groep in: %{title}"
+      new_delegate: "%{actor} heeft je tot afgevaardigde met stemrecht gemaakt in %{title}"
     without_title:
       unknown_sender: Controleer de e-mail van een onbekende afzender
       discussion_announced: "%{actor} heeft je uitgenodigd voor een thread"
@@ -837,6 +841,7 @@ nl_NL:
       decided_voters: Iedereen die gestemd heeft
       undecided_voters: Twijfelende stemmers
       non_voters: Leden van %{name} zijn nog niet uitgegnodigd
+      delegates_of_group: Afgevaardigden van %{name}
     form:
       group_has_no_members_yet: Jij bent het enige lid van jouw groep. Misschien wil je enkele mensen uitnodigen voor je groep voordat je een gesprek of beslissing start.
       invite_people_to_evaluate_loomio: Nodig enkele mensen uit in jouw Loomio-groep om samen een beslissing te nemen
@@ -1887,6 +1892,8 @@ nl_NL:
     accepted: Leden
     email_rejected: E-mail afgewezen
     email_rejected_meaning: E-mail die naar dit adres is verzonden, is teruggestuurd of gemarkeerd als spam. Er worden geen e-mails meer naar dit adres verzonden.
+    delegate: Delegeren
+    delegate_popover: Een afgevaardigde is een groepslid met stemrecht
   polls_panel:
     new_poll: Nieuwe peiling
     any_type: Alle types

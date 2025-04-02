@@ -636,6 +636,9 @@ uk:
       group: Видалити з групи
       poll: Видалити з %{pollType}
     cancel_invitation: Скасувати запрошення
+    revoke_admin: Відкликати адміністратора
+    make_delegate: Делегувати
+    revoke_delegate: Відкликати делегата
   notification_models:
     discussion: 'тема:'
     comment: прокоментувати в
@@ -683,6 +686,7 @@ uk:
       user_mentioned: "%{actor} згадав вас в: %{title}"
       user_reminded: "%{actor} нагадує вам щодо голосування: %{title}"
       group_mentioned: "%{actor} згадав групу в: %{title}"
+      new_delegate: "%{actor} зробив вас делегатом із правом голосу в %{title}"
     without_title:
       unknown_sender: Будь ласка, перегляньте електронний лист від нерозпізнаного відправника
       discussion_announced: "%{actor} запросив вас до ланцюжка"
@@ -838,6 +842,7 @@ uk:
       decided_voters: Усім, хто голосував
       undecided_voters: Виборцям, які не визначилися
       non_voters: Учасників %{name} ще не запросили
+      delegates_of_group: Делегати %{name}
     form:
       group_has_no_members_yet: Ви єдиний учасник вашої групи. Можливо, ви захочете запросити кількох людей до своєї групи, перш ніж розпочинати ланцюжок або приймати рішення.
       invite_people_to_evaluate_loomio: Запросіть кількох людей до вашої групи Loomio, щоб разом прийняти рішення
@@ -1892,6 +1897,8 @@ uk:
     accepted: Учасники
     email_rejected: Електронна пошта відхилена
     email_rejected_meaning: Електронні листи, надіслані на цю адресу, були відхилені або позначені як спам. Більше на цю адресу електронні листи не надсилатимуться.
+    delegate: Делегувати
+    delegate_popover: Делегат — це член групи з правом голосу
   polls_panel:
     new_poll: Нове опитування
     any_type: Усі типи

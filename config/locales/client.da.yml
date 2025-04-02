@@ -631,6 +631,9 @@ da:
       group: Fjern fra gruppen
       poll: Fjern fra %{pollType}
     cancel_invitation: Fortryd invitation
+    revoke_admin: Tilbagekald admin
+    make_delegate: Gør delegeret
+    revoke_delegate: Tilbagekald delegeret
   notification_models:
     discussion: 'tråd:'
     comment: kommentere ind
@@ -678,6 +681,7 @@ da:
       user_mentioned: "%{actor} nævnte dig i: %{title}"
       user_reminded: "%{actor} minder dig om at stemme i: %{title}"
       group_mentioned: "%{actor} nævnte gruppen i: %{title}"
+      new_delegate: "%{actor} gjorde dig til delegeret med stemmeret i %{title}"
     without_title:
       unknown_sender: Gennemgå venligst e-mail fra ukendt afsender
       discussion_announced: "%{actor} inviterede dig til en tråd"
@@ -833,6 +837,7 @@ da:
       decided_voters: Alle der har stemt
       undecided_voters: Ubeslutsomme vælgere
       non_voters: Medlemmer af %{name} endnu ikke inviteret
+      delegates_of_group: Delegerede for %{name}
     form:
       group_has_no_members_yet: Du er det eneste medlem af din gruppe. Du vil måske invitere nogle personer til din gruppe, før du starter en tråd eller beslutning.
       invite_people_to_evaluate_loomio: Inviter nogle personer til din Loomio-gruppe for at træffe en beslutning sammen
@@ -1862,6 +1867,8 @@ da:
     accepted: Medlemmer
     email_rejected: E-mail afvist
     email_rejected_meaning: E-mail sendt til denne adresse er afvist eller blevet markeret som spam. Der vil ikke blive sendt flere e-mails til denne adresse.
+    delegate: Delegeret
+    delegate_popover: En delegeret er et gruppemedlem med stemmeret
   polls_panel:
     new_poll: Ny meningsmåling
     any_type: Alle typer

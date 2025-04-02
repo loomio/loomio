@@ -641,6 +641,9 @@ de:
       group: Aus der Gruppe entfernen
       poll: von %{pollType} entfernen
     cancel_invitation: Einladung abbrechen
+    revoke_admin: Administrator widerrufen
+    make_delegate: Delegieren
+    revoke_delegate: Delegierten widerrufen
   notification_models:
     discussion: 'Diskussion:'
     comment: kommentieren in
@@ -688,6 +691,7 @@ de:
       user_mentioned: "%{actor} hat dich in %{title} erwähnt"
       user_reminded: "%{actor} erinnert dich deine Stimme in %{title} abzugeben"
       group_mentioned: "%{actor} hat die Gruppe erwähnt in: %{title}"
+      new_delegate: "%{actor} hat Sie zum Delegierten mit Stimmrecht in %{title} gemacht"
     without_title:
       unknown_sender: Bitte überprüfen Sie die E-Mail von einem unbekannten Absender
       discussion_announced: "%{actor} hat Sie zu einem Thread eingeladen"
@@ -843,6 +847,7 @@ de:
       decided_voters: Alle, die abgestimmt haben
       undecided_voters: Unentschlossene
       non_voters: Noch nicht eingeladene Mitglieder von %{name}
+      delegates_of_group: Delegierte von %{name}
     form:
       group_has_no_members_yet: Sie sind das einzige Mitglied Ihrer Gruppe. Möglicherweise möchten Sie einige Personen in Ihre Gruppe einladen, bevor Sie einen Thread oder eine Entscheidung starten.
       invite_people_to_evaluate_loomio: Laden Sie einige Leute in Ihre Loomio-Gruppe ein, um gemeinsam eine Entscheidung zu treffen
@@ -1895,6 +1900,8 @@ de:
     accepted: Mitglieder
     email_rejected: E-Mail abgelehnt
     email_rejected_meaning: An diese Adresse gesendete E-Mails wurden zurückgewiesen oder als Spam markiert. An diese Adresse werden keine weiteren E-Mails gesendet.
+    delegate: Delegieren
+    delegate_popover: Ein Delegierter ist ein Gruppenmitglied mit Stimmrecht
   polls_panel:
     new_poll: Neue Umfrage
     any_type: Alle Typen

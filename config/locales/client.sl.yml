@@ -631,6 +631,9 @@ sl:
       group: Odstrani iz skupine
       poll: Odstrani iz %{pollType}
     cancel_invitation: Prekliči povabilo
+    revoke_admin: Preklic skrbnika
+    make_delegate: Naredi pooblaščenca
+    revoke_delegate: Prekliči pooblaščenca
   notification_models:
     discussion: 'nit:'
     comment: komentar v
@@ -678,6 +681,7 @@ sl:
       user_mentioned: "%{actor} vas je omenil v: %{title}"
       user_reminded: "%{actor} vas opominja, da glasujete v: %{title}"
       group_mentioned: "%{actor} je omenil skupino v: %{title}"
+      new_delegate: "%{actor} vas je postavil za delegata z glasovalno pravico v %{title}"
     without_title:
       unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
       discussion_announced: "%{actor} vas je povabil v nit"
@@ -833,6 +837,7 @@ sl:
       decided_voters: Vsi, ki so glasovali
       undecided_voters: Neopredeljeni volivci
       non_voters: Člani %{name} še niso povabljeni
+      delegates_of_group: Delegati %{name}
     form:
       group_has_no_members_yet: Ste edini član svoje skupine. Morda boste želeli povabiti nekaj ljudi v svojo skupino, preden začnete nit ali odločitev.
       invite_people_to_evaluate_loomio: Povabite nekaj ljudi v svojo skupino Loomio, da se skupaj odločite
@@ -1859,6 +1864,8 @@ sl:
     accepted: Člani
     email_rejected: E-pošta zavrnjena
     email_rejected_meaning: E-pošta, poslana na ta naslov, je bila zavrnjena ali označena kot vsiljena pošta. Na ta naslov ne bo več poslana nobena e-pošta.
+    delegate: Delegat
+    delegate_popover: Delegat je član skupine z glasovalno pravico
   polls_panel:
     new_poll: Nova anketa
     any_type: Vse vrste

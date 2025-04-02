@@ -641,6 +641,9 @@ es:
       group: Eliminar del grupo
       poll: Eliminar de %{pollType}
     cancel_invitation: Cancelar la invitación
+    revoke_admin: Revocar administrador
+    make_delegate: Hacer delegado
+    revoke_delegate: Revocar delegado
   notification_models:
     discussion: 'Hilo:'
     comment: comentar en
@@ -688,6 +691,7 @@ es:
       user_mentioned: "%{actor} te mencionó en: %{title}"
       user_reminded: "%{actor} te está recordando que votes en %{title}"
       group_mentioned: "%{actor} mencionó al grupo en: %{title}"
+      new_delegate: "%{actor} te nombró delegado con derecho a voto en %{title}"
     without_title:
       unknown_sender: Revise el correo electrónico del remitente no reconocido
       discussion_announced: "%{actor} te invitó al hilo"
@@ -843,6 +847,7 @@ es:
       decided_voters: Todos los que votaron
       undecided_voters: Votantes indecisos
       non_voters: Miembros de %{name} todavía no han sido invitados
+      delegates_of_group: Delegados de %{name}
     form:
       group_has_no_members_yet: Eres el único miembro de tu grupo. Es posible que desees invitar a algunas personas a tu grupo antes de iniciar un hilo o una decisión.
       invite_people_to_evaluate_loomio: Invita a algunas personas a tu grupo de Loomio para tomar una decisión juntos
@@ -1906,6 +1911,8 @@ es:
     accepted: Integrantes
     email_rejected: Correo electrónico rechazado
     email_rejected_meaning: El correo electrónico enviado a esta dirección ha rebotado o ha sido marcado como spam. No se enviarán más correos electrónicos a esta dirección.
+    delegate: Delegar
+    delegate_popover: Un delegado es un miembro del grupo con derecho a voto.
   polls_panel:
     new_poll: Nuevo sondeo
     any_type: Todos los tipos

@@ -631,6 +631,9 @@ sv:
       group: Ta bort från grupp
       poll: Ta bort från %{pollType}
     cancel_invitation: Avbryt inbjudan
+    revoke_admin: Återkalla admin
+    make_delegate: Gör ombud
+    revoke_delegate: Återkalla delegat
   notification_models:
     discussion: 'tråd:'
     comment: kommentera in
@@ -678,6 +681,7 @@ sv:
       user_mentioned: "%{actor} nämnde dig i: %{title}"
       user_reminded: "%{actor} påminner dig om att rösta i: %{title}"
       group_mentioned: "%{actor} nämnde gruppen i: %{title}"
+      new_delegate: "%{actor} gjorde dig till en delegat med rösträtt i %{title}"
     without_title:
       unknown_sender: Granska e-post från okänd avsändare
       discussion_announced: "%{actor} bjöd in dig till en tråd"
@@ -833,6 +837,7 @@ sv:
       decided_voters: Alla som röstade
       undecided_voters: Obestämda väljare
       non_voters: Medlemmar av %{name} är ännu inte inbjudna
+      delegates_of_group: Delegater för %{name}
     form:
       group_has_no_members_yet: Du är den enda medlemmen i din grupp. Du kanske vill bjuda in några personer till din grupp innan du startar en tråd eller ett beslut.
       invite_people_to_evaluate_loomio: Bjud in några personer till din Loomio-grupp för att fatta ett beslut tillsammans
@@ -1859,6 +1864,8 @@ sv:
     accepted: Medlemmar
     email_rejected: E-post avvisad
     email_rejected_meaning: E-post som skickats till den här adressen har studsat eller markerats som skräppost. Inget mer e-postmeddelande kommer att skickas till denna adress.
+    delegate: Delegera
+    delegate_popover: En delegat är en gruppmedlem med rösträtt
   polls_panel:
     new_poll: Ny omröstning
     any_type: Alla typer
