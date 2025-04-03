@@ -10,6 +10,7 @@ class AuthorSerializer < ApplicationSerializer
              :locale,
              :created_at,
              :titles,
+             :delegates,
              :placeholder_name,
              :email_verified,
              :bot
@@ -20,6 +21,10 @@ class AuthorSerializer < ApplicationSerializer
 
   def titles
     object.experiences['titles'] || {}
+  end
+
+  def delegates
+    object.experiences['delegates'] || {}
   end
 
   def avatar_kind
