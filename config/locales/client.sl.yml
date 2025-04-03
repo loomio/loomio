@@ -315,6 +315,7 @@ sl:
     formatting_help:
       label: Oblikovanje
       title: Naučite se uporabljati Markdown za oblikovanje besedila
+    thread: nit
   merge_accounts:
     modal:
       title: Združite račune
@@ -459,6 +460,18 @@ sl:
         loud: Po e-pošti boste prejeli vse dejavnosti v novih skupinah.
         normal: O obvestilih v novih skupinah boste obveščeni po e-pošti.
         quiet: O novih skupinah ne boste prejeli e-pošte.
+    change_your_email_settings: Spremenite nastavitve e-pošte
+    when_would_you_like_to_be_emailed_thread: Kdaj želite prejeti e-pošto o tej temi?
+    when_would_you_like_to_be_emailed_group: Kdaj želite prejeti e-pošto o tej skupini?
+    changes_all_threads_in_group: To spremeni nastavitev za vse niti v skupini.
+    what_do_the_options_mean: Kaj pomenijo možnosti?
+    loud_desc: Vsakič, ko kdo sodeluje
+    normal_desc: Ko me nekdo obvesti
+    quiet_desc: Nikoli
+    quiet_explained: Ne boste prejeli e-pošte, tudi ko vas bo nekdo poskušal obvestiti. Morda boste zamudili pomembna obvestila ali odločitve. To je lahko primerno, če vas nit ne zadeva, vendar ni priporočljivo za nastavitev skupine, razen če imate druge načine, da ostanete na tekočem.
+    normal_explained: Ko nekdo vnese vaše ime v polje »Obvesti« v niti ali anketi ali @omeni skupino.
+    normal_excludes_mentioning_html: Obstaja ločena nastavitev, ko vas nekdo @omeni (npr. ko vam odgovori v komentarju). <a href="%{url}">Kliknite tukaj, če želite urediti nastavitve za @omembe</a>
+    loud_explained: Prejeli boste e-poštno sporočilo vsakič, ko je nov komentar, nekdo glasuje ali začne anketo ali nit.
   close_explanation_modal:
     aria_label: Zapri temo
     close_thread: Zapri temo
@@ -623,6 +636,9 @@ sl:
       poll: Odstrani iz %{pollType}
     cancel_invitation: Prekliči povabilo
     view_profile: Prikaži profil
+    revoke_admin: Preklic skrbnika
+    make_delegate: Naredi pooblaščenca
+    revoke_delegate: Prekliči pooblaščenca
   notification_models:
     discussion: 'nit:'
     comment: komentar v
@@ -669,6 +685,8 @@ sl:
       user_added_to_group: "%{actor} vas je dodal v skupino: %{title}"
       user_mentioned: "%{actor} vas je omenil v: %{title}"
       user_reminded: "%{actor} vas opominja, da glasujete v: %{title}"
+      group_mentioned: "%{actor} je omenil skupino v: %{title}"
+      new_delegate: "%{actor} vas je postavil za delegata z glasovalno pravico v %{title}"
     without_title:
       unknown_sender: Preglejte e-pošto neprepoznanega pošiljatelja
       discussion_announced: "%{actor} vas je povabil v nit"
@@ -705,6 +723,7 @@ sl:
       stance_created_option: "%{actor} je glasoval %{option}"
       user_mentioned: "%{actor} vas je omenil"
       user_reminded: "%{actor} vas opominja, da glasujete"
+      group_mentioned: "%{actor} je omenil skupino"
     hints:
       poll_closing_soon: Zdaj je pravi čas, da glasujete, si premislite ali spodbudite druge k sodelovanju.
       poll_closing_soon_author: Morda boste želeli opomniti ljudi, naj glasujejo ali podaljšati rok.
@@ -823,6 +842,7 @@ sl:
       decided_voters: Vsi, ki so glasovali
       undecided_voters: Neopredeljeni volivci
       non_voters: Člani %{name} še niso povabljeni
+      delegates_of_group: Delegati %{name}
     form:
       group_has_no_members_yet: Ste edini član svoje skupine. Morda boste želeli povabiti nekaj ljudi v svojo skupino, preden začnete nit ali odločitev.
       invite_people_to_evaluate_loomio: Povabite nekaj ljudi v svojo skupino Loomio, da se skupaj odločite
@@ -897,6 +917,7 @@ sl:
       modal_title: Izberi člane skupine
     flash:
       success: "%{count} poslanih obvestil"
+    group_mentioned: "%{name} je omenil skupino z %{length} osebami:"
   action_dock:
     actions_menu: Meni dejanj
     more_actions: Več dejanj
@@ -1852,6 +1873,8 @@ sl:
     accepted: Člani
     email_rejected: E-pošta zavrnjena
     email_rejected_meaning: E-pošta, poslana na ta naslov, je bila zavrnjena ali označena kot vsiljena pošta. Na ta naslov ne bo več poslana nobena e-pošta.
+    delegate: Delegat
+    delegate_popover: Delegat je član skupine z glasovalno pravico
   polls_panel:
     new_poll: Nova anketa
     any_type: Vse vrste

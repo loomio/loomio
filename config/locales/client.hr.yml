@@ -315,6 +315,7 @@ hr:
     formatting_help:
       label: Oblikovanje
       title: Naučite kako koristiti Markdown za oblikovanje teksta
+    thread: Nit
   merge_accounts:
     modal:
       title: Spajanje računa
@@ -459,6 +460,18 @@ hr:
         loud: Dobit ćete e-poštu o svim aktivnostima u novim grupama.
         normal: Dobit ćete e-poštu o najavama u novim grupama.
         quiet: Nećete primati e-poruke o novim grupama.
+    change_your_email_settings: Promijenite postavke e-pošte
+    when_would_you_like_to_be_emailed_thread: Kada želite da primate e-poruke o ovoj temi?
+    when_would_you_like_to_be_emailed_group: Kada želite primati e-poruke o ovoj grupi?
+    changes_all_threads_in_group: Ovo mijenja postavku za sve niti u grupi.
+    what_do_the_options_mean: Što znače opcije?
+    loud_desc: Svaki put kad netko sudjeluje
+    normal_desc: Kad me netko obavijesti
+    quiet_desc: Nikada
+    quiet_explained: Nećete dobiti e-poštu, čak ni kada vas netko pokuša obavijestiti. Možda ćete propustiti važne najave ili odluke. Ovo može biti prikladno ako vas se tema ne tiče, ali se ne preporučuje za postavku grupe osim ako nemate druge načine da ostanete u tijeku.
+    normal_explained: Kada netko unese vaše ime u polje "Obavijesti" u niti ili anketi ili @spomene grupu.
+    normal_excludes_mentioning_html: Postoji posebna postavka kada vas netko @spominje (npr. kada vam odgovara u komentaru). <a href="%{url}">Kliknite ovdje za uređivanje postavki za @spominjanja</a>
+    loud_explained: Primit ćete e-poruku svaki put kada postoji novi komentar, netko glasa ili započne anketu ili nit.
   close_explanation_modal:
     aria_label: Zatvori nit
     close_thread: Zatvori nit
@@ -623,6 +636,9 @@ hr:
       poll: Ukloni iz %{pollType}
     cancel_invitation: Otkaži pozivnicu
     view_profile: Pogledaj profil
+    revoke_admin: Opozovi administratora
+    make_delegate: Napravi delegata
+    revoke_delegate: Opozovi delegata
   notification_models:
     discussion: 'nit:'
     comment: komentirati
@@ -669,6 +685,8 @@ hr:
       user_added_to_group: "%{actor} vas je dodao u grupu: %{title}"
       user_mentioned: "%{actor} vas je spomenuo u: %{title}"
       user_reminded: "%{actor} vas podsjeća da glasate u: %{title}"
+      group_mentioned: "%{actor} je spomenuo grupu u: %{title}"
+      new_delegate: "%{actor} postavio vas je za delegata s pravom glasa u %{title}"
     without_title:
       unknown_sender: Pregledajte e-poštu neprepoznatog pošiljatelja
       discussion_announced: "%{actor} vas je pozvao u nit"
@@ -705,6 +723,7 @@ hr:
       stance_created_option: "%{actor} je glasao %{option}"
       user_mentioned: "%{actor} vas je spomenuo"
       user_reminded: "%{actor} vas podsjeća da glasate"
+      group_mentioned: "%{actor} je spomenuo grupu"
     hints:
       poll_closing_soon: Sada je dobro vrijeme da glasate, promijenite mišljenje ili potaknete druge da sudjeluju.
       poll_closing_soon_author: Možete podsjetiti ljude da glasaju ili produžiti rok.
@@ -823,6 +842,7 @@ hr:
       decided_voters: Svi koji su glasali
       undecided_voters: Neodlučni glasači
       non_voters: Članovi %{name} još nisu pozvani
+      delegates_of_group: Delegati %{name}
     form:
       group_has_no_members_yet: Vi ste jedini član svoje grupe. Možda ćete htjeti pozvati neke ljude u svoju grupu prije pokretanja niti ili odluke.
       invite_people_to_evaluate_loomio: Pozovite neke ljude u svoju Loomio grupu da zajedno donesete odluku
@@ -897,6 +917,7 @@ hr:
       modal_title: Odaberite članove grupe
     flash:
       success: Poslano %{count} obavijesti
+    group_mentioned: "%{name} je spomenuo grupu sa %{length} ljudi:"
   action_dock:
     actions_menu: Izbornik radnji
     more_actions: Vise akcije
@@ -1852,6 +1873,8 @@ hr:
     accepted: Članovi
     email_rejected: E-pošta odbijena
     email_rejected_meaning: E-pošta poslana na ovu adresu odbijena je ili je označena kao neželjena pošta. Na ovu adresu više neće biti poslana e-pošta.
+    delegate: Delegat
+    delegate_popover: Delegat je član grupe s pravom glasa
   polls_panel:
     new_poll: Nova anketa
     any_type: Svi tipovi

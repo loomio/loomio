@@ -315,6 +315,7 @@ el:
     formatting_help:
       label: Μορφοποίηση
       title: Μάθετε πώς να χρησιμοποιείτε το Markdown για να μορφοποιήσετε το κείμενό σας
+    thread: Νήμα
   merge_accounts:
     modal:
       title: Συγχώνευση λογαριασμών
@@ -459,6 +460,18 @@ el:
         loud: Θα λάβετε email για όλες τις δραστηριότητες σε νέες ομάδες.
         normal: Θα λάβετε email σχετικά με ανακοινώσεις σε νέες ομάδες.
         quiet: Δεν θα λάβετε email για νέες ομάδες.
+    change_your_email_settings: Αλλάξτε τις ρυθμίσεις email
+    when_would_you_like_to_be_emailed_thread: Πότε θα θέλατε να λάβετε μήνυμα ηλεκτρονικού ταχυδρομείου σχετικά με αυτό το νήμα;
+    when_would_you_like_to_be_emailed_group: Πότε θα θέλατε να λάβετε email για αυτήν την ομάδα;
+    changes_all_threads_in_group: Αυτό αλλάζει τη ρύθμιση για όλα τα νήματα στην ομάδα.
+    what_do_the_options_mean: Τι σημαίνουν οι επιλογές;
+    loud_desc: Κάθε φορά που κάποιος συμμετέχει
+    normal_desc: Όταν κάποιος με ειδοποιεί
+    quiet_desc: Ποτέ
+    quiet_explained: Δεν θα λάβετε email, ακόμη και όταν κάποιος προσπαθήσει να σας ειδοποιήσει. Μπορεί να χάσετε σημαντικές ανακοινώσεις ή αποφάσεις. Αυτό μπορεί να είναι κατάλληλο εάν ένα νήμα δεν σας αφορά, αλλά δεν συνιστάται για τη ρύθμιση της ομάδας, εκτός εάν έχετε άλλους τρόπους να παραμένετε ενημερωμένοι.
+    normal_explained: Όταν κάποιος εισάγει το όνομά σας στο πεδίο "Ειδοποίηση" ενός νήματος ή μιας δημοσκόπησης ή @αναφέρει την ομάδα.
+    normal_excludes_mentioning_html: Υπάρχει μια ξεχωριστή ρύθμιση για το πότε κάποιος @ σας αναφέρει (π.χ. όταν σας απαντά σε ένα σχόλιο). <a href="%{url}">Κάντε κλικ εδώ για να επεξεργαστείτε τις ρυθμίσεις για τις @αναφορές</a>
+    loud_explained: Θα λαμβάνετε email κάθε φορά που υπάρχει νέο σχόλιο, κάποιος ψηφίζει ή ξεκινά μια δημοσκόπηση ή νήμα.
   close_explanation_modal:
     aria_label: Κλείστε το νήμα
     close_thread: Κλείστε το νήμα
@@ -623,6 +636,9 @@ el:
       poll: Κατάργηση από %{pollType}
     cancel_invitation: Ακύρωση πρόσκλησης
     view_profile: Προβολή προφίλ
+    revoke_admin: Ανάκληση διαχειριστή
+    make_delegate: Κάντε ανάθεση
+    revoke_delegate: Ανάκληση εκπροσώπου
   notification_models:
     discussion: 'Νήμα:'
     comment: σχόλιο μέσα
@@ -669,6 +685,8 @@ el:
       user_added_to_group: 'Ο %{actor} σας πρόσθεσε στην ομάδα: %{title}'
       user_mentioned: 'Ο %{actor} σας ανέφερε στο: %{title}'
       user_reminded: 'Ο %{actor} σας υπενθυμίζει να ψηφίσετε: %{title}'
+      group_mentioned: 'Ο %{actor} ανέφερε την ομάδα στο: %{title}'
+      new_delegate: Ο %{actor} σάς έκανε εκπρόσωπο με δικαιώματα ψήφου στο %{title}
     without_title:
       unknown_sender: Ελέγξτε τα μηνύματα ηλεκτρονικού ταχυδρομείου από μη αναγνωρισμένο αποστολέα
       discussion_announced: Ο %{actor} σας προσκάλεσε σε ένα νήμα
@@ -705,6 +723,7 @@ el:
       stance_created_option: Ο %{actor} ψήφισε %{option}
       user_mentioned: Ο %{actor} σας ανέφερε
       user_reminded: Ο %{actor} σας υπενθυμίζει να ψηφίσετε
+      group_mentioned: Ο %{actor} ανέφερε την ομάδα
     hints:
       poll_closing_soon: Τώρα είναι η κατάλληλη στιγμή για να ψηφίσετε, να αλλάξετε γνώμη ή να ενθαρρύνετε άλλους να συμμετάσχουν.
       poll_closing_soon_author: Μπορεί να θέλετε να υπενθυμίσετε στους ανθρώπους να ψηφίσουν ή να παρατείνετε την προθεσμία.
@@ -823,6 +842,7 @@ el:
       decided_voters: Όλοι όσοι ψήφισαν
       undecided_voters: Αναποφάσιστοι ψηφοφόροι
       non_voters: Τα μέλη του %{name} δεν έχουν προσκληθεί ακόμη
+      delegates_of_group: Εκπρόσωποι του %{name}
     form:
       group_has_no_members_yet: Είστε το μόνο μέλος της ομάδας σας. Μπορεί να θέλετε να προσκαλέσετε κάποια άτομα στην ομάδα σας πριν ξεκινήσετε ένα νήμα ή μια απόφαση.
       invite_people_to_evaluate_loomio: Προσκαλέστε μερικά άτομα στην ομάδα σας Loomio για να λάβετε μαζί μια απόφαση
@@ -897,6 +917,7 @@ el:
       modal_title: Επιλέξτε μέλη της ομάδας
     flash:
       success: "%{count} ειδοποιήσεις στάλθηκαν"
+    group_mentioned: 'Ο %{name} ανέφερε την ομάδα με %{length} άτομα:'
   action_dock:
     actions_menu: Μενού ενεργειών
     more_actions: Περισσότερες δράσεις
@@ -1852,6 +1873,8 @@ el:
     accepted: Μέλη
     email_rejected: Το email απορρίφθηκε
     email_rejected_meaning: Το email που στάλθηκε σε αυτήν τη διεύθυνση έχει αναπηδήσει ή έχει επισημανθεί ως ανεπιθύμητο. Δεν θα σταλεί άλλο email σε αυτήν τη διεύθυνση.
+    delegate: Αντιπρόσωπος
+    delegate_popover: Ένας εκπρόσωπος είναι ένα μέλος της ομάδας με δικαίωμα ψήφου
   polls_panel:
     new_poll: Νέα δημοσκόπηση
     any_type: Ολοι οι τύποι

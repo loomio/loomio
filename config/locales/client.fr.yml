@@ -323,6 +323,7 @@ fr:
     formatting_help:
       label: Mise en forme
       title: Apprenez à utiliser Markdown pour mettre en forme votre texte
+    thread: Fil
   merge_accounts:
     modal:
       title: Fusionner les comptes
@@ -469,6 +470,18 @@ fr:
         loud: Vous recevrez un courriel à chaque fois qu’il y a une activité dans les nouveaux groupes.
         normal: Vous recevrez un courriel pour toute nouvelle discussion ou décision dans un nouveau groupe.
         quiet: Vous ne recevrez aucun courriel concernant les nouveaux groupes.
+    change_your_email_settings: Modifiez vos paramètres de messagerie
+    when_would_you_like_to_be_emailed_thread: Quand souhaitez-vous recevoir un e-mail à propos de ce fil de discussion ?
+    when_would_you_like_to_be_emailed_group: Quand souhaitez-vous recevoir un e-mail concernant ce groupe ?
+    changes_all_threads_in_group: Cela modifie le paramètre pour tous les threads du groupe.
+    what_do_the_options_mean: Que signifient les options ?
+    loud_desc: Chaque fois que quelqu'un participe
+    normal_desc: Quand quelqu'un me prévient
+    quiet_desc: Jamais
+    quiet_explained: Vous ne recevrez aucun e-mail, même si quelqu'un tente de vous prévenir. Vous risquez de manquer des annonces ou des décisions importantes. Cette option peut être utile si un fil de discussion ne vous concerne pas, mais elle est déconseillée pour le groupe, sauf si vous disposez d'autres moyens de vous tenir informé.
+    normal_explained: Lorsque quelqu'un saisit votre nom dans le champ « Notifier » d'un fil de discussion ou d'un sondage, ou qu'il @mentionne le groupe.
+    normal_excludes_mentioning_html: Il existe un paramètre distinct pour les mentions @ (par exemple, lorsqu'on vous répond dans un commentaire). <a href="%{url}">Cliquez ici pour modifier les paramètres des mentions @.</a>
+    loud_explained: Vous recevrez un e-mail chaque fois qu'il y aura un nouveau commentaire, que quelqu'un votera ou lancera un sondage ou un fil de discussion.
   close_explanation_modal:
     aria_label: Clore la discussion
     close_thread: Clore la discussion
@@ -635,6 +648,9 @@ fr:
       poll: Retirer de %{pollType}
     cancel_invitation: Annuler l’invitation
     view_profile: Voir le profil
+    revoke_admin: Révoquer l'administrateur
+    make_delegate: Faire déléguer
+    revoke_delegate: Révoquer le délégué
   notification_models:
     discussion: 'discussion :'
     comment: commentaire dans
@@ -681,6 +697,8 @@ fr:
       user_added_to_group: "%{actor} vous a ajouté dans le group: %{title}"
       user_mentioned: "%{actor} vous a mentionné·e dans: %{title}"
       user_reminded: "%{actor} attend votre vote sur: %{title}"
+      group_mentioned: "%{actor} a mentionné le groupe dans : %{title}"
+      new_delegate: "%{actor} vous a nommé délégué avec droit de vote dans %{title}"
     without_title:
       unknown_sender: Veuillez examiner les e-mails provenant d'un expéditeur non reconnu
       discussion_announced: "%{actor} vous a invité à la discussion"
@@ -717,6 +735,7 @@ fr:
       stance_created_option: "%{actor}a voté %{option} "
       user_mentioned: "%{actor} vous a mentionné"
       user_reminded: "%{actor} vous rappelle de voter"
+      group_mentioned: "%{actor} a mentionné le groupe"
     hints:
       poll_closing_soon: C’est le bon moment pour voter, changer d’avis ou encourager les autres à participer.
       poll_closing_soon_author: Vous voudrez peut-être rappeler aux gens de voter ou de prolonger la date limite.
@@ -835,6 +854,7 @@ fr:
       decided_voters: Tous ceux qui ont voté
       undecided_voters: Votants indécis
       non_voters: Les membres de %{name} n'ont pas encore été invités
+      delegates_of_group: Délégués de %{name}
     form:
       group_has_no_members_yet: Vous êtes le seul membre de votre groupe. Vous souhaiterez peut-être inviter certaines personnes dans votre groupe avant de démarrer un fil de discussion ou une décision.
       invite_people_to_evaluate_loomio: Invitez des personnes dans votre groupe Loomio pour prendre une décision ensemble
@@ -913,6 +933,7 @@ fr:
       modal_title: Sélectionner des membres du groupe
     flash:
       success: "%{count} notifications envoyées"
+    group_mentioned: "%{name} a mentionné le groupe avec %{length} personnes :"
   action_dock:
     actions_menu: Menu d'actions
     more_actions: Plus d'actions
@@ -1901,6 +1922,8 @@ fr:
     accepted: Membres
     email_rejected: E-mail rejeté
     email_rejected_meaning: L'e-mail envoyé à cette adresse a été renvoyé ou marqué comme spam. Aucun autre e-mail ne sera envoyé à cette adresse.
+    delegate: Déléguer
+    delegate_popover: Un délégué est un membre du groupe avec droit de vote
   polls_panel:
     new_poll: Nouveau sondage
     any_type: Tous types

@@ -275,6 +275,11 @@ export default
                 v-chip(variant="tonal" size="x-small" label)
                   span(v-t="'members_panel.admin'")
 
+              template(v-if="membership.groupId == group.id && membership.delegate")
+                space
+                v-chip(variant="tonal" size="x-small" label :title="$t('members_panel.delegate_popover')")
+                  span(v-t="'members_panel.delegate'" )
+
             v-list-item-subtitle
               span(v-if="membership.acceptedAt")
                 span(v-t="'common.action.joined'")

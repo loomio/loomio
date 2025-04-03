@@ -12,6 +12,11 @@ export default {
   },
 
   computed: {
+    isDelegate() {
+      const actor = this.event.actor();
+      const group = this.eventable.group();
+      return actor && group && actor.delegates && actor.delegates[group.id]
+    },
     datetime() { return this.dateTime || this.eventable.castAt || this.eventable.createdAt; },
     headline() {
       const actor = this.event.actor();
@@ -42,6 +47,9 @@ h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
     //- common-icon(v-if="event.pinned" name="mdi-pin")
     slot(name="headline")
       span.strand-item__headline.text-medium-emphasis(v-html='headline')
+    space(v-if="isDelegate")
+    v-chip(v-if="isDelegate" size="x-small" variant="tonal" label :title="$t('members_panel.delegate_popover')")
+      span(v-t="'members_panel.delegate'")
     mid-dot.text-medium-emphasis
     router-link.text-medium-emphasis.text-body-2(:to='link')
       time-ago(:date='datetime')
@@ -58,5 +66,4 @@ h3.strand-item__headline.thread-item__title.text-body-2.pb-1(tabindex="-1")
 .text-medium-emphasis
   .actor-link
     color: inherit
-
 </style>

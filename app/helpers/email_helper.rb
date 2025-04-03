@@ -47,7 +47,7 @@ module EmailHelper
   end
 
   def unsubscribe_url(eventable)
-    email_actions_unsubscribe_path(eventable.named_id.merge({unsubscribe_token: @recipient.unsubscribe_token}))
+    email_actions_unsubscribe_url(eventable.named_id.merge({unsubscribe_token: @recipient.unsubscribe_token}))
   end
 
   def pixel_src(event)

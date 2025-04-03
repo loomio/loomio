@@ -19,7 +19,7 @@ export default new class StanceService {
   };
 
   removeAdmin = {
-    name: 'membership_dropdown.demote_coordinator',
+    name: 'membership_dropdown.revoke_admin',
     canPerform(poll, user) {
       return poll.adminsInclude(Session.user()) && poll.adminsInclude(user);
     },
@@ -37,13 +37,13 @@ export default new class StanceService {
       return Records.remote.post('stances/revoke', {participant_id: user.id, poll_id: poll.id})
       .then(() => {
         if (user.id === Session.user().id) {
-          EventBus.$emit('deleteMyStance', poll.id); 
+          EventBus.$emit('deleteMyStance', poll.id);
         }
         return Flash.success("membership_remove_modal.invitation.flash");
       });
     }
   };
-  
+
   actions(stance, vm, event) {
     return {
       react: {
@@ -135,7 +135,7 @@ export default new class StanceService {
       }
     });
   }
-      
+
   uncastStance(stance) {
     return openModal({
       component: 'ConfirmModal',
@@ -160,7 +160,7 @@ export default new class StanceService {
     stance.latest &&
     !stance.revokedAt &&
     (stance.poll().myStanceId === stance.id) &&
-    stance.poll().isVotable() && 
+    stance.poll().isVotable() &&
     stance.poll().iHaveVoted();
   }
 };

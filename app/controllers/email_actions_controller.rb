@@ -77,11 +77,14 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   private
 
   def load_model
-    load_and_authorize(:discussion, :show, optional: true) ||
-    load_and_authorize(:group, :show, optional: true) ||
-    load_and_authorize(:comment, :show, optional: true) ||
-    load_and_authorize(:poll, :show, optional: true) ||
-    load_and_authorize(:outcome, :show, optional: true)
+    model = load_and_authorize(:discussion, :show, optional: true) ||
+            load_and_authorize(:group, :show, optional: true) ||
+            load_and_authorize(:comment, :show, optional: true) ||
+            load_and_authorize(:poll, :show, optional: true) ||
+            load_and_authorize(:outcome, :show, optional: true)
+    raise ActiveRecord::RecordNotFound unless model
+
+    model
   end
 
   def respond_with_pixel

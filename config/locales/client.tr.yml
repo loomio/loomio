@@ -315,6 +315,7 @@ tr:
     formatting_help:
       label: Biçimlendirme
       title: Metninizi biçimlendirmek için Markdown'u nasıl kullanacağınızı öğrenin
+    thread: İplik
   merge_accounts:
     modal:
       title: Hesapları birleştir
@@ -459,6 +460,18 @@ tr:
         loud: Yeni gruplardaki tüm etkinlikler size e-postayla gönderilecektir.
         normal: Yeni gruplardaki duyurular hakkında e-postayla bilgilendirileceksiniz.
         quiet: Yeni gruplar hakkında e-posta almayacaksınız.
+    change_your_email_settings: E-posta ayarlarınızı değiştirin
+    when_would_you_like_to_be_emailed_thread: Bu konu hakkında ne zaman e-posta almak istersiniz?
+    when_would_you_like_to_be_emailed_group: Bu grupla ilgili e-postayı ne zaman almak istersiniz?
+    changes_all_threads_in_group: Bu, gruptaki tüm iş parçacıkları için ayarı değiştirir.
+    what_do_the_options_mean: Seçenekler ne anlama geliyor?
+    loud_desc: Her seferinde birisi katıldığında
+    normal_desc: Birisi bana bildirdiğinde
+    quiet_desc: Asla
+    quiet_explained: Birisi sizi bilgilendirmeye çalışsa bile size e-posta gönderilmeyecektir. Önemli duyuruları veya kararları kaçırabilirsiniz. Bu, bir konu sizi ilgilendirmiyorsa uygun olabilir ancak güncel kalmanın başka yolları yoksa grup ortamı için önerilmez.
+    normal_explained: Birisi bir konu başlığının veya anketin "Bildir" alanına adınızı girdiğinde veya gruptan @mention yaptığında.
+    normal_excludes_mentioning_html: Birisi sizden @mentions yaptığında (örneğin bir yorumda size yanıt verdiğinde) ayrı bir ayar vardır. <a href="%{url}">@mentions ayarlarını düzenlemek için buraya tıklayın</a>
+    loud_explained: Her yeni yorum yapıldığında, birisi oy verdiğinde, anket veya konu başlatıldığında e-posta ile bilgilendirileceksiniz.
   close_explanation_modal:
     aria_label: Konuyu kapat
     close_thread: Konuyu kapat
@@ -623,6 +636,9 @@ tr:
       poll: "%{pollType}'dan kaldır"
     cancel_invitation: Davetiyeyi iptal et
     view_profile: Profili görüntüle
+    revoke_admin: Yöneticiyi iptal et
+    make_delegate: Delege et
+    revoke_delegate: Temsilciyi iptal et
   notification_models:
     discussion: 'iplik:'
     comment: yorum yapın
@@ -669,6 +685,8 @@ tr:
       user_added_to_group: "%{actor} sizi şu gruba ekledi: %{title}"
       user_mentioned: "%{actor} sizden şu konuda bahsetti: %{title}"
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor: %{title}"
+      group_mentioned: "%{actor} şu gruptan bahsetti: %{title}"
+      new_delegate: "%{actor} sizi %{title}'da oy kullanma haklarına sahip bir delege yaptı"
     without_title:
       unknown_sender: Lütfen tanınmayan gönderenden gelen e-postayı inceleyin
       discussion_announced: "%{actor} sizi bir konuya davet etti"
@@ -705,6 +723,7 @@ tr:
       stance_created_option: "%{actor}, %{option}'a oy verdi"
       user_mentioned: "%{actor} sizden bahsetti"
       user_reminded: "%{actor} size oy vermenizi hatırlatıyor"
+      group_mentioned: "%{actor} grubu belirtti"
     hints:
       poll_closing_soon: Şimdi oy vermek, fikrinizi değiştirmek veya başkalarını katılmaya teşvik etmek için iyi bir zaman.
       poll_closing_soon_author: İnsanlara oy vermelerini hatırlatmak veya son tarihi uzatmak isteyebilirsiniz.
@@ -823,6 +842,7 @@ tr:
       decided_voters: Oy veren herkes
       undecided_voters: Kararsız seçmen
       non_voters: "%{name} üyeleri henüz davet edilmedi"
+      delegates_of_group: "%{name} temsilcileri"
     form:
       group_has_no_members_yet: Grubunuzun tek üyesi sizsiniz. Bir konuya veya karara başlamadan önce bazı kişileri grubunuza davet etmek isteyebilirsiniz.
       invite_people_to_evaluate_loomio: Birlikte karar vermeleri için birkaç kişiyi Loomio grubunuza davet edin
@@ -897,6 +917,7 @@ tr:
       modal_title: Grup üyelerini seçin
     flash:
       success: "%{count} bildirim gönderildi"
+    group_mentioned: "%{name}, %{length} kişinin bulunduğu gruptan bahsetti:"
   action_dock:
     actions_menu: Eylemler menüsü
     more_actions: Daha fazla hareket
@@ -1852,6 +1873,8 @@ tr:
     accepted: Üyeler
     email_rejected: E-posta reddedildi
     email_rejected_meaning: Bu adrese gönderilen e-posta geri döndü veya spam olarak işaretlendi. Bu adrese bir daha e-posta gönderilmeyecek.
+    delegate: Temsilci
+    delegate_popover: Bir delege, oy kullanma hakkına sahip bir grup üyesidir
   polls_panel:
     new_poll: Yeni anket
     any_type: Her türlü

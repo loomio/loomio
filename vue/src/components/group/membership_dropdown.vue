@@ -99,6 +99,21 @@ export default
       (this.membership.userIs(Session.user()) && this.membership.group().parentOrSelf().adminsInclude(Session.user()));
     },
 
+    canMakeDelegate() {
+      return !this.membership.delegate && AbilityService.canAdminister(this.membership.group())
+    },
+
+    canRemoveDelegate() {
+      return this.membership.delegate && AbilityService.canAdminister(this.membership.group())
+    },
+
+    makeDelegate() {
+      Records.memberships.remote.postMember(this.membership.id, 'make_delegate')
+    },
+
+    removeDelegate() {
+      Records.memberships.remote.postMember(this.membership.id, 'remove_delegate')
+    },
 
     toggleAdmin(membership) {
       const method = this.membership.admin ? 'removeAdmin' : 'makeAdmin';
@@ -130,7 +145,11 @@ export default
         v-list-item-title(v-t="'membership_dropdown.invitation_resent'", v-if='membership.resent')
       v-list-item.membership-dropdown__toggle-admin(v-if='canToggleAdmin()' @click='toggleAdmin()')
         v-list-item-title(v-t="'membership_dropdown.make_coordinator'", v-if='!membership.admin')
-        v-list-item-title(v-t="'membership_dropdown.demote_coordinator'", v-if='membership.admin')
+        v-list-item-title(v-t="'membership_dropdown.revoke_admin'", v-if='membership.admin')
+      v-list-item.membership-dropdown__make-delegate(v-if='canMakeDelegate()' @click='makeDelegate()')
+        v-list-item-title(v-t="'membership_dropdown.make_delegate'")
+      v-list-item.membership-dropdown__make-delegate(v-if='canRemoveDelegate()' @click='removeDelegate()')
+        v-list-item-title(v-t="'membership_dropdown.revoke_delegate'")
       v-list-item.membership-dropdown__remove(v-if='canRemoveMembership()' @click='removeMembership()')
         v-list-item-title(v-if='membership.acceptedAt' v-t="'membership_dropdown.remove_from.group'")
         //- v-list-item-title(v-if='membership.acceptedAt')

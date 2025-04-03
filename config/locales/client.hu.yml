@@ -317,6 +317,7 @@ hu:
     formatting_help:
       label: Formázás
       title: Így használhatod a Markdown-t a szöveg formázására
+    thread: Szál
   merge_accounts:
     modal:
       title: Fiókok egyesítése
@@ -461,6 +462,18 @@ hu:
         loud: Az új csoportjaidon belüli összes tevékenységről értesítést kapsz e-mailben.
         normal: 'Új csoportjaidból a bejelentéseket kapod meg e-mailben. '
         quiet: Nem kérek e-mailt az új csoportokról.
+    change_your_email_settings: Módosítsa az e-mail beállításait
+    when_would_you_like_to_be_emailed_thread: Mikor szeretne e-mailt kapni erről a témáról?
+    when_would_you_like_to_be_emailed_group: Mikor szeretne e-mailt kapni erről a csoportról?
+    changes_all_threads_in_group: Ez megváltoztatja a csoport összes szálának beállítását.
+    what_do_the_options_mean: Mit jelentenek a lehetőségek?
+    loud_desc: Minden alkalommal, amikor valaki részt vesz
+    normal_desc: Amikor valaki értesít
+    quiet_desc: Soha
+    quiet_explained: Nem kap e-mailt, még akkor sem, ha valaki megpróbál értesíteni. Lemaradhat fontos bejelentésekről vagy döntésekről. Ez megfelelő lehet, ha egy szál nem érinti Önt, de nem ajánlott a csoport beállításához, hacsak nincs más módja annak, hogy naprakész maradjon.
+    normal_explained: Amikor valaki beírja a nevét egy témaszál vagy egy szavazás "Értesítés" mezőjébe, vagy @említi a csoportot.
+    normal_excludes_mentioning_html: Külön beállítás van arra vonatkozóan, amikor valaki @megemlít téged (pl. amikor egy megjegyzésben válaszol neked). <a href="%{url}">Kattintson ide a @megemlítések beállításainak szerkesztéséhez</a>
+    loud_explained: Minden alkalommal e-mailt fog kapni, amikor új megjegyzés érkezik, valaki szavaz, vagy szavazást vagy témát indít.
   close_explanation_modal:
     aria_label: Téma lezárása
     close_thread: Téma lezárása
@@ -625,6 +638,9 @@ hu:
       poll: 'Eltávolítás innen: %{pollType}'
     cancel_invitation: Meghívás visszavonása
     view_profile: Profil megtekintése
+    revoke_admin: Rendszergazda visszavonása
+    make_delegate: Legyen küldött
+    revoke_delegate: Meghatalmazott visszavonása
   notification_models:
     discussion: 'téma:'
     comment: hozzászólás itt
@@ -671,6 +687,8 @@ hu:
       user_added_to_group: "%{actor} felvett a következő csoportba: %{title}"
       user_mentioned: "%{actor} megemlített téged a következőben: %{title}"
       user_reminded: "%{actor} emlékeztet, hogy szavazz: %{title}"
+      group_mentioned: "%{actor} megemlítette a csoportot itt: %{title}"
+      new_delegate: "%{actor} szavazati joggal rendelkező képviselővé tett téged %{title}"
     without_title:
       unknown_sender: Kérjük, tekintse át az ismeretlen feladótól kapott e-mailt
       discussion_announced: "%{actor} meghívott egy témaszálba"
@@ -707,6 +725,7 @@ hu:
       stance_created_option: "%{actor} szavazott: %{option}"
       user_mentioned: "%{actor} megemlített téged"
       user_reminded: "%{actor} emlékeztet arra, hogy szavazzon"
+      group_mentioned: "%{actor} megemlítette a csoportot"
     hints:
       poll_closing_soon: Itt az ideje, hogy szavazzon, meggondolja magát, vagy bátorítson másokat a részvételre.
       poll_closing_soon_author: Emlékeztetheti az embereket, hogy szavazzanak, vagy hosszabbítsák meg a határidőt.
@@ -825,6 +844,7 @@ hu:
       decided_voters: Mindenki, aki szavazott
       undecided_voters: Mindenki, aki nem szavazott
       non_voters: A(z) %{name} tagjai még nincsenek meghívva
+      delegates_of_group: "%{name} küldöttei"
     form:
       group_has_no_members_yet: Ön a csoport egyetlen tagja. Érdemes lehet néhány embert meghívni a csoportjába, mielőtt szálat vagy döntést hozna létre.
       invite_people_to_evaluate_loomio: Hívjon meg néhány embert a Loomio csoportjába, hogy közösen döntsenek
@@ -901,6 +921,7 @@ hu:
       modal_title: Válassza ki a csoporttagokat
     flash:
       success: "%{count} értesítés elküldve"
+    group_mentioned: "%{name} megemlítette a csoportot %{length} emberrel:"
   action_dock:
     actions_menu: Műveletek menü
     more_actions: Több akció
@@ -1862,6 +1883,8 @@ hu:
     accepted: Tagok
     email_rejected: E-mail elutasítva
     email_rejected_meaning: Az erre a címre küldött e-mail visszapattant vagy spamként lett megjelölve. Erre a címre nem küldünk több e-mailt.
+    delegate: Delegált
+    delegate_popover: A delegált szavazati joggal rendelkező csoporttag
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus

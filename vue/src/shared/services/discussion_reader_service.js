@@ -20,7 +20,7 @@ export default new class DiscussionReaderService {
     }
 
     this.removeAdmin = {
-      name: 'membership_dropdown.demote_coordinator',
+      name: 'membership_dropdown.revoke_admin',
       canPerform(dr) {
         return dr.admin && dr.discussion().adminsInclude(Session.user());
       },
@@ -52,4 +52,3 @@ export default new class DiscussionReaderService {
     };
   }
 }
-

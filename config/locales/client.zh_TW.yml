@@ -321,6 +321,7 @@ zh_TW:
     formatting_help:
       label: 格式化
       title: 學習如何使用 Markdown 來格式化您的文字
+    thread: 線
   merge_accounts:
     modal:
       title: 合併帳號
@@ -467,6 +468,18 @@ zh_TW:
         loud: 您將會收到關於您新加入的群組中所有動態的電子郵件。
         normal: 您將會收到在新群組中關於公告的電子郵件。
         quiet: 您將不會收到任何關於新群組的電子郵件。
+    change_your_email_settings: 更改電子郵件設定
+    when_would_you_like_to_be_emailed_thread: 您希望何時收到有關此主題的電子郵件？
+    when_would_you_like_to_be_emailed_group: 您希望何時收到有關該小組的電子郵件？
+    changes_all_threads_in_group: 這會改變群組中所有執行緒的設定。
+    what_do_the_options_mean: 這些選項代表什麼意思？
+    loud_desc: 每次有人參加
+    normal_desc: 當有人通知我時
+    quiet_desc: 絕不
+    quiet_explained: 即使有人試圖通知您，您也不會收到電子郵件。您可能會錯過重要的公告或決定。如果某個主題與您無關，這可能比較合適，但不建議在小組設定中使用，除非您有其他方式來保持最新狀態。
+    normal_explained: 當有人在主題或投票的「通知」欄位中輸入您的姓名，或@提及該小組。
+    normal_excludes_mentioning_html: 當有人@提及您時（例如在評論中回复您時），有一個單獨的設置。<a href="%{url}">點擊此處編輯@mentions 的設置</a>
+    loud_explained: 每次有新評論、有人投票、或發起投票或討論時，您都會收到電子郵件。
   close_explanation_modal:
     aria_label: 關閉討論串
     close_thread: 關閉討論串
@@ -633,6 +646,9 @@ zh_TW:
       poll: 自 %{pollType} 移除
     cancel_invitation: 取消邀請函
     view_profile: 查看個人資料
+    revoke_admin: 撤銷管理員
+    make_delegate: 任命代表
+    revoke_delegate: 撤銷委託
   notification_models:
     discussion: 討論串：
     comment: 評論於
@@ -679,6 +695,8 @@ zh_TW:
       user_added_to_group: "%{actor} 將您新增至群組：%{title}"
       user_mentioned: "%{actor} 提到您在：%{title}"
       user_reminded: "%{actor} 正在提醒您要投票：%{title}"
+      group_mentioned: "%{actor} 在 %{title} 中提及了該組合"
+      new_delegate: "%{actor} 讓你成為 %{title} 中擁有投票權的代表"
     without_title:
       unknown_sender: 請檢查來自無法識別的寄件者的電子郵件
       discussion_announced: "%{actor} 邀請您加入討論串"
@@ -715,6 +733,7 @@ zh_TW:
       stance_created_option: "%{actor} 投票了 %{option}"
       user_mentioned: "%{actor} 提及您"
       user_reminded: "%{actor} 正在提醒您投票"
+      group_mentioned: "%{actor} 提及了該團體"
     hints:
       poll_closing_soon: 現在是投票、變更您的心意或鼓勵他人參與的好時機。
       poll_closing_soon_author: 您可能希望提醒人們投票或延長截止日期。
@@ -833,6 +852,7 @@ zh_TW:
       decided_voters: 已經投票的每個人
       undecided_voters: 未決定的選民
       non_voters: "%{name} 的成員尚未被邀請"
+      delegates_of_group: "%{name} 的代表"
     form:
       group_has_no_members_yet: 您是小組中唯一的成員。在開始話題或做出決定之前，您可能會想邀請一些人加入您的小組。
       invite_people_to_evaluate_loomio: 邀請一些人加入您的 Loomio 小組，共同做出決定
@@ -911,6 +931,7 @@ zh_TW:
       modal_title: 選取群組成員
     flash:
       success: 已傳送 %{count} 個通知
+    group_mentioned: "%{name} 提及了有 %{length} 人的群組："
   action_dock:
     actions_menu: 動作選單
     more_actions: 更多動作
@@ -1890,6 +1911,8 @@ zh_TW:
     accepted: 成員 (%{count})
     email_rejected: 電子郵件被拒絕
     email_rejected_meaning: 發送到此位址的電子郵件已被退回或標記為垃圾郵件。不會再有電子郵件傳送到該位址。
+    delegate: 代表
+    delegate_popover: 代表是具有投票權的團體成員
   polls_panel:
     new_poll: 新投票
     any_type: 所有類型

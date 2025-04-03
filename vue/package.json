@@ -87,9 +87,9 @@
     "nightwatch": "^3.9.0",
     "pug": "latest",
     "sass": "latest",
-    "vite": "^5.4.11",
     "vite-plugin-env-compatible": "latest",
-    "vite-plugin-vuetify": "latest"
+    "vite-plugin-vuetify": "latest",
+    "vite": "^5.4.16"
   },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "latest",

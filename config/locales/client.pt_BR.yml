@@ -323,6 +323,7 @@ pt_BR:
     formatting_help:
       label: Formatação
       title: Aprenda como usar Markdown para formatar seu texto
+    thread: Fio
   merge_accounts:
     modal:
       title: Mesclar contas
@@ -469,6 +470,18 @@ pt_BR:
         loud: Você receberá e-mail de todas as atividades em novos grupos.
         normal: Você receberá emails sobre anúncios em novos grupos.
         quiet: Você não receberá e-mail sobre novos grupos.
+    change_your_email_settings: Alterar suas configurações de e-mail
+    when_would_you_like_to_be_emailed_thread: Quando você gostaria de receber um e-mail sobre este tópico?
+    when_would_you_like_to_be_emailed_group: Quando você gostaria de receber e-mails sobre este grupo?
+    changes_all_threads_in_group: Isso altera a configuração de todos os threads no grupo.
+    what_do_the_options_mean: O que as opções significam?
+    loud_desc: Toda vez que alguém participa
+    normal_desc: Quando alguém me notifica
+    quiet_desc: Nunca
+    quiet_explained: Você não receberá e-mails, mesmo quando alguém tentar notificá-lo. Você pode perder anúncios ou decisões importantes. Isso pode ser adequado se um tópico não lhe diz respeito, mas não é recomendado para a configuração de grupo, a menos que você tenha outras maneiras de se manter atualizado.
+    normal_explained: Quando alguém insere seu nome no campo "Notificar" de um tópico ou enquete, ou @menciona o grupo.
+    normal_excludes_mentioning_html: Há uma configuração separada para quando alguém @menciona você (por exemplo, quando responde a você em um comentário). <a href="%{url}">Clique aqui para editar as configurações para @menções</a>
+    loud_explained: Você receberá um e-mail sempre que houver um novo comentário, alguém votar ou iniciar uma enquete ou tópico.
   close_explanation_modal:
     aria_label: Fechar conversa
     close_thread: Fechar conversa
@@ -635,6 +648,9 @@ pt_BR:
       poll: Eliminar de %{pollType}
     cancel_invitation: Cancelar convite
     view_profile: Ver perfil
+    revoke_admin: Revogar administrador
+    make_delegate: Fazer delegado
+    revoke_delegate: Revogar delegado
   notification_models:
     discussion: 'conversa:'
     comment: comentar em
@@ -681,6 +697,8 @@ pt_BR:
       user_added_to_group: "%{actor} adicionou você ao grupo: %{title}"
       user_mentioned: "%{actor} mencionou você em %{title}"
       user_reminded: "%{actor} lembrou você de votar em %{title}"
+      group_mentioned: "%{actor} mencionou o grupo em: %{title}"
+      new_delegate: "%{actor} fez de você um delegado com direito a voto em %{title}"
     without_title:
       unknown_sender: Revise o e-mail de um remetente não reconhecido
       discussion_announced: "%{actor}  convidou você para um tópico"
@@ -717,6 +735,7 @@ pt_BR:
       stance_created_option: "%{actor} votou %{option}"
       user_mentioned: "%{actor} mencionou você"
       user_reminded: "%{actor} está lembrando você de votar"
+      group_mentioned: "%{actor} mencionou o grupo"
     hints:
       poll_closing_soon: Agora é um bom momento para votar, mudar de ideia ou encorajar outras pessoas a participar.
       poll_closing_soon_author: Você pode querer lembrar as pessoas de votar ou estender o prazo.
@@ -835,6 +854,7 @@ pt_BR:
       decided_voters: Todos que votaram
       undecided_voters: Eleitores indecisos
       non_voters: Membros de %{name} ainda não convidados
+      delegates_of_group: Delegados de %{name}
     form:
       group_has_no_members_yet: Você é o único membro do seu grupo. Você pode convidar algumas pessoas para o seu grupo antes de iniciar um tópico ou decisão.
       invite_people_to_evaluate_loomio: Convide algumas pessoas para o seu grupo Loomio para tomarem uma decisão juntos
@@ -913,6 +933,7 @@ pt_BR:
       modal_title: Selecionar membros do grupo
     flash:
       success: "%{count} notificações enviadas"
+    group_mentioned: "%{name} mencionou o grupo com %{length} pessoas:"
   action_dock:
     actions_menu: Menu de ações
     more_actions: Mais ações
@@ -1903,6 +1924,8 @@ pt_BR:
     accepted: Membros
     email_rejected: E-mail rejeitado
     email_rejected_meaning: O e-mail enviado para este endereço foi devolvido ou marcado como spam. Nenhum outro e-mail será enviado para este endereço.
+    delegate: Delegar
+    delegate_popover: Um delegado é um membro do grupo com direito a voto
   polls_panel:
     new_poll: Nova enquete
     any_type: Todos tipos
