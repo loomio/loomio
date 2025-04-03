@@ -15,7 +15,7 @@ export default {
     isDelegate() {
       const actor = this.event.actor();
       const group = this.eventable.group();
-      return actor && group && actor.experiences.delegates && actor.experiences.delegates[group.id]
+      return actor && group && actor.delegates && actor.delegates[group.id]
     },
     datetime() { return this.dateTime || this.eventable.castAt || this.eventable.createdAt; },
     headline() {
