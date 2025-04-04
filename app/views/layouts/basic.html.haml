@@ -14,13 +14,11 @@
       %a{href: '/'}
         %img{style: 'max-width: 192px', src: AppConfig.theme[:app_logo_src]}
 
-    %main
-      - if flash[:notice]
-        .sistema
-          %aside.flash-notice{role: 'alert'}= flash[:notice]
-
+    - if flash[:notice]
       .sistema
-        = yield
+        %aside.flash-notice{role: 'alert'}= flash[:notice]
+
+    = yield
 
     - if @footer
       %footer= render @footer
