@@ -6,6 +6,7 @@ import AbilityService from '@/shared/services/ability_service';
 import LmoUrlService  from '@/shared/services/lmo_url_service';
 import openModal      from '@/shared/helpers/open_modal';
 import { hardReload } from '@/shared/helpers/window';
+import { subMonths } from 'date-fns';
 
 export default new class ThreadService {
   actions(discussion, vm) {
@@ -105,7 +106,10 @@ export default new class ThreadService {
         dockDisplay: 'icon',
         dock: 1,
         canPerform() { return AbilityService.canAddComment(discussion); },
-        perform() { return vm.$vuetify.goTo('#add-comment'); }
+        perform() {
+          document.querySelector('#add-comment').scrollIntoView();
+          document.querySelector('#add-comment').focus();
+        }
       },
 
       edit_thread: {
@@ -144,8 +148,9 @@ export default new class ThreadService {
         perform() {
           return openModal({
             component: 'AnnouncementHistory',
+            persistent: false,
             props: {
-              model: discussion
+              model: discussion,
             }
           });
         },
@@ -204,7 +209,7 @@ export default new class ThreadService {
           });
         }
       },
-            
+
       close_thread: {
         menu: true,
         icon: 'mdi-archive-outline',
@@ -273,6 +278,66 @@ export default new class ThreadService {
     };
   }
 
+  dashboardQuery() {
+    const groupIds = Records.memberships.collection.find({userId: Session.user().id}).map(m => m.groupId);
+    let chain = Records.discussions.collection.chain();
+    chain = chain.find({$or: [{groupId: {$in: groupIds}}, {discussionReaderUserId: Session.user().id, revokedAt: null, inviterId: {$ne: null}}]});
+    chain = chain.find({discardedAt: null});
+    chain = chain.find({closedAt: null});
+    chain = chain.find({lastActivityAt: { $gt: subMonths(new Date(), 6) }});
+    chain = chain.simplesort('lastActivityAt', true);
+    return chain.data();
+  }
+
+  groupDiscussionsQuery(group, groupIds, t, tag, page, loader) {
+    if (!group) { return; }
+
+
+    let pinnedDiscussions = []
+    if (page == 1 && !t && !tag) {
+      pinnedDiscussions = Records.discussions.collection.chain().find({
+        discardedAt: null,
+        groupId: group.id,
+        pinnedAt: {$ne: null}
+      }).simplesort('pinnedAt', true).data();
+    }
+
+    let chain = Records.discussions.collection.chain().find({
+      discardedAt: null,
+      groupId: {$in: groupIds},
+      id: {$nin: pinnedDiscussions.map(d => d.id)}
+    }).simplesort('lastActivityAt', true);
+
+    switch (t) {
+      case 'unread':
+        chain = chain.where(discussion => discussion.isUnread());
+        break;
+      case 'closed':
+        chain = chain.find({closedAt: {$ne: null}});
+        break;
+      case 'all':
+        break;
+      default:
+        chain = chain.find({closedAt: null});
+    }
+
+    if (tag) {
+      const tag = Records.tags.find({groupId: group.parentOrSelf().id, name: tag})[0];
+      chain = chain.find({tagIds: {'$contains': tag.id}});
+    }
+
+    let discussions = []
+    if (loader.pageWindow[page]) {
+      if (page === 1) {
+        chain = chain.find({lastActivityAt: {$gte: loader.pageWindow[page][0]}});
+      } else {
+        chain = chain.find({lastActivityAt: {$jbetween: loader.pageWindow[page]}});
+      }
+      discussions = chain.data();
+    }
+    return pinnedDiscussions.concat(discussions);
+  }
+
   mute(thread, override) {
     if (override == null) { override = false; }
     if (!Session.user().hasExperienced("mutingThread") && !override) {
@@ -327,14 +392,14 @@ export default new class ThreadService {
       }));
     } else {
       return thread.close().then(() => {
-        return Flash.success("discussion.closed.closed", {}, 'undo', () => this.reopen(thread));
+        return Flash.success("discussion.closed.closed");
       });
     }
   }
 
   reopen(thread) {
     return thread.reopen().then(() => {
-      return Flash.success("discussion.closed.reopened", {}, 'undo', () => this.close(thread));
+      return Flash.success("discussion.closed.reopened");
     });
   }
 

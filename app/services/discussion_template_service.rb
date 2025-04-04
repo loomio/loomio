@@ -63,7 +63,7 @@ class DiscussionTemplateService
                         filename: 'loomiologo.png')
     end
 
-    group.discussion_templates = default_templates.map do |dt| 
+    group.discussion_templates = default_templates.map do |dt|
       dt.public = true
       dt.author = User.helper_bot
       dt

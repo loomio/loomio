@@ -7,9 +7,12 @@ import EventBus       from '@/shared/services/event_bus';
 import Session       from '@/shared/services/session';
 import { intersection, uniq } from 'lodash-es';
 import { mdiMagnify } from '@mdi/js';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default
 {
+  mixins: [WatchRecords, UrlFor],
   data() {
     return {
       mdiMagnify,
@@ -155,27 +158,27 @@ export default
 .polls-panel
   loading(v-if="!group")
   div(v-if="group")
-    v-layout.py-2(align-center wrap)
+    .d-flex.align-center.flex-wrap.pt-4.pb-2
       v-menu
-        template(v-slot:activator="{ on, attrs }")
-          v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
+        template(v-slot:activator="{ props }")
+          v-btn.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
             span(v-if="$route.query.status == 'active'" v-t="'polls_panel.open'")
             span(v-if="$route.query.status == 'closed'" v-t="'polls_panel.closed'")
             span(v-if="$route.query.status == 'vote'" v-t="'polls_panel.need_vote'")
             span(v-if="!$route.query.status" v-t="'polls_panel.any_status'")
             common-icon(name="mdi-menu-down")
-        v-list(dense)
+        v-list
           v-list-item(:to="mergeQuery({status: null })" v-t="'polls_panel.any_status'")
           v-list-item(:to="mergeQuery({status: 'active'})" v-t="'polls_panel.open'")
           v-list-item(:to="mergeQuery({status: 'closed'})" v-t="'polls_panel.closed'")
           v-list-item(:to="mergeQuery({status: 'vote'})" v-t="'polls_panel.need_vote'")
       v-menu
-        template(v-slot:activator="{ on, attrs }")
-          v-btn.mr-2.text-lowercase(v-on="on" v-bind="attrs" text)
+        template(v-slot:activator="{ props }")
+          v-btn.mr-2.text-transform-none.text-medium-emphasis(v-bind="props" variant="tonal")
             span(v-if="$route.query.poll_type" v-t="'poll_types.'+$route.query.poll_type")
             span(v-if="!$route.query.poll_type" v-t="'polls_panel.any_type'")
             common-icon(name="mdi-menu-down")
-        v-list(dense)
+        v-list
           v-list-item(:to="mergeQuery({poll_type: null})" )
             v-list-item-title(v-t="'polls_panel.any_type'")
           v-list-item(
@@ -184,27 +187,25 @@ export default
             :to="mergeQuery({poll_type: pollType})"
           )
             v-list-item-title(v-t="'poll_types.'+pollType")
-      v-text-field.mr-2(
-        clearable
-        hide-details
-        solo
-        v-model="dummyQuery"
+      v-btn.text-transform-none.text-medium-emphasis(
+        variant="tonal"
         @click="openSearchModal"
-        @change="openSearchModal"
-        @keyup.enter="openSearchModal"
-        @click:append="openSearchModal"
-        :placeholder="$t('navbar.search_polls', {name: group.name})"
-        :append-icon="mdiMagnify")
+      )
+        common-icon.mr-1(name="mdiMagnify")
+        span(v-t="'common.action.search'")
+      v-spacer
       v-btn.polls-panel__new-poll-button(
-        :to="'/p/new?group_id='+group.id"
         color='primary'
+        variant="elevated"
+        :to="'/p/new?group_id='+group.id"
         v-if='canStartPoll'
-        v-t="'sidebar.start_decision'")
+      )
+        span(v-t="'sidebar.start_decision'")
     v-card(outlined)
       div(v-if="loader.status == 403")
         p.pa-4.text-center(v-t="'error_page.forbidden'")
       div(v-else)
-        v-list(two-line avatar v-if='polls.length && loader.pageWindow[page]')
+        v-list(lines="two" v-if='polls.length && loader.pageWindow[page]')
           poll-common-preview(
             :poll='poll'
             v-for='poll in polls'
