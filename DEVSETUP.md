@@ -32,7 +32,8 @@ sudo apt-get update
 sudo apt-get install postgresql postgresql-contrib build-essential \
                      libssl-dev libreadline-dev zlib1g-dev \
                      libpq-dev libffi-dev libmagickwand-dev \
-                     imagemagick python3 redis
+                     imagemagick python3 redis libyaml-dev \
+                     git libvips ffmpeg poppler-utils \
 ```
 
 ## Install ruby

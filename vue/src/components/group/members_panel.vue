@@ -122,6 +122,9 @@ export default
         case 'admin':
           chain = chain.find({admin: true});
           break;
+        case 'delegate':
+          chain = chain.find({delegate: true});
+          break;
         case 'accepted':
           chain = chain.find({acceptedAt: { $ne: null }});
           break;
@@ -198,6 +201,7 @@ export default
         template(v-slot:activator="{ props }")
           v-btn.members-panel__filters.mr-2.text-capitalize.text-medium-emphasis(v-bind="props" variant="tonal")
             span(v-if="$route.query.filter == 'admin'" v-t="'members_panel.order_by_admin_desc'")
+            span(v-if="$route.query.filter == 'delegate'" v-t="'members_panel.delegates'")
             span(v-if="$route.query.filter == 'pending'" v-t="'members_panel.invitations'")
             span(v-if="$route.query.filter == 'accepted'" v-t="'members_panel.accepted'")
             span(v-if="!$route.query.filter" v-t="'members_panel.all'")
@@ -209,6 +213,8 @@ export default
             v-list-item-title(v-t="'members_panel.accepted'")
           v-list-item.members-panel__filters-admins(:to="mergeQuery({filter: 'admin'})")
             v-list-item-title(v-t="'members_panel.order_by_admin_desc'")
+          v-list-item.members-panel__filters-delegates(:to="mergeQuery({filter: 'delegate'})")
+            v-list-item-title(v-t="'members_panel.delegates'")
           v-list-item.members-panel__filters-invitations(:to="mergeQuery({filter: 'pending'})")
             v-list-item-title(v-t="'members_panel.invitations'")
       v-text-field.mr-2(

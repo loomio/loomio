@@ -1,15 +1,15 @@
-%main
+%main.container
   %h1 Loomio API /api/b2
 
   %p /api/b2 was released in October 2023. It will replace the previous /api/b1
 
-  %p.mt-4 
+  %p.mt-4
     Your API key is: #{@api_key}
     %br
     - if current_user.bot?
       This user account is a bot. That's good! It will not be included in polls and notifications
     - else
-      %span This user account is a human. You may want to 
+      %span This user account is a human. You may want to
       %a{href: "/profile"} setup a bot account
       %span for API requests.
 
@@ -141,8 +141,8 @@
   %pre
     curl #{url}
 
-  %h2 manage memberships  
-  %p send a list of emails. it will invite all the new email addresses to the group. 
+  %h2 manage memberships
+  %p send a list of emails. it will invite all the new email addresses to the group.
   %pre
     curl -X POST -H 'Content-Type: application/json' -d '{"group_id": #{@group_id}, "emails":["person@example.com"], "api_key": "#{@api_key}"}' #{root_url}api/b2/memberships
 

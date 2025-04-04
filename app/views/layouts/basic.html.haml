@@ -6,6 +6,7 @@
     %link{rel: 'stylesheet', href: '/roboto.css'}
     %link{rel: "shortcut icon", href: AppConfig.theme[:icon_src]}
     = stylesheet_link_tag 'basic'
+    = stylesheet_link_tag 'loomiosubs'
     = render 'plausible'
 
   %body
@@ -13,13 +14,11 @@
       %a{href: '/'}
         %img{style: 'max-width: 192px', src: AppConfig.theme[:app_logo_src]}
 
-    %main
-      - if flash[:notice]
-        .container
-          %aside.flash-notice{role: 'alert'}= flash[:notice]
+    - if flash[:notice]
+      .sistema
+        %aside.flash-notice{role: 'alert'}= flash[:notice]
 
-      .container
-        = yield
+    = yield
 
     - if @footer
       %footer= render @footer
