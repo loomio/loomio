@@ -102,6 +102,7 @@ class API::V1::StancesController < API::V1::RestfulController
 
   def live_update_outdated_stances(poll)
     return if poll.discussion.nil?
+
     # want to find stances with comments
     stance_ids = poll.discussion.items.where(
       eventable_type: 'Stance',
@@ -121,6 +122,7 @@ class API::V1::StancesController < API::V1::RestfulController
     stance = Stance.find_by(id: params[:id])
     poll = Poll.find_by(id: params[:poll_id])
     return false unless (stance || poll)
+
     (stance || poll).poll.admins.exists?(current_user.id)
   end
 

@@ -1,5 +1,6 @@
 class StanceSerializer < ApplicationSerializer
   attributes :id,
+             :none_of_the_above,
              :reason,
              :reason_format,
              :content_locale,
