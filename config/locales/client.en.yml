@@ -2047,6 +2047,7 @@ en:
     show_users_in_subgroups: Show users in subgroups as well
     order_by_created_desc: 'Newest'
     order_by_admin_desc: 'Admins'
+    delegates: 'Delegates'
     loaded_of_total: '%{loaded} of %{total}'
     view_requests: View requests
     header_name: 'Name'
