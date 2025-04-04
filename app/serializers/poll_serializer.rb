@@ -32,6 +32,7 @@ class PollSerializer < ApplicationSerializer
              :result_columns,
              :reason_prompt,
              :shuffle_options,
+             :show_none_of_the_above,
              :stance_counts,
              :specified_voters_only,
              :total_score,

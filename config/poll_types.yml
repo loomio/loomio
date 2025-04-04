@@ -39,7 +39,7 @@ count:
       prompt_i18n: poll_templates.opt_in.decline_prompt
       color: "#C8E56E"
       default: true
-      
+
 check:
   material_icon: mdi-head-question
   vote_method: show_thumbs
@@ -241,6 +241,7 @@ poll:
   options_have_meaning: true
   has_options: true
   min_options: 1
+  allow_none_of_the_above: true
   defaults:
     details_format: html
     process_introduction_format: html
@@ -309,6 +310,7 @@ ranked_choice:
   options_have_meaning: true
   has_options: true
   min_options: 2
+  allow_none_of_the_above: true
   defaults:
     details_format: html
     process_introduction_format: html
@@ -318,4 +320,3 @@ ranked_choice:
     min_score: 1
     default_duration_in_days: 3
     notify_on_closing_soon: 2
-

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_01_030737) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_04_031523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -789,6 +789,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_030737) do
     t.string "tags", default: [], array: true
     t.integer "poll_template_id"
     t.string "poll_template_key"
+    t.boolean "show_none_of_the_above", default: false, null: false
+    t.integer "none_of_the_above_count", default: 0, null: false
     t.index ["author_id"], name: "index_polls_on_author_id"
     t.index ["closed_at", "closing_at"], name: "index_polls_on_closed_at_and_closing_at"
     t.index ["closed_at", "discussion_id"], name: "index_polls_on_closed_at_and_discussion_id"
@@ -854,6 +856,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_01_030737) do
     t.jsonb "option_scores", default: {}, null: false
     t.integer "revoker_id"
     t.boolean "guest", default: false, null: false
+    t.boolean "none_of_the_above", default: false, null: false
     t.index ["guest"], name: "stances_guests", where: "(guest = true)"
     t.index ["participant_id"], name: "index_stances_on_participant_id"
     t.index ["poll_id", "cast_at"], name: "index_stances_on_poll_id_and_cast_at", order: "NULLS FIRST"

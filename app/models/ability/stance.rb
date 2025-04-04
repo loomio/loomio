@@ -15,7 +15,7 @@ module Ability::Stance
     can [:uncast], ::Stance do |stance|
       can?(:update, stance) && stance.cast_at.present?
     end
-    
+
     can [:create], ::Stance do |stance|
       user.can? :vote_in, stance.poll
     end
