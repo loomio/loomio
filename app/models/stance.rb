@@ -116,7 +116,6 @@ class Stance < ApplicationRecord
       participant_id: participant_id,
       inviter_id: inviter_id,
       reason_format: reason_format,
-      none_of_the_above: none_of_the_above,
       latest: true
     )
   end

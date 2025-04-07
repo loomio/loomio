@@ -25,13 +25,17 @@ export default {
 
   methods: {
     submit() {
-      const selected = take(this.pollOptions, this.numChoices);
-      this.stance.stanceChoicesAttributes = map(selected, (option, index) => {
-        return {
-          poll_option_id: option.id,
-          score:         this.numChoices - index
-        };
-      });
+      if (this.stance.noneOfTheAbove) {
+        this.stance.stanceChoicesAttributes = []
+      } else {
+        const selected = take(this.pollOptions, this.numChoices);
+        this.stance.stanceChoicesAttributes = map(selected, (option, index) => {
+          return {
+            poll_option_id: option.id,
+            score:         this.numChoices - index
+          };
+        });
+      }
       const actionName = !this.stance.castAt ? 'created' : 'updated';
       this.stance.save().then(() => {
         Flash.success(`poll_${this.stance.poll().pollType}_vote_form.stance_${actionName}`);
@@ -56,7 +60,7 @@ export default {
 </script>
 
 <template lang='pug'>
-.poll-ranked-choice-vote-form.lmo-relative
+.poll-ranked-choice-vote-form
   p.text--secondary(v-t="{ path: 'poll_ranked_choice_vote_form.helptext', args: { count: numChoices } }")
   sortable-list(v-model="pollOptions" lock-axis="y" axis="y" append-to=".app-is-booted")
     sortable-item(
@@ -65,7 +69,7 @@ export default {
       :key="option.id"
       :item="option"
     )
-      v-sheet.mb-2.rounded.poll-ranked-choice-vote-form__option(outlined :style="{'border-color': option.color}")
+      v-sheet.mb-2.rounded.poll-ranked-choice-vote-form__option(:class="stance.noneOfTheAbove && 'poll-option-disabled'" outlined :style="{'border-color': option.color}")
         v-list-item
           v-list-item-icon
             common-icon(style="cursor: pointer", :color="option.color" name="mdi-drag")
@@ -73,7 +77,13 @@ export default {
             v-list-item-title {{option.name}}
             v-list-item-subtitle {{option.meaning}}
           v-list-item-action
-            span(style="font-size: 1.4rem" v-if="index+1 <= numChoices") # {{index+1}}
+            span.text--secondary(v-show="!stance.noneOfTheAbove" style="font-size: 1.2rem" v-if="index+1 <= numChoices") # {{index+1}}
+
+  v-checkbox.ml-4.none-of-the-above(
+    v-if="poll.showNoneOfTheAbove"
+    v-model="stance.noneOfTheAbove"
+    :label="$t('poll_common_form.none_of_the_above')"
+  )
 
   validation-errors(:subject='stance' field='stanceChoices')
   poll-common-stance-reason(:stance='stance', :poll='poll')
@@ -89,6 +99,9 @@ export default {
 </template>
 
 <style lang="sass">
+.poll-option-disabled
+  opacity: 0.4
+
 .poll-ranked-choice-vote-form__option
   user-select: none
 
