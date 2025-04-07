@@ -216,14 +216,15 @@ class Stance < ApplicationRecord
   private
 
   def valid_none_of_the_above
+    return if !cast_at
     return unless none_of_the_above
     errors.add(:none_of_the_above, "none_of_the_above not permitted for this poll") unless poll.show_none_of_the_above
     errors.add(:none_of_the_above, "you cant choose options pluss none_of_the_above") if stance_choices.any?
   end
 
   def valid_min_score
-    return if none_of_the_above
     return if !cast_at
+    return if none_of_the_above
     return unless poll.validate_min_score
     return if (stance_choices.map(&:score).min || 0) >= poll.min_score
 
@@ -231,8 +232,8 @@ class Stance < ApplicationRecord
   end
 
   def valid_max_score
-    return if none_of_the_above
     return if !cast_at
+    return if none_of_the_above
     return unless poll.validate_max_score
     return if (stance_choices.map(&:score).max) <= poll.max_score
 
@@ -240,8 +241,8 @@ class Stance < ApplicationRecord
   end
 
   def valid_dots_per_person
-    return if none_of_the_above
     return if !cast_at
+    return if none_of_the_above
     return unless poll.validate_dots_per_person
     return if stance_choices.map(&:score).sum <= poll.dots_per_person.to_i
 
@@ -249,8 +250,8 @@ class Stance < ApplicationRecord
   end
 
   def valid_minimum_stance_choices
-    return if none_of_the_above
     return if !cast_at
+    return if none_of_the_above
     return unless poll.validate_minimum_stance_choices
     return if stance_choices.length >= poll.minimum_stance_choices
 
@@ -259,6 +260,7 @@ class Stance < ApplicationRecord
 
   def valid_maximum_stance_choices
     return if !cast_at
+    return if none_of_the_above
     return unless poll.validate_maximum_stance_choices
     return if stance_choices.length <= poll.maximum_stance_choices
 
@@ -266,8 +268,8 @@ class Stance < ApplicationRecord
   end
 
   def valid_require_all_choices
-    return if none_of_the_above
     return if !cast_at
+    return if none_of_the_above
     return unless poll.require_all_choices
     return if poll.poll_options.length == 0
     return if stance_choices.length == poll.poll_options.length
