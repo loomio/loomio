@@ -217,9 +217,8 @@ class Stance < ApplicationRecord
 
   def valid_none_of_the_above
     return unless none_of_the_above
-    return if poll.show_none_of_the_above
-
-    errors.add(:none_of_the_above, "none_of_the_above not permitted for this poll")
+    errors.add(:none_of_the_above, "none_of_the_above not permitted for this poll") unless poll.show_none_of_the_above
+    errors.add(:none_of_the_above, "you cant choose options pluss none_of_the_above") if stance_choices.any?
   end
 
   def valid_min_score
