@@ -1866,6 +1866,7 @@ sl:
     email_rejected_meaning: E-pošta, poslana na ta naslov, je bila zavrnjena ali označena kot vsiljena pošta. Na ta naslov ne bo več poslana nobena e-pošta.
     delegate: Delegat
     delegate_popover: Delegat je član skupine z glasovalno pravico
+    delegates: Delegati
   polls_panel:
     new_poll: Nova anketa
     any_type: Vse vrste

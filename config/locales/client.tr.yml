@@ -1866,6 +1866,7 @@ tr:
     email_rejected_meaning: Bu adrese gönderilen e-posta geri döndü veya spam olarak işaretlendi. Bu adrese bir daha e-posta gönderilmeyecek.
     delegate: Temsilci
     delegate_popover: Bir delege, oy kullanma hakkına sahip bir grup üyesidir
+    delegates: Delegeler
   polls_panel:
     new_poll: Yeni anket
     any_type: Her türlü

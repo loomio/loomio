@@ -1866,6 +1866,7 @@ sv:
     email_rejected_meaning: E-post som skickats till den här adressen har studsat eller markerats som skräppost. Inget mer e-postmeddelande kommer att skickas till denna adress.
     delegate: Delegera
     delegate_popover: En delegat är en gruppmedlem med rösträtt
+    delegates: Delegater
   polls_panel:
     new_poll: Ny omröstning
     any_type: Alla typer

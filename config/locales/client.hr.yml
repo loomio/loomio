@@ -1866,6 +1866,7 @@ hr:
     email_rejected_meaning: E-pošta poslana na ovu adresu odbijena je ili je označena kao neželjena pošta. Na ovu adresu više neće biti poslana e-pošta.
     delegate: Delegat
     delegate_popover: Delegat je član grupe s pravom glasa
+    delegates: Delegati
   polls_panel:
     new_poll: Nova anketa
     any_type: Svi tipovi

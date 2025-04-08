@@ -1904,6 +1904,7 @@ zh_TW:
     email_rejected_meaning: 發送到此位址的電子郵件已被退回或標記為垃圾郵件。不會再有電子郵件傳送到該位址。
     delegate: 代表
     delegate_popover: 代表是具有投票權的團體成員
+    delegates: 代表
   polls_panel:
     new_poll: 新投票
     any_type: 所有類型

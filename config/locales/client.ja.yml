@@ -1865,6 +1865,7 @@ ja:
     email_rejected_meaning: このアドレスに送信されたメールは返送されたか、スパムとしてマークされました。このアドレスには今後メールは送信されません。
     delegate: 委任する
     delegate_popover: 代表者は投票権を持つグループメンバーである
+    delegates: 代表者
   polls_panel:
     new_poll: 新しい投票
     any_type: いろんなタイプ

@@ -1913,6 +1913,7 @@ es:
     email_rejected_meaning: El correo electrónico enviado a esta dirección ha rebotado o ha sido marcado como spam. No se enviarán más correos electrónicos a esta dirección.
     delegate: Delegar
     delegate_popover: Un delegado es un miembro del grupo con derecho a voto.
+    delegates: Delegados
   polls_panel:
     new_poll: Nuevo sondeo
     any_type: Todos los tipos

@@ -1894,6 +1894,7 @@ pl:
     email_rejected_meaning: E-mail wysłany na ten adres został odrzucony lub oznaczony jako spam. Nie będzie więcej wysyłany na ten adres.
     delegate: Delegat
     delegate_popover: Delegat jest członkiem grupy posiadającym prawo głosu
+    delegates: Delegaci
   polls_panel:
     new_poll: Nowe głosowanie
     any_type: Wszystkie rodzaje

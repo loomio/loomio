@@ -1902,6 +1902,7 @@ de:
     email_rejected_meaning: An diese Adresse gesendete E-Mails wurden zurückgewiesen oder als Spam markiert. An diese Adresse werden keine weiteren E-Mails gesendet.
     delegate: Delegieren
     delegate_popover: Ein Delegierter ist ein Gruppenmitglied mit Stimmrecht
+    delegates: Delegierte
   polls_panel:
     new_poll: Neue Umfrage
     any_type: Alle Typen
