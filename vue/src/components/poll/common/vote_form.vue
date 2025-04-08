@@ -204,7 +204,6 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
 <style lang="sass">
 .none-of-the-above label
   margin-left: 24px
-  color: rgba(0,0,0,.88)!important
 
 .poll-common-vote-form__allow-wrap
   white-space: normal
