@@ -1989,6 +1989,7 @@ nl_NL:
     hide_results_until_closed:
       title: Verberg resultaten tot sluiting van de peiling
       helptext_on: Toon niet hoe mensen stemmen tot de peiling gesloten is
+    show_none_of_the_above: Voeg een optie "Geen van bovenstaande" toe
   poll_common_close_form:
     title: "%{poll_type} nu sluiten?"
     helptext: Weet u zeker dat u %{poll_type} eerder wilt afsluiten en een resultaat wilt delen?
@@ -2155,6 +2156,7 @@ nl_NL:
     hide_results_description: Als u wilt dat mensen stemmen zonder te weten hoe anderen hebben gestemd, kunt u de resultaten van de peiling verbergen.
     process_helptext: Noem en beschrijf het proces dat wordt gebruikt om deze peiling uit te voeren.
     reminder_helptext: Stuur een melding 'Sluit binnenkort' voordat de peiling sluit. Dit kan een kans zijn voor mensen om te zien hoe anderen hebben gestemd en hun eigen stem te heroverwegen, of gewoon een manier om deelname aan de peiling te vergroten.
+    none_of_the_above: Geen van bovenstaande
   poll_proposal_form:
     start_header: "'Voorstel' starten"
     edit_header: Voorstel bewerken

@@ -1987,6 +1987,7 @@ ca:
     hide_results_until_closed:
       title: Amaga els resultats fins al tancament
       helptext_on: No mostris què han votat els usuaris fins que l'enquesta estigui tancada
+    show_none_of_the_above: Incloeu l'opció "Cap de les anteriors".
   poll_common_close_form:
     title: Tancar %{poll_type} ara?
     helptext: Esteu segur que voleu tancar aquest %{poll_type} abans i compartir un resultat?
@@ -2153,6 +2154,7 @@ ca:
     hide_results_description: Si voleu que la gent voti sense saber com han votat els altres, podeu amagar els resultats de l'enquesta.
     process_helptext: Anomena i descriu el procés que s'utilitza per executar aquesta enquesta.
     reminder_helptext: Envieu una notificació "Tanquem aviat" abans que es tanqui l'enquesta. Aquesta pot ser una oportunitat perquè la gent vegi com han votat els altres i reconsideri el seu propi vot, o només una manera d'augmentar la participació a l'enquesta.
+    none_of_the_above: Cap de les anteriors
   poll_proposal_form:
     start_header: Crea una proposta
     edit_header: Edita una proposta

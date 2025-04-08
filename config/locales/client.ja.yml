@@ -1958,6 +1958,7 @@ ja:
     hide_results_until_closed:
       title: 閉じるまで結果を非表示にする
       helptext_on: 投票が終了するまで、人々がどのように投票したかを表示しないでください
+    show_none_of_the_above: "「上記以外」のオプションを含める"
   poll_common_close_form:
     title: 今すぐ %{poll_type} を閉じますか?
     helptext: この %{poll_type} を早期に終了して結果を共有してもよろしいですか?
@@ -2124,6 +2125,7 @@ ja:
     process_helptext: この投票の実行に使用されているプロセスに名前を付けて説明します。
     poll_type_updated: "%{poll_type} が更新されました"
     reminder_helptext: 投票が終了する前に「まもなく終了」通知を送信します。これは、他の人の投票結果を確認して自分の投票を再考する機会になるだけでなく、投票への参加を増やす方法にもなります。
+    none_of_the_above: 上記のどれでもない
   poll_proposal_form:
     start_header: 提案を開始する
     edit_header: 提案の編集

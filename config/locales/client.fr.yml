@@ -2010,6 +2010,7 @@ fr:
     hide_results_until_closed:
       title: Cacher les résultats jusqu'à la cloture
       helptext_on: Ne pas montrer comment les gens ont voté avant la cloture du sondage
+    show_none_of_the_above: Inclure une option « Aucune des réponses ci-dessus »
   poll_common_close_form:
     title: Fermer %{poll_type} maintenant?
     helptext: Etes-vous sûr de vouloir clôturer ce %{poll_type} tôt et partager un résultat ?
@@ -2180,6 +2181,7 @@ fr:
     reminder_helptext: |
       Envoyez une notification de « Clôture bientôt » avant la fermeture du scrutin.
       Cela peut être une occasion pour les gens de voir comment les autres ont voté et de reconsidérer leur propre vote, ou simplement un moyen d’augmenter la participation au sondage.
+    none_of_the_above: Aucune des réponses ci-dessus
   poll_proposal_form:
     start_header: Faire une proposition
     edit_header: Modifier la proposition

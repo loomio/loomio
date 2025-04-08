@@ -1959,6 +1959,7 @@ hr:
     hide_results_until_closed:
       title: Sakrij rezultate do zatvaranja
       helptext_on: Ne prikazuj kako su ljudi glasovali dok se glasanje ne zatvori
+    show_none_of_the_above: Uključite opciju "Ništa od navedenog".
   poll_common_close_form:
     title: Sada zatvoriti %{poll_type}?
     helptext: Jeste li sigurni da želite ranije zatvoriti ovaj %{poll_type} i podijeliti rezultat?
@@ -2125,6 +2126,7 @@ hr:
     hide_results_description: Ako želite da ljudi glasaju, a da ne znaju kako su drugi glasovali, možete sakriti rezultate ankete.
     process_helptext: Imenujte i opišite proces koji se koristi za pokretanje ove ankete.
     reminder_helptext: Pošaljite obavijest 'Uskoro se zatvara' prije zatvaranja ankete. Ovo može biti prilika da ljudi vide kako su drugi glasovali i preispitaju svoj glas ili samo način da povećaju sudjelovanje u anketi.
+    none_of_the_above: Ništa od navedenog
   poll_proposal_form:
     start_header: Započni prijedlog
     edit_header: Uredi prijedlog

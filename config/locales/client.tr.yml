@@ -1959,6 +1959,7 @@ tr:
     hide_results_until_closed:
       title: Sonuçları kapatılana kadar gizle
       helptext_on: Anket kapatılana kadar insanların nasıl oy verdiklerini gösterme
+    show_none_of_the_above: '"Yukarıdakilerin hiçbiri" seçeneğini ekleyin'
   poll_common_close_form:
     title: "%{poll_type} şimdi kapatılsın mı?"
     helptext: Bu %{poll_type}'ı erken kapatmak ve sonucu paylaşmak istediğinizden emin misiniz?
@@ -2125,6 +2126,7 @@ tr:
     hide_results_description: İnsanların, başkalarının nasıl oy verdiğini bilmeden oy vermesini istiyorsanız anket sonuçlarını gizleyebilirsiniz.
     process_helptext: Bu anketi çalıştırmak için kullanılan işlemi adlandırın ve açıklayın.
     reminder_helptext: Anket kapanmadan önce 'Yakında kapatılacak' bildirimi gönderin. Bu, insanların başkalarının nasıl oy verdiğini görmeleri ve kendi oylarını yeniden değerlendirmeleri için bir fırsat olabileceği gibi, yalnızca ankete katılımı artırmanın bir yolu da olabilir.
+    none_of_the_above: Yukarıdakilerin hiçbiri
   poll_proposal_form:
     start_header: Teklifi başlat
     edit_header: Teklifi düzenle

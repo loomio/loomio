@@ -2006,6 +2006,7 @@ es:
     hide_results_until_closed:
       title: Oculta resultados hasta el cierre
       helptext_on: No muestra como la gente ha votado hasta que se cierre el sondeo
+    show_none_of_the_above: Incluir una opción "Ninguna de las anteriores"
   poll_common_close_form:
     title: "¿Cerrar %{poll_type} ahora?"
     helptext: "¿Estás seguro de que quieres cerrar este %{poll_type}pronto y compartir el resultado?"
@@ -2176,6 +2177,7 @@ es:
     reminder_helptext: |
       Envíe una notificación de "Cierre pronto" antes de que se cierre la encuesta.
       Esta puede ser una oportunidad para que las personas vean cómo otros han votado y reconsideren su propio voto, o simplemente una forma de aumentar la participación en la encuesta.
+    none_of_the_above: Ninguna de las anteriores
   poll_proposal_form:
     start_header: Inicia una propuesta
     edit_header: Edita una propuesta

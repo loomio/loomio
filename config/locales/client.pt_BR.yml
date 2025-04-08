@@ -2012,6 +2012,7 @@ pt_BR:
     hide_results_until_closed:
       title: Ocultar resultados até fechar
       helptext_on: Não mostre como as pessoas votaram até que a votação seja encerrada
+    show_none_of_the_above: Incluir uma opção "Nenhuma das anteriores"
   poll_common_close_form:
     title: Fechar %{poll_type} agora?
     helptext: Você tem certeza de que deseja fechar este %{poll_type} antecipadamente e compartilhar um resultado?
@@ -2182,6 +2183,7 @@ pt_BR:
     reminder_helptext: |
       Envie uma notificação de 'Fechamento em breve' antes do encerramento da enquete.
       Esta pode ser uma oportunidade para as pessoas verem como os outros votaram e reconsiderarem seu próprio voto, ou apenas uma forma de aumentar a participação na enquete.
+    none_of_the_above: Nenhuma das acima
   poll_proposal_form:
     start_header: Iniciar proposta
     edit_header: Editar proposta
