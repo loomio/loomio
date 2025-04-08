@@ -1899,6 +1899,7 @@ it:
     email_rejected_meaning: L'email inviata a questo indirizzo è stata respinta o contrassegnata come spam. Non verranno inviate altre email a questo indirizzo.
     delegate: Delegare
     delegate_popover: Un delegato è un membro del gruppo con diritto di voto
+    delegates: Delegati
   polls_panel:
     new_poll: Nuova votazione
     any_type: Tutti i tipi

@@ -1869,6 +1869,7 @@ da:
     email_rejected_meaning: E-mail sendt til denne adresse er afvist eller blevet markeret som spam. Der vil ikke blive sendt flere e-mails til denne adresse.
     delegate: Delegeret
     delegate_popover: En delegeret er et gruppemedlem med stemmeret
+    delegates: Delegerede
   polls_panel:
     new_poll: Ny meningsmåling
     any_type: Alle typer

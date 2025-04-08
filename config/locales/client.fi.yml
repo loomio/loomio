@@ -1866,6 +1866,7 @@ fi:
     email_rejected_meaning: Tähän osoitteeseen lähetetty sähköposti on palautunut tai merkitty roskapostiksi. Tähän osoitteeseen ei lähetetä enempää sähköpostia.
     delegate: Delegoida
     delegate_popover: Edustaja on ryhmän äänioikeutettu jäsen
+    delegates: Edustajat
   polls_panel:
     new_poll: Uusi kysely
     any_type: Kaikki tyypit

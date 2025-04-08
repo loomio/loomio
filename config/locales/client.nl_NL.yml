@@ -1894,6 +1894,7 @@ nl_NL:
     email_rejected_meaning: E-mail die naar dit adres is verzonden, is teruggestuurd of gemarkeerd als spam. Er worden geen e-mails meer naar dit adres verzonden.
     delegate: Delegeren
     delegate_popover: Een afgevaardigde is een groepslid met stemrecht
+    delegates: Afgevaardigden
   polls_panel:
     new_poll: Nieuwe peiling
     any_type: Alle types

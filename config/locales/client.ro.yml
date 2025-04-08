@@ -1866,6 +1866,7 @@ ro:
     email_rejected_meaning: E-mailul trimis la această adresă a fost respins sau a fost marcat ca spam. Nu se va mai trimite e-mail la această adresă.
     delegate: Delega
     delegate_popover: Un delegat este un membru al grupului cu drept de vot
+    delegates: Delegații
   polls_panel:
     new_poll: Sondaj nou
     any_type: Toate tipurile

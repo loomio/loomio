@@ -1892,6 +1892,7 @@ ca:
     email_rejected_meaning: El correu electrònic enviat a aquesta adreça s'ha rebutjat o s'ha marcat com a correu brossa. No s'enviarà més correu electrònic a aquesta adreça.
     delegate: Delegat
     delegate_popover: Un delegat és un membre del grup amb dret de vot
+    delegates: Delegats
   polls_panel:
     new_poll: Nova enquesta
     any_type: Tots els tipus

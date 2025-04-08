@@ -1888,6 +1888,7 @@ he:
     email_rejected_meaning: אימייל שנשלח לכתובת זו הוקפץ או סומן כספאם. לא יישלח יותר אימייל לכתובת זו.
     delegate: נָצִיג
     delegate_popover: נציג הוא חבר קבוצה בעל זכות הצבעה
+    delegates: נציגים
   polls_panel:
     new_poll: סקר חדש
     any_type: כל הסוגים

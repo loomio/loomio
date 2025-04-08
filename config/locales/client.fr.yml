@@ -1915,6 +1915,7 @@ fr:
     email_rejected_meaning: L'e-mail envoyé à cette adresse a été renvoyé ou marqué comme spam. Aucun autre e-mail ne sera envoyé à cette adresse.
     delegate: Déléguer
     delegate_popover: Un délégué est un membre du groupe avec droit de vote
+    delegates: Délégués
   polls_panel:
     new_poll: Nouveau sondage
     any_type: Tous types
