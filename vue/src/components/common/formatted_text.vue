@@ -130,6 +130,9 @@ img.emoji
   p:empty
     height: 1rem
 
+  p:last-child:empty
+    display: none
+
   p:last-child
     margin-bottom: 0.25rem
 
