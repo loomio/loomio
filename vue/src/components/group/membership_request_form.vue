@@ -32,6 +32,7 @@ export default
   },
 
   computed: {
+    validIntro() { return (this.membershipRequest.introduction || '').length > 5 },
     isSignedIn() { return Session.isSignedIn(); }
   }
 };
@@ -51,9 +52,8 @@ v-card.membership-request-form
       v-text-field.membership-request-form__email(v-model='membershipRequest.email' :required='true' :label="$t('membership_request_form.email_label')")
       validation-errors(:subject='membershipRequest' field='email')
     .membership-request-form__reason
-      v-textarea.membership-request-form__introduction(v-model='membershipRequest.introduction' :required='false' maxlength='250' :label="$t('membership_request_form.introduction_label')")
+      v-textarea.membership-request-form__introduction(v-model='membershipRequest.introduction' required maxlength='250' :label="$t('membership_request_form.introduction_label')")
   v-card-actions
-    v-btn.membership-request-form__cancel-btn(@click='close()' v-t="'common.action.cancel'")
     v-spacer
-    v-btn.membership-request-form__submit-btn(color="primary" @click='submit()' v-t="'membership_request_form.submit_button'")
+    v-btn.membership-request-form__submit-btn(:disabled="!validIntro" color="primary" @click='submit()' v-t="'membership_request_form.submit_button'")
 </template>
