@@ -1989,6 +1989,7 @@ pl:
     hide_results_until_closed:
       title: Ukryj wyniki aż do zakończenia
       helptext_on: Nie pokazuj, jak inni głosowali, dopóki ankieta nie zostanie zakończona
+    show_none_of_the_above: Dodaj opcję „Żadna z powyższych”
   poll_common_close_form:
     title: Zamknąć %{poll_type} teraz?
     helptext: Czy na pewno chcesz wcześniej zamknąć %{poll_type} i podzielić się wynikami?
@@ -2155,6 +2156,7 @@ pl:
     hide_results_description: Jeśli chcesz, aby ludzie głosowali, nie wiedząc, jak głosowali inni, możesz ukryć wyniki ankiety.
     process_helptext: Nazwij i opisz proces, który jest używany do uruchomienia tej ankiety.
     reminder_helptext: Wyślij powiadomienie „Wkrótce zamknięcie” przed zamknięciem ankiety. Może to być okazja dla ludzi, aby zobaczyć, jak głosowali inni i przemyśleć swój głos, lub po prostu sposób na zwiększenie udziału w ankiecie.
+    none_of_the_above: Żadne z powyższych
   poll_proposal_form:
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję

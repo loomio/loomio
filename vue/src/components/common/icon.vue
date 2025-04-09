@@ -359,7 +359,7 @@ export default {
 
 <template lang="pug">
 v-icon(
-  color="color"
+  :color="color"
   :dense="dense"
   :large="large"
   :left="left"

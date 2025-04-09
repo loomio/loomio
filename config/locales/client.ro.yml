@@ -1959,6 +1959,7 @@ ro:
     hide_results_until_closed:
       title: Ascundeți rezultatele până când este închis
       helptext_on: Nu arătați cum au votat oamenii până când votul nu este închis
+    show_none_of_the_above: Includeți opțiunea „Niciuna dintre cele de mai sus”.
   poll_common_close_form:
     title: Închideți %{poll_type} acum?
     helptext: Sigur doriți să închideți acest %{poll_type} mai devreme și să împărtășiți un rezultat?
@@ -2125,6 +2126,7 @@ ro:
     hide_results_description: Dacă doriți ca oamenii să voteze fără să știe cum au votat alții, puteți ascunde rezultatele sondajului.
     process_helptext: Denumiți și descrieți procesul care este utilizat pentru a rula acest sondaj.
     reminder_helptext: Trimiteți o notificare „Închidere în curând” înainte de închiderea sondajului. Aceasta poate fi o oportunitate pentru oameni de a vedea cum au votat alții și de a-și reconsidera propriul vot, sau doar o modalitate de a crește participarea la sondaj.
+    none_of_the_above: Nici una dintre cele de mai sus
   poll_proposal_form:
     start_header: Începeți propunerea
     edit_header: Editați propunerea

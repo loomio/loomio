@@ -1999,6 +1999,7 @@ zh_TW:
     hide_results_until_closed:
       title: 隱藏結果直到關閉
       helptext_on: 在投票關閉前，不要顯示有多少人已投票
+    show_none_of_the_above: 包含“以上皆非”選項
   poll_common_close_form:
     title: 立刻關閉 %{poll_type}？
     helptext: 您確定您想要提早關閉此 %{poll_type} 並分享結果？
@@ -2165,6 +2166,7 @@ zh_TW:
     hide_results_description: 如果您希望人們在不知道其他人如何投票的情況下投票，您可以隱藏投票結果。
     process_helptext: 命名並描述用於執行此輪詢的進程。
     reminder_helptext: 在投票結束前發送「即將結束」通知。這可以讓人們有機會了解其他人如何投票並重新考慮自己的投票，或者只是增加投票參與度的一種方式。
+    none_of_the_above: 以上都不是
   poll_proposal_form:
     start_header: 啟動提案
     edit_header: 編輯提案

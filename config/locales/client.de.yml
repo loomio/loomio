@@ -1997,6 +1997,7 @@ de:
     hide_results_until_closed:
       title: Ergebnisse ausblenden bis Abstimmung geschlossen
       helptext_on: Zeigen nicht an, wie Personen abgestimmt haben, bis die Umfrage geschlossen ist
+    show_none_of_the_above: Fügen Sie die Option „Keine der oben genannten Optionen“ ein.
   poll_common_close_form:
     title: "%{poll_type} jetzt schließen?"
     helptext: Sind Sie sicher, dass Sie diese %{poll_type} vorzeitig schließen und ein Ergebnis mitteilen möchten?
@@ -2163,6 +2164,7 @@ de:
     hide_results_description: Wenn Sie möchten, dass die Leute abstimmen, ohne zu wissen, wie andere abgestimmt haben, können Sie die Ergebnisse der Umfrage ausblenden.
     process_helptext: Benennen und beschreiben Sie den Prozess, der zum Ausführen dieser Umfrage verwendet wird.
     reminder_helptext: Senden Sie eine Benachrichtigung „Bald schließt“, bevor die Umfrage endet. Dies kann eine Gelegenheit für die Menschen sein, zu sehen, wie andere abgestimmt haben, und ihre eigene Stimme zu überdenken, oder einfach eine Möglichkeit, die Beteiligung an der Umfrage zu erhöhen.
+    none_of_the_above: Nichts des oben Genannten
   poll_proposal_form:
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten

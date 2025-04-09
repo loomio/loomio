@@ -1992,6 +1992,7 @@ it:
     hide_results_until_closed:
       title: Nascondi i risultati fino alla chiusura
       helptext_on: Non mostrare come le persone hanno votato fino alla chiusura
+    show_none_of_the_above: Includere un'opzione "Nessuna delle precedenti"
   poll_common_close_form:
     title: Chiudi %{poll_type} ora?
     helptext: Sei sicuro che vuoi chiudere questa vorazione %{poll_type} in anticipo e condividere il risultato?
@@ -2158,6 +2159,7 @@ it:
     hide_results_description: Se vuoi che le persone votino senza sapere come hanno votato gli altri, puoi nascondere i risultati del sondaggio.
     process_helptext: Assegna un nome e descrivi il processo utilizzato per eseguire questo sondaggio.
     reminder_helptext: Invia una notifica "Chiusura a breve" prima della chiusura del sondaggio. Questa può essere un'opportunità per le persone di vedere come hanno votato gli altri e riconsiderare il proprio voto, o semplicemente un modo per aumentare la partecipazione al sondaggio.
+    none_of_the_above: Nessuna delle precedenti
   poll_proposal_form:
     start_header: Lancia proposta
     edit_header: Aggiorna proposta

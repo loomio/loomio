@@ -1969,6 +1969,7 @@ hu:
     hide_results_until_closed:
       title: Az eredmények elrejtése bezárásig
       helptext_on: Ne mutassa meg, hogyan szavaztak az emberek a szavazás bezárásáig
+    show_none_of_the_above: Adjon meg egy „A fentiek közül egyiket sem” lehetőséget
   poll_common_close_form:
     title: Bezárja most a %{poll_type}-t?
     helptext: Biztos, hogy korábban bezárja ezt a %{poll_type}-t, és megosztja az eredményt?
@@ -2135,6 +2136,7 @@ hu:
     hide_results_description: Ha azt szeretné, hogy az emberek anélkül szavazzanak, hogy tudnák, mások hogyan szavaztak, elrejtheti a szavazás eredményeit.
     process_helptext: Nevezze meg és írja le a szavazás futtatásához használt folyamatot.
     reminder_helptext: A szavazás bezárása előtt küldjön egy „Hamarosan zárás” értesítést. Ez lehetõség lehet az emberek számára, hogy megnézzék, hogyan szavaztak mások, és átgondolják saját szavazatukat, vagy csak egy módja annak, hogy növeljék a szavazásban való részvételt.
+    none_of_the_above: A fentiek közül egyik sem
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése

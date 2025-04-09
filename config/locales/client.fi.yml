@@ -1959,6 +1959,7 @@ fi:
     hide_results_until_closed:
       title: Piilota tulokset sulkemiseen asti
       helptext_on: Älä näytä, kuinka ihmiset ovat äänestäneet, ennen kuin äänestys on suljettu
+    show_none_of_the_above: Lisää vaihtoehto "Ei mikään yllä olevista".
   poll_common_close_form:
     title: Suljetaanko %{poll_type} nyt?
     helptext: Haluatko varmasti sulkea tämän %{poll_type} aikaisin ja jakaa tuloksen?
@@ -2125,6 +2126,7 @@ fi:
     hide_results_description: Jos haluat ihmisten äänestävän tietämättä kuinka muut ovat äänestäneet, voit piilottaa kyselyn tulokset.
     process_helptext: Nimeä ja kuvaile prosessi, jota käytetään tämän kyselyn suorittamiseen.
     reminder_helptext: Lähetä "Suljetaan pian" -ilmoitus ennen äänestyksen sulkeutumista. Tämä voi olla ihmisille mahdollisuus nähdä, miten muut ovat äänestäneet, ja harkita omaa ääntään, tai vain tapa lisätä osallistumista kyselyyn.
+    none_of_the_above: Ei mikään yllä olevista
   poll_proposal_form:
     start_header: Aloita ehdotus
     edit_header: Muokkaa ehdotusta
