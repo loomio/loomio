@@ -27,9 +27,9 @@ export default {
 
 <template lang="pug">
 v-snackbar.flash-root(
-  top
+  location="top"
   v-model="isOpen"
-  :color="flash.level == 'success' ? 'primary' : flash.level"
+  :color="flash.level == 'success' ? 'info' : 'error'"
   :timeout="flash.duration")
   span.flash-root__message(
     v-if="flash.message"

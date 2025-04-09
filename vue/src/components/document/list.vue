@@ -3,8 +3,10 @@ import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import {flatten, capitalize, includes} from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     model: Object,
     showEdit: Boolean,

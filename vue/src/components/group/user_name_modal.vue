@@ -26,7 +26,6 @@ export default
 </script>
 <template lang="pug">
 v-card.user-name-modal
-  submit-overlay(:value='user.processing')
   v-card-title
     h1.text-h5(tabindex="-1" v-t="'membership_dropdown.set_name_and_username'")
     v-spacer

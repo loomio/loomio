@@ -8,10 +8,11 @@ import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_tem
 import Session from '@/shared/services/session';
 import AuthModalMixin from '@/mixins/auth_modal';
 import Records from '@/shared/services/records';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
   components: {PollCommonForm, PollCommonChooseTemplateWrapper},
-  mixins: [ AuthModalMixin ],
+  mixins: [ AuthModalMixin, WatchRecords ],
 
   props: {
     discussion: Object
@@ -81,25 +82,24 @@ export default {
 <template lang="pug">
 section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm-4': !discussion.newestFirst}")
   template(v-if="discussion.closedAt")
-    v-alert(type="info" text outlined)
+    v-alert(type="info" variant="tonal")
       span(v-t="{path: 'notifications.without_title.discussion_closed', args: {actor: discussion.closer().name} }")
       mid-dot
       time-ago(:date='discussion.closedAt')
   template(v-if="canAddComment")
     v-divider(aria-hidden="true")
-    v-tabs.activity-panel__actions.mb-3(grow text v-model="currentAction")
-      v-tabs-slider
-      v-tab(href='#add-comment')
+    v-tabs.activity-panel__actions.mb-3(grow color="primary" v-model="currentAction")
+      v-tab(value='add-comment')
         span(v-t="'thread_context.add_comment'")
-      v-tab.activity-panel__add-poll(href='#add-poll' v-if="canStartPoll")
+      v-tab.activity-panel__add-poll(value='add-poll' v-if="canStartPoll")
         span(v-t="'poll_common.decision'")
-    v-tabs-items(v-model="currentAction")
-      v-tab-item(value="add-comment")
+    v-window(v-model="currentAction")
+      v-window-item(value="add-comment")
         .add-comment-panel
           comment-form(
             :comment="newComment"
             @comment-submitted="resetComment")
-      v-tab-item(value="add-poll" v-if="canStartPoll")
+      v-window-item(value="add-poll" v-if="canStartPoll")
         .poll-common-start-form
           poll-common-form(
             v-if="poll"

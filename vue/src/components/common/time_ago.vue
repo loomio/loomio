@@ -2,8 +2,10 @@
 import { approximate, exact } from '@/shared/helpers/format_time';
 import { parseISO } from 'date-fns';
 import {isString} from 'lodash-es';
+import FormatDate from '@/mixins/format_date';
 
 export default {
+  mixins: [FormatDate],
   props: {
     date: [Date, String]
   },
