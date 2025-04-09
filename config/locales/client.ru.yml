@@ -1875,6 +1875,7 @@ ru:
     email_rejected_meaning: Письмо, отправленное на этот адрес, было отклонено или помечено как спам. Больше письма не будут отправляться на этот адрес.
     delegate: Делегат
     delegate_popover: Делегат — член группы с правом голоса.
+    delegates: Делегаты
   polls_panel:
     new_poll: Новый опрос
     any_type: Все типы
@@ -1967,6 +1968,7 @@ ru:
     hide_results_until_closed:
       title: Скрыть результаты до закрытия
       helptext_on: Не показывать, как люди проголосовали, пока опрос не будет закрыт.
+    show_none_of_the_above: Включите вариант «Ни один из вышеперечисленных»
   poll_common_close_form:
     title: Закрыть %{poll_type} сейчас?
     helptext: Вы уверены, что хотите закрыть этот %{poll_type} раньше и поделиться результатом?
@@ -2136,6 +2138,7 @@ ru:
     deadline: Крайний срок
     how_much_time_to_vote: Сколько времени вы дадите людям для голосования?
     advanced_settings: Расширенные настройки
+    none_of_the_above: Ни один из вышеперечисленных
   poll_proposal_form:
     start_header: Начать предложение
     edit_header: Изменить предложение

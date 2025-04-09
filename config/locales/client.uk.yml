@@ -1908,6 +1908,7 @@ uk:
     email_rejected_meaning: Електронні листи, надіслані на цю адресу, були відхилені або позначені як спам. Більше на цю адресу електронні листи не надсилатимуться.
     delegate: Делегувати
     delegate_popover: Делегат — це член групи з правом голосу
+    delegates: Делегати
   polls_panel:
     new_poll: Нове опитування
     any_type: Усі типи
@@ -2002,6 +2003,7 @@ uk:
     hide_results_until_closed:
       title: Приховати результати до закриття
       helptext_on: Не показувати, як люди голосували, доки голосування не буде закрито
+    show_none_of_the_above: Додайте опцію «Жодне з перерахованого вище».
   poll_common_close_form:
     title: Закрити %{poll_type} зараз?
     helptext: Ви впевнені, що хочете закрити це %{poll_type} раніше та поділитися результатом?
@@ -2171,6 +2173,7 @@ uk:
     deadline: Дедлайн
     how_much_time_to_vote: Скільки часу ви дасте людям для голосування?
     advanced_settings: Розширені налаштування
+    none_of_the_above: Нічого з перерахованого вище
   poll_proposal_form:
     start_header: Внести пропозицію
     edit_header: Редагувати пропозицію

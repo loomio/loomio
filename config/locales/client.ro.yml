@@ -1875,6 +1875,7 @@ ro:
     email_rejected_meaning: E-mailul trimis la această adresă a fost respins sau a fost marcat ca spam. Nu se va mai trimite e-mail la această adresă.
     delegate: Delega
     delegate_popover: Un delegat este un membru al grupului cu drept de vot
+    delegates: Delegații
   polls_panel:
     new_poll: Sondaj nou
     any_type: Toate tipurile
@@ -1967,6 +1968,7 @@ ro:
     hide_results_until_closed:
       title: Ascundeți rezultatele până când este închis
       helptext_on: Nu arătați cum au votat oamenii până când votul nu este închis
+    show_none_of_the_above: Includeți opțiunea „Niciuna dintre cele de mai sus”.
   poll_common_close_form:
     title: Închideți %{poll_type} acum?
     helptext: Sigur doriți să închideți acest %{poll_type} mai devreme și să împărtășiți un rezultat?
@@ -2136,6 +2138,7 @@ ro:
     deadline: Termen limită
     how_much_time_to_vote: Cât timp veți acorda oamenilor să voteze?
     advanced_settings: Setări avansate
+    none_of_the_above: Nici una dintre cele de mai sus
   poll_proposal_form:
     start_header: Începeți propunerea
     edit_header: Editați propunerea

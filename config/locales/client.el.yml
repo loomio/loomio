@@ -1875,6 +1875,7 @@ el:
     email_rejected_meaning: Το email που στάλθηκε σε αυτήν τη διεύθυνση έχει αναπηδήσει ή έχει επισημανθεί ως ανεπιθύμητο. Δεν θα σταλεί άλλο email σε αυτήν τη διεύθυνση.
     delegate: Αντιπρόσωπος
     delegate_popover: Ένας εκπρόσωπος είναι ένα μέλος της ομάδας με δικαίωμα ψήφου
+    delegates: Αντιπρόσωποι
   polls_panel:
     new_poll: Νέα δημοσκόπηση
     any_type: Ολοι οι τύποι
@@ -1967,6 +1968,7 @@ el:
     hide_results_until_closed:
       title: Απόκρυψη αποτελεσμάτων μέχρι να κλείσει
       helptext_on: Μην δείχνεις πώς ψήφισε ο κόσμος μέχρι να κλείσει η κάλπη
+    show_none_of_the_above: Συμπεριλάβετε την επιλογή "Κανένα από τα παραπάνω".
   poll_common_close_form:
     title: Κλείσιμο %{poll_type} τώρα;
     helptext: Είστε βέβαιοι ότι θέλετε να κλείσετε αυτό το %{poll_type} νωρίς και να μοιραστείτε ένα αποτέλεσμα;
@@ -2136,6 +2138,7 @@ el:
     deadline: Διορία
     how_much_time_to_vote: Πόσο χρόνο θα αφήσετε στον κόσμο να ψηφίσει;
     advanced_settings: Προηγμένες ρυθμίσεις
+    none_of_the_above: Τίποτα από τα παραπάνω
   poll_proposal_form:
     start_header: Πρόταση έναρξης
     edit_header: Επεξεργασία πρότασης

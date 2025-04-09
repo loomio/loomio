@@ -53,11 +53,11 @@ export default {
       pollTemplate: null,
 
       votingMethodsI18n: {
-        proposal: { 
+        proposal: {
           title: 'poll_common_form.voting_methods.show_thumbs',
           hint: 'poll_common_form.voting_methods.show_thumbs_hint'
         },
-        poll: { 
+        poll: {
           title: 'poll_common_form.voting_methods.simple_poll',
           hint: 'poll_common_form.voting_methods.choose_hint'
         },
@@ -68,7 +68,7 @@ export default {
           title: 'decision_tools_card.dot_vote_title',
           hint: 'poll_common_form.voting_methods.allocate_hint'
         },
-        score: { 
+        score: {
           title: 'poll_common_form.voting_methods.score',
           hint: 'poll_common_form.voting_methods.score_hint'
         },
@@ -232,7 +232,7 @@ export default {
       return (AppConfig.pollTypes[this.poll.pollType].common_poll_options || []);
     },
 
-    formattedDuration() { 
+    formattedDuration() {
       if (!this.poll.meetingDuration) { return ''; }
       const minutes = parseInt(this.poll.meetingDuration);
       const duration = intervalToDuration({ start: new Date, end: addMinutes(new Date, minutes) });
@@ -240,7 +240,7 @@ export default {
     },
 
     visiblePollOptions() { return this.pollOptions.filter(o => !o._destroy); },
-  
+
     hasOptions() { return this.poll.config().has_options; },
     minOptions() { return this.poll.config().min_options; },
     allowAnonymous() { return !this.poll.config().prevent_anonymous; },
@@ -256,7 +256,7 @@ export default {
       return (this.poll.isNew() && 'action_dock.new_poll_type') || 'action_dock.edit_poll_type';
     },
 
-    titleArgs() { 
+    titleArgs() {
       return {pollType: this.poll.translatedPollType().toLowerCase()};
     },
 
@@ -336,7 +336,7 @@ export default {
           template(v-slot:prepend v-if="hasOptionIcon" v-handle)
             v-avatar(size="48")
               img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
-       
+
           v-list-item-title(v-handle)
             span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
             span(v-if="optionFormat == 'plain'") {{option.name}}
@@ -355,7 +355,7 @@ export default {
             div.ml-0(v-if="poll.pollType != 'meeting'")
               v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
                 common-icon(name="mdi-pencil")
-            common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'") 
+            common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="poll.pollType != 'meeting'")
 
     template(v-if="optionFormat == 'i18n'")
       p This poll cannot have new options added. (contact support if you see this message)
@@ -445,17 +445,25 @@ export default {
     v-text-field(:label="$t('poll_dot_vote_form.dots_per_person')" type="number", min="1", v-model="poll.dotsPerPerson")
     validation-errors(:subject="poll" field="dotsPerPerson")
 
-  v-divider.my-6
+  template(v-if="poll.config().allow_none_of_the_above")
+    v-checkbox.poll-common-checkbox-option.poll-settings-allow-none-of-the-above(
+      v-model="poll.showNoneOfTheAbove"
+      :label="$t('poll_common_settings.show_none_of_the_above')"
+    )
+
+  v-divider.mb-4
+
   div.text-medium-emphasis
     .text-subtitle-1(v-t="'poll_common_form.deadline'")
     .text-caption(v-t="'poll_common_form.how_much_time_to_vote'")
+
   poll-common-closing-at-field(:poll="poll")
   //- .lmo-form-label.mb-1.mt-4(v-t="'poll_common_form.reminder'")
   //- p.text-medium-emphasis(v-t="'poll_common_form.reminder_helptext'")
-  p(v-if="poll.closingAt && closesSoon" 
+  p(v-if="poll.closingAt && closesSoon"
     v-t="{path: 'poll_common_settings.notify_on_closing_soon.voting_closes_too_soon', args: {pollType: poll.translatedPollType()}}")
 
-  v-divider.my-6
+  v-divider.my-8
 
   v-radio-group(
     v-model="poll.specifiedVotersOnly"
@@ -551,7 +559,7 @@ export default {
       @click="discardDraft"
     )
      span(v-t="'common.reset'")
-      
+
     v-btn.poll-common-form__submit(
       color="primary"
       @click='submit()'

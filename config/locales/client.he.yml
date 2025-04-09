@@ -1897,6 +1897,7 @@ he:
     email_rejected_meaning: אימייל שנשלח לכתובת זו הוקפץ או סומן כספאם. לא יישלח יותר אימייל לכתובת זו.
     delegate: נָצִיג
     delegate_popover: נציג הוא חבר קבוצה בעל זכות הצבעה
+    delegates: נציגים
   polls_panel:
     new_poll: סקר חדש
     any_type: כל הסוגים
@@ -1989,6 +1990,7 @@ he:
     hide_results_until_closed:
       title: הסתר את התוצאות עד לסגירה
       helptext_on: אל תראה כיצד אנשים הצביעו עד שהסקר ייסגר
+    show_none_of_the_above: כלול אפשרות "אף אחד מהבאים לעיל".
   poll_common_close_form:
     title: לסגור את %{poll_type} עכשיו?
     helptext: האם אתה בטוח שברצונך לסגור את ה-%{poll_type} הזה מוקדם ולשתף תוצאה?
@@ -2158,6 +2160,7 @@ he:
     deadline: מוֹעֵד אַחֲרוֹן
     how_much_time_to_vote: כמה זמן תאפשר לאנשים להצביע?
     advanced_settings: הגדרות מתקדמות
+    none_of_the_above: אף אחד מהאמור לעיל
   poll_proposal_form:
     start_header: התחל הצעה
     edit_header: ערוך הצעה

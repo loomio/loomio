@@ -1926,6 +1926,7 @@ pt_BR:
     email_rejected_meaning: O e-mail enviado para este endereço foi devolvido ou marcado como spam. Nenhum outro e-mail será enviado para este endereço.
     delegate: Delegar
     delegate_popover: Um delegado é um membro do grupo com direito a voto
+    delegates: Delegados
   polls_panel:
     new_poll: Nova enquete
     any_type: Todos tipos
@@ -2020,6 +2021,7 @@ pt_BR:
     hide_results_until_closed:
       title: Ocultar resultados até fechar
       helptext_on: Não mostre como as pessoas votaram até que a votação seja encerrada
+    show_none_of_the_above: Incluir uma opção "Nenhuma das anteriores"
   poll_common_close_form:
     title: Fechar %{poll_type} agora?
     helptext: Você tem certeza de que deseja fechar este %{poll_type} antecipadamente e compartilhar um resultado?
@@ -2184,15 +2186,14 @@ pt_BR:
     vote_reason: Motivo do voto
     vote_reason_description: Pode ser útil entender por que as pessoas votaram da maneira que votaram. Com essa configuração, você pode solicitar que as pessoas compartilhem seus pensamentos quando votarem.
     hide_results_description: Se você quiser que as pessoas votem sem saber como os outros votaram, você pode ocultar os resultados da enquete.
-    process_helptext: 'Nomeie e descreva o processo que está sendo usado para executar esta votação.
-
-      '
+    process_helptext: 'Nomeie e descreva o processo que está sendo usado para executar esta votação.'
     reminder_helptext: |
       Envie uma notificação de 'Fechamento em breve' antes do encerramento da enquete.
       Esta pode ser uma oportunidade para as pessoas verem como os outros votaram e reconsiderarem seu próprio voto, ou apenas uma forma de aumentar a participação na enquete.
     deadline: Prazo final
     how_much_time_to_vote: Quanto tempo você dará para as pessoas votarem?
     advanced_settings: Configurações avançadas
+    none_of_the_above: Nenhuma das acima
   poll_proposal_form:
     start_header: Iniciar proposta
     edit_header: Editar proposta

@@ -1885,6 +1885,7 @@ hu:
     email_rejected_meaning: Az erre a címre küldött e-mail visszapattant vagy spamként lett megjelölve. Erre a címre nem küldünk több e-mailt.
     delegate: Delegált
     delegate_popover: A delegált szavazati joggal rendelkező csoporttag
+    delegates: Küldöttek
   polls_panel:
     new_poll: Új szavazás
     any_type: Minden típus
@@ -1977,6 +1978,7 @@ hu:
     hide_results_until_closed:
       title: Az eredmények elrejtése bezárásig
       helptext_on: Ne mutassa meg, hogyan szavaztak az emberek a szavazás bezárásáig
+    show_none_of_the_above: Adjon meg egy „A fentiek közül egyiket sem” lehetőséget
   poll_common_close_form:
     title: Bezárja most a %{poll_type}-t?
     helptext: Biztos, hogy korábban bezárja ezt a %{poll_type}-t, és megosztja az eredményt?
@@ -2146,6 +2148,7 @@ hu:
     deadline: Határidő
     how_much_time_to_vote: Mennyi időt hagy az embereknek szavazni?
     advanced_settings: Speciális beállítások
+    none_of_the_above: A fentiek közül egyik sem
   poll_proposal_form:
     start_header: Javaslat indítása
     edit_header: A javaslat szerkesztése

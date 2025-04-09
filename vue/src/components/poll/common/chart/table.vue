@@ -69,7 +69,7 @@ export default {
             v-if="col == 'chart' && poll.chartType == 'pie' && index == 0"
             style="vertical-align: top"
             :rowspan="poll.results.length"
-          ) 
+          )
             pie-icon.ma-2(:slices="slices", :size='128')
           td.pr-2.py-2(
             v-if="col == 'chart' && poll.chartType == 'bar'"
@@ -77,7 +77,7 @@ export default {
           )
             div.rounded(:style="{width: clampPercent(option[poll.chartColumn])+'%', height: '24px', 'background-color': option.color}")
           td(v-if="col == 'name' " :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
-            template(v-if="option.id && optionMeaning(option.id)")
+            template(v-if="option.id > 0 && optionMeaning(option.id)")
               v-tooltip(right)
                 template(v-slot:activator="{ props }")
                   span(v-bind="props")
@@ -103,7 +103,7 @@ export default {
 <style lang="sass">
 .v-data-table > .v-data-table__wrapper > table > tbody > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper)
   background: none !important
-  
+
 .poll-common-chart-table
   table
     width: 100%

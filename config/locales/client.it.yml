@@ -1908,6 +1908,7 @@ it:
     email_rejected_meaning: L'email inviata a questo indirizzo è stata respinta o contrassegnata come spam. Non verranno inviate altre email a questo indirizzo.
     delegate: Delegare
     delegate_popover: Un delegato è un membro del gruppo con diritto di voto
+    delegates: Delegati
   polls_panel:
     new_poll: Nuova votazione
     any_type: Tutti i tipi
@@ -2000,6 +2001,7 @@ it:
     hide_results_until_closed:
       title: Nascondi i risultati fino alla chiusura
       helptext_on: Non mostrare come le persone hanno votato fino alla chiusura
+    show_none_of_the_above: Includere un'opzione "Nessuna delle precedenti"
   poll_common_close_form:
     title: Chiudi %{poll_type} ora?
     helptext: Sei sicuro che vuoi chiudere questa vorazione %{poll_type} in anticipo e condividere il risultato?
@@ -2169,6 +2171,7 @@ it:
     deadline: Scadenza
     how_much_time_to_vote: Quanto tempo concederai alle persone per votare?
     advanced_settings: Impostazioni avanzate
+    none_of_the_above: Nessuna delle precedenti
   poll_proposal_form:
     start_header: Lancia proposta
     edit_header: Aggiorna proposta

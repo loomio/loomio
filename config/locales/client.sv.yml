@@ -1875,6 +1875,7 @@ sv:
     email_rejected_meaning: E-post som skickats till den här adressen har studsat eller markerats som skräppost. Inget mer e-postmeddelande kommer att skickas till denna adress.
     delegate: Delegera
     delegate_popover: En delegat är en gruppmedlem med rösträtt
+    delegates: Delegater
   polls_panel:
     new_poll: Ny omröstning
     any_type: Alla typer
@@ -1967,6 +1968,7 @@ sv:
     hide_results_until_closed:
       title: Dölj resultat tills det stängs
       helptext_on: Visa inte hur folk har röstat förrän omröstningen är stängd
+    show_none_of_the_above: Inkludera alternativet "Inget av ovanstående".
   poll_common_close_form:
     title: Stäng %{poll_type} nu?
     helptext: Är du säker på att du vill stänga denna %{poll_type} tidigt och dela ett resultat?
@@ -2136,6 +2138,7 @@ sv:
     deadline: Tidsfrist
     how_much_time_to_vote: Hur mycket tid kommer du att ge folk att rösta?
     advanced_settings: Avancerade inställningar
+    none_of_the_above: Inget av ovanstående
   poll_proposal_form:
     start_header: Starta förslag
     edit_header: Redigera förslag

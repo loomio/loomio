@@ -9,8 +9,7 @@ class StanceService
     stance.save!
     stance.poll.update_counts!
 
-    event = Events::StanceCreated.publish!(stance)
-    event
+    Events::StanceCreated.publish!(stance)
   end
 
   def self.uncast(stance:, actor:)
@@ -25,7 +24,7 @@ class StanceService
     new_stance.poll.update_counts!
   end
 
-  def self.update(stance: , actor: , params: ) 
+  def self.update(stance: , actor: , params: )
     actor.ability.authorize!(:update, stance)
     is_update = !!stance.cast_at
 

@@ -3,10 +3,8 @@ import AppConfig        from '@/shared/services/app_config';
 import Session          from '@/shared/services/session';
 import HasDocuments     from '@/shared/mixins/has_documents';
 import HasTranslations  from '@/shared/mixins/has_translations';
-import EventBus         from '@/shared/services/event_bus';
 import { I18n }             from '@/i18n';
-import NullGroupModel   from '@/shared/models/null_group_model';
-import { addDays, startOfHour, differenceInHours, addHours } from 'date-fns';
+import { addDays, startOfHour } from 'date-fns';
 import { snakeCase, compact, head, orderBy, sortBy, map, flatten, slice, uniq, isEqual, shuffle } from 'lodash-es';
 import Records from '@/shared/services/records';
 
@@ -92,6 +90,7 @@ export default class PollModel extends BaseModel {
       recipientEmails: [],
       notifyRecipients: true,
       shuffleOptions: false,
+      showNoneOfTheAbove: false,
       tags: [],
       hideResults: 'off',
       stanceCounts: []
@@ -101,7 +100,7 @@ export default class PollModel extends BaseModel {
   pollTemplateKeyOrId() {
     return this.pollTemplateId || this.pollTemplateKey;
   }
-  
+
   clonePoll() {
     const clone = this.clone();
     clone.id = null;
@@ -236,8 +235,8 @@ export default class PollModel extends BaseModel {
     return ((this.authorId === user.id) && !this.groupId) ||
     ((this.authorId === user.id) && (this.groupId && this.group().membersInclude(user))) ||
     ((this.authorId === user.id) && (this.discussionId && this.discussion().membersInclude(user))) ||
-    (stance && stance.admin) || 
-    (this.discussionId && this.discussion().adminsInclude(user)) || 
+    (stance && stance.admin) ||
+    (this.discussionId && this.discussion().adminsInclude(user)) ||
     this.group().adminsInclude(user);
   }
 
@@ -255,7 +254,7 @@ export default class PollModel extends BaseModel {
 
   stanceFor(user) {
     if (user.id === AppConfig.currentUserId) {
-      return this.myStance(); 
+      return this.myStance();
     } else {
       return head(orderBy(Records.stances.find({pollId: this.id, participantId: user.id, latest: true, revokedAt: null}), 'createdAt', 'desc'));
     }
@@ -381,7 +380,7 @@ export default class PollModel extends BaseModel {
     return option;
   }
 
-  hasVariableScore() { 
+  hasVariableScore() {
     return this.defaulted('minScore') !== this.defaulted('maxScore');
   }
 
@@ -390,7 +389,7 @@ export default class PollModel extends BaseModel {
     return this.defaulted('minimumStanceChoices') === (middle = this.defaulted('maximumStanceChoices')) && middle === 1;
   }
 
-  hasOptionIcon() { 
+  hasOptionIcon() {
     return this.config().has_option_icon;
   }
 

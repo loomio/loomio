@@ -51,6 +51,7 @@ export default class PollTemplateModel extends BaseModel {
       pollOptions: [],
       pollOptionNameFormat: 'plain',
       shuffleOptions: false,
+      showNoneOfTheAbove: false,
       hideResults: 'off',
       position: 0,
       outcomeStatement: null,

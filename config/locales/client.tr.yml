@@ -1875,6 +1875,7 @@ tr:
     email_rejected_meaning: Bu adrese gönderilen e-posta geri döndü veya spam olarak işaretlendi. Bu adrese bir daha e-posta gönderilmeyecek.
     delegate: Temsilci
     delegate_popover: Bir delege, oy kullanma hakkına sahip bir grup üyesidir
+    delegates: Delegeler
   polls_panel:
     new_poll: Yeni anket
     any_type: Her türlü
@@ -1967,6 +1968,7 @@ tr:
     hide_results_until_closed:
       title: Sonuçları kapatılana kadar gizle
       helptext_on: Anket kapatılana kadar insanların nasıl oy verdiklerini gösterme
+    show_none_of_the_above: '"Yukarıdakilerin hiçbiri" seçeneğini ekleyin'
   poll_common_close_form:
     title: "%{poll_type} şimdi kapatılsın mı?"
     helptext: Bu %{poll_type}'ı erken kapatmak ve sonucu paylaşmak istediğinizden emin misiniz?
@@ -2136,6 +2138,7 @@ tr:
     deadline: Son teslim tarihi
     how_much_time_to_vote: İnsanlara oy vermeleri için ne kadar zaman tanıyacaksınız?
     advanced_settings: Gelişmiş ayarlar
+    none_of_the_above: Yukarıdakilerin hiçbiri
   poll_proposal_form:
     start_header: Teklifi başlat
     edit_header: Teklifi düzenle

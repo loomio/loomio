@@ -68,10 +68,10 @@ class Poll < ApplicationRecord
 
   TEMPLATE_DEFAULT_FIELDS.each do |field|
     define_method field, -> {
-      self[field] || self[:custom_fields][field] || AppConfig.poll_types.dig(self.poll_type, 'defaults', field) 
+      self[field] || self[:custom_fields][field] || AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
     }
 
-    define_method :"#{field}=", ->(value) { 
+    define_method :"#{field}=", ->(value) {
       self[:custom_fields].delete(field)
       if value == AppConfig.poll_types.dig(self.poll_type, 'defaults', field)
         self[field] = nil
@@ -98,7 +98,7 @@ class Poll < ApplicationRecord
   TEMPLATE_VALUES.each do |field|
     define_method field, -> { AppConfig.poll_types.dig(self.poll_type, field) }
   end
-  
+
   def poll_template
     return PollTemplate.find_by(id: poll_template_id) if poll_template_id
     return PollTemplateService.default_templates.find {|pt| pt.key == poll_template_key } if poll_template_key
@@ -117,8 +117,8 @@ class Poll < ApplicationRecord
     if require_all_choices
       poll.poll_options.length
     else
-      self[:minimum_stance_choices] || 
-      self[:custom_fields][:minimum_stance_choices] || 
+      self[:minimum_stance_choices] ||
+      self[:custom_fields][:minimum_stance_choices] ||
       AppConfig.poll_types.dig(self.poll_type, 'defaults', 'minimum_stance_choices') ||
       0
     end
@@ -152,6 +152,7 @@ class Poll < ApplicationRecord
   has_many :admin_voters, -> { merge(Stance.latest.admin) }, through: :stances, source: :participant
   has_many :undecided_voters, -> { merge(Stance.latest.undecided) }, through: :stances, source: :participant
   has_many :decided_voters, -> { merge(Stance.latest.decided) }, through: :stances, source: :participant
+  has_many :none_of_the_above_voters, -> { merge(Stance.latest.none_of_the_above) }, through: :stances, source: :participant
 
   has_many :poll_options, -> { order('priority') }, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :poll_options, allow_destroy: true
@@ -234,11 +235,11 @@ class Poll < ApplicationRecord
   def results_include_undecided
     poll_type != "meeting"
   end
-  
+
   def dates_as_options
     poll_option_name_format == 'iso8601'
   end
-  
+
   def chart_column
     case poll_type
     when 'count' then (agree_target ? 'target_percent' : 'voter_percent')
@@ -265,7 +266,7 @@ class Poll < ApplicationRecord
         %w[chart name voter_count voters]
       end
     when 'ranked_choice'
-      %w[chart name rank score_percent score average]
+      %w[chart name rank score_percent score average voter_count]
     when 'dot_vote'
       %w[chart name score_percent score average voter_count]
     when 'score'
@@ -278,7 +279,7 @@ class Poll < ApplicationRecord
       []
     end
   end
-  
+
   def results
     PollService.calculate_results(self, self.poll_options)
   end
@@ -381,6 +382,7 @@ class Poll < ApplicationRecord
       stance_counts: poll_options.map(&:total_score), # should rename to option scores
       voters_count: stances.latest.count, # should rename to stances_count
       undecided_voters_count: stances.latest.undecided.count,
+      none_of_the_above_count: stances.latest.decided.where(none_of_the_above: true).count,
       versions_count: versions.count
     )
   end
@@ -446,7 +448,7 @@ class Poll < ApplicationRecord
       option = poll_options.find_or_initialize_by(name: name)
       option.priority = priority
       os = AppConfig.poll_types.dig(self.poll_type, 'common_poll_options') || []
-      if params = os.find {|o| o['key'] == name } 
+      if params = os.find {|o| o['key'] == name }
         option.name = I18n.t(params['name_i18n'])
         option.icon = params['icon']
         option.meaning = I18n.t(params['meaning_i18n'])
@@ -502,7 +504,7 @@ class Poll < ApplicationRecord
 
   def closes_in_future
     return if closed_at
-    return if closing_at.nil? 
+    return if closing_at.nil?
     return if closing_at > Time.zone.now
     errors.add(:closing_at, I18n.t(:"poll.error.must_be_in_the_future"))
   end

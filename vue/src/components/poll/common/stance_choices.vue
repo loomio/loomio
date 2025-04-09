@@ -31,7 +31,7 @@ export default {
 
 <template lang="pug">
 .poll-common-stance-choices.pb-2.pt-2(v-if="!datesAsOptions && poll.pollType != 'question' && !poll.hasOptionIcon()")
-  span.text-caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_votes_panel.none_of_the_above'" )
+  span.text-caption(v-if='stance.castAt && stance.totalScore() == 0' v-t="'poll_common_form.none_of_the_above'" )
   template(v-else)
     .poll-common-stance-choice.text-truncate(
       v-for="choice in choices"
@@ -47,4 +47,3 @@ export default {
   overflow: hidden
 
 </style>
-

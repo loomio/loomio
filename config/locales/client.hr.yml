@@ -1875,6 +1875,7 @@ hr:
     email_rejected_meaning: E-pošta poslana na ovu adresu odbijena je ili je označena kao neželjena pošta. Na ovu adresu više neće biti poslana e-pošta.
     delegate: Delegat
     delegate_popover: Delegat je član grupe s pravom glasa
+    delegates: Delegati
   polls_panel:
     new_poll: Nova anketa
     any_type: Svi tipovi
@@ -1967,6 +1968,7 @@ hr:
     hide_results_until_closed:
       title: Sakrij rezultate do zatvaranja
       helptext_on: Ne prikazuj kako su ljudi glasovali dok se glasanje ne zatvori
+    show_none_of_the_above: Uključite opciju "Ništa od navedenog".
   poll_common_close_form:
     title: Sada zatvoriti %{poll_type}?
     helptext: Jeste li sigurni da želite ranije zatvoriti ovaj %{poll_type} i podijeliti rezultat?
@@ -2136,6 +2138,7 @@ hr:
     deadline: Rok
     how_much_time_to_vote: Koliko ćete vremena dati ljudima da glasaju?
     advanced_settings: Napredne postavke
+    none_of_the_above: Ništa od navedenog
   poll_proposal_form:
     start_header: Započni prijedlog
     edit_header: Uredi prijedlog

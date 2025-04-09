@@ -1903,6 +1903,7 @@ pl:
     email_rejected_meaning: E-mail wysłany na ten adres został odrzucony lub oznaczony jako spam. Nie będzie więcej wysyłany na ten adres.
     delegate: Delegat
     delegate_popover: Delegat jest członkiem grupy posiadającym prawo głosu
+    delegates: Delegaci
   polls_panel:
     new_poll: Nowe głosowanie
     any_type: Wszystkie rodzaje
@@ -1997,6 +1998,7 @@ pl:
     hide_results_until_closed:
       title: Ukryj wyniki aż do zakończenia
       helptext_on: Nie pokazuj, jak inni głosowali, dopóki ankieta nie zostanie zakończona
+    show_none_of_the_above: Dodaj opcję „Żadna z powyższych”
   poll_common_close_form:
     title: Zamknąć %{poll_type} teraz?
     helptext: Czy na pewno chcesz wcześniej zamknąć %{poll_type} i podzielić się wynikami?
@@ -2166,6 +2168,7 @@ pl:
     deadline: Termin ostateczny
     how_much_time_to_vote: Ile czasu dasz ludziom na zagłosowanie?
     advanced_settings: Ustawienia zaawansowane
+    none_of_the_above: Żadne z powyższych
   poll_proposal_form:
     start_header: Utwórz propozycję
     edit_header: Edytuj propozycję

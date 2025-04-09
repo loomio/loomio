@@ -1901,6 +1901,7 @@ ca:
     email_rejected_meaning: El correu electrònic enviat a aquesta adreça s'ha rebutjat o s'ha marcat com a correu brossa. No s'enviarà més correu electrònic a aquesta adreça.
     delegate: Delegat
     delegate_popover: Un delegat és un membre del grup amb dret de vot
+    delegates: Delegats
   polls_panel:
     new_poll: Nova enquesta
     any_type: Tots els tipus
@@ -1995,6 +1996,7 @@ ca:
     hide_results_until_closed:
       title: Amaga els resultats fins al tancament
       helptext_on: No mostris què han votat els usuaris fins que l'enquesta estigui tancada
+    show_none_of_the_above: Incloeu l'opció "Cap de les anteriors".
   poll_common_close_form:
     title: Tancar %{poll_type} ara?
     helptext: Esteu segur que voleu tancar aquest %{poll_type} abans i compartir un resultat?
@@ -2164,6 +2166,7 @@ ca:
     deadline: Data límit
     how_much_time_to_vote: Quant de temps donareu perquè la gent voti?
     advanced_settings: Configuració avançada
+    none_of_the_above: Cap de les anteriors
   poll_proposal_form:
     start_header: Crea una proposta
     edit_header: Edita una proposta

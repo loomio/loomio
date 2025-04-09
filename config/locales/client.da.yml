@@ -1878,6 +1878,7 @@ da:
     email_rejected_meaning: E-mail sendt til denne adresse er afvist eller blevet markeret som spam. Der vil ikke blive sendt flere e-mails til denne adresse.
     delegate: Delegeret
     delegate_popover: En delegeret er et gruppemedlem med stemmeret
+    delegates: Delegerede
   polls_panel:
     new_poll: Ny meningsmåling
     any_type: Alle typer
@@ -1970,6 +1971,7 @@ da:
     hide_results_until_closed:
       title: Skjul resultater indtil lukket
       helptext_on: Vis ikke, hvordan folk har stemt, før afstemningen er lukket
+    show_none_of_the_above: Medtag muligheden "Ingen af ovenstående".
   poll_common_close_form:
     title: Vil du lukke %{poll_type} nu?
     helptext: Er du sikker på, at du vil lukke denne %{poll_type} tidligt og dele et resultat?
@@ -2139,6 +2141,7 @@ da:
     deadline: Deadline
     how_much_time_to_vote: Hvor meget tid vil du give folk til at stemme?
     advanced_settings: Avancerede indstillinger
+    none_of_the_above: Ingen af ovenstående
   poll_proposal_form:
     start_header: Opret forslag
     edit_header: Rediger forslag

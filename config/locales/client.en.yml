@@ -2148,6 +2148,7 @@ en:
     specified_voters_only_false_group: Anyone in the group
     specified_voters_only_false_discussion: Anyone in the thread
     invite_people_next: You can choose who is invited to vote after you start the %{poll_type}
+    show_none_of_the_above: Include a "None of the above" option
     shuffle_options:
       shuffle_options: Shuffle options
       title: Show options in random order
@@ -2230,7 +2231,6 @@ en:
     undecided_first: Undecided first
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
-    none_of_the_above: (None of the above)
     name_or_username: Name or username
 
   poll_common_undecided_panel:
@@ -2300,6 +2300,7 @@ en:
     hide_other_zones: Hide other time zones
     this_is_a_template_for_new_polls: This is a template for new polls
     voting_method: Voting method
+    none_of_the_above: None of the above
     voting_methods:
       question: Question round
       question_hint: Invite questions and comments on your proposal

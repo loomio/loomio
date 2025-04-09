@@ -56,11 +56,19 @@ export default {
       if (!this.singleChoice && this.selectedOptionIds.length && ((this.selectedOptionIds.length < this.poll.minimumStanceChoices) || (this.selectedOptionIds.length > this.poll.maximumStanceChoices))) { return 'warning'; }
     },
     optionCountValid() {
-      return (this.singleChoice && this.selectedOptionId) || ((this.selectedOptionIds.length >= this.poll.minimumStanceChoices) && (this.selectedOptionIds.length <= this.poll.maximumStanceChoices));
+      return this.stance.noneOfTheAbove ||
+             (this.singleChoice && this.selectedOptionId) ||
+             ((this.selectedOptionIds.length >= this.poll.minimumStanceChoices) && (this.selectedOptionIds.length <= this.poll.maximumStanceChoices));
     }
   },
 
   watch: {
+    'stance.noneOfTheAbove'(val) {
+      if (val) {
+        this.selectedOptionIds = []
+        this.selectedOptionId = null
+      }
+    },
     selectedOptionId() {
       // if reason is not disabled, focus on the reson for this poll
       EventBus.$emit('focusEditor', 'poll-'+this.poll.id);
@@ -70,7 +78,7 @@ export default {
   methods: {
     submit() {
       this.loading = true;
-      if (this.singleChoice) {
+      if (!this.stance.noneOfTheAbove && this.singleChoice) {
         this.stance.stanceChoicesAttributes = [{poll_option_id: this.selectedOptionId}];
       } else {
         this.stance.stanceChoicesAttributes = this.selectedOptionIds.map(id => {
@@ -89,7 +97,7 @@ export default {
     },
 
     isSelected(option) {
-      if (this.singleChoice) { 
+      if (this.singleChoice) {
         return this.selectedOptionId === option.id;
       } else {
         return this.selectedOptionIds.includes(option.id);
@@ -98,18 +106,14 @@ export default {
 
     classes(option) {
       let votingStatus;
-      if (this.poll.isVotable()) {
+      if (this.poll.isVotable() && !this.stance.noneOfTheAbove) {
         votingStatus = 'voting-enabled';
       } else {
         votingStatus = 'voting-disabled';
       }
 
-      if (this.optionSelected) {
-        if (this.isSelected(option)) {
+      if (this.optionSelected && this.isSelected(option)) {
           return ['elevation-2', votingStatus];
-        } else {
-          return ['poll-common-vote-form__button--not-selected', votingStatus];
-        }
       } else {
         return ['poll-common-vote-form__button--none-selected', votingStatus];
       }
@@ -127,7 +131,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
       v-if="poll.minimumStanceChoices == poll.maximumStanceChoices"
       v-t="{path: 'poll_common.select_count_options', args: {count: poll.minimumStanceChoices}}")
     span(
-      v-else 
+      v-else
       v-t="{path: 'poll_common.select_minimum_to_maximum_options', args: {minimum: poll.minimumStanceChoices, maximum: poll.maximumStanceChoices}}")
 
   v-card.poll-common-vote-form__button.mb-2.rounded(
@@ -144,7 +148,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
         :value="option.id"
         :aria-label="option.optionName()"
         type="radio"
-        name="name"
+        :disabled="stance.noneOfTheAbove"
       )
       input(
         v-if="!singleChoice"
@@ -152,7 +156,7 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
         :value="option.id"
         :aria-label="option.optionName()"
         type="checkbox"
-        name="name"
+        :disabled="stance.noneOfTheAbove"
       )
       v-list-item(lines="two")
         template(v-slot:prepend)
@@ -160,12 +164,17 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
             v-avatar(size="48")
               img( aria-hidden="true", :src="'/img/' + option.icon + '.svg'")
           template(v-else)
-            common-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)" :color="option.color")
-            common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="option.color")
-            common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="option.color")
-            common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="option.color")
+            common-icon(name="mdi-radiobox-blank" v-if="singleChoice && !isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
+            common-icon(name="mdi-radiobox-marked" v-if="singleChoice && isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
+            common-icon(name="mdi-checkbox-blank-outline" v-if="!singleChoice && !isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
+            common-icon(name="mdi-checkbox-marked" v-if="!singleChoice && isSelected(option)" :color="isSelected(option) ? 'primary' : 'undefined'")
         v-list-item-title.poll-common-vote-form__button-text {{option.optionName()}}
         v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
+  v-checkbox.ml-2.none-of-the-above(
+    v-if="poll.showNoneOfTheAbove"
+    v-model="stance.noneOfTheAbove"
+    :label="$t('poll_common_form.none_of_the_above')"
+  )
 
   poll-common-stance-reason(
     :stance='stance'
@@ -185,6 +194,9 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
 </template>
 
 <style lang="sass">
+.none-of-the-above label
+  margin-left: 24px
+
 .poll-common-vote-form__allow-wrap
   white-space: normal
 
@@ -210,5 +222,8 @@ form.poll-common-vote-form(@keyup.ctrl.enter="submit()", @keydown.meta.enter.sto
     width: 0
     height: 0
 
+
+.poll-common-vote-form__button.voting-disabled
+  opacity: 0.33 !important
 
 </style>

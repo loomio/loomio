@@ -32,6 +32,7 @@ class PollTemplate < ApplicationRecord
     :group_id,
     :anonymous,
     :shuffle_options,
+    :show_none_of_the_above,
     :chart_type,
     :specified_voters_only,
     :stance_reason_required,

@@ -119,9 +119,7 @@ es:
       body: Esta página ya no existe
     417:
       title: Navegador incompatible
-      body: 'Por favor <a href="https://browser-update.org/update.html?force_outdated=true"> actualice su navegador</a> para usar Loomio
-
-        '
+      body: 'Por favor <a href="https://browser-update.org/update.html?force_outdated=true"> actualice su navegador</a> para usar Loomio'
     422:
       title: Institución  que no se puede procesar
       body: Se ha denegado el cambio que querías. Quizás intentaste cambiar algo a lo que no tenías acceso.
@@ -132,9 +130,7 @@ es:
       title: Error interno del servidor
       body: Lo sentimos, pero algo fue mal. Se nos ha notificado sobre este problema y echaremos un vistazo lo antes posible.
     noscript: Loomio necesita javascript para funcionar. Porfavor permite javascript en tu navegador para continuar
-    upgrade_browser: 'Oh! Tu buscador es demasiado viejo y puede que Loomio no funcione correctamente. Por favor <a href="https://browser-update.org/update.html">actualiza tu buscador.</a>
-
-      '
+    upgrade_browser: 'Oh! Tu buscador es demasiado viejo y puede que Loomio no funcione correctamente. Por favor <a href="https://browser-update.org/update.html">actualiza tu buscador.</a>'
     return_home: Volver a la página principal
     not_found: 404 archivo no encontrado
     messages:
@@ -229,9 +225,7 @@ es:
   user_mailer:
     group_export_ready:
       subject: Exportar datos del grupo para %{group_name}
-      body_html: 'Descarga tus datos <a href="%{url}">aquí</a>. Por favor toma nota que este link caducará en una semana.
-
-        '
+      body_html: 'Descarga tus datos <a href="%{url}">aquí</a>. Por favor toma nota que este link caducará en una semana.'
     redacted:
       subject: Su cuenta de usuario %{site_name} ha sido eliminada
       body_html: "<p>Su cuenta de usuario %{site_name} ha sido eliminada.</p><p> Se han eliminado todos los datos de identificación personal.</p><p> Si no solicitó esto, comuníquese con %{support_email}</p>"
@@ -306,7 +300,7 @@ es:
       content: "%{who} te ha adherido a %{which_group}"
       content_html: "<strong>%{who}</strong> te ha añadido a <strong>%{which_group}</strong>."
       link_help: 'Haz clic en el enlace para ir al grupo:'
-    unsubscribe: 'Da de baja o cambia las preferencias de tu correo electrónico:   '
+    unsubscribe: 'Da de baja o cambia las preferencias de tu correo electrónico:'
     unsubscribe_html: "<a href='%{link_path}'>%{link_text}</a> para dar de baja o cambiar las preferencias de correo electrónico."
     catch_up:
       daily_subject: Ayer en %{site_name}

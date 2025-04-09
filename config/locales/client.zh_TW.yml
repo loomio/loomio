@@ -1913,6 +1913,7 @@ zh_TW:
     email_rejected_meaning: 發送到此位址的電子郵件已被退回或標記為垃圾郵件。不會再有電子郵件傳送到該位址。
     delegate: 代表
     delegate_popover: 代表是具有投票權的團體成員
+    delegates: 代表
   polls_panel:
     new_poll: 新投票
     any_type: 所有類型
@@ -2007,6 +2008,7 @@ zh_TW:
     hide_results_until_closed:
       title: 隱藏結果直到關閉
       helptext_on: 在投票關閉前，不要顯示有多少人已投票
+    show_none_of_the_above: 包含“以上皆非”選項
   poll_common_close_form:
     title: 立刻關閉 %{poll_type}？
     helptext: 您確定您想要提早關閉此 %{poll_type} 並分享結果？
@@ -2176,6 +2178,7 @@ zh_TW:
     deadline: 最後期限
     how_much_time_to_vote: 您將允許人們投票多少時間？
     advanced_settings: 進階設定
+    none_of_the_above: 以上都不是
   poll_proposal_form:
     start_header: 啟動提案
     edit_header: 編輯提案

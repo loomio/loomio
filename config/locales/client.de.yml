@@ -1911,6 +1911,7 @@ de:
     email_rejected_meaning: An diese Adresse gesendete E-Mails wurden zurückgewiesen oder als Spam markiert. An diese Adresse werden keine weiteren E-Mails gesendet.
     delegate: Delegieren
     delegate_popover: Ein Delegierter ist ein Gruppenmitglied mit Stimmrecht
+    delegates: Delegierte
   polls_panel:
     new_poll: Neue Umfrage
     any_type: Alle Typen
@@ -2005,6 +2006,7 @@ de:
     hide_results_until_closed:
       title: Ergebnisse ausblenden bis Abstimmung geschlossen
       helptext_on: Zeigen nicht an, wie Personen abgestimmt haben, bis die Umfrage geschlossen ist
+    show_none_of_the_above: Fügen Sie die Option „Keine der oben genannten Optionen“ ein.
   poll_common_close_form:
     title: "%{poll_type} jetzt schließen?"
     helptext: Sind Sie sicher, dass Sie diese %{poll_type} vorzeitig schließen und ein Ergebnis mitteilen möchten?
@@ -2174,6 +2176,7 @@ de:
     deadline: Frist
     how_much_time_to_vote: Wie viel Zeit geben Sie den Leuten zum Abstimmen?
     advanced_settings: Erweiterte Einstellungen
+    none_of_the_above: Nichts des oben Genannten
   poll_proposal_form:
     start_header: Abstimmung starten
     edit_header: Angebot bearbeiten

@@ -1903,6 +1903,7 @@ nl_NL:
     email_rejected_meaning: E-mail die naar dit adres is verzonden, is teruggestuurd of gemarkeerd als spam. Er worden geen e-mails meer naar dit adres verzonden.
     delegate: Delegeren
     delegate_popover: Een afgevaardigde is een groepslid met stemrecht
+    delegates: Afgevaardigden
   polls_panel:
     new_poll: Nieuwe peiling
     any_type: Alle types
@@ -1997,6 +1998,7 @@ nl_NL:
     hide_results_until_closed:
       title: Verberg resultaten tot sluiting van de peiling
       helptext_on: Toon niet hoe mensen stemmen tot de peiling gesloten is
+    show_none_of_the_above: Voeg een optie "Geen van bovenstaande" toe
   poll_common_close_form:
     title: "%{poll_type} nu sluiten?"
     helptext: Weet u zeker dat u %{poll_type} eerder wilt afsluiten en een resultaat wilt delen?
@@ -2166,6 +2168,7 @@ nl_NL:
     deadline: Termijn
     how_much_time_to_vote: Hoeveel tijd geeft u mensen om te stemmen?
     advanced_settings: Geavanceerde instellingen
+    none_of_the_above: Geen van bovenstaande
   poll_proposal_form:
     start_header: "'Voorstel' starten"
     edit_header: Voorstel bewerken

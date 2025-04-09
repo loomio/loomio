@@ -46,12 +46,8 @@ es:
     copy_of_title: Copia de %{title}
     loomio_default_templates: Plantillas predeterminadas de Loomio
     which_templates_would_you_like_to_use: "¿Qué plantillas te gustaría usar?"
-    login_to_start_demo: 'Esta es una demostración de Loomio en acción. Le invitamos a echar un vistazo.
-
-      '
-    sign_in_to_try_features: 'Si desea intentar votar en una decisión de demostración o iniciar una prueba gratuita para su organización, haga clic en "iniciar sesión".
-
-      '
+    login_to_start_demo: 'Esta es una demostración de Loomio en acción. Le invitamos a echar un vistazo. '
+    sign_in_to_try_features: 'Si desea intentar votar en una decisión de demostración o iniciar una prueba gratuita para su organización, haga clic en "iniciar sesión". '
     click_button_to_start_demo: "¡Bienvenido! Para probar la votación y otras funciones, haga clic en iniciar demostración.\n"
     welcome_to_your_demo: "¡Este es tu propio grupo de demostración!"
     try_voting_to_see_it_work: Intente votar en una propuesta para tener una idea de cómo funciona Loomio.
@@ -72,9 +68,7 @@ es:
     start_a_x_day_free_trial: Iniciar una prueba gratuita de %{day} día
     ready_to_trial: "¿Listo para probar Loomio con su organización?"
     start_a_no_obligation_x_day_trial: Inicie un grupo de Loomio para su organización con una prueba gratuita de %{day}.
-    you_can_test_it_out: 'Puede invitar a otras personas a unirse, integrarlo con sus otras herramientas e intentar tomar algunas decisiones.
-
-      '
+    you_can_test_it_out: 'Puede invitar a otras personas a unirse, integrarlo con sus otras herramientas e intentar tomar algunas decisiones. '
     demo_created: Grupo de demostración creado, ¡solo para ti!
     start_demo: Iniciar demo
     view_demo: Ver demo
@@ -856,9 +850,7 @@ es:
     form:
       group_has_no_members_yet: Eres el único miembro de tu grupo. Es posible que desees invitar a algunas personas a tu grupo antes de iniciar un hilo o una decisión.
       invite_people_to_evaluate_loomio: Invita a algunas personas a tu grupo de Loomio para tomar una decisión juntos
-      too_many_invitations: 'Límite de invitaciones excedido. <a href="%{upgradeUrl}" target="_blank">Mejore su abono</a>
-
-        '
+      too_many_invitations: 'Límite de invitaciones excedido. <a href="%{upgradeUrl}" target="_blank">Mejore su abono</a>'
       no_invitations_remaining: |
         <p>Ha usado todas las %{maxMembers} invitaciones disponibles para este grupo.</p>
         <p>Si quiere puede, <a href="%{upgradeUrl}" target="_blank">elegir un abono</a> para continuar colaborando en Loomio.</p>
@@ -1501,9 +1493,7 @@ es:
     email_newsletter: Boletín de noticias de Loomio
     email_newsletter_description: Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año.
     email_catch_up_day: Correo electrónico de resumen diario
-    daily_summary_description: 'Elija cuándo recibir el correo electrónico de resumen de puesta al día. Este correo electrónico contiene cualquier actividad nueva que no haya visto. Una buena manera de mantenerse al día si no eres un usuario regular.
-
-      '
+    daily_summary_description: 'Elija cuándo recibir el correo electrónico de resumen de puesta al día. Este correo electrónico contiene cualquier actividad nueva que no haya visto. Una buena manera de mantenerse al día si no eres un usuario regular.'
     on_participation_label: 'Suscribirte a la participación '
     on_participation_description: 'Cuando participes en un hilo, inmediatamente se te enviará toda la actividad subsiguiente por correo electrónico. '
     announcement_label: Anuncios
@@ -1922,6 +1912,7 @@ es:
     email_rejected_meaning: El correo electrónico enviado a esta dirección ha rebotado o ha sido marcado como spam. No se enviarán más correos electrónicos a esta dirección.
     delegate: Delegar
     delegate_popover: Un delegado es un miembro del grupo con derecho a voto.
+    delegates: Delegados
   polls_panel:
     new_poll: Nuevo sondeo
     any_type: Todos los tipos
@@ -2014,6 +2005,7 @@ es:
     hide_results_until_closed:
       title: Oculta resultados hasta el cierre
       helptext_on: No muestra como la gente ha votado hasta que se cierre el sondeo
+    show_none_of_the_above: Incluir una opción "Ninguna de las anteriores"
   poll_common_close_form:
     title: "¿Cerrar %{poll_type} ahora?"
     helptext: "¿Estás seguro de que quieres cerrar este %{poll_type}pronto y compartir el resultado?"
@@ -2178,15 +2170,14 @@ es:
     vote_reason: Motivo del voto
     vote_reason_description: Puede ser útil entender por qué las personas votaron de la manera en que lo hicieron. Con esta configuración, puede incitar a las personas a compartir sus pensamientos cuando voten.
     hide_results_description: Si quieres que la gente vote sin saber cómo han votado los demás, puedes ocultar los resultados de la encuesta.
-    process_helptext: 'Nombre y describa el proceso que se está utilizando para ejecutar esta encuesta.
-
-      '
+    process_helptext: 'Nombre y describa el proceso que se está utilizando para ejecutar esta encuesta.'
     reminder_helptext: |
       Envíe una notificación de "Cierre pronto" antes de que se cierre la encuesta.
       Esta puede ser una oportunidad para que las personas vean cómo otros han votado y reconsideren su propio voto, o simplemente una forma de aumentar la participación en la encuesta.
     deadline: Fecha límite
     how_much_time_to_vote: "¿Cuánto tiempo le dará a la gente para votar?"
     advanced_settings: Configuración avanzada
+    none_of_the_above: Ninguna de las anteriores
   poll_proposal_form:
     start_header: Inicia una propuesta
     edit_header: Edita una propuesta

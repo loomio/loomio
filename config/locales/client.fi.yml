@@ -1875,6 +1875,7 @@ fi:
     email_rejected_meaning: Tähän osoitteeseen lähetetty sähköposti on palautunut tai merkitty roskapostiksi. Tähän osoitteeseen ei lähetetä enempää sähköpostia.
     delegate: Delegoida
     delegate_popover: Edustaja on ryhmän äänioikeutettu jäsen
+    delegates: Edustajat
   polls_panel:
     new_poll: Uusi kysely
     any_type: Kaikki tyypit
@@ -1967,6 +1968,7 @@ fi:
     hide_results_until_closed:
       title: Piilota tulokset sulkemiseen asti
       helptext_on: Älä näytä, kuinka ihmiset ovat äänestäneet, ennen kuin äänestys on suljettu
+    show_none_of_the_above: Lisää vaihtoehto "Ei mikään yllä olevista".
   poll_common_close_form:
     title: Suljetaanko %{poll_type} nyt?
     helptext: Haluatko varmasti sulkea tämän %{poll_type} aikaisin ja jakaa tuloksen?
@@ -2136,6 +2138,7 @@ fi:
     deadline: Määräaika
     how_much_time_to_vote: Kuinka kauan annat ihmisille aikaa äänestää?
     advanced_settings: Lisäasetukset
+    none_of_the_above: Ei mikään yllä olevista
   poll_proposal_form:
     start_header: Aloita ehdotus
     edit_header: Muokkaa ehdotusta

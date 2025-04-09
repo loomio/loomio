@@ -1874,6 +1874,7 @@ ja:
     email_rejected_meaning: このアドレスに送信されたメールは返送されたか、スパムとしてマークされました。このアドレスには今後メールは送信されません。
     delegate: 委任する
     delegate_popover: 代表者は投票権を持つグループメンバーである
+    delegates: 代表者
   polls_panel:
     new_poll: 新しい投票
     any_type: いろんなタイプ
@@ -1966,6 +1967,7 @@ ja:
     hide_results_until_closed:
       title: 閉じるまで結果を非表示にする
       helptext_on: 投票が終了するまで、人々がどのように投票したかを表示しないでください
+    show_none_of_the_above: "「上記以外」のオプションを含める"
   poll_common_close_form:
     title: 今すぐ %{poll_type} を閉じますか?
     helptext: この %{poll_type} を早期に終了して結果を共有してもよろしいですか?
@@ -2135,6 +2137,7 @@ ja:
     deadline: 締め切り
     how_much_time_to_vote: 投票にどれくらいの時間を割く予定ですか?
     advanced_settings: 詳細設定
+    none_of_the_above: 上記のどれでもない
   poll_proposal_form:
     start_header: 提案を開始する
     edit_header: 提案の編集

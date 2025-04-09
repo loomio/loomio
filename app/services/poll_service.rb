@@ -16,7 +16,7 @@ class PollService
     end
 
     user_ids = params[:notify_recipients] ? stances.pluck(:participant_id) : []
-    
+
     EventBus.broadcast('poll_create', poll, actor)
     Events::PollCreated.publish!(poll, actor, recipient_user_ids: user_ids - [actor.id])
   end
@@ -31,7 +31,6 @@ class PollService
       model: poll,
       actor: actor
     )
-
     poll.assign_attributes_and_files(params.except(:poll_type, :discussion_id, :poll_template_id, :poll_template_key))
 
     # check again, because the group id could be updated to a untrusted group
@@ -333,9 +332,33 @@ class PollService
         color: option.color
       }.with_indifferent_access.freeze
     end
-    if poll.results_include_undecided
-      l.push({
+
+    if poll.show_none_of_the_above
+      l.push(
+        {
           id: 0,
+          poll_id: poll.id,
+          name: 'poll_common_form.none_of_the_above',
+          name_format: 'i18n',
+          rank: nil,
+          score: 0,
+          score_percent: 0,
+          max_score_percent: 0,
+          target_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
+          voter_percent: poll.voters_count > 0 ? (poll.none_of_the_above_count.to_f / poll.voters_count.to_f * 100) : 0,
+          average: 0,
+          voter_scores: {},
+          voter_ids: poll.none_of_the_above_voters.map(&:id).take(500),
+          voter_count: poll.none_of_the_above_count,
+          color: '#BBBBBB'
+        }.with_indifferent_access.freeze
+      )
+    end
+
+    if poll.results_include_undecided
+      l.push(
+        {
+          id: -1,
           poll_id: poll.id,
           name: 'poll_common_votes_panel.undecided',
           name_format: 'i18n',
@@ -350,7 +373,8 @@ class PollService
           voter_ids: poll.undecided_voters.map(&:id).take(500),
           voter_count: poll.undecided_voters_count,
           color: '#BBBBBB'
-      }.with_indifferent_access.freeze)
+        }.with_indifferent_access.freeze
+      )
     end
     l
   end
