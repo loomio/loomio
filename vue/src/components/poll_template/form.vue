@@ -32,15 +32,15 @@ export default {
           title: 'poll_common_form.voting_methods.show_thumbsdecision_tools_card.proposal_title',
           hint: 'poll_common_form.voting_methods.show_thumbs_hint'
         },
-        question: { 
+        question: {
           title: 'poll_common_form.voting_methods.question',
           hint: 'poll_common_form.voting_methods.question_hint'
         },
-        proposal: { 
+        proposal: {
           title: 'decision_tools_card.proposal_title',
           hint: 'poll_common_form.voting_methods.show_thumbs_hint'
         },
-        poll: { 
+        poll: {
           title: 'poll_common_form.voting_methods.simple_poll',
           hint: 'poll_common_form.voting_methods.choose_hint'
         },
@@ -52,7 +52,7 @@ export default {
           title: 'decision_tools_card.dot_vote_title',
           hint: 'poll_common_form.voting_methods.allocate_hint'
         },
-        score: { 
+        score: {
           title: 'poll_common_form.voting_methods.score',
           hint: 'poll_common_form.voting_methods.score_hint'
         },
@@ -89,7 +89,7 @@ export default {
     },
 
     addOption() {
-      const option = { 
+      const option = {
         name: '',
         meaning: '',
         prompt: '',
@@ -196,7 +196,7 @@ export default {
 
     optionFormat() { return this.pollTemplate.pollOptionNameFormat; },
     hasOptionIcon() { return this.pollTemplate.config().has_option_icon; },
-    i18nItems() { 
+    i18nItems() {
       return compact('agree abstain disagree consent objection block yes no'.split(' ').map(name => {
         if (this.pollTemplate.pollOptionNames.includes(name)) { return null; }
         return {
@@ -224,7 +224,7 @@ export default {
     h1.text-h4(tabindex="-1" v-t="titlePath")
 
   v-alert.poll-template-info-panel(type="info" text outlined)
-    span 
+    span
       span(v-t="'poll_common.need_help_with_templates'")
       space
       a.text-decoration-underline(target="_blank" href="https://help.loomio.com/en/user_manual/polls/poll_templates/index.html")
@@ -279,7 +279,7 @@ export default {
     :placeholder="$t('poll_common_form.example_details_placeholder')"
     :label="$t('poll_common_form.details')"
   )
-  
+
   template(v-if="hasOptions")
     .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
     v-subheader.px-0(v-if="!pollOptions.length" v-t="'poll_common_form.no_options_add_some'")
@@ -296,7 +296,7 @@ export default {
             v-list-item-icon(v-if="hasOptionIcon" v-handle)
               v-avatar(size="48")
                 img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
-         
+
             v-list-item-content(v-handle)
               v-list-item-title
                 span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
@@ -366,6 +366,13 @@ export default {
         min="1"
         v-model="pollTemplate.dotsPerPerson")
       validation-errors(:subject="pollTemplate" field="dotsPerPerson")
+
+  template(v-if="pollTemplate.config().allow_none_of_the_above")
+    v-checkbox.poll-common-checkbox-option.poll-settings-allow-none-of-the-above(
+      v-model="pollTemplate.showNoneOfTheAbove"
+      :label="$t('poll_common_settings.show_none_of_the_above')"
+    )
+
   v-divider.my-4
 
   v-text-field(

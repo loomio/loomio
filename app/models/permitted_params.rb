@@ -100,6 +100,7 @@ class PermittedParams < Struct.new(:params)
       :notify_on_closing_soon,
       :content_locale,
       :shuffle_options,
+      :show_none_of_the_above,
       :hide_results,
       :chart_type,
       :min_score,

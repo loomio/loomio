@@ -88,6 +88,7 @@ export default class PollModel extends BaseModel {
       recipientEmails: [],
       notifyRecipients: true,
       shuffleOptions: false,
+      showNoneOfTheAbove: false,
       tags: [],
       hideResults: 'off',
       stanceCounts: []

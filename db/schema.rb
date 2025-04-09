@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_04_031523) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_09_013308) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -727,6 +727,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_04_031523) do
     t.string "outcome_statement_format", default: "html", null: false
     t.integer "outcome_review_due_in_days"
     t.boolean "public", default: false, null: false
+    t.boolean "show_none_of_the_above", default: false, null: false
     t.index ["discarded_at"], name: "index_poll_templates_on_discarded_at"
   end
 
