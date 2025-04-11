@@ -78,6 +78,10 @@ class DiscussionService
                       emails: params[:recipient_emails],
                       audience: params[:recipient_audience])
 
+    discussion.polls.active.where(specified_voters_only: false).each do |poll|
+      PollService.create_anyone_can_vote_stances(poll)
+    end
+
     Events::DiscussionAnnounced.publish!(discussion: discussion,
                                          actor: actor,
                                          recipient_user_ids: users.pluck(:id),
@@ -235,7 +239,7 @@ class DiscussionService
                      user_id: users.pluck(:id)).find_each do |m|
       volumes[m.user_id] = m.volume
     end
-    
+
     DiscussionReader.
       where(discussion_id: discussion.id, user_id: users.map(&:id)).
       where("revoked_at is not null").update_all(revoked_at: nil, revoker_id: nil)

@@ -125,7 +125,7 @@ module.exports = {
   //   page.click('.sidebar__user-dropdown')
   //   page.click('.user-dropdown__list-item-button--profile')
   //   page.clear('.profile-page__email-input input')
-  //   page.fillIn('.profile-page__email-input input', 'jennifer_grey@example.com')
+  //   page.fillIn('.profile-page__email-input input', 'jennifer@example.com')
   //   page.expectElement('.profile-page__email-taken')
   //   page.click('.email-taken-find-out-more')
   //   page.click('.confirm-modal__submit')

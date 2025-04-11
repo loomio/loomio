@@ -86,9 +86,8 @@ class Discussion < ApplicationRecord
   has_many :items, -> { includes(:user) }, class_name: 'Event', dependent: :destroy
 
   has_many :discussion_readers, dependent: :destroy
-  has_many :readers,-> { merge DiscussionReader.active },  through: :discussion_readers, source: :user
-  has_many :guests, -> { merge DiscussionReader.guests }, through: :discussion_readers, source: :user
-  has_many :admin_guests, -> { merge DiscussionReader.admins }, through: :discussion_readers, source: :user
+  has_many :readers, -> { merge DiscussionReader.active }, through: :discussion_readers, source: :user
+
   include DiscussionExportRelations
 
   scope :search_for, -> (q) do
@@ -121,7 +120,7 @@ class Discussion < ApplicationRecord
   def poll
     nil
   end
-  
+
   def group
     super || NullGroup.new
   end
@@ -139,27 +138,34 @@ class Discussion < ApplicationRecord
   end
 
   def members
-    User.active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-             (dr.id IS NOT NULL AND dr.guest = TRUE AND dr.revoked_at IS NULL)')
+    User.active
+        .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{id || 0} AND dr.user_id = users.id")
+        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
+        .where('(m.id IS NOT NULL AND m.revoked_at IS NULL) OR
+                (dr.id IS NOT NULL AND dr.guest = TRUE AND dr.revoked_at IS NULL)')
   end
 
   def admins
-    User.active.
-      joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{self.id || 0} AND dr.user_id = users.id").
-      joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{self.group_id || 0}").
-      where('(m.admin = TRUE AND m.id IS NOT NULL AND m.revoked_at IS NULL) OR
-             (dr.admin = TRUE AND dr.id IS NOT NULL AND dr.revoked_at IS NULL)')
+    User.active
+        .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{id || 0} AND dr.user_id = users.id")
+        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
+        .where('(m.admin = TRUE AND m.id IS NOT NULL AND m.revoked_at IS NULL) OR
+                (dr.admin = TRUE AND dr.id IS NOT NULL AND dr.revoked_at IS NULL)')
   end
 
   def guests
-    members.where('m.group_id is null')
+    User.active
+        .joins("LEFT OUTER JOIN discussion_readers dr ON dr.discussion_id = #{id || 0} AND dr.user_id = users.id")
+        .joins("LEFT OUTER JOIN memberships m ON m.user_id = users.id AND m.group_id = #{group_id || 0}")
+        .where('(m.id IS NULL OR m.revoked_at IS NOT NULL) AND (dr.id IS NOT NULL AND dr.guest = TRUE AND dr.revoked_at IS NULL)')
+  end
+
+  def guest_ids
+    guests.pluck(:id)
   end
 
   def add_guest!(user, inviter)
-    if dr = discussion_readers.find_by(user: user)
+    if (dr = discussion_readers.find_by(user: user))
       dr.update(guest: true, inviter: inviter)
     else
       discussion_readers.create!(user: user, inviter: inviter, guest: true, volume: DiscussionReader.volumes[:normal])
