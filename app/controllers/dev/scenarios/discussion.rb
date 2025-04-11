@@ -22,6 +22,17 @@ module Dev::Scenarios::Discussion
     redirect_to discussion_url(discussion)
   end
 
+  def setup_discussion_with_guest
+    group      = FactoryBot.create :group, group_privacy: 'secret'
+    discussion = FactoryBot.build :discussion, group: group, title: "Dirty Dancing Shoes"
+    group.add_member!(patrick)
+    DiscussionService.create(discussion: discussion, actor: discussion.group.creator)
+    discussion.add_guest!(jennifer, discussion.author)
+    sign_in patrick
+
+    redirect_to discussion_url(discussion)
+  end
+
   def setup_forkable_discussion
     create_discussion
     create_another_discussion
