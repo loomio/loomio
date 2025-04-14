@@ -421,7 +421,6 @@ Rails.application.routes.draw do
   get 'd/:key/:slug(/:sequence_id)'        => 'discussions#show',            as: :discussion
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion_no_slug
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
-  get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
   get 'vote/:key(/:slug)'                  => 'polls#show'
   get 'u/undefined'                        => redirect('404.html')
