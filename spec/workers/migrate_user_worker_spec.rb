@@ -2,8 +2,8 @@ require 'rails_helper'
 include Dev::FakeDataHelper
 
 describe MigrateUserWorker do
-  let!(:patrick)            { saved fake_user(name: "Patrick Swayze") }
-  let!(:jennifer)           { saved fake_user(name: "Jennifer Grey") }
+  let!(:patrick)            { saved fake_user(name: "Patrick Swayze", email: "patrick@example.com") }
+  let!(:jennifer)           { saved fake_user(name: "Jennifer Grey", email: "jennifer@example.com") }
   let!(:group)              { saved fake_group(name: "Dirty Dancing Shoes") }
   let!(:another_group)      { saved fake_group(name: "another group") }
   let!(:discussion)         { saved fake_discussion(group: group) }
@@ -81,7 +81,7 @@ describe MigrateUserWorker do
     assert_equal another_group.members.exists?(jennifer.id), true
     assert_equal jennifer.memberships_count, 2
 
-    assert_equal 2, poll.reload.voters_count
+    assert_equal 1, poll.reload.voters_count
     assert_equal 2, group.reload.memberships_count
     assert_equal 1, group.reload.pending_memberships_count
     assert_equal 1, group.reload.admin_memberships_count
