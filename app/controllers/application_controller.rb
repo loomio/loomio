@@ -91,7 +91,7 @@ class ApplicationController < ActionController::Base
       @pagination = pagination_params
       respond_to do |format|
         format.html
-        format.rss  { render :"show.xml" }
+        format.rss { render :"show.xml" }
         format.xml
       end
     else
@@ -166,7 +166,11 @@ class ApplicationController < ActionController::Base
     prevent_caching
     save_beta_setting!
 
-    render 'application/boot_app', layout: false, status: status
+    respond_to do |format|
+      format.html { render 'application/boot_app', layout: false, status: status }
+      format.rss { render :"show.xml" }
+      format.xml
+    end
     # if use_beta_client?
     #   render file: Rails.root.join('public/client3/index.html'), layout: false, status: status
     # else
