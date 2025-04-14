@@ -2,28 +2,31 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
   layout "basic"
 
   def unsubscribe
-    @model = load_model
-    @membership = Membership.find_by(group_id: @model.group_id, user_id: current_user.id)
-    @discussion_reader = DiscussionReader.for(discussion: @model.discussion, user: current_user)
-    @stance = Stance.latest.find_by(poll_id: @model.poll_id, participant_id: current_user.id)
+    load_models_or_404
+    @membership = Membership.find_by(group_id: @group.id, user_id: current_user.id) if @group
+    @discussion_reader = DiscussionReader.for(discussion: @discussion, user: current_user) if @discussion
+    @stance = Stance.latest.find_by(poll_id: @poll.id, participant_id: current_user.id) if @poll
   end
 
   def set_group_volume
-    @model = load_model
-    membership = Membership.find_by!(user_id: current_user.id, group_id: @model.group_id)
+    load_models_or_404
+    membership = Membership.find_by!(user_id: current_user.id, group_id: @group.id)
     MembershipService.set_volume(membership: membership, actor: current_user, params: {volume: params[:value]})
-
-    redirect_to email_actions_unsubscribe_path(@model.named_id.merge(unsubscribe_token: params[:unsubscribe_token])),
-                notice: t(:'change_volume_form.saved')
+    redirect_to_unsubscribe
   end
 
   def set_discussion_volume
-    @model = load_model
-    discussion_reader = DiscussionReader.find_by!(discussion_id: @model.discussion_id, user_id: current_user.id)
+    load_models_or_404
+    discussion_reader = DiscussionReader.find_by!(discussion_id: @discussion.id, user_id: current_user.id)
     discussion_reader.set_volume!(params[:value])
+    redirect_to_unsubscribe
+  end
 
-    redirect_to email_actions_unsubscribe_path(@model.named_id.merge(unsubscribe_token: params[:unsubscribe_token])),
-                notice: t(:'change_volume_form.saved')
+  def set_poll_volume
+    load_models_or_404
+    stance = Stance.latest.find_by!(poll_id: @poll.id, participant_id: current_user.id)
+    stance.set_volume!(params[:value])
+    redirect_to_unsubscribe
   end
 
   def unfollow_discussion
@@ -76,15 +79,28 @@ class EmailActionsController < AuthenticateByUnsubscribeTokenController
 
   private
 
-  def load_model
-    model = load_and_authorize(:discussion, :show, optional: true) ||
-            load_and_authorize(:group, :show, optional: true) ||
-            load_and_authorize(:comment, :show, optional: true) ||
-            load_and_authorize(:poll, :show, optional: true) ||
-            load_and_authorize(:outcome, :show, optional: true)
-    raise ActiveRecord::RecordNotFound unless model
+  def redirect_to_unsubscribe
+    args = params.permit!.slice(:discussion_id, :outcome_id, :poll_id, :group_id).compact.merge(unsubscribe_token: params[:unsubscribe_token])
+    redirect_to email_actions_unsubscribe_path(args), notice: t(:'change_volume_form.saved')
+  end
 
-    model
+  def load_models_or_404
+    @discussion = if (@comment = load_and_authorize(:comment, :show, optional: true))
+                    @comment.discussion
+                  else
+                    load_and_authorize(:discussion, :show, optional: true)
+                  end
+
+    @poll = if (@outcome = load_and_authorize(:outcome, :show, optional: true))
+              @outcome.poll
+            else
+              load_and_authorize(:poll, :show, optional: true)
+            end
+
+    @group = load_and_authorize(:group, :show, optional: true)
+    @group = @poll.group if !@group && @poll
+    @group = @discussion.group if !@group && @discussion
+    raise ActiveRecord::RecordNotFound unless @group || @discussion || @poll
   end
 
   def respond_with_pixel
