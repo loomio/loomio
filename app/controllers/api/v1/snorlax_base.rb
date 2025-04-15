@@ -37,11 +37,7 @@ class API::V1::SnorlaxBase < ActionController::Base
   private
 
   def load_resource
-    if resource_class.respond_to?(:friendly)
-      self.resource = resource_class.friendly.find(params[:id])
-    else
-      self.resource = resource_class.find(params[:id])
-    end
+    self.resource = resource_class.find(params[:id])
   end
 
   def create_action
