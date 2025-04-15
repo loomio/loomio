@@ -2,10 +2,13 @@
 import Records           from '@/shared/services/records';
 import Session           from '@/shared/services/session';
 import EventBus          from '@/shared/services/event_bus';
-import AbilityService    from '@/shared/services/ability_service';
 import ThreadLoader      from '@/shared/loaders/thread_loader';
+import FormatDate from '@/mixins/format_date';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
 
 export default {
+  mixins: [FormatDate, WatchRecords, UrlFor],
   data() {
     return {
       discussion: null,
@@ -38,7 +41,7 @@ export default {
         this.respondToRoute();
         EventBus.$emit('currentComponent', {
           focusHeading: false,
-          page: 'threadPage',
+          page: 'discussionPage',
           discussion: this.discussion,
           group: this.discussion.group(),
           title: this.discussion.title
@@ -55,16 +58,12 @@ export default {
       });
     },
 
-      // .catch (error) =>
-      //   EventBus.$emit 'pageError', error
-      //   EventBus.$emit 'openAuthModal' if error.status == 403 && !Session.isSignedIn()
-
     focusSelector() {
       if (this.loader.focusAttrs.newest) {
         if (this.discussion.lastSequenceId()) {
           return `.sequenceId-${this.discussion.lastSequenceId()}`;
         } else {
-          return "#add-comment";
+          return '.context-panel';
         }
       }
 
@@ -82,6 +81,10 @@ export default {
 
       if (this.loader.focusAttrs.commentId) {
         return `#comment-${this.loader.focusAttrs.commentId}`;
+      }
+
+      if (this.loader.focusAttrs.sequenceId == 0) {
+        return '#context';
       }
 
       if (this.loader.focusAttrs.sequenceId) {
