@@ -36,7 +36,7 @@ module GroupService
       group_ids: group_ids,
       emails: Array(params[:recipient_emails]),
       user_ids: Array(params[:recipient_user_ids]),
-      actor: actor,
+      actor: actor
     )
 
     users = UserInviter.where_or_create!(
@@ -63,11 +63,9 @@ module GroupService
       Membership.import(new_memberships, on_duplicate_key_ignore: true)
 
       # mark as accepted all invitiations to people who are already part of the org.
-      if g.parent
-        parent_members = g.parent.accepted_members.where(id: users.verified.pluck(:id))
-        Membership.pending.where(group_id: g.id,
-                                 user_id: parent_members.pluck(:id)).update_all(accepted_at: Time.now)
-      end
+      other_group_ids = Group.published.where(id: g.parent_or_self.id_and_subgroup_ids).pluck(:id) - Array(g.id)
+      existing_member_ids = Membership.accepted.where(group_id: other_group_ids, user_id: users.verified.pluck(:id)).pluck(:user_id)
+      Membership.pending.where(group_id: g.id, user_id: existing_member_ids).update_all(accepted_at: Time.now)
 
       g.update_pending_memberships_count
       g.update_memberships_count
