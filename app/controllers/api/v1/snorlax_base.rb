@@ -147,7 +147,6 @@ class API::V1::SnorlaxBase < ActionController::Base
     collection || Array(resource)
   end
 
-
   def collection
     instance_variable_get :"@#{resource_name.pluralize}"
   end
@@ -227,10 +226,6 @@ class API::V1::SnorlaxBase < ActionController::Base
     []
   end
 
-  def public_records
-    raise NotImplementedError.new
-  end
-
   def default_page_size
     50
   end
@@ -253,10 +248,6 @@ class API::V1::SnorlaxBase < ActionController::Base
 
   def error_response(status = 500)
     render json: {error: status}, root: false, status: status
-  end
-
-  def load_resource
-    self.resource = resource_class.find(params[:id])
   end
 
   def resource_params

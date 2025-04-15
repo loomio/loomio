@@ -130,7 +130,7 @@ class ApplicationController < ActionController::Base
     @metadata = {title: @title, description: @body }
     respond_to do |format|
       format.html { boot_app(status: status) }
-      format.json { render json: { error: @title }, status: status }
+      format.json { render json: { error: @title }, root: false, status: status }
       format.xml { render xml: { error: @title }, status: status }
     end
   end
