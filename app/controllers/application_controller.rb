@@ -154,17 +154,4 @@ class ApplicationController < ActionController::Base
     save_beta_setting!
     render 'application/boot_app', layout: false, status: status
   end
-
-  # def redirect_to(url, opts = {})
-  #   return super unless url.is_a? String # GK: for now this override only covers cases where a string has been passed in, so it does not cover cases of a Hash or a Record being passed in
-  #   host = URI(url).host
-  #   if ENV['USE_VUE'] && Rails.env.development? && host == "localhost"
-  #     path = URI(url).path
-  #     query = URI(url).query ? "?#{URI(url).query}" : ""
-
-  #     super "http://localhost:8080#{path}#{query}"
-  #   else
-  #     super
-  #   end
-  # end
 end
