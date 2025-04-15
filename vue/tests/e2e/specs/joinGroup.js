@@ -40,6 +40,7 @@ module.exports = {
 
     page.loadPath('setup_closed_group_to_join')
     page.click('.join-group-button')
+    page.fillIn('.membership-request-form__introduction textarea', 'Hello I am a bot and id like to advertise junk to your fine membership')
     page.click('.membership-request-form__submit-btn')
     page.expectFlash('You have requested to join')
   },

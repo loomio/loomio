@@ -218,7 +218,6 @@ export default
       ],
       onUpdate: () => {
         if (this.maxLength) { this.checkLength(); }
-        // if (this.model.isNew()) { this.scrapeLinkPreviews(); }
       },
       onCreate: () => {
         if (this.model.isNew() && (this.charCount() > 0) && this.autofocus) { this.editor.commands.focus('end'); }
@@ -353,12 +352,6 @@ export default
     removeLinkPreview(url) {
       this.model.linkPreviews = reject(this.model.linkPreviews, p => p.url === url);
     },
-
-    scrapeLinkPreviews: throttle(function() {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(this.editor.getHTML(), 'text/html');
-      this.fetchLinkPreviews(difference((Array.from(doc.querySelectorAll('a')).map(el => el.href)), this.fetchedUrls));
-    } , 500 , {leading: false}),
 
     fetchLinkPreviews(urls) {
       if (urls.length) {

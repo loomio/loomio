@@ -10,7 +10,7 @@ class PollService
     poll.update_counts!
 
     if !poll.specified_voters_only
-      stances = create_stances(poll: poll, actor: actor, include_actor: true, audience: 'group')
+      stances = create_anyone_can_vote_stances(poll)
     else
       stances = Stance.none
     end
@@ -228,16 +228,27 @@ class PollService
 
   def self.group_members_added(group_id)
     return if group_id.nil?
-    member_ids = Group.find(group_id).accepted_members.humans.pluck(:id)
+
     Poll.active.where(group_id: group_id, specified_voters_only: false).each do |poll|
-      revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
-      PollService.create_stances(
-        poll: poll,
-        actor: poll.author,
-        user_ids: (member_ids - poll.voter_ids) - revoked_user_ids
-      )
-      poll.update_counts!
+      create_anyone_can_vote_stances(poll)
     end
+  end
+
+  def self.create_anyone_can_vote_stances(poll)
+    raise "only use on specified_voters_only=false" if poll.specified_voters_only
+
+    member_ids = []
+    member_ids = Group.find(poll.group_id).accepted_members.humans.pluck(:id) if poll.group_id && poll.group
+
+    guest_ids = []
+    guest_ids = poll.discussion.guest_ids if poll.discussion
+
+    revoked_user_ids = poll.stances.revoked.pluck(:participant_id).uniq
+    create_stances(
+      poll: poll,
+      actor: poll.author,
+      user_ids: ((guest_ids + member_ids) - poll.voter_ids) - revoked_user_ids
+    )
   end
 
   def self.group_members_removed(group_id, removed_user_ids, actor_id, revoked_at)
@@ -259,7 +270,8 @@ class PollService
 
   def self.do_closing_work(poll:)
     return if poll.closed_at
-    poll.stances.update_all(participant_id: nil) if poll.anonymous
+
+    poll.stances.update_all(participant_id: nil) if poll.anonymous && AppConfig.app_features[:scrub_anonymous_stances]
     if poll.discussion_id && poll.hide_results == 'until_closed'
       stance_ids = poll.stances.latest.reject(&:body_is_blank?).map(&:id)
       Event.where(kind: 'stance_created', eventable_id: stance_ids, discussion_id: nil).update_all(discussion_id: poll.discussion_id)

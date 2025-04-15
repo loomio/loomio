@@ -21,7 +21,7 @@ export default {
 
   methods: {
     optionMeaning(id) {
-      return Records.pollOptions.find(id).meaning
+      return (Records.pollOptions.find(id) || {}).meaning
     },
     clampPercent(num) { return Math.max(0, Math.min(num, 100)); }
   },
@@ -77,7 +77,7 @@ export default {
           )
             div.rounded(:style="{width: clampPercent(option[poll.chartColumn])+'%', height: '24px', 'background-color': option.color}")
           td(v-if="col == 'name' " :style="poll.chartType == 'pie' ? {'border-left': '4px solid ' + option.color} : {}")
-            template(v-if="option.id > 0 && optionMeaning(option.id)")
+            template(v-if="optionMeaning(option.id)")
               v-tooltip(right)
                 template(v-slot:activator="{ props }")
                   span(v-bind="props")

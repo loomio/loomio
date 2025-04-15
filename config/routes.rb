@@ -362,6 +362,7 @@ Rails.application.routes.draw do
     get :unsubscribe
     put :set_group_volume
     put :set_discussion_volume
+    put :set_poll_volume
     get 'unfollow_discussion/:discussion_id/:unsubscribe_token', action: 'unfollow_discussion', as: :unfollow_discussion
     get 'mark_summary_email_as_read', action: 'mark_summary_email_as_read', as: :mark_summary_email_as_read
     get 'mark_discussion_as_read/:discussion_id/:event_id/:unsubscribe_token', action: 'mark_discussion_as_read', as: :mark_discussion_as_read
@@ -420,7 +421,6 @@ Rails.application.routes.draw do
   get 'd/:key/:slug(/:sequence_id)'        => 'discussions#show',            as: :discussion
   get 'd/:key(/:slug)(/:sequence_id)'      => 'discussions#show',            as: :discussion_no_slug
   get 'd/:key/comment/:comment_id'         => 'discussions#show',            as: :comment
-  get 'p/:key/unsubscribe'                 => 'polls#unsubscribe',           as: :poll_unsubscribe
   get 'p/:key(/:slug)'                     => 'polls#show',                  as: :poll
   get 'vote/:key(/:slug)'                  => 'polls#show'
   get 'u/undefined'                        => redirect('404.html')

@@ -66,7 +66,7 @@ module.exports = {
 
     page.loadPath('setup_explore_as_visitor')
     page.click('.navbar__sign-in')
-    page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
+    page.fillIn('.auth-email-form__email input', 'patrick@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'w0rstmovie')
     page.click('.auth-signin-form__submit')
@@ -77,7 +77,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_as_visitor')
-    page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
+    page.fillIn('.auth-email-form__email input', 'patrick@example.com')
     page.click('.auth-email-form__submit')
     page.click('.auth-signin-form__login-link')
     page.expectText('.auth-complete', 'Check your email')
@@ -105,7 +105,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_dashboard_as_visitor')
-    page.signInViaEmail('jennifer_grey@example.com')
+    page.signInViaEmail('jennifer@example.com')
     page.pause(1000)
     page.expectElement('.group-page')
   },
@@ -115,7 +115,7 @@ module.exports = {
 
     page.loadPath('view_open_discussion_as_visitor')
     page.click('.add-comment-panel__sign-in-btn')
-    page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
+    page.fillIn('.auth-email-form__email input', 'patrick@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
@@ -131,7 +131,7 @@ module.exports = {
 
     page.loadPath('setup_explore_as_visitor')
     page.click('.navbar__sign-in')
-    page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
+    page.fillIn('.auth-email-form__email input', 'patrick@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
@@ -143,7 +143,7 @@ module.exports = {
 
     page.loadPath('setup_explore_as_visitor')
     page.click('.navbar__sign-in')
-    page.fillIn('.auth-email-form__email input', 'jennifer_grey@example.com')
+    page.fillIn('.auth-email-form__email input', 'jennifer@example.com')
     page.click('.auth-email-form__submit')
     page.click('.auth-signin-form__submit')
     page.expectText('.auth-complete', 'Check your email')
@@ -159,7 +159,7 @@ module.exports = {
 
     page.loadPath('view_closed_group_as_visitor')
     page.click('.navbar__sign-in')
-    page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
+    page.fillIn('.auth-email-form__email input', 'patrick@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')
@@ -172,7 +172,7 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('view_secret_group_as_visitor')
-    page.fillIn('.auth-email-form__email input', 'patrick_swayze@example.com')
+    page.fillIn('.auth-email-form__email input', 'patrick@example.com')
     page.click('.auth-email-form__submit')
     page.fillIn('.auth-signin-form__password input', 'gh0stmovie')
     page.click('.auth-signin-form__submit')

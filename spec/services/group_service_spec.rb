@@ -3,13 +3,31 @@ require 'rails_helper'
 describe 'GroupService' do
 
   describe 'invite' do
-    let(:user) { create(:user) }
-    let(:group) { create(:group, name: 'test invite') }
+    let(:user) { create(:user, email: 'jim@example.com') }
+    let(:group) { create(:group, name: 'parent') }
+    let(:subgroup) { create(:group, name: 'subgroup', parent: group) }
     let(:subscription) { Subscription.create(max_members: nil) }
 
     before do
       group.subscription = subscription
       group.save!
+    end
+
+    it 'does not mark as accepted if they dont belong the group already' do
+      GroupService.invite(group: group, actor: group.creator, params: {recipient_emails: [user.email]})
+      expect(Membership.find_by(user_id: user.id, group_id: group.id).accepted_at).to be nil
+    end
+
+    it 'marks membership as accepted if they already belong to the parent group' do
+      group.add_member!(user, inviter: group.creator)
+      GroupService.invite(group: subgroup, actor: subgroup.creator, params: {recipient_emails: [user.email]})
+      expect(Membership.find_by(user_id: user.id, group_id: subgroup.id).accepted_at).to_not be nil
+    end
+
+    it 'marks membership as accepted if they already belong to a subgroup' do
+      subgroup.add_member!(user, inviter: subgroup.creator)
+      GroupService.invite(group: group, actor: group.creator, params: {recipient_emails: [user.email]})
+      expect(Membership.find_by(user_id: user.id, group_id: group.id).accepted_at).to_not be nil
     end
 
     it 'invites a user by email' do

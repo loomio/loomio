@@ -90,7 +90,7 @@ class ApplicationController < ActionController::Base
       @pagination = pagination_params
       respond_to do |format|
         format.html
-        format.rss  { render :"show.xml" }
+        format.rss { render :"show.xml" }
         format.xml
       end
     else
@@ -164,7 +164,11 @@ class ApplicationController < ActionController::Base
     expires_now
     prevent_caching
 
-    render 'application/boot_app', layout: false, status: status
+    respond_to do |format|
+      format.html { render 'application/boot_app', layout: false, status: status }
+      format.rss { render :"show.xml" }
+      format.xml
+    end
   end
 
   def redirect_to(url, opts = {})

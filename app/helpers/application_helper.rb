@@ -13,6 +13,7 @@ module ApplicationHelper
 
   def logo_svg
     return nil unless AppConfig.theme[:app_logo_src].ends_with?('.svg')
+
     path = Rails.root.join('public', AppConfig.theme[:app_logo_src].gsub(Regexp.new("^/"), ''))
     File.read(path).html_safe
   end
