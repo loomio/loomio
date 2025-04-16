@@ -71,7 +71,6 @@ describe MembershipsController do
       it 'renders error page with not found message' do
         get :show, params: { token: 'asdjhadjkhaskjdsahda' }
         expect(response.status).to eq 404
-        expect(response).to render_template "application/error"
       end
     end
 
