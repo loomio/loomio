@@ -9,7 +9,7 @@ class Identities::BaseController < ApplicationController
       associate_identity
       redirect_to session.delete(:back_to) || dashboard_path
     else
-      respond_with_error message: "Could not connect to #{controller_name}!"
+      respond_with_error 500, "Could not connect to #{controller_name}!"
     end
   end
 
@@ -18,7 +18,7 @@ class Identities::BaseController < ApplicationController
       i.destroy
       redirect_to request.referrer || root_path
     else
-      respond_with_error message: "Not connected to #{controller_name}!"
+      respond_with_error 500, "Not connected to #{controller_name}!"
     end
   end
 
@@ -39,7 +39,7 @@ class Identities::BaseController < ApplicationController
   def existing_identity
     @existing_identity ||= identity_class.with_user.find_by(
       identity_type: identity.identity_type,
-      uid:           identity.uid
+      uid: identity.uid
     )
   end
 
