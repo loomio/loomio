@@ -471,6 +471,7 @@ sl:
     normal_explained: Ko nekdo vnese vaše ime v polje »Obvesti« v niti ali anketi ali @omeni skupino.
     normal_excludes_mentioning_html: Obstaja ločena nastavitev, ko vas nekdo @omeni (npr. ko vam odgovori v komentarju). <a href="%{url}">Kliknite tukaj, če želite urediti nastavitve za @omembe</a>
     loud_explained: Prejeli boste e-poštno sporočilo vsakič, ko je nov komentar, nekdo glasuje ali začne anketo ali nit.
+    when_would_you_like_to_be_emailed_poll_type: Kdaj želite prejeti e-pošto o tem %{poll_type}?
   close_explanation_modal:
     aria_label: Zapri temo
     close_thread: Zapri temo

@@ -471,6 +471,7 @@ tr:
     normal_explained: Birisi bir konu başlığının veya anketin "Bildir" alanına adınızı girdiğinde veya gruptan @mention yaptığında.
     normal_excludes_mentioning_html: Birisi sizden @mentions yaptığında (örneğin bir yorumda size yanıt verdiğinde) ayrı bir ayar vardır. <a href="%{url}">@mentions ayarlarını düzenlemek için buraya tıklayın</a>
     loud_explained: Her yeni yorum yapıldığında, birisi oy verdiğinde, anket veya konu başlatıldığında e-posta ile bilgilendirileceksiniz.
+    when_would_you_like_to_be_emailed_poll_type: Bu %{poll_type} hakkında ne zaman e-posta almak istersiniz?
   close_explanation_modal:
     aria_label: Konuyu kapat
     close_thread: Konuyu kapat

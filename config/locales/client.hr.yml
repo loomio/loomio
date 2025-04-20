@@ -471,6 +471,7 @@ hr:
     normal_explained: Kada netko unese vaše ime u polje "Obavijesti" u niti ili anketi ili @spomene grupu.
     normal_excludes_mentioning_html: Postoji posebna postavka kada vas netko @spominje (npr. kada vam odgovara u komentaru). <a href="%{url}">Kliknite ovdje za uređivanje postavki za @spominjanja</a>
     loud_explained: Primit ćete e-poruku svaki put kada postoji novi komentar, netko glasa ili započne anketu ili nit.
+    when_would_you_like_to_be_emailed_poll_type: Kada biste željeli primiti e-poruku o ovom %{poll_type}?
   close_explanation_modal:
     aria_label: Zatvori nit
     close_thread: Zatvori nit

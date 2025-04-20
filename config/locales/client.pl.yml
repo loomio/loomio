@@ -473,6 +473,7 @@ pl:
     normal_explained: Gdy ktoś wpisze Twoje imię w polu „Powiadom” w wątku lub ankiecie, albo @wspomni grupę.
     normal_excludes_mentioning_html: Istnieje osobne ustawienie dla sytuacji, gdy ktoś @wspomina Ciebie (np. gdy odpowiada Ci w komentarzu). <a href="%{url}">Kliknij tutaj, aby edytować ustawienia dla @wzmianek</a>
     loud_explained: Otrzymasz e-mail za każdym razem, gdy pojawi się nowy komentarz, ktoś zagłosuje lub rozpocznie ankietę czy wątek.
+    when_would_you_like_to_be_emailed_poll_type: Kiedy chcesz otrzymać wiadomość e-mail dotyczącą tego %{poll_type}?
   close_explanation_modal:
     aria_label: Zamknij wątek
     close_thread: Zamknij wątek

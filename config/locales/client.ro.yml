@@ -471,6 +471,7 @@ ro:
     normal_explained: Când cineva vă introduce numele în câmpul „Notificați” al unui fir sau al unui sondaj, sau @menționează grupul.
     normal_excludes_mentioning_html: Există o setare separată pentru când cineva @ te menționează (de exemplu, când îți răspunde într-un comentariu). <a href="%{url}">Faceți clic aici pentru a edita setările pentru @mențiuni</a>
     loud_explained: Veți primi un e-mail de fiecare dată când există un comentariu nou, cineva votează sau începe un sondaj sau un thread.
+    when_would_you_like_to_be_emailed_poll_type: Când doriți să primiți un e-mail despre acest %{poll_type}?
   close_explanation_modal:
     aria_label: Închideți firul
     close_thread: Închideți firul

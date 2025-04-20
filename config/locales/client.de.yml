@@ -479,6 +479,7 @@ de:
     normal_explained: Wenn jemand Ihren Namen in das Feld „Benachrichtigen“ eines Threads oder einer Umfrage eingibt oder die Gruppe @erwähnt.
     normal_excludes_mentioning_html: Es gibt eine separate Einstellung für @Erwähnungen (z. B. bei einer Antwort in einem Kommentar). <a href="%{url}">Klicken Sie hier, um die Einstellungen für @Erwähnungen zu bearbeiten.</a>
     loud_explained: Sie erhalten jedes Mal eine E-Mail, wenn ein neuer Kommentar eingeht, jemand abstimmt oder eine Umfrage bzw. ein Thread startet.
+    when_would_you_like_to_be_emailed_poll_type: Wann möchten Sie eine E-Mail zu diesem %{poll_type} erhalten?
   close_explanation_modal:
     aria_label: Diskussion schließen
     close_thread: Diskussion schließen

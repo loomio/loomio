@@ -473,6 +473,7 @@ ca:
     normal_explained: Quan algú introdueix el teu nom al camp "Notificar" d'un fil o d'una enquesta, o quan @menciona el grup.
     normal_excludes_mentioning_html: Hi ha una configuració separada per quan algú us @esmenta (per exemple, quan us respon en un comentari). <a href="%{url}">Feu clic aquí per editar la configuració de les @mencions</a>
     loud_explained: Se us enviarà un correu electrònic cada vegada que hi hagi un comentari nou, algú voti o iniciï una enquesta o fil.
+    when_would_you_like_to_be_emailed_poll_type: Quan vols rebre un correu electrònic sobre aquest %{poll_type}?
   close_explanation_modal:
     aria_label: Tanca el fil de discussió
     close_thread: Tanca el fil de discussió
