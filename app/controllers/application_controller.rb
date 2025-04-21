@@ -150,7 +150,6 @@ class ApplicationController < ActionController::Base
   def boot_app(status: 200)
     expires_now
     prevent_caching
-    save_beta_setting!
     render 'application/boot_app', layout: false, status: status
   end
 end
