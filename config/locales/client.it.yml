@@ -482,6 +482,7 @@ it:
     normal_explained: Quando qualcuno inserisce il tuo nome nel campo "Notifica" di un thread o di un sondaggio, oppure @menziona il gruppo.
     normal_excludes_mentioning_html: C'è un'impostazione separata per quando qualcuno ti @menziona (ad esempio quando qualcuno ti risponde in un commento). <a href="%{url}">Fai clic qui per modificare le impostazioni per le @menzioni</a>
     loud_explained: Riceverai un'e-mail ogni volta che c'è un nuovo commento, qualcuno vota o avvia un sondaggio o una discussione.
+    when_would_you_like_to_be_emailed_poll_type: Quando desideri ricevere un'e-mail su questo %{poll_type}?
   close_explanation_modal:
     aria_label: Chiudi discussione
     close_thread: Chiudi discussione

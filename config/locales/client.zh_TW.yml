@@ -480,6 +480,7 @@ zh_TW:
     normal_explained: 當有人在主題或投票的「通知」欄位中輸入您的姓名，或@提及該小組。
     normal_excludes_mentioning_html: 當有人@提及您時（例如在評論中回复您時），有一個單獨的設置。<a href="%{url}">點擊此處編輯@mentions 的設置</a>
     loud_explained: 每次有新評論、有人投票、或發起投票或討論時，您都會收到電子郵件。
+    when_would_you_like_to_be_emailed_poll_type: 您希望何時收到有關此 %{poll_type} 的電子郵件？
   close_explanation_modal:
     aria_label: 關閉討論串
     close_thread: 關閉討論串

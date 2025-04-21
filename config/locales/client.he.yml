@@ -472,6 +472,7 @@ he:
     normal_explained: כאשר מישהו מזין את שמך בשדה "הודע" של שרשור או סקר, או שהוא @ מזכיר את הקבוצה.
     normal_excludes_mentioning_html: יש הגדרה נפרדת כאשר מישהו @ מזכיר אותך (למשל כשמשיב לך בהערה). <a href="%{url}">לחץ כאן כדי לערוך הגדרות עבור @אזכורים</a>
     loud_explained: תישלח אליך אימייל בכל פעם שתהיה תגובה חדשה, מישהו יצביע או יתחיל סקר או שרשור.
+    when_would_you_like_to_be_emailed_poll_type: מתי תרצה לקבל אימייל לגבי %{poll_type} זה?
   close_explanation_modal:
     aria_label: סגור שיחה
     close_thread: סגור שיחה

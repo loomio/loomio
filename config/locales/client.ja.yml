@@ -471,6 +471,7 @@ ja:
     normal_explained: 誰かがスレッドまたはアンケートの「通知」フィールドにあなたの名前を入力したとき、またはグループを @mention したとき。
     normal_excludes_mentioning_html: 誰かがあなたに@メンションしたとき（コメントであなたに返信したときなど）には別の設定があります。 <a href="%{url}">@メンションの設定を編集するにはここをクリックしてください</a>
     loud_explained: 新しいコメントが追加されたり、誰かが投票したり、アンケートやスレッドが開始されたりするたびに、メールが届きます。
+    when_would_you_like_to_be_emailed_poll_type: この %{poll_type} についていつメールを受け取りたいですか?
   close_explanation_modal:
     aria_label: スレッドを閉じる
     close_thread: スレッドを閉じる

@@ -474,6 +474,7 @@ es:
     normal_explained: Cuando alguien ingresa su nombre en el campo "Notificar" de un hilo o una encuesta, o @menciona al grupo.
     normal_excludes_mentioning_html: Hay una configuración independiente para cuando alguien te @menciona (por ejemplo, al responderte en un comentario). <a href="%{url}">Haz clic aquí para editar la configuración de @menciones.</a>
     loud_explained: Recibirás un correo electrónico cada vez que haya un nuevo comentario, alguien vote o inicie una encuesta o hilo.
+    when_would_you_like_to_be_emailed_poll_type: "¿Cuándo le gustaría recibir un correo electrónico sobre este %{poll_type}?"
   close_explanation_modal:
     aria_label: Cerrar hilo
     close_thread: 'Cerrar hilo '

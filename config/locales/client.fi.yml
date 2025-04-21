@@ -472,6 +472,7 @@ fi:
     normal_explained: Kun joku kirjoittaa nimesi viestiketjun tai kyselyn "Ilmoita"-kenttään tai @mainitsee ryhmän.
     normal_excludes_mentioning_html: On erillinen asetus, kun joku @mainitsee sinut (esim. kun vastaat sinulle kommentissa). <a href="%{url}">Napsauta tätä muokataksesi @mainintojen asetuksia</a>
     loud_explained: Saat sähköpostin aina, kun tulee uusi kommentti, joku äänestää tai aloittaa kyselyn tai viestiketjun.
+    when_would_you_like_to_be_emailed_poll_type: Milloin haluaisit saada sähköpostia tästä %{poll_type}?
   close_explanation_modal:
     aria_label: Sulje lanka
     close_thread: Sulje lanka

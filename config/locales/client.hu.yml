@@ -474,6 +474,7 @@ hu:
     normal_explained: Amikor valaki beírja a nevét egy témaszál vagy egy szavazás "Értesítés" mezőjébe, vagy @említi a csoportot.
     normal_excludes_mentioning_html: Külön beállítás van arra vonatkozóan, amikor valaki @megemlít téged (pl. amikor egy megjegyzésben válaszol neked). <a href="%{url}">Kattintson ide a @megemlítések beállításainak szerkesztéséhez</a>
     loud_explained: Minden alkalommal e-mailt fog kapni, amikor új megjegyzés érkezik, valaki szavaz, vagy szavazást vagy témát indít.
+    when_would_you_like_to_be_emailed_poll_type: 'Mikor szeretne e-mailt kapni erről: %{poll_type}?'
   close_explanation_modal:
     aria_label: Téma lezárása
     close_thread: Téma lezárása

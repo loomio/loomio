@@ -472,6 +472,7 @@ sv:
     normal_explained: När någon anger ditt namn i fältet "Meddela" i en tråd eller en omröstning, eller de @nämner gruppen.
     normal_excludes_mentioning_html: Det finns en separat inställning för när någon @nämner dig (t.ex. när ett svar till dig i en kommentar). <a href="%{url}">Klicka här för att redigera inställningar för @omnämnanden</a>
     loud_explained: Du kommer att bli mailad varje gång det kommer en ny kommentar, någon röstar eller startar en omröstning eller tråd.
+    when_would_you_like_to_be_emailed_poll_type: När vill du få e-post om denna %{poll_type}?
   close_explanation_modal:
     aria_label: Stäng tråd
     close_thread: Stäng tråd

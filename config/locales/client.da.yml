@@ -472,6 +472,7 @@ da:
     normal_explained: Når nogen indtaster dit navn i feltet "Underret" i en tråd eller en afstemning, eller de @omtaler gruppen.
     normal_excludes_mentioning_html: Der er en separat indstilling for, hvornår nogen @omtaler dig (f.eks. når man svarer dig i en kommentar). <a href="%{url}">Klik her for at redigere indstillinger for @omtaler</a>
     loud_explained: Du vil blive mailet hver gang der er en ny kommentar, nogen stemmer eller starter en afstemning eller tråd.
+    when_would_you_like_to_be_emailed_poll_type: Hvornår vil du gerne have en e-mail om denne %{poll_type}?
   close_explanation_modal:
     aria_label: Luk tråden
     close_thread: Luk tråden

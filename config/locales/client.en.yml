@@ -376,8 +376,8 @@ en:
   error_page:
     forbidden: 'You do not have permission to do this.'
     forbidden_view: 'You do not have permission to view this.'
-    page_not_found: 'We were unable to find that. It may have been deleted or moved.'
-    internal_server_error: 'We''re sorry, but something went wrong. Please try again.'
+    page_not_found: 'Page not found. It may have been deleted or moved.'
+    internal_server_error: 'Server error! Please try again.'
 
   verify_email_notice:
     please_verify: Thanks for participating! Please check your email for a link to verify your vote.

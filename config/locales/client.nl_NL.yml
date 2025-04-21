@@ -474,6 +474,7 @@ nl_NL:
     normal_explained: Wanneer iemand jouw naam invoert in het veld 'Melden' van een thread of poll, of wanneer ze de groep @vermelden.
     normal_excludes_mentioning_html: Er is een aparte instelling voor wanneer iemand jou @vermeldt (bijvoorbeeld wanneer iemand op jou reageert in een opmerking). <a href="%{url}">Klik hier om de instellingen voor @vermeldingen te bewerken</a>
     loud_explained: U ontvangt een e-mail wanneer er een nieuwe reactie is, iemand stemt of een poll of thread start.
+    when_would_you_like_to_be_emailed_poll_type: Wanneer wilt u een e-mail ontvangen over deze %{poll_type}?
   close_explanation_modal:
     aria_label: Sluit bord
     close_thread: Sluit bord
