@@ -7,10 +7,14 @@ import Session           from '@/shared/services/session';
 import AttachmentService from '@/shared/services/attachment_service';
 
 import { mdiMagnify } from '@mdi/js';
-import { intersection, debounce, orderBy, uniq } from 'lodash-es';
+import { intersection, debounce, orderBy, uniq, escapeRegExp } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
+import FormatDate from '@/mixins/format_date';
 
 export default
 {
+  mixins: [WatchRecords, UrlFor, FormatDate],
   data() {
     return {
       group: null,
@@ -90,12 +94,12 @@ export default
 
       const documents = Records.documents.collection.chain().
                      find({groupId: {$in: groupIds}}).
-                     find({title: {$regex: new RegExp(`${this.searchQuery}`, 'i')}}).
+                     find({title: {$regex: new RegExp(`${escapeRegExp(this.searchQuery)}`, 'i')}}).
                      data();
 
       const attachments = Records.attachments.collection.chain().
                      find({id: {$in: this.attachmentIds}}).
-                     find({filename: {$regex: new RegExp(`${this.searchQuery}`, 'i')}}).
+                     find({filename: {$regex: new RegExp(`${escapeRegExp(this.searchQuery)}`, 'i')}}).
                      data();
 
       this.items = orderBy(documents.concat(attachments), 'createdAt', 'desc');
