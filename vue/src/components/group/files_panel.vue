@@ -9,10 +9,12 @@ import AttachmentService from '@/shared/services/attachment_service';
 import { mdiMagnify } from '@mdi/js';
 import { intersection, debounce, orderBy, uniq, escapeRegExp } from 'lodash-es';
 import WatchRecords from '@/mixins/watch_records';
+import UrlFor from '@/mixins/url_for';
+import FormatDate from '@/mixins/format_date';
 
 export default
 {
-  mixins: [WatchRecords],
+  mixins: [WatchRecords, UrlFor, FormatDate],
   data() {
     return {
       group: null,
