@@ -21,17 +21,20 @@ en:
     please_accept_the_terms: Please accept the terms
   tasks:
     tasks: Tasks
+    content: Content
     dropdown:
       all: All Your Tasks
-      authored: Tasks You Made
-      assigned: Tasks to Do
-    expired: expired
-    expires_in: Expires in
+      authored: Made by You
+      assigned: Assigned to You
+    author: assigned by
+    overdue: overdue
+    due_in: Due in
+    origin_title: written in
     day_singular: day
     day_plural: days
     tasks_filters:
-      open: Open
-      closed: Closed
+      todo: To Do
+      done: Done
       hidden: Hidden
     toggle_hide_all_button: Toggle Hide All
     toggle_hide_all_confirm:
@@ -279,6 +282,7 @@ en:
     copied: 'Copied to clipboard'
     points_abbrev: Each vote worth %{score} points
     total: Total
+    all: All
     action:
       print: Print
       preview: Preview

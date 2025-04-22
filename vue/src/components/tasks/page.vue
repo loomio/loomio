@@ -16,8 +16,8 @@ export default {
       tasks: [],
       loading: true,
       filterTabs: [
-        {name: 'open', filter: task => !task.done && !task.hidden},
-        {name: 'closed', filter: task => task.done && !task.hidden},
+        {name: 'todo', filter: task => !task.done && !task.hidden},
+        {name: 'done', filter: task => task.done && !task.hidden},
         {name: 'hidden', filter: task => task.hidden}
       ],
       activeFilter: 0,
@@ -113,6 +113,15 @@ export default {
       }
     },
 
+    getGroupBreadcrumbs(task) {
+      let items = task.record().discussion().group().selfAndParents().map((group) => {
+        return { text: group.name, exact: true, link: true, href: this.urlFor(group) }
+      }).reverse()
+      items.push({text: task.record().discussion().title, exact: true, link: true, href: this.taskUrlFor(task.record()) })
+
+      return items
+    }
+
   },
 
   computed: {
@@ -186,37 +195,49 @@ v-main
     loading(v-if="loading")
     div.pa-3()
       template()
-        v-card.ma-3(v-for="task in filteredTasks" :key="task.id" style="max-width: 90vw; max-height: 30vh;")
+        v-card.ma-3(v-for="task in filteredTasks" :key="task.id" style="max-width: 90vw;")
           v-list-item(three-line)
-            v-list-item-content
-              v-card-text {{task.name}}
-              v-divider
+            v-list-item-content.ml-2
               v-container.ma-0.pa-0
                 v-row.ma-0.pa-0(:align="'center'")
-                  v-col.ma-0.pa-0
-                    v-btn.mr-3(color="accent" icon @click="toggleDone(task)")
-                      common-icon(v-if="task.done" name="mdi-checkbox-marked")
-                      common-icon(v-else name="mdi-checkbox-blank-outline")
+                  v-btn(color="accent" icon @click="toggleDone(task)")
+                    common-icon(v-if="task.done" name="mdi-checkbox-marked")
+                    common-icon(v-else name="mdi-checkbox-blank-outline")
 
-                    v-btn(icon @click='toggleHidden(task)')
-                      common-icon(v-if="task.hidden === false" name="mdi-eye-off")
-                      common-icon(v-else name="mdi-eye")
-
-                    v-btn(icon :to="taskUrlFor(task.record())")
-                      common-icon(name="mdi-arrow-right")
-
-                  v-col.ma-0.pa-0(:align="'right'" style="text-align: right")
+                  v-col.ma-0.pa-0(style="text-align: right")
                     div.text-overline(outlined v-if="taskExpiryFor(task) >= 0")
-                      span(v-if="taskExpiryFor(task) === 0" v-t="'tasks.expired'")
+                      span(v-if="taskExpiryFor(task) === 0" v-t="'tasks.overdue'")
                       template(v-else)
-                        span(v-t="'tasks.expires_in' ")
+                        span(v-t="'tasks.due_in' ")
 
                         span.mx-1(v-t="taskExpiryFor(task)")
 
                         span(v-if="taskExpiryFor(task) > 1" v-t="'tasks.day_plural' ")
                         span(v-else v-t=" 'tasks.day_singular'")
 
+                  v-col.ma-0.pa-0(:align="'right'")
+                    v-btn(text @click='toggleHidden(task)')
+                      span.mr-2(v-t="task.hidden === false ? 'common.action.hide' : 'common.action.unhide'")
+                      common-icon(v-if="task.hidden === false" name="mdi-eye-off")
+                      common-icon(v-else name="mdi-eye")
 
+              v-divider
+
+              v-container.ml-1
+                span.text-overline.text--secondary(v-t="'tasks.content'")
+                p.ml-2(style="max-height: 30vh;") {{task.name}}
+
+                span.text-overline.text--secondary(v-t="'tasks.origin_title'")
+                v-breadcrumbs.ml-2.pa-0(:items="getGroupBreadcrumbs(task)" :divider="'>'")
+                //this paragraph is to keep consistent spacing
+                p
+
+                div.ma-0.pa-0.text-overline.text--secondary
+                  span(v-t="'tasks.author'")
+                  v-row(:align="'center'")
+                    v-col(:align="'right'")
+                      span.mr-1 {{task.author().name}}
+                      user-avatar.ml-1(:user='task.author()')
 
         p.ma-3(style="text-align: center" v-if="!loading && filteredTasks.length == 0" v-t="'tasks.no_tasks_to_display'")
 </template>

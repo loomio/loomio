@@ -7,6 +7,7 @@ export default class TaskModel extends BaseModel {
 
   relationships() {
     this.belongsToPolymorphic('record');
+    return this.belongsTo('author', {from: 'users'});
   }
 
   toggleDone() {
