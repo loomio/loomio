@@ -5,7 +5,7 @@ import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
 import EventBus          from '@/shared/services/event_bus';
 import { I18n }           from '@/i18n';
-import { sortBy, debounce } from 'lodash-es';
+import { sortBy, debounce, escapeRegExp } from 'lodash-es';
 
 export default {
   data() {
@@ -54,7 +54,7 @@ export default {
         this.loading = false;
         this.searchResults = Records.discussions.collection.chain()
           .find({groupId: this.groupId})
-          .find({title: { $regex: [this.searchFragment, 'i'] }})
+          .find({title: { $regex: [escapeRegExp(this.searchFragment), 'i'] }})
           .where(d => !!AbilityService.canStartPoll(d))
           .simplesort('title')
           .data();

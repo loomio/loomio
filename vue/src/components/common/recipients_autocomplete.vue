@@ -2,7 +2,7 @@
 import Records from '@/shared/services/records';
 import Flash from '@/shared/services/flash';
 import AnnouncementService from '@/shared/services/announcement_service';
-import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference} from 'lodash-es';
+import {map, debounce, without, compact, filter, uniq, uniqBy, find, difference, escapeRegExp} from 'lodash-es';
 import AbilityService from '@/shared/services/ability_service';
 import NotificationsCount from './notifications_count';
 import Session from '@/shared/services/session';
@@ -135,9 +135,9 @@ export default {
 
       chain = chain.find({
         $or: [
-          {name: {'$regex': [`^${this.query}`, "i"]}},
-          {username: {'$regex': [`^${this.query}`, "i"]}},
-          {name: {'$regex': [` ${this.query}`, "i"]}}
+          {name: {'$regex': [`^${escapeRegExp(this.query)}`, "i"]}},
+          {username: {'$regex': [`^${escapeRegExp(this.query)}`, "i"]}},
+          {name: {'$regex': [` ${escapeRegExp(this.query)}`, "i"]}}
         ]});
 
       return chain.data();
@@ -327,7 +327,7 @@ export default {
 
       return ret.filter(a => {
         return !this.excludedAudiences.includes(a.id) &&
-        ((this.query && a.name.match(new RegExp(this.query, 'i'))) || true);
+        ((this.query && a.name.match(new RegExp(escapeRegExp(this.query), 'i'))) || true);
       });
     }
   }
