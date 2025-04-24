@@ -142,7 +142,7 @@ GEM
     cld (0.13.0)
       ffi
     concurrent-ruby (1.3.4)
-    connection_pool (2.5.0)
+    connection_pool (2.5.2)
     crack (1.0.0)
       bigdecimal
       rexml
