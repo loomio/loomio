@@ -1,6 +1,5 @@
 class Events::StanceCreated < Event
   include Events::LiveUpdate
-  include Events::Notify::ByEmail
   include Events::Notify::InApp
   include Events::Notify::Mentions
   include Events::Notify::Chatbots
@@ -24,6 +23,10 @@ class Events::StanceCreated < Event
 
   private
 
+  def subscribed_eventable
+    eventable
+  end
+
   def notification_translation_values
     {
       name: eventable.participant.name,
@@ -33,11 +36,5 @@ class Events::StanceCreated < Event
 
   def notification_url
     @notification_url ||= polymorphic_url(eventable.poll)
-  end
-
-  def email_recipients
-    Queries::UsersByVolumeQuery.loud(eventable.poll)
-                               .where.not(id: eventable.author)
-                               .where.not(id: eventable.mentioned_users).distinct
   end
 end
