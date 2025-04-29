@@ -301,7 +301,7 @@ describe Event do
       poll.stances.create(participant: poll.author, volume: 'loud')
       expect { Events::StanceCreated.publish!(stance) }.to(change { emails_sent })
 
-      email_users = Events::StanceCreated.last.send(:email_recipients)
+      email_users = Events::StanceCreated.last.send(:subscribed_recipients)
       expect(email_users.length).to eq 3
       expect(email_users).to include poll.author
       expect(email_users).to include user_thread_loud
@@ -312,7 +312,7 @@ describe Event do
       stance = poll.stances.create(participant: poll.author, volume: 'normal')
       expect { Events::StanceCreated.publish!(stance) }.to(change { emails_sent })
 
-      email_users = Events::StanceCreated.last.send(:email_recipients)
+      email_users = Events::StanceCreated.last.send(:subscribed_recipients)
       expect(email_users.length).to eq 2
       expect(email_users).to include user_thread_loud
       expect(email_users).to include user_membership_loud
@@ -322,7 +322,7 @@ describe Event do
       [user_thread_loud, user_membership_loud].each {|u| u.update(deactivated_at: Time.now) }
       stance = poll.stances.create(participant: poll.author, volume: 'normal')
       expect { Events::StanceCreated.publish!(stance) }.to_not(change { emails_sent })
-      email_users = Events::StanceCreated.last.send(:email_recipients)
+      email_users = Events::StanceCreated.last.send(:subscribed_recipients)
       expect(email_users).to be_empty
     end
   end
