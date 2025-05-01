@@ -1363,11 +1363,11 @@ en:
     confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
     profile: Profile
 
-    subgroup_privacy_is_open_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are public."
-    subgroup_privacy_is_closed_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. All threads are private."
-    subgroup_privacy_is_closed_public_threads_description: "Anyone can find this subgroup and ask to join. Only members can see who is in the group. Threads can be public or private."
-    subgroup_privacy_is_closed_secret_parent_description: "Members of %{parent} can find this subgroup and ask to join. All threads are private. Only members can see who is in the group."
-    subgroup_privacy_is_secret_description: 'Only invited members can find this subgroup, see who is in it and see threads.'
+    subgroup_privacy_is_open_description: "Anyone can find this subgroup and ask to join. All threads are public."
+    subgroup_privacy_is_closed_description: "Anyone can find this subgroup and ask to join. All threads are private."
+    subgroup_privacy_is_closed_public_threads_description: "Anyone can find this subgroup and ask to join. Threads can be public or private."
+    subgroup_privacy_is_closed_secret_parent_description: "Members of %{parent} can find this subgroup and ask to join. All threads are private."
+    subgroup_privacy_is_secret_description: 'Only invited members can see this subgroup.'
 
     advanced_settings: "Advanced settings"
     how_do_people_join: "How do people join?"

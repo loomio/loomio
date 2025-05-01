@@ -15,16 +15,17 @@ import FormatDate from '@/mixins/format_date';
 
 import { map, sum, compact } from 'lodash-es';
 import { useTheme } from 'vuetify';
-import SidebarDashboard from '@/components/sidebar/dashboard';
-import SidebarGroup from '@/components/sidebar/group';
-import SidebarDiscussion from '@/components/sidebar/discussion';
+import SidebarSubgroups from '@/components/sidebar/subgroups';
 import SidebarSettings from '@/components/sidebar/settings';
+import SidebarHelp from '@/components/sidebar/help';
+import { mdiPlus } from '@mdi/js';
 
 export default {
-  components: {SidebarSettings, SidebarDashboard, SidebarGroup, SidebarDiscussion},
+  components: {SidebarSettings, SidebarSubgroups, SidebarHelp},
   mixins: [WatchRecords, UrlFor, FormatDate],
   data() {
     return {
+      mdiPlus,
       page: 'dashboardPage',
       organization: null,
       discussions: [],
@@ -48,23 +49,15 @@ export default {
     EventBus.$on('toggleSidebar', () => { return this.open = !this.open; });
 
     EventBus.$on('currentComponent', data => {
-      this.page = data.page;
+      // this.page = data.page;
 
       if (data.group) {
+        this.page = 'groupPage'
         this.group = data.group;
         this.organization = data.group.parentOrSelf();
       } else {
         this.group = null;
         this.organization = null;
-      }
-
-      if (data.discussions) {
-        this.discussions = data.discussions;
-        this.discussionsGroup = data.discussionsGroup;
-      }
-
-      if (this.page == "discussionPage" && this.discussions.length == 0) {
-        this.discussions = ThreadService.dashboardQuery();
       }
     });
 
@@ -100,6 +93,10 @@ export default {
   },
 
   methods: {
+    unreadThreadCount() {
+      return InboxService.unreadCount();
+    },
+
     openIfPinned() {
       this.open = !!Session.isSignedIn() && !!Session.user().experiences['sidebar'] && this.$vuetify.display.lgAndUp;
     },
@@ -136,6 +133,7 @@ export default {
   },
 
   computed: {
+    canStartGroups() { return AbilityService.canStartGroups(); },
     greySidebarLogo() {
       return AppConfig.features.app.gray_sidebar_logo_in_dark_mode && this.$vuetify.theme.dark
     },
@@ -161,7 +159,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   )
 
   template(v-else)
-    v-list(nav)
+    v-list.pb-0.mb-0(nav)
       v-list-item(nav slim to="/dashboard")
         template(v-slot:prepend)
           user-avatar.mr-2(:user="user" :size="32")
@@ -169,34 +167,54 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
           v-btn.sidebar__user-dropdown(variant="text" size="small" icon @click.prevent="showSettings = true")
             common-icon(name="mdi-cog")
         v-list-item-title {{ user.name }}
-        v-list-item-subtitle 4 unread, 1 vote
+        v-list-item-subtitle {{ user.email }}
       template(v-if="needProfilePicture")
         v-divider
-        v-list-item.sidebar__list-item-button--recent(@click="setProfilePicture" color="warning")
+        v-list-item(@click="setProfilePicture" color="warning")
           template(v-slot:prepend)
             common-icon(name="mdi-emoticon-outline")
           v-list-item-title(v-t="'profile_page.incomplete_profile'")
           v-list-item-subtitle(v-t="'profile_page.set_your_profile_picture'")
-    //- v-divider.my-2
-    sidebar-group(
-      v-if="page == 'groupPage'"
-      :organization="organization"
-      :open-counts="openCounts"
-    )
 
-    sidebar-discussion(
-      v-else-if="page == 'discussionPage'"
-      :open-counts="openCounts"
-      :discussions="discussions"
-      :discussionsGroup="discussionsGroup"
-    )
+    v-list(nav density="compact" :lines="false")
+      v-list-item.sidebar__list-item-button--recent(to="/dashboard" :title="$t('dashboard_page.aria_label')")
+      v-list-item(to="/inbox" :title="$t('sidebar.unread_threads', { count: unreadThreadCount() })")
+      v-list-item.sidebar__list-item-button--private(to="/threads/direct")
+        v-list-item-title
+          span(v-t="'sidebar.invite_only_threads'")
+          span(v-if="unreadDirectThreadsCount > 0")
+            space
+            span ({{unreadDirectThreadsCount}})
+      v-list-item(to="/tasks" :disabled="organizations.length == 0" :title="$t('tasks.tasks')")
 
-    sidebar-dashboard(
-      v-else
-      :organizations="organizations"
-      :open-counts="openCounts"
-      :unread-direct-threads-count="unreadDirectThreadsCount"
-    )
+    v-divider
+    v-list(nav density="comfortable")
+      v-list-subheader
+        span(v-t="'common.organizations'")
+      template(v-for="group in organizations" :key="group.id")
+        v-list-item(:to="urlFor(group)")
+          template(v-slot:prepend)
+            group-avatar.mr-2(:group="group")
+          v-list-item-title
+            span {{group.name}}
+            template(v-if='openCounts[group.id]')
+              | &nbsp;
+              span ({{openCounts[group.id]}})
+        sidebar-subgroups(v-if="group == organization" :organization="group" :open-counts="openCounts")
+
+      v-btn.sidebar__list-item-button--start-group(
+        block
+        variant="tonal"
+        color="primary"
+        v-if="canStartGroups"
+        to="/g/new"
+        :prepend-icon="mdiPlus"
+      )
+        span(v-t="'sidebar.start_group'")
+
+    v-divider
+
+    sidebar-help
 
   template(v-slot:append)
     v-divider
@@ -207,15 +225,4 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 <style lang="sass">
 .greySidebarLogo
   filter: saturate(99999%) grayscale(1)
-
-
-.sidenav-left
-  .v-avatar.v-list-item__avatar
-    margin-right: 8px
-  .v-list-group .v-list-group__header .v-list-item__icon.v-list-group__header__append-icon
-    min-width: 0
-  .v-list-item__icon.v-list-group__header__append-icon
-    min-width: 32px
-  .v-list-item__icon.v-list-group__header__append-icon
-    margin-left: 0 !important
 </style>

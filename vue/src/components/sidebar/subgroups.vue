@@ -3,6 +3,7 @@ import UrlFor from '@/mixins/url_for';
 import Session        from '@/shared/services/session';
 import WatchRecords from '@/mixins/watch_records';
 import AbilityService from '@/shared/services/ability_service';
+import { mdiPlus } from '@mdi/js';
 
 export default {
   mixins: [UrlFor, WatchRecords],
@@ -10,6 +11,7 @@ export default {
 
   data() {
     return {
+      mdiPlus,
       mine: [],
       more: [],
       canStartSubgroup: false,
@@ -32,23 +34,8 @@ export default {
 </script>
 
 <template lang="pug">
-//- v-divider.my-2#sidebar-current-organization
-//- v-list-subheader Current organization
-//- v-list-item(nav slim to="/dashboard")
-//-   template(v-slot:prepend)
-//-     common-icon(name="mdi-chevron-left")
-//-   v-list-item-title Dashboard
-
-v-list(nav density="compact")
-  v-list-item(nav slim :to="urlFor(organization)")
-    template(v-slot:prepend)
-      group-avatar.mr-2(:size="24" :group="organization")
-    v-list-item-title {{organization.name}}
-    v-list-item-subtitle(v-if='openCounts[organization.id]')
-      | {{openCounts[organization.id]}} unread
-
+v-list.ma-0.pa-0.pb-2(v-if="mine.length || more.length || canStartSubgroup" nav density="compact" :lines="false")
   template(v-if="mine.length")
-    v-divider.my-3
     v-list-subheader
       span(v-t="'group_page.my_subgroups'")
 
@@ -60,7 +47,6 @@ v-list(nav density="compact")
           span ({{openCounts[group.id]}})
 
   template(v-if="more.length")
-    v-divider.my-3
     v-list-subheader
       span(v-if="mine.length" v-t="'group_page.more_subgroups'")
       span(v-else v-t="'group_page.subgroups'")
@@ -72,11 +58,14 @@ v-list(nav density="compact")
           | &nbsp;
           span ({{openCounts[group.id]}})
 
-  v-btn.sidebar__list-item-button--start-group(
+  v-btn.sidebar__list-item-button--start-group.mb-2(
     block
     variant="tonal"
     color="primary"
     v-if="canStartSubgroup"
-    :to="'/g/new?parent_id='+organization.id")
+    :to="'/g/new?parent_id='+organization.id"
+    :prepend-icon="mdiPlus"
+  )
     span(v-t="'group_form.new_subgroup'")
+
 </template>

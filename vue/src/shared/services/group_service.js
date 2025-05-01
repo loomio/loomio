@@ -12,7 +12,7 @@ import { hardReload } from '@/shared/helpers/window';
 export default new class GroupService {
   actions(group) {
     const membership = group.membershipFor(Session.user());
-    
+
     return {
       email_group: {
         name: 'common.value',
@@ -91,7 +91,7 @@ export default new class GroupService {
         to() { return `/report/?group_ids=${group.selfAndSubgroupIds().join(',')}&start_on=${group.createdAt.toISOString().slice(0,7)}`; }
       },
 
-      edit_tags: { 
+      edit_tags: {
         icon: 'mdi-tag-outline',
         name: 'loomio_tags.card_title',
         menu: true,
@@ -142,7 +142,7 @@ export default new class GroupService {
         icon: 'mdi-webhook',
         menu: true,
         canPerform() { return group.adminsInclude(Session.user()); },
-        perform() { 
+        perform() {
           return hardReload(`/help/api2/?group_id=${group.id}`);
         }
       },
@@ -232,7 +232,7 @@ export default new class GroupService {
                 submit: group.destroy,
                 text: {
                   title:    (group.isParent() && 'delete_group_modal.title') || 'delete_group_modal.subgroup_title',
-                  helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body', 
+                  helptext: (group.isParent() && 'delete_group_modal.parent_body') || 'delete_group_modal.body',
                   raw_confirm_text_placeholder: I18n.global.t('delete_group_modal.confirm', {name: confirmText}),
                   confirm_text: confirmText,
                   flash:    'delete_group_modal.success',

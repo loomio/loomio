@@ -41,7 +41,7 @@ const showContact = computed(() => AppConfig.features.app.show_contact );
 </script>
 
 <template lang="pug">
-v-list(nav)
+v-list(nav density="comfortable")
   v-list-item(@click="$emit('closeSettings')")
     template(v-slot:append)
       common-icon(name="mdi-close")
@@ -70,26 +70,26 @@ v-list(nav)
   v-divider
   v-list-subheader(v-t="'user_dropdown.theme'")
 
-  v-list-item(@click="setTheme('light')" density="compact" :title="$t('user_dropdown.light')")
+  v-list-item(@click="setTheme('light')" :title="$t('user_dropdown.light')")
     template(v-slot:prepend)
       common-icon(name="mdi-white-balance-sunny" color="#DCA034")
 
-  //- v-list-item(@click="setTheme('lightBlue')" density="compact")
-  //-   v-list-item-title Light blue
-  //-   template(v-slot:prepend)
-  //-       common-icon(name="mdi-white-balance-sunny" color="#658AE7")
-        
-  v-list-item(@click="setTheme('dark')" density="compact" :title="$t('user_dropdown.dark')")
+  v-list-item(@click="setTheme('lightBlue')")
+    v-list-item-title Light blue
+    template(v-slot:prepend)
+      common-icon(name="mdi-white-balance-sunny" color="#658AE7")
+
+  v-list-item(@click="setTheme('dark')" :title="$t('user_dropdown.dark')")
     template(v-slot:prepend)
       common-icon(name="mdi-weather-night" color="#DCA034")
 
-  //- v-list-item(@click="setTheme('darkBlue')" density="compact")
-  //-   v-list-item-title Dark blue
-  //-   template(v-slot:prepend)
-  //-     common-icon(name="mdi-weather-night" color="#658AE7")
+  v-list-item(@click="setTheme('darkBlue')")
+    v-list-item-title Dark blue
+    template(v-slot:prepend)
+      common-icon(name="mdi-weather-night" color="#658AE7")
 
   v-divider
-  v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" density="compact" lines="two")
+  v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" lines="two")
     v-list-item-title
       | Loomio version
     v-list-item-subtitle
