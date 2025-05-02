@@ -188,7 +188,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
       v-list-item(to="/tasks" :disabled="organizations.length == 0" :title="$t('tasks.tasks')")
 
     v-divider
-    v-list(nav density="comfortable")
+    v-list.sidebar__groups(nav density="comfortable")
       v-list-subheader
         span(v-t="'common.organizations'")
       template(v-for="group in organizations" :key="group.id")
