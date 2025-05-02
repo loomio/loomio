@@ -5,9 +5,9 @@ import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import Session from '@/shared/services/session';
 import Flash from '@/shared/services/flash';
-import { each, compact, truncate } from 'lodash-es';
-import openModal from '@/shared/helpers/open_modal';
+import { compact, truncate } from 'lodash-es';
 import { initLiveUpdate, closeLiveUpdate } from '@/shared/helpers/message_bus';
+
 
 import { useTheme } from 'vuetify';
 
@@ -16,6 +16,7 @@ import SidebarPanel from '@/components/sidebar/panel';
 export default {
   components: [SidebarPanel],
   mixins: [AuthModalMixin],
+
   data() {
     return {pageError: null};
   },
@@ -129,7 +130,7 @@ v-app.app-is-booted
 
 .text-transform-none
   text-transform: none
-  
+
 h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus
   outline: 0
 
@@ -142,7 +143,7 @@ a
 
 .text-almost-black
   color: rgba(0, 0, 0, 0.87)
-  
+
 .max-width-320
   max-width: 320px !important
 .max-width-400

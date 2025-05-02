@@ -49,7 +49,7 @@ export default new class AuthService {
 
   signUp(user) {
     return Records.registrations.build(
-      pick(user, ['email', 'name', 'recaptcha', 'legalAccepted', 'emailNewsletter'])
+      pick(user, ['email', 'name', 'legalAccepted', 'emailNewsletter'])
     ).save().then(data => {
       if (user.hasToken || data.signed_in) {
         this.authSuccess(data);

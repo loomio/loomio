@@ -2,16 +2,8 @@
 import EventBus    from '@/shared/services/event_bus';
 import AuthService from '@/shared/services/auth_service';
 import AppConfig from '@/shared/services/app_config';
-import Session from '@/shared/services/session';
-import AuthModalMixin from '@/mixins/auth_modal';
-import Flash from '@/shared/services/flash';
-// import VueRecaptcha from 'vue-recaptcha';
-import openModal      from '@/shared/helpers/open_modal';
 
 export default {
-  // components: { VueRecaptcha },
-  mixins: [AuthModalMixin],
-
   props: {
     user: Object
   },
@@ -30,30 +22,19 @@ export default {
 
   methods: {
     submit() {
-      if (this.useRecaptcha) {
-        this.$refs.invisibleRecaptcha.execute();
-      } else {
-        this.submitForm();
-      }
-    },
-
-    submitForm(recaptcha) {
-      this.user.recaptcha = recaptcha;
       if (AuthService.validSignup(this.vars, this.user)) {
         this.loading = true;
         AuthService.signUp(this.user).finally(() => {this.loading = false; });
       }
-    }
+    },
   },
   computed: {
-    recaptchaKey() { return AppConfig.recaptchaKey; },
     termsUrl() { return AppConfig.theme.terms_url; },
     privacyUrl() { return AppConfig.theme.privacy_url; },
     newsletterEnabled() { return AppConfig.newsletterEnabled; },
     allow() {
       return AppConfig.features.app.create_user || (AppConfig.pendingIdentity.identity_type != null);
     },
-    useRecaptcha() { return this.recaptchaKey; }
   }
 };
 
@@ -80,7 +61,6 @@ v-card.auth-signup-form(
         required='true')
       validation-errors(:subject='user' field='legalAccepted')
       validation-errors(:subject='user' field='email')
-      validation-errors(:subject='user' field='recaptcha')
     .auth-signup-form__consent(v-if='termsUrl')
       v-checkbox.auth-signup-form__legal-accepted(v-model='vars.legalAccepted' hide-details)
         template(v-slot:label)
@@ -106,15 +86,6 @@ v-card.auth-signup-form(
       :disabled='!vars.name || (termsUrl && !vars.legalAccepted)'
     )
       span(v-t="'auth_form.create_account'" @click='submit()')
-        
-  //- vue-recaptcha(
-  //-   v-if='useRecaptcha'
-  //-   ref="invisibleRecaptcha"
-  //-   :sitekey="recaptchaKey"
-  //-   :loadRecaptchaScript="true"
-  //-   size="invisible"
-  //-   @verify="submitForm"
-  //- )
 </template>
 <style>
 .auth-signup-form .v-label {
