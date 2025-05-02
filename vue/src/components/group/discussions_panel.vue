@@ -15,25 +15,20 @@ export default
 {
   mixins: [WatchRecords, UrlFor],
   created() {
-    this.onQueryInput = debounce(val => {
-      this.$router.replace(this.mergeQuery({q: val}));
-    }
-    , 1000);
-
     this.watchRecords({
       key: this.$route.params.key,
       collections: ['discussions', 'groups', 'memberships'],
       query: this.query
     });
-    
+
     this.refresh();
-    EventBus.$on('signedIn', this.init);
-    EventBus.$on('joinedGroup', this.fetch);
+    EventBus.$on('signedIn', this.hardRefresh);
+    EventBus.$on('joinedGroup', this.hardRefresh);
   },
 
   beforeDestroy() {
-    EventBus.$off('signedIn', this.init);
-    EventBus.$off('joinedGroup', this.fetch);
+    EventBus.$off('signedIn', this.hardRefresh);
+    EventBus.$off('joinedGroup', this.hardRefresh);
   },
 
   data() {
@@ -42,6 +37,7 @@ export default
       discussions: [],
       loader: null,
       groupIds: [],
+      isMember: false,
       per: 25,
       dummyQuery: null,
       mdiMagnify
@@ -53,13 +49,14 @@ export default
       this.$router.replace(this.mergeQuery(o));
     },
 
-    beforeDestroy() {
-      EventBus.$off('joinedGroup');
+    hardRefresh() {
+      Records.groups.remote.fetchById(this.$route.params.key).then(this.refresh);
     },
 
     refresh() {
       Records.groups.findOrFetch(this.$route.params.key).then(group => {
         this.group = group;
+        this.isMember = !!Session.user().membershipFor(this.group);
 
         this.loader = new PageLoader({
           path: 'discussions',
@@ -118,7 +115,7 @@ export default
     openSearchModal() {
       let initialOrgId = null;
       let initialGroupId = null;
-    
+
       if (this.group.isParent()) {
         initialOrgId = this.group.id;
       } else {
@@ -145,7 +142,7 @@ export default
     '$route.query': 'refresh',
     'page'() {
       this.fetch();
-      return this.query();
+      this.query();
     }
   },
 
@@ -155,7 +152,7 @@ export default
       set(val) {
         return this.$router.replace({query: Object.assign({}, this.$route.query, {page: val})});
       }
-    }, 
+    },
 
     totalPages() {
       return Math.ceil(parseFloat(this.loader.total) / parseFloat(this.per));
@@ -183,10 +180,6 @@ export default
 
     isLoggedIn() {
       return Session.isSignedIn();
-    },
-
-    isMember() {
-      return this.group && Session.user().membershipFor(this.group);
     },
 
     unreadCount() {
@@ -247,7 +240,7 @@ div.discussions-panel(v-if="group")
     v-card-text
       p(v-t="'discussions_panel.lets_start_a_thread'")
 
-  v-card.discussions-panel(v-else outlined elevation=1)
+  v-card.discussions-panel(v-else)
     div(v-if="loader.status == 403")
       p.pa-4.text-center(v-t="'error_page.forbidden'")
     div(v-else)
