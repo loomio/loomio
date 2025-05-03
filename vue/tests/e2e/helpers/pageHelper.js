@@ -6,7 +6,7 @@ if (process.env.RAILS_ENV === 'test') {
 }
 
 module.exports = function(test, browser) {
-  test.resizeWindow(1000, 2000); 
+  test.resizeWindow(1000, 2000);
   return {
     refresh() {
       return test.refresh();
@@ -64,7 +64,7 @@ module.exports = function(test, browser) {
 
     ensureSidebar() {
       this.waitFor('.navbar__sidenav-toggle');
-      return test.click('.navbar__sidenav-toggle');
+      test.click('.navbar__sidenav-toggle');
     },
       // test.elements 'css selector', '.sidenav-left', (result) =>
       //   if result.value.length == 0

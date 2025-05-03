@@ -67,10 +67,9 @@ export default
 .polls-panel(v-if='otherPolls.length || votePolls.length || loader.loading')
   v-card.mb-2
     v-list(lines="two")
-      template
+      template(v-if="votePolls.length")
         v-list-subheader(v-t="'dashboard_page.polls_to_vote_on'")
         poll-common-preview(
-          v-if="votePolls.length",
           :poll="poll",
           v-for="poll in votePolls",
           :key="poll.id"

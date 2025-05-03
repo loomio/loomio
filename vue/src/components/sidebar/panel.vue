@@ -202,7 +202,7 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
               span ({{openCounts[group.id]}})
         sidebar-subgroups(v-if="group == organization" :organization="group" :open-counts="openCounts")
 
-      v-btn.sidebar__list-item-button--start-group(
+      v-btn.sidebar-start-group(
         block
         variant="tonal"
         color="primary"

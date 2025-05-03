@@ -77,7 +77,7 @@ module.exports = {
     page.loadPath('setup_dashboard')
     page.ensureSidebar()
 
-    page.click('.sidebar__list-item-button--start-group')
+    page.click('.sidebar-start-group')
 
     page.fillIn('.group-form__name input', 'Secret please')
     page.click('.group-form__submit-button')
@@ -88,8 +88,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
-    page.click('.group-page-subgroups-tab')
-    page.click('.subgroups-card__start')
+    page.ensureSidebar()
+    page.click('.sidebar-start-subgroup')
 
     page.fillIn('#group-name', 'Open please')
     page.click('.group-form__privacy-open')
@@ -112,8 +112,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
-    page.click('.group-page-subgroups-tab')
-    page.click('.subgroups-card__start')
+    page.ensureSidebar()
+    page.click('.sidebar-start-subgroup')
 
     page.fillIn('#group-name', 'Closed please')
     page.click('.group-form__privacy-closed')
@@ -135,9 +135,8 @@ module.exports = {
     page = pageHelper(test)
 
     page.loadPath('setup_open_group')
-    page.click('.group-page-subgroups-tab')
-    page.click('.subgroups-card__start')
-
+    page.ensureSidebar()
+    page.click('.sidebar-start-subgroup')
     page.fillIn('#group-name', 'Secret please')
     page.click('.group-form__privacy-secret')
     page.expectNoElement('.group-form__joining')

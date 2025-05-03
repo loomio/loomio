@@ -47,7 +47,7 @@ export default {
 <template lang="pug">
 
 v-list(nav lines="two")
-  v-list-item.sidebar__list-item-button--start-demo(v-if="canStartDemo" @click="startOrFindDemo" lines="two")
+  v-list-item.sidebar-start-demo(v-if="canStartDemo" @click="startOrFindDemo" lines="two")
     v-list-item-title(v-t="'templates.start_a_demo'")
     v-list-item-subtitle(v-t="'templates.play_with_an_example_group'")
     template(v-slot:append)

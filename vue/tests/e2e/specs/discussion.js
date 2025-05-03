@@ -13,7 +13,7 @@ module.exports = {
   //   page.loadPath('setup_group')
   //   page.ensureSidebar()
   //
-  //   page.click('.sidebar__list-item-button--start-thread')
+  //   page.click('.sidebar-start-thread')
   //   page.expectText('.discussion-form__group-select', 'Dirty Dancing Shoes')
   // },
   //

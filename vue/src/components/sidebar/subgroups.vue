@@ -58,7 +58,7 @@ v-list.ma-0.pa-0.pb-2(v-if="mine.length || more.length || canStartSubgroup" nav 
           | &nbsp;
           span ({{openCounts[group.id]}})
 
-  v-btn.sidebar__list-item-button--start-group.mb-2(
+  v-btn.sidebar-start-subgroup.mb-2(
     block
     variant="tonal"
     color="primary"
