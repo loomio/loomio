@@ -14,7 +14,6 @@ const GroupPollsPanel = () => import('./components/group/polls_panel');
 const GroupEmailsPanel = () => import('./components/group/emails_panel');
 const MembersPanel = () => import('./components/group/members_panel');
 const GroupTagsPanel = () => import('./components/group/tags_panel');
-const GroupSubgroupsPanel = () => import('./components/group/subgroups_panel');
 const GroupFilesPanel = () => import('./components/group/files_panel');
 const MembershipRequestsPanel = () => import('./components/group/requests_panel');
 const StartGroupPage = () => import('./components/start_group/page');
@@ -40,7 +39,6 @@ const groupPageChildren = [
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},
   {path: 'members/requests', redirect: 'membership_requests', meta: {noScroll: true}},
-  {path: 'subgroups', component: GroupSubgroupsPanel, meta: {noScroll: true}},
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}},
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
 ];
