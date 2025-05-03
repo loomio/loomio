@@ -2,9 +2,9 @@
 import AppConfig       from '@/shared/services/app_config';
 import Session         from '@/shared/services/session';
 import Records         from '@/shared/services/records';
-import Flash from '@/shared/services/flash';
+import { mdiClose } from '@mdi/js';
 
-import { reactive, computed } from 'vue'
+import { computed } from 'vue'
 import { useTheme } from 'vuetify';
 const theme = useTheme();
 
@@ -21,31 +21,16 @@ const setTheme = function(name) {
   Records.users.saveExperience('theme', name);
 }
 
+const signOut = () => Session.signOut();
 
-const signOut = function() {
-  return Session.signOut();
-}
-
-
-const canStartDemo = computed(() => AppConfig.features.app.demos );
 const version = computed(() => AppConfig.version );
 const release = computed(() => AppConfig.release );
-const siteName = computed(() => AppConfig.theme.site_name );
 const user = computed(() => Session.user() );
-const showHelp = computed(() => AppConfig.features.app.help_link );
-const helpURL = computed(() => {
-  const siteUrl = new URL(AppConfig.baseUrl);
-  return `https://help.loomio.com/en/?utm_source=${siteUrl.host}`;
-})
-const showContact = computed(() => AppConfig.features.app.show_contact );
 </script>
 
 <template lang="pug">
 v-list(nav density="comfortable")
-  v-list-item(@click="$emit('closeSettings')")
-    template(v-slot:append)
-      common-icon(name="mdi-close")
-    v-list-item-title(v-t="'sidebar.user_settings'")
+  v-list-item.sidebar-close-settings(@click="$emit('closeSettings')" :append-icon="mdiClose" :title="$t('sidebar.user_settings')")
   v-list-item.user-dropdown__list-item-button--profile(to="/profile")
     template(v-slot:prepend)
       common-icon(name="mdi-account")

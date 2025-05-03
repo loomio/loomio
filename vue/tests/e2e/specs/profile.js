@@ -14,6 +14,7 @@ module.exports = {
     page.click('.profile-page__update-button')
 
     page.ensureSidebar()
+    page.click('.sidebar-close-settings');
     page.expectText('.sidebar__user-dropdown .v-list-item-title', 'Ferris Bueller')
   },
 

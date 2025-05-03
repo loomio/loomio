@@ -18,14 +18,14 @@ import { useTheme } from 'vuetify';
 import SidebarSubgroups from '@/components/sidebar/subgroups';
 import SidebarSettings from '@/components/sidebar/settings';
 import SidebarHelp from '@/components/sidebar/help';
-import { mdiPlus } from '@mdi/js';
+import { mdiPlus, mdiCog } from '@mdi/js';
 
 export default {
   components: {SidebarSettings, SidebarSubgroups, SidebarHelp},
   mixins: [WatchRecords, UrlFor, FormatDate],
   data() {
     return {
-      mdiPlus,
+      mdiPlus, mdiCog,
       page: 'dashboardPage',
       organization: null,
       discussions: [],
@@ -160,12 +160,9 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
 
   template(v-else)
     v-list.pb-0.mb-0(nav)
-      v-list-item(nav slim to="/dashboard")
+      v-list-item.sidebar__user-dropdown(nav slim @click.prevent="showSettings = true" :append-icon="mdiCog")
         template(v-slot:prepend)
           user-avatar.mr-2(:user="user" :size="32")
-        template(v-slot:append)
-          v-btn.sidebar__user-dropdown(variant="text" size="small" icon @click.prevent="showSettings = true")
-            common-icon(name="mdi-cog")
         v-list-item-title {{ user.name }}
         v-list-item-subtitle {{ user.email }}
       template(v-if="needProfilePicture")
@@ -208,7 +205,6 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
         color="primary"
         v-if="canStartGroups"
         to="/g/new"
-        :prepend-icon="mdiPlus"
       )
         span(v-t="'sidebar.start_group'")
 

@@ -64,7 +64,6 @@ v-list.ma-0.pa-0.pb-2(v-if="mine.length || more.length || canStartSubgroup" nav 
     color="primary"
     v-if="canStartSubgroup"
     :to="'/g/new?parent_id='+organization.id"
-    :prepend-icon="mdiPlus"
   )
     span(v-t="'group_form.new_subgroup'")
 
