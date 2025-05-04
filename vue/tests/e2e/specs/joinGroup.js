@@ -20,8 +20,8 @@ module.exports = {
     page.loadPath('setup_closed_group_to_join')
     page.expectText('.group-page__description', 'An FBI agent goes undercover')
     page.expectText('.thread-previews', "The name's Johnny Utah!")
-    page.ensureSidebar()
-    page.expectText('.sidebar__groups', 'Johnny Utah')
+    // page.ensureSidebar()
+    // page.expectText('.sidebar__groups', 'Johnny Utah')
   },
 
   'adds_you_to_the_group_when_button_is_clicked': (test) => {

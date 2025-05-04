@@ -17,9 +17,9 @@ export default new class ScrollService {
 
   elementScrollTo(el, selector, callback, behavior = 'instant', offset = 0) {
     waitFor(selector, () => {
-      console.log(`document.querySelector("${selector}").getBoundingClientRect().top -> `, document.querySelector(selector).getBoundingClientRect().top);
-      console.log(`document.body.getBoundingClientRect().top -> `, document.body.getBoundingClientRect().top);
-      console.log(`${document.querySelector(selector).getBoundingClientRect().top} - ${document.body.getBoundingClientRect().top} - ${offset}`);
+      // console.log(`document.querySelector("${selector}").getBoundingClientRect().top -> `, document.querySelector(selector).getBoundingClientRect().top);
+      // console.log(`document.body.getBoundingClientRect().top -> `, document.body.getBoundingClientRect().top);
+      // console.log(`${document.querySelector(selector).getBoundingClientRect().top} - ${document.body.getBoundingClientRect().top} - ${offset}`);
       el.scrollTo({
         behavior: behavior,
         top:
