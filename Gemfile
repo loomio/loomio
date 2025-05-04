@@ -37,7 +37,7 @@ gem "sentry-ruby"
 gem "sentry-rails"
 gem "sentry-sidekiq"
 gem 'http_accept_language'
-gem 'sprockets', '3.7.2'
+gem 'sprockets', '4.2.2'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'sass-rails'
 gem 'uuidtools'
