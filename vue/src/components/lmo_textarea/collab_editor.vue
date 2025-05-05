@@ -136,7 +136,7 @@ export default
     new IndexeddbPersistence(docname, provider.document);
 
     this.expanded = Session.user().experiences['html-editor.expanded'];
-    this.model.beforeSaves.push( () => this.updateModel() );
+    this.model.beforeSaves.push(() => this.updateModel() );
 
     this.editor = new Editor({
       editorProps: {
@@ -303,7 +303,7 @@ export default
       this.editor.chain().clearContent().run();
       provider.document.getMap('config').set('initialContentLoaded', false);
       this.resetFiles();
-      this.model.beforeSave = () => this.updateModel();
+      this.model.beforeSaves.push(() => this.updateModel() );
     },
 
     convertToMd() {

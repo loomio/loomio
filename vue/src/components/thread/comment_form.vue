@@ -45,7 +45,6 @@ export default {
     submit() {
       this.processing = true;
       this.comment.save().then(() => {
-        this.shouldReset = !this.shouldReset;
         const flashMessage = !this.comment.isNew() ?
                         'comment_form.messages.updated'
                       : this.comment.isReply() ?
@@ -53,7 +52,10 @@ export default {
                       :
                         'comment_form.messages.created';
         Flash.success(flashMessage, {name: this.comment.isReply() ? this.comment.parent().author().nameOrUsername() : undefined});
-        setTimeout(() => {this.$emit('comment-submitted')});
+        setTimeout(() => {
+          this.$emit('comment-submitted');
+          this.shouldReset = !this.shouldReset;
+        });
       }).catch(err => {
         Flash.error('common.something_went_wrong');
       }).finally(() => this.processing = false);
@@ -77,7 +79,7 @@ export default {
       field="body"
       :placeholder="placeholder"
       :autofocus="autofocus"
-      :shouldReset="shouldReset")
+      :should-reset="shouldReset")
       template(v-slot:actions)
         v-btn.mr-2(
           variant="text"

@@ -26,10 +26,8 @@ export default {
       poll: null
     };
   },
-    // showDecisionBadge: false
 
   created() {
-  
     this.watchRecords({
       key: this.discussion.id,
       collections: ['groups', 'memberships', 'polls'],
@@ -41,10 +39,6 @@ export default {
   },
 
   methods: {
-    // resetBadge: ->
-    //   if @canStartPoll && @discussion.discussionTemplateId && @discussion.activePolls().length == 0
-    //     @showDecisionBadge = true
-
     resetComment() {
       this.newComment = Records.comments.build({
         bodyFormat: Session.defaultFormat(),
@@ -64,7 +58,7 @@ export default {
   },
 
   watch: {
-    'discussion.id'() { 
+    'discussion.id'() {
       this.resetComment();
       this.resetPoll();
     }
@@ -128,7 +122,7 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
 <style lang="sass">
 #add-comment .v-window
   overflow: visible
-  
+
 .add-comment-panel__sign-in-btn
   width: 100%
 .add-comment-panel__join-actions
