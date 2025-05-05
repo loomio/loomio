@@ -317,11 +317,11 @@ class User < ApplicationRecord
   end
 
   def locale
-    first_supported_locale([selected_locale, detected_locale].compact)
+    first_supported_locale([selected_locale, detected_locale].compact).to_s
   end
 
   def update_detected_locale(locale)
-    self.update_attribute(:detected_locale, locale) if self.detected_locale&.to_sym != locale.to_sym
+    self.update_attribute(:detected_locale, locale) if detected_locale&.to_s != locale.to_s
   end
 
   def generate_username

@@ -10,8 +10,8 @@
   "dependencies": {
     "@hocuspocus/provider": "^2.15.2",
     "@mdi/js": "^6.9.96",
-    "@sentry/browser": "^9.10.0",
-    "@sentry/vue": "^9.10.0",
+    "@sentry/browser": "^9.15.0",
+    "@sentry/vue": "^9.15.0",
     "@tiptap/core": "^2.11.7",
     "@tiptap/extension-blockquote": "^2.11.7",
     "@tiptap/extension-bold": "^2.11.7",
@@ -63,7 +63,7 @@
     "marked": "^4.3.0",
     "md5": "2.3.0",
     "plausible-tracker": "^0.3.9",
-    "pretty-bytes": "^6.1.1",
+    "pretty-bytes": "^7.0.0",
     "socket.io-client": "^4.7.5",
     "svg.js": "^2.7.1",
     "textarea-caret": "^3.1.0",
@@ -89,7 +89,7 @@
     "sass": "latest",
     "vite-plugin-env-compatible": "latest",
     "vite-plugin-vuetify": "latest",
-    "vite": "^5.4.16"
+    "vite": "^5.4.19"
   },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "latest",

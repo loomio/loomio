@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '3.4.1'
 gem 'rails', '7.0.8.7'
-gem 'rack', '2.2.10'
+gem 'rack', '2.2.13'
 gem 'uri', '1.0.3'
 gem 'rake'
 gem 'pg'
@@ -28,7 +28,7 @@ gem 'httparty', '~> 0.23.1'
 gem 'browser', '~> 6.2.0'
 gem "aws-sdk-s3", require: false
 gem "ruby-openai"
-gem "google-cloud-storage", "~> 1.55", require: false
+gem "google-cloud-storage", "~> 1.56", require: false
 gem 'image_processing', '~> 1.14'
 gem "ruby-vips"
 gem "stackprof"
