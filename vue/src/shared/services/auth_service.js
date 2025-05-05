@@ -3,7 +3,7 @@ import Records   from '@/shared/services/records';
 import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import Flash from '@/shared/services/flash';
-import i18n from '@/i18n';
+import { I18n } from '@/i18n';
 import {head, pickBy, camelCase, mapKeys, pick, keys} from 'lodash-es';
 
 export default new class AuthService {
@@ -40,16 +40,16 @@ export default new class AuthService {
     }
     , function(err) {
       const errors = user.hasToken ?
-        { token: [i18n.t('auth_form.invalid_token')] }
+        { token: [I18n.global.t('auth_form.invalid_token')] }
       :
-        { password: [i18n.t('auth_form.invalid_password')]};
+        { password: [I18n.global.t('auth_form.invalid_password')]};
       return user.update({errors});
     });
   }
 
   signUp(user) {
     return Records.registrations.build(
-      pick(user, ['email', 'name', 'recaptcha', 'legalAccepted', 'emailNewsletter'])
+      pick(user, ['email', 'name', 'legalAccepted', 'emailNewsletter'])
     ).save().then(data => {
       if (user.hasToken || data.signed_in) {
         this.authSuccess(data);
@@ -75,11 +75,11 @@ export default new class AuthService {
     user.errors = {};
 
     if (!vars.name) {
-      user.errors.name = [i18n.t('auth_form.name_required')];
+      user.errors.name = [I18n.global.t('auth_form.name_required')];
     }
 
     if (AppConfig.theme.terms_url && !vars.legalAccepted) {
-      user.errors.legalAccepted = [i18n.t('auth_form.terms_required')];
+      user.errors.legalAccepted = [I18n.global.t('auth_form.terms_required')];
     }
 
     if (keys(user.errors)) {

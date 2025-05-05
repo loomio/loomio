@@ -13,7 +13,6 @@ module Boot
         locales:             ActiveModel::ArraySerializer.new(supported_locales, each_serializer: LocaleSerializer, root: false),
         defaultLocale:       I18n.locale,
         newsletterEnabled:   ENV['NEWSLETTER_ENABLED'],
-        recaptchaKey:        ENV['RECAPTCHA_APP_KEY'],
         baseUrl:             root_url,
         contactEmail:        ENV['SUPPORT_EMAIL'],
         plugins:             { installed: [], outlets: [], routes: [] },

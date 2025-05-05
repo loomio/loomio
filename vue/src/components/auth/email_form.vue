@@ -37,18 +37,19 @@ export default {
 };
 </script>
 <template lang="pug">
-.auth-email-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.capture="submit()" @keydown.enter="submit()")
-  .auth-email-form__email
-    v-text-field#email.lmo-primary-form-input(outlined name='email' type='email' :placeholder="$t('auth_form.email_placeholder')" :label="$t('common.email_address')" v-model='email' autocomplete="username email")
+.auth-email-form.mx-auto.max-width-400.text-center(
+  @keyup.ctrl.enter="submit()"
+  @keydown.meta.enter.stop.capture="submit()"
+  @keydown.enter="submit()")
+    v-text-field.auth-email-form__email#email(
+      variant="outlined"
+      name='email'
+      type='email'
+      :placeholder="$t('auth_form.email_placeholder')"
+      :label="$t('common.email_address')"
+      v-model='email'
+      autocomplete="username email")
     validation-errors(:subject='user' field='email')
-    v-btn.auth-email-form__submit(color="primary" @click='submit()' :disabled='!email' v-t="'auth_form.continue_with_email'" :loading="loading")
+    v-btn.auth-email-form__submit( color="primary" @click='submit()' :disabled='!email' :loading="loading")
+      span( v-t="'auth_form.continue_with_email'")
 </template>
-
-<style lang="sass">
-.auth-email-form
-  max-width: 400px
-  margin: 0 auto
-.auth-email-form__submit
-  margin: 0 auto
-  display: block
-</style>

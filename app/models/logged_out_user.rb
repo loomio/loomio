@@ -1,7 +1,7 @@
 class LoggedOutUser
   include Null::User
   include AvatarInitials
-  attr_accessor :name, :email, :token, :avatar_initials, :locale, :legal_accepted, :recaptcha, :time_zone, :date_time_pref, :autodetect_time_zone
+  attr_accessor :name, :email, :token, :avatar_initials, :locale, :legal_accepted, :time_zone, :date_time_pref, :autodetect_time_zone
 
   alias :read_attribute_for_serialization :send
 
@@ -49,8 +49,7 @@ class LoggedOutUser
                 email: email,
                 token: token,
                 legal_accepted: legal_accepted,
-                require_valid_signup: true,
-                recaptcha: recaptcha)
+                require_valid_signup: true)
   end
 
   def memberships_count

@@ -8,13 +8,15 @@ export default {
 </script>
 
 <template lang="pug">
-.lmo-validation-error
+.lmo-validation-error.mt-n4.mb-4
   .lmo-validation-error__message.error--text.text-caption(v-if="subject.errors[field]" for="field + '-error'")
     span(role="status" aria-live="polite") {{subject.errors[field].join(', ')}}
 </template>
-<style lang="sass">
-.lmo-validation-error__message
-	position: relative
-	margin-top: -16px
 
+<style lang="sass">
+.lmo-validation-error
+  color: rgb(var(--v-theme-error))
+
+.lmo-validation-error__message
+  position: relative
 </style>
