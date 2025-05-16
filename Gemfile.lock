@@ -132,7 +132,7 @@ GEM
       csv
       railties (>= 7)
       safely_block (>= 0.4)
-    bootsnap (1.18.4)
+    bootsnap (1.18.6)
       msgpack (~> 1.2)
     browser (6.2.0)
     builder (3.3.0)
@@ -396,7 +396,7 @@ GEM
       logger
     mini_mime (1.1.5)
     minitest (5.25.5)
-    msgpack (1.7.2)
+    msgpack (1.8.0)
     multi_json (1.15.0)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
