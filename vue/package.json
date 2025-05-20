@@ -15,7 +15,7 @@
   "dependencies": {
     "@hocuspocus/provider": "^2.14.0",
     "@mdi/js": "^6.9.96",
-    "@sentry/browser": "^9.15.0",
+    "@sentry/browser": "^9.20.0",
     "@sentry/vue": "^9.15.0",
     "@tiptap/core": "^2.10.3",
     "@tiptap/extension-blockquote": "^2.10.3",
