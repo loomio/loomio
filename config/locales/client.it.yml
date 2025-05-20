@@ -164,6 +164,7 @@ it:
     no_tags_present: Nessuna discussione trovata con questa etichetta. Prova selezionandone un'altra
     no_tags_in_group: Questo gruppo non ha ancora etichette di categoria
     only_admins_can_edit_tags: Spiacenti, solo gli amministratori di %{group} possono creare, rinominare o cancellare le etichette
+    pick_a_color: Scegli un colore
   poll_types:
     proposal: proposta
     count: opt-in
@@ -622,6 +623,9 @@ it:
     sign_out: Esci
     beta_collab: "\U0001F9EA Beta features attivate!"
     outcomes: Risultati
+    theme: Tema
+    light: Leggero
+    dark: Buio
   membership_card:
     group_members: Membri del gruppo
     discussion_members: Membri della discussione
@@ -644,6 +648,7 @@ it:
       group: Rimuovi dal gruppo
       poll: 'Rimuovi dal sondaggio %{pollType} '
     cancel_invitation: Revoca invito
+    view_profile: Visualizza il profilo
     revoke_admin: Revoca amministratore
     make_delegate: Rendi delegato
     revoke_delegate: Revoca delegato
@@ -1751,6 +1756,10 @@ it:
     meaning_hint: Una frase che spiega cosa significa scegliere questa opzione
     prompt: Richiesta di motivazione
     prompt_hint: Una domanda per sollecitare gli elettori a fornire le loro ragioni o riconsiderare la loro posizione.
+    thumb_up: Pollice in su
+    thumb_down: Pollice in giù
+    thumb_sideways: Pollice di lato
+    hand_up: Alza la mano
   poll_common:
     superseded: Sostituito
     outdated: Obsoleto
@@ -2160,6 +2169,9 @@ it:
     hide_results_description: Se vuoi che le persone votino senza sapere come hanno votato gli altri, puoi nascondere i risultati del sondaggio.
     process_helptext: Assegna un nome e descrivi il processo utilizzato per eseguire questo sondaggio.
     reminder_helptext: Invia una notifica "Chiusura a breve" prima della chiusura del sondaggio. Questa può essere un'opportunità per le persone di vedere come hanno votato gli altri e riconsiderare il proprio voto, o semplicemente un modo per aumentare la partecipazione al sondaggio.
+    deadline: Scadenza
+    how_much_time_to_vote: Quanto tempo concederai alle persone per votare?
+    advanced_settings: Impostazioni avanzate
     none_of_the_above: Nessuna delle precedenti
   poll_proposal_form:
     start_header: Lancia proposta

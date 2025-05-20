@@ -1,7 +1,17 @@
 import utils from './utils';
-import Vue from 'vue';
 import { isEqual } from 'date-fns';
 import { camelCase, compact, union, each, isArray, keys, filter, snakeCase, defaults, orderBy, assign, includes, pick } from 'lodash-es';
+
+import Records from '@/shared/services/records';
+import { reactive } from 'vue';
+
+function attributeIsDifferent(first, second, attributeName) {
+  if (utils.isTimeAttribute(attributeName)) {
+    return !((first === second) || isEqual(first, second));
+  } else {
+    return first !== second;
+  }
+}
 
 export default class BaseModel {
   static singular = 'undefinedSingular';
@@ -36,7 +46,7 @@ export default class BaseModel {
   // what is the key to use when serializing the record?
   static serializationRoot = null;
 
-  constructor(recordsInterface, attributes) {
+  constructor(attributes) {
     this.inCollection = this.inCollection.bind(this);
     this.remove = this.remove.bind(this);
     this.destroy = this.destroy.bind(this);
@@ -47,19 +57,18 @@ export default class BaseModel {
     this.save = this.save.bind(this);
     this.saveSuccess = this.saveSuccess.bind(this);
     this.saveError = this.saveError.bind(this);
+    this.setErrors = this.setErrors.bind(this);
     if (attributes == null) { attributes = {}; }
     this.processing = false; // not returning/throwing on already processing rn
     this._version = 0;
     this.attributeNames = [];
-    this.unmodified = {};
-    this.afterUpdateFns = [];
+    // this.unmodified = {};
+    // this.afterUpdateFns = [];
     this.saveDisabled = false;
     this.saveFailed = false;
     this.beforeSaves = [];
+    this.errors = [];
     this.setErrors();
-    Object.defineProperty(this, 'recordsInterface', {value: recordsInterface, enumerable: false});
-    Object.defineProperty(this, 'recordStore', {value: recordsInterface.recordStore, enumerable: false});
-    Object.defineProperty(this, 'remote', {value: recordsInterface.remote, enumerable: false});
     if (this.relationships != null) { this.buildRelationships(); }
     this.update(this.defaultValues());
     this.update(attributes);
@@ -78,9 +87,9 @@ export default class BaseModel {
     ).flat()).join("-");
   }
 
-  bumpVersion() {
-    return this._version = this._version + 1;
-  }
+  // bumpVersion() {
+  //   return this._version = this._version + 1;
+  // }
 
   afterConstruction() {}
 
@@ -96,7 +105,7 @@ export default class BaseModel {
       }
       return true;
     });
-    return new this.constructor(this.recordsInterface, cloneAttributes);
+    return new this.constructor(cloneAttributes);
   }
 
   inCollection() {
@@ -107,23 +116,26 @@ export default class BaseModel {
     return this.baseUpdate(attributes);
   }
 
-  afterUpdate(fn) {
-    return this.afterUpdateFns.push(fn);
-  }
+  // afterUpdate(fn) {
+  //   return this.afterUpdateFns.push(fn);
+  // }
 
   baseUpdate(attributes) {
-    this.bumpVersion();
+    // this.bumpVersion();
+
     this.attributeNames = union(this.attributeNames, keys(attributes));
     each(attributes, (value, key) => {
-      this.unmodified[key] = value;
-      Vue.set(this, key, value);
+      // if (attributeIsDifferent(this[key], value, key)) {
+        reactive(this)[key] = value;
+      // }
       return true;
     });
 
-    if (this.inCollection()) { this.recordsInterface.collection.update(this); }
+    if (this.inCollection()) { Records[this.constructor.plural].collection.update(this); }
 
-    return this.afterUpdateFns.forEach(fn => fn(this));
+    // return this.afterUpdateFns.forEach(fn => fn(this));
   }
+
 
   attributeIsBlank(attributeName) {
     const doc = new DOMParser().parseFromString(this[attributeName], 'text/html');
@@ -131,37 +143,37 @@ export default class BaseModel {
     return ['null', 'undefined', ''].includes(o);
   }
 
-  attributeIsModified(attributeName) {
-    const strip = function(val) {
-      const doc = new DOMParser().parseFromString(val, 'text/html');
-      const o = (doc.body.textContent || "").trim();
-      if (['null', 'undefined'].includes(o)) {
-        return '';
-      } else {
-        return o;
-      }
-    };
+  // attributeIsModified(attributeName) {
+  //   const strip = function(val) {
+  //     const doc = new DOMParser().parseFromString(val, 'text/html');
+  //     const o = (doc.body.textContent || "").trim();
+  //     if (['null', 'undefined'].includes(o)) {
+  //       return '';
+  //     } else {
+  //       return o;
+  //     }
+  //   };
 
-    const original = this.unmodified[attributeName];
-    const current = this[attributeName];
-    if (utils.isTimeAttribute(attributeName)) {
-      return !((original === current) || isEqual(original, current));
-    } else {
-      if (strip(original) === strip(current)) { return false; }
-      // console.log("#{attributeName}: #{strip(original)}, #{strip(current)}")
-      return original !== current;
-    }
-  }
+  //   const original = this.unmodified[attributeName];
+  //   const current = this[attributeName];
+  //   if (utils.isTimeAttribute(attributeName)) {
+  //     return !((original === current) || isEqual(original, current));
+  //   } else {
+  //     if (strip(original) === strip(current)) { return false; }
+  //     // console.log("#{attributeName}: #{strip(original)}, #{strip(current)}")
+  //     return original !== current;
+  //   }
+  // }
 
-  modifiedAttributes() {
-    return filter(this.attributeNames, name => {
-      return this.attributeIsModified(name);
-    });
-  }
+  // modifiedAttributes() {
+  //   return filter(this.attributeNames, name => {
+  //     return this.attributeIsModified(name);
+  //   });
+  // }
 
-  isModified() {
-    return this.modifiedAttributes().length > 0;
-  }
+  // isModified() {
+  //   return this.modifiedAttributes().length > 0;
+  // }
 
   serialize() {
     return this.baseSerialize();
@@ -207,9 +219,9 @@ export default class BaseModel {
     return this[name] = () => {
       const find = Object.assign({}, {[args.with]: this[args.of]},  args.find);
       if (userArgs.orderBy) {
-        return orderBy(this.recordStore[args.from].find(find), userArgs.orderBy);
+        return orderBy(Records[args.from].find(find), userArgs.orderBy);
       } else {
-        return this.recordStore[args.from].find(find);
+        return Records[args.from].find(find);
       }
     };
   }
@@ -225,16 +237,16 @@ export default class BaseModel {
     this[name] = () => {
       if (this[args.by]) {
         let obj;
-        if (obj = this.recordStore[args.from].find(this[args.by])) { return obj; }
+        if (obj = Records[args.from].find(this[args.by])) { return obj; }
         if (this.constructor.lazyLoad) {
-          obj = this.recordStore[args.from].create({id: this[args.by]});
-          this.recordStore[args.from].addMissing(this[args.by]);
+          obj = Records[args.from].create({id: this[args.by]});
+          Records[args.from].addMissing(this[args.by]);
           return obj;
         }
       }
-      return this.recordStore[args.from].nullModel();
+      return Records[args.from].nullModel();
     };
-    this[name+'Is'] = obj => this.recordStore[args.from].find(this[args.by]) === obj;
+    this[name+'Is'] = obj => Records[args.from].find(this[args.by]) === obj;
   }
 
   belongsToPolymorphic(name) {
@@ -243,7 +255,7 @@ export default class BaseModel {
       const typeColumn = `${name}Type`;
       const idColumn = `${name}Id`;
 
-      return this.recordStore[BaseModel.eventTypeMap[this[typeColumn]]].find(this[idColumn]);
+      return Records[BaseModel.eventTypeMap[this[typeColumn]]].find(this[idColumn]);
     };
   }
 
@@ -276,17 +288,17 @@ export default class BaseModel {
   remove() {
     this.beforeRemove();
     if (this.inCollection()) {
-      return this.recordsInterface.collection.remove(this);
+      return Records[this.constructor.plural].collection.remove(this);
     }
   }
 
   destroy() {
-    this.processing = true;
+    reactive(this).processing = true;
     this.beforeDestroy();
     this.remove();
-    return this.remote.destroy(this.keyOrId())
+    return Records[this.constructor.plural].remote.destroy(this.keyOrId())
     .finally(() => {
-      return this.processing = false;
+      reactive(this).processing = false;
     });
   }
 
@@ -295,62 +307,64 @@ export default class BaseModel {
   beforeRemove() {}
 
   discard() {
-    this.processing = true;
-    return this.remote.discard(this.keyOrId())
+    reactive(this).processing = true;
+    return Records[this.constructor.plural].remote.discard(this.keyOrId())
     .finally(() => {
-      return this.processing = false;
+      reactive(this).processing = false;
     });
   }
 
   undiscard() {
-    this.processing = true;
-    return this.remote.undiscard(this.keyOrId())
+    reactive(this).processing = true;
+    return Records[this.constructor.plural].remote.undiscard(this.keyOrId())
     .finally(() => {
-      return this.processing = false;
+      reactive(this).processing = false;
     });
   }
 
   beforeSave() { return true; }
 
   save() {
-    this.processing = true;
+    reactive(this).processing = true;
     this.beforeSave();
     this.beforeSaves.forEach(f => f());
   
     if (this.isNew()) {
-      return this.remote.create(this.serialize())
+      return Records[this.constructor.plural].remote.create(this.serialize())
       .then(this.saveSuccess, this.saveError)
-      .finally(() => { return this.processing = false; });
+      .finally(() => { reactive(this).processing = false; });
     } else {
-      return this.remote.update(this.keyOrId(), this.serialize())
+      return Records[this.constructor.plural].remote.update(this.keyOrId(), this.serialize())
       .then(this.saveSuccess, this.saveError)
-      .finally(() => { return this.processing = false; });
+      .finally(() => { reactive(this).processing = false; });
     }
   }
 
   saveSuccess(data) {
-    this.saveFailed = false;
-    this.unmodified = pick(this, this.attributeNames);
+    reactive(this).saveFailed = false;
+    // this.unmodified = pick(this, this.attributeNames);
     return data;
   }
 
   saveError(data) {
-    this.saveFailed = true;
+    reactive(this).saveFailed = true;
     this.setErrors(data.errors);
     throw data;
   }
 
-  discardChanges() {
-    return this.attributeNames.forEach(key => {
-      return Vue.set(this, key, this.unmodified[key]);
-    });
-  }
+  // discardChanges() {
+  //   reactive(this).attributeNames.forEach(key => {
+  //     reactive(this)[key] = this.unmodified[key];
+  //   });
+  // }
 
   setErrors(errorList) {
     if (errorList == null) { errorList = []; }
-    Vue.set(this, 'errors', {});
-    return each(errorList, (errors, key) => {
-      return Vue.set(this.errors, camelCase(key), errors);
+    reactive(this).errors = {}
+
+    each(errorList, (errors, key) => {
+      reactive(this).errors[camelCase(key)] = errors
+      return true
     });
   }
 

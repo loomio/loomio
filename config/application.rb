@@ -6,7 +6,7 @@ Bundler.require(*Rails.groups)
 
 require_relative '../lib/version'
 
-def lmo_asset_host
+def lmo_asset_host(path = nil)
   parts = []
   parts << (ENV['FORCE_SSL'] ? 'https://' : 'http://')
   parts << ENV['CANONICAL_HOST']
@@ -14,7 +14,8 @@ def lmo_asset_host
     parts << ':'
     parts << ENV['CANONICAL_PORT']
   end
-  parts.join('')
+  parts << path
+  parts.compact.join('')
 end
 
 module Loomio

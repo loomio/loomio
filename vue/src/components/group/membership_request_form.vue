@@ -38,15 +38,13 @@ export default
 };
 </script>
 <template lang="pug">
-v-card.membership-request-form
-  submit-overlay(:value='membershipRequest.processing')
-  v-card-title
-    h1.text-h5(tabindex="-1" v-t="'membership_request_form.heading'")
-    v-spacer
+v-card.membership-request-form(:title="$t('membership_request_form.heading')")
+  template(v-slot:append)
     dismiss-modal-button(:close="close")
   v-card-text
-    p(v-if="!group.requestToJoinPrompt" v-t="'group_form.default_request_to_join_prompt'")
-    p(v-else="!group.requestToJoinPrompt") {{group.requestToJoinPrompt}}
+    p.mb-4.text-medium-emphasis
+      span(v-if="!group.requestToJoinPrompt" v-t="'group_form.default_request_to_join_prompt'")
+      span(v-else="!group.requestToJoinPrompt") {{group.requestToJoinPrompt}}
     .membership-request-form__visitor(v-if='!isSignedIn')
       v-text-field.membership-request-form__name(v-model='membershipRequest.name' :required='true' :label="$t('membership_request_form.name_label')")
       v-text-field.membership-request-form__email(v-model='membershipRequest.email' :required='true' :label="$t('membership_request_form.email_label')")
@@ -55,5 +53,11 @@ v-card.membership-request-form
       v-textarea.membership-request-form__introduction(v-model='membershipRequest.introduction' required maxlength='250' :label="$t('membership_request_form.introduction_label')")
   v-card-actions
     v-spacer
-    v-btn.membership-request-form__submit-btn(:disabled="!validIntro" color="primary" @click='submit()' v-t="'membership_request_form.submit_button'")
+    v-btn.membership-request-form__submit-btn(
+      :disabled="!validIntro"
+      variant="elevated"
+      color="primary"
+      @click='submit'
+    )
+      span(v-t="'membership_request_form.submit_button'")
 </template>

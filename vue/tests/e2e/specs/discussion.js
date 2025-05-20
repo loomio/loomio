@@ -13,7 +13,7 @@ module.exports = {
   //   page.loadPath('setup_group')
   //   page.ensureSidebar()
   //
-  //   page.click('.sidebar__list-item-button--start-thread')
+  //   page.click('.sidebar-start-thread')
   //   page.expectText('.discussion-form__group-select', 'Dirty Dancing Shoes')
   // },
   //
@@ -198,8 +198,8 @@ module.exports = {
     page.loadPath('setup_discussion')
     page.fillIn('.comment-form .lmo-textarea div[contenteditable=true]', '@jennifer')
     page.expectText('.suggestion-list', 'Jennifer Grey')
-    page.click('.suggestion-list .v-list-item__title')
-    page.pause(1000)
+    page.click('.suggestion-list .v-list-item-title')
+    page.pause(200)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', '@Jennifer Grey')
   },
@@ -214,8 +214,8 @@ module.exports = {
     page.acceptConfirm()
     page.fillIn('.comment-form .lmo-textarea textarea', '@jennifer')
     page.expectText('.suggestion-list', 'Jennifer Grey')
-    page.click('.suggestion-list .v-list-item__title')
-    page.pause(1000)
+    page.click('.suggestion-list .v-list-item-title')
+    page.pause(200)
     page.click('.comment-form__submit-button')
     page.expectText('.new-comment', '@jennifergrey')
   },
@@ -322,8 +322,8 @@ module.exports = {
     page.click('.sidebar__list-item-button--private')
     page.click('.threads-page__new-thread-button')
     page.fillIn('.recipients-autocomplete input', 'test@example.com')
-    page.expectText('.announcement-chip__content', 'test@example.com')
-    page.click('.announcement-chip__content')
+    page.expectText('.recipients-autocomplete-suggestion', 'test@example.com')
+    page.click('.recipients-autocomplete-suggestion')
     page.fillIn('.discussion-form__title-input input', "private thread")
     page.click('.discussion-form__submit')
     page.expectFlash('Thread started')
