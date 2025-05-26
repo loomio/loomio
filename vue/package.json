@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "vite",
-    "build": "vite build",
-    "test": "nightwatch --retries 2 --headless"
+    "serve": "bunx --bun vite",
+    "build": "bunx --bun vite build",
+    "test": "bunx nightwatch --retries 2 --headless"
   },
   "dependencies": {
     "@hocuspocus/provider": "^2.15.2",
