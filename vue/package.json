@@ -8,9 +8,9 @@
     "not dead"
   ],
   "scripts": {
-    "serve": "vite",
-    "build": "vite build",
-    "test": "nightwatch --retries 3 --headless"
+    "serve": "bunx --bun vite",
+    "build": "bunx --bun vite build",
+    "test": "bunx --bun nightwatch --retries 3 --headless"
   },
   "dependencies": {
     "@hocuspocus/provider": "^2.14.0",
