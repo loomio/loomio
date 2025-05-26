@@ -10,7 +10,7 @@
   "scripts": {
     "serve": "bunx --bun vite",
     "build": "bunx --bun vite build",
-    "test": "bunx --bun nightwatch --retries 3 --headless"
+    "test": "bunx nightwatch --retries 3 --headless"
   },
   "dependencies": {
     "@hocuspocus/provider": "^2.14.0",

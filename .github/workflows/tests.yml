@@ -96,6 +96,10 @@ jobs:
       with:
         ruby-version: '3.4.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: install node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
     - name: install bun
       uses: oven-sh/setup-bun@v2
     - name: start websocker server
