@@ -54,26 +54,19 @@ When a new version of ruby is released, you can update ruby-build with
 cd "$(rbenv root)"/plugins/ruby-build && git pull
 ```
 
-At the time of writing 3.4.1 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
+At the time of writing 3.4.4 is the version of ruby that Loomio uses. To check what the current version required is, see [.ruby-version](https://github.com/loomio/loomio/blob/master/.ruby-version)
 
 ```
-rbenv install 3.4.1
+rbenv install 3.4.4
 gem install bundler
 ```
 
-## Install node
+## Install bun
 
-You'll need Node.js and I recommend you use [nvm](https://github.com/creationix/nvm) to install it. Just run:
-
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.1/install.sh | bash
-```
-
-You'll need to restart your terminal, then run:
+We use bun (a drop in replacement for nodejs)
 
 ```
-nvm install 20
-nvm alias default 20
+curl -fsSL https://bun.sh/install | bash
 ```
 
 ## Fork and clone the Loomio git repo

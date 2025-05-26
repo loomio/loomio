@@ -1,19 +1,18 @@
-FROM ruby:3.4.1-slim as base
+FROM ruby:3.4.4-slim
 
 ENV MALLOC_ARENA_MAX=2
 ENV RAILS_LOG_TO_STDOUT=1
 ENV RAILS_SERVE_STATIC_FILES=1
 ENV RAILS_ENV=production
 ENV BUNDLE_WITHOUT=development
-ENV NODE_MAJOR=20
 
 WORKDIR /loomio
 
 RUN apt-get update
-RUN apt-get install -y ca-certificates curl gnupg
-RUN mkdir -p /etc/apt/keyrings
-RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
+RUN apt-get install -y ca-certificates curl gnupg unzip
+RUN curl -fsSL https://bun.sh/install | bash
+RUN cp ~/.bun/bin/bun /usr/local/bin/bun
+RUN cp ~/.bun/bin/bunx /usr/local/bin/bunx
 
 RUN apt-get update -qq && \
     apt-get install -y \
@@ -23,7 +22,6 @@ RUN apt-get update -qq && \
     ffmpeg \
     poppler-utils \
     sudo \
-    nodejs \
     imagemagick \
     libpq-dev && \
     apt-get clean && \
@@ -34,10 +32,10 @@ COPY . .
 RUN bundle install && bundle exec bootsnap precompile --gemfile app/ lib/
 
 WORKDIR /loomio/vue
-RUN npm install
-RUN npm run build
+RUN bun install
+RUN bun run build
 WORKDIR /loomio
 
 EXPOSE 3000
 
-CMD /loomio/docker_start.sh
+CMD ["/loomio/docker_start.sh"]
