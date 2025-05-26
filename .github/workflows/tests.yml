@@ -43,7 +43,7 @@ jobs:
     - name: install ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.4.1'
+        ruby-version: '3.4.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: init db
       run: |
@@ -94,7 +94,7 @@ jobs:
     - name: install ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.4.1'
+        ruby-version: '3.4.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: install bun
       uses: oven-sh/setup-bun@v2

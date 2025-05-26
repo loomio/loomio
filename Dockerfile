@@ -1,4 +1,4 @@
-FROM ruby:3.4.1-slim
+FROM ruby:3.4.4-slim
 
 ENV MALLOC_ARENA_MAX=2
 ENV RAILS_LOG_TO_STDOUT=1
