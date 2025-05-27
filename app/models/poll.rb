@@ -425,7 +425,7 @@ class Poll < ApplicationRecord
   end
 
   def active?
-    (closing_at && closing_at > Time.now) && !closed_at
+    kept? && (closing_at && closing_at > Time.now) && !closed_at
   end
 
   def wip?
