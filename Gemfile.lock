@@ -82,7 +82,7 @@ GEM
     activerecord (7.0.8.7)
       activemodel (= 7.0.8.7)
       activesupport (= 7.0.8.7)
-    activerecord-import (2.1.0)
+    activerecord-import (2.2.0)
       activerecord (>= 4.2)
     activestorage (7.0.8.7)
       actionpack (= 7.0.8.7)
@@ -663,7 +663,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   active_record_extended
   activeadmin (~> 3.3.0)
-  activerecord-import (= 2.1.0)
+  activerecord-import (= 2.2.0)
   aws-sdk-s3
   blazer
   bootsnap
