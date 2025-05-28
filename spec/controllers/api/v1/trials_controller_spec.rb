@@ -28,6 +28,4 @@ describe API::V1::TrialsController do
   # test email is verified
 
   # test newsletter bool
-  # test recaptcha?
-
 end

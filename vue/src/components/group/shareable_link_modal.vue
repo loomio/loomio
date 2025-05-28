@@ -57,14 +57,15 @@ export default
 </script>
 
 <template lang="pug">
-v-dialog(v-model='dialog' max-width="600px")
-  template(v-slot:activator="{ on, attrs }")
-    v-btn.mr-2(v-on="on" v-bind="attrs" color="primary" outlined v-t="'members_panel.sharable_link'")
+v-dialog( max-width="600px")
+  template(v-slot:activator="{ attrs }")
+    v-btn.mr-2(v-bind="attrs" color="primary" variant="tonal")
+      span(v-t="'members_panel.sharable_link'")
   v-card.shareable-link-modal
     v-card-title
       h1.text-h5(tabindex="-1" v-t="'invitation_form.share_group'")
       v-spacer
-      v-btn.dismiss-modal-button(icon small @click='dialog = false')
+      v-btn.dismiss-modal-button(icon size="small" @click='dialog = false')
         common-icon(name="mdi-window-close")
     v-card-text
       template(v-if="group.groupPrivacy != 'secret'")

@@ -1,7 +1,9 @@
 <script lang="js">
 import { slice } from 'lodash-es';
+import WatchRecords from '@/mixins/watch_records';
 
 export default {
+  mixins: [WatchRecords],
   props: {
     poll: Object,
     size: Number

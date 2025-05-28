@@ -6,7 +6,7 @@ module Dev::Scenarios::Util
   end
 
   def use_last_login_token
-    redirect_to(login_token_url(::LoginToken.last.token))
+    redirect_to(login_token_url(::LoginToken.last.token), allow_other_host: true)
   end
 
   private

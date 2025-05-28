@@ -7,9 +7,12 @@ import AbilityService    from '@/shared/services/ability_service';
 import GroupService    from '@/shared/services/group_service';
 import LmoUrlService     from '@/shared/services/lmo_url_service';
 import { pickBy } from 'lodash-es';
+import UrlFor from '@/mixins/url_for';
+import FormatDate from '@/mixins/format_date';
 
 export default
 {
+  mixins: [UrlFor, FormatDate],
   data() {
     return {
       group: null,
@@ -47,14 +50,14 @@ export default
     tabs() {
       if (!this.group) { return; }
       let query = '';
-      if (this.$route.query.subgroups) { query = '?subgroups='+this.$route.query.subgroups; }
+      // if (this.$route.query.subgroups) { query = '?subgroups='+this.$route.query.subgroups; }
 
       return [
         {id: 0, name: 'threads',   route: this.urlFor(this.group, null)+query},
         {id: 1, name: 'decisions', route: this.urlFor(this.group, 'polls')+query},
         {id: 2, name: 'members',   route: this.urlFor(this.group, 'members')+query},
         {id: 4, name: 'files',     route: this.urlFor(this.group, 'files')+query},
-        {id: 5, name: 'subgroups',  route: this.urlFor(this.group, 'subgroups')+query}
+        // {id: 5, name: 'subgroups',  route: this.urlFor(this.group, 'subgroups')+query}
         // {id: 6, name: 'settings',  route: @urlFor(@group, 'settings')}
       ].filter(obj => !((obj.name === "subgroups") && this.group.parentId));
     }
@@ -94,6 +97,7 @@ v-main
         :src="group.coverUrl"
         style="border-radius: 8px"
         max-height="256"
+        cover
         eager)
 
       v-img.ma-2.d-none.d-sm-block.rounded(
@@ -108,13 +112,13 @@ v-main
         :src="group.logoUrl"
         style="border-radius: 8px; position: absolute; bottom: 0"
         height="48"
-        width="48" 
+        width="48"
         eager)
-    h1.text-h4.my-4(tabindex="-1" v-observe-visibility="{callback: titleVisible}")
+    h1.text-h4.my-4(tabindex="-1" v-intersect="{handler: titleVisible}")
       span(v-if="group && group.parentId")
         router-link(:to="urlFor(group.parent())") {{group.parent().name}}
         space
-        span.text--secondary.text--lighten-1 &gt;
+        span.text-medium-emphasis.text--lighten-1 &gt;
         space
       span.group-page__name.mr-4 {{group.name}}
     plan-banner(:group="group")
@@ -122,17 +126,18 @@ v-main
       v-if="group"
       :model="group"
       column="description")
+    link-previews(:model="group")
     action-dock(
       :model='group'
       :actions='dockActions'
       menu-icon='mdi-cog'
       :menu-actions='menuActions')
     join-group-button(:group='group')
-    link-previews(:model="group")
     document-list(:model='group')
     attachment-list(:attachments="group.attachments")
     v-divider.mt-4
     v-tabs(
+      color="primary"
       v-model="activeTab"
       background-color="transparent"
       center-active
