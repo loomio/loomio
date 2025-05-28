@@ -33,7 +33,7 @@ export default class PollModel extends BaseModel {
   }
 
   config() {
-    return AppConfig.pollTypes[this.pollType];
+    return AppConfig.pollTypes[this.pollType] || {};
   }
 
   i18n() {
