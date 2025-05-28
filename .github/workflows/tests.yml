@@ -99,16 +99,14 @@ jobs:
     - name: install node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20'
-    - name: install bun
-      uses: oven-sh/setup-bun@v2
+        node-version: '22'
     - name: start websocker server
       run: |
         echo $PWD
         git clone https://github.com/loomio/loomio_channel_server.git
         cd loomio_channel_server
-        bun install
-        bun run start > ../log/channel_server.log &
+        npm install
+        npm run start > ../log/channel_server.log &
     - name: create db
       run: |
         createdb
@@ -126,15 +124,16 @@ jobs:
     - name: build client
       run: |
         cd vue
-        bun install
-        bun run build
+        rm -rf node_modules
+        npm install
+        npm run build
     - name: run e2es
       env:
         DISPLAY: ':99'
       run: |
         /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16
         cd vue
-        bun run test
+        npm run test
     - name: upload e2e failure screenshots
       uses: actions/upload-artifact@v4
       if: ${{ always() }}

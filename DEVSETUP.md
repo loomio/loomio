@@ -61,12 +61,19 @@ rbenv install 3.4.4
 gem install bundler
 ```
 
-## Install bun
+## Install node
 
-We use bun (a drop in replacement for nodejs)
+You'll need Node.js and I recommend you use [nvm](https://github.com/creationix/nvm) to install it. Just run:
 
 ```
-curl -fsSL https://bun.sh/install | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+```
+
+You'll need to restart your terminal, then run:
+
+```
+nvm install 22
+nvm alias default 22
 ```
 
 ## Fork and clone the Loomio git repo
