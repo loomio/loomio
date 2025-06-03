@@ -4,17 +4,12 @@ import Session        from '@/shared/services/session';
 import Records        from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
-import LmoUrlService  from '@/shared/services/lmo_url_service';
 import InboxService   from '@/shared/services/inbox_service';
-import ThreadService   from '@/shared/services/thread_service';
-import PlausibleService from '@/shared/services/plausible_service';
-import Flash from '@/shared/services/flash';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import FormatDate from '@/mixins/format_date';
 
-import { map, sum, compact } from 'lodash-es';
-import { useTheme } from 'vuetify';
+import { compact } from 'lodash-es';
 import SidebarSubgroups from '@/components/sidebar/subgroups';
 import SidebarSettings from '@/components/sidebar/settings';
 import SidebarHelp from '@/components/sidebar/help';
