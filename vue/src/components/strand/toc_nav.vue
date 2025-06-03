@@ -4,6 +4,7 @@ import Records from '@/shared/services/records';
 import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import { sortBy } from 'lodash-es';
+import ScrollService from '@/shared/services/scroll_service';
 
 
 export default {
@@ -28,6 +29,9 @@ export default {
   },
 
   methods: {
+    scrollToSequenceId(id) {
+      ScrollService.scrollTo(`.sequenceId-${id}`);
+    },
     buildItems(bootData) {
       const itemsHash = {};
 
@@ -180,7 +184,8 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
       :style="{'border-width': (item.depth * 2)+'px'}"
       v-for="item in items"
       :key="item.key"
-      :to="baseUrl+'/'+item.sequenceId")
+      :to="baseUrl+'/'+item.sequenceId"
+      @click="scrollToSequenceId(item.sequenceId)")
         .strand-nav__stance-icon-container(v-if="item.poll && item.poll.showResults()")
           poll-common-icon-panel.poll-proposal-chart-panel__chart.mr-1(:poll="item.poll" show-my-stance :size="18" :stanceSize="12")
         //- span {{item.key}}
@@ -218,7 +223,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
 
 .strand-nav__entry:hover, .strand-nav__entry--visible
   background-color: #f8f8f8
-  
+
 .v-theme--dark, .v-theme--darkBlue
   .strand-nav__entry
     border-left: 2px solid #999
