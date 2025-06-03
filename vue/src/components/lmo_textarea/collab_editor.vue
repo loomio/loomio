@@ -12,7 +12,6 @@ import Blockquote from '@tiptap/extension-blockquote';
 import Bold from '@tiptap/extension-bold';
 import BulletList from '@tiptap/extension-bullet-list';
 import CodeBlock from '@tiptap/extension-code-block';
-import { Code } from './extension_code';
 import Document from '@tiptap/extension-document';
 import Dropcursor from '@tiptap/extension-dropcursor';
 import GapCursor from '@tiptap/extension-gapcursor';
@@ -45,12 +44,12 @@ import {Iframe} from './extension_iframe';
 
 import { Editor, EditorContent } from '@tiptap/vue-3';
 
-import {getEmbedLink} from '@/shared/helpers/embed_link';
+import { getEmbedLink } from '@/shared/helpers/embed_link';
 
 import { CommonMentioning, HtmlMentioning, MentionPluginConfig } from './mentioning';
 import SuggestionList from './suggestion_list';
 import Attaching from './attaching';
-import {compact, uniq, throttle, difference, reject, uniqBy} from 'lodash-es';
+import { uniq, reject, uniqBy } from 'lodash-es';
 import TextHighlightBtn from './text_highlight_btn';
 import TextAlignBtn from './text_align_btn';
 import { TextAlign } from './extension_text_align';
@@ -444,34 +443,33 @@ div
 
           template(v-if="expanded")
             template(v-for="i in [1,2,3]")
-              v-btn(size="x-small" icon variant="text" @click='editor.chain().focus().toggleHeading({ level: i }).run()', :outlined="editor.isActive('heading', { level: i })", :title="$t('formatting.heading'+i)")
+              v-btn(size="x-small" icon :variant="editor.isActive('heading', { level: i }) ? 'tonal' :'text' " @click='editor.chain().focus().toggleHeading({ level: i }).run()' :title="$t('formatting.heading'+i)")
                 common-icon(size="x-small" :name="'mdi-format-header-'+i")
 
           //- bold
-          v-btn(size="x-small" icon variant="text" v-if="expanded", @click='editor.chain().toggleBold().focus().run()', :outlined="editor.isActive('bold')", :title="$t('formatting.bold')")
+          v-btn(size="x-small" icon :variant="editor.isActive('bold') ? 'tonal' : 'text'" v-if="expanded" @click='editor.chain().toggleBold().focus().run()' :title="$t('formatting.bold')")
             common-icon(size="x-small" name="mdi-format-bold")
 
           //- italic
-          v-btn(size="x-small" icon variant="text" v-if="expanded" @click='editor.chain().toggleItalic().focus().run()', :outlined="editor.isActive('italic')", :title="$t('formatting.italicize')")
+          v-btn(size="x-small" icon :variant="editor.isActive('italic') ? 'tonal' : 'text'" v-if="expanded" @click='editor.chain().toggleItalic().focus().run()' :title="$t('formatting.italicize')")
             common-icon(size="x-small" name="mdi-format-italic")
           //-
           //- //- strikethrough
-          v-btn(size="x-small" icon variant="text" v-if="expanded" @click='editor.chain().toggleStrike().focus().run()', :outlined="editor.isActive('strike')",  :title="$t('formatting.strikethrough')")
+          v-btn(size="x-small" icon :variant="editor.isActive('strike') ? 'tonal' : 'text'" v-if="expanded" @click='editor.chain().toggleStrike().focus().run()' :title="$t('formatting.strikethrough')")
             common-icon(size="x-small" name="mdi-format-strikethrough")
           //- underline
           //- v-btn(icon variant="text" v-if="expanded" @click='editor.chain().toggleUnderline().focus().run()' :outlined="editor.isActive('underline')",  :title="$t('formatting.underline')")
           //-   common-icon(size="x-small" name="mdi-format-underline")
-          //-
 
-          v-btn(size="x-small" icon variant="text" v-if="expanded" @click='editor.chain().toggleBulletList().focus().run()', :outlined="editor.isActive('bulletList')", :title="$t('formatting.bullet_list')")
+          v-btn(size="x-small" icon :variant="editor.isActive('bulletList') ? 'tonal' : 'text'" v-if="expanded" @click='editor.chain().toggleBulletList().focus().run()' :title="$t('formatting.bullet_list')")
             common-icon(size="x-small" name="mdi-format-list-bulleted")
-          v-btn(size="x-small" icon variant="text" v-if="expanded" @click='editor.chain().toggleOrderedList().focus().run()', :outlined="editor.isActive('orderedList')",  :title="$t('formatting.number_list')")
+          v-btn(size="x-small" icon :variant="editor.isActive('orderedList') ? 'tonal' : 'text'" v-if="expanded" @click='editor.chain().toggleOrderedList().focus().run()' :title="$t('formatting.number_list')")
             common-icon(size="x-small" name="mdi-format-list-numbered")
-          v-btn(size="x-small" icon variant="text" v-if="expanded" @click='editor.chain().toggleTaskList().focus().run()', :outlined="editor.isActive('taskList')",  :title="$t('formatting.task_list')")
+          v-btn(size="x-small" icon :variant="editor.isActive('taskList') ? 'tonal' : 'text'" v-if="expanded" @click='editor.chain().toggleTaskList().focus().run()' :title="$t('formatting.task_list')")
             common-icon(size="x-small" name="mdi-checkbox-marked-outline")
 
-          text-highlight-btn(v-if="expanded", :editor="editor")
-          text-align-btn(v-if="expanded", :editor="editor")
+          text-highlight-btn(v-if="expanded" :editor="editor")
+          text-align-btn(v-if="expanded" :editor="editor")
 
           //- extra text marks
           template(v-if="expanded")
@@ -488,25 +486,25 @@ div
                   v-spacer
                   v-btn(color="primary" @click="setIframeUrl()" v-t="'common.action.apply'")
             //- blockquote
-            v-btn(size="x-small" icon variant="text" @click='editor.chain().toggleBlockquote().focus().run()', :outlined="editor.isActive('blockquote')", :title="$t('formatting.blockquote')")
+            v-btn(size="x-small" icon :variant="editor.isActive('blockquote') ? 'tonal' : 'text'" @click='editor.chain().toggleBlockquote().focus().run()' :title="$t('formatting.blockquote')")
               common-icon(size="x-small" name="mdi-format-quote-close")
             //- //- code block
-            v-btn(size="x-small" icon variant="text" @click='editor.chain().toggleCodeBlock().focus().run()', :outlined="editor.isActive('codeBlock')", :title="$t('formatting.code_block')")
+            v-btn(size="x-small" icon :variant="editor.isActive('codeBlock') ? 'tonal' : 'text'" @click='editor.chain().toggleCodeBlock().focus().run()' :title="$t('formatting.code_block')")
               common-icon(size="x-small" name="mdi-code-braces")
             //- embded
-            v-btn(size="x-small" icon variant="text" @click='editor.chain().setHorizontalRule().focus().run()', :title="$t('formatting.divider')")
+            v-btn(size="x-small" icon variant="text" @click='editor.chain().setHorizontalRule().focus().run()' :title="$t('formatting.divider')")
               common-icon(size="x-small" name="mdi-minus")
             //- table
-            v-btn(size="x-small" icon variant="text" @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()', :title="$t('formatting.add_table')", :outlined="editor.isActive('table')")
+            v-btn(size="x-small" icon :variant="editor.isActive('table') ? 'tonal' : 'text'" @click='editor.chain().insertTable({rows: 3, cols: 3, withHeaderRow: false }).focus().run()' :title="$t('formatting.add_table')")
               common-icon(size="x-small" name="mdi-table")
             //- markdown (save experience)
-            v-btn(size="x-small" icon variant="text" @click="convertToMd", :title="$t('formatting.edit_markdown')")
+            v-btn(size="x-small" icon variant="text" @click="convertToMd" :title="$t('formatting.edit_markdown')")
               common-icon.e2e-markdown-btn(size="x-small" name="mdi-language-markdown-outline")
 
-          v-btn.html-editor__expand(v-if="!expanded" icon size="x-small" variant="text" @click="toggleExpanded", :title="$t('formatting.expand')")
+          v-btn.html-editor__expand(v-if="!expanded" icon size="x-small" variant="text" @click="toggleExpanded" :title="$t('formatting.expand')")
             common-icon(size="x-small" name="mdi-chevron-right")
 
-          v-btn.html-editor__expand(size="x-small" v-if="expanded" icon variant="text" @click="toggleExpanded", :title="$t('formatting.collapse')")
+          v-btn.html-editor__expand(size="x-small" v-if="expanded" icon variant="text" @click="toggleExpanded" :title="$t('formatting.collapse')")
             common-icon(size="x-small" name="mdi-chevron-left")
 
         v-spacer
