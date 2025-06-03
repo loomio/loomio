@@ -21,6 +21,9 @@ export default {
   },
 
   computed: {
+    isUnread() {
+      return this.thread.isUnread();
+    },
     dockActions() {
       return pick(ThreadService.actions(this.thread, this), ['dismiss_thread']);
     },
@@ -49,7 +52,7 @@ export default {
 
 <template lang="pug">
 v-list-item.thread-preview.thread-preview__link(
-  :class="{'thread-preview--unread-border': thread.isUnread()}"
+  :class="{'thread-preview--unread-border': isUnread}"
   :to='urlFor(thread)'
 )
   template(v-slot:prepend)
@@ -57,7 +60,7 @@ v-list-item.thread-preview.thread-preview__link(
   v-list-item-title(style="align-items: center")
     span(v-if='thread.pinnedAt', :title="$t('context_panel.thread_status.pinned')")
       common-icon(size="x-small" name="mdi-pin-outline")
-    span.thread-preview__title(:class="{'thread-preview--unread': thread.isUnread() }") {{thread.title}}
+    span.thread-preview__title(:class="{'text-medium-emphasis': !isUnread, 'font-weight-medium': isUnread }") {{thread.title}}
     v-chip.ml-1(size="x-small" label outlined color="warning" v-if='thread.closedAt')
       span(v-t="'poll_common_action_panel.custom_template'")
     tags-display.ml-1(:tags="thread.tags" :group="thread.group()" size="x-small")
