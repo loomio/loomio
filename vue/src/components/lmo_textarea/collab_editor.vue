@@ -623,28 +623,21 @@ img.collaboration-cursor__avatar
   outline: none
   min-height: 64px
 
-.v-theme--dark, .v-theme--darkBlue
-  progress
-    background-color: #333
-    border-color: #444
-
 progress
-  width: 50%!important
-  -webkit-appearance: none
-  appearance: none
-  background-color: #fff
-  border: 1px solid #ccc
-progress::-webkit-progress-bar
-  background-color: #fff
-  border: 1px solid #ccc
-progress::-webkit-progress-value
-  background-color: lightblue
-  border: 0
-  transition: width 120ms ease-out, opacity 60ms 60ms ease-in
+  background-color: rgb(var(--v-theme-background)) !important;
+  border: 1px solid rgba(var(--v-border-color), var(--v-disabled-opacity)) !important;
+  width: 100%!important
+  height: 16px;
+
 progress::-moz-progress-bar
-  background-color: lightblue
   border: 0
-  transition: width 120ms ease-out, opacity 60ms 60ms ease-in
+  background-color: rgb(var(--v-theme-primary)) !important;
+
+progress::-webkit-progress-bar
+  background-color: rgb(var(--v-theme-background)) !important;
+
+progress::-webkit-progress-value
+  background-color: rgb(var(--v-theme-primary)) !important;
 
 .menubar
   position: sticky
@@ -674,17 +667,6 @@ progress::-moz-progress-bar
   outline: none
   overflow-y: scroll
   overflow: visible
-
-// .lmo-textarea p.is-empty:first-child::before
-//   content: attr(data-empty-text)
-//   float: left
-//   color: #aaa
-//   pointer-events: none
-//   height: 0
-//
-// .lmo-textarea p.is-empty
-//   font-size: 16px
-//   padding-bottom: 16px
 
 ul[data-type="todo_list"]
   padding-left: 0
