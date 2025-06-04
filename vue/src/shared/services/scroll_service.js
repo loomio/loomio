@@ -12,7 +12,7 @@ export default new class ScrollService {
   }
 
   scrollTo(selector, callback) {
-    this.elementScrollTo(window, selector, callback, 'smooth', 128);
+    this.elementScrollTo(window, selector, callback, 'smooth', 64);
   }
 
   elementScrollTo(el, selector, callback, behavior = 'instant', offset = 0) {

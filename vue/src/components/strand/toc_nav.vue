@@ -119,7 +119,7 @@ export default {
       const createdEvent = this.discussion.createdEvent();
       this.items.unshift({
         key: createdEvent.positionKey,
-        title: this.$t('activity_card.context'),
+        title: this.discussion.title,
         headings: [],
         sequenceId: 0,
         visible: this.visibleKeys.includes(createdEvent.positionKey),
