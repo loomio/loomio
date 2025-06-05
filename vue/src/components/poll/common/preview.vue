@@ -15,7 +15,8 @@ export default {
     }
   },
   computed: {
-    link() { return LmoUrlService.discussionPoll(this.poll); }
+    link() { return LmoUrlService.discussionPoll(this.poll); },
+    needsVote() { return this.poll.iCanVote() && !this.poll.iHaveVoted() }
   }
 };
 </script>
@@ -24,7 +25,7 @@ export default {
 v-list-item.poll-common-preview(:to='link')
   template(v-slot:prepend)
     poll-common-icon-panel.mr-2(:poll='poll' show-my-stance :size="36")
-  v-list-item-title
+  v-list-item-title(:class="{'text-medium-emphasis': !needsVote, 'font-weight-medium': needsVote }")
     span {{poll.title}}
     tags-display.ml-1(:tags="poll.tags" :group="poll.group()" size="x-small")
   v-list-item-subtitle
