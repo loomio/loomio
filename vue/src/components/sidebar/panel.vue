@@ -41,7 +41,10 @@ export default {
   },
 
   created() {
-    EventBus.$on('toggleSidebar', () => { return this.open = !this.open; });
+    EventBus.$on('toggleSidebar', () => {
+      this.open = !this.open;
+      Records.users.saveExperience('sidebar', this.open)
+    });
 
     EventBus.$on('currentComponent', data => {
       // this.page = data.page;
@@ -93,7 +96,7 @@ export default {
     },
 
     openIfPinned() {
-      this.open = !!Session.isSignedIn() && !!Session.user().experiences['sidebar'] && this.$vuetify.display.lgAndUp;
+      this.open = !!Session.isSignedIn() && this.$vuetify.display.lgAndUp && (Session.user().experiences['sidebar'] === undefined) || (Session.user().experiences['sidebar'] == true);
     },
 
     fetchData() {
