@@ -118,16 +118,6 @@ v-app.app-is-booted
 .text-on-surface
   color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity))
 
-.v-application .text-body-3
-  font-size: 0.9375rem !important
-  letter-spacing: normal !important
-  font-weight: 400
-
-.v-application .text-body-4
-  font-size: 1rem !important
-  letter-spacing: normal !important
-  font-weight: 400
-
 .text-transform-none
   text-transform: none
 
