@@ -14,7 +14,6 @@ const GroupPollsPanel = () => import('./components/group/polls_panel');
 const GroupEmailsPanel = () => import('./components/group/emails_panel');
 const MembersPanel = () => import('./components/group/members_panel');
 const GroupTagsPanel = () => import('./components/group/tags_panel');
-const GroupSubgroupsPanel = () => import('./components/group/subgroups_panel');
 const GroupFilesPanel = () => import('./components/group/files_panel');
 const MembershipRequestsPanel = () => import('./components/group/requests_panel');
 const StartGroupPage = () => import('./components/start_group/page');
@@ -29,13 +28,9 @@ const ThreadsPage = () => import('./components/threads/page');
 const StartTrialPage = () => import('./components/start_trial/page.vue');
 const ReportPage = () => import('./components/report/page.vue');
 
-import './config/catch_navigation_duplicated.js';
-import Vue from 'vue';
-import Router from 'vue-router';
+// import './config/catch_navigation_duplicated.js';
 
-import Session from '@/shared/services/session';
-
-Vue.use(Router);
+import { createRouter, createWebHistory } from 'vue-router'
 
 const groupPageChildren = [
   {path: 'tags/:tag?', component: GroupTagsPanel, meta: {noScroll: true} },
@@ -44,23 +39,22 @@ const groupPageChildren = [
   {path: 'members', component: MembersPanel, meta: {noScroll: true}},
   {path: 'membership_requests', component: MembershipRequestsPanel, meta: {noScroll: true}},
   {path: 'members/requests', redirect: 'membership_requests', meta: {noScroll: true}},
-  {path: 'subgroups', component: GroupSubgroupsPanel, meta: {noScroll: true}},
   {path: 'files', component: GroupFilesPanel, meta: {noScroll: true}},
   {path: ':stub?', component: GroupDiscussionsPanel, meta: {noScroll: true}}
 ];
 
-const router = new Router({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
 
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else if (to.meta.noScroll && from.meta.noScroll) {
-      return window.scrollHeight;
-    } else {
-      return { x: 0, y: 0 };
-    }
-  },
+  //   scrollBehavior(to, from, savedPosition) {
+  //     if (savedPosition) {
+  //       return savedPosition;
+  //     } else if (to.meta.noScroll && from.meta.noScroll) {
+  //       return window.scrollHeight;
+  //     } else {
+  //       return { x: 0, y: 0 };
+  //     }
+  //   },
 
   routes: [
     {path: '/demo', redirect: '/try'},
@@ -92,11 +86,18 @@ const router = new Router({
     {
       path: '/d/:key',
       component: StrandPage,
-      children: [
-        {path: 'comment/:comment_id'},
-        {path: ':stub?/:sequence_id?'},
-        {path: ''}
-      ]
+    },
+    {
+      path: '/d/:key/comment/:comment_id',
+      component: StrandPage,
+    },
+    {
+      path: '/d/:key/:stub',
+      component: StrandPage,
+    },
+    {
+      path: '/d/:key/:stub/:sequence_id',
+      component: StrandPage,
     },
     {path: '/g/new', component: StartGroupPage},
     {path: '/g/:key', component: GroupPage, children: groupPageChildren, name: 'groupKey'},

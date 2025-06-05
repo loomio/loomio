@@ -2,7 +2,7 @@ import BaseModel  from  '@/shared/record_store/base_model';
 import Records  from  '@/shared/services/records';
 import { exact } from '@/shared/helpers/format_time';
 import { parseISO } from 'date-fns';
-import I18n from '@/i18n';
+import { I18n } from '@/i18n';
 
 export default class PollOptionModel extends BaseModel {
   static singular = 'pollOption';
@@ -39,7 +39,7 @@ export default class PollOptionModel extends BaseModel {
     const poll = this.poll();
     switch (poll.pollOptionNameFormat) {
       case 'plain': return this.name;
-      case 'i18n': return I18n.t('poll_' + poll.pollType + '_options.' + this.name);
+      case 'i18n': return I18n.global.t('poll_' + poll.pollType + '_options.' + this.name);
       case 'iso8601': return exact(parseISO(this.name));
       default:
         return console.error('unsupported option format', poll.pollOptionNameFormat);

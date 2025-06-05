@@ -39,7 +39,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libvips
     - name: git checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: install ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -83,21 +83,21 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - uses: nanasess/setup-chromedriver@v2
     - name: install libvips
       run: |
         sudo apt-get update
         sudo apt-get install -y libvips
     - name: git checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: install ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.4.4'
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: install node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: '22'
     - name: start websocker server

@@ -156,6 +156,7 @@ sl:
     no_tags_present: Ni najdenih niti s to oznako! Poskusite izbrati drugega
     no_tags_in_group: Ta skupina še nima oznak kategorij
     only_admins_can_edit_tags: Oprostite, samo skrbniki skupine %{group} lahko ustvarjajo, preimenujejo ali brišejo oznake
+    pick_a_color: Izberite barvo
   poll_types:
     proposal: snubitev
     count: privolitev
@@ -610,6 +611,9 @@ sl:
     sign_out: Odjava
     beta_collab: "\U0001F9EA Beta funkcije so omogočene!"
     outcomes: Rezultati
+    theme: Tema
+    light: Svetloba
+    dark: Temno
   membership_card:
     group_members: Člani skupine
     discussion_members: Člani razprave
@@ -632,6 +636,7 @@ sl:
       group: Odstrani iz skupine
       poll: Odstrani iz %{pollType}
     cancel_invitation: Prekliči povabilo
+    view_profile: Prikaži profil
     revoke_admin: Preklic skrbnika
     make_delegate: Naredi pooblaščenca
     revoke_delegate: Prekliči pooblaščenca
@@ -1718,6 +1723,10 @@ sl:
     meaning_hint: Stavek ali dva, ki pojasnjujeta, kaj pomeni izbira te možnosti. Neobvezno
     prompt: Poziv za razlog
     prompt_hint: Vprašanje, ki spodbudi volivce, da delijo svoje razloge ali ponovno razmislijo o svojem stališču. Neobvezno
+    thumb_up: Palec gor
+    thumb_down: Palec navzdol
+    thumb_sideways: Palec vstran
+    hand_up: Roko gor
   poll_common:
     superseded: Nadomeščeno
     outdated: Zastarelo
@@ -2127,6 +2136,9 @@ sl:
     hide_results_description: Če želite, da ljudje glasujejo, ne da bi vedeli, kako so glasovali drugi, lahko skrijete rezultate ankete.
     process_helptext: Poimenujte in opišite postopek, ki se uporablja za izvajanje te ankete.
     reminder_helptext: Pošljite obvestilo 'Kmalu se zapre', preden se glasovanje zapre. To je lahko priložnost za ljudi, da vidijo, kako so glasovali drugi, in ponovno pretehtajo svoj glas, ali pa le način za povečanje udeležbe v anketi.
+    deadline: Rok
+    how_much_time_to_vote: Koliko časa boste dali ljudem na glasovanje?
+    advanced_settings: Napredne nastavitve
     none_of_the_above: Nič od naštetega
   poll_proposal_form:
     start_header: Začni predlog

@@ -1,19 +1,14 @@
 {
-  "name": "vue",
-  "version": "0.1.0",
+  "name": "loomio",
+  "version": "1.0.0",
   "private": true,
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
   "scripts": {
     "serve": "vite",
     "build": "vite build",
     "test": "nightwatch --retries 2 --headless"
   },
   "dependencies": {
-    "@hocuspocus/provider": "^2.14.0",
+    "@hocuspocus/provider": "^2.15.2",
     "@mdi/js": "^6.9.96",
     "@sentry/browser": "^9.15.0",
     "@sentry/vue": "^9.15.0",
@@ -55,13 +50,13 @@
     "@tiptap/extension-underline": "^2.12.0",
     "@tiptap/pm": "^2.12.0",
     "@tiptap/suggestion": "^2.12.0",
-    "@tiptap/vue-2": "^2.12.0",
+    "@tiptap/vue-3": "^2.12.0",
     "activestorage": "^5.2.8",
     "chart.js": "^3.9.1",
     "date-fns": "2.30.0",
     "date-fns-tz": "2.0.1",
     "deepmerge": "^4.3.1",
-    "emoji-unicode": "^2.0.2",
+    "emoji-unicode": "^2.0.1",
     "jstimezonedetect": "~1.0.7",
     "lodash-es": "latest",
     "lokijs": "1.5.12",
@@ -72,32 +67,32 @@
     "socket.io-client": "^4.7.5",
     "svg.js": "^2.7.1",
     "textarea-caret": "^3.1.0",
+    "tiny-emitter": "latest",
     "turndown": "^7.2.0",
     "turndown-plugin-gfm": "^1.0.2",
-    "vue": "^2.7.0",
+    "vue": "^3.5.0",
     "vue-chartjs": "^4.1.2",
-    "vue-gravatar": "^1.4.1",
-    "vue-i18n": "8.28.2",
-    "vue-observe-visibility": "^1.0.0",
-    "vue-recaptcha": "^1.2.0",
-    "vue-router": "^3.6.5",
-    "vue-slicksort": "^1.2.0",
-    "vue2-touch-events": "^3.2.3",
-    "vuetify": "2.7.2",
-    "y-indexeddb": "^9.0.12"
+    "vue-i18n": "9.11.0",
+    "vue-router": "^4.2.5",
+    "vue-slicksort": "^2.0.5",
+    "vuetify": "latest",
+    "y-indexeddb": "^9.0.12",
+    "yjs": "^13.6.20"
   },
   "devDependencies": {
-    "@modyfi/vite-plugin-yaml": "latest",
     "@originjs/vite-plugin-commonjs": "latest",
-    "@vitejs/plugin-vue2": "latest",
-    "nightwatch": "^3.12.1",
+    "@originjs/vite-plugin-content": "latest",
+    "unplugin-vue-components": "latest",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "nightwatch": "^3.9.0",
     "pug": "latest",
     "sass": "latest",
-    "unplugin-vue-components": "latest",
-    "vite": "^5.4.19",
-    "vite-plugin-env-compatible": "latest"
+    "vite-plugin-env-compatible": "latest",
+    "vite-plugin-vuetify": "latest",
+    "vite": "^5.4.19"
   },
   "optionalDependencies": {
+    "@esbuild/darwin-arm64": "latest",
     "@rollup/rollup-linux-x64-gnu": "latest"
   }
 }
