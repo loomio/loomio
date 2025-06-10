@@ -68,7 +68,7 @@ class ReceivedEmail < ApplicationRecord
 
   def reply_body
     text = if body_html.present?
-      Premailer.new(body_html, line_length: 10000, with_html_string: true).to_plain_text
+      Premailer.new(body_html, line_length: 10000, with_html_string: true).to_plain_text.gsub("Â", "")
     else
       body_text
     end
@@ -89,7 +89,7 @@ class ReceivedEmail < ApplicationRecord
   end
 
   def is_auto_response?
-    return true if header('X-Autorespond') 
+    return true if header('X-Autorespond')
     return true if header('X-Precedence') ==  'auto_reply'
 
     prefixes = [
