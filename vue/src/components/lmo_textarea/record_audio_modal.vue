@@ -3,12 +3,15 @@ import AppConfig from '@/shared/services/app_config'
 import EventBus from '@/shared/services/event_bus'
 import { I18n } from '@/i18n'
 import { mdiMicrophone } from '@mdi/js';
+import { useTheme } from 'vuetify';
+
 let mediaRecorder;
 let chunks = [];
 let blob;
 let canvas;
 let canvasCtx;
 let audioCtx
+var theme = {};
 
 function visualize(stream, fillColor) {
   if(!audioCtx) {
@@ -77,11 +80,14 @@ export default {
       error: null,
       url: null,
       stopStreams: function() {},
-      transcriptionAvailable: AppConfig.features.app.transcription, 
+      transcriptionAvailable: AppConfig.features.app.transcription,
       mdiMicrophone
     }
   },
 
+  created() {
+    theme = useTheme();
+  },
   mounted() {
     canvas = this.$refs.visualizer
     canvasCtx = canvas.getContext("2d");
@@ -135,7 +141,7 @@ export default {
         });
       }
       mediaRecorder = new MediaRecorder(stream, this.mediaRecorderOptions());
-      visualize(stream, this.$vuetify.theme.dark ? "#1e1e1e" : "#ffffff")
+      visualize(stream, theme.global.name.value.startsWith("dark") ? "#1e1e1e" : "#ffffff")
       this.$refs.audio.controls = false;
       mediaRecorder.ondataavailable = function(e) {
         chunks.push(e.data);
@@ -185,5 +191,5 @@ v-card.recording-modal(:title="$t('record_modal.record_audio')")
         v-btn.poll-members-form__submit(v-if="!onAir" color="primary" @click="start" v-t="'record_modal.record'")
         v-btn.poll-members-form__submit(v-if="onAir" color="primary" @click="stop" v-t="'record_modal.stop'")
         v-spacer
-        v-btn.poll-members-form__submit(v-if="!onAir && url" color="primary" @click="submit" v-t="'common.action.save'") 
+        v-btn.poll-members-form__submit(v-if="!onAir && url" color="primary" @click="submit" v-t="'common.action.save'")
 </template>

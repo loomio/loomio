@@ -15,6 +15,10 @@ import SidebarSettings from '@/components/sidebar/settings';
 import SidebarHelp from '@/components/sidebar/help';
 import { mdiPlus, mdiCog } from '@mdi/js';
 
+import { useTheme } from 'vuetify';
+
+var theme = {}
+
 export default {
   components: {SidebarSettings, SidebarSubgroups, SidebarHelp},
   mixins: [WatchRecords, UrlFor, FormatDate],
@@ -41,6 +45,8 @@ export default {
   },
 
   created() {
+    theme = useTheme();
+
     EventBus.$on('toggleSidebar', () => {
       this.open = !this.open;
       Records.users.saveExperience('sidebar', this.open)
@@ -133,7 +139,7 @@ export default {
   computed: {
     canStartGroups() { return AbilityService.canStartGroups(); },
     greySidebarLogo() {
-      return AppConfig.features.app.gray_sidebar_logo_in_dark_mode && this.$vuetify.theme.dark
+      return AppConfig.features.app.gray_sidebar_logo_in_dark_mode && theme.global.name.value.startsWith("dark")
     },
     isSignedIn() { return Session.isSignedIn(); },
     user() { return Session.user(); },
