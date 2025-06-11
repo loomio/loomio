@@ -68,7 +68,7 @@ class ReceivedEmail < ApplicationRecord
 
   def reply_body
     text = if body_html.present?
-      Premailer.new(body_html, line_length: 10000, with_html_string: true).to_plain_text.gsub("Â", "")
+      ReverseMarkdown.convert(body_html, unknown_tags: :bypass).gsub("&nbsp;", " ")
     else
       body_text
     end
