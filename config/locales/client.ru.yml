@@ -549,6 +549,7 @@ ru:
       threads_list: Действия с потоками
       groups_list: Группы
       user_list: Активность пользователя
+    user_settings: Настройки пользователя
   strand_nav:
     newest: Новейший
     oldest: Самый старый
@@ -1161,6 +1162,8 @@ ru:
       public: 'Конфиденциальность: эта группа видна в Интернете.'
       aria_label: 'Конфиденциальность группы: %{privacy}'
     participation_report: Отчет об участии
+    my_subgroups: Мои подгруппы
+    more_subgroups: Больше подгрупп
   export_data_modal:
     title: Как вы хотите использовать свои данные?
     as_csv: Откройте его в электронной таблице
@@ -1279,6 +1282,7 @@ ru:
     upload_cover_photo: Загрузить обложку
     request_to_join_prompt: Запрос на присоединение
     default_request_to_join_prompt: Спасибо за ваш интерес к нашей группе. Представьтесь, пожалуйста, и объясните, почему вы хотите присоединиться.
+    upgrade_for_subgroups: 'Пожалуйста, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">обновите свою подписку</a> , чтобы создать подгруппу'
   group_export_modal:
     title: Экспортировать данные группы
     body: <p>Вы можете загрузить копию данных вашей группы в любое время. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Узнать больше.</a></p><p> Это займет несколько минут, в зависимости от размера вашей группы. Когда он будет готов, вы получите электронное письмо со ссылкой для загрузки файла.</p>
@@ -2529,6 +2533,7 @@ ru:
     event_kind_helptext: Выберите события, о которых бот всегда будет уведомлен. Если вы не уверены, просто оставьте их все выключенными.
     notification_only_label: Отправлять только заголовок уведомления
     check_for_test_message: Проверьте свой чат на наличие сообщения от бота!
+    webex: Вебекс
   webhook:
     integrations: Интеграции
     api_keys: Ключи API

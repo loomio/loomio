@@ -561,6 +561,7 @@ it:
       threads_list: Azioni discussioni
       groups_list: Gruppi
       user_list: Azioni utente
+    user_settings: Impostazioni utente
   strand_nav:
     newest: Più recente
     oldest: Maggiore
@@ -1187,6 +1188,8 @@ it:
       public: 'Privacy: Questo gruppo è visibile sul web'
       aria_label: 'Privacy del gruppo: %{privacy}'
     participation_report: Rapporto di partecipazione
+    my_subgroups: I miei sottogruppi
+    more_subgroups: Altri sottogruppi
   export_data_modal:
     title: Come vuoi usare i tuoi dati?
     as_csv: Aprirlo in un foglio di calcolo
@@ -1307,6 +1310,7 @@ it:
     upload_cover_photo: Carica nuova immagine di copertina
     request_to_join_prompt: Richiesta di partecipazione immediata
     default_request_to_join_prompt: Grazie per il tuo interesse nel nostro gruppo. Presentati e spiega perché stai chiedendo di unirti a noi.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Aggiorna il tuo abbonamento</a> per creare un sottogruppo'
   group_export_modal:
     title: Esporta i dati del gruppo
     body: <p>Puoi scaricare una copia dei dati del tuo gruppo in qualsiasi momento. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Scopri di più.</a></p><p> Il completamento richiede alcuni minuti, a seconda delle dimensioni del gruppo. Quando sarà pronto riceverai un'e-mail con un link per scaricare il file.</p>
@@ -2562,6 +2566,7 @@ it:
     event_kind_helptext: Seleziona gli eventi di cui il bot verrà sempre informato. Se non sei sicuro, lasciali tutti spenti.
     notification_only_label: Invia solo il titolo della notifica
     check_for_test_message: Controlla sul tuo canale il messaggio del bot!
+    webex: Webex
   webhook:
     integrations: Integrazioni
     api_keys: Chiavi API

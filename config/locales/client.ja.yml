@@ -548,6 +548,7 @@ ja:
       user_list: ユーザーのアクション
     new_thread_removed: 新しいスレッドは削除されました
     new_thread_removed_body: 新しいスレッド ボタンはサイドバーから削除されます。新しいスレッドを開始するには、まずグループに移動して、[新しいスレッド] をクリックします。変更は申し訳ありませんが、スレッドを開始するときにテンプレートを選択する必要があるため、これは必須です。
+    user_settings: ユーザー設定
   strand_nav:
     newest: 最新
     oldest: 最古の
@@ -1160,6 +1161,8 @@ ja:
       public: 'プライバシー: このグループはウェブ上に表示されます'
       aria_label: 'グループのプライバシー: %{privacy}'
     participation_report: 参加レポート
+    my_subgroups: 私のサブグループ
+    more_subgroups: より多くのサブグループ
   export_data_modal:
     title: データをどのように使用したいですか?
     as_csv: スプレッドシートで開く
@@ -1278,6 +1281,7 @@ ja:
     upload_cover_photo: カバー写真をアップロードする
     request_to_join_prompt: 参加リクエストプロンプト
     default_request_to_join_prompt: 私たちのグループに興味を持っていただきありがとうございます。自己紹介と参加を希望する理由を説明してください。
+    upgrade_for_subgroups: 'サブグループを作成するには、<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">サブスクリプションをアップグレードして</a>ください'
   group_export_modal:
     title: グループデータのエクスポート
     body: <p>グループのデータのコピーはいつでもダウンロードできます。<a href="https://help.loomio.org/en/user_manual/groups/data_export/">もっと詳しく調べてください。</a></p><p>グループの規模に応じて、完了までに数分かかります。準備が完了すると、ファイルをダウンロードするためのリンクが記載された電子メールが届きます。</p>
@@ -2528,6 +2532,7 @@ ja:
     event_kind_helptext: ボットに常に通知されるイベントを選択します。よくわからない場合は、すべてオフのままにしてください。
     notification_only_label: 通知の見出しのみを送信する
     check_for_test_message: チャットルームでボットからのメッセージをチェックしてください。
+    webex: ウェブエックス
   webhook:
     integrations: 統合
     api_keys: APIキー

@@ -559,6 +559,7 @@ de:
       threads_list: Diskussions-Aktionen
       groups_list: Gruppen
       user_list: Benutzer-Aktionen
+    user_settings: Benutzereinstellungen
   strand_nav:
     newest: Neueste
     oldest: 'Älteste '
@@ -1175,6 +1176,8 @@ de:
       public: 'Sichtbarkeit: Diese Gruppe ist im Web sichtbar'
       aria_label: 'Sichtbarkeit der Gruppe: %{privacy}'
     participation_report: Teilnahmebericht
+    my_subgroups: Meine Untergruppen
+    more_subgroups: Weitere Untergruppen
   export_data_modal:
     title: Wie willst du deine Daten benutzen?
     as_csv: In einer Tabellenkalkulation öffnen
@@ -1295,6 +1298,7 @@ de:
     upload_cover_photo: Neues Titel-Bild hochladen
     request_to_join_prompt: Aufforderung zur Teilnahme
     default_request_to_join_prompt: Vielen Dank für Ihr Interesse an unserer Gruppe. Bitte stellen Sie sich vor und erklären Sie, warum Sie Mitglied werden möchten.
+    upgrade_for_subgroups: 'Bitte <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aktualisieren Sie Ihr Abonnement</a> , um eine Untergruppe zu erstellen'
   group_export_modal:
     title: Gruppendaten exportieren
     body: |
@@ -2567,6 +2571,7 @@ de:
     event_kind_helptext: Wählen Sie Ereignisse aus, über die der Bot immer benachrichtigt wird. Wenn Sie sich nicht sicher sind, lassen Sie sie einfach alle weg.
     notification_only_label: Nur die Überschrift der Benachrichtigung senden
     check_for_test_message: Überprüfen Sie Ihren Chatroom auf eine Nachricht vom Bot!
+    webex: Webex
   webhook:
     integrations: Integrationen
     api_keys: API-Schlüssel

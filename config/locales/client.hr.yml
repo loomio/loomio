@@ -549,6 +549,7 @@ hr:
       threads_list: Akcije niti
       groups_list: grupe
       user_list: Radnje korisnika
+    user_settings: Korisničke postavke
   strand_nav:
     newest: Najnoviji
     oldest: Najstariji
@@ -1161,6 +1162,8 @@ hr:
       public: 'Privatnost: Ova grupa je vidljiva na webu'
       aria_label: 'Privatnost grupe: %{privacy}'
     participation_report: Izvješće o sudjelovanju
+    my_subgroups: Moje podgrupe
+    more_subgroups: Više podgrupa
   export_data_modal:
     title: Kako želite koristiti svoje podatke?
     as_csv: Otvorite ga u proračunskoj tablici
@@ -1279,6 +1282,7 @@ hr:
     upload_cover_photo: Prenesi naslovnu fotografiju
     request_to_join_prompt: Zahtjev za pridruživanje
     default_request_to_join_prompt: Hvala na interesu za našu grupu. Predstavite se i objasnite zašto tražite da se pridružite.
+    upgrade_for_subgroups: 'Molimo vas <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">da nadogradite svoju pretplatu</a> kako biste stvorili podgrupu'
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -2529,6 +2533,7 @@ hr:
     event_kind_helptext: Odaberite događaje o kojima će bot uvijek biti obaviješten. Ako niste sigurni, jednostavno ih sve isključite.
     notification_only_label: Pošalji samo naslov obavijesti
     check_for_test_message: Provjerite svoju chat sobu za poruku od bota!
+    webex: Webex
   webhook:
     integrations: Integracije
     api_keys: API ključevi

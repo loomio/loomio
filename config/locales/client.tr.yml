@@ -549,6 +549,7 @@ tr:
       threads_list: Konu eylemleri
       groups_list: Gruplar
       user_list: Kullanıcı eylemleri
+    user_settings: Kullanıcı ayarları
   strand_nav:
     newest: En yeni
     oldest: En eski
@@ -1161,6 +1162,8 @@ tr:
       public: 'Gizlilik: Bu grup web üzerinde görülebilir'
       aria_label: 'Grup gizliliği: %{privacy}'
     participation_report: Katılım raporu
+    my_subgroups: Alt gruplarım
+    more_subgroups: Daha fazla alt grup
   export_data_modal:
     title: Verilerinizi nasıl kullanmak istiyorsunuz?
     as_csv: Bir e-tabloda açın
@@ -1279,6 +1282,7 @@ tr:
     upload_cover_photo: Kapak fotoğrafını yükle
     request_to_join_prompt: Katılma isteği istemi
     default_request_to_join_prompt: Grubumuza olan ilginiz için teşekkür ederiz. Lütfen kendinizi tanıtın ve katılma isteğinizin nedenini açıklayın.
+    upgrade_for_subgroups: 'Bir alt grup oluşturmak için lütfen <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">aboneliğinizi yükseltin</a>'
   group_export_modal:
     title: Grup verilerini dışa aktar
     body: <p>Grubunuzun verilerinin bir kopyasını istediğiniz zaman indirebilirsiniz. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Daha fazlasını bul.</a></p><p> Grubunuzun büyüklüğüne bağlı olarak tamamlanması birkaç dakika sürer. Hazır olduğunda dosyayı indirme bağlantısını içeren bir e-posta alacaksınız.</p>
@@ -2529,6 +2533,7 @@ tr:
     event_kind_helptext: Botun her zaman bilgilendirileceği etkinlikleri seçin. Emin değilseniz hepsini bırakın.
     notification_only_label: Yalnızca bildirim başlığını gönder
     check_for_test_message: Bottan gelecek bir mesaj için sohbet odanızı kontrol edin!
+    webex: Webex
   webhook:
     integrations: Entegrasyonlar
     api_keys: API anahtarları

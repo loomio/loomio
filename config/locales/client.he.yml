@@ -549,6 +549,7 @@ he:
       threads_list: פעולות בשיחות
       groups_list: קבוצות
       user_list: פעולות משתמש
+    user_settings: הגדרות משתמש
   strand_nav:
     newest: החדש ביותר
     oldest: הוותיק ביותר
@@ -1165,6 +1166,8 @@ he:
       public: 'פרטיות: קבוצה זו ציבורית ופתוחה לצפייה ברשת'
       aria_label: 'פרטיות הקבוצה: %{privacy}'
     participation_report: דוח השתתפות
+    my_subgroups: תת-הקבוצות שלי
+    more_subgroups: עוד תת-קבוצות
   export_data_modal:
     title: איך אתה רוצה להשתמש בנתונים שלך?
     as_csv: פתח אותו בגיליון אלקטרוני
@@ -1283,6 +1286,7 @@ he:
     upload_cover_photo: העלה תמונת שער
     request_to_join_prompt: בקשת הצטרפות
     default_request_to_join_prompt: תודה על ההתעניינות בקבוצה שלנו. אנא הצג את עצמך והסבר מדוע אתה מבקש להצטרף.
+    upgrade_for_subgroups: 'אנא <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">שדרג את המנוי שלך</a> כדי ליצור תת-קבוצה'
   group_export_modal:
     title: יצוא נתונים מהקבוצה
     body: |
@@ -2551,6 +2555,7 @@ he:
     event_kind_helptext: בחר אירועים שהבוט תמיד יקבל הודעה לגביהם. אם אתה לא בטוח, פשוט עזוב את כולם.
     notification_only_label: שלח כותרת התראה בלבד
     check_for_test_message: בדוק בחדר הצ'אט שלך להודעה מהבוט!
+    webex: וובקס
   webhook:
     integrations: אינטגרציות
     api_keys: מפתחות API

@@ -549,6 +549,7 @@ fi:
       threads_list: Säikeitä toimia
       groups_list: Ryhmät
       user_list: Käyttäjän toimet
+    user_settings: Käyttäjäasetukset
   strand_nav:
     newest: Uusin
     oldest: Vanhin
@@ -1161,6 +1162,8 @@ fi:
       public: 'Yksityisyys: Tämä ryhmä näkyy verkossa'
       aria_label: 'Ryhmän tietosuoja: %{privacy}'
     participation_report: Osallistumisraportti
+    my_subgroups: Alaryhmäni
+    more_subgroups: Lisää alaryhmiä
   export_data_modal:
     title: Miten haluat käyttää tietojasi?
     as_csv: Avaa se laskentataulukossa
@@ -1279,6 +1282,7 @@ fi:
     upload_cover_photo: Lataa kansikuva
     request_to_join_prompt: Pyydä liittymään
     default_request_to_join_prompt: Kiitos mielenkiinnostasi ryhmäämme kohtaan. Esittele itsesi ja selitä, miksi pyydät liittymistä.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Päivitä tilauksesi</a> luodaksesi aliryhmän'
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -2529,6 +2533,7 @@ fi:
     event_kind_helptext: Valitse tapahtumat, joista botti saa aina ilmoituksen. Jos et ole varma, jätä ne kaikki pois.
     notification_only_label: Lähetä vain ilmoituksen otsikko
     check_for_test_message: Tarkista chat-huoneestasi viesti bottilta!
+    webex: Webex
   webhook:
     integrations: Integraatiot
     api_keys: API-avaimet

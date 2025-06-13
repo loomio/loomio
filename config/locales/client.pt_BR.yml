@@ -561,6 +561,7 @@ pt_BR:
       threads_list: Ações das conversas
       groups_list: Grupos
       user_list: Ações do usuário
+    user_settings: Configurações do usuário
   strand_nav:
     newest: Mais recente
     oldest: Mais antigo
@@ -1188,6 +1189,8 @@ pt_BR:
       public: 'Privacidade: Este grupo é visível na web'
       aria_label: 'Privacidade do grupo: %{privacy}'
     participation_report: Relatório de participação
+    my_subgroups: Meus subgrupos
+    more_subgroups: Mais subgrupos
   export_data_modal:
     title: Como você quer usar seus dados?
     as_csv: Abrir em uma planilha
@@ -1308,6 +1311,7 @@ pt_BR:
     upload_cover_photo: Enviar Image da Capa
     request_to_join_prompt: Solicitação de adesão rápida
     default_request_to_join_prompt: Obrigado pelo seu interesse em nosso grupo. Por favor, apresente-se e explique por que você está solicitando para participar.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Atualize sua assinatura</a> para criar um subgrupo'
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -2187,7 +2191,7 @@ pt_BR:
     vote_reason: Motivo do voto
     vote_reason_description: Pode ser útil entender por que as pessoas votaram da maneira que votaram. Com essa configuração, você pode solicitar que as pessoas compartilhem seus pensamentos quando votarem.
     hide_results_description: Se você quiser que as pessoas votem sem saber como os outros votaram, você pode ocultar os resultados da enquete.
-    process_helptext: 'Nomeie e descreva o processo que está sendo usado para executar esta votação.'
+    process_helptext: Nomeie e descreva o processo que está sendo usado para executar esta votação.
     reminder_helptext: |
       Envie uma notificação de 'Fechamento em breve' antes do encerramento da enquete.
       Esta pode ser uma oportunidade para as pessoas verem como os outros votaram e reconsiderarem seu próprio voto, ou apenas uma forma de aumentar a participação na enquete.
@@ -2584,6 +2588,7 @@ pt_BR:
     event_kind_helptext: Selecione os eventos sobre os quais o bot sempre será notificado. Se você não tiver certeza, deixe-os todos desligados.
     notification_only_label: Enviar apenas o título da notificação
     check_for_test_message: Verifique sua sala de chat para uma mensagem do bot!
+    webex: Webex
   webhook:
     integrations: Integrações
     api_keys: API keys

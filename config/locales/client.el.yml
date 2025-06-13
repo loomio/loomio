@@ -549,6 +549,7 @@ el:
       threads_list: Ενέργειες θεμάτων
       groups_list: Ομάδες
       user_list: Ενέργειες χρήστη
+    user_settings: Ρυθμίσεις χρήστη
   strand_nav:
     newest: Νεότερο
     oldest: Το πιο παλιό
@@ -1161,6 +1162,8 @@ el:
       public: 'Απόρρητο: Αυτή η ομάδα είναι ορατή στον ιστό'
       aria_label: 'Απόρρητο ομάδας: %{privacy}'
     participation_report: Έκθεση συμμετοχής
+    my_subgroups: Οι υποομάδες μου
+    more_subgroups: Περισσότερες υποομάδες
   export_data_modal:
     title: Πώς θέλετε να χρησιμοποιήσετε τα δεδομένα σας;
     as_csv: Ανοίξτε το σε υπολογιστικό φύλλο
@@ -1279,6 +1282,7 @@ el:
     upload_cover_photo: Ανεβάστε φωτογραφία εξωφύλλου
     request_to_join_prompt: Αίτημα συμμετοχής
     default_request_to_join_prompt: Ευχαριστούμε για το ενδιαφέρον σας για την ομάδα μας. Συστηθείτε και εξηγήστε γιατί ζητάτε να συμμετάσχετε.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Αναβαθμίστε τη συνδρομή σας</a> για να δημιουργήσετε μια υποομάδα'
   group_export_modal:
     title: Εξαγωγή δεδομένων ομάδας
     body: <p>Μπορείτε να κάνετε λήψη ενός αντιγράφου των δεδομένων της ομάδας σας ανά πάσα στιγμή. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Μάθετε περισσότερα.</a></p><p> Χρειάζονται λίγα λεπτά για να ολοκληρωθεί, ανάλογα με το μέγεθος της ομάδας σας. Όταν είναι έτοιμο, θα λάβετε ένα email με έναν σύνδεσμο για τη λήψη του αρχείου.</p>
@@ -2529,6 +2533,7 @@ el:
     event_kind_helptext: Επιλέξτε συμβάντα για τα οποία θα ειδοποιείται πάντα το bot. Εάν δεν είστε σίγουροι, απλώς αφήστε τα όλα εκτός.
     notification_only_label: Αποστολή μόνο επικεφαλίδας ειδοποίησης
     check_for_test_message: Ελέγξτε το chatroom σας για μήνυμα από το bot!
+    webex: Webex
   webhook:
     integrations: Ενσωματώσεις
     api_keys: Κλειδιά API

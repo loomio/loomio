@@ -553,6 +553,7 @@ ca:
       threads_list: Accions dels fils de discussió
       groups_list: Grups
       user_list: Accions dels usuaris
+    user_settings: Configuració de l'usuari
   strand_nav:
     newest: Més recent
     oldest: Més antic
@@ -1169,6 +1170,8 @@ ca:
       public: 'Privacitat: Aquest grup és visible a internet'
       aria_label: 'Privacitat del grup: %{privacy}'
     participation_report: Informe de participació
+    my_subgroups: Els meus subgrups
+    more_subgroups: Més subgrups
   export_data_modal:
     title: Com voleu utilitzar les vostres dades?
     as_csv: Obre en un full de càlcul
@@ -1287,6 +1290,7 @@ ca:
     upload_cover_photo: Penja una foto de portada
     request_to_join_prompt: Sol·licitud per unir-se
     default_request_to_join_prompt: Gràcies pel vostre interès en el nostre grup. Si us plau, presenteu-vos i expliqueu per què demaneu unir-vos.
+    upgrade_for_subgroups: 'Si us plau, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">actualitza la teva subscripció</a> per crear un subgrup'
   group_export_modal:
     title: Exporta dades del grup
     body: |
@@ -2557,6 +2561,7 @@ ca:
     event_kind_helptext: Seleccioneu els esdeveniments dels quals el bot sempre rebrà una notificació. Si no n'esteu segur, deixeu-los tots apagats.
     notification_only_label: Envia només el títol de la notificació
     check_for_test_message: Comproveu la vostra sala de xat si hi ha un missatge del bot!
+    webex: Webex
   webhook:
     integrations: Integracions
     api_keys: Claus API

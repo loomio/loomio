@@ -553,6 +553,7 @@ es:
       threads_list: Acciones del hilo
       groups_list: Grupos
       user_list: Acciones de usuario
+    user_settings: Configuración de usuario
   strand_nav:
     newest: El más nuevo
     oldest: El más viejo
@@ -851,7 +852,7 @@ es:
     form:
       group_has_no_members_yet: Eres el único miembro de tu grupo. Es posible que desees invitar a algunas personas a tu grupo antes de iniciar un hilo o una decisión.
       invite_people_to_evaluate_loomio: Invita a algunas personas a tu grupo de Loomio para tomar una decisión juntos
-      too_many_invitations: 'Límite de invitaciones excedido. <a href="%{upgradeUrl}" target="_blank">Mejore su abono</a>'
+      too_many_invitations: Límite de invitaciones excedido. <a href="%{upgradeUrl}" target="_blank">Mejore su abono</a>
       no_invitations_remaining: |
         <p>Ha usado todas las %{maxMembers} invitaciones disponibles para este grupo.</p>
         <p>Si quiere puede, <a href="%{upgradeUrl}" target="_blank">elegir un abono</a> para continuar colaborando en Loomio.</p>
@@ -1176,6 +1177,8 @@ es:
       public: 'Privacidad: Este grupo es visible en la red '
       aria_label: 'Privacidad del grupo: %{privacy}'
     participation_report: Informe de participación
+    my_subgroups: Mis subgrupos
+    more_subgroups: Más subgrupos
   export_data_modal:
     title: "¿Cómo quieres utilizar tus datos?"
     as_csv: Abrir en una hoja de cálculo
@@ -1296,6 +1299,7 @@ es:
     upload_cover_photo: Cargar la foto de portada
     request_to_join_prompt: Solicitud de adhesión inmediata
     default_request_to_join_prompt: Gracias por su interés en nuestro grupo. Preséntese y explique por qué desea unirse.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Actualice su suscripción</a> para crear un subgrupo'
   group_export_modal:
     title: Exportar la data grupal
     body: |
@@ -1494,7 +1498,7 @@ es:
     email_newsletter: Boletín de noticias de Loomio
     email_newsletter_description: Consigue actualizaciones acerca de las nuevas características, formación, eventos en tu ciudad y del futuro de Loomio. Generalmente 2 o 3 emails al año.
     email_catch_up_day: Correo electrónico de resumen diario
-    daily_summary_description: 'Elija cuándo recibir el correo electrónico de resumen de puesta al día. Este correo electrónico contiene cualquier actividad nueva que no haya visto. Una buena manera de mantenerse al día si no eres un usuario regular.'
+    daily_summary_description: Elija cuándo recibir el correo electrónico de resumen de puesta al día. Este correo electrónico contiene cualquier actividad nueva que no haya visto. Una buena manera de mantenerse al día si no eres un usuario regular.
     on_participation_label: 'Suscribirte a la participación '
     on_participation_description: 'Cuando participes en un hilo, inmediatamente se te enviará toda la actividad subsiguiente por correo electrónico. '
     announcement_label: Anuncios
@@ -2171,7 +2175,7 @@ es:
     vote_reason: Motivo del voto
     vote_reason_description: Puede ser útil entender por qué las personas votaron de la manera en que lo hicieron. Con esta configuración, puede incitar a las personas a compartir sus pensamientos cuando voten.
     hide_results_description: Si quieres que la gente vote sin saber cómo han votado los demás, puedes ocultar los resultados de la encuesta.
-    process_helptext: 'Nombre y describa el proceso que se está utilizando para ejecutar esta encuesta.'
+    process_helptext: Nombre y describa el proceso que se está utilizando para ejecutar esta encuesta.
     reminder_helptext: |
       Envíe una notificación de "Cierre pronto" antes de que se cierre la encuesta.
       Esta puede ser una oportunidad para que las personas vean cómo otros han votado y reconsideren su propio voto, o simplemente una forma de aumentar la participación en la encuesta.
@@ -2568,6 +2572,7 @@ es:
     event_kind_helptext: Seleccione los eventos sobre los que siempre se notificará al bot. Si no está seguro, simplemente déjelos todos apagados.
     notification_only_label: Enviar solo título de notificación
     check_for_test_message: "¡Revisa tu sala de chat para ver si hay un mensaje del bot!"
+    webex: Webex
   webhook:
     integrations: Incorporaciones
     api_keys: Claves de API

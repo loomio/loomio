@@ -551,6 +551,7 @@ hu:
       threads_list: Téma műveletek
       groups_list: Csoportok
       user_list: Felhasználói tevékenység
+    user_settings: Felhasználói beállítások
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -1165,6 +1166,8 @@ hu:
       public: 'Adatvédelem: Ez a csoport látható az interneten'
       aria_label: 'Csoportos adatvédelem: %{privacy}'
     participation_report: Részvételi jelentés
+    my_subgroups: Az alcsoportjaim
+    more_subgroups: További alcsoportok
   export_data_modal:
     title: Hogyan szeretné használni az adatait?
     as_csv: Nyissa meg egy táblázatban
@@ -1283,6 +1286,7 @@ hu:
     upload_cover_photo: Töltse fel a borítóképét
     request_to_join_prompt: Csatlakozás kérése
     default_request_to_join_prompt: Köszönjük érdeklődését csoportunk iránt. Kérlek, mutatkozz be, és indokold meg, miért jelentkezel.
+    upgrade_for_subgroups: 'Kérjük <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">, frissítse előfizetését</a> egy alcsoport létrehozásához'
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -2539,6 +2543,7 @@ hu:
     event_kind_helptext: Válassza ki az eseményeket, amelyekről a bot mindig értesítést kap. Ha nem vagy biztos benne, hagyd ki őket.
     notification_only_label: Csak az értesítés címsorának küldése
     check_for_test_message: Nézze meg csevegőszobájában üzenetet a bottól!
+    webex: Webex
   webhook:
     integrations: Integrációk
     api_keys: API kulcsok

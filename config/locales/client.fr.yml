@@ -561,6 +561,7 @@ fr:
       threads_list: Actions du fil de discussion
       groups_list: Groupes
       user_list: Actions utilisateur
+    user_settings: Paramètres utilisateur
   strand_nav:
     newest: Les plus récents
     oldest: Les plus anciens
@@ -1188,6 +1189,8 @@ fr:
       public: 'Confidentialité: Ce groupe est visible par tous sur internet'
       aria_label: 'Groupe privé : %{privacy}'
     participation_report: Rapport de participation
+    my_subgroups: Mes sous-groupes
+    more_subgroups: Plus de sous-groupes
   export_data_modal:
     title: Comment souhaitez-vous utiliser vos données ?
     as_csv: Ouvrir dans une feuille de calcul
@@ -1308,6 +1311,7 @@ fr:
     upload_cover_photo: Télécharger la photo de couverture
     request_to_join_prompt: Demande d'adhésion rapide
     default_request_to_join_prompt: Merci de votre intérêt pour notre groupe. Veuillez vous présenter et expliquer pourquoi vous souhaitez nous rejoindre.
+    upgrade_for_subgroups: 'Veuillez <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">mettre à niveau votre abonnement</a> pour créer un sous-groupe'
   group_export_modal:
     title: Exporter les données de votre groupe
     body: |
@@ -2584,6 +2588,7 @@ fr:
     event_kind_helptext: Sélectionnez les événements dont le bot sera toujours informé. Si vous n’êtes pas sûr, laissez-les tous de côté.
     notification_only_label: Envoyer le titre de notification uniquement
     check_for_test_message: Vérifiez votre salon de discussion pour un message du bot!
+    webex: Webex
   webhook:
     integrations: Integrations
     api_keys: Clés API

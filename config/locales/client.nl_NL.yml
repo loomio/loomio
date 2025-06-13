@@ -553,6 +553,7 @@ nl_NL:
       threads_list: Bord acties
       groups_list: Groepen
       user_list: Gebruikersacties
+    user_settings: Gebruikersinstellingen
   strand_nav:
     newest: Nieuwste
     oldest: Oudste
@@ -1169,6 +1170,8 @@ nl_NL:
       public: 'Privacy: Deze groep is zichtbaar op het web'
       aria_label: 'Groepsprivacy: %{privacy}'
     participation_report: Deelname verslag
+    my_subgroups: Mijn subgroepen
+    more_subgroups: Meer subgroepen
   export_data_modal:
     title: Hoe wil je je data gebruiken?
     as_csv: Openen in een spreadsheet
@@ -1287,6 +1290,7 @@ nl_NL:
     upload_cover_photo: Upload cover photo
     request_to_join_prompt: Verzoek om deel te nemen prompt
     default_request_to_join_prompt: Bedankt voor uw interesse in onze groep. Stel uzelf voor en leg uit waarom u lid wilt worden.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Upgrade uw abonnement</a> om een subgroep te creëren'
   group_export_modal:
     title: Groepsdata exporteren
     body: |
@@ -2559,6 +2563,7 @@ nl_NL:
     event_kind_helptext: Selecteer gebeurtenissen waarover de bot altijd wordt geïnformeerd. Als je het niet zeker weet, laat ze dan gewoon allemaal weg.
     notification_only_label: Alleen meldingskop verzenden
     check_for_test_message: Controleer je chatroom voor een bericht van de bot!
+    webex: Webex
   webhook:
     integrations: Integraties
     api_keys: API-sleutels

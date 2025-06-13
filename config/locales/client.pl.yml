@@ -553,6 +553,7 @@ pl:
       threads_list: Działania wątków
       groups_list: Grupy
       user_list: Działania użytkownika
+    user_settings: Ustawienia użytkownika
   strand_nav:
     newest: Najnowsze
     oldest: 'Od najstarszych '
@@ -1169,6 +1170,8 @@ pl:
       public: 'Prywatność: ta grupa jest widoczna w Internecie'
       aria_label: 'Prywatność grupy: %{privacy}'
     participation_report: Sprawozdanie z udziału
+    my_subgroups: Moje podgrupy
+    more_subgroups: Więcej podgrup
   export_data_modal:
     title: Jak chcesz wykorzystać swoje dane?
     as_csv: Otwórz w arkuszu kalkulacyjnym
@@ -1287,6 +1290,7 @@ pl:
     upload_cover_photo: Prześlij zdjęcie w tle
     request_to_join_prompt: Prośba o dołączenie
     default_request_to_join_prompt: Dziękujemy za zainteresowanie naszą grupą. Przedstaw się i wyjaśnij, dlaczego chcesz dołączyć.
+    upgrade_for_subgroups: 'Aby utworzyć podgrupę, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">zaktualizuj swoją subskrypcję</a>'
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -2559,6 +2563,7 @@ pl:
     event_kind_helptext: Wybierz zdarzenia, o których bot będzie zawsze powiadamiany. Jeśli nie jesteś pewien, po prostu zostaw je wszystkie.
     notification_only_label: Wyślij tylko nagłówek powiadomienia
     check_for_test_message: Sprawdź swój pokój czatu w poszukiwaniu wiadomości od bota!
+    webex: WeBex
   webhook:
     integrations: Integracje
     api_keys: klucze API

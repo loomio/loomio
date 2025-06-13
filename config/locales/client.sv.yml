@@ -549,6 +549,7 @@ sv:
       threads_list: Trådar åtgärder
       groups_list: Grupper
       user_list: Användaråtgärder
+    user_settings: Användarinställningar
   strand_nav:
     newest: Nyaste
     oldest: Äldst
@@ -1161,6 +1162,8 @@ sv:
       public: 'Sekretess: Den här gruppen är synlig på webben'
       aria_label: 'Gruppsekretess: %{privacy}'
     participation_report: Deltagande rapport
+    my_subgroups: Mina undergrupper
+    more_subgroups: Fler undergrupper
   export_data_modal:
     title: Hur vill du använda din data?
     as_csv: Öppna den i ett kalkylblad
@@ -1279,6 +1282,7 @@ sv:
     upload_cover_photo: Ladda upp omslagsfoto
     request_to_join_prompt: Begäran om att gå med
     default_request_to_join_prompt: Tack för ditt intresse för vår grupp. Presentera dig själv och förklara varför du vill vara med.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Uppgradera din prenumeration</a> för att skapa en undergrupp'
   group_export_modal:
     title: Exportera gruppdata
     body: <p>Du kan ladda ner en kopia av din grupps data när som helst. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Få reda på mer.</a></p><p> Det tar några minuter att slutföra, beroende på storleken på din grupp. När den är klar får du ett e-postmeddelande med en länk för att ladda ner filen.</p>
@@ -2529,6 +2533,7 @@ sv:
     event_kind_helptext: Välj händelser som boten alltid kommer att meddelas om. Om du inte är säker, låt dem vara avstängda.
     notification_only_label: Skicka endast meddelanderubrik
     check_for_test_message: Kolla ditt chattrum efter ett meddelande från boten!
+    webex: Webex
   webhook:
     integrations: Integrationer
     api_keys: API-nycklar

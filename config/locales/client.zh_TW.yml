@@ -559,6 +559,7 @@ zh_TW:
       threads_list: 討論串動作
       groups_list: 群組
       user_list: 使用者動作
+    user_settings: 使用者設定
   strand_nav:
     newest: 最新
     oldest: 最舊
@@ -1175,6 +1176,8 @@ zh_TW:
       public: 隱私權：此群組現在能在網路上被看到
       aria_label: 群組隱私：%{privacy}
     participation_report: 參與報告
+    my_subgroups: 我的子群組
+    more_subgroups: 更多子組
   export_data_modal:
     title: 您想要如何使用您的資料？
     as_csv: 在試算表中開啟它
@@ -1295,6 +1298,7 @@ zh_TW:
     upload_cover_photo: 上傳封面圖片
     request_to_join_prompt: 請求加入提示
     default_request_to_join_prompt: 感謝您對我們小組的興趣。請自我介紹並解釋為什麼您要求加入。
+    upgrade_for_subgroups: '請<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">升級您的訂閱</a>以建立子群組'
   group_export_modal:
     title: 匯出群組資料
     body: |
@@ -2569,6 +2573,7 @@ zh_TW:
     event_kind_helptext: 選取機器要一律通知的事件。若您不確定，請將它們維持在關閉狀態。
     notification_only_label: 僅傳送通知標題
     check_for_test_message: 檢查您的聊天室以取得來自機器人的訊息！
+    webex: Webex
   webhook:
     integrations: 整合
     api_keys: API 金鑰

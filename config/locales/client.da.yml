@@ -549,6 +549,7 @@ da:
       threads_list: Debat handlinger
       groups_list: Grupper
       user_list: Bruger handlinger
+    user_settings: Brugerindstillinger
   strand_nav:
     newest: Nyeste
     oldest: Ældste
@@ -1161,6 +1162,8 @@ da:
       public: 'Privatinstillinger: Denne gruppe er synlig for alle på internettet'
       aria_label: 'Privatinstillinger: %{privacy}'
     participation_report: Deltagelsesrapport
+    my_subgroups: Mine undergrupper
+    more_subgroups: Flere undergrupper
   export_data_modal:
     title: Hvordan vil du bruge dine data?
     as_csv: Åbn det i et regneark
@@ -1279,6 +1282,7 @@ da:
     upload_cover_photo: Upload forsidebillede
     request_to_join_prompt: Anmodning om at deltage
     default_request_to_join_prompt: Tak for din interesse i vores gruppe. Præsentér dig selv og forklar, hvorfor du anmoder om at deltage.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Opgrader venligst dit abonnement</a> for at oprette en undergruppe'
   group_export_modal:
     title: Eksporter gruppedata
     body: <p>Du kan til enhver tid downloade en kopi af din gruppes data. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Find ud af mere.</a></p><p> Det tager et par minutter at gennemføre, afhængigt af størrelsen på din gruppe. Når den er klar, modtager du en e-mail med et link til at downloade filen.</p>
@@ -2532,6 +2536,7 @@ da:
     event_kind_helptext: Vælg begivenheder, som botten altid får besked om. Hvis du ikke er sikker, skal du bare lade dem alle være væk.
     notification_only_label: Send kun meddelelsesoverskrift
     check_for_test_message: Tjek dit chatrum for en besked fra botten!
+    webex: Webex
   webhook:
     integrations: Integrationer
     api_keys: API nøgler
