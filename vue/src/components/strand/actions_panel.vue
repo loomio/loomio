@@ -106,12 +106,14 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
             :discussion="discussion"
             :group="discussion.group()")
   template(v-if="!discussion.closedAt && !canAddComment")
-    .add-comment-panel__join-actions
+    .add-comment-panel__join-actions.mb-2
       join-group-button(
         v-if='isLoggedIn()'
         :group='discussion.group()'
       )
       v-btn.add-comment-panel__sign-in-btn(
+        variant="tonal"
+        color="primary"
         @click='signIn()'
         v-if='!isLoggedIn()'
       )

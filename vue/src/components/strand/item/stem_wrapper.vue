@@ -1,8 +1,12 @@
 <script lang="js">
+import Session        from '@/shared/services/session';
 export default {
   props: {
     loader: Object,
     obj: Object,
+  },
+  computed: {
+    isSignedIn() { return Session.isSignedIn(); },
   },
   methods: {
     isFocused(event) {
@@ -18,5 +22,5 @@ export default {
 
 <template lang="pug">
 .strand-item__stem-wrapper(@click.stop="loader.collapse(obj.event)" :key="obj.event.id")
-  .strand-item__stem(:class="{'strand-item__stem--unread': obj.isUnread, 'strand-item__stem--focused': isFocused(obj.event)}")
+  .strand-item__stem(:class="{'strand-item__stem--unread': (isSignedIn && obj.isUnread), 'strand-item__stem--focused': isFocused(obj.event)}")
 </template>
