@@ -124,7 +124,7 @@ GEM
     base64 (0.2.0)
     bcrypt (3.1.20)
     benchmark (0.4.0)
-    bigdecimal (3.1.9)
+    bigdecimal (3.2.2)
     bindex (0.8.1)
     blazer (3.2.1)
       activerecord (>= 7)
@@ -580,14 +580,14 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    sentry-rails (5.24.0)
+    sentry-rails (5.25.0)
       railties (>= 5.0)
-      sentry-ruby (~> 5.24.0)
-    sentry-ruby (5.24.0)
+      sentry-ruby (~> 5.25.0)
+    sentry-ruby (5.25.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (5.24.0)
-      sentry-ruby (~> 5.24.0)
+    sentry-sidekiq (5.25.0)
+      sentry-ruby (~> 5.25.0)
       sidekiq (>= 3.0)
     sidekiq (6.5.12)
       connection_pool (>= 2.2.5, < 3)
