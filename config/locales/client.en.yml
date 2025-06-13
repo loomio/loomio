@@ -1324,9 +1324,10 @@ en:
     new_organisation: New organization
     new_group: New group
     new_subgroup: New subgroup
-    new_group_explainer: Start a new Loomio group for your organization
-    new_subgroup_explainer: Start a subgroup - a private space for a team within the organization
+    new_group_explainer: Start a new Loomio group for your organization.
+    new_subgroup_explainer: A subgroup is a private space for a team or committee within the organization.
     start_group_heading: Start a group
+    upgrade_for_subgroups: 'Please <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">upgrade your subscription</a> to create a subgroup'
     start_subgroup_heading: Start a subgroup
     edit_group_heading: Edit group settings
     edit_subgroup_heading: Edit subgroup settings
@@ -1340,7 +1341,7 @@ en:
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
     group_name_placeholder: 'What is the name of your group?'
-    subgroup_name_placeholder: 'What is the name of your subgroup?'
+    subgroup_name_placeholder: 'E.g. Board'
     organization_name_placeholder: 'What is the name of your organization?'
     description: 'Description'
     description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
