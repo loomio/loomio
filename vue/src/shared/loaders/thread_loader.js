@@ -22,7 +22,7 @@ export default class ThreadLoader {
     this.collapsed = reactive({});
     this.loading = false;
     this.firstLoad = false
-    this.padding = 50;
+    this.padding = 100;
   }
 
   firstUnreadSequenceId() {
