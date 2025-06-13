@@ -158,6 +158,7 @@ hu:
     no_tags_present: Nem található szál ezzel a címkével! Próbáljon meg másikat választani
     no_tags_in_group: Ebben a csoportban még nincsenek kategóriacímkék
     only_admins_can_edit_tags: Sajnáljuk, csak a(z) %{group} adminisztrátorai hozhatnak létre, nevezhetnek át vagy törölhetnek címkéket
+    pick_a_color: Válasszon egy színt
   poll_types:
     proposal: javaslat
     count: feliratkozás
@@ -550,6 +551,7 @@ hu:
       threads_list: Téma műveletek
       groups_list: Csoportok
       user_list: Felhasználói tevékenység
+    user_settings: Felhasználói beállítások
   strand_nav:
     newest: Legújabb
     oldest: Legrégebbi
@@ -612,6 +614,9 @@ hu:
     sign_out: Kijelentkezés
     beta_collab: "\U0001F9EA A béta funkciók engedélyezve vannak!"
     outcomes: Eredmények
+    theme: Téma
+    light: Fény
+    dark: Sötét
   membership_card:
     group_members: Csoporttagok
     discussion_members: Témában résztvevők
@@ -634,6 +639,7 @@ hu:
       group: Eltávolítás a csoportból
       poll: 'Eltávolítás innen: %{pollType}'
     cancel_invitation: Meghívás visszavonása
+    view_profile: Profil megtekintése
     revoke_admin: Rendszergazda visszavonása
     make_delegate: Legyen küldött
     revoke_delegate: Meghatalmazott visszavonása
@@ -1160,6 +1166,8 @@ hu:
       public: 'Adatvédelem: Ez a csoport látható az interneten'
       aria_label: 'Csoportos adatvédelem: %{privacy}'
     participation_report: Részvételi jelentés
+    my_subgroups: Az alcsoportjaim
+    more_subgroups: További alcsoportok
   export_data_modal:
     title: Hogyan szeretné használni az adatait?
     as_csv: Nyissa meg egy táblázatban
@@ -1278,6 +1286,7 @@ hu:
     upload_cover_photo: Töltse fel a borítóképét
     request_to_join_prompt: Csatlakozás kérése
     default_request_to_join_prompt: Köszönjük érdeklődését csoportunk iránt. Kérlek, mutatkozz be, és indokold meg, miért jelentkezel.
+    upgrade_for_subgroups: 'Kérjük <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">, frissítse előfizetését</a> egy alcsoport létrehozásához'
   group_export_modal:
     title: Csoport adatok letöltése
     body: <p>A csoport adatainak másolatát bármikor letöltheti. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Tudj meg többet.</a></p><p> A kitöltése a csoport méretétől függően néhány percet vesz igénybe. Ha készen áll, e-mailben kap egy linket a fájl letöltéséhez.</p>
@@ -1728,6 +1737,10 @@ hu:
     meaning_hint: Egy mondat, amely elmagyarázza, mit jelent ennek az opciónak a kiválasztása
     prompt: Indoklás
     prompt_hint: Olyan kérdés, amely arra készteti a választókat, hogy mondják el érvelésüket vagy gondolják át álláspontjukat.
+    thumb_up: hüvelykujj felfelé
+    thumb_down: Hüvelykujj lefelé
+    thumb_sideways: Hüvelykujj oldalra
+    hand_up: Fel a kezét
   poll_common:
     superseded: Felváltva
     outdated: Elavult
@@ -2137,6 +2150,9 @@ hu:
     hide_results_description: Ha azt szeretné, hogy az emberek anélkül szavazzanak, hogy tudnák, mások hogyan szavaztak, elrejtheti a szavazás eredményeit.
     process_helptext: Nevezze meg és írja le a szavazás futtatásához használt folyamatot.
     reminder_helptext: A szavazás bezárása előtt küldjön egy „Hamarosan zárás” értesítést. Ez lehetõség lehet az emberek számára, hogy megnézzék, hogyan szavaztak mások, és átgondolják saját szavazatukat, vagy csak egy módja annak, hogy növeljék a szavazásban való részvételt.
+    deadline: Határidő
+    how_much_time_to_vote: Mennyi időt hagy az embereknek szavazni?
+    advanced_settings: Speciális beállítások
     none_of_the_above: A fentiek közül egyik sem
   poll_proposal_form:
     start_header: Javaslat indítása
@@ -2527,6 +2543,7 @@ hu:
     event_kind_helptext: Válassza ki az eseményeket, amelyekről a bot mindig értesítést kap. Ha nem vagy biztos benne, hagyd ki őket.
     notification_only_label: Csak az értesítés címsorának küldése
     check_for_test_message: Nézze meg csevegőszobájában üzenetet a bottól!
+    webex: Webex
   webhook:
     integrations: Integrációk
     api_keys: API kulcsok

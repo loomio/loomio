@@ -156,6 +156,7 @@ hr:
     no_tags_present: Nisu pronađene niti s tom oznakom! Pokušajte odabrati neki drugi
     no_tags_in_group: Ova grupa još nema oznake kategorije
     only_admins_can_edit_tags: Nažalost, samo administratori grupe %{group} mogu stvarati, preimenovati ili brisati oznake
+    pick_a_color: Odaberite boju
   poll_types:
     proposal: prijedlog
     count: uključiti se
@@ -548,6 +549,7 @@ hr:
       threads_list: Akcije niti
       groups_list: grupe
       user_list: Radnje korisnika
+    user_settings: Korisničke postavke
   strand_nav:
     newest: Najnoviji
     oldest: Najstariji
@@ -610,6 +612,9 @@ hr:
     sign_out: Odjavi se
     beta_collab: "\U0001F9EA Beta značajke omogućene!"
     outcomes: Ishodi
+    theme: Tema
+    light: Svjetlo
+    dark: tamno
   membership_card:
     group_members: Članovi grupe
     discussion_members: Članovi niti
@@ -632,6 +637,7 @@ hr:
       group: Ukloni iz grupe
       poll: Ukloni iz %{pollType}
     cancel_invitation: Otkaži pozivnicu
+    view_profile: Pogledaj profil
     revoke_admin: Opozovi administratora
     make_delegate: Napravi delegata
     revoke_delegate: Opozovi delegata
@@ -1156,6 +1162,8 @@ hr:
       public: 'Privatnost: Ova grupa je vidljiva na webu'
       aria_label: 'Privatnost grupe: %{privacy}'
     participation_report: Izvješće o sudjelovanju
+    my_subgroups: Moje podgrupe
+    more_subgroups: Više podgrupa
   export_data_modal:
     title: Kako želite koristiti svoje podatke?
     as_csv: Otvorite ga u proračunskoj tablici
@@ -1274,6 +1282,7 @@ hr:
     upload_cover_photo: Prenesi naslovnu fotografiju
     request_to_join_prompt: Zahtjev za pridruživanje
     default_request_to_join_prompt: Hvala na interesu za našu grupu. Predstavite se i objasnite zašto tražite da se pridružite.
+    upgrade_for_subgroups: 'Molimo vas <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">da nadogradite svoju pretplatu</a> kako biste stvorili podgrupu'
   group_export_modal:
     title: Izvoz grupnih podataka
     body: <p>U bilo kojem trenutku možete preuzeti kopiju podataka svoje grupe. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Saznaj više.</a></p><p> Za dovršetak je potrebno nekoliko minuta, ovisno o veličini vaše grupe. Kada bude spremna, primit ćete e-poruku s vezom za preuzimanje datoteke.</p>
@@ -1718,6 +1727,10 @@ hr:
     meaning_hint: Rečenica ili dvije koje objašnjavaju što znači odabir ove opcije. Neobavezno
     prompt: Upit za razlog
     prompt_hint: Pitanje koje će potaknuti birače da podijele svoje obrazloženje ili preispitaju svoje stajalište. Neobavezno
+    thumb_up: Palac gore
+    thumb_down: Palac dolje
+    thumb_sideways: Palac u stranu
+    hand_up: Ruka gore
   poll_common:
     superseded: Zamijenjeno
     outdated: Zastario
@@ -2127,6 +2140,9 @@ hr:
     hide_results_description: Ako želite da ljudi glasaju, a da ne znaju kako su drugi glasovali, možete sakriti rezultate ankete.
     process_helptext: Imenujte i opišite proces koji se koristi za pokretanje ove ankete.
     reminder_helptext: Pošaljite obavijest 'Uskoro se zatvara' prije zatvaranja ankete. Ovo može biti prilika da ljudi vide kako su drugi glasovali i preispitaju svoj glas ili samo način da povećaju sudjelovanje u anketi.
+    deadline: Rok
+    how_much_time_to_vote: Koliko ćete vremena dati ljudima da glasaju?
+    advanced_settings: Napredne postavke
     none_of_the_above: Ništa od navedenog
   poll_proposal_form:
     start_header: Započni prijedlog
@@ -2517,6 +2533,7 @@ hr:
     event_kind_helptext: Odaberite događaje o kojima će bot uvijek biti obaviješten. Ako niste sigurni, jednostavno ih sve isključite.
     notification_only_label: Pošalji samo naslov obavijesti
     check_for_test_message: Provjerite svoju chat sobu za poruku od bota!
+    webex: Webex
   webhook:
     integrations: Integracije
     api_keys: API ključevi

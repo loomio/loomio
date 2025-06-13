@@ -156,6 +156,7 @@ pl:
     no_tags_present: Nie znaleziono wątków z tym tagiem! Spróbuj wybrać inny
     no_tags_in_group: Ta grupa nie ma jeszcze tagów kategorii
     only_admins_can_edit_tags: Przepraszamy, tylko administratorzy grupy %{group} mogą tworzyć, zmieniać nazwy i usuwać tagi
+    pick_a_color: Wybierz kolor
   poll_types:
     proposal: propozycja
     count: wyrazić zgodę
@@ -552,6 +553,7 @@ pl:
       threads_list: Działania wątków
       groups_list: Grupy
       user_list: Działania użytkownika
+    user_settings: Ustawienia użytkownika
   strand_nav:
     newest: Najnowsze
     oldest: 'Od najstarszych '
@@ -614,6 +616,9 @@ pl:
     sign_out: Wyloguj się
     beta_collab: "\U0001F9EA Funkcje beta włączone!"
     outcomes: Wyniki
+    theme: Temat
+    light: Światło
+    dark: Ciemny
   membership_card:
     group_members: Osoby w tej grupy
     discussion_members: Osoby w tym wątku
@@ -636,6 +641,7 @@ pl:
       group: Usuń z grupy
       poll: Usuń z %{pollType}
     cancel_invitation: Anuluj zaproszenie
+    view_profile: Wyświetl profil
     revoke_admin: Odwołaj uprawnienia administratora
     make_delegate: Utwórz delegata
     revoke_delegate: Odwołaj delegata
@@ -1164,6 +1170,8 @@ pl:
       public: 'Prywatność: ta grupa jest widoczna w Internecie'
       aria_label: 'Prywatność grupy: %{privacy}'
     participation_report: Sprawozdanie z udziału
+    my_subgroups: Moje podgrupy
+    more_subgroups: Więcej podgrup
   export_data_modal:
     title: Jak chcesz wykorzystać swoje dane?
     as_csv: Otwórz w arkuszu kalkulacyjnym
@@ -1282,6 +1290,7 @@ pl:
     upload_cover_photo: Prześlij zdjęcie w tle
     request_to_join_prompt: Prośba o dołączenie
     default_request_to_join_prompt: Dziękujemy za zainteresowanie naszą grupą. Przedstaw się i wyjaśnij, dlaczego chcesz dołączyć.
+    upgrade_for_subgroups: 'Aby utworzyć podgrupę, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">zaktualizuj swoją subskrypcję</a>'
   group_export_modal:
     title: Eksportuj dane grupy
     body: |
@@ -1746,6 +1755,10 @@ pl:
     meaning_hint: Zdanie wyjaśniające, co oznacza wybranie tej opcji
     prompt: Monit o przyczynę
     prompt_hint: Pytanie mające na celu zachęcenie wyborców do przedstawienia uzasadnienia lub ponownego rozważenia swojego stanowiska.
+    thumb_up: Kciuk w górę
+    thumb_down: Kciuk w dół
+    thumb_sideways: Kciuk na bok
+    hand_up: Ręka w górę
   poll_common:
     superseded: zastąpione
     outdated: Przestarzały
@@ -2157,6 +2170,9 @@ pl:
     hide_results_description: Jeśli chcesz, aby ludzie głosowali, nie wiedząc, jak głosowali inni, możesz ukryć wyniki ankiety.
     process_helptext: Nazwij i opisz proces, który jest używany do uruchomienia tej ankiety.
     reminder_helptext: Wyślij powiadomienie „Wkrótce zamknięcie” przed zamknięciem ankiety. Może to być okazja dla ludzi, aby zobaczyć, jak głosowali inni i przemyśleć swój głos, lub po prostu sposób na zwiększenie udziału w ankiecie.
+    deadline: Termin ostateczny
+    how_much_time_to_vote: Ile czasu dasz ludziom na zagłosowanie?
+    advanced_settings: Ustawienia zaawansowane
     none_of_the_above: Żadne z powyższych
   poll_proposal_form:
     start_header: Utwórz propozycję
@@ -2547,6 +2563,7 @@ pl:
     event_kind_helptext: Wybierz zdarzenia, o których bot będzie zawsze powiadamiany. Jeśli nie jesteś pewien, po prostu zostaw je wszystkie.
     notification_only_label: Wyślij tylko nagłówek powiadomienia
     check_for_test_message: Sprawdź swój pokój czatu w poszukiwaniu wiadomości od bota!
+    webex: WeBex
   webhook:
     integrations: Integracje
     api_keys: klucze API

@@ -156,6 +156,7 @@ ro:
     no_tags_present: Nu au fost găsite subiecte cu acea etichetă! Încercați să selectați altul
     no_tags_in_group: Acest grup nu are încă etichete de categorie
     only_admins_can_edit_tags: Ne pare rău, numai administratorii %{group} pot crea, redenumi sau șterge etichete
+    pick_a_color: Alege o culoare
   poll_types:
     proposal: propunere
     count: înscriere
@@ -548,6 +549,7 @@ ro:
       threads_list: Threads de acțiuni
       groups_list: Grupuri
       user_list: Actiuni utilizator
+    user_settings: Setări utilizator
   strand_nav:
     newest: Cel mai nou
     oldest: Cel mai vechi
@@ -610,6 +612,9 @@ ro:
     sign_out: Iesire din cont
     beta_collab: "\U0001F9EA Funcțiile beta sunt activate!"
     outcomes: Rezultate
+    theme: Temă
+    light: Aprinde
+    dark: Întuneric
   membership_card:
     group_members: Membrii grupului
     discussion_members: Membrii firului
@@ -632,6 +637,7 @@ ro:
       group: Eliminați din grup
       poll: Eliminați din %{pollType}
     cancel_invitation: Anulează invitația
+    view_profile: Vezi profilul
     revoke_admin: Revocați admin
     make_delegate: Faceți delegat
     revoke_delegate: Revocați delegatul
@@ -1156,6 +1162,8 @@ ro:
       public: 'Confidențialitate: acest grup este vizibil pe web'
       aria_label: 'Confidențialitate a grupului: %{privacy}'
     participation_report: Raport de participare
+    my_subgroups: Subgrupurile mele
+    more_subgroups: Mai multe subgrupuri
   export_data_modal:
     title: Cum doriți să vă folosiți datele?
     as_csv: Deschideți-l într-o foaie de calcul
@@ -1274,6 +1282,7 @@ ro:
     upload_cover_photo: Încărcați fotografia de copertă
     request_to_join_prompt: Solicitare de înscriere
     default_request_to_join_prompt: Vă mulțumim pentru interesul acordat grupului nostru. Vă rugăm să vă prezentați și să explicați de ce solicitați să vă înscrieți.
+    upgrade_for_subgroups: 'Vă rugăm <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">să actualizați abonamentul</a> pentru a crea un subgrup'
   group_export_modal:
     title: Exportați datele grupului
     body: <p>Puteți descărca oricând o copie a datelor grupului dvs. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Află mai multe.</a></p><p> Este nevoie de câteva minute pentru a finaliza, în funcție de dimensiunea grupului dvs. Când este gata, veți primi un e-mail cu un link pentru a descărca fișierul.</p>
@@ -1718,6 +1727,10 @@ ro:
     meaning_hint: O propoziție sau două care explică ce înseamnă alegerea acestei opțiuni. Opțional
     prompt: Motivul prompt
     prompt_hint: O întrebare pentru a determina alegătorii să-și împărtășească raționamentul sau să își reconsidere poziția. Opțional
+    thumb_up: Degetul mare în sus
+    thumb_down: Degetul mare în jos
+    thumb_sideways: Degetul mare în lateral
+    hand_up: Mâna sus
   poll_common:
     superseded: Inlocuit
     outdated: Învechit
@@ -2127,6 +2140,9 @@ ro:
     hide_results_description: Dacă doriți ca oamenii să voteze fără să știe cum au votat alții, puteți ascunde rezultatele sondajului.
     process_helptext: Denumiți și descrieți procesul care este utilizat pentru a rula acest sondaj.
     reminder_helptext: Trimiteți o notificare „Închidere în curând” înainte de închiderea sondajului. Aceasta poate fi o oportunitate pentru oameni de a vedea cum au votat alții și de a-și reconsidera propriul vot, sau doar o modalitate de a crește participarea la sondaj.
+    deadline: Termen limită
+    how_much_time_to_vote: Cât timp veți acorda oamenilor să voteze?
+    advanced_settings: Setări avansate
     none_of_the_above: Nici una dintre cele de mai sus
   poll_proposal_form:
     start_header: Începeți propunerea
@@ -2517,6 +2533,7 @@ ro:
     event_kind_helptext: Selectați evenimente despre care botul va fi întotdeauna notificat. Dacă nu ești sigur, oprește-le pe toate.
     notification_only_label: Trimiteți numai titlul notificării
     check_for_test_message: Verificați camera de chat pentru un mesaj de la bot!
+    webex: Webex
   webhook:
     integrations: Integrari
     api_keys: Chei API

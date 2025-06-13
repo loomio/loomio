@@ -164,6 +164,7 @@ pt_BR:
     no_tags_present: Nenhum tópico foi encontrado com essa tag! Tente selecionar outro
     no_tags_in_group: Este grupo ainda não tem tags de categoria
     only_admins_can_edit_tags: Desculpe, apenas os administradores do %{group} podem criar, renomear ou excluir tags
+    pick_a_color: Escolha uma cor
   poll_types:
     proposal: proposta
     count: opt-in
@@ -560,6 +561,7 @@ pt_BR:
       threads_list: Ações das conversas
       groups_list: Grupos
       user_list: Ações do usuário
+    user_settings: Configurações do usuário
   strand_nav:
     newest: Mais recente
     oldest: Mais antigo
@@ -622,6 +624,9 @@ pt_BR:
     sign_out: Sair
     beta_collab: " \U0001F9EA Recursos beta ativados!"
     outcomes: Resultados
+    theme: Tema
+    light: Luz
+    dark: Escuro
   membership_card:
     group_members: Membros do Grupo
     discussion_members: Membros da conversa
@@ -644,6 +649,7 @@ pt_BR:
       group: Eliminar do grupo
       poll: Eliminar de %{pollType}
     cancel_invitation: Cancelar convite
+    view_profile: Ver perfil
     revoke_admin: Revogar administrador
     make_delegate: Fazer delegado
     revoke_delegate: Revogar delegado
@@ -1183,6 +1189,8 @@ pt_BR:
       public: 'Privacidade: Este grupo é visível na web'
       aria_label: 'Privacidade do grupo: %{privacy}'
     participation_report: Relatório de participação
+    my_subgroups: Meus subgrupos
+    more_subgroups: Mais subgrupos
   export_data_modal:
     title: Como você quer usar seus dados?
     as_csv: Abrir em uma planilha
@@ -1303,6 +1311,7 @@ pt_BR:
     upload_cover_photo: Enviar Image da Capa
     request_to_join_prompt: Solicitação de adesão rápida
     default_request_to_join_prompt: Obrigado pelo seu interesse em nosso grupo. Por favor, apresente-se e explique por que você está solicitando para participar.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Atualize sua assinatura</a> para criar um subgrupo'
   group_export_modal:
     title: Exportar data do grupo
     body: |
@@ -1769,6 +1778,10 @@ pt_BR:
     meaning_hint: Uma frase que explica o que significa escolher esta opção
     prompt: Incitar razão
     prompt_hint: Uma pergunta para levar os eleitores a fornecer seu raciocínio ou reconsiderar sua posição.
+    thumb_up: Polegar para cima
+    thumb_down: Polegar para baixo
+    thumb_sideways: Polegar para o lado
+    hand_up: Mão para cima
   poll_common:
     superseded: Suplantada
     outdated: Desatualizado
@@ -2178,12 +2191,13 @@ pt_BR:
     vote_reason: Motivo do voto
     vote_reason_description: Pode ser útil entender por que as pessoas votaram da maneira que votaram. Com essa configuração, você pode solicitar que as pessoas compartilhem seus pensamentos quando votarem.
     hide_results_description: Se você quiser que as pessoas votem sem saber como os outros votaram, você pode ocultar os resultados da enquete.
-    process_helptext: 'Nomeie e descreva o processo que está sendo usado para executar esta votação.
-
-      '
+    process_helptext: Nomeie e descreva o processo que está sendo usado para executar esta votação.
     reminder_helptext: |
       Envie uma notificação de 'Fechamento em breve' antes do encerramento da enquete.
       Esta pode ser uma oportunidade para as pessoas verem como os outros votaram e reconsiderarem seu próprio voto, ou apenas uma forma de aumentar a participação na enquete.
+    deadline: Prazo final
+    how_much_time_to_vote: Quanto tempo você dará para as pessoas votarem?
+    advanced_settings: Configurações avançadas
     none_of_the_above: Nenhuma das acima
   poll_proposal_form:
     start_header: Iniciar proposta
@@ -2574,6 +2588,7 @@ pt_BR:
     event_kind_helptext: Selecione os eventos sobre os quais o bot sempre será notificado. Se você não tiver certeza, deixe-os todos desligados.
     notification_only_label: Enviar apenas o título da notificação
     check_for_test_message: Verifique sua sala de chat para uma mensagem do bot!
+    webex: Webex
   webhook:
     integrations: Integrações
     api_keys: API keys

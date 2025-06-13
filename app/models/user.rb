@@ -24,7 +24,6 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable, :lockable, :trackable
   devise :pwned_password if Rails.env.production?
-  attr_accessor :recaptcha
   attr_accessor :restricted
   attr_accessor :token
   attr_accessor :membership_token
@@ -36,7 +35,6 @@ class User < ApplicationRecord
 
   attr_writer   :has_password
   attr_accessor :require_valid_signup
-  attr_accessor :require_recaptcha
 
   before_save :set_legal_accepted_at, if: :legal_accepted
 
@@ -44,7 +42,6 @@ class User < ApplicationRecord
 
   validates :name,               presence: true, if: :require_valid_signup
   validates :legal_accepted,     presence: true, if: :require_legal_accepted
-  validate  :validate_recaptcha,                 if: :require_recaptcha
 
   has_one_attached :uploaded_avatar
 
@@ -388,14 +385,5 @@ class User < ApplicationRecord
 
   def password_required?
     !password.nil? || !password_confirmation.nil?
-  end
-
-  private
-
-  def validate_recaptcha
-    return unless ENV['RECAPTCHA_APP_KEY']
-    return if Clients::Recaptcha.instance.validate(self.recaptcha)
-    # Sentry.capture_message("recaptcha failed", extra: {email: email})
-    self.errors.add(:recaptcha, I18n.t(:"user.error.recaptcha"))
   end
 end

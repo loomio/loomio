@@ -156,6 +156,7 @@ fi:
     no_tags_present: Tällä tunnisteella ei löytynyt lankoja! Yritä valita toinen
     no_tags_in_group: Tällä ryhmällä ei ole vielä luokkatunnisteita
     only_admins_can_edit_tags: Valitettavasti vain ryhmän %{group} ylläpitäjät voivat luoda, nimetä uudelleen tai poistaa tunnisteita
+    pick_a_color: Valitse väri
   poll_types:
     proposal: ehdotus
     count: opt-in
@@ -548,6 +549,7 @@ fi:
       threads_list: Säikeitä toimia
       groups_list: Ryhmät
       user_list: Käyttäjän toimet
+    user_settings: Käyttäjäasetukset
   strand_nav:
     newest: Uusin
     oldest: Vanhin
@@ -610,6 +612,9 @@ fi:
     sign_out: Kirjaudu ulos
     beta_collab: "\U0001F9EA Beta-ominaisuudet käytössä!"
     outcomes: Tulokset
+    theme: Teema
+    light: Kevyt
+    dark: Tumma
   membership_card:
     group_members: Ryhmän jäsenet
     discussion_members: Viestiketjun jäsenet
@@ -632,6 +637,7 @@ fi:
       group: Poista ryhmästä
       poll: Poista kohteesta %{pollType}
     cancel_invitation: Peruuta kutsu
+    view_profile: Näytä profiili
     revoke_admin: Peruuta järjestelmänvalvoja
     make_delegate: Tee valtuutettu
     revoke_delegate: Peruuta edustaja
@@ -1156,6 +1162,8 @@ fi:
       public: 'Yksityisyys: Tämä ryhmä näkyy verkossa'
       aria_label: 'Ryhmän tietosuoja: %{privacy}'
     participation_report: Osallistumisraportti
+    my_subgroups: Alaryhmäni
+    more_subgroups: Lisää alaryhmiä
   export_data_modal:
     title: Miten haluat käyttää tietojasi?
     as_csv: Avaa se laskentataulukossa
@@ -1274,6 +1282,7 @@ fi:
     upload_cover_photo: Lataa kansikuva
     request_to_join_prompt: Pyydä liittymään
     default_request_to_join_prompt: Kiitos mielenkiinnostasi ryhmäämme kohtaan. Esittele itsesi ja selitä, miksi pyydät liittymistä.
+    upgrade_for_subgroups: '<a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">Päivitä tilauksesi</a> luodaksesi aliryhmän'
   group_export_modal:
     title: Vie ryhmätiedot
     body: <p>Voit ladata kopion ryhmäsi tiedoista milloin tahansa. <a href="https://help.loomio.org/en/user_manual/groups/data_export/">Lue lisää.</a></p><p> Suorittaminen kestää muutaman minuutin ryhmäsi koosta riippuen. Kun se on valmis, saat sähköpostin, jossa on linkki tiedoston lataamiseen.</p>
@@ -1718,6 +1727,10 @@ fi:
     meaning_hint: Pari lausetta, joissa selitetään, mitä tämän vaihtoehdon valitseminen tarkoittaa. Valinnainen
     prompt: Syykehote
     prompt_hint: Kysymys, joka kannustaa äänestäjiä jakamaan perustelunsa tai harkitsemaan uudelleen kantaansa. Valinnainen
+    thumb_up: Peukalo ylös
+    thumb_down: Peukalo alas
+    thumb_sideways: Peukalo sivuttain
+    hand_up: Käsi ylös
   poll_common:
     superseded: Korvattu
     outdated: Vanhentunut
@@ -2127,6 +2140,9 @@ fi:
     hide_results_description: Jos haluat ihmisten äänestävän tietämättä kuinka muut ovat äänestäneet, voit piilottaa kyselyn tulokset.
     process_helptext: Nimeä ja kuvaile prosessi, jota käytetään tämän kyselyn suorittamiseen.
     reminder_helptext: Lähetä "Suljetaan pian" -ilmoitus ennen äänestyksen sulkeutumista. Tämä voi olla ihmisille mahdollisuus nähdä, miten muut ovat äänestäneet, ja harkita omaa ääntään, tai vain tapa lisätä osallistumista kyselyyn.
+    deadline: Määräaika
+    how_much_time_to_vote: Kuinka kauan annat ihmisille aikaa äänestää?
+    advanced_settings: Lisäasetukset
     none_of_the_above: Ei mikään yllä olevista
   poll_proposal_form:
     start_header: Aloita ehdotus
@@ -2517,6 +2533,7 @@ fi:
     event_kind_helptext: Valitse tapahtumat, joista botti saa aina ilmoituksen. Jos et ole varma, jätä ne kaikki pois.
     notification_only_label: Lähetä vain ilmoituksen otsikko
     check_for_test_message: Tarkista chat-huoneestasi viesti bottilta!
+    webex: Webex
   webhook:
     integrations: Integraatiot
     api_keys: API-avaimet

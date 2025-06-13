@@ -156,6 +156,7 @@ uk:
     no_tags_present: Не знайдено жодної теми з цією міткою! Спробуйте вибрати іншу
     no_tags_in_group: У цій групі ще немає міток категорій
     only_admins_can_edit_tags: На жаль, лише адміністратори %{group} можуть створювати, перейменовувати або видаляти мітки
+    pick_a_color: Виберіть колір
   poll_types:
     proposal: пропозиція
     count: вибрати в
@@ -553,6 +554,7 @@ uk:
       threads_list: Пов'язані дії
       groups_list: Групи
       user_list: Дії користувача
+    user_settings: Налаштування користувача
   strand_nav:
     newest: Найновіші
     oldest: Найстарші
@@ -615,6 +617,9 @@ uk:
     sign_out: Вийти
     beta_collab: "\U0001F9EA Функції бета-версії ввімкнено!"
     outcomes: Результати
+    theme: Тема
+    light: світло
+    dark: Темний
   membership_card:
     group_members: Учасники групи
     discussion_members: Учасники теми
@@ -637,6 +642,7 @@ uk:
       group: Видалити з групи
       poll: Видалити з %{pollType}
     cancel_invitation: Скасувати запрошення
+    view_profile: Переглянути профіль
     revoke_admin: Відкликати адміністратора
     make_delegate: Делегувати
     revoke_delegate: Відкликати делегата
@@ -1165,6 +1171,8 @@ uk:
       public: 'Конфіденційність: Ця група відображається для всіх у мережі'
       aria_label: 'Конфіденційність групи: %{privacy}'
     participation_report: Звіт про участь
+    my_subgroups: Мої підгрупи
+    more_subgroups: Більше підгруп
   export_data_modal:
     title: Як ви бажаєте використовувати ващі дані?
     as_csv: Відкрити в електронній таблиці
@@ -1285,6 +1293,7 @@ uk:
     upload_cover_photo: Завантажити зображення для обкладинки
     request_to_join_prompt: Запит на приєднання
     default_request_to_join_prompt: Дякуємо за інтерес до нашої групи. Будь ласка, представтеся та поясніть, чому ви хочете приєднатися.
+    upgrade_for_subgroups: 'Будь ласка, <a class="text-decoration-underline" style="color: inherit" href="/upgrade" target="_blank">оновіть свою підписку</a> , щоб створити підгрупу'
   group_export_modal:
     title: Експортувати дані групи
     body: |
@@ -1751,6 +1760,10 @@ uk:
     meaning_hint: Речення, яке пояснює, що означає вибір цієї опції
     prompt: Підказка причини
     prompt_hint: Питання, яке спонукає виборців аргументувати чи переглянути свою позицію.
+    thumb_up: Великий палець вгору
+    thumb_down: Великий палець вниз
+    thumb_sideways: Великий палець вбік
+    hand_up: Рука вгору
   poll_common:
     superseded: Замінено
     outdated: Застаріла
@@ -2162,6 +2175,9 @@ uk:
     hide_results_description: Якщо ви хочете, щоб люди голосували, не знаючи, як проголосували інші, ви можете приховати результати опитування.
     process_helptext: Назвіть і опишіть процес, який використовується для проведення цього опитування.
     reminder_helptext: Надішліть сповіщення «Скоро закривається» перед закриттям опитування. Це може бути можливість для людей побачити, як проголосували інші, і переглянути свій власний голос, або просто спосіб збільшити участь в опитуванні.
+    deadline: Дедлайн
+    how_much_time_to_vote: Скільки часу ви дасте людям для голосування?
+    advanced_settings: Розширені налаштування
     none_of_the_above: Нічого з перерахованого вище
   poll_proposal_form:
     start_header: Внести пропозицію
@@ -2552,6 +2568,7 @@ uk:
     event_kind_helptext: Виберіть події, про які бот завжди буде сповіщений. Якщо ви не впевнені, просто залиште їх усі.
     notification_only_label: Надіслати лише заголовок сповіщення
     check_for_test_message: Перевірте свою кімнату чату на наявність повідомлення від бота!
+    webex: Вебекс
   webhook:
     integrations: Інтеграція
     api_keys: Ключі API
