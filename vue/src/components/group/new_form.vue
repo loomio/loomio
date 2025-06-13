@@ -157,8 +157,9 @@ export default
     },
 
     submitIsDisabled() {
-      return !!this.group.name || (this.group.parentId && !this.group.parent().subscription.allow_subgroups)
+      return !this.group.name || (this.group.parentId && !this.group.parent().subscription.allow_subgroups)
     },
+
     showUpgradeAlert() {
       return (this.group.parentId && !this.group.parent().subscription.allow_subgroups)
     }
