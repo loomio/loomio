@@ -114,7 +114,7 @@ export default
         title: I18n.global.t('group_survey.categories.'+category),
         value: category
       }));
-    }, 
+    },
     actionName() {
       if (this.group.isNew()) { return 'created'; } else { return 'updated'; }
     },
@@ -154,6 +154,13 @@ export default
       } else {
         return 'group_form.group_name';
       }
+    },
+
+    submitIsDisabled() {
+      return !!this.group.name || (this.group.parentId && !this.group.parent().subscription.allow_subgroups)
+    },
+    showUpgradeAlert() {
+      return (this.group.parentId && !this.group.parent().subscription.allow_subgroups)
     }
   }
 };
@@ -162,9 +169,19 @@ export default
 <template lang="pug">
 v-card.group-form(:title="group.parentId ? $t('group_form.new_subgroup') : $t('sidebar.start_group')")
   .px-4
-    p.text-medium-emphasis.pb-8(v-if='!group.parentId' v-t="'group_form.new_group_explainer'")
-    p.text-medium-emphasis.pb-9(v-if='group.parentId' v-t="'group_form.new_subgroup_explainer'")
+    p.text-medium-emphasis.pb-8
+      span(v-if='!group.parentId')
+        span(v-t="'group_form.new_group_explainer'")
+        space
+        help-link(path="user_manual/groups/starting_a_group")
+      span(v-else)
+        span(v-t="'group_form.new_subgroup_explainer'")
+        space
+        help-link(path="user_manual/groups/subgroups")
+
     v-select.group-form__parent-group(v-if="parentGroups.length > 1" v-model='group.parentId' :items="parentGroups" :label="$t('group_form.parent_group')")
+    v-alert.mb-4(v-if="showUpgradeAlert" color="error" variant="tonal")
+      span(v-html="$t('group_form.upgrade_for_subgroups', {parent: group.parent().name})")
     v-text-field.group-form__name#group-name(
       v-model='group.name'
       :placeholder="$t(groupNamePlaceholder)"
@@ -192,9 +209,9 @@ v-card.group-form(:title="group.parentId ? $t('group_form.new_subgroup') : $t('s
           v-radio(v-for='privacy in privacyOptions' :key="privacy" :class="'md-checkbox--with-summary group-form__privacy-' + privacy" :value='privacy' :aria-label='privacy')
             template(v-slot:label)
               .group-form__privacy-title
-                strong(v-t="'common.privacy.' + privacy")
-                mid-dot
-                span {{ privacyStringFor(privacy) }}
+                strong.text-high-emphasis(v-t="'common.privacy.' + privacy")
+                mid-dot.text-medium-emphasis
+                span.text-medium-emphasis {{ privacyStringFor(privacy) }}
 
       p.group-form__privacy-statement.text-caption.text-medium-emphasis {{privacyStatement}}
       .group-form__section.group-form__joining.lmo-form-group(v-if='group.privacyIsOpen()')
@@ -214,11 +231,15 @@ v-card.group-form(:title="group.parentId ? $t('group_form.new_subgroup') : $t('s
       p.text-caption.text-medium-emphasis
         span(v-t="'group_form.secret_by_default'")
 
-
   v-card-actions.ma-2
-    help-link(path="en/user_manual/groups/starting_a_group")
     v-spacer
-    v-btn.group-form__submit-button(:loading="group.processing" color="primary" @click='submit()' variant="elevated")
+    v-btn.group-form__submit-button(
+      :loading="group.processing"
+      color="primary"
+      @click='submit()'
+      variant="elevated"
+      :disabled="submitIsDisabled"
+    )
       span(v-if='group.isParent()' v-t="'group_form.submit_start_group'")
       span(v-if='!group.isParent()' v-t="'group_form.submit_start_subgroup'")
 </template>

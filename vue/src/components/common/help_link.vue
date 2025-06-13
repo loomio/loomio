@@ -7,7 +7,10 @@ export default {
 </script>
 
 <template lang="pug">
-v-btn.help-link(variant="plain" :href="'https://help.loomio.com/'+path" target="_blank")
-  span(v-t="'common.help'")
-  common-icon.ml-1(size="small" name="mdi-open-in-new")
+a.help-link.text-decoration-underline(
+  style="color: inherit"
+  :href="'https://help.loomio.com/en/'+path"
+  target="_blank"
+)
+  span(v-t="'common.learn_more'")
 </template>

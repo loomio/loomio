@@ -190,7 +190,7 @@ v-main
             v-alert(v-if="user.bot" type="warning")
               span(v-t="'profile_page.bot_account_warning'")
         v-card-actions.profile-page__update-account
-          help-link(path="en/user_manual/users/user_profile")
+          help-btn(path="en/user_manual/users/user_profile")
           v-spacer
           v-btn.profile-page__update-button(
             color="primary"

@@ -43,7 +43,7 @@ export default {
       this.model.saveVolume(this.volume, this.applyToAll)
       .then(() => {
         Flash.success('change_volume_form.saved');
-        EventBus.$emit('closeModal'); 
+        EventBus.$emit('closeModal');
       });
     },
 
@@ -116,7 +116,7 @@ v-card.change-volume-form(:title="$t(translateKey() + '.title', { title: title }
     p.mt-4(v-if="model.isA('discussion')")
     p.mt-4(v-if="model.isA('membership')")
   v-card-actions(align-center)
-    help-link(path="en/user_manual/users/email_settings/#group-email-notification-settings")
+    help-btn(path="en/user_manual/users/email_settings/#group-email-notification-settings")
     v-spacer
     v-btn.change-volume-form__submit(:disabled='!formChanged' @click='submit()' color="primary")
       span( v-t="'common.action.update'" )

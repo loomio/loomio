@@ -81,7 +81,7 @@ v-card.chatbot-list(:title="$t('chatbot.chatbots')")
         v-list-item-title {{bot.name}}
         v-list-item-subtitle {{bot.kind}} {{bot.server}} {{bot.channel}}
   v-card-actions
-    help-link(path='en/user_manual/groups/integrations/chatbots')
+    help-btn(path='en/user_manual/groups/integrations/chatbots')
     v-spacer
     action-menu(:actions='addActions' :name="$t('chatbot.add_chatbot')")
 </template>

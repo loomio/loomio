@@ -48,6 +48,7 @@ module.exports = {
   GroupOnboardingCard: 'group/onboarding_card',
   GroupPrivacyButton: 'group/privacy_button',
   GroupStart: 'group/start',
+  HelpBtn: 'common/help_btn',
   HelpLink: 'common/help_link',
   JoinGroupButton: 'group/join_button',
   LmoTextarea: 'lmo_textarea/lmo_textarea',

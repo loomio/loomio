@@ -552,7 +552,7 @@ export default {
   common-notify-fields(v-if="poll.id" :model="poll" includeActor)
 
   v-card-actions.poll-common-form-actions
-    help-link(path='en/user_manual/polls/intro_to_decisions')
+    help-btn(path='en/user_manual/polls/intro_to_decisions')
     v-spacer
     v-btn(
       variant="plain"

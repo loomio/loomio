@@ -101,7 +101,7 @@ export default {
         EventBus.$emit('resetDraft', 'discussion', this.discussion.id, 'description', this.discussion.description);
       }
     },
-    
+
     submit() {
       const actionName = this.discussion.id ? 'updated' : 'created';
       this.discussion.save().then(data => {
@@ -224,7 +224,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
       validation-errors(:subject='discussion' field='title')
 
       tags-field(:model="discussion")
-        
+
       lmo-textarea(
         :model='discussion'
         field="description"
@@ -235,7 +235,7 @@ v-card.discussion-form(@keyup.ctrl.enter="submit()" @keydown.meta.enter.stop.cap
 
       common-notify-fields(v-if="loaded" :model="discussion" :initial-recipients="initialRecipients")
   v-card-actions
-    help-link(path='en/user_manual/threads/starting_threads')
+    help-btn(path='en/user_manual/threads/starting_threads')
     v-btn.discussion-form__edit-layout(v-if="discussion.id" @click="openEditLayout")
       span(v-t="'thread_arrangement_form.edit'")
     v-spacer

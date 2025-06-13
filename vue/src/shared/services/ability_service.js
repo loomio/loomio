@@ -193,7 +193,7 @@ export default new class AbilityService {
   }
 
   canCreateSubgroups(group) {
-    return group.isParent() && group.subscription.allow_subgroups &&
+    return group.isParent() &&
     (group.adminsInclude(Session.user()) ||
     (group.membersInclude(Session.user()) && group.membersCanCreateSubgroups));
   }

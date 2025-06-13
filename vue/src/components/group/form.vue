@@ -342,7 +342,7 @@ v-card.group-form(:title="$t(cardTitle)")
               span.text-caption(v-t="'group_form.admins_can_edit_user_content_help'")
 
   v-card-actions
-    help-link(path="en/user_manual/groups/settings")
+    help-btn(path="en/user_manual/groups/settings")
     v-spacer
     v-btn.group-form__submit-button(color="primary" variant="tonal" @click='submit()')
       span(v-if='group.isNew() && group.isParent()' v-t="'group_form.submit_start_group'")
