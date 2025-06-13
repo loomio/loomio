@@ -5,6 +5,7 @@ import WatchRecords from '@/mixins/watch_records';
 import UrlFor from '@/mixins/url_for';
 import { sortBy } from 'lodash-es';
 import ScrollService from '@/shared/services/scroll_service';
+import Session        from '@/shared/services/session';
 
 
 export default {
@@ -25,7 +26,8 @@ export default {
 
   computed: {
     selectedSequenceId() { return parseInt(this.$route.params.sequence_id); },
-    selectedCommentId() { return parseInt(this.$route.params.comment_id); }
+    selectedCommentId() { return parseInt(this.$route.params.comment_id); },
+    isSignedIn() { return Session.isSignedIn(); },
   },
 
   methods: {
@@ -180,7 +182,7 @@ v-navigation-drawer.lmo-no-print.disable-select.thread-sidebar(v-if="discussion"
   div.strand-nav__toc
     //- | {{items}}
     router-link.strand-nav__entry.text-caption(
-      :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': item.unread}"
+      :class="{'strand-nav__entry--visible': item.visible, 'strand-nav__entry--selected': (item.sequenceId == selectedSequenceId || item.commentId == selectedCommentId), 'strand-nav__entry--unread': isSignedIn && item.unread}"
       :style="{'border-width': (item.depth * 2)+'px'}"
       v-for="item in items"
       :key="item.key"
