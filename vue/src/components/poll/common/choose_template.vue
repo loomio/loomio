@@ -43,7 +43,7 @@ export default {
   created() {
     this.watchRecords({
       collections: ["pollTemplates"],
-      query: records => this.query()
+      query: () => this.query()
     });
 
     if (this.discussion && this.discussion.discussionTemplateId) {
@@ -106,7 +106,7 @@ export default {
     cloneTemplate(template) {
       const poll = template.buildPoll();
       if (this.discussion) {
-        poll.discussionId = this.discussion.id; 
+        poll.discussionId = this.discussion.id;
         poll.groupId = this.discussion.groupId;
       } else {
         if (this.group) { poll.groupId = this.group.id; }
@@ -169,7 +169,7 @@ export default {
       :class="'poll-common-choose-template__'+name"
     )
       common-icon.mr-2(size="small" :name="icon" :color="filter == name ? 'primary' : null")
-      
+
       span.poll-type-chip-name(v-t="filterLabels[name]")
     template(v-if="userIsAdmin")
       v-spacer

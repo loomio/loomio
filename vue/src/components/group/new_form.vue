@@ -91,12 +91,6 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then(group => {
           EventBus.$emit('closeModal');
           this.$router.push(`/g/${groupKey}`);
-          EventBus.$emit('openModal', {
-            component: 'GroupInvitationForm',
-            props: {
-              group
-            }
-          });
         });
       }).catch(error => true);
     },

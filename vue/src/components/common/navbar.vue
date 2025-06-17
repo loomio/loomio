@@ -5,10 +5,13 @@ import AbilityService      from '@/shared/services/ability_service';
 import AuthModalMixin      from '@/mixins/auth_modal';
 import Session             from '@/shared/services/session';
 import FormatDate from '@/mixins/format_date';
+import SidebarTips from '@/components/sidebar/tips';
+import { mergeProps } from 'vue'
 
 import { last }            from 'lodash-es';
 
 export default {
+  components: { SidebarTips },
   mixins: [ AuthModalMixin, FormatDate ],
   data() {
     return {
@@ -19,7 +22,9 @@ export default {
       sidebarOpen: false,
       activeTab: '',
       showTitle: true,
-      page: null
+      page: null,
+      highlightTips: true,
+      mergeProps: mergeProps
     };
   },
 
@@ -44,6 +49,9 @@ export default {
 
 
   mounted() {
+    setTimeout(() => {
+      this.highlightTips = false;
+    }, 5000)
     EventBus.$on('sidebarOpen', val => {
       this.sidebarOpen = val;
     });
@@ -104,6 +112,7 @@ v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
   v-app-bar-title(@click="scrollTo('#context')")
     span(v-if="showTitle") {{title}}
   template(v-if='isLoggedIn')
+    sidebar-tips
     v-btn(@click="openSearchModal" icon :title="$t('common.action.search')")
       common-icon(name="mdi-magnify")
     notifications

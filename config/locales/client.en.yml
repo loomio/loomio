@@ -37,6 +37,55 @@ en:
     task_updated_not_done: 'Task marked as incomplete'
     no_tasks_assigned: There are no tasks assigned to you
 
+  tips:
+    tips_for_success: Tips for success
+    intro:
+      tip_title: Click here to start
+      title: Welcome to your new Loomio group!
+      body: |
+        <p>We've prepared this short series of tips to help you get started.</p>
+
+        <p>The tips are designed to ensure that the people you invite to join the group will have a good first impression, understand the essential features of the app, and feel confident participating in decisions together.</p>
+
+        <p>In the sidebar you'll find a link to the Loomio Help documentation, as well as a Contact Support button. Please feel free to reach out if you have questions or need advice.</p>
+      submit: Let's get started
+    group:
+      welcome_and_faq: Welcome! Read this to begin
+      upload_image:
+        title: Complete your group profile
+        helptext: |
+          <p>Let's review your group profile. The name, description, logo and cover image will be included in the invitation emails you send in an upcoming step.</p>
+          <p>Adding group cover image is an easy and effective way to create a good first impression with the people you invite to join.</p>
+          <p>You could use a recent team photo or a picture that represents your organization's work or community.</p>
+        open_group_settings: "Open group settings"
+
+      invite_people:
+        title: Invite people to the group
+        helptext: |
+          <p>If you've configured your group profile and started a welcome thread, now is a good time to invite some people to join the group.</p>
+          <p>Just enter the email address of each person you want to invite and click "Invite". If you have a list of emails, you can copy and paste them all at once. The list of emails can be comma or space seperated, Loomio will work with whatever you paste in.</p>
+          <p>Alternatively, if you already have a chat group set up, you can create a "Sharable link" to join the group. Anyone who clicks the link will be asked their email address and added to the group.</p>
+        submit: "Open the invitation form"
+
+      start_a_thread:
+        title: Start a thread
+        helptext: |
+          <p>Create a thread that people will see after they accept their invitation.</p>
+          <p>The intention is to encourage people to write their first comment in Loomio. This is a fairly easy but significant step - those people who comment have just stepped into particpation.</p>
+          <p>When multiple people participate like this, it creates an impression of who is in the group (and who's not, yet), and can show that there is support for trialing Loomio together.</p>
+          <p>To make this easy, we've provided a "Introductions" template you can modify.</p>
+        submit: Open the template
+      start_a_proposal:
+        title: Start a proposal
+        helptext: |
+          <p>In Loomio we use proposals to reveal support for a decision or find ways to improve it.</p>
+          <p>Let's start a proposal and ask your group members to vote on it.</p>
+          <p>We have some templates you can choose from.</p>
+        submit: See proposal templates
+
+      chase_up_stragglers: Chase up straggers
+      share_proposal_outcome: Share a proposal outcome
+
   templates:
     template_gallery: Template gallery
     title_template: "%{title} Template"
@@ -1642,7 +1691,7 @@ en:
     announcement_label: Announcements
     announcement_description: "You will receive an email about all content that has been announced by people in your groups"
     mentioned_label: Mentions & Replies
-    mentioned_description: "When someone @mentions you in a comment, you'll get a notification email"
+    mentioned_description: "When someone {'@'}mentions you in a comment, you'll get a notification email"
     update_settings: Save changes
     specific_groups: Settings for specific groups
     default_settings:

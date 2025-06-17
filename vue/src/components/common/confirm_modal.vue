@@ -1,6 +1,5 @@
 <script lang="js">
 import Flash  from '@/shared/services/flash';
-import LmoUrlService from '@/shared/services/lmo_url_service';
 import EventBus from '@/shared/services/event_bus';
 import { I18n } from '@/i18n';
 
@@ -55,7 +54,7 @@ export default {
 v-card.confirm-modal(:title)
   template(v-slot:append)
     dismiss-modal-button(v-if="!confirm.forceSubmit")
-  v-card-text.text-medium-emphasis.text-body-2.formatted-text
+  v-card-text.lmo-markdown-wrapper
     div(
       v-if="confirm.text.raw_helptext || confirm.text.helptext"
       v-html="confirm.text.raw_helptext || $t(confirm.text.helptext, confirm.textArgs)")

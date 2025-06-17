@@ -179,6 +179,10 @@ class Group < ApplicationRecord
     nil
   end
 
+  def custom_cover_photo?
+    !GroupService::DEFAULT_COVER_PHOTO_FILENAMES.include? cover_photo.filename.to_s
+  end
+
   def cover_url(size = 512) # 2048x512 or 1024x256 normal res
     size = size.to_i
     return nil unless cover_photo.attached?

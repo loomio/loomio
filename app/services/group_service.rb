@@ -1,23 +1,22 @@
 module GroupService
+  DEFAULT_COVER_PHOTO_FILENAMES = %w[
+    cover1.jpg
+    cover2.jpg
+    cover3.jpg
+    cover4.jpg
+    cover5.jpg
+    cover6.jpg
+    cover7.jpg
+    cover8.jpg
+    cover9.jpg
+    cover10.jpg
+    cover11.jpg
+    cover12.jpg
+    cover13.jpg
+    cover14.jpg
+  ]
   def self.remote_cover_photo
-    # id like to use unsplash api but need to work out how to meet their attribution requirements
-    filename = %w[
-      cover1.jpg
-      cover2.jpg
-      cover3.jpg
-      cover4.jpg
-      cover5.jpg
-      cover6.jpg
-      cover7.jpg
-      cover8.jpg
-      cover9.jpg
-      cover10.jpg
-      cover11.jpg
-      cover12.jpg
-      cover13.jpg
-      cover14.jpg
-    ].sample
-    Rails.root.join("public/theme/group_cover_photos/#{filename}")
+    Rails.root.join("public/theme/group_cover_photos/#{DEFAULT_COVER_PHOTO_FILENAMES.sample}")
   end
 
   def self.invite(group:, params:, actor:)

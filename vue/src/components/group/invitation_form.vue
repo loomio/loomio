@@ -1,7 +1,5 @@
 <script lang="js">
-import GroupService from '@/shared/services/group_service';
 import Records        from '@/shared/services/records';
-import Session from '@/shared/services/session';
 import EventBus from '@/shared/services/event_bus';
 import AppConfig      from '@/shared/services/app_config';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
@@ -133,8 +131,6 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       //- p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
       p(v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
   v-card-text(v-else)
-    v-alert.mb-6(v-if="!group.parentId && group.membershipsCount < 2" type="info" variant="tonal" :icon="mdiAccountMultiplePlus")
-      span(v-t="'announcement.form.invite_people_to_evaluate_loomio'")
     recipients-autocomplete(
       :label="$t('announcement.form.who_to_invite')"
       :placeholder="$t('announcement.form.type_or_paste_email_addresses_to_invite')"

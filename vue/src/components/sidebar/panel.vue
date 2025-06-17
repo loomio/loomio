@@ -13,6 +13,7 @@ import { compact } from 'lodash-es';
 import SidebarSubgroups from '@/components/sidebar/subgroups';
 import SidebarSettings from '@/components/sidebar/settings';
 import SidebarHelp from '@/components/sidebar/help';
+
 import { mdiPlus, mdiCog } from '@mdi/js';
 
 import { useTheme } from 'vuetify';
@@ -20,7 +21,7 @@ import { useTheme } from 'vuetify';
 var theme = {}
 
 export default {
-  components: {SidebarSettings, SidebarSubgroups, SidebarHelp},
+  components: { SidebarSettings, SidebarSubgroups, SidebarHelp },
   mixins: [WatchRecords, UrlFor, FormatDate],
   data() {
     return {
@@ -46,6 +47,7 @@ export default {
 
   created() {
     theme = useTheme();
+    this.user = Session.user();
 
     EventBus.$on('toggleSidebar', () => {
       this.open = !this.open;
@@ -77,6 +79,7 @@ export default {
     });
 
     EventBus.$on('signedIn', user => {
+      this.user = Session.user();
       this.fetchData();
       this.openIfPinned();
     });
@@ -132,8 +135,6 @@ export default {
         }
       });
     },
-
-    setProfilePicture() { EventBus.$emit('openModal', {component: 'ChangePictureForm'}); },
   },
 
   computed: {
@@ -142,15 +143,11 @@ export default {
       return AppConfig.features.app.gray_sidebar_logo_in_dark_mode && theme.global.name.value.startsWith("dark")
     },
     isSignedIn() { return Session.isSignedIn(); },
-    user() { return Session.user(); },
     activeGroup() { if (this.group) { return [this.group.id]; } else { return []; } },
     logoUrl() { return AppConfig.theme.app_logo_src; },
     showTemplateGallery() { return AppConfig.features.app.template_gallery; },
     showExploreGroups() { return AppConfig.features.app.explore_public_groups; },
     showNewThreadButton() { return AppConfig.features.app.new_thread_button; },
-    needProfilePicture() {
-      return Session.isSignedIn() && this.user && !this.user.avatarUrl && !this.user.hasExperienced('changePicture');
-    }
   }
 };
 </script>
@@ -163,20 +160,14 @@ v-navigation-drawer.sidenav-left.lmo-no-print(app v-model="open")
   )
 
   template(v-else)
-    v-list.pb-0.mb-0(nav)
+    v-list(nav)
       v-list-item.sidebar__user-dropdown(nav slim @click.prevent="showSettings = true" :append-icon="mdiCog")
         template(v-slot:prepend)
           user-avatar.mr-2(:user="user" :size="32")
         v-list-item-title {{ user.name }}
         v-list-item-subtitle {{ user.email }}
-      template(v-if="needProfilePicture")
-        v-divider
-        v-list-item(@click="setProfilePicture" color="warning")
-          template(v-slot:prepend)
-            common-icon(name="mdi-emoticon-outline")
-          v-list-item-title(v-t="'profile_page.incomplete_profile'")
-          v-list-item-subtitle(v-t="'profile_page.set_your_profile_picture'")
 
+    v-divider
     v-list(nav density="compact" :lines="false")
       v-list-item.sidebar__list-item-button--recent(to="/dashboard" :title="$t('dashboard_page.aria_label')")
       v-list-item(to="/inbox" :title="$t('sidebar.unread_threads', { count: unreadThreadCount() })")

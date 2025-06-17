@@ -79,9 +79,7 @@ export default class UserModel extends BaseModel {
   }
 
   orphanParents() {
-    return uniq(compact(this.orphanSubgroups().map(group => group.parentId && group.parent())
-    )
-    );
+    return uniq(compact(this.orphanSubgroups().map(group => group.parentId && group.parent())));
   }
 
   membershipFor(group) {
