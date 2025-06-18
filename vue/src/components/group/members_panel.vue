@@ -148,7 +148,14 @@ export default
       });
       this.query();
     },
-
+    openShareableLinkForm() {
+      EventBus.$emit('openModal', {
+        component: 'GroupShareableLinkForm',
+        props: {
+          group: this.group
+        }
+      });
+    },
     invite() {
       EventBus.$emit('openModal', {
         component: 'GroupInvitationForm',
@@ -232,8 +239,9 @@ export default
         @click="invite()"
       )
         span(v-t="'common.action.invite'")
-      shareable-link-modal(v-if='canAddMembers' :group="group")
-      v-btn.group-page__requests-tab.text-medium-emphasis(
+      v-btn.members-panel__shareable-link-btn(v-if='canAddMembers' color="primary" variant="tonal" @click="openShareableLinkForm()")
+        span(v-t="'members_panel.sharable_link'")
+      v-btn.group-page__requests-tab.text-medium-emphasis.ml-2(
         v-if='group.isVisibleToPublic && canAddMembers'
         :to="urlFor(group, 'members/requests')"
         variant="text"

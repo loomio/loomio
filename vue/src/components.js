@@ -47,6 +47,7 @@ module.exports = {
   GroupNewForm: 'group/new_form',
   GroupOnboardingCard: 'group/onboarding_card',
   GroupPrivacyButton: 'group/privacy_button',
+  GroupShareableLinkForm: 'group/shareable_link_form',
   GroupStart: 'group/start',
   HelpBtn: 'common/help_btn',
   HelpLink: 'common/help_link',

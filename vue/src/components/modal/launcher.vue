@@ -43,6 +43,7 @@ export default
     PollMembers: defineAsyncComponent(() => import('@/components/poll/members')),
     PollReminderForm: defineAsyncComponent(() => import('@/components/poll/reminder_form')),
     GroupInvitationForm: defineAsyncComponent(() => import('@/components/group/invitation_form')),
+    GroupShareableLinkForm: defineAsyncComponent(() => import('@/components/group/shareable_link_form')),
     AnnouncementHistory: defineAsyncComponent(() => import('@/components/common/announcement_history')),
     SearchModal: defineAsyncComponent(() => import('@/components/search/modal')),
     UserNameModal: defineAsyncComponent(() => import('@/components/group/user_name_modal')),

@@ -1,7 +1,4 @@
 <script lang="js">
-import AppConfig                from '@/shared/services/app_config';
-import EventBus                 from '@/shared/services/event_bus';
-import RecordLoader             from '@/shared/services/record_loader';
 import AbilityService           from '@/shared/services/ability_service';
 import PollCommonForm from '@/components/poll/common/form';
 import PollCommonChooseTemplateWrapper from '@/components/poll/common/choose_template_wrapper';
@@ -31,8 +28,8 @@ export default {
     this.watchRecords({
       key: this.discussion.id,
       collections: ['groups', 'memberships', 'polls'],
-      query: store => {
-        return this.canAddComment = AbilityService.canAddComment(this.discussion);
+      query: () => {
+        this.canAddComment = AbilityService.canAddComment(this.discussion);
       }
     });
     this.resetComment();

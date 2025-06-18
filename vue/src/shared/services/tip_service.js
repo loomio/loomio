@@ -95,23 +95,7 @@ export default new class TipService {
         show() { return !!group },
         disabled() { return false },
         perform() {
-          EventBus.$emit('openModal', {
-            component: 'ConfirmModal',
-            props: {
-              confirm: {
-                submit() { return new Promise((resolve) => resolve()) },
-                successCallback() {
-                  EventBus.$emit('openModal', { component: 'GroupInvitationForm', props: { group } });
-                },
-                forceSubmit: true,
-                text: {
-                  title:    'tips.group.invite_people.title',
-                  helptext: 'tips.group.invite_people.helptext',
-                  submit:   'tips.group.invite_people.submit'
-                },
-              }
-            }
-          });
+          EventBus.$emit('openModal', { component: 'GroupInvitationForm', props: { group } });
         }
       },
       {

@@ -5,7 +5,7 @@ import AppConfig      from '@/shared/services/app_config';
 import RecipientsAutocomplete from '@/components/common/recipients_autocomplete';
 import AbilityService from '@/shared/services/ability_service';
 import Flash   from '@/shared/services/flash';
-import { uniq, debounce } from 'lodash-es';
+import { debounce } from 'lodash-es';
 import { I18n } from '@/i18n';
 import { mdiAccountMultiplePlus } from '@mdi/js';
 import WatchRecords from '@/mixins/watch_records';
@@ -107,7 +107,16 @@ export default
 
     updateSuggestions() {
       this.excludedUserIds = this.group.memberIds();
-    }
+    },
+
+    openShareableLinkForm() {
+      EventBus.$emit('openModal', {
+        component: 'GroupShareableLinkForm',
+        props: {
+          group: this.group
+        }
+      });
+    },
   },
 
   computed: {
@@ -131,6 +140,13 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       //- p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
       p(v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
   v-card-text(v-else)
+    v-alert.mb-2(variant="tonal" color="info")
+      p.mb-2(v-t="'invitation_form.enter_emails_of_people_to_invite'")
+      p
+        span(v-t="'invitation_form.already_chatting_somewhere'")
+        space
+        a.text-decoration-underline(style="color:inherit" @click="openShareableLinkForm" v-t="'invitation_form.try_the_shareable_link_instead'")
+
     recipients-autocomplete(
       :label="$t('announcement.form.who_to_invite')"
       :placeholder="$t('announcement.form.type_or_paste_email_addresses_to_invite')"
@@ -175,24 +191,6 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
 
 </template>
 <style lang="css">
-
-.lmo-label {
-  color: rgba(0, 0, 0, 0.6);
-  height: 20px;
-  line-height: 20px;
-  max-width: 133%;
-  transform: translateY(-18px) scale(0.75);
-  max-width: 90%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  top: 6px;
-  white-space: nowrap;
-  pointer-events: none;
-  font-size: 12px;
-  line-height: 1;
-  min-height: 8px;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-}
 
 .invitation-form__select-groups {
   margin-top: 8px;
