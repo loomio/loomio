@@ -64,7 +64,7 @@ v-card.confirm-modal(:title)
 
   v-card-actions
     v-btn(text v-if="!confirm.forceSubmit" @click="close()")
-      span(v-t="'common.action.cancel'")
+      span(v-t="confirm.text.cancel || 'common.action.cancel'")
     v-spacer
     v-btn.confirm-modal__submit(
       variant="elevated"

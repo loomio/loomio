@@ -57,7 +57,7 @@ export default {
       this.outcome.eventSummary = this.outcome.eventSummary || this.outcome.poll().title;
     }
   },
-    
+
   computed: {
     poll() { return this.outcome.poll(); }
   },
@@ -145,9 +145,8 @@ v-card.poll-common-outcome-modal(
         @click:clear="outcome.reviewOn = null"
         hide-actions
       )
-      p.pb-4(v-if="outcome.reviewOn" v-t="'poll_common_outcome_form.you_will_be_notified'")
 
-    lmo-textarea.poll-common-outcome-form__statement(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
+    lmo-textarea.poll-common-outcome-form__statement.mt-4(:model='outcome' field='statement' :label="$t('poll_common.statement')" :placeholder="$t('poll_common_outcome_form.statement_placeholder')")
       template(v-slot:actions)
         v-btn.poll-common-outcome-form__submit(color="primary" @click='submit()' :loading="loading")
           span(v-t="'common.action.save'")

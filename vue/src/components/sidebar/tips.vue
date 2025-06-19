@@ -61,11 +61,7 @@ v-btn(icon v-if="tips.length")
 
     v-list(nav density="compact" :lines="false")
       v-list-subheader
-        //span(v-t="'tips.tips_for_success'")
-        //span Get started successfully
-        //span {{tips.length}} steps to success!
-        span Complete these steps to set up your group
-        // span {{tips.length}} steps to a successful new group
+        span(v-t="'tips.complete_these_steps_to_set_up_your_group'")
       v-list-item(v-for="tip in tips" :title="$t(tip.title)" @click="tip.perform" :key="tip.title" :disabled="tip.disabled()")
         template(v-slot:append)
           common-icon(v-if="tip.completed()" name='mdi-check')

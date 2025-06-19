@@ -136,12 +136,40 @@ export default new class TipService {
         }
       },
       {
-        title: 'tips.group.share_proposal_outcome',
+        title: 'tips.group.share_an_outcome.title',
         show() { return true },
         completed() { return false },
         disabled() { return group.pollsCount == 0 },
         perform() {
-
+          EventBus.$emit('openModal', {
+            component: 'ConfirmModal',
+            props: {
+              confirm: {
+                submit: () => {
+                  let discussion = null;
+                  return Records.remote.fetch({
+                    path: 'discussions',
+                    params: {
+                      group_id: group.id,
+                      subgroups: 'none'
+                    }
+                  }).then(() => {
+                    discussion = Records.discussions.collection.chain()
+                      .find({groupId: group.id})
+                      .simplesort('id')
+                      .data()[0];
+                    vm.$router.push(vm.urlFor(discussion, null, { current_action: 'add-poll' }));
+                  });
+                },
+                text: {
+                  title:    'tips.group.share_an_outcome.title',
+                  helptext: 'tips.group.share_an_outcome.helptext',
+                  submit:   'tips.group.share_an_outcome.submit',
+                  cancel: 'tips.group.share_an_outcome.cancel'
+                },
+              }
+            }
+          });
         }
       },
       // {

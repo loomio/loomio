@@ -38,7 +38,7 @@ en:
     no_tasks_assigned: There are no tasks assigned to you
 
   tips:
-    tips_for_success: Tips for success
+    complete_these_steps_to_set_up_your_group: Complete these steps to set up your group
     intro:
       tip_title: Click here to start
       title: Welcome to your new Loomio group!
@@ -67,18 +67,24 @@ en:
         helptext: |
           <p>Create a thread that people will see after they accept their invitation.</p>
           <p>The intention is to encourage people to write their first comment in Loomio.</p>
-          <p>To make this easy, we've provided a "Practice thread" template you can use.</p>
-        submit: Open the template
+          <p>To make this easy, we've provided a <b>Practice thread</b> template you can use.</p>
+        submit: See thread templates
       start_a_proposal:
         title: Start a proposal
         helptext: |
           <p>In Loomio we use proposals to reveal support for a decision or find ways to improve it.</p>
           <p>Let's start a proposal and ask your group members to vote on it.</p>
-          <p>We've created a "Practice proposal" template for you to use.</p>
+          <p>We've created a <b>Practice proposal</b> template for you to use.</p>
         submit: See proposal templates
 
-      chase_up_stragglers: Chase up straggers
-      share_proposal_outcome: Share a proposal outcome
+      share_an_outcome:
+        title: Share a proposal outcome
+        helptext: |
+          <p>To help move decisions forward, proposals have a deadline for voting. When the deadline is reached, voting will be closed and you'll be notified to share what the outcome is.</p>
+          <p>If your proposal deadline has not yet passed, but you have enough votes to proceed, you can click "Close early" to share an outcome now.</p>
+          <p>When the time is right, share an outcome for your proposal.</p>
+        submit: Enter an outcome
+        cancel: Do this later
 
   templates:
     template_gallery: Template gallery
