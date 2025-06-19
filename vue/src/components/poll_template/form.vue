@@ -7,13 +7,15 @@ import Records from '@/shared/services/records';
 import EventBus from '@/shared/services/event_bus';
 import AbilityService from '@/shared/services/ability_service';
 import { addDays, addMinutes, intervalToDuration, formatDuration } from 'date-fns';
-// import { HandleDirective } from 'vue-slicksort';
 import { isSameYear, startOfHour, setHours }  from 'date-fns';
 import { I18n } from '@/i18n';
 import UrlFor from '@/mixins/url_for';
 import WatchRecords from '@/mixins/watch_records';
+import { HandleDirective } from 'vue-slicksort';
+
 export default {
   // directives: { handle: HandleDirective },
+  directives: { handle: HandleDirective },
   mixins: [WatchRecords, UrlFor],
 
   props: {
@@ -225,12 +227,11 @@ export default {
   v-card-title.px-0
     h1.text-h4(tabindex="-1" v-t="titlePath")
 
-  v-alert.poll-template-info-panel(type="info" text outlined)
+  v-alert.poll-template-info-panel.mb-2(type="info" variant="tonal")
     span
       span(v-t="'poll_common.need_help_with_templates'")
       space
-      a.text-decoration-underline(target="_blank" href="https://help.loomio.com/en/user_manual/polls/poll_templates/index.html")
-        span(v-t="'common.visit_loomio_help'")
+      help-link(path="user_manual/polls/poll_templates")
 
   v-select(
     :label="$t('poll_common_form.voting_method')"
@@ -286,39 +287,42 @@ export default {
     .v-label.v-label--active.px-0.text-caption.py-2(v-t="'poll_common_form.options'")
     v-alert(v-if="!pollOptions.length" variant="tonal" type="info")
       span(v-t="'poll_common_form.no_options_add_some'")
-    sortable-list(v-model:list="pollOptions" append-to=".app-is-booted" use-drag-handle lock-axis="y")
+    sortable-list(
+      v-model:list="pollOptions"
+      append-to=".app-is-booted"
+      use-drag-handle
+      lock-axis="y"
+      v-if="pollOptions.length"
+    )
       sortable-item(
         v-for="(option, priority) in pollOptions"
         :index="priority"
         :key="option.name"
-        :item="option"
-        v-if="pollOptions.length"
       )
-        v-sheet.mb-2.rounded(outlined)
-          v-list-item(style="user-select: none")
-            v-list-item-icon(v-if="hasOptionIcon" v-handle)
-              v-avatar(size="48")
-                img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
+        v-list-item.mb-2(lines="two" rounded variant="tonal" style="user-select: none")
+          template(v-slot:prepend v-if="hasOptionIcon" v-handle)
+            v-avatar(size="48")
+              img(:src="'/img/' + option.icon + '.svg'" aria-hidden="true")
 
-            v-list-item-content(v-handle)
-              v-list-item-title
-                span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
-                span(v-if="optionFormat == 'plain'") {{option.name}}
-                span(v-if="optionFormat == 'iso8601'")
-                  poll-meeting-time(:name="option.name")
-              v-list-item-subtitle {{option.meaning}}
+          v-list-item-title(v-handle)
+            span(v-if="optionFormat == 'i18n'" v-t="'poll_proposal_options.'+option.name")
+            span(v-if="optionFormat == 'plain'") {{option.name}}
+            span(v-if="optionFormat == 'iso8601'")
+              poll-meeting-time(:name="option.name")
+          v-list-item-subtitle.poll-common-vote-form__allow-wrap {{option.meaning}}
 
-            v-list-item-action
-              v-btn(
-                icon
-                @click="removeOption(option)"
-                :title="$t('common.action.delete')"
-              )
-                common-icon.text-medium-emphasis(name="mdi-delete")
-            v-list-item-action.ml-0
-              v-btn(icon @click="editOption(option)", :title="$t('common.action.edit')")
-                common-icon.text-medium-emphasis(name="mdi-pencil")
-            common-icon.text-medium-emphasis(v-handle :title="$t('common.action.move')" name="mdi-drag-vertical")
+          template(v-slot:append)
+            v-btn(
+              icon
+              variant="text"
+              @click="removeOption(option)"
+              :title="$t('common.action.delete')"
+            )
+              common-icon(name="mdi-delete")
+            div.ml-0(v-if="pollTemplate.pollType != 'meeting'")
+              v-btn(icon variant="text" @click="editOption(option)" :title="$t('common.action.edit')")
+                common-icon(name="mdi-pencil")
+            common-icon(name="mdi-drag-vertical" style="cursor: grab" v-handle :title="$t('common.action.move')" v-if="pollTemplate.pollType != 'meeting'")
 
     .d-flex.justify-center
       v-btn.poll-template-form__add-option-btn.my-2(color="primary" variant="tonal" @click="addOption")
