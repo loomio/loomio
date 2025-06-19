@@ -47,7 +47,6 @@ export default {
     }
   },
 
-
   mounted() {
     setTimeout(() => {
       this.highlightTips = false;
@@ -87,6 +86,7 @@ export default {
   },
 
   computed: {
+    user() { return Session.user() },
     groupName() {
       if (!this.group) { return; }
       return this.group.name;
@@ -112,7 +112,7 @@ v-app-bar.lmo-no-print(app clipped-right elevate-on-scroll color="background")
   v-app-bar-title(@click="scrollTo('#context')")
     span(v-if="showTitle") {{title}}
   template(v-if='isLoggedIn')
-    sidebar-tips
+    sidebar-tips(v-if="!user.experiences.hideOnboarding")
     v-btn(@click="openSearchModal" icon :title="$t('common.action.search')")
       common-icon(name="mdi-magnify")
     notifications

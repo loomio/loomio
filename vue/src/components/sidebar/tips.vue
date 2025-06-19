@@ -1,5 +1,6 @@
 <script lang="js">
 import AppConfig      from '@/shared/services/app_config';
+import Records      from '@/shared/services/records';
 import EventBus       from '@/shared/services/event_bus';
 import Session        from '@/shared/services/session';
 import GroupService   from '@/shared/services/group_service';
@@ -22,11 +23,13 @@ export default {
 
   created() {
     setTimeout(() => { this.spin = false }, 2000)
+    if (this.group) {
+      Records.remote.fetch({ path: 'polls', params: { group_id: this.group.id } });
+    }
     this.watchRecords({
-      collections: ['groups'],
+      collections: ['groups', 'polls'],
       query: () => {
         this.group = sortBy(this.user.parentGroups().filter( g => g.creatorId == this.user.id ), g => (- g.id))[0]
-        if (!this.group) { return };
         this.tips = TipService.tips(this.user, this.group, this).filter(t => t.show())
       }
     });
@@ -38,6 +41,24 @@ export default {
       GroupService.actions(this.group).edit_group.perform();
       this.$router.push(this.urlFor(this.group));
     },
+
+    hide() {
+      EventBus.$emit('openModal', {
+        component: 'ConfirmModal',
+        props: {
+          confirm: {
+            submit: () => {
+              return Records.users.saveExperience('hideOnboarding', true);
+            },
+            text: {
+              title: 'tips.hide.hide_onboarding',
+              helptext: 'tips.hide.helptext',
+              submit: 'auth_form.continue'
+            },
+          }
+        }
+      });
+    }
   },
   computed: {
     pctComplete() {
@@ -54,16 +75,20 @@ v-btn(icon v-if="tips.length")
     common-icon(name="mdiStarFace" color="primary")
 
   v-menu(activator="parent")
-    v-sheet(v-if="pctComplete == 100")
-      p Congratulations! You've completed all the steps.
-      p If you have any questions, or need an extension for your trial please contact us.
-      v-btn Close
+    v-card(v-if="pctComplete == 100" style="max-width: 320px")
+      v-card-text
+        p(v-t="'tips.youve_completed_all_the_steps'")
+      .text-center
+        v-btn.text-lowercase(size="small" variant="plain" @click="hide")
+          span.text-emphasis-medium(v-t="'tips.hide.title'")
 
-    v-list(nav density="compact" :lines="false")
+    v-list(v-else nav density="compact" :lines="false")
       v-list-subheader
-        span(v-t="'tips.complete_these_steps_to_set_up_your_group'")
+        span(v-t="'tips.getting_started_checklist'")
       v-list-item(v-for="tip in tips" :title="$t(tip.title)" @click="tip.perform" :key="tip.title" :disabled="tip.disabled()")
         template(v-slot:append)
           common-icon(v-if="tip.completed()" name='mdi-check')
-
+      .text-center
+        v-btn.text-lowercase(size="small" variant="plain" @click="hide")
+          span.text-emphasis-medium(v-t="'tips.hide.title'")
 </template>

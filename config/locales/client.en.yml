@@ -38,16 +38,23 @@ en:
     no_tasks_assigned: There are no tasks assigned to you
 
   tips:
+    youve_completed_all_the_steps: 🎉 You've completed all the steps!
+    getting_started_checklist: Getting started checklist
     complete_these_steps_to_set_up_your_group: Complete these steps to set up your group
+    hide:
+      title: Hide these tips
+      hide_onboarding: Hide onboarding tips
+      unhide_onboarding: Unhide onboarding tips
+      helptext: |
+        <p>This will remove the "Getting started checklist" from the titlebar.</p>
+        <p>If you want to bring it back later, you can <b>unhide onboarding</b> from the sidebar settings</p>
     intro:
       tip_title: Click here to start
       title: Welcome to your new Loomio group!
       body: |
-        <p>We've prepared this short series of tips to help you get started.</p>
+        <p>This short series of small steps is designed to ensure that the people you invite to join the group will have a good first impression and understand how to particpate in discussions and decisions.</p>
 
-        <p>The tips are designed to ensure that the people you invite to join the group will have a good first impression, understand the essential features of the app, and feel confident participating in decisions together.</p>
-
-        <p>In the sidebar you'll find a link to the Loomio Help documentation, as well as a Contact Support button. Please feel free to reach out if you have questions or need advice.</p>
+        <p>In the sidebar you'll find a Contact Support button. Please feel free to reach out if you have questions or need advice at any time.</p>
       submit: Let's get started
     group:
       welcome_and_faq: Welcome! Read this to begin
@@ -55,7 +62,7 @@ en:
         title: Complete your group profile
         helptext: |
           <p>Let's review your group profile. The name, description, logo and cover image will be included in the invitation emails you send in an upcoming step.</p>
-          <p>Adding group cover image is an easy and effective way to create a good first impression with the people you invite to join.</p>
+          <p><b>Add your own group cover image</b>, it helps to make a good first impression with the people you invite to join.</p>
           <p>You could use a recent team photo or a picture that represents your organization's work or community.</p>
         open_group_settings: "Open group settings"
 
@@ -80,10 +87,11 @@ en:
       share_an_outcome:
         title: Share a proposal outcome
         helptext: |
-          <p>To help move decisions forward, proposals have a deadline for voting. When the deadline is reached, voting will be closed and you'll be notified to share what the outcome is.</p>
-          <p>If your proposal deadline has not yet passed, but you have enough votes to proceed, you can click "Close early" to share an outcome now.</p>
-          <p>When the time is right, share an outcome for your proposal.</p>
-        submit: Enter an outcome
+          <p>To help move decisions forward, proposals have a deadline for voting. When the deadline is reached, voting will be closed and you'll be notified to share a proposal outcome.</p>
+          <p>The outcome is an opportunity to say if the proposal was successful and what will happen next.</p>
+          <p>If your proposal deadline has not yet passed, but you want to proceed anyway, you can click <b>Close early</b>.</p>
+          <p>When the time is right, <b>enter an outcome</b> for your proposal.</p>
+        submit: View proposal
         cancel: Do this later
 
   templates:
@@ -2059,6 +2067,7 @@ en:
     start_poll: Start a decision
     publish_poll: Share poll
     share_outcome: Share outcome
+    post_outcome: Post outcome
     view_all: View all
     save_changes: Save
     change_vote: Change your vote
@@ -2302,7 +2311,7 @@ en:
     reminder_sent: Reminder notification sent
 
   poll_common_set_outcome_panel:
-    enter_outcome: Enter outcome
+    enter_an_outcome: Enter an outcome
     poll_type: "This %{poll_type} has closed. Take time to consider the results then share an outcome so people know what will happen next."
 
   poll_common_outcome_form:

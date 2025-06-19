@@ -249,7 +249,7 @@ export default class PollModel extends BaseModel {
   }
 
   membersInclude(user) {
-    return this.stanceFor(user) || (this.discussionId && this.discussion().membersInclude(user)) || this.group().membersInclude(user);
+    return !!(this.stanceFor(user) || (this.discussionId && this.discussion().membersInclude(user)) || this.group().membersInclude(user));
   }
 
   stanceFor(user) {

@@ -19,7 +19,7 @@ export default {
     EventBus.$on('stanceSaved', () => EventBus.$emit('refreshStance'));
     this.watchRecords({
       collections: ["stances", "polls"],
-      query: records => {
+      query: () => {
         this.pollActions = PollService.actions(this.poll, this, this.event);
         this.eventActions = EventService.actions(this.event, this);
         this.myStance = this.poll.myStance();
@@ -62,8 +62,9 @@ export default {
 section.strand-item.poll-created
   .d-flex.justify-space-between
     .poll-common-card__title.text-h6.pb-1(tabindex="-1")
-      router-link(:to="urlFor(poll)" v-if='!poll.translation.title') {{poll.title}}
-      translation(v-if="poll.translation.title", :model='poll', field='title')
+      router-link.underline-on-hover(:to="urlFor(poll)" )
+        span(v-if='!poll.translation.title') {{poll.title}}
+        translation(v-if="poll.translation.title", :model='poll', field='title')
   div(v-if="!collapsed")
     poll-common-set-outcome-panel(:poll='poll' v-if="!poll.outcome()")
     poll-common-outcome-panel(:outcome='poll.outcome()' v-if='poll.outcome()')

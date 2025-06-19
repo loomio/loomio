@@ -62,7 +62,7 @@ export default new class StanceService {
         name: (stance.poll().config().has_options && 'poll_common.change_vote') || 'poll_common.change_response',
         icon: 'mdi-pencil',
         dock: 1,
-        canPerform: () => this.canUpdateStance(stance),
+        canPerform: () => !!this.canUpdateStance(stance),
         perform: () => this.updateStance(stance)
       },
 

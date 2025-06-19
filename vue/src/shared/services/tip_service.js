@@ -7,7 +7,7 @@ export default new class TipService {
     return [
       {
         title: 'tips.intro.tip_title',
-        show() { return true },
+        show() { return !!group },
         completed() { return user.hasExperienced('tips.intro') },
         disabled() { return false },
         perform() {
@@ -137,29 +137,18 @@ export default new class TipService {
       },
       {
         title: 'tips.group.share_an_outcome.title',
-        show() { return true },
-        completed() { return false },
+        show() { return !!group },
+        completed() { return group.polls().filter((poll) => poll.outcome()).length },
         disabled() { return group.pollsCount == 0 },
         perform() {
           EventBus.$emit('openModal', {
             component: 'ConfirmModal',
             props: {
               confirm: {
-                submit: () => {
-                  let discussion = null;
-                  return Records.remote.fetch({
-                    path: 'discussions',
-                    params: {
-                      group_id: group.id,
-                      subgroups: 'none'
-                    }
-                  }).then(() => {
-                    discussion = Records.discussions.collection.chain()
-                      .find({groupId: group.id})
-                      .simplesort('id')
-                      .data()[0];
-                    vm.$router.push(vm.urlFor(discussion, null, { current_action: 'add-poll' }));
-                  });
+                submit() { return new Promise((resolve) => resolve()) },
+                successCallback() {
+                  let poll = group.polls().filter((poll) => !poll.outcome())[0]
+                  vm.$router.push(vm.urlFor(poll));
                 },
                 text: {
                   title:    'tips.group.share_an_outcome.title',
@@ -172,6 +161,8 @@ export default new class TipService {
           });
         }
       },
+
+
       // {
       //   title: 'tips.any_questions_get_in_touch',
       //   show() { return AppConfig.features.app.subscriptions },

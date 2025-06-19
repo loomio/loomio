@@ -8,12 +8,8 @@ import { computed } from 'vue'
 import { useTheme } from 'vuetify';
 const theme = useTheme();
 
-const togglePinned = function() {
-  if (Session.user().experiences['sidebar']) {
-    return Records.users.saveExperience('sidebar', false);
-  } else {
-    return Records.users.saveExperience('sidebar', true);
-  }
+const unhideOnboarding = function() {
+  return Records.users.saveExperience('hideOnboarding', false);
 }
 
 const setTheme = function(name) {
@@ -66,10 +62,7 @@ v-list(nav density="comfortable")
       common-icon(name="mdi-weather-night" color="#658AE7")
 
   v-divider
-  v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" lines="two")
-    v-list-item-title
-      | Loomio version
-    v-list-item-subtitle
-      span {{version}}
+  v-list-item(v-if="user.experiences.hideOnboarding" @click="unhideOnboarding" :title="$t('tips.hide.unhide_onboarding')")
+  v-list-item(href="https://github.com/loomio/loomio/releases" target="_blank" lines="two" title="Loomio version" :subtitle="version")
 
 </template>

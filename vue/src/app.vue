@@ -63,7 +63,7 @@ export default {
 
       AppConfig.currentGroup      = options.group;
       AppConfig.currentDiscussion = options.discussion;
-      return AppConfig.currentPoll       = options.poll;
+      AppConfig.currentPoll       = options.poll;
     },
 
     shouldForceSignIn(options = {}) {
@@ -103,6 +103,9 @@ v-app.app-is-booted
 @import '@/css/roboto.css'
 @import '@/css/thumbicons.css'
 @import '@/css/print.scss'
+
+.underline-on-hover:hover
+  text-decoration: underline
 
 .v-card.group-form > .v-card__content
   overflow: visible!important

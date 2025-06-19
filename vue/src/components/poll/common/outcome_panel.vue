@@ -9,12 +9,9 @@ export default {
   props: {
     outcome: Object
   },
+
   methods: {
     parseISO
-  },
-
-  data() {
-    return {actions: OutcomeService.actions(this.outcome, this)};
   },
 
   computed: {
@@ -55,5 +52,5 @@ v-alert.my-4.poll-common-outcome-panel(
   link-previews(:model="outcome")
   document-list(:model="outcome")
   attachment-list(:attachments="outcome.attachments")
-  action-dock(:model="outcome", :actions="dockActions", :menuActions="menuActions")
+  action-dock(:model="outcome" :actions="dockActions" :menuActions="menuActions")
 </template>

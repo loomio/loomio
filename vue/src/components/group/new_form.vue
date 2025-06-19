@@ -91,6 +91,7 @@ export default
         Records.groups.findOrFetchById(groupKey, {}, true).then(group => {
           EventBus.$emit('closeModal');
           this.$router.push(`/g/${groupKey}`);
+          if (!this.group.parentId) { Records.users.saveExperience('hideOnboarding', false) }
         });
       }).catch(error => true);
     },
