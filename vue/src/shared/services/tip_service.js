@@ -121,7 +121,7 @@ export default new class TipService {
                       .find({groupId: group.id})
                       .simplesort('id')
                       .data()[0];
-                    vm.$router.push(vm.urlFor(discussion));
+                    vm.$router.push(vm.urlFor(discussion, null, { current_action: 'add-poll' }));
                   });
                 },
                 forceSubmit: true,

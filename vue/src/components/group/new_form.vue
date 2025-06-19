@@ -151,7 +151,7 @@ export default
     },
 
     submitIsDisabled() {
-      return !this.group.name || (this.group.parentId && !this.group.parent().subscription.allow_subgroups)
+      return !this.group.name || (this.group.parentId && !this.group.parent().subscription.allow_subgroups) || (!this.group.parentId && !this.group.category)
     },
 
     showUpgradeAlert() {

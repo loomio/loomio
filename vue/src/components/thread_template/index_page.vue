@@ -106,6 +106,8 @@ export default {
 
         v-alert.mx-4(v-if="!showSettings && group && group.discussionsCount < 2" type="info" variant="tonal")
           span(v-t="'thread_template.these_are_templates'")
+          space
+          help-link(path="en/user_manual/threads/starting_threads")
 
         v-list.append-sort-here(lines="two")
           .d-flex

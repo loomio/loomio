@@ -140,7 +140,7 @@ v-card.group-invitation-form(:title="$t('announcement.send_group',  {name: group
       //- p(v-if="invitationsRemaining < 1" v-html="$t('announcement.form.no_invitations_remaining', {upgradeUrl: upgradeUrl, maxMembers: subscription.max_members})")
       p(v-html="$t('discussion.subscription_canceled', {upgradeUrl: upgradeUrl})")
   v-card-text(v-else)
-    v-alert.mb-2(variant="tonal" color="info")
+    v-alert.mb-4(variant="tonal" color="info")
       p.mb-2(v-t="'invitation_form.enter_emails_of_people_to_invite'")
       p
         span(v-t="'invitation_form.already_chatting_somewhere'")

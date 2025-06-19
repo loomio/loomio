@@ -28,7 +28,8 @@ export default {
     '$route.params.sequence_id': 'respondToRoute',
     '$route.params.comment_id': 'respondToRoute',
     '$route.query.p': 'respondToRoute',
-    '$route.query.k': 'respondToRoute'
+    '$route.query.k': 'respondToRoute',
+    '$route.query.current_action': 'respondToRoute',
   },
 
   methods: {
@@ -59,6 +60,10 @@ export default {
     },
 
     focusSelector() {
+      if (this.loader.focusAttrs.actionPanel) {
+        return '.actions-panel-end';
+      }
+
       if (this.loader.focusAttrs.newest) {
         if (this.discussion.lastSequenceId()) {
           return `.sequenceId-${this.discussion.lastSequenceId()}`;
@@ -180,6 +185,10 @@ export default {
       }
 
       this.loader.addContextRule();
+
+      if (this.$route.query.current_action) {
+        this.loader.focusAttrs = {actionPanel: 1};
+      }
 
       this.scrollToFocusIfPresent();
 

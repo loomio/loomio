@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       canAddComment: false,
-      currentAction: 'add-comment',
+      currentAction: this.$route.query.current_action == "add-poll" ? 'add-poll' : 'add-comment',
       newComment: null,
       poll: null
     };
@@ -55,6 +55,9 @@ export default {
   },
 
   watch: {
+    '$route.query.current_action'(val) {
+      this.currentAction = (val == "add-poll" ? 'add-poll' : 'add-comment')
+    },
     'discussion.id'() {
       this.resetComment();
       this.resetPoll();
@@ -115,6 +118,7 @@ section.actions-panel#add-comment(:key="discussion.id" :class="{'mt-2 px-2 px-sm
         v-if='!isLoggedIn()'
       )
         span(v-t="'comment_form.sign_in'")
+  .actions-panel-end
 
 </template>
 

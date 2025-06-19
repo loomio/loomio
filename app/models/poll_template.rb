@@ -63,6 +63,7 @@ class PollTemplate < ApplicationRecord
     :process_introduction,
     :details,
     :reason_prompt,
+    :outcome_statement
     ].map(&:to_s).each do |key|
       unless self.send(key) == AppConfig.poll_types.dig(self.poll_type, 'defaults', key)
         out[key] = self[key]

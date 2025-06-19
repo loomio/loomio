@@ -1,3 +1,16 @@
+practice_thread:
+  process_name_i18n: discussion_templates.practice_thread.process_name
+  process_subtitle_i18n: discussion_templates.practice_thread.process_subtitle
+  process_introduction_i18n: discussion_templates.practice_thread.process_introduction
+  process_introduction_format: html
+  title_i18n: discussion_templates.practice_thread.title
+  description_i18n: discussion_templates.practice_thread.description
+  description_format: html
+  recipient_audience: group
+  newest_first: false
+  max_depth: 3
+  position: 0
+
 blank:
   process_name_i18n: discussion_templates.blank.process_name
   process_subtitle_i18n: discussion_templates.blank.process_subtitle
@@ -21,7 +34,6 @@ discuss_a_topic:
   newest_first: false
   max_depth: 3
   position: 1
-  recipient_audience: group
 
 onboarding_to_loomio:
   title_i18n: discussion_templates.onboarding_to_loomio.title
@@ -43,7 +55,7 @@ advice_process:
   process_subtitle_i18n: discussion_templates.advice_process.process_subtitle
   process_introduction_i18n: discussion_templates.advice_process.process_introduction
   description_i18n: discussion_templates.advice_process.description
-  tags_i18n: 
+  tags_i18n:
   - discussion_templates.advice_process.advice
   description_format: html
   process_introduction_format: html
@@ -58,7 +70,7 @@ consent_process:
   process_subtitle_i18n: discussion_templates.consent_process.process_subtitle
   process_introduction_i18n: discussion_templates.consent_process.process_introduction
   description_i18n: discussion_templates.consent_process.description
-  tags_i18n: 
+  tags_i18n:
   - discussion_templates.consent_process.consent
   process_introduction_format: html
   description_format: html
@@ -73,7 +85,7 @@ decision_by_consensus:
   process_subtitle_i18n: discussion_templates.decision_by_consensus.process_subtitle
   process_introduction_i18n: discussion_templates.decision_by_consensus.process_introduction
   description_i18n: discussion_templates.decision_by_consensus.description
-  tags_i18n: 
+  tags_i18n:
   - discussion_templates.decision_by_consensus.consensus
   process_introduction_format: html
   description_format: html
@@ -81,7 +93,7 @@ decision_by_consensus:
   position: 4
   max_depth: 3
   recipient_audience: group
-  
+
 approve_a_document:
   title_placeholder_i18n: discussion_templates.approve_a_document.title_placeholder
   process_name_i18n: discussion_templates.approve_a_document.process_name
@@ -90,7 +102,7 @@ approve_a_document:
   description_i18n: discussion_templates.approve_a_document.description
   process_introduction_format: html
   description_format: html
-  tags_i18n: 
+  tags_i18n:
   - doctypes.document
   newest_first: false
   position: 4
@@ -103,7 +115,7 @@ share_links_and_info:
   process_subtitle_i18n: discussion_templates.share_links_and_info.process_subtitle
   process_introduction_i18n: discussion_templates.share_links_and_info.process_introduction
   description_i18n: discussion_templates.share_links_and_info.description
-  tags_i18n: 
+  tags_i18n:
   - discussion_templates.share_links_and_info.information
   process_introduction_format: html
   description_format: html
@@ -119,7 +131,7 @@ prepare_for_a_meeting:
   process_subtitle_i18n: discussion_templates.prepare_for_a_meeting.process_subtitle
   process_introduction_i18n: discussion_templates.prepare_for_a_meeting.process_introduction
   description_i18n: discussion_templates.prepare_for_a_meeting.description
-  tags_i18n: 
+  tags_i18n:
   - decision_tools_card.meeting
   description_format: html
   process_introduction_format: html
@@ -134,7 +146,7 @@ funding_decision:
   process_subtitle_i18n: discussion_templates.funding_decision.process_subtitle
   process_introduction_i18n: discussion_templates.funding_decision.process_introduction
   description_i18n: discussion_templates.funding_decision.description
-  tags_i18n: 
+  tags_i18n:
   - decision_tools_card.meeting
   description_format: html
   process_introduction_format: html
@@ -150,7 +162,7 @@ elect_a_governance_position:
   process_introduction_i18n: discussion_templates.elect_a_governance_position.process_introduction
   description_i18n: discussion_templates.elect_a_governance_position.description
   description_format: html
-  tags_i18n: 
+  tags_i18n:
   - discussion_templates.elect_a_governance_position.election
   process_introduction_format: html
   newest_first: false
@@ -165,7 +177,7 @@ build_a_policy:
   process_introduction_i18n: discussion_templates.build_a_policy.process_introduction
   description_i18n: discussion_templates.build_a_policy.description
   description_format: html
-  tags_i18n: 
+  tags_i18n:
   - discussion_templates.build_a_policy.policy
   process_introduction_format: html
   newest_first: false

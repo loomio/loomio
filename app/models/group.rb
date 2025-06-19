@@ -354,6 +354,7 @@ class Group < ApplicationRecord
 
   def poll_template_positions
     self[:info]['poll_template_positions'] ||= {
+      'practice_proposal' => 0,
       'check' => 1,
       'advice' => 2,
       'consent' => 3,
