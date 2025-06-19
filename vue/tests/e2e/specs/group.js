@@ -80,6 +80,8 @@ module.exports = {
     page.click('.sidebar-start-group')
 
     page.fillIn('.group-form__name input', 'Secret please')
+    page.click('.group-form__category-select .v-field')
+    page.click('.v-overlay .v-select__content .v-list-item')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
   },

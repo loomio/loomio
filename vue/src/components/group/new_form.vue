@@ -191,7 +191,7 @@ v-card.group-form(:title="group.parentId ? $t('group_form.new_subgroup') : $t('s
       v-text-field.group-form__handle#group-handle(:loading="loadingHandle" v-model='group.handle' :hint="$t('group_form.group_handle_placeholder', {host: hostname, handle: group.handle})" maxlength='100' :label="$t('group_form.handle')")
       validation-errors(:subject="group", field="handle")
 
-    v-select(v-if='!group.parentId' v-model="group.category" :items="categoryItems" :label="$t('group_survey.describe_other')")
+    v-select.group-form__category-select(v-if='!group.parentId' v-model="group.category" :items="categoryItems" :label="$t('group_survey.describe_other')")
 
     lmo-textarea.group-form__group-description(
       :model='group'
