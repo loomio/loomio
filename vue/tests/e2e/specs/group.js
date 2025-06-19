@@ -99,9 +99,6 @@ module.exports = {
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
 
-    page.expectElement('.group-invitation-form')
-    page.click('.dismiss-modal-button')
-
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
     page.pause(200)
@@ -123,9 +120,6 @@ module.exports = {
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
 
-    page.expectElement('.group-invitation-form')
-    page.click('.dismiss-modal-button')
-
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
     page.click('.group-form__permissions-tab')
@@ -144,9 +138,6 @@ module.exports = {
     page.expectNoElement('.group-form__joining')
     page.click('.group-form__submit-button')
     page.expectFlash('Group started')
-
-    page.expectElement('.group-invitation-form')
-    page.click('.dismiss-modal-button')
 
     page.click('.action-menu')
     page.click('.action-dock__button--edit_group')
