@@ -41,7 +41,7 @@ export default
           newsletter: this.newsletter,
           group: this.group.serialize().group,
           how_did_you_hear_about_loomio: this.howDidYouHearAboutLoomio,
-          group_category: this.groupCategory,
+          group_category: this.groupCategory || 'other',
         }).then((data) => {
           this.trialStarted = true
           if (this.isSignedIn) {
@@ -66,7 +66,7 @@ export default
         title: I18n.global.t('group_survey.categories.'+category),
         value: category
       }));
-    }, 
+    },
 
     canSubmit() { return this.userName && this.userEmail && this.groupName && this.groupIntention && this.acceptTerms },
     trialDays() { return AppConfig.features.app.trial_days; },
