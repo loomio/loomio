@@ -1,3 +1,4 @@
+---
 en:
   start_trial:
     title: Start a free trial of Loomio
@@ -33,21 +34,20 @@ en:
     7_day_before: 7 days before
     task_placeholder: Enter a task and {'@'}mention someone to assign it
     add_due_date: Add due date
-    task_updated_done: 'Task marked as done!'
-    task_updated_not_done: 'Task marked as incomplete'
+    task_updated_done: Task marked as done!
+    task_updated_not_done: Task marked as incomplete
     no_tasks_assigned: There are no tasks assigned to you
-
   tips:
-    youve_completed_all_the_steps: 🎉 You've completed all the steps!
+    youve_completed_all_the_steps: "\U0001F389 You've completed all the steps!"
     getting_started_checklist: Getting started checklist
     complete_these_steps_to_set_up_your_group: Complete these steps to set up your group
     hide:
       title: Hide these tips
       hide_onboarding: Hide onboarding tips
-      unhide_onboarding: Unhide onboarding tips
+      unhide_onboarding: Show onboarding tips
       helptext: |
         <p>This will remove the "Getting started checklist" from the titlebar.</p>
-        <p>If you want to bring it back later, you can <b>unhide onboarding</b> from the sidebar settings</p>
+        <p>If you want to bring it back later, you can <b>show onboarding tips</b> from the sidebar settings</p>
     intro:
       tip_title: Click here to start
       title: Welcome to your new Loomio group!
@@ -64,11 +64,9 @@ en:
           <p>Let's review your group profile. The name, description, logo and cover image will be included in the invitation emails you send in an upcoming step.</p>
           <p><b>Add your own group cover image</b>, it helps to make a good first impression with the people you invite to join.</p>
           <p>You could use a recent team photo or a picture that represents your organization's work or community.</p>
-        open_group_settings: "Open group settings"
-
+        open_group_settings: Open group settings
       invite_people:
         title: Invite people to the group
-
       start_a_thread:
         title: Start a thread
         helptext: |
@@ -83,7 +81,6 @@ en:
           <p>Let's start a proposal and ask your group members to vote on it.</p>
           <p>We've created a <b>Practice proposal</b> template for you to use.</p>
         submit: See proposal templates
-
       share_an_outcome:
         title: Share a proposal outcome
         helptext: |
@@ -93,31 +90,29 @@ en:
           <p>When the time is right, <b>enter an outcome</b> for your proposal.</p>
         submit: View proposal
         cancel: Do this later
-
   templates:
     template_gallery: Template gallery
     title_template: "%{title} Template"
     title_templates: "%{title} Templates"
     title_copy: "%{title} Copy"
-    copy_of_title: "Copy of %{title}"
+    copy_of_title: Copy of %{title}
     loomio_default_templates: Loomio default templates
     which_templates_would_you_like_to_use: Which templates would you like to use?
-    login_to_start_demo: |
-      This a demo of Loomio in action. You're welcome to take a look around.
-    sign_in_to_try_features: |
-      If you'd like to try voting in a demo decision, or to start a free trial for your organization, click "sign in".
-    click_button_to_start_demo: |
-      Welcome! To try voting and other features, click start demo.
-    welcome_to_your_demo:
-      This is your very own demo group!
-    try_voting_to_see_it_work:
-      Try voting in a proposal to get a sense of how Loomio works.
-    delete_will_be_deleted_in_x_days:
-      This demo will be deleted in %{x} days.
-    to_use_loomio_with_your_org_start_trial:
-      When you're ready to try Loomio with your organization, start a free trial.
+    login_to_start_demo: 'This a demo of Loomio in action. You''re welcome to take a look around.
+
+      '
+    sign_in_to_try_features: 'If you''d like to try voting in a demo decision, or to start a free trial for your organization, click "sign in".
+
+      '
+    click_button_to_start_demo: 'Welcome! To try voting and other features, click start demo.
+
+      '
+    welcome_to_your_demo: This is your very own demo group!
+    try_voting_to_see_it_work: Try voting in a proposal to get a sense of how Loomio works.
+    delete_will_be_deleted_in_x_days: This demo will be deleted in %{x} days.
+    to_use_loomio_with_your_org_start_trial: When you're ready to try Loomio with your organization, start a free trial.
     templates: Templates
-    make_a_copy: "Make a copy"
+    make_a_copy: Make a copy
     this_thread_is_a_template: This thread is a template. Make a copy if you want to use it.
     this_is_a_poll_template: This a poll template. Make a copy if you want to start voting.
     try_loomio: Try Loomio
@@ -127,12 +122,13 @@ en:
     play_with_an_example_group: Play with an example group
     look_and_feel: See what Loomio looks like for a small organization. Learn the app by trying it out.
     watch_then_start: Please watch the video, then click "Start Demo" to try Loomio
-    generating_demo: 'Ok, wait right there! Generating a demo takes around 20 seconds.'
+    generating_demo: Ok, wait right there! Generating a demo takes around 20 seconds.
     start_a_x_day_free_trial: Start a %{day} day free trial
     ready_to_trial: Ready to try Loomio with your organization?
     start_a_no_obligation_x_day_trial: Start a Loomio group for your orgnization with a free %{day} day trial.
-    you_can_test_it_out: |
-      You can invite other people to join, integrate it with your other tools, and try making some decisions.
+    you_can_test_it_out: 'You can invite other people to join, integrate it with your other tools, and try making some decisions.
+
+      '
     demo_created: Demo group created, just for you!
     start_demo: Start demo
     view_demo: View demo
@@ -142,7 +138,6 @@ en:
     trial_needs_user: Welcome! Please sign in to start your free trial
     this_is_a_template_for_new_threads: This is a template for new threads
     share_a_custom_configuration: Share a custom configuration with others in your group
-
   doctypes:
     youtube_video: YouTube Video
     image: Image
@@ -158,7 +153,6 @@ en:
     pull_request: Pull Request
     trello_board: Trello Board
     trello_card: Trello Card
-
   plan_names:
     free: Free
     starter: Starter
@@ -171,7 +165,6 @@ en:
     large: Large
     monthly: Monthly
     yearly: Annually
-
   current_plan_button:
     upgrade: Upgrade
     buy_now: Buy now
@@ -180,28 +173,26 @@ en:
     view_plans: View plans
     free_trial: Free trial. %{days} days remaining.
     trial_expired: Your trial has expired. Upgrade to continue using Loomio.
-    tooltip: "Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group."
+    tooltip: Our prices are fantastic! Upgrade today and enjoy what Loomio can offer your group.
     was_gift_remaining: "%{days} days remaining."
-    was_gift_expired: "Your free plan has now expired."
-    subscription_ended: "Your Loomio subscription has ended. To continue using Loomio, please upgrade"
-    was_gift_expired_or_mistake: "Your free plan has now expired. If you think there has been a mistake, <a style='text-decoration: underline' href='/contact'>contact us</a>."
-
+    was_gift_expired: Your free plan has now expired.
+    subscription_ended: Your Loomio subscription has ended. To continue using Loomio, please upgrade
+    was_gift_expired_or_mistake: 'Your free plan has now expired. If you think there has been a mistake, <a style=''text-decoration: underline'' href=''/contact''>contact us</a>.'
   subscription_status:
-    plan: "Plan"
-    state: "Status"
-    members: "Members"
-    active_members: "Active members"
-    max_threads: "Max threads"
-    max_members: "Max members"
-    expires_at: "Expires"
-    renews_at: "Renews"
-    referral_code: "Referral code"
-    chargify_link: "Billing portal"
-    referral_code_help: "Give a friend a discount, get yourself some credit!"
-    manage_payment_details: "Manage payment details"
-    manage_subscription: "Manage Subscription"
+    plan: Plan
+    state: Status
+    members: Members
+    active_members: Active members
+    max_threads: Max threads
+    max_members: Max members
+    expires_at: Expires
+    renews_at: Renews
+    referral_code: Referral code
+    chargify_link: Billing portal
+    referral_code_help: Give a friend a discount, get yourself some credit!
+    manage_payment_details: Manage payment details
+    manage_subscription: Manage Subscription
     amount: Amount
-
   loomio_tags:
     all_tags: All tags
     tags: Tags
@@ -217,15 +208,14 @@ en:
     destroy_tag: Delete tag
     destroy_helptext: This will delete this tag and remove it from all threads in the group. Are you sure?
     helptext: Tags allow you to categorize conversations and easily find them later
-    discussions_count_singular: (%{count} thread)
-    discussions_count_plural: (%{count} threads)
+    discussions_count_singular: "(%{count} thread)"
+    discussions_count_plural: "(%{count} threads)"
     tag_created: Tag saved
     tag_destroyed: Tag deleted
     tags_marked: Threads marked '%{name}' in %{groupName}
     no_tags_present: No threads were found with that tag! Try selecting another one
     no_tags_in_group: This group has no category tags yet
     only_admins_can_edit_tags: Sorry, only admins of %{group} can create, rename or delete tags
-
   poll_types:
     proposal: proposal
     count: opt-in
@@ -236,21 +226,19 @@ en:
     ranked_choice: ranked choice
     score: score poll
     question: question round
-
   timezones:
     local: Local time (%{value})
-
   common:
     value: "%{value}"
     admin_menu: Admin menu
     api_docs: API docs
-    prefix_eg: "e.g. %{val}"
+    prefix_eg: e.g. %{val}
     are_you_sure: Are you sure?
     loomio_help: Loomio help
     visit_loomio_help: Visit Loomio help
     help_and_guides: Help & guides
     please_wait: Please wait
-    optional: (Optional)
+    optional: "(Optional)"
     version: Version
     none: None
     empty: Empty
@@ -261,7 +249,7 @@ en:
     option: Option
     add: Add
     you: You
-    off: Off
+    false: false
     expand: Expand
     all_day: All day
     ok_got_it: Ok, got it
@@ -280,44 +268,44 @@ en:
     time:
       am: am
       pm: pm
-    closing_in: 'Closing %{time}'
-    closed_ago: 'Closed %{time}'
-    volume: 'Volume'
-    notification_volume: 'Notification Volume'
-    group: 'Group'
-    thread: 'Thread'
-    groups: 'Groups'
-    organization: "Organization"
-    organizations: "Organizations"
-    threads: 'Threads'
-    decisions: 'Decisions'
-    settings: 'Settings'
-    help: 'Help'
+    closing_in: Closing %{time}
+    closed_ago: Closed %{time}
+    volume: Volume
+    notification_volume: Notification Volume
+    group: Group
+    thread: Thread
+    groups: Groups
+    organization: Organization
+    organizations: Organizations
+    threads: Threads
+    decisions: Decisions
+    settings: Settings
+    help: Help
     anonymous: Anonymous
     required: Required
     email_address: Email address
     minutes: Minutes
     privacy:
-      privacy: 'Privacy'
-      public: 'Public'
-      open: 'Open'
-      closed: 'Closed'
-      private: 'Private'
-      secret: 'Secret'
-    selected: 'Selected'
-    today: 'today'
-    in_x_days: 'in %{x} days'
+      privacy: Privacy
+      public: Public
+      open: Open
+      closed: Closed
+      private: Private
+      secret: Secret
+    selected: Selected
+    today: today
+    in_x_days: in %{x} days
     date_range:
-      today: 'Today'
-      yesterday: 'Yesterday'
-      thisweek: 'This Week'
-      thismonth: 'This Month'
-      older: 'Older'
-    more_help: 'More help'
-    copy: 'Copy'
-    reset: 'Reset'
-    copy_text: 'Copy text'
-    copied: 'Copied to clipboard'
+      today: Today
+      yesterday: Yesterday
+      thisweek: This Week
+      thismonth: This Month
+      older: Older
+    more_help: More help
+    copy: Copy
+    reset: Reset
+    copy_text: Copy text
+    copied: Copied to clipboard
     points_abbrev: Each vote worth %{score} points
     total: Total
     action:
@@ -325,41 +313,41 @@ en:
       preview: Preview
       pin: Pin
       unpin: Unpin
-      search: 'Search'
-      filter: 'Filter'
-      back: 'Back'
-      next: 'Next'
-      close: 'Close'
-      reopen: 'Reopen'
-      save: 'Save'
-      move: 'Move'
-      save_changes: 'Save changes'
-      update_settings: 'Update settings'
-      reply: 'Reply'
-      edit: 'Edit'
-      remove: 'Remove'
-      undo_remove: 'Undo remove'
-      like: 'Like'
-      unlike: 'Unlike'
-      update: 'Update'
-      cancel: 'Cancel'
+      search: Search
+      filter: Filter
+      back: Back
+      next: Next
+      close: Close
+      reopen: Reopen
+      save: Save
+      move: Move
+      save_changes: Save changes
+      update_settings: Update settings
+      reply: Reply
+      edit: Edit
+      remove: Remove
+      undo_remove: Undo remove
+      like: Like
+      unlike: Unlike
+      update: Update
+      cancel: Cancel
       confirm: Confirm
-      hide: 'Hide'
-      unhide: 'Unhide'
-      show_more: "Show more"
-      show_fewer: "Show fewer"
-      view_count_more: "View %{count} more"
-      view_count_responses: "View %{count} responses"
+      hide: Hide
+      unhide: Unhide
+      show_more: Show more
+      show_fewer: Show fewer
+      view_count_more: View %{count} more
+      view_count_responses: View %{count} responses
       count_more: "%{count} more"
       count_responses: "%{count} responses"
-      view_all: "View All"
-      new_thread: "New thread"
-      add_subgroup: 'New subgroup'
-      loading: 'Loading'
-      translate: 'Translate'
-      upload: 'Upload'
-      uploading: 'Uploading'
-      load_more: 'Load More'
+      view_all: View All
+      new_thread: New thread
+      add_subgroup: New subgroup
+      loading: Loading
+      translate: Translate
+      upload: Upload
+      uploading: Uploading
+      load_more: Load More
       share: Share
       ok: Ok
       retry: Retry
@@ -386,13 +374,12 @@ en:
       zoom: Zoom
       align: Align
     formatting_help:
-      label: 'Formatting'
-      title: 'Learn how to use Markdown to format your text'
-
+      label: Formatting
+      title: Learn how to use Markdown to format your text
   merge_accounts:
     modal:
       title: Merge accounts
-      helptext: "You can merge the account under <strong>%{sourceEmail}</strong> into that of <strong>%{targetEmail}</strong>. Click Verify and a verification email will be sent to %{targetEmail} to begin the process."
+      helptext: You can merge the account under <strong>%{sourceEmail}</strong> into that of <strong>%{targetEmail}</strong>. Click Verify and a verification email will be sent to %{targetEmail} to begin the process.
       submit: Verify
       flash: Verification email sent!
     email_taken: Sorry, that email is already associated with another user. Does that email belong to you?
@@ -400,7 +387,6 @@ en:
     placeholder_modal_text: |
       <p>If you would like to merge two accounts together, simply enter the respective email address (belonging to the other account) into your Profile page email field, and follow the instructions that appear.</p>
       <p>Need help? <a href="/contact" target="_blank">Contact us</a>.
-
   emoji_picker:
     search: Search
     common: Frequently used
@@ -410,8 +396,6 @@ en:
     nature: Nature
     objects: Things
     places: Places
-
-
   ordinal:
     _1: 1st
     _2: 2nd
@@ -423,27 +407,22 @@ en:
     _8: 8th
     _9: 9th
     _10: 10th
-
   devise:
     sessions:
       signed_up: Signed up successfully!
     failure:
-      inactive: 'There is a deactivated account associated with this email address. If you want to reactivate your account, contact us.'
-
+      inactive: There is a deactivated account associated with this email address. If you want to reactivate your account, contact us.
   error_page:
-    forbidden: 'You do not have permission to do this.'
-    forbidden_view: 'You do not have permission to view this.'
-    page_not_found: 'Page not found. It may have been deleted or moved.'
-    internal_server_error: 'Server error! Please try again.'
-
+    forbidden: You do not have permission to do this.
+    forbidden_view: You do not have permission to view this.
+    page_not_found: Page not found. It may have been deleted or moved.
+    internal_server_error: Server error! Please try again.
   verify_email_notice:
     please_verify: Thanks for participating! Please check your email for a link to verify your vote.
-
   previous_polls_page:
     heading: Activities in %{name}
     polls_count: Showing %{loaded} of %{total} decisions
     search_activities: Search decisions
-
   email_to_group:
     email_released: Email released and alias created
     not_available_to_trial_or_demo: This feature is not available for trial or demo groups
@@ -468,23 +447,19 @@ en:
     copy_address: Copy address
     email_me_this_address: Email me this address
     email_address_copied_to_clipboard: Email address copied to clipboard
-    forward_email_to_move_conversation: "Tip: Forward an email conversation to Loomio when you need to make a decision or keep a record."
-
+    forward_email_to_move_conversation: 'Tip: Forward an email conversation to Loomio when you need to make a decision or keep a record.'
   email_to_group_mailer:
     your_email_address_to_start_threads_in_group: Your email address to start threads in %{group}
-
   volume_levels:
-    loud: 'Loud'
-    normal: 'Normal'
-    quiet: 'Quiet'
-    mute: 'Mute'
-    unmute: 'Unmute'
-
+    loud: Loud
+    normal: Normal
+    quiet: Quiet
+    mute: Mute
+    unmute: Unmute
   pin_event_form:
     title: Pin to timeline
     title_label: Title
     hint: 'Hint for next time: Try highlighting some text before you click "Pin".'
-
   change_volume_form:
     change_your_email_settings: Change your email settings
     when_would_you_like_to_be_emailed_thread: When would you like to be emailed about this thread?
@@ -498,12 +473,10 @@ en:
     quiet_explained: You will not be emailed, even when someone tries to notify you. You may miss important announcements or decisions. This may be suitable if a thread does not concern you, but is not recommended for the group setting unless you have other ways of staying up to date.
     normal_explained: When someone enters your name in the "Notify" field of a thread or a poll, or they @mention the group.
     normal_excludes_mentioning_html: There is a separate setting for when someone @mentions you (e.g. when a replying to you in a comment). <a href="%{url}">Click here to edit settings for @mentions</a>
-    loud_explained:  You will be emailed every time there is a new comment, someone votes, or starts a poll or thread.
-
+    loud_explained: You will be emailed every time there is a new comment, someone votes, or starts a poll or thread.
     explain_scope:
       thread: This changes when you'll be notified about this thread
       group: This changes when you'll be notified about all threads in the group
-
     simple:
       label: Notifications
       loud: Subscribed
@@ -513,57 +486,55 @@ en:
       loud_explain: whenever there is activity
       normal_explain: when someone asks for your attention
       quiet_explain: no notifications
-
-    aria_label: "Change email settings form"
-    loud_label: "All activity"
-    normal_label: "Announcements"
-    quiet_label: "No emails"
-    mute_label: "Mute"
-    saved: "Notification settings updated"
+    aria_label: Change email settings form
+    loud_label: All activity
+    normal_label: Announcements
+    quiet_label: No emails
+    mute_label: Mute
+    saved: Notification settings updated
     discussion:
-      title: "Thread notifications"
-      loud_description: "You will be emailed all activity in this thread."
-      normal_description: "You will only be emailed important activity in this thread."
-      quiet_description: "You won't be emailed any activity in this thread."
-      apply_to_all: "Apply these settings to all threads in this group."
-      only_this_thread: "Applies to this thread only"
-      group: "Change notifications for group"
-      user: "Change user notification settings"
+      title: Thread notifications
+      loud_description: You will be emailed all activity in this thread.
+      normal_description: You will only be emailed important activity in this thread.
+      quiet_description: You won't be emailed any activity in this thread.
+      apply_to_all: Apply these settings to all threads in this group.
+      only_this_thread: Applies to this thread only
+      group: Change notifications for group
+      user: Change user notification settings
       messages:
-        loud: "You will be emailed activity in this thread."
-        normal: "You will be emailed about proposals in this thread."
-        quiet: "You won't be emailed about this thread."
+        loud: You will be emailed activity in this thread.
+        normal: You will be emailed about proposals in this thread.
+        quiet: You won't be emailed about this thread.
     membership:
-      title: "Notifications for %{title}"
-      loud_description: "You will be emailed whenever there is activity in this group."
-      normal_description: "You will be emailed whenever there is activity in this group."
-      quiet_description: "You won't be emailed about activity in this group."
-      apply_to_all: "Apply these settings to all my groups."
-      apply_to_organization: "Apply to all groups in %{organization}"
+      title: Notifications for %{title}
+      loud_description: You will be emailed whenever there is activity in this group.
+      normal_description: You will be emailed whenever there is activity in this group.
+      quiet_description: You won't be emailed about activity in this group.
+      apply_to_all: Apply these settings to all my groups.
+      apply_to_organization: Apply to all groups in %{organization}
       messages:
-        loud: "You will be emailed all activity in this group."
-        normal: "You will only be emailed announcements in this group."
-        quiet: "You won't be emailed about this group."
+        loud: You will be emailed all activity in this group.
+        normal: You will only be emailed announcements in this group.
+        quiet: You won't be emailed about this group.
     all_groups:
-      title: "Notification preferences for all groups"
-      loud_description: "You will be emailed all activity in all your groups."
-      normal_description: "You will only be emailed important activity in all your groups."
-      quiet_description: "You won't be emailed any activity in any of your groups."
+      title: Notification preferences for all groups
+      loud_description: You will be emailed all activity in all your groups.
+      normal_description: You will only be emailed important activity in all your groups.
+      quiet_description: You won't be emailed any activity in any of your groups.
       messages:
-        loud: "You will be emailed all activity in all your groups."
-        normal: "You will only be emailed announcements in all your groups."
-        quiet: "You won't be emailed about any of your groups."
+        loud: You will be emailed all activity in all your groups.
+        normal: You will only be emailed announcements in all your groups.
+        quiet: You won't be emailed about any of your groups.
     user:
       title: Email settings for new groups
-      loud_description: "You will be emailed whenever there is activity in any new groups you join."
-      normal_description: "You will be emailed about announcements in any new groups you join."
-      quiet_description: "You won't be emailed about activity in any new groups you join."
-      apply_to_all: "Apply these settings to all my groups."
+      loud_description: You will be emailed whenever there is activity in any new groups you join.
+      normal_description: You will be emailed about announcements in any new groups you join.
+      quiet_description: You won't be emailed about activity in any new groups you join.
+      apply_to_all: Apply these settings to all my groups.
       messages:
-        loud: "You will be emailed all activity in new groups."
-        normal: "You will be emailed about announcements in new groups."
-        quiet: "You won't be emailed about new groups."
-
+        loud: You will be emailed all activity in new groups.
+        normal: You will be emailed about announcements in new groups.
+        quiet: You won't be emailed about new groups.
   close_explanation_modal:
     aria_label: Close thread
     close_thread: Close thread
@@ -571,71 +542,64 @@ en:
       <p>Close old or irrelevant threads to remove them from view and indicate the discussion has closed.</p>
       <p>Anyone may still comment or start a poll in a closed thread, but it will not appear in the group's thread list or on the dashboard.</p>
     image_alt: Closing threads all
-
   inbox:
-    clear: 'Clear'
-    latest: 'Latest'
-    unread: 'Unread'
+    clear: Clear
+    latest: Latest
+    unread: Unread
     closing_in: 'Closing '
-
   sign_up_form:
     password_label: 'Password:'
     password_confirmation_label: 'That password again:'
-
   signed_out_modal:
-    aria_label: 'Session ended'
-    title: "Your session has ended"
-    message: "You have been logged out from another window. Please sign back in to continue."
-    ok: "Ok"
-
+    aria_label: Session ended
+    title: Your session has ended
+    message: You have been logged out from another window. Please sign back in to continue.
+    ok: Ok
   comment_reply_form:
-    aria_label: 'Add a reply'
-
+    aria_label: Add a reply
   comment_form:
-    aria_label: 'Add a comment'
+    aria_label: Add a comment
     attachments:
-      add_attachment: 'Attach file'
-      remove_attachment: 'Remove attachment'
+      add_attachment: Attach file
+      remove_attachment: Remove attachment
     messages:
-      created: 'Comment added'
-      replied: '%{name} notified of reply'
-      updated: 'Comment updated'
-      destroyed: 'Comment deleted'
-      removed: 'Comment removed'
+      created: Comment added
+      replied: "%{name} notified of reply"
+      updated: Comment updated
+      destroyed: Comment deleted
+      removed: Comment removed
     say_something: Say something...
-    edit_comment: 'Edit comment'
-    delete_comment: 'Delete comment'
-    cancel_reply: 'Cancel Reply'
-    confirm_delete_message: 'Are you sure you want to delete this comment?'
-    confirm_delete: 'Delete comment'
-    in_reply_to: "Reply to %{name}"
-    write_a_comment: "Write a comment..."
-    post_comment: "Post comment"
+    edit_comment: Edit comment
+    delete_comment: Delete comment
+    cancel_reply: Cancel Reply
+    confirm_delete_message: Are you sure you want to delete this comment?
+    confirm_delete: Delete comment
+    in_reply_to: Reply to %{name}
+    write_a_comment: Write a comment...
+    post_comment: Post comment
     submit_button:
-      label: 'Post'
-    private_privacy_notice: 'Your comment will only be visible to members of %{groupName}.'
-    public_privacy_notice: 'Your comment will be visible to anyone on the web.'
-    sign_in: "Sign in to participate"
-
+      label: Post
+    private_privacy_notice: Your comment will only be visible to members of %{groupName}.
+    public_privacy_notice: Your comment will be visible to anyone on the web.
+    sign_in: Sign in to participate
   thread_nav:
     participants: Participants
-
   sidebar:
     user_settings: User settings
     new_thread_removed: New thread removed
     new_thread_removed_body: The new thread button is being removed from the sidebar. To start a new thread, first navigate to your group, then click "New thread". Sorry for the change, but it is required because you need to select a template when starting a thread.
-    threads: 'Threads'
-    my_groups: 'My groups'
-    other_groups: 'Other groups'
-    all_groups: 'All groups'
-    recent_threads: 'Recent threads'
-    invite_only_threads: 'Invite-only threads'
-    direct_threads: 'Direct threads'
-    unread_threads: 'Unread threads (%{count})'
-    muted_threads: 'Muted threads'
-    start_group: 'New organization'
-    start_subgroup: 'New subgroup'
-    explore: 'Public groups'
+    threads: Threads
+    my_groups: My groups
+    other_groups: Other groups
+    all_groups: All groups
+    recent_threads: Recent threads
+    invite_only_threads: Invite-only threads
+    direct_threads: Direct threads
+    unread_threads: Unread threads (%{count})
+    muted_threads: Muted threads
+    start_group: New organization
+    start_subgroup: New subgroup
+    explore: Public groups
     explore_groups: Explore groups
     start_thread: New thread
     start_decision: New decision
@@ -646,11 +610,10 @@ en:
     a_detailed_guide_to_loomio: A detailed guide to Loomio
     talk_to_the_loomio_team: Talk to the Loomio team
     aria_labels:
-      heading: 'Sidebar'
-      threads_list: 'Threads actions'
-      groups_list: 'Groups'
-      user_list: 'User actions'
-
+      heading: Sidebar
+      threads_list: Threads actions
+      groups_list: Groups
+      user_list: User actions
   strand_nav:
     newest: Newest
     oldest: Oldest
@@ -661,108 +624,98 @@ en:
     from_comment: From a comment url
     from_sequence_id: From a thread item url
     unread: New to you
-
-
   search_modal:
-    all_content: 'All content'
-    best_match: 'Best match'
-    any_tag: 'Any tag'
-    all_subgroups: 'All subgroups'
-    parent_only: 'Parent only'
-
-
+    all_content: All content
+    best_match: Best match
+    any_tag: Any tag
+    all_subgroups: All subgroups
+    parent_only: Parent only
   navbar:
     search_all_threads: Search all threads
-    search_threads: 'Search threads in %{name}'
-    search_polls: 'Search polls in %{name}'
-    search_members: 'Search members in %{name}'
-    search_subgroups: 'Search members in %{name}'
-    search_members_short: 'Search members'
-    search_files_short: 'Search files'
-    search_subgroups_short: 'Search subgroups'
-    search_files: 'Search files in %{name}'
-    recent_title: 'Go to dashboard'
-    unread_title: 'View unread activity'
-    start_thread: 'New thread'
-    notifications: 'Notifications panel'
+    search_threads: Search threads in %{name}
+    search_polls: Search polls in %{name}
+    search_members: Search members in %{name}
+    search_subgroups: Search members in %{name}
+    search_members_short: Search members
+    search_files_short: Search files
+    search_subgroups_short: Search subgroups
+    search_files: Search files in %{name}
+    recent_title: Go to dashboard
+    unread_title: View unread activity
+    start_thread: New thread
+    notifications: Notifications panel
     search:
-      label: 'Search field; search for groups and threads'
-      results_aria_label: 'Search results'
-      no_results: 'No threads found'
-      close: 'Close search panel'
-      placeholder: 'Search'
-      loading: 'Loading results...'
-      discussions: 'Threads'
-      proposals: 'Proposals'
-      comments: 'Comments'
-    sign_in: 'Log In'
-    toggle_sidebar: 'Toggle sidebar'
-    open_sidebar: 'Open sidebar'
-    close_sidebar: 'Close sidebar'
-    logo_title: 'Home page'
-    group_and_subgroups: '%{group} & subgroups'
-
+      label: Search field; search for groups and threads
+      results_aria_label: Search results
+      no_results: No threads found
+      close: Close search panel
+      placeholder: Search
+      loading: Loading results...
+      discussions: Threads
+      proposals: Proposals
+      comments: Comments
+    sign_in: Log In
+    toggle_sidebar: Toggle sidebar
+    open_sidebar: Open sidebar
+    close_sidebar: Close sidebar
+    logo_title: Home page
+    group_and_subgroups: "%{group} & subgroups"
   user_dropdown:
-    pin_sidebar: "Pin sidebar"
-    unpin_sidebar: "Unpin sidebar"
-    enable_beta_features: "Enable beta features"
-    disable_beta_features: "Disable beta features"
+    pin_sidebar: Pin sidebar
+    unpin_sidebar: Unpin sidebar
+    enable_beta_features: Enable beta features
+    disable_beta_features: Disable beta features
     theme: Theme
     light: Light
     dark: Dark
-    enable_dark_mode: "Enable dark mode"
-    disable_dark_mode: "Disable dark mode"
-    button_label: 'User menu'
-    edit_profile: 'Edit profile'
-    email_settings: 'Notification settings'
-    help: 'Help'
-    contact_site_name: 'Contact %{site_name}'
-    contact_support: 'Contact support'
-    sign_out: 'Sign out'
-    beta_collab: "🧪 Beta features enabled!"
+    enable_dark_mode: Enable dark mode
+    disable_dark_mode: Disable dark mode
+    button_label: User menu
+    edit_profile: Edit profile
+    email_settings: Notification settings
+    help: Help
+    contact_site_name: Contact %{site_name}
+    contact_support: Contact support
+    sign_out: Sign out
+    beta_collab: "\U0001F9EA Beta features enabled!"
     outcomes: Outcomes
-
   membership_card:
-    group_members: "Group members"
-    discussion_members: "Thread members"
+    group_members: Group members
+    discussion_members: Thread members
     poll_members: "%{pollType} members"
-    voters: "Voters"
-    invite_to_group: "Invite to group"
-    invite_to_discussion: "Invite to thread"
-    invite_to_poll: "Invite to vote"
-    invite_to_wip_poll: "Invite to give feedback"
-    invitations: "Invitations"
-
+    voters: Voters
+    invite_to_group: Invite to group
+    invite_to_discussion: Invite to thread
+    invite_to_poll: Invite to vote
+    invite_to_wip_poll: Invite to give feedback
+    invitations: Invitations
   membership_dropdown:
     view_profile: View profile
-    set_name_and_username: "Set name and username"
-    set_title: "Set title"
-    resend: "Resend invitation"
-    invitation_resent: "Invitation resent"
-    make_coordinator: 'Make admin'
-    demote_coordinator: 'Demote admin'
-    revoke_admin: 'Revoke admin'
-    make_delegate: 'Make delegate'
-    revoke_delegate: 'Revoke delegate'
+    set_name_and_username: Set name and username
+    set_title: Set title
+    resend: Resend invitation
+    invitation_resent: Invitation resent
+    make_coordinator: Make admin
+    demote_coordinator: Demote admin
+    revoke_admin: Revoke admin
+    make_delegate: Make delegate
+    revoke_delegate: Revoke delegate
     remove_from:
-      discussion: "Remove from thread"
-      group: "Remove from group"
-      poll: 'Remove from %{pollType}'
+      discussion: Remove from thread
+      group: Remove from group
+      poll: Remove from %{pollType}
     cancel_invitation: Cancel invitation
-
   notification_models:
     discussion: 'thread: '
     comment: 'comment in '
     poll: 'poll: '
     outcome: 'outcome: '
     stance: 'vote: '
-
   notifications:
-    header: "Notifications"
-    no_notifications: "You don't have any notifications"
-
+    header: Notifications
+    no_notifications: You don't have any notifications
     with_title:
-      unknown_sender: "Please review email from unrecognised sender"
+      unknown_sender: Please review email from unrecognised sender
       comment_replied_to: "%{actor} replied to you in: %{title}"
       discussion_announced: "%{actor} invited you to the thread: %{title}"
       discussion_edited: "%{actor} edited the thread context: %{title}"
@@ -779,15 +732,15 @@ en:
       outcome_announced: "%{actor} shared a %{poll_type} outcome: %{title}"
       outcome_created: "%{actor} shared a %{poll_type} outcome: %{title}"
       outcome_updated: "%{actor} updated the %{poll_type} outcome: %{title}"
-      outcome_review_due: "It's time to review the outcome of: %{title}"
+      outcome_review_due: 'It''s time to review the outcome of: %{title}'
       poll_announced: "%{actor} invited you to vote: %{title}"
       poll_closed_by_user: "%{actor} closed the %{poll_type}: %{title}"
       poll_closing_soon: "%{poll_type} closing in 24 hours: %{title}"
-      poll_closing_soon_author: "Your %{poll_type} is closing in 24 hours: %{title}"
+      poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours: %{title}'
       poll_created: "%{actor} started a %{poll_type}: %{title}"
       poll_edited: "%{actor} updated the %{poll_type}: %{title}"
       poll_expired: "%{poll_type} has closed: %{title}"
-      poll_expired_author: "Share the outcome of your %{poll_type}: %{title}"
+      poll_expired_author: 'Share the outcome of your %{poll_type}: %{title}'
       poll_option_added: "%{actor} added options to %{title}"
       poll_reopened: "%{actor} reopened the %{poll_type}: %{title}"
       poll_reminder: "%{actor} is reminding you to vote on %{title}"
@@ -800,50 +753,47 @@ en:
       user_mentioned: "%{actor} mentioned you in: %{title}"
       group_mentioned: "%{actor} mentioned the group in: %{title}"
       user_reminded: "%{actor} is reminding you to vote in: %{title}"
-
     without_title:
-      unknown_sender: "Please review email from unrecognised sender"
-      discussion_announced: '%{actor} invited you to a thread'
-      discussion_edited: '%{actor} edited the thread context'
+      unknown_sender: Please review email from unrecognised sender
+      discussion_announced: "%{actor} invited you to a thread"
+      discussion_edited: "%{actor} edited the thread context"
       discussion_closed: "%{actor} closed the thread"
       group_announced: "%{actor} invited you to a group"
-      comment_replied_to: '%{actor} replied to you'
+      comment_replied_to: "%{actor} replied to you"
       new_discussion: "%{actor} started a thread"
       new_comment: "%{actor} commented in a thread"
       membership_created: "%{actor} invited you to join a group"
       membership_resent: "%{actor} invited you to join a group"
       membership_requested: "%{actor} requested to join your group"
       membership_request_approved: "%{actor} approved your request to join %{title}"
-      outcome_announced: '%{actor} shared a %{poll_type} outcome'
+      outcome_announced: "%{actor} shared a %{poll_type} outcome"
       outcome_created: "%{actor} shared a %{poll_type} outcome"
       outcome_updated: "%{actor} updated the outcome"
-      outcome_review_due: "It's time to review the %{poll_type} outcome"
-      poll_announced: '%{actor} invited you to vote on a %{poll_type}'
-      poll_announced_wip: '%{actor} wants your feedback on a %{poll_type}'
+      outcome_review_due: It's time to review the %{poll_type} outcome
+      poll_announced: "%{actor} invited you to vote on a %{poll_type}"
+      poll_announced_wip: "%{actor} wants your feedback on a %{poll_type}"
       poll_closed_by_user: "%{actor} closed the %{poll_type}"
-      poll_closing_soon: '%{poll_type} closing in 24 hours'
-      poll_closing_soon_author: 'Your %{poll_type} is closing in 24 hours'
+      poll_closing_soon: "%{poll_type} closing in 24 hours"
+      poll_closing_soon_author: Your %{poll_type} is closing in 24 hours
       poll_created: "%{actor} started a %{poll_type}"
       poll_edited: "%{actor} updated the %{poll_type}"
       poll_expired: "%{poll_type} has closed"
-      poll_expired_author: 'Share the outcome of your %{poll_type}'
-      poll_option_added: '%{actor} added options to the %{poll_type}'
+      poll_expired_author: Share the outcome of your %{poll_type}
+      poll_option_added: "%{actor} added options to the %{poll_type}"
       poll_reopened: "%{actor} reopened the %{poll_type}"
-      poll_reminder: '%{actor} is reminding you to vote'
-      poll_reminder_wip: '%{actor} is reminding you to give feedback'
+      poll_reminder: "%{actor} is reminding you to vote"
+      poll_reminder_wip: "%{actor} is reminding you to give feedback"
       reaction_created: "%{actor} reacted %{reaction} to your %{model}"
       stance_created: "%{actor} voted"
       stance_updated: "%{actor} voted"
       stance_created_option: "%{actor} voted %{option}"
-      user_mentioned: '%{actor} mentioned you'
-      group_mentioned: '%{actor} mentioned the group'
-      user_reminded: '%{actor} is reminding you to vote'
-
+      user_mentioned: "%{actor} mentioned you"
+      group_mentioned: "%{actor} mentioned the group"
+      user_reminded: "%{actor} is reminding you to vote"
     hints:
-      poll_closing_soon: 'Now is a good time to vote, change your mind or encourage others to participate.'
-      poll_closing_soon_author: 'You may wish to remind people to vote or extend the deadline.'
-      outcome_review_due: "Consider starting a feedback poll or a new thread inviting reflections on how the decision has been implemented."
-
+      poll_closing_soon: Now is a good time to vote, change your mind or encourage others to participate.
+      poll_closing_soon_author: You may wish to remind people to vote or extend the deadline.
+      outcome_review_due: Consider starting a feedback poll or a new thread inviting reflections on how the decision has been implemented.
   discussion_fork_actions:
     helptext: Select items you'd like to move to another thread
     move: Move
@@ -851,16 +801,17 @@ en:
     moved: Moving comments, this might take a moment
     move_to_existing_thread: Move to existing thread
     start_new_thread: Or, start new thread
-
   thread_template:
     browse_public_templates: Browse template gallery
     thread_template_settings: Thread template settings
     start_a_new_thread: Start a new thread
     thread_template_saved: Thread template saved
-    these_are_public_templates: |
-      These templates are available for you to copy or modify to suit your group
-    these_are_templates: |
-      These are the thread templates in your group. Click a template to start a thread. You can also edit, remove, or reorder these if you like.
+    these_are_public_templates: 'These templates are available for you to copy or modify to suit your group
+
+      '
+    these_are_templates: 'These are the thread templates in your group. Click a template to start a thread. You can also edit, remove, or reorder these if you like.
+
+      '
     default_title_label: Default title
     default_title_hint: Prefill the title field with editable text. This is optional - leave blank if unsure.
     title_placeholder_label: Example title
@@ -875,8 +826,6 @@ en:
     decision_templates: Decision templates
     decision_templates_help: Select any proposal or poll templates that help to complete this process.
     share_in_template_gallery: Share this template in the public template gallery
-
-
   discussion_form:
     thread_templates: Thread templates
     new_thread_template: New thread template
@@ -886,38 +835,35 @@ en:
     new_template: New template
     new_template_subtitle: Create an example that others can copy
     to: To
-    # visible_to_label: Privacy
-    direct_thread: "Direct thread"
-    invite_only_thread: "Invite-only thread"
-    none_direct_thread: "Direct thread (no group)"
-    none_invite_only_thread: "Invite-only thread (no group)"
+    direct_thread: Direct thread
+    invite_only_thread: Invite-only thread
+    none_direct_thread: Direct thread (no group)
+    none_invite_only_thread: Invite-only thread (no group)
     change_log_placeholder: Optionally, describe your changes. This message will be added to the thread.
     change_log_label: What's changed?
     invite: Invite
-    aria_label: 'Thread form'
+    aria_label: Thread form
     start_thread: Start thread
     messages:
-      created: 'Thread started'
-      updated: 'Thread updated'
-      forked:  'Thread fork created'
-    new_discussion_title: 'Start new thread'
+      created: Thread started
+      updated: Thread updated
+      forked: Thread fork created
+    new_discussion_title: Start new thread
     new_thread_from_template: 'New thread: %{process_name}'
-    moving_items_title: 'Move items to new thread'
-    edit_discussion_title: 'Edit thread'
-    group_label: 'Group'
-    group_placeholder: 'Select a group'
-    title_label: 'Title'
-    title_placeholder: 'What is the topic you want to discuss?'
-    context_label: 'Context'
-    context_placeholder: "Provide some context for this discussion, so people know how to participate"
-    privacy_label: 'Privacy'
-    privacy_public: 'Anyone can view this thread if they have the link'
-    privacy_private: 'Only members of the group can view this thread'
-    privacy_organisation: 'The thread will be visible to members of %{parent} and members of %{group}.'
-    fork_notice: 'A new thread will be created with %{count} items from %{title}'
+    moving_items_title: Move items to new thread
+    edit_discussion_title: Edit thread
+    group_label: Group
+    group_placeholder: Select a group
+    title_label: Title
+    title_placeholder: What is the topic you want to discuss?
+    context_label: Context
+    context_placeholder: Provide some context for this discussion, so people know how to participate
+    privacy_label: Privacy
+    privacy_public: Anyone can view this thread if they have the link
+    privacy_private: Only members of the group can view this thread
+    privacy_organisation: The thread will be visible to members of %{parent} and members of %{group}.
+    fork_notice: A new thread will be created with %{count} items from %{title}
     notify_group: Notify group
-
-
   announcement:
     send_discussion: Send thread
     send_group: Invite people to %{name}
@@ -930,9 +876,9 @@ en:
     poll_notification_history: Poll notification history
     outcome_notification_history: Outcome notification history
     comment_notification_history: Comment notification history
-    notification_history_explanation: ✓ indicates that the notification has been read or the email has been opened
-    quick_add: "Quick add:"
-    any_other_groups: "Any other groups?"
+    notification_history_explanation: "✓ indicates that the notification has been read or the email has been opened"
+    quick_add: 'Quick add:'
+    any_other_groups: Any other groups?
     notified_people: "%{name} notified %{length} people:"
     preview: Preview Email
     no_notifications_sent: No notifications have been sent
@@ -944,23 +890,22 @@ en:
     only_admins_can_announce: Only admins can notify the whole group
     only_admins_can_invite: Only admins can invite guests
     only_admins_can_announce_or_invite: Only admins can notify the whole group or invite guests
-    user_mentioned: '%{name} mentioned %{length} people:'
-    group_mentioned: '%{name} mentioned the group with %{length} people:'
-    comment_replied_to: '%{name} replied to %{length} people:'
-    new_discussion: '%{name} invited %{length} people to the thread:'
-    discussion_announced: '%{name} invited %{length} people to the thread:'
-    poll_created: '%{name} invited %{length} people to vote:'
-    poll_announced: '%{name} invited %{length} people to vote:'
-    outcome_created: '%{name} shared an outcome with %{length} people:'
-    outcome_announced: '%{name} shared an outcome with %{length} people:'
-    announcement_created: '%{name} invited %{length} people to the thread:'
-    discussion_edited: '%{name} edited the thread, notifying %{length} people:'
-    poll_edited: '%{name} edited a poll, notifying %{length} people:'
-    outcome_edited: '%{name} edited an outcome, notifying %{length} people:'
-    outcome_updated: '%{name} edited an outcome, notifying %{length} people:'
+    user_mentioned: "%{name} mentioned %{length} people:"
+    group_mentioned: "%{name} mentioned the group with %{length} people:"
+    comment_replied_to: "%{name} replied to %{length} people:"
+    new_discussion: "%{name} invited %{length} people to the thread:"
+    discussion_announced: "%{name} invited %{length} people to the thread:"
+    poll_created: "%{name} invited %{length} people to vote:"
+    poll_announced: "%{name} invited %{length} people to vote:"
+    outcome_created: "%{name} shared an outcome with %{length} people:"
+    outcome_announced: "%{name} shared an outcome with %{length} people:"
+    announcement_created: "%{name} invited %{length} people to the thread:"
+    discussion_edited: "%{name} edited the thread, notifying %{length} people:"
+    poll_edited: "%{name} edited a poll, notifying %{length} people:"
+    outcome_edited: "%{name} edited an outcome, notifying %{length} people:"
+    outcome_updated: "%{name} edited an outcome, notifying %{length} people:"
     poll_closing_soon: "%{name}'s poll closing reminder notified %{length} people:"
-    poll_reminder: '%{name} reminded %{length} people to vote:'
-
+    poll_reminder: "%{name} reminded %{length} people to vote:"
     audiences:
       group: "%{name}"
       delegates_of_group: Delegates of %{name}
@@ -970,23 +915,24 @@ en:
       decided_voters: Everyone who voted
       undecided_voters: Undecided voters
       non_voters: Members of %{name} not yet invited
-
     form:
       group_has_no_members_yet: You are the only member of your group. You may want to invite some people to your group before starting a thread or decision.
-      invite_people_to_evaluate_loomio: |
-        Invite some people to your Loomio group to make a decision together
-      too_many_invitations: |
-        Invitation limit exceeded. <a href="%{upgradeUrl}" target="_blank">Upgrade</a>
+      invite_people_to_evaluate_loomio: 'Invite some people to your Loomio group to make a decision together
+
+        '
+      too_many_invitations: 'Invitation limit exceeded. <a href="%{upgradeUrl}" target="_blank">Upgrade</a>
+
+        '
       no_invitations_remaining: |
         <p>You have used all %{maxMembers} invitations available to this group.</p>
         <p>Next step, <a href="%{upgradeUrl}" target="_blank">choose a plan</a> to continue collaborating on Loomio.</p>
-
       invitations_remaining: '%{count} invitations remaining. <a href="%{upgradeUrl}" target="_blank">Upgrade</a>'
       who_to_invite: Who would you like to invite?
       invitation_message_placeholder: A message to include in the invitation email. (optional)
       invitation_message_label: Message
-      invitation_message_default: |
-        I have set up this Loomio group to help us make decisions together. Please accept my invitation. It only takes a minute to join. Thank you.
+      invitation_message_default: 'I have set up this Loomio group to help us make decisions together. Please accept my invitation. It only takes a minute to join. Thank you.
+
+        '
       group_announced:
         title: Invite to group
         helptext: Who would you like to invite to the group?
@@ -1022,37 +968,35 @@ en:
       anyone_can_participate: Anyone with link can participate
       placeholder: You can enter names or email addresses
       type_or_paste_email_addresses_to_invite: Type or paste email addresses to invite
-      notified_empty: 'Nobody selected yet'
-      single_notification: '1 notification will be sent.'
-      multiple_notifications: '%{notified} notifications will be sent.'
-      notified: '%{notified} people will be notified.'
-      notified_singular: '1 person will be notified.'
-      notified_none: 'Nobody will be notified.'
-      added: '%{count} people will be added.'
-      added_singular: '1 person will be added.'
-      added_none: 'Nobody will be added.'
-      group_title: '%{name} (%{count} people)'
-      visible_to_group: 'Anyone in %{group} will be able to see this thread.'
-      visible_to_guests: 'Only invited people can see this thread.'
+      notified_empty: Nobody selected yet
+      single_notification: 1 notification will be sent.
+      multiple_notifications: "%{notified} notifications will be sent."
+      notified: "%{notified} people will be notified."
+      notified_singular: 1 person will be notified.
+      notified_none: Nobody will be notified.
+      added: "%{count} people will be added."
+      added_singular: 1 person will be added.
+      added_none: Nobody will be added.
+      group_title: "%{name} (%{count} people)"
+      visible_to_group: Anyone in %{group} will be able to see this thread.
+      visible_to_guests: Only invited people can see this thread.
       click_group_to_see_individuals: Click group to see individuals
-
     members_list:
       title: Shared with
       last_notified: Notified
       not_notified: Not notified yet
-      no_members: "This hasn't been shared with anyone yet!"
-      group_admin: "Group admin"
-      thread_admin: "Thread admin"
-      last_read_at: "Last viewed %{time}"
-      has_not_read_thread: "Has not viewed thread"
-      has_not_joined_yet: "Has not joined yet"
-      has_not_joined_yet_hint: "This user has not accepted their invitation to join Loomio and will not receive further notifications until they do"
+      no_members: This hasn't been shared with anyone yet!
+      group_admin: Group admin
+      thread_admin: Thread admin
+      last_read_at: Last viewed %{time}
+      has_not_read_thread: Has not viewed thread
+      has_not_joined_yet: Has not joined yet
+      has_not_joined_yet_hint: This user has not accepted their invitation to join Loomio and will not receive further notifications until they do
     group_form:
       search_placeholder: Search for people...
       modal_title: Select group members
     flash:
-      success: '%{count} notifications sent'
-
+      success: "%{count} notifications sent"
   action_dock:
     actions_menu: Actions menu
     more_actions: More actions
@@ -1067,11 +1011,11 @@ en:
     invite_guests: Invite guests
     translate_thread: Translate context
     edit_poll: Edit poll
-    edit_poll_type: "Edit %{pollType}"
-    new_poll_type: "New %{pollType}"
+    edit_poll_type: Edit %{pollType}
+    new_poll_type: New %{pollType}
     move_items: Move items
     announce_poll: Invite people to vote
-    announce_poll_active: (No one has been invited yet)
+    announce_poll_active: "(No one has been invited yet)"
     translate_poll: Translate poll
     edit_stance: Change position
     translate_stance: Translate vote
@@ -1082,7 +1026,7 @@ en:
     translate_comment: Translate comment
     edit_outcome: Edit outcome
     announce_outcome: Notify people about this outcome
-    announce_outcome_active: (No one has been notified of this outcome yet)
+    announce_outcome_active: "(No one has been notified of this outcome yet)"
     translate_outcome: Translate outcome
     show_history: Show edit history
     edited: Edited
@@ -1107,7 +1051,6 @@ en:
     add_poll_to_thread: Add to thread
     count_members: "%{count} members"
     count_voters: "%{count} voters"
-
   formatting:
     confirm_discard: Are you sure you want to discard your changes?
     discard_draft: Discard draft
@@ -1160,26 +1103,22 @@ en:
     edit_markdown: Edit Markdown
     markdown_confirm: Some formatting may be lost converting wysiwyg content to markdown.
     upload_failed: Upload failed
-
   cover_photo_form:
-    heading: 'New cover photo'
-    upload_link: 'Upload new cover photo'
-    image_size_helptext: 'Ideal image size is 1400×320px'
-    upload_success: 'Cover photo successfully updated'
-
+    heading: New cover photo
+    upload_link: Upload new cover photo
+    image_size_helptext: Ideal image size is 1400×320px
+    upload_success: Cover photo successfully updated
   logo_photo_form:
-    heading: 'New group logo'
-    upload_link: 'Upload new group logo'
-    image_size_helptext: 'Ideal image size is 100×100px'
-    upload_success: 'Logo successfully updated'
-
+    heading: New group logo
+    upload_link: Upload new group logo
+    image_size_helptext: Ideal image size is 100×100px
+    upload_success: Logo successfully updated
   join_group_button:
-    not_a_member: "You're not currently a member of this group."
+    not_a_member: You're not currently a member of this group.
     join_group: Join group
     membership_requested: Membership requested
     messages:
-      joined_group: 'You are now a member of %{group}'
-
+      joined_group: You are now a member of %{group}
   membership_request_form:
     aria_label: Membership request form
     heading: Ask to join group
@@ -1189,8 +1128,7 @@ en:
     submit_button: Ask to join
     introduction_over_limit: Response too long
     messages:
-      membership_requested: 'You have requested to join %{group}'
-
+      membership_requested: You have requested to join %{group}
   revision_history_modal:
     aria_label: Revision history
     discussion_header: Discussion edits
@@ -1198,34 +1136,30 @@ en:
     poll_header: Poll edits
     outcome_header: Outcome edits
     stance_header: Vote edits
-    started_by: 'Started by <strong>%{name}</strong>'
-    edited_by: 'Edited by <strong>%{name}</strong>'
-    edit_by: "Edit by %{name} · %{date}"
+    started_by: Started by <strong>%{name}</strong>
+    edited_by: Edited by <strong>%{name}</strong>
+    edit_by: Edit by %{name} · %{date}
     posted: Posted
     field: Field
     before: Before
     after: After
     original_text: Original
     current_revision: Latest
-    closing_at_changed: "closing time set to %{time}"
-    private_changed: "privacy set to %{private}"
-    group_id_changed: "moved to %{name}"
-
+    closing_at_changed: closing time set to %{time}
+    private_changed: privacy set to %{private}
+    group_id_changed: moved to %{name}
   reactions_input:
     add_your_reaction: Add your reaction
-
   reactions_display:
     more_reactions: "%{count} more"
-    you: "You"
-    you_and_name: "You and %{name}"
-    you_and_name_and_count_more: "You, %{name} and %{count} more"
+    you: You
+    you_and_name: You and %{name}
+    you_and_name_and_count_more: You, %{name} and %{count} more
     name_and_count_more: "%{name} and %{count} more"
-
   context_panel:
     thread_status:
-      pinned: "This thread has been pinned. It will remain at the top of the group's list of threads for all users."
-      closed: "This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page"
-
+      pinned: This thread has been pinned. It will remain at the top of the group's list of threads for all users.
+      closed: This thread has been closed. It will no longer appear on the dashboard, and will be listed under 'closed' on the group page
   delete_group_modal:
     title: Delete group
     subgroup_title: Delete subgroup
@@ -1242,9 +1176,8 @@ en:
       Are you sure you want to delete this subgroup?
       All threads, polls, files and other group content will be permanently deleted.
       It is recommended that you export the group data and manually download any important files before you continue.
-    confirm: "Type '%{name}' to confirm you want to delete this group."
+    confirm: Type '%{name}' to confirm you want to delete this group.
     success: This group has been archived and is scheduled for permanent deletion in 2 weeks.
-
   report:
     start_on: Start on
     end_on: End on
@@ -1265,7 +1198,6 @@ en:
     month: Month
     year: Year
     country_disclaimer: Country is based on the user's IP address and is not very accurate. Consider this a rough guide only.
-
   group_page:
     stats: Group stats
     participation_report: Participation report
@@ -1278,60 +1210,60 @@ en:
     subgroups: Subgroups
     my_subgroups: My subgroups
     more_subgroups: More subgroups
-    show_opened: '%{count} Open'
-    show_closed: '%{count} Closed'
+    show_opened: "%{count} Open"
+    show_closed: "%{count} Closed"
     no_threads_here: No threads to see here!
     search_threads: Search for threads...
     private_threads: You'll need to be a member to view private threads in this group
     no_more_threads: No more threads to load
-    view_closed_threads: 'View closed threads'
+    view_closed_threads: View closed threads
     messages:
       privacy:
-        members: 'This group is now visible only to members'
-        parent_members: 'This group is now visible only to members of your organization'
-        public: 'This group is now visible to the public'
-      leave_group_success: 'You have left this group'
-      archive_group_success: 'This group has been deactivated'
-    group_logo: 'Group logo'
-    new_photo: 'new photo'
-    new_cover_photo: 'Upload new cover photo'
-    new_group_logo: 'Upload new group logo'
-    open_discussions: 'Open threads'
-    closed_discussions: 'Closed threads'
-    discussions_placeholder: 'A thread is where everyone can discuss a topic and make decisions together.'
+        members: This group is now visible only to members
+        parent_members: This group is now visible only to members of your organization
+        public: This group is now visible to the public
+      leave_group_success: You have left this group
+      archive_group_success: This group has been deactivated
+    group_logo: Group logo
+    new_photo: new photo
+    new_cover_photo: Upload new cover photo
+    new_group_logo: Upload new group logo
+    open_discussions: Open threads
+    closed_discussions: Closed threads
+    discussions_placeholder: A thread is where everyone can discuss a topic and make decisions together.
     members_placeholder: 'You''re the only one here: invite some people to join you!'
     member_options: Member options
-    see_all_members: 'See all %{count} members'
-    pending_invitations: '+ %{count} pending'
-    subgroups_placeholder: 'Subgroups give teams their own space and keep notifications focused to the right people.'
-    invite_people: 'Invite'
-    visibility_label: 'Visibility'
-    options_label: 'Options'
+    see_all_members: See all %{count} members
+    pending_invitations: "+ %{count} pending"
+    subgroups_placeholder: Subgroups give teams their own space and keep notifications focused to the right people.
+    invite_people: Invite
+    visibility_label: Visibility
+    options_label: Options
     options:
-      label: 'Options'
-      edit_group: 'Edit group settings'
+      label: Options
+      edit_group: Edit group settings
       become_coordinator: Become admin
       export_data: Export group data
       export_data_as_json: Export group data as JSON
       export_data_as_csv: Export group data as CSV
       export_data_as_html: Export group data as HTML
-      manage_members: 'Manage Members'
-      add_subgroup: 'Add Subgroup'
-      manage_subscription: 'Manage group subscription'
-      email_settings: 'Email preferences'
-      leave_group: 'Leave group'
-      deactivate_group: 'Deactivate group'
-      subscription_status: 'Subscription status'
+      manage_members: Manage Members
+      add_subgroup: Add Subgroup
+      manage_subscription: Manage group subscription
+      email_settings: Email preferences
+      leave_group: Leave group
+      deactivate_group: Deactivate group
+      subscription_status: Subscription status
     volume:
       loud: Email whenever there is activity.
       loud_aria_description: Your notification volume for this group is set to Loud. You will be emailed whenever there is activity.
       loud_message: You will be emailed about all activity in "%{name}."
       normal: 'Just email important activity: New threads and proposals, outcomes etc.'
       normal_aria_description: Your notification volume for this group is set to Normal. You will just be emailed important activity, such as when someone starts a new thread, raises a proposal, or sets an outcome.
-      normal_message: 'You will only be emailed about important events in "%{name}".'
+      normal_message: You will only be emailed about important events in "%{name}".
       quiet: Don't email about this group. Activity will be displayed on the dashboard.
       quiet_aria_description: Your notification volume for this group is set to Quiet. You won't be emailed about activity in this group. Group activity will be displayed on your Dashboard.
-      quiet_message: 'You won''t be emailed about activity in "%{name}".'
+      quiet_message: You won't be emailed about activity in "%{name}".
       mute: Hide this group from the dashboard and do not notify unless {'@'}mentioned.
       mute_aria_description: Your notification volume for this group is set to Mute. You won't be emailed unless someone mentions you, and group activity will not be displayed on your Dashboard.
       mute_message: '"%{name}" has been removed from your dashboard.'
@@ -1340,35 +1272,31 @@ en:
       parent_members: 'Privacy: This group is visible to members of %{parentGroupName} and members of %{groupName}'
       public: 'Privacy: This group is visible on the web'
       aria_label: 'Group privacy: %{privacy}'
-
   export_data_modal:
     title: How do you want to use your data?
     as_csv: Open it in a spreadsheet
     as_html: Open it in a browser
     as_json: Host this group on my own server
-
   description_card:
-    title: 'Group description'
-    placeholder: 'Group admins can use this area to describe the group’s purpose, so everyone knows why they are here.'
+    title: Group description
+    placeholder: Group admins can use this area to describe the group’s purpose, so everyone knows why they are here.
     messages:
-      description_updated: 'Description updated'
-
+      description_updated: Description updated
   leave_group_form:
-    aria_label: 'Leave group'
-    title: 'Leave group'
-    question: 'Are you sure you want to leave this group?'
-    submit: 'Yes, leave this group'
-
+    aria_label: Leave group
+    title: Leave group
+    question: Are you sure you want to leave this group?
+    submit: Yes, leave this group
   archive_group_form:
-    aria_label: 'Deactivate group'
-    title: 'Deactivate group'
-    question: 'Are you sure you want to deactivate this group?'
-    submit: 'Yes, Deactivate this group'
-
+    aria_label: Deactivate group
+    title: Deactivate group
+    question: Are you sure you want to deactivate this group?
+    submit: Yes, Deactivate this group
   group_form:
     request_to_join_prompt: Request to join prompt
-    default_request_to_join_prompt: |
-      Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.
+    default_request_to_join_prompt: 'Thanks for your interest in our group. Please introduce yourself and explain why you are requesting to join.
+
+      '
     thread_defaults_help: Default settings for new threads
     click_to_change_image: Click to change the cover image (4x1) or logo (1x1)
     change_cover_image: change cover image
@@ -1394,89 +1322,81 @@ en:
     subgroup_name: Subgroup name
     organization_name: Organization name
     handle: Handle
-    group_handle_placeholder: "For your group URL and email: %{host}/%{handle}, %{handle}{'@'}%{host}"
+    group_handle_placeholder: 'For your group URL and email: %{host}/%{handle}, %{handle}{''@''}%{host}'
     start_organization_heading: New organization
     edit_organization_heading: Edit organization settings
-    group_name_placeholder: 'What is the name of your group?'
-    subgroup_name_placeholder: 'E.g. Board'
-    organization_name_placeholder: 'What is the name of your organization?'
-    description: 'Description'
-    description_placeholder: 'Describe the purpose of your group so your group members know why they are here.'
-    new_description_placeholder: 'Why are you trialing Loomio? What decisions do you need to make together?'
-    new_description_html: |
-      <h3 id="how-do-you-intend-to-use-loomio">How do you intend to use Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group">Why is this important for your group?</h3><p></p><h3 id="what-decisions-do-you-need-to-make">What decisions do you need to make?</h3><p></p>
+    group_name_placeholder: What is the name of your group?
+    subgroup_name_placeholder: E.g. Board
+    organization_name_placeholder: What is the name of your organization?
+    description: Description
+    description_placeholder: Describe the purpose of your group so your group members know why they are here.
+    new_description_placeholder: Why are you trialing Loomio? What decisions do you need to make together?
+    new_description_html: '<h3 id="how-do-you-intend-to-use-loomio">How do you intend to use Loomio?</h3><p></p><h3 id="why-is-this-important-for-your-group">Why is this important for your group?</h3><p></p><h3 id="what-decisions-do-you-need-to-make">What decisions do you need to make?</h3><p></p>
+
+      '
     secret_by_default: Your group will only be accessible by those who are invited to join. You can change this later.
     privacy_statement:
-      public_on_web: 'Name, description, and attachments to the group context will be visible to the public'
-      private_to_group: 'Name and description will only be visible to members.'
-      private_to_parent_members: 'Name and description will be visible to members of %{parent}'
-    privacy: 'Privacy'
-    group_privacy_is_open_description: "Publicly listed. All threads are public."
-    group_privacy_is_closed_description: "Unlisted. Anyone with the link can ask to join. All threads are private."
-    group_privacy_is_closed_public_threads_description: "Unlisted. Anyone with the link can ask to join. Threads can be public or private."
-    group_privacy_is_secret_description: "Only invited people can find the group. All threads are private."
-    confirm_change_to_secret: "If you proceed, all threads in this group and its subgroups will be made private."
-    confirm_change_to_secret_subgroup: 'If you proceed, all threads will be made private.'
-    confirm_change_to_public: 'If you proceed, all threads in this group will be made public on the web.'
-    confirm_change_to_private_discussions_only: 'If you proceed, any public threads in this group will be made private.'
+      public_on_web: Name, description, and attachments to the group context will be visible to the public
+      private_to_group: Name and description will only be visible to members.
+      private_to_parent_members: Name and description will be visible to members of %{parent}
+    privacy: Privacy
+    group_privacy_is_open_description: Publicly listed. All threads are public.
+    group_privacy_is_closed_description: Unlisted. Anyone with the link can ask to join. All threads are private.
+    group_privacy_is_closed_public_threads_description: Unlisted. Anyone with the link can ask to join. Threads can be public or private.
+    group_privacy_is_secret_description: Only invited people can find the group. All threads are private.
+    confirm_change_to_secret: If you proceed, all threads in this group and its subgroups will be made private.
+    confirm_change_to_secret_subgroup: If you proceed, all threads will be made private.
+    confirm_change_to_public: If you proceed, all threads in this group will be made public on the web.
+    confirm_change_to_private_discussions_only: If you proceed, any public threads in this group will be made private.
     profile: Profile
-
-    subgroup_privacy_is_open_description: "Anyone can find this subgroup and ask to join. All threads are public."
-    subgroup_privacy_is_closed_description: "Anyone can find this subgroup and ask to join. All threads are private."
-    subgroup_privacy_is_closed_public_threads_description: "Anyone can find this subgroup and ask to join. Threads can be public or private."
-    subgroup_privacy_is_closed_secret_parent_description: "Members of %{parent} can find this subgroup and ask to join. All threads are private."
-    subgroup_privacy_is_secret_description: 'Only invited members can see this subgroup.'
-
-    advanced_settings: "Advanced settings"
-    how_do_people_join: "How do people join?"
-    membership_granted_upon_request: 'Anyone can join the group.'
-    membership_granted_upon_approval: 'Anyone can request to join but must be approved.'
-    membership_granted_upon_invitation: 'Invitation only.'
-
-    membership_granted_upon_approval_secret_parent: '<strong>By request</strong>  anyone from %{parent} can ask to join the group.'
-
-    permissions: 'Permissions'
-    thread_privacy: 'Thread privacy'
-    public_threads: 'Public threads only'
-    public_discussions_subgroup: 'Anyone in %{parentGroupName} can see discussions'
-    public_or_private_threads: 'Allow public and private threads'
-    private_threads: 'Only members can see discussions'
-    allow_public_threads: 'Allow public threads in this group.'
-    #is_visible_to_parent_members: 'Content is visible to members of %{parentGroupName}.'
-    parent_members_can_see_discussions: 'Members of %{parent} can see private threads'
-    parent_members_can_see_discussions_help: 'Allow members of the parent group to see, but not participate in, threads and polls within this group'
-    members_can_announce: 'Members can notify everyone in the group'
-    members_can_announce_help: 'Allow members to notify everyone in the group about a thread or poll'
-    members_can_add_members: 'Members can invite members'
-    members_can_add_members_help: "Allow members to invite people to join this group"
-    members_can_add_guests: 'Members can invite guests'
-    members_can_add_guests_help: 'Allow members to invite guests into threads or polls in this group'
-    members_can_create_subgroups: 'Members can create subgroups'
-    members_can_create_subgroups_help: 'Allow members to create and become admins of new subgroups'
-    members_can_edit_discussions: 'Members can manage threads and comments'
-    members_can_edit_discussions_help: 'Allow members to edit, move, pin, tag or close threads'
-    members_can_edit_comments: 'Members can edit their own comments'
-    members_can_edit_comments_help: 'Allow members to edit their own comments at any time'
-    members_can_delete_comments: 'Members can delete their own comments'
-    members_can_delete_comments_help: 'Allow members to delete their own comments from threads'
-    members_can_start_discussions: 'Members can start new threads'
-    members_can_start_discussions_help: 'Allow members to start new threads within the group'
-    members_can_raise_motions: 'Members can start polls'
-    members_can_raise_motions_help: 'Allow members to start polls and proposals within discussions or the group'
-    admins_can_edit_user_content: "Admins can edit members' comments"
-    admins_can_edit_user_content_help: 'Allow admins to edit content written by members'
-
-    submit_start_group: 'Start group'
-    submit_start_subgroup: 'Start subgroup'
-    submit_update: 'Update settings'
-
+    subgroup_privacy_is_open_description: Anyone can find this subgroup and ask to join. All threads are public.
+    subgroup_privacy_is_closed_description: Anyone can find this subgroup and ask to join. All threads are private.
+    subgroup_privacy_is_closed_public_threads_description: Anyone can find this subgroup and ask to join. Threads can be public or private.
+    subgroup_privacy_is_closed_secret_parent_description: Members of %{parent} can find this subgroup and ask to join. All threads are private.
+    subgroup_privacy_is_secret_description: Only invited members can see this subgroup.
+    advanced_settings: Advanced settings
+    how_do_people_join: How do people join?
+    membership_granted_upon_request: Anyone can join the group.
+    membership_granted_upon_approval: Anyone can request to join but must be approved.
+    membership_granted_upon_invitation: Invitation only.
+    membership_granted_upon_approval_secret_parent: "<strong>By request</strong>  anyone from %{parent} can ask to join the group."
+    permissions: Permissions
+    thread_privacy: Thread privacy
+    public_threads: Public threads only
+    public_discussions_subgroup: Anyone in %{parentGroupName} can see discussions
+    public_or_private_threads: Allow public and private threads
+    private_threads: Only members can see discussions
+    allow_public_threads: Allow public threads in this group.
+    parent_members_can_see_discussions: Members of %{parent} can see private threads
+    parent_members_can_see_discussions_help: Allow members of the parent group to see, but not participate in, threads and polls within this group
+    members_can_announce: Members can notify everyone in the group
+    members_can_announce_help: Allow members to notify everyone in the group about a thread or poll
+    members_can_add_members: Members can invite members
+    members_can_add_members_help: Allow members to invite people to join this group
+    members_can_add_guests: Members can invite guests
+    members_can_add_guests_help: Allow members to invite guests into threads or polls in this group
+    members_can_create_subgroups: Members can create subgroups
+    members_can_create_subgroups_help: Allow members to create and become admins of new subgroups
+    members_can_edit_discussions: Members can manage threads and comments
+    members_can_edit_discussions_help: Allow members to edit, move, pin, tag or close threads
+    members_can_edit_comments: Members can edit their own comments
+    members_can_edit_comments_help: Allow members to edit their own comments at any time
+    members_can_delete_comments: Members can delete their own comments
+    members_can_delete_comments_help: Allow members to delete their own comments from threads
+    members_can_start_discussions: Members can start new threads
+    members_can_start_discussions_help: Allow members to start new threads within the group
+    members_can_raise_motions: Members can start polls
+    members_can_raise_motions_help: Allow members to start polls and proposals within discussions or the group
+    admins_can_edit_user_content: Admins can edit members' comments
+    admins_can_edit_user_content_help: Allow admins to edit content written by members
+    submit_start_group: Start group
+    submit_start_subgroup: Start subgroup
+    submit_update: Update settings
     messages:
-      group_created: 'Group started'
-      group_updated: 'Group updated'
-
-    upload_logo: 'Upload logo'
-    upload_cover_photo: 'Upload cover photo'
-
+      group_created: Group started
+      group_updated: Group updated
+    upload_logo: Upload logo
+    upload_cover_photo: Upload cover photo
   group_export_modal:
     title: Export group data
     body: |
@@ -1490,12 +1410,10 @@ en:
       </p>
     submit: Start export
     flash: Group data export started
-
   membership_requests_card:
-    heading: 'Membership Requests'
+    heading: Membership Requests
     manage_requests: Manage requests
     manage_requests_with_count: Manage requests (%{count})
-
   membership_requests_page:
     heading: Membership Requests
     approve: Approve
@@ -1503,66 +1421,63 @@ en:
     no_pending_requests: There are currently no pending membership requests for this group.
     no_previous_requests: There are currently no previous membership requests for this group.
     previous_requests: Previous Requests
-    previous_request_response: '%{response} by %{responder} '
+    previous_request_response: "%{response} by %{responder} "
     messages:
       request_approved_success: Membership request approved
       request_ignored_success: Membership request ignored
-
   invitation_form:
     group_url: Group URL
     reusable_invitation_link: Reusable invitation link
-    error: "Error when trying to copy to clipboard"
-    aria_label: 'Invitation form'
-    invite_people: 'Invite people'
-    invite_guests: 'Invite guests'
-    notify_people: 'Notify people'
-    invite_people_to_group: 'Invite to %{name}'
-    group: 'Group'
-    group_placeholder: 'Select a group'
-    shareable_link: 'Shareable link'
-    share_group: 'Share your group'
-    copy_link: 'Copy'
-    copy_to_clipboard: 'Copy to clipboard'
-    email_addresses: 'Email addresses'
+    error: Error when trying to copy to clipboard
+    aria_label: Invitation form
+    invite_people: Invite people
+    invite_guests: Invite guests
+    notify_people: Notify people
+    invite_people_to_group: Invite to %{name}
+    group: Group
+    group_placeholder: Select a group
+    shareable_link: Shareable link
+    share_group: Share your group
+    copy_link: Copy
+    copy_to_clipboard: Copy to clipboard
+    email_addresses: Email addresses
     already_chatting_somewhere: Already chatting somewhere?
     to_stop_people_reset_the_link: To stop people from joining with this link, click "Reset this link". The existing link will no longer work and a new link will be created.
     try_the_shareable_link_instead: Try using the shareable link instead.
     enter_emails_of_people_to_invite: Enter the email addresses of the people you'd like to invite to the group. If you have a list, just copy and paste them all at once.
-    email_addresses_placeholder: 'e.g. helperbot@loomio.org, friendlybot@loomio.org'
-    secret_group_url_explanation: "This is the address for your group. Only invited members will be able to see the group."
-    shareable_invitation_explanation: 'Anyone with this link can join your group immediately.'
-    shareable_link_to_join_group: 'Shareable link to join group'
-    shareable_link_reset: 'Shareable link reset. The previous link will no longer work.'
+    email_addresses_placeholder: e.g. helperbot@loomio.org, friendlybot@loomio.org
+    secret_group_url_explanation: This is the address for your group. Only invited members will be able to see the group.
+    shareable_invitation_explanation: Anyone with this link can join your group immediately.
+    shareable_link_to_join_group: Shareable link to join group
+    shareable_link_reset: Shareable link reset. The previous link will no longer work.
     reset_the_link: Reset the link
-    email_explanation: 'Alternatively, enter email addresses below to send invitations by email.'
+    email_explanation: Alternatively, enter email addresses below to send invitations by email.
     add_custom_message: 'Make your invite personal, '
-    add_custom_message_link: 'add a custom message.'
-    custom_message: 'Custom message'
-    custom_message_placeholder: 'Enter a personal message to include with the invitation.'
-    add_members: 'Add members'
-    from_parent_group: 'from %{name}.'
-    send: 'Send'
-    done: 'Done'
+    add_custom_message_link: add a custom message.
+    custom_message: Custom message
+    custom_message_placeholder: Enter a personal message to include with the invitation.
+    add_members: Add members
+    from_parent_group: from %{name}.
+    send: Send
+    done: Done
     messages:
-      invitation_sent: 'Invitation sent.'
-      invitations_sent: '%{count} invitations sent.'
-      no_invitations: 'Uhoh! Please verify the email address is correct and try again.'
-      max_invitations: 'If you want to send more than 100 invitations, use a team link.'
-
+      invitation_sent: Invitation sent.
+      invitations_sent: "%{count} invitations sent."
+      no_invitations: Uhoh! Please verify the email address is correct and try again.
+      max_invitations: If you want to send more than 100 invitations, use a team link.
   memberships_page:
-    members: 'Members'
-    name_label: 'Name'
-    coordinator_label: 'Admin'
-    remove_member_label: 'Remove'
-    fragment_placeholder: 'Filter users by name or username...'
+    members: Members
+    name_label: Name
+    coordinator_label: Admin
+    remove_member_label: Remove
+    fragment_placeholder: Filter users by name or username...
     only_one_admin: There is only one admin in this group. It's recommended that you appoint at least one more member as an admin.
     messages:
-      remove_member_success: 'Removed %{name}'
-      make_admin_success: '%{name} is now an admin'
-      remove_admin_success: '%{name} is no longer an admin'
+      remove_member_success: Removed %{name}
+      make_admin_success: "%{name} is now an admin"
+      remove_admin_success: "%{name} is no longer an admin"
     remove_admin_from_self:
-      question: 'Are you sure you no longer want to be an admin?'
-
+      question: Are you sure you no longer want to be an admin?
   membership_remove_modal:
     invitation:
       title: Cancel invitation
@@ -1576,11 +1491,9 @@ en:
       impact_for_group: This will remove their access to the group (including threads and polls) and any subgroups.
       flash: Member removed
       submit: Remove member
-
   memberships_panel:
     add_coordinator: Make Admin
     remove_coordinator: Demote admin
-
   membership_form:
     modal_title:
       group: Set title
@@ -1589,25 +1502,21 @@ en:
     title_label: title
     title_placeholder: E.g. 'Coordinator', or 'Facilitator'
     updated: Membership title updated
-
   user_name_modal:
     user_name_updated: User name updated
     set_user_name: Set user name
-
   user_page:
-    contact_user: 'Contact %{name}'
+    contact_user: Contact %{name}
     location_field: 'Location: %{value}'
     locale_field: 'Language: %{value}'
     online_field: 'Online: %{value}'
-    invited: 'Invited %{value}'
-    message_user: 'Message %{name}'
-
+    invited: Invited %{value}
+    message_user: Message %{name}
   contact_request_form:
-    modal_title: "Email %{name}"
+    modal_title: Email %{name}
     message_placeholder: Introduce yourself and share why you'd like to make contact.
     helptext: "%{name} will be emailed your name, email address, and message"
-    email_sent: "Email sent to %{name}"
-
+    email_sent: Email sent to %{name}
   profile_page:
     autodetect_time_zone: Autodetect time zone
     account_is_bot: This is a bot account
@@ -1615,71 +1524,66 @@ en:
     incomplete_profile: Incomplete profile!
     set_your_profile_picture: Set your profile picture
     messages:
-      updated: 'Profile updated'
-      picture_changed: 'Profile picture updated'
-      password_changed: 'Password updated'
-      deactivated: 'Account deactivated'
+      updated: Profile updated
+      picture_changed: Profile picture updated
+      password_changed: Password updated
+      deactivated: Account deactivated
     deactivated_user: Deactivated user
     deleted_account: Deleted account
-    date_time_pref_label: 'Date and time format'
+    date_time_pref_label: Date and time format
     merge_accounts: Merge accounts
-    change_picture_link: 'Change picture'
-    change_password_link: 'Reset password'
-    delete_account: 'Permanently Delete account'
-    delete_user_link: 'Delete account'
-    profile: 'Profile'
-    edit_profile: 'Edit Profile'
-    picture_label: 'Picture'
-    name_label: 'Name'
-    username_label: 'Username'
-    username_helptext: 'All lowercase letters and numbers, maximum 30 characters'
-    email_label: 'Email'
-    short_bio_label: 'Introduction'
-    locale_label: 'Language'
-    short_bio_placeholder: 'Please introduce yourself, include areas of expertise, topics of interest, and any affiliated organizations'
+    change_picture_link: Change picture
+    change_password_link: Reset password
+    delete_account: Permanently Delete account
+    delete_user_link: Delete account
+    profile: Profile
+    edit_profile: Edit Profile
+    picture_label: Picture
+    name_label: Name
+    username_label: Username
+    username_helptext: All lowercase letters and numbers, maximum 30 characters
+    email_label: Email
+    short_bio_label: Introduction
+    locale_label: Language
+    short_bio_placeholder: Please introduce yourself, include areas of expertise, topics of interest, and any affiliated organizations
     locale_placeholder: Select your preferred language
-    location_label: 'Location'
-    location_placeholder: 'Where are you based?'
-    update_profile: 'Update profile'
-    deactivate_account: 'Deactivate account'
-    deactivate_account_subtitle: 'Stop emails and cancel memberships. Keep your profile so past discussions and decisions are not affected.'
-    delete_account_subtitle: 'Completely delete your account and remove your name from past discussions and decisions.'
+    location_label: Location
+    location_placeholder: Where are you based?
+    update_profile: Update profile
+    deactivate_account: Deactivate account
+    deactivate_account_subtitle: Stop emails and cancel memberships. Keep your profile so past discussions and decisions are not affected.
+    delete_account_subtitle: Completely delete your account and remove your name from past discussions and decisions.
     updated_on_sign_in: Provided by your browser and updated when you sign in
-
   text_editor:
     x_of_y_characters: "%{x} / %{y} characters"
     select_text_to_link: Select text to link and try again
     insert_link: Insert link
     insert_embedded_url: Embed video
-
   change_picture_form:
-    aria_label: 'Profile photo form'
-    title: 'Set profile photo'
-    helptext: 'You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account, you can use that.'
-    use_initials: 'Use initials'
-    use_gravatar: 'Use Gravatar'
-    use_uploaded: 'Upload new photo'
-    existing_upload: 'Existing upload'
-    use_provider: 'Use %{provider} photo'
-
+    aria_label: Profile photo form
+    title: Set profile photo
+    helptext: You can upload your own profile picture, or if you have a <a href="https://en.gravatar.com/support/whatisgravatar/">Gravatar</a> account, you can use that.
+    use_initials: Use initials
+    use_gravatar: Use Gravatar
+    use_uploaded: Upload new photo
+    existing_upload: Existing upload
+    use_provider: Use %{provider} photo
   change_password_form:
     set_password_title: Set your password
     set_password_helptext: Please enter a password - minimum 8 characters
     set_password: Set password
     password_changed: Your password has been updated
-
   deactivation_modal:
     introduction: 'When you delete your account:'
     deactivate_introduction: 'When you deactivate your account:'
-    you_will_be_deactivated: "Your user account will marked as deactivated. Your email address and personally identifying data will remain. You can reactivate your account later if you wish."
-    name_not_removed: 'Comments, votes, proposals and discussions you posted will remain so that historical records are not altered.'
-    you_will_be_deleted: "Your user account including your name, email address, profile photo and other personally identifying data will be deleted from our systems."
-    name_removed: 'Comments, votes, proposals and discussions you posted will remain, but your name and profile will be removed from them.'
-    no_longer_group_member: 'You will no longer be listed as a member of any groups.'
-    no_emails: 'You will no longer receive notification emails.'
-    submit_delete: 'Delete my account now'
-    submit_deactivate: 'Deactivate my account now'
-
+    you_will_be_deactivated: Your user account will marked as deactivated. Your email address and personally identifying data will remain. You can reactivate your account later if you wish.
+    name_not_removed: Comments, votes, proposals and discussions you posted will remain so that historical records are not altered.
+    you_will_be_deleted: Your user account including your name, email address, profile photo and other personally identifying data will be deleted from our systems.
+    name_removed: Comments, votes, proposals and discussions you posted will remain, but your name and profile will be removed from them.
+    no_longer_group_member: You will no longer be listed as a member of any groups.
+    no_emails: You will no longer receive notification emails.
+    submit_delete: Delete my account now
+    submit_deactivate: Deactivate my account now
   email_settings_page:
     monday: Monday
     tuesday: Tuesday
@@ -1690,44 +1594,43 @@ en:
     sunday: Sunday
     every_day: Every day
     every_second_day: Every second day
-    never: Off
+    never: false
     header: Notification settings
     account_deactivated: Your account has been deactivated. You will not receive any emails, ever.
     deactivate_header: Stop all emails forever
     deactivate_description: If you never want to get another email from us ever again, you can deactivate your user account.
     email_newsletter: Loomio Newsletter
-    email_newsletter_description: "Get updates about new features, training, events in your city and the future of Loomio. Usually 2 or 3 emails per year."
+    email_newsletter_description: Get updates about new features, training, events in your city and the future of Loomio. Usually 2 or 3 emails per year.
     email_catch_up_day: Catch-up summary email
-    daily_summary_description: |
-      Choose when to receive the catch-up summary email. This email contains any new activity that you have not seen. A good way to stay up-to-date if you're not a regular user.
+    daily_summary_description: 'Choose when to receive the catch-up summary email. This email contains any new activity that you have not seen. A good way to stay up-to-date if you''re not a regular user.
+
+      '
     on_participation_label: Subscribe on participation
-    on_participation_description: "When you participate in a thread, all further activity will be emailed to you as it happens."
+    on_participation_description: When you participate in a thread, all further activity will be emailed to you as it happens.
     announcement_label: Announcements
-    announcement_description: "You will receive an email about all content that has been announced by people in your groups"
+    announcement_description: You will receive an email about all content that has been announced by people in your groups
     mentioned_label: Mentions & Replies
-    mentioned_description: "When someone {'@'}mentions you in a comment, you'll get a notification email"
+    mentioned_description: When someone {'@'}mentions you in a comment, you'll get a notification email
     update_settings: Save changes
     specific_groups: Settings for specific groups
     default_settings:
-      loud_description: "When you join a new group, you will be emailed <strong>whenever there is activity</strong>."
-      normal_description: "When you join a new group, you will be emailed about <strong>new threads and proposals</strong>."
-      quiet_description: "When you join a new group, you <strong>won't be emailed about activity</strong>."
+      loud_description: When you join a new group, you will be emailed <strong>whenever there is activity</strong>.
+      normal_description: When you join a new group, you will be emailed about <strong>new threads and proposals</strong>.
+      quiet_description: When you join a new group, you <strong>won't be emailed about activity</strong>.
     edit: Edit
     messages:
       updated: Email settings updated
     learn_more: Learn more about email settings...
-
   thread_preview:
     replies_count: "%{count} replies"
     unread_count: "%{count} unread"
-
   dashboard_page:
-    aria_label: 'Dashboard'
-    polls_to_vote_on: "Polls to vote on"
-    no_polls_to_vote_on: "There are no polls you need to vote on"
-    recent_polls: "Recent polls"
-    current_polls: "Current polls"
-    recent_threads: "Recent threads"
+    aria_label: Dashboard
+    polls_to_vote_on: Polls to vote on
+    no_polls_to_vote_on: There are no polls you need to vote on
+    recent_polls: Recent polls
+    current_polls: Current polls
+    recent_threads: Recent threads
     no_groups:
       show_all: Welcome! You are not a member of any groups yet. <a href="/explore">Browse public groups</a> or <a href="/g/new">Start a group</a>.
       show_muted: You don't have any muted threads because you are not a member of any groups.
@@ -1747,8 +1650,8 @@ en:
         Muting is a way to hide or silence threads you're not interested in.
         Muting means you won't see it in <strong>Recent</strong> or <strong>Unread</strong>, and you won't be notified about activity in that thread, like proposals.
         You'll only be alerted if someone <strong>{'@'}mentions</strong> your name.
-      instructions: 'To mute a thread, hover over it and click the mute icon.'
-      see_muted_html: 'To see your muted threads, click <strong>"Muted"</strong>. You can unmute by hovering and clicking the same icon.'
+      instructions: To mute a thread, hover over it and click the mute icon.
+      see_muted_html: To see your muted threads, click <strong>"Muted"</strong>. You can unmute by hovering and clicking the same icon.
     filtering:
       filter_threads: Filter Threads
       filter_threads_aria_label: Filter Threads
@@ -1763,23 +1666,21 @@ en:
       muted_aria_label: Current showing muted threads
       muted_description: View only threads which have been muted
     thread_preview:
-      you_voted: 'You voted %{position}'
-      undecided: 'You are undecided'
+      you_voted: You voted %{position}
+      undecided: You are undecided
     threads_from:
-      group: 'Threads from'
-      pinned: 'Pinned threads'
-      proposals: 'Threads with active decisions'
-      starred: 'Starred threads'
-      today: 'Today'
-      yesterday: 'Yesterday'
-      thisweek: 'This week'
-      thismonth: 'This month'
-      older: 'Older than a month'
-
+      group: Threads from
+      pinned: Pinned threads
+      proposals: Threads with active decisions
+      starred: Starred threads
+      today: Today
+      yesterday: Yesterday
+      thisweek: This week
+      thismonth: This month
+      older: Older than a month
   threads_page:
-    no_direct_threads: "You have no direct threads"
-    no_invite_only_threads: "You have no invite-only threads"
-
+    no_direct_threads: You have no direct threads
+    no_invite_only_threads: You have no invite-only threads
   inbox_page:
     no_threads: Woohoo! You've read all the threads in your inbox.
     unread_threads: Unread Threads
@@ -1789,10 +1690,9 @@ en:
       start: Start
       or: or
       join_group: <a href="/explore">join</a> a group to see threads.
-
   discussion:
-    direct_thread: "Direct thread"
-    invite_only: "Invite-only"
+    direct_thread: Direct thread
+    invite_only: Invite-only
     private_thread: Private thread
     max_threads_reached: |
       <p>You have used all %{maxThreads} threads available to this group.</p>
@@ -1800,41 +1700,39 @@ en:
     subscription_canceled: |
       <p>Your subscription is not active.</p>
       <p>Please <a href="%{upgradeUrl}" target="_blank">upgrade</a> to continue using Loomio.</p>
-    activity: 'Activity'
-    activity_placeholder: 'No activity yet!'
-    load_previous: 'Load earlier activity'
-    started_by: 'Started by <strong>%{name}</strong>'
+    activity: Activity
+    activity_placeholder: No activity yet!
+    load_previous: Load earlier activity
+    started_by: Started by <strong>%{name}</strong>
     pin:
-      pinned: 'Thread pinned'
-      unpinned: 'Thread unpinned'
+      pinned: Thread pinned
+      unpinned: Thread unpinned
     volume:
-      mute_message: 'Thread muted'
-      unmute_message: 'Thread unmuted'
+      mute_message: Thread muted
+      unmute_message: Thread unmuted
     closed:
-      reopened: 'Thread reopened'
-      closed: 'Thread closed'
-
+      reopened: Thread reopened
+      closed: Thread closed
   discussion_last_seen_by:
     title: Seen by
     no_one: No one has seen this yet
     disabled_anonymous_polls: Viewer history is disabled because thread contains anonymous polls
-
   activity_card:
     count_responses: "%{count} responses"
-    event_pinned: "Pinned to timeline"
-    event_unpinned: "Unpinned from timeline"
+    event_pinned: Pinned to timeline
+    event_unpinned: Unpinned from timeline
     beginning: Beginning
     end: End
-    unread: "Unread (%{count})"
+    unread: Unread (%{count})
     latest: Latest
     context: Context
     chronological: Chronological
     nested: Nested
     attachment_display:
       aria_label: 'File attached:'
-      image_alt: 'Attached image'
-    n_previous: 'Load %{count} previous responses'
-    n_more: 'Load %{count} responses'
+      image_alt: Attached image
+    n_previous: Load %{count} previous responses
+    n_more: Load %{count} responses
     add_comment: Add comment
     add_poll: Add poll
     add_outcome: Add outcome
@@ -1842,37 +1740,33 @@ en:
     facilitate: Facilitate
     start_decision: Start decision
     start_vote: Start vote
-
   thread_group:
     aria_label: Group name
-
   thread_context:
     current_poll_type_banner: Current %{pollType}
-    item_maybe_deleted: "Cannot find the requested location within the thread. It may have been deleted."
-    aria_label: 'Thread context'
-    thread_options: 'Thread options'
-    email_settings: 'Notification settings'
-    edit: 'Edit'
-    edit_thread: 'Edit'
-    close_thread: 'Close'
-    reopen_thread: 'Reopen'
-    pin_thread: 'Pin'
-    unpin_thread: 'Unpin'
-    mute_thread: 'Mute'
-    move_thread: 'Move'
-    print_thread: 'Print'
-    delete_thread: 'Delete'
-    add_comment: 'Comment'
-    seen_by_count: 'Seen by %{count}'
-    count_notified: 'Notified %{count}'
-    forked_from: "Forked from"
-
+    item_maybe_deleted: Cannot find the requested location within the thread. It may have been deleted.
+    aria_label: Thread context
+    thread_options: Thread options
+    email_settings: Notification settings
+    edit: Edit
+    edit_thread: Edit
+    close_thread: Close
+    reopen_thread: Reopen
+    pin_thread: Pin
+    unpin_thread: Unpin
+    mute_thread: Mute
+    move_thread: Move
+    print_thread: Print
+    delete_thread: Delete
+    add_comment: Comment
+    seen_by_count: Seen by %{count}
+    count_notified: Notified %{count}
+    forked_from: Forked from
   pin_thread_modal:
     title: Pin thread
-    helptext: "Pinned threads always appear at the top of their group's list of threads. They can be used to inform members of important announcements, or to promote common material like a code of conduct or community guidelines."
-    helptext_two: "You may remove pins at any time by selecting 'Unpin' from the thread dropdown"
+    helptext: Pinned threads always appear at the top of their group's list of threads. They can be used to inform members of important announcements, or to promote common material like a code of conduct or community guidelines.
+    helptext_two: You may remove pins at any time by selecting 'Unpin' from the thread dropdown
     pin_thread: Pin thread
-
   thread_arrangement_form:
     edit: Edit layout
     title: Thread layout
@@ -1890,69 +1784,63 @@ en:
     nested_twice: Two levels of nested replies
     nested_twice_description: Indent replies at most two times.
     changing_nesting_is_slow: Changes to nesting can take a couple of minutes to process.
-
   delete_thread_form:
-    aria_label: 'Delete thread'
+    aria_label: Delete thread
     title: Delete thread
     body: Are you sure you want to delete this thread?
-    confirm: 'Delete thread'
+    confirm: Delete thread
     messages:
       success: Thread deleted
-
   move_thread_form:
     aria_label: Move thread
     title: Move thread
     body: Destination group
     confirm: Move thread
-    confirm_change_to_private_thread: '%{groupName} is an open group. If you proceed, this thread will be made public.'
+    confirm_change_to_private_thread: "%{groupName} is an open group. If you proceed, this thread will be made public."
     messages:
       success: Thread has been moved to %{name}
-
   delete_comment_dialog:
-    title: 'Delete comment'
-    question: 'This will permanently delete this comment. If you proceed, it cannot be restored.'
-
+    title: Delete comment
+    question: This will permanently delete this comment. If you proceed, it cannot be restored.
   contact_message_form:
-    alt_title: "Contact Loomio Support"
+    alt_title: Contact Loomio Support
     need_message: Please enter a message so we can help you :-)
     respond_asap: Send a message to the Loomio team and we'll respond as soon as we can.
-    happy_to_help_with:  We're happy to help with sales enquiries, support requests, feature requests, reporting bugs or issues you're experiencing.
-    title: "Hi there! How can we help?"
-    contact_us_email: "You can also email us: <a href=\"mailto:%{email}\">%{email}</a>"
-    contact_us: 'Contact Us'
-    name_label: 'Your name'
-    name_placeholder: 'Enter your name...'
-    subject_label: "Subject"
-    subject_placeholder: |
-      Eg: Trouble signing in, or Feature suggestion
-    email_label: 'Your email address'
-    email_placeholder: 'Enter your email address...'
-    message_label: 'Your message'
-    message_placeholder: 'If requesting support please try to provide as much information as you can.'
-    send_message: 'Send Message'
-    new_contact_message: "Thanks for getting in touch; we'll get back to you soon!"
+    happy_to_help_with: We're happy to help with sales enquiries, support requests, feature requests, reporting bugs or issues you're experiencing.
+    title: Hi there! How can we help?
+    contact_us_email: 'You can also email us: <a href="mailto:%{email}">%{email}</a>'
+    contact_us: Contact Us
+    name_label: Your name
+    name_placeholder: Enter your name...
+    subject_label: Subject
+    subject_placeholder: 'Eg: Trouble signing in, or Feature suggestion
+
+      '
+    email_label: Your email address
+    email_placeholder: Enter your email address...
+    message_label: Your message
+    message_placeholder: If requesting support please try to provide as much information as you can.
+    send_message: Send Message
+    new_contact_message: Thanks for getting in touch; we'll get back to you soon!
     consent_message: |
       By contacting us you consent to our staff accessing your account as necessary. <br />
       Our support team speak English and will translate your message with Google Translate if required. <br />
       We aim to respond to all messages within 24 hours.
-    success: "Thanks for your message, %{name}. You'll hear back from us soon."
-    success_via_email: "Thanks for your message, %{name}. We'll respond via email within 24 hours."
-
+    success: Thanks for your message, %{name}. You'll hear back from us soon.
+    success_via_email: Thanks for your message, %{name}. We'll respond via email within 24 hours.
   explore_page:
     header: Explore groups
     search_placeholder: Search for public groups
-    single_search_result: "1 public group matching <strong>%{searchTerm}:</strong>"
+    single_search_result: 1 public group matching <strong>%{searchTerm}:</strong>
     multiple_search_results: "%{resultCount} public groups matching <strong>%{searchTerm}:</strong>"
     no_results_found: "<strong>Can't find the group you're looking for?</strong> If a group's privacy is set to 'secret', it won't appear here."
     newest_first: Newest first
     biggest_first: Biggest first
     order_by: Order groups by
-
   global:
     messages:
-      app_update: 'A new version of Loomio has been released. Please save your work and reload.'
-      reload: 'Reload'
-
+      app_update: A new version of Loomio has been released. Please save your work and reload.
+      reload: Reload
   decision_tools_card:
     choose_type: Choose poll type
     title: Facilitate
@@ -1971,7 +1859,6 @@ en:
     meeting_title: Time poll
     ranked_choice_title: Ranked choice
     gradients_of_agreement_title: Gradients of agreement
-
   poll_option_form:
     thumb_up: Thumb up
     thumb_down: Thumb down
@@ -1987,7 +1874,6 @@ en:
     meaning_hint: A sentence or two explaining what choosing this option means. Optional
     prompt: Reason prompt
     prompt_hint: A question to prompt voters to share their reasoning or reconsider their position. Optional
-
   poll_common:
     superseded: Superseded
     outdated: Outdated
@@ -2006,7 +1892,7 @@ en:
     custom_process: Custom process
     custom_poll: Custom poll
     delete_poll: Delete poll
-    select_count_options:  Select %{count} options
+    select_count_options: Select %{count} options
     select_minimum_to_maximum_options: Select %{minimum} to %{maximum} options
     custom_poll_types: Custom poll types
     hidden_poll_templates: Hidden poll templates
@@ -2037,7 +1923,7 @@ en:
     please_vote: Please vote
     reason: Reason
     response: Response
-    reason_placeholder: "Briefly explain why you voted this way, then click 'Submit Vote'"
+    reason_placeholder: Briefly explain why you voted this way, then click 'Submit Vote'
     message: Message
     results: Results
     current_results: Current results
@@ -2077,10 +1963,8 @@ en:
     too_long: Too long
     edit_warning: Editing is only recommended for minor changes or fixing spelling errors. For significant changes, close this %{pollType} and start a new one.
     no_voting: For discussion only, voting disabled
-
   poll_common_attachment_form:
     label: Attachments
-
   poll_common_add_option:
     button:
       add_option: Add another option
@@ -2089,7 +1973,6 @@ en:
     form:
       add_options: Add options
       options_added: New options added
-
   poll_common_card:
     show_results: Show results
     hide_results: Hide results
@@ -2097,83 +1980,78 @@ en:
     until_you_vote: Until you vote
     until_poll_type_closed: Until %{pollType} is closed
     until_voting_is_closed: Until voting is closed
-
     deleted: This poll has been deleted
-
   discussions_panel:
     open: Open
     all: All
     unread: Unread (%{count})
     closed: Closed
-    include_subgroups_mine: '%{name} and my subgroups'
-    include_subgroups_all: '%{name} and all subgroups'
+    include_subgroups_mine: "%{name} and my subgroups"
+    include_subgroups_all: "%{name} and all subgroups"
     no_results_found: No results for "%{search}"
     welcome_to_your_new_group: Welcome to your new Loomio group!
     lets_start_a_thread: Let's start a thread. Click "New thread" to continue.
-
   members_panel:
     email_rejected: Email rejected
     email_rejected_meaning: Email sent to this address has bounced or been marked as spam. No more email will be sent to this address.
     bot: Bot
-    no_results: 'No members found'
-    everyone: 'Everyone'
+    no_results: No members found
+    everyone: Everyone
     all: All
-    sort: 'Sort'
-    order_label: "Order"
-    order_by_name: 'Name'
-    order_by_created: 'Oldest'
+    sort: Sort
+    order_label: Order
+    order_by_name: Name
+    order_by_created: Oldest
     show_users_in_subgroups: Show users in subgroups as well
-    order_by_created_desc: 'Newest'
-    order_by_admin_desc: 'Admins'
-    delegates: 'Delegates'
-    loaded_of_total: '%{loaded} of %{total}'
+    order_by_created_desc: Newest
+    order_by_admin_desc: Admins
+    delegates: Delegates
+    loaded_of_total: "%{loaded} of %{total}"
     view_requests: View requests
-    header_name: 'Name'
-    header_username: 'Username'
-    header_role: 'Role'
-    header_invited_by: 'Invited by'
-    header_invited: 'Invited'
-    header_actions: 'Actions'
-    directory: 'Directory'
-    invitations: 'Invitations'
-    requests: 'Requests'
-    admin: 'Admin'
-    delegate: 'Delegate'
-    delegate_popover: 'A delegate is a group member with voting rights'
-    guest: 'Guest'
-    sharable_link: 'Shareable Link'
-    last_seen: 'Last seen %{date}'
-    invited_by_name: 'Invited by %{name}'
-    accepted: 'Members'
-
+    header_name: Name
+    header_username: Username
+    header_role: Role
+    header_invited_by: Invited by
+    header_invited: Invited
+    header_actions: Actions
+    directory: Directory
+    invitations: Invitations
+    requests: Requests
+    admin: Admin
+    delegate: Delegate
+    delegate_popover: A delegate is a group member with voting rights
+    guest: Guest
+    sharable_link: Shareable Link
+    last_seen: Last seen %{date}
+    invited_by_name: Invited by %{name}
+    accepted: Members
   polls_panel:
     new_poll: New poll
-    any_type: 'All types'
-    any_status: 'Any status'
-    all: 'All'
-    open: 'Open'
-    closed: 'Closed'
-    need_vote: 'Need Vote'
-    no_polls: 'No polls found'
-
+    any_type: All types
+    any_status: Any status
+    all: All
+    open: Open
+    closed: Closed
+    need_vote: Need Vote
+    no_polls: No polls found
   group_files_panel:
     no_files: No files found
     filename: Filename
     uploaded_by: Uploaded by
     uploaded_at: Uploaded at
-    delete_confirmation: |
-      Are you sure you want to delete this attachment? It will be removed from any associated comment or thread. This cannot be undone.
+    delete_confirmation: 'Are you sure you want to delete this attachment? It will be removed from any associated comment or thread. This cannot be undone.
 
+      '
   subgroups_panel:
-    search_subgroups_of_name: 'Search subgroups of %{name}'
-    group_without_subgroups: '%{name} without subgroups'
+    search_subgroups_of_name: Search subgroups of %{name}
+    group_without_subgroups: "%{name} without subgroups"
     need_a_space_for_your_team: Need a break-out space for your team?
     explainer: |
       Subgroups are private places where teams within your organization can have discussions and make decisions.
       Content in subgroups is private from the rest of the organization. Examples of subgroups: Board, Hiring decisions or Project team
-    upgrade: |
-      To start a subgroup, you'll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a>
+    upgrade: 'To start a subgroup, you''ll need to <a class="text-decoration-underline" href="%{url}" target="_blank">upgrade your Loomio subscription.</a>
 
+      '
   poll_common_action_panel:
     from_the_thread: From the thread template
     from_the_group: From the group
@@ -2190,10 +2068,8 @@ en:
     unable_to_vote: You have not been invited to vote in this %{poll_type}
     draft_mode: Voting disabled. This is not open for voting yet.
     voting_disabled_poll_is_template: Voting disabled. This is a template.
-
   poll_common_collapsed:
-    by_who: "by %{name}"
-
+    by_who: by %{name}
   poll_common_calendar_invite:
     calendar_invite: Include a calendar invitation with this outcome
     poll_option_id: Meeting time
@@ -2206,9 +2082,8 @@ en:
     event_description_placeholder: What is the agenda for this meeting?
     location: Location
     location_placeholder: Where will this meeting take place?
-
   poll_common_settings:
-    who_can_vote: 'Who can vote?'
+    who_can_vote: Who can vote?
     short_reason_can_be_helpful: Keeping vote reasons short makes them easier to understand. A collection of concise reasons is a great resource for making a decision.
     specified_voters_only_true: Invited people only
     specified_voters_only_false_group: Anyone in the group
@@ -2249,44 +2124,37 @@ en:
     hide_results_until_closed:
       title: Hide results until closed
       helptext_on: Don't show the how people have voted until the poll is closed
-
   poll_common_close_form:
-    title: "Close %{poll_type} now?"
-    helptext: "Are you sure you want to close this %{poll_type} early and share an outcome?"
-    close_poll_type: "Close %{poll_type}"
+    title: Close %{poll_type} now?
+    helptext: Are you sure you want to close this %{poll_type} early and share an outcome?
+    close_poll_type: Close %{poll_type}
     poll_type_closed: "%{poll_type} closed"
-
   poll_common_reopen_form:
-    title: "Reopen %{poll_type}"
-    helptext: "Reopen the %{poll_type} if people need more time to participate"
+    title: Reopen %{poll_type}
+    helptext: Reopen the %{poll_type} if people need more time to participate
     success: "%{poll_type} reopened"
-
   poll_common_move_form:
-    title: "Move %{poll_type}"
+    title: Move %{poll_type}
     success: "%{poll_type} moved to %{group}"
-
   poll_common_wip_field:
     voting_enabled: Voting enabled
     enable_voting: Enable voting
     title: Disable voting
     past_tense: Voting disabled
-    draft_mode: 'Draft mode'
-    disable_voting_during_development: 'This %{poll_type} is not ready to be voted on'
-    helptext: 'This %{poll_type} is a work in progress. You can enable voting later.'
+    draft_mode: Draft mode
+    disable_voting_during_development: This %{poll_type} is not ready to be voted on
+    helptext: This %{poll_type} is a work in progress. You can enable voting later.
     voting_open: Voting open
     this_is_ready_for_voting: this %{poll_type} is ready for voting
-
   poll_common_closing_at_field:
     closing: Closing
     no_closing_date: No closing date
     closing_date: Closing date
     closing_hour: Closing time
     invalid_date: Invalid date
-
   poll_card:
     poll_type_by_name: "%{poll_type} by %{name}"
     started_by: Started by %{name}
-
   poll_common_votes_panel:
     vote_removed: Vote removed
     undecided: Undecided
@@ -2298,22 +2166,18 @@ en:
     no_votes_yet: No votes have been placed yet.
     change_results_order: Change results order
     name_or_username: Name or username
-
   poll_common_undecided_panel:
-    show_undecided: "Show %{count} undecided"
+    show_undecided: Show %{count} undecided
     show_invitations: Show Pending Invitations
-    undecided_users: "Undecided (%{count})"
-    invitation_count_singular: "1 additional person has been invited to participate via email"
+    undecided_users: Undecided (%{count})
+    invitation_count_singular: 1 additional person has been invited to participate via email
     invitation_count_plural: "%{count} additional people have been invited to participate via email"
-
   poll_common_undecided_user:
     reminded: Reminder sent!
     reminder_sent: Reminder notification sent
-
   poll_common_set_outcome_panel:
     enter_an_outcome: Enter an outcome
-    poll_type: "This %{poll_type} has closed. Take time to consider the results then share an outcome so people know what will happen next."
-
+    poll_type: This %{poll_type} has closed. Take time to consider the results then share an outcome so people know what will happen next.
   poll_common_outcome_form:
     review_due_in_days: Review the decision after how many days?
     review_due_in_days_hint: A period of time (in days) to wait before reviewing the decision. (optional)
@@ -2329,15 +2193,12 @@ en:
     statement_template_placeholder: Provide a template for writing an outcome of the decision. (optional)
     you_will_be_notified: You will be notified on the review date.
     submit: Share outcome
-
   poll_common_outcome_panel:
-    authored_by: 'By %{name}'
-
+    authored_by: By %{name}
   poll_common_delete_modal:
     question: Are you sure you want to delete this?
     title: Delete %{pollType}
     success: Successfully deleted
-
   poll_common_form:
     deadline: Deadline
     how_much_time_to_vote: How much time will you allow for people to vote?
@@ -2419,10 +2280,10 @@ en:
     add_voters: Add voters
     notify_invitees: Send notifications
     no_notifications_warning: Voters will not be notified. This is useful if you're running a lot of polls and plan to notify everyone later on.
-    count_voters_added: '%{count} voters added'
-    poll_type_created: '%{poll_type} created'
-    poll_type_started: '%{poll_type} started'
-    poll_type_updated: '%{poll_type} updated'
+    count_voters_added: "%{count} voters added"
+    poll_type_created: "%{poll_type} created"
+    poll_type_started: "%{poll_type} started"
+    poll_type_updated: "%{poll_type} updated"
     reason_prompt: Reason prompt
     anonymous_voting: Anonymous voting
     anonymous_voting_description: If enabled, the identity of voters will not be associated to their votes. This cannot be undone.
@@ -2430,12 +2291,12 @@ en:
     vote_reason: Vote reason
     vote_reason_description: It can be helpful to understand why people voted the way they did. With this setting, you can prompt people to share their thoughts when they vote.
     hide_results_description: If you want people to vote without knowing how others have voted, you can hide the results of the poll.
-    process_helptext: |
-      Name and describe the process that is being used to run this poll.
+    process_helptext: 'Name and describe the process that is being used to run this poll.
+
+      '
     reminder_helptext: |
       Send a 'Closing soon' notification before the poll closes.
       This can be an opportunity for people to see how others have voted and reconsider their own vote, or just a way to increase participation in the poll.
-
   poll_proposal_form:
     start_header: Start proposal
     edit_header: Edit proposal
@@ -2443,7 +2304,6 @@ en:
     details_placeholder: What are the details of your proposal?
     proposal_created: Proposal started
     proposal_updated: Proposal updated
-
   record_modal:
     record_video: Record video
     record_audio: Record audio
@@ -2453,10 +2313,9 @@ en:
     no_camera: Could not find a camera
     listen_to_audio: Listen to audio
     watch_video: Watch video
-    audio_transcript: "Audio transcript: %{text}"
+    audio_transcript: 'Audio transcript: %{text}'
     why_type_when_you_can_talk: Why type when you can talk? Send a voice recording
     transcript_included: A transcript of the recording will be appended to your message
-
   poll_poll_form:
     multiple_choice_subtitle: A simple way to assess the popularity of options
     start_header: Start poll
@@ -2472,11 +2331,9 @@ en:
     poll_updated: Poll updated
     option_added: Option added
     option_already_added: Option already added to poll
-
   poll_dot_vote_form:
-    dots_per_person:  Points per person
+    dots_per_person: Points per person
     dots_per_person_helptext: The total number of points each person is asked to allocate.
-
   poll_meeting_form:
     timeslots: Time slots
     no_options: Enter times in your current time zone (%{zone}). Participants see times translated to their local time zone.
@@ -2486,28 +2343,25 @@ en:
     time_slot_already_added: Time slot already added
     participants_see_local_times: Pariticpants will see times localized to their time zone
     use_24_hour_format: Error! Use 24 hour format e.g. %{time}
-
   poll_ranked_choice_form:
-    no_options: "You haven't added any options yet."
+    no_options: You haven't added any options yet.
     add_option_placeholder: Enter a new choice
     minimum_stance_choices: Options to rank
-    minimum_stance_choices_helptext: 'How many choices does the voter get?'
-    minimum_stance_choices_hint: 'i.e. Rank your top 3 flavours of ice cream'
+    minimum_stance_choices_helptext: How many choices does the voter get?
+    minimum_stance_choices_hint: i.e. Rank your top 3 flavours of ice cream
     ranked_choice_created: Ranked choice created
     ranked_choice_updated: Ranked choice updated
     rank: Rank
     points: Points
     average: Average
     mean: Mean
-    pct_of_points: '% of points'
-    pct_of_voters: '% of voters'
+    pct_of_points: "% of points"
+    pct_of_voters: "% of voters"
     percent: Percent
-
   poll_meeting_time_field:
     add_time_slot: Add time slot
     new_time_slot: New time slot
     closing_hour: Closing hour
-
   poll_proposal_vote_form:
     default_reason_placeholder: Please explain your reasoning
     abstain_reason_placeholder: Let people know why you’re opting out of this decision
@@ -2517,11 +2371,10 @@ en:
     stance_created: Vote created
     stance_updated: Vote updated
     vote: Vote
-
   poll_proposal_options:
     select_an_option: Select an option
-    yes: 'Yes'
-    no: 'No'
+    true: 'Yes'
+    false: 'No'
     agree: Agree
     consent: Consent
     abstain: Abstain
@@ -2530,90 +2383,76 @@ en:
     objection: Objection
     object: Object
     block: Block
-    no_voting: 'No voting'
-
+    no_voting: No voting
   poll_count_form:
-    pct_of_target: '% of target'
+    pct_of_target: "% of target"
     agree_target_helptext: What is the target number of volunteers you'd like to have?
     agree_target_label: Target number
-
   poll_count_options:
     accept: Accept
     decline: Decline
     'yes': 'Yes'
     'no': 'No'
-
   poll_common_percent_voted:
     sentence: "%{numerator} of %{denominator} people have participated (%{percent}%)"
     target_progress: "%{percent}% of target reached. (%{num} / %{target})"
-
   poll_meeting_chart_panel:
     total: Total
-
   poll_remove_vote:
     title: Remove your vote?
     helptext: Are you sure you want to remove your vote? You will be listed as undecided and can vote again later if you wish.
     confirm: Remove vote
     success: Vote removed
-
   poll_poll_vote_form:
     stance_created: Vote created
     stance_updated: Vote updated
-
   poll_score_vote_form:
     stance_created: Vote created
     stance_updated: Vote updated
-
   poll_meeting_vote_form:
     local_time_zone: Local time - %{zone}
-    can_attend: "Can attend"
-    unable: "Unable"
+    can_attend: Can attend
+    unable: Unable
     if_need_be: If need be
     your_response: When can you attend?
     stance_created: Availability saved
     stance_updated: Availability updated
     reason_placeholder: Explain when you're free (or busy), in case the author wants to add options.
-
   poll_dot_vote_vote_form:
     dots_remaining: "%{count} dots remaining"
     too_many_dots: You have used too many dots
     stance_created: Vote created
     stance_updated: Vote updated
-
   poll_ranked_choice_vote_form:
     helptext: Drag and drop options in order of preference (1 being your most preferred option). Your top %{count} choices will be recorded.
     stance_created: Choice recorded
     stance_updated: Choice updated
-
-
   thread_item:
-    removed: "Item removed"
-    deleted_group: "Deleted group"
-    invite_only_thread: "Invite only thread"
-    comment_replied_to:            "<a class='actor-link' href='/u/%{username}'>%{author}</a> in reply to <strong>%{title}</strong>"
-    discussion_title_edited:       "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the thread title"
-    discussion_context_edited:     "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the thread context"
-    discussion_privacy_edited:     "<a class='actor-link' href='/u/%{username}'>%{author}</a> changed the thread privacy"
-    discussion_edited:             "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the thread context"
-    discussion_moved:              "<a class='actor-link' href='/u/%{username}'>%{author}</a> moved the thread from <strong>%{title}</strong>"
-    discussion_closed:             "<a class='actor-link' href='/u/%{username}'>%{author}</a> closed the thread"
-    discussion_reopened:           "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the thread"
-    discussion_forked:             "<a class='actor-link' href='/u/%{username}'>%{author}</a> created a fork of this thread: <strong><a href='d/%{key}'>%{title}</a></strong>"
-    new_comment:                   "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
-    outcome_created:               "<a class='actor-link' href='/u/%{username}'>%{author}</a> shared an outcome"
-    poll_reopened:                 "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the %{polltype}"
-    poll_closed_by_user:           "<a class='actor-link' href='/u/%{username}'>%{author}</a> closed the %{polltype}"
-    poll_created:                  "<a class='actor-link' href='/u/%{username}'>%{author}</a> started a %{polltype}"
-    poll_edited:                   "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the %{polltype}"
-    poll_option_added:             "<a class='actor-link' href='/u/%{username}'>%{author}</a> added options to the %{polltype}"
-    poll_expired:                  "%{polltype} closed"
-    stance_created:                "<a class='actor-link' href='/u/%{username}'>%{author}</a> voted on: <strong>%{title}</strong>"
-    stance_updated:                "<a class='actor-link' href='/u/%{username}'>%{author}</a> updated their vote on: <strong>%{title}</strong>"
-    event_removed:                 "Removed from thread"
-
+    removed: Item removed
+    deleted_group: Deleted group
+    invite_only_thread: Invite only thread
+    comment_replied_to: "<a class='actor-link' href='/u/%{username}'>%{author}</a> in reply to <strong>%{title}</strong>"
+    discussion_title_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the thread title"
+    discussion_context_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the thread context"
+    discussion_privacy_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> changed the thread privacy"
+    discussion_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the thread context"
+    discussion_moved: "<a class='actor-link' href='/u/%{username}'>%{author}</a> moved the thread from <strong>%{title}</strong>"
+    discussion_closed: "<a class='actor-link' href='/u/%{username}'>%{author}</a> closed the thread"
+    discussion_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the thread"
+    discussion_forked: "<a class='actor-link' href='/u/%{username}'>%{author}</a> created a fork of this thread: <strong><a href='d/%{key}'>%{title}</a></strong>"
+    new_comment: "<a class='actor-link' href='/u/%{username}'>%{author}</a>"
+    outcome_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> shared an outcome"
+    poll_reopened: "<a class='actor-link' href='/u/%{username}'>%{author}</a> reopened the %{polltype}"
+    poll_closed_by_user: "<a class='actor-link' href='/u/%{username}'>%{author}</a> closed the %{polltype}"
+    poll_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> started a %{polltype}"
+    poll_edited: "<a class='actor-link' href='/u/%{username}'>%{author}</a> edited the %{polltype}"
+    poll_option_added: "<a class='actor-link' href='/u/%{username}'>%{author}</a> added options to the %{polltype}"
+    poll_expired: "%{polltype} closed"
+    stance_created: "<a class='actor-link' href='/u/%{username}'>%{author}</a> voted on: <strong>%{title}</strong>"
+    stance_updated: "<a class='actor-link' href='/u/%{username}'>%{author}</a> updated their vote on: <strong>%{title}</strong>"
+    event_removed: Removed from thread
   add_poll_to_thread_modal:
-    success: "Success, %{pollType} added to thread!"
-
+    success: Success, %{pollType} added to thread!
   auth_form:
     code: '000000'
     youre_invited: You have been invited to join %{group_name}.
@@ -2635,28 +2474,27 @@ en:
     invitation_required: You need an invitation to create an account. Follow the link from your invitation email to continue.
     more_providers: More
     email_not_present: An email address is required
-    invalid_email: "Sorry, that doesn't look like a valid email address"
-    invalid_password: "Sorry, that password doesn't match the one we have on file"
-    invalid_token: "Sorry, we weren't able to use that token to log you in. Click below to send another one."
-    account_locked: "Your account has been locked after too many failed login attempts. Check your email for an unlock link"
-    email_not_found: "Sorry, we couldn't find an account with that email address"
+    invalid_email: Sorry, that doesn't look like a valid email address
+    invalid_password: Sorry, that password doesn't match the one we have on file
+    invalid_token: Sorry, we weren't able to use that token to log you in. Click below to send another one.
+    account_locked: Your account has been locked after too many failed login attempts. Check your email for an unlock link
+    email_not_found: Sorry, we couldn't find an account with that email address
     email_taken: Email address is already registered
     email_placeholder: you{'@'}example.com
     login_with_token: You're all set! Click the link below to continue.
     login_link_helptext: Click the button below and we'll send you a link to sign in.
-    enter_your_password: "Enter your password to continue"
+    enter_your_password: Enter your password to continue
     want_to_set_password: Want to sign in with a password next time?
     change_your_password: Would you like to set a new password?
     check_spam_folder: If the email does not arrive soon, check your spam folder.
     sign_up_helptext: Please complete this form to create a user account
-    # i_accept: "I accept the <a href='%{termsUrl}' target='_blank' @click.stop>Terms of service</a> and <a href='%{privacyUrl}' target='_blank'>Privacy policy</a>": "Loomio newsletter"
-    i_accept_all: "I accept the %{termsLink} and %{privacyLink}"
-    newsletter_label: "I want to receive the %{link}"
+    i_accept_all: I accept the %{termsLink} and %{privacyLink}
+    newsletter_label: I want to receive the %{link}
     name_placeholder: Your name
     name_required: Please enter a name
     terms_required: You must agree to the Terms of Service
     account_inactive: Uh-oh, it looks like the account for %{email} has been deactivated!
-    privacy_notice: "We will never sell your data. <br><a href='%{privacyUrl}' target='_blank'>Privacy policy</a>"
+    privacy_notice: We will never sell your data. <br><a href='%{privacyUrl}' target='_blank'>Privacy policy</a>
     welcome: New to %{siteName}?
     welcome_back: Welcome back, %{name}!
     forgot_password: Forgot password
@@ -2664,26 +2502,25 @@ en:
     sign_in_via_email: Sign in via email
     set_password: Set password
     set_password_helptext: Want to use a password next time?
-    hello: "Hello, %{name}!"
+    hello: Hello, %{name}!
     new_to_loomio: First time on %{site_name}?
     already_a_user: Already have an account?
     email_address_of_existing_account: Enter email address of your existing account
     link_accounts: Link accounts
     check_your_email: Check your email!
-    login_link_sent: "We've sent an email to %{email}"
-    instructions: "Click the link to sign in, or enter the code below:"
-    instructions_code: "Enter the code from that email:"
-    too_many_attempts: "Too many attempts; try clicking the link in the email to sign in."
-    invalid_code: "Sorry, that code didn't match. Check the email and try again."
-    password_link_sent: "We've sent an email to %{email} with instructions on how to set your password."
-    reactivate_link_sent: "We've sent you an email with instructions to reactivate your account"
+    login_link_sent: We've sent an email to %{email}
+    instructions: 'Click the link to sign in, or enter the code below:'
+    instructions_code: 'Enter the code from that email:'
+    too_many_attempts: Too many attempts; try clicking the link in the email to sign in.
+    invalid_code: Sorry, that code didn't match. Check the email and try again.
+    password_link_sent: We've sent an email to %{email} with instructions on how to set your password.
+    reactivate_link_sent: We've sent you an email with instructions to reactivate your account
     signed_in: Signed in successfully
     email_verified: Email verified successfully
     name: Name
     email: Email
     password: Password
     reactivate: Reactivate account
-
   chatbot:
     configure_chatbot: Configure chatbot
     test_connection: Test connection
@@ -2710,7 +2547,6 @@ en:
     event_kind_helptext: Select events the bot will always be notified about. If you're not sure, just leave them all off.
     notification_only_label: Send notification headline only
     check_for_test_message: Check your chatroom for a message from the bot!
-
   webhook:
     integrations: Integrations
     api_keys: API keys
@@ -2727,8 +2563,9 @@ en:
       discord: Discord
     subtitle: Connect to Loomio to the rest of your tools with our API
     deprecated: This API is deprecated. Please move to APIv2 (see API docs in your group settings menu)
-    we_have_guides: |
-      See our <a href="%{url}" target="_blank">webhook setup guides</a> for help connecting your service.
+    we_have_guides: 'See our <a href="%{url}" target="_blank">webhook setup guides</a> for help connecting your service.
+
+      '
     add_webhook: Add webhook
     show_docs: See API usage
     save_to_show_docs: After you save, return here to find your API key
@@ -2736,7 +2573,7 @@ en:
     add_integration: Add integration
     success: Integration added!
     remove: Remove integration
-    confirm_remove: "Are you sure you want to remove the integration: %{name}?"
+    confirm_remove: 'Are you sure you want to remove the integration: %{name}?'
     removed: Integration removed
     url_label: Webhook URL
     url_placeholder: https://hooks.example.com/...
@@ -2767,15 +2604,13 @@ en:
       read_memberships: read memberships
       manage_memberships: manage memberships (add or remove group members)
     include_body_label: Include message body with notification
-
   powered_by:
-    this_is_loomio_md: "Loomio is an app for making decisions together. [Try for free](https://www.loomio.com)"
+    this_is_loomio_md: Loomio is an app for making decisions together. [Try for free](https://www.loomio.com)
     slogan: Better decisions together
     powered_by_loomio: Powered by Loomio
     privacy_policy: Privacy policy
     terms_of_service: Terms of service
     front_page: Front page
-
   group_survey:
     describe_other: Which category best describes your organization
     categories:
