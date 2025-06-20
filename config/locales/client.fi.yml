@@ -1845,6 +1845,7 @@ fi:
     until_poll_type_closed: Kunnes %{pollType} on suljettu
     until_voting_is_closed: Kunnes äänestys päättyy
     deleted: Tämä kysely on poistettu
+    do_not_hide_results: Älä piilota tuloksia
   discussions_panel:
     open: Avoin
     all: Kaikki

@@ -1845,6 +1845,7 @@ tr:
     until_poll_type_closed: "%{pollType} kapatılana kadar"
     until_voting_is_closed: Oylama bitene kadar
     deleted: Bu anket silindi
+    do_not_hide_results: Sonuçları gizlemeyin
   discussions_panel:
     open: Açık
     all: Hepsi

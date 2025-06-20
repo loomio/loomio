@@ -1848,6 +1848,7 @@ da:
     until_poll_type_closed: Indtil %{pollType} er lukket
     until_voting_is_closed: Indtil afstemningen er lukket
     deleted: Denne afstemning er blevet slettet
+    do_not_hide_results: Skjul ikke resultater
   discussions_panel:
     open: Offentlig
     all: Alle

@@ -1883,6 +1883,7 @@ zh_TW:
     until_poll_type_closed: 直到 %{pollType} 關閉
     until_voting_is_closed: 直至投票結束
     deleted: 此投票已刪除
+    do_not_hide_results: 不要隱藏結果
   discussions_panel:
     open: 公開
     all: 全部

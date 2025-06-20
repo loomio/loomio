@@ -1882,6 +1882,7 @@ es:
     until_poll_type_closed: Hasta que se cierre %{pollType}
     until_voting_is_closed: Hasta que se cierre la votacion
     deleted: Este sondeo ha sido eliminado
+    do_not_hide_results: No ocultes los resultados
   discussions_panel:
     open: Abierto
     all: Todos/as

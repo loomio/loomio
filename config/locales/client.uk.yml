@@ -1878,6 +1878,7 @@ uk:
     until_poll_type_closed: Поки %{pollType} не буде закрито
     until_voting_is_closed: До закриття голосування
     deleted: Це опитування було видалено
+    do_not_hide_results: Не приховувати результати
   discussions_panel:
     open: Відкрита
     all: Всі

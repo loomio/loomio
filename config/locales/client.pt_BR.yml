@@ -1896,6 +1896,7 @@ pt_BR:
     until_poll_type_closed: Até %{pollType} ser fechado
     until_voting_is_closed: Até encerrar a votação
     deleted: Esta enquete foi deletada
+    do_not_hide_results: Não esconda os resultados
   discussions_panel:
     open: Aberto
     all: Tudo

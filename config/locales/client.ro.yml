@@ -1845,6 +1845,7 @@ ro:
     until_poll_type_closed: Până când %{pollType} este închis
     until_voting_is_closed: Până la închiderea votului
     deleted: Acest sondaj a fost șters
+    do_not_hide_results: Nu ascundeți rezultatele
   discussions_panel:
     open: Deschis
     all: Toate

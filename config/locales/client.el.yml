@@ -1845,6 +1845,7 @@ el:
     until_poll_type_closed: Μέχρι να κλείσει το %{pollType}
     until_voting_is_closed: Μέχρι να κλείσει η ψηφοφορία
     deleted: Αυτή η δημοσκόπηση έχει διαγραφεί
+    do_not_hide_results: Μην αποκρύπτετε τα αποτελέσματα
   discussions_panel:
     open: Άνοιγμα
     all: Όλα

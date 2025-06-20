@@ -1894,6 +1894,7 @@ fr:
     until_poll_type_closed: Jusqu'à la fermeture de %{pollType}
     until_voting_is_closed: Jusqu'à la clôture des votes
     deleted: Ce sondage a été supprimé
+    do_not_hide_results: Ne cachez pas les résultats
   discussions_panel:
     open: Ouvert
     all: Tous

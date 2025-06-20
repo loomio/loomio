@@ -1871,6 +1871,7 @@ ca:
     until_poll_type_closed: Fins que es tanqui %{pollType}
     until_voting_is_closed: Fins que es tanqui la votació
     deleted: Aquesta enquesta s'ha eliminat
+    do_not_hide_results: No amagueu els resultats
   discussions_panel:
     open: Obret
     all: Tot

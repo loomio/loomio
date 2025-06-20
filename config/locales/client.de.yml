@@ -1881,6 +1881,7 @@ de:
     until_poll_type_closed: Bis %{pollType} geschlossen ist
     until_voting_is_closed: Bis die Abstimmung geschlossen ist
     deleted: Diese Abstimmung wurde entfernt
+    do_not_hide_results: Ergebnisse nicht verbergen
   discussions_panel:
     open: Offen
     all: Alle

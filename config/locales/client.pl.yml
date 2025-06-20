@@ -1873,6 +1873,7 @@ pl:
     until_poll_type_closed: Do czasu zamknięcia %{pollType}
     until_voting_is_closed: Aż do zamknięcia głosowania
     deleted: Ta ankieta została usunięta
+    do_not_hide_results: Nie ukrywaj wyników
   discussions_panel:
     open: Otwarte
     all: Wszystko

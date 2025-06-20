@@ -86,7 +86,7 @@ export default {
 
       currentHideResults: this.poll.hideResults,
       hideResultsItems: [
-        { title: this.$t('common.off'), value: 'off' },
+        { title: this.$t('poll_common_card.do_not_hide_results'), value: 'off' },
         { title: this.$t('poll_common_card.until_you_vote'), value: 'until_vote' },
         { title: this.$t('poll_common_card.until_voting_is_closed'), value: 'until_closed' }
       ],

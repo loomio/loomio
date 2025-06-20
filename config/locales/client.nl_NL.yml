@@ -1873,6 +1873,7 @@ nl_NL:
     until_poll_type_closed: Totdat %{pollType} gesloten is
     until_voting_is_closed: Totdat de stemming is gesloten
     deleted: Deze peiling is verwijderd
+    do_not_hide_results: Resultaten niet verbergen
   discussions_panel:
     open: Openen
     all: Alle

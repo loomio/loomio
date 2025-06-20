@@ -1844,6 +1844,7 @@ ja:
     until_poll_type_closed: "%{pollType}が終了するまで"
     until_voting_is_closed: 投票が終了するまで
     deleted: この投票は削除されました
+    do_not_hide_results: 結果を隠さない
   discussions_panel:
     open: 議論中
     all: 全て

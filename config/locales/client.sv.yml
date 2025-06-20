@@ -1845,6 +1845,7 @@ sv:
     until_poll_type_closed: Tills %{pollType} är stängd
     until_voting_is_closed: Tills omröstningen är stängd
     deleted: Denna omröstning har tagits bort
+    do_not_hide_results: Dölj inte resultaten
   discussions_panel:
     open: Öppen
     all: Alla

@@ -1976,6 +1976,7 @@ en:
   poll_common_card:
     show_results: Show results
     hide_results: Hide results
+    do_not_hide_results: Do not hide results
     until_vote: Until vote is cast
     until_you_vote: Until you vote
     until_poll_type_closed: Until %{pollType} is closed

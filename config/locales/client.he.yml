@@ -1867,6 +1867,7 @@ he:
     until_poll_type_closed: עד ש-%{pollType} ייסגר
     until_voting_is_closed: עד לסגירת ההצבעה
     deleted: סקר זה נמחק
+    do_not_hide_results: אל תסתירו תוצאות
   discussions_panel:
     open: פתוח
     all: הכל

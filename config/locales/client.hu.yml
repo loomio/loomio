@@ -1855,6 +1855,7 @@ hu:
     until_poll_type_closed: A(z) %{pollType} bezárásáig
     until_voting_is_closed: A szavazás lezárásáig
     deleted: Ezt a szavazást törölték
+    do_not_hide_results: Ne rejtsd el az eredményeket
   discussions_panel:
     open: Nyitva
     all: Minden

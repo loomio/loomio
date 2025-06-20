@@ -1845,6 +1845,7 @@ ru:
     until_poll_type_closed: Пока %{pollType} не закроется
     until_voting_is_closed: Пока голосование не закрыто
     deleted: Этот опрос был удален
+    do_not_hide_results: Не скрывайте результаты
   discussions_panel:
     open: Открыто
     all: Все

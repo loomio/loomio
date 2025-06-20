@@ -1845,6 +1845,7 @@ sl:
     until_poll_type_closed: Dokler %{pollType} ni zaprt
     until_voting_is_closed: Do zaključka glasovanja
     deleted: Ta anketa je bila izbrisana
+    do_not_hide_results: Ne skrivaj rezultatov
   discussions_panel:
     open: Odprto
     all: Vse

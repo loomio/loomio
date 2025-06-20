@@ -1845,6 +1845,7 @@ hr:
     until_poll_type_closed: Dok se %{pollType} ne zatvori
     until_voting_is_closed: Do zatvaranja glasanja
     deleted: Ova anketa je izbrisana
+    do_not_hide_results: Ne skrivaj rezultate
   discussions_panel:
     open: Otvoren
     all: svi
